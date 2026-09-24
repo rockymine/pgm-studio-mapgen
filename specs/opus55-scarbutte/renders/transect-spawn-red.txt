@@ -27,10 +27,10 @@ TRANSECT 29 stations from (-132, 0) to (-104, 0), every 1
   ( -109,     0)      38       38           38                      
   ( -108,     0)      38       38           38                      
   ( -107,     0)      38       38           38                      
-  ( -106,     0)      37       37           37                      -1
-  ( -105,     0)      37       37           37                      
-  ( -104,     0)      37       37           37                      
-rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+  ( -106,     0)      38       38           38                      
+  ( -105,     0)      38       38           38                      
+  ( -104,     0)      38       38           38                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: spawn red-spawn at (-131, -2)
 
 ## spawn-red (spawn) along z
@@ -43,8 +43,8 @@ TRANSECT 33 stations from (-122, -16) to (-122, 16), every 1
   ( -122,   -12)      38       38           38                      
   ( -122,   -11)      38       38           38                      
   ( -122,   -10)      38       38           38                      
-  ( -122,    -9)      38       38           38                      
-  ( -122,    -8)      38       38           38                      
+  ( -122,    -9)      37       37           37                      -1
+  ( -122,    -8)      38       38           38                      +1
   ( -122,    -7)      38       38           46  spawn red-spawn     
   ( -122,    -6)      38       38           46  spawn red-spawn     
   ( -122,    -5)      38       38           46  spawn red-spawn     
@@ -66,8 +66,8 @@ TRANSECT 33 stations from (-122, -16) to (-122, 16), every 1
   ( -122,    11)      38       38           38                      
   ( -122,    12)      38       38           38                      
   ( -122,    13)      38       38           38                      
-  ( -122,    14)      38       38           38                      
-  ( -122,    15)      38       38           38                      
-  ( -122,    16)      38       38           38                      
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+  ( -122,    14)      37       37           37                      -1
+  ( -122,    15)      37       37           37                      
+  ( -122,    16)      37       37           37                      
+rises 1, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: spawn red-spawn at (-124, -7)

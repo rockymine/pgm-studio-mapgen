@@ -1,9 +1,9 @@
 ## spawn-blue (spawn) along x
 TRANSECT 26 stations from (104, 0) to (129, 0), every 1
   station        ground  surface  water  top  standing            step
-  (  104,     0)      37       37           37                      
-  (  105,     0)      37       37           37                      
-  (  106,     0)      38       38           38                      +1
+  (  104,     0)      38       38           38                      
+  (  105,     0)      38       38           38                      
+  (  106,     0)      38       38           38                      
   (  107,     0)      38       38           38                      
   (  108,     0)      38       38           38                      
   (  109,     0)      38       38           38                      
@@ -27,15 +27,15 @@ TRANSECT 26 stations from (104, 0) to (129, 0), every 1
   (  127,     0)      38       38           46  spawn red-spawn#1   
   (  128,     0)      38       38           46  spawn red-spawn#1   
   (  129,     0)      38       38           46  spawn red-spawn#1   
-rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: spawn red-spawn#1 at (117, -2)
 
 ## spawn-blue (spawn) along z
 TRANSECT 33 stations from (122, -16) to (122, 16), every 1
   station        ground  surface  water  top  standing            step
-  (  122,   -16)      38       38           38                      
-  (  122,   -15)      38       38           38                      
-  (  122,   -14)      38       38           38                      
+  (  122,   -16)      37       37           37                      
+  (  122,   -15)      37       37           37                      
+  (  122,   -14)      38       38           38                      +1
   (  122,   -13)      38       38           38                      
   (  122,   -12)      38       38           38                      
   (  122,   -11)      38       38           38                      
@@ -57,14 +57,14 @@ TRANSECT 33 stations from (122, -16) to (122, 16), every 1
   (  122,     5)      38       38           46  spawn red-spawn#1   
   (  122,     6)      38       38           46  spawn red-spawn#1   
   (  122,     7)      38       38           38                      
-  (  122,     8)      38       38           38                      
-  (  122,     9)      38       38           38                      
+  (  122,     8)      37       37           37                      -1
+  (  122,     9)      38       38           38                      +1
   (  122,    10)      38       38           38                      
   (  122,    11)      38       38           38                      
   (  122,    12)      38       38           38                      
-  (  122,    13)      38       38           38                      
-  (  122,    14)      38       38           38                      
+  (  122,    13)      37       37           37                      -1
+  (  122,    14)      38       38           38                      +1
   (  122,    15)      38       38           38                      
-  (  122,    16)      38       38           38                      
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+  (  122,    16)      37       37           37                      -1
+rises 3, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: spawn red-spawn#1 at (120, -7)

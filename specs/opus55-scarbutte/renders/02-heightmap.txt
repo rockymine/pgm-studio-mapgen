@@ -1,56 +1,56 @@
 HEIGHTMAP  1 char = 3x3 blocks (the top-left block of each)  x -132..129 across, z -76..74 down
-KEY  char = ground height above y14 in bands of 1 block(s): 0 = y14..14, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
+KEY  char = ground height above y11 in bands of 1 block(s): 0 = y11..11, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
      -3 -2  -1 -0 -9  -8 -7 -6  -5 -4 -3  -2 -1  0   1  2  3   4  5  6   7  8  9   0  1  2   
      2963074185296307418529630741852963074185296303692581470369258147036925814703692581470369
  -76                                                                                         
- -73                        00c                                                              
- -70                       000ccc                                                            
- -67                       000ccccccc                                                        
- -64          oogcccc     000cccccccccba                                    ccccmoo          
- -61        oooogccccccc  000cccccccccba988            888              cccccccfoooooo       
- -58       ooooogccccceedc000cccccccccba9888           8888          000cccccccjoooooooo     
- -55      oooooogcccchllld000cccccccccba9888          888889         000cccccccooooooooo     
- -52     ooooooofcccellllj000cccccccccba9888          888899        0000ccccccgoooooooooo    
- -49     oooooooccccelllll000cccccccccba9888          888899a       000ccccccckooooooooooo   
- -46    ooooooooccccchlllj000cccccccccba9888          88889aac      000cccccccoooooooooooo   
- -43    oooooooocccccccedc0000ccccccccba9888          88889abc     0000ccccccgooooooooooooo  
- -40   oooooooonccccccccccc000ccccccdfca9888          8888hkiccc   000cccccccjooooooooooooo  
- -37   ooooooooohcccccccccc0000ccccjoonb9888          888gjkldccccc000cccccccgooooooooooooo  
- -34   ooooooooooccccccccccc000cccfooonj9888          888gjklfcccc0000ccccccccooooooooooooo  
- -31   oooooooooofcccccccccc0000ccfooonj9888          8889jklccccc000ccccccccclooooooooooooo 
- -28   ooooooooookccccccccccc000cccjoong9888          8888aihccccc000ccccccccchooooooooooooo 
- -25   oooooooooooccccccccccc000cccccfea9888          88889abccccc000cccccccccfooooooooooooo 
- -22  oooooooooooohcccccccccc000ccccccba9888          88889abccccc000ccccccccccooooooooooooo 
- -19  ooooooooooooocccccccccc000ccccccba9888          88889abccccc0000ccccccccckooooooooooooo
- -16  ooooooooooooofcccccccc0000ccccccba9888          88889abccccc0000cccccccccgooooooooooooo
- -13  oooooooooooookccccc!cc000cccccccba9888          88889abcgkkcc000ccccccddcconnnooooooooo
- -10 oooooooooonnnoogeddcHcc000cccccccba9888          88889abckkgcc000cccccddeegkmnnooooooooo
-  -7 oHHHHooooonnmmkhfeddcccccccccccccba9888          88889abckkccccccccccddefghjlmnnoooHHHHH
-  -4 oHHHHoooonnmmljhgeddcccccccccccccba9888          88889abcccccccccccccdeefhiklmnnoooHHHHH
-  -1 oHHHHoooonnmlkihfeedcccccccccccccba9888          88889abcccccccccccccdefghjklmnnoooHHHHH
-   2 oHHHHoooonnmljigfeddcccccccccccccba9888           8889abcccccccccccccdefgijlmmnooooHHHHH
-   5 oHHHHoooonnmkjhgfeddccccccccccgecba9888           8889abcccccccccccccdeegikmmnnooooHHHHH
-   8 ooooooooonnmljgeeddccccc00ccckkkcba9888           8889abccccccc00ccccddefinnnnnooooooooo
-  11  ooooooooonnmjcdddccccc0000cckkgcba9888           8889abcccccc0000c!Hccdccoooooooooooooo
-  14  ooooooooooooocccccccccc000ccggccba9888           8889abcccccc0000cccccccclooooooooooooo
-  17  ooooooooooooofccccccccc0000cccccba9888           8889abcccccc000cccccccccgooooooooooooo
-  20  ooooooooooooohccccccccc0000cccccba9888           8889abccccc0000ccccccccccoooooooooooo 
-  23  ooooooooooooolcccccccccc000cccccba9888           8889abccccc0000ccccccccccjooooooooooo 
-  26   ooooooooooooocccccccccc000cccccdc9888           8889jnojccc0000cccccccccccooooooooooo 
-  29   ooooooooooooogcccccccc0000ccccelke888           8889mnoolccc000cccccccccccloooooooooo 
-  32   oooooooooooookcccccccc0000cccchlkjb88          88889mnoooccc0000ccccccccccgoooooooooo 
-  35   oooooooooooooocccccccc000cccccjlkjb88          88889jnoojcccc000cccccccccccoooooooooo 
-  38    oooooooooooooecccccc0000 ccccelkg888          88889aklfccccc0000ccccccccccjoooooooo  
-  41    oooooooooooooecccccc0000    ccbb98888         88889abcccccccc000ccccccccccgoooooooo  
-  44    oooooooooooolccccccc000      ba998888         88889abcccccccc0000jljjcccccgoooooooo  
-  47     ooooooooooohcccccc0000      ba998888         88889abcccccccc0002lllllccccgooooooo   
-  50     oooooooooooccccccc000        9988888         88889abccccccccc001lllllcccchoooooo    
-  53      oooooooookccccccc000         98888          88889abccccccccc000jlllhcccckoooooo    
-  56       oooooooogccccccc000         88888           8889abccccccccc000cjjhccccckooooo     
-  59        ooooooocccccccc0            8888           8889abcccccccc0000 cccccccckoooo      
-  62          ooookccccc                                  aabcccccccc0000   cccccckoo        
-  65                                                         cccccccc000        cc           
-  68                                                            ccccc000                     
-  71                                                               cc00                      
+ -73                        205                                                              
+ -70                       11079d                                                            
+ -67                       1139deeddc                                                        
+ -64          onnfeee     1126bfffffedcc                                    efeekqq          
+ -61        pnpnideeeeee  233adgggggfeddcba            bbc              bdeeeeeenqpsuu       
+ -58       oonnogdddeejhb8444begghhggfeedbaa           bcde          434bceeeeegqrrsuvvw     
+ -55      mmmlmleddddjmnk9555cdghhhhgffedbaa          bcdeee         544bceeeeelpqssuvvw     
+ -52     kllllljddeehnnnkg766cfiiiiihgfedcba          bcdeee        8545bdfeeeiqqqssuvvvw    
+ -49     kkkkjjeddeehnmnmj776cgjjjjihgffdcbb          bcdeefg       654abeeeefqqqrstuuvvvw   
+ -46    jiiiiiheddddekmnom777cgkkkjjihgfeecb          bdeffghi      554bcddddkqqqqrstuuvvw   
+ -43    jjihhhheddddddeife8668ghjjjjjihgffdc          cdefghhi     6555accccenopqqrsttuuuvy  
+ -40   jjiihhhhgdddddddefd9767efjjjjjoihgfed          cdfhqqnijk   6556abbbbmnopqqqsttttuuw  
+ -37   iiiiiihiieeeddddeffe777befiikuuuhgfed          cdfpqqqijkjfc876bbbbcennnpqprssstssuw  
+ -34   jjiijjjklleeddddefgda676eehiqtutngfed          defoqrrijkgea655bcbbcjonopqqprsstsstu  
+ -31   jjjjkklmnoieeeedeefdc5669dehsstspgged          deegqrqijjfd665bbdbbblonopqqqrsttuuvvu 
+ -28   jkkllmnoppoeeeeedeeecb665cdhlstspffed          eeeghlkiijfa555cbdccclonoqrqrrrsttuuuu 
+ -25   klmmnopqqqqjeeeeeeeecb333acggghigeeed          eeeggghhiiec554bbeddceooqqrrrrrssstttt 
+ -22  lmnoopqqqrrrqgeeeeeeeba2229bfeefeddddd          eeeefgghhidc5547aeeeedkqqrqpprrrsrsrss 
+ -19  nnppqqqrrrrrrpfeefffea72119aeddeddcddd          ddddeefghhed5443aceeeefqrrrpqrrrrrrqqqr
+ -16  pqrrrrrrrrrrrrjffffffb4222abdddddcdccd          ddddddefggfd53328aeeeeenqqrrsrrrrqrqpqr
+ -13  pqrrrrrrrrsrrroffff!b73223addddccccccc          cddddcdeinmb73225aeeeeeeoqrrssrrrqqrrrr
+ -10 qqqrrqrrrrrrrrrqfffgHb74327addddccccccc          cdcdcccdlmia92222adeeeeelqrrrsrrrrrrrrr
+  -7 rHHHHrrrrrrrrrrrfffgdbbb76acdccccccbccc          dddcccccllda9537aaceeeeflrrrrrsrrrHHHHH
+  -4 rHHHHrrrrrrrqrrrhfffeabaaaaddcccbbbbbbb          dcccbcccccdd9999aaaeeefhqrrrrrsrrrHHHHH
+  -1 rHHHHrrrrrrrrrrqhffedaaaaaaddccbbbbbbbb          dccbbbbccccdb99aaaaeeefjqqrrrrrrrrHHHHH
+   2 rHHHHrrrrrrrrrqoffeeeaaa99abddccccbbccc           bbbbbbbcccdcaaaabbefffmrrrqrrrrrrHHHHH
+   5 rHHHHrrrrsrrrrrjfeeeeaaa8399ddgecccccdd           ccbbbbccccdca5abbbffffkrrrrrrrrrrHHHHH
+   8 rrrrrrrrrrrrrrqgfeeeeba22259bmllcccccdd           cccccccccdda7249bbfgffjrrrrrsrrrrqqqrq
+  11  rrrrrqrrsssrrqjeeeeeca2222abnnjddccddd           cccccccdddda22339!Hfffhrrrrrrrrrrrrrqq
+  14  rqqqqqrrrssrrqqgeeeeda42339djkgfeddddd           ccddcdddddba2224bffffffqrrrsrrrqrrrrqp
+  17  qpqrrrrrrrrqrrqmeeeeea83447dghgffedddd           dcccdddddda71227affffefjrrrrrrrqqqqpon
+  20  rssqrrrrrrpprrqpeeeeeda3458dghhgffeeee           dddcdeeeeea4114abeeeeeefmrrrrrqqpponm 
+  23  sttssssrrrqqrqppkddddeb9455dfihhhgffee           deeeeffffeb7325bdeeeeeeegpqqqqponnmlk 
+  26   uuuutssrrqrrqonnfccdebb555efjiiihggee           dfffqrsjhec9555cceeedeeeeiqpppnmmlkkk 
+  29   uvvuussrrrqqponohbbcdb8557egjiiqqkgee           dfghsstsnhdb566bcfeedeeeeeoonnmlkkjjj 
+  32   vutstttsqpqqpooofbbcbb4669ejjimrrqiee          cdfghsttsrhee9676dffeedddeehmlkjjjiijj 
+  35   vvtrstssrqqponnnccbca9677dfkkjmrqqked          cdfghquusjihee777bdgedddddeeijiiiiiiji 
+  38    vuttttsrqqqonnjbbbcb5667 fkkjjqqpged          cdffhhstjjjjgfa677eeedddddddeihhhhiij  
+  41    wuuuutssrqpponebbcbb4558    jihjgfedb         bdeffhiijjjjjgd767cdfedddddddghhhhijj  
+  44    xvvuuttsrqqqpfccddaa455      hhgffdcb         bcdefghijjkkkhg8779lommddddddfhhhiijj  
+  47     wvvuutsrqqqpedeeeb6456      hgfeedcb         bbcdefghijjjkjf8779mnnmneddddfjjjjjj   
+  50     wwvvutsrrqqgeeefcb546        ffeedcb         abbcdffghijiiie8677llnnneeeddjklkkk    
+  53      wvvutsrpqkeeeeebb345         eedcb          babceffgghihhhd8566glmnjddddgnmmmmm    
+  56       wvvtssqogeeeeeba344         eedcb           aabdeffghhhggc8544bimkeedddjnmmoo     
+  59        vutrpqmeeeeeebb3            dccb           bacdeefggggggd6433 beeeeedenonop      
+  62          trpqheeeee                                  cddefffggfb5222   eeeeegmnp        
+  65                                                         ddeeeec9111        em           
+  68                                                            ddd96011                     
+  71                                                               8412                      
   74                                                                 0                       
-low y14, high y38, range 24
+low y11, high y45, range 34

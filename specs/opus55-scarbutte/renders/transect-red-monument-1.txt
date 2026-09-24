@@ -7,45 +7,45 @@ TRANSECT 25 stations from (59, 11) to (83, 11), every 1
   (   62,    11)      14       14           14                      
   (   63,    11)      14       14           14                      
   (   64,    11)      14       14           14                      
-  (   65,    11)      14       14           14                      
-  (   66,    11)      26       26           26                      BARRIER +12
-  (   67,    11)      26       26           26                      
-  (   68,    11)      26       26           26                      
-  (   69,    11)      26       26           26  destroyable red-monument#1  
-  (   70,    11)      26       26           56  destroyable red-monument#1  
-  (   71,    11)      26       26           57  destroyable red-monument#1  
-  (   72,    11)      26       26           56  destroyable red-monument#1  
+  (   65,    11)      16       16           16                      scramble +2
+  (   66,    11)      20       20           20                      BARRIER +4
+  (   67,    11)      23       23           23                      BARRIER +3
+  (   68,    11)      22       22           22                      -1
+  (   69,    11)      22       22           23  destroyable red-monument#1  
+  (   70,    11)      24       24           55  destroyable red-monument#1  scramble +2
+  (   71,    11)      26       26           56  destroyable red-monument#1  scramble +2
+  (   72,    11)      26       26           55  destroyable red-monument#1  
   (   73,    11)      26       26           26  destroyable red-monument#1  
   (   74,    11)      26       26           26                      
   (   75,    11)      26       26           26                      
   (   76,    11)      26       26           26                      
   (   77,    11)      26       26           26                      
   (   78,    11)      26       26           26                      
-  (   79,    11)      27       27           27                      +1
-  (   80,    11)      27       27           27                      
-  (   81,    11)      27       27           27                      
-  (   82,    11)      27       27           27                      
-  (   83,    11)      27       27           27                      
-rises 2, falls 0, worst step 12: 1 barrier, 0 scramble, 0 drop — BARRIER +12 at (66, 11) | walked end to end
+  (   79,    11)      26       26           26                      
+  (   80,    11)      26       26           26                      
+  (   81,    11)      26       26           26                      
+  (   82,    11)      26       26           26                      
+  (   83,    11)      26       26           26                      
+rises 5, falls 1, worst step 4: 2 barrier, 3 scramble, 0 drop — scramble +2 at (65, 11); BARRIER +4 at (66, 11); BARRIER +3 at (67, 11); scramble +2 at (70, 11); scramble +2 at (71, 11) | walked end to end
 beside: destroyable red-monument#1 at (69, 9)
 
 ## red-monument-1 (destroyable) along z
 TRANSECT 25 stations from (71, -1) to (71, 23), every 1
   station        ground  surface  water  top  standing            step
-  (   71,    -1)      26       26           26                      
-  (   71,     0)      26       26           26                      
-  (   71,     1)      26       26           26                      
-  (   71,     2)      26       26           26                      
-  (   71,     3)      26       26           26                      
-  (   71,     4)      26       26           26                      
-  (   71,     5)      26       26           26                      
-  (   71,     6)      26       26           26                      
-  (   71,     7)      26       26           26                      
-  (   71,     8)      26       26           26                      
-  (   71,     9)      26       26           26  destroyable red-monument#1  
-  (   71,    10)      26       26           56  destroyable red-monument#1  
-  (   71,    11)      26       26           57  destroyable red-monument#1  
-  (   71,    12)      26       26           56  destroyable red-monument#1  
+  (   71,    -1)      25       25           25                      
+  (   71,     0)      24       24           24                      -1
+  (   71,     1)      24       24           24                      
+  (   71,     2)      24       24           24                      
+  (   71,     3)      25       25           25                      +1
+  (   71,     4)      24       24           24                      -1
+  (   71,     5)      24       24           24                      
+  (   71,     6)      24       24           24                      
+  (   71,     7)      24       24           24                      
+  (   71,     8)      24       24           24                      
+  (   71,     9)      25       25           25  destroyable red-monument#1  +1
+  (   71,    10)      26       26           55  destroyable red-monument#1  +1
+  (   71,    11)      26       26           56  destroyable red-monument#1  
+  (   71,    12)      26       26           55  destroyable red-monument#1  
   (   71,    13)      26       26           26  destroyable red-monument#1  
   (   71,    14)      26       26           26                      
   (   71,    15)      26       26           26                      
@@ -53,9 +53,9 @@ TRANSECT 25 stations from (71, -1) to (71, 23), every 1
   (   71,    17)      26       26           26                      
   (   71,    18)      26       26           26                      
   (   71,    19)      26       26           26                      
-  (   71,    20)      26       26           26                      
-  (   71,    21)      26       26           26                      
-  (   71,    22)      26       26           26                      
-  (   71,    23)      26       26           26                      
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+  (   71,    20)      25       25           25                      -1
+  (   71,    21)      25       25           25                      
+  (   71,    22)      25       25           25                      
+  (   71,    23)      25       25           25                      
+rises 3, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: destroyable red-monument#1 at (69, 9)

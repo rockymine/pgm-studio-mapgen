@@ -90,44 +90,105 @@ edits = outline_ops(
              4: [(-26, 62), (-40, 40), (-52, 38), (-60, 58), (-90, 64)],
              5: [(-122, 48)]})
 
-RIM = dict(high=38, low=26, face=2, band=4)
+def closed_spline(points, samples=6):
+    """A closed Catmull-Rom ring through the points."""
+    n = len(points)
+    out = []
+    for i in range(n):
+        p0, p1, p2, p3 = points[i - 1], points[i], points[(i + 1) % n], points[(i + 2) % n]
+        for k in range(samples):
+            t = k / samples
+            out.append([0.5 * ((2 * p1[j]) + (-p0[j] + p2[j]) * t
+                               + (2 * p0[j] - 5 * p1[j] + 4 * p2[j] - p3[j]) * t * t
+                               + (-p0[j] + 3 * p1[j] - 3 * p2[j] + p3[j]) * t ** 3) for j in (0, 1)])
+    return out
+
+
+def even(ring, spacing):
+    """The ring resampled at an even arc spacing, so a push's `amounts`, which are read by arc
+    fraction, land on the vertices they are computed for."""
+    closed = ring + [ring[0]]
+    seg = [math.dist(closed[i], closed[i + 1]) for i in range(len(ring))]
+    total = sum(seg)
+    count = max(8, int(total / spacing))
+    out, i, walked = [], 0, 0.0
+    for k in range(count):
+        target = total * k / count
+        while walked + seg[i] < target:
+            walked += seg[i]
+            i += 1
+        t = (target - walked) / seg[i] if seg[i] else 0
+        a, b = closed[i], closed[i + 1]
+        out.append([round(a[0] + (b[0] - a[0]) * t, 1), round(a[1] + (b[1] - a[1]) * t, 1)])
+    return out
+
+
+# The tableland: one push over a ring whose east side is the rim, curving with the ground below it,
+# and whose back runs off the board. Its lift is 12 everywhere but where the rim falls to the pass,
+# so the table itself sags into a collapsed descent rather than being cut by a ramp.
+RIM = [[-100, -100], [-96, -70], [-104, -46], [-96, -26], [-86, -8], [-88, 10], [-80, 30],
+       [-90, 52], [-98, 76], [-94, 100]]
+TABLE = even(closed_spline(RIM + [[-176, 104], [-176, -104]]), 3)
+PASS = (-102, -42)
+
+
+def table_lift(x, z):
+    reach = math.dist((x, z), PASS)
+    if reach >= 18:
+        return 12
+    t = reach / 18
+    return round(3 + 9 * t * t * (3 - 2 * t), 1)
+
+
+TABLE_AMOUNTS = [table_lift(x, z) for x, z in TABLE]
+
+CANYON = [[-60, -84], [-66, -50], [-56, -24], [-62, -4], [-54, 26], [-62, 54], [-58, 84]]
 CANYON_N = [[-60, -84], [-66, -50], [-56, -24], [-62, -8]]
 CANYON_S = [[-60, 8], [-54, 26], [-62, 54], [-58, 84]]
-BENCH = [[-90, -90], [-36, -90], [-36, 90], [-92, 90], [-76, 40], [-82, 16], [-70, 10], [-70, -8],
-         [-80, -14], [-92, -40]]
+LIP = [[-22, -100], [-18, -72], [-27, -46], [-20, -20], [-29, 4], [-20, 30], [-25, 56], [-18, 82],
+       [-22, 100]]
 
 relief = {"team": {
     "base": 24, "reach": 0, "step": 1,
+    "grain": {"amplitude": 1.5, "scale": 14, "seed": 11},
     "marks": [
-        # layer 1 — the rim: the tableland's edge, one scarp per straight run, high side west,
-        # open between z -10 and 12 where the relaxation grades the road down
-        {"id": "rim-1", "kind": "scarp", "points": [[-98, -84], [-100, -40]], **RIM},
-        {"id": "rim-2", "kind": "scarp", "points": [[-100, -40], [-88, -10]], **RIM},
-        {"id": "rim-3", "kind": "scarp", "points": [[-92, 12], [-84, 40]], **RIM},
-        {"id": "rim-4", "kind": "scarp", "points": [[-84, 40], [-100, 84]], **RIM},
-        {"id": "spawn-top", "kind": "area", "h": 38, "bevel": 0, "ring": rect(-136, -14, -108, 14)},
-        # layer 2 — the bench's lip at the strait
-        {"id": "lip", "kind": "area", "h": 22, "bevel": 0, "ring": rect(-24, -90, -8, 90)},
-        # the bench itself, held at 26 from the rim's foot to twelve blocks short of the lip,
-        # pulled back where the road comes down through the rim's gap
-        {"id": "bench", "kind": "area", "h": 26, "bevel": 0, "ring": BENCH},
+        # layer 1 — the frame: the spawn's footing (the tableland's push lifts it to 38), the
+        # monument's shelf, and a lip that wanders in both course and height
+        {"id": "spawn-footing", "kind": "area", "h": 26, "bevel": 0, "ring": rect(-136, -14, -108, 14)},
+        {"id": "monument-shelf", "kind": "area", "h": 26, "bevel": 3, "ring": ellipse(-72, -12, 7, 6, 12, 0.3)},
+        {"id": "lip", "kind": "line", "points": LIP, "h": [21, 23, 20, 24, 22, 25, 21, 23, 22], "r": 2},
     ],
     "pushes": [
-        # layer 3 — the slot canyon, carved twelve blocks into the bench after the solve, in two
-        # reaches with the bench left whole between them at z -8..8 as the one crossing
-        {"id": "canyon-n", "ring": band_ring(CANYON_N, 5), "amount": -12, "falloff": 1, "crown": 0,
-         "roughness": 0, "seed": 5},
-        {"id": "canyon-s", "ring": band_ring(CANYON_S, 5), "amount": -12, "falloff": 1, "crown": 0,
-         "roughness": 0, "seed": 6},
-        # layer 4 — buttes: flat tops, short falloffs, so each stands off the bench on a face
+        # layer 2 — the tableland, sagging to the pass
+        {"id": "tableland", "ring": TABLE, "amounts": TABLE_AMOUNTS, "amount": 12, "falloff": 4,
+         "crown": 0, "roughness": 2, "seed": 7},
+        # the table's own swell, so its top rolls rather than reading as one level
+        {"id": "table-swell", "ring": ellipse(-126, 50, 18, 16, 16, 0.4, 3, 0.1), "amount": 4, "falloff": 18,
+         "crown": 3, "roughness": 0, "seed": 13},
+        # layer 3 — the bench's own swells and one pan, so it rolls between the rim and the lip
+        {"id": "swell-n", "ring": ellipse(-46, -44, 20, 14, 16, 0.3, 3, 0.1), "amount": 5, "falloff": 16,
+         "crown": 3, "roughness": 0, "seed": 8},
+        {"id": "swell-s", "ring": ellipse(-42, 40, 16, 20, 16, -0.2, 3, 0.1), "amount": 4, "falloff": 14,
+         "crown": 3, "roughness": 0, "seed": 9},
+        {"id": "pan", "ring": ellipse(-78, 34, 9, 7, 12, 0.5), "amount": -3, "falloff": 10, "crown": 0,
+         "roughness": 0, "seed": 10},
+        # layer 4 — the canyon, two pushes deep: a wide shallow trough the whole length, which is the
+        # crossing where it is alone, and a slot inside it in two reaches, so each wall has a ledge
+        {"id": "trough", "ring": band_ring(CANYON, 9), "amount": -4, "falloff": 3, "crown": 0,
+         "roughness": 2, "seed": 5},
+        {"id": "slot-n", "ring": band_ring(CANYON_N, 4), "amount": -8, "falloff": 3, "crown": 0,
+         "roughness": 1.5, "seed": 6},
+        {"id": "slot-s", "ring": band_ring(CANYON_S, 4), "amount": -8, "falloff": 3, "crown": 0,
+         "roughness": 1.5, "seed": 12},
+        # the buttes: crownless, on short rough falloffs
         {"id": "butte-n", "ring": ellipse(-36, -32, 7, 6, 12, 0.4, 3, 0.1), "amount": 12, "falloff": 3,
-         "crown": 0, "roughness": 0, "seed": 1},
+         "crown": 0, "roughness": 1.5, "seed": 1},
         {"id": "butte-s", "ring": ellipse(-30, 34, 5, 6, 12, -0.3, 3, 0.1), "amount": 10, "falloff": 3,
-         "crown": 0, "roughness": 0, "seed": 2},
+         "crown": 0, "roughness": 1.5, "seed": 2},
         {"id": "needle", "ring": ellipse(-42, 10, 3, 5, 10, 0.6), "amount": 8, "falloff": 2,
-         "crown": 0, "roughness": 0, "seed": 3},
+         "crown": 0, "roughness": 1, "seed": 3},
         {"id": "outlier", "ring": ellipse(-78, -50, 7, 6, 12, 0.2, 3, 0.1), "amount": 9, "falloff": 3,
-         "crown": 0, "roughness": 0, "seed": 4},
+         "crown": 0, "roughness": 1.5, "seed": 4},
     ]}}
 
 finish = {

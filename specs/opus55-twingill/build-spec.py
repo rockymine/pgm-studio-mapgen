@@ -94,6 +94,7 @@ GILL = [[-104, 0], [-94, 10], [-76, -4], [-58, 8], [-40, -6], [-24, 4], [-8, 0]]
 
 relief = {"team": {
     "base": 18, "reach": 0, "step": 1,
+    "grain": {"amplitude": 1.0, "scale": 16, "seed": 11},
     "marks": [
         # layer 1 — the dale floor: a line falling seventeen blocks from the head to the lip, wide
         # enough to be the valley's bottom rather than its stream
@@ -102,7 +103,6 @@ relief = {"team": {
         {"id": "spawn-bench", "kind": "area", "h": 30, "bevel": 0, "ring": rect(-136, -14, -110, 14)},
         {"id": "monument-terrace", "kind": "area", "h": 24, "bevel": 2, "ring": ellipse(-66, 20, 9, 8, 12, 0.3)},
         {"id": "holm", "kind": "area", "h": 17, "bevel": 2, "ring": ellipse(-38, -24, 12, 9, 14, 0.2)},
-        {"id": "ford", "kind": "area", "h": 12, "bevel": 0, "ring": rect(-24, -100, -8, 100)},
     ],
     "pushes": [
         # layer 2 — the ridges: one long north ridge, a saddled pair on the south

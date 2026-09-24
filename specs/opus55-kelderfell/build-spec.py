@@ -57,19 +57,31 @@ edits = outline_ops(
              4: [(-30, 64), (-52, 50), (-68, 48), (-86, 62), (-102, 70)],
              5: [(-126, 48)]})
 
+SCARP_N = [[-118, -88], [-108, -66], [-100, -50], [-95, -37], [-92, -25], [-92, -14]]
+SCARP_S = [[-88, 8], [-84, 20], [-79, 33], [-78, 47], [-81, 61], [-84, 72]]
+STRAND = [[-22, -90], [-18, -62], [-27, -38], [-19, -12], [-26, 12], [-18, 36], [-28, 58], [-20, 90]]
+
+
+def scarp_runs(name, points, high, low):
+    return [{"id": f"{name}{i + 1}", "kind": "scarp", "points": [a, b], "high": high, "low": low,
+             "face": 3, "band": 5} for i, (a, b) in enumerate(zip(points, points[1:]))]
+
+
 relief = {"team": {
     "base": 20, "reach": 0, "step": 1,
+    "grain": {"amplitude": 1.0, "scale": 16, "seed": 11},
     "marks": [
-        # layer 1 — the lean: the spawn's bench high at the back, the strand low at the lip
+        # layer 1 — the lean: the spawn's bench high at the back, and a strand that wanders in course
+        # and height along the lip rather than lying flat across it
         {"id": "spawn-bench", "kind": "area", "h": 36, "bevel": 0, "ring": rect(-136, -14, -108, 14)},
-        {"id": "strand", "kind": "area", "h": 12, "bevel": 0, "ring": rect(-24, -90, -8, 90)},
-        # layer 2 — the scarp, one mark per straight run, broken at z -14..8 for the pass
-        {"id": "scarp-n1", "kind": "scarp", "points": [[-114, -84], [-98, -40]], "high": 34, "low": 22, "face": 3, "band": 5},
-        {"id": "scarp-n2", "kind": "scarp", "points": [[-98, -40], [-92, -14]], "high": 34, "low": 22, "face": 3, "band": 5},
-        {"id": "scarp-s1", "kind": "scarp", "points": [[-88, 8], [-80, 36]], "high": 34, "low": 22, "face": 3, "band": 5},
-        {"id": "scarp-s2", "kind": "scarp", "points": [[-80, 36], [-64, 84]], "high": 34, "low": 22, "face": 3, "band": 5},
+        {"id": "strand", "kind": "line", "points": STRAND, "h": [13, 11, 14, 10, 12, 15, 11, 13], "r": 2},
+        # layer 2 — the scarp, curved: one mark per short run so each corner turns a few degrees, the
+        # north arm wrapping behind the monument's shelf and the south arm bowing out and back. Broken
+        # at z -14..8 for the pass
+        *scarp_runs("scarp-n", SCARP_N, high=35, low=23),
+        *scarp_runs("scarp-s", SCARP_S, high=33, low=21),
         # a stair cut up the south run's face, a block of rise every two of run
-        {"id": "south-stair", "kind": "line", "points": [[-70, 22], [-92, 22]], "h": [22, 34], "r": 2},
+        {"id": "south-stair", "kind": "line", "points": [[-70, 22], [-92, 22]], "h": [21, 33], "r": 2},
         # the monument's shelf, below the scarp
         {"id": "monument-shelf", "kind": "area", "h": 22, "bevel": 2, "ring": ellipse(-68, -18, 8, 8, 12)},
     ],
@@ -80,7 +92,15 @@ relief = {"team": {
         # layer 4 — the south headland, lower and off the coast
         {"id": "headland", "ring": ellipse(-98, 68, 22, 12, 14, -0.2), "amount": 9, "falloff": 16,
          "crown": 7, "roughness": 0, "seed": 2},
-        # layer 5 — detail: the tarn hollow on the strand, a knoll beside the monument
+        # layer 5 — flow on the lower slope: a low spur running from the pass to the strait, and two
+        # swales draining toward the tarn and the north coast, so the lean is not one even grade
+        {"id": "spur", "ring": ellipse(-50, -2, 24, 5, 16, 0.12), "amount": 3, "falloff": 12, "crown": 2,
+         "roughness": 0, "seed": 5},
+        {"id": "swale-s", "ring": ellipse(-60, 36, 20, 4, 16, -0.45), "amount": -3, "falloff": 10, "crown": 0,
+         "roughness": 0, "seed": 6},
+        {"id": "swale-n", "ring": ellipse(-66, -52, 16, 4, 16, 0.5), "amount": -3, "falloff": 10, "crown": 0,
+         "roughness": 0, "seed": 7},
+        # and detail: the tarn hollow on the strand, a knoll beside the monument
         {"id": "tarn", "ring": ellipse(-42, 30, 12, 8, 14, 0.4, 2, 0.15), "amount": -7, "falloff": 8,
          "crown": 0, "roughness": 0, "seed": 3},
         {"id": "knoll", "ring": ellipse(-52, -46, 7, 6, 12), "amount": 6, "falloff": 10, "crown": 4,

@@ -2,7 +2,7 @@
 
 Plan: one field and a spawn at one height (20), fused into `field-20`, rounded point by point into a
 lobed island. Relief in four layers — the crater (a floor and a closed rim line whose per-vertex heights
-open a breach toward each spawn), the strand and the spawn's bench, parasitic cones on the outer flank,
+and radii wander, and open a breach toward each spawn), the strand and the spawn's bench, parasitic cones on the outer flank,
 and a lava tongue out of the east breach. Unthemed. Team 0 is authored on x < 0; rot_180 fans it.
 """
 import json, math, os
@@ -62,36 +62,38 @@ edits = outline_ops(
 CX, CZ, RIM_R = -70, 0, 26
 
 
+# The crest round the crater, vertex by vertex from due east, clockwise in z: its height wanders
+# between 33 and 44, highest to the south-west and lowest where the two breaches cut it (15 toward
+# the strait, 24 toward the spawn), and its radius wanders between 23 and 29 so the crater is no circle.
+CREST_H = [33, 15, 27, 34, 37, 36, 39, 42, 44, 41, 37, 31, 24, 31, 35, 38, 36, 40, 41, 38, 35, 33, 36, 34]
+CREST_R = [26, 25, 26, 28, 29, 27, 26, 24, 23, 24, 26, 27, 27, 26, 24, 23, 25, 27, 29, 28, 26, 25, 26, 27]
+
+
 def rim_line():
-    """A closed ring of the rim's crest: 32 at every vertex but the two breaches — east-south-east toward
-    the strait, and west toward the spawn — with their shoulders in between."""
-    n = 24
+    """A closed ring of the rim's crest, its heights and radii read from the two lists above."""
+    n = len(CREST_H)
     pts, hs = [], []
     for i in range(n + 1):
         a = 2 * math.pi * (i % n) / n
-        pts.append([round(CX + RIM_R * math.cos(a), 1), round(CZ + RIM_R * math.sin(a), 1)])
-        east = min(abs(i % n - 1), n - abs(i % n - 1))       # the breach at 15 degrees
-        west = min(abs(i % n - 12), n - abs(i % n - 12))     # the breach at 180 degrees
-        h = 38
-        if east == 0: h = 15
-        elif east == 1: h = 27
-        if west == 0: h = 24
-        elif west == 1: h = 31
-        hs.append(h)
+        r = CREST_R[i % n]
+        pts.append([round(CX + r * math.cos(a), 1), round(CZ + r * math.sin(a), 1)])
+        hs.append(CREST_H[i % n])
     return pts, hs
 
 
 RIM_PTS, RIM_H = rim_line()
+STRAND = [[-22, -100], [-17, -70], [-28, -44], [-20, -16], [-26, 10], [-18, 38], [-27, 64], [-20, 100]]
 
 relief = {"team": {
     "base": 16, "reach": 0, "step": 1,
+    "grain": {"amplitude": 1.0, "scale": 16, "seed": 11},
     "marks": [
         # layer 1 — the crater: its floor, and the rim as one closed line with the breaches in its heights
-        {"id": "floor", "kind": "area", "h": 13, "bevel": 0, "ring": ellipse(CX, CZ, 14, 14, 16)},
-        {"id": "rim", "kind": "line", "points": RIM_PTS, "h": RIM_H, "r": 4},
+        {"id": "floor", "kind": "area", "h": 13, "bevel": 2, "ring": ellipse(-66, 3, 9, 8, 14, 0.3, 3, 0.1)},
+        {"id": "rim", "kind": "line", "points": RIM_PTS, "h": RIM_H, "r": 3},
         # layer 2 — the spawn's bench and the strand
-        {"id": "spawn-bench", "kind": "area", "h": 24, "bevel": 0, "ring": rect(-144, -14, -116, 14)},
-        {"id": "strand", "kind": "area", "h": 14, "bevel": 0, "ring": rect(-24, -100, -8, 100)},
+        {"id": "spawn-bench", "kind": "area", "h": 24, "bevel": 0, "ring": rect(-142, -10, -118, 10)},
+        {"id": "strand", "kind": "line", "points": STRAND, "h": [15, 12, 16, 13, 17, 12, 15, 13], "r": 2},
     ],
     "pushes": [
         # layer 3 — parasitic cones on the outer flank

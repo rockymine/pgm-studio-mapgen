@@ -9,10 +9,13 @@ room than a capture board, so each one carries a landform the capture boards cou
 
 | Board | The one sentence |
 |---|---|
-| Kelderfell | a fellside falling to the strait, broken by a scarp with a pass in it |
+| Kelderfell | a fellside falling to the strait, broken by a curved scarp with a pass in it |
 | Twingill | a dale between two ridges, with its gill falling from the spawn's head to the strait |
-| Scarbutte | a tableland whose rim breaks onto a bench of buttes, split by a slot canyon |
+| Scarbutte | a tableland whose rim breaks onto a rolling bench of buttes, split by a canyon |
 | Cinderhowe | a caldera on the board's axis, breached twice, with the monument in its floor |
+
+The boards were built twice. The second pass follows the author's review, and its own section below says
+what changed and why.
 
 ## The method, the same on all four
 
@@ -27,12 +30,46 @@ strait edge is left straight, following the author's ruling that a lip is never 
 
 **The relief is stated in layers, each with its own job.** Each board's layers are, in this order:
 
-1. a **frame of marks** that pins where players stand: the spawn's bench, the lip at the strait, and the
-   monument's shelf or terrace;
-2. the **board's one big landform**: a scarp, a dale floor, a rim or a crater;
-3. **large pushes** for the mass: a fell, ridges, cones;
+1. a **frame of small marks** that pins only what must be level or at a height: the spawn's footing, the
+   monument's shelf, and a lip line that wanders in course and height;
+2. the **board's one big landform**: a scarp, a dale floor, a tableland or a crater;
+3. **large pushes** for the mass: a fell, ridges, cones, swells;
 4. **carving and detail**: negative pushes for hollows, coombes, a gill or a canyon, and small knolls or
-   buttes.
+   buttes;
+5. **grain** over everything no mark holds: 1.0–1.5 blocks over 14–16.
+
+## The second pass, after the author's review
+
+**The review found three faults, and all three were the same cause: too much of each board was pinned.**
+Scarbutte's bench, its canyon floor and its monument's ground were flat; every board's front ended in a flat
+strip; and long slopes read as smeared ramps or staircases. `GENERATION-NOTES.md` now carries each finding in
+the relief chapter, from *Grain never moves a marked cell* to *What the relief cannot say*.
+
+**Grain never moves a marked cell, and every board had a large marked cell.** Scarbutte's bench was one `area`
+mark at 26, and every board had a rectangle band pinned flat across its lip. The bench is now unpinned and
+rolls over two swells and a pan; its `level` fell from 0.64 to 0.24 and its largest flat field from a quarter
+of the group to 0.08.
+
+**Every lip is now a line a few blocks in from the strait, wandering eight to ten blocks in x and about five
+in height.** Twingill needs none at all: its dale floor ends at the lip at 12, and the ridges' skirts carry the
+ground to the edge.
+
+**Scarbutte's canyon is now two negative pushes, not one.** A trough (−4, ±9, falloff 3) runs the whole length,
+and a slot (−8, ±4, falloff 3) sits inside it in two reaches. Each wall therefore steps once. Both carry
+`roughness` 1.5–2, so the walls wander, and the floor follows the bench's swells and grain rather than lying
+at one height.
+
+**Scarbutte's rim is now a push, not four scarps.** The tableland is one push of 12 over a spline ring with its
+back off the board, falloff 4 and roughness 2. The rim follows a curve, and the top carries grain and a swell.
+The pass is `amounts` falling to 3 near (−102, −42).
+
+**Kelderfell's scarp is ten short runs rather than four.** The runs turn 10–16° at each corner, curving behind
+the monument's shelf and bowing out to the south. Transects through six corners fall monotonically, so there
+is no corner ridge. The lower slope carries a spur and two swales, so its contours bend rather than running
+parallel.
+
+**Cinderhowe's rim crest wanders between 33 and 44 and its radius between 23 and 29.** Its floor mark shrank
+from a disc 28 across to a bevelled lobe round the monument, so the crater dishes rather than lying flat.
 
 ## The four boards, where each feature is
 
@@ -43,13 +80,16 @@ Coordinates are team 0's, in blocks; team 1 has the same ground turned about (0,
 | Feature | Instrument | Where | Height |
 |---|---|---|---|
 | spawn bench | area mark | x −136…−108, z −14…14 | 36 |
-| scarp, north runs | two `scarp` marks | (−114, −84) → (−98, −40) → (−92, −14) | 34 over 22 |
-| the pass | nothing: the ground between the runs grades | x −92…−88, z −14…8 | 34 → 22 |
-| scarp, south runs | two `scarp` marks | (−88, 8) → (−80, 36) → (−64, 84) | 34 over 22 |
-| stair up the south face | `line`, h per vertex | (−70, 22) → (−92, 22) | 22 → 34 |
+| scarp, north arm | five `scarp` marks | (−118, −88) (−108, −66) (−100, −50) (−95, −37) (−92, −25) (−92, −14) | 35 over 23 |
+| the pass | nothing: the ground between the arms grades | x −92…−88, z −14…8 | 35 → 21 |
+| scarp, south arm | five `scarp` marks | (−88, 8) (−84, 20) (−79, 33) (−78, 47) (−81, 61) (−84, 72) | 33 over 21 |
+| stair up the south face | `line`, h per vertex | (−70, 22) → (−92, 22) | 21 → 33 |
 | monument shelf | area mark | centre (−68, −18), r 8 | 22 |
-| fell massif | push, crown 16 | centre (−134, −86), off the coast | peak y68 |
-| south headland | push, crown 7 | centre (−98, 68) | +9 |
+| lip | `line`, r 2 | x −18…−28 wandering | 10–15 |
+| fell massif | push, crown 16 | centre (−134, −86), off the coast | peak y69 |
+| south headland | push, crown 7 | centre (−98, 68) | +16 |
+| spur | push +3, crown 2 | centre (−50, −2), 48 × 10 | |
+| swales | pushes −3 | (−60, 36) and (−66, −52) | |
 | tarn hollow | push −7 | centre (−42, 30) | floor about y6 |
 | knoll | push, crown 4 | centre (−52, −46) | +10 |
 
@@ -70,24 +110,28 @@ Coordinates are team 0's, in blocks; team 1 has the same ground turned about (0,
 
 | Feature | Instrument | Where | Height |
 |---|---|---|---|
-| tableland | spawn bench and the rim's high band | x < −90 | 38 |
-| rim | four `scarp` marks | (−98, −84) (−100, −40) (−88, −10) · (−92, 12) (−84, 40) (−100, 84) | 38 over 26 |
-| the road down | nothing: the rim is open between runs | x −95…−70, z −10…12 | 38 → 26 |
-| bench | area mark | from the rim's foot to x −36 | 26 |
-| canyon, north reach | push −12, falloff 1, band ±5 | (−60, −84) (−66, −50) (−56, −24) (−62, −8) | y14 |
-| canyon, south reach | the same | (−60, 8) (−54, 26) (−62, 54) (−58, 84) | y14 |
-| the crossing | the bench left whole | x about −62, z −8…8 | 26 |
-| buttes | crownless pushes, falloff 2–3 | (−36, −32) +12 · (−30, 34) +10 · (−42, 10) +8 · (−78, −50) +9 | |
-| monument | on the bench | (−72, −12) | 26 |
+| spawn footing | area mark, lifted by the tableland | x −136…−108, z −14…14 | 26 + 12 = 38 |
+| tableland and rim | push +12, falloff 4, roughness 2, over a spline ring | rim (−100, −100) (−96, −70) (−104, −46) (−96, −26) (−86, −8) (−88, 10) (−80, 30) (−90, 52) (−98, 76) (−94, 100) | 37–45 |
+| the pass | `amounts` falling from 12 to 3 within 18 blocks | (−102, −42) | about 29 → 25 |
+| table swell | push +4, crown 3 | centre (−126, 50) | |
+| monument shelf | area mark, bevel 3 | centre (−72, −12) | 26 |
+| lip | `line`, r 2 | x −18…−29 wandering | 20–25 |
+| bench swells · pan | pushes +5, +4, −3 | (−46, −44), (−42, 40), (−78, 34) | |
+| canyon trough | push −4, falloff 3, band ±9 | (−60, −84) (−66, −50) (−56, −24) (−62, −4) (−54, 26) (−62, 54) (−58, 84) | 4 below the bench |
+| canyon slot | push −8, falloff 3, band ±4, in two reaches | the same course, broken at z −8…8 | 12 below the bench |
+| the crossing | the trough alone | x about −62, z −8…8 | |
+| buttes | crownless pushes, falloff 2–3, roughness 1–1.5 | (−36, −32) +12 · (−30, 34) +10 · (−42, 10) +8 · (−78, −50) +9 | |
+| monument | on its shelf | (−72, −12) | 26 |
 
 ### Cinderhowe
 
 | Feature | Instrument | Where | Height |
 |---|---|---|---|
-| crater floor | area mark | centre (−70, 0), r 14 | 13 |
-| rim | one closed `line`, r 4, 24 vertices at radius 26 | about (−70, 0) | 38 |
-| west breach | the rim's heights at 180° | (−96, 0) | 24, shoulders 31 |
-| east breach | the rim's heights at 15° | (−45, 7) | 15, shoulders 27 |
+| crater floor | area mark, bevel 2 | lobed ring round (−66, 3), about 18 × 16 | 13 |
+| rim | one closed `line`, r 3, 24 vertices at radius 23–29 | about (−70, 0) | 33–44 |
+| west breach | the rim's heights at 180° | (−97, 0) | 24, shoulders 31 |
+| east breach | the rim's heights at 15° | (−46, 6) | 15, shoulders 27 and 33 |
+| lip | `line`, r 2 | x −17…−28 wandering | 12–17 |
 | parasitic cones | pushes with crowns | (−112, −46) +20 · (−34, −54) +12 · (−40, 56) +15 | |
 | lava tongue | push +4 | centre (−30, 18), out of the east breach | |
 | monument | in the floor | (−66, 4) | 13 |
@@ -96,65 +140,76 @@ Coordinates are team 0's, in blocks; team 1 has the same ground turned about (0,
 
 | Board | walked · scrambled · barrier | relief | level | dead | complaints |
 |---|---|---|---|---|---|
-| Kelderfell | 27 160 · 1 150 · 994 | 6–68 | 0.37 | 49.7% | `RL3`: the stair's side walls, 7 blocks at (−83, 19) |
-| Twingill | 24 051 · 1 723 · 104 | 8–48 | 0.20 | 51.5% | `RL5`: 20% level |
-| Scarbutte | 24 197 · 306 · 2 558 | 14–38 | 0.64 | 58.1% | `RL2`: the rim, the canyon and the buttes are faces |
-| Cinderhowe | 28 826 · 2 414 · 1 098 | 13–51 | 0.24 | 70.9% | `RL5`: 24% level |
+| Kelderfell | 27 070 · 1 182 · 1 052 | 6–69 | 0.28 | 49.7% | `RL3`: the stair's side walls, 7 blocks at (−83, 19); `RL5` at 28% |
+| Twingill | 23 921 · 1 853 · 104 | 9–48 | 0.21 | 51.5% | `RL5`: 21% level |
+| Scarbutte | 22 617 · 1 586 · 2 858 | 11–45 | 0.24 | 58.1% | `RL2`: the rim, the canyon and the buttes are faces; `RL5` at 24%; `RL3` at the spawn, which the transect contradicts |
+| Cinderhowe | 29 886 · 2 266 · 186 | 12–50 | 0.15 | 70.9% | `RL5`: 15% level |
 
 Every spawn walks to its monument end to end, and every board's export gate is OPEN. `GO1` is 3.0–3.4 on all
 four. `G8` (dead share) and `LN2` (a chain of 120–136 blocks against 110) are refused by the evaluator on all
 four. Both follow from a wide single-objective board, and I left them standing, because these are terrain
 concepts rather than finished boards.
 
+**`RL5` fires on all four after the second pass, and that is the trade the pass made.** Level ground fell
+because the flat ground was the fault. The monument's shelf, the spawn's footing and the crossings are what
+stay level.
+
 ## What I got wrong
+
+**I pinned too much, which is the error the relief chapter already warns against.** A bench, a strand and a
+wide crater floor each went in as an `area` mark because each should be *about* that height. Grain cannot
+touch a marked cell, so each came out flat to the block. The author saw it at once in the renders, and the
+relief read's `level` had said so: 0.64 on the first Scarbutte.
 
 **I placed the first monument in half-blocks, and the offset is in blocks.** The schema's description of a
 destroyable's `at` says half-blocks, but the compile reads blocks from the piece's corner. The first
-Kelderfell monument stood at the lip. `POST /plan/compile`'s intent is where the anchor is read back, and
-I now check it before driving.
+Kelderfell monument stood at the lip. `POST /plan/compile`'s intent is where the anchor is read back.
 
 **A line mark alone does not cut a channel.** Twingill's first gill and Scarbutte's first canyon were line
 marks. The ground around each was otherwise unpinned, so the relaxation carried the whole valley or bench
-down to the line's height and there was no channel to see. A negative push along the same course,
-carved after the solve, is what makes a channel. The ground either side needs a mark of its own (Scarbutte's
-bench) or a push-built side (Twingill's ridges).
+down to the line's height and there was no channel to see.
 
-**Three pushes lifted nothing, because reshaping the outline left their rings over the void.** They were
-Kelderfell's headland and Twingill's two dale-head fells. The relief read's per-push `cells` said 0, and
-nothing else said anything. The headland moved to straddle the coast. The dale-head fells then held about ten
-cells of land each, which `RL6` read as a crown of 4 blocks a block, so I removed them.
+**Three pushes lifted nothing, because reshaping the outline left their rings over the void.** The relief
+read's per-push `cells` said 0, and nothing else said anything.
 
 **A push beside the spawn's bench walled the spawn in.** A push adds to marked ground too, so Twingill's first
-dale-head fell lifted part of the bench and stood the spawn hall in a pit. The rule is the one
-`marks-and-pushes` states: keep the ring plus its falloff off any mark that has to hold.
+dale-head fell lifted part of the bench and stood the spawn hall in a pit.
 
-**A spawn piece 24 × 32 builds a hall 18 × 30.** `ST9`/`ST10`/`WX13` said so. The spawn piece is now
-20 × 16 on every board.
+**My first pass at Scarbutte's pass sagged the spawn by eight blocks.** `amounts` is read at the nearest ring
+point, and the spawn's nearest rim point was the pass. The transect caught it: 30 where 38 was meant.
 
 ## What worked first time
 
-**`editShapes` ordered last-edge-first.** Every op on all four outlines landed exactly where it was stated.
+**`PUT …/sketch/relief/{group}` on a stored map, then `GET …/render/heightmap`, is a three-second loop.** The
+outline stays as stored, so a relief can be iterated without a drive. The heightmap render shows a flat
+pinned area as one colour, which is exactly the fault the author named.
 
-**A scarp broken into runs with an unpinned gap is a pass.** It needs no ramp: the relaxation grades it, and
-on Kelderfell the spawn-to-monument walk goes through it with a worst step of 1.
+**A scarp broken into runs with an unpinned gap is a pass.** It needs no ramp: the relaxation grades it.
 
-**A closed line mark with a height per vertex is a crater rim with breaches.** It is one mark, and the breach
-is simply a lower number at one vertex.
+**A closed line mark with a height per vertex is a crater rim with breaches.**
 
-**Crownless pushes on a falloff of 2–3 are buttes.** Each stands off the bench on its own face.
+**Crownless pushes on a falloff of 2–3 are buttes.**
 
 ## What I could not say
 
-Nothing the boards needed was missing from the system. One description is wrong: `DestroyablePlacement.at`
-and `CorePlacement.at` are documented in `openapi.json` as half-blocks from the piece's corner, and the
-compile reads them as blocks. The spawn's `at` is documented as blocks and is read as blocks. That is a
-description fault in `pgm-studio`, not a missing capability.
+**Nothing the boards needed was missing from the system, but four limits shaped them.** They are written up
+under *What the relief cannot say* in `GENERATION-NOTES.md`. A line mark's band is flat across its reach; a
+push has one falloff all the way round; roughness moves only a push's outline; and nothing textures a marked
+cell.
+
+**One description is wrong.** `DestroyablePlacement.at` and `CorePlacement.at` are documented in `openapi.json`
+as half-blocks from the piece's corner, and the compile reads them as blocks. That is a description fault in
+`pgm-studio`, not a missing capability.
+
+**One read misreports.** `RL3` names a seam between a pinned footing inside a push and the spawn room,
+the size of the push's lift. The ground there is level. The read compares the footing before the lift with the
+room after it.
 
 ## Open gameplay questions, decided without the author
 
 | Question | What I decided |
 |---|---|
 | May a destroy monument stand on the board's centre line, in a crater? | Built on Cinderhowe; it is what gives the board 71% dead ground |
-| Should a monument's only approach from the strait cross a canyon at one ford? | Built on Scarbutte: a canyon with one crossing, and the monument on the defender's side of it |
+| Should a monument's only approach from the strait cross a canyon at one crossing? | Built on Scarbutte: the trough alone at z −8…8, and the monument on the defender's side |
 | Is a caldera's inner wall a fair barrier, with only two breaches into the floor? | Built on Cinderhowe: attackers go through the east breach or build down from the rim |
 | Is a 12-block scarp with a pass too much height advantage for the defender? | Built on Kelderfell: the monument stands below the scarp, so the high ground is the spawn's rather than the goal's |
