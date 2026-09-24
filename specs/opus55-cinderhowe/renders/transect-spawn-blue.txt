@@ -1,0 +1,71 @@
+## spawn-blue (spawn) along x
+TRANSECT 27 stations from (112, 0) to (138, 0), every 1
+  station        ground  surface  water  top  standing            step
+  (  112,     0)      25       25           25                      
+  (  113,     0)      25       25           25                      
+  (  114,     0)      25       25           25                      
+  (  115,     0)      24       24           24                      -1
+  (  116,     0)      24       24           24                      
+  (  117,     0)      24       24           24                      
+  (  118,     0)      24       24           24                      
+  (  119,     0)      24       24           24                      
+  (  120,     0)      24       24           24                      
+  (  121,     0)      24       24           24                      
+  (  122,     0)      24       24           24                      
+  (  123,     0)      24       24           24                      
+  (  124,     0)      24       24           24                      
+  (  125,     0)      24       24           32  spawn red-spawn#1   
+  (  126,     0)      24       24           32  spawn red-spawn#1   
+  (  127,     0)      24       24           32  spawn red-spawn#1   
+  (  128,     0)      24       24           32  spawn red-spawn#1   
+  (  129,     0)      24       24           32  spawn red-spawn#1   
+  (  130,     0)      24       24           24  spawn red-spawn#1   
+  (  131,     0)      24       24           24  spawn red-spawn#1   
+  (  132,     0)      24       24           24  spawn red-spawn#1   
+  (  133,     0)      24       24           24  spawn red-spawn#1   
+  (  134,     0)      24       24           32  spawn red-spawn#1   
+  (  135,     0)      24       24           32  spawn red-spawn#1   
+  (  136,     0)      24       24           32  spawn red-spawn#1   
+  (  137,     0)      24       24           32  spawn red-spawn#1   
+  (  138,     0)      24       24           32  spawn red-spawn#1   
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn red-spawn#1 at (125, -2)
+
+## spawn-blue (spawn) along z
+TRANSECT 33 stations from (130, -16) to (130, 16), every 1
+  station        ground  surface  water  top  standing            step
+  (  130,   -16)      24       24           24                      
+  (  130,   -15)      24       24           24                      
+  (  130,   -14)      24       24           24                      
+  (  130,   -13)      24       24           24                      
+  (  130,   -12)      24       24           24                      
+  (  130,   -11)      24       24           24                      
+  (  130,   -10)      24       24           24                      
+  (  130,    -9)      24       24           24                      
+  (  130,    -8)      24       24           24                      
+  (  130,    -7)      24       24           32  spawn red-spawn#1   
+  (  130,    -6)      24       24           32  spawn red-spawn#1   
+  (  130,    -5)      24       24           32  spawn red-spawn#1   
+  (  130,    -4)      24       24           32  spawn red-spawn#1   
+  (  130,    -3)      24       24           32  spawn red-spawn#1   
+  (  130,    -2)      24       24           24  spawn red-spawn#1   
+  (  130,    -1)      24       24           24  spawn red-spawn#1   
+  (  130,     0)      24       24           24  spawn red-spawn#1   
+  (  130,     1)      24       24           24  spawn red-spawn#1   
+  (  130,     2)      24       24           32  spawn red-spawn#1   
+  (  130,     3)      24       24           32  spawn red-spawn#1   
+  (  130,     4)      24       24           32  spawn red-spawn#1   
+  (  130,     5)      24       24           32  spawn red-spawn#1   
+  (  130,     6)      24       24           32  spawn red-spawn#1   
+  (  130,     7)      24       24           24                      
+  (  130,     8)      24       24           24                      
+  (  130,     9)      24       24           24                      
+  (  130,    10)      24       24           24                      
+  (  130,    11)      24       24           24                      
+  (  130,    12)      24       24           24                      
+  (  130,    13)      24       24           24                      
+  (  130,    14)      24       24           24                      
+  (  130,    15)      24       24           24                      
+  (  130,    16)      25       25           25                      +1
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn red-spawn#1 at (128, -7)

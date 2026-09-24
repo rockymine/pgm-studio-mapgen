@@ -1,0 +1,61 @@
+## red-monument-0 (destroyable) along x
+TRANSECT 25 stations from (-84, -12) to (-60, -12), every 1
+  station        ground  surface  water  top  standing            step
+  (  -84,   -12)      27       27           27                      
+  (  -83,   -12)      27       27           27                      
+  (  -82,   -12)      27       27           27                      
+  (  -81,   -12)      27       27           27                      
+  (  -80,   -12)      27       27           27                      
+  (  -79,   -12)      26       26           26                      -1
+  (  -78,   -12)      26       26           26                      
+  (  -77,   -12)      26       26           26                      
+  (  -76,   -12)      26       26           26                      
+  (  -75,   -12)      26       26           26                      
+  (  -74,   -12)      26       26           26  destroyable red-monument  
+  (  -73,   -12)      26       26           56  destroyable red-monument  
+  (  -72,   -12)      26       26           57  destroyable red-monument  
+  (  -71,   -12)      26       26           56  destroyable red-monument  
+  (  -70,   -12)      26       26           26  destroyable red-monument  
+  (  -69,   -12)      26       26           26                      
+  (  -68,   -12)      26       26           26                      
+  (  -67,   -12)      26       26           26                      
+  (  -66,   -12)      14       14           14                      DROP -12
+  (  -65,   -12)      14       14           14                      
+  (  -64,   -12)      14       14           14                      
+  (  -63,   -12)      14       14           14                      
+  (  -62,   -12)      14       14           14                      
+  (  -61,   -12)      14       14           14                      
+  (  -60,   -12)      14       14           14                      
+rises 0, falls 2, worst step 12: 0 barrier, 0 scramble, 1 drop — DROP -12 at (-66, -12) | walked end to end
+beside: destroyable red-monument at (-74, -14)
+
+## red-monument-0 (destroyable) along z
+TRANSECT 25 stations from (-72, -24) to (-72, 0), every 1
+  station        ground  surface  water  top  standing            step
+  (  -72,   -24)      26       26           26                      
+  (  -72,   -23)      26       26           26                      
+  (  -72,   -22)      26       26           26                      
+  (  -72,   -21)      26       26           26                      
+  (  -72,   -20)      26       26           26                      
+  (  -72,   -19)      26       26           26                      
+  (  -72,   -18)      26       26           26                      
+  (  -72,   -17)      26       26           26                      
+  (  -72,   -16)      26       26           26                      
+  (  -72,   -15)      26       26           26                      
+  (  -72,   -14)      26       26           26  destroyable red-monument  
+  (  -72,   -13)      26       26           56  destroyable red-monument  
+  (  -72,   -12)      26       26           57  destroyable red-monument  
+  (  -72,   -11)      26       26           56  destroyable red-monument  
+  (  -72,   -10)      26       26           26  destroyable red-monument  
+  (  -72,    -9)      26       26           26                      
+  (  -72,    -8)      26       26           26                      
+  (  -72,    -7)      26       26           26                      
+  (  -72,    -6)      26       26           26                      
+  (  -72,    -5)      26       26           26                      
+  (  -72,    -4)      26       26           26                      
+  (  -72,    -3)      26       26           26                      
+  (  -72,    -2)      26       26           26                      
+  (  -72,    -1)      26       26           26                      
+  (  -72,     0)      26       26           26                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable red-monument at (-74, -14)

@@ -1,0 +1,162 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "red-spawn",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -130,
+    "y": 20,
+    "z": 0
+   },
+   "protection": [
+    {
+     "minX": -140,
+     "minZ": -8,
+     "maxX": -120,
+     "maxZ": 8
+    }
+   ],
+   "yaw": 270,
+   "doors": [
+    "+x"
+   ],
+   "footprint": null,
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "red-spawn",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 130,
+    "y": 20,
+    "z": 0
+   },
+   "protection": [
+    {
+     "minX": 120,
+     "minZ": -8,
+     "maxX": 140,
+     "maxZ": 8
+    }
+   ],
+   "yaw": 90,
+   "doors": [
+    "-x"
+   ],
+   "footprint": null,
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 35,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -16,
+    "minZ": -64,
+    "maxX": 16,
+    "maxZ": 64
+   }
+  ],
+  "holes": []
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "red-monument",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Red Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -66,
+    "y": 20,
+    "z": 4
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "red-monument",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Blue Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 65,
+    "y": 20,
+    "z": -5
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Cinderhowe",
+  "created": "2026-09-24",
+  "authors": [
+   {
+    "name": "Opus 5.5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": null
+}

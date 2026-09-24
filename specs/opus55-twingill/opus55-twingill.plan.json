@@ -1,0 +1,73 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Twingill"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 20
+ },
+ "pieces": [
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -33,
+    -2,
+    5,
+    4
+   ]
+  },
+  {
+   "id": "field",
+   "role": "piece",
+   "rect": [
+    -28,
+    -17,
+    24,
+    34
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "strait",
+   "rect": [
+    -4,
+    -17,
+    8,
+    34
+   ],
+   "kind": "build"
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "red-spawn",
+    "piece": "spawn",
+    "at": [
+     10,
+     8
+    ],
+    "facing": "right"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "red-monument",
+    "piece": "field",
+    "at": [
+     46,
+     88
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4
+   }
+  ]
+ },
+ "walls": []
+}
