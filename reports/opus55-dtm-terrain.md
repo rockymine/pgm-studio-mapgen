@@ -57,10 +57,10 @@ ground to the edge.
 
 **Scarbutte's canyon is now two negative pushes, not one.** A trough (−4, ±9, falloff 3) runs the whole length,
 and a slot (−8, ±4, falloff 3) sits inside it in two reaches. Each wall therefore steps once. Both carry
-`roughness` 1.5–2, so the walls wander, and the floor follows the bench's swells rather than lying at one height.
+`roughness` 0.5, so the walls wander, and the floor follows the bench's swells rather than lying at one height.
 
 **Scarbutte's rim is now a push, not four scarps.** The tableland is one push of 12 over a spline ring with its
-back off the board, falloff 4 and roughness 2. The rim follows a curve, and the top carries a swell.
+back off the board, falloff 4 and roughness 0.5. The rim follows a curve, and the top carries a swell.
 The pass is `amounts` falling to 3 near (−102, −42).
 
 **Kelderfell's scarp is ten short runs rather than four.** The runs turn 10–16° at each corner, curving behind
@@ -82,6 +82,9 @@ alone.
 height, so it rounded to either side cell by cell. A `crown` of 5 on the tableland push gives it a fall of
 about a block in nine toward the back, and the contours now run as lines. The spawn still stands level at 41.
 `RL6` now names that crown against the cliff's skirt, which is the cliff being a cliff.
+
+**The remaining jitter was the pushes' `roughness`, and 0.5 is where it stops.** Scarbutte's pushes carried
+1–2, which on its steep faces reads as single-block chatter. Every push on the board now carries 0.5.
 
 ## The four boards, where each feature is
 
@@ -123,7 +126,7 @@ Coordinates are team 0's, in blocks; team 1 has the same ground turned about (0,
 | Feature | Instrument | Where | Height |
 |---|---|---|---|
 | spawn footing | area mark, lifted by the tableland | x −136…−108, z −14…14 | 41 |
-| tableland and rim | push +12, crown 5, falloff 4, roughness 2, over a spline ring | rim (−100, −100) (−96, −70) (−104, −46) (−96, −26) (−86, −8) (−88, 10) (−80, 30) (−90, 52) (−98, 76) (−94, 100) | 38–49 |
+| tableland and rim | push +12, crown 5, falloff 4, roughness 0.5, over a spline ring | rim (−100, −100) (−96, −70) (−104, −46) (−96, −26) (−86, −8) (−88, 10) (−80, 30) (−90, 52) (−98, 76) (−94, 100) | 38–49 |
 | the pass | `amounts` falling from 12 to 3 within 18 blocks | (−102, −42) | about 29 → 25 |
 | table swell | push +4, crown 3 | centre (−126, 50) | |
 | monument shelf | area mark, bevel 3 | centre (−72, −12) | 26 |
@@ -132,7 +135,7 @@ Coordinates are team 0's, in blocks; team 1 has the same ground turned about (0,
 | canyon trough | push −4, falloff 3, band ±9 | (−60, −84) (−66, −50) (−56, −24) (−62, −4) (−54, 26) (−62, 54) (−58, 84) | 4 below the bench |
 | canyon slot | push −8, falloff 3, band ±4, in two reaches | the same course, broken at z −8…8 | 12 below the bench |
 | the crossing | the trough alone | x about −62, z −8…8 | |
-| buttes | crownless pushes, falloff 2–3, roughness 1–1.5 | (−36, −32) +12 · (−30, 34) +10 · (−42, 10) +8 · (−78, −50) +9 | |
+| buttes | crownless pushes, falloff 2–3, roughness 0.5 | (−36, −32) +12 · (−30, 34) +10 · (−42, 10) +8 · (−78, −50) +9 | |
 | monument | on its shelf | (−72, −12) | 26 |
 
 ### Cinderhowe
@@ -154,7 +157,7 @@ Coordinates are team 0's, in blocks; team 1 has the same ground turned about (0,
 |---|---|---|---|---|---|
 | Kelderfell | 27 104 · 1 178 · 1 022 | 6–69 | 0.30 | 49.7% | `RL3`: the stair's side walls, 7 blocks at (−83, 19); `RL5` at 30% |
 | Twingill | 24 025 · 1 745 · 108 | 9–49 | 0.22 | 51.5% | `RL5`: 22% level |
-| Scarbutte | 22 491 · 1 716 · 2 854 | 11–49 | 0.24 | 58.1% | `RL2`: the rim, the canyon and the buttes are faces; `RL5` at 24%; `RL6`: the crown against the cliff; `RL3` at the spawn, which the transect contradicts |
+| Scarbutte | 22 463 · 1 848 · 2 750 | 11–49 | 0.24 | 58.1% | `RL2`: the rim, the canyon and the buttes are faces; `RL5` at 24%; `RL6`: the crown against the cliff; `RL3` at the spawn, which the transect contradicts |
 | Cinderhowe | 29 970 · 2 186 · 182 | 12–51 | 0.15 | 70.9% | `RL5`: 15% level |
 
 Every spawn walks to its monument end to end, and every board's export gate is OPEN. `GO1` is 3.0–3.4 on all

@@ -95,8 +95,8 @@
         <point id="observer-spawn">0,36,0</point>
         <rectangle id="blue-spawn" min="112,-8" max="132,8"/>
         <rectangle id="red-spawn" min="-132,-8" max="-112,8"/>
-        <cuboid id="red-monument-region" min="-72,30,-12" max="-71,33,-11"/>
-        <cuboid id="blue-monument-region" min="71,30,11" max="72,33,12"/>
+        <cuboid id="red-monument-region" min="-72,29,-12" max="-71,32,-11"/>
+        <cuboid id="blue-monument-region" min="71,29,11" max="72,32,12"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>

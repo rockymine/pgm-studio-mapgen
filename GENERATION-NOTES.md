@@ -769,6 +769,16 @@ and swales of −3 the same size, each with a falloff of 10–12, bend the conto
 reads as ground with a direction. Grain alone does not do it, because it moves each tread by a block and
 leaves the rhythm.
 
+### `roughness` of 1 and above jitters a steep face
+
+**A push's `roughness` wanders its skirt against a noise field, and on a face three blocks a block steep every
+wobble is a block of height.** At 1–2 on a cliff, a canyon's walls and a butte's sides, the faces read as
+single-block chatter, and the tableland's top blotched near its edge. At 0.5 on the same pushes the faces
+still wander and read clean. At 0 they read drawn.
+
+The counts move with it: 2 854 barrier cells at 1–2, 2 750 at 0.5 and 2 652 at 0, as ragged steps smooth into
+slopes a player scrambles.
+
 ### A line mark does not cut a channel; a negative push along its course does
 
 **A `line` mark pins its band and the relaxation carries the ground either side down to it**, so a canyon or
@@ -782,7 +792,7 @@ left under it.
 
 **Two bands make a canyon with a ledge.** A wide shallow trough the whole length (±9, −4, falloff 3) with a
 narrow slot inside it (±4, −8, falloff 3) steps each wall once. Where the slot is left out the trough alone is
-a crossing. A `roughness` of 1.5–2 on both wanders the walls, so they read as eroded rather than extruded.
+a crossing. A `roughness` of 0.5 on both wanders the walls, so they read as eroded rather than extruded.
 
 ### A cliff that has to curve is a push, because a scarp is straight
 
@@ -790,7 +800,7 @@ a crossing. A `roughness` of 1.5–2 on both wanders the walls, so they read as 
 runs. It holds where each run turns ten to sixteen degrees from the last.
 
 **A push whose ring is the curve is the other way, and the one that also textures the top.** A spline ring
-with its back run off the board, `amount` 12, `falloff` 4 and `roughness` 2, is a rim that follows any course,
+with its back run off the board, `amount` 12, `falloff` 4 and `roughness` 0.5, is a rim that follows any course,
 with a face that wanders. Its top is the solved ground lifted, so it carries any swell under it, and a
 small `crown` gives it the fall that keeps it from reading as blotched.
 
