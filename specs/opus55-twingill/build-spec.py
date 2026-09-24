@@ -94,7 +94,7 @@ GILL = [[-104, 0], [-94, 10], [-76, -4], [-58, 8], [-40, -6], [-24, 4], [-8, 0]]
 
 relief = {"team": {
     "base": 18, "reach": 0, "step": 1,
-    "grain": {"amplitude": 1.0, "scale": 16, "seed": 11},
+    "grain": {"amplitude": 0, "scale": 16, "seed": 11},
     "marks": [
         # layer 1 — the dale floor: a line falling seventeen blocks from the head to the lip, wide
         # enough to be the valley's bottom rather than its stream

@@ -150,7 +150,7 @@ LIP = [[-22, -100], [-18, -72], [-27, -46], [-20, -20], [-29, 4], [-20, 30], [-2
 
 relief = {"team": {
     "base": 24, "reach": 0, "step": 1,
-    "grain": {"amplitude": 1.5, "scale": 14, "seed": 11},
+    "grain": {"amplitude": 0, "scale": 14, "seed": 11},
     "marks": [
         # layer 1 — the frame: the spawn's footing (the tableland's push lifts it to 38), the
         # monument's shelf, and a lip that wanders in both course and height
@@ -161,7 +161,7 @@ relief = {"team": {
     "pushes": [
         # layer 2 — the tableland, sagging to the pass
         {"id": "tableland", "ring": TABLE, "amounts": TABLE_AMOUNTS, "amount": 12, "falloff": 4,
-         "crown": 0, "roughness": 2, "seed": 7},
+         "crown": 5, "roughness": 2, "seed": 7},
         # the table's own swell, so its top rolls rather than reading as one level
         {"id": "table-swell", "ring": ellipse(-126, 50, 18, 16, 16, 0.4, 3, 0.1), "amount": 4, "falloff": 18,
          "crown": 3, "roughness": 0, "seed": 13},

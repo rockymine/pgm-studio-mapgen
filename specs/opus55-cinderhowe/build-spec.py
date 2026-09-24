@@ -86,7 +86,7 @@ STRAND = [[-22, -100], [-17, -70], [-28, -44], [-20, -16], [-26, 10], [-18, 38],
 
 relief = {"team": {
     "base": 16, "reach": 0, "step": 1,
-    "grain": {"amplitude": 1.0, "scale": 16, "seed": 11},
+    "grain": {"amplitude": 0, "scale": 16, "seed": 11},
     "marks": [
         # layer 1 — the crater: its floor, and the rim as one closed line with the breaches in its heights
         {"id": "floor", "kind": "area", "h": 13, "bevel": 2, "ring": ellipse(-66, 3, 9, 8, 14, 0.3, 3, 0.1)},

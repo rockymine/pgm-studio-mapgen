@@ -2,56 +2,56 @@ HEIGHTMAP  1 char = 3x3 blocks (the top-left block of each)  x -134..133 across,
 KEY  char = ground height above y6 in bands of 2 block(s): 0 = y6..7, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
       -3 -2 -1  -0 -9 -8  -7 -6 -5  -4 -3 -2  -1  0  1   2  3  4   5  6  7   8  9  0   1  2  3 
      418529630741852963074185296307418529630741852147036925814703692581470369258147036925814703
- -78             hfdb                                                                          
- -75           khhfdb9888                                                                      
- -72         qmjhhfdb988877                                                                    
- -69       vvrljhgfdb9888777766                                                    ll          
- -66      ttsrkihgfca9877777666666                                               llllkjj       
- -63     qppqolhhgeca8776666666666655                     223                  kkkkjjjjii      
- -60     nnnnnnhfedb9876666556666655554     3          3333333               iijjjjiiiiiih     
- -57    nnnmmnmiedba9776666555677765554443333          333333334           aeiiiiiiiiiihhg     
- -54    llllllkjdba98877666666778876554443333          3333333444         9aehhhhhhhhhhgffe    
- -51   ijjjjjjihda988887766667888887654443333          333333444455      788dgggggggggffeeee   
- -48   ghhhhhhgge9888888776678899988654443333          444344444455555566667ceffffffffeeeeee   
- -45   ffgffgfffea888888877678899988654443333          444444334455555555666bdeeeeeeeeeeeeee   
- -42  eefffffeeeec888888877778888887654444333          444432212244544555566bddeddddeeeeeeeee  
- -39  eeeeeeeeeeee988888887777888876544444333          444421111123444555666bddedeeeeeeeeeeee  
- -36  eeeeeeeeeeeeb88888887777777765544444333          444421111001244555667bddeeeeeeeeeeeeee  
- -33  eeeffeeeeeeec88888887777666655544433333          444421110000134556677bddeeeeeeeeeeeeee  
- -30  eeeffeeeeeeed88888888777766655544433333          4444211000001245667779ddeeeeeeeeeeeeeee 
- -27  ffeffeeeeeeeea8888888877766655544333333          4434311000001256677777cdddeeeeeeeeeefff 
- -24  fefeeffeffeeea8888888887766655544333333          433333210011236677789abbcddeeeeeeeeefff 
- -21 ffffffffffeeeea8888888888776655544333232          333333321112356777789abbcddeeeeeeffffef 
- -18 ffffffffffeeeea8888888!88776655544433222          33333343333446677778777bddddeeeffffffee 
- -15  fffffffffeeeea8888888888877665544333222          33333344455566677777777addddeeeffffffee 
- -12  fffffffffeeedba999999998877766554433222          333333445556666777777778ddddeefffffffff 
-  -9  fffffffffeedcbaa99999999887766655443222          333344555666667777777777bdddeefffffffff 
-  -6  HHHHHfffeeedcbba999aa999987776655443322          333445556667777788888889acddeeffffHHHHH 
-  -3  HHHHHffffeedcbaa99999999998877665543322          333445566677778888888889abcddeffffHHHHH 
-   0  HHHHHfffeeddcba998999888888777766554333          22344566777888889999999aabcdeeffffHHHHH 
-   3  HHHHHffffeedcba988888888877766665544333          22334556677888999aa9999abbcdeeefffHHHHH 
-   6  HHHHHffffeeddca877788887777766655443333          2223445566777889999a999aabcdeeefffHHHHH 
-   9  fffffffffeedddc777777777766665554433333          222334456667788999999999abcdeefffffffff 
-  12  fffffffffeedddd977777777666555544333333          2223344555667788999998999bdeeefffffffff 
-  15  eeffffffeeedddda77777777665544444333333          22233444556667888!8888888aeeeeffffffffff
-  18  eeffffffeeeedddc77887777654322234333333          22233444555667788H8888888aeeeeffffffffff
-  21  fffffeeeeeeeddcbba987776642111112333333          3323334455566777888888888aeeeffffffffeff
-  24  fffeeeeeeeeeedddb7787776531100001233344          3333334455566677788888888aeeeeeeefeefef 
-  27  eeeeeeeeeeeeeeddc7777765521000000134444          33333344555666777788888889eeeeeeeeffeff 
-  30  eeeeeeeeeeeeeeedda777655431000001124444          33333444555666777788888888deeeeeeeffeee 
-  33   eeeeeeeeeeeeeeddb776555432100011124444          33333444556677777778888888ceeeeeeefeeee 
-  36   eeeeeeeeeeeeeeddb666555443111111124444          33344444567788777778888888beeeeeeeeeeee 
-  39   eeeeeeeeededdeddb665555444321111134444          333444455778888777788888889deeeeeeeeeee 
-  42   eeeeeeeeedeeeeedb666555445543222344444          333344456788888877778888888beeeffffffee 
-  45    eeeeeeeeeeeeeedb666555555554434443444          333344456889998876677888888aeffggggggf  
-  48    eeeeeffffffgggfc776  6655554444433434          3333444568899887666678888889eghhiiiiih  
-  51     eeffggghhhhhhge98        54444333333          333344456788887766666778889adijkkkkkk   
-  54     ffgghhiiiiiiihea          4433333333          33334445567887665566677889abdjlmmmmmm   
-  57      ghhiiiiiiiiiie             33333333          3333444555677665556666779acdeimnnnnnn   
+ -78             gfdb                                                                          
+ -75           khhfdb9887                                                                      
+ -72         qmjhhfdb988777                                                                    
+ -69       vvrljhgfdb9877777776                                                    ll          
+ -66      ttsrkihgfca9777777776666                                               llllkjj       
+ -63     qqqqolhhgeca8766666666666655                     223                  kkkkkjjiii      
+ -60     nnnnnnhfedb9766666666666665554     2          3333333               iijjjjiiiiihh     
+ -57    nnnnnnmiedba9776666555677765554443333          333333344           adiiiiiiiiiihhg     
+ -54    llllllkjdba98876666556778877554443333          3333333444         9aehhhhhihhhhgffe    
+ -51   ijjjjjjihea988877666567888887654443333          333333444455      788dggggghgggffeeee   
+ -48   ghihhhhgge9888887766667899988654443333          444444444455566666667ceffffffffeeeeee   
+ -45   fgggggfffeb888888776677899988654443333          444444334455555555666bdeeeeeeeeeeeeee   
+ -42  eefffffeeeec888888877777888887654444333          444432212244555555666bdddddeeeeeeeeeee  
+ -39  eeeeeeeeeeeea88888877777888876544444333          444421111113444555666bdddddeeeeeeeeeee  
+ -36  eeeeeeeeeeeeb88888877777777765544444333          444321111001245555667bdddddeeeeeeeeeee  
+ -33  eeeeeeeeeeeec88888887777666655544443333          444421100000135556677bdddddeeeeeeeeeee  
+ -30  fffeeeeeeeeed88888887777766655544433333          4444211000001355667779dddddeeeeeeeeeeee 
+ -27  fffffeeeeeeeea8888888777766655544433333          4434311000001256677777cddddeeeeeeeeeeee 
+ -24  ffffffeeeeeeea8888888887766655544433333          333333210011236677789abbcddeeeeeeeeeeee 
+ -21 ffffffffeeeeeea8888888887766655544333222          333334321112356677789abbcddeeeeeeeeeeff 
+ -18 fffffffffeeeeea8888888!88776655544333222          33333443333346667778877bdddeeeeeeffffff 
+ -15  ffffffffeeeeea8888888888776665544333222          33333344454566667777777adddeeeeffffffff 
+ -12  fffffffffeeddba999999998877666554432222          333334445556666677777778ddddeeeffffffff 
+  -9  ffffffffeeedcba999999998887776655433222          333344555666677777777777bdddeeeffffffff 
+  -6  HHHHHfffeeddcbaa99999999988776655543322          233444556667777788888889accdeeefffHHHHH 
+  -3  HHHHHfffeeddcbaa99999999998887765544322          233445566677778888888889abcddeefffHHHHH 
+   0  HHHHHfffeeddcba999999988888877766554332          233455667778888899999999abcddeefffHHHHH 
+   3  HHHHHfffeeddcba988888888877766665544332          22344556677889999999999aabcddeefffHHHHH 
+   6  HHHHHfffeeeddca878887777777666655443332          222344556677788999999999abcddeefffHHHHH 
+   9  ffffffffeeedddc777777777766665554433333          222334456667788899999999abcdeeeffffffff 
+  12  ffffffffeeedddd977777776666555544333333          2222334455667788999888999bdeeefffffffff 
+  15  ffffffffeeeeddda77777776665544444333333          22233344555667788!8888888aeeeeefffffffff
+  18  fffffeeeeeeedddc77887776654322234433333          22233344555666788H8888888aeeeeefffffffff
+  21  eeeeeeeeeeeeddcbba987776642111112333333          2223334455566677888888888aeeeeeeffffffff
+  24  eeeeeeeeeeeeddddb7787776531100001233333          3333344455566677788888888aeeeeeeeffffff 
+  27  eeeeeeeeeeeeddddc7777766521000000134444          3333344455566677778888888aeeeeeeeeeffff 
+  30  eeeeeeeeeeeeddddda777665531000001124444          33333444555666777778888888deeeeeeeeeeff 
+  33   eeeeeeeeeeedddddb776555541000011123444          33334444555677777778888888ceeeeeeeeeeee 
+  36   eeeeeeeeeeedddddb666555443111111124444          33344444566788777777888888beeeeeeeeeeee 
+  39   eeeeeeeeeeedddddb666555444321111134444          333444445788888777778888889deeeeeeeeeee 
+  42   eeeeeeeeeeeeeedda666555555543322344444          333344456788888776778888888ceeefffffffe 
+  45    eeeeeeeeefeeeedb666655555554444444444          333344456889998766677888888aeffggggggf  
+  48    eeeeefffggggggfc776  6665554444433444          3333444568899887656677888889eghiiiiiih  
+  51     eeffgghhhhhhhge98        44444333333          333344456788887765666778889aeijkkkkkk   
+  54     ffgghhiiiiiiihea          4443333333          33334445567887665566667889abdjlmmmmmm   
+  57      ghhiiiiiiiiiid             33333333          3333444555677665556666679acdeimnnnnnn   
   60      hiiiijjjjjjj                333233                  555666666666666789bdfghmnoooo    
-  63       iijjkkkkk                    2                       566666666667778aceghhkprqqr    
-  66         kklll                                                 666667777889adfghikqtuu     
-  69                                                                  777778889bdfhhjmrv       
-  72                                                                      78889bdfhhknq        
+  63       iijjkkkkk                    2                       566666776666778aceghhkprrrr    
+  66         kklll                                                 666777777789acfghikqtuu     
+  69                                                                  777777889bdfghjmrv       
+  72                                                                      77889bdfhhknq        
   75                                                                        889bdfhh           
 low y6, high y69, range 63

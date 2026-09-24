@@ -722,13 +722,29 @@ mark claims. An `area` mark over a bench, a rectangle band along a lip or a wide
 flat to the block however much grain the group states, and reads as a table set into grown ground.
 
 Measured on one board: a bench pinned by one `area` mark read `level` **0.64** with its largest flat field a
-quarter of the group. With the bench unpinned and held up by two low swells, grain of 1.5 over 14 blocks and
-three small marks for the spawn, the goal's shelf and the lip, it read **0.24** and **0.08**, and the
-heightmap showed rolling ground where it had shown one colour.
+quarter of the group. With the bench unpinned and held up by two low swells, and three small marks for the
+spawn, the goal's shelf and the lip, it read **0.24** and **0.05**, and the heightmap showed rolling ground
+where it had shown one colour.
 
-**Keep the marks that must be level small, and give every other height to the relaxation, the pushes and the
-grain.** The goal's shelf wants a bevelled lobed ring a few cells across rather than a pad, and a spawn's
+**Keep the marks that must be level small, and give every other height to the relaxation and the pushes.**
+The goal's shelf wants a bevelled lobed ring a few cells across rather than a pad, and a spawn's
 footing wants the protection region's size rather than the bench's.
+
+### Grain at a feature size under twenty blocks reads as noise, not as ground
+
+**Unpinning is what makes ground flow, and grain adds nothing to it that a player reads as landform.** Grain
+of 1.5 blocks over 14, laid on a rolling bench and a tableland, drew a scatter of one-block bumps and pits over
+both. The author rejected it as noise on sight. With grain at 0 and nothing else changed, the same board's
+swells, pan and canyon carried the shape alone and read clean.
+
+**A near-level surface breaks into one-block islands by itself, and grain only adds to them.** A top that
+sits within a block of one height rounds cell by cell to either side of it, so the heightmap shows blotches
+along a contour that wanders. What removes them is a fall: a `crown` of 5 on a push seventy blocks across
+gives its top a gradient of about a block in nine. The contours then run as lines. Grain at a
+larger feature size (1.5 over 48) left the islands where they were.
+
+**`RL6` names such a crown against a cliff's skirt**, 28 times apart, and on a push meant to be a cliff that
+step is the point.
 
 ### The lip is pinned with a line that wanders, not with a band across the board
 
@@ -762,7 +778,7 @@ rim to 14 at the line over about 40 blocks, and there was no canyon to see.
 
 **Carve the channel after the solve, with a push over the band's outline.** Offset the course either side
 into a closed ring and push it negative: `falloff` 1–3 is the wall, and the floor follows whatever the solve
-left under it, grain included.
+left under it.
 
 **Two bands make a canyon with a ledge.** A wide shallow trough the whole length (±9, −4, falloff 3) with a
 narrow slot inside it (±4, −8, falloff 3) steps each wall once. Where the slot is left out the trough alone is
@@ -775,8 +791,8 @@ runs. It holds where each run turns ten to sixteen degrees from the last.
 
 **A push whose ring is the curve is the other way, and the one that also textures the top.** A spline ring
 with its back run off the board, `amount` 12, `falloff` 4 and `roughness` 2, is a rim that follows any course,
-with a face that wanders. Its top is the solved ground lifted, so it carries the grain and any swell under
-it.
+with a face that wanders. Its top is the solved ground lifted, so it carries any swell under it, and a
+small `crown` gives it the fall that keeps it from reading as blotched.
 
 **Lowering the rim for a pass with `amounts` sags a wedge, not a notch.** Each interior cell takes the lift of
 its nearest ring point, so a spawn 34 blocks in from a pass whose lift fell off over 26 blocks stood at 30

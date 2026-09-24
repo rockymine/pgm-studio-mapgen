@@ -90,8 +90,8 @@
         </not>
     </filters>
     <regions>
-        <point id="blue-spawn-point">122,38,0</point>
-        <point id="red-spawn-point">-122,38,0</point>
+        <point id="blue-spawn-point">122,41,0</point>
+        <point id="red-spawn-point">-122,41,0</point>
         <point id="observer-spawn">0,36,0</point>
         <rectangle id="blue-spawn" min="112,-8" max="132,8"/>
         <rectangle id="red-spawn" min="-132,-8" max="-112,8"/>
@@ -165,5 +165,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>48</maxbuildheight>
+    <maxbuildheight>49</maxbuildheight>
 </map>

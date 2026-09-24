@@ -35,8 +35,9 @@ strait edge is left straight, following the author's ruling that a lip is never 
 2. the **board's one big landform**: a scarp, a dale floor, a tableland or a crater;
 3. **large pushes** for the mass: a fell, ridges, cones, swells;
 4. **carving and detail**: negative pushes for hollows, coombes, a gill or a canyon, and small knolls or
-   buttes;
-5. **grain** over everything no mark holds: 1.0–1.5 blocks over 14–16.
+   buttes.
+
+No board carries grain. The third pass removed it, and its section says why.
 
 ## The second pass, after the author's review
 
@@ -56,11 +57,10 @@ ground to the edge.
 
 **Scarbutte's canyon is now two negative pushes, not one.** A trough (−4, ±9, falloff 3) runs the whole length,
 and a slot (−8, ±4, falloff 3) sits inside it in two reaches. Each wall therefore steps once. Both carry
-`roughness` 1.5–2, so the walls wander, and the floor follows the bench's swells and grain rather than lying
-at one height.
+`roughness` 1.5–2, so the walls wander, and the floor follows the bench's swells rather than lying at one height.
 
 **Scarbutte's rim is now a push, not four scarps.** The tableland is one push of 12 over a spline ring with its
-back off the board, falloff 4 and roughness 2. The rim follows a curve, and the top carries grain and a swell.
+back off the board, falloff 4 and roughness 2. The rim follows a curve, and the top carries a swell.
 The pass is `amounts` falling to 3 near (−102, −42).
 
 **Kelderfell's scarp is ten short runs rather than four.** The runs turn 10–16° at each corner, curving behind
@@ -70,6 +70,18 @@ parallel.
 
 **Cinderhowe's rim crest wanders between 33 and 44 and its radius between 23 and 29.** Its floor mark shrank
 from a disc 28 across to a bevelled lobe round the monument, so the crater dishes rather than lying flat.
+
+## The third pass: the grain was noise
+
+**The author found Scarbutte better and worse at once: the grain added too much noise.** Grain of 1.5 blocks
+over 14 drew a scatter of one-block bumps and pits over the tableland and the bench. The three other boards
+carried 1.0 over 16. The grain is now 0 on all four, and the swells, spurs, swales and canyon carry the shape
+alone.
+
+**The tableland still blotched without grain, and a crown fixed it.** Its top sat within a block of one
+height, so it rounded to either side cell by cell. A `crown` of 5 on the tableland push gives it a fall of
+about a block in nine toward the back, and the contours now run as lines. The spawn still stands level at 41.
+`RL6` now names that crown against the cliff's skirt, which is the cliff being a cliff.
 
 ## The four boards, where each feature is
 
@@ -110,8 +122,8 @@ Coordinates are team 0's, in blocks; team 1 has the same ground turned about (0,
 
 | Feature | Instrument | Where | Height |
 |---|---|---|---|
-| spawn footing | area mark, lifted by the tableland | x −136…−108, z −14…14 | 26 + 12 = 38 |
-| tableland and rim | push +12, falloff 4, roughness 2, over a spline ring | rim (−100, −100) (−96, −70) (−104, −46) (−96, −26) (−86, −8) (−88, 10) (−80, 30) (−90, 52) (−98, 76) (−94, 100) | 37–45 |
+| spawn footing | area mark, lifted by the tableland | x −136…−108, z −14…14 | 41 |
+| tableland and rim | push +12, crown 5, falloff 4, roughness 2, over a spline ring | rim (−100, −100) (−96, −70) (−104, −46) (−96, −26) (−86, −8) (−88, 10) (−80, 30) (−90, 52) (−98, 76) (−94, 100) | 38–49 |
 | the pass | `amounts` falling from 12 to 3 within 18 blocks | (−102, −42) | about 29 → 25 |
 | table swell | push +4, crown 3 | centre (−126, 50) | |
 | monument shelf | area mark, bevel 3 | centre (−72, −12) | 26 |
@@ -140,10 +152,10 @@ Coordinates are team 0's, in blocks; team 1 has the same ground turned about (0,
 
 | Board | walked · scrambled · barrier | relief | level | dead | complaints |
 |---|---|---|---|---|---|
-| Kelderfell | 27 070 · 1 182 · 1 052 | 6–69 | 0.28 | 49.7% | `RL3`: the stair's side walls, 7 blocks at (−83, 19); `RL5` at 28% |
-| Twingill | 23 921 · 1 853 · 104 | 9–48 | 0.21 | 51.5% | `RL5`: 21% level |
-| Scarbutte | 22 617 · 1 586 · 2 858 | 11–45 | 0.24 | 58.1% | `RL2`: the rim, the canyon and the buttes are faces; `RL5` at 24%; `RL3` at the spawn, which the transect contradicts |
-| Cinderhowe | 29 886 · 2 266 · 186 | 12–50 | 0.15 | 70.9% | `RL5`: 15% level |
+| Kelderfell | 27 104 · 1 178 · 1 022 | 6–69 | 0.30 | 49.7% | `RL3`: the stair's side walls, 7 blocks at (−83, 19); `RL5` at 30% |
+| Twingill | 24 025 · 1 745 · 108 | 9–49 | 0.22 | 51.5% | `RL5`: 22% level |
+| Scarbutte | 22 491 · 1 716 · 2 854 | 11–49 | 0.24 | 58.1% | `RL2`: the rim, the canyon and the buttes are faces; `RL5` at 24%; `RL6`: the crown against the cliff; `RL3` at the spawn, which the transect contradicts |
+| Cinderhowe | 29 970 · 2 186 · 182 | 12–51 | 0.15 | 70.9% | `RL5`: 15% level |
 
 Every spawn walks to its monument end to end, and every board's export gate is OPEN. `GO1` is 3.0–3.4 on all
 four. `G8` (dead share) and `LN2` (a chain of 120–136 blocks against 110) are refused by the evaluator on all
@@ -155,6 +167,9 @@ because the flat ground was the fault. The monument's shelf, the spawn's footing
 stay level.
 
 ## What I got wrong
+
+**I added grain as texture, and at a feature size of 14–16 it is noise.** I read the heightmap for whether
+the flat areas had gone and not for what replaced them.
 
 **I pinned too much, which is the error the relief chapter already warns against.** A bench, a strand and a
 wide crater floor each went in as an `area` mark because each should be *about* that height. Grain cannot

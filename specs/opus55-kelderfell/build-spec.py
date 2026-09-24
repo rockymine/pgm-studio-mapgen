@@ -69,7 +69,7 @@ def scarp_runs(name, points, high, low):
 
 relief = {"team": {
     "base": 20, "reach": 0, "step": 1,
-    "grain": {"amplitude": 1.0, "scale": 16, "seed": 11},
+    "grain": {"amplitude": 0, "scale": 16, "seed": 11},
     "marks": [
         # layer 1 — the lean: the spawn's bench high at the back, and a strand that wanders in course
         # and height along the lip rather than lying flat across it

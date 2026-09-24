@@ -1,73 +1,73 @@
 ## spawn-red (spawn) along x
 TRANSECT 29 stations from (-132, 0) to (-104, 0), every 1
   station        ground  surface  water  top  standing            step
-  ( -132,     0)      38       38           38                      
-  ( -131,     0)      38       38           46  spawn red-spawn     
-  ( -130,     0)      38       38           46  spawn red-spawn     
-  ( -129,     0)      38       38           46  spawn red-spawn     
-  ( -128,     0)      38       38           46  spawn red-spawn     
-  ( -127,     0)      38       38           46  spawn red-spawn     
-  ( -126,     0)      38       38           38  spawn red-spawn     
-  ( -125,     0)      38       38           38  spawn red-spawn     
-  ( -124,     0)      38       38           38  spawn red-spawn     
-  ( -123,     0)      38       38           38  spawn red-spawn     
-  ( -122,     0)      38       38           46  spawn red-spawn     
-  ( -121,     0)      38       38           46  spawn red-spawn     
-  ( -120,     0)      38       38           46  spawn red-spawn     
-  ( -119,     0)      38       38           46  spawn red-spawn     
-  ( -118,     0)      38       38           46  spawn red-spawn     
-  ( -117,     0)      38       38           38                      
-  ( -116,     0)      38       38           38                      
-  ( -115,     0)      38       38           38                      
-  ( -114,     0)      38       38           38                      
-  ( -113,     0)      38       38           38                      
-  ( -112,     0)      38       38           38                      
-  ( -111,     0)      38       38           38                      
-  ( -110,     0)      38       38           38                      
-  ( -109,     0)      38       38           38                      
-  ( -108,     0)      38       38           38                      
-  ( -107,     0)      38       38           38                      
-  ( -106,     0)      38       38           38                      
-  ( -105,     0)      38       38           38                      
-  ( -104,     0)      38       38           38                      
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+  ( -132,     0)      41       41           41                      
+  ( -131,     0)      41       41           49  spawn red-spawn     
+  ( -130,     0)      41       41           49  spawn red-spawn     
+  ( -129,     0)      41       41           49  spawn red-spawn     
+  ( -128,     0)      41       41           49  spawn red-spawn     
+  ( -127,     0)      41       41           49  spawn red-spawn     
+  ( -126,     0)      41       41           41  spawn red-spawn     
+  ( -125,     0)      41       41           41  spawn red-spawn     
+  ( -124,     0)      41       41           41  spawn red-spawn     
+  ( -123,     0)      41       41           41  spawn red-spawn     
+  ( -122,     0)      41       41           49  spawn red-spawn     
+  ( -121,     0)      41       41           49  spawn red-spawn     
+  ( -120,     0)      41       41           49  spawn red-spawn     
+  ( -119,     0)      41       41           49  spawn red-spawn     
+  ( -118,     0)      41       41           49  spawn red-spawn     
+  ( -117,     0)      41       41           41                      
+  ( -116,     0)      41       41           41                      
+  ( -115,     0)      41       41           41                      
+  ( -114,     0)      41       41           41                      
+  ( -113,     0)      41       41           41                      
+  ( -112,     0)      41       41           41                      
+  ( -111,     0)      41       41           41                      
+  ( -110,     0)      40       40           40                      -1
+  ( -109,     0)      40       40           40                      
+  ( -108,     0)      40       40           40                      
+  ( -107,     0)      40       40           40                      
+  ( -106,     0)      40       40           40                      
+  ( -105,     0)      40       40           40                      
+  ( -104,     0)      39       39           39                      -1
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: spawn red-spawn at (-131, -2)
 
 ## spawn-red (spawn) along z
 TRANSECT 33 stations from (-122, -16) to (-122, 16), every 1
   station        ground  surface  water  top  standing            step
-  ( -122,   -16)      38       38           38                      
-  ( -122,   -15)      38       38           38                      
-  ( -122,   -14)      38       38           38                      
-  ( -122,   -13)      38       38           38                      
-  ( -122,   -12)      38       38           38                      
-  ( -122,   -11)      38       38           38                      
-  ( -122,   -10)      38       38           38                      
-  ( -122,    -9)      37       37           37                      -1
-  ( -122,    -8)      38       38           38                      +1
-  ( -122,    -7)      38       38           46  spawn red-spawn     
-  ( -122,    -6)      38       38           46  spawn red-spawn     
-  ( -122,    -5)      38       38           46  spawn red-spawn     
-  ( -122,    -4)      38       38           46  spawn red-spawn     
-  ( -122,    -3)      38       38           46  spawn red-spawn     
-  ( -122,    -2)      38       38           46  spawn red-spawn     
-  ( -122,    -1)      38       38           46  spawn red-spawn     
-  ( -122,     0)      38       38           46  spawn red-spawn     
-  ( -122,     1)      38       38           46  spawn red-spawn     
-  ( -122,     2)      38       38           46  spawn red-spawn     
-  ( -122,     3)      38       38           46  spawn red-spawn     
-  ( -122,     4)      38       38           46  spawn red-spawn     
-  ( -122,     5)      38       38           46  spawn red-spawn     
-  ( -122,     6)      38       38           46  spawn red-spawn     
-  ( -122,     7)      38       38           38                      
-  ( -122,     8)      38       38           38                      
-  ( -122,     9)      38       38           38                      
-  ( -122,    10)      38       38           38                      
-  ( -122,    11)      38       38           38                      
-  ( -122,    12)      38       38           38                      
-  ( -122,    13)      38       38           38                      
-  ( -122,    14)      37       37           37                      -1
-  ( -122,    15)      37       37           37                      
-  ( -122,    16)      37       37           37                      
-rises 1, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+  ( -122,   -16)      41       41           41                      
+  ( -122,   -15)      41       41           41                      
+  ( -122,   -14)      41       41           41                      
+  ( -122,   -13)      41       41           41                      
+  ( -122,   -12)      42       42           42                      +1
+  ( -122,   -11)      42       42           42                      
+  ( -122,   -10)      41       41           41                      -1
+  ( -122,    -9)      41       41           41                      
+  ( -122,    -8)      41       41           41                      
+  ( -122,    -7)      41       41           49  spawn red-spawn     
+  ( -122,    -6)      41       41           49  spawn red-spawn     
+  ( -122,    -5)      41       41           49  spawn red-spawn     
+  ( -122,    -4)      41       41           49  spawn red-spawn     
+  ( -122,    -3)      41       41           49  spawn red-spawn     
+  ( -122,    -2)      41       41           49  spawn red-spawn     
+  ( -122,    -1)      41       41           49  spawn red-spawn     
+  ( -122,     0)      41       41           49  spawn red-spawn     
+  ( -122,     1)      41       41           49  spawn red-spawn     
+  ( -122,     2)      41       41           49  spawn red-spawn     
+  ( -122,     3)      41       41           49  spawn red-spawn     
+  ( -122,     4)      41       41           49  spawn red-spawn     
+  ( -122,     5)      41       41           49  spawn red-spawn     
+  ( -122,     6)      41       41           49  spawn red-spawn     
+  ( -122,     7)      41       41           41                      
+  ( -122,     8)      42       42           42                      +1
+  ( -122,     9)      42       42           42                      
+  ( -122,    10)      42       42           42                      
+  ( -122,    11)      42       42           42                      
+  ( -122,    12)      42       42           42                      
+  ( -122,    13)      42       42           42                      
+  ( -122,    14)      42       42           42                      
+  ( -122,    15)      42       42           42                      
+  ( -122,    16)      42       42           42                      
+rises 2, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: spawn red-spawn at (-124, -7)
