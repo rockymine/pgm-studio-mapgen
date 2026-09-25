@@ -5,8 +5,8 @@
                           [--profile x=<x>[,z=<z0>..<z1>[,<step>]]] [--profile z=<z>[,x=<x0>..<x1>[,<step>]]]
                           [--column x,z [x,z ...]]
 
-A drive is ten minutes; a placement question is answered by two previews that take twenty seconds. This
-reads the spec the way `drive.py` does — a plan compiled and patched with its finish, or a drawn layout —
+A drive stores, exports and pictures the board; a placement question is answered by two previews that take
+two seconds and store nothing. This reads the spec the way `drive.py` does — a plan compiled and patched with its finish, or a drawn layout —
 and posts the result to `sketch/relief/read` (the terrain in numbers: range, steps, barriers, crossings)
 and `sketch/dressing` (what every prop did, and every decline with its rule and coordinates). Nothing is
 stored. The map has to have been driven once before, because the dressing preview reads the stored intent

@@ -34,9 +34,7 @@ class Canvas:
         top = max(0, int(min(ys)))
         bottom = min(self.height - 1, int(max(ys)) + 1)
         rgb = bytes(colour)
-        mix = None if alpha >= 1 else [
-            bytes(int(channel * alpha + under * (1 - alpha)) for under in range(256))
-            for channel in colour]
+        mix = None if alpha >= 1 else blend(colour, alpha)
         for y in range(top, bottom + 1):
             centre = y + 0.5
             crossings = []
@@ -58,6 +56,29 @@ class Canvas:
                         self.pixels[offset:offset + width] = bytes(
                             mix[i % 3][under]
                             for i, under in enumerate(self.pixels[offset:offset + width]))
+
+    def fill_spans(self, x, y, spans, colour, alpha=1.0, mix=None):
+        """Paint `spans` — what `polygon_spans` answered for a shape — with the shape's origin at the whole
+        pixel (x, y). Clipped to the canvas exactly as `fill_polygon` clips, so the two paint the same pixels.
+        `mix` is the blend table `blend` answers for (colour, alpha), passed by a caller painting many faces
+        of one colour so it is built once."""
+        rgb = bytes(colour)
+        if alpha < 1 and mix is None:
+            mix = blend(colour, alpha)
+        for dy, left, right in spans:
+            row = y + dy
+            if not 0 <= row < self.height:
+                continue
+            left = max(0, left + x)
+            right = min(self.width, right + x)
+            if right > left:
+                offset = (row * self.width + left) * 3
+                width = (right - left) * 3
+                if alpha >= 1:
+                    self.pixels[offset:offset + width] = rgb * (right - left)
+                else:
+                    self.pixels[offset:offset + width] = bytes(
+                        mix[i % 3][under] for i, under in enumerate(self.pixels[offset:offset + width]))
 
     def line(self, x0, y0, x1, y1, colour):
         steps = int(max(abs(x1 - x0), abs(y1 - y0))) + 1
@@ -83,6 +104,42 @@ class Canvas:
 
     def text_width(self, message, scale=2):
         return len(message) * 6 * scale
+
+
+def blend(colour, alpha):
+    """The per-channel table `alpha` of `colour` over whatever is already painted: one 256-byte row per
+    channel, indexed by the byte underneath."""
+    return [bytes(int(channel * alpha + under * (1 - alpha)) for under in range(256)) for channel in colour]
+
+
+# Where `polygon_spans` rasterizes a shape: far enough from the canvas edge that nothing is clipped and every
+# crossing is positive, so rounding a crossing to a pixel is the same whole-pixel shift wherever it is drawn.
+SPAN_ORIGIN = 1 << 16
+
+
+def polygon_spans(points):
+    """The rows and runs `Canvas.fill_polygon` paints for `points`, as `(row, left, right)` relative to the
+    origin with `right` exclusive — a shape drawn many times at whole-pixel offsets, such as a cube face, is
+    rasterized once and painted with `Canvas.fill_spans`. The crossings are computed by the same expression
+    over the same whole-pixel vertices, so a shape whose vertices are whole numbers paints the same pixels
+    either way."""
+    moved = [(x + SPAN_ORIGIN, y + SPAN_ORIGIN) for x, y in points]
+    ys = [p[1] for p in moved]
+    spans = []
+    for y in range(int(min(ys)), int(max(ys)) + 2):
+        centre = y + 0.5
+        crossings = []
+        for i in range(len(moved)):
+            x0, y0 = moved[i]
+            x1, y1 = moved[(i + 1) % len(moved)]
+            if (y0 <= centre < y1) or (y1 <= centre < y0):
+                crossings.append(x0 + (centre - y0) * (x1 - x0) / (y1 - y0))
+        crossings.sort()
+        for i in range(0, len(crossings) - 1, 2):
+            left, right = int(crossings[i] + 0.5), int(crossings[i + 1] + 0.5)
+            if right > left:
+                spans.append((y - SPAN_ORIGIN, left - SPAN_ORIGIN, right - SPAN_ORIGIN))
+    return spans
 
 
 def write_png(path, canvas):
