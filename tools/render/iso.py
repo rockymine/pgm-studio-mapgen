@@ -17,7 +17,7 @@ The views:
 """
 import json
 
-from png import Canvas, desaturate, hex_rgb, shade, write_png
+from png import Canvas, blend, desaturate, hex_rgb, polygon_spans, shade, write_png
 
 # The three visible faces of a cube under this camera, and what each does to the block's colour. The top
 # keeps the block's own colour and the two flanks fall away, rather than the top being lit — a sculpture in
@@ -110,18 +110,38 @@ def draw_iso(canvas, blocks, origin, w, h, k, order=None, alpha=None):
     Back-to-front is what makes that meaningful — a translucent cube is composited over whatever the
     passes behind it already put down."""
     ox, oy = origin
+    # Every cube is the same three faces at a whole-pixel offset, so each face is rasterized once and
+    # stamped. An origin off the pixel grid would round differently from cube to cube, and is filled as drawn.
+    stamps = ([(light, polygon_spans(outline)) for light, outline in _faces(w, h, k)]
+              if all(isinstance(v, int) for v in (ox, oy, w, h, k)) else None)
+    lit, mixes = {}, {}
     for cell in sorted(blocks, key=order or (lambda c: c[0] + c[1] + c[2])):
         x, y, z = cell
         colour = blocks[cell]
         opacity = 1.0 if alpha is None else alpha.get(cell, 1.0)
         px = ox + (x - z) * w
         py = oy + (x + z) * h - y * k
-        canvas.fill_polygon([(px, py - k), (px + w, py + h - k),
-                             (px, py + 2 * h - k), (px - w, py + h - k)], shade(colour, TOP), opacity)
-        canvas.fill_polygon([(px + w, py + h - k), (px + w, py + h),
-                             (px, py + 2 * h), (px, py + 2 * h - k)], shade(colour, RIGHT), opacity)
-        canvas.fill_polygon([(px - w, py + h - k), (px - w, py + h),
-                             (px, py + 2 * h), (px, py + 2 * h - k)], shade(colour, LEFT), opacity)
+        for light, spans in stamps or _faces(w, h, k, px, py):
+            if (colour, light) not in lit:
+                lit[(colour, light)] = shade(colour, light)
+            face = lit[(colour, light)]
+            if stamps is None:
+                canvas.fill_polygon(spans, face, opacity)
+                continue
+            mix = None
+            if opacity < 1:
+                if (face, opacity) not in mixes:
+                    mixes[(face, opacity)] = blend(face, opacity)
+                mix = mixes[(face, opacity)]
+            canvas.fill_spans(px, py, spans, face, opacity, mix)
+
+
+def _faces(w, h, k, px=0, py=0):
+    """The three faces a cube anchored at (px, py) shows this camera, as `(light, outline)`: the top, then
+    the right and left flanks."""
+    return ((TOP, [(px, py - k), (px + w, py + h - k), (px, py + 2 * h - k), (px - w, py + h - k)]),
+            (RIGHT, [(px + w, py + h - k), (px + w, py + h), (px, py + 2 * h), (px, py + 2 * h - k)]),
+            (LEFT, [(px - w, py + h - k), (px - w, py + h), (px, py + 2 * h), (px, py + 2 * h - k)]))
 
 
 def isometric(payload, path, scale=6, layers=None, clip=None, title=None, caption=None, margin=40,
@@ -169,62 +189,74 @@ def cavities(blocks, min_cells=6, max_headroom=24):
     A room worth a picture is normally *not* sealed — a chamber with a stair down to it is open to the sky
     through its own shaft — so a sealed void is reported rather than sought: it is a space nothing can
     walk into, which on a board that meant to build a room is a finding."""
-    xs = [cell[0] for cell in blocks]
-    ys = [cell[1] for cell in blocks]
-    zs = [cell[2] for cell in blocks]
-    x0, y0, z0 = min(xs) - 1, min(ys) - 1, min(zs) - 1
-    span_x, span_y, span_z = max(xs) - x0 + 2, max(ys) - y0 + 2, max(zs) - z0 + 2
+    # Each column's own heights, lowest first. A column is almost always one unbroken stack, and the gaps
+    # in the few that are not are the only air anywhere that is not plainly open.
+    columns = {}
+    for x, y, z in blocks:
+        heights = columns.get((x, z))
+        if heights is None:
+            columns[(x, z)] = [y]
+        else:
+            heights.append(y)
+    for heights in columns.values():
+        heights.sort()
+    x0 = min(x for x, _ in columns) - 1
+    z0 = min(z for _, z in columns) - 1
+    y0 = min(heights[0] for heights in columns.values()) - 1
+    span_x = max(x for x, _ in columns) - x0 + 2
+    span_z = max(z for _, z in columns) - z0 + 2
+    span_y = max(heights[-1] for heights in columns.values()) - y0 + 2
     plane = span_x * span_z
     size = plane * span_y
 
-    SOLID, ROOFED, HELD = 1, 2, 3
-    state = bytearray(size)
-    for x, y, z in blocks:
-        state[(y - y0) * plane + (z - z0) * span_x + (x - x0)] = SOLID
-
-    # The model is padded by a block on every side, so the whole outer shell is air and the shell is
-    # six-connected — flooding from its corner reaches all of it. That padding is also why the walk needs
-    # no per-axis bound test: a step that runs off the end of a row or a plane lands on the opposite
-    # shell, which is air the flood has already opened, so a wrapped step can only ever re-open an open
-    # cell. A roofed cell is never on the shell, so the same holds for the component walk below.
-    steps = (1, -1, span_x, -span_x, plane, -plane)
-    sky = bytearray(size)
-    sky[0] = 1
-    stack = [0]
-    while stack:
-        index = stack.pop()
-        for step in steps:
-            ahead = index + step
-            if 0 <= ahead < size and not sky[ahead] and state[ahead] != SOLID:
-                sky[ahead] = 1
-                stack.append(ahead)
-
+    # The model is padded by a block on every side, so the whole outer shell is air, and every column's air
+    # over its highest block or under its lowest runs straight to that shell: it is open, and is marked so a
+    # column at a time. What is left unmarked is the air BETWEEN a column's own blocks — `hollow` — and the
+    # flood below opens whichever of it touches open air. A hollow cell is never on the shell, so no step
+    # from one needs a bound test.
+    #
     # A column's void is what is hollow between its own lowest block and its own highest: air under the
     # bottom of a stack is not a room, it is the space the board stands in, and air over the top of one is
     # the sky. Between those two the air is taken one run at a time, so a run too tall to be a room can be
     # dropped without dropping the room in the same column.
-    stacks = {}
-    for x, y, z in blocks:
-        low, high = stacks.get((x, z), (y, y))
-        stacks[(x, z)] = (min(low, y), max(high, y))
-    for (x, z), (floor, ceiling) in stacks.items():
+    SOLID, ROOFED, HELD = 1, 2, 3
+    state = bytearray(size)
+    sky = bytearray(b"\x01") * size
+    hollow, roofed = [], []
+    for (x, z), heights in columns.items():
         base = (z - z0) * span_x + (x - x0)
-        run = []
-        for y in range(floor + 1, ceiling):
-            index = (y - y0) * plane + base
-            if state[index] == SOLID:
-                if len(run) <= max_headroom:
-                    for at in run:
-                        state[at] = ROOFED
-                run = []
-            else:
-                run.append(index)
-        if run and len(run) <= max_headroom:
-            for at in run:
-                state[at] = ROOFED
+        low, high = heights[0], heights[-1]
+        first, last = (low - y0) * plane + base, (high - y0) * plane + base
+        sky[first:last + 1:plane] = bytes(high - low + 1)
+        if len(heights) == high - low + 1:
+            state[first:last + 1:plane] = b"\x01" * len(heights)
+            continue
+        for y in heights:
+            state[(y - y0) * plane + base] = SOLID
+        for below, above in zip(heights, heights[1:]):
+            if above - below == 1:
+                continue
+            run = range((below + 1 - y0) * plane + base, (above - y0) * plane + base, plane)
+            hollow.extend(run)
+            if len(run) <= max_headroom:
+                roofed.extend(run)
+                for at in run:
+                    state[at] = ROOFED
+
+    steps = (1, -1, span_x, -span_x, plane, -plane)
+    stack = [index for index in hollow if any(sky[index + step] for step in steps)]
+    for index in stack:
+        sky[index] = 1
+    while stack:
+        index = stack.pop()
+        for step in steps:
+            ahead = index + step
+            if not sky[ahead] and state[ahead] != SOLID:
+                sky[ahead] = 1
+                stack.append(ahead)
 
     found = []
-    for start in range(size):
+    for start in sorted(roofed):
         if state[start] != ROOFED:
             continue
         state[start] = HELD
@@ -346,13 +378,18 @@ def xray(payload, path, scale=6, layers=None, clip=None, title=None, caption=Non
     blocks = whole if layers is None and clip is None else \
         turned(voxels(payload, layers=layers, clip=clip), quarter)
     solid, veiled = {}, {}
+    washed, calmed = {}, {}
     for cell, colour in blocks.items():
         if cell in hidden:
-            veiled[cell] = desaturate(colour, VEIL_CHROMA)
+            if colour not in washed:
+                washed[colour] = desaturate(colour, VEIL_CHROMA)
+            veiled[cell] = washed[colour]
         elif cell in lining:
             solid[cell] = colour
         else:
-            solid[cell] = desaturate(colour, calm)
+            if colour not in calmed:
+                calmed[colour] = desaturate(colour, calm)
+            solid[cell] = calmed[colour]
 
     # Two culls, not one. A cell hidden only by veiled mass is now visible and has to be drawn, so the
     # opaque pass is culled against the opaque set alone; the veil is culled against itself, which leaves
