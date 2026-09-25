@@ -343,7 +343,7 @@ drive.py --dry           evaluate + inspect: score, GO1/GO3/GO4, CT12, the lint 
                          ── iterate here; this is where the board's shape is decided ──
 drive.py --out …         compile, store, read back, pre-flight, export, render, text
 03/06/04-*.txt           the numbers, before the pictures
-loop.py                  every placement question after the first drive — twenty seconds, not ten minutes
+loop.py                  every placement question after the first drive — two seconds, and nothing stored
 ```
 
 **A refusal is a fault to fix, not a step to work around.** Do not re-post a refused document with
