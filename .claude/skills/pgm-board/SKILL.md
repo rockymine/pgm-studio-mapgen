@@ -59,6 +59,7 @@ about it."*
 | What does a whole multi-wing house build? | `POST /terrain/prop-preview` — the prop plus a theme | `preview-snapshot`, which draws a default box |
 | How do I reshape a compiled outline? | `PATCH …/sketch/shapes/{id}/vertices/{index}` moves **one** point; `POST …/vertices {"after": n}` adds one at that edge's midpoint; `DELETE …/vertices/{index}`. A spec states them as `editShapes`, replayed before any bend | a second shape added on top to enlarge it, a subtract to eat into it, or a bend to move one corner |
 | How do I make a whole edge read rougher? | `POST …/sketch/shapes/{id}/bend` with `side: out\|in\|both` (`out` is the default and is the bloat that reads as land) | restating the whole `vertices` array, which is a second copy of the coast |
+| How do I build a facility, a landmark or any made structure that reads as **one thing**? | `techniques/designing-a-structure` — a module, one mass a layer, a façade as a `wallRun` of a `height`-axis stack, a door as a sill plus a lintel on a lintels layer | one shape per window, masses fused on one layer, or an override floored at a door's head — all three store at 200 and are wrong in `column` |
 | How do I get a flowing wall, lane or watercourse? | a `polyline` **shape** — the rasterizer splines its points (centripetal Catmull-Rom, 8 samples a segment) before offsetting the band, so 4 clicked points draw as a curve. `stroke_edge`: `solid` \| `rough` \| `tapered` | a chain of rectangles, or hand-authored `controls` |
 
 **A world that is not a stored map** — a community map, a hand-finished world, anything with a
@@ -343,7 +344,7 @@ drive.py --dry           evaluate + inspect: score, GO1/GO3/GO4, CT12, the lint 
                          ── iterate here; this is where the board's shape is decided ──
 drive.py --out …         compile, store, read back, pre-flight, export, render, text
 03/06/04-*.txt           the numbers, before the pictures
-loop.py                  every placement question after the first drive — twenty seconds, not ten minutes
+loop.py                  every placement question after the first drive — two seconds, and nothing stored
 ```
 
 **A refusal is a fault to fix, not a step to work around.** Do not re-post a refused document with

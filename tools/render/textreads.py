@@ -149,12 +149,15 @@ def reach_line(text):
     return "reach: no answer"
 
 
-def write_all(into, slug, intent, layout, fetch, every=None):
+def write_all(into, slug, intent, layout, fetch, every=None, ahead=None):
     """Every text read, written into `into`, and the summaries returned for the drive to print.
-    `fetch(method, path, body=None)` answers the API's `text/plain` body, or None."""
+    `fetch(method, path, body=None)` answers the API's `text/plain` body, or None. `ahead(requests)`, where
+    given, is handed each wave of `(method, path, body)` before the first of it is fetched, so a caller that
+    can send them side by side does; the second wave is cut to the extent the first one answers."""
     os.makedirs(into, exist_ok=True)
     written, summaries = [], []
     step = f"&every={every}" if every else ""
+    ahead = ahead or (lambda requests: None)
 
     def put(name, text):
         if text is None:
@@ -164,26 +167,24 @@ def write_all(into, slug, intent, layout, fetch, every=None):
             handle.write(text if text.endswith("\n") else text + "\n")
         written.append(name)
 
-    heightmap = fetch("GET", f"/map/{slug}/render/heightmap?format=text{step}")
+    heightmap_at = f"/map/{slug}/render/heightmap?format=text{step}"
+    slopes_at = f"/map/{slug}/slopes?format=text{step}"
+    reach_at = f"/map/{slug}/reach"
+    ahead([("GET", heightmap_at, None), ("GET", slopes_at, None), ("GET", reach_at, None)])
+
+    heightmap = fetch("GET", heightmap_at)
     put("02-heightmap.txt", heightmap)
-    put("03-slopes.txt", fetch("GET", f"/map/{slug}/slopes?format=text{step}"))
+    put("03-slopes.txt", fetch("GET", slopes_at))
 
     # Which standing ground no player can get to. Not a fault — scenery and a side observer island read
     # exactly like a shape stranded by accident — so it is printed for the author to judge rather than
     # counted against the board.
-    reach = fetch("GET", f"/map/{slug}/reach")
+    reach = fetch("GET", reach_at)
     put("04-reach.txt", reach)
     if reach:
         summaries.append("  " + reach_line(reach))
 
     board = extent(heightmap)
-    if board:
-        x0, x1, z0, z1 = board
-        cut_every = max(1, math.ceil(max(x1 - x0, z1 - z0) / 200))
-        put("world-section-x0.txt",
-            fetch("GET", f"/map/{slug}/render/section?axis=x&at=0&from={z0}&to={z1}&every={cut_every}&format=text"))
-        put("world-section-z0.txt",
-            fetch("GET", f"/map/{slug}/render/section?axis=z&at=0&from={x0}&to={x1}&every={cut_every}&format=text"))
 
     def within(x, z):
         """A point held inside the board's own extent — a transect through a feature at the edge would
@@ -192,12 +193,59 @@ def write_all(into, slug, intent, layout, fetch, every=None):
             return x, z
         return min(max(x, board[0]), board[1]), min(max(z, board[2]), board[3])
 
+    sections = []
+    if board:
+        x0, x1, z0, z1 = board
+        cut_every = max(1, math.ceil(max(x1 - x0, z1 - z0) / 200))
+        sections = [
+            ("world-section-x0.txt",
+             f"/map/{slug}/render/section?axis=x&at=0&from={z0}&to={z1}&every={cut_every}&format=text"),
+            ("world-section-z0.txt",
+             f"/map/{slug}/render/section?axis=z&at=0&from={x0}&to={x1}&every={cut_every}&format=text"),
+        ]
+
+    transects = []
     for feature_id, kind, (bx0, bz0, bx1, bz1) in features(intent, layout):
         cx, cz = (bx0 + bx1) // 2, (bz0 + bz1) // 2
         (xa, za), (xb, zb) = within(bx0 - OVERSHOOT, cz), within(bx1 + OVERSHOOT, cz)
-        along_x = fetch("GET", f"/map/{slug}/transect?points={xa},{za};{xb},{zb}&beside={BESIDE}&format=text")
+        along_x = f"/map/{slug}/transect?points={xa},{za};{xb},{zb}&beside={BESIDE}&format=text"
         (xa, za), (xb, zb) = within(cx, bz0 - OVERSHOOT), within(cx, bz1 + OVERSHOOT)
-        along_z = fetch("GET", f"/map/{slug}/transect?points={xa},{za};{xb},{zb}&beside={BESIDE}&format=text")
+        along_z = f"/map/{slug}/transect?points={xa},{za};{xb},{zb}&beside={BESIDE}&format=text"
+        transects.append((feature_id, kind, along_x, along_z))
+
+    walks = []
+    floors = storeys(layout)
+    for spawn in intent.get("spawns") or []:
+        point = spawn.get("point") or {}
+        if "x" not in point:
+            continue
+        start = at((int(point["x"]), int(point["z"])), spawn.get("layer"), floors)
+        for goal_id, _kind, where, layer in goals(intent):
+            walks.append((spawn.get("team"), goal_id, f"/map/{slug}/walk?from={start}"
+                          f"&to={at(where, layer, floors)}&beside={BESIDE}&format=text"))
+
+    census_at = f"/map/{slug}/themes/census?format=text"
+    claims_at = f"/map/{slug}/sketch/dressing?format=text"
+    # `06-claims.txt` reads the pass backwards — what already claims each cell. The seats read it forwards:
+    # where a kind's footprint may seat at all, before one is asked for. A position taken off the mask
+    # seats; a position chosen by eye is a decline waiting on a 200. The house footprint is the smallest
+    # the corpus builds, so the mask is the most generous answer a building has.
+    seats_at = [(kind, f"/map/{slug}/sketch/seats?{query}&format=text")
+                for kind, query in (("tree", "kind=tree"), ("boulder", "kind=boulder"),
+                                    ("house", "kind=house&width=9&depth=7"))]
+
+    ahead([("GET", path, None) for _, path in sections]
+          + [("GET", path, None) for _, _, along_x, along_z in transects for path in (along_x, along_z)]
+          + [("GET", path, None) for _, _, path in walks]
+          + [("GET", census_at, None), ("POST", claims_at, layout)]
+          + [("POST", path, layout) for _, path in seats_at])
+
+    for name, path in sections:
+        put(name, fetch("GET", path))
+
+    for feature_id, kind, along_x_at, along_z_at in transects:
+        along_x = fetch("GET", along_x_at)
+        along_z = fetch("GET", along_z_at)
         if along_x is None and along_z is None:
             summaries.append(f"  {feature_id:18} no answer")
             continue
@@ -208,33 +256,21 @@ def write_all(into, slug, intent, layout, fetch, every=None):
         summaries.append(f"  {'':18} along z: {summary_of(along_z)}")
 
     routes = []
-    floors = storeys(layout)
-    for spawn in intent.get("spawns") or []:
-        point = spawn.get("point") or {}
-        if "x" not in point:
+    for team, goal_id, path in walks:
+        text = fetch("GET", path)
+        if text is None:
             continue
-        start = at((int(point["x"]), int(point["z"])), spawn.get("layer"), floors)
-        for goal_id, _kind, where, layer in goals(intent):
-            text = fetch("GET", f"/map/{slug}/walk?from={start}&to={at(where, layer, floors)}"
-                                f"&beside={BESIDE}&format=text")
-            if text is None:
-                continue
-            routes.append(f"## spawn-{spawn.get('team')} -> {goal_id}\n{text}")
-            summaries.append(f"  spawn-{spawn.get('team')} -> {goal_id}: {summary_of(text)}")
+        routes.append(f"## spawn-{team} -> {goal_id}\n{text}")
+        summaries.append(f"  spawn-{team} -> {goal_id}: {summary_of(text)}")
     if routes:
         put("04-routes.txt", "\n".join(routes))
 
-    put("05-themes.txt", fetch("GET", f"/map/{slug}/themes/census?format=text"))
-    put("06-claims.txt", fetch("POST", f"/map/{slug}/sketch/dressing?format=text", layout))
+    put("05-themes.txt", fetch("GET", census_at))
+    put("06-claims.txt", fetch("POST", claims_at, layout))
 
-    # `06-claims.txt` reads the pass backwards — what already claims each cell. This reads it forwards:
-    # where a kind's footprint may seat at all, before one is asked for. A position taken off the mask
-    # seats; a position chosen by eye is a decline waiting on a 200. The house footprint is the smallest
-    # the corpus builds, so the mask is the most generous answer a building has.
     seats = []
-    for kind, query in (("tree", "kind=tree"), ("boulder", "kind=boulder"),
-                        ("house", "kind=house&width=9&depth=7")):
-        text = fetch("POST", f"/map/{slug}/sketch/seats?{query}&format=text", layout)
+    for kind, path in seats_at:
+        text = fetch("POST", path, layout)
         if text is None:
             continue
         seats.append(f"## {kind}\n{text}")

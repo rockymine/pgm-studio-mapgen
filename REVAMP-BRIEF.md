@@ -222,5 +222,5 @@ care.
   before measuring a studio change.
 - `GET /map/{slug}/column?at=x,z` answers text, not JSON. `loop.py --column` is the JSON read of the same
   thing off the preview.
-- A drive is about ten minutes on a 260 × 250 board, five on 130 × 120; a loop pass is twenty seconds; the
+- A drive is ten to fifteen seconds on a 260 × 150 board and seven on 100 × 220; a loop pass is two; the
   world tools read a million-block world in seconds and diff two in a minute.

@@ -214,6 +214,14 @@ Everything after it reads the stored map, and one of those reads has to be there
 `sketch/columns` is asked **after** the store because `DR-KEEP` reads the spawn doors' approaches and the goal
 rings, which come off the intent.
 
+**Every read after the store is sent at once and printed where it is asked.** None of them writes to the
+board, so the driver puts them on the wire together, four at a time, and the studio answers them side by
+side. The transcript is the one a run asking them one after another would print, line for line.
+
+**The isometrics and the x-ray are drawn while those reads are answered.** They come off the one
+`sketch/columns` answer the decline list is read from, each view in a worker process of its own, and their
+lines print where the pictures always have.
+
 ### The escape hatches
 
 `--dry` stops after the evaluator and the inspect feed, so a plan can be iterated with no map row and no
@@ -230,7 +238,8 @@ python3 tools/loop.py specs/<slug> [--slug <slug>] [--no-relief] [--no-dressing]
                       [--column x,z [x,z ...]]
 ```
 
-A drive is ten minutes and most of what it decides was decided by two previews that take twenty seconds.
+A drive stores, exports and pictures the board in ten to fifteen seconds, and most of what it decides was
+decided by two previews that take two.
 This reads the spec exactly as `drive.py` does — the plan compiled and patched with its finish, or the drawn
 layout — and posts the result to `sketch/relief/read` and `sketch/dressing` without storing anything.
 
@@ -249,7 +258,7 @@ idempotent, so the materials, the house presets and parts, the themes, the biome
 boulders and the six vanilla tree recipes are always there. Two things this repository depends on are not,
 and this puts both in.
 
-**The technique cards' boards** — thirty over twenty-seven cards — so *open it in the studio as
+**The technique cards' boards** — thirty-two over twenty-nine cards — so *open it in the studio as
 `technique-<name>`* is true on a database nobody has driven them into.
 
 **The copied trees.** `corpus/tree-showcase` is a world of hand-built trees and the studio's

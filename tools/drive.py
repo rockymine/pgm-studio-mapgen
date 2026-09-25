@@ -127,7 +127,8 @@ The pictures and the provenance sidecar land beside the documents rather than in
 `--out` is what a server is handed: it holds `region/`, `level.dat` and `map.xml`, and nothing a match does
 not read.
 """
-import collections, json, math, re, sys, io, zipfile, urllib.request, urllib.error, os, shutil
+import collections, concurrent.futures, json, math, multiprocessing, re, sys, io, zipfile, urllib.request, \
+    urllib.error, os, shutil
 
 STYLES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "styles")
 
@@ -163,6 +164,35 @@ def endpoint():
                      "PGM_STUDIO_API=http://localhost:1234/api")
 
 
+def _exchange(method, path, data):
+    """One request on the wire: `(status, payload, Pgm-Warnings)` on a 2xx, `(status, text, None)` on an
+    HTTP refusal. Anything else — a refused connection, a timeout — raises, as it always has."""
+    req = urllib.request.Request(endpoint() + path, data=data, method=method,
+                                 headers={"Content-Type": "application/json"} if data else {})
+    try:
+        with urllib.request.urlopen(req, timeout=1800) as response:
+            return response.status, response.read(), response.headers.get("Pgm-Warnings")
+    except urllib.error.HTTPError as error:
+        return error.code, error.read().decode(), None
+
+
+# Requests already on the wire, keyed by what they ask. **The studio answers reads side by side, and a run
+# asks forty of them of one stored board**, so `ahead` sends the ones whose paths are known as soon as they
+# are, and the `call` that asks for one later waits on it rather than sending its own. The printing stays
+# in `call`, so the run reads in the order it always did; only the waiting overlaps.
+_sent = {}
+_wire = concurrent.futures.ThreadPoolExecutor(max_workers=4)
+
+
+def ahead(requests):
+    """Send every `(method, path)` or `(method, path, body)` now, to be answered by the `call` asking it.
+    Only reads go ahead: a write's order is part of what it means."""
+    for method, path, *body in requests:
+        data = None if not body or body[0] is None else json.dumps(body[0]).encode()
+        if (method, path, data) not in _sent:
+            _sent[(method, path, data)] = _wire.submit(_exchange, method, path, data)
+
+
 def call(method, path, body=None, raw=False, fatal=True):
     """One request. Returns (status, payload). A non-2xx is printed with its findings and, unless
     fatal is False, stops the run — a refusal is a fault to fix, not a step to skip.
@@ -172,34 +202,30 @@ def call(method, path, body=None, raw=False, fatal=True):
     the world, and `RQ3` names a field that went unread. The `Pgm-Warnings` header carries the same
     count and rule ids, so the status line says how much there is before the body is parsed."""
     data = None if body is None else json.dumps(body).encode()
-    req = urllib.request.Request(endpoint() + path, data=data, method=method,
-                                 headers={"Content-Type": "application/json"} if data else {})
+    pending = _sent.pop((method, path, data), None)
+    status, payload, carried = pending.result() if pending else _exchange(method, path, data)
+    if status < 300:
+        print(f"  {method:5} {path:46} {status}"
+              f"{'   ! ' + carried if carried else ''}")
+        if raw:
+            return status, payload
+        answered = json.loads(payload) if payload else {}
+        complaints(answered)
+        return status, answered
+    text = payload
+    print(f"  {method:5} {path:46} {status}")
     try:
-        with urllib.request.urlopen(req, timeout=1800) as response:
-            payload = response.read()
-            carried = response.headers.get("Pgm-Warnings")
-            print(f"  {method:5} {path:46} {response.status}"
-                  f"{'   ! ' + carried if carried else ''}")
-            if raw:
-                return response.status, payload
-            answered = json.loads(payload) if payload else {}
-            complaints(answered)
-            return response.status, answered
-    except urllib.error.HTTPError as error:
-        text = error.read().decode()
-        print(f"  {method:5} {path:46} {error.code}")
-        try:
-            body = json.loads(text)
-        except Exception:
-            body = text
-        report(body if isinstance(body, dict) else {}, "  ")
-        if isinstance(body, dict) and body.get("message"):
-            print(f"    {body['message']}")
-        elif not isinstance(body, dict):
-            print(f"    {text[:600]}")
-        if fatal:
-            raise SystemExit(1)
-        return error.code, body
+        body = json.loads(text)
+    except Exception:
+        body = text
+    report(body if isinstance(body, dict) else {}, "  ")
+    if isinstance(body, dict) and body.get("message"):
+        print(f"    {body['message']}")
+    elif not isinstance(body, dict):
+        print(f"    {text[:600]}")
+    if fatal:
+        raise SystemExit(1)
+    return status, body
 
 
 # The band a measure is judged against and the sentence a rule is stated in are the studio's, read once
@@ -326,39 +352,22 @@ def resolve(style):
     return style
 
 
-def renders(into, slug, finish, layout, drawn, flow):
-    """Every picture the studio will draw for what was authored, written to disk.
+def pictures(slug, finish, layout):
+    """Every picture the studio will draw for what was authored, as `(file, method, path, body)`.
 
     The reads are the same ones the brief asks an author to look at, and the reason they are taken here is
     the reason the grid and the flow are printed here: a read nobody is refused for skipping is the read
     nobody takes. A theme swatch, a house in section and the coverage map each answer a question no
-    top-down of the finished world can — and the section is the one every shipped roof fault was visible in.
-
-    Taking a picture is not the same as looking at one. What this removes is the excuse."""
-    os.makedirs(into, exist_ok=True)
-    written = []
-
-    def png(name, method, path, body=None):
-        status, payload = call(method, path, body, raw=True, fatal=False)
-        if status >= 300 or not isinstance(payload, bytes):
-            return
-        with open(os.path.join(into, name), "wb") as handle:
-            handle.write(payload)
-        written.append(name)
-
-    for name, text_body in (("00-board.txt", drawn), ("01-flow.txt", flow)):
-        if text_body:
-            with open(os.path.join(into, name), "w") as handle:
-                handle.write(text_body)
-            written.append(name)
+    top-down of the finished world can — and the section is the one every shipped roof fault was visible in."""
+    asked = []
 
     # Two views a theme, because they answer different questions and neither substitutes. The section is
     # the column — rim over wall over fill, the pairing most easily got wrong. The surface is the swatch,
     # and it is the only view a pattern is legible in: a section through a voronoi is one block wide.
     for theme_id, theme in (finish.get("themes") or {}).items():
         for view in ("surface", "section"):
-            png(f"theme-{theme_id}-{view}.png", "POST",
-                f"/terrain/theme-preview?format=png&view={view}", theme)
+            asked.append((f"theme-{theme_id}-{view}.png", "POST",
+                          f"/terrain/theme-preview?format=png&view={view}", theme))
 
     # Every distinct house the board stands up: the stamped rooms, and each house prop's own style. Keyed by
     # the style document rather than by where it was named, so one style used twice is drawn once.
@@ -374,10 +383,10 @@ def renders(into, slug, finish, layout, drawn, flow):
             houses.setdefault(json.dumps(prop["style"]), f"house-{prop.get('id', len(houses))}")
     for style_json, house_id in houses.items():
         for view in ("plan", "section"):
-            png(f"{house_id}-{view}.png", "POST",
-                f"/room-styles/preview-snapshot?format=png&view={view}", json.loads(style_json))
+            asked.append((f"{house_id}-{view}.png", "POST",
+                          f"/room-styles/preview-snapshot?format=png&view={view}", json.loads(style_json)))
 
-    png("coverage.png", "GET", f"/map/{slug}/coverage?format=png")
+    asked.append(("coverage.png", "GET", f"/map/{slug}/coverage?format=png", None))
 
     # The world itself, read back through the routes that answer it. These are the reads an author is meant
     # to look at after building and the ones nobody ever took, because until they answered over HTTP an agent
@@ -400,39 +409,80 @@ def renders(into, slug, finish, layout, drawn, flow):
         ("world-section-x0.png", "render/section?axis=x&at=0&from=-120&to=120"),
         ("world-section-z0.png", "render/section?axis=z&at=0&from=-120&to=120"),
     ):
-        png(name, "GET", f"/map/{slug}/{route}")
+        asked.append((name, "GET", f"/map/{slug}/{route}", None))
+    return asked
 
-    # And the board in the round. Every read above is a plan — a diagram of one question, drawn from above —
-    # and a plan cannot say whether a thing has the bulk it should: a ship is a ship-shaped patch of planks
-    # until it is seen with its masts up. The picture is drawn here rather than fetched because the studio
-    # answers columns, not cameras; `tools/render/iso.py` turns the one into the other, off the same payload
-    # the decline list was read from, so what is drawn is what was built.
-    _, columns = call("POST", f"/map/{slug}/sketch/columns", layout, fatal=False)
-    if isinstance(columns, dict) and columns.get("cols"):
-        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "render"))
-        import iso
-        for name, quarter in (("world-iso.png", 0), ("world-iso-turned.png", 1)):
-            blocks, faces, size = iso.isometric(
-                columns, os.path.join(into, name), scale=3, margin=30, quarter=quarter,
-                title=None, caption=f"{slug} - isometric, {'south-east' if quarter == 0 else 'south-west'}")
+
+def renders(into, slug, finish, layout, drawn, flow, round_drawn):
+    """Every picture the studio drew for what was authored, written to disk, and the board in the round
+    that `in_the_round` drew beside them — `round_drawn` is the future it answers on.
+
+    Taking a picture is not the same as looking at one. What this removes is the excuse."""
+    os.makedirs(into, exist_ok=True)
+    written = []
+
+    for name, text_body in (("00-board.txt", drawn), ("01-flow.txt", flow)):
+        if text_body:
+            with open(os.path.join(into, name), "w") as handle:
+                handle.write(text_body)
             written.append(name)
-            print(f"  ISO   {name:<44} {blocks} blocks, {faces} drawn, {size[0]}x{size[1]} px")
+
+    for name, method, path, body in pictures(slug, finish, layout):
+        status, payload = call(method, path, body, raw=True, fatal=False)
+        if status >= 300 or not isinstance(payload, bytes):
+            continue
+        with open(os.path.join(into, name), "wb") as handle:
+            handle.write(payload)
+        written.append(name)
+
+    if round_drawn is not None:
+        lines, drawn_round = round_drawn.result()
+        for line in lines:
+            print(line)
+        written += drawn_round
+
+    print(f"    {len(written)} render(s) -> {into}")
+    return written
+
+
+def in_the_round(columns, into, slug, layout):
+    """The board in the round, drawn from the `sketch/columns` answer: two isometrics, the void scan and,
+    where there is a room worth seeing, the x-ray. Returns the lines to print and the files written, and
+    prints nothing itself — it is drawn beside the run's reads rather than after them.
+
+    Every read the studio answers is a plan — a diagram of one question, drawn from above — and a plan
+    cannot say whether a thing has the bulk it should: a ship is a ship-shaped patch of planks until it is
+    seen with its masts up. The picture is drawn here rather than fetched because the studio answers
+    columns, not cameras; `tools/render/iso.py` turns the one into the other, off the same payload the
+    decline list was read from, so what is drawn is what was built."""
+    lines, written = [], []
+    if not (isinstance(columns, dict) and columns.get("cols")):
+        return lines, written
+    os.makedirs(into, exist_ok=True)
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "render"))
+    import iso
+
+    # The four views are independent pictures of one payload, so each is drawn in a process of its own —
+    # spawned rather than forked, because this process has the run's reads in flight on other threads.
+    views = concurrent.futures.ProcessPoolExecutor(
+        max_workers=min(4, os.cpu_count() or 1), mp_context=multiprocessing.get_context("spawn"))
+    with views:
+        isometrics = [(name, views.submit(
+            iso.isometric, columns, os.path.join(into, name), scale=3, margin=30, quarter=quarter,
+            title=None, caption=f"{slug} - isometric, {'south-east' if quarter == 0 else 'south-west'}"))
+            for name, quarter in (("world-iso.png", 0), ("world-iso-turned.png", 1))]
 
         # What the board holds that is covered — a chamber, a house interior, the air under a ledge — with
         # the blocks it lies between. The scan runs on every board because it costs one pass over a payload
         # already in hand and answers a question no other read does: `render/section` needs the coordinate
-        # in advance and `world-iso` above draws a gaol under a meadow as a meadow. A void marked SEALED is
-        # a finding on its own — a space nothing can walk into.
+        # in advance and `world-iso` draws a gaol under a meadow as a meadow. A void marked SEALED is a
+        # finding on its own — a space nothing can walk into.
         voids = iso.cavities(iso.voxels(columns))
-        for entry in voids[:6]:
-            print(f"  VOID  {entry['cells']:>6} cells  {'SEALED' if entry['sealed'] else 'open  '}  "
-                  f"x {entry['min'][0]}..{entry['max'][0]}  y {entry['min'][1]}..{entry['max'][1]}  "
-                  f"z {entry['min'][2]}..{entry['max'][2]}")
-        print(f"  VOID  {len(voids)} roofed void(s), "
-              f"{sum(1 for entry in voids if entry['sealed'])} of them sealed")
+
         # And the x-ray, only where there is something in it to see. Below the floor the view draws the
         # same board the two isometrics already drew, one shade paler, which is a picture that costs a
         # reader a look and answers nothing.
+        xrays = []
         if voids and voids[0]["cells"] >= XRAY_FLOOR:
             # The storeys the veil may not touch. A layer of `kind: "made"` is a made thing, and a made
             # thing standing in a room is the subject of the picture rather than what hides it — but it
@@ -440,14 +490,26 @@ def renders(into, slug, finish, layout, drawn, flow):
             # rule cannot tell it from a ceiling. The document can, and this is the caller that holds it.
             made = [layer["id"] for layer in (layout.get("layers") or [])
                     if layer.get("kind") == "made" and layer.get("id")]
-            for name, quarter in (("world-xray.png", 0), ("world-xray-turned.png", 1)):
-                iso.xray(columns, os.path.join(into, name), scale=3, margin=30, quarter=quarter,
-                         title=None, keep=made or None)
-                written.append(name)
-                print(f"  XRAY  {name:<44} veiled to the largest of {len(voids)} void(s)")
+            xrays = [(name, views.submit(
+                iso.xray, columns, os.path.join(into, name), scale=3, margin=30, quarter=quarter,
+                title=None, keep=made or None))
+                for name, quarter in (("world-xray.png", 0), ("world-xray-turned.png", 1))]
 
-    print(f"    {len(written)} render(s) -> {into}")
-    return columns, written
+        for name, drawn in isometrics:
+            blocks, faces, size = drawn.result()
+            written.append(name)
+            lines.append(f"  ISO   {name:<44} {blocks} blocks, {faces} drawn, {size[0]}x{size[1]} px")
+        for entry in voids[:6]:
+            lines.append(f"  VOID  {entry['cells']:>6} cells  {'SEALED' if entry['sealed'] else 'open  '}  "
+                         f"x {entry['min'][0]}..{entry['max'][0]}  y {entry['min'][1]}..{entry['max'][1]}  "
+                         f"z {entry['min'][2]}..{entry['max'][2]}")
+        lines.append(f"  VOID  {len(voids)} roofed void(s), "
+                     f"{sum(1 for entry in voids if entry['sealed'])} of them sealed")
+        for name, drawn in xrays:
+            drawn.result()
+            written.append(name)
+            lines.append(f"  XRAY  {name:<44} veiled to the largest of {len(voids)} void(s)")
+    return lines, written
 
 
 def headline(into):
@@ -502,7 +564,7 @@ def text_reads(into, slug, intent, layout):
         status, payload = call(method, path, body, raw=True, fatal=False)
         return payload.decode("utf-8", "replace") if isinstance(payload, bytes) and status < 300 else None
 
-    written, summaries = textreads.write_all(into, slug, intent, layout, fetch)
+    written, summaries = textreads.write_all(into, slug, intent, layout, fetch, ahead=ahead)
     for line in summaries:
         print(line)
     print(f"    {len(written)} text read(s) -> {into}")
@@ -843,6 +905,15 @@ def main():
     # header. A stacked board can store at 200, raise nothing anywhere, open the export gate, and have
     # a floor that is not in the world with a wall bridging the trench where it was. This read is the
     # only one that says so, which is why it is asked on every run.
+    # Every read from here to the end asks the stored board, and nothing below writes to it, so they are
+    # all sent now and the studio answers them side by side; each is still printed where it is asked.
+    render_dir = into or os.path.join(specdir, "renders")
+    ahead([("GET", f"/map/{slug}/findings"), ("GET", f"/map/{slug}/plan/ascii"),
+           ("GET", f"/map/{slug}/plan/flow"), ("POST", f"/map/{slug}/sketch/relief/read", layout),
+           ("POST", f"/map/{slug}/sketch/columns", layout), ("GET", f"/map/{slug}/preflight"),
+           ("GET", f"/map/{slug}/coverage"), ("GET", f"/map/{slug}/export")]
+          + ([(method, path, body) for _, method, path, body in pictures(slug, finish, layout)] if out else []))
+
     print("== everything wrong with the stored map")
     _, verdict = call("GET", f"/map/{slug}/findings", fatal=False)
     if findings(verdict):
@@ -888,6 +959,13 @@ def main():
     _, columns = call("POST", f"/map/{slug}/sketch/columns", layout, fatal=False)
     if not (columns.get("warnings") if isinstance(columns, dict) else None):
         print("    nothing declined")
+    # The board in the round is drawn from these columns while the reads below are answered — unless the
+    # pictures go inside the world directory, which the export clears first.
+    drawer = concurrent.futures.ThreadPoolExecutor(max_workers=1)
+    inside_out = out and os.path.commonpath([os.path.abspath(render_dir), os.path.abspath(out)]) \
+        == os.path.abspath(out)
+    round_drawn = drawer.submit(in_the_round, columns, render_dir, slug, layout) \
+        if out and not inside_out else None
 
     # ── the export's own verdict, before the export ──────────────────────────────────────────
     # `GET /export` refuses a board it cannot walk with EX1, at 409, after the whole world is built.
@@ -949,13 +1027,13 @@ def main():
             print(f"    provenance -> {specdir}/provenance.json")
         # After the extraction, which clears the directory it writes into.
         print("== the pictures of what was authored")
-        pictures = into or os.path.join(specdir, "renders")
-        _columns, written = renders(pictures, slug, finish, layout, drawn, flow)
+        round_drawn = round_drawn or drawer.submit(in_the_round, columns, render_dir, slug, layout)
+        written = renders(render_dir, slug, finish, layout, drawn, flow, round_drawn)
         # ── the same board as text, which is the shape a reader subtracts from rather than gauges ──
         print("== the board as text: transects through every feature, and the routes")
-        written += text_reads(pictures, slug, intent, layout)
-        sweep(pictures, written)
-        headline(pictures)
+        written += text_reads(render_dir, slug, intent, layout)
+        sweep(render_dir, written)
+        headline(render_dir)
     # A compiled spec's documents are the run's output and are written beside its plan; a drawn spec's
     # are its input and are left exactly as authored, so re-driving one is byte-identical by
     # construction rather than by the finish being empty.
@@ -968,4 +1046,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    finally:
+        # A run stopped by a refusal leaves reads it will never ask for; they are dropped, not waited on.
+        _wire.shutdown(wait=False, cancel_futures=True)
