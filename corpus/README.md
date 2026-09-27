@@ -76,10 +76,12 @@ below that foot.
 two wooden slabs a course under its lowest log and `r12-1` at `(7, 2, -32)` carries one, so planting
 either lays a slab into the ground it stands on.
 
-**Eight pieces of crown hang clear of the trunk they belong to and are filed as nothing.** They are
-`(32, 4, -457)` in `r2`, and `(74, 5, -40)`, `(8, 11, -34)`, `(12, 8, -34)`, `(28, 11, -33)`,
-`(49, 11, -33)`, `(47, 8, -30)` and `(12, 8, -25)` in `r12` — leaves and a log or two that no 26-connected
-step reaches from their tree, which is why those two bands read as more bodies than they hold trees.
+**Eighteen pieces of crown hang one block clear of the tree they belong to, and the seeder files each with
+that tree.** No 26-connected step reaches them from their own wood, so each joins the standing tree whose
+blocks come nearest it, within four blocks. Eight are large: `(32, 4, -457)` in `r2`, and `(74, 5, -40)`,
+`(8, 11, -34)`, `(12, 8, -34)`, `(28, 11, -33)`, `(49, 11, -33)`, `(47, 8, -30)` and `(12, 8, -25)` in `r12`.
+The largest is the top of `r12-3`'s crown, 107 blocks and the tree's top three courses. The other ten are one
+or two leaves at a crown's tips in `r1`, `r7` and `r9`.
 
 **Where a name can carry meaning is a spec.** `tools/trees.py bodies --row <z>=<prefix>` cuts a row into
 bodies under a prefix the author chooses, which is how `specs/fable-millrace-revamp/trees.json` names its
