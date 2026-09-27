@@ -153,6 +153,12 @@ podzol's grain of red, brown and muddy green, and the pair reads as a harsh bord
 `Mesa` (`#90814d`) or `Swampland` (`#6a7039`) the tint comes to meet it and the pair reads as one dry,
 leaf-littered floor.
 
+**Grass belongs on more than a meadow, once the biome is picked for it.** A desert, a badlands and an ash
+field may each carry grass, and an ash field dirt as well, so long as the biome makes the grass flow into the
+ground round it instead of standing in it as a summer meadow. `Desert` and `Savanna` both tint it `#bfb755`,
+which sits beside sand; a snowy board takes a cold biome — `Cold taiga`, `Ice plains` or `Frozen river`, all
+`#80b497`.
+
 `GET /api/terrain/biomes` answers every biome's hex, so the check is a look rather than a guess: ask it of
 each tinted block the palette names, once, before the patterns are written.
 
@@ -276,11 +282,11 @@ cobblestone alone, does not read as ground.
 |---|---|---|
 | stony ground | stone and andesite as the base, cobblestone mixed in up to 30% | cobblestone as the base |
 | meadow | grass; worn ground is dirt and coarse dirt together, as one area | coarse dirt or dirt alone as specks |
-| desert | sand and sandstone, and more of the sand family where the ground wants detail; end stone only where sandstone is there too; grass, with the biome changed to suit it | red sand, gravel, end stone alone |
-| badlands | an orange ground (red sand, red sandstone, orange stained clay) with inset patches of dirt and coarse dirt and of hardened clay | yellow sandstone, red stained clay, light grey stained clay |
+| desert | sand and sandstone, and more of the sand family where the ground wants detail; end stone only where sandstone is there too; grass, under a biome that suits it | red sand, gravel, end stone alone |
+| badlands | an orange ground (red sand, red sandstone, orange stained clay) with inset patches of dirt and coarse dirt and of hardened clay; grass, under a biome that suits it | yellow sandstone, red stained clay, light grey stained clay |
 | mesa cliff | several bands of hardened and stained clay; vanilla banding is colourful but not wrong, red included as a thin band | two colours as bands |
 | snowfield | snow, or snow with packed ice | white stained clay; stone on the flat |
-| ash field | grey and black stained clay — the safe answer, with room left for a third set inset in it | — |
+| ash field | grey and black stained clay — the safe answer, with room left for a third set inset in it: dirt, or grass under a biome that suits it | — |
 
 **Stained clay is ground only inside a set of its own tone.** Orange stained clay belongs in a red-sand ground
 and grey with black makes an ash field; white stained clay beside snow and light grey stained clay on red
