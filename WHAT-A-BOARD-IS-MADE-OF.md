@@ -56,7 +56,8 @@ came apart. The observations below are measured off shipped boards and are enfor
 
 - **How a board is painted is its own section** — *What a board is painted with*, below. It is the half of
   authoring no gate holds you to and the half every previous run got wrong.
-- **Stained clay, wool and glass are shade rows, not ground** — a stated colour, never terrain.
+- **Wool and glass are shade rows, not ground** — a stated colour, never terrain. Stained clay is ground
+  only inside a set of its own tone, which *What a board is painted with* says.
 - **The magenta block at the centre of every board is the observer platform's bedrock, and it is not a
   fault.** `SurfaceReport` legends a full cube no tone family claims as *unnamed material* and colours it
   magenta, so a block missing from a family reads as a fault in the board. Bedrock has no family on purpose —
@@ -129,14 +130,115 @@ from.
 
 ## What a board is painted with
 
-The numbers here are measured over the **fifty-one** boards in this repository that carry a theme registry,
-so they say how far a habit runs rather than how bad one board was.
+Every ruling here was made looking at boards and swatches drawn with the game's own textures, and none of them
+can be checked on a flat-colour picture: two noisy blocks of one colour are one calm grey in a swatch and
+static on the ground. Where a ruling changed while it was being made, the later one is the one written here.
 
-**A pattern takes two blocks, not a family.** A `TerrainPalette` family is the set of blocks that read as one
-ground, offered together so a list can be *filled* from one and then cut down — filling it is the first step,
-not the answer. Two members is a texture; three is a mottle; five is a family shown off rather than a ground.
-Of the **277 patterns** on these boards, **85% carry three entries or more**, 51 carry five and 8 carry six or
-seven; only 15% carry two.
+**A named block list is one answer, not the answer.** Where a ruling names blocks — a floor, a path, a boulder,
+a ground's set — those are combinations that were looked at and passed, and the principle beside them is the
+ruling. Five painters handed this section laid the same floor, the same boulder and the same two paths on five
+different places, which is a default showing through rather than five choices. Find the board's own answer by
+the same principle, and look at it.
+
+**A tinted block's family is the biome's to decide, so choose the biome before the patterns.** Grass, leaves
+and water take their colour from the chunk's biome byte and nothing else on a board does, which makes the
+biome a palette decision rather than a line added to the finish at the end. The rule reads twice.
+
+A cold board takes a **cold biome**: snow and ice are blocks, so a snowfield on `Plains` has a summer meadow
+running through it, and `Ice plains`, `Cold taiga` or `Frozen river` — all three tinting grass `#80b497` — is
+what makes the two agree.
+
+And grass with **podzol** is a colour distance, not a prohibition. On `Plains` the tint is `#91bd59` against
+podzol's grain of red, brown and muddy green, and the pair reads as a harsh border, worst when splotchy. On
+`Mesa` (`#90814d`) or `Swampland` (`#6a7039`) the tint comes to meet it and the pair reads as one dry,
+leaf-littered floor.
+
+**Grass belongs on more than a meadow, once the biome is picked for it.** A desert, a badlands and an ash
+field may each carry grass, and an ash field dirt as well, so long as the biome makes the grass flow into the
+ground round it instead of standing in it as a summer meadow. `Desert` and `Savanna` both tint it `#bfb755`,
+which sits beside sand; a snowy board takes a cold biome — `Cold taiga`, `Ice plains` or `Frozen river`, all
+`#80b497`, or `Cold beach` just off them at `#83b593`.
+
+**Two biomes of one colour are one biome on the ground.** Every biome the game stores is on the list, and many
+share a colour: plains with beach, the frozen and cold ones with each other, every desert with every savanna.
+A field that mixes two of one colour paints a boundary nobody can see, so a palette takes one biome per
+colour, and `sharesTintWith` on each row of `GET /api/terrain/biomes` names which ones are the same.
+
+`GET /api/terrain/biomes` answers every biome's grass, leaf and water hex, so the check is a look rather than a guess: ask it of
+each tinted block the palette names, once, before the patterns are written.
+
+### A ground is a set, not a block
+
+**A ground is one tone carried by several textures.** The blocks mixed in one field sit close in colour and
+differ in texture, and the closeness is what lets the textures merge into one ground: stone, andesite and
+cobblestone; dirt, coarse dirt and spruce planks; stone bricks, polished andesite, andesite and stone. Tone is
+also what decides how much of a noisy block a set can carry — cobblestone merges with andesite more easily
+than with stone, because andesite sits nearer it.
+
+**Three or four blocks, not two.** Two blocks side by side read as two materials colliding, even when their
+colours are close. A path is best at a third each of three blocks, a built floor at a quarter each of four,
+and dirt with coarse dirt at half and half — a few specks of coarse dirt in dirt look worse than none.
+
+**What went wrong on the boards measured here was the tones, not the count.** Of 259 sampled surface patterns
+on 77 boards, half mix two blocks more than 60 RGB apart in one field — grass speckled with gravel, sand with
+coarse dirt — and that is the mottle a player sees. A `TerrainPalette` family is a colour bucket rather than
+a recipe: it offers blocks that average to one colour, planks beside dirt and wool beside clay, so it is where
+a list starts and never the list.
+
+**A noisy block is capped, not banned.** Cobblestone in stony ground stays at or under 30%. Sandstone in sand
+stays in small patches, never large splotches. How loud a block is shows only on the ground, which is why a
+swatch cannot settle it.
+
+### A ground of several tones is a main set with other sets inset in it
+
+**One set is the ground and the others are patches contained inside it.** A badlands floor is an orange
+ground — red sand, red sandstone, orange stained clay — holding patches of dirt and coarse dirt, and patches
+of hardened clay. Each is a set in its own right, so an orange patch is never one bare block against a bare
+dirt one. The same six blocks thrown into one field are a mess.
+
+**Which set sits inside which is part of the recipe.** Dirt at the centre, a ring of hardened clay round it and
+orange outside works; hardened clay at the centre of a ring of dirt does not. Hardened clay may also stand in
+the orange on its own, away from the dirt. Texturing is how the blocks are combined as much as which blocks
+are chosen.
+
+**A noise's stop list is how the nesting is written.** A `noise` is a ramp over a smooth field and each stop
+takes an equal band of the field's value, so stops next to each other in the list are next to each other on
+the ground. A stop may itself be a pattern, so each set is a nested `cell` or `noise` of its own blocks. Of
+726 patterns on 77 boards, 32 nest one inside another, on 4 boards.
+
+**Put the main set in the middle of the list and the patches at its ends.** The field is bell-shaped, so the
+middle stops take most of the ground and join into one, while the end stops come out as separate patches.
+Measured on the studio's own noise: two stops split about 53/47 and both form one maze, with no ground and no
+patches; `[P, G, G]` gives 26% patches of `P`; `[P, G, G, Q]` gives 16% and 12% patches that never touch.
+
+**The order of the ends says which patch sits inside which.** `[dirt, hardened clay, orange, orange]` rings
+the dirt patches with clay inside the orange, which works. `[hardened clay, dirt, orange, orange]` puts clay
+at the centre of a dirt ring, which does not. `[hardened clay, orange, orange, dirt]` keeps the two apart —
+rendered, no clay block touched a dirt one.
+
+**Even shares are a `cell`, not a `noise`.** A noise's middle stop always takes about half the ground, so no
+stop list gives a third each. A `cell` gives each palette entry an equal share at any cell size — a third each
+of three, a quarter each of four — and is what a path or a built floor is laid with.
+
+### Grain
+
+**Random ground noise is small patches, about five blocks across.** A finer speckle, about three blocks
+across, reads as too random. On the studio's noise a stop at the end of `[P, G, G]` makes five-block patches
+at `scale` 2 and seven-block ones at 3; the committed themes sit at 6 to 8, which makes patches of 17 blocks
+and more — the large random splotches the boards were complained about for.
+
+**A large patch is a feature, and a feature is a shape.** Worn ground is a shallow pit sunk a block into the
+meadow, drawn as a shape or a stroke with its own theme, and painted dirt and coarse dirt half and half; a rim
+of dirt round it is fine. Medium and large patches are right only where they are intentional like that, and
+never as random terrain noise.
+
+**Splotches beat patterns, and a splotch is a shape.** A theme is stated **on a shape** (`TP10`: map default ›
+shape, winner takes all), so the brush an author reaches for is an `addShapes` polygon with a `theme` of its
+own — a patch of bare dirt worn into a meadow, a sandy shelf at the water, a scorched ring. Ten of those over
+one ground is a landscape somebody made.
+
+The same patch sampled from a pattern instead is a board that is a third dirt *everywhere*, including the places dirt
+has no reason to be. If the answer to *why is it here* is "the noise put it there", it is not an answer.
 
 **A voronoi is never ground.** It draws a diagram — a grid of lines with cells reading off it — and there is
 no landscape that looks like that. It belongs in the **fill**, where it is the body of the rock nobody sees
@@ -144,20 +246,7 @@ until a wall is cut, and it is made of **stone**. A voronoi whose bands are dirt
 the worst of both: a network of dirt lines nothing in nature draws. On these boards **44 of 50 voronois are on
 the surface** and **none is in the fill**.
 
-**Noise carries a texture, never a border.** A fractal field between two blocks of nearly the same shade —
-sandstone into stone, dirt into coarse dirt — reads as one ground with grain in it. The same field between
-two *different* grounds reads as static: the big destroy boards with the lake scattered sand into grass, and
-what that draws is neither a beach nor a meadow. Where two grounds meet, the edge is **drawn** — a shape with
-its own theme, a stroke, a painted band — and never sampled.
-
-**A brush too small is static, and the cure is always bigger.** A field whose features are smaller than the
-thing they dress reads as noise however good the palette is; the same field at three times the period reads as
-patches, which is what looks deliberate.
-
-The medians here are `cellSize` **6** for a cell pattern (down to 2) and `scale` **8** for a noise field (down
-to 4). Those are the numbers that produced the boards being complained about.
-
-Go up, then look at it: `POST /api/terrain/material-preview` renders one material and
+**Look at a finish before it is committed.** `POST /api/terrain/material-preview` renders one material and
 `POST /api/terrain/theme-preview` the whole finish, in five views — `section`, `rim`, `surface`, `wall`,
 `fill` — under `?format=png&view=…&scale=…`.
 
@@ -166,6 +255,55 @@ broken knob and is not one.
 
 Neither preview builds a world, and neither can tell you what a theme sits **next to**: the sample terrain is
 grey stone, so a grey theme reads as one mass there and may be perfectly legible on a board of grass.
+
+### Where two grounds meet
+
+**A hue jump is a boundary, never a noise.** Red sand in sand, light grey stained clay in red sand, gravel in
+sand and white stained clay in snow all fail inside one field. Two such grounds meet as separate areas — a
+plateau of red sand beside one of sand — and never scattered through each other, which is what the big
+destroy boards with the lake did with sand in grass.
+
+**On the flat, the edge between two grounds is ragged or blended, never banded.** A ragged edge and a
+speckled transition a few blocks wide both work between grass and sand. A strip of a third material laid
+between them does not.
+
+**Rock showing through grass, sand or snow belongs to the slope.** Stone, gravel and andesite in grass read as
+rock faces coming through; a shore is sand, then stone where it steepens; a snowfield shows stone only where
+the ground is too steep to have held snow. All three are the slope band's job rather than a flat-ground
+noise. Stone in a meadow is an author's choice, not a fault.
+
+**The grass band on the slope axis ends too early on most boards.** Of 65 slope stacks whose first band is
+grass, on 58 boards, the grass ends at a median of 18°, and 20 of them end it at 12° or less. Grass that stops
+that early leaves dirt showing along gentle edges that read as unintended, so the cut is tuned to the terrain
+with `incline`, and is usually higher.
+
+**Under a meadow the section is turf, two courses of dirt, then stone.** The soil courses are dirt and coarse
+dirt; the stone is stone and andesite with cobblestone as its accent. A face that is dirt all the way down, or
+cobblestone alone, does not read as ground.
+
+### What a set is made of
+
+| ground | the set | not |
+|---|---|---|
+| stony ground | stone and andesite as the base, cobblestone mixed in up to 30% | cobblestone as the base |
+| meadow | grass; worn ground is dirt and coarse dirt together, as one area | coarse dirt or dirt alone as specks |
+| desert | sand and sandstone, and more of the sand family where the ground wants detail; end stone only where sandstone is there too; grass, under a biome that suits it | red sand, gravel, end stone alone |
+| badlands | an orange ground (red sand, red sandstone, orange stained clay) with inset patches of dirt and coarse dirt and of hardened clay; grass, under a biome that suits it | yellow sandstone, red stained clay, light grey stained clay |
+| mesa cliff | several bands of hardened and stained clay; vanilla banding is colourful but not wrong, red included as a thin band | two colours as bands |
+| snowfield | snow, or snow with packed ice | white stained clay; stone on the flat |
+| ash field | grey and black stained clay — the safe answer, with room left for a third set inset in it: dirt, or grass under a biome that suits it | — |
+
+**Stained clay is ground only inside a set of its own tone.** Orange stained clay belongs in a red-sand ground
+and grey with black makes an ash field; white stained clay beside snow and light grey stained clay on red
+sand do not work. Wool and glass stay shade rows — a stated colour, never terrain.
+
+**Snow with quartz is a surface and never a wall.** Snow lies on the ground and nowhere else, so the pair
+reads only as the top course, and even there it is not a pairing to reach for.
+
+**Red stained clay is for abstract maps.** Nothing in nature is that red, so as ground or as a boulder it
+reads as a stylised board and fails on any other.
+
+### Themes and places
 
 **Three themes is a map.** A theme is a *place* — the moor, the works, the shore — and a board has two or
 three of them. Giving every piece of the plan its own theme is not variety, it is the plan leaking into the
@@ -183,14 +321,6 @@ into the piece list, paint the whole thing one ground, and then put the variatio
 raised shelf carrying a city may have a theme of its own — but a city is not noise either, so that theme is
 materials laid in courses, not a field sampled over them.
 
-**Splotches beat patterns, and a splotch is a shape.** A theme is stated **on a shape** (`TP10`: map default ›
-shape, winner takes all), so the brush an author reaches for is an `addShapes` polygon with a `theme` of its
-own — a patch of bare dirt worn into a meadow, a sandy shelf at the water, a scorched ring. Ten of those over
-one ground is a landscape somebody made.
-
-The same two blocks in a cell pattern is a board that is a third dirt *everywhere*, including the places dirt
-has no reason to be. If the answer to *why is it here* is "the noise put it there", it is not an answer.
-
 **A building is never the ground it stands on.** A house is a thing somebody built on a landscape and it has
 to read as one from across the map, which means its walls are not in the tone family under its feet. A stone
 house on stone can be made to work and is a hard thing to get right; it is not the one to attempt. **9 of the
@@ -200,36 +330,49 @@ stone.
 Name three families out loud before painting: which is ground, which is built, which is the
 accent. An accent that appears once is not an accent, and an ore block is never a building material.
 
-**A path is solid, and it is three colours that are nearly the same.** A `worn` or `rough` band reads as
-litter rather than as a way somebody walks: the style to state is `solid`, and the pave is three blocks a
-reader cannot quite tell apart — **dirt, coarse dirt and spruce planks** where the ground is soft, **gravel,
-andesite and cobblestone** where it is hard. A path is also a claim about circulation, so one that ends
-nowhere, or that runs *through* a building rather than to its door, says the board was assembled rather than
-drawn.
+**A tunnel is cut through one rock.** Its floor, its walls and its ceiling read as the rock the ground is
+made of, never as the surface on top: sand on a desert tunnel's floor or ash on an ash field's is the sky's
+ground brought indoors. The studio paints ground that another layer's wall stands on as rock (`TP25`), but a
+tunnel's open floor is still the ground's own top course, so it takes a shape of its own with the rock or a
+path set.
 
-**Two blocks a landscape is not made of.** Mossy cobblestone and cracked stone bricks are noise wherever they
-meet terrain — they read as damage, which is a statement about age that ground does not make. Keep them for a
-built thing that has earned them.
+### What is laid rather than grown
 
-**A boulder is stone.** Stone, cobblestone and andesite is the whole palette that reads as rock from any
-distance, with an accent under it if the floor it stands on wants one. A boulder in the ground's own accent is
-a lump, and a boulder in five materials is a sample board.
+**A path is solid, and it is three blocks of one tone laid a third each.** A `worn` or `rough` band reads as
+litter rather than as a way somebody walks: the style to state is `solid`, and the pave is a `cell` of three
+blocks a reader cannot quite tell apart by colour. **Dirt, coarse dirt and spruce planks** is one where the
+ground is soft and **gravel, andesite and cobblestone** one where it is hard; a board may find its own three.
 
-**A tinted block's family is the biome's to decide, so choose the biome before the patterns.** Grass, leaves
-and water take their colour from the chunk's biome byte and nothing else on a board does, which makes the
-biome a palette decision rather than a line added to the finish at the end. The rule reads twice.
+**A path goes everywhere the players go.** A board is walked from each spawn to the front, to the other side
+and to every wool room, so one thin line from the spawn to the front says only one of those walks was thought
+of. A path is wide enough to read as a way rather than a trail.
 
-A cold board takes a **cold biome**: snow and ice are blocks, so a snowfield on `Plains` has a summer meadow
-running through it, and `Ice plains`, `Cold taiga` or `Frozen river` — all three tinting grass `#80b497` — is
-what makes the two agree.
+**A warm path is granite with brick.** Granite and polished granite carry it, with brick in strips; hardened
+clay can stand in for the brick but is flat. Granite with hardened clay belongs in a path and nowhere else. A
+path is also a claim about circulation, so one that ends nowhere, or that runs *through* a building rather
+than to its door, says the board was assembled rather than drawn.
 
-And grass with **podzol** is not a prohibition but a colour distance: on `Plains` the tint is `#91bd59`
-against podzol's brown and a pattern mixing them reads as neither ground, where on `Mesa` (`#90814d`) or
-`Swampland` (`#6a7039`) the tint comes to meet it and the pair reads as one dry, leaf-littered floor, which is
-what those places are.
+**A built floor is four blocks of one tone, a quarter each in a `cell` of about three.** Stone bricks,
+polished andesite, andesite and stone is one such floor and reads as one paved ground with depth; a board whose
+buildings are warm lays its floor from its own family by the same rule. Stone bricks alone are dead; stone
+bricks with a little cracked stone brick look out of place; two blocks collide.
 
-`GET /api/terrain/biomes` answers every biome's hex, so the check is a look rather than a guess: ask it of
-each tinted block the palette names, once, before the patterns are written.
+**Mossy cobblestone and cracked or mossy stone bricks are not ground.** Their veins and cracks are noise
+wherever they meet terrain and read as damage, which is a statement about age that ground does not make.
+Mossy cracked stone brick belongs, if anywhere, faintly in a wall.
+
+**A boulder is one rock.** Stone and andesite, with cobblestone if it wants grain, reads as rock from any
+distance. Mossy cobblestone goes in only as rare specks beside cobblestone and andesite, and that is the
+limit. Two different rocks in one boulder — granite beside stone — read as two geological features, and a
+boulder in the ground's own set is a lump.
+
+**The same boulder on every board is a default, not a rock.** The library holds several forms and sizes, and
+five boards carrying one recipe between them is the first one that came to hand. A board's rock is chosen for
+that board, within the rule above.
+
+**A stylised stone is carried by one hue.** A rock of prismarine, mossy cobblestone and emerald ore works
+because all three carry the same green, and it is a deliberate choice for a board that wants it rather than a
+default.
 
 ## Ground cover is one shape and two numbers
 
@@ -316,6 +459,11 @@ the footing in unless it is set back to null.
 framed, which is what every hand-built house on the corpus does. Beams run out past those corners where two
 storeys meet — and a beam has to be the end of something, so the wall under it carries a course of **laid**
 log. A beam over plain infill is a beam ending in nothing.
+
+**A log in a building is cut timber, so it shows its sawn end.** Posts stand upright, and beams and laid
+courses lie along their run, which is what puts the rings at the end of every beam — the signature look of a
+timbered house. The log with bark on all six faces is a tree's: a tree is whole rather than felled, and built
+into a wall it reads as a trunk.
 
 **A checker in the same log as the posts is one mass.** Where a wall wants a checker it wants a *different*
 log; where it does not, the posts are already doing that work.

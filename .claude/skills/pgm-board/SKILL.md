@@ -50,6 +50,7 @@ about it."*
 | Is the board joined up, per team? | `GET …/preflight` | the export, at 409, after a whole world is built |
 | Is any ground unused — is it ground anybody **goes** to? | `GET …/coverage` (after) — reached / decorated / dead, with the five largest dead patches and their coordinates · `GET …/plan/flow` (before) | nothing — no gate asks this, and `preflight` asks only whether ground can be *reached* |
 | What is the board made of, and what borders what? | `05-themes.txt` (`themes/census?format=text`) | counting your own theme dict |
+| Does the finish **look** right where a player stands — do two blocks merge into one ground or into static? | `GET …/render/eye?look=x,z` — the board from a player's eye in the game's own block textures, framed on a thing the document places (a spawn, a goal, a boulder, a house); `from=x,z` stands the eye by hand; `?format=text` names the camera and what fills the frame | `render/surface`, a theme preview or the isometric, which all draw a block as one colour — two noisy blocks of one colour are calm grey there and static in the game |
 | What is the plan's shape, before a map row exists? | `tools/board.py specs/<slug>/<slug>.plan.json` | a render of a built world |
 | Is this section of the world what I think? | `GET …/render/section?axis=&at=&from=&to=&format=text` — **`axis` names the direction the cut runs, so `at` is the other coordinate** | a PNG section, which blends renderer gridlines over it |
 | What fields does this pattern take? | `GET /api/terrain/patterns` — fourteen kinds with exact field names | guessing. One run invented **five field names out of five** |
@@ -248,9 +249,19 @@ takes a depth stack of its own so grass stays one course over its soil:
 ```json
 {"kind": "layered", "axis": "slope", "stack": {"ending": "repeat", "bands": [
   {"material": <grass over two dirt>,       "thickness": 30},
-  {"material": <coarse dirt over two dirt>, "thickness": 15},
-  {"material": <stone/cobble cells>,        "thickness": 45}]}}
+  {"material": <dirt + coarse dirt, half and half, over two dirt>, "thickness": 15},
+  {"material": <stone and andesite, cobblestone at most 30%>,      "thickness": 45}]}}
 ```
+
+**The grass band's cut is usually too low.** Of 65 such stacks on 58 boards the grass ends at a median of 18°
+and 20 end it at 12° or less, which leaves dirt along gentle edges that reads as unintended. The 30 above is a
+start, and `incline` is what tunes it.
+
+**A band's material is a set, not a block.** Each band here is one tone carried by two or three textures, and
+a ground of several tones nests them — the main set in the middle of a `noise`'s stop list and the patch sets
+at its ends, because the end stops come out as patches and the middle ones join into ground. Two stops never
+make patches; a `cell` is how even shares are laid. `WHAT-A-BOARD-IS-MADE-OF.md` carries the rulings and the
+measured shares.
 
 **Read `incline` before choosing where the bands cut.** It answers how much ground stands in each ten degrees,
 which is the only thing that says whether a cut lands where you think it does — and a distribution with a
