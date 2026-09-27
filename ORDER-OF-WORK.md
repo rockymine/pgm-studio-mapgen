@@ -110,6 +110,10 @@ three of them. Giving every piece its own theme is the plan leaking into the pai
 a board flat from above however much relief is under it, because nothing in the geometry tells a hillside
 from a meadow unless the band axis is the slope. Read the board's angles before choosing where the bands cut.
 
+**A ground is a set of one tone, not a block.** Two or three blocks close in colour and different in texture
+make one ground, and a ground of several tones is one main set with the others inset in it as patches.
+`WHAT-A-BOARD-IS-MADE-OF.md` carries the sets and how a stop list writes them.
+
 **A patch of different ground is a shape carrying its own theme**, and ten of those over one ground is a
 landscape somebody made. A field sampled over the whole board is a roll of the dice, and *the noise put it
 there* is not an answer to *why is it here*.

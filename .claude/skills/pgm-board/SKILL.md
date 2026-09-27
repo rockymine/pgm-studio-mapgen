@@ -248,9 +248,19 @@ takes a depth stack of its own so grass stays one course over its soil:
 ```json
 {"kind": "layered", "axis": "slope", "stack": {"ending": "repeat", "bands": [
   {"material": <grass over two dirt>,       "thickness": 30},
-  {"material": <coarse dirt over two dirt>, "thickness": 15},
-  {"material": <stone/cobble cells>,        "thickness": 45}]}}
+  {"material": <dirt + coarse dirt, half and half, over two dirt>, "thickness": 15},
+  {"material": <stone and andesite, cobblestone at most 30%>,      "thickness": 45}]}}
 ```
+
+**The grass band's cut is usually too low.** Of 65 such stacks on 58 boards the grass ends at a median of 18°
+and 20 end it at 12° or less, which leaves dirt along gentle edges that reads as unintended. The 30 above is a
+start, and `incline` is what tunes it.
+
+**A band's material is a set, not a block.** Each band here is one tone carried by two or three textures, and
+a ground of several tones nests them — the main set in the middle of a `noise`'s stop list and the patch sets
+at its ends, because the end stops come out as patches and the middle ones join into ground. Two stops never
+make patches; a `cell` is how even shares are laid. `WHAT-A-BOARD-IS-MADE-OF.md` carries the rulings and the
+measured shares.
 
 **Read `incline` before choosing where the bands cut.** It answers how much ground stands in each ten degrees,
 which is the only thing that says whether a cut lands where you think it does — and a distribution with a
