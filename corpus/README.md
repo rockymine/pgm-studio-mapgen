@@ -67,21 +67,24 @@ reasons.** `r15` is built entirely of wool with no log and no leaf in it, so onl
 body counts as a tree only when a solid block sits within two courses under its foot — so the library
 holds nine birches and the band stands ten.
 
-**Three more feet hang a course above their platform, and the trees are filed anyway** — the rest test
-reaches two courses down. They are `(8, 2, -494)` in `r1`, `(134, 2, -75)` in `r11` and `(70, 2, -32)` in
-`r12`, and the gap reaches no recipe: a body is cut from its foot and none of the three holds a cell
-below that foot.
+**Thirty trees stand on planks laid under the trunk, and the plank is the tree's foot.** The seeder
+counts a plank as tree above the world's lowest course, which is the course the platforms lie on, and a
+foot is the lowest wood nearest the trunk. `(8, 1, -493)` in `r1`, `(134, 1, -74)` in `r11` and
+`(70, 1, -31)` in `r12` are three of them: without the plank each trunk would hang a course above its
+platform.
 
-**Two bodies do hold one, and it is carpentry rather than a hover.** `r9-3` at `(48, 2, -152)` carries
-two wooden slabs a course under its lowest log and `r12-1` at `(7, 2, -32)` carries one, so planting
-either lays a slab into the ground it stands on.
+**Two trees lay wooden slabs in the plank course beside their foot.** `r9-3` at `(48, 1, -152)` carries
+two and `r12-1` at `(7, 1, -32)` carries one, so planting either sets the slab on the ground beside the
+planks rather than into it.
 
-**Eighteen pieces of crown hang one block clear of the tree they belong to, and the seeder files each with
-that tree.** No 26-connected step reaches them from their own wood, so each joins the standing tree whose
-blocks come nearest it, within four blocks. Eight are large: `(32, 4, -457)` in `r2`, and `(74, 5, -40)`,
-`(8, 11, -34)`, `(12, 8, -34)`, `(28, 11, -33)`, `(49, 11, -33)`, `(47, 8, -30)` and `(12, 8, -25)` in `r12`.
-The largest is the top of `r12-3`'s crown, 107 blocks and the tree's top three courses. The other ten are one
-or two leaves at a crown's tips in `r1`, `r7` and `r9`.
+**Planks are part of a crown too, and a crown read without them falls apart.** 33 trees carry planks,
+359 between them, and `r12-3`'s 39 spruce planks are what join the top 107 blocks of its crown to its
+trunk.
+
+**Nine tips still hang one block clear of the tree they belong to, and the seeder files each with that
+tree.** No 26-connected step reaches them from their own wood, so each joins the standing tree whose
+blocks come nearest it, within four blocks. Each is one or two blocks at a crown's tip, in `r3`, `r7`
+and `r9`.
 
 **Where a name can carry meaning is a spec.** `tools/trees.py bodies --row <z>=<prefix>` cuts a row into
 bodies under a prefix the author chooses, which is how `specs/fable-millrace-revamp/trees.json` names its
