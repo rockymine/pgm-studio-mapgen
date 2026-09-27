@@ -1,0 +1,57 @@
+## well-house (house) along x
+TRANSECT 23 stations from (-59, 58) to (-37, 58), every 1
+  station        ground  surface  water  top  standing            step
+  (  -59,    58)      22       22           22                      
+  (  -58,    58)      22       22           22                      
+  (  -57,    58)      22       22           22                      
+  (  -56,    58)      22       22           22                      
+  (  -55,    58)      22       22           22                      
+  (  -54,    58)      22       22           22                      
+  (  -53,    58)      22       22           22                      
+  (  -52,    58)      22       22           31  house well-house    
+  (  -51,    58)      21       21           31  house well-house    -1
+  (  -50,    58)      21       21           31  house well-house    
+  (  -49,    58)      21       21           31  house well-house    
+  (  -48,    58)      21       21           31  house well-house    
+  (  -47,    58)      21       21           31  house well-house    
+  (  -46,    58)      21       21           31  house well-house    
+  (  -45,    58)      21       21           31  house well-house    
+  (  -44,    58)      21       21           31  house well-house    
+  (  -43,    58)      21       21           21                      
+  (  -42,    58)      21       21           21                      
+  (  -41,    58)      21       21           21  stroke court-road   
+  (  -40,    58)      20       20           20  stroke court-road   -1
+  (  -39,    58)      20       20           20  stroke court-road   
+  (  -38,    58)      20       20           20  stroke court-road   
+  (  -37,    58)      20       20           20  stroke court-road   
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house well-house at (-52, 56), stroke court-road at (-42, 60)
+
+## well-house (house) along z
+TRANSECT 23 stations from (-48, 47) to (-48, 69), every 1
+  station        ground  surface  water  top  standing            step
+  (  -48,    47)      20       20           20                      
+  (  -48,    48)      20       20           20                      
+  (  -48,    49)      21       21           21                      +1
+  (  -48,    50)      21       21           21                      
+  (  -48,    51)      21       21           21                      
+  (  -48,    52)      21       21           21                      
+  (  -48,    53)      21       21           21                      
+  (  -48,    54)      21       21           27  house well-house    
+  (  -48,    55)      21       21           28  house well-house    
+  (  -48,    56)      21       21           29  house well-house    
+  (  -48,    57)      21       21           30  house well-house    
+  (  -48,    58)      21       21           31  house well-house    
+  (  -48,    59)      21       21           30  house well-house    
+  (  -48,    60)      21       21           29  house well-house    
+  (  -48,    61)      21       21           28  house well-house    
+  (  -48,    62)      21       21           27  house well-house    
+  (  -48,    63)      21       21           21  stroke court-road   
+  (  -48,    64)      21       21           21  stroke court-road   
+  (  -48,    65)      21       21           21  stroke court-road   
+  (  -48,    66)      21       21           21                      
+  (  -48,    67)      21       21           21                      
+  (  -48,    68)      21       21           21                      
+  (  -48,    69)      21       21           21                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house well-house at (-50, 54), stroke court-road at (-50, 63)

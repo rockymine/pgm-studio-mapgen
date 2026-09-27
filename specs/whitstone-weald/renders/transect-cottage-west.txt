@@ -1,9 +1,9 @@
 ## cottage-west (house) along x
 TRANSECT 25 stations from (-128, 56) to (-104, 56), every 1
   station        ground  surface  water  top  standing            step
-  ( -128,    56)      24       24           40  tree tree-15        
-  ( -127,    56)      24       24           39  tree tree-15        
-  ( -126,    56)      24       24           37  tree tree-15        
+  ( -128,    56)      24       24           24  tree tree-15        
+  ( -127,    56)      24       24           24  tree tree-15        
+  ( -126,    56)      24       24           24  tree tree-15        
   ( -125,    56)      24       24           24  tree tree-15        
   ( -124,    56)      24       24           24  tree tree-15        
   ( -123,    56)      24       24           24                      
@@ -32,12 +32,12 @@ beside: tree tree-15 at (-130, 54), house cottage-west at (-121, 54), stroke gre
 ## cottage-west (house) along z
 TRANSECT 25 stations from (-116, 44) to (-116, 68), every 1
   station        ground  surface  water  top  standing            step
-  ( -116,    44)      24       24           32  tree tree-17        
-  ( -116,    45)      24       24           33  tree tree-17        
-  ( -116,    46)      24       24           33  tree tree-17        
-  ( -116,    47)      24       24           32  tree tree-17        
-  ( -116,    48)      24       24           31  tree tree-17        
-  ( -116,    49)      24       24           29  tree tree-17        
+  ( -116,    44)      24       24           24  tree tree-17        
+  ( -116,    45)      24       24           24  tree tree-17        
+  ( -116,    46)      24       24           24  tree tree-17        
+  ( -116,    47)      24       24           24  tree tree-17        
+  ( -116,    48)      24       24           24  tree tree-17        
+  ( -116,    49)      24       24           24                      
   ( -116,    50)      24       24           24                      
   ( -116,    51)      23       23           27  house cottage-west  -1
   ( -116,    52)      23       23           28  house cottage-west  
@@ -58,4 +58,4 @@ TRANSECT 25 stations from (-116, 44) to (-116, 68), every 1
   ( -116,    67)      23       23           23                      
   ( -116,    68)      23       23           23                      
 rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree tree-17 at (-118, 42), tree tree-16 at (-114, 48), house cottage-west at (-118, 51), stroke hamlet-lane at (-118, 62), flora ground-cover at (-118, 66)
+beside: tree tree-17 at (-118, 42), tree tree-16 at (-114, 42), house cottage-west at (-118, 51), stroke hamlet-lane at (-118, 62), flora ground-cover at (-118, 67)

@@ -6,7 +6,7 @@ TRANSECT 28 stations from (-122, -50) to (-95, -50), every 1
   ( -120,   -50)      29       29           29                      
   ( -119,   -50)      29       29           29                      
   ( -118,   -50)      29       29           29                      
-  ( -117,   -50)      29       29           29  tree tree-2         
+  ( -117,   -50)      29       29           29                      
   ( -116,   -50)      29       29           29                      
   ( -115,   -50)      29       29           39  house barn          
   ( -114,   -50)      29       29           39  house barn          
@@ -30,19 +30,19 @@ TRANSECT 28 stations from (-122, -50) to (-95, -50), every 1
   (  -96,   -50)      27       27           27                      
   (  -95,   -50)      28       28           28                      +1
 rises 1, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: flora ground-cover at (-124, -52), tree tree-2 at (-123, -52), house barn at (-115, -50), tree tree-4 at (-97, -52)
+beside: flora ground-cover at (-124, -52), tree tree-2 at (-117, -52), house barn at (-115, -52), tree tree-4 at (-95, -52)
 
 ## barn (house) along z
 TRANSECT 23 stations from (-109, -61) to (-109, -39), every 1
   station        ground  surface  water  top  standing            step
-  ( -109,   -61)      34       34           34  tree tree-3         
-  ( -109,   -60)      33       33           33  tree tree-3         -1
+  ( -109,   -61)      34       34           39  tree tree-2         
+  ( -109,   -60)      33       33           33  tree tree-2         -1
   ( -109,   -59)      33       33           33  tree tree-2         
   ( -109,   -58)      32       32           32  tree tree-2         -1
   ( -109,   -57)      31       31           31  tree tree-2         -1
   ( -109,   -56)      30       30           30  tree tree-2         -1
-  ( -109,   -55)      30       30           30  tree tree-2         
-  ( -109,   -54)      29       29           35  tree tree-2         -1
+  ( -109,   -55)      30       30           30                      
+  ( -109,   -54)      29       29           35  house barn          -1
   ( -109,   -53)      29       29           36  house barn          
   ( -109,   -52)      29       29           37  house barn          
   ( -109,   -51)      29       29           38  house barn          
@@ -59,4 +59,4 @@ TRANSECT 23 stations from (-109, -61) to (-109, -39), every 1
   ( -109,   -40)      29       29           29                      
   ( -109,   -39)      29       29           29                      
 rises 0, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree tree-2 at (-111, -63), tree tree-3 at (-110, -63), house barn at (-108, -54)
+beside: tree tree-2 at (-111, -63), tree tree-3 at (-107, -63), house barn at (-110, -54)

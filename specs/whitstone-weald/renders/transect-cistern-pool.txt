@@ -1,0 +1,64 @@
+## cistern-pool (water) along x
+TRANSECT 27 stations from (-81, 58) to (-55, 58), every 1
+  station        ground  surface  water  top  standing            step
+  (  -81,    58)      23       23           30  house cottage-east  
+  (  -80,    58)      23       23           23                      
+  (  -79,    58)      23       23           23                      
+  (  -78,    58)      23       23           23                      
+  (  -77,    58)      23       23           23                      
+  (  -76,    58)      23       23           23                      
+  (  -75,    58)      23       23           23                      
+  (  -74,    58)      23       23           23                      
+  (  -73,    58)      23       23           23                      
+  (  -72,    58)      23       23           23                      
+  (  -71,    58)      23       23           23                      
+  (  -70,    58)      23       23     12    23  water cistern-pool  
+  (  -69,    58)      23       23     12    23  water cistern-pool  
+  (  -68,    58)      22       22     12    22  water cistern-pool  -1
+  (  -67,    58)      22       22     12    22  water cistern-pool  
+  (  -66,    58)      22       22           22                      
+  (  -65,    58)      22       22           22                      
+  (  -64,    58)      22       22           22                      
+  (  -63,    58)      22       22           22                      
+  (  -62,    58)      22       22           22                      
+  (  -61,    58)      22       22           22                      
+  (  -60,    58)      22       22           22                      
+  (  -59,    58)      22       22           22                      
+  (  -58,    58)      22       22           22                      
+  (  -57,    58)      22       22           22                      
+  (  -56,    58)      22       22           22                      
+  (  -55,    58)      22       22           22                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house cottage-east at (-83, 56), water cistern-pool at (-70, 56)
+
+## cistern-pool (water) along z
+TRANSECT 26 stations from (-68, 44) to (-68, 69), every 1
+  station        ground  surface  water  top  standing            step
+  (  -68,    44)      15       15           15                      
+  (  -68,    45)      15       15           15                      
+  (  -68,    46)      14       14           14                      -1
+  (  -68,    47)      14       14           14                      
+  (  -68,    48)      14       14           14                      
+  (  -68,    49)      13       13           13                      -1
+  (  -68,    50)      13       13           13                      
+  (  -68,    51)      12       12           12                      -1
+  (  -68,    52)      22       22           22                      BARRIER +10
+  (  -68,    53)      22       22           22                      
+  (  -68,    54)      22       22           22                      
+  (  -68,    55)      22       22     12    22  water cistern-pool  
+  (  -68,    56)      22       22     12    22  water cistern-pool  
+  (  -68,    57)      22       22     12    22  water cistern-pool  
+  (  -68,    58)      22       22     12    22  water cistern-pool  
+  (  -68,    59)      22       22     12    22  water cistern-pool  
+  (  -68,    60)      22       22     12    22  water cistern-pool  
+  (  -68,    61)      22       22           22                      
+  (  -68,    62)      22       22           22                      
+  (  -68,    63)      22       22           22                      
+  (  -68,    64)      22       22           22  stroke court-road   
+  (  -68,    65)      22       22           22  stroke court-road   
+  (  -68,    66)      22       22           22  stroke court-road   
+  (  -68,    67)      22       22           22  stroke court-road   
+  (  -68,    68)      22       22           22                      
+  (  -68,    69)      22       22           22                      
+rises 1, falls 3, worst step 10: 1 barrier, 0 scramble, 0 drop — BARRIER +10 at (-68, 52) | walked end to end
+beside: water cistern-pool at (-70, 55), stroke court-road at (-70, 64)
