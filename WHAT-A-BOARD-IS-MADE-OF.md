@@ -157,9 +157,14 @@ leaf-littered floor.
 field may each carry grass, and an ash field dirt as well, so long as the biome makes the grass flow into the
 ground round it instead of standing in it as a summer meadow. `Desert` and `Savanna` both tint it `#bfb755`,
 which sits beside sand; a snowy board takes a cold biome — `Cold taiga`, `Ice plains` or `Frozen river`, all
-`#80b497`.
+`#80b497`, or `Cold beach` just off them at `#83b593`.
 
-`GET /api/terrain/biomes` answers every biome's hex, so the check is a look rather than a guess: ask it of
+**Two biomes of one colour are one biome on the ground.** Every biome the game stores is on the list, and many
+share a colour: plains with beach, the frozen and cold ones with each other, every desert with every savanna.
+A field that mixes two of one colour paints a boundary nobody can see, so a palette takes one biome per
+colour, and `sharesTintWith` on each row of `GET /api/terrain/biomes` names which ones are the same.
+
+`GET /api/terrain/biomes` answers every biome's grass, leaf and water hex, so the check is a look rather than a guess: ask it of
 each tinted block the palette names, once, before the patterns are written.
 
 ### A ground is a set, not a block
