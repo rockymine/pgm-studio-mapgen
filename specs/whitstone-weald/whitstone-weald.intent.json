@@ -1,0 +1,222 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 32,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn",
+    "image": 0
+   },
+   "reflected": false,
+   "team": "red",
+   "point": {
+    "x": -138,
+    "y": 20,
+    "z": 0
+   },
+   "protection": [
+    {
+     "minX": -148,
+     "minZ": -12,
+     "maxX": -128,
+     "maxZ": 12
+    }
+   ],
+   "yaw": 270,
+   "doors": [
+    "+x",
+    "-z"
+   ],
+   "footprint": {
+    "minX": -145,
+    "minZ": -9,
+    "maxX": -131,
+    "maxZ": 9
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn",
+    "image": 1
+   },
+   "reflected": false,
+   "team": "blue",
+   "point": {
+    "x": 138,
+    "y": 20,
+    "z": 0
+   },
+   "protection": [
+    {
+     "minX": 128,
+     "minZ": -12,
+     "maxX": 148,
+     "maxZ": 12
+    }
+   ],
+   "yaw": 90,
+   "doors": [
+    "-x",
+    "+z"
+   ],
+   "footprint": {
+    "minX": 131,
+    "minZ": -9,
+    "maxX": 145,
+    "maxZ": 9
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 74,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -16,
+    "minZ": -72,
+    "maxX": 0,
+    "maxZ": 72
+   },
+   {
+    "minX": 0,
+    "minZ": -72,
+    "maxX": 16,
+    "maxZ": 72
+   }
+  ],
+  "holes": []
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "crag-stone",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Crag Stone",
+   "style": "cube-4",
+   "materials": "ender stone",
+   "repairable": false,
+   "anchor": {
+    "x": -82,
+    "y": 20,
+    "z": -36
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "green-stone",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Green Stone",
+   "style": "cube-4",
+   "materials": "ender stone",
+   "repairable": false,
+   "anchor": {
+    "x": -82,
+    "y": 20,
+    "z": 36
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "crag-stone",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Crag Stone",
+   "style": "cube-4",
+   "materials": "ender stone",
+   "repairable": false,
+   "anchor": {
+    "x": 80,
+    "y": 20,
+    "z": 34
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "green-stone",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Green Stone",
+   "style": "cube-4",
+   "materials": "ender stone",
+   "repairable": false,
+   "anchor": {
+    "x": 80,
+    "y": 20,
+    "z": -38
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Whitstone Weald",
+  "created": "2026-09-27",
+  "authors": [
+   {
+    "name": "Claude"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": null
+}

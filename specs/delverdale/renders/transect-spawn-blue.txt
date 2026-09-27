@@ -1,0 +1,85 @@
+## spawn-blue (spawn) along x
+TRANSECT 37 stations from (-12, -118) to (24, -118), every 1
+  station        ground  surface  water  top  standing            step
+  (  -12,  -118)                                                    void
+  (  -11,  -118)                                                    void
+  (  -10,  -118)                                                    void
+  (   -9,  -118)                                                    void
+  (   -8,  -118)                                                    void
+  (   -7,  -118)                                                    void
+  (   -6,  -118)                                                    void
+  (   -5,  -118)                                                    void
+  (   -4,  -118)      24       24           34                      
+  (   -3,  -118)      24       24           34  spawn spawn#1       
+  (   -2,  -118)      24       24           34  spawn spawn#1       
+  (   -1,  -118)      24       24           34  spawn spawn#1       
+  (    0,  -118)      24       24           34  spawn spawn#1       
+  (    1,  -118)      24       24           34  spawn spawn#1       
+  (    2,  -118)      24       24           34  spawn spawn#1       
+  (    3,  -118)      24       24           34  spawn spawn#1       
+  (    4,  -118)      24       24           34  spawn spawn#1       
+  (    5,  -118)      24       24           34  spawn spawn#1       
+  (    6,  -118)      24       24           34  spawn spawn#1       
+  (    7,  -118)      24       24           34  spawn spawn#1       
+  (    8,  -118)      24       24           34  spawn spawn#1       
+  (    9,  -118)      24       24           34  spawn spawn#1       
+  (   10,  -118)      24       24           34  spawn spawn#1       
+  (   11,  -118)      24       24           34  spawn spawn#1       
+  (   12,  -118)      24       24           34  spawn spawn#1       
+  (   13,  -118)      24       24           34  spawn spawn#1       
+  (   14,  -118)      24       24           34  spawn spawn#1       
+  (   15,  -118)      24       24           34                      
+  (   16,  -118)                                                    void
+  (   17,  -118)                                                    void
+  (   18,  -118)                                                    void
+  (   19,  -118)                                                    void
+  (   20,  -118)                                                    void
+  (   21,  -118)                                                    void
+  (   22,  -118)                                                    void
+  (   23,  -118)                                                    void
+  (   24,  -118)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn#1 at (-3, -120)
+
+## spawn-blue (spawn) along z
+TRANSECT 37 stations from (6, -136) to (6, -100), every 1
+  station        ground  surface  water  top  standing            step
+  (    6,  -136)                                                    void
+  (    6,  -135)                                                    void
+  (    6,  -134)                                                    void
+  (    6,  -133)                                                    void
+  (    6,  -132)                                                    void
+  (    6,  -131)                                                    void
+  (    6,  -130)                                                    void
+  (    6,  -129)                                                    void
+  (    6,  -128)      24       24           29                      
+  (    6,  -127)      24       24           30  spawn spawn#1       
+  (    6,  -126)      24       24           31  spawn spawn#1       
+  (    6,  -125)      24       24           32  spawn spawn#1       
+  (    6,  -124)      24       24           33  spawn spawn#1       
+  (    6,  -123)      24       24           34  spawn spawn#1       
+  (    6,  -122)      24       24           35  spawn spawn#1       
+  (    6,  -121)      24       24           36  spawn spawn#1       
+  (    6,  -120)      24       24           36  spawn spawn#1       
+  (    6,  -119)      24       24           35  spawn spawn#1       
+  (    6,  -118)      24       24           34  spawn spawn#1       
+  (    6,  -117)      24       24           33  spawn spawn#1       
+  (    6,  -116)      24       24           32  spawn spawn#1       
+  (    6,  -115)      24       24           31  spawn spawn#1       
+  (    6,  -114)      24       24           30  spawn spawn#1       
+  (    6,  -113)      24       24           29                      
+  (    6,  -112)      24       24           24                      
+  (    6,  -111)      24       24           24                      
+  (    6,  -110)      24       24           24                      
+  (    6,  -109)      24       24           24                      
+  (    6,  -108)      24       24           24  stroke spawn-road#1  
+  (    6,  -107)      24       24           24  stroke spawn-road#1  
+  (    6,  -106)      24       24           24  stroke spawn-road#1  
+  (    6,  -105)      24       24           24  stroke spawn-road#1  
+  (    6,  -104)      24       24           24  stroke spawn-road#1  
+  (    6,  -103)      24       24           24  stroke spawn-road#1  
+  (    6,  -102)      24       24           24  stroke spawn-road#1  
+  (    6,  -101)      24       24           24  stroke spawn-road#1  
+  (    6,  -100)      24       24           24                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn#1 at (4, -127), stroke spawn-road#1 at (5, -108)

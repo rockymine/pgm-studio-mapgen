@@ -1,0 +1,61 @@
+## crag-stone-0 (destroyable) along x
+TRANSECT 25 stations from (-94, -36) to (-70, -36), every 1
+  station        ground  surface  water  top  standing            step
+  (  -94,   -36)      29       29           29                      
+  (  -93,   -36)      29       29           29                      
+  (  -92,   -36)      28       28           28                      -1
+  (  -91,   -36)      28       28           28                      
+  (  -90,   -36)      27       27           27                      -1
+  (  -89,   -36)      27       27           27                      
+  (  -88,   -36)      27       27           27                      
+  (  -87,   -36)      27       27           27                      
+  (  -86,   -36)      27       27           27                      
+  (  -85,   -36)      27       27           27                      
+  (  -84,   -36)      27       27           27  destroyable crag-stone  
+  (  -83,   -36)      27       27           51  destroyable crag-stone  
+  (  -82,   -36)      27       27           52  destroyable crag-stone  
+  (  -81,   -36)      27       27           51  destroyable crag-stone  
+  (  -80,   -36)      27       27           35  destroyable crag-stone  
+  (  -79,   -36)      27       27           27                      
+  (  -78,   -36)      27       27           27                      
+  (  -77,   -36)      27       27           27                      
+  (  -76,   -36)      27       27           27                      
+  (  -75,   -36)      27       27           27                      
+  (  -74,   -36)      27       27           27                      
+  (  -73,   -36)      27       27           27                      
+  (  -72,   -36)      26       26           26                      -1
+  (  -71,   -36)      25       25           25                      -1
+  (  -70,   -36)      24       24           24                      -1
+rises 0, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable crag-stone at (-84, -38), stroke crag-front at (-74, -34)
+
+## crag-stone-0 (destroyable) along z
+TRANSECT 25 stations from (-82, -48) to (-82, -24), every 1
+  station        ground  surface  water  top  standing            step
+  (  -82,   -48)      27       27           27                      
+  (  -82,   -47)      27       27           27                      
+  (  -82,   -46)      27       27           27                      
+  (  -82,   -45)      27       27           27                      
+  (  -82,   -44)      27       27           27                      
+  (  -82,   -43)      27       27           27                      
+  (  -82,   -42)      27       27           27                      
+  (  -82,   -41)      27       27           27                      
+  (  -82,   -40)      27       27           27                      
+  (  -82,   -39)      27       27           27                      
+  (  -82,   -38)      27       27           27  destroyable crag-stone  
+  (  -82,   -37)      27       27           51  destroyable crag-stone  
+  (  -82,   -36)      27       27           52  destroyable crag-stone  
+  (  -82,   -35)      27       27           51  destroyable crag-stone  
+  (  -82,   -34)      27       27           35  destroyable crag-stone  
+  (  -82,   -33)      27       27           27                      
+  (  -82,   -32)      27       27           27                      
+  (  -82,   -31)      27       27           27                      
+  (  -82,   -30)      27       27           27                      
+  (  -82,   -29)      27       27           27                      
+  (  -82,   -28)      27       27           27                      
+  (  -82,   -27)      26       26           26                      -1
+  (  -82,   -26)      25       25           25                      -1
+  (  -82,   -25)      24       24           24                      -1
+  (  -82,   -24)      23       23           23                      -1
+rises 0, falls 4, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree tree-6 at (-84, -50), destroyable crag-stone at (-84, -38)

@@ -1,0 +1,61 @@
+## fell-stone (boulder) along x
+TRANSECT 25 stations from (50, 80) to (74, 80), every 1
+  station        ground  surface  water  top  standing            step
+  (   50,    80)      28       28           28                      
+  (   51,    80)      28       28           28                      
+  (   52,    80)      28       28           28                      
+  (   53,    80)      28       28           28                      
+  (   54,    80)      28       28           28                      
+  (   55,    80)      28       28           28                      
+  (   56,    80)      28       28           28                      
+  (   57,    80)      28       28           28                      
+  (   58,    80)      28       28           28  boulder fell-stone  
+  (   59,    80)      27       27           27  boulder fell-stone  -1
+  (   60,    80)      27       27           28  boulder fell-stone  
+  (   61,    80)      26       26           28  boulder fell-stone  -1
+  (   62,    80)      26       26           28  boulder fell-stone  
+  (   63,    80)      25       25           28  tree east-wood-3    -1
+  (   64,    80)      25       25           28  tree east-wood-3    
+  (   65,    80)      24       24           28  tree east-wood-3    -1
+  (   66,    80)      24       24           28  tree east-wood-3    
+  (   67,    80)      23       23           31  tree east-wood-3    -1
+  (   68,    80)      23       23           35  tree east-wood-3    
+  (   69,    80)      22       22           33  tree east-wood-3    -1
+  (   70,    80)      22       22           37  tree east-wood-3    
+  (   71,    80)      22       22           36  tree east-wood-3    
+  (   72,    80)      22       22           35  tree east-wood-3    
+  (   73,    80)      22       22           34  tree east-wood-3    
+  (   74,    80)      22       22           33  tree east-wood-3    
+rises 0, falls 6, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora cover at (48, 82), boulder fell-stone at (58, 78), tree east-wood-3 at (62, 79), tree east-wood-4 at (70, 82)
+
+## fell-stone (boulder) along z
+TRANSECT 25 stations from (62, 68) to (62, 92), every 1
+  station        ground  surface  water  top  standing            step
+  (   62,    68)      25       25           35  house fell-cottage  
+  (   62,    69)      25       25           37  house fell-cottage  
+  (   62,    70)      25       25           35  house fell-cottage  
+  (   62,    71)      25       25           33  house fell-cottage  
+  (   62,    72)      25       25           31  house fell-cottage  
+  (   62,    73)      25       25           29  house fell-cottage  
+  (   62,    74)      25       25           25                      
+  (   62,    75)      25       25           25                      
+  (   62,    76)      25       25           27  boulder fell-stone  
+  (   62,    77)      25       25           27  boulder fell-stone  
+  (   62,    78)      26       26           28  boulder fell-stone  +1
+  (   62,    79)      26       26           28  tree east-wood-3    
+  (   62,    80)      26       26           28  boulder fell-stone  
+  (   62,    81)      26       26           28  boulder fell-stone  
+  (   62,    82)      26       26           28  boulder fell-stone  
+  (   62,    83)      26       26           27  boulder fell-stone  
+  (   62,    84)      26       26           27  boulder fell-stone  
+  (   62,    85)      26       26           27  flora cover         
+  (   62,    86)      26       26           27  flora cover         
+  (   62,    87)      27       27           28  flora cover         +1
+  (   62,    88)      27       27           27                      
+  (   62,    89)      27       27           27                      
+  (   62,    90)      27       27           27                      
+  (   62,    91)      27       27           27  tree east-wood-5    
+  (   62,    92)      27       27           27  tree east-wood-5    
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree cottage-oak at (60, 66), house fell-cottage at (61, 66), tree east-wood-1 at (64, 66), tree east-wood-3 at (64, 75), boulder fell-stone at (60, 76), flora cover at (61, 85), tree east-wood-5 at (63, 90)

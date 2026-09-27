@@ -1,0 +1,62 @@
+## engine-house (house) along x
+TRANSECT 27 stations from (-60, 57) to (-34, 57), every 1
+  station        ground  surface  water  top  standing            step
+  (  -60,    57)      22       22           22                      
+  (  -59,    57)      22       22           22                      
+  (  -58,    57)      22       22           22                      
+  (  -57,    57)      22       22           22                      
+  (  -56,    57)      21       37           37  storey              BARRIER +15
+  (  -55,    57)      21       37           37  storey              
+  (  -54,    57)      21       37           37  storey              
+  (  -53,    57)      22       22           31  house engine-house  DROP -15
+  (  -52,    57)      22       22           31  house engine-house  
+  (  -51,    57)      21       21           31  house engine-house  -1
+  (  -50,    57)      21       21           31  house engine-house  
+  (  -49,    57)      21       21           31  house engine-house  
+  (  -48,    57)      21       21           31  house engine-house  
+  (  -47,    57)      21       21           31  house engine-house  
+  (  -46,    57)      21       21           31  house engine-house  
+  (  -45,    57)      21       21           31  house engine-house  
+  (  -44,    57)      21       21           31  house engine-house  
+  (  -43,    57)      21       21           31  house engine-house  
+  (  -42,    57)      21       21           31  house engine-house  
+  (  -41,    57)      21       21           31  house engine-house  
+  (  -40,    57)      20       20           20                      -1
+  (  -39,    57)      20       20           20  stroke haul-road    
+  (  -38,    57)      20       20           20  stroke haul-road    
+  (  -37,    57)      20       20           20  stroke haul-road    
+  (  -36,    57)      20       20           20  stroke haul-road    
+  (  -35,    57)      20       20           20                      
+  (  -34,    57)      20       20           20                      
+rises 1, falls 3, worst step 15: 1 barrier, 0 scramble, 1 drop — BARRIER +15 at (-56, 57); DROP -15 at (-53, 57) | walked end to end
+beside: house engine-house at (-53, 55), stroke haul-road at (-40, 58)
+
+## engine-house (house) along z
+TRANSECT 24 stations from (-47, 46) to (-47, 69), every 1
+  station        ground  surface  water  top  standing            step
+  (  -47,    46)      20       20           20                      
+  (  -47,    47)      20       20           20                      
+  (  -47,    48)      20       20           20                      
+  (  -47,    49)      20       20           20                      
+  (  -47,    50)      21       21           21                      +1
+  (  -47,    51)      21       21           21                      
+  (  -47,    52)      21       21           21                      
+  (  -47,    53)      21       21           27  house engine-house  
+  (  -47,    54)      21       21           28  house engine-house  
+  (  -47,    55)      21       21           29  house engine-house  
+  (  -47,    56)      21       21           30  house engine-house  
+  (  -47,    57)      21       21           31  house engine-house  
+  (  -47,    58)      21       21           31  house engine-house  
+  (  -47,    59)      21       21           30  house engine-house  
+  (  -47,    60)      21       21           29  house engine-house  
+  (  -47,    61)      21       21           28  house engine-house  
+  (  -47,    62)      21       21           27  house engine-house  
+  (  -47,    63)      21       21           21  stroke haul-road    
+  (  -47,    64)      21       21           21  stroke haul-road    
+  (  -47,    65)      21       21           21  stroke haul-road    
+  (  -47,    66)      21       21           21  stroke haul-road    
+  (  -47,    67)      21       21           21                      
+  (  -47,    68)      21       21           21                      
+  (  -47,    69)      21       21           21                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house engine-house at (-49, 53), stroke haul-road at (-49, 63)

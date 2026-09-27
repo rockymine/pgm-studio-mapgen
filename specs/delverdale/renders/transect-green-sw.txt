@@ -1,0 +1,59 @@
+## green-sw (house) along x
+TRANSECT 25 stations from (-32, 58) to (-8, 58), every 1
+  station        ground  surface  water  top  standing            step
+  (  -32,    58)                                                    void
+  (  -31,    58)                                                    void
+  (  -30,    58)                                                    void
+  (  -29,    58)                                                    void
+  (  -28,    58)                                                    void
+  (  -27,    58)                                                    void
+  (  -26,    58)                                                    void
+  (  -25,    58)                            37  house green-sw      void
+  (  -24,    58)      20       20           37  house green-sw      
+  (  -23,    58)      20       20           37  house green-sw      
+  (  -22,    58)      20       20           37  house green-sw      
+  (  -21,    58)      20       20           37  house green-sw      
+  (  -20,    58)      20       20           37  house green-sw      
+  (  -19,    58)      20       20           37  house green-sw      
+  (  -18,    58)      20       20           37  house green-sw      
+  (  -17,    58)      20       20           37  house green-sw      
+  (  -16,    58)      20       20           37  house green-sw      
+  (  -15,    58)      20       20           37  house green-sw      
+  (  -14,    58)      20       20           20                      
+  (  -13,    58)      20       20           20                      
+  (  -12,    58)      20       20           20                      
+  (  -11,    58)      20       20           20                      
+  (  -10,    58)      20       20           20                      
+  (   -9,    58)      20       20           20                      
+  (   -8,    58)      20       20           20                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house green-sw at (-25, 56), flora cover at (-10, 60)
+
+## green-sw (house) along z
+TRANSECT 23 stations from (-20, 47) to (-20, 69), every 1
+  station        ground  surface  water  top  standing            step
+  (  -20,    47)      16       16           16  stroke front-w      
+  (  -20,    48)      16       16           17  flora cover         
+  (  -20,    49)      16       16           17  flora cover         
+  (  -20,    50)      16       16           16                      
+  (  -20,    51)      16       16           16                      
+  (  -20,    52)      20       20           20                      BARRIER +4
+  (  -20,    53)      20       20           20                      
+  (  -20,    54)      20       20           29  house green-sw      
+  (  -20,    55)      20       20           31  house green-sw      
+  (  -20,    56)      20       20           33  house green-sw      
+  (  -20,    57)      20       20           35  house green-sw      
+  (  -20,    58)      20       20           37  house green-sw      
+  (  -20,    59)      20       20           35  house green-sw      
+  (  -20,    60)      20       20           33  house green-sw      
+  (  -20,    61)      20       20           31  house green-sw      
+  (  -20,    62)      20       20           29  house green-sw      
+  (  -20,    63)      20       20           20                      
+  (  -20,    64)      20       20           20                      
+  (  -20,    65)      20       20           20                      
+  (  -20,    66)      20       20           20                      
+  (  -20,    67)      20       20           22  flora cover         
+  (  -20,    68)      20       20           21  flora cover         
+  (  -20,    69)      20       20           21  flora cover         
+rises 1, falls 0, worst step 4: 1 barrier, 0 scramble, 0 drop — BARRIER +4 at (-20, 52) | walked end to end
+beside: stroke front-w at (-22, 45), flora cover at (-22, 47), house green-sw at (-22, 54), house green-nw at (-22, 71)

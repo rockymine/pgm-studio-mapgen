@@ -1,0 +1,65 @@
+## cottage-hall (house) along x
+TRANSECT 27 stations from (-112, 55) to (-86, 55), every 1
+  station        ground  surface  water  top  standing            step
+  ( -112,    55)      23       23           31  house cottage-west  
+  ( -111,    55)      23       23           31  house cottage-west  
+  ( -110,    55)      23       23           23  stroke green-to-hamlet  
+  ( -109,    55)      23       23           23  stroke green-to-hamlet  
+  ( -108,    55)      23       23           23  stroke green-to-hamlet  
+  ( -107,    55)      23       23           23                      
+  ( -106,    55)      23       23           23                      
+  ( -105,    55)      23       23           37  house cottage-hall  
+  ( -104,    55)      23       23           37  house cottage-hall  
+  ( -103,    55)      23       23           37  house cottage-hall  
+  ( -102,    55)      23       23           37  house cottage-hall  
+  ( -101,    55)      23       23           37  house cottage-hall  
+  ( -100,    55)      23       23           37  house cottage-hall  
+  (  -99,    55)      23       23           37  house cottage-hall  
+  (  -98,    55)      22       22           37  house cottage-hall  -1
+  (  -97,    55)      22       22           37  house cottage-hall  
+  (  -96,    55)      22       22           37  house cottage-hall  
+  (  -95,    55)      22       22           37  house cottage-hall  
+  (  -94,    55)      22       22           37  house cottage-hall  
+  (  -93,    55)      22       22           37  house cottage-hall  
+  (  -92,    55)      22       22           22                      
+  (  -91,    55)      22       22           22                      
+  (  -90,    55)      22       22           28  house cottage-east  
+  (  -89,    55)      22       22           28  house cottage-east  
+  (  -88,    55)      22       22           28  house cottage-east  
+  (  -87,    55)      22       22           28  house cottage-east  
+  (  -86,    55)      22       22           28  house cottage-east  
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house cottage-west at (-114, 53), stroke green-to-hamlet at (-110, 53), house cottage-hall at (-105, 53), house cottage-east at (-90, 53)
+
+## cottage-hall (house) along z
+TRANSECT 27 stations from (-99, 42) to (-99, 68), every 1
+  station        ground  surface  water  top  standing            step
+  (  -99,    42)      22       22           22                      
+  (  -99,    43)      22       22           22  stroke green-to-hamlet  
+  (  -99,    44)      22       22           22  stroke green-to-hamlet  
+  (  -99,    45)      22       22           22  stroke green-to-hamlet  
+  (  -99,    46)      22       22           22  stroke green-to-hamlet  
+  (  -99,    47)      22       22           22                      
+  (  -99,    48)      22       22           22                      
+  (  -99,    49)      22       22           31  house cottage-hall  
+  (  -99,    50)      22       22           32  house cottage-hall  
+  (  -99,    51)      22       22           33  house cottage-hall  
+  (  -99,    52)      23       23           34  house cottage-hall  +1
+  (  -99,    53)      23       23           35  house cottage-hall  
+  (  -99,    54)      23       23           36  house cottage-hall  
+  (  -99,    55)      23       23           37  house cottage-hall  
+  (  -99,    56)      23       23           36  house cottage-hall  
+  (  -99,    57)      23       23           35  house cottage-hall  
+  (  -99,    58)      23       23           34  house cottage-hall  
+  (  -99,    59)      23       23           33  house cottage-hall  
+  (  -99,    60)      23       23           32  house cottage-hall  
+  (  -99,    61)      23       23           31  house cottage-hall  
+  (  -99,    62)      23       23           23                      
+  (  -99,    63)      23       23           23  stroke hamlet-lane  
+  (  -99,    64)      23       23           23  stroke hamlet-lane  
+  (  -99,    65)      23       23           23  stroke hamlet-lane  
+  (  -99,    66)      23       23           23  stroke hamlet-lane  
+  (  -99,    67)      23       23           23                      
+  (  -99,    68)      23       23           23                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke green-to-hamlet at (-98, 42), house cottage-hall at (-101, 49), stroke hamlet-lane at (-101, 62)

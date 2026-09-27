@@ -1,0 +1,110 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Whitstone Weald",
+  "authors": [
+   "Claude"
+  ],
+  "notes": "A wooded mining weald, two end-stone monuments a team, a drift mine under the south."
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 32,
+  "surface": 20,
+  "observerY": 74
+ },
+ "pieces": [
+  {
+   "id": "weald",
+   "rect": [
+    -32,
+    -18,
+    28,
+    36
+   ]
+  },
+  {
+   "id": "weald-n",
+   "rect": [
+    -37,
+    -18,
+    5,
+    15
+   ]
+  },
+  {
+   "id": "weald-s",
+   "rect": [
+    -37,
+    3,
+    5,
+    15
+   ]
+  },
+  {
+   "id": "yard",
+   "role": "spawn",
+   "rect": [
+    -37,
+    -3,
+    5,
+    6
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "strait",
+   "rect": [
+    -4,
+    -18,
+    4,
+    36
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn",
+    "piece": "yard",
+    "at": [
+     10,
+     12
+    ],
+    "facing": "right",
+    "footprint": [
+     3,
+     3,
+     14,
+     18
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "crag-stone",
+    "at": [
+     -82,
+     -36
+    ],
+    "style": "cube-4",
+    "materials": "ender stone",
+    "float": 4,
+    "name": "Crag Stone"
+   },
+   {
+    "id": "green-stone",
+    "at": [
+     -82,
+     36
+    ],
+    "style": "cube-4",
+    "materials": "ender stone",
+    "float": 4,
+    "name": "Green Stone"
+   }
+  ]
+ }
+}

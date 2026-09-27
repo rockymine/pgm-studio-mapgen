@@ -1,0 +1,59 @@
+## green-se (house) along x
+TRANSECT 25 stations from (7, 58) to (31, 58), every 1
+  station        ground  surface  water  top  standing            step
+  (    7,    58)      20       20           20                      
+  (    8,    58)      20       20           20                      
+  (    9,    58)      20       20           20                      
+  (   10,    58)      20       20           20                      
+  (   11,    58)      20       20           20                      
+  (   12,    58)      20       20           20                      
+  (   13,    58)      20       20           20                      
+  (   14,    58)      20       20           32  house green-se      
+  (   15,    58)      20       20           32  house green-se      
+  (   16,    58)      20       20           32  house green-se      
+  (   17,    58)      20       20           32  house green-se      
+  (   18,    58)      20       20           32  house green-se      
+  (   19,    58)      20       20           32  house green-se      
+  (   20,    58)      20       20           32  house green-se      
+  (   21,    58)      20       20           32  house green-se      
+  (   22,    58)      20       20           32  house green-se      
+  (   23,    58)      20       20           32  house green-se      
+  (   24,    58)                            32  house green-se      void
+  (   25,    58)                                                    void
+  (   26,    58)                                                    void
+  (   27,    58)                                                    void
+  (   28,    58)                                                    void
+  (   29,    58)                                                    void
+  (   30,    58)                                                    void
+  (   31,    58)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora cover at (5, 56), house green-se at (14, 56)
+
+## green-se (house) along z
+TRANSECT 23 stations from (19, 47) to (19, 69), every 1
+  station        ground  surface  water  top  standing            step
+  (   19,    47)      16       16           16  stroke front-e      
+  (   19,    48)      16       16           16                      
+  (   19,    49)      16       16           16                      
+  (   19,    50)      16       16           16                      
+  (   19,    51)      16       16           16                      
+  (   19,    52)      20       20           20                      BARRIER +4
+  (   19,    53)      20       20           20                      
+  (   19,    54)      20       20           24  house green-se      
+  (   19,    55)      20       20           26  house green-se      
+  (   19,    56)      20       20           28  house green-se      
+  (   19,    57)      20       20           30  house green-se      
+  (   19,    58)      20       20           32  house green-se      
+  (   19,    59)      20       20           30  house green-se      
+  (   19,    60)      20       20           28  house green-se      
+  (   19,    61)      20       20           26  house green-se      
+  (   19,    62)      20       20           24  house green-se      
+  (   19,    63)      20       20           20                      
+  (   19,    64)      20       20           20                      
+  (   19,    65)      20       20           20                      
+  (   19,    66)      20       20           20                      
+  (   19,    67)      20       20           20                      
+  (   19,    68)      20       20           20                      
+  (   19,    69)      20       20           20                      
+rises 1, falls 0, worst step 4: 1 barrier, 0 scramble, 0 drop — BARRIER +4 at (19, 52) | walked end to end
+beside: stroke front-e at (17, 45), flora cover at (17, 48), house green-se at (17, 54), house green-ne at (17, 71)

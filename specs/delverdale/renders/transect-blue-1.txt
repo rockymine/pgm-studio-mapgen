@@ -1,0 +1,57 @@
+## blue-1 (wool) along x
+TRANSECT 25 stations from (54, -132) to (78, -132), every 1
+  station        ground  surface  water  top  standing            step
+  (   54,  -132)      24       24           24                      
+  (   55,  -132)      24       24           24  stroke mine-track#1  
+  (   56,  -132)      24       24           24  stroke mine-track#1  
+  (   57,  -132)      24       24           24  stroke mine-track#1  
+  (   58,  -132)      24       24           24                      
+  (   59,  -132)      24       24           24                      
+  (   60,  -132)      24       24           29  redstoneline 0#1    
+  (   61,  -132)      24       24           30  wool wool-a#1       
+  (   62,  -132)      24       24           31  wool wool-a#1       
+  (   63,  -132)      24       24           32  wool wool-a#1       
+  (   64,  -132)      24       24           33  wool wool-a#1       
+  (   65,  -132)      24       24           48  wool wool-a#1       
+  (   66,  -132)      24       24           48  wool wool-a#1       
+  (   67,  -132)      24       24           48  wool wool-a#1       
+  (   68,  -132)      24       24           32  wool wool-a#1       
+  (   69,  -132)      24       24           31  wool wool-a#1       
+  (   70,  -132)      24       24           30  wool wool-a#1       
+  (   71,  -132)      24       24           29                      
+  (   72,  -132)                                                    void
+  (   73,  -132)                                                    void
+  (   74,  -132)                                                    void
+  (   75,  -132)                                                    void
+  (   76,  -132)                                                    void
+  (   77,  -132)                                                    void
+  (   78,  -132)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke mine-track#1 at (56, -133), redstoneline 0#1 at (60, -134), wool wool-a#1 at (61, -134)
+
+## blue-1 (wool) along z
+TRANSECT 21 stations from (66, -140) to (66, -120), every 1
+  station        ground  surface  water  top  standing            step
+  (   66,  -140)      24       24           34                      
+  (   66,  -139)      24       24           34  wool wool-a#1       
+  (   66,  -138)      24       24           34  wool wool-a#1       
+  (   66,  -137)      24       24           34  wool wool-a#1       
+  (   66,  -136)      24       24           34  wool wool-a#1       
+  (   66,  -135)      24       24           34  wool wool-a#1       
+  (   66,  -134)      24       24           34  wool wool-a#1       
+  (   66,  -133)      24       24           48  wool wool-a#1       
+  (   66,  -132)      24       24           48  wool wool-a#1       
+  (   66,  -131)      24       24           48  wool wool-a#1       
+  (   66,  -130)      24       24           34  wool wool-a#1       
+  (   66,  -129)      24       24           34  wool wool-a#1       
+  (   66,  -128)      24       24           34  wool wool-a#1       
+  (   66,  -127)      24       24           34  wool wool-a#1       
+  (   66,  -126)      24       24           34  wool wool-a#1       
+  (   66,  -125)      24       24           34                      
+  (   66,  -124)                                                    void
+  (   66,  -123)                                                    void
+  (   66,  -122)                                                    void
+  (   66,  -121)                                                    void
+  (   66,  -120)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-a#1 at (64, -139)
