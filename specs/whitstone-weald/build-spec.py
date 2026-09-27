@@ -57,7 +57,7 @@ def plan():
     cells = HALF_W // 4
     return {
         "plan": 2,
-        "meta": {"name": "Whitstone Weald", "authors": ["Claude"],
+        "meta": {"name": "Whitstone Weald", "authors": ["Opus 5.5"],
                  "notes": "A heath of acacia and olive on red rock, two end-stone monuments a team, a cistern under the south."},
         "globals": {"cell": 4, "symmetry": "rot_180", "maxPlayers": 32, "surface": 20, "observerY": 74},
         "pieces": [
@@ -501,7 +501,7 @@ def dressing():
 
 def finish():
     return {
-        "authors": ["Claude"],
+        "authors": ["Opus 5.5"],
         "created": "2026-09-27",
         "editShapes": {"weald-20": outline_ops()},
         "addLayers": [cistern_layer()] + made_layers(),

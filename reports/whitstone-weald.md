@@ -17,7 +17,7 @@ players can use, and a plan authored rather than taken from the composer.
 than the usual obsidian pillar.** How the two stand relative to each other and to the spawn was mine to
 decide, and the next two sections say how.
 
-Slug `whitstone-weald`, map name **Whitstone Weald**, credited to Claude. `specs/whitstone-weald/build-spec.py`
+Slug `whitstone-weald`, map name **Whitstone Weald**, credited to Opus 5.5. `specs/whitstone-weald/build-spec.py`
 writes the plan and the finish; `maps/whitstone-weald/` is the world.
 
 ## How the board was sized

@@ -61,7 +61,7 @@ PIECES = [
 
 PLAN = {
     "plan": 2,
-    "meta": {"name": "Delverdale", "authors": ["Claude"]},
+    "meta": {"name": "Delverdale", "authors": ["Opus 5.5"]},
     "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 32, "surface": 9, "observerY": 56},
     "pieces": PIECES,
     "zones": [{"id": "band", "rect": rect(-52, -20, 52, 20), "holes": []}],
@@ -584,7 +584,7 @@ MADE_LAYERS = [
 
 
 FINISH = {
-    "authors": ["Claude"],
+    "authors": ["Opus 5.5"],
     "created": "2026-09-27",
     "biome": {"kind": "solid", "id": 4},
     "themes": THEMES,
