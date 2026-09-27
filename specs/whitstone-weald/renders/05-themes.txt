@@ -1,7 +1,7 @@
-THEMES  3 themes over 35832 ground cells, 16 distinct surface blocks
-  weald  34454 cells (96.2%)  2:0 Grass Block, 5:1 Spruce Planks, 3:0 Dirt, 3:1 Coarse Dirt, 172:0 Hardened Clay, 1:0 Stone, 1:5 Andesite, 9:0 Water, 4:0 Cobblestone, 13:0 Gravel, 82:0 Clay, 45:0 Bricks
-  works  824 cells (2.3%)  1:5 Andesite, 4:0 Cobblestone, 13:0 Gravel
-  worn  554 cells (1.5%)  3:0 Dirt, 3:1 Coarse Dirt, 1:0 Stone, 172:0 Hardened Clay, 5:1 Spruce Planks, 45:0 Bricks
+THEMES  3 themes over 35832 ground cells, 19 distinct surface blocks
+  heath  34494 cells (96.3%)  2:0 Grass Block, 172:0 Hardened Clay, 5:1 Spruce Planks, 1:1 Granite, 1:2 Polished Granite, 9:0 Water, 179:0 Red Sandstone, 159:1 Orange Stained Clay, 12:1 Red Sand, 3:1 Coarse Dirt, 98:0 Stone Bricks, 1:4 Polished Diorite
+  paving  784 cells (2.2%)  1:5 Andesite, 1:6 Polished Andesite, 98:0 Stone Bricks, 1:0 Stone, 1:2 Polished Granite, 1:1 Granite, 172:0 Hardened Clay
+  worn  554 cells (1.5%)  3:0 Dirt, 3:1 Coarse Dirt, 172:0 Hardened Clay, 1:1 Granite, 1:2 Polished Granite, 5:1 Spruce Planks, 98:0 Stone Bricks
 borders:
-  weald | works  268 cells
-  weald | worn  264 cells
+  heath | worn  264 cells
+  heath | paving  252 cells

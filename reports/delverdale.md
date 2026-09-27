@@ -20,7 +20,7 @@ accents are the gravel of the workings and the team colours on the wools.
 
 | | |
 |---|---|
-| slug and name | `delverdale`, **Delverdale**, credited to Claude, created 2026-09-27 |
+| slug and name | `delverdale`, **Delverdale**, credited to Opus 5.5, created 2026-09-27 |
 | mode and teams | ctw, red and blue, `max="32"` each (64 players), `rot_180` |
 | extent | x −84…83 by z −140…139, **168 × 280 blocks** |
 | land | 21 408 ground cells, **about 10 700 a team** with its half of the crossing |

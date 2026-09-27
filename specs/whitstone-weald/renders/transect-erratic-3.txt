@@ -2,23 +2,23 @@
 TRANSECT 25 stations from (-52, -62) to (-28, -62), every 1
   station        ground  surface  water  top  standing            step
   (  -52,   -62)      25       25           25  tree tree-7         
-  (  -51,   -62)      25       25           25  tree tree-7         
-  (  -50,   -62)      24       24           31  tree tree-7         -1
-  (  -49,   -62)      23       23           33  tree tree-7         -1
-  (  -48,   -62)      23       23           32  tree tree-7         
-  (  -47,   -62)      21       21           32  tree tree-7         -2
-  (  -46,   -62)      21       21           33  tree tree-7         
-  (  -45,   -62)      19       19           29  tree tree-7         -2
-  (  -44,   -62)      18       18           31  tree tree-7         -1
-  (  -43,   -62)      18       18           29  tree tree-7         
-  (  -42,   -62)      18       18           31  tree tree-7         
-  (  -41,   -62)      18       18           31  tree tree-7         
-  (  -40,   -62)      17       17           28  tree tree-7         -1
-  (  -39,   -62)      17       17           21  boulder erratic-3   
-  (  -38,   -62)      17       17           20  tree tree-8         
-  (  -37,   -62)      17       17           17                      
-  (  -36,   -62)      17       17           17                      
-  (  -35,   -62)      17       17           17                      
+  (  -51,   -62)      25       25           26  tree tree-7         
+  (  -50,   -62)      24       24           27  tree tree-7         -1
+  (  -49,   -62)      23       23           25  tree tree-7         -1
+  (  -48,   -62)      23       23           24  tree tree-7         
+  (  -47,   -62)      21       21           26  tree tree-7         -2
+  (  -46,   -62)      21       21           21  tree tree-7         
+  (  -45,   -62)      19       19           27  tree tree-7         -2
+  (  -44,   -62)      18       18           25  tree tree-7         -1
+  (  -43,   -62)      18       18           24  tree tree-7         
+  (  -42,   -62)      18       18           27  tree tree-7         
+  (  -41,   -62)      18       18           25  tree tree-8         
+  (  -40,   -62)      17       17           21  tree tree-8         -1
+  (  -39,   -62)      17       17           21  tree tree-8         
+  (  -38,   -62)      17       17           22  tree tree-8         
+  (  -37,   -62)      17       17           23  tree tree-8         
+  (  -36,   -62)      17       17           21  tree tree-8         
+  (  -35,   -62)      17       17           17  tree tree-8         
   (  -34,   -62)      17       17           17                      
   (  -33,   -62)      17       17           17                      
   (  -32,   -62)      16       16           16                      -1
@@ -27,7 +27,7 @@ TRANSECT 25 stations from (-52, -62) to (-28, -62), every 1
   (  -29,   -62)      16       16           16                      
   (  -28,   -62)      16       16           17  flora ground-cover  
 rises 0, falls 7, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree tree-7 at (-54, -64), tree tree-8 at (-42, -60), boulder erratic-3 at (-39, -64), flora ground-cover at (-28, -64)
+beside: tree tree-7 at (-54, -64), tree tree-8 at (-44, -60), boulder erratic-3 at (-40, -64), flora ground-cover at (-28, -63)
 
 ## erratic-3 (boulder) along z
 TRANSECT 23 stations from (-40, -72) to (-40, -50), every 1
@@ -37,23 +37,23 @@ TRANSECT 23 stations from (-40, -72) to (-40, -50), every 1
   (  -40,   -70)                                                    void
   (  -40,   -69)                                                    void
   (  -40,   -68)                                                    void
-  (  -40,   -67)                                tree tree-7         void
-  (  -40,   -66)                                tree tree-7         void
-  (  -40,   -65)      18       18           18  tree tree-7         
-  (  -40,   -64)      18       18           20  tree tree-7         
-  (  -40,   -63)      17       17           25  tree tree-7         -1
-  (  -40,   -62)      17       17           28  tree tree-7         
-  (  -40,   -61)      17       17           30  tree tree-8         
-  (  -40,   -60)      17       17           29  tree tree-8         
-  (  -40,   -59)      17       17           17  tree tree-8         
-  (  -40,   -58)      17       17           17  tree tree-8         
-  (  -40,   -57)      17       17           17  tree tree-8         
-  (  -40,   -56)      17       17           25  tree tree-8         
-  (  -40,   -55)      18       18           24  tree tree-8         +1
-  (  -40,   -54)      18       18           25  tree tree-8         
-  (  -40,   -53)      18       18           26  tree tree-8         
-  (  -40,   -52)      18       18           25  tree tree-8         
-  (  -40,   -51)      17       17           17  tree tree-8         -1
-  (  -40,   -50)      17       17           17  tree tree-8         
+  (  -40,   -67)                                                    void
+  (  -40,   -66)                                                    void
+  (  -40,   -65)      18       18           18                      
+  (  -40,   -64)      18       18           20  boulder erratic-3   
+  (  -40,   -63)      17       17           21  tree tree-7         -1
+  (  -40,   -62)      17       17           21  tree tree-8         
+  (  -40,   -61)      17       17           23  tree tree-8         
+  (  -40,   -60)      17       17           23  tree tree-8         
+  (  -40,   -59)      17       17           21  tree tree-8         
+  (  -40,   -58)      17       17           25  tree tree-8         
+  (  -40,   -57)      17       17           24  tree tree-8         
+  (  -40,   -56)      17       17           23  tree tree-8         
+  (  -40,   -55)      18       18           18  tree tree-8         +1
+  (  -40,   -54)      18       18           18  tree tree-8         
+  (  -40,   -53)      18       18           24  tree tree-8         
+  (  -40,   -52)      18       18           24  tree tree-8         
+  (  -40,   -51)      17       17           25  tree tree-8         -1
+  (  -40,   -50)      17       17           23  tree tree-8         
 rises 1, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree tree-7 at (-42, -69), boulder erratic-3 at (-39, -64), tree tree-8 at (-38, -62)
+beside: tree tree-7 at (-42, -68), boulder erratic-3 at (-40, -64), tree tree-8 at (-38, -63)

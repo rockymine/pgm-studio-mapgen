@@ -1,11 +1,11 @@
 ## farmhouse (house) along x
 TRANSECT 26 stations from (-135, -39) to (-110, -39), every 1
   station        ground  surface  water  top  standing            step
-  ( -135,   -39)      30       30           39  tree tree-5         
-  ( -134,   -39)      30       30           30  tree tree-5         
-  ( -133,   -39)      30       30           30  tree tree-5         
-  ( -132,   -39)      30       30           30  tree tree-5         
-  ( -131,   -39)      30       30           30  tree tree-5         
+  ( -135,   -39)      30       30           36  tree tree-5         
+  ( -134,   -39)      30       30           36  tree tree-5         
+  ( -133,   -39)      30       30           35  tree tree-5         
+  ( -132,   -39)      30       30           37  tree tree-5         
+  ( -131,   -39)      30       30           34  tree tree-5         
   ( -130,   -39)      30       30           30  tree tree-5         
   ( -129,   -39)      30       30           30                      
   ( -128,   -39)      29       29           40  house farmhouse     -1
@@ -33,10 +33,10 @@ beside: tree tree-5 at (-137, -41), tree tree-9 at (-137, -40), house farmhouse 
 ## farmhouse (house) along z
 TRANSECT 31 stations from (-123, -54) to (-123, -24), every 1
   station        ground  surface  water  top  standing            step
-  ( -123,   -54)      30       30           44  tree tree-2         
-  ( -123,   -53)      29       29           43  tree tree-2         -1
-  ( -123,   -52)      29       29           29  tree tree-2         
-  ( -123,   -51)      29       29           30  flora ground-cover  
+  ( -123,   -54)      30       30           30  tree tree-2         
+  ( -123,   -53)      29       29           29                      -1
+  ( -123,   -52)      29       29           30  flora ground-cover  
+  ( -123,   -51)      29       29           29                      
   ( -123,   -50)      29       29           29                      
   ( -123,   -49)      29       29           29                      
   ( -123,   -48)      29       29           29                      
@@ -65,4 +65,4 @@ TRANSECT 31 stations from (-123, -54) to (-123, -24), every 1
   ( -123,   -25)      29       29           29                      
   ( -123,   -24)      29       29           29                      
 rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree tree-2 at (-125, -56), flora ground-cover at (-125, -53), house farmhouse at (-125, -47), stroke farm-track at (-121, -25)
+beside: tree tree-2 at (-125, -56), flora ground-cover at (-122, -53), house farmhouse at (-125, -47), stroke farm-track at (-121, -25)

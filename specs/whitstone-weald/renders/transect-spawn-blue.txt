@@ -34,13 +34,13 @@ beside: stroke hogs-back-track#1 at (118, -2), stroke spawn-apron#1 at (120, -2)
 ## spawn-blue (spawn) along z
 TRANSECT 41 stations from (138, -20) to (138, 20), every 1
   station        ground  surface  water  top  standing            step
-  (  138,   -20)      30       30           39  tree tree-10#1      
-  (  138,   -19)      30       30           41  tree tree-10#1      
-  (  138,   -18)      31       31           36  tree tree-10#1      +1
-  (  138,   -17)      31       31           40  tree tree-10#1      
-  (  138,   -16)      31       31           38  tree tree-10#1      
-  (  138,   -15)      31       31           38  tree tree-10#1      
-  (  138,   -14)      32       32           32  tree tree-10#1      +1
+  (  138,   -20)      30       30           36  tree tree-10#1      
+  (  138,   -19)      30       30           39  tree tree-10#1      
+  (  138,   -18)      31       31           35  tree tree-10#1      +1
+  (  138,   -17)      31       31           37  tree tree-10#1      
+  (  138,   -16)      31       31           36  tree tree-10#1      
+  (  138,   -15)      31       31           35  tree tree-10#1      
+  (  138,   -14)      32       32           32                      +1
   (  138,   -13)      32       32           32                      
   (  138,   -12)      31       31           31                      -1
   (  138,   -11)      31       31           31                      
@@ -76,4 +76,4 @@ TRANSECT 41 stations from (138, -20) to (138, 20), every 1
   (  138,    19)      31       31           31                      
   (  138,    20)      31       31           31                      
 rises 3, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree tree-10#1 at (136, -22), tree tree-11#1 at (136, -21), spawn spawn#1 at (136, -9), stroke farm-track#1 at (136, 9)
+beside: tree tree-10#1 at (136, -22), spawn spawn#1 at (136, -9), stroke farm-track#1 at (136, 9)

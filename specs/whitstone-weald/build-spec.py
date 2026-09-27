@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Whitstone Weald — writes whitstone-weald.plan.json and whitstone-weald.finish.json beside itself.
 
-A wooded mining weald for 32 a side. Each team holds two end-stone monuments: the Crag Stone on a shelf
-under a crag with a wood on its outer flank, and the Green Stone on a green below a mining hamlet, with a
-drift mine running under the hamlet from a quarry at the strait to a cutting that surfaces beside the green.
+A dry heath of acacia and olive on banded red rock, for 32 a side. Each team holds two end-stone monuments:
+the Crag Stone on a bench under a red crag with a wood on its outer flank, and the Green Stone on a village
+green with a stone-built hamlet behind it and an old rock-cut cistern under the ground in front of it, reached
+from a sunken court at the strait and by a stepped cutting beside the green.
 
 Every coordinate below is team red's (x < 0); the plan is rot_180 and the studio fans the rest. Every height
 is a column height, as `base_height` states one: the top block is one lower.
@@ -20,16 +21,17 @@ HALF_W = 72                           # z runs -72..72
 CRAG_STONE = (-82, -36)               # the north monument
 GREEN_STONE = (-82, 36)               # the south monument
 
-# ── the mine ────────────────────────────────────────────────────────────────────────────────────
-MINE_FLOOR = 12                       # every mine floor: top block y11, a player stands at y12
-ROOF_FLOOR = 16                       # the ground over the gallery and chamber starts here: 4 of air
-RIM_H = 18                            # the quarry's rim, where the cart ramp starts down
+# ── the cistern ─────────────────────────────────────────────────────────────────────────────────
+FLOOR_H = 12                       # every cistern floor: top block y11, a player stands at y12
+ROOF_FLOOR = 16                       # the rock over the culvert and the hall starts here: 4 of air
+RIM_H = 18                            # the court's rim, where the stair starts down
 GREEN_H = 20                          # the green round the Green Stone, where the cutting surfaces
-QUARRY = (-30, 48, -16, 66)           # the open pit at the strait: min_x, min_z, max_x, max_z
-CART_RAMP = (-34, 48, -22, 52)        # 6 down over 12, from the rim to the pit floor
-GALLERY = (-60, 55, -30, 60)          # roofed, 30 long and 5 wide
-CHAMBER = (-76, 52, -60, 64)          # roofed, 16 x 12, two pillars
-UP_RAMP = (-70, 34, -65, 52)          # an open cutting climbing 8 over 18 to the green
+COURT = (-30, 48, -16, 66)           # the sunken court, open to the strait: min_x, min_z, max_x, max_z
+COURT_STAIR = (-34, 48, -22, 52)        # the court stair, 6 down over 12, from the rim to the court floor
+CULVERT = (-60, 55, -30, 60)          # the culvert, roofed, 30 long and 5 wide
+HALL = (-76, 52, -60, 64)          # the cistern hall, roofed, 16 x 12, four pillars round a pool
+CUTTING = (-70, 34, -65, 52)          # an open cutting climbing 8 over 18 to the green
+CISTERN_POOL = (-70, 55, -66, 61)     # the water in the middle of the hall
 POND = (-43, 2)                       # the pond at the front of the Hog's Back, between the two stones
 
 
@@ -55,8 +57,8 @@ def plan():
     cells = HALF_W // 4
     return {
         "plan": 2,
-        "meta": {"name": "Whitstone Weald", "authors": ["Claude"],
-                 "notes": "A wooded mining weald, two end-stone monuments a team, a drift mine under the south."},
+        "meta": {"name": "Whitstone Weald", "authors": ["Opus 5.5"],
+                 "notes": "A heath of acacia and olive on red rock, two end-stone monuments a team, a cistern under the south."},
         "globals": {"cell": 4, "symmetry": "rot_180", "maxPlayers": 32, "surface": 20, "observerY": 74},
         "pieces": [
             {"id": "weald", "rect": [-32, -cells, 28, 2 * cells]},
@@ -117,14 +119,14 @@ def outline_ops():
     shape.run(V3, BACK_EDGE)
     shape.run(V2, SOUTH_COAST)
     shape.run(V0, NORTH_COAST)
-    # The mine's notch in the strait edge: a quarry, a gallery, a chamber and a cutting, as one inlet. It is
+    # The cistern's notch in the strait edge: a court, a culvert, a hall and a cutting, as one inlet. It is
     # drawn from both mouths inward so the chord closing it never crosses a wall already drawn, and the
-    # chamber's west side goes in at a temporary point that is moved home once the ring has closed round it.
-    qx0, qz0, qx1, qz1 = QUARRY
-    cx0, cz0, _, _ = CART_RAMP
-    gx0, gz0, gx1, gz1 = GALLERY
-    hx0, hz0, hx1, hz1 = CHAMBER
-    ux0, uz0, ux1, uz1 = UP_RAMP
+    # hall's west side goes in at a temporary point that is moved home once the ring has closed round it.
+    qx0, qz0, qx1, qz1 = COURT
+    cx0, cz0, _, _ = COURT_STAIR
+    gx0, gz0, gx1, gz1 = CULVERT
+    hx0, hz0, hx1, hz1 = HALL
+    ux0, uz0, ux1, uz1 = CUTTING
     p = {0: (qx1, cz0), 1: (cx0, cz0), 2: (cx0, qz0 + 4), 3: (qx0, qz0 + 4), 4: (qx0, gz0), 5: (gx0, gz0),
          6: (hx1, hz0), 7: (ux1, hz0), 8: (ux1, uz0), 9: (ux0, uz0), 10: (ux0, hz0), 11: (hx0, hz0),
          12: (hx0, hz1), 13: (hx1, hz1), 14: (hx1, gz1), 15: (qx0, gz1), 16: (qx0, qz1), 17: (qx1, qz1)}
@@ -154,46 +156,49 @@ def outline_ops():
     return shape.ops
 
 
-# ── the mine: floors on a storey under the ground, roofs in the ground's own group ──────────────
+# ── the cistern: floors on a storey under the ground, roofs in the ground's own group ───────────
 def rect_shape(sid, box, base_height, **extra):
     x0, z0, x1, z1 = box
     return {"id": sid, "type": "rectangle", "operation": "add", "min_x": x0, "min_z": z0, "max_x": x1,
             "max_z": z1, "floor": 0, "base_height": base_height, **extra}
 
 
-def mine_layer():
-    cx0, cz0, cx1, cz1 = CART_RAMP
-    ux0, uz0, ux1, uz1 = UP_RAMP
-    hx0, hz0, hx1, hz1 = CHAMBER
-    mid = (hz0 + hz1) // 2
+def cistern_layer():
+    cx0, cz0, cx1, cz1 = COURT_STAIR
+    ux0, uz0, ux1, uz1 = CUTTING
+    hx0, hz0, hx1, hz1 = HALL
+    pillar = {"material": STONE_BRICK}
     shapes = [
-        rect_shape("quarry-floor", QUARRY, MINE_FLOOR),
-        {"id": "cart-ramp", "type": "polygon", "operation": "add", "floor": 0, "base_height": RIM_H,
+        rect_shape("court-floor", COURT, FLOOR_H),
+        {"id": "court-stair", "type": "polygon", "operation": "add", "floor": 0, "base_height": RIM_H,
          "vertices": [[cx0, cz0], [cx1, cz0], [cx1, cz1], [cx0, cz1]],
-         "anchor_heights": [RIM_H, MINE_FLOOR, MINE_FLOOR, RIM_H]},
-        rect_shape("gallery-floor", GALLERY, MINE_FLOOR),
-        rect_shape("chamber-floor", CHAMBER, MINE_FLOOR),
-        rect_shape("pillar-w", (hx0 + 4, mid - 1, hx0 + 6, mid + 1), ROOF_FLOOR),
-        rect_shape("pillar-e", (hx1 - 6, mid - 1, hx1 - 4, mid + 1), ROOF_FLOOR),
-        {"id": "up-ramp", "type": "polygon", "operation": "add", "floor": 0, "base_height": GREEN_H,
+         "anchor_heights": [RIM_H, FLOOR_H, FLOOR_H, RIM_H]},
+        rect_shape("culvert-floor", CULVERT, FLOOR_H),
+        rect_shape("hall-floor", HALL, FLOOR_H),
+        rect_shape("pillar-nw", (hx0 + 2, hz0 + 1, hx0 + 4, hz0 + 3), ROOF_FLOOR, **pillar),
+        rect_shape("pillar-ne", (hx1 - 4, hz0 + 1, hx1 - 2, hz0 + 3), ROOF_FLOOR, **pillar),
+        rect_shape("pillar-sw", (hx0 + 2, hz1 - 3, hx0 + 4, hz1 - 1), ROOF_FLOOR, **pillar),
+        rect_shape("pillar-se", (hx1 - 4, hz1 - 3, hx1 - 2, hz1 - 1), ROOF_FLOOR, **pillar),
+        {"id": "stair-cutting", "type": "polygon", "operation": "add", "floor": 0, "base_height": GREEN_H,
          "vertices": [[ux0, uz0], [ux1, uz0], [ux1, uz1], [ux0, uz1]],
-         "anchor_heights": [GREEN_H, GREEN_H, MINE_FLOOR, MINE_FLOOR]},
+         "anchor_heights": [GREEN_H, GREEN_H, FLOOR_H, FLOOR_H]},
     ]
     for shape in shapes:
         if not shape["id"].startswith("pillar"):
-            shape["theme"] = "works"
-    return {"id": "mine", "name": "Mine", "base_y": 0, "below": True, "shapes": shapes,
-            "groups": [{"id": "mine", "name": "Mine", "mirrors": True, "shapeIds": [s["id"] for s in shapes]}]}
+            shape["theme"] = "paving"
+    return {"id": "cistern", "name": "Cistern", "base_y": 0, "below": True, "shapes": shapes,
+            "groups": [{"id": "cistern", "name": "Cistern", "mirrors": True,
+                        "shapeIds": [s["id"] for s in shapes]}]}
 
 
 def roofs():
-    return [rect_shape("roof-gallery", GALLERY, 20, floor=ROOF_FLOOR, group="team"),
-            rect_shape("roof-chamber", CHAMBER, 20, floor=ROOF_FLOOR, group="team")]
+    return [rect_shape("roof-culvert", CULVERT, 20, floor=ROOF_FLOOR, group="team"),
+            rect_shape("roof-hall", HALL, 20, floor=ROOF_FLOOR, group="team")]
 
 
 # ── the relief: a frame of marks where players stand, then the landforms ───────────────────────
 def relief():
-    ux0, uz0, ux1, _ = UP_RAMP
+    ux0, uz0, ux1, _ = CUTTING
     marks = [
         {"id": "spawn-bench", "kind": "area", "h": 32, "bevel": 3, "ring": rect_ring(-152, -16, -126, 16)},
         # the bench's floor: the push `crag-bench` lifts this 5 to 27 and gives it a bank
@@ -202,10 +207,10 @@ def relief():
          "ring": ring(*GREEN_STONE, 9, lobes=0.1, phase=1)},
         {"id": "ramp-head", "kind": "area", "h": GREEN_H, "ring": rect_ring(ux0 - 3, uz0 - 6, ux1 + 3, uz0)},
         {"id": "hamlet-terrace", "kind": "line", "r": 6, "h": [23, 22], "points": [[-114, 60], [-82, 60]]},
-        # the ground over the gallery and chamber, deep enough that their ceiling course is rock, not soil
-        {"id": "mine-cover", "kind": "line", "r": 5, "h": [23, 22, 20],
+        # the ground over the culvert and the hall, deep enough that their ceiling course is rock, not soil
+        {"id": "culvert-cover", "kind": "line", "r": 5, "h": [23, 22, 20],
          "points": [[-80, 58], [-56, 57], [-34, 57]]},
-        {"id": "quarry-rim", "kind": "line", "r": 3, "tread": 1, "h": RIM_H, "points": [[-38, 44], [-38, 53]]},
+        {"id": "court-rim", "kind": "line", "r": 3, "tread": 1, "h": RIM_H, "points": [[-38, 44], [-38, 53]]},
         {"id": "farm-yard", "kind": "area", "h": 29, "bevel": 2, "ring": ring(-110, -38, 8, lobes=0.1)},
         {"id": "barn-stead", "kind": "area", "h": 29, "bevel": 2, "ring": rect_ring(-117, -56, -100, -45)},
         # the pond's pan, the size of the water that fills it, so the ground rises straight out of the pool
@@ -232,14 +237,16 @@ def relief():
     return {"team": {"base": 20, "reach": 0, "step": 1, "marks": marks, "pushes": pushes}}
 
 
-# ── the paint: one ground finished by its angle, the works floor, and worn patches ───────────────
+# ── the paint: one heath finished by its angle over banded red rock, a paved floor, worn yards ────
 def solid(block, data=0):
     return {"kind": "solid", "id": block, "data": data}
 
 
-GRASS, DIRT, COARSE, HARD_CLAY = solid(2), solid(3), solid(3, 1), solid(172)
-STONE, GRANITE, POL_GRANITE, ANDESITE = solid(1), solid(1, 1), solid(1, 2), solid(1, 5)
-COBBLE, GRAVEL, BRICK, CLAY = solid(4), solid(13), solid(45), solid(82)
+GRASS, DIRT, COARSE = solid(2), solid(3), solid(3, 1)
+HARD_CLAY, ORANGE_CLAY, RED_SANDSTONE = solid(172), solid(159, 1), solid(179)
+BROWN_CLAY, YELLOW_CLAY, WHITE_CLAY = solid(159, 12), solid(159, 4), solid(159, 0)
+STONE, GRANITE, POL_GRANITE, ANDESITE, POL_ANDESITE = solid(1), solid(1, 1), solid(1, 2), solid(1, 5), solid(1, 6)
+STONE_BRICK, CLAY, RED_SAND = solid(98), solid(82), solid(12, 1)
 DIORITE, POL_DIORITE = solid(1, 3), solid(1, 4)                   # the erratics: one rock the ground is not
 
 
@@ -254,42 +261,50 @@ def cell(seed, size, *palette, rise=0):
 
 
 SOIL = cell(31, 3, DIRT, COARSE)                                   # dirt and coarse dirt, half and half
-ROCK = cell(32, 3, STONE, ANDESITE, STONE, COBBLE)                 # stone and andesite, cobble a quarter
+RED_ROCK = cell(32, 3, HARD_CLAY, ORANGE_CLAY, HARD_CLAY, RED_SANDSTONE)   # terracotta, one tone
 TURF = depth((GRASS, 1), (SOIL, 2))
 ROCKY_TURF = depth(({"kind": "noise", "seed": 33, "scale": 2, "octaves": 1,
-                     "stops": [ROCK, GRASS, GRASS, ROCK]}, 1), (SOIL, 2))
+                     "stops": [RED_ROCK, GRASS, GRASS, RED_ROCK]}, 1), (SOIL, 2))
+
+
+def strata():
+    """The red rock's beds, read on every cut: hardened clay carrying thin bands of stained clay, stated up to
+    the highest face, because a height stack holds its last band rather than cycling."""
+    beds = [(HARD_CLAY, 3), (ORANGE_CLAY, 2), (HARD_CLAY, 2), (BROWN_CLAY, 1), (HARD_CLAY, 3),
+            (YELLOW_CLAY, 1), (ORANGE_CLAY, 2), (HARD_CLAY, 2), (WHITE_CLAY, 1), (HARD_CLAY, 2)]
+    bands = [{"thickness": t, "material": m} for _ in range(4) for m, t in beds]
+    return {"kind": "layered", "axis": "height", "stack": {"ending": "repeat", "bands": bands}}
 
 
 def themes():
-    weald = {
+    heath = {
         "bedrock": {"relative": False, "value": 1},
-        "fill": STONE,
-        "wall": cell(34, 3, STONE, ANDESITE, STONE, COBBLE, rise=3), "wallEnabled": True,
-        "wallOnTerrainFaces": True,
+        "fill": HARD_CLAY,
+        "wall": strata(), "wallEnabled": True, "wallOnTerrainFaces": True,
         "surface": {"enabled": True, "depth": 3, "material": {
             "kind": "layered", "axis": "slope", "stack": {"ending": "repeat", "bands": [
                 {"thickness": 38, "material": TURF},
                 {"thickness": 14, "material": ROCKY_TURF},
-                {"thickness": 40, "material": depth((ROCK, 3))}]}}},
-        "rim": {"enabled": False, "depth": 1, "material": STONE},
+                {"thickness": 40, "material": depth((RED_ROCK, 3))}]}}},
+        "rim": {"enabled": False, "depth": 1, "material": HARD_CLAY},
         "rimEdges": "void",
     }
-    works = {
+    paving = {
         "bedrock": {"relative": False, "value": 1},
-        "fill": STONE, "wall": cell(35, 3, STONE, ANDESITE, STONE, COBBLE, rise=3), "wallEnabled": True,
-        "wallOnTerrainFaces": True, "edgesFromGround": True,
-        "surface": {"enabled": True, "depth": 2, "material": depth((cell(36, 2, GRAVEL, ANDESITE, COBBLE), 1),
-                                                                   (STONE, 1))},
-        "rim": {"enabled": False, "depth": 1, "material": STONE}, "rimEdges": "void",
+        "fill": HARD_CLAY, "wall": strata(), "wallEnabled": True, "wallOnTerrainFaces": True,
+        "edgesFromGround": True,
+        "surface": {"enabled": True, "depth": 2, "material": depth(
+            (cell(36, 3, STONE_BRICK, POL_ANDESITE, ANDESITE, STONE), 1), (STONE, 1))},
+        "rim": {"enabled": False, "depth": 1, "material": HARD_CLAY}, "rimEdges": "void",
     }
     worn = {
         "bedrock": {"relative": False, "value": 1},
-        "fill": STONE, "wall": cell(37, 3, STONE, ANDESITE, STONE, COBBLE, rise=3), "wallEnabled": True,
-        "wallOnTerrainFaces": True, "edgesFromGround": True,
+        "fill": HARD_CLAY, "wall": strata(), "wallEnabled": True, "wallOnTerrainFaces": True,
+        "edgesFromGround": True,
         "surface": {"enabled": True, "depth": 3, "material": depth((cell(38, 2, DIRT, COARSE), 1), (DIRT, 2))},
-        "rim": {"enabled": False, "depth": 1, "material": STONE}, "rimEdges": "void",
+        "rim": {"enabled": False, "depth": 1, "material": HARD_CLAY}, "rimEdges": "void",
     }
-    return {"weald": weald, "works": works, "worn": worn}
+    return {"heath": heath, "paving": paving, "worn": worn}
 
 
 def patches():
@@ -300,16 +315,16 @@ def patches():
     return [
         patch("farmyard", ring(-109, -38, 5.5, n=12, lobes=0.18, phase=0.4), "worn"),
         patch("hamlet-square", ring(-98, 64, 4.5, n=10, lobes=0.15), "worn"),
-        patch("spoil", ring(-42, 44, 5, n=10, lobes=0.25, phase=1.2, sz=0.7), "works"),
+        patch("court-apron", ring(-40, 50, 3.5, n=10, lobes=0.1), "paving"),
         patch("mill-yard", ring(-60, -53, 6.5, n=12, lobes=0.12), "worn"),
     ]
 
 
-# ── buildings ───────────────────────────────────────────────────────────────────────────────────
+# ── buildings: grey masonry under a spruce-boarded storey and an acacia roof ─────────────────────
 PLAIN = {"field": None, "border": None, "borderWidth": 1, "inlay": None, "inlayInset": 2, "isPlain": True}
-DARK_LOG = solid(162, 1)
-LAID = {"kind": "laidLog", "id": 162, "data": 1}
-BIRCH_PLANK, DARK_PLANK, SPRUCE_PLANK = solid(5, 2), solid(5, 5), solid(5, 1)
+SPRUCE_LOG = solid(17, 1)
+LAID = {"kind": "laidLog", "id": 17, "data": 1}
+SPRUCE_PLANK, ACACIA_PLANK = solid(5, 1), solid(5, 4)
 NO_WINDOW = {"form": "none", "block": 102, "hostBlock": -1, "hostData": 0, "data": 0, "sill": 2, "width": 2,
              "height": 2, "spacing": 3}
 
@@ -325,52 +340,51 @@ def pane():
             "width": 2, "height": 2, "spacing": 3}
 
 
-def weald_house(upper=None):
-    """Brick ground storey, a beam course, a birch-planked upper storey in a dark-oak frame, a dark roof."""
-    upper = upper or wall((LAID, 1), (BIRCH_PLANK, 3))
+def heath_house(upper=None):
+    """Stone-brick ground storey, a laid spruce beam course, a spruce-boarded upper storey, an acacia roof."""
+    upper = upper or wall((LAID, 1), (SPRUCE_PLANK, 3))
     return {
         "foundation": {"plate": {"stack": {"bands": [{"material": SPRUCE_PLANK, "thickness": 1}],
                                            "ending": "repeat"}, "extent": 1}, "surface": PLAIN, "footing": None},
         "roof": {"form": "gable", "pitch": 1, "slab": -1, "slabData": 0, "overhang": 1, "ridgeCap": True,
-                 "hole": False, "body": DARK_PLANK, "verge": SPRUCE_PLANK, "gable": BIRCH_PLANK,
+                 "hole": False, "body": ACACIA_PLANK, "verge": SPRUCE_PLANK, "gable": SPRUCE_PLANK,
                  "gableWindows": {"form": "open", "block": 102, "hostBlock": -1, "hostData": 0, "data": 0,
                                   "sill": 1, "width": 1, "height": 1, "spacing": 3}},
-        "wall": wall((BRICK, 4)),
-        "post": DARK_LOG,
+        "wall": wall((STONE_BRICK, 4)),
+        "post": SPRUCE_LOG,
         "windows": pane(),
         "storeys": [
-            {"clear": 4, "wall": wall((BRICK, 4)), "post": DARK_LOG, "windows": pane(), "surface": PLAIN,
-             "deck": None, "headroom": 4},
-            {"clear": 4, "wall": upper, "post": DARK_LOG, "windows": pane(), "surface": PLAIN, "deck": None,
+            {"clear": 4, "wall": wall((STONE_BRICK, 4)), "post": SPRUCE_LOG, "windows": pane(),
+             "surface": PLAIN, "deck": None, "headroom": 4},
+            {"clear": 4, "wall": upper, "post": SPRUCE_LOG, "windows": pane(), "surface": PLAIN, "deck": None,
              "headroom": 4}],
         "porch": None, "front": None,
-        "beams": {"block": 162, "data": 1, "reach": 1, "any": True},
-        "doorway": {"door": "air", "head": {"form": "arched", "block": 164, "fill": "upperSlab", "fillBlock": 126,
-                                           "fillData": 5}, "width": 2, "height": 3},
+        "beams": {"block": 17, "data": 1, "reach": 1, "any": True},
+        "doorway": {"door": "air", "head": {"form": "arched", "block": 134, "fill": "upperSlab", "fillBlock": 126,
+                                           "fillData": 1}, "width": 2, "height": 3},
     }
 
 
-def works_house():
-    """The barn and the engine house: dark weatherboard over a brick plinth, one tall storey."""
-    board = wall((BRICK, 2), (LAID, 1), (DARK_PLANK, 3))
-    style = weald_house()
-    style["roof"].update({"body": SPRUCE_PLANK, "verge": DARK_PLANK, "gable": DARK_PLANK,
-                          "gableWindows": dict(NO_WINDOW)})
+def barn_house():
+    """The barn and the well-house: spruce weatherboard over a stone-brick plinth, one tall storey."""
+    board = wall((STONE_BRICK, 2), (LAID, 1), (SPRUCE_PLANK, 3))
+    style = heath_house()
+    style["roof"].update({"gableWindows": dict(NO_WINDOW)})
     style["wall"] = board
     style["windows"] = dict(NO_WINDOW)
-    style["storeys"] = [{"clear": 6, "wall": board, "post": DARK_LOG,
-                         "windows": {"form": "slabBanded", "block": 126, "hostBlock": 5, "hostData": 5, "data": 5,
+    style["storeys"] = [{"clear": 6, "wall": board, "post": SPRUCE_LOG,
+                         "windows": {"form": "slabBanded", "block": 126, "hostBlock": 5, "hostData": 1, "data": 1,
                                      "sill": 4, "width": 2, "height": 1, "spacing": 2},
                          "surface": PLAIN, "deck": None, "headroom": 6}]
-    style["doorway"] = {"door": "air", "head": {"form": "none", "block": 164, "fill": "solid", "fillBlock": 5,
-                                                "fillData": 5}, "width": 3, "height": 4}
+    style["doorway"] = {"door": "air", "head": {"form": "none", "block": 134, "fill": "solid", "fillBlock": 5,
+                                                "fillData": 1}, "width": 3, "height": 4}
     return style
 
 
 def spawn_hall():
-    """The weald house at hall size, with a course of the owner's colour over the beams."""
-    tint = {"kind": "teamTint", "blockId": 159, "neutral": BIRCH_PLANK}
-    return weald_house(upper=wall((LAID, 1), (tint, 1), (BIRCH_PLANK, 2)))
+    """The heath house at hall size, with a course of the owner's colour over the beams."""
+    tint = {"kind": "teamTint", "blockId": 159, "neutral": SPRUCE_PLANK}
+    return heath_house(upper=wall((LAID, 1), (tint, 1), (SPRUCE_PLANK, 2)))
 
 
 def house(hid, style, corners, front, seed, **spec):
@@ -381,20 +395,20 @@ def house(hid, style, corners, front, seed, **spec):
 
 
 def buildings():
-    farmhouse = {"id": "farmhouse", "kind": "house", "seed": 41, "front": "posX", "style": "weald",
+    farmhouse = {"id": "farmhouse", "kind": "house", "seed": 41, "front": "posX", "style": "heath",
                  "wings": [{"corners": [[-127, -46], [-118, -38]]},
                            {"corners": [[-127, -37], [-122, -32]], "spec": {"storeysHigh": 1, "ridge": "alongZ"}}]}
     return [
         farmhouse,
-        house("barn", "works", [[-114, -53], [-103, -47]], "posZ", 42),
-        house("cottage-west", "weald", [[-120, 52], [-112, 60]], "posZ", 43, storeysHigh=1),
-        house("cottage-hall", "weald", [[-104, 50], [-94, 60]], "posZ", 44),
-        house("cottage-east", "weald", [[-89, 54], [-82, 61]], "posZ", 45, storeysHigh=1),
-        house("engine-house", "works", [[-52, 54], [-42, 61]], "negZ", 46),
+        house("barn", "barn", [[-114, -53], [-103, -47]], "posZ", 42),
+        house("cottage-west", "heath", [[-120, 52], [-112, 60]], "posZ", 43, storeysHigh=1),
+        house("cottage-hall", "heath", [[-104, 50], [-94, 60]], "posZ", 44),
+        house("cottage-east", "heath", [[-89, 54], [-82, 61]], "posZ", 45, storeysHigh=1),
+        house("well-house", "barn", [[-51, 55], [-45, 61]], "negZ", 46),
     ]
 
 
-# ── made things: the engine house's chimney and the mill stump on the crag ──────────────────────
+# ── made things: the mill stump on the crag ─────────────────────────────────────────────────────
 def c_ring(cx, cz, outer, inner, gap_deg=40, facing_deg=35, n=28):
     """An annulus as one polygon with a doorway cut through it: the outer arc, across the gap, the inner arc
     back, and across again."""
@@ -408,22 +422,15 @@ def c_ring(cx, cz, outer, inner, gap_deg=40, facing_deg=35, n=28):
 
 
 def made_layers():
-    chimney = {"id": "chimney", "name": "Engine chimney", "base_y": 20, "kind": "made", "part_of": "chimney",
-               "seat": "ground",
-               "shapes": [{"id": "chimney-stack", "type": "rectangle", "operation": "add", "min_x": -56,
-                           "min_z": 55, "max_x": -53, "max_z": 58, "floor": 0, "base_height": 16,
-                           "material": BRICK}],
-               "groups": [{"id": "chimney", "name": "chimney", "mirrors": True, "shapeIds": ["chimney-stack"]}]}
     mill = {"id": "mill", "name": "Mill stump", "base_y": 30, "kind": "made", "part_of": "mill", "seat": "ground",
             "shapes": [{"id": "mill-wall", "type": "polygon", "operation": "add", "floor": 0, "base_height": 8,
-                        "vertices": c_ring(-60, -53, 4.5, 3.4), "material": BRICK}],
+                        "vertices": c_ring(-60, -53, 4.5, 3.4), "material": STONE_BRICK}],
             "groups": [{"id": "mill", "name": "mill", "mirrors": True, "shapeIds": ["mill-wall"]}]}
-    return [chimney, mill]
+    return [mill]
 
 
 # ── the dressing: the routes first, then the water, then the buildings, rock and trees ──────────
-EARTH = cell(51, 2, DIRT, COARSE, HARD_CLAY)
-HAUL = cell(52, 2, GRAVEL, ANDESITE, COBBLE)
+TRACK = cell(51, 2, GRANITE, POL_GRANITE, HARD_CLAY)              # a warm path: granite with hardened clay
 
 
 def stroke(sid, points, radius, pave, seed):
@@ -433,31 +440,31 @@ def stroke(sid, points, radius, pave, seed):
 
 def paths():
     return [
-        stroke("spawn-apron", [(-130, 0), (-118, 1)], 3, EARTH, 61),
+        stroke("spawn-apron", [(-130, 0), (-118, 1)], 3, TRACK, 61),
         stroke("hogs-back-track", [(-118, 1), (-106, 2), (-90, 3), (-74, 3), (-62, 2), (-56, -8), (-44, -16),
-                                   (-22, -14)], 2, EARTH, 62),
-        stroke("crag-track", [(-106, 2), (-100, -10), (-94, -20), (-89, -26)], 2, EARTH, 63),
-        stroke("green-track", [(-106, 2), (-100, 14), (-94, 24), (-90, 28)], 2, EARTH, 64),
-        stroke("crag-front", [(-73, -32), (-60, -31), (-46, -27), (-32, -25), (-21, -25)], 2, EARTH, 65),
-        stroke("green-front", [(-73, 30), (-58, 26), (-42, 22), (-28, 20), (-21, 20)], 2, EARTH, 66),
-        stroke("farm-track", [(-136, -10), (-126, -18), (-116, -27), (-111, -35)], 1.5, EARTH, 67),
-        stroke("farm-to-crag", [(-104, -40), (-98, -40), (-93, -39)], 1.5, EARTH, 68),
-        stroke("green-to-hamlet", [(-92, 40), (-100, 46), (-108, 52), (-108, 62)], 1.5, EARTH, 69),
-        stroke("hamlet-lane", [(-120, 63), (-106, 64), (-92, 65), (-78, 66)], 2, EARTH, 70),
-        stroke("haul-road", [(-78, 66), (-64, 66), (-50, 65), (-40, 63), (-37, 56), (-36, 51)], 2, HAUL, 71),
+                                   (-22, -14)], 2, TRACK, 62),
+        stroke("crag-track", [(-106, 2), (-100, -10), (-94, -20), (-89, -26)], 2, TRACK, 63),
+        stroke("green-track", [(-106, 2), (-100, 14), (-94, 24), (-90, 28)], 2, TRACK, 64),
+        stroke("crag-front", [(-73, -32), (-60, -31), (-46, -27), (-32, -25), (-21, -25)], 2, TRACK, 65),
+        stroke("green-front", [(-73, 30), (-58, 26), (-42, 22), (-28, 20), (-21, 20)], 2, TRACK, 66),
+        stroke("farm-track", [(-136, -10), (-126, -18), (-116, -27), (-111, -35)], 1.5, TRACK, 67),
+        stroke("farm-to-crag", [(-104, -40), (-98, -40), (-93, -39)], 1.5, TRACK, 68),
+        stroke("green-to-hamlet", [(-92, 40), (-100, 46), (-108, 52), (-108, 62)], 1.5, TRACK, 69),
+        stroke("hamlet-lane", [(-120, 63), (-106, 64), (-92, 65), (-78, 66)], 2, TRACK, 70),
+        stroke("court-road", [(-78, 66), (-64, 66), (-54, 65), (-42, 63), (-37, 56), (-36, 51)], 2, TRACK, 71),
     ]
 
 
 def trees():
-    oaks = [(-134, -63, "oak-a"), (-117, -62, "oak-b"), (-100, -66, "oak-c")]
-    birches = [(-92, -58, "birch-b"), (-136, -44, "birch-c"), (-78, -55, "birch-d"),
-               (-48, -63, "birch-e"), (-38, -55, "birch-f"), (-141, -35, "birch-a")]
-    orchard = [(-140, 20, "young-oak-a"), (-130, 20, "young-oak-b"), (-120, 26, "young-oak-c"),
-               (-140, 31, "young-oak-b"), (-130, 31, "young-oak-c")]
-    hamlet = [(-135, 58, "oak-great"), (-110, 43, "birch-c"), (-120, 44, "young-oak-b"), (-137, 38, "birch-e"),
-              (-112, 34, "young-oak-a"), (-106, 18, "birch-f")]
+    acacias = [(-134, -63, "acacia-a"), (-117, -62, "acacia-b"), (-100, -66, "acacia-c")]
+    olives = [(-92, -58, "olive-a"), (-136, -44, "olive-b"), (-78, -55, "olive-c"),
+              (-48, -63, "olive-d"), (-38, -55, "olive-e"), (-141, -35, "olive-a")]
+    grove = [(-140, 20, "olive-small-a"), (-130, 20, "olive-small-b"), (-120, 26, "olive-small-c"),
+             (-140, 31, "olive-small-b"), (-130, 31, "olive-small-c")]
+    hamlet = [(-135, 58, "acacia-great"), (-110, 43, "olive-b"), (-120, 44, "olive-small-b"), (-137, 38, "olive-e"),
+              (-115, 31, "olive-small-a"), (-106, 18, "olive-c")]
     placed = []
-    for index, (x, z, style) in enumerate(oaks + birches + orchard + hamlet):
+    for index, (x, z, style) in enumerate(acacias + olives + grove + hamlet):
         placed.append({"id": f"tree-{index + 1}", "kind": "tree", "seed": 100 + index, "x": x, "z": z,
                        "style": style})
     return placed
@@ -473,32 +480,36 @@ def dressing():
     with open(os.path.join(HERE, "trees.json")) as handle:
         library = json.load(handle)
     styles = {key: entry["style"] for key, entry in library.items()}
-    styles["weald"] = {"kind": "house", "shell": weald_house()}
-    styles["works"] = {"kind": "house", "shell": works_house()}
-    styles["erratic"] = {"kind": "boulder", "form": "round", "size": 2.5, "mossy": True,
+    styles["heath"] = {"kind": "house", "shell": heath_house()}
+    styles["barn"] = {"kind": "house", "shell": barn_house()}
+    styles["erratic"] = {"kind": "boulder", "form": "round", "size": 2.5, "mossy": False,
                          "rock": cell(81, 3, DIORITE, DIORITE, POL_DIORITE)}
     pond = {"id": "pond", "kind": "water", "layer": "ground", "shape": "pool", "form": "natural", "seed": 90,
             "points": POND_RING, "radius": 3, "depth": 3,
-            "shore": 2, "shoreWander": True, "edge": 1.5, "bank": cell(91, 2, GRAVEL, CLAY, ANDESITE)}
+            "shore": 2, "shoreWander": True, "edge": 1.5, "bank": cell(91, 2, COARSE, RED_SAND, HARD_CLAY)}
+    px0, pz0, px1, pz1 = CISTERN_POOL
+    cistern = {"id": "cistern-pool", "kind": "water", "layer": "cistern", "shape": "pool", "form": "canal",
+               "seed": 92, "points": rect_ring(px0, pz0, px1, pz1), "radius": 1, "depth": 2, "shore": 0,
+               "bank": STONE_BRICK}
     cover = {"id": "ground-cover", "kind": "flora", "seed": 95,
              "points": [[-150, -74], [-14, -74], [-14, 74], [-150, 74]],
-             "spec": {"coverage": 0.2, "scale": 9, "octaves": 2, "fernShare": 0.35, "flowerShare": 0.08,
-                      "flowerScale": 7, "tallShare": 0.03}}
-    props = paths() + [pond] + buildings() + boulders() + trees() + [cover]
+             "spec": {"coverage": 0.18, "scale": 9, "octaves": 2, "fernShare": 0.1, "flowerShare": 0.03,
+                      "flowerScale": 7, "tallShare": 0.04}}
+    props = paths() + [pond, cistern] + buildings() + boulders() + trees() + [cover]
     return {"styles": styles, "props": props}
 
 
 def finish():
     return {
-        "authors": ["Claude"],
+        "authors": ["Opus 5.5"],
         "created": "2026-09-27",
         "editShapes": {"weald-20": outline_ops()},
-        "addLayers": [mine_layer()] + made_layers(),
+        "addLayers": [cistern_layer()] + made_layers(),
         "addShapes": roofs() + patches(),
         "relief": relief(),
         "themes": themes(),
-        "mapTheme": "weald",
-        "biome": {"kind": "solid", "id": 4},
+        "mapTheme": "heath",
+        "biome": {"kind": "solid", "id": 35},
         "roomStyles": {"spawn": spawn_hall()},
         "dressing": dressing(),
     }
