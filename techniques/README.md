@@ -11,8 +11,9 @@ comparison can be read, and several of them say so in their own *Limits*. What a
 `ORDER-OF-WORK.md` and `WHAT-A-BOARD-IS-MADE-OF.md`; what a card holds is how one instrument behaves.
 
 **The same goes for anything a card leaves on the studio's default, and the spawn and the wool room are the
-ones that bite.** A finish stating no `roomStyles` stamps the built-in bedrock box, at 200, with no finding
-— so every card carrying a room carries a box, because the room is not what that card is about. A board
+ones that bite.** A finish stating no `roomStyles` stamps the built-in bedrock box, at 200, with only a `WX14`
+complaint on the build's `warnings` — so every card carrying a room carries a box, because the room is not
+what that card is about. A board
 that copies the silence ships the box, and the two structures a player sees from the inside are the last
 place a default belongs.
 

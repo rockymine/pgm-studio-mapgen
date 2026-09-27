@@ -1521,7 +1521,7 @@ order they are written: **a roughly square hall ties its ridge `AlongX`, which i
 
 ---
 
-### `roomStyles` has three states and the third one is silent
+### `roomStyles` has three states and the third one is a placeholder
 
 `roomStyles` binds a shell for `wool` and for `spawn`, and each of the three things it can say means
 something different: an **object** is the bound style, an explicit **`null`** is open ground with no
@@ -1530,6 +1530,10 @@ building, and an **absent** key is that kind's built-in shell — a bedrock box.
 The third is the one that costs a build, because nothing is wrong with the document. A board whose key the
 studio does not bind stores at 200, pre-flights **OPEN**, exports at 200, and builds its rooms as the box:
 `y24 Bedrock · y16 Bedrock` where the bound style reads `y26 Bricks · y16 Gravel`.
+
+**Only the build says so, as `WX14` on `warnings`.** The preview (`POST …/sketch/columns`) and the export
+each carry one complaint per kind of room left in the box, naming the rooms and the `roomStyles` field to
+bind. A binding that copies the box is the box and complains the same; `null` raises nothing.
 
 Two things now say so. The per-part route refuses an unknown part outright — 400, *"a map binds a shell for
 wool and spawn, and nothing else"* — and the whole-layout write names the key under `RQ3`, because the
@@ -1540,8 +1544,8 @@ mis-keyed shell cannot reach a world.
 
 `roomStyles` takes a bare `HouseStyle`. `dressing.styles` takes a `PropStyle`, which is polymorphic — so the
 same document two keys away needs the discriminator: `{"kind": "house", "shell": <HouseStyle>}`. Without it
-`DressingJson.ParseStyles` throws and the answer is **500 / `RQ2`**, the studio's own fault rather than the
-document's, with the field that caused it named only in the server log.
+the answer is **`DR-DOC`** naming the recipe and the field, and the same holds for any material inside the
+shell that names no `kind` — a storey `deck` written as a band stack is `shell.storeys[1].deck`.
 
 ---
 
