@@ -1,0 +1,51 @@
+## well (made) along x
+TRANSECT 20 stations from (-20, 65) to (-1, 65), every 1
+  station        ground  surface  water  top  standing            step
+  (  -20,    65)      20       20           20                      
+  (  -19,    65)      20       20           20                      
+  (  -18,    65)      20       20           20                      
+  (  -17,    65)      20       20           20                      
+  (  -16,    65)      20       20           20                      
+  (  -15,    65)      20       20           20                      
+  (  -14,    65)      20       20           21  flora cover         
+  (  -13,    65)      20       20           20                      
+  (  -12,    65)      20       24           24  storey              BARRIER +4
+  (  -11,    65)      20       24     21    24  storey              
+  (  -10,    65)      20       24           24  storey              
+  (   -9,    65)      20       20           20                      DROP -4
+  (   -8,    65)      20       20           21  flora cover         
+  (   -7,    65)      20       20           21  flora cover         
+  (   -6,    65)      20       20           20                      
+  (   -5,    65)      20       20           20                      
+  (   -4,    65)      20       20           20                      
+  (   -3,    65)      20       20           20                      
+  (   -2,    65)      20       20           20  stroke street       
+  (   -1,    65)      20       20           20  stroke street       
+rises 1, falls 1, worst step 4: 1 barrier, 0 scramble, 1 drop — BARRIER +4 at (-12, 65); DROP -4 at (-9, 65) | walked end to end
+beside: flora cover at (-19, 64), stroke street at (-2, 63)
+
+## well (made) along z
+TRANSECT 20 stations from (-11, 56) to (-11, 75), every 1
+  station        ground  surface  water  top  standing            step
+  (  -11,    56)      20       20           20                      
+  (  -11,    57)      20       20           20                      
+  (  -11,    58)      20       20           20                      
+  (  -11,    59)      20       20           20                      
+  (  -11,    60)      20       20           20                      
+  (  -11,    61)      20       20           21  flora cover         
+  (  -11,    62)      20       20           22  flora cover         
+  (  -11,    63)      20       20           20                      
+  (  -11,    64)      20       21           21  storey              +1
+  (  -11,    65)      20       24     21    24  storey              BARRIER +3
+  (  -11,    66)      20       21           21  storey              -3
+  (  -11,    67)      20       20           20                      -1
+  (  -11,    68)      20       20           20                      
+  (  -11,    69)      20       20           20                      
+  (  -11,    70)      20       20           20                      
+  (  -11,    71)      20       20           20                      
+  (  -11,    72)      20       20           20                      
+  (  -11,    73)      20       20           20                      
+  (  -11,    74)      20       20           20                      
+  (  -11,    75)      20       20           20                      
+rises 2, falls 2, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (-11, 65) | walked end to end
+beside: flora cover at (-10, 60)

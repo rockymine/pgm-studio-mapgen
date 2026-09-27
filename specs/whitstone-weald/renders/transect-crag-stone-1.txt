@@ -1,0 +1,61 @@
+## crag-stone-1 (destroyable) along x
+TRANSECT 25 stations from (68, 34) to (92, 34), every 1
+  station        ground  surface  water  top  standing            step
+  (   68,    34)      21       21           21                      
+  (   69,    34)      22       22           22                      +1
+  (   70,    34)      24       24           24                      scramble +2
+  (   71,    34)      25       25           25                      +1
+  (   72,    34)      26       26           26                      +1
+  (   73,    34)      27       27           27                      +1
+  (   74,    34)      27       27           27                      
+  (   75,    34)      27       27           27                      
+  (   76,    34)      27       27           27                      
+  (   77,    34)      27       27           27                      
+  (   78,    34)      27       27           27  destroyable crag-stone#1  
+  (   79,    34)      27       27           51  destroyable crag-stone#1  
+  (   80,    34)      27       27           52  destroyable crag-stone#1  
+  (   81,    34)      27       27           51  destroyable crag-stone#1  
+  (   82,    34)      27       27           35  destroyable crag-stone#1  
+  (   83,    34)      27       27           27                      
+  (   84,    34)      27       27           27                      
+  (   85,    34)      27       27           27                      
+  (   86,    34)      27       27           27                      
+  (   87,    34)      27       27           27                      
+  (   88,    34)      27       27           27                      
+  (   89,    34)      27       27           27                      
+  (   90,    34)      28       28           28                      +1
+  (   91,    34)      28       28           28                      
+  (   92,    34)      29       29           29                      +1
+rises 7, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (70, 34) | walked end to end
+beside: stroke crag-front#1 at (66, 32), destroyable crag-stone#1 at (78, 32)
+
+## crag-stone-1 (destroyable) along z
+TRANSECT 25 stations from (80, 22) to (80, 46), every 1
+  station        ground  surface  water  top  standing            step
+  (   80,    22)      22       22           22                      
+  (   80,    23)      22       22           22                      
+  (   80,    24)      23       23           23                      +1
+  (   80,    25)      25       25           25                      scramble +2
+  (   80,    26)      26       26           26                      +1
+  (   80,    27)      26       26           26                      
+  (   80,    28)      27       27           27                      +1
+  (   80,    29)      27       27           27                      
+  (   80,    30)      27       27           27                      
+  (   80,    31)      27       27           27                      
+  (   80,    32)      27       27           27  destroyable crag-stone#1  
+  (   80,    33)      27       27           51  destroyable crag-stone#1  
+  (   80,    34)      27       27           52  destroyable crag-stone#1  
+  (   80,    35)      27       27           51  destroyable crag-stone#1  
+  (   80,    36)      27       27           35  destroyable crag-stone#1  
+  (   80,    37)      27       27           27                      
+  (   80,    38)      27       27           27                      
+  (   80,    39)      27       27           27                      
+  (   80,    40)      27       27           27                      
+  (   80,    41)      27       27           27                      
+  (   80,    42)      27       27           27                      
+  (   80,    43)      27       27           27                      
+  (   80,    44)      27       27           27                      
+  (   80,    45)      27       27           27                      
+  (   80,    46)      27       27           27                      
+rises 4, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (80, 25) | walked end to end
+beside: destroyable crag-stone#1 at (78, 32), tree tree-6#1 at (78, 47)

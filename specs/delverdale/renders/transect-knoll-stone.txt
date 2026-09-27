@@ -1,0 +1,61 @@
+## knoll-stone (boulder) along x
+TRANSECT 25 stations from (-73, 77) to (-49, 77), every 1
+  station        ground  surface  water  top  standing            step
+  (  -73,    77)                                tree knoll-2        void
+  (  -72,    77)                                tree knoll-2        void
+  (  -71,    77)                                tree knoll-2        void
+  (  -70,    77)                            37  tree knoll-2        void
+  (  -69,    77)                            37  tree knoll-2        void
+  (  -68,    77)                                tree knoll-2        void
+  (  -67,    77)                            38  tree knoll-2        void
+  (  -66,    77)                                tree knoll-3        void
+  (  -65,    77)      29       29           40  tree knoll-3        
+  (  -64,    77)      29       29           40  tree knoll-3        
+  (  -63,    77)      29       29           38  tree knoll-3        
+  (  -62,    77)      28       28           40  tree knoll-3        -1
+  (  -61,    77)      28       28           39  tree knoll-3        
+  (  -60,    77)      28       28           36  tree knoll-3        
+  (  -59,    77)      27       27           31  tree knoll-2        -1
+  (  -58,    77)      26       26           26  tree knoll-2        -1
+  (  -57,    77)      25       25           25  tree knoll-2        -1
+  (  -56,    77)      25       25           25  tree knoll-2        
+  (  -55,    77)      24       24           24  tree knoll-2        -1
+  (  -54,    77)      23       23           23  stroke fell-road    -1
+  (  -53,    77)      23       23           23  stroke fell-road    
+  (  -52,    77)      22       22           22  stroke fell-road    -1
+  (  -51,    77)      22       22           22  tree farm-yard      
+  (  -50,    77)      22       22           22  tree farm-yard      
+  (  -49,    77)      22       22           22  tree farm-yard      
+rises 0, falls 7, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree knoll-2 at (-74, 75), tree knoll-3 at (-69, 79), stroke fell-road at (-55, 79), tree farm-yard at (-52, 78)
+
+## knoll-stone (boulder) along z
+TRANSECT 25 stations from (-61, 65) to (-61, 89), every 1
+  station        ground  surface  water  top  standing            step
+  (  -61,    65)      28       28           37  tree knoll-2        
+  (  -61,    66)      28       28           39  tree knoll-2        
+  (  -61,    67)      28       28           39  tree knoll-2        
+  (  -61,    68)      28       28           28  tree knoll-2        
+  (  -61,    69)      28       28           38  tree knoll-2        
+  (  -61,    70)      28       28           38  tree knoll-2        
+  (  -61,    71)      28       28           28  tree knoll-2        
+  (  -61,    72)      29       29           41  tree knoll-2        +1
+  (  -61,    73)      29       29           35  tree knoll-2        
+  (  -61,    74)      29       29           34  tree knoll-2        
+  (  -61,    75)      29       29           35  tree knoll-2        
+  (  -61,    76)      29       29           38  tree knoll-2        
+  (  -61,    77)      28       28           39  tree knoll-3        -1
+  (  -61,    78)      27       27           40  tree knoll-3        -1
+  (  -61,    79)      27       27           40  tree knoll-3        
+  (  -61,    80)      26       26           39  tree knoll-3        -1
+  (  -61,    81)      25       25           38  tree knoll-3        -1
+  (  -61,    82)      24       24           37  tree knoll-3        -1
+  (  -61,    83)      24       24           35  tree knoll-3        
+  (  -61,    84)      23       23           33  tree knoll-3        -1
+  (  -61,    85)      23       23           32  tree knoll-3        
+  (  -61,    86)      23       23           31  tree knoll-3        
+  (  -61,    87)      23       23           32  tree knoll-3        
+  (  -61,    88)      24       24           34  tree knoll-3        +1
+  (  -61,    89)      24       24           34  tree knoll-3        
+rises 2, falls 6, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree knoll-2 at (-63, 63), tree knoll-3 at (-63, 76), tree knoll-4 at (-60, 89)

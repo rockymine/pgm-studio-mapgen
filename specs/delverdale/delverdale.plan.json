@@ -1,0 +1,242 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Delverdale",
+  "authors": [
+   "Claude"
+  ]
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 32,
+  "surface": 9,
+  "observerY": 56
+ },
+ "pieces": [
+  {
+   "id": "holm",
+   "role": "piece",
+   "rect": [
+    -5,
+    -2,
+    10,
+    4
+   ],
+   "mirrors": false
+  },
+  {
+   "id": "stone",
+   "role": "piece",
+   "rect": [
+    8,
+    -1,
+    4,
+    2
+   ]
+  },
+  {
+   "id": "tip-w",
+   "role": "piece",
+   "rect": [
+    -13,
+    5,
+    8,
+    4
+   ]
+  },
+  {
+   "id": "tip-e",
+   "role": "piece",
+   "rect": [
+    5,
+    5,
+    8,
+    4
+   ]
+  },
+  {
+   "id": "hub-front",
+   "role": "piece",
+   "rect": [
+    -13,
+    9,
+    26,
+    4
+   ]
+  },
+  {
+   "id": "w-fell",
+   "role": "piece",
+   "rect": [
+    -15,
+    13,
+    5,
+    9
+   ]
+  },
+  {
+   "id": "green",
+   "role": "piece",
+   "rect": [
+    -6,
+    13,
+    12,
+    9
+   ],
+   "surface": 20
+  },
+  {
+   "id": "e-fell",
+   "role": "piece",
+   "rect": [
+    10,
+    13,
+    8,
+    12
+   ]
+  },
+  {
+   "id": "hub-back",
+   "role": "piece",
+   "rect": [
+    -15,
+    22,
+    25,
+    3
+   ]
+  },
+  {
+   "id": "apron",
+   "role": "piece",
+   "rect": [
+    -5,
+    25,
+    6,
+    2
+   ]
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -4,
+    27,
+    5,
+    5
+   ]
+  },
+  {
+   "id": "a-lane",
+   "role": "piece",
+   "rect": [
+    -15,
+    25,
+    4,
+    3
+   ]
+  },
+  {
+   "id": "a-neck",
+   "role": "piece",
+   "rect": [
+    -15,
+    28,
+    4,
+    1
+   ]
+  },
+  {
+   "id": "a-yard",
+   "role": "piece",
+   "rect": [
+    -15,
+    29,
+    4,
+    6
+   ]
+  },
+  {
+   "id": "a-room",
+   "role": "wool-room",
+   "rect": [
+    -18,
+    31,
+    3,
+    4
+   ]
+  },
+  {
+   "id": "quarry",
+   "role": "piece",
+   "rect": [
+    10,
+    25,
+    8,
+    6
+   ]
+  },
+  {
+   "id": "b-room",
+   "role": "wool-room",
+   "rect": [
+    18,
+    28,
+    3,
+    4
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "band",
+   "rect": [
+    -13,
+    -5,
+    26,
+    10
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn",
+    "piece": "spawn",
+    "at": [
+     10,
+     10
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-a",
+    "piece": "a-room",
+    "at": [
+     6,
+     8
+    ]
+   },
+   {
+    "id": "wool-b",
+    "piece": "b-room",
+    "at": [
+     6,
+     8
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [
+  {
+   "a": "a-neck",
+   "b": "a-yard"
+  }
+ ]
+}

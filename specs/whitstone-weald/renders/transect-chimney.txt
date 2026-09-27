@@ -1,0 +1,51 @@
+## chimney (made) along x
+TRANSECT 20 stations from (-64, 56) to (-45, 56), every 1
+  station        ground  surface  water  top  standing            step
+  (  -64,    56)      22       22           22                      
+  (  -63,    56)      22       22           22                      
+  (  -62,    56)      22       22           22                      
+  (  -61,    56)      22       22           22                      
+  (  -60,    56)      22       22           22                      
+  (  -59,    56)      22       22           22                      
+  (  -58,    56)      22       22           22                      
+  (  -57,    56)      22       22           22                      
+  (  -56,    56)      21       37           37  storey              BARRIER +15
+  (  -55,    56)      21       37           37  storey              
+  (  -54,    56)      21       37           37  storey              
+  (  -53,    56)      22       22           30  house engine-house  DROP -15
+  (  -52,    56)      22       22           30  house engine-house  
+  (  -51,    56)      21       21           30  house engine-house  -1
+  (  -50,    56)      21       21           30  house engine-house  
+  (  -49,    56)      21       21           30  house engine-house  
+  (  -48,    56)      21       21           30  house engine-house  
+  (  -47,    56)      21       21           30  house engine-house  
+  (  -46,    56)      21       21           30  house engine-house  
+  (  -45,    56)      21       21           30  house engine-house  
+rises 1, falls 2, worst step 15: 1 barrier, 0 scramble, 1 drop — BARRIER +15 at (-56, 56); DROP -15 at (-53, 56) | walked end to end
+beside: house engine-house at (-53, 54)
+
+## chimney (made) along z
+TRANSECT 20 stations from (-55, 47) to (-55, 66), every 1
+  station        ground  surface  water  top  standing            step
+  (  -55,    47)      21       21           21                      
+  (  -55,    48)      21       21           21                      
+  (  -55,    49)      21       21           21                      
+  (  -55,    50)      21       21           21                      
+  (  -55,    51)      22       22           22                      +1
+  (  -55,    52)      22       22           22                      
+  (  -55,    53)      22       22           22                      
+  (  -55,    54)      22       22           22                      
+  (  -55,    55)      21       37           37  storey              BARRIER +15
+  (  -55,    56)      21       37           37  storey              
+  (  -55,    57)      21       37           37  storey              
+  (  -55,    58)      22       22           22                      DROP -15
+  (  -55,    59)      22       22           22                      
+  (  -55,    60)      22       22           22                      
+  (  -55,    61)      22       22           22                      
+  (  -55,    62)      22       22           22                      
+  (  -55,    63)      22       22           22  stroke haul-road    
+  (  -55,    64)      22       22           22  stroke haul-road    
+  (  -55,    65)      22       22           22  stroke haul-road    
+  (  -55,    66)      22       22           22  stroke haul-road    
+rises 2, falls 1, worst step 15: 1 barrier, 0 scramble, 1 drop — BARRIER +15 at (-55, 55); DROP -15 at (-55, 58) | walked end to end
+beside: house engine-house at (-53, 53), stroke haul-road at (-55, 63)

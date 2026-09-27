@@ -1,0 +1,59 @@
+## green-nw (house) along x
+TRANSECT 25 stations from (-32, 75) to (-8, 75), every 1
+  station        ground  surface  water  top  standing            step
+  (  -32,    75)                                                    void
+  (  -31,    75)                                                    void
+  (  -30,    75)                                                    void
+  (  -29,    75)                                                    void
+  (  -28,    75)                                                    void
+  (  -27,    75)                                                    void
+  (  -26,    75)                                                    void
+  (  -25,    75)                            32  house green-nw      void
+  (  -24,    75)      20       20           32  house green-nw      
+  (  -23,    75)      20       20           32  house green-nw      
+  (  -22,    75)      20       20           32  house green-nw      
+  (  -21,    75)      20       20           32  house green-nw      
+  (  -20,    75)      20       20           32  house green-nw      
+  (  -19,    75)      20       20           32  house green-nw      
+  (  -18,    75)      20       20           32  house green-nw      
+  (  -17,    75)      20       20           32  house green-nw      
+  (  -16,    75)      20       20           32  house green-nw      
+  (  -15,    75)      20       20           32  house green-nw      
+  (  -14,    75)      20       20           20                      
+  (  -13,    75)      20       20           20                      
+  (  -12,    75)      20       20           20                      
+  (  -11,    75)      20       20           20                      
+  (  -10,    75)      20       20           20                      
+  (   -9,    75)      20       20           20                      
+  (   -8,    75)      20       20           20                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house green-nw at (-25, 73)
+
+## green-nw (house) along z
+TRANSECT 23 stations from (-20, 64) to (-20, 86), every 1
+  station        ground  surface  water  top  standing            step
+  (  -20,    64)      20       20           20                      
+  (  -20,    65)      20       20           20                      
+  (  -20,    66)      20       20           20                      
+  (  -20,    67)      20       20           22  flora cover         
+  (  -20,    68)      20       20           21  flora cover         
+  (  -20,    69)      20       20           21  flora cover         
+  (  -20,    70)      20       20           20                      
+  (  -20,    71)      20       20           24  house green-nw      
+  (  -20,    72)      20       20           26  house green-nw      
+  (  -20,    73)      20       20           28  house green-nw      
+  (  -20,    74)      20       20           30  house green-nw      
+  (  -20,    75)      20       20           32  house green-nw      
+  (  -20,    76)      20       20           30  house green-nw      
+  (  -20,    77)      20       20           28  house green-nw      
+  (  -20,    78)      20       20           26  house green-nw      
+  (  -20,    79)      20       20           24  house green-nw      
+  (  -20,    80)      20       20           20                      
+  (  -20,    81)      20       20           20                      
+  (  -20,    82)      20       20           20                      
+  (  -20,    83)      20       20           20                      
+  (  -20,    84)      20       20           20                      
+  (  -20,    85)      20       20           20                      
+  (  -20,    86)      20       20           20                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house green-sw at (-22, 62), flora cover at (-19, 64), house green-nw at (-22, 71)

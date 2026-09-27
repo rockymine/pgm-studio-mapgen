@@ -1,0 +1,76 @@
+HOW THIS BOARD IS COME AT
+
+  wool at (64, -132)
+    The attacker walks 280 blocks to it; the defender 86, a ratio of 0.31.
+      Neither side is obviously first to it.
+    7 ways in. The last choice is made at (56, -128) and closes at (64, -132), 0 blocks short of the objective.
+      The defender's own walk runs through that merge, so both sides come up the same road. A defence has to be pushed forward to hold it, and the further forward the merge sits the more of the board it gives up to do so.
+    The attack covers 61% of the ground the defence crosses to get here. The two sides are on the same ground almost the whole way, so however many ways in this board counts, none of them misses the reinforcement lane.
+    Walking attack — 280 blocks, 7 ways, 18 decisions:
+      round the 40-cell hole at (0, -32): choose at (-8, 64), live over 185 blocks, the other way 1.08× the shortest.
+      round the 40-cell hole at (0, -32): choose at (44, -100), live over 22 blocks, the other way 1.08× the shortest.
+      round the 40-cell hole at (0, -32): choose at (56, -128), live over 10 blocks, the other way 1.08× the shortest.
+      round the 40-cell hole at (0, 24): choose at (-8, 64), live over 124 blocks, the other way 1.06× the shortest.
+      round the 40-cell hole at (0, 24): choose at (40, -52), live over 50 blocks, the other way 1.06× the shortest.
+      round the 40-cell hole at (0, 24): choose at (44, -100), live over 22 blocks, the other way 1.06× the shortest.
+      round the 40-cell hole at (0, 24): choose at (56, -128), live over 10 blocks, the other way 1.06× the shortest.
+      round the 36-cell hole at (-32, -72): choose at (-8, 64), live over 185 blocks, the other way 1.27× the shortest.
+      round the 36-cell hole at (-32, -72): choose at (44, -100), live over 22 blocks, the other way 1.27× the shortest.
+      round the 36-cell hole at (-32, -72): choose at (56, -128), live over 10 blocks, the other way 1.27× the shortest.
+      round the 36-cell hole at (-32, 68): choose at (-8, 108), live over 168 blocks, the other way 1.16× the shortest.
+      round the 36-cell hole at (-32, 68): choose at (40, -52), live over 50 blocks, the other way 1.16× the shortest.
+      round the 36-cell hole at (-32, 68): choose at (44, -100), live over 22 blocks, the other way 1.16× the shortest.
+      round the 36-cell hole at (-32, 68): choose at (56, -128), live over 10 blocks, the other way 1.16× the shortest.
+      round the 36-cell hole at (32, -72): choose at (20, 36), live over 146 blocks, the other way 1.03× the shortest.
+      round the 36-cell hole at (32, -72): choose at (44, -100), live over 22 blocks, the other way 1.03× the shortest.
+      round the 36-cell hole at (32, -72): choose at (56, -128), live over 10 blocks, the other way 1.03× the shortest.
+      round the 36-cell hole at (32, 68): choose at (-8, 104), live over 181 blocks, the other way 1.07× the shortest.
+    Walking back-run — 280 blocks, 7 ways, 8 decisions:
+      round the 40-cell hole at (0, -32): choose at (52, -108), live over 249 blocks, the other way 1.08× the shortest.
+      round the 40-cell hole at (0, 24): choose at (44, -44), live over 181 blocks, the other way 1.06× the shortest.
+      round the 36-cell hole at (-32, -72): choose at (52, -108), live over 249 blocks, the other way 1.27× the shortest.
+      round the 36-cell hole at (-32, 68): choose at (44, -44), live over 181 blocks, the other way 1.16× the shortest.
+      round the 36-cell hole at (32, -72): choose at (52, -108), live over 169 blocks, the other way 1.03× the shortest.
+      round the 36-cell hole at (32, -72): choose at (20, 48), live over 34 blocks, the other way 1.03× the shortest.
+      round the 36-cell hole at (32, -72): choose at (0, 96), live over 18 blocks, the other way 1.03× the shortest.
+      round the 36-cell hole at (32, 68): choose at (44, 24), live over 84 blocks, the other way 1.07× the shortest.
+    Walking defend — 86 blocks, 2 ways, 1 decision:
+      round the 36-cell hole at (32, -72): choose at (4, -112), live over 45 blocks, the other way 2.06× the shortest.
+
+  wool at (-80, -120)
+    The attacker walks 268 blocks to it; the defender 98, a ratio of 0.37.
+      Neither side is obviously first to it.
+    7 ways in. The last choice is made at (-72, -116) and closes at (-80, -120), 0 blocks short of the objective.
+      The defender's own walk runs through that merge, so both sides come up the same road. A defence has to be pushed forward to hold it, and the further forward the merge sits the more of the board it gives up to do so.
+    The attack covers 43% of the ground the defence crosses to get here. The two sides share some of the approach and not all of it.
+    Walking attack — 268 blocks, 7 ways, 13 decisions:
+      round the 40-cell hole at (0, -32): choose at (-8, 64), live over 172 blocks, the other way 1.14× the shortest.
+      round the 40-cell hole at (0, -32): choose at (-72, -116), live over 10 blocks, the other way 1.14× the shortest.
+      round the 40-cell hole at (0, 24): choose at (-8, 64), live over 119 blocks, the other way 1.10× the shortest.
+      round the 40-cell hole at (0, 24): choose at (-44, -52), live over 42 blocks, the other way 1.10× the shortest.
+      round the 40-cell hole at (0, 24): choose at (-72, -116), live over 10 blocks, the other way 1.10× the shortest.
+      round the 36-cell hole at (-32, -72): choose at (-24, 36), live over 138 blocks, the other way 1.05× the shortest.
+      round the 36-cell hole at (-32, -72): choose at (-72, -116), live over 10 blocks, the other way 1.05× the shortest.
+      round the 36-cell hole at (-32, 68): choose at (-8, 108), live over 180 blocks, the other way 1.03× the shortest.
+      round the 36-cell hole at (32, -72): choose at (-8, 64), live over 172 blocks, the other way 1.34× the shortest.
+      round the 36-cell hole at (32, -72): choose at (-72, -116), live over 10 blocks, the other way 1.34× the shortest.
+      round the 36-cell hole at (32, 68): choose at (-8, 104), live over 159 blocks, the other way 1.24× the shortest.
+      round the 36-cell hole at (32, 68): choose at (-44, -52), live over 42 blocks, the other way 1.24× the shortest.
+      round the 36-cell hole at (32, 68): choose at (-72, -116), live over 10 blocks, the other way 1.24× the shortest.
+    Walking back-run — 268 blocks, 7 ways, 9 decisions:
+      round the 40-cell hole at (0, -32): choose at (-76, -120), live over 264 blocks, the other way 1.14× the shortest.
+      round the 40-cell hole at (0, 24): choose at (-48, -44), live over 176 blocks, the other way 1.10× the shortest.
+      round the 36-cell hole at (-32, -72): choose at (-76, -120), live over 189 blocks, the other way 1.05× the shortest.
+      round the 36-cell hole at (-32, -72): choose at (-24, 48), live over 50 blocks, the other way 1.05× the shortest.
+      round the 36-cell hole at (-32, -72): choose at (-20, 96), live over 10 blocks, the other way 1.05× the shortest.
+      round the 36-cell hole at (-32, -72): choose at (-16, 104), live over 10 blocks, the other way 1.05× the shortest.
+      round the 36-cell hole at (-32, 68): choose at (-48, 24), live over 83 blocks, the other way 1.03× the shortest.
+      round the 36-cell hole at (32, -72): choose at (-76, -120), live over 264 blocks, the other way 1.34× the shortest.
+      round the 36-cell hole at (32, 68): choose at (-48, -44), live over 176 blocks, the other way 1.24× the shortest.
+    Walking defend — 98 blocks, 2 ways, 1 decision:
+      round the 36-cell hole at (-32, -72): choose at (4, -108), live over 63 blocks, the other way 1.79× the shortest.
+
+WHAT NO JOURNEY REACHES
+
+  384 of 21408 blocks (2%) sit off every route between the places this board has. Reachable, and on the way to nothing.
+    None of it is a place: all 8 stretches are under 100 blocks, which is a sliver between corridors rather than ground anyone would notice.

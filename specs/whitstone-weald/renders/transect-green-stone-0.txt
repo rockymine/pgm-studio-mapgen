@@ -1,0 +1,61 @@
+## green-stone-0 (destroyable) along x
+TRANSECT 25 stations from (-94, 36) to (-70, 36), every 1
+  station        ground  surface  water  top  standing            step
+  (  -94,    36)      22       22           22                      
+  (  -93,    36)      21       21           21                      -1
+  (  -92,    36)      21       21           21                      
+  (  -91,    36)      21       21           21                      
+  (  -90,    36)      21       21           21                      
+  (  -89,    36)      20       20           20                      -1
+  (  -88,    36)      20       20           20                      
+  (  -87,    36)      20       20           20                      
+  (  -86,    36)      20       20           20                      
+  (  -85,    36)      20       20           20                      
+  (  -84,    36)      20       20           20  destroyable green-stone  
+  (  -83,    36)      20       20           51  destroyable green-stone  
+  (  -82,    36)      20       20           52  destroyable green-stone  
+  (  -81,    36)      20       20           51  destroyable green-stone  
+  (  -80,    36)      20       20           28  destroyable green-stone  
+  (  -79,    36)      20       20           20                      
+  (  -78,    36)      20       20           20                      
+  (  -77,    36)      20       20           20                      
+  (  -76,    36)      20       20           20                      
+  (  -75,    36)      20       20           20                      
+  (  -74,    36)      20       20           20                      
+  (  -73,    36)      20       20           20                      
+  (  -72,    36)      20       20           20                      
+  (  -71,    36)      20       20           20                      
+  (  -70,    36)      19       19           19                      -1
+rises 0, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable green-stone at (-84, 34)
+
+## green-stone-0 (destroyable) along z
+TRANSECT 25 stations from (-82, 24) to (-82, 48), every 1
+  station        ground  surface  water  top  standing            step
+  (  -82,    24)      21       21           21                      
+  (  -82,    25)      21       21           21                      
+  (  -82,    26)      21       21           21                      
+  (  -82,    27)      20       20           20                      -1
+  (  -82,    28)      20       20           20                      
+  (  -82,    29)      20       20           20                      
+  (  -82,    30)      20       20           20                      
+  (  -82,    31)      20       20           20                      
+  (  -82,    32)      20       20           20                      
+  (  -82,    33)      20       20           20                      
+  (  -82,    34)      20       20           20  destroyable green-stone  
+  (  -82,    35)      20       20           51  destroyable green-stone  
+  (  -82,    36)      20       20           52  destroyable green-stone  
+  (  -82,    37)      20       20           51  destroyable green-stone  
+  (  -82,    38)      20       20           28  destroyable green-stone  
+  (  -82,    39)      20       20           20                      
+  (  -82,    40)      20       20           20                      
+  (  -82,    41)      20       20           20                      
+  (  -82,    42)      20       20           20                      
+  (  -82,    43)      21       21           21                      +1
+  (  -82,    44)      21       21           21                      
+  (  -82,    45)      21       21           21                      
+  (  -82,    46)      21       21           21                      
+  (  -82,    47)      22       22           22                      +1
+  (  -82,    48)      22       22           22                      
+rises 2, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable green-stone at (-84, 34)

@@ -1,0 +1,79 @@
+## spawn-blue (spawn) along x
+TRANSECT 27 stations from (120, 0) to (146, 0), every 1
+  station        ground  surface  water  top  standing            step
+  (  120,     0)      30       30           30  stroke spawn-apron#1  
+  (  121,     0)      30       30           30  stroke spawn-apron#1  
+  (  122,     0)      30       30           30  stroke spawn-apron#1  
+  (  123,     0)      30       30           30  stroke spawn-apron#1  
+  (  124,     0)      30       30           30  stroke spawn-apron#1  
+  (  125,     0)      30       30           30  stroke spawn-apron#1  
+  (  126,     0)      31       31           31  stroke spawn-apron#1  +1
+  (  127,     0)      31       31           31  stroke spawn-apron#1  
+  (  128,     0)      31       31           31  stroke spawn-apron#1  
+  (  129,     0)      31       31           31  stroke spawn-apron#1  
+  (  130,     0)      31       31           40  stroke spawn-apron#1  
+  (  131,     0)      31       31           41  stroke spawn-apron#1  
+  (  132,     0)      31       31           42  stroke spawn-apron#1  
+  (  133,     0)      31       31           43  spawn spawn#1       
+  (  134,     0)      31       31           44  spawn spawn#1       
+  (  135,     0)      31       31           45  spawn spawn#1       
+  (  136,     0)      31       31           46  spawn spawn#1       
+  (  137,     0)      31       31           47  spawn spawn#1       
+  (  138,     0)      31       31           47  spawn spawn#1       
+  (  139,     0)      31       31           46  spawn spawn#1       
+  (  140,     0)      31       31           45  spawn spawn#1       
+  (  141,     0)      31       31           44  spawn spawn#1       
+  (  142,     0)      31       31           43  spawn spawn#1       
+  (  143,     0)      31       31           42  spawn spawn#1       
+  (  144,     0)      31       31           41  spawn spawn#1       
+  (  145,     0)      31       31           40                      
+  (  146,     0)      31       31           31                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke hogs-back-track#1 at (118, -2), stroke spawn-apron#1 at (120, -2), spawn spawn#1 at (132, 2)
+
+## spawn-blue (spawn) along z
+TRANSECT 41 stations from (138, -20) to (138, 20), every 1
+  station        ground  surface  water  top  standing            step
+  (  138,   -20)      30       30           39  tree tree-10#1      
+  (  138,   -19)      30       30           41  tree tree-10#1      
+  (  138,   -18)      31       31           36  tree tree-10#1      +1
+  (  138,   -17)      31       31           40  tree tree-10#1      
+  (  138,   -16)      31       31           38  tree tree-10#1      
+  (  138,   -15)      31       31           38  tree tree-10#1      
+  (  138,   -14)      32       32           32  tree tree-10#1      +1
+  (  138,   -13)      32       32           32                      
+  (  138,   -12)      31       31           31                      -1
+  (  138,   -11)      31       31           31                      
+  (  138,   -10)      31       31           47                      
+  (  138,    -9)      31       31           47  spawn spawn#1       
+  (  138,    -8)      31       31           47  spawn spawn#1       
+  (  138,    -7)      31       31           47  spawn spawn#1       
+  (  138,    -6)      31       31           47  spawn spawn#1       
+  (  138,    -5)      31       31           47  spawn spawn#1       
+  (  138,    -4)      31       31           47  spawn spawn#1       
+  (  138,    -3)      31       31           47  spawn spawn#1       
+  (  138,    -2)      31       31           47  spawn spawn#1       
+  (  138,    -1)      31       31           47  spawn spawn#1       
+  (  138,     0)      31       31           47  spawn spawn#1       
+  (  138,     1)      31       31           47  spawn spawn#1       
+  (  138,     2)      31       31           47  spawn spawn#1       
+  (  138,     3)      31       31           47  spawn spawn#1       
+  (  138,     4)      31       31           47  spawn spawn#1       
+  (  138,     5)      31       31           47  spawn spawn#1       
+  (  138,     6)      31       31           47  spawn spawn#1       
+  (  138,     7)      31       31           47  spawn spawn#1       
+  (  138,     8)      31       31           47  spawn spawn#1       
+  (  138,     9)      31       31           47                      
+  (  138,    10)      31       31           31                      
+  (  138,    11)      31       31           31                      
+  (  138,    12)      32       32           32                      +1
+  (  138,    13)      32       32           32                      
+  (  138,    14)      32       32           32                      
+  (  138,    15)      32       32           32                      
+  (  138,    16)      31       31           31                      -1
+  (  138,    17)      31       31           31                      
+  (  138,    18)      31       31           31                      
+  (  138,    19)      31       31           31                      
+  (  138,    20)      31       31           31                      
+rises 3, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree tree-10#1 at (136, -22), tree tree-11#1 at (136, -21), spawn spawn#1 at (136, -9), stroke farm-track#1 at (136, 9)

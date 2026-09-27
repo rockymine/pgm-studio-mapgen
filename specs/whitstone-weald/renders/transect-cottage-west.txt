@@ -1,0 +1,61 @@
+## cottage-west (house) along x
+TRANSECT 25 stations from (-128, 56) to (-104, 56), every 1
+  station        ground  surface  water  top  standing            step
+  ( -128,    56)      24       24           40  tree tree-15        
+  ( -127,    56)      24       24           39  tree tree-15        
+  ( -126,    56)      24       24           37  tree tree-15        
+  ( -125,    56)      24       24           24  tree tree-15        
+  ( -124,    56)      24       24           24  tree tree-15        
+  ( -123,    56)      24       24           24                      
+  ( -122,    56)      23       23           23                      -1
+  ( -121,    56)      23       23           32  house cottage-west  
+  ( -120,    56)      23       23           32  house cottage-west  
+  ( -119,    56)      23       23           32  house cottage-west  
+  ( -118,    56)      23       23           32  house cottage-west  
+  ( -117,    56)      23       23           32  house cottage-west  
+  ( -116,    56)      23       23           32  house cottage-west  
+  ( -115,    56)      23       23           32  house cottage-west  
+  ( -114,    56)      23       23           32  house cottage-west  
+  ( -113,    56)      23       23           32  house cottage-west  
+  ( -112,    56)      23       23           32  house cottage-west  
+  ( -111,    56)      23       23           32  house cottage-west  
+  ( -110,    56)      23       23           23  stroke green-to-hamlet  
+  ( -109,    56)      23       23           23  stroke green-to-hamlet  
+  ( -108,    56)      23       23           23  stroke green-to-hamlet  
+  ( -107,    56)      23       23           23                      
+  ( -106,    56)      23       23           23                      
+  ( -105,    56)      23       23           36  house cottage-hall  
+  ( -104,    56)      23       23           36  house cottage-hall  
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree tree-15 at (-130, 54), house cottage-west at (-121, 54), stroke green-to-hamlet at (-110, 54), house cottage-hall at (-105, 54)
+
+## cottage-west (house) along z
+TRANSECT 25 stations from (-116, 44) to (-116, 68), every 1
+  station        ground  surface  water  top  standing            step
+  ( -116,    44)      24       24           32  tree tree-17        
+  ( -116,    45)      24       24           33  tree tree-17        
+  ( -116,    46)      24       24           33  tree tree-17        
+  ( -116,    47)      24       24           32  tree tree-17        
+  ( -116,    48)      24       24           31  tree tree-17        
+  ( -116,    49)      24       24           29  tree tree-17        
+  ( -116,    50)      24       24           24                      
+  ( -116,    51)      23       23           27  house cottage-west  -1
+  ( -116,    52)      23       23           28  house cottage-west  
+  ( -116,    53)      23       23           29  house cottage-west  
+  ( -116,    54)      23       23           30  house cottage-west  
+  ( -116,    55)      23       23           31  house cottage-west  
+  ( -116,    56)      23       23           32  house cottage-west  
+  ( -116,    57)      23       23           31  house cottage-west  
+  ( -116,    58)      23       23           30  house cottage-west  
+  ( -116,    59)      23       23           29  house cottage-west  
+  ( -116,    60)      23       23           28  house cottage-west  
+  ( -116,    61)      23       23           27  house cottage-west  
+  ( -116,    62)      23       23           23  stroke hamlet-lane  
+  ( -116,    63)      23       23           23  stroke hamlet-lane  
+  ( -116,    64)      23       23           23  stroke hamlet-lane  
+  ( -116,    65)      23       23           23                      
+  ( -116,    66)      23       23           23                      
+  ( -116,    67)      23       23           23                      
+  ( -116,    68)      23       23           23                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree tree-17 at (-118, 42), tree tree-16 at (-114, 48), house cottage-west at (-118, 51), stroke hamlet-lane at (-118, 62), flora ground-cover at (-118, 66)
