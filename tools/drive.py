@@ -352,7 +352,7 @@ def resolve(style):
     return style
 
 
-def pictures(slug, finish, layout):
+def pictures(slug, finish, layout, intent=None):
     """Every picture the studio will draw for what was authored, as `(file, method, path, body)`.
 
     The reads are the same ones the brief asks an author to look at, and the reason they are taken here is
@@ -410,10 +410,49 @@ def pictures(slug, finish, layout):
         ("world-section-z0.png", "render/section?axis=z&at=0&from=-120&to=120"),
     ):
         asked.append((name, "GET", f"/map/{slug}/{route}", None))
+
+    # The board where a player stands, in the game's own textures: every other picture here draws a block as
+    # one colour, which is where two noisy blocks of one colour read as calm ground and are static in the
+    # game. Each is framed on something the documents place, so no camera is guessed; a studio without the
+    # textures answers 503 and the picture is skipped like any other refusal.
+    asked += [(name, "GET", f"/map/{slug}/render/eye?{query}", None) for name, query in eye_views(layout, intent)]
     return asked
 
 
-def renders(into, slug, finish, layout, drawn, flow, round_drawn):
+def eye_views(layout, intent):
+    """`(file, query)` for each thing worth seeing at eye height: every spawn facing its own team's objective,
+    every objective, and the first boulders and houses the dressing places."""
+    views = []
+    intent = intent or {}
+    goals = {}
+    for goal in (intent.get("destroyables") or []) + (intent.get("cores") or []):
+        at = goal.get("anchor") or goal.get("location") or {}
+        if "x" in at and "z" in at:
+            goals.setdefault(goal.get("owner"), (int(at["x"]), int(at["z"])))
+    for index, spawn in enumerate(intent.get("spawns") or []):
+        point = spawn.get("point") or {}
+        if "x" not in point or "z" not in point:
+            continue
+        stand = f"{int(point['x'])},{int(point['z'])}"
+        # A spawn point is inside its room, so the eye stands four blocks out of the room's first door.
+        box, doors = spawn.get("footprint"), spawn.get("doors") or []
+        if box and doors:
+            middle_x, middle_z = (box["minX"] + box["maxX"]) // 2, (box["minZ"] + box["maxZ"]) // 2
+            stand = {"+z": f"{middle_x},{box['maxZ'] + 4}", "-z": f"{middle_x},{box['minZ'] - 4}",
+                     "+x": f"{box['maxX'] + 4},{middle_z}", "-x": f"{box['minX'] - 4},{middle_z}"}.get(doors[0], stand)
+        if spawn.get("team") in goals:
+            gx, gz = goals[spawn["team"]]
+            views.append((f"eye-spawn-{index}.png", f"from={stand}&look={gx},{gz}"))
+    for owner, (gx, gz) in goals.items():
+        views.append((f"eye-goal-{owner}.png", f"look={gx},{gz}"))
+    placed = [prop for prop in ((layout.get("dressing") or {}).get("props") or [])
+              if prop.get("kind") in ("boulder", "house") and prop.get("x") is not None and prop.get("z") is not None]
+    for prop in placed[:4]:
+        views.append((f"eye-{prop['kind']}-{prop.get('id', len(views))}.png", f"look={int(prop['x'])},{int(prop['z'])}"))
+    return views
+
+
+def renders(into, slug, finish, layout, drawn, flow, round_drawn, intent=None):
     """Every picture the studio drew for what was authored, written to disk, and the board in the round
     that `in_the_round` drew beside them — `round_drawn` is the future it answers on.
 
@@ -427,7 +466,7 @@ def renders(into, slug, finish, layout, drawn, flow, round_drawn):
                 handle.write(text_body)
             written.append(name)
 
-    for name, method, path, body in pictures(slug, finish, layout):
+    for name, method, path, body in pictures(slug, finish, layout, intent):
         status, payload = call(method, path, body, raw=True, fatal=False)
         if status >= 300 or not isinstance(payload, bytes):
             continue
@@ -912,7 +951,7 @@ def main():
            ("GET", f"/map/{slug}/plan/flow"), ("POST", f"/map/{slug}/sketch/relief/read", layout),
            ("POST", f"/map/{slug}/sketch/columns", layout), ("GET", f"/map/{slug}/preflight"),
            ("GET", f"/map/{slug}/coverage"), ("GET", f"/map/{slug}/export")]
-          + ([(method, path, body) for _, method, path, body in pictures(slug, finish, layout)] if out else []))
+          + ([(method, path, body) for _, method, path, body in pictures(slug, finish, layout, intent)] if out else []))
 
     print("== everything wrong with the stored map")
     _, verdict = call("GET", f"/map/{slug}/findings", fatal=False)
@@ -1028,7 +1067,7 @@ def main():
         # After the extraction, which clears the directory it writes into.
         print("== the pictures of what was authored")
         round_drawn = round_drawn or drawer.submit(in_the_round, columns, render_dir, slug, layout)
-        written = renders(render_dir, slug, finish, layout, drawn, flow, round_drawn)
+        written = renders(render_dir, slug, finish, layout, drawn, flow, round_drawn, intent)
         # ── the same board as text, which is the shape a reader subtracts from rather than gauges ──
         print("== the board as text: transects through every feature, and the routes")
         written += text_reads(render_dir, slug, intent, layout)
