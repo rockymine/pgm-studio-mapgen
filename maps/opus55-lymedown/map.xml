@@ -54,11 +54,11 @@
     <spawns>
         <default region="observer-spawn"/>
         <spawn team="red-team" kit="spawn-kit" yaw="90" region="red-spawn-point"/>
-        <spawn team="blue-team" kit="spawn-kit" yaw="270" region="blue-spawn-point"/>
+        <spawn team="blue-team" kit="spawn-kit" yaw="90" region="blue-spawn-point"/>
     </spawns>
     <wools>
         <wool team="blue-team" color="red" location="-40,12,82" monument="red-blue-monument"/>
-        <wool team="red-team" color="blue" location="40,12,-82" monument="blue-red-monument"/>
+        <wool team="red-team" color="blue" location="-40,12,-82" monument="blue-red-monument"/>
     </wools>
     <filters>
         <team id="only-blue">blue-team</team>
@@ -121,16 +121,16 @@
         </all>
     </filters>
     <regions>
-        <point id="blue-spawn-point">-39,14,-50</point>
+        <point id="blue-spawn-point">39,14,-50</point>
         <point id="red-spawn-point">39,14,50</point>
-        <point id="blue-wool-spawn">40,12,-82</point>
+        <point id="blue-wool-spawn">-40,12,-82</point>
         <point id="red-wool-spawn">-40,12,82</point>
         <point id="observer-spawn">0,25,0</point>
         <block id="blue-red-monument">37,15,53</block>
-        <block id="red-blue-monument">-38,15,-54</block>
-        <rectangle id="blue-spawn" min="-44,-56" max="-28,-44"/>
+        <block id="red-blue-monument">37,15,-54</block>
+        <rectangle id="blue-spawn" min="28,-56" max="44,-44"/>
         <rectangle id="red-spawn" min="28,44" max="44,56"/>
-        <rectangle id="blue-wool" min="28,-88" max="44,-76"/>
+        <rectangle id="blue-wool" min="-44,-88" max="-28,-76"/>
         <rectangle id="red-wool" min="-44,76" max="-28,88"/>
         <union id="reds-woolrooms">
             <region id="red-wool"/>
@@ -144,7 +144,7 @@
         </union>
         <union id="iron-cubes">
             <rectangle id="iron-cube-0" min="31,45" max="33,47"/>
-            <rectangle id="iron-cube-1" min="-34,-48" max="-32,-46"/>
+            <rectangle id="iron-cube-1" min="31,-48" max="33,-46"/>
         </union>
         <negative id="not-spawns">
             <region id="spawns"/>

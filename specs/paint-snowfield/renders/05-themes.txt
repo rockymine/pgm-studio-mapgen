@@ -1,0 +1,8 @@
+THEMES  3 themes over 7170 ground cells, 15 distinct surface blocks
+  snowfield  6266 cells (87.4%)  80:0 Snow Block, 174:0 Packed Ice, 5:1 Spruce Planks, 1:0 Stone, 1:5 Andesite, 7:0 Bedrock, 4:0 Cobblestone, 35:14 Red Wool, 35:11 Blue Wool, 35:1 Orange Wool, 35:3 Light Blue Wool
+  works  802 cells (11.2%)  98:0 Stone Bricks, 1:6 Polished Andesite, 1:5 Andesite, 1:0 Stone
+  bare-ground  102 cells (1.4%)  3:1 Coarse Dirt, 3:0 Dirt
+borders:
+  snowfield | works  642 cells
+  bare-ground | works  72 cells
+  bare-ground | snowfield  64 cells

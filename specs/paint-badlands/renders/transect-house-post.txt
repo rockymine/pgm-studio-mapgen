@@ -1,0 +1,63 @@
+## house-post (house) along x
+TRANSECT 23 stations from (-28, -44) to (-6, -44), every 1
+  station        ground  surface  water  top  standing            step
+  (  -28,   -44)                                                    void
+  (  -27,   -44)                                                    void
+  (  -26,   -44)                                                    void
+  (  -25,   -44)                                                    void
+  (  -24,   -44)                                                    void
+  (  -23,   -44)                                                    void
+  (  -22,   -44)                                                    void
+  (  -21,   -44)                                house house-post    void
+  (  -20,   -44)      10       10           15  house house-post    
+  (  -19,   -44)      10       10           15  house house-post    
+  (  -18,   -44)      10       10           15  house house-post    
+  (  -17,   -44)      10       10           15  house house-post    
+  (  -16,   -44)      10       10           15  house house-post    
+  (  -15,   -44)      10       10           15  house house-post    
+  (  -14,   -44)      10       10           15  house house-post    
+  (  -13,   -44)      10       10           10  house house-post    
+  (  -12,   -44)      10       10           10                      
+  (  -11,   -44)      10       10           10                      
+  (  -10,   -44)      10       10           10                      
+  (   -9,   -44)      10       10           10                      
+  (   -8,   -44)      13       13           13                      BARRIER +3
+  (   -7,   -44)      13       13           13                      
+  (   -6,   -44)      13       13           13                      
+rises 1, falls 0, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (-8, -44) | walked end to end
+beside: house house-post at (-21, -46)
+
+## house-post (house) along z
+TRANSECT 29 stations from (-17, -58) to (-17, -30), every 1
+  station        ground  surface  water  top  standing            step
+  (  -17,   -58)      11       11           11                      
+  (  -17,   -57)      11       11           11                      
+  (  -17,   -56)      11       11           11                      
+  (  -17,   -55)      11       11           11                      
+  (  -17,   -54)      11       11           11                      
+  (  -17,   -53)      11       11           11                      
+  (  -17,   -52)      11       11           11                      
+  (  -17,   -51)      11       11           11  house house-post    
+  (  -17,   -50)      10       10           20  house house-post    -1
+  (  -17,   -49)      10       10           20  house house-post    
+  (  -17,   -48)      10       10           20  house house-post    
+  (  -17,   -47)      10       10           20  house house-post    
+  (  -17,   -46)      10       10           20  house house-post    
+  (  -17,   -45)      10       10           20  house house-post    
+  (  -17,   -44)      10       10           15  house house-post    
+  (  -17,   -43)      10       10           15  house house-post    
+  (  -17,   -42)      10       10           15  house house-post    
+  (  -17,   -41)      10       10           15  house house-post    
+  (  -17,   -40)      10       10           15  house house-post    
+  (  -17,   -39)      10       10           15  house house-post    
+  (  -17,   -38)      10       10           15  house house-post    
+  (  -17,   -37)      10       10           10  house house-post    
+  (  -17,   -36)      10       10           10                      
+  (  -17,   -35)      10       10           10                      
+  (  -17,   -34)      10       10           10                      
+  (  -17,   -33)      10       10           10                      
+  (  -17,   -32)      10       10           10                      
+  (  -17,   -31)      10       10           13  boulder rock-west   
+  (  -17,   -30)      10       10           14  boulder rock-west   
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house house-post at (-19, -51), boulder rock-west at (-18, -31)

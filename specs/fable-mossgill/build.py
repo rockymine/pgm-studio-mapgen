@@ -236,7 +236,7 @@ props += [boulder(pid, x, z, style) for pid, x, z, style in BOULDERS]
 
 finish = {
     "themeByHeight": {"14": "bank", "20": "apron", "22": "brow", "27": "crag"},
-    "bendShapes": {"s0": {"k": 0.2, "wander": 3, "step": 9, "seed": 5}, "s1": {"k": 0.18, "wander": 2, "step": 9, "seed": 6}},
+    "bendShapes": {"apron-14": {"k": 0.2, "wander": 3, "step": 9, "seed": 5}, "apron-20": {"k": 0.18, "wander": 2, "step": 9, "seed": 6}},
     "addShapes": add_shapes,
     "addLayers": [bridge],
     "relief": relief,

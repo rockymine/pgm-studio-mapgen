@@ -60,34 +60,34 @@
     "unit": "spawn-1",
     "image": 1
    },
-   "reflected": false,
+   "reflected": true,
    "team": "blue",
    "point": {
-    "x": -39,
+    "x": 39,
     "y": 9,
     "z": -50
    },
    "protection": [
     {
-     "minX": -44,
+     "minX": 28,
      "minZ": -56,
-     "maxX": -28,
+     "maxX": 44,
      "maxZ": -44
     }
    ],
-   "yaw": 270,
+   "yaw": 90,
    "doors": [
-    "+x"
+    "-x"
    ],
    "footprint": {
-    "minX": -43,
+    "minX": 36,
     "minZ": -55,
-    "maxX": -36,
+    "maxX": 43,
     "maxZ": -45
    },
    "iron": [
     {
-     "x": -32.5,
+     "x": 32.5,
      "y": 9,
      "z": -46.5
     }
@@ -162,34 +162,34 @@
     "unit": "wool-1",
     "image": 1
    },
-   "reflected": false,
+   "reflected": true,
    "owner": "blue",
    "color": "blue",
    "protection": [
     {
-     "minX": 28,
+     "minX": -44,
      "minZ": -88,
-     "maxX": 44,
+     "maxX": -28,
      "maxZ": -76
     }
    ],
    "spawn": {
-    "x": 40,
+    "x": -40,
     "y": 9,
     "z": -82
    },
    "monuments": [],
    "footprint": {
-    "minX": 36,
+    "minX": -43,
     "minZ": -87,
-    "maxX": 43,
+    "maxX": -36,
     "maxZ": -77
    },
    "entries": [
     {
-     "minX": 28,
+     "minX": -28,
      "minZ": -88,
-     "maxX": 28,
+     "maxX": -28,
      "maxZ": -76
     }
    ]
@@ -236,9 +236,9 @@
     }
    },
    {
-    "x1": 28,
+    "x1": -29,
     "z1": -88,
-    "x2": 28,
+    "x2": -29,
     "z2": -77,
     "stamp": {
      "kind": "redstoneline",
@@ -263,9 +263,9 @@
     }
    },
    {
-    "minX": 12,
+    "minX": -24,
     "minZ": -65,
-    "maxX": 24,
+    "maxX": -12,
     "maxZ": -63,
     "topY": 11,
     "chestOnMinFace": false,

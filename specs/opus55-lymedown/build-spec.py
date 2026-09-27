@@ -1,6 +1,7 @@
 """Writes opus55-lymedown's plan and finish.
 
 The arrangement is composed board p8 rot_180 seed 8 (`composed-seed8.plan.json`, the composer's raw answer),
+mirrored across z 0 rather than turned, by the author's ruling,
 a nano board: a g-shaped hub with two holes, one wool on an L at its back, no frontline and a wide build band
 with one island in it. Taken over: the wool box is centred on the hub's hole and turned to face the spawn, walled
 behind a neck, the build band narrowed to the span between the spawn's leg and the hole, the wool room and the
@@ -54,6 +55,7 @@ IRON = [{"id": "iron-1", "piece": "spawn-room", "at": [4.5, 2.5]}]
 def plan():
     doc = copy.deepcopy(composed)
     doc["meta"] = {"name": "Lymedown"}
+    doc["globals"]["symmetry"] = "mirror_z"
     doc["pieces"] += copy.deepcopy(NECKS)
     for piece in doc["pieces"]:
         x, z, w, h = RECT.get(piece["id"], piece["rect"])
@@ -75,7 +77,7 @@ def plan():
     return doc
 
 
-# Block coordinates of red's half, which the symmetry turns onto blue's. The hub's front runs along z 24.
+# Block coordinates of red's half, which the symmetry reflects onto blue's. The hub's front runs along z 24.
 TEAM, HOLE, ISLAND = "hub-t1-9", "void-1-cut", "mid-stone-0-9"
 
 # The team unit's outline as the compile answers it, and the points it is reshaped by: the flanks and the back
@@ -130,10 +132,10 @@ HOLE_OPS = [
 ]
 
 # The island loses its square corners; it lies across the centre and is not fanned, so its ring is written
-# whole and is its own image under the half-turn.
+# whole and is its own image under the mirror across z 0.
 ISLAND_OPS = [
     {"index": 0, "x": -10, "z": -8}, {"after": 0, "x": 2, "z": -9}, {"index": 2, "x": 12, "z": -6},
-    {"index": 3, "x": 10, "z": 8}, {"after": 3, "x": -2, "z": 9}, {"index": 5, "x": -12, "z": 6},
+    {"index": 3, "x": 12, "z": 6}, {"after": 3, "x": 2, "z": 9}, {"index": 5, "x": -10, "z": 8},
 ]
 
 
@@ -177,7 +179,7 @@ PUSHES = [
 ]
 
 # The island is level at 10 along its two gorge-facing edges and rises a single block to 11 across its middle,
-# so most of it is ground to stand on. A half-turn solves the neutral group's z < 0 half and copies it, so the
+# so most of it is ground to stand on. The mirror solves the neutral group's z < 0 half and copies it, so the
 # marks stand there.
 ISLAND_RELIEF = [area("island-edge", 10, -14, -11, 14, -6), area("island-crest", 11, -14, -4, 14, 0)]
 
