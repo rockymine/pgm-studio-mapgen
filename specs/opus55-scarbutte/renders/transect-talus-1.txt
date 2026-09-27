@@ -1,0 +1,61 @@
+## talus-1 (boulder) along x
+TRANSECT 25 stations from (-88, -38) to (-64, -38), every 1
+  station        ground  surface  water  top  standing            step
+  (  -88,   -38)      25       25           25  stroke road-pass    
+  (  -87,   -38)      25       25           25  stroke road-pass    
+  (  -86,   -38)      25       25           25  stroke road-pass    
+  (  -85,   -38)      25       25           25  stroke road-pass    
+  (  -84,   -38)      25       25           25                      
+  (  -83,   -38)      25       25           25                      
+  (  -82,   -38)      25       25           25                      
+  (  -81,   -38)      25       25           25                      
+  (  -80,   -38)      25       25           25                      
+  (  -79,   -38)      25       25           25                      
+  (  -78,   -38)      25       25           29  boulder talus-1     
+  (  -77,   -38)      25       25           29  boulder talus-1     
+  (  -76,   -38)      25       25           30  boulder talus-1     
+  (  -75,   -38)      26       26           29  boulder talus-1     +1
+  (  -74,   -38)      25       25           29  boulder talus-1     -1
+  (  -73,   -38)      24       24           25  flora cover         -1
+  (  -72,   -38)      23       23           24  flora cover         -1
+  (  -71,   -38)      23       23           24  flora cover         
+  (  -70,   -38)      24       24           24                      +1
+  (  -69,   -38)      23       23           23                      -1
+  (  -68,   -38)      20       20           20                      -3
+  (  -67,   -38)      18       18           18                      -2
+  (  -66,   -38)      17       17           17                      -1
+  (  -65,   -38)      17       17           17                      
+  (  -64,   -38)      17       17           17  stroke wash-north   
+rises 2, falls 7, worst step 3: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke road-pass at (-90, -40), flora cover at (-90, -36), boulder talus-1 at (-78, -40), stroke wash-north at (-65, -40)
+
+## talus-1 (boulder) along z
+TRANSECT 25 stations from (-76, -50) to (-76, -26), every 1
+  station        ground  surface  water  top  standing            step
+  (  -76,   -50)      32       32           32                      
+  (  -76,   -49)      32       32           32                      
+  (  -76,   -48)      33       33           33                      +1
+  (  -76,   -47)      34       34           34                      +1
+  (  -76,   -46)      35       35           35                      +1
+  (  -76,   -45)      35       35           35                      
+  (  -76,   -44)      32       32           32                      -3
+  (  -76,   -43)      28       28           28                      DROP -4
+  (  -76,   -42)      26       26           26                      -2
+  (  -76,   -41)      26       26           26                      
+  (  -76,   -40)      26       26           29  boulder talus-1     
+  (  -76,   -39)      25       25           29  boulder talus-1     -1
+  (  -76,   -38)      25       25           30  boulder talus-1     
+  (  -76,   -37)      25       25           29  boulder talus-1     
+  (  -76,   -36)      25       25           28  boulder talus-1     
+  (  -76,   -35)      25       25           27  boulder talus-1     
+  (  -76,   -34)      25       25           26  flora cover         
+  (  -76,   -33)      25       25           26  flora cover         
+  (  -76,   -32)      25       25           25                      
+  (  -76,   -31)      25       25           25                      
+  (  -76,   -30)      25       25           25                      
+  (  -76,   -29)      25       25           25                      
+  (  -76,   -28)      25       25           25                      
+  (  -76,   -27)      25       25           25                      
+  (  -76,   -26)      25       25           25                      
+rises 3, falls 4, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-76, -43) | walked end to end
+beside: flora cover at (-75, -50), boulder talus-1 at (-78, -40), stroke road-pass at (-78, -28)

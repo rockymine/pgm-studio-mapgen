@@ -1,3 +1,5 @@
-THEMES  1 themes over 9293 ground cells, 6 distinct surface blocks
-  default  9293 cells (100.0%)  1:0 Stone, 7:0 Bedrock, 35:14 Red Wool, 35:11 Blue Wool, 35:3 Light Blue Wool, 35:1 Orange Wool
+THEMES  2 themes over 9293 ground cells, 15 distinct surface blocks
+  snowfield  9084 cells (97.8%)  80:0 Snow Block, 5:1 Spruce Planks, 1:0 Stone, 3:1 Coarse Dirt, 3:2 Podzol, 1:5 Andesite, 4:0 Cobblestone, 7:0 Bedrock, 98:0 Stone Bricks, 1:6 Polished Andesite, 35:14 Red Wool, 35:11 Blue Wool
+  spruce-floor  209 cells (2.2%)  2:0 Grass Block, 3:2 Podzol, 1:5 Andesite, 4:0 Cobblestone
 borders:
+  snowfield | spruce-floor  102 cells

@@ -1,0 +1,61 @@
+## bomb-2 (boulder) along x
+TRANSECT 25 stations from (-48, -26) to (-24, -26), every 1
+  station        ground  surface  water  top  standing            step
+  (  -48,   -26)      30       30           30                      
+  (  -47,   -26)      30       30           30                      
+  (  -46,   -26)      29       29           29                      -1
+  (  -45,   -26)      29       29           29                      
+  (  -44,   -26)      28       28           28                      -1
+  (  -43,   -26)      27       27           27                      -1
+  (  -42,   -26)      27       27           27                      
+  (  -41,   -26)      26       26           26                      -1
+  (  -40,   -26)      25       25           25                      -1
+  (  -39,   -26)      25       25           25                      
+  (  -38,   -26)      24       24           24                      -1
+  (  -37,   -26)      23       23           25  boulder bomb-2      -1
+  (  -36,   -26)      22       22           25  boulder bomb-2      -1
+  (  -35,   -26)      22       22           25  boulder bomb-2      
+  (  -34,   -26)      21       21           21                      -1
+  (  -33,   -26)      20       20           20                      -1
+  (  -32,   -26)      19       19           19                      -1
+  (  -31,   -26)      19       19           19                      
+  (  -30,   -26)      18       18           18                      -1
+  (  -29,   -26)      17       17           17                      -1
+  (  -28,   -26)      16       16           16                      -1
+  (  -27,   -26)      16       16           16                      
+  (  -26,   -26)      15       15           15                      -1
+  (  -25,   -26)      14       14           14                      -1
+  (  -24,   -26)      14       14           14                      
+rises 0, falls 16, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder bomb-2 at (-37, -27), flora heath-cover at (-36, -24), stroke path-north at (-30, -28)
+
+## bomb-2 (boulder) along z
+TRANSECT 25 stations from (-36, -38) to (-36, -14), every 1
+  station        ground  surface  water  top  standing            step
+  (  -36,   -38)      20       20           20                      
+  (  -36,   -37)      20       20           20                      
+  (  -36,   -36)      21       21           21                      +1
+  (  -36,   -35)      21       21           21                      
+  (  -36,   -34)      21       21           21                      
+  (  -36,   -33)      21       21           21  stroke path-north   
+  (  -36,   -32)      21       21           21  stroke path-north   
+  (  -36,   -31)      21       21           21  stroke path-north   
+  (  -36,   -30)      22       22           22  stroke path-north   +1
+  (  -36,   -29)      22       22           22                      
+  (  -36,   -28)      22       22           22                      
+  (  -36,   -27)      22       22           25  boulder bomb-2      
+  (  -36,   -26)      22       22           25  boulder bomb-2      
+  (  -36,   -25)      23       23           25  boulder bomb-2      +1
+  (  -36,   -24)      23       23           24  flora heath-cover   
+  (  -36,   -23)      23       23           24  flora heath-cover   
+  (  -36,   -22)      23       23           24  flora heath-cover   
+  (  -36,   -21)      24       24           25  flora heath-cover   +1
+  (  -36,   -20)      24       24           25  flora heath-cover   
+  (  -36,   -19)      24       24           24                      
+  (  -36,   -18)      24       24           24                      
+  (  -36,   -17)      25       25           25                      +1
+  (  -36,   -16)      25       25           25                      
+  (  -36,   -15)      25       25           25                      
+  (  -36,   -14)      25       25           25                      
+rises 5, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-north at (-38, -33), boulder bomb-2 at (-37, -27), flora heath-cover at (-36, -24)

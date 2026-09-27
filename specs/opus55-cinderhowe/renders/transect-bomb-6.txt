@@ -1,0 +1,61 @@
+## bomb-6 (boulder) along x
+TRANSECT 25 stations from (-108, 40) to (-84, 40), every 1
+  station        ground  surface  water  top  standing            step
+  ( -108,    40)      32       32           32                      
+  ( -107,    40)      32       32           32                      
+  ( -106,    40)      32       32           32                      
+  ( -105,    40)      33       33           33                      +1
+  ( -104,    40)      33       33           33                      
+  ( -103,    40)      33       33           33                      
+  ( -102,    40)      33       33           33                      
+  ( -101,    40)      33       33           33                      
+  ( -100,    40)      33       33           34  flora heath-cover   
+  (  -99,    40)      33       33           34  flora heath-cover   
+  (  -98,    40)      33       33           36  boulder bomb-6      
+  (  -97,    40)      34       34           37  boulder bomb-6      +1
+  (  -96,    40)      34       34           38  boulder bomb-6      
+  (  -95,    40)      34       34           37  boulder bomb-6      
+  (  -94,    40)      34       34           36  boulder bomb-6      
+  (  -93,    40)      34       34           34                      
+  (  -92,    40)      34       34           34                      
+  (  -91,    40)      34       34           34                      
+  (  -90,    40)      34       34           34                      
+  (  -89,    40)      34       34           34                      
+  (  -88,    40)      35       35           35                      +1
+  (  -87,    40)      35       35           35                      
+  (  -86,    40)      35       35           35                      
+  (  -85,    40)      35       35           35                      
+  (  -84,    40)      35       35           35                      
+rises 3, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree olive-6 at (-110, 38), flora heath-cover at (-101, 41), boulder bomb-6 at (-98, 40), stroke path-south at (-87, 38)
+
+## bomb-6 (boulder) along z
+TRANSECT 25 stations from (-96, 28) to (-96, 52), every 1
+  station        ground  surface  water  top  standing            step
+  (  -96,    28)      35       35           35                      
+  (  -96,    29)      35       35           35  stroke path-south   
+  (  -96,    30)      35       35           35  stroke path-south   
+  (  -96,    31)      35       35           35  stroke path-south   
+  (  -96,    32)      35       35           35  stroke path-south   
+  (  -96,    33)      35       35           35                      
+  (  -96,    34)      35       35           35                      
+  (  -96,    35)      34       34           34                      -1
+  (  -96,    36)      34       34           34                      
+  (  -96,    37)      34       34           34                      
+  (  -96,    38)      34       34           36  boulder bomb-6      
+  (  -96,    39)      34       34           37  boulder bomb-6      
+  (  -96,    40)      34       34           38  boulder bomb-6      
+  (  -96,    41)      34       34           37  boulder bomb-6      
+  (  -96,    42)      33       33           36  boulder bomb-6      -1
+  (  -96,    43)      33       33           33                      
+  (  -96,    44)      33       33           33                      
+  (  -96,    45)      33       33           33                      
+  (  -96,    46)      33       33           33                      
+  (  -96,    47)      33       33           33                      
+  (  -96,    48)      33       33           33                      
+  (  -96,    49)      33       33           33                      
+  (  -96,    50)      33       33           33                      
+  (  -96,    51)      32       32           32                      -1
+  (  -96,    52)      32       32           32                      
+rises 0, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-south at (-98, 27), flora heath-cover at (-98, 32), boulder bomb-6 at (-96, 38)

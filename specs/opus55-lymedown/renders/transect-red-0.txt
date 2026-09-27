@@ -1,15 +1,15 @@
 ## red-0 (wool) along x
 TRANSECT 17 stations from (-44, 82) to (-28, 82), every 1
   station        ground  surface  water  top  standing            step
-  (  -44,    82)      13       13           13                      
-  (  -43,    82)      13       13           21  wool wool-1         
-  (  -42,    82)      13       13           21  wool wool-1         
-  (  -41,    82)      13       13           13  wool wool-1         
+  (  -44,    82)      13       13           18                      
+  (  -43,    82)      13       13           19  wool wool-1         
+  (  -42,    82)      13       13           20  wool wool-1         
+  (  -41,    82)      13       13           21  wool wool-1         
   (  -40,    82)      13       13           40  wool wool-1         
   (  -39,    82)      13       13           40  wool wool-1         
   (  -38,    82)      13       13           40  wool wool-1         
-  (  -37,    82)      13       13           21  wool wool-1         
-  (  -36,    82)      13       13           13                      
+  (  -37,    82)      13       13           19  wool wool-1         
+  (  -36,    82)      13       13           18                      
   (  -35,    82)      13       13           13                      
   (  -34,    82)      13       13           13                      
   (  -33,    82)      13       13           13                      
@@ -19,7 +19,7 @@ TRANSECT 17 stations from (-44, 82) to (-28, 82), every 1
   (  -29,    82)      13       13           14  redstoneline 0      
   (  -28,    82)      13       13           13                      
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: wool wool-1 at (-43, 80), redstoneline 0 at (-29, 80)
+beside: wool wool-1 at (-43, 80), redstoneline 0 at (-29, 80), stroke track-wool at (-26, 81)
 
 ## red-0 (wool) along z
 TRANSECT 18 stations from (-40, 70) to (-40, 87), every 1
@@ -30,17 +30,17 @@ TRANSECT 18 stations from (-40, 70) to (-40, 87), every 1
   (  -40,    73)                                                    void
   (  -40,    74)                                                    void
   (  -40,    75)                                                    void
-  (  -40,    76)      13       13           13                      
-  (  -40,    77)      13       13           21  wool wool-1         
-  (  -40,    78)      13       13           21  wool wool-1         
-  (  -40,    79)      13       13           21  wool wool-1         
-  (  -40,    80)      13       13           13  wool wool-1         
+  (  -40,    76)      13       13           22                      
+  (  -40,    77)      13       13           22  wool wool-1         
+  (  -40,    78)      13       13           22  wool wool-1         
+  (  -40,    79)      13       13           22  wool wool-1         
+  (  -40,    80)      13       13           22  wool wool-1         
   (  -40,    81)      13       13           40  wool wool-1         
   (  -40,    82)      13       13           40  wool wool-1         
   (  -40,    83)      13       13           40  wool wool-1         
-  (  -40,    84)      13       13           21  wool wool-1         
-  (  -40,    85)      13       13           21  wool wool-1         
-  (  -40,    86)      13       13           21  wool wool-1         
-  (  -40,    87)      13       13           13                      
+  (  -40,    84)      13       13           22  wool wool-1         
+  (  -40,    85)      13       13           22  wool wool-1         
+  (  -40,    86)      13       13           22  wool wool-1         
+  (  -40,    87)      13       13           22                      
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: wool wool-1 at (-42, 77)

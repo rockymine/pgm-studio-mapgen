@@ -1,0 +1,55 @@
+## lookout (house) along x
+TRANSECT 22 stations from (-89, 4) to (-68, 4), every 1
+  station        ground  surface  water  top  standing            step
+  (  -89,     4)      38       38           38                      
+  (  -88,     4)      35       35           35                      -3
+  (  -87,     4)      34       34           34                      -1
+  (  -86,     4)      30       30           30                      DROP -4
+  (  -85,     4)      26       26           26                      DROP -4
+  (  -84,     4)      25       25           25                      -1
+  (  -83,     4)      25       25           25                      
+  (  -82,     4)      25       25           36  house lookout       
+  (  -81,     4)      25       25           36  house lookout       
+  (  -80,     4)      25       25           36  house lookout       
+  (  -79,     4)      25       25           36  house lookout       
+  (  -78,     4)      25       25           36  house lookout       
+  (  -77,     4)      25       25           36  house lookout       
+  (  -76,     4)      25       25           36  house lookout       
+  (  -75,     4)      25       25           36  house lookout       
+  (  -74,     4)      25       25           25                      
+  (  -73,     4)      25       25           25                      
+  (  -72,     4)      25       25           25                      
+  (  -71,     4)      23       23           23                      -2
+  (  -70,     4)      22       22           22                      -1
+  (  -69,     4)      21       21           21                      -1
+  (  -68,     4)      21       21           21                      
+rises 0, falls 8, worst step 4: 0 barrier, 0 scramble, 2 drop — DROP -4 at (-86, 4); DROP -4 at (-85, 4) | walked end to end
+beside: house lookout at (-82, 2)
+
+## lookout (house) along z
+TRANSECT 22 stations from (-79, -6) to (-79, 15), every 1
+  station        ground  surface  water  top  standing            step
+  (  -79,    -6)      26       26           26                      
+  (  -79,    -5)      26       26           26                      
+  (  -79,    -4)      26       26           26                      
+  (  -79,    -3)      26       26           26                      
+  (  -79,    -2)      25       25           25                      -1
+  (  -79,    -1)      25       25           25                      
+  (  -79,     0)      25       25           25                      
+  (  -79,     1)      25       25           33  house lookout       
+  (  -79,     2)      25       25           34  house lookout       
+  (  -79,     3)      25       25           35  house lookout       
+  (  -79,     4)      25       25           36  house lookout       
+  (  -79,     5)      25       25           36  house lookout       
+  (  -79,     6)      25       25           35  house lookout       
+  (  -79,     7)      25       25           34  house lookout       
+  (  -79,     8)      25       25           33  house lookout       
+  (  -79,     9)      25       25           25                      
+  (  -79,    10)      25       25           25                      
+  (  -79,    11)      25       25           25                      
+  (  -79,    12)      25       25           26  flora cover         
+  (  -79,    13)      25       25           26  flora cover         
+  (  -79,    14)      25       25           26  flora cover         
+  (  -79,    15)      25       25           25  tree grove-1        
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house lookout at (-81, 1), flora cover at (-81, 12), tree grove-1 at (-79, 15)

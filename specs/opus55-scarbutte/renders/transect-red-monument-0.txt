@@ -24,10 +24,10 @@ TRANSECT 25 stations from (-84, -12) to (-60, -12), every 1
   (  -64,   -12)      13       13           13                      
   (  -63,   -12)      13       13           13                      
   (  -62,   -12)      13       13           13                      
-  (  -61,   -12)      13       13           13                      
-  (  -60,   -12)      13       13           13                      
+  (  -61,   -12)      13       13           13  stroke wash-north   
+  (  -60,   -12)      13       13           13  stroke wash-north   
 rises 0, falls 6, worst step 5: 0 barrier, 0 scramble, 1 drop — DROP -5 at (-66, -12) | walked end to end
-beside: destroyable red-monument at (-74, -14)
+beside: destroyable red-monument at (-74, -14), stroke road-front at (-67, -10), stroke wash-north at (-61, -13)
 
 ## red-monument-0 (destroyable) along z
 TRANSECT 25 stations from (-72, -24) to (-72, 0), every 1
@@ -58,4 +58,4 @@ TRANSECT 25 stations from (-72, -24) to (-72, 0), every 1
   (  -72,    -1)      23       23           23                      
   (  -72,     0)      25       25           25                      scramble +2
 rises 2, falls 3, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-72, 0) | walked end to end
-beside: destroyable red-monument at (-74, -14)
+beside: destroyable red-monument at (-74, -14), flora cover at (-70, -3)

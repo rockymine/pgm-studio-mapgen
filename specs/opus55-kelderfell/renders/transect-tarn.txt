@@ -1,0 +1,96 @@
+## tarn (water) along x
+TRANSECT 45 stations from (-66, 28) to (-22, 28), every 1
+  station        ground  surface  water  top  standing            step
+  (  -66,    28)      19       19           19                      
+  (  -65,    28)      18       18           18                      -1
+  (  -64,    28)      18       18           18                      
+  (  -63,    28)      18       18           18                      
+  (  -62,    28)      17       17           17                      -1
+  (  -61,    28)      17       17           17                      
+  (  -60,    28)      16       16           16  tree s4             -1
+  (  -59,    28)      16       16           16                      
+  (  -58,    28)      15       15           15                      -1
+  (  -57,    28)      13       13           13                      -2
+  (  -56,    28)      12       12           12                      -1
+  (  -55,    28)      10       10           10                      -2
+  (  -54,    28)       9        9      7     7  water tarn          -1
+  (  -53,    28)       8        8      7     7  water tarn          -1
+  (  -52,    28)       7        7      7     7  water tarn          -1
+  (  -51,    28)       7        7      7     7  water tarn          
+  (  -50,    28)       7        7      7     7  water tarn          
+  (  -49,    28)       7        7      7     7  water tarn          
+  (  -48,    28)       7        7      7     7  water tarn          
+  (  -47,    28)       7        7      7     7  water tarn          
+  (  -46,    28)       6        6      7     7  water tarn          -1
+  (  -45,    28)       6        6      7     7  water tarn          
+  (  -44,    28)       6        6      7     7  water tarn          
+  (  -43,    28)       6        6      7     7  water tarn          
+  (  -42,    28)       6        6      7     7  water tarn          
+  (  -41,    28)       6        6      7     7  water tarn          
+  (  -40,    28)       6        6      7     7  water tarn          
+  (  -39,    28)       6        6      7     7  water tarn          
+  (  -38,    28)       7        7      7     7  water tarn          +1
+  (  -37,    28)       7        7      7     7  water tarn          
+  (  -36,    28)       7        7      7     7  water tarn          
+  (  -35,    28)       7        7      7     7  water tarn          
+  (  -34,    28)       8        8            8                      +1
+  (  -33,    28)       8        8            8                      
+  (  -32,    28)       8        8            8                      
+  (  -31,    28)       9        9            9                      +1
+  (  -30,    28)      10       10           10                      +1
+  (  -29,    28)      12       12           12                      scramble +2
+  (  -28,    28)      13       13           13                      +1
+  (  -27,    28)      14       14           14                      +1
+  (  -26,    28)      14       14           14                      
+  (  -25,    28)      14       14           14                      
+  (  -24,    28)      14       14           14                      
+  (  -23,    28)      14       14           14                      
+  (  -22,    28)      14       14           14                      
+rises 7, falls 11, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-29, 28) | walked end to end
+beside: tree s4 at (-63, 30), water tarn at (-54, 27), tree b2 at (-35, 30)
+
+## tarn (water) along z
+TRANSECT 40 stations from (-44, 9) to (-44, 48), every 1
+  station        ground  surface  water  top  standing            step
+  (  -44,     9)      17       17           17                      
+  (  -44,    10)      17       17           17                      
+  (  -44,    11)      17       17           17                      
+  (  -44,    12)      16       16           16  stroke track-south  -1
+  (  -44,    13)      16       16           16  stroke track-south  
+  (  -44,    14)      16       16           16  stroke track-south  
+  (  -44,    15)      15       15           15  stroke track-south  -1
+  (  -44,    16)      13       13           13                      -2
+  (  -44,    17)      12       12           12                      -1
+  (  -44,    18)      11       11           11                      -1
+  (  -44,    19)      10       10           10                      -1
+  (  -44,    20)       9        9            9  water tarn          -1
+  (  -44,    21)       8        8      7     7  water tarn          -1
+  (  -44,    22)       7        7      7     7  water tarn          -1
+  (  -44,    23)       7        7      7     7  water tarn          
+  (  -44,    24)       7        7      7     7  water tarn          
+  (  -44,    25)       6        6      7     7  water tarn          -1
+  (  -44,    26)       6        6      7     7  water tarn          
+  (  -44,    27)       6        6      7     7  water tarn          
+  (  -44,    28)       6        6      7     7  water tarn          
+  (  -44,    29)       6        6      7     7  water tarn          
+  (  -44,    30)       6        6      7     7  water tarn          
+  (  -44,    31)       6        6      7     7  water tarn          
+  (  -44,    32)       6        6      7     7  water tarn          
+  (  -44,    33)       7        7      7     7  water tarn          +1
+  (  -44,    34)       7        7      7     7  water tarn          
+  (  -44,    35)       7        7      7     7  water tarn          
+  (  -44,    36)       8        8            8  water tarn          +1
+  (  -44,    37)       8        8            8                      
+  (  -44,    38)       9        9            9                      +1
+  (  -44,    39)       9        9            9                      
+  (  -44,    40)      10       10           10                      +1
+  (  -44,    41)      11       11           11  tree b1             +1
+  (  -44,    42)      13       13           13  tree b1             scramble +2
+  (  -44,    43)      14       14           14  tree b1             +1
+  (  -44,    44)      15       15           26  tree b1             +1
+  (  -44,    45)      15       15           28  tree b1             
+  (  -44,    46)      15       15           28  tree b1             
+  (  -44,    47)      15       15           29  tree b1             
+  (  -44,    48)      15       15           28  tree b1             
+rises 8, falls 10, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-44, 42) | walked end to end
+beside: stroke track-south at (-45, 12), water tarn at (-46, 20), tree b2 at (-42, 35), tree b1 at (-45, 40)

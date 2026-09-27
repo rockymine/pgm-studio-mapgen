@@ -113,6 +113,11 @@ finish = {
     "bendShapes": {"field-20": {"k": 0.22, "wander": 2, "step": 10, "seed": 5, "side": "out"}},
     "relief": relief}
 
+# The finish run's paint -- themes, biome, room styles, dressing and the patches they need -- as the studio
+# stored it, laid over the ground's own finish.
+with open(os.path.join(HERE, "paint.json")) as f:
+    finish.update(json.load(f))
+
 for name, doc in (("plan", plan), ("finish", finish)):
     with open(os.path.join(HERE, f"{SLUG}.{name}.json"), "w") as f:
         json.dump(doc, f, indent=1)

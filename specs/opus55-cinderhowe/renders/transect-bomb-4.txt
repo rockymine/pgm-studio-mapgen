@@ -1,0 +1,61 @@
+## bomb-4 (boulder) along x
+TRANSECT 25 stations from (-47, 40) to (-23, 40), every 1
+  station        ground  surface  water  top  standing            step
+  (  -47,    40)      26       26           26                      
+  (  -46,    40)      26       26           26                      
+  (  -45,    40)      25       25           25                      -1
+  (  -44,    40)      25       25           25                      
+  (  -43,    40)      24       24           24                      -1
+  (  -42,    40)      24       24           24                      
+  (  -41,    40)      24       24           24                      
+  (  -40,    40)      23       23           23                      -1
+  (  -39,    40)      23       23           23                      
+  (  -38,    40)      22       22           22                      -1
+  (  -37,    40)      21       21           21                      -1
+  (  -36,    40)      20       20           22  boulder bomb-4      -1
+  (  -35,    40)      20       20           22  boulder bomb-4      
+  (  -34,    40)      19       19           22  boulder bomb-4      -1
+  (  -33,    40)      19       19           21  boulder bomb-4      
+  (  -32,    40)      18       18           18                      -1
+  (  -31,    40)      18       18           18                      
+  (  -30,    40)      17       17           17                      -1
+  (  -29,    40)      17       17           17                      
+  (  -28,    40)      16       16           16                      -1
+  (  -27,    40)      15       15           15                      -1
+  (  -26,    40)      15       15           15                      
+  (  -25,    40)      14       14           14                      -1
+  (  -24,    40)      14       14           14                      
+  (  -23,    40)      13       13           13                      -1
+rises 0, falls 13, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder bomb-4 at (-36, 39)
+
+## bomb-4 (boulder) along z
+TRANSECT 25 stations from (-35, 28) to (-35, 52), every 1
+  station        ground  surface  water  top  standing            step
+  (  -35,    28)      21       21           21  stroke path-south   
+  (  -35,    29)      21       21           21  stroke path-south   
+  (  -35,    30)      21       21           21  stroke path-south   
+  (  -35,    31)      21       21           21                      
+  (  -35,    32)      21       21           21                      
+  (  -35,    33)      21       21           21                      
+  (  -35,    34)      21       21           21                      
+  (  -35,    35)      20       20           20                      -1
+  (  -35,    36)      20       20           20                      
+  (  -35,    37)      20       20           20                      
+  (  -35,    38)      20       20           20                      
+  (  -35,    39)      20       20           22  boulder bomb-4      
+  (  -35,    40)      20       20           22  boulder bomb-4      
+  (  -35,    41)      20       20           22  boulder bomb-4      
+  (  -35,    42)      20       20           21  boulder bomb-4      
+  (  -35,    43)      21       21           21                      +1
+  (  -35,    44)      22       22           22                      +1
+  (  -35,    45)      23       23           23                      +1
+  (  -35,    46)      24       24           24                      +1
+  (  -35,    47)      25       25           25                      +1
+  (  -35,    48)      25       25           25                      
+  (  -35,    49)      26       26           26                      +1
+  (  -35,    50)      26       26           26                      
+  (  -35,    51)      27       27           27                      +1
+  (  -35,    52)      27       27           27                      
+rises 7, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-south at (-33, 27), boulder bomb-4 at (-36, 39)

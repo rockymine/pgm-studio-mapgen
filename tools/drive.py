@@ -76,11 +76,12 @@ What each key states:
                   chunk carries, which tints grass, leaves and water. Absent is plains everywhere
   roomStyles      {"wool": ..., "spawn": ...} -- the two members SketchRoomStyles carries; a "@name"
                   string loads tools/styles/<name>.json. It was "cage" until 2026-09-07. A key
-                  neither of those names is dropped in silence by the whole-layout write below --
-                  no RQ3, and the room stamps the built-in bedrock box at 200
+                  neither of those names is answered RQ3 by the whole-layout write below, and a
+                  kind left unbound stands in the built-in bedrock box, which every build answers
+                  WX14
   dressing        {"styles": ..., "props": [...]};  a house prop's "style" takes the same "@name".
                   A style in "styles" is a discriminated PropStyle: a house is
-                  {"kind": "house", "shell": <HouseStyle>}, and a bare HouseStyle is a 500 / RQ2
+                  {"kind": "house", "shell": <HouseStyle>}, and a bare HouseStyle is refused DR-DOC
   shops           [{"id", "name", "keeper": {"name", "mob"}, "categories": [...]}] -> intent.shops. The
                   menu only: where the keepers stand is the studio's, one per shop at every team's spawn
   spawners        [{"id", "at": {x,y,z}, "pad", "reach", "protect", "delay", "maxEntities", "drops"}]
@@ -636,8 +637,13 @@ def patch_layout(layout, finish):
     by_id = finish.get("themeById") or {}
     props_by_id = finish.get("shapePropsById") or {}
     for shape in shapes:
+        # A projected spawn/wool rectangle is not terrain, so no rule keyed by height and no override of
+        # what it is reaches it. Its paint does: a theme named by the shape's own id is the shape route's
+        # call, and that route paints the yard a room stands in like any other ground.
         if shape.get("role") is not None:
-            continue                       # a projected spawn/wool rectangle is not terrain
+            if shape["id"] in by_id:
+                shape["theme"] = by_id[shape["id"]]
+            continue
         height = shape.get("base_height")
         key = None if height is None else str(int(height))
         if key in by_height:

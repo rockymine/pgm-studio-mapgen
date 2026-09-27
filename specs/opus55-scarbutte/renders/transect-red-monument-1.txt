@@ -1,8 +1,8 @@
 ## red-monument-1 (destroyable) along x
 TRANSECT 25 stations from (59, 11) to (83, 11), every 1
   station        ground  surface  water  top  standing            step
-  (   59,    11)      13       13           13                      
-  (   60,    11)      13       13           13                      
+  (   59,    11)      13       13           13  stroke wash-north#1  
+  (   60,    11)      13       13           13  stroke wash-north#1  
   (   61,    11)      13       13           13                      
   (   62,    11)      13       13           13                      
   (   63,    11)      13       13           13                      
@@ -27,7 +27,7 @@ TRANSECT 25 stations from (59, 11) to (83, 11), every 1
   (   82,    11)      26       26           26                      
   (   83,    11)      26       26           26                      
 rises 6, falls 0, worst step 5: 1 barrier, 3 scramble, 0 drop — scramble +2 at (65, 11); BARRIER +5 at (66, 11); scramble +2 at (67, 11); scramble +2 at (71, 11) | walked end to end
-beside: destroyable red-monument#1 at (69, 9)
+beside: stroke wash-north#1 at (57, 10), stroke road-front#1 at (65, 9), destroyable red-monument#1 at (69, 9)
 
 ## red-monument-1 (destroyable) along z
 TRANSECT 25 stations from (71, -1) to (71, 23), every 1
@@ -58,4 +58,4 @@ TRANSECT 25 stations from (71, -1) to (71, 23), every 1
   (   71,    22)      25       25           25                      
   (   71,    23)      25       25           25                      
 rises 3, falls 2, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: destroyable red-monument#1 at (69, 9)
+beside: flora cover at (73, 0), destroyable red-monument#1 at (69, 9)

@@ -1,0 +1,61 @@
+## bomb-3 (boulder) along x
+TRANSECT 25 stations from (-56, -44) to (-32, -44), every 1
+  station        ground  surface  water  top  standing            step
+  (  -56,   -44)      29       29           29                      
+  (  -55,   -44)      29       29           29                      
+  (  -54,   -44)      29       29           29                      
+  (  -53,   -44)      28       28           28                      -1
+  (  -52,   -44)      28       28           28                      
+  (  -51,   -44)      27       27           27                      -1
+  (  -50,   -44)      27       27           27                      
+  (  -49,   -44)      26       26           26                      -1
+  (  -48,   -44)      26       26           26                      
+  (  -47,   -44)      25       25           25                      -1
+  (  -46,   -44)      25       25           26  boulder bomb-3      
+  (  -45,   -44)      24       24           27  boulder bomb-3      -1
+  (  -44,   -44)      24       24           27  boulder bomb-3      
+  (  -43,   -44)      24       24           27  boulder bomb-3      
+  (  -42,   -44)      23       23           26  boulder bomb-3      -1
+  (  -41,   -44)      23       23           23                      
+  (  -40,   -44)      23       23           23                      
+  (  -39,   -44)      23       23           23                      
+  (  -38,   -44)      22       22           22                      -1
+  (  -37,   -44)      22       22           22                      
+  (  -36,   -44)      22       22           22                      
+  (  -35,   -44)      22       22           22                      
+  (  -34,   -44)      21       21           21                      -1
+  (  -33,   -44)      20       20           20                      -1
+  (  -32,   -44)      19       19           19                      -1
+rises 0, falls 10, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-north at (-58, -43), boulder bomb-3 at (-46, -45)
+
+## bomb-3 (boulder) along z
+TRANSECT 25 stations from (-44, -56) to (-44, -32), every 1
+  station        ground  surface  water  top  standing            step
+  (  -44,   -56)      26       26           26                      
+  (  -44,   -55)      26       26           26                      
+  (  -44,   -54)      26       26           26                      
+  (  -44,   -53)      26       26           26                      
+  (  -44,   -52)      26       26           26                      
+  (  -44,   -51)      25       25           25                      -1
+  (  -44,   -50)      25       25           25                      
+  (  -44,   -49)      25       25           25                      
+  (  -44,   -48)      24       24           24                      -1
+  (  -44,   -47)      24       24           24                      
+  (  -44,   -46)      24       24           24                      
+  (  -44,   -45)      24       24           27  boulder bomb-3      
+  (  -44,   -44)      24       24           27  boulder bomb-3      
+  (  -44,   -43)      24       24           27  boulder bomb-3      
+  (  -44,   -42)      24       24           26  boulder bomb-3      
+  (  -44,   -41)      24       24           24                      
+  (  -44,   -40)      25       25           25                      +1
+  (  -44,   -39)      25       25           25                      
+  (  -44,   -38)      25       25           25                      
+  (  -44,   -37)      25       25           25  stroke path-north   
+  (  -44,   -36)      25       25           25  stroke path-north   
+  (  -44,   -35)      26       26           26  stroke path-north   +1
+  (  -44,   -34)      26       26           26  stroke path-north   
+  (  -44,   -33)      26       26           26                      
+  (  -44,   -32)      26       26           26                      
+rises 2, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder bomb-3 at (-46, -45), stroke path-north at (-46, -38)

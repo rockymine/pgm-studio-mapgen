@@ -1,0 +1,61 @@
+## bomb-5 (boulder) along x
+TRANSECT 25 stations from (-70, 50) to (-46, 50), every 1
+  station        ground  surface  water  top  standing            step
+  (  -70,    50)      31       31           39  tree olive-7        
+  (  -69,    50)      31       31           31  tree olive-7        
+  (  -68,    50)      30       30           40  tree olive-7        -1
+  (  -67,    50)      30       30           39  tree olive-7        
+  (  -66,    50)      30       30           39  tree olive-7        
+  (  -65,    50)      30       30           38  tree olive-7        
+  (  -64,    50)      30       30           30  tree olive-7        
+  (  -63,    50)      29       29           29  tree olive-7        -1
+  (  -62,    50)      29       29           29                      
+  (  -61,    50)      29       29           29                      
+  (  -60,    50)      29       29           29                      
+  (  -59,    50)      28       28           31  boulder bomb-5      -1
+  (  -58,    50)      28       28           31  boulder bomb-5      
+  (  -57,    50)      28       28           31  boulder bomb-5      
+  (  -56,    50)      27       27           27                      -1
+  (  -55,    50)      27       27           27                      
+  (  -54,    50)      28       28           28                      +1
+  (  -53,    50)      28       28           28                      
+  (  -52,    50)      29       29           29                      +1
+  (  -51,    50)      29       29           29                      
+  (  -50,    50)      30       30           30                      +1
+  (  -49,    50)      31       31           31                      +1
+  (  -48,    50)      31       31           31                      
+  (  -47,    50)      32       32           32                      +1
+  (  -46,    50)      32       32           32                      
+rises 5, falls 4, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree olive-7 at (-72, 48), boulder bomb-5 at (-59, 49), flora heath-cover at (-56, 48)
+
+## bomb-5 (boulder) along z
+TRANSECT 25 stations from (-58, 38) to (-58, 62), every 1
+  station        ground  surface  water  top  standing            step
+  (  -58,    38)      31       31           31  stroke path-south   
+  (  -58,    39)      31       31           31  stroke path-south   
+  (  -58,    40)      31       31           31                      
+  (  -58,    41)      30       30           30                      -1
+  (  -58,    42)      30       30           30                      
+  (  -58,    43)      30       30           30                      
+  (  -58,    44)      29       29           29                      -1
+  (  -58,    45)      29       29           29                      
+  (  -58,    46)      29       29           29                      
+  (  -58,    47)      29       29           29                      
+  (  -58,    48)      28       28           28                      -1
+  (  -58,    49)      28       28           31  boulder bomb-5      
+  (  -58,    50)      28       28           31  boulder bomb-5      
+  (  -58,    51)      28       28           31  boulder bomb-5      
+  (  -58,    52)      28       28           28                      
+  (  -58,    53)      27       27           27                      -1
+  (  -58,    54)      27       27           27                      
+  (  -58,    55)      27       27           27                      
+  (  -58,    56)      27       27           27                      
+  (  -58,    57)      27       27           27                      
+  (  -58,    58)      27       27           27                      
+  (  -58,    59)      26       26           26                      -1
+  (  -58,    60)      26       26           26                      
+  (  -58,    61)      26       26           26                      
+  (  -58,    62)      26       26           26                      
+rises 0, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-south at (-57, 36), flora heath-cover at (-56, 47), boulder bomb-5 at (-59, 49)

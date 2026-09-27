@@ -1,0 +1,61 @@
+## talus-2 (boulder) along x
+TRANSECT 25 stations from (-56, -22) to (-32, -22), every 1
+  station        ground  surface  water  top  standing            step
+  (  -56,   -22)      13       13           13                      
+  (  -55,   -22)      13       13           13                      
+  (  -54,   -22)      13       13           13                      
+  (  -53,   -22)      13       13           13                      
+  (  -52,   -22)      15       15           15                      scramble +2
+  (  -51,   -22)      19       19           19                      BARRIER +4
+  (  -50,   -22)      21       21           21                      scramble +2
+  (  -49,   -22)      21       21           27  boulder talus-2     
+  (  -48,   -22)      21       21           27  boulder talus-2     
+  (  -47,   -22)      23       23           27  boulder talus-2     scramble +2
+  (  -46,   -22)      25       25           27  boulder talus-2     scramble +2
+  (  -45,   -22)      26       26           28  boulder talus-2     +1
+  (  -44,   -22)      26       26           28  boulder talus-2     
+  (  -43,   -22)      26       26           28  boulder talus-2     
+  (  -42,   -22)      26       26           27  boulder talus-2     
+  (  -41,   -22)      25       25           27  boulder talus-2     -1
+  (  -40,   -22)      25       25           27  boulder talus-2     
+  (  -39,   -22)      25       25           27  boulder talus-2     
+  (  -38,   -22)      25       25           25                      
+  (  -37,   -22)      26       26           26                      +1
+  (  -36,   -22)      26       26           26                      
+  (  -35,   -22)      26       26           26                      
+  (  -34,   -22)      26       26           26                      
+  (  -33,   -22)      25       25           25                      -1
+  (  -32,   -22)      25       25           25                      
+rises 7, falls 2, worst step 4: 1 barrier, 4 scramble, 0 drop — scramble +2 at (-52, -22); BARRIER +4 at (-51, -22); scramble +2 at (-50, -22); scramble +2 at (-47, -22); scramble +2 at (-46, -22) | walked end to end
+beside: stroke wash-north at (-58, -24), boulder talus-2 at (-49, -24)
+
+## talus-2 (boulder) along z
+TRANSECT 25 stations from (-44, -34) to (-44, -10), every 1
+  station        ground  surface  water  top  standing            step
+  (  -44,   -34)      36       36           36                      
+  (  -44,   -33)      35       35           35                      -1
+  (  -44,   -32)      35       35           35                      
+  (  -44,   -31)      35       35           35                      
+  (  -44,   -30)      33       33           33                      -2
+  (  -44,   -29)      29       29           29                      DROP -4
+  (  -44,   -28)      28       28           28                      -1
+  (  -44,   -27)      27       27           27                      -1
+  (  -44,   -26)      27       27           27  boulder talus-2     
+  (  -44,   -25)      27       27           28  boulder talus-2     
+  (  -44,   -24)      26       26           28  boulder talus-2     -1
+  (  -44,   -23)      26       26           28  boulder talus-2     
+  (  -44,   -22)      26       26           28  boulder talus-2     
+  (  -44,   -21)      25       25           28  boulder talus-2     -1
+  (  -44,   -20)      25       25           27  boulder talus-2     
+  (  -44,   -19)      24       24           27  boulder talus-2     -1
+  (  -44,   -18)      24       24           27  boulder talus-2     
+  (  -44,   -17)      24       24           24                      
+  (  -44,   -16)      24       24           24                      
+  (  -44,   -15)      24       24           24                      
+  (  -44,   -14)      24       24           24                      
+  (  -44,   -13)      24       24           24                      
+  (  -44,   -12)      24       24           24                      
+  (  -44,   -11)      24       24           24                      
+  (  -44,   -10)      24       24           24                      
+rises 0, falls 8, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-44, -29) | walked end to end
+beside: boulder talus-2 at (-46, -27), flora cover at (-42, -10)
