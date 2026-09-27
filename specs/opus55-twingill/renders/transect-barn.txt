@@ -1,0 +1,62 @@
+## barn (house) along x
+TRANSECT 27 stations from (-114, 18) to (-88, 18), every 1
+  station        ground  surface  water  top  standing            step
+  ( -114,    18)      29       29           29                      
+  ( -113,    18)      29       29           29                      
+  ( -112,    18)      29       29           29                      
+  ( -111,    18)      29       29           29                      
+  ( -110,    18)      29       29           29                      
+  ( -109,    18)      28       28           28                      -1
+  ( -108,    18)      28       28           28                      
+  ( -107,    18)      28       28           35  house barn          
+  ( -106,    18)      28       28           35  house barn          
+  ( -105,    18)      28       28           35  house barn          
+  ( -104,    18)      28       28           35  house barn          
+  ( -103,    18)      27       27           35  house barn          -1
+  ( -102,    18)      27       27           35  house barn          
+  ( -101,    18)      27       27           35  house barn          
+  ( -100,    18)      27       27           35  house barn          
+  (  -99,    18)      27       27           35  house barn          
+  (  -98,    18)      27       27           35  house barn          
+  (  -97,    18)      27       27           35  house barn          
+  (  -96,    18)      27       27           35  house barn          
+  (  -95,    18)      27       27           35  house barn          
+  (  -94,    18)      27       27           27                      
+  (  -93,    18)      27       27           27                      
+  (  -92,    18)      27       27           27  stroke path-monument  
+  (  -91,    18)      27       27           27  stroke path-monument  
+  (  -90,    18)      26       26           26  stroke path-monument  -1
+  (  -89,    18)      26       26           26  stroke path-monument  
+  (  -88,    18)      26       26           26  stroke path-monument  
+rises 0, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree garth-2 at (-109, 16), house barn at (-107, 16), stroke path-monument at (-94, 16)
+
+## barn (house) along z
+TRANSECT 24 stations from (-101, 7) to (-101, 30), every 1
+  station        ground  surface  water  top  standing            step
+  ( -101,     7)      28       28           28  stroke path-monument  
+  ( -101,     8)      28       28           28  stroke path-monument  
+  ( -101,     9)      28       28           28  stroke path-monument  
+  ( -101,    10)      27       27           27  stroke path-monument  -1
+  ( -101,    11)      27       27           27  stroke path-monument  
+  ( -101,    12)      27       27           27  stroke path-monument  
+  ( -101,    13)      27       27           27                      
+  ( -101,    14)      27       27           33  house barn          
+  ( -101,    15)      27       27           33  house barn          
+  ( -101,    16)      27       27           34  house barn          
+  ( -101,    17)      27       27           34  house barn          
+  ( -101,    18)      27       27           35  house barn          
+  ( -101,    19)      27       27           35  house barn          
+  ( -101,    20)      27       27           34  house barn          
+  ( -101,    21)      27       27           34  house barn          
+  ( -101,    22)      28       28           33  house barn          +1
+  ( -101,    23)      28       28           33  house barn          
+  ( -101,    24)      29       29           29                      +1
+  ( -101,    25)      30       30           30                      +1
+  ( -101,    26)      31       31           31                      +1
+  ( -101,    27)      32       32           32                      +1
+  ( -101,    28)      34       34           34                      scramble +2
+  ( -101,    29)      35       35           35                      +1
+  ( -101,    30)      36       36           36                      +1
+rises 8, falls 1, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-101, 28) | walked end to end
+beside: stroke path-monument at (-103, 5), house barn at (-103, 14)

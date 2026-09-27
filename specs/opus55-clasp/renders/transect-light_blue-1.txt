@@ -1,14 +1,14 @@
 ## light_blue-1 (wool) along x
 TRANSECT 17 stations from (-52, -78) to (-36, -78), every 1
   station        ground  surface  water  top  standing            step
-  (  -52,   -78)      20       20           20                      
-  (  -51,   -78)      20       20           28  wool wool-2#1       
-  (  -50,   -78)      20       20           28  wool wool-2#1       
+  (  -52,   -78)      20       20           25                      
+  (  -51,   -78)      20       20           26  wool wool-2#1       
+  (  -50,   -78)      20       20           27  wool wool-2#1       
   (  -49,   -78)      20       20           47  wool wool-2#1       
   (  -48,   -78)      20       20           47  wool wool-2#1       
   (  -47,   -78)      20       20           47  wool wool-2#1       
-  (  -46,   -78)      20       20           28  wool wool-2#1       
-  (  -45,   -78)      20       20           20                      
+  (  -46,   -78)      20       20           26  wool wool-2#1       
+  (  -45,   -78)      20       20           25                      
   (  -44,   -78)                                                    void
   (  -43,   -78)                                                    void
   (  -42,   -78)                                                    void
@@ -27,21 +27,21 @@ TRANSECT 25 stations from (-48, -90) to (-48, -66), every 1
   (  -48,   -90)      20       20           20                      
   (  -48,   -89)      20       20           20                      
   (  -48,   -88)      20       20           20                      
-  (  -48,   -87)      20       20           20                      
+  (  -48,   -87)      20       20           20  stroke track-clamp#1  
   (  -48,   -86)      20       20           20                      
   (  -48,   -85)      20       20           20                      
-  (  -48,   -84)      20       20           21  redstoneline 1#1    
+  (  -48,   -84)      20       20           28  redstoneline 1#1    
   (  -48,   -83)      20       20           28  wool wool-2#1       
   (  -48,   -82)      20       20           28  wool wool-2#1       
   (  -48,   -81)      20       20           28  wool wool-2#1       
-  (  -48,   -80)      20       20           20  wool wool-2#1       
+  (  -48,   -80)      20       20           28  wool wool-2#1       
   (  -48,   -79)      20       20           47  wool wool-2#1       
   (  -48,   -78)      20       20           47  wool wool-2#1       
   (  -48,   -77)      20       20           47  wool wool-2#1       
   (  -48,   -76)      20       20           28  wool wool-2#1       
   (  -48,   -75)      20       20           28  wool wool-2#1       
   (  -48,   -74)      20       20           28  wool wool-2#1       
-  (  -48,   -73)      20       20           21  redstoneline 2#1    
+  (  -48,   -73)      20       20           28  redstoneline 2#1    
   (  -48,   -72)      20       20           20                      
   (  -48,   -71)      20       20           20                      
   (  -48,   -70)      20       20           20                      
@@ -50,4 +50,4 @@ TRANSECT 25 stations from (-48, -90) to (-48, -66), every 1
   (  -48,   -67)      20       20           20                      
   (  -48,   -66)      20       20           20                      
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: redstoneline 1#1 at (-50, -84), wool wool-2#1 at (-50, -83), redstoneline 2#1 at (-50, -73)
+beside: stroke track-clamp#1 at (-48, -87), redstoneline 1#1 at (-50, -84), wool wool-2#1 at (-50, -83), redstoneline 2#1 at (-50, -73)

@@ -9,22 +9,22 @@ TRANSECT 33 stations from (0, 124) to (32, 124), every 1
   (    5,   124)                                                    void
   (    6,   124)                                                    void
   (    7,   124)                                                    void
-  (    8,   124)      23       23           23                      
-  (    9,   124)      23       23           31  spawn spawn-1       
-  (   10,   124)      23       23           31  spawn spawn-1       
-  (   11,   124)      23       23           31  spawn spawn-1       
-  (   12,   124)      23       23           31  spawn spawn-1       
-  (   13,   124)      23       23           31  spawn spawn-1       
-  (   14,   124)      23       23           31  spawn spawn-1       
-  (   15,   124)      23       23           31  spawn spawn-1       
-  (   16,   124)      23       23           31  spawn spawn-1       
-  (   17,   124)      23       23           31  spawn spawn-1       
-  (   18,   124)      23       23           31  spawn spawn-1       
-  (   19,   124)      23       23           31  spawn spawn-1       
-  (   20,   124)      23       23           31  spawn spawn-1       
-  (   21,   124)      23       23           31  spawn spawn-1       
-  (   22,   124)      23       23           31  spawn spawn-1       
-  (   23,   124)      23       23           23                      
+  (    8,   124)      23       23           32                      
+  (    9,   124)      23       23           32  spawn spawn-1       
+  (   10,   124)      23       23           32  spawn spawn-1       
+  (   11,   124)      23       23           32  spawn spawn-1       
+  (   12,   124)      23       23           32  spawn spawn-1       
+  (   13,   124)      23       23           32  spawn spawn-1       
+  (   14,   124)      23       23           32  spawn spawn-1       
+  (   15,   124)      23       23           32  spawn spawn-1       
+  (   16,   124)      23       23           32  spawn spawn-1       
+  (   17,   124)      23       23           32  spawn spawn-1       
+  (   18,   124)      23       23           32  spawn spawn-1       
+  (   19,   124)      23       23           32  spawn spawn-1       
+  (   20,   124)      23       23           32  spawn spawn-1       
+  (   21,   124)      23       23           32  spawn spawn-1       
+  (   22,   124)      23       23           32  spawn spawn-1       
+  (   23,   124)      23       23           32                      
   (   24,   124)                                                    void
   (   25,   124)                                                    void
   (   26,   124)                                                    void
@@ -41,12 +41,12 @@ beside: spawn spawn-1 at (9, 124)
 TRANSECT 23 stations from (16, 108) to (16, 130), every 1
   station        ground  surface  water  top  standing            step
   (   16,   108)      23       23           23                      
-  (   16,   109)      23       23           23                      
-  (   16,   110)      23       23           23                      
-  (   16,   111)      23       23           23                      
-  (   16,   112)      23       23           23                      
-  (   16,   113)      23       23           23                      
-  (   16,   114)      23       23           23                      
+  (   16,   109)      23       23           23  stroke lane-west    
+  (   16,   110)      23       23           23  stroke lane-west    
+  (   16,   111)      23       23           23  stroke lane-west    
+  (   16,   112)      23       23           23  stroke lane-west    
+  (   16,   113)      23       23           23  stroke lane-west    
+  (   16,   114)      23       23           23  stroke lane-west    
   (   16,   115)      23       23           23                      
   (   16,   116)      23       23           23                      
   (   16,   117)      23       23           23                      
@@ -55,13 +55,13 @@ TRANSECT 23 stations from (16, 108) to (16, 130), every 1
   (   16,   120)      23       23           23                      
   (   16,   121)      23       23           23                      
   (   16,   122)      23       23           23                      
-  (   16,   123)      23       23           23                      
-  (   16,   124)      23       23           31  spawn spawn-1       
-  (   16,   125)      23       23           31  spawn spawn-1       
-  (   16,   126)      23       23           23  spawn spawn-1       
-  (   16,   127)      23       23           23  spawn spawn-1       
-  (   16,   128)      23       23           23  spawn spawn-1       
-  (   16,   129)      23       23           31  spawn spawn-1       
-  (   16,   130)      23       23           31  spawn spawn-1       
+  (   16,   123)      23       23           30                      
+  (   16,   124)      23       23           32  spawn spawn-1       
+  (   16,   125)      23       23           34  spawn spawn-1       
+  (   16,   126)      23       23           36  spawn spawn-1       
+  (   16,   127)      23       23           38  spawn spawn-1       
+  (   16,   128)      23       23           36  spawn spawn-1       
+  (   16,   129)      23       23           34  spawn spawn-1       
+  (   16,   130)      23       23           32  spawn spawn-1       
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: ironcube spawn-1:0 at (18, 119), spawn spawn-1 at (14, 124)
+beside: stroke lane-west at (14, 106), ironcube spawn-1:0 at (18, 119), spawn spawn-1 at (14, 124)

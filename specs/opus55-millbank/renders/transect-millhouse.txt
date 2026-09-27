@@ -1,0 +1,56 @@
+## millhouse (house) along x
+TRANSECT 23 stations from (16, 103) to (38, 103), every 1
+  station        ground  surface  water  top  standing            step
+  (   16,   103)      22       22           22                      
+  (   17,   103)      22       22           22                      
+  (   18,   103)      22       22           22                      
+  (   19,   103)      22       22           22                      
+  (   20,   103)      22       22           22                      
+  (   21,   103)      22       22           22                      
+  (   22,   103)      22       22           22                      
+  (   23,   103)      22       22           30  house millhouse     
+  (   24,   103)      22       22           30  house millhouse     
+  (   25,   103)      21       21           30  house millhouse     -1
+  (   26,   103)      21       21           30  house millhouse     
+  (   27,   103)      21       21           30  house millhouse     
+  (   28,   103)      21       21           30  house millhouse     
+  (   29,   103)      21       21           30  house millhouse     
+  (   30,   103)      21       21           30  house millhouse     
+  (   31,   103)      21       21           30  house millhouse     
+  (   32,   103)                                                    void
+  (   33,   103)                                                    void
+  (   34,   103)                                                    void
+  (   35,   103)                                                    void
+  (   36,   103)                                                    void
+  (   37,   103)                                                    void
+  (   38,   103)                                                    void
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree hole-oak-e at (14, 101), stroke lane-east at (18, 101), stroke lane-west at (14, 105), house millhouse at (23, 101)
+
+## millhouse (house) along z
+TRANSECT 22 stations from (27, 93) to (27, 114), every 1
+  station        ground  surface  water  top  standing            step
+  (   27,    93)      20       20           20                      
+  (   27,    94)      20       20           20                      
+  (   27,    95)      20       20           20                      
+  (   27,    96)      21       21           21                      +1
+  (   27,    97)      21       21           21                      
+  (   27,    98)      21       21           21                      
+  (   27,    99)      21       21           21                      
+  (   27,   100)      21       21           24  house millhouse     
+  (   27,   101)      21       21           26  house millhouse     
+  (   27,   102)      21       21           28  house millhouse     
+  (   27,   103)      21       21           30  house millhouse     
+  (   27,   104)      21       21           30  house millhouse     
+  (   27,   105)      21       21           28  house millhouse     
+  (   27,   106)      22       22           26  house millhouse     +1
+  (   27,   107)      22       22           24  house millhouse     
+  (   27,   108)                                                    void
+  (   27,   109)                                                    void
+  (   27,   110)                                                    void
+  (   27,   111)                                                    void
+  (   27,   112)                                                    void
+  (   27,   113)                                                    void
+  (   27,   114)                                                    void
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke lane-east at (25, 91), house millhouse at (25, 100)

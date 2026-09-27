@@ -1,0 +1,61 @@
+## dub-1 (water) along x
+TRANSECT 25 stations from (-104, 8) to (-80, 8), every 1
+  station        ground  surface  water  top  standing            step
+  ( -104,     8)      28       28           28                      
+  ( -103,     8)      28       28           28  stroke path-monument  
+  ( -102,     8)      28       28           28  stroke path-monument  
+  ( -101,     8)      28       28           28  stroke path-monument  
+  ( -100,     8)      28       28           28                      
+  (  -99,     8)      27       27           27                      -1
+  (  -98,     8)      27       27           27                      
+  (  -97,     8)      26       26           26                      -1
+  (  -96,     8)      25       25           25                      -1
+  (  -95,     8)      23       23           23                      -2
+  (  -94,     8)      23       23     22    22  water dub-1         
+  (  -93,     8)      22       22     22    22  water dub-1         -1
+  (  -92,     8)      22       22     22    22  water dub-1         
+  (  -91,     8)      22       22           22                      
+  (  -90,     8)      22       22           22                      
+  (  -89,     8)      22       22           22                      
+  (  -88,     8)      24       24           24                      scramble +2
+  (  -87,     8)      25       25           25                      +1
+  (  -86,     8)      26       26           26                      +1
+  (  -85,     8)      26       26           26                      
+  (  -84,     8)      25       25           27  flora cover         -1
+  (  -83,     8)      25       25           26  flora cover         
+  (  -82,     8)      25       25           26  flora cover         
+  (  -81,     8)      25       25           25                      
+  (  -80,     8)      25       25           25                      
+rises 3, falls 6, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-88, 8) | walked end to end
+beside: stroke path-monument at (-104, 6), water dub-1 at (-94, 8), flora cover at (-87, 9)
+
+## dub-1 (water) along z
+TRANSECT 25 stations from (-92, -4) to (-92, 20), every 1
+  station        ground  surface  water  top  standing            step
+  (  -92,    -4)      26       26           26                      
+  (  -92,    -3)      26       26           26                      
+  (  -92,    -2)      25       25           25                      -1
+  (  -92,    -1)      26       26           26                      +1
+  (  -92,     0)      26       26           26                      
+  (  -92,     1)      25       25           25                      -1
+  (  -92,     2)      24       24           24                      -1
+  (  -92,     3)      22       22           22                      -2
+  (  -92,     4)      22       22           22                      
+  (  -92,     5)      22       22           22                      
+  (  -92,     6)      22       22     22    22  water dub-1         
+  (  -92,     7)      22       22     22    22  water dub-1         
+  (  -92,     8)      22       22     22    22  water dub-1         
+  (  -92,     9)      22       22           22                      
+  (  -92,    10)      23       23           23                      +1
+  (  -92,    11)      23       23           23                      
+  (  -92,    12)      25       25           25                      scramble +2
+  (  -92,    13)      27       27           27                      scramble +2
+  (  -92,    14)      27       27           27                      
+  (  -92,    15)      27       27           27                      
+  (  -92,    16)      27       27           27  stroke path-monument  
+  (  -92,    17)      27       27           27  stroke path-monument  
+  (  -92,    18)      27       27           27  stroke path-monument  
+  (  -92,    19)      27       27           27                      
+  (  -92,    20)      26       26           26                      -1
+rises 4, falls 5, worst step 2: 0 barrier, 2 scramble, 0 drop — scramble +2 at (-92, 12); scramble +2 at (-92, 13) | walked end to end
+beside: stroke path-north at (-94, -6), water dub-1 at (-93, 6), stroke path-monument at (-94, 15), flora cover at (-91, 15)

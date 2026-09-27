@@ -1,3 +1,8 @@
-THEMES  1 themes over 32338 ground cells, 4 distinct surface blocks
-  default  32338 cells (100.0%)  1:0 Stone, 7:0 Bedrock, 35:14 Red Wool, 35:11 Blue Wool
+THEMES  3 themes over 32338 ground cells, 15 distinct surface blocks
+  heath  21558 cells (66.7%)  2:0 Grass Block, 1:5 Andesite, 1:6 Polished Andesite, 13:0 Gravel, 1:2 Polished Granite, 1:0 Stone, 45:0 Bricks, 1:1 Granite, 4:0 Cobblestone, 159:15 Black Stained Clay, 173:0 Coal Block, 35:14 Red Wool
+  ash  9184 cells (28.4%)  159:7 Gray Stained Clay, 159:15 Black Stained Clay, 159:12 Brown Stained Clay, 1:5 Andesite, 1:0 Stone, 1:6 Polished Andesite, 4:0 Cobblestone, 13:0 Gravel
+  cinder  1596 cells (4.9%)  159:15 Black Stained Clay, 1:5 Andesite, 1:0 Stone, 1:6 Polished Andesite, 159:7 Gray Stained Clay, 173:0 Coal Block, 13:0 Gravel, 4:0 Cobblestone
 borders:
+  ash | heath  1218 cells
+  ash | cinder  274 cells
+  cinder | heath  134 cells

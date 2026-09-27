@@ -1,15 +1,15 @@
 ## red-0 (wool) along x
 TRANSECT 17 stations from (-52, 66) to (-36, 66), every 1
   station        ground  surface  water  top  standing            step
-  (  -52,    66)      13       13           13                      
-  (  -51,    66)      13       13           21  wool wool-1         
-  (  -50,    66)      13       13           21  wool wool-1         
-  (  -49,    66)      13       13           13  wool wool-1         
+  (  -52,    66)      13       13           18                      
+  (  -51,    66)      13       13           18  wool wool-1         
+  (  -50,    66)      13       13           19  wool wool-1         
+  (  -49,    66)      13       13           19  wool wool-1         
   (  -48,    66)      13       13           43  wool wool-1         
   (  -47,    66)      13       13           43  wool wool-1         
   (  -46,    66)      13       13           43  wool wool-1         
-  (  -45,    66)      13       13           21  wool wool-1         
-  (  -44,    66)      13       13           13                      
+  (  -45,    66)      13       13           18  wool wool-1         
+  (  -44,    66)      13       13           18                      
   (  -43,    66)      13       13           13                      
   (  -42,    66)      13       13           13                      
   (  -41,    66)      13       13           13                      
@@ -19,7 +19,7 @@ TRANSECT 17 stations from (-52, 66) to (-36, 66), every 1
   (  -37,    66)      13       13           14  redstoneline 0      
   (  -36,    66)      13       13           13                      
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: wool wool-1 at (-51, 64), redstoneline 0 at (-37, 64)
+beside: wool wool-1 at (-51, 64), redstoneline 0 at (-37, 64), stroke path-wool at (-34, 66)
 
 ## red-0 (wool) along z
 TRANSECT 25 stations from (-48, 54) to (-48, 78), every 1
@@ -30,18 +30,18 @@ TRANSECT 25 stations from (-48, 54) to (-48, 78), every 1
   (  -48,    57)                                                    void
   (  -48,    58)                                                    void
   (  -48,    59)                                                    void
-  (  -48,    60)      13       13           13                      
-  (  -48,    61)      13       13           21  wool wool-1         
-  (  -48,    62)      13       13           21  wool wool-1         
-  (  -48,    63)      13       13           21  wool wool-1         
-  (  -48,    64)      13       13           13  wool wool-1         
+  (  -48,    60)      13       13           20                      
+  (  -48,    61)      13       13           20  wool wool-1         
+  (  -48,    62)      13       13           20  wool wool-1         
+  (  -48,    63)      13       13           20  wool wool-1         
+  (  -48,    64)      13       13           20  wool wool-1         
   (  -48,    65)      13       13           43  wool wool-1         
   (  -48,    66)      13       13           43  wool wool-1         
   (  -48,    67)      13       13           43  wool wool-1         
-  (  -48,    68)      13       13           21  wool wool-1         
-  (  -48,    69)      13       13           21  wool wool-1         
-  (  -48,    70)      13       13           21  wool wool-1         
-  (  -48,    71)      13       13           13                      
+  (  -48,    68)      13       13           20  wool wool-1         
+  (  -48,    69)      13       13           20  wool wool-1         
+  (  -48,    70)      13       13           20  wool wool-1         
+  (  -48,    71)      13       13           20                      
   (  -48,    72)                                                    void
   (  -48,    73)                                                    void
   (  -48,    74)                                                    void

@@ -1,0 +1,61 @@
+## fall-3 (boulder) along x
+TRANSECT 25 stations from (-88, 38) to (-64, 38), every 1
+  station        ground  surface  water  top  standing            step
+  (  -88,    38)      33       33           33                      
+  (  -87,    38)      33       33           33                      
+  (  -86,    38)      33       33           33                      
+  (  -85,    38)      33       33           33                      
+  (  -84,    38)      33       33           33                      
+  (  -83,    38)      32       32           32                      -1
+  (  -82,    38)      32       32           32                      
+  (  -81,    38)      32       32           32                      
+  (  -80,    38)      29       29           29                      -3
+  (  -79,    38)      25       25           25                      DROP -4
+  (  -78,    38)      22       22           22  boulder fall-3      -3
+  (  -77,    38)      19       19           22  boulder fall-3      -3
+  (  -76,    38)      18       18           22  boulder fall-3      -1
+  (  -75,    38)      18       18           22  boulder fall-3      
+  (  -74,    38)      18       18           22  boulder fall-3      
+  (  -73,    38)      18       18           18                      
+  (  -72,    38)      18       18           18                      
+  (  -71,    38)      18       18           18                      
+  (  -70,    38)      17       17           17                      -1
+  (  -69,    38)      17       17           17                      
+  (  -68,    38)      17       17           17                      
+  (  -67,    38)      17       17           17                      
+  (  -66,    38)      17       17           17                      
+  (  -65,    38)      17       17           17                      
+  (  -64,    38)      16       16           16                      -1
+rises 0, falls 8, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-79, 38) | walked end to end
+beside: boulder fall-3 at (-78, 38), flora cover at (-63, 39)
+
+## fall-3 (boulder) along z
+TRANSECT 25 stations from (-76, 26) to (-76, 50), every 1
+  station        ground  surface  water  top  standing            step
+  (  -76,    26)      21       21           21                      
+  (  -76,    27)      21       21           21                      
+  (  -76,    28)      21       21           21                      
+  (  -76,    29)      21       21           21                      
+  (  -76,    30)      21       21           21                      
+  (  -76,    31)      21       21           21                      
+  (  -76,    32)      21       21           21                      
+  (  -76,    33)      20       20           20                      -1
+  (  -76,    34)      20       20           20                      
+  (  -76,    35)      19       19           19                      -1
+  (  -76,    36)      19       19           22  boulder fall-3      
+  (  -76,    37)      19       19           22  boulder fall-3      
+  (  -76,    38)      18       18           22  boulder fall-3      -1
+  (  -76,    39)      18       18           22  boulder fall-3      
+  (  -76,    40)      18       18           22  boulder fall-3      
+  (  -76,    41)      18       18           18                      
+  (  -76,    42)      18       18           18                      
+  (  -76,    43)      18       18           18                      
+  (  -76,    44)      18       18           18                      
+  (  -76,    45)      18       18           18                      
+  (  -76,    46)      19       19           19                      +1
+  (  -76,    47)      19       19           19                      
+  (  -76,    48)      20       20           20                      +1
+  (  -76,    49)      21       21           21                      +1
+  (  -76,    50)      22       22           22                      +1
+rises 4, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder fall-3 at (-77, 36)

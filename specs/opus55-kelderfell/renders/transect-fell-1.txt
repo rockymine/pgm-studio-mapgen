@@ -1,0 +1,61 @@
+## fell-1 (boulder) along x
+TRANSECT 25 stations from (-128, -58) to (-104, -58), every 1
+  station        ground  surface  water  top  standing            step
+  ( -128,   -58)                                                    void
+  ( -127,   -58)                                                    void
+  ( -126,   -58)                                                    void
+  ( -125,   -58)      52       52           52                      
+  ( -124,   -58)      53       53           53                      +1
+  ( -123,   -58)      53       53           53                      
+  ( -122,   -58)      53       53           53                      
+  ( -121,   -58)      53       53           53                      
+  ( -120,   -58)      53       53           53                      
+  ( -119,   -58)      53       53           53                      
+  ( -118,   -58)      53       53           55  boulder fell-1      
+  ( -117,   -58)      53       53           55  boulder fell-1      
+  ( -116,   -58)      53       53           55  boulder fell-1      
+  ( -115,   -58)      53       53           55  boulder fell-1      
+  ( -114,   -58)      53       53           55  boulder fell-1      
+  ( -113,   -58)      53       53           53                      
+  ( -112,   -58)      53       53           53                      
+  ( -111,   -58)      52       52           52                      -1
+  ( -110,   -58)      52       52           52                      
+  ( -109,   -58)      52       52           52                      
+  ( -108,   -58)      51       51           51                      -1
+  ( -107,   -58)      51       51           51                      
+  ( -106,   -58)      50       50           50                      -1
+  ( -105,   -58)      46       46           46                      DROP -4
+  ( -104,   -58)      43       43           43                      -3
+rises 1, falls 5, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-105, -58) | walked end to end
+beside: flora cover at (-122, -56), boulder fell-1 at (-118, -59)
+
+## fell-1 (boulder) along z
+TRANSECT 25 stations from (-116, -70) to (-116, -46), every 1
+  station        ground  surface  water  top  standing            step
+  ( -116,   -70)                                                    void
+  ( -116,   -69)      68       68           68                      
+  ( -116,   -68)      67       67           67                      -1
+  ( -116,   -67)      66       66           66                      -1
+  ( -116,   -66)      64       64           64                      -2
+  ( -116,   -65)      62       62           62                      -2
+  ( -116,   -64)      60       60           60                      -2
+  ( -116,   -63)      58       58           58                      -2
+  ( -116,   -62)      56       56           56                      -2
+  ( -116,   -61)      54       54           54                      -2
+  ( -116,   -60)      53       53           55  boulder fell-1      -1
+  ( -116,   -59)      53       53           55  boulder fell-1      
+  ( -116,   -58)      53       53           55  boulder fell-1      
+  ( -116,   -57)      52       52           55  boulder fell-1      -1
+  ( -116,   -56)      51       51           55  boulder fell-1      -1
+  ( -116,   -55)      50       50           52  boulder fell-1      -1
+  ( -116,   -54)      49       49           49                      -1
+  ( -116,   -53)      48       48           48                      -1
+  ( -116,   -52)      47       47           47                      -1
+  ( -116,   -51)      45       45           45                      -2
+  ( -116,   -50)      44       44           44                      -1
+  ( -116,   -49)      43       43           43                      -1
+  ( -116,   -48)      41       41           41                      -2
+  ( -116,   -47)      40       40           40                      -1
+  ( -116,   -46)      39       39           39                      -1
+rises 0, falls 21, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora cover at (-118, -60), boulder fell-1 at (-117, -60)

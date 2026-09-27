@@ -174,6 +174,12 @@ def finish():
     }
 
 
+def paint():
+    """The finish run's paint -- themes, biome, room styles, dressing and the patches they need -- as the
+    studio stored it. It is laid over the ground's own finish, whose dressing it replaces whole."""
+    return json.loads((HERE / "paint.json").read_text())
+
+
 if __name__ == "__main__":
-    for name, doc in (("plan", plan()), ("finish", finish())):
+    for name, doc in (("plan", plan()), ("finish", {**finish(), **paint()})):
         (HERE / f"{HERE.name}.{name}.json").write_text(json.dumps(doc, indent=1) + "\n")

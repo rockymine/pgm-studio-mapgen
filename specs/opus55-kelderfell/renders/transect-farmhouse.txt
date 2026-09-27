@@ -1,0 +1,71 @@
+## farmhouse (house) along x
+TRANSECT 36 stations from (-129, -37) to (-94, -37), every 1
+  station        ground  surface  water  top  standing            step
+  ( -129,   -37)      35       35           35                      
+  ( -128,   -37)      35       35           35                      
+  ( -127,   -37)      35       35           35                      
+  ( -126,   -37)      35       35           35                      
+  ( -125,   -37)      35       35           35                      
+  ( -124,   -37)      35       35           35                      
+  ( -123,   -37)      35       35           35                      
+  ( -122,   -37)      35       35           44  house farmhouse     
+  ( -121,   -37)      35       35           45  house farmhouse     
+  ( -120,   -37)      35       35           46  house farmhouse     
+  ( -119,   -37)      35       35           47  house farmhouse     
+  ( -118,   -37)      35       35           48  house farmhouse     
+  ( -117,   -37)      35       35           49  house farmhouse     
+  ( -116,   -37)      35       35           48  house farmhouse     
+  ( -115,   -37)      35       35           47  house farmhouse     
+  ( -114,   -37)      35       35           46  house farmhouse     
+  ( -113,   -37)      35       35           45  house farmhouse     
+  ( -112,   -37)      35       35           44  house farmhouse     
+  ( -111,   -37)      35       35           42  house farmhouse     
+  ( -110,   -37)      35       35           42  house farmhouse     
+  ( -109,   -37)      35       35           42  house farmhouse     
+  ( -108,   -37)      35       35           42  house farmhouse     
+  ( -107,   -37)      35       35           42  house farmhouse     
+  ( -106,   -37)      35       35           42  house farmhouse     
+  ( -105,   -37)      35       35           42  house farmhouse     
+  ( -104,   -37)      35       35           42  house farmhouse     
+  ( -103,   -37)      35       35           42  house farmhouse     
+  ( -102,   -37)      35       35           42  house farmhouse     
+  ( -101,   -37)      35       35           42  house farmhouse     
+  ( -100,   -37)      35       35           35                      
+  (  -99,   -37)      35       35           35                      
+  (  -98,   -37)      35       35           35                      
+  (  -97,   -37)      35       35           35                      
+  (  -96,   -37)      31       31           31                      DROP -4
+  (  -95,   -37)      28       28           28                      -3
+  (  -94,   -37)      25       25           25                      -3
+rises 0, falls 3, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-96, -37) | walked end to end
+beside: tree s5 at (-129, -35), house farmhouse at (-122, -39)
+
+## farmhouse (house) along z
+TRANSECT 24 stations from (-112, -48) to (-112, -25), every 1
+  station        ground  surface  water  top  standing            step
+  ( -112,   -48)      41       41           41                      
+  ( -112,   -47)      40       40           40                      -1
+  ( -112,   -46)      39       39           39                      -1
+  ( -112,   -45)      38       38           38                      -1
+  ( -112,   -44)      37       37           37                      -1
+  ( -112,   -43)      36       36           36                      -1
+  ( -112,   -42)      36       36           36                      
+  ( -112,   -41)      35       35           44  house farmhouse     -1
+  ( -112,   -40)      35       35           44  house farmhouse     
+  ( -112,   -39)      35       35           44  house farmhouse     
+  ( -112,   -38)      35       35           44  house farmhouse     
+  ( -112,   -37)      35       35           44  house farmhouse     
+  ( -112,   -36)      35       35           44  house farmhouse     
+  ( -112,   -35)      35       35           44  house farmhouse     
+  ( -112,   -34)      35       35           44  house farmhouse     
+  ( -112,   -33)      35       35           44  house farmhouse     
+  ( -112,   -32)      35       35           44  house farmhouse     
+  ( -112,   -31)      35       35           35                      
+  ( -112,   -30)      35       35           35                      
+  ( -112,   -29)      35       35           35  stroke track-farm   
+  ( -112,   -28)      35       35           35  stroke track-farm   
+  ( -112,   -27)      35       35           35  stroke track-farm   
+  ( -112,   -26)      35       35           35  stroke track-farm   
+  ( -112,   -25)      35       35           35  stroke track-farm   
+rises 0, falls 6, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house farmhouse at (-114, -41), stroke track-farm at (-114, -31)

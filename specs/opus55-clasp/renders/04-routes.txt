@@ -1,5 +1,5 @@
 ## spawn-red -> red-0
-ROUTE (-32, 76) -> (-2, 135) aim travel: 77 blocks, 10 placed, 2 drop(s), worst drop 8
+ROUTE (-32, 76) -> (-2, 135) aim travel: 77 blocks, 3 placed, 1 drop(s), worst drop 4
   place            y   step
   (-32, 76)         21
   (-31, 76)         21
@@ -41,9 +41,9 @@ ROUTE (-32, 76) -> (-2, 135) aim travel: 77 blocks, 10 placed, 2 drop(s), worst 
   (-7, 104)         23
   (-7, 105)         23
   (-7, 106)         23
-  (-7, 107)         27   barrier +4
+  (-7, 107)         27   wall +4
   (-7, 108)         27
-  (-7, 109)         23   drop -4
+  (-7, 109)         23   wall -4
   (-7, 110)         23
   (-7, 111)         23
   (-7, 112)         23
@@ -66,15 +66,15 @@ ROUTE (-32, 76) -> (-2, 135) aim travel: 77 blocks, 10 placed, 2 drop(s), worst 
   (-5, 129)         27
   (-5, 130)         27
   (-5, 131)         27
-  (-5, 132)         35   barrier +8
-  (-4, 133)         35
-  (-3, 134)         27   drop -8
+  (-4, 132)         27
+  (-4, 133)         27
+  (-3, 134)         27
   (-2, 135)         27
-rises 2, falls 2, worst step 8: barrier +4 at (-7, 107); drop -4 at (-7, 109); barrier +8 at (-5, 132); drop -8 at (-3, 134)
-beside: spawn spawn-1 at (-32, 76) d0, wool wool-1 at (-5, 132) d0, ironcube spawn-1:0 at (-26, 78) d2
+rises 1, falls 1, worst step 0: wall +4 at (-7, 107); wall -4 at (-7, 109)
+beside: redstoneline 0 at (-5, 124) d0, spawn spawn-1 at (-32, 76) d0, wall 0 at (-7, 107) d0, wool wool-1 at (-4, 132) d0, ironcube spawn-1:0 at (-26, 78) d2
 
 ## spawn-red -> orange-0
-ROUTE (-32, 76) -> (48, 78) aim travel: 89 blocks, 7 placed, 1 drop(s), worst drop 8
+ROUTE (-32, 76) -> (48, 78) aim travel: 89 blocks, 5 placed, 1 drop(s), worst drop 7
   place            y   step
   (-32, 76)         21
   (-31, 76)         21
@@ -153,17 +153,17 @@ ROUTE (-32, 76) -> (48, 78) aim travel: 89 blocks, 7 placed, 1 drop(s), worst dr
   (42, 85)          17
   (43, 85)          18
   (44, 84)          20   scramble +2
-  (44, 83)          21
-  (45, 82)          28   barrier +7
-  (45, 81)          28
-  (46, 80)          28
-  (47, 79)          20   drop -8
+  (44, 83)          25   barrier +5
+  (44, 82)          25
+  (45, 81)          26
+  (46, 80)          27
+  (47, 79)          20   drop -7
   (48, 78)          20
-rises 2, falls 1, worst step 8: scramble +2 at (44, 84); barrier +7 at (45, 82); drop -8 at (47, 79)
-beside: spawn spawn-1 at (-32, 76) d0, wool wool-2 at (45, 81) d0, ironcube spawn-1:0 at (-26, 78) d2
+rises 2, falls 1, worst step 7: scramble +2 at (44, 84); barrier +5 at (44, 83); drop -7 at (47, 79)
+beside: redstoneline 1 at (44, 83) d0, spawn spawn-1 at (-32, 76) d0, wool wool-2 at (45, 81) d0, ironcube spawn-1:0 at (-26, 78) d2
 
 ## spawn-red -> blue-1
-ROUTE (-32, 76) -> (2, -135) aim travel: 230 blocks, 34 placed, 2 drop(s), worst drop 8
+ROUTE (-32, 76) -> (2, -135) aim travel: 230 blocks, 27 placed, 1 drop(s), worst drop 4
   place            y   step
   (-32, 76)         21
   (-31, 76)         21
@@ -357,9 +357,9 @@ ROUTE (-32, 76) -> (2, -135) aim travel: 230 blocks, 34 placed, 2 drop(s), worst
   (2, -105)         23
   (2, -106)         23
   (2, -107)         23
-  (2, -108)         27   barrier +4
+  (2, -108)         27   wall +4
   (2, -109)         27
-  (2, -110)         23   drop -4
+  (2, -110)         23   wall -4
   (2, -111)         23
   (2, -112)         23
   (2, -113)         23
@@ -382,14 +382,14 @@ ROUTE (-32, 76) -> (2, -135) aim travel: 230 blocks, 34 placed, 2 drop(s), worst
   (2, -130)         27
   (2, -131)         27
   (2, -132)         27
-  (2, -133)         35   barrier +8
-  (2, -134)         35
-  (2, -135)         27   drop -8
-rises 2, falls 2, worst step 8: barrier +4 at (2, -108); drop -4 at (2, -110); barrier +8 at (2, -133); drop -8 at (2, -135)
-beside: spawn spawn-1 at (-32, 76) d0, wool wool-1#1 at (2, -135) d0, ironcube spawn-1:0 at (-26, 78) d2
+  (2, -133)         27
+  (2, -134)         27
+  (2, -135)         27
+rises 1, falls 1, worst step 0: wall +4 at (2, -108); wall -4 at (2, -110)
+beside: redstoneline 0#1 at (2, -125) d0, spawn spawn-1 at (-32, 76) d0, wall 0#1 at (2, -109) d0, wool wool-1#1 at (2, -135) d0, ironcube spawn-1:0 at (-26, 78) d2
 
 ## spawn-red -> light_blue-1
-ROUTE (-32, 76) -> (-48, -78) aim travel: 184 blocks, 45 placed, 2 drop(s), worst drop 8
+ROUTE (-32, 76) -> (-48, -78) aim travel: 184 blocks, 43 placed, 2 drop(s), worst drop 7
   place            y   step
   (-32, 76)         21
   (-31, 76)         21
@@ -548,9 +548,9 @@ ROUTE (-32, 76) -> (-48, -78) aim travel: 184 blocks, 45 placed, 2 drop(s), wors
   (-33, -61)        20
   (-34, -61)        20
   (-35, -62)        20
-  (-36, -63)        24   barrier +4
+  (-36, -63)        24   wall +4
   (-37, -64)        24
-  (-38, -65)        20   drop -4
+  (-38, -65)        20   wall -4
   (-39, -66)        20
   (-40, -67)        20
   (-41, -68)        20
@@ -558,17 +558,17 @@ ROUTE (-32, 76) -> (-48, -78) aim travel: 184 blocks, 45 placed, 2 drop(s), wors
   (-43, -70)        20
   (-44, -71)        20
   (-45, -72)        20
-  (-45, -73)        21
-  (-46, -74)        28   barrier +7
-  (-46, -75)        28
-  (-46, -76)        28
-  (-47, -77)        28
-  (-48, -78)        20   drop -8
-rises 5, falls 2, worst step 8: scramble +2 at (-16, -45); scramble +2 at (-16, -46); barrier +3 at (-16, -47); barrier +4 at (-36, -63); drop -4 at (-38, -65); barrier +7 at (-46, -74); drop -8 at (-48, -78)
-beside: spawn spawn-1 at (-32, 76) d0, wool wool-2#1 at (-48, -78) d0, ironcube spawn-1:0 at (-26, 78) d2
+  (-45, -73)        25   barrier +5
+  (-45, -74)        25
+  (-45, -75)        25
+  (-46, -76)        26
+  (-47, -77)        27
+  (-48, -78)        20   drop -7
+rises 5, falls 2, worst step 7: scramble +2 at (-16, -45); scramble +2 at (-16, -46); barrier +3 at (-16, -47); wall +4 at (-36, -63); wall -4 at (-38, -65); barrier +5 at (-45, -73); drop -7 at (-48, -78)
+beside: redstoneline 2#1 at (-45, -73) d0, spawn spawn-1 at (-32, 76) d0, wall 1#1 at (-37, -64) d0, wool wool-2#1 at (-48, -78) d0, ironcube spawn-1:0 at (-26, 78) d2
 
 ## spawn-blue -> red-0
-ROUTE (32, -76) -> (-2, 135) aim travel: 231 blocks, 34 placed, 2 drop(s), worst drop 8
+ROUTE (32, -76) -> (-2, 135) aim travel: 231 blocks, 27 placed, 1 drop(s), worst drop 4
   place            y   step
   (32, -76)         21
   (31, -76)         21
@@ -763,9 +763,9 @@ ROUTE (32, -76) -> (-2, 135) aim travel: 231 blocks, 34 placed, 2 drop(s), worst
   (-2, 104)         23
   (-2, 105)         23
   (-2, 106)         23
-  (-2, 107)         27   barrier +4
+  (-2, 107)         27   wall +4
   (-2, 108)         27
-  (-2, 109)         23   drop -4
+  (-2, 109)         23   wall -4
   (-2, 110)         23
   (-2, 111)         23
   (-2, 112)         23
@@ -788,15 +788,15 @@ ROUTE (32, -76) -> (-2, 135) aim travel: 231 blocks, 34 placed, 2 drop(s), worst
   (-2, 129)         27
   (-2, 130)         27
   (-2, 131)         27
-  (-2, 132)         35   barrier +8
-  (-2, 133)         35
-  (-2, 134)         27   drop -8
+  (-2, 132)         27
+  (-2, 133)         27
+  (-2, 134)         27
   (-2, 135)         27
-rises 2, falls 2, worst step 8: barrier +4 at (-2, 107); drop -4 at (-2, 109); barrier +8 at (-2, 132); drop -8 at (-2, 134)
-beside: spawn spawn-1#1 at (28, -76) d0, wool wool-1 at (-2, 132) d0
+rises 1, falls 1, worst step 0: wall +4 at (-2, 107); wall -4 at (-2, 109)
+beside: redstoneline 0 at (-2, 124) d0, spawn spawn-1#1 at (28, -76) d0, wall 0 at (-2, 107) d0, wool wool-1 at (-2, 132) d0
 
 ## spawn-blue -> orange-0
-ROUTE (32, -76) -> (48, 78) aim travel: 186 blocks, 57 placed, 4 drop(s), worst drop 8
+ROUTE (32, -76) -> (48, 78) aim travel: 186 blocks, 55 placed, 4 drop(s), worst drop 7
   place            y   step
   (32, -76)         21
   (31, -76)         21
@@ -956,9 +956,9 @@ ROUTE (32, -76) -> (48, 78) aim travel: 186 blocks, 57 placed, 4 drop(s), worst 
   (32, 60)          20
   (33, 60)          20
   (34, 61)          20
-  (35, 62)          24   barrier +4
+  (35, 62)          24   wall +4
   (36, 63)          24
-  (37, 64)          20   drop -4
+  (37, 64)          20   wall -4
   (38, 65)          20
   (39, 66)          20
   (40, 67)          20
@@ -966,18 +966,18 @@ ROUTE (32, -76) -> (48, 78) aim travel: 186 blocks, 57 placed, 4 drop(s), worst 
   (42, 69)          20
   (43, 70)          20
   (44, 71)          20
-  (44, 72)          21
-  (45, 73)          28   barrier +7
-  (45, 74)          28
-  (45, 75)          28
-  (46, 76)          28
-  (47, 77)          20   drop -8
+  (44, 72)          25   barrier +5
+  (44, 73)          25
+  (44, 74)          25
+  (45, 75)          26
+  (46, 76)          27
+  (47, 77)          20   drop -7
   (48, 78)          20
-rises 7, falls 4, worst step 8: drop -7 at (15, -26); barrier +7 at (15, -14); drop -7 at (15, 14); barrier +7 at (15, 26); scramble +2 at (15, 44); scramble +2 at (15, 45); barrier +3 at (15, 46); barrier +4 at (35, 62); drop -4 at (37, 64); barrier +7 at (45, 73); drop -8 at (47, 77)
-beside: spawn spawn-1#1 at (28, -76) d0, wool wool-2 at (45, 73) d0
+rises 7, falls 4, worst step 7: drop -7 at (15, -26); barrier +7 at (15, -14); drop -7 at (15, 14); barrier +7 at (15, 26); scramble +2 at (15, 44); scramble +2 at (15, 45); barrier +3 at (15, 46); wall +4 at (35, 62); wall -4 at (37, 64); barrier +5 at (44, 72); drop -7 at (47, 77)
+beside: redstoneline 2 at (44, 72) d0, spawn spawn-1#1 at (28, -76) d0, wall 1 at (35, 62) d0, wool wool-2 at (45, 75) d0
 
 ## spawn-blue -> blue-1
-ROUTE (32, -76) -> (2, -135) aim travel: 77 blocks, 10 placed, 2 drop(s), worst drop 8
+ROUTE (32, -76) -> (2, -135) aim travel: 77 blocks, 3 placed, 1 drop(s), worst drop 4
   place            y   step
   (32, -76)         21
   (31, -76)         21
@@ -1020,9 +1020,9 @@ ROUTE (32, -76) -> (2, -135) aim travel: 77 blocks, 10 placed, 2 drop(s), worst 
   (6, -105)         23
   (6, -106)         23
   (6, -107)         23
-  (6, -108)         27   barrier +4
+  (6, -108)         27   wall +4
   (6, -109)         27
-  (6, -110)         23   drop -4
+  (6, -110)         23   wall -4
   (6, -111)         23
   (6, -112)         23
   (6, -113)         23
@@ -1045,14 +1045,14 @@ ROUTE (32, -76) -> (2, -135) aim travel: 77 blocks, 10 placed, 2 drop(s), worst 
   (4, -130)         27
   (4, -131)         27
   (4, -132)         27
-  (4, -133)         35   barrier +8
-  (3, -134)         35
-  (2, -135)         27   drop -8
-rises 2, falls 2, worst step 8: barrier +4 at (6, -108); drop -4 at (6, -110); barrier +8 at (4, -133); drop -8 at (2, -135)
-beside: spawn spawn-1#1 at (28, -76) d0, wool wool-1#1 at (2, -135) d0, ironcube spawn-1:0#1 at (23, -80) d2
+  (3, -133)         27
+  (3, -134)         27
+  (2, -135)         27
+rises 1, falls 1, worst step 0: wall +4 at (6, -108); wall -4 at (6, -110)
+beside: redstoneline 0#1 at (4, -125) d0, spawn spawn-1#1 at (28, -76) d0, wall 0#1 at (6, -109) d0, wool wool-1#1 at (2, -135) d0, ironcube spawn-1:0#1 at (23, -80) d2
 
 ## spawn-blue -> light_blue-1
-ROUTE (32, -76) -> (-48, -78) aim travel: 90 blocks, 9 placed, 2 drop(s), worst drop 8
+ROUTE (32, -76) -> (-48, -78) aim travel: 90 blocks, 7 placed, 2 drop(s), worst drop 6
   place            y   step
   (32, -76)         21
   (31, -76)         21
@@ -1122,9 +1122,9 @@ ROUTE (32, -76) -> (-48, -78) aim travel: 90 blocks, 9 placed, 2 drop(s), worst 
   (-33, -67)        20
   (-34, -67)        20
   (-35, -67)        20
-  (-36, -67)        24   barrier +4
+  (-36, -67)        24   wall +4
   (-37, -67)        24
-  (-38, -67)        20   drop -4
+  (-38, -67)        20   wall -4
   (-39, -67)        20
   (-40, -67)        20
   (-41, -68)        20
@@ -1132,11 +1132,11 @@ ROUTE (32, -76) -> (-48, -78) aim travel: 90 blocks, 9 placed, 2 drop(s), worst 
   (-43, -70)        20
   (-44, -71)        20
   (-45, -72)        20
-  (-45, -73)        21
-  (-46, -74)        28   barrier +7
-  (-46, -75)        28
-  (-46, -76)        28
-  (-47, -77)        28
-  (-48, -78)        20   drop -8
-rises 2, falls 2, worst step 8: barrier +4 at (-36, -67); drop -4 at (-38, -67); barrier +7 at (-46, -74); drop -8 at (-48, -78)
-beside: spawn spawn-1#1 at (28, -76) d0, wool wool-2#1 at (-48, -78) d0
+  (-45, -73)        25   barrier +5
+  (-45, -74)        25
+  (-45, -75)        25
+  (-46, -76)        26
+  (-47, -77)        20   drop -6
+  (-48, -78)        20
+rises 2, falls 2, worst step 6: wall +4 at (-36, -67); wall -4 at (-38, -67); barrier +5 at (-45, -73); drop -6 at (-47, -77)
+beside: redstoneline 2#1 at (-45, -73) d0, spawn spawn-1#1 at (28, -76) d0, wall 1#1 at (-37, -67) d0, wool wool-2#1 at (-48, -78) d0

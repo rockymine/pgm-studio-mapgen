@@ -1,0 +1,61 @@
+## fell-2 (boulder) along x
+TRANSECT 25 stations from (-116, -66) to (-92, -66), every 1
+  station        ground  surface  water  top  standing            step
+  ( -116,   -66)      64       64           64                      
+  ( -115,   -66)      64       64           64                      
+  ( -114,   -66)      64       64           64                      
+  ( -113,   -66)      63       63           63                      -1
+  ( -112,   -66)      62       62           62                      -1
+  ( -111,   -66)      61       61           61                      -1
+  ( -110,   -66)      60       60           60                      -1
+  ( -109,   -66)      55       55           55                      DROP -5
+  ( -108,   -66)      51       51           51                      DROP -4
+  ( -107,   -66)      47       47           47                      DROP -4
+  ( -106,   -66)      44       44           45  boulder fell-2      -3
+  ( -105,   -66)      43       43           45  boulder fell-2      -1
+  ( -104,   -66)      42       42           45  boulder fell-2      -1
+  ( -103,   -66)      41       41           45  boulder fell-2      -1
+  ( -102,   -66)      41       41           45  boulder fell-2      
+  ( -101,   -66)      41       41           41                      
+  ( -100,   -66)      40       40           40                      -1
+  (  -99,   -66)      40       40           40                      
+  (  -98,   -66)      39       39           39                      -1
+  (  -97,   -66)      38       38           38                      -1
+  (  -96,   -66)      37       37           37                      -1
+  (  -95,   -66)      36       36           36                      -1
+  (  -94,   -66)      34       34           34                      -2
+  (  -93,   -66)      33       33           33                      -1
+  (  -92,   -66)      31       31           31                      -2
+rises 0, falls 19, worst step 5: 0 barrier, 0 scramble, 3 drop — DROP -5 at (-109, -66); DROP -4 at (-108, -66); DROP -4 at (-107, -66) | walked end to end
+beside: boulder fell-2 at (-106, -67)
+
+## fell-2 (boulder) along z
+TRANSECT 25 stations from (-104, -78) to (-104, -54), every 1
+  station        ground  surface  water  top  standing            step
+  ( -104,   -78)                                                    void
+  ( -104,   -77)                                                    void
+  ( -104,   -76)                                                    void
+  ( -104,   -75)      46       46           46                      
+  ( -104,   -74)      46       46           46                      
+  ( -104,   -73)      46       46           46                      
+  ( -104,   -72)      45       45           45                      -1
+  ( -104,   -71)      44       44           44                      -1
+  ( -104,   -70)      44       44           44                      
+  ( -104,   -69)      44       44           44                      
+  ( -104,   -68)      44       44           45  boulder fell-2      
+  ( -104,   -67)      43       43           45  boulder fell-2      -1
+  ( -104,   -66)      42       42           45  boulder fell-2      -1
+  ( -104,   -65)      41       41           45  boulder fell-2      -1
+  ( -104,   -64)      41       41           45  boulder fell-2      
+  ( -104,   -63)      41       41           41                      
+  ( -104,   -62)      40       40           40                      -1
+  ( -104,   -61)      40       40           40                      
+  ( -104,   -60)      41       41           41                      +1
+  ( -104,   -59)      41       41           41                      
+  ( -104,   -58)      43       43           43                      scramble +2
+  ( -104,   -57)      43       43           43                      
+  ( -104,   -56)      44       44           44                      +1
+  ( -104,   -55)      44       44           44                      
+  ( -104,   -54)      45       45           45                      +1
+rises 4, falls 6, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-104, -58) | walked end to end
+beside: flora cover at (-106, -75), boulder fell-2 at (-104, -68)

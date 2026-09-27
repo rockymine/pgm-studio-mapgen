@@ -1,15 +1,15 @@
 ## spawn-blue (spawn) along x
 TRANSECT 25 stations from (-44, -50) to (-20, -50), every 1
   station        ground  surface  water  top  standing            step
-  (  -44,   -50)      14       14           14                      
-  (  -43,   -50)      14       14           22  spawn spawn-1#1     
-  (  -42,   -50)      14       14           22  spawn spawn-1#1     
-  (  -41,   -50)      14       14           14  spawn spawn-1#1     
-  (  -40,   -50)      14       14           14  spawn spawn-1#1     
-  (  -39,   -50)      14       14           14  spawn spawn-1#1     
-  (  -38,   -50)      14       14           22  spawn spawn-1#1     
-  (  -37,   -50)      14       14           22  spawn spawn-1#1     
-  (  -36,   -50)      14       14           14                      
+  (  -44,   -50)      14       14           19                      
+  (  -43,   -50)      14       14           20  spawn spawn-1#1     
+  (  -42,   -50)      14       14           21  spawn spawn-1#1     
+  (  -41,   -50)      14       14           22  spawn spawn-1#1     
+  (  -40,   -50)      14       14           23  spawn spawn-1#1     
+  (  -39,   -50)      14       14           22  spawn spawn-1#1     
+  (  -38,   -50)      14       14           21  spawn spawn-1#1     
+  (  -37,   -50)      14       14           20  spawn spawn-1#1     
+  (  -36,   -50)      14       14           19                      
   (  -35,   -50)      14       14           14                      
   (  -34,   -50)      14       14           14                      
   (  -33,   -50)      14       14           14                      
@@ -17,17 +17,17 @@ TRANSECT 25 stations from (-44, -50) to (-20, -50), every 1
   (  -31,   -50)      14       14           14                      
   (  -30,   -50)      14       14           14                      
   (  -29,   -50)      14       14           14                      
-  (  -28,   -50)      14       14           14                      
-  (  -27,   -50)      14       14           14                      
-  (  -26,   -50)      14       14           14                      
-  (  -25,   -50)      14       14           14                      
-  (  -24,   -50)      13       13           13                      -1
+  (  -28,   -50)      14       14           14  stroke track-spawn-front#1  
+  (  -27,   -50)      14       14           14  stroke track-spawn-front#1  
+  (  -26,   -50)      14       14           14  stroke track-spawn-front#1  
+  (  -25,   -50)      14       14           14  stroke track-spawn-front#1  
+  (  -24,   -50)      13       13           13  stroke track-spawn-front#1  -1
   (  -23,   -50)      13       13           13                      
   (  -22,   -50)      13       13           13                      
   (  -21,   -50)      13       13           13                      
-  (  -20,   -50)      13       13           13                      
+  (  -20,   -50)      13       13           13  stroke track-spawn-front#1  
 rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn spawn-1#1 at (-43, -52), ironcube spawn-1:0#1 at (-34, -48)
+beside: spawn spawn-1#1 at (-43, -52), ironcube spawn-1:0#1 at (-34, -48), stroke track-spawn-front#1 at (-28, -51), stroke track-hub#1 at (-21, -52)
 
 ## spawn-blue (spawn) along z
 TRANSECT 29 stations from (-36, -64) to (-36, -36), every 1
@@ -40,18 +40,18 @@ TRANSECT 29 stations from (-36, -64) to (-36, -36), every 1
   (  -36,   -59)                                                    void
   (  -36,   -58)                                                    void
   (  -36,   -57)                                                    void
-  (  -36,   -56)      14       14           14                      
-  (  -36,   -55)      14       14           14                      
-  (  -36,   -54)      14       14           14                      
-  (  -36,   -53)      14       14           14                      
-  (  -36,   -52)      14       14           14                      
-  (  -36,   -51)      14       14           14                      
-  (  -36,   -50)      14       14           14                      
-  (  -36,   -49)      14       14           14                      
-  (  -36,   -48)      14       14           14                      
-  (  -36,   -47)      14       14           14                      
-  (  -36,   -46)      14       14           14                      
-  (  -36,   -45)      14       14           14                      
+  (  -36,   -56)      14       14           19                      
+  (  -36,   -55)      14       14           19                      
+  (  -36,   -54)      14       14           19                      
+  (  -36,   -53)      14       14           19                      
+  (  -36,   -52)      14       14           19                      
+  (  -36,   -51)      14       14           19                      
+  (  -36,   -50)      14       14           19                      
+  (  -36,   -49)      14       14           19                      
+  (  -36,   -48)      14       14           19                      
+  (  -36,   -47)      14       14           19                      
+  (  -36,   -46)      14       14           19                      
+  (  -36,   -45)      14       14           19                      
   (  -36,   -44)                                                    void
   (  -36,   -43)                                                    void
   (  -36,   -42)                                                    void

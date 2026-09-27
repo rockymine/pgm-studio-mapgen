@@ -1,29 +1,29 @@
 ## spawn-red (spawn) along x
 TRANSECT 29 stations from (-132, 0) to (-104, 0), every 1
   station        ground  surface  water  top  standing            step
-  ( -132,     0)      41       41           41                      
-  ( -131,     0)      41       41           49  spawn red-spawn     
-  ( -130,     0)      41       41           49  spawn red-spawn     
-  ( -129,     0)      41       41           49  spawn red-spawn     
-  ( -128,     0)      41       41           49  spawn red-spawn     
-  ( -127,     0)      41       41           49  spawn red-spawn     
-  ( -126,     0)      41       41           41  spawn red-spawn     
-  ( -125,     0)      41       41           41  spawn red-spawn     
-  ( -124,     0)      41       41           41  spawn red-spawn     
-  ( -123,     0)      41       41           41  spawn red-spawn     
-  ( -122,     0)      41       41           49  spawn red-spawn     
-  ( -121,     0)      41       41           49  spawn red-spawn     
-  ( -120,     0)      41       41           49  spawn red-spawn     
-  ( -119,     0)      41       41           49  spawn red-spawn     
-  ( -118,     0)      41       41           49  spawn red-spawn     
-  ( -117,     0)      41       41           41                      
+  ( -132,     0)      41       41           53                      
+  ( -131,     0)      41       41           53  spawn red-spawn     
+  ( -130,     0)      41       41           53  spawn red-spawn     
+  ( -129,     0)      41       41           53  spawn red-spawn     
+  ( -128,     0)      41       41           53  spawn red-spawn     
+  ( -127,     0)      41       41           53  spawn red-spawn     
+  ( -126,     0)      41       41           53  spawn red-spawn     
+  ( -125,     0)      41       41           53  spawn red-spawn     
+  ( -124,     0)      41       41           53  spawn red-spawn     
+  ( -123,     0)      41       41           53  spawn red-spawn     
+  ( -122,     0)      41       41           53  spawn red-spawn     
+  ( -121,     0)      41       41           53  spawn red-spawn     
+  ( -120,     0)      41       41           53  spawn red-spawn     
+  ( -119,     0)      41       41           53  spawn red-spawn     
+  ( -118,     0)      41       41           53  spawn red-spawn     
+  ( -117,     0)      41       41           53                      
   ( -116,     0)      41       41           41                      
   ( -115,     0)      41       41           41                      
   ( -114,     0)      41       41           41                      
-  ( -113,     0)      41       41           41                      
-  ( -112,     0)      41       41           41                      
-  ( -111,     0)      41       41           41                      
-  ( -110,     0)      40       40           40                      -1
+  ( -113,     0)      41       41           41  stroke road-pass    
+  ( -112,     0)      41       41           41  stroke road-pass    
+  ( -111,     0)      41       41           41  stroke road-pass    
+  ( -110,     0)      40       40           40  stroke road-pass    -1
   ( -109,     0)      40       40           40                      
   ( -108,     0)      40       40           40                      
   ( -107,     0)      40       40           40                      
@@ -31,12 +31,12 @@ TRANSECT 29 stations from (-132, 0) to (-104, 0), every 1
   ( -105,     0)      40       40           40                      
   ( -104,     0)      39       39           39                      -1
 rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn red-spawn at (-131, -2)
+beside: spawn red-spawn at (-131, -2), stroke road-pass at (-113, -1)
 
 ## spawn-red (spawn) along z
 TRANSECT 33 stations from (-122, -16) to (-122, 16), every 1
   station        ground  surface  water  top  standing            step
-  ( -122,   -16)      41       41           41                      
+  ( -122,   -16)      41       41           42  flora cover         
   ( -122,   -15)      41       41           41                      
   ( -122,   -14)      41       41           41                      
   ( -122,   -13)      41       41           41                      
@@ -44,22 +44,22 @@ TRANSECT 33 stations from (-122, -16) to (-122, 16), every 1
   ( -122,   -11)      42       42           42                      
   ( -122,   -10)      42       42           42                      
   ( -122,    -9)      42       42           42                      
-  ( -122,    -8)      41       41           41                      -1
-  ( -122,    -7)      41       41           49  spawn red-spawn     
-  ( -122,    -6)      41       41           49  spawn red-spawn     
+  ( -122,    -8)      41       41           46                      -1
+  ( -122,    -7)      41       41           47  spawn red-spawn     
+  ( -122,    -6)      41       41           48  spawn red-spawn     
   ( -122,    -5)      41       41           49  spawn red-spawn     
-  ( -122,    -4)      41       41           49  spawn red-spawn     
-  ( -122,    -3)      41       41           49  spawn red-spawn     
-  ( -122,    -2)      41       41           49  spawn red-spawn     
-  ( -122,    -1)      41       41           49  spawn red-spawn     
-  ( -122,     0)      41       41           49  spawn red-spawn     
-  ( -122,     1)      41       41           49  spawn red-spawn     
-  ( -122,     2)      41       41           49  spawn red-spawn     
-  ( -122,     3)      41       41           49  spawn red-spawn     
+  ( -122,    -4)      41       41           50  spawn red-spawn     
+  ( -122,    -3)      41       41           51  spawn red-spawn     
+  ( -122,    -2)      41       41           52  spawn red-spawn     
+  ( -122,    -1)      41       41           53  spawn red-spawn     
+  ( -122,     0)      41       41           53  spawn red-spawn     
+  ( -122,     1)      41       41           52  spawn red-spawn     
+  ( -122,     2)      41       41           51  spawn red-spawn     
+  ( -122,     3)      41       41           50  spawn red-spawn     
   ( -122,     4)      41       41           49  spawn red-spawn     
-  ( -122,     5)      41       41           49  spawn red-spawn     
-  ( -122,     6)      41       41           49  spawn red-spawn     
-  ( -122,     7)      41       41           41                      
+  ( -122,     5)      41       41           48  spawn red-spawn     
+  ( -122,     6)      41       41           47  spawn red-spawn     
+  ( -122,     7)      41       41           46                      
   ( -122,     8)      42       42           42                      +1
   ( -122,     9)      42       42           42                      
   ( -122,    10)      42       42           42                      
@@ -70,4 +70,4 @@ TRANSECT 33 stations from (-122, -16) to (-122, 16), every 1
   ( -122,    15)      42       42           42                      
   ( -122,    16)      42       42           42                      
 rises 2, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn red-spawn at (-124, -7)
+beside: flora cover at (-123, -18), spawn red-spawn at (-124, -7)

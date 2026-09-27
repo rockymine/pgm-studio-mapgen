@@ -7,18 +7,18 @@ TRANSECT 25 stations from (30, -103) to (54, -103), every 1
   (   33,  -103)                                                    void
   (   34,  -103)                                                    void
   (   35,  -103)                                                    void
-  (   36,  -103)      17       17           17                      
-  (   37,  -103)      17       17           25  wool wool-1#1       
-  (   38,  -103)      17       17           25  wool wool-1#1       
-  (   39,  -103)      17       17           25  wool wool-1#1       
-  (   40,  -103)      17       17           17  wool wool-1#1       
+  (   36,  -103)      17       17           24                      
+  (   37,  -103)      17       17           24  wool wool-1#1       
+  (   38,  -103)      17       17           24  wool wool-1#1       
+  (   39,  -103)      17       17           24  wool wool-1#1       
+  (   40,  -103)      17       17           24  wool wool-1#1       
   (   41,  -103)      17       17           45  wool wool-1#1       
   (   42,  -103)      17       17           45  wool wool-1#1       
   (   43,  -103)      17       17           45  wool wool-1#1       
-  (   44,  -103)      17       17           25  wool wool-1#1       
-  (   45,  -103)      17       17           25  wool wool-1#1       
-  (   46,  -103)      17       17           25  wool wool-1#1       
-  (   47,  -103)      17       17           17                      
+  (   44,  -103)      17       17           24  wool wool-1#1       
+  (   45,  -103)      17       17           24  wool wool-1#1       
+  (   46,  -103)      17       17           24  wool wool-1#1       
+  (   47,  -103)      17       17           24                      
   (   48,  -103)                                                    void
   (   49,  -103)                                                    void
   (   50,  -103)                                                    void
@@ -39,15 +39,15 @@ TRANSECT 25 stations from (42, -115) to (42, -91), every 1
   (   42,  -111)                                                    void
   (   42,  -110)                                                    void
   (   42,  -109)                                                    void
-  (   42,  -108)      17       17           17                      
-  (   42,  -107)      17       17           25  wool wool-1#1       
-  (   42,  -106)      17       17           25  wool wool-1#1       
-  (   42,  -105)      17       17           17  wool wool-1#1       
+  (   42,  -108)      17       17           21                      
+  (   42,  -107)      17       17           22  wool wool-1#1       
+  (   42,  -106)      17       17           23  wool wool-1#1       
+  (   42,  -105)      17       17           24  wool wool-1#1       
   (   42,  -104)      17       17           45  wool wool-1#1       
   (   42,  -103)      17       17           45  wool wool-1#1       
   (   42,  -102)      17       17           45  wool wool-1#1       
-  (   42,  -101)      17       17           25  wool wool-1#1       
-  (   42,  -100)      17       17           17                      
+  (   42,  -101)      17       17           22  wool wool-1#1       
+  (   42,  -100)      17       17           21                      
   (   42,   -99)      17       17           17                      
   (   42,   -98)      17       17           17                      
   (   42,   -97)      17       17           17                      
@@ -58,4 +58,4 @@ TRANSECT 25 stations from (42, -115) to (42, -91), every 1
   (   42,   -92)      17       17           17                      
   (   42,   -91)      17       17           17                      
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: wool wool-1#1 at (40, -107), redstoneline 0#1 at (40, -93)
+beside: wool wool-1#1 at (40, -107), redstoneline 0#1 at (40, -93), stroke to-red-wool#1 at (40, -90)

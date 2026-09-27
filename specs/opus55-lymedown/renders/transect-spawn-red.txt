@@ -1,14 +1,14 @@
 ## spawn-red (spawn) along x
 TRANSECT 24 stations from (20, 50) to (43, 50), every 1
   station        ground  surface  water  top  standing            step
-  (   20,    50)      13       13           13                      
-  (   21,    50)      13       13           13                      
-  (   22,    50)      13       13           13                      
-  (   23,    50)      13       13           13                      
-  (   24,    50)      14       14           14                      +1
-  (   25,    50)      14       14           14                      
-  (   26,    50)      14       14           14                      
-  (   27,    50)      14       14           14                      
+  (   20,    50)      13       13           13  stroke track-hub    
+  (   21,    50)      13       13           13  stroke track-spawn-front  
+  (   22,    50)      13       13           13  stroke track-spawn-front  
+  (   23,    50)      13       13           13  stroke track-spawn-front  
+  (   24,    50)      14       14           14  stroke track-spawn-front  +1
+  (   25,    50)      14       14           14  stroke track-spawn-front  
+  (   26,    50)      14       14           14  stroke track-spawn-front  
+  (   27,    50)      14       14           14  stroke track-spawn-front  
   (   28,    50)      14       14           14                      
   (   29,    50)      14       14           14                      
   (   30,    50)      14       14           14                      
@@ -16,17 +16,17 @@ TRANSECT 24 stations from (20, 50) to (43, 50), every 1
   (   32,    50)      14       14           14                      
   (   33,    50)      14       14           14                      
   (   34,    50)      14       14           14                      
-  (   35,    50)      14       14           14                      
-  (   36,    50)      14       14           22  spawn spawn-1       
-  (   37,    50)      14       14           22  spawn spawn-1       
-  (   38,    50)      14       14           14  spawn spawn-1       
-  (   39,    50)      14       14           14  spawn spawn-1       
-  (   40,    50)      14       14           14  spawn spawn-1       
-  (   41,    50)      14       14           22  spawn spawn-1       
-  (   42,    50)      14       14           22  spawn spawn-1       
-  (   43,    50)      14       14           14                      
+  (   35,    50)      14       14           19                      
+  (   36,    50)      14       14           20  spawn spawn-1       
+  (   37,    50)      14       14           21  spawn spawn-1       
+  (   38,    50)      14       14           22  spawn spawn-1       
+  (   39,    50)      14       14           23  spawn spawn-1       
+  (   40,    50)      14       14           22  spawn spawn-1       
+  (   41,    50)      14       14           21  spawn spawn-1       
+  (   42,    50)      14       14           20  spawn spawn-1       
+  (   43,    50)      14       14           19                      
 rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn spawn-1 at (36, 48)
+beside: stroke track-spawn-front at (18, 48), stroke track-hub at (18, 50), spawn spawn-1 at (36, 48)
 
 ## spawn-red (spawn) along z
 TRANSECT 29 stations from (36, 36) to (36, 64), every 1
@@ -39,18 +39,18 @@ TRANSECT 29 stations from (36, 36) to (36, 64), every 1
   (   36,    41)                                                    void
   (   36,    42)                                                    void
   (   36,    43)                                                    void
-  (   36,    44)      14       14           14                      
-  (   36,    45)      14       14           22  spawn spawn-1       
-  (   36,    46)      14       14           22  spawn spawn-1       
-  (   36,    47)      14       14           22  spawn spawn-1       
-  (   36,    48)      14       14           22  spawn spawn-1       
-  (   36,    49)      14       14           22  spawn spawn-1       
-  (   36,    50)      14       14           22  spawn spawn-1       
-  (   36,    51)      14       14           22  spawn spawn-1       
-  (   36,    52)      14       14           22  spawn spawn-1       
-  (   36,    53)      14       14           22  spawn spawn-1       
-  (   36,    54)      14       14           22  spawn spawn-1       
-  (   36,    55)      14       14           14                      
+  (   36,    44)      14       14           20                      
+  (   36,    45)      14       14           20  spawn spawn-1       
+  (   36,    46)      14       14           20  spawn spawn-1       
+  (   36,    47)      14       14           20  spawn spawn-1       
+  (   36,    48)      14       14           20  spawn spawn-1       
+  (   36,    49)      14       14           20  spawn spawn-1       
+  (   36,    50)      14       14           20  spawn spawn-1       
+  (   36,    51)      14       14           20  spawn spawn-1       
+  (   36,    52)      14       14           20  spawn spawn-1       
+  (   36,    53)      14       14           20  spawn spawn-1       
+  (   36,    54)      14       14           20  spawn spawn-1       
+  (   36,    55)      14       14           20                      
   (   36,    56)                                                    void
   (   36,    57)                                                    void
   (   36,    58)                                                    void

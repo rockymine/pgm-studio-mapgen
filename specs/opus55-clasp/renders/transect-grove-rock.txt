@@ -1,0 +1,61 @@
+## grove-rock (boulder) along x
+TRANSECT 25 stations from (2, 97) to (26, 97), every 1
+  station        ground  surface  water  top  standing            step
+  (    2,    97)      23       23           23                      
+  (    3,    97)      23       23           23                      
+  (    4,    97)      23       23           23                      
+  (    5,    97)      23       23           23                      
+  (    6,    97)      23       23           25  tree spruce-small   
+  (    7,    97)      23       23           28  tree spruce-small   
+  (    8,    97)      23       23           29  tree spruce-small   
+  (    9,    97)      23       23           34  tree spruce-small   
+  (   10,    97)      23       23           31  tree spruce-small   
+  (   11,    97)      23       23           28  tree spruce-small   
+  (   12,    97)      23       23           27  tree spruce-small   
+  (   13,    97)      23       23           26  boulder grove-rock  
+  (   14,    97)      23       23           31  tree spruce-tall    
+  (   15,    97)      23       23           30  tree spruce-tall    
+  (   16,    97)      23       23           35  tree spruce-tall    
+  (   17,    97)      23       23           38  tree spruce-tall    
+  (   18,    97)      23       23           41  tree spruce-tall    
+  (   19,    97)      23       23           40  tree spruce-tall    
+  (   20,    97)      23       23           39  tree spruce-tall    
+  (   21,    97)      22       22           35  tree spruce-tall    -1
+  (   22,    97)      22       22           36  tree spruce-tall    
+  (   23,    97)      22       22           35  tree spruce-tall    
+  (   24,    97)      22       22           22  tree spruce-tall    
+  (   25,    97)      20       20           20                      -2
+  (   26,    97)      18       18           18                      -2
+rises 0, falls 3, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree spruce-small at (5, 96), boulder grove-rock at (13, 95), tree spruce-tall at (14, 95)
+
+## grove-rock (boulder) along z
+TRANSECT 25 stations from (14, 85) to (14, 109), every 1
+  station        ground  surface  water  top  standing            step
+  (   14,    85)      22       22           22                      
+  (   14,    86)      22       22           22                      
+  (   14,    87)      22       22           22                      
+  (   14,    88)      22       22           22  stroke track-clamp  
+  (   14,    89)      22       22           22  stroke track-clamp  
+  (   14,    90)      22       22           22  stroke track-clamp  
+  (   14,    91)      22       22           22                      
+  (   14,    92)      22       22           22                      
+  (   14,    93)      23       23           23  tree spruce-tall    +1
+  (   14,    94)      23       23           23  tree spruce-tall    
+  (   14,    95)      23       23           26  tree spruce-tall    
+  (   14,    96)      23       23           26  tree spruce-tall    
+  (   14,    97)      23       23           31  tree spruce-tall    
+  (   14,    98)      23       23           30  tree spruce-tall    
+  (   14,    99)      23       23           26  tree spruce-tall    
+  (   14,   100)      23       23           23                      
+  (   14,   101)      23       23           23                      
+  (   14,   102)      23       23           23                      
+  (   14,   103)                                                    void
+  (   14,   104)                                                    void
+  (   14,   105)                                                    void
+  (   14,   106)                                                    void
+  (   14,   107)                                                    void
+  (   14,   108)                                                    void
+  (   14,   109)                                                    void
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke track-clamp at (12, 88), tree spruce-tall at (16, 91), tree spruce-small at (12, 94), boulder grove-rock at (13, 95)

@@ -1,0 +1,61 @@
+## dub-3 (water) along x
+TRANSECT 26 stations from (-83, -1) to (-58, -1), every 1
+  station        ground  surface  water  top  standing            step
+  (  -83,    -1)      20       20           20                      
+  (  -82,    -1)      20       20     20    20  water dub-2         
+  (  -81,    -1)      20       20     20    20  water dub-2         
+  (  -80,    -1)      20       20     20    20  water dub-2         
+  (  -79,    -1)      20       20     20    20  water dub-2         
+  (  -78,    -1)      20       20     20    20  water dub-2         
+  (  -77,    -1)      22       22           22                      scramble +2
+  (  -76,    -1)      21       21           21                      -1
+  (  -75,    -1)      21       21           21                      
+  (  -74,    -1)      19       19           19                      -2
+  (  -73,    -1)      19       19     18    18  water dub-3         
+  (  -72,    -1)      18       18     18    18  water dub-3         -1
+  (  -71,    -1)      18       18     18    18  water dub-3         
+  (  -70,    -1)      18       18     18    18  water dub-3         
+  (  -69,    -1)      18       18     18    18  water dub-3         
+  (  -68,    -1)      18       18     18    18  water dub-3         
+  (  -67,    -1)      18       18           18                      
+  (  -66,    -1)      18       18           18                      
+  (  -65,    -1)      20       20           20                      scramble +2
+  (  -64,    -1)      21       21           21                      +1
+  (  -63,    -1)      21       21           21                      
+  (  -62,    -1)      21       21           21                      
+  (  -61,    -1)      21       21           21                      
+  (  -60,    -1)      21       21           21                      
+  (  -59,    -1)      21       21           21                      
+  (  -58,    -1)      19       19           19                      -2
+rises 3, falls 4, worst step 2: 0 barrier, 2 scramble, 0 drop — scramble +2 at (-77, -1); scramble +2 at (-65, -1) | walked end to end
+beside: water dub-2 at (-81, -2), water dub-3 at (-73, -2), flora cover at (-67, 1)
+
+## dub-3 (water) along z
+TRANSECT 24 stations from (-71, -12) to (-71, 11), every 1
+  station        ground  surface  water  top  standing            step
+  (  -71,   -12)      23       23           23                      
+  (  -71,   -11)      23       23           23                      
+  (  -71,   -10)      23       23           23                      
+  (  -71,    -9)      23       23           23                      
+  (  -71,    -8)      23       23           23                      
+  (  -71,    -7)      22       22           22                      -1
+  (  -71,    -6)      21       21           21                      -1
+  (  -71,    -5)      19       19           19                      -2
+  (  -71,    -4)      19       19           19                      
+  (  -71,    -3)      18       18           18                      -1
+  (  -71,    -2)      18       18     18    18  water dub-3         
+  (  -71,    -1)      18       18     18    18  water dub-3         
+  (  -71,     0)      18       18     18    18  water dub-3         
+  (  -71,     1)      18       18           18                      
+  (  -71,     2)      18       18           18                      
+  (  -71,     3)      20       20           20                      scramble +2
+  (  -71,     4)      21       21           21                      +1
+  (  -71,     5)      22       22           22                      +1
+  (  -71,     6)      22       22           22                      
+  (  -71,     7)      22       22           22                      
+  (  -71,     8)      22       22           22                      
+  (  -71,     9)      22       22           22                      
+  (  -71,    10)      22       22           22                      
+  (  -71,    11)      22       22           22                      
+rises 3, falls 4, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-71, 3) | walked end to end
+beside: stroke path-north at (-73, -14), flora cover at (-72, -10), water dub-3 at (-73, -2)

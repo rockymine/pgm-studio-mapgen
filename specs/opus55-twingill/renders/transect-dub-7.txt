@@ -1,0 +1,63 @@
+## dub-7 (water) along x
+TRANSECT 27 stations from (-39, 3) to (-13, 3), every 1
+  station        ground  surface  water  top  standing            step
+  (  -39,     3)      15       15           15                      
+  (  -38,     3)      15       15           15                      
+  (  -37,     3)      15       15           15                      
+  (  -36,     3)      15       15           15                      
+  (  -35,     3)      15       15           15                      
+  (  -34,     3)      15       15           15                      
+  (  -33,     3)      14       14           14                      -1
+  (  -32,     3)      13       13           13                      -1
+  (  -31,     3)      10       10           10                      -3
+  (  -30,     3)      10       10           10                      
+  (  -29,     3)      10       10           10                      
+  (  -28,     3)      10       10     10    10  water dub-7         
+  (  -27,     3)      10       10     10    10  water dub-7         
+  (  -26,     3)      10       10     10    10  water dub-7         
+  (  -25,     3)      10       10     10    10  water dub-7         
+  (  -24,     3)      10       10     10    10  water dub-7         
+  (  -23,     3)      10       10           10                      
+  (  -22,     3)       9        9      9     9  water dub-8         -1
+  (  -21,     3)       9        9      9     9  water dub-8         
+  (  -20,     3)       9        9      9     9  water dub-8         
+  (  -19,     3)       9        9      9     9  water dub-8         
+  (  -18,     3)       9        9      9     9  water dub-8         
+  (  -17,     3)       9        9            9                      
+  (  -16,     3)       9        9            9                      
+  (  -15,     3)                                                    void
+  (  -14,     3)                                                    void
+  (  -13,     3)                                                    void
+rises 0, falls 4, worst step 3: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water dub-7 at (-29, 1), water dub-8 at (-22, 2)
+
+## dub-7 (water) along z
+TRANSECT 25 stations from (-26, -9) to (-26, 15), every 1
+  station        ground  surface  water  top  standing            step
+  (  -26,    -9)      15       15           15                      
+  (  -26,    -8)      15       15           15                      
+  (  -26,    -7)      15       15           15                      
+  (  -26,    -6)      15       15           15                      
+  (  -26,    -5)      14       14           14                      -1
+  (  -26,    -4)      14       14           14                      
+  (  -26,    -3)      14       14           14                      
+  (  -26,    -2)      13       13           13                      -1
+  (  -26,    -1)      12       12           12                      -1
+  (  -26,     0)      10       10           10                      -2
+  (  -26,     1)      10       10           10                      
+  (  -26,     2)      10       10     10    10  water dub-7         
+  (  -26,     3)      10       10     10    10  water dub-7         
+  (  -26,     4)      10       10     10    10  water dub-7         
+  (  -26,     5)      10       10           10                      
+  (  -26,     6)      10       10           10                      
+  (  -26,     7)      12       12           12                      scramble +2
+  (  -26,     8)      14       14           14                      scramble +2
+  (  -26,     9)      14       14           14                      
+  (  -26,    10)      14       14           14                      
+  (  -26,    11)      14       14           14  stroke path-south   
+  (  -26,    12)      14       14           14  stroke path-south   
+  (  -26,    13)      14       14           14  stroke path-south   
+  (  -26,    14)      15       15           15                      +1
+  (  -26,    15)      15       15           15                      
+rises 3, falls 4, worst step 2: 0 barrier, 2 scramble, 0 drop — scramble +2 at (-26, 7); scramble +2 at (-26, 8) | walked end to end
+beside: water dub-7 at (-28, 1), stroke path-south at (-25, 10)
