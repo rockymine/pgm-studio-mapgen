@@ -134,6 +134,12 @@ Every ruling here was made looking at boards and swatches drawn with the game's 
 can be checked on a flat-colour picture: two noisy blocks of one colour are one calm grey in a swatch and
 static on the ground. Where a ruling changed while it was being made, the later one is the one written here.
 
+**A named block list is one answer, not the answer.** Where a ruling names blocks — a floor, a path, a boulder,
+a ground's set — those are combinations that were looked at and passed, and the principle beside them is the
+ruling. Five painters handed this section laid the same floor, the same boulder and the same two paths on five
+different places, which is a default showing through rather than five choices. Find the board's own answer by
+the same principle, and look at it.
+
 **A tinted block's family is the biome's to decide, so choose the biome before the patterns.** Grass, leaves
 and water take their colour from the chunk's biome byte and nothing else on a board does, which makes the
 biome a palette decision rather than a line added to the finish at the end. The rule reads twice.
@@ -270,11 +276,11 @@ cobblestone alone, does not read as ground.
 |---|---|---|
 | stony ground | stone and andesite as the base, cobblestone mixed in up to 30% | cobblestone as the base |
 | meadow | grass; worn ground is dirt and coarse dirt together, as one area | coarse dirt or dirt alone as specks |
-| desert | sand and sandstone; end stone only where sandstone is there too | red sand, gravel, end stone alone |
+| desert | sand and sandstone, and more of the sand family where the ground wants detail; end stone only where sandstone is there too; grass, with the biome changed to suit it | red sand, gravel, end stone alone |
 | badlands | an orange ground (red sand, red sandstone, orange stained clay) with inset patches of dirt and coarse dirt and of hardened clay | yellow sandstone, red stained clay, light grey stained clay |
 | mesa cliff | several bands of hardened and stained clay; vanilla banding is colourful but not wrong, red included as a thin band | two colours as bands |
 | snowfield | snow, or snow with packed ice | white stained clay; stone on the flat |
-| ash field | grey and black stained clay | — |
+| ash field | grey and black stained clay — the safe answer, with room left for a third set inset in it | — |
 
 **Stained clay is ground only inside a set of its own tone.** Orange stained clay belongs in a red-sand ground
 and grey with black makes an ash field; white stained clay beside snow and light grey stained clay on red
@@ -313,21 +319,32 @@ stone.
 Name three families out loud before painting: which is ground, which is built, which is the
 accent. An accent that appears once is not an accent, and an ore block is never a building material.
 
+**A tunnel is cut through one rock.** Its floor, its walls and its ceiling read as the rock the ground is
+made of, never as the surface on top: sand on a desert tunnel's floor or ash on an ash field's is the sky's
+ground brought indoors. The studio paints ground that another layer's wall stands on as rock (`TP25`), but a
+tunnel's open floor is still the ground's own top course, so it takes a shape of its own with the rock or a
+path set.
+
 ### What is laid rather than grown
 
 **A path is solid, and it is three blocks of one tone laid a third each.** A `worn` or `rough` band reads as
 litter rather than as a way somebody walks: the style to state is `solid`, and the pave is a `cell` of three
-blocks a reader cannot quite tell apart by colour — **dirt, coarse dirt and spruce planks** where the ground is
-soft, **gravel, andesite and cobblestone** where it is hard.
+blocks a reader cannot quite tell apart by colour. **Dirt, coarse dirt and spruce planks** is one where the
+ground is soft and **gravel, andesite and cobblestone** one where it is hard; a board may find its own three.
+
+**A path goes everywhere the players go.** A board is walked from each spawn to the front, to the other side
+and to every wool room, so one thin line from the spawn to the front says only one of those walks was thought
+of. A path is wide enough to read as a way rather than a trail.
 
 **A warm path is granite with brick.** Granite and polished granite carry it, with brick in strips; hardened
 clay can stand in for the brick but is flat. Granite with hardened clay belongs in a path and nowhere else. A
 path is also a claim about circulation, so one that ends nowhere, or that runs *through* a building rather
 than to its door, says the board was assembled rather than drawn.
 
-**A built floor is never one block.** Stone bricks, polished andesite, andesite and stone, a quarter each in
-a `cell` of about three, read as one paved ground with depth. Stone bricks alone are dead; stone bricks with a
-little cracked stone brick look out of place; two blocks collide.
+**A built floor is four blocks of one tone, a quarter each in a `cell` of about three.** Stone bricks,
+polished andesite, andesite and stone is one such floor and reads as one paved ground with depth; a board whose
+buildings are warm lays its floor from its own family by the same rule. Stone bricks alone are dead; stone
+bricks with a little cracked stone brick look out of place; two blocks collide.
 
 **Mossy cobblestone and cracked or mossy stone bricks are not ground.** Their veins and cracks are noise
 wherever they meet terrain and read as damage, which is a statement about age that ground does not make.
@@ -337,6 +354,10 @@ Mossy cracked stone brick belongs, if anywhere, faintly in a wall.
 distance. Mossy cobblestone goes in only as rare specks beside cobblestone and andesite, and that is the
 limit. Two different rocks in one boulder — granite beside stone — read as two geological features, and a
 boulder in the ground's own set is a lump.
+
+**The same boulder on every board is a default, not a rock.** The library holds several forms and sizes, and
+five boards carrying one recipe between them is the first one that came to hand. A board's rock is chosen for
+that board, within the rule above.
 
 **A stylised stone is carried by one hue.** A rock of prismarine, mossy cobblestone and emerald ore works
 because all three carry the same green, and it is a deliberate choice for a board that wants it rather than a
@@ -427,6 +448,11 @@ the footing in unless it is set back to null.
 framed, which is what every hand-built house on the corpus does. Beams run out past those corners where two
 storeys meet — and a beam has to be the end of something, so the wall under it carries a course of **laid**
 log. A beam over plain infill is a beam ending in nothing.
+
+**A log in a building is cut timber, so it shows its sawn end.** Posts stand upright, and beams and laid
+courses lie along their run, which is what puts the rings at the end of every beam — the signature look of a
+timbered house. The log with bark on all six faces is a tree's: a tree is whole rather than felled, and built
+into a wall it reads as a trunk.
 
 **A checker in the same log as the posts is one mass.** Where a wall wants a checker it wants a *different*
 log; where it does not, the posts are already doing that work.
