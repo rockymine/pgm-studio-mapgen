@@ -1,0 +1,61 @@
+## light_blue-1 (wool) along x
+TRANSECT 25 stations from (18, 85) to (42, 85), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,    85)                                                    void
+  (   19,    85)                                                    void
+  (   20,    85)      13       13           23                      
+  (   21,    85)      13       13           23  wool wool-2#1       
+  (   22,    85)      13       13           23  wool wool-2#1       
+  (   23,    85)      13       13           23  wool wool-2#1       
+  (   24,    85)      13       13           23  wool wool-2#1       
+  (   25,    85)      13       13           23  wool wool-2#1       
+  (   26,    85)      13       13           40  wool wool-2#1       
+  (   27,    85)      13       13           40  wool wool-2#1       
+  (   28,    85)      13       13           40  wool wool-2#1       
+  (   29,    85)      13       13           23  wool wool-2#1       
+  (   30,    85)      13       13           23  wool wool-2#1       
+  (   31,    85)      13       13           23  wool wool-2#1       
+  (   32,    85)      13       13           23  wool wool-2#1       
+  (   33,    85)      13       13           23  wool wool-2#1       
+  (   34,    85)      13       13           23                      
+  (   35,    85)                                                    void
+  (   36,    85)                                                    void
+  (   37,    85)                                                    void
+  (   38,    85)                                                    void
+  (   39,    85)                                                    void
+  (   40,    85)                                                    void
+  (   41,    85)                                                    void
+  (   42,    85)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-2#1 at (21, 83)
+
+## light_blue-1 (wool) along z
+TRANSECT 25 stations from (30, 73) to (30, 97), every 1
+  station        ground  surface  water  top  standing            step
+  (   30,    73)      14       14           14                      
+  (   30,    74)      13       13           13                      -1
+  (   30,    75)      13       13           13                      
+  (   30,    76)      13       13           13                      
+  (   30,    77)      13       13           13                      
+  (   30,    78)      13       13           13                      
+  (   30,    79)      13       13           13                      
+  (   30,    80)      13       13           19  redstoneline 1#1    
+  (   30,    81)      13       13           20  wool wool-2#1       
+  (   30,    82)      13       13           21  wool wool-2#1       
+  (   30,    83)      13       13           22  wool wool-2#1       
+  (   30,    84)      13       13           23  wool wool-2#1       
+  (   30,    85)      13       13           23  wool wool-2#1       
+  (   30,    86)      13       13           22  wool wool-2#1       
+  (   30,    87)      13       13           21  wool wool-2#1       
+  (   30,    88)      13       13           20  wool wool-2#1       
+  (   30,    89)      13       13           19                      
+  (   30,    90)                                                    void
+  (   30,    91)                                                    void
+  (   30,    92)                                                    void
+  (   30,    93)                                                    void
+  (   30,    94)                                                    void
+  (   30,    95)                                                    void
+  (   30,    96)                                                    void
+  (   30,    97)                                                    void
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-orange#1 at (28, 71), redstoneline 1#1 at (28, 80), wool wool-2#1 at (28, 81)

@@ -1,0 +1,61 @@
+## rock-b (boulder) along x
+TRANSECT 25 stations from (5, -41) to (29, -41), every 1
+  station        ground  surface  water  top  standing            step
+  (    5,   -41)      15       15           15                      
+  (    6,   -41)      15       15           15                      
+  (    7,   -41)      15       15           15                      
+  (    8,   -41)      10       10           10                      DROP -5
+  (    9,   -41)      10       10           10                      
+  (   10,   -41)      10       10           10                      
+  (   11,   -41)      10       10           10                      
+  (   12,   -41)      10       10           10                      
+  (   13,   -41)      10       10           10                      
+  (   14,   -41)      10       10           12  boulder rock-b      
+  (   15,   -41)      10       10           14  boulder rock-b      
+  (   16,   -41)      10       10           14  boulder rock-b      
+  (   17,   -41)      10       10           15  boulder rock-b      
+  (   18,   -41)      10       10           14  boulder rock-b      
+  (   19,   -41)      10       10           14  boulder rock-b      
+  (   20,   -41)                            12  boulder rock-b      void
+  (   21,   -41)                                                    void
+  (   22,   -41)                                                    void
+  (   23,   -41)                                                    void
+  (   24,   -41)                                                    void
+  (   25,   -41)                                                    void
+  (   26,   -41)                                                    void
+  (   27,   -41)                                                    void
+  (   28,   -41)                                                    void
+  (   29,   -41)                                                    void
+rises 0, falls 1, worst step 5: 0 barrier, 0 scramble, 1 drop — DROP -5 at (8, -41) | walked end to end
+beside: boulder rock-b at (14, -41)
+
+## rock-b (boulder) along z
+TRANSECT 25 stations from (17, -53) to (17, -29), every 1
+  station        ground  surface  water  top  standing            step
+  (   17,   -53)      11       11           11                      
+  (   17,   -52)      11       11           11                      
+  (   17,   -51)      11       11           11                      
+  (   17,   -50)      10       10           10                      -1
+  (   17,   -49)      10       10           10                      
+  (   17,   -48)      10       10           10                      
+  (   17,   -47)      10       10           10                      
+  (   17,   -46)      10       10           10                      
+  (   17,   -45)      10       10           10                      
+  (   17,   -44)      10       10           10                      
+  (   17,   -43)      10       10           13  boulder rock-b      
+  (   17,   -42)      10       10           14  boulder rock-b      
+  (   17,   -41)      10       10           15  boulder rock-b      
+  (   17,   -40)      10       10           14  boulder rock-b      
+  (   17,   -39)      10       10           14  boulder rock-b      
+  (   17,   -38)      10       10           10                      
+  (   17,   -37)      10       10           10                      
+  (   17,   -36)      10       10           10                      
+  (   17,   -35)      10       10           10                      
+  (   17,   -34)      10       10           10                      
+  (   17,   -33)      10       10           10                      
+  (   17,   -32)      10       10           10                      
+  (   17,   -31)      10       10           10                      
+  (   17,   -30)      10       10           10                      
+  (   17,   -29)      10       10           10                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wall 0 at (19, -55), boulder rock-b at (15, -43), tree cactus-b at (19, -27)

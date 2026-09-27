@@ -1,0 +1,61 @@
+## rock-east-arm (boulder) along x
+TRANSECT 25 stations from (18, -60) to (42, -60), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,   -60)      11       11           11                      
+  (   19,   -60)      11       11           16  wall 0              
+  (   20,   -60)      12       12           16  wall 0              +1
+  (   21,   -60)      12       12           12                      
+  (   22,   -60)      14       14           14  tree tree-planter-east  scramble +2
+  (   23,   -60)      14       14           14  tree tree-planter-east  
+  (   24,   -60)      14       14           19  tree tree-planter-east  
+  (   25,   -60)      14       14           20  tree tree-planter-east  
+  (   26,   -60)      14       14           14  tree tree-planter-east  
+  (   27,   -60)      12       12           13  flora meadow-cover  -2
+  (   28,   -60)      12       12           15  boulder rock-east-arm  
+  (   29,   -60)      12       12           16  boulder rock-east-arm  
+  (   30,   -60)      12       12           16  boulder rock-east-arm  
+  (   31,   -60)      12       12           16  boulder rock-east-arm  
+  (   32,   -60)      12       12           15  boulder rock-east-arm  
+  (   33,   -60)      12       12           12                      
+  (   34,   -60)      12       12           12                      
+  (   35,   -60)                                                    void
+  (   36,   -60)                                                    void
+  (   37,   -60)                                                    void
+  (   38,   -60)                                                    void
+  (   39,   -60)                                                    void
+  (   40,   -60)      17       17           17                      
+  (   41,   -60)      17       17           17                      
+  (   42,   -60)      17       17           17                      
+rises 2, falls 1, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (22, -60) | walked end to end
+beside: wall 0 at (19, -62), flora meadow-cover at (16, -61), tree tree-planter-east at (21, -62), boulder rock-east-arm at (28, -61)
+
+## rock-east-arm (boulder) along z
+TRANSECT 25 stations from (30, -72) to (30, -48), every 1
+  station        ground  surface  water  top  standing            step
+  (   30,   -72)                                                    void
+  (   30,   -71)                                                    void
+  (   30,   -70)                                                    void
+  (   30,   -69)                                                    void
+  (   30,   -68)                                                    void
+  (   30,   -67)                                                    void
+  (   30,   -66)                                                    void
+  (   30,   -65)      12       12           12                      
+  (   30,   -64)      12       12           12                      
+  (   30,   -63)      12       12           12                      
+  (   30,   -62)      12       12           15  boulder rock-east-arm  
+  (   30,   -61)      12       12           16  boulder rock-east-arm  
+  (   30,   -60)      12       12           16  boulder rock-east-arm  
+  (   30,   -59)      12       12           16  boulder rock-east-arm  
+  (   30,   -58)      12       12           15  boulder rock-east-arm  
+  (   30,   -57)      12       12           12                      
+  (   30,   -56)      12       12           12                      
+  (   30,   -55)      12       12           12                      
+  (   30,   -54)      12       12           12                      
+  (   30,   -53)      12       12           12  stroke path-east    
+  (   30,   -52)      12       12           12  stroke path-east    
+  (   30,   -51)      12       12           12                      
+  (   30,   -50)                                                    void
+  (   30,   -49)                                                    void
+  (   30,   -48)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora meadow-cover at (28, -62), boulder rock-east-arm at (29, -62), stroke path-east at (28, -53)

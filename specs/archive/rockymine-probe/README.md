@@ -36,4 +36,7 @@ a slug of the run's own.
 Load it with `POST /map/from-documents` under a slug of the run's own, so a run never writes to the board it
 was copied from. The harness for that is `mint.py`, outside this repository beside the texture work.
 
+Five painted copies of it are `specs/paint-ashfield`, `paint-badlands`, `paint-desert`, `paint-plains` and
+`paint-snowfield`, one painter each in the texturing probe, with their worlds under `maps/`.
+
 Authored by rockymine, 2026-09-09.

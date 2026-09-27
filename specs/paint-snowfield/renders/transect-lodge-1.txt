@@ -1,0 +1,57 @@
+## lodge-1 (house) along x
+TRANSECT 22 stations from (6, -39) to (27, -39), every 1
+  station        ground  surface  water  top  standing            step
+  (    6,   -39)      15       15           15                      
+  (    7,   -39)      15       15           15                      
+  (    8,   -39)      10       10           10                      DROP -5
+  (    9,   -39)      10       10           10                      
+  (   10,   -39)      10       10           10                      
+  (   11,   -39)      10       10           10                      
+  (   12,   -39)      10       10           10                      
+  (   13,   -39)      10       10           19  house lodge-1       
+  (   14,   -39)      10       10           20  house lodge-1       
+  (   15,   -39)      10       10           21  house lodge-1       
+  (   16,   -39)      10       10           22  house lodge-1       
+  (   17,   -39)      10       10           22  house lodge-1       
+  (   18,   -39)      10       10           21  house lodge-1       
+  (   19,   -39)      10       10           20  house lodge-1       
+  (   20,   -39)                            19  house lodge-1       void
+  (   21,   -39)                                                    void
+  (   22,   -39)                                                    void
+  (   23,   -39)                                                    void
+  (   24,   -39)                                                    void
+  (   25,   -39)                                                    void
+  (   26,   -39)                                                    void
+  (   27,   -39)                                                    void
+rises 0, falls 1, worst step 5: 0 barrier, 0 scramble, 1 drop — DROP -5 at (8, -39) | walked end to end
+beside: house lodge-1 at (13, -41)
+
+## lodge-1 (house) along z
+TRANSECT 24 stations from (16, -50) to (16, -27), every 1
+  station        ground  surface  water  top  standing            step
+  (   16,   -50)      10       10           10                      
+  (   16,   -49)      10       10           10                      
+  (   16,   -48)      10       10           17  tree spruce-2       
+  (   16,   -47)      10       10           17  tree spruce-2       
+  (   16,   -46)      10       10           15  tree spruce-2       
+  (   16,   -45)      10       10           10                      
+  (   16,   -44)      10       10           10                      
+  (   16,   -43)      10       10           22  house lodge-1       
+  (   16,   -42)      10       10           22  house lodge-1       
+  (   16,   -41)      10       10           22  house lodge-1       
+  (   16,   -40)      10       10           22  house lodge-1       
+  (   16,   -39)      10       10           22  house lodge-1       
+  (   16,   -38)      10       10           22  house lodge-1       
+  (   16,   -37)      10       10           22  house lodge-1       
+  (   16,   -36)      10       10           22  house lodge-1       
+  (   16,   -35)      10       10           22  house lodge-1       
+  (   16,   -34)      10       10           22  house lodge-1       
+  (   16,   -33)      10       10           10                      
+  (   16,   -32)      10       10           13  boulder rock-2      
+  (   16,   -31)      10       10           13  boulder rock-2      
+  (   16,   -30)      10       10           14  boulder rock-2      
+  (   16,   -29)      10       10           13  boulder rock-2      
+  (   16,   -28)      10       10           13  boulder rock-2      
+  (   16,   -27)      10       10           10                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree spruce-2 at (17, -49), house lodge-1 at (14, -43), boulder rock-2 at (15, -32)

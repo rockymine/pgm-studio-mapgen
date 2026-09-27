@@ -737,6 +737,11 @@ here so `tools/boards-check.py` can tell them from a board nobody wrote up.
 | `probe-snowfield-1` | a biome probe world: snowfield, tint read back off the chunk's biome byte |
 | `probe-snowfield-2` | a biome probe world: snowfield, tint read back off the chunk's biome byte |
 | `rockymine-probe` | the author's own probe spec |
+| `paint-ashfield` | the author's probe board (`specs/archive/rockymine-probe`) painted as an ash field by one painter in the texturing probe, its monuments centred across their cages |
+| `paint-badlands` | the author's probe board (`specs/archive/rockymine-probe`) painted as badlands by one painter in the texturing probe, its monuments centred across their cages |
+| `paint-desert` | the author's probe board (`specs/archive/rockymine-probe`) painted as a desert by one painter in the texturing probe, its monuments centred across their cages |
+| `paint-plains` | the author's probe board (`specs/archive/rockymine-probe`) painted as plains by one painter in the texturing probe, its monuments centred across their cages |
+| `paint-snowfield` | the author's probe board (`specs/archive/rockymine-probe`) painted as a snowfield by one painter in the texturing probe, its monuments centred across their cages |
 
 ## Not yet written up
 

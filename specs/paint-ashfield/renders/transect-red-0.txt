@@ -1,0 +1,52 @@
+## red-0 (wool) along x
+TRANSECT 16 stations from (38, -54) to (53, -54), every 1
+  station        ground  surface  water  top  standing            step
+  (   38,   -54)      16       16           16                      
+  (   39,   -54)      17       17           17                      +1
+  (   40,   -54)      17       17           17                      
+  (   41,   -54)      17       17           17                      
+  (   42,   -54)      17       17           17                      
+  (   43,   -54)      17       17           17                      
+  (   44,   -54)      17       17           17                      
+  (   45,   -54)      17       17           24  redstoneline 0      
+  (   46,   -54)      17       17           25  wool wool-1         
+  (   47,   -54)      17       17           27  wool wool-1         
+  (   48,   -54)      17       17           28  wool wool-1         
+  (   49,   -54)      17       17           28  wool wool-1         
+  (   50,   -54)      17       17           28  wool wool-1         
+  (   51,   -54)      17       17           28  wool wool-1         
+  (   52,   -54)      17       17           27  wool wool-1         
+  (   53,   -54)      17       17           25  wool wool-1         
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: redstoneline 0 at (45, -56), wool wool-1 at (46, -56)
+
+## red-0 (wool) along z
+TRANSECT 25 stations from (50, -66) to (50, -42), every 1
+  station        ground  surface  water  top  standing            step
+  (   50,   -66)                                                    void
+  (   50,   -65)      17       17           24                      
+  (   50,   -64)      17       17           25  wool wool-1         
+  (   50,   -63)      17       17           27  wool wool-1         
+  (   50,   -62)      17       17           28  wool wool-1         
+  (   50,   -61)      17       17           30  wool wool-1         
+  (   50,   -60)      17       17           30  wool wool-1         
+  (   50,   -59)      17       17           30  wool wool-1         
+  (   50,   -58)      17       17           40  wool wool-1         
+  (   50,   -57)      17       17           40  wool wool-1         
+  (   50,   -56)      17       17           40  wool wool-1         
+  (   50,   -55)      17       17           30  wool wool-1         
+  (   50,   -54)      17       17           28  wool wool-1         
+  (   50,   -53)      17       17           27  wool wool-1         
+  (   50,   -52)      17       17           25  wool wool-1         
+  (   50,   -51)      17       17           24                      
+  (   50,   -50)                                                    void
+  (   50,   -49)                                                    void
+  (   50,   -48)                                                    void
+  (   50,   -47)                                                    void
+  (   50,   -46)                                                    void
+  (   50,   -45)                                                    void
+  (   50,   -44)                                                    void
+  (   50,   -43)                                                    void
+  (   50,   -42)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-1 at (48, -64)

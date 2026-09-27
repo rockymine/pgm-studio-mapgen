@@ -1,0 +1,213 @@
+CLAIMS  1 char = 1 block  x -55..54 across, z -100..99 down
+KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn keep-out  8 door approach  9 goal clearance  a wool-room keep-out  b structure keep-out  space void
+         -5        -4        -3        -2        -1         0         1         2         3         4         5    
+     54321098765432109876543210987654321098765432109876543210123456789012345678901234567890123456789012345678901234
+-100                                                        777777777777777                                        
+ -99                                                        777777777777777                                        
+ -98                                                        7777bbbbbb77777                                        
+ -97                                                        7777bbbbbb77777                                        
+ -96                                                        aaaabbbbbbaaaaa                                        
+ -95                                                        aaaabbbbbbaaaaa                                        
+ -94                                                        aaaabbbbbbaaaaa                                        
+ -93                                                        aaaabbbbbbaaaaa                                        
+ -92                                                        aaaaa77777aaaaa                                        
+ -91                                                        777777777777777                                        
+ -90                     aaaaaaaaaaaaaaa                    777777777777777                                        
+ -89                     aaaaaaaaaaaaaaa                    777777777777777                                        
+ -88                     aabbbbbbaaaaaaa                    777777777777777                                        
+ -87                     aabbbbbbaaaaaaa                    777777777777777                                        
+ -86                     aabbbbbbaaaaaaa                    777777777777777                                        
+ -85                     aabbbbbbaaaaaaa                    777777777777777                                        
+ -84                     aabbbbbbaaaaaaa                    777777777777777                                        
+ -83                     bbbbbbbbbbbbbbb                    777777777777777                                        
+ -82                     bbbbbbbbbbbbbbb                    777777777777777                                        
+ -81                     bbbbbbbbbbbbbbb                    777777777777777                                        
+ -80                     bbbbbbbbbbbbbbb                    777777777777777                                        
+ -79                     bbbbbbbbbbbbbbb                    777777777777777                                        
+ -78                     aaaaaaaaaaaaaaa                    777777777777777                                        
+ -77                     088888888888888                    088888888888888                                        
+ -76                     088888888888888                    088888888888888                                        
+ -75                     088888888888888                    088888888888888                                        
+ -74                     088888888888888                    088888888888888                                        
+ -73                     088888888888888                    088888888888888                                        
+ -72                     088888888888888                    088888888888888                                        
+ -71                     088888888888888                    000000000000000                                        
+ -70                     000000000000000                    000000000400000                                        
+ -69                     000000000000000                    000000000000000                                        
+ -68                     bbbbbbbbbbbbbbb                    000000000000000                                        
+ -67                     bbbbbbbbbbbbbbb                    000000000000000                                        
+ -66                     bbbbbbbbbbbbbbb                    000000000000000                                        
+ -65                     bbbbbbbbbbbbbbbbbb3333333333333330000000000000000000bbbbbbb0000000000000000000bbbbbaaaaaaa
+ -64                     bbbbbbbbbbbbbbbbbb3333333333333330000000000000000000bbbbbbb0000000000008888888bbbbbaaaaaaa
+ -63                     bbbbbbbbbbbbbbbbbb3333333333333330000000000000000000bbbbbbb0000000004008888888bbbbbaaaaaaa
+ -62                     bbbbbbbbbbbbbbbbbb3333333333333330000000000000000000bbbbbbb0000000000008888888bbbbbaaaaaaa
+ -61                     0000000000000000003333333333333330000000000000000000bbbbbbb0400000000008888888bbbbbaaaaaaa
+ -60                     0000000000000000003333333333333330000000000000000000bbbbbbb00000000000     888bbbbbaaaaaaa
+ -59                     0000000000000000003333333300000000000000000000000000bbbbbbb00000000000     888bbbbbaaaaaaa
+ -58                     0000000000000000000000000000000000000000000000000000bbbbbbb00000000000     888bbbbbbbbbbba
+ -57                     0000000000000000000000000000000000000000000000000000bbbbbbb00000000000     888bbbbbbbbbbba
+ -56                     0000000000000000000000000000000000000000000000000000bbbbbbb00000000000     888bbbbbbbbbbba
+ -55                     0000000000000000000000000000000000000000000000000000bbbbbbb0000000000008888888bbbbbbbbbbba
+ -54                     0004000000000000000000000000000000000000000000000000bbbbbbb0000000000008888888bbbbbbbbbbba
+ -53                     0000000000000000000000009999999999999999999990000000bbbbbbb0000000000008888888bbbbbbbbbbba
+ -52                     0000000000000000000000009999999999999999999990000000bbbbbbb0000000000008888888bbbbbbbbbbba
+ -51                     0000000000000000000000009999999999999999999990000000bbbbbbb0000000000008888888bbbbbaaaaaaa
+ -50                                    0000000009999999999999999999990000000bbb                                   
+ -49                                    0000000009999999999999999999990000000bbb                                   
+ -48                                    0040000009999999999999999999990000000bbb                                   
+ -47                                    0000000009999999999999999999990004000000                                   
+ -46                                    0000000009999999999999999999990000000000                                   
+ -45                                    0000000009999999999999999999990000000000                                   
+ -44                                    0000000009999999999999999999990000000000                                   
+ -43                                    0000000009999999999999999999990000055555                                   
+ -42                                    0000000009999999999999999999990000055555                                   
+ -41                                    0000000009999999999999999999990000555555                                   
+ -40                                    0000000009999999999999999999990000055555                                   
+ -39                                    0000000009999999999999999999990000055555                                   
+ -38                                    0000000009999999999999999999990000000000                                   
+ -37                                    0000000009999999999999999999990000000000                                   
+ -36                                    0000000009999999999999999999990000000000                                   
+ -35                                    000000000999999          999990000000000                                   
+ -34                                    000000000999999          999990000000000                                   
+ -33                                    005555000999999          999990000000000                                   
+ -32                                    005555500000000          000000000000000                                   
+ -31                                    055555550000000          000000000000000                                   
+ -30                                    005555550000000          000000000000000                                   
+ -29                                    005555500000000          000000000000000                                   
+ -28                                    000000000000400          000000000000000                                   
+ -27                                    000000000000000          000000000000004                                   
+ -26                                    000000000000000          000000000000000                                   
+ -25                                    0000000000000000000000000000000000000000                                   
+ -24                                    0000000000000000000000000000000000000000                                   
+ -23                                    0000000000000000000000000000000000000000                                   
+ -22                                    0000000000000000000000000000000000000000                                   
+ -21                                    0000000000000000000000000000000000000000                                   
+ -20                                    0000000000000000000000000000000000000000                                   
+ -19                                    0000000000000000000000000000000000000000                                   
+ -18                                    0000000000000000000000000000000000000000                                   
+ -17                                    0000000000000000000000000000000000000000                                   
+ -16                                    0000000000000000000000000000000000000000                                   
+ -15                                    000000000000000          000000000000000                                   
+ -14                                    000000000000000          000000000000000                                   
+ -13                                                                                                               
+ -12                                                                                                               
+ -11                                                                                                               
+ -10                                                                                                               
+  -9                                                                                                               
+  -8                                                                                                               
+  -7                                                                                                               
+  -6                                                                                                               
+  -5                                                                                                               
+  -4                                                                                                               
+  -3                                                                                                               
+  -2                                                                                                               
+  -1                                                                                                               
+   0                                                                                                               
+   1                                                                                                               
+   2                                                                                                               
+   3                                                                                                               
+   4                                                                                                               
+   5                                                                                                               
+   6                                                                                                               
+   7                                                                                                               
+   8                                                                                                               
+   9                                                                                                               
+  10                                                                                                               
+  11                                                                                                               
+  12                                                                                                               
+  13                                    000000000000000          000000000000000                                   
+  14                                    000000000000000          000000000000000                                   
+  15                                    0000000000000000000000000000000000000000                                   
+  16                                    0000000000000000000000000000000000000000                                   
+  17                                    0000000000000000000000000000000000000000                                   
+  18                                    0000000000000000000000000000000000000000                                   
+  19                                    0000000000000000000000000000000000000000                                   
+  20                                    0000000000000000000000000000000000000000                                   
+  21                                    0000000000000000000000000000000000000000                                   
+  22                                    0000000000000000000000000000000000000000                                   
+  23                                    0000000000000000000000000000000000000000                                   
+  24                                    0000000000000000000000000000000000000000                                   
+  25                                    000000000000000          000000000000000                                   
+  26                                    400000000000000          000000000000000                                   
+  27                                    000000000000000          004000000000000                                   
+  28                                    000000000000000          000000005555500                                   
+  29                                    000000000000000          000000055555500                                   
+  30                                    000000000000000          000000055555550                                   
+  31                                    000000000999999          999990005555500                                   
+  32                                    000000000999999          999990000555500                                   
+  33                                    000000000999999          999990000000000                                   
+  34                                    000000000999999          999990000000000                                   
+  35                                    0000000009999999999999999999990000000000                                   
+  36                                    0000000009999999999999999999990000000000                                   
+  37                                    0000000009999999999999999999990000000000                                   
+  38                                    5555500009999999999999999999990000000000                                   
+  39                                    5555500009999999999999999999990000000000                                   
+  40                                    5555550009999999999999999999990000000000                                   
+  41                                    5555500009999999999999999999990000000000                                   
+  42                                    5555500009999999999999999999990000000000                                   
+  43                                    0000000009999999999999999999990000000000                                   
+  44                                    0000000009999999999999999999990000000000                                   
+  45                                    0000000009999999999999999999990000000000                                   
+  46                                    0000004009999999999999999999990000000000                                   
+  47                                    0000000009999999999999999999990000000400                                   
+  48                                    bbbb000009999999999999999999990000000000                                   
+  49                                    bbbb000009999999999999999999990000000000                                   
+  50 aaaaaaabbbbba0000000000000000000bbbbbbb000009999999999999999999990000000000000000000000000                    
+  51 abbbbbbbbbbba8888888000000000000bbbbbbb000009999999999999999999990000000000000000000000000                    
+  52 abbbbbbbbbbba8888888000000000000bbbbbbb000000000000000000000000000000000000000000000000000                    
+  53 abbbbbbbbbbba8888888000000000000bbbbbbb000000000000000000000000000000000000000000000004000                    
+  54 abbbbbbbbbbba8888888000000000000bbbbbbb000000000000000000000000000000000000000000000000000                    
+  55 abbbbbbbbbbba88     000000000000bbbbbbb000000000000000000000000000000000000000000000000000                    
+  56 abbbbbbbbbbba88     000000000000bbbbbbb000000000000000000000000000000000000000000000000000                    
+  57 abbbbbbbbbbba88     000000000000bbbbbbb000000000000000000000000000000000000000000000000000                    
+  58 aaaaaaabbbbba88     000000000000bbbbbbb000000000000000000000000033333333000000000000000000                    
+  59 aaaaaaabbbbba88     000000000000bbbbbbb000000000000000000333333333333333000000000000000000                    
+  60 aaaaaaabbbbba8888888000000000400bbbbbbb000000000000000000333333333333333000000000000000000                    
+  61 aaaaaaabbbbba8888888000000000000bbbbbbb000000000000000000333333333333333000000000000000000                    
+  62 aaaaaaabbbbba8888888040000000000bbbbbbb0000000000000000003333333333333330bbbbbbbbbbbbbbbbb                    
+  63 aaaaaaabbbbba8888888000000000000bbbbbbb0000000000000000003333333333333330bbbbbbbbbbbbbbbbb                    
+  64 aaaaaaabbbbba8888888000000000000bbbbbbb0000000000000000003333333333333330bbbbbbbbbbbbbbbbb                    
+  65                                         000000000000000                    bbbbbbbbbbbbbbb                    
+  66                                         000000000000000                    bbbbbbbbbbbbbbb                    
+  67                                         000000000000000                    bbbbbbbbbbbbbbb                    
+  68                                         000000000000000                    bbbbbbbbbbbbbbb                    
+  69                                         000004000000000                    000000000000000                    
+  70                                         000000000000000                    000000000000000                    
+  71                                         000000000000000                    088888888888888                    
+  72                                         088888888888888                    088888888888888                    
+  73                                         088888888888888                    088888888888888                    
+  74                                         088888888888888                    088888888888888                    
+  75                                         088888888888888                    088888888888888                    
+  76                                         088888888888888                    088888888888888                    
+  77                                         088888888888888                    088888888888888                    
+  78                                         777777777777777                    bbbbbbbbbbbbbbb                    
+  79                                         777777777777777                    bbbbbbbbbbbbbbb                    
+  80                                         777777777777777                    bbbbbbbbbbbbbbb                    
+  81                                         777777777777777                    bbbbbbbbbbbbbbb                    
+  82                                         777777777777777                    bbbbbbbbbbbbbbb                    
+  83                                         777777777777777                    aaaaaaabbbbbbaa                    
+  84                                         777777777777777                    aaaaaaabbbbbbaa                    
+  85                                         777777777777777                    aaaaaaabbbbbbaa                    
+  86                                         777777777777777                    aaaaaaabbbbbbaa                    
+  87                                         777777777777777                    aaaaaaabbbbbbaa                    
+  88                                         777777777777777                    aaaaaaaaaaaaaaa                    
+  89                                         777777777777777                    aaaaaaaaaaaaaaa                    
+  90                                         777777777777777                                                       
+  91                                         aaaaa77777aaaaa                                                       
+  92                                         aaaaabbbbbbaaaa                                                       
+  93                                         aaaaabbbbbbaaaa                                                       
+  94                                         aaaaabbbbbbaaaa                                                       
+  95                                         aaaaabbbbbbaaaa                                                       
+  96                                         77777bbbbbb7777                                                       
+  97                                         77777bbbbbb7777                                                       
+  98                                         777777777777777                                                       
+  99                                         777777777777777                                                       
+decline DR-ROOT tree 'cactus-planter-w' stands at (-32, -54) on Sand, which is ground rather than soil — a trunk out of it reads as a model set down rather than as a wood. Paint a band of grass or dirt under the canopy, or move it onto ground that has one
+decline DR-ROOT tree 'cactus-planter-e' stands at (25, -61) on Sand, which is ground rather than soil — a trunk out of it reads as a model set down rather than as a wood. Paint a band of grass or dirt under the canopy, or move it onto ground that has one
+decline DR-ROOT tree 'cactus-a' stands at (-18, -48) on Sand, which is ground rather than soil — a trunk out of it reads as a model set down rather than as a wood. Paint a band of grass or dirt under the canopy, or move it onto ground that has one
+decline DR-ROOT tree 'cactus-b' stands at (19, -27) on Sand, which is ground rather than soil — a trunk out of it reads as a model set down rather than as a wood. Paint a band of grass or dirt under the canopy, or move it onto ground that has one
+decline DR-ROOT tree 'bush-a' stands at (-8, -28) on Sand, which is ground rather than soil — a trunk out of it reads as a model set down rather than as a wood. Paint a band of grass or dirt under the canopy, or move it onto ground that has one
+decline DR-ROOT tree 'bush-b' stands at (13, -47) on Sand, which is ground rather than soil — a trunk out of it reads as a model set down rather than as a wood. Paint a band of grass or dirt under the canopy, or move it onto ground that has one
+decline DR-ROOT tree 'bush-d' stands at (9, -70) on Sand, which is ground rather than soil — a trunk out of it reads as a model set down rather than as a wood. Paint a band of grass or dirt under the canopy, or move it onto ground that has one
+decline DR-ROOT tree 'bush-e' stands at (33, -63) on Sand, which is ground rather than soil — a trunk out of it reads as a model set down rather than as a wood. Paint a band of grass or dirt under the canopy, or move it onto ground that has one
+placed 22, declined 8

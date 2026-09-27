@@ -1,0 +1,11 @@
+THEMES  4 themes over 7170 ground cells, 17 distinct surface blocks
+  meadow  6568 cells (91.6%)  2:0 Grass Block, 1:5 Andesite, 1:6 Polished Andesite, 5:1 Spruce Planks, 3:0 Dirt, 3:1 Coarse Dirt, 98:0 Stone Bricks, 7:0 Bedrock, 1:0 Stone, 4:0 Cobblestone, 35:14 Red Wool, 35:11 Blue Wool
+  stonework  406 cells (5.7%)  1:6 Polished Andesite, 98:0 Stone Bricks, 1:5 Andesite, 1:0 Stone
+  timber  164 cells (2.3%)  5:1 Spruce Planks
+  timber-post  32 cells (0.4%)  5:1 Spruce Planks
+borders:
+  meadow | timber  328 cells
+  meadow | stonework  162 cells
+  meadow | timber-post  32 cells
+  timber | timber-post  16 cells
+  stonework | timber-post  8 cells
