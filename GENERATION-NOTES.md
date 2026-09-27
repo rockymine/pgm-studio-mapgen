@@ -1544,8 +1544,8 @@ mis-keyed shell cannot reach a world.
 
 `roomStyles` takes a bare `HouseStyle`. `dressing.styles` takes a `PropStyle`, which is polymorphic — so the
 same document two keys away needs the discriminator: `{"kind": "house", "shell": <HouseStyle>}`. Without it
-`DressingJson.ParseStyles` throws and the answer is **500 / `RQ2`**, the studio's own fault rather than the
-document's, with the field that caused it named only in the server log.
+the answer is **`DR-DOC`** naming the recipe and the field, and the same holds for any material inside the
+shell that names no `kind` — a storey `deck` written as a band stack is `shell.storeys[1].deck`.
 
 ---
 
