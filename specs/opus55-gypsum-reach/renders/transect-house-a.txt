@@ -1,0 +1,62 @@
+## house-a (house) along x
+TRANSECT 26 stations from (-94, 0) to (-69, 0), every 1
+  station        ground  surface  water  top  standing            step
+  (  -94,     0)      21       21           21                      
+  (  -93,     0)      21       21           21                      
+  (  -92,     0)      21       21           21                      
+  (  -91,     0)      21       21           21                      
+  (  -90,     0)      21       21           21                      
+  (  -89,     0)      21       21           21                      
+  (  -88,     0)      21       21           21                      
+  (  -87,     0)      21       21           36  house house-a       
+  (  -86,     0)      21       21           36  house house-a       
+  (  -85,     0)      21       21           36  house house-a       
+  (  -84,     0)      21       21           36  house house-a       
+  (  -83,     0)      21       21           36  house house-a       
+  (  -82,     0)      21       21           36  house house-a       
+  (  -81,     0)      21       21           36  house house-a       
+  (  -80,     0)      21       21           36  house house-a       
+  (  -79,     0)      21       21           36  house house-a       
+  (  -78,     0)      21       21           36  house house-a       
+  (  -77,     0)      21       21           36  house house-a       
+  (  -76,     0)      21       21           36  house house-a       
+  (  -75,     0)      21       21           21                      
+  (  -74,     0)      21       21           21                      
+  (  -73,     0)      21       21           21                      
+  (  -72,     0)      21       21           21                      
+  (  -71,     0)      21       21           21                      
+  (  -70,     0)      21       21           21                      
+  (  -69,     0)      21       21           21  stroke path-lip     
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house house-a at (-87, -2), stroke path-lip at (-71, -2)
+
+## house-a (house) along z
+TRANSECT 25 stations from (-82, -12) to (-82, 12), every 1
+  station        ground  surface  water  top  standing            step
+  (  -82,   -12)      22       22           22  stroke path-mon     
+  (  -82,   -11)      22       22           22  stroke path-mon     
+  (  -82,   -10)      22       22           22                      
+  (  -82,    -9)      22       22           22                      
+  (  -82,    -8)      22       22           22  stroke path-lip     
+  (  -82,    -7)      22       22           22  stroke path-lip     
+  (  -82,    -6)      22       22           22  stroke path-lip     
+  (  -82,    -5)      21       21           31  house house-a       -1
+  (  -82,    -4)      21       21           32  house house-a       
+  (  -82,    -3)      21       21           33  house house-a       
+  (  -82,    -2)      21       21           34  house house-a       
+  (  -82,    -1)      21       21           35  house house-a       
+  (  -82,     0)      21       21           36  house house-a       
+  (  -82,     1)      21       21           35  house house-a       
+  (  -82,     2)      21       21           34  house house-a       
+  (  -82,     3)      21       21           33  house house-a       
+  (  -82,     4)      21       21           32  house house-a       
+  (  -82,     5)      21       21           31  house house-a       
+  (  -82,     6)      21       21           21                      
+  (  -82,     7)      21       21           21                      
+  (  -82,     8)      21       21           21                      
+  (  -82,     9)      21       21           21                      
+  (  -82,    10)      21       21           21                      
+  (  -82,    11)      21       21           31  house house-b       
+  (  -82,    12)      21       21           32  house house-b       
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-mon at (-82, -14), stroke path-lip at (-84, -8), house house-a at (-84, -5), house house-b at (-84, 11)

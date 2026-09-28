@@ -1,0 +1,37 @@
+HEIGHTMAP  1 char = 3x3 blocks (the top-left block of each)  x -124..122 across, z -48..45 down
+KEY  char = ground height above y12 in bands of 1 block(s): 0 = y12..12, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
+      -2 -1 -0  -9 -8 -7  -6 -5 -4  -3 -2 -1   0  1  2   3  4  5   6  7  8   9  0  1   2
+     41852963074185296307418529630741852963074125814703692581470369258147036925814703692
+ -48        aaaaajnnmmmmmmmllb77776665555           555555666789aabbbba9888899999       
+ -45        aaaaaknnmmmmmmmlla77776665555           55555567899abbbbccba988899999       
+ -42        aaaaabjnmmmmmmmli887776665555           555555689aabbbbbcccb988899999       
+ -39        aaaaaaagmmmmmmmc8887776665555           55555579aaabbbbbcccba88999999       
+ -36        aaaaaaaaajmmmk988887776655555           55555679aabbbbbbcccba88999999       
+ -33        aaaaaaaaaacca9998886346655544           44455679aabbbbbccccba99999999       
+ -30        aaaaaaaaaaaa99998873114655444           44455579aabbbbbccccba99999999       
+ -27        aaaaaaaaaaaaaa999861111455444           444555689abbbbbccccba99999999       
+ -24        aaaaaaaaaaaaaaa99861110155444           4445556789abbbccccca999999999       
+ -21        aaaaaaaaaaaaaaa99842110035444           444555666789abbcccb99HHHH999a       
+ -18        aaaaaaaaaaaa!Haa9842110035544           44555666677889abaa999HHHH99aa       
+ -15        baaaaaaaaaaaHHaa9852110025555           555556666777788999899HHHH9aaa       
+ -12 cccccccbbaaaaaaaaaaaaa99862110025555           555566664677788888999HHHH9aabccccccc
+  -9 ccccccccaaaaaaaaaaaaaa99862110046555           55556663147788888999999999aabccccccc
+  -6 cHHHHHcba99999aaaaaa9998861110046656           66666640126888889999HHHH9999bccHHHHc
+  -3 cHHHHHc988999HHHH9999998861110166666           66666611115888899999HHHH99889ccHHHHc
+   0 cHHHHHc988999HHHH9999988872110366666           66666401114888999999HHHH99889ccHHHHc
+   3 cHHHHHcb99999HHHH9999888872111566666           66666201114889999999HHHH9999accHHHHc
+   6 cHHHHHcba999999999998888873113666555           5556510111488999aaaaaaa9999abccHHHHc
+   9 cccccccbaa99999999988888776236665555           55555101114899aaaaaaaaaaaaaabccccccc
+  12        baa9HHHH999888888777666665555           55553001114899aaaaaaaaaaaaaab       
+  15        aaa9HHHH999999998777666655555           55553001113899aa!aaaaaaaaaaab       
+  18        aa99HHHH999abbba9877666655544           44455101112899aaaaaaaaaaaaaaa       
+  21        a999999999bccccbba98766555444           44455001113899aaaaaaaaaaaaaaa       
+  24        999999999acccccbbbaa986555444           444553011148999aaaaaaaaaaaaaa       
+  27        999999999bccccbbbbbaa97655444           4445553111588999aaaaaaaaaaaaa       
+  30        999999989bccccbbbbbaaa8655444           444556641278899999aaaaaaaaaaa       
+  33        999999989bccccbbbbbaaa8655544           4445566656888899diicaaaaaaaaa       
+  36        999999889bccccbbbbbaaa8655555           55555666777888bkmmmmjaaaaaaaa       
+  39        999999889bcccbbbbbbaa97655555           5555566677788gmmmmmmmnfaaaaaa       
+  42        999999889abccbbbbbaa986655555           555556667778hllmmmmmmnnkaaaaa       
+  45        9999988889bccbbbba98766655555           555566667778lllmmmmmmmnnaaaaa       
+low y12, high y35, range 23

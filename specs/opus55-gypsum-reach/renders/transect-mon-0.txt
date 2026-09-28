@@ -1,0 +1,61 @@
+## mon-0 (destroyable) along x
+TRANSECT 25 stations from (-78, -16) to (-54, -16), every 1
+  station        ground  surface  water  top  standing            step
+  (  -78,   -16)      22       22           22                      
+  (  -77,   -16)      22       22           22                      
+  (  -76,   -16)      22       22           22                      
+  (  -75,   -16)      22       22           22                      
+  (  -74,   -16)      22       22           22                      
+  (  -73,   -16)      22       22           22                      
+  (  -72,   -16)      22       22           22                      
+  (  -71,   -16)      22       22           22                      
+  (  -70,   -16)      22       22           22                      
+  (  -69,   -16)      22       22           22                      
+  (  -68,   -16)      22       22           22  destroyable mon     
+  (  -67,   -16)      22       22           48  destroyable mon     
+  (  -66,   -16)      22       22           49  destroyable mon     
+  (  -65,   -16)      22       22           48  destroyable mon     
+  (  -64,   -16)      22       22           22  destroyable mon     
+  (  -63,   -16)      22       22           22                      
+  (  -62,   -16)      22       22           22                      
+  (  -61,   -16)      22       22           22                      
+  (  -60,   -16)      22       22           22                      
+  (  -59,   -16)      22       22           22                      
+  (  -58,   -16)      22       22           22                      
+  (  -57,   -16)      21       21           21                      -1
+  (  -56,   -16)      21       21           21                      
+  (  -55,   -16)      21       21           21                      
+  (  -54,   -16)      21       21           21                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-mon at (-80, -15), destroyable mon at (-68, -18)
+
+## mon-0 (destroyable) along z
+TRANSECT 25 stations from (-66, -28) to (-66, -4), every 1
+  station        ground  surface  water  top  standing            step
+  (  -66,   -28)      22       22           22                      
+  (  -66,   -27)      22       22           22                      
+  (  -66,   -26)      22       22           22                      
+  (  -66,   -25)      22       22           22                      
+  (  -66,   -24)      22       22           22                      
+  (  -66,   -23)      22       22           22                      
+  (  -66,   -22)      22       22           22                      
+  (  -66,   -21)      22       22           22                      
+  (  -66,   -20)      22       22           22                      
+  (  -66,   -19)      22       22           22                      
+  (  -66,   -18)      22       22           22  destroyable mon     
+  (  -66,   -17)      22       22           48  destroyable mon     
+  (  -66,   -16)      22       22           49  destroyable mon     
+  (  -66,   -15)      22       22           48  destroyable mon     
+  (  -66,   -14)      22       22           22  destroyable mon     
+  (  -66,   -13)      22       22           22                      
+  (  -66,   -12)      22       22           22                      
+  (  -66,   -11)      22       22           22                      
+  (  -66,   -10)      22       22           22                      
+  (  -66,    -9)      22       22           22                      
+  (  -66,    -8)      22       22           22                      
+  (  -66,    -7)      22       22           22                      
+  (  -66,    -6)      22       22           22                      
+  (  -66,    -5)      21       21           21                      -1
+  (  -66,    -4)      21       21           21                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable mon at (-68, -18), stroke path-lip at (-68, -2)

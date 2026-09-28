@@ -1,0 +1,57 @@
+## spawn-blue (spawn) along x
+TRANSECT 29 stations from (-4, -92) to (24, -92), every 1
+  station        ground  surface  water  top  standing            step
+  (   -4,   -92)                                                    void
+  (   -3,   -92)                                                    void
+  (   -2,   -92)                                                    void
+  (   -1,   -92)                                                    void
+  (    0,   -92)                                                    void
+  (    1,   -92)                                                    void
+  (    2,   -92)                                                    void
+  (    3,   -92)                                                    void
+  (    4,   -92)      13       13           20                      
+  (    5,   -92)      13       13           20  spawn spawn-1#1     
+  (    6,   -92)      13       13           20  spawn spawn-1#1     
+  (    7,   -92)      13       13           20  spawn spawn-1#1     
+  (    8,   -92)      13       13           20  spawn spawn-1#1     
+  (    9,   -92)      13       13           20  spawn spawn-1#1     
+  (   10,   -92)      13       13           20  spawn spawn-1#1     
+  (   11,   -92)      13       13           20  spawn spawn-1#1     
+  (   12,   -92)      13       13           20  spawn spawn-1#1     
+  (   13,   -92)      13       13           20  spawn spawn-1#1     
+  (   14,   -92)      13       13           20  spawn spawn-1#1     
+  (   15,   -92)      13       13           20                      
+  (   16,   -92)                                                    void
+  (   17,   -92)                                                    void
+  (   18,   -92)                                                    void
+  (   19,   -92)                                                    void
+  (   20,   -92)                                                    void
+  (   21,   -92)                                                    void
+  (   22,   -92)                                                    void
+  (   23,   -92)                                                    void
+  (   24,   -92)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (5, -94)
+
+## spawn-blue (spawn) along z
+TRANSECT 17 stations from (10, -96) to (10, -80), every 1
+  station        ground  surface  water  top  standing            step
+  (   10,   -96)      13       13           20                      
+  (   10,   -95)      13       13           20  spawn spawn-1#1     
+  (   10,   -94)      13       13           20  spawn spawn-1#1     
+  (   10,   -93)      13       13           20  spawn spawn-1#1     
+  (   10,   -92)      13       13           20  spawn spawn-1#1     
+  (   10,   -91)      13       13           20  spawn spawn-1#1     
+  (   10,   -90)      13       13           20  spawn spawn-1#1     
+  (   10,   -89)      13       13           20                      
+  (   10,   -88)      13       13           13                      
+  (   10,   -87)      13       13           13  stroke path-front#1  
+  (   10,   -86)      13       13           13  stroke path-front#1  
+  (   10,   -85)      13       13           13  stroke path-front#1  
+  (   10,   -84)      13       13           13  stroke path-front#1  
+  (   10,   -83)      13       13           13  stroke path-front#1  
+  (   10,   -82)      13       13           13  stroke path-front#1  
+  (   10,   -81)      13       13           13  stroke path-front#1  
+  (   10,   -80)      13       13           13  stroke path-front#1  
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (8, -95), stroke path-front#1 at (9, -87)

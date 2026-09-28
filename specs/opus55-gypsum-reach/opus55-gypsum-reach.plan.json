@@ -1,0 +1,79 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Gypsum Reach",
+  "authors": [
+   "Opus 5.5"
+  ]
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 20
+ },
+ "pieces": [
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -31,
+    -3,
+    5,
+    6
+   ],
+   "surface": 24
+  },
+  {
+   "id": "field",
+   "rect": [
+    -26,
+    -12,
+    22,
+    24
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "strait",
+   "rect": [
+    -4,
+    -12,
+    4,
+    24
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "sp",
+    "piece": "spawn",
+    "at": [
+     10,
+     12
+    ],
+    "facing": "right",
+    "footprint": [
+     2,
+     5,
+     14,
+     14
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "mon",
+    "piece": "field",
+    "at": [
+     38,
+     32
+    ],
+    "style": "pillar-3",
+    "name": "Gypsum Monument"
+   }
+  ]
+ }
+}

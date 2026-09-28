@@ -1,0 +1,61 @@
+## house-b (house) along x
+TRANSECT 26 stations from (-98, 15) to (-73, 15), every 1
+  station        ground  surface  water  top  standing            step
+  (  -98,    15)      22       22           22                      
+  (  -97,    15)      22       22           22                      
+  (  -96,    15)      22       22           22                      
+  (  -95,    15)      21       21           21                      -1
+  (  -94,    15)      21       21           21                      
+  (  -93,    15)      21       21           21                      
+  (  -92,    15)      21       21           21                      
+  (  -91,    15)      21       21           35  house house-b       
+  (  -90,    15)      21       21           35  house house-b       
+  (  -89,    15)      21       21           35  house house-b       
+  (  -88,    15)      21       21           35  house house-b       
+  (  -87,    15)      21       21           35  house house-b       
+  (  -86,    15)      21       21           35  house house-b       
+  (  -85,    15)      21       21           35  house house-b       
+  (  -84,    15)      21       21           35  house house-b       
+  (  -83,    15)      21       21           35  house house-b       
+  (  -82,    15)      21       21           35  house house-b       
+  (  -81,    15)      21       21           35  house house-b       
+  (  -80,    15)      21       21           35  house house-b       
+  (  -79,    15)      21       21           21                      
+  (  -78,    15)      21       21           21                      
+  (  -77,    15)      21       21           21                      
+  (  -76,    15)      21       21           21                      
+  (  -75,    15)      21       21           21                      
+  (  -74,    15)      21       21           21                      
+  (  -73,    15)      21       21           21                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house house-b at (-91, 13)
+
+## house-b (house) along z
+TRANSECT 24 stations from (-86, 4) to (-86, 27), every 1
+  station        ground  surface  water  top  standing            step
+  (  -86,     4)      21       21           32  house house-a       
+  (  -86,     5)      21       21           31  house house-a       
+  (  -86,     6)      21       21           21                      
+  (  -86,     7)      21       21           21                      
+  (  -86,     8)      21       21           21                      
+  (  -86,     9)      21       21           21                      
+  (  -86,    10)      21       21           21                      
+  (  -86,    11)      21       21           31  house house-b       
+  (  -86,    12)      21       21           32  house house-b       
+  (  -86,    13)      21       21           33  house house-b       
+  (  -86,    14)      21       21           34  house house-b       
+  (  -86,    15)      21       21           35  house house-b       
+  (  -86,    16)      21       21           35  house house-b       
+  (  -86,    17)      21       21           34  house house-b       
+  (  -86,    18)      21       21           33  house house-b       
+  (  -86,    19)      21       21           32  house house-b       
+  (  -86,    20)      21       21           31  house house-b       
+  (  -86,    21)      21       21           21                      
+  (  -86,    22)      21       21           21                      
+  (  -86,    23)      21       21           21                      
+  (  -86,    24)      21       21           21                      
+  (  -86,    25)      21       21           21                      
+  (  -86,    26)      21       21           21                      
+  (  -86,    27)      21       21           21                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house house-a at (-87, 2), house house-b at (-88, 11)
