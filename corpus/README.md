@@ -10,6 +10,12 @@ was driven lives in `maps/`; what is here was built by hand and is read by tools
 **A tree here is the only thing a `copied` style may be cut from.** `copied` means cut out of a world, so a
 body assembled by hand and filed as one is a recipe claiming a provenance it does not have.
 
+**Every tree here was built by rockymine, and a board planting one credits them.** The seeder records the
+builder on each cut when it is run with `--builder=rockymine`, which `tools/seed-studio.py` passes, and the
+studio writes `map.xml` a contributor for the `Trees` wherever a copied tree of theirs stands. A recipe pulled
+with `GET /api/tree-styles/{id}/json` carries the name as `builder`; a style copied into a spec by hand keeps it
+only if the copy does.
+
 ## What each row is
 
 **A seeded recipe is named `showcase-r<row>-<n>`, and the name says where the tree stood and nothing

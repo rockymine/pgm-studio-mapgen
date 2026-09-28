@@ -39,6 +39,8 @@ CANDIDATES = ["http://localhost:7894/api", "http://localhost:5000/api", "http://
 # The corpus world the copied trees are cut out of, and the name every recipe from it is filed under.
 CORPUS_WORLD = os.path.join(ROOT, "corpus", "tree-showcase")
 CORPUS_TREES = "showcase"
+# Who built every tree in the corpus world. The cut records it, and a map a copied tree stands on credits them.
+CORPUS_BUILDER = "rockymine"
 # Where the studio's own checkout is. Stated as candidates rather than as a constant, because a path is
 # the machine somebody happened to be on.
 STUDIO_REPOS = [os.environ.get("PGM_STUDIO_REPO", ""), "/home/user/pgm-studio",
@@ -155,7 +157,8 @@ def seed_trees():
         return f"SKIPPED — no world at {CORPUS_WORLD}"
     began = time.time()
     done = subprocess.run(
-        ["dotnet", "run", os.path.join("tools", "seed-trees.cs"), CORPUS_WORLD, CORPUS_TREES],
+        ["dotnet", "run", os.path.join("tools", "seed-trees.cs"), CORPUS_WORLD, CORPUS_TREES,
+         f"--builder={CORPUS_BUILDER}"],
         cwd=studio, capture_output=True, text=True)
     if done.returncode != 0:
         tail = (done.stderr or done.stdout).strip().splitlines()[-1:] or ["no output"]
