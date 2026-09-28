@@ -1,0 +1,58 @@
+## ruin-south (made) along x
+TRANSECT 20 stations from (-37, -37) to (-18, -37), every 1
+  station        ground  surface  water  top  standing            step
+  (  -37,   -37)      18       18           18                      
+  (  -36,   -37)      18       18           18                      
+  (  -35,   -37)      18       18           18                      
+  (  -34,   -37)      18       18           18                      
+  (  -33,   -37)      18       18           18                      
+  (  -32,   -37)      18       18           18                      
+  (  -31,   -37)      17       17           17                      -1
+  (  -30,   -37)      17       17           17                      
+  (  -29,   -37)      16       20           20  storey              BARRIER +3
+  (  -28,   -37)      16       18           18  storey              -2
+  (  -27,   -37)      16       20           20  storey              scramble +2
+  (  -26,   -37)      17       17           17                      -3
+  (  -25,   -37)      17       17           17                      
+  (  -24,   -37)      17       17           17                      
+  (  -23,   -37)      17       17           17                      
+  (  -22,   -37)      17       17           17                      
+  (  -21,   -37)      17       17           17                      
+  (  -20,   -37)      17       17           17                      
+  (  -19,   -37)      17       17           17                      
+  (  -18,   -37)      17       17           17                      
+rises 2, falls 3, worst step 3: 1 barrier, 1 scramble, 0 drop — BARRIER +3 at (-29, -37); scramble +2 at (-27, -37) | walked end to end
+beside: boulder b1 at (-38, -39)
+
+## ruin-south (made) along z
+TRANSECT 27 stations from (-28, -48) to (-28, -22), every 1
+  station        ground  surface  water  top  standing            step
+  (  -28,   -48)                                                    void
+  (  -28,   -47)                                                    void
+  (  -28,   -46)      17       17           17                      
+  (  -28,   -45)      17       17           17                      
+  (  -28,   -44)      16       18           18  storey              +1
+  (  -28,   -43)      16       18           18  storey              
+  (  -28,   -42)      16       18           18  storey              
+  (  -28,   -41)      16       18           18  storey              
+  (  -28,   -40)      16       18           18  storey              
+  (  -28,   -39)      16       18           18  storey              
+  (  -28,   -38)      16       18           18  storey              
+  (  -28,   -37)      16       18           18  storey              
+  (  -28,   -36)      16       18           18  storey              
+  (  -28,   -35)      16       18           18  storey              
+  (  -28,   -34)      16       18           18  storey              
+  (  -28,   -33)      16       18           18  storey              
+  (  -28,   -32)      16       18           18  storey              
+  (  -28,   -31)      16       18           18  storey              
+  (  -28,   -30)      17       17           17                      -1
+  (  -28,   -29)      17       17           17                      
+  (  -28,   -28)      17       17           17                      
+  (  -28,   -27)      17       17           17                      
+  (  -28,   -26)      17       17           17                      
+  (  -28,   -25)      17       17           17                      
+  (  -28,   -24)      17       17           17                      
+  (  -28,   -23)      17       17           17                      
+  (  -28,   -22)      17       17           17                      
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: (none)

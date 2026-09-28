@@ -1,0 +1,61 @@
+## watch-platform (made) along x
+TRANSECT 25 stations from (-43, 15) to (-19, 15), every 1
+  station        ground  surface  water  top  standing            step
+  (  -43,    15)      13       13           13                      
+  (  -42,    15)      13       13           13                      
+  (  -41,    15)      13       13           13                      
+  (  -40,    15)      13       13           13                      
+  (  -39,    15)      13       13           13                      
+  (  -38,    15)      13       13           13                      
+  (  -37,    15)      13       13           13                      
+  (  -36,    15)      12       12           12                      -1
+  (  -35,    15)      12       19           19  storey              BARRIER +7
+  (  -34,    15)      12       19           19  storey              
+  (  -33,    15)      12       19           19  storey              
+  (  -32,    15)      12       19           19  storey              
+  (  -31,    15)      12       19           19  storey              
+  (  -30,    15)      12       19           19  storey              
+  (  -29,    15)      12       19           19  storey              
+  (  -28,    15)      12       19           19  storey              
+  (  -27,    15)      12       12           12                      DROP -7
+  (  -26,    15)      12       12           12                      
+  (  -25,    15)      12       12           12                      
+  (  -24,    15)      12       12           12                      
+  (  -23,    15)      12       12           12                      
+  (  -22,    15)      12       12           12                      
+  (  -21,    15)      12       12           12                      
+  (  -20,    15)      12       12           12                      
+  (  -19,    15)      11       11           11                      -1
+rises 1, falls 3, worst step 7: 1 barrier, 0 scramble, 1 drop — BARRIER +7 at (-35, 15); DROP -7 at (-27, 15) | walked end to end
+beside: water stream at (-45, 13)
+
+## watch-platform (made) along z
+TRANSECT 25 stations from (-31, 3) to (-31, 27), every 1
+  station        ground  surface  water  top  standing            step
+  (  -31,     3)      12       12           12                      
+  (  -31,     4)      12       12           12                      
+  (  -31,     5)      12       12           12                      
+  (  -31,     6)      12       12           12                      
+  (  -31,     7)      12       12           12                      
+  (  -31,     8)      12       12           12                      
+  (  -31,     9)      12       12           12                      
+  (  -31,    10)      12       12           12                      
+  (  -31,    11)      12       19           19  storey              BARRIER +7
+  (  -31,    12)      12       19           19  storey              
+  (  -31,    13)      12       19           19  storey              
+  (  -31,    14)      12       19           19  storey              
+  (  -31,    15)      12       19           19  storey              
+  (  -31,    16)      12       19           19  storey              
+  (  -31,    17)      12       19           19  storey              
+  (  -31,    18)      12       19           19  storey              
+  (  -31,    19)      12       12           12                      DROP -7
+  (  -31,    20)      12       12           12                      
+  (  -31,    21)      12       12           12                      
+  (  -31,    22)      12       12           12                      
+  (  -31,    23)      12       12           12                      
+  (  -31,    24)      12       12           12                      
+  (  -31,    25)      12       12           12                      
+  (  -31,    26)      12       12           12                      
+  (  -31,    27)      12       12           12                      
+rises 1, falls 1, worst step 7: 1 barrier, 0 scramble, 1 drop — BARRIER +7 at (-31, 11); DROP -7 at (-31, 19) | walked end to end
+beside: stroke path-causeway-east at (-33, 1), flora fen-cover at (-30, 3)

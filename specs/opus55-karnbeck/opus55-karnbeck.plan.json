@@ -1,0 +1,78 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Karnbeck",
+  "authors": [
+   "Opus 5.5"
+  ]
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 16
+ },
+ "pieces": [
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -31,
+    -3,
+    4,
+    6
+   ],
+   "surface": 24
+  },
+  {
+   "id": "field",
+   "rect": [
+    -27,
+    -14,
+    23,
+    28
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "strait",
+   "rect": [
+    -4,
+    -14,
+    4,
+    28
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "sp",
+    "piece": "spawn",
+    "at": [
+     8,
+     12
+    ],
+    "facing": "right",
+    "footprint": [
+     1,
+     5,
+     14,
+     14
+    ]
+   }
+  ],
+  "cores": [
+   {
+    "id": "core",
+    "piece": "field",
+    "at": [
+     46,
+     66
+    ],
+    "name": "Keep Core"
+   }
+  ]
+ }
+}

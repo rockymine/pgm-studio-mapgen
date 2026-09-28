@@ -1,0 +1,60 @@
+## house-c (house) along x
+TRANSECT 25 stations from (-122, -13) to (-98, -13), every 1
+  station        ground  surface  water  top  standing            step
+  ( -122,   -13)      16       16           16                      
+  ( -121,   -13)      15       15           15                      -1
+  ( -120,   -13)      15       15           15                      
+  ( -119,   -13)      15       15           15                      
+  ( -118,   -13)      15       15           15                      
+  ( -117,   -13)      15       15           15                      
+  ( -116,   -13)      15       15           15                      
+  ( -115,   -13)      15       15           28  house house-c       
+  ( -114,   -13)      15       15           28  house house-c       
+  ( -113,   -13)      15       15           28  house house-c       
+  ( -112,   -13)      15       15           28  house house-c       
+  ( -111,   -13)      15       15           28  house house-c       
+  ( -110,   -13)      15       15           28  house house-c       
+  ( -109,   -13)      14       14           28  house house-c       -1
+  ( -108,   -13)      14       14           28  house house-c       
+  ( -107,   -13)      14       14           28  house house-c       
+  ( -106,   -13)      14       14           28  house house-c       
+  ( -105,   -13)      14       14           28  house house-c       
+  ( -104,   -13)      14       14           14                      
+  ( -103,   -13)      14       14           14                      
+  ( -102,   -13)      14       14           14                      
+  ( -101,   -13)      14       14           28  house house-d       
+  ( -100,   -13)      14       14           28  house house-d       
+  (  -99,   -13)      14       14           28  house house-d       
+  (  -98,   -13)      14       14           28  house house-d       
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house house-c at (-115, -15), house house-d at (-101, -15)
+
+## house-c (house) along z
+TRANSECT 24 stations from (-110, -24) to (-110, -1), every 1
+  station        ground  surface  water  top  standing            step
+  ( -110,   -24)      15       15           15  tree w1             
+  ( -110,   -23)      15       15           15                      
+  ( -110,   -22)      15       15           15                      
+  ( -110,   -21)      15       15           15                      
+  ( -110,   -20)      15       15           15                      
+  ( -110,   -19)      15       15           15                      
+  ( -110,   -18)      15       15           15                      
+  ( -110,   -17)      15       15           24  house house-c       
+  ( -110,   -16)      15       15           25  house house-c       
+  ( -110,   -15)      15       15           26  house house-c       
+  ( -110,   -14)      15       15           27  house house-c       
+  ( -110,   -13)      15       15           28  house house-c       
+  ( -110,   -12)      14       14           28  house house-c       -1
+  ( -110,   -11)      14       14           27  house house-c       
+  ( -110,   -10)      14       14           26  house house-c       
+  ( -110,    -9)      14       14           25  house house-c       
+  ( -110,    -8)      14       14           24  house house-c       
+  ( -110,    -7)      14       14           14                      
+  ( -110,    -6)      14       14           14                      
+  ( -110,    -5)      13       13           13                      -1
+  ( -110,    -4)      13       13           13                      
+  ( -110,    -3)      13       13           13                      
+  ( -110,    -2)      13       13           13                      
+  ( -110,    -1)      13       13           13                      
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree w1 at (-112, -26), house house-c at (-112, -17), stroke path-causeway at (-112, -1)

@@ -1,0 +1,59 @@
+## cabin-a (house) along x
+TRANSECT 24 stations from (-24, 66) to (-1, 66), every 1
+  station        ground  surface  water  top  standing            step
+  (  -24,    66)                                                    void
+  (  -23,    66)                                                    void
+  (  -22,    66)                                                    void
+  (  -21,    66)                                                    void
+  (  -20,    66)                                                    void
+  (  -19,    66)                                                    void
+  (  -18,    66)                                                    void
+  (  -17,    66)                            22  house cabin-a       void
+  (  -16,    66)      13       13           22  house cabin-a       
+  (  -15,    66)      13       13           22  tree s2             
+  (  -14,    66)      13       13           22  house cabin-a       
+  (  -13,    66)      13       13           22  house cabin-a       
+  (  -12,    66)      13       13           22  house cabin-a       
+  (  -11,    66)      13       13           22  house cabin-a       
+  (  -10,    66)      13       13           22  house cabin-a       
+  (   -9,    66)      13       13           22  house cabin-a       
+  (   -8,    66)      13       13           22  house cabin-a       
+  (   -7,    66)      13       13           13                      
+  (   -6,    66)      13       13           13                      
+  (   -5,    66)      13       13           13                      
+  (   -4,    66)      13       13           13                      
+  (   -3,    66)      13       13           13                      
+  (   -2,    66)      13       13           13                      
+  (   -1,    66)      13       13           13                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wall 0 at (-21, 68), tree s2 at (-20, 64), house cabin-a at (-17, 66)
+
+## cabin-a (house) along z
+TRANSECT 24 stations from (-13, 55) to (-13, 78), every 1
+  station        ground  surface  water  top  standing            step
+  (  -13,    55)      13       13           33  tree s2             
+  (  -13,    56)      13       13           34  tree s2             
+  (  -13,    57)      12       12           35  tree s2             -1
+  (  -13,    58)      12       12           35  tree s2             
+  (  -13,    59)      12       12           37  tree s2             
+  (  -13,    60)      12       12           35  tree s2             
+  (  -13,    61)      12       12           34  tree s2             
+  (  -13,    62)      12       12           30  tree s2             
+  (  -13,    63)      13       13           28  tree s2             +1
+  (  -13,    64)      13       13           24  tree s2             
+  (  -13,    65)      13       13           21  tree s2             
+  (  -13,    66)      13       13           22  house cabin-a       
+  (  -13,    67)      13       13           22  house cabin-a       
+  (  -13,    68)      13       13           21  house cabin-a       
+  (  -13,    69)      14       14           20  house cabin-a       +1
+  (  -13,    70)      14       14           19  house cabin-a       
+  (  -13,    71)      14       14           18  house cabin-a       
+  (  -13,    72)      14       14           14                      
+  (  -13,    73)      14       14           14  stroke path-wool-a  
+  (  -13,    74)      14       14           14  stroke path-wool-a  
+  (  -13,    75)      14       14           14  stroke path-wool-a  
+  (  -13,    76)      14       14           14                      
+  (  -13,    77)      14       14           14                      
+  (  -13,    78)      14       14           14                      
+rises 2, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree s2 at (-15, 53), house cabin-a at (-11, 65), stroke path-wool-a at (-11, 72)

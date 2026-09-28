@@ -1,0 +1,59 @@
+## house-b (house) along x
+TRANSECT 24 stations from (-110, -23) to (-87, -23), every 1
+  station        ground  surface  water  top  standing            step
+  ( -110,   -23)                                                    void
+  ( -109,   -23)                                                    void
+  ( -108,   -23)      17       17           17                      
+  ( -107,   -23)      17       17           18  flora meadow-cover  
+  ( -106,   -23)      17       17           18  flora meadow-cover  
+  ( -105,   -23)      17       17           18  flora meadow-cover  
+  ( -104,   -23)      17       17           17                      
+  ( -103,   -23)      17       17           24  house house-b       
+  ( -102,   -23)      17       17           24  house house-b       
+  ( -101,   -23)      17       17           24  house house-b       
+  ( -100,   -23)      17       17           24  house house-b       
+  (  -99,   -23)      17       17           24  house house-b       
+  (  -98,   -23)      17       17           24  house house-b       
+  (  -97,   -23)      16       16           24  house house-b       -1
+  (  -96,   -23)      16       16           24  house house-b       
+  (  -95,   -23)      16       16           24  house house-b       
+  (  -94,   -23)      16       16           24  house house-b       
+  (  -93,   -23)      16       16           16  water mill-pond     
+  (  -92,   -23)      16       16           16  water mill-pond     
+  (  -91,   -23)      16       16           16                      
+  (  -90,   -23)      16       16           16                      
+  (  -89,   -23)      16       16           16                      
+  (  -88,   -23)      16       16           16                      
+  (  -87,   -23)      16       16           16                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora meadow-cover at (-108, -22), house house-b at (-103, -25), water mill-pond at (-93, -25), stroke path-mill at (-89, -21)
+
+## house-b (house) along z
+TRANSECT 24 stations from (-99, -34) to (-99, -11), every 1
+  station        ground  surface  water  top  standing            step
+  (  -99,   -34)      15       15           22  house house-a       
+  (  -99,   -33)      15       15           21  house house-a       
+  (  -99,   -32)      15       15           20  house house-a       
+  (  -99,   -31)      15       15           15                      
+  (  -99,   -30)      16       16           16                      +1
+  (  -99,   -29)      16       16           16                      
+  (  -99,   -28)      16       16           16                      
+  (  -99,   -27)      16       16           20  house house-b       
+  (  -99,   -26)      16       16           21  house house-b       
+  (  -99,   -25)      16       16           22  house house-b       
+  (  -99,   -24)      16       16           23  house house-b       
+  (  -99,   -23)      17       17           24  house house-b       +1
+  (  -99,   -22)      17       17           24  house house-b       
+  (  -99,   -21)      17       17           23  house house-b       
+  (  -99,   -20)      17       17           22  house house-b       
+  (  -99,   -19)      18       18           21  house house-b       +1
+  (  -99,   -18)      18       18           20  house house-b       
+  (  -99,   -17)      18       18           18                      
+  (  -99,   -16)      18       18           18                      
+  (  -99,   -15)      19       19           19  stroke path-mill    +1
+  (  -99,   -14)      19       19           19  stroke path-mill    
+  (  -99,   -13)      19       19           19  stroke path-mill    
+  (  -99,   -12)      19       19           19  stroke path-mill    
+  (  -99,   -11)      20       20           20  stroke path-mill    +1
+rises 5, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house house-a at (-101, -36), house house-b at (-101, -27), stroke path-mill at (-97, -17)

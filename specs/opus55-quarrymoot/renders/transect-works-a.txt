@@ -1,0 +1,61 @@
+## works-a (house) along x
+TRANSECT 25 stations from (-62, 54) to (-38, 54), every 1
+  station        ground  surface  water  top  standing            step
+  (  -62,    54)      18       18           18  tree a2             
+  (  -61,    54)      18       18           18  tree a2             
+  (  -60,    54)      18       18           18  tree a2             
+  (  -59,    54)      18       18           18  tree a2             
+  (  -58,    54)      18       18           18  tree a2             
+  (  -57,    54)      18       18           18  tree a2             
+  (  -56,    54)      18       18           18  tree a2             
+  (  -55,    54)      18       18           33  tree a2             
+  (  -54,    54)      18       18           33  tree a2             
+  (  -53,    54)      18       18           33  house works-a       
+  (  -52,    54)      18       18           33  house works-a       
+  (  -51,    54)      18       18           33  house works-a       
+  (  -50,    54)      18       18           33  house works-a       
+  (  -49,    54)      18       18           33  house works-a       
+  (  -48,    54)      18       18           33  house works-a       
+  (  -47,    54)      18       18           33  house works-a       
+  (  -46,    54)      18       18           33  house works-a       
+  (  -45,    54)      18       18           33  house works-a       
+  (  -44,    54)      18       18           18                      
+  (  -43,    54)      18       18           18                      
+  (  -42,    54)      19       19           19                      +1
+  (  -41,    54)      19       19           19                      
+  (  -40,    54)      19       19           19                      
+  (  -39,    54)      19       19           19                      
+  (  -38,    54)      19       19           19                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree a2 at (-62, 54), house works-a at (-55, 52)
+
+## works-a (house) along z
+TRANSECT 25 stations from (-50, 42) to (-50, 66), every 1
+  station        ground  surface  water  top  standing            step
+  (  -50,    42)      18       18           18  tree a1             
+  (  -50,    43)      18       18           18  tree a1             
+  (  -50,    44)      18       18           18  tree a1             
+  (  -50,    45)      18       18           18                      
+  (  -50,    46)      18       18           18                      
+  (  -50,    47)      18       18           18                      
+  (  -50,    48)      18       18           18                      
+  (  -50,    49)      18       18           28  house works-a       
+  (  -50,    50)      18       18           29  house works-a       
+  (  -50,    51)      18       18           30  house works-a       
+  (  -50,    52)      18       18           31  house works-a       
+  (  -50,    53)      18       18           32  house works-a       
+  (  -50,    54)      18       18           33  house works-a       
+  (  -50,    55)      18       18           32  house works-a       
+  (  -50,    56)      18       18           31  house works-a       
+  (  -50,    57)      18       18           30  tree a2             
+  (  -50,    58)      18       18           29  tree a2             
+  (  -50,    59)      19       19           28  tree a2             +1
+  (  -50,    60)      19       19           19  tree a2             
+  (  -50,    61)      19       19           19  tree a2             
+  (  -50,    62)      19       19           19  tree a2             
+  (  -50,    63)      19       19           19  tree a2             
+  (  -50,    64)      19       19           19  tree a2             
+  (  -50,    65)      19       19           19  tree a2             
+  (  -50,    66)      19       19           19  tree a2             
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree a1 at (-52, 40), house works-a at (-52, 49), tree a2 at (-52, 55)

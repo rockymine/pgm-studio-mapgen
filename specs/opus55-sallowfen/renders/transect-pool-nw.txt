@@ -1,0 +1,87 @@
+## pool-nw (water) along x
+TRANSECT 40 stations from (-120, 44) to (-81, 44), every 1
+  station        ground  surface  water  top  standing            step
+  ( -120,    44)      15       15           15                      
+  ( -119,    44)      15       15           16  flora fen-cover     
+  ( -118,    44)      15       15           15  tree w3             
+  ( -117,    44)      16       16           16  tree w3             +1
+  ( -116,    44)      16       16           25  tree w3             
+  ( -115,    44)      16       16           24  tree w3             
+  ( -114,    44)      15       15           23  tree w3             -1
+  ( -113,    44)      14       14           14  tree w3             -1
+  ( -112,    44)      13       13           13  tree w3             -1
+  ( -111,    44)      12       12           12  tree w3             -1
+  ( -110,    44)      12       12           12  tree w3             
+  ( -109,    44)      12       12           12  tree w3             
+  ( -108,    44)      12       12           12  tree w3             
+  ( -107,    44)      12       12     12    12  tree w3             
+  ( -106,    44)      12       12     12    12  tree w3             
+  ( -105,    44)      12       12     12    12  water pool-nw       
+  ( -104,    44)      12       12     12    12  water pool-nw       
+  ( -103,    44)      12       12     12    12  water pool-nw       
+  ( -102,    44)      12       12     12    12  water pool-nw       
+  ( -101,    44)      12       12     12    12  water pool-nw       
+  ( -100,    44)      12       12     12    12  water pool-nw       
+  (  -99,    44)      12       12     12    12  water pool-nw       
+  (  -98,    44)      12       12     12    12  water pool-nw       
+  (  -97,    44)      12       12     12    12  water pool-nw       
+  (  -96,    44)      12       12     12    12  water pool-nw       
+  (  -95,    44)      12       12     12    12  water pool-nw       
+  (  -94,    44)      12       12     12    12  water pool-nw       
+  (  -93,    44)      12       12           12  water pool-nw       
+  (  -92,    44)      12       12           12  water pool-nw       
+  (  -91,    44)      12       12           12                      
+  (  -90,    44)      13       13           13                      +1
+  (  -89,    44)      15       15           15                      scramble +2
+  (  -88,    44)      16       16           16  tree w4             +1
+  (  -87,    44)      16       16           16                      
+  (  -86,    44)      16       16           16                      
+  (  -85,    44)      16       16           16                      
+  (  -84,    44)      16       16           16                      
+  (  -83,    44)      16       16           16                      
+  (  -82,    44)      16       16           16                      
+  (  -81,    44)      16       16           16                      
+rises 4, falls 4, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-89, 44) | walked end to end
+beside: flora fen-cover at (-118, 42), tree w3 at (-118, 44), water pool-nw at (-110, 42), tree o2 at (-107, 42), tree w4 at (-94, 46)
+
+## pool-nw (water) along z
+TRANSECT 36 stations from (-101, 27) to (-101, 62), every 1
+  station        ground  surface  water  top  standing            step
+  ( -101,    27)      15       15           15  tree o2             
+  ( -101,    28)      15       15           15  tree o2             
+  ( -101,    29)      15       15           22  tree o2             
+  ( -101,    30)      15       15           22  tree o3             
+  ( -101,    31)      15       15           23  tree o2             
+  ( -101,    32)      16       16           24  tree o2             +1
+  ( -101,    33)      16       16           24  tree o2             
+  ( -101,    34)      15       15           25  tree o2             -1
+  ( -101,    35)      14       14           24  tree o2             -1
+  ( -101,    36)      12       12           24  tree o2             -2
+  ( -101,    37)      12       12           24  tree o2             
+  ( -101,    38)      12       12           22  tree o2             
+  ( -101,    39)      12       12           24  tree o2             
+  ( -101,    40)      12       12     12    21  tree o2             
+  ( -101,    41)      12       12     12    21  tree o2             
+  ( -101,    42)      12       12     12    12  tree o2             
+  ( -101,    43)      12       12     12    12  water pool-nw       
+  ( -101,    44)      12       12     12    12  water pool-nw       
+  ( -101,    45)      12       12     12    12  water pool-nw       
+  ( -101,    46)      12       12     12    12  water pool-nw       
+  ( -101,    47)      12       12     12    12  water pool-nw       
+  ( -101,    48)      12       12     12    12  water pool-nw       
+  ( -101,    49)      12       12     12    12  water pool-nw       
+  ( -101,    50)      12       12           12  water pool-nw       
+  ( -101,    51)      12       12           12                      
+  ( -101,    52)      12       12           12                      
+  ( -101,    53)      12       12           12                      
+  ( -101,    54)      14       14           14                      scramble +2
+  ( -101,    55)      15       15           15                      +1
+  ( -101,    56)      16       16           16                      +1
+  ( -101,    57)      16       16           16                      
+  ( -101,    58)      16       16           16                      
+  ( -101,    59)      16       16           16                      
+  ( -101,    60)                                                    void
+  ( -101,    61)                                                    void
+  ( -101,    62)                                                    void
+rises 4, falls 3, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-101, 54) | walked end to end
+beside: tree o2 at (-103, 25), tree o3 at (-99, 25), water pool-nw at (-102, 43), tree w3 at (-103, 48), flora fen-cover at (-99, 50)

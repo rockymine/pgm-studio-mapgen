@@ -22,16 +22,16 @@ TRANSECT 29 stations from (-124, 0) to (-96, 0), every 1
   ( -106,     0)      24       24           24                      
   ( -105,     0)      24       24           24                      
   ( -104,     0)      22       22           22                      -2
-  ( -103,     0)      21       21           21  stroke path-mon     -1
-  ( -102,     0)      21       21           21  stroke path-mon     
-  ( -101,     0)      21       21           21  stroke path-mon     
+  ( -103,     0)      21       21           21                      -1
+  ( -102,     0)      21       21           21                      
+  ( -101,     0)      21       21           21                      
   ( -100,     0)      20       20           20                      -1
   (  -99,     0)      20       20           20                      
   (  -98,     0)      20       20           20                      
   (  -97,     0)      20       20           20                      
   (  -96,     0)      20       20           20                      
 rises 0, falls 3, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn sp at (-122, -2), stroke path-mon at (-103, -1)
+beside: spawn sp at (-122, -2), stroke path-mon at (-103, -2), stroke path-hamlet at (-103, 2)
 
 ## spawn-red (spawn) along z
 TRANSECT 41 stations from (-114, -20) to (-114, 20), every 1

@@ -1,0 +1,54 @@
+## lookout (made) along x
+TRANSECT 24 stations from (-23, 84) to (0, 84), every 1
+  station        ground  surface  water  top  standing            step
+  (  -23,    84)                                                    void
+  (  -22,    84)                                                    void
+  (  -21,    84)                                                    void
+  (  -20,    84)                                                    void
+  (  -19,    84)                                                    void
+  (  -18,    84)                                                    void
+  (  -17,    84)                                                    void
+  (  -16,    84)      14       14           14                      
+  (  -15,    84)      14       28           28  storey              BARRIER +14
+  (  -14,    84)      14       28           28  storey              
+  (  -13,    84)      14       28           28  storey              
+  (  -12,    84)      14       28           28  storey              
+  (  -11,    84)      14       28           28  storey              
+  (  -10,    84)      14       28           28  storey              
+  (   -9,    84)      14       28           28  storey              
+  (   -8,    84)      14       14           14                      DROP -14
+  (   -7,    84)      14       14           14                      
+  (   -6,    84)      14       14           14                      
+  (   -5,    84)      14       14           14                      
+  (   -4,    84)      14       14           14                      
+  (   -3,    84)      14       14           14                      
+  (   -2,    84)      14       14           14                      
+  (   -1,    84)      14       14           14                      
+  (    0,    84)      14       14           14                      
+rises 1, falls 1, worst step 14: 1 barrier, 0 scramble, 1 drop — BARRIER +14 at (-15, 84); DROP -14 at (-8, 84) | walked end to end
+beside: (none)
+
+## lookout (made) along z
+TRANSECT 19 stations from (-12, 73) to (-12, 91), every 1
+  station        ground  surface  water  top  standing            step
+  (  -12,    73)      14       14           14  stroke path-wool-a  
+  (  -12,    74)      14       14           14  stroke path-wool-a  
+  (  -12,    75)      14       14           14  stroke path-wool-a  
+  (  -12,    76)      14       14           14                      
+  (  -12,    77)      14       14           14                      
+  (  -12,    78)      14       14           14                      
+  (  -12,    79)      14       14           14                      
+  (  -12,    80)      14       14           14                      
+  (  -12,    81)      14       28           28  storey              BARRIER +14
+  (  -12,    82)      14       28           28  storey              
+  (  -12,    83)      14       28           28  storey              
+  (  -12,    84)      14       28           28  storey              
+  (  -12,    85)      14       28           28  storey              
+  (  -12,    86)      14       28           28  storey              
+  (  -12,    87)      14       28           28  storey              
+  (  -12,    88)                                                    void
+  (  -12,    89)                                                    void
+  (  -12,    90)                                                    void
+  (  -12,    91)                                                    void
+rises 1, falls 0, worst step 14: 1 barrier, 0 scramble, 0 drop — BARRIER +14 at (-12, 81) | walked end to end
+beside: house cabin-a at (-14, 71), stroke path-wool-a at (-11, 72)

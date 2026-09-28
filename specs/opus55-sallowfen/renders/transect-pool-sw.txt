@@ -1,0 +1,87 @@
+## pool-sw (water) along x
+TRANSECT 41 stations from (-121, -42) to (-81, -42), every 1
+  station        ground  surface  water  top  standing            step
+  ( -121,   -42)      16       16           16                      
+  ( -120,   -42)      16       16           16                      
+  ( -119,   -42)      16       16           16                      
+  ( -118,   -42)      16       16           16                      
+  ( -117,   -42)      16       16           16                      
+  ( -116,   -42)      16       16           16  tree w1             
+  ( -115,   -42)      16       16           16  tree w1             
+  ( -114,   -42)      15       15           15  tree w1             -1
+  ( -113,   -42)      14       14           14  tree w1             -1
+  ( -112,   -42)      12       12           12  tree w1             -2
+  ( -111,   -42)      12       12           12  tree w1             
+  ( -110,   -42)      12       12           12  tree w1             
+  ( -109,   -42)      12       12     12    12  tree w1             
+  ( -108,   -42)      12       12     12    12  tree w1             
+  ( -107,   -42)      12       12     12    12  tree w1             
+  ( -106,   -42)      12       12     12    12  tree w1             
+  ( -105,   -42)      12       12     12    12  tree w1             
+  ( -104,   -42)      12       12     12    12  tree w1             
+  ( -103,   -42)      12       12     12    12  water pool-sw       
+  ( -102,   -42)      12       12     12    12  water pool-sw       
+  ( -101,   -42)      12       12     12    12  water pool-sw       
+  ( -100,   -42)      12       12     12    12  water pool-sw       
+  (  -99,   -42)      12       12     12    12  water pool-sw       
+  (  -98,   -42)      12       12     12    12  water pool-sw       
+  (  -97,   -42)      12       12     12    12  water pool-sw       
+  (  -96,   -42)      12       12     12    12  water pool-sw       
+  (  -95,   -42)      12       12     12    12  water pool-sw       
+  (  -94,   -42)      12       12     12    12  water pool-sw       
+  (  -93,   -42)      12       12           12  water pool-sw       
+  (  -92,   -42)      12       12           12  tree w2             
+  (  -91,   -42)      12       12           12                      
+  (  -90,   -42)      12       12           12                      
+  (  -89,   -42)      13       13           14  flora fen-cover     +1
+  (  -88,   -42)      14       14           14                      +1
+  (  -87,   -42)      16       16           16                      scramble +2
+  (  -86,   -42)      16       16           16                      
+  (  -85,   -42)      16       16           16                      
+  (  -84,   -42)      16       16           16                      
+  (  -83,   -42)      16       16           16                      
+  (  -82,   -42)      16       16           16                      
+  (  -81,   -42)      16       16           16                      
+rises 3, falls 3, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-87, -42) | walked end to end
+beside: tree o1 at (-123, -44), flora fen-cover at (-119, -40), tree w1 at (-118, -40), water pool-sw at (-109, -44), tree w2 at (-98, -44)
+
+## pool-sw (water) along z
+TRANSECT 35 stations from (-101, -59) to (-101, -25), every 1
+  station        ground  surface  water  top  standing            step
+  ( -101,   -59)      16       16           16                      
+  ( -101,   -58)      16       16           16                      
+  ( -101,   -57)      16       16           16                      
+  ( -101,   -56)      16       16           16  tree w2             
+  ( -101,   -55)      16       16           16  tree w2             
+  ( -101,   -54)      16       16           25  tree w2             
+  ( -101,   -53)      16       16           28  tree w2             
+  ( -101,   -52)      14       14           14  tree w2             -2
+  ( -101,   -51)      13       13           13  tree w2             -1
+  ( -101,   -50)      12       12           12  tree w2             -1
+  ( -101,   -49)      12       12           12  tree w2             
+  ( -101,   -48)      12       12           12  tree w2             
+  ( -101,   -47)      12       12     12    12  water pool-sw       
+  ( -101,   -46)      12       12     12    12  water pool-sw       
+  ( -101,   -45)      12       12     12    12  water pool-sw       
+  ( -101,   -44)      12       12     12    12  water pool-sw       
+  ( -101,   -43)      12       12     12    12  water pool-sw       
+  ( -101,   -42)      12       12     12    12  water pool-sw       
+  ( -101,   -41)      12       12     12    12  water pool-sw       
+  ( -101,   -40)      12       12     12    12  water pool-sw       
+  ( -101,   -39)      12       12     12    12  water pool-sw       
+  ( -101,   -38)      12       12           12  tree w1             
+  ( -101,   -37)      12       12           12  tree w1             
+  ( -101,   -36)      12       12           12  tree w1             
+  ( -101,   -35)      12       12           12  tree w1             
+  ( -101,   -34)      13       13           13  tree w1             +1
+  ( -101,   -33)      14       14           14  tree o4             +1
+  ( -101,   -32)      15       15           15  tree o4             +1
+  ( -101,   -31)      16       16           16  tree o4             +1
+  ( -101,   -30)      16       16           16  tree o4             
+  ( -101,   -29)      16       16           16  tree o4             
+  ( -101,   -28)      16       16           16  tree o4             
+  ( -101,   -27)      15       15           15  tree o4             -1
+  ( -101,   -26)      15       15           15  tree o4             
+  ( -101,   -25)      15       15           15  tree o4             
+rises 4, falls 4, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree w2 at (-99, -59), water pool-sw at (-103, -50), tree w1 at (-103, -41), tree o4 at (-99, -35)

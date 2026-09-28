@@ -1,0 +1,60 @@
+## house-d (house) along x
+TRANSECT 25 stations from (-108, -14) to (-84, -14), every 1
+  station        ground  surface  water  top  standing            step
+  ( -108,   -14)      15       15           27  house house-c       
+  ( -107,   -14)      15       15           27  house house-c       
+  ( -106,   -14)      14       14           27  house house-c       -1
+  ( -105,   -14)      14       14           27  house house-c       
+  ( -104,   -14)      14       14           14                      
+  ( -103,   -14)      14       14           14                      
+  ( -102,   -14)      14       14           14                      
+  ( -101,   -14)      14       14           28  house house-d       
+  ( -100,   -14)      14       14           28  house house-d       
+  (  -99,   -14)      14       14           28  house house-d       
+  (  -98,   -14)      14       14           28  house house-d       
+  (  -97,   -14)      14       14           28  house house-d       
+  (  -96,   -14)      14       14           28  house house-d       
+  (  -95,   -14)      14       14           28  house house-d       
+  (  -94,   -14)      15       15           28  house house-d       +1
+  (  -93,   -14)      15       15           28  house house-d       
+  (  -92,   -14)      15       15           28  house house-d       
+  (  -91,   -14)      15       15           28  house house-d       
+  (  -90,   -14)      15       15           15                      
+  (  -89,   -14)      15       15           15  stroke path-south   
+  (  -88,   -14)      15       15           15  stroke path-south   
+  (  -87,   -14)      15       15           15  stroke path-south   
+  (  -86,   -14)      15       15           15                      
+  (  -85,   -14)      15       15           15                      
+  (  -84,   -14)      15       15           15                      
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house house-c at (-110, -16), house house-d at (-101, -16), stroke path-south at (-90, -12), flora fen-cover at (-89, -16)
+
+## house-d (house) along z
+TRANSECT 24 stations from (-96, -25) to (-96, -2), every 1
+  station        ground  surface  water  top  standing            step
+  (  -96,   -25)      16       16           27  tree o4             
+  (  -96,   -24)      15       15           26  tree o4             -1
+  (  -96,   -23)      15       15           26  tree o4             
+  (  -96,   -22)      15       15           15  tree o4             
+  (  -96,   -21)      15       15           15  tree o4             
+  (  -96,   -20)      15       15           15  tree o4             
+  (  -96,   -19)      15       15           15                      
+  (  -96,   -18)      15       15           24  house house-d       
+  (  -96,   -17)      15       15           25  house house-d       
+  (  -96,   -16)      15       15           26  house house-d       
+  (  -96,   -15)      15       15           27  house house-d       
+  (  -96,   -14)      14       14           28  house house-d       -1
+  (  -96,   -13)      14       14           28  house house-d       
+  (  -96,   -12)      14       14           27  house house-d       
+  (  -96,   -11)      14       14           26  house house-d       
+  (  -96,   -10)      14       14           25  house house-d       
+  (  -96,    -9)      14       14           24  house house-d       
+  (  -96,    -8)      14       14           14                      
+  (  -96,    -7)      14       14           14                      
+  (  -96,    -6)      14       14           14                      
+  (  -96,    -5)      13       13           13                      -1
+  (  -96,    -4)      13       13           13                      
+  (  -96,    -3)      13       13           13                      
+  (  -96,    -2)      13       13           13  stroke path-causeway  
+rises 0, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree o4 at (-98, -27), house house-d at (-98, -18), stroke path-causeway at (-98, -2)

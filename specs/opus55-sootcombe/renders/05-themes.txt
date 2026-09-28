@@ -1,3 +1,7 @@
-THEMES  1 themes over 5088 ground cells, 18 distinct surface blocks
-  ash  5088 cells (100.0%)  159:7 Gray Stained Clay, 43:8 Double Stone Slab, 1:1 Granite, 159:15 Black Stained Clay, 3:0 Dirt, 98:0 Stone Bricks, 1:2 Polished Granite, 3:1 Coarse Dirt, 45:0 Bricks, 7:0 Bedrock, 1:5 Andesite, 1:0 Stone
+THEMES  3 themes over 5409 ground cells, 20 distinct surface blocks
+  ash  4441 cells (82.1%)  13:0 Gravel, 1:0 Stone, 1:5 Andesite, 43:8 Double Stone Slab, 1:1 Granite, 98:0 Stone Bricks, 159:15 Black Stained Clay, 1:2 Polished Granite, 45:0 Bricks, 3:0 Dirt, 3:1 Coarse Dirt, 7:0 Bedrock
+  slag  568 cells (10.5%)  159:15 Black Stained Clay, 4:0 Cobblestone, 13:0 Gravel, 159:7 Gray Stained Clay
+  regrowth  400 cells (7.4%)  2:0 Grass Block, 3:1 Coarse Dirt, 3:0 Dirt, 1:1 Granite, 45:0 Bricks, 7:0 Bedrock
 borders:
+  ash | regrowth  146 cells
+  ash | slag  32 cells

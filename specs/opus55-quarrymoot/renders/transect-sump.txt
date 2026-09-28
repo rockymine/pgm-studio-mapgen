@@ -1,0 +1,76 @@
+## sump (water) along x
+TRANSECT 34 stations from (-18, 17) to (15, 17), every 1
+  station        ground  surface  water  top  standing            step
+  (  -18,    17)      15       15           15                      
+  (  -17,    17)      14       14           14                      -1
+  (  -16,    17)      14       17           17  storey              BARRIER +3
+  (  -15,    17)      14       17           17  storey              
+  (  -14,    17)      14       14           14                      -3
+  (  -13,    17)      14       14           14                      
+  (  -12,    17)      14       14           14                      
+  (  -11,    17)      14       14           14                      
+  (  -10,    17)      14       14           14                      
+  (   -9,    17)      14       14           14                      
+  (   -8,    17)      14       14           14                      
+  (   -7,    17)      14       14           14  water sump          
+  (   -6,    17)      14       14           14  water sump          
+  (   -5,    17)      14       14     14    14  water sump          
+  (   -4,    17)      14       14     14    14  water sump          
+  (   -3,    17)      14       14     14    14  water sump          
+  (   -2,    17)      14       14     14    14  water sump          
+  (   -1,    17)      14       14     14    14  water sump          
+  (    0,    17)      14       14     14    14  water sump          
+  (    1,    17)      14       14     14    14  water sump          
+  (    2,    17)      14       14           14  water sump          
+  (    3,    17)      14       14           14                      
+  (    4,    17)      14       14           14                      
+  (    5,    17)      14       14           14                      
+  (    6,    17)      14       14           14                      
+  (    7,    17)      14       14           14                      
+  (    8,    17)      14       14           14                      
+  (    9,    17)      14       14           14                      
+  (   10,    17)      14       14           14                      
+  (   11,    17)      14       14           14                      
+  (   12,    17)      14       16           16  storey              scramble +2
+  (   13,    17)      14       16           16  storey              
+  (   14,    17)      14       14           14                      -2
+  (   15,    17)      14       14           14                      
+rises 2, falls 3, worst step 3: 1 barrier, 1 scramble, 0 drop — BARRIER +3 at (-16, 17); scramble +2 at (12, 17) | walked end to end
+beside: water sump at (-7, 17)
+
+## sump (water) along z
+TRANSECT 31 stations from (-2, 2) to (-2, 32), every 1
+  station        ground  surface  water  top  standing            step
+  (   -2,     2)      14       23           47  controlpoint 0      
+  (   -2,     3)      14       21           21  controlpoint 0      -2
+  (   -2,     4)      14       21           21  storey              
+  (   -2,     5)      14       21           21  storey              
+  (   -2,     6)      14       21           21  storey              
+  (   -2,     7)      14       21           21  storey              
+  (   -2,     8)      14       21           21  storey              
+  (   -2,     9)      14       21           21  storey              
+  (   -2,    10)      14       21           21  storey              
+  (   -2,    11)      14       21           21  storey              
+  (   -2,    12)      14       14           14                      DROP -7
+  (   -2,    13)      14       14           14                      
+  (   -2,    14)      14       14     14    14  water sump          
+  (   -2,    15)      14       14     14    14  water sump          
+  (   -2,    16)      14       14     14    14  water sump          
+  (   -2,    17)      14       14     14    14  water sump          
+  (   -2,    18)      14       14     14    14  water sump          
+  (   -2,    19)      14       14           14  water sump          
+  (   -2,    20)      14       14           14  water sump          
+  (   -2,    21)      14       14           14                      
+  (   -2,    22)      16       16           16                      scramble +2
+  (   -2,    23)      18       18           18                      scramble +2
+  (   -2,    24)      18       18           18                      
+  (   -2,    25)      18       18           18                      
+  (   -2,    26)      18       18           18                      
+  (   -2,    27)      18       18           18                      
+  (   -2,    28)      18       18           18                      
+  (   -2,    29)      18       18           18                      
+  (   -2,    30)      18       18           18                      
+  (   -2,    31)      18       18           18                      
+  (   -2,    32)      18       18           18                      
+rises 2, falls 2, worst step 7: 0 barrier, 2 scramble, 1 drop — DROP -7 at (-2, 12); scramble +2 at (-2, 22); scramble +2 at (-2, 23) | walked end to end
+beside: controlpoint 0 at (-3, 0), water sump at (-4, 13)

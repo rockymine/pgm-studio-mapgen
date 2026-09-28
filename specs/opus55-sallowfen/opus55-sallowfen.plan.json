@@ -1,0 +1,89 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Sallowfen",
+  "authors": [
+   "Opus 5.5"
+  ]
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 20,
+  "surface": 12
+ },
+ "pieces": [
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -35,
+    -3,
+    4,
+    6
+   ],
+   "surface": 16
+  },
+  {
+   "id": "field",
+   "rect": [
+    -31,
+    -16,
+    27,
+    32
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "strait",
+   "rect": [
+    -4,
+    -16,
+    4,
+    32
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "sp",
+    "piece": "spawn",
+    "at": [
+     8,
+     12
+    ],
+    "facing": "right",
+    "footprint": [
+     1,
+     5,
+     14,
+     14
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "south",
+    "piece": "field",
+    "at": [
+     46,
+     34
+    ],
+    "style": "pillar-3",
+    "name": "Willow Stone"
+   },
+   {
+    "id": "north",
+    "piece": "field",
+    "at": [
+     48,
+     94
+    ],
+    "style": "pillar-3",
+    "name": "Reed Stone"
+   }
+  ]
+ }
+}

@@ -1,0 +1,65 @@
+## engine-house (made) along x
+TRANSECT 29 stations from (-14, 0) to (14, 0), every 1
+  station        ground  surface  water  top  standing            step
+  (  -14,     0)                                                    void
+  (  -13,     0)                                                    void
+  (  -12,     0)      11       11           11                      
+  (  -11,     0)      11       11           11                      
+  (  -10,     0)      11       11           11                      
+  (   -9,     0)      11       11           11                      
+  (   -8,     0)      11       11           11                      
+  (   -7,     0)      11       11           11                      
+  (   -6,     0)      11       11           11                      
+  (   -5,     0)      11       11           11                      
+  (   -4,     0)      11       11           11                      
+  (   -3,     0)      11       11           26                      
+  (   -2,     0)      11       11           26                      
+  (   -1,     0)      11       11           25                      
+  (    0,     0)      11       11           25                      
+  (    1,     0)      11       11           26                      
+  (    2,     0)      11       11           26                      
+  (    3,     0)      11       11           11                      
+  (    4,     0)      11       11           11                      
+  (    5,     0)      11       11           11                      
+  (    6,     0)      11       11           11                      
+  (    7,     0)      11       11           11                      
+  (    8,     0)      11       11           11                      
+  (    9,     0)      11       11           11                      
+  (   10,     0)      11       11           11                      
+  (   11,     0)      11       11           11                      
+  (   12,     0)                                                    void
+  (   13,     0)                                                    void
+  (   14,     0)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: (none)
+
+## engine-house (made) along z
+TRANSECT 25 stations from (0, -12) to (0, 12), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,   -12)                                                    void
+  (    0,   -11)                                                    void
+  (    0,   -10)                                                    void
+  (    0,    -9)                                                    void
+  (    0,    -8)      11       11           11                      
+  (    0,    -7)      11       11           11                      
+  (    0,    -6)      11       11           11                      
+  (    0,    -5)      11       11           11                      
+  (    0,    -4)      11       17           17  storey              BARRIER +6
+  (    0,    -3)      11       11           26                      DROP -6
+  (    0,    -2)      11       11           26                      
+  (    0,    -1)      11       11           25                      
+  (    0,     0)      11       11           25                      
+  (    0,     1)      11       11           26                      
+  (    0,     2)      11       11           26                      
+  (    0,     3)      11       17           17  storey              BARRIER +6
+  (    0,     4)      11       11           11                      DROP -6
+  (    0,     5)      11       11           11                      
+  (    0,     6)      11       11           11                      
+  (    0,     7)      11       11           11                      
+  (    0,     8)                                                    void
+  (    0,     9)                                                    void
+  (    0,    10)                                                    void
+  (    0,    11)                                                    void
+  (    0,    12)                                                    void
+rises 2, falls 2, worst step 6: 2 barrier, 0 scramble, 2 drop — BARRIER +6 at (0, -4); DROP -6 at (0, -3); BARRIER +6 at (0, 3); DROP -6 at (0, 4) | walked end to end
+beside: (none)

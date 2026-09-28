@@ -1,0 +1,59 @@
+## house-c (house) along x
+TRANSECT 24 stations from (-92, 15) to (-69, 15), every 1
+  station        ground  surface  water  top  standing            step
+  (  -92,    15)      20       20           20                      
+  (  -91,    15)      20       20           20                      
+  (  -90,    15)      20       20           20                      
+  (  -89,    15)      20       20           20                      
+  (  -88,    15)      20       20           20                      
+  (  -87,    15)      20       20           20                      
+  (  -86,    15)      20       20           20                      
+  (  -85,    15)      20       20           29  house house-c       
+  (  -84,    15)      21       21           29  house house-c       +1
+  (  -83,    15)      21       21           29  house house-c       
+  (  -82,    15)      21       21           29  house house-c       
+  (  -81,    15)      21       21           29  house house-c       
+  (  -80,    15)      21       21           29  house house-c       
+  (  -79,    15)      21       21           29  house house-c       
+  (  -78,    15)      21       21           29  house house-c       
+  (  -77,    15)      21       21           29  house house-c       
+  (  -76,    15)      21       21           29  house house-c       
+  (  -75,    15)      22       22           22                      +1
+  (  -74,    15)      22       22           23  flora meadow-cover  
+  (  -73,    15)      15       19           19  storey              -3
+  (  -72,    15)      15       19           19  storey              
+  (  -71,    15)      22       22           22                      BARRIER +3
+  (  -70,    15)      22       22           22                      
+  (  -69,    15)      15       16           16  storey              DROP -6
+rises 3, falls 2, worst step 6: 1 barrier, 0 scramble, 1 drop — BARRIER +3 at (-71, 15); DROP -6 at (-69, 15) | walked end to end
+beside: stroke path-wood at (-94, 15), flora meadow-cover at (-87, 14), house house-c at (-85, 13)
+
+## house-c (house) along z
+TRANSECT 24 stations from (-81, 4) to (-81, 27), every 1
+  station        ground  surface  water  top  standing            step
+  (  -81,     4)      21       21           21  stroke path-keep    
+  (  -81,     5)      21       21           21  stroke path-keep    
+  (  -81,     6)      21       21           22  flora meadow-cover  
+  (  -81,     7)      21       21           22  flora meadow-cover  
+  (  -81,     8)      21       21           22  flora meadow-cover  
+  (  -81,     9)      21       21           22  flora meadow-cover  
+  (  -81,    10)      21       21           21                      
+  (  -81,    11)      21       21           25  house house-c       
+  (  -81,    12)      21       21           26  house house-c       
+  (  -81,    13)      21       21           27  house house-c       
+  (  -81,    14)      21       21           28  house house-c       
+  (  -81,    15)      21       21           29  house house-c       
+  (  -81,    16)      21       21           29  house house-c       
+  (  -81,    17)      21       21           28  house house-c       
+  (  -81,    18)      21       21           27  house house-c       
+  (  -81,    19)      21       21           26  house house-c       
+  (  -81,    20)      20       20           25  house house-c       -1
+  (  -81,    21)      20       20           20                      
+  (  -81,    22)      20       20           20                      
+  (  -81,    23)      20       20           21  flora meadow-cover  
+  (  -81,    24)      20       20           21  flora meadow-cover  
+  (  -81,    25)      20       20           21  flora meadow-cover  
+  (  -81,    26)      20       20           21  flora meadow-cover  
+  (  -81,    27)      20       20           21  flora meadow-cover  
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-keep at (-83, 3), flora meadow-cover at (-83, 6), house house-c at (-83, 11)

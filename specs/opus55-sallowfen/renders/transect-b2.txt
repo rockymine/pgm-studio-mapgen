@@ -1,0 +1,61 @@
+## b2 (boulder) along x
+TRANSECT 25 stations from (-72, 18) to (-48, 18), every 1
+  station        ground  surface  water  top  standing            step
+  (  -72,    18)      15       15           15                      
+  (  -71,    18)      15       15           15                      
+  (  -70,    18)      15       15           15                      
+  (  -69,    18)      15       15           15                      
+  (  -68,    18)      15       15           15                      
+  (  -67,    18)      15       15           15                      
+  (  -66,    18)      15       15           16  flora fen-cover     
+  (  -65,    18)      15       15           16  flora fen-cover     
+  (  -64,    18)      15       15           16  flora fen-cover     
+  (  -63,    18)      15       15           15                      
+  (  -62,    18)      15       15           16  boulder b2          
+  (  -61,    18)      14       14           17  boulder b2          -1
+  (  -60,    18)      14       14           17  boulder b2          
+  (  -59,    18)      14       14           17  boulder b2          
+  (  -58,    18)      14       14           14                      
+  (  -57,    18)      14       14           14                      
+  (  -56,    18)      14       14           14                      
+  (  -55,    18)      14       14           14                      
+  (  -54,    18)      14       14           14                      
+  (  -53,    18)      14       14           14                      
+  (  -52,    18)      14       14           14                      
+  (  -51,    18)      14       14           14                      
+  (  -50,    18)      14       14           14  water stream        
+  (  -49,    18)      13       13     13    13  water stream        -1
+  (  -48,    18)      13       13     13    13  water stream        
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora fen-cover at (-66, 18), boulder b2 at (-62, 18), water stream at (-50, 16)
+
+## b2 (boulder) along z
+TRANSECT 25 stations from (-60, 6) to (-60, 30), every 1
+  station        ground  surface  water  top  standing            step
+  (  -60,     6)      13       13           14  flora fen-cover     
+  (  -60,     7)      13       13           14  flora fen-cover     
+  (  -60,     8)      14       14           15  flora fen-cover     +1
+  (  -60,     9)      14       14           15  flora fen-cover     
+  (  -60,    10)      14       14           15  flora fen-cover     
+  (  -60,    11)      14       14           15  flora fen-cover     
+  (  -60,    12)      14       14           15  flora fen-cover     
+  (  -60,    13)      14       14           14                      
+  (  -60,    14)      14       14           14                      
+  (  -60,    15)      14       14           14                      
+  (  -60,    16)      14       14           14                      
+  (  -60,    17)      14       14           17  boulder b2          
+  (  -60,    18)      14       14           17  boulder b2          
+  (  -60,    19)      14       14           17  boulder b2          
+  (  -60,    20)      15       15           15                      +1
+  (  -60,    21)      15       15           15                      
+  (  -60,    22)      15       15           15                      
+  (  -60,    23)      15       15           15                      
+  (  -60,    24)      15       15           15                      
+  (  -60,    25)      15       15           15                      
+  (  -60,    26)      15       15           15                      
+  (  -60,    27)      15       15           15                      
+  (  -60,    28)      15       15           15                      
+  (  -60,    29)      15       15           15                      
+  (  -60,    30)      15       15           15                      
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora fen-cover at (-62, 4), boulder b2 at (-61, 17)

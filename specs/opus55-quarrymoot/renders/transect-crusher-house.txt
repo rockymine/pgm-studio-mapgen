@@ -1,0 +1,91 @@
+## crusher-house (made) along x
+TRANSECT 40 stations from (-19, 0) to (20, 0), every 1
+  station        ground  surface  water  top  standing            step
+  (  -19,     0)      14       23           23  storey              
+  (  -18,     0)      14       23           23  storey              
+  (  -17,     0)      14       23           23  storey              
+  (  -16,     0)      14       23           23  storey              
+  (  -15,     0)      14       23           23  storey              
+  (  -14,     0)      14       23           23  storey              
+  (  -13,     0)      14       23           23  storey              
+  (  -12,     0)      14       23           23  storey              
+  (  -11,     0)      14       23           23  storey              
+  (  -10,     0)      14       23           23  storey              
+  (   -9,     0)      14       23           23  storey              
+  (   -8,     0)      14       23           23  storey              
+  (   -7,     0)      14       23           23  storey              
+  (   -6,     0)      14       23           23  storey              
+  (   -5,     0)      14       23           23  storey              
+  (   -4,     0)      14       23           23  storey              
+  (   -3,     0)      14       23           48  controlpoint 0      
+  (   -2,     0)      14       23           48  controlpoint 0      
+  (   -1,     0)      14       23           47  controlpoint 0      
+  (    0,     0)      14       23           47  controlpoint 0      
+  (    1,     0)      14       23           48  controlpoint 0      
+  (    2,     0)      14       23           48  controlpoint 0      
+  (    3,     0)      14       23           23  controlpoint 0      
+  (    4,     0)      14       23           23  storey              
+  (    5,     0)      14       23           23  storey              
+  (    6,     0)      14       23           23  storey              
+  (    7,     0)      14       23           23  storey              
+  (    8,     0)      14       23           23  storey              
+  (    9,     0)      14       23           23  storey              
+  (   10,     0)      14       23           23  storey              
+  (   11,     0)      14       23           23  storey              
+  (   12,     0)      14       23           23  storey              
+  (   13,     0)      14       23           23  storey              
+  (   14,     0)      14       23           23  storey              
+  (   15,     0)      14       23           23  storey              
+  (   16,     0)      14       23           23  storey              
+  (   17,     0)      14       23           23  storey              
+  (   18,     0)      14       23           23  storey              
+  (   19,     0)      14       23           23  storey              
+  (   20,     0)      14       23           23  storey              
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: controlpoint 0 at (-3, -2)
+
+## crusher-house (made) along z
+TRANSECT 40 stations from (0, -19) to (0, 20), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,   -19)      14       14     14    14  water sump#1        
+  (    0,   -18)      14       14     14    14  water sump#1        
+  (    0,   -17)      14       14     14    14  water sump#1        
+  (    0,   -16)      14       14     14    14  water sump#1        
+  (    0,   -15)      14       14           14  water sump#1        
+  (    0,   -14)      14       14           14                      
+  (    0,   -13)      14       14           14                      
+  (    0,   -12)      14       14           14                      
+  (    0,   -11)      14       21           21  storey              BARRIER +7
+  (    0,   -10)      14       21           21  storey              
+  (    0,    -9)      14       21           21  storey              
+  (    0,    -8)      14       21           21  storey              
+  (    0,    -7)      14       21           21  storey              
+  (    0,    -6)      14       21           21  storey              
+  (    0,    -5)      14       21           21  storey              
+  (    0,    -4)      14       21           21  storey              
+  (    0,    -3)      14       23           48  controlpoint 0      scramble +2
+  (    0,    -2)      14       23           48  controlpoint 0      
+  (    0,    -1)      14       23           47  controlpoint 0      
+  (    0,     0)      14       23           47  controlpoint 0      
+  (    0,     1)      14       23           48  controlpoint 0      
+  (    0,     2)      14       23           48  controlpoint 0      
+  (    0,     3)      14       21           21  controlpoint 0      -2
+  (    0,     4)      14       21           21  storey              
+  (    0,     5)      14       21           21  storey              
+  (    0,     6)      14       21           21  storey              
+  (    0,     7)      14       21           21  storey              
+  (    0,     8)      14       21           21  storey              
+  (    0,     9)      14       21           21  storey              
+  (    0,    10)      14       21           21  storey              
+  (    0,    11)      14       21           21  storey              
+  (    0,    12)      14       14           14                      DROP -7
+  (    0,    13)      14       14           14                      
+  (    0,    14)      14       14           14                      
+  (    0,    15)      14       14     14    14  water sump          
+  (    0,    16)      14       14     14    14  water sump          
+  (    0,    17)      14       14     14    14  water sump          
+  (    0,    18)      14       14     14    14  water sump          
+  (    0,    19)      14       14           14  water sump          
+  (    0,    20)      14       14           14                      
+rises 2, falls 2, worst step 7: 1 barrier, 1 scramble, 1 drop — BARRIER +7 at (0, -11); scramble +2 at (0, -3); DROP -7 at (0, 12) | walked end to end
+beside: water sump#1 at (1, -21), controlpoint 0 at (-2, -3), water sump at (-2, 14)

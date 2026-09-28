@@ -1,0 +1,77 @@
+## spawn-red (spawn) along x
+TRANSECT 25 stations from (-124, 0) to (-100, 0), every 1
+  station        ground  surface  water  top  standing            step
+  ( -124,     0)      23       23           40                      
+  ( -123,     0)      23       23           40  spawn sp            
+  ( -122,     0)      23       23           40  spawn sp            
+  ( -121,     0)      23       23           40  spawn sp            
+  ( -120,     0)      23       23           40  spawn sp            
+  ( -119,     0)      23       23           40  spawn sp            
+  ( -118,     0)      23       23           40  spawn sp            
+  ( -117,     0)      23       23           40  spawn sp            
+  ( -116,     0)      23       23           40  spawn sp            
+  ( -115,     0)      23       23           40  spawn sp            
+  ( -114,     0)      23       23           40  spawn sp            
+  ( -113,     0)      23       23           40  spawn sp            
+  ( -112,     0)      23       23           40  spawn sp            
+  ( -111,     0)      23       23           40  spawn sp            
+  ( -110,     0)      23       23           40  spawn sp            
+  ( -109,     0)      23       23           40                      
+  ( -108,     0)      24       24           24                      +1
+  ( -107,     0)      23       23           23  stroke path-keep    -1
+  ( -106,     0)      23       23           23  stroke path-keep    
+  ( -105,     0)      23       23           23  stroke path-keep    
+  ( -104,     0)      22       22           22  stroke path-keep    -1
+  ( -103,     0)      22       22           22  stroke path-keep    
+  ( -102,     0)      22       22           22  stroke path-keep    
+  ( -101,     0)      21       21           21  stroke path-keep    -1
+  ( -100,     0)      21       21           21  stroke path-keep    
+rises 1, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn sp at (-123, -2), stroke path-keep at (-107, 0)
+
+## spawn-red (spawn) along z
+TRANSECT 41 stations from (-116, -20) to (-116, 20), every 1
+  station        ground  surface  water  top  standing            step
+  ( -116,   -20)                                                    void
+  ( -116,   -19)                                                    void
+  ( -116,   -18)                                                    void
+  ( -116,   -17)                                                    void
+  ( -116,   -16)                                                    void
+  ( -116,   -15)                                                    void
+  ( -116,   -14)                                                    void
+  ( -116,   -13)                                                    void
+  ( -116,   -12)      23       23           23                      
+  ( -116,   -11)      23       23           23                      
+  ( -116,   -10)      23       23           23                      
+  ( -116,    -9)      23       23           23                      
+  ( -116,    -8)      23       23           33                      
+  ( -116,    -7)      23       23           34  spawn sp            
+  ( -116,    -6)      23       23           35  spawn sp            
+  ( -116,    -5)      23       23           36  spawn sp            
+  ( -116,    -4)      23       23           37  spawn sp            
+  ( -116,    -3)      23       23           38  spawn sp            
+  ( -116,    -2)      23       23           39  spawn sp            
+  ( -116,    -1)      23       23           40  spawn sp            
+  ( -116,     0)      23       23           40  spawn sp            
+  ( -116,     1)      23       23           39  spawn sp            
+  ( -116,     2)      23       23           38  spawn sp            
+  ( -116,     3)      23       23           37  spawn sp            
+  ( -116,     4)      23       23           36  spawn sp            
+  ( -116,     5)      23       23           35  spawn sp            
+  ( -116,     6)      23       23           34  spawn sp            
+  ( -116,     7)      23       23           33                      
+  ( -116,     8)      23       23           23                      
+  ( -116,     9)      23       23           23                      
+  ( -116,    10)      23       23           23                      
+  ( -116,    11)      23       23           23                      
+  ( -116,    12)                                                    void
+  ( -116,    13)                                                    void
+  ( -116,    14)                                                    void
+  ( -116,    15)                                                    void
+  ( -116,    16)                                                    void
+  ( -116,    17)                                                    void
+  ( -116,    18)                                                    void
+  ( -116,    19)                                                    void
+  ( -116,    20)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn sp at (-118, -7), tree oak-4 at (-114, 18)

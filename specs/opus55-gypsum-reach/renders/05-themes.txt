@@ -1,3 +1,8 @@
-THEMES  1 themes over 17856 ground cells, 12 distinct surface blocks
-  desert  17856 cells (100.0%)  12:0 Sand, 24:0 Sandstone, 24:2 Smooth Sandstone, 5:0 Oak Planks, 4:0 Cobblestone, 1:1 Granite, 1:2 Polished Granite, 159:1 Orange Stained Clay, 45:0 Bricks, 172:0 Hardened Clay, 35:14 Red Wool, 35:11 Blue Wool
+THEMES  3 themes over 17006 ground cells, 20 distinct surface blocks
+  desert  14140 cells (83.1%)  12:0 Sand, 24:0 Sandstone, 4:0 Cobblestone, 5:0 Oak Planks, 24:2 Smooth Sandstone, 159:1 Orange Stained Clay, 1:1 Granite, 1:2 Polished Granite, 45:0 Bricks, 98:0 Stone Bricks, 172:0 Hardened Clay, 1:0 Stone
+  oasis  2474 cells (14.5%)  2:0 Grass Block, 9:0 Water, 4:0 Cobblestone, 24:0 Sandstone, 12:0 Sand, 1:1 Granite, 3:0 Dirt, 159:1 Orange Stained Clay, 1:2 Polished Granite, 45:0 Bricks, 3:1 Coarse Dirt, 172:0 Hardened Clay
+  worn  392 cells (2.3%)  3:0 Dirt, 3:1 Coarse Dirt, 4:0 Cobblestone
 borders:
+  desert | oasis  387 cells
+  desert | worn  74 cells
+  oasis | worn  54 cells

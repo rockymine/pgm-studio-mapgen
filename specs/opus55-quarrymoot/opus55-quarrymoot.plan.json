@@ -1,0 +1,58 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Quarrymoot",
+  "authors": [
+   "Opus 5.5"
+  ]
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 22
+ },
+ "pieces": [
+  {
+   "id": "half",
+   "rect": [
+    -16,
+    0,
+    32,
+    18
+   ]
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -3,
+    18,
+    6,
+    4
+   ],
+   "surface": 24
+  }
+ ],
+ "zones": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "sp",
+    "piece": "spawn",
+    "at": [
+     12,
+     10
+    ],
+    "facing": "front",
+    "footprint": [
+     2,
+     2,
+     20,
+     12
+    ]
+   }
+  ],
+  "controlPoints": 3
+ }
+}

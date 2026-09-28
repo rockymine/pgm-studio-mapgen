@@ -1,61 +1,60 @@
 ## house-b (house) along x
-TRANSECT 26 stations from (-98, 15) to (-73, 15), every 1
+TRANSECT 25 stations from (-100, -29) to (-76, -29), every 1
   station        ground  surface  water  top  standing            step
-  (  -98,    15)      22       22           22                      
-  (  -97,    15)      22       22           22                      
-  (  -96,    15)      22       22           22                      
-  (  -95,    15)      21       21           21                      -1
-  (  -94,    15)      21       21           21                      
-  (  -93,    15)      21       21           21                      
-  (  -92,    15)      21       21           21                      
-  (  -91,    15)      21       21           35  house house-b       
-  (  -90,    15)      21       21           35  house house-b       
-  (  -89,    15)      21       21           35  house house-b       
-  (  -88,    15)      21       21           35  house house-b       
-  (  -87,    15)      21       21           35  house house-b       
-  (  -86,    15)      21       21           35  house house-b       
-  (  -85,    15)      21       21           35  house house-b       
-  (  -84,    15)      21       21           35  house house-b       
-  (  -83,    15)      21       21           35  house house-b       
-  (  -82,    15)      21       21           35  house house-b       
-  (  -81,    15)      21       21           35  house house-b       
-  (  -80,    15)      21       21           35  house house-b       
-  (  -79,    15)      21       21           21                      
-  (  -78,    15)      21       21           21                      
-  (  -77,    15)      21       21           21                      
-  (  -76,    15)      21       21           21                      
-  (  -75,    15)      21       21           21                      
-  (  -74,    15)      21       21           21                      
-  (  -73,    15)      21       21           21                      
-rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: house house-b at (-91, 13)
+  ( -100,   -29)      22       22           22                      
+  (  -99,   -29)      22       22           22                      
+  (  -98,   -29)      22       22           22                      
+  (  -97,   -29)      22       22           22                      
+  (  -96,   -29)      22       22           22                      
+  (  -95,   -29)      22       22           22                      
+  (  -94,   -29)      22       22           22                      
+  (  -93,   -29)      22       22           36  house house-b       
+  (  -92,   -29)      22       22           36  house house-b       
+  (  -91,   -29)      22       22           36  house house-b       
+  (  -90,   -29)      22       22           36  house house-b       
+  (  -89,   -29)      22       22           36  house house-b       
+  (  -88,   -29)      22       22           36  house house-b       
+  (  -87,   -29)      22       22           36  house house-b       
+  (  -86,   -29)      22       22           36  house house-b       
+  (  -85,   -29)      22       22           36  house house-b       
+  (  -84,   -29)      22       22           36  house house-b       
+  (  -83,   -29)      22       22           36  house house-b       
+  (  -82,   -29)      22       22           22                      
+  (  -81,   -29)      22       22           22                      
+  (  -80,   -29)      22       22           22                      
+  (  -79,   -29)      22       22           22                      
+  (  -78,   -29)      22       22           22                      
+  (  -77,   -29)      22       22           22                      
+  (  -76,   -29)      22       22           22                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house house-b at (-93, -31)
 
 ## house-b (house) along z
-TRANSECT 24 stations from (-86, 4) to (-86, 27), every 1
+TRANSECT 24 stations from (-88, -40) to (-88, -17), every 1
   station        ground  surface  water  top  standing            step
-  (  -86,     4)      21       21           32  house house-a       
-  (  -86,     5)      21       21           31  house house-a       
-  (  -86,     6)      21       21           21                      
-  (  -86,     7)      21       21           21                      
-  (  -86,     8)      21       21           21                      
-  (  -86,     9)      21       21           21                      
-  (  -86,    10)      21       21           21                      
-  (  -86,    11)      21       21           31  house house-b       
-  (  -86,    12)      21       21           32  house house-b       
-  (  -86,    13)      21       21           33  house house-b       
-  (  -86,    14)      21       21           34  house house-b       
-  (  -86,    15)      21       21           35  house house-b       
-  (  -86,    16)      21       21           35  house house-b       
-  (  -86,    17)      21       21           34  house house-b       
-  (  -86,    18)      21       21           33  house house-b       
-  (  -86,    19)      21       21           32  house house-b       
-  (  -86,    20)      21       21           31  house house-b       
-  (  -86,    21)      21       21           21                      
-  (  -86,    22)      21       21           21                      
-  (  -86,    23)      21       21           21                      
-  (  -86,    24)      21       21           21                      
-  (  -86,    25)      21       21           21                      
-  (  -86,    26)      21       21           21                      
-  (  -86,    27)      21       21           21                      
+  (  -88,   -40)      22       22           22                      
+  (  -88,   -39)      22       22           22                      
+  (  -88,   -38)      22       22           22                      
+  (  -88,   -37)      22       22           22                      
+  (  -88,   -36)      22       22           22                      
+  (  -88,   -35)      22       22           22                      
+  (  -88,   -34)      22       22           22                      
+  (  -88,   -33)      22       22           32  house house-b       
+  (  -88,   -32)      22       22           33  house house-b       
+  (  -88,   -31)      22       22           34  house house-b       
+  (  -88,   -30)      22       22           35  house house-b       
+  (  -88,   -29)      22       22           36  house house-b       
+  (  -88,   -28)      22       22           36  house house-b       
+  (  -88,   -27)      22       22           35  house house-b       
+  (  -88,   -26)      22       22           34  house house-b       
+  (  -88,   -25)      22       22           33  house house-b       
+  (  -88,   -24)      22       22           32  house house-b       
+  (  -88,   -23)      22       22           22                      
+  (  -88,   -22)      22       22           22                      
+  (  -88,   -21)      22       22           22                      
+  (  -88,   -20)      22       22           22                      
+  (  -88,   -19)      22       22           22                      
+  (  -88,   -18)      22       22           22                      
+  (  -88,   -17)      22       22           22                      
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: house house-a at (-87, 2), house house-b at (-88, 11)
+beside: house house-b at (-90, -33)
