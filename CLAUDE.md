@@ -32,18 +32,27 @@ Four things that are true before the skill loads:
   how long a build takes, what comes out — is part of what they are for. When the chat does not say which,
   ask before starting a studio or writing to the deployed one.
 
-  **The deployed studio is driven with a token.** `PGM_STUDIO_API=https://pgmstudio.de/api` and
-  `PGM_STUDIO_TOKEN` are the environment's secrets, and `tools/drive.py` and the other tools send the token on
-  every request; a `curl` of your own sends `Authorization: Bearer $PGM_STUDIO_TOKEN`. The token is issued from
-  *Tokens* in the studio's account menu and acts as the person it was issued for, with at most a member's
-  rights (`pgm-studio/docs/access.md`). It never goes in a prompt, a document or a commit.
+  **The deployed studio is driven with a token the session never sees.** The cloud environment holds it as
+  an API credential for `pgmstudio.de`, and the proxy adds it to every request for that host, so
+  `curl https://pgmstudio.de/api/me` answers signed in and `tools/drive.py` needs nothing but
+  `PGM_STUDIO_API=https://pgmstudio.de/api`, which the session sets when the chat asks for the deployed studio.
+  The token is issued from *Tokens* in the studio's account menu and acts as the person it was issued for,
+  with at most a member's rights (`pgm-studio/docs/access.md`). It never goes in a prompt, a document or a
+  commit.
 
-  **The tools send the token only over https or to this machine.** `tools/studio_token.py` is the one place
-  that adds it, and it stops the run where `PGM_STUDIO_API` would carry it over plain http elsewhere.
+  **Off the cloud the token is `PGM_STUDIO_TOKEN`, and the tools send it only over https or to this
+  machine.** `tools/studio_token.py` is the one place that adds it, and it stops the run where
+  `PGM_STUDIO_API` would carry it over plain http elsewhere; a `curl` of your own sends
+  `Authorization: Bearer $PGM_STUDIO_TOKEN`.
 
   **The deployed studio is a shared machine with 4 GB of memory and two cores.** A map written there is on the
   public site, and a board's renders and reads take longer there than on a session's own studio. Nothing
   about it is restarted from a session: it is somebody's.
+
+  **A build on the deployed studio waits its turn.** It runs three at once and one per caller, so a board's
+  renders and reads are answered one after another, and a request that cannot wait is refused 429 with a
+  `Retry-After`. `tools/drive.py` asks again after that wait; a `curl` of your own should too
+  (`pgm-studio/docs/access.md`).
 
 - **Ask the studio whether it is running before doing anything about it, and where it listens is not a
   constant.** It has been a different port on every environment the boards here were built on, so nothing

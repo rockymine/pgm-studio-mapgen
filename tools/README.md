@@ -7,7 +7,8 @@ python3 tools/drive.py specs/<slug> "<Map Name>" --out <worlddir> [--slug <slug>
 ```
 
 `PGM_STUDIO_TOKEN`, where it is set, is sent as `Authorization: Bearer` on every request, and only over https
-or to this machine (`studio_token.py`). The deployed studio takes a write only from someone signed in, and a
+or to this machine (`studio_token.py`). In a cloud session it is not set: the environment's API credential for
+pgmstudio.de is added by the proxy instead. The deployed studio takes a write only from someone signed in, and a
 token is how a caller without a browser is (`pgm-studio/docs/access.md`); which studio a chat drives is the
 author's call (`CLAUDE.md`).
 
