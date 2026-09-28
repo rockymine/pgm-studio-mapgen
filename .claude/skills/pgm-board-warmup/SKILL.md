@@ -211,6 +211,10 @@ the marks to shape.
 `level` and `largestField` are the two numbers that say whether the ground has a shape at all;
 over about 0.45 and 0.13 it is a table with edges.
 
+And the notes. **A board is not done while a note on it is open without a reply**: `GET /map/{slug}/notes`
+and count the threads whose `status` is `open` — each is a remark nobody has answered. A note answered,
+asked about or declined waits on the author, which is where it should be.
+
 ## 5. Stop
 
 Load `pgm-board` and begin.

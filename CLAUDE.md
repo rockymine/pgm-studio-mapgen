@@ -22,7 +22,7 @@ needs around it. No card and no endpoint answers what makes a match, so a board 
 decided on look alone.
 
 **Changing, diagnosing or reading a map: invoke the `pgm-board` skill.** It carries the lookup table from
-question to the read that already answers it, and the two moments to stop at. It is distilled from 27 run
+question to the read that already answers it, and the three moments to stop at. It is distilled from 27 run
 reports and every rule in it cost at least one build, and it is worth having for an authoring run too.
 
 Four things that are true before the skill loads:
