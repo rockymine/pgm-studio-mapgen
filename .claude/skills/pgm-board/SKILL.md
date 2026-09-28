@@ -31,6 +31,7 @@ about it."*
 
 | The question | The read | Not |
 |---|---|---|
+| **What did the author say here?** | `GET /notes?status=open` across every map, or `GET /map/{slug}/notes` — each note's `anchor` is the place: a point's `hit` and `ground`, an area's `columns` as `[x, y, z]`, and the exact `camera`, which `render/eye?eye=x,y,z&yaw=&pitch=&fov=` draws again | a remark in chat turned into coordinates of your own choosing, which is the place guessed |
 | What is actually at this coordinate? | `GET /map/{slug}/column?at=x,z` | any render — every other read is a projection |
 | Does this climb? Is that step walkable? | `GET …/transect?points=x,z;x,z&beside=2&format=text`, or `03-slopes.txt` | eyeballing a heightmap shade |
 | Does this **flight** actually walk? | the same transect across the crossing — rises, falls, worst step, walked end to end | `EL1` or `WL11`, which walk the pieces flat and cannot see an authored flight at all |
@@ -70,9 +71,14 @@ takes an **xml-less** folder under a configured `MapsRoots` only. Use `tools/anv
 
 ---
 
-## 2. The two moments
+## 2. The three moments
 
-A rule in a document does not fire. These are the two places to stop, and they are cheap.
+A rule in a document does not fire. These are the three places to stop, and they are cheap.
+
+**Before the first change, read the open notes.** The author leaves feedback as notes pinned to the board
+in the Sketch tool's In game phase, and a revision starts from `GET /notes?status=open`. A note tagged `look`,
+`terrain` or `gameplay` is work on that map; `studio` is a backlog task for the studio instead; `ruling` is a
+gameplay decision for every map. An untagged note is read for what it is about, and the reply says which.
 
 **After `--dry`, before the first build.** Run `tools/board.py` on the plan and read the grid. A plan
 is a list of rectangles and most of what goes wrong with one is a *relation between two of them*;
@@ -90,6 +96,15 @@ Then look at the pictures. The order is not taste: **a picture answers whether a
 number answers whether it is right.** A one-block bump under a rail is one shade in a heightmap and
 nothing at all in an isometric — `03-slopes.txt` names it with its coordinates, and it shipped in five
 consecutive builds of `opus5-lindenkreuz` because nobody opened the file.
+
+**After a drive, reply on every note it answered.** The reply names what changed, the revision it landed at
+and the number that moved ("dead share in this area 41% → 6%"), and carries the same camera drawn after the
+change: fetch `render/eye` with the note's camera, post the PNG to `POST /notes/pictures`, and name the hash
+as the reply's `picture`. The thread then waits on the author, who resolves it; an agent never does.
+
+**Where a note could mean two places or two things, the reply is the question.** Post it with
+`"status": "needs-info"` and build nothing on a guess; a note declined is `"status": "wont-do"` with the reason
+in the body. `pgm-studio/docs/tools/sketch.md`, *Answering the notes an author left*, has every route.
 
 ---
 
