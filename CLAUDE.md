@@ -25,7 +25,22 @@ decided on look alone.
 question to the read that already answers it, and the two moments to stop at. It is distilled from 27 run
 reports and every rule in it cost at least one build, and it is worth having for an authoring run too.
 
-Three things that are true before the skill loads:
+Four things that are true before the skill loads:
+
+- **Which studio a chat drives is the author's decision, stated in the chat.** There are two: the deployed
+  studio at pgmstudio.de, and one the session sets up for itself. Both are wanted, because comparing them —
+  how long a build takes, what comes out — is part of what they are for. When the chat does not say which,
+  ask before starting a studio or writing to the deployed one.
+
+  **The deployed studio is driven with a token.** `PGM_STUDIO_API=https://pgmstudio.de/api` and
+  `PGM_STUDIO_TOKEN` are the environment's secrets, and `tools/drive.py` and the other tools send the token on
+  every request; a `curl` of your own sends `Authorization: Bearer $PGM_STUDIO_TOKEN`. The token is issued from
+  *Tokens* in the studio's account menu and acts as the person it was issued for (`pgm-studio/docs/access.md`).
+  It never goes in a prompt, a document or a commit.
+
+  **The deployed studio is a shared machine with 4 GB of memory and two cores.** A map written there is on the
+  public site, and a board's renders and reads take longer there than on a session's own studio. Nothing
+  about it is restarted from a session: it is somebody's.
 
 - **Ask the studio whether it is running before doing anything about it, and where it listens is not a
   constant.** It has been a different port on every environment the boards here were built on, so nothing

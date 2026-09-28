@@ -142,6 +142,13 @@ CANDIDATES = ["http://localhost:7894/api", "http://localhost:5189/api", "http://
 _api = None
 
 
+def signed(headers):
+    """`headers` with the token `PGM_STUDIO_TOKEN` holds, where it holds one. An invited studio -- the deployed
+    one -- takes a write only from someone signed in, and a token is how a caller without a browser is."""
+    token = os.environ.get("PGM_STUDIO_TOKEN", "").strip()
+    return {**headers, "Authorization": f"Bearer {token}"} if token else headers
+
+
 def endpoint():
     """The studio's base URL, resolved once and printed when it was found rather than told."""
     global _api
@@ -150,6 +157,7 @@ def endpoint():
     stated = os.environ.get("PGM_STUDIO_API")
     if stated:
         _api = stated.rstrip("/")
+        print(f"  studio at {_api}" + ("  (signed in by PGM_STUDIO_TOKEN)" if signed({}) else ""))
         return _api
     for candidate in CANDIDATES:
         try:
@@ -169,7 +177,7 @@ def _exchange(method, path, data):
     """One request on the wire: `(status, payload, Pgm-Warnings)` on a 2xx, `(status, text, None)` on an
     HTTP refusal. Anything else — a refused connection, a timeout — raises, as it always has."""
     req = urllib.request.Request(endpoint() + path, data=data, method=method,
-                                 headers={"Content-Type": "application/json"} if data else {})
+                                 headers=signed({"Content-Type": "application/json"} if data else {}))
     try:
         with urllib.request.urlopen(req, timeout=1800) as response:
             return response.status, response.read(), response.headers.get("Pgm-Warnings")

@@ -66,8 +66,12 @@ def endpoint():
 
 def call(base, method, path, body=None):
     data = json.dumps(body).encode() if body is not None else None
-    request = urllib.request.Request(base + path, data=data, method=method,
-                                     headers={"Content-Type": "application/json"})
+    headers = {"Content-Type": "application/json"}
+    # An invited studio -- the deployed one -- takes a write only from someone signed in, which a caller
+    # without a browser is by the token PGM_STUDIO_TOKEN holds.
+    if os.environ.get("PGM_STUDIO_TOKEN", "").strip():
+        headers["Authorization"] = f"Bearer {os.environ['PGM_STUDIO_TOKEN'].strip()}"
+    request = urllib.request.Request(base + path, data=data, method=method, headers=headers)
     try:
         with urllib.request.urlopen(request) as answer:
             raw = answer.read().decode("utf-8", "replace")

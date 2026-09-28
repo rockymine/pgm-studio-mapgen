@@ -108,8 +108,12 @@ def call(method, path, body=None, expect=(200, 201)):
     """One API call, with every finding the pipeline raised printed rather than swallowed. A 2xx is not a
     promise that everything posted survived: `warnings` names what did not."""
     data = json.dumps(body).encode() if body is not None else None
-    request = urllib.request.Request(f"{API}{path}", data=data, method=method,
-                                     headers={"Content-Type": "application/json"})
+    headers = {"Content-Type": "application/json"}
+    # An invited studio -- the deployed one -- takes a write only from someone signed in, which a caller
+    # without a browser is by the token PGM_STUDIO_TOKEN holds.
+    if os.environ.get("PGM_STUDIO_TOKEN", "").strip():
+        headers["Authorization"] = f"Bearer {os.environ['PGM_STUDIO_TOKEN'].strip()}"
+    request = urllib.request.Request(f"{API}{path}", data=data, method=method, headers=headers)
     try:
         with urllib.request.urlopen(request, timeout=600) as response:
             payload = response.read()
