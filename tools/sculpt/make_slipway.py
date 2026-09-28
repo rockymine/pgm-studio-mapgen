@@ -579,10 +579,7 @@ def compiled_rings():
     """The polygons `POST /plan/compile` fuses the plan into, by shape id — abutting pieces of equal height
     become one ring apiece. Asked rather than assumed: the ids and the winding are the compile's."""
     body = json.dumps(PLAN).encode()
-    headers = {"Content-Type": "application/json"}
-    # The compile is a write to an invited studio, which takes one only from someone signed in.
-    if os.environ.get("PGM_STUDIO_TOKEN", "").strip():
-        headers["Authorization"] = f"Bearer {os.environ['PGM_STUDIO_TOKEN'].strip()}"
+    headers = {"Content-Type": "application/json", **board.studio_token.authorization(API)}
     request = urllib.request.Request(f"{API}/plan/compile", body, headers)
     with urllib.request.urlopen(request) as answer:
         compiled = json.load(answer)

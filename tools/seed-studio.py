@@ -30,6 +30,7 @@ Re-running is safe: a slug is replaced rather than added to, and a tree row is k
 says what is missing and stores nothing, which is what a pre-flight wants.
 """
 import argparse, json, os, shutil, subprocess, sys, tempfile, time, urllib.error, urllib.request
+import studio_token
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CARDS = os.path.join(ROOT, "techniques")
@@ -66,11 +67,7 @@ def endpoint():
 
 def call(base, method, path, body=None):
     data = json.dumps(body).encode() if body is not None else None
-    headers = {"Content-Type": "application/json"}
-    # An invited studio -- the deployed one -- takes a write only from someone signed in, which a caller
-    # without a browser is by the token PGM_STUDIO_TOKEN holds.
-    if os.environ.get("PGM_STUDIO_TOKEN", "").strip():
-        headers["Authorization"] = f"Bearer {os.environ['PGM_STUDIO_TOKEN'].strip()}"
+    headers = {"Content-Type": "application/json", **studio_token.authorization(base)}
     request = urllib.request.Request(base + path, data=data, method=method, headers=headers)
     try:
         with urllib.request.urlopen(request) as answer:

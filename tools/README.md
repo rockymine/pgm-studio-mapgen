@@ -6,9 +6,10 @@
 python3 tools/drive.py specs/<slug> "<Map Name>" --out <worlddir> [--slug <slug>] [--dry]
 ```
 
-`PGM_STUDIO_TOKEN`, where it is set, is sent as `Authorization: Bearer` on every request. The deployed
-studio takes a write only from someone signed in, and a token is how a caller without a browser is
-(`pgm-studio/docs/access.md`); which studio a chat drives is the author's call (`CLAUDE.md`).
+`PGM_STUDIO_TOKEN`, where it is set, is sent as `Authorization: Bearer` on every request, and only over https
+or to this machine (`studio_token.py`). The deployed studio takes a write only from someone signed in, and a
+token is how a caller without a browser is (`pgm-studio/docs/access.md`); which studio a chat drives is the
+author's call (`CLAUDE.md`).
 
 `PGM_STUDIO_API` states the endpoint. With nothing stated the driver **discovers** it: it asks
 `GET /api/health` at `localhost:7894`, `localhost:5189` and `localhost:5000` in turn and prints which

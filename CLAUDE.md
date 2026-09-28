@@ -35,8 +35,11 @@ Four things that are true before the skill loads:
   **The deployed studio is driven with a token.** `PGM_STUDIO_API=https://pgmstudio.de/api` and
   `PGM_STUDIO_TOKEN` are the environment's secrets, and `tools/drive.py` and the other tools send the token on
   every request; a `curl` of your own sends `Authorization: Bearer $PGM_STUDIO_TOKEN`. The token is issued from
-  *Tokens* in the studio's account menu and acts as the person it was issued for (`pgm-studio/docs/access.md`).
-  It never goes in a prompt, a document or a commit.
+  *Tokens* in the studio's account menu and acts as the person it was issued for, with at most a member's
+  rights (`pgm-studio/docs/access.md`). It never goes in a prompt, a document or a commit.
+
+  **The tools send the token only over https or to this machine.** `tools/studio_token.py` is the one place
+  that adds it, and it stops the run where `PGM_STUDIO_API` would carry it over plain http elsewhere.
 
   **The deployed studio is a shared machine with 4 GB of memory and two cores.** A map written there is on the
   public site, and a board's renders and reads take longer there than on a session's own studio. Nothing

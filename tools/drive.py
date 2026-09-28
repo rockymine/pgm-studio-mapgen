@@ -130,6 +130,7 @@ not read.
 """
 import collections, concurrent.futures, json, math, multiprocessing, re, sys, io, zipfile, urllib.request, \
     urllib.error, os, shutil
+import studio_token
 
 STYLES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "styles")
 
@@ -143,10 +144,8 @@ _api = None
 
 
 def signed(headers):
-    """`headers` with the token `PGM_STUDIO_TOKEN` holds, where it holds one. An invited studio -- the deployed
-    one -- takes a write only from someone signed in, and a token is how a caller without a browser is."""
-    token = os.environ.get("PGM_STUDIO_TOKEN", "").strip()
-    return {**headers, "Authorization": f"Bearer {token}"} if token else headers
+    """`headers` with the token `PGM_STUDIO_TOKEN` holds, where it holds one (`studio_token`)."""
+    return {**headers, **studio_token.authorization(endpoint())}
 
 
 def endpoint():
