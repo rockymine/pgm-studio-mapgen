@@ -30,6 +30,7 @@ Re-running is safe: a slug is replaced rather than added to, and a tree row is k
 says what is missing and stores nothing, which is what a pre-flight wants.
 """
 import argparse, json, os, shutil, subprocess, sys, tempfile, time, urllib.error, urllib.request
+import studio_token
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CARDS = os.path.join(ROOT, "techniques")
@@ -39,6 +40,8 @@ CANDIDATES = ["http://localhost:7894/api", "http://localhost:5000/api", "http://
 # The corpus world the copied trees are cut out of, and the name every recipe from it is filed under.
 CORPUS_WORLD = os.path.join(ROOT, "corpus", "tree-showcase")
 CORPUS_TREES = "showcase"
+# Who built every tree in the corpus world. The cut records it, and a map a copied tree stands on credits them.
+CORPUS_BUILDER = "rockymine"
 # Where the studio's own checkout is. Stated as candidates rather than as a constant, because a path is
 # the machine somebody happened to be on.
 STUDIO_REPOS = [os.environ.get("PGM_STUDIO_REPO", ""), "/home/user/pgm-studio",
@@ -64,8 +67,8 @@ def endpoint():
 
 def call(base, method, path, body=None):
     data = json.dumps(body).encode() if body is not None else None
-    request = urllib.request.Request(base + path, data=data, method=method,
-                                     headers={"Content-Type": "application/json"})
+    headers = {"Content-Type": "application/json", **studio_token.authorization(base)}
+    request = urllib.request.Request(base + path, data=data, method=method, headers=headers)
     try:
         with urllib.request.urlopen(request) as answer:
             raw = answer.read().decode("utf-8", "replace")
@@ -155,7 +158,8 @@ def seed_trees():
         return f"SKIPPED — no world at {CORPUS_WORLD}"
     began = time.time()
     done = subprocess.run(
-        ["dotnet", "run", os.path.join("tools", "seed-trees.cs"), CORPUS_WORLD, CORPUS_TREES],
+        ["dotnet", "run", os.path.join("tools", "seed-trees.cs"), CORPUS_WORLD, CORPUS_TREES,
+         f"--builder={CORPUS_BUILDER}"],
         cwd=studio, capture_output=True, text=True)
     if done.returncode != 0:
         tail = (done.stderr or done.stdout).strip().splitlines()[-1:] or ["no output"]

@@ -303,6 +303,19 @@ reads only as the top course, and even there it is not a pairing to reach for.
 **Red stained clay is for abstract maps.** Nothing in nature is that red, so as ground or as a boulder it
 reads as a stylised board and fails on any other.
 
+**Strata follow the ground.** A `layered` stack on the `height` axis lays its beds at fixed world heights, so
+on land that tilts they run across the slope and a hill's upper beds never reach the low ground. `follow: 100`
+measures `from` below the ground averaged `reach` cells either side instead (16 unstated, 1–64), so each bed
+rises and falls with the land. A reach of about sixteen keeps the land's broad tilt and lets a crag cut through
+the beds, which is what a mesa looks like; a reach of a few cells lays them along every bump and reads as paint.
+
+**The strata are the fill, the wall and the steepest slope band at once.** The `wall` bucket is only the
+exposed riser below the top course: a one-block step on a hill belongs to the surface, and the side of a cut
+or a tunnel is the fill. A stack stated on the wall alone therefore shows on the tallest drops and nowhere
+else, and a culvert cut through that ground shows plain fill on its walls. Stating the same stack as the
+theme's `fill` and as the steepest band of its `slope` stack makes every face the board shows cut one set of
+beds.
+
 ### Themes and places
 
 **Three themes is a map.** A theme is a *place* — the moor, the works, the shore — and a board has two or
@@ -346,6 +359,18 @@ ground is soft and **gravel, andesite and cobblestone** one where it is hard; a 
 **A path goes everywhere the players go.** A board is walked from each spawn to the front, to the other side
 and to every wool room, so one thin line from the spawn to the front says only one of those walks was thought
 of. A path is wide enough to read as a way rather than a trail.
+
+**A path wanders between its points.** A stroke through a handful of points runs nearly straight between them:
+across 266 strokes on the boards here the median is four points, and the longest straight run is 12 blocks at
+the median and 18 at the 90th percentile, which reads as ruled. A stroke's `wander` (0–8 blocks) bends it from
+side to side every `wanderLength` blocks of line (16 unstated, 4–64) and eases to nothing at both ends, so the
+path still arrives at the door it was drawn to. Three blocks over a bend of about fourteen reads as walked, and
+two where a lane leaves little room either side.
+
+**A path that wanders moves the ground it claims.** A claiming stroke keeps a tree 3 blocks and a boulder 2
+off the line it is paved along, and that line is the bent one, so a prop that cleared a straight path can be
+declined once the path wanders (`DR-ROAD`). Read the pre-flight again after adding wander; the census names
+the cell, and a block or two of move clears it.
 
 **A warm path is granite with brick.** Granite and polished granite carry it, with brick in strips; hardened
 clay can stand in for the brick but is flat. Granite with hardened clay belongs in a path and nowhere else. A

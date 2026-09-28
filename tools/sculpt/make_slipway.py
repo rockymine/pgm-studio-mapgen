@@ -579,7 +579,8 @@ def compiled_rings():
     """The polygons `POST /plan/compile` fuses the plan into, by shape id — abutting pieces of equal height
     become one ring apiece. Asked rather than assumed: the ids and the winding are the compile's."""
     body = json.dumps(PLAN).encode()
-    request = urllib.request.Request(f"{API}/plan/compile", body, {"Content-Type": "application/json"})
+    headers = {"Content-Type": "application/json", **board.studio_token.authorization(API)}
+    request = urllib.request.Request(f"{API}/plan/compile", body, headers)
     with urllib.request.urlopen(request) as answer:
         compiled = json.load(answer)
     return [(shape["id"], shape.get("base_height"), [tuple(v) for v in (shape.get("vertices") or [])])

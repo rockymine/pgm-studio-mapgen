@@ -8,8 +8,12 @@ edge cap, so three blocks in one theme give a shape a lit top, a body and an out
 """
 import json
 import os
+import sys
 import urllib.error
 import urllib.request
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import studio_token  # noqa: E402 -- lives in tools/, one directory up
 
 API = os.environ.get("PGM_STUDIO_API", "http://localhost:7894/api")
 
@@ -108,8 +112,8 @@ def call(method, path, body=None, expect=(200, 201)):
     """One API call, with every finding the pipeline raised printed rather than swallowed. A 2xx is not a
     promise that everything posted survived: `warnings` names what did not."""
     data = json.dumps(body).encode() if body is not None else None
-    request = urllib.request.Request(f"{API}{path}", data=data, method=method,
-                                     headers={"Content-Type": "application/json"})
+    headers = {"Content-Type": "application/json", **studio_token.authorization(API)}
+    request = urllib.request.Request(f"{API}{path}", data=data, method=method, headers=headers)
     try:
         with urllib.request.urlopen(request, timeout=600) as response:
             payload = response.read()
