@@ -12,7 +12,7 @@ body assembled by hand and filed as one is a recipe claiming a provenance it doe
 
 **Every tree here was built by rockymine, and a board planting one credits them.** The seeder records the
 builder on each cut when it is run with `--builder=rockymine`, which `tools/seed-studio.py` passes, and the
-studio writes `map.xml` a contributor for the `Trees` wherever a copied tree of theirs stands. A recipe pulled
+studio credits them in `map.xml` as the original builder of the copied trees wherever one of theirs stands. A recipe pulled
 with `GET /api/tree-styles/{id}/json` carries the name as `builder`; a style copied into a spec by hand keeps it
 only if the copy does.
 
