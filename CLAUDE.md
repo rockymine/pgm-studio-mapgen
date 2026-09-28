@@ -45,6 +45,11 @@ Four things that are true before the skill loads:
   public site, and a board's renders and reads take longer there than on a session's own studio. Nothing
   about it is restarted from a session: it is somebody's.
 
+  **A build on the deployed studio waits its turn.** It runs three at once and one per caller, so a board's
+  renders and reads are answered one after another, and a request that cannot wait is refused 429 with a
+  `Retry-After`. `tools/drive.py` asks again after that wait; a `curl` of your own should too
+  (`pgm-studio/docs/access.md`).
+
 - **Ask the studio whether it is running before doing anything about it, and where it listens is not a
   constant.** It has been a different port on every environment the boards here were built on, so nothing
   states one: set `PGM_STUDIO_API`, or let `tools/drive.py` find it by asking `GET /api/health` at the

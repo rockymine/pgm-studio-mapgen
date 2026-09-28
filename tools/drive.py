@@ -128,7 +128,7 @@ The pictures and the provenance sidecar land beside the documents rather than in
 `--out` is what a server is handed: it holds `region/`, `level.dat` and `map.xml`, and nothing a match does
 not read.
 """
-import collections, concurrent.futures, json, math, multiprocessing, re, sys, io, zipfile, urllib.request, \
+import collections, concurrent.futures, json, math, multiprocessing, re, sys, io, time, zipfile, urllib.request, \
     urllib.error, os, shutil
 import studio_token
 
@@ -172,16 +172,28 @@ def endpoint():
                      "PGM_STUDIO_API=http://localhost:1234/api")
 
 
+# A studio that is building as many worlds as it builds at once answers 429 `RQ11` with a `Retry-After`,
+# which is a turn not yet had rather than a fault, so the request is asked again after that wait. Ten
+# tries is about two minutes behind other callers' builds before the run stops on it.
+BUSY_TRIES = 10
+
+
 def _exchange(method, path, data):
     """One request on the wire: `(status, payload, Pgm-Warnings)` on a 2xx, `(status, text, None)` on an
     HTTP refusal. Anything else — a refused connection, a timeout — raises, as it always has."""
-    req = urllib.request.Request(endpoint() + path, data=data, method=method,
-                                 headers=signed({"Content-Type": "application/json"} if data else {}))
-    try:
-        with urllib.request.urlopen(req, timeout=1800) as response:
-            return response.status, response.read(), response.headers.get("Pgm-Warnings")
-    except urllib.error.HTTPError as error:
-        return error.code, error.read().decode(), None
+    for attempt in range(BUSY_TRIES):
+        req = urllib.request.Request(endpoint() + path, data=data, method=method,
+                                     headers=signed({"Content-Type": "application/json"} if data else {}))
+        try:
+            with urllib.request.urlopen(req, timeout=1800) as response:
+                return response.status, response.read(), response.headers.get("Pgm-Warnings")
+        except urllib.error.HTTPError as error:
+            text = error.read().decode()
+            wait = error.headers.get("Retry-After")
+            if error.code != 429 or not (wait or "").isdigit() or attempt == BUSY_TRIES - 1:
+                return error.code, text, None
+            print(f"  {method:5} {path:46} 429   the studio is busy, asking again in {wait} s")
+            time.sleep(int(wait))
 
 
 # Requests already on the wire, keyed by what they ask. **The studio answers reads side by side, and a run
