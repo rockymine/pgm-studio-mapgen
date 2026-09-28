@@ -268,30 +268,34 @@ ROCKY_TURF = depth(({"kind": "noise", "seed": 33, "scale": 2, "octaves": 1,
 
 
 def strata():
-    """The red rock's beds, read on every cut: hardened clay carrying thin bands of stained clay, stated up to
-    the highest face, because a height stack holds its last band rather than cycling."""
+    """The red rock's beds, read on every cut: hardened clay carrying thin bands of stained clay. The beds follow
+    the ground averaged sixteen cells either side, so they rise with the land toward the back of each half and a
+    hill cuts through them. They start 48 courses under that ground, which reaches the bedrock under the highest
+    of it (y50) and puts an orange bed in the culvert's walls, and are stated four times over so the stack still
+    runs past the tallest face, because a height stack holds its last band rather than cycling."""
     beds = [(HARD_CLAY, 3), (ORANGE_CLAY, 2), (HARD_CLAY, 2), (BROWN_CLAY, 1), (HARD_CLAY, 3),
             (YELLOW_CLAY, 1), (ORANGE_CLAY, 2), (HARD_CLAY, 2), (WHITE_CLAY, 1), (HARD_CLAY, 2)]
     bands = [{"thickness": t, "material": m} for _ in range(4) for m, t in beds]
-    return {"kind": "layered", "axis": "height", "stack": {"ending": "repeat", "bands": bands}}
+    return {"kind": "layered", "axis": "height", "from": -48, "follow": 100, "reach": 16, "beyond": HARD_CLAY,
+            "stack": {"ending": "repeat", "bands": bands}}
 
 
 def themes():
     heath = {
         "bedrock": {"relative": False, "value": 1},
-        "fill": HARD_CLAY,
+        "fill": strata(),
         "wall": strata(), "wallEnabled": True, "wallOnTerrainFaces": True,
         "surface": {"enabled": True, "depth": 3, "material": {
             "kind": "layered", "axis": "slope", "stack": {"ending": "repeat", "bands": [
                 {"thickness": 38, "material": TURF},
                 {"thickness": 14, "material": ROCKY_TURF},
-                {"thickness": 40, "material": depth((RED_ROCK, 3))}]}}},
+                {"thickness": 40, "material": strata()}]}}},
         "rim": {"enabled": False, "depth": 1, "material": HARD_CLAY},
         "rimEdges": "void",
     }
     paving = {
         "bedrock": {"relative": False, "value": 1},
-        "fill": HARD_CLAY, "wall": strata(), "wallEnabled": True, "wallOnTerrainFaces": True,
+        "fill": strata(), "wall": strata(), "wallEnabled": True, "wallOnTerrainFaces": True,
         "edgesFromGround": True,
         "surface": {"enabled": True, "depth": 2, "material": depth(
             (cell(36, 3, STONE_BRICK, POL_ANDESITE, ANDESITE, STONE), 1), (STONE, 1))},
@@ -299,7 +303,7 @@ def themes():
     }
     worn = {
         "bedrock": {"relative": False, "value": 1},
-        "fill": HARD_CLAY, "wall": strata(), "wallEnabled": True, "wallOnTerrainFaces": True,
+        "fill": strata(), "wall": strata(), "wallEnabled": True, "wallOnTerrainFaces": True,
         "edgesFromGround": True,
         "surface": {"enabled": True, "depth": 3, "material": depth((cell(38, 2, DIRT, COARSE), 1), (DIRT, 2))},
         "rim": {"enabled": False, "depth": 1, "material": HARD_CLAY}, "rimEdges": "void",
