@@ -287,21 +287,26 @@ What the composer answers, what it does not, and what taking one of its boards o
 the compile, the holes, the heights, the build zone, the wall and the planting all measured on it. What is
 here is what the card does not carry: how to browse the composer at all, and the rulings.
 
-### Browsing the composer is a four-call loop, and a scan is what tells you its vocabulary
+### Browsing the composer is a four-call loop over a library, and its census is the vocabulary
 
-`GET /compose?players=&symmetry=&seedStart=&count=&hub=&front=&wools=` returns cards carrying the descriptor
-that reproduces each board, its score, a structural read and an SVG; `POST /compose/pin` stores one from that
-descriptor and hands back an ordinary `PlanModel`; `GET /plans/{id}/png` renders it; `POST /plan/{id}/author`
-makes a map row. Ninety-six seeds, eleven pins and two contact sheets is a few minutes.
+`GET /compose?players=&symmetry=&from=&count=&hub=&front=&wools=` returns a page of the studio's board
+library, best score first: cards carrying the descriptor that names each board, its score, a structural read
+and an SVG. `POST /compose/pin` keeps one and hands back an ordinary `PlanModel`, `GET /plans/{id}/png`
+renders it, and `POST /plan/{id}/author` makes a map row.
+
+**The library is 500 boards per size band and symmetry, composed ahead of time, and nothing is composed on
+request.** A page is a read, the feed ends where the library does (`end`), `matching` counts the filter's
+matches across the whole library, and `observed` counts every board held for the settings
+(`pgm-studio/docs/tools/generator.md`).
 
 The vocabulary it filters on: hubs `ring|bar|double-hole|twin|P|G|single`, frontlines `twin|single|bar|none`,
 wools `i|l|donut|u|h|clamp`. **There is no `u` frontline** — `u` is a wool family, and the frontline that
 reads as a U opening forward is `twin`, a bar with two prongs off it.
 
 **The cell is a drawing scale and the composer draws on four blocks**, so every width it builds to is stated
-in blocks and divided by the cell: cells 3 through 6 all compose, and only cell 3 at nano comes back
-`exhausted`. **10 and 12 players give identical boards**, because the count names a size band rather than a
-budget of its own.
+in blocks and divided by the cell; the library holds the four-block cell only. **10 and 12 players give
+identical boards**, because the count names a size band rather than a budget of its own, so the library holds a
+board once per band and labels it with the count asked for.
 
 Hub forms seen in 48 seeds at 16 players: `bar`, `ring`, `single`, `twin`, `g`, `double-hole`, `p`; wool
 shapes `i`, `l`, and `donut` five times in forty-eight — five pieces round a hole.
