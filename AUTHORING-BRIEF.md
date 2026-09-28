@@ -222,7 +222,7 @@ measurement plus an invented conclusion is already committed to this repository'
 | Thing | Where |
 |---|---|
 | The studio (code, docs) | `/home/user/pgm-studio` |
-| The live API | already running, **do not restart it**. `PGM_STUDIO_API` states where; `tools/drive.py` discovers it by `GET /api/health` when nothing does. The deployed studio also needs `PGM_STUDIO_TOKEN`, and which one a chat drives is the author's call (`CLAUDE.md`) |
+| The live API | already running, **do not restart it**. `PGM_STUDIO_API` states where; `tools/drive.py` discovers it by `GET /api/health` when nothing does. The deployed studio is signed in by the environment's API credential for pgmstudio.de (`PGM_STUDIO_TOKEN` off the cloud), and which one a chat drives is the author's call (`CLAUDE.md`) |
 | Where your map goes | `/home/user/pgm-studio-mapgen` |
 | The driver | `tools/README.md` · `tools/drive.py` · `tools/board.py` |
 | Every board built here, its specs and its review | `maps/` · `specs/` · `review/` |
