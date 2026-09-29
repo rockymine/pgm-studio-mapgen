@@ -698,6 +698,79 @@
       ],
       "base_height": 9,
       "theme": "regrowth"
+     },
+     {
+      "id": "regrowth-front-west",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        -2.2,
+        24.0
+       ],
+       [
+        -3.9,
+        25.4
+       ],
+       [
+        -5.6,
+        26.3
+       ],
+       [
+        -6.9,
+        27.4
+       ],
+       [
+        -9.0,
+        28.6
+       ],
+       [
+        -11.7,
+        28.4
+       ],
+       [
+        -13.2,
+        26.8
+       ],
+       [
+        -13.5,
+        25.2
+       ],
+       [
+        -14.2,
+        24.0
+       ],
+       [
+        -15.0,
+        22.3
+       ],
+       [
+        -14.1,
+        20.6
+       ],
+       [
+        -11.5,
+        20.0
+       ],
+       [
+        -9.0,
+        20.6
+       ],
+       [
+        -7.1,
+        21.0
+       ],
+       [
+        -4.7,
+        21.2
+       ],
+       [
+        -2.4,
+        22.2
+       ]
+      ],
+      "base_height": 9,
+      "theme": "regrowth"
      }
     ],
     "groups": [
@@ -712,7 +785,8 @@
        "regrowth-bar",
        "regrowth-front",
        "regrowth-mid",
-       "regrowth-rise"
+       "regrowth-rise",
+       "regrowth-front-west"
       ]
      }
     ]
@@ -2851,8 +2925,8 @@
      "fillBlock": 44,
      "fillData": 0
     },
-    "width": 3,
-    "height": 4
+    "width": 2,
+    "height": 3
    }
   },
   "wool": {
@@ -3182,7 +3256,7 @@
     "any": false
    },
    "doorway": {
-    "door": "air",
+    "door": "stainedGlassPane",
     "head": {
      "form": "none",
      "block": 109,
@@ -3190,8 +3264,8 @@
      "fillBlock": 44,
      "fillData": 0
     },
-    "width": 3,
-    "height": 4
+    "width": 2,
+    "height": 3
    }
   }
  },
@@ -8630,6 +8704,22 @@
     "z": -5,
     "style": "willow-small",
     "seed": 2
+   },
+   {
+    "kind": "tree",
+    "id": "willow-rise",
+    "x": -18,
+    "z": 74,
+    "style": "willow-small",
+    "seed": 4
+   },
+   {
+    "kind": "tree",
+    "id": "willow-terrace",
+    "x": 2,
+    "z": 79,
+    "style": "willow-small",
+    "seed": 5
    },
    {
     "kind": "flora",

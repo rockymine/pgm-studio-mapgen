@@ -6,9 +6,9 @@ seed 21, pinned off `GET /api/compose` and taken whole; `composed-p12-seed21.pla
 board states the elevation, the paint, the made things and the dressing.
 
 Slug `opus55-sootcombe`, map name **Sootcombe**, built on the deployed studio. The notes on it are 6–10 and the
-author's own 33–35, 44–50 and 61–64 (`reports/opus55-notes-run.md`).
+author's own 33–35, 44–50, 61–64, 70 and 71 (`reports/opus55-notes-run.md`).
 
-## Five passes
+## Six passes
 
 **The first build was bare ash.** The author's review of the whole run said so, and the second pass cut the outer
 coasts point by point and stood a headframe, an engine house, timber stacks, a slag heap and regrowth on it.
@@ -37,6 +37,10 @@ carries two larger ones.
 **The ground and the trees changed in the fifth pass too.** The mid stone rises a block in its middle and dips
 two at its lips, and each frontline dips along part of its edge. Grass patches and a willow written for the
 board replace the birch and the spruce.
+
+**The sixth pass is the author's fourth round.** The doors are three tall, and each wool room's door is
+filled with stained-glass panes in its wool's colour. Two more willows and one more grass patch stand on each
+team's ground.
 
 ## How it is meant to play
 
@@ -109,7 +113,8 @@ and faced away on blue, so each team's ladder is stated with its own facing.
 | second build zone | x −8…4, z 40…68 | `map.xml` `build-area-2` |
 | frontline boulders | (−11, 27), (5, 29), (−9, 35), (12, 25), andesite and cobble | `column` (−11, 27) |
 | mid stone | 11 across, 12 in the middle, 9 at the lips; rock (5, −4), willow (−9, −5) and their images | transect x −4 |
-| willow | (−18, 50) in the regrowth | — |
+| willows | (−18, 50) in the regrowth, (−18, 74) on the rise, (2, 79) at the terrace's edge | — |
+| orange wool door | x 29, z 72…75, y13–15, orange stained-glass panes | `column` (29, 73) |
 | mid stone rocks | (−6, −3), (5, −5) and their images | — |
 
 Blue's features are the rot_180 images: block `(x, z)` maps to `(−x−1, −z−1)`.

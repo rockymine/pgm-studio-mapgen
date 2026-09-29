@@ -31,6 +31,10 @@ at the lips facing the frontlines, and each frontline dips along part of its edg
 house of Gypsum Reach under a pitched roof; the boulders are andesite and cobble, two larger ones on the
 mid stone; grass patches lie at the frontline's back, on the mid stone and on the west rise; and a willow
 written for the board stands in the regrowth and on the mid stone's edge.
+
+Sixth pass, after the author's notes 10, 64, 70 and 71: the doors are three tall and the wool rooms' doors
+are stained glass in the wool's colour; two more willows stand on the west rise and at the terrace's edge;
+and a grass patch lies on each frontline's west front.
 """
 import json, os, sys
 
@@ -119,6 +123,12 @@ LODGE["roof"].update({"form": "gable", "ridgeCap": True, "body": S(5, 3), "verge
 for storey in LODGE["storeys"]:
     storey["wall"] = dict(STONE_WALL, extent=storey["wall"]["extent"])
     storey["post"] = S(1, 6)
+# note 10 again: a door three tall. Its width is not the style's: the studio cuts a room's door to its wall
+# (WX7), four on these walls. The wool rooms' doors are filled with stained-glass panes in the wool's colour,
+# which an attacker breaks through; the spawn rooms keep an open door.
+LODGE["doorway"].update({"width": 2, "height": 3})
+WOOL_ROOM = json.loads(json.dumps(LODGE))
+WOOL_ROOM["doorway"]["door"] = "stainedGlassPane"
 
 relief = {"team": {
     "base": 10, "reach": 0, "step": 1, "landform": "rolling",
@@ -190,6 +200,8 @@ shapes = [
     patch("regrowth-front", ring(2, 38, 4, 3, 16, 0.2, 3), "regrowth", 9, group="team"),
     patch("regrowth-mid", ring(-8, -5, 4, 3, 16, 0.2, 3, 0.5), "regrowth", 9, group="team"),
     patch("regrowth-rise", ring(-18, 74, 3, 5, 16, 0.2, 3), "regrowth", 9, group="team"),
+    # grass on the frontline's west front (note 71)
+    patch("regrowth-front-west", ring(-9, 24, 6, 4, 16, 0.2, 3, 0.8), "regrowth", 9, group="team"),
 ]
 
 # --- dressing ------------------------------------------------------------------------------------------
@@ -216,6 +228,9 @@ props_ = [
     boulder("mid-1", 5, -4, "rock-large", 26),
     tree("willow-1", -18, 50, "willow", 1),
     tree("willow-mid", -9, -5, "willow-small", 2),
+    # two more willows (notes 64, 70): on the west rise's top, and at the terrace's north edge by the stem
+    tree("willow-rise", -18, 74, "willow-small", 4),
+    tree("willow-terrace", 2, 79, "willow-small", 5),
     flora("regrowth-cover", [[-21, 41], [-12, 41], [-12, 68], [-21, 68]], coverage=0.3, scale=6, fern=0.4,
           flowers=0.03, tall=0.02, seed=8),
 ]
@@ -241,7 +256,7 @@ finish = {
     })},
     "addShapes": shapes,
     "addLayers": layers,
-    "roomStyles": {"spawn": LODGE, "wool": LODGE},
+    "roomStyles": {"spawn": LODGE, "wool": WOOL_ROOM},
     "dressing": {"styles": styles, "props": props_},
 }
 

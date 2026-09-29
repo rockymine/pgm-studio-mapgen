@@ -414,3 +414,26 @@ read as clay with a fleck in it; three to two reads as a broken line.
 
 **A new mesa by a path puts the path against a cliff again**, which is the fault note 56 named, so the monument
 path was moved east of the new mesa's foot before it was built.
+
+## The ninth pass: the author's fourth round on Sootcombe
+
+**The author answered 10 and 64 and left two new notes, 70 and 71.** Each was worked and answered at revision
+46; note 10 is `needs-info`, because part of it cannot be done from a room style.
+
+| id | the author said | what changed |
+|---|---|---|
+| 10 | the door 2 wide and 3 tall, with tinted glass | 3 tall; the wool rooms' doors filled with stained-glass panes in the wool's colour; the width left at 4 and asked about |
+| 64 | another willow on the rise's top | a small willow at (−18, 74) |
+| 70 | another willow here | a small willow at the terrace's north edge, (2, 79) |
+| 71 | a grass patch here | a patch on the west half of each frontline's front |
+
+**A room's door width is the room's, not its style's.** The studio cuts a room's door to its wall (`WX7`): 4 on
+an even interior of 6 or more, 3 on an odd one, 2 only at 4 across. The style's `doorway.width` only reaches a
+house the dressing places, so the 2 asked for would mean shrinking the wool rooms, and the reply asks.
+
+**The first reading of "tinted glass" was the windows.** The studio's own account of a wool cage fills its
+door with stained-glass panes in the wool's colour, and a window change had not been asked for, so it was put
+back before the reply went.
+
+**The glass shuts the spawn rooms if it goes on them too**, so only the wool rooms take it; a style is shared
+by every room it is named for, and the spawn rooms have their own copy with an open door.
