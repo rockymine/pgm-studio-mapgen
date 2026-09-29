@@ -155,7 +155,11 @@
             <region id="spawns"/>
         </negative>
         <negative id="not-build-area">
-            <rectangle id="build-area-1" min="-16,-20" max="16,20"/>
+            <union id="build-area">
+                <rectangle id="build-area-1" min="-16,-20" max="16,20"/>
+                <rectangle id="build-area-2" min="-8,40" max="4,68"/>
+                <rectangle id="build-area-3" min="-4,-68" max="8,-40"/>
+            </union>
         </negative>
         <complement id="spawns">
             <union id="spawn-areas">

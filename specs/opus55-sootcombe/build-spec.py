@@ -18,6 +18,13 @@ in larger patches, over granite; the slag heap, the engine house and the timber 
 headframe is now a shorter archer tower on each frontline with a one-course deck; the frontline and the mid
 stone carry granite boulders; the paths are wider and laid in dirt, coarse dirt and spruce planks; and every
 room is a timber lodge in the headframe's own language.
+
+Fourth pass, after the author's notes 33 and 44–50: the rocks are cyan stained clay; the archer tower has a
+spruce platform at its frame's course with a nether-brick fence on its beams and a ladder up through it; the
+ash is a turbulence field with more black and a little dark oak; the faces and the fill are tilted beds of
+hardened clay, granite and a mix, parted by thin lines of hardened clay; the hub's north-west corner rises
+five blocks; a second build zone lies east of each hub; and a coast cut that pushed ground past the east
+wall's end is turned the right way.
 """
 import json, os, sys
 
@@ -31,7 +38,11 @@ import props
 SLUG = "opus55-sootcombe"
 plan = json.load(open(os.path.join(HERE, "composed-p12-seed21.plan.json")))
 plan["meta"] = {"name": "Sootcombe", "authors": ["Opus 5.5"],
-                "notes": "composed p12 t2 seed 21 (walled-4), arrangement unchanged"}
+                "notes": "composed p12 t2 seed 21 (walled-4), arrangement unchanged but for one build zone"}
+# A build zone along the hub's east side (note 50): four blocks of void east of the hub between the frontline
+# and the east approach, overlapping the hub by eight so a bridge leaves it with no gap, and ending seven
+# blocks short of the east wool's wall. Twelve blocks wide because G2 wants a zone corridor of ten.
+plan["zones"].append({"id": "hub-flank", "rect": [-2, 10, 3, 7], "holes": []})
 
 # The one fused ground shape the plan compiles to, as it compiles.
 GROUND = [[-44, 56], [-20, 56], [-20, 40], [-16, 40], [-16, 20], [16, 20], [16, 40], [0, 40], [0, 68],
@@ -42,21 +53,44 @@ GROUND = [[-44, 56], [-20, 56], [-20, 40], [-16, 40], [-16, 20], [16, 20], [16, 
 # planks between dark-oak logs), the accent the granite of the rock, the boulders and the odd path block.
 GREY, BLACK = S(159, 7), S(159, 15)
 WORN = cell([S(3, 1), S(3, 0)], 2, 7)
-# The author's ruling on note 6: the black clay on grey stained clay of the first build, in larger patches.
-# At scale 2 a stop at the end of the list comes out about five blocks across; scale 5 gives patches of a
-# dozen, the ground reading as grey clay with black and worn earth lying in it rather than speckled through.
-ASH = noise([WORN, GREY, GREY, GREY, BLACK], scale=5, seed=5)
+# The author's ruling on note 6: the black clay on grey stained clay of the first build, in larger patches;
+# and on note 46, more black and a little dark oak, as a turbulence field. A turbulence folds the field, so
+# the low stops run as creases through it and the high ones billow: black in the creases, grey and worn
+# earth between, black again and a few dark-oak plank patches at the top.
+ASH = {"kind": "turbulence", "seed": 5, "scale": 7, "octaves": 3,
+       "stops": [BLACK, BLACK, GREY, GREY, WORN, GREY, BLACK, BLACK, S(5, 5)]}
 # The rock under it is granite and polished granite (note 6), and it is also the steepest band.
 GRANITE = cell([S(1, 1), S(1, 2), S(1, 1), S(1, 2)], 2, 8, rise=2)
 SHOULDER = cell([GREY, S(1, 1), S(1, 2)], 2, 6)
+# The faces (note 47): tilted beds of three kinds, mostly hardened clay, mostly granite, and a wider mix,
+# each parted from the next by a thin line of hardened clay; the mix is granite with grey and black clay, so
+# the clay lines read against it. A diagonal wall pattern shears its stripes one
+# arc cell per two courses, so a bed eight cells wide stands four courses thick and a line two wide is one.
+CLAY_BED = cell([S(172), S(172), S(172), S(1, 1)], 3, 71, rise=2)
+GRANITE_BED = cell([S(1, 1), S(1, 2), S(1, 1), S(1, 2)], 3, 72, rise=2)
+MIXED_BED = cell([S(1, 1), GREY, S(1, 2), S(159, 15), GREY], 2, 73, rise=2)
+LINE = S(172)
+STRATA = {"kind": "wallDiagonal", "slope": 2, "runs": [
+    {"material": GRANITE_BED, "width": 8}, {"material": LINE, "width": 2},
+    {"material": MIXED_BED, "width": 6}, {"material": LINE, "width": 2},
+    {"material": CLAY_BED, "width": 8},
+    {"material": GRANITE_BED, "width": 6}, {"material": LINE, "width": 2},
+    {"material": MIXED_BED, "width": 8}, {"material": LINE, "width": 2}]}
 ash = theme(by_slope((30, depth(ASH, GREY)), (15, depth(SHOULDER, S(1, 1))), (45, GRANITE)),
-            wall=GRANITE, fill=GRANITE)
+            wall=STRATA, fill=STRATA)
 # Regrowth: grass and worn earth where birch has taken hold.
 regrowth = theme(by_slope((30, depth(noise([WORN, S(2), S(2), S(2)], 2, 12), S(3))), (60, GRANITE)),
-                 wall=GRANITE, fill=GRANITE)
+                 wall=STRATA, fill=STRATA)
 # Made: the archer tower's dark-oak logs and planks, the headframe's own two blocks.
 timber = one(S(5, 5))
 post = one(S(162, 1))
+# The archer tower's platform (note 45): spruce planks, nether-brick fence, and a ladder set against a beam.
+# The mirror turns a layer and not a block's data, so each team's ladder is stated with its own facing:
+# red's faces north onto its south beam, blue's image faces south onto its north beam.
+planks = one(S(5, 1))
+fence = one(S(113))
+ladder_n = one(S(65, 2))
+ladder_s = one(S(65, 3))
 
 # The paths (note 6): dirt, coarse dirt and spruce planks, with very little granite — one entry in seven.
 PAVE = cell([S(3), S(3, 1), S(5, 1), S(3), S(3, 1), S(5, 1), S(1, 1)], size=2, seed=21)
@@ -85,8 +119,10 @@ relief = {"team": {
         {"id": "front", "kind": "area", "h": 9, "ring": [[-17, 20], [17, 20], [17, 33], [-17, 33]]},
         {"id": "spur", "kind": "line", "r": 6, "tread": 4, "points": [[-22, 62], [-42, 62]], "h": [11, 10]},
     ],
-    # The slag heap is gone (note 8): the board is too small to carry a rock that size.
-    "pushes": [],
+    # The slag heap is gone (note 8): the board is too small to carry a rock that size. In its place the
+    # hub's north-west corner, where the spur meets it, rises five blocks over the terrain (note 49).
+    "pushes": [{"id": "west-rise", "ring": ring(-19, 74, 3, 6, wobble=0.1, lobes=3), "amount": 5,
+                "falloff": 7, "roughness": 0.3, "crown": 0, "seed": 9}],
 }}
 
 # --- made things -----------------------------------------------------------------------------------------
@@ -105,9 +141,26 @@ frame = props.LayerBuilder("archer-frame")
 for x0, z0, x1, z1 in [(AX + 1, AZ, AX + AW - 1, AZ + 1), (AX + 1, AZ + AW - 1, AX + AW - 1, AZ + AW),
                        (AX, AZ + 1, AX + 1, AZ + AW - 1), (AX + AW - 1, AZ + 1, AX + AW, AZ + AW - 1)]:
     frame.rect(x0, z0, x1, z1, FLOOR + 4, 1, "timber")
+# The platform (note 45): the four beams ring a 3 x 3 floor of spruce planks at the frame's course, open in
+# one cell against the south beam, where a ladder climbs from the ground; a nether-brick fence stands on
+# every beam, and the roof is the deck one course thick over it. A rect covers x0 .. x1 - 1.
+HX, HZ = AX + 2, AZ + AW - 2                     # the ladder's hole, against the beam at z = AZ + AW - 1
+floor_ = props.LayerBuilder("archer-floor")
+for x in range(AX + 1, AX + AW - 1):
+    for z in range(AZ + 1, AZ + AW - 1):
+        if (x, z) != (HX, HZ):
+            floor_.rect(x, z, x + 1, z + 1, FLOOR + 4, 1, "planks", keepClear=False)
+rail = props.LayerBuilder("archer-rail")
+for x0, z0, x1, z1 in [(AX + 1, AZ, AX + AW - 1, AZ + 1), (AX + 1, AZ + AW - 1, AX + AW - 1, AZ + AW),
+                       (AX, AZ + 1, AX + 1, AZ + AW - 1), (AX + AW - 1, AZ + 1, AX + AW, AZ + AW - 1)]:
+    rail.rect(x0, z0, x1, z1, FLOOR + 5, 1, "fence", keepClear=False)
+climb = props.LayerBuilder("archer-ladder", mirrors=False)
+climb.rect(HX, HZ, HX + 1, HZ + 1, FLOOR, 5, "ladder-n", keepClear=False)
+climb.rect(-HX - 1, -HZ - 1, -HX, -HZ, FLOOR, 5, "ladder-s", keepClear=False)
 deck = props.LayerBuilder("archer-deck")
 deck.rect(AX - 1, AZ - 1, AX + AW + 1, AZ + AW + 1, FLOOR + 9, 1, "timber")
-layers += made([legs.done(), frame.done(), deck.done()], "archer-tower")
+layers += made([legs.done(), frame.done(), floor_.done(), rail.done(), climb.done(), deck.done()],
+               "archer-tower")
 
 # --- patches -------------------------------------------------------------------------------------------
 shapes = [
@@ -119,9 +172,10 @@ shapes = [
 # --- dressing ------------------------------------------------------------------------------------------
 TREES = ["tree-showcase-r13-2", "tree-showcase-r4-1"]
 styles = dict(copied_trees(HERE, TREES))
-# Granite and polished granite boulders (note 34), small and medium.
-styles["granite-small"] = boulder_style(cell([S(1, 1), S(1, 2)], 2, 31), form="round", size=1.6)
-styles["granite-medium"] = boulder_style(cell([S(1, 1), S(1, 2), S(1, 1)], 2, 32), form="angular", size=2.4)
+# The boulders (notes 34 and 33), small and medium, all of cyan stained clay, which the 1.8 textures draw
+# as a dark grey.
+styles["clay-small"] = boulder_style(S(159, 9), form="round", size=1.6)
+styles["clay-medium"] = boulder_style(S(159, 9), form="angular", size=2.4)
 
 props_ = [
     # wider than before (note 6): four blocks across the front path, three to the wools
@@ -129,9 +183,9 @@ props_ = [
     path("path-wool-a", 52, [[-12, 60], [-24, 62], [-33, 62]], PAVE, radius=2, wander=1),
     path("path-wool-b", 53, [[-6, 75], [8, 74], [25, 74]], PAVE, radius=2, wander=1),
     # boulders on the frontline where the timber stacks stood, and on the mid stone where the engine house did
-    boulder("front-1", -11, 27, "granite-medium", 21), boulder("front-2", 5, 29, "granite-small", 22),
-    boulder("front-3", -9, 35, "granite-small", 23), boulder("front-4", 12, 25, "granite-medium", 24),
-    boulder("mid-1", -6, -3, "granite-small", 25), boulder("mid-2", 5, -5, "granite-medium", 26),
+    boulder("front-1", -11, 27, "clay-medium", 21), boulder("front-2", 5, 29, "clay-small", 22),
+    boulder("front-3", -9, 35, "clay-small", 23), boulder("front-4", 12, 25, "clay-medium", 24),
+    boulder("mid-1", -6, -3, "clay-small", 25), boulder("mid-2", 5, -5, "clay-medium", 26),
     tree("birch-1", -18, 45, "tree-showcase-r13-2", 1),
     tree("spruce-1", -18, 54, "tree-showcase-r4-1", 3),
     flora("regrowth-cover", [[-21, 41], [-12, 41], [-12, 68], [-21, 68]], coverage=0.3, scale=6, fern=0.4,
@@ -142,7 +196,8 @@ finish = {
     "created": "2026-09-28",
     "authors": ["Opus 5.5"],
     "biome": {"kind": "solid", "id": 32},
-    "themes": {"ash": ash, "regrowth": regrowth, "timber": timber, "post": post},
+    "themes": {"ash": ash, "regrowth": regrowth, "timber": timber, "post": post, "planks": planks,
+               "fence": fence, "ladder-n": ladder_n, "ladder-s": ladder_s},
     "mapTheme": "ash",
     "relief": relief,
     # The outer coasts only. The frontline's face to the band, the wall seams at x -24 and x 12, and the

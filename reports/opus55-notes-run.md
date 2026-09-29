@@ -293,3 +293,43 @@ showed the open ground on the oasis's south rim and beside the spring.
 **The destroyable floats four blocks over the shelf by the studio's own default (`DT3`)**, and the bedrock block
 at y35 over the island's centre is the studio's centre marker, the same on every board. Neither is authored
 here.
+
+## The fifth pass: the author's second round on Sootcombe
+
+**The author left eight more notes on Sootcombe: a reply on 33 and seven new notes, 44–50, one a ruling and one
+a studio bug.** Each was worked and answered in its thread at revision 28 with a picture. The threads are
+`answered` and wait for the author; note 7 is still `needs-info`.
+
+| id | the author said | what changed |
+|---|---|---|
+| 33 | make all the rocks cyan stained clay, dark grey in 1.8 | every boulder is cyan stained clay |
+| 44 | studio bug: the render leaves out redstone, and redstone paints the ground under it as fill | nothing on the board; recorded below |
+| 45 | nether-brick fences on the beams; a spruce floor in the 3 × 3 with a ladder hole; a chest with a power bow and arrows | floor, fence and a ladder per team; no chest, because no document states a chest's contents |
+| 46 | more black clay, some dark oak, a turbulence pattern | the ash is a `turbulence` field with black in its creases and dark-oak patches at its top |
+| 47 | the fill in tilted layers of three kinds with thin lines of hardened clay | wall and fill are a `wallDiagonal` at slope 2 of three beds parted by one-course clay lines |
+| 48 | ruling: a bedrock wall needs void on both sides | a coast cut that left ground past the east wall's end is fixed |
+| 49 | a relief mark pulling the ground up 5 where the heap was | a push of 5 over the hub's north-west corner, falloff 7 |
+| 50 | a build zone about 5 blocks past the hub, overlapping it, ending about 5 short of the wall | zone x −8…4, z 40…68, fanned |
+
+**The wall gap was the kit's fault, not the plan's.** `coast_edits` pulled each inserted point toward the ring's
+centroid. On a ring that is not convex the centroid can lie across an edge, and the pull then pushes the coast
+out: here two blocks of ground past the east wall's end. The pull now tests which side of the edge is inside.
+Re-running the other five specs changed no other board's edits.
+
+**A mirrored layer keeps a block's data as stated.** The ladder faced its beam on red and faced away on blue
+until each team's ladder was stated on a layer off the mirror with its own facing.
+
+**The painter treats a ladder as covering the ground, like the redstone in note 44.** The one column under the
+tower's ladder reads hardened clay, polished granite and black clay from the fill, where the columns beside it
+read the ash surface. It is the same studio fault, and it is left to the studio.
+
+**A tilted bed needs a face tall enough to hold it.** At slope 4 and fourteen cells a bed, the eight-course
+side faces showed one bed at a time and no dip. Slope 2 with beds six to eight cells wide shows the dip
+faintly, and only close up.
+
+**A 5-block push with a falloff of 3 stood as a flat-topped block with a 3-block drop.** A falloff of 7 grades it
+in single blocks, and the board's barrier cells went from 40 to 0.
+
+**One reply claimed twice as much black clay, which nothing had measured.** The census orders a theme's blocks
+by amount and gives no share, so a correction in the thread says what it does show: black moved from sixth to
+second.

@@ -5,7 +5,7 @@
   "authors": [
    "Opus 5.5"
   ],
-  "notes": "composed p12 t2 seed 21 (walled-4), arrangement unchanged"
+  "notes": "composed p12 t2 seed 21 (walled-4), arrangement unchanged but for one build zone"
  },
  "globals": {
   "cell": 4,
@@ -133,6 +133,16 @@
     -5,
     8,
     10
+   ],
+   "holes": []
+  },
+  {
+   "id": "hub-flank",
+   "rect": [
+    -2,
+    10,
+    3,
+    7
    ],
    "holes": []
   }

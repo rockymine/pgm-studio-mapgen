@@ -28,10 +28,10 @@ KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn
  -73         abbbbbbbbb2222222222222bb2bb0000000022200882222888880000                        
  -72         abbbbbbbbba8888222220bbbbbbb0000000000000882222888880000                        
  -71         aaaaabbbbba8888888000bbbbbbb0000000000000882222888880000                        
- -70         aaaaabbbbba8888888000bbbbbbb0000000000000882222888880000                        
- -69         aaaaabbbbba8888888000bbbbbbb0000000000000882222888880000                        
- -68                 bba0000000000bbbbbbb0000000 000000022220000000000bb                  aaa
- -67                                bbbbb0000    000000022220000000000bbbbbbb8      bbbbaaaaa
+ -70         aaaaabbbbba8888888000bb         000000000882222888880000                        
+ -69         aaaaabbb                           000000882222888880000                        
+ -68                                             000000022220000000000bb                  aaa
+ -67                                             000000022220000000000bbbbbbb8      bbbbaaaaa
  -66                                             000000022220000000000bbbbbbb888888bbbbbaaaaa
  -65                                              00000022220000000000b2bb22b228888bbbbbbbbba
  -64                                              0000002222000000002222bb22b222222bbbbbbbbba
@@ -164,10 +164,10 @@ KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn
   63 abbbbbbbbb222222222bb22b2000000002222000000                                             
   64 abbbbbbbbba88822222bb2bb0000000002222000000                                             
   65 aaaaabbbbba888888bbbbbbb00000000022220000000                                            
-  66 aaaaabbbb      88bbbbbbb00000000022220000000    00000bbbb                               
-  67 aaa                  bbb00000000022220000000 00000000bbbbbbb0000000000bb                
-  68                         00000000022220000000000000000bbbbbbb0000000000bbbbbaaaaa        
-  69                         00000888822228880000000000000bbbbbbb0008888888bbbbbaaaaa        
+  66 aaaaabbbb      88bbbbbbb00000000022220000000                                            
+  67 aaa                  bbb00000000022220000000                                            
+  68                         000000000222200000000                           bbbaaaaa        
+  69                         000008888222288800000000         bbb0008888888bbbbbaaaaa        
   70                         00000888822228880000000000000bbbbbbb0008888888bbbbbaaaaa        
   71                         00000888822228880000000000000bbbbbbb2222288888bbbbbbbbba        
   72                         00000888822228880222000000000b2bb22b2222222222bbbbbbbbba        

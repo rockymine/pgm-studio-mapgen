@@ -204,6 +204,16 @@ def made(layers, part_of, seat=None):
     return out
 
 
+def _inside(ring_, x, z):
+    """Whether (x, z) lies inside the ring, by the even-odd rule."""
+    hit = False
+    for i in range(len(ring_)):
+        (x1, z1), (x2, z2) = ring_[i], ring_[(i + 1) % len(ring_)]
+        if (z1 > z) != (z2 > z) and x < x1 + (z - z1) * (x2 - x1) / (z2 - z1):
+            hit = not hit
+    return hit
+
+
 def coast_edits(ring_, edges, seed=1):
     """`editShapes` ops that insert points along named edges of a compiled ring, each pulled a few blocks
     inward — a coast drawn point by point, leaving every edge not named (a seam, a frontline) exactly as the
@@ -211,22 +221,20 @@ def coast_edits(ring_, edges, seed=1):
     (t, inward) pairs: t the fraction along the edge, inward the blocks pulled toward the ring's centre.
     Returns the ops in order, with indices stated against the ring as it stands after each insert."""
     pts = [list(p) for p in ring_]
-    cx = sum(p[0] for p in pts) / len(pts)
-    cz = sum(p[1] for p in pts) / len(pts)
     ops, shift = [], 0
     for start in sorted(edges):
         a, b = ring_[start], ring_[(start + 1) % len(ring_)]
         at = start + shift
         for t, inward in sorted(edges[start]):
             x, z = a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t
-            dx, dz = cx - x, cz - z
-            n = math.hypot(dx, dz) or 1
-            # pull perpendicular to the edge, toward the inside
+            # pull perpendicular to the edge, toward the inside. The inside is the side a point just off the
+            # edge falls in the ring, not the side the centroid is on: on a ring that is not convex the
+            # centroid can lie across an edge, and a pull toward it pushes the coast out.
             ex, ez = b[0] - a[0], b[1] - a[1]
             px, pz = -ez, ex
             pn = math.hypot(px, pz) or 1
             px, pz = px / pn, pz / pn
-            if px * dx + pz * dz < 0:
+            if not _inside(ring_, x + px * 0.5, z + pz * 0.5):
                 px, pz = -px, -pz
             ops.append({"after": at, "x": round(x + px * inward, 1), "z": round(z + pz * inward, 1)})
             at += 1
