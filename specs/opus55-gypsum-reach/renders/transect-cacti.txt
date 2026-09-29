@@ -1,0 +1,194 @@
+## cacti (made) along x
+TRANSECT 89 stations from (-109, -1) to (-21, -1), every 1
+  station        ground  surface  water  top  standing            step
+  ( -109,    -1)                                                    void
+  ( -108,    -1)                                                    void
+  ( -107,    -1)                                                    void
+  ( -106,    -1)                                                    void
+  ( -105,    -1)                                                    void
+  ( -104,    -1)                                                    void
+  ( -103,    -1)                                                    void
+  ( -102,    -1)      21       21           21                      
+  ( -101,    -1)      21       21           21                      
+  ( -100,    -1)      21       21           21                      
+  (  -99,    -1)      21       21           21                      
+  (  -98,    -1)      21       21           21                      
+  (  -97,    -1)      21       21           21                      
+  (  -96,    -1)      21       21           21                      
+  (  -95,    -1)      21       21           21                      
+  (  -94,    -1)      21       21           21                      
+  (  -93,    -1)      21       21           21                      
+  (  -92,    -1)      21       21           21                      
+  (  -91,    -1)      21       21           21                      
+  (  -90,    -1)      21       21           21                      
+  (  -89,    -1)      21       21           21                      
+  (  -88,    -1)      21       21           21                      
+  (  -87,    -1)      21       21           21                      
+  (  -86,    -1)      21       21           21                      
+  (  -85,    -1)      21       21           21                      
+  (  -84,    -1)      21       21           21                      
+  (  -83,    -1)      21       21           21                      
+  (  -82,    -1)      22       22           22                      +1
+  (  -81,    -1)      22       22           22                      
+  (  -80,    -1)      22       22           22                      
+  (  -79,    -1)      22       22           22  stroke path-mon     
+  (  -78,    -1)      22       22           22  stroke path-mon     
+  (  -77,    -1)      22       22           22  stroke path-mon     
+  (  -76,    -1)      22       22           22  stroke path-mon     
+  (  -75,    -1)      22       22           22                      
+  (  -74,    -1)      22       22           22                      
+  (  -73,    -1)      22       22           22                      
+  (  -72,    -1)      22       22           22  destroyable mon     
+  (  -71,    -1)      22       22           29  destroyable mon     
+  (  -70,    -1)      22       22           46  destroyable mon     
+  (  -69,    -1)      22       22           29  destroyable mon     
+  (  -68,    -1)      22       22           22  destroyable mon     
+  (  -67,    -1)      22       22           22                      
+  (  -66,    -1)      22       22           22                      
+  (  -65,    -1)      22       22           22  stroke path-bridge-west  
+  (  -64,    -1)      22       22           22  stroke path-bridge-west  
+  (  -63,    -1)      22       22           22  stroke path-bridge-west  
+  (  -62,    -1)      22       22           22  stroke path-bridge-west  
+  (  -61,    -1)      22       22           22  stroke path-bridge-west  
+  (  -60,    -1)      21       21           21  stroke path-bridge-west  -1
+  (  -59,    -1)      21       21           21  stroke path-bridge-west  
+  (  -58,    -1)      21       21           21  stroke path-bridge-west  
+  (  -57,    -1)      20       20           20  stroke path-bridge-west  -1
+  (  -56,    -1)      20       20           20  stroke path-bridge-west  
+  (  -55,    -1)      20       20           20  stroke path-bridge-west  
+  (  -54,    -1)      19       19           19                      -1
+  (  -53,    -1)      17       19           19  storey              
+  (  -52,    -1)      16       19           19  storey              
+  (  -51,    -1)      14       19           19  storey              
+  (  -50,    -1)      13       19           19  storey              
+  (  -49,    -1)      13       19           19  storey              
+  (  -48,    -1)      13       19           19  storey              
+  (  -47,    -1)      13       19           19  storey              
+  (  -46,    -1)      13       19           19  storey              
+  (  -45,    -1)      13       19           19  storey              
+  (  -44,    -1)      12       19           19  storey              
+  (  -43,    -1)      12       19           19  storey              
+  (  -42,    -1)      12       19           19  storey              
+  (  -41,    -1)      12       19           19  storey              
+  (  -40,    -1)      12       19           19  storey              
+  (  -39,    -1)      12       19           19  storey              
+  (  -38,    -1)      12       19           19  storey              
+  (  -37,    -1)      12       19           19  storey              
+  (  -36,    -1)      13       19           19  storey              
+  (  -35,    -1)      14       19           19  storey              
+  (  -34,    -1)      16       18           18  storey              -1
+  (  -33,    -1)      17       18           18  storey              
+  (  -32,    -1)      17       17           17  stroke path-bridge-east  -1
+  (  -31,    -1)      17       17           17  stroke path-bridge-east  
+  (  -30,    -1)      17       17           17  stroke path-bridge-east  
+  (  -29,    -1)      16       16           16  stroke path-bridge-east  -1
+  (  -28,    -1)      16       16           16  stroke path-bridge-east  
+  (  -27,    -1)      16       16           16  stroke path-bridge-east  
+  (  -26,    -1)      16       16           16                      
+  (  -25,    -1)      16       16           16                      
+  (  -24,    -1)      16       16           16                      
+  (  -23,    -1)      16       16           16                      
+  (  -22,    -1)      16       16           16                      
+  (  -21,    -1)                                                    void
+rises 1, falls 6, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-mon at (-86, 1), destroyable mon at (-72, -3), stroke path-bridge-west at (-66, -3), stroke path-bridge-east at (-32, -3)
+
+## cacti (made) along z
+TRANSECT 94 stations from (-65, -48) to (-65, 45), every 1
+  station        ground  surface  water  top  standing            step
+  (  -65,   -48)                                                    void
+  (  -65,   -47)                                                    void
+  (  -65,   -46)                                                    void
+  (  -65,   -45)      30       30           32  boulder b-mesa-1    
+  (  -65,   -44)      30       30           33  boulder b-mesa-1    
+  (  -65,   -43)      30       30           34  tree t-mesa         
+  (  -65,   -42)      30       30           33  tree t-mesa         
+  (  -65,   -41)      30       30           37  tree t-mesa         
+  (  -65,   -40)      30       30           30  tree t-mesa         
+  (  -65,   -39)      30       30           30  tree t-mesa         
+  (  -65,   -38)      30       30           30  tree t-mesa         
+  (  -65,   -37)      30       30           30  tree t-mesa         
+  (  -65,   -36)      30       30           30                      
+  (  -65,   -35)      30       30           30                      
+  (  -65,   -34)      30       30           30                      
+  (  -65,   -33)      30       30           30                      
+  (  -65,   -32)      30       30           30  stroke path-spring  
+  (  -65,   -31)      27       27           27  stroke path-spring  -3
+  (  -65,   -30)      25       25           25  stroke path-spring  -2
+  (  -65,   -29)      21       21           21                      DROP -4
+  (  -65,   -28)      20       20           20                      -1
+  (  -65,   -27)      20       20           29  house house-d       
+  (  -65,   -26)      20       20           29  house house-d       
+  (  -65,   -25)      20       20           30  house house-d       
+  (  -65,   -24)      20       20           30  house house-d       
+  (  -65,   -23)      20       20           31  house house-d       
+  (  -65,   -22)      20       20           30  house house-d       
+  (  -65,   -21)      21       21           30  house house-d       +1
+  (  -65,   -20)      21       21           29  house house-d       
+  (  -65,   -19)      21       21           29  house house-d       
+  (  -65,   -18)      21       21           21                      
+  (  -65,   -17)      21       21           21                      
+  (  -65,   -16)      21       21           21                      
+  (  -65,   -15)      21       21           21                      
+  (  -65,   -14)      21       21           21                      
+  (  -65,   -13)      21       21           21                      
+  (  -65,   -12)      21       21           21                      
+  (  -65,   -11)      21       21           21                      
+  (  -65,   -10)      22       22           22                      +1
+  (  -65,    -9)      22       22           22                      
+  (  -65,    -8)      22       22           22                      
+  (  -65,    -7)      22       22           22                      
+  (  -65,    -6)      22       22           22                      
+  (  -65,    -5)      22       22           22                      
+  (  -65,    -4)      22       22           22  stroke path-bridge-west  
+  (  -65,    -3)      22       22           22  stroke path-bridge-west  
+  (  -65,    -2)      22       22           22  stroke path-bridge-west  
+  (  -65,    -1)      22       22           22  stroke path-bridge-west  
+  (  -65,     0)      22       22           22                      
+  (  -65,     1)      22       22           22                      
+  (  -65,     2)      22       22           22                      
+  (  -65,     3)      22       22           22                      
+  (  -65,     4)      21       21           21                      -1
+  (  -65,     5)      21       21           21                      
+  (  -65,     6)      21       21           21                      
+  (  -65,     7)      21       21           21                      
+  (  -65,     8)      20       20           20                      -1
+  (  -65,     9)      20       20           20                      
+  (  -65,    10)      20       20           20                      
+  (  -65,    11)      19       19           19                      -1
+  (  -65,    12)      19       19           19  stroke path-hamlet  
+  (  -65,    13)      19       19           19  stroke path-hamlet  
+  (  -65,    14)      19       19           19  stroke path-hamlet  
+  (  -65,    15)      18       18           27  house house-c       -1
+  (  -65,    16)      18       18           27  house house-c       
+  (  -65,    17)      18       18           28  house house-c       
+  (  -65,    18)      18       18           28  house house-c       
+  (  -65,    19)      17       17           29  house house-c       -1
+  (  -65,    20)      17       17           28  house house-c       
+  (  -65,    21)      17       17           28  house house-c       
+  (  -65,    22)      16       16           27  house house-c       -1
+  (  -65,    23)      16       16           27  house house-c       
+  (  -65,    24)      16       16           16  water oasis-pool    
+  (  -65,    25)      16       16           16  water oasis-pool    
+  (  -65,    26)      16       16     16    16  water oasis-pool    
+  (  -65,    27)      16       16     16    16  water oasis-pool    
+  (  -65,    28)      16       16     16    16  water oasis-pool    
+  (  -65,    29)      16       16     16    16  water oasis-pool    
+  (  -65,    30)      16       16     16    16  water oasis-pool    
+  (  -65,    31)      16       16     16    16  water oasis-pool    
+  (  -65,    32)      16       16     16    16  water oasis-pool    
+  (  -65,    33)      16       16     16    16  water oasis-pool    
+  (  -65,    34)      16       16     16    16  water oasis-pool    
+  (  -65,    35)      16       16     16    16  tree t2             
+  (  -65,    36)      16       16           22  tree t2             
+  (  -65,    37)      16       16           23  tree t2             
+  (  -65,    38)      16       16           24  tree t2             
+  (  -65,    39)      16       16           22  tree t2             
+  (  -65,    40)      16       16           23  tree t2             
+  (  -65,    41)      16       16           24  tree t2             
+  (  -65,    42)      16       16           22  tree t2             
+  (  -65,    43)      16       16           22  tree t2             
+  (  -65,    44)      16       16           16  tree t2             
+  (  -65,    45)                            22  tree t2             void
+rises 2, falls 10, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-65, -29) | walked end to end
+beside: tree t-mesa at (-67, -46), boulder b-mesa-1 at (-65, -45), stroke path-spring at (-67, -32), house house-d at (-65, -27), stroke path-bridge-west at (-65, -4), stroke path-hamlet at (-64, 11), house house-c at (-67, 15), water oasis-pool at (-67, 24), tree t2 at (-67, 34)

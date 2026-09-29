@@ -52,9 +52,9 @@ TRANSECT 24 stations from (-77, -48) to (-77, -25), every 1
   (  -77,   -31)      27       27           27                      -3
   (  -77,   -30)      23       23           23                      DROP -4
   (  -77,   -29)      21       21           21                      -2
-  (  -77,   -28)      21       21           21                      
-  (  -77,   -27)      21       21           21                      
-  (  -77,   -26)      21       21           21                      
+  (  -77,   -28)      21       21           21  stroke path-spring  
+  (  -77,   -27)      21       21           21  stroke path-spring  
+  (  -77,   -26)      21       21           21  stroke path-spring  
   (  -77,   -25)      21       21           21                      
 rises 0, falls 3, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-77, -30) | walked end to end
-beside: tree t-mesa at (-75, -47), boulder b-mesa-2 at (-79, -36)
+beside: tree t-mesa at (-75, -47), boulder b-mesa-2 at (-79, -36), stroke path-spring at (-79, -29)

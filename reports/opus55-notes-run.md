@@ -333,3 +333,39 @@ in single blocks, and the board's barrier cells went from 40 to 0.
 **One reply claimed twice as much black clay, which nothing had measured.** The census orders a theme's blocks
 by amount and gives no share, so a correction in the thread says what it does show: black moved from sixth to
 second.
+
+## The sixth pass: the author's second round on Gypsum Reach
+
+**The author left ten new notes on Gypsum Reach, 51–60, one of them a ruling, and resolved most of 36–43.**
+Each new note was worked and answered in its thread at revision 60 with a picture; the threads are `answered`.
+The author's comments on resolved notes 4 and 42 were read and left alone: no grain on any board, and a made
+structure that is not given real detail is not added.
+
+| id | the author said | what changed |
+|---|---|---|
+| 51 | polished-andesite pillars, a jungle-plank roof, clay gables, storey walls of stone brick and andesite in alternate layers | the house fork repainted so |
+| 52 | carry the wash in a little, only here | the wash's outline gains a lobe to x −60 |
+| 53 | path paint under the monument, an irregular plaza | a patch of the path's paving round the monument |
+| 54 | ruling: these walls float; check every wall for it | both lip ruins start at y14, and `column` reads them on the ground on both teams |
+| 55 | the island should not be a rectangle | its four edges cut in rot_180 pairs |
+| 56–59 | extend the path network; connect the houses; run a path to the void; reach the bridge from both sides; more paths | five new paths and one extended |
+| 60 | cacti on the floor, by the layer tool | seven cacti a team on a made layer, each in a sand-filled patch |
+
+**A band stack's `repeat` carries its last band on; it does not cycle.** Two alternating bands laid one
+stone-brick course and andesite above it, and the alternation had to be written out course by course.
+
+**A made layer does not replace the ground's own blocks, and the ground under a made block is painted as
+fill.** The first is why the ruins, restated from y14, meet the ground rather than cut into it, and why a
+sand block laid under a cactus came out sandstone. The second is Sootcombe's note 44 again: it put every
+cactus on sandstone, where a 1.8 cactus breaks at the first update. A 3 × 3 patch round each cactus, with a
+theme whose fill is sand, puts sand under it.
+
+**Pushes stack, and a mark sets the base a push works from.** A second push over the wash's west rim dug a
+pit to y7, and a line mark there did the same by lowering the base. The lobe went into the wash's own outline
+instead, and the floor reads y13–14 across it.
+
+**`RL4` fired on a 10 × 6 area mark that pinned no cell**, and it took three drives to see that the mark was
+the wrong instrument rather than the wrong size.
+
+**Two replies placed the ground's end at x −18 when it is x −21.** A transect along each path reads paving to
+x −21 and void from x −20, and a correction in each thread says so.

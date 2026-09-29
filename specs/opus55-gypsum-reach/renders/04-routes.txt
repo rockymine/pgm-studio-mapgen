@@ -46,7 +46,7 @@ rises 0, falls 0, worst step 0: walked end to end
 beside: destroyable mon at (-72, 0) d0, spawn sp at (-96, 34) d0
 
 ## spawn-red -> mon-1
-ROUTE (-96, 38) -> (69, 1) aim travel: 214 blocks, 40 placed, 1 drop(s), worst drop 16
+ROUTE (-96, 38) -> (69, 1) aim travel: 214 blocks, 42 placed, 1 drop(s), worst drop 16
   place            y   step
   (-96, 38)         21
   (-96, 37)         21
@@ -145,11 +145,11 @@ ROUTE (-96, 38) -> (69, 1) aim travel: 214 blocks, 40 placed, 1 drop(s), worst d
   (-6, -10)         18
   (-5, -9)          18
   (-4, -8)          18
-  (-4, -7)          18
-  (-4, -6)          18
-  (-4, -5)          18
-  (-4, -4)          18
-  (-3, -3)          18
+  (-3, -7)          18
+  (-2, -6)          18
+  (-2, -5)          18
+  (-2, -4)          18
+  (-2, -3)          18
   (-2, -2)          18
   (-1, -1)          18
   (0, 0)            18
@@ -163,8 +163,8 @@ ROUTE (-96, 38) -> (69, 1) aim travel: 214 blocks, 40 placed, 1 drop(s), worst d
   (8, 8)            18
   (9, 9)            18
   (10, 10)          18
-  (11, 11)           2   drop -16
-  (12, 12)           2
+  (11, 11)          18
+  (12, 12)           2   drop -16
   (13, 13)           2
   (14, 14)          18   barrier +16
   (15, 15)          18
@@ -206,9 +206,9 @@ ROUTE (-96, 38) -> (69, 1) aim travel: 214 blocks, 40 placed, 1 drop(s), worst d
   (51, 2)           19
   (52, 2)           19
   (53, 2)           19
-  (54, 2)           20
-  (55, 2)           20
-  (56, 2)           21
+  (54, 2)           18
+  (55, 2)           19
+  (56, 2)           20
   (57, 2)           21
   (58, 2)           21
   (59, 2)           21
@@ -222,11 +222,11 @@ ROUTE (-96, 38) -> (69, 1) aim travel: 214 blocks, 40 placed, 1 drop(s), worst d
   (67, 2)           22
   (68, 2)           22
   (69, 1)           23
-rises 1, falls 1, worst step 16: drop -16 at (11, 11); barrier +16 at (14, 14)
+rises 1, falls 1, worst step 16: drop -16 at (12, 12); barrier +16 at (14, 14)
 beside: destroyable mon#1 at (67, 2) d0, spawn sp at (-96, 35) d0, tree t1 at (-87, 26) d0, boulder b-isle at (-3, -9) d1, boulder b4 at (-23, -16) d1, boulder b4#1 at (21, 16) d1, house house-c at (-73, 15) d2
 
 ## spawn-blue -> mon-0
-ROUTE (96, -38) -> (-70, -2) aim travel: 214 blocks, 40 placed, 1 drop(s), worst drop 16
+ROUTE (96, -38) -> (-70, -2) aim travel: 214 blocks, 42 placed, 1 drop(s), worst drop 16
   place            y   step
   (96, -38)         21
   (96, -37)         21
@@ -314,8 +314,8 @@ ROUTE (96, -38) -> (-70, -2) aim travel: 214 blocks, 40 placed, 1 drop(s), worst
   (14, 14)          18
   (13, 13)           2   drop -16
   (12, 12)           2
-  (11, 11)           2
-  (10, 10)          18   barrier +16
+  (11, 11)          18   barrier +16
+  (10, 10)          18
   (9, 9)            18
   (8, 8)            18
   (7, 7)            18
@@ -385,9 +385,9 @@ ROUTE (96, -38) -> (-70, -2) aim travel: 214 blocks, 40 placed, 1 drop(s), worst
   (-52, -3)         19
   (-53, -3)         19
   (-54, -3)         19
-  (-55, -3)         20
-  (-56, -3)         20
-  (-57, -3)         21
+  (-55, -3)         18
+  (-56, -3)         19
+  (-57, -3)         20
   (-58, -3)         21
   (-59, -3)         21
   (-60, -3)         21
@@ -401,7 +401,7 @@ ROUTE (96, -38) -> (-70, -2) aim travel: 214 blocks, 40 placed, 1 drop(s), worst
   (-68, -3)         22
   (-69, -3)         22
   (-70, -2)         23
-rises 1, falls 1, worst step 16: drop -16 at (13, 13); barrier +16 at (10, 10)
+rises 1, falls 1, worst step 16: drop -16 at (13, 13); barrier +16 at (11, 11)
 beside: destroyable mon at (-70, -2) d0, spawn sp#1 at (94, -35) d0, tree t1#1 at (76, -17) d0, boulder b-isle at (-3, -9) d1, boulder b4 at (-23, -16) d1, boulder b4#1 at (21, 16) d2, house house-c#1 at (71, -16) d2
 
 ## spawn-blue -> mon-1

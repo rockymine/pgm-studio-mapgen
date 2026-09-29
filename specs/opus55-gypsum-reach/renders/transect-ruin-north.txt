@@ -1,7 +1,7 @@
 ## ruin-north (made) along x
 TRANSECT 20 stations from (-40, 26) to (-21, 26), every 1
   station        ground  surface  water  top  standing            step
-  (  -40,    26)      17       17           17  tree t5             
+  (  -40,    26)      17       17           17                      
   (  -39,    26)      17       17           17                      
   (  -38,    26)      17       17           17                      
   (  -37,    26)      17       17           17                      
@@ -9,10 +9,10 @@ TRANSECT 20 stations from (-40, 26) to (-21, 26), every 1
   (  -35,    26)      17       17           17                      
   (  -34,    26)      17       17           17                      
   (  -33,    26)      17       17           17                      
-  (  -32,    26)      15       18           18  storey              +1
-  (  -31,    26)      15       18           18  storey              
-  (  -30,    26)      15       18           18  storey              
-  (  -29,    26)      17       17           17                      -1
+  (  -32,    26)      17       20           20  storey              BARRIER +3
+  (  -31,    26)      17       20           20  storey              
+  (  -30,    26)      17       20           20  storey              
+  (  -29,    26)      17       17           17                      -3
   (  -28,    26)      17       17           17                      
   (  -27,    26)      17       17           17                      
   (  -26,    26)      17       17           17                      
@@ -21,8 +21,8 @@ TRANSECT 20 stations from (-40, 26) to (-21, 26), every 1
   (  -23,    26)      17       17           17                      
   (  -22,    26)                                                    void
   (  -21,    26)                                                    void
-rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree t4 at (-42, 24), tree t5 at (-40, 26), boulder b2 at (-37, 24)
+rises 1, falls 1, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (-32, 26) | walked end to end
+beside: tree t4 at (-42, 24), boulder b2 at (-37, 24)
 
 ## ruin-north (made) along z
 TRANSECT 33 stations from (-31, 10) to (-31, 42), every 1
@@ -35,23 +35,23 @@ TRANSECT 33 stations from (-31, 10) to (-31, 42), every 1
   (  -31,    15)      17       17           17                      
   (  -31,    16)      17       17           17                      
   (  -31,    17)      17       17           17                      
-  (  -31,    18)      15       18           18  storey              +1
-  (  -31,    19)      15       18           18  storey              
-  (  -31,    20)      15       18           18  storey              
-  (  -31,    21)      15       18           18  storey              
-  (  -31,    22)      15       18           18  storey              
-  (  -31,    23)      15       18           18  storey              
-  (  -31,    24)      15       18           18  storey              
-  (  -31,    25)      15       18           18  storey              
-  (  -31,    26)      15       18           18  storey              
-  (  -31,    27)      15       18           18  storey              
-  (  -31,    28)      15       18           18  storey              
-  (  -31,    29)      15       18           18  storey              
-  (  -31,    30)      15       18           18  storey              
-  (  -31,    31)      15       18           18  storey              
-  (  -31,    32)      15       18           18  storey              
-  (  -31,    33)      15       18           18  storey              
-  (  -31,    34)      16       16           16                      -2
+  (  -31,    18)      17       20           20  storey              BARRIER +3
+  (  -31,    19)      17       20           20  storey              
+  (  -31,    20)      17       20           20  storey              
+  (  -31,    21)      17       20           20  storey              
+  (  -31,    22)      17       20           20  storey              
+  (  -31,    23)      17       20           20  storey              
+  (  -31,    24)      17       20           20  storey              
+  (  -31,    25)      17       20           20  storey              
+  (  -31,    26)      17       20           20  storey              
+  (  -31,    27)      17       20           20  storey              
+  (  -31,    28)      17       20           20  storey              
+  (  -31,    29)      17       20           20  storey              
+  (  -31,    30)      17       20           20  storey              
+  (  -31,    31)      17       20           20  storey              
+  (  -31,    32)      17       20           20  storey              
+  (  -31,    33)      16       20           20  storey              
+  (  -31,    34)      16       16           16                      DROP -4
   (  -31,    35)      16       16           16                      
   (  -31,    36)      16       16           16                      
   (  -31,    37)      16       16           16                      
@@ -60,5 +60,5 @@ TRANSECT 33 stations from (-31, 10) to (-31, 42), every 1
   (  -31,    40)      16       16           16                      
   (  -31,    41)      16       16           16                      
   (  -31,    42)      16       16           16                      
-rises 1, falls 1, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke path-hamlet at (-31, 11), tree t5 at (-33, 33)
+rises 1, falls 1, worst step 4: 1 barrier, 0 scramble, 1 drop — BARRIER +3 at (-31, 18); DROP -4 at (-31, 34) | walked end to end
+beside: stroke path-hamlet at (-29, 10)

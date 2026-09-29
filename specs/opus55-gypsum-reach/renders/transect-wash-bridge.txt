@@ -1,17 +1,17 @@
 ## wash-bridge (made) along x
 TRANSECT 39 stations from (-62, -2) to (-24, -2), every 1
   station        ground  surface  water  top  standing            step
-  (  -62,    -2)      22       22           22                      
-  (  -61,    -2)      22       22           22                      
-  (  -60,    -2)      21       21           21                      -1
-  (  -59,    -2)      21       21           21                      
-  (  -58,    -2)      21       21           21                      
-  (  -57,    -2)      20       20           20                      -1
-  (  -56,    -2)      20       20           20                      
-  (  -55,    -2)      20       20           20                      
-  (  -54,    -2)      19       19           19                      -1
-  (  -53,    -2)      18       19           19  storey              
-  (  -52,    -2)      16       19           19  storey              
+  (  -62,    -2)      22       22           22  stroke path-bridge-west  
+  (  -61,    -2)      22       22           22  stroke path-bridge-west  
+  (  -60,    -2)      21       21           21  stroke path-bridge-west  -1
+  (  -59,    -2)      21       21           21  stroke path-bridge-west  
+  (  -58,    -2)      21       21           21  stroke path-bridge-west  
+  (  -57,    -2)      20       20           20  stroke path-bridge-west  -1
+  (  -56,    -2)      20       20           20  stroke path-bridge-west  
+  (  -55,    -2)      19       19           19  stroke path-bridge-west  -1
+  (  -54,    -2)      17       19           19  storey              
+  (  -53,    -2)      17       19           19  storey              
+  (  -52,    -2)      15       19           19  storey              
   (  -51,    -2)      14       19           19  storey              
   (  -50,    -2)      13       19           19  storey              
   (  -49,    -2)      13       19           19  storey              
@@ -31,17 +31,17 @@ TRANSECT 39 stations from (-62, -2) to (-24, -2), every 1
   (  -35,    -2)      14       19           19  storey              
   (  -34,    -2)      15       18           18  storey              -1
   (  -33,    -2)      16       18           18  storey              
-  (  -32,    -2)      17       17           17                      -1
-  (  -31,    -2)      17       17           17                      
-  (  -30,    -2)      17       17           17                      
-  (  -29,    -2)      17       17           17                      
-  (  -28,    -2)      16       16           16                      -1
-  (  -27,    -2)      16       16           16                      
-  (  -26,    -2)      16       16           16                      
-  (  -25,    -2)      16       16           16                      
+  (  -32,    -2)      17       17           17  stroke path-bridge-east  -1
+  (  -31,    -2)      17       17           17  stroke path-bridge-east  
+  (  -30,    -2)      17       17           17  stroke path-bridge-east  
+  (  -29,    -2)      17       17           17  stroke path-bridge-east  
+  (  -28,    -2)      16       16           16  stroke path-bridge-east  -1
+  (  -27,    -2)      16       16           16  stroke path-bridge-east  
+  (  -26,    -2)      16       16           16  stroke path-bridge-east  
+  (  -25,    -2)      16       16           16  stroke path-bridge-east  
   (  -24,    -2)      16       16           16                      
 rises 0, falls 6, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: (none)
+beside: stroke path-bridge-west at (-64, -4), stroke path-bridge-east at (-33, -4)
 
 ## wash-bridge (made) along z
 TRANSECT 22 stations from (-43, -12) to (-43, 9), every 1

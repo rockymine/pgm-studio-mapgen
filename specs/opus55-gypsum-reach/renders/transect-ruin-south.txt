@@ -9,10 +9,10 @@ TRANSECT 20 stations from (-37, -37) to (-18, -37), every 1
   (  -32,   -37)      18       18           18                      
   (  -31,   -37)      18       18           18                      
   (  -30,   -37)      18       18           18                      
-  (  -29,   -37)      16       20           20  storey              scramble +2
-  (  -28,   -37)      16       18           18  storey              -2
-  (  -27,   -37)      16       20           20  storey              scramble +2
-  (  -26,   -37)      17       17           17                      -3
+  (  -29,   -37)      18       22           22  storey              BARRIER +4
+  (  -28,   -37)      18       20           20  storey              -2
+  (  -27,   -37)      17       22           22  storey              scramble +2
+  (  -26,   -37)      17       17           17                      DROP -5
   (  -25,   -37)      17       17           17                      
   (  -24,   -37)      17       17           17                      
   (  -23,   -37)      17       17           17                      
@@ -21,7 +21,7 @@ TRANSECT 20 stations from (-37, -37) to (-18, -37), every 1
   (  -20,   -37)      17       17           17                      
   (  -19,   -37)      17       17           17                      
   (  -18,   -37)      16       16           16                      -1
-rises 2, falls 3, worst step 3: 0 barrier, 2 scramble, 0 drop — scramble +2 at (-29, -37); scramble +2 at (-27, -37) | walked end to end
+rises 2, falls 3, worst step 5: 1 barrier, 1 scramble, 1 drop — BARRIER +4 at (-29, -37); scramble +2 at (-27, -37); DROP -5 at (-26, -37) | walked end to end
 beside: boulder b1 at (-38, -39)
 
 ## ruin-south (made) along z
@@ -31,28 +31,28 @@ TRANSECT 27 stations from (-28, -48) to (-28, -22), every 1
   (  -28,   -47)                                                    void
   (  -28,   -46)                                                    void
   (  -28,   -45)      18       18           18                      
-  (  -28,   -44)      16       18           18  storey              
-  (  -28,   -43)      16       18           18  storey              
-  (  -28,   -42)      16       18           18  storey              
-  (  -28,   -41)      16       18           18  storey              
-  (  -28,   -40)      16       18           18  storey              
-  (  -28,   -39)      16       18           18  storey              
-  (  -28,   -38)      16       18           18  storey              
-  (  -28,   -37)      16       18           18  storey              
-  (  -28,   -36)      16       18           18  storey              
-  (  -28,   -35)      16       18           18  storey              
-  (  -28,   -34)      16       18           18  storey              
-  (  -28,   -33)      16       18           18  storey              
-  (  -28,   -32)      16       18           18  storey              
-  (  -28,   -31)      16       18           18  storey              
-  (  -28,   -30)      18       18           18                      
+  (  -28,   -44)      18       20           20  storey              scramble +2
+  (  -28,   -43)      18       20           20  storey              
+  (  -28,   -42)      18       20           20  storey              
+  (  -28,   -41)      18       20           20  storey              
+  (  -28,   -40)      18       20           20  storey              
+  (  -28,   -39)      18       20           20  storey              
+  (  -28,   -38)      18       20           20  storey              
+  (  -28,   -37)      18       20           20  storey              
+  (  -28,   -36)      18       20           20  storey              
+  (  -28,   -35)      18       20           20  storey              
+  (  -28,   -34)      18       20           20  storey              
+  (  -28,   -33)      18       20           20  storey              
+  (  -28,   -32)      18       20           20  storey              
+  (  -28,   -31)      18       20           20  storey              
+  (  -28,   -30)      18       18           18                      -2
   (  -28,   -29)      18       18           18                      
   (  -28,   -28)      18       18           18                      
   (  -28,   -27)      18       18           18                      
-  (  -28,   -26)      18       18           18                      
-  (  -28,   -25)      18       18           18                      
-  (  -28,   -24)      18       18           18                      
+  (  -28,   -26)      18       18           18  stroke path-spring  
+  (  -28,   -25)      18       18           18  stroke path-spring  
+  (  -28,   -24)      18       18           18  stroke path-spring  
   (  -28,   -23)      18       18           18                      
   (  -28,   -22)      18       18           18                      
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: (none)
+rises 1, falls 1, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-28, -44) | walked end to end
+beside: stroke path-spring at (-30, -27)

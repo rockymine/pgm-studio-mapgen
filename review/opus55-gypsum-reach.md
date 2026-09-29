@@ -7,9 +7,9 @@ the way through. `docs/gameplay/approaches.md`'s *an objective sits exposed, and
 composed* is the rule it follows.
 
 Slug `opus55-gypsum-reach`, map name **Gypsum Reach**, built on the deployed studio. The run's questions on it
-are notes 1–5, and the author's own notes are 36–43 (`reports/opus55-notes-run.md`).
+are notes 1–5, and the author's own notes are 36–43 and 51–60 (`reports/opus55-notes-run.md`).
 
-## Three passes
+## Four passes
 
 **The first build was the right shape and empty, and the author said so.** Everything was sand over twenty
 blocks of sandstone, two houses stood by a path, the front was bare, and the outline was the plan's rectangle.
@@ -28,6 +28,13 @@ and the rocks are all the larger angular boulder.
 
 **The arch is a timber bridge now, and the mesa's tower is gone.** The mesa carries grass, a tree and two rocks
 instead, and the monument is an emerald cube.
+
+**The fourth pass is the author's second round, notes 51–60.** The houses are repainted, the wash reaches
+further in toward the monument, an irregular plaza lies under the monument, and the island is cut ragged to
+match the frontline. Cacti stand on the open sand.
+
+**The fourth pass also mended what floated and joined what stood apart.** The lip ruins floated and now
+stand on the ground. A path network reaches every house, the bridge from both ends and the frontline's edge.
 
 ## How it is meant to play
 
@@ -52,9 +59,10 @@ the field and holds the pool.
 and a thin orange one, and they follow the ground, so the wash and the mesa show them. The oasis, the spring
 and the mesa top are grass over dirt, which the desert biome tints yellow-green.
 
-**The built family is grey:** stone-brick houses with cracked stone brick and polished andesite through their
-middle courses under brick roofs, and stone-brick ruins. The bridge is spruce planks on dark-oak posts behind
-oak-fence rails. The accent is the granite and brick of the paths and the orange bed in the rock.
+**The built family is grey with warm roofs:** houses of stone brick and andesite in alternate courses on
+polished-andesite posts, with hardened-clay gables under jungle-plank roofs, and stone-brick ruins. The bridge
+is spruce planks on dark-oak posts behind oak-fence rails. The accent is the granite and brick of the paths
+and the plaza, and the orange bed in the rock.
 
 ## What went wrong
 
@@ -64,6 +72,13 @@ are left as the plan cut them.
 
 **A made layer's rectangle covers `x0 … x1 − 1`.** A one-block post written as `x, x` has no area and draws
 nothing (`SK4`). The bridge's first drive laid a deck without rails or posts until the column read said so.
+
+**Both lip ruins floated two and three blocks over the ground.** Their floor was stated at y20 and seating
+them on the ground did not lower them; they now start at y14, and a made layer never replaces the ground's
+own blocks, so the wall meets it.
+
+**A second push over the wash's ground dug a pit to y7**, because pushes stack, and a mark there lowered the
+base the wash's push works from. The lobe is part of the wash's own outline instead.
 
 **Houses placed by eye were declined for `DR-PASS` on three drives.** A group of buildings needs eight blocks of
 passable ground on every side that is not the ground's edge, and the spawn room counts as a building. The house
@@ -79,7 +94,10 @@ seats read put them where they fit.
 | mesa top | (−70, −40), grass at y29, acacia (−72, −40) | `column` (−72, −40) |
 | oasis pool | (−63, 31), water at y15, grass y15–16 against the field's y19 | `column` (−63, 31) |
 | island | x −4…3, z −16…15, y18, rocks (−1, −9) and (0, 8) | `column` (−1, −9) |
-| lip ruins | x −32…−29, z 18…34 and x −29…−26, z −44…−30 | — |
-| dead ground | 17.0%: round the two houses behind the monument, at (−86, −22) | coverage |
+| lip ruins | x −32…−29, z 18…34 and x −29…−26, z −44…−30, stone brick from the ground to y19–21 | `column` (−31, 20) |
+| plaza | ring round (−70, −2), about 16 × 12 | `column` (−70, −6) |
+| wash lobe | to x −60 between z −17 and −7, floor y13–14 | transect along z −12 |
+| cacti | (−100, 2), (−98, 14), (−96, −40), (−101, −22), (−40, −45), (−30, 42), (−56, 9), each on sand | `column` (−100, 2) |
+| dead ground | 16.9%: round the two houses behind the monument, at (−86, −22) | coverage |
 
 Blue's features are the rot_180 images: block `(x, z)` maps to `(−x−1, −z−1)`.
