@@ -1,0 +1,177 @@
+## stream (water) along x
+TRANSECT 39 stations from (-65, 0) to (-27, 0), every 1
+  station        ground  surface  water  top  standing            step
+  (  -65,     0)      13       13           13                      
+  (  -64,     0)      13       13           13  stroke path-causeway  
+  (  -63,     0)      13       13           13  stroke path-causeway  
+  (  -62,     0)      13       13           13  stroke path-causeway  
+  (  -61,     0)      13       13           13  stroke path-causeway  
+  (  -60,     0)      13       13           13  stroke path-causeway  
+  (  -59,     0)      13       13           13  stroke path-causeway  
+  (  -58,     0)      13       13           13  stroke path-causeway  
+  (  -57,     0)      13       13           13  stroke path-causeway  
+  (  -56,     0)      13       14           14  storey              +1
+  (  -55,     0)      13       14           14  storey              
+  (  -54,     0)      13       14           14  storey              
+  (  -53,     0)      13       14           14  storey              
+  (  -52,     0)      13       14           14  storey              
+  (  -51,     0)      13       14           14  storey              
+  (  -50,     0)      13       14           14  storey              
+  (  -49,     0)      13       14           14  storey              
+  (  -48,     0)      13       14           14  storey              
+  (  -47,     0)      13       14           14  storey              
+  (  -46,     0)      13       14           14  storey              
+  (  -45,     0)      13       14     13    14  storey              
+  (  -44,     0)      13       14     13    14  storey              
+  (  -43,     0)      13       14           14  storey              
+  (  -42,     0)      13       14           14  storey              
+  (  -41,     0)      13       14           14  storey              
+  (  -40,     0)      12       14           14  storey              
+  (  -39,     0)      12       14           14  storey              
+  (  -38,     0)      12       12           12  stroke path-causeway-east  -2
+  (  -37,     0)      12       12           12  stroke path-causeway-east  
+  (  -36,     0)      12       12           12  stroke path-causeway-east  
+  (  -35,     0)      12       12           12  stroke path-causeway-east  
+  (  -34,     0)      12       12           12  stroke path-causeway-east  
+  (  -33,     0)      12       12           12  stroke path-causeway-east  
+  (  -32,     0)      12       12           12  stroke path-causeway-east  
+  (  -31,     0)      12       12           12  stroke path-causeway-east  
+  (  -30,     0)      12       12           12  stroke path-causeway-east  
+  (  -29,     0)      12       12           12  stroke path-causeway-east  
+  (  -28,     0)      12       12           12  stroke path-causeway-east  
+  (  -27,     0)      12       12           12  stroke path-causeway-east  
+rises 1, falls 1, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-causeway at (-67, -2), stroke path-causeway-east at (-38, -2), flora fen-cover at (-27, 2)
+
+## stream (water) along z
+TRANSECT 127 stations from (-46, -64) to (-46, 62), every 1
+  station        ground  surface  water  top  standing            step
+  (  -46,   -64)                                                    void
+  (  -46,   -63)                                                    void
+  (  -46,   -62)      13       13           13                      
+  (  -46,   -61)      13       13           13                      
+  (  -46,   -60)      13       13           13                      
+  (  -46,   -59)      13       13           13                      
+  (  -46,   -58)      13       13           13                      
+  (  -46,   -57)      13       13           13                      
+  (  -46,   -56)      13       13     13    13  water stream        
+  (  -46,   -55)      13       13     13    13  water stream        
+  (  -46,   -54)      13       13     13    13  water stream        
+  (  -46,   -53)      13       13           13  water stream        
+  (  -46,   -52)      13       13           13  water stream        
+  (  -46,   -51)      13       13           13  water stream        
+  (  -46,   -50)      13       13     13    13  water stream        
+  (  -46,   -49)      13       13     13    13  water stream        
+  (  -46,   -48)      13       13     13    13  water stream        
+  (  -46,   -47)      13       13     13    13  water stream        
+  (  -46,   -46)      13       13     13    13  water stream        
+  (  -46,   -45)      13       13     13    13  water stream        
+  (  -46,   -44)      13       13     13    13  water stream        
+  (  -46,   -43)      13       13     13    13  water stream        
+  (  -46,   -42)      13       13     13    13  water stream        
+  (  -46,   -41)      13       13     13    13  water stream        
+  (  -46,   -40)      13       13     13    13  water stream        
+  (  -46,   -39)      13       13     13    13  water stream        
+  (  -46,   -38)      13       13     13    13  water stream        
+  (  -46,   -37)      13       13     13    13  water stream        
+  (  -46,   -36)      13       13     13    13  water stream        
+  (  -46,   -35)      13       13     13    13  water stream        
+  (  -46,   -34)      13       13     13    13  water stream        
+  (  -46,   -33)      13       13     13    13  water stream        
+  (  -46,   -32)      13       13     13    13  water stream        
+  (  -46,   -31)      13       13     13    13  water stream        
+  (  -46,   -30)      13       13           13  water stream        
+  (  -46,   -29)      13       13           13                      
+  (  -46,   -28)      13       13           13                      
+  (  -46,   -27)      13       13           13                      
+  (  -46,   -26)      13       13           13  water stream        
+  (  -46,   -25)      13       13           13  water stream        
+  (  -46,   -24)      13       13           13                      
+  (  -46,   -23)      13       13           13                      
+  (  -46,   -22)      13       13           13                      
+  (  -46,   -21)      13       13           13                      
+  (  -46,   -20)      13       13           13                      
+  (  -46,   -19)      13       13           13                      
+  (  -46,   -18)      13       13           13                      
+  (  -46,   -17)      13       13           13                      
+  (  -46,   -16)      13       13           13                      
+  (  -46,   -15)      13       13           13                      
+  (  -46,   -14)      13       13           13                      
+  (  -46,   -13)      13       13           13                      
+  (  -46,   -12)      13       13     13    13  water stream        
+  (  -46,   -11)      13       13     13    13  water stream        
+  (  -46,   -10)      13       13     13    13  water stream        
+  (  -46,    -9)      13       13     13    13  water stream        
+  (  -46,    -8)      13       13     13    13  water stream        
+  (  -46,    -7)      13       13     13    13  water stream        
+  (  -46,    -6)      13       13     13    13  water stream        
+  (  -46,    -5)      13       13     13    13  water stream        
+  (  -46,    -4)      13       13     13    13  water stream        
+  (  -46,    -3)      13       14     13    14  storey              +1
+  (  -46,    -2)      13       14     13    14  storey              
+  (  -46,    -1)      13       14     13    14  storey              
+  (  -46,     0)      13       14           14  storey              
+  (  -46,     1)      13       14     13    14  storey              
+  (  -46,     2)      13       14     13    14  storey              
+  (  -46,     3)      13       14     13    14  storey              
+  (  -46,     4)      13       13     13    13  water stream        -1
+  (  -46,     5)      13       13     13    13  water stream        
+  (  -46,     6)      13       13     13    13  water stream        
+  (  -46,     7)      13       13     13    13  water stream        
+  (  -46,     8)      13       13     13    13  water stream        
+  (  -46,     9)      13       13     13    13  water stream        
+  (  -46,    10)      13       13     13    13  water stream        
+  (  -46,    11)      13       13     13    13  water stream        
+  (  -46,    12)      13       13     13    13  water stream        
+  (  -46,    13)      13       13     13    13  water stream        
+  (  -46,    14)      13       13     13    13  water stream        
+  (  -46,    15)      13       13     13    13  water stream        
+  (  -46,    16)      13       13     13    13  water stream        
+  (  -46,    17)      13       13     13    13  water stream        
+  (  -46,    18)      13       13     13    13  water stream        
+  (  -46,    19)      13       13     13    13  water stream        
+  (  -46,    20)      13       13     13    13  water stream        
+  (  -46,    21)      13       13     13    13  water stream        
+  (  -46,    22)      13       13     13    13  water stream        
+  (  -46,    23)      13       13     13    13  water stream        
+  (  -46,    24)      13       13     13    13  water stream        
+  (  -46,    25)      13       13     13    13  water stream        
+  (  -46,    26)      13       13     13    13  water stream        
+  (  -46,    27)      13       13     13    13  water stream        
+  (  -46,    28)      13       13     13    13  water stream        
+  (  -46,    29)      14       14     13    13  water stream        +1
+  (  -46,    30)      14       14     13    13  water stream        
+  (  -46,    31)      14       14     13    13  water stream        
+  (  -46,    32)      14       14     13    13  water stream        
+  (  -46,    33)      14       14     13    13  water stream        
+  (  -46,    34)      14       14           14  water stream        
+  (  -46,    35)      14       14           14  water stream        
+  (  -46,    36)      14       14           14                      
+  (  -46,    37)      14       14           14                      
+  (  -46,    38)      14       14           14                      
+  (  -46,    39)      14       14           14                      
+  (  -46,    40)      14       14           14                      
+  (  -46,    41)      14       14           14                      
+  (  -46,    42)      14       14           14                      
+  (  -46,    43)      14       14           14                      
+  (  -46,    44)      14       14           14                      
+  (  -46,    45)      14       14           14                      
+  (  -46,    46)      14       14           14                      
+  (  -46,    47)      14       14           14                      
+  (  -46,    48)      14       14           14                      
+  (  -46,    49)      14       14           14                      
+  (  -46,    50)      14       14           14                      
+  (  -46,    51)      14       14           14                      
+  (  -46,    52)      14       14           15  flora fen-cover     
+  (  -46,    53)      14       14           15  flora fen-cover     
+  (  -46,    54)      13       13           14  flora fen-cover     -1
+  (  -46,    55)      13       13           13                      
+  (  -46,    56)      13       13           13                      
+  (  -46,    57)      13       13           13                      
+  (  -46,    58)                                                    void
+  (  -46,    59)                                                    void
+  (  -46,    60)                                                    void
+  (  -46,    61)                                                    void
+  (  -46,    62)                                                    void
+rises 2, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water stream at (-48, -62), flora fen-cover at (-48, 5)

@@ -1,0 +1,91 @@
+## marsh (water) along x
+TRANSECT 47 stations from (-23, 39) to (23, 39), every 1
+  station        ground  surface  water  top  standing            step
+  (  -23,    39)                            17  tree w-5            void
+  (  -22,    39)                            13  tree w-5            void
+  (  -21,    39)       9        9            9  tree w-5            
+  (  -20,    39)       9        9           20  tree w-5            
+  (  -19,    39)       9        9           19  tree w-5            
+  (  -18,    39)       9        9           14  tree w-5            
+  (  -17,    39)       9        9           12  tree w-5            
+  (  -16,    39)       9        9            9  tree w-5            
+  (  -15,    39)       9        9           20  tree w-5            
+  (  -14,    39)       9        9           21  tree w-5            
+  (  -13,    39)       9        9           20  tree w-5            
+  (  -12,    39)       9        9      8    19  tree w-5            
+  (  -11,    39)       9        9      8    17  tree w-5            
+  (  -10,    39)       9        9      8    15  tree w-5            
+  (   -9,    39)       9        9      8     8  tree w-5            
+  (   -8,    39)       9        9      8     8  water marsh         
+  (   -7,    39)       9        9      8     8  water marsh         
+  (   -6,    39)       9        9      8     8  water marsh         
+  (   -5,    39)       9        9      8     8  water marsh         
+  (   -4,    39)       9        9      8     8  water marsh         
+  (   -3,    39)       9        9      8     8  water marsh         
+  (   -2,    39)       9        9      8     8  water marsh         
+  (   -1,    39)       9        9      8     8  water marsh         
+  (    0,    39)       9        9      8     8  water marsh         
+  (    1,    39)       9        9      8     8  water marsh         
+  (    2,    39)       9        9      8     8  water marsh         
+  (    3,    39)       9        9      8     8  water marsh         
+  (    4,    39)       9        9      8     8  water marsh         
+  (    5,    39)       9        9      8     8  water marsh         
+  (    6,    39)       9        9      8     8  water marsh         
+  (    7,    39)       9        9      8     8  water marsh         
+  (    8,    39)       9        9      8     8  water marsh         
+  (    9,    39)       9        9      8     8  water marsh         
+  (   10,    39)       9        9      8     8  water marsh         
+  (   11,    39)       9        9      8     8  water marsh         
+  (   12,    39)       9        9            9                      
+  (   13,    39)       9        9            9                      
+  (   14,    39)       9        9            9                      
+  (   15,    39)       9        9            9                      
+  (   16,    39)       9        9            9                      
+  (   17,    39)       9        9            9                      
+  (   18,    39)       9        9           10  flora reed-cover    
+  (   19,    39)       9        9           10  flora reed-cover    
+  (   20,    39)                                                    void
+  (   21,    39)                                                    void
+  (   22,    39)                                                    void
+  (   23,    39)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree w-5 at (-24, 37), water marsh at (-9, 37), flora reed-cover at (18, 39)
+
+## marsh (water) along z
+TRANSECT 33 stations from (0, 23) to (0, 55), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,    23)                                                    void
+  (    0,    24)                                                    void
+  (    0,    25)                             2                      void
+  (    0,    26)                                                    void
+  (    0,    27)                                                    void
+  (    0,    28)                                                    void
+  (    0,    29)                                                    void
+  (    0,    30)                                                    void
+  (    0,    31)                                                    void
+  (    0,    32)       9        9            9                      
+  (    0,    33)       9        9            9  water marsh         
+  (    0,    34)       9        9            9  water marsh         
+  (    0,    35)       9        9      8     8  water marsh         
+  (    0,    36)       9        9      8     8  water marsh         
+  (    0,    37)       9        9      8     8  water marsh         
+  (    0,    38)       9        9      8     8  water marsh         
+  (    0,    39)       9        9      8     8  water marsh         
+  (    0,    40)       9        9      8     8  water marsh         
+  (    0,    41)       9        9      8     8  water marsh         
+  (    0,    42)       9        9      8     8  water marsh         
+  (    0,    43)       9        9      8     8  water marsh         
+  (    0,    44)       9        9            9                      
+  (    0,    45)      10       10           10                      +1
+  (    0,    46)      10       10           10                      
+  (    0,    47)      10       10           10                      
+  (    0,    48)      11       11           11  stroke road-a       +1
+  (    0,    49)      11       11           11  stroke road-a       
+  (    0,    50)      11       11           11  stroke road-a       
+  (    0,    51)      12       12           12                      +1
+  (    0,    52)      12       12           12                      
+  (    0,    53)      12       12     12    12  water pond-front    
+  (    0,    54)      12       12     12    12  water pond-front    
+  (    0,    55)      12       12     12    12  water pond-front    
+rises 3, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora reed-cover at (2, 32), water marsh at (-2, 33), stroke road-a at (-2, 47), water pond-front at (-2, 53), tree o-1 at (1, 55)

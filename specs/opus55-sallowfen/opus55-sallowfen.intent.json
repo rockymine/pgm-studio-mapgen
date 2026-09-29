@@ -1,0 +1,220 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 20,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "sp",
+    "image": 0
+   },
+   "reflected": false,
+   "team": "red",
+   "point": {
+    "x": -132,
+    "y": 16,
+    "z": 0
+   },
+   "protection": [
+    {
+     "minX": -140,
+     "minZ": -12,
+     "maxX": -124,
+     "maxZ": 12
+    }
+   ],
+   "yaw": 270,
+   "doors": [
+    "+x"
+   ],
+   "footprint": {
+    "minX": -139,
+    "minZ": -7,
+    "maxX": -125,
+    "maxZ": 7
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "sp",
+    "image": 1
+   },
+   "reflected": false,
+   "team": "blue",
+   "point": {
+    "x": 132,
+    "y": 16,
+    "z": 0
+   },
+   "protection": [
+    {
+     "minX": 124,
+     "minZ": -12,
+     "maxX": 140,
+     "maxZ": 12
+    }
+   ],
+   "yaw": 90,
+   "doors": [
+    "-x"
+   ],
+   "footprint": {
+    "minX": 125,
+    "minZ": -7,
+    "maxX": 139,
+    "maxZ": 7
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 27,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -16,
+    "minZ": -64,
+    "maxX": 0,
+    "maxZ": 64
+   },
+   {
+    "minX": 0,
+    "minZ": -64,
+    "maxX": 16,
+    "maxZ": 64
+   }
+  ],
+  "holes": []
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "south",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Willow Stone",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -78,
+    "y": 12,
+    "z": -30
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "north",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Reed Stone",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -76,
+    "y": 12,
+    "z": 30
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "south",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Willow Stone",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 77,
+    "y": 12,
+    "z": 29
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "north",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Reed Stone",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 75,
+    "y": 12,
+    "z": -31
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Sallowfen",
+  "created": "2026-09-28",
+  "authors": [
+   {
+    "name": "Opus 5.5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": null
+}

@@ -1,0 +1,58 @@
+## house-d (house) along x
+TRANSECT 24 stations from (-72, -23) to (-49, -23), every 1
+  station        ground  surface  water  top  standing            step
+  (  -72,   -23)      21       21           21                      
+  (  -71,   -23)      21       21           21                      
+  (  -70,   -23)      21       21           21                      
+  (  -69,   -23)      21       21           21                      
+  (  -68,   -23)      21       21           21                      
+  (  -67,   -23)      21       21           21                      
+  (  -66,   -23)      21       21           21                      
+  (  -65,   -23)      20       20           31  house house-d       -1
+  (  -64,   -23)      20       20           31  house house-d       
+  (  -63,   -23)      20       20           31  house house-d       
+  (  -62,   -23)      20       20           31  house house-d       
+  (  -61,   -23)      20       20           31  house house-d       
+  (  -60,   -23)      20       20           31  house house-d       
+  (  -59,   -23)      20       20           31  house house-d       
+  (  -58,   -23)      20       20           31  house house-d       
+  (  -57,   -23)      20       20           31  house house-d       
+  (  -56,   -23)      20       20           31  house house-d       
+  (  -55,   -23)      20       20           20  stroke path-spring  
+  (  -54,   -23)      20       20           20  stroke path-spring  
+  (  -53,   -23)      20       20           20  stroke path-spring  
+  (  -52,   -23)      19       19           19  stroke path-spring  -1
+  (  -51,   -23)      19       19           19  stroke path-spring  
+  (  -50,   -23)      19       19           19                      
+  (  -49,   -23)      19       19           19                      
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house house-d at (-65, -25), stroke path-spring at (-55, -25)
+
+## house-d (house) along z
+TRANSECT 23 stations from (-61, -34) to (-61, -12), every 1
+  station        ground  surface  water  top  standing            step
+  (  -61,   -34)      30       30           30                      
+  (  -61,   -33)      27       27           27                      -3
+  (  -61,   -32)      25       25           25                      -2
+  (  -61,   -31)      21       21           21                      DROP -4
+  (  -61,   -30)      20       20           20                      -1
+  (  -61,   -29)      20       20           20                      
+  (  -61,   -28)      20       20           20                      
+  (  -61,   -27)      20       20           29  house house-d       
+  (  -61,   -26)      20       20           29  house house-d       
+  (  -61,   -25)      20       20           30  house house-d       
+  (  -61,   -24)      20       20           30  house house-d       
+  (  -61,   -23)      20       20           31  house house-d       
+  (  -61,   -22)      20       20           30  house house-d       
+  (  -61,   -21)      20       20           30  house house-d       
+  (  -61,   -20)      20       20           29  house house-d       
+  (  -61,   -19)      20       20           29  house house-d       
+  (  -61,   -18)      20       20           20                      
+  (  -61,   -17)      20       20           20                      
+  (  -61,   -16)      18       18           18                      -2
+  (  -61,   -15)      17       17           17                      -1
+  (  -61,   -14)      16       16           16                      -1
+  (  -61,   -13)      15       15           15                      -1
+  (  -61,   -12)      15       15           15                      
+rises 0, falls 8, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-61, -31) | walked end to end
+beside: house house-d at (-63, -27)

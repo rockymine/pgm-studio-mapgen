@@ -1,0 +1,94 @@
+## temple (made) along x
+TRANSECT 51 stations from (-103, 25) to (-53, 25), every 1
+  station        ground  surface  water  top  standing            step
+  ( -103,    25)                                                    void
+  ( -102,    25)                                                    void
+  ( -101,    25)                                                    void
+  ( -100,    25)                                                    void
+  (  -99,    25)                                                    void
+  (  -98,    25)                                                    void
+  (  -97,    25)      19       19           19                      
+  (  -96,    25)      19       19           19                      
+  (  -95,    25)      19       20           20  storey              +1
+  (  -94,    25)      19       20           20  storey              
+  (  -93,    25)      19       22           22  storey              scramble +2
+  (  -92,    25)      19       22           22  storey              
+  (  -91,    25)      19       24           24  storey              scramble +2
+  (  -90,    25)      19       24           24  storey              
+  (  -89,    25)      19       24           24  storey              
+  (  -88,    25)      19       24           24  storey              
+  (  -87,    25)      19       24           24  storey              
+  (  -86,    25)      19       24           24  storey              
+  (  -85,    25)      18       24           24  storey              
+  (  -84,    25)      18       24           24  storey              
+  (  -83,    25)      18       24           24  storey              
+  (  -82,    25)      18       24           24  storey              
+  (  -81,    25)      18       23           23  storey              -1
+  (  -80,    25)      18       23           23  storey              
+  (  -79,    25)      18       21           21  storey              -2
+  (  -78,    25)      18       21           21  storey              
+  (  -77,    25)      18       19           19  storey              -2
+  (  -76,    25)      18       19           19  storey              
+  (  -75,    25)      18       18           18                      -1
+  (  -74,    25)      18       18           18                      
+  (  -73,    25)      18       18           18                      
+  (  -72,    25)      18       18           18                      
+  (  -71,    25)      18       18           18                      
+  (  -70,    25)      18       18           18                      
+  (  -69,    25)      18       18           18                      
+  (  -68,    25)      18       18           18                      
+  (  -67,    25)      18       18           18                      
+  (  -66,    25)      18       18           19  flora floor-cover   
+  (  -65,    25)      18       18           19  flora floor-cover   
+  (  -64,    25)      18       18           42  flora floor-cover   
+  (  -63,    25)      18       18           19  flora floor-cover   
+  (  -62,    25)      18       18           19  flora floor-cover   
+  (  -61,    25)      18       18           18                      
+  (  -60,    25)      18       18           18                      
+  (  -59,    25)      18       18           18                      
+  (  -58,    25)      18       18           18                      
+  (  -57,    25)      19       19           19                      +1
+  (  -56,    25)      20       20           20                      +1
+  (  -55,    25)      20       20           20                      
+  (  -54,    25)      20       20           20  tree o-4            
+  (  -53,    25)      21       21           21  tree o-4            +1
+rises 6, falls 4, worst step 2: 0 barrier, 2 scramble, 0 drop — scramble +2 at (-93, 25); scramble +2 at (-91, 25) | walked end to end
+beside: flora floor-cover at (-97, 23), destroyable stone at (-64, 24), tree o-4 at (-56, 27)
+
+## temple (made) along z
+TRANSECT 32 stations from (-78, 7) to (-78, 38), every 1
+  station        ground  surface  water  top  standing            step
+  (  -78,     7)      17       17           27  tree o-2            
+  (  -78,     8)      17       17           24  tree o-2            
+  (  -78,     9)      17       17           24  tree o-2            
+  (  -78,    10)      17       17           17  tree o-2            
+  (  -78,    11)      17       17           17                      
+  (  -78,    12)      17       17           17                      
+  (  -78,    13)      17       17           17                      
+  (  -78,    14)      17       17           17                      
+  (  -78,    15)      18       21           21  storey              BARRIER +4
+  (  -78,    16)      18       18           18                      -3
+  (  -78,    17)      18       20           20  storey              scramble +2
+  (  -78,    18)      18       20           20  storey              
+  (  -78,    19)      18       20           20  storey              
+  (  -78,    20)      18       20           20  storey              
+  (  -78,    21)      18       20           20  storey              
+  (  -78,    22)      18       20           20  storey              
+  (  -78,    23)      18       20           20  storey              
+  (  -78,    24)      18       20           20  storey              
+  (  -78,    25)      18       21           21  storey              +1
+  (  -78,    26)      18       21           21  storey              
+  (  -78,    27)      18       21           21  storey              
+  (  -78,    28)      18       20           20  storey              -1
+  (  -78,    29)      18       20           20  storey              
+  (  -78,    30)      18       20           20  storey              
+  (  -78,    31)      18       20           20  storey              
+  (  -78,    32)      18       20           20  storey              
+  (  -78,    33)      18       20           20  storey              
+  (  -78,    34)      18       20           20  storey              
+  (  -78,    35)      18       18           18                      -2
+  (  -78,    36)      18       18           18                      
+  (  -78,    37)      18       18           18                      
+  (  -78,    38)                                                    void
+rises 3, falls 3, worst step 4: 1 barrier, 1 scramble, 0 drop — BARRIER +4 at (-78, 15); scramble +2 at (-78, 17) | walked end to end
+beside: tree o-2 at (-80, 5), flora floor-cover at (-76, 16)

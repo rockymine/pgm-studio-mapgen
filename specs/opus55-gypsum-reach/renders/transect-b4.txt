@@ -1,0 +1,61 @@
+## b4 (boulder) along x
+TRANSECT 25 stations from (-36, -18) to (-12, -18), every 1
+  station        ground  surface  water  top  standing            step
+  (  -36,   -18)      18       18           18                      
+  (  -35,   -18)      18       18           18                      
+  (  -34,   -18)      18       18           18                      
+  (  -33,   -18)      18       18           18                      
+  (  -32,   -18)      18       18           18                      
+  (  -31,   -18)      18       18           18                      
+  (  -30,   -18)      18       18           18                      
+  (  -29,   -18)      18       18           18                      
+  (  -28,   -18)      18       18           18                      
+  (  -27,   -18)      18       18           18                      
+  (  -26,   -18)      18       18           20  boulder b4          
+  (  -25,   -18)      18       18           21  boulder b4          
+  (  -24,   -18)      18       18           21  boulder b4          
+  (  -23,   -18)      18       18           21  boulder b4          
+  (  -22,   -18)      18       18           20  boulder b4          
+  (  -21,   -18)      18       18           18                      
+  (  -20,   -18)      18       18           18                      
+  (  -19,   -18)      18       18           18                      
+  (  -18,   -18)      18       18           18                      
+  (  -17,   -18)                                                    void
+  (  -16,   -18)                                                    void
+  (  -15,   -18)                                                    void
+  (  -14,   -18)                                                    void
+  (  -13,   -18)                                                    void
+  (  -12,   -18)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder b4 at (-26, -19)
+
+## b4 (boulder) along z
+TRANSECT 25 stations from (-24, -30) to (-24, -6), every 1
+  station        ground  surface  water  top  standing            step
+  (  -24,   -30)      17       17           17                      
+  (  -24,   -29)      17       17           17                      
+  (  -24,   -28)      18       18           18                      +1
+  (  -24,   -27)      18       18           18  stroke path-spring  
+  (  -24,   -26)      18       18           18  stroke path-spring  
+  (  -24,   -25)      18       18           18  stroke path-spring  
+  (  -24,   -24)      18       18           18                      
+  (  -24,   -23)      18       18           18                      
+  (  -24,   -22)      18       18           18                      
+  (  -24,   -21)      18       18           18                      
+  (  -24,   -20)      18       18           20  boulder b4          
+  (  -24,   -19)      18       18           20  boulder b4          
+  (  -24,   -18)      18       18           21  boulder b4          
+  (  -24,   -17)      17       17           20  boulder b4          -1
+  (  -24,   -16)      17       17           20  boulder b4          
+  (  -24,   -15)      17       17           17                      
+  (  -24,   -14)      17       17           17                      
+  (  -24,   -13)      17       17           17                      
+  (  -24,   -12)      17       17           17                      
+  (  -24,   -11)      17       17           17                      
+  (  -24,   -10)      17       17           17                      
+  (  -24,    -9)      17       17           17                      
+  (  -24,    -8)      17       17           17                      
+  (  -24,    -7)      17       17           17                      
+  (  -24,    -6)      17       17           17  stroke path-bridge-east  
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-spring at (-22, -29), boulder b4 at (-25, -20), stroke path-bridge-east at (-22, -7)

@@ -1,0 +1,57 @@
+## lily-pads (made) along x
+TRANSECT 20 stations from (8, 74) to (27, 74), every 1
+  station        ground  surface  water  top  standing            step
+  (    8,    74)      13       13           13  stroke path-wool-b  
+  (    9,    74)      13       13           13  stroke path-wool-b  
+  (   10,    74)      13       13           13  stroke path-wool-b  
+  (   11,    74)      13       13           17  wall 0              
+  (   12,    74)      12       12           17  wall 0              -1
+  (   13,    74)      12       12           12  stroke path-wool-b  
+  (   14,    74)      11       11           11  stroke path-wool-b  -1
+  (   15,    74)      11       11           11  water east-channel  
+  (   16,    74)      11       11     11    11  water east-channel  
+  (   17,    74)      11       11     11    11  water east-channel  
+  (   18,    74)      11       11     11    11  water east-channel  
+  (   19,    74)      11       11           11                      
+  (   20,    74)      12       12           12  stroke path-wool-b2  +1
+  (   21,    74)      12       12           12  stroke path-wool-b2  
+  (   22,    74)      13       13           13  stroke path-wool-b2  +1
+  (   23,    74)      13       13           13  stroke path-wool-b2  
+  (   24,    74)      13       13           13  stroke path-wool-b2  
+  (   25,    74)      13       13           13  stroke path-wool-b2  
+  (   26,    74)      13       13           13                      
+  (   27,    74)      13       13           13                      
+rises 2, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-wool-b at (9, 72), wall 0 at (11, 72), water east-channel at (15, 72), stroke path-wool-b2 at (20, 73), redstoneline 1 at (28, 72), wool wool-2 at (29, 72)
+
+## lily-pads (made) along z
+TRANSECT 26 stations from (17, 62) to (17, 87), every 1
+  station        ground  surface  water  top  standing            step
+  (   17,    62)                                                    void
+  (   17,    63)                                                    void
+  (   17,    64)                                                    void
+  (   17,    65)                                                    void
+  (   17,    66)                                                    void
+  (   17,    67)                                                    void
+  (   17,    68)                                                    void
+  (   17,    69)      11       11     11    11  water east-channel  
+  (   17,    70)      11       11     11    11  water east-channel  
+  (   17,    71)      11       11     11    11  water east-channel  
+  (   17,    72)      11       11     11    11  water east-channel  
+  (   17,    73)      11       11     11    11  water east-channel  
+  (   17,    74)      11       11     11    11  water east-channel  
+  (   17,    75)      11       11     11    11  water east-channel  
+  (   17,    76)      11       12     11    12  storey              +1
+  (   17,    77)      11       11     11    11  water east-channel  -1
+  (   17,    78)      11       11     11    11  water east-channel  
+  (   17,    79)      11       11     11    11  water east-channel  
+  (   17,    80)                                                    void
+  (   17,    81)                                                    void
+  (   17,    82)                                                    void
+  (   17,    83)                                                    void
+  (   17,    84)                                                    void
+  (   17,    85)                                                    void
+  (   17,    86)                                                    void
+  (   17,    87)                                                    void
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water east-channel at (15, 69)

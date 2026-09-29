@@ -1,0 +1,75 @@
+## brook (water) along x
+TRANSECT 39 stations from (-60, -8) to (-22, -8), every 1
+  station        ground  surface  water  top  standing            step
+  (  -60,    -8)       8        8      8    19  tree o-1            
+  (  -59,    -8)       8        8      8    18  tree o-1            
+  (  -58,    -8)       8        8      8     8  tree o-1            
+  (  -57,    -8)       8        8      8     8  water lagoon        
+  (  -56,    -8)       8        8      8     8  water lagoon        
+  (  -55,    -8)       8        8      8     8  water lagoon        
+  (  -54,    -8)       8        8      8     8  water lagoon        
+  (  -53,    -8)       8        8      8     8  water lagoon        
+  (  -52,    -8)       8        8      8     8  water lagoon        
+  (  -51,    -8)       8        8      8     8  water lagoon        
+  (  -50,    -8)       8        8      8     8  water lagoon        
+  (  -49,    -8)       8        8      8     8  water lagoon        
+  (  -48,    -8)       8        8      8     8  water brook         
+  (  -47,    -8)       8        8      8     8  water brook         
+  (  -46,    -8)       8        8      8     8  water brook         
+  (  -45,    -8)       8        8      8     8  water brook         
+  (  -44,    -8)       8        8      8     8  water brook         
+  (  -43,    -8)       8        8      8     8  water brook         
+  (  -42,    -8)       8        8      8     8  water brook         
+  (  -41,    -8)       8        8      8     8  water brook         
+  (  -40,    -8)       8        8      8     8  water brook         
+  (  -39,    -8)       8        8      8     8  water brook         
+  (  -38,    -8)       8        8      8     8  water brook         
+  (  -37,    -8)       8        8      8     8  water brook         
+  (  -36,    -8)       8        8      8     8  water brook         
+  (  -35,    -8)       8        8      8     8  water brook         
+  (  -34,    -8)       9        9      8     8  water brook         +1
+  (  -33,    -8)       9        9            9                      
+  (  -32,    -8)       9        9            9  tree o-3            
+  (  -31,    -8)      10       10           10  tree o-3            +1
+  (  -30,    -8)      10       10           10  tree o-3            
+  (  -29,    -8)      10       10           10  tree o-3            
+  (  -28,    -8)      10       10           10  tree o-3            
+  (  -27,    -8)      11       11           12  tree o-3            +1
+  (  -26,    -8)      11       11           13  tree o-3            
+  (  -25,    -8)      11       11           13  tree o-3            
+  (  -24,    -8)      11       11           13  tree o-3            
+  (  -23,    -8)      11       11           13  tree o-3            
+  (  -22,    -8)      11       11           13  tree o-3            
+rises 3, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree o-1 at (-62, -10), water lagoon at (-57, -10), water brook at (-48, -10), tree j-5 at (-44, -10), tree o-3 at (-34, -6), boulder b-2 at (-21, -10)
+
+## brook (water) along z
+TRANSECT 25 stations from (-41, -20) to (-41, 4), every 1
+  station        ground  surface  water  top  standing            step
+  (  -41,   -20)       9        9           17  tree j-5            
+  (  -41,   -19)       9        9           19  tree j-5            
+  (  -41,   -18)       9        9           18  tree j-5            
+  (  -41,   -17)       9        9           21  tree j-5            
+  (  -41,   -16)       9        9           20  tree j-5            
+  (  -41,   -15)       8        8            8  tree j-5            -1
+  (  -41,   -14)       8        8            8  tree j-5            
+  (  -41,   -13)       8        8            8  tree j-5            
+  (  -41,   -12)       8        8            8  tree j-5            
+  (  -41,   -11)       8        8            8  tree j-5            
+  (  -41,   -10)       8        8      8     8  water brook         
+  (  -41,    -9)       8        8      8     8  water brook         
+  (  -41,    -8)       8        8      8     8  water brook         
+  (  -41,    -7)       8        8      8     8  water brook         
+  (  -41,    -6)       8        8            8                      
+  (  -41,    -5)       8        8            8                      
+  (  -41,    -4)       8        8            8                      
+  (  -41,    -3)       8        8            9  flora floor-cover   
+  (  -41,    -2)       9        9           10  flora floor-cover   +1
+  (  -41,    -1)       9        9           10  flora floor-cover   
+  (  -41,     0)       9        9           10  flora floor-cover   
+  (  -41,     1)      10       10           11  flora floor-cover   +1
+  (  -41,     2)      10       10           10                      
+  (  -41,     3)      10       10           10                      
+  (  -41,     4)      10       10           10                      
+rises 2, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree j-5 at (-43, -22), tree j-6 at (-40, -22), water brook at (-40, -11), flora floor-cover at (-40, -4)

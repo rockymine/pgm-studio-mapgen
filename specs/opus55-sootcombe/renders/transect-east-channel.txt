@@ -1,0 +1,73 @@
+## east-channel (water) along x
+TRANSECT 23 stations from (6, 74) to (28, 74), every 1
+  station        ground  surface  water  top  standing            step
+  (    6,    74)      13       13           13  stroke path-wool-b  
+  (    7,    74)      13       13           13  stroke path-wool-b  
+  (    8,    74)      13       13           13  stroke path-wool-b  
+  (    9,    74)      13       13           13  stroke path-wool-b  
+  (   10,    74)      13       13           13  stroke path-wool-b  
+  (   11,    74)      13       13           17  wall 0              
+  (   12,    74)      12       12           17  wall 0              -1
+  (   13,    74)      12       12           12  stroke path-wool-b  
+  (   14,    74)      11       11           11  stroke path-wool-b  -1
+  (   15,    74)      11       11           11  water east-channel  
+  (   16,    74)      11       11     11    11  water east-channel  
+  (   17,    74)      11       11     11    11  water east-channel  
+  (   18,    74)      11       11     11    11  water east-channel  
+  (   19,    74)      11       11           11                      
+  (   20,    74)      12       12           12  stroke path-wool-b2  +1
+  (   21,    74)      12       12           12  stroke path-wool-b2  
+  (   22,    74)      13       13           13  stroke path-wool-b2  +1
+  (   23,    74)      13       13           13  stroke path-wool-b2  
+  (   24,    74)      13       13           13  stroke path-wool-b2  
+  (   25,    74)      13       13           13  stroke path-wool-b2  
+  (   26,    74)      13       13           13                      
+  (   27,    74)      13       13           13                      
+  (   28,    74)      13       13           20  redstoneline 1      
+rises 2, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-wool-b at (4, 73), tree willow-terrace at (4, 76), wall 0 at (11, 72), water east-channel at (15, 72), stroke path-wool-b2 at (20, 73), redstoneline 1 at (28, 72), wool wool-2 at (29, 72)
+
+## east-channel (water) along z
+TRANSECT 39 stations from (17, 55) to (17, 93), every 1
+  station        ground  surface  water  top  standing            step
+  (   17,    55)                                                    void
+  (   17,    56)                                                    void
+  (   17,    57)                                                    void
+  (   17,    58)                                                    void
+  (   17,    59)                                                    void
+  (   17,    60)                                                    void
+  (   17,    61)                                                    void
+  (   17,    62)                                                    void
+  (   17,    63)                                                    void
+  (   17,    64)                                                    void
+  (   17,    65)                                                    void
+  (   17,    66)                                                    void
+  (   17,    67)                                                    void
+  (   17,    68)                                                    void
+  (   17,    69)      11       11     11    11  water east-channel  
+  (   17,    70)      11       11     11    11  water east-channel  
+  (   17,    71)      11       11     11    11  water east-channel  
+  (   17,    72)      11       11     11    11  water east-channel  
+  (   17,    73)      11       11     11    11  water east-channel  
+  (   17,    74)      11       11     11    11  water east-channel  
+  (   17,    75)      11       11     11    11  water east-channel  
+  (   17,    76)      11       12     11    12  storey              +1
+  (   17,    77)      11       11     11    11  water east-channel  -1
+  (   17,    78)      11       11     11    11  water east-channel  
+  (   17,    79)      11       11     11    11  water east-channel  
+  (   17,    80)                                                    void
+  (   17,    81)                                                    void
+  (   17,    82)                                                    void
+  (   17,    83)                                                    void
+  (   17,    84)                                                    void
+  (   17,    85)                                                    void
+  (   17,    86)                                                    void
+  (   17,    87)                                                    void
+  (   17,    88)                                                    void
+  (   17,    89)                                                    void
+  (   17,    90)                                                    void
+  (   17,    91)                                                    void
+  (   17,    92)                                                    void
+  (   17,    93)                                                    void
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water east-channel at (15, 69)

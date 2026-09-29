@@ -1,0 +1,128 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Gypsum Reach",
+  "authors": [
+   "Opus 5.5"
+  ]
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 20
+ },
+ "pieces": [
+  {
+   "id": "field",
+   "rect": [
+    -26,
+    -12,
+    22,
+    20
+   ]
+  },
+  {
+   "id": "field-east",
+   "rect": [
+    -22,
+    8,
+    18,
+    4
+   ]
+  },
+  {
+   "id": "field-west",
+   "rect": [
+    -28,
+    6,
+    2,
+    6
+   ]
+  },
+  {
+   "id": "field-back",
+   "rect": [
+    -26,
+    11,
+    4,
+    1
+   ]
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -26,
+    8,
+    4,
+    3
+   ],
+   "surface": 21
+  },
+  {
+   "id": "isle",
+   "rect": [
+    -1,
+    -4,
+    2,
+    8
+   ],
+   "surface": 18,
+   "mirrors": false
+  },
+  {
+   "id": "isle-south",
+   "rect": [
+    0,
+    -11,
+    2,
+    4
+   ],
+   "surface": 18
+  }
+ ],
+ "zones": [
+  {
+   "id": "strait",
+   "rect": [
+    -4,
+    -12,
+    4,
+    24
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "sp",
+    "piece": "spawn",
+    "at": [
+     8,
+     6
+    ],
+    "facing": "front",
+    "footprint": [
+     2,
+     2,
+     12,
+     8
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "mon",
+    "piece": "field",
+    "at": [
+     34,
+     46
+    ],
+    "style": "cube-3",
+    "materials": "emerald block",
+    "name": "Gypsum Monument"
+   }
+  ]
+ }
+}

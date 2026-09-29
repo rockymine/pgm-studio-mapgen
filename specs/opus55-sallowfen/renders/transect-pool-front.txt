@@ -1,0 +1,82 @@
+## pool-front (water) along x
+TRANSECT 33 stations from (-46, -28) to (-14, -28), every 1
+  station        ground  surface  water  top  standing            step
+  (  -46,   -28)      13       13           13                      
+  (  -45,   -28)      13       13           13                      
+  (  -44,   -28)      13       13           13                      
+  (  -43,   -28)      13       13           13                      
+  (  -42,   -28)      13       13           13                      
+  (  -41,   -28)      13       13           13                      
+  (  -40,   -28)      13       13           14  flora fen-cover     
+  (  -39,   -28)      12       12           13  flora fen-cover     -1
+  (  -38,   -28)      11       11           12  flora fen-cover     -1
+  (  -37,   -28)      11       11           12  flora fen-cover     
+  (  -36,   -28)      11       11           12  flora fen-cover     
+  (  -35,   -28)      11       11           12  flora fen-cover     
+  (  -34,   -28)      10       10     10    10  water pool-front    -1
+  (  -33,   -28)      10       10     10    10  water pool-front    
+  (  -32,   -28)      10       10     10    10  water pool-front    
+  (  -31,   -28)      10       10     10    10  water pool-front    
+  (  -30,   -28)      10       10     10    10  water pool-front    
+  (  -29,   -28)      10       10     10    10  water pool-front    
+  (  -28,   -28)      10       10     10    10  water pool-front    
+  (  -27,   -28)      10       10     10    10  water pool-front    
+  (  -26,   -28)      10       10           10  water pool-front    
+  (  -25,   -28)      10       10           10                      
+  (  -24,   -28)      10       10           10                      
+  (  -23,   -28)      10       10           10                      
+  (  -22,   -28)      11       11           11                      +1
+  (  -21,   -28)      11       11           11                      
+  (  -20,   -28)      12       12           12                      +1
+  (  -19,   -28)      12       12           12                      
+  (  -18,   -28)      12       12           12                      
+  (  -17,   -28)      12       12           12                      
+  (  -16,   -28)                                                    void
+  (  -15,   -28)                                                    void
+  (  -14,   -28)                                                    void
+rises 2, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water stream at (-48, -30), flora fen-cover at (-40, -29), water pool-front at (-35, -30)
+
+## pool-front (water) along z
+TRANSECT 38 stations from (-30, -46) to (-30, -9), every 1
+  station        ground  surface  water  top  standing            step
+  (  -30,   -46)      12       12           12  tree w8             
+  (  -30,   -45)      12       12           12  tree w8             
+  (  -30,   -44)      12       12           12  tree w8             
+  (  -30,   -43)      12       12           12  tree w8             
+  (  -30,   -42)      12       12           12                      
+  (  -30,   -41)      12       12           12                      
+  (  -30,   -40)      12       12           12                      
+  (  -30,   -39)      12       12           12                      
+  (  -30,   -38)      11       11           11                      -1
+  (  -30,   -37)      11       11           11                      
+  (  -30,   -36)      10       10           10                      -1
+  (  -30,   -35)      10       10           10                      
+  (  -30,   -34)      10       10     10    10  water pool-front    
+  (  -30,   -33)      10       10     10    10  water pool-front    
+  (  -30,   -32)      10       10     10    10  water pool-front    
+  (  -30,   -31)      10       10     10    10  water pool-front    
+  (  -30,   -30)      10       10     10    10  water pool-front    
+  (  -30,   -29)      10       10     10    10  water pool-front    
+  (  -30,   -28)      10       10     10    10  water pool-front    
+  (  -30,   -27)      10       10     10    10  water pool-front    
+  (  -30,   -26)      10       10     10    10  water pool-front    
+  (  -30,   -25)      10       10     10    10  water pool-front    
+  (  -30,   -24)      10       10     10    10  water pool-front    
+  (  -30,   -23)      10       10     10    10  water pool-front    
+  (  -30,   -22)      10       10           10  water pool-front    
+  (  -30,   -21)      10       10           10                      
+  (  -30,   -20)      10       10           10                      
+  (  -30,   -19)      10       10           10                      
+  (  -30,   -18)      10       10           10                      
+  (  -30,   -17)      11       11           11                      +1
+  (  -30,   -16)      12       12           12                      +1
+  (  -30,   -15)      12       12           12                      
+  (  -30,   -14)      12       12           12                      
+  (  -30,   -13)      12       12           12                      
+  (  -30,   -12)      12       12           12                      
+  (  -30,   -11)      12       12           12                      
+  (  -30,   -10)      12       12           12                      
+  (  -30,    -9)      12       12           12                      
+rises 2, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree w8 at (-32, -48), flora fen-cover at (-29, -37), water pool-front at (-32, -34)

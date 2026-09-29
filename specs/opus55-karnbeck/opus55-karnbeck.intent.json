@@ -1,0 +1,184 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "sp",
+    "image": 0
+   },
+   "reflected": false,
+   "team": "red",
+   "point": {
+    "x": -116,
+    "y": 24,
+    "z": 0
+   },
+   "protection": [
+    {
+     "minX": -124,
+     "minZ": -12,
+     "maxX": -108,
+     "maxZ": 12
+    }
+   ],
+   "yaw": 270,
+   "doors": [
+    "+x"
+   ],
+   "footprint": {
+    "minX": -123,
+    "minZ": -7,
+    "maxX": -109,
+    "maxZ": 7
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "sp",
+    "image": 1
+   },
+   "reflected": false,
+   "team": "blue",
+   "point": {
+    "x": 116,
+    "y": 24,
+    "z": 0
+   },
+   "protection": [
+    {
+     "minX": 108,
+     "minZ": -12,
+     "maxX": 124,
+     "maxZ": 12
+    }
+   ],
+   "yaw": 90,
+   "doors": [
+    "-x"
+   ],
+   "footprint": {
+    "minX": 109,
+    "minZ": -7,
+    "maxX": 123,
+    "maxZ": 7
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 31,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -16,
+    "minZ": -56,
+    "maxX": 0,
+    "maxZ": 56
+   },
+   {
+    "minX": 0,
+    "minZ": -56,
+    "maxX": 16,
+    "maxZ": 56
+   }
+  ],
+  "holes": []
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Keep Core",
+   "anchor": {
+    "x": -62,
+    "y": 16,
+    "z": 10
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Keep Core",
+   "anchor": {
+    "x": 61,
+    "y": 16,
+    "z": -11
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  }
+ ],
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtc"
+ ],
+ "meta": {
+  "name": "Karnbeck",
+  "created": "2026-09-28",
+  "authors": [
+   {
+    "name": "Opus 5.5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": null
+}

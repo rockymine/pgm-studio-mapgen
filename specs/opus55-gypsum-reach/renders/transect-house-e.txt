@@ -1,0 +1,51 @@
+## house-e (house) along x
+TRANSECT 24 stations from (-52, 41) to (-29, 41), every 1
+  station        ground  surface  water  top  standing            step
+  (  -52,    41)      16       16           16                      
+  (  -51,    41)      16       16           17  flora oasis-cover   
+  (  -50,    41)      16       16           16  tree t5             
+  (  -49,    41)      16       16           17  flora oasis-cover   
+  (  -48,    41)      16       16           17  flora oasis-cover   
+  (  -47,    41)      16       16           17  flora oasis-cover   
+  (  -46,    41)      16       16           16                      
+  (  -45,    41)      16       16           29  house house-e       
+  (  -44,    41)      16       16           29  house house-e       
+  (  -43,    41)      16       16           29  house house-e       
+  (  -42,    41)      16       16           29  house house-e       
+  (  -41,    41)      16       16           29  house house-e       
+  (  -40,    41)      16       16           29  house house-e       
+  (  -39,    41)      16       16           29  house house-e       
+  (  -38,    41)      16       16           29  house house-e       
+  (  -37,    41)      16       16           29  house house-e       
+  (  -36,    41)      16       16           29  house house-e       
+  (  -35,    41)      16       16           16                      
+  (  -34,    41)      16       16           16                      
+  (  -33,    41)      16       16           16                      
+  (  -32,    41)      16       16           16                      
+  (  -31,    41)      16       16           16                      
+  (  -30,    41)      16       16           16                      
+  (  -29,    41)      16       16           16                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree t5 at (-54, 39), flora oasis-cover at (-51, 41), house house-e at (-45, 39)
+
+## house-e (house) along z
+TRANSECT 16 stations from (-41, 30) to (-41, 45), every 1
+  station        ground  surface  water  top  standing            step
+  (  -41,    30)      17       17           17                      
+  (  -41,    31)      16       16           16                      -1
+  (  -41,    32)      16       16           16                      
+  (  -41,    33)      16       16           16                      
+  (  -41,    34)      16       16           16  stroke path-oasis   
+  (  -41,    35)      16       16           16  stroke path-oasis   
+  (  -41,    36)      16       16           16  stroke path-oasis   
+  (  -41,    37)      16       16           27  house house-e       
+  (  -41,    38)      16       16           27  house house-e       
+  (  -41,    39)      16       16           28  house house-e       
+  (  -41,    40)      16       16           28  house house-e       
+  (  -41,    41)      16       16           29  house house-e       
+  (  -41,    42)      16       16           28  house house-e       
+  (  -41,    43)      16       16           28  house house-e       
+  (  -41,    44)      16       16           27  house house-e       
+  (  -41,    45)      16       16           27  house house-e       
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree t4 at (-43, 28), stroke path-oasis at (-43, 32), tree t5 at (-43, 34), house house-e at (-43, 37)

@@ -1,0 +1,54 @@
+## cabin-b (house) along x
+TRANSECT 21 stations from (4, 46) to (24, 46), every 1
+  station        ground  surface  water  top  standing            step
+  (    4,    46)      11       11           11                      
+  (    5,    46)      11       11           11                      
+  (    6,    46)      11       11           11                      
+  (    7,    46)      11       11           11                      
+  (    8,    46)      11       11           11                      
+  (    9,    46)      11       11           11                      
+  (   10,    46)      11       11           11                      
+  (   11,    46)      11       11           15  house cabin-b       
+  (   12,    46)      11       11           16  house cabin-b       
+  (   13,    46)      11       11           17  house cabin-b       
+  (   14,    46)      11       11           18  house cabin-b       
+  (   15,    46)      11       11           17  house cabin-b       
+  (   16,    46)      11       11           16  house cabin-b       
+  (   17,    46)                            15  house cabin-b       void
+  (   18,    46)                                                    void
+  (   19,    46)                                                    void
+  (   20,    46)                                                    void
+  (   21,    46)                                                    void
+  (   22,    46)                                                    void
+  (   23,    46)                                                    void
+  (   24,    46)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-front at (2, 44), house cabin-b at (11, 44), tree s6 at (14, 48)
+
+## cabin-b (house) along z
+TRANSECT 22 stations from (14, 36) to (14, 57), every 1
+  station        ground  surface  water  top  standing            step
+  (   14,    36)       9        9            9                      
+  (   14,    37)       9        9            9                      
+  (   14,    38)       9        9            9                      
+  (   14,    39)      10       10           10                      +1
+  (   14,    40)      10       10           10                      
+  (   14,    41)      10       10           10                      
+  (   14,    42)      10       10           10                      
+  (   14,    43)      10       10           18  house cabin-b       
+  (   14,    44)      10       10           18  house cabin-b       
+  (   14,    45)      10       10           18  house cabin-b       
+  (   14,    46)      11       11           18  house cabin-b       +1
+  (   14,    47)      11       11           18  house cabin-b       
+  (   14,    48)      11       11           18  tree s6             
+  (   14,    49)      11       11           18  tree s6             
+  (   14,    50)      11       11           21  tree s6             
+  (   14,    51)      11       11           24  tree s6             
+  (   14,    52)      12       12           26  tree s6             +1
+  (   14,    53)      12       12           25  tree s6             
+  (   14,    54)      12       12           22  tree s6             
+  (   14,    55)      12       12           12  tree s6             
+  (   14,    56)      12       12           12  tree s6             
+  (   14,    57)      12       12           12  stroke path-wool-b  
+rises 3, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house cabin-b at (12, 43), tree s6 at (14, 48), stroke path-wool-b at (12, 57)

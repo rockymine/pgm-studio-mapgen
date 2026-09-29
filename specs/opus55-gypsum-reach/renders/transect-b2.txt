@@ -1,0 +1,61 @@
+## b2 (boulder) along x
+TRANSECT 25 stations from (-48, 22) to (-24, 22), every 1
+  station        ground  surface  water  top  standing            step
+  (  -48,    22)      17       17           23  tree t4             
+  (  -47,    22)      17       17           20  tree t4             
+  (  -46,    22)      17       17           23  tree t4             
+  (  -45,    22)      17       17           21  tree t4             
+  (  -44,    22)      17       17           21  tree t4             
+  (  -43,    22)      17       17           17  tree t4             
+  (  -42,    22)      17       17           17                      
+  (  -41,    22)      17       17           17                      
+  (  -40,    22)      17       17           17                      
+  (  -39,    22)      17       17           17                      
+  (  -38,    22)      17       17           20  boulder b2          
+  (  -37,    22)      17       17           21  boulder b2          
+  (  -36,    22)      17       17           21  boulder b2          
+  (  -35,    22)      17       17           21  boulder b2          
+  (  -34,    22)      17       17           20  boulder b2          
+  (  -33,    22)      17       17           17                      
+  (  -32,    22)      17       20           20  storey              BARRIER +3
+  (  -31,    22)      17       20           20  storey              
+  (  -30,    22)      17       20           20  storey              
+  (  -29,    22)      17       17           17                      -3
+  (  -28,    22)      17       17           17                      
+  (  -27,    22)      17       17           17                      
+  (  -26,    22)      17       18           18  storey              +1
+  (  -25,    22)      17       17           17                      -1
+  (  -24,    22)      17       17           17                      
+rises 2, falls 2, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (-32, 22) | walked end to end
+beside: tree t4 at (-50, 20), boulder b2 at (-38, 21)
+
+## b2 (boulder) along z
+TRANSECT 25 stations from (-36, 10) to (-36, 34), every 1
+  station        ground  surface  water  top  standing            step
+  (  -36,    10)      17       17           17                      
+  (  -36,    11)      17       17           17                      
+  (  -36,    12)      17       17           17                      
+  (  -36,    13)      17       17           17                      
+  (  -36,    14)      17       17           17  stroke path-hamlet  
+  (  -36,    15)      17       17           17  stroke path-hamlet  
+  (  -36,    16)      17       17           17  stroke path-hamlet  
+  (  -36,    17)      17       17           17                      
+  (  -36,    18)      17       17           17                      
+  (  -36,    19)      17       17           17                      
+  (  -36,    20)      17       17           20  boulder b2          
+  (  -36,    21)      17       17           21  boulder b2          
+  (  -36,    22)      17       17           21  boulder b2          
+  (  -36,    23)      17       17           21  boulder b2          
+  (  -36,    24)      17       17           20  boulder b2          
+  (  -36,    25)      17       17           17                      
+  (  -36,    26)      17       17           17                      
+  (  -36,    27)      17       17           17                      
+  (  -36,    28)      17       17           17                      
+  (  -36,    29)      17       17           17                      
+  (  -36,    30)      17       17           17                      
+  (  -36,    31)      17       17           17                      
+  (  -36,    32)      17       17           17                      
+  (  -36,    33)      16       16           16                      -1
+  (  -36,    34)      16       16           16                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-hamlet at (-34, 12), boulder b2 at (-36, 20)

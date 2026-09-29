@@ -1,0 +1,61 @@
+## front-2 (boulder) along x
+TRANSECT 25 stations from (-7, 29) to (17, 29), every 1
+  station        ground  surface  water  top  standing            step
+  (   -7,    29)       9        9            9                      
+  (   -6,    29)       9        9            9                      
+  (   -5,    29)       9        9            9  stroke path-front   
+  (   -4,    29)       9        9            9  stroke path-front   
+  (   -3,    29)       9        9            9  stroke path-front   
+  (   -2,    29)       9        9            9  stroke path-front   
+  (   -1,    29)       9        9            9  stroke path-front   
+  (    0,    29)       9        9            9                      
+  (    1,    29)       9        9            9                      
+  (    2,    29)       9        9            9                      
+  (    3,    29)       9        9            9                      
+  (    4,    29)       9        9           12  boulder front-2     
+  (    5,    29)       9        9           12  boulder front-2     
+  (    6,    29)       9        9           12  boulder front-2     
+  (    7,    29)       9        9           11  boulder front-2     
+  (    8,    29)       9        9            9                      
+  (    9,    29)       9        9            9                      
+  (   10,    29)       9        9            9                      
+  (   11,    29)       9        9            9                      
+  (   12,    29)       9        9            9                      
+  (   13,    29)       9        9            9                      
+  (   14,    29)                                                    void
+  (   15,    29)                                                    void
+  (   16,    29)                                                    void
+  (   17,    29)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder front-1 at (-9, 27), stroke path-front at (-5, 29), boulder front-2 at (4, 28), boulder front-4 at (11, 27)
+
+## front-2 (boulder) along z
+TRANSECT 25 stations from (5, 17) to (5, 41), every 1
+  station        ground  surface  water  top  standing            step
+  (    5,    17)                                                    void
+  (    5,    18)                                                    void
+  (    5,    19)                                                    void
+  (    5,    20)       7        7            7                      
+  (    5,    21)       7        7            7                      
+  (    5,    22)       7        7            7                      
+  (    5,    23)       8        8            8                      +1
+  (    5,    24)       9        9            9                      +1
+  (    5,    25)       9        9            9                      
+  (    5,    26)       9        9            9                      
+  (    5,    27)       9        9           10  boulder front-2     
+  (    5,    28)       9        9           12  boulder front-2     
+  (    5,    29)       9        9           12  boulder front-2     
+  (    5,    30)       9        9           12  boulder front-2     
+  (    5,    31)       9        9            9                      
+  (    5,    32)       9        9            9                      
+  (    5,    33)       9        9            9                      
+  (    5,    34)       9        9            9                      
+  (    5,    35)       9        9            9                      
+  (    5,    36)       9        9            9                      
+  (    5,    37)       9        9            9                      
+  (    5,    38)       9        9            9                      
+  (    5,    39)       9        9            9                      
+  (    5,    40)                                                    void
+  (    5,    41)                             2                      void
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder front-2 at (5, 27)

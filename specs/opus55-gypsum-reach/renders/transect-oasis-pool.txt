@@ -1,0 +1,87 @@
+## oasis-pool (water) along x
+TRANSECT 43 stations from (-83, 31) to (-41, 31), every 1
+  station        ground  surface  water  top  standing            step
+  (  -83,    31)      19       19           19  tree t1             
+  (  -82,    31)      19       19           19  tree t1             
+  (  -81,    31)      19       19           24  tree t1             
+  (  -80,    31)      18       18           24  tree t1             -1
+  (  -79,    31)      18       18           24  tree t1             
+  (  -78,    31)      18       18           23  tree t1             
+  (  -77,    31)      18       18           25  tree t1             
+  (  -76,    31)      17       17           25  tree t1             -1
+  (  -75,    31)      17       17           25  tree t1             
+  (  -74,    31)      17       17           17  tree t1             
+  (  -73,    31)      16       16           16  tree t1             -1
+  (  -72,    31)      16       16           16  tree t1             
+  (  -71,    31)      16       16           16  tree t1             
+  (  -70,    31)      16       16     16    16  tree t1             
+  (  -69,    31)      16       16     16    16  water oasis-pool    
+  (  -68,    31)      16       16     16    16  water oasis-pool    
+  (  -67,    31)      16       16     16    16  water oasis-pool    
+  (  -66,    31)      16       16     16    16  water oasis-pool    
+  (  -65,    31)      16       16     16    16  water oasis-pool    
+  (  -64,    31)      16       16     16    16  water oasis-pool    
+  (  -63,    31)      16       16     16    16  water oasis-pool    
+  (  -62,    31)      16       16     16    16  water oasis-pool    
+  (  -61,    31)      16       16     16    16  water oasis-pool    
+  (  -60,    31)      16       16     16    16  water oasis-pool    
+  (  -59,    31)      16       16     16    16  tree t4             
+  (  -58,    31)      16       16     16    16  tree t4             
+  (  -57,    31)      16       16     16    16  tree t4             
+  (  -56,    31)      16       16     16    16  tree t5             
+  (  -55,    31)      16       16     16    16  tree t5             
+  (  -54,    31)      16       16           23  tree t5             
+  (  -53,    31)      16       16           16  tree t5             
+  (  -52,    31)      16       16           22  tree t5             
+  (  -51,    31)      16       16           21  tree t5             
+  (  -50,    31)      16       16           25  tree t5             
+  (  -49,    31)      16       16           23  tree t5             
+  (  -48,    31)      16       16           23  tree t5             
+  (  -47,    31)      16       16           24  tree t5             
+  (  -46,    31)      16       16           23  tree t5             
+  (  -45,    31)      16       16           16  tree t5             
+  (  -44,    31)      16       16           16  tree t5             
+  (  -43,    31)      16       16           16                      
+  (  -42,    31)      16       16           16                      
+  (  -41,    31)      16       16           16                      
+rises 0, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree t1 at (-85, 29), flora oasis-cover at (-85, 33), water oasis-pool at (-70, 32), tree t2 at (-69, 33), tree t4 at (-60, 29), tree t5 at (-56, 31), stroke path-oasis at (-43, 32)
+
+## oasis-pool (water) along z
+TRANSECT 33 stations from (-62, 13) to (-62, 45), every 1
+  station        ground  surface  water  top  standing            step
+  (  -62,    13)      19       19           19  stroke path-hamlet  
+  (  -62,    14)      18       18           18                      -1
+  (  -62,    15)      18       18           18                      
+  (  -62,    16)      18       18           18                      
+  (  -62,    17)      18       18           18                      
+  (  -62,    18)      17       17           17                      -1
+  (  -62,    19)      17       17           17                      
+  (  -62,    20)      17       17           17                      
+  (  -62,    21)      17       17           17                      
+  (  -62,    22)      16       16           17  flora oasis-cover   -1
+  (  -62,    23)      16       16           17  flora oasis-cover   
+  (  -62,    24)      16       16           16  tree t4             
+  (  -62,    25)      16       16           17  flora oasis-cover   
+  (  -62,    26)      16       16     16    16  water oasis-pool    
+  (  -62,    27)      16       16     16    16  water oasis-pool    
+  (  -62,    28)      16       16     16    16  water oasis-pool    
+  (  -62,    29)      16       16     16    16  water oasis-pool    
+  (  -62,    30)      16       16     16    16  water oasis-pool    
+  (  -62,    31)      16       16     16    16  water oasis-pool    
+  (  -62,    32)      16       16     16    16  water oasis-pool    
+  (  -62,    33)      16       16     16    16  water oasis-pool    
+  (  -62,    34)      16       16     16    16  water oasis-pool    
+  (  -62,    35)      16       16     16    16  water oasis-pool    
+  (  -62,    36)      16       16           16  water oasis-pool    
+  (  -62,    37)      16       16           16  water oasis-pool    
+  (  -62,    38)      16       16           16  tree t2             
+  (  -62,    39)      16       16           16  tree t2             
+  (  -62,    40)      16       16           23  tree t2             
+  (  -62,    41)      16       16           16  tree t2             
+  (  -62,    42)      16       16           16  tree t2             
+  (  -62,    43)      16       16           16  tree t2             
+  (  -62,    44)      16       16           16  tree t2             
+  (  -62,    45)                                                    void
+rises 0, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-hamlet at (-64, 11), house house-c at (-64, 15), tree t4 at (-60, 18), flora oasis-cover at (-62, 22), water oasis-pool at (-64, 24), tree t2 at (-64, 35)

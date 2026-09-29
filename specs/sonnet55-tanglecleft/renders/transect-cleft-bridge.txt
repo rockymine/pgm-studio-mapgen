@@ -1,0 +1,68 @@
+## cleft-bridge (made) along x
+TRANSECT 41 stations from (-64, -35) to (-24, -35), every 1
+  station        ground  surface  water  top  standing            step
+  (  -64,   -35)      17       17           17  tree j-3            
+  (  -63,   -35)      16       16           16  tree j-3            -1
+  (  -62,   -35)      15       15           19  tree j-3            -1
+  (  -61,   -35)      14       14           19  tree j-3            -1
+  (  -60,   -35)      13       13           13  tree j-3            -1
+  (  -59,   -35)      12       12           19  tree j-3            -1
+  (  -58,   -35)      12       12           12  tree j-3            
+  (  -57,   -35)      11       11           18  tree j-3            -1
+  (  -56,   -35)      10       11           11  storey              
+  (  -55,   -35)      10       11           11  storey              
+  (  -54,   -35)      10       11           11  storey              
+  (  -53,   -35)      10       11           11  storey              
+  (  -52,   -35)      10       11           11  storey              
+  (  -51,   -35)       9       11           11  storey              
+  (  -50,   -35)       8       11           11  storey              
+  (  -49,   -35)       8       11           11  storey              
+  (  -48,   -35)       6       11           11  storey              
+  (  -47,   -35)       6       11           11  storey              
+  (  -46,   -35)       5       11           11  storey              
+  (  -45,   -35)       4       11           11  storey              
+  (  -44,   -35)       4       11           11  storey              
+  (  -43,   -35)       4       11           11  storey              
+  (  -42,   -35)       4       11           11  storey              
+  (  -41,   -35)       4       11           11  storey              
+  (  -40,   -35)       4       11           11  storey              
+  (  -39,   -35)       4       11           11  storey              
+  (  -38,   -35)       4       11           11  storey              
+  (  -37,   -35)       4       11           11  storey              
+  (  -36,   -35)       5       11           11  storey              
+  (  -35,   -35)       6       11           11  storey              
+  (  -34,   -35)       8       11           11  storey              
+  (  -33,   -35)      10       11           11  storey              
+  (  -32,   -35)      12       12           12                      +1
+  (  -31,   -35)      13       13           13                      +1
+  (  -30,   -35)      14       14           14                      +1
+  (  -29,   -35)      15       15           15                      +1
+  (  -28,   -35)      15       15           15                      
+  (  -27,   -35)      15       15           15                      
+  (  -26,   -35)      15       15           15                      
+  (  -25,   -35)      15       15           15                      
+  (  -24,   -35)      15       15           15                      
+rises 4, falls 6, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora floor-cover at (-66, -37), tree j-2 at (-66, -36), tree j-3 at (-64, -36), tree j-6 at (-35, -33), stroke path-south-e at (-32, -34)
+
+## cleft-bridge (made) along z
+TRANSECT 16 stations from (-44, -40) to (-44, -25), every 1
+  station        ground  surface  water  top  standing            step
+  (  -44,   -40)                                                    void
+  (  -44,   -39)                                                    void
+  (  -44,   -38)       4        4            4                      
+  (  -44,   -37)       4        4            4                      
+  (  -44,   -36)       4       11           11  storey              BARRIER +7
+  (  -44,   -35)       4       11           11  storey              
+  (  -44,   -34)       4       11           11  storey              
+  (  -44,   -33)       4        4            4                      DROP -7
+  (  -44,   -32)       4        4            4                      
+  (  -44,   -31)       4        4            4                      
+  (  -44,   -30)       4        4            4                      
+  (  -44,   -29)       4        4            4                      
+  (  -44,   -28)       4        4            4                      
+  (  -44,   -27)       4        4            4                      
+  (  -44,   -26)       4        4            4  tree j-5            
+  (  -44,   -25)       5        5            5  tree j-5            +1
+rises 2, falls 1, worst step 7: 1 barrier, 0 scramble, 1 drop — BARRIER +7 at (-44, -36); DROP -7 at (-44, -33) | walked end to end
+beside: tree j-5 at (-44, -26)

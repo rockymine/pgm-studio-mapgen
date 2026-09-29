@@ -1,0 +1,81 @@
+## lagoon (water) along x
+TRANSECT 37 stations from (-72, -8) to (-36, -8), every 1
+  station        ground  surface  water  top  standing            step
+  (  -72,    -8)      12       12           12  tree o-1            
+  (  -71,    -8)      12       12           12  tree o-1            
+  (  -70,    -8)      11       11           18  tree o-1            -1
+  (  -69,    -8)      11       11           19  tree o-1            
+  (  -68,    -8)      10       10           19  tree o-1            -1
+  (  -67,    -8)      10       10           20  tree o-1            
+  (  -66,    -8)       9        9           20  tree o-1            -1
+  (  -65,    -8)       9        9           21  tree o-1            
+  (  -64,    -8)       8        8           20  tree o-1            -1
+  (  -63,    -8)       8        8           19  tree o-1            
+  (  -62,    -8)       8        8           20  tree o-1            
+  (  -61,    -8)       8        8           18  tree o-1            
+  (  -60,    -8)       8        8      8    19  tree o-1            
+  (  -59,    -8)       8        8      8    18  tree o-1            
+  (  -58,    -8)       8        8      8     8  tree o-1            
+  (  -57,    -8)       8        8      8     8  water lagoon        
+  (  -56,    -8)       8        8      8     8  water lagoon        
+  (  -55,    -8)       8        8      8     8  water lagoon        
+  (  -54,    -8)       8        8      8     8  water lagoon        
+  (  -53,    -8)       8        8      8     8  water lagoon        
+  (  -52,    -8)       8        8      8     8  water lagoon        
+  (  -51,    -8)       8        8      8     8  water lagoon        
+  (  -50,    -8)       8        8      8     8  water lagoon        
+  (  -49,    -8)       8        8      8     8  water lagoon        
+  (  -48,    -8)       8        8      8     8  water brook         
+  (  -47,    -8)       8        8      8     8  water brook         
+  (  -46,    -8)       8        8      8     8  water brook         
+  (  -45,    -8)       8        8      8     8  water brook         
+  (  -44,    -8)       8        8      8     8  water brook         
+  (  -43,    -8)       8        8      8     8  water brook         
+  (  -42,    -8)       8        8      8     8  water brook         
+  (  -41,    -8)       8        8      8     8  water brook         
+  (  -40,    -8)       8        8      8     8  water brook         
+  (  -39,    -8)       8        8      8     8  water brook         
+  (  -38,    -8)       8        8      8     8  water brook         
+  (  -37,    -8)       8        8      8     8  water brook         
+  (  -36,    -8)       8        8      8     8  water brook         
+rises 0, falls 4, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree o-1 at (-74, -10), water lagoon at (-57, -10), water brook at (-48, -10), tree j-5 at (-44, -10), tree o-3 at (-34, -6)
+
+## lagoon (water) along z
+TRANSECT 33 stations from (-54, -24) to (-54, 8), every 1
+  station        ground  surface  water  top  standing            step
+  (  -54,   -24)      10       10           10  tree j-3            
+  (  -54,   -23)       9        9            9  tree j-3            -1
+  (  -54,   -22)       9        9            9  tree j-3            
+  (  -54,   -21)       9        9           13  tree j-3            
+  (  -54,   -20)       9        9           14  tree j-3            
+  (  -54,   -19)       9        9           15  tree j-3            
+  (  -54,   -18)       9        9           16  tree j-3            
+  (  -54,   -17)       9        9           17  tree j-3            
+  (  -54,   -16)       9        9           17  house cabin         
+  (  -54,   -15)       8        8           16  house cabin         -1
+  (  -54,   -14)       8        8           15  house cabin         
+  (  -54,   -13)       8        8           14  house cabin         
+  (  -54,   -12)       8        8           13  house cabin         
+  (  -54,   -11)       8        8      8     8  water lagoon        
+  (  -54,   -10)       8        8      8     8  water lagoon        
+  (  -54,    -9)       8        8      8     8  water lagoon        
+  (  -54,    -8)       8        8      8     8  water lagoon        
+  (  -54,    -7)       8        8      8     8  water lagoon        
+  (  -54,    -6)       8        8      8     8  water lagoon        
+  (  -54,    -5)       8        8      8     8  water lagoon        
+  (  -54,    -4)       8        8      8     8  water lagoon        
+  (  -54,    -3)       8        8            8                      
+  (  -54,    -2)       9        9            9                      +1
+  (  -54,    -1)       9        9            9                      
+  (  -54,     0)      10       10           10                      +1
+  (  -54,     1)      10       10           10                      
+  (  -54,     2)      10       10           10                      
+  (  -54,     3)      11       11           11                      +1
+  (  -54,     4)      11       11           11                      
+  (  -54,     5)      12       12           12                      +1
+  (  -54,     6)      12       12           12                      
+  (  -54,     7)      12       12           12                      
+  (  -54,     8)      13       13           13                      +1
+rises 5, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree j-3 at (-56, -26), tree j-5 at (-52, -18), house cabin at (-55, -16), water lagoon at (-56, -11), flora floor-cover at (-55, -2)

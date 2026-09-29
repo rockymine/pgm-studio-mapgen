@@ -1,0 +1,156 @@
+## beck (water) along x
+TRANSECT 33 stations from (-57, 0) to (-25, 0), every 1
+  station        ground  surface  water  top  standing            step
+  (  -57,     0)      15       19           19  storey              
+  (  -56,     0)      15       19           19  storey              
+  (  -55,     0)      22       33           33  storey              BARRIER +14
+  (  -54,     0)      21       21           21                      DROP -12
+  (  -53,     0)      21       21           21                      
+  (  -52,     0)      20       20           20  stroke path-bridge  -1
+  (  -51,     0)      19       19           19  stroke path-bridge  -1
+  (  -50,     0)      18       31           31  storey              BARRIER +12
+  (  -49,     0)      18       31           31  storey              
+  (  -48,     0)      17       17           17                      DROP -14
+  (  -47,     0)      16       16           16                      -1
+  (  -46,     0)      16       16           16                      
+  (  -45,     0)      15       15           15                      -1
+  (  -44,     0)      14       14           14                      -1
+  (  -43,     0)      13       14           14  storey              
+  (  -42,     0)      13       14     12    14  storey              
+  (  -41,     0)      13       14     12    14  storey              
+  (  -40,     0)      13       14     12    14  storey              
+  (  -39,     0)      12       14           14  storey              
+  (  -38,     0)      12       14           14  storey              
+  (  -37,     0)      12       14           14  storey              
+  (  -36,     0)      13       14           14  storey              
+  (  -35,     0)      13       14           14  storey              
+  (  -34,     0)      13       14           14  storey              
+  (  -33,     0)      13       14           14  storey              
+  (  -32,     0)      14       14           14  stroke path-bridge-east  
+  (  -31,     0)      14       14           14  stroke path-bridge-east  
+  (  -30,     0)      14       14           14  stroke path-bridge-east  
+  (  -29,     0)      14       14           14  stroke path-bridge-east  
+  (  -28,     0)      15       15           15  stroke path-bridge-east  +1
+  (  -27,     0)      15       15           15  stroke path-bridge-east  
+  (  -26,     0)      15       15           15  stroke path-bridge-east  
+  (  -25,     0)      15       15           15  stroke path-bridge-east  
+rises 3, falls 7, worst step 14: 2 barrier, 0 scramble, 2 drop — BARRIER +14 at (-55, 0); DROP -12 at (-54, 0); BARRIER +12 at (-50, 0); DROP -14 at (-48, 0) | walked end to end
+beside: stroke path-bridge at (-53, 1), stroke path-bridge-east at (-32, 0), flora meadow-cover at (-27, 2)
+
+## beck (water) along z
+TRANSECT 112 stations from (-41, -56) to (-41, 55), every 1
+  station        ground  surface  water  top  standing            step
+  (  -41,   -56)                                                    void
+  (  -41,   -55)                                                    void
+  (  -41,   -54)                                                    void
+  (  -41,   -53)                                                    void
+  (  -41,   -52)      12       12     12    12  water beck          
+  (  -41,   -51)      12       12     12    12  water beck          
+  (  -41,   -50)      12       12     12    12  water beck          
+  (  -41,   -49)      12       12     12    12  water beck          
+  (  -41,   -48)      12       12     12    12  water beck          
+  (  -41,   -47)      12       12     12    12  water beck          
+  (  -41,   -46)      12       12     12    12  water beck          
+  (  -41,   -45)      12       12     12    12  water beck          
+  (  -41,   -44)      12       12           12  water beck          
+  (  -41,   -43)      12       12     12    12  water beck          
+  (  -41,   -42)      12       12     12    12  water beck          
+  (  -41,   -41)      12       12     12    12  water beck          
+  (  -41,   -40)      12       12     12    12  water beck          
+  (  -41,   -39)      12       12     12    12  water beck          
+  (  -41,   -38)      12       12           12  water beck          
+  (  -41,   -37)      12       12           13  flora meadow-cover  
+  (  -41,   -36)      12       12           13  flora meadow-cover  
+  (  -41,   -35)      12       12           13  flora meadow-cover  
+  (  -41,   -34)      12       12     12    12  water beck          
+  (  -41,   -33)      12       12     12    12  water beck          
+  (  -41,   -32)      12       12     12    12  water beck          
+  (  -41,   -31)      12       12     12    12  water beck          
+  (  -41,   -30)      12       12     12    12  water beck          
+  (  -41,   -29)      12       12     12    12  water beck          
+  (  -41,   -28)      12       12     12    12  water beck          
+  (  -41,   -27)      12       12     12    12  water beck          
+  (  -41,   -26)      12       12     12    12  water beck          
+  (  -41,   -25)      12       12     12    12  water beck          
+  (  -41,   -24)      12       12     12    12  water beck          
+  (  -41,   -23)      12       12     12    12  water beck          
+  (  -41,   -22)      12       12     12    12  water beck          
+  (  -41,   -21)      12       12     12    12  water beck          
+  (  -41,   -20)      12       12     12    12  water beck          
+  (  -41,   -19)      12       12     12    12  water beck          
+  (  -41,   -18)      12       12     12    12  water beck          
+  (  -41,   -17)      12       12     12    12  water beck          
+  (  -41,   -16)      12       12     12    12  water beck          
+  (  -41,   -15)      12       12           12  water beck          
+  (  -41,   -14)      12       12           12  water beck          
+  (  -41,   -13)      12       12     12    12  water beck          
+  (  -41,   -12)      12       12     12    12  water beck          
+  (  -41,   -11)      12       12     12    12  water beck          
+  (  -41,   -10)      12       12     12    12  water beck          
+  (  -41,    -9)      12       12     12    12  water beck          
+  (  -41,    -8)      12       12     12    12  water beck          
+  (  -41,    -7)      12       12     12    12  water beck          
+  (  -41,    -6)      12       12     12    12  water beck          
+  (  -41,    -5)      12       12     12    12  water beck          
+  (  -41,    -4)      12       12     12    12  water beck          
+  (  -41,    -3)      12       12     12    12  water beck          
+  (  -41,    -2)      12       14     12    14  storey              scramble +2
+  (  -41,    -1)      13       14     12    14  storey              
+  (  -41,     0)      13       14     12    14  storey              
+  (  -41,     1)      13       14     12    14  storey              
+  (  -41,     2)      13       14     12    14  storey              
+  (  -41,     3)      13       13     12    12  water beck          -1
+  (  -41,     4)      13       13     12    12  water beck          
+  (  -41,     5)      12       12     12    12  water beck          -1
+  (  -41,     6)      12       12     12    12  water beck          
+  (  -41,     7)      12       12     12    12  water beck          
+  (  -41,     8)      12       12     12    12  water beck          
+  (  -41,     9)      12       12     12    12  water beck          
+  (  -41,    10)      12       12     12    12  water beck          
+  (  -41,    11)      12       12     12    12  water beck          
+  (  -41,    12)      12       12     12    12  water beck          
+  (  -41,    13)      12       12     12    12  water beck          
+  (  -41,    14)      12       12           12  water beck          
+  (  -41,    15)      12       12     12    12  water beck          
+  (  -41,    16)      12       12     12    12  water beck          
+  (  -41,    17)      12       12     12    12  water beck          
+  (  -41,    18)      12       12     12    12  water beck          
+  (  -41,    19)      12       12     12    12  water beck          
+  (  -41,    20)      12       12     12    12  water beck          
+  (  -41,    21)      12       12     12    12  water beck          
+  (  -41,    22)      12       12     12    12  water beck          
+  (  -41,    23)      12       12     12    12  water beck          
+  (  -41,    24)      12       12     12    12  water beck          
+  (  -41,    25)      12       12     12    12  water beck          
+  (  -41,    26)      12       12     12    12  water beck          
+  (  -41,    27)      12       12     12    12  water beck          
+  (  -41,    28)      12       12     12    12  water beck          
+  (  -41,    29)      12       12           13  flora meadow-cover  
+  (  -41,    30)      12       12           13  flora meadow-cover  
+  (  -41,    31)      12       12           14  flora meadow-cover  
+  (  -41,    32)      12       12           13  flora meadow-cover  
+  (  -41,    33)      12       12           13  flora meadow-cover  
+  (  -41,    34)      12       12           14  flora meadow-cover  
+  (  -41,    35)      12       12           13  flora meadow-cover  
+  (  -41,    36)      12       12           13  flora meadow-cover  
+  (  -41,    37)      12       12           13  flora meadow-cover  
+  (  -41,    38)      12       12           13  flora meadow-cover  
+  (  -41,    39)      12       12           12                      
+  (  -41,    40)      12       12           12                      
+  (  -41,    41)      12       12           12                      
+  (  -41,    42)      12       12           12                      
+  (  -41,    43)      12       12           12                      
+  (  -41,    44)      12       12           12                      
+  (  -41,    45)      12       12           12  water beck          
+  (  -41,    46)      12       12           12  water beck          
+  (  -41,    47)      12       12     12    12  water beck          
+  (  -41,    48)      12       12           12  water beck          
+  (  -41,    49)      12       12           12  water beck          
+  (  -41,    50)      12       12           12  water beck          
+  (  -41,    51)      12       12           12  water beck          
+  (  -41,    52)                                                    void
+  (  -41,    53)                                                    void
+  (  -41,    54)                                                    void
+  (  -41,    55)                                                    void
+rises 1, falls 2, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-41, -2) | walked end to end
+beside: water beck at (-40, -53), flora meadow-cover at (-41, -37)

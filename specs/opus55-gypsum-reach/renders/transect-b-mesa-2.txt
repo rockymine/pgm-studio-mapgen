@@ -1,0 +1,60 @@
+## b-mesa-2 (boulder) along x
+TRANSECT 25 stations from (-89, -37) to (-65, -37), every 1
+  station        ground  surface  water  top  standing            step
+  (  -89,   -37)      21       21           21                      
+  (  -88,   -37)      21       21           21                      
+  (  -87,   -37)      26       26           26                      BARRIER +5
+  (  -86,   -37)      28       28           28                      scramble +2
+  (  -85,   -37)      31       31           31                      BARRIER +3
+  (  -84,   -37)      31       31           31                      
+  (  -83,   -37)      31       31           31                      
+  (  -82,   -37)      31       31           31                      
+  (  -81,   -37)      31       31           31                      
+  (  -80,   -37)      31       31           31                      
+  (  -79,   -37)      30       30           33  tree t-mesa         -1
+  (  -78,   -37)      30       30           33  tree t-mesa         
+  (  -77,   -37)      30       30           34  tree t-mesa         
+  (  -76,   -37)      30       30           33  tree t-mesa         
+  (  -75,   -37)      30       30           37  tree t-mesa         
+  (  -74,   -37)      30       30           37  tree t-mesa         
+  (  -73,   -37)      30       30           37  tree t-mesa         
+  (  -72,   -37)      30       30           36  tree t-mesa         
+  (  -71,   -37)      30       30           37  tree t-mesa         
+  (  -70,   -37)      30       30           37  tree t-mesa         
+  (  -69,   -37)      30       30           30  tree t-mesa         
+  (  -68,   -37)      30       30           30  tree t-mesa         
+  (  -67,   -37)      30       30           30  tree t-mesa         
+  (  -66,   -37)      30       30           30  tree t-mesa         
+  (  -65,   -37)      30       30           30  tree t-mesa         
+rises 3, falls 1, worst step 5: 2 barrier, 1 scramble, 0 drop — BARRIER +5 at (-87, -37); scramble +2 at (-86, -37); BARRIER +3 at (-85, -37) | walked end to end
+beside: tree t-mesa at (-79, -39), boulder b-mesa-2 at (-79, -36)
+
+## b-mesa-2 (boulder) along z
+TRANSECT 24 stations from (-77, -48) to (-77, -25), every 1
+  station        ground  surface  water  top  standing            step
+  (  -77,   -48)                                                    void
+  (  -77,   -47)      30       30           30                      
+  (  -77,   -46)      30       30           30  tree t-mesa         
+  (  -77,   -45)      30       30           30  tree t-mesa         
+  (  -77,   -44)      30       30           30  tree t-mesa         
+  (  -77,   -43)      30       30           36  tree t-mesa         
+  (  -77,   -42)      30       30           36  tree t-mesa         
+  (  -77,   -41)      30       30           37  tree t-mesa         
+  (  -77,   -40)      30       30           37  tree t-mesa         
+  (  -77,   -39)      30       30           36  tree t-mesa         
+  (  -77,   -38)      30       30           33  tree t-mesa         
+  (  -77,   -37)      30       30           34  tree t-mesa         
+  (  -77,   -36)      30       30           34  tree t-mesa         
+  (  -77,   -35)      30       30           33  tree t-mesa         
+  (  -77,   -34)      30       30           30  tree t-mesa         
+  (  -77,   -33)      30       30           30                      
+  (  -77,   -32)      30       30           30                      
+  (  -77,   -31)      27       27           27                      -3
+  (  -77,   -30)      23       23           23                      DROP -4
+  (  -77,   -29)      21       21           21                      -2
+  (  -77,   -28)      21       21           21                      
+  (  -77,   -27)      21       21           21                      
+  (  -77,   -26)      21       21           21                      
+  (  -77,   -25)      21       21           21                      
+rises 0, falls 3, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-77, -30) | walked end to end
+beside: tree t-mesa at (-75, -47), boulder b-mesa-2 at (-79, -36)

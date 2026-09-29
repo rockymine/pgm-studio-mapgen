@@ -1,0 +1,52 @@
+## orange-0 (wool) along x
+TRANSECT 16 stations from (24, 58) to (39, 58), every 1
+  station        ground  surface  water  top  standing            step
+  (   24,    58)      12       12           12  stroke path-wool-b  
+  (   25,    58)      12       12           12                      
+  (   26,    58)      12       12           12                      
+  (   27,    58)      12       12           12                      
+  (   28,    58)      11       11           11                      -1
+  (   29,    58)      11       11           11                      
+  (   30,    58)      11       11           11                      
+  (   31,    58)      11       11           11                      
+  (   32,    58)      11       11           24  redstoneline 1      
+  (   33,    58)      11       11           24  wool wool-2         
+  (   34,    58)      11       11           25  wool wool-2         
+  (   35,    58)      11       11           40  wool wool-2         
+  (   36,    58)      11       11           40  wool wool-2         
+  (   37,    58)      11       11           40  wool wool-2         
+  (   38,    58)      11       11           24  wool wool-2         
+  (   39,    58)      11       11           24                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-wool-b at (22, 57), redstoneline 1 at (32, 56), wool wool-2 at (33, 56)
+
+## orange-0 (wool) along z
+TRANSECT 25 stations from (36, 46) to (36, 70), every 1
+  station        ground  surface  water  top  standing            step
+  (   36,    46)                                                    void
+  (   36,    47)                                                    void
+  (   36,    48)                                                    void
+  (   36,    49)                                                    void
+  (   36,    50)                                                    void
+  (   36,    51)                                                    void
+  (   36,    52)      11       11           24                      
+  (   36,    53)      11       11           24  wool wool-2         
+  (   36,    54)      11       11           25  wool wool-2         
+  (   36,    55)      11       11           25  wool wool-2         
+  (   36,    56)      11       11           25  wool wool-2         
+  (   36,    57)      11       11           40  wool wool-2         
+  (   36,    58)      11       11           40  wool wool-2         
+  (   36,    59)      11       11           40  wool wool-2         
+  (   36,    60)      11       11           25  wool wool-2         
+  (   36,    61)      11       11           25  wool wool-2         
+  (   36,    62)      11       11           24  wool wool-2         
+  (   36,    63)      11       11           24                      
+  (   36,    64)                                                    void
+  (   36,    65)                                                    void
+  (   36,    66)                                                    void
+  (   36,    67)                                                    void
+  (   36,    68)                                                    void
+  (   36,    69)                                                    void
+  (   36,    70)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-2 at (34, 53)

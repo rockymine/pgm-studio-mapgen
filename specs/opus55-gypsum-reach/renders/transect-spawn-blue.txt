@@ -1,0 +1,67 @@
+## spawn-blue (spawn) along x
+TRANSECT 31 stations from (80, -38) to (110, -38), every 1
+  station        ground  surface  water  top  standing            step
+  (   80,   -38)      19       19           19                      
+  (   81,   -38)      19       19           19                      
+  (   82,   -38)      19       19           20  flora oasis-cover#1  
+  (   83,   -38)      20       20           21  flora oasis-cover#1  +1
+  (   84,   -38)      20       20           20                      
+  (   85,   -38)      20       20           20                      
+  (   86,   -38)      20       20           20                      
+  (   87,   -38)      21       21           21                      +1
+  (   88,   -38)      21       21           21                      
+  (   89,   -38)      21       21           34                      
+  (   90,   -38)      21       21           34  spawn sp#1          
+  (   91,   -38)      21       21           34  spawn sp#1          
+  (   92,   -38)      21       21           34  spawn sp#1          
+  (   93,   -38)      21       21           34  spawn sp#1          
+  (   94,   -38)      21       21           34  spawn sp#1          
+  (   95,   -38)      21       21           34  spawn sp#1          
+  (   96,   -38)      21       21           34  spawn sp#1          
+  (   97,   -38)      21       21           34  spawn sp#1          
+  (   98,   -38)      21       21           34  spawn sp#1          
+  (   99,   -38)      21       21           34  spawn sp#1          
+  (  100,   -38)      21       21           34  spawn sp#1          
+  (  101,   -38)      21       21           34  spawn sp#1          
+  (  102,   -38)      21       21           34                      
+  (  103,   -38)      21       21           21                      
+  (  104,   -38)      21       21           21                      
+  (  105,   -38)      21       21           21                      
+  (  106,   -38)      21       21           21                      
+  (  107,   -38)      21       21           21                      
+  (  108,   -38)      21       21           21                      
+  (  109,   -38)      21       21           21                      
+  (  110,   -38)      21       21           21                      
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora oasis-cover#1 at (82, -39), spawn sp#1 at (90, -40)
+
+## spawn-blue (spawn) along z
+TRANSECT 25 stations from (96, -48) to (96, -24), every 1
+  station        ground  surface  water  top  standing            step
+  (   96,   -48)                                                    void
+  (   96,   -47)      21       21           21                      
+  (   96,   -46)      21       21           21                      
+  (   96,   -45)      21       21           21                      
+  (   96,   -44)      21       21           21                      
+  (   96,   -43)      21       21           32                      
+  (   96,   -42)      21       21           32  spawn sp#1          
+  (   96,   -41)      21       21           33  spawn sp#1          
+  (   96,   -40)      21       21           33  spawn sp#1          
+  (   96,   -39)      21       21           34  spawn sp#1          
+  (   96,   -38)      21       21           34  spawn sp#1          
+  (   96,   -37)      21       21           33  spawn sp#1          
+  (   96,   -36)      21       21           33  spawn sp#1          
+  (   96,   -35)      21       21           32  spawn sp#1          
+  (   96,   -34)      21       21           32                      
+  (   96,   -33)      21       21           21                      
+  (   96,   -32)      21       21           21  stroke path-mon#1   
+  (   96,   -31)      21       21           21  stroke path-mon#1   
+  (   96,   -30)      21       21           21  stroke path-mon#1   
+  (   96,   -29)      21       21           21  stroke path-mon#1   
+  (   96,   -28)      21       21           21  stroke path-mon#1   
+  (   96,   -27)      21       21           21  stroke path-mon#1   
+  (   96,   -26)      21       21           21  stroke path-mon#1   
+  (   96,   -25)      21       21           21  stroke path-mon#1   
+  (   96,   -24)      21       21           21  stroke path-mon#1   
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn sp#1 at (94, -42), stroke path-mon#1 at (96, -32), stroke path-hamlet#1 at (94, -23)

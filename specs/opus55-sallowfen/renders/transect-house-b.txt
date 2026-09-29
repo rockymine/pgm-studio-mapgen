@@ -1,0 +1,60 @@
+## house-b (house) along x
+TRANSECT 25 stations from (-108, 12) to (-84, 12), every 1
+  station        ground  surface  water  top  standing            step
+  ( -108,    12)      14       14           28  house house-a       
+  ( -107,    12)      14       14           28  house house-a       
+  ( -106,    12)      14       14           28  house house-a       
+  ( -105,    12)      14       14           28  house house-a       
+  ( -104,    12)      14       14           14                      
+  ( -103,    12)      14       14           14                      
+  ( -102,    12)      14       14           14                      
+  ( -101,    12)      14       14           28  house house-b       
+  ( -100,    12)      14       14           28  house house-b       
+  (  -99,    12)      14       14           28  house house-b       
+  (  -98,    12)      14       14           28  house house-b       
+  (  -97,    12)      14       14           28  house house-b       
+  (  -96,    12)      14       14           28  house house-b       
+  (  -95,    12)      14       14           28  house house-b       
+  (  -94,    12)      14       14           28  house house-b       
+  (  -93,    12)      14       14           28  house house-b       
+  (  -92,    12)      14       14           28  house house-b       
+  (  -91,    12)      14       14           28  house house-b       
+  (  -90,    12)      14       14           14                      
+  (  -89,    12)      14       14           14                      
+  (  -88,    12)      14       14           14                      
+  (  -87,    12)      14       14           14  stroke path-north   
+  (  -86,    12)      14       14           14  stroke path-north   
+  (  -85,    12)      14       14           14  stroke path-north   
+  (  -84,    12)      14       14           14                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house house-a at (-110, 10), house house-b at (-101, 10), flora fen-cover at (-89, 10), stroke path-north at (-87, 10)
+
+## house-b (house) along z
+TRANSECT 24 stations from (-96, 1) to (-96, 24), every 1
+  station        ground  surface  water  top  standing            step
+  (  -96,     1)      13       13           13  stroke path-causeway  
+  (  -96,     2)      13       13           13                      
+  (  -96,     3)      13       13           13                      
+  (  -96,     4)      13       13           13                      
+  (  -96,     5)      13       13           13                      
+  (  -96,     6)      13       13           13                      
+  (  -96,     7)      14       14           14                      +1
+  (  -96,     8)      14       14           24  house house-b       
+  (  -96,     9)      14       14           25  house house-b       
+  (  -96,    10)      14       14           26  house house-b       
+  (  -96,    11)      14       14           27  house house-b       
+  (  -96,    12)      14       14           28  house house-b       
+  (  -96,    13)      14       14           28  house house-b       
+  (  -96,    14)      14       14           27  house house-b       
+  (  -96,    15)      14       14           26  house house-b       
+  (  -96,    16)      15       15           25  house house-b       +1
+  (  -96,    17)      15       15           24  house house-b       
+  (  -96,    18)      15       15           15                      
+  (  -96,    19)      15       15           15                      
+  (  -96,    20)      15       15           15                      
+  (  -96,    21)      15       15           15                      
+  (  -96,    22)      15       15           15  tree o3             
+  (  -96,    23)      15       15           15  tree o3             
+  (  -96,    24)      15       15           15  tree o3             
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-causeway at (-98, -1), house house-b at (-98, 8), tree o3 at (-96, 22)

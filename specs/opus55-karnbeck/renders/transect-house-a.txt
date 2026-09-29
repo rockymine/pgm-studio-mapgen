@@ -1,0 +1,60 @@
+## house-a (house) along x
+TRANSECT 25 stations from (-112, -37) to (-88, -37), every 1
+  station        ground  surface  water  top  standing            step
+  ( -112,   -37)                                                    void
+  ( -111,   -37)                                                    void
+  ( -110,   -37)                                                    void
+  ( -109,   -37)                                                    void
+  ( -108,   -37)      16       16           16                      
+  ( -107,   -37)      16       16           16                      
+  ( -106,   -37)      16       16           16                      
+  ( -105,   -37)      16       16           24  house house-a       
+  ( -104,   -37)      15       15           24  house house-a       -1
+  ( -103,   -37)      15       15           24  house house-a       
+  ( -102,   -37)      15       15           24  house house-a       
+  ( -101,   -37)      15       15           24  house house-a       
+  ( -100,   -37)      15       15           24  house house-a       
+  (  -99,   -37)      15       15           24  house house-a       
+  (  -98,   -37)      15       15           24  house house-a       
+  (  -97,   -37)      15       15           24  house house-a       
+  (  -96,   -37)      15       15           24  house house-a       
+  (  -95,   -37)      15       15           24  house house-a       
+  (  -94,   -37)      15       15           15                      
+  (  -93,   -37)      15       15           15                      
+  (  -92,   -37)      15       15           15                      
+  (  -91,   -37)      15       15     15    15  water mill-pond     
+  (  -90,   -37)      15       15     15    15  water mill-pond     
+  (  -89,   -37)      15       15     15    15  water mill-pond     
+  (  -88,   -37)      15       15           15                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house house-a at (-105, -39), water mill-pond at (-94, -36)
+
+## house-a (house) along z
+TRANSECT 24 stations from (-100, -48) to (-100, -25), every 1
+  station        ground  surface  water  top  standing            step
+  ( -100,   -48)      15       15           15                      
+  ( -100,   -47)      15       15           15                      
+  ( -100,   -46)      15       15           15                      
+  ( -100,   -45)      15       15           15                      
+  ( -100,   -44)      15       15           15                      
+  ( -100,   -43)      15       15           16  flora meadow-cover  
+  ( -100,   -42)      15       15           15                      
+  ( -100,   -41)      15       15           20  house house-a       
+  ( -100,   -40)      15       15           21  house house-a       
+  ( -100,   -39)      15       15           22  house house-a       
+  ( -100,   -38)      15       15           23  house house-a       
+  ( -100,   -37)      15       15           24  house house-a       
+  ( -100,   -36)      15       15           24  house house-a       
+  ( -100,   -35)      15       15           23  house house-a       
+  ( -100,   -34)      15       15           22  house house-a       
+  ( -100,   -33)      15       15           21  house house-a       
+  ( -100,   -32)      16       16           20  house house-a       +1
+  ( -100,   -31)      16       16           16                      
+  ( -100,   -30)      16       16           16                      
+  ( -100,   -29)      16       16           16                      
+  ( -100,   -28)      16       16           16                      
+  ( -100,   -27)      16       16           20  house house-b       
+  ( -100,   -26)      16       16           21  house house-b       
+  ( -100,   -25)      16       16           22  house house-b       
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora meadow-cover at (-101, -43), house house-a at (-102, -41), house house-b at (-102, -27)

@@ -1,0 +1,61 @@
+## south-0 (destroyable) along x
+TRANSECT 25 stations from (-90, -30) to (-66, -30), every 1
+  station        ground  surface  water  top  standing            step
+  (  -90,   -30)      16       16           28  tree o4             
+  (  -89,   -30)      16       16           27  tree o4             
+  (  -88,   -30)      17       17           26  tree o4             +1
+  (  -87,   -30)      17       17           17  tree o4             
+  (  -86,   -30)      17       17           17  tree o4             
+  (  -85,   -30)      17       17           17                      
+  (  -84,   -30)      17       17           17                      
+  (  -83,   -30)      17       17           17                      
+  (  -82,   -30)      17       17           17                      
+  (  -81,   -30)      17       17           17                      
+  (  -80,   -30)      17       17           17  destroyable south   
+  (  -79,   -30)      17       17           41  destroyable south   
+  (  -78,   -30)      17       17           42  destroyable south   
+  (  -77,   -30)      17       17           41  destroyable south   
+  (  -76,   -30)      17       17           17  destroyable south   
+  (  -75,   -30)      17       17           17                      
+  (  -74,   -30)      17       17           17                      
+  (  -73,   -30)      17       17           17                      
+  (  -72,   -30)      17       17           17                      
+  (  -71,   -30)      17       17           17                      
+  (  -70,   -30)      17       17           17                      
+  (  -69,   -30)      17       17           17                      
+  (  -68,   -30)      16       16           16                      -1
+  (  -67,   -30)      16       16           16                      
+  (  -66,   -30)      16       16           17  flora fen-cover     
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree o4 at (-92, -32), destroyable south at (-80, -32), flora fen-cover at (-69, -28)
+
+## south-0 (destroyable) along z
+TRANSECT 25 stations from (-78, -42) to (-78, -18), every 1
+  station        ground  surface  water  top  standing            step
+  (  -78,   -42)      16       16           16                      
+  (  -78,   -41)      16       16           16                      
+  (  -78,   -40)      16       16           16                      
+  (  -78,   -39)      17       17           17                      +1
+  (  -78,   -38)      17       17           17                      
+  (  -78,   -37)      17       17           17                      
+  (  -78,   -36)      17       17           17                      
+  (  -78,   -35)      17       17           17                      
+  (  -78,   -34)      17       17           17                      
+  (  -78,   -33)      17       17           17                      
+  (  -78,   -32)      17       17           17  destroyable south   
+  (  -78,   -31)      17       17           41  destroyable south   
+  (  -78,   -30)      17       17           42  destroyable south   
+  (  -78,   -29)      17       17           41  destroyable south   
+  (  -78,   -28)      17       17           17  destroyable south   
+  (  -78,   -27)      17       17           17                      
+  (  -78,   -26)      17       17           17                      
+  (  -78,   -25)      17       17           17                      
+  (  -78,   -24)      17       17           17                      
+  (  -78,   -23)      16       16           16                      -1
+  (  -78,   -22)      16       16           16                      
+  (  -78,   -21)      16       16           16                      
+  (  -78,   -20)      16       16           16                      
+  (  -78,   -19)      16       16           16                      
+  (  -78,   -18)      15       15           15                      -1
+rises 1, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable south at (-80, -32), flora fen-cover at (-80, -18)

@@ -1,0 +1,61 @@
+## mon-0 (destroyable) along x
+TRANSECT 25 stations from (-82, -2) to (-58, -2), every 1
+  station        ground  surface  water  top  standing            step
+  (  -82,    -2)      22       22           22                      
+  (  -81,    -2)      22       22           22                      
+  (  -80,    -2)      22       22           22                      
+  (  -79,    -2)      22       22           22                      
+  (  -78,    -2)      22       22           22  stroke path-mon     
+  (  -77,    -2)      22       22           22  stroke path-mon     
+  (  -76,    -2)      22       22           22  stroke path-mon     
+  (  -75,    -2)      22       22           22                      
+  (  -74,    -2)      22       22           22                      
+  (  -73,    -2)      22       22           22                      
+  (  -72,    -2)      22       22           22  destroyable mon     
+  (  -71,    -2)      22       22           46  destroyable mon     
+  (  -70,    -2)      22       22           47  destroyable mon     
+  (  -69,    -2)      22       22           46  destroyable mon     
+  (  -68,    -2)      22       22           22  destroyable mon     
+  (  -67,    -2)      22       22           22                      
+  (  -66,    -2)      22       22           22  stroke path-bridge-west  
+  (  -65,    -2)      22       22           22  stroke path-bridge-west  
+  (  -64,    -2)      22       22           22  stroke path-bridge-west  
+  (  -63,    -2)      22       22           22  stroke path-bridge-west  
+  (  -62,    -2)      22       22           22  stroke path-bridge-west  
+  (  -61,    -2)      22       22           22  stroke path-bridge-west  
+  (  -60,    -2)      21       21           21  stroke path-bridge-west  -1
+  (  -59,    -2)      21       21           21  stroke path-bridge-west  
+  (  -58,    -2)      21       21           21  stroke path-bridge-west  
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-mon at (-80, -1), destroyable mon at (-72, -4), stroke path-bridge-west at (-66, -3)
+
+## mon-0 (destroyable) along z
+TRANSECT 25 stations from (-70, -14) to (-70, 10), every 1
+  station        ground  surface  water  top  standing            step
+  (  -70,   -14)      21       21           21                      
+  (  -70,   -13)      21       21           21                      
+  (  -70,   -12)      22       22           22                      +1
+  (  -70,   -11)      22       22           22                      
+  (  -70,   -10)      22       22           22                      
+  (  -70,    -9)      22       22           22                      
+  (  -70,    -8)      22       22           22                      
+  (  -70,    -7)      22       22           22                      
+  (  -70,    -6)      22       22           22                      
+  (  -70,    -5)      22       22           22                      
+  (  -70,    -4)      22       22           22  destroyable mon     
+  (  -70,    -3)      22       22           46  destroyable mon     
+  (  -70,    -2)      22       22           47  destroyable mon     
+  (  -70,    -1)      22       22           46  destroyable mon     
+  (  -70,     0)      22       22           22  destroyable mon     
+  (  -70,     1)      22       22           22                      
+  (  -70,     2)      22       22           22                      
+  (  -70,     3)      22       22           22                      
+  (  -70,     4)      22       22           22                      
+  (  -70,     5)      22       22           22                      
+  (  -70,     6)      21       21           21                      -1
+  (  -70,     7)      21       21           21                      
+  (  -70,     8)      21       21           21                      
+  (  -70,     9)      20       20           20                      -1
+  (  -70,    10)      20       20           20                      
+rises 1, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable mon at (-72, -4)

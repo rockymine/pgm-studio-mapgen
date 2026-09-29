@@ -1,0 +1,60 @@
+## works-b (house) along x
+TRANSECT 25 stations from (36, 55) to (60, 55), every 1
+  station        ground  surface  water  top  standing            step
+  (   36,    55)      23       23           23                      
+  (   37,    55)      23       23           23                      
+  (   38,    55)      23       23           23                      
+  (   39,    55)      22       22           22                      -1
+  (   40,    55)      21       21           21                      -1
+  (   41,    55)      20       20           20                      -1
+  (   42,    55)      19       19           19                      -1
+  (   43,    55)      19       19           32  house works-b       
+  (   44,    55)      19       19           32  house works-b       
+  (   45,    55)      19       19           32  house works-b       
+  (   46,    55)      18       18           32  house works-b       -1
+  (   47,    55)      18       18           32  house works-b       
+  (   48,    55)      18       18           32  house works-b       
+  (   49,    55)      18       18           32  house works-b       
+  (   50,    55)      18       18           32  house works-b       
+  (   51,    55)      18       18           32  house works-b       
+  (   52,    55)      18       18           32  house works-b       
+  (   53,    55)      18       18           32  house works-b       
+  (   54,    55)      18       18           18                      
+  (   55,    55)      18       18           18                      
+  (   56,    55)      18       18           18                      
+  (   57,    55)      18       18           18                      
+  (   58,    55)      18       18           18                      
+  (   59,    55)      18       18           18                      
+  (   60,    55)      18       18           18                      
+rises 0, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house works-b at (43, 53)
+
+## works-b (house) along z
+TRANSECT 24 stations from (48, 44) to (48, 67), every 1
+  station        ground  surface  water  top  standing            step
+  (   48,    44)      18       18           18                      
+  (   48,    45)      18       18           18                      
+  (   48,    46)      18       18           18                      
+  (   48,    47)      18       18           18                      
+  (   48,    48)      18       18           18                      
+  (   48,    49)      18       18           18                      
+  (   48,    50)      18       18           18                      
+  (   48,    51)      18       18           28  house works-b       
+  (   48,    52)      18       18           29  house works-b       
+  (   48,    53)      18       18           30  house works-b       
+  (   48,    54)      18       18           31  house works-b       
+  (   48,    55)      18       18           32  house works-b       
+  (   48,    56)      18       18           32  house works-b       
+  (   48,    57)      19       19           31  house works-b       +1
+  (   48,    58)      19       19           30  house works-b       
+  (   48,    59)      19       19           29  house works-b       
+  (   48,    60)      19       19           28  house works-b       
+  (   48,    61)      19       19           19                      
+  (   48,    62)      19       19           19                      
+  (   48,    63)      19       19           19                      
+  (   48,    64)      19       19           19                      
+  (   48,    65)      19       19           19                      
+  (   48,    66)      19       19           19                      
+  (   48,    67)      19       19           19                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree a3 at (47, 42), house works-b at (46, 51)

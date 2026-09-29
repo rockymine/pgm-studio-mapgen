@@ -1,0 +1,266 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Sootcombe",
+  "authors": [
+   "Opus 5.5"
+  ],
+  "notes": "composed p12 t2 seed 21 (walled-4), arrangement unchanged but for one build zone"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "hub-t1",
+   "role": "piece",
+   "rect": [
+    -5,
+    17,
+    8,
+    3
+   ]
+  },
+  {
+   "id": "hub-t2",
+   "role": "piece",
+   "rect": [
+    -5,
+    10,
+    5,
+    7
+   ]
+  },
+  {
+   "id": "spawn-t1",
+   "role": "piece",
+   "rect": [
+    -4,
+    20,
+    3,
+    2
+   ]
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    -4,
+    22,
+    3,
+    2
+   ]
+  },
+  {
+   "id": "wool-a-room",
+   "role": "wool-room",
+   "rect": [
+    -12,
+    14,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "wool-b-t1",
+   "role": "piece",
+   "rect": [
+    3,
+    17,
+    4,
+    3
+   ]
+  },
+  {
+   "id": "wool-b-room",
+   "role": "wool-room",
+   "rect": [
+    7,
+    17,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "frontline-t1",
+   "role": "piece",
+   "rect": [
+    -4,
+    5,
+    8,
+    5
+   ]
+  },
+  {
+   "id": "wool-a-t1",
+   "role": "piece",
+   "rect": [
+    -7,
+    14,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "wool-a-t1-inner",
+   "role": "piece",
+   "rect": [
+    -10,
+    14,
+    3,
+    3
+   ]
+  },
+  {
+   "id": "mid-stone-0",
+   "role": "piece",
+   "rect": [
+    -3,
+    -2,
+    6,
+    4
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-band",
+   "rect": [
+    -4,
+    -6,
+    8,
+    12
+   ],
+   "holes": []
+  },
+  {
+   "id": "hub-flank",
+   "rect": [
+    -2,
+    10,
+    3,
+    7
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     6,
+     4
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-a-room",
+    "at": [
+     4,
+     6
+    ]
+   },
+   {
+    "id": "wool-2",
+    "piece": "wool-b-room",
+    "at": [
+     4,
+     6
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [
+  {
+   "a": "wool-a-t1",
+   "b": "wool-a-t1-inner"
+  },
+  {
+   "a": "hub-t1",
+   "b": "wool-b-t1"
+  }
+ ],
+ "boxes": [
+  {
+   "id": "hub",
+   "kind": "hub",
+   "rect": [
+    -5,
+    10,
+    8,
+    10
+   ],
+   "members": [
+    "hub-t1",
+    "hub-t2"
+   ]
+  },
+  {
+   "id": "spawn",
+   "kind": "spawn",
+   "rect": [
+    -4,
+    20,
+    3,
+    4
+   ],
+   "members": [
+    "spawn-t1",
+    "spawn-room"
+   ]
+  },
+  {
+   "id": "wool-a",
+   "kind": "wool",
+   "rect": [
+    -12,
+    14,
+    7,
+    3
+   ],
+   "members": [
+    "wool-a-room",
+    "wool-a-t1",
+    "wool-a-t1-inner"
+   ]
+  },
+  {
+   "id": "wool-b",
+   "kind": "wool",
+   "rect": [
+    3,
+    17,
+    6,
+    3
+   ],
+   "members": [
+    "wool-b-t1",
+    "wool-b-room"
+   ]
+  },
+  {
+   "id": "frontline",
+   "kind": "frontline",
+   "rect": [
+    -4,
+    5,
+    8,
+    5
+   ],
+   "members": [
+    "frontline-t1"
+   ]
+  }
+ ]
+}

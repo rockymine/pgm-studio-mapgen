@@ -1,0 +1,61 @@
+## core-0 (core) along x
+TRANSECT 25 stations from (-74, 10) to (-50, 10), every 1
+  station        ground  surface  water  top  standing            step
+  (  -74,    10)      15       19           19  storey              
+  (  -73,    10)      15       19           19  storey              
+  (  -72,    10)      22       22           22                      BARRIER +3
+  (  -71,    10)      22       22           22                      
+  (  -70,    10)      22       22           22                      
+  (  -69,    10)      22       22           22                      
+  (  -68,    10)      22       22           22                      
+  (  -67,    10)      22       22           22                      
+  (  -66,    10)      22       22           22                      
+  (  -65,    10)      22       22           22                      
+  (  -64,    10)      22       22           33  core core           
+  (  -63,    10)      22       22     32    44  core core           
+  (  -62,    10)      22       22     32    45  core core           
+  (  -61,    10)      22       22     32    44  core core           
+  (  -60,    10)      22       22           33  core core           
+  (  -59,    10)      22       22           22                      
+  (  -58,    10)      22       22           22                      
+  (  -57,    10)      22       22           22                      
+  (  -56,    10)      22       22           22                      
+  (  -55,    10)      22       22           22                      
+  (  -54,    10)      15       16           16  storey              DROP -6
+  (  -53,    10)      15       16           16  storey              
+  (  -52,    10)      15       16           16  storey              
+  (  -51,    10)      15       16           16  storey              
+  (  -50,    10)      15       16           16  storey              
+rises 1, falls 1, worst step 6: 1 barrier, 0 scramble, 1 drop — BARRIER +3 at (-72, 10); DROP -6 at (-54, 10) | walked end to end
+beside: stroke path-keep at (-75, 8), house house-c at (-76, 11), core core at (-64, 8)
+
+## core-0 (core) along z
+TRANSECT 25 stations from (-62, -2) to (-62, 22), every 1
+  station        ground  surface  water  top  standing            step
+  (  -62,    -2)      15       19           19  storey              
+  (  -62,    -1)      15       19           19  storey              
+  (  -62,     0)      22       22           22                      BARRIER +3
+  (  -62,     1)      22       22           22                      
+  (  -62,     2)      22       22           22                      
+  (  -62,     3)      22       22           22                      
+  (  -62,     4)      22       22           22                      
+  (  -62,     5)      22       22           22                      
+  (  -62,     6)      22       22           22                      
+  (  -62,     7)      22       22           22                      
+  (  -62,     8)      22       22           33  core core           
+  (  -62,     9)      22       22     32    44  core core           
+  (  -62,    10)      22       22     32    45  core core           
+  (  -62,    11)      22       22     32    44  core core           
+  (  -62,    12)      22       22           33  core core           
+  (  -62,    13)      22       22           22                      
+  (  -62,    14)      22       22           22                      
+  (  -62,    15)      22       22           22                      
+  (  -62,    16)      22       22           22                      
+  (  -62,    17)      22       22           22                      
+  (  -62,    18)      21       21           21                      -1
+  (  -62,    19)      21       21           21                      
+  (  -62,    20)      15       19           19  storey              -2
+  (  -62,    21)      15       19           19  storey              
+  (  -62,    22)      20       20           20  tree birch-1        +1
+rises 2, falls 2, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (-62, 0) | walked end to end
+beside: core core at (-64, 8), tree birch-1 at (-60, 19)

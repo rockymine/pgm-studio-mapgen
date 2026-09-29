@@ -1,0 +1,61 @@
+## b2 (boulder) along x
+TRANSECT 25 stations from (-46, 24) to (-22, 24), every 1
+  station        ground  surface  water  top  standing            step
+  (  -46,    24)      13       13           13                      
+  (  -45,    24)      12       12           12  water beck          -1
+  (  -44,    24)      12       12     12    12  water beck          
+  (  -43,    24)      12       12     12    12  water beck          
+  (  -42,    24)      12       12     12    12  water beck          
+  (  -41,    24)      12       12     12    12  water beck          
+  (  -40,    24)      12       12     12    12  water beck          
+  (  -39,    24)      12       12     12    12  water beck          
+  (  -38,    24)      12       12           12  water beck          
+  (  -37,    24)      13       13           13                      +1
+  (  -36,    24)      13       13           15  boulder b2          
+  (  -35,    24)      13       13           16  boulder b2          
+  (  -34,    24)      13       13           16  boulder b2          
+  (  -33,    24)      14       14           16  boulder b2          +1
+  (  -32,    24)      14       14           15  boulder b2          
+  (  -31,    24)      14       14           14                      
+  (  -30,    24)      15       15           15                      +1
+  (  -29,    24)      15       15           15                      
+  (  -28,    24)      15       15           15                      
+  (  -27,    24)      16       16           16                      +1
+  (  -26,    24)      16       16           16                      
+  (  -25,    24)      16       16           16                      
+  (  -24,    24)      17       17           17                      +1
+  (  -23,    24)      17       17           17                      
+  (  -22,    24)      17       17           17                      
+rises 5, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water beck at (-45, 22), boulder b2 at (-36, 24), stroke path-wood-east at (-24, 26)
+
+## b2 (boulder) along z
+TRANSECT 25 stations from (-34, 12) to (-34, 36), every 1
+  station        ground  surface  water  top  standing            step
+  (  -34,    12)      13       13           13                      
+  (  -34,    13)      13       13           13                      
+  (  -34,    14)      13       13           13                      
+  (  -34,    15)      13       13           13                      
+  (  -34,    16)      13       13           13                      
+  (  -34,    17)      13       13           13                      
+  (  -34,    18)      13       13           13                      
+  (  -34,    19)      13       13           13                      
+  (  -34,    20)      13       13           13                      
+  (  -34,    21)      13       13           13                      
+  (  -34,    22)      13       13           13                      
+  (  -34,    23)      13       13           16  boulder b2          
+  (  -34,    24)      13       13           16  boulder b2          
+  (  -34,    25)      14       14           16  boulder b2          +1
+  (  -34,    26)      14       14           15  boulder b2          
+  (  -34,    27)      14       14           14                      
+  (  -34,    28)      14       14           14  stroke path-wood-east  
+  (  -34,    29)      14       14           14  stroke path-wood-east  
+  (  -34,    30)      14       14           14  stroke path-wood-east  
+  (  -34,    31)      14       14           14                      
+  (  -34,    32)      14       14           14                      
+  (  -34,    33)      14       14           14                      
+  (  -34,    34)      14       14           14                      
+  (  -34,    35)      14       14           14                      
+  (  -34,    36)      14       14           14                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water beck at (-36, 10), boulder b2 at (-35, 23), stroke path-wood-east at (-32, 27), tree birch-5 at (-33, 36)

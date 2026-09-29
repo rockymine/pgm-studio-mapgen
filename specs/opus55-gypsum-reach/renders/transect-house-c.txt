@@ -1,0 +1,58 @@
+## house-c (house) along x
+TRANSECT 24 stations from (-80, 19) to (-57, 19), every 1
+  station        ground  surface  water  top  standing            step
+  (  -80,    19)      19       19           19  tree t1             
+  (  -79,    19)      19       19           19  tree t1             
+  (  -78,    19)      19       19           19  tree t1             
+  (  -77,    19)      19       19           19  tree t1             
+  (  -76,    19)      19       19           19  tree t1             
+  (  -75,    19)      18       18           18  tree t1             -1
+  (  -74,    19)      18       18           24  tree t1             
+  (  -73,    19)      18       18           29  tree t1             
+  (  -72,    19)      18       18           29  tree t1             
+  (  -71,    19)      18       18           29  tree t1             
+  (  -70,    19)      18       18           29  tree t1             
+  (  -69,    19)      18       18           29  house house-c       
+  (  -68,    19)      17       17           29  house house-c       -1
+  (  -67,    19)      17       17           29  house house-c       
+  (  -66,    19)      17       17           29  house house-c       
+  (  -65,    19)      17       17           29  house house-c       
+  (  -64,    19)      17       17           29  house house-c       
+  (  -63,    19)      17       17           17                      
+  (  -62,    19)      17       17           17                      
+  (  -61,    19)      17       17           17                      
+  (  -60,    19)      17       17           17  tree t4             
+  (  -59,    19)      17       17           17  tree t4             
+  (  -58,    19)      17       17           17  tree t4             
+  (  -57,    19)      17       17           17  tree t4             
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree t1 at (-82, 17), house house-c at (-71, 17), tree t4 at (-61, 20)
+
+## house-c (house) along z
+TRANSECT 23 stations from (-69, 8) to (-69, 30), every 1
+  station        ground  surface  water  top  standing            step
+  (  -69,     8)      21       21           21                      
+  (  -69,     9)      20       20           20                      -1
+  (  -69,    10)      20       20           20                      
+  (  -69,    11)      20       20           20                      
+  (  -69,    12)      19       19           19                      -1
+  (  -69,    13)      19       19           19  stroke path-hamlet  
+  (  -69,    14)      19       19           19  stroke path-hamlet  
+  (  -69,    15)      19       19           27  house house-c       
+  (  -69,    16)      18       18           27  house house-c       -1
+  (  -69,    17)      18       18           28  house house-c       
+  (  -69,    18)      18       18           28  house house-c       
+  (  -69,    19)      18       18           29  house house-c       
+  (  -69,    20)      17       17           28  house house-c       -1
+  (  -69,    21)      17       17           28  tree t1             
+  (  -69,    22)      16       16           27  tree t1             -1
+  (  -69,    23)      16       16           27  tree t1             
+  (  -69,    24)      16       16           16  tree t1             
+  (  -69,    25)      16       16           16  tree t1             
+  (  -69,    26)      16       16           16  tree t1             
+  (  -69,    27)      16       16     16    16  tree t1             
+  (  -69,    28)      16       16     16    16  tree t1             
+  (  -69,    29)      16       16     16    16  tree t1             
+  (  -69,    30)      16       16     16    16  water oasis-pool    
+rises 0, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-hamlet at (-69, 13), house house-c at (-71, 15), tree t1 at (-71, 18), water oasis-pool at (-68, 24)

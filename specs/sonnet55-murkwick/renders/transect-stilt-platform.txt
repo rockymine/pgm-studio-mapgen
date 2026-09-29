@@ -1,0 +1,68 @@
+## stilt-platform (made) along x
+TRANSECT 32 stations from (-15, 0) to (16, 0), every 1
+  station        ground  surface  water  top  standing            step
+  (  -15,     0)       9        9            9                      
+  (  -14,     0)       9        9            9                      
+  (  -13,     0)       9        9            9                      
+  (  -12,     0)       9        9            9                      
+  (  -11,     0)       9        9            9                      
+  (  -10,     0)       9        9            9                      
+  (   -9,     0)       9        9            9                      
+  (   -8,     0)       9        9            9                      
+  (   -7,     0)       9       18           18  storey              BARRIER +9
+  (   -6,     0)       9       19           19  storey              +1
+  (   -5,     0)       9       19           19  storey              
+  (   -4,     0)       9       20           20  storey              +1
+  (   -3,     0)       9       21           26  storey              +1
+  (   -2,     0)       9       21           26  storey              
+  (   -1,     0)       9       21           25  storey              
+  (    0,     0)       9       21           25  storey              
+  (    1,     0)       9       20           26  storey              -1
+  (    2,     0)       9       19           26  storey              -1
+  (    3,     0)       9       19           19  storey              
+  (    4,     0)       9       18           18  storey              -1
+  (    5,     0)       9       12           12  storey              DROP -6
+  (    6,     0)       9       11           11  storey              -1
+  (    7,     0)       9       10           10  storey              -1
+  (    8,     0)       9        9            9                      -1
+  (    9,     0)       9        9            9                      
+  (   10,     0)       9        9            9                      
+  (   11,     0)       9        9            9                      
+  (   12,     0)       9        9            9                      
+  (   13,     0)       9        9            9                      
+  (   14,     0)       9        9            9                      
+  (   15,     0)       9        9            9                      
+  (   16,     0)                                                    void
+rises 4, falls 7, worst step 9: 1 barrier, 0 scramble, 1 drop — BARRIER +9 at (-7, 0); DROP -6 at (5, 0) | walked end to end
+beside: (none)
+
+## stilt-platform (made) along z
+TRANSECT 25 stations from (0, -12) to (0, 12), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,   -12)       9        9            9                      
+  (    0,   -11)       9        9            9                      
+  (    0,   -10)       9        9            9                      
+  (    0,    -9)       9        9            9                      
+  (    0,    -8)       9        9            9                      
+  (    0,    -7)       9        9            9                      
+  (    0,    -6)       9       18           18  storey              BARRIER +9
+  (    0,    -5)       9       19           19  storey              +1
+  (    0,    -4)       9       19           19  storey              
+  (    0,    -3)       9       20           26  storey              +1
+  (    0,    -2)       9       21           26  storey              +1
+  (    0,    -1)       9       21           25  storey              
+  (    0,     0)       9       21           25  storey              
+  (    0,     1)       9       21           26  storey              
+  (    0,     2)       9       20           26  storey              -1
+  (    0,     3)       9       19           19  storey              -1
+  (    0,     4)       9       19           19  storey              
+  (    0,     5)       9       18           18  storey              -1
+  (    0,     6)       9        9            9                      DROP -9
+  (    0,     7)       9        9            9                      
+  (    0,     8)       9        9            9                      
+  (    0,     9)       9        9            9                      
+  (    0,    10)       9        9            9                      
+  (    0,    11)       9        9            9                      
+  (    0,    12)                                                    void
+rises 4, falls 4, worst step 9: 1 barrier, 0 scramble, 1 drop — BARRIER +9 at (0, -6); DROP -9 at (0, 6) | walked end to end
+beside: (none)

@@ -1,0 +1,61 @@
+## north-1 (destroyable) along x
+TRANSECT 25 stations from (63, -31) to (87, -31), every 1
+  station        ground  surface  water  top  standing            step
+  (   63,   -31)      16       16           16                      
+  (   64,   -31)      16       16           16                      
+  (   65,   -31)      16       16           16                      
+  (   66,   -31)      16       16           16                      
+  (   67,   -31)      17       17           17                      +1
+  (   68,   -31)      17       17           17                      
+  (   69,   -31)      17       17           17                      
+  (   70,   -31)      17       17           17                      
+  (   71,   -31)      17       17           17                      
+  (   72,   -31)      17       17           17                      
+  (   73,   -31)      17       17           17  destroyable north#1  
+  (   74,   -31)      17       17           41  destroyable north#1  
+  (   75,   -31)      17       17           42  destroyable north#1  
+  (   76,   -31)      17       17           41  destroyable north#1  
+  (   77,   -31)      17       17           17  destroyable north#1  
+  (   78,   -31)      17       17           17                      
+  (   79,   -31)      17       17           17                      
+  (   80,   -31)      17       17           17                      
+  (   81,   -31)      17       17           17                      
+  (   82,   -31)      17       17           17  tree o3#1           
+  (   83,   -31)      17       17           25  tree o3#1           
+  (   84,   -31)      17       17           17  tree o3#1           
+  (   85,   -31)      17       17           28  tree o3#1           
+  (   86,   -31)      16       16           27  tree o3#1           -1
+  (   87,   -31)      16       16           28  tree o3#1           
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora fen-cover#1 at (72, -29), destroyable north#1 at (73, -33), tree o3#1 at (82, -31)
+
+## north-1 (destroyable) along z
+TRANSECT 25 stations from (75, -43) to (75, -19), every 1
+  station        ground  surface  water  top  standing            step
+  (   75,   -43)      16       16           16                      
+  (   75,   -42)      16       16           16                      
+  (   75,   -41)      16       16           16                      
+  (   75,   -40)      17       17           17                      +1
+  (   75,   -39)      17       17           17                      
+  (   75,   -38)      17       17           17                      
+  (   75,   -37)      17       17           17                      
+  (   75,   -36)      17       17           17                      
+  (   75,   -35)      17       17           17                      
+  (   75,   -34)      17       17           17                      
+  (   75,   -33)      17       17           17  destroyable north#1  
+  (   75,   -32)      17       17           41  destroyable north#1  
+  (   75,   -31)      17       17           42  destroyable north#1  
+  (   75,   -30)      17       17           41  destroyable north#1  
+  (   75,   -29)      17       17           17  destroyable north#1  
+  (   75,   -28)      17       17           17                      
+  (   75,   -27)      17       17           17                      
+  (   75,   -26)      17       17           18  flora fen-cover#1   
+  (   75,   -25)      17       17           18  flora fen-cover#1   
+  (   75,   -24)      16       16           17  flora fen-cover#1   -1
+  (   75,   -23)      16       16           17  flora fen-cover#1   
+  (   75,   -22)      16       16           16                      
+  (   75,   -21)      16       16           16                      
+  (   75,   -20)      16       16           16                      
+  (   75,   -19)      15       15           15                      -1
+rises 1, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora fen-cover#1 at (73, -45), destroyable north#1 at (73, -33)

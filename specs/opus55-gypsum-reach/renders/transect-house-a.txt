@@ -1,0 +1,60 @@
+## house-a (house) along x
+TRANSECT 25 stations from (-100, -11) to (-76, -11), every 1
+  station        ground  surface  water  top  standing            step
+  ( -100,   -11)      21       21           21                      
+  (  -99,   -11)      21       21           21                      
+  (  -98,   -11)      21       21           21                      
+  (  -97,   -11)      21       21           21                      
+  (  -96,   -11)      21       21           21                      
+  (  -95,   -11)      21       21           21                      
+  (  -94,   -11)      21       21           21                      
+  (  -93,   -11)      21       21           34  house house-a       
+  (  -92,   -11)      21       21           34  house house-a       
+  (  -91,   -11)      21       21           34  house house-a       
+  (  -90,   -11)      21       21           34  house house-a       
+  (  -89,   -11)      21       21           34  house house-a       
+  (  -88,   -11)      21       21           34  house house-a       
+  (  -87,   -11)      21       21           34  house house-a       
+  (  -86,   -11)      21       21           34  house house-a       
+  (  -85,   -11)      21       21           34  house house-a       
+  (  -84,   -11)      21       21           34  house house-a       
+  (  -83,   -11)      21       21           34  house house-a       
+  (  -82,   -11)      21       21           21  stroke path-houses  
+  (  -81,   -11)      21       21           21  stroke path-houses  
+  (  -80,   -11)      22       22           22  stroke path-houses  +1
+  (  -79,   -11)      22       22           22  stroke path-houses  
+  (  -78,   -11)      22       22           22  stroke path-houses  
+  (  -77,   -11)      22       22           22                      
+  (  -76,   -11)      22       22           22                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house house-a at (-93, -13), stroke path-houses at (-82, -13)
+
+## house-a (house) along z
+TRANSECT 24 stations from (-88, -22) to (-88, 1), every 1
+  station        ground  surface  water  top  standing            step
+  (  -88,   -22)      21       21           21                      
+  (  -88,   -21)      21       21           21                      
+  (  -88,   -20)      21       21           21                      
+  (  -88,   -19)      21       21           21                      
+  (  -88,   -18)      21       21           21                      
+  (  -88,   -17)      21       21           21                      
+  (  -88,   -16)      21       21           21                      
+  (  -88,   -15)      21       21           32  house house-a       
+  (  -88,   -14)      21       21           32  house house-a       
+  (  -88,   -13)      21       21           33  house house-a       
+  (  -88,   -12)      21       21           33  house house-a       
+  (  -88,   -11)      21       21           34  house house-a       
+  (  -88,   -10)      21       21           34  house house-a       
+  (  -88,    -9)      21       21           33  house house-a       
+  (  -88,    -8)      21       21           33  house house-a       
+  (  -88,    -7)      21       21           32  house house-a       
+  (  -88,    -6)      21       21           32  house house-a       
+  (  -88,    -5)      21       21           21                      
+  (  -88,    -4)      21       21           21                      
+  (  -88,    -3)      21       21           21                      
+  (  -88,    -2)      21       21           21                      
+  (  -88,    -1)      21       21           21                      
+  (  -88,     0)      21       21           21                      
+  (  -88,     1)      21       21           21                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house house-b at (-90, -24), house house-a at (-90, -15), stroke path-mon at (-87, 2)

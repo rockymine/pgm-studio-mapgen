@@ -1,0 +1,61 @@
+## stone-0 (destroyable) along x
+TRANSECT 25 stations from (-76, 24) to (-52, 24), every 1
+  station        ground  surface  water  top  standing            step
+  (  -76,    24)      18       18           18                      
+  (  -75,    24)      18       18           18                      
+  (  -74,    24)      18       18           18                      
+  (  -73,    24)      18       18           18                      
+  (  -72,    24)      18       18           18                      
+  (  -71,    24)      18       18           18                      
+  (  -70,    24)      18       18           18                      
+  (  -69,    24)      18       18           18                      
+  (  -68,    24)      18       18           19  flora floor-cover   
+  (  -67,    24)      18       18           19  flora floor-cover   
+  (  -66,    24)      18       18           19  flora floor-cover   
+  (  -65,    24)      18       18           42  flora floor-cover   
+  (  -64,    24)      18       18           43  destroyable stone   
+  (  -63,    24)      18       18           42  flora floor-cover   
+  (  -62,    24)      18       18           19  flora floor-cover   
+  (  -61,    24)      18       18           19  flora floor-cover   
+  (  -60,    24)      18       18           18                      
+  (  -59,    24)      18       18           18                      
+  (  -58,    24)      18       18           18                      
+  (  -57,    24)      18       18           18                      
+  (  -56,    24)      19       19           19                      +1
+  (  -55,    24)      20       20           20                      +1
+  (  -54,    24)      20       20           20                      
+  (  -53,    24)      20       20           20  tree o-4            
+  (  -52,    24)      21       21           21  tree o-4            +1
+rises 3, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora floor-cover at (-69, 22), destroyable stone at (-64, 24), tree o-4 at (-55, 26)
+
+## stone-0 (destroyable) along z
+TRANSECT 25 stations from (-64, 12) to (-64, 36), every 1
+  station        ground  surface  water  top  standing            step
+  (  -64,    12)      16       16           16                      
+  (  -64,    13)      16       16           16                      
+  (  -64,    14)      17       17           17                      +1
+  (  -64,    15)      17       21           21  storey              BARRIER +4
+  (  -64,    16)      18       18           18                      -3
+  (  -64,    17)      18       18           18                      
+  (  -64,    18)      18       18           18                      
+  (  -64,    19)      18       18           18                      
+  (  -64,    20)      18       18           18                      
+  (  -64,    21)      18       18           19  flora floor-cover   
+  (  -64,    22)      18       18           19  flora floor-cover   
+  (  -64,    23)      18       18           42  flora floor-cover   
+  (  -64,    24)      18       18           43  destroyable stone   
+  (  -64,    25)      18       18           42  flora floor-cover   
+  (  -64,    26)      18       18           19  flora floor-cover   
+  (  -64,    27)      18       18           19  flora floor-cover   
+  (  -64,    28)      18       18           19  flora floor-cover   
+  (  -64,    29)      18       18           19  flora floor-cover   
+  (  -64,    30)      18       18           19  flora floor-cover   
+  (  -64,    31)      18       18           19  flora floor-cover   
+  (  -64,    32)      18       18           19  flora floor-cover   
+  (  -64,    33)      18       18           18                      
+  (  -64,    34)      18       18           18                      
+  (  -64,    35)      18       18           18                      
+  (  -64,    36)      18       18           18                      
+rises 2, falls 1, worst step 4: 1 barrier, 0 scramble, 0 drop — BARRIER +4 at (-64, 15) | walked end to end
+beside: flora floor-cover at (-64, 21), destroyable stone at (-62, 22)

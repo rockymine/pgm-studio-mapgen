@@ -1,0 +1,60 @@
+## house-e (house) along x
+TRANSECT 25 stations from (-124, 29) to (-100, 29), every 1
+  station        ground  surface  water  top  standing            step
+  ( -124,    29)      15       15           17  flora fen-cover     
+  ( -123,    29)      15       15           16  flora fen-cover     
+  ( -122,    29)      15       15           15                      
+  ( -121,    29)      15       15           15                      
+  ( -120,    29)      15       15           15                      
+  ( -119,    29)      15       15           15                      
+  ( -118,    29)      15       15           15                      
+  ( -117,    29)      15       15           29  house house-e       
+  ( -116,    29)      15       15           29  house house-e       
+  ( -115,    29)      15       15           29  house house-e       
+  ( -114,    29)      15       15           29  house house-e       
+  ( -113,    29)      15       15           29  house house-e       
+  ( -112,    29)      15       15           29  house house-e       
+  ( -111,    29)      15       15           29  house house-e       
+  ( -110,    29)      15       15           29  tree o2             
+  ( -109,    29)      15       15           29  tree o2             
+  ( -108,    29)      15       15           29  tree o2             
+  ( -107,    29)      15       15           29  tree o2             
+  ( -106,    29)      15       15           15  tree o2             
+  ( -105,    29)      15       15           15  tree o2             
+  ( -104,    29)      15       15           15  tree o2             
+  ( -103,    29)      15       15           15  tree o2             
+  ( -102,    29)      15       15           22  tree o2             
+  ( -101,    29)      15       15           22  tree o2             
+  ( -100,    29)      15       15           21  tree o3             
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora fen-cover at (-124, 27), house house-e at (-117, 27), tree o2 at (-111, 30), tree o3 at (-101, 30)
+
+## house-e (house) along z
+TRANSECT 24 stations from (-112, 18) to (-112, 41), every 1
+  station        ground  surface  water  top  standing            step
+  ( -112,    18)      15       15           15                      
+  ( -112,    19)      15       15           15                      
+  ( -112,    20)      15       15           15                      
+  ( -112,    21)      15       15           15                      
+  ( -112,    22)      15       15           15                      
+  ( -112,    23)      15       15           15                      
+  ( -112,    24)      15       15           15                      
+  ( -112,    25)      15       15           25  house house-e       
+  ( -112,    26)      15       15           26  house house-e       
+  ( -112,    27)      15       15           27  house house-e       
+  ( -112,    28)      15       15           28  house house-e       
+  ( -112,    29)      15       15           29  house house-e       
+  ( -112,    30)      15       15           29  house house-e       
+  ( -112,    31)      15       15           28  house house-e       
+  ( -112,    32)      15       15           27  house house-e       
+  ( -112,    33)      15       15           26  house house-e       
+  ( -112,    34)      15       15           25  tree o2             
+  ( -112,    35)      15       15           15                      
+  ( -112,    36)      15       15           15                      
+  ( -112,    37)      14       14           14                      -1
+  ( -112,    38)      14       14           14                      
+  ( -112,    39)      13       13           13                      -1
+  ( -112,    40)      13       13           13                      
+  ( -112,    41)      12       12           12                      -1
+rises 0, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house house-a at (-114, 16), house house-e at (-114, 25), tree o2 at (-110, 29), water pool-nw at (-110, 41), tree w3 at (-112, 42)

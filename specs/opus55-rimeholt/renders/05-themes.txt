@@ -1,0 +1,8 @@
+THEMES  3 themes over 5804 ground cells, 19 distinct surface blocks
+  snowfield  5175 cells (89.2%)  80:0 Snow Block, 174:0 Packed Ice, 98:0 Stone Bricks, 4:0 Cobblestone, 1:5 Andesite, 13:0 Gravel, 7:0 Bedrock, 5:1 Spruce Planks, 1:0 Stone, 17:5 Spruce Log, 35:14 Red Wool, 35:11 Blue Wool
+  needles  513 cells (8.8%)  3:2 Podzol, 5:1 Spruce Planks, 80:0 Snow Block, 4:0 Cobblestone, 1:5 Andesite, 3:1 Coarse Dirt, 1:0 Stone, 17:9 Spruce Log, 17:5 Spruce Log, 17:1 Spruce Log
+  tarn  116 cells (2.0%)  174:0 Packed Ice, 79:0 Ice
+borders:
+  needles | snowfield  120 cells
+  needles | tarn  34 cells
+  snowfield | tarn  34 cells

@@ -1,0 +1,61 @@
+## b-4 (boulder) along x
+TRANSECT 25 stations from (-103, -23) to (-79, -23), every 1
+  station        ground  surface  water  top  standing            step
+  ( -103,   -23)                                                    void
+  ( -102,   -23)                                                    void
+  ( -101,   -23)                                                    void
+  ( -100,   -23)                                                    void
+  (  -99,   -23)                                                    void
+  (  -98,   -23)                                tree j-1            void
+  (  -97,   -23)      18       18           18  tree j-1            
+  (  -96,   -23)      18       18           18  tree j-1            
+  (  -95,   -23)      19       19           21  tree j-1            +1
+  (  -94,   -23)      20       20           22  tree j-1            +1
+  (  -93,   -23)      20       20           33  tree j-1            
+  (  -92,   -23)      21       21           34  tree j-1            +1
+  (  -91,   -23)      21       21           22  tree j-1            
+  (  -90,   -23)      21       21           34  tree j-1            
+  (  -89,   -23)      21       21           38  tree j-1            
+  (  -88,   -23)      21       21           34  tree j-1            
+  (  -87,   -23)      20       20           39  tree j-1            -1
+  (  -86,   -23)      20       20           20  tree j-1            
+  (  -85,   -23)      20       20           38  tree j-1            
+  (  -84,   -23)      20       20           20  tree j-1            
+  (  -83,   -23)      20       20           38  tree j-1            
+  (  -82,   -23)      19       19           19  tree j-4            -1
+  (  -81,   -23)      19       19           19  tree j-4            
+  (  -80,   -23)      19       19           19  tree j-4            
+  (  -79,   -23)      19       19           19  tree j-4            
+rises 3, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree j-1 at (-99, -25), tree j-4 at (-84, -21), stroke path-south-w at (-79, -25)
+
+## b-4 (boulder) along z
+TRANSECT 25 stations from (-91, -35) to (-91, -11), every 1
+  station        ground  surface  water  top  standing            step
+  (  -91,   -35)      18       18           18  tree j-1            
+  (  -91,   -34)      18       18           18  tree j-1            
+  (  -91,   -33)      19       19           19  tree j-1            +1
+  (  -91,   -32)      20       20           20  tree j-1            +1
+  (  -91,   -31)      20       20           36  tree j-1            
+  (  -91,   -30)      20       20           37  tree j-1            
+  (  -91,   -29)      20       20           38  tree j-1            
+  (  -91,   -28)      20       20           36  tree j-1            
+  (  -91,   -27)      20       20           37  tree j-1            
+  (  -91,   -26)      21       21           22  tree j-1            +1
+  (  -91,   -25)      21       21           33  tree j-1            
+  (  -91,   -24)      21       21           35  tree j-1            
+  (  -91,   -23)      21       21           22  tree j-1            
+  (  -91,   -22)      21       21           33  tree j-1            
+  (  -91,   -21)      21       21           22  tree j-1            
+  (  -91,   -20)      21       21           21  tree j-1            
+  (  -91,   -19)      21       21           21                      
+  (  -91,   -18)      21       21           21  stroke path-south-w  
+  (  -91,   -17)      21       21           21  stroke path-south-w  
+  (  -91,   -16)      21       21           21  stroke path-south-w  
+  (  -91,   -15)      20       20           20  stroke path-south-w  -1
+  (  -91,   -14)      19       19           19                      -1
+  (  -91,   -13)      19       19           19                      
+  (  -91,   -12)      18       18           19  flora floor-cover   -1
+  (  -91,   -11)      18       18           19  flora floor-cover   
+rises 3, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree j-1 at (-93, -37), stroke path-south-w at (-89, -19), flora floor-cover at (-92, -12)

@@ -1,0 +1,61 @@
+## b1 (boulder) along x
+TRANSECT 25 stations from (-58, -12) to (-34, -12), every 1
+  station        ground  surface  water  top  standing            step
+  (  -58,   -12)      17       17           17                      
+  (  -57,   -12)      17       17           17                      
+  (  -56,   -12)      17       17           17                      
+  (  -55,   -12)      16       16           16                      -1
+  (  -54,   -12)      16       16           16                      
+  (  -53,   -12)      16       16           16                      
+  (  -52,   -12)      15       15           15                      -1
+  (  -51,   -12)      15       15           15                      
+  (  -50,   -12)      14       14           14                      -1
+  (  -49,   -12)      14       14           14                      
+  (  -48,   -12)      14       14           15  boulder b1          
+  (  -47,   -12)      13       13           16  boulder b1          -1
+  (  -46,   -12)      13       13           16  boulder b1          
+  (  -45,   -12)      12       12           16  boulder b1          -1
+  (  -44,   -12)      12       12           15  boulder b1          
+  (  -43,   -12)      12       12           12  water beck          
+  (  -42,   -12)      12       12     12    12  water beck          
+  (  -41,   -12)      12       12     12    12  water beck          
+  (  -40,   -12)      12       12     12    12  water beck          
+  (  -39,   -12)      12       12     12    12  water beck          
+  (  -38,   -12)      12       12     12    12  water beck          
+  (  -37,   -12)      13       13     12    12  water beck          +1
+  (  -36,   -12)      13       13     12    12  water beck          
+  (  -35,   -12)      13       13           13  water beck          
+  (  -34,   -12)      13       13           13  water beck          
+rises 1, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder b1 at (-48, -12), water beck at (-44, -11)
+
+## b1 (boulder) along z
+TRANSECT 25 stations from (-46, -24) to (-46, 0), every 1
+  station        ground  surface  water  top  standing            step
+  (  -46,   -24)      12       12           12  water beck          
+  (  -46,   -23)      12       12           12  water beck          
+  (  -46,   -22)      12       12           12  water beck          
+  (  -46,   -21)      12       12           12                      
+  (  -46,   -20)      12       12           12                      
+  (  -46,   -19)      12       12           12                      
+  (  -46,   -18)      12       12           12                      
+  (  -46,   -17)      12       12           12                      
+  (  -46,   -16)      12       12           12                      
+  (  -46,   -15)      12       12           12                      
+  (  -46,   -14)      12       12           15  boulder b1          
+  (  -46,   -13)      13       13           16  boulder b1          +1
+  (  -46,   -12)      13       13           16  boulder b1          
+  (  -46,   -11)      13       13           16  boulder b1          
+  (  -46,   -10)      13       13           15  boulder b1          
+  (  -46,    -9)      13       13           13                      
+  (  -46,    -8)      13       13           13                      
+  (  -46,    -7)      13       13           13  water beck          
+  (  -46,    -6)      13       13           13  water beck          
+  (  -46,    -5)      14       14           14  water beck          +1
+  (  -46,    -4)      14       14           14  water beck          
+  (  -46,    -3)      14       14           14  water beck          
+  (  -46,    -2)      15       15           15                      +1
+  (  -46,    -1)      15       15           15                      
+  (  -46,     0)      16       16           16                      +1
+rises 4, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water beck at (-47, -26), boulder b1 at (-46, -14)

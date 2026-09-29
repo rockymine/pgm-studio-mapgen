@@ -1,0 +1,80 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Tanglecleft",
+  "authors": [
+   "Sonnet 5.5"
+  ],
+  "notes": "jungle: a monument on a temple shelf above a river dell"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 20,
+  "surface": 12
+ },
+ "pieces": [
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -30,
+    -3,
+    5,
+    6
+   ]
+  },
+  {
+   "id": "field",
+   "rect": [
+    -25,
+    -10,
+    22,
+    20
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "band",
+   "rect": [
+    -3,
+    -10,
+    6,
+    20
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "sp",
+    "piece": "spawn",
+    "at": [
+     8,
+     12
+    ],
+    "facing": "right",
+    "footprint": [
+     1,
+     5,
+     14,
+     14
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "stone",
+    "piece": "field",
+    "at": [
+     36,
+     64
+    ],
+    "style": "pillar-3",
+    "name": "Ixcal Stone"
+   }
+  ]
+ },
+ "walls": []
+}

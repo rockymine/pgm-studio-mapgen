@@ -1,0 +1,32 @@
+HEIGHTMAP  1 char = 3x3 blocks (the top-left block of each)  x -120..117 across, z -40..38 down
+KEY  char = ground height above y5 in bands of 1 block(s): 0 = y5..5, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
+     2  -1 -0 -9  -8 -7 -6  -5 -4 -3  -2 -1  0   1  2  3   4  5  6   7  8  9   0  1  
+     07418529630741852963074185296307418529630369258147036925814703692581470369258147
+ -40        d                           6        e                            e      
+ -37         ddddd ccccb   963100 2566666        ehiloq    lhecc  ddddddee eee       
+ -34          dddddccccbbaa96310002466666        bfhiknpqpmliecccdddddddeeeee        
+ -31          eeeeddcccbbba96310002466666        8bfgijlllljgdccddddddddeeeee        
+ -28          ghhhgedccbbba96310002466666        68adfhijjigdccdddddddddeeeee        
+ -25         giiiiihfecbbba96310002466666        6679bdfffedbbcddd!ddddeeeeeee       
+ -22         hjjjiiihfcbbba96310002466666        666678abbaaabcddddddddeeeeeff       
+ -19         ijjjiiihgdbbba97310002566666        66666678899abbcdddddeeeeeefff       
+ -16        gikjjjiihfdbbba97310002566666        66666678889abbccddefgffeeeffg       
+ -13        gijjjjiigeccbba97310002566666        6666666656689bbcdeghiihfefffgg      
+ -10 gggggggghijjihgfdccbbba7310002566666        6666665323347abceghiiiihffffgggggggg
+  -7 gHHHHggggggghgggfedcbba7310002566666        66666642011259bcfhhiiijigfffgggHHHHH
+  -4 gHHHHggggfffghiihhgedba7411002566666        66666641001258bdghhiiijjhfffgggHHHHH
+  -1 gHHHHggggfffhjiiihhgeba7411002566666        66666641001258acfhhhiiiihfffgggHHHHH
+   2 gHHHHggggffgijiiihhhfca7411002566666        66666641001258abefhhiiiigfffgggHHHHH
+   5 gHHHHggggfffhjiiiihhfca7411002566666        66666641001258abcdefghgggggggggHHHHH
+   8 gggggggggfffgiiiiihgdcb9532224666666        66666641001248abbbcdefghiiihgggggggg
+  11 gggggggggffefhiiihgedcba865455666666        66666641001248abbbcceghijjkjhggggggg
+  14        gfffeefggggedccbba98777766666        66666641000148abbbcdgiiijjjji       
+  17        ffffeeeeeeddddccbaa9987766666        66666641000148aabbcehiiijjjjh       
+  20         ffeeeeddddddddcbba99a9976666        66666641000148aabbbdghiiijjjh       
+  23         feeeeedddd!Hdddcbbcdeddb9766        66666641000147aabbbcfhiiijji        
+  26         eeeeeeddddHHddcccdghiihfdb87        66666641000147aabbbcdeghhihg        
+  29         eeeeeeddddddddcbdhjklkjihfd9        66666641000147aabbbcccdefffe        
+  32         eeeeeedddddddcccfjlmoonkiifd        66666641000147aabbbccccddddd        
+  35         eeeeeedddddddcccfjlo  rpmjif        66666641000147a  bbccccdddddd       
+  38        ee      dd                 jh        666        24             ddd       
+low y5, high y32, range 27
