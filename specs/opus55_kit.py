@@ -189,6 +189,51 @@ def copied_trees(specdir, names):
     return {n: cache[n] for n in names}
 
 
+def willow(height=11, radius=5, seed=1, gaps=0.2):
+    """A willow as a copied tree recipe, since the tree library has none: an oak trunk with four short
+    branches, a flattened dome of oak leaves, and curtains of leaves hanging from the crown's rim to within a
+    block or two of the ground, `gaps` of the rim's columns left open. Leaves are data 4, which does not
+    decay."""
+    import random
+    rnd = random.Random(seed)
+    body, seen = [], set()
+
+    def put(x, y, z, block, data):
+        if (x, y, z) not in seen:
+            seen.add((x, y, z))
+            body.append([x, y, z, block, data])
+
+    top = height - 3
+    for y in range(top + 1):
+        put(0, y, 0, 17, 0)
+    for dx, dz, data in [(1, 0, 4), (-1, 0, 4), (0, 1, 8), (0, -1, 8)]:
+        for step in (1, 2):
+            put(dx * step, top - 1 + (step - 1), dz * step, 17, data)
+    mid = top + 1
+    rim = []
+    for y in range(top - 1, height + 1):
+        rise = (y - mid) / 2.2
+        if abs(rise) >= 1:
+            continue
+        r = radius * math.sqrt(1 - rise * rise)
+        for x in range(-radius - 1, radius + 2):
+            for z in range(-radius - 1, radius + 2):
+                d = math.hypot(x, z)
+                if d <= r and not (x == 0 and z == 0 and y <= top):
+                    put(x, y, z, 18, 4)
+                    if y == mid and d > radius - 2:
+                        rim.append((x, z))
+    # the curtains hang from the crown's widest ring, from under its lowest leaf in that column
+    for x, z in sorted(set(rim)):
+        if rnd.random() < gaps:
+            continue
+        under = min(y for (cx, y, cz) in seen if (cx, cz) == (x, z)) - 1
+        low = rnd.randint(1, max(1, top - 4))
+        for y in range(under, low - 1, -1):
+            put(x, y, z, 18, 4)
+    return {"kind": "tree", "form": "copied", "species": "oak", "height": height, "body": body}
+
+
 # ── made things ─────────────────────────────────────────────────────────────────────────────────────────
 
 def made(layers, part_of, seat=None):

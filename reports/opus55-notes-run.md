@@ -369,3 +369,28 @@ the wrong instrument rather than the wrong size.
 
 **Two replies placed the ground's end at x −18 when it is x −21.** A transect along each path reads paving to
 x −21 and void from x −20, and a correction in each thread says so.
+
+## The seventh pass: the author's third round on Sootcombe
+
+**The author answered notes 7, 10 and 33 again and left four new notes, 61–64, and resolved 44–50.** Each was
+worked and answered in its thread at revision 42 with a picture; note 7, open since the first pass, is now
+answered.
+
+| id | the author said | what changed |
+|---|---|---|
+| 7 | a subtle 1–2 block height change; the mid stone's lip against each frontline dips a bit, and the frontlines dip slightly, not all along, in a gentle curve | the mid stone reads 12 in its middle, 11 across, 9 at each lip; each frontline's edge dips 9 to 7 along about half its width |
+| 10 | brown on brown; take burgage terrace or Gypsum's stone houses; the roof not flat | every room the Gypsum stone house, forked from the lodge's room style, with a gable roof |
+| 33 | andesite and cobblestone boulders; two larger rocks on the mid stone in place of four | so, at size 3 |
+| 61, 62, 64 | grass patches at the frontline's back, on the mid stone, on the rise's top | three `regrowth` patches, fanned |
+| 62, 63 | a willow at the mid stone's edge; one willow in place of the birch and spruce | a willow recipe written in the kit |
+
+**The mid stone takes its relief from its z < 0 half and fans it.** A push stated on its z > 0 lip changed
+nothing; the same push stated at the z < 0 lip dipped both. A push on its centre would be fanned onto itself
+and doubled, so the rise is two offset bumps that overlap.
+
+**The tree library has no willow.** Its 90 recipes are 84 copied oaks and six plain templates, and scoring
+them for leaves hanging at the rim found only round oaks. The kit now writes a willow as a copied recipe: a
+trunk, four branches, a flattened dome, and curtains hanging from its widest ring.
+
+**The willow took three drives to read as one.** Curtains taken from the dome's underside hung by the trunk,
+and curtains on every rim column made a block of leaves; a fifth to half of the rim left open is what reads.

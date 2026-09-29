@@ -35,11 +35,11 @@ TRANSECT 25 stations from (5, 17) to (5, 41), every 1
   (    5,    17)                                                    void
   (    5,    18)                                                    void
   (    5,    19)                                                    void
-  (    5,    20)       9        9            9                      
-  (    5,    21)       9        9            9                      
-  (    5,    22)       9        9            9                      
-  (    5,    23)       9        9            9                      
-  (    5,    24)       9        9            9                      
+  (    5,    20)       7        7            7                      
+  (    5,    21)       7        7            7                      
+  (    5,    22)       7        7            7                      
+  (    5,    23)       8        8            8                      +1
+  (    5,    24)       9        9            9                      +1
   (    5,    25)       9        9            9                      
   (    5,    26)       9        9            9                      
   (    5,    27)       9        9           10  boulder front-2     
@@ -57,5 +57,5 @@ TRANSECT 25 stations from (5, 17) to (5, 41), every 1
   (    5,    39)       9        9            9                      
   (    5,    40)                                                    void
   (    5,    41)                             2                      void
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: boulder front-2 at (5, 27)

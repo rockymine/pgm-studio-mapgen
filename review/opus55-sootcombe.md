@@ -6,9 +6,9 @@ seed 21, pinned off `GET /api/compose` and taken whole; `composed-p12-seed21.pla
 board states the elevation, the paint, the made things and the dressing.
 
 Slug `opus55-sootcombe`, map name **Sootcombe**, built on the deployed studio. The notes on it are 6–10 and the
-author's own 33–35 and 44–50 (`reports/opus55-notes-run.md`).
+author's own 33–35, 44–50 and 61–64 (`reports/opus55-notes-run.md`).
 
-## Four passes
+## Five passes
 
 **The first build was bare ash.** The author's review of the whole run said so, and the second pass cut the outer
 coasts point by point and stood a headframe, an engine house, timber stacks, a slag heap and regrowth on it.
@@ -30,6 +30,14 @@ hub's north-west corner rises five blocks where the heap stood.
 and some dark oak, and the faces are tilted beds. A second build zone lies east of each hub, and a coast cut
 that let players walk round the east wall's end is fixed.
 
+**The fifth pass answered the author's third round.** Every room is now the stone house from Gypsum Reach
+under a pitched roof, grey against the brown ash. The boulders are andesite and cobble, and the mid stone
+carries two larger ones.
+
+**The ground and the trees changed in the fifth pass too.** The mid stone rises a block in its middle and dips
+two at its lips, and each frontline dips along part of its edge. Grass patches and a willow written for the
+board replace the birch and the spruce.
+
 ## How it is meant to play
 
 **Two wools a team, each behind a bedrock wall the composer placed.** The west wool is at the end of a spur off
@@ -40,8 +48,12 @@ in front. The defender walks 43 and 46 blocks to them and the attacker 189 and 2
 hub grades four blocks down to a frontline pinned flat. The author ruled the relief fine as it is (note 9).
 
 **The archer tower is height at the front.** Its platform is at y14, five over the frontline, reached by a
-ladder from the ground, under a roof at y18, at the front's back east corner. Cyan-clay boulders two and three
-blocks across are the frontline's cover.
+ladder from the ground, under a roof at y18, at the front's back east corner. Andesite-and-cobble boulders
+two and three blocks across are the frontline's cover.
+
+**The mid stone is not flat.** It stands 11 across its body, 12 through its middle and 9 at each lip, and each
+frontline's edge dips from 9 to 7 along about half its width, so a bridge lands a little lower than the ground
+behind it.
 
 **A player can bridge east of the hub as well as across the band.** The second build zone is x −8…4,
 z 40…68: the hub's last eight blocks and four of void, ending seven short of the east wall.
@@ -58,9 +70,10 @@ granite and polished granite.
 **The wall and the fill are tilted beds** — mostly hardened clay, mostly granite, and granite with grey and
 black clay — each parted from the next by a line of hardened clay, dipping 1 in 2.
 
-**The built family is timber:** dark-oak logs and spruce planks in the lodges; dark-oak logs and planks, a
-spruce platform and nether-brick fence in the archer towers. The accent is the granite of the rock and one
-block in seven of the paths, and the dark grey of the cyan-clay boulders.
+**The built family is grey stone and timber:** the rooms are stone brick and andesite in alternate courses on
+polished-andesite posts under jungle-plank roofs with clay gables; the archer towers are dark-oak logs and
+planks with a spruce platform and nether-brick fence. The accent is the granite of the rock and one block in
+seven of the paths, and the andesite and cobble of the boulders.
 
 ## What went wrong
 
@@ -72,6 +85,13 @@ board it holds on entering In game, is the likely cause.
 **A coast cut pushed ground two blocks past the east wall's end.** The kit pulled each inserted point toward
 the ring's centroid, which on this ring lies across the east approach's south coast. The pull now tests which
 side of the edge is inside.
+
+**On the mid stone only the z < 0 half's relief counts.** The stone is one shape on the axis and takes its
+relief from that half, fanned; a push stated on its z > 0 lip did nothing until it was stated at the z < 0
+lip.
+
+**The tree library has no willow.** The kit writes one as a copied recipe, and it took three drives to read as
+a willow rather than a round crown or a block of leaves.
 
 **The mirror turns a layer and not a block's data.** One ladder stated for both teams faced its beam on red
 and faced away on blue, so each team's ladder is stated with its own facing.
@@ -87,7 +107,9 @@ and faced away on blue, so each team's ladder is stated with its own facing.
 | ladder | (11, 36), y9–13, facing north; blue's (−12, −37) facing south | `column` (11, 36) |
 | west rise | x −20…−15, z 68…80, y18 over the terrace's 13 | transect along z 74 |
 | second build zone | x −8…4, z 40…68 | `map.xml` `build-area-2` |
-| frontline boulders | (−11, 27), (5, 29), (−9, 35), (12, 25), cyan clay | `column` (−11, 27) |
+| frontline boulders | (−11, 27), (5, 29), (−9, 35), (12, 25), andesite and cobble | `column` (−11, 27) |
+| mid stone | 11 across, 12 in the middle, 9 at the lips; rock (5, −4), willow (−9, −5) and their images | transect x −4 |
+| willow | (−18, 50) in the regrowth | — |
 | mid stone rocks | (−6, −3), (5, −5) and their images | — |
 
 Blue's features are the rot_180 images: block `(x, z)` maps to `(−x−1, −z−1)`.

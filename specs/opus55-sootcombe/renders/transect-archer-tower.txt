@@ -13,25 +13,25 @@ TRANSECT 44 stations from (-20, 1) to (23, 1), every 1
   (  -11,     1)      11       11           11                      
   (  -10,     1)      11       11           11                      
   (   -9,     1)      11       11           11                      
-  (   -8,     1)      11       11           11                      
-  (   -7,     1)      11       11           11                      
-  (   -6,     1)      11       11           11                      
-  (   -5,     1)      11       11           11                      
-  (   -4,     1)      11       11           11                      
+  (   -8,     1)      11       11           12  boulder mid-1#1     
+  (   -7,     1)      11       11           13  boulder mid-1#1     
+  (   -6,     1)      11       11           13  boulder mid-1#1     
+  (   -5,     1)      11       11           13  boulder mid-1#1     
+  (   -4,     1)      11       11           12  boulder mid-1#1     
   (   -3,     1)      11       11           25                      
-  (   -2,     1)      11       11           25                      
-  (   -1,     1)      11       11           26                      
-  (    0,     1)      11       11           26                      
-  (    1,     1)      11       11           25                      
-  (    2,     1)      11       11           25                      
-  (    3,     1)      11       11           11                      
-  (    4,     1)      11       11           14  boulder mid-1#1     
-  (    5,     1)      11       11           14  boulder mid-1#1     
-  (    6,     1)      11       11           14  boulder mid-1#1     
-  (    7,     1)      11       11           11                      
-  (    8,     1)      11       11           11                      
-  (    9,     1)      11       11           11                      
-  (   10,     1)      11       11           11                      
+  (   -2,     1)      12       12           25                      +1
+  (   -1,     1)      12       12           26                      
+  (    0,     1)      12       12           26                      
+  (    1,     1)      12       12           25                      
+  (    2,     1)      12       12           25                      
+  (    3,     1)      12       12           12                      
+  (    4,     1)      12       12           12                      
+  (    5,     1)      12       12           12                      
+  (    6,     1)      12       12           19  tree willow-mid#1   
+  (    7,     1)      12       12           20  tree willow-mid#1   
+  (    8,     1)      11       11           20  tree willow-mid#1   -1
+  (    9,     1)      11       11           20  tree willow-mid#1   
+  (   10,     1)      11       11           19  tree willow-mid#1   
   (   11,     1)      11       11           11                      
   (   12,     1)                                                    void
   (   13,     1)                                                    void
@@ -45,8 +45,8 @@ TRANSECT 44 stations from (-20, 1) to (23, 1), every 1
   (   21,     1)                                                    void
   (   22,     1)                                                    void
   (   23,     1)                                                    void
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder mid-2#1 at (-8, 3), boulder mid-1#1 at (3, 2)
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree willow-mid at (-9, -1), boulder mid-1#1 at (-9, 3), tree willow-mid#1 at (5, 2)
 
 ## archer-tower (made) along z
 TRANSECT 93 stations from (1, -45) to (1, 47), every 1
@@ -55,8 +55,8 @@ TRANSECT 93 stations from (1, -45) to (1, 47), every 1
   (    1,   -44)      10       10           10                      
   (    1,   -43)      10       10           10                      
   (    1,   -42)      10       10           10                      
-  (    1,   -41)      10       10           10                      
-  (    1,   -40)       9        9            9                      -1
+  (    1,   -41)       9        9            9                      -1
+  (    1,   -40)       9        9            9                      
   (    1,   -39)       9        9            9                      
   (    1,   -38)       9        9            9                      
   (    1,   -37)       9        9            9                      
@@ -71,11 +71,11 @@ TRANSECT 93 stations from (1, -45) to (1, 47), every 1
   (    1,   -28)       9        9            9  stroke path-front#1  
   (    1,   -27)       9        9            9  stroke path-front#1  
   (    1,   -26)       9        9            9  stroke path-front#1  
-  (    1,   -25)       9        9            9  stroke path-front#1  
-  (    1,   -24)       9        9            9  stroke path-front#1  
-  (    1,   -23)       9        9            9  stroke path-front#1  
-  (    1,   -22)       9        9            9                      
-  (    1,   -21)       9        9            9                      
+  (    1,   -25)       8        8            8  stroke path-front#1  -1
+  (    1,   -24)       7        7            7  stroke path-front#1  -1
+  (    1,   -23)       7        7            7  stroke path-front#1  
+  (    1,   -22)       7        7            7                      
+  (    1,   -21)       7        7            7                      
   (    1,   -20)                                                    void
   (    1,   -19)                                                    void
   (    1,   -18)                                                    void
@@ -88,22 +88,22 @@ TRANSECT 93 stations from (1, -45) to (1, 47), every 1
   (    1,   -11)                                                    void
   (    1,   -10)                                                    void
   (    1,    -9)                                                    void
-  (    1,    -8)      11       11           11                      
-  (    1,    -7)      11       11           11                      
-  (    1,    -6)      11       11           11                      
-  (    1,    -5)      11       11           11                      
+  (    1,    -8)       9        9            9                      
+  (    1,    -7)       9        9            9                      
+  (    1,    -6)      10       10           10                      +1
+  (    1,    -5)      11       11           11                      +1
   (    1,    -4)      11       11           11                      
   (    1,    -3)      11       11           25                      
-  (    1,    -2)      11       11           25                      
-  (    1,    -1)      11       11           26                      
-  (    1,     0)      11       11           26                      
-  (    1,     1)      11       11           25                      
-  (    1,     2)      11       11           25                      
-  (    1,     3)      11       11           11                      
-  (    1,     4)      11       11           11                      
-  (    1,     5)      11       11           11                      
-  (    1,     6)      11       11           11                      
-  (    1,     7)      11       11           11                      
+  (    1,    -2)      12       12           25                      +1
+  (    1,    -1)      12       12           26                      
+  (    1,     0)      12       12           26                      
+  (    1,     1)      12       12           25                      
+  (    1,     2)      12       12           25                      
+  (    1,     3)      12       12           12                      
+  (    1,     4)      11       11           11                      -1
+  (    1,     5)      10       10           10                      -1
+  (    1,     6)      10       10           10                      
+  (    1,     7)      10       10           10                      
   (    1,     8)                                                    void
   (    1,     9)                                                    void
   (    1,    10)                                                    void
@@ -116,12 +116,12 @@ TRANSECT 93 stations from (1, -45) to (1, 47), every 1
   (    1,    17)                                                    void
   (    1,    18)                                                    void
   (    1,    19)                                                    void
-  (    1,    20)       9        9            9                      
-  (    1,    21)       9        9            9                      
-  (    1,    22)       9        9            9  stroke path-front   
-  (    1,    23)       9        9            9  stroke path-front   
-  (    1,    24)       9        9            9  stroke path-front   
-  (    1,    25)       9        9            9                      
+  (    1,    20)       7        7            7                      
+  (    1,    21)       7        7            7                      
+  (    1,    22)       7        7            7  stroke path-front   
+  (    1,    23)       7        7            7  stroke path-front   
+  (    1,    24)       8        8            8  stroke path-front   +1
+  (    1,    25)       9        9            9                      +1
   (    1,    26)       9        9            9                      
   (    1,    27)       9        9            9                      
   (    1,    28)       9        9            9                      
@@ -136,7 +136,7 @@ TRANSECT 93 stations from (1, -45) to (1, 47), every 1
   (    1,    37)       9        9            9                      
   (    1,    38)       9        9            9                      
   (    1,    39)       9        9            9                      
-  (    1,    40)                                                    void
+  (    1,    40)       9        9            9                      
   (    1,    41)                                                    void
   (    1,    42)                                                    void
   (    1,    43)                                                    void
@@ -144,5 +144,5 @@ TRANSECT 93 stations from (1, -45) to (1, 47), every 1
   (    1,    45)                                                    void
   (    1,    46)                                                    void
   (    1,    47)                                                    void
-rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke path-front#1 at (2, -47), boulder mid-2 at (3, -6), boulder mid-1#1 at (3, 2), stroke path-front at (-1, 21)
+rises 5, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-front#1 at (2, -47), boulder mid-1 at (3, -6), stroke path-front at (-1, 21)

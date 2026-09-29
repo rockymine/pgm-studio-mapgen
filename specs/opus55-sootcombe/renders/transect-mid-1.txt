@@ -1,61 +1,61 @@
 ## mid-1 (boulder) along x
-TRANSECT 25 stations from (-18, -3) to (6, -3), every 1
+TRANSECT 25 stations from (-7, -4) to (17, -4), every 1
   station        ground  surface  water  top  standing            step
-  (  -18,    -3)                             2                      void
-  (  -17,    -3)                                                    void
-  (  -16,    -3)                                                    void
-  (  -15,    -3)                                                    void
-  (  -14,    -3)                                                    void
-  (  -13,    -3)                                                    void
-  (  -12,    -3)      11       11           11                      
-  (  -11,    -3)      11       11           11                      
-  (  -10,    -3)      11       11           11                      
-  (   -9,    -3)      11       11           11                      
-  (   -8,    -3)      11       11           11                      
-  (   -7,    -3)      11       11           14  boulder mid-1       
-  (   -6,    -3)      11       11           14  boulder mid-1       
-  (   -5,    -3)      11       11           14  boulder mid-1       
-  (   -4,    -3)      11       11           13  boulder mid-1       
-  (   -3,    -3)      11       11           25                      
-  (   -2,    -3)      11       11           25                      
-  (   -1,    -3)      11       11           26                      
-  (    0,    -3)      11       11           26                      
-  (    1,    -3)      11       11           25                      
-  (    2,    -3)      11       11           25                      
-  (    3,    -3)      11       11           11                      
-  (    4,    -3)      11       11           11                      
-  (    5,    -3)      11       11           13  boulder mid-2       
-  (    6,    -3)      11       11           13  boulder mid-2       
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder mid-1 at (-7, -4), boulder mid-2 at (3, -5)
+  (   -7,    -4)      12       12           20  tree willow-mid     
+  (   -6,    -4)      12       12           20  tree willow-mid     
+  (   -5,    -4)      12       12           12                      
+  (   -4,    -4)      12       12           12                      
+  (   -3,    -4)      12       12           12                      
+  (   -2,    -4)      12       12           12                      
+  (   -1,    -4)      11       11           11                      -1
+  (    0,    -4)      11       11           11                      
+  (    1,    -4)      11       11           11                      
+  (    2,    -4)      11       11           11                      
+  (    3,    -4)      11       11           14  boulder mid-1       
+  (    4,    -4)      11       11           14  boulder mid-1       
+  (    5,    -4)      11       11           14  boulder mid-1       
+  (    6,    -4)      11       11           14  boulder mid-1       
+  (    7,    -4)      11       11           14  boulder mid-1       
+  (    8,    -4)      11       11           12  boulder mid-1       
+  (    9,    -4)      11       11           11                      
+  (   10,    -4)      11       11           11                      
+  (   11,    -4)      11       11           11                      
+  (   12,    -4)                                                    void
+  (   13,    -4)                                                    void
+  (   14,    -4)                                                    void
+  (   15,    -4)                                                    void
+  (   16,    -4)                                                    void
+  (   17,    -4)                             2                      void
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree willow-mid at (-9, -6), boulder mid-1 at (3, -6)
 
 ## mid-1 (boulder) along z
-TRANSECT 25 stations from (-6, -15) to (-6, 9), every 1
+TRANSECT 25 stations from (5, -16) to (5, 8), every 1
   station        ground  surface  water  top  standing            step
-  (   -6,   -15)                                                    void
-  (   -6,   -14)                                                    void
-  (   -6,   -13)                                                    void
-  (   -6,   -12)                                                    void
-  (   -6,   -11)                                                    void
-  (   -6,   -10)                                                    void
-  (   -6,    -9)                                                    void
-  (   -6,    -8)      11       11           11                      
-  (   -6,    -7)      11       11           11                      
-  (   -6,    -6)      11       11           11                      
-  (   -6,    -5)      11       11           11                      
-  (   -6,    -4)      11       11           14  boulder mid-1       
-  (   -6,    -3)      11       11           14  boulder mid-1       
-  (   -6,    -2)      11       11           14  boulder mid-1       
-  (   -6,    -1)      11       11           11                      
-  (   -6,     0)      11       11           11                      
-  (   -6,     1)      11       11           11                      
-  (   -6,     2)      11       11           13  boulder mid-2#1     
-  (   -6,     3)      11       11           14  boulder mid-2#1     
-  (   -6,     4)      11       11           15  boulder mid-2#1     
-  (   -6,     5)      11       11           14  boulder mid-2#1     
-  (   -6,     6)      11       11           13  boulder mid-2#1     
-  (   -6,     7)      11       11           11                      
-  (   -6,     8)                                                    void
-  (   -6,     9)                                                    void
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder mid-1 at (-7, -4), boulder mid-2#1 at (-7, 2)
+  (    5,   -16)                                                    void
+  (    5,   -15)                                                    void
+  (    5,   -14)                                                    void
+  (    5,   -13)                                                    void
+  (    5,   -12)                                                    void
+  (    5,   -11)                                                    void
+  (    5,   -10)                                                    void
+  (    5,    -9)                                                    void
+  (    5,    -8)       9        9            9                      
+  (    5,    -7)      10       10           10                      +1
+  (    5,    -6)      11       11           14  boulder mid-1       +1
+  (    5,    -5)      11       11           14  boulder mid-1       
+  (    5,    -4)      11       11           14  boulder mid-1       
+  (    5,    -3)      11       11           14  boulder mid-1       
+  (    5,    -2)      11       11           13  boulder mid-1       
+  (    5,    -1)      11       11           11                      
+  (    5,     0)      12       12           12                      +1
+  (    5,     1)      12       12           12                      
+  (    5,     2)      12       12           19  tree willow-mid#1   
+  (    5,     3)      12       12           20  tree willow-mid#1   
+  (    5,     4)      11       11           20  tree willow-mid#1   -1
+  (    5,     5)      11       11           20  tree willow-mid#1   
+  (    5,     6)      11       11           19  tree willow-mid#1   
+  (    5,     7)      11       11           11                      
+  (    5,     8)                                                    void
+rises 3, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder mid-1 at (3, -6), tree willow-mid#1 at (6, 1)

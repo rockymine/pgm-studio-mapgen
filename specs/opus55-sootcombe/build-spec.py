@@ -25,6 +25,12 @@ ash is a turbulence field with more black and a little dark oak; the faces and t
 hardened clay, granite and a mix, parted by thin lines of hardened clay; the hub's north-west corner rises
 five blocks; a second build zone lies east of each hub; and a coast cut that pushed ground past the east
 wall's end is turned the right way.
+
+Fifth pass, after the author's notes 7, 10, 33 and 61–64: the mid stone rises a block in its middle and dips
+at the lips facing the frontlines, and each frontline dips along part of its edge; every room is the stone
+house of Gypsum Reach under a pitched roof; the boulders are andesite and cobble, two larger ones on the
+mid stone; grass patches lie at the frontline's back, on the mid stone and on the west rise; and a willow
+written for the board stands in the regrowth and on the mid stone's edge.
 """
 import json, os, sys
 
@@ -32,7 +38,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(HERE)), "tools", "sculpt"))
 from opus55_kit import (S, cell, noise, depth, by_slope, theme, one, ring, patch, path, tree, flora,
-                        boulder, boulder_style, copied_trees, made, coast_edits)
+                        boulder, boulder_style, copied_trees, made, coast_edits, willow)
 import props
 
 SLUG = "opus55-sootcombe"
@@ -95,22 +101,24 @@ ladder_s = one(S(65, 3))
 # The paths (note 6): dirt, coarse dirt and spruce planks, with very little granite — one entry in seven.
 PAVE = cell([S(3), S(3, 1), S(5, 1), S(3), S(3, 1), S(5, 1), S(1, 1)], size=2, seed=21)
 
-# The rooms (note 10): a timber lodge in the headframe's language rather than the brick house. Dark-oak
-# logs laid as sills and heads and stood as posts, spruce planks between them so the walls read apart from
-# the dark ground, a flat dark-oak plank roof. No footing and no stilts.
+# The rooms (notes 10, twice): the lodge's timber read brown on the brown ash, so every room is now the stone
+# house of Gypsum Reach, which the author named as fitting: polished-andesite posts, walls of stone brick and
+# andesite in alternate courses, a hardened-clay gable under a pitched jungle-plank roof. It is forked from
+# the lodge's own room style, so the room's entry and floor stay what a room needs; only the paint and the
+# roof's form change. A stack's `repeat` carries its last band on rather than cycling, so the courses are
+# written out.
 LODGE = json.load(open(os.path.join(os.path.dirname(os.path.dirname(HERE)), "tools", "styles", "lk-spawn.json")))
-LOG = {"kind": "laidLog", "id": 162, "data": 1}
-LODGE_WALL = {"stack": {"ending": "repeat", "bands": [
-    {"material": LOG, "thickness": 1}, {"material": S(5, 1), "thickness": 3}, {"material": LOG, "thickness": 1}]},
-    "extent": 5}
-LODGE["foundation"]["plate"]["stack"]["bands"][0]["material"] = S(5, 5)
+STONE_WALL = {"stack": {"ending": "repeat", "bands": [
+    {"material": S(98) if i % 2 == 0 else S(1, 5), "thickness": 1} for i in range(12)]}, "extent": 5}
+LODGE["foundation"]["plate"]["stack"]["bands"][0]["material"] = S(98)
 LODGE["foundation"]["footing"] = None
-LODGE["wall"] = LODGE_WALL
-LODGE["post"] = S(162, 1)
-LODGE["roof"].update({"body": S(5, 5), "verge": S(5, 5), "slab": 126, "slabData": 5})
+LODGE["wall"] = STONE_WALL
+LODGE["post"] = S(1, 6)
+LODGE["roof"].update({"form": "gable", "ridgeCap": True, "body": S(5, 3), "verge": S(5, 3), "gable": S(172),
+                      "slab": 126, "slabData": 3})
 for storey in LODGE["storeys"]:
-    storey["wall"] = LODGE_WALL
-    storey["post"] = S(162, 1)
+    storey["wall"] = dict(STONE_WALL, extent=storey["wall"]["extent"])
+    storey["post"] = S(1, 6)
 
 relief = {"team": {
     "base": 10, "reach": 0, "step": 1, "landform": "rolling",
@@ -121,7 +129,18 @@ relief = {"team": {
     ],
     # The slag heap is gone (note 8): the board is too small to carry a rock that size. In its place the
     # hub's north-west corner, where the spur meets it, rises five blocks over the terrain (note 49).
-    "pushes": [{"id": "west-rise", "ring": ring(-19, 74, 3, 6, wobble=0.1, lobes=3), "amount": 5,
+    "pushes": [
+        # note 7: the mid stone rises a block or two in its middle, from two offset bumps that the fan
+        # overlaps (a push on its centre would be fanned onto itself and doubled), and dips at the lip
+        # facing each frontline. The stone takes its relief from its z < 0 half and fans it, so its pushes
+        # are stated there. Each frontline dips two blocks along part of its edge, in a curve.
+        {"id": "mid-rise", "ring": ring(-3, 0, 4, 3, wobble=0.1, lobes=3), "amount": 1, "falloff": 3,
+         "roughness": 0.2, "crown": 0, "seed": 11},
+        {"id": "mid-lip", "ring": ring(3, -8, 5, 2, wobble=0.1, lobes=3), "amount": -2, "falloff": 2,
+         "roughness": 0.2, "crown": 0, "seed": 12},
+        {"id": "front-dip", "ring": ring(2, 20, 6, 3, wobble=0.1, lobes=3), "amount": -2, "falloff": 4,
+         "roughness": 0.2, "crown": 0, "seed": 13},
+        {"id": "west-rise", "ring": ring(-19, 74, 3, 6, wobble=0.1, lobes=3), "amount": 5,
                 "falloff": 7, "roughness": 0.3, "crown": 0, "seed": 9}],
 }}
 
@@ -167,15 +186,24 @@ shapes = [
     patch("regrowth-west", [[-20, 42], [-14, 43], [-13, 52], [-15, 60], [-14, 67], [-20, 67]], "regrowth", 9,
           group="team"),
     patch("regrowth-bar", [[-2, 76], [10, 76], [12, 80], [-2, 80]], "regrowth", 9, group="team"),
+    # grass at the frontline's back, on the mid stone round its willow, and on the west rise's top (61, 62, 64)
+    patch("regrowth-front", ring(2, 38, 4, 3, 16, 0.2, 3), "regrowth", 9, group="team"),
+    patch("regrowth-mid", ring(-8, -5, 4, 3, 16, 0.2, 3, 0.5), "regrowth", 9, group="team"),
+    patch("regrowth-rise", ring(-18, 74, 3, 5, 16, 0.2, 3), "regrowth", 9, group="team"),
 ]
 
 # --- dressing ------------------------------------------------------------------------------------------
-TREES = ["tree-showcase-r13-2", "tree-showcase-r4-1"]
-styles = dict(copied_trees(HERE, TREES))
+# One willow in the regrowth and a smaller one at the mid stone's edge (notes 62, 63). The tree library has
+# no willow, so the kit writes one as a copied recipe: leaves hanging in curtains from a flattened crown.
+styles = {"willow": willow(11, 5, seed=3, gaps=0.45), "willow-small": willow(9, 4, seed=7)}
 # The boulders (notes 34 and 33), small and medium, all of cyan stained clay, which the 1.8 textures draw
 # as a dark grey.
-styles["clay-small"] = boulder_style(S(159, 9), form="round", size=1.6)
-styles["clay-medium"] = boulder_style(S(159, 9), form="angular", size=2.4)
+# note 33 again: andesite and cobblestone, whose texture stands off the flat clay ground; two larger rocks on
+# the mid stone in place of four
+ROCK_MIX = cell([S(1, 5), S(4), S(1, 5), S(4), S(1, 6)], 2, 33)
+styles["rock-small"] = boulder_style(ROCK_MIX, form="round", size=1.6)
+styles["rock-medium"] = boulder_style(ROCK_MIX, form="angular", size=2.4)
+styles["rock-large"] = boulder_style(ROCK_MIX, form="angular", size=3.0)
 
 props_ = [
     # wider than before (note 6): four blocks across the front path, three to the wools
@@ -183,11 +211,11 @@ props_ = [
     path("path-wool-a", 52, [[-12, 60], [-24, 62], [-33, 62]], PAVE, radius=2, wander=1),
     path("path-wool-b", 53, [[-6, 75], [8, 74], [25, 74]], PAVE, radius=2, wander=1),
     # boulders on the frontline where the timber stacks stood, and on the mid stone where the engine house did
-    boulder("front-1", -11, 27, "clay-medium", 21), boulder("front-2", 5, 29, "clay-small", 22),
-    boulder("front-3", -9, 35, "clay-small", 23), boulder("front-4", 12, 25, "clay-medium", 24),
-    boulder("mid-1", -6, -3, "clay-small", 25), boulder("mid-2", 5, -5, "clay-medium", 26),
-    tree("birch-1", -18, 45, "tree-showcase-r13-2", 1),
-    tree("spruce-1", -18, 54, "tree-showcase-r4-1", 3),
+    boulder("front-1", -11, 27, "rock-medium", 21), boulder("front-2", 5, 29, "rock-small", 22),
+    boulder("front-3", -9, 35, "rock-small", 23), boulder("front-4", 12, 25, "rock-medium", 24),
+    boulder("mid-1", 5, -4, "rock-large", 26),
+    tree("willow-1", -18, 50, "willow", 1),
+    tree("willow-mid", -9, -5, "willow-small", 2),
     flora("regrowth-cover", [[-21, 41], [-12, 41], [-12, 68], [-21, 68]], coverage=0.3, scale=6, fern=0.4,
           flowers=0.03, tall=0.02, seed=8),
 ]
