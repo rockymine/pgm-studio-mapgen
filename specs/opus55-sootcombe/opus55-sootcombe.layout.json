@@ -6,8 +6,8 @@
    "cz": 0
   },
   "bbox": {
-   "min_x": -48,
-   "max_x": 48,
+   "min_x": -52,
+   "max_x": 52,
    "min_z": -100,
    "max_z": 100
   }
@@ -37,15 +37,15 @@
       "radius": null,
       "vertices": [
        [
-        -44,
+        -48,
         56
        ],
        [
-        -38,
+        -41,
         57
        ],
        [
-        -32,
+        -34,
         58
        ],
        [
@@ -70,27 +70,35 @@
        ],
        [
         -14,
-        34
+        34.9
        ],
        [
         -15,
-        27
+        28.9
        ],
        [
         -16,
+        23
+       ],
+       [
+        -13,
+        20
+       ],
+       [
+        13,
         20
        ],
        [
         16,
-        20
+        23
        ],
        [
         14,
-        28
+        29.8
        ],
        [
         15,
-        35
+        35.8
        ],
        [
         16,
@@ -161,7 +169,7 @@
         67
        ],
        [
-        -44,
+        -48,
         68
        ]
       ],
@@ -198,19 +206,35 @@
       "vertices": [
        [
         -12,
+        -5
+       ],
+       [
+        -9,
+        -8
+       ],
+       [
+        9,
         -8
        ],
        [
         12,
-        -8
+        -5
        ],
        [
         12,
+        5
+       ],
+       [
+        9,
+        8
+       ],
+       [
+        -9,
         8
        ],
        [
         -12,
-        8
+        5
        ]
       ],
       "controls": null,
@@ -300,9 +324,9 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": -44,
+      "min_x": -48,
       "min_z": 56,
-      "max_x": -36,
+      "max_x": -40,
       "max_z": 68,
       "center_x": null,
       "center_z": null,
@@ -366,9 +390,9 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": 36,
+      "min_x": 40,
       "min_z": -68,
-      "max_x": 44,
+      "max_x": 48,
       "max_z": -56,
       "center_x": null,
       "center_z": null,
@@ -700,6 +724,79 @@
       "theme": "regrowth"
      },
      {
+      "id": "regrowth-wall",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        -20.9,
+        62.0
+       ],
+       [
+        -22.4,
+        63.6
+       ],
+       [
+        -24.5,
+        64.3
+       ],
+       [
+        -26.1,
+        65.1
+       ],
+       [
+        -28.0,
+        66.2
+       ],
+       [
+        -30.8,
+        66.4
+       ],
+       [
+        -32.6,
+        65.1
+       ],
+       [
+        -32.8,
+        63.3
+       ],
+       [
+        -32.9,
+        62.0
+       ],
+       [
+        -33.4,
+        60.5
+       ],
+       [
+        -33.0,
+        58.7
+       ],
+       [
+        -30.6,
+        57.7
+       ],
+       [
+        -28.0,
+        58.2
+       ],
+       [
+        -26.2,
+        59.0
+       ],
+       [
+        -24.2,
+        59.4
+       ],
+       [
+        -21.7,
+        60.3
+       ]
+      ],
+      "base_height": 9,
+      "theme": "regrowth"
+     },
+     {
       "id": "regrowth-front-west",
       "type": "polygon",
       "operation": "add",
@@ -786,6 +883,7 @@
        "regrowth-front",
        "regrowth-mid",
        "regrowth-rise",
+       "regrowth-wall",
        "regrowth-front-west"
       ]
      }
@@ -1229,6 +1327,82 @@
       "mirrors": true,
       "shapeIds": [
        "archer-deck-0"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "lily-pads",
+   "name": "lily-pads",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "lily-pads",
+   "layout": {
+    "shapes": [
+     {
+      "type": "rectangle",
+      "min_x": 16,
+      "min_z": 70,
+      "max_x": 17,
+      "max_z": 71,
+      "floor": 11,
+      "base_height": 1,
+      "theme": "lily",
+      "keepClear": false,
+      "id": "lily-pads-0",
+      "operation": "add"
+     },
+     {
+      "type": "rectangle",
+      "min_x": 18,
+      "min_z": 73,
+      "max_x": 19,
+      "max_z": 74,
+      "floor": 11,
+      "base_height": 1,
+      "theme": "lily",
+      "keepClear": false,
+      "id": "lily-pads-1",
+      "operation": "add"
+     },
+     {
+      "type": "rectangle",
+      "min_x": 17,
+      "min_z": 76,
+      "max_x": 18,
+      "max_z": 77,
+      "floor": 11,
+      "base_height": 1,
+      "theme": "lily",
+      "keepClear": false,
+      "id": "lily-pads-2",
+      "operation": "add"
+     },
+     {
+      "type": "rectangle",
+      "min_x": 16,
+      "min_z": 78,
+      "max_x": 17,
+      "max_z": 79,
+      "floor": 11,
+      "base_height": 1,
+      "theme": "lily",
+      "keepClear": false,
+      "id": "lily-pads-3",
+      "operation": "add"
+     }
+    ],
+    "groups": [
+     {
+      "id": "lily-pads-body",
+      "name": "lily-pads",
+      "mirrors": true,
+      "shapeIds": [
+       "lily-pads-0",
+       "lily-pads-1",
+       "lily-pads-2",
+       "lily-pads-3"
       ]
      }
     ]
@@ -2508,6 +2682,43 @@
     "material": {
      "kind": "solid",
      "id": 113,
+     "data": 0
+    }
+   }
+  },
+  "lily": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "boundary",
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 111,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 111,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 111,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 111,
      "data": 0
     }
    }
@@ -8578,7 +8789,7 @@
       62
      ],
      [
-      -33,
+      -37,
       62
      ]
     ]
@@ -8644,10 +8855,116 @@
       74
      ],
      [
-      25,
+      13,
       74
      ]
     ]
+   },
+   {
+    "kind": "stroke",
+    "id": "path-wool-b2",
+    "seed": 54,
+    "style": "solid",
+    "radius": 2,
+    "claimsGround": true,
+    "wander": 0,
+    "wanderLength": 14,
+    "pave": {
+     "kind": "cell",
+     "cellSize": 2,
+     "seed": 21,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 1
+      }
+     ]
+    },
+    "points": [
+     [
+      22,
+      74
+     ],
+     [
+      27,
+      74
+     ]
+    ]
+   },
+   {
+    "kind": "water",
+    "id": "east-channel",
+    "shape": "channel",
+    "form": "canal",
+    "layer": "ground",
+    "points": [
+     [
+      17,
+      66
+     ],
+     [
+      17,
+      82
+     ]
+    ],
+    "radius": 1.5,
+    "depth": 2,
+    "shore": 1,
+    "shoreWander": true,
+    "edge": 1.5,
+    "bank": {
+     "kind": "cell",
+     "cellSize": 2,
+     "seed": 77,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 1
+      }
+     ]
+    }
    },
    {
     "kind": "boulder",
@@ -9200,6 +9517,128 @@
      "roughness": 0.2,
      "crown": 0,
      "seed": 13
+    },
+    {
+     "id": "east-dip",
+     "ring": [
+      [
+       20.3,
+       74.0
+      ],
+      [
+       20.2,
+       75.4
+      ],
+      [
+       19.8,
+       76.7
+      ],
+      [
+       19.2,
+       77.6
+      ],
+      [
+       18.7,
+       78.3
+      ],
+      [
+       18.2,
+       78.9
+      ],
+      [
+       17.6,
+       79.5
+      ],
+      [
+       17.0,
+       80.0
+      ],
+      [
+       16.3,
+       80.2
+      ],
+      [
+       15.6,
+       79.9
+      ],
+      [
+       15.0,
+       79.1
+      ],
+      [
+       14.6,
+       77.9
+      ],
+      [
+       14.4,
+       76.5
+      ],
+      [
+       14.3,
+       75.2
+      ],
+      [
+       14.3,
+       74.0
+      ],
+      [
+       14.3,
+       72.8
+      ],
+      [
+       14.4,
+       71.5
+      ],
+      [
+       14.6,
+       70.1
+      ],
+      [
+       15.0,
+       68.9
+      ],
+      [
+       15.6,
+       68.1
+      ],
+      [
+       16.3,
+       67.8
+      ],
+      [
+       17.0,
+       68.0
+      ],
+      [
+       17.6,
+       68.5
+      ],
+      [
+       18.2,
+       69.1
+      ],
+      [
+       18.7,
+       69.7
+      ],
+      [
+       19.2,
+       70.4
+      ],
+      [
+       19.8,
+       71.3
+      ],
+      [
+       20.2,
+       72.6
+      ]
+     ],
+     "amount": -2,
+     "falloff": 3,
+     "roughness": 0.2,
+     "crown": 0,
+     "seed": 15
     },
     {
      "id": "west-rise",

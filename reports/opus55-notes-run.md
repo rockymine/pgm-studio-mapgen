@@ -462,3 +462,26 @@ props and each other. Each stands in a sand-filled patch like the cacti.
 
 **One reply put the island 7 blocks off the frontline when a transect reads 9**, and a correction in the thread
 says so.
+
+## The eleventh pass: the author's fifth round on Sootcombe
+
+**The author left three notes, 75–77.** Each was answered at revision 58; note 77 is `needs-info`.
+
+| id | the author said | what changed |
+|---|---|---|
+| 75 | chamfer the middle island and the frontline slightly; extend the build zone into the land if needed | three-block chamfers on the mid stone's four corners and the frontline's two front corners; the mid band to z −24…24 |
+| 76 | the rise is close to the wall; extend the piece in front of the wall so the wall and room move out; grass either side of the wall | `wool-a-t1` a cell longer, the inner piece and the room shifted a cell west; a grass patch across the wall |
+| 77 | a dip with water that splits the lane, with lily pads | a push of −2 and a canal at x 16…18 coast to coast, four lily pads; asked whether to hold the water off the void |
+
+**A chamfer is two ops a corner, and they go last corner first.** The corner moves back along the edge before
+it and a point goes in along the edge after it, so doing the corners in descending order keeps every index
+the ring's own. The coast cuts are then stated against the chamfered ring, whose later edges sit two on.
+
+**A channel over a door approach carves almost nothing.** The studio keeps the approach clear, and a kept
+column is filled but never cut, so the first channel at x 18…21 carried one column of water. The claims raster
+drew the whole band as water, and so did the heightmap. `column` and a probe of the exported world were the
+reads that showed the bed was never cut.
+
+**Moving it onto the free ground between the wall's keep-out and the approach**, x 16…18, carved it. Run coast
+to coast so it splits the lane, the water meets the void at both ends, and the reply asks whether to leave a
+lip.

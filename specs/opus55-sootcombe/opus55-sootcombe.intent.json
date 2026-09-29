@@ -85,9 +85,9 @@
   "areas": [
    {
     "minX": -16,
-    "minZ": -20,
+    "minZ": -24,
     "maxX": 16,
-    "maxZ": 20
+    "maxZ": 24
    },
    {
     "minX": -8,
@@ -118,14 +118,14 @@
    "color": "red",
    "protection": [
     {
-     "minX": -44,
+     "minX": -48,
      "minZ": 56,
-     "maxX": -36,
+     "maxX": -40,
      "maxZ": 68
     }
    ],
    "spawn": {
-    "x": -40,
+    "x": -44,
     "y": 9,
     "z": 62
    },
@@ -133,9 +133,9 @@
    "footprint": null,
    "entries": [
     {
-     "minX": -36,
+     "minX": -40,
      "minZ": 56,
-     "maxX": -36,
+     "maxX": -40,
      "maxZ": 68
     }
    ]
@@ -186,14 +186,14 @@
    "color": "blue",
    "protection": [
     {
-     "minX": 36,
+     "minX": 40,
      "minZ": -68,
-     "maxX": 44,
+     "maxX": 48,
      "maxZ": -56
     }
    ],
    "spawn": {
-    "x": 40,
+    "x": 44,
     "y": 9,
     "z": -62
    },
@@ -201,9 +201,9 @@
    "footprint": null,
    "entries": [
     {
-     "minX": 36,
+     "minX": 40,
      "minZ": -68,
-     "maxX": 36,
+     "maxX": 40,
      "maxZ": -56
     }
    ]
@@ -273,9 +273,9 @@
   "layer": null,
   "redstoneLines": [
    {
-    "x1": -37,
+    "x1": -41,
     "z1": 56,
-    "x2": -37,
+    "x2": -41,
     "z2": 67,
     "stamp": {
      "kind": "redstoneline",
@@ -284,9 +284,9 @@
     }
    },
    {
-    "x1": 36,
+    "x1": 40,
     "z1": -68,
-    "x2": 36,
+    "x2": 40,
     "z2": -57,
     "stamp": {
      "kind": "redstoneline",
@@ -346,9 +346,9 @@
     }
    },
    {
-    "minX": -25,
+    "minX": -29,
     "minZ": 56,
-    "maxX": -23,
+    "maxX": -27,
     "maxZ": 68,
     "topY": 11,
     "chestOnMinFace": false,
@@ -359,9 +359,9 @@
     }
    },
    {
-    "minX": 23,
+    "minX": 27,
     "minZ": -68,
-    "maxX": 25,
+    "maxX": 29,
     "maxZ": -56,
     "topY": 11,
     "chestOnMinFace": true,

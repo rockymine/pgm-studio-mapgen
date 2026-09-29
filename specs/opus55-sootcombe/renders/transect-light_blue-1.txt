@@ -19,15 +19,15 @@ TRANSECT 25 stations from (-44, -74) to (-20, -74), every 1
   (  -29,   -74)      13       13           20  redstoneline 1#1    
   (  -28,   -74)      13       13           13                      
   (  -27,   -74)      13       13           13                      
-  (  -26,   -74)      13       13           13  stroke path-wool-b#1  
-  (  -25,   -74)      13       13           13  stroke path-wool-b#1  
-  (  -24,   -74)      13       13           13  stroke path-wool-b#1  
-  (  -23,   -74)      13       13           13  stroke path-wool-b#1  
-  (  -22,   -74)      13       13           13  stroke path-wool-b#1  
-  (  -21,   -74)      13       13           13  stroke path-wool-b#1  
-  (  -20,   -74)      13       13           13  stroke path-wool-b#1  
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: wool wool-2#1 at (-35, -76), redstoneline 1#1 at (-29, -76), stroke path-wool-b#1 at (-26, -76)
+  (  -26,   -74)      13       13           13  stroke path-wool-b2#1  
+  (  -25,   -74)      13       13           13  stroke path-wool-b2#1  
+  (  -24,   -74)      13       13           13  stroke path-wool-b2#1  
+  (  -23,   -74)      13       13           13  stroke path-wool-b2#1  
+  (  -22,   -74)      12       12           12  stroke path-wool-b2#1  -1
+  (  -21,   -74)      12       12           12  stroke path-wool-b2#1  
+  (  -20,   -74)      11       11           11                      -1
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-2#1 at (-35, -76), redstoneline 1#1 at (-29, -76), stroke path-wool-b2#1 at (-26, -76), water east-channel#1 at (-19, -76)
 
 ## light_blue-1 (wool) along z
 TRANSECT 25 stations from (-32, -86) to (-32, -62), every 1

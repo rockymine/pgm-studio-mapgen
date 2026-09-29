@@ -6,9 +6,9 @@ seed 21, pinned off `GET /api/compose` and taken whole; `composed-p12-seed21.pla
 board states the elevation, the paint, the made things and the dressing.
 
 Slug `opus55-sootcombe`, map name **Sootcombe**, built on the deployed studio. The notes on it are 6–10 and the
-author's own 33–35, 44–50, 61–64, 70 and 71 (`reports/opus55-notes-run.md`).
+author's own 33–35, 44–50, 61–64, 70, 71 and 75–77 (`reports/opus55-notes-run.md`).
 
-## Six passes
+## Seven passes
 
 **The first build was bare ash.** The author's review of the whole run said so, and the second pass cut the outer
 coasts point by point and stood a headframe, an engine house, timber stacks, a slag heap and regrowth on it.
@@ -41,6 +41,10 @@ board replace the birch and the spruce.
 **The sixth pass is the author's fourth round.** The doors are three tall, and each wool room's door is
 filled with stained-glass panes in its wool's colour. Two more willows and one more grass patch stand on each
 team's ground.
+
+**The seventh pass is the author's fifth round.** The mid stone and the frontlines' front corners are
+chamfered, the west wool stands a cell further out from the rise, and a channel with lily pads splits the east
+wool's lane.
 
 ## How it is meant to play
 
@@ -105,7 +109,7 @@ and faced away on blue, so each team's ladder is stated with its own facing.
 | Feature | Team 0 (red) | Read |
 |---|---|---|
 | spawn | (−10, 92), terrace y13 | spawn → front: falls 4, worst step 1 |
-| west wool | (−40, 62), wall x −25…−23, z 56…68 | three courses over the spur |
+| west wool | (−44, 62), wall x −29…−28, z 56…67 | three courses over the spur |
 | east wool | (32, 74), wall x 11…13, z 68…80 | three courses over the terrace |
 | archer tower | x 9…13, z 33…37, legs y9–17, platform y13 with fence y14, roof y18 | `column` (11, 37) |
 | ladder | (11, 36), y9–13, facing north; blue's (−12, −37) facing south | `column` (11, 36) |
@@ -115,6 +119,7 @@ and faced away on blue, so each team's ladder is stated with its own facing.
 | mid stone | 11 across, 12 in the middle, 9 at the lips; rock (5, −4), willow (−9, −5) and their images | transect x −4 |
 | willows | (−18, 50) in the regrowth, (−18, 74) on the rise, (2, 79) at the terrace's edge | — |
 | orange wool door | x 29, z 72…75, y13–15, orange stained-glass panes | `column` (29, 73) |
+| east channel | x 16…18, z 69…79, water at y9–10, coast to coast, four lily pads | `tools/probe.py` face z=74 |
 | mid stone rocks | (−6, −3), (5, −5) and their images | — |
 
 Blue's features are the rot_180 images: block `(x, z)` maps to `(−x−1, −z−1)`.

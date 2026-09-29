@@ -60,9 +60,9 @@
         <spawn team="blue-team" kit="spawn-kit" region="blue-spawn-point"/>
     </spawns>
     <wools>
-        <wool team="blue-team" color="red" location="-40,9,62" monument="red-blue-monument"/>
+        <wool team="blue-team" color="red" location="-44,9,62" monument="red-blue-monument"/>
         <wool team="blue-team" color="orange" location="32,12,74" monument="orange-blue-monument"/>
-        <wool team="red-team" color="blue" location="40,9,-62" monument="blue-red-monument"/>
+        <wool team="red-team" color="blue" location="44,9,-62" monument="blue-red-monument"/>
         <wool team="red-team" color="light_blue" location="-32,12,-74" monument="light_blue-red-monument"/>
     </wools>
     <filters>
@@ -122,9 +122,9 @@
     <regions>
         <point id="blue-spawn-point">10,13,-92</point>
         <point id="red-spawn-point">-10,13,92</point>
-        <point id="blue-wool-spawn">40,9,-62</point>
+        <point id="blue-wool-spawn">44,9,-62</point>
         <point id="orange-wool-spawn">32,12,74</point>
-        <point id="red-wool-spawn">-40,9,62</point>
+        <point id="red-wool-spawn">-44,9,62</point>
         <point id="light_blue-wool-spawn">-32,12,-74</point>
         <point id="observer-spawn">0,25,0</point>
         <block id="light_blue-red-monument">-7,14,90</block>
@@ -134,9 +134,9 @@
         <rectangle id="blue-spawn" min="4,-96" max="16,-88"/>
         <rectangle id="red-spawn" min="-16,88" max="-4,96"/>
         <rectangle id="light_blue-wool" min="-36,-80" max="-28,-68"/>
-        <rectangle id="blue-wool" min="36,-68" max="44,-56"/>
+        <rectangle id="blue-wool" min="40,-68" max="48,-56"/>
         <rectangle id="orange-wool" min="28,68" max="36,80"/>
-        <rectangle id="red-wool" min="-44,56" max="-36,68"/>
+        <rectangle id="red-wool" min="-48,56" max="-40,68"/>
         <union id="reds-woolrooms">
             <region id="red-wool"/>
             <region id="orange-wool"/>
@@ -154,7 +154,7 @@
         </negative>
         <negative id="not-build-area">
             <union id="build-area">
-                <rectangle id="build-area-1" min="-16,-20" max="16,20"/>
+                <rectangle id="build-area-1" min="-16,-24" max="16,24"/>
                 <rectangle id="build-area-2" min="-8,40" max="4,68"/>
                 <rectangle id="build-area-3" min="-4,-68" max="8,-40"/>
             </union>

@@ -35,6 +35,10 @@ written for the board stands in the regrowth and on the mid stone's edge.
 Sixth pass, after the author's notes 10, 64, 70 and 71: the doors are three tall and the wool rooms' doors
 are stained glass in the wool's colour; two more willows stand on the west rise and at the terrace's edge;
 and a grass patch lies on each frontline's west front.
+
+Seventh pass, after the author's notes 75–77: the mid stone's corners and the frontline's front corners are
+chamfered, with the mid band reaching into the land; the west wool's wall, inner approach and room stand a cell
+further out with grass across the wall; and a channel with lily pads splits the east wool's lane in a dip.
 """
 import json, os, sys
 
@@ -42,7 +46,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(HERE)), "tools", "sculpt"))
 from opus55_kit import (S, cell, noise, depth, by_slope, theme, one, ring, patch, path, tree, flora,
-                        boulder, boulder_style, copied_trees, made, coast_edits, willow)
+                        boulder, boulder_style, copied_trees, made, coast_edits, willow, channel)
 import props
 
 SLUG = "opus55-sootcombe"
@@ -53,10 +57,42 @@ plan["meta"] = {"name": "Sootcombe", "authors": ["Opus 5.5"],
 # and the east approach, overlapping the hub by eight so a bridge leaves it with no gap, and ending seven
 # blocks short of the east wool's wall. Twelve blocks wide because G2 wants a zone corridor of ten.
 plan["zones"].append({"id": "hub-flank", "rect": [-2, 10, 3, 7], "holes": []})
+# Note 76: the west wool's rise had come close to its wall, so the piece in front of the wall is a cell longer
+# and the wall, the inner approach and the room each stand a cell further out.
+MOVED = {"wool-a-t1": [-7, 14, 2, 3], "wool-a-t1-inner": [-10, 14, 3, 3], "wool-a-room": [-12, 14, 2, 3]}
+for piece in plan["pieces"]:
+    piece["rect"] = MOVED.get(piece["id"], piece["rect"])
+for box in plan["boxes"]:
+    if box["id"] == "wool-a":
+        box["rect"] = [-12, 14, 7, 3]
+# Note 75: the mid band reaches four blocks into each frontline, so where the frontline's front corners are
+# cut away there is build zone rather than a gap nobody can bridge.
+for zone in plan["zones"]:
+    if zone["id"] == "mid-band":
+        zone["rect"] = [-4, -6, 8, 12]
 
 # The one fused ground shape the plan compiles to, as it compiles.
-GROUND = [[-44, 56], [-20, 56], [-20, 40], [-16, 40], [-16, 20], [16, 20], [16, 40], [0, 40], [0, 68],
+GROUND = [[-48, 56], [-20, 56], [-20, 40], [-16, 40], [-16, 20], [16, 20], [16, 40], [0, 40], [0, 68],
           [36, 68], [36, 80], [-4, 80], [-4, 96], [-16, 96], [-16, 80], [-20, 80], [-20, 68], [-44, 68]]
+
+def chamfer(ring_, corners, cut=3):
+    """Ops that cut each named corner of a ring back `cut` blocks along both its edges: the corner moves back
+    along the edge before it and a point is inserted along the edge after it. The corners go last to first so
+    each op's index is still the ring's own. Returns the ops and the ring they leave."""
+    pts = [list(p) for p in ring_]
+    ops = []
+    for i in sorted(corners, reverse=True):
+        (px, pz), (cx, cz), (nx, nz) = pts[i - 1], pts[i], pts[(i + 1) % len(pts)]
+        def toward(ax, az, n=cut):
+            d = max(abs(ax - cx), abs(az - cz))
+            return [cx + (ax - cx) * n / d, cz + (az - cz) * n / d]
+        back, on = toward(px, pz), toward(nx, nz)
+        ops += [{"index": i, "x": back[0], "z": back[1]}, {"after": i, "x": on[0], "z": on[1]}]
+        pts[i:i + 1] = [back, on]
+    return ops, pts
+
+FRONT_CHAMFER, FRONT = chamfer(GROUND, [4, 5])
+MID_CHAMFER, _ = chamfer([[-12, -8], [12, -8], [12, 8], [-12, 8]], [0, 1, 2, 3])
 
 # --- paint -----------------------------------------------------------------------------------------------
 # Families: the ground dark (black clay on grey stained clay, granite under it), the built timber (spruce
@@ -150,6 +186,9 @@ relief = {"team": {
          "roughness": 0.2, "crown": 0, "seed": 12},
         {"id": "front-dip", "ring": ring(2, 20, 6, 3, wobble=0.1, lobes=3), "amount": -2, "falloff": 4,
          "roughness": 0.2, "crown": 0, "seed": 13},
+        # note 77: the east wool's lane dips two blocks where the channel crosses it
+        {"id": "east-dip", "ring": ring(17, 74, 3, 6, wobble=0.1, lobes=3), "amount": -2, "falloff": 3,
+         "roughness": 0.2, "crown": 0, "seed": 15},
         {"id": "west-rise", "ring": ring(-19, 74, 3, 6, wobble=0.1, lobes=3), "amount": 5,
                 "falloff": 7, "roughness": 0.3, "crown": 0, "seed": 9}],
 }}
@@ -191,6 +230,12 @@ deck.rect(AX - 1, AZ - 1, AX + AW + 1, AZ + AW + 1, FLOOR + 9, 1, "timber")
 layers += made([legs.done(), frame.done(), floor_.done(), rail.done(), climb.done(), deck.done()],
                "archer-tower")
 
+# Lily pads on the channel (note 77), a course over its water line at y10.
+pads = props.LayerBuilder("lily-pads")
+for x, z in [(16, 70), (18, 73), (17, 76), (16, 78)]:
+    pads.rect(x, z, x + 1, z + 1, 11, 1, "lily", keepClear=False)
+layers += made(pads.done(), "lily-pads")
+
 # --- patches -------------------------------------------------------------------------------------------
 shapes = [
     patch("regrowth-west", [[-20, 42], [-14, 43], [-13, 52], [-15, 60], [-14, 67], [-20, 67]], "regrowth", 9,
@@ -200,6 +245,8 @@ shapes = [
     patch("regrowth-front", ring(2, 38, 4, 3, 16, 0.2, 3), "regrowth", 9, group="team"),
     patch("regrowth-mid", ring(-8, -5, 4, 3, 16, 0.2, 3, 0.5), "regrowth", 9, group="team"),
     patch("regrowth-rise", ring(-18, 74, 3, 5, 16, 0.2, 3), "regrowth", 9, group="team"),
+    # grass either side of the west wool's wall where it stands now (note 76)
+    patch("regrowth-wall", ring(-28, 62, 6, 4, 16, 0.2, 3, 0.3), "regrowth", 9, group="team"),
     # grass on the frontline's west front (note 71)
     patch("regrowth-front-west", ring(-9, 24, 6, 4, 16, 0.2, 3, 0.8), "regrowth", 9, group="team"),
 ]
@@ -220,8 +267,15 @@ styles["rock-large"] = boulder_style(ROCK_MIX, form="angular", size=3.0)
 props_ = [
     # wider than before (note 6): four blocks across the front path, three to the wools
     path("path-front", 51, [[-10, 86], [-10, 72], [-8, 54], [-4, 38], [0, 23]], PAVE, radius=2),
-    path("path-wool-a", 52, [[-12, 60], [-24, 62], [-33, 62]], PAVE, radius=2, wander=1),
-    path("path-wool-b", 53, [[-6, 75], [8, 74], [25, 74]], PAVE, radius=2, wander=1),
+    path("path-wool-a", 52, [[-12, 60], [-24, 62], [-37, 62]], PAVE, radius=2, wander=1),
+    # the east wool's path stops either side of the channel: a stroke paves over water
+    path("path-wool-b", 53, [[-6, 75], [8, 74], [13, 74]], PAVE, radius=2, wander=1),
+    path("path-wool-b2", 54, [[22, 74], [27, 74]], PAVE, radius=2, wander=0),
+    # note 77: a channel across the east wool's lane, in a dip, coast to coast so an attacker has to cross
+    # it. It runs at x 17, between the wall's keep-out and the room's door approach: a kept column is filled
+    # and never cut, so a channel over the approach carved one column of water out of four.
+    channel("east-channel", [[17, 66], [17, 82]], radius=1.5, depth=2, shore=1, form="canal",
+            bank=cell([S(13), S(3, 1), S(1, 1)], 2, 77)),
     # boulders on the frontline where the timber stacks stood, and on the mid stone where the engine house did
     boulder("front-1", -11, 27, "rock-medium", 21), boulder("front-2", 5, 29, "rock-small", 22),
     boulder("front-3", -9, 35, "rock-small", 23), boulder("front-4", 12, 25, "rock-medium", 24),
@@ -240,20 +294,22 @@ finish = {
     "authors": ["Opus 5.5"],
     "biome": {"kind": "solid", "id": 32},
     "themes": {"ash": ash, "regrowth": regrowth, "timber": timber, "post": post, "planks": planks,
-               "fence": fence, "ladder-n": ladder_n, "ladder-s": ladder_s},
+               "fence": fence, "lily": one(S(111)), "ladder-n": ladder_n, "ladder-s": ladder_s},
     "mapTheme": "ash",
     "relief": relief,
     # The outer coasts only. The frontline's face to the band, the wall seams at x -24 and x 12, and the
     # wool rooms' own faces stay as the composer cut them.
-    "editShapes": {"frontline-t1-9": coast_edits(GROUND, {
+    # Note 75: the frontline's two front corners and the mid stone's four are chamfered three blocks first,
+    # and the coast cuts are stated against the chamfered ring, whose edges after the front are two on.
+    "editShapes": {"frontline-t1-9": FRONT_CHAMFER + coast_edits(FRONT, {
         0: [(0.25, 1), (0.5, 2)],                 # the spur's south coast, west of its wall
         1: [(0.3, 2), (0.7, 3)],                  # the hub's west coast
         3: [(0.3, 2), (0.65, 1)],                 # the frontline's west coast
-        5: [(0.4, 2), (0.75, 1)],                 # the frontline's east coast
-        7: [(0.25, 2), (0.5, 3), (0.8, 1)],       # the hub's east coast, along the hole
-        8: [(0.14, 2)],                           # the east approach's south coast, short of its wall
-        16: [(0.5, 2), (0.78, 1)],                # the spur's north coast
-    })},
+        7: [(0.4, 2), (0.75, 1)],                 # the frontline's east coast
+        9: [(0.25, 2), (0.5, 3), (0.8, 1)],       # the hub's east coast, along the hole
+        10: [(0.14, 2)],                          # the east approach's south coast, short of its wall
+        18: [(0.5, 2), (0.78, 1)],                # the spur's north coast
+    }), "mid-stone-0-9": MID_CHAMFER},
     "addShapes": shapes,
     "addLayers": layers,
     "roomStyles": {"spawn": LODGE, "wool": WOOL_ROOM},

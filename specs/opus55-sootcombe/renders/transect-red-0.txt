@@ -1,53 +1,53 @@
 ## red-0 (wool) along x
-TRANSECT 17 stations from (-44, 62) to (-28, 62), every 1
+TRANSECT 17 stations from (-48, 62) to (-32, 62), every 1
   station        ground  surface  water  top  standing            step
-  (  -44,    62)      10       10           17                      
-  (  -43,    62)      10       10           17  wool wool-1         
-  (  -42,    62)      10       10           18  wool wool-1         
-  (  -41,    62)      10       10           39  wool wool-1         
-  (  -40,    62)      10       10           39  wool wool-1         
-  (  -39,    62)      10       10           39  wool wool-1         
-  (  -38,    62)      10       10           17  wool wool-1         
-  (  -37,    62)      10       10           17  redstoneline 0      
-  (  -36,    62)      10       10           10                      
-  (  -35,    62)      10       10           10                      
+  (  -48,    62)      10       10           17                      
+  (  -47,    62)      10       10           17  wool wool-1         
+  (  -46,    62)      10       10           18  wool wool-1         
+  (  -45,    62)      10       10           39  wool wool-1         
+  (  -44,    62)      10       10           39  wool wool-1         
+  (  -43,    62)      10       10           39  wool wool-1         
+  (  -42,    62)      10       10           17  wool wool-1         
+  (  -41,    62)      10       10           17  redstoneline 0      
+  (  -40,    62)      10       10           10                      
+  (  -39,    62)      10       10           10                      
+  (  -38,    62)      10       10           10  stroke path-wool-a  
+  (  -37,    62)      10       10           10  stroke path-wool-a  
+  (  -36,    62)      10       10           10  stroke path-wool-a  
+  (  -35,    62)      10       10           10  stroke path-wool-a  
   (  -34,    62)      10       10           10  stroke path-wool-a  
   (  -33,    62)      10       10           10  stroke path-wool-a  
   (  -32,    62)      11       11           11  stroke path-wool-a  +1
-  (  -31,    62)      11       11           11  stroke path-wool-a  
-  (  -30,    62)      11       11           11  stroke path-wool-a  
-  (  -29,    62)      11       11           11  stroke path-wool-a  
-  (  -28,    62)      11       11           11  stroke path-wool-a  
 rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: wool wool-1 at (-43, 60), redstoneline 0 at (-37, 60), stroke path-wool-a at (-34, 60)
+beside: wool wool-1 at (-47, 60), redstoneline 0 at (-41, 60), stroke path-wool-a at (-38, 60)
 
 ## red-0 (wool) along z
-TRANSECT 25 stations from (-40, 50) to (-40, 74), every 1
+TRANSECT 25 stations from (-44, 50) to (-44, 74), every 1
   station        ground  surface  water  top  standing            step
-  (  -40,    50)                                                    void
-  (  -40,    51)                                                    void
-  (  -40,    52)                                                    void
-  (  -40,    53)                                                    void
-  (  -40,    54)                                                    void
-  (  -40,    55)                                                    void
-  (  -40,    56)                            18                      void
-  (  -40,    57)      10       10           18  wool wool-1         
-  (  -40,    58)      10       10           18  wool wool-1         
-  (  -40,    59)      10       10           18  wool wool-1         
-  (  -40,    60)      10       10           18  wool wool-1         
-  (  -40,    61)      10       10           39  wool wool-1         
-  (  -40,    62)      10       10           39  wool wool-1         
-  (  -40,    63)      10       10           39  wool wool-1         
-  (  -40,    64)      10       10           18  wool wool-1         
-  (  -40,    65)      10       10           18  wool wool-1         
-  (  -40,    66)      10       10           18  wool wool-1         
-  (  -40,    67)                            18                      void
-  (  -40,    68)                                                    void
-  (  -40,    69)                                                    void
-  (  -40,    70)                                                    void
-  (  -40,    71)                                                    void
-  (  -40,    72)                                                    void
-  (  -40,    73)                                                    void
-  (  -40,    74)                                                    void
+  (  -44,    50)                                                    void
+  (  -44,    51)                                                    void
+  (  -44,    52)                                                    void
+  (  -44,    53)                                                    void
+  (  -44,    54)                                                    void
+  (  -44,    55)                                                    void
+  (  -44,    56)                            18                      void
+  (  -44,    57)      10       10           18  wool wool-1         
+  (  -44,    58)      10       10           18  wool wool-1         
+  (  -44,    59)      10       10           18  wool wool-1         
+  (  -44,    60)      10       10           18  wool wool-1         
+  (  -44,    61)      10       10           39  wool wool-1         
+  (  -44,    62)      10       10           39  wool wool-1         
+  (  -44,    63)      10       10           39  wool wool-1         
+  (  -44,    64)      10       10           18  wool wool-1         
+  (  -44,    65)      10       10           18  wool wool-1         
+  (  -44,    66)      10       10           18  wool wool-1         
+  (  -44,    67)      10       10           18                      
+  (  -44,    68)                                                    void
+  (  -44,    69)                                                    void
+  (  -44,    70)                                                    void
+  (  -44,    71)                                                    void
+  (  -44,    72)                                                    void
+  (  -44,    73)                                                    void
+  (  -44,    74)                                                    void
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: wool wool-1 at (-42, 57)
+beside: wool wool-1 at (-46, 57)
