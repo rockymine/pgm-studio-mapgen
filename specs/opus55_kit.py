@@ -190,8 +190,9 @@ def copied_trees(specdir, names):
 
 
 def willow(height=11, radius=5, seed=1, gaps=0.2):
-    """A willow written as a recipe rather than pulled from the library, whose `willow-1`…`willow-5` are the
-    author's: an oak trunk with four short
+    """A willow written block by block. The studio grows one as a template — `{"kind": "tree", "form":
+    "template", "species": "willow", "height": 11}` — and the library's `willow-1`…`willow-5` are the
+    author's own; this is the hand-written body the template was taken from: an oak trunk with four short
     branches, a flattened dome of oak leaves, and curtains of leaves hanging from the crown's rim to within a
     block or two of the ground, `gaps` of the rim's columns left open. Leaves are data 4, which does not
     decay."""
