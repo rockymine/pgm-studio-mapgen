@@ -1,0 +1,43 @@
+HOW THIS BOARD IS COME AT
+
+  wool at (44, -76)
+    The attacker walks 208 blocks to it; the defender 52, a ratio of 0.25.
+      A defence that close is on the objective long before the attack is, which is the shape of a long match.
+    3 ways in. The last choice is made at (4, 96) and closes at (44, -76), 0 blocks short of the objective.
+      The defender's own walk runs through that merge, so both sides come up the same road. A defence has to be pushed forward to hold it, and the further forward the merge sits the more of the board it gives up to do so.
+    The attack covers 29% of the ground the defence crosses to get here. The two sides share some of the approach and not all of it.
+    Walking attack — 208 blocks, 3 ways, 4 decisions:
+      round the 16-cell hole at (0, -72): choose at (4, 96), live over 200 blocks, the other way 1.22× the shortest.
+      round the 16-cell hole at (0, 72): choose at (4, 96), live over 158 blocks, the other way 1.06× the shortest.
+      round the 6-cell hole at (-4, -32): choose at (4, 96), live over 158 blocks, the other way 1.06× the shortest.
+      round the 6-cell hole at (0, 24): choose at (4, 96), live over 158 blocks, the other way 1.06× the shortest.
+    Walking back-run — 208 blocks, 5 ways, 4 decisions:
+      round the 16-cell hole at (0, -72): choose at (24, -76), live over 188 blocks, the other way 1.22× the shortest.
+      round the 16-cell hole at (0, 72): choose at (12, 36), live over 71 blocks, the other way 1.06× the shortest.
+      round the 6-cell hole at (-4, -32): choose at (20, -68), live over 179 blocks, the other way 1.06× the shortest.
+      round the 6-cell hole at (0, 24): choose at (12, 0), live over 94 blocks, the other way 1.06× the shortest.
+    Walking defend — 52 blocks, 2 ways, 1 decision:
+      round the 16-cell hole at (0, -72): choose at (-4, -100), live over 48 blocks, the other way 1.88× the shortest.
+
+  wool at (-44, -68)
+    The attacker walks 201 blocks to it; the defender 56, a ratio of 0.28.
+      Neither side is obviously first to it.
+    2 ways in. The last choice is made at (4, 96) and closes at (-12, -52), 39 blocks short of the objective.
+      Going round the merge saves the defender 32 blocks, so the defence arrives from behind the objective while the attack arrives at its front. Those are different ground and the objective is the easier for it.
+    The attack covers 23% of the ground the defence crosses to get here. The two sides share some of the approach and not all of it.
+    Walking attack — 201 blocks, 2 ways, 3 decisions:
+      round the 16-cell hole at (0, 72): choose at (4, 96), live over 155 blocks, the other way 1.01× the shortest.
+      round the 6-cell hole at (-4, -32): choose at (4, 96), live over 155 blocks, the other way 1.01× the shortest.
+      round the 6-cell hole at (0, 24): choose at (4, 96), live over 155 blocks, the other way 1.01× the shortest.
+    Walking back-run — 201 blocks, 4 ways, 6 decisions:
+      round the 16-cell hole at (0, -72): choose at (-24, -64), live over 30 blocks, the other way 1.00× the shortest.
+      round the 16-cell hole at (0, -72): choose at (-20, -36), live over 26 blocks, the other way 1.00× the shortest.
+      round the 16-cell hole at (0, -72): choose at (-4, 92), live over 10 blocks, the other way 1.00× the shortest.
+      round the 16-cell hole at (0, 72): choose at (-16, 36), live over 76 blocks, the other way 1.01× the shortest.
+      round the 6-cell hole at (-4, -32): choose at (-20, -60), live over 174 blocks, the other way 1.01× the shortest.
+      round the 6-cell hole at (0, 24): choose at (-16, -4), live over 116 blocks, the other way 1.01× the shortest.
+    Walking defend — 56 blocks, one way, no choice to make.
+
+WHAT NO JOURNEY REACHES
+
+  Every piece of ground is on somebody's way somewhere.

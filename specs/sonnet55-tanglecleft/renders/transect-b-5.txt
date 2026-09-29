@@ -1,0 +1,61 @@
+## b-5 (boulder) along x
+TRANSECT 25 stations from (-84, -2) to (-60, -2), every 1
+  station        ground  surface  water  top  standing            step
+  (  -84,    -2)      17       17           17  tree o-2            
+  (  -83,    -2)      17       17           17  tree o-2            
+  (  -82,    -2)      16       16           24  tree o-2            -1
+  (  -81,    -2)      16       16           25  tree o-2            
+  (  -80,    -2)      16       16           25  tree o-2            
+  (  -79,    -2)      15       15           26  tree o-2            -1
+  (  -78,    -2)      15       15           25  tree o-2            
+  (  -77,    -2)      15       15           26  tree o-2            
+  (  -76,    -2)      15       15           25  tree o-2            
+  (  -75,    -2)      14       14           14  tree o-2            -1
+  (  -74,    -2)      14       14           14  tree o-2            
+  (  -73,    -2)      14       14           14  tree o-2            
+  (  -72,    -2)      13       13           14  tree o-2            -1
+  (  -71,    -2)      13       13           14  tree o-1            
+  (  -70,    -2)      12       12           14  tree o-1            -1
+  (  -69,    -2)      12       12           14  tree o-1            
+  (  -68,    -2)      12       12           18  tree o-1            
+  (  -67,    -2)      11       11           19  tree o-1            -1
+  (  -66,    -2)      11       11           21  tree o-1            
+  (  -65,    -2)      10       10           20  tree o-1            -1
+  (  -64,    -2)      10       10           20  tree o-1            
+  (  -63,    -2)      10       10           20  tree o-1            
+  (  -62,    -2)       9        9           20  tree o-1            -1
+  (  -61,    -2)       9        9           18  tree o-1            
+  (  -60,    -2)       9        9           18  tree o-1            
+rises 0, falls 8, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree o-2 at (-86, -4), tree o-1 at (-73, -4)
+
+## b-5 (boulder) along z
+TRANSECT 25 stations from (-72, -14) to (-72, 10), every 1
+  station        ground  surface  water  top  standing            step
+  (  -72,   -14)      12       12           21  tree j-4            
+  (  -72,   -13)      12       12           12  tree o-1            
+  (  -72,   -12)      12       12           12  tree o-1            
+  (  -72,   -11)      12       12           12  tree o-1            
+  (  -72,   -10)      12       12           12  tree o-1            
+  (  -72,    -9)      12       12           12  tree o-1            
+  (  -72,    -8)      12       12           12  tree o-1            
+  (  -72,    -7)      12       12           12  tree o-1            
+  (  -72,    -6)      12       12           12  tree o-1            
+  (  -72,    -5)      13       13           13  tree o-1            +1
+  (  -72,    -4)      13       13           14  tree o-1            
+  (  -72,    -3)      13       13           14  tree o-1            
+  (  -72,    -2)      13       13           14  tree o-2            
+  (  -72,    -1)      13       13           14  tree o-2            
+  (  -72,     0)      14       14           14  tree o-2            +1
+  (  -72,     1)      14       14           23  tree o-2            
+  (  -72,     2)      14       14           23  tree o-2            
+  (  -72,     3)      14       14           24  tree o-2            
+  (  -72,     4)      15       15           25  tree o-2            +1
+  (  -72,     5)      15       15           23  tree o-2            
+  (  -72,     6)      15       15           15  tree o-2            
+  (  -72,     7)      15       15           15                      
+  (  -72,     8)      16       16           16                      +1
+  (  -72,     9)      16       16           16  stroke path-spawn   
+  (  -72,    10)      16       16           16  stroke path-spawn   
+rises 4, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree j-4 at (-74, -16), tree o-1 at (-70, -15), tree o-2 at (-74, -4), stroke path-spawn at (-73, 8)

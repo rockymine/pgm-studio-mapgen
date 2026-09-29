@@ -1,0 +1,61 @@
+## b-1 (boulder) along x
+TRANSECT 25 stations from (-42, -17) to (-18, -17), every 1
+  station        ground  surface  water  top  standing            step
+  (  -42,   -17)       9        9           21  tree j-5            
+  (  -41,   -17)       9        9           21  tree j-5            
+  (  -40,   -17)       9        9           15  tree j-5            
+  (  -39,   -17)       9        9            9  tree j-5            
+  (  -38,   -17)       9        9            9  tree j-6            
+  (  -37,   -17)       9        9            9  tree j-6            
+  (  -36,   -17)       9        9            9  tree j-6            
+  (  -35,   -17)       9        9            9  tree j-6            
+  (  -34,   -17)       9        9           11  tree j-6            
+  (  -33,   -17)      10       10           12  tree j-6            +1
+  (  -32,   -17)      10       10           12  tree j-6            
+  (  -31,   -17)      10       10           22  tree j-6            
+  (  -30,   -17)      10       10           25  tree j-6            
+  (  -29,   -17)      10       10           24  tree j-6            
+  (  -28,   -17)      11       11           27  tree j-6            +1
+  (  -27,   -17)      11       11           26  tree j-6            
+  (  -26,   -17)      11       11           25  tree j-6            
+  (  -25,   -17)      11       11           11  tree j-6            
+  (  -24,   -17)      11       11           11  tree j-6            
+  (  -23,   -17)      11       11           11                      
+  (  -22,   -17)      11       11           11                      
+  (  -21,   -17)      11       11           11                      
+  (  -20,   -17)      11       11           11                      
+  (  -19,   -17)      11       11           11  stroke path-south-e  
+  (  -18,   -17)      11       11           11  stroke path-south-e  
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree j-5 at (-44, -19), tree j-6 at (-39, -19), stroke path-south-e at (-21, -19), flora floor-cover at (-17, -19)
+
+## b-1 (boulder) along z
+TRANSECT 25 stations from (-30, -29) to (-30, -5), every 1
+  station        ground  surface  water  top  standing            step
+  (  -30,   -29)      14       14           14  tree j-6            
+  (  -30,   -28)      14       14           14  tree j-6            
+  (  -30,   -27)      14       14           23  tree j-6            
+  (  -30,   -26)      14       14           22  tree j-6            
+  (  -30,   -25)      13       13           26  tree j-6            -1
+  (  -30,   -24)      13       13           28  tree j-6            
+  (  -30,   -23)      12       12           28  tree j-6            -1
+  (  -30,   -22)      12       12           27  tree j-6            
+  (  -30,   -21)      11       11           23  tree j-6            -1
+  (  -30,   -20)      10       10           11  tree j-6            -1
+  (  -30,   -19)      10       10           25  tree j-6            
+  (  -30,   -18)      10       10           26  tree j-6            
+  (  -30,   -17)      10       10           25  tree j-6            
+  (  -30,   -16)      10       10           12  tree j-6            
+  (  -30,   -15)      10       10           12  tree j-6            
+  (  -30,   -14)      10       10           12  boulder b-1         
+  (  -30,   -13)      10       10           11  boulder b-1         
+  (  -30,   -12)      10       10           10                      
+  (  -30,   -11)      10       10           10                      
+  (  -30,   -10)      10       10           10  tree o-3            
+  (  -30,    -9)      10       10           10  tree o-3            
+  (  -30,    -8)      10       10           10  tree o-3            
+  (  -30,    -7)      10       10           10  tree o-3            
+  (  -30,    -6)      10       10           10  tree o-3            
+  (  -30,    -5)      10       10           10  tree o-3            
+rises 0, falls 4, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree j-6 at (-32, -31), boulder b-1 at (-32, -14), boulder b-2 at (-28, -11), tree o-3 at (-30, -10)

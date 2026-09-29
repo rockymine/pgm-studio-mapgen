@@ -1,0 +1,60 @@
+## spawn-red (spawn) along x
+TRANSECT 33 stations from (-12, 104) to (20, 104), every 1
+  station        ground  surface  water  top  standing            step
+  (  -12,   104)                                                    void
+  (  -11,   104)                                                    void
+  (  -10,   104)                                                    void
+  (   -9,   104)                                                    void
+  (   -8,   104)                                                    void
+  (   -7,   104)                                                    void
+  (   -6,   104)                                                    void
+  (   -5,   104)                                                    void
+  (   -4,   104)      12       12           25                      
+  (   -3,   104)      12       12           25  spawn spawn-1       
+  (   -2,   104)      12       12           25  spawn spawn-1       
+  (   -1,   104)      12       12           25  spawn spawn-1       
+  (    0,   104)      12       12           25  spawn spawn-1       
+  (    1,   104)      12       12           25  spawn spawn-1       
+  (    2,   104)      12       12           25  spawn spawn-1       
+  (    3,   104)      12       12           25  spawn spawn-1       
+  (    4,   104)      12       12           25  spawn spawn-1       
+  (    5,   104)      12       12           25  spawn spawn-1       
+  (    6,   104)      12       12           25  spawn spawn-1       
+  (    7,   104)      12       12           25  spawn spawn-1       
+  (    8,   104)      12       12           25  spawn spawn-1       
+  (    9,   104)      12       12           25  spawn spawn-1       
+  (   10,   104)      12       12           25  spawn spawn-1       
+  (   11,   104)      12       12           25                      
+  (   12,   104)                                                    void
+  (   13,   104)                                                    void
+  (   14,   104)                                                    void
+  (   15,   104)                                                    void
+  (   16,   104)                                                    void
+  (   17,   104)                                                    void
+  (   18,   104)                                                    void
+  (   19,   104)                                                    void
+  (   20,   104)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (-3, 102)
+
+## spawn-red (spawn) along z
+TRANSECT 16 stations from (4, 92) to (4, 107), every 1
+  station        ground  surface  water  top  standing            step
+  (    4,    92)      12       12           12                      
+  (    4,    93)      12       12           12                      
+  (    4,    94)      12       12           12  stroke road-main    
+  (    4,    95)      12       12           12  stroke road-main    
+  (    4,    96)      12       12           12  stroke road-main    
+  (    4,    97)      12       12           12  stroke road-main    
+  (    4,    98)      12       12           12  stroke road-main    
+  (    4,    99)      12       12           12                      
+  (    4,   100)      12       12           22                      
+  (    4,   101)      12       12           23  spawn spawn-1       
+  (    4,   102)      12       12           24  spawn spawn-1       
+  (    4,   103)      12       12           25  spawn spawn-1       
+  (    4,   104)      12       12           25  spawn spawn-1       
+  (    4,   105)      12       12           24  spawn spawn-1       
+  (    4,   106)      12       12           23  spawn spawn-1       
+  (    4,   107)      12       12           22                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke road-main at (6, 91), spawn spawn-1 at (2, 101)

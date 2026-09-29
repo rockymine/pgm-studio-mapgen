@@ -1,0 +1,61 @@
+## stone-1 (destroyable) along x
+TRANSECT 25 stations from (51, -25) to (75, -25), every 1
+  station        ground  surface  water  top  standing            step
+  (   51,   -25)      21       21           21  tree o-4#1          
+  (   52,   -25)      20       20           20  tree o-4#1          -1
+  (   53,   -25)      20       20           20                      
+  (   54,   -25)      20       20           20                      
+  (   55,   -25)      19       19           19                      -1
+  (   56,   -25)      18       18           18                      -1
+  (   57,   -25)      18       18           18                      
+  (   58,   -25)      18       18           18                      
+  (   59,   -25)      18       18           18                      
+  (   60,   -25)      18       18           19  flora floor-cover#1  
+  (   61,   -25)      18       18           19  flora floor-cover#1  
+  (   62,   -25)      18       18           42  flora floor-cover#1  
+  (   63,   -25)      18       18           43  destroyable stone#1  
+  (   64,   -25)      18       18           42  flora floor-cover#1  
+  (   65,   -25)      18       18           19  flora floor-cover#1  
+  (   66,   -25)      18       18           19  flora floor-cover#1  
+  (   67,   -25)      18       18           19  flora floor-cover#1  
+  (   68,   -25)      18       18           18                      
+  (   69,   -25)      18       18           18                      
+  (   70,   -25)      18       18           18                      
+  (   71,   -25)      18       18           18                      
+  (   72,   -25)      18       18           18                      
+  (   73,   -25)      18       18           18                      
+  (   74,   -25)      18       18           18                      
+  (   75,   -25)      18       18           18                      
+rises 0, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree o-4#1 at (49, -27), flora floor-cover#1 at (60, -25), destroyable stone#1 at (61, -27)
+
+## stone-1 (destroyable) along z
+TRANSECT 25 stations from (63, -37) to (63, -13), every 1
+  station        ground  surface  water  top  standing            step
+  (   63,   -37)      18       18           18                      
+  (   63,   -36)      18       18           18                      
+  (   63,   -35)      18       18           18                      
+  (   63,   -34)      18       18           18                      
+  (   63,   -33)      18       18           19  flora floor-cover#1  
+  (   63,   -32)      18       18           19  flora floor-cover#1  
+  (   63,   -31)      18       18           19  flora floor-cover#1  
+  (   63,   -30)      18       18           19  flora floor-cover#1  
+  (   63,   -29)      18       18           19  flora floor-cover#1  
+  (   63,   -28)      18       18           19  flora floor-cover#1  
+  (   63,   -27)      18       18           19  flora floor-cover#1  
+  (   63,   -26)      18       18           42  flora floor-cover#1  
+  (   63,   -25)      18       18           43  destroyable stone#1  
+  (   63,   -24)      18       18           42  flora floor-cover#1  
+  (   63,   -23)      18       18           19  flora floor-cover#1  
+  (   63,   -22)      18       18           19  flora floor-cover#1  
+  (   63,   -21)      18       18           18                      
+  (   63,   -20)      18       18           18                      
+  (   63,   -19)      18       18           18                      
+  (   63,   -18)      18       18           18                      
+  (   63,   -17)      18       21           21  storey              BARRIER +3
+  (   63,   -16)      17       21           21  storey              
+  (   63,   -15)      17       17           17                      DROP -4
+  (   63,   -14)      16       16           16                      -1
+  (   63,   -13)      16       16           16                      
+rises 1, falls 2, worst step 4: 1 barrier, 0 scramble, 1 drop — BARRIER +3 at (63, -17); DROP -4 at (63, -15) | walked end to end
+beside: flora floor-cover#1 at (63, -33), destroyable stone#1 at (61, -27)

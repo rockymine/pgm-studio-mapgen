@@ -1,0 +1,32 @@
+HEIGHTMAP  1 char = 3x3 blocks (the top-left block of each)  x -120..117 across, z -40..38 down
+KEY  char = ground height above y4 in bands of 1 block(s): 0 = y4..4, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
+     2  -1 -0 -9  -8 -7 -6  -5 -4 -3  -2 -1  0   1  2  3   4  5  6   7  8  9   0  1  
+     07418529630741852963074185296307418529630369258147036925814703692581470369258147
+ -40        b                           7        a                            f      
+ -37         bcehi gfeee   653000 5abaa97        aehjlo    uqonk  eeeeeeee fff       
+ -34          dgikjigfedc9765200016abbbb8        9cfijlnqssspnmjgeeeeeeeeefff        
+ -31          egijjjhgdb98665200016abbbb9        8adfijkmnoonnlifeeeeeeeeefff        
+ -28          fgghhhgfb876665200015abbbb8        78adfhjkllmmljhfeeeeeeeeefff        
+ -25         eghggffedb8766653111259bbb97        7789bdfhijkjihgee!eeeeeeeffff       
+ -22         fghhgffeda76665554445689a977        77778abdffgfeeeeeeeeeeeeeffff       
+ -19         fhihgffdb8665555555556678777        77777789bbcbbbcdeeeeeeeeefffg       
+ -16        gfghhgfdb976555H4445556677777        777777788899abbcddedddeeeffgg       
+ -13        hgfffedb987544HH4444445677777        7777777788899aabbccddddeeffghh      
+ -10 hhhhhhhhgfedcba987544~~~~~~~~5677777        777777777788899aabbccdddeffghhhhhhhh
+  -7 hHHHHhhhgfedcba9875444~~~~~~~5677777        77777777777778899aabbcddeffghhhHHHHH
+  -4 hHHHHhhhgfeedcba976444~4444445677777        7777777666666777889abbcdeefghhhHHHHH
+  -1 hHHHHhhhggfedcba98766555555556677777        77777766555556666789abcddefghhhHHHHH
+   2 hHHHHhhhggfedccba9887766666666777777        777777654444444455789abcdefghhhHHHHH
+   5 hHHHHhhhggfeedccbaa98887777677777777        777777654~4~4~~444689abcdefghhhHHHHH
+   8 hhhhhhhhggfeeddccbbaa998887777777777        7777766~~~~~~~~444679abcddefhhhhhhhh
+  11 hhhhhhhhggffeeddcccbbaa9988877777777        77777665444444HH44678abdeeefhhhhhhhh
+  14        hggffeeddddddcbba998887777777        77777765544444HHH5679bdfggggg       
+  17        ggfffeeeeeeeeddcbaaaa98777777        77777766555555555679bdfghhhgf       
+  20         ffffeeeeeeeeeedddeeddba87777        7778987655455556667adefgghhge       
+  23         ffffeeeeee!eeefghiiihfdb9877        779bba8432234666679cdeffghhf        
+  26         ffffeeeeeeeeefhjllllkjhfdb97        79bbbb9400014666779cffgggggf        
+  29         ffffeeeeeeeeegjlmnnnlljigdb9        79bbbb940001366689adgiijihge        
+  32         ffffeeeeeeeeehknoprrpnlkigda        79bbbba400013667acdegijkkifc        
+  35         ffffeeeeeeeefhlnoruu  pljigc        78abbb940001466  deeffhiihebb       
+  38        ff      ee                 gc        778        14             cbb       
+low y4, high y34, range 30

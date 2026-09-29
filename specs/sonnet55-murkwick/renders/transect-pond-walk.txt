@@ -1,0 +1,94 @@
+## pond-walk (made) along x
+TRANSECT 27 stations from (-21, 69) to (5, 69), every 1
+  station        ground  surface  water  top  standing            step
+  (  -21,    69)      14       14           14  tree w-2            
+  (  -20,    69)      14       14           14  tree w-2            
+  (  -19,    69)      14       14           24  tree w-2            
+  (  -18,    69)      14       14           23  tree w-2            
+  (  -17,    69)      14       14           21  tree w-2            
+  (  -16,    69)      14       14           14  tree w-2            
+  (  -15,    69)      14       14           26  tree w-2            
+  (  -14,    69)      14       14           27  tree w-2            
+  (  -13,    69)      14       14           22  tree w-2            
+  (  -12,    69)      14       14           14  tree w-2            
+  (  -11,    69)      13       13           13  tree w-2            -1
+  (  -10,    69)      12       12           12  tree w-2            -1
+  (   -9,    69)      12       12           25  tree w-2            
+  (   -8,    69)                            27  tree w-2            void
+  (   -7,    69)                            26  tree w-2            void
+  (   -6,    69)                                tree w-2            void
+  (   -5,    69)                                tree w-2            void
+  (   -4,    69)                                tree w-2            void
+  (   -3,    69)                                                    void
+  (   -2,    69)                                                    void
+  (   -1,    69)                                                    void
+  (    0,    69)                                tree w-3            void
+  (    1,    69)                                tree w-3            void
+  (    2,    69)                                tree w-3            void
+  (    3,    69)                                tree w-3            void
+  (    4,    69)                                tree w-3            void
+  (    5,    69)                                tree w-3            void
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke road-a at (-23, 67), tree w-2 at (-22, 67), tree w-3 at (-1, 70), tree o-1 at (1, 67)
+
+## pond-walk (made) along z
+TRANSECT 56 stations from (-8, 42) to (-8, 97), every 1
+  station        ground  surface  water  top  standing            step
+  (   -8,    42)       9        9      8     8  tree w-5            
+  (   -8,    43)       9        9      8     8  tree w-5            
+  (   -8,    44)       9        9            9  tree w-5            
+  (   -8,    45)      10       10           10  tree w-5            +1
+  (   -8,    46)      10       10           10  tree w-5            
+  (   -8,    47)      10       10           10  tree w-5            
+  (   -8,    48)      11       11           11  tree w-5            +1
+  (   -8,    49)      11       11           11                      
+  (   -8,    50)      11       11           11                      
+  (   -8,    51)      12       12           12                      +1
+  (   -8,    52)      12       12           12  water pond-front    
+  (   -8,    53)      12       12     12    12  water pond-front    
+  (   -8,    54)      12       12     12    12  water pond-front    
+  (   -8,    55)      12       12     12    12  water pond-front    
+  (   -8,    56)      12       12     12    12  water pond-front    
+  (   -8,    57)      12       12     12    12  water pond-front    
+  (   -8,    58)      12       12     12    12  water pond-front    
+  (   -8,    59)      12       12           12  water pond-front    
+  (   -8,    60)      12       12           12  tree w-2            
+  (   -8,    61)      12       12           12  tree w-2            
+  (   -8,    62)      12       12           24  tree w-2            
+  (   -8,    63)      12       12           25  tree w-2            
+  (   -8,    64)                                tree w-2            void
+  (   -8,    65)                            23  tree w-2            void
+  (   -8,    66)                                tree w-2            void
+  (   -8,    67)                            25  tree w-2            void
+  (   -8,    68)                            26  tree w-2            void
+  (   -8,    69)                            27  tree w-2            void
+  (   -8,    70)                            26  tree w-2            void
+  (   -8,    71)                            24  tree w-2            void
+  (   -8,    72)                                tree w-2            void
+  (   -8,    73)                                tree w-2            void
+  (   -8,    74)                                tree o-2            void
+  (   -8,    75)                                tree o-2            void
+  (   -8,    76)                                tree o-2            void
+  (   -8,    77)                            18  tree o-2            void
+  (   -8,    78)                            20  tree o-2            void
+  (   -8,    79)                            18  tree o-2            void
+  (   -8,    80)      12       12           20  tree o-2            
+  (   -8,    81)      12       12           19  tree o-2            
+  (   -8,    82)      12       12           20  tree o-2            
+  (   -8,    83)      12       12           22  tree o-2            
+  (   -8,    84)      12       12           22  tree o-2            
+  (   -8,    85)      12       12           21  tree o-2            
+  (   -8,    86)      12       12     12    20  tree o-2            
+  (   -8,    87)      12       13     12    20  storey              +1
+  (   -8,    88)      12       13     12    13  storey              
+  (   -8,    89)      12       12     12    12  water pond-back     -1
+  (   -8,    90)      12       12           12  water pond-back     
+  (   -8,    91)      12       12           12                      
+  (   -8,    92)      12       12           12                      
+  (   -8,    93)      12       12           12                      
+  (   -8,    94)                                                    void
+  (   -8,    95)                                                    void
+  (   -8,    96)                                                    void
+  (   -8,    97)                                                    void
+rises 4, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree w-5 at (-10, 40), water marsh at (-7, 40), stroke road-a at (-7, 46), water pond-front at (-10, 52), tree w-2 at (-10, 59), tree o-2 at (-6, 73), water pond-back at (-10, 89)
