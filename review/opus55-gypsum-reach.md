@@ -7,9 +7,9 @@ the way through. `docs/gameplay/approaches.md`'s *an objective sits exposed, and
 composed* is the rule it follows.
 
 Slug `opus55-gypsum-reach`, map name **Gypsum Reach**, built on the deployed studio. The run's questions on it
-are notes 1–5, and the author's own notes are 36–43 and 51–60 (`reports/opus55-notes-run.md`).
+are notes 1–5, and the author's own notes are 36–43, 51–60 and 65–69 (`reports/opus55-notes-run.md`).
 
-## Four passes
+## Five passes
 
 **The first build was the right shape and empty, and the author said so.** Everything was sand over twenty
 blocks of sandstone, two houses stood by a path, the front was bare, and the outline was the plan's rectangle.
@@ -36,6 +36,13 @@ match the frontline. Cacti stand on the open sand.
 **The fourth pass also mended what floated and joined what stood apart.** The lip ruins floated and now
 stand on the ground. A path network reaches every house, the bridge from both ends and the frontline's edge.
 
+**The fifth pass is the author's third round.** A second, smaller mesa stands on the back coast, the wash
+is floored in stone, cobble and gravel, and the spawn room is in the houses' style. The paths are oak and
+jungle planks, and dead bushes stand on the sand.
+
+**The beds changed in the fifth pass too.** They carry two broken lines of hardened clay, two deep, and no
+orange, and the path along the mesa's cliff is gone.
+
 ## How it is meant to play
 
 **A team's monument is a short walk forward of its spawn, and the contest is the ground between the two
@@ -55,14 +62,15 @@ the field and holds the pool.
 
 ## What the ground is made of
 
-**Sand over sandstone beds over stone and andesite, finished by angle.** The beds carry one bed of hardened clay
-and a thin orange one, and they follow the ground, so the wash and the mesa show them. The oasis, the spring
+**Sand over sandstone beds over stone and andesite, finished by angle.** The beds carry two lines of hardened
+clay two courses deep, broken by sandstone, and they follow the ground, so the wash and the mesas show them.
+The wash's floor is stone, cobble and gravel. The oasis, the spring
 and the mesa top are grass over dirt, which the desert biome tints yellow-green.
 
 **The built family is grey with warm roofs:** houses of stone brick and andesite in alternate courses on
 polished-andesite posts, with hardened-clay gables under jungle-plank roofs, and stone-brick ruins. The bridge
-is spruce planks on dark-oak posts behind oak-fence rails. The accent is the granite and brick of the paths
-and the plaza, and the orange bed in the rock.
+is spruce planks on dark-oak posts behind oak-fence rails. The paths and the plaza are oak and jungle planks,
+and the accent is the hardened clay in the rock.
 
 ## What went wrong
 
@@ -97,7 +105,9 @@ seats read put them where they fit.
 | lip ruins | x −32…−29, z 18…34 and x −29…−26, z −44…−30, stone brick from the ground to y19–21 | `column` (−31, 20) |
 | plaza | ring round (−70, −2), about 16 × 12 | `column` (−70, −6) |
 | wash lobe | to x −60 between z −17 and −7, floor y13–14 | transect along z −12 |
-| cacti | (−100, 2), (−98, 14), (−96, −40), (−101, −22), (−40, −45), (−30, 42), (−56, 9), each on sand | `column` (−100, 2) |
+| cacti | (−90, −2), (−100, 20), (−96, −40), (−101, −22), (−40, −45), (−30, 42), (−56, 9), each on sand | `column` (−90, −2) |
+| dead bushes | (−100, −38), (−78, −18), (−30, −10), (−42, −42), (−20, −38), (−26, 30), (−66, 8), each on sand | `column` (−30, −10) |
+| second mesa | ring round (−103, 6), 16 × 14, 8 high | — |
 | dead ground | 16.9%: round the two houses behind the monument, at (−86, −22) | coverage |
 
 Blue's features are the rot_180 images: block `(x, z)` maps to `(−x−1, −z−1)`.

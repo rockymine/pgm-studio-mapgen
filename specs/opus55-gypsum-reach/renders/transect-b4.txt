@@ -35,10 +35,10 @@ TRANSECT 25 stations from (-24, -30) to (-24, -6), every 1
   (  -24,   -30)      17       17           17                      
   (  -24,   -29)      17       17           17                      
   (  -24,   -28)      18       18           18                      +1
-  (  -24,   -27)      18       18           18                      
+  (  -24,   -27)      18       18           18  stroke path-spring  
   (  -24,   -26)      18       18           18  stroke path-spring  
   (  -24,   -25)      18       18           18  stroke path-spring  
-  (  -24,   -24)      18       18           18  stroke path-spring  
+  (  -24,   -24)      18       18           18                      
   (  -24,   -23)      18       18           18                      
   (  -24,   -22)      18       18           18                      
   (  -24,   -21)      18       18           18                      
@@ -58,4 +58,4 @@ TRANSECT 25 stations from (-24, -30) to (-24, -6), every 1
   (  -24,    -7)      17       17           17                      
   (  -24,    -6)      17       17           17  stroke path-bridge-east  
 rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke path-spring at (-23, -27), boulder b4 at (-25, -20), stroke path-bridge-east at (-22, -7)
+beside: stroke path-spring at (-22, -29), boulder b4 at (-25, -20), stroke path-bridge-east at (-22, -7)

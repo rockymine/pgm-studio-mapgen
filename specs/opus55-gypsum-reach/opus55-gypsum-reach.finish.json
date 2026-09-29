@@ -71,93 +71,41 @@
         "id": 24,
         "data": 0
        },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 2
-       },
        "thickness": 2
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 2
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -171,6 +119,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -180,14 +164,6 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
         "id": 24,
         "data": 0
        },
@@ -195,17 +171,37 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -219,6 +215,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -228,14 +260,6 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
         "id": 24,
         "data": 0
        },
@@ -243,17 +267,37 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -267,6 +311,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -276,10 +356,98 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
+        "id": 24,
         "data": 0
        },
-       "thickness": 1
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
       },
       {
        "material": {
@@ -291,17 +459,89 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
-       "thickness": 1
+       "thickness": 2
       },
       {
        "material": {
         "kind": "solid",
         "id": 24,
         "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
        },
        "thickness": 2
       }
@@ -382,93 +622,41 @@
         "id": 24,
         "data": 0
        },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 2
-       },
        "thickness": 2
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 2
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -482,6 +670,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -491,14 +715,6 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
         "id": 24,
         "data": 0
        },
@@ -506,17 +722,37 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -530,6 +766,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -539,14 +811,6 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
         "id": 24,
         "data": 0
        },
@@ -554,17 +818,37 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -578,6 +862,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -587,10 +907,98 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
+        "id": 24,
         "data": 0
        },
-       "thickness": 1
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
       },
       {
        "material": {
@@ -602,17 +1010,89 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
-       "thickness": 1
+       "thickness": 2
       },
       {
        "material": {
         "kind": "solid",
         "id": 24,
         "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
        },
        "thickness": 2
       }
@@ -797,93 +1277,41 @@
              "id": 24,
              "data": 0
             },
-            "thickness": 3
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 2
-            },
             "thickness": 2
            },
            {
             "material": {
-             "kind": "solid",
-             "id": 172,
-             "data": 0
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
-            },
-            "thickness": 2
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
-            },
-            "thickness": 2
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
-            },
-            "thickness": 3
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 2
-            },
-            "thickness": 2
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 172,
-             "data": 0
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
-            },
-            "thickness": 2
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
             },
             "thickness": 2
            },
@@ -897,6 +1325,42 @@
            },
            {
             "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
              "kind": "solid",
              "id": 24,
              "data": 2
@@ -906,14 +1370,6 @@
            {
             "material": {
              "kind": "solid",
-             "id": 172,
-             "data": 0
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
              "id": 24,
              "data": 0
             },
@@ -921,17 +1377,37 @@
            },
            {
             "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
             },
             "thickness": 2
            },
@@ -945,6 +1421,42 @@
            },
            {
             "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
              "kind": "solid",
              "id": 24,
              "data": 2
@@ -954,14 +1466,6 @@
            {
             "material": {
              "kind": "solid",
-             "id": 172,
-             "data": 0
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
              "id": 24,
              "data": 0
             },
@@ -969,17 +1473,37 @@
            },
            {
             "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
             },
             "thickness": 2
            },
@@ -993,6 +1517,42 @@
            },
            {
             "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
              "kind": "solid",
              "id": 24,
              "data": 2
@@ -1002,10 +1562,98 @@
            {
             "material": {
              "kind": "solid",
-             "id": 172,
+             "id": 24,
              "data": 0
             },
-            "thickness": 1
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 0
+            },
+            "thickness": 3
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 2
+            },
+            "thickness": 2
            },
            {
             "material": {
@@ -1017,17 +1665,89 @@
            },
            {
             "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
             },
-            "thickness": 1
+            "thickness": 2
            },
            {
             "material": {
              "kind": "solid",
              "id": 24,
              "data": 0
+            },
+            "thickness": 3
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 2
             },
             "thickness": 2
            }
@@ -1131,93 +1851,41 @@
         "id": 24,
         "data": 0
        },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 2
-       },
        "thickness": 2
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 2
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -1231,6 +1899,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -1240,14 +1944,6 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
         "id": 24,
         "data": 0
        },
@@ -1255,17 +1951,37 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -1279,6 +1995,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -1288,14 +2040,6 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
         "id": 24,
         "data": 0
        },
@@ -1303,17 +2047,37 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -1327,6 +2091,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -1336,10 +2136,98 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
+        "id": 24,
         "data": 0
        },
-       "thickness": 1
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
       },
       {
        "material": {
@@ -1351,17 +2239,89 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
-       "thickness": 1
+       "thickness": 2
       },
       {
        "material": {
         "kind": "solid",
         "id": 24,
         "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
        },
        "thickness": 2
       }
@@ -1442,93 +2402,41 @@
         "id": 24,
         "data": 0
        },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 2
-       },
        "thickness": 2
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 2
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -1542,6 +2450,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -1551,14 +2495,6 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
         "id": 24,
         "data": 0
        },
@@ -1566,17 +2502,37 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -1590,6 +2546,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -1599,14 +2591,6 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
         "id": 24,
         "data": 0
        },
@@ -1614,17 +2598,37 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -1638,6 +2642,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -1647,10 +2687,98 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
+        "id": 24,
         "data": 0
        },
-       "thickness": 1
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
       },
       {
        "material": {
@@ -1662,17 +2790,89 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
-       "thickness": 1
+       "thickness": 2
       },
       {
        "material": {
         "kind": "solid",
         "id": 24,
         "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
        },
        "thickness": 2
       }
@@ -1830,93 +3030,41 @@
              "id": 24,
              "data": 0
             },
-            "thickness": 3
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 2
-            },
             "thickness": 2
            },
            {
             "material": {
-             "kind": "solid",
-             "id": 172,
-             "data": 0
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
-            },
-            "thickness": 2
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
-            },
-            "thickness": 2
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
-            },
-            "thickness": 3
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 2
-            },
-            "thickness": 2
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 172,
-             "data": 0
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
-            },
-            "thickness": 2
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
             },
             "thickness": 2
            },
@@ -1930,6 +3078,42 @@
            },
            {
             "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
              "kind": "solid",
              "id": 24,
              "data": 2
@@ -1939,14 +3123,6 @@
            {
             "material": {
              "kind": "solid",
-             "id": 172,
-             "data": 0
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
              "id": 24,
              "data": 0
             },
@@ -1954,17 +3130,37 @@
            },
            {
             "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
             },
             "thickness": 2
            },
@@ -1978,6 +3174,42 @@
            },
            {
             "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
              "kind": "solid",
              "id": 24,
              "data": 2
@@ -1987,14 +3219,6 @@
            {
             "material": {
              "kind": "solid",
-             "id": 172,
-             "data": 0
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
              "id": 24,
              "data": 0
             },
@@ -2002,17 +3226,37 @@
            },
            {
             "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
             },
             "thickness": 2
            },
@@ -2026,6 +3270,42 @@
            },
            {
             "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
              "kind": "solid",
              "id": 24,
              "data": 2
@@ -2035,10 +3315,98 @@
            {
             "material": {
              "kind": "solid",
-             "id": 172,
+             "id": 24,
              "data": 0
             },
-            "thickness": 1
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 0
+            },
+            "thickness": 3
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 2
+            },
+            "thickness": 2
            },
            {
             "material": {
@@ -2050,17 +3418,89 @@
            },
            {
             "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
             },
-            "thickness": 1
+            "thickness": 2
            },
            {
             "material": {
              "kind": "solid",
              "id": 24,
              "data": 0
+            },
+            "thickness": 3
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 2
             },
             "thickness": 2
            }
@@ -2164,93 +3604,41 @@
         "id": 24,
         "data": 0
        },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 2
-       },
        "thickness": 2
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 2
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -2264,6 +3652,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -2273,14 +3697,6 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
         "id": 24,
         "data": 0
        },
@@ -2288,17 +3704,37 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -2312,6 +3748,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -2321,14 +3793,6 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
         "id": 24,
         "data": 0
        },
@@ -2336,17 +3800,37 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -2360,6 +3844,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -2369,10 +3889,98 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
+        "id": 24,
         "data": 0
        },
-       "thickness": 1
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
       },
       {
        "material": {
@@ -2384,17 +3992,89 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
-       "thickness": 1
+       "thickness": 2
       },
       {
        "material": {
         "kind": "solid",
         "id": 24,
         "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
        },
        "thickness": 2
       }
@@ -2475,93 +4155,41 @@
         "id": 24,
         "data": 0
        },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 2
-       },
        "thickness": 2
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 2
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -2575,6 +4203,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -2584,14 +4248,6 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
         "id": 24,
         "data": 0
        },
@@ -2599,17 +4255,37 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -2623,6 +4299,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -2632,14 +4344,6 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
         "id": 24,
         "data": 0
        },
@@ -2647,17 +4351,37 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -2671,6 +4395,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -2680,10 +4440,98 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
+        "id": 24,
         "data": 0
        },
-       "thickness": 1
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
       },
       {
        "material": {
@@ -2695,17 +4543,89 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
-       "thickness": 1
+       "thickness": 2
       },
       {
        "material": {
         "kind": "solid",
         "id": 24,
         "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
        },
        "thickness": 2
       }
@@ -2836,93 +4756,41 @@
              "id": 24,
              "data": 0
             },
-            "thickness": 3
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 2
-            },
             "thickness": 2
            },
            {
             "material": {
-             "kind": "solid",
-             "id": 172,
-             "data": 0
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
-            },
-            "thickness": 2
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
-            },
-            "thickness": 2
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
-            },
-            "thickness": 3
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 2
-            },
-            "thickness": 2
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 172,
-             "data": 0
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
-            },
-            "thickness": 2
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
             },
             "thickness": 2
            },
@@ -2936,6 +4804,42 @@
            },
            {
             "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
              "kind": "solid",
              "id": 24,
              "data": 2
@@ -2945,14 +4849,6 @@
            {
             "material": {
              "kind": "solid",
-             "id": 172,
-             "data": 0
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
              "id": 24,
              "data": 0
             },
@@ -2960,17 +4856,37 @@
            },
            {
             "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
             },
             "thickness": 2
            },
@@ -2984,6 +4900,42 @@
            },
            {
             "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
              "kind": "solid",
              "id": 24,
              "data": 2
@@ -2993,14 +4945,6 @@
            {
             "material": {
              "kind": "solid",
-             "id": 172,
-             "data": 0
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
              "id": 24,
              "data": 0
             },
@@ -3008,17 +4952,37 @@
            },
            {
             "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
             },
             "thickness": 2
            },
@@ -3032,6 +4996,42 @@
            },
            {
             "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
              "kind": "solid",
              "id": 24,
              "data": 2
@@ -3041,10 +5041,98 @@
            {
             "material": {
              "kind": "solid",
-             "id": 172,
+             "id": 24,
              "data": 0
             },
-            "thickness": 1
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 0
+            },
+            "thickness": 3
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 2
+            },
+            "thickness": 2
            },
            {
             "material": {
@@ -3056,17 +5144,89 @@
            },
            {
             "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
             },
-            "thickness": 1
+            "thickness": 2
            },
            {
             "material": {
              "kind": "solid",
              "id": 24,
              "data": 0
+            },
+            "thickness": 3
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 2
             },
             "thickness": 2
            }
@@ -3410,93 +5570,41 @@
         "id": 24,
         "data": 0
        },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 2
-       },
        "thickness": 2
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 2
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -3510,6 +5618,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -3519,14 +5663,6 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
         "id": 24,
         "data": 0
        },
@@ -3534,17 +5670,37 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -3558,6 +5714,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -3567,14 +5759,6 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
         "id": 24,
         "data": 0
        },
@@ -3582,17 +5766,37 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -3606,6 +5810,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -3615,10 +5855,98 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
+        "id": 24,
         "data": 0
        },
-       "thickness": 1
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
       },
       {
        "material": {
@@ -3630,17 +5958,89 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
-       "thickness": 1
+       "thickness": 2
       },
       {
        "material": {
         "kind": "solid",
         "id": 24,
         "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
        },
        "thickness": 2
       }
@@ -3721,93 +6121,41 @@
         "id": 24,
         "data": 0
        },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 2
-       },
        "thickness": 2
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 2
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -3821,6 +6169,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -3830,14 +6214,6 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
         "id": 24,
         "data": 0
        },
@@ -3845,17 +6221,37 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -3869,6 +6265,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -3878,14 +6310,6 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
         "id": 24,
         "data": 0
        },
@@ -3893,17 +6317,37 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
        "thickness": 2
       },
@@ -3917,6 +6361,42 @@
       },
       {
        "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
         "kind": "solid",
         "id": 24,
         "data": 2
@@ -3926,10 +6406,98 @@
       {
        "material": {
         "kind": "solid",
-        "id": 172,
+        "id": 24,
         "data": 0
        },
-       "thickness": 1
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
       },
       {
        "material": {
@@ -3941,17 +6509,89 @@
       },
       {
        "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
        },
-       "thickness": 1
+       "thickness": 2
       },
       {
        "material": {
         "kind": "solid",
         "id": 24,
         "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
        },
        "thickness": 2
       }
@@ -4010,23 +6650,23 @@
              "palette": [
               {
                "kind": "solid",
-               "id": 1,
-               "data": 1
-              },
-              {
-               "kind": "solid",
-               "id": 1,
-               "data": 2
-              },
-              {
-               "kind": "solid",
-               "id": 45,
+               "id": 5,
                "data": 0
               },
               {
                "kind": "solid",
-               "id": 1,
-               "data": 1
+               "id": 5,
+               "data": 3
+              },
+              {
+               "kind": "solid",
+               "id": 5,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 5,
+               "data": 3
               }
              ]
             },
@@ -4092,93 +6732,41 @@
              "id": 24,
              "data": 0
             },
-            "thickness": 3
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 2
-            },
             "thickness": 2
            },
            {
             "material": {
-             "kind": "solid",
-             "id": 172,
-             "data": 0
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
-            },
-            "thickness": 2
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
-            },
-            "thickness": 2
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
-            },
-            "thickness": 3
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 2
-            },
-            "thickness": 2
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 172,
-             "data": 0
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
-            },
-            "thickness": 2
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
             },
             "thickness": 2
            },
@@ -4192,6 +6780,42 @@
            },
            {
             "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
              "kind": "solid",
              "id": 24,
              "data": 2
@@ -4201,14 +6825,6 @@
            {
             "material": {
              "kind": "solid",
-             "id": 172,
-             "data": 0
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
              "id": 24,
              "data": 0
             },
@@ -4216,17 +6832,37 @@
            },
            {
             "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
             },
             "thickness": 2
            },
@@ -4240,6 +6876,42 @@
            },
            {
             "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
              "kind": "solid",
              "id": 24,
              "data": 2
@@ -4249,14 +6921,6 @@
            {
             "material": {
              "kind": "solid",
-             "id": 172,
-             "data": 0
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
              "id": 24,
              "data": 0
             },
@@ -4264,17 +6928,37 @@
            },
            {
             "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
-            },
-            "thickness": 1
-           },
-           {
-            "material": {
-             "kind": "solid",
-             "id": 24,
-             "data": 0
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
             },
             "thickness": 2
            },
@@ -4288,6 +6972,42 @@
            },
            {
             "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
              "kind": "solid",
              "id": 24,
              "data": 2
@@ -4297,10 +7017,98 @@
            {
             "material": {
              "kind": "solid",
-             "id": 172,
+             "id": 24,
              "data": 0
             },
-            "thickness": 1
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 0
+            },
+            "thickness": 3
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 2
+            },
+            "thickness": 2
            },
            {
             "material": {
@@ -4312,17 +7120,1830 @@
            },
            {
             "material": {
-             "kind": "solid",
-             "id": 159,
-             "data": 1
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
             },
-            "thickness": 1
+            "thickness": 2
            },
            {
             "material": {
              "kind": "solid",
              "id": 24,
              "data": 0
+            },
+            "thickness": 3
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 2
+            },
+            "thickness": 2
+           }
+          ]
+         },
+         "beyond": {
+          "kind": "cell",
+          "cellSize": 2,
+          "seed": 8,
+          "palette": [
+           {
+            "kind": "solid",
+            "id": 1,
+            "data": 0
+           },
+           {
+            "kind": "solid",
+            "id": 1,
+            "data": 5
+           },
+           {
+            "kind": "solid",
+            "id": 1,
+            "data": 0
+           },
+           {
+            "kind": "solid",
+            "id": 4,
+            "data": 0
+           }
+          ],
+          "rise": 2
+         }
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "wash-floor": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "layered",
+    "axis": "height",
+    "from": -40,
+    "follow": 100,
+    "reach": 16,
+    "stack": {
+     "ending": "repeat",
+     "bands": [
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 8,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 4,
+          "data": 0
+         }
+        ],
+        "rise": 2
+       },
+       "thickness": 30
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
+      }
+     ]
+    },
+    "beyond": {
+     "kind": "cell",
+     "cellSize": 2,
+     "seed": 8,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 2
+    }
+   },
+   "fill": {
+    "kind": "layered",
+    "axis": "height",
+    "from": -40,
+    "follow": 100,
+    "reach": 16,
+    "stack": {
+     "ending": "repeat",
+     "bands": [
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 8,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 4,
+          "data": 0
+         }
+        ],
+        "rise": 2
+       },
+       "thickness": 30
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "cell",
+        "cellSize": 2,
+        "seed": 65,
+        "palette": [
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 172,
+          "data": 0
+         }
+        ],
+        "rise": 1
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
+      }
+     ]
+    },
+    "beyond": {
+     "kind": "cell",
+     "cellSize": 2,
+     "seed": 8,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 2
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 20,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 67,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 4,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 13,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 4,
+               "data": 0
+              }
+             ]
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 1,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 70,
+        "material": {
+         "kind": "layered",
+         "axis": "height",
+         "from": -40,
+         "follow": 100,
+         "reach": 16,
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 8,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 5
+              },
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 4,
+               "data": 0
+              }
+             ],
+             "rise": 2
+            },
+            "thickness": 30
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 0
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 0
+            },
+            "thickness": 3
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 2
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 0
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 0
+            },
+            "thickness": 3
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 2
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 0
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 0
+            },
+            "thickness": 3
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 2
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 0
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 0
+            },
+            "thickness": 3
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 2
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 0
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 0
+            },
+            "thickness": 3
+           },
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 2,
+             "seed": 65,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 172,
+               "data": 0
+              }
+             ],
+             "rise": 1
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 2
             },
             "thickness": 2
            }
@@ -4396,6 +9017,43 @@
     "material": {
      "kind": "solid",
      "id": 81,
+     "data": 0
+    }
+   }
+  },
+  "dead-bush": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "boundary",
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 32,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 32,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 32,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 32,
      "data": 0
     }
    }
@@ -5011,6 +9669,128 @@
      "roughness": 0.4,
      "crown": 0,
      "seed": 4
+    },
+    {
+     "id": "mesa-west",
+     "ring": [
+      [
+       -94.2,
+       6.0
+      ],
+      [
+       -94.9,
+       7.6
+      ],
+      [
+       -96.2,
+       8.9
+      ],
+      [
+       -97.4,
+       9.9
+      ],
+      [
+       -98.4,
+       11.1
+      ],
+      [
+       -99.5,
+       12.4
+      ],
+      [
+       -101.1,
+       13.4
+      ],
+      [
+       -103.0,
+       13.7
+      ],
+      [
+       -104.8,
+       13.1
+      ],
+      [
+       -106.3,
+       12.0
+      ],
+      [
+       -107.5,
+       10.9
+      ],
+      [
+       -108.8,
+       10.0
+      ],
+      [
+       -110.3,
+       9.1
+      ],
+      [
+       -111.4,
+       7.7
+      ],
+      [
+       -111.8,
+       6.0
+      ],
+      [
+       -111.1,
+       4.4
+      ],
+      [
+       -109.8,
+       3.1
+      ],
+      [
+       -108.6,
+       2.1
+      ],
+      [
+       -107.6,
+       0.9
+      ],
+      [
+       -106.5,
+       -0.4
+      ],
+      [
+       -104.9,
+       -1.4
+      ],
+      [
+       -103.0,
+       -1.7
+      ],
+      [
+       -101.2,
+       -1.1
+      ],
+      [
+       -99.7,
+       0.0
+      ],
+      [
+       -98.5,
+       1.1
+      ],
+      [
+       -97.2,
+       2.0
+      ],
+      [
+       -95.7,
+       2.9
+      ],
+      [
+       -94.6,
+       4.3
+      ]
+     ],
+     "amount": 8,
+     "falloff": 3,
+     "roughness": 0.4,
+     "crown": 0,
+     "seed": 14
     },
     {
      "id": "dune",
@@ -5837,25 +10617,151 @@
    "group": "team"
   },
   {
+   "id": "wash-floor",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     -57,
+     -8
+    ],
+    [
+     -50.5,
+     -5.2
+    ],
+    [
+     -52,
+     -6
+    ],
+    [
+     -60,
+     -11
+    ],
+    [
+     -59,
+     -14
+    ],
+    [
+     -55,
+     -17
+    ],
+    [
+     -50,
+     -18
+    ],
+    [
+     -44.0,
+     -16.1
+    ],
+    [
+     -42.6,
+     -15.0
+    ],
+    [
+     -41.3,
+     -14.0
+    ],
+    [
+     -39.9,
+     -12.9
+    ],
+    [
+     -38.5,
+     -11.4
+    ],
+    [
+     -37.2,
+     -9.0
+    ],
+    [
+     -36.4,
+     -5.7
+    ],
+    [
+     -36.3,
+     -2.0
+    ],
+    [
+     -36.9,
+     1.5
+    ],
+    [
+     -37.9,
+     4.3
+    ],
+    [
+     -39.1,
+     6.4
+    ],
+    [
+     -40.2,
+     8.3
+    ],
+    [
+     -41.2,
+     10.3
+    ],
+    [
+     -42.5,
+     12.3
+    ],
+    [
+     -44.0,
+     13.9
+    ],
+    [
+     -45.7,
+     14.2
+    ],
+    [
+     -47.4,
+     13.1
+    ],
+    [
+     -48.7,
+     10.5
+    ],
+    [
+     -49.4,
+     7.3
+    ],
+    [
+     -49.8,
+     4.0
+    ],
+    [
+     -50.0,
+     0.9
+    ],
+    [
+     -50.3,
+     -2.0
+    ]
+   ],
+   "base_height": 20,
+   "theme": "wash-floor",
+   "group": "team"
+  },
+  {
    "id": "cactus-bed-0",
    "type": "polygon",
    "operation": "add",
    "vertices": [
     [
-     -101,
-     1
+     -91,
+     -3
     ],
     [
-     -98,
-     1
+     -88,
+     -3
     ],
     [
-     -98,
-     4
+     -88,
+     0
     ],
     [
-     -101,
-     4
+     -91,
+     0
     ]
    ],
    "base_height": 20,
@@ -5868,20 +10774,20 @@
    "operation": "add",
    "vertices": [
     [
-     -99,
-     13
+     -101,
+     19
     ],
     [
-     -96,
-     13
+     -98,
+     19
     ],
     [
-     -96,
-     16
+     -98,
+     22
     ],
     [
-     -99,
-     16
+     -101,
+     22
     ]
    ],
    "base_height": 20,
@@ -6012,6 +10918,188 @@
     [
      -57,
      11
+    ]
+   ],
+   "base_height": 20,
+   "theme": "sand-bed",
+   "group": "team"
+  },
+  {
+   "id": "cactus-bed-7",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     -101,
+     -39
+    ],
+    [
+     -98,
+     -39
+    ],
+    [
+     -98,
+     -36
+    ],
+    [
+     -101,
+     -36
+    ]
+   ],
+   "base_height": 20,
+   "theme": "sand-bed",
+   "group": "team"
+  },
+  {
+   "id": "cactus-bed-8",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     -79,
+     -19
+    ],
+    [
+     -76,
+     -19
+    ],
+    [
+     -76,
+     -16
+    ],
+    [
+     -79,
+     -16
+    ]
+   ],
+   "base_height": 20,
+   "theme": "sand-bed",
+   "group": "team"
+  },
+  {
+   "id": "cactus-bed-9",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     -31,
+     -11
+    ],
+    [
+     -28,
+     -11
+    ],
+    [
+     -28,
+     -8
+    ],
+    [
+     -31,
+     -8
+    ]
+   ],
+   "base_height": 20,
+   "theme": "sand-bed",
+   "group": "team"
+  },
+  {
+   "id": "cactus-bed-10",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     -43,
+     -43
+    ],
+    [
+     -40,
+     -43
+    ],
+    [
+     -40,
+     -40
+    ],
+    [
+     -43,
+     -40
+    ]
+   ],
+   "base_height": 20,
+   "theme": "sand-bed",
+   "group": "team"
+  },
+  {
+   "id": "cactus-bed-11",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     -21,
+     -39
+    ],
+    [
+     -18,
+     -39
+    ],
+    [
+     -18,
+     -36
+    ],
+    [
+     -21,
+     -36
+    ]
+   ],
+   "base_height": 20,
+   "theme": "sand-bed",
+   "group": "team"
+  },
+  {
+   "id": "cactus-bed-12",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     -27,
+     29
+    ],
+    [
+     -24,
+     29
+    ],
+    [
+     -24,
+     32
+    ],
+    [
+     -27,
+     32
+    ]
+   ],
+   "base_height": 20,
+   "theme": "sand-bed",
+   "group": "team"
+  },
+  {
+   "id": "cactus-bed-13",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     -67,
+     7
+    ],
+    [
+     -64,
+     7
+    ],
+    [
+     -64,
+     10
+    ],
+    [
+     -67,
+     10
     ]
    ],
    "base_height": 20,
@@ -6223,10 +11311,10 @@
    "shapes": [
     {
      "type": "rectangle",
-     "min_x": -100,
-     "min_z": 2,
-     "max_x": -99,
-     "max_z": 3,
+     "min_x": -90,
+     "min_z": -2,
+     "max_x": -89,
+     "max_z": -1,
      "floor": 21,
      "base_height": 2,
      "theme": "cactus",
@@ -6236,10 +11324,10 @@
     },
     {
      "type": "rectangle",
-     "min_x": -98,
-     "min_z": 14,
-     "max_x": -97,
-     "max_z": 15,
+     "min_x": -100,
+     "min_z": 20,
+     "max_x": -99,
+     "max_z": 21,
      "floor": 21,
      "base_height": 3,
      "theme": "cactus",
@@ -6326,6 +11414,122 @@
       "cacti-4",
       "cacti-5",
       "cacti-6"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dead-bushes",
+   "name": "dead-bushes",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "dead-bushes",
+   "shapes": [
+    {
+     "type": "rectangle",
+     "min_x": -100,
+     "min_z": -38,
+     "max_x": -99,
+     "max_z": -37,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "dead-bush",
+     "keepClear": false,
+     "id": "dead-bushes-0",
+     "operation": "add"
+    },
+    {
+     "type": "rectangle",
+     "min_x": -78,
+     "min_z": -18,
+     "max_x": -77,
+     "max_z": -17,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "dead-bush",
+     "keepClear": false,
+     "id": "dead-bushes-1",
+     "operation": "add"
+    },
+    {
+     "type": "rectangle",
+     "min_x": -30,
+     "min_z": -10,
+     "max_x": -29,
+     "max_z": -9,
+     "floor": 17,
+     "base_height": 1,
+     "theme": "dead-bush",
+     "keepClear": false,
+     "id": "dead-bushes-2",
+     "operation": "add"
+    },
+    {
+     "type": "rectangle",
+     "min_x": -42,
+     "min_z": -42,
+     "max_x": -41,
+     "max_z": -41,
+     "floor": 19,
+     "base_height": 1,
+     "theme": "dead-bush",
+     "keepClear": false,
+     "id": "dead-bushes-3",
+     "operation": "add"
+    },
+    {
+     "type": "rectangle",
+     "min_x": -20,
+     "min_z": -38,
+     "max_x": -19,
+     "max_z": -37,
+     "floor": 17,
+     "base_height": 1,
+     "theme": "dead-bush",
+     "keepClear": false,
+     "id": "dead-bushes-4",
+     "operation": "add"
+    },
+    {
+     "type": "rectangle",
+     "min_x": -26,
+     "min_z": 30,
+     "max_x": -25,
+     "max_z": 31,
+     "floor": 17,
+     "base_height": 1,
+     "theme": "dead-bush",
+     "keepClear": false,
+     "id": "dead-bushes-5",
+     "operation": "add"
+    },
+    {
+     "type": "rectangle",
+     "min_x": -66,
+     "min_z": 8,
+     "max_x": -65,
+     "max_z": 9,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "dead-bush",
+     "keepClear": false,
+     "id": "dead-bushes-6",
+     "operation": "add"
+    }
+   ],
+   "groups": [
+    {
+     "id": "dead-bushes-body",
+     "name": "dead-bushes",
+     "mirrors": true,
+     "shapeIds": [
+      "dead-bushes-0",
+      "dead-bushes-1",
+      "dead-bushes-2",
+      "dead-bushes-3",
+      "dead-bushes-4",
+      "dead-bushes-5",
+      "dead-bushes-6"
      ]
     }
    ]
@@ -6592,7 +11796,472 @@
   }
  ],
  "roomStyles": {
-  "spawn": "@sb-spawn"
+  "spawn": {
+   "foundation": {
+    "plate": {
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        "thickness": 1
+       }
+      ],
+      "ending": "repeat"
+     },
+     "extent": 1
+    },
+    "surface": {
+     "field": null,
+     "border": null,
+     "borderWidth": 1,
+     "inlay": null,
+     "inlayInset": 2,
+     "isPlain": true
+    },
+    "footing": null
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 1,
+    "slab": 126,
+    "slabData": 3,
+    "overhang": 1,
+    "ridgeCap": false,
+    "hole": false,
+    "body": {
+     "kind": "solid",
+     "id": 5,
+     "data": 3
+    },
+    "verge": {
+     "kind": "solid",
+     "id": 5,
+     "data": 3
+    },
+    "gable": {
+     "kind": "solid",
+     "id": 172,
+     "data": 0
+    },
+    "gableWindows": {
+     "form": "open",
+     "block": 102,
+     "hostBlock": -1,
+     "hostData": 0,
+     "data": 0,
+     "sill": 2,
+     "width": 1,
+     "height": 1,
+     "spacing": 3
+    }
+   },
+   "wall": {
+    "stack": {
+     "ending": "repeat",
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 1
+      }
+     ]
+    },
+    "extent": 5
+   },
+   "post": {
+    "kind": "solid",
+    "id": 1,
+    "data": 6
+   },
+   "windows": {
+    "form": "none",
+    "block": 102,
+    "hostBlock": -1,
+    "hostData": 0,
+    "data": 0,
+    "sill": 2,
+    "width": 2,
+    "height": 2,
+    "spacing": 3
+   },
+   "storeys": [
+    {
+     "clear": 5,
+     "wall": {
+      "stack": {
+       "ending": "repeat",
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         "thickness": 1
+        }
+       ]
+      },
+      "extent": 5
+     },
+     "post": {
+      "kind": "solid",
+      "id": 1,
+      "data": 6
+     },
+     "windows": {
+      "form": "pane",
+      "block": 160,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 3,
+      "width": 2,
+      "height": 2,
+      "spacing": 3
+     },
+     "surface": {
+      "field": null,
+      "border": null,
+      "borderWidth": 1,
+      "inlay": null,
+      "inlayInset": 2,
+      "isPlain": true
+     },
+     "deck": null,
+     "headroom": 5
+    },
+    {
+     "clear": 4,
+     "wall": {
+      "stack": {
+       "ending": "repeat",
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         "thickness": 1
+        }
+       ]
+      },
+      "extent": 4
+     },
+     "post": {
+      "kind": "solid",
+      "id": 1,
+      "data": 6
+     },
+     "windows": {
+      "form": "stairLattice",
+      "block": 134,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 2,
+      "width": 2,
+      "height": 2,
+      "spacing": 3
+     },
+     "surface": {
+      "field": null,
+      "border": null,
+      "borderWidth": 1,
+      "inlay": null,
+      "inlayInset": 2,
+      "isPlain": true
+     },
+     "deck": null,
+     "headroom": 4
+    }
+   ],
+   "porch": null,
+   "front": null,
+   "doorway": {
+    "door": "air",
+    "head": {
+     "form": "none",
+     "block": 53,
+     "fill": "upperSlab",
+     "fillBlock": 126,
+     "fillData": 0
+    },
+    "width": 2,
+    "height": 3
+   }
+  }
  },
  "dressing": {
   "styles": {
@@ -11512,23 +17181,23 @@
      "palette": [
       {
        "kind": "solid",
-       "id": 1,
-       "data": 1
-      },
-      {
-       "kind": "solid",
-       "id": 1,
-       "data": 2
-      },
-      {
-       "kind": "solid",
-       "id": 45,
+       "id": 5,
        "data": 0
       },
       {
        "kind": "solid",
-       "id": 1,
-       "data": 1
+       "id": 5,
+       "data": 3
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 3
       }
      ]
     },
@@ -11538,11 +17207,11 @@
       31
      ],
      [
-      -96,
+      -94,
       20
      ],
      [
-      -90,
+      -88,
       8
      ],
      [
@@ -11571,23 +17240,23 @@
      "palette": [
       {
        "kind": "solid",
-       "id": 1,
-       "data": 1
-      },
-      {
-       "kind": "solid",
-       "id": 1,
-       "data": 2
-      },
-      {
-       "kind": "solid",
-       "id": 45,
+       "id": 5,
        "data": 0
       },
       {
        "kind": "solid",
-       "id": 1,
-       "data": 1
+       "id": 5,
+       "data": 3
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 3
       }
      ]
     },
@@ -11642,23 +17311,23 @@
      "palette": [
       {
        "kind": "solid",
-       "id": 1,
-       "data": 1
-      },
-      {
-       "kind": "solid",
-       "id": 1,
-       "data": 2
-      },
-      {
-       "kind": "solid",
-       "id": 45,
+       "id": 5,
        "data": 0
       },
       {
        "kind": "solid",
-       "id": 1,
-       "data": 1
+       "id": 5,
+       "data": 3
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 3
       }
      ]
     },
@@ -11689,23 +17358,23 @@
      "palette": [
       {
        "kind": "solid",
-       "id": 1,
-       "data": 1
-      },
-      {
-       "kind": "solid",
-       "id": 1,
-       "data": 2
-      },
-      {
-       "kind": "solid",
-       "id": 45,
+       "id": 5,
        "data": 0
       },
       {
        "kind": "solid",
-       "id": 1,
-       "data": 1
+       "id": 5,
+       "data": 3
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 3
       }
      ]
     },
@@ -11740,23 +17409,23 @@
      "palette": [
       {
        "kind": "solid",
-       "id": 1,
-       "data": 1
-      },
-      {
-       "kind": "solid",
-       "id": 1,
-       "data": 2
-      },
-      {
-       "kind": "solid",
-       "id": 45,
+       "id": 5,
        "data": 0
       },
       {
        "kind": "solid",
-       "id": 1,
-       "data": 1
+       "id": 5,
+       "data": 3
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 3
       }
      ]
     },
@@ -11775,7 +17444,7 @@
      ],
      [
       -81,
-      -29
+      -27
      ]
     ]
    },
@@ -11795,46 +17464,34 @@
      "palette": [
       {
        "kind": "solid",
-       "id": 1,
-       "data": 1
-      },
-      {
-       "kind": "solid",
-       "id": 1,
-       "data": 2
-      },
-      {
-       "kind": "solid",
-       "id": 45,
+       "id": 5,
        "data": 0
       },
       {
        "kind": "solid",
-       "id": 1,
-       "data": 1
+       "id": 5,
+       "data": 3
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 3
       }
      ]
     },
     "points": [
      [
-      -81,
-      -29
-     ],
-     [
-      -73,
-      -27
-     ],
-     [
-      -66,
-      -29
-     ],
-     [
-      -56,
-      -29
+      -55,
+      -23
      ],
      [
       -47,
-      -27
+      -26
      ],
      [
       -36,
@@ -11847,53 +17504,6 @@
      [
       -10,
       -30
-     ]
-    ]
-   },
-   {
-    "kind": "stroke",
-    "id": "path-d-porch",
-    "seed": 48,
-    "style": "solid",
-    "radius": 1.5,
-    "claimsGround": true,
-    "wander": 0,
-    "wanderLength": 14,
-    "pave": {
-     "kind": "cell",
-     "cellSize": 2,
-     "seed": 21,
-     "palette": [
-      {
-       "kind": "solid",
-       "id": 1,
-       "data": 1
-      },
-      {
-       "kind": "solid",
-       "id": 1,
-       "data": 2
-      },
-      {
-       "kind": "solid",
-       "id": 45,
-       "data": 0
-      },
-      {
-       "kind": "solid",
-       "id": 1,
-       "data": 1
-      }
-     ]
-    },
-    "points": [
-     [
-      -55,
-      -23
-     ],
-     [
-      -51,
-      -27
      ]
     ]
    },
@@ -11913,23 +17523,23 @@
      "palette": [
       {
        "kind": "solid",
-       "id": 1,
-       "data": 1
-      },
-      {
-       "kind": "solid",
-       "id": 1,
-       "data": 2
-      },
-      {
-       "kind": "solid",
-       "id": 45,
+       "id": 5,
        "data": 0
       },
       {
        "kind": "solid",
-       "id": 1,
-       "data": 1
+       "id": 5,
+       "data": 3
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 3
       }
      ]
     },
@@ -12235,14 +17845,6 @@
     "z": 22,
     "style": "rock",
     "seed": 9
-   },
-   {
-    "kind": "boulder",
-    "id": "b3",
-    "x": -57,
-    "z": -12,
-    "style": "rock",
-    "seed": 10
    },
    {
     "kind": "boulder",

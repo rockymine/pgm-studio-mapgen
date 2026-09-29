@@ -394,3 +394,23 @@ trunk, four branches, a flattened dome, and curtains hanging from its widest rin
 
 **The willow took three drives to read as one.** Curtains taken from the dome's underside hung by the trunk,
 and curtains on every rim column made a block of leaves; a fifth to half of the rim left open is what reads.
+
+## The eighth pass: the author's third round on Gypsum Reach
+
+**The author reopened note 56 and left five new notes, 65–69, and resolved most of the second round.** Each was
+worked and answered in its thread at revision 66 with a picture.
+
+| id | the author said | what changed |
+|---|---|---|
+| 56 | a path against the mesa's cliff face, which was not asked for | the spring path starts at the third house's door; the east-west run along the mesa's foot is gone |
+| 65 | clay lines two deep, hardened clay only, no orange, broken up with the sandstone | two `cell` lines of hardened clay and sandstone, three to two, two courses each |
+| 66 | oak and jungle planks for the paths; dead bushes on the sand | the paving and the plaza replanked; seven dead bushes a team on a made layer, in sand patches |
+| 67 | the pit's floor in stone, cobble and gravel; its boulder removed | a patch over the wash's outline with that floor, the banks keeping the beds |
+| 68 | another, slightly smaller mesa | a push of 8 on the back coast, 16 × 14 |
+| 69 | the spawn room in the other house style | the shipped spawn room repainted as the houses |
+
+**The first clay pattern came out as solid lines.** Three blocks of clay to one of sandstone at cell size 2
+read as clay with a fleck in it; three to two reads as a broken line.
+
+**A new mesa by a path puts the path against a cliff again**, which is the fault note 56 named, so the monument
+path was moved east of the new mesa's foot before it was built.

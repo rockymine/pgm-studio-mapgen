@@ -20,6 +20,11 @@ andesite in alternate courses, clay gables and jungle roofs; the wash reaches fu
 lies under the monument; the lip ruins stand on the ground; the island is cut ragged; a path network reaches
 every house, the bridge from both ends and the frontline's edge; and cacti stand on the open sand.
 
+Fifth pass, after the author's notes 56 and 65–69: no path along the mesa's cliff; two broken lines of
+hardened clay in the beds and no orange; paths and plaza in oak and jungle planks; dead bushes on the sand;
+the wash floored in stone, cobble and gravel with no boulder; a second, smaller mesa on the back coast; and
+the spawn room in the houses' style.
+
 Team 0 is the west half (x < 0); rot_180 fans the rest.
 """
 import json, os, sys
@@ -71,7 +76,10 @@ plan = {
 #
 # Under the sand: stone and andesite to ten blocks below the ground, then sandstone beds with one bed of
 # hardened clay and one thin orange bed, following the ground so the mesa and the wash cut through them.
-SANDSTONE_BEDS = [(S(24, 0), 3), (S(24, 2), 2), (S(172), 1), (S(24, 0), 2), (S(159, 1), 1), (S(24, 0), 2)]
+# Note 65: two lines of hardened clay, each two courses deep, broken up by the sandstone around them, and no
+# orange clay.
+CLAY_LINE = cell([S(172), S(24, 0), S(172), S(24, 0), S(172)], size=2, seed=65, rise=1)
+SANDSTONE_BEDS = [(S(24, 0), 2), (CLAY_LINE, 2), (S(24, 0), 3), (CLAY_LINE, 2), (S(24, 2), 2)]
 STRATA = beds([(ROCK, 30)] + SANDSTONE_BEDS * 5, start=-40, beyond=ROCK)
 
 SAND = noise([S(24, 0), S(12), S(12), S(12)], scale=2, seed=11)
@@ -96,8 +104,11 @@ rail = one(S(85))
 cactus = one(S(81))
 sand_bed = theme(depth(S(12), S(12)), wall=S(12), fill=S(12))
 
-PAVE = cell([S(1, 1), S(1, 2), S(45), S(1, 1)], size=2, seed=21)
+# Note 66: the paths and the plaza in oak and jungle planks; granite and brick did not sit on sand.
+PAVE = cell([S(5, 0), S(5, 3), S(5, 0), S(5, 3)], size=2, seed=21)
 plaza = theme(by_slope((30, depth(PAVE, S(24, 0))), (60, STRATA)), wall=STRATA, fill=STRATA)
+wash_floor = theme(by_slope((20, depth(cell([S(1), S(4), S(13), S(1), S(4)], 2, 67), S(1))), (70, STRATA)),
+                   wall=STRATA, fill=STRATA)
 
 # --- the ground ------------------------------------------------------------------------------------------
 # The wash's outline, carried a little further in toward the monument south of the bridge (note 52): the
@@ -130,6 +141,10 @@ relief = {"team": {
 
         {"id": "mesa", "ring": ring(-70, -40, 16, 10, wobble=0.1, lobes=4),
          "amount": 10, "falloff": 3, "roughness": 0.4, "crown": 0, "seed": 4},
+        # a second, smaller mesa on the back coast north of the monument (note 68), hanging off the edge the way
+        # the first hangs off the south coast
+        {"id": "mesa-west", "ring": ring(-103, 6, 8, 7, wobble=0.1, lobes=4, phase=0.3),
+         "amount": 8, "falloff": 3, "roughness": 0.4, "crown": 0, "seed": 14},
         # a dune ridge off the back coast, south of the spawn, so the back of the field rises
         {"id": "dune", "ring": ring(-110, -20, 8, 14, wobble=0.15, lobes=3, turn=-10),
          "amount": 6, "falloff": 10, "roughness": 0.3, "crown": 0, "seed": 6},
@@ -161,12 +176,20 @@ layers = made([
 # The studio paints the ground under a made column with its theme's fill, and a 1.8 cactus off sand breaks
 # at the first block update beside it. So each cactus stands in a small patch whose fill is sand; a made layer
 # of sand under it would not do, because a made layer does not replace the ground's own blocks.
-CACTI = [(-100, 2, 20, 2), (-98, 14, 20, 3), (-96, -40, 20, 1), (-101, -22, 20, 2),
+CACTI = [(-90, -2, 20, 2), (-100, 20, 20, 3), (-96, -40, 20, 1), (-101, -22, 20, 2),
          (-40, -45, 17, 3), (-30, 42, 15, 2), (-56, 9, 18, 1)]
 cacti = props.LayerBuilder("cacti")
 for x, z, top, tall in CACTI:
     cacti.rect(x, z, x + 1, z + 1, top + 1, tall, "cactus", keepClear=False)
 layers += made(cacti.done(), "cacti")
+# Dead bushes on the open sand (note 66), on a made layer for the same reason and each in the same sand patch:
+# a 1.8 dead bush also wants sand under it.
+BUSHES = [(-100, -38, 20), (-78, -18, 20), (-30, -10, 16), (-42, -42, 18), (-20, -38, 16), (-26, 30, 16),
+          (-66, 8, 19)]
+bushes = props.LayerBuilder("dead-bushes")
+for x, z, top in BUSHES:
+    bushes.rect(x, z, x + 1, z + 1, top + 1, 1, "dead-bush", keepClear=False)
+layers += made(bushes.done(), "dead-bushes")
 # Ruined walls along the lip, cover where a crossing lands.
 # Each stands from y14, below the lip's ground (top course y16 in the north, y17 in the south), so no column of
 # it floats (note 54): the seat on the ground did not lower them, and `column` under each is the check.
@@ -185,9 +208,11 @@ shapes = [
     patch("hamlet-yard", ring(-88, 18, 8, 6, 20, 0.15, 3), "worn", SURFACE, group="team"),
     # an irregular plaza of the path's own paving under the monument (note 53)
     patch("plaza", ring(-70, -2, 8, 6, 22, 0.25, 4, 0.3), "plaza", SURFACE, group="team"),
+    # the wash's floor in stone, cobble and gravel; its banks keep the beds (note 67)
+    patch("wash-floor", WASH, "wash-floor", SURFACE, group="team"),
 ] + [
     patch(f"cactus-bed-{i}", [[x - 1, z - 1], [x + 2, z - 1], [x + 2, z + 2], [x - 1, z + 2]], "sand-bed", SURFACE,
-          group="team") for i, (x, z, _, _) in enumerate(CACTI)
+          group="team") for i, (x, z) in enumerate([(c[0], c[1]) for c in CACTI + BUSHES])
 ]
 
 # --- the dressing ---------------------------------------------------------------------------------------
@@ -212,6 +237,11 @@ def stone_walls(shell):
     return shell
 
 stonehouse = house_style("hw-stonehouse")
+# The spawn room in the houses' own style (note 69), forked from the shipped spawn room so its entry and floor
+# stay what a room needs.
+SPAWN_ROOM = json.load(open(os.path.join(os.path.dirname(os.path.dirname(HERE)), "tools", "styles",
+                                         "sb-spawn.json")))
+stone_walls(SPAWN_ROOM)
 stone_walls(stonehouse["shell"])
 styles["stonehouse"] = stonehouse
 # One kind of rock (note 40): the larger angular boulder; the small round one read as a stone box.
@@ -220,15 +250,14 @@ styles["rock"] = boulder_style(cell([S(1), S(1, 5), S(1), S(4)], 2, 51), form="a
 props_ = [
     # the path network (notes 56-59): every house reached, the bridge reached from both ends, and every road
     # that heads for the front run on until the ground ends
-    path("path-mon", 41, [[-97, 31], [-96, 20], [-90, 8], [-80, 1], [-76, -1]], PAVE),
+    path("path-mon", 41, [[-97, 31], [-94, 20], [-88, 8], [-80, 1], [-76, -1]], PAVE),
     path("path-hamlet", 42, [[-96, 22], [-86, 15], [-72, 14], [-58, 13], [-46, 17], [-32, 15], [-24, 12],
                              [-17, 12]], PAVE),
     path("path-bridge-west", 43, [[-64, -2], [-55, -2]], PAVE, radius=2, wander=0),
     path("path-bridge-east", 44, [[-32, -2], [-26, -3], [-17, -5]], PAVE, radius=2, wander=1),
-    path("path-houses", 45, [[-76, -7], [-81, -11], [-81, -20], [-81, -29]], PAVE),
-    path("path-spring", 46, [[-81, -29], [-73, -27], [-66, -29], [-56, -29], [-47, -27], [-36, -27],
-                             [-24, -26], [-10, -30]], PAVE),
-    path("path-d-porch", 48, [[-55, -23], [-51, -27]], PAVE, wander=0),
+    path("path-houses", 45, [[-76, -7], [-81, -11], [-81, -20], [-81, -27]], PAVE),
+    # the third house's path runs from its door east to the lip, and no longer along the mesa's cliff (note 56)
+    path("path-spring", 46, [[-55, -23], [-47, -26], [-36, -27], [-24, -26], [-10, -30]], PAVE),
     path("path-oasis", 47, [[-45, 17], [-45, 27], [-41, 36]], PAVE, wander=1),
     # the houses, moved out of the spawn's way (note 37): two behind the monument, one by the spring, and two
     # on the oasis's rim
@@ -247,7 +276,7 @@ props_ = [
     tree("t-mesa", -72, -40, "tree-showcase-r8-3", 8),
     # rocks at the wash's head, the mesa top, the lip and the middle island
     boulder("b1", -36, -40, "rock", 8), boulder("b2", -36, 22, "rock", 9),
-    boulder("b3", -57, -12, "rock", 10), boulder("b4", -24, -18, "rock", 11),
+    boulder("b4", -24, -18, "rock", 11),
     boulder("b-mesa-1", -64, -43, "rock", 12), boulder("b-mesa-2", -77, -37, "rock", 13),
     boulder("b-isle", -1, -9, "rock", 14),
     # the grass carries a little cover, and none of it tall
@@ -260,7 +289,7 @@ finish = {
     "authors": ["Opus 5.5"],
     "biome": {"kind": "solid", "id": 2},
     "themes": {"desert": desert, "oasis": oasis, "worn": worn, "masonry": masonry,
-               "deck": deck, "post": post, "rail": rail, "plaza": plaza, "cactus": cactus, "sand-bed": sand_bed},
+               "deck": deck, "post": post, "rail": rail, "plaza": plaza, "wash-floor": wash_floor, "cactus": cactus, "dead-bush": one(S(32)), "sand-bed": sand_bed},
     "mapTheme": "desert",
     "relief": relief,
     # The frontline (note 36): pushed out toward the island south of it and pulled in north of it, t along
@@ -276,7 +305,7 @@ finish = {
         "isle-18": coast_edits(ISLE, {e: ISLE_CUTS[e % 2] for e in range(4)})},
     "addShapes": shapes,
     "addLayers": layers,
-    "roomStyles": {"spawn": "@sb-spawn"},
+    "roomStyles": {"spawn": SPAWN_ROOM},
     "dressing": {"styles": styles, "props": props_},
 }
 
