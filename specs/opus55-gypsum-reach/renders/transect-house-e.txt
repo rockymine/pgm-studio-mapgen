@@ -1,51 +1,51 @@
 ## house-e (house) along x
-TRANSECT 24 stations from (-62, 41) to (-39, 41), every 1
+TRANSECT 24 stations from (-52, 41) to (-29, 41), every 1
   station        ground  surface  water  top  standing            step
-  (  -62,    41)      18       18           18  tree t2             
-  (  -61,    41)      18       18           18  tree t2             
-  (  -60,    41)      18       18           18                      
-  (  -59,    41)      18       18           18                      
-  (  -58,    41)      18       18           18                      
-  (  -57,    41)      18       18           18                      
-  (  -56,    41)      18       18           18                      
-  (  -55,    41)      18       18           32  house house-e       
-  (  -54,    41)      18       18           32  house house-e       
-  (  -53,    41)      18       18           32  house house-e       
-  (  -52,    41)      18       18           32  house house-e       
-  (  -51,    41)      18       18           32  house house-e       
-  (  -50,    41)      18       18           32  house house-e       
-  (  -49,    41)      18       18           32  house house-e       
-  (  -48,    41)      18       18           32  house house-e       
-  (  -47,    41)      18       18           32  house house-e       
-  (  -46,    41)      18       18           32  house house-e       
-  (  -45,    41)      18       18           18                      
-  (  -44,    41)      18       18           18                      
-  (  -43,    41)      18       18           18                      
-  (  -42,    41)      18       18           18                      
-  (  -41,    41)      17       17           17                      -1
-  (  -40,    41)      17       17           17                      
-  (  -39,    41)      17       17           17                      
-rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree t2 at (-64, 39), house house-e at (-55, 39), tree t5 at (-43, 39)
+  (  -52,    41)      16       16           16                      
+  (  -51,    41)      16       16           17  flora oasis-cover   
+  (  -50,    41)      16       16           17  flora oasis-cover   
+  (  -49,    41)      16       16           17  flora oasis-cover   
+  (  -48,    41)      16       16           17  flora oasis-cover   
+  (  -47,    41)      16       16           17  flora oasis-cover   
+  (  -46,    41)      16       16           16                      
+  (  -45,    41)      16       16           30  house house-e       
+  (  -44,    41)      16       16           30  house house-e       
+  (  -43,    41)      16       16           30  house house-e       
+  (  -42,    41)      16       16           30  house house-e       
+  (  -41,    41)      16       16           30  house house-e       
+  (  -40,    41)      16       16           30  house house-e       
+  (  -39,    41)      16       16           30  house house-e       
+  (  -38,    41)      16       16           30  house house-e       
+  (  -37,    41)      16       16           30  house house-e       
+  (  -36,    41)      16       16           30  house house-e       
+  (  -35,    41)      16       16           16                      
+  (  -34,    41)      16       16           16                      
+  (  -33,    41)      16       16           16                      
+  (  -32,    41)      16       16           16                      
+  (  -31,    41)      16       16           16                      
+  (  -30,    41)      16       16           16                      
+  (  -29,    41)      16       16           16                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora oasis-cover at (-51, 39), house house-e at (-45, 39), tree t5 at (-43, 39)
 
 ## house-e (house) along z
-TRANSECT 16 stations from (-51, 30) to (-51, 45), every 1
+TRANSECT 16 stations from (-41, 30) to (-41, 45), every 1
   station        ground  surface  water  top  standing            step
-  (  -51,    30)      18       18           25  tree t4             
-  (  -51,    31)      18       18           23  tree t4             
-  (  -51,    32)      18       18           25  tree t4             
-  (  -51,    33)      18       18           18  tree t4             
-  (  -51,    34)      18       18           19  flora oasis-cover   
-  (  -51,    35)      18       18           19  flora oasis-cover   
-  (  -51,    36)      18       18           18                      
-  (  -51,    37)      18       18           28  house house-e       
-  (  -51,    38)      18       18           29  house house-e       
-  (  -51,    39)      18       18           30  house house-e       
-  (  -51,    40)      18       18           31  house house-e       
-  (  -51,    41)      18       18           32  house house-e       
-  (  -51,    42)      18       18           31  house house-e       
-  (  -51,    43)      18       18           30  house house-e       
-  (  -51,    44)      18       18           29  house house-e       
-  (  -51,    45)      18       18           28  house house-e       
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree t4 at (-53, 28), flora oasis-cover at (-51, 34), house house-e at (-53, 37)
+  (  -41,    30)      17       17           21  tree t5             
+  (  -41,    31)      16       16           22  tree t5             -1
+  (  -41,    32)      16       16           24  tree t5             
+  (  -41,    33)      16       16           16  tree t5             
+  (  -41,    34)      16       16           23  tree t5             
+  (  -41,    35)      16       16           22  tree t5             
+  (  -41,    36)      16       16           25  tree t5             
+  (  -41,    37)      16       16           26  tree t5             
+  (  -41,    38)      16       16           27  tree t5             
+  (  -41,    39)      16       16           28  tree t5             
+  (  -41,    40)      16       16           29  house house-e       
+  (  -41,    41)      16       16           30  house house-e       
+  (  -41,    42)      16       16           29  house house-e       
+  (  -41,    43)      16       16           28  house house-e       
+  (  -41,    44)      16       16           27  house house-e       
+  (  -41,    45)      16       16           26  house house-e       
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree t5 at (-43, 28), house house-e at (-43, 40)

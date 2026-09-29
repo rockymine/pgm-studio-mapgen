@@ -25,7 +25,7 @@
             <item slot="1" material="bow" unbreakable="true">
                 <enchantment level="1">infinity</enchantment>
             </item>
-            <item slot="2" material="diamond pickaxe" unbreakable="true">
+            <item slot="2" material="iron pickaxe" unbreakable="true">
                 <enchantment level="1">efficiency</enchantment>
             </item>
             <item slot="3" material="iron axe" unbreakable="true">
@@ -58,16 +58,16 @@
     </kits>
     <spawns>
         <default region="observer-spawn"/>
-        <spawn team="red-team" kit="spawn-kit" yaw="270" region="red-spawn-point"/>
-        <spawn team="blue-team" kit="spawn-kit" yaw="90" region="blue-spawn-point"/>
+        <spawn team="red-team" kit="spawn-kit" yaw="180" region="red-spawn-point"/>
+        <spawn team="blue-team" kit="spawn-kit" region="blue-spawn-point"/>
     </spawns>
     <modes>
         <mode id="mode-gold-block" after="15m" material="gold block"/>
         <mode id="mode-glass" after="20m" material="glass"/>
     </modes>
     <destroyables>
-        <destroyable id="gypsum-monument" name="Gypsum Monument" owner="red-team" materials="obsidian" repairable="false" mode-changes="true" region="gypsum-monument-region"/>
-        <destroyable id="gypsum-monument-2" name="Gypsum Monument" owner="blue-team" materials="obsidian" repairable="false" mode-changes="true" region="gypsum-monument-2-region"/>
+        <destroyable id="gypsum-monument" name="Gypsum Monument" owner="red-team" materials="emerald block" repairable="false" mode-changes="true" region="gypsum-monument-region"/>
+        <destroyable id="gypsum-monument-2" name="Gypsum Monument" owner="blue-team" materials="emerald block" repairable="false" mode-changes="true" region="gypsum-monument-2-region"/>
     </destroyables>
     <filters>
         <team id="only-blue">blue-team</team>
@@ -95,13 +95,13 @@
         </not>
     </filters>
     <regions>
-        <point id="blue-spawn-point">114,24,0</point>
-        <point id="red-spawn-point">-114,24,0</point>
+        <point id="blue-spawn-point">96,21,-38</point>
+        <point id="red-spawn-point">-96,21,38</point>
         <point id="observer-spawn">0,36,0</point>
-        <rectangle id="blue-spawn" min="104,-12" max="124,12"/>
-        <rectangle id="red-spawn" min="-124,-12" max="-104,12"/>
-        <cuboid id="gypsum-monument-region" min="-66,26,-16" max="-65,29,-15"/>
-        <cuboid id="gypsum-monument-2-region" min="65,26,15" max="66,29,16"/>
+        <rectangle id="blue-spawn" min="88,-44" max="104,-32"/>
+        <rectangle id="red-spawn" min="-104,32" max="-88,44"/>
+        <cuboid id="gypsum-monument-region" min="-71,26,-3" max="-68,29,0"/>
+        <cuboid id="gypsum-monument-2-region" min="68,26,0" max="71,29,3"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
@@ -137,7 +137,7 @@
     <itemkeep>
         <item>iron sword</item>
         <item>bow</item>
-        <item>diamond pickaxe</item>
+        <item>iron pickaxe</item>
         <item>iron axe</item>
         <item>water bucket</item>
         <item>golden apple</item>
@@ -152,14 +152,14 @@
         <item>leather chestplate</item>
         <item>chainmail leggings</item>
         <item>leather boots</item>
-        <item>obsidian</item>
+        <item>emerald block</item>
         <item>gold block</item>
         <item>glass</item>
     </itemremove>
     <toolrepair>
         <tool>iron sword</tool>
         <tool>bow</tool>
-        <tool>diamond pickaxe</tool>
+        <tool>iron pickaxe</tool>
         <tool>iron axe</tool>
         <tool>shears</tool>
         <tool>iron spade</tool>
@@ -173,5 +173,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>40</maxbuildheight>
+    <maxbuildheight>39</maxbuildheight>
 </map>

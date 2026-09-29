@@ -1,61 +1,58 @@
 ## house-c (house) along x
-TRANSECT 25 stations from (-105, 16) to (-81, 16), every 1
+TRANSECT 24 stations from (-80, 19) to (-57, 19), every 1
   station        ground  surface  water  top  standing            step
-  ( -105,    16)                                                    void
-  ( -104,    16)      22       22           22                      
-  ( -103,    16)      22       22           22                      
-  ( -102,    16)      21       21           21                      -1
-  ( -101,    16)      21       21           21                      
-  ( -100,    16)      21       21           21                      
-  (  -99,    16)      21       21           21                      
-  (  -98,    16)      21       21           35  house house-c       
-  (  -97,    16)      21       21           35  house house-c       
-  (  -96,    16)      21       21           35  house house-c       
-  (  -95,    16)      21       21           35  house house-c       
-  (  -94,    16)      21       21           35  house house-c       
-  (  -93,    16)      21       21           35  house house-c       
-  (  -92,    16)      21       21           35  house house-c       
-  (  -91,    16)      20       20           35  house house-c       -1
-  (  -90,    16)      20       20           35  house house-c       
-  (  -89,    16)      20       20           35  house house-c       
-  (  -88,    16)      20       20           35  house house-c       
-  (  -87,    16)      20       20           20  stroke path-hamlet  
-  (  -86,    16)      20       20           20  stroke path-hamlet  
-  (  -85,    16)      20       20           20  stroke path-hamlet  
-  (  -84,    16)      20       20           20  stroke path-hamlet  
-  (  -83,    16)      20       20           20  stroke path-hamlet  
-  (  -82,    16)      20       20           20                      
-  (  -81,    16)      20       20           20  tree t1             
+  (  -80,    19)      19       19           19  tree t1             
+  (  -79,    19)      19       19           19  tree t1             
+  (  -78,    19)      19       19           19  tree t1             
+  (  -77,    19)      19       19           19  tree t1             
+  (  -76,    19)      19       19           19  tree t1             
+  (  -75,    19)      18       18           18  tree t1             -1
+  (  -74,    19)      18       18           24  tree t1             
+  (  -73,    19)      18       18           30  tree t1             
+  (  -72,    19)      18       18           30  tree t1             
+  (  -71,    19)      18       18           30  tree t1             
+  (  -70,    19)      18       18           30  tree t1             
+  (  -69,    19)      18       18           30  house house-c       
+  (  -68,    19)      17       17           30  house house-c       -1
+  (  -67,    19)      17       17           30  house house-c       
+  (  -66,    19)      17       17           30  house house-c       
+  (  -65,    19)      17       17           30  house house-c       
+  (  -64,    19)      17       17           30  house house-c       
+  (  -63,    19)      17       17           17                      
+  (  -62,    19)      17       17           17                      
+  (  -61,    19)      17       17           17                      
+  (  -60,    19)      17       17           17  tree t4             
+  (  -59,    19)      17       17           17  tree t4             
+  (  -58,    19)      17       17           17  tree t4             
+  (  -57,    19)      17       17           17  tree t4             
 rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: house house-c at (-98, 14), stroke path-hamlet at (-87, 14), tree t1 at (-83, 18)
+beside: tree t1 at (-82, 17), house house-c at (-71, 17), tree t4 at (-61, 20)
 
 ## house-c (house) along z
-TRANSECT 25 stations from (-93, 4) to (-93, 28), every 1
+TRANSECT 23 stations from (-69, 8) to (-69, 30), every 1
   station        ground  surface  water  top  standing            step
-  (  -93,     4)      21       21           21                      
-  (  -93,     5)      21       21           21                      
-  (  -93,     6)      21       21           21                      
-  (  -93,     7)      21       21           21                      
-  (  -93,     8)      21       21           21  stroke path-hamlet  
-  (  -93,     9)      21       21           21  stroke path-hamlet  
-  (  -93,    10)      21       21           21  stroke path-hamlet  
-  (  -93,    11)      21       21           30  house house-c       
-  (  -93,    12)      21       21           31  house house-c       
-  (  -93,    13)      21       21           32  house house-c       
-  (  -93,    14)      21       21           33  house house-c       
-  (  -93,    15)      21       21           34  house house-c       
-  (  -93,    16)      21       21           35  house house-c       
-  (  -93,    17)      21       21           34  house house-c       
-  (  -93,    18)      21       21           33  house house-c       
-  (  -93,    19)      20       20           32  house house-c       -1
-  (  -93,    20)      20       20           31  house house-c       
-  (  -93,    21)      20       20           30  house house-c       
-  (  -93,    22)      20       20           20                      
-  (  -93,    23)      20       20           20                      
-  (  -93,    24)      20       20           20  tree t6             
-  (  -93,    25)      20       20           20  tree t6             
-  (  -93,    26)      20       20           20  tree t6             
-  (  -93,    27)      20       20           20  tree t6             
-  (  -93,    28)      20       20           20  tree t6             
-rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke path-hamlet at (-95, 7), house house-c at (-95, 11), tree t6 at (-91, 23)
+  (  -69,     8)      21       21           21                      
+  (  -69,     9)      20       20           20                      -1
+  (  -69,    10)      20       20           20                      
+  (  -69,    11)      20       20           20                      
+  (  -69,    12)      19       19           19                      -1
+  (  -69,    13)      19       19           19  stroke path-hamlet  
+  (  -69,    14)      19       19           19  stroke path-hamlet  
+  (  -69,    15)      19       19           26  house house-c       
+  (  -69,    16)      18       18           27  house house-c       -1
+  (  -69,    17)      18       18           28  house house-c       
+  (  -69,    18)      18       18           29  house house-c       
+  (  -69,    19)      18       18           30  house house-c       
+  (  -69,    20)      17       17           29  house house-c       -1
+  (  -69,    21)      17       17           28  tree t1             
+  (  -69,    22)      16       16           27  tree t1             -1
+  (  -69,    23)      16       16           26  tree t1             
+  (  -69,    24)      16       16           16  tree t1             
+  (  -69,    25)      16       16           16  tree t1             
+  (  -69,    26)      16       16           16  tree t1             
+  (  -69,    27)      16       16     16    16  tree t1             
+  (  -69,    28)      16       16     16    16  tree t1             
+  (  -69,    29)      16       16     16    16  tree t1             
+  (  -69,    30)      16       16     16    16  water oasis-pool    
+rises 0, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-hamlet at (-69, 13), house house-c at (-71, 15), tree t1 at (-71, 18), water oasis-pool at (-68, 24)

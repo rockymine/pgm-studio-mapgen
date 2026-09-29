@@ -1,16 +1,16 @@
 ## b1 (boulder) along x
 TRANSECT 25 stations from (-48, -40) to (-24, -40), every 1
   station        ground  surface  water  top  standing            step
-  (  -48,   -40)      19       19           27  tree t7             
-  (  -47,   -40)      19       19           28  tree t7             
-  (  -46,   -40)      19       19           27  tree t7             
-  (  -45,   -40)      19       19           19  tree t7             
-  (  -44,   -40)      19       19           19  tree t7             
+  (  -48,   -40)      19       19           19                      
+  (  -47,   -40)      19       19           19                      
+  (  -46,   -40)      19       19           19                      
+  (  -45,   -40)      19       19           19                      
+  (  -44,   -40)      19       19           19                      
   (  -43,   -40)      19       19           19                      
   (  -42,   -40)      19       19           19                      
   (  -41,   -40)      19       19           19                      
-  (  -40,   -40)      19       19           19                      
-  (  -39,   -40)      18       18           18                      -1
+  (  -40,   -40)      18       18           18                      -1
+  (  -39,   -40)      18       18           18                      
   (  -38,   -40)      18       18           21  boulder b1          
   (  -37,   -40)      18       18           22  boulder b1          
   (  -36,   -40)      18       18           22  boulder b1          
@@ -18,23 +18,23 @@ TRANSECT 25 stations from (-48, -40) to (-24, -40), every 1
   (  -34,   -40)      18       18           20  boulder b1          
   (  -33,   -40)      18       18           18                      
   (  -32,   -40)      18       18           18                      
-  (  -31,   -40)      17       17           17                      -1
-  (  -30,   -40)      17       17           17                      
-  (  -29,   -40)      16       18           18  storey              +1
+  (  -31,   -40)      18       18           18                      
+  (  -30,   -40)      18       18           18                      
+  (  -29,   -40)      16       18           18  storey              
   (  -28,   -40)      16       18           18  storey              
   (  -27,   -40)      16       18           18  storey              
   (  -26,   -40)      17       17           17                      -1
   (  -25,   -40)      17       17           17                      
   (  -24,   -40)      17       17           17                      
-rises 1, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree t7 at (-50, -42), boulder b1 at (-38, -41)
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree t7 at (-48, -38), boulder b1 at (-38, -41)
 
 ## b1 (boulder) along z
 TRANSECT 21 stations from (-36, -48) to (-36, -28), every 1
   station        ground  surface  water  top  standing            step
   (  -36,   -48)                                                    void
   (  -36,   -47)                                                    void
-  (  -36,   -46)                                                    void
+  (  -36,   -46)      18       18           18                      
   (  -36,   -45)      18       18           18                      
   (  -36,   -44)      18       18           18                      
   (  -36,   -43)      18       18           18                      
@@ -50,8 +50,8 @@ TRANSECT 21 stations from (-36, -48) to (-36, -28), every 1
   (  -36,   -33)      18       18           18                      
   (  -36,   -32)      18       18           18                      
   (  -36,   -31)      18       18           18                      
-  (  -36,   -30)      17       17           17                      -1
-  (  -36,   -29)      16       16           16                      -1
-  (  -36,   -28)      15       15           15                      -1
-rises 0, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+  (  -36,   -30)      18       18           18                      
+  (  -36,   -29)      18       18           18                      
+  (  -36,   -28)      18       18           18                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: boulder b1 at (-37, -42)

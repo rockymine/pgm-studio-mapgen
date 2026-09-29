@@ -14,24 +14,62 @@
  },
  "pieces": [
   {
-   "id": "spawn",
-   "role": "spawn",
-   "rect": [
-    -31,
-    -3,
-    5,
-    6
-   ],
-   "surface": 24
-  },
-  {
    "id": "field",
    "rect": [
     -26,
     -12,
     22,
-    24
+    20
    ]
+  },
+  {
+   "id": "field-east",
+   "rect": [
+    -22,
+    8,
+    18,
+    4
+   ]
+  },
+  {
+   "id": "field-west",
+   "rect": [
+    -28,
+    6,
+    2,
+    6
+   ]
+  },
+  {
+   "id": "field-back",
+   "rect": [
+    -26,
+    11,
+    4,
+    1
+   ]
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -26,
+    8,
+    4,
+    3
+   ],
+   "surface": 21
+  },
+  {
+   "id": "isle",
+   "rect": [
+    -1,
+    -4,
+    2,
+    8
+   ],
+   "surface": 18,
+   "mirrors": false
   }
  ],
  "zones": [
@@ -51,15 +89,15 @@
     "id": "sp",
     "piece": "spawn",
     "at": [
-     10,
-     12
+     8,
+     6
     ],
-    "facing": "right",
+    "facing": "front",
     "footprint": [
      2,
-     5,
-     14,
-     14
+     2,
+     12,
+     8
     ]
    }
   ],
@@ -68,10 +106,11 @@
     "id": "mon",
     "piece": "field",
     "at": [
-     38,
-     32
+     34,
+     46
     ],
-    "style": "pillar-3",
+    "style": "cube-3",
+    "materials": "emerald block",
     "name": "Gypsum Monument"
    }
   ]

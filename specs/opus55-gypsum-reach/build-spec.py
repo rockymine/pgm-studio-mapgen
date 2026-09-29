@@ -1,15 +1,19 @@
 """Gypsum Reach — writes opus55-gypsum-reach.plan.json and .finish.json.
 
-A pale desert lane: each team's obsidian monument stands in the open on a low shelf, with a dry wash sunk
-in front of it and a sandstone arch over the wash (the way in from below), a mesa with a ruined watchtower
-off its outer flank (the way in from above), and an oasis village on its inner flank (the way in through).
-The two halves meet across a 32-block build zone over void that spans the board's whole width, and ruined
-walls stand along the lip where a crossing lands.
+A pale desert lane: each team's emerald monument stands in the open on a low shelf, with a dry wash sunk in
+front of it under a timber bridge, a grassed mesa off its outer flank, and a sunken oasis with a hamlet round
+it on its inner flank. The spawn stands in the corner beside the oasis. The halves meet across a 32-block build
+zone over void, with an island in the middle of it, and ruined walls stand along the lip where a crossing lands.
 
 Second pass, after the author's review: the first build was all sand over twenty blocks of sandstone, two
-houses, and an empty front. Now the rock under the sand is stone with sandstone beds over it, the north
-flank is an oasis with a pool, grass, acacias and olives and a hamlet of six houses round it, the wash
-carries an arch, the mesa a tower, the lip two ruins, and the outline is cut and bent into a coast.
+houses, and an empty front. The rock under the sand became stone with sandstone beds over it, the north flank
+an oasis with a pool, grass, acacias and olives and a hamlet round it, and the outline was cut into a coast.
+
+Third pass, after the author's notes 36–43: the frontline is pushed out on one side and pulled in on the
+other, with a middle island; the spawn moved into the corner by the oasis, facing along it; the oasis floor
+sits four under the field; the houses are stone brick with no cobble or clay; the boulders are all the
+larger angular kind; the sandstone arch is a timber bridge on posts with rails; the mesa's tower is gone for grass,
+a tree and rocks; the monument is an emerald cube.
 
 Team 0 is the west half (x < 0); rot_180 fans the rest.
 """
@@ -23,31 +27,39 @@ from opus55_kit import (S, cell, noise, depth, beds, by_slope, theme, one, ROCK,
 import props
 
 SLUG = "opus55-gypsum-reach"
-FIELD = [[-104, -48], [-16, -48], [-16, 48], [-104, 48]]   # field-20 as the plan compiles it
+# field-20 as the plan compiles it: the field, less the spawn's corner, plus the strip west of the spawn
+FIELD = [[-112, 24], [-104, 24], [-104, -48], [-16, -48], [-16, 48], [-112, 48]]
 SURFACE = 20
 
-# --- the plan: a spawn bench and one field a team, the build zone between them -------------------------
+# --- the plan: a field a team with the spawn in its oasis corner, the build zone and an island between -----
 plan = {
     "plan": 2,
     "meta": {"name": "Gypsum Reach", "authors": ["Opus 5.5"]},
     "globals": {"cell": 4, "symmetry": "rot_180", "maxPlayers": 16, "surface": SURFACE},
     "pieces": [
-        {"id": "spawn", "role": "spawn", "rect": [-31, -3, 5, 6], "surface": 24},
-        {"id": "field", "rect": [-26, -12, 22, 24]},
+        {"id": "field", "rect": [-26, -12, 22, 20]},          # x -104..-16,  z -48..32
+        {"id": "field-east", "rect": [-22, 8, 18, 4]},        # x -88..-16,   z 32..48
+        {"id": "field-west", "rect": [-28, 6, 2, 6]},         # x -112..-104, z 24..48
+        {"id": "field-back", "rect": [-26, 11, 4, 1]},        # x -104..-88,  z 44..48
+        # the spawn inside the corner, not against it (note 37): land on its north and west
+        {"id": "spawn", "role": "spawn", "rect": [-26, 8, 4, 3], "surface": 21},   # x -104..-88, z 32..44
+        # the middle island (note 36), one piece on the axis
+        {"id": "isle", "rect": [-1, -4, 2, 8], "surface": 18, "mirrors": False},   # x -4..4, z -16..16
     ],
     "zones": [{"id": "strait", "rect": [-4, -12, 4, 24]}],
     "placements": {
-        "spawns": [{"id": "sp", "piece": "spawn", "at": [10, 12], "facing": "right",
-                    "footprint": [2, 5, 14, 14]}],
-        # field min corner is (-104, -48); the monument at (-66, -16) is 38, 32 blocks in
-        "destroyables": [{"id": "mon", "piece": "field", "at": [38, 32], "style": "pillar-3",
-                          "name": "Gypsum Monument"}],
+        # facing -z, so the oasis is on the left: a player runs along it and turns right to the front
+        "spawns": [{"id": "sp", "piece": "spawn", "at": [8, 6], "facing": "front", "footprint": [2, 2, 12, 8]}],
+        # field min corner is (-104, -48); the monument at (-70, -2). An emerald cube (note 43).
+        "destroyables": [{"id": "mon", "piece": "field", "at": [34, 46], "style": "cube-3",
+                          "materials": "emerald block", "name": "Gypsum Monument"}],
     },
 }
 
 # --- the paint ------------------------------------------------------------------------------------------
 # Three tone families: the ground pale (sand over sandstone over stone), the built grey (stone brick under
-# brick roofs), the accent warm (granite and brick in the paths, hardened clay in the beds).
+# brick roofs), the accent warm (granite and brick in the paths, hardened clay in the beds) and the timber
+# of the bridge.
 #
 # Under the sand: stone and andesite to ten blocks below the ground, then sandstone beds with one bed of
 # hardened clay and one thin orange bed, following the ground so the mesa and the wash cut through them.
@@ -67,10 +79,12 @@ oasis = theme(by_slope((24, depth(S(2), S(3))), (20, depth(cell([S(3), S(3, 1)],
 worn = theme(by_slope((30, depth(cell([S(3), S(3, 1)], 2, 32), S(3))), (60, STRATA)),
              wall=STRATA, fill=STRATA)
 
-# Made things: the ruins and the watchtower are stone brick, the ground's rock dressed; the arch is the
-# sandstone beds themselves, a natural bridge left standing when the wash was cut.
+# Made things: the ruins are stone brick, the ground's rock dressed; the bridge is spruce planks on dark-oak
+# posts behind oak-fence rails (note 41).
 masonry = one(cell([S(98), S(98), S(98, 2), S(1, 5)], 2, 41, rise=2))
-arch_rock = one(cell([S(24, 0), S(24, 2), S(24, 0)], 2, 42, rise=2))
+deck = one(S(5, 1))
+post = one(S(162, 1))
+rail = one(S(85))
 
 PAVE = cell([S(1, 1), S(1, 2), S(45), S(1, 1)], size=2, seed=21)
 
@@ -78,34 +92,46 @@ PAVE = cell([S(1, 1), S(1, 2), S(45), S(1, 1)], size=2, seed=21)
 relief = {"team": {
     "base": SURFACE, "reach": 0, "step": 1, "landform": "rolling",
     "marks": [
-        {"id": "bench", "kind": "area", "h": 24, "bevel": 3,
-         "ring": [[-124, -14], [-100, -14], [-100, 14], [-124, 14]]},
-        {"id": "ramp-spawn-field", "kind": "line", "r": 3, "points": [[-109, 0], [-99, 0]], "h": [24, 20]},
-        {"id": "shelf", "kind": "area", "h": 22, "bevel": 3, "ring": ring(-68, -16, 13, 11)},
-        {"id": "lip", "kind": "line", "r": 4, "h": [17, 16, 18, 16, 17],
-         "points": [[-19, -46], [-20, -24], [-18, 0], [-20, 24], [-19, 46]]},
-        # the oasis floor, a little under the field, so the grass lies in a hollow the pool sits in
-        {"id": "oasis-floor", "kind": "area", "h": 18, "bevel": 4, "ring": ring(-62, 30, 16, 11, 24, 0.1, 3)},
+        {"id": "spawn-yard", "kind": "area", "h": 21, "bevel": 3,
+         "ring": [[-106, 30], [-86, 30], [-86, 46], [-106, 46]]},
+        {"id": "shelf", "kind": "area", "h": 22, "bevel": 3, "ring": ring(-70, -2, 12, 10)},
+        # the lip follows the reshaped frontline three blocks in
+        {"id": "lip", "kind": "line", "r": 4, "h": [17, 16, 18, 17, 16, 18, 17, 16],
+         "points": [[-17, -44], [-12, -31], [-19, -20], [-23, -8], [-24, 4], [-22, 16], [-25, 28], [-27, 40]]},
+        # the oasis floor four under the field (note 38), so the grass lies in a hollow the pool sits in
+        {"id": "oasis-floor", "kind": "area", "h": 16, "bevel": 4, "ring": ring(-62, 30, 16, 11, 24, 0.1, 3)},
     ],
     "pushes": [
-        {"id": "wash", "ring": ring(-40, -12, 7, 19, wobble=0.12, lobes=3, phase=0.5),
+        {"id": "wash", "ring": ring(-44, -2, 7, 15, wobble=0.12, lobes=3, phase=0.5),
          "amount": -6, "falloff": 5, "roughness": 0.35, "crown": 0, "seed": 3},
-        {"id": "mesa", "ring": ring(-70, -46, 16, 11, wobble=0.1, lobes=4),
-         "amount": 13, "falloff": 3, "roughness": 0.4, "crown": 0, "seed": 4},
-        # a dune ridge behind the village, off the north-west coast, so the back of the flank rises
-        {"id": "dune", "ring": ring(-106, 50, 14, 8, wobble=0.15, lobes=3, turn=-10),
+        {"id": "mesa", "ring": ring(-70, -40, 16, 10, wobble=0.1, lobes=4),
+         "amount": 10, "falloff": 3, "roughness": 0.4, "crown": 0, "seed": 4},
+        # a dune ridge off the back coast, south of the spawn, so the back of the field rises
+        {"id": "dune", "ring": ring(-110, -20, 8, 14, wobble=0.15, lobes=3, turn=-10),
          "amount": 6, "falloff": 10, "roughness": 0.3, "crown": 0, "seed": 6},
     ],
 }}
 
 # --- the made things -------------------------------------------------------------------------------------
-layers = []
-# The natural arch over the wash: two piers on the rims and a deck at the shelf's height, so a player can
-# cross the wash dry-shod or drop under it.
-layers += made(props.arch("wash-arch", -52, -30, -13, 5, 12, 3, 2, "arch-rock", steps=9), "wash-arch")
-# A ruined watchtower on the mesa, looking down on the monument: an open drum, no roof.
-layers += made(props.tapered_tower("mesa-tower", -76, -45, 4.5, 3.5, 1.5, 34, 9, "masonry", courses=3),
-               "mesa-tower", seat="ground")
+# The bridge over the wash (note 41): a spruce deck five wide, standing on three pairs
+# of dark-oak posts down to the wash floor, with an oak-fence rail along each side. Left open to the air
+# under it, so nothing clears the wash beneath.
+def bridge_part(pid, cells):
+    """One part of the bridge; a rect covers x0..x1-1 and z0..z1-1."""
+    b = props.LayerBuilder(pid)
+    for x0, z0, x1, z1, floor, height, th in cells:
+        b.rect(x0, z0, x1, z1, floor, height, th, keepClear=False)
+    return b.done()
+
+# The deck stands at 19 over the wash's west rim and steps down one to the lip at 17 on its east end.
+BX0, BX1, BZ0, BZ1, BY = -54, -35, -4, 0, SURFACE - 2
+layers = made([
+    bridge_part("bridge-deck", [(BX0, BZ0, BX1 + 1, BZ1 + 1, BY, 1, "deck"),
+                                (BX1 + 1, BZ0 + 1, BX1 + 3, BZ1, BY - 1, 1, "deck")]),
+    bridge_part("bridge-posts", [(x, z, x + 1, z + 1, 11, BY - 11, "post")
+                                 for x in (-50, -44, -38) for z in (BZ0, BZ1)]),
+    bridge_part("bridge-rails", [(BX0, z, BX1 + 1, z + 1, BY + 1, 1, "rail") for z in (BZ0, BZ1)]),
+], "wash-bridge")
 # Ruined walls along the lip, cover where a crossing lands.
 layers += made(props.crenellated_wall("ruin-north", -32, 18, -29, 34, 1, 20, 3, "masonry",
                                       merlon=2, crenel=3, parapet=1), "ruin-north", seat="ground")
@@ -116,41 +142,61 @@ layers += made(props.crenellated_wall("ruin-south", -29, -44, -26, -30, 1, 20, 2
 shapes = [
     patch("oasis-grass", ring(-63, 31, 25, 15, 32, 0.12, 5, 0.7), "oasis", SURFACE, group="team"),
     # a spring at the mesa's foot, east of the monument's approach from above: a copse on a green
-    patch("spring-green", ring(-47, -36, 9, 6, 20, 0.15, 3, 1.1), "oasis", SURFACE, group="team"),
-    patch("hamlet-yard", ring(-86, 26, 9, 7, 20, 0.15, 3), "worn", SURFACE, group="team"),
+    patch("spring-green", ring(-47, -30, 8, 5, 20, 0.15, 3, 1.1), "oasis", SURFACE, group="team"),
+    # grass on the mesa top where the tower stood (note 42)
+    patch("mesa-top", ring(-70, -40, 11, 7, 24, 0.15, 3, 0.4), "oasis", SURFACE, group="team"),
+    patch("hamlet-yard", ring(-88, 18, 8, 6, 20, 0.15, 3), "worn", SURFACE, group="team"),
 ]
 
 # --- the dressing ---------------------------------------------------------------------------------------
 TREES = ["tree-showcase-r8-1", "tree-showcase-r8-3",
          "tree-showcase-r10-1", "tree-showcase-r10-3"]
 styles = dict(copied_trees(HERE, TREES))
-styles["stonehouse"] = house_style("hw-stonehouse")
+
+# The houses (note 39): the shipped stone house with its walls of cobble and hardened clay under a band of
+# team-tinted clay repainted stone brick, cracked stone brick and polished andesite, and the gable too.
+def stone_walls(shell):
+    wall = {"stack": {"ending": "repeat", "bands": [
+        {"material": S(98), "thickness": 1},
+        {"material": cell([S(98), S(98), S(98, 2), S(1, 6)], 3, 59), "thickness": 3},
+        {"material": S(98), "thickness": 1}]}, "extent": 5}
+    shell["wall"] = wall
+    for storey in shell["storeys"]:
+        storey["wall"] = dict(wall, extent=storey["wall"]["extent"])
+    shell["roof"]["gable"] = S(98)
+    shell["foundation"]["plate"]["stack"]["bands"][0]["material"] = S(98)
+    return shell
+
+stonehouse = house_style("hw-stonehouse")
+stone_walls(stonehouse["shell"])
+styles["stonehouse"] = stonehouse
+# One kind of rock (note 40): the larger angular boulder; the small round one read as a stone box.
 styles["rock"] = boulder_style(cell([S(1), S(1, 5), S(1), S(4)], 2, 51), form="angular", size=2.5)
-styles["rock-small"] = boulder_style(cell([S(1), S(1, 5), S(4)], 2, 52), form="round", size=1.8)
 
 props_ = [
-    # the monument's own path, and the hamlet road on to the lip
-    path("path-mon", 41, [[-102, -2], [-88, -9], [-76, -14]], PAVE),
-    path("path-hamlet", 42, [[-102, 3], [-92, 12], [-78, 18], [-62, 16], [-46, 14], [-32, 10], [-22, 8]], PAVE),
-    # the two houses behind the monument
-    house("house-a", "stonehouse", [[-86, -4], [-77, 4]], front="posX", seed=31),
+    # the monument's own path from the spawn, and the hamlet road on to the lip across the oasis's south rim
+    path("path-mon", 41, [[-97, 31], [-96, 20], [-90, 8], [-80, 1], [-76, -1]], PAVE),
+    path("path-hamlet", 42, [[-96, 22], [-86, 15], [-72, 14], [-58, 13], [-46, 17], [-32, 15], [-24, 12]], PAVE),
+    # the houses, moved out of the spawn's way (note 37): two behind the monument, one by the spring, and two
+    # on the oasis's rim
+    house("house-a", "stonehouse", [[-92, -14], [-84, -7]], front="posX", seed=31),
     house("house-b", "stonehouse", [[-92, -32], [-84, -25]], front="posX", seed=32),
-    # the hamlet round the oasis: one style, varied in footprint and height
-    house("house-c", "stonehouse", [[-97, 12], [-89, 20]], front="posX", seed=33, storeys=2),
-    house("house-d", "stonehouse", [[-84, 35], [-77, 41]], front="negZ", seed=34),
-    house("house-e", "stonehouse", [[-54, 38], [-47, 44]], front="negZ", seed=35),
-    house("house-f", "stonehouse", [[-48, 18], [-41, 25]], front="negX", seed=36, storeys=2),
+    house("house-c", "stonehouse", [[-72, 16], [-65, 22]], front="negZ", seed=33, storeys=2),
+    house("house-d", "stonehouse", [[-64, -26], [-57, -20]], front="posX", seed=34),
+    house("house-e", "stonehouse", [[-44, 38], [-37, 44]], front="negZ", seed=35),
     # the pool the oasis is for
     pool("oasis-pool", ring(-63, 31, 8, 5, 20, 0.15, 3), depth=3, shelf=3, shore=2,
          bank=cell([S(12), S(24, 0), S(12)], 2, 61)),
     # palms of the warm kinds: acacias round the water, olives by the houses
-    tree("t1", -75, 24, "tree-showcase-r8-1", 1), tree("t2", -69, 41, "tree-showcase-r8-3", 2),
-    tree("t4", -52, 24, "tree-showcase-r8-1", 4),
-    tree("t5", -40, 33, "tree-showcase-r10-1", 5), tree("t6", -88, 30, "tree-showcase-r10-3", 6),
-    tree("t7", -50, -37, "tree-showcase-r10-1", 7),
-    # rocks at the wash's head and the mesa's foot
-    boulder("b1", -36, -40, "rock", 8), boulder("b2", -35, 12, "rock-small", 9),
-    boulder("b3", -58, -31, "rock", 10), boulder("b4", -24, -18, "rock-small", 11),
+    tree("t1", -78, 25, "tree-showcase-r8-1", 1), tree("t2", -69, 41, "tree-showcase-r8-3", 2),
+    tree("t4", -52, 24, "tree-showcase-r8-1", 4), tree("t5", -40, 33, "tree-showcase-r10-1", 5),
+    tree("t7", -48, -31, "tree-showcase-r10-1", 7),
+    tree("t-mesa", -72, -40, "tree-showcase-r8-3", 8),
+    # rocks at the wash's head, the mesa top, the lip and the middle island
+    boulder("b1", -36, -40, "rock", 8), boulder("b2", -36, 22, "rock", 9),
+    boulder("b3", -56, -15, "rock", 10), boulder("b4", -24, -18, "rock", 11),
+    boulder("b-mesa-1", -64, -43, "rock", 12), boulder("b-mesa-2", -77, -37, "rock", 13),
+    boulder("b-isle", -1, -9, "rock", 14),
     # the grass carries a little cover, and none of it tall
     flora("oasis-cover", ring(-62, 31, 24, 16, 16), coverage=0.35, scale=8, fern=0.2, flowers=0.05,
           tall=0.03, seed=71),
@@ -160,15 +206,18 @@ finish = {
     "created": "2026-09-28",
     "authors": ["Opus 5.5"],
     "biome": {"kind": "solid", "id": 2},
-    "themes": {"desert": desert, "oasis": oasis, "worn": worn, "masonry": masonry, "arch-rock": arch_rock},
+    "themes": {"desert": desert, "oasis": oasis, "worn": worn, "masonry": masonry,
+               "deck": deck, "post": post, "rail": rail},
     "mapTheme": "desert",
     "relief": relief,
-    # the field's coast: a cove bitten into the north coast east of the village, by the lip, then the whole ring bent
-    # Only the two coasts: the back edge is the spawn bench's seam and the east edge the frontline, and a
-    # bend over the whole ring pulled the back edge off the bench and left the spawn on an island (EX1).
+    # The frontline (note 36): pushed out toward the island south of it and pulled in north of it, t along
+    # the edge being (z + 48) / 96 and a negative pull a push. The back, south and north coasts cut lightly;
+    # the spawn's seams are left as the plan cut them.
     "editShapes": {"field-20": coast_edits(FIELD, {
-        0: [(0.08, 2), (0.2, 4), (0.3, 1), (0.52, 3), (0.62, 1), (0.74, 4), (0.86, 2), (0.95, 3)],
-        2: [(0.06, 2), (0.14, 8), (0.2, 3), (0.3, 1), (0.42, 3), (0.55, 1), (0.66, 4), (0.8, 2), (0.9, 3)]})},
+        1: [(0.3, 2), (0.6, 3), (0.85, 2)],
+        2: [(0.15, 2), (0.4, 3), (0.65, 1), (0.88, 3)],
+        3: [(0.083, -4), (0.19, -7), (0.29, 0), (0.42, 4), (0.54, 5), (0.67, 3), (0.79, 6), (0.9, 8), (0.97, 3)],
+        4: [(0.1, 3), (0.3, 2), (0.5, 4), (0.7, 2)]})},
     "addShapes": shapes,
     "addLayers": layers,
     "roomStyles": {"spawn": "@sb-spawn"},

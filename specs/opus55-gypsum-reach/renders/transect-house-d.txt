@@ -1,54 +1,58 @@
 ## house-d (house) along x
-TRANSECT 24 stations from (-92, 38) to (-69, 38), every 1
+TRANSECT 24 stations from (-72, -23) to (-49, -23), every 1
   station        ground  surface  water  top  standing            step
-  (  -92,    38)      21       21           21                      
-  (  -91,    38)      20       20           20                      -1
-  (  -90,    38)      20       20           20                      
-  (  -89,    38)      20       20           20                      
-  (  -88,    38)      20       20           20  tree t6             
-  (  -87,    38)      19       19           19                      -1
-  (  -86,    38)      19       19           19                      
-  (  -85,    38)      19       19           33  house house-d       
-  (  -84,    38)      19       19           33  house house-d       
-  (  -83,    38)      19       19           33  house house-d       
-  (  -82,    38)      19       19           33  house house-d       
-  (  -81,    38)      19       19           33  house house-d       
-  (  -80,    38)      19       19           33  house house-d       
-  (  -79,    38)      19       19           33  house house-d       
-  (  -78,    38)      19       19           33  house house-d       
-  (  -77,    38)      19       19           33  house house-d       
-  (  -76,    38)      18       18           33  tree t2             -1
-  (  -75,    38)      18       18           18  tree t2             
-  (  -74,    38)      18       18           24  tree t2             
-  (  -73,    38)      18       18           25  tree t2             
-  (  -72,    38)      18       18           18  tree t2             
-  (  -71,    38)      18       18           24  tree t2             
-  (  -70,    38)      18       18           25  tree t2             
-  (  -69,    38)      18       18           25  tree t2             
-rises 0, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree t6 at (-93, 36), house house-d at (-85, 38), tree t2 at (-76, 38)
+  (  -72,   -23)      21       21           21                      
+  (  -71,   -23)      21       21           21                      
+  (  -70,   -23)      21       21           21                      
+  (  -69,   -23)      21       21           21                      
+  (  -68,   -23)      21       21           21                      
+  (  -67,   -23)      21       21           21                      
+  (  -66,   -23)      21       21           21                      
+  (  -65,   -23)      20       20           34  house house-d       -1
+  (  -64,   -23)      20       20           34  house house-d       
+  (  -63,   -23)      20       20           34  house house-d       
+  (  -62,   -23)      20       20           34  house house-d       
+  (  -61,   -23)      20       20           34  house house-d       
+  (  -60,   -23)      20       20           34  house house-d       
+  (  -59,   -23)      20       20           34  house house-d       
+  (  -58,   -23)      20       20           34  house house-d       
+  (  -57,   -23)      20       20           34  house house-d       
+  (  -56,   -23)      20       20           34  house house-d       
+  (  -55,   -23)      20       20           20                      
+  (  -54,   -23)      20       20           20                      
+  (  -53,   -23)      20       20           20                      
+  (  -52,   -23)      19       19           19                      -1
+  (  -51,   -23)      19       19           19                      
+  (  -50,   -23)      19       19           19                      
+  (  -49,   -23)      19       19           19                      
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house house-d at (-65, -25), tree t7 at (-51, -25)
 
 ## house-d (house) along z
-TRANSECT 19 stations from (-81, 27) to (-81, 45), every 1
+TRANSECT 23 stations from (-61, -34) to (-61, -12), every 1
   station        ground  surface  water  top  standing            step
-  (  -81,    27)      19       19           24  tree t6             
-  (  -81,    28)      19       19           24  tree t6             
-  (  -81,    29)      19       19           19  tree t6             
-  (  -81,    30)      19       19           19  tree t6             
-  (  -81,    31)      19       19           19  tree t6             
-  (  -81,    32)      19       19           19  tree t6             
-  (  -81,    33)      19       19           19  tree t6             
-  (  -81,    34)      19       19           29  house house-d       
-  (  -81,    35)      19       19           30  house house-d       
-  (  -81,    36)      19       19           31  house house-d       
-  (  -81,    37)      19       19           32  house house-d       
-  (  -81,    38)      19       19           33  house house-d       
-  (  -81,    39)      19       19           32  house house-d       
-  (  -81,    40)      19       19           31  house house-d       
-  (  -81,    41)      19       19           30  house house-d       
-  (  -81,    42)      19       19           29  house house-d       
-  (  -81,    43)      19       19           19                      
-  (  -81,    44)      19       19           19                      
-  (  -81,    45)                                                    void
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree t6 at (-83, 25), tree t1 at (-81, 25), house house-d at (-81, 34)
+  (  -61,   -34)      30       30           30                      
+  (  -61,   -33)      27       27           27                      -3
+  (  -61,   -32)      25       25           25                      -2
+  (  -61,   -31)      21       21           21                      DROP -4
+  (  -61,   -30)      20       20           20                      -1
+  (  -61,   -29)      20       20           20                      
+  (  -61,   -28)      20       20           20                      
+  (  -61,   -27)      20       20           30  house house-d       
+  (  -61,   -26)      20       20           31  house house-d       
+  (  -61,   -25)      20       20           32  house house-d       
+  (  -61,   -24)      20       20           33  house house-d       
+  (  -61,   -23)      20       20           34  house house-d       
+  (  -61,   -22)      20       20           33  house house-d       
+  (  -61,   -21)      20       20           32  house house-d       
+  (  -61,   -20)      20       20           31  house house-d       
+  (  -61,   -19)      20       20           30  house house-d       
+  (  -61,   -18)      20       20           20                      
+  (  -61,   -17)      20       20           20                      
+  (  -61,   -16)      21       21           21                      +1
+  (  -61,   -15)      21       21           21                      
+  (  -61,   -14)      21       21           21                      
+  (  -61,   -13)      21       21           21                      
+  (  -61,   -12)      21       21           21                      
+rises 1, falls 4, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-61, -31) | walked end to end
+beside: house house-d at (-63, -27)

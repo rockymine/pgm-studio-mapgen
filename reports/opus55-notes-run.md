@@ -252,3 +252,44 @@ heap — at ETag "16", and the world read the old headframe's planks at (−12, 
 was not the cause. The likely one is a browser tab open on the board: entering In game saves the board the tab
 holds. An author reviewing a board while an agent rebuilds it can write the old board back over the new, and
 nothing on either side says so.
+
+## The fourth pass: the author's notes on Gypsum Reach
+
+**The author left eight notes of their own on Gypsum Reach, 36–43, two of them rulings.** Every one was worked
+on the board and answered in its thread at revision 42 with a picture; the threads are `answered` and wait for
+the author to close them. Notes 1–5 were not answered and stay `needs-info`.
+
+| id | the author said | what changed |
+|---|---|---|
+| 36 | flat frontlines are not wanted; pull one side in, push the other out, add a middle island | the frontline pushed out 4–7 south of the middle and pulled in 4–8 north of it; an 8 × 32 island on the axis at y18 with a rock at each end |
+| 37 | put the spawn inside a corner by the oasis, not in the back; move houses in the way; players run along the oasis and turn right | the plan re-cut so the spawn is inside the south-west corner beside the oasis, facing −z with the oasis on the right; three houses moved |
+| 38 | the oasis should drop about 4 blocks; keep the size and grass | the oasis floor mark at 16 against the field's 20 |
+| 39 | cobble and clay in the house walls do not fit | the house fork's walls, storeys, plate and gable in stone brick, cracked stone brick and polished andesite |
+| 40 | no boxy boulders; the other ones look better | one boulder style, the larger angular one; the small round one is gone |
+| 41 | the arch looks like a laid-down pillar; build a real bridge, not sandstone, with pillars and railing | a spruce deck on three pairs of dark-oak posts with oak-fence rails |
+| 42 | ruling: never add random structures with the layer tool to bring a number down; grass, a tree or boulders on the mesa instead | the tower removed; grass, an acacia and two rocks on the mesa top |
+| 43 | ruling: emerald or ender stone on a board this size; emerald and gold are always cubes, obsidian the only 1 × 2 or 1 × 3 pillar | an emerald `cube-3` monument |
+
+**Two of the author's cameras no longer see their subject.** Note 40's boulder moved off the ruin it was pressed
+against, and note 43's monument moved with the plan. Those replies carry the kept views *A rock on the lip* and
+*Emerald monument* instead, and say so.
+
+**The first reading of note 40 was backwards.** The boulder the author pinned was the small round kind, so
+keeping the round one and dropping the angular one kept the complaint. The pictures showed it before any reply
+was written, and the board carries the angular style only.
+
+**A made layer's rectangle covers `x0 … x1 − 1`, and a one-block post is `x, x + 1`.** Reading the complaint
+count as inclusive, the posts and rails were rewritten as `x, x` and drew nothing (`SK4`). A `column` read
+through the bridge settled it.
+
+**`tools/drive.py` drives the plan and finish on disk; it does not run the spec.** One drive re-sent the previous
+JSON because `build-spec.py` had not been run after an edit. The reads were identical to the drive before,
+which is the tell.
+
+**Houses by the spawn were declined for `DR-PASS` until the seats read placed them.** The spawn room counts as a
+building, so a house two blocks from it made a group with no eight-block way past. The house seats raster
+showed the open ground on the oasis's south rim and beside the spring.
+
+**The destroyable floats four blocks over the shelf by the studio's own default (`DT3`)**, and the bedrock block
+at y35 over the island's centre is the studio's centre marker, the same on every board. Neither is authored
+here.

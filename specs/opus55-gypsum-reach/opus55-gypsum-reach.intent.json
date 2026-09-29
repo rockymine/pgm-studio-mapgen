@@ -23,27 +23,28 @@
    "reflected": false,
    "team": "red",
    "point": {
-    "x": -114,
-    "y": 24,
-    "z": 0
+    "x": -96,
+    "y": 21,
+    "z": 38
    },
    "protection": [
     {
-     "minX": -124,
-     "minZ": -12,
-     "maxX": -104,
-     "maxZ": 12
+     "minX": -104,
+     "minZ": 32,
+     "maxX": -88,
+     "maxZ": 44
     }
    ],
-   "yaw": 270,
+   "yaw": 180,
    "doors": [
-    "+x"
+    "-z",
+    "+z"
    ],
    "footprint": {
-    "minX": -122,
-    "minZ": -7,
-    "maxX": -108,
-    "maxZ": 7
+    "minX": -102,
+    "minZ": 34,
+    "maxX": -90,
+    "maxZ": 42
    },
    "iron": []
   },
@@ -57,27 +58,28 @@
    "reflected": false,
    "team": "blue",
    "point": {
-    "x": 114,
-    "y": 24,
-    "z": 0
+    "x": 96,
+    "y": 21,
+    "z": -38
    },
    "protection": [
     {
-     "minX": 104,
-     "minZ": -12,
-     "maxX": 124,
-     "maxZ": 12
+     "minX": 88,
+     "minZ": -44,
+     "maxX": 104,
+     "maxZ": -32
     }
    ],
-   "yaw": 90,
+   "yaw": 0,
    "doors": [
-    "-x"
+    "+z",
+    "-z"
    ],
    "footprint": {
-    "minX": 108,
-    "minZ": -7,
-    "maxX": 122,
-    "maxZ": 7
+    "minX": 90,
+    "minZ": -42,
+    "maxX": 102,
+    "maxZ": -34
    },
    "iron": []
   }
@@ -120,13 +122,13 @@
    },
    "owner": "red",
    "name": "Gypsum Monument",
-   "style": "pillar-3",
-   "materials": "obsidian",
+   "style": "cube-3",
+   "materials": "emerald block",
    "repairable": false,
    "anchor": {
-    "x": -66,
+    "x": -70,
     "y": 20,
-    "z": -16
+    "z": -2
    },
    "float": 4,
    "box": null
@@ -140,13 +142,13 @@
    },
    "owner": "blue",
    "name": "Gypsum Monument",
-   "style": "pillar-3",
-   "materials": "obsidian",
+   "style": "cube-3",
+   "materials": "emerald block",
    "repairable": false,
    "anchor": {
-    "x": 65,
+    "x": 69,
     "y": 20,
-    "z": 15
+    "z": 1
    },
    "float": 4,
    "box": null
@@ -174,7 +176,8 @@
  "symmetry": null,
  "islandTeams": {
   "1": "red",
-  "2": "blue"
+  "2": "blue",
+  "3": "neutral"
  },
  "structures": null
 }

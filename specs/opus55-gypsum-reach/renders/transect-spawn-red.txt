@@ -1,81 +1,66 @@
 ## spawn-red (spawn) along x
-TRANSECT 29 stations from (-124, 0) to (-96, 0), every 1
+TRANSECT 33 stations from (-112, 38) to (-80, 38), every 1
   station        ground  surface  water  top  standing            step
-  ( -124,     0)      24       24           24                      
-  ( -123,     0)      24       24           41                      
-  ( -122,     0)      24       24           41  spawn sp            
-  ( -121,     0)      24       24           41  spawn sp            
-  ( -120,     0)      24       24           41  spawn sp            
-  ( -119,     0)      24       24           41  spawn sp            
-  ( -118,     0)      24       24           41  spawn sp            
-  ( -117,     0)      24       24           41  spawn sp            
-  ( -116,     0)      24       24           41  spawn sp            
-  ( -115,     0)      24       24           41  spawn sp            
-  ( -114,     0)      24       24           41  spawn sp            
-  ( -113,     0)      24       24           41  spawn sp            
-  ( -112,     0)      24       24           41  spawn sp            
-  ( -111,     0)      24       24           41  spawn sp            
-  ( -110,     0)      24       24           41  spawn sp            
-  ( -109,     0)      24       24           41  spawn sp            
-  ( -108,     0)      24       24           41                      
-  ( -107,     0)      24       24           24                      
-  ( -106,     0)      24       24           24                      
-  ( -105,     0)      24       24           24                      
-  ( -104,     0)      22       22           22                      -2
-  ( -103,     0)      21       21           21                      -1
-  ( -102,     0)      21       21           21                      
-  ( -101,     0)      21       21           21                      
-  ( -100,     0)      20       20           20                      -1
-  (  -99,     0)      20       20           20                      
-  (  -98,     0)      20       20           20                      
-  (  -97,     0)      20       20           20                      
-  (  -96,     0)      20       20           20                      
-rises 0, falls 3, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn sp at (-122, -2), stroke path-mon at (-103, -2), stroke path-hamlet at (-103, 2)
+  ( -112,    38)      21       21           21                      
+  ( -111,    38)      21       21           21                      
+  ( -110,    38)      21       21           21                      
+  ( -109,    38)      21       21           21                      
+  ( -108,    38)      21       21           21                      
+  ( -107,    38)      21       21           21                      
+  ( -106,    38)      21       21           21                      
+  ( -105,    38)      21       21           21                      
+  ( -104,    38)      21       21           21                      
+  ( -103,    38)      21       21           35                      
+  ( -102,    38)      21       21           35  spawn sp            
+  ( -101,    38)      21       21           35  spawn sp            
+  ( -100,    38)      21       21           35  spawn sp            
+  (  -99,    38)      21       21           35  spawn sp            
+  (  -98,    38)      21       21           35  spawn sp            
+  (  -97,    38)      21       21           35  spawn sp            
+  (  -96,    38)      21       21           35  spawn sp            
+  (  -95,    38)      21       21           35  spawn sp            
+  (  -94,    38)      21       21           35  spawn sp            
+  (  -93,    38)      21       21           35  spawn sp            
+  (  -92,    38)      21       21           35  spawn sp            
+  (  -91,    38)      21       21           35  spawn sp            
+  (  -90,    38)      21       21           35                      
+  (  -89,    38)      21       21           21                      
+  (  -88,    38)      21       21           21                      
+  (  -87,    38)      20       20           20                      -1
+  (  -86,    38)      20       20           20                      
+  (  -85,    38)      20       20           20                      
+  (  -84,    38)      20       20           20                      
+  (  -83,    38)      19       19           20  flora oasis-cover   -1
+  (  -82,    38)      19       19           19                      
+  (  -81,    38)      19       19           19                      
+  (  -80,    38)      19       19           19                      
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn sp at (-102, 36), flora oasis-cover at (-84, 36)
 
 ## spawn-red (spawn) along z
-TRANSECT 41 stations from (-114, -20) to (-114, 20), every 1
+TRANSECT 22 stations from (-96, 24) to (-96, 45), every 1
   station        ground  surface  water  top  standing            step
-  ( -114,   -20)                                                    void
-  ( -114,   -19)                                                    void
-  ( -114,   -18)                                                    void
-  ( -114,   -17)                                                    void
-  ( -114,   -16)                                                    void
-  ( -114,   -15)                                                    void
-  ( -114,   -14)                                                    void
-  ( -114,   -13)                                                    void
-  ( -114,   -12)      24       24           24                      
-  ( -114,   -11)      24       24           24                      
-  ( -114,   -10)      24       24           24                      
-  ( -114,    -9)      24       24           24                      
-  ( -114,    -8)      24       24           34                      
-  ( -114,    -7)      24       24           35  spawn sp            
-  ( -114,    -6)      24       24           36  spawn sp            
-  ( -114,    -5)      24       24           37  spawn sp            
-  ( -114,    -4)      24       24           38  spawn sp            
-  ( -114,    -3)      24       24           39  spawn sp            
-  ( -114,    -2)      24       24           40  spawn sp            
-  ( -114,    -1)      24       24           41  spawn sp            
-  ( -114,     0)      24       24           41  spawn sp            
-  ( -114,     1)      24       24           40  spawn sp            
-  ( -114,     2)      24       24           39  spawn sp            
-  ( -114,     3)      24       24           38  spawn sp            
-  ( -114,     4)      24       24           37  spawn sp            
-  ( -114,     5)      24       24           36  spawn sp            
-  ( -114,     6)      24       24           35  spawn sp            
-  ( -114,     7)      24       24           34                      
-  ( -114,     8)      24       24           24                      
-  ( -114,     9)      24       24           24                      
-  ( -114,    10)      24       24           24                      
-  ( -114,    11)      24       24           24                      
-  ( -114,    12)                                                    void
-  ( -114,    13)                                                    void
-  ( -114,    14)                                                    void
-  ( -114,    15)                                                    void
-  ( -114,    16)                                                    void
-  ( -114,    17)                                                    void
-  ( -114,    18)                                                    void
-  ( -114,    19)                                                    void
-  ( -114,    20)                                                    void
+  (  -96,    24)      21       21           21                      
+  (  -96,    25)      21       21           21                      
+  (  -96,    26)      21       21           21                      
+  (  -96,    27)      21       21           21                      
+  (  -96,    28)      21       21           21                      
+  (  -96,    29)      21       21           21                      
+  (  -96,    30)      21       21           21                      
+  (  -96,    31)      21       21           21                      
+  (  -96,    32)      21       21           21                      
+  (  -96,    33)      21       21           31                      
+  (  -96,    34)      21       21           32  spawn sp            
+  (  -96,    35)      21       21           33  spawn sp            
+  (  -96,    36)      21       21           34  spawn sp            
+  (  -96,    37)      21       21           35  spawn sp            
+  (  -96,    38)      21       21           35  spawn sp            
+  (  -96,    39)      21       21           34  spawn sp            
+  (  -96,    40)      21       21           33  spawn sp            
+  (  -96,    41)      21       21           32  spawn sp            
+  (  -96,    42)      21       21           31                      
+  (  -96,    43)      21       21           21                      
+  (  -96,    44)      21       21           21                      
+  (  -96,    45)      21       21           21                      
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn sp at (-116, -7)
+beside: stroke path-mon at (-98, 22), stroke path-hamlet at (-97, 22), spawn sp at (-98, 34)

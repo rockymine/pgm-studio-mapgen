@@ -1,0 +1,72 @@
+## wash-bridge (made) along x
+TRANSECT 39 stations from (-62, -2) to (-24, -2), every 1
+  station        ground  surface  water  top  standing            step
+  (  -62,    -2)      22       22           22                      
+  (  -61,    -2)      22       22           22                      
+  (  -60,    -2)      21       21           21                      -1
+  (  -59,    -2)      21       21           21                      
+  (  -58,    -2)      21       21           21                      
+  (  -57,    -2)      20       20           20                      -1
+  (  -56,    -2)      20       20           20                      
+  (  -55,    -2)      20       20           20                      
+  (  -54,    -2)      19       19           19                      -1
+  (  -53,    -2)      18       19           19  storey              
+  (  -52,    -2)      16       19           19  storey              
+  (  -51,    -2)      14       19           19  storey              
+  (  -50,    -2)      13       19           19  storey              
+  (  -49,    -2)      13       19           19  storey              
+  (  -48,    -2)      13       19           19  storey              
+  (  -47,    -2)      13       19           19  storey              
+  (  -46,    -2)      13       19           19  storey              
+  (  -45,    -2)      13       19           19  storey              
+  (  -44,    -2)      12       19           19  storey              
+  (  -43,    -2)      12       19           19  storey              
+  (  -42,    -2)      12       19           19  storey              
+  (  -41,    -2)      12       19           19  storey              
+  (  -40,    -2)      12       19           19  storey              
+  (  -39,    -2)      12       19           19  storey              
+  (  -38,    -2)      12       19           19  storey              
+  (  -37,    -2)      12       19           19  storey              
+  (  -36,    -2)      12       19           19  storey              
+  (  -35,    -2)      14       19           19  storey              
+  (  -34,    -2)      15       18           18  storey              -1
+  (  -33,    -2)      16       18           18  storey              
+  (  -32,    -2)      17       17           17                      -1
+  (  -31,    -2)      17       17           17                      
+  (  -30,    -2)      17       17           17                      
+  (  -29,    -2)      17       17           17                      
+  (  -28,    -2)      16       16           16                      -1
+  (  -27,    -2)      16       16           16                      
+  (  -26,    -2)      16       16           16                      
+  (  -25,    -2)      16       16           16                      
+  (  -24,    -2)      16       16           16                      
+rises 0, falls 6, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: (none)
+
+## wash-bridge (made) along z
+TRANSECT 22 stations from (-43, -12) to (-43, 9), every 1
+  station        ground  surface  water  top  standing            step
+  (  -43,   -12)      13       13           13                      
+  (  -43,   -11)      13       13           13                      
+  (  -43,   -10)      13       13           13                      
+  (  -43,    -9)      13       13           13                      
+  (  -43,    -8)      13       13           13                      
+  (  -43,    -7)      13       13           13                      
+  (  -43,    -6)      12       12           12                      -1
+  (  -43,    -5)      12       12           12                      
+  (  -43,    -4)      12       20           20  storey              BARRIER +8
+  (  -43,    -3)      12       19           19  storey              -1
+  (  -43,    -2)      12       19           19  storey              
+  (  -43,    -1)      12       19           19  storey              
+  (  -43,     0)      12       20           20  storey              +1
+  (  -43,     1)      12       12           12                      DROP -8
+  (  -43,     2)      12       12           12                      
+  (  -43,     3)      12       12           12                      
+  (  -43,     4)      12       12           12                      
+  (  -43,     5)      12       12           12                      
+  (  -43,     6)      12       12           12                      
+  (  -43,     7)      12       12           12                      
+  (  -43,     8)      12       12           12                      
+  (  -43,     9)      12       12           12                      
+rises 2, falls 3, worst step 8: 1 barrier, 0 scramble, 1 drop — BARRIER +8 at (-43, -4); DROP -8 at (-43, 1) | walked end to end
+beside: (none)
