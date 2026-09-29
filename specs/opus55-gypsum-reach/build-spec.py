@@ -25,6 +25,10 @@ hardened clay in the beds and no orange; paths and plaza in oak and jungle plank
 the wash floored in stone, cobble and gravel with no boulder; a second, smaller mesa on the back coast; and
 the spawn room in the houses' style.
 
+Sixth pass, after the author's notes 72–74: twenty-eight dead bushes a team; six patches of hardened clay
+broken with sand across each field; and a second island a team at the strait's ends. Lava in the wash is asked
+about rather than laid.
+
 Team 0 is the west half (x < 0); rot_180 fans the rest.
 """
 import json, os, sys

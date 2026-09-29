@@ -7,9 +7,9 @@ the way through. `docs/gameplay/approaches.md`'s *an objective sits exposed, and
 composed* is the rule it follows.
 
 Slug `opus55-gypsum-reach`, map name **Gypsum Reach**, built on the deployed studio. The run's questions on it
-are notes 1–5, and the author's own notes are 36–43, 51–60 and 65–69 (`reports/opus55-notes-run.md`).
+are notes 1–5, and the author's own notes are 36–43, 51–60, 65–69 and 72–74 (`reports/opus55-notes-run.md`).
 
-## Five passes
+## Six passes
 
 **The first build was the right shape and empty, and the author said so.** Everything was sand over twenty
 blocks of sandstone, two houses stood by a path, the front was bare, and the outline was the plan's rectangle.
@@ -42,6 +42,10 @@ jungle planks, and dead bushes stand on the sand.
 
 **The beds changed in the fifth pass too.** They carry two broken lines of hardened clay, two deep, and no
 orange, and the path along the mesa's cliff is gone.
+
+**The sixth pass is the author's fourth round.** A second island stands at each end of the strait, the
+sand carries four times the dead bushes and patches of hardened clay, and lava in the wash waits on the
+author.
 
 ## How it is meant to play
 
@@ -106,8 +110,10 @@ seats read put them where they fit.
 | plaza | ring round (−70, −2), about 16 × 12 | `column` (−70, −6) |
 | wash lobe | to x −60 between z −17 and −7, floor y13–14 | transect along z −12 |
 | cacti | (−90, −2), (−100, 20), (−96, −40), (−101, −22), (−40, −45), (−30, 42), (−56, 9), each on sand | `column` (−90, −2) |
-| dead bushes | (−100, −38), (−78, −18), (−30, −10), (−42, −42), (−20, −38), (−26, 30), (−66, 8), each on sand | `column` (−30, −10) |
+| dead bushes | 28 a team, listed in the spec, each on sand | `column` (−33, −33) |
 | second mesa | ring round (−103, 6), 16 × 14, 8 high | — |
+| second islands | x 0…8, z −44…−28 and its image, top course y15, 9 blocks off the frontline | transect along z −30 |
+| clay patches | (−94, −38), (−70, −21), (−36, −6), (−28, 36), (−86, −20), (−48, −44) | `column` (−94, −38) |
 | dead ground | 16.9%: round the two houses behind the monument, at (−86, −22) | coverage |
 
 Blue's features are the rot_180 images: block `(x, z)` maps to `(−x−1, −z−1)`.
