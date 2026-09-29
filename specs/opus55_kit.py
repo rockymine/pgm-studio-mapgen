@@ -174,7 +174,7 @@ def boulder_style(rock, form="round", size=3, mossy=False):
 
 
 def copied_trees(specdir, names):
-    """The copied tree recipes a board plants, by library name (`tree-showcase-r13-2`), cached in
+    """The copied tree recipes a board plants, by library name (`birch-2`), cached in
     `<specdir>/trees.json` so the board rebuilds without the network. Returns {name: recipe}."""
     cache_path = os.path.join(specdir, "trees.json")
     cache = json.load(open(cache_path)) if os.path.exists(cache_path) else {}
@@ -190,7 +190,8 @@ def copied_trees(specdir, names):
 
 
 def willow(height=11, radius=5, seed=1, gaps=0.2):
-    """A willow as a copied tree recipe, since the tree library has none: an oak trunk with four short
+    """A willow written as a recipe rather than pulled from the library, whose `willow-1`…`willow-5` are the
+    author's: an oak trunk with four short
     branches, a flattened dome of oak leaves, and curtains of leaves hanging from the crown's rim to within a
     block or two of the ground, `gaps` of the rim's columns left open. Leaves are data 4, which does not
     decay."""

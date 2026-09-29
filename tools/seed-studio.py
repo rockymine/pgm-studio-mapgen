@@ -26,7 +26,7 @@ studio offers the six vanilla species alone, and the warmup skill tells an autho
 over the vanilla stamp — so a run against an unseeded studio is told to reach for something not there.
 `PGM_STUDIO_REPO` says where the studio's checkout is, and `--no-trees` skips this half.
 
-Re-running is safe: a slug is replaced rather than added to, and a tree row is keyed by name. `--check`
+Re-running is safe: a slug is replaced rather than added to, and a tree row is keyed by where it was cut. `--check`
 says what is missing and stores nothing, which is what a pre-flight wants.
 """
 import argparse, json, os, shutil, subprocess, sys, tempfile, time, urllib.error, urllib.request
@@ -37,9 +37,9 @@ CARDS = os.path.join(ROOT, "techniques")
 API = os.environ.get("PGM_STUDIO_API", "").rstrip("/")
 CANDIDATES = ["http://localhost:7894/api", "http://localhost:5000/api", "http://localhost:8080/api"]
 
-# The corpus world the copied trees are cut out of, and the name every recipe from it is filed under.
+# The corpus world the copied trees are cut out of, and the kinds its rows are filed under.
 CORPUS_WORLD = os.path.join(ROOT, "corpus", "tree-showcase")
-CORPUS_TREES = "showcase"
+CORPUS_KINDS = os.path.join(CORPUS_WORLD, "kinds.json")
 # Who built every tree in the corpus world. The cut records it, and a map a copied tree stands on credits them.
 CORPUS_BUILDER = "rockymine"
 # Where the studio's own checkout is. Stated as candidates rather than as a constant, because a path is
@@ -144,7 +144,11 @@ def copied_trees(base):
     """How many recipes in the tree library came out of the corpus world."""
     status, body = call(base, "GET", "/tree-styles")
     rows = body if isinstance(body, list) else (body.get("items") or []) if isinstance(body, dict) else []
-    return sum(1 for row in rows if str(row.get("name", "")).startswith(f"{CORPUS_TREES}-"))
+    with open(CORPUS_KINDS) as handle:
+        stated = json.load(handle)
+    kinds = set(stated.get("rows", {}).values()) | set(stated.get("trees", {}).values())
+    return sum(1 for row in rows if str(row.get("name", "")).rsplit("-", 1)[0] in kinds
+               and str(row.get("name", "")).rsplit("-", 1)[-1].isdigit())
 
 
 def seed_trees():
@@ -158,7 +162,7 @@ def seed_trees():
         return f"SKIPPED — no world at {CORPUS_WORLD}"
     began = time.time()
     done = subprocess.run(
-        ["dotnet", "run", os.path.join("tools", "seed-trees.cs"), CORPUS_WORLD, CORPUS_TREES,
+        ["dotnet", "run", os.path.join("tools", "seed-trees.cs"), CORPUS_WORLD,
          f"--builder={CORPUS_BUILDER}"],
         cwd=studio, capture_output=True, text=True)
     if done.returncode != 0:
@@ -198,7 +202,7 @@ def main():
     trees = copied_trees(base)
     wants_trees = not (args.no_trees or args.only)
     if args.check:
-        print(f"  {'ok      ' if trees else 'MISSING '} {trees} copied tree(s) from `{CORPUS_TREES}`")
+        print(f"  {'ok      ' if trees else 'MISSING '} {trees} copied tree(s) from `tree-showcase`")
         print(f"\n{missing} board(s) missing of {len(boards())}"
               f"{'' if trees else ', and the copied trees'}")
         return 1 if (missing or not trees) else 0
@@ -207,7 +211,7 @@ def main():
               f"scan, give it minutes")
         print(f"  trees: {seed_trees()}")
     elif wants_trees:
-        print(f"  ok       {trees} copied tree(s) already filed under `{CORPUS_TREES}`")
+        print(f"  ok       {trees} copied tree(s) already filed from `tree-showcase`")
     print(f"\n{seeded} board(s) stored of {len(boards())}")
     return 0
 

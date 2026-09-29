@@ -448,12 +448,12 @@ pushed together rather than as one place, where an oak with a tiny spruce among 
 in it — which is what the pair is for. A third species is the one that stops being scenery and starts being a
 catalogue (author).
 
-**A board's trees belong to its climate, and pine and spruce belong to a cold one.** `showcase-r2`'s large
-pine standing on savanna — warm, sandy ground — is the measured case, and no amount of placement repairs a
+**A board's trees belong to its climate, and pine and spruce belong to a cold one.** `large-pine-1` standing
+on savanna — warm, sandy ground — is the measured case, and no amount of placement repairs a
 species being wrong for the ground it is on.
 
-**What a tree *is* is what `corpus/README.md` says, not what its blocks are.** The seeding names every row:
-`r2` and `r3` are pines built of dark-oak log under birch and spruce leaves, `r7` is a tall spruce of acacia
+**What a tree *is* is what `corpus/README.md` says, not what its blocks are.** The library names every tree by
+it — `large-pine`, `tall-spruce`, `willow`: `r2` and `r3` are pines built of dark-oak log under birch and spruce leaves, `r7` is a tall spruce of acacia
 log and birch leaves, and `r4` is a tiny spruce of the same two blocks. Reading the log is how a spruce ends
 up on a savanna.
 
