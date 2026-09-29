@@ -217,3 +217,38 @@ stand before one is tried.
 - Copied trees fetched by name and cached: all eight library rows used seated wherever the ground under them was soil.
 - Quarrymoot's made things after two fixes at the dry stage: nothing declined and no barrier face on its
   first look in game.
+
+---
+
+## The third pass: the author's notes on Sootcombe
+
+**The author answered on the board itself: four replies in the threads the run opened and three new notes of
+their own.** Every one was worked and answered in its thread with the same camera drawn after; the threads are
+`answered` and wait for the author to close them.
+
+| id | the author said | what changed |
+|---|---|---|
+| 6 | prefer the black clay on brown stained clay, larger pattern; wider paths of dirt, coarse dirt and spruce planks with very little granite; granite rock | the ash is grey clay with black and worn earth at scale 5 over granite; paths radius 2, one block in seven granite |
+| 8 | the rock should not be on the map; a board this size cannot justify it | the slag heap's push, patch and theme are removed |
+| 9 | the relief is fine | unchanged |
+| 10 | the room house looks bad; try something inspired by the watch tower, without stilts | every room is a lodge of dark-oak logs and spruce planks under a flat plank roof, forked from `lk-spawn` |
+| 33 | remove the structure on the mid stone; a proper house or small rocks | the engine house is gone; four granite rocks stand on the mid stone |
+| 34 | the wooden boxes are ugly; small and medium boulders of granite and polished granite instead | four granite boulders a frontline in the timber stacks' places |
+| 35 | the headframe is interesting but too tall; one near the frontline as an archer tower, a roof one thick | an archer tower on each frontline, legs y9–17, a one-course deck at y18; the headframe on the hub is gone |
+
+**Two of the author's cameras no longer see their subject**: note 33's stands inside the mid stone's corner and
+note 35's looks at the sky where the headframe stood. Those two replies carry a kept view of the new thing
+instead — *Mid stone and its rocks* and *Archer tower on the frontline* — and say so.
+
+**Note 7 is still waiting on the author.** It was not answered, so the mid stone stays flat, level and 12 blocks
+out, as its default said.
+
+**The stored sketch was found reverted after two drives, and a third put it right.** After the first two
+third-pass drives, `GET …/sketch` answered the second pass's layers — the engine house, the headframe, the
+heap — at ETag "16", and the world read the old headframe's planks at (−12, 76) beside the new archer tower at
+(9, 33). Each drive's store had answered 200 `replaced`, and fourteen vertex inserts had answered 200.
+
+**A third drive stored the new layout and it held, with and without the boulders**, so the boulders' `DR-TONE`
+was not the cause. The likely one is a browser tab open on the board: entering In game saves the board the tab
+holds. An author reviewing a board while an agent rebuilds it can write the old board back over the new, and
+nothing on either side says so.

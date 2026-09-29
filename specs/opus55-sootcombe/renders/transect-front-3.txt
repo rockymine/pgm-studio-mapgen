@@ -1,0 +1,61 @@
+## front-3 (boulder) along x
+TRANSECT 25 stations from (-21, 35) to (3, 35), every 1
+  station        ground  surface  water  top  standing            step
+  (  -21,    35)                                                    void
+  (  -20,    35)                                                    void
+  (  -19,    35)                                                    void
+  (  -18,    35)                                                    void
+  (  -17,    35)                                                    void
+  (  -16,    35)                                                    void
+  (  -15,    35)       9        9            9                      
+  (  -14,    35)       9        9            9                      
+  (  -13,    35)       9        9            9                      
+  (  -12,    35)       9        9            9                      
+  (  -11,    35)       9        9            9                      
+  (  -10,    35)       9        9           12  boulder front-3     
+  (   -9,    35)       9        9           12  boulder front-3     
+  (   -8,    35)       9        9           12  boulder front-3     
+  (   -7,    35)       9        9            9                      
+  (   -6,    35)       9        9            9  stroke path-front   
+  (   -5,    35)       9        9            9  stroke path-front   
+  (   -4,    35)       9        9            9  stroke path-front   
+  (   -3,    35)       9        9            9  stroke path-front   
+  (   -2,    35)       9        9            9                      
+  (   -1,    35)       9        9            9                      
+  (    0,    35)       9        9            9                      
+  (    1,    35)       9        9            9                      
+  (    2,    35)       9        9            9                      
+  (    3,    35)       9        9            9                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree birch-1 at (-18, 37), boulder front-3 at (-10, 34), stroke path-front at (-6, 33)
+
+## front-3 (boulder) along z
+TRANSECT 25 stations from (-9, 23) to (-9, 47), every 1
+  station        ground  surface  water  top  standing            step
+  (   -9,    23)       9        9            9                      
+  (   -9,    24)       9        9            9                      
+  (   -9,    25)       9        9            9                      
+  (   -9,    26)       9        9           11  boulder front-1     
+  (   -9,    27)       9        9           12  boulder front-1     
+  (   -9,    28)       9        9           11  boulder front-1     
+  (   -9,    29)       9        9            9                      
+  (   -9,    30)       9        9            9                      
+  (   -9,    31)       9        9            9                      
+  (   -9,    32)       9        9            9                      
+  (   -9,    33)       9        9           10  boulder front-3     
+  (   -9,    34)       9        9           12  boulder front-3     
+  (   -9,    35)       9        9           12  boulder front-3     
+  (   -9,    36)       9        9           12  boulder front-3     
+  (   -9,    37)       9        9            9                      
+  (   -9,    38)      10       10           10                      +1
+  (   -9,    39)      10       10           10                      
+  (   -9,    40)      10       10           10                      
+  (   -9,    41)      10       10           10                      
+  (   -9,    42)      10       10           10                      
+  (   -9,    43)      10       10           10                      
+  (   -9,    44)      10       10           10                      
+  (   -9,    45)      10       10           10                      
+  (   -9,    46)      10       10           10                      
+  (   -9,    47)      10       10           10                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder front-1 at (-11, 25), boulder front-3 at (-9, 33), tree birch-1 at (-11, 42), stroke path-front at (-7, 46)

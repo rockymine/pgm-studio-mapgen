@@ -43,7 +43,7 @@ TRANSECT 16 stations from (-10, 80) to (-10, 95), every 1
   (  -10,    84)      13       13           13  stroke path-front   
   (  -10,    85)      13       13           13  stroke path-front   
   (  -10,    86)      13       13           13  stroke path-front   
-  (  -10,    87)      13       13           13                      
+  (  -10,    87)      13       13           13  stroke path-front   
   (  -10,    88)      13       13           20                      
   (  -10,    89)      13       13           20  spawn spawn-1       
   (  -10,    90)      13       13           20  spawn spawn-1       
@@ -53,4 +53,4 @@ TRANSECT 16 stations from (-10, 80) to (-10, 95), every 1
   (  -10,    94)      13       13           20  spawn spawn-1       
   (  -10,    95)      13       13           20                      
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke path-front at (-11, 78), spawn spawn-1 at (-12, 89)
+beside: stroke path-front at (-12, 78), spawn spawn-1 at (-12, 89)

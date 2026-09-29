@@ -10,17 +10,21 @@ The arrangement is composed board p12 t2 #21 (`composed-p12-seed21.plan.json`, p
 taken whole: this spec states its elevation, its paint, its made things and its dressing, and nothing about
 where the pieces are. Team 0 is the z > 0 half; rot_180 fans the rest.
 
-Second pass, after the author's review: the first build was bare ash. The ash is now gravel and andesite, since
-both stained clays read as terracotta in game (note 6), the heap is slag, the outer coasts are cut point by point, the mid
-stone carries the engine house, the frontline carries timber stacks for cover, the hub bar carries the
-headframe, and birch and tiny spruce stand on regrowth along the hub's outer rims.
+Second pass, after the author's review: the first build was bare ash. The outer coasts were cut point by
+point, and birch and tiny spruce stand on regrowth along the hub's outer rims.
+
+Third pass, after the author's notes 6, 8, 10 and 33–35: the ground is back to black clay on grey stained clay,
+in larger patches, over granite; the slag heap, the engine house and the timber stacks are gone; the
+headframe is now a shorter archer tower on each frontline with a one-course deck; the frontline and the mid
+stone carry granite boulders; the paths are wider and laid in dirt, coarse dirt and spruce planks; and every
+room is a timber lodge in the headframe's own language.
 """
 import json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(HERE)), "tools", "sculpt"))
-from opus55_kit import (S, cell, noise, depth, by_slope, theme, one, ROCK, ring, patch, path, tree, flora,
+from opus55_kit import (S, cell, noise, depth, by_slope, theme, one, ring, patch, path, tree, flora,
                         boulder, boulder_style, copied_trees, made, coast_edits)
 import props
 
@@ -34,30 +38,45 @@ GROUND = [[-44, 56], [-20, 56], [-20, 40], [-16, 40], [-16, 20], [16, 20], [16, 
           [36, 68], [36, 80], [-4, 80], [-4, 96], [-16, 96], [-16, 80], [-20, 80], [-20, 68], [-44, 68]]
 
 # --- paint -----------------------------------------------------------------------------------------------
-# Three families: the ground grey (gravel and andesite ash), the built warm (brick and dark oak), the
-# accent granite in the paths and the black of the slag.
-LGREY, GREY, BLACK = S(159, 8), S(159, 7), S(159, 15)
+# Families: the ground dark (black clay on grey stained clay, granite under it), the built timber (spruce
+# planks between dark-oak logs), the accent the granite of the rock, the boulders and the odd path block.
+GREY, BLACK = S(159, 7), S(159, 15)
 WORN = cell([S(3, 1), S(3, 0)], 2, 7)
-# Stained clay was tried first, grey and then light grey, and in the game's textures both read as brown
-# terracotta rather than ash. The ground is gravel, andesite and stone instead — one grey carried by three
-# textures — with coal-dark slag at one end of the stop list and worn earth at the other.
-ASH_SET = cell([S(13), S(13), S(1, 5), S(1)], 2, 4)
-ASH = noise([WORN, ASH_SET, ASH_SET, ASH_SET, BLACK], scale=2, seed=5)
-SHOULDER = cell([S(1, 5), S(1), S(13)], 2, 6)
-ash = theme(by_slope((30, depth(ASH, S(1, 5))), (15, depth(SHOULDER, S(1, 5))), (45, ROCK)), wall=ROCK, fill=ROCK)
-# The heap: slag — black clay, gravel and coal-dark cobble, loose on its flanks.
-SLAG = noise([S(13), BLACK, BLACK, S(4), GREY], scale=2, seed=9)
-slag = theme(by_slope((25, depth(SLAG, BLACK)), (65, depth(cell([S(13), BLACK, S(4)], 2, 10), BLACK))),
-             wall=cell([BLACK, S(4), S(1)], 2, 11, rise=2), fill=ROCK)
-# Regrowth: grass and worn earth where birch has taken hold on the spoil.
-regrowth = theme(by_slope((30, depth(noise([WORN, S(2), S(2), S(2)], 2, 12), S(3))), (60, ROCK)),
-                 wall=ROCK, fill=ROCK)
-# Made: brick walls, dark-oak timber, a brick stack.
-brick = one(cell([S(45), S(45), S(45), S(98)], 2, 21, rise=2))
+# The author's ruling on note 6: the black clay on grey stained clay of the first build, in larger patches.
+# At scale 2 a stop at the end of the list comes out about five blocks across; scale 5 gives patches of a
+# dozen, the ground reading as grey clay with black and worn earth lying in it rather than speckled through.
+ASH = noise([WORN, GREY, GREY, GREY, BLACK], scale=5, seed=5)
+# The rock under it is granite and polished granite (note 6), and it is also the steepest band.
+GRANITE = cell([S(1, 1), S(1, 2), S(1, 1), S(1, 2)], 2, 8, rise=2)
+SHOULDER = cell([GREY, S(1, 1), S(1, 2)], 2, 6)
+ash = theme(by_slope((30, depth(ASH, GREY)), (15, depth(SHOULDER, S(1, 1))), (45, GRANITE)),
+            wall=GRANITE, fill=GRANITE)
+# Regrowth: grass and worn earth where birch has taken hold.
+regrowth = theme(by_slope((30, depth(noise([WORN, S(2), S(2), S(2)], 2, 12), S(3))), (60, GRANITE)),
+                 wall=GRANITE, fill=GRANITE)
+# Made: the archer tower's dark-oak logs and planks, the headframe's own two blocks.
 timber = one(S(5, 5))
 post = one(S(162, 1))
 
-PAVE = cell([S(1, 1), S(1, 2), S(45), S(1, 1)], size=2, seed=21)
+# The paths (note 6): dirt, coarse dirt and spruce planks, with very little granite — one entry in seven.
+PAVE = cell([S(3), S(3, 1), S(5, 1), S(3), S(3, 1), S(5, 1), S(1, 1)], size=2, seed=21)
+
+# The rooms (note 10): a timber lodge in the headframe's language rather than the brick house. Dark-oak
+# logs laid as sills and heads and stood as posts, spruce planks between them so the walls read apart from
+# the dark ground, a flat dark-oak plank roof. No footing and no stilts.
+LODGE = json.load(open(os.path.join(os.path.dirname(os.path.dirname(HERE)), "tools", "styles", "lk-spawn.json")))
+LOG = {"kind": "laidLog", "id": 162, "data": 1}
+LODGE_WALL = {"stack": {"ending": "repeat", "bands": [
+    {"material": LOG, "thickness": 1}, {"material": S(5, 1), "thickness": 3}, {"material": LOG, "thickness": 1}]},
+    "extent": 5}
+LODGE["foundation"]["plate"]["stack"]["bands"][0]["material"] = S(5, 5)
+LODGE["foundation"]["footing"] = None
+LODGE["wall"] = LODGE_WALL
+LODGE["post"] = S(162, 1)
+LODGE["roof"].update({"body": S(5, 5), "verge": S(5, 5), "slab": 126, "slabData": 5})
+for storey in LODGE["storeys"]:
+    storey["wall"] = LODGE_WALL
+    storey["post"] = S(162, 1)
 
 relief = {"team": {
     "base": 10, "reach": 0, "step": 1, "landform": "rolling",
@@ -66,67 +85,55 @@ relief = {"team": {
         {"id": "front", "kind": "area", "h": 9, "ring": [[-17, 20], [17, 20], [17, 33], [-17, 33]]},
         {"id": "spur", "kind": "line", "r": 6, "tread": 4, "points": [[-22, 62], [-42, 62]], "h": [11, 10]},
     ],
-    "pushes": [
-        {"id": "heap", "ring": ring(-28, 80, 10, 8, wobble=0.12, lobes=3), "amount": 8, "falloff": 4,
-         "roughness": 0.4, "crown": 0, "seed": 9},
-    ],
+    # The slag heap is gone (note 8): the board is too small to carry a rock that size.
+    "pushes": [],
 }}
 
 # --- made things -----------------------------------------------------------------------------------------
 layers = []
 
-# The engine house on the mid stone, one for the board and so off the mirror: a roofless brick shell with a
-# doorway in each long side, and two stacks at opposite corners so it is the same building from both sides.
-eh = props.LayerBuilder("engine-walls", mirrors=False)
-for x0, z0, x1, z1 in [(-6, -4, 6, -3),      # north wall
-                       (-6, 3, 6, 4),        # south wall
-                       (-6, -3, -5, -1), (-6, 1, -5, 3),   # west wall, a door between
-                       (5, -3, 6, -1), (5, 1, 6, 3)]:      # east wall, a door between
-    eh.rect(x0, z0, x1, z1, 10, 7, "brick")
-layers += made(eh.done(), "engine-house")
-# One stack, stated once and fanned: its rot_180 image is the other corner's.
-layers += made(props.tapered_tower("engine-stack", 4.5, -6.5, 2.2, 1.5, 1.2, 10, 16, "brick", courses=4),
-               "engine-house")
-
-# The headframe over the shaft at the hub bar's west end: four log legs, a timber frame halfway up, a cap.
-HX, HZ, HW = -17, 71, 5          # its west-north corner and its width
-legs = props.LayerBuilder("headframe-legs")
-for dx in (0, HW - 1):
-    for dz in (0, HW - 1):
-        legs.rect(HX + dx, HZ + dz, HX + dx + 1, HZ + dz + 1, 12, 15, "post")
-frame = props.LayerBuilder("headframe-frame")
-for x0, z0, x1, z1 in [(HX + 1, HZ, HX + HW - 1, HZ + 1), (HX + 1, HZ + HW - 1, HX + HW - 1, HZ + HW),
-                       (HX, HZ + 1, HX + 1, HZ + HW - 1), (HX + HW - 1, HZ + 1, HX + HW, HZ + HW - 1)]:
-    frame.rect(x0, z0, x1, z1, 20, 1, "timber")
-cap = props.LayerBuilder("headframe-cap")
-cap.rect(HX - 1, HZ - 1, HX + HW + 1, HZ + HW + 1, 27, 2, "timber")
-layers += made([legs.done(), frame.done(), cap.done()], "headframe")
-
-# Timber stacks on the frontline: cover two and three courses tall, off the paths and off the edge.
-stacks = props.LayerBuilder("timber-stacks")
-for x0, z0, x1, z1, h in [(-12, 26, -9, 28, 3), (6, 31, 8, 34, 2), (-4, 35, -1, 37, 2), (10, 24, 13, 26, 3)]:
-    stacks.rect(x0, z0, x1, z1, 9, h, "timber")
-layers += made(stacks.done(), "timber-stacks", seat="ground")
+# The archer tower on each frontline (note 35): the headframe, shorter and moved to the front — four dark-oak
+# log legs, a plank frame halfway up, and a deck one course thick. The engine house on the mid stone is gone
+# (note 33), and the timber stacks are boulders now (note 34).
+AX, AZ, AW = 9, 33, 5            # its west-north corner and its width, at the frontline's back east corner
+FLOOR = 9                        # the frontline is pinned at 9, so its top course is y8
+legs = props.LayerBuilder("archer-legs")
+for dx in (0, AW - 1):
+    for dz in (0, AW - 1):
+        legs.rect(AX + dx, AZ + dz, AX + dx + 1, AZ + dz + 1, FLOOR, 9, "post")
+frame = props.LayerBuilder("archer-frame")
+for x0, z0, x1, z1 in [(AX + 1, AZ, AX + AW - 1, AZ + 1), (AX + 1, AZ + AW - 1, AX + AW - 1, AZ + AW),
+                       (AX, AZ + 1, AX + 1, AZ + AW - 1), (AX + AW - 1, AZ + 1, AX + AW, AZ + AW - 1)]:
+    frame.rect(x0, z0, x1, z1, FLOOR + 4, 1, "timber")
+deck = props.LayerBuilder("archer-deck")
+deck.rect(AX - 1, AZ - 1, AX + AW + 1, AZ + AW + 1, FLOOR + 9, 1, "timber")
+layers += made([legs.done(), frame.done(), deck.done()], "archer-tower")
 
 # --- patches -------------------------------------------------------------------------------------------
 shapes = [
-    patch("heap-slag", ring(-26, 80, 10, 9, 24, 0.15, 3), "slag", 9, group="team"),
     patch("regrowth-west", [[-20, 42], [-14, 43], [-13, 52], [-15, 60], [-14, 67], [-20, 67]], "regrowth", 9,
           group="team"),
     patch("regrowth-bar", [[-2, 76], [10, 76], [12, 80], [-2, 80]], "regrowth", 9, group="team"),
 ]
 
 # --- dressing ------------------------------------------------------------------------------------------
-TREES = ["tree-showcase-r13-2", "tree-showcase-r4-1", "tree-showcase-r4-3"]
+TREES = ["tree-showcase-r13-2", "tree-showcase-r4-1"]
 styles = dict(copied_trees(HERE, TREES))
+# Granite and polished granite boulders (note 34), small and medium.
+styles["granite-small"] = boulder_style(cell([S(1, 1), S(1, 2)], 2, 31), form="round", size=1.6)
+styles["granite-medium"] = boulder_style(cell([S(1, 1), S(1, 2), S(1, 1)], 2, 32), form="angular", size=2.4)
 
 props_ = [
-    path("path-front", 51, [[-10, 86], [-10, 72], [-8, 54], [-4, 38], [0, 23]], PAVE),
-    path("path-wool-a", 52, [[-12, 60], [-24, 62], [-33, 62]], PAVE, wander=1),
-    path("path-wool-b", 53, [[-6, 75], [8, 74], [25, 74]], PAVE, wander=1),
+    # wider than before (note 6): four blocks across the front path, three to the wools
+    path("path-front", 51, [[-10, 86], [-10, 72], [-8, 54], [-4, 38], [0, 23]], PAVE, radius=2),
+    path("path-wool-a", 52, [[-12, 60], [-24, 62], [-33, 62]], PAVE, radius=2, wander=1),
+    path("path-wool-b", 53, [[-6, 75], [8, 74], [25, 74]], PAVE, radius=2, wander=1),
+    # boulders on the frontline where the timber stacks stood, and on the mid stone where the engine house did
+    boulder("front-1", -11, 27, "granite-medium", 21), boulder("front-2", 5, 29, "granite-small", 22),
+    boulder("front-3", -9, 35, "granite-small", 23), boulder("front-4", 12, 25, "granite-medium", 24),
+    boulder("mid-1", -6, -3, "granite-small", 25), boulder("mid-2", 5, -5, "granite-medium", 26),
     tree("birch-1", -18, 45, "tree-showcase-r13-2", 1),
     tree("spruce-1", -18, 54, "tree-showcase-r4-1", 3),
-    tree("spruce-2", 0, 78, "tree-showcase-r4-3", 4),
     flora("regrowth-cover", [[-21, 41], [-12, 41], [-12, 68], [-21, 68]], coverage=0.3, scale=6, fern=0.4,
           flowers=0.03, tall=0.02, seed=8),
 ]
@@ -135,7 +142,7 @@ finish = {
     "created": "2026-09-28",
     "authors": ["Opus 5.5"],
     "biome": {"kind": "solid", "id": 32},
-    "themes": {"ash": ash, "slag": slag, "regrowth": regrowth, "brick": brick, "timber": timber, "post": post},
+    "themes": {"ash": ash, "regrowth": regrowth, "timber": timber, "post": post},
     "mapTheme": "ash",
     "relief": relief,
     # The outer coasts only. The frontline's face to the band, the wall seams at x -24 and x 12, and the
@@ -151,7 +158,7 @@ finish = {
     })},
     "addShapes": shapes,
     "addLayers": layers,
-    "roomStyles": {"spawn": "@lk-spawn", "wool": "@lk-spawn"},
+    "roomStyles": {"spawn": LODGE, "wool": LODGE},
     "dressing": {"styles": styles, "props": props_},
 }
 
