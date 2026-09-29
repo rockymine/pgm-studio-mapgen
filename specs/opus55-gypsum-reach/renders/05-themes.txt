@@ -1,14 +1,20 @@
-THEMES  6 themes over 16253 ground cells, 23 distinct surface blocks
-  desert  11504 cells (70.8%)  12:0 Sand, 24:0 Sandstone, 5:3 Jungle Planks, 98:0 Stone Bricks, 24:2 Smooth Sandstone, 5:0 Oak Planks, 172:0 Hardened Clay, 1:5 Andesite, 1:0 Stone, 4:0 Cobblestone, 102:0 Glass Pane, 1:6 Polished Andesite
-  oasis  3049 cells (18.8%)  2:0 Grass Block, 9:0 Water, 98:0 Stone Bricks, 12:0 Sand, 5:3 Jungle Planks, 5:0 Oak Planks, 24:0 Sandstone, 3:0 Dirt, 1:0 Stone, 3:1 Coarse Dirt, 4:0 Cobblestone, 102:0 Glass Pane
-  wash-floor  848 cells (5.2%)  1:0 Stone, 4:0 Cobblestone, 24:0 Sandstone, 13:0 Gravel, 172:0 Hardened Clay
+THEMES  7 themes over 16545 ground cells, 23 distinct surface blocks
+  desert  11128 cells (67.3%)  12:0 Sand, 24:0 Sandstone, 98:0 Stone Bricks, 5:3 Jungle Planks, 24:2 Smooth Sandstone, 5:0 Oak Planks, 172:0 Hardened Clay, 1:5 Andesite, 1:0 Stone, 4:0 Cobblestone, 102:0 Glass Pane, 1:6 Polished Andesite
+  oasis  3041 cells (18.4%)  2:0 Grass Block, 9:0 Water, 98:0 Stone Bricks, 12:0 Sand, 5:3 Jungle Planks, 5:0 Oak Planks, 24:0 Sandstone, 3:0 Dirt, 1:0 Stone, 3:1 Coarse Dirt, 4:0 Cobblestone, 102:0 Glass Pane
+  wash-floor  824 cells (5.0%)  4:0 Cobblestone, 1:0 Stone, 24:0 Sandstone, 13:0 Gravel, 172:0 Hardened Clay
+  sand-bed  630 cells (3.8%)  12:0 Sand, 5:3 Jungle Planks, 5:0 Oak Planks
+  clay-patch  324 cells (2.0%)  172:0 Hardened Clay, 12:0 Sand, 24:0 Sandstone, 5:3 Jungle Planks, 24:2 Smooth Sandstone, 5:0 Oak Planks
   worn  300 cells (1.8%)  3:0 Dirt, 3:1 Coarse Dirt, 5:0 Oak Planks, 5:3 Jungle Planks
-  plaza  300 cells (1.8%)  5:3 Jungle Planks, 5:0 Oak Planks, 24:0 Sandstone
-  sand-bed  252 cells (1.6%)  12:0 Sand, 5:0 Oak Planks
+  plaza  298 cells (1.8%)  5:3 Jungle Planks, 5:0 Oak Planks, 24:0 Sandstone
 borders:
-  desert | oasis  484 cells
-  desert | sand-bed  316 cells
-  desert | wash-floor  236 cells
-  desert | plaza  136 cells
+  desert | sand-bed  734 cells
+  desert | oasis  468 cells
+  clay-patch | desert  284 cells
+  desert | wash-floor  220 cells
+  desert | plaza  120 cells
   desert | worn  84 cells
   oasis | worn  28 cells
+  clay-patch | wash-floor  24 cells
+  oasis | sand-bed  16 cells
+  clay-patch | sand-bed  12 cells
+  plaza | sand-bed  12 cells

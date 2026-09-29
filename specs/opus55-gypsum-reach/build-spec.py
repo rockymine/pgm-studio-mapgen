@@ -41,6 +41,7 @@ SLUG = "opus55-gypsum-reach"
 FIELD = [[-112, 24], [-104, 24], [-104, -48], [-16, -48], [-16, 48], [-112, 48]]
 SURFACE = 20
 ISLE = [[-4, -16], [4, -16], [4, 16], [-4, 16]]             # isle-18, the middle island
+ISLE_SOUTH = [[0, -44], [8, -44], [8, -28], [0, -28]]        # isle-south-18, fanned to its image on red's side
 # (t, inward) along the short ends and along the long sides; a negative pull pushes the coast out
 ISLE_CUTS = {0: [(0.3, 2), (0.7, -1)], 1: [(0.12, -2), (0.3, 1), (0.5, -3), (0.68, 2), (0.85, -1)]}
 
@@ -58,6 +59,8 @@ plan = {
         {"id": "spawn", "role": "spawn", "rect": [-26, 8, 4, 3], "surface": 21},   # x -104..-88, z 32..44
         # the middle island (note 36), one piece on the axis
         {"id": "isle", "rect": [-1, -4, 2, 8], "surface": 18, "mirrors": False},   # x -4..4, z -16..16
+        # a second island a team at the strait's ends, to cross by (note 74): fanned, x 0..8, z -44..-28
+        {"id": "isle-south", "rect": [0, -11, 2, 4], "surface": 18},
     ],
     "zones": [{"id": "strait", "rect": [-4, -12, 4, 24]}],
     "placements": {
@@ -107,6 +110,8 @@ sand_bed = theme(depth(S(12), S(12)), wall=S(12), fill=S(12))
 # Note 66: the paths and the plaza in oak and jungle planks; granite and brick did not sit on sand.
 PAVE = cell([S(5, 0), S(5, 3), S(5, 0), S(5, 3)], size=2, seed=21)
 plaza = theme(by_slope((30, depth(PAVE, S(24, 0))), (60, STRATA)), wall=STRATA, fill=STRATA)
+clay_patch = theme(by_slope((28, depth(noise([S(172), S(172), S(12), S(172), S(24, 0)], 2, 73), S(172))),
+                             (60, STRATA)), wall=STRATA, fill=STRATA)
 wash_floor = theme(by_slope((20, depth(cell([S(1), S(4), S(13), S(1), S(4)], 2, 67), S(1))), (70, STRATA)),
                    wall=STRATA, fill=STRATA)
 
@@ -184,8 +189,14 @@ for x, z, top, tall in CACTI:
 layers += made(cacti.done(), "cacti")
 # Dead bushes on the open sand (note 66), on a made layer for the same reason and each in the same sand patch:
 # a 1.8 dead bush also wants sand under it.
+# Four times as many (note 73): the first seven, and twenty-one more on flat sand read off `column`, clear of
+# the paths, the props and each other by six blocks.
 BUSHES = [(-100, -38, 20), (-78, -18, 20), (-30, -10, 16), (-42, -42, 18), (-20, -38, 16), (-26, 30, 16),
-          (-66, 8, 19)]
+          (-66, 8, 19),
+          (-33, -33, 17), (-102, -31, 20), (-101, 30, 20), (-81, 5, 20), (-22, -32, 16), (-80, -25, 20),
+          (-65, -7, 21), (-100, -8, 20), (-81, -1, 21), (-89, 27, 19), (-26, 22, 16), (-93, -19, 20),
+          (-29, 4, 15), (-21, 14, 17), (-39, -21, 17), (-90, -46, 20), (-106, 24, 20), (-94, -7, 20),
+          (-21, -9, 16), (-75, 18, 18), (-71, -15, 20)]
 bushes = props.LayerBuilder("dead-bushes")
 for x, z, top in BUSHES:
     bushes.rect(x, z, x + 1, z + 1, top + 1, 1, "dead-bush", keepClear=False)
@@ -208,6 +219,12 @@ shapes = [
     patch("hamlet-yard", ring(-88, 18, 8, 6, 20, 0.15, 3), "worn", SURFACE, group="team"),
     # an irregular plaza of the path's own paving under the monument (note 53)
     patch("plaza", ring(-70, -2, 8, 6, 22, 0.25, 4, 0.3), "plaza", SURFACE, group="team"),
+    # hardened clay lying in the sand here and there, the way the dirt lies in the hamlet (note 73)
+] + [
+    patch(f"clay-{i}", ring(x, z, rx, rz, 18, 0.25, 3, i * 0.7), "clay-patch", SURFACE, group="team")
+    for i, (x, z, rx, rz) in enumerate([(-94, -38, 4, 3), (-70, -21, 4, 2), (-36, -6, 3, 3), (-28, 36, 4, 3),
+                                        (-86, -20, 3, 3), (-48, -44, 3, 2)])
+] + [
     # the wash's floor in stone, cobble and gravel; its banks keep the beds (note 67)
     patch("wash-floor", WASH, "wash-floor", SURFACE, group="team"),
 ] + [
@@ -289,7 +306,7 @@ finish = {
     "authors": ["Opus 5.5"],
     "biome": {"kind": "solid", "id": 2},
     "themes": {"desert": desert, "oasis": oasis, "worn": worn, "masonry": masonry,
-               "deck": deck, "post": post, "rail": rail, "plaza": plaza, "wash-floor": wash_floor, "cactus": cactus, "dead-bush": one(S(32)), "sand-bed": sand_bed},
+               "deck": deck, "post": post, "rail": rail, "plaza": plaza, "wash-floor": wash_floor, "clay-patch": clay_patch, "cactus": cactus, "dead-bush": one(S(32)), "sand-bed": sand_bed},
     "mapTheme": "desert",
     "relief": relief,
     # The frontline (note 36): pushed out toward the island south of it and pulled in north of it, t along
@@ -302,7 +319,9 @@ finish = {
         4: [(0.1, 3), (0.3, 2), (0.5, 4), (0.7, 2)]}),
         # the middle island (note 55): one on the axis and not fanned, so its edits are stated in rot_180
         # pairs, the same t on each opposite edge, and it stays fair to both teams
-        "isle-18": coast_edits(ISLE, {e: ISLE_CUTS[e % 2] for e in range(4)})},
+        "isle-18": coast_edits(ISLE, {e: ISLE_CUTS[e % 2] for e in range(4)}),
+        "isle-south-18": coast_edits(ISLE_SOUTH, {0: [(0.3, 2), (0.7, -1)], 1: [(0.2, -2), (0.5, 2), (0.8, -1)],
+                                                  2: [(0.4, 1), (0.75, -2)], 3: [(0.25, 1), (0.6, -2)]})},
     "addShapes": shapes,
     "addLayers": layers,
     "roomStyles": {"spawn": SPAWN_ROOM},

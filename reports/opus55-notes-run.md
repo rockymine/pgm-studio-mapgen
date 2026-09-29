@@ -437,3 +437,28 @@ back before the reply went.
 
 **The glass shuts the spawn rooms if it goes on them too**, so only the wool rooms take it; a style is shared
 by every room it is named for, and the spawn rooms have their own copy with an open door.
+
+## The tenth pass: the author's fourth round on Gypsum Reach
+
+**The author left three notes, 72–74, and resolved the rest of the third round.** Each was answered at revision
+68; note 72 is `needs-info`.
+
+| id | the author said | what changed |
+|---|---|---|
+| 72 | is lava supported, or only water? lava in the wash would be nice | nothing yet: asked whether to lay it |
+| 73 | four times the dead bushes; accents of hardened clay on the surface, spread across | 28 bushes a team; six patches of hardened clay broken with sand |
+| 74 | another island in the void to cross by | `isle-south`, x 0…8, z −44…−28, fanned |
+
+**The studio has no lava fill.** The water prop takes no fluid, and lava appears only inside a core's casing.
+A made layer could lay it, but the timber bridge's posts stand in the wash and lava sets wood alight. The wash
+is also the monument's way in from below, so the reply asks rather than builds.
+
+**A lasso drawn over void carries no columns, so its place is read off the picture.** The straight-down camera
+at y195 draws 0.19 blocks to the pixel; a first estimate from the field of view alone was off by nearly two to
+one, and note 72's columns were what calibrated it.
+
+**Twenty-one bush spots came off a grid of `column` reads**, flat sand only, six blocks from the paths, the
+props and each other. Each stands in a sand-filled patch like the cacti.
+
+**One reply put the island 7 blocks off the frontline when a transect reads 9**, and a correction in the thread
+says so.

@@ -29,8 +29,8 @@ TRANSECT 89 stations from (-109, -1) to (-21, -1), every 1
   (  -84,    -1)      21       21           21                      
   (  -83,    -1)      21       21           21                      
   (  -82,    -1)      22       22           22                      +1
-  (  -81,    -1)      22       22           22                      
-  (  -80,    -1)      22       22           22  stroke path-mon     
+  (  -81,    -1)      22       23           23  storey              +1
+  (  -80,    -1)      22       22           22  stroke path-mon     -1
   (  -79,    -1)      22       22           22  stroke path-mon     
   (  -78,    -1)      22       22           22  stroke path-mon     
   (  -77,    -1)      22       22           22  stroke path-mon     
@@ -90,7 +90,7 @@ TRANSECT 89 stations from (-109, -1) to (-21, -1), every 1
   (  -23,    -1)      16       16           16                      
   (  -22,    -1)      16       16           16                      
   (  -21,    -1)                                                    void
-rises 1, falls 10, worst step 3: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 2, falls 11, worst step 3: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: stroke path-mon at (-85, 1), destroyable mon at (-72, -3), stroke path-bridge-west at (-66, -3), stroke path-bridge-east at (-32, -3)
 
 ## cacti (made) along z
@@ -137,8 +137,8 @@ TRANSECT 94 stations from (-65, -48) to (-65, 45), every 1
   (  -65,   -10)      22       22           22                      +1
   (  -65,    -9)      22       22           22                      
   (  -65,    -8)      22       22           22                      
-  (  -65,    -7)      22       22           22                      
-  (  -65,    -6)      22       22           22                      
+  (  -65,    -7)      22       23           23  storey              +1
+  (  -65,    -6)      22       22           22                      -1
   (  -65,    -5)      22       22           22                      
   (  -65,    -4)      22       22           22  stroke path-bridge-west  
   (  -65,    -3)      22       22           22  stroke path-bridge-west  
@@ -190,5 +190,5 @@ TRANSECT 94 stations from (-65, -48) to (-65, 45), every 1
   (  -65,    43)      16       16           22  tree t2             
   (  -65,    44)      16       16           16  tree t2             
   (  -65,    45)                            22  tree t2             void
-rises 2, falls 10, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-65, -29) | walked end to end
+rises 3, falls 11, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-65, -29) | walked end to end
 beside: tree t-mesa at (-67, -46), boulder b-mesa-1 at (-65, -45), house house-d at (-65, -27), stroke path-bridge-west at (-65, -4), stroke path-hamlet at (-64, 11), house house-c at (-67, 15), water oasis-pool at (-67, 24), tree t2 at (-67, 34)
