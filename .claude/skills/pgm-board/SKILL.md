@@ -97,7 +97,7 @@ number answers whether it is right.** A one-block bump under a rail is one shade
 nothing at all in an isometric — `03-slopes.txt` names it with its coordinates, and it shipped in five
 consecutive builds of `opus5-lindenkreuz` because nobody opened the file.
 
-**After a drive, reply on every note it answered.** The reply names what changed, the revision it landed at
+**After a drive, reply on every note it answered.** The reply names what changed, the change it landed as
 and the number that moved ("dead share in this area 41% → 6%"), and carries the same camera drawn after the
 change: fetch `render/eye` with the note's camera, post the PNG to `POST /notes/pictures`, and name the hash
 as the reply's `picture`. The thread then waits on the author, who resolves it; an agent never does.
