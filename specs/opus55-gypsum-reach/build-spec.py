@@ -33,6 +33,10 @@ under a stone bridge in the houses' own language — polished-andesite pillars, 
 stone-brick deck, cobblestone-wall rails — which nothing can set alight; and the cacti and dead bushes grow
 from the dressing's flora over the open sand, with no sand patch under each.
 
+Eighth pass, once the studio named what the frontline edits had left: the coast pulled back to x -24 stood
+eight blocks of void short of the build zone, which nobody could build across (EZ2), so the zone reaches over
+that strip too.
+
 Team 0 is the west half (x < 0); rot_180 fans the rest.
 """
 import json, os, sys
@@ -71,7 +75,9 @@ plan = {
         # a second island a team at the strait's ends, to cross by (note 74): fanned, x 0..8, z -44..-28
         {"id": "isle-south", "rect": [0, -11, 2, 4], "surface": 18},
     ],
-    "zones": [{"id": "strait", "rect": [-4, -12, 4, 24]}],
+    # the strait, x -24..0: out to where the frontline's coast was pulled back to, so every coast the edit
+    # left reaches the zone (EZ2)
+    "zones": [{"id": "strait", "rect": [-6, -12, 6, 24]}],
     "placements": {
         # facing -z, so the oasis is on the left: a player runs along it and turns right to the front
         "spawns": [{"id": "sp", "piece": "spawn", "at": [8, 6], "facing": "front", "footprint": [2, 2, 12, 8]}],
