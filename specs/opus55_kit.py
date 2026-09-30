@@ -134,15 +134,38 @@ def house(pid, style, corners, front=None, storeys=None, seed=0, form=None):
     return out
 
 
-def flora(pid, points, coverage=0.3, scale=10, fern=0.25, flowers=0.08, flower_scale=12, tall=0.05, seed=0):
+def flora(pid, points, coverage=0.3, scale=10, fern=0.25, flowers=0.08, flower_scale=12, tall=0.05, seed=0,
+          dead_bush=0.0, cactus=0.0):
+    """Ground cover over a drawn area. On sand and clay it grows only what 1.8 lets stand there: `cactus` is
+    the share of the cover on sand that is a cactus, one to four tall, and `dead_bush` the share of the rest
+    that is a dead bush."""
     return {"kind": "flora", "id": pid, "seed": seed, "points": points,
             "spec": {"coverage": coverage, "scale": scale, "octaves": 2, "fernShare": fern,
-                     "flowerShare": flowers, "flowerScale": flower_scale, "tallShare": tall}}
+                     "flowerShare": flowers, "flowerScale": flower_scale, "tallShare": tall,
+                     "deadBushShare": dead_bush, "cactusShare": cactus}}
 
 
-def pool(pid, points, depth=3, shelf=4, shore=2, bank=None, level=None, layer="ground", edge=1.5):
+def chest(pid, x, z, items, facing="negZ", y=None):
+    """A chest on the ground at (x, z), or at world `y` where one is stated — on a deck or a platform. `items`
+    is `[(item, count, enchantments, slot)]`: enchantments `[(name, level)]` by PGM's names (`power`), and the
+    slot 0 at the top left to 26 at the bottom right, or None for the next free one."""
+    def stack(item, count, ench, slot):
+        out = {"item": item, "count": count}
+        if ench:
+            out["enchantments"] = [{"name": name, "level": level} for name, level in ench]
+        if slot is not None:
+            out["slot"] = slot
+        return out
+    out = {"kind": "chest", "id": pid, "x": x, "z": z, "facing": facing,
+           "items": [stack(*entry) for entry in items]}
+    if y is not None:
+        out["y"] = y
+    return out
+
+
+def pool(pid, points, depth=3, shelf=4, shore=2, bank=None, level=None, layer="ground", edge=1.5, fluid="water"):
     out = {"kind": "fluid", "id": pid, "shape": "pool", "form": "natural", "layer": layer, "points": points,
-           "radius": shelf, "depth": depth, "shore": shore, "shoreWander": True, "edge": edge}
+           "radius": shelf, "depth": depth, "shore": shore, "shoreWander": True, "edge": edge, "fluid": fluid}
     if bank:
         out["bank"] = bank
     if level is not None:
@@ -188,55 +211,6 @@ def copied_trees(specdir, names):
         json.dump(cache, open(cache_path, "w"), separators=(",", ":"))
     return {n: cache[n] for n in names}
 
-
-def willow(height=11, radius=5, seed=1, gaps=0.2):
-    """A willow written block by block. The studio grows one as a template — `{"kind": "tree", "form":
-    "template", "species": "willow", "height": 11}` — and the library's `willow-1`…`willow-5` are the
-    author's own; this is the hand-written body the template was taken from: an oak trunk with four short
-    branches, a flattened dome of oak leaves, and curtains of leaves hanging from the crown's rim to within a
-    block or two of the ground, `gaps` of the rim's columns left open. Leaves are data 4, which does not
-    decay."""
-    import random
-    rnd = random.Random(seed)
-    body, seen = [], set()
-
-    def put(x, y, z, block, data):
-        if (x, y, z) not in seen:
-            seen.add((x, y, z))
-            body.append([x, y, z, block, data])
-
-    top = height - 3
-    for y in range(top + 1):
-        put(0, y, 0, 17, 0)
-    for dx, dz, data in [(1, 0, 4), (-1, 0, 4), (0, 1, 8), (0, -1, 8)]:
-        for step in (1, 2):
-            put(dx * step, top - 1 + (step - 1), dz * step, 17, data)
-    mid = top + 1
-    rim = []
-    for y in range(top - 1, height + 1):
-        rise = (y - mid) / 2.2
-        if abs(rise) >= 1:
-            continue
-        r = radius * math.sqrt(1 - rise * rise)
-        for x in range(-radius - 1, radius + 2):
-            for z in range(-radius - 1, radius + 2):
-                d = math.hypot(x, z)
-                if d <= r and not (x == 0 and z == 0 and y <= top):
-                    put(x, y, z, 18, 4)
-                    if y == mid and d > radius - 2:
-                        rim.append((x, z))
-    # the curtains hang from the crown's widest ring, from under its lowest leaf in that column
-    for x, z in sorted(set(rim)):
-        if rnd.random() < gaps:
-            continue
-        under = min(y for (cx, y, cz) in seen if (cx, cz) == (x, z)) - 1
-        low = rnd.randint(1, max(1, top - 4))
-        for y in range(under, low - 1, -1):
-            put(x, y, z, 18, 4)
-    return {"kind": "tree", "form": "copied", "species": "oak", "height": height, "body": body}
-
-
-# ── made things ─────────────────────────────────────────────────────────────────────────────────────────
 
 def made(layers, part_of, seat=None):
     """`tools/sculpt/props.py` layers as `addLayers` entries: a made thing, painted over its own span,

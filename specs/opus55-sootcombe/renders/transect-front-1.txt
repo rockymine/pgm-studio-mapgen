@@ -1,6 +1,6 @@
 ## front-1 (boulder) along x
 TRANSECT 25 stations from (-23, 27) to (1, 27), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -23,    27)                                                    void
   (  -22,    27)                                                    void
   (  -21,    27)                                                    void
@@ -31,7 +31,7 @@ beside: boulder front-1 at (-13, 26), stroke path-front at (-5, 29)
 
 ## front-1 (boulder) along z
 TRANSECT 25 stations from (-11, 15) to (-11, 39), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -11,    15)                                                    void
   (  -11,    16)                                                    void
   (  -11,    17)                                                    void

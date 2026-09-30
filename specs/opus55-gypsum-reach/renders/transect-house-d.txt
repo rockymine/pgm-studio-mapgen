@@ -1,6 +1,6 @@
 ## house-d (house) along x
 TRANSECT 24 stations from (-72, -23) to (-49, -23), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -72,   -23)      21       21           21                      
   (  -71,   -23)      21       21           21                      
   (  -70,   -23)      21       21           21                      
@@ -30,7 +30,7 @@ beside: house house-d at (-65, -25), stroke path-spring at (-55, -25)
 
 ## house-d (house) along z
 TRANSECT 23 stations from (-61, -34) to (-61, -12), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -61,   -34)      30       30           30                      
   (  -61,   -33)      27       27           27                      -3
   (  -61,   -32)      25       25           25                      -2
@@ -55,4 +55,4 @@ TRANSECT 23 stations from (-61, -34) to (-61, -12), every 1
   (  -61,   -13)      15       15           15                      -1
   (  -61,   -12)      15       15           15                      
 rises 0, falls 8, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-61, -31) | walked end to end
-beside: house house-d at (-63, -27)
+beside: house house-d at (-63, -27), fluid wash-lava at (-59, -14)

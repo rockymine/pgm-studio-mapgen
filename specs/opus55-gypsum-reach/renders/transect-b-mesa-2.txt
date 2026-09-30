@@ -1,6 +1,6 @@
 ## b-mesa-2 (boulder) along x
 TRANSECT 25 stations from (-89, -37) to (-65, -37), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -89,   -37)      21       21           21                      
   (  -88,   -37)      21       21           21                      
   (  -87,   -37)      26       26           26                      BARRIER +5
@@ -31,7 +31,7 @@ beside: tree t-mesa at (-79, -39), boulder b-mesa-2 at (-79, -36)
 
 ## b-mesa-2 (boulder) along z
 TRANSECT 24 stations from (-77, -48) to (-77, -25), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -77,   -48)                                                    void
   (  -77,   -47)      30       30           30                      
   (  -77,   -46)      30       30           30  tree t-mesa         

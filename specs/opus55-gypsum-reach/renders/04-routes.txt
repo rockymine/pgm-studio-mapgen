@@ -22,7 +22,7 @@ ROUTE (-96, 38) -> (-70, -2) aim travel: 51 blocks, 0 placed, 0 drop(s), worst d
   (-92, 20)         20
   (-91, 19)         20
   (-90, 18)         20
-  (-89, 17)         20
+  (-89, 17)         21
   (-88, 16)         20
   (-87, 15)         20
   (-86, 14)         20
@@ -95,23 +95,23 @@ ROUTE (-96, 38) -> (69, 1) aim travel: 214 blocks, 42 placed, 1 drop(s), worst d
   (-55, 2)          20
   (-54, 1)          19
   (-53, 0)          20
-  (-52, 0)          20
-  (-51, 0)          20
-  (-50, 0)          20
-  (-49, 0)          20
-  (-48, 0)          20
-  (-47, 0)          20
-  (-46, 0)          20
-  (-45, 0)          20
-  (-44, 0)          20
-  (-43, 0)          20
-  (-42, 0)          20
-  (-41, 0)          20
-  (-40, 0)          20
-  (-39, 0)          20
-  (-38, 0)          20
-  (-37, 0)          20
-  (-36, -1)         19
+  (-52, -1)         19
+  (-51, -2)         19
+  (-50, -2)         19
+  (-49, -2)         19
+  (-48, -2)         19
+  (-47, -2)         19
+  (-46, -2)         19
+  (-45, -2)         19
+  (-44, -2)         19
+  (-43, -2)         19
+  (-42, -2)         19
+  (-41, -2)         19
+  (-40, -2)         19
+  (-39, -2)         19
+  (-38, -2)         19
+  (-37, -2)         19
+  (-36, -2)         19
   (-35, -2)         19
   (-34, -3)         18
   (-33, -4)         17
@@ -223,7 +223,7 @@ ROUTE (-96, 38) -> (69, 1) aim travel: 214 blocks, 42 placed, 1 drop(s), worst d
   (68, 2)           22
   (69, 1)           23
 rises 1, falls 1, worst step 16: drop -16 at (12, 12); barrier +16 at (14, 14)
-beside: destroyable mon#1 at (67, 2) d0, spawn sp at (-96, 35) d0, tree t1 at (-87, 26) d0, boulder b-isle at (-3, -9) d1, boulder b4 at (-23, -16) d1, boulder b4#1 at (21, 16) d1, house house-c at (-73, 15) d2
+beside: destroyable mon#1 at (67, 2) d0, spawn sp at (-96, 35) d0, tree t1 at (-87, 26) d0, boulder b-isle at (-3, -9) d1, boulder b4 at (-23, -16) d1, boulder b4#1 at (21, 16) d1, fluid wash-lava at (-51, 1) d2, fluid wash-lava#1 at (34, 4) d2, house house-c at (-73, 15) d2
 
 ## spawn-blue -> mon-0
 ROUTE (96, -38) -> (-70, -2) aim travel: 214 blocks, 42 placed, 1 drop(s), worst drop 16
@@ -274,24 +274,24 @@ ROUTE (96, -38) -> (-70, -2) aim travel: 214 blocks, 42 placed, 1 drop(s), worst
   (54, -3)          20
   (53, -2)          19
   (52, -1)          20
-  (51, -1)          20
-  (50, -1)          20
-  (49, -1)          20
-  (48, -1)          20
-  (47, -1)          20
-  (46, -1)          20
-  (45, -1)          20
-  (44, -1)          20
-  (43, -1)          20
-  (42, -1)          20
-  (41, -1)          20
-  (40, -1)          20
-  (39, -1)          20
-  (38, -1)          20
-  (37, -1)          20
-  (36, -1)          20
-  (35, -1)          20
-  (34, 0)           19
+  (51, 0)           19
+  (50, 1)           19
+  (49, 1)           19
+  (48, 1)           19
+  (47, 1)           19
+  (46, 1)           19
+  (45, 1)           19
+  (44, 1)           19
+  (43, 1)           19
+  (42, 1)           19
+  (41, 1)           19
+  (40, 1)           19
+  (39, 1)           19
+  (38, 1)           19
+  (37, 1)           19
+  (36, 1)           19
+  (35, 1)           19
+  (34, 1)           19
   (33, 1)           18
   (32, 2)           18
   (31, 3)           17
@@ -402,7 +402,7 @@ ROUTE (96, -38) -> (-70, -2) aim travel: 214 blocks, 42 placed, 1 drop(s), worst
   (-69, -3)         22
   (-70, -2)         23
 rises 1, falls 1, worst step 16: drop -16 at (13, 13); barrier +16 at (11, 11)
-beside: destroyable mon at (-70, -2) d0, spawn sp#1 at (94, -35) d0, tree t1#1 at (76, -17) d0, boulder b-isle at (-3, -9) d1, boulder b4 at (-23, -16) d1, boulder b4#1 at (21, 16) d2, house house-c#1 at (71, -16) d2
+beside: destroyable mon at (-70, -2) d0, spawn sp#1 at (94, -35) d0, tree t1#1 at (76, -17) d0, boulder b-isle at (-3, -9) d1, boulder b4 at (-23, -16) d1, boulder b4#1 at (21, 16) d2, fluid wash-lava at (-53, -5) d2, fluid wash-lava#1 at (34, 4) d2, house house-c#1 at (71, -16) d2
 
 ## spawn-blue -> mon-1
 ROUTE (96, -38) -> (69, 1) aim travel: 50 blocks, 0 placed, 0 drop(s), worst drop 0
@@ -427,7 +427,7 @@ ROUTE (96, -38) -> (69, 1) aim travel: 50 blocks, 0 placed, 0 drop(s), worst dro
   (91, -21)         20
   (90, -20)         20
   (89, -19)         20
-  (88, -18)         20
+  (88, -18)         21
   (87, -17)         20
   (86, -16)         20
   (85, -15)         20

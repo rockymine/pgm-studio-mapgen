@@ -1,6 +1,6 @@
 ## house-c (house) along x
 TRANSECT 24 stations from (-80, 19) to (-57, 19), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -80,    19)      19       19           19  tree t1             
   (  -79,    19)      19       19           19  tree t1             
   (  -78,    19)      19       19           19  tree t1             
@@ -30,7 +30,7 @@ beside: tree t1 at (-82, 17), house house-c at (-71, 17), tree t4 at (-61, 20)
 
 ## house-c (house) along z
 TRANSECT 23 stations from (-69, 8) to (-69, 30), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -69,     8)      21       21           21                      
   (  -69,     9)      20       20           20                      -1
   (  -69,    10)      20       20           20                      
@@ -53,6 +53,6 @@ TRANSECT 23 stations from (-69, 8) to (-69, 30), every 1
   (  -69,    27)      16       16     16    16  tree t1             
   (  -69,    28)      16       16     16    16  tree t1             
   (  -69,    29)      16       16     16    16  tree t1             
-  (  -69,    30)      16       16     16    16  water oasis-pool    
+  (  -69,    30)      16       16     16    16  fluid oasis-pool    
 rises 0, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke path-hamlet at (-69, 13), house house-c at (-71, 15), tree t1 at (-71, 18), water oasis-pool at (-68, 24)
+beside: stroke path-hamlet at (-69, 13), house house-c at (-71, 15), tree t1 at (-71, 18), fluid oasis-pool at (-68, 24)

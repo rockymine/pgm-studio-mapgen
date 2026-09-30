@@ -1,6 +1,6 @@
 ## ruin-south (made) along x
 TRANSECT 20 stations from (-37, -37) to (-18, -37), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -37,   -37)      18       18           18                      
   (  -36,   -37)      18       18           18                      
   (  -35,   -37)      18       18           18                      
@@ -26,7 +26,7 @@ beside: boulder b1 at (-38, -39)
 
 ## ruin-south (made) along z
 TRANSECT 27 stations from (-28, -48) to (-28, -22), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -28,   -48)                                                    void
   (  -28,   -47)                                                    void
   (  -28,   -46)                                                    void
@@ -55,4 +55,4 @@ TRANSECT 27 stations from (-28, -48) to (-28, -22), every 1
   (  -28,   -23)      18       18           18                      
   (  -28,   -22)      18       18           18                      
 rises 1, falls 1, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-28, -44) | walked end to end
-beside: stroke path-spring at (-30, -26)
+beside: flora sand-cover-3 at (-26, -45), stroke path-spring at (-30, -26)

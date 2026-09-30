@@ -1,6 +1,6 @@
 ## house-a (house) along x
 TRANSECT 25 stations from (-100, -11) to (-76, -11), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   ( -100,   -11)      21       21           21                      
   (  -99,   -11)      21       21           21                      
   (  -98,   -11)      21       21           21                      
@@ -27,11 +27,11 @@ TRANSECT 25 stations from (-100, -11) to (-76, -11), every 1
   (  -77,   -11)      22       22           22                      
   (  -76,   -11)      22       22           22                      
 rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: house house-a at (-93, -13), stroke path-houses at (-82, -13)
+beside: flora sand-cover-0 at (-100, -9), house house-a at (-93, -13), stroke path-houses at (-82, -13)
 
 ## house-a (house) along z
 TRANSECT 24 stations from (-88, -22) to (-88, 1), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -88,   -22)      21       21           21                      
   (  -88,   -21)      21       21           21                      
   (  -88,   -20)      21       21           21                      

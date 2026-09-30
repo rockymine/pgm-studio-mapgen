@@ -1,6 +1,6 @@
 ## mon-0 (destroyable) along x
 TRANSECT 25 stations from (-82, -2) to (-58, -2), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -82,    -2)      22       22           22                      
   (  -81,    -2)      22       22           22                      
   (  -80,    -2)      22       22           22                      
@@ -31,7 +31,7 @@ beside: stroke path-mon at (-80, -1), destroyable mon at (-72, -4), stroke path-
 
 ## mon-0 (destroyable) along z
 TRANSECT 25 stations from (-70, -14) to (-70, 10), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -70,   -14)      21       21           21                      
   (  -70,   -13)      21       21           21                      
   (  -70,   -12)      22       22           22                      +1

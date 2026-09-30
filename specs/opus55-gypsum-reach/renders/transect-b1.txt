@@ -1,6 +1,6 @@
 ## b1 (boulder) along x
 TRANSECT 25 stations from (-48, -40) to (-24, -40), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -48,   -40)      19       19           19  tree t7             
   (  -47,   -40)      19       19           19                      
   (  -46,   -40)      19       19           19                      
@@ -27,11 +27,11 @@ TRANSECT 25 stations from (-48, -40) to (-24, -40), every 1
   (  -25,   -40)      17       17           17                      
   (  -24,   -40)      17       17           17                      
 rises 1, falls 2, worst step 3: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-29, -40) | walked end to end
-beside: tree t7 at (-50, -40), boulder b1 at (-38, -41)
+beside: tree t7 at (-50, -40), boulder b1 at (-38, -41), flora sand-cover-3 at (-24, -42)
 
 ## b1 (boulder) along z
 TRANSECT 21 stations from (-36, -48) to (-36, -28), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -36,   -48)                                                    void
   (  -36,   -47)                                                    void
   (  -36,   -46)      18       18           18                      

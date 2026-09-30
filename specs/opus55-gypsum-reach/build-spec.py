@@ -26,8 +26,12 @@ the wash floored in stone, cobble and gravel with no boulder; a second, smaller 
 the spawn room in the houses' style.
 
 Sixth pass, after the author's notes 72–74: twenty-eight dead bushes a team; six patches of hardened clay
-broken with sand across each field; and a second island a team at the strait's ends. Lava in the wash is asked
-about rather than laid.
+broken with sand across each field; and a second island a team at the strait's ends.
+
+Seventh pass, once the studio grew what the board had worked round: the wash's whole floor is lava (note 72),
+under a stone bridge in the houses' own language — polished-andesite pillars, an andesite course under a
+stone-brick deck, cobblestone-wall rails — which nothing can set alight; and the cacti and dead bushes grow
+from the dressing's flora over the open sand, with no sand patch under each.
 
 Team 0 is the west half (x < 0); rot_180 fans the rest.
 """
@@ -44,6 +48,7 @@ SLUG = "opus55-gypsum-reach"
 # field-20 as the plan compiles it: the field, less the spawn's corner, plus the strip west of the spawn
 FIELD = [[-112, 24], [-104, 24], [-104, -48], [-16, -48], [-16, 48], [-112, 48]]
 SURFACE = 20
+DESERT_COVER = 0.4              # how thickly the flora grows cacti and dead bushes on the open sand
 ISLE = [[-4, -16], [4, -16], [4, 16], [-4, 16]]             # isle-18, the middle island
 ISLE_SOUTH = [[0, -44], [8, -44], [8, -28], [0, -28]]        # isle-south-18, fanned to its image on red's side
 # (t, inward) along the short ends and along the long sides; a negative pull pushes the coast out
@@ -102,14 +107,14 @@ oasis = theme(by_slope((24, depth(S(2), S(3))), (20, depth(cell([S(3), S(3, 1)],
 worn = theme(by_slope((30, depth(cell([S(3), S(3, 1)], 2, 32), S(3))), (60, STRATA)),
              wall=STRATA, fill=STRATA)
 
-# Made things: the ruins are stone brick, the ground's rock dressed; the bridge is spruce planks on dark-oak
-# posts behind oak-fence rails (note 41).
+# Made things: the ruins are stone brick, the ground's rock dressed; the bridge (notes 41, 72) is the houses'
+# stone — polished-andesite pillars, an andesite course under a stone-brick deck, cobblestone-wall rails — so
+# the lava under it has nothing to burn.
 masonry = one(cell([S(98), S(98), S(98, 2), S(1, 5)], 2, 41, rise=2))
-deck = one(S(5, 1))
-post = one(S(162, 1))
-rail = one(S(85))
-cactus = one(S(81))
-sand_bed = theme(depth(S(12), S(12)), wall=S(12), fill=S(12))
+deck = one(S(98))
+post = one(S(1, 6))
+fascia = one(S(1, 5))
+rail = one(S(139))
 
 # Note 66: the paths and the plaza in oak and jungle planks; granite and brick did not sit on sand.
 PAVE = cell([S(5, 0), S(5, 3), S(5, 0), S(5, 3)], size=2, seed=21)
@@ -160,15 +165,29 @@ relief = {"team": {
     ],
 }}
 
+# The wash's floor, every column of it whose top course is y13 or lower, read off the heightmap and, under the
+# deck, off `column` row by row. The lava fills exactly this, so it
+# stands one course under the bank all round and cuts none of it.
+WASH_FLOOR = [[-53, -19], [-53, -18], [-56, -18], [-56, -16], [-57, -16], [-57, -15], [-58, -15], [-58, -14],
+              [-59, -14], [-59, -13], [-58, -13], [-58, -11], [-57, -11], [-57, -9], [-56, -9], [-56, -8],
+              [-54, -8], [-54, -7], [-53, -7], [-53, -6], [-54, -6], [-54, -5], [-53, -5], [-53, -3],
+              [-52, -3], [-52, -2], [-51, -2], [-51, 7], [-50, 7], [-50, 13], [-49, 13], [-49, 14],
+              [-48, 14], [-48, 16], [-43, 16], [-43, 15], [-42, 15], [-42, 14], [-41, 14], [-41, 13],
+              [-40, 13], [-40, 12], [-39, 12], [-39, 10], [-38, 10], [-38, 8], [-37, 8], [-37, 6],
+              [-36, 6], [-36, 4], [-35, 4], [-35, 0], [-34, 0], [-34, -7], [-35, -7], [-35, -10],
+              [-36, -10], [-36, -11], [-37, -11], [-37, -12], [-38, -12], [-38, -13], [-39, -13], [-39, -14],
+              [-40, -14], [-40, -15], [-41, -15], [-41, -16], [-42, -16], [-42, -17], [-44, -17], [-44, -18],
+              [-47, -18], [-47, -19]]
+
 # --- the made things -------------------------------------------------------------------------------------
-# The bridge over the wash (note 41): a spruce deck five wide, standing on three pairs
-# of dark-oak posts down to the wash floor, with an oak-fence rail along each side. Left open to the air
-# under it, so nothing clears the wash beneath.
-def bridge_part(pid, cells):
+# The bridge over the wash (notes 41, 72): a stone-brick deck five wide on an andesite course, standing on three
+# pairs of polished-andesite pillars down through the lava to the wash floor, with a cobblestone-wall rail along
+# each side. Left open to the air under it, so nothing clears the wash beneath.
+def bridge_part(pid, cells, keep_clear=False):
     """One part of the bridge; a rect covers x0..x1-1 and z0..z1-1."""
     b = props.LayerBuilder(pid)
     for x0, z0, x1, z1, floor, height, th in cells:
-        b.rect(x0, z0, x1, z1, floor, height, th, keepClear=False)
+        b.rect(x0, z0, x1, z1, floor, height, th, keepClear=keep_clear)
     return b.done()
 
 # The deck stands at 19 over the wash's west rim and steps down one to the lip at 17 on its east end.
@@ -176,35 +195,12 @@ BX0, BX1, BZ0, BZ1, BY = -54, -35, -4, 0, SURFACE - 2
 layers = made([
     bridge_part("bridge-deck", [(BX0, BZ0, BX1 + 1, BZ1 + 1, BY, 1, "deck"),
                                 (BX1 + 1, BZ0 + 1, BX1 + 3, BZ1, BY - 1, 1, "deck")]),
+    # the pillars are kept clear, so the lava fills round them and never cuts the floor out from under them
     bridge_part("bridge-posts", [(x, z, x + 1, z + 1, 11, BY - 11, "post")
-                                 for x in (-50, -44, -38) for z in (BZ0, BZ1)]),
+                                 for x in (-50, -44, -38) for z in (BZ0, BZ1)], keep_clear=True),
+    bridge_part("bridge-fascia", [(BX0, z, BX1 + 1, z + 1, BY - 1, 1, "fascia") for z in (BZ0, BZ1)]),
     bridge_part("bridge-rails", [(BX0, z, BX1 + 1, z + 1, BY + 1, 1, "rail") for z in (BZ0, BZ1)]),
 ], "wash-bridge")
-# Cacti on the open sand (note 60), on made layers because the dressing has no cactus yet. Each stands on the
-# ground's top course as `column` read it, one to three tall, with nothing solid beside it.
-# The studio paints the ground under a made column with its theme's fill, and a 1.8 cactus off sand breaks
-# at the first block update beside it. So each cactus stands in a small patch whose fill is sand; a made layer
-# of sand under it would not do, because a made layer does not replace the ground's own blocks.
-CACTI = [(-90, -2, 20, 2), (-100, 20, 20, 3), (-96, -40, 20, 1), (-101, -22, 20, 2),
-         (-40, -45, 17, 3), (-30, 42, 15, 2), (-56, 9, 18, 1)]
-cacti = props.LayerBuilder("cacti")
-for x, z, top, tall in CACTI:
-    cacti.rect(x, z, x + 1, z + 1, top + 1, tall, "cactus", keepClear=False)
-layers += made(cacti.done(), "cacti")
-# Dead bushes on the open sand (note 66), on a made layer for the same reason and each in the same sand patch:
-# a 1.8 dead bush also wants sand under it.
-# Four times as many (note 73): the first seven, and twenty-one more on flat sand read off `column`, clear of
-# the paths, the props and each other by six blocks.
-BUSHES = [(-100, -38, 20), (-78, -18, 20), (-30, -10, 16), (-42, -42, 18), (-20, -38, 16), (-26, 30, 16),
-          (-66, 8, 19),
-          (-33, -33, 17), (-102, -31, 20), (-101, 30, 20), (-81, 5, 20), (-22, -32, 16), (-80, -25, 20),
-          (-65, -7, 21), (-100, -8, 20), (-81, -1, 21), (-89, 27, 19), (-26, 22, 16), (-93, -19, 20),
-          (-29, 4, 15), (-21, 14, 17), (-39, -21, 17), (-90, -46, 20), (-106, 24, 20), (-94, -7, 20),
-          (-21, -9, 16), (-75, 18, 18), (-71, -15, 20)]
-bushes = props.LayerBuilder("dead-bushes")
-for x, z, top in BUSHES:
-    bushes.rect(x, z, x + 1, z + 1, top + 1, 1, "dead-bush", keepClear=False)
-layers += made(bushes.done(), "dead-bushes")
 # Ruined walls along the lip, cover where a crossing lands.
 # Each stands from y14, below the lip's ground (top course y16 in the north, y17 in the south), so no column of
 # it floats (note 54): the seat on the ground did not lower them, and `column` under each is the check.
@@ -231,9 +227,6 @@ shapes = [
 ] + [
     # the wash's floor in stone, cobble and gravel; its banks keep the beds (note 67)
     patch("wash-floor", WASH, "wash-floor", SURFACE, group="team"),
-] + [
-    patch(f"cactus-bed-{i}", [[x - 1, z - 1], [x + 2, z - 1], [x + 2, z + 2], [x - 1, z + 2]], "sand-bed", SURFACE,
-          group="team") for i, (x, z) in enumerate([(c[0], c[1]) for c in CACTI + BUSHES])
 ]
 
 # --- the dressing ---------------------------------------------------------------------------------------
@@ -303,6 +296,24 @@ props_ = [
     # the grass carries a little cover, and none of it tall
     flora("oasis-cover", ring(-62, 31, 24, 16, 16), coverage=0.35, scale=8, fern=0.2, flowers=0.05,
           tall=0.03, seed=71),
+    # the wash's whole floor in lava (note 72), stated at 13 so it lies one course under the bank
+    pool("wash-lava", WASH_FLOOR, depth=2, shelf=2, shore=0, level=13, edge=0, fluid="lava",
+         bank=cell([S(1), S(4), S(13), S(1), S(4)], 2, 67)),
+] + [
+    # cacti and dead bushes over the open sand (notes 60, 66, 73), in rings that keep off the grass: the oasis,
+    # the spring's green and the mesa top grow grass under any flora
+    flora(f"sand-cover-{i}", box, coverage=DESERT_COVER, scale=3, fern=0, flowers=0, tall=0, seed=90 + i,
+          dead_bush=1.0, cactus=0.4)
+    for i, box in enumerate([
+        [[-104, -48], [-82, -48], [-82, 10], [-104, 10]],        # the back strip, west of the mesa
+        [[-82, -32], [-56, -32], [-56, 10], [-82, 10]],          # behind the monument, north of the mesa top
+        [[-56, -24], [-18, -24], [-18, 10], [-56, 10]],          # the wash's banks and the lip, north of the spring
+        [[-38, -48], [-18, -48], [-18, -24], [-38, -24]],        # east of the spring
+        [[-58, -48], [-39, -48], [-39, -36], [-58, -36]],        # between the mesa top and the spring
+        [[-104, 10], [-88, 10], [-88, 48], [-104, 48]],          # the spawn's side, west of the oasis
+        [[-34, 10], [-18, 10], [-18, 48], [-34, 48]],            # the lip's north end, clear of the oasis grass
+        [[-88, 10], [-38, 10], [-38, 15], [-88, 15]],            # the strip between the hamlet road and the oasis
+    ])
 ]
 
 finish = {
@@ -310,7 +321,7 @@ finish = {
     "authors": ["Opus 5.5"],
     "biome": {"kind": "solid", "id": 2},
     "themes": {"desert": desert, "oasis": oasis, "worn": worn, "masonry": masonry,
-               "deck": deck, "post": post, "rail": rail, "plaza": plaza, "wash-floor": wash_floor, "clay-patch": clay_patch, "cactus": cactus, "dead-bush": one(S(32)), "sand-bed": sand_bed},
+               "deck": deck, "post": post, "rail": rail, "plaza": plaza, "wash-floor": wash_floor, "clay-patch": clay_patch, "fascia": fascia},
     "mapTheme": "desert",
     "relief": relief,
     # The frontline (note 36): pushed out toward the island south of it and pulled in north of it, t along

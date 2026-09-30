@@ -1,6 +1,6 @@
 ## spawn-red (spawn) along x
 TRANSECT 33 stations from (-112, 38) to (-80, 38), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   ( -112,    38)      21       21           21                      
   ( -111,    38)      21       21           21                      
   ( -110,    38)      21       21           21                      
@@ -39,7 +39,7 @@ beside: spawn sp at (-102, 36), flora oasis-cover at (-84, 36)
 
 ## spawn-red (spawn) along z
 TRANSECT 22 stations from (-96, 24) to (-96, 45), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -96,    24)      21       21           21  stroke path-mon     
   (  -96,    25)      21       21           21  stroke path-mon     
   (  -96,    26)      21       21           21  stroke path-mon     

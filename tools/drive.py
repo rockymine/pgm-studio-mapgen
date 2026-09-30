@@ -962,6 +962,15 @@ def main():
         # previews take it as a body and the spec is written out from it.
         _, layout = call("GET", f"/map/{slug}/sketch")
 
+    # ── the board, finished again as it is now drawn ─────────────────────────────────────────
+    # The store above finished the board before any edit or bend, so its counts and its complaints describe
+    # the compiled outline rather than the one this run left. Finishing again judges the board as drawn —
+    # the strait re-read, a board with no finish — and writes its ground, and what it says is printed here
+    # rather than left to the next read that happens to ask.
+    if finish.get("editShapes") or finish.get("bendShapes"):
+        print("== the board, finished as edited")
+        call("POST", f"/map/{slug}/sketch/finish")
+
     # ── everything wrong with the stored map, including what no other read answers ───────────
     # `Findings.Complaints` keeps `Severity.Complaint` alone, and `SK9` is the one `Severity.Decline`
     # the sketch layout check raises — so the gate that knows a storey is missing reaches no other

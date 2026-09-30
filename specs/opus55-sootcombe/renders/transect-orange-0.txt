@@ -1,6 +1,6 @@
 ## orange-0 (wool) along x
 TRANSECT 25 stations from (20, 74) to (44, 74), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (   20,    74)      12       12           12  stroke path-wool-b2  
   (   21,    74)      12       12           12  stroke path-wool-b2  
   (   22,    74)      13       13           13  stroke path-wool-b2  +1
@@ -27,11 +27,11 @@ TRANSECT 25 stations from (20, 74) to (44, 74), every 1
   (   43,    74)                                                    void
   (   44,    74)                                                    void
 rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: water east-channel at (18, 72), stroke path-wool-b2 at (21, 72), redstoneline 1 at (28, 72), wool wool-2 at (29, 72)
+beside: stroke path-wool-b2 at (21, 72), redstoneline 1 at (28, 72), wool wool-2 at (29, 72)
 
 ## orange-0 (wool) along z
 TRANSECT 25 stations from (32, 62) to (32, 86), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (   32,    62)                                                    void
   (   32,    63)                                                    void
   (   32,    64)                                                    void

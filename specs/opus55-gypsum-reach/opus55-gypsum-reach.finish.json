@@ -5407,29 +5407,29 @@
     "depth": 1,
     "material": {
      "kind": "solid",
-     "id": 5,
-     "data": 1
+     "id": 98,
+     "data": 0
     }
    },
    "wallEnabled": true,
    "wallOnTerrainFaces": true,
    "wall": {
     "kind": "solid",
-    "id": 5,
-    "data": 1
+    "id": 98,
+    "data": 0
    },
    "fill": {
     "kind": "solid",
-    "id": 5,
-    "data": 1
+    "id": 98,
+    "data": 0
    },
    "surface": {
     "enabled": true,
     "depth": 1,
     "material": {
      "kind": "solid",
-     "id": 5,
-     "data": 1
+     "id": 98,
+     "data": 0
     }
    }
   },
@@ -5444,29 +5444,29 @@
     "depth": 1,
     "material": {
      "kind": "solid",
-     "id": 162,
-     "data": 1
+     "id": 1,
+     "data": 6
     }
    },
    "wallEnabled": true,
    "wallOnTerrainFaces": true,
    "wall": {
     "kind": "solid",
-    "id": 162,
-    "data": 1
+    "id": 1,
+    "data": 6
    },
    "fill": {
     "kind": "solid",
-    "id": 162,
-    "data": 1
+    "id": 1,
+    "data": 6
    },
    "surface": {
     "enabled": true,
     "depth": 1,
     "material": {
      "kind": "solid",
-     "id": 162,
-     "data": 1
+     "id": 1,
+     "data": 6
     }
    }
   },
@@ -5481,7 +5481,7 @@
     "depth": 1,
     "material": {
      "kind": "solid",
-     "id": 85,
+     "id": 139,
      "data": 0
     }
    },
@@ -5489,12 +5489,12 @@
    "wallOnTerrainFaces": true,
    "wall": {
     "kind": "solid",
-    "id": 85,
+    "id": 139,
     "data": 0
    },
    "fill": {
     "kind": "solid",
-    "id": 85,
+    "id": 139,
     "data": 0
    },
    "surface": {
@@ -5502,7 +5502,7 @@
     "depth": 1,
     "material": {
      "kind": "solid",
-     "id": 85,
+     "id": 139,
      "data": 0
     }
    }
@@ -10725,7 +10725,7 @@
     }
    }
   },
-  "cactus": {
+  "fascia": {
    "bedrock": {
     "relative": false,
     "value": 1
@@ -10733,125 +10733,32 @@
    "rimEdges": "boundary",
    "rim": {
     "enabled": true,
-    "depth": 1,
-    "material": {
-     "kind": "solid",
-     "id": 81,
-     "data": 0
-    }
-   },
-   "wallEnabled": true,
-   "wallOnTerrainFaces": true,
-   "wall": {
-    "kind": "solid",
-    "id": 81,
-    "data": 0
-   },
-   "fill": {
-    "kind": "solid",
-    "id": 81,
-    "data": 0
-   },
-   "surface": {
-    "enabled": true,
-    "depth": 1,
-    "material": {
-     "kind": "solid",
-     "id": 81,
-     "data": 0
-    }
-   }
-  },
-  "dead-bush": {
-   "bedrock": {
-    "relative": false,
-    "value": 1
-   },
-   "rimEdges": "boundary",
-   "rim": {
-    "enabled": true,
-    "depth": 1,
-    "material": {
-     "kind": "solid",
-     "id": 32,
-     "data": 0
-    }
-   },
-   "wallEnabled": true,
-   "wallOnTerrainFaces": true,
-   "wall": {
-    "kind": "solid",
-    "id": 32,
-    "data": 0
-   },
-   "fill": {
-    "kind": "solid",
-    "id": 32,
-    "data": 0
-   },
-   "surface": {
-    "enabled": true,
-    "depth": 1,
-    "material": {
-     "kind": "solid",
-     "id": 32,
-     "data": 0
-    }
-   }
-  },
-  "sand-bed": {
-   "bedrock": {
-    "relative": false,
-    "value": 1
-   },
-   "rimEdges": "void",
-   "rim": {
-    "enabled": false,
     "depth": 1,
     "material": {
      "kind": "solid",
      "id": 1,
-     "data": 0
+     "data": 5
     }
    },
    "wallEnabled": true,
    "wallOnTerrainFaces": true,
    "wall": {
     "kind": "solid",
-    "id": 12,
-    "data": 0
+    "id": 1,
+    "data": 5
    },
    "fill": {
     "kind": "solid",
-    "id": 12,
-    "data": 0
+    "id": 1,
+    "data": 5
    },
    "surface": {
     "enabled": true,
-    "depth": 3,
+    "depth": 1,
     "material": {
-     "kind": "layered",
-     "stack": {
-      "ending": "repeat",
-      "bands": [
-       {
-        "material": {
-         "kind": "solid",
-         "id": 12,
-         "data": 0
-        },
-        "thickness": 1
-       },
-       {
-        "material": {
-         "kind": "solid",
-         "id": 12,
-         "data": 0
-        },
-        "thickness": 2
-       }
-      ]
-     }
+     "kind": "solid",
+     "id": 1,
+     "data": 5
     }
    }
   }
@@ -13021,916 +12928,6 @@
    "base_height": 20,
    "theme": "wash-floor",
    "group": "team"
-  },
-  {
-   "id": "cactus-bed-0",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -91,
-     -3
-    ],
-    [
-     -88,
-     -3
-    ],
-    [
-     -88,
-     0
-    ],
-    [
-     -91,
-     0
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-1",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -101,
-     19
-    ],
-    [
-     -98,
-     19
-    ],
-    [
-     -98,
-     22
-    ],
-    [
-     -101,
-     22
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-2",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -97,
-     -41
-    ],
-    [
-     -94,
-     -41
-    ],
-    [
-     -94,
-     -38
-    ],
-    [
-     -97,
-     -38
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-3",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -102,
-     -23
-    ],
-    [
-     -99,
-     -23
-    ],
-    [
-     -99,
-     -20
-    ],
-    [
-     -102,
-     -20
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-4",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -41,
-     -46
-    ],
-    [
-     -38,
-     -46
-    ],
-    [
-     -38,
-     -43
-    ],
-    [
-     -41,
-     -43
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-5",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -31,
-     41
-    ],
-    [
-     -28,
-     41
-    ],
-    [
-     -28,
-     44
-    ],
-    [
-     -31,
-     44
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-6",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -57,
-     8
-    ],
-    [
-     -54,
-     8
-    ],
-    [
-     -54,
-     11
-    ],
-    [
-     -57,
-     11
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-7",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -101,
-     -39
-    ],
-    [
-     -98,
-     -39
-    ],
-    [
-     -98,
-     -36
-    ],
-    [
-     -101,
-     -36
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-8",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -79,
-     -19
-    ],
-    [
-     -76,
-     -19
-    ],
-    [
-     -76,
-     -16
-    ],
-    [
-     -79,
-     -16
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-9",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -31,
-     -11
-    ],
-    [
-     -28,
-     -11
-    ],
-    [
-     -28,
-     -8
-    ],
-    [
-     -31,
-     -8
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-10",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -43,
-     -43
-    ],
-    [
-     -40,
-     -43
-    ],
-    [
-     -40,
-     -40
-    ],
-    [
-     -43,
-     -40
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-11",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -21,
-     -39
-    ],
-    [
-     -18,
-     -39
-    ],
-    [
-     -18,
-     -36
-    ],
-    [
-     -21,
-     -36
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-12",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -27,
-     29
-    ],
-    [
-     -24,
-     29
-    ],
-    [
-     -24,
-     32
-    ],
-    [
-     -27,
-     32
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-13",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -67,
-     7
-    ],
-    [
-     -64,
-     7
-    ],
-    [
-     -64,
-     10
-    ],
-    [
-     -67,
-     10
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-14",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -34,
-     -34
-    ],
-    [
-     -31,
-     -34
-    ],
-    [
-     -31,
-     -31
-    ],
-    [
-     -34,
-     -31
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-15",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -103,
-     -32
-    ],
-    [
-     -100,
-     -32
-    ],
-    [
-     -100,
-     -29
-    ],
-    [
-     -103,
-     -29
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-16",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -102,
-     29
-    ],
-    [
-     -99,
-     29
-    ],
-    [
-     -99,
-     32
-    ],
-    [
-     -102,
-     32
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-17",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -82,
-     4
-    ],
-    [
-     -79,
-     4
-    ],
-    [
-     -79,
-     7
-    ],
-    [
-     -82,
-     7
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-18",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -23,
-     -33
-    ],
-    [
-     -20,
-     -33
-    ],
-    [
-     -20,
-     -30
-    ],
-    [
-     -23,
-     -30
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-19",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -81,
-     -26
-    ],
-    [
-     -78,
-     -26
-    ],
-    [
-     -78,
-     -23
-    ],
-    [
-     -81,
-     -23
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-20",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -66,
-     -8
-    ],
-    [
-     -63,
-     -8
-    ],
-    [
-     -63,
-     -5
-    ],
-    [
-     -66,
-     -5
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-21",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -101,
-     -9
-    ],
-    [
-     -98,
-     -9
-    ],
-    [
-     -98,
-     -6
-    ],
-    [
-     -101,
-     -6
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-22",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -82,
-     -2
-    ],
-    [
-     -79,
-     -2
-    ],
-    [
-     -79,
-     1
-    ],
-    [
-     -82,
-     1
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-23",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -90,
-     26
-    ],
-    [
-     -87,
-     26
-    ],
-    [
-     -87,
-     29
-    ],
-    [
-     -90,
-     29
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-24",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -27,
-     21
-    ],
-    [
-     -24,
-     21
-    ],
-    [
-     -24,
-     24
-    ],
-    [
-     -27,
-     24
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-25",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -94,
-     -20
-    ],
-    [
-     -91,
-     -20
-    ],
-    [
-     -91,
-     -17
-    ],
-    [
-     -94,
-     -17
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-26",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -30,
-     3
-    ],
-    [
-     -27,
-     3
-    ],
-    [
-     -27,
-     6
-    ],
-    [
-     -30,
-     6
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-27",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -22,
-     13
-    ],
-    [
-     -19,
-     13
-    ],
-    [
-     -19,
-     16
-    ],
-    [
-     -22,
-     16
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-28",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -40,
-     -22
-    ],
-    [
-     -37,
-     -22
-    ],
-    [
-     -37,
-     -19
-    ],
-    [
-     -40,
-     -19
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-29",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -91,
-     -47
-    ],
-    [
-     -88,
-     -47
-    ],
-    [
-     -88,
-     -44
-    ],
-    [
-     -91,
-     -44
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-30",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -107,
-     23
-    ],
-    [
-     -104,
-     23
-    ],
-    [
-     -104,
-     26
-    ],
-    [
-     -107,
-     26
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-31",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -95,
-     -8
-    ],
-    [
-     -92,
-     -8
-    ],
-    [
-     -92,
-     -5
-    ],
-    [
-     -95,
-     -5
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-32",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -22,
-     -10
-    ],
-    [
-     -19,
-     -10
-    ],
-    [
-     -19,
-     -7
-    ],
-    [
-     -22,
-     -7
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-33",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -76,
-     17
-    ],
-    [
-     -73,
-     17
-    ],
-    [
-     -73,
-     20
-    ],
-    [
-     -76,
-     20
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
-  },
-  {
-   "id": "cactus-bed-34",
-   "type": "polygon",
-   "operation": "add",
-   "vertices": [
-    [
-     -72,
-     -16
-    ],
-    [
-     -69,
-     -16
-    ],
-    [
-     -69,
-     -13
-    ],
-    [
-     -72,
-     -13
-    ]
-   ],
-   "base_height": 20,
-   "theme": "sand-bed",
-   "group": "team"
   }
  ],
  "addLayers": [
@@ -13996,7 +12993,7 @@
      "floor": 11,
      "base_height": 7,
      "theme": "post",
-     "keepClear": false,
+     "keepClear": true,
      "id": "bridge-posts-0",
      "operation": "add"
     },
@@ -14009,7 +13006,7 @@
      "floor": 11,
      "base_height": 7,
      "theme": "post",
-     "keepClear": false,
+     "keepClear": true,
      "id": "bridge-posts-1",
      "operation": "add"
     },
@@ -14022,7 +13019,7 @@
      "floor": 11,
      "base_height": 7,
      "theme": "post",
-     "keepClear": false,
+     "keepClear": true,
      "id": "bridge-posts-2",
      "operation": "add"
     },
@@ -14035,7 +13032,7 @@
      "floor": 11,
      "base_height": 7,
      "theme": "post",
-     "keepClear": false,
+     "keepClear": true,
      "id": "bridge-posts-3",
      "operation": "add"
     },
@@ -14048,7 +13045,7 @@
      "floor": 11,
      "base_height": 7,
      "theme": "post",
-     "keepClear": false,
+     "keepClear": true,
      "id": "bridge-posts-4",
      "operation": "add"
     },
@@ -14061,7 +13058,7 @@
      "floor": 11,
      "base_height": 7,
      "theme": "post",
-     "keepClear": false,
+     "keepClear": true,
      "id": "bridge-posts-5",
      "operation": "add"
     }
@@ -14078,6 +13075,52 @@
       "bridge-posts-3",
       "bridge-posts-4",
       "bridge-posts-5"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bridge-fascia",
+   "name": "bridge-fascia",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "wash-bridge",
+   "shapes": [
+    {
+     "type": "rectangle",
+     "min_x": -54,
+     "min_z": -4,
+     "max_x": -34,
+     "max_z": -3,
+     "floor": 17,
+     "base_height": 1,
+     "theme": "fascia",
+     "keepClear": false,
+     "id": "bridge-fascia-0",
+     "operation": "add"
+    },
+    {
+     "type": "rectangle",
+     "min_x": -54,
+     "min_z": 0,
+     "max_x": -34,
+     "max_z": 1,
+     "floor": 17,
+     "base_height": 1,
+     "theme": "fascia",
+     "keepClear": false,
+     "id": "bridge-fascia-1",
+     "operation": "add"
+    }
+   ],
+   "groups": [
+    {
+     "id": "bridge-fascia-body",
+     "name": "bridge-fascia",
+     "mirrors": true,
+     "shapeIds": [
+      "bridge-fascia-0",
+      "bridge-fascia-1"
      ]
     }
    ]
@@ -14124,532 +13167,6 @@
      "shapeIds": [
       "bridge-rails-0",
       "bridge-rails-1"
-     ]
-    }
-   ]
-  },
-  {
-   "id": "cacti",
-   "name": "cacti",
-   "base_y": 0,
-   "kind": "made",
-   "part_of": "cacti",
-   "shapes": [
-    {
-     "type": "rectangle",
-     "min_x": -90,
-     "min_z": -2,
-     "max_x": -89,
-     "max_z": -1,
-     "floor": 21,
-     "base_height": 2,
-     "theme": "cactus",
-     "keepClear": false,
-     "id": "cacti-0",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -100,
-     "min_z": 20,
-     "max_x": -99,
-     "max_z": 21,
-     "floor": 21,
-     "base_height": 3,
-     "theme": "cactus",
-     "keepClear": false,
-     "id": "cacti-1",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -96,
-     "min_z": -40,
-     "max_x": -95,
-     "max_z": -39,
-     "floor": 21,
-     "base_height": 1,
-     "theme": "cactus",
-     "keepClear": false,
-     "id": "cacti-2",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -101,
-     "min_z": -22,
-     "max_x": -100,
-     "max_z": -21,
-     "floor": 21,
-     "base_height": 2,
-     "theme": "cactus",
-     "keepClear": false,
-     "id": "cacti-3",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -40,
-     "min_z": -45,
-     "max_x": -39,
-     "max_z": -44,
-     "floor": 18,
-     "base_height": 3,
-     "theme": "cactus",
-     "keepClear": false,
-     "id": "cacti-4",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -30,
-     "min_z": 42,
-     "max_x": -29,
-     "max_z": 43,
-     "floor": 16,
-     "base_height": 2,
-     "theme": "cactus",
-     "keepClear": false,
-     "id": "cacti-5",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -56,
-     "min_z": 9,
-     "max_x": -55,
-     "max_z": 10,
-     "floor": 19,
-     "base_height": 1,
-     "theme": "cactus",
-     "keepClear": false,
-     "id": "cacti-6",
-     "operation": "add"
-    }
-   ],
-   "groups": [
-    {
-     "id": "cacti-body",
-     "name": "cacti",
-     "mirrors": true,
-     "shapeIds": [
-      "cacti-0",
-      "cacti-1",
-      "cacti-2",
-      "cacti-3",
-      "cacti-4",
-      "cacti-5",
-      "cacti-6"
-     ]
-    }
-   ]
-  },
-  {
-   "id": "dead-bushes",
-   "name": "dead-bushes",
-   "base_y": 0,
-   "kind": "made",
-   "part_of": "dead-bushes",
-   "shapes": [
-    {
-     "type": "rectangle",
-     "min_x": -100,
-     "min_z": -38,
-     "max_x": -99,
-     "max_z": -37,
-     "floor": 21,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-0",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -78,
-     "min_z": -18,
-     "max_x": -77,
-     "max_z": -17,
-     "floor": 21,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-1",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -30,
-     "min_z": -10,
-     "max_x": -29,
-     "max_z": -9,
-     "floor": 17,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-2",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -42,
-     "min_z": -42,
-     "max_x": -41,
-     "max_z": -41,
-     "floor": 19,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-3",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -20,
-     "min_z": -38,
-     "max_x": -19,
-     "max_z": -37,
-     "floor": 17,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-4",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -26,
-     "min_z": 30,
-     "max_x": -25,
-     "max_z": 31,
-     "floor": 17,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-5",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -66,
-     "min_z": 8,
-     "max_x": -65,
-     "max_z": 9,
-     "floor": 20,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-6",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -33,
-     "min_z": -33,
-     "max_x": -32,
-     "max_z": -32,
-     "floor": 18,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-7",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -102,
-     "min_z": -31,
-     "max_x": -101,
-     "max_z": -30,
-     "floor": 21,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-8",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -101,
-     "min_z": 30,
-     "max_x": -100,
-     "max_z": 31,
-     "floor": 21,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-9",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -81,
-     "min_z": 5,
-     "max_x": -80,
-     "max_z": 6,
-     "floor": 21,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-10",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -22,
-     "min_z": -32,
-     "max_x": -21,
-     "max_z": -31,
-     "floor": 17,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-11",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -80,
-     "min_z": -25,
-     "max_x": -79,
-     "max_z": -24,
-     "floor": 21,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-12",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -65,
-     "min_z": -7,
-     "max_x": -64,
-     "max_z": -6,
-     "floor": 22,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-13",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -100,
-     "min_z": -8,
-     "max_x": -99,
-     "max_z": -7,
-     "floor": 21,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-14",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -81,
-     "min_z": -1,
-     "max_x": -80,
-     "max_z": 0,
-     "floor": 22,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-15",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -89,
-     "min_z": 27,
-     "max_x": -88,
-     "max_z": 28,
-     "floor": 20,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-16",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -26,
-     "min_z": 22,
-     "max_x": -25,
-     "max_z": 23,
-     "floor": 17,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-17",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -93,
-     "min_z": -19,
-     "max_x": -92,
-     "max_z": -18,
-     "floor": 21,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-18",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -29,
-     "min_z": 4,
-     "max_x": -28,
-     "max_z": 5,
-     "floor": 16,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-19",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -21,
-     "min_z": 14,
-     "max_x": -20,
-     "max_z": 15,
-     "floor": 18,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-20",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -39,
-     "min_z": -21,
-     "max_x": -38,
-     "max_z": -20,
-     "floor": 18,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-21",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -90,
-     "min_z": -46,
-     "max_x": -89,
-     "max_z": -45,
-     "floor": 21,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-22",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -106,
-     "min_z": 24,
-     "max_x": -105,
-     "max_z": 25,
-     "floor": 21,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-23",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -94,
-     "min_z": -7,
-     "max_x": -93,
-     "max_z": -6,
-     "floor": 21,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-24",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -21,
-     "min_z": -9,
-     "max_x": -20,
-     "max_z": -8,
-     "floor": 17,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-25",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -75,
-     "min_z": 18,
-     "max_x": -74,
-     "max_z": 19,
-     "floor": 19,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-26",
-     "operation": "add"
-    },
-    {
-     "type": "rectangle",
-     "min_x": -71,
-     "min_z": -15,
-     "max_x": -70,
-     "max_z": -14,
-     "floor": 21,
-     "base_height": 1,
-     "theme": "dead-bush",
-     "keepClear": false,
-     "id": "dead-bushes-27",
-     "operation": "add"
-    }
-   ],
-   "groups": [
-    {
-     "id": "dead-bushes-body",
-     "name": "dead-bushes",
-     "mirrors": true,
-     "shapeIds": [
-      "dead-bushes-0",
-      "dead-bushes-1",
-      "dead-bushes-2",
-      "dead-bushes-3",
-      "dead-bushes-4",
-      "dead-bushes-5",
-      "dead-bushes-6",
-      "dead-bushes-7",
-      "dead-bushes-8",
-      "dead-bushes-9",
-      "dead-bushes-10",
-      "dead-bushes-11",
-      "dead-bushes-12",
-      "dead-bushes-13",
-      "dead-bushes-14",
-      "dead-bushes-15",
-      "dead-bushes-16",
-      "dead-bushes-17",
-      "dead-bushes-18",
-      "dead-bushes-19",
-      "dead-bushes-20",
-      "dead-bushes-21",
-      "dead-bushes-22",
-      "dead-bushes-23",
-      "dead-bushes-24",
-      "dead-bushes-25",
-      "dead-bushes-26",
-      "dead-bushes-27"
      ]
     }
    ]
@@ -20879,6 +19396,7 @@
     "shore": 2,
     "shoreWander": true,
     "edge": 1.5,
+    "fluid": "water",
     "bank": {
      "kind": "cell",
      "cellSize": 2,
@@ -21075,7 +19593,625 @@
      "fernShare": 0.2,
      "flowerShare": 0.05,
      "flowerScale": 12,
-     "tallShare": 0.03
+     "tallShare": 0.03,
+     "deadBushShare": 0.0,
+     "cactusShare": 0.0
+    }
+   },
+   {
+    "kind": "fluid",
+    "id": "wash-lava",
+    "shape": "pool",
+    "form": "natural",
+    "layer": "ground",
+    "points": [
+     [
+      -53,
+      -19
+     ],
+     [
+      -53,
+      -18
+     ],
+     [
+      -56,
+      -18
+     ],
+     [
+      -56,
+      -16
+     ],
+     [
+      -57,
+      -16
+     ],
+     [
+      -57,
+      -15
+     ],
+     [
+      -58,
+      -15
+     ],
+     [
+      -58,
+      -14
+     ],
+     [
+      -59,
+      -14
+     ],
+     [
+      -59,
+      -13
+     ],
+     [
+      -58,
+      -13
+     ],
+     [
+      -58,
+      -11
+     ],
+     [
+      -57,
+      -11
+     ],
+     [
+      -57,
+      -9
+     ],
+     [
+      -56,
+      -9
+     ],
+     [
+      -56,
+      -8
+     ],
+     [
+      -54,
+      -8
+     ],
+     [
+      -54,
+      -7
+     ],
+     [
+      -53,
+      -7
+     ],
+     [
+      -53,
+      -6
+     ],
+     [
+      -54,
+      -6
+     ],
+     [
+      -54,
+      -5
+     ],
+     [
+      -53,
+      -5
+     ],
+     [
+      -53,
+      -3
+     ],
+     [
+      -52,
+      -3
+     ],
+     [
+      -52,
+      -2
+     ],
+     [
+      -51,
+      -2
+     ],
+     [
+      -51,
+      7
+     ],
+     [
+      -50,
+      7
+     ],
+     [
+      -50,
+      13
+     ],
+     [
+      -49,
+      13
+     ],
+     [
+      -49,
+      14
+     ],
+     [
+      -48,
+      14
+     ],
+     [
+      -48,
+      16
+     ],
+     [
+      -43,
+      16
+     ],
+     [
+      -43,
+      15
+     ],
+     [
+      -42,
+      15
+     ],
+     [
+      -42,
+      14
+     ],
+     [
+      -41,
+      14
+     ],
+     [
+      -41,
+      13
+     ],
+     [
+      -40,
+      13
+     ],
+     [
+      -40,
+      12
+     ],
+     [
+      -39,
+      12
+     ],
+     [
+      -39,
+      10
+     ],
+     [
+      -38,
+      10
+     ],
+     [
+      -38,
+      8
+     ],
+     [
+      -37,
+      8
+     ],
+     [
+      -37,
+      6
+     ],
+     [
+      -36,
+      6
+     ],
+     [
+      -36,
+      4
+     ],
+     [
+      -35,
+      4
+     ],
+     [
+      -35,
+      0
+     ],
+     [
+      -34,
+      0
+     ],
+     [
+      -34,
+      -7
+     ],
+     [
+      -35,
+      -7
+     ],
+     [
+      -35,
+      -10
+     ],
+     [
+      -36,
+      -10
+     ],
+     [
+      -36,
+      -11
+     ],
+     [
+      -37,
+      -11
+     ],
+     [
+      -37,
+      -12
+     ],
+     [
+      -38,
+      -12
+     ],
+     [
+      -38,
+      -13
+     ],
+     [
+      -39,
+      -13
+     ],
+     [
+      -39,
+      -14
+     ],
+     [
+      -40,
+      -14
+     ],
+     [
+      -40,
+      -15
+     ],
+     [
+      -41,
+      -15
+     ],
+     [
+      -41,
+      -16
+     ],
+     [
+      -42,
+      -16
+     ],
+     [
+      -42,
+      -17
+     ],
+     [
+      -44,
+      -17
+     ],
+     [
+      -44,
+      -18
+     ],
+     [
+      -47,
+      -18
+     ],
+     [
+      -47,
+      -19
+     ]
+    ],
+    "radius": 2,
+    "depth": 2,
+    "shore": 0,
+    "shoreWander": true,
+    "edge": 0,
+    "fluid": "lava",
+    "bank": {
+     "kind": "cell",
+     "cellSize": 2,
+     "seed": 67,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ]
+    },
+    "level": 13
+   },
+   {
+    "kind": "flora",
+    "id": "sand-cover-0",
+    "seed": 90,
+    "points": [
+     [
+      -104,
+      -48
+     ],
+     [
+      -82,
+      -48
+     ],
+     [
+      -82,
+      10
+     ],
+     [
+      -104,
+      10
+     ]
+    ],
+    "spec": {
+     "coverage": 0.4,
+     "scale": 3,
+     "octaves": 2,
+     "fernShare": 0,
+     "flowerShare": 0,
+     "flowerScale": 12,
+     "tallShare": 0,
+     "deadBushShare": 1.0,
+     "cactusShare": 0.4
+    }
+   },
+   {
+    "kind": "flora",
+    "id": "sand-cover-1",
+    "seed": 91,
+    "points": [
+     [
+      -82,
+      -32
+     ],
+     [
+      -56,
+      -32
+     ],
+     [
+      -56,
+      10
+     ],
+     [
+      -82,
+      10
+     ]
+    ],
+    "spec": {
+     "coverage": 0.4,
+     "scale": 3,
+     "octaves": 2,
+     "fernShare": 0,
+     "flowerShare": 0,
+     "flowerScale": 12,
+     "tallShare": 0,
+     "deadBushShare": 1.0,
+     "cactusShare": 0.4
+    }
+   },
+   {
+    "kind": "flora",
+    "id": "sand-cover-2",
+    "seed": 92,
+    "points": [
+     [
+      -56,
+      -24
+     ],
+     [
+      -18,
+      -24
+     ],
+     [
+      -18,
+      10
+     ],
+     [
+      -56,
+      10
+     ]
+    ],
+    "spec": {
+     "coverage": 0.4,
+     "scale": 3,
+     "octaves": 2,
+     "fernShare": 0,
+     "flowerShare": 0,
+     "flowerScale": 12,
+     "tallShare": 0,
+     "deadBushShare": 1.0,
+     "cactusShare": 0.4
+    }
+   },
+   {
+    "kind": "flora",
+    "id": "sand-cover-3",
+    "seed": 93,
+    "points": [
+     [
+      -38,
+      -48
+     ],
+     [
+      -18,
+      -48
+     ],
+     [
+      -18,
+      -24
+     ],
+     [
+      -38,
+      -24
+     ]
+    ],
+    "spec": {
+     "coverage": 0.4,
+     "scale": 3,
+     "octaves": 2,
+     "fernShare": 0,
+     "flowerShare": 0,
+     "flowerScale": 12,
+     "tallShare": 0,
+     "deadBushShare": 1.0,
+     "cactusShare": 0.4
+    }
+   },
+   {
+    "kind": "flora",
+    "id": "sand-cover-4",
+    "seed": 94,
+    "points": [
+     [
+      -58,
+      -48
+     ],
+     [
+      -39,
+      -48
+     ],
+     [
+      -39,
+      -36
+     ],
+     [
+      -58,
+      -36
+     ]
+    ],
+    "spec": {
+     "coverage": 0.4,
+     "scale": 3,
+     "octaves": 2,
+     "fernShare": 0,
+     "flowerShare": 0,
+     "flowerScale": 12,
+     "tallShare": 0,
+     "deadBushShare": 1.0,
+     "cactusShare": 0.4
+    }
+   },
+   {
+    "kind": "flora",
+    "id": "sand-cover-5",
+    "seed": 95,
+    "points": [
+     [
+      -104,
+      10
+     ],
+     [
+      -88,
+      10
+     ],
+     [
+      -88,
+      48
+     ],
+     [
+      -104,
+      48
+     ]
+    ],
+    "spec": {
+     "coverage": 0.4,
+     "scale": 3,
+     "octaves": 2,
+     "fernShare": 0,
+     "flowerShare": 0,
+     "flowerScale": 12,
+     "tallShare": 0,
+     "deadBushShare": 1.0,
+     "cactusShare": 0.4
+    }
+   },
+   {
+    "kind": "flora",
+    "id": "sand-cover-6",
+    "seed": 96,
+    "points": [
+     [
+      -34,
+      10
+     ],
+     [
+      -18,
+      10
+     ],
+     [
+      -18,
+      48
+     ],
+     [
+      -34,
+      48
+     ]
+    ],
+    "spec": {
+     "coverage": 0.4,
+     "scale": 3,
+     "octaves": 2,
+     "fernShare": 0,
+     "flowerShare": 0,
+     "flowerScale": 12,
+     "tallShare": 0,
+     "deadBushShare": 1.0,
+     "cactusShare": 0.4
+    }
+   },
+   {
+    "kind": "flora",
+    "id": "sand-cover-7",
+    "seed": 97,
+    "points": [
+     [
+      -88,
+      10
+     ],
+     [
+      -38,
+      10
+     ],
+     [
+      -38,
+      15
+     ],
+     [
+      -88,
+      15
+     ]
+    ],
+    "spec": {
+     "coverage": 0.4,
+     "scale": 3,
+     "octaves": 2,
+     "fernShare": 0,
+     "flowerShare": 0,
+     "flowerScale": 12,
+     "tallShare": 0,
+     "deadBushShare": 1.0,
+     "cactusShare": 0.4
     }
    }
   ]
