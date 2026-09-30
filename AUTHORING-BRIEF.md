@@ -122,11 +122,15 @@ what a re-key is done from.
 
 **A run is one change of the map, and the change says where it came from.** It carries the commit and the spec
 folder the run was built from and `--note`, a sentence saying what the pass is, and the answer lists every edit
-the run made to what the map held — which is where a hand edit the run replaced shows.
+the run made to what the map held.
 
 A map already at the slug is **replaced**, so a corrected spec re-driven keeps one map row instead of leaving
-`board`, `board-2` and `board-3` behind, and a hand edit made in the Sketch tool between runs is replaced
-rather than merged.
+`board`, `board-2` and `board-3` behind.
+
+**A hand edit made between runs is handed to you, not replaced.** The author edits a board in the Sketch tool to
+fix it or to show how, and the next run over it is refused `409`, one `SR1` per edit, each carrying the edit as
+the refinement would state it and naming the change it came in. Take the edits into `build-spec.py` and drive
+with `--after <change>`, or drop them with `--discard <change>` where the author agreed they go.
 
 Everything read after it is read against the stored map: the grid and the flow off the stored plan, and
 `sketch/columns` where `DR-KEEP` can see the spawn doors' approaches and the goal rings the intent carries.

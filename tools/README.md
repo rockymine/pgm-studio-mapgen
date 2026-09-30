@@ -3,7 +3,8 @@
 ## `drive.py` — a plan and a refinement, through the API, to a world
 
 ```bash
-python3 tools/drive.py specs/<slug> "<Map Name>" --out <worlddir> [--slug <slug>] [--note "<what this pass is>"] [--dry]
+python3 tools/drive.py specs/<slug> "<Map Name>" --out <worlddir> [--slug <slug>] [--note "<what this pass is>"]
+                       [--after <change>] [--discard <change>,...] [--dry]
 ```
 
 `PGM_STUDIO_TOKEN`, where it is set, is sent as `Authorization: Bearer` on every request, and only over https
@@ -221,8 +222,14 @@ minted per attempt, and the run is one change of the map.
 
 **The change says where the run came from.** It carries `origin` — the repository, the commit, the spec's
 folder, and whether that folder held changes the commit does not — and `--note`. The answer names every edit
-the run made to the documents the map held, listed edit by edit where the map was replaced, which is where a
-hand edit the run replaced shows.
+the run made to the documents the map held, listed edit by edit where the map was replaced.
+
+**A run over a change the spec has not seen is refused, and the change is handed over.** Where the board was
+edited after its last run — by hand in the Sketch tool, or by another writer's source — the studio answers `409`
+with one `SR1` per edit, naming the change and carrying the edit as the refinement would state it, which the
+driver prints under the finding. `--after <change>` says the spec has taken the change in; `--discard
+<change>,...` replaces it, and the change the run lands as records what it dropped. A board whose source states
+no refinement is never refused this way.
 
 Everything after it reads the stored map — the layout and the intent come back through `GET …/sketch` and
 `GET …/intent` — and one of those reads has to be there rather than earlier:

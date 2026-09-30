@@ -3,7 +3,7 @@
 pipeline said on the way.
 
     tools/drive.py <specdir> "<Map Name>" --out <worlddir> [--renders <dir>] [--slug <slug>]
-                   [--note "<what this pass is>"] [--dry]
+                   [--note "<what this pass is>"] [--after <change>] [--discard <change>,...] [--dry]
 
 <specdir> holds <base>.plan.json and EITHER <base>.refinement.json, OR a hand-drawn <base>.layout.json and
 <base>.intent.json -- the shape the Sketch tool writes, whose geometry is authored rather than compiled.
@@ -106,10 +106,16 @@ spec: the plan, its layout and its intent), compiles, applies, rasterizes the dr
 into the map document and applies the authors, and keeps the run as one change of the map. The change
 carries where the spec was built — the repository, the commit, the spec's folder, and whether the working
 tree differed from the commit — and `--note`, a sentence saying what this pass is. The slug is stated, so
-re-driving a corrected spec REPLACES the map it had rather than leaving a second one beside it, and a hand
-edit made in the Sketch tool between runs is replaced rather than merged: the spec is what the map is. The
-answer names every edit the run made to the documents the map held, which is how a replaced hand edit is
-seen; `--dry` asks the studio the same question with `?dry=true` and stores nothing.
+re-driving a corrected spec REPLACES the map it had rather than leaving a second one beside it. The answer
+names every edit the run made to the documents the map held; `--dry` asks the studio the same question with
+`?dry=true` and stores nothing.
+
+**A run over a change the spec has not seen is refused, and the change is handed over.** A person editing the
+board in the Sketch tool between runs — fixing a coast, showing how — or another writer's source makes a change
+after the one this spec was applied as, and the studio answers the next run `409` with one `SR1` per edit that
+change made, each carrying the edit as the refinement would state it. Take the edits into the spec and pass
+`--after <change>`, the change taken in; or pass `--discard <change>,...` to replace them, which the change
+the run lands as records. A board whose source states no refinement is its drawing, and is never refused.
 
 Nothing here computes a placement, a clearance or a validation: it posts documents and prints what
 came back. Every finding the pipeline raises is printed with its rule id and the JSON path it is
@@ -140,7 +146,7 @@ The pictures and the provenance sidecar land beside the documents rather than in
 not read.
 """
 import collections, concurrent.futures, json, math, multiprocessing, re, sys, io, time, zipfile, urllib.request, \
-    urllib.error, os, shutil, subprocess
+    urllib.error, urllib.parse, os, shutil, subprocess
 import studio_token
 
 STYLES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "styles")
@@ -686,8 +692,8 @@ def origin(specdir):
 
 def changed(answer):
     """What the source changed in the documents the map held, as the studio answered it: a new map states
-    every document for the first time, so it is counted; a replaced one is listed edit by edit, because an
-    edit here that the spec did not make is somebody's hand edit being replaced."""
+    every document for the first time, so it is counted; a replaced one is listed edit by edit, because that
+    is what the run did to the board somebody may have been reading."""
     edits = answer.get("edits") or []
     if not answer.get("replaced"):
         print(f"    a new map: {len(edits)} member(s) of its plan, layout and intent stated for the first time")
@@ -707,6 +713,8 @@ def main():
     out = sys.argv[sys.argv.index("--out") + 1] if "--out" in sys.argv else None
     into = sys.argv[sys.argv.index("--renders") + 1] if "--renders" in sys.argv else None
     note = sys.argv[sys.argv.index("--note") + 1] if "--note" in sys.argv else None
+    after = int(sys.argv[sys.argv.index("--after") + 1]) if "--after" in sys.argv else None
+    discard = sys.argv[sys.argv.index("--discard") + 1] if "--discard" in sys.argv else None
     dry = "--dry" in sys.argv
     base = os.path.basename(specdir.rstrip("/"))
     slug = sys.argv[sys.argv.index("--slug") + 1] if "--slug" in sys.argv else base
@@ -763,18 +771,21 @@ def main():
     # and bent in the document — stores the three documents as one change, rasterizes the drawing,
     # projects the intent and applies the authors. The slug is stated rather than minted, so a spec
     # re-driven after a correction replaces the map it had instead of leaving a second one beside it.
-    source = {"name": name, "plan": plan, "origin": origin(specdir), "note": note}
+    source = {"name": name, "plan": plan, "origin": origin(specdir), "note": note, "after": after}
     if drawn_layout is not None:
         source.update(layout=drawn_layout, intent=drawn_intent)
     else:
         source["refinement"] = resolved(refinement)
+    # A change the spec has not seen — a hand edit in the Sketch tool, another writer's source — refuses the
+    # run 409, printed above with the edit each SR1 hands over; `--after` takes it in, `--discard` drops it.
+    dropping = f"discard={urllib.parse.quote(discard)}" if discard else ""
     if dry:
         print("== what the run would change, stored nowhere")
-        _, would = call("PUT", f"/map/{slug}/source?dry=true", source)
+        _, would = call("PUT", f"/map/{slug}/source?dry=true{'&' + dropping if dropping else ''}", source)
         changed(would)
         raise SystemExit(0)
     print("== the map, from its source")
-    _, stored = call("PUT", f"/map/{slug}/source", source)
+    _, stored = call("PUT", f"/map/{slug}/source{'?' + dropping if dropping else ''}", source)
     print(f"    slug={slug}  change {stored.get('change')}  "
           f"{'replaced' if stored.get('replaced') else 'new'}  "
           f"cells={stored.get('cells')}  islands={stored.get('islands')}")

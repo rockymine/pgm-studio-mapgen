@@ -80,6 +80,12 @@ in the Sketch tool's In game phase, and a revision starts from `GET /notes?statu
 `terrain` or `gameplay` is work on that map; `studio` is a backlog task for the studio instead; `ruling` is a
 gameplay decision for every map. An untagged note is read for what it is about, and the reply says which.
 
+**Beside the notes, read what changed since your last run.** `GET /map/{slug}/changes?since=<the change your
+last run landed as>&format=text` lists every change made to the board since, and `GET …/diff?from=&to=&format=text`
+what each did. A hand edit there is the author showing what the board should be, and the next run over it is
+refused `409` with the edit written as the refinement would state it (`SR1`). Take it into `build-spec.py` and
+drive with `--after <change>`; drop one with `--discard <change>` only where the author said it goes.
+
 **After `--dry`, before the first build.** Run `tools/board.py` on the plan and read the grid. A plan
 is a list of rectangles and most of what goes wrong with one is a *relation between two of them*;
 no render of a built world can show that, because by then they are terrain.
