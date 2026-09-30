@@ -37,7 +37,7 @@ to **~54k**, and the 27 technique cards to **~66k**. Open one at the question th
 
 **Never `cat` a `*.layout.json`.** Two of them exceed a whole window and 27 exceed 20k. A
 layout is queried: `jq '.shapes | length'`, `jq '.shapes[] | select(.id=="…")'`. Same for a
-large `*.finish.json`.
+large `*.refinement.json`.
 
 **A one-line answer is a `grep`, not a file read.** `03-slopes.txt` runs to 10k tokens and its
 verdict is one line: `grep 'cells:' …/03-slopes.txt`.
@@ -49,7 +49,7 @@ different blocks, and neither the gates nor a render says so.
 
 **`techniques/` is where a technique is read, and it is built for exactly this.** A card states one
 instrument with its variants side by side, cites no past map, and costs ~2.4k tokens against a
-thousand-line finish. Where a field name rather than a technique is wanted, `GET /api/openapi/v1.json`
+thousand-line refinement. Where a field name rather than a technique is wanted, `GET /api/openapi/v1.json`
 is the contract and a committed spec is dated evidence of it.
 
 **`specs/` is the log's evidence, and it is opened to answer what a past board *did*** — a run report's
@@ -170,7 +170,7 @@ Run this over the spec that was just written. A zero is not a fault; **four zero
 that used one instrument and called it terrain.**
 
 ```python
-# python3 - specs/<slug>/<slug>.finish.json
+# python3 - specs/<slug>/<slug>.refinement.json
 import json, sys
 d = json.load(open(sys.argv[1]))
 shapes = list(d.get("addShapes") or [])
@@ -192,7 +192,7 @@ print("copied trees", sum(1 for v in styles.values()
                           if isinstance(v, dict) and v.get("form") == "copied"))
 ```
 
-It reads the **finish the spec generated**, not the script that generated it. A
+It reads the **refinement the spec generated**, not the script that generated it. A
 `build-spec.py` that states a flight through a helper writes `height_mode` once and
 uses it four times, and a grep over the source counts one.
 

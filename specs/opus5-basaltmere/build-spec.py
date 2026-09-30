@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Basaltmere — a capture board in a black bowl with one mere in it.
 
-Writes opus5-basaltmere.plan.json and opus5-basaltmere.finish.json beside this file.
+Writes opus5-basaltmere.plan.json and opus5-basaltmere.refinement.json beside this file.
 
 The board is a bowl 90 blocks across and 190 long, terraced in three steps down to a
 strand that is mostly under water.  The one hill stands on a basalt stack in the middle
@@ -421,8 +421,8 @@ FINISH = {
 
 def main():
     json.dump(PLAN,   open(os.path.join(HERE, SLUG + ".plan.json"),   "w"), indent=1)
-    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".finish.json"), "w"), indent=1)
-    print("wrote", SLUG + ".plan.json", "and", SLUG + ".finish.json")
+    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".refinement.json"), "w"), indent=1)
+    print("wrote", SLUG + ".plan.json", "and", SLUG + ".refinement.json")
 
 
 if __name__ == "__main__":

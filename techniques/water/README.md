@@ -179,7 +179,7 @@ where it is meant to be a sea.**
 - `slopes.txt` — 78,232 cells walked, 1,188 scrambled, 836 barrier; three faces, the largest 364 cells.
 - `census.txt` — three themes and nine surface blocks, which is the bank material showing up under each,
   and the lava under `moor`.
-- `water.layout.json` — the one document the board was stored from, posted to `POST /api/map/from-documents`
+- `water.layout.json` — the one document the board is stored from, stated to `PUT /api/map/{slug}/source`
   with an empty intent and no plan.
 
 Renders: `bodies-row.png` (the sea, the pond, the same pond with no shore, the two forms, the basin, the

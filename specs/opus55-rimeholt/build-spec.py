@@ -1,4 +1,4 @@
-"""Rimeholt — writes opus55-rimeholt.plan.json and .finish.json.
+"""Rimeholt — writes opus55-rimeholt.plan.json and .refinement.json.
 
 A capture board in snow and spruce: each team's hub is a snowfield leaning up from its frontline to a timber
 lookout on a hamlet behind it, log cabins on its corners, spruce fells off both its coasts, with a frozen tarn in its west corner and spruce standing along
@@ -121,5 +121,5 @@ finish = {
 }
 
 json.dump(plan, open(os.path.join(HERE, f"{SLUG}.plan.json"), "w"), indent=1)
-json.dump(finish, open(os.path.join(HERE, f"{SLUG}.finish.json"), "w"), indent=1)
+json.dump(finish, open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w"), indent=1)
 print("wrote", SLUG)

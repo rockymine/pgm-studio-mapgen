@@ -642,8 +642,8 @@ def finish():
         # plan compiled to. The gully's own edge is the gully-pan mark's ring and is not bent.
         # the compiled ground is one component named for its first piece, with a shape per
         # surface it stands at -- `apron-26` is the bank, `apron-23` the apron itself
-        "bendShapes": {"apron-26": {"k": 0.16, "wander": 3, "step": 11, "seed": 5},
-                       "apron-23": {"k": 0.18, "wander": 3, "step": 11, "seed": 9}},
+        "bendShapes": {"apron-26": {"tension": 0.16, "wander": 3, "step": 11, "seed": 5},
+                       "apron-23": {"tension": 0.18, "wander": 3, "step": 11, "seed": 9}},
         "relief": {"*": {"base": APRON, "reach": 0, "step": 1, "landform": "rolling",
                          "grain": {"amplitude": 1.1, "scale": 19, "seed": 7},
                          "marks": marks(), "pushes": pushes()}},
@@ -657,6 +657,6 @@ def finish():
 if __name__ == "__main__":
     with open(f"{HERE}/{SLUG}.plan.json", "w") as handle:
         json.dump(plan(), handle, indent=2)
-    with open(f"{HERE}/{SLUG}.finish.json", "w") as handle:
+    with open(f"{HERE}/{SLUG}.refinement.json", "w") as handle:
         json.dump(finish(), handle, indent=2)
-    print(f"wrote {SLUG}.plan.json and {SLUG}.finish.json")
+    print(f"wrote {SLUG}.plan.json and {SLUG}.refinement.json")

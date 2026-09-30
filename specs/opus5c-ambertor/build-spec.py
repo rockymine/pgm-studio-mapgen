@@ -12,7 +12,7 @@ the defence knows the one place a climber arrives.
 Tone families: the ground is gold limestone and dry grass, what is built is
 dark oak on dark cobble, and the accent is the deep green of three pines.
 
-Writes opus5c-ambertor.plan.json and opus5c-ambertor.finish.json.
+Writes opus5c-ambertor.plan.json and opus5c-ambertor.refinement.json.
 """
 import json
 import os
@@ -451,4 +451,4 @@ finish = {
 }
 
 write(os.path.join(HERE, f"{SLUG}.plan.json"), plan)
-write(os.path.join(HERE, f"{SLUG}.finish.json"), finish)
+write(os.path.join(HERE, f"{SLUG}.refinement.json"), finish)

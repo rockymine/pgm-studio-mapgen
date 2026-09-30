@@ -26,7 +26,7 @@ theme.
 caps one. A crag's rim, its wall and its underside are the whole of what an opponent bridging toward
 it can see, so they are what this board's themes spend their material on.
 
-Output: `opus5-aerie.plan.json` and `opus5-aerie.finish.json` beside this file.
+Output: `opus5-aerie.plan.json` and `opus5-aerie.refinement.json` beside this file.
 """
 import json, math, os
 
@@ -360,7 +360,7 @@ finish = {
 def write():
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(plan, handle, indent=1)
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(finish, handle, indent=1)
     kinds = {}
     for prop in props:

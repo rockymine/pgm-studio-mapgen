@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Hallowgate — a capture-the-wool board on a drowned churchyard.
 
-Writes `opus5-hallowgate.plan.json` and `opus5-hallowgate.finish.json` beside this file.
+Writes `opus5-hallowgate.plan.json` and `opus5-hallowgate.refinement.json` beside this file.
 
 The arrangement is taken over from the composer rather than invented: a hub ringing an
 enclosed hole, a spawn hung off its flank, an L of causeway to a wool room in a corner, a
@@ -516,7 +516,7 @@ finish = {
     # and not its coast. This resamples the compiled rings along their long edges and pulls
     # the inserted points inward — `side: "in"`, because nothing may move outward: a point
     # that did could close the strait the board is measured on.
-    "bendShapes": {"frontline-t1-9": {"k": 0.18, "wander": 2, "step": 8,
+    "bendShapes": {"frontline-t1-9": {"tension": 0.18, "wander": 2, "step": 8,
                                      "seed": 5, "side": "in"}},
     "addShapes": add_shapes,
     "addLayers": add_layers,
@@ -534,4 +534,4 @@ def write(name, document):
 
 
 write(f"{SLUG}.plan.json", plan)
-write(f"{SLUG}.finish.json", finish)
+write(f"{SLUG}.refinement.json", finish)

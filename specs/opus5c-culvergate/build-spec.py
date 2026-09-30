@@ -16,7 +16,7 @@ Tone families: the ground is pale limestone flags — made ground, not landscape
 — what is built is red brick under dark slate, and the accent is the iron white
 of the cover.
 
-Writes opus5c-culvergate.plan.json and opus5c-culvergate.finish.json.
+Writes opus5c-culvergate.plan.json and opus5c-culvergate.refinement.json.
 """
 import json
 import os
@@ -474,4 +474,4 @@ finish = {
 }
 
 write(os.path.join(HERE, f"{SLUG}.plan.json"), plan)
-write(os.path.join(HERE, f"{SLUG}.finish.json"), finish)
+write(os.path.join(HERE, f"{SLUG}.refinement.json"), finish)

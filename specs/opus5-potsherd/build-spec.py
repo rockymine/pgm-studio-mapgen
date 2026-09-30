@@ -542,9 +542,9 @@ def finish():
         "mapTheme": "clay",
         # the board's outer edge, drawn as an edge rather than as the staircase of rectangles the
         # plan compiled to. The pit's own lip is the pit-pan mark's ring and is not bent.
-        "bendShapes": {"camp-25": {"k": 0.16, "wander": 3, "step": 12, "seed": 5},
-                       "camp-24": {"k": 0.18, "wander": 3, "step": 12, "seed": 9},
-                       "camp-20": {"k": 0.16, "wander": 3, "step": 12, "seed": 13}},
+        "bendShapes": {"camp-25": {"tension": 0.16, "wander": 3, "step": 12, "seed": 5},
+                       "camp-24": {"tension": 0.18, "wander": 3, "step": 12, "seed": 9},
+                       "camp-20": {"tension": 0.16, "wander": 3, "step": 12, "seed": 13}},
         "relief": {"*": {"base": FIELD, "reach": 0, "step": 1, "landform": "plain",
                          "grain": {"amplitude": 1.0, "scale": 18, "seed": 7},
                          "marks": marks(), "pushes": pushes()}},
@@ -558,6 +558,6 @@ def finish():
 if __name__ == "__main__":
     with open(f"{HERE}/{SLUG}.plan.json", "w") as handle:
         json.dump(plan(), handle, indent=2)
-    with open(f"{HERE}/{SLUG}.finish.json", "w") as handle:
+    with open(f"{HERE}/{SLUG}.refinement.json", "w") as handle:
         json.dump(finish(), handle, indent=2)
-    print(f"wrote {SLUG}.plan.json and {SLUG}.finish.json")
+    print(f"wrote {SLUG}.plan.json and {SLUG}.refinement.json")

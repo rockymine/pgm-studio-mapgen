@@ -133,8 +133,8 @@ stand in the terrain, and take a `height_mode` with a `skirt`.
 - `incline.txt` — 55.6% of the board stands between 10° and 19°, which is why the bands are cut at 25° and
   45° here rather than the 15° and 40° the flat-ground cards use.
 - `census.txt` — one theme, four surface blocks.
-- `made-ground.layout.json` — the one document the board was stored from, posted to
-  `POST /api/map/from-documents` with an empty intent and no plan.
+- `made-ground.layout.json` — the one document the board is stored from, stated to
+  `PUT /api/map/{slug}/source` with an empty intent and no plan.
 
 Renders: `scope-row.png` (inherit, hold, follow, exclude), `erected-row.png` (sheer, skirt 6, skirt 14, both
 words) and `iso.png` (all eight).

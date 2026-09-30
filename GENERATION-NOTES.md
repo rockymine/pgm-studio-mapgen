@@ -393,7 +393,7 @@ only row left, so the search's silence there is conservatism and not a refusal.
 
 ## The compile
 
-What the plan becomes, and what a finish is keyed onto.
+What the plan becomes, and what a refinement is keyed onto.
 
 ### The compiler groups groups by mirror, not by landmass
 
@@ -443,8 +443,8 @@ back on the 200 — but the terrain still comes from the stored one.
 `PUT …/sketch` replaces the blob verbatim and is what an edit loop wants; `from-plan` merges — it carries a
 stored finish, relief and structural height onto the freshly compiled board, and refuses at 409 with `SK1`
 where the recompile leaves an authored relief with no group to land on. `?force=true` accepts that loss; it
-does not make a posted relief beat a stored one. A spec-driven build wants neither, because it posts a whole
-layout every time: `drive.py` stores through `POST /map/from-documents`, which replaces the map at the slug
+does not make a posted relief beat a stored one. A spec-driven build wants neither, because it states a whole
+source every time: `drive.py` stores through `PUT /map/{slug}/source`, which replaces the map at the slug
 outright, and the merge rules above never come into it.
 
 ---
@@ -847,8 +847,8 @@ bed's own floor fills nothing. The bed is carved first and the fill is stated se
 `SketchRasterizer.ReliefFields` walks every layer and looks each of its groups up in the one
 `relief` dictionary, adding that layer's `base_y` to the field it solves. So a stacked board can give
 each storey its own landscape — `{"team": …, "walls": …}` — and a layer's marks are stated in **its
-own frame**, not the board's. `drive.py`'s `"*"` expands over the groups the *compile* emitted, so a
-key stated beside it survives and names a layer added in the finish.
+own frame**, not the board's. The refinement's `"*"` expands over the groups of the compiled ground, so a
+key stated beside it survives and names a layer added in the refinement.
 
 ### `relief_scope: exclude` takes a tier out of the elevation model entirely
 
@@ -1217,15 +1217,14 @@ returning it — so `relief/read` answers an upper group in world coordinates.
 bedrock-to-top and would fill the air between two slabs; the stone-only invariant is the one line
 that makes stacking work.
 
-### The order a stack is written in decides which layer an unnamed shape joins, and nothing else
+### The order a stack is written in is a tiebreak, and nothing else
 
 `TerrainPainter.Paint` orders the layers by the lowest surface each one carries and paints each over its
 own span, so a storey's bands stop at its own floor and the document's order is a tiebreak between layers
 standing at one height. A storey listed after one that stands over it is painted correctly either way.
 
-What the order still decides is where a shape naming no layer lands: the first one. `drive.py`'s `addLayers`
-takes `"below": true` to insert a storey under the compiled ground, which moves that target, so a finish
-adding an undercroft states the layer its shapes belong to rather than relying on the position.
+A shape the refinement draws naming no layer does not depend on it either: it joins the compiled ground,
+wherever `addLayers` with `"below": true` has put that in the stack.
 
 **`SK20` complains where the list is not in the order the world builds.** The list is what a reader and the
 storey strip walk and `base_y` is what the world is built from, so the two disagreeing is worth saying even
@@ -1307,10 +1306,10 @@ the surface top, so nothing can be placed under a deck.
 one block short reads as standable ground with no route onto it.
 
 
-### Lifting the ground to make room for a storey under it is a plan edit as well as a finish edit
+### Lifting the ground to make room for a storey under it is a plan edit as well as a refinement edit
 
 `shapePropsByHeight` moves the landmass's **floor** and leaves its surface where it was, which is what makes
-room for a storey underneath. The plan states where the spawns and the goals sit, so moving the finish alone
+room for a storey underneath. The plan states where the spawns and the goals sit, so moving the refinement alone
 leaves every marker at its old height under ground that has risen — thirteen courses under, on one measured
 board — and the buildability check then reports every placement as over open void.
 

@@ -11,7 +11,7 @@ is the same ground its own monument watches.
 Tone families: the ground is dark and wet — podzol, coarse dirt, clay; what is
 built is white plaster framed in dark oak; the accent is the water.
 
-Writes opus5b-alderquay.plan.json and opus5b-alderquay.finish.json.
+Writes opus5b-alderquay.plan.json and opus5b-alderquay.refinement.json.
 """
 import json
 import os
@@ -416,4 +416,4 @@ finish = {
 }
 
 write(os.path.join(HERE, f"{SLUG}.plan.json"), plan)
-write(os.path.join(HERE, f"{SLUG}.finish.json"), finish)
+write(os.path.join(HERE, f"{SLUG}.refinement.json"), finish)

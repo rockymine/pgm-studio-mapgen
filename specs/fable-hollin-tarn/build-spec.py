@@ -182,5 +182,5 @@ finish = {
   "dressing": DRESSING,
 }
 json.dump(plan, open(f"{HERE}/{SLUG}.plan.json", "w"), indent=1)
-json.dump(finish, open(f"{HERE}/{SLUG}.finish.json", "w"), indent=1)
+json.dump(finish, open(f"{HERE}/{SLUG}.refinement.json", "w"), indent=1)
 print("wrote", SLUG)

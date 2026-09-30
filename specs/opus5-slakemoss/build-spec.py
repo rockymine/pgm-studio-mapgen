@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Slakemoss — a destroy-the-core board in a hall the moss and the water took back.
 
-Writes opus5-slakemoss.plan.json and opus5-slakemoss.finish.json beside this file.
+Writes opus5-slakemoss.plan.json and opus5-slakemoss.refinement.json beside this file.
 
 Each team's core stands on a dry plinth inside a ruined chapter house at the back of its
 own side.  Between the two of them the nave is roofless and its floor is under water, with
@@ -378,8 +378,8 @@ FINISH = {
 
 def main():
     json.dump(PLAN,   open(os.path.join(HERE, SLUG + ".plan.json"),   "w"), indent=1)
-    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".finish.json"), "w"), indent=1)
-    print("wrote", SLUG + ".plan.json", "and", SLUG + ".finish.json")
+    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".refinement.json"), "w"), indent=1)
+    print("wrote", SLUG + ".plan.json", "and", SLUG + ".refinement.json")
 
 
 if __name__ == "__main__":

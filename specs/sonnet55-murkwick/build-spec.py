@@ -1,4 +1,4 @@
-"""Murkwick — writes sonnet55-murkwick.plan.json and .finish.json for the stage in $STAGE (1..4).
+"""Murkwick — writes sonnet55-murkwick.plan.json and .refinement.json for the stage in $STAGE (1..4).
 
 The arrangement is composed board p16 t2 seed 43 (`composed-p16-seed43.plan.json`, pinned off GET /api/compose),
 taken whole. Team 0 is the z > 0 half; rot_180 fans the rest.
@@ -193,5 +193,5 @@ if STAGE >= 4:
     ]
 
 json.dump(plan, open(os.path.join(HERE, f"{SLUG}.plan.json"), "w"), indent=1)
-json.dump(finish, open(os.path.join(HERE, f"{SLUG}.finish.json"), "w"), indent=1)
+json.dump(finish, open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w"), indent=1)
 print("wrote", SLUG, "stage", STAGE)

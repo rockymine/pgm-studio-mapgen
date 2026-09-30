@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Sluicehead — a destroy-the-core board in a frozen glacial trough.
 
-Writes `opus5-sluicehead.plan.json` and `opus5-sluicehead.finish.json` beside this file.
+Writes `opus5-sluicehead.plan.json` and `opus5-sluicehead.refinement.json` beside this file.
 
 Where Kilnbrow is a terrace over a pan, this board is a trough: a flat sluice floor of
 frozen gravel with a moraine ridge over each shoulder, and each team's core standing out on
@@ -474,4 +474,4 @@ def write(name, document):
 
 
 write(f"{SLUG}.plan.json", plan)
-write(f"{SLUG}.finish.json", finish)
+write(f"{SLUG}.refinement.json", finish)

@@ -110,7 +110,7 @@ models/sculpture.layout.json
 models/renders/
 ```
 
-Both were posted whole through `POST /api/map/from-documents` — a layout and a minimal intent, no plan, since
+Both are stored whole through `PUT /api/map/{slug}/source` — a layout and a minimal intent, no plan, since
 a gallery board is played for nothing. `maps/opus5-automaton` is the same props on a board that *is* played
 for something.
 

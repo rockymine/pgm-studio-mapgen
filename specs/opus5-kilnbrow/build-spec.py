@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Kilnbrow — a destroy-the-monument board on a red clay firing-ground.
 
-Writes `opus5-kilnbrow.plan.json` and `opus5-kilnbrow.finish.json` beside this file.
+Writes `opus5-kilnbrow.plan.json` and `opus5-kilnbrow.refinement.json` beside this file.
 
 The board is a lane. Each team's monument stands on an open shelf a short walk forward of
 its spawn, and the ground around it answers four approaches rather than one: a spoil hill
@@ -528,4 +528,4 @@ def write(name, document):
 
 
 write(f"{SLUG}.plan.json", plan)
-write(f"{SLUG}.finish.json", finish)
+write(f"{SLUG}.refinement.json", finish)

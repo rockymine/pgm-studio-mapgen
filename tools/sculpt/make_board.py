@@ -1,8 +1,8 @@
 """Write the spec for a board furnished with sculpted props, for `drive.py` to build.
 
-The finish's `addLayers` takes the storeys a plan cannot state, and that is exactly what a prop is: a set of
+The refinement's `addLayers` takes the storeys a plan cannot state, and that is exactly what a prop is: a set of
 layers with a floor at the board's surface. So nothing about the studio has to change for a sculpture to
-stand on a compiled plan — the props are generated here, written into `<slug>.finish.json`, and the ordinary
+stand on a compiled plan — the props are generated here, written into `<slug>.refinement.json`, and the ordinary
 driver does the rest.
 
     python3 tools/sculpt/make_board.py specs/opus5-automaton
@@ -145,7 +145,7 @@ def build():
     return add_layers, table
 
 
-FINISH_HEAD = {
+REFINEMENT_HEAD = {
     "authors": ["Opus 5"],
     "created": "2026-08-28",
     "themes": THEMES,
@@ -164,15 +164,15 @@ if __name__ == "__main__":
     os.makedirs(out, exist_ok=True)
 
     add_layers, table = build()
-    finish = dict(FINISH_HEAD)
-    finish["addLayers"] = add_layers
+    refinement = dict(REFINEMENT_HEAD)
+    refinement["addLayers"] = add_layers
 
     json.dump(PLAN, open(f"{out}/{slug}.plan.json", "w"), indent=1)
-    json.dump(finish, open(f"{out}/{slug}.finish.json", "w"), indent=1)
+    json.dump(refinement, open(f"{out}/{slug}.refinement.json", "w"), indent=1)
 
     shapes = sum(len(layer["shapes"]) for layer in add_layers)
     print(f"{len(add_layers)} prop layers, {shapes} shapes")
     for name, row in table:
         print(f"  {name:<30} {row['blocks']:>7} blocks  {row['layers']:>3} layers  "
               f"{row['shapes']:>5} shapes")
-    print("wrote", f"{out}/{slug}.plan.json", "and", f"{out}/{slug}.finish.json")
+    print("wrote", f"{out}/{slug}.plan.json", "and", f"{out}/{slug}.refinement.json")

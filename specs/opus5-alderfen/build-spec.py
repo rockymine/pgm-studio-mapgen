@@ -6,7 +6,7 @@ one holm between the two sides is reached over twenty blocks of void.
 
     python3 specs/opus5-alderfen/build-spec.py
 
-writes `opus5-alderfen.plan.json` and `opus5-alderfen.finish.json` beside itself.
+writes `opus5-alderfen.plan.json` and `opus5-alderfen.refinement.json` beside itself.
 """
 import json
 import math
@@ -832,8 +832,8 @@ PROPS.append({"id": "cover-holm", "kind": "flora", "seed": 95, "spec": FLORA,
 
 FINISH = {
     "themeById": {},
-    "bendShapes": {"garth-14": {"k": 0.22, "wander": 6, "step": 12, "seed": 5},
-                   "holm-mid-14": {"k": 0.20, "wander": 5, "step": 10, "seed": 6}},
+    "bendShapes": {"garth-14": {"tension": 0.22, "wander": 6, "step": 12, "seed": 5},
+                   "holm-mid-14": {"tension": 0.20, "wander": 5, "step": 10, "seed": 6}},
     "addShapes": ADD_SHAPES,
     "addLayers": ADD_LAYERS,
     "relief": RELIEF,
@@ -852,7 +852,7 @@ def main():
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(PLAN, handle, indent=1)
         handle.write("\n")
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(FINISH, handle, indent=1)
         handle.write("\n")
     trees = sum(1 for prop in PROPS if prop["kind"] == "tree")

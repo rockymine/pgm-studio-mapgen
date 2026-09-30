@@ -1,9 +1,9 @@
 # tools/ — the driver, the loop beside it, and the world tools a hand revamp needs
 
-## `drive.py` — a plan and a finish, through the API, to a world
+## `drive.py` — a plan and a refinement, through the API, to a world
 
 ```bash
-python3 tools/drive.py specs/<slug> "<Map Name>" --out <worlddir> [--slug <slug>] [--dry]
+python3 tools/drive.py specs/<slug> "<Map Name>" --out <worlddir> [--slug <slug>] [--note "<what this pass is>"] [--dry]
 ```
 
 `PGM_STUDIO_TOKEN`, where it is set, is sent as `Authorization: Bearer` on every request, and only over https
@@ -26,33 +26,34 @@ corrected spec **replaces** the map it had rather than leaving a second one besi
 | File | Is |
 |---|---|
 | `<slug>.plan.json` | a `PlanModel` — the board as cell rectangles, the objectives, the walls |
-| `<slug>.finish.json` | everything a plan cannot state, keyed onto the layout the plan compiles to |
+| `<slug>.refinement.json` | everything a plan cannot state, keyed onto the layout the plan compiles to — the studio's own `Refinement`, which the studio applies (`pgm-studio/docs/tools/flow.md`, *A map's source*) |
 
-The driver writes two more beside them — `<slug>.layout.json` and `<slug>.intent.json`, the documents it
-actually posted — so a review reads what was built rather than what was asked for.
+The driver writes two more beside them — `<slug>.layout.json` and `<slug>.intent.json`, the documents the
+studio stored — so a review reads what was built rather than what was asked for.
 
-**Those two are output and never input.** A spec carrying a finish is compiled from its plan on every run
-and the pair is overwritten; a spec with no finish is a board drawn in the Sketch tool, and then they are
+**Those two are output and never input.** A spec carrying a refinement is compiled from its plan on every run
+and the pair is overwritten; a spec with no refinement is a board drawn in the Sketch tool, and then they are
 the authored geometry and are read.
 
-**The finish is what decides which, and the reason is that the patches append.** `addLayers`, `addShapes`
-and `bendShapes` all add rather than replace, so reading back a layout the driver wrote and patching it
-again gives two storeys called `under` and a ring bent twice.
+**The refinement is what decides which, and the reason is that its statements append.** `addLayers`,
+`addShapes` and `bendShapes` all add rather than replace, so reading back a layout the driver wrote and
+refining it again gives two storeys called `under` and a ring bent twice.
 
-### What the finish carries
+### What the refinement carries
 
 | Key | Is |
 |---|---|
-| `themeById` · `themeByHeight` | the theme a compiled shape paints with, by its id or by the height it stands at. The id is the reliable one: compile once, read the ids off `POST /plan/compile`, and key on them. Two pieces at one height fuse into one shape and a height key cannot tell them apart |
+| `themeById` · `themeByHeight` | the theme a compiled shape paints with, by its id or by the height it stands at. The id is the reliable one: compile once, read the ids off `POST /plan/compile`, and key on them. Two pieces at one height fuse into one shape and a height key cannot tell them apart. A key naming an id the board does not have is answered `SR2`, with the ids it has |
 | `shapePropsById` · `shapePropsByHeight` | any field merged onto a compiled shape — `relief_scope`, `controls`, `anchor_heights`, `height_mode` |
-| `bendShapes` | `{"s0": {"k": 0.22, "wander": 3, "step": 9, "seed": 5}}` — the compiled outline drawn as a coast. The compiler emits a staircase of the plan's rectangles, which is the board's shape and not its coast; redrawing the ring by hand states the coast twice, free to disagree with the plan. This resamples the compiled ring along its long edges, pulls each **inserted** point inward by a deterministic wander and lays Catmull-Rom handles over the result. The plan's own vertices never move, and nothing ever moves outward — a point that did could close the strait a capture board is measured on, or narrow the neck a spur hangs off |
+| `editShapes` | `{"garth-14": [{"after": 1, "x": 92, "z": -70}, {"index": 4, "x": 80, "z": -60}, {"remove": 7}]}` — the outline reshaped one point at a time, in order, before any bend. `after` inserts a point on that edge (at its midpoint where no `x`/`z` is stated), `index` moves that point, `remove` drops it, and each op is stated against the ring as the ops before it left it. An op stating none or more than one of the three refuses the whole source (`SR4`) |
+| `bendShapes` | `{"dale-9": {"tension": 0.22, "wander": 3, "step": 9, "seed": 5, "side": "out"}}` — the compiled outline drawn as a coast, after every point edit. The compiler emits a staircase of the plan's rectangles, which is the board's shape and not its coast; redrawing the ring by hand states the coast twice, free to disagree with the plan. This resamples the compiled ring along its long edges, pulls each **inserted** point off its edge by a deterministic wander and lays Catmull-Rom handles over the result, `tension` long (0.22 where absent). `side` says which way: `out`, the default, is the slight bloat that reads as land; `in` keeps the plan's footprint, which is what a strait a capture board is measured on wants; `both` wanders across the line. The plan's own vertices never move |
 | `addShapes` | authored `SketchShape`s — the subtracts, the erected shapes, the ramps, the path-shape causeways. Each takes an optional `layer` and `group` naming where it lands, the way `POST …/sketch/layers/{layerId}/shapes?group=` does; one naming neither joins the compiled ground's first group. **The group is where a shape's ground is decided** — the symmetry fan and the relief are both read off a group's `shapeIds`, so a shape in the wrong group is built once, where it was drawn, on the wrong terrain |
 | `relief` | `{"<groupId>": {...}}`, or `{"*": {...}}` for every group. A compiled board's groups are `team` and `neutral` |
 | `themes` · `mapTheme` | the theme registry and the map default (the first key unless stated) |
-| `roomStyles` | `{"wool": …, "spawn": …}` — the two members `SketchRoomStyles` carries, and a `"@name"` string loads `tools/styles/<name>.json`. A key neither of those names is **dropped in silence on the whole-layout write** this driver uses — no `RQ3`, and the room stamps the built-in bedrock box at 200. (The per-part `PUT …/room-styles/{part}` does refuse it, 400 on `part`.) It was `cage` until 2026-09-07, so a spec document older than that states the old word and re-driving it stamps the box |
+| `roomStyles` | `{"wool": …, "spawn": …}` — the two members `SketchRoomStyles` carries, and a `"@name"` string loads `tools/styles/<name>.json`, which the driver resolves before the refinement is sent. A key neither of those names is answered `RQ3` (`refinement.roomStyles.cage`) and the room stamps the built-in bedrock box. It was `cage` until 2026-09-07, so a spec document older than that states the old word and re-driving it stamps the box |
 | `dressing` | `{"styles": …, "props": [...]}`; a house prop's `style` takes the same `"@name"`. A style in `styles` is a `PropStyle` and is discriminated — a tree is `{"kind": "tree", …}`, a **house is `{"kind": "house", "shell": <HouseStyle>}`**. A bare `HouseStyle` here is a 500 rather than a 400, because the parse throws before any gate reads it |
 | `authors` | `["Opus 5"]`, or `[{"name": …, "uuid": …, "role": …, "contribution": …}]`. PGM takes a person as an **account or a pseudonym**: a bare name writes `<author>Opus 5</author>`, a uuid writes `<author uuid="…"/>` with the name as a sibling comment, and a pseudonym may still carry a `contribution`. It also rides onto `intent.meta.authors`, because the observer platform's authors board reads that and a compiled intent leaves it empty — the map row's credit never reaches it |
-| `created` | `"2026-08-25"` — when the map was made, onto `intent.meta.created` and out as `<created>`. The studio derives every other identity field and cannot derive this one, so a finish that states none builds a map with no date and the driver says so |
+| `created` | `"2026-08-25"` — when the map was made, onto `intent.meta.created` and out as `<created>`. The studio derives every other identity field and cannot derive this one, so a refinement that states none builds a map with no date and the driver says so |
 | `controlPoints` · `scoreLimit` | a capture board's hills, onto `intent.controlPoints`, and the score the match ends at. Each point is `{name, anchor: {x, y, z}, size?, points?, captureTime?}` with the anchor in **blocks** — the pad is centred on it and cut into whatever ground the build solves there. The plan states no capture point, and a compiled intent carries no `symmetry`, so **every point of the board is stated here, already fanned**: a centre plus one side is a two-hill board. `scoreLimit` defaults to 750 on a board whose points pay, which is the corpus's own answer |
 | `shops` | a board's menus and the keepers that open them, onto `intent.shops`. A shop is `{id, name?, keeper?: {name?, mob?}, categories: [{id, material, name?, items: [{material, amount?, name?, price?, currency?, teamColor?}]}]}`. **It carries no coordinates at all** — a shop is a catalogue rather than a place, and the studio puts one keeper per shop at every team's spawn, beside the point players arrive on and facing them, held inside the spawn's room. PGM spawns the entity itself from the element, so nothing is stamped and a shop board exports the moment the intent is stored. A shop stating no category is left out rather than written as a menu PGM refuses (`pgm-studio/docs/pgm/shops.md` §9) |
 | `addLayers` | `[{id, name, base_y, shapes, groups, below?}]` — the storeys a plan cannot state. `below` inserts one under the compiled ground, which is also the layer a shape naming none joins |
@@ -101,11 +102,13 @@ The four places a finding appears:
    table) and `POST /plan/inspect` (`goalDistances` against `GO1`'s 3.0–4.0 band, `islandGaps` against
    `CT12`'s 15–40, the wall rects, the frontline runs);
 
-2. **at the compile** — `POST /plan/compile`'s `warnings`, and its 422 findings if it refuses;
+2. **at the compile** — inside the source: the completeness gate's complaints among its `warnings`, and
+   `422 plan not compilable` with the findings if it refuses;
 
-3. **at the store** — `POST /map/from-documents`'s `SK3`/`SK4`/`SK5`/`SK11`, its `RQ3` over all three
-   documents at once (each path named with the member it was posted under — `layout.setupp`, not `setupp`),
-   and `relief/read`'s per-group cells, low, high and symmetry error;
+3. **at the store** — `PUT …/source`'s `SK3`/`SK4`/`SK5`/`SK11`, its `SR2` for a key naming a shape or a layer
+   the board does not have, its `RQ3` over every document at once (each path named with the member it was
+   stated under — `refinement.themeByHeigth`, not `themeByHeigth`), and `relief/read`'s per-group cells, low,
+   high and symmetry error;
 
 4. **at the dressing** — `POST …/sketch/columns`'s `DR-*` declines, read **after** the intent is stored,
    because `DR-KEEP` needs the spawn doors and the goal rings the intent carries.
@@ -210,18 +213,19 @@ document. Both of those are the author's.
 
 ### One call stores the map
 
-`POST /map/from-documents` takes the plan, the patched layout and the patched intent together and does the
-whole store: the plan to re-plan from, the drawing rasterized into geometry, the intent projected into the map
-document, the authors applied over that projection. The compile before it needs no map row, so both documents
-are whole before anything is stored — which is what lets the store be one call, and what keeps the slug the
-author's rather than one minted per attempt.
+`PUT /map/{slug}/source` takes the plan and the refinement together and does the whole store: the compile, the
+refinement applied onto it — the outlines reshaped and bent in the document, so the board the store judges is
+the board the run leaves — the plan to re-plan from, the drawing rasterized into geometry, the intent projected
+into the map document, the authors applied over that projection. The slug is the author's rather than one
+minted per attempt, and the run is one change of the map.
 
-An `editShapes` or a `bendShapes` changes the stored board after that store has finished it, so the driver
-posts `POST /map/{slug}/sketch/finish` once after the last of them and prints what it answers: the store's
-counts and complaints describe the compiled outline, and the second finish judges — and writes the ground of
-— the board the run actually left.
+**The change says where the run came from.** It carries `origin` — the repository, the commit, the spec's
+folder, and whether that folder held changes the commit does not — and `--note`. The answer names every edit
+the run made to the documents the map held, listed edit by edit where the map was replaced, which is where a
+hand edit the run replaced shows.
 
-Everything after it reads the stored map, and one of those reads has to be there rather than earlier:
+Everything after it reads the stored map — the layout and the intent come back through `GET …/sketch` and
+`GET …/intent` — and one of those reads has to be there rather than earlier:
 `sketch/columns` is asked **after** the store because `DR-KEEP` reads the spawn doors' approaches and the goal
 rings, which come off the intent.
 
@@ -235,8 +239,9 @@ lines print where the pictures always have.
 
 ### The escape hatches
 
-`--dry` stops after the evaluator and the inspect feed, so a plan can be iterated with no map row and no
-build — which is where most of a board's shape is actually decided. The grid and the flow read the *stored*
+`--dry` stops after the evaluator, the inspect feed and a dry run of the source, which answers what the run
+would change and stores nothing — so a plan can be iterated with no map row and no world, which is where most
+of a board's shape is actually decided. The grid and the flow read the *stored*
 plan and so are not in a dry pass; `board.py` covers the grid half of that loop. `--slug` overrides the slug
 the spec directory's name would give, for a board stored under a name of its own.
 
@@ -251,8 +256,9 @@ python3 tools/loop.py specs/<slug> [--slug <slug>] [--no-relief] [--no-dressing]
 
 A drive stores, exports and pictures the board in ten to fifteen seconds, and most of what it decides was
 decided by two previews that take two.
-This reads the spec exactly as `drive.py` does — the plan compiled and patched with its finish, or the drawn
-layout — and posts the result to `sketch/relief/read` and `sketch/dressing` without storing anything.
+This reads the spec exactly as `drive.py` does — the plan and its refinement, applied by the studio in a dry
+run of the source, or the drawn layout — and posts the result to `sketch/relief/read` and `sketch/dressing`
+without storing anything.
 
 **What the two answer.** The relief read gives the terrain in numbers — range, walk/scramble/barrier steps,
 crossings in both directions — and the dressing preview gives what every prop did, printing each decline
@@ -281,10 +287,10 @@ and `--no-trees` skips it.
 
 **A card's files say which road it takes and nothing else decides.** A `<name>.layout.json`, with its
 `<name>.intent.json` beside it where the card has objectives, is stored directly — the shape the Sketch
-tool writes. A `<variant>.plan.json` with a `<variant>.finish.json` beside it goes through `drive.py`,
-because a plan has to be compiled and patched before it is a board.
+tool writes. A `<variant>.plan.json` with a `<variant>.refinement.json` beside it goes through `drive.py`,
+because a plan has to be compiled and refined before it is a board.
 
-**A plan with no finish beside it is not a board.** `taking-over-a-composed-board/pinned.plan.json` is the
+**A plan with no refinement beside it is not a board.** `taking-over-a-composed-board/pinned.plan.json` is the
 composer's own answer, committed so the card's starting point is reproducible, and it is the one plan in
 `techniques/` that is not driven.
 
@@ -414,7 +420,7 @@ an annulus as one polygon) and write the thing wanted; do not stamp a drum tower
 | `sculpt/models.py` | the nine sculptures `sculpture/models` is made of — robot, droid, Rubik's cube, hooded statue, coupe, walker, dragon, starship, ring station. One board, written once; the reusable part of it is `solid.py` underneath |
 | `sculpt/board.py` | the themes (`solid`, `shaded`), the document, the minimal intent an export needs, and the calls that store a board, read its columns back and unzip its world |
 | `sculpt/gallery_forms.py` · `gallery_sculpture.py` | the two boards in `sculpture/`, each printing what it cost in layers and shapes and exporting a world into the directory named as its second argument |
-| `sculpt/make_board.py` | writes `specs/archive/opus5-automaton`'s plan and finish, props and all, for `drive.py` to build |
+| `sculpt/make_board.py` | writes `specs/archive/opus5-automaton`'s plan and refinement, props and all, for `drive.py` to build |
 | `render/png.py` | a PNG writer, a scanline polygon fill and a 5×7 face, in the standard library alone |
 | `render/iso.py` | isometric, **x-ray isometric**, orthographic elevation and one-panel-per-layer renders off `POST …/sketch/columns` — the built world, not the drawing. `drive.py` writes two isometrics per spec, so every board has a picture in the round, and two x-rays where the board holds a covered space. `cavities` beside them is the read on its own: every roofed void, its cell count, the blocks it lies between, and whether anything can walk into it |
 | `render/preview.py` | the same isometric taken straight off a model's voxels, for correcting a proportion without a build |
@@ -424,7 +430,7 @@ read the column payload the preview meshes and draw it server-side.
 
 ## `styles/`
 
-One `HouseStyle` snapshot per file, referenced from a finish as `"@<name>"`. Fork a shipped preset rather
+One `HouseStyle` snapshot per file, referenced from a refinement as `"@<name>"`. Fork a shipped preset rather
 than writing one from nothing: `GET /room-styles/{id}/json` answers the ten presets as the stamper's own JSON
 once `dotnet run tools/seed-library.cs` has seeded them. Repaint `storeys[*].wall` as well as `wall`, or the
 fork is half applied — except on `Stilts`, whose idiom lives in storey 0's wall.

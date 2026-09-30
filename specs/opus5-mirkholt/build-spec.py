@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Mirkholt — a capture-the-wool board in a wood you cannot see across.
 
-Writes opus5-mirkholt.plan.json and opus5-mirkholt.finish.json beside this file.
+Writes opus5-mirkholt.plan.json and opus5-mirkholt.refinement.json beside this file.
 
 Each side is a wood shifted onto its own diagonal, so the board's other two quarters are
 void and the two sides face each other across one 20-block strait.  A hollow way runs the
@@ -413,8 +413,8 @@ FINISH = {
 
 def main():
     json.dump(PLAN,   open(os.path.join(HERE, SLUG + ".plan.json"),   "w"), indent=1)
-    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".finish.json"), "w"), indent=1)
-    print("wrote", SLUG + ".plan.json", "and", SLUG + ".finish.json",
+    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".refinement.json"), "w"), indent=1)
+    print("wrote", SLUG + ".plan.json", "and", SLUG + ".refinement.json",
           f"({count} trees on the authored half)")
 
 

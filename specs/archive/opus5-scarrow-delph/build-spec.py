@@ -347,7 +347,7 @@ finish = {
 if __name__ == "__main__":
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as fh:
         json.dump(plan, fh, indent=1)
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as fh:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as fh:
         json.dump(finish, fh, indent=1)
     print(f"wrote {SLUG}.plan.json ({len(plan['pieces'])} pieces) and "
-          f"{SLUG}.finish.json ({len(props)} props, {len(THEMES)} themes)")
+          f"{SLUG}.refinement.json ({len(props)} props, {len(THEMES)} themes)")

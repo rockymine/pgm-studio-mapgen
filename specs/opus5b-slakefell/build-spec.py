@@ -14,7 +14,7 @@ piece with the relief doing all the work; this is four height zones as pieces,
 which is the plan's other legitimate form, and its risers are faces with
 authored ramps cut through them.
 
-Writes opus5b-slakefell.plan.json and opus5b-slakefell.finish.json.
+Writes opus5b-slakefell.plan.json and opus5b-slakefell.refinement.json.
 """
 import json
 import os
@@ -385,4 +385,4 @@ finish = {
 }
 
 write(os.path.join(HERE, f"{SLUG}.plan.json"), plan)
-write(os.path.join(HERE, f"{SLUG}.finish.json"), finish)
+write(os.path.join(HERE, f"{SLUG}.refinement.json"), finish)

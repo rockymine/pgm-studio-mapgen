@@ -388,7 +388,7 @@ finish = {
 }
 
 json.dump(plan,   open(SPEC + ".plan.json", "w"),   indent=1)
-json.dump(finish, open(SPEC + ".finish.json", "w"), indent=1)
+json.dump(finish, open(SPEC + ".refinement.json", "w"), indent=1)
 print(f"wrote plan and finish: {len(shapes)} authored shapes, {len(layers)} layers, "
       f"{len(DRESSING['props'])} props "
       f"({sum(1 for p in DRESSING['props'] if p['kind'] == 'tree')} template trees, 0 grown)")

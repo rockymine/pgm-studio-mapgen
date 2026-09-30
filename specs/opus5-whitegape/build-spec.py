@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Whitegape — a limestone gorge quarried from both rims.
 
-Writes opus5-whitegape.plan.json and opus5-whitegape.finish.json for tools/drive.py.
+Writes opus5-whitegape.plan.json and opus5-whitegape.refinement.json for tools/drive.py.
 
 The board in one sentence: two teams face each other across a chasm; each holds a stone-built quarry
 yard on its own rim, with its monument on the floor of the pit cut into that yard, and the only way
@@ -575,7 +575,7 @@ finish = {
     "dressing": {"styles": styles, "props": props},
 }
 
-for name, doc in ((f"{SLUG}.plan.json", plan), (f"{SLUG}.finish.json", finish)):
+for name, doc in ((f"{SLUG}.plan.json", plan), (f"{SLUG}.refinement.json", finish)):
     with open(os.path.join(HERE, name), "w") as fh:
         json.dump(doc, fh, indent=1)
     print(f"wrote {name}  ({os.path.getsize(os.path.join(HERE, name)):,} bytes)")

@@ -8,7 +8,7 @@ coordinates are arithmetic on a handful of levels and region bounds. Those are n
 and everything is written from them, which is the only way a tunnel's floor, the lid over it and the
 ramp that reaches it can be kept from drifting a course apart.
 
-The plan is authored by hand and is not written here. Output: `opus5-sandcaster.finish.json`.
+The plan is authored by hand and is not written here. Output: `opus5-sandcaster.refinement.json`.
 """
 import json, os
 
@@ -676,7 +676,7 @@ def main():
                                    "shapeIds": [s["id"] for s in under_layer()]}]}],
         "dressing": dressing(),
     }
-    out = os.path.join(HERE, f"{SLUG}.finish.json")
+    out = os.path.join(HERE, f"{SLUG}.refinement.json")
     with open(out, "w") as handle:
         json.dump(finish, handle, indent=1)
     print(f"{out}: {len(finish['themes'])} themes · {len(finish['addShapes'])} shapes · "

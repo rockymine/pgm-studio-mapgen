@@ -12,11 +12,11 @@ not, and this puts both in.
 true on a database somebody has driven it into — thirty boards over twenty-seven cards. A card's own files
 say which of two roads it takes and nothing else decides:
 
-    <name>.layout.json [+ <name>.intent.json]     stored directly, the shape the Sketch tool writes
-    <variant>.plan.json + <variant>.finish.json   driven through `tools/drive.py`, the same road a spec
-                                                  takes, because a plan has to be compiled and patched
+    <name>.layout.json [+ <name>.intent.json]         stored directly, the shape the Sketch tool writes
+    <variant>.plan.json + <variant>.refinement.json   driven through `tools/drive.py`, the same road a spec
+                                                      takes, because a plan has to be compiled and refined
 
-A plan with no finish beside it is not a board. `taking-over-a-composed-board/pinned.plan.json` is the
+A plan with no refinement beside it is not a board. `taking-over-a-composed-board/pinned.plan.json` is the
 composer's own answer, committed so the card's starting point is reproducible, and it is the one plan in
 `techniques/` that is not driven.
 
@@ -97,11 +97,11 @@ def boards():
             if not name.endswith(".plan.json"):
                 continue
             base = name[: -len(".plan.json")]
-            if f"{base}.finish.json" not in here:
-                continue                       # a plan with no finish is not a board — see the docstring
+            if f"{base}.refinement.json" not in here:
+                continue                       # a plan with no refinement is not a board — see the docstring
             found.append((card, f"{prefix}{base}", "spec",
                           {"plan": os.path.join(folder, name),
-                           "finish": os.path.join(folder, f"{base}.finish.json"), "base": base}))
+                           "refinement": os.path.join(folder, f"{base}.refinement.json"), "base": base}))
     return found
 
 
@@ -128,7 +128,7 @@ def drive(slug, files):
     with tempfile.TemporaryDirectory() as scratch:
         spec = os.path.join(scratch, files["base"])
         os.makedirs(spec)
-        for key in ("plan", "finish"):
+        for key in ("plan", "refinement"):
             shutil.copy(files[key], spec)
         done = subprocess.run(
             [sys.executable, os.path.join(ROOT, "tools", "drive.py"), spec, slug,

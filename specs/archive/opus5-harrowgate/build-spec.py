@@ -139,7 +139,7 @@ plan = {
     },
 }
 
-for name, doc in (("plan", plan), ("finish", finish)):
+for name, doc in (("plan", plan), ("refinement", finish)):
     with open(f"{HERE}/{SLUG}.{name}.json", "w") as fh:
         json.dump(doc, fh, indent=1)
 print(f"{len(marks)} marks, {len(pushes)} push, {len(plan['pieces'])} pieces a side")

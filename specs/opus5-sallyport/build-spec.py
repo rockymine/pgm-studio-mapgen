@@ -352,7 +352,7 @@ finish = {
                    TERRACE_SHAPE: terrace_edits},
     # the outwork is the one ring on the board whose every edge is over void, so a bend can only
     # make it read more like a crag and less like a rectangle
-    "bendShapes": {OUTWORK_SHAPE: {"k": 0.22, "wander": 3, "step": 6, "seed": 5, "side": "in"}},
+    "bendShapes": {OUTWORK_SHAPE: {"tension": 0.22, "wander": 3, "step": 6, "seed": 5, "side": "in"}},
     "addShapes": add_shapes,
     "addLayers": structures,
     "relief": relief,
@@ -360,7 +360,7 @@ finish = {
     "dressing": {"props": props_list},
 }
 
-with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as out:
+with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as out:
     json.dump(finish, out, indent=1)
 print("wrote the finish:", len(structures), "made layers,", len(add_shapes), "shapes,",
       len(props_list), "props")

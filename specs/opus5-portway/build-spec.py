@@ -355,7 +355,7 @@ finish = {
     "editShapes": {HEATH_SHAPE: heath_edits, WEST_BASTION: west_edits, EAST_BASTION: east_edits},
     # the pier's own outline roughened: it is the one ring on the board whose every edge is over
     # water, so a bend can only make it read more like a stump and less like a rectangle
-    "bendShapes": {PIER_SHAPE: {"k": 0.2, "wander": 2, "step": 5, "seed": 3, "side": "in"}},
+    "bendShapes": {PIER_SHAPE: {"tension": 0.2, "wander": 2, "step": 5, "seed": 3, "side": "in"}},
     "addShapes": add_shapes,
     "addLayers": structures,
     "relief": relief,
@@ -363,7 +363,7 @@ finish = {
     "dressing": {"props": props_list},
 }
 
-with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as out:
+with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as out:
     json.dump(finish, out, indent=1)
 print("wrote the finish:", len(structures), "made layers,", len(add_shapes), "shapes,",
       len(props_list), "props")

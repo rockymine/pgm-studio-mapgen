@@ -15,7 +15,7 @@ Only ground a player walks is pinned — the two dale floors, the pass floor, th
 flanks carry no mark at all, because a board with a mark on every region is a table with bumps on
 it. reach 0 goes with that.
 
-Writes <slug>.plan.json and <slug>.finish.json beside itself.
+Writes <slug>.plan.json and <slug>.refinement.json beside itself.
 """
 import json, math, os, random
 
@@ -312,7 +312,7 @@ finish = {
 
 with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
     json.dump(plan, handle, indent=1)
-with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
     json.dump(finish, handle, indent=1)
 print(f"{SLUG}: {len(plan['pieces'])} pieces, {len(relief['*']['marks'])} marks, "
       f"{len(relief['*']['pushes'])} pushes, {len(add_shapes)} shapes, {len(props)} props, "

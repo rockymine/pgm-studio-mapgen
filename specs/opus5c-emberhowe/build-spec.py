@@ -12,7 +12,7 @@ Tone families: the ground is pale ash over black rock, what is built is warm
 spruce timber on a rust plinth, and the accent is the scoria the slope bands
 put on the shoulders.
 
-Writes opus5c-emberhowe.plan.json and opus5c-emberhowe.finish.json.
+Writes opus5c-emberhowe.plan.json and opus5c-emberhowe.refinement.json.
 """
 import json
 import math
@@ -590,4 +590,4 @@ finish = {
 }
 
 write(os.path.join(HERE, f"{SLUG}.plan.json"), plan)
-write(os.path.join(HERE, f"{SLUG}.finish.json"), finish)
+write(os.path.join(HERE, f"{SLUG}.refinement.json"), finish)

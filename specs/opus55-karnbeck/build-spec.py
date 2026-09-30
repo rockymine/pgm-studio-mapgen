@@ -1,4 +1,4 @@
-"""Karnbeck — writes opus55-karnbeck.plan.json and .finish.json.
+"""Karnbeck — writes opus55-karnbeck.plan.json and .refinement.json.
 
 A wooded beck valley. Each team's core stands in the ruined courtyard of a keep on a bluff at the front of
 its half, over a beck that winds across the valley floor below it under a timber footbridge. Behind the
@@ -164,5 +164,5 @@ finish = {
 }
 
 json.dump(plan, open(os.path.join(HERE, f"{SLUG}.plan.json"), "w"), indent=1)
-json.dump(finish, open(os.path.join(HERE, f"{SLUG}.finish.json"), "w"), indent=1)
+json.dump(finish, open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w"), indent=1)
 print("wrote", SLUG)

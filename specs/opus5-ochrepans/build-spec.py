@@ -520,7 +520,7 @@ def finish():
         # to. The pans and the yard keep their drawn corners, because they are cut and not coastal.
         # the compiled ground is one component named for its first piece and the surface it
         # stands at, which on this board is `stead`
-        "bendShapes": {"stead-22": {"k": 0.14, "wander": 3, "step": 13, "seed": 5}},
+        "bendShapes": {"stead-22": {"tension": 0.14, "wander": 3, "step": 13, "seed": 5}},
         "relief": {"*": {"base": FLAT, "reach": 0, "step": 1, "landform": "plain",
                          "grain": {"amplitude": 0.8, "scale": 17, "seed": 7},
                          "marks": marks(), "pushes": pushes()}},
@@ -542,6 +542,6 @@ def finish():
 if __name__ == "__main__":
     with open(f"{HERE}/{SLUG}.plan.json", "w") as handle:
         json.dump(plan(), handle, indent=2)
-    with open(f"{HERE}/{SLUG}.finish.json", "w") as handle:
+    with open(f"{HERE}/{SLUG}.refinement.json", "w") as handle:
         json.dump(finish(), handle, indent=2)
-    print(f"wrote {SLUG}.plan.json and {SLUG}.finish.json")
+    print(f"wrote {SLUG}.plan.json and {SLUG}.refinement.json")

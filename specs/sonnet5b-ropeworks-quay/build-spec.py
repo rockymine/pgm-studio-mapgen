@@ -4,7 +4,7 @@ Identity: each team's wool sits in a stone cellar tucked into a corner off the y
 one prepared wall guarding the cellar's outer approach about twenty blocks out, and
 the two teams' quays are joined only by a build zone over the tidal strait.
 
-Writes sonnet5b-ropeworks-quay.plan.json and sonnet5b-ropeworks-quay.finish.json.
+Writes sonnet5b-ropeworks-quay.plan.json and sonnet5b-ropeworks-quay.refinement.json.
 """
 import json
 import os
@@ -212,5 +212,5 @@ finish = {
     },
 }
 
-write("finish", finish)
-print("wrote", SLUG + ".finish.json")
+write("refinement", finish)
+print("wrote", SLUG + ".refinement.json")

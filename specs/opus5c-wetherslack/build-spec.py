@@ -13,7 +13,7 @@ Tone families: the ground is deep green moss and wet leaf, what is built is
 pale birch and quartz on a stone plinth, and the accent is the gill's own
 grey rock where the slope bands expose it.
 
-Writes opus5c-wetherslack.plan.json and opus5c-wetherslack.finish.json.
+Writes opus5c-wetherslack.plan.json and opus5c-wetherslack.refinement.json.
 """
 import json
 import os
@@ -454,4 +454,4 @@ finish = {
 }
 
 write(os.path.join(HERE, f"{SLUG}.plan.json"), plan)
-write(os.path.join(HERE, f"{SLUG}.finish.json"), finish)
+write(os.path.join(HERE, f"{SLUG}.refinement.json"), finish)

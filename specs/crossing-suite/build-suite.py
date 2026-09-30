@@ -246,7 +246,7 @@ def main():
         os.makedirs(directory, exist_ok=True)
         with open(os.path.join(directory, f"{slug}.plan.json"), "w") as handle:
             json.dump(plan, handle, indent=1)
-        with open(os.path.join(directory, f"{slug}.finish.json"), "w") as handle:
+        with open(os.path.join(directory, f"{slug}.refinement.json"), "w") as handle:
             json.dump(finish(plan, cell), handle, indent=1)
         row = stones(plan)
         shapes = " ".join(f"{p['rect'][2] * cell}x{p['rect'][3] * cell}" for p in row) or "—"

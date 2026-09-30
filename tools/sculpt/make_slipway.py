@@ -771,7 +771,7 @@ def trades(ring, drawn, before, here, after, moved):
     return gained
 
 
-def finish(add_layers):
+def refinement(add_layers):
     # Every ground a settlement stands on is a terrace, not a slope: the docks, the quay and the port, the
     # town and the upland stand out of the relief entirely, so the relaxation bends round them and a house is
     # built on the flat. The hill and the balloon's field keep their relief, which is what they are for.
@@ -837,7 +837,7 @@ def main():
 
     add_layers, table = sculpted()
     json.dump(PLAN, open(f"{out}/{slug}.plan.json", "w"), indent=2)
-    json.dump(finish(add_layers), open(f"{out}/{slug}.finish.json", "w"), indent=2)
+    json.dump(refinement(add_layers), open(f"{out}/{slug}.refinement.json", "w"), indent=2)
 
     width = max(len(name) for name, _ in table)
     print(f"{'model':<{width}}  {'blocks':>7} {'layers':>7} {'shapes':>7} {'b/shape':>8}")

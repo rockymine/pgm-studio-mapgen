@@ -1,4 +1,4 @@
-"""Sallowfen — writes opus55-sallowfen.plan.json and .finish.json.
+"""Sallowfen — writes opus55-sallowfen.plan.json and .refinement.json.
 
 A fen of willows and reed pools, where each team keeps two monuments on peat hummocks north and south of a
 dry causeway running out from its spawn. A stream winds across the fen in front of both hummocks, crossed
@@ -174,5 +174,5 @@ finish = {
 }
 
 json.dump(plan, open(os.path.join(HERE, f"{SLUG}.plan.json"), "w"), indent=1)
-json.dump(finish, open(os.path.join(HERE, f"{SLUG}.finish.json"), "w"), indent=1)
+json.dump(finish, open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w"), indent=1)
 print("wrote", SLUG)

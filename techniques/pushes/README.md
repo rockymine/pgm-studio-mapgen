@@ -169,7 +169,7 @@ nothing. What a push does to ground a mark has already pinned is the `marks-and-
   the `disagree` panel.
 - `incline.txt` — how much ground stands in each ten degrees, which is what the slope bands were cut against.
 - `census.txt` — one theme, four surface blocks, which is the slope stack painting flat, graded and face.
-- `pushes.layout.json` — the one document the board was stored from, posted to `POST /api/map/from-documents`
+- `pushes.layout.json` — the one document the board is stored from, stated to `PUT /api/map/{slug}/source`
   with an empty intent and no plan. A terrain card needs neither a spawn nor an objective: the renders read
   the stored layout through `POST /sketch/columns`.
 

@@ -13,7 +13,7 @@ one polygon) with the whole climb, the hollow and the ridges stated in the relie
 second plan piece — the anti-firnline rule: a piece earns its place by stating something the
 arrangement needs, not by giving a theme somewhere to hang.
 
-Writes sonnet5-fellgrave-hollow.plan.json and .finish.json beside this file.
+Writes sonnet5-fellgrave-hollow.plan.json and .refinement.json beside this file.
 """
 import json
 import math
@@ -257,7 +257,7 @@ plan = {
     "boxes": [],
 }
 
-for name, doc in (("plan", plan), ("finish", finish)):
+for name, doc in (("plan", plan), ("refinement", finish)):
     with open(f"{HERE}/{SLUG}.{name}.json", "w") as fh:
         json.dump(doc, fh, indent=1)
 

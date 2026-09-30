@@ -110,7 +110,7 @@ in the body. `pgm-studio/docs/tools/sketch.md`, *Answering the notes an author l
 
 ## 3. What you may write, and what you may not
 
-**Write a `build-spec.py`.** A spec's plan and finish are large structured documents with arithmetic in
+**Write a `build-spec.py`.** A spec's plan and refinement are large structured documents with arithmetic in
 them — bay grids, per-course stairs, voxel models, ramp anchors. Generating them from a script *is* the
 authoring work, it is what every run here has done, and it is what makes a board re-buildable. Keep it
 in `specs/<slug>/` beside the documents it writes.
@@ -364,7 +364,7 @@ clear.
 ## 5. The order a board is built in
 
 ```
-build-spec.py            write the plan and the finish
+build-spec.py            write the plan and the refinement
 tools/board.py           the grid — relations between rectangles
 drive.py --dry           evaluate + inspect: score, GO1/GO3/GO4, CT12, the lint table
                          ── iterate here; this is where the board's shape is decided ──

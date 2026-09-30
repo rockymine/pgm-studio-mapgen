@@ -173,5 +173,5 @@ finish = {
   "relief": RELIEF,
   "dressing": DRESSING,
 }
-json.dump(finish, open(f"{HERE}/{SLUG}.finish.json", "w"), indent=1)
+json.dump(finish, open(f"{HERE}/{SLUG}.refinement.json", "w"), indent=1)
 print("wrote finish")

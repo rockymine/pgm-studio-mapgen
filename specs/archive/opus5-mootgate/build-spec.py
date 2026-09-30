@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Mootgate — a walled market town on each side of a void crossing, built as placed things.
 
-Writes opus5-mootgate.plan.json and opus5-mootgate.finish.json for tools/drive.py.
+Writes opus5-mootgate.plan.json and opus5-mootgate.refinement.json for tools/drive.py.
 
 The board is a lane: two towns 80 blocks wide, 76 deep, facing each other across a 28-block
 build zone over void. Each town keeps a wool in its moot hall — a stamped wool-room whose shell
@@ -593,7 +593,7 @@ FINISH = {
 def main():
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(PLAN, handle, indent=1)
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(FINISH, handle, indent=1)
     kinds = {}
     for prop in PROPS:

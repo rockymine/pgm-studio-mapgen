@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Peatgarth — a DTM board on a worked peat moss.
 
-Writes opus5-peatgarth.plan.json and opus5-peatgarth.finish.json beside this file.
+Writes opus5-peatgarth.plan.json and opus5-peatgarth.refinement.json beside this file.
 
 The board is a lane 80 blocks across and 200 long, tapering from a full-width
 frontline to the works behind each spawn.  A 20-block void seam runs the whole
@@ -259,7 +259,7 @@ FINISH = {
     "addShapes": ADD_SHAPES,
     # the coast, the frontline included, drawn rather than left over from the plan's
     # rectangles.  The bend only ever moves a point inward, so the strait can only widen.
-    "bendShapes": {"fore-13": {"k": 0.24, "wander": 4, "step": 8, "seed": 5}},
+    "bendShapes": {"fore-13": {"tension": 0.24, "wander": 4, "step": 8, "seed": 5}},
     "relief": RELIEF,
     "roomStyles": {"spawn": style("sb-spawn")},
     "dressing": DRESSING,
@@ -269,8 +269,8 @@ FINISH = {
 
 def main():
     json.dump(PLAN,   open(os.path.join(HERE, SLUG + ".plan.json"),   "w"), indent=1)
-    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".finish.json"), "w"), indent=1)
-    print("wrote", SLUG + ".plan.json", "and", SLUG + ".finish.json")
+    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".refinement.json"), "w"), indent=1)
+    print("wrote", SLUG + ".plan.json", "and", SLUG + ".refinement.json")
 
 if __name__ == "__main__":
     main()

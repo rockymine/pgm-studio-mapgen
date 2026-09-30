@@ -9,7 +9,7 @@ fifteen, walk twenty in the open, bridge fifteen.  The low road is the reef itse
 bridge down to either flank, walk under the deck out of sight, and climb one of the two
 flights that come up on the deck's far half.
 
-Writes opus5-crossdyke.plan.json and opus5-crossdyke.finish.json beside this file.
+Writes opus5-crossdyke.plan.json and opus5-crossdyke.refinement.json beside this file.
 """
 import json, os
 
@@ -337,7 +337,7 @@ FINISH = {
     "addShapes": ADD_SHAPES,
     "addLayers": ADD_LAYERS,
     # the moor's coast drawn rather than left as the plan's staircase of rectangles
-    "bendShapes": {"bank-e-14": {"k": 0.22, "wander": 3, "step": 9, "seed": 5, "side": "in"}},
+    "bendShapes": {"bank-e-14": {"tension": 0.22, "wander": 3, "step": 9, "seed": 5, "side": "in"}},
     "relief": RELIEF,
     "roomStyles": {"spawn": style("showcase-hall"), "wool": style("showcase-cage")},
     "dressing": DRESSING,
@@ -348,8 +348,8 @@ FINISH = {
 
 def main():
     json.dump(PLAN,   open(os.path.join(HERE, SLUG + ".plan.json"),   "w"), indent=1)
-    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".finish.json"), "w"), indent=1)
-    print("wrote", SLUG + ".plan.json", "and", SLUG + ".finish.json")
+    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".refinement.json"), "w"), indent=1)
+    print("wrote", SLUG + ".plan.json", "and", SLUG + ".refinement.json")
 
 
 if __name__ == "__main__":

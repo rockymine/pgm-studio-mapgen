@@ -4,7 +4,7 @@ Identity: each team's core stands on a raised turbary island with ground all rou
 casing, a drained cutting into one flank and alder scrub on the other, the two teams'
 banks joined only by a build zone over the open bog.
 
-Writes sonnet5b-turbary-cut.plan.json and sonnet5b-turbary-cut.finish.json.
+Writes sonnet5b-turbary-cut.plan.json and sonnet5b-turbary-cut.refinement.json.
 """
 import json
 import os
@@ -170,5 +170,5 @@ finish = {
     },
 }
 
-write("finish", finish)
-print("wrote", SLUG + ".finish.json")
+write("refinement", finish)
+print("wrote", SLUG + ".refinement.json")

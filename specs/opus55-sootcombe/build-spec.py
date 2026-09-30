@@ -1,4 +1,4 @@
-"""Sootcombe — writes opus55-sootcombe.plan.json and .finish.json.
+"""Sootcombe — writes opus55-sootcombe.plan.json and .refinement.json.
 
 A capture board on an ash field: a combe of grey slag falling from each team's brick hamlet, standing on a
 terrace four blocks over its hub, down to a flat frontline and a slag stone in the middle of the build band
@@ -325,5 +325,5 @@ finish = {
 }
 
 json.dump(plan, open(os.path.join(HERE, f"{SLUG}.plan.json"), "w"), indent=1)
-json.dump(finish, open(os.path.join(HERE, f"{SLUG}.finish.json"), "w"), indent=1)
+json.dump(finish, open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w"), indent=1)
 print("wrote", SLUG)

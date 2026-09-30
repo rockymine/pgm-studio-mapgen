@@ -381,7 +381,7 @@ VARIANTS = [
     ("1-as-pinned", PINNED, None),
     ("2-void-redrawn", PINNED, "redraw"),
     ("3-a-surface-per-piece", plan_with_surfaces(PINNED), None),
-    ("4-taken-over", plan_taken_over(PINNED), "finish"),
+    ("4-taken-over", plan_taken_over(PINNED), "refinement"),
 ]
 
 if __name__ == "__main__":
@@ -395,12 +395,12 @@ if __name__ == "__main__":
         print(f"{name:24s} {len(plan['pieces']):3d} pieces, {len(plan.get('walls') or []):2d} wall(s), "
               f"heights {heights}")
     for name in ("1-as-pinned", "3-a-surface-per-piece"):
-        json.dump(CREDIT, open(os.path.join(HERE, f"{name}.finish.json"), "w"), indent=1)
+        json.dump(CREDIT, open(os.path.join(HERE, f"{name}.refinement.json"), "w"), indent=1)
         print(f"{name + '.finish':24s} the credit, and nothing the compile does not already say")
-    json.dump(REDRAWN, open(os.path.join(HERE, "2-void-redrawn.finish.json"), "w"), indent=1)
+    json.dump(REDRAWN, open(os.path.join(HERE, "2-void-redrawn.refinement.json"), "w"), indent=1)
     print(f"{'2-void-redrawn.finish':24s} the void ring redrawn, "
           f"{len(REDRAWN['editShapes'][VOID_CUT])} vertex op(s)")
     json.dump(CREDIT | FINISH | {"dressing": DRESSING},
-              open(os.path.join(HERE, "4-taken-over.finish.json"), "w"), indent=1)
+              open(os.path.join(HERE, "4-taken-over.refinement.json"), "w"), indent=1)
     print(f"{'4-taken-over.finish':24s} {len(FINISH['themes'])} themes, "
           f"{len(DRESSING['props'])} prop(s), {len(DRESSING['styles'])} style(s)")

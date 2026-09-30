@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Delverdale: writes delverdale.plan.json and delverdale.finish.json beside this file.
+"""Delverdale: writes delverdale.plan.json and delverdale.refinement.json beside this file.
 
 A wooded lead-mining dale for thirty-two a side. Each team holds a village green on a raised terrace
 in the middle of its half; one wool is kept up the west side in the mine yard behind a bedrock wall,
@@ -603,9 +603,9 @@ FINISH = {
 def main():
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(PLAN, handle, indent=1)
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(FINISH, handle, indent=1)
-    print(f"wrote {SLUG}.plan.json ({len(PIECES)} pieces) and {SLUG}.finish.json")
+    print(f"wrote {SLUG}.plan.json ({len(PIECES)} pieces) and {SLUG}.refinement.json")
 
 
 if __name__ == "__main__":

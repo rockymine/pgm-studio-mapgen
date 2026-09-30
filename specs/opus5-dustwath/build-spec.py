@@ -484,8 +484,8 @@ def finish():
 
         # the board's coast, drawn as a coast rather than as the staircase of rectangles the plan
         # compiled to. Nothing moves outward, so no strait is closed by it.
-        "bendShapes": {"apron-21": {"k": 0.18, "wander": 3, "step": 11, "seed": 5},
-                       "apron-20": {"k": 0.18, "wander": 3, "step": 11, "seed": 9}},
+        "bendShapes": {"apron-21": {"tension": 0.18, "wander": 3, "step": 11, "seed": 5},
+                       "apron-20": {"tension": 0.18, "wander": 3, "step": 11, "seed": 9}},
         "relief": {"*": {"base": FLAT, "reach": 0, "step": 1, "landform": "plain",
                          "grain": {"amplitude": 1.2, "scale": 20, "seed": 7},
                          "marks": marks(), "pushes": pushes()}},
@@ -498,6 +498,6 @@ def finish():
 if __name__ == "__main__":
     with open(f"{HERE}/{SLUG}.plan.json", "w") as handle:
         json.dump(plan(), handle, indent=2)
-    with open(f"{HERE}/{SLUG}.finish.json", "w") as handle:
+    with open(f"{HERE}/{SLUG}.refinement.json", "w") as handle:
         json.dump(finish(), handle, indent=2)
-    print(f"wrote {SLUG}.plan.json and {SLUG}.finish.json")
+    print(f"wrote {SLUG}.plan.json and {SLUG}.refinement.json")

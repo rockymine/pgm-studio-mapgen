@@ -7,7 +7,7 @@ A capture board rather than a destroy one: void down the middle, and two wool ro
 each half on spurs a raider has to walk out along. Three ranges — one behind the spawn and one behind each
 wool — and the ground between them is fell.
 
-The plan is authored by hand and is not written here. Output: `opus5-thornfell.finish.json`.
+The plan is authored by hand and is not written here. Output: `opus5-thornfell.refinement.json`.
 """
 import json, math, os
 
@@ -548,14 +548,14 @@ def main():
         # The compiled outline drawn as a coast rather than restated by hand: the plan's own vertices
         # stay where they are and only the points inserted between them move, and only inward — a
         # point moved outward could close the strait this board is measured on.
-        "bendShapes": {"s0": {"k": 0.22, "wander": 3.0, "step": 9, "seed": 5}},
+        "bendShapes": {"s0": {"tension": 0.22, "wander": 3.0, "step": 9, "seed": 5}},
         "relief": {"team": {"base": Y_BASE, "reach": 0, "step": 1, "stairs": True,
                             "grain": {"amplitude": 1.2, "scale": 17, "seed": 7},
                             "marks": relief_marks(), "pushes": pushes()}},
         "addShapes": brush(),
         "dressing": dressing(),
     }
-    out = os.path.join(HERE, f"{SLUG}.finish.json")
+    out = os.path.join(HERE, f"{SLUG}.refinement.json")
     with open(out, "w") as handle:
         json.dump(finish, handle, indent=1)
     kinds = {}

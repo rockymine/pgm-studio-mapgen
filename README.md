@@ -9,7 +9,7 @@ rebuilding anything.
 maps/<slug>/region/*.mca              the world
 maps/<slug>/level.dat
 maps/<slug>/map.xml                   what a PGM server loads
-specs/<slug>/                         the documents that were authored — plan, finish, layout, intent
+specs/<slug>/                         the documents that were authored — plan, refinement, layout, intent
 specs/<slug>/renders/                 the images the map was reviewed from, stage by stage
 specs/<slug>/provenance.json          what each pass placed, and which prop placed it
 review/<slug>.md                      the measured record for that map

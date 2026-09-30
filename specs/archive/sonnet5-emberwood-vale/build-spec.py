@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Emberwood Vale — two hamlets at opposite ends of an autumn forest clearing.
 
-Generates <slug>.plan.json and <slug>.finish.json for tools/drive.py. The plan states one
+Generates <slug>.plan.json and <slug>.refinement.json for tools/drive.py. The plan states one
 team's half (spawn hamlet, split-off garden island, forest approach, flank trail, wool
 shrine) plus the shared on-axis forest clearing; rot_180 fans the rest. The finish carries
 the relief, the three themes, the two timber house styles, the shrine style, the garden
@@ -472,8 +472,8 @@ finish = {
     "dressing": {"styles": dressing_styles, "props": props},
 }
 
-with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as f:
+with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as f:
     json.dump(finish, f, indent=2)
 
-print(f"wrote {SLUG}.finish.json — {len(themes)} themes, {len(add_shapes)} addShapes, "
+print(f"wrote {SLUG}.refinement.json — {len(themes)} themes, {len(add_shapes)} addShapes, "
       f"{len(dressing_styles)} dressing styles, {len(props)} props")

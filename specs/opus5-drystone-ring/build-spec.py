@@ -9,7 +9,7 @@ route at all.  Here the north bar is widened at its west end and tapered at its 
 causeway is walked out seven blocks above it: forty blocks of open deck with a ramp at each
 end and no way off in between, which is the third way in and the only quick one.
 
-Writes opus5-drystone-ring.plan.json and opus5-drystone-ring.finish.json beside this file.
+Writes opus5-drystone-ring.plan.json and opus5-drystone-ring.refinement.json beside this file.
 """
 import json, os
 
@@ -314,8 +314,8 @@ FINISH = {
 
 def main():
     json.dump(PLAN,   open(os.path.join(HERE, SLUG + ".plan.json"),   "w"), indent=1)
-    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".finish.json"), "w"), indent=1)
-    print("wrote", SLUG + ".plan.json", "and", SLUG + ".finish.json")
+    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".refinement.json"), "w"), indent=1)
+    print("wrote", SLUG + ".plan.json", "and", SLUG + ".refinement.json")
 
 
 if __name__ == "__main__":

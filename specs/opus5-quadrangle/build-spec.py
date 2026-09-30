@@ -328,7 +328,7 @@ finish = {
     "dressing": {"props": props_list},
 }
 
-with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as out:
+with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as out:
     json.dump(finish, out, indent=1)
 print("wrote the finish:", len(structures), "made layers,", len(add_shapes), "shapes,",
       len(props_list), "props")

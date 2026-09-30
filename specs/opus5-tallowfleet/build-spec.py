@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Tallowfleet — one board played for a monument and a wool at once.
 
-Writes `opus5-tallowfleet.plan.json` and `opus5-tallowfleet.finish.json` beside this file.
+Writes `opus5-tallowfleet.plan.json` and `opus5-tallowfleet.refinement.json` beside this file.
 
 A tidal tallow works on a grey estuary. Each team defends **two** objectives that ask for
 opposite things, which is the whole reason this board exists: the monument stands out on the
@@ -554,4 +554,4 @@ def write(name, document):
 
 
 write(f"{SLUG}.plan.json", plan)
-write(f"{SLUG}.finish.json", finish)
+write(f"{SLUG}.refinement.json", finish)

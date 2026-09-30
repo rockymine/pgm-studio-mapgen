@@ -212,7 +212,7 @@ def main():
         os.makedirs(directory, exist_ok=True)
         with open(os.path.join(directory, f"{slug}.plan.json"), "w") as handle:
             json.dump(plan, handle, indent=1)
-        with open(os.path.join(directory, f"{slug}.finish.json"), "w") as handle:
+        with open(os.path.join(directory, f"{slug}.refinement.json"), "w") as handle:
             json.dump(finish(plan, name, cell), handle, indent=1)
         print(f"  {name:14} {spend['band']:6} p{players:<3} {symmetry:9} seed {seed}  "
               f"land {spend['landCells']}/{spend['budgetCells']:.0f} cells  "

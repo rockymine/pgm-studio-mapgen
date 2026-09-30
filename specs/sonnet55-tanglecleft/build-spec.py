@@ -1,4 +1,4 @@
-"""Tanglecleft — writes sonnet55-tanglecleft.plan.json and .finish.json for the stage in $STAGE (1..4)."""
+"""Tanglecleft — writes sonnet55-tanglecleft.plan.json and .refinement.json for the stage in $STAGE (1..4)."""
 import json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -204,5 +204,5 @@ if STAGE >= 4:
     finish["dressing"]["props"] = props_
 
 json.dump(plan, open(os.path.join(HERE, f"{SLUG}.plan.json"), "w"), indent=1)
-json.dump(finish, open(os.path.join(HERE, f"{SLUG}.finish.json"), "w"), indent=1)
+json.dump(finish, open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w"), indent=1)
 print("wrote", SLUG, "stage", STAGE)

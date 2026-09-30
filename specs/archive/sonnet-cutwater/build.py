@@ -378,7 +378,7 @@ for goal in intent["destroyables"]:
     if (goal.get("stamp") or {}).get("unit") == "destroyable-1":
         goal["anchor"]["y"] = 21          # the pit's ring height — measured, not the flat bank's 30
 
-# No finish.json: its mere presence now tells the driver this spec is compiled from its plan
+# No refinement.json: its mere presence now tells the driver this spec is compiled from its plan
 # every run, discarding a drawn layout/intent as if they were only its output. This board's
 # geometry IS the layout, so authorship rides directly on intent.meta instead, set above.
 json.dump(plan, open(SPEC + ".plan.json", "w"), indent=1)

@@ -52,8 +52,8 @@ finish = {
 os.makedirs(HERE, exist_ok=True)
 with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as f:
     json.dump(plan, f, indent=1)
-with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as f:
+with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as f:
     json.dump(finish, f, indent=1)
 
 print(f"✓ {SLUG}.plan.json")
-print(f"✓ {SLUG}.finish.json")
+print(f"✓ {SLUG}.refinement.json")

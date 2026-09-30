@@ -384,6 +384,6 @@ finish = {
 
 with open(os.path.join(D, f"{SLUG}.plan.json"), "w") as fh:
     json.dump(plan, fh, indent=1)
-with open(os.path.join(D, f"{SLUG}.finish.json"), "w") as fh:
+with open(os.path.join(D, f"{SLUG}.refinement.json"), "w") as fh:
     json.dump(finish, fh, indent=1)
 print(f"wrote {SLUG}: {len(workings)} rock, {len(roof)} roof, {len(crown)} crown")

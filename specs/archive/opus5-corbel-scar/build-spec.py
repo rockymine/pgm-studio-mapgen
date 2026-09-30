@@ -17,7 +17,7 @@ measured on a probe board before anything here was written:
      the road down them together, walkable at worst step 1 — where four nested area rings plus a
      twenty-one-point haul road are five marks that leave a blade of uncut ground between them.
 
-Writes corbel-scar.plan.json and .finish.json beside this file.
+Writes corbel-scar.plan.json and .refinement.json beside this file.
 """
 import json, math, os
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -133,7 +133,7 @@ plan = {
     },
 }
 
-for name, doc in (("plan", plan), ("finish", finish)):
+for name, doc in (("plan", plan), ("refinement", finish)):
     with open(f"{HERE}/{SLUG}.{name}.json", "w") as fh:
         json.dump(doc, fh, indent=1)
 print(f"{len(marks)} relief mark(s), {len(finish['addShapes'])} shape, "

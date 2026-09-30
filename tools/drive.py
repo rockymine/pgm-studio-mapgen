@@ -1,25 +1,30 @@
 #!/usr/bin/env python3
-"""Drive a plan + finish document through the pgm-studio API to an exported world, and say what the
+"""Drive a plan + refinement document through the pgm-studio API to an exported world, and say what the
 pipeline said on the way.
 
-    tools/drive.py <specdir> "<Map Name>" --out <worlddir> [--renders <dir>] [--slug <slug>] [--dry]
+    tools/drive.py <specdir> "<Map Name>" --out <worlddir> [--renders <dir>] [--slug <slug>]
+                   [--note "<what this pass is>"] [--dry]
 
-<specdir> holds <base>.plan.json and EITHER <base>.finish.json, OR a hand-drawn <base>.layout.json and
+<specdir> holds <base>.plan.json and EITHER <base>.refinement.json, OR a hand-drawn <base>.layout.json and
 <base>.intent.json -- the shape the Sketch tool writes, whose geometry is authored rather than compiled.
-The either/or is exact: a spec carrying a finish is compiled from its plan on every run, and the layout
-and intent beside it are what the last run posted rather than anything it reads. A drawn spec's layout
-and intent are its input and are never written over, so it states in its intent's own meta what a finish
-would otherwise say about it -- `authors` and `created`. <base> is the directory's own name and, unless
---slug says otherwise, the slug the map is stored under. Both shapes take the same road from here: the
-same grid, flow, declines and renders. The finish carries everything a plan cannot state, keyed onto the
-compiled layout.
+The either/or is exact: a spec carrying a refinement is compiled from its plan on every run, and the layout
+and intent beside it are what the last run stored rather than anything it reads. A drawn spec's layout
+and intent are its input and are never written over, so it states in its intent's own meta what a
+refinement would otherwise say about it -- `authors` and `created`. <base> is the directory's own name and,
+unless --slug says otherwise, the slug the map is stored under. Both shapes take the same road from here:
+the same grid, flow, declines and renders.
+
+**The refinement is the studio's own document, and the studio applies it.** It carries everything a plan
+cannot state, keyed onto the compiled layout, and `PUT /map/{slug}/source` compiles the plan, applies the
+refinement onto what the plan compiled to, and stores the result as one change
+(`pgm-studio/docs/tools/flow.md`, *A map's source is the way in*). Nothing here applies a key.
 
 **Every key below is the batched form of one studio route, and the route is what the key means.** The
 studio addresses each part of a stored layout on its own — a layer, a group, a shape, a theme, a relief, a
-prop, a room shell, the biome — and a spec-driven build posts the whole document in one call instead,
+prop, a room shell, the biome — and a spec-driven build states the whole document in one call instead,
 because the layout is derived from this file on every run and there is nothing incremental to edit. So the
-finish is a translation, not a second language: where a key and its route disagree about what a word means,
-the route is right and this file is wrong. Each row names its route.
+refinement is a translation, not a second language: where a key and its route disagree about what a word
+means, the route is right and this file is wrong. Each row names its route.
 
   key                 the one studio call it batches
   ---                 ------------------------------
@@ -39,12 +44,11 @@ the route is right and this file is wrong. Each row names its route.
   biome               PUT    /map/{slug}/sketch/biome
   authors · created   PUT    /map/{slug}/intent
 
-**Two keys address the compiler's own output.** `themeById` and `shapePropsById` name a shape by the id the
-compiler mints, which is its component's first piece and the surface it stands at — `bahnhof-30`, and
-`bahnhof-30-2` where one surface fuses into two. A piece inserted, renamed or moved to another height renames
-what it anchors, and the key then names nothing: the run prints one line per such key with the ids the compile
-did emit beside it, which is what a re-key is done from. Keys naming a shape by its position in the emission
-order (`s0`, `s1`) are from before the ids were stable and name nothing at all.
+**Four keys address the compiler's own output.** `themeById`, `shapePropsById`, `editShapes` and
+`bendShapes` name a shape by the id the compiler mints, which is its component's first piece and the surface
+it stands at — `bahnhof-30`, and `bahnhof-30-2` where one surface fuses into two. A piece inserted, renamed or
+moved to another height renames what it anchors, and the key then names nothing: the studio answers `SR2`
+for such a key with the ids the board does have, which is what a re-key is done from.
 
 What each key states:
 
@@ -53,15 +57,16 @@ What each key states:
   shapePropsByHeight {"11": {"relief_scope": "exclude"}, ...}   fields merged onto a compiled shape
   shapePropsById  {"s3": {...}}
   editShapes      {"garth-14": [{"after": 1, "x": 92, "z": -70}, {"index": 4, "x": 80, "z": -60},
-                  {"remove": 7}]}  the outline reshaped one point at a time, in order, after the board is
-                  stored and before any bend. `after` inserts a point on that edge (at its midpoint when no
-                  x/z is stated), `index` moves the point there, `remove` drops it; every other point of the
-                  outline stays exactly where it was drawn. An op naming none or more than one of the three
-                  is a spec fault and stops the run
-  bendShapes      {"bahnhof-30": {"k": 0.22, "wander": 3, "step": 10, "seed": 5, "side": "out"}}  the
-                  compiled outline drawn as a coast, through POST /sketch/shapes/{id}/bend after the board
-                  is stored. The outline's own vertices never move; `side` is "out" (the default -- the
-                  slight bloat that reads as land), "in" (keeps the plan's footprint) or "both"
+                  {"remove": 7}]}  the outline reshaped one point at a time, in order, before any bend.
+                  `after` inserts a point on that edge (at its midpoint when no x/z is stated), `index`
+                  moves the point there, `remove` drops it; every other point of the outline stays exactly
+                  where it was drawn, and each op is stated against the ring as the ops before it left it.
+                  An op naming none or more than one of the three refuses the whole source (`SR4`)
+  bendShapes      {"bahnhof-30": {"tension": 0.22, "wander": 3, "step": 10, "seed": 5, "side": "out"}}
+                  the compiled outline drawn as a coast, after every point edit. The outline's own vertices
+                  never move; `tension` is the Bezier handle's length as a fraction of its edge (0.22 where
+                  absent); `side` is "out" (the default -- the slight bloat that reads as land), "in" (keeps
+                  the plan's footprint) or "both"
   addShapes       [SketchShape + layer? + group?, ...]  authored shapes, each onto the layer and group it
                   names -- the studio's POST /map/{slug}/sketch/layers/{layerId}/shapes?group={id}. A shape
                   naming neither takes the compiled ground's first group
@@ -75,11 +80,13 @@ What each key states:
   biome           SketchLayout's own biome field: {"kind": "cell"|"noise"|"solid", ...}. The byte each
                   chunk carries, which tints grass, leaves and water. Absent is plains everywhere
   roomStyles      {"wool": ..., "spawn": ...} -- the two members SketchRoomStyles carries; a "@name"
-                  string loads tools/styles/<name>.json. It was "cage" until 2026-09-07. A key
+                  string loads tools/styles/<name>.json, resolved here before the refinement is sent. It
+                  was "cage" until 2026-09-07. A key
                   neither of those names is answered RQ3 by the whole-layout write below, and a
                   kind left unbound stands in the built-in bedrock box, which every build answers
                   WX14
-  dressing        {"styles": ..., "props": [...]};  a house prop's "style" takes the same "@name".
+  dressing        {"styles": ..., "props": [...]};  a house prop's "style" takes the same "@name",
+                  resolved the same way.
                   A style in "styles" is a discriminated PropStyle: a house is
                   {"kind": "house", "shell": <HouseStyle>}, and a bare HouseStyle is refused DR-DOC
   shops           [{"id", "name", "keeper": {"name", "mob"}, "categories": [...]}] -> intent.shops. The
@@ -94,11 +101,15 @@ What each key states:
   created         "2026-08-25" -> intent.meta.created -> <created>. The studio cannot know when a map was
                   made and invents nothing, so a board that states none carries none
 
-The whole map is stored in ONE call — POST /map/from-documents takes the plan, the patched layout and
-the patched intent together, rasterizes the drawing, projects the intent into the map document and
-applies the authors. The slug is stated, so re-driving a corrected spec REPLACES the map it had rather
-than leaving a second one beside it, and a hand edit made in the Sketch tool between runs is replaced
-rather than merged: the spec is what the map is.
+The whole map is stored in ONE call — `PUT /map/{slug}/source` takes the plan and the refinement (a drawn
+spec: the plan, its layout and its intent), compiles, applies, rasterizes the drawing, projects the intent
+into the map document and applies the authors, and keeps the run as one change of the map. The change
+carries where the spec was built — the repository, the commit, the spec's folder, and whether the working
+tree differed from the commit — and `--note`, a sentence saying what this pass is. The slug is stated, so
+re-driving a corrected spec REPLACES the map it had rather than leaving a second one beside it, and a hand
+edit made in the Sketch tool between runs is replaced rather than merged: the spec is what the map is. The
+answer names every edit the run made to the documents the map held, which is how a replaced hand edit is
+seen; `--dry` asks the studio the same question with `?dry=true` and stores nothing.
 
 Nothing here computes a placement, a clearance or a validation: it posts documents and prints what
 came back. Every finding the pipeline raises is printed with its rule id and the JSON path it is
@@ -129,7 +140,7 @@ The pictures and the provenance sidecar land beside the documents rather than in
 not read.
 """
 import collections, concurrent.futures, json, math, multiprocessing, re, sys, io, time, zipfile, urllib.request, \
-    urllib.error, os, shutil
+    urllib.error, os, shutil, subprocess
 import studio_token
 
 STYLES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "styles")
@@ -372,7 +383,7 @@ def resolve(style):
     return style
 
 
-def pictures(slug, finish, layout, intent=None):
+def pictures(slug, layout, intent=None):
     """Every picture the studio will draw for what was authored, as `(file, method, path, body)`.
 
     The reads are the same ones the brief asks an author to look at, and the reason they are taken here is
@@ -384,7 +395,7 @@ def pictures(slug, finish, layout, intent=None):
     # Two views a theme, because they answer different questions and neither substitutes. The section is
     # the column — rim over wall over fill, the pairing most easily got wrong. The surface is the swatch,
     # and it is the only view a pattern is legible in: a section through a voronoi is one block wide.
-    for theme_id, theme in (finish.get("themes") or {}).items():
+    for theme_id, theme in (layout.get("themes") or {}).items():
         for view in ("surface", "section"):
             asked.append((f"theme-{theme_id}-{view}.png", "POST",
                           f"/terrain/theme-preview?format=png&view={view}", theme))
@@ -472,7 +483,7 @@ def eye_views(layout, intent):
     return views
 
 
-def renders(into, slug, finish, layout, drawn, flow, round_drawn, intent=None):
+def renders(into, slug, layout, drawn, flow, round_drawn, intent=None):
     """Every picture the studio drew for what was authored, written to disk, and the board in the round
     that `in_the_round` drew beside them — `round_drawn` is the future it answers on.
 
@@ -486,7 +497,7 @@ def renders(into, slug, finish, layout, drawn, flow, round_drawn, intent=None):
                 handle.write(text_body)
             written.append(name)
 
-    for name, method, path, body in pictures(slug, finish, layout, intent):
+    for name, method, path, body in pictures(slug, layout, intent):
         status, payload = call(method, path, body, raw=True, fatal=False)
         if status >= 300 or not isinstance(payload, bytes):
             continue
@@ -643,220 +654,90 @@ def sweep(into, written):
         print(f"    swept {len(swept)}: {', '.join(swept)}")
 
 
-def patch_layout(layout, finish):
-    """Everything the finish says about the compiled layout, applied in one pass."""
-    # A compiled layout is a stack of one: `layers[0]` is the ground the plan drew, and there is no
-    # `layout` key beside it any more. The finish keys onto that layer's shapes and appends the
-    # storeys the plan cannot state above it.
-    ground = layout["layers"][0]
-    inner = ground["layout"]
-    shapes, groups = inner["shapes"], inner["groups"]
-    by_height = finish.get("themeByHeight") or {}
-    props_by_height = finish.get("shapePropsByHeight") or {}
-    by_id = finish.get("themeById") or {}
-    props_by_id = finish.get("shapePropsById") or {}
-    for shape in shapes:
-        # A projected spawn/wool rectangle is not terrain, so no rule keyed by height and no override of
-        # what it is reaches it. Its paint does: a theme named by the shape's own id is the shape route's
-        # call, and that route paints the yard a room stands in like any other ground.
-        if shape.get("role") is not None:
-            if shape["id"] in by_id:
-                shape["theme"] = by_id[shape["id"]]
-            continue
-        height = shape.get("base_height")
-        key = None if height is None else str(int(height))
-        if key in by_height:
-            shape["theme"] = by_height[key]
-        if key in props_by_height:
-            shape.update(props_by_height[key])
-        if shape["id"] in by_id:
-            shape["theme"] = by_id[shape["id"]]
-        if shape["id"] in props_by_id:
-            shape.update(props_by_id[shape["id"]])
-
-    # A key naming no shape is silent otherwise: the board stores, the gate opens, and the theme or the
-    # override is simply not on anything. A compiled shape answers to its component's first piece and the
-    # surface it stands at -- `bahnhof-30` -- so a spec written against the old positional `s<n>` names
-    # nothing at all, and this is where it says so.
-    drawn = {shape["id"] for shape in shapes}
-    for key, block in (("themeById", by_id), ("shapePropsById", props_by_id)):
-        for named in [id for id in block if id not in drawn]:
-            print(f"    ! {key} names '{named}', which the compile did not produce"
-                  f" — it emitted {sorted(id for id in drawn)}")
-    for extra in finish.get("addLayers") or []:
-        layers = layout["layers"]
-        slab = {"id": extra["id"], "name": extra.get("name") or extra["id"],
-                "base_y": extra["base_y"],
-                # What the layer holds, and how it meets the ground. A made thing states `kind: "made"`,
-                # which takes it out of the stacking rules and paints it over its own span; `part_of` names the
-                # thing its layers belong to, and `seat` settles them onto the terrain as a unit.
-                **{key: extra[key] for key in ("kind", "part_of", "seat") if key in extra},
-                "layout": {"shapes": extra["shapes"], "groups": extra["groups"]}}
-        # `below` puts a storey under the compiled ground rather than over it. The painter walks the
-        # stack in document order and each pass paints its whole column, so a storey listed above one
-        # that stands lower has already had its blocks claimed by the time its own pass runs: the
-        # stack has to be written bottom-up, and the compiled ground is not the bottom of every board.
-        if extra.get("below"):
-            layers.insert(0, slab)
-        else:
-            layers.append(slab)
-        print(f"    +layer '{extra['id']}' at base_y {extra['base_y']}"
-              f"{' (below the compiled ground)' if extra.get('below') else ''}: "
-              f"{len(extra['shapes'])} shape(s), {len(extra['groups'])} group(s)")
-
-    # After the storeys, so a shape may name one this same finish added -- and onto the COMPILED ground where
-    # it names none, which is not `layers[0]` once a `below` storey has been inserted under it.
-    #
-    # A shape joins the group it names as well as the layer. The group is where its ground is decided: the
-    # symmetry fan is read off each mirroring group's shapeIds and so is the relief, so a shape in the wrong
-    # group is built once, where it was drawn, on flat ground. A name the layer does not carry opens a group,
-    # the way `?group=` does on the studio's own route.
-    onto = collections.Counter()
-    for extra in finish.get("addShapes") or []:
-        extra = dict(extra)
-        layer_id, group_id = extra.pop("layer", None), extra.pop("group", None)
-        into = next((slab for slab in layout["layers"] if slab["id"] == layer_id), None) if layer_id else ground
-        if into is None:
-            print(f"    ! addShapes '{extra['id']}' names layer '{layer_id}', which no layer answers to")
-            continue
-        seat = into["layout"]
-        group = (next((g for g in seat["groups"] if g["id"] == group_id), None) if group_id
-                 else (seat["groups"][0] if seat["groups"] else None))
-        if group is None and group_id:
-            group = {"id": group_id, "name": group_id, "mirrors": True, "shapeIds": []}
-            seat["groups"].append(group)
-        seat["shapes"].append(extra)
-        if group is not None:
-            group["shapeIds"].append(extra["id"])
-        onto[f"{into['id']}/{group['id'] if group else '-'}"] += 1
-    for where, count in onto.items():
-        print(f"    +{count} authored shape(s) onto {where}")
-
-    relief = finish.get("relief")
-    if relief:
-        if "*" in relief:
-            # `*` is the ground's, not the board's: it names every group the compile emitted, and a
-            # key stated beside it — a layer added here — keeps its own.
-            wildcard = {key: value for key, value in relief.items() if key != "*"}
-            relief = {**{group["id"]: relief["*"] for group in groups}, **wildcard}
-        layout["relief"] = relief
-    themes = finish.get("themes")
-    if themes:
-        layout["themes"] = themes
-        layout["mapTheme"] = finish.get("mapTheme") or next(iter(themes))
-    if "biome" in finish:
-        # A strict pass-through of `SketchLayout.biome`, which is the one top-level layout key a finish
-        # could not state. The field is documented as raw JSON of type BiomeField -- `solid`, `cell` or
-        # `noise`, keyed on `kind` -- and nothing here reads it, defaults it or validates it; the export
-        # does that through BiomeScope. Absent is plains everywhere, which is what every board that
-        # states none already exports as.
-        layout["biome"] = finish["biome"]
-    if "roomStyles" in finish:
-        layout["roomStyles"] = {k: resolve(v) for k, v in finish["roomStyles"].items()}
-    if "dressing" in finish:
-        for prop in finish["dressing"].get("props", []):
-            if prop.get("kind") == "house":
-                prop["style"] = resolve(prop.get("style", {}))
-        layout["dressing"] = finish["dressing"]
-    painted = {}
-    for shape in shapes:
-        if shape.get("role") is None:
-            painted[shape.get("theme") or layout.get("mapTheme")] = \
-                painted.get(shape.get("theme") or layout.get("mapTheme"), 0) + 1
-    print(f"    themes on shapes: {painted}")
-    return layout
+def resolved(refinement):
+    """The refinement as the studio takes it: every `@name` room style and house style loaded from
+    tools/styles/. The rest is sent as the spec states it."""
+    refinement = json.loads(json.dumps(refinement))
+    if "roomStyles" in refinement:
+        refinement["roomStyles"] = {part: resolve(style) for part, style in refinement["roomStyles"].items()}
+    for prop in (refinement.get("dressing") or {}).get("props", []):
+        if prop.get("kind") == "house":
+            prop["style"] = resolve(prop.get("style", {}))
+    return refinement
 
 
-def patch_intent(intent, finish):
-    """Everything the finish says about the compiled intent.
+def origin(specdir):
+    """Where the spec was built, as the change the run lands as keeps it: the repository, the commit, the
+    spec's folder, and whether the folder held changes the commit does not — in which case the commit alone
+    does not rebuild what was stored. None where the spec is not in a git checkout."""
+    def git(*arguments):
+        done = subprocess.run(["git", "-C", specdir, *arguments], capture_output=True, text=True)
+        return done.stdout.strip() if done.returncode == 0 else None
 
-    `created` is the map's own date, which the studio has no way to derive: it rides on the intent's meta
-    and is the author's to state.
+    root, commit = git("rev-parse", "--show-toplevel"), git("rev-parse", "--short", "HEAD")
+    if not root or not commit:
+        return None
+    remote = git("remote", "get-url", "origin") or ""
+    repo = "/".join(re.sub(r"\.git$", "", remote.rstrip("/")).split("/")[-2:]) or None
+    return {"repo": repo, "commit": commit,
+            "path": os.path.relpath(os.path.abspath(specdir), root),
+            "dirty": bool(git("status", "--porcelain", "--", "."))}
 
-    `authors` rides on the intent's meta as well, because the observer platform's authors board reads
-    `meta.authors` (`EX6`) and a compiled intent leaves it empty: the body's `authors` credits the map row
-    and never reaches it. A bare name is carried as a plain credit and a record as it stands.
 
-    `controlPoints` is the capture board's hills and `scoreLimit` the score the match ends at. They ride on
-    the finish rather than on the plan because the plan states no capture point: the compiler fans spawns,
-    destroyables and cores, and a board that wants hills states every one of them here, already fanned. A
-    compiled intent carries no `symmetry` — the compiler has already placed the board's images — so nothing
-    downstream will fan them either, and a centre point plus one side is a two-hill board, not three.
-
-    `spawners` and `shops` ride on the finish for the same reason the hills do: the plan states neither. A
-    shop carries no coordinates at all — it is a catalogue rather than a place, and the studio puts one
-    keeper per shop at every team's spawn (`pgm-studio/docs/pgm/shops.md` §9). A spawner is the other way
-    round: a place before it is a clock, so `at` names the square of ground its pad is laid in and every
-    region it mints is measured from there (`shops.md` §10).
-
-    Which storey a goal stands on is the plan's to say: `DestroyablePlacement.layer` and
-    `CorePlacement.layer` carry it through the compile onto every orbit image, so nothing is patched here."""
-    if created := finish.get("created"):
-        intent.setdefault("meta", {})["created"] = created
-        print(f"    created {created}")
-    elif (intent.get("meta") or {}).get("created"):
-        print(f"    created {intent['meta']['created']}")
-    else:
-        print("    ! nothing states a `created` date, so the map will carry no <created> element")
-    if authors := finish.get("authors"):
-        intent.setdefault("meta", {})["authors"] = [
-            {"name": person} if isinstance(person, str) else person for person in authors]
-    if points := finish.get("controlPoints"):
-        intent["controlPoints"] = points
-        named = ", ".join(p.get("name") or "?" for p in points)
-        print(f"    {len(points)} capture point(s): {named}")
-    if (limit := finish.get("scoreLimit")) is not None:
-        intent["scoreLimit"] = limit
-        print(f"    score limit {limit}")
-    if spawners := finish.get("spawners"):
-        intent["spawners"] = spawners
-        for one in spawners:
-            drops = ", ".join(f"{d.get('amount', 1)}x {d.get('material')}" for d in one.get("drops") or [])
-            print(f"    spawner {one.get('id')}: {drops} every {one.get('delay')}, "
-                  f"pad {one.get('pad') or 'none'}")
-    if shops := finish.get("shops"):
-        intent["shops"] = shops
-        for shop in shops:
-            items = sum(len(c.get("items") or []) for c in shop.get("categories") or [])
-            keeper = (shop.get("keeper") or {}).get("mob") or "villager"
-            print(f"    shop {shop.get('id')}: {items} item(s), a {keeper} at every spawn")
-    return intent
+def changed(answer):
+    """What the source changed in the documents the map held, as the studio answered it: a new map states
+    every document for the first time, so it is counted; a replaced one is listed edit by edit, because an
+    edit here that the spec did not make is somebody's hand edit being replaced."""
+    edits = answer.get("edits") or []
+    if not answer.get("replaced"):
+        print(f"    a new map: {len(edits)} member(s) of its plan, layout and intent stated for the first time")
+        return
+    if not edits:
+        print("    nothing changed: the map already held what the spec states")
+        return
+    print(f"    {len(edits)} edit(s) to what the map held:")
+    for edit in edits[:40]:
+        print(f"      {edit.get('document'):7} {edit.get('op'):6} {edit.get('path')}  {edit.get('says')}")
+    if len(edits) > 40:
+        print(f"      … and {len(edits) - 40} more — GET /map/{{slug}}/diff?format=text has them all")
 
 
 def main():
     specdir, name = sys.argv[1], sys.argv[2]
     out = sys.argv[sys.argv.index("--out") + 1] if "--out" in sys.argv else None
     into = sys.argv[sys.argv.index("--renders") + 1] if "--renders" in sys.argv else None
+    note = sys.argv[sys.argv.index("--note") + 1] if "--note" in sys.argv else None
     dry = "--dry" in sys.argv
     base = os.path.basename(specdir.rstrip("/"))
     slug = sys.argv[sys.argv.index("--slug") + 1] if "--slug" in sys.argv else base
     with open(f"{specdir}/{base}.plan.json") as handle:
         plan = json.load(handle)
-    # A board drawn in the Sketch tool has no finish: its geometry IS the layout, authored by hand and
-    # not derivable from the plan. Such a spec carries `<base>.layout.json` and `<base>.intent.json`
-    # instead, and the compile below is skipped rather than run over the top of them. Everything after
-    # this point -- the grid, the flow, the declines and every render -- is the same for both shapes of
-    # spec, which is the whole reason this branch is here rather than in a second driver.
+    # A board drawn in the Sketch tool has no refinement: its geometry IS the layout, authored by hand
+    # and not derivable from the plan. Such a spec carries `<base>.layout.json` and `<base>.intent.json`
+    # instead, and the studio stores them as they are rather than compiling the plan over the top of
+    # them. Everything after the store -- the grid, the flow, the declines and every render -- is the
+    # same for both shapes of spec, which is the whole reason this branch is here rather than in a
+    # second driver.
     #
-    # **The finish is what decides which shape this spec is, and it has to be**: the run ends by writing
-    # the layout and intent it posted back into the spec directory, under exactly the names a drawn spec
-    # uses. Reading those back as a drawing on the next run would apply the finish a second time, and
-    # `addLayers`, `addShapes` and `bendShapes` are all appends -- two storeys called 'under', a ring
-    # bent twice. So a spec with a finish is compiled from its plan every run, and the layout beside it
-    # is the run's output rather than its input.
-    finish = {}
-    if os.path.exists(f"{specdir}/{base}.finish.json"):
-        with open(f"{specdir}/{base}.finish.json") as handle:
-            finish = json.load(handle)
+    # **The refinement is what decides which shape this spec is, and it has to be**: the run ends by
+    # writing the layout and intent the studio stored back into the spec directory, under exactly the
+    # names a drawn spec uses. Reading those back as a drawing on the next run would apply the refinement
+    # a second time, and `addLayers`, `addShapes` and `bendShapes` are all appends -- two storeys called
+    # 'under', a ring bent twice. So a spec with a refinement is compiled from its plan every run, and the
+    # layout beside it is the run's output rather than its input.
+    refinement = {}
+    if os.path.exists(f"{specdir}/{base}.refinement.json"):
+        with open(f"{specdir}/{base}.refinement.json") as handle:
+            refinement = json.load(handle)
     drawn_layout = drawn_intent = None
-    if not finish and os.path.exists(f"{specdir}/{base}.layout.json") \
+    if not refinement and os.path.exists(f"{specdir}/{base}.layout.json") \
             and os.path.exists(f"{specdir}/{base}.intent.json"):
         with open(f"{specdir}/{base}.layout.json") as handle:
             drawn_layout = json.load(handle)
         with open(f"{specdir}/{base}.intent.json") as handle:
             drawn_intent = json.load(handle)
-    if not finish and drawn_layout is None:
-        raise SystemExit(f"{specdir}: needs {base}.finish.json, or a drawn {base}.layout.json "
+    if not refinement and drawn_layout is None:
+        raise SystemExit(f"{specdir}: needs {base}.refinement.json, or a drawn {base}.layout.json "
                          f"and {base}.intent.json beside the plan")
 
     # ── read the board before anything exists ────────────────────────────────────────────────
@@ -876,100 +757,39 @@ def main():
     for structure in inspected.get("structures") or []:
         if structure.get("kind") == "wall":
             print(f"    wall: {json.dumps(structure)}")
-    if dry:
-        raise SystemExit(0)
 
-    # ── compile, and the finish a plan cannot state ──────────────────────────────────────────
-    # The compile takes the plan itself and no map row, so both documents are whole before anything is
-    # stored — which is what lets the store be one call.
+    # ── the map, from its source ─────────────────────────────────────────────────────────────
+    # One call compiles the plan, applies the refinement onto what it compiled to — the outlines reshaped
+    # and bent in the document — stores the three documents as one change, rasterizes the drawing,
+    # projects the intent and applies the authors. The slug is stated rather than minted, so a spec
+    # re-driven after a correction replaces the map it had instead of leaving a second one beside it.
+    source = {"name": name, "plan": plan, "origin": origin(specdir), "note": note}
     if drawn_layout is not None:
-        print("== the drawn layout, taken as authored")
-        layout, intent = drawn_layout, drawn_intent
-        print(f"    {len(layout.get('layers') or [])} layer(s), "
-              f"{sum(len(l['layout']['shapes']) for l in layout.get('layers') or [])} shape(s) — not compiled")
+        source.update(layout=drawn_layout, intent=drawn_intent)
     else:
-        print("== compile, and the finish")
-        _, compiled = call("POST", "/plan/compile", plan)
-        layout, intent = compiled["layout"], compiled["intent"]
-    layout = patch_layout(layout, finish)
-    intent = patch_intent(intent, finish)
+        source["refinement"] = resolved(refinement)
+    if dry:
+        print("== what the run would change, stored nowhere")
+        _, would = call("PUT", f"/map/{slug}/source?dry=true", source)
+        changed(would)
+        raise SystemExit(0)
+    print("== the map, from its source")
+    _, stored = call("PUT", f"/map/{slug}/source", source)
+    print(f"    slug={slug}  change {stored.get('change')}  "
+          f"{'replaced' if stored.get('replaced') else 'new'}  "
+          f"cells={stored.get('cells')}  islands={stored.get('islands')}")
+    changed(stored)
 
-    # ── the map, from the three documents it is made of ──────────────────────────────────────
-    # One call stores the plan, rasterizes the drawing into geometry, projects the intent into the map
-    # document and applies the authors. The slug is stated rather than minted, so a spec re-driven after
-    # a correction replaces the map it had instead of leaving a second one beside it; the authors ride
-    # in the body, so nothing has to be written after the projection that would overwrite them.
-    print("== the map, from its three documents")
-    _, loaded = call("POST", "/map/from-documents", {
-        "slug": slug, "name": name, "plan": plan, "layout": layout, "intent": intent,
-        # A drawn spec has no finish to state its authorship in, so it states it where the rest of what
-        # it says about itself already lives: the intent's own meta.
-        "authors": finish.get("authors") or (intent.get("meta") or {}).get("authors")})
-    slug = loaded["slug"]
-    print(f"    slug={slug}  {'replaced' if loaded.get('replaced') else 'new'}  "
-          f"cells={loaded.get('cells')}  groups={loaded.get('groups')}")
-
-    # ── the outlines, edited one point at a time ─────────────────────────────────────────────
-    # The three per-vertex routes are what reshapes a compiled rectangle into ground, and every other point
-    # of an outline stays where it was drawn — which is what a whole-ring transform cannot do and what keeps
-    # two abutting shapes flush. They run before the bend, since a bend resamples whatever ring it is given.
-    #
-    # Each op names exactly one index: `after` inserts a point on that edge, `index` moves the point there,
-    # `remove` drops it. An insert answers where the point landed, which the run prints, because every index
-    # after an insert or a delete has shifted and the next op is stated against the ring as it now is.
-    if finish.get("editShapes"):
-        print("== the outlines")
-        for shape_id, ops in finish["editShapes"].items():
-            for at, op in enumerate(ops):
-                named = [key for key in ("after", "index", "remove") if key in op]
-                if len(named) != 1:
-                    raise SystemExit(f"editShapes['{shape_id}'][{at}] names {named or 'no index'}; an op "
-                                     f"states exactly one of after (insert), index (move), remove (drop)")
-                where = named[0]
-                if where == "remove":
-                    status, wrote = call("DELETE", f"/map/{slug}/sketch/shapes/{shape_id}/vertices/{op['remove']}",
-                                         fatal=False)
-                elif where == "index":
-                    status, wrote = call("PATCH", f"/map/{slug}/sketch/shapes/{shape_id}/vertices/{op['index']}",
-                                         {"x": op["x"], "z": op["z"]}, fatal=False)
-                else:
-                    body = {"after": op["after"]}
-                    if "x" in op: body["x"], body["z"] = op["x"], op["z"]
-                    status, wrote = call("POST", f"/map/{slug}/sketch/shapes/{shape_id}/vertices", body, fatal=False)
-                if status >= 300:
-                    continue                             # the refusal is already printed with its rule id
-                print(f"    '{shape_id}' {where} {op[where]}: vertex {wrote.get('index')} of "
-                      f"{wrote.get('vertices')}")
-        _, layout = call("GET", f"/map/{slug}/sketch")
-
-    # ── the coasts, drawn by the studio over the board it just stored ────────────────────────
-    # A bend is an operation on a stored shape, not a patch this script can apply: the rule that makes
-    # one safe — the outline's own vertices never move — is the studio's, and a second copy of it here is a
-    # second answer free to disagree. It answers `held`, the points that had no room on the side asked for
-    # and stayed where they were cut.
-    if finish.get("bendShapes"):
-        print("== the coasts")
-        for shape_id, how in finish["bendShapes"].items():
-            status, drew = call("POST", f"/map/{slug}/sketch/shapes/{shape_id}/bend", {
-                "wander": how.get("wander", 3.0), "step": how.get("step", 10),
-                "seed": how.get("seed", 5), "tension": how.get("k", 0.22),
-                "side": how.get("side", "out")}, fatal=False)
-            if status >= 300:
-                continue                                 # the refusal is already printed with its rule id
-            print(f"    bent '{shape_id}': {drew.get('vertices')} drawn vertices"
-                  + (f", {drew['held']} point(s) held" if drew.get("held") else ""))
-        # The stored board is the bent one, and everything below reads the layout rather than the map: the
-        # previews take it as a body and the spec is written out from it.
-        _, layout = call("GET", f"/map/{slug}/sketch")
-
-    # ── the board, finished again as it is now drawn ─────────────────────────────────────────
-    # The store above finished the board before any edit or bend, so its counts and its complaints describe
-    # the compiled outline rather than the one this run left. Finishing again judges the board as drawn —
-    # the strait re-read, a board with no finish — and writes its ground, and what it says is printed here
-    # rather than left to the next read that happens to ask.
-    if finish.get("editShapes") or finish.get("bendShapes"):
-        print("== the board, finished as edited")
-        call("POST", f"/map/{slug}/sketch/finish")
+    # Everything below reads the board as the studio stored it: the previews take the layout as a body,
+    # the pictures are keyed on what it holds, and the spec's own copy is written out from it.
+    _, layout = call("GET", f"/map/{slug}/sketch")
+    _, intent = call("GET", f"/map/{slug}/intent")
+    painted = collections.Counter(shape.get("theme") or layout.get("mapTheme")
+                                  for layer in layout.get("layers") or []
+                                  for shape in layer["layout"]["shapes"] if shape.get("role") is None)
+    print(f"    themes on shapes: {dict(painted)}")
+    if not (intent.get("meta") or {}).get("created"):
+        print("    ! nothing states a `created` date, so the map will carry no <created> element")
 
     # ── everything wrong with the stored map, including what no other read answers ───────────
     # `Findings.Complaints` keeps `Severity.Complaint` alone, and `SK9` is the one `Severity.Decline`
@@ -985,7 +805,7 @@ def main():
            ("GET", f"/map/{slug}/plan/flow"), ("POST", f"/map/{slug}/sketch/relief/read", layout),
            ("POST", f"/map/{slug}/sketch/columns", layout), ("GET", f"/map/{slug}/preflight"),
            ("GET", f"/map/{slug}/coverage"), ("GET", f"/map/{slug}/export")]
-          + ([(method, path, body) for _, method, path, body in pictures(slug, finish, layout, intent)] if out else []))
+          + ([(method, path, body) for _, method, path, body in pictures(slug, layout, intent)] if out else []))
 
     print("== everything wrong with the stored map")
     _, verdict = call("GET", f"/map/{slug}/findings", fatal=False)
@@ -1019,7 +839,7 @@ def main():
         print(f"    group {group.get('group') or group.get('id')}: cells={group.get('cells')} "
               f"low={group.get('low')} high={group.get('high')} "
               f"relief={group.get('relief')} symErr={group.get('symmetryError')}")
-    if finish.get("relief") and not read.get("groups"):
+    if layout.get("relief") and not read.get("groups"):
         raise SystemExit("    relief/read answered no groups and a relief was stated — the shapes are "
                          "drawing no ground. Read the SK3/SK4 complaints on the store above: SK3 "
                          "names something the document names and the studio does not have, SK4 a shape "
@@ -1101,7 +921,7 @@ def main():
         # After the extraction, which clears the directory it writes into.
         print("== the pictures of what was authored")
         round_drawn = round_drawn or drawer.submit(in_the_round, columns, render_dir, slug, layout)
-        written = renders(render_dir, slug, finish, layout, drawn, flow, round_drawn, intent)
+        written = renders(render_dir, slug, layout, drawn, flow, round_drawn, intent)
         # ── the same board as text, which is the shape a reader subtracts from rather than gauges ──
         print("== the board as text: transects through every feature, and the routes")
         written += text_reads(render_dir, slug, intent, layout)
@@ -1109,7 +929,7 @@ def main():
         headline(render_dir)
     # A compiled spec's documents are the run's output and are written beside its plan; a drawn spec's
     # are its input and are left exactly as authored, so re-driving one is byte-identical by
-    # construction rather than by the finish being empty.
+    # construction rather than by the refinement being empty.
     if drawn_layout is None:
         with open(f"{specdir}/{base}.layout.json", "w") as handle:
             json.dump(layout, handle, indent=1)

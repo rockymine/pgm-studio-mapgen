@@ -6,7 +6,8 @@
                           [--column x,z [x,z ...]]
 
 A drive stores, exports and pictures the board; a placement question is answered by two previews that take
-two seconds and store nothing. This reads the spec the way `drive.py` does — a plan compiled and patched with its finish, or a drawn layout —
+two seconds and store nothing. This reads the spec the way `drive.py` does — a plan and its refinement, which
+the studio compiles and applies in a dry run of `PUT /map/{slug}/source` that stores nothing, or a drawn layout —
 and posts the result to `sketch/relief/read` (the terrain in numbers: range, steps, barriers, crossings)
 and `sketch/dressing` (what every prop did, and every decline with its rule and coordinates). Nothing is
 stored. The map has to have been driven once before, because the dressing preview reads the stored intent
@@ -46,18 +47,21 @@ def values_after(flag):
     return out
 
 
-def load(specdir):
+def load(specdir, slug):
+    """The layout the spec states: a refinement applied by the studio onto the plan it compiles, answered by a
+    dry run that stores nothing, or a drawn layout as it is."""
     base = os.path.basename(specdir.rstrip("/"))
     with open(f"{specdir}/{base}.plan.json") as handle:
         plan = json.load(handle)
-    finish_path = f"{specdir}/{base}.finish.json"
-    if os.path.exists(finish_path):
-        with open(finish_path) as handle:
-            finish = json.load(handle)
-        _, compiled = drive.call("POST", "/plan/compile", plan)
-        return drive.patch_layout(compiled["layout"], finish), base
+    refinement_path = f"{specdir}/{base}.refinement.json"
+    if os.path.exists(refinement_path):
+        with open(refinement_path) as handle:
+            refinement = drive.resolved(json.load(handle))
+        _, would = drive.call("PUT", f"/map/{slug}/source?dry=true",
+                              {"name": slug, "plan": plan, "refinement": refinement})
+        return would["layout"]
     with open(f"{specdir}/{base}.layout.json") as handle:
-        return json.load(handle), base
+        return json.load(handle)
 
 
 def decode_columns(payload):
@@ -101,8 +105,8 @@ def main():
     if len(sys.argv) < 2:
         raise SystemExit(__doc__)
     specdir = sys.argv[1]
-    layout, base = load(specdir)
-    slug = option("--slug", base)
+    slug = option("--slug", os.path.basename(specdir.rstrip("/")))
+    layout = load(specdir, slug)
 
     if "--no-relief" not in sys.argv:
         print("== relief")

@@ -1,4 +1,4 @@
-"""Gypsum Reach — writes opus55-gypsum-reach.plan.json and .finish.json.
+"""Gypsum Reach — writes opus55-gypsum-reach.plan.json and .refinement.json.
 
 A pale desert lane: each team's emerald monument stands in the open on a low shelf, with a dry wash sunk in
 front of it under a timber bridge, a grassed mesa off its outer flank, and a sunken oasis with a hamlet round
@@ -344,5 +344,5 @@ finish = {
 }
 
 json.dump(plan, open(os.path.join(HERE, f"{SLUG}.plan.json"), "w"), indent=1)
-json.dump(finish, open(os.path.join(HERE, f"{SLUG}.finish.json"), "w"), indent=1)
+json.dump(finish, open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w"), indent=1)
 print("wrote", SLUG)

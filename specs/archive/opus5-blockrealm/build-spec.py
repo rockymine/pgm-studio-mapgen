@@ -7,7 +7,7 @@ two lava-cored keeps a team.
 
     python3 specs/opus5-blockrealm/build-spec.py
 
-writes `opus5-blockrealm.plan.json` and `opus5-blockrealm.finish.json` beside itself.
+writes `opus5-blockrealm.plan.json` and `opus5-blockrealm.refinement.json` beside itself.
 """
 import json
 import math
@@ -701,8 +701,8 @@ FINISH = {
     "themeById": {},
     # the coasts drawn rather than ruled — but only a little: a drawn level's ground has a hard edge,
     # so five blocks of wander is as organic as this board wants to be
-    "bendShapes": {"field-14": {"k": 0.14, "wander": 4, "step": 14, "seed": 3},
-                   "midway-14": {"k": 0.12, "wander": 3, "step": 12, "seed": 5}},
+    "bendShapes": {"field-14": {"tension": 0.14, "wander": 4, "step": 14, "seed": 3},
+                   "midway-14": {"tension": 0.12, "wander": 3, "step": 12, "seed": 5}},
     "addShapes": ADD_SHAPES,
     "addLayers": ADD_LAYERS,
     "relief": RELIEF,
@@ -723,7 +723,7 @@ def main():
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(PLAN, handle, indent=1)
         handle.write("\n")
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(FINISH, handle, indent=1)
         handle.write("\n")
     trees = sum(1 for prop in PROPS if prop["kind"] == "tree")

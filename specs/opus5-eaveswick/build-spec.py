@@ -10,7 +10,7 @@ is cut down seven blocks into a quay with the hub's own ground carried out over 
 timber gallery: the defence holds the upper deck, the attack lands on the lower lane, and
 the only ways between them are the two flank ramps the deck looks straight down on.
 
-Writes opus5-eaveswick.plan.json and opus5-eaveswick.finish.json beside this file.
+Writes opus5-eaveswick.plan.json and opus5-eaveswick.refinement.json beside this file.
 """
 import json, os
 
@@ -304,8 +304,8 @@ FINISH = {
 
 def main():
     json.dump(PLAN,   open(os.path.join(HERE, SLUG + ".plan.json"),   "w"), indent=1)
-    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".finish.json"), "w"), indent=1)
-    print("wrote", SLUG + ".plan.json", "and", SLUG + ".finish.json")
+    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".refinement.json"), "w"), indent=1)
+    print("wrote", SLUG + ".plan.json", "and", SLUG + ".refinement.json")
 
 
 if __name__ == "__main__":

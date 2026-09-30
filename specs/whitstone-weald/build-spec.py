@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Whitstone Weald — writes whitstone-weald.plan.json and whitstone-weald.finish.json beside itself.
+"""Whitstone Weald — writes whitstone-weald.plan.json and whitstone-weald.refinement.json beside itself.
 
 A dry heath of acacia and olive on banded red rock, for 32 a side. Each team holds two end-stone monuments:
 the Crag Stone on a bench under a red crag with a wood on its outer flank, and the Green Stone on a village
@@ -522,9 +522,9 @@ def finish():
 def main():
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(plan(), handle, indent=1)
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(finish(), handle, indent=1)
-    print(f"wrote {SLUG}.plan.json and {SLUG}.finish.json")
+    print(f"wrote {SLUG}.plan.json and {SLUG}.refinement.json")
 
 
 if __name__ == "__main__":

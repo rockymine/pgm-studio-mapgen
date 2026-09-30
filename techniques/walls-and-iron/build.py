@@ -96,7 +96,7 @@ FINISH = {"authors": ["the technique cards"], "created": "2026-09-20"}
 
 if __name__ == "__main__":
     json.dump(plan, open(os.path.join(HERE, "walls-and-iron.plan.json"), "w"), indent=1)
-    json.dump(FINISH, open(os.path.join(HERE, "walls-and-iron.finish.json"), "w"), indent=1)
+    json.dump(FINISH, open(os.path.join(HERE, "walls-and-iron.refinement.json"), "w"), indent=1)
     print(f"{len(PIECES)} pieces, {len(WALLS)} walls, {len(IRON)} iron marker(s), symmetry none")
     for a, b in WALLS:
         print(f"  wall on the interface '{a}' — '{b}'")

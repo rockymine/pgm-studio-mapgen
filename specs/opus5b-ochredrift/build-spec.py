@@ -15,7 +15,7 @@ The crusher terrace is the one piece of made ground on the board: its compiled
 shape carries relief_scope exclude, so it meets the hub at a face rather than a
 grade, and a flight cut into that face is the way up.
 
-Writes opus5b-ochredrift.plan.json and opus5b-ochredrift.finish.json.
+Writes opus5b-ochredrift.plan.json and opus5b-ochredrift.refinement.json.
 """
 import json
 import os
@@ -424,4 +424,4 @@ finish = {
 }
 
 write(os.path.join(HERE, f"{SLUG}.plan.json"), plan)
-write(os.path.join(HERE, f"{SLUG}.finish.json"), finish)
+write(os.path.join(HERE, f"{SLUG}.refinement.json"), finish)

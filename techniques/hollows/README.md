@@ -185,8 +185,8 @@ before it makes a hollow at all.
 - `slopes.txt` — 7,580 cells walked, 816 scrambled, 1,012 barrier, three faces, the largest 476 cells.
 - `incline.txt` and `census.txt` — the angle histogram, and one theme over 9,408 cells in three surface
   blocks.
-- `hollows.layout.json` — the one document the board was stored from, posted to `POST
-  /api/map/from-documents` with no plan and no intent. A terrain card needs neither: the renders read the
+- `hollows.layout.json` — the one document the board is stored from, stated to `PUT
+  /api/map/{slug}/source` with an empty intent and no plan. A terrain card needs neither a plan nor objectives: the renders read the
   stored layout through `POST /sketch/columns`.
 
 Renders: `iso.png` (south-east) and `iso-turned.png` (south-west).

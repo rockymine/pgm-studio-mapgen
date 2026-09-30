@@ -15,7 +15,7 @@ override cavity (self-symmetric under `rot_180`, so the fan reproduces it rather
 then `tunnel-walls`, `tunnel-cover` and `tunnel-resume` are new layers stated `mirrors: false` so the
 adit is built exactly once, under the west flank only.
 
-Writes sonnet5-kilnholt-cut.plan.json and .finish.json beside this file.
+Writes sonnet5-kilnholt-cut.plan.json and .refinement.json beside this file.
 """
 import json, math, os
 
@@ -262,7 +262,7 @@ plan = {
     },
 }
 
-for name, doc in (("plan", plan), ("finish", finish)):
+for name, doc in (("plan", plan), ("refinement", finish)):
     with open(f"{HERE}/{SLUG}.{name}.json", "w") as fh:
         json.dump(doc, fh, indent=1)
 print(f"{len(marks)} relief mark(s), {len(finish['addShapes'])} authored shape(s), "

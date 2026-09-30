@@ -133,9 +133,11 @@ def call(method, path, body=None, expect=(200, 201)):
 
 
 def store(slug, name, document, authors=("Opus 5",), spawn=None, observer=None):
-    return call("POST", "/map/from-documents",
+    """The gallery stored as a map's source: the drawing, the smallest intent it exports with, and the credit
+    in the refinement."""
+    return call("PUT", f"/map/{slug}/source",
                 {"layout": document, "intent": intent(name, spawn=spawn, observer=observer),
-                 "name": name, "slug": slug, "authors": list(authors)})
+                 "refinement": {"authors": list(authors)}, "name": name})
 
 
 def export(slug, out):

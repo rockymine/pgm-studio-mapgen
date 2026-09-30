@@ -10,7 +10,7 @@ bridged back over a team-only crossing, and a gallery runs the whole length of t
 between the two shelves — the defence's own rotation, roofed by the ground the attack is
 fighting over.
 
-Writes opus5-burrowgate.plan.json and opus5-burrowgate.finish.json beside this file.
+Writes opus5-burrowgate.plan.json and opus5-burrowgate.refinement.json beside this file.
 """
 import json, os
 
@@ -310,8 +310,8 @@ FINISH = {
 
 def main():
     json.dump(PLAN,   open(os.path.join(HERE, SLUG + ".plan.json"),   "w"), indent=1)
-    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".finish.json"), "w"), indent=1)
-    print("wrote", SLUG + ".plan.json", "and", SLUG + ".finish.json")
+    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".refinement.json"), "w"), indent=1)
+    print("wrote", SLUG + ".plan.json", "and", SLUG + ".refinement.json")
 
 
 if __name__ == "__main__":

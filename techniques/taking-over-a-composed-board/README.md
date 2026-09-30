@@ -257,7 +257,7 @@ different wordings. `props.txt` is the table.
   there is the author's. Plant to the outside of a piece, two in front of a hole, three along a road, none
   where a build zone is arrived at, none on the approach in front of a wall, none on a contested middle.
 - **state `roomStyles`.** The composed board's spawn and wool room are the studio's built-in bedrock box,
-  because a plan states no shell and a finish that states none keeps the default — at 200, with no finding.
+  because a plan states no shell and a refinement that states none keeps the default — at 200, with no finding.
   Every board on this card wears the box for the same reason, and none of them is about houses.
 - **check a site against the dressing pass, not against your own filter.** A search that wants eight level
   neighbours refuses every rim cell, and a rim is often the only row a road leaves.
@@ -301,15 +301,15 @@ is a standing place for the walk and a void column for every other read, which i
 - `census.txt` — five themes over 4,956 cells, and the borders between them.
 - `tint.txt` — the wall bucket over the whole board as a character map, the three counts, and one rim
   column of each owner, each taken from the sweep rather than chosen.
-- **every variant is a plan and a finish, and `tools/drive.py` builds each from those two files alone.**
-  `4-taken-over`'s finish carries the chamfer as an `editShapes` pair — one vertex moved back along the
+- **every variant is a plan and a refinement, and `tools/drive.py` builds each from those two files alone.**
+  `4-taken-over`'s refinement carries the chamfer as an `editShapes` pair — one vertex moved back along the
   first edge and one inserted on the second — and `2-void-redrawn`'s carries the rounded void ring as eight
   ops, both computed by this card's own `chamfer` and `rounded` helpers rather than written out. The checks
   are the numbers already committed here: the census answering 4,956 cells, and hole-1 answering 32/144.
-- `pinned.plan.json` is the one plan here with **no** finish beside it, which is what marks it as the
+- `pinned.plan.json` is the one plan here with **no** refinement beside it, which is what marks it as the
   composer's raw answer rather than a board. `tools/seed-studio.py` reads exactly that distinction.
 - `pinned.plan.json` — the composer's own answer, committed. `1-as-pinned.plan.json`,
-  `3-a-surface-per-piece.plan.json`, `4-taken-over.plan.json` and `4-taken-over.finish.json` are what
+  `3-a-surface-per-piece.plan.json`, `4-taken-over.plan.json` and `4-taken-over.refinement.json` are what
   `build.py` writes from it.
 
 Renders: `1-as-pinned.png`, `2-void-redrawn.png`, `3-a-surface-per-piece.png`, `4-taken-over.png` and

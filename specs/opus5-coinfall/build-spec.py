@@ -471,4 +471,4 @@ def write(name, document):
 
 
 write(f"{BASE}.plan.json", PLAN)
-write(f"{BASE}.finish.json", FINISH)
+write(f"{BASE}.refinement.json", FINISH)

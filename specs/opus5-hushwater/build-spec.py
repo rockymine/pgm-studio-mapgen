@@ -695,7 +695,7 @@ def main():
 
     plan = adapt(plan)
     json.dump(plan, open(os.path.join(HERE, f"{SLUG}.plan.json"), "w"), indent=1)
-    json.dump(finish_document(), open(os.path.join(HERE, f"{SLUG}.finish.json"), "w"), indent=1)
+    json.dump(finish_document(), open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w"), indent=1)
     print(f"  adapted   pieces {len(plan['pieces'])}  zones {len(plan['zones'])}  "
           f"walls {len(plan['walls'])}  themes {len(THEMES)}  "
           f"marks {sum(len(g['marks']) for g in RELIEF.values())}  shapes {len(ADD_SHAPES)}")

@@ -9,7 +9,7 @@ the open, and the combe is the one place to drop out of sight once across.
 Tone families: the ground is pale chalk and turf, what is built is dark flint
 and cobble, and the accent is weathered oak.
 
-Writes opus5b-chalkmere.plan.json and opus5b-chalkmere.finish.json.
+Writes opus5b-chalkmere.plan.json and opus5b-chalkmere.refinement.json.
 """
 import json
 import os
@@ -416,4 +416,4 @@ finish = {
 }
 
 write(os.path.join(HERE, f"{SLUG}.plan.json"), plan)
-write(os.path.join(HERE, f"{SLUG}.finish.json"), finish)
+write(os.path.join(HERE, f"{SLUG}.refinement.json"), finish)

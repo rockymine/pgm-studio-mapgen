@@ -217,6 +217,6 @@ finish = {
 
 with open(os.path.join(HERE, "opus5-orchard-holm.plan.json"), "w") as out:
     json.dump(plan, out, indent=1)
-with open(os.path.join(HERE, "opus5-orchard-holm.finish.json"), "w") as out:
+with open(os.path.join(HERE, "opus5-orchard-holm.refinement.json"), "w") as out:
     json.dump(finish, out, indent=1)
 print("wrote the plan and the finish")
