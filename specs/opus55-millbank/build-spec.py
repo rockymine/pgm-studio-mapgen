@@ -254,7 +254,7 @@ HOLM_PUSHES = [{"id": "bank-knoll", "ring": [[-14, -12], [-4, -12], [-4, -8], [-
 # The river fills its bed a block deep. Its ring runs half a block into each bank, so it reaches the foot of each cut,
 # and runs past both ends of the holm so it meets the gorge rather than stopping in a basin.
 NORTH_SHORE = [[x, z - 0.5] for x, z in reversed(BANK_LINE)]
-RIVER = {"id": "river", "kind": "water", "shape": "pool", "form": "natural", "layer": "ground",
+RIVER = {"id": "river", "kind": "fluid", "shape": "pool", "form": "natural", "layer": "ground",
          "points": NORTH_SHORE + [[-x, -z] for x, z in NORTH_SHORE], "radius": 1, "depth": 1,
          "level": BED + 1, "shore": 0}
 

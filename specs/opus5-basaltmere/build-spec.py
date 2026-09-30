@@ -351,7 +351,7 @@ PROPS = [
     # the mere, its outline its own rot_180 image so the two shores match.  The level is
     # the strand's own height, so the water stands flush with the shelf it drowns and a
     # player walks in rather than dropping in.
-    {"id": "mere", "kind": "water", "seed": 61, "layer": "ground", "shape": "pool",
+    {"id": "mere", "kind": "fluid", "seed": 61, "layer": "ground", "shape": "pool",
      "points": [[-38, -3], [-31, -19], [-20, -28], [-8, -21], [3, -31], [18, -25],
                 [31, -17], [38, 3], [31, 19], [20, 28], [8, 21], [-3, 31], [-18, 25],
                 [-31, 17]],

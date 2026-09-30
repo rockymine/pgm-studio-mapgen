@@ -594,10 +594,10 @@ DRESSING = {
                   "palette": [GRAVEL, ANDESITE, COBBLE]}},
         # the dam the hush was let go from, dug into the peat at the head's west end rather
         # than into its laid floor: the `dam-bed` shape above states that ground, and the bank
-        # is the clay and trodden soil a pond edge is made of. A water prop carves its own bed
+        # is the clay and trodden soil a pond edge is made of. A fluid prop carves its own bed
         # rather than finding a level, so the pan IS the pool, and the launder that leaves it
         # is the polyline shape beside it.
-        {"id": "dam", "kind": "water", "seed": 7, "shape": "pool", "form": "natural",
+        {"id": "dam", "kind": "fluid", "seed": 7, "shape": "pool", "form": "natural",
          "points": [[-14, 80], [-9, 79], [-8, 85], [-11, 89], [-14, 85]],
          "radius": 2, "depth": 2, "level": 17, "edge": 1, "shore": 3, "shoreWander": True,
          "bank": {"kind": "cell", "seed": 71, "cellSize": 3, "jitter": 45, "rise": 2,

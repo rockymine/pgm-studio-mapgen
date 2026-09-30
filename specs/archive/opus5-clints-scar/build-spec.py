@@ -172,7 +172,7 @@ finish = {
     "addShapes": [],
     "themes": {}, "mapTheme": "clints",
     "dressing": {"props": [
-        {"id": "beck-water", "kind": "water", "shape": "channel", "level": BECK + 2, "depth": 3,
+        {"id": "beck-water", "kind": "fluid", "shape": "channel", "level": BECK + 2, "depth": 3,
          "points": beck_trace, "radius": 6},
     ]},
 }

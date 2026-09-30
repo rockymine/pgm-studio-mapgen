@@ -57,7 +57,7 @@ def box(cx, cz, width, depth):
 
 
 def water(prop_id, shape, points, **words):
-    out = {"id": prop_id, "kind": "water", "shape": shape, "points": points,
+    out = {"id": prop_id, "kind": "fluid", "shape": shape, "points": points,
            "radius": 3, "depth": 2, "form": "canal", "edge": 0.8,
            "shore": 2, "shoreWander": True, "seed": 7, "bank": GRAVEL_BANK}
     out.update(words)
@@ -133,7 +133,7 @@ def pan_fits(cx, cz):
 
 def under_a_bridge(cx, cz, layer=None):
     """A beck across level ground with a plank deck thrown over it, drawn twice and differing in one
-    field. A water prop carves against the ground of the layer it NAMES; naming none takes the top
+    field. A fluid prop carves against the ground of the layer it NAMES; naming none takes the top
     surface of the stack, which here is the deck, so the carve bites the bridge through."""
     marks = [area("holm", 20, band(cx, cz, -35, 35))]
     words = {"layer": layer} if layer else {}
@@ -200,7 +200,7 @@ layout = {
 }
 out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "water.layout.json")
 json.dump(layout, open(out, "w"), indent=1)
-print(f"{len(PANELS)} panels, {len(props)} water prop(s) -> {out}")
+print(f"{len(PANELS)} panels, {len(props)} fluid prop(s) -> {out}")
 for prop in props:
     print(f"  {prop['id']:12s} {prop['shape']:8s} {prop['form']:8s} r={prop['radius']} "
           f"depth={prop['depth']} shore={prop['shore']} level={prop.get('level')}")

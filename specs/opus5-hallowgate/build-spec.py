@@ -451,7 +451,7 @@ dressing = {
         # The flooded corner of the graveyard, on the hub's east flank where no route runs.
         # It states no `level`: the hub's floor is ground that is already there, so the line
         # is found rather than stated, and its run is level so nothing is trenched.
-        {"id": "tarn", "kind": "water", "seed": 63, "layer": "ground",
+        {"id": "tarn", "kind": "fluid", "seed": 63, "layer": "ground",
          "shape": "pool", "form": "natural",
          "points": [[-14, 54], [-6, 54], [-5, 60], [-9, 63], [-14, 60]],
          "radius": 3, "depth": 3, "shore": 2, "shoreWander": True, "edge": 1,

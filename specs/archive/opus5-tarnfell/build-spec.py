@@ -489,7 +489,7 @@ FLANKS = [
 props = [
     # the water. One ring traced round the island at a radius that leaves the isle standing and
     # reaches the beach on the other side, cut three courses into a pan the relief already flattened
-    {"id": "the-mere", "kind": "water", "seed": 5, "form": "natural",
+    {"id": "the-mere", "kind": "fluid", "seed": 5, "form": "natural",
      "points": [[x, z] for x, z in closed(lobed(25, swell=0.65))],
      "radius": 10.0, "depth": 3, "edge": 0.9, "shore": 7, "shoreWander": True,
      "bank": voronoi(35, 5, [(SAND, 3), (SAND, 2), (GRAVEL, 1), (SANDSTONE, 1)])},

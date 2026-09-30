@@ -170,7 +170,7 @@ Y_PAD = 26                         # the flats: the goal's ground, the apron and
 
 MERE_RX, MERE_RZ = 40, 30          # the mere's bed, an ellipse about the board's own centre
 ISLE_RX, ISLE_RZ = 15, 12
-WATER_RX, WATER_RZ = 25, 19        # the water prop's centreline, a CLOSED RING inside the bed
+WATER_RX, WATER_RZ = 25, 19        # the fluid prop's centreline, a CLOSED RING inside the bed
 WATER_R = 12                       # its half-width: the band runs from the isle's edge out to r 37
 
 BOARD_Z1 = 150
@@ -600,7 +600,7 @@ def dressing():
     ring = [[int(round(x)), int(round(z))]
             for x, z in around(0, 0, WATER_RX, WATER_RZ, 12, 0.15, half=False)]
     ring.append(ring[0])
-    props.append({"id": "ravensmere", "kind": "water", "points": ring, "radius": WATER_R,
+    props.append({"id": "ravensmere", "kind": "fluid", "points": ring, "radius": WATER_R,
                   "depth": 3, "form": "natural", "edge": 1.0, "shore": 1.4,
                   "shoreWander": True, "seed": 41})
 

@@ -368,7 +368,7 @@ sided += ring("pw", *POOL, 2, MASS_FLOOR, MASS_H, "pool",
               gaps=[("e", 28, 36), ("w", 4, 12)])
 
 # ══ the water in them ═════════════════════════════════════════════════════════════════════════
-# A pool is a room with water in it, not a river that happens to be indoors. A `water` prop sweeps a
+# A pool is a room with water in it, not a river that happens to be indoors. A `fluid` prop sweeps a
 # disc along a polyline and carves its own bed, which is right for a river and wrong here: the edge
 # comes out lobed and the depth follows the sweep. Stated as a rectangle whose theme puts water in its
 # surface bucket, the pool is exactly the rectangle drawn — straight sides, one depth, flush with the
@@ -866,7 +866,7 @@ finish = {
     "dressing": {"props": ROADS + WAYS + OAKS + SKY_OAKS + HOUSES + SPRUCE + UNFINISHED
                           + TAIGA_FLORA + [
         # the river: the east half of an oval traced round the town wall, fanned into a closed ring
-        {"kind": "water", "id": "river", "seed": 11, "layer": "ground",
+        {"kind": "fluid", "id": "river", "seed": 11, "layer": "ground",
          "points": [[0, 58], [48, 58], [68, 54], [78, 44], [80, 24], [80, 0],
                     [80, -24], [78, -44], [68, -54], [48, -58], [0, -58]],
          "radius": 7, "depth": 4, "form": "natural", "edge": 1.2,

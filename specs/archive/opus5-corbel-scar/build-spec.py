@@ -81,7 +81,7 @@ finish = {
     "addShapes": [],
     "themes": {}, "mapTheme": "scar-moor",
     "dressing": {"props": [
-        {"id": "river", "kind": "water", "shape": "channel", "level": BED + 3, "depth": 3,
+        {"id": "river", "kind": "fluid", "shape": "channel", "level": BED + 3, "depth": 3,
          "points": [[-54, 0], [-18, -3], [18, 3], [54, 0]], "radius": 9},
     ]},
 }

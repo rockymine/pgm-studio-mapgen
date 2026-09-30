@@ -287,7 +287,7 @@ props = [
      "points": [[12, 54], [11, 42], [8, 30], [4, 18], [2, 10]]},
 
     # the dew pond in the combe floor — the reason to drop into it
-    {"id": "dew-pond", "kind": "water", "seed": 4173, "shape": "pool",
+    {"id": "dew-pond", "kind": "fluid", "seed": 4173, "shape": "pool",
      "points": lobe(-16, 46, 6, points=9, wobble=0.2, seed=4174),
      "radius": 2, "depth": 2, "shore": 3, "shoreWander": True,
      "bank": cells(4175, 4, 0, [GRAVEL, solid(82, 0), WORN])},

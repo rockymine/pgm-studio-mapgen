@@ -12,7 +12,7 @@ crosses**, and every column over that line inside the band is emptied down to it
 ## The document
 
 Ten groups on the `ground` layer, a `deck` layer at `base_y` 25 carrying the two bridges, and the water in
-`dressing.props`. Three themes: `moor` for the uplands, `strand` — sand over sandstone — for the shore, and
+`dressing.props` as `fluid` props, each filling with water because none states otherwise. Three themes: `moor` for the uplands, `strand` — sand over sandstone — for the shore, and
 `plank` for the bridges.
 
 | panel | states | what it built |
@@ -29,7 +29,7 @@ Ten groups on the `ground` layer, a `deck` layer at `base_y` 25 carrying the two
 | `named-layer` | the same beck with `"layer": "ground"` | planks at y25, water at y19 under them |
 
 ```json
-{"id": "sea", "kind": "water", "shape": "pool", "form": "natural", "layer": "ground",
+{"id": "sea", "kind": "fluid", "shape": "pool", "form": "natural", "layer": "ground",
  "points": [[-274, -41], [-166, -41], [-166, 3], [-274, 3]],
  "radius": 10, "depth": 6, "level": 16, "shore": 3, "shoreWander": true, "edge": 2,
  "bank": {"kind": "voronoi", "…": "gravel, coarse dirt and sand"}}
@@ -70,7 +70,7 @@ is grass. The bank material is laid on the bed *and* the beach, so one voronoi f
 the document states, which is a pond cut into ground that was already there. A `basin` dug out in the sketch
 has no surface up at the line for a derived one to find, so it can only be stated.
 
-## A water prop carves against the layer it names
+## A fluid prop carves against the layer it names
 
 **`no-layer` and `named-layer` are the same beck under the same deck, differing in one field.** Naming no
 layer takes the top surface of the stack, which at the bridge is the deck at y25, so the carve empties those
@@ -83,6 +83,21 @@ declined. A board can have the water and the bridge; the prop has to say which s
 
 **Every prop kind takes `layer` and `DressingContext.GroundFor` reads it**, so this is not a water rule —
 it is the prop rule met where it matters most, because water is the one prop that changes the ground.
+
+## The same prop fills with lava
+
+**`"fluid": "lava"` changes what fills the bed and nothing else.** The carve, the line, the bowl, the shore
+and the bank are cut exactly as they are for water, and the fill is written as stationary lava. Water is what
+an unstated `fluid` means, so every panel here is water.
+
+**A walk reads the two differently.** Water is ground a player swims, at twice the walk; a lava run is a
+prop's volume that nobody stands in, and the bed under it is roofed rather than walked. `walk?format=text`
+is where that shows, not the renders.
+
+**Lily pads belong to the water, not to the prop.** The prop places none, and it claims every column of its
+bed and beach, so a dressing prop set inside it is declined `DR-CLAIM`. A pad is a made layer one course over
+the water line, as a block `111` sheet with `keepClear` off. It goes only where the fill is water: a pad over
+lava is not a pad the game keeps.
 
 ## `DR-BANK`: the line is the lowest surface, and everything over it is emptied
 
@@ -105,13 +120,13 @@ of water in a wide flat expanse at its own height, which reads as a drained lake
 out of it. Neither panel raises anything — a pan drawn too big is not a fault the studio has an opinion
 about, and the only way to see it is to look.
 
-**The same fact from the other end is that a water prop fills its own band and no more.** The band **is** the
+**The same fact from the other end is that a fluid prop fills its own band and no more.** The band **is** the
 pond and `radius` is the knob; a canal down the middle of a wide flat hole is a channel with dry ground
 either side of it however level the pan under it.
 
 ## What the paint makes of it
 
-**A water prop's bank is counted against the theme of the ground it carved, not a theme of its own.**
+**A fluid prop's bank is counted against the theme of the ground it carved, not a theme of its own.**
 `census.txt` reports three themes and **eight** distinct surface blocks, with gravel, sand and water turning
 up under `moor`, `strand` and `plank` alike, because the bank is a material the prop lays rather than a theme
 the document scopes.
@@ -131,7 +146,7 @@ where it is meant to be a sea.**
 
 ```json
 "dressing": {"props": [
-  {"id": "sea", "kind": "water", "layer": "ground", "shape": "pool", "form": "natural",
+  {"id": "sea", "kind": "fluid", "layer": "ground", "shape": "pool", "form": "natural",
    "points": "<a ring drawn past the island's own edge>", "radius": 10, "depth": 6, "level": 16,
    "shore": 3, "shoreWander": true, "edge": 2, "seed": 7,
    "bank": "<a voronoi of gravel, coarse dirt and sand>"}]}
@@ -144,6 +159,8 @@ where it is meant to be a sea.**
 - **`radius` is half the width on a channel and the shelf on a pool** — one number, two meanings.
 - **keep a channel's run level**, or `DR-BANK` will trench it by the fall's whole height.
 - **a mark drawn bigger than its water is a drained lake**, and nothing reports it.
+- **`fluid` is `water` unless stated**, and a `lava` bed is cut the same way.
+- **lily pads are a made layer a course over a water line**, never over lava.
 
 ## What checks it
 

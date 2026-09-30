@@ -285,7 +285,7 @@ BANK = cell(4401, 6, [GRAVEL, COARSE])
 
 props = [
     # the water: one pool, one stated level, the pan it fills drawn at the size of the water
-    {"id": "tarn", "kind": "water", "seed": 91, "shape": "pool",
+    {"id": "tarn", "kind": "fluid", "seed": 91, "shape": "pool",
      "points": [[-40, -6], [-20, -7], [0, -7], [20, -7], [40, -6],
                 [41, 0], [40, 6], [20, 7], [0, 7], [-20, 7], [-40, 6], [-41, 0]],
      "radius": 6, "depth": 4, "level": WATERLINE - 1, "shore": 3, "shoreWander": True,

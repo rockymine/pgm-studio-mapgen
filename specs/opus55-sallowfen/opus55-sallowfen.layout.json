@@ -13910,7 +13910,7 @@
   },
   "props": [
    {
-    "kind": "water",
+    "kind": "fluid",
     "id": "stream",
     "shape": "channel",
     "form": "stream",
@@ -13974,7 +13974,7 @@
     }
    },
    {
-    "kind": "water",
+    "kind": "fluid",
     "id": "pool-sw",
     "shape": "pool",
     "form": "natural",
@@ -14090,7 +14090,7 @@
     }
    },
    {
-    "kind": "water",
+    "kind": "fluid",
     "id": "pool-nw",
     "shape": "pool",
     "form": "natural",
@@ -14206,7 +14206,7 @@
     }
    },
    {
-    "kind": "water",
+    "kind": "fluid",
     "id": "pool-front",
     "shape": "pool",
     "form": "natural",

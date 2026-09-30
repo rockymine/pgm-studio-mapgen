@@ -393,7 +393,7 @@ dressing = {
         # carves against the top of the stack; it states no level, because the floor it
         # crosses is ground that is already there and the line is found; and its run is
         # kept level, because a channel down a fall is trenched by the fall's whole height.
-        {"id": "leat", "kind": "water", "seed": 61, "layer": "ground",
+        {"id": "leat", "kind": "fluid", "seed": 61, "layer": "ground",
          "shape": "channel", "form": "canal",
          "points": [[-6, -80], [-2, -71], [0, -60], [-2, -50], [-4, -44]],
          "radius": 3, "depth": 3, "shore": 2, "shoreWander": True, "edge": 1,

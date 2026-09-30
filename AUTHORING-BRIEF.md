@@ -137,7 +137,7 @@ coordinate, which is the read to reach for when a picture and a document disagre
 
 **Read the text before the pictures.** The driver writes the board as text beside every picture, each
 file the API's own `?format=text` answer — `02-heightmap.txt`, `03-slopes.txt`, the two axis sections, a
-`transect-<feature>.txt` through every spawn, goal, house, water prop and made thing, `04-routes.txt` along
+`transect-<feature>.txt` through every spawn, goal, house, fluid prop and made thing, `04-routes.txt` along
 each team's walk to each goal, `05-themes.txt` and `06-claims.txt` — and prints their summaries inline.
 
 Every one of them can be asked for again at any extent: `render/section`, `transect`, `walk`, `slopes`,

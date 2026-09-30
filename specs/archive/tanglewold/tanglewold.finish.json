@@ -124,7 +124,7 @@
   "mapTheme": "woodfloor",
   "roomStyles": { "cage": "@cottage", "spawn": "@longhouse" },
   "dressing": { "props": [
-    { "id": "w1", "kind": "water", "seed": 1,
+    { "id": "w1", "kind": "fluid", "seed": 1,
       "points": [[-20, 18], [-19, 4], [-21, -12], [-19, -26]],
       "radius": 2.5, "depth": 2, "form": "stream", "edge": 0.8, "shore": 2, "shoreWander": true,
       "bank": { "kind": "voronoi", "seed": 6, "cellSize": 5, "rise": 0, "bands": [

@@ -318,7 +318,7 @@ def house(pid, x0, z0, x1, z1, style, front):
             "wings":[{"corners":[[x0,z0],[x1,z1]]}],"front":front,"style":style}
 
 layout["dressing"] = {"props": [
- {"id":"race-water","kind":"water","seed":7,"layer":"ground","shape":"pool","points":S0,
+ {"id":"race-water","kind":"fluid","seed":7,"layer":"ground","shape":"pool","points":S0,
   "radius":26,"depth":10,"shore":1,"shoreWander":False,"edge":0.6,"level":WATER,
   "bank":{"kind":"solid","id":13,"data":0}},
  # Two crofts on the spawn plaza, clear of the band round the spawn room so nothing stands in

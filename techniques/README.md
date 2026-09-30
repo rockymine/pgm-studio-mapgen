@@ -37,7 +37,7 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `marks-and-pushes` | a push landing on ground marks already pin, and how much of a board to pin at all |
 | `made-ground` | `relief_scope` against `height_mode` — whether a shape is ground or stands in it |
 | `stacking-layers` | two solid spans in one column, and the three ways the air between them is lost |
-| `water` | a bed carved under a level fill — five bodies of water and five ways to lose one |
+| `water` | a `fluid` prop: a bed carved under a level fill of water or lava — five bodies of water and five ways to lose one |
 | `theme-buckets` | bedrock, fill, wall, surface and rim, switched on one at a time over one ground |
 | `painting-a-patch` | which shape forms a cell's surface — a patch's own height, and what a second layer changes |
 | `painting-with-a-stroke` | the band of surface along a drawn line: a feathered seam, a paved road, a claim, a keep-out |

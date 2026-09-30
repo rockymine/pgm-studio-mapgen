@@ -378,7 +378,7 @@ TANK_BANK = cells(5761, 4, 0, [CLAY, GRAVEL, STONE])
 
 
 def tank(tid, x0, z0, x1, z1):
-    return {"id": tid, "kind": "water", "seed": 5760 + len(tid), "shape": "pool",
+    return {"id": tid, "kind": "fluid", "seed": 5760 + len(tid), "shape": "pool",
             "points": wander_rect(x0, z0, x1, z1, wobble=1.2, seed=5762),
             "radius": 2, "depth": 3, "level": 7, "shore": 1,
             "bank": TANK_BANK}

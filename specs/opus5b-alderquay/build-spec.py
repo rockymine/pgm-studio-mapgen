@@ -299,7 +299,7 @@ props = [
      "style": "solid", "claimsGround": True, "pave": PAVE,
      "points": [[-30, 68], [-30, 56], [-30, 44], [-28, 32], [-26, 20]]},
 
-    {"id": "backwater", "kind": "water", "seed": 7174, "shape": "pool",
+    {"id": "backwater", "kind": "fluid", "seed": 7174, "shape": "pool",
      "points": lobe(-28, 58, 6, points=11, wobble=0.2, seed=7175),
      "radius": 2, "depth": 2, "shore": 3, "shoreWander": True,
      "bank": cells(7176, 4, 0, [CLAY, GRAVEL, WORN])},

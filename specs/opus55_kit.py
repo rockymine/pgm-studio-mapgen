@@ -141,7 +141,7 @@ def flora(pid, points, coverage=0.3, scale=10, fern=0.25, flowers=0.08, flower_s
 
 
 def pool(pid, points, depth=3, shelf=4, shore=2, bank=None, level=None, layer="ground", edge=1.5):
-    out = {"kind": "water", "id": pid, "shape": "pool", "form": "natural", "layer": layer, "points": points,
+    out = {"kind": "fluid", "id": pid, "shape": "pool", "form": "natural", "layer": layer, "points": points,
            "radius": shelf, "depth": depth, "shore": shore, "shoreWander": True, "edge": edge}
     if bank:
         out["bank"] = bank
@@ -151,7 +151,7 @@ def pool(pid, points, depth=3, shelf=4, shore=2, bank=None, level=None, layer="g
 
 
 def channel(pid, points, radius=3, depth=2, shore=1, bank=None, form="stream", level=None, layer="ground"):
-    out = {"kind": "water", "id": pid, "shape": "channel", "form": form, "layer": layer, "points": points,
+    out = {"kind": "fluid", "id": pid, "shape": "channel", "form": form, "layer": layer, "points": points,
            "radius": radius, "depth": depth, "shore": shore, "shoreWander": True, "edge": 1.5}
     if bank:
         out["bank"] = bank

@@ -83,7 +83,7 @@ finish = {
     "addShapes": [],
     "themes": {}, "mapTheme": "harrow",
     "dressing": {"props": [
-        {"id": "river", "kind": "water", "shape": "channel", "level": POOL, "depth": 4,
+        {"id": "river", "kind": "fluid", "shape": "channel", "level": POOL, "depth": 4,
          "points": [[-54, 0], [-16, -3], [16, 3], [54, 0]], "radius": 11},
     ]},
 }

@@ -137,7 +137,7 @@ as plans and as grids; `docs/gameplay/match-flow.md` §3.2 is what the holes are
 The compiler traces **one outline per connected component**, and the rasterizer gives a contested column to
 the taller add. So a `beck` piece at surface 7 with hub pieces at 12 either side compiles to a shape that
 exists — `barn-7`, four vertices, listed in its group — and never appears in the world. Measured: a transect
-across it read `11 11 12 12 13 13 14` straight over the top, the water prop drawn for its bed sat on the
+across it read `11 11 12 12 13 13 14` straight over the top, the fluid prop drawn for its bed sat on the
 surface like a puddle, and `GET …/preflight` answered **export gate OPEN**.
 
 What cuts it is an `addShapes` entry with **`override: true`**, which moves the shape into the second pass of
@@ -830,12 +830,12 @@ lift at the room's edge. A transect across it reads level, so the transect is th
 
 ### Water fills whatever is level, so the pan is the size of the pool
 
-An `area` mark 34 × 30 at the sump's height is a 34 × 30 lake however small the `water` prop inside
+An `area` mark 34 × 30 at the sump's height is a 34 × 30 lake however small the `fluid` prop inside
 it. Draw the mark at the size of the water and let the surrounding floor sit a few courses over it.
 
-### A water prop fills its own band, not the level it finds
+### A fluid prop fills its own band, not the level it finds
 
-A water prop states the level it fills to, and it fills **its own band** rather than the pan it stands in: a
+A fluid prop states the level it fills to, and it fills **its own band** rather than the pan it stands in: a
 level above the ground around it floods outward to wherever that level still holds, and a level below the
 bed's own floor fills nothing. The bed is carved first and the fill is stated second.
 
@@ -1333,7 +1333,7 @@ card for all of this.
 
 ### A channel's line is the lowest surface its band crosses, and everything over that line is emptied to it
 
-**This is the one sentence most of a water prop's behaviour follows from.** The body takes the lowest surface
+**This is the one sentence most of a fluid prop's behaviour follows from.** The body takes the lowest surface
 its band crosses and empties every column over that line down to it, so **a channel run down a fall is built as
 a trench, not as a beck**. **A bridge is bitten through only when the prop names no layer**, and naming one is
 the whole fix — every prop kind takes the field. `techniques/water` is the worked card.

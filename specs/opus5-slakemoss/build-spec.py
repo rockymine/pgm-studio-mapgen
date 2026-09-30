@@ -320,7 +320,7 @@ PROPS = [
     # player wades in rather than dropping in.  It is drawn clear of the arcade and the
     # slipways, both of which are keepClear, because a pool empties every column inside
     # its outline down to its own line.
-    {"id": "slake", "kind": "water", "seed": 21, "layer": "ground", "shape": "pool",
+    {"id": "slake", "kind": "fluid", "seed": 21, "layer": "ground", "shape": "pool",
      "points": [[-19, -5], [-15, -22], [-2, -29], [10, -26], [17, -13],
                 [18, 4], [14, 21], [1, 28], [-11, 25], [-17, 12]],
      "radius": 3, "depth": 2, "shore": 2, "shoreWander": True, "edge": 0.5,

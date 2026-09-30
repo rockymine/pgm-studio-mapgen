@@ -700,7 +700,7 @@ PROPS = []
 
 # water first: it is the one prop that changes the ground
 PROPS.append({
-    "id": "holm-pool", "kind": "water", "seed": 62, "shape": "pool", "form": "natural",
+    "id": "holm-pool", "kind": "fluid", "seed": 62, "shape": "pool", "form": "natural",
     "points": lobed_ring(-30, 4, 5, 4, 9, 0.10, random.Random(62)),
     "radius": 3, "depth": 3, "level": 13, "edge": 0.6, "shore": 2.5, "shoreWander": True,
     "bank": cell_patches(809, 6, 55, 1, [solid(SAND), solid(SAND), solid(GRAVEL)]),
@@ -809,7 +809,7 @@ PROPS.append({"id": "lily-mid2", "kind": "tree", "seed": 852, "x": 1, "z": -62,
               "style": "lilyraft-2"})
 PROPS.append({"id": "lily-far", "kind": "tree", "seed": 853, "x": 5, "z": -60,
               "style": "lilyraft"})
-# There is no pad on the tarn. A lily pad is a placement like any other and a water prop claims every
+# There is no pad on the tarn. A lily pad is a placement like any other and a fluid prop claims every
 # column of its bed and beach, so one inside the tarn is declined DR-CLAIM: measured twice, at
 # (-34, -54) and at (-38, -50). What carries pads instead is the marsh pans above — water painted as
 # terrain, which claims nothing.

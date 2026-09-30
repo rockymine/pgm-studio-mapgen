@@ -3,7 +3,7 @@
 
   "props": [
     {
-      "kind": "water", "id": "stream", "seed": 4,
+      "kind": "fluid", "id": "stream", "seed": 4,
       "points": [[-52,-116],[-31,-88],[-45,-58],[-23,-30],[-36,-2],[-13,18]],
       "radius": 2, "depth": 2, "form": "Natural", "edge": 1.1,
       "shore": 2, "shoreWander": true,
