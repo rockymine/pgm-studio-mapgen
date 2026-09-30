@@ -1,6 +1,6 @@
 ## ruin-north (made) along x
 TRANSECT 20 stations from (-40, 26) to (-21, 26), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -40,    26)      17       17           17                      
   (  -39,    26)      17       17           17                      
   (  -38,    26)      17       17           17                      
@@ -26,7 +26,7 @@ beside: tree t4 at (-42, 24), boulder b2 at (-37, 24)
 
 ## ruin-north (made) along z
 TRANSECT 33 stations from (-31, 10) to (-31, 42), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -31,    10)      17       17           17                      
   (  -31,    11)      17       17           17  stroke path-hamlet  
   (  -31,    12)      17       17           17  stroke path-hamlet  
@@ -51,8 +51,8 @@ TRANSECT 33 stations from (-31, 10) to (-31, 42), every 1
   (  -31,    31)      17       20           20  storey              
   (  -31,    32)      17       20           20  storey              
   (  -31,    33)      16       20           20  storey              
-  (  -31,    34)      16       16           16                      DROP -4
-  (  -31,    35)      16       16           16                      
+  (  -31,    34)      16       16           17  flora sand-cover-6  DROP -4
+  (  -31,    35)      16       16           17  flora sand-cover-6  
   (  -31,    36)      16       16           16                      
   (  -31,    37)      16       16           16                      
   (  -31,    38)      16       16           16                      
@@ -61,4 +61,4 @@ TRANSECT 33 stations from (-31, 10) to (-31, 42), every 1
   (  -31,    41)      16       16           16                      
   (  -31,    42)      16       16           16                      
 rises 1, falls 1, worst step 4: 1 barrier, 0 scramble, 1 drop — BARRIER +3 at (-31, 18); DROP -4 at (-31, 34) | walked end to end
-beside: stroke path-hamlet at (-29, 10)
+beside: stroke path-hamlet at (-29, 10), flora sand-cover-6 at (-30, 14)

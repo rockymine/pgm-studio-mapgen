@@ -1,6 +1,6 @@
 ## spawn-red (spawn) along x
 TRANSECT 29 stations from (-24, 92) to (4, 92), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -24,    92)                                                    void
   (  -23,    92)                                                    void
   (  -22,    92)                                                    void
@@ -35,7 +35,7 @@ beside: spawn spawn-1 at (-15, 90)
 
 ## spawn-red (spawn) along z
 TRANSECT 16 stations from (-10, 80) to (-10, 95), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -10,    80)      13       13           13  stroke path-front   
   (  -10,    81)      13       13           13  stroke path-front   
   (  -10,    82)      13       13           13  stroke path-front   

@@ -1,6 +1,6 @@
 ## red-0 (wool) along x
 TRANSECT 17 stations from (-48, 62) to (-32, 62), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -48,    62)      10       10           17                      
   (  -47,    62)      10       10           17  wool wool-1         
   (  -46,    62)      10       10           18  wool wool-1         
@@ -23,7 +23,7 @@ beside: wool wool-1 at (-47, 60), redstoneline 0 at (-41, 60), stroke path-wool-
 
 ## red-0 (wool) along z
 TRANSECT 25 stations from (-44, 50) to (-44, 74), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -44,    50)                                                    void
   (  -44,    51)                                                    void
   (  -44,    52)                                                    void

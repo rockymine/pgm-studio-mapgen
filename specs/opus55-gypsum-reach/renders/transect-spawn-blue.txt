@@ -1,6 +1,6 @@
 ## spawn-blue (spawn) along x
 TRANSECT 31 stations from (80, -38) to (110, -38), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (   80,   -38)      19       19           19                      
   (   81,   -38)      19       19           19                      
   (   82,   -38)      19       19           20  flora oasis-cover#1  
@@ -37,7 +37,7 @@ beside: flora oasis-cover#1 at (82, -39), spawn sp#1 at (90, -40)
 
 ## spawn-blue (spawn) along z
 TRANSECT 25 stations from (96, -48) to (96, -24), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (   96,   -48)                                                    void
   (   96,   -47)      21       21           21                      
   (   96,   -46)      21       21           21                      

@@ -1,6 +1,6 @@
 ## light_blue-1 (wool) along x
 TRANSECT 25 stations from (-44, -74) to (-20, -74), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -44,   -74)                                                    void
   (  -43,   -74)                                                    void
   (  -42,   -74)                                                    void
@@ -27,11 +27,11 @@ TRANSECT 25 stations from (-44, -74) to (-20, -74), every 1
   (  -21,   -74)      12       12           12  stroke path-wool-b2#1  
   (  -20,   -74)      11       11           11                      -1
 rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: wool wool-2#1 at (-35, -76), redstoneline 1#1 at (-29, -76), stroke path-wool-b2#1 at (-26, -76), water east-channel#1 at (-19, -76)
+beside: wool wool-2#1 at (-35, -76), redstoneline 1#1 at (-29, -76), stroke path-wool-b2#1 at (-26, -76), fluid east-channel#1 at (-18, -76)
 
 ## light_blue-1 (wool) along z
 TRANSECT 25 stations from (-32, -86) to (-32, -62), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  -32,   -86)                                                    void
   (  -32,   -85)                                                    void
   (  -32,   -84)                                                    void

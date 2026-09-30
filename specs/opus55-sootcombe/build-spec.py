@@ -39,6 +39,10 @@ and a grass patch lies on each frontline's west front.
 Seventh pass, after the author's notes 75–77: the mid stone's corners and the frontline's front corners are
 chamfered, with the mid band reaching into the land; the west wool's wall, inner approach and room stand a cell
 further out with grass across the wall; and a channel with lily pads splits the east wool's lane in a dip.
+
+Eighth pass, once the studio grew what the board had worked round: the archer tower's ladder is stated once and
+the fan turns it; the chest the author asked for in note 45 stands on the platform with a Power I bow among four
+stacks of arrows; the willows are the studio's own; and the channel is two wide on both teams.
 """
 import json, os, sys
 
@@ -46,7 +50,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(HERE)), "tools", "sculpt"))
 from opus55_kit import (S, cell, noise, depth, by_slope, theme, one, ring, patch, path, tree, flora,
-                        boulder, boulder_style, copied_trees, made, coast_edits, willow, channel)
+                        boulder, boulder_style, copied_trees, made, coast_edits, channel, chest)
 import props
 
 SLUG = "opus55-sootcombe"
@@ -131,12 +135,10 @@ regrowth = theme(by_slope((30, depth(noise([WORN, S(2), S(2), S(2)], 2, 12), S(3
 timber = one(S(5, 5))
 post = one(S(162, 1))
 # The archer tower's platform (note 45): spruce planks, nether-brick fence, and a ladder set against a beam.
-# The mirror turns a layer and not a block's data, so each team's ladder is stated with its own facing:
-# red's faces north onto its south beam, blue's image faces south onto its north beam.
+# The ladder faces north onto its south beam; the fan turns it with the layer, so the image faces its own.
 planks = one(S(5, 1))
 fence = one(S(113))
-ladder_n = one(S(65, 2))
-ladder_s = one(S(65, 3))
+ladder = one(S(65, 2))
 
 # The paths (note 6): dirt, coarse dirt and spruce planks, with very little granite — one entry in seven.
 PAVE = cell([S(3), S(3, 1), S(5, 1), S(3), S(3, 1), S(5, 1), S(1, 1)], size=2, seed=21)
@@ -222,9 +224,8 @@ rail = props.LayerBuilder("archer-rail")
 for x0, z0, x1, z1 in [(AX + 1, AZ, AX + AW - 1, AZ + 1), (AX + 1, AZ + AW - 1, AX + AW - 1, AZ + AW),
                        (AX, AZ + 1, AX + 1, AZ + AW - 1), (AX + AW - 1, AZ + 1, AX + AW, AZ + AW - 1)]:
     rail.rect(x0, z0, x1, z1, FLOOR + 5, 1, "fence", keepClear=False)
-climb = props.LayerBuilder("archer-ladder", mirrors=False)
-climb.rect(HX, HZ, HX + 1, HZ + 1, FLOOR, 5, "ladder-n", keepClear=False)
-climb.rect(-HX - 1, -HZ - 1, -HX, -HZ, FLOOR, 5, "ladder-s", keepClear=False)
+climb = props.LayerBuilder("archer-ladder")
+climb.rect(HX, HZ, HX + 1, HZ + 1, FLOOR, 5, "ladder", keepClear=False)
 deck = props.LayerBuilder("archer-deck")
 deck.rect(AX - 1, AZ - 1, AX + AW + 1, AZ + AW + 1, FLOOR + 9, 1, "timber")
 layers += made([legs.done(), frame.done(), floor_.done(), rail.done(), climb.done(), deck.done()],
@@ -232,7 +233,7 @@ layers += made([legs.done(), frame.done(), floor_.done(), rail.done(), climb.don
 
 # Lily pads on the channel (note 77), a course over its water line at y10.
 pads = props.LayerBuilder("lily-pads")
-for x, z in [(16, 70), (18, 73), (17, 76), (16, 78)]:
+for x, z in [(16, 70), (17, 73), (17, 76), (16, 78)]:
     pads.rect(x, z, x + 1, z + 1, 11, 1, "lily", keepClear=False)
 layers += made(pads.done(), "lily-pads")
 
@@ -252,9 +253,10 @@ shapes = [
 ]
 
 # --- dressing ------------------------------------------------------------------------------------------
-# One willow in the regrowth and a smaller one at the mid stone's edge (notes 62, 63). The tree library has
-# no willow, so the kit writes one as a copied recipe: leaves hanging in curtains from a flattened crown.
-styles = {"willow": willow(11, 5, seed=3, gaps=0.45), "willow-small": willow(9, 4, seed=7)}
+# One willow in the regrowth and smaller ones at the mid stone's edge, on the west rise and at the terrace
+# (notes 62, 63, 64, 70): the studio's willow, dark-oak bark under oak leaves hanging from the crown's rim.
+styles = {"willow": {"kind": "tree", "form": "template", "species": "willow", "height": 11},
+          "willow-small": {"kind": "tree", "form": "template", "species": "willow", "height": 9}}
 # The boulders (notes 34 and 33), small and medium, all of cyan stained clay, which the 1.8 textures draw
 # as a dark grey.
 # note 33 again: andesite and cobblestone, whose texture stands off the flat clay ground; two larger rocks on
@@ -272,9 +274,10 @@ props_ = [
     path("path-wool-b", 53, [[-6, 75], [8, 74], [13, 74]], PAVE, radius=2, wander=1),
     path("path-wool-b2", 54, [[22, 74], [27, 74]], PAVE, radius=2, wander=0),
     # note 77: a channel across the east wool's lane, in a dip, coast to coast so an attacker has to cross
-    # it. It runs at x 17, between the wall's keep-out and the room's door approach: a kept column is filled
-    # and never cut, so a channel over the approach carved one column of water out of four.
-    channel("east-channel", [[17, 66], [17, 82]], radius=1.5, depth=2, shore=1, form="canal",
+    # it. Its bed is x 16..17 on both teams: the wall's keep-out is x 15, and blue's door approach reaches the
+    # image of x 18, and a kept column is filled and never cut, so a channel over either carves no water there
+    # (DR-HELD) and would run narrower on one team than the other.
+    channel("east-channel", [[17, 66], [17, 82]], radius=1.0, depth=2, shore=1, form="canal",
             bank=cell([S(13), S(3, 1), S(1, 1)], 2, 77)),
     # boulders on the frontline where the timber stacks stood, and on the mid stone where the engine house did
     boulder("front-1", -11, 27, "rock-medium", 21), boulder("front-2", 5, 29, "rock-small", 22),
@@ -285,6 +288,11 @@ props_ = [
     # two more willows (notes 64, 70): on the west rise's top, and at the terrace's north edge by the stem
     tree("willow-rise", -18, 74, "willow-small", 4),
     tree("willow-terrace", 2, 79, "willow-small", 5),
+    # the archer's chest on the tower's platform (note 45): a Power I bow in the middle slot and four stacks of
+    # eight arrows round it, in the corner away from the ladder's hole, opening onto the platform
+    chest("archer-chest", AX + 1, AZ + 1, [("bow", 1, [("power", 1)], 13), ("arrow", 8, None, 4),
+                                           ("arrow", 8, None, 12), ("arrow", 8, None, 14),
+                                           ("arrow", 8, None, 22)], facing="posZ", y=FLOOR + 5),
     flora("regrowth-cover", [[-21, 41], [-12, 41], [-12, 68], [-21, 68]], coverage=0.3, scale=6, fern=0.4,
           flowers=0.03, tall=0.02, seed=8),
 ]
@@ -294,7 +302,7 @@ finish = {
     "authors": ["Opus 5.5"],
     "biome": {"kind": "solid", "id": 32},
     "themes": {"ash": ash, "regrowth": regrowth, "timber": timber, "post": post, "planks": planks,
-               "fence": fence, "lily": one(S(111)), "ladder-n": ladder_n, "ladder-s": ladder_s},
+               "fence": fence, "lily": one(S(111)), "ladder": ladder},
     "mapTheme": "ash",
     "relief": relief,
     # The outer coasts only. The frontline's face to the band, the wall seams at x -24 and x 12, and the

@@ -1,0 +1,121 @@
+## wash-lava (fluid) along x
+TRANSECT 50 stations from (-71, -2) to (-22, -2), every 1
+  station        ground  surface  fluid  top  standing            step
+  (  -71,    -2)      22       22           46  destroyable mon     
+  (  -70,    -2)      22       22           47  destroyable mon     
+  (  -69,    -2)      22       22           46  destroyable mon     
+  (  -68,    -2)      22       22           22  destroyable mon     
+  (  -67,    -2)      22       22           22                      
+  (  -66,    -2)      22       22           22  stroke path-bridge-west  
+  (  -65,    -2)      22       22           22  stroke path-bridge-west  
+  (  -64,    -2)      22       22           22  stroke path-bridge-west  
+  (  -63,    -2)      22       22           22  stroke path-bridge-west  
+  (  -62,    -2)      22       22           22  stroke path-bridge-west  
+  (  -61,    -2)      22       22           22  stroke path-bridge-west  
+  (  -60,    -2)      21       21           21  stroke path-bridge-west  -1
+  (  -59,    -2)      21       21           21  stroke path-bridge-west  
+  (  -58,    -2)      21       21           21  stroke path-bridge-west  
+  (  -57,    -2)      20       20           20  stroke path-bridge-west  -1
+  (  -56,    -2)      20       20           20  stroke path-bridge-west  
+  (  -55,    -2)      19       19           19  stroke path-bridge-west  -1
+  (  -54,    -2)      17       19           19  storey              
+  (  -53,    -2)      17       19           19  storey              
+  (  -52,    -2)      15       19           19  storey              
+  (  -51,    -2)      14       19     14    19  storey              
+  (  -50,    -2)      13       19     14    19  storey              
+  (  -49,    -2)      13       19     14    19  storey              
+  (  -48,    -2)      13       19     14    19  storey              
+  (  -47,    -2)      13       19     14    19  storey              
+  (  -46,    -2)      13       19     14    19  storey              
+  (  -45,    -2)      13       19     14    19  storey              
+  (  -44,    -2)      12       19     14    19  storey              
+  (  -43,    -2)      12       19     14    19  storey              
+  (  -42,    -2)      12       19     14    19  storey              
+  (  -41,    -2)      12       19     14    19  storey              
+  (  -40,    -2)      12       19     14    19  storey              
+  (  -39,    -2)      12       19     14    19  storey              
+  (  -38,    -2)      12       19     14    19  storey              
+  (  -37,    -2)      12       19     14    19  storey              
+  (  -36,    -2)      12       19     14    19  storey              
+  (  -35,    -2)      14       19     14    19  storey              
+  (  -34,    -2)      15       18           18  storey              -1
+  (  -33,    -2)      16       18           18  storey              
+  (  -32,    -2)      17       17           17  stroke path-bridge-east  -1
+  (  -31,    -2)      17       17           17  stroke path-bridge-east  
+  (  -30,    -2)      17       17           17  stroke path-bridge-east  
+  (  -29,    -2)      17       17           17  stroke path-bridge-east  
+  (  -28,    -2)      16       16           16  stroke path-bridge-east  -1
+  (  -27,    -2)      16       16           16  stroke path-bridge-east  
+  (  -26,    -2)      16       16           16  stroke path-bridge-east  
+  (  -25,    -2)      16       16           16  stroke path-bridge-east  
+  (  -24,    -2)      16       16           16                      
+  (  -23,    -2)      16       16           16                      
+  (  -22,    -2)      16       16           16                      
+rises 0, falls 6, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable mon at (-72, -4), stroke path-bridge-west at (-66, -3), stroke path-bridge-east at (-33, -4)
+
+## wash-lava (fluid) along z
+TRANSECT 60 stations from (-47, -31) to (-47, 28), every 1
+  station        ground  surface  fluid  top  standing            step
+  (  -47,   -31)      19       19           19  tree t7             
+  (  -47,   -30)      19       19           19  tree t7             
+  (  -47,   -29)      19       19           19  tree t7             
+  (  -47,   -28)      19       19           19  stroke path-spring  
+  (  -47,   -27)      19       19           19  stroke path-spring  
+  (  -47,   -26)      19       19           19  stroke path-spring  
+  (  -47,   -25)      19       19           19                      
+  (  -47,   -24)      19       19           19                      
+  (  -47,   -23)      19       19           19                      
+  (  -47,   -22)      19       19           19                      
+  (  -47,   -21)      18       18           18                      -1
+  (  -47,   -20)      17       17           17                      -1
+  (  -47,   -19)      15       15           15                      -2
+  (  -47,   -18)      14       14     14    14  fluid wash-lava     -1
+  (  -47,   -17)      13       13     14    14  fluid wash-lava     -1
+  (  -47,   -16)      13       13     14    14  fluid wash-lava     
+  (  -47,   -15)      13       13     14    14  fluid wash-lava     
+  (  -47,   -14)      13       13     14    14  fluid wash-lava     
+  (  -47,   -13)      13       13     14    14  fluid wash-lava     
+  (  -47,   -12)      13       13     14    14  fluid wash-lava     
+  (  -47,   -11)      13       13     14    14  fluid wash-lava     
+  (  -47,   -10)      13       13     14    14  fluid wash-lava     
+  (  -47,    -9)      13       13     14    14  fluid wash-lava     
+  (  -47,    -8)      13       13     14    14  fluid wash-lava     
+  (  -47,    -7)      13       13     14    14  fluid wash-lava     
+  (  -47,    -6)      13       13     14    14  fluid wash-lava     
+  (  -47,    -5)      13       13     14    14  fluid wash-lava     
+  (  -47,    -4)      13       20     14    20  storey              BARRIER +7
+  (  -47,    -3)      13       19     14    19  storey              -1
+  (  -47,    -2)      13       19     14    19  storey              
+  (  -47,    -1)      13       19     14    19  storey              
+  (  -47,     0)      13       20     14    20  storey              +1
+  (  -47,     1)      13       13     14    14  fluid wash-lava     DROP -7
+  (  -47,     2)      13       13     14    14  fluid wash-lava     
+  (  -47,     3)      13       13     14    14  fluid wash-lava     
+  (  -47,     4)      12       12     14    14  fluid wash-lava     -1
+  (  -47,     5)      12       12     14    14  fluid wash-lava     
+  (  -47,     6)      12       12     14    14  fluid wash-lava     
+  (  -47,     7)      12       12     14    14  fluid wash-lava     
+  (  -47,     8)      12       12     14    14  fluid wash-lava     
+  (  -47,     9)      12       12     14    14  fluid wash-lava     
+  (  -47,    10)      12       12     14    14  fluid wash-lava     
+  (  -47,    11)      12       12     14    14  fluid wash-lava     
+  (  -47,    12)      12       12     14    14  fluid wash-lava     
+  (  -47,    13)      12       12     14    14  fluid wash-lava     
+  (  -47,    14)      12       12     14    14  fluid wash-lava     
+  (  -47,    15)      14       14     14    14  fluid wash-lava     scramble +2
+  (  -47,    16)      15       15           15  tree t4             +1
+  (  -47,    17)      17       17           17  tree t4             scramble +2
+  (  -47,    18)      17       17           17  tree t4             
+  (  -47,    19)      17       17           21  tree t4             
+  (  -47,    20)      17       17           21  tree t4             
+  (  -47,    21)      17       17           22  tree t4             
+  (  -47,    22)      17       17           20  tree t4             
+  (  -47,    23)      17       17           22  tree t4             
+  (  -47,    24)      17       17           23  tree t4             
+  (  -47,    25)      17       17           22  tree t4             
+  (  -47,    26)      17       17           17  tree t4             
+  (  -47,    27)      16       16           16  tree t4             -1
+  (  -47,    28)      16       16           16  tree t5             
+rises 5, falls 9, worst step 7: 1 barrier, 2 scramble, 1 drop — BARRIER +7 at (-47, -4); DROP -7 at (-47, 1); scramble +2 at (-47, 15); scramble +2 at (-47, 17) | walked end to end
+beside: tree t7 at (-49, -33), stroke path-spring at (-46, -29), fluid wash-lava at (-49, -19), flora sand-cover-7 at (-49, 14), tree t4 at (-49, 15), stroke path-oasis at (-45, 16), tree t5 at (-49, 28)
