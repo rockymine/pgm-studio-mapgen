@@ -216,6 +216,11 @@ document, the authors applied over that projection. The compile before it needs 
 are whole before anything is stored — which is what lets the store be one call, and what keeps the slug the
 author's rather than one minted per attempt.
 
+An `editShapes` or a `bendShapes` changes the stored board after that store has finished it, so the driver
+posts `POST /map/{slug}/sketch/finish` once after the last of them and prints what it answers: the store's
+counts and complaints describe the compiled outline, and the second finish judges — and writes the ground of
+— the board the run actually left.
+
 Everything after it reads the stored map, and one of those reads has to be there rather than earlier:
 `sketch/columns` is asked **after** the store because `DR-KEEP` reads the spawn doors' approaches and the goal
 rings, which come off the intent.
