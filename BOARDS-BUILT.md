@@ -96,6 +96,7 @@ Beside them sits one world from the same days that is not one of the fifteen:
 | `tallow-kilnrow` | dtm · dtc | Opus | a destroy board on a lime works |
 | `corvid-hollow` | dtm | Sonnet | a destroy board |
 | `sable-marsh` | ctw | Sonnet | a CTW board |
+| `sonnet-skerry` | ctw | Sonnet | a plan-only tiny capture board: nine islands, a fused centre island, stepping stones to one wool, a bridged terrace to the other; unthemed, stored on the deployed studio as `skerry` |
 | `ashfall-scar` | dtm · dtc | Sonnet | a DTC + DTM board |
 | `marlstone-steps` | ctw | Opus 5 | a white marl hillside in five terraces cut by two void ravines, four tilted ramps joining them |
 | `basalt-reach` | dtm · dtc | Opus 5 | a black basalt platform with sea stacks, cut by a `subtract` channel; permanent void with no build zones |

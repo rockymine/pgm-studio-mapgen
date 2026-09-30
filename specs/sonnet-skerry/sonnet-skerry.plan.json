@@ -1,0 +1,213 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Skerry",
+  "authors": [
+   "Claude"
+  ]
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 8,
+  "surface": 10
+ },
+ "pieces": [
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -2,
+    9,
+    4,
+    3
+   ],
+   "surface": 12
+  },
+  {
+   "id": "keep",
+   "role": "piece",
+   "rect": [
+    -3,
+    7,
+    6,
+    2
+   ],
+   "surface": 11
+  },
+  {
+   "id": "front",
+   "role": "piece",
+   "rect": [
+    -3,
+    5,
+    7,
+    2
+   ],
+   "surface": 10
+  },
+  {
+   "id": "isle-c",
+   "role": "piece",
+   "rect": [
+    -1,
+    0,
+    2,
+    2
+   ],
+   "surface": 11
+  },
+  {
+   "id": "stone-e",
+   "role": "piece",
+   "rect": [
+    3,
+    0,
+    2,
+    2
+   ],
+   "surface": 10
+  },
+  {
+   "id": "terrace-a",
+   "role": "piece",
+   "rect": [
+    -9,
+    5,
+    3,
+    4
+   ],
+   "surface": 9
+  },
+  {
+   "id": "wool-a",
+   "role": "wool-room",
+   "rect": [
+    -9,
+    2,
+    3,
+    3
+   ],
+   "surface": 9
+  },
+  {
+   "id": "terrace-b",
+   "role": "piece",
+   "rect": [
+    7,
+    4,
+    3,
+    3
+   ],
+   "surface": 9
+  },
+  {
+   "id": "wool-b",
+   "role": "wool-room",
+   "rect": [
+    7,
+    1,
+    3,
+    3
+   ],
+   "surface": 9
+  }
+ ],
+ "zones": [
+  {
+   "id": "front-gap",
+   "rect": [
+    -3,
+    2,
+    6,
+    3
+   ]
+  },
+  {
+   "id": "stone-a",
+   "rect": [
+    1,
+    0,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "stone-b",
+   "rect": [
+    5,
+    0,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "west-link",
+   "rect": [
+    -6,
+    5,
+    3,
+    4
+   ]
+  },
+  {
+   "id": "east-link",
+   "rect": [
+    4,
+    3,
+    3,
+    3
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     7,
+     7
+    ],
+    "facing": "front",
+    "footprint": [
+     1,
+     1,
+     10,
+     10
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-a",
+    "at": [
+     6,
+     6
+    ]
+   },
+   {
+    "id": "wool-2",
+    "piece": "wool-b",
+    "at": [
+     6,
+     6
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "spawn",
+    "at": [
+     17,
+     6
+    ]
+   }
+  ],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": []
+}
