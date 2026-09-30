@@ -40,7 +40,7 @@ bodies cut out of the `tree-showcase` world, which ride in `trees.json` beside t
 | `an-unmarked-wall` | the same wall without the field | both placed, **standing on its head** |
 | `a-goal-clearance` | a monument, oaks at 9, 10, 11, 12 | 9 and 10 declined (`OB19`) |
 | `flora-overlay` | a road, a rock, and an overlay over both | 1,591 cells written, nothing declined |
-| `a-copied-tree` | `tree-showcase-r2-1` and `-r3-1`, and a template | 144 and 147 cells against **67** |
+| `a-copied-tree` | `large-pine-1` and `large-pine-4`, and a template | 144 and 147 cells against **67** |
 | `a-body-s-foot` | both bodies three off one road | the nine-cell foot declined, the one-cell placed |
 | `a-copied-crown` | pairs of `showcase-tall` at 2, 3, 8, 16 | **2 placed, 3 declined** — a hole in the crown |
 | `props-on-a-grade` | a 63° face with an oak and a rock on it | both placed, the rock complained about |
@@ -128,7 +128,7 @@ cells the pass left free. A wood's floor belongs to it and to the theme, not to 
 ## A tree somebody built
 
 **A copied recipe has no species and no nominal anything.** `showcase-tall` and `showcase-giant` are
-`tree-showcase-r2-1` and `-r3-1`, cut out of that world with `seed-trees.cs` and carried here as 299 and
+`large-pine-1` and `large-pine-4` (bands `r2` and `r3`), cut out of that world with `seed-trees.cs` and carried here as 299 and
 412 blocks of `[x, y, z, id, data]`. What they look like is what was built; the studio's part is to seat
 them, turn them round the symmetry and keep their leaves.
 

@@ -10,7 +10,7 @@ driven board without driving it again. Every grid is the studio's own answer on 
 `sketch/dressing`
 — so what a column carries, which layer drew it and what a goal keeps clear come from the build's own
 record rather than from a sidecar. What this pass adds is the extent: a transect through every spawn,
-goal, house, water prop, boulder and made thing on the board, its box taken from the documents, and a
+goal, house, fluid prop, boulder and made thing on the board, its box taken from the documents, and a
 route from every spawn to every goal, so the read whose extent is the feature's own is taken without
 anyone asking for it.
 
@@ -34,7 +34,7 @@ BESIDE = 2
 
 
 def features(intent, layout):
-    """Every thing on the board a transect is worth taking through: spawns, goals, houses, water, boulders,
+    """Every thing on the board a transect is worth taking through: spawns, goals, houses, fluids, boulders,
     made things. Each as `(id, kind, (x0, z0, x1, z1))` in blocks."""
     found = []
     for spawn in intent.get("spawns") or []:
@@ -55,13 +55,13 @@ def features(intent, layout):
                 xs = [c[0] for c in corners]
                 zs = [c[1] for c in corners]
                 found.append((prop["id"], "house", (min(xs), min(zs), max(xs), max(zs))))
-        elif prop.get("kind") == "water":
+        elif prop.get("kind") == "fluid":
             points = prop.get("points") or ([[prop["x"], prop["z"]]] if "x" in prop else [])
             if points:
                 xs = [p[0] for p in points]
                 zs = [p[1] for p in points]
                 pad = int(prop.get("radius") or 4) + 2
-                found.append((prop["id"], "water", (min(xs) - pad, min(zs) - pad, max(xs) + pad, max(zs) + pad)))
+                found.append((prop["id"], "fluid", (min(xs) - pad, min(zs) - pad, max(xs) + pad, max(zs) + pad)))
         elif prop.get("kind") == "boulder" and "x" in prop:
             found.append((prop["id"], "boulder", (prop["x"] - 4, prop["z"] - 4, prop["x"] + 4, prop["z"] + 4)))
     made = {}

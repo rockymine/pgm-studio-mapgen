@@ -219,7 +219,7 @@ TREES = [
 # One rock: a bank eight blocks wide between a road and a gill has no room for an erratic beside an oak.
 BOULDERS = [("stone-2", 33, -11, "shelf")]
 props = [
-    {"id": "beck", "kind": "water", "seed": 1, "shape": "channel", "form": "natural", "radius": 4, "depth": 2,
+    {"id": "beck", "kind": "fluid", "seed": 1, "shape": "channel", "form": "natural", "radius": 4, "depth": 2,
      "edge": 0.8, "shore": 2, "shoreWander": True, "points": BECK,
      "bank": voronoi([(GRAVEL, 1), (COARSE, 1), (SAND, 1)], 5, 6)},
     house("bothy", -60, -38, -52, -31, "croft", "posX"),

@@ -415,7 +415,7 @@ dressing = {
         # flight is `keepClear` and cuts its own column, so a channel reaching it leaves the
         # water standing against an open face — `DR-DRY`, which counts a column the board
         # drew and then left open and passes over the void at the rim.
-        {"id": "fleet", "kind": "water", "seed": 61, "layer": "ground",
+        {"id": "fleet", "kind": "fluid", "seed": 61, "layer": "ground",
          "shape": "channel", "form": "canal",
          "points": [[-32, -91], [-24, -88], [-16, -88], [-8, -90]],
          "radius": 3, "depth": 3, "shore": 2, "shoreWander": True, "edge": 1,

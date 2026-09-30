@@ -141,7 +141,7 @@ def flora(pid, points, coverage=0.3, scale=10, fern=0.25, flowers=0.08, flower_s
 
 
 def pool(pid, points, depth=3, shelf=4, shore=2, bank=None, level=None, layer="ground", edge=1.5):
-    out = {"kind": "water", "id": pid, "shape": "pool", "form": "natural", "layer": layer, "points": points,
+    out = {"kind": "fluid", "id": pid, "shape": "pool", "form": "natural", "layer": layer, "points": points,
            "radius": shelf, "depth": depth, "shore": shore, "shoreWander": True, "edge": edge}
     if bank:
         out["bank"] = bank
@@ -151,7 +151,7 @@ def pool(pid, points, depth=3, shelf=4, shore=2, bank=None, level=None, layer="g
 
 
 def channel(pid, points, radius=3, depth=2, shore=1, bank=None, form="stream", level=None, layer="ground"):
-    out = {"kind": "water", "id": pid, "shape": "channel", "form": form, "layer": layer, "points": points,
+    out = {"kind": "fluid", "id": pid, "shape": "channel", "form": form, "layer": layer, "points": points,
            "radius": radius, "depth": depth, "shore": shore, "shoreWander": True, "edge": 1.5}
     if bank:
         out["bank"] = bank
@@ -174,7 +174,7 @@ def boulder_style(rock, form="round", size=3, mossy=False):
 
 
 def copied_trees(specdir, names):
-    """The copied tree recipes a board plants, by library name (`tree-showcase-r13-2`), cached in
+    """The copied tree recipes a board plants, by library name (`birch-2`), cached in
     `<specdir>/trees.json` so the board rebuilds without the network. Returns {name: recipe}."""
     cache_path = os.path.join(specdir, "trees.json")
     cache = json.load(open(cache_path)) if os.path.exists(cache_path) else {}
@@ -190,7 +190,9 @@ def copied_trees(specdir, names):
 
 
 def willow(height=11, radius=5, seed=1, gaps=0.2):
-    """A willow as a copied tree recipe, since the tree library has none: an oak trunk with four short
+    """A willow written block by block. The studio grows one as a template — `{"kind": "tree", "form":
+    "template", "species": "willow", "height": 11}` — and the library's `willow-1`…`willow-5` are the
+    author's own; this is the hand-written body the template was taken from: an oak trunk with four short
     branches, a flattened dome of oak leaves, and curtains of leaves hanging from the crown's rim to within a
     block or two of the ground, `gaps` of the rim's columns left open. Leaves are data 4, which does not
     decay."""

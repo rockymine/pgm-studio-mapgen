@@ -277,7 +277,7 @@ props = [
     # the water that has come up in the bottom of it
     # The water fills whatever is level, so the **pan** is the size of the pool: an `area` mark at
     # the sump's own level, small, with the working floor four courses over it all round.
-    {"id": "the-sump", "kind": "water", "seed": 5, "form": "natural",
+    {"id": "the-sump", "kind": "fluid", "seed": 5, "form": "natural",
      "points": [[-5, -3], [0, -4], [5, -2], [4, 3], [-1, 4], [-5, 2], [-5, -3]],
      "radius": 3.0, "depth": 2, "edge": 0.8, "shore": 3, "shoreWander": True,
      "bank": voronoi(15, 4, [(CLAY, 1), (CLAY_LGREY, 1), (GRAVEL, 1)])},

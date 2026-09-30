@@ -488,11 +488,11 @@ def dressing():
     styles["barn"] = {"kind": "house", "shell": barn_house()}
     styles["erratic"] = {"kind": "boulder", "form": "round", "size": 2.5, "mossy": False,
                          "rock": cell(81, 3, DIORITE, DIORITE, POL_DIORITE)}
-    pond = {"id": "pond", "kind": "water", "layer": "ground", "shape": "pool", "form": "natural", "seed": 90,
+    pond = {"id": "pond", "kind": "fluid", "layer": "ground", "shape": "pool", "form": "natural", "seed": 90,
             "points": POND_RING, "radius": 3, "depth": 3,
             "shore": 2, "shoreWander": True, "edge": 1.5, "bank": cell(91, 2, COARSE, RED_SAND, HARD_CLAY)}
     px0, pz0, px1, pz1 = CISTERN_POOL
-    cistern = {"id": "cistern-pool", "kind": "water", "layer": "cistern", "shape": "pool", "form": "canal",
+    cistern = {"id": "cistern-pool", "kind": "fluid", "layer": "cistern", "shape": "pool", "form": "canal",
                "seed": 92, "points": rect_ring(px0, pz0, px1, pz1), "radius": 1, "depth": 2, "shore": 0,
                "bank": STONE_BRICK}
     cover = {"id": "ground-cover", "kind": "flora", "seed": 95,

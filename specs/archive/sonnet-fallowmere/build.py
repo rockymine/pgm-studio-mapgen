@@ -247,7 +247,7 @@ for name, shapes in plane:
     layout["layers"].append(prop_layer(f"plane-{name}", "plane", shapes))
 
 layout["dressing"] = {"props": [
- {"id": "canal-water", "kind": "water", "seed": 9, "layer": "ground", "shape": "pool", "points": S0,
+ {"id": "canal-water", "kind": "fluid", "seed": 9, "layer": "ground", "shape": "pool", "points": S0,
   "radius": 6, "depth": 8, "shore": 1, "shoreWander": False, "edge": 0.5, "level": WATER,
   "bank": {"kind": "cell", "seed": 91, "cellSize": 4, "jitter": 25, "warp": 1,
            "palette": [GRAVEL, COARSE, solid(12, 0)], "rise": 0}},

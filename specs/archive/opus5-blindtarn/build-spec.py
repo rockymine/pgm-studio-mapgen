@@ -172,7 +172,7 @@ neck_e = None
 
 # The tarn itself. A sink is applied over the ground the relief solved, like a
 # raise, so it is the one instrument that can cut a LEVEL floor inside a push
-# — and level is what a frozen lake is. It is ice rather than a water prop
+# — and level is what a frozen lake is. It is ice rather than a fluid prop
 # because a pool takes the lowest surface its body crosses as its line and
 # empties every column above it, so water drawn on a dish digs a shaft
 # whatever depth is asked for (DR-BANK), and because a board this cold has a

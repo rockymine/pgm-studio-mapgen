@@ -186,14 +186,14 @@ FIRS = [(-100, -7, "fir-tall-6"), (-63, 2, "fir-tall-5"), (-37, 9, "fir-small-5"
         (-101, 28, "fir-tall-8"), (-86, 35, "fir-tall-7"), (-52, -67, "fir-tall-6"), (-35, -67, "fir-tall-7"),
         (-65, -43, "fir-small-1"), (-32, -36, "fir-small-2"), (-115, 7, "fir-small-2"), (-119, 30, "fir-small-1"),
         (-27, 27, "fir-small-5")]
-# No rock stands in the race: the water prop claims its whole bed and the quay walls keep their band clear,
+# No rock stands in the race: the fluid prop claims its whole bed and the quay walls keep their band clear,
 # so every boulder brushed into the bed by hand is a boulder the studio refuses (review/fable-millrace-revamp.md).
 BOULDERS = [("erratic-round", -10, 80, "erratic"), ("erratic-broken", -76, 86, "erratic"), ("erratic-shelf", -56, 93, "shelf"),
             ("erratic-cairn", -6, 115, "bed-rock"), ("erratic-crag", -60, 12, "erratic"), ("erratic-cobble", -118, 23, "bed-rock"),
             ("erratic-ledge", -35, -54, "shelf"), ("erratic-stack", -66, -54, "bed-rock")]
 
 props = [
-    {"id": "race-water", "kind": "water", "seed": 7, "layer": "ground", "shape": "pool", "points": S0,
+    {"id": "race-water", "kind": "fluid", "seed": 7, "layer": "ground", "shape": "pool", "points": S0,
      "radius": 26, "depth": 10, "shore": 1, "shoreWander": False, "edge": 0.6, "level": 25, "bank": GRAVEL},
     # The spawn quarter: the crofts moved back and west, the way the author moved them, held to the studio's
     # footprint cap where the author's halls exceed it.

@@ -531,7 +531,7 @@ HOUSES = [
 
 WATER = [
     # the mere in the hollow west of the road, the one place on the board water can stand
-    {"id": "w-mere", "kind": "water", "seed": 61, "shape": "pool",
+    {"id": "w-mere", "kind": "fluid", "seed": 61, "shape": "pool",
      "points": [[-36, 18], [-32, 17], [-30, 21], [-33, 24], [-37, 23]],
      "radius": 2.0, "depth": 2.0},
 ]

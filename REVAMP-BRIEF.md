@@ -166,7 +166,7 @@ Millrace builds taught, and the list is short enough to check:
 - a theme is scoped by shape and the smaller shape wins a contested cell, so a bed under water is a polygon
   at the bank's own height carrying the bed theme and no geometry;
 - every prop keeps 21 blocks off a goal (`OB19`) and off a spawn's ground, out of the lane in front of a door,
-  clear of a water prop's bed, three blocks beyond a road's band, and a block beyond a house's footprint;
+  clear of a fluid prop's bed, three blocks beyond a road's band, and a block beyond a house's footprint;
 - a house at a bench's edge raises `WX11` for the face its foundation fills; give it a bench of its own with
   an `area` mark held flat;
 - on half a box the three goal bands cannot all hold at the plan tier (`GENERATION-NOTES.md` has the

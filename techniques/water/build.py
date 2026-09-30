@@ -1,10 +1,11 @@
-"""Writes water.layout.json — eight panels of water asked for eight ways.
+"""Writes water.layout.json — eleven panels of water asked for eleven ways.
 
 Water cannot drape on a slope the way gravel can, so a body of water is not a finish over the ground but a
-shape taken out of it: a carved bed under a level fill. Row 1 is the four things that shape can be — a
-beach, a pond, a canal against a stream, and a basin dug in the sketch and filled by a stated line. Row 2
-is the four surprises: a pan drawn bigger than its water, the same pan drawn right, a deck that dries a
-beck out, and the two channels that carry it under.
+shape taken out of it: a carved bed under a level fill. Row 1 is what that shape can be — a beach, a pond,
+the same pond with no shore, a canal against a stream, a basin dug in the sketch and filled by a stated
+line, and one pool filled with water beside the same pool filled with lava. Row 2 is the surprises: a pan
+drawn bigger than its water, the same pan drawn right, a beck down a hill, and a deck that a beck bites
+through against the same deck left standing.
 """
 import json, math, os, sys
 
@@ -13,6 +14,7 @@ from cards import SOLID, depth_stack, grid, lobed_ring, moor
 
 PANEL_W, PANEL_D = 96, 76
 COL_X, ROW_Z = grid(5, 2, PANEL_W, PANEL_D)
+COL_X.append(COL_X[-1] + PANEL_W + 14)   # the lava panel, past row 1's end, so no other panel moves
 MOOR = moor(grass_to=35, dirt_to=55)
 GROUND_TOP = 40
 
@@ -57,7 +59,7 @@ def box(cx, cz, width, depth):
 
 
 def water(prop_id, shape, points, **words):
-    out = {"id": prop_id, "kind": "water", "shape": shape, "points": points,
+    out = {"id": prop_id, "kind": "fluid", "shape": shape, "points": points,
            "radius": 3, "depth": 2, "form": "canal", "edge": 0.8,
            "shore": 2, "shoreWander": True, "seed": 7, "bank": GRAVEL_BANK}
     out.update(words)
@@ -115,6 +117,16 @@ def basin(cx, cz):
             [water("dock-water", "pool", box(cx, cz, 60, 32), level=20, radius=4, depth=1, shore=0)])
 
 
+def lava(cx, cz):
+    """One pool stated twice, differing in `fluid` alone: water on the west, lava on the east. The carve,
+    the line, the bowl and the bank are the same law either way; only what fills the bed changes."""
+    ring = lambda x: lobed_ring(x, cz, 12, lobes=5, depth=0.18)
+    return ([area("land", 22, band(cx, cz, -35, 35))], [],
+            [water("water", "pool", ring(cx - 23), radius=5, depth=3, form="natural", shore=3, edge=2),
+             water("lava", "pool", ring(cx + 23), radius=5, depth=3, form="natural", shore=3, edge=2,
+                   fluid="lava")])
+
+
 def pan_too_big(cx, cz):
     """An `area` mark drawn at the size of the *hollow* rather than the size of the water: everything the
     mark levelled stands at the water line, wet or not."""
@@ -133,7 +145,7 @@ def pan_fits(cx, cz):
 
 def under_a_bridge(cx, cz, layer=None):
     """A beck across level ground with a plank deck thrown over it, drawn twice and differing in one
-    field. A water prop carves against the ground of the layer it NAMES; naming none takes the top
+    field. A fluid prop carves against the ground of the layer it NAMES; naming none takes the top
     surface of the stack, which here is the deck, so the carve bites the bridge through."""
     marks = [area("holm", 20, band(cx, cz, -35, 35))]
     words = {"layer": layer} if layer else {}
@@ -153,6 +165,7 @@ def down_a_hill(cx, cz):
 PANELS = [
     ("beach", 0, 0, beach), ("pond", 1, 0, pond), ("no-shore", 2, 0, no_shore),
     ("two-forms", 3, 0, two_forms), ("basin", 4, 0, basin),
+    ("lava", 5, 0, lava),
     ("pan-too-big", 0, 1, pan_too_big), ("pan-fits", 1, 1, pan_fits), ("down-a-hill", 2, 1, down_a_hill),
     ("no-layer", 3, 1, under_a_bridge),
     ("named-layer", 4, 1, lambda cx, cz: under_a_bridge(cx, cz, layer="ground")),
@@ -200,7 +213,8 @@ layout = {
 }
 out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "water.layout.json")
 json.dump(layout, open(out, "w"), indent=1)
-print(f"{len(PANELS)} panels, {len(props)} water prop(s) -> {out}")
+print(f"{len(PANELS)} panels, {len(props)} fluid prop(s) -> {out}")
 for prop in props:
     print(f"  {prop['id']:12s} {prop['shape']:8s} {prop['form']:8s} r={prop['radius']} "
-          f"depth={prop['depth']} shore={prop['shore']} level={prop.get('level')}")
+          f"depth={prop['depth']} shore={prop['shore']} level={prop.get('level')} "
+          f"fluid={prop.get('fluid', 'water')}")

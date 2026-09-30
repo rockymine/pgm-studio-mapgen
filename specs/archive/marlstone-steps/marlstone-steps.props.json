@@ -88,7 +88,7 @@
   { "kind": "flora", "id": "f-scrub-e", "seed": 113, "points": [[36,36],[56,36],[56,56],[36,56]],
     "spec": { "coverage": 0.5, "scale": 10, "octaves": 3, "fernShare": 0.45, "flowerShare": 0.05, "flowerScale": 16, "tallShare": 0.2 } },
 
-  { "kind": "water", "id": "d-cistern", "seed": 141, "points": [[-54,68],[-50,72]], "radius": 3, "depth": 2,
+  { "kind": "fluid", "id": "d-cistern", "seed": 141, "points": [[-54,68],[-50,72]], "radius": 3, "depth": 2,
     "form": "natural", "edge": 0.6, "shore": 1, "shoreWander": false,
     "bank": { "kind": "cell", "seed": 54, "cellSize": 3, "jitter": 70, "warp": 2, "rise": 0,
       "palette": [ {"kind":"solid","id":98,"data":1}, {"kind":"solid","id":98,"data":0}, {"kind":"solid","id":48,"data":0} ] } }

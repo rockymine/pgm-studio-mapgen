@@ -127,7 +127,7 @@ TERRACE   = 32   # the terrace: top y31, one course over the moor at y30 beside 
 DECK      = 27   # the bridge deck, one course under the quay's lip so the crossing sits into it
 SPRING    = 8    # where the arch springs from, at the quay's face
 WATER     = 27   # the tarn: two courses under the bank it laps
-TARN_BED  = 23   # four under the water line, which is what the water prop carves to
+TARN_BED  = 23   # four under the water line, which is what the fluid prop carves to
 BAY_SHELF = 4    # a POOL's radius is its SHELF -- how far in from shore the bed reaches full depth
 TARN_CUT  = 6    # how far the tarn's basin is sunk below the moor it is cut into
 
@@ -157,7 +157,7 @@ def blob(sid, pts, th):
     return {"id": sid, "type": "polygon", "operation": "add", "override": False, "keepClear": False,
             "vertices": pts, "theme": th}
 
-# The tarn's outline, needed by the basin shape, the relief and the water prop alike.
+# The tarn's outline, needed by the basin shape, the relief and the fluid prop alike.
 def ring(cx, cz, rx, rz, n=9):
     return [[round(cx + rx * math.cos(2 * math.pi * i / n)),
              round(cz + rz * math.sin(2 * math.pi * i / n))] for i in range(n)]
@@ -352,7 +352,7 @@ DRESSING = {"props": [
   # rather than a second outline disagreeing with it. On a pool `radius` is the SHELF -- how far in from
   # the shore the bed reaches full depth -- so a value near the pool's own half-width shelves the whole
   # way and lays a sheet of water on grass, which is exactly what the first build did.
-  {"id": "tarn-water", "kind": "water", "seed": 7, "layer": "ground", "shape": "pool",
+  {"id": "tarn-water", "kind": "fluid", "seed": 7, "layer": "ground", "shape": "pool",
    "points": TARN_RING, "radius": BAY_SHELF, "depth": WATER - TARN_BED, "shore": 3,
    "shoreWander": False, "edge": 0.6, "level": WATER,
    # The bed and the beach are one material and it is not the moor's grass: two blocks of one family,

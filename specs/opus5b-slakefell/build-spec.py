@@ -270,7 +270,7 @@ props = [
      "style": "solid", "claimsGround": True, "pave": PAVE,
      "points": [[-14, 38], [-16, 32], [-18, 24], [-17, 16], [-15, 10]]},
 
-    {"id": "frozen-tarn", "kind": "water", "seed": 5173, "shape": "pool",
+    {"id": "frozen-tarn", "kind": "fluid", "seed": 5173, "shape": "pool",
      "points": lobe(-12, 20, 7, points=9, wobble=0.2, seed=5174),
      "radius": 2, "depth": 2, "shore": 3, "shoreWander": True,
      "bank": cells(5175, 4, 0, [GRAVEL, CLAY, SLATE])},

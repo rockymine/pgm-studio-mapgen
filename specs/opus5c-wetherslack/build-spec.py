@@ -319,7 +319,7 @@ styles = {
 PAVE = cells(5552, 3, 0, [EARTH, WORN, solid(5, 1)])
 
 props = [
-    {"id": "beck-water", "kind": "water", "seed": 5561, "shape": "channel",
+    {"id": "beck-water", "kind": "fluid", "seed": 5561, "shape": "channel",
      "points": [[12, 34], [9, 50], [13, 70], [11, 88]],
      "radius": 2, "depth": 2, "level": 6, "shore": 2, "shoreWander": True,
      "bank": cells(5562, 4, 0, [GRAVEL, CLAY, COBBLE])},

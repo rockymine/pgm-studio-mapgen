@@ -114,7 +114,7 @@ for index, name in enumerate(PANELS):
         relief[name] = {"base": 16, "reach": 0, "step": 1, "pushes": [], "marks": [
             area(f"fell-{name}", 22, box(cx, cz - 28, PANEL_W - 6, 16)),
             area(f"shelf-{name}", 10, box(cx, cz + 28, PANEL_W - 6, 20))]}
-        props.append({"id": f"sea-{name}", "kind": "water", "shape": "pool", "layer": "ground",
+        props.append({"id": f"sea-{name}", "kind": "fluid", "shape": "pool", "layer": "ground",
                       "points": box(cx, cz + 27, PANEL_W + 12, 34), "radius": 10, "depth": 3,
                       "form": "natural", "edge": 1, "shore": 2, "shoreWander": True, "seed": 7,
                       "level": 11, "bank": {"kind": "cell", "cellSize": 5,

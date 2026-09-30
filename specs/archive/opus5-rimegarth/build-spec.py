@@ -334,10 +334,10 @@ def scatter(count, apart=8):
 SPOTS = scatter(20)
 
 props = [
-    # The pond. **A water prop fills its own band and does not spread to the level it finds**, so
+    # The pond. **A fluid prop fills its own band and does not spread to the level it finds**, so
     # the band is the pond: a centreline down the middle of the hole at a radius that leaves a block
     # and a half of bank inside the garth's wall.
-    {"id": "the-stank", "kind": "water", "seed": 5, "form": "canal",
+    {"id": "the-stank", "kind": "fluid", "seed": 5, "form": "canal",
      "points": [[(GARTH[0] + GARTH[2]) / 2, GARTH[1] + 9],
                 [(GARTH[0] + GARTH[2]) / 2, GARTH[3] - 9]],
      "radius": 6.0, "depth": 2, "edge": 0.3, "shore": 1, "shoreWander": False,

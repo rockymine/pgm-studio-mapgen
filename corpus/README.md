@@ -18,38 +18,42 @@ only if the copy does.
 
 ## What each row is
 
-**A seeded recipe is named `showcase-r<row>-<n>`, and the name says where the tree stood and nothing
-else.** The row is assigned by the z its foot stands at — a new row opens where the gap between one foot
-and the next is over 20 blocks — and `n` counts along x inside it. So the name carries no kind, no height
-and no form.
+**A seeded recipe is named for what it is: `<kind>-<n>`.** The row is assigned by the z a tree's foot
+stands at — a new row opens where the gap between one foot and the next is over 20 blocks — and the kind is
+the one `tree-showcase/kinds.json` states for that row, or for the tree itself where its row does not describe
+it. `n` counts a kind through the world in row order and along x, so `oak-1`…`oak-4` are `r9`, `oak-5`…`oak-9`
+`r12` and `oak-10` `r14`.
+
+**`kinds.json` is what the seeder reads, and the table below is the same statement in the author's words.**
+The seeder refuses a row the file names no kind for, and matches a library row by where it was cut, so a
+relabel renames the trees already filed: change the file and the table together.
 
 **A row opens for every band, including one the seeder does not file.** `r15` is the wool tree, which
-`seed-trees.cs` files only when it is passed `--wool`, and the row is held for it either way. So the
-library's row numbers are the world's row numbers, and `showcase-r15-*` is simply absent from a run
-without the flag.
+`seed-trees.cs` files only when it is passed `--wool`, and the row is held for it either way. So the rows are
+the world's, and `wool-tree-1` is simply absent from a run without the flag.
 
 **The row is the band, and the band is a kind. [author]** Seventeen bands, and what each one is is the
 author's — nothing in the world or the library states it, and no measurement recovers it.
 
-| row | trees | what it is **[author]** | built of | height |
-|---|---|---|---|---|
-| `r1` | 3 | the olive form again, smaller | oak log, oak and birch leaves | 7–8 |
-| `r2` | 3 | large pine | dark-oak log, birch and spruce leaves | 20–22 |
-| `r3` | 2 | large pine | dark-oak log, four leaf kinds | 25–26 |
-| `r4` | 5 | tiny spruce, about vanilla's size | acacia log, birch leaves | 12–15 |
-| `r5` | 3 | real dark oak — fat stem, flat crown | dark-oak log, acacia and birch leaves | 12–13 |
-| `r6` | 9 | tiny oak, vanilla's size with a larger crown | oak log | 7–10 |
-| `r7` | 8 | tall spruce — **and `r7-4` is its own kind**, a small Sequoioideae | acacia log, birch leaves | 19–35 |
-| `r8` | 7 | acacia | acacia log | 8–9 |
-| `r9` | 4 | the oak kind, with `r12` and `r14` | oak log, wooden slab | 15–16 |
-| `r10` | 5 | small olive, two main branches each | dark-oak log, dark-oak leaves | 9–10 |
-| `r11` | 9 | its own oak set — very dense leaves, small stems | oak log | 12–15 |
-| `r12` | 5 | the oak kind, with `r9` and `r14` | oak log, wooden slab | 12–16 |
-| `r13` | 9 | birch | birch log | 11–15 |
-| `r14` | 1 | the oak kind, with `r9` and `r12` | oak log | 18 |
-| `r15` | 1 | a tree of wool, and the one the library does not hold | wool | 23 |
-| `r16` | 6 | jungle | jungle log, jungle and oak leaves | 16–20 |
-| `r17` | 5 | a kind of willow | dark-oak log, oak leaves | 16 |
+| row | trees | what it is **[author]** | named | built of | height |
+|---|---|---|---|---|---|
+| `r1` | 3 | the olive form again, smaller | `small-olive` | oak log, oak and birch leaves | 7–8 |
+| `r2` | 3 | large pine | `large-pine` 1–3 | dark-oak log, birch and spruce leaves | 20–22 |
+| `r3` | 2 | large pine | `large-pine` 4–5 | dark-oak log, four leaf kinds | 25–26 |
+| `r4` | 5 | tiny spruce, about vanilla's size | `tiny-spruce` | acacia log, birch leaves | 12–15 |
+| `r5` | 3 | real dark oak — fat stem, flat crown | `dark-oak` | dark-oak log, acacia and birch leaves | 12–13 |
+| `r6` | 9 | tiny oak, vanilla's size with a larger crown | `tiny-oak` | oak log | 7–10 |
+| `r7` | 8 | tall spruce — **and `r7-4` is its own kind**, a small Sequoioideae | `tall-spruce` 1–7, `sequoia-1` | acacia log, birch leaves | 19–35 |
+| `r8` | 7 | acacia | `acacia` | acacia log | 8–9 |
+| `r9` | 4 | the oak kind, with `r12` and `r14` | `oak` 1–4 | oak log, wooden slab | 15–16 |
+| `r10` | 5 | small olive, two main branches each | `olive` | dark-oak log, dark-oak leaves | 9–10 |
+| `r11` | 9 | its own oak set — very dense leaves, small stems | `dense-oak` | oak log | 12–15 |
+| `r12` | 5 | the oak kind, with `r9` and `r14` | `oak` 5–9 | oak log, wooden slab | 12–16 |
+| `r13` | 9 | birch | `birch` | birch log | 11–15 |
+| `r14` | 1 | the oak kind, with `r9` and `r12` | `oak-10` | oak log | 18 |
+| `r15` | 1 | a tree of wool, and the one the library does not hold | `wool-tree` | wool | 23 |
+| `r16` | 6 | jungle | `jungle` | jungle log, jungle and oak leaves | 16–20 |
+| `r17` | 5 | a kind of willow | `willow` | dark-oak log, oak leaves | 16 |
 
 **The block a tree is built of is not what it is, and reading the one for the other is the trap this table
 exists to close.** `r7` is acacia log and birch leaves and is a tall spruce; `r4` is the same two blocks
@@ -94,4 +98,4 @@ and `r9`.
 
 **Where a name can carry meaning is a spec.** `tools/trees.py bodies --row <z>=<prefix>` cuts a row into
 bodies under a prefix the author chooses, which is how `specs/fable-millrace-revamp/trees.json` names its
-22 — the library's `r<row>` naming is the seeder's, not a rule about copied trees.
+22 — the library's `<kind>-<n>` naming is the seeder's, not a rule about copied trees.

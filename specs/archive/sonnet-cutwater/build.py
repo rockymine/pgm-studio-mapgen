@@ -282,7 +282,7 @@ def expand(ring, margin):
     return out
 
 layout["dressing"] = {"props": [
-    {"id": "canal-water", "kind": "water", "seed": 7, "layer": "ground", "shape": "pool",
+    {"id": "canal-water", "kind": "fluid", "seed": 7, "layer": "ground", "shape": "pool",
      "points": densify(expand(S0, 15)), "radius": 20, "depth": WATER - BED, "shore": 1,
      "shoreWander": False, "edge": 0.6, "level": WATER, "bank": GRAVEL},
     {"id": "road-bridge-n", "kind": "stroke", "seed": 41, "claimsGround": True, "radius": 2,

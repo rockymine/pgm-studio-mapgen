@@ -1,7 +1,7 @@
 {
   "_": "Circulation first (approaches.md): the spine road from spawn through the ford to the hub, a fork onto the two frontline tips, and a drove out to each wool. Trees, rocks and cover go in what is left over.",
   "props": [
-    { "kind": "water", "id": "spine-ford", "seed": 71, "radius": 3, "depth": 2, "form": "stream",
+    { "kind": "fluid", "id": "spine-ford", "seed": 71, "radius": 3, "depth": 2, "form": "stream",
       "points": [[-16, 88], [-6, 84], [6, 84], [16, 88]] },
 
     { "kind": "stroke", "id": "spine-road", "seed": 11, "radius": 3, "style": "worn", "coverage": 0.85,

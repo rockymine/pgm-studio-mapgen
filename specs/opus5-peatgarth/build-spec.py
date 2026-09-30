@@ -220,7 +220,7 @@ DRESSING = {
     "props": [
         # the water fills the cutting the relief already dug, so the two agree:
         # its outline is the hag's own ring and its level is two under that ground
-        {"id": "cut-e", "kind": "water", "seed": 21, "layer": "ground", "shape": "pool",
+        {"id": "cut-e", "kind": "fluid", "seed": 21, "layer": "ground", "shape": "pool",
          "points": [[9, 48], [18, 46], [26, 50], [27, 60], [21, 68], [12, 66], [8, 57]],
          "radius": 2, "depth": 2, "shore": 2, "shoreWander": False, "edge": 0.4, "level": 9},
         # the way out of the spawn and down to the ramp, drawn before the scenery

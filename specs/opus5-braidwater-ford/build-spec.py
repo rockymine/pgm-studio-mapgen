@@ -273,7 +273,7 @@ BRAIDS = [("braid-a", [[-30, -13], [-24, -10], [-16, -12], [-8, -9]], 5, 3),
           ("braid-c", [[-50, -14], [-46, -10], [-42, -6]], 5, 3),
           ("braid-d", [[10, -8], [18, -11], [26, -8], [30, -12]], 4, 2)]
 for name, pts, radius, depth in BRAIDS:
-    props.append({"id": name, "kind": "water", "seed": 60 + len(props), "shape": "channel",
+    props.append({"id": name, "kind": "fluid", "seed": 60 + len(props), "shape": "channel",
                   "points": pts, "radius": radius, "depth": depth, "level": WATERLINE,
                   "form": "natural", "edge": 0.6, "shore": 1, "shoreWander": False,
                   "bank": {"kind": "cell", "seed": 55, "cellSize": 11, "jitter": 2, "warp": 4,

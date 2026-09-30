@@ -819,7 +819,7 @@ def finish(add_layers):
             # **The ring is the basin piece, to the block.** A pool cuts its bed wherever the ground stands
             # above it, so a ring drawn wider than the water's own ground digs the quay it laps and floods
             # the field beside it: the harbour's edge is the plan's, not a rectangle around it.
-            {"id": "harbour", "kind": "water", "seed": 7, "layer": "ground", "shape": "pool",
+            {"id": "harbour", "kind": "fluid", "seed": 7, "layer": "ground", "shape": "pool",
              "points": [[-52, -16], [52, -16], [52, 16], [-52, 16]],
              "radius": 12, "depth": 6, "shore": 2, "shoreWander": True, "edge": 1.2, "level": WATER,
              "bank": {"kind": "voronoi", "seed": 3, "cellSize": 6, "bands": [

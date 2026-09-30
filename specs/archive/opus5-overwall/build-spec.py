@@ -499,7 +499,7 @@ def stroke(ident, points, radius, pave, style="worn", coverage=0.4, claims_groun
 SPECIES = ["oak", "birch", "oak", "spruce"]
 props = [
     # the river, down the one corridor no wall crosses and out along the seam into its own image
-    {"id": "the-race", "kind": "water", "seed": 5, "form": "stream",
+    {"id": "the-race", "kind": "fluid", "seed": 5, "form": "stream",
      "points": [[x, z] for x, z in RIVER],
      "radius": 2.2, "depth": 2, "edge": 0.7, "shore": 3, "shoreWander": True,
      "bank": voronoi(19, 4, [(GRAVEL, 3), (SAND, 1), (COARSE, 1)])},

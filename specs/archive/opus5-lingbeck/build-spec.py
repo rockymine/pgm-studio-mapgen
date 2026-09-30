@@ -249,13 +249,13 @@ props = [
     # The northern reach lays its gravel and coarse earth and stands dry, which is what a beck above
     # a sink actually looks like; it is kept for the bed it paints rather than for water it does not
     # carry, and the map says so rather than claiming a stream it has not got.
-    {"id": "beck-south", "kind": "water", "seed": 11, "radius": 2.5, "depth": 2, "form": "stream",
+    {"id": "beck-south", "kind": "fluid", "seed": 11, "radius": 2.5, "depth": 2, "form": "stream",
      "edge": 0.8, "shore": 2, "shoreWander": True,
      "points": [[-20, 41], [-20, 48], [-20, 55], [-20, 60]],
      "bank": {"kind": "voronoi", "seed": 12, "cellSize": 5, "rise": 0, "bands": [
          {"material": GRAVEL, "depth": 1}, {"material": COARSE, "depth": 1},
          {"material": ANDESITE, "depth": 2}]}},
-    {"id": "beck-north", "kind": "water", "seed": 13, "radius": 2.5, "depth": 2, "form": "stream",
+    {"id": "beck-north", "kind": "fluid", "seed": 13, "radius": 2.5, "depth": 2, "form": "stream",
      "edge": 0.8, "shore": 2, "shoreWander": True,
      "points": [[-20, 70], [-20, 73], [-20, 75]],
      "bank": {"kind": "voronoi", "seed": 12, "cellSize": 5, "rise": 0, "bands": [
