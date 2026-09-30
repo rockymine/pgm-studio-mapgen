@@ -34,7 +34,7 @@ BESIDE = 2
 
 
 def features(intent, layout):
-    """Every thing on the board a transect is worth taking through: spawns, goals, houses, water, boulders,
+    """Every thing on the board a transect is worth taking through: spawns, goals, houses, fluids, boulders,
     made things. Each as `(id, kind, (x0, z0, x1, z1))` in blocks."""
     found = []
     for spawn in intent.get("spawns") or []:

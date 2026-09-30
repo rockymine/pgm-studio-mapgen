@@ -1,9 +1,9 @@
-GET /api/map/technique-water/transect?points=x,z;x,z — a line through each panel. The `water` column is
+GET /api/map/technique-water/transect?points=x,z;x,z — a line through each panel. The `fluid` column is
 the line the body stands at; where it is blank the column is dry.
 
 ### beach — the fell, the strand and the sea running off the island's edge
 TRANSECT 73 stations from (-220, -80) to (-220, -8), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   ( -220,   -80)      30       30           30                      
   ( -220,   -79)      30       30           30                      
   ( -220,   -78)      30       30           30                      
@@ -81,7 +81,7 @@ rises 0, falls 19, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to e
 
 ### pond — a level found, not stated
 TRANSECT 71 stations from (-110, -80) to (-110, -10), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   ( -110,   -80)      22       22           22                      
   ( -110,   -79)      22       22           22                      
   ( -110,   -78)      22       22           22                      
@@ -157,7 +157,7 @@ rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to en
 
 ### no-shore — the same pond with shore 0
 TRANSECT 71 stations from (0, -80) to (0, -10), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (    0,   -80)      22       22           22                      
   (    0,   -79)      22       22           22                      
   (    0,   -78)      22       22           22                      
@@ -233,7 +233,7 @@ rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to en
 
 ### two-forms — the canal and the stream
 TRANSECT 71 stations from (110, -80) to (110, -10), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  110,   -80)      20       20           20                      
   (  110,   -79)      20       20           20                      
   (  110,   -78)      20       20           20                      
@@ -309,7 +309,7 @@ rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to en
 
 ### basin — dug with a sink shape, filled at a stated level
 TRANSECT 71 stations from (220, -80) to (220, -10), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  220,   -80)      22       22           22                      
   (  220,   -79)      22       22           22                      
   (  220,   -78)      22       22           22                      
@@ -385,7 +385,7 @@ rises 1, falls 1, worst step 8: 1 barrier, 0 scramble, 1 drop — DROP -8 at (22
 
 ### pan-too-big — the mark drawn at the size of the hollow
 TRANSECT 71 stations from (-220, 10) to (-220, 80), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   ( -220,    10)      20       20           20                      
   ( -220,    11)      20       20           20                      
   ( -220,    12)      20       20           20                      
@@ -461,7 +461,7 @@ rises 3, falls 3, worst step 2: 0 barrier, 3 scramble, 0 drop — scramble +2 at
 
 ### pan-fits — the mark drawn at the size of the water
 TRANSECT 71 stations from (-110, 10) to (-110, 80), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   ( -110,    10)      20       20           20                      
   ( -110,    11)      20       20           20                      
   ( -110,    12)      20       20           20                      
@@ -537,7 +537,7 @@ rises 6, falls 6, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to en
 
 ### down-a-hill — the line is the foot of the fall, and the run is trenched to it
 TRANSECT 71 stations from (0, 10) to (0, 80), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (    0,    10)      30       30           30  fluid down-a-hill-beck  
   (    0,    11)      30       30           30  fluid down-a-hill-beck  
   (    0,    12)      30       30     16    16  fluid down-a-hill-beck  
@@ -613,7 +613,7 @@ rises 0, falls 14, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to e
 
 ### no-layer — the beck that took the deck as its ground
 TRANSECT 71 stations from (110, 10) to (110, 80), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  110,    10)      20       20           20  fluid no-layer-beck  
   (  110,    11)      20       20     20    20  fluid no-layer-beck  
   (  110,    12)      20       20     20    20  fluid no-layer-beck  
@@ -689,7 +689,7 @@ rises 1, falls 1, worst step 6: 1 barrier, 0 scramble, 1 drop — BARRIER +6 at 
 
 ### named-layer — the same beck naming the ground layer
 TRANSECT 71 stations from (220, 10) to (220, 80), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  220,    10)      20       20           20  fluid named-layer-beck  
   (  220,    11)      20       20     20    20  fluid named-layer-beck  
   (  220,    12)      20       20     20    20  fluid named-layer-beck  
@@ -765,7 +765,7 @@ rises 1, falls 1, worst step 6: 1 barrier, 0 scramble, 1 drop — BARRIER +6 at 
 
 ### lava — water and lava, the same pool stated twice
 TRANSECT 91 stations from (285, -45) to (375, -45), every 1
-  station        ground  surface  water  top  standing            step
+  station        ground  surface  fluid  top  standing            step
   (  285,   -45)      22       22           22                      
   (  286,   -45)      22       22           22                      
   (  287,   -45)      22       22           22                      

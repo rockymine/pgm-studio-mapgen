@@ -98,7 +98,7 @@ which is why every other panel here is.
 (324, −45), the route runs straight through: 34 cells at a distance of 56, because a swum cell costs two.
 Across the lava, from (336, −45) to (370, −45), it goes round the pool's north side: 40 cells at a distance
 of 48, and not one of them is lava. `slopes.txt` counts a rise and nothing else, so it walks both pools
-alike. The transect's `water` column is the line of any liquid, so it reads 22 over the lava as well.
+alike. The transect's `fluid` column is the line of any fluid, so it reads 22 over both pools.
 
 **Lily pads belong to the water, not to the prop.** The prop places none, and it claims every column of its
 bed and beach, so a dressing prop set inside it is declined `DR-CLAIM`. A pad is a made layer one course over
@@ -173,7 +173,7 @@ where it is meant to be a sea.**
 - `columns.txt` — thirteen columns: the sea at the rim, the strand, the tarn with and without a shore, the
   basin at its stated line, the water pool against the lava one, the pool in the oversized pan, the beck in
   its own trench, and the bridge bitten through against the bridge standing.
-- `transects.txt` — a line through every panel, with the water column beside the ground.
+- `transects.txt` — a line through every panel, with the fluid column beside the ground.
 - `dressing.json` — what the pass placed and what it declined: every prop's cell count and line, and the two
   `DR-BANK` complaints with their course counts.
 - `slopes.txt` — 78,232 cells walked, 1,188 scrambled, 836 barrier; three faces, the largest 364 cells.

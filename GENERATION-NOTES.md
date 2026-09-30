@@ -828,10 +828,10 @@ lift at the room's edge. A transect across it reads level, so the transect is th
   ground under it plus the lift.
 - **Nothing textures a marked cell**, so every level surface that has to be level is flat to the block.
 
-### Water fills whatever is level, so the pan is the size of the pool
+### A mark levels whatever it covers, so the pan is the size of the pool
 
 An `area` mark 34 × 30 at the sump's height is a 34 × 30 lake however small the `fluid` prop inside
-it. Draw the mark at the size of the water and let the surrounding floor sit a few courses over it.
+it. Draw the mark at the size of the fluid and let the surrounding floor sit a few courses over it.
 
 ### A fluid prop fills its own band, not the level it finds
 
@@ -839,7 +839,7 @@ A fluid prop states the level it fills to, and it fills **its own band** rather 
 level above the ground around it floods outward to wherever that level still holds, and a level below the
 bed's own floor fills nothing. The bed is carved first and the fill is stated second.
 
-`techniques/water` is the worked card — five bodies of water and five ways to lose one.
+`techniques/water` is the worked card — six bodies of water, one of them lava, and five ways to lose one.
 
 
 ### Relief is keyed by group id across the whole stack, and `*` is the ground's alone
@@ -1564,7 +1564,7 @@ An override add on the ground layer — a town wall, a crop bed, a well's rim, a
 by the painter with a theme like any other ground, so nothing separates it from the sand beside it.
 
 A stroke repaints the top block of every column it crosses, and a channel takes the *lowest* surface its band
-crosses as its water line and cuts every other column in the band down to it: a wall standing seventeen
+crosses as its line and cuts every other column in the band down to it: a wall standing seventeen
 courses over a river comes out as a hole through the wall, filled with water.
 
 Mark such a shape `keepClear` and its columns join the dressing keep-out exactly, with no margin, so a road
@@ -1628,7 +1628,7 @@ and **a boulder's standoff is measured from its body**, so its centre owes the s
 ### DR-CLAIM between props is footprint overlap, not a standoff
 
 Two props contest only where their claimed cells overlap: there is no margin between them beyond their own
-footprints. **The pass runs by kind** — water, strokes, houses, boulders, trees, flora — and the document's
+footprints. **The pass runs by kind** — fluids, strokes, houses, boulders, trees, flora — and the document's
 order is the order only within a kind, so a rock written after an oak is still placed before it.
 
 

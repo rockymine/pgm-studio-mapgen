@@ -166,10 +166,10 @@ which features get a transect, which spawn walks to which goal):
 
 | File | Is |
 |---|---|
-| `02-heightmap.txt` | `GET …/render/heightmap?format=text`: the ground's height band above the board's lowest surface, `0-9a-z`, one character per `every` blocks, with the houses, the water, the spawn points and the goals overprinted, so a height is read beside what stands there |
+| `02-heightmap.txt` | `GET …/render/heightmap?format=text`: the ground's height band above the board's lowest surface, `0-9a-z`, one character per `every` blocks, with the houses, the fluids, the spawn points and the goals overprinted, so a height is read beside what stands there |
 | `03-slopes.txt` | `GET …/slopes?format=text`: where the ground steps — `.` walked, `:` a block to scramble, `#` a barrier — and the barrier runs named as faces, largest first. A cliff reads as a line of `#`, a ramp as a band of `.` through it, and an overdone relief as a page of `#` |
 | `world-section-x0.txt` · `world-section-z0.txt` | `GET …/render/section?format=text`, the two axis cuts as characters — `#` ground, `L` a storey over it, `~` liquid, `I`/`T` a tree, `H` a house or a hall, `M` a made thing, `S`/`!`/`W` a spawn, a goal, a wool — with a y axis, a ruler and the ground's height band under each column |
-| `transect-<feature>.txt` | `GET …/transect?format=text&beside=2`, one per spawn, goal, house, fluid prop, boulder and made thing: at every station the ground, the storey stood on, the water, the top, what stands there and the step from the station before, along x and along z through the feature's own box with eight blocks of overshoot each side, and what stands within two cells of the line |
+| `transect-<feature>.txt` | `GET …/transect?format=text&beside=2`, one per spawn, goal, house, fluid prop, boulder and made thing: at every station the ground, the storey stood on, the fluid line, the top, what stands there and the step from the station before, along x and along z through the feature's own box with eight blocks of overshoot each side, and what stands within two cells of the line |
 | `04-routes.txt` | each team's walk to each goal, from `GET …/walk?format=text&beside=2`: the storey the walk stood on at every place, every step that left a walk, and what stands within two blocks of the route — the read for a thing thrown in the players' way |
 | `05-themes.txt` | `GET …/themes/census?format=text`: cells and share per theme, the materials each spends, and which theme borders which over how many cells — the number for a board that mashes its themes |
 | `06-claims.txt` | `POST …/sketch/dressing?format=text`: every cell of the board as the digit of what claims it — a prop, a goal's clearance, a keep-out, or free — so a candidate site is looked up rather than tried |
@@ -289,7 +289,7 @@ rather than added to.
 
 `--candidates` asks whether **this** prop stands at a position. The dressing preview's `claims` raster
 already answers where nothing stands and nothing is kept clear — one call, the whole board, in
-`06-claims.txt` — but a free cell is not a legal seat: seven rules decide where a prop may stand (a water
+`06-claims.txt` — but a free cell is not a legal seat: seven rules decide where a prop may stand (a fluid
 prop's bed, a door's lane, the spawn's margin, a goal's 21 blocks, a road's standoff, a house's claim, a
 structure's keep-out), and the last three read the prop's own footprint rather than the cell.
 

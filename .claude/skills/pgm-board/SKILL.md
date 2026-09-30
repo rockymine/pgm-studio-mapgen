@@ -151,7 +151,7 @@ through a filter capped at y22 and concluded a causeway was six blocks low.
 
 > *"I drew a stair for a fall I had assumed rather than measured."*
 > *"I assumed the river's 8-block drop was the same on both banks. It is not."* — `opus5-liminal-dtm-ii`
-> *"I assumed water spreads to fill a level pan."* — `opus5-rimegarth` (water fills its own band; the
+> *"I assumed water spreads to fill a level pan."* — `opus5-rimegarth` (a fluid fills its own band; the
 > pan is the size of the pool)
 > *"I read `maxPlayers` as the board's cap and shipped a 48 v 48 map."* — `opus5-liminal-dtm-ii`
 
