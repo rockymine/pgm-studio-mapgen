@@ -1,8 +1,9 @@
 # Water
 
 Water cannot drape on a slope the way gravel can — laid on the surface it reads as blue paint — so a body of
-water is not a finish over the ground but a **shape taken out of it**: a carved bed under a level fill. Ten
-panels on one board: five bodies of water in row 1 and five ways of getting one wrong in row 2. Open it in
+water is not a finish over the ground but a **shape taken out of it**: a carved bed under a level fill. Eleven
+panels on one board: six bodies of water in row 1, the last of them lava, and five ways of getting one wrong
+in row 2. Open it in
 the studio as `technique-water`, or run `build.py`.
 
 **Two sentences decide almost everything here.** The line a body stands at is the **lowest surface its band
@@ -11,9 +12,9 @@ crosses**, and every column over that line inside the band is emptied down to it
 
 ## The document
 
-Ten groups on the `ground` layer, a `deck` layer at `base_y` 25 carrying the two bridges, and the water in
-`dressing.props` as `fluid` props, each filling with water because none states otherwise. Three themes: `moor` for the uplands, `strand` — sand over sandstone — for the shore, and
-`plank` for the bridges.
+Eleven groups on the `ground` layer, a `deck` layer at `base_y` 25 carrying the two bridges, and the water
+in `dressing.props` as `fluid` props, every one filling with water but the `lava` panel's second pool. Three
+themes: `moor` for the uplands, `strand` — sand over sandstone — for the shore, and `plank` for the bridges.
 
 | panel | states | what it built |
 |---|---|---|
@@ -22,6 +23,7 @@ Ten groups on the `ground` layer, a `deck` layer at `base_y` 25 carrying the two
 | `no-shore` | the same pond with `shore` 0 | the same water, and grass at its edge instead of a bank |
 | `two-forms` | a `canal` and a `stream` channel, same `radius` and `depth` | one holds its width, one beads along its arc |
 | `basin` | a `sink` shape dug 8 deep, filled at `level` 20 | a dock with quay walls — `DROP -8` at the edge |
+| `lava` | one pool stated twice, the second with `"fluid": "lava"` | the same bowl at the same line of 21, one of water and one of lava |
 | `pan-too-big` | an `area` mark at the size of the *hollow* | a small pool in a wide levelled floor |
 | `pan-fits` | the same mark at the size of the water | the same pool with the ground rising straight from it |
 | `down-a-hill` | one channel down a fall from 30 to 16 | `DR-BANK` — **14 courses** cut away, a trench |
@@ -86,13 +88,17 @@ it is the prop rule met where it matters most, because water is the one prop tha
 
 ## The same prop fills with lava
 
-**`"fluid": "lava"` changes what fills the bed and nothing else.** The carve, the line, the bowl, the shore
-and the bank are cut exactly as they are for water, and the fill is written as stationary lava. Water is what
-an unstated `fluid` means, so every panel here is water.
+**`"fluid": "lava"` changes what fills the bed and nothing else.** The `lava` panel states one pool twice,
+the same ring, `radius` 5, `depth` 3 and `shore` 3, differing in that one field. Both lines are found at 21:
+the column at (307, −45) is water y19–21 over gravel at 18, and the one at (353, −45) is lava y19–21 over the
+same gravel. The bank is the same voronoi, and `dressing.json` places both. An unstated `fluid` is water,
+which is why every other panel here is.
 
-**A walk reads the two differently.** Water is ground a player swims, at twice the walk; a lava run is a
-prop's volume that nobody stands in, and the bed under it is roofed rather than walked. `walk?format=text`
-is where that shows, not the renders.
+**A walk reads the two differently, and only the walk does.** Across the water, from (290, −45) to
+(324, −45), the route runs straight through: 34 cells at a distance of 56, because a swum cell costs two.
+Across the lava, from (336, −45) to (370, −45), it goes round the pool's north side: 40 cells at a distance
+of 48, and not one of them is lava. `slopes.txt` counts a rise and nothing else, so it walks both pools
+alike. The transect's `water` column is the line of any liquid, so it reads 22 over the lava as well.
 
 **Lily pads belong to the water, not to the prop.** The prop places none, and it claims every column of its
 bed and beach, so a dressing prop set inside it is declined `DR-CLAIM`. A pad is a made layer one course over
@@ -127,7 +133,7 @@ either side of it however level the pan under it.
 ## What the paint makes of it
 
 **A fluid prop's bank is counted against the theme of the ground it carved, not a theme of its own.**
-`census.txt` reports three themes and **eight** distinct surface blocks, with gravel, sand and water turning
+`census.txt` reports three themes and **nine** distinct surface blocks, with gravel, sand and water turning
 up under `moor`, `strand` and `plank` alike, because the bank is a material the prop lays rather than a theme
 the document scopes.
 
@@ -135,7 +141,7 @@ the document scopes.
 holds 81.6% of this board under 10° and only 4.1% at 40° or steeper, and the shelving fell falls at about
 25° — banding under that stripes the whole shore green and brown, row by row.
 
-**The board is nearly all walkable**, 70,936 cells against 836 barrier, and its three faces are the dock's
+**The board is nearly all walkable**, 78,232 cells against 836 barrier, and its three faces are the dock's
 quay walls — `slopes.txt` puts the largest, 364 cells, at x 189…250, z −62…−29. Water itself is walked: a
 bed cut and filled leaves no step at its shore.
 
@@ -164,17 +170,19 @@ where it is meant to be a sea.**
 
 ## What checks it
 
-- `columns.txt` — eleven columns: the sea at the rim, the strand, the tarn with and without a shore, the
-  basin at its stated line, the pool in the oversized pan, the beck in its own trench, and the bridge
-  bitten through against the bridge standing.
+- `columns.txt` — thirteen columns: the sea at the rim, the strand, the tarn with and without a shore, the
+  basin at its stated line, the water pool against the lava one, the pool in the oversized pan, the beck in
+  its own trench, and the bridge bitten through against the bridge standing.
 - `transects.txt` — a line through every panel, with the water column beside the ground.
 - `dressing.json` — what the pass placed and what it declined: every prop's cell count and line, and the two
   `DR-BANK` complaints with their course counts.
-- `slopes.txt` — 70,936 cells walked, 1,188 scrambled, 836 barrier; three faces, the largest 364 cells.
-- `census.txt` — three themes and eight surface blocks, which is the bank material showing up under each.
+- `slopes.txt` — 78,232 cells walked, 1,188 scrambled, 836 barrier; three faces, the largest 364 cells.
+- `census.txt` — three themes and nine surface blocks, which is the bank material showing up under each,
+  and the lava under `moor`.
 - `water.layout.json` — the one document the board was stored from, posted to `POST /api/map/from-documents`
   with an empty intent and no plan.
 
-Renders: `bodies-row.png` (the sea, the pond, the same pond with no shore, the two forms, the basin),
+Renders: `bodies-row.png` (the sea, the pond, the same pond with no shore, the two forms, the basin, the
+water and the lava), `lava-panel.png` (the last of those close up),
 `traps-row.png` (the two pans, the trench, and the bridge bitten through against the bridge left standing)
 and `iso.png`.

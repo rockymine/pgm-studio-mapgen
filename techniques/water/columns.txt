@@ -242,3 +242,52 @@ GET /api/map/technique-water/column?at=x,z — one column per claim.
   y  1     1:0   Stone
   y  0     7:0   Bedrock
 
+### lava — the water pool: three courses to a line of 21
+=== column (307, -45) — 22 solid block(s), ground 0° from level ===
+  y 21     9:0   Water
+  y 20     9:0   Water
+  y 19     9:0   Water
+  y 18    13:0   Gravel
+  y 17     1:0   Stone
+  y 16     1:0   Stone
+  y 15     1:0   Stone
+  y 14     1:0   Stone
+  y 13     1:0   Stone
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### lava — the same pool filled with lava: the same courses, the same line
+=== column (353, -45) — 22 solid block(s), ground 0° from level ===
+  y 21    11:0   Lava
+  y 20    11:0   Lava
+  y 19    11:0   Lava
+  y 18    13:0   Gravel
+  y 17     1:0   Stone
+  y 16     1:0   Stone
+  y 15     1:0   Stone
+  y 14     1:0   Stone
+  y 13     1:0   Stone
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock

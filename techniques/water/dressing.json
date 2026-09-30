@@ -62,6 +62,26 @@
   },
   {
    "kind": "fluid",
+   "id": "lava-water",
+   "image": 0,
+   "layer": "prop",
+   "cells": 648,
+   "x": 295,
+   "z": -54,
+   "y": 21
+  },
+  {
+   "kind": "fluid",
+   "id": "lava-lava",
+   "image": 0,
+   "layer": "prop",
+   "cells": 677,
+   "x": 341,
+   "z": -43,
+   "y": 21
+  },
+  {
+   "kind": "fluid",
    "id": "pan-too-big-sump",
    "image": 0,
    "layer": "prop",
@@ -114,7 +134,7 @@
  "declines": [
   {
    "rule": "DR-BANK",
-   "message": "water 'down-a-hill-beck' is 3 deep and its carve cut 14 course(s) of ground away above its own line \u2014 a straight-sided wall from y16 to y29 at (-1, 11). The line is the lowest surface the body crosses and every column over it is emptied down to it, so a pool drawn across a slope digs a pit as deep as the ground falls. Draw it inside ground that is already level, or state a `level` and let it fill the hollow there is.",
+   "message": "fluid 'down-a-hill-beck' is 3 deep and its carve cut 14 course(s) of ground away above its own line \u2014 a straight-sided wall from y16 to y29 at (-1, 11). The line is the lowest surface the body crosses and every column over it is emptied down to it, so a pool drawn across a slope digs a pit as deep as the ground falls. Draw it inside ground that is already level, or state a `level` and let it fill the hollow there is.",
    "severity": "complaint",
    "subjects": [
     "down-a-hill-beck"
@@ -122,7 +142,7 @@
   },
   {
    "rule": "DR-BANK",
-   "message": "water 'no-layer-beck' is 3 deep and its carve cut 6 course(s) of ground away above its own line \u2014 a straight-sided wall from y20 to y25 at (106, 39). The line is the lowest surface the body crosses and every column over it is emptied down to it, so a pool drawn across a slope digs a pit as deep as the ground falls. Draw it inside ground that is already level, or state a `level` and let it fill the hollow there is.",
+   "message": "fluid 'no-layer-beck' is 3 deep and its carve cut 6 course(s) of ground away above its own line \u2014 a straight-sided wall from y20 to y25 at (106, 39). The line is the lowest surface the body crosses and every column over it is emptied down to it, so a pool drawn across a slope digs a pit as deep as the ground falls. Draw it inside ground that is already level, or state a `level` and let it fill the hollow there is.",
    "severity": "complaint",
    "subjects": [
     "no-layer-beck"
