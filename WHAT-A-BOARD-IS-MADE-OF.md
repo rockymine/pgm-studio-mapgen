@@ -494,11 +494,12 @@ into a wall it reads as a trunk.
 **A checker in the same log as the posts is one mass.** Where a wall wants a checker it wants a *different*
 log; where it does not, the posts are already doing that work.
 
-**A log post carries a laid course.** A storey standing on log corner posts lays a course of laid log among its
-own courses, the timber the posts hold up, and the studio refuses a storey that does not (`HS11`).
+**Corner beams need log posts and a laid course at their level.** Where a storey seam lays beam ends, the course
+they come out of is a laid log and the corners beside them are log posts; the studio refuses either missing (`HS9`,
+`HS11`). Log posts with no beam ends need neither.
 
-**A laid log is never the bottom course.** It belongs at the top of a storey, where the posts carry it; at the
-foot of the wall it is a log lying round the footprint, and the studio refuses it there (`HS13`).
+**A laid log is never the bottom course.** It belongs at the top of a storey, where beam ends come out of it; at
+the foot of the wall it is a log lying round the footprint, and the studio refuses it there (`HS13`).
 
 **The gable is never the overhang's block.** The verge borders the roof at the gable end, and in the gable's own
 block it borders nothing. The author's pairing is spruce planks under a dark oak overhang, and the studio refuses
