@@ -1,6 +1,9 @@
 # tools/ — the driver, the loop beside it, and the world tools a hand revamp needs
 
-## `drive.py` — a plan and a refinement, through the API, to a world
+## `drive.py` — a board's spec, through the API, to a world
+
+**A run starts by running the board's `build-spec.py`**, against the studio being driven, so the documents it
+sends are the ones the script writes now.
 
 ```bash
 python3 tools/drive.py specs/<slug> "<Map Name>" --out <worlddir> [--slug <slug>] [--note "<what this pass is>"]
@@ -103,104 +106,63 @@ The four places a finding appears:
    table) and `POST /plan/inspect` (`goalDistances` against `GO1`'s 3.0–4.0 band, `islandGaps` against
    `CT12`'s 15–40, the wall rects, the frontline runs);
 
-2. **at the compile** — inside the source: the completeness gate's complaints among its `warnings`, and
-   `422 plan not compilable` with the findings if it refuses;
+2. **at the compile** — inside the source, asked dry first: the completeness gate's complaints among its
+   `warnings`, and `422 plan not compilable` with the findings if it refuses;
 
 3. **at the store** — `PUT …/source`'s `SK3`/`SK4`/`SK5`/`SK11`, its `SR2` for a key naming a shape or a layer
-   the board does not have, its `RQ3` over every document at once (each path named with the member it was
-   stated under — `refinement.themeByHeigth`, not `themeByHeigth`), and `relief/read`'s per-group cells, low,
-   high and symmetry error;
+   the board does not have, and its `RQ3` over every document at once, each path named with the member it was
+   stated under — `refinement.themeByHeigth`, not `themeByHeigth`;
 
-4. **at the dressing** — `POST …/sketch/columns`'s `DR-*` declines, read **after** the intent is stored,
-   because `DR-KEEP` needs the spawn doors and the goal rings the intent carries.
+4. **in the report** — `findings`, `relief` (each group's cells, low, high and symmetry error), `declines` (the
+   dressing's `DR-*`, read off the stored intent because `DR-KEEP` needs the spawn doors and the goal rings),
+   `preflight` and `coverage`, printed whole after the store.
 
-Then **three reads that raise no finding at all** and are printed anyway. A read that refuses nothing is the
-one an author never runs, so the driver runs all three rather than leaving them to be remembered:
+### What a run reads back: one report
 
-- **`GET …/plan/ascii`**, after the plan is stored and before anything is compiled — the board as a grid of
-  characters, one per proxy cell. A plan is a list of rectangles and most of what goes wrong with one is a
-  *relation between two of them*, which no render of a built world can show, because by then they are terrain.
-- **`GET …/plan/flow`**, beside it — what the board asks of the two sides, in prose: each objective's two
-  walks and the ratio between them, where the ways in part and meet, whether the defence shares the
-  attackers' road, and the ground no journey reaches. Off the plan alone, so it costs no build.
-- **`GET …/coverage`**, at the far end — the reached / decorated / dead shares and the five largest dead
-  patches with their coordinates. Every gate in the four places above asks whether ground is *reachable*;
-  this is the only read that asks whether any journey **goes there**, and a board can pass all four while
-  carrying a quarter of its ground unused (`GENERATION-NOTES.md`, *Reachable is not used*). Where a
-  board has no two waypoints to join it says so rather than printing nothing, because silence there reads as
-  "nothing dead" and means "never measured".
+**The stored board is read back in one request.** `GET /map/{slug}/report?format=text` builds the board once
+and answers everything a run used to ask for one request at a time, each reading beside the route that
+answers it alone (`pgm-studio/docs/world-scan/read-backs.md`). The run prints the three numbers and the five
+short readings above, and writes the whole report to `out/reports/<slug>.txt`, which is not committed: the
+studio draws it again from any change.
 
-- **`GET …/preflight`**, after the intent and before the export — the export's own verdict, asked before the
-  export. It runs the same `Traversability.Check` the export refuses on, **per team**, so a goal a team is
-  barred from reaching is named with the team barring it; plus the codec round-trip, the mirror and
-  buildability. Its log ends `export gate OPEN` or `export gate BLOCKED`. `EX1` at 409 after a whole world has
-  been built and this line are the same answer at two prices.
+**The report opens on the three numbers a board is wrong or right by.** How much of the ground steps further
+than a player walks, how many props the document names and the world does not hold, and the worst step on
+any route from a spawn to a goal, with the route it is on. Each is the number its reading carries.
 
-The flow and the coverage are the same question at two ends of the pipeline: flow says *why* ground will go
-unused while the board is still rectangles, coverage says *that* it did once a world exists to measure.
+**A reading is read on its own by its name or its route.** Every one opens with `== <name>   (<route>)`, so
+`grep -A40 '^== slopes ' out/reports/<slug>.txt` is the slope grid and `curl "$PGM_STUDIO_API/map/<slug>/slopes?format=text"`
+asks for it alone, off the board as it stands now.
 
-### The pictures, taken rather than remembered
-
-After the export it writes every picture the studio will draw for what was authored, into
-`<specdir>/renders` or `--renders <dir>`: the grid and the flow as text, one swatch per theme, a **plan and
-a section per house** — the stamped rooms and every distinct house prop style — and the coverage map. That is
-21 files on a board carrying six themes and six houses.
-
-Two more it draws itself, because the studio answers columns and not cameras: `world-iso` from two quarters,
-and `world-xray` from the same two where the board holds a covered space.
-
-**The x-ray is the only view anything underground appears in** — `world-iso` draws a gaol under a meadow as
-a meadow. It is written only when the void scan finds a roofed void of at least 200 cells, because below
-that it draws the board the isometric already drew, one shade paler.
-
-**The scan itself runs on every board** and prints what it found with the coordinates: how much covered
-space, between which blocks, and how much of it is `SEALED`, meaning nothing can walk into it.
-
-They land beside the documents rather than in `--out`, and so does the provenance sidecar, which the driver
-moves out of the exported `region/`. `--out` is what a game server is handed: `region/`, `level.dat`,
-`map.xml`, and nothing a match does not read. A CLI read-back pointed at that region directory therefore
-finds no provenance and falls back to the material estimate, which it states on its own scale line.
-
-**And the same board as text, beside the pictures.** A picture encodes a height as a shade and asks a
-reader to estimate it; a model reads a character grid and subtracts. So after the pictures the driver
-writes the board as text too, every file the API's own `?format=text` answer, so what a column carries,
-which layer drew it and what a goal keeps clear come from the build's record rather than from a sidecar
-(`tools/render/textreads.py`, which also runs on its own over a driven board and decides only the extent —
-which features get a transect, which spawn walks to which goal):
-
-| File | Is |
+| Reading | Is |
 |---|---|
-| `02-heightmap.txt` | `GET …/render/heightmap?format=text`: the ground's height band above the board's lowest surface, `0-9a-z`, one character per `every` blocks, with the houses, the fluids, the spawn points and the goals overprinted, so a height is read beside what stands there |
-| `03-slopes.txt` | `GET …/slopes?format=text`: where the ground steps — `.` walked, `:` a block to scramble, `#` a barrier — and the barrier runs named as faces, largest first. A cliff reads as a line of `#`, a ramp as a band of `.` through it, and an overdone relief as a page of `#` |
-| `world-section-x0.txt` · `world-section-z0.txt` | `GET …/render/section?format=text`, the two axis cuts as characters — `#` ground, `L` a storey over it, `~` liquid, `I`/`T` a tree, `H` a house or a hall, `M` a made thing, `S`/`!`/`W` a spawn, a goal, a wool — with a y axis, a ruler and the ground's height band under each column |
-| `transect-<feature>.txt` | `GET …/transect?format=text&beside=2`, one per spawn, goal, house, fluid prop, boulder and made thing: at every station the ground, the storey stood on, the fluid line, the top, what stands there and the step from the station before, along x and along z through the feature's own box with eight blocks of overshoot each side, and what stands within two cells of the line |
-| `04-routes.txt` | each team's walk to each goal, from `GET …/walk?format=text&beside=2`: the storey the walk stood on at every place, every step that left a walk, and what stands within two blocks of the route — the read for a thing thrown in the players' way |
-| `05-themes.txt` | `GET …/themes/census?format=text`: cells and share per theme, the materials each spends, and which theme borders which over how many cells — the number for a board that mashes its themes |
-| `06-claims.txt` | `POST …/sketch/dressing?format=text`: every cell of the board as the digit of what claims it — a prop, a goal's clearance, a keep-out, or free — so a candidate site is looked up rather than tried |
-| `07-seats.txt` | `POST …/sketch/seats?kind=…&format=text`, three times — a tree, a boulder and a 9 × 7 house: every cell that kind's footprint may seat its **minimum corner** on, and the rules that refused the rest by cell count. Where `06-claims.txt` reads the pass backwards, this reads it forwards, so a site is chosen rather than tried |
+| `grid` · `flow` | the stored plan as characters, one per proxy cell, and what the board asks of the two sides in prose — the walks and their ratio, where the ways in part and meet, and the ground no journey reaches |
+| `findings` · `relief` · `declines` · `preflight` | everything wrong with the stored map, the relief per group, what the dressing declined, and the export's own verdict asked before the export — its log ends `export gate OPEN` or `export gate BLOCKED` |
+| `coverage` | the reached, decorated and dead shares and every dead patch with its coordinates — the only read that asks whether any journey **goes** somewhere, where every gate asks whether it can |
+| `heightmap` | the ground's height band above the board's lowest surface, one character per `every` blocks, with the houses, the fluids, the spawn points and the goals overprinted |
+| `slopes` | where the ground steps — `.` walked, `:` a block to scramble, `#` a barrier — and the barrier runs named as faces, largest first. A cliff reads as a line of `#`, a ramp as a band of `.` through it |
+| `reach` | the standing ground no player can get to, and why |
+| `section along x at z N` · `section along z at x N` | the two cuts through the middle of the board as characters — `#` ground, `L` a storey over it, `~` liquid, `I`/`T` a tree, `H` a house, `M` a made thing, `S`/`!`/`W` a spawn, a goal, a wool — with a y axis and a ruler |
+| `transect <thing> along x` · `along z` | through every spawn, goal, house, fluid, boulder and made thing, with eight blocks of overshoot each side: at every station the ground, the storey stood on, the fluid line, the top and the step from the station before, and what stands within two cells |
+| `route spawn-N to <goal>` | each spawn's walk to each goal: the storey stood on at every place, every step that left a walk, and what stands within two blocks — the read for a thing thrown in the players' way |
+| `themes` | cells and share per theme, the materials each spends, and which theme borders which over how many cells |
+| `claims` | every cell as the digit of what claims it — a prop, a goal's clearance, a keep-out, or free — so a candidate site is looked up rather than tried |
+| `seats tree` · `seats boulder` · `seats house` | every cell that kind's footprint may seat its **minimum corner** on — a house at 9 × 7 — and the rules that refused the rest. Where `claims` reads the pass backwards, this reads it forwards |
+| `voids` | every roofed void, largest first, its bounds and whether anything can walk into it — `SEALED` is a space no player can enter |
 
-**And the run ends with the three numbers, not with a picture.** `== the three numbers, before the
-pictures` prints `03-slopes.txt`'s `cells: N walked, N scrambled, N barrier`, `06-claims.txt`'s
-`placed N, declined N`, and the worst step on any spawn-to-goal route out of `04-routes.txt`. The text
-reads have been written beside the pictures since the pass existed and the run reports say they go
-unread — a picture is one look and a 90 × 200 character grid is a question about which rows — so the
-three that need no slicing are the last thing in the transcript, each naming the file the rest of the
-answer is in.
+### The picture a board keeps
 
-The summaries — one line per transect and per route — are printed inline under `== the board as text`, so
-they are in the transcript without a file being opened, and the extent of every transect comes from the
-feature's own box rather than from a reader deciding where to look. A read a reader has to remember to take
-is the read that catches nothing.
+**One picture a board is committed, beside its documents.** After the export the run asks for the board's
+`overview` view through `render/eye` and keeps it as `<specdir>/<base>.png` — the board from its long side,
+in the game's own block sprites. The export's `map.png`, the picture a server lists the map by, lands in
+`--out` with the world.
 
-**The sweep is over files, so `renders/close/` is where a hand-taken picture belongs.** A render directory
-is one run's output rather than an accumulation of every run's, and the sweep at the end of a run removes
-whatever this run did not write — which silently deletes a picture an author took by hand and a README then
-points at. A subdirectory is not touched.
+**Every other picture stays in the studio.** The report names each one by the `GET` route that draws it —
+the board in the round and in x-ray, from above one question at a time, the sections, the coverage and every
+view from a player's eye — and `GET /map/{slug}/report?pictures=true` draws them all into one answer. A
+board's old `renders/` folder is cleared when it is driven.
 
-The reason they are taken here is the reason the grid and the flow are printed here: **a read nobody is
-refused for skipping is the read nobody takes.** Every shipped roof fault was visible in a section and
-invisible from above, and no board in this repository had one until an author drew them by hand. Taking a
-picture is not the same as looking at one; what this removes is the excuse.
+`--out` is what a game server is handed: `region/`, `level.dat`, `map.xml` and `map.png`. The provenance
+sidecar lands beside the documents instead, which the driver moves out of the exported `region/`.
 
 **A style is serialized in the author's own key order.** The reader takes a material's `kind` wherever it
 sits, so a style round-tripped through a formatter still previews; writing `kind` first is what every style
@@ -232,23 +194,14 @@ driver prints under the finding. `--after <change>` says the spec has taken the 
 no refinement is never refused this way.
 
 Everything after it reads the stored map — the layout and the intent come back through `GET …/sketch` and
-`GET …/intent` — and one of those reads has to be there rather than earlier:
-`sketch/columns` is asked **after** the store because `DR-KEEP` reads the spawn doors' approaches and the goal
-rings, which come off the intent.
-
-**Every read after the store is sent at once and printed where it is asked.** None of them writes to the
-board, so the driver puts them on the wire together, four at a time, and the studio answers them side by
-side. The transcript is the one a run asking them one after another would print, line for line.
-
-**The isometrics and the x-ray are drawn while those reads are answered.** They come off the one
-`sketch/columns` answer the decline list is read from, each view in a worker process of its own, and their
-lines print where the pictures always have.
+`GET …/intent`, and the report is asked **after** the store because the dressing's `DR-KEEP` reads the spawn
+doors' approaches and the goal rings, which come off the intent.
 
 ### The escape hatches
 
-`--dry` stops after the evaluator, the inspect feed and a dry run of the source, which answers what the run
-would change and stores nothing — so a plan can be iterated with no map row and no world, which is where most
-of a board's shape is actually decided. The grid and the flow read the *stored*
+**Every run asks the source dry before it stores it**, and prints what it would change. `--dry` stops there,
+after the evaluator, the inspect feed and that dry run, and stores nothing — so a plan can be iterated with no
+map row and no world, which is where most of a board's shape is actually decided. The grid and the flow read the *stored*
 plan and so are not in a dry pass; `board.py` covers the grid half of that loop. `--slug` overrides the slug
 the spec directory's name would give, for a board stored under a name of its own.
 
@@ -306,12 +259,12 @@ re-seeds boards that are already there; `--only <card>` does one. Re-running is 
 rather than added to.
 
 `--candidates` asks whether **this** prop stands at a position. The dressing preview's `claims` raster
-already answers where nothing stands and nothing is kept clear — one call, the whole board, in
-`06-claims.txt` — but a free cell is not a legal seat: seven rules decide where a prop may stand (a fluid
+already answers where nothing stands and nothing is kept clear — one call, the whole board, the report's
+`claims` — but a free cell is not a legal seat: seven rules decide where a prop may stand (a fluid
 prop's bed, a door's lane, the spawn's margin, a goal's 21 blocks, a road's standoff, a house's claim, a
 structure's keep-out), and the last three read the prop's own footprint rather than the cell.
 
-**`07-seats.txt` is the raster that does apply the footprint**, per kind, so between the two there is
+**The report's `seats` are the raster that does apply the footprint**, per kind, so between the two there is
 usually nothing left to try: take a position off the seats mask and it seats. What `--candidates` is still
 for is a prop whose kind the mask does not cover, or a position the mask allows and a *specific* style's
 own footprint does not. The raster says where to try and this says whether the try lands: the named prop is duplicated at every position given,
@@ -429,11 +382,11 @@ an annulus as one polygon) and write the thing wanted; do not stamp a drum tower
 | `sculpt/gallery_forms.py` · `gallery_sculpture.py` | the two boards in `sculpture/`, each printing what it cost in layers and shapes and exporting a world into the directory named as its second argument |
 | `sculpt/make_board.py` | writes `specs/archive/opus5-automaton`'s plan and refinement, props and all, for `drive.py` to build |
 | `render/png.py` | a PNG writer, a scanline polygon fill and a 5×7 face, in the standard library alone |
-| `render/iso.py` | isometric, **x-ray isometric**, orthographic elevation and one-panel-per-layer renders off `POST …/sketch/columns` — the built world, not the drawing. `drive.py` writes two isometrics per spec, so every board has a picture in the round, and two x-rays where the board holds a covered space. `cavities` beside them is the read on its own: every roofed void, its cell count, the blocks it lies between, and whether anything can walk into it |
+| `render/iso.py` | isometric, orthographic elevation and one-panel-per-layer renders of a `{(x, y, z): material}` model or a `sketch/columns` payload — for a sculpture's gallery and the draft preview below. A stored board's isometric, x-ray and void scan are the studio's own (`render/isometric`, `render/xray`) |
 | `render/preview.py` | the same isometric taken straight off a model's voxels, for correcting a proportion without a build |
 
 The studio's own 3-D preview is WebGL in the browser, so there is no way to take a picture from it; these
-read the column payload the preview meshes and draw it server-side.
+draw a model before it is a board, and the studio draws a stored board in the round itself.
 
 ## `styles/`
 

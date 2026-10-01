@@ -28,10 +28,10 @@ to **~54k**, and the 27 technique cards to **~66k**. Open one at the question th
 | one technique card | ~2.4k median | freely — the card nearest what is being built |
 | `pgm-studio/docs/gameplay/match-flow.md` | ~16k | **once, before the board is decided** — or its §4, §6 and §10 alone |
 | `pgm-studio/docs/gameplay/approaches.md` | ~5k | with it; every claim is the author's and settled |
-| `00-board.txt` | 0.4–3k | freely |
-| one named `renders/*.txt` | ~1.1k median | freely, **named individually** |
-| `02-heightmap.txt` · `03-slopes.txt` | 1.3–10k | one board at a time |
-| every text render of one board | **30–57k** | never — name the file wanted |
+| the report's three numbers and short readings | ~1k | freely — the drive prints them |
+| one named reading of `out/reports/<slug>.txt` | ~1.1k median | freely, **named individually** |
+| the report's `heightmap` · `slopes` | 1.3–10k | one board at a time |
+| a whole report | **30–57k** | never — name the reading wanted |
 | median `*.layout.json` | ~12k | only through `jq`, never whole |
 | `fable-millrace-revamp`, `opus5-slipway` layouts | **397k · 367k** | **never open. Either one ends the run.** |
 
@@ -39,8 +39,9 @@ to **~54k**, and the 27 technique cards to **~66k**. Open one at the question th
 layout is queried: `jq '.shapes | length'`, `jq '.shapes[] | select(.id=="…")'`. Same for a
 large `*.refinement.json`.
 
-**A one-line answer is a `grep`, not a file read.** `03-slopes.txt` runs to 10k tokens and its
-verdict is one line: `grep 'cells:' …/03-slopes.txt`.
+**A one-line answer is a `grep`, not a file read.** A report runs to 50k tokens and every reading in it
+opens with `== <name>   (<route>)`: `grep -A3 '^== slopes ' out/reports/<slug>.txt` is the slope grid's head,
+and the three numbers are the report's first lines.
 
 **Do not open another board's spec, and that is a rule about authoring rather than about budget.**
 An arrangement read is the arrangement reached for, because it is the one already known to satisfy
@@ -196,7 +197,7 @@ It reads the **refinement the spec generated**, not the script that generated it
 `build-spec.py` that states a flight through a helper writes `height_mode` once and
 uses it four times, and a grep over the source counts one.
 
-And read `05-themes.txt`. A theme registered and not on the ground is a theme that painted
+And read the report's `themes`. A theme registered and not on the ground is a theme that painted
 nothing, and nothing anywhere raises a finding for it. A theme at a fraction of a percent is
 the same fault: the shape is under the ground rather than on it, or another shape of equal
 area is taking the cell.

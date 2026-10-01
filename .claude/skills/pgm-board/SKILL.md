@@ -33,24 +33,24 @@ about it."*
 |---|---|---|
 | **What did the author say here?** | `GET /notes?status=open` across every map, or `GET /map/{slug}/notes` — each note's `anchor` is the place: a point's `hit` and `ground`, an area's `columns` as `[x, y, z]`, and the exact `camera`, which `render/eye?eye=x,y,z&yaw=&pitch=&fov=` draws again | a remark in chat turned into coordinates of your own choosing, which is the place guessed |
 | What is actually at this coordinate? | `GET /map/{slug}/column?at=x,z` | any render — every other read is a projection |
-| Does this climb? Is that step walkable? | `GET …/transect?points=x,z;x,z&beside=2&format=text`, or `03-slopes.txt` | eyeballing a heightmap shade |
+| Does this climb? Is that step walkable? | `GET …/transect?points=x,z;x,z&beside=2&format=text`, or the report's `slopes` | eyeballing a heightmap shade |
 | Does this **flight** actually walk? | the same transect across the crossing — rises, falls, worst step, walked end to end | `EL1` or `WL11`, which walk the pieces flat and cannot see an authored flight at all |
 | Is the shape I authored in the world at all? | `GET …/column?at=x,z` at a cell it should own | the store's 200 and pre-flight's OPEN, neither of which looks |
 | Did that structure land on **every** team's ground? | `GET …/column?at=x,z` at the exact image — the reflection of block `z` is **`−z−1`**, and a made layer is built once unless its group says `mirrors` | pre-flight, whose mirror check reads spawns, wool rooms and build zones and never made geometry |
-| Where does the ground step, over the whole board? | `03-slopes.txt` — `. walked · : scramble · # barrier`, plus a per-face summary | — |
+| Where does the ground step, over the whole board? | the report's `slopes` (`slopes?format=text`) — `. walked · : scramble · # barrier`, plus a per-face summary | — |
 | How high is the ground along this line? | `tools/loop.py --profile x=<x>,z=<a>..<b>,step=1` | your own arithmetic over the anchors |
-| How **steep** is the ground, and where? | `GET …/incline?format=text` — the glyph is the tens of degrees, and under the grid, how much ground stands in each ten | `03-slopes.txt`, which answers a *step* (can it be walked) and not an *angle* (how should it be finished) |
+| How **steep** is the ground, and where? | `GET …/incline?format=text` — the glyph is the tens of degrees, and under the grid, how much ground stands in each ten | the report's `slopes`, which answers a *step* (can it be walked) and not an *angle* (how should it be finished) |
 | Is there anywhere to **stand**? | `POST …/sketch/relief/read` → `level` (share under 10°) and `largestField`; `RL5` fires under 30% | the walk tier, which answers one place and no ledge for a board that is one long ramp |
-| Which two **marks** built that wall? | `POST …/sketch/relief/read` → `seams`, worst first, each naming the pair and the cell; `RL3` fires above a scramble | a face in `03-slopes.txt` or the relief read, which report the wall as terrain and attribute it to nothing |
+| Which two **marks** built that wall? | `POST …/sketch/relief/read` → `seams`, worst first, each naming the pair and the cell; `RL3` fires above a scramble | a face in the report's `slopes` or the relief read, which report the wall as terrain and attribute it to nothing |
 | What does a column hold, layer by layer? | `tools/loop.py --column x,z` | reading a world file yourself |
 | **Where may a prop stand at all?** | `POST …/sketch/seats?kind=tree\|boulder\|house[&width=&depth=]&format=text` — **the stored layout goes in the body** — a raster marking every cell a footprint's *minimum corner* may sit on, and a `refused` list of rule → cells, largest first | placing one by eye. Three runs declined 5–7 props a pass that way and 0 once every position came off this mask |
-| May *this* prop stand *here*? | `06-claims.txt` (`POST …/sketch/dressing?format=text`), then `tools/loop.py --candidates <propId> x,z …` | placing it and reading the decline |
-| What did the route actually cost? | `GET …/walk?from=&to=&aim=&format=text`, or `04-routes.txt` | assuming the shortest line is the route |
+| May *this* prop stand *here*? | the report's `claims` (`POST …/sketch/dressing?format=text`), then `tools/loop.py --candidates <propId> x,z …` | placing it and reading the decline |
+| What did the route actually cost? | `GET …/walk?from=&to=&aim=&format=text`, or the report's `route spawn-N to <goal>` | assuming the shortest line is the route |
 | …and on a **stacked** board? | the same read, with **`from=x,z,y`** — the `y` picks which storey of the column is meant | `x,z` alone, which walks to the column *under* an elevated goal and calls it walked end to end |
 | Is a lower storey still made of what I painted it? | `GET …/column?at=x,z` | the isometric, the census, or the 200 — none of the three sees it |
 | Is the board joined up, per team? | `GET …/preflight` | the export, at 409, after a whole world is built |
 | Is any ground unused — is it ground anybody **goes** to? | `GET …/coverage` (after) — reached / decorated / dead, with the five largest dead patches and their coordinates · `GET …/plan/flow` (before) | nothing — no gate asks this, and `preflight` asks only whether ground can be *reached* |
-| What is the board made of, and what borders what? | `05-themes.txt` (`themes/census?format=text`) | counting your own theme dict |
+| What is the board made of, and what borders what? | the report's `themes` (`themes/census?format=text`) | counting your own theme dict |
 | Does the finish **look** right where a player stands — do two blocks merge into one ground or into static? | `GET …/render/eye?look=x,z` — the board from a player's eye in the game's own block textures, framed on a thing the document places (a spawn, a goal, a boulder, a house); `from=x,z` stands the eye by hand; `?format=text` names the camera and what fills the frame | `render/surface`, a theme preview or the isometric, which all draw a block as one colour — two noisy blocks of one colour are calm grey there and static in the game |
 | What is the plan's shape, before a map row exists? | `tools/board.py specs/<slug>/<slug>.plan.json` | a render of a built world |
 | Is this section of the world what I think? | `GET …/render/section?axis=&at=&from=&to=&format=text` — **`axis` names the direction the cut runs, so `at` is the other coordinate** | a PNG section, which blends renderer gridlines over it |
@@ -90,18 +90,19 @@ drive with `--after <change>`; drop one with `--discard <change>` only where the
 is a list of rectangles and most of what goes wrong with one is a *relation between two of them*;
 no render of a built world can show that, because by then they are terrain.
 
-**After every drive, before you open a single PNG.** Open these three and say the numbers out loud:
+**After every drive, before you open a single picture.** The drive prints the three numbers the report opens
+on; say them out loud:
 
 ```
-03-slopes.txt   -> cells: N walked, N scrambled, N barrier; faces: N, largest N at …
-06-claims.txt   -> placed N, declined N      (and: is the goal's clearance block empty?)
-04-routes.txt   -> each team's walk: rises, falls, worst step, and what stands within two blocks
+ground   N walked, N scrambled, N barrier — N% steps further than a player walks
+props    N placed, N declined      (and in `claims`: is the goal's clearance block empty?)
+routes   worst step N, on route spawn-N to <goal>
 ```
 
-Then look at the pictures. The order is not taste: **a picture answers whether a thing came out, a
-number answers whether it is right.** A one-block bump under a rail is one shade in a heightmap and
-nothing at all in an isometric — `03-slopes.txt` names it with its coordinates, and it shipped in five
-consecutive builds of `opus5-lindenkreuz` because nobody opened the file.
+Then look at the pictures the report names. The order is not taste: **a picture answers whether a thing came
+out, a number answers whether it is right.** A one-block bump under a rail is one shade in a heightmap and
+nothing at all in an isometric — the report's `slopes` names it with its coordinates, and it shipped in five
+consecutive builds of one board because nobody opened the slope grid.
 
 **After a drive, reply on every note it answered.** The reply names what changed, the change it landed as
 and the number that moved ("dead share in this area 41% → 6%"), and carries the same camera drawn after the
@@ -348,7 +349,7 @@ bulges outside the vertex ring on a convex stretch and inside it on a concave on
 *"My keep-out model for the dressing was the wrong shape twice"*. `opus5-smallboards`: four buildings
 declined `DR-KEEP` at once.
 
-`06-claims.txt` is the whole board as one raster of what claims each cell — free, route, structure,
+The report's `claims` is the whole board as one raster of what claims each cell — free, route, structure,
 tree, goal clearance, spawn keep-out.
 
 **The raster says where to try; `loop.py --candidates` says whether the try lands**, eight candidates for
@@ -370,12 +371,12 @@ clear.
 ## 5. The order a board is built in
 
 ```
-build-spec.py            write the plan and the refinement
+build-spec.py            write the plan and the refinement (drive.py runs it first)
 tools/board.py           the grid — relations between rectangles
-drive.py --dry           evaluate + inspect: score, GO1/GO3/GO4, CT12, the lint table
+drive.py --dry           evaluate + inspect + what the run would change: score, GO1/GO3/GO4, CT12, the lint table
                          ── iterate here; this is where the board's shape is decided ──
-drive.py --out …         compile, store, read back, pre-flight, export, render, text
-03/06/04-*.txt           the numbers, before the pictures
+drive.py --out …         the dry run, the store, one report read back, the export, the board's picture
+the three numbers        the report's head, before the pictures it names
 loop.py                  every placement question after the first drive — two seconds, and nothing stored
 ```
 

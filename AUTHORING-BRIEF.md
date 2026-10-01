@@ -148,10 +148,11 @@ its own query words.
 **`column` is the workhorse**: every picture beside it is a projection, and it is what is actually at a
 coordinate, which is the read to reach for when a picture and a document disagree.
 
-**Read the text before the pictures.** The driver writes the board as text beside every picture, each
-file the API's own `?format=text` answer — `02-heightmap.txt`, `03-slopes.txt`, the two axis sections, a
-`transect-<feature>.txt` through every spawn, goal, house, fluid prop and made thing, `04-routes.txt` along
-each team's walk to each goal, `05-themes.txt` and `06-claims.txt` — and prints their summaries inline.
+**Read the text before the pictures.** After every store the driver reads the board back in one request,
+`GET /map/{slug}/report`, and writes it to `out/reports/<slug>.txt`: the three numbers first, then every
+reading — the heightmap, the slopes, the two axis sections, a transect through every spawn, goal, house,
+fluid, boulder and made thing, a route from every spawn to every goal, the themes and the claims — each under
+its name and the route that answers it alone. It prints the numbers and the short readings inline.
 
 Every one of them can be asked for again at any extent: `render/section`, `transect`, `walk`, `slopes`,
 `render/heightmap`, `themes/census` and `sketch/dressing` all answer `?format=text`.
@@ -336,11 +337,13 @@ to do can be read beside what you built.
 
 Into `/home/user/pgm-studio-mapgen`, on the branch this session was given:
 
-- **`maps/<slug>/`** — `region/`, `level.dat`, `map.xml`, and nothing else. That folder is what a game
-  server is handed, so anything that exists to be looked at rather than loaded stays out of it.
-- **`specs/<slug>/`** — every JSON you authored: the plan and the refinement. The world is derived from them.
-  Beside them, `renders/` with the images you actually reviewed the map from **at each stage**, not one
-  top-down at the end, and `provenance.json`, which the driver moves here out of the exported `region/`.
+- **`maps/<slug>/`** — `region/`, `level.dat`, `map.xml` and `map.png`, and nothing else. That folder is what a
+  game server is handed, so anything that exists to be looked at rather than loaded stays out of it.
+- **`specs/<slug>/`** — every document you authored: `build-spec.py`, and the plan and the refinement it
+  writes. The world is derived from them. Beside them, `<slug>.png`, the board from its long side that the
+  driver keeps, and `provenance.json`, which the driver moves here out of the exported `region/`. Every
+  other picture stays in the studio, drawn again from the board as it stands: the report names each one by
+  its route, and a review cites a picture by that route.
 - **`review/<slug>.md`** — what the board is, how it is meant to play, the techniques used, and what went
   wrong. Follow `review/tallow-mirefast.md` for shape.
 - **a row in [BOARDS-BUILT.md](BOARDS-BUILT.md)** — under the run's own heading, saying what the board
