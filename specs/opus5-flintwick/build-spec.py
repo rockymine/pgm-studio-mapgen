@@ -312,14 +312,15 @@ add_shapes = [
 
 # ── what is built ────────────────────────────────────────────────────────────────────────────────
 # Three families, named before anything is painted: the GROUND is chalk-white, what is BUILT is
-# knapped flint coursed with chalk rubble on a cobble plate, and the ACCENT is the flint itself.
+# knapped flint coursed with chalk rubble on a cobble footing, and the ACCENT is the flint itself.
 # Nothing here is a colour; the whole board is a value range from white to black.
 def knap_style(storeys, tinted=True):
     top = ({"kind": "teamTint", "blockId": 159, "neutral": CHISELLED} if tinted else CHISELLED)
     return {
         "foundation": {"plate": {"stack": stack([(1, COBBLE)], "repeat"), "extent": 2},
                        "surface": {"field": None, "border": None, "borderWidth": 1, "inlay": None,
-                                   "inlayInset": 2, "isPlain": True}},
+                                   "inlayInset": 2, "isPlain": True},
+                       "footing": STONEBRICK},
         "roof": {"form": "hip", "pitch": 1, "slab": QUARTZ_SLAB, "slabData": 7, "overhang": 1,
                  "ridgeCap": True, "hole": False,
                  "body": QUARTZ, "verge": QUARTZ_PILLAR, "gable": CHALK,

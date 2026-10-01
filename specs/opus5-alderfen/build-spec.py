@@ -457,6 +457,7 @@ def croft_style():
             "plate": {"stack": bands((solid(PLANKS, SPRUCE), 1)), "extent": 2},
             "surface": {"field": None, "border": None, "borderWidth": 1, "inlay": None,
                         "inlayInset": 2, "isPlain": True},
+            "footing": solid(COBBLE),
         },
         "roof": {
             "form": "gable", "pitch": 1, "slab": -1, "slabData": 0, "overhang": 1,
@@ -553,6 +554,7 @@ def mirehut_style():
             "plate": {"stack": bands((solid(COBBLE), 1), (solid(MOSSY_COBBLE), 1)), "extent": 2},
             "surface": {"field": None, "border": None, "borderWidth": 1, "inlay": None,
                         "inlayInset": 2, "isPlain": True},
+            "footing": solid(MOSSY_COBBLE),
         },
         "roof": {
             "form": "gable", "pitch": 1, "slab": -1, "slabData": 0, "overhang": 1,
