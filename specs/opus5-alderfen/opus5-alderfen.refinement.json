@@ -4108,28 +4108,163 @@
     "style": "sprucefen"
    },
    {
-    "id": "mush-w",
-    "kind": "tree",
-    "seed": 841,
-    "x": -36,
-    "z": -54,
-    "style": "mushbed"
+    "id": "cover-fenbed-w",
+    "kind": "flora",
+    "seed": 96,
+    "spec": {
+     "coverage": 0.72,
+     "scale": 8,
+     "octaves": 3,
+     "fernShare": 0.55,
+     "flowerShare": 0.05,
+     "flowerScale": 16,
+     "tallShare": 0.06,
+     "mushroomShare": 0.3
+    },
+    "points": [
+     [
+      -27.1,
+      -54.0
+     ],
+     [
+      -29.7,
+      -51
+     ],
+     [
+      -34.4,
+      -51
+     ],
+     [
+      -40.3,
+      -51
+     ],
+     [
+      -42.8,
+      -52.1
+     ],
+     [
+      -44.1,
+      -56.2
+     ],
+     [
+      -40.1,
+      -59.3
+     ],
+     [
+      -34.5,
+      -60.4
+     ],
+     [
+      -30.8,
+      -57.3
+     ]
+    ]
    },
    {
-    "id": "mush-brae",
-    "kind": "tree",
-    "seed": 842,
-    "x": -34,
-    "z": -84,
-    "style": "mushbed-2"
+    "id": "cover-fenbed-brae",
+    "kind": "flora",
+    "seed": 97,
+    "spec": {
+     "coverage": 0.72,
+     "scale": 8,
+     "octaves": 3,
+     "fernShare": 0.55,
+     "flowerShare": 0.05,
+     "flowerScale": 16,
+     "tallShare": 0.06,
+     "mushroomShare": 0.3
+    },
+    "points": [
+     [
+      -24.8,
+      -84.0
+     ],
+     [
+      -28.8,
+      -80.8
+     ],
+     [
+      -32.5,
+      -77.7
+     ],
+     [
+      -38.6,
+      -78.1
+     ],
+     [
+      -40.5,
+      -82.2
+     ],
+     [
+      -42.5,
+      -86.3
+     ],
+     [
+      -37.9,
+      -89.1
+     ],
+     [
+      -32.6,
+      -89.9
+     ],
+     [
+      -27.5,
+      -88.1
+     ]
+    ]
    },
    {
-    "id": "mush-e",
-    "kind": "tree",
-    "seed": 843,
-    "x": 50,
-    "z": -54,
-    "style": "mushbed"
+    "id": "cover-fenbed-e",
+    "kind": "flora",
+    "seed": 98,
+    "spec": {
+     "coverage": 0.72,
+     "scale": 8,
+     "octaves": 3,
+     "fernShare": 0.55,
+     "flowerShare": 0.05,
+     "flowerScale": 16,
+     "tallShare": 0.06,
+     "mushroomShare": 0.3
+    },
+    "points": [
+     [
+      59.3,
+      -51
+     ],
+     [
+      56.4,
+      -51
+     ],
+     [
+      51.2,
+      -51
+     ],
+     [
+      46.6,
+      -51
+     ],
+     [
+      42.8,
+      -51
+     ],
+     [
+      42.8,
+      -51
+     ],
+     [
+      45.9,
+      -51.3
+     ],
+     [
+      51.3,
+      -51.5
+     ],
+     [
+      55.8,
+      -51
+     ]
+    ]
    },
    {
     "id": "cover-bog",
@@ -4484,81 +4619,6 @@
     "form": "template",
     "species": "spruce",
     "height": 13
-   },
-   "mushbed": {
-    "kind": "tree",
-    "form": "copied",
-    "body": [
-     [
-      0,
-      0,
-      0,
-      39,
-      0
-     ],
-     [
-      2,
-      0,
-      1,
-      39,
-      0
-     ],
-     [
-      1,
-      0,
-      3,
-      39,
-      0
-     ],
-     [
-      3,
-      0,
-      2,
-      39,
-      0
-     ],
-     [
-      -1,
-      0,
-      2,
-      39,
-      0
-     ]
-    ]
-   },
-   "mushbed-2": {
-    "kind": "tree",
-    "form": "copied",
-    "body": [
-     [
-      0,
-      0,
-      0,
-      39,
-      0
-     ],
-     [
-      1,
-      0,
-      2,
-      39,
-      0
-     ],
-     [
-      3,
-      0,
-      1,
-      39,
-      0
-     ],
-     [
-      2,
-      0,
-      3,
-      39,
-      0
-     ]
-    ]
    },
    "erratic": {
     "kind": "boulder",

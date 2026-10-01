@@ -23,7 +23,6 @@ SURFACE = 14
 STONE, GRASS, DIRT, COBBLE, PLANKS = 1, 2, 3, 4, 5
 SAND, GRAVEL, WATER = 12, 13, 9
 LOG, LOG2 = 17, 162
-BROWN_MUSHROOM = 39
 MOSSY_COBBLE, ANDESITE_DATA, POLISHED_ANDESITE_DATA = 48, 5, 6
 HARDENED_CLAY, STAINED_CLAY, WOOL = 172, 159, 35
 GLASS_PANE, STONE_BRICK = 102, 98
@@ -135,12 +134,6 @@ def on_holm(ring, margin=10):
 
 def on_mid(ring, margin=9):
     return inside(ring, MID_BOX, margin)
-
-
-# ── the plants the dressing places, each stated block by block ─────────────────
-def clump_body(spots, block, data=0):
-    """A handful of one-block plants: a mushroom bed."""
-    return [[x, 0, z, block, data] for x, z in spots]
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -603,10 +596,6 @@ STYLES = {
     "sprucefen": {"kind": "tree", "form": "template", "species": "spruce", "height": 13},
 }
 
-STYLES["mushbed"] = {"kind": "tree", "form": "copied",
-                     "body": clump_body([(0, 0), (2, 1), (1, 3), (3, 2), (-1, 2)], BROWN_MUSHROOM)}
-STYLES["mushbed-2"] = {"kind": "tree", "form": "copied",
-                       "body": clump_body([(0, 0), (1, 2), (3, 1), (2, 3)], BROWN_MUSHROOM)}
 
 BOULDER_ROCK = turbulence(806, 3, [solid(COBBLE), solid(MOSSY_COBBLE),
                                    solid(STONE, ANDESITE_DATA)], rise=3)
@@ -716,18 +705,15 @@ for index, (x, z) in enumerate(STAND_EDGE):
     PROPS.append({"id": f"fir-{index}", "kind": "tree", "seed": 1300 + index * 11,
                   "x": x, "z": z, "style": "sprucefen"})
 
-# the mushroom beds, on the podzol the fen beds were painted with
-PROPS.append({"id": "mush-w", "kind": "tree", "seed": 841, "x": -36, "z": -54,
-              "style": "mushbed"})
-PROPS.append({"id": "mush-brae", "kind": "tree", "seed": 842, "x": -34, "z": -84,
-              "style": "mushbed-2"})
-PROPS.append({"id": "mush-e", "kind": "tree", "seed": 843, "x": 50, "z": -54,
-              "style": "mushbed"})
-
 # the cover: fern-heavy, as a swamp floor is, and lily rafts on the water it reaches — a quarter share on
 # the marsh pan down the defended line, more on the holm's pool, which lies inside one patch of the raft field
 FLORA = {"coverage": 0.72, "scale": 8, "octaves": 3, "fernShare": 0.55,
          "flowerShare": 0.05, "flowerScale": 16, "tallShare": 0.06}
+# the mushroom beds: each fen bed's own cover, stated before the wider areas so its cells are its own, with
+# mushrooms on its podzol — the one footing here a mushroom keeps by day
+for index, shape in enumerate(shape for shape in ADD_SHAPES if shape["theme"] == "fenbed"):
+    PROPS.append({"id": f"cover-{shape['id']}", "kind": "flora", "seed": 96 + index,
+                  "spec": {**FLORA, "mushroomShare": 0.3}, "points": shape["vertices"]})
 flora_rng = random.Random(6001)
 PROPS.append({"id": "cover-bog", "kind": "flora", "seed": 91, "spec": {**FLORA, "lilyShare": 0.25},
               "points": on_holm(lobed_ring(0, -56, 36, 18, 13, 0.08, flora_rng))})
