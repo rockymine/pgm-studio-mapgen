@@ -5,7 +5,7 @@
 
 **A studio seeds its own library at startup and nothing else.** `LibrarySeed` runs on every boot and is
 idempotent, so the materials, the house presets and parts, the themes, the biomes, the four erratic
-boulders and the six vanilla tree recipes are always there. Two things this repository depends on are
+boulders and the seven vanilla tree recipes are always there. Two things this repository depends on are
 not, and this puts both in.
 
 **The technique cards' boards.** A card says *open it in the studio as `technique-<name>`*, which is only
@@ -22,7 +22,7 @@ composer's own answer, committed so the card's starting point is reproducible, a
 
 **The copied trees.** `corpus/tree-showcase` is a world of hand-built trees, and the studio's
 `tools/seed-trees.cs` cuts each one out of it into the tree library as a `copied` recipe. Without them a
-studio offers the six vanilla species alone, and the warmup skill tells an author to prefer a copied tree
+studio offers the seven vanilla species alone, and the warmup skill tells an author to prefer a copied tree
 over the vanilla stamp — so a run against an unseeded studio is told to reach for something not there.
 `PGM_STUDIO_REPO` says where the studio's checkout is, and `--no-trees` skips this half.
 

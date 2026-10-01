@@ -145,8 +145,8 @@ opening anything else. `techniques/README.md` indexes them.
 `technique-<card>` — and `tools/seed-studio.py --check` says whether this database has them.
 
 **It answers for the copied trees too, and those are the half a fresh studio is missing.** A studio seeds
-its own library on every boot — materials, house presets, themes, biomes, four boulders and the six
-vanilla tree species — but the 84 trees cut out of `corpus/tree-showcase` are this repository's, and
+its own library on every boot — materials, house presets, themes, biomes, four boulders and the seven
+vanilla tree species — but the 94 trees cut out of `corpus/tree-showcase` are this repository's, and
 `--check` reporting none of them means the recipe named two sections below does not exist yet.
 
 **A card's variants stand side by side in one world, which is what makes the comparison the lesson.** Read

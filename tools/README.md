@@ -232,15 +232,15 @@ and the drive is the last step rather than the first.
 
 **A studio seeds its own library at startup and nothing else.** `LibrarySeed` runs on every boot and is
 idempotent, so the materials, the house presets and parts, the themes, the biomes, the four erratic
-boulders and the six vanilla tree recipes are always there. Two things this repository depends on are not,
+boulders and the seven vanilla tree recipes are always there. Two things this repository depends on are not,
 and this puts both in.
 
 **The technique cards' boards** — thirty-two over twenty-nine cards — so *open it in the studio as
 `technique-<name>`* is true on a database nobody has driven them into.
 
 **The copied trees.** `corpus/tree-showcase` is a world of hand-built trees and the studio's
-`tools/seed-trees.cs` cuts each one into the tree library as a `copied` recipe: 74 of them, against the
-six vanilla species a studio boots with. The warmup skill tells an author to prefer a copied tree over the
+`tools/seed-trees.cs` cuts each one into the tree library as a `copied` recipe: 94 of them, against the
+seven vanilla species a studio boots with. The warmup skill tells an author to prefer a copied tree over the
 vanilla stamp, so an unseeded studio is one where that instruction names nothing. It is a dotnet build and
 a scan of every region file, so it takes minutes; `PGM_STUDIO_REPO` says where the studio's checkout is
 and `--no-trees` skips it.
