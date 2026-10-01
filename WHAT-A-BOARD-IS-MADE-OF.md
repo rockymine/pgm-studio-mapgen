@@ -465,8 +465,9 @@ foliage, and `r11`'s dense oaks are the worst of it because their crowns are the
 ## What a building is made of
 
 The two sections above are what the ground is made of. This is the other half, and it is shorter, because a
-building is a short list of decisions and a shorter list of things not to do. The list is the author's and
-none of it is enforced, which is why the shipped presets break the first item on it.
+building is a short list of decisions and a shorter list of things not to do. The list is the author's, and
+three of its rulings are refusals in the studio; the rest is enforced nowhere, which is why the shipped presets
+break the first item on it.
 
 **No footing.** `Foundation.Footing` is null by default and that is the answer rather than an omission: a
 footing is the course ringing the plate one block proud, and it is what a **deep** plate stands on — over a
@@ -492,6 +493,19 @@ into a wall it reads as a trunk.
 
 **A checker in the same log as the posts is one mass.** Where a wall wants a checker it wants a *different*
 log; where it does not, the posts are already doing that work.
+
+**A log post carries a laid course.** A storey standing on log corner posts lays a course of laid log among its
+own courses, the timber the posts hold up, and the studio refuses a storey that does not (`HS11`).
+
+**A laid log is never the bottom course.** It belongs at the top of a storey, where the posts carry it; at the
+foot of the wall it is a log lying round the footprint, and the studio refuses it there (`HS13`).
+
+**The gable is never the overhang's block.** The verge borders the roof at the gable end, and in the gable's own
+block it borders nothing. The author's pairing is spruce planks under a dark oak overhang, and the studio refuses
+the same block on both (`HS12`).
+
+**No birch log in a building.** Not as a post, a laid course, a beam or a band; birch planks, stairs and slabs
+are allowed.
 
 **Two buildings are a row when they differ in height and footprint and in nothing else.** One style, three
 plots, one of them a storey taller: that is a town. Three styles is three ideas, and five styles on a board is
