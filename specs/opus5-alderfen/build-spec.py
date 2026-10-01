@@ -33,7 +33,6 @@ COARSE_DIRT, PODZOL = 1, 2
 SPRUCE, JUNGLE, DARK_OAK = 1, 3, 5           # plank/slab variants
 LOG_SPRUCE, LOG_JUNGLE = 1, 3                # log id 17 variants
 LOG2_DARK_OAK = 1                            # log id 162 variant
-LILY_PAD = 111
 
 
 def solid(block_id, data=0):
@@ -140,7 +139,7 @@ def on_mid(ring, margin=9):
 
 # ── the plants the dressing places, each stated block by block ─────────────────
 def clump_body(spots, block, data=0):
-    """A handful of one-block plants: a mushroom bed, a raft of lily pads."""
+    """A handful of one-block plants: a mushroom bed."""
     return [[x, 0, z, block, data] for x, z in spots]
 
 
@@ -236,6 +235,9 @@ def fen_theme(surface_material, rim=True, surface_depth=4):
     }
 
 
+LOGS = cell_patches(720, 2, 40, 0, [solid(LOG, 4), solid(LOG, 4 + LOG_SPRUCE), solid(LOG2, 4 + LOG2_DARK_OAK)],
+                    rise=2)
+
 THEMES = {
     # the bog — the map's default ground
     "bog": fen_theme(BOG_TURF),
@@ -262,11 +264,22 @@ THEMES = {
     "fenbed": fen_theme(noise(708, 7, [
         solid(DIRT), solid(DIRT, PODZOL), solid(DIRT, PODZOL), solid(DIRT, PODZOL), solid(DIRT, COARSE_DIRT)])),
     # the sky
+    # the log piles: oak, spruce and dark oak laid along x, in twos
+    "logpile": {
+        "bedrock": {"relative": False, "value": 1},
+        "wallOnTerrainFaces": True,
+        "surface": top(LOGS, 2),
+        "wall": LOGS,
+        "wallEnabled": True,
+        "fill": LOGS,
+        "rim": {"enabled": False, "depth": 1, "material": LOGS},
+        "rimEdges": "void",
+    },
     "cloud": {
         "bedrock": {"relative": False, "value": 1},
         "wallOnTerrainFaces": True,
         "surface": top(noise(709, 9, [solid(WOOL, 0), solid(WOOL, 0), solid(STAINED_CLAY, 0)]), 3),
-        "wall": noise(710, 9, [solid(WOOL, 0), solid(WOOL, 0), solid(STAINED_CLAY, 0)]),
+        "wall": noise(710, 9, [solid(WOOL, 0), solid(WOOL, 0), solid(STAINED_CLAY, 0)], rise=3),
         "wallEnabled": True,
         "fill": solid(WOOL, 0),
         "rim": {"enabled": False, "depth": 1, "material": solid(WOOL, 0)},
@@ -353,7 +366,9 @@ RELIEF = {
 # A splotch beats a pattern, and a splotch is a shape: an ordinary one-course add, base_height 1, no
 # override, so the taller add keeps the height and the smallest shape keeps the colour.
 def patch(shape_id, ring, theme):
-    return {"id": shape_id, "type": "polygon", "operation": "add", "floor": 0, "base_height": 1,
+    """A paint patch, drawn as tall as the ground it lies on: a shape paints a cell only where its drawn top
+    is the tallest drawn top there, so a patch drawn thinner than the island paints nothing."""
+    return {"id": shape_id, "type": "polygon", "operation": "add", "floor": 0, "base_height": SURFACE,
             "vertices": ring, "theme": theme}
 
 
@@ -417,9 +432,28 @@ def cumulus(name, cx, cz, base_y, seed):
     return layers
 
 
+# ── the log piles: firewood beside the steading, beside the west hut, and one in the wood ──
+def log_pile(name, x, z, length, top_from, top_to):
+    """A made pile of logs two deep, `length` blocks along x from (x, z), and a second course over
+    x + top_from .. x + top_to of its north row, seated on the ground under it."""
+    shapes = [
+        {"id": f"{name}-0", "type": "rectangle", "operation": "add", "floor": 0, "base_height": 1,
+         "min_x": x, "min_z": z, "max_x": x + length, "max_z": z + 2, "theme": "logpile"},
+        {"id": f"{name}-1", "type": "rectangle", "operation": "add", "floor": 0, "base_height": 2,
+         "min_x": x + top_from, "min_z": z, "max_x": x + top_to + 1, "max_z": z + 1, "theme": "logpile"},
+    ]
+    return {"id": name, "name": name, "base_y": SURFACE, "kind": "made", "part_of": name, "seat": "ground",
+            "shapes": shapes,
+            "groups": [{"id": f"{name}-g", "name": name, "mirrors": True,
+                        "shapeIds": [shape["id"] for shape in shapes]}]}
+
+
 ADD_LAYERS = (cumulus("cloud-brae", -56, -94, 80, 91)
               + cumulus("cloud-edge", -62, -50, 88, 92)
-              + cumulus("cloud-holm", 0, 0, 84, 93))
+              + cumulus("cloud-holm", 0, 0, 84, 93)
+              + [log_pile("pile-steading", -38, -92, 5, 1, 3),
+                 log_pile("pile-hut", -12, -72, 4, 1, 2),
+                 log_pile("pile-wood", -66, -72, 6, 1, 4)])
 
 
 # ── house styles ────────────────────────────────────────────────────────────────
@@ -569,19 +603,10 @@ STYLES = {
     "sprucefen": {"kind": "tree", "form": "template", "species": "spruce", "height": 13},
 }
 
-# Three laid log piles, two or three courses of oak, spruce and dark oak logs lying across each other.
-STYLES["logpile-1"] = {"kind": "tree", "form": "copied", "body": [[0,0,0,17,4], [0,0,1,162,5], [1,0,0,17,5], [1,0,1,162,5], [1,1,0,17,4], [2,0,0,17,5], [2,0,1,17,5], [2,1,0,17,4], [2,1,1,162,9], [3,0,0,162,5], [3,0,1,17,4], [3,1,0,162,5], [4,0,0,17,5], [4,0,1,162,5]]}
-STYLES["logpile-2"] = {"kind": "tree", "form": "copied", "body": [[0,0,0,17,4], [0,0,1,162,5], [1,0,0,17,4], [1,0,1,17,4], [1,1,0,17,4], [2,0,0,17,4], [2,0,1,17,4], [2,1,0,17,5], [3,0,0,17,5], [3,0,1,17,4]]}
-STYLES["logpile-3"] = {"kind": "tree", "form": "copied", "body": [[0,0,0,17,5], [0,0,1,17,4], [1,0,0,17,4], [1,0,1,162,5], [1,1,0,17,4], [2,0,0,162,5], [2,0,1,17,4], [2,1,0,17,5], [2,1,1,162,9], [3,0,0,162,5], [3,0,1,17,5], [3,1,0,17,4], [4,0,0,17,5], [4,0,1,17,4], [4,1,0,162,5], [5,0,0,162,5], [5,0,1,17,5]]}
-
 STYLES["mushbed"] = {"kind": "tree", "form": "copied",
                      "body": clump_body([(0, 0), (2, 1), (1, 3), (3, 2), (-1, 2)], BROWN_MUSHROOM)}
 STYLES["mushbed-2"] = {"kind": "tree", "form": "copied",
                        "body": clump_body([(0, 0), (1, 2), (3, 1), (2, 3)], BROWN_MUSHROOM)}
-STYLES["lilyraft"] = {"kind": "tree", "form": "copied",
-                      "body": clump_body([(0, 0), (2, 1), (1, 3), (3, 0), (4, 2)], LILY_PAD)}
-STYLES["lilyraft-2"] = {"kind": "tree", "form": "copied",
-                        "body": clump_body([(0, 0), (2, 2), (3, 0)], LILY_PAD)}
 
 BOULDER_ROCK = turbulence(806, 3, [solid(COBBLE), solid(MOSSY_COBBLE),
                                    solid(STONE, ANDESITE_DATA)], rise=3)
@@ -678,7 +703,7 @@ PROPS.append({"id": "stone-holm", "kind": "boulder", "seed": 827, "x": 0, "z": 1
 # these heights with the variance divided out.
 STAND_WEST = [(-58, -76), (-50, -78), (-42, -72), (-60, -62), (-52, -66), (-38, -62),
               (-44, -84), (-56, -88), (-34, -70)]
-STAND_BACK = [(-38, -100), (-40, -80), (-58, -82), (-62, -96), (38, -100), (40, -80), (58, -84)]
+STAND_BACK = [(-38, -100), (-39, -79), (-61, -83), (-62, -96), (38, -100), (40, -80), (58, -84)]
 STAND_EDGE = [(62, -78), (68, -62), (58, -50), (70, -44), (-66, -60), (-70, -74)]
 STAND_HOLM = [(-40, -14), (-14, -10), (52, 10)]
 
@@ -691,14 +716,6 @@ for index, (x, z) in enumerate(STAND_EDGE):
     PROPS.append({"id": f"fir-{index}", "kind": "tree", "seed": 1300 + index * 11,
                   "x": x, "z": z, "style": "sprucefen"})
 
-# the log piles: firewood beside the steading, beside the west hut, and one in the wood
-PROPS.append({"id": "pile-steading", "kind": "tree", "seed": 831, "x": -38, "z": -92,
-              "style": "logpile-1"})
-PROPS.append({"id": "pile-hut", "kind": "tree", "seed": 832, "x": -12, "z": -72,
-              "style": "logpile-2"})
-PROPS.append({"id": "pile-wood", "kind": "tree", "seed": 833, "x": -66, "z": -72,
-              "style": "logpile-3"})
-
 # the mushroom beds, on the podzol the fen beds were painted with
 PROPS.append({"id": "mush-w", "kind": "tree", "seed": 841, "x": -36, "z": -54,
               "style": "mushbed"})
@@ -707,23 +724,12 @@ PROPS.append({"id": "mush-brae", "kind": "tree", "seed": 842, "x": -34, "z": -84
 PROPS.append({"id": "mush-e", "kind": "tree", "seed": 843, "x": 50, "z": -54,
               "style": "mushbed"})
 
-# the lily pads: on the marsh pans, whose surface is a course of standing water painted as terrain
-PROPS.append({"id": "lily-mid", "kind": "tree", "seed": 851, "x": -7, "z": -64,
-              "style": "lilyraft"})
-PROPS.append({"id": "lily-mid2", "kind": "tree", "seed": 852, "x": 1, "z": -62,
-              "style": "lilyraft-2"})
-PROPS.append({"id": "lily-far", "kind": "tree", "seed": 853, "x": 5, "z": -60,
-              "style": "lilyraft"})
-# There is no pad on the tarn. A lily pad is a placement like any other and a fluid prop claims every
-# column of its bed and beach, so one inside the tarn is declined DR-CLAIM: measured twice, at
-# (-34, -54) and at (-38, -50). What carries pads instead is the marsh pans above — water painted as
-# terrain, which claims nothing.
-
-# the cover: fern-heavy, as a swamp floor is
+# the cover: fern-heavy, as a swamp floor is, and lily rafts on the water it reaches — a quarter share on
+# the marsh pan down the defended line, more on the holm's pool, which lies inside one patch of the raft field
 FLORA = {"coverage": 0.72, "scale": 8, "octaves": 3, "fernShare": 0.55,
          "flowerShare": 0.05, "flowerScale": 16, "tallShare": 0.06}
 flora_rng = random.Random(6001)
-PROPS.append({"id": "cover-bog", "kind": "flora", "seed": 91, "spec": FLORA,
+PROPS.append({"id": "cover-bog", "kind": "flora", "seed": 91, "spec": {**FLORA, "lilyShare": 0.25},
               "points": on_holm(lobed_ring(0, -56, 36, 18, 13, 0.08, flora_rng))})
 PROPS.append({"id": "cover-brae-w", "kind": "flora", "seed": 92, "spec": FLORA,
               "points": on_holm(lobed_ring(-48, -82, 26, 20, 13, 0.12, flora_rng))})
@@ -731,7 +737,7 @@ PROPS.append({"id": "cover-brae-e", "kind": "flora", "seed": 93, "spec": FLORA,
               "points": on_holm(lobed_ring(48, -82, 26, 20, 13, 0.12, flora_rng))})
 PROPS.append({"id": "cover-garth", "kind": "flora", "seed": 94, "spec": FLORA,
               "points": on_holm(lobed_ring(0, -94, 30, 12, 11, 0.10, flora_rng))})
-PROPS.append({"id": "cover-holm", "kind": "flora", "seed": 95, "spec": FLORA,
+PROPS.append({"id": "cover-holm", "kind": "flora", "seed": 95, "spec": {**FLORA, "lilyShare": 0.4},
               "points": on_mid(lobed_ring(0, 0, 50, 15, 13, 0.08, flora_rng))})
 
 

@@ -20,7 +20,7 @@
    "type": "polygon",
    "operation": "add",
    "floor": 0,
-   "base_height": 1,
+   "base_height": 14,
    "vertices": [
     [
      -34.5,
@@ -82,7 +82,7 @@
    "type": "polygon",
    "operation": "add",
    "floor": 0,
-   "base_height": 1,
+   "base_height": 14,
    "vertices": [
     [
      65,
@@ -144,7 +144,7 @@
    "type": "polygon",
    "operation": "add",
    "floor": 0,
-   "base_height": 1,
+   "base_height": 14,
    "vertices": [
     [
      -45.8,
@@ -206,7 +206,7 @@
    "type": "polygon",
    "operation": "add",
    "floor": 0,
-   "base_height": 1,
+   "base_height": 14,
    "vertices": [
     [
      65,
@@ -268,7 +268,7 @@
    "type": "polygon",
    "operation": "add",
    "floor": 0,
-   "base_height": 1,
+   "base_height": 14,
    "vertices": [
     [
      14.7,
@@ -322,7 +322,7 @@
    "type": "polygon",
    "operation": "add",
    "floor": 0,
-   "base_height": 1,
+   "base_height": 14,
    "vertices": [
     [
      8.8,
@@ -368,7 +368,7 @@
    "type": "polygon",
    "operation": "add",
    "floor": 0,
-   "base_height": 1,
+   "base_height": 14,
    "vertices": [
     [
      -27.1,
@@ -414,7 +414,7 @@
    "type": "polygon",
    "operation": "add",
    "floor": 0,
-   "base_height": 1,
+   "base_height": 14,
    "vertices": [
     [
      -24.8,
@@ -460,7 +460,7 @@
    "type": "polygon",
    "operation": "add",
    "floor": 0,
-   "base_height": 1,
+   "base_height": 14,
    "vertices": [
     [
      59.3,
@@ -1066,6 +1066,141 @@
      "shapeIds": [
       "cloud-holm-2-0",
       "cloud-holm-2-1"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pile-steading",
+   "name": "pile-steading",
+   "base_y": 14,
+   "kind": "made",
+   "part_of": "pile-steading",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "pile-steading-0",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 1,
+     "min_x": -38,
+     "min_z": -92,
+     "max_x": -33,
+     "max_z": -90,
+     "theme": "logpile"
+    },
+    {
+     "id": "pile-steading-1",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 2,
+     "min_x": -37,
+     "min_z": -92,
+     "max_x": -34,
+     "max_z": -91,
+     "theme": "logpile"
+    }
+   ],
+   "groups": [
+    {
+     "id": "pile-steading-g",
+     "name": "pile-steading",
+     "mirrors": true,
+     "shapeIds": [
+      "pile-steading-0",
+      "pile-steading-1"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pile-hut",
+   "name": "pile-hut",
+   "base_y": 14,
+   "kind": "made",
+   "part_of": "pile-hut",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "pile-hut-0",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 1,
+     "min_x": -12,
+     "min_z": -72,
+     "max_x": -8,
+     "max_z": -70,
+     "theme": "logpile"
+    },
+    {
+     "id": "pile-hut-1",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 2,
+     "min_x": -11,
+     "min_z": -72,
+     "max_x": -9,
+     "max_z": -71,
+     "theme": "logpile"
+    }
+   ],
+   "groups": [
+    {
+     "id": "pile-hut-g",
+     "name": "pile-hut",
+     "mirrors": true,
+     "shapeIds": [
+      "pile-hut-0",
+      "pile-hut-1"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pile-wood",
+   "name": "pile-wood",
+   "base_y": 14,
+   "kind": "made",
+   "part_of": "pile-wood",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "pile-wood-0",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 1,
+     "min_x": -66,
+     "min_z": -72,
+     "max_x": -60,
+     "max_z": -70,
+     "theme": "logpile"
+    },
+    {
+     "id": "pile-wood-1",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 2,
+     "min_x": -65,
+     "min_z": -72,
+     "max_x": -61,
+     "max_z": -71,
+     "theme": "logpile"
+    }
+   ],
+   "groups": [
+    {
+     "id": "pile-wood-g",
+     "name": "pile-wood",
+     "mirrors": true,
+     "shapeIds": [
+      "pile-wood-0",
+      "pile-wood-1"
      ]
     }
    ]
@@ -2985,6 +3120,123 @@
    },
    "rimEdges": "void"
   },
+  "logpile": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "wallOnTerrainFaces": true,
+   "surface": {
+    "enabled": true,
+    "depth": 2,
+    "material": {
+     "kind": "cell",
+     "seed": 720,
+     "cellSize": 2,
+     "jitter": 40,
+     "warp": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 17,
+       "data": 4
+      },
+      {
+       "kind": "solid",
+       "id": 17,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 162,
+       "data": 5
+      }
+     ],
+     "rise": 2
+    }
+   },
+   "wall": {
+    "kind": "cell",
+    "seed": 720,
+    "cellSize": 2,
+    "jitter": 40,
+    "warp": 0,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 17,
+      "data": 4
+     },
+     {
+      "kind": "solid",
+      "id": 17,
+      "data": 5
+     },
+     {
+      "kind": "solid",
+      "id": 162,
+      "data": 5
+     }
+    ],
+    "rise": 2
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "cell",
+    "seed": 720,
+    "cellSize": 2,
+    "jitter": 40,
+    "warp": 0,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 17,
+      "data": 4
+     },
+     {
+      "kind": "solid",
+      "id": 17,
+      "data": 5
+     },
+     {
+      "kind": "solid",
+      "id": 162,
+      "data": 5
+     }
+    ],
+    "rise": 2
+   },
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "cell",
+     "seed": 720,
+     "cellSize": 2,
+     "jitter": 40,
+     "warp": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 17,
+       "data": 4
+      },
+      {
+       "kind": "solid",
+       "id": 17,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 162,
+       "data": 5
+      }
+     ],
+     "rise": 2
+    }
+   },
+   "rimEdges": "void"
+  },
   "cloud": {
    "bedrock": {
     "relative": false,
@@ -3041,7 +3293,7 @@
       "data": 0
      }
     ],
-    "rise": 0
+    "rise": 3
    },
    "wallEnabled": true,
    "fill": {
@@ -3739,16 +3991,16 @@
     "id": "tree-10",
     "kind": "tree",
     "seed": 1070,
-    "x": -40,
-    "z": -80,
+    "x": -39,
+    "z": -79,
     "style": "fenwillow"
    },
    {
     "id": "tree-11",
     "kind": "tree",
     "seed": 1077,
-    "x": -58,
-    "z": -82,
+    "x": -61,
+    "z": -83,
     "style": "fenwillow-small"
    },
    {
@@ -3856,30 +4108,6 @@
     "style": "sprucefen"
    },
    {
-    "id": "pile-steading",
-    "kind": "tree",
-    "seed": 831,
-    "x": -38,
-    "z": -92,
-    "style": "logpile-1"
-   },
-   {
-    "id": "pile-hut",
-    "kind": "tree",
-    "seed": 832,
-    "x": -12,
-    "z": -72,
-    "style": "logpile-2"
-   },
-   {
-    "id": "pile-wood",
-    "kind": "tree",
-    "seed": 833,
-    "x": -66,
-    "z": -72,
-    "style": "logpile-3"
-   },
-   {
     "id": "mush-w",
     "kind": "tree",
     "seed": 841,
@@ -3904,30 +4132,6 @@
     "style": "mushbed"
    },
    {
-    "id": "lily-mid",
-    "kind": "tree",
-    "seed": 851,
-    "x": -7,
-    "z": -64,
-    "style": "lilyraft"
-   },
-   {
-    "id": "lily-mid2",
-    "kind": "tree",
-    "seed": 852,
-    "x": 1,
-    "z": -62,
-    "style": "lilyraft-2"
-   },
-   {
-    "id": "lily-far",
-    "kind": "tree",
-    "seed": 853,
-    "x": 5,
-    "z": -60,
-    "style": "lilyraft"
-   },
-   {
     "id": "cover-bog",
     "kind": "flora",
     "seed": 91,
@@ -3938,7 +4142,8 @@
      "fernShare": 0.55,
      "flowerShare": 0.05,
      "flowerScale": 16,
-     "tallShare": 0.06
+     "tallShare": 0.06,
+     "lilyShare": 0.25
     },
     "points": [
      [
@@ -4202,7 +4407,8 @@
      "fernShare": 0.55,
      "flowerShare": 0.05,
      "flowerScale": 16,
-     "tallShare": 0.06
+     "tallShare": 0.06,
+     "lilyShare": 0.4
     },
     "points": [
      [
@@ -4279,311 +4485,6 @@
     "species": "spruce",
     "height": 13
    },
-   "logpile-1": {
-    "kind": "tree",
-    "form": "copied",
-    "body": [
-     [
-      0,
-      0,
-      0,
-      17,
-      4
-     ],
-     [
-      0,
-      0,
-      1,
-      162,
-      5
-     ],
-     [
-      1,
-      0,
-      0,
-      17,
-      5
-     ],
-     [
-      1,
-      0,
-      1,
-      162,
-      5
-     ],
-     [
-      1,
-      1,
-      0,
-      17,
-      4
-     ],
-     [
-      2,
-      0,
-      0,
-      17,
-      5
-     ],
-     [
-      2,
-      0,
-      1,
-      17,
-      5
-     ],
-     [
-      2,
-      1,
-      0,
-      17,
-      4
-     ],
-     [
-      2,
-      1,
-      1,
-      162,
-      9
-     ],
-     [
-      3,
-      0,
-      0,
-      162,
-      5
-     ],
-     [
-      3,
-      0,
-      1,
-      17,
-      4
-     ],
-     [
-      3,
-      1,
-      0,
-      162,
-      5
-     ],
-     [
-      4,
-      0,
-      0,
-      17,
-      5
-     ],
-     [
-      4,
-      0,
-      1,
-      162,
-      5
-     ]
-    ]
-   },
-   "logpile-2": {
-    "kind": "tree",
-    "form": "copied",
-    "body": [
-     [
-      0,
-      0,
-      0,
-      17,
-      4
-     ],
-     [
-      0,
-      0,
-      1,
-      162,
-      5
-     ],
-     [
-      1,
-      0,
-      0,
-      17,
-      4
-     ],
-     [
-      1,
-      0,
-      1,
-      17,
-      4
-     ],
-     [
-      1,
-      1,
-      0,
-      17,
-      4
-     ],
-     [
-      2,
-      0,
-      0,
-      17,
-      4
-     ],
-     [
-      2,
-      0,
-      1,
-      17,
-      4
-     ],
-     [
-      2,
-      1,
-      0,
-      17,
-      5
-     ],
-     [
-      3,
-      0,
-      0,
-      17,
-      5
-     ],
-     [
-      3,
-      0,
-      1,
-      17,
-      4
-     ]
-    ]
-   },
-   "logpile-3": {
-    "kind": "tree",
-    "form": "copied",
-    "body": [
-     [
-      0,
-      0,
-      0,
-      17,
-      5
-     ],
-     [
-      0,
-      0,
-      1,
-      17,
-      4
-     ],
-     [
-      1,
-      0,
-      0,
-      17,
-      4
-     ],
-     [
-      1,
-      0,
-      1,
-      162,
-      5
-     ],
-     [
-      1,
-      1,
-      0,
-      17,
-      4
-     ],
-     [
-      2,
-      0,
-      0,
-      162,
-      5
-     ],
-     [
-      2,
-      0,
-      1,
-      17,
-      4
-     ],
-     [
-      2,
-      1,
-      0,
-      17,
-      5
-     ],
-     [
-      2,
-      1,
-      1,
-      162,
-      9
-     ],
-     [
-      3,
-      0,
-      0,
-      162,
-      5
-     ],
-     [
-      3,
-      0,
-      1,
-      17,
-      5
-     ],
-     [
-      3,
-      1,
-      0,
-      17,
-      4
-     ],
-     [
-      4,
-      0,
-      0,
-      17,
-      5
-     ],
-     [
-      4,
-      0,
-      1,
-      17,
-      4
-     ],
-     [
-      4,
-      1,
-      0,
-      162,
-      5
-     ],
-     [
-      5,
-      0,
-      0,
-      162,
-      5
-     ],
-     [
-      5,
-      0,
-      1,
-      17,
-      5
-     ]
-    ]
-   },
    "mushbed": {
     "kind": "tree",
     "form": "copied",
@@ -4655,74 +4556,6 @@
       0,
       3,
       39,
-      0
-     ]
-    ]
-   },
-   "lilyraft": {
-    "kind": "tree",
-    "form": "copied",
-    "body": [
-     [
-      0,
-      0,
-      0,
-      111,
-      0
-     ],
-     [
-      2,
-      0,
-      1,
-      111,
-      0
-     ],
-     [
-      1,
-      0,
-      3,
-      111,
-      0
-     ],
-     [
-      3,
-      0,
-      0,
-      111,
-      0
-     ],
-     [
-      4,
-      0,
-      2,
-      111,
-      0
-     ]
-    ]
-   },
-   "lilyraft-2": {
-    "kind": "tree",
-    "form": "copied",
-    "body": [
-     [
-      0,
-      0,
-      0,
-      111,
-      0
-     ],
-     [
-      2,
-      0,
-      2,
-      111,
-      0
-     ],
-     [
-      3,
-      0,
-      0,
-      111,
       0
      ]
     ]
