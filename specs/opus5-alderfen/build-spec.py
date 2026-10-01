@@ -22,8 +22,8 @@ SURFACE = 14
 # ── blocks ──────────────────────────────────────────────────────────────────────
 STONE, GRASS, DIRT, COBBLE, PLANKS = 1, 2, 3, 4, 5
 SAND, GRAVEL, WATER = 12, 13, 9
-LOG, LEAVES, LOG2, LEAVES2 = 17, 18, 162, 161
-VINE, BROWN_MUSHROOM = 106, 39
+LOG, LOG2 = 17, 162
+BROWN_MUSHROOM = 39
 MOSSY_COBBLE, ANDESITE_DATA, POLISHED_ANDESITE_DATA = 48, 5, 6
 HARDENED_CLAY, STAINED_CLAY, WOOL = 172, 159, 35
 GLASS_PANE, STONE_BRICK = 102, 98
@@ -34,7 +34,6 @@ SPRUCE, JUNGLE, DARK_OAK = 1, 3, 5           # plank/slab variants
 LOG_SPRUCE, LOG_JUNGLE = 1, 3                # log id 17 variants
 LOG2_DARK_OAK = 1                            # log id 162 variant
 LILY_PAD = 111
-LOG_AXIS_X, LOG_AXIS_Z = 4, 8                # the two "laid" orientations
 
 
 def solid(block_id, data=0):
@@ -139,87 +138,7 @@ def on_mid(ring, margin=9):
     return inside(ring, MID_BOX, margin)
 
 
-# ── the copied trees: a small vanilla oak, its vines, and the wood it is cut from ─
-def oak_body(rng, trunk, crown_radius, curtains, wood=(LOG, 0), leaf=(LEAVES, 0)):
-    """A small vanilla-shaped oak with vine curtains hanging off its crown at different lengths.
-
-    The trunk stands at (0, 0..trunk-1, 0); its foot is what rests on the ground. The crown is the
-    vanilla profile — two wide courses with trimmed corners, then two narrow ones. Every vine cell is
-    given a face-pair (5 = north|south, 10 = west|east) so the bit naming the leaf it hangs off is
-    always set and the pair survives a rot_180 image, which turns no vine data of its own.
-    """
-    cells = {}
-    log_id, log_data = wood
-    leaf_id, leaf_data = leaf
-    for y in range(trunk):
-        cells[(0, y, 0)] = (log_id, log_data)
-
-    courses = [(trunk - 2, crown_radius), (trunk - 1, crown_radius),
-               (trunk, crown_radius - 1), (trunk + 1, max(1, crown_radius - 2))]
-    for y, radius in courses:
-        for dx in range(-radius, radius + 1):
-            for dz in range(-radius, radius + 1):
-                if abs(dx) == radius and abs(dz) == radius:
-                    if radius >= 2 and rng.random() < 0.55:
-                        continue                        # vanilla trims a wide course's corners
-                    if radius == 1:
-                        continue                        # the top course is a plus
-                if (dx, y, dz) in cells:
-                    continue
-                cells[(dx, y, dz)] = (leaf_id, leaf_data)
-
-    # Where a curtain may hang: an outer leaf cell with air beside it on a horizontal face.
-    seats = []
-    for (dx, y, dz), (block, _) in cells.items():
-        if block not in (LEAVES, LEAVES2):
-            continue
-        for step, data in (((0, 1), 5), ((0, -1), 5), ((1, 0), 10), ((-1, 0), 10)):
-            side = (dx + step[0], y, dz + step[1])
-            if side not in cells and abs(side[0]) + abs(side[2]) >= crown_radius:
-                seats.append((side, data, y))
-    seats.sort(key=lambda seat: (seat[2], seat[0]))
-    rng.shuffle(seats)
-
-    hung = 0
-    for (sx, sy, sz), data, _ in seats:
-        if hung >= curtains:
-            break
-        if (sx, sy, sz) in cells:
-            continue
-        drop = rng.randint(2, 7)                        # the "different heights" the vines hang to
-        column = [(sx, sy - k, sz) for k in range(drop)]
-        if any(spot in cells for spot in column) or min(spot[1] for spot in column) < 1:
-            continue
-        for spot in column:
-            cells[spot] = (VINE, data)
-        hung += 1
-
-    return [[x, y, z, block, data] for (x, y, z), (block, data) in sorted(cells.items())]
-
-
-def logpile_body(rng, woods):
-    """A laid log pile: two or three courses of logs lying across each other.
-
-    Every log carries a laid axis, so the pile reads as timber rather than as posts; the orbit turns
-    the axis with the body, which is why a laid log is stated rather than an upright one.
-    """
-    cells = {}
-    length = rng.randint(4, 6)
-    rows = [(0, LOG_AXIS_X, [(i, 0) for i in range(length)]),
-            (0, LOG_AXIS_X, [(i, 1) for i in range(length)])]
-    for _, axis, spots in rows:
-        for x, z in spots:
-            block, data = woods[rng.randrange(len(woods))]
-            cells[(x, 0, z)] = (block, data | axis)
-    for x, z in [(i, 0) for i in range(1, length - 1)]:
-        block, data = woods[rng.randrange(len(woods))]
-        cells[(x, 1, z)] = (block, data | LOG_AXIS_X)
-    if length >= 5:
-        block, data = woods[rng.randrange(len(woods))]
-        cells[(2, 1, 1)] = (block, data | LOG_AXIS_Z)
-    return [[x, y, z, block, data] for (x, y, z), (block, data) in sorted(cells.items())]
-
-
+# ── the plants the dressing places, each stated block by block ─────────────────
 def clump_body(spots, block, data=0):
     """A handful of one-block plants: a mushroom bed, a raft of lily pads."""
     return [[x, 0, z, block, data] for x, z in spots]
@@ -642,32 +561,18 @@ def mirehut_style():
 
 
 # ── the dressing ────────────────────────────────────────────────────────────────
-tree_rng = random.Random(9001)
-
-STYLES = {}
-for index in range(4):
-    STYLES[f"fenoak-{index + 1}"] = {
-        "kind": "tree", "form": "copied",
-        "body": oak_body(tree_rng, trunk=tree_rng.randint(5, 7), crown_radius=3,
-                         curtains=tree_rng.randint(3, 5)),
-    }
-for index in range(2):
-    STYLES[f"fenoak-small-{index + 1}"] = {
-        "kind": "tree", "form": "copied",
-        "body": oak_body(tree_rng, trunk=4, crown_radius=2, curtains=2),
-    }
-STYLES["darkfen-1"] = {
-    "kind": "tree", "form": "copied",
-    "body": oak_body(tree_rng, trunk=6, crown_radius=3, curtains=4,
-                     wood=(LOG2, LOG2_DARK_OAK), leaf=(LEAVES2, LOG2_DARK_OAK)),
+# The fen's trees are the vanilla willow, its leaves hanging in curtains off the crown: the studio grows each
+# from its prop's seed, so one recipe at two sizes reads as a stand rather than as one tree repeated.
+STYLES = {
+    "fenwillow": {"kind": "tree", "form": "template", "species": "willow", "height": 11},
+    "fenwillow-small": {"kind": "tree", "form": "template", "species": "willow", "height": 8},
+    "sprucefen": {"kind": "tree", "form": "template", "species": "spruce", "height": 13},
 }
-STYLES["sprucefen"] = {"kind": "tree", "form": "template", "species": "spruce", "height": 13}
 
-for index in range(3):
-    STYLES[f"logpile-{index + 1}"] = {
-        "kind": "tree", "form": "copied",
-        "body": logpile_body(tree_rng, [(LOG, 0), (LOG, LOG_SPRUCE), (LOG2, LOG2_DARK_OAK)]),
-    }
+# Three laid log piles, two or three courses of oak, spruce and dark oak logs lying across each other.
+STYLES["logpile-1"] = {"kind": "tree", "form": "copied", "body": [[0,0,0,17,4], [0,0,1,162,5], [1,0,0,17,5], [1,0,1,162,5], [1,1,0,17,4], [2,0,0,17,5], [2,0,1,17,5], [2,1,0,17,4], [2,1,1,162,9], [3,0,0,162,5], [3,0,1,17,4], [3,1,0,162,5], [4,0,0,17,5], [4,0,1,162,5]]}
+STYLES["logpile-2"] = {"kind": "tree", "form": "copied", "body": [[0,0,0,17,4], [0,0,1,162,5], [1,0,0,17,4], [1,0,1,17,4], [1,1,0,17,4], [2,0,0,17,4], [2,0,1,17,4], [2,1,0,17,5], [3,0,0,17,5], [3,0,1,17,4]]}
+STYLES["logpile-3"] = {"kind": "tree", "form": "copied", "body": [[0,0,0,17,5], [0,0,1,17,4], [1,0,0,17,4], [1,0,1,162,5], [1,1,0,17,4], [2,0,0,162,5], [2,0,1,17,4], [2,1,0,17,5], [2,1,1,162,9], [3,0,0,162,5], [3,0,1,17,5], [3,1,0,17,4], [4,0,0,17,5], [4,0,1,17,4], [4,1,0,162,5], [5,0,0,162,5], [5,0,1,17,5]]}
 
 STYLES["mushbed"] = {"kind": "tree", "form": "copied",
                      "body": clump_body([(0, 0), (2, 1), (1, 3), (3, 2), (-1, 2)], BROWN_MUSHROOM)}
@@ -777,8 +682,8 @@ STAND_BACK = [(-38, -100), (-40, -80), (-58, -82), (-62, -96), (38, -100), (40, 
 STAND_EDGE = [(62, -78), (68, -62), (58, -50), (70, -44), (-66, -60), (-70, -74)]
 STAND_HOLM = [(-40, -14), (-14, -10), (52, 10)]
 
-TREE_STYLES = ["fenoak-1", "fenoak-2", "fenoak-3", "fenoak-4",
-               "fenoak-small-1", "fenoak-small-2", "darkfen-1"]
+TREE_STYLES = ["fenwillow", "fenwillow", "fenwillow", "fenwillow",
+               "fenwillow-small", "fenwillow-small", "fenwillow"]
 for index, (x, z) in enumerate(STAND_WEST + STAND_BACK + STAND_HOLM):
     PROPS.append({"id": f"tree-{index}", "kind": "tree", "seed": 1000 + index * 7,
                   "x": x, "z": z, "style": TREE_STYLES[index % len(TREE_STYLES)]})
