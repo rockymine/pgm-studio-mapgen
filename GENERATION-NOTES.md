@@ -393,7 +393,7 @@ only row left, so the search's silence there is conservatism and not a refusal.
 
 ## The compile
 
-What the plan becomes, and what a finish is keyed onto.
+What the plan becomes, and what a refinement is keyed onto.
 
 ### The compiler groups groups by mirror, not by landmass
 
@@ -443,8 +443,8 @@ back on the 200 — but the terrain still comes from the stored one.
 `PUT …/sketch` replaces the blob verbatim and is what an edit loop wants; `from-plan` merges — it carries a
 stored finish, relief and structural height onto the freshly compiled board, and refuses at 409 with `SK1`
 where the recompile leaves an authored relief with no group to land on. `?force=true` accepts that loss; it
-does not make a posted relief beat a stored one. A spec-driven build wants neither, because it posts a whole
-layout every time: `drive.py` stores through `POST /map/from-documents`, which replaces the map at the slug
+does not make a posted relief beat a stored one. A spec-driven build wants neither, because it states a whole
+source every time: `drive.py` stores through `PUT /map/{slug}/source`, which replaces the map at the slug
 outright, and the merge rules above never come into it.
 
 ---
@@ -847,8 +847,8 @@ bed's own floor fills nothing. The bed is carved first and the fill is stated se
 `SketchRasterizer.ReliefFields` walks every layer and looks each of its groups up in the one
 `relief` dictionary, adding that layer's `base_y` to the field it solves. So a stacked board can give
 each storey its own landscape — `{"team": …, "walls": …}` — and a layer's marks are stated in **its
-own frame**, not the board's. `drive.py`'s `"*"` expands over the groups the *compile* emitted, so a
-key stated beside it survives and names a layer added in the finish.
+own frame**, not the board's. The refinement's `"*"` expands over the groups of the compiled ground, so a
+key stated beside it survives and names a layer added in the refinement.
 
 ### `relief_scope: exclude` takes a tier out of the elevation model entirely
 
@@ -1217,15 +1217,14 @@ returning it — so `relief/read` answers an upper group in world coordinates.
 bedrock-to-top and would fill the air between two slabs; the stone-only invariant is the one line
 that makes stacking work.
 
-### The order a stack is written in decides which layer an unnamed shape joins, and nothing else
+### The order a stack is written in is a tiebreak, and nothing else
 
 `TerrainPainter.Paint` orders the layers by the lowest surface each one carries and paints each over its
 own span, so a storey's bands stop at its own floor and the document's order is a tiebreak between layers
 standing at one height. A storey listed after one that stands over it is painted correctly either way.
 
-What the order still decides is where a shape naming no layer lands: the first one. `drive.py`'s `addLayers`
-takes `"below": true` to insert a storey under the compiled ground, which moves that target, so a finish
-adding an undercroft states the layer its shapes belong to rather than relying on the position.
+A shape the refinement draws naming no layer does not depend on it either: it joins the compiled ground,
+wherever `addLayers` with `"below": true` has put that in the stack.
 
 **`SK20` complains where the list is not in the order the world builds.** The list is what a reader and the
 storey strip walk and `base_y` is what the world is built from, so the two disagreeing is worth saying even
@@ -1307,10 +1306,10 @@ the surface top, so nothing can be placed under a deck.
 one block short reads as standable ground with no route onto it.
 
 
-### Lifting the ground to make room for a storey under it is a plan edit as well as a finish edit
+### Lifting the ground to make room for a storey under it is a plan edit as well as a refinement edit
 
 `shapePropsByHeight` moves the landmass's **floor** and leaves its surface where it was, which is what makes
-room for a storey underneath. The plan states where the spawns and the goals sit, so moving the finish alone
+room for a storey underneath. The plan states where the spawns and the goals sit, so moving the refinement alone
 leaves every marker at its old height under ground that has risen — thirteen courses under, on one measured
 board — and the buildability check then reports every placement as over open void.
 
@@ -1598,29 +1597,30 @@ Flatten every ring at the rasterizer's own 16 samples per edge before testing an
 
 Both arrive in the dressing read's `declines` array on a 200, and the `severity` field is the whole
 difference. A **decline** means the prop was never written; a **complaint** means it stands, minus what was
-cut off it. Measured on one board of 124 props: 18 declines and 4 complaints among 22 entries.
+cut off it. Measured on one board of 124 props: 20 declines and 4 complaints among 24 entries.
 
-**`DR-CUT` is the complaint that matters for a body.** *"seats clear of what it then reaches into: 70 of its
-299 blocks are inside something already standing and were not written, and that cut 51 more off its own
-footing, which stand in the air. 229 block(s) are in the world."* A prop seats on its **feet** and is then
-written wherever it meets air, so standing clear of something is not the same as fitting beside it.
-
-The count falls with separation and goes silent: measured on pairs of one 299-block tree, 70 blocks lost at
-2 apart, 17 at 8, and nothing at 16.
+**`DR-CUT` is the complaint that matters for a body.** *"seats clear of what it then reaches into: 62 of its
+99 blocks are inside something already standing and were not written, and that cut 0 more off its own
+footing, which stand in the air. 37 block(s) are in the world"* — a rock seated at the foot of a 63° face.
+A prop seats on its **feet** and is then written wherever it meets air, so standing clear of something is not
+the same as fitting beside it.
 
 ### A copied tree is a recipe with a body, and the body is the whole of it
 
 A `copied` style carries the blocks that were cut out of a world, so its footprint, its foot and its crown are
 whatever was cut rather than whatever was asked for. **A body's foot is every cell of its lowest course**, and
 that is what a standoff is measured from — a nine-cell foot owes three blocks from each of its nine.
-**A hand-built crown is not a disc, not symmetric, and not even solid**, so what decides a spacing is
-occupancy rather than distance. `techniques/trees-and-boulders` has both bodies measured against a template.
+
+**A hand-built crown is not symmetric and not even solid, and a tree still holds the whole disc out to its
+farthest leaf**, holes and all, so what decides a spacing is that radius: ten for `large-pine-1`, which admits
+a neighbour twelve along x and not before. `techniques/trees-and-boulders` has both bodies measured against a
+template.
 
 
 ### A prop is tested at its lowest course and claims everything it covers, and every distance follows
 
-The pass seats a prop by its **lowest course** and then claims every cell the whole prop covers, which is what
-makes a crown a keep-out and a trunk a seat. **So what two trees need between them is one crown and not two**,
+The pass seats a prop by its **lowest course** and then claims every cell the whole prop covers — a tree the
+disc out to its farthest leaf — which is what makes a crown a keep-out and a trunk a seat. **So what two trees need between them is one crown and not two**,
 and **a boulder's standoff is measured from its body**, so its centre owes the standoff plus its own reach.
 `techniques/trees-and-boulders` is the worked card, one ladder per rule.
 

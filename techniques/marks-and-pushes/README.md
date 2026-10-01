@@ -157,8 +157,8 @@ each swept. This card is what happens once there is a board under it.
 - `slopes.txt` — 68,506 cells walked, 598 scrambled, 16 barrier; four faces, the largest 4 cells.
 - `incline.txt` — how much ground stands in each ten degrees, which is what the band edges were cut against.
 - `census.txt` — one theme, four surface blocks.
-- `marks-and-pushes.layout.json` — the one document the board was stored from, posted to
-  `POST /api/map/from-documents` with an empty intent and no plan.
+- `marks-and-pushes.layout.json` — the one document the board is stored from, stated to
+  `PUT /api/map/{slug}/source` with an empty intent and no plan.
 
 Renders: `ordering-row.png` (dale, push on it, push beside it), `pinning-row.png` (pinned, free flanks,
 reach) and `iso.png` (all six).

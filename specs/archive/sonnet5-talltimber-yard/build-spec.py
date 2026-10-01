@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Writes sonnet5-talltimber-yard.plan.json and .finish.json.
+"""Writes sonnet5-talltimber-yard.plan.json and .refinement.json.
 
 Two rival logging outfits, each running a small timber yard around a tall counting-house where their
 ledger-core is kept; the two yards face each other across the felled ground between them, joined only by
@@ -217,6 +217,6 @@ finish["dressing"]["styles"] = {
 if __name__ == "__main__":
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(plan, handle, indent=1)
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(finish, handle, indent=1)
     print("wrote", SLUG, "plan + finish")

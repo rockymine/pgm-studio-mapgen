@@ -1,9 +1,13 @@
 # tools/ — the driver, the loop beside it, and the world tools a hand revamp needs
 
-## `drive.py` — a plan and a finish, through the API, to a world
+## `drive.py` — a board's spec, through the API, to a world
+
+**A run starts by running the board's `build-spec.py`**, against the studio being driven, so the documents it
+sends are the ones the script writes now.
 
 ```bash
-python3 tools/drive.py specs/<slug> "<Map Name>" --out <worlddir> [--slug <slug>] [--dry]
+python3 tools/drive.py specs/<slug> "<Map Name>" --out <worlddir> [--slug <slug>] [--note "<what this pass is>"]
+                       [--after <change>] [--discard <change>,...] [--dry]
 ```
 
 `PGM_STUDIO_TOKEN`, where it is set, is sent as `Authorization: Bearer` on every request, and only over https
@@ -26,33 +30,34 @@ corrected spec **replaces** the map it had rather than leaving a second one besi
 | File | Is |
 |---|---|
 | `<slug>.plan.json` | a `PlanModel` — the board as cell rectangles, the objectives, the walls |
-| `<slug>.finish.json` | everything a plan cannot state, keyed onto the layout the plan compiles to |
+| `<slug>.refinement.json` | everything a plan cannot state, keyed onto the layout the plan compiles to — the studio's own `Refinement`, which the studio applies (`pgm-studio/docs/tools/flow.md`, *A map's source*) |
 
-The driver writes two more beside them — `<slug>.layout.json` and `<slug>.intent.json`, the documents it
-actually posted — so a review reads what was built rather than what was asked for.
+The driver writes two more beside them — `<slug>.layout.json` and `<slug>.intent.json`, the documents the
+studio stored — so a review reads what was built rather than what was asked for.
 
-**Those two are output and never input.** A spec carrying a finish is compiled from its plan on every run
-and the pair is overwritten; a spec with no finish is a board drawn in the Sketch tool, and then they are
+**Those two are output and never input.** A spec carrying a refinement is compiled from its plan on every run
+and the pair is overwritten; a spec with no refinement is a board drawn in the Sketch tool, and then they are
 the authored geometry and are read.
 
-**The finish is what decides which, and the reason is that the patches append.** `addLayers`, `addShapes`
-and `bendShapes` all add rather than replace, so reading back a layout the driver wrote and patching it
-again gives two storeys called `under` and a ring bent twice.
+**The refinement is what decides which, and the reason is that its statements append.** `addLayers`,
+`addShapes` and `bendShapes` all add rather than replace, so reading back a layout the driver wrote and
+refining it again gives two storeys called `under` and a ring bent twice.
 
-### What the finish carries
+### What the refinement carries
 
 | Key | Is |
 |---|---|
-| `themeById` · `themeByHeight` | the theme a compiled shape paints with, by its id or by the height it stands at. The id is the reliable one: compile once, read the ids off `POST /plan/compile`, and key on them. Two pieces at one height fuse into one shape and a height key cannot tell them apart |
+| `themeById` · `themeByHeight` | the theme a compiled shape paints with, by its id or by the height it stands at. The id is the reliable one: compile once, read the ids off `POST /plan/compile`, and key on them. Two pieces at one height fuse into one shape and a height key cannot tell them apart. A key naming an id the board does not have is answered `SR2`, with the ids it has |
 | `shapePropsById` · `shapePropsByHeight` | any field merged onto a compiled shape — `relief_scope`, `controls`, `anchor_heights`, `height_mode` |
-| `bendShapes` | `{"s0": {"k": 0.22, "wander": 3, "step": 9, "seed": 5}}` — the compiled outline drawn as a coast. The compiler emits a staircase of the plan's rectangles, which is the board's shape and not its coast; redrawing the ring by hand states the coast twice, free to disagree with the plan. This resamples the compiled ring along its long edges, pulls each **inserted** point inward by a deterministic wander and lays Catmull-Rom handles over the result. The plan's own vertices never move, and nothing ever moves outward — a point that did could close the strait a capture board is measured on, or narrow the neck a spur hangs off |
+| `editShapes` | `{"garth-14": [{"after": 1, "x": 92, "z": -70}, {"index": 4, "x": 80, "z": -60}, {"remove": 7}, {"pulls": {"0": [[0.5, 2]]}}]}` — the outline reshaped one point at a time, in order, before any bend. `after` inserts a point on that edge (at its midpoint where no `x`/`z` is stated), `index` moves that point, `remove` drops it, and `pulls` inserts points along named edges, each at a fraction `t` of its edge and pulled `in` blocks toward the inside, fanned to the edges the symmetry draws again; each op is stated against the ring as the ops before it left it, and `GET …/sketch/shapes/{id}?format=text` names the edges by index. An op stating none or more than one of the four refuses the whole source (`SR4`) |
+| `bendShapes` | `{"dale-9": {"tension": 0.22, "wander": 3, "step": 9, "seed": 5, "side": "out"}}` — the compiled outline drawn as a coast, after every point edit. The compiler emits a staircase of the plan's rectangles, which is the board's shape and not its coast; redrawing the ring by hand states the coast twice, free to disagree with the plan. This resamples the compiled ring along its long edges, pulls each **inserted** point off its edge by a deterministic wander and lays Catmull-Rom handles over the result, `tension` long (0.22 where absent). `side` says which way: `out`, the default, is the slight bloat that reads as land; `in` keeps the plan's footprint, which is what a strait a capture board is measured on wants; `both` wanders across the line. The plan's own vertices never move |
 | `addShapes` | authored `SketchShape`s — the subtracts, the erected shapes, the ramps, the path-shape causeways. Each takes an optional `layer` and `group` naming where it lands, the way `POST …/sketch/layers/{layerId}/shapes?group=` does; one naming neither joins the compiled ground's first group. **The group is where a shape's ground is decided** — the symmetry fan and the relief are both read off a group's `shapeIds`, so a shape in the wrong group is built once, where it was drawn, on the wrong terrain |
 | `relief` | `{"<groupId>": {...}}`, or `{"*": {...}}` for every group. A compiled board's groups are `team` and `neutral` |
 | `themes` · `mapTheme` | the theme registry and the map default (the first key unless stated) |
-| `roomStyles` | `{"wool": …, "spawn": …}` — the two members `SketchRoomStyles` carries, and a `"@name"` string loads `tools/styles/<name>.json`. A key neither of those names is **dropped in silence on the whole-layout write** this driver uses — no `RQ3`, and the room stamps the built-in bedrock box at 200. (The per-part `PUT …/room-styles/{part}` does refuse it, 400 on `part`.) It was `cage` until 2026-09-07, so a spec document older than that states the old word and re-driving it stamps the box |
-| `dressing` | `{"styles": …, "props": [...]}`; a house prop's `style` takes the same `"@name"`. A style in `styles` is a `PropStyle` and is discriminated — a tree is `{"kind": "tree", …}`, a **house is `{"kind": "house", "shell": <HouseStyle>}`**. A bare `HouseStyle` here is a 500 rather than a 400, because the parse throws before any gate reads it |
+| `roomStyles` | `{"wool": …, "spawn": …}` — the two members `SketchRoomStyles` carries, each a style or `{"library": "<name>"}`, a row of the studio's room-style library with any changes laid beside the name (`pgm-studio/docs/tools/library.md`). A key neither of those names is answered `RQ3` (`refinement.roomStyles.cage`) and the room stamps the built-in bedrock box. It was `cage` until 2026-09-07, so a spec document older than that states the old word and re-driving it stamps the box |
+| `dressing` | `{"styles": …, "props": [...]}`; a house prop's `style` names a library row the same way, and a house in `styles` names one as `{"library": "<name>", "kind": "house", "shell": {…changes…}}`. A copied tree in `styles` is the recipe `corpus/tree-showcase/trees.json` states for the showcase tree it is. A style in `styles` is a `PropStyle` and is discriminated — a tree is `{"kind": "tree", …}`, a **house is `{"kind": "house", "shell": <HouseStyle>}`**. A bare `HouseStyle` here is a 500 rather than a 400, because the parse throws before any gate reads it |
 | `authors` | `["Opus 5"]`, or `[{"name": …, "uuid": …, "role": …, "contribution": …}]`. PGM takes a person as an **account or a pseudonym**: a bare name writes `<author>Opus 5</author>`, a uuid writes `<author uuid="…"/>` with the name as a sibling comment, and a pseudonym may still carry a `contribution`. It also rides onto `intent.meta.authors`, because the observer platform's authors board reads that and a compiled intent leaves it empty — the map row's credit never reaches it |
-| `created` | `"2026-08-25"` — when the map was made, onto `intent.meta.created` and out as `<created>`. The studio derives every other identity field and cannot derive this one, so a finish that states none builds a map with no date and the driver says so |
+| `created` | `"2026-08-25"` — when the map was made, onto `intent.meta.created` and out as `<created>`. The studio derives every other identity field and cannot derive this one, so a refinement that states none builds a map with no date and the driver says so |
 | `controlPoints` · `scoreLimit` | a capture board's hills, onto `intent.controlPoints`, and the score the match ends at. Each point is `{name, anchor: {x, y, z}, size?, points?, captureTime?}` with the anchor in **blocks** — the pad is centred on it and cut into whatever ground the build solves there. The plan states no capture point, and a compiled intent carries no `symmetry`, so **every point of the board is stated here, already fanned**: a centre plus one side is a two-hill board. `scoreLimit` defaults to 750 on a board whose points pay, which is the corpus's own answer |
 | `shops` | a board's menus and the keepers that open them, onto `intent.shops`. A shop is `{id, name?, keeper?: {name?, mob?}, categories: [{id, material, name?, items: [{material, amount?, name?, price?, currency?, teamColor?}]}]}`. **It carries no coordinates at all** — a shop is a catalogue rather than a place, and the studio puts one keeper per shop at every team's spawn, beside the point players arrive on and facing them, held inside the spawn's room. PGM spawns the entity itself from the element, so nothing is stamped and a shop board exports the moment the intent is stored. A shop stating no category is left out rather than written as a menu PGM refuses (`pgm-studio/docs/pgm/shops.md` §9) |
 | `addLayers` | `[{id, name, base_y, shapes, groups, below?}]` — the storeys a plan cannot state. `below` inserts one under the compiled ground, which is also the layer a shape naming none joins |
@@ -101,102 +106,63 @@ The four places a finding appears:
    table) and `POST /plan/inspect` (`goalDistances` against `GO1`'s 3.0–4.0 band, `islandGaps` against
    `CT12`'s 15–40, the wall rects, the frontline runs);
 
-2. **at the compile** — `POST /plan/compile`'s `warnings`, and its 422 findings if it refuses;
+2. **at the compile** — inside the source, asked dry first: the completeness gate's complaints among its
+   `warnings`, and `422 plan not compilable` with the findings if it refuses;
 
-3. **at the store** — `POST /map/from-documents`'s `SK3`/`SK4`/`SK5`/`SK11`, its `RQ3` over all three
-   documents at once (each path named with the member it was posted under — `layout.setupp`, not `setupp`),
-   and `relief/read`'s per-group cells, low, high and symmetry error;
+3. **at the store** — `PUT …/source`'s `SK3`/`SK4`/`SK5`/`SK11`, its `SR2` for a key naming a shape or a layer
+   the board does not have, and its `RQ3` over every document at once, each path named with the member it was
+   stated under — `refinement.themeByHeigth`, not `themeByHeigth`;
 
-4. **at the dressing** — `POST …/sketch/columns`'s `DR-*` declines, read **after** the intent is stored,
-   because `DR-KEEP` needs the spawn doors and the goal rings the intent carries.
+4. **in the report** — `findings`, `relief` (each group's cells, low, high and symmetry error), `declines` (the
+   dressing's `DR-*`, read off the stored intent because `DR-KEEP` needs the spawn doors and the goal rings),
+   `preflight` and `coverage`, printed whole after the store.
 
-Then **three reads that raise no finding at all** and are printed anyway. A read that refuses nothing is the
-one an author never runs, so the driver runs all three rather than leaving them to be remembered:
+### What a run reads back: one report
 
-- **`GET …/plan/ascii`**, after the plan is stored and before anything is compiled — the board as a grid of
-  characters, one per proxy cell. A plan is a list of rectangles and most of what goes wrong with one is a
-  *relation between two of them*, which no render of a built world can show, because by then they are terrain.
-- **`GET …/plan/flow`**, beside it — what the board asks of the two sides, in prose: each objective's two
-  walks and the ratio between them, where the ways in part and meet, whether the defence shares the
-  attackers' road, and the ground no journey reaches. Off the plan alone, so it costs no build.
-- **`GET …/coverage`**, at the far end — the reached / decorated / dead shares and the five largest dead
-  patches with their coordinates. Every gate in the four places above asks whether ground is *reachable*;
-  this is the only read that asks whether any journey **goes there**, and a board can pass all four while
-  carrying a quarter of its ground unused (`GENERATION-NOTES.md`, *Reachable is not used*). Where a
-  board has no two waypoints to join it says so rather than printing nothing, because silence there reads as
-  "nothing dead" and means "never measured".
+**The stored board is read back in one request.** `GET /map/{slug}/report?format=text` builds the board once
+and answers everything a run used to ask for one request at a time, each reading beside the route that
+answers it alone (`pgm-studio/docs/world-scan/read-backs.md`). The run prints the three numbers and the five
+short readings above, and writes the whole report to `out/reports/<slug>.txt`, which is not committed: the
+studio draws it again from any change.
 
-- **`GET …/preflight`**, after the intent and before the export — the export's own verdict, asked before the
-  export. It runs the same `Traversability.Check` the export refuses on, **per team**, so a goal a team is
-  barred from reaching is named with the team barring it; plus the codec round-trip, the mirror and
-  buildability. Its log ends `export gate OPEN` or `export gate BLOCKED`. `EX1` at 409 after a whole world has
-  been built and this line are the same answer at two prices.
+**The report opens on the three numbers a board is wrong or right by.** How much of the ground steps further
+than a player walks, how many props the document names and the world does not hold, and the worst step on
+any route from a spawn to a goal, with the route it is on. Each is the number its reading carries.
 
-The flow and the coverage are the same question at two ends of the pipeline: flow says *why* ground will go
-unused while the board is still rectangles, coverage says *that* it did once a world exists to measure.
+**A reading is read on its own by its name or its route.** Every one opens with `== <name>   (<route>)`, so
+`grep -A40 '^== slopes ' out/reports/<slug>.txt` is the slope grid and `curl "$PGM_STUDIO_API/map/<slug>/slopes?format=text"`
+asks for it alone, off the board as it stands now.
 
-### The pictures, taken rather than remembered
-
-After the export it writes every picture the studio will draw for what was authored, into
-`<specdir>/renders` or `--renders <dir>`: the grid and the flow as text, one swatch per theme, a **plan and
-a section per house** — the stamped rooms and every distinct house prop style — and the coverage map. That is
-21 files on a board carrying six themes and six houses.
-
-Two more it draws itself, because the studio answers columns and not cameras: `world-iso` from two quarters,
-and `world-xray` from the same two where the board holds a covered space.
-
-**The x-ray is the only view anything underground appears in** — `world-iso` draws a gaol under a meadow as
-a meadow. It is written only when the void scan finds a roofed void of at least 200 cells, because below
-that it draws the board the isometric already drew, one shade paler.
-
-**The scan itself runs on every board** and prints what it found with the coordinates: how much covered
-space, between which blocks, and how much of it is `SEALED`, meaning nothing can walk into it.
-
-They land beside the documents rather than in `--out`, and so does the provenance sidecar, which the driver
-moves out of the exported `region/`. `--out` is what a game server is handed: `region/`, `level.dat`,
-`map.xml`, and nothing a match does not read. A CLI read-back pointed at that region directory therefore
-finds no provenance and falls back to the material estimate, which it states on its own scale line.
-
-**And the same board as text, beside the pictures.** A picture encodes a height as a shade and asks a
-reader to estimate it; a model reads a character grid and subtracts. So after the pictures the driver
-writes the board as text too, every file the API's own `?format=text` answer, so what a column carries,
-which layer drew it and what a goal keeps clear come from the build's record rather than from a sidecar
-(`tools/render/textreads.py`, which also runs on its own over a driven board and decides only the extent —
-which features get a transect, which spawn walks to which goal):
-
-| File | Is |
+| Reading | Is |
 |---|---|
-| `02-heightmap.txt` | `GET …/render/heightmap?format=text`: the ground's height band above the board's lowest surface, `0-9a-z`, one character per `every` blocks, with the houses, the fluids, the spawn points and the goals overprinted, so a height is read beside what stands there |
-| `03-slopes.txt` | `GET …/slopes?format=text`: where the ground steps — `.` walked, `:` a block to scramble, `#` a barrier — and the barrier runs named as faces, largest first. A cliff reads as a line of `#`, a ramp as a band of `.` through it, and an overdone relief as a page of `#` |
-| `world-section-x0.txt` · `world-section-z0.txt` | `GET …/render/section?format=text`, the two axis cuts as characters — `#` ground, `L` a storey over it, `~` liquid, `I`/`T` a tree, `H` a house or a hall, `M` a made thing, `S`/`!`/`W` a spawn, a goal, a wool — with a y axis, a ruler and the ground's height band under each column |
-| `transect-<feature>.txt` | `GET …/transect?format=text&beside=2`, one per spawn, goal, house, fluid prop, boulder and made thing: at every station the ground, the storey stood on, the fluid line, the top, what stands there and the step from the station before, along x and along z through the feature's own box with eight blocks of overshoot each side, and what stands within two cells of the line |
-| `04-routes.txt` | each team's walk to each goal, from `GET …/walk?format=text&beside=2`: the storey the walk stood on at every place, every step that left a walk, and what stands within two blocks of the route — the read for a thing thrown in the players' way |
-| `05-themes.txt` | `GET …/themes/census?format=text`: cells and share per theme, the materials each spends, and which theme borders which over how many cells — the number for a board that mashes its themes |
-| `06-claims.txt` | `POST …/sketch/dressing?format=text`: every cell of the board as the digit of what claims it — a prop, a goal's clearance, a keep-out, or free — so a candidate site is looked up rather than tried |
-| `07-seats.txt` | `POST …/sketch/seats?kind=…&format=text`, three times — a tree, a boulder and a 9 × 7 house: every cell that kind's footprint may seat its **minimum corner** on, and the rules that refused the rest by cell count. Where `06-claims.txt` reads the pass backwards, this reads it forwards, so a site is chosen rather than tried |
+| `grid` · `flow` | the stored plan as characters, one per proxy cell, and what the board asks of the two sides in prose — the walks and their ratio, where the ways in part and meet, and the ground no journey reaches |
+| `findings` · `relief` · `declines` · `preflight` | everything wrong with the stored map, the relief per group, what the dressing declined, and the export's own verdict asked before the export — its log ends `export gate OPEN` or `export gate BLOCKED` |
+| `coverage` | the reached, decorated and dead shares and every dead patch with its coordinates — the only read that asks whether any journey **goes** somewhere, where every gate asks whether it can |
+| `heightmap` | the ground's height band above the board's lowest surface, one character per `every` blocks, with the houses, the fluids, the spawn points and the goals overprinted |
+| `slopes` | where the ground steps — `.` walked, `:` a block to scramble, `#` a barrier — and the barrier runs named as faces, largest first. A cliff reads as a line of `#`, a ramp as a band of `.` through it |
+| `reach` | the standing ground no player can get to, and why |
+| `section along x at z N` · `section along z at x N` | the two cuts through the middle of the board as characters — `#` ground, `L` a storey over it, `~` liquid, `I`/`T` a tree, `H` a house, `M` a made thing, `S`/`!`/`W` a spawn, a goal, a wool — with a y axis and a ruler |
+| `transect <thing> along x` · `along z` | through every spawn, goal, house, fluid, boulder and made thing, with eight blocks of overshoot each side: at every station the ground, the storey stood on, the fluid line, the top and the step from the station before, and what stands within two cells |
+| `route spawn-N to <goal>` | each spawn's walk to each goal: the storey stood on at every place, every step that left a walk, and what stands within two blocks — the read for a thing thrown in the players' way |
+| `themes` | cells and share per theme, the materials each spends, and which theme borders which over how many cells |
+| `claims` | every cell as the digit of what claims it — a prop, a goal's clearance, a keep-out, or free — so a candidate site is looked up rather than tried |
+| `seats tree` · `seats boulder` · `seats house` | every cell that kind's footprint may seat its **minimum corner** on — a house at 9 × 7 — and the rules that refused the rest. Where `claims` reads the pass backwards, this reads it forwards |
+| `voids` | every roofed void, largest first, its bounds and whether anything can walk into it — `SEALED` is a space no player can enter |
 
-**And the run ends with the three numbers, not with a picture.** `== the three numbers, before the
-pictures` prints `03-slopes.txt`'s `cells: N walked, N scrambled, N barrier`, `06-claims.txt`'s
-`placed N, declined N`, and the worst step on any spawn-to-goal route out of `04-routes.txt`. The text
-reads have been written beside the pictures since the pass existed and the run reports say they go
-unread — a picture is one look and a 90 × 200 character grid is a question about which rows — so the
-three that need no slicing are the last thing in the transcript, each naming the file the rest of the
-answer is in.
+### The picture a board keeps
 
-The summaries — one line per transect and per route — are printed inline under `== the board as text`, so
-they are in the transcript without a file being opened, and the extent of every transect comes from the
-feature's own box rather than from a reader deciding where to look. A read a reader has to remember to take
-is the read that catches nothing.
+**One picture a board is committed, beside its documents.** After the export the run asks for the board's
+`overview` view through `render/eye` and keeps it as `<specdir>/<base>.png` — the board from its long side,
+in the game's own block sprites. The export's `map.png`, the picture a server lists the map by, lands in
+`--out` with the world.
 
-**The sweep is over files, so `renders/close/` is where a hand-taken picture belongs.** A render directory
-is one run's output rather than an accumulation of every run's, and the sweep at the end of a run removes
-whatever this run did not write — which silently deletes a picture an author took by hand and a README then
-points at. A subdirectory is not touched.
+**Every other picture stays in the studio.** The report names each one by the `GET` route that draws it —
+the board in the round and in x-ray, from above one question at a time, the sections, the coverage and every
+view from a player's eye — and `GET /map/{slug}/report?pictures=true` draws them all into one answer. A
+board's old `renders/` folder is cleared when it is driven.
 
-The reason they are taken here is the reason the grid and the flow are printed here: **a read nobody is
-refused for skipping is the read nobody takes.** Every shipped roof fault was visible in a section and
-invisible from above, and no board in this repository had one until an author drew them by hand. Taking a
-picture is not the same as looking at one; what this removes is the excuse.
+`--out` is what a game server is handed: `region/`, `level.dat`, `map.xml` and `map.png`. The provenance
+sidecar lands beside the documents instead, which the driver moves out of the exported `region/`.
 
 **A style is serialized in the author's own key order.** The reader takes a material's `kind` wherever it
 sits, so a style round-tripped through a formatter still previews; writing `kind` first is what every style
@@ -210,33 +176,32 @@ document. Both of those are the author's.
 
 ### One call stores the map
 
-`POST /map/from-documents` takes the plan, the patched layout and the patched intent together and does the
-whole store: the plan to re-plan from, the drawing rasterized into geometry, the intent projected into the map
-document, the authors applied over that projection. The compile before it needs no map row, so both documents
-are whole before anything is stored — which is what lets the store be one call, and what keeps the slug the
-author's rather than one minted per attempt.
+`PUT /map/{slug}/source` takes the plan and the refinement together and does the whole store: the compile, the
+refinement applied onto it — the outlines reshaped and bent in the document, so the board the store judges is
+the board the run leaves — the plan to re-plan from, the drawing rasterized into geometry, the intent projected
+into the map document, the authors applied over that projection. The slug is the author's rather than one
+minted per attempt, and the run is one change of the map.
 
-An `editShapes` or a `bendShapes` changes the stored board after that store has finished it, so the driver
-posts `POST /map/{slug}/sketch/finish` once after the last of them and prints what it answers: the store's
-counts and complaints describe the compiled outline, and the second finish judges — and writes the ground of
-— the board the run actually left.
+**The change says where the run came from.** It carries `origin` — the repository, the commit, the spec's
+folder, and whether that folder held changes the commit does not — and `--note`. The answer names every edit
+the run made to the documents the map held, listed edit by edit where the map was replaced.
 
-Everything after it reads the stored map, and one of those reads has to be there rather than earlier:
-`sketch/columns` is asked **after** the store because `DR-KEEP` reads the spawn doors' approaches and the goal
-rings, which come off the intent.
+**A run over a change the spec has not seen is refused, and the change is handed over.** Where the board was
+edited after its last run — by hand in the Sketch tool, or by another writer's source — the studio answers `409`
+with one `SR1` per edit, naming the change and carrying the edit as the refinement would state it, which the
+driver prints under the finding. `--after <change>` says the spec has taken the change in; `--discard
+<change>,...` replaces it, and the change the run lands as records what it dropped. A board whose source states
+no refinement is never refused this way.
 
-**Every read after the store is sent at once and printed where it is asked.** None of them writes to the
-board, so the driver puts them on the wire together, four at a time, and the studio answers them side by
-side. The transcript is the one a run asking them one after another would print, line for line.
-
-**The isometrics and the x-ray are drawn while those reads are answered.** They come off the one
-`sketch/columns` answer the decline list is read from, each view in a worker process of its own, and their
-lines print where the pictures always have.
+Everything after it reads the stored map — the layout and the intent come back through `GET …/sketch` and
+`GET …/intent`, and the report is asked **after** the store because the dressing's `DR-KEEP` reads the spawn
+doors' approaches and the goal rings, which come off the intent.
 
 ### The escape hatches
 
-`--dry` stops after the evaluator and the inspect feed, so a plan can be iterated with no map row and no
-build — which is where most of a board's shape is actually decided. The grid and the flow read the *stored*
+**Every run asks the source dry before it stores it**, and prints what it would change. `--dry` stops there,
+after the evaluator, the inspect feed and that dry run, and stores nothing — so a plan can be iterated with no
+map row and no world, which is where most of a board's shape is actually decided. The grid and the flow read the *stored*
 plan and so are not in a dry pass; `board.py` covers the grid half of that loop. `--slug` overrides the slug
 the spec directory's name would give, for a board stored under a name of its own.
 
@@ -251,8 +216,9 @@ python3 tools/loop.py specs/<slug> [--slug <slug>] [--no-relief] [--no-dressing]
 
 A drive stores, exports and pictures the board in ten to fifteen seconds, and most of what it decides was
 decided by two previews that take two.
-This reads the spec exactly as `drive.py` does — the plan compiled and patched with its finish, or the drawn
-layout — and posts the result to `sketch/relief/read` and `sketch/dressing` without storing anything.
+This reads the spec exactly as `drive.py` does — the plan and its refinement, applied by the studio in a dry
+run of the source, or the drawn layout — and posts the result to `sketch/relief/read` and `sketch/dressing`
+without storing anything.
 
 **What the two answer.** The relief read gives the terrain in numbers — range, walk/scramble/barrier steps,
 crossings in both directions — and the dressing preview gives what every prop did, printing each decline
@@ -266,25 +232,25 @@ and the drive is the last step rather than the first.
 
 **A studio seeds its own library at startup and nothing else.** `LibrarySeed` runs on every boot and is
 idempotent, so the materials, the house presets and parts, the themes, the biomes, the four erratic
-boulders and the six vanilla tree recipes are always there. Two things this repository depends on are not,
+boulders and the seven vanilla tree recipes are always there. Two things this repository depends on are not,
 and this puts both in.
 
 **The technique cards' boards** — thirty-two over twenty-nine cards — so *open it in the studio as
 `technique-<name>`* is true on a database nobody has driven them into.
 
 **The copied trees.** `corpus/tree-showcase` is a world of hand-built trees and the studio's
-`tools/seed-trees.cs` cuts each one into the tree library as a `copied` recipe: 74 of them, against the
-six vanilla species a studio boots with. The warmup skill tells an author to prefer a copied tree over the
+`tools/seed-trees.cs` cuts each one into the tree library as a `copied` recipe: 94 of them, against the
+seven vanilla species a studio boots with. The warmup skill tells an author to prefer a copied tree over the
 vanilla stamp, so an unseeded studio is one where that instruction names nothing. It is a dotnet build and
 a scan of every region file, so it takes minutes; `PGM_STUDIO_REPO` says where the studio's checkout is
 and `--no-trees` skips it.
 
 **A card's files say which road it takes and nothing else decides.** A `<name>.layout.json`, with its
 `<name>.intent.json` beside it where the card has objectives, is stored directly — the shape the Sketch
-tool writes. A `<variant>.plan.json` with a `<variant>.finish.json` beside it goes through `drive.py`,
-because a plan has to be compiled and patched before it is a board.
+tool writes. A `<variant>.plan.json` with a `<variant>.refinement.json` beside it goes through `drive.py`,
+because a plan has to be compiled and refined before it is a board.
 
-**A plan with no finish beside it is not a board.** `taking-over-a-composed-board/pinned.plan.json` is the
+**A plan with no refinement beside it is not a board.** `taking-over-a-composed-board/pinned.plan.json` is the
 composer's own answer, committed so the card's starting point is reproducible, and it is the one plan in
 `techniques/` that is not driven.
 
@@ -293,12 +259,12 @@ re-seeds boards that are already there; `--only <card>` does one. Re-running is 
 rather than added to.
 
 `--candidates` asks whether **this** prop stands at a position. The dressing preview's `claims` raster
-already answers where nothing stands and nothing is kept clear — one call, the whole board, in
-`06-claims.txt` — but a free cell is not a legal seat: seven rules decide where a prop may stand (a fluid
+already answers where nothing stands and nothing is kept clear — one call, the whole board, the report's
+`claims` — but a free cell is not a legal seat: seven rules decide where a prop may stand (a fluid
 prop's bed, a door's lane, the spawn's margin, a goal's 21 blocks, a road's standoff, a house's claim, a
 structure's keep-out), and the last three read the prop's own footprint rather than the cell.
 
-**`07-seats.txt` is the raster that does apply the footprint**, per kind, so between the two there is
+**The report's `seats` are the raster that does apply the footprint**, per kind, so between the two there is
 usually nothing left to try: take a position off the seats mask and it seats. What `--candidates` is still
 for is a prop whose kind the mask does not cover, or a position the mask allows and a *specific* style's
 own footprint does not. The raster says where to try and this says whether the try lands: the named prop is duplicated at every position given,
@@ -348,18 +314,17 @@ they were written to produce.
 | `anvil.py` | the reader the other four import — `World(regionDir)` with `get`, `blocks`, `columns`, `voxels`, `bounds`, `biome` — and, run on its own, a census of a world. Numeric ids, 1.8 Anvil, nothing installed |
 | `world-diff.py` | two worlds of one board against each other, keyed by the first's `provenance.json`: how many columns kept their surface, what each block became by pass and depth, every added and removed thing with its box, the bed under the water, the plants, the biomes, and how much of each material shows on a face. `--json` writes it all for a lift or a review |
 | `lift.py` | a box cut out of a world into `models/<name>.json`, rows of `[x, y, z, id, data]`, which a spec's `build.py` turns into a made thing through `sculpt/layers.py`. `--against` keeps only what the other world lacks, `--ground-below` drops the terrain a footing stands in, `--cost` prints what it costs in layers and shapes, `--plan` prints the box as a plan of top blocks |
-| `trees.py` | `catalogue` every tree standing in a world; `match` planted trees back to their originals on leaf shape under the eight symmetries of the square; `bodies` a corpus row into the `trees.json` a `copied` recipe carries; `verify` that a built world planted them block for block and every leaf no-decay |
+| `trees.py` | `catalogue` every tree standing in a world; `match` planted trees back to their originals on leaf shape under the eight symmetries of the square; `verify` that a built world planted showcase trees block for block, against `corpus/tree-showcase/trees.json`, and every leaf no-decay |
 | `probe.py` | whether the ground varies down a column or each column is one material — the run lengths of one stone through the body, the earth's uniformity, a face as characters, and the floating columns bucketed by what stands at their top |
 
 ```bash
 python3 tools/world-diff.py maps/<slug>/region maps/<author>-<slug>/region \
         --provenance specs/<slug>/provenance.json --json specs/<author>-<slug>/diff.json
 python3 tools/trees.py match corpus/tree-showcase/region maps/<author>-<slug>/region --against maps/<slug>/region
-python3 tools/trees.py bodies corpus/tree-showcase/region --row -75=oak-dense --row -242=fir-tall --out specs/<new>/trees.json
 python3 tools/lift.py maps/<author>-<slug>/region statue --box -61 31 -75 -29 72 -38 \
         --against maps/<slug>/region --ground-below 36 --out specs/<new>/models --cost
 python3 tools/probe.py maps/<new>/region --floating
-python3 tools/trees.py verify maps/<new>/region specs/<new>/trees.json
+python3 tools/trees.py verify maps/<new>/region
 ```
 
 Three things they agree on, so they cannot drift apart: what a tree is (wood, leaves, the plants a crown
@@ -414,17 +379,10 @@ an annulus as one polygon) and write the thing wanted; do not stamp a drum tower
 | `sculpt/models.py` | the nine sculptures `sculpture/models` is made of — robot, droid, Rubik's cube, hooded statue, coupe, walker, dragon, starship, ring station. One board, written once; the reusable part of it is `solid.py` underneath |
 | `sculpt/board.py` | the themes (`solid`, `shaded`), the document, the minimal intent an export needs, and the calls that store a board, read its columns back and unzip its world |
 | `sculpt/gallery_forms.py` · `gallery_sculpture.py` | the two boards in `sculpture/`, each printing what it cost in layers and shapes and exporting a world into the directory named as its second argument |
-| `sculpt/make_board.py` | writes `specs/archive/opus5-automaton`'s plan and finish, props and all, for `drive.py` to build |
+| `sculpt/make_board.py` | writes `specs/archive/opus5-automaton`'s plan and refinement, props and all, for `drive.py` to build |
 | `render/png.py` | a PNG writer, a scanline polygon fill and a 5×7 face, in the standard library alone |
-| `render/iso.py` | isometric, **x-ray isometric**, orthographic elevation and one-panel-per-layer renders off `POST …/sketch/columns` — the built world, not the drawing. `drive.py` writes two isometrics per spec, so every board has a picture in the round, and two x-rays where the board holds a covered space. `cavities` beside them is the read on its own: every roofed void, its cell count, the blocks it lies between, and whether anything can walk into it |
+| `render/iso.py` | isometric, orthographic elevation and one-panel-per-layer renders of a `{(x, y, z): material}` model or a `sketch/columns` payload — for a sculpture's gallery and the draft preview below. A stored board's isometric, x-ray and void scan are the studio's own (`render/isometric`, `render/xray`) |
 | `render/preview.py` | the same isometric taken straight off a model's voxels, for correcting a proportion without a build |
 
 The studio's own 3-D preview is WebGL in the browser, so there is no way to take a picture from it; these
-read the column payload the preview meshes and draw it server-side.
-
-## `styles/`
-
-One `HouseStyle` snapshot per file, referenced from a finish as `"@<name>"`. Fork a shipped preset rather
-than writing one from nothing: `GET /room-styles/{id}/json` answers the ten presets as the stamper's own JSON
-once `dotnet run tools/seed-library.cs` has seeded them. Repaint `storeys[*].wall` as well as `wall`, or the
-fork is half applied — except on `Stilts`, whose idiom lives in storey 0's wall.
+draw a model before it is a board, and the studio draws a stored board in the round itself.

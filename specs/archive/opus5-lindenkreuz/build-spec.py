@@ -734,7 +734,7 @@ if __name__ == "__main__":
     finish, table = build()
     with open(os.path.join(out, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(PLAN, handle, indent=1)
-    with open(os.path.join(out, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(out, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(finish, handle, indent=1)
     print(f"{len(SHAPES)} ground shapes, {len(finish['addLayers'])} layers, "
           f"{len(DRESSING['props'])} props, {len(THEMES)} themes")

@@ -91,16 +91,15 @@ inside of a **house style**, both of which are stored as snapshots.
 ## 2. The loop
 
 Drive it with `tools/drive.py`, which `tools/README.md` documents. It takes two authored files —
-`specs/<slug>/<slug>.plan.json` and `<slug>.finish.json` — and prints every finding at every place one can
+`specs/<slug>/<slug>.plan.json` and `<slug>.refinement.json` — and prints every finding at every place one can
 appear, including the ones only visible on a 200.
 
 ```
 POST  /api/plan/evaluate    <plan>       score, valid, the hard/soft terms, the lint table — no map row yet
 POST  /api/plan/inspect     <plan>       goalDistances (GO1), islandGaps (CT12), the wall rects, frontline runs
-POST  /api/plan/compile     <plan>       → {layout, intent}. Read the SHAPE IDS here and key the finish on them
-      ── patch the compiled layout: themes, relief_scope, controls, addShapes, relief, rooms, dressing ──
-      ── patch the compiled intent: a goal's layer, the authors, the date ──
-POST  /api/map/from-documents            {slug, name, plan, layout, intent, authors} — the whole map, one call
+PUT   /api/map/{slug}/source             {name, plan, refinement, origin, note} — the whole map, one call:
+                                         the compile, the refinement applied onto it, one change stored
+GET   /api/map/{slug}/sketch · /intent   the layout and the intent as the studio stored them
 GET   /api/map/{slug}/plan/ascii         the board as a grid, one character per cell (?every=N)
 GET   /api/map/{slug}/plan/flow          what the board asks of the two sides, in prose
 POST  /api/map/{slug}/sketch/relief/read cells, low, high, symmetry error, per group
@@ -110,14 +109,28 @@ GET   /api/map/{slug}/coverage           where the ground is lived on, not merel
 GET   /api/map/{slug}/export             the world, into a fresh empty directory
 ```
 
-**One call stores the map, and the slug is stated rather than minted.** `POST /map/from-documents` writes the
+**One call stores the map, and the slug is stated rather than minted.** `PUT /map/{slug}/source` compiles the
+plan and applies the refinement onto what it compiled to — the themes, the storeys and shapes, the outlines
+reshaped and bent, the relief, the rooms, the dressing, and the intent's authors and date. It then writes the
 plan to re-plan from, rasterizes the drawing into geometry, projects the intent into the map document and
 applies the authors — in that order, which is the order that matters: the projection is what would overwrite
 a name written before it.
 
+**The refinement is keyed on the compile's shape ids.** `POST /api/plan/compile` answers them before anything
+is stored, and a key naming an id the board does not have is answered `SR2` with the ids it does have, which is
+what a re-key is done from.
+
+**A run is one change of the map, and the change says where it came from.** It carries the commit and the spec
+folder the run was built from and `--note`, a sentence saying what the pass is, and the answer lists every edit
+the run made to what the map held.
+
 A map already at the slug is **replaced**, so a corrected spec re-driven keeps one map row instead of leaving
-`board`, `board-2` and `board-3` behind, and a hand edit made in the Sketch tool between runs is replaced
-rather than merged.
+`board`, `board-2` and `board-3` behind.
+
+**A hand edit made between runs is handed to you, not replaced.** The author edits a board in the Sketch tool to
+fix it or to show how, and the next run over it is refused `409`, one `SR1` per edit, each carrying the edit as
+the refinement would state it and naming the change it came in. Take the edits into `build-spec.py` and drive
+with `--after <change>`, or drop them with `--discard <change>` where the author agreed they go.
 
 Everything read after it is read against the stored map: the grid and the flow off the stored plan, and
 `sketch/columns` where `DR-KEEP` can see the spawn doors' approaches and the goal rings the intent carries.
@@ -135,10 +148,11 @@ its own query words.
 **`column` is the workhorse**: every picture beside it is a projection, and it is what is actually at a
 coordinate, which is the read to reach for when a picture and a document disagree.
 
-**Read the text before the pictures.** The driver writes the board as text beside every picture, each
-file the API's own `?format=text` answer — `02-heightmap.txt`, `03-slopes.txt`, the two axis sections, a
-`transect-<feature>.txt` through every spawn, goal, house, fluid prop and made thing, `04-routes.txt` along
-each team's walk to each goal, `05-themes.txt` and `06-claims.txt` — and prints their summaries inline.
+**Read the text before the pictures.** After every store the driver reads the board back in one request,
+`GET /map/{slug}/report`, and writes it to `out/reports/<slug>.txt`: the three numbers first, then every
+reading — the heightmap, the slopes, the two axis sections, a transect through every spawn, goal, house,
+fluid, boulder and made thing, a route from every spawn to every goal, the themes and the claims — each under
+its name and the route that answers it alone. It prints the numbers and the short readings inline.
 
 Every one of them can be asked for again at any extent: `render/section`, `transect`, `walk`, `slopes`,
 `render/heightmap`, `themes/census` and `sketch/dressing` all answer `?format=text`.
@@ -323,11 +337,13 @@ to do can be read beside what you built.
 
 Into `/home/user/pgm-studio-mapgen`, on the branch this session was given:
 
-- **`maps/<slug>/`** — `region/`, `level.dat`, `map.xml`, and nothing else. That folder is what a game
-  server is handed, so anything that exists to be looked at rather than loaded stays out of it.
-- **`specs/<slug>/`** — every JSON you authored: the plan and the finish. The world is derived from them.
-  Beside them, `renders/` with the images you actually reviewed the map from **at each stage**, not one
-  top-down at the end, and `provenance.json`, which the driver moves here out of the exported `region/`.
+- **`maps/<slug>/`** — `region/`, `level.dat`, `map.xml` and `map.png`, and nothing else. That folder is what a
+  game server is handed, so anything that exists to be looked at rather than loaded stays out of it.
+- **`specs/<slug>/`** — every document you authored: `build-spec.py`, and the plan and the refinement it
+  writes. The world is derived from them. Beside them, `<slug>.png`, the board from its long side that the
+  driver keeps, and `provenance.json`, which the driver moves here out of the exported `region/`. Every
+  other picture stays in the studio, drawn again from the board as it stands: the report names each one by
+  its route, and a review cites a picture by that route.
 - **`review/<slug>.md`** — what the board is, how it is meant to play, the techniques used, and what went
   wrong. Follow `review/tallow-mirefast.md` for shape.
 - **a row in [BOARDS-BUILT.md](BOARDS-BUILT.md)** — under the run's own heading, saying what the board

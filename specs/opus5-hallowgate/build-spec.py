@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Hallowgate — a capture-the-wool board on a drowned churchyard.
 
-Writes `opus5-hallowgate.plan.json` and `opus5-hallowgate.finish.json` beside this file.
+Writes `opus5-hallowgate.plan.json` and `opus5-hallowgate.refinement.json` beside this file.
 
 The arrangement is taken over from the composer rather than invented: a hub ringing an
 enclosed hole, a spawn hung off its flank, an L of causeway to a wool room in a corner, a
@@ -22,6 +22,7 @@ import json
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-hallowgate"
 
 # ── blocks ────────────────────────────────────────────────────────────────────
@@ -425,12 +426,12 @@ def room_shell(roof_body, door_width):
 # colours a reader cannot quite tell apart.
 TRACK = cells([DIRT, COARSE_DIRT, (5, 1)], 3, 53, rise=0)
 
-TREES = json.load(open(os.path.join(HERE, "trees.json")))
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
 # Four modest recipes rather than the biggest in the corpus: a copied tree's foot is every
 # cell of its lowest course and its crown is wider again, and this board's seats mask leaves
 # very little ground with room round it.
-TREE_KEYS = {"willow-a": "showcase-r17-1", "birch-a": "showcase-r13-4",
-             "yew-a": "showcase-r6-1", "olive-a": "showcase-r10-1"}
+TREE_KEYS = {"willow-a": "willow-1", "birch-a": "birch-4",
+             "yew-a": "tiny-oak-1", "olive-a": "olive-1"}
 
 
 def tree(pid, style, x, z):
@@ -445,7 +446,7 @@ def rock(pid, x, z, size, seed, form="angular"):
 
 dressing = {
     "styles": {
-        **{key: TREES[name] for key, name in TREE_KEYS.items()},
+        **{key: SHOWCASE[name]["style"] for key, name in TREE_KEYS.items()},
     },
     "props": [
         # The flooded corner of the graveyard, on the hub's east flank where no route runs.
@@ -516,7 +517,7 @@ finish = {
     # and not its coast. This resamples the compiled rings along their long edges and pulls
     # the inserted points inward — `side: "in"`, because nothing may move outward: a point
     # that did could close the strait the board is measured on.
-    "bendShapes": {"frontline-t1-9": {"k": 0.18, "wander": 2, "step": 8,
+    "bendShapes": {"frontline-t1-9": {"tension": 0.18, "wander": 2, "step": 8,
                                      "seed": 5, "side": "in"}},
     "addShapes": add_shapes,
     "addLayers": add_layers,
@@ -534,4 +535,4 @@ def write(name, document):
 
 
 write(f"{SLUG}.plan.json", plan)
-write(f"{SLUG}.finish.json", finish)
+write(f"{SLUG}.refinement.json", finish)

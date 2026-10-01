@@ -4,6 +4,7 @@ sandy bank are the three ways down from the headland to the quay, and the quay's
 bridges land on."""
 import json, os
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "fable-saltwharf"
 
 def solid(b, d=0): return {"kind": "solid", "id": b, "data": d}
@@ -129,8 +130,7 @@ def warehouse():
     return w
 WAREHOUSE = warehouse()
 
-TREES = json.load(open(f"{os.path.dirname(HERE)}/fable-millrace-revamp/trees.json"))
-def body(name): return {"kind": "tree", "form": "copied", "body": TREES[name]["body"]}
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
 def tree(pid, x, z, style, seed):
     return {"id": pid, "kind": "tree", "seed": seed, "layer": "ground", "x": x, "z": z, "style": style}
 ERRATIC = {"kind": "noise", "seed": 51, "scale": 3, "octaves": 1, "stops": [STONE, COBBLE, ANDESITE], "rise": 2}
@@ -141,7 +141,7 @@ def house(pid, x0, z0, x1, z1, style, front, seed):
 ROAD = cell([GRAVEL, ANDESITE, COBBLE], 3, 21)
 SHORE_MIX = cell([SAND, SAND, GRASS], 4, 23)
 DRESSING = {
-  "styles": {"oak-a": body("oak-dense-2"), "oak-b": body("oak-dense-4")},
+  "styles": {key: SHOWCASE[name]["style"] for key, name in {"oak-a": "dense-oak-2", "oak-b": "dense-oak-4"}.items()},
   "props": [
     # the road from the spawn door to the head of the east flight
     {"id": "road", "kind": "stroke", "seed": 5, "style": "solid", "claimsGround": True, "radius": 1.5,
@@ -177,5 +177,5 @@ finish = {
   "dressing": DRESSING,
 }
 json.dump(plan, open(f"{HERE}/{SLUG}.plan.json", "w"), indent=1)
-json.dump(finish, open(f"{HERE}/{SLUG}.finish.json", "w"), indent=1)
+json.dump(finish, open(f"{HERE}/{SLUG}.refinement.json", "w"), indent=1)
 print("wrote", SLUG)

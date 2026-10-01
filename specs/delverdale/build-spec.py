@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Delverdale: writes delverdale.plan.json and delverdale.finish.json beside this file.
+"""Delverdale: writes delverdale.plan.json and delverdale.refinement.json beside this file.
 
 A wooded lead-mining dale for thirty-two a side. Each team holds a village green on a raised terrace
 in the middle of its half; one wool is kept up the west side in the mine yard behind a bedrock wall,
@@ -11,6 +11,7 @@ import json
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "delverdale"
 CELL = 4
 
@@ -319,7 +320,8 @@ EDIT_SHAPES = {
     "void-1-cut": chamfer_rect(-40, 52, -24, 88, 3),
     "void-2-cut": chamfer_rect(24, 52, 40, 88, 3),
     # the holm and the stone, cut to octagons; the holm stays its own image under the turn
-    "holm-9": chamfer_rect(-20, -8, 20, 8, 4),
+    # the holm lies across the centre and is its own image, and its eight edits are every corner of it
+    "holm-9": [{**op, "fan": False} for op in chamfer_rect(-20, -8, 20, 8, 4)],
     "stone-9": chamfer_rect(32, -4, 48, 4, 2),
 }
 
@@ -372,8 +374,14 @@ WORKS = house_style(solid(5, 5), [
      "windows": PANE},
 ], gable=solid(5, 5), pitch=1)
 
-with open(os.path.join(HERE, "trees.json")) as handle:
-    TREES = {key: row["style"] for key, row in json.load(handle).items()}
+# the copied trees are the showcase's own: each key names the showcase tree it is, and its recipe
+# comes whole from the showcase snapshot
+with open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")) as handle:
+    SHOWCASE = json.load(handle)["trees"]
+TREES = {key: SHOWCASE[name]["style"] for key, name in {
+    "oak-1": "tiny-oak-1", "oak-2": "tiny-oak-2", "oak-5": "tiny-oak-5", "oak-8": "tiny-oak-8",
+    "oak-great-3": "oak-7", "oak-great-5": "oak-9",
+    "birch-1": "birch-1", "birch-4": "birch-4", "birch-6": "birch-6", "birch-9": "birch-9"}.items()}
 
 ROCK_BOULDER = {"kind": "boulder", "form": "round", "size": 3, "mossy": False,
                 "rock": cell(51, 3, [STONE, ANDESITE, STONE, COBBLE])}
@@ -603,9 +611,9 @@ FINISH = {
 def main():
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(PLAN, handle, indent=1)
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(FINISH, handle, indent=1)
-    print(f"wrote {SLUG}.plan.json ({len(PIECES)} pieces) and {SLUG}.finish.json")
+    print(f"wrote {SLUG}.plan.json ({len(PIECES)} pieces) and {SLUG}.refinement.json")
 
 
 if __name__ == "__main__":

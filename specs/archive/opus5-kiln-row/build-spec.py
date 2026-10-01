@@ -20,7 +20,7 @@ The face itself is a **`scarp`** mark: a polyline with a height either side of i
 for the drop between, so the cliff is drawn where a line is drawn rather than found between two
 plateaus that happened to meet.
 
-Output: `opus5-kiln-row.plan.json` and `opus5-kiln-row.finish.json` beside this file.
+Output: `opus5-kiln-row.plan.json` and `opus5-kiln-row.refinement.json` beside this file.
 """
 import json, math, os
 
@@ -352,7 +352,7 @@ finish = {
 def write():
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(plan, handle, indent=1)
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(finish, handle, indent=1)
     kinds = {}
     for prop in props:

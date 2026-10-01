@@ -265,7 +265,7 @@ layout["dressing"] = {"props": [
       "x": x, "z": z, "form": form, "size": size, "rock": rock, "mossy": True}
      for pid, x, z, form, size, rock in BOULDERS]}
 
-# No finish.json: the current driver compiles from the plan whenever a finish exists at all, even
+# No refinement.json: the current driver compiles from the plan whenever a finish exists at all, even
 # an authorship-only one, and this board's geometry is the layout -- hand-drawn, not derivable from
 # the plan. Authorship rides directly on the intent it is free to state.
 intent["meta"]["name"] = "Fallowmere"

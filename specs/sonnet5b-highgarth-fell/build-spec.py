@@ -4,7 +4,7 @@ Identity: each team must both hold a beacon standing exposed on the open rampart
 carry a wool out of a stone grain-store tucked into the fort's corner, so the defence
 is split between a goal that cannot be moved and one that must be walked home.
 
-Writes sonnet5b-highgarth-fell.plan.json and sonnet5b-highgarth-fell.finish.json.
+Writes sonnet5b-highgarth-fell.plan.json and sonnet5b-highgarth-fell.refinement.json.
 """
 import json
 import os
@@ -184,5 +184,5 @@ finish = {
     },
 }
 
-write("finish", finish)
-print("wrote", SLUG + ".finish.json")
+write("refinement", finish)
+print("wrote", SLUG + ".refinement.json")

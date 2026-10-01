@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Kilnbrow — a destroy-the-monument board on a red clay firing-ground.
 
-Writes `opus5-kilnbrow.plan.json` and `opus5-kilnbrow.finish.json` beside this file.
+Writes `opus5-kilnbrow.plan.json` and `opus5-kilnbrow.refinement.json` beside this file.
 
 The board is a lane. Each team's monument stands on an open shelf a short walk forward of
 its spawn, and the ground around it answers four approaches rather than one: a spoil hill
@@ -15,6 +15,7 @@ import json
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-kilnbrow"
 
 # ── blocks ────────────────────────────────────────────────────────────────────
@@ -411,9 +412,9 @@ SPAWN_SHELL = {
 # one would be turned away there anyway, and a stair is not a thing a road should repaint.
 TRACK = cells([GRAVEL, COARSE_DIRT, HARDENED_CLAY], 3, 41, rise=0)
 
-TREES = json.load(open(os.path.join(HERE, "trees.json")))
-TREE_KEYS = {"acacia-a": "showcase-r8-2", "acacia-b": "showcase-r8-5",
-             "olive-a": "showcase-r1-1", "olive-b": "showcase-r1-3"}
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+TREE_KEYS = {"acacia-a": "acacia-2", "acacia-b": "acacia-5",
+             "olive-a": "small-olive-1", "olive-b": "small-olive-3"}
 
 
 def tree(pid, style, x, z):
@@ -438,7 +439,7 @@ def kiln(pid, x0, z0, x1, z1, seed, storeys_high=0):
 dressing = {
     "styles": {
         "kiln": {"kind": "house", "shell": KILN_SHELL},
-        **{key: TREES[name] for key, name in TREE_KEYS.items()},
+        **{key: SHOWCASE[name]["style"] for key, name in TREE_KEYS.items()},
     },
     "props": [
         # the works track: the spawn door down to the head of the west flight, kept out of
@@ -528,4 +529,4 @@ def write(name, document):
 
 
 write(f"{SLUG}.plan.json", plan)
-write(f"{SLUG}.finish.json", finish)
+write(f"{SLUG}.refinement.json", finish)

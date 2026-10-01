@@ -24,6 +24,7 @@ hub's east slot on a deck a raider can run and a defender can shoot from.
 import json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-kettleshulme"
 
 MOOR = 12                      # the one plan surface; a top block is surface - 1
@@ -322,8 +323,10 @@ mill = hall(stack([(1, BRICK)], "repeat"), [GROUND_STOREY, UPPER_STOREY])
 cot = hall(stack([(1, BRICK)], "repeat"), [dict(GROUND_STOREY, clear=6)])
 
 # ── what stands on the board ─────────────────────────────────────────────────────────────────────
-trees = json.load(open(os.path.join(HERE, "trees.json")))
-tree_styles = {name: trees[name] for name in ("birk-1", "birk-2", "birk-3", "roundel-1")}
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+tree_styles = {key: SHOWCASE[name]["style"] for key, name in {
+    "birk-1": "birch-3", "birk-2": "birch-7", "birk-3": "birch-9",
+    "roundel-1": "tiny-oak-3"}.items()}
 
 props = [
     # the pack road: the spawn door, over the hub's back, onto the mill yard by the west rake and
@@ -426,5 +429,5 @@ finish = {
 
 if __name__ == "__main__":
     json.dump(plan,   open(os.path.join(HERE, f"{SLUG}.plan.json"),   "w"), indent=1)
-    json.dump(finish, open(os.path.join(HERE, f"{SLUG}.finish.json"), "w"), indent=1)
-    print(f"wrote {SLUG}.plan.json and {SLUG}.finish.json")
+    json.dump(finish, open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w"), indent=1)
+    print(f"wrote {SLUG}.plan.json and {SLUG}.refinement.json")

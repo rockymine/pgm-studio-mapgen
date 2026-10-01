@@ -27,6 +27,7 @@ import json, math, os, sys
 
 SLUG = "opus5-potsherd"
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 sys.path.insert(0, os.path.join(HERE, "..", "..", "tools", "sculpt"))
 import props
 
@@ -452,8 +453,12 @@ def drying_shed():
 
 
 def dressing():
-    trees = json.load(open(f"{HERE}/trees.json"))
-    styles = dict(trees)
+    # the copied trees are the showcase's own: each key names the showcase tree it is, and its
+    # recipe comes whole from the showcase snapshot
+    showcase = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+    styles = {key: showcase[tree]["style"] for key, tree in {
+        "birk-1": "birch-3", "birk-2": "birch-7", "birk-3": "birch-9",
+        "roundel-1": "tiny-oak-3"}.items()}
     styles["shed"] = drying_shed()
     # A boulder is stone: stone, cobblestone and andesite is the whole palette that reads as rock
     # against any ground, and on a clay board a clay-coloured boulder is one nobody can see.
@@ -542,9 +547,9 @@ def finish():
         "mapTheme": "clay",
         # the board's outer edge, drawn as an edge rather than as the staircase of rectangles the
         # plan compiled to. The pit's own lip is the pit-pan mark's ring and is not bent.
-        "bendShapes": {"camp-25": {"k": 0.16, "wander": 3, "step": 12, "seed": 5},
-                       "camp-24": {"k": 0.18, "wander": 3, "step": 12, "seed": 9},
-                       "camp-20": {"k": 0.16, "wander": 3, "step": 12, "seed": 13}},
+        "bendShapes": {"camp-25": {"tension": 0.16, "wander": 3, "step": 12, "seed": 5},
+                       "camp-24": {"tension": 0.18, "wander": 3, "step": 12, "seed": 9},
+                       "camp-20": {"tension": 0.16, "wander": 3, "step": 12, "seed": 13}},
         "relief": {"*": {"base": FIELD, "reach": 0, "step": 1, "landform": "plain",
                          "grain": {"amplitude": 1.0, "scale": 18, "seed": 7},
                          "marks": marks(), "pushes": pushes()}},
@@ -558,6 +563,6 @@ def finish():
 if __name__ == "__main__":
     with open(f"{HERE}/{SLUG}.plan.json", "w") as handle:
         json.dump(plan(), handle, indent=2)
-    with open(f"{HERE}/{SLUG}.finish.json", "w") as handle:
+    with open(f"{HERE}/{SLUG}.refinement.json", "w") as handle:
         json.dump(finish(), handle, indent=2)
-    print(f"wrote {SLUG}.plan.json and {SLUG}.finish.json")
+    print(f"wrote {SLUG}.plan.json and {SLUG}.refinement.json")

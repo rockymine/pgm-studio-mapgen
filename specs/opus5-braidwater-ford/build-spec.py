@@ -18,7 +18,7 @@ The channels are reaches BETWEEN the fords and never across one. A channel reads
 and carves down from it, so a channel laid over a ford would cut the crossing to its own bed depth
 and the ford would stop being wadeable.
 
-Writes <slug>.plan.json and <slug>.finish.json beside itself.
+Writes <slug>.plan.json and <slug>.refinement.json beside itself.
 """
 import json, math, os, random
 
@@ -329,7 +329,7 @@ finish = {
 
 with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
     json.dump(plan, handle, indent=1)
-with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
     json.dump(finish, handle, indent=1)
 print(f"{SLUG}: {len(plan['pieces'])} pieces, {len(relief['*']['marks'])} marks, "
       f"{len(relief['*']['pushes'])} pushes, {len(add_shapes)} shapes, {len(props)} props")

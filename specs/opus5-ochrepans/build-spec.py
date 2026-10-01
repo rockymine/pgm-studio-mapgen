@@ -26,6 +26,7 @@ import json, math, os, sys
 
 SLUG = "opus5-ochrepans"
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 sys.path.insert(0, os.path.join(HERE, "..", "..", "tools", "sculpt"))
 import props
 
@@ -448,13 +449,14 @@ def pan_house():
 
 
 def dressing():
-    # `spar-1` and `spar-2` are dropped rather than left unused: their bodies are acacia log
-    # under BIRCH leaves (162:12 under 18:14) at thirteen and fifteen blocks, which is a pine
-    # silhouette and not a dry-country tree. The showcase library names rows rather than species,
-    # so what a body is has to be read off its leaf id -- `thorn-1/2` are acacia under acacia.
-    trees = {name: body for name, body in json.load(open(f"{HERE}/trees.json")).items()
-             if not name.startswith("spar-")}
-    styles = dict(trees)
+    # Thorn only. The showcase's `tiny-spruce-1` and `tiny-spruce-5` are acacia log under BIRCH
+    # leaves (162:12 under 18:14) at fifteen and thirteen blocks, which is a pine silhouette and not
+    # a dry-country tree; a showcase name is not a species, so what a body is has to be read off its
+    # leaf id -- `thorn-1/2` are acacia under acacia. Each key names the showcase tree it is, and
+    # its recipe comes whole from the showcase snapshot.
+    showcase = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+    styles = {key: showcase[tree]["style"] for key, tree in {
+        "thorn-1": "acacia-4", "thorn-2": "acacia-7"}.items()}
     styles["shed"] = pan_house()
     # A boulder is stone: stone, cobblestone and andesite is the whole palette that reads as rock
     # against any ground. On ochre sand a sandstone boulder is a boulder nobody can see.
@@ -520,7 +522,7 @@ def finish():
         # to. The pans and the yard keep their drawn corners, because they are cut and not coastal.
         # the compiled ground is one component named for its first piece and the surface it
         # stands at, which on this board is `stead`
-        "bendShapes": {"stead-22": {"k": 0.14, "wander": 3, "step": 13, "seed": 5}},
+        "bendShapes": {"stead-22": {"tension": 0.14, "wander": 3, "step": 13, "seed": 5}},
         "relief": {"*": {"base": FLAT, "reach": 0, "step": 1, "landform": "plain",
                          "grain": {"amplitude": 0.8, "scale": 17, "seed": 7},
                          "marks": marks(), "pushes": pushes()}},
@@ -542,6 +544,6 @@ def finish():
 if __name__ == "__main__":
     with open(f"{HERE}/{SLUG}.plan.json", "w") as handle:
         json.dump(plan(), handle, indent=2)
-    with open(f"{HERE}/{SLUG}.finish.json", "w") as handle:
+    with open(f"{HERE}/{SLUG}.refinement.json", "w") as handle:
         json.dump(finish(), handle, indent=2)
-    print(f"wrote {SLUG}.plan.json and {SLUG}.finish.json")
+    print(f"wrote {SLUG}.plan.json and {SLUG}.refinement.json")

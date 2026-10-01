@@ -9,6 +9,7 @@ import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SLUG = os.path.basename(HERE)
+ROOT = os.path.dirname(os.path.dirname(HERE))
 
 
 def ellipse(cx, cz, rx, rz, n=16, turn=0.0, lobes=0, lobe=0.0):
@@ -194,7 +195,7 @@ relief = {"team": {
 finish = {
     "created": "2026-09-24", "authors": ["Opus 5.5"],
     "editShapes": {"field-20": edits},
-    "bendShapes": {"field-20": {"k": 0.22, "wander": 2, "step": 10, "seed": 5, "side": "out"}},
+    "bendShapes": {"field-20": {"tension": 0.22, "wander": 2, "step": 10, "seed": 5, "side": "out"}},
     "relief": relief}
 
 # The finish run's paint -- themes, biome, room styles, dressing and the patches they need -- as the studio
@@ -202,7 +203,13 @@ finish = {
 with open(os.path.join(HERE, "paint.json")) as f:
     finish.update(json.load(f))
 
-for name, doc in (("plan", plan), ("finish", finish)):
+# The dressing's copied trees are the showcase world's: each key names the showcase tree it is, and its recipe
+# is read whole from the showcase snapshot.
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+finish["dressing"]["styles"].update({key: SHOWCASE[tree]["style"] for key, tree in {
+    "acacia-a": "acacia-1", "acacia-b": "acacia-3", "acacia-c": "acacia-5", "olive": "olive-2"}.items()})
+
+for name, doc in (("plan", plan), ("refinement", finish)):
     with open(os.path.join(HERE, f"{SLUG}.{name}.json"), "w") as f:
         json.dump(doc, f, indent=1)
 print("wrote", SLUG)

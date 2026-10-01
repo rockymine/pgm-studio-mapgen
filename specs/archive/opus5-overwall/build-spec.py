@@ -21,7 +21,7 @@ The board is three slabs.
 The maze is a picture, below, and every rectangle, every route and every prop position is read off
 it rather than typed — a coordinate written by hand is a coordinate that ends up inside a wall.
 
-Output: `opus5-overwall.plan.json` and `opus5-overwall.finish.json` beside this file.
+Output: `opus5-overwall.plan.json` and `opus5-overwall.refinement.json` beside this file.
 """
 import json, math, os
 from collections import deque
@@ -653,7 +653,7 @@ def write():
                 raise SystemExit(f"a route runs through the wall at line {line}, column {index}")
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(plan, handle, indent=1)
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(finish, handle, indent=1)
     kinds = {}
     for prop in props:

@@ -31,7 +31,7 @@ surfaces with it: on this board the plan is the terrain.
 subtract is what cuts the hole; a subtract beats every add on its layer, so an `addShapes` rectangle
 over the hole draws nothing at all. The pond is a slab of its own, stated `below` the compiled ground.
 
-Output: `opus5-rimegarth.plan.json` and `opus5-rimegarth.finish.json` beside this file.
+Output: `opus5-rimegarth.plan.json` and `opus5-rimegarth.refinement.json` beside this file.
 """
 import json, math, os
 
@@ -408,7 +408,7 @@ def write():
                     raise SystemExit(f"{prop['id']} reaches void at {x},{z}")
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(plan, handle, indent=1)
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(finish, handle, indent=1)
     kinds = {}
     for prop in props:

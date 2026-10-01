@@ -9,7 +9,7 @@ here and every shape is written from them, which is the only way the four storey
 drifting a course apart: a slab's floor, the wall that carries it and the ramp that reaches it are
 three statements of one number.
 
-Output: `opus5-interchange.plan.json` and `opus5-interchange.finish.json` beside this file.
+Output: `opus5-interchange.plan.json` and `opus5-interchange.refinement.json` beside this file.
 """
 import json, os, copy
 
@@ -637,7 +637,7 @@ finish = {
 def write():
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(plan, handle, indent=1)
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(finish, handle, indent=1)
     print(f"plan: {len(plan['pieces'])} pieces, "
           f"{len(plan['placements']['destroyables'])} goals")

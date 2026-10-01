@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Mirkholt — a capture-the-wool board in a wood you cannot see across.
 
-Writes opus5-mirkholt.plan.json and opus5-mirkholt.finish.json beside this file.
+Writes opus5-mirkholt.plan.json and opus5-mirkholt.refinement.json beside this file.
 
 Each side is a wood shifted onto its own diagonal, so the board's other two quarters are
 void and the two sides face each other across one 20-block strait.  A hollow way runs the
@@ -61,15 +61,20 @@ def cell(seed, size, palette, jitter=40, warp=6, rise=0):
     return p
 
 def style(name, footing=None, beams=True):
-    """A shipped preset, forked. `beams=False` states `block: -1`, which is the house
-    style's own word for a building whose storeys meet without log ends: HS9 refuses beams
-    over walls that carry no laid-log course, and `beams: null` is not a shape the style
-    reads at all -- the store answers 500 on it rather than a refusal."""
-    st = json.load(open(os.path.join(REPO, "tools", "styles", name + ".json")))
-    st.setdefault("foundation", {})["footing"] = footing
-    if not beams and isinstance(st.get("beams"), dict):
-        st["beams"]["block"] = -1
+    """A library row, forked: the changes sit beside its name and are laid over the row
+    member by member. `beams=False` states `block: -1`, which is the house style's own word
+    for a building whose storeys meet without log ends: HS9 refuses beams over walls that
+    carry no laid-log course, and `beams: null` is not a shape the style reads at all -- the
+    store answers 500 on it rather than a refusal."""
+    st = {"library": name, "foundation": {"footing": footing}}
+    if not beams:
+        st["beams"] = {"block": -1}
     return st
+
+def house(name, **changes):
+    """The same fork as a dressing style, which carries the changes under `shell`."""
+    shell = style(name, **changes)
+    return {"library": shell.pop("library"), "kind": "house", "shell": shell}
 
 # ---------------------------------------------------------------- themes
 # The wood's floor, finished by its angle.  Leaf litter is what a dark wood's floor is made
@@ -276,9 +281,14 @@ ADD_SHAPES = [
 ]
 
 # ---------------------------------------------------------------- dressing
-TREES = json.load(open(os.path.join(HERE, "trees.json")))
-STYLES = {k: {"kind": "tree", "form": "copied", "body": v["body"]} for k, v in TREES.items()}
-STYLES["hut"] = {"kind": "house", "shell": style("talltimber-cottage")}
+# the copied trees are the showcase's own: each key names the showcase tree it is, and its
+# recipe comes whole from the showcase snapshot
+SHOWCASE = json.load(open(os.path.join(REPO, "corpus", "tree-showcase", "trees.json")))["trees"]
+STYLES = {key: SHOWCASE[name]["style"] for key, name in {
+    "mirk-tall-a": "large-pine-1", "mirk-tall-b": "large-pine-2", "mirk-giant": "large-pine-4",
+    "mirk-dense-a": "dense-oak-8", "mirk-dense-b": "dense-oak-2",
+    "scrub-a": "olive-2", "scrub-b": "olive-5"}.items()}
+STYLES["hut"] = house("talltimber-cottage")
 
 
 def tree(pid, st, x, z):
@@ -413,8 +423,8 @@ FINISH = {
 
 def main():
     json.dump(PLAN,   open(os.path.join(HERE, SLUG + ".plan.json"),   "w"), indent=1)
-    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".finish.json"), "w"), indent=1)
-    print("wrote", SLUG + ".plan.json", "and", SLUG + ".finish.json",
+    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".refinement.json"), "w"), indent=1)
+    print("wrote", SLUG + ".plan.json", "and", SLUG + ".refinement.json",
           f"({count} trees on the authored half)")
 
 

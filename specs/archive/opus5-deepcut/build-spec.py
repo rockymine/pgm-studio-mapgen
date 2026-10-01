@@ -26,7 +26,7 @@ The faces are painted with **`wallRun`**: stripes wrapping the perimeter, consta
 they stand vertical. A weathered cliff bands horizontally (`opus5-kiln-row`) and a **cut** face is
 scored vertically by the saw, and the two boards say so in the same bucket with two materials.
 
-Output: `opus5-deepcut.plan.json` and `opus5-deepcut.finish.json` beside this file.
+Output: `opus5-deepcut.plan.json` and `opus5-deepcut.refinement.json` beside this file.
 """
 import json, math, os
 
@@ -363,7 +363,7 @@ def write():
         raise SystemExit("the rim and the sump have to be multiples of the step, or both are rounded")
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(plan, handle, indent=1)
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(finish, handle, indent=1)
     kinds = {}
     for prop in props:

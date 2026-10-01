@@ -9,12 +9,11 @@ route at all.  Here the north bar is widened at its west end and tapered at its 
 causeway is walked out seven blocks above it: forty blocks of open deck with a ramp at each
 end and no way off in between, which is the third way in and the only quick one.
 
-Writes opus5-drystone-ring.plan.json and opus5-drystone-ring.finish.json beside this file.
+Writes opus5-drystone-ring.plan.json and opus5-drystone-ring.refinement.json beside this file.
 """
 import json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-drystone-ring"
 
 CELL = 5
@@ -54,18 +53,16 @@ def cell(seed, size, palette, jitter=40, warp=6, rise=0):
     return p
 
 def style(name, footing=None):
-    st = json.load(open(os.path.join(REPO, "tools", "styles", name + ".json")))
-    st.setdefault("foundation", {})["footing"] = footing
-    return st
+    """A preset: the studio library's row of that name, its footing stated beside it."""
+    return {"library": name, "foundation": {"footing": footing}}
 
 def house_shell(name):
     """A preset forked into a house prop: no beam over a wall with no laid log in it
     (`HS9`) and no roof slab cut from a block the roof body is not (`HS3`)."""
-    st = style(name)
-    st["beams"] = {"block": -1, "data": 0, "reach": 1, "any": True}
-    if isinstance(st.get("roof"), dict):
-        st["roof"]["slab"], st["roof"]["slabData"] = -1, 0
-    return st
+    return {"library": name, "kind": "house",
+            "shell": {"foundation": {"footing": None},
+                      "beams": {"block": -1, "data": 0, "reach": 1, "any": True},
+                      "roof": {"slab": -1, "slabData": 0}}}
 
 # ---------------------------------------------------------------- themes
 # ground family: a cold dark moor — podzol and coarse dirt under a taiga tint.
@@ -305,7 +302,7 @@ FINISH = {
     "addShapes": ADD_SHAPES,
     "addLayers": ADD_LAYERS,
     "relief": RELIEF,
-    "roomStyles": {"spawn": style("showcase-hall"), "wool": style("showcase-cage")},
+    "roomStyles": {"spawn": style("brick-roofed-stone-and-dark-oak-house"), "wool": style("showcase-cage")},
     "dressing": DRESSING,
     "authors": ["Opus 5"],
     "created": "2026-09-16",
@@ -314,8 +311,8 @@ FINISH = {
 
 def main():
     json.dump(PLAN,   open(os.path.join(HERE, SLUG + ".plan.json"),   "w"), indent=1)
-    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".finish.json"), "w"), indent=1)
-    print("wrote", SLUG + ".plan.json", "and", SLUG + ".finish.json")
+    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".refinement.json"), "w"), indent=1)
+    print("wrote", SLUG + ".plan.json", "and", SLUG + ".refinement.json")
 
 
 if __name__ == "__main__":

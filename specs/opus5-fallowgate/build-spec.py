@@ -7,7 +7,7 @@ grown ground, the wet hollow between them is grown ground, and the monument stan
 hollow. The band between the two benches is what the relief solves, and it is the hillside
 the match is fought down.
 
-Writes opus5-fallowgate.plan.json and opus5-fallowgate.finish.json beside this file.
+Writes opus5-fallowgate.plan.json and opus5-fallowgate.refinement.json beside this file.
 """
 import json
 import os
@@ -367,7 +367,7 @@ def finish():
         # A timber-framed barn on a stone yard: a building is never the ground it stands on,
         # and the default room is a bedrock box. Shipped preset, unforked — gable roof,
         # no footing, log posts with plank infill.
-        "roomStyles": {"spawn": "@hw-minehouse"},
+        "roomStyles": {"spawn": {"library": "hw-minehouse"}},
         "dressing": dressing(),
     }
 
@@ -376,7 +376,7 @@ if __name__ == "__main__":
     with open(os.path.join(HERE, SLUG + ".plan.json"), "w") as f:
         json.dump(plan(), f, indent=1)
         f.write("\n")
-    with open(os.path.join(HERE, SLUG + ".finish.json"), "w") as f:
+    with open(os.path.join(HERE, SLUG + ".refinement.json"), "w") as f:
         json.dump(finish(), f, indent=1)
         f.write("\n")
-    print("wrote", SLUG + ".plan.json", "and", SLUG + ".finish.json")
+    print("wrote", SLUG + ".plan.json", "and", SLUG + ".refinement.json")

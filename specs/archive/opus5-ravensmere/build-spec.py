@@ -8,7 +8,7 @@ downs cut by three crevasses, a wood, a brick-and-granite path with buildings sc
 mountain backdrop standing behind the spawn. The geometry is arithmetic on a handful of levels, radii and
 spines named once at the top, so a landform can be moved without its paint staying behind.
 
-The plan is authored by hand and is not written here. Output: `opus5-ravensmere.finish.json`.
+The plan is authored by hand and is not written here. Output: `opus5-ravensmere.refinement.json`.
 """
 import json, math, os
 
@@ -684,7 +684,7 @@ def main():
         "addShapes": brush(),
         "dressing": dressing(),
     }
-    out = os.path.join(HERE, f"{SLUG}.finish.json")
+    out = os.path.join(HERE, f"{SLUG}.refinement.json")
     with open(out, "w") as handle:
         json.dump(finish, handle, indent=1)
     kinds = {}

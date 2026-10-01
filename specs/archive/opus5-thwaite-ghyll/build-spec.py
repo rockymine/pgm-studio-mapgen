@@ -16,7 +16,7 @@ The board is a valley: high moor at the back of each side, a bench cut into the 
 monument, a road switchbacking down to the water, and a ghyll along the middle. Authored for the
 -z half; rot_180 folds it.
 
-Writes opus5-thwaite-ghyll.plan.json and .finish.json beside this file.
+Writes opus5-thwaite-ghyll.plan.json and .refinement.json beside this file.
 """
 import json, os
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -120,7 +120,7 @@ plan = {
     },
 }
 
-for name, doc in (("plan", plan), ("finish", finish)):
+for name, doc in (("plan", plan), ("refinement", finish)):
     with open(f"{HERE}/{SLUG}.{name}.json", "w") as fh:
         json.dump(doc, fh, indent=1)
 print(f"{len(marks)} relief mark(s), {len(finish['themes'])} theme, {len(plan['pieces'])} pieces a side")

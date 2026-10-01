@@ -9,12 +9,11 @@ fifteen, walk twenty in the open, bridge fifteen.  The low road is the reef itse
 bridge down to either flank, walk under the deck out of sight, and climb one of the two
 flights that come up on the deck's far half.
 
-Writes opus5-crossdyke.plan.json and opus5-crossdyke.finish.json beside this file.
+Writes opus5-crossdyke.plan.json and opus5-crossdyke.refinement.json beside this file.
 """
 import json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-crossdyke"
 
 CELL, SURFACE, REEF_Y = 5, 14, 9
@@ -55,19 +54,17 @@ def cell(seed, size, palette, jitter=40, warp=6, rise=0):
     return p
 
 def style(name, footing=None):
-    st = json.load(open(os.path.join(REPO, "tools", "styles", name + ".json")))
-    st.setdefault("foundation", {})["footing"] = footing
-    return st
+    """A preset: the studio library's row of that name, its footing stated beside it."""
+    return {"library": name, "foundation": {"footing": footing}}
 
 def house_shell(name):
     """A preset forked into a house prop. Two of the shipped presets carry a beam over a
     wall with no laid log in it (`HS9`) and a roof slab cut from a different block than the
     roof body (`HS3`); a house prop states neither rather than carrying both in."""
-    st = style(name)
-    st["beams"] = {"block": -1, "data": 0, "reach": 1, "any": True}
-    if isinstance(st.get("roof"), dict):
-        st["roof"]["slab"], st["roof"]["slabData"] = -1, 0
-    return st
+    return {"library": name, "kind": "house",
+            "shell": {"foundation": {"footing": None},
+                      "beams": {"block": -1, "data": 0, "reach": 1, "any": True},
+                      "roof": {"slab": -1, "slabData": 0}}}
 
 # ---------------------------------------------------------------- themes
 # ground family: green limestone moor.  built family: pale grey masonry.
@@ -337,9 +334,9 @@ FINISH = {
     "addShapes": ADD_SHAPES,
     "addLayers": ADD_LAYERS,
     # the moor's coast drawn rather than left as the plan's staircase of rectangles
-    "bendShapes": {"bank-e-14": {"k": 0.22, "wander": 3, "step": 9, "seed": 5, "side": "in"}},
+    "bendShapes": {"bank-e-14": {"tension": 0.22, "wander": 3, "step": 9, "seed": 5, "side": "in"}},
     "relief": RELIEF,
-    "roomStyles": {"spawn": style("showcase-hall"), "wool": style("showcase-cage")},
+    "roomStyles": {"spawn": style("brick-roofed-stone-and-dark-oak-house"), "wool": style("showcase-cage")},
     "dressing": DRESSING,
     "authors": ["Opus 5"],
     "created": "2026-09-15",
@@ -348,8 +345,8 @@ FINISH = {
 
 def main():
     json.dump(PLAN,   open(os.path.join(HERE, SLUG + ".plan.json"),   "w"), indent=1)
-    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".finish.json"), "w"), indent=1)
-    print("wrote", SLUG + ".plan.json", "and", SLUG + ".finish.json")
+    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".refinement.json"), "w"), indent=1)
+    print("wrote", SLUG + ".plan.json", "and", SLUG + ".refinement.json")
 
 
 if __name__ == "__main__":

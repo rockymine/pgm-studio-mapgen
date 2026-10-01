@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Tallowfleet — one board played for a monument and a wool at once.
 
-Writes `opus5-tallowfleet.plan.json` and `opus5-tallowfleet.finish.json` beside this file.
+Writes `opus5-tallowfleet.plan.json` and `opus5-tallowfleet.refinement.json` beside this file.
 
 A tidal tallow works on a grey estuary. Each team defends **two** objectives that ask for
 opposite things, which is the whole reason this board exists: the monument stands out on the
@@ -19,6 +19,7 @@ import json
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-tallowfleet"
 
 # ── blocks ────────────────────────────────────────────────────────────────────
@@ -372,9 +373,11 @@ TRY_WORKS_SHELL = {
 # so the track is gravel, andesite and cobblestone.
 TRACK = cells([GRAVEL, ANDESITE, COBBLE], 3, 47, rise=0)
 
-TREES = json.load(open(os.path.join(HERE, "trees.json")))
-TREE_KEYS = {"willow-a": "showcase-r17-2", "birch-a": "showcase-r13-2",
-             "oak-a": "showcase-r6-3", "olive-a": "showcase-r10-2"}
+# The copied trees are the showcase's own: each key names the showcase tree it is, and its
+# recipe comes whole from the showcase snapshot.
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+TREE_KEYS = {"willow-a": "willow-2", "birch-a": "birch-2",
+             "oak-a": "tiny-oak-3", "olive-a": "olive-2"}
 
 
 def tree(pid, style, x, z):
@@ -405,7 +408,7 @@ def tryworks(pid, x0, z0, x1, z1, seed, storeys_high=0):
 dressing = {
     "styles": {
         "tryworks": {"kind": "house", "shell": TRY_WORKS_SHELL},
-        **{key: TREES[name] for key, name in TREE_KEYS.items()},
+        **{key: SHOWCASE[name]["style"] for key, name in TREE_KEYS.items()},
     },
     "props": [
         # The fleet: a tidal channel across the works terrace. It names its layer, states no
@@ -554,4 +557,4 @@ def write(name, document):
 
 
 write(f"{SLUG}.plan.json", plan)
-write(f"{SLUG}.finish.json", finish)
+write(f"{SLUG}.refinement.json", finish)

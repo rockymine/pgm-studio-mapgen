@@ -645,10 +645,10 @@ FINISH = {
 if __name__ == "__main__":
     with open(f"{HERE}/{BASE}.plan.json", "w") as fh:
         json.dump(PLAN, fh, indent=1)
-    with open(f"{HERE}/{BASE}.finish.json", "w") as fh:
+    with open(f"{HERE}/{BASE}.refinement.json", "w") as fh:
         json.dump(FINISH, fh, indent=1)
     print(f"{BASE}.plan.json   {len(PLAN['pieces'])} pieces, {len(PLAN['zones'])} zone")
-    print(f"{BASE}.finish.json {len(SHAPES)} shapes on the ground layer, "
+    print(f"{BASE}.refinement.json {len(SHAPES)} shapes on the ground layer, "
           f"{len(LAYERS)} added layers, {len(THEMES)} themes, {len(PROPS)} props")
     materials = sum(1 for s in SHAPES if "material" in s) + \
         sum(1 for e in LAYERS for s in e["shapes"] if "material" in s)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Ruddle Brink — one continuous red scarp, broken in exactly three places.
 
-Writes opus5-ruddle-brink.plan.json and opus5-ruddle-brink.finish.json.
+Writes opus5-ruddle-brink.plan.json and opus5-ruddle-brink.refinement.json.
 
 The board in one sentence: a core board where each team holds a low red bench
 under its own cliff, and the face above that bench is broken in three places —
@@ -390,7 +390,7 @@ finish = {
     "themes": {"brink": brink, "scree": scree, "works": works},
     "mapTheme": "brink",
     "addShapes": [cut_road, long_ramp] + talus_shapes,
-    "bendShapes": {"bench-12": {"k": 0.20, "wander": 3, "step": 9, "seed": 5}},
+    "bendShapes": {"bench-12": {"tension": 0.20, "wander": 3, "step": 9, "seed": 5}},
     "relief": {"team": relief_team},
     "roomStyles": {"spawn": spawn_style},
     # Mesa, so the biome comes to meet the ground: its grass tint is #90814d,
@@ -402,6 +402,6 @@ finish = {
 
 with open(os.path.join(D, f"{SLUG}.plan.json"), "w") as fh:
     json.dump(plan, fh, indent=1)
-with open(os.path.join(D, f"{SLUG}.finish.json"), "w") as fh:
+with open(os.path.join(D, f"{SLUG}.refinement.json"), "w") as fh:
     json.dump(finish, fh, indent=1)
-print(f"wrote {SLUG}.plan.json and {SLUG}.finish.json")
+print(f"wrote {SLUG}.plan.json and {SLUG}.refinement.json")

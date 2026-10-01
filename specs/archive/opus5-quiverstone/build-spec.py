@@ -6,7 +6,7 @@ the open pan between them, and one sandstone reef in the middle that both sides 
 
     python3 specs/opus5-quiverstone/build-spec.py
 
-writes `opus5-quiverstone.plan.json` and `opus5-quiverstone.finish.json` beside itself.
+writes `opus5-quiverstone.plan.json` and `opus5-quiverstone.refinement.json` beside itself.
 """
 import json
 import math
@@ -703,8 +703,8 @@ FINISH = {
     "themeById": {},
     # the coasts drawn rather than ruled: the compile emits the plan's own rectangles, which is the
     # board's shape and not its shoreline. Two blocks of wander is invisible at map scale.
-    "bendShapes": {"camp-16": {"k": 0.22, "wander": 6, "step": 12, "seed": 9},
-                   "reef-16": {"k": 0.20, "wander": 5, "step": 10, "seed": 11}},
+    "bendShapes": {"camp-16": {"tension": 0.22, "wander": 6, "step": 12, "seed": 9},
+                   "reef-16": {"tension": 0.20, "wander": 5, "step": 10, "seed": 11}},
     "addShapes": ADD_SHAPES,
     "addLayers": ADD_LAYERS,
     "relief": RELIEF,
@@ -723,7 +723,7 @@ def main():
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(PLAN, handle, indent=1)
         handle.write("\n")
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(FINISH, handle, indent=1)
         handle.write("\n")
     trees = sum(1 for prop in PROPS if prop["kind"] == "tree")

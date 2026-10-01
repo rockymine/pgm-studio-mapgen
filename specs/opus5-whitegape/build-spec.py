@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Whitegape — a limestone gorge quarried from both rims.
 
-Writes opus5-whitegape.plan.json and opus5-whitegape.finish.json for tools/drive.py.
+Writes opus5-whitegape.plan.json and opus5-whitegape.refinement.json for tools/drive.py.
 
 The board in one sentence: two teams face each other across a chasm; each holds a stone-built quarry
 yard on its own rim, with its monument on the floor of the pit cut into that yard, and the only way
@@ -428,7 +428,9 @@ LAYERS = [
 ]
 
 # ── buildings ─────────────────────────────────────────────────────────────────────────────────────
-SHELL = json.load(open(os.path.join(ROOT, "tools", "styles", "showcase-hall.json")))
+# The library's `showcase-hall`, with the changes below laid over it: an object member by member, a list
+# or a value whole.
+SHELL = {"foundation": {}, "roof": {}}
 
 
 def stack(bands, extent):
@@ -448,30 +450,38 @@ SHELL["roof"].update({"form": "gable", "pitch": 1, "slab": 126, "slabData": 1, "
                       "ridgeCap": True, "body": SPRUCE, "verge": LAID_SPRUCE, "gable": SPRUCE})
 SHELL["beams"] = {"block": 17, "data": 1, "reach": 1, "any": False}
 # A storey carries clear + 1 courses of wall, so each stack is sized to its own storey or the rest
-# is truncated in silence.
-SHELL["storeys"][0].update({
-    "clear": 5, "post": SPRUCE_LOG,
-    "wall": stack([(BRICK, 2), (SPRUCE, 3), (LAID_SPRUCE, 1)], 5)})
-SHELL["storeys"][1].update({
-    "clear": 4, "post": SPRUCE_LOG,
-    "wall": stack([(SPRUCE, 4), (LAID_SPRUCE, 1)], 4)})
+# is truncated in silence. The storeys are a list, so both are stated whole: the row's windows, surface
+# and headroom under this board's clear, post and wall.
+PLAIN = {"field": None, "border": None, "borderWidth": 1, "inlay": None, "inlayInset": 2, "isPlain": True}
+PANES = {"form": "pane", "block": 102, "hostBlock": -1, "hostData": 0, "data": 0, "width": 2, "height": 2,
+         "spacing": 4}
+SHELL["storeys"] = [
+    {"clear": 5, "post": SPRUCE_LOG,
+     "wall": stack([(BRICK, 2), (SPRUCE, 3), (LAID_SPRUCE, 1)], 5),
+     "windows": {**PANES, "sill": 2}, "surface": PLAIN, "deck": None, "headroom": 5},
+    {"clear": 4, "post": SPRUCE_LOG,
+     "wall": stack([(SPRUCE, 4), (LAID_SPRUCE, 1)], 4),
+     "windows": {**PANES, "sill": 1}, "surface": PLAIN, "deck": None, "headroom": 4},
+]
 
 WORKS_SHELL = json.loads(json.dumps(SHELL))
 
 # ── dressing ──────────────────────────────────────────────────────────────────────────────────────
-BODIES = json.load(open(os.path.join(ROOT, "specs", "fable-millrace-revamp", "trees.json")))
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
 SCRUB = ["fir-small-1", "fir-small-2", "fir-small-3", "fir-small-4", "fir-small-5"]
 SHELTER = ["oak-dense-1", "oak-dense-4"]
 
-styles = {k: {"kind": "tree", "form": "copied", "body": BODIES[k]["body"]}
-          for k in SCRUB + SHELTER}
+styles = {key: SHOWCASE[name]["style"] for key, name in {
+    "fir-small-1": "tiny-spruce-1", "fir-small-2": "tiny-spruce-2", "fir-small-3": "tiny-spruce-3",
+    "fir-small-4": "tiny-spruce-4", "fir-small-5": "tiny-spruce-5",
+    "oak-dense-1": "dense-oak-1", "oak-dense-4": "dense-oak-4"}.items()}
 styles["limestone"] = {"kind": "boulder", "form": "angular", "size": 6, "mossy": False,
                        "rock": {"kind": "noise", "seed": 71, "scale": 3, "octaves": 3, "rise": 2,
                                 "stops": [STONE, COBBLE, ANDESITE, STONE]}}
 styles["clint"] = {"kind": "boulder", "form": "outcrop", "size": 7, "mossy": False,
                    "rock": {"kind": "noise", "seed": 73, "scale": 3, "octaves": 3, "rise": 2,
                             "stops": [STONE, ANDESITE, COBBLE]}}
-styles["works-shed"] = {"kind": "house", "shell": WORKS_SHELL}
+styles["works-shed"] = {"library": "brick-roofed-stone-and-dark-oak-house", "kind": "house", "shell": WORKS_SHELL}
 
 props = []
 
@@ -571,11 +581,11 @@ finish = {
     "bendShapes": BENDS,
     "addShapes": ADD,
     "addLayers": LAYERS,
-    "roomStyles": {"spawn": SHELL},
+    "roomStyles": {"spawn": {"library": "brick-roofed-stone-and-dark-oak-house", **SHELL}},
     "dressing": {"styles": styles, "props": props},
 }
 
-for name, doc in ((f"{SLUG}.plan.json", plan), (f"{SLUG}.finish.json", finish)):
+for name, doc in ((f"{SLUG}.plan.json", plan), (f"{SLUG}.refinement.json", finish)):
     with open(os.path.join(HERE, name), "w") as fh:
         json.dump(doc, fh, indent=1)
     print(f"wrote {name}  ({os.path.getsize(os.path.join(HERE, name)):,} bytes)")

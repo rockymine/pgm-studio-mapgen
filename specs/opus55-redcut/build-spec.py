@@ -181,5 +181,5 @@ def paint():
 
 
 if __name__ == "__main__":
-    for name, doc in (("plan", plan()), ("finish", {**finish(), **paint()})):
+    for name, doc in (("plan", plan()), ("refinement", {**finish(), **paint()})):
         (HERE / f"{HERE.name}.{name}.json").write_text(json.dumps(doc, indent=1) + "\n")

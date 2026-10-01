@@ -443,6 +443,6 @@ def finish():
 if __name__ == "__main__":
     with open(f"{HERE}/{SLUG}.plan.json", "w") as handle:
         json.dump(plan(), handle, indent=2)
-    with open(f"{HERE}/{SLUG}.finish.json", "w") as handle:
+    with open(f"{HERE}/{SLUG}.refinement.json", "w") as handle:
         json.dump(finish(), handle, indent=2)
-    print(f"wrote {SLUG}.plan.json and {SLUG}.finish.json")
+    print(f"wrote {SLUG}.plan.json and {SLUG}.refinement.json")

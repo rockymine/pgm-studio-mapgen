@@ -19,6 +19,7 @@ and the walled garths the wools sit in, and everything between is grown.
 import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-gallowsholt"
 
 MOOR, CAUSEY = 11, 15          # the two plan surfaces; a top block is surface - 1
@@ -332,8 +333,10 @@ stell = hall(stack([(1, SPRUCE)], "repeat"), [GROUND_STOREY, UPPER_STOREY])
 laithe = hall(stack([(1, SPRUCE)], "repeat"), [dict(GROUND_STOREY, clear=6)])
 
 # ── what stands on the board ─────────────────────────────────────────────────────────────────────
-trees = json.load(open(os.path.join(HERE, "trees.json")))
-tree_styles = {name: trees[name] for name in ("thorn-1", "thorn-2", "thorn-3", "spar-1", "spar-2")}
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+tree_styles = {key: SHOWCASE[name]["style"] for key, name in {
+    "thorn-1": "acacia-1", "thorn-2": "acacia-3", "thorn-3": "acacia-6",
+    "spar-1": "tiny-spruce-2", "spar-2": "tiny-spruce-4"}.items()}
 
 props = [
     # the drove road: the spawn door, over the fell by the west rake, down onto the apron. One line,
@@ -447,10 +450,10 @@ finish = {
         # the causey: a rectangle in the plan and a lens in the world, its two shoulders 13 blocks
         # off each front and its two tips 25 off the gate
         "causey-15": [
-            {"after": 0, "x": 0, "z": -7},
-            {"after": 2, "x": 18, "z": 0},
-            {"after": 4, "x": 0, "z": 7},
-            {"after": 6, "x": -18, "z": 0},
+            {"after": 0, "x": 0, "z": -7, "fan": False},
+            {"after": 2, "x": 18, "z": 0, "fan": False},
+            {"after": 4, "x": 0, "z": 7, "fan": False},
+            {"after": 6, "x": -18, "z": 0, "fan": False},
         ],
     },
     # THE HOLE IS NOT SCENERY. The ring hub's four cells compile to a subtract, and a subtract is
@@ -483,5 +486,5 @@ finish = {
 
 if __name__ == "__main__":
     json.dump(plan,   open(os.path.join(HERE, f"{SLUG}.plan.json"),   "w"), indent=1)
-    json.dump(finish, open(os.path.join(HERE, f"{SLUG}.finish.json"), "w"), indent=1)
-    print(f"wrote {SLUG}.plan.json and {SLUG}.finish.json")
+    json.dump(finish, open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w"), indent=1)
+    print(f"wrote {SLUG}.plan.json and {SLUG}.refinement.json")

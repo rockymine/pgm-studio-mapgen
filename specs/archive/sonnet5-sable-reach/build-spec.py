@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Writes sonnet5-sable-reach.plan.json and sonnet5-sable-reach.finish.json.
+"""Writes sonnet5-sable-reach.plan.json and sonnet5-sable-reach.refinement.json.
 
 Two rival trading posts face each other across a tidal river mouth. Each team's site is two
 landmasses -- a main settlement island (quay, warehouse district, plaza, spawn, wool room) and a
@@ -319,9 +319,9 @@ def main():
     finish = make_finish()
     with open(os.path.join(OUT, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(plan, handle, indent=1)
-    with open(os.path.join(OUT, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(OUT, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(finish, handle, indent=1)
-    print(f"wrote {SLUG}.plan.json and {SLUG}.finish.json")
+    print(f"wrote {SLUG}.plan.json and {SLUG}.refinement.json")
 
 
 if __name__ == "__main__":

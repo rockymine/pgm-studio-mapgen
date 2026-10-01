@@ -8,7 +8,7 @@ the air over the river — so its geometry is arithmetic on a handful of named c
 are stated once below and every shape is written from them: a slab's floor, the wall that carries
 it and the stair that reaches it are three statements of one number.
 
-Output: `opus5-liminal-dtm-ii.plan.json` and `opus5-liminal-dtm-ii.finish.json` beside this file.
+Output: `opus5-liminal-dtm-ii.plan.json` and `opus5-liminal-dtm-ii.refinement.json` beside this file.
 """
 import json, os
 
@@ -876,7 +876,7 @@ finish = {
 
 
 def write():
-    for name, doc in ((f"{SLUG}.plan.json", plan), (f"{SLUG}.finish.json", finish)):
+    for name, doc in ((f"{SLUG}.plan.json", plan), (f"{SLUG}.refinement.json", finish)):
         with open(os.path.join(HERE, name), "w") as handle:
             json.dump(doc, handle, indent=1)
         print(f"  {name}")

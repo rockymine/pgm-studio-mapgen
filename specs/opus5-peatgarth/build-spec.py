@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Peatgarth — a DTM board on a worked peat moss.
 
-Writes opus5-peatgarth.plan.json and opus5-peatgarth.finish.json beside this file.
+Writes opus5-peatgarth.plan.json and opus5-peatgarth.refinement.json beside this file.
 
 The board is a lane 80 blocks across and 200 long, tapering from a full-width
 frontline to the works behind each spawn.  A 20-block void seam runs the whole
@@ -14,7 +14,6 @@ that arrives above.  The ground is finished by its angle, not by its height.
 import json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-peatgarth"
 
 # ---------------------------------------------------------------- materials
@@ -53,18 +52,16 @@ def house_shell(name):
     """A room style forked into a house prop. `beams: null` is legal in a room style and is
     not a shape the house prop reads: the store answers 500 on it rather than a refusal, so
     a building with no log ends states `block: -1`."""
-    st = style(name)
-    if not isinstance(st.get("beams"), dict):
-        st["beams"] = {"block": -1, "data": 0, "reach": 1, "any": True}
-    return st
+    return {"library": name, "kind": "house",
+            "shell": {"foundation": {"footing": None},
+                      "beams": {"block": -1, "data": 0, "reach": 1, "any": True}}}
 
 
 def style(name, footing=None):
-    """A shipped preset, forked.  Footing is null by default and that is the answer:
-    over a plate of one course it is a rim round a building with no foundation."""
-    st = json.load(open(os.path.join(REPO, "tools", "styles", name + ".json")))
-    st.setdefault("foundation", {})["footing"] = footing
-    return st
+    """A shipped preset, forked: the studio library's row of that name, its footing stated
+    beside it.  Footing is null by default and that is the answer: over a plate of one
+    course it is a rim round a building with no foundation."""
+    return {"library": name, "foundation": {"footing": footing}}
 
 # ---------------------------------------------------------------- themes
 # ground: black peat and olive moor grass.  built: grey stone.  accent: dark water.
@@ -215,7 +212,7 @@ DRESSING = {
         # of the tramway are one family rather than two styles eleven blocks apart. A
         # house prop reads `beams` and a null is not a shape it reads, so a building with
         # none states `block: -1`.
-        "peat-store":   {"kind": "house", "shell": house_shell("sb-spawn")},
+        "peat-store":   house_shell("andesite-gabled-house"),
     },
     "props": [
         # the water fills the cutting the relief already dug, so the two agree:
@@ -259,9 +256,9 @@ FINISH = {
     "addShapes": ADD_SHAPES,
     # the coast, the frontline included, drawn rather than left over from the plan's
     # rectangles.  The bend only ever moves a point inward, so the strait can only widen.
-    "bendShapes": {"fore-13": {"k": 0.24, "wander": 4, "step": 8, "seed": 5}},
+    "bendShapes": {"fore-13": {"tension": 0.24, "wander": 4, "step": 8, "seed": 5}},
     "relief": RELIEF,
-    "roomStyles": {"spawn": style("sb-spawn")},
+    "roomStyles": {"spawn": style("andesite-gabled-house")},
     "dressing": DRESSING,
     "authors": ["Opus 5"],
     "created": "2026-09-14",
@@ -269,8 +266,8 @@ FINISH = {
 
 def main():
     json.dump(PLAN,   open(os.path.join(HERE, SLUG + ".plan.json"),   "w"), indent=1)
-    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".finish.json"), "w"), indent=1)
-    print("wrote", SLUG + ".plan.json", "and", SLUG + ".finish.json")
+    json.dump(FINISH, open(os.path.join(HERE, SLUG + ".refinement.json"), "w"), indent=1)
+    print("wrote", SLUG + ".plan.json", "and", SLUG + ".refinement.json")
 
 if __name__ == "__main__":
     main()

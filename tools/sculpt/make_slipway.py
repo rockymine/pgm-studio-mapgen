@@ -57,7 +57,7 @@ BASIN, WATER, DOCK, QUAY, PORT, TOWN, HEAD, RIDGE, BACK = 6, 16, 20, 22, 22, 24,
 FLYING = HEAD + 22
 
 PLAN = {
-    "plan": 1,
+    "plan": 2,
     "meta": {"name": "Slipway"},
     "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 28, "surface": QUAY,
                 "observerY": 100},
@@ -88,20 +88,20 @@ PLAN = {
     ],
     "zones": [],
     "placements": {
-        "spawns": [{"id": "spawn-1", "piece": "spawn", "at": [2.5, 2.5], "facing": "down"}],
+        "spawns": [{"id": "spawn-1", "piece": "spawn", "at": [10.0, 10.0], "facing": "down"}],
         # Outside the spawn room and beside its door lane rather than in it: a player leaving for the front
         # passes the iron instead of walking into it. `ST2` complains that it is off the spawn piece, which
         # is the author's call — a stamped spawn has a doorway, and a chest in a doorway is in the way.
-        "iron":   [{"id": "iron-1", "piece": "fore-spawn", "at": [11.0, 2.0]}],
+        "iron":   [{"id": "iron-1", "piece": "fore-spawn", "at": [44.0, 8.0]}],
         # One goal on the dock beside the crane and one at the corner of the port's car park, which is the
         # author's own composition: the two a team defends stand at opposite corners of its ground rather
         # than side by side, and each is named for what it stands at. The dock goal is a FORWARD objective and reads outside `GO1`/`GO4`, and its own mirror is
         # under `GO3` — the bands are written for two goals in a defender's rear, and this board is the
         # measurement that says what a forward one costs. `review/opus5-slipway.md` carries the numbers.
         "destroyables": [
-            {"id": "destroyable-1", "style": "pillar-2", "at": [-6.0, 6.5], "materials": "obsidian",
+            {"id": "destroyable-1", "style": "pillar-2", "at": [-24.0, 26.0], "materials": "obsidian",
              "float": 2, "name": "Crane"},
-            {"id": "destroyable-2", "style": "pillar-2", "at": [10.75, 11.5], "materials": "obsidian",
+            {"id": "destroyable-2", "style": "pillar-2", "at": [43.0, 46.0], "materials": "obsidian",
              "float": 2, "name": "Car Park"},
         ],
     },
@@ -117,6 +117,23 @@ def style(name):
         if row.get("name") == name:
             return json.loads(row["params"])
     raise SystemExit(f"no style named {name!r} in the library")
+
+
+def risen(pattern, rise=3):
+    """`pattern` with every field that states no vertical period given one, so a course of it may face
+    sideways in a fill without reading as vertical stripes (`PT4`)."""
+    pattern = json.loads(json.dumps(pattern))
+    def walk(node):
+        if isinstance(node, dict):
+            if node.get("rise") == 0:
+                node["rise"] = rise
+            for value in node.values():
+                walk(value)
+        elif isinstance(node, list):
+            for value in node:
+                walk(value)
+    walk(pattern)
+    return pattern
 
 
 def ground(surface, wall, rim=None, fill=None):
@@ -298,9 +315,9 @@ ROADS = [
 #
 # | ground | the two it takes |
 # |---|---|
-# | the meadow — town, terrace row, hill, settlements | `@17h-hall` red-brick gable · `@sb-spawn` stone gable |
-# | the quay and the port, where the cars stand | `@17h-hall` red-brick gable · `@sn-compass-well` diorite and blue clay |
-# | the dock and the terracotta fields | `@hoar-longhall` white gable · `@sb-spawn` stone gable |
+# | the meadow — town, terrace row, hill, settlements | `17h-hall` red-brick gable · `sb-spawn` stone gable |
+# | the quay and the port, where the cars stand | `17h-hall` red-brick gable · `sn-compass-well` diorite and blue clay |
+# | the dock and the terracotta fields | `hoar-longhall` white gable · `sb-spawn` stone gable |
 #
 # The footprints are untouched: a plot is a position the board's ground was searched for, and a style change
 # is not a reason to re-search one.
@@ -311,28 +328,28 @@ ROADS = [
 # stands outside the +-10-block square a destroy goal keeps clear (`DressingScope.GoalStandoff`, `OB19`).
 HOUSES = [
     # The dock town, on the meadow: the sailmaker and the cooperage in the yard behind the crane.
-    ("sailmaker",      "@sb-spawn",        ( -69,  45), ( -60,  57), "posZ"),
-    ("cooperage",      "@17h-hall",        ( -53,  46), ( -42,  55), "negX"),
+    ("sailmaker",      {"library": "andesite-gabled-house"},        ( -69,  45), ( -60,  57), "posZ"),
+    ("cooperage",      {"library": "brick-roofed-stone-and-spruce-house"},        ( -53,  46), ( -42,  55), "negX"),
     # The quay east of the goal dock: a harbour office at the water, and a store along from it.
-    ("harbour-office", "@sn-compass-well", (   5,  19), (  16,  32), "negZ"),
-    ("quay-store",     "@17h-hall",        (  35,  21), (  44,  29), "posX"),
+    ("harbour-office", {"library": "diorite-blue-clay-pyramid-house"}, (   5,  19), (  16,  32), "negZ"),
+    ("quay-store",     {"library": "brick-roofed-stone-and-spruce-house"},        (  35,  21), (  44,  29), "posX"),
     # The row across the middle, which is the one thing joining the two towns.
-    ("arcade-w",       "@sb-spawn",        ( -12,  46), (   2,  53), "negZ"),
-    ("arcade-e",       "@17h-hall",        (  16,  46), (  30,  53), "posZ"),
+    ("arcade-w",       {"library": "andesite-gabled-house"},        ( -12,  46), (   2,  53), "negZ"),
+    ("arcade-e",       {"library": "brick-roofed-stone-and-spruce-house"},        (  16,  46), (  30,  53), "posZ"),
     # The upland: a barn on the hill's own shoulder, and the back settlement flattened into it.
-    ("granary",        "@17h-hall",        ( -40,  75), ( -29,  86), "negX"),
-    ("counting",       "@sb-spawn",        (  28,  82), (  37,  91), "posZ"),
-    ("upland-hall",    "@17h-hall",        (  55,  66), (  66,  80), "posX"),
+    ("granary",        {"library": "brick-roofed-stone-and-spruce-house"},        ( -40,  75), ( -29,  86), "negX"),
+    ("counting",       {"library": "andesite-gabled-house"},        (  28,  82), (  37,  91), "posZ"),
+    ("upland-hall",    {"library": "brick-roofed-stone-and-spruce-house"},        (  55,  66), (  66,  80), "posX"),
     # The field the balloon flies off, which the drawn coast made room on: five, so it reads as somewhere
     # rather than as the ground beside somewhere.
-    ("balloon-shed",   "@hoar-longhall",   ( -81,  18), ( -69,  27), "posZ"),
-    ("balloon-store",  "@sb-spawn",        ( -64,  20), ( -55,  28), "negZ"),
-    ("field-cottage",  "@hoar-longhall",   ( -94,  13), ( -86,  24), "posX"),
-    ("field-barn",     "@sb-spawn",        (-103, -13), ( -92,  -1), "posZ"),
-    ("field-byre",     "@hoar-longhall",   ( -79,  -8), ( -69,   1), "negX"),
+    ("balloon-shed",   {"library": "hoar-longhall"},   ( -81,  18), ( -69,  27), "posZ"),
+    ("balloon-store",  {"library": "andesite-gabled-house"},        ( -64,  20), ( -55,  28), "negZ"),
+    ("field-cottage",  {"library": "hoar-longhall"},   ( -94,  13), ( -86,  24), "posX"),
+    ("field-barn",     {"library": "andesite-gabled-house"},        (-103, -13), ( -92,  -1), "posZ"),
+    ("field-byre",     {"library": "hoar-longhall"},   ( -79,  -8), ( -69,   1), "negX"),
     # The port, beside the car park.
-    ("warehouse",      "@sn-compass-well", (  99,  18), ( 110,  32), "posZ"),
-    ("port-office",    "@17h-hall",        (  90,  39), (  99,  50), "posX"),
+    ("warehouse",      {"library": "diorite-blue-clay-pyramid-house"}, (  99,  18), ( 110,  32), "posZ"),
+    ("port-office",    {"library": "brick-roofed-stone-and-spruce-house"},        (  90,  39), (  99,  50), "posX"),
 ]
 
 
@@ -377,8 +394,8 @@ TREES = [
 
 def houses():
     return [{"id": name, "kind": "house", "seed": 40 + index, "front": front,
-             "points": [list(low), list(high)], "style": style_name}
-            for index, (name, style_name, low, high, front) in enumerate(HOUSES)]
+             "points": [list(low), list(high)], "style": house_style}
+            for index, (name, house_style, low, high, front) in enumerate(HOUSES)]
 
 
 def trees():
@@ -492,7 +509,7 @@ THEMES = {
     # greens doing one job, and a player crossing from the town to the hill to the back settlement read three
     # grounds where the board means one. The meadow is what survives, and it carries the whole upland — the
     # dock town, the terrace row, the hill, the spawn's approach and the settlements behind it.
-    "meadow": layers((style("meadow · surface"), 1), (style("dirt fractal"), 3), (style("stone fractal"), 1)),
+    "meadow": layers((risen(style("meadow · surface")), 1), (style("dirt fractal"), 3), (style("stone fractal"), 1)),
     "head":   layers((style("rust cells"), 2), (style("dirt fractal"), 3), (style("stone dark voronoi"), 1)),
     "dock":   layers((style("dirt fractal"), 2), (style("stone dark voronoi"), 1)),
 
@@ -771,7 +788,7 @@ def trades(ring, drawn, before, here, after, moved):
     return gained
 
 
-def finish(add_layers):
+def refinement(add_layers):
     # Every ground a settlement stands on is a terrace, not a slope: the docks, the quay and the port, the
     # town and the upland stand out of the relief entirely, so the relaxation bends round them and a house is
     # built on the flat. The hill and the balloon's field keep their relief, which is what they are for.
@@ -793,7 +810,7 @@ def finish(add_layers):
         # The stairs first: they are ground laid on the compiled ground, and the made things stand on both.
         "addLayers": [stairs()] + add_layers,
         # The spawn is a building rather than a bedrock box: a stamped two-storey hall with its own doorway.
-        "roomStyles": {"spawn": "@sb-spawn"},
+        "roomStyles": {"spawn": {"library": "andesite-gabled-house"}},
         # The ground the plan states is a set of plateaus; the relief is what makes it terrain. `reach` 26
         # shelves the quay into the basin over a beach rather than dropping it down a wall, and the marks
         # behind it roll the town — the two terraces excluded above stay flat inside it.
@@ -837,7 +854,7 @@ def main():
 
     add_layers, table = sculpted()
     json.dump(PLAN, open(f"{out}/{slug}.plan.json", "w"), indent=2)
-    json.dump(finish(add_layers), open(f"{out}/{slug}.finish.json", "w"), indent=2)
+    json.dump(refinement(add_layers), open(f"{out}/{slug}.refinement.json", "w"), indent=2)
 
     width = max(len(name) for name, _ in table)
     print(f"{'model':<{width}}  {'blocks':>7} {'layers':>7} {'shapes':>7} {'b/shape':>8}")

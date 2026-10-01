@@ -39,7 +39,7 @@ SPEC = f"{ROOT}/specs/opus5-weirbank/opus5-weirbank"
 # ── the board ────────────────────────────────────────────────────────────────────────────────────
 CELL = 5
 plan = {
- "plan": 1,
+ "plan": 2,
  "meta": {"name": "Weirbank"},
  "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 8, "surface": 9,
              # Absent, this is derived as surface + 15 = 24, which on this board is inside the
@@ -68,7 +68,7 @@ plan = {
  # costs nothing measurable -- GO1 3.29, GO3 93 and the goal's own 41 are identical either way.
  "zones": [{"id": "cut", "rect": [-2, -3, 4, 6], "holes": []}],
  "placements": {
-   "spawns": [{"id": "spawn-1", "piece": "spawn", "at": [1, 1], "facing": "front"}],
+   "spawns": [{"id": "spawn-1", "piece": "spawn", "at": [5, 5], "facing": "front"}],
    "wools": [], "iron": [],
    # A 3x3x3 of ender stone rather than the default 1x3x1 of obsidian. The vocabulary is six styles
    # -- pillar-1|2|3, cube-3, cube-4, column-plus -- and four materials: obsidian, emerald block,
@@ -76,7 +76,7 @@ plan = {
    # progression on a board this small and rewards a defender for arriving at all; a cube-3 is 27
    # blocks and ender stone breaks quickly, so the attack shows as it accumulates rather than in
    # three lumps.
-   "destroyables": [{"id": "destroyable-1", "piece": "moor", "at": [5, 2],
+   "destroyables": [{"id": "destroyable-1", "piece": "moor", "at": [25, 10],
                      "style": "cube-3", "materials": "ender stone"}],
    "cores": [],
  },
@@ -332,20 +332,13 @@ BOULDERS = [("err-brow",  -37, 51, "angular", 6, GNEISS),
             ("err-lane",  -53, 20, "round",   5, GNEISS),
             ("err-stone", -26, -8, "cairn",   6, GNEISS)]
 
-STYLE   = json.load(open(f"{ROOT}/tools/styles/17h-croft.json"))
-# No cobble ring at the sill. `Foundation.footing` is the course ringing the plate one block proud, and
-# null -- its own default -- is a building that meets the ground without one.
-STYLE["foundation"]["footing"] = None
-VARIANT = json.loads(json.dumps(STYLE))
-SWAP = {(4, 0): (1, 5), (98, 0): (1, 0), (98, 1): (1, 5)}     # a greyer stone, not a second family
-def repaint(n):
-    if isinstance(n, dict):
-        if n.get("kind") == "solid" and (n.get("id"), n.get("data", 0)) in SWAP:
-            n["id"], n["data"] = SWAP[(n["id"], n.get("data", 0))]; return
-        for v in n.values(): repaint(v)
-    elif isinstance(n, list):
-        for v in n: repaint(v)
-repaint(VARIANT)
+# The library's `17h-croft`, with no cobble ring at the sill. `Foundation.footing` is the course ringing the
+# plate one block proud, and null -- its own default -- is a building that meets the ground without one.
+STYLE   = {"library": "brick-roofed-stone-cottage", "foundation": {"footing": None}}
+# A greyer stone, not a second family: andesite and stone where the croft's wall is cobble and stone brick,
+# its bands a list and so stated whole.
+VARIANT = {**STYLE, "wall": {"stack": {"bands": [{"material": ANDESITE, "thickness": 2},
+                                                 {"material": STONE, "thickness": 3}]}}}
 
 DRESSING = {"props": [
   # The tarn. Its ring is the hollow the relief already cut, so the water is the shape of the ground
@@ -381,14 +374,14 @@ finish = {
  "addShapes": shapes,
  "addLayers": layers,
  "relief": RELIEF,
- "roomStyles": {"spawn": "@showcase-hall"},
+ "roomStyles": {"spawn": {"library": "brick-roofed-stone-and-dark-oak-house"}},
  "dressing": DRESSING,
  "authors": ["Opus 5"],
  "created": "2026-08-31",
 }
 
 json.dump(plan,   open(SPEC + ".plan.json", "w"),   indent=1)
-json.dump(finish, open(SPEC + ".finish.json", "w"), indent=1)
+json.dump(finish, open(SPEC + ".refinement.json", "w"), indent=1)
 print(f"wrote plan and finish: {len(shapes)} authored shapes, {len(layers)} layers, "
       f"{len(DRESSING['props'])} props "
       f"({sum(1 for p in DRESSING['props'] if p['kind'] == 'tree')} template trees, 0 grown)")

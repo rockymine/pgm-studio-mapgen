@@ -5,24 +5,24 @@
 
 **A studio seeds its own library at startup and nothing else.** `LibrarySeed` runs on every boot and is
 idempotent, so the materials, the house presets and parts, the themes, the biomes, the four erratic
-boulders and the six vanilla tree recipes are always there. Two things this repository depends on are
+boulders and the seven vanilla tree recipes are always there. Two things this repository depends on are
 not, and this puts both in.
 
 **The technique cards' boards.** A card says *open it in the studio as `technique-<name>`*, which is only
 true on a database somebody has driven it into — thirty boards over twenty-seven cards. A card's own files
 say which of two roads it takes and nothing else decides:
 
-    <name>.layout.json [+ <name>.intent.json]     stored directly, the shape the Sketch tool writes
-    <variant>.plan.json + <variant>.finish.json   driven through `tools/drive.py`, the same road a spec
-                                                  takes, because a plan has to be compiled and patched
+    <name>.layout.json [+ <name>.intent.json]         stored directly, the shape the Sketch tool writes
+    <variant>.plan.json + <variant>.refinement.json   driven through `tools/drive.py`, the same road a spec
+                                                      takes, because a plan has to be compiled and refined
 
-A plan with no finish beside it is not a board. `taking-over-a-composed-board/pinned.plan.json` is the
+A plan with no refinement beside it is not a board. `taking-over-a-composed-board/pinned.plan.json` is the
 composer's own answer, committed so the card's starting point is reproducible, and it is the one plan in
 `techniques/` that is not driven.
 
 **The copied trees.** `corpus/tree-showcase` is a world of hand-built trees, and the studio's
 `tools/seed-trees.cs` cuts each one out of it into the tree library as a `copied` recipe. Without them a
-studio offers the six vanilla species alone, and the warmup skill tells an author to prefer a copied tree
+studio offers the seven vanilla species alone, and the warmup skill tells an author to prefer a copied tree
 over the vanilla stamp — so a run against an unseeded studio is told to reach for something not there.
 `PGM_STUDIO_REPO` says where the studio's checkout is, and `--no-trees` skips this half.
 
@@ -97,11 +97,11 @@ def boards():
             if not name.endswith(".plan.json"):
                 continue
             base = name[: -len(".plan.json")]
-            if f"{base}.finish.json" not in here:
-                continue                       # a plan with no finish is not a board — see the docstring
+            if f"{base}.refinement.json" not in here:
+                continue                       # a plan with no refinement is not a board — see the docstring
             found.append((card, f"{prefix}{base}", "spec",
                           {"plan": os.path.join(folder, name),
-                           "finish": os.path.join(folder, f"{base}.finish.json"), "base": base}))
+                           "refinement": os.path.join(folder, f"{base}.refinement.json"), "base": base}))
     return found
 
 
@@ -128,7 +128,7 @@ def drive(slug, files):
     with tempfile.TemporaryDirectory() as scratch:
         spec = os.path.join(scratch, files["base"])
         os.makedirs(spec)
-        for key in ("plan", "finish"):
+        for key in ("plan", "refinement"):
             shutil.copy(files[key], spec)
         done = subprocess.run(
             [sys.executable, os.path.join(ROOT, "tools", "drive.py"), spec, slug,

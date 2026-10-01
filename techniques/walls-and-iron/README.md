@@ -68,7 +68,7 @@ every station has and no `walls` entry put there.
 ## A team is an orbit image, so a non-symmetric plan has one
 
 **`globals.symmetry: "none"` compiles to one team however many spawn markers the plan carries.** Two of
-them land on the same team, and `POST /map/from-documents` refuses the result — **`RQ5 — id
+them land on the same team, and `PUT /map/{slug}/source` refuses the result — **`RQ5 — id
 'red-spawn-point' already in use`**. A two-team board comes from symmetry; a second spawn marker does not
 make one.
 

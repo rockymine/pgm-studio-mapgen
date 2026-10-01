@@ -138,8 +138,8 @@ landform's question and a building does not have one.
 - `slopes.txt` — 15,192 cells walked, 292 scrambled, 1,412 barrier; five faces, the largest 322 cells in the
   `stair-short` slot.
 - `census.txt` — three themes of the four stated, and the three borders between them.
-- `stacking-layers.layout.json` — the one document the board was stored from, posted to
-  `POST /api/map/from-documents` with an empty intent and no plan. The store answers `SK10` once and `SK11`
+- `stacking-layers.layout.json` — the one document the board is stored from, stated to
+  `PUT /api/map/{slug}/source` with an empty intent and no plan. The store answers `SK10` once and `SK11`
   eight times, which is most of what this card claims.
 
 Renders: `section-row1.png` and `section-row2.png` — each an orthographic cut **through** the galleries, which

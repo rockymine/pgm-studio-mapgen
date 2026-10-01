@@ -1,0 +1,7391 @@
+{
+ "addLayers": [
+  {
+   "id": "yard-wall",
+   "name": "the steading wall",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "steading",
+   "shapes": [
+    {
+     "id": "yard-wall-west",
+     "type": "polyline",
+     "operation": "add",
+     "keepClear": true,
+     "radius": 1.0,
+     "vertices": [
+      [
+       -19,
+       91
+      ],
+      [
+       -20,
+       97
+      ],
+      [
+       -18,
+       103
+      ],
+      [
+       -13,
+       106
+      ]
+     ],
+     "stroke_edge": "solid",
+     "base_height": 2,
+     "floor": 19,
+     "material": {
+      "kind": "cell",
+      "seed": 4151,
+      "cellSize": 4,
+      "jitter": 45,
+      "warp": 1,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 2
+     }
+    },
+    {
+     "id": "yard-wall-east",
+     "type": "polyline",
+     "operation": "add",
+     "keepClear": true,
+     "radius": 1.0,
+     "vertices": [
+      [
+       3,
+       107
+      ],
+      [
+       8,
+       104
+      ],
+      [
+       11,
+       98
+      ],
+      [
+       10,
+       92
+      ]
+     ],
+     "stroke_edge": "solid",
+     "base_height": 2,
+     "floor": 19,
+     "material": {
+      "kind": "cell",
+      "seed": 4151,
+      "cellSize": 4,
+      "jitter": 45,
+      "warp": 1,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 2
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "yard-wall",
+     "name": "the steading wall",
+     "mirrors": true,
+     "shapeIds": [
+      "yard-wall-west",
+      "yard-wall-east"
+     ]
+    }
+   ]
+  }
+ ],
+ "addShapes": [
+  {
+   "id": "combe-floor",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     -4.78,
+     46.0
+    ],
+    [
+     -3.65,
+     52.48
+    ],
+    [
+     -8.67,
+     56.62
+    ],
+    [
+     -14.43,
+     58.94
+    ],
+    [
+     -20.14,
+     56.91
+    ],
+    [
+     -24.33,
+     53.38
+    ],
+    [
+     -30.08,
+     49.47
+    ],
+    [
+     -26.87,
+     43.32
+    ],
+    [
+     -25.02,
+     38.01
+    ],
+    [
+     -21.41,
+     31.75
+    ],
+    [
+     -14.72,
+     35.49
+    ],
+    [
+     -8.27,
+     34.8
+    ],
+    [
+     -2.69,
+     39.01
+    ]
+   ],
+   "base_height": 9,
+   "floor": 0,
+   "theme": "combe"
+  },
+  {
+   "id": "steading-yard",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     -20.5,
+     88.69
+    ],
+    [
+     -13.96,
+     88.88
+    ],
+    [
+     -4.83,
+     91.8
+    ],
+    [
+     2.79,
+     91.49
+    ],
+    [
+     10.29,
+     89.15
+    ],
+    [
+     11.64,
+     94.77
+    ],
+    [
+     11.93,
+     97.33
+    ],
+    [
+     8.8,
+     101.95
+    ],
+    [
+     8.97,
+     105.87
+    ],
+    [
+     0.63,
+     104.67
+    ],
+    [
+     -4.47,
+     106.64
+    ],
+    [
+     -12.28,
+     106.66
+    ],
+    [
+     -18.73,
+     105.58
+    ],
+    [
+     -20.99,
+     100.66
+    ],
+    [
+     -21.59,
+     97.08
+    ],
+    [
+     -21.64,
+     95.03
+    ]
+   ],
+   "base_height": 19,
+   "floor": 0,
+   "theme": "yard"
+  }
+ ],
+ "relief": {
+  "*": {
+   "base": 9,
+   "reach": 0,
+   "step": 1,
+   "landform": "rolling",
+   "grain": {
+    "amplitude": 1.5,
+    "scale": 20,
+    "seed": 4103
+   },
+   "marks": [
+    {
+     "id": "strand",
+     "kind": "area",
+     "bevel": 2,
+     "ring": [
+      [
+       -25.56,
+       3.53
+      ],
+      [
+       -10.71,
+       2.05
+      ],
+      [
+       -2.47,
+       5.73
+      ],
+      [
+       13.07,
+       4.32
+      ],
+      [
+       24.41,
+       1.67
+      ],
+      [
+       24.06,
+       6.69
+      ],
+      [
+       23.71,
+       15.17
+      ],
+      [
+       28.49,
+       18.5
+      ],
+      [
+       26.5,
+       24.71
+      ],
+      [
+       11.77,
+       24.14
+      ],
+      [
+       -2.16,
+       22.04
+      ],
+      [
+       -13.93,
+       24.53
+      ],
+      [
+       -26.59,
+       24.42
+      ],
+      [
+       -27.74,
+       18.74
+      ],
+      [
+       -24.12,
+       12.15
+      ],
+      [
+       -24.88,
+       10.32
+      ]
+     ],
+     "h": 9
+    },
+    {
+     "id": "shoulder",
+     "kind": "area",
+     "bevel": 4,
+     "ring": [
+      [
+       26.43,
+       62.0
+      ],
+      [
+       24.75,
+       70.2
+      ],
+      [
+       17.64,
+       74.34
+      ],
+      [
+       9.91,
+       76.53
+      ],
+      [
+       4.23,
+       70.96
+      ],
+      [
+       -1.09,
+       65.84
+      ],
+      [
+       0.41,
+       58.6
+      ],
+      [
+       4.34,
+       53.16
+      ],
+      [
+       10.21,
+       49.54
+      ],
+      [
+       17.25,
+       50.51
+      ],
+      [
+       24.88,
+       53.72
+      ]
+     ],
+     "h": 17
+    },
+    {
+     "id": "steading-apron",
+     "kind": "area",
+     "bevel": 4,
+     "ring": [
+      [
+       -23.69,
+       87.62
+      ],
+      [
+       -14.2,
+       88.18
+      ],
+      [
+       0.28,
+       87.5
+      ],
+      [
+       11.15,
+       90.19
+      ],
+      [
+       26.8,
+       89.62
+      ],
+      [
+       27.38,
+       92.55
+      ],
+      [
+       24.98,
+       99.26
+      ],
+      [
+       25.33,
+       106.98
+      ],
+      [
+       26.23,
+       112.17
+      ],
+      [
+       11.54,
+       110.57
+      ],
+      [
+       -2.14,
+       109.89
+      ],
+      [
+       -10.63,
+       112.71
+      ],
+      [
+       -27.74,
+       111.39
+      ],
+      [
+       -23.83,
+       103.71
+      ],
+      [
+       -27.92,
+       102.23
+      ],
+      [
+       -28.47,
+       96.12
+      ]
+     ],
+     "h": 19
+    },
+    {
+     "id": "combe-pan",
+     "kind": "area",
+     "bevel": 5,
+     "ring": [
+      [
+       -2.27,
+       46.0
+      ],
+      [
+       -5.33,
+       51.6
+      ],
+      [
+       -8.38,
+       57.04
+      ],
+      [
+       -14.45,
+       58.8
+      ],
+      [
+       -19.9,
+       56.28
+      ],
+      [
+       -23.7,
+       52.83
+      ],
+      [
+       -26.18,
+       48.51
+      ],
+      [
+       -29.25,
+       42.73
+      ],
+      [
+       -23.18,
+       39.64
+      ],
+      [
+       -20.77,
+       33.41
+      ],
+      [
+       -14.81,
+       36.19
+      ],
+      [
+       -10.49,
+       38.01
+      ],
+      [
+       -5.06,
+       40.26
+      ]
+     ],
+     "h": 7
+    }
+   ],
+   "pushes": [
+    {
+     "id": "nab",
+     "ring": [
+      [
+       22.84,
+       28.0
+      ],
+      [
+       21.11,
+       33.13
+      ],
+      [
+       16.37,
+       35.76
+      ],
+      [
+       11.45,
+       34.14
+      ],
+      [
+       6.62,
+       31.05
+      ],
+      [
+       7.08,
+       25.12
+      ],
+      [
+       10.83,
+       20.78
+      ],
+      [
+       16.35,
+       20.34
+      ],
+      [
+       21.31,
+       22.71
+      ]
+     ],
+     "amount": 11,
+     "falloff": 11,
+     "roughness": 1.2,
+     "crown": 4,
+     "seed": 4122
+    }
+   ]
+  }
+ },
+ "themes": {
+  "down": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 2,
+             "data": 0
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ],
+          "ending": "repeat"
+         },
+         "axis": "depth"
+        },
+        "thickness": 20
+       },
+       {
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ],
+          "ending": "repeat"
+         },
+         "axis": "depth"
+        },
+        "thickness": 18
+       },
+       {
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "seed": 4131,
+             "cellSize": 7,
+             "jitter": 45,
+             "warp": 1,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 24,
+               "data": 2
+              }
+             ],
+             "rise": 5
+            },
+            "thickness": 3
+           }
+          ],
+          "ending": "repeat"
+         },
+         "axis": "depth"
+        },
+        "thickness": 52
+       }
+      ],
+      "ending": "repeat"
+     },
+     "axis": "slope"
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "cell",
+    "seed": 4131,
+    "cellSize": 7,
+    "jitter": 45,
+    "warp": 1,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 24,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 24,
+      "data": 2
+     }
+    ],
+    "rise": 5
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 24,
+    "data": 0
+   }
+  },
+  "combe": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "cell",
+         "seed": 4132,
+         "cellSize": 6,
+         "jitter": 45,
+         "warp": 1,
+         "palette": [
+          {
+           "kind": "solid",
+           "id": 13,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 3,
+           "data": 1
+          }
+         ],
+         "rise": 0
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        },
+        "thickness": 2
+       }
+      ],
+      "ending": "repeat"
+     },
+     "axis": "depth"
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "cell",
+    "seed": 4131,
+    "cellSize": 7,
+    "jitter": 45,
+    "warp": 1,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 24,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 24,
+      "data": 2
+     }
+    ],
+    "rise": 5
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 24,
+    "data": 0
+   }
+  },
+  "yard": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "boundary",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "cell",
+         "seed": 4134,
+         "cellSize": 5,
+         "jitter": 45,
+         "warp": 1,
+         "palette": [
+          {
+           "kind": "solid",
+           "id": 4,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 5
+          },
+          {
+           "kind": "solid",
+           "id": 98,
+           "data": 0
+          }
+         ],
+         "rise": 0
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 1,
+         "data": 0
+        },
+        "thickness": 2
+       }
+      ],
+      "ending": "repeat"
+     },
+     "axis": "depth"
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "cell",
+    "seed": 4133,
+    "cellSize": 6,
+    "jitter": 45,
+    "warp": 1,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     }
+    ],
+    "rise": 4
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 24,
+    "data": 0
+   }
+  }
+ },
+ "mapTheme": "down",
+ "biome": {
+  "kind": "solid",
+  "id": 1
+ },
+ "roomStyles": {
+  "wool": {
+   "foundation": {
+    "plate": {
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 4,
+         "data": 0
+        },
+        "thickness": 1
+       }
+      ],
+      "ending": "repeat"
+     },
+     "extent": 1
+    },
+    "surface": {
+     "field": null,
+     "border": null,
+     "borderWidth": 1,
+     "inlay": null,
+     "inlayInset": 2,
+     "isPlain": true
+    },
+    "footing": null
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 2,
+    "slab": 126,
+    "slabData": 1,
+    "overhang": 1,
+    "ridgeCap": false,
+    "hole": false,
+    "body": {
+     "kind": "solid",
+     "id": 5,
+     "data": 1
+    },
+    "verge": {
+     "kind": "solid",
+     "id": 5,
+     "data": 5
+    },
+    "gable": null,
+    "gableWindows": {
+     "form": "none",
+     "block": 102,
+     "hostBlock": -1,
+     "hostData": 0,
+     "data": 0,
+     "sill": 2,
+     "width": 2,
+     "height": 2,
+     "spacing": 3
+    }
+   },
+   "wall": {
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ],
+     "ending": "repeat"
+    },
+    "extent": 5
+   },
+   "post": {
+    "kind": "solid",
+    "id": 17,
+    "data": 1
+   },
+   "windows": {
+    "form": "none",
+    "block": 102,
+    "hostBlock": -1,
+    "hostData": 0,
+    "data": 0,
+    "sill": 2,
+    "width": 2,
+    "height": 2,
+    "spacing": 3
+   },
+   "storeys": [
+    {
+     "clear": 7,
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 4,
+          "data": 0
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "cell",
+          "seed": 4191,
+          "cellSize": 3,
+          "jitter": 45,
+          "warp": 1,
+          "palette": [
+           {
+            "kind": "solid",
+            "id": 5,
+            "data": 1
+           },
+           {
+            "kind": "solid",
+            "id": 5,
+            "data": 5
+           }
+          ],
+          "rise": 2
+         },
+         "thickness": 5
+        },
+        {
+         "material": {
+          "kind": "laidLog",
+          "id": 17,
+          "data": 1
+         },
+         "thickness": 1
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 7
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "windows": {
+      "form": "arched",
+      "block": 134,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 2,
+      "width": 2,
+      "height": 2,
+      "spacing": 3
+     },
+     "surface": {
+      "field": null,
+      "border": null,
+      "borderWidth": 1,
+      "inlay": null,
+      "inlayInset": 2,
+      "isPlain": true
+     },
+     "deck": null,
+     "headroom": 7
+    }
+   ],
+   "porch": null,
+   "front": null,
+   "beams": {
+    "block": 17,
+    "data": 1,
+    "reach": 1,
+    "any": true
+   },
+   "doorway": {
+    "door": "air",
+    "head": {
+     "form": "arched",
+     "block": 134,
+     "fill": "upperSlab",
+     "fillBlock": 126,
+     "fillData": 1
+    },
+    "width": 2,
+    "height": 3
+   }
+  },
+  "spawn": {
+   "foundation": {
+    "plate": {
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 4,
+         "data": 0
+        },
+        "thickness": 1
+       }
+      ],
+      "ending": "repeat"
+     },
+     "extent": 1
+    },
+    "surface": {
+     "field": null,
+     "border": null,
+     "borderWidth": 1,
+     "inlay": null,
+     "inlayInset": 2,
+     "isPlain": true
+    },
+    "footing": null
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 2,
+    "slab": 126,
+    "slabData": 1,
+    "overhang": 1,
+    "ridgeCap": false,
+    "hole": false,
+    "body": {
+     "kind": "solid",
+     "id": 5,
+     "data": 1
+    },
+    "verge": {
+     "kind": "solid",
+     "id": 5,
+     "data": 5
+    },
+    "gable": null,
+    "gableWindows": {
+     "form": "none",
+     "block": 102,
+     "hostBlock": -1,
+     "hostData": 0,
+     "data": 0,
+     "sill": 2,
+     "width": 2,
+     "height": 2,
+     "spacing": 3
+    }
+   },
+   "wall": {
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ],
+     "ending": "repeat"
+    },
+    "extent": 5
+   },
+   "post": {
+    "kind": "solid",
+    "id": 17,
+    "data": 1
+   },
+   "windows": {
+    "form": "none",
+    "block": 102,
+    "hostBlock": -1,
+    "hostData": 0,
+    "data": 0,
+    "sill": 2,
+    "width": 2,
+    "height": 2,
+    "spacing": 3
+   },
+   "storeys": [
+    {
+     "clear": 7,
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 4,
+          "data": 0
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "cell",
+          "seed": 4191,
+          "cellSize": 3,
+          "jitter": 45,
+          "warp": 1,
+          "palette": [
+           {
+            "kind": "solid",
+            "id": 5,
+            "data": 1
+           },
+           {
+            "kind": "solid",
+            "id": 5,
+            "data": 5
+           }
+          ],
+          "rise": 2
+         },
+         "thickness": 5
+        },
+        {
+         "material": {
+          "kind": "laidLog",
+          "id": 17,
+          "data": 1
+         },
+         "thickness": 1
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 7
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "windows": {
+      "form": "arched",
+      "block": 134,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 2,
+      "width": 2,
+      "height": 2,
+      "spacing": 3
+     },
+     "surface": {
+      "field": null,
+      "border": null,
+      "borderWidth": 1,
+      "inlay": null,
+      "inlayInset": 2,
+      "isPlain": true
+     },
+     "deck": null,
+     "headroom": 7
+    }
+   ],
+   "porch": null,
+   "front": null,
+   "beams": {
+    "block": 17,
+    "data": 1,
+    "reach": 1,
+    "any": true
+   },
+   "doorway": {
+    "door": "air",
+    "head": {
+     "form": "arched",
+     "block": 134,
+     "fill": "upperSlab",
+     "fillBlock": 126,
+     "fillData": 1
+    },
+    "width": 2,
+    "height": 3
+   }
+  }
+ },
+ "dressing": {
+  "props": [
+   {
+    "kind": "stroke",
+    "id": "steading-track",
+    "seed": 4171,
+    "points": [
+     [
+      -5,
+      94
+     ],
+     [
+      -3,
+      86
+     ],
+     [
+      2,
+      78
+     ],
+     [
+      8,
+      70
+     ],
+     [
+      11,
+      66
+     ]
+    ],
+    "radius": 2,
+    "style": "solid",
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 4162,
+     "cellSize": 3,
+     "jitter": 45,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    }
+   },
+   {
+    "kind": "stroke",
+    "id": "forward-track",
+    "seed": 4172,
+    "points": [
+     [
+      12,
+      54
+     ],
+     [
+      11,
+      42
+     ],
+     [
+      8,
+      30
+     ],
+     [
+      4,
+      18
+     ],
+     [
+      2,
+      10
+     ]
+    ],
+    "radius": 2,
+    "style": "solid",
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 4162,
+     "cellSize": 3,
+     "jitter": 45,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    }
+   },
+   {
+    "kind": "fluid",
+    "id": "dew-pond",
+    "seed": 4173,
+    "shape": "pool",
+    "points": [
+     [
+      -10.36,
+      46.0
+     ],
+     [
+      -11.5,
+      49.78
+     ],
+     [
+      -14.77,
+      53.0
+     ],
+     [
+      -18.45,
+      50.25
+     ],
+     [
+      -21.31,
+      47.93
+     ],
+     [
+      -22.39,
+      43.67
+     ],
+     [
+      -18.92,
+      40.93
+     ],
+     [
+      -14.81,
+      39.22
+     ],
+     [
+      -11.95,
+      42.6
+     ]
+    ],
+    "radius": 2,
+    "depth": 2,
+    "shore": 3,
+    "shoreWander": true,
+    "bank": {
+     "kind": "cell",
+     "seed": 4175,
+     "cellSize": 4,
+     "jitter": 45,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 82,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      }
+     ],
+     "rise": 0
+    }
+   },
+   {
+    "kind": "house",
+    "id": "fold-house",
+    "seed": 4176,
+    "wings": [
+     {
+      "corners": [
+       [
+        -24,
+        62
+       ],
+       [
+        -14,
+        69
+       ]
+      ],
+      "spec": {
+       "storeysHigh": 2
+      }
+     }
+    ],
+    "front": "posX",
+    "style": "fold-house"
+   },
+   {
+    "kind": "house",
+    "id": "fold-byre",
+    "seed": 4177,
+    "wings": [
+     {
+      "corners": [
+       [
+        -24,
+        76
+       ],
+       [
+        -16,
+        82
+       ]
+      ],
+      "spec": {
+       "storeysHigh": 1
+      }
+     }
+    ],
+    "front": "posX",
+    "style": "fold-house"
+   },
+   {
+    "kind": "tree",
+    "id": "beech-0",
+    "seed": 4200,
+    "x": -10,
+    "z": 52,
+    "style": "beech"
+   },
+   {
+    "kind": "tree",
+    "id": "beech-1",
+    "seed": 4201,
+    "x": -4,
+    "z": 57,
+    "style": "beech"
+   },
+   {
+    "kind": "tree",
+    "id": "beech-2",
+    "seed": 4202,
+    "x": -9,
+    "z": 63,
+    "style": "beech"
+   },
+   {
+    "kind": "tree",
+    "id": "beech-3",
+    "seed": 4203,
+    "x": -2,
+    "z": 68,
+    "style": "beech"
+   },
+   {
+    "kind": "tree",
+    "id": "beech-4",
+    "seed": 4204,
+    "x": -4,
+    "z": 48,
+    "style": "beech"
+   },
+   {
+    "kind": "tree",
+    "id": "thorn-0",
+    "seed": 4220,
+    "x": -20,
+    "z": 30,
+    "style": "thorn"
+   },
+   {
+    "kind": "tree",
+    "id": "thorn-1",
+    "seed": 4221,
+    "x": -8,
+    "z": 34,
+    "style": "thorn"
+   },
+   {
+    "kind": "boulder",
+    "id": "flint-0",
+    "seed": 4240,
+    "x": -4,
+    "z": 30,
+    "style": "flint-rock"
+   },
+   {
+    "kind": "boulder",
+    "id": "flint-1",
+    "seed": 4241,
+    "x": -22,
+    "z": 56,
+    "style": "flint-rock"
+   },
+   {
+    "kind": "boulder",
+    "id": "flint-2",
+    "seed": 4242,
+    "x": 12,
+    "z": 28,
+    "style": "flint-rock"
+   },
+   {
+    "kind": "flora",
+    "id": "flora",
+    "seed": 4180,
+    "points": [
+     [
+      -23.37,
+      6.04
+     ],
+     [
+      -11.93,
+      6.14
+     ],
+     [
+      -0.86,
+      7.11
+     ],
+     [
+      10.38,
+      8.72
+     ],
+     [
+      25.48,
+      8.81
+     ],
+     [
+      23.47,
+      30.62
+     ],
+     [
+      25.76,
+      56.63
+     ],
+     [
+      25.5,
+      82.53
+     ],
+     [
+      24.66,
+      107.44
+     ],
+     [
+      12.49,
+      106.22
+     ],
+     [
+      -1.14,
+      104.39
+     ],
+     [
+      -12.25,
+      107.47
+     ],
+     [
+      -24.67,
+      105.53
+     ],
+     [
+      -24.11,
+      80.54
+     ],
+     [
+      -24.83,
+      57.69
+     ],
+     [
+      -23.67,
+      32.08
+     ]
+    ],
+    "spec": {
+     "coverage": 0.22,
+     "scale": 26,
+     "octaves": 3,
+     "fernShare": 0.12,
+     "flowerShare": 0.1,
+     "flowerScale": 18,
+     "tallShare": 0.05
+    }
+   }
+  ],
+  "styles": {
+   "beech": {
+    "kind": "tree",
+    "form": "copied",
+    "body": [
+     [
+      1,
+      0,
+      -1,
+      5,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      5,
+      1
+     ],
+     [
+      1,
+      0,
+      0,
+      5,
+      1
+     ],
+     [
+      0,
+      0,
+      1,
+      5,
+      1
+     ],
+     [
+      1,
+      0,
+      1,
+      5,
+      1
+     ],
+     [
+      2,
+      0,
+      1,
+      5,
+      1
+     ],
+     [
+      0,
+      1,
+      0,
+      17,
+      12
+     ],
+     [
+      1,
+      1,
+      0,
+      17,
+      12
+     ],
+     [
+      1,
+      1,
+      1,
+      17,
+      12
+     ],
+     [
+      -1,
+      2,
+      -2,
+      18,
+      12
+     ],
+     [
+      -3,
+      2,
+      -1,
+      18,
+      12
+     ],
+     [
+      -2,
+      2,
+      -1,
+      18,
+      12
+     ],
+     [
+      3,
+      2,
+      -1,
+      18,
+      12
+     ],
+     [
+      -2,
+      2,
+      0,
+      18,
+      12
+     ],
+     [
+      1,
+      2,
+      0,
+      17,
+      12
+     ],
+     [
+      2,
+      2,
+      0,
+      17,
+      12
+     ],
+     [
+      4,
+      2,
+      0,
+      18,
+      12
+     ],
+     [
+      5,
+      2,
+      0,
+      18,
+      12
+     ],
+     [
+      1,
+      2,
+      1,
+      17,
+      12
+     ],
+     [
+      4,
+      2,
+      1,
+      18,
+      4
+     ],
+     [
+      6,
+      2,
+      1,
+      18,
+      12
+     ],
+     [
+      -2,
+      2,
+      2,
+      18,
+      4
+     ],
+     [
+      -1,
+      2,
+      2,
+      18,
+      12
+     ],
+     [
+      3,
+      2,
+      2,
+      18,
+      4
+     ],
+     [
+      4,
+      2,
+      2,
+      18,
+      12
+     ],
+     [
+      -1,
+      2,
+      3,
+      18,
+      4
+     ],
+     [
+      3,
+      2,
+      3,
+      18,
+      12
+     ],
+     [
+      4,
+      2,
+      3,
+      18,
+      12
+     ],
+     [
+      5,
+      2,
+      3,
+      18,
+      12
+     ],
+     [
+      0,
+      3,
+      -4,
+      18,
+      12
+     ],
+     [
+      2,
+      3,
+      -4,
+      18,
+      12
+     ],
+     [
+      -2,
+      3,
+      -3,
+      18,
+      4
+     ],
+     [
+      0,
+      3,
+      -3,
+      18,
+      4
+     ],
+     [
+      3,
+      3,
+      -3,
+      18,
+      12
+     ],
+     [
+      5,
+      3,
+      -3,
+      18,
+      12
+     ],
+     [
+      -2,
+      3,
+      -2,
+      18,
+      12
+     ],
+     [
+      1,
+      3,
+      -2,
+      18,
+      12
+     ],
+     [
+      3,
+      3,
+      -2,
+      18,
+      12
+     ],
+     [
+      4,
+      3,
+      -2,
+      18,
+      12
+     ],
+     [
+      -3,
+      3,
+      -1,
+      18,
+      12
+     ],
+     [
+      -1,
+      3,
+      -1,
+      18,
+      12
+     ],
+     [
+      1,
+      3,
+      -1,
+      18,
+      12
+     ],
+     [
+      5,
+      3,
+      -1,
+      18,
+      12
+     ],
+     [
+      6,
+      3,
+      -1,
+      18,
+      12
+     ],
+     [
+      -3,
+      3,
+      0,
+      18,
+      12
+     ],
+     [
+      -2,
+      3,
+      0,
+      18,
+      12
+     ],
+     [
+      -1,
+      3,
+      0,
+      18,
+      12
+     ],
+     [
+      2,
+      3,
+      0,
+      17,
+      12
+     ],
+     [
+      3,
+      3,
+      0,
+      18,
+      12
+     ],
+     [
+      5,
+      3,
+      0,
+      18,
+      12
+     ],
+     [
+      6,
+      3,
+      0,
+      18,
+      12
+     ],
+     [
+      -3,
+      3,
+      1,
+      18,
+      12
+     ],
+     [
+      -1,
+      3,
+      1,
+      18,
+      12
+     ],
+     [
+      1,
+      3,
+      1,
+      17,
+      12
+     ],
+     [
+      2,
+      3,
+      1,
+      17,
+      12
+     ],
+     [
+      6,
+      3,
+      1,
+      18,
+      12
+     ],
+     [
+      7,
+      3,
+      1,
+      18,
+      12
+     ],
+     [
+      0,
+      3,
+      2,
+      18,
+      12
+     ],
+     [
+      4,
+      3,
+      2,
+      18,
+      12
+     ],
+     [
+      5,
+      3,
+      2,
+      18,
+      12
+     ],
+     [
+      -1,
+      3,
+      3,
+      18,
+      4
+     ],
+     [
+      0,
+      3,
+      3,
+      18,
+      12
+     ],
+     [
+      1,
+      3,
+      3,
+      18,
+      12
+     ],
+     [
+      2,
+      3,
+      3,
+      18,
+      12
+     ],
+     [
+      4,
+      3,
+      3,
+      18,
+      12
+     ],
+     [
+      6,
+      3,
+      3,
+      18,
+      12
+     ],
+     [
+      -2,
+      3,
+      4,
+      18,
+      4
+     ],
+     [
+      -1,
+      3,
+      4,
+      18,
+      4
+     ],
+     [
+      1,
+      3,
+      4,
+      18,
+      4
+     ],
+     [
+      2,
+      3,
+      4,
+      18,
+      12
+     ],
+     [
+      3,
+      3,
+      4,
+      18,
+      12
+     ],
+     [
+      5,
+      3,
+      4,
+      18,
+      12
+     ],
+     [
+      1,
+      3,
+      5,
+      18,
+      4
+     ],
+     [
+      2,
+      3,
+      5,
+      18,
+      4
+     ],
+     [
+      0,
+      4,
+      -5,
+      18,
+      12
+     ],
+     [
+      1,
+      4,
+      -5,
+      18,
+      12
+     ],
+     [
+      -2,
+      4,
+      -4,
+      18,
+      4
+     ],
+     [
+      -1,
+      4,
+      -4,
+      18,
+      12
+     ],
+     [
+      1,
+      4,
+      -4,
+      18,
+      12
+     ],
+     [
+      3,
+      4,
+      -4,
+      18,
+      12
+     ],
+     [
+      4,
+      4,
+      -4,
+      18,
+      12
+     ],
+     [
+      -1,
+      4,
+      -3,
+      18,
+      12
+     ],
+     [
+      0,
+      4,
+      -3,
+      18,
+      12
+     ],
+     [
+      1,
+      4,
+      -3,
+      18,
+      12
+     ],
+     [
+      2,
+      4,
+      -3,
+      18,
+      12
+     ],
+     [
+      3,
+      4,
+      -3,
+      18,
+      12
+     ],
+     [
+      4,
+      4,
+      -3,
+      18,
+      12
+     ],
+     [
+      5,
+      4,
+      -3,
+      18,
+      12
+     ],
+     [
+      6,
+      4,
+      -3,
+      18,
+      12
+     ],
+     [
+      -3,
+      4,
+      -2,
+      18,
+      12
+     ],
+     [
+      -2,
+      4,
+      -2,
+      18,
+      12
+     ],
+     [
+      0,
+      4,
+      -2,
+      18,
+      12
+     ],
+     [
+      1,
+      4,
+      -2,
+      18,
+      12
+     ],
+     [
+      2,
+      4,
+      -2,
+      18,
+      12
+     ],
+     [
+      3,
+      4,
+      -2,
+      18,
+      12
+     ],
+     [
+      5,
+      4,
+      -2,
+      18,
+      12
+     ],
+     [
+      -4,
+      4,
+      -1,
+      18,
+      4
+     ],
+     [
+      -1,
+      4,
+      -1,
+      18,
+      4
+     ],
+     [
+      2,
+      4,
+      -1,
+      18,
+      12
+     ],
+     [
+      6,
+      4,
+      -1,
+      18,
+      12
+     ],
+     [
+      -4,
+      4,
+      0,
+      18,
+      12
+     ],
+     [
+      -3,
+      4,
+      0,
+      18,
+      12
+     ],
+     [
+      -2,
+      4,
+      0,
+      18,
+      12
+     ],
+     [
+      -1,
+      4,
+      0,
+      18,
+      12
+     ],
+     [
+      0,
+      4,
+      0,
+      18,
+      12
+     ],
+     [
+      1,
+      4,
+      0,
+      18,
+      12
+     ],
+     [
+      2,
+      4,
+      0,
+      17,
+      12
+     ],
+     [
+      5,
+      4,
+      0,
+      18,
+      12
+     ],
+     [
+      6,
+      4,
+      0,
+      18,
+      12
+     ],
+     [
+      7,
+      4,
+      0,
+      18,
+      12
+     ],
+     [
+      -2,
+      4,
+      1,
+      18,
+      12
+     ],
+     [
+      0,
+      4,
+      1,
+      17,
+      12
+     ],
+     [
+      1,
+      4,
+      1,
+      17,
+      12
+     ],
+     [
+      5,
+      4,
+      1,
+      18,
+      12
+     ],
+     [
+      6,
+      4,
+      1,
+      18,
+      12
+     ],
+     [
+      7,
+      4,
+      1,
+      18,
+      12
+     ],
+     [
+      -4,
+      4,
+      2,
+      18,
+      4
+     ],
+     [
+      -3,
+      4,
+      2,
+      18,
+      12
+     ],
+     [
+      -1,
+      4,
+      2,
+      18,
+      12
+     ],
+     [
+      4,
+      4,
+      2,
+      18,
+      12
+     ],
+     [
+      5,
+      4,
+      2,
+      18,
+      12
+     ],
+     [
+      6,
+      4,
+      2,
+      18,
+      12
+     ],
+     [
+      7,
+      4,
+      2,
+      18,
+      12
+     ],
+     [
+      -2,
+      4,
+      3,
+      18,
+      12
+     ],
+     [
+      -1,
+      4,
+      3,
+      18,
+      12
+     ],
+     [
+      0,
+      4,
+      3,
+      18,
+      12
+     ],
+     [
+      1,
+      4,
+      3,
+      18,
+      12
+     ],
+     [
+      2,
+      4,
+      3,
+      18,
+      12
+     ],
+     [
+      3,
+      4,
+      3,
+      18,
+      12
+     ],
+     [
+      6,
+      4,
+      3,
+      18,
+      12
+     ],
+     [
+      -2,
+      4,
+      4,
+      18,
+      12
+     ],
+     [
+      0,
+      4,
+      4,
+      18,
+      12
+     ],
+     [
+      2,
+      4,
+      4,
+      18,
+      12
+     ],
+     [
+      3,
+      4,
+      4,
+      18,
+      12
+     ],
+     [
+      4,
+      4,
+      4,
+      18,
+      12
+     ],
+     [
+      0,
+      4,
+      5,
+      18,
+      12
+     ],
+     [
+      3,
+      4,
+      5,
+      18,
+      12
+     ],
+     [
+      1,
+      4,
+      6,
+      18,
+      12
+     ],
+     [
+      -1,
+      5,
+      -5,
+      18,
+      4
+     ],
+     [
+      2,
+      5,
+      -5,
+      18,
+      12
+     ],
+     [
+      4,
+      5,
+      -5,
+      18,
+      12
+     ],
+     [
+      -2,
+      5,
+      -4,
+      18,
+      12
+     ],
+     [
+      0,
+      5,
+      -4,
+      18,
+      12
+     ],
+     [
+      2,
+      5,
+      -4,
+      18,
+      12
+     ],
+     [
+      5,
+      5,
+      -4,
+      18,
+      12
+     ],
+     [
+      -3,
+      5,
+      -3,
+      18,
+      12
+     ],
+     [
+      -2,
+      5,
+      -3,
+      18,
+      12
+     ],
+     [
+      -1,
+      5,
+      -3,
+      18,
+      12
+     ],
+     [
+      0,
+      5,
+      -3,
+      18,
+      12
+     ],
+     [
+      1,
+      5,
+      -3,
+      18,
+      12
+     ],
+     [
+      2,
+      5,
+      -3,
+      18,
+      12
+     ],
+     [
+      3,
+      5,
+      -3,
+      18,
+      12
+     ],
+     [
+      4,
+      5,
+      -3,
+      18,
+      12
+     ],
+     [
+      -4,
+      5,
+      -2,
+      18,
+      12
+     ],
+     [
+      -3,
+      5,
+      -2,
+      18,
+      12
+     ],
+     [
+      -2,
+      5,
+      -2,
+      18,
+      12
+     ],
+     [
+      1,
+      5,
+      -2,
+      18,
+      12
+     ],
+     [
+      5,
+      5,
+      -2,
+      18,
+      12
+     ],
+     [
+      6,
+      5,
+      -2,
+      18,
+      12
+     ],
+     [
+      -3,
+      5,
+      -1,
+      18,
+      12
+     ],
+     [
+      -2,
+      5,
+      -1,
+      18,
+      12
+     ],
+     [
+      0,
+      5,
+      -1,
+      18,
+      12
+     ],
+     [
+      2,
+      5,
+      -1,
+      18,
+      12
+     ],
+     [
+      5,
+      5,
+      -1,
+      18,
+      12
+     ],
+     [
+      7,
+      5,
+      -1,
+      18,
+      12
+     ],
+     [
+      -4,
+      5,
+      0,
+      18,
+      12
+     ],
+     [
+      -2,
+      5,
+      0,
+      18,
+      12
+     ],
+     [
+      -1,
+      5,
+      0,
+      18,
+      12
+     ],
+     [
+      2,
+      5,
+      0,
+      17,
+      12
+     ],
+     [
+      3,
+      5,
+      0,
+      17,
+      12
+     ],
+     [
+      4,
+      5,
+      0,
+      17,
+      12
+     ],
+     [
+      6,
+      5,
+      0,
+      18,
+      12
+     ],
+     [
+      -4,
+      5,
+      1,
+      18,
+      12
+     ],
+     [
+      -3,
+      5,
+      1,
+      18,
+      12
+     ],
+     [
+      -2,
+      5,
+      1,
+      18,
+      12
+     ],
+     [
+      0,
+      5,
+      1,
+      17,
+      12
+     ],
+     [
+      3,
+      5,
+      1,
+      18,
+      4
+     ],
+     [
+      4,
+      5,
+      1,
+      17,
+      12
+     ],
+     [
+      6,
+      5,
+      1,
+      18,
+      12
+     ],
+     [
+      -3,
+      5,
+      2,
+      18,
+      12
+     ],
+     [
+      -2,
+      5,
+      2,
+      18,
+      12
+     ],
+     [
+      0,
+      5,
+      2,
+      17,
+      12
+     ],
+     [
+      2,
+      5,
+      2,
+      18,
+      4
+     ],
+     [
+      4,
+      5,
+      2,
+      18,
+      12
+     ],
+     [
+      5,
+      5,
+      2,
+      18,
+      12
+     ],
+     [
+      7,
+      5,
+      2,
+      18,
+      12
+     ],
+     [
+      -3,
+      5,
+      3,
+      18,
+      12
+     ],
+     [
+      -2,
+      5,
+      3,
+      18,
+      4
+     ],
+     [
+      3,
+      5,
+      3,
+      18,
+      12
+     ],
+     [
+      4,
+      5,
+      3,
+      18,
+      12
+     ],
+     [
+      5,
+      5,
+      3,
+      18,
+      12
+     ],
+     [
+      6,
+      5,
+      3,
+      18,
+      12
+     ],
+     [
+      -1,
+      5,
+      4,
+      18,
+      12
+     ],
+     [
+      0,
+      5,
+      4,
+      18,
+      12
+     ],
+     [
+      1,
+      5,
+      4,
+      18,
+      12
+     ],
+     [
+      2,
+      5,
+      4,
+      18,
+      12
+     ],
+     [
+      5,
+      5,
+      4,
+      18,
+      12
+     ],
+     [
+      6,
+      5,
+      4,
+      18,
+      12
+     ],
+     [
+      -1,
+      5,
+      5,
+      18,
+      12
+     ],
+     [
+      0,
+      5,
+      5,
+      18,
+      12
+     ],
+     [
+      1,
+      5,
+      5,
+      18,
+      12
+     ],
+     [
+      3,
+      5,
+      5,
+      18,
+      12
+     ],
+     [
+      4,
+      5,
+      5,
+      18,
+      12
+     ],
+     [
+      2,
+      5,
+      6,
+      18,
+      12
+     ],
+     [
+      -1,
+      6,
+      -5,
+      18,
+      12
+     ],
+     [
+      1,
+      6,
+      -5,
+      18,
+      12
+     ],
+     [
+      2,
+      6,
+      -5,
+      18,
+      12
+     ],
+     [
+      4,
+      6,
+      -5,
+      18,
+      12
+     ],
+     [
+      -2,
+      6,
+      -4,
+      18,
+      12
+     ],
+     [
+      0,
+      6,
+      -4,
+      18,
+      12
+     ],
+     [
+      1,
+      6,
+      -4,
+      18,
+      12
+     ],
+     [
+      3,
+      6,
+      -4,
+      18,
+      12
+     ],
+     [
+      4,
+      6,
+      -4,
+      18,
+      12
+     ],
+     [
+      -2,
+      6,
+      -3,
+      18,
+      12
+     ],
+     [
+      2,
+      6,
+      -3,
+      18,
+      12
+     ],
+     [
+      5,
+      6,
+      -3,
+      18,
+      12
+     ],
+     [
+      6,
+      6,
+      -3,
+      18,
+      12
+     ],
+     [
+      -4,
+      6,
+      -2,
+      18,
+      12
+     ],
+     [
+      -3,
+      6,
+      -2,
+      18,
+      12
+     ],
+     [
+      -2,
+      6,
+      -2,
+      18,
+      12
+     ],
+     [
+      -1,
+      6,
+      -2,
+      18,
+      12
+     ],
+     [
+      1,
+      6,
+      -2,
+      18,
+      12
+     ],
+     [
+      3,
+      6,
+      -2,
+      17,
+      12
+     ],
+     [
+      6,
+      6,
+      -2,
+      18,
+      12
+     ],
+     [
+      -3,
+      6,
+      -1,
+      18,
+      12
+     ],
+     [
+      -1,
+      6,
+      -1,
+      18,
+      12
+     ],
+     [
+      0,
+      6,
+      -1,
+      18,
+      12
+     ],
+     [
+      2,
+      6,
+      -1,
+      18,
+      12
+     ],
+     [
+      3,
+      6,
+      -1,
+      17,
+      12
+     ],
+     [
+      7,
+      6,
+      -1,
+      18,
+      12
+     ],
+     [
+      -4,
+      6,
+      0,
+      18,
+      12
+     ],
+     [
+      -3,
+      6,
+      0,
+      17,
+      12
+     ],
+     [
+      -2,
+      6,
+      0,
+      17,
+      12
+     ],
+     [
+      -1,
+      6,
+      0,
+      17,
+      12
+     ],
+     [
+      1,
+      6,
+      0,
+      18,
+      12
+     ],
+     [
+      2,
+      6,
+      0,
+      17,
+      12
+     ],
+     [
+      7,
+      6,
+      0,
+      18,
+      12
+     ],
+     [
+      -3,
+      6,
+      1,
+      18,
+      12
+     ],
+     [
+      -2,
+      6,
+      1,
+      18,
+      12
+     ],
+     [
+      -1,
+      6,
+      1,
+      17,
+      12
+     ],
+     [
+      5,
+      6,
+      1,
+      17,
+      12
+     ],
+     [
+      6,
+      6,
+      1,
+      18,
+      12
+     ],
+     [
+      7,
+      6,
+      1,
+      18,
+      12
+     ],
+     [
+      -4,
+      6,
+      2,
+      18,
+      12
+     ],
+     [
+      -3,
+      6,
+      2,
+      18,
+      12
+     ],
+     [
+      -2,
+      6,
+      2,
+      18,
+      12
+     ],
+     [
+      1,
+      6,
+      2,
+      18,
+      12
+     ],
+     [
+      2,
+      6,
+      2,
+      18,
+      12
+     ],
+     [
+      5,
+      6,
+      2,
+      18,
+      4
+     ],
+     [
+      6,
+      6,
+      2,
+      18,
+      12
+     ],
+     [
+      -2,
+      6,
+      3,
+      18,
+      12
+     ],
+     [
+      0,
+      6,
+      3,
+      17,
+      12
+     ],
+     [
+      1,
+      6,
+      3,
+      17,
+      12
+     ],
+     [
+      4,
+      6,
+      3,
+      18,
+      12
+     ],
+     [
+      5,
+      6,
+      3,
+      18,
+      12
+     ],
+     [
+      7,
+      6,
+      3,
+      18,
+      12
+     ],
+     [
+      -2,
+      6,
+      4,
+      18,
+      12
+     ],
+     [
+      -1,
+      6,
+      4,
+      18,
+      12
+     ],
+     [
+      1,
+      6,
+      4,
+      18,
+      4
+     ],
+     [
+      2,
+      6,
+      4,
+      18,
+      12
+     ],
+     [
+      3,
+      6,
+      4,
+      18,
+      12
+     ],
+     [
+      4,
+      6,
+      4,
+      18,
+      12
+     ],
+     [
+      0,
+      6,
+      5,
+      18,
+      12
+     ],
+     [
+      2,
+      6,
+      5,
+      18,
+      12
+     ],
+     [
+      4,
+      6,
+      5,
+      18,
+      12
+     ],
+     [
+      0,
+      6,
+      6,
+      18,
+      4
+     ],
+     [
+      2,
+      6,
+      6,
+      18,
+      12
+     ],
+     [
+      3,
+      6,
+      6,
+      18,
+      12
+     ],
+     [
+      4,
+      6,
+      6,
+      18,
+      4
+     ],
+     [
+      1,
+      7,
+      -5,
+      18,
+      12
+     ],
+     [
+      3,
+      7,
+      -5,
+      18,
+      12
+     ],
+     [
+      -1,
+      7,
+      -4,
+      18,
+      12
+     ],
+     [
+      0,
+      7,
+      -4,
+      18,
+      12
+     ],
+     [
+      3,
+      7,
+      -4,
+      18,
+      12
+     ],
+     [
+      5,
+      7,
+      -4,
+      18,
+      12
+     ],
+     [
+      -3,
+      7,
+      -3,
+      18,
+      12
+     ],
+     [
+      0,
+      7,
+      -3,
+      18,
+      12
+     ],
+     [
+      1,
+      7,
+      -3,
+      18,
+      12
+     ],
+     [
+      2,
+      7,
+      -3,
+      18,
+      12
+     ],
+     [
+      3,
+      7,
+      -3,
+      17,
+      12
+     ],
+     [
+      4,
+      7,
+      -3,
+      18,
+      12
+     ],
+     [
+      -3,
+      7,
+      -2,
+      18,
+      12
+     ],
+     [
+      -2,
+      7,
+      -2,
+      18,
+      4
+     ],
+     [
+      0,
+      7,
+      -2,
+      18,
+      12
+     ],
+     [
+      1,
+      7,
+      -2,
+      18,
+      12
+     ],
+     [
+      5,
+      7,
+      -2,
+      18,
+      12
+     ],
+     [
+      -4,
+      7,
+      -1,
+      18,
+      12
+     ],
+     [
+      -3,
+      7,
+      -1,
+      18,
+      12
+     ],
+     [
+      -2,
+      7,
+      -1,
+      17,
+      12
+     ],
+     [
+      1,
+      7,
+      -1,
+      18,
+      12
+     ],
+     [
+      2,
+      7,
+      -1,
+      18,
+      12
+     ],
+     [
+      3,
+      7,
+      -1,
+      18,
+      12
+     ],
+     [
+      4,
+      7,
+      -1,
+      18,
+      12
+     ],
+     [
+      6,
+      7,
+      -1,
+      18,
+      12
+     ],
+     [
+      -3,
+      7,
+      0,
+      18,
+      4
+     ],
+     [
+      -1,
+      7,
+      0,
+      18,
+      12
+     ],
+     [
+      1,
+      7,
+      0,
+      17,
+      12
+     ],
+     [
+      2,
+      7,
+      0,
+      17,
+      12
+     ],
+     [
+      6,
+      7,
+      0,
+      18,
+      12
+     ],
+     [
+      7,
+      7,
+      0,
+      18,
+      12
+     ],
+     [
+      -4,
+      7,
+      1,
+      18,
+      12
+     ],
+     [
+      -1,
+      7,
+      1,
+      18,
+      4
+     ],
+     [
+      0,
+      7,
+      1,
+      18,
+      4
+     ],
+     [
+      2,
+      7,
+      1,
+      18,
+      12
+     ],
+     [
+      3,
+      7,
+      1,
+      18,
+      12
+     ],
+     [
+      4,
+      7,
+      1,
+      18,
+      12
+     ],
+     [
+      5,
+      7,
+      1,
+      18,
+      12
+     ],
+     [
+      6,
+      7,
+      1,
+      18,
+      12
+     ],
+     [
+      -3,
+      7,
+      2,
+      18,
+      12
+     ],
+     [
+      -2,
+      7,
+      2,
+      18,
+      12
+     ],
+     [
+      4,
+      7,
+      2,
+      18,
+      12
+     ],
+     [
+      7,
+      7,
+      2,
+      18,
+      12
+     ],
+     [
+      -3,
+      7,
+      3,
+      18,
+      12
+     ],
+     [
+      -1,
+      7,
+      3,
+      18,
+      12
+     ],
+     [
+      0,
+      7,
+      3,
+      18,
+      12
+     ],
+     [
+      4,
+      7,
+      3,
+      18,
+      12
+     ],
+     [
+      6,
+      7,
+      3,
+      18,
+      12
+     ],
+     [
+      -1,
+      7,
+      4,
+      18,
+      12
+     ],
+     [
+      2,
+      7,
+      4,
+      18,
+      12
+     ],
+     [
+      3,
+      7,
+      4,
+      18,
+      12
+     ],
+     [
+      6,
+      7,
+      4,
+      18,
+      12
+     ],
+     [
+      0,
+      7,
+      5,
+      18,
+      12
+     ],
+     [
+      1,
+      7,
+      5,
+      18,
+      12
+     ],
+     [
+      4,
+      7,
+      5,
+      18,
+      12
+     ],
+     [
+      1,
+      7,
+      6,
+      18,
+      12
+     ],
+     [
+      3,
+      7,
+      6,
+      18,
+      12
+     ],
+     [
+      -1,
+      8,
+      -5,
+      18,
+      4
+     ],
+     [
+      0,
+      8,
+      -5,
+      18,
+      12
+     ],
+     [
+      2,
+      8,
+      -5,
+      18,
+      12
+     ],
+     [
+      4,
+      8,
+      -5,
+      18,
+      12
+     ],
+     [
+      -2,
+      8,
+      -4,
+      18,
+      12
+     ],
+     [
+      0,
+      8,
+      -4,
+      18,
+      12
+     ],
+     [
+      1,
+      8,
+      -4,
+      18,
+      12
+     ],
+     [
+      2,
+      8,
+      -4,
+      18,
+      12
+     ],
+     [
+      3,
+      8,
+      -4,
+      18,
+      12
+     ],
+     [
+      4,
+      8,
+      -4,
+      18,
+      12
+     ],
+     [
+      -3,
+      8,
+      -3,
+      18,
+      12
+     ],
+     [
+      -2,
+      8,
+      -3,
+      18,
+      12
+     ],
+     [
+      -1,
+      8,
+      -3,
+      18,
+      12
+     ],
+     [
+      0,
+      8,
+      -3,
+      18,
+      12
+     ],
+     [
+      4,
+      8,
+      -3,
+      18,
+      12
+     ],
+     [
+      5,
+      8,
+      -3,
+      18,
+      12
+     ],
+     [
+      -1,
+      8,
+      -2,
+      18,
+      12
+     ],
+     [
+      3,
+      8,
+      -2,
+      18,
+      12
+     ],
+     [
+      4,
+      8,
+      -2,
+      18,
+      12
+     ],
+     [
+      5,
+      8,
+      -2,
+      18,
+      12
+     ],
+     [
+      6,
+      8,
+      -2,
+      18,
+      12
+     ],
+     [
+      -4,
+      8,
+      -1,
+      18,
+      12
+     ],
+     [
+      -2,
+      8,
+      -1,
+      18,
+      12
+     ],
+     [
+      1,
+      8,
+      -1,
+      18,
+      12
+     ],
+     [
+      3,
+      8,
+      -1,
+      18,
+      12
+     ],
+     [
+      5,
+      8,
+      -1,
+      18,
+      12
+     ],
+     [
+      -4,
+      8,
+      0,
+      18,
+      12
+     ],
+     [
+      -3,
+      8,
+      0,
+      18,
+      12
+     ],
+     [
+      -1,
+      8,
+      0,
+      18,
+      12
+     ],
+     [
+      0,
+      8,
+      0,
+      17,
+      12
+     ],
+     [
+      1,
+      8,
+      0,
+      17,
+      12
+     ],
+     [
+      3,
+      8,
+      0,
+      18,
+      4
+     ],
+     [
+      5,
+      8,
+      0,
+      18,
+      12
+     ],
+     [
+      6,
+      8,
+      0,
+      18,
+      12
+     ],
+     [
+      -3,
+      8,
+      1,
+      18,
+      12
+     ],
+     [
+      -2,
+      8,
+      1,
+      18,
+      12
+     ],
+     [
+      -1,
+      8,
+      1,
+      18,
+      12
+     ],
+     [
+      2,
+      8,
+      1,
+      17,
+      12
+     ],
+     [
+      3,
+      8,
+      1,
+      18,
+      12
+     ],
+     [
+      5,
+      8,
+      1,
+      18,
+      12
+     ],
+     [
+      -2,
+      8,
+      2,
+      18,
+      12
+     ],
+     [
+      -1,
+      8,
+      2,
+      18,
+      12
+     ],
+     [
+      0,
+      8,
+      2,
+      18,
+      12
+     ],
+     [
+      1,
+      8,
+      2,
+      18,
+      12
+     ],
+     [
+      3,
+      8,
+      2,
+      18,
+      12
+     ],
+     [
+      5,
+      8,
+      2,
+      18,
+      12
+     ],
+     [
+      7,
+      8,
+      2,
+      18,
+      4
+     ],
+     [
+      -3,
+      8,
+      3,
+      18,
+      4
+     ],
+     [
+      0,
+      8,
+      3,
+      18,
+      12
+     ],
+     [
+      2,
+      8,
+      3,
+      18,
+      12
+     ],
+     [
+      5,
+      8,
+      3,
+      18,
+      12
+     ],
+     [
+      6,
+      8,
+      3,
+      18,
+      12
+     ],
+     [
+      -2,
+      8,
+      4,
+      18,
+      4
+     ],
+     [
+      -1,
+      8,
+      4,
+      18,
+      12
+     ],
+     [
+      0,
+      8,
+      4,
+      18,
+      12
+     ],
+     [
+      1,
+      8,
+      4,
+      18,
+      12
+     ],
+     [
+      2,
+      8,
+      4,
+      18,
+      12
+     ],
+     [
+      3,
+      8,
+      4,
+      18,
+      12
+     ],
+     [
+      4,
+      8,
+      4,
+      18,
+      12
+     ],
+     [
+      -1,
+      8,
+      5,
+      18,
+      12
+     ],
+     [
+      2,
+      8,
+      5,
+      18,
+      12
+     ],
+     [
+      3,
+      8,
+      5,
+      18,
+      12
+     ],
+     [
+      5,
+      8,
+      5,
+      18,
+      12
+     ],
+     [
+      1,
+      8,
+      6,
+      18,
+      4
+     ],
+     [
+      1,
+      9,
+      -5,
+      18,
+      12
+     ],
+     [
+      0,
+      9,
+      -4,
+      18,
+      12
+     ],
+     [
+      1,
+      9,
+      -4,
+      18,
+      12
+     ],
+     [
+      3,
+      9,
+      -4,
+      18,
+      12
+     ],
+     [
+      0,
+      9,
+      -3,
+      18,
+      12
+     ],
+     [
+      1,
+      9,
+      -3,
+      18,
+      12
+     ],
+     [
+      2,
+      9,
+      -3,
+      18,
+      12
+     ],
+     [
+      3,
+      9,
+      -3,
+      18,
+      12
+     ],
+     [
+      4,
+      9,
+      -3,
+      18,
+      12
+     ],
+     [
+      -3,
+      9,
+      -2,
+      18,
+      12
+     ],
+     [
+      -1,
+      9,
+      -2,
+      18,
+      12
+     ],
+     [
+      2,
+      9,
+      -2,
+      18,
+      12
+     ],
+     [
+      3,
+      9,
+      -2,
+      18,
+      4
+     ],
+     [
+      4,
+      9,
+      -2,
+      18,
+      4
+     ],
+     [
+      -1,
+      9,
+      -1,
+      18,
+      12
+     ],
+     [
+      1,
+      9,
+      -1,
+      17,
+      12
+     ],
+     [
+      2,
+      9,
+      -1,
+      18,
+      12
+     ],
+     [
+      4,
+      9,
+      -1,
+      18,
+      4
+     ],
+     [
+      5,
+      9,
+      -1,
+      18,
+      12
+     ],
+     [
+      6,
+      9,
+      -1,
+      18,
+      4
+     ],
+     [
+      -3,
+      9,
+      0,
+      18,
+      12
+     ],
+     [
+      -2,
+      9,
+      0,
+      18,
+      12
+     ],
+     [
+      -1,
+      9,
+      0,
+      18,
+      12
+     ],
+     [
+      1,
+      9,
+      0,
+      17,
+      12
+     ],
+     [
+      5,
+      9,
+      0,
+      18,
+      12
+     ],
+     [
+      -2,
+      9,
+      1,
+      18,
+      12
+     ],
+     [
+      0,
+      9,
+      1,
+      18,
+      4
+     ],
+     [
+      4,
+      9,
+      1,
+      18,
+      12
+     ],
+     [
+      5,
+      9,
+      1,
+      18,
+      12
+     ],
+     [
+      6,
+      9,
+      1,
+      18,
+      12
+     ],
+     [
+      -3,
+      9,
+      2,
+      18,
+      12
+     ],
+     [
+      0,
+      9,
+      2,
+      18,
+      4
+     ],
+     [
+      1,
+      9,
+      2,
+      18,
+      12
+     ],
+     [
+      2,
+      9,
+      2,
+      18,
+      12
+     ],
+     [
+      3,
+      9,
+      2,
+      18,
+      12
+     ],
+     [
+      4,
+      9,
+      2,
+      18,
+      12
+     ],
+     [
+      6,
+      9,
+      2,
+      18,
+      12
+     ],
+     [
+      -2,
+      9,
+      3,
+      18,
+      4
+     ],
+     [
+      -1,
+      9,
+      3,
+      18,
+      12
+     ],
+     [
+      3,
+      9,
+      3,
+      18,
+      12
+     ],
+     [
+      -1,
+      9,
+      4,
+      18,
+      12
+     ],
+     [
+      1,
+      9,
+      4,
+      18,
+      12
+     ],
+     [
+      4,
+      9,
+      4,
+      18,
+      12
+     ],
+     [
+      5,
+      9,
+      4,
+      18,
+      4
+     ],
+     [
+      1,
+      9,
+      5,
+      18,
+      12
+     ],
+     [
+      3,
+      9,
+      5,
+      18,
+      12
+     ],
+     [
+      -1,
+      10,
+      -4,
+      18,
+      12
+     ],
+     [
+      1,
+      10,
+      -4,
+      18,
+      4
+     ],
+     [
+      2,
+      10,
+      -4,
+      18,
+      12
+     ],
+     [
+      4,
+      10,
+      -4,
+      18,
+      12
+     ],
+     [
+      -2,
+      10,
+      -3,
+      18,
+      12
+     ],
+     [
+      -1,
+      10,
+      -3,
+      18,
+      12
+     ],
+     [
+      1,
+      10,
+      -3,
+      18,
+      12
+     ],
+     [
+      2,
+      10,
+      -3,
+      18,
+      12
+     ],
+     [
+      0,
+      10,
+      -2,
+      18,
+      12
+     ],
+     [
+      2,
+      10,
+      -2,
+      18,
+      12
+     ],
+     [
+      3,
+      10,
+      -2,
+      18,
+      12
+     ],
+     [
+      4,
+      10,
+      -2,
+      18,
+      12
+     ],
+     [
+      5,
+      10,
+      -2,
+      18,
+      12
+     ],
+     [
+      -2,
+      10,
+      -1,
+      18,
+      12
+     ],
+     [
+      -1,
+      10,
+      -1,
+      18,
+      12
+     ],
+     [
+      0,
+      10,
+      -1,
+      18,
+      4
+     ],
+     [
+      6,
+      10,
+      -1,
+      18,
+      4
+     ],
+     [
+      -1,
+      10,
+      0,
+      18,
+      12
+     ],
+     [
+      0,
+      10,
+      0,
+      18,
+      4
+     ],
+     [
+      1,
+      10,
+      0,
+      17,
+      12
+     ],
+     [
+      2,
+      10,
+      0,
+      18,
+      12
+     ],
+     [
+      3,
+      10,
+      0,
+      18,
+      12
+     ],
+     [
+      5,
+      10,
+      0,
+      18,
+      12
+     ],
+     [
+      6,
+      10,
+      0,
+      18,
+      12
+     ],
+     [
+      -1,
+      10,
+      1,
+      18,
+      4
+     ],
+     [
+      1,
+      10,
+      1,
+      17,
+      12
+     ],
+     [
+      3,
+      10,
+      1,
+      18,
+      12
+     ],
+     [
+      4,
+      10,
+      1,
+      18,
+      12
+     ],
+     [
+      -2,
+      10,
+      2,
+      18,
+      12
+     ],
+     [
+      -1,
+      10,
+      2,
+      18,
+      4
+     ],
+     [
+      1,
+      10,
+      2,
+      18,
+      12
+     ],
+     [
+      4,
+      10,
+      2,
+      18,
+      12
+     ],
+     [
+      5,
+      10,
+      2,
+      18,
+      12
+     ],
+     [
+      1,
+      10,
+      3,
+      18,
+      12
+     ],
+     [
+      2,
+      10,
+      3,
+      18,
+      12
+     ],
+     [
+      5,
+      10,
+      3,
+      18,
+      4
+     ],
+     [
+      0,
+      10,
+      4,
+      18,
+      12
+     ],
+     [
+      3,
+      10,
+      4,
+      18,
+      12
+     ],
+     [
+      2,
+      10,
+      5,
+      18,
+      12
+     ],
+     [
+      2,
+      11,
+      -4,
+      18,
+      4
+     ],
+     [
+      0,
+      11,
+      -3,
+      18,
+      12
+     ],
+     [
+      3,
+      11,
+      -3,
+      18,
+      12
+     ],
+     [
+      4,
+      11,
+      -3,
+      18,
+      12
+     ],
+     [
+      -2,
+      11,
+      -2,
+      18,
+      12
+     ],
+     [
+      -1,
+      11,
+      -2,
+      18,
+      12
+     ],
+     [
+      0,
+      11,
+      -2,
+      18,
+      12
+     ],
+     [
+      1,
+      11,
+      -2,
+      18,
+      12
+     ],
+     [
+      2,
+      11,
+      -2,
+      18,
+      4
+     ],
+     [
+      -1,
+      11,
+      -1,
+      18,
+      12
+     ],
+     [
+      3,
+      11,
+      -1,
+      18,
+      12
+     ],
+     [
+      4,
+      11,
+      -1,
+      18,
+      12
+     ],
+     [
+      -2,
+      11,
+      0,
+      18,
+      4
+     ],
+     [
+      -1,
+      11,
+      0,
+      18,
+      12
+     ],
+     [
+      1,
+      11,
+      0,
+      18,
+      12
+     ],
+     [
+      2,
+      11,
+      0,
+      18,
+      12
+     ],
+     [
+      3,
+      11,
+      0,
+      18,
+      12
+     ],
+     [
+      0,
+      11,
+      1,
+      18,
+      12
+     ],
+     [
+      1,
+      11,
+      1,
+      18,
+      12
+     ],
+     [
+      2,
+      11,
+      1,
+      18,
+      12
+     ],
+     [
+      5,
+      11,
+      1,
+      18,
+      12
+     ],
+     [
+      -1,
+      11,
+      2,
+      18,
+      4
+     ],
+     [
+      2,
+      11,
+      2,
+      18,
+      12
+     ],
+     [
+      3,
+      11,
+      2,
+      18,
+      12
+     ],
+     [
+      4,
+      11,
+      2,
+      18,
+      12
+     ],
+     [
+      -1,
+      11,
+      3,
+      18,
+      4
+     ],
+     [
+      0,
+      11,
+      3,
+      18,
+      4
+     ],
+     [
+      1,
+      11,
+      3,
+      18,
+      4
+     ],
+     [
+      4,
+      11,
+      3,
+      18,
+      12
+     ],
+     [
+      5,
+      11,
+      3,
+      18,
+      4
+     ],
+     [
+      1,
+      11,
+      4,
+      18,
+      12
+     ],
+     [
+      2,
+      11,
+      4,
+      18,
+      12
+     ],
+     [
+      3,
+      11,
+      4,
+      18,
+      12
+     ],
+     [
+      -1,
+      12,
+      -3,
+      18,
+      12
+     ],
+     [
+      1,
+      12,
+      -3,
+      18,
+      4
+     ],
+     [
+      2,
+      12,
+      -3,
+      18,
+      4
+     ],
+     [
+      0,
+      12,
+      -2,
+      18,
+      4
+     ],
+     [
+      1,
+      12,
+      -2,
+      18,
+      12
+     ],
+     [
+      3,
+      12,
+      -2,
+      18,
+      12
+     ],
+     [
+      4,
+      12,
+      -2,
+      18,
+      12
+     ],
+     [
+      -1,
+      12,
+      -1,
+      18,
+      12
+     ],
+     [
+      1,
+      12,
+      -1,
+      18,
+      12
+     ],
+     [
+      2,
+      12,
+      -1,
+      18,
+      12
+     ],
+     [
+      3,
+      12,
+      -1,
+      18,
+      12
+     ],
+     [
+      0,
+      12,
+      0,
+      18,
+      12
+     ],
+     [
+      1,
+      12,
+      0,
+      18,
+      12
+     ],
+     [
+      -1,
+      12,
+      1,
+      18,
+      12
+     ],
+     [
+      0,
+      12,
+      1,
+      18,
+      12
+     ],
+     [
+      3,
+      12,
+      1,
+      18,
+      12
+     ],
+     [
+      4,
+      12,
+      1,
+      18,
+      12
+     ],
+     [
+      0,
+      12,
+      2,
+      18,
+      4
+     ],
+     [
+      1,
+      12,
+      2,
+      18,
+      12
+     ],
+     [
+      3,
+      12,
+      2,
+      18,
+      4
+     ],
+     [
+      3,
+      12,
+      3,
+      18,
+      12
+     ],
+     [
+      1,
+      13,
+      -2,
+      18,
+      4
+     ],
+     [
+      2,
+      13,
+      -2,
+      18,
+      4
+     ],
+     [
+      0,
+      13,
+      -1,
+      18,
+      12
+     ],
+     [
+      2,
+      13,
+      0,
+      18,
+      12
+     ],
+     [
+      3,
+      13,
+      0,
+      18,
+      4
+     ],
+     [
+      2,
+      13,
+      1,
+      18,
+      12
+     ],
+     [
+      1,
+      13,
+      2,
+      18,
+      4
+     ]
+    ],
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 14
+   },
+   "thorn": {
+    "kind": "tree",
+    "form": "copied",
+    "body": [
+     [
+      1,
+      0,
+      -1,
+      5,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      5,
+      1
+     ],
+     [
+      1,
+      0,
+      0,
+      5,
+      1
+     ],
+     [
+      0,
+      0,
+      1,
+      5,
+      1
+     ],
+     [
+      1,
+      0,
+      1,
+      5,
+      1
+     ],
+     [
+      0,
+      1,
+      0,
+      17,
+      12
+     ],
+     [
+      1,
+      1,
+      0,
+      17,
+      12
+     ],
+     [
+      1,
+      1,
+      1,
+      17,
+      12
+     ],
+     [
+      1,
+      2,
+      0,
+      17,
+      12
+     ],
+     [
+      1,
+      2,
+      1,
+      17,
+      12
+     ],
+     [
+      3,
+      2,
+      3,
+      18,
+      4
+     ],
+     [
+      4,
+      2,
+      3,
+      18,
+      4
+     ],
+     [
+      5,
+      2,
+      3,
+      18,
+      4
+     ],
+     [
+      3,
+      2,
+      4,
+      18,
+      4
+     ],
+     [
+      -1,
+      2,
+      5,
+      18,
+      4
+     ],
+     [
+      2,
+      2,
+      5,
+      18,
+      4
+     ],
+     [
+      3,
+      2,
+      5,
+      18,
+      4
+     ],
+     [
+      4,
+      3,
+      -2,
+      18,
+      4
+     ],
+     [
+      4,
+      3,
+      -1,
+      18,
+      4
+     ],
+     [
+      -2,
+      3,
+      0,
+      18,
+      4
+     ],
+     [
+      5,
+      3,
+      0,
+      18,
+      4
+     ],
+     [
+      1,
+      3,
+      1,
+      17,
+      12
+     ],
+     [
+      4,
+      3,
+      1,
+      18,
+      4
+     ],
+     [
+      5,
+      3,
+      1,
+      18,
+      4
+     ],
+     [
+      1,
+      3,
+      2,
+      17,
+      12
+     ],
+     [
+      3,
+      3,
+      2,
+      18,
+      4
+     ],
+     [
+      4,
+      3,
+      2,
+      18,
+      4
+     ],
+     [
+      7,
+      3,
+      2,
+      18,
+      4
+     ],
+     [
+      -2,
+      3,
+      4,
+      18,
+      4
+     ],
+     [
+      -1,
+      3,
+      4,
+      18,
+      4
+     ],
+     [
+      2,
+      3,
+      4,
+      18,
+      4
+     ],
+     [
+      5,
+      3,
+      4,
+      18,
+      4
+     ],
+     [
+      0,
+      3,
+      5,
+      18,
+      4
+     ],
+     [
+      4,
+      3,
+      5,
+      18,
+      4
+     ],
+     [
+      -2,
+      3,
+      6,
+      18,
+      4
+     ],
+     [
+      2,
+      3,
+      6,
+      18,
+      4
+     ],
+     [
+      0,
+      4,
+      -4,
+      18,
+      4
+     ],
+     [
+      5,
+      4,
+      -4,
+      18,
+      4
+     ],
+     [
+      3,
+      4,
+      -3,
+      18,
+      4
+     ],
+     [
+      4,
+      4,
+      -2,
+      18,
+      4
+     ],
+     [
+      6,
+      4,
+      -2,
+      18,
+      4
+     ],
+     [
+      -3,
+      4,
+      -1,
+      18,
+      4
+     ],
+     [
+      -1,
+      4,
+      -1,
+      18,
+      4
+     ],
+     [
+      1,
+      4,
+      -1,
+      18,
+      4
+     ],
+     [
+      3,
+      4,
+      -1,
+      18,
+      4
+     ],
+     [
+      5,
+      4,
+      -1,
+      18,
+      4
+     ],
+     [
+      -1,
+      4,
+      0,
+      18,
+      4
+     ],
+     [
+      0,
+      4,
+      0,
+      18,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      18,
+      4
+     ],
+     [
+      7,
+      4,
+      1,
+      18,
+      4
+     ],
+     [
+      -3,
+      4,
+      2,
+      18,
+      4
+     ],
+     [
+      0,
+      4,
+      2,
+      17,
+      12
+     ],
+     [
+      1,
+      4,
+      2,
+      17,
+      12
+     ],
+     [
+      5,
+      4,
+      2,
+      18,
+      4
+     ],
+     [
+      6,
+      4,
+      2,
+      18,
+      4
+     ],
+     [
+      -4,
+      4,
+      3,
+      18,
+      4
+     ],
+     [
+      1,
+      4,
+      3,
+      17,
+      12
+     ],
+     [
+      2,
+      4,
+      3,
+      18,
+      4
+     ],
+     [
+      3,
+      4,
+      3,
+      18,
+      4
+     ],
+     [
+      7,
+      4,
+      3,
+      18,
+      4
+     ],
+     [
+      -2,
+      4,
+      4,
+      18,
+      4
+     ],
+     [
+      -1,
+      4,
+      4,
+      18,
+      4
+     ],
+     [
+      4,
+      4,
+      4,
+      18,
+      4
+     ],
+     [
+      -2,
+      4,
+      5,
+      18,
+      4
+     ],
+     [
+      2,
+      4,
+      5,
+      18,
+      4
+     ],
+     [
+      3,
+      4,
+      5,
+      18,
+      4
+     ],
+     [
+      -1,
+      4,
+      6,
+      18,
+      4
+     ],
+     [
+      5,
+      4,
+      6,
+      18,
+      4
+     ],
+     [
+      0,
+      4,
+      7,
+      18,
+      4
+     ],
+     [
+      1,
+      4,
+      7,
+      18,
+      4
+     ],
+     [
+      3,
+      4,
+      7,
+      18,
+      4
+     ],
+     [
+      3,
+      5,
+      -5,
+      18,
+      4
+     ],
+     [
+      -2,
+      5,
+      -4,
+      18,
+      4
+     ],
+     [
+      1,
+      5,
+      -4,
+      18,
+      4
+     ],
+     [
+      2,
+      5,
+      -4,
+      18,
+      4
+     ],
+     [
+      -3,
+      5,
+      -3,
+      18,
+      4
+     ],
+     [
+      -1,
+      5,
+      -3,
+      18,
+      4
+     ],
+     [
+      2,
+      5,
+      -3,
+      18,
+      4
+     ],
+     [
+      5,
+      5,
+      -3,
+      18,
+      4
+     ],
+     [
+      -3,
+      5,
+      -2,
+      18,
+      4
+     ],
+     [
+      -2,
+      5,
+      -2,
+      18,
+      4
+     ],
+     [
+      -1,
+      5,
+      -2,
+      18,
+      4
+     ],
+     [
+      0,
+      5,
+      -2,
+      18,
+      4
+     ],
+     [
+      2,
+      5,
+      -2,
+      18,
+      4
+     ],
+     [
+      -3,
+      5,
+      -1,
+      18,
+      4
+     ],
+     [
+      0,
+      5,
+      -1,
+      17,
+      12
+     ],
+     [
+      2,
+      5,
+      -1,
+      18,
+      4
+     ],
+     [
+      6,
+      5,
+      -1,
+      18,
+      4
+     ],
+     [
+      -4,
+      5,
+      0,
+      18,
+      4
+     ],
+     [
+      1,
+      5,
+      0,
+      17,
+      12
+     ],
+     [
+      4,
+      5,
+      0,
+      18,
+      4
+     ],
+     [
+      6,
+      5,
+      0,
+      18,
+      4
+     ],
+     [
+      -1,
+      5,
+      1,
+      18,
+      4
+     ],
+     [
+      1,
+      5,
+      1,
+      17,
+      12
+     ],
+     [
+      2,
+      5,
+      1,
+      17,
+      12
+     ],
+     [
+      7,
+      5,
+      1,
+      18,
+      4
+     ],
+     [
+      -4,
+      5,
+      2,
+      18,
+      4
+     ],
+     [
+      0,
+      5,
+      2,
+      17,
+      12
+     ],
+     [
+      3,
+      5,
+      2,
+      18,
+      4
+     ],
+     [
+      4,
+      5,
+      2,
+      18,
+      4
+     ],
+     [
+      6,
+      5,
+      2,
+      18,
+      4
+     ],
+     [
+      -4,
+      5,
+      3,
+      18,
+      4
+     ],
+     [
+      -1,
+      5,
+      3,
+      18,
+      4
+     ],
+     [
+      5,
+      5,
+      3,
+      18,
+      4
+     ],
+     [
+      2,
+      5,
+      4,
+      18,
+      4
+     ],
+     [
+      5,
+      5,
+      4,
+      18,
+      4
+     ],
+     [
+      6,
+      5,
+      4,
+      18,
+      4
+     ],
+     [
+      -3,
+      5,
+      5,
+      18,
+      4
+     ],
+     [
+      -1,
+      5,
+      5,
+      18,
+      4
+     ],
+     [
+      0,
+      5,
+      5,
+      17,
+      12
+     ],
+     [
+      0,
+      5,
+      6,
+      18,
+      4
+     ],
+     [
+      2,
+      5,
+      6,
+      18,
+      4
+     ],
+     [
+      4,
+      5,
+      6,
+      18,
+      4
+     ],
+     [
+      -1,
+      5,
+      7,
+      18,
+      4
+     ],
+     [
+      3,
+      5,
+      7,
+      18,
+      4
+     ],
+     [
+      1,
+      6,
+      -5,
+      18,
+      4
+     ],
+     [
+      -1,
+      6,
+      -4,
+      18,
+      4
+     ],
+     [
+      0,
+      6,
+      -4,
+      18,
+      4
+     ],
+     [
+      3,
+      6,
+      -4,
+      18,
+      4
+     ],
+     [
+      5,
+      6,
+      -4,
+      18,
+      4
+     ],
+     [
+      -3,
+      6,
+      -3,
+      18,
+      4
+     ],
+     [
+      0,
+      6,
+      -3,
+      18,
+      4
+     ],
+     [
+      1,
+      6,
+      -3,
+      18,
+      4
+     ],
+     [
+      4,
+      6,
+      -3,
+      18,
+      4
+     ],
+     [
+      -1,
+      6,
+      -2,
+      18,
+      4
+     ],
+     [
+      0,
+      6,
+      -2,
+      17,
+      12
+     ],
+     [
+      3,
+      6,
+      -2,
+      18,
+      4
+     ],
+     [
+      5,
+      6,
+      -2,
+      18,
+      4
+     ],
+     [
+      -4,
+      6,
+      -1,
+      18,
+      4
+     ],
+     [
+      -1,
+      6,
+      -1,
+      17,
+      12
+     ],
+     [
+      7,
+      6,
+      -1,
+      18,
+      4
+     ],
+     [
+      -4,
+      6,
+      0,
+      18,
+      4
+     ],
+     [
+      -2,
+      6,
+      0,
+      18,
+      4
+     ],
+     [
+      -1,
+      6,
+      0,
+      18,
+      4
+     ],
+     [
+      0,
+      6,
+      0,
+      18,
+      4
+     ],
+     [
+      4,
+      6,
+      0,
+      18,
+      4
+     ],
+     [
+      -3,
+      6,
+      1,
+      18,
+      4
+     ],
+     [
+      1,
+      6,
+      1,
+      17,
+      12
+     ],
+     [
+      3,
+      6,
+      1,
+      17,
+      12
+     ],
+     [
+      4,
+      6,
+      1,
+      18,
+      4
+     ],
+     [
+      6,
+      6,
+      1,
+      18,
+      4
+     ],
+     [
+      -1,
+      6,
+      2,
+      18,
+      4
+     ],
+     [
+      -3,
+      6,
+      3,
+      18,
+      4
+     ],
+     [
+      0,
+      6,
+      3,
+      18,
+      4
+     ],
+     [
+      1,
+      6,
+      3,
+      18,
+      4
+     ],
+     [
+      2,
+      6,
+      3,
+      18,
+      4
+     ],
+     [
+      4,
+      6,
+      3,
+      18,
+      4
+     ],
+     [
+      5,
+      6,
+      3,
+      18,
+      4
+     ],
+     [
+      7,
+      6,
+      3,
+      18,
+      4
+     ],
+     [
+      -3,
+      6,
+      4,
+      18,
+      4
+     ],
+     [
+      0,
+      6,
+      4,
+      18,
+      4
+     ],
+     [
+      4,
+      6,
+      4,
+      18,
+      4
+     ],
+     [
+      -2,
+      6,
+      5,
+      18,
+      4
+     ],
+     [
+      0,
+      6,
+      5,
+      18,
+      4
+     ],
+     [
+      4,
+      6,
+      5,
+      18,
+      4
+     ],
+     [
+      -3,
+      6,
+      6,
+      18,
+      4
+     ],
+     [
+      3,
+      6,
+      6,
+      18,
+      4
+     ],
+     [
+      1,
+      6,
+      7,
+      18,
+      4
+     ],
+     [
+      2,
+      6,
+      7,
+      18,
+      4
+     ],
+     [
+      2,
+      7,
+      -5,
+      18,
+      4
+     ],
+     [
+      -1,
+      7,
+      -4,
+      18,
+      4
+     ],
+     [
+      2,
+      7,
+      -4,
+      18,
+      4
+     ],
+     [
+      -2,
+      7,
+      -3,
+      18,
+      4
+     ],
+     [
+      0,
+      7,
+      -3,
+      18,
+      4
+     ],
+     [
+      5,
+      7,
+      -3,
+      18,
+      4
+     ],
+     [
+      6,
+      7,
+      -2,
+      18,
+      4
+     ],
+     [
+      -3,
+      7,
+      -1,
+      18,
+      4
+     ],
+     [
+      -2,
+      7,
+      -1,
+      18,
+      4
+     ],
+     [
+      1,
+      7,
+      -1,
+      18,
+      4
+     ],
+     [
+      4,
+      7,
+      -1,
+      18,
+      4
+     ],
+     [
+      5,
+      7,
+      -1,
+      18,
+      4
+     ],
+     [
+      -1,
+      7,
+      0,
+      18,
+      4
+     ],
+     [
+      2,
+      7,
+      0,
+      17,
+      12
+     ],
+     [
+      6,
+      7,
+      0,
+      18,
+      4
+     ],
+     [
+      -4,
+      7,
+      1,
+      18,
+      4
+     ],
+     [
+      -2,
+      7,
+      1,
+      18,
+      4
+     ],
+     [
+      1,
+      7,
+      1,
+      17,
+      12
+     ],
+     [
+      -2,
+      7,
+      2,
+      18,
+      4
+     ],
+     [
+      -1,
+      7,
+      2,
+      18,
+      4
+     ],
+     [
+      3,
+      7,
+      2,
+      18,
+      4
+     ],
+     [
+      4,
+      7,
+      2,
+      18,
+      4
+     ],
+     [
+      5,
+      7,
+      2,
+      18,
+      4
+     ],
+     [
+      -4,
+      7,
+      3,
+      18,
+      4
+     ],
+     [
+      -1,
+      7,
+      4,
+      18,
+      4
+     ],
+     [
+      1,
+      7,
+      4,
+      18,
+      4
+     ],
+     [
+      3,
+      7,
+      4,
+      18,
+      4
+     ],
+     [
+      5,
+      7,
+      4,
+      18,
+      4
+     ],
+     [
+      -3,
+      7,
+      5,
+      18,
+      4
+     ],
+     [
+      -2,
+      7,
+      5,
+      18,
+      4
+     ],
+     [
+      -1,
+      7,
+      5,
+      18,
+      4
+     ],
+     [
+      1,
+      7,
+      5,
+      18,
+      4
+     ],
+     [
+      4,
+      7,
+      5,
+      18,
+      4
+     ],
+     [
+      -2,
+      7,
+      6,
+      18,
+      4
+     ],
+     [
+      0,
+      7,
+      6,
+      18,
+      4
+     ],
+     [
+      1,
+      7,
+      6,
+      18,
+      4
+     ],
+     [
+      4,
+      7,
+      6,
+      18,
+      4
+     ],
+     [
+      0,
+      8,
+      -4,
+      18,
+      4
+     ],
+     [
+      4,
+      8,
+      -3,
+      18,
+      4
+     ],
+     [
+      -1,
+      8,
+      -2,
+      18,
+      4
+     ],
+     [
+      0,
+      8,
+      -2,
+      18,
+      4
+     ],
+     [
+      1,
+      8,
+      -2,
+      18,
+      4
+     ],
+     [
+      3,
+      8,
+      -2,
+      18,
+      4
+     ],
+     [
+      2,
+      8,
+      -1,
+      18,
+      4
+     ],
+     [
+      4,
+      8,
+      -1,
+      18,
+      4
+     ],
+     [
+      -3,
+      8,
+      0,
+      18,
+      4
+     ],
+     [
+      2,
+      8,
+      0,
+      17,
+      12
+     ],
+     [
+      4,
+      8,
+      0,
+      18,
+      4
+     ],
+     [
+      -1,
+      8,
+      1,
+      18,
+      4
+     ],
+     [
+      5,
+      8,
+      1,
+      18,
+      4
+     ],
+     [
+      -3,
+      8,
+      2,
+      18,
+      4
+     ],
+     [
+      -1,
+      8,
+      2,
+      18,
+      4
+     ],
+     [
+      0,
+      8,
+      2,
+      18,
+      4
+     ],
+     [
+      3,
+      8,
+      2,
+      18,
+      4
+     ],
+     [
+      -1,
+      8,
+      3,
+      18,
+      4
+     ],
+     [
+      1,
+      8,
+      3,
+      18,
+      4
+     ],
+     [
+      5,
+      8,
+      3,
+      18,
+      4
+     ],
+     [
+      -2,
+      8,
+      4,
+      18,
+      4
+     ],
+     [
+      2,
+      8,
+      5,
+      18,
+      4
+     ],
+     [
+      3,
+      8,
+      5,
+      18,
+      4
+     ],
+     [
+      0,
+      8,
+      6,
+      18,
+      4
+     ],
+     [
+      2,
+      8,
+      6,
+      18,
+      4
+     ],
+     [
+      -1,
+      9,
+      -3,
+      18,
+      4
+     ],
+     [
+      2,
+      9,
+      -1,
+      18,
+      4
+     ],
+     [
+      -1,
+      9,
+      0,
+      18,
+      4
+     ],
+     [
+      0,
+      9,
+      0,
+      18,
+      4
+     ],
+     [
+      3,
+      9,
+      0,
+      18,
+      4
+     ],
+     [
+      0,
+      9,
+      1,
+      18,
+      4
+     ],
+     [
+      2,
+      9,
+      1,
+      18,
+      4
+     ],
+     [
+      3,
+      9,
+      1,
+      18,
+      4
+     ],
+     [
+      4,
+      9,
+      1,
+      18,
+      4
+     ],
+     [
+      -2,
+      9,
+      2,
+      18,
+      4
+     ],
+     [
+      -1,
+      9,
+      2,
+      18,
+      4
+     ],
+     [
+      1,
+      9,
+      2,
+      18,
+      4
+     ],
+     [
+      -2,
+      9,
+      3,
+      18,
+      4
+     ],
+     [
+      2,
+      9,
+      3,
+      18,
+      4
+     ],
+     [
+      4,
+      9,
+      3,
+      18,
+      4
+     ],
+     [
+      0,
+      9,
+      4,
+      18,
+      4
+     ],
+     [
+      1,
+      10,
+      -2,
+      18,
+      4
+     ],
+     [
+      0,
+      10,
+      -1,
+      18,
+      4
+     ],
+     [
+      1,
+      10,
+      -1,
+      18,
+      4
+     ],
+     [
+      1,
+      10,
+      1,
+      18,
+      4
+     ],
+     [
+      -1,
+      10,
+      2,
+      18,
+      4
+     ],
+     [
+      0,
+      10,
+      3,
+      18,
+      4
+     ]
+    ],
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 11
+   },
+   "flint-rock": {
+    "kind": "boulder",
+    "form": "round",
+    "size": 2,
+    "rock": {
+     "kind": "turbulence",
+     "seed": 4161,
+     "scale": 3,
+     "octaves": 3,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     ],
+     "rise": 3
+    },
+    "mossy": false
+   },
+   "fold-house": {
+    "kind": "house",
+    "shell": {
+     "foundation": {
+      "plate": {
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 4,
+           "data": 0
+          },
+          "thickness": 1
+         }
+        ],
+        "ending": "repeat"
+       },
+       "extent": 1
+      },
+      "surface": {
+       "field": null,
+       "border": null,
+       "borderWidth": 1,
+       "inlay": null,
+       "inlayInset": 2,
+       "isPlain": true
+      },
+      "footing": null
+     },
+     "roof": {
+      "form": "gable",
+      "pitch": 2,
+      "slab": 126,
+      "slabData": 1,
+      "overhang": 1,
+      "ridgeCap": true,
+      "hole": false,
+      "body": {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      },
+      "verge": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gable": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gableWindows": {
+       "form": "open",
+       "block": 102,
+       "hostBlock": -1,
+       "hostData": 0,
+       "data": 0,
+       "sill": 1,
+       "width": 1,
+       "height": 1,
+       "spacing": 3
+      }
+     },
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 4,
+          "data": 0
+         },
+         "thickness": 1
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 5
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "windows": {
+      "form": "none",
+      "block": 102,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 2,
+      "width": 2,
+      "height": 2,
+      "spacing": 3
+     },
+     "storeys": [
+      {
+       "clear": 5,
+       "wall": {
+        "stack": {
+         "bands": [
+          {
+           "material": {
+            "kind": "solid",
+            "id": 4,
+            "data": 0
+           },
+           "thickness": 1
+          },
+          {
+           "material": {
+            "kind": "cell",
+            "seed": 4191,
+            "cellSize": 3,
+            "jitter": 45,
+            "warp": 1,
+            "palette": [
+             {
+              "kind": "solid",
+              "id": 5,
+              "data": 1
+             },
+             {
+              "kind": "solid",
+              "id": 5,
+              "data": 5
+             }
+            ],
+            "rise": 2
+           },
+           "thickness": 3
+          },
+          {
+           "material": {
+            "kind": "laidLog",
+            "id": 17,
+            "data": 1
+           },
+           "thickness": 1
+          }
+         ],
+         "ending": "repeat"
+        },
+        "extent": 5
+       },
+       "post": {
+        "kind": "solid",
+        "id": 17,
+        "data": 1
+       },
+       "windows": {
+        "form": "arched",
+        "block": 134,
+        "hostBlock": -1,
+        "hostData": 0,
+        "data": 0,
+        "sill": 2,
+        "width": 2,
+        "height": 2,
+        "spacing": 3
+       },
+       "surface": {
+        "field": null,
+        "border": null,
+        "borderWidth": 1,
+        "inlay": null,
+        "inlayInset": 2,
+        "isPlain": true
+       },
+       "deck": null,
+       "headroom": 5
+      }
+     ],
+     "porch": null,
+     "front": null,
+     "beams": {
+      "block": 17,
+      "data": 1,
+      "reach": 1,
+      "any": true
+     },
+     "doorway": {
+      "door": "air",
+      "head": {
+       "form": "arched",
+       "block": 134,
+       "fill": "upperSlab",
+       "fillBlock": 126,
+       "fillData": 1
+      },
+      "width": 2,
+      "height": 3
+     }
+    }
+   }
+  }
+ },
+ "created": "2026-09-21",
+ "authors": [
+  "Opus 5"
+ ]
+}

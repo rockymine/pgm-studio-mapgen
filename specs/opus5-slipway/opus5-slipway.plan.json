@@ -1,5 +1,5 @@
 {
-  "plan": 1,
+  "plan": 2,
   "meta": {
     "name": "Slipway"
   },
@@ -173,8 +173,8 @@
         "id": "spawn-1",
         "piece": "spawn",
         "at": [
-          2.5,
-          2.5
+          10.0,
+          10.0
         ],
         "facing": "down"
       }
@@ -184,8 +184,8 @@
         "id": "iron-1",
         "piece": "fore-spawn",
         "at": [
-          11.0,
-          2.0
+          44.0,
+          8.0
         ]
       }
     ],
@@ -194,8 +194,8 @@
         "id": "destroyable-1",
         "style": "pillar-2",
         "at": [
-          -6.0,
-          6.5
+          -24.0,
+          26.0
         ],
         "materials": "obsidian",
         "float": 2,
@@ -205,8 +205,8 @@
         "id": "destroyable-2",
         "style": "pillar-2",
         "at": [
-          10.75,
-          11.5
+          43.0,
+          46.0
         ],
         "materials": "obsidian",
         "float": 2,

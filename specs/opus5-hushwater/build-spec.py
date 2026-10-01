@@ -611,10 +611,10 @@ DRESSING = {
         # the whim house stands over the shaft at the head, facing the yard it worked. It is
         # the one building on the laid stone and it takes its own style: hardened clay walls
         # over a stone footing, and a roof that reads brick without being a course of brick.
-        {"id": "head-store", "kind": "house", "seed": 101, "style": "@hw-stonehouse", "front": "negZ",
+        {"id": "head-store", "kind": "house", "seed": 101, "style": {"library": "banded-stone-house"}, "front": "negZ",
          "wings": [{"corners": [[17, 85], [23, 91]]}]},
         # the powder house, out on the spur away from everything, as a powder house is
-        {"id": "powder", "kind": "house", "seed": 102, "style": "@hw-minehouse", "front": "posZ",
+        {"id": "powder", "kind": "house", "seed": 102, "style": {"library": "hw-minehouse"}, "front": "posZ",
          "wings": [{"corners": [[-31, 60], [-25, 64]]}]},
         # a clump in the lee of the spur's north edge, off the road by more than a canopy
         {"id": "birk-1", "kind": "tree", "style": "birk", "x": -34, "z": 75},
@@ -673,7 +673,7 @@ def finish_document():
         "addShapes": ADD_SHAPES,
         "addLayers": [engine_house(), stonework()],
         "dressing": DRESSING,
-        "roomStyles": {"spawn": "@hw-minehouse", "wool": "@hw-assay"},
+        "roomStyles": {"spawn": {"library": "hw-minehouse"}, "wool": {"library": "hw-assay"}},
         # the fell's own green: Extreme hills tints grass #8ab689, a grey-green that agrees
         # with the stone beside it where Plains' #91bd59 would read as a lawn on a moor
         "biome": {"kind": "solid", "biome": 3},
@@ -695,7 +695,7 @@ def main():
 
     plan = adapt(plan)
     json.dump(plan, open(os.path.join(HERE, f"{SLUG}.plan.json"), "w"), indent=1)
-    json.dump(finish_document(), open(os.path.join(HERE, f"{SLUG}.finish.json"), "w"), indent=1)
+    json.dump(finish_document(), open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w"), indent=1)
     print(f"  adapted   pieces {len(plan['pieces'])}  zones {len(plan['zones'])}  "
           f"walls {len(plan['walls'])}  themes {len(THEMES)}  "
           f"marks {sum(len(g['marks']) for g in RELIEF.values())}  shapes {len(ADD_SHAPES)}")

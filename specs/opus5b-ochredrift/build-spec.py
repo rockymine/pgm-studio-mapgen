@@ -15,16 +15,16 @@ The crusher terrace is the one piece of made ground on the board: its compiled
 shape carries relief_scope exclude, so it meets the hub at a face rather than a
 grade, and a flight cut into that face is the way up.
 
-Writes opus5b-ochredrift.plan.json and opus5b-ochredrift.finish.json.
+Writes opus5b-ochredrift.plan.json and opus5b-ochredrift.refinement.json.
 """
 import json
 import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, HERE)
-from common import (solid, cells, field, band, stack, soil, lobe, lobed_rect,
-                    tree_body, load_cache, save_cache, write)
+ROOT = os.path.dirname(os.path.dirname(HERE))
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from studio_kit import kit
 
 SLUG = "opus5b-ochredrift"
 CELL = 4
@@ -118,41 +118,83 @@ plan = {
 # ---------------------------------------------------------------- the ground
 
 relief = {
-    "*": {
-        "base": 9, "reach": 0, "step": 1, "landform": "rolling",
-        "grain": {"amplitude": 1.2, "scale": 16, "seed": 6103},
-        "marks": [
-            {"id": "wash-shelf", "kind": "area", "h": 9, "bevel": 2,
-             "ring": lobed_rect(-50, 12, 50, 34, wobble=3.0, seed=6111)},
-            {"id": "hub-bar", "kind": "area", "h": 15, "bevel": 3,
-             "ring": lobed_rect(-50, 46, 50, 66, wobble=3.0, seed=6112)},
-            {"id": "spur-west", "kind": "area", "h": 15, "bevel": 3,
-             "ring": lobed_rect(-50, 38, -30, 94, wobble=2.0, seed=6113)},
-            {"id": "spur-east", "kind": "area", "h": 15, "bevel": 3,
-             "ring": lobed_rect(30, 38, 50, 94, wobble=2.0, seed=6114)},
+    "*": kit.SketchReliefJson(
+        base=9, reach=0, step=1, landform="rolling",
+        grain=kit.ReliefGrainJson(amplitude=1.2, scale=16, seed=6103),
+        marks=[
+            # the wash shelf: x -50..50 by z 12..34, walked as a wandering ring
+            kit.ReliefMarkJson(id="wash-shelf", kind="area", h=9, bevel=2, ring=[
+                [-52.94, 12.84], [-24.17, 12.18], [1.96, 9.29], [22.76, 10.78],
+                [52.78, 12.49], [50.63, 15.67], [48.68, 25.89], [52.31, 27.26],
+                [48.83, 34.52], [25.93, 36.99], [-1.26, 32.62], [-27.89, 34.83],
+                [-50.33, 35.77], [-48.51, 25.95], [-50.76, 23.85], [-50.82, 18.64]]),
+            # the hub's bar: x -50..50 by z 46..66, walked as a wandering ring
+            kit.ReliefMarkJson(id="hub-bar", kind="area", h=15, bevel=3, ring=[
+                [-51.82, 43.9], [-26.26, 44.46], [-2.38, 47.95], [27.61, 48.91],
+                [48.21, 48.86], [49.62, 49.68], [49.45, 54.75], [50.42, 63.65],
+                [51.66, 63.19], [22.79, 65.05], [1.75, 64.53], [-25.91, 63.93],
+                [-51.02, 67.15], [-52.17, 63.23], [-47.04, 56.3], [-49.97, 49.62]]),
+            # the west spur: x -50..-30 by z 38..94, walked as a wandering ring
+            kit.ReliefMarkJson(id="spur-west", kind="area", h=15, bevel=3, ring=[
+                [-50.46, 38.63], [-43.24, 39.83], [-40.49, 38.41], [-34.02, 38.69],
+                [-30.24, 37.49], [-30.92, 51.46], [-29.86, 66.4], [-30.99, 80.36],
+                [-31.0, 93.91], [-34.56, 94.74], [-40.82, 92.97], [-44.28, 94.7],
+                [-51.14, 94.36], [-49.89, 80.68], [-49.54, 65.83], [-49.42, 53.4]]),
+            # the east spur: x 30..50 by z 38..94, walked as a wandering ring
+            kit.ReliefMarkJson(id="spur-east", kind="area", h=15, bevel=3, ring=[
+                [30.28, 36.67], [35.36, 38.68], [40.61, 37.52], [45.21, 37.44],
+                [50.71, 39.07], [48.41, 51.81], [50.65, 67.64], [51.75, 78.95],
+                [50.89, 95.7], [43.34, 92.11], [41.18, 92.91], [33.04, 92.77],
+                [28.4, 93.94], [31.67, 79.87], [28.94, 65.46], [31.15, 51.73]]),
             # the two cuts up off the wash, one at each end of the funnel
-            {"id": "ramp-west", "kind": "line", "r": 5, "tread": 3,
-             "points": [[-40, 28], [-40, 46]], "h": [9, 15]},
-            {"id": "ramp-east", "kind": "line", "r": 5, "tread": 3,
-             "points": [[40, 28], [40, 46]], "h": [9, 15]},
+            kit.ReliefMarkJson(id="ramp-west", kind="line", r=5, tread=3,
+                               points=[[-40, 28], [-40, 46]], h=[9, 15]),
+            kit.ReliefMarkJson(id="ramp-east", kind="line", r=5, tread=3,
+                               points=[[40, 28], [40, 46]], h=[9, 15]),
         ],
-        "pushes": [
+        pushes=[
             # Two buttes on the hub, one a side of the hole, so the ground an
             # attacker crosses has height on it to climb and bridge from and
             # the two lanes round the hole are not the same walk.
-            {"id": "butte-west", "ring": lobe(-20, 26, 7, points=9, wobble=0.2,
-                                              seed=6121),
-             "amount": 9, "falloff": 9, "crown": 4, "roughness": 1.4,
-             "seed": 6122},
-            {"id": "butte-east", "ring": lobe(22, 24, 6, points=9, wobble=0.24,
-                                              seed=6123),
-             "amount": 6, "falloff": 8, "crown": 3, "roughness": 1.2,
-             "seed": 6124},
-        ],
-    }
+            # The west butte: a lobed ring of radius 7 round (-20, 26).
+            kit.ReliefPushJson(id="butte-west", ring=[
+                [-11.94, 26.0], [-14.15, 30.91], [-18.96, 31.92], [-23.73, 32.46],
+                [-26.79, 28.47], [-27.43, 23.3], [-23.09, 20.64], [-18.94, 20.01],
+                [-14.97, 21.78]],
+                amount=9, falloff=9, crown=4, roughness=1.4, seed=6122),
+            # The east butte: a lobed ring of radius 6 round (22, 24).
+            kit.ReliefPushJson(id="butte-east", ring=[
+                [27.28, 24.0], [27.13, 28.31], [23.02, 29.76], [19.59, 28.17],
+                [17.36, 25.69], [16.69, 22.07], [18.53, 17.99], [23.06, 17.96],
+                [27.31, 19.54]],
+                amount=6, falloff=8, crown=3, roughness=1.2, seed=6124),
+        ]),
 }
 
 # ---------------------------------------------------------------- the paint
+
+def solid(block, data=0):
+    return kit.SolidMaterial(id=block, data=data)
+
+
+def cells(seed, size, rise, palette):
+    """A cell pattern of `palette` at jitter 45 and warp 1."""
+    return kit.CellMaterial(seed=seed, cellSize=size, jitter=45, warp=1, rise=rise, palette=palette)
+
+
+def band(thickness, material):
+    return kit.Band(material=material, thickness=thickness)
+
+
+def stack(axis, bands):
+    """`bands` read along `axis`, the last one carried on past the end."""
+    return kit.LayeredMaterial(axis=axis, stack=kit.BandStack(ending="repeat", bands=bands))
+
+
+def soil(top, under, depth=2):
+    """One course of a surfacing block over `depth` of soil."""
+    return stack("depth", [band(1, top), band(depth, under)])
+
 
 RED_SAND = solid(12, 1)
 RED_SANDSTONE = solid(179, 0)
@@ -177,60 +219,57 @@ MESA_FACE = cells(6131, 7, 5, [CLAY_RED, RED_SANDSTONE])
 # the ramps and skirts take red sand, and only the risers take bare rock.
 SLOPE_LITTER, SLOPE_SCREE = 10, 30
 
-mesa_theme = {
-    "bedrock": {"relative": False, "value": 1},
-    "fill": RED_SANDSTONE,
-    "wall": MESA_FACE,
-    "wallEnabled": True,
-    "wallOnTerrainFaces": True,
-    "rim": {"enabled": True, "depth": 1, "material": RED_SANDSTONE_SM},
-    "rimEdges": "void",
-    "surface": {"enabled": True, "depth": 3,
-                "material": stack("slope", [
-                    band(SLOPE_LITTER, soil(cells(6132, 8, 0, [TURF, PODZOL]),
-                                            EARTH)),
-                    band(SLOPE_SCREE - SLOPE_LITTER,
-                         soil(cells(6133, 7, 0, [RED_SAND, WORN]), EARTH)),
-                    band(90 - SLOPE_SCREE,
-                         stack("depth", [band(3, MESA_FACE)])),
-                ])},
-}
+mesa_theme = kit.TerrainTheme(
+    bedrock=kit.BedrockSpec(relative=False, value=1),
+    fill=RED_SANDSTONE,
+    wall=MESA_FACE,
+    wallEnabled=True,
+    wallOnTerrainFaces=True,
+    rim=kit.TopBand(enabled=True, depth=1, material=RED_SANDSTONE_SM),
+    rimEdges="void",
+    surface=kit.TopBand(enabled=True, depth=3, material=stack("slope", [
+        band(SLOPE_LITTER, soil(cells(6132, 8, 0, [TURF, PODZOL]), EARTH)),
+        band(SLOPE_SCREE - SLOPE_LITTER, soil(cells(6133, 7, 0, [RED_SAND, WORN]), EARTH)),
+        band(90 - SLOPE_SCREE, stack("depth", [band(3, MESA_FACE)])),
+    ])),
+)
 
-wash_theme = {
-    "bedrock": {"relative": False, "value": 1},
-    "fill": RED_SANDSTONE,
-    "wall": MESA_FACE,
-    "wallEnabled": True,
-    "wallOnTerrainFaces": True,
-    "rim": {"enabled": False, "depth": 1, "material": RED_SANDSTONE_SM},
-    "rimEdges": "void",
-    "surface": {"enabled": True, "depth": 3,
-                "material": soil(cells(6134, 7, 0, [RED_SAND, GRAVEL]),
-                                 RED_SANDSTONE)},
-}
+wash_theme = kit.TerrainTheme(
+    bedrock=kit.BedrockSpec(relative=False, value=1),
+    fill=RED_SANDSTONE,
+    wall=MESA_FACE,
+    wallEnabled=True,
+    wallOnTerrainFaces=True,
+    rim=kit.TopBand(enabled=False, depth=1, material=RED_SANDSTONE_SM),
+    rimEdges="void",
+    surface=kit.TopBand(enabled=True, depth=3,
+                        material=soil(cells(6134, 7, 0, [RED_SAND, GRAVEL]), RED_SANDSTONE)),
+)
 
-works_theme = {
-    "bedrock": {"relative": False, "value": 1},
-    "fill": RED_SANDSTONE,
-    "wall": cells(6135, 5, 4, [STONEBRICK, PALE_ANDESITE]),
-    "wallEnabled": True,
-    "wallOnTerrainFaces": True,
-    "rim": {"enabled": True, "depth": 1, "material": STONEBRICK},
-    "rimEdges": "boundary",
-    "surface": {"enabled": True, "depth": 3,
-                "material": soil(cells(6136, 5, 0,
-                                       [STONEBRICK, PALE_ANDESITE, COBBLE]),
-                                 solid(1, 0))},
-}
+works_theme = kit.TerrainTheme(
+    bedrock=kit.BedrockSpec(relative=False, value=1),
+    fill=RED_SANDSTONE,
+    wall=cells(6135, 5, 4, [STONEBRICK, PALE_ANDESITE]),
+    wallEnabled=True,
+    wallOnTerrainFaces=True,
+    rim=kit.TopBand(enabled=True, depth=1, material=STONEBRICK),
+    rimEdges="boundary",
+    surface=kit.TopBand(enabled=True, depth=3,
+                        material=soil(cells(6136, 5, 0, [STONEBRICK, PALE_ANDESITE, COBBLE]), solid(1, 0))),
+)
 
 # ---------------------------------------------------------------- the shapes
 
 FRONT_BASE, BENCH_BASE, TERRACE_BASE = 9, 15, 21
 
 add_shapes = [
-    {"id": "wash-floor", "type": "polygon", "operation": "add",
-     "floor": 0, "base_height": FRONT_BASE, "theme": "wash",
-     "vertices": lobed_rect(-44, 16, 44, 34, wobble=3.0, seed=6141)},
+    # the wash floor: x -44..44 by z 16..34, walked as a wandering ring
+    kit.SketchShape(id="wash-floor", type="polygon", operation="add", floor=0, base_height=FRONT_BASE,
+                    theme="wash", vertices=[
+                        [-43.33, 18.4], [-24.02, 18.56], [-2.46, 15.26], [21.26, 18.51],
+                        [41.69, 15.64], [44.43, 22.07], [41.57, 23.62], [43.42, 30.89],
+                        [43.85, 36.79], [24.74, 32.77], [-0.88, 36.03], [-19.43, 32.07],
+                        [-41.02, 35.25], [-44.26, 32.46], [-41.11, 27.25], [-43.47, 18.12]]),
 ]
 
 # The flight down off the crusher terrace. It is a made layer of its own, so
@@ -238,27 +277,19 @@ add_shapes = [
 # alone; anchor_heights are thicknesses at the polygon's corners, so the four
 # read foot, foot, head, head. Twelve blocks of run for six of rise, which is
 # twice the rise, and the head lands on the terrace's own top block.
-terrace_steps = {
-    "id": "crusher-steps", "name": "the crusher steps", "base_y": 0,
-    "kind": "made", "part_of": "crusher",
-    "groups": [{"id": "crusher-steps", "name": "the crusher steps",
-                "mirrors": True, "shapeIds": ["steps-main"]}],
-    "shapes": [
-        {"id": "steps-main", "type": "polygon", "operation": "add",
-         "floor": 0, "keepClear": True,
-         "anchor_heights": [BENCH_BASE, BENCH_BASE, TERRACE_BASE, TERRACE_BASE],
-         "material": cells(6151, 4, 3, [STONEBRICK, PALE_ANDESITE]),
-         "vertices": [[-5, 52], [5, 52], [5, 64], [-5, 64]]},
+terrace_steps = kit.AddedLayer(
+    id="crusher-steps", name="the crusher steps", base_y=0, kind="made", part_of="crusher",
+    groups=[kit.SketchGroup(id="crusher-steps", name="the crusher steps", mirrors=True,
+                            shapeIds=["steps-main"])],
+    shapes=[
+        kit.SketchShape(id="steps-main", type="polygon", operation="add", floor=0, keepClear=True,
+                        anchor_heights=[BENCH_BASE, BENCH_BASE, TERRACE_BASE, TERRACE_BASE],
+                        material=cells(6151, 4, 3, [STONEBRICK, PALE_ANDESITE]),
+                        vertices=[[-5, 52], [5, 52], [5, 64], [-5, 64]]),
     ],
-}
+)
 
 # ---------------------------------------------------------------- the dressing
-
-cache_path = os.path.join(HERE, "trees.json")
-cache = load_cache(cache_path)
-SCRUB = tree_body("showcase-r8-3", cache)       # acacia
-OLIVE = tree_body("showcase-r10-2", cache)      # small olive
-save_cache(cache_path, cache)
 
 PAVE = cells(6162, 3, 0, [GRAVEL, WORN, COBBLE])
 
@@ -273,44 +304,42 @@ ROCKS = [(-46, 26), (22, 22), (36, 40)]
 HOUSES = [("crusher", [[-24, 17], [-16, 22]], 2, "posZ"),
           ("winding-house", [[38, 52], [46, 57]], 1, "negX")]
 
-styles = {
-    "scrub": SCRUB,
-    "olive": OLIVE,
-    "erratic": {"kind": "boulder", "form": "round", "size": 2, "mossy": False,
-                "rock": field(6161, 3, 3, [solid(1, 0), COBBLE, solid(1, 5)],
-                              rise=3, kind="turbulence")},
-    "camp-house": {"kind": "house", "shell": None},
-}
+# The copied trees, each the showcase tree it names, as corpus/tree-showcase/trees.json carries it.
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+styles = {key: kit.build("TreeStyle", SHOWCASE[tree]["style"]) for key, tree in {
+    "scrub": "acacia-3", "olive": "olive-2"}.items()}
+styles["erratic"] = kit.BoulderStyle(form="round", size=2, mossy=False, rock=kit.TurbulenceMaterial(
+    seed=6161, scale=3, octaves=3, stops=[solid(1, 0), COBBLE, solid(1, 5)], rise=3))
 
 props = [
     # spawn door to each spur's mouth, drawn before the scenery
-    {"id": "west-haul", "kind": "stroke", "seed": 6171, "radius": 2,
-     "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[-2, 84], [-8, 78], [-18, 70], [-28, 66], [-38, 68]]},
-    {"id": "east-haul", "kind": "stroke", "seed": 6172, "radius": 2,
-     "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[4, 84], [10, 78], [20, 70], [30, 66], [38, 68]]},
-    {"id": "front-haul", "kind": "stroke", "seed": 6173, "radius": 2,
-     "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[-40, 60], [-40, 48], [-38, 36], [-34, 26], [-30, 18]]},
+    kit.StrokeProp(id="west-haul", seed=6171, radius=2, style="solid", claimsGround=True, pave=PAVE,
+                   points=[[-2, 84], [-8, 78], [-18, 70], [-28, 66], [-38, 68]]),
+    kit.StrokeProp(id="east-haul", seed=6172, radius=2, style="solid", claimsGround=True, pave=PAVE,
+                   points=[[4, 84], [10, 78], [20, 70], [30, 66], [38, 68]]),
+    kit.StrokeProp(id="front-haul", seed=6173, radius=2, style="solid", claimsGround=True, pave=PAVE,
+                   points=[[-40, 60], [-40, 48], [-38, 36], [-34, 26], [-30, 18]]),
 ]
 
-props += [{"id": f"scrub-{i}", "kind": "tree", "seed": 6200 + i,
-           "x": x, "z": z, "style": "scrub"} for i, (x, z) in enumerate(SCRUBS)]
-props += [{"id": f"olive-{i}", "kind": "tree", "seed": 6220 + i,
-           "x": x, "z": z, "style": "olive"} for i, (x, z) in enumerate(OLIVES)]
-props += [{"id": f"rock-{i}", "kind": "boulder", "seed": 6240 + i,
-           "x": x, "z": z, "style": "erratic"} for i, (x, z) in enumerate(ROCKS)]
-props += [{"id": pid, "kind": "house", "seed": 6260 + i, "style": "camp-house",
-           "front": front,
-           "wings": [{"corners": corners, "spec": {"storeysHigh": high}}]}
+props += [kit.TreeProp(id=f"scrub-{i}", seed=6200 + i, x=x, z=z, style="scrub")
+          for i, (x, z) in enumerate(SCRUBS)]
+props += [kit.TreeProp(id=f"olive-{i}", seed=6220 + i, x=x, z=z, style="olive")
+          for i, (x, z) in enumerate(OLIVES)]
+props += [kit.BoulderProp(id=f"rock-{i}", seed=6240 + i, x=x, z=z, style="erratic")
+          for i, (x, z) in enumerate(ROCKS)]
+props += [kit.HouseProp(id=pid, seed=6260 + i, style="camp-house", front=front,
+                        wings=[kit.AuthoredWing(corners=corners, spec=kit.WingSpec(storeysHigh=high))])
           for i, (pid, corners, high, front) in enumerate(HOUSES)]
 
 props += [
-    {"id": "flora", "kind": "flora", "seed": 6180,
-     "points": lobed_rect(-48, 16, 48, 102, wobble=3.0, seed=6181),
-     "spec": {"coverage": 0.14, "scale": 28, "octaves": 3, "fernShare": 0.06,
-              "flowerShare": 0.05, "flowerScale": 20, "tallShare": 0.04}},
+    # the flora's ground: x -48..48 by z 16..102, wash to spawn, walked as a wandering ring
+    kit.FloraProp(id="flora", seed=6180, points=[
+        [-50.52, 14.46], [-25.82, 15.73], [-2.36, 15.88], [25.25, 15.48],
+        [48.9, 14.51], [50.17, 35.61], [46.07, 59.93], [49.57, 81.4],
+        [47.22, 103.83], [21.15, 99.14], [-0.38, 100.57], [-26.14, 104.39],
+        [-48.61, 102.55], [-50.59, 82.82], [-46.25, 57.11], [-49.67, 36.44]],
+        spec=kit.FloraSpec(coverage=0.14, scale=28, octaves=3, fernShare=0.06, flowerShare=0.05,
+                           flowerScale=20, tallShare=0.04)),
 ]
 
 # ---------------------------------------------------------------- the house
@@ -318,110 +347,99 @@ props += [
 # Pale sandstone and birch on a grey plinth: the ground is red, so a building
 # reads as built by not being in the ground's family at all.
 
-BIRCH_LOG = {"kind": "laidLog", "id": 17, "data": 2}
+BIRCH_LOG = kit.LaidLogMaterial(id=17, data=2)
 PLAIN_SURFACE = {"field": None, "border": None, "borderWidth": 1,
                  "inlay": None, "inlayInset": 2, "isPlain": True}
 NO_WINDOW = {"form": "none", "block": 102, "hostBlock": -1, "hostData": 0,
              "data": 0, "sill": 2, "width": 2, "height": 2, "spacing": 3}
 
-CAMP_STOREY = {
-    "clear": 5,
-    "wall": {"stack": {"bands": [
-        {"material": STONEBRICK, "thickness": 1},
-        {"material": cells(6191, 3, 2, [SANDSTONE, BIRCH]), "thickness": 3},
-        {"material": BIRCH_LOG, "thickness": 1}], "ending": "repeat"},
-        "extent": 5},
-    "post": solid(17, 2),
-    "windows": {"form": "arched", "block": 135, "hostBlock": -1, "hostData": 0,
-                "data": 0, "sill": 2, "width": 2, "height": 2, "spacing": 3},
-    "surface": PLAIN_SURFACE, "deck": None, "headroom": 5,
-}
 
-CAMP_HOUSE = {
-    "foundation": {
-        "plate": {"stack": {"bands": [{"material": STONEBRICK, "thickness": 1}],
-                            "ending": "repeat"}, "extent": 1},
-        "surface": PLAIN_SURFACE, "footing": None},
-    "roof": {"form": "gable", "pitch": 2, "slab": 126, "slabData": 2,
-             "overhang": 1, "ridgeCap": True, "hole": False,
-             "body": BIRCH, "verge": SANDSTONE, "gable": SANDSTONE,
-             "gableWindows": {"form": "open", "block": 102, "hostBlock": -1,
-                              "hostData": 0, "data": 0, "sill": 1, "width": 1,
-                              "height": 1, "spacing": 3}},
-    "wall": {"stack": {"bands": [{"material": STONEBRICK, "thickness": 1}],
-                       "ending": "repeat"}, "extent": 5},
-    "post": solid(17, 2),
-    "windows": NO_WINDOW,
-    "storeys": [CAMP_STOREY],
-    "porch": None, "front": None,
-    "beams": {"block": 17, "data": 2, "reach": 1, "any": True},
-    "doorway": {"door": "air",
-                "head": {"form": "arched", "block": 135, "fill": "upperSlab",
-                         "fillBlock": 126, "fillData": 2},
-                "width": 2, "height": 3},
-}
+def courses(extent, bands):
+    """A wall or a plate `extent` courses high, laid in `bands` from its base, the last one carried on."""
+    return {"stack": {"bands": bands, "ending": "repeat"}, "extent": extent}
 
-CAMP_HALL = json.loads(json.dumps(CAMP_HOUSE))
-CAMP_HALL["roof"] = {"form": "hip", "pitch": 2, "slab": 126, "slabData": 2,
-                     "overhang": 1, "ridgeCap": False, "hole": False,
-                     "body": BIRCH, "verge": SANDSTONE, "gable": None,
-                     "gableWindows": NO_WINDOW}
-CAMP_HALL["storeys"][0] = json.loads(json.dumps(CAMP_STOREY))
-CAMP_HALL["storeys"][0]["clear"] = 7
-CAMP_HALL["storeys"][0]["headroom"] = 7
-CAMP_HALL["storeys"][0]["wall"]["extent"] = 7
-CAMP_HALL["storeys"][0]["wall"]["stack"]["bands"][1]["thickness"] = 5
+
+def camp_storey(clear, fill, thickness):
+    """A storey `clear` blocks high: a course of stone brick, `thickness` courses of `fill`, then a laid birch
+    log; birch posts and arched windows."""
+    return {"clear": clear, "headroom": clear,
+            "wall": courses(clear, [band(1, STONEBRICK), band(thickness, fill), band(1, BIRCH_LOG)]),
+            "post": solid(17, 2),
+            "windows": {"form": "arched", "block": 135, "hostBlock": -1, "hostData": 0,
+                        "data": 0, "sill": 2, "width": 2, "height": 2, "spacing": 3},
+            "surface": PLAIN_SURFACE, "deck": None}
+
+
+def camp_style(roof, storey):
+    """The camp's shell: a stone-brick plinth and ground course, birch posts and beam ends and an open arched
+    doorway, under `roof` and over the one `storey`."""
+    return kit.build("HouseStyle", {
+        "foundation": {"plate": courses(1, [band(1, STONEBRICK)]), "surface": PLAIN_SURFACE, "footing": None},
+        "roof": roof,
+        "wall": courses(5, [band(1, STONEBRICK)]),
+        "post": solid(17, 2),
+        "windows": NO_WINDOW,
+        "storeys": [storey],
+        "porch": None, "front": None,
+        "beams": {"block": 17, "data": 2, "reach": 1, "any": True},
+        "doorway": {"door": "air",
+                    "head": {"form": "arched", "block": 135, "fill": "upperSlab",
+                             "fillBlock": 126, "fillData": 2},
+                    "width": 2, "height": 3},
+    })
+
+
+CAMP_FILL = cells(6191, 3, 2, [SANDSTONE, BIRCH])
+
+CAMP_HOUSE = camp_style(
+    {"form": "gable", "pitch": 2, "slab": 126, "slabData": 2, "overhang": 1, "ridgeCap": True, "hole": False,
+     "body": BIRCH, "verge": SANDSTONE, "gable": SANDSTONE,
+     "gableWindows": {"form": "open", "block": 102, "hostBlock": -1, "hostData": 0, "data": 0, "sill": 1,
+                      "width": 1, "height": 1, "spacing": 3}},
+    camp_storey(5, CAMP_FILL, 3))
+
+# The spawn hall: the camp house seven blocks clear, under a hipped roof.
+CAMP_HALL = camp_style(
+    {"form": "hip", "pitch": 2, "slab": 126, "slabData": 2, "overhang": 1, "ridgeCap": False, "hole": False,
+     "body": BIRCH, "verge": SANDSTONE, "gable": None, "gableWindows": NO_WINDOW},
+    camp_storey(7, CAMP_FILL, 5))
 
 # The wool room is a rock-cut chamber: sandstone walls on a stone plinth under
 # a flat sandstone lid, so what a raider stands inside belongs to the camp
 # rather than to the studio's bedrock default.
-WOOL_ROOM = json.loads(json.dumps(CAMP_HOUSE))
-WOOL_ROOM["roof"] = {"form": "flat", "pitch": 1, "slab": -1, "slabData": 0,
-                     "overhang": 0, "ridgeCap": False, "hole": False,
-                     "body": solid(24, 2), "verge": solid(24, 2), "gable": None,
-                     "gableWindows": NO_WINDOW}
-WOOL_ROOM["storeys"][0] = json.loads(json.dumps(CAMP_STOREY))
-WOOL_ROOM["storeys"][0]["clear"] = 6
-WOOL_ROOM["storeys"][0]["headroom"] = 6
-WOOL_ROOM["storeys"][0]["wall"]["extent"] = 6
-WOOL_ROOM["storeys"][0]["wall"]["stack"]["bands"] = [
-    {"material": STONEBRICK, "thickness": 1},
-    {"material": cells(6192, 4, 2, [SANDSTONE, solid(24, 2)]), "thickness": 4},
-    {"material": BIRCH_LOG, "thickness": 1}]
+WOOL_ROOM = camp_style(
+    {"form": "flat", "pitch": 1, "slab": -1, "slabData": 0, "overhang": 0, "ridgeCap": False, "hole": False,
+     "body": solid(24, 2), "verge": solid(24, 2), "gable": None, "gableWindows": NO_WINDOW},
+    camp_storey(6, cells(6192, 4, 2, [SANDSTONE, solid(24, 2)]), 4))
 
-styles["camp-house"] = {"kind": "house", "shell": CAMP_HOUSE}
+styles["camp-house"] = kit.HouseStyleRef(shell=CAMP_HOUSE)
 
-finish = {
-    "authors": ["Opus 5"],
-    "created": "2026-09-21",
-    "themes": {"mesa": mesa_theme, "wash": wash_theme, "works": works_theme},
-    "mapTheme": "mesa",
+refinement = kit.Refinement(
+    authors=["Opus 5"],
+    created="2026-09-21",
+    themes={"mesa": mesa_theme, "wash": wash_theme, "works": works_theme},
+    mapTheme="mesa",
     # Mesa: grass tints #90814d, which is where podzol's brown comes to meet it
     # and the pair reads as one dry, leaf-littered floor rather than as two
     # grounds. Read off GET /api/terrain/biomes.
-    "biome": {"kind": "solid", "id": 37},
-    "relief": relief,
-    "addShapes": add_shapes,
-    "addLayers": [terrace_steps],
-    # Keyed on the compiled shape id, which is what POST /plan/compile answers;
-    # a height key cannot tell two pieces at one surface apart.
-    # The crusher terrace is made ground, so its compiled shape is taken out of
-    # the solve: `exclude` keeps the raw column and the two tiers meet at a
-    # face, where `hold` would let the relief bring the hub up to it and there
-    # would be no step and no reason for a flight. The key is the shape id
-    # POST /plan/compile answers, because a height key cannot tell two pieces
-    # at one surface apart.
+    biome=kit.SolidBiome(id=37),
+    relief=relief,
+    addShapes=add_shapes,
+    addLayers=[terrace_steps],
     # The crusher terrace is made ground, so its compiled shape comes out of
     # the solve: `exclude` keeps the raw column and the two tiers meet at a
     # face, where `hold` would let the relief bring the hub up to it and there
     # would be no step and no reason for a flight. The key is the shape id
     # POST /plan/compile answers — a height key cannot tell two pieces at one
     # surface apart, and the compile fuses every piece at 21 into this one.
-    "shapePropsById": {"e-approach-21": {"relief_scope": "exclude"}},
-    "themeById": {"e-approach-21": "works"},
-    "roomStyles": {"spawn": CAMP_HALL, "wool": WOOL_ROOM},
-    "dressing": {"styles": styles, "props": props},
-}
+    shapePropsById={"e-approach-21": kit.SketchShape(relief_scope="exclude")},
+    themeById={"e-approach-21": "works"},
+    roomStyles={"spawn": CAMP_HALL, "wool": WOOL_ROOM},
+    dressing=kit.DressingDoc(styles=styles, props=props),
+)
 
-write(os.path.join(HERE, f"{SLUG}.plan.json"), plan)
-write(os.path.join(HERE, f"{SLUG}.finish.json"), finish)
+for name, doc in (("plan", plan), ("refinement", refinement)):
+    path = os.path.join(HERE, f"{SLUG}.{name}.json")
+    with open(path, "w") as handle:
+        json.dump(doc, handle, indent=1)
+    print(f"wrote {path}")

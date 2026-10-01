@@ -10,7 +10,7 @@ Every place the plan steps two blocks is an authored ramp over the piece that st
 front of each wool room, the arm's inner run, and the flight onto the keep. A ramp is a `level` shape
 with one anchor a vertex, so the ground it draws is exact rather than solved.
 
-Writes <slug>.plan.json and <slug>.finish.json beside this file. Nothing here reads a built world.
+Writes <slug>.plan.json and <slug>.refinement.json beside this file. Nothing here reads a built world.
 """
 import json, math, os
 
@@ -316,9 +316,9 @@ def finish():
 def main():
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as f:
         json.dump(plan(), f, indent=1)
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as f:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as f:
         json.dump(finish(), f, indent=1)
-    print(f"wrote {SLUG}.plan.json and {SLUG}.finish.json")
+    print(f"wrote {SLUG}.plan.json and {SLUG}.refinement.json")
 
 
 if __name__ == "__main__":

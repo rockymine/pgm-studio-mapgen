@@ -14,13 +14,16 @@ from collections import Counter, defaultdict
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, f"{ROOT}/tools/sculpt")
 from layers import compile_layers, stats
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+import drive
+from studio_kit import kit
 
 SRC = f"{ROOT}/specs/opus5-millrace/opus5-millrace"
 OUT = f"{ROOT}/specs/fable-millrace-revamp/fable-millrace-revamp"
 plan = json.load(open(f"{SRC}.plan.json"))
 layout = json.load(open(f"{SRC}.layout.json"))
 intent = json.load(open(f"{SRC}.intent.json"))
-BODIES = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "trees.json")))
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
 MODELS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models")
 
 # ── materials ────────────────────────────────────────────────────────────────────────────────────────
@@ -139,7 +142,11 @@ MOOR = [[-113, 95], [-108, 73], [-90, 76], [-40, 62], [1, 75], [13, 96], [5, 120
 WOLD = [[-122, 15], [-115, 0], [-89, -20], [-65, -2], [-33, 6], [-15, 35], [-46, 30], [-82, 43], [-125, 35]]
 HOLM = [[-70, -75], [-30, -75], [-25, -45], [-45, -32], [-70, -45]]
 
-STYLE = json.load(open(f"{ROOT}/tools/styles/17h-croft.json"))
+# A stored layout holds its house styles whole, so each is the studio's composed library row, copied here.
+studio = kit.Studio(base=drive.endpoint(), quiet=True)
+ROWS = {row["name"]: row["id"] for row in studio.get_room_styles()}
+def library_style(name): return json.loads(studio.get_room_styles_json(ROWS[name])["styleJson"])
+STYLE = library_style("brick-roofed-stone-cottage")
 def repaint(style, swap):
     def walk(n):
         if isinstance(n, dict):
@@ -150,11 +157,17 @@ def repaint(style, swap):
             for v in n: walk(v)
     copy = json.loads(json.dumps(style)); walk(copy); return copy
 VARIANT = repaint(STYLE, {(4, 0): (1, 5), (98, 0): (1, 0), (98, 1): (1, 5)})
-layout["roomStyles"] = {"spawn": json.load(open(f"{ROOT}/tools/styles/showcase-hall.json"))}
+layout["roomStyles"] = {"spawn": library_style("brick-roofed-stone-and-dark-oak-house")}
 
-styles = {}
-for key, tree in BODIES.items():
-    styles[key] = {"kind": "tree", "form": "copied", "body": tree["body"]}
+styles = {key: SHOWCASE[name]["style"] for key, name in {
+    "oak-dense-1": "dense-oak-1", "oak-dense-2": "dense-oak-2", "oak-dense-3": "dense-oak-3",
+    "oak-dense-4": "dense-oak-4", "oak-dense-5": "dense-oak-5", "oak-dense-6": "dense-oak-6",
+    "oak-dense-7": "dense-oak-7", "oak-dense-8": "dense-oak-8", "oak-dense-9": "dense-oak-9",
+    "fir-tall-1": "tall-spruce-1", "fir-tall-2": "tall-spruce-2", "fir-tall-3": "tall-spruce-3",
+    "fir-tall-4": "sequoia-1", "fir-tall-5": "tall-spruce-4", "fir-tall-6": "tall-spruce-5",
+    "fir-tall-7": "tall-spruce-6", "fir-tall-8": "tall-spruce-7",
+    "fir-small-1": "tiny-spruce-1", "fir-small-2": "tiny-spruce-2", "fir-small-3": "tiny-spruce-3",
+    "fir-small-4": "tiny-spruce-4", "fir-small-5": "tiny-spruce-5"}.items()}
 styles["erratic"] = {"kind": "boulder", "form": "angular", "size": 6, "mossy": True,
                      "rock": noise([MOSSY, MOSSY, PRISMARINE, PRISMARINE, COBBLE, EMERALD_ORE, ANDESITE], 3, 51, rise=3)}
 styles["bed-rock"] = {"kind": "boulder", "form": "round", "size": 5, "mossy": True,

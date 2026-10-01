@@ -155,5 +155,5 @@ def write_json(path, data):
         json.dump(data, f, indent=1)
 
 write_json(os.path.join(HERE, f"{SLUG}.plan.json"), plan)
-write_json(os.path.join(HERE, f"{SLUG}.finish.json"), finish)
-print(f"Wrote {SLUG}.plan.json and {SLUG}.finish.json")
+write_json(os.path.join(HERE, f"{SLUG}.refinement.json"), finish)
+print(f"Wrote {SLUG}.plan.json and {SLUG}.refinement.json")

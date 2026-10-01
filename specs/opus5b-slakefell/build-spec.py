@@ -14,16 +14,16 @@ piece with the relief doing all the work; this is four height zones as pieces,
 which is the plan's other legitimate form, and its risers are faces with
 authored ramps cut through them.
 
-Writes opus5b-slakefell.plan.json and opus5b-slakefell.finish.json.
+Writes opus5b-slakefell.plan.json and opus5b-slakefell.refinement.json.
 """
 import json
 import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, HERE)
-from common import (solid, cells, field, band, stack, soil, lobe, lobed_rect,
-                    tree_body, load_cache, save_cache, write)
+ROOT = os.path.dirname(os.path.dirname(HERE))
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from studio_kit import kit
 
 SLUG = "opus5b-slakefell"
 CELL = 4
@@ -97,39 +97,79 @@ plan = {
 RAMP_RUN = 18          # blocks of run for eight of rise: twice the rise and more
 
 relief = {
-    "*": {
-        "base": 9, "reach": 0, "step": 1, "landform": "rolling",
-        "grain": {"amplitude": 1.2, "scale": 18, "seed": 5103},
-        "marks": [
-            {"id": "strand-pan", "kind": "area", "h": 9, "bevel": 2,
-             "ring": lobed_rect(-26, 4, 26, 30, wobble=2.5, seed=5111)},
-            {"id": "core-bench", "kind": "area", "h": 17, "bevel": 4,
-             "ring": lobed_rect(-26, 33, 26, 62, wobble=2.5, seed=5112)},
-            {"id": "brow-shelf", "kind": "area", "h": 25, "bevel": 3,
-             "ring": lobed_rect(-26, 65, 26, 82, wobble=2.0, seed=5113)},
-            {"id": "lodge-apron", "kind": "area", "h": 29, "bevel": 3,
-             "ring": lobed_rect(-26, 85, 26, 110, wobble=2.0, seed=5114)},
-            {"id": "ramp-lower-west", "kind": "line", "r": 5, "tread": 3,
-             "points": [[-18, 22], [-18, 22 + RAMP_RUN]], "h": [9, 17]},
-            {"id": "ramp-lower-east", "kind": "line", "r": 5, "tread": 3,
-             "points": [[16, 22], [16, 22 + RAMP_RUN]], "h": [9, 17]},
-            {"id": "ramp-upper-mid", "kind": "line", "r": 5, "tread": 3,
-             "points": [[-4, 56], [-4, 56 + RAMP_RUN]], "h": [17, 25]},
-            {"id": "ramp-upper-east", "kind": "line", "r": 5, "tread": 3,
-             "points": [[18, 56], [18, 56 + RAMP_RUN]], "h": [17, 25]},
+    "*": kit.SketchReliefJson(
+        base=9, reach=0, step=1, landform="rolling",
+        grain=kit.ReliefGrainJson(amplitude=1.2, scale=18, seed=5103),
+        marks=[
+            # the strand's pan: x -26..26 by z 4..30, walked as a wandering ring
+            kit.ReliefMarkJson(id="strand-pan", kind="area", h=9, bevel=2, ring=[
+                [-27.0, 1.62], [-11.51, 3.1], [-0.42, 3.73], [14.6, 6.15],
+                [26.36, 3.04], [25.29, 11.08], [24.31, 16.29], [28.21, 22.73],
+                [28.26, 30.57], [15.27, 31.31], [-1.61, 30.94], [-12.17, 30.61],
+                [-26.43, 30.95], [-26.25, 24.81], [-27.88, 18.93], [-25.78, 9.13]]),
+            # the core's bench: x -26..26 by z 33..62, walked as a wandering ring
+            kit.ReliefMarkJson(id="core-bench", kind="area", h=17, bevel=4, ring=[
+                [-26.07, 33.16], [-13.25, 30.67], [0.96, 31.62], [13.65, 33.59],
+                [27.56, 34.02], [24.45, 41.26], [24.94, 48.34], [26.63, 57.22],
+                [25.63, 59.8], [12.66, 60.03], [0.9, 62.87], [-10.52, 60.2],
+                [-27.01, 62.43], [-24.3, 55.04], [-24.77, 48.97], [-25.08, 41.79]]),
+            # the brow's shelf: x -26..26 by z 65..82, walked as a wandering ring
+            kit.ReliefMarkJson(id="brow-shelf", kind="area", h=25, bevel=3, ring=[
+                [-25.31, 63.16], [-14.6, 65.99], [1.87, 63.01], [12.75, 64.22],
+                [24.2, 63.39], [24.09, 70.4], [25.66, 75.41], [25.24, 78.32],
+                [27.59, 82.02], [14.63, 81.8], [-1.27, 82.64], [-13.69, 82.63],
+                [-27.27, 81.93], [-27.08, 77.17], [-26.54, 74.31], [-24.7, 68.8]]),
+            # the lodge's apron: x -26..26 by z 85..110, walked as a wandering ring
+            kit.ReliefMarkJson(id="lodge-apron", kind="area", h=29, bevel=3, ring=[
+                [-24.56, 85.2], [-12.0, 84.84], [-1.03, 86.12], [11.98, 86.97],
+                [25.15, 84.97], [27.42, 92.74], [26.17, 96.65], [27.98, 102.91],
+                [25.48, 111.81], [12.54, 111.17], [0.74, 110.58], [-12.37, 108.7],
+                [-27.73, 109.52], [-25.52, 102.36], [-24.06, 97.94], [-24.13, 93.12]]),
+            kit.ReliefMarkJson(id="ramp-lower-west", kind="line", r=5, tread=3,
+                               points=[[-18, 22], [-18, 22 + RAMP_RUN]], h=[9, 17]),
+            kit.ReliefMarkJson(id="ramp-lower-east", kind="line", r=5, tread=3,
+                               points=[[16, 22], [16, 22 + RAMP_RUN]], h=[9, 17]),
+            kit.ReliefMarkJson(id="ramp-upper-mid", kind="line", r=5, tread=3,
+                               points=[[-4, 56], [-4, 56 + RAMP_RUN]], h=[17, 25]),
+            kit.ReliefMarkJson(id="ramp-upper-east", kind="line", r=5, tread=3,
+                               points=[[18, 56], [18, 56 + RAMP_RUN]], h=[17, 25]),
         ],
-        "pushes": [
+        pushes=[
             # the crag over the core's bench: the height an attacker climbs for,
-            # placed so its ring plus its falloff clears the casing by a margin
-            {"id": "crag", "ring": lobe(14, 44, 8, points=9, wobble=0.22,
-                                        seed=5121),
-             "amount": 9, "falloff": 10, "crown": 4, "roughness": 1.4,
-             "seed": 5122},
-        ],
-    }
+            # placed so its ring plus its falloff clears the casing by a margin;
+            # its ring is a lobed one of radius 8 round (14, 44)
+            kit.ReliefPushJson(id="crag", ring=[
+                [20.83, 44.0], [19.08, 48.26], [15.27, 51.21], [10.08, 50.78],
+                [7.57, 46.34], [7.4, 41.6], [9.29, 35.84], [15.57, 35.07],
+                [21.36, 37.82]],
+                amount=9, falloff=10, crown=4, roughness=1.4, seed=5122),
+        ]),
 }
 
 # ---------------------------------------------------------------- the paint
+
+def solid(block, data=0):
+    return kit.SolidMaterial(id=block, data=data)
+
+
+def cells(seed, size, rise, palette):
+    """A cell pattern of `palette` at jitter 45 and warp 1."""
+    return kit.CellMaterial(seed=seed, cellSize=size, jitter=45, warp=1, rise=rise, palette=palette)
+
+
+def band(thickness, material):
+    return kit.Band(material=material, thickness=thickness)
+
+
+def stack(axis, bands):
+    """`bands` read along `axis`, the last one carried on past the end."""
+    return kit.LayeredMaterial(axis=axis, stack=kit.BandStack(ending="repeat", bands=bands))
+
+
+def soil(top, under, depth=2):
+    """One course of a surfacing block over `depth` of soil."""
+    return stack("depth", [band(1, top), band(depth, under)])
+
 
 SLATE = solid(1, 0)
 ANDESITE = solid(1, 5)
@@ -151,65 +191,71 @@ SLATE_FACE = cells(5131, 6, 5, [SLATE, ANDESITE])
 # snow and turf on the benches, scree on the shoulders, slate on the risers.
 SLOPE_SNOW, SLOPE_SCREE = 20, 40
 
-fell_theme = {
-    "bedrock": {"relative": False, "value": 1},
-    "fill": SLATE,
-    "wall": SLATE_FACE,
-    "wallEnabled": True,
-    "wallOnTerrainFaces": True,
-    "rim": {"enabled": True, "depth": 1, "material": ANDESITE},
-    "rimEdges": "void",
-    "surface": {"enabled": True, "depth": 3,
-                "material": stack("slope", [
-                    band(SLOPE_SNOW, stack("depth", [
-                        band(1, cells(5132, 9, 0, [SNOW, TURF])),
-                        band(2, EARTH)])),
-                    band(SLOPE_SCREE - SLOPE_SNOW,
-                         soil(cells(5133, 7, 0, [GRAVEL, WORN]), EARTH)),
-                    band(90 - SLOPE_SCREE, stack("depth", [band(3, SLATE_FACE)])),
-                ])},
-}
+fell_theme = kit.TerrainTheme(
+    bedrock=kit.BedrockSpec(relative=False, value=1),
+    fill=SLATE,
+    wall=SLATE_FACE,
+    wallEnabled=True,
+    wallOnTerrainFaces=True,
+    rim=kit.TopBand(enabled=True, depth=1, material=ANDESITE),
+    rimEdges="void",
+    surface=kit.TopBand(enabled=True, depth=3, material=stack("slope", [
+        band(SLOPE_SNOW, stack("depth", [
+            band(1, cells(5132, 9, 0, [SNOW, TURF])),
+            band(2, EARTH)])),
+        band(SLOPE_SCREE - SLOPE_SNOW, soil(cells(5133, 7, 0, [GRAVEL, WORN]), EARTH)),
+        band(90 - SLOPE_SCREE, stack("depth", [band(3, SLATE_FACE)])),
+    ])),
+)
 
-tarn_theme = {
-    "bedrock": {"relative": False, "value": 1},
-    "fill": SLATE,
-    "wall": SLATE_FACE,
-    "wallEnabled": True,
-    "wallOnTerrainFaces": True,
-    "rim": {"enabled": False, "depth": 1, "material": ANDESITE},
-    "rimEdges": "void",
-    "surface": {"enabled": True, "depth": 3,
-                "material": soil(cells(5134, 7, 0, [GRAVEL, CLAY]), EARTH)},
-}
+tarn_theme = kit.TerrainTheme(
+    bedrock=kit.BedrockSpec(relative=False, value=1),
+    fill=SLATE,
+    wall=SLATE_FACE,
+    wallEnabled=True,
+    wallOnTerrainFaces=True,
+    rim=kit.TopBand(enabled=False, depth=1, material=ANDESITE),
+    rimEdges="void",
+    surface=kit.TopBand(enabled=True, depth=3, material=soil(cells(5134, 7, 0, [GRAVEL, CLAY]), EARTH)),
+)
 
-works_theme = {
-    "bedrock": {"relative": False, "value": 1},
-    "fill": SLATE,
-    "wall": cells(5135, 5, 4, [STONEBRICK, ANDESITE]),
-    "wallEnabled": True,
-    "wallOnTerrainFaces": True,
-    "rim": {"enabled": True, "depth": 1, "material": STONEBRICK},
-    "rimEdges": "boundary",
-    "surface": {"enabled": True, "depth": 3,
-                "material": soil(cells(5136, 5, 0, [STONEBRICK, ANDESITE, BRICK]),
-                                 SLATE)},
-}
+works_theme = kit.TerrainTheme(
+    bedrock=kit.BedrockSpec(relative=False, value=1),
+    fill=SLATE,
+    wall=cells(5135, 5, 4, [STONEBRICK, ANDESITE]),
+    wallEnabled=True,
+    wallOnTerrainFaces=True,
+    rim=kit.TopBand(enabled=True, depth=1, material=STONEBRICK),
+    rimEdges="boundary",
+    surface=kit.TopBand(enabled=True, depth=3,
+                        material=soil(cells(5136, 5, 0, [STONEBRICK, ANDESITE, BRICK]), SLATE)),
+)
 
 # ---------------------------------------------------------------- the shapes
 
 STRAND_BASE, BENCH_BASE, BROW_BASE, LODGE_BASE = 9, 17, 25, 29
 
 add_shapes = [
-    {"id": "tarn-shore", "type": "polygon", "operation": "add",
-     "floor": 0, "base_height": STRAND_BASE, "theme": "tarn",
-     "vertices": lobe(-12, 20, 11, points=13, wobble=0.22, seed=5141)},
-    {"id": "fold-ground", "type": "polygon", "operation": "add",
-     "floor": 0, "base_height": BENCH_BASE, "theme": "works",
-     "vertices": lobe(GOAL_AT[0], GOAL_AT[1], 10, points=11, wobble=0.15,
-                      seed=5142)},
-    {"id": "lodge-yard", "type": "polygon", "operation": "add",
-     "floor": 0, "base_height": LODGE_BASE, "theme": "works",
-     "vertices": lobed_rect(-22, 86, 22, 102, wobble=1.5, seed=5143)},
+    # the tarn's shore: a lobed ring of radius 11 round (-12, 20)
+    kit.SketchShape(id="tarn-shore", type="polygon", operation="add", floor=0, base_height=STRAND_BASE,
+                    theme="tarn", vertices=[
+                        [0.94, 20.0], [-3.19, 24.62], [-6.24, 28.35], [-10.55, 31.96],
+                        [-16.21, 31.09], [-21.23, 28.18], [-20.66, 22.13], [-22.92, 17.31],
+                        [-21.05, 11.98], [-15.33, 11.23], [-10.78, 9.92], [-6.62, 12.21],
+                        [-0.22, 13.82]]),
+    # the fold's ground: a lobed ring of radius 10 round the core at GOAL_AT, (-14, 48)
+    kit.SketchShape(id="fold-ground", type="polygon", operation="add", floor=0, base_height=BENCH_BASE,
+                    theme="works", vertices=[
+                        [-5.24, 48.0], [-4.85, 53.88], [-9.25, 58.39], [-15.39, 57.69],
+                        [-21.44, 56.59], [-23.75, 50.86], [-24.68, 44.86], [-20.04, 41.04],
+                        [-15.62, 36.73], [-9.77, 38.74], [-6.45, 43.15]]),
+    # the lodge's yard: x -22..22 by z 86..102, walked as a wandering ring
+    kit.SketchShape(id="lodge-yard", type="polygon", operation="add", floor=0, base_height=LODGE_BASE,
+                    theme="works", vertices=[
+                        [-22.68, 85.4], [-10.62, 84.93], [-0.81, 85.49], [11.56, 87.28],
+                        [21.1, 87.37], [23.47, 89.57], [21.19, 93.3], [22.98, 96.74],
+                        [20.7, 103.16], [10.13, 102.74], [-0.76, 101.18], [-11.79, 101.1],
+                        [-21.3, 101.69], [-20.68, 97.33], [-20.58, 95.3], [-23.35, 90.9]]),
 ]
 
 # The fold: a drystone ring round the core, open on the south so the way in is
@@ -217,32 +263,23 @@ add_shapes = [
 # reachability walk leave it alone, and it is drawn clear of the casing — a
 # core at float 6 over ground at 17 has its lowest course at y24 and the wall
 # tops out at y20, so the two never hold the same courses.
-fold_wall = {
-    "id": "core-fold", "name": "the fold", "base_y": 0,
-    "kind": "made", "part_of": "fold",
-    "groups": [{"id": "core-fold", "name": "the fold", "mirrors": True,
-                "shapeIds": ["fold-arc-west", "fold-arc-east"]}],
-    "shapes": [
-        {"id": "fold-arc-west", "type": "polyline", "operation": "add",
-         "floor": 17, "base_height": 3, "radius": 1.0,
-         "stroke_edge": "solid", "keepClear": True,
-         "material": cells(5151, 4, 2, [COBBLE, ANDESITE]),
-         "vertices": [[-17, 55], [-22, 50], [-22, 44], [-18, 41]]},
-        {"id": "fold-arc-east", "type": "polyline", "operation": "add",
-         "floor": 17, "base_height": 3, "radius": 1.0,
-         "stroke_edge": "solid", "keepClear": True,
-         "material": cells(5151, 4, 2, [COBBLE, ANDESITE]),
-         "vertices": [[-10, 41], [-6, 45], [-6, 51], [-10, 55]]},
+fold_wall = kit.AddedLayer(
+    id="core-fold", name="the fold", base_y=0, kind="made", part_of="fold",
+    groups=[kit.SketchGroup(id="core-fold", name="the fold", mirrors=True,
+                            shapeIds=["fold-arc-west", "fold-arc-east"])],
+    shapes=[
+        kit.SketchShape(id="fold-arc-west", type="polyline", operation="add", floor=17, base_height=3,
+                        radius=1.0, stroke_edge="solid", keepClear=True,
+                        material=cells(5151, 4, 2, [COBBLE, ANDESITE]),
+                        vertices=[[-17, 55], [-22, 50], [-22, 44], [-18, 41]]),
+        kit.SketchShape(id="fold-arc-east", type="polyline", operation="add", floor=17, base_height=3,
+                        radius=1.0, stroke_edge="solid", keepClear=True,
+                        material=cells(5151, 4, 2, [COBBLE, ANDESITE]),
+                        vertices=[[-10, 41], [-6, 45], [-6, 51], [-10, 55]]),
     ],
-}
+)
 
 # ---------------------------------------------------------------- the dressing
-
-cache_path = os.path.join(HERE, "trees.json")
-cache = load_cache(cache_path)
-PINE = tree_body("showcase-r2-2", cache)        # large pine
-FIR = tree_body("showcase-r4-3", cache)         # tiny spruce
-save_cache(cache_path, cache)
 
 PAVE = cells(5162, 3, 0, [GRAVEL, COBBLE, ANDESITE])
 
@@ -250,57 +287,56 @@ BOULDERS = [(-20, 70), (10, 72), (-22, 14)]
 PINES = [(-20, 76), (-14, 72), (-21, 62), (8, 60)]
 FIRS = [(4, 74), (14, 66)]
 
-styles = {
-    "pine": PINE,
-    "fir": FIR,
-    "erratic": {"kind": "boulder", "form": "round", "size": 2, "mossy": False,
-                "rock": field(5161, 3, 3, [SLATE, COBBLE, ANDESITE],
-                              rise=3, kind="turbulence")},
-    "fell-house": {"kind": "house", "shell": None},
-}
+# The copied trees, each the showcase tree it names, as corpus/tree-showcase/trees.json carries it.
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+styles = {key: kit.build("TreeStyle", SHOWCASE[tree]["style"]) for key, tree in {
+    "pine": "large-pine-2", "fir": "tiny-spruce-3"}.items()}
+styles["erratic"] = kit.BoulderStyle(form="round", size=2, mossy=False, rock=kit.TurbulenceMaterial(
+    seed=5161, scale=3, octaves=3, stops=[SLATE, COBBLE, ANDESITE], rise=3))
 
 props = [
     # the two routes: the lodge door down the fell to the fold's gate, and the
     # fold forward to the strand a crossing lands on. Both take the ramps,
     # because the ramps are where the ground goes.
-    {"id": "fell-track", "kind": "stroke", "seed": 5171, "radius": 2,
-     "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[-1, 88], [-3, 78], [-4, 68], [-6, 58], [-11, 52]]},
-    {"id": "haul-road", "kind": "stroke", "seed": 5172, "radius": 2,
-     "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[-14, 38], [-16, 32], [-18, 24], [-17, 16], [-15, 10]]},
+    kit.StrokeProp(id="fell-track", seed=5171, radius=2, style="solid", claimsGround=True, pave=PAVE,
+                   points=[[-1, 88], [-3, 78], [-4, 68], [-6, 58], [-11, 52]]),
+    kit.StrokeProp(id="haul-road", seed=5172, radius=2, style="solid", claimsGround=True, pave=PAVE,
+                   points=[[-14, 38], [-16, 32], [-18, 24], [-17, 16], [-15, 10]]),
 
-    {"id": "frozen-tarn", "kind": "fluid", "seed": 5173, "shape": "pool",
-     "points": lobe(-12, 20, 7, points=9, wobble=0.2, seed=5174),
-     "radius": 2, "depth": 2, "shore": 3, "shoreWander": True,
-     "bank": cells(5175, 4, 0, [GRAVEL, CLAY, SLATE])},
+    # the frozen tarn: a lobed ring of radius 7 round (-12, 20)
+    kit.FluidProp(id="frozen-tarn", seed=5173, shape="pool", points=[
+        [-6.23, 20.0], [-7.57, 23.72], [-10.64, 27.72], [-15.15, 25.46],
+        [-19.28, 22.65], [-18.41, 17.67], [-15.84, 13.35], [-10.91, 13.84],
+        [-6.44, 15.34]],
+        radius=2, depth=2, shore=3, shoreWander=True, bank=cells(5175, 4, 0, [GRAVEL, CLAY, SLATE])),
 
     # Two buildings, each on the only ground its own footprint seats on. The
     # bench cannot hold one: the core's clearance takes the west of it and the
     # crag's skirt the east, and a byre tried there was declined DR-SLOPE for
     # ten blocks of rise across its own plan. The seats raster for a 9 x 6
     # house is what these two positions come off.
-    {"id": "lodge-byre", "kind": "house", "seed": 5176, "style": "fell-house",
-     "front": "negX",
-     "wings": [{"corners": [[14, 88], [22, 93]], "spec": {"storeysHigh": 2}}]},
-    {"id": "tarn-store", "kind": "house", "seed": 5177, "style": "fell-house",
-     "front": "negZ",
-     "wings": [{"corners": [[-2, 18], [6, 23]], "spec": {"storeysHigh": 1}}]},
+    kit.HouseProp(id="lodge-byre", seed=5176, style="fell-house", front="negX",
+                  wings=[kit.AuthoredWing(corners=[[14, 88], [22, 93]], spec=kit.WingSpec(storeysHigh=2))]),
+    kit.HouseProp(id="tarn-store", seed=5177, style="fell-house", front="negZ",
+                  wings=[kit.AuthoredWing(corners=[[-2, 18], [6, 23]], spec=kit.WingSpec(storeysHigh=1))]),
 ]
 
-props += [{"id": f"pine-{i}", "kind": "tree", "seed": 5200 + i,
-           "x": x, "z": z, "style": "pine"} for i, (x, z) in enumerate(PINES)]
-props += [{"id": f"fir-{i}", "kind": "tree", "seed": 5220 + i,
-           "x": x, "z": z, "style": "fir"} for i, (x, z) in enumerate(FIRS)]
-props += [{"id": f"erratic-{i}", "kind": "boulder", "seed": 5240 + i,
-           "x": x, "z": z, "style": "erratic"}
+props += [kit.TreeProp(id=f"pine-{i}", seed=5200 + i, x=x, z=z, style="pine")
+          for i, (x, z) in enumerate(PINES)]
+props += [kit.TreeProp(id=f"fir-{i}", seed=5220 + i, x=x, z=z, style="fir")
+          for i, (x, z) in enumerate(FIRS)]
+props += [kit.BoulderProp(id=f"erratic-{i}", seed=5240 + i, x=x, z=z, style="erratic")
           for i, (x, z) in enumerate(BOULDERS)]
 
 props += [
-    {"id": "flora", "kind": "flora", "seed": 5180,
-     "points": lobed_rect(-24, 8, 24, 102, wobble=2.0, seed=5181),
-     "spec": {"coverage": 0.16, "scale": 30, "octaves": 3, "fernShare": 0.20,
-              "flowerShare": 0.04, "flowerScale": 22, "tallShare": 0.04}},
+    # the flora's ground: x -24..24 by z 8..102, strand to lodge, walked as a wandering ring
+    kit.FloraProp(id="flora", seed=5180, points=[
+        [-24.52, 8.51], [-12.57, 6.98], [0.78, 9.52], [11.61, 6.18],
+        [23.04, 9.91], [24.46, 31.93], [22.24, 53.12], [25.27, 79.31],
+        [22.07, 103.33], [11.3, 103.16], [-0.69, 102.72], [-10.84, 103.53],
+        [-24.54, 101.95], [-22.92, 78.79], [-23.83, 54.72], [-24.39, 32.94]],
+        spec=kit.FloraSpec(coverage=0.16, scale=30, octaves=3, fernShare=0.20, flowerShare=0.04,
+                           flowerScale=22, tallShare=0.04)),
 ]
 
 # ---------------------------------------------------------------- the house
@@ -311,78 +347,83 @@ props += [
 
 SPRUCE = solid(5, 1)
 DARKOAK = solid(5, 5)
-SPRUCE_LOG = {"kind": "laidLog", "id": 17, "data": 1}
+SPRUCE_LOG = kit.LaidLogMaterial(id=17, data=1)
 
 PLAIN_SURFACE = {"field": None, "border": None, "borderWidth": 1,
                  "inlay": None, "inlayInset": 2, "isPlain": True}
 NO_WINDOW = {"form": "none", "block": 102, "hostBlock": -1, "hostData": 0,
              "data": 0, "sill": 2, "width": 2, "height": 2, "spacing": 3}
 
-FELL_STOREY = {
-    "clear": 5,
-    "wall": {"stack": {"bands": [
-        {"material": BRICK, "thickness": 1},
-        {"material": cells(5191, 3, 2, [DARKOAK, SPRUCE]), "thickness": 3},
-        {"material": SPRUCE_LOG, "thickness": 1}], "ending": "repeat"},
-        "extent": 5},
-    "post": solid(17, 1),
-    "windows": {"form": "arched", "block": 134, "hostBlock": -1, "hostData": 0,
-                "data": 0, "sill": 2, "width": 2, "height": 2, "spacing": 3},
-    "surface": PLAIN_SURFACE, "deck": None, "headroom": 5,
-}
 
-FELL_HOUSE = {
-    "foundation": {
-        "plate": {"stack": {"bands": [{"material": BRICK, "thickness": 1}],
-                            "ending": "repeat"}, "extent": 1},
-        "surface": PLAIN_SURFACE, "footing": None},
-    "roof": {"form": "gable", "pitch": 2, "slab": 44, "slabData": 4,
-             "overhang": 1, "ridgeCap": True, "hole": False,
-             "body": BRICK, "verge": DARKOAK, "gable": DARKOAK,
-             "gableWindows": {"form": "open", "block": 102, "hostBlock": -1,
-                              "hostData": 0, "data": 0, "sill": 1, "width": 1,
-                              "height": 1, "spacing": 3}},
-    "wall": {"stack": {"bands": [{"material": BRICK, "thickness": 1}],
-                       "ending": "repeat"}, "extent": 5},
-    "post": solid(17, 1),
-    "windows": NO_WINDOW,
-    "storeys": [FELL_STOREY],
-    "porch": None, "front": None,
-    "beams": {"block": 17, "data": 1, "reach": 1, "any": True},
-    "doorway": {"door": "air",
-                "head": {"form": "arched", "block": 134, "fill": "upperSlab",
-                         "fillBlock": 126, "fillData": 1},
-                "width": 2, "height": 3},
-}
+def courses(extent, bands):
+    """A wall or a plate `extent` courses high, laid in `bands` from its base, the last one carried on."""
+    return {"stack": {"bands": bands, "ending": "repeat"}, "extent": extent}
 
-LODGE_HALL = json.loads(json.dumps(FELL_HOUSE))
-LODGE_HALL["roof"] = {"form": "hip", "pitch": 2, "slab": 44, "slabData": 4,
-                      "overhang": 1, "ridgeCap": False, "hole": False,
-                      "body": BRICK, "verge": DARKOAK, "gable": None,
-                      "gableWindows": NO_WINDOW}
-LODGE_HALL["storeys"][0] = json.loads(json.dumps(FELL_STOREY))
-LODGE_HALL["storeys"][0]["clear"] = 7
-LODGE_HALL["storeys"][0]["headroom"] = 7
-LODGE_HALL["storeys"][0]["wall"]["extent"] = 7
-LODGE_HALL["storeys"][0]["wall"]["stack"]["bands"][1]["thickness"] = 5
 
-styles["fell-house"] = {"kind": "house", "shell": FELL_HOUSE}
+def fell_storey(clear, thickness):
+    """A storey `clear` blocks high: a course of brick, `thickness` courses of dark oak and spruce, then a laid
+    spruce log; spruce posts and arched windows."""
+    return {"clear": clear, "headroom": clear,
+            "wall": courses(clear, [band(1, BRICK), band(thickness, cells(5191, 3, 2, [DARKOAK, SPRUCE])),
+                                    band(1, SPRUCE_LOG)]),
+            "post": solid(17, 1),
+            "windows": {"form": "arched", "block": 134, "hostBlock": -1, "hostData": 0,
+                        "data": 0, "sill": 2, "width": 2, "height": 2, "spacing": 3},
+            "surface": PLAIN_SURFACE, "deck": None}
 
-finish = {
-    "authors": ["Opus 5"],
-    "created": "2026-09-21",
-    "themes": {"fell": fell_theme, "tarn": tarn_theme, "works": works_theme},
-    "mapTheme": "fell",
+
+def fell_style(roof, storey):
+    """The fell's shell: a brick plinth and ground course, spruce posts and beam ends and an open arched
+    doorway, under `roof` and over the one `storey`."""
+    return kit.build("HouseStyle", {
+        "foundation": {"plate": courses(1, [band(1, BRICK)]), "surface": PLAIN_SURFACE, "footing": None},
+        "roof": roof,
+        "wall": courses(5, [band(1, BRICK)]),
+        "post": solid(17, 1),
+        "windows": NO_WINDOW,
+        "storeys": [storey],
+        "porch": None, "front": None,
+        "beams": {"block": 17, "data": 1, "reach": 1, "any": True},
+        "doorway": {"door": "air",
+                    "head": {"form": "arched", "block": 134, "fill": "upperSlab",
+                             "fillBlock": 126, "fillData": 1},
+                    "width": 2, "height": 3},
+    })
+
+
+FELL_HOUSE = fell_style(
+    {"form": "gable", "pitch": 2, "slab": 44, "slabData": 4, "overhang": 1, "ridgeCap": True, "hole": False,
+     "body": BRICK, "verge": DARKOAK, "gable": DARKOAK,
+     "gableWindows": {"form": "open", "block": 102, "hostBlock": -1, "hostData": 0, "data": 0, "sill": 1,
+                      "width": 1, "height": 1, "spacing": 3}},
+    fell_storey(5, 3))
+
+# The lodge hall: the fell house seven blocks clear, under a hipped roof.
+LODGE_HALL = fell_style(
+    {"form": "hip", "pitch": 2, "slab": 44, "slabData": 4, "overhang": 1, "ridgeCap": False, "hole": False,
+     "body": BRICK, "verge": DARKOAK, "gable": None, "gableWindows": NO_WINDOW},
+    fell_storey(7, 5))
+
+styles["fell-house"] = kit.HouseStyleRef(shell=FELL_HOUSE)
+
+refinement = kit.Refinement(
+    authors=["Opus 5"],
+    created="2026-09-21",
+    themes={"fell": fell_theme, "tarn": tarn_theme, "works": works_theme},
+    mapTheme="fell",
     # Ice plains: grass, leaves and water tint #80b497, which is what makes a
     # snowfield and a meadow agree instead of a summer meadow running through
     # the snow. Read off GET /api/terrain/biomes.
-    "biome": {"kind": "solid", "id": 12},
-    "relief": relief,
-    "addShapes": add_shapes,
-    "addLayers": [fold_wall],
-    "roomStyles": {"spawn": LODGE_HALL, "wool": LODGE_HALL},
-    "dressing": {"styles": styles, "props": props},
-}
+    biome=kit.SolidBiome(id=12),
+    relief=relief,
+    addShapes=add_shapes,
+    addLayers=[fold_wall],
+    roomStyles={"spawn": LODGE_HALL, "wool": LODGE_HALL},
+    dressing=kit.DressingDoc(styles=styles, props=props),
+)
 
-write(os.path.join(HERE, f"{SLUG}.plan.json"), plan)
-write(os.path.join(HERE, f"{SLUG}.finish.json"), finish)
+for name, doc in (("plan", plan), ("refinement", refinement)):
+    path = os.path.join(HERE, f"{SLUG}.{name}.json")
+    with open(path, "w") as handle:
+        json.dump(doc, handle, indent=1)
+    print(f"wrote {path}")

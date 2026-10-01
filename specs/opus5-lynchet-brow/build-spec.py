@@ -14,7 +14,7 @@ Where made ground meets grown ground, worked as a whole board. Four decisions ca
   the made ground's face is where its paint goes — wallRun along the perimeter, wallDiagonal to
     shear the stripes by height, and a teamTint in the wall of the terrace the core stands on.
 
-Writes <slug>.plan.json and <slug>.finish.json beside itself.
+Writes <slug>.plan.json and <slug>.refinement.json beside itself.
 """
 import json, math, os, random
 
@@ -329,7 +329,7 @@ finish = {
 
 with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
     json.dump(plan, handle, indent=1)
-with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
     json.dump(finish, handle, indent=1)
 print(f"{SLUG}: {len(plan['pieces'])} pieces, {len(shapes)} terraces, {len(flights)} flights, "
       f"{len(relief['*']['marks'])} marks, {len(props)} props")

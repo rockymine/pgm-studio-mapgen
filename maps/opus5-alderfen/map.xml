@@ -9,6 +9,9 @@
     <authors>
         <author>Opus 5</author>
     </authors>
+    <contributors>
+        <contributor contribution="Built with the PGM Studio authoring API at https://pgmstudio.de">PGM Studio (pgmstudio.de)</contributor>
+    </contributors>
     <teams>
         <team id="red-team" color="red" max="16">Red</team>
         <team id="blue-team" color="blue" max="16">Blue</team>
@@ -56,11 +59,15 @@
         <spawn team="red-team" kit="spawn-kit" region="red-spawn-point"/>
         <spawn team="blue-team" kit="spawn-kit" yaw="180" region="blue-spawn-point"/>
     </spawns>
+    <modes>
+        <mode id="mode-gold-block" after="15m" material="gold block"/>
+        <mode id="mode-glass" after="20m" material="glass"/>
+    </modes>
     <cores>
-        <core id="red-core" team="red-team" region="red-core-region"/>
-        <core id="red-core-2" team="red-team" region="red-core-2-region"/>
-        <core id="blue-core" team="blue-team" region="blue-core-region"/>
-        <core id="blue-core-2" team="blue-team" region="blue-core-2-region"/>
+        <core id="red-core" team="red-team" mode-changes="true" region="red-core-region"/>
+        <core id="red-core-2" team="red-team" mode-changes="true" region="red-core-2-region"/>
+        <core id="blue-core" team="blue-team" mode-changes="true" region="blue-core-region"/>
+        <core id="blue-core-2" team="blue-team" mode-changes="true" region="blue-core-2-region"/>
     </cores>
     <filters>
         <team id="only-blue">blue-team</team>
@@ -90,7 +97,7 @@
     <regions>
         <point id="blue-spawn-point">0,18,95</point>
         <point id="red-spawn-point">0,18,-95</point>
-        <point id="observer-spawn">0,59,0</point>
+        <point id="observer-spawn">0,94,0</point>
         <rectangle id="blue-spawn" min="-10,85" max="10,105"/>
         <rectangle id="red-spawn" min="-10,-105" max="10,-85"/>
         <cuboid id="red-core-region" min="-24,21,-58" max="-19,26,-53"/>
@@ -147,6 +154,9 @@
         <item>leather chestplate</item>
         <item>chainmail leggings</item>
         <item>leather boots</item>
+        <item>obsidian</item>
+        <item>gold block</item>
+        <item>glass</item>
     </itemremove>
     <toolrepair>
         <tool>iron sword</tool>
@@ -165,5 +175,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>61</maxbuildheight>
+    <maxbuildheight>39</maxbuildheight>
 </map>

@@ -28,19 +28,20 @@ to **~54k**, and the 27 technique cards to **~66k**. Open one at the question th
 | one technique card | ~2.4k median | freely — the card nearest what is being built |
 | `pgm-studio/docs/gameplay/match-flow.md` | ~16k | **once, before the board is decided** — or its §4, §6 and §10 alone |
 | `pgm-studio/docs/gameplay/approaches.md` | ~5k | with it; every claim is the author's and settled |
-| `00-board.txt` | 0.4–3k | freely |
-| one named `renders/*.txt` | ~1.1k median | freely, **named individually** |
-| `02-heightmap.txt` · `03-slopes.txt` | 1.3–10k | one board at a time |
-| every text render of one board | **30–57k** | never — name the file wanted |
+| the report's three numbers and short readings | ~1k | freely — the drive prints them |
+| one named reading of `out/reports/<slug>.txt` | ~1.1k median | freely, **named individually** |
+| the report's `heightmap` · `slopes` | 1.3–10k | one board at a time |
+| a whole report | **30–57k** | never — name the reading wanted |
 | median `*.layout.json` | ~12k | only through `jq`, never whole |
 | `fable-millrace-revamp`, `opus5-slipway` layouts | **397k · 367k** | **never open. Either one ends the run.** |
 
 **Never `cat` a `*.layout.json`.** Two of them exceed a whole window and 27 exceed 20k. A
 layout is queried: `jq '.shapes | length'`, `jq '.shapes[] | select(.id=="…")'`. Same for a
-large `*.finish.json`.
+large `*.refinement.json`.
 
-**A one-line answer is a `grep`, not a file read.** `03-slopes.txt` runs to 10k tokens and its
-verdict is one line: `grep 'cells:' …/03-slopes.txt`.
+**A one-line answer is a `grep`, not a file read.** A report runs to 50k tokens and every reading in it
+opens with `== <name>   (<route>)`: `grep -A3 '^== slopes ' out/reports/<slug>.txt` is the slope grid's head,
+and the three numbers are the report's first lines.
 
 **Do not open another board's spec, and that is a rule about authoring rather than about budget.**
 An arrangement read is the arrangement reached for, because it is the one already known to satisfy
@@ -49,7 +50,7 @@ different blocks, and neither the gates nor a render says so.
 
 **`techniques/` is where a technique is read, and it is built for exactly this.** A card states one
 instrument with its variants side by side, cites no past map, and costs ~2.4k tokens against a
-thousand-line finish. Where a field name rather than a technique is wanted, `GET /api/openapi/v1.json`
+thousand-line refinement. Where a field name rather than a technique is wanted, `GET /api/openapi/v1.json`
 is the contract and a committed spec is dated evidence of it.
 
 **`specs/` is the log's evidence, and it is opened to answer what a past board *did*** — a run report's
@@ -121,10 +122,10 @@ because there is an answer to *why here*:
   space rather than cut with a `subtract`: `SK13` reads a subtract as the board's negative
   space and refuses any add that fills it, on any layer.
 - **copied trees rather than the vanilla stamp.** A `copied` recipe carries a `body` block for
-  block; `pgm-studio/tools/seed-trees.cs` files bodies out of a world into the library, and
-  `corpus/tree-showcase` is the world they come from. State them under names in
-  `dressing.styles` and let the placements name those — `specs/fable-millrace-revamp/trees.json`
-  is 22 of them, keyed the way its placements name them.
+  block, and `corpus/tree-showcase/trees.json` holds every tree of the showcase world as
+  `pgm-studio/tools/seed-trees.cs` cuts it. State each under a name of the board's own in
+  `dressing.styles`, as the recipe the snapshot gives the showcase tree it is, and let the
+  placements name those.
   **A seeded name is `<kind>-<n>` and the kind is the author's** — `large-pine`, `olive`, `jungle`,
   `willow-1`…`willow-5` — as `corpus/README.md`'s table states it per band. The log a tree is built of
   is **not** what it is.
@@ -144,8 +145,8 @@ opening anything else. `techniques/README.md` indexes them.
 `technique-<card>` — and `tools/seed-studio.py --check` says whether this database has them.
 
 **It answers for the copied trees too, and those are the half a fresh studio is missing.** A studio seeds
-its own library on every boot — materials, house presets, themes, biomes, four boulders and the six
-vanilla tree species — but the 84 trees cut out of `corpus/tree-showcase` are this repository's, and
+its own library on every boot — materials, house presets, themes, biomes, four boulders and the seven
+vanilla tree species — but the 94 trees cut out of `corpus/tree-showcase` are this repository's, and
 `--check` reporting none of them means the recipe named two sections below does not exist yet.
 
 **A card's variants stand side by side in one world, which is what makes the comparison the lesson.** Read
@@ -170,7 +171,7 @@ Run this over the spec that was just written. A zero is not a fault; **four zero
 that used one instrument and called it terrain.**
 
 ```python
-# python3 - specs/<slug>/<slug>.finish.json
+# python3 - specs/<slug>/<slug>.refinement.json
 import json, sys
 d = json.load(open(sys.argv[1]))
 shapes = list(d.get("addShapes") or [])
@@ -192,11 +193,11 @@ print("copied trees", sum(1 for v in styles.values()
                           if isinstance(v, dict) and v.get("form") == "copied"))
 ```
 
-It reads the **finish the spec generated**, not the script that generated it. A
+It reads the **refinement the spec generated**, not the script that generated it. A
 `build-spec.py` that states a flight through a helper writes `height_mode` once and
 uses it four times, and a grep over the source counts one.
 
-And read `05-themes.txt`. A theme registered and not on the ground is a theme that painted
+And read the report's `themes`. A theme registered and not on the ground is a theme that painted
 nothing, and nothing anywhere raises a finding for it. A theme at a fraction of a percent is
 the same fault: the shape is under the ground rather than on it, or another shape of equal
 area is taking the cell.

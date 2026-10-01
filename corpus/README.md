@@ -5,7 +5,7 @@ was driven lives in `maps/`; what is here was built by hand and is read by tools
 
 | World | What it is | Read by |
 |---|---|---|
-| `tree-showcase` | 86 author-built trees, one per 19 × 19 platform, in 17 bands along z | `pgm-studio/tools/seed-trees.cs`, which seeds the studio's tree corpus; `tools/trees.py catalogue\|match\|bodies` |
+| `tree-showcase` | 95 author-built trees, one per 19 × 19 platform, in 20 bands along z | `pgm-studio/tools/seed-trees.cs`, which seeds the studio's tree corpus and writes `tree-showcase/trees.json`; `tools/trees.py catalogue\|match\|verify` |
 
 **A tree here is the only thing a `copied` style may be cut from.** `copied` means cut out of a world, so a
 body assembled by hand and filed as one is a recipe claiming a provenance it does not have.
@@ -32,7 +32,7 @@ relabel renames the trees already filed: change the file and the table together.
 `seed-trees.cs` files only when it is passed `--wool`, and the row is held for it either way. So the rows are
 the world's, and `wool-tree-1` is simply absent from a run without the flag.
 
-**The row is the band, and the band is a kind. [author]** Seventeen bands, and what each one is is the
+**The row is the band, and the band is a kind. [author]** Twenty bands, and what each one is is the
 author's — nothing in the world or the library states it, and no measurement recovers it.
 
 | row | trees | what it is **[author]** | named | built of | height |
@@ -49,33 +49,34 @@ author's — nothing in the world or the library states it, and no measurement r
 | `r10` | 5 | small olive, two main branches each | `olive` | dark-oak log, dark-oak leaves | 9–10 |
 | `r11` | 9 | its own oak set — very dense leaves, small stems | `dense-oak` | oak log | 12–15 |
 | `r12` | 5 | the oak kind, with `r9` and `r14` | `oak` 5–9 | oak log, wooden slab | 12–16 |
-| `r13` | 9 | birch | `birch` | birch log | 11–15 |
+| `r13` | 10 | birch | `birch` | birch log | 11–16 |
 | `r14` | 1 | the oak kind, with `r9` and `r12` | `oak-10` | oak log | 18 |
 | `r15` | 1 | a tree of wool, and the one the library does not hold | `wool-tree` | wool | 23 |
 | `r16` | 6 | jungle | `jungle` | jungle log, jungle and oak leaves | 16–20 |
 | `r17` | 5 | a kind of willow | `willow` | dark-oak log, oak leaves | 16 |
+| `r18` | 2 | a giant acacia, the baobab — very custom, for a desert, mesa or dry board only | `baobab` | acacia log, oak, spruce and birch leaves | 20–30 |
+| `r19` | 5 | olive, five more of `r10`'s | `olive` 6–10 | dark-oak log, dark-oak leaves, planks and wooden slabs | 8–10 |
+| `r20` | 2 | large oak, of the oak sets and closest to the dense oak | `large-oak` | oak log, oak or dark-oak leaves | 18–26 |
 
 **The block a tree is built of is not what it is, and reading the one for the other is the trap this table
 exists to close.** `r7` is acacia log and birch leaves and is a tall spruce; `r4` is the same two blocks
 and is a tiny spruce; `r2` and `r3` are dark-oak log under birch and spruce leaves and are pines. The wood
 is picked for its colour.
 
-**So a name built from the stem would be wrong as well as ambiguous.** Of the sixteen leafed bands, six
-are built on oak log, five on dark oak, three on acacia, one on birch and one on jungle — and in two of
-the three acacia bands the tree is not an acacia at all, while the willows are dark oak under oak leaves.
+**So a name built from the stem would be wrong as well as ambiguous.** Of the nineteen leafed bands, seven
+are built on oak log, six on dark oak, four on acacia, one on birch and one on jungle — and in two of
+the four acacia bands the tree is not an acacia at all, while the willows are dark oak under oak leaves.
 
 **`r7-4` is the one tree the row it stands in does not describe.** It is **35 courses and 161 logs**
 against 19–27 and 21–39 for the other seven, which is the measurement under the author's reading of it as
 its own kind.
 
-**Seventeen bands are fewer than seventeen kinds.** `r9`, `r12` and `r14` are one oak at one size — 12 to
-18 courses across the three — and `r1` is `r10`'s olive form built smaller.
+**Twenty bands are fewer than twenty kinds.** `r9`, `r12` and `r14` are one oak at one size — 12 to
+18 courses across the three — `r19` is more of `r10`'s olive, and `r1` is that olive built smaller.
 
-**Eighty-four of the eighty-six are filed, and the two that are not are not filed for different
-reasons.** `r15` is built entirely of wool with no log and no leaf in it, so only `--wool` sees it.
-`r13`'s tenth birch, at `(196, 0, 9)`, stands with its foot on the world floor and nothing under it, and a
-body counts as a tree only when a solid block sits within two courses under its foot — so the library
-holds nine birches and the band stands ten.
+**Ninety-four of the ninety-five are filed.** The one that is not is `r15`'s, built entirely of wool with
+no log and no leaf in it, so only `--wool` sees it. A body counts as a tree only when a solid block sits
+within two courses under its foot, and every leafed tree here stands on its platform.
 
 **Thirty trees stand on planks laid under the trunk, and the plank is the tree's foot.** The seeder
 counts a plank as tree above the world's lowest course, which is the course the platforms lie on, and a
@@ -87,8 +88,8 @@ platform.
 two and `r12-1` at `(7, 1, -32)` carries one, so planting either sets the slab on the ground beside the
 planks rather than into it.
 
-**Planks are part of a crown too, and a crown read without them falls apart.** 33 trees carry planks,
-359 between them, and `r12-3`'s 39 spruce planks are what join the top 107 blocks of its crown to its
+**Planks are part of a crown too, and a crown read without them falls apart.** 38 trees carry planks,
+367 between them, and `r12-3`'s 39 spruce planks are what join the top 107 blocks of its crown to its
 trunk.
 
 **Nine tips still hang one block clear of the tree they belong to, and the seeder files each with that
@@ -96,6 +97,19 @@ tree.** No 26-connected step reaches them from their own wood, so each joins the
 blocks come nearest it, within four blocks. Each is one or two blocks at a crown's tip, in `r3`, `r7`
 and `r9`.
 
-**Where a name can carry meaning is a spec.** `tools/trees.py bodies --row <z>=<prefix>` cuts a row into
-bodies under a prefix the author chooses, which is how `specs/fable-millrace-revamp/trees.json` names its
-22 — the library's `<kind>-<n>` naming is the seeder's, not a rule about copied trees.
+## The snapshot a board copies from
+
+**`tree-showcase/trees.json` is every filed tree as a board states it.** Each entry is a tree's name, the foot
+it stands on in this world, and the recipe the studio's library answers for it, body block for block. It is
+the one file here that is generated: the cut that seeds the library writes it, run from the studio's checkout
+after any change to the world or to `kinds.json`, and nothing edits it by hand.
+
+```
+dotnet run tools/seed-trees.cs ../pgm-studio-mapgen/corpus/tree-showcase --builder=rockymine \
+    --json=../pgm-studio-mapgen/corpus/tree-showcase/trees.json
+```
+
+**A board copies its trees from the snapshot and keeps no cut of its own.** Its script names, for each style
+key of its own, the showcase tree that key is, and states that tree's recipe whole. So a board's trees are the
+world's as the cutter reads it, and a re-cut reaches a board the next time its script runs. The key is the
+board's word for a role; the name is the showcase's, and it is the name that says what a tree is.

@@ -5,6 +5,7 @@ levels of ground, a twin frontline with a bay between its prongs, a stepping sto
 wall on each wool approach, and an outline reshaped so the pieces read as heath rather than as tiles."""
 import json, os, copy
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "fable-whinberry-ring"
 
 plan = json.load(open(f"{HERE}/composed-seed-18.plan.json"))
@@ -118,8 +119,7 @@ CAGE = shell([GROUND, LOFT, UPPER], beams=True)
 CAGE["doorway"]["door"] = "stainedGlassPane"
 
 ERRATIC = {"kind": "noise", "seed": 51, "scale": 3, "octaves": 1, "stops": [STONE, COBBLE, ANDESITE], "rise": 2}
-TREES = json.load(open(f"{os.path.dirname(HERE)}/fable-millrace-revamp/trees.json"))
-def body(name): return {"kind": "tree", "form": "copied", "body": TREES[name]["body"]}
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
 def oak(pid, x, z, style, seed):
     return {"id": pid, "kind": "tree", "seed": seed, "layer": "ground", "x": x, "z": z, "style": style}
 def boulder(pid, x, z, form, size, seed):
@@ -128,7 +128,7 @@ def track(pid, pts, seed):
     return {"id": pid, "kind": "stroke", "seed": seed, "style": "solid", "claimsGround": True, "radius": 1.5, "points": pts, "pave": TRACK}
 
 DRESSING = {
-  "styles": {"oak-a": body("oak-dense-1")},
+  "styles": {key: SHOWCASE[name]["style"] for key, name in {"oak-a": "dense-oak-1"}.items()},
   "props": [
     track("road", [[5, 58], [5, 48], [8, 42], [8, 33], [7, 28], [7, 12]], 5),
     track("cross", [[-13, 36], [0, 36], [14, 36]], 6),
@@ -167,11 +167,13 @@ finish = {
         ((-40, 45), (-15, 45), (-28, 41)), ((-40, 55), (-40, 45), (-44, 50)), ((-15, 55), (-40, 55), (-28, 59))]),
     "front-e-15": inserts("front-e-15", [
         ((0, 70), (0, 55), (-4, 63)), ((10, 55), (10, 70), (14, 63)), ((15, 40), (15, 55), (19, 49))]),
-    "stone-9": inserts("stone-9", [((-5, 5), (-5, -5), (-8, 0)), ((5, -5), (5, 5), (8, 0)),
-                                   ((-5, -5), (5, -5), (0, -8)), ((5, 5), (-5, 5), (0, 8))]),
+    # the stone lies across the centre and is its own image, and its four inserts are every side of it
+    "stone-9": [{**op, "fan": False} for op in inserts("stone-9", [
+        ((-5, 5), (-5, -5), (-8, 0)), ((5, -5), (5, 5), (8, 0)),
+        ((-5, -5), (5, -5), (0, -8)), ((5, 5), (-5, 5), (0, 8))])],
   },
   "relief": RELIEF,
   "dressing": DRESSING,
 }
-json.dump(finish, open(f"{HERE}/{SLUG}.finish.json", "w"), indent=1)
+json.dump(finish, open(f"{HERE}/{SLUG}.refinement.json", "w"), indent=1)
 print("wrote finish")

@@ -34,6 +34,7 @@ import json, math, os, sys
 
 SLUG = "opus5-redmarl"
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 sys.path.insert(0, os.path.join(HERE, "..", "..", "tools", "sculpt"))
 import props
 
@@ -548,8 +549,12 @@ def drying_shed():
 
 
 def dressing():
-    trees = json.load(open(f"{HERE}/trees.json"))
-    styles = dict(trees)
+    # the copied trees are the showcase's own: each key names the showcase tree it is, and its
+    # recipe comes whole from the showcase snapshot
+    showcase = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+    styles = {key: showcase[tree]["style"] for key, tree in {
+        "holt-1": "olive-1", "holt-2": "olive-3", "holt-3": "olive-5",
+        "scrub-1": "tiny-oak-3"}.items()}
     styles["shed"] = drying_shed()
     # A boulder is stone: stone, cobblestone and andesite is the whole palette that reads as rock
     # against any ground, and on a red board a red boulder is a boulder nobody can see.
@@ -642,8 +647,8 @@ def finish():
         # plan compiled to. The gully's own edge is the gully-pan mark's ring and is not bent.
         # the compiled ground is one component named for its first piece, with a shape per
         # surface it stands at -- `apron-26` is the bank, `apron-23` the apron itself
-        "bendShapes": {"apron-26": {"k": 0.16, "wander": 3, "step": 11, "seed": 5},
-                       "apron-23": {"k": 0.18, "wander": 3, "step": 11, "seed": 9}},
+        "bendShapes": {"apron-26": {"tension": 0.16, "wander": 3, "step": 11, "seed": 5},
+                       "apron-23": {"tension": 0.18, "wander": 3, "step": 11, "seed": 9}},
         "relief": {"*": {"base": APRON, "reach": 0, "step": 1, "landform": "rolling",
                          "grain": {"amplitude": 1.1, "scale": 19, "seed": 7},
                          "marks": marks(), "pushes": pushes()}},
@@ -657,6 +662,6 @@ def finish():
 if __name__ == "__main__":
     with open(f"{HERE}/{SLUG}.plan.json", "w") as handle:
         json.dump(plan(), handle, indent=2)
-    with open(f"{HERE}/{SLUG}.finish.json", "w") as handle:
+    with open(f"{HERE}/{SLUG}.refinement.json", "w") as handle:
         json.dump(finish(), handle, indent=2)
-    print(f"wrote {SLUG}.plan.json and {SLUG}.finish.json")
+    print(f"wrote {SLUG}.plan.json and {SLUG}.refinement.json")

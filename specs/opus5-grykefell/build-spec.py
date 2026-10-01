@@ -14,12 +14,11 @@ The plan is two pieces and a build zone. Everything that is a shape of ground is
 what the ground is finished with is decided by its ANGLE — one `layered` stack on the slope axis —
 rather than by which piece it is on.
 """
-import json, os, urllib.request
+import json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-grykefell"
-API = os.environ.get("PGM_STUDIO_API", "http://localhost:7894").rstrip("/")
-API = API[:-4].rstrip("/") if API.endswith("/api") else API
 
 SHORE, FELL, SLAB, BROW, BIELD = 22, 25, 27, 31, 27   # a top block is h - 1
 
@@ -274,17 +273,15 @@ barn = barn_style([BYRE_STOREY, LOFT_STOREY])
 laithe = barn_style([dict(BYRE_STOREY, clear=4)])
 
 # ── what stands on it ────────────────────────────────────────────────────────────────────────────
-# The birches are copied bodies out of the studio's own library, so a hag is the trees somebody grew
-# rather than the vanilla stamp. Row 13 of the tree showcase is the birch row.
+# The birches are copied trees of the tree showcase, so a hag is the trees somebody grew rather than
+# the vanilla stamp. Row 13 of the tree showcase is the birch row: a key names the showcase tree it
+# is, and its recipe is read whole from the showcase snapshot.
 BIRCHES = ["tree-showcase-r13-%d" % n for n in (1, 3, 5, 7, 9)]
-
-
-def library_tree(name):
-    with urllib.request.urlopen(f"{API}/api/tree-styles") as handle:
-        index = {row["name"]: row["id"] for row in json.load(handle)}
-    with urllib.request.urlopen(f"{API}/api/tree-styles/{index[name]}") as handle:
-        style = json.load(handle)
-    return {"kind": "tree", "form": "copied", "body": style["body"]}
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+TREES = {key: SHOWCASE[tree]["style"] for key, tree in {
+    "tree-showcase-r13-1": "birch-1", "tree-showcase-r13-3": "birch-3",
+    "tree-showcase-r13-5": "birch-5", "tree-showcase-r13-7": "birch-7",
+    "tree-showcase-r13-9": "birch-9"}.items()}
 
 
 def path(id_, points, radius, pave, style="solid", coverage=1.0, seed=0, claims=True):
@@ -360,11 +357,10 @@ finish = {
     "relief": relief,
     "addShapes": add_shapes,
     "roomStyles": {"spawn": laithe},
-    "dressing": {"styles": dict({name: library_tree(name) for name in BIRCHES},
-                                barn={"kind": "house", "shell": barn}),
+    "dressing": {"styles": dict(TREES, barn={"kind": "house", "shell": barn}),
                  "props": props},
 }
 
 json.dump(plan,   open(os.path.join(HERE, f"{SLUG}.plan.json"),   "w"), indent=1)
-json.dump(finish, open(os.path.join(HERE, f"{SLUG}.finish.json"), "w"), indent=1)
-print(f"wrote {SLUG}.plan.json and {SLUG}.finish.json")
+json.dump(finish, open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w"), indent=1)
+print(f"wrote {SLUG}.plan.json and {SLUG}.refinement.json")

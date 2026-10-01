@@ -70,7 +70,7 @@ Four things that are true before the skill loads:
   it to take a while and do it in a background shell, because a sandboxed foreground one has no network.
 
 - **Do not write a second copy of the system.** A `specs/<slug>/build-spec.py` that generates the plan
-  and the finish is the authoring work and is expected. A script that reads the *built world* —
+  and the refinement is the authoring work and is expected. A script that reads the *built world* —
   a ground-finder, a section renderer, a walk or clearance check — is not, wherever it lives, including
   a scratch directory. Those reads exist: `column`, `transect`, `slopes`, `walk`, `sketch/dressing`,
   all with `?format=text`. The one exception is a world that is not a stored map (a community map, a
@@ -80,8 +80,9 @@ Four things that are true before the skill loads:
   45° hillside from a meadow, `GET …/incline?format=text` is what says where the bands should cut, and the
   `pgm-board` skill carries both with a worked stack. A board finished any other way is the look every
   report here has complained about.
-- **Read the text before the pictures.** `tools/drive.py` writes ~25 `?format=text` reads beside every
-  render. A picture answers *whether* something came out; a number answers *whether it is right*.
+- **Read the text before the pictures.** `tools/drive.py` reads the board back in one report after every
+  store, prints its three numbers, and writes every reading to `out/reports/<slug>.txt`. A picture answers
+  *whether* something came out; a number answers *whether it is right*.
 
 ## How an instruction here is written
 

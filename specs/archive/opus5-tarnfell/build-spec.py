@@ -15,7 +15,7 @@ back in, holds the coastal strip at the summit's height and puts the peak itself
 edge of the board is then a mountainside cut through rather than ground tapering to base, which is
 what makes the high ground read from the side.
 
-Output: `opus5-tarnfell.plan.json` and `opus5-tarnfell.finish.json` beside this file.
+Output: `opus5-tarnfell.plan.json` and `opus5-tarnfell.refinement.json` beside this file.
 """
 import json, math, os
 
@@ -602,7 +602,7 @@ finish = {
 def write():
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(plan, handle, indent=1)
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(finish, handle, indent=1)
     kinds = {}
     for prop in props:

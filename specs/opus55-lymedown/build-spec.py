@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 
 HERE = Path(__file__).parent
+ROOT = HERE.parent.parent
 
 composed = json.loads((HERE / "composed-seed8.plan.json").read_text())
 
@@ -134,8 +135,12 @@ HOLE_OPS = [
 # The island loses its square corners; it lies across the centre and is not fanned, so its ring is written
 # whole and is its own image under the mirror across z 0.
 ISLAND_OPS = [
-    {"index": 0, "x": -10, "z": -8}, {"after": 0, "x": 2, "z": -9}, {"index": 2, "x": 12, "z": -6},
-    {"index": 3, "x": 12, "z": 6}, {"after": 3, "x": 2, "z": 9}, {"index": 5, "x": -10, "z": 8},
+    {"index": 0, "x": -10, "z": -8, "fan": False},
+    {"after": 0, "x": 2, "z": -9, "fan": False},
+    {"index": 2, "x": 12, "z": -6, "fan": False},
+    {"index": 3, "x": 12, "z": 6, "fan": False},
+    {"after": 3, "x": 2, "z": 9, "fan": False},
+    {"index": 5, "x": -10, "z": 8, "fan": False},
 ]
 
 
@@ -194,12 +199,20 @@ def finish():
     }
 
 
+SHOWCASE = json.loads((ROOT / "corpus" / "tree-showcase" / "trees.json").read_text())["trees"]
+
+
 def paint():
     """The finish run's paint -- themes, biome, room styles, dressing and the patches they need -- as the
-    studio stored it. It is laid over the ground's own finish, whose dressing it replaces whole."""
-    return json.loads((HERE / "paint.json").read_text())
+    studio stored it. It is laid over the ground's own finish, whose dressing it replaces whole. The dressing's
+    copied trees are the showcase world's: each key names the showcase tree it is, and its recipe is read whole
+    from the showcase snapshot."""
+    doc = json.loads((HERE / "paint.json").read_text())
+    doc["dressing"]["styles"].update({key: SHOWCASE[tree]["style"] for key, tree in {
+        "beech": "oak-7", "thorn": "tiny-oak-3"}.items()})
+    return doc
 
 
 if __name__ == "__main__":
-    for name, doc in (("plan", plan()), ("finish", {**finish(), **paint()})):
+    for name, doc in (("plan", plan()), ("refinement", {**finish(), **paint()})):
         (HERE / f"{HERE.name}.{name}.json").write_text(json.dumps(doc, indent=1) + "\n")

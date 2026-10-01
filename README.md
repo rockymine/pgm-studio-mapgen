@@ -9,8 +9,9 @@ rebuilding anything.
 maps/<slug>/region/*.mca              the world
 maps/<slug>/level.dat
 maps/<slug>/map.xml                   what a PGM server loads
-specs/<slug>/                         the documents that were authored — plan, finish, layout, intent
-specs/<slug>/renders/                 the images the map was reviewed from, stage by stage
+maps/<slug>/map.png                   the picture a server lists the map by
+specs/<slug>/                         the documents that were authored — build-spec.py, plan, refinement, layout, intent
+specs/<slug>/<slug>.png               the board from its long side, the one picture a board keeps
 specs/<slug>/provenance.json          what each pass placed, and which prop placed it
 review/<slug>.md                      the measured record for that map
 reports/<model>-runN.md               one agent run: what it could not say, what it got wrong, what worked
@@ -20,10 +21,10 @@ sculpture/                            structures built out of the layer system �
 tools/                                the driver that posts those documents to the API, the loop beside it, and the world tools
 ```
 
-**`maps/<slug>/` is what a server is handed and nothing else** — the three things a match reads. Everything
-that exists to be *looked at* rather than loaded lives beside the documents in `specs/<slug>/`: the renders,
-and the provenance sidecar that says which pass claimed which column. Uploading a map folder to a game server
-therefore carries no images and no metadata with it.
+**`maps/<slug>/` is what a server is handed and nothing else** — the three things a match reads, and the
+picture its map list shows. Everything that exists to be *looked at* rather than loaded lives beside the
+documents in `specs/<slug>/`: the board's picture, and the provenance sidecar that says which pass claimed
+which column. Uploading a map folder to a game server therefore carries no metadata with it.
 
 A map's `specs/` are the whole of what was authored; the world is derived from them and is committed as
 the artifact rather than as a source. Rebuilding one needs a running pgm-studio API and a migrated
@@ -163,7 +164,9 @@ compile reads — changing the folder alone is not enough.
 
 ## Looking at a map without Minecraft
 
-Every map carries `specs/<slug>/renders/`. Two reads answer questions no plan view can:
+A stored board is read back through the studio — `GET /map/{slug}/report` names every picture of it by
+route. An older board carries `specs/<slug>/renders/` until it is driven again, and two CLI reads answer
+questions no plan view can over a world on disk:
 
 - **`--topdown --layer structure`** reads the provenance record and draws what the build *recorded* itself
   placing. Its owners list is a literal census of the dressing — every count reads `units × orbit order`, so

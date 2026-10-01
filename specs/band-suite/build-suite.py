@@ -189,7 +189,7 @@ def finish(plan, name, cell):
         "created": "2026-09-16",
         "mapTheme": "moor",
         "themes": {"moor": moor_theme()},
-        "roomStyles": {"spawn": "@showcase-hall", "wool": "@showcase-cage"},
+        "roomStyles": {"spawn": {"library": "brick-roofed-stone-and-dark-oak-house"}, "wool": {"library": "showcase-cage"}},
         "dressing": {"props": flora(plan, cell)},
         "relief": {"*": {
             "base": plan["globals"]["surface"],
@@ -212,7 +212,7 @@ def main():
         os.makedirs(directory, exist_ok=True)
         with open(os.path.join(directory, f"{slug}.plan.json"), "w") as handle:
             json.dump(plan, handle, indent=1)
-        with open(os.path.join(directory, f"{slug}.finish.json"), "w") as handle:
+        with open(os.path.join(directory, f"{slug}.refinement.json"), "w") as handle:
             json.dump(finish(plan, name, cell), handle, indent=1)
         print(f"  {name:14} {spend['band']:6} p{players:<3} {symmetry:9} seed {seed}  "
               f"land {spend['landCells']}/{spend['budgetCells']:.0f} cells  "

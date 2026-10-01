@@ -14,12 +14,11 @@ The ground is finished by its ANGLE. A mire is flat, so almost all of it takes t
 second is the drier shoulder of a hummock and the third is a peat hag's cut face, which is the one
 dark thing on the board and is dark because it is a hole in the ground.
 """
-import json, math, os, urllib.request
+import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SLUG = "opus5-birkmire"
-API = os.environ.get("PGM_STUDIO_API", "http://localhost:7894").rstrip("/")
-API = API[:-4].rstrip("/") if API.endswith("/api") else API
+ROOT = os.path.dirname(os.path.dirname(HERE))
 
 PAN, HOLM, BANK, MIRE, HUMMOCK, GARTH = 16, 18, 19, 20, 23, 22   # a top block is h - 1
 
@@ -262,15 +261,11 @@ bothy = bothy_style([GROUND_STOREY, UPPER_STOREY])
 hut = bothy_style([dict(GROUND_STOREY, clear=4)])
 
 # ── what stands on it ────────────────────────────────────────────────────────────────────────────
-BIRCHES = ["tree-showcase-r13-%d" % n for n in (2, 4, 6, 8, 10)]
-
-
-def library_tree(name):
-    with urllib.request.urlopen(f"{API}/api/tree-styles") as handle:
-        index = {row["name"]: row["id"] for row in json.load(handle)}
-    with urllib.request.urlopen(f"{API}/api/tree-styles/{index[name]}") as handle:
-        style = json.load(handle)
-    return {"kind": "tree", "form": "copied", "body": style["body"]}
+# The birches are the showcase's, every second tree of its birch row, each the recipe
+# corpus/tree-showcase/trees.json states for it.
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+BIRCHES = {f"tree-showcase-r13-{n}": f"birch-{n}" for n in (2, 4, 6, 8, 10)}
+BIRCH_KEYS = list(BIRCHES)
 
 
 def path(id_, points, radius, pave, style="solid", coverage=1.0, seed=0, claims=True):
@@ -312,7 +307,7 @@ props = [
 for i, (x, z) in enumerate([(-36, 30), (24, 30), (-36, 68), (-38, 64), (32, 52), (36, 62),
                             (28, 72), (38, 74), (10, 44), (30, 44), (2, 34)]):
     props.append({"id": f"birk-{i}", "kind": "tree", "seed": 710 + i, "x": x, "z": z,
-                  "style": BIRCHES[i % len(BIRCHES)]})
+                  "style": BIRCH_KEYS[i % len(BIRCH_KEYS)]})
 # erratics: stone, cobblestone and andesite and nothing else. Each is on the mire's own ground at a
 # place a player would otherwise cross without a decision.
 for i, (x, z) in enumerate([(-4, 58), (6, 58), (-32, 20), (34, 32), (16, 36), (20, 76)]):
@@ -330,11 +325,11 @@ finish = {
     "relief": relief,
     "addShapes": add_shapes,
     "roomStyles": {"spawn": hut},
-    "dressing": {"styles": dict({name: library_tree(name) for name in BIRCHES},
+    "dressing": {"styles": dict({key: SHOWCASE[tree]["style"] for key, tree in BIRCHES.items()},
                                 bothy={"kind": "house", "shell": bothy}),
                  "props": props},
 }
 
 json.dump(plan,   open(os.path.join(HERE, f"{SLUG}.plan.json"),   "w"), indent=1)
-json.dump(finish, open(os.path.join(HERE, f"{SLUG}.finish.json"), "w"), indent=1)
-print(f"wrote {SLUG}.plan.json and {SLUG}.finish.json")
+json.dump(finish, open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w"), indent=1)
+print(f"wrote {SLUG}.plan.json and {SLUG}.refinement.json")

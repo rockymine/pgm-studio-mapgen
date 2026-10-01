@@ -825,8 +825,8 @@ PAINT = [
 FINISH = {
     "themeById": {},
     # a hull's edge is cut, not weathered, so the coasts bend by three and no more
-    "bendShapes": {"arm-e-20": {"k": 0.12, "wander": 3, "step": 16, "seed": 7},
-                   "spine-20": {"k": 0.10, "wander": 2, "step": 12, "seed": 9}},
+    "bendShapes": {"arm-e-20": {"tension": 0.12, "wander": 3, "step": 16, "seed": 7},
+                   "spine-20": {"tension": 0.10, "wander": 2, "step": 12, "seed": 9}},
     "addShapes": ADD_SHAPES + PAINT,
     "addLayers": ADD_LAYERS,
     "relief": RELIEF,
@@ -849,7 +849,7 @@ def main():
     with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
         json.dump(PLAN, handle, indent=1)
         handle.write("\n")
-    with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+    with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
         json.dump(FINISH, handle, indent=1)
         handle.write("\n")
     copied = sum(1 for prop in PROPS if prop["kind"] == "tree")

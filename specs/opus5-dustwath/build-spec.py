@@ -20,6 +20,7 @@ import json, math, os
 
 SLUG = "opus5-dustwath"
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 
 CELL = 4
 FLAT = 20            # the dust flat: the board's own surface
@@ -391,13 +392,13 @@ def shelter():
 
 
 def dressing():
-    # `spar-1` and `spar-2` are dropped rather than left unused: their bodies are acacia log
-    # under BIRCH leaves (162:12 under 18:14) at fourteen blocks, which is a pine silhouette and
-    # not a desert tree. The showcase library names rows rather than species, so what a body is
-    # has to be read off its leaf id -- `thorn-1/2/3` are acacia under acacia, eight or nine tall.
-    trees = {name: body for name, body in json.load(open(f"{HERE}/trees.json")).items()
-             if not name.startswith("spar-")}
-    styles = dict(trees)
+    # The showcase's spar trees are left out rather than left unused: `tiny-spruce-2` and
+    # `tiny-spruce-4` are acacia log under BIRCH leaves (162:12 under 18:14) at fourteen blocks,
+    # which is a pine silhouette and not a desert tree. What a body is has to be read off its
+    # leaf id -- `thorn-1/2/3` are acacia under acacia, eight or nine tall.
+    showcase = json.load(open(f"{ROOT}/corpus/tree-showcase/trees.json"))["trees"]
+    styles = {key: showcase[name]["style"] for key, name in {
+        "thorn-1": "acacia-1", "thorn-2": "acacia-3", "thorn-3": "acacia-6"}.items()}
     styles["shelter"] = shelter()
 
     props = [
@@ -484,8 +485,8 @@ def finish():
 
         # the board's coast, drawn as a coast rather than as the staircase of rectangles the plan
         # compiled to. Nothing moves outward, so no strait is closed by it.
-        "bendShapes": {"apron-21": {"k": 0.18, "wander": 3, "step": 11, "seed": 5},
-                       "apron-20": {"k": 0.18, "wander": 3, "step": 11, "seed": 9}},
+        "bendShapes": {"apron-21": {"tension": 0.18, "wander": 3, "step": 11, "seed": 5},
+                       "apron-20": {"tension": 0.18, "wander": 3, "step": 11, "seed": 9}},
         "relief": {"*": {"base": FLAT, "reach": 0, "step": 1, "landform": "plain",
                          "grain": {"amplitude": 1.2, "scale": 20, "seed": 7},
                          "marks": marks(), "pushes": pushes()}},
@@ -498,6 +499,6 @@ def finish():
 if __name__ == "__main__":
     with open(f"{HERE}/{SLUG}.plan.json", "w") as handle:
         json.dump(plan(), handle, indent=2)
-    with open(f"{HERE}/{SLUG}.finish.json", "w") as handle:
+    with open(f"{HERE}/{SLUG}.refinement.json", "w") as handle:
         json.dump(finish(), handle, indent=2)
-    print(f"wrote {SLUG}.plan.json and {SLUG}.finish.json")
+    print(f"wrote {SLUG}.plan.json and {SLUG}.refinement.json")

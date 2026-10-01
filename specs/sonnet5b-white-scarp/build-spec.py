@@ -4,7 +4,7 @@ Identity: each team's beacon monument stands alone on open sward, a quarry cut i
 one flank and a stand of wind-bent pines guarding the other, the two teams' ground
 joined only by a build zone over void.
 
-Writes sonnet5b-white-scarp.plan.json and sonnet5b-white-scarp.finish.json.
+Writes sonnet5b-white-scarp.plan.json and sonnet5b-white-scarp.refinement.json.
 """
 import json
 import os
@@ -196,5 +196,5 @@ finish = {
     },
 }
 
-write("finish", finish)
-print("wrote", SLUG + ".finish.json")
+write("refinement", finish)
+print("wrote", SLUG + ".refinement.json")

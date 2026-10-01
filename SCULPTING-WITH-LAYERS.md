@@ -68,7 +68,7 @@ else on it, it is refused.
 `SK13` reads a subtract as **the board's negative space** — the void a plan's buffer pieces compile to — and
 refuses any add that fills it, *on any layer*. So the deck a roundhouse stands on and the roof over it both
 collide with the subtract that hollowed the roundhouse: eleven `SK13` findings and a 422 from
-`POST /map/from-documents`, on the first attempt at this.
+the store, on the first attempt at this.
 
 The exemptions are narrow and do not help: an add listed **earlier than the subtract in the same layer's shape
 array** is exempt, and a same-layer override add whose floor is above the subtract's is read as a lid.

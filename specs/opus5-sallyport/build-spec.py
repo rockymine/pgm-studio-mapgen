@@ -333,9 +333,9 @@ for i, (tx, tz, sp, h) in enumerate([(-3, 58, "spruce", 8), (32, 60, "spruce", 1
 # forwards for a 9x6 footprint: the watch house on the terrace behind the rampart's east run, and
 # a steading out in the approach, which is the only cover on the ground the assault crosses.
 props_list.append({"id": "watch-house", "kind": "house", "seed": 41, "front": "negZ",
-                   "style": "@talltimber-store", "wings": [{"corners": [[-15, 47], [-6, 52]]}]})
+                   "style": {"library": "talltimber-store"}, "wings": [{"corners": [[-15, 47], [-6, 52]]}]})
 props_list.append({"id": "steading", "kind": "house", "seed": 42, "front": "posZ",
-                   "style": "@talltimber-cottage", "wings": [{"corners": [[-14, 23], [-6, 28]]}]})
+                   "style": {"library": "talltimber-cottage"}, "wings": [{"corners": [[-14, 23], [-6, 28]]}]})
 
 finish = {
     "authors": ["Opus 5"],
@@ -352,15 +352,15 @@ finish = {
                    TERRACE_SHAPE: terrace_edits},
     # the outwork is the one ring on the board whose every edge is over void, so a bend can only
     # make it read more like a crag and less like a rectangle
-    "bendShapes": {OUTWORK_SHAPE: {"k": 0.22, "wander": 3, "step": 6, "seed": 5, "side": "in"}},
+    "bendShapes": {OUTWORK_SHAPE: {"tension": 0.22, "wander": 3, "step": 6, "seed": 5, "side": "in"}},
     "addShapes": add_shapes,
     "addLayers": structures,
     "relief": relief,
-    "roomStyles": {"spawn": "@hb-spawn", "wool": "@ow-cage"},
+    "roomStyles": {"spawn": {"library": "hb-spawn"}, "wool": {"library": "ow-cage"}},
     "dressing": {"props": props_list},
 }
 
-with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as out:
+with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as out:
     json.dump(finish, out, indent=1)
 print("wrote the finish:", len(structures), "made layers,", len(add_shapes), "shapes,",
       len(props_list), "props")

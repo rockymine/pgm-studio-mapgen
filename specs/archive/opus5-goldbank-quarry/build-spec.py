@@ -10,7 +10,7 @@ under everybody. Five relief instruments carry five different jobs, which is the
   line    the haul road, with a tread and a batter in degrees, so it cuts a bank as it climbs
   sink    the deep cut: skirt 1, notched rather than tilted, so it is sheer but for one ramp a side
 
-Writes <slug>.plan.json and <slug>.finish.json beside itself.
+Writes <slug>.plan.json and <slug>.refinement.json beside itself.
 """
 import json, math, os, random
 
@@ -364,7 +364,7 @@ finish = {
 
 with open(os.path.join(HERE, f"{SLUG}.plan.json"), "w") as handle:
     json.dump(plan, handle, indent=1)
-with open(os.path.join(HERE, f"{SLUG}.finish.json"), "w") as handle:
+with open(os.path.join(HERE, f"{SLUG}.refinement.json"), "w") as handle:
     json.dump(finish, handle, indent=1)
 print(f"{SLUG}: {len(plan['pieces'])} pieces, {len(relief['*']['marks'])} marks, "
       f"{len(relief['*']['pushes'])} push, {len(add_shapes)} shapes, {len(props)} props")

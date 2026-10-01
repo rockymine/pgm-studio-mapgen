@@ -230,7 +230,7 @@ plan = {
     },
 }
 
-for name, doc in (("plan", plan), ("finish", finish)):
+for name, doc in (("plan", plan), ("refinement", finish)):
     with open(f"{HERE}/{SLUG}.{name}.json", "w") as handle:
         json.dump(doc, handle, indent=1)
 
