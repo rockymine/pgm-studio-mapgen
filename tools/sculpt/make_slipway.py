@@ -57,7 +57,7 @@ BASIN, WATER, DOCK, QUAY, PORT, TOWN, HEAD, RIDGE, BACK = 6, 16, 20, 22, 22, 24,
 FLYING = HEAD + 22
 
 PLAN = {
-    "plan": 1,
+    "plan": 2,
     "meta": {"name": "Slipway"},
     "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 28, "surface": QUAY,
                 "observerY": 100},
@@ -88,20 +88,20 @@ PLAN = {
     ],
     "zones": [],
     "placements": {
-        "spawns": [{"id": "spawn-1", "piece": "spawn", "at": [2.5, 2.5], "facing": "down"}],
+        "spawns": [{"id": "spawn-1", "piece": "spawn", "at": [10.0, 10.0], "facing": "down"}],
         # Outside the spawn room and beside its door lane rather than in it: a player leaving for the front
         # passes the iron instead of walking into it. `ST2` complains that it is off the spawn piece, which
         # is the author's call — a stamped spawn has a doorway, and a chest in a doorway is in the way.
-        "iron":   [{"id": "iron-1", "piece": "fore-spawn", "at": [11.0, 2.0]}],
+        "iron":   [{"id": "iron-1", "piece": "fore-spawn", "at": [44.0, 8.0]}],
         # One goal on the dock beside the crane and one at the corner of the port's car park, which is the
         # author's own composition: the two a team defends stand at opposite corners of its ground rather
         # than side by side, and each is named for what it stands at. The dock goal is a FORWARD objective and reads outside `GO1`/`GO4`, and its own mirror is
         # under `GO3` — the bands are written for two goals in a defender's rear, and this board is the
         # measurement that says what a forward one costs. `review/opus5-slipway.md` carries the numbers.
         "destroyables": [
-            {"id": "destroyable-1", "style": "pillar-2", "at": [-6.0, 6.5], "materials": "obsidian",
+            {"id": "destroyable-1", "style": "pillar-2", "at": [-24.0, 26.0], "materials": "obsidian",
              "float": 2, "name": "Crane"},
-            {"id": "destroyable-2", "style": "pillar-2", "at": [10.75, 11.5], "materials": "obsidian",
+            {"id": "destroyable-2", "style": "pillar-2", "at": [43.0, 46.0], "materials": "obsidian",
              "float": 2, "name": "Car Park"},
         ],
     },
@@ -117,6 +117,23 @@ def style(name):
         if row.get("name") == name:
             return json.loads(row["params"])
     raise SystemExit(f"no style named {name!r} in the library")
+
+
+def risen(pattern, rise=3):
+    """`pattern` with every field that states no vertical period given one, so a course of it may face
+    sideways in a fill without reading as vertical stripes (`PT4`)."""
+    pattern = json.loads(json.dumps(pattern))
+    def walk(node):
+        if isinstance(node, dict):
+            if node.get("rise") == 0:
+                node["rise"] = rise
+            for value in node.values():
+                walk(value)
+        elif isinstance(node, list):
+            for value in node:
+                walk(value)
+    walk(pattern)
+    return pattern
 
 
 def ground(surface, wall, rim=None, fill=None):
@@ -492,7 +509,7 @@ THEMES = {
     # greens doing one job, and a player crossing from the town to the hill to the back settlement read three
     # grounds where the board means one. The meadow is what survives, and it carries the whole upland — the
     # dock town, the terrace row, the hill, the spawn's approach and the settlements behind it.
-    "meadow": layers((style("meadow · surface"), 1), (style("dirt fractal"), 3), (style("stone fractal"), 1)),
+    "meadow": layers((risen(style("meadow · surface")), 1), (style("dirt fractal"), 3), (style("stone fractal"), 1)),
     "head":   layers((style("rust cells"), 2), (style("dirt fractal"), 3), (style("stone dark voronoi"), 1)),
     "dock":   layers((style("dirt fractal"), 2), (style("stone dark voronoi"), 1)),
 

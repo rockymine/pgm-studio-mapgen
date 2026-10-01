@@ -1,5 +1,5 @@
 {
- "plan": 1,
+ "plan": 2,
  "meta": {
   "name": "Weirbank"
  },
@@ -74,8 +74,8 @@
     "id": "spawn-1",
     "piece": "spawn",
     "at": [
-     1,
-     1
+     5,
+     5
     ],
     "facing": "front"
    }
@@ -87,8 +87,8 @@
     "id": "destroyable-1",
     "piece": "moor",
     "at": [
-     5,
-     2
+     25,
+     10
     ],
     "style": "cube-3",
     "materials": "ender stone"

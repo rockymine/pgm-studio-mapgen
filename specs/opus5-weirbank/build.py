@@ -39,7 +39,7 @@ SPEC = f"{ROOT}/specs/opus5-weirbank/opus5-weirbank"
 # ── the board ────────────────────────────────────────────────────────────────────────────────────
 CELL = 5
 plan = {
- "plan": 1,
+ "plan": 2,
  "meta": {"name": "Weirbank"},
  "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 8, "surface": 9,
              # Absent, this is derived as surface + 15 = 24, which on this board is inside the
@@ -68,7 +68,7 @@ plan = {
  # costs nothing measurable -- GO1 3.29, GO3 93 and the goal's own 41 are identical either way.
  "zones": [{"id": "cut", "rect": [-2, -3, 4, 6], "holes": []}],
  "placements": {
-   "spawns": [{"id": "spawn-1", "piece": "spawn", "at": [1, 1], "facing": "front"}],
+   "spawns": [{"id": "spawn-1", "piece": "spawn", "at": [5, 5], "facing": "front"}],
    "wools": [], "iron": [],
    # A 3x3x3 of ender stone rather than the default 1x3x1 of obsidian. The vocabulary is six styles
    # -- pillar-1|2|3, cube-3, cube-4, column-plus -- and four materials: obsidian, emerald block,
@@ -76,7 +76,7 @@ plan = {
    # progression on a board this small and rewards a defender for arriving at all; a cube-3 is 27
    # blocks and ender stone breaks quickly, so the attack shows as it accumulates rather than in
    # three lumps.
-   "destroyables": [{"id": "destroyable-1", "piece": "moor", "at": [5, 2],
+   "destroyables": [{"id": "destroyable-1", "piece": "moor", "at": [25, 10],
                      "style": "cube-3", "materials": "ender stone"}],
    "cores": [],
  },

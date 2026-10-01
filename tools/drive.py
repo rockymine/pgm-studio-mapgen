@@ -377,7 +377,7 @@ def build_spec(specdir):
     if not os.path.exists(script):
         return
     print("== the spec, written by its script")
-    done = subprocess.run([sys.executable, script], cwd=specdir, env={**os.environ, "PGM_STUDIO_API": endpoint()})
+    done = subprocess.run([sys.executable, os.path.abspath(script)], cwd=specdir, env={**os.environ, "PGM_STUDIO_API": endpoint()})
     if done.returncode != 0:
         raise SystemExit(f"    {script} exited {done.returncode}: the spec was not written, so nothing is sent")
 
