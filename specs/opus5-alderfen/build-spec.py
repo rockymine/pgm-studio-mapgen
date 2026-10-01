@@ -380,7 +380,7 @@ ADD_SHAPES = [
     # the podzol beds beside the tree stands: the one footing a mushroom keeps in daylight
     patch("fenbed-w", on_holm(lobed_ring(-36, -54, 8, 6, 9, 0.18, patch_rng)), "fenbed"),
     patch("fenbed-brae", on_holm(lobed_ring(-34, -84, 8, 6, 9, 0.18, patch_rng)), "fenbed"),
-    patch("fenbed-e", on_holm(lobed_ring(50, -46, 8, 6, 9, 0.18, patch_rng)), "fenbed"),
+    patch("fenbed-e", on_holm(lobed_ring(50, -54, 8, 6, 9, 0.18, patch_rng)), "fenbed"),
 ]
 
 # The marsh pans are pinned level and one course under the bog around them, so the water they are
