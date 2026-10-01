@@ -25,6 +25,7 @@ two flat places are the pit floor at the front and the mine yard at the back.
 import json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-medlock-drift"
 
 SHALE = 12                     # the base; a top block is surface - 1
@@ -304,8 +305,12 @@ pithead = hall(stack([(1, BIRCH)], "repeat"), [GROUND_STOREY, UPPER_STOREY])
 shed = hall(stack([(1, BIRCH)], "repeat"), [dict(GROUND_STOREY, clear=6)])
 
 # ── what stands on the board ─────────────────────────────────────────────────────────────────────
-trees = json.load(open(os.path.join(HERE, "trees.json")))
-tree_styles = {name: trees[name] for name in ("birk-1", "birk-2", "birk-3", "roundel-1")}
+# the copied trees are the showcase's own: each key names the showcase tree it is, and its recipe
+# comes whole from the showcase snapshot
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+tree_styles = {key: SHOWCASE[tree]["style"] for key, tree in {
+    "birk-1": "birch-3", "birk-2": "birch-7", "birk-3": "birch-9",
+    "roundel-1": "tiny-oak-3"}.items()}
 
 props = [
     # the tramway: the pithead's door, down the incline into the pit, and out to the front. One line,

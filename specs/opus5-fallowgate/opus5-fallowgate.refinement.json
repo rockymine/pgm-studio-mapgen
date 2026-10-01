@@ -587,7 +587,9 @@
   }
  ],
  "roomStyles": {
-  "spawn": "@hw-minehouse"
+  "spawn": {
+   "library": "hw-minehouse"
+  }
  },
  "dressing": {
   "props": [

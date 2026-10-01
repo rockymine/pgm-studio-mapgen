@@ -1139,6 +1139,9 @@
    "village-oak": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 16,
     "body": [
      [
       0,
@@ -5242,14 +5245,14 @@
       18,
       14
      ]
-    ],
-    "species": "oak",
-    "height": 16,
-    "builder": "rockymine"
+    ]
    },
    "orchard-a": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 11,
     "body": [
      [
       0,
@@ -6896,10 +6899,7 @@
       18,
       4
      ]
-    ],
-    "species": "oak",
-    "height": 11,
-    "builder": "rockymine"
+    ]
    }
   }
  },

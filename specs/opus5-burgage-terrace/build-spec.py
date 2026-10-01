@@ -12,6 +12,7 @@ bridge — an island that is nobody's and halves both hops.
 import json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-burgage-terrace"
 
 HOLM, BURGAGE, PIER = 12, 18, 14      # relief heights; a top block is h - 1
@@ -224,9 +225,10 @@ plot_low = burgage_style([SHOP, SOLAR], BRICK)                # two: the rest of
 gatehouse = burgage_style([SHOP, SOLAR], DARKOAK)
 
 # ── what stands on it ────────────────────────────────────────────────────────────────────────────
-trees = json.load(open(os.path.join(HERE, "trees.json")))
-tree_styles = {name: {"kind": "tree", "form": "copied", "body": trees[name]["body"]}
-               for name in ("holt-1", "holt-2", "holt-4", "birch-3", "birch-7")}
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+tree_styles = {key: SHOWCASE[name]["style"] for key, name in {
+    "holt-1": "olive-1", "holt-2": "olive-2", "holt-4": "olive-4",
+    "birch-3": "birch-3", "birch-7": "birch-7"}.items()}
 
 props = [
     # the road: door -> the market place -> the steps -> the meadow -> the water. One line, both ends

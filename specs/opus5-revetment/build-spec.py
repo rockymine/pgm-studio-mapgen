@@ -390,7 +390,7 @@ for i, (tx, tz, sp, h) in enumerate([(-22, 32, "oak", 8), (12, 30, "birch", 9), 
 # 7x5 footprint may stand. It is cover in the open, which is the only reason to put a building
 # there -- the fort's own front range is full of the fort's own structures and has no room for one.
 props_list.append({"id": "byre", "kind": "house", "seed": 51, "front": "negZ",
-                   "style": "@talltimber-store", "wings": [{"corners": [[3, 24], [9, 28]]}]})
+                   "style": {"library": "talltimber-store"}, "wings": [{"corners": [[3, 24], [9, 28]]}]})
 
 finish = {
     "authors": ["Opus 5"],
@@ -405,7 +405,7 @@ finish = {
     "addShapes": add_shapes,
     "addLayers": structures,
     "relief": relief,
-    "roomStyles": {"spawn": "@sb-spawn", "wool": "@ow-cage"},
+    "roomStyles": {"spawn": {"library": "sb-spawn"}, "wool": {"library": "ow-cage"}},
     "dressing": {"props": props_list},
 }
 

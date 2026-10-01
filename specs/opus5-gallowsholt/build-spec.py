@@ -19,6 +19,7 @@ and the walled garths the wools sit in, and everything between is grown.
 import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-gallowsholt"
 
 MOOR, CAUSEY = 11, 15          # the two plan surfaces; a top block is surface - 1
@@ -332,8 +333,10 @@ stell = hall(stack([(1, SPRUCE)], "repeat"), [GROUND_STOREY, UPPER_STOREY])
 laithe = hall(stack([(1, SPRUCE)], "repeat"), [dict(GROUND_STOREY, clear=6)])
 
 # ── what stands on the board ─────────────────────────────────────────────────────────────────────
-trees = json.load(open(os.path.join(HERE, "trees.json")))
-tree_styles = {name: trees[name] for name in ("thorn-1", "thorn-2", "thorn-3", "spar-1", "spar-2")}
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+tree_styles = {key: SHOWCASE[name]["style"] for key, name in {
+    "thorn-1": "acacia-1", "thorn-2": "acacia-3", "thorn-3": "acacia-6",
+    "spar-1": "tiny-spruce-2", "spar-2": "tiny-spruce-4"}.items()}
 
 props = [
     # the drove road: the spawn door, over the fell by the west rake, down onto the apron. One line,

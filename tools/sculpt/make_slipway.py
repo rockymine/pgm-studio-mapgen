@@ -298,9 +298,9 @@ ROADS = [
 #
 # | ground | the two it takes |
 # |---|---|
-# | the meadow — town, terrace row, hill, settlements | `@17h-hall` red-brick gable · `@sb-spawn` stone gable |
-# | the quay and the port, where the cars stand | `@17h-hall` red-brick gable · `@sn-compass-well` diorite and blue clay |
-# | the dock and the terracotta fields | `@hoar-longhall` white gable · `@sb-spawn` stone gable |
+# | the meadow — town, terrace row, hill, settlements | `17h-hall` red-brick gable · `sb-spawn` stone gable |
+# | the quay and the port, where the cars stand | `17h-hall` red-brick gable · `sn-compass-well` diorite and blue clay |
+# | the dock and the terracotta fields | `hoar-longhall` white gable · `sb-spawn` stone gable |
 #
 # The footprints are untouched: a plot is a position the board's ground was searched for, and a style change
 # is not a reason to re-search one.
@@ -311,28 +311,28 @@ ROADS = [
 # stands outside the +-10-block square a destroy goal keeps clear (`DressingScope.GoalStandoff`, `OB19`).
 HOUSES = [
     # The dock town, on the meadow: the sailmaker and the cooperage in the yard behind the crane.
-    ("sailmaker",      "@sb-spawn",        ( -69,  45), ( -60,  57), "posZ"),
-    ("cooperage",      "@17h-hall",        ( -53,  46), ( -42,  55), "negX"),
+    ("sailmaker",      {"library": "sb-spawn"},        ( -69,  45), ( -60,  57), "posZ"),
+    ("cooperage",      {"library": "17h-hall"},        ( -53,  46), ( -42,  55), "negX"),
     # The quay east of the goal dock: a harbour office at the water, and a store along from it.
-    ("harbour-office", "@sn-compass-well", (   5,  19), (  16,  32), "negZ"),
-    ("quay-store",     "@17h-hall",        (  35,  21), (  44,  29), "posX"),
+    ("harbour-office", {"library": "sn-compass-well"}, (   5,  19), (  16,  32), "negZ"),
+    ("quay-store",     {"library": "17h-hall"},        (  35,  21), (  44,  29), "posX"),
     # The row across the middle, which is the one thing joining the two towns.
-    ("arcade-w",       "@sb-spawn",        ( -12,  46), (   2,  53), "negZ"),
-    ("arcade-e",       "@17h-hall",        (  16,  46), (  30,  53), "posZ"),
+    ("arcade-w",       {"library": "sb-spawn"},        ( -12,  46), (   2,  53), "negZ"),
+    ("arcade-e",       {"library": "17h-hall"},        (  16,  46), (  30,  53), "posZ"),
     # The upland: a barn on the hill's own shoulder, and the back settlement flattened into it.
-    ("granary",        "@17h-hall",        ( -40,  75), ( -29,  86), "negX"),
-    ("counting",       "@sb-spawn",        (  28,  82), (  37,  91), "posZ"),
-    ("upland-hall",    "@17h-hall",        (  55,  66), (  66,  80), "posX"),
+    ("granary",        {"library": "17h-hall"},        ( -40,  75), ( -29,  86), "negX"),
+    ("counting",       {"library": "sb-spawn"},        (  28,  82), (  37,  91), "posZ"),
+    ("upland-hall",    {"library": "17h-hall"},        (  55,  66), (  66,  80), "posX"),
     # The field the balloon flies off, which the drawn coast made room on: five, so it reads as somewhere
     # rather than as the ground beside somewhere.
-    ("balloon-shed",   "@hoar-longhall",   ( -81,  18), ( -69,  27), "posZ"),
-    ("balloon-store",  "@sb-spawn",        ( -64,  20), ( -55,  28), "negZ"),
-    ("field-cottage",  "@hoar-longhall",   ( -94,  13), ( -86,  24), "posX"),
-    ("field-barn",     "@sb-spawn",        (-103, -13), ( -92,  -1), "posZ"),
-    ("field-byre",     "@hoar-longhall",   ( -79,  -8), ( -69,   1), "negX"),
+    ("balloon-shed",   {"library": "hoar-longhall"},   ( -81,  18), ( -69,  27), "posZ"),
+    ("balloon-store",  {"library": "sb-spawn"},        ( -64,  20), ( -55,  28), "negZ"),
+    ("field-cottage",  {"library": "hoar-longhall"},   ( -94,  13), ( -86,  24), "posX"),
+    ("field-barn",     {"library": "sb-spawn"},        (-103, -13), ( -92,  -1), "posZ"),
+    ("field-byre",     {"library": "hoar-longhall"},   ( -79,  -8), ( -69,   1), "negX"),
     # The port, beside the car park.
-    ("warehouse",      "@sn-compass-well", (  99,  18), ( 110,  32), "posZ"),
-    ("port-office",    "@17h-hall",        (  90,  39), (  99,  50), "posX"),
+    ("warehouse",      {"library": "sn-compass-well"}, (  99,  18), ( 110,  32), "posZ"),
+    ("port-office",    {"library": "17h-hall"},        (  90,  39), (  99,  50), "posX"),
 ]
 
 
@@ -377,8 +377,8 @@ TREES = [
 
 def houses():
     return [{"id": name, "kind": "house", "seed": 40 + index, "front": front,
-             "points": [list(low), list(high)], "style": style_name}
-            for index, (name, style_name, low, high, front) in enumerate(HOUSES)]
+             "points": [list(low), list(high)], "style": house_style}
+            for index, (name, house_style, low, high, front) in enumerate(HOUSES)]
 
 
 def trees():
@@ -793,7 +793,7 @@ def refinement(add_layers):
         # The stairs first: they are ground laid on the compiled ground, and the made things stand on both.
         "addLayers": [stairs()] + add_layers,
         # The spawn is a building rather than a bedrock box: a stamped two-storey hall with its own doorway.
-        "roomStyles": {"spawn": "@sb-spawn"},
+        "roomStyles": {"spawn": {"library": "sb-spawn"}},
         # The ground the plan states is a set of plateaus; the relief is what makes it terrain. `reach` 26
         # shelves the quay into the basin over a beach rather than dropping it down a wall, and the marks
         # behind it roll the town — the two terraces excluded above stay flat inside it.

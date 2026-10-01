@@ -25,6 +25,7 @@ you have to walk round.
 import json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-longstrand"
 
 STRAND = 10                    # the base; a top block is surface - 1
@@ -311,12 +312,12 @@ hythe = hall(stack([(1, DARKOAK)], "repeat"), [GROUND_STOREY, UPPER_STOREY])
 nethouse = hall(stack([(1, DARKOAK)], "repeat"), [dict(GROUND_STOREY, clear=6)])
 
 # ── what stands on the board ─────────────────────────────────────────────────────────────────────
-trees = json.load(open(os.path.join(HERE, "trees.json")))
-# the lifted bodies in this file are in the reader's own {foot, body} shape; a dressing style is a
-# discriminated PropStyle, and a bare body there is a 500 rather than a 400 because the parse throws
-# before any gate reads it
-tree_styles = {name: {"kind": "tree", "form": "copied", "body": trees[name]["body"]}
-               for name in ("pine-1", "pine-3", "pine-5", "scrub-1", "scrub-3")}
+# the copied trees are the showcase's own: each key names the showcase tree it is, and its recipe
+# comes whole from the showcase snapshot
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+tree_styles = {key: SHOWCASE[tree]["style"] for key, tree in {
+    "pine-1": "tiny-spruce-1", "pine-3": "tiny-spruce-3", "pine-5": "tiny-spruce-5",
+    "scrub-1": "small-olive-1", "scrub-3": "small-olive-3"}.items()}
 
 props = [
     # the way over the strand: the hall's door, down the ramp, along the lonning to the hub, and out

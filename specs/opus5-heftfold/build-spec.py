@@ -15,6 +15,7 @@ In the middle, on the saddle, the fold: a walled sheepfold that is nobody's, ope
 import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-heftfold"
 
 LEY, GARTH, SADDLE = 12, 17, 14          # the three surfaces; a top block is surface - 1
@@ -274,9 +275,10 @@ steading = hall_style(stack([(1, SPRUCE)], "repeat"), [GROUND_STOREY, UPPER_STOR
 outbarn = hall_style(stack([(1, SPRUCE)], "repeat"), [dict(GROUND_STOREY, clear=6)])
 
 # ── what stands on the board ─────────────────────────────────────────────────────────────────────
-trees = json.load(open(os.path.join(HERE, "trees.json")))
-tree_styles = {name: {"kind": "tree", "form": "copied", "body": trees[name]["body"]}
-               for name in ("fir-1", "fir-3", "fir-5", "holt-2", "holt-4")}
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+tree_styles = {key: SHOWCASE[name]["style"] for key, name in {
+    "fir-1": "tiny-spruce-1", "fir-3": "tiny-spruce-3", "fir-5": "tiny-spruce-5",
+    "holt-2": "olive-2", "holt-4": "olive-4"}.items()}
 
 props = [
     # the drove road: door -> yard -> gate -> pasture -> the lip of the pass. One line, both ends

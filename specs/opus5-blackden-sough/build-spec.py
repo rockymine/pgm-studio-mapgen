@@ -20,6 +20,7 @@ the coast as a ledge over the void.
 import json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-blackden-sough"
 
 # ── the board ────────────────────────────────────────────────────────────────────────────────────
@@ -342,9 +343,10 @@ relief = {
 # Three placement ideas and no more: the edge's own broken rock along the crest, a holt of birch in
 # the shelter of the slack, and one way underfoot from the door to the Stone and on to the nick.
 # Nothing is scattered: every one of them answers "why here".
-trees = json.load(open(os.path.join(HERE, "trees.json")))
-tree_styles = {name: {"kind": "tree", "form": "copied", "body": trees[name]["body"]}
-               for name in ("birch-2", "birch-5", "birch-9", "holt-3", "holt-5")}
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+tree_styles = {key: SHOWCASE[name]["style"] for key, name in {
+    "birch-2": "birch-2", "birch-5": "birch-5", "birch-9": "birch-9",
+    "holt-3": "olive-3", "holt-5": "olive-5"}.items()}
 
 BOULDER = {"kind": "boulder", "form": "outcrop", "size": 4, "mossy": False,
            "rock": cell_(71, 4, [STONE, COBBLE, ANDESITE], rise=2)}

@@ -367,7 +367,7 @@ def finish():
         # A timber-framed barn on a stone yard: a building is never the ground it stands on,
         # and the default room is a bedrock box. Shipped preset, unforked — gable roof,
         # no footing, log posts with plank infill.
-        "roomStyles": {"spawn": "@hw-minehouse"},
+        "roomStyles": {"spawn": {"library": "hw-minehouse"}},
         "dressing": dressing(),
     }
 

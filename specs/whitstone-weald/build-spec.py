@@ -14,6 +14,7 @@ import math
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = os.path.basename(HERE)
 
 # ── the board's numbers, in blocks ──────────────────────────────────────────────────────────────
@@ -481,9 +482,15 @@ def boulders():
 
 
 def dressing():
-    with open(os.path.join(HERE, "trees.json")) as handle:
-        library = json.load(handle)
-    styles = {key: entry["style"] for key, entry in library.items()}
+    # the copied trees are the showcase's own: each key names the showcase tree it is, and its recipe
+    # comes whole from the showcase snapshot
+    with open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")) as handle:
+        showcase = json.load(handle)["trees"]
+    styles = {key: showcase[tree]["style"] for key, tree in {
+        "acacia-a": "acacia-1", "acacia-b": "acacia-2", "acacia-c": "acacia-3", "acacia-d": "acacia-4",
+        "acacia-e": "acacia-5", "acacia-f": "acacia-6", "acacia-great": "acacia-7",
+        "olive-a": "olive-1", "olive-b": "olive-2", "olive-c": "olive-3", "olive-d": "olive-4", "olive-e": "olive-5",
+        "olive-small-a": "small-olive-1", "olive-small-b": "small-olive-2", "olive-small-c": "small-olive-3"}.items()}
     styles["heath"] = {"kind": "house", "shell": heath_house()}
     styles["barn"] = {"kind": "house", "shell": barn_house()}
     styles["erratic"] = {"kind": "boulder", "form": "round", "size": 2.5, "mossy": False,

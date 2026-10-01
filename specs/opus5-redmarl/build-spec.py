@@ -34,6 +34,7 @@ import json, math, os, sys
 
 SLUG = "opus5-redmarl"
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 sys.path.insert(0, os.path.join(HERE, "..", "..", "tools", "sculpt"))
 import props
 
@@ -548,8 +549,12 @@ def drying_shed():
 
 
 def dressing():
-    trees = json.load(open(f"{HERE}/trees.json"))
-    styles = dict(trees)
+    # the copied trees are the showcase's own: each key names the showcase tree it is, and its
+    # recipe comes whole from the showcase snapshot
+    showcase = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+    styles = {key: showcase[tree]["style"] for key, tree in {
+        "holt-1": "olive-1", "holt-2": "olive-3", "holt-3": "olive-5",
+        "scrub-1": "tiny-oak-3"}.items()}
     styles["shed"] = drying_shed()
     # A boulder is stone: stone, cobblestone and andesite is the whole palette that reads as rock
     # against any ground, and on a red board a red boulder is a boulder nobody can see.

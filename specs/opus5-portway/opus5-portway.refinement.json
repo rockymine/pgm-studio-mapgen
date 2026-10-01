@@ -9433,8 +9433,12 @@
   }
  },
  "roomStyles": {
-  "spawn": "@rk-spawn",
-  "wool": "@desert-house"
+  "spawn": {
+   "library": "rk-spawn"
+  },
+  "wool": {
+   "library": "desert-house"
+  }
  },
  "dressing": {
   "props": [
@@ -9587,7 +9591,9 @@
     "kind": "house",
     "seed": 51,
     "front": "negZ",
-    "style": "@talltimber-cottage",
+    "style": {
+     "library": "talltimber-cottage"
+    },
     "wings": [
      {
       "corners": [

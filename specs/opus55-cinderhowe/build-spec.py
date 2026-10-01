@@ -9,6 +9,7 @@ import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SLUG = os.path.basename(HERE)
+ROOT = os.path.dirname(os.path.dirname(HERE))
 
 
 def ellipse(cx, cz, rx, rz, n=16, turn=0.0, lobes=0, lobe=0.0):
@@ -118,6 +119,12 @@ finish = {
 # stored it, laid over the ground's own finish.
 with open(os.path.join(HERE, "paint.json")) as f:
     finish.update(json.load(f))
+
+# The dressing's copied trees are the showcase world's: each key names the showcase tree it is, and its recipe
+# is read whole from the showcase snapshot.
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+finish["dressing"]["styles"].update({key: SHOWCASE[tree]["style"] for key, tree in {
+    "olive": "olive-3", "olive-small": "olive-2"}.items()})
 
 for name, doc in (("plan", plan), ("refinement", finish)):
     with open(os.path.join(HERE, f"{SLUG}.{name}.json"), "w") as f:

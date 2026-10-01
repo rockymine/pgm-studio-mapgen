@@ -136,14 +136,14 @@ houses = [
     # The house the widening bought. The lane out of spawn is 20 blocks across; this stamps 12 of them
     # against its west wall and leaves 8, which is the passage exactly. On the 15-block lane the author
     # drew, nothing this size could stand anywhere in it.
-    {"kind": "house", "id": "longhouse", "seed": 41, "front": "posX", "style": "@17h-hall",
+    {"kind": "house", "id": "longhouse", "seed": 41, "front": "posX", "style": {"library": "17h-hall"},
      "wings": [{"corners": [[-25, -53], [-16, -44]]}]},
     # Four blocks off the longhouse's gable: one block of buildings, and the passage goes round the pair.
     # Judged on its own, with the longhouse standing, its north side is a wall and it would be crowded.
-    {"kind": "house", "id": "byre", "seed": 42, "front": "posX", "style": "@17h-croft",
+    {"kind": "house", "id": "byre", "seed": 42, "front": "posX", "style": {"library": "17h-croft"},
      "wings": [{"corners": [[-25, -39], [-21, -35]]}]},
     # And one on the far flank, standing alone, to say what a lone building still costs.
-    {"kind": "house", "id": "wool-store", "seed": 43, "front": "negX", "style": "@hoar-store",
+    {"kind": "house", "id": "wool-store", "seed": 43, "front": "negX", "style": {"library": "hoar-store"},
      "wings": [{"corners": [[14, -44], [18, -40]]}]},
 ]
 
@@ -178,7 +178,7 @@ finish = {
         "orchard": ground_theme(orchard_turf, strand, strand_wall),
     },
     "themeById": {"holm-11": "orchard"},
-    "roomStyles": {"spawn": "@showcase-hall", "wool": "@showcase-cage"},
+    "roomStyles": {"spawn": {"library": "showcase-hall"}, "wool": {"library": "showcase-cage"}},
     # A golden apple on the board's own centre. `at` is a whole number on both axes, so the pad is the
     # four blocks it corners rather than the one it is the centre of — which is the only placement that
     # reads the same from both ends of a rot_180 board.

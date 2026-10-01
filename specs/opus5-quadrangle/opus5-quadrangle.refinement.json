@@ -4269,8 +4269,12 @@
   }
  },
  "roomStyles": {
-  "spawn": "@sb-blockhouse",
-  "wool": "@showcase-cage"
+  "spawn": {
+   "library": "sb-blockhouse"
+  },
+  "wool": {
+   "library": "showcase-cage"
+  }
  },
  "dressing": {
   "props": [

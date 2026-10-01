@@ -8954,8 +8954,12 @@
   }
  },
  "roomStyles": {
-  "spawn": "@sb-spawn",
-  "wool": "@ow-cage"
+  "spawn": {
+   "library": "sb-spawn"
+  },
+  "wool": {
+   "library": "ow-cage"
+  }
  },
  "dressing": {
   "props": [
@@ -9202,7 +9206,9 @@
     "kind": "house",
     "seed": 51,
     "front": "negZ",
-    "style": "@talltimber-store",
+    "style": {
+     "library": "talltimber-store"
+    },
     "wings": [
      {
       "corners": [

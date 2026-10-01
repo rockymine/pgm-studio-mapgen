@@ -105,7 +105,6 @@ courses deep with a tall rise so its mix shows across the ground. `probe.py` is 
 ```bash
 python3 tools/trees.py catalogue corpus/<trees>/region
 python3 tools/trees.py match corpus/<trees>/region maps/<author>-<slug>/region --against maps/<slug>/region
-python3 tools/trees.py bodies corpus/<trees>/region --row <z>=<prefix> [--row …] --out specs/<new-slug>/trees.json
 ```
 
 `match` finds, for every tree body the person's world has and the studio's lacks, which catalogue tree it is
@@ -114,8 +113,9 @@ on leaf shape alone under the eight symmetries of the square, so a paste with a 
 A score of 0.99 or better is the same tree, and a lower score with a body two or three trees large is a grove
 that grew into one.
 
-`bodies` cuts the rows used into the `trees.json` a spec reads; the studio side is
-`pgm-studio/tools/seed-trees.cs`, which cuts the same trees straight into the library.
+The spec names each tree it plants from `corpus/tree-showcase/trees.json`, the snapshot
+`pgm-studio/tools/seed-trees.cs` cuts out of the showcase: every tree under the name the showcase files it as,
+with its foot and its recipe. A spec keeps no cut of its own.
 
 A `copied` recipe carries the body block for block and is placed like any tree: seated on its foot's column,
 turned round the symmetry with its logs and stairs turned, every leaf written no-decay, its footprint claimed.
@@ -180,7 +180,7 @@ python3 tools/loop.py specs/<new-slug> --candidates <propId> x,z x,z x,z    # tw
 python3 tools/loop.py specs/<new-slug> --profile x=30,z=-30..30 --column 0,0
 python3 tools/drive.py specs/<new-slug> "<Name>" --out maps/<new-slug>     # the real drive
 python3 tools/probe.py maps/<new-slug>/region --floating
-python3 tools/trees.py verify maps/<new-slug>/region specs/<new-slug>/trees.json
+python3 tools/trees.py verify maps/<new-slug>/region
 ```
 
 Drive once so the map exists, then iterate through `loop.py`: it posts the compiled, patched layout to the

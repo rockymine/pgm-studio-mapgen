@@ -1582,6 +1582,9 @@
    "willow-a": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 16,
     "body": [
      [
       0,
@@ -3270,14 +3273,14 @@
       18,
       12
      ]
-    ],
-    "species": "oak",
-    "height": 16,
-    "builder": "rockymine"
+    ]
    },
    "birch-a": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 15,
     "body": [
      [
       1,
@@ -5470,14 +5473,14 @@
       18,
       14
      ]
-    ],
-    "species": "oak",
-    "height": 15,
-    "builder": "rockymine"
+    ]
    },
    "oak-a": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 8,
     "body": [
      [
       -1,
@@ -6102,14 +6105,14 @@
       18,
       12
      ]
-    ],
-    "species": "oak",
-    "height": 8,
-    "builder": "rockymine"
+    ]
    },
    "olive-a": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 9,
     "body": [
      [
       0,
@@ -7077,10 +7080,7 @@
       161,
       13
      ]
-    ],
-    "species": "oak",
-    "height": 9,
-    "builder": "rockymine"
+    ]
    }
   },
   "props": [

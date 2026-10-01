@@ -22,6 +22,7 @@ import json
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-hallowgate"
 
 # ── blocks ────────────────────────────────────────────────────────────────────
@@ -425,12 +426,12 @@ def room_shell(roof_body, door_width):
 # colours a reader cannot quite tell apart.
 TRACK = cells([DIRT, COARSE_DIRT, (5, 1)], 3, 53, rise=0)
 
-TREES = json.load(open(os.path.join(HERE, "trees.json")))
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
 # Four modest recipes rather than the biggest in the corpus: a copied tree's foot is every
 # cell of its lowest course and its crown is wider again, and this board's seats mask leaves
 # very little ground with room round it.
-TREE_KEYS = {"willow-a": "showcase-r17-1", "birch-a": "showcase-r13-4",
-             "yew-a": "showcase-r6-1", "olive-a": "showcase-r10-1"}
+TREE_KEYS = {"willow-a": "willow-1", "birch-a": "birch-4",
+             "yew-a": "tiny-oak-1", "olive-a": "olive-1"}
 
 
 def tree(pid, style, x, z):
@@ -445,7 +446,7 @@ def rock(pid, x, z, size, seed, form="angular"):
 
 dressing = {
     "styles": {
-        **{key: TREES[name] for key, name in TREE_KEYS.items()},
+        **{key: SHOWCASE[name]["style"] for key, name in TREE_KEYS.items()},
     },
     "props": [
         # The flooded corner of the graveyard, on the hub's east flank where no route runs.

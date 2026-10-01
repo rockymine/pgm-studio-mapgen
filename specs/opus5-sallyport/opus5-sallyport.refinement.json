@@ -4445,8 +4445,12 @@
   }
  },
  "roomStyles": {
-  "spawn": "@hb-spawn",
-  "wool": "@ow-cage"
+  "spawn": {
+   "library": "hb-spawn"
+  },
+  "wool": {
+   "library": "ow-cage"
+  }
  },
  "dressing": {
   "props": [
@@ -4613,7 +4617,9 @@
     "kind": "house",
     "seed": 41,
     "front": "negZ",
-    "style": "@talltimber-store",
+    "style": {
+     "library": "talltimber-store"
+    },
     "wings": [
      {
       "corners": [
@@ -4634,7 +4640,9 @@
     "kind": "house",
     "seed": 42,
     "front": "posZ",
-    "style": "@talltimber-cottage",
+    "style": {
+     "library": "talltimber-cottage"
+    },
     "wings": [
      {
       "corners": [

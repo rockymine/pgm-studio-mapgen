@@ -3631,6 +3631,9 @@
       "holt-1": {
         "kind": "tree",
         "form": "copied",
+        "builder": "rockymine",
+        "species": "oak",
+        "height": 9,
         "body": [
           [
             0,
@@ -4605,12 +4608,14 @@
             161,
             13
           ]
-        ],
-        "builder": "rockymine"
+        ]
       },
       "holt-2": {
         "kind": "tree",
         "form": "copied",
+        "builder": "rockymine",
+        "species": "oak",
+        "height": 9,
         "body": [
           [
             1,
@@ -5753,12 +5758,14 @@
             161,
             13
           ]
-        ],
-        "builder": "rockymine"
+        ]
       },
       "holt-3": {
         "kind": "tree",
         "form": "copied",
+        "builder": "rockymine",
+        "species": "oak",
+        "height": 10,
         "body": [
           [
             2,
@@ -6943,12 +6950,14 @@
             161,
             13
           ]
-        ],
-        "builder": "rockymine"
+        ]
       },
       "scrub-1": {
         "kind": "tree",
         "form": "copied",
+        "builder": "rockymine",
+        "species": "oak",
+        "height": 8,
         "body": [
           [
             -1,
@@ -7573,8 +7582,7 @@
             18,
             12
           ]
-        ],
-        "builder": "rockymine"
+        ]
       },
       "shed": {
         "kind": "house",

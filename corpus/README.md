@@ -5,7 +5,7 @@ was driven lives in `maps/`; what is here was built by hand and is read by tools
 
 | World | What it is | Read by |
 |---|---|---|
-| `tree-showcase` | 86 author-built trees, one per 19 × 19 platform, in 17 bands along z | `pgm-studio/tools/seed-trees.cs`, which seeds the studio's tree corpus; `tools/trees.py catalogue\|match\|bodies` |
+| `tree-showcase` | 86 author-built trees, one per 19 × 19 platform, in 17 bands along z | `pgm-studio/tools/seed-trees.cs`, which seeds the studio's tree corpus and writes `tree-showcase/trees.json`; `tools/trees.py catalogue\|match\|verify` |
 
 **A tree here is the only thing a `copied` style may be cut from.** `copied` means cut out of a world, so a
 body assembled by hand and filed as one is a recipe claiming a provenance it does not have.
@@ -96,6 +96,19 @@ tree.** No 26-connected step reaches them from their own wood, so each joins the
 blocks come nearest it, within four blocks. Each is one or two blocks at a crown's tip, in `r3`, `r7`
 and `r9`.
 
-**Where a name can carry meaning is a spec.** `tools/trees.py bodies --row <z>=<prefix>` cuts a row into
-bodies under a prefix the author chooses, which is how `specs/fable-millrace-revamp/trees.json` names its
-22 — the library's `<kind>-<n>` naming is the seeder's, not a rule about copied trees.
+## The snapshot a board copies from
+
+**`tree-showcase/trees.json` is every filed tree as a board states it.** Each entry is a tree's name, the foot
+it stands on in this world, and the recipe the studio's library answers for it, body block for block. It is
+the one file here that is generated: the cut that seeds the library writes it, run from the studio's checkout
+after any change to the world or to `kinds.json`, and nothing edits it by hand.
+
+```
+dotnet run tools/seed-trees.cs ../pgm-studio-mapgen/corpus/tree-showcase --builder=rockymine \
+    --json=../pgm-studio-mapgen/corpus/tree-showcase/trees.json
+```
+
+**A board copies its trees from the snapshot and keeps no cut of its own.** Its script names, for each style
+key of its own, the showcase tree that key is, and states that tree's recipe whole. So a board's trees are the
+world's as the cutter reads it, and a re-cut reaches a board the next time its script runs. The key is the
+board's word for a role; the name is the showcase's, and it is the name that says what a tree is.

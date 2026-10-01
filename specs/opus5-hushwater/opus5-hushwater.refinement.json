@@ -3770,7 +3770,7 @@
     "id": "head-store",
     "kind": "house",
     "seed": 101,
-    "style": "@hw-stonehouse",
+    "style": {"library": "hw-stonehouse"},
     "front": "negZ",
     "wings": [
      {
@@ -3791,7 +3791,7 @@
     "id": "powder",
     "kind": "house",
     "seed": 102,
-    "style": "@hw-minehouse",
+    "style": {"library": "hw-minehouse"},
     "front": "posZ",
     "wings": [
      {
@@ -3909,8 +3909,8 @@
   ]
  },
  "roomStyles": {
-  "spawn": "@hw-minehouse",
-  "wool": "@hw-assay"
+  "spawn": {"library": "hw-minehouse"},
+  "wool": {"library": "hw-assay"}
  },
  "biome": {
   "kind": "solid",

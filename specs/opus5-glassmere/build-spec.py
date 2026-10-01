@@ -12,6 +12,7 @@ axis and not a theme per piece.
 import json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-glassmere"
 
 APRON, SHELF, FELL, CRAG, BIELD = 14, 20, 24, 34, 18   # relief heights; a top block is h - 1
@@ -186,9 +187,10 @@ bothy = bothy_style([LOW_STOREY, UPPER_STOREY])
 hut = bothy_style([dict(LOW_STOREY, clear=4)])
 
 # ── what stands on it ────────────────────────────────────────────────────────────────────────────
-trees = json.load(open(os.path.join(HERE, "trees.json")))
-tree_styles = {name: {"kind": "tree", "form": "copied", "body": trees[name]["body"]}
-               for name in ("fir-1", "fir-2", "fir-3", "fir-4", "fir-5")}
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+tree_styles = {key: SHOWCASE[name]["style"] for key, name in {
+    "fir-1": "tiny-spruce-1", "fir-2": "tiny-spruce-2", "fir-3": "tiny-spruce-3",
+    "fir-4": "tiny-spruce-4", "fir-5": "tiny-spruce-5"}.items()}
 
 BOULDER = {"kind": "boulder", "form": "outcrop", "size": 4, "mossy": False,
            "rock": cell_(31, 4, [STONE, COBBLE, ANDESITE], rise=2)}

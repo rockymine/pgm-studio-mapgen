@@ -337,7 +337,7 @@ for i, (tx, tz, sp, h) in enumerate([(-11, 60, "oak", 7), (-14, 58, "oak", 6), (
 # 9x6 footprint. Timber over a red heath under pale sandstone: three families, and the building is
 # made of none of the ground's.
 props_list.append({"id": "bastle", "kind": "house", "seed": 51, "front": "negZ",
-                   "style": "@talltimber-cottage", "wings": [{"corners": [[-13, 48], [-5, 53]]}]})
+                   "style": {"library": "talltimber-cottage"}, "wings": [{"corners": [[-13, 48], [-5, 53]]}]})
 
 finish = {
     "authors": ["Opus 5"],
@@ -359,7 +359,7 @@ finish = {
     "addShapes": add_shapes,
     "addLayers": structures,
     "relief": relief,
-    "roomStyles": {"spawn": "@rk-spawn", "wool": "@desert-house"},
+    "roomStyles": {"spawn": {"library": "rk-spawn"}, "wool": {"library": "desert-house"}},
     "dressing": {"props": props_list},
 }
 

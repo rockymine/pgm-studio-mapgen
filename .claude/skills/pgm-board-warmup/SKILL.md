@@ -122,10 +122,10 @@ because there is an answer to *why here*:
   space rather than cut with a `subtract`: `SK13` reads a subtract as the board's negative
   space and refuses any add that fills it, on any layer.
 - **copied trees rather than the vanilla stamp.** A `copied` recipe carries a `body` block for
-  block; `pgm-studio/tools/seed-trees.cs` files bodies out of a world into the library, and
-  `corpus/tree-showcase` is the world they come from. State them under names in
-  `dressing.styles` and let the placements name those — `specs/fable-millrace-revamp/trees.json`
-  is 22 of them, keyed the way its placements name them.
+  block, and `corpus/tree-showcase/trees.json` holds every tree of the showcase world as
+  `pgm-studio/tools/seed-trees.cs` cuts it. State each under a name of the board's own in
+  `dressing.styles`, as the recipe the snapshot gives the showcase tree it is, and let the
+  placements name those.
   **A seeded name is `<kind>-<n>` and the kind is the author's** — `large-pine`, `olive`, `jungle`,
   `willow-1`…`willow-5` — as `corpus/README.md`'s table states it per band. The log a tree is built of
   is **not** what it is.

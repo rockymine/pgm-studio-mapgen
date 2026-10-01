@@ -56,23 +56,20 @@ def cell(seed, size, palette, jitter=40, warp=6, rise=0):
     if rise: p["rise"] = rise
     return p
 
-def style(name, footing=None, **patch):
-    st = json.load(open(os.path.join(REPO, "tools", "styles", name + ".json")))
-    st.setdefault("foundation", {})["footing"] = footing
-    st.update(patch)
-    return st
+def style(name, footing=None):
+    """A library row by name, with its footing laid over it: `None` stands it on its plate."""
+    return {"library": name, "foundation": {"footing": footing}}
 
 def watch_shell():
-    """The watch hut, forked twice. HS3 reads the half-course slab as the roof body's own
-    material and the shell steps andesite in a stone-brick slab, so the body becomes stone
-    brick; HS9 wants a laid-log course under a beam and this shell has masonry walls, so
-    the beams go rather than the walls changing. A building with no beams states
-    `block: -1`; `beams: null` is not a shape the house style reads, and the store
-    answers 500 on it rather than a refusal."""
-    st = style("hoar-watch")
-    st["roof"]["body"] = {"kind": "solid", "id": 98, "data": 0}
-    st["beams"]["block"] = -1
-    return st
+    """The watch hut, forked twice: the changes laid over the `hoar-watch` row. HS3 reads
+    the half-course slab as the roof body's own material and the shell steps andesite in a
+    stone-brick slab, so the body becomes stone brick; HS9 wants a laid-log course under a
+    beam and this shell has masonry walls, so the beams go rather than the walls changing.
+    A building with no beams states `block: -1`; `beams: null` is not a shape the house
+    style reads, and the store answers 500 on it rather than a refusal."""
+    return {"foundation": {"footing": None},
+            "roof": {"body": {"kind": "solid", "id": 98, "data": 0}},
+            "beams": {"block": -1}}
 
 # ---------------------------------------------------------------- themes
 # The bowl's own stone, finished by the angle it stands at.  The incline read wants
@@ -333,9 +330,10 @@ ADD_LAYERS = [{"id": "crown", "name": "crown", "base_y": 0, "kind": "made",
                            "shapeIds": [x["id"] for x in crown_shapes]}]}]
 
 # ---------------------------------------------------------------- dressing
-TREES = json.load(open(os.path.join(HERE, "trees.json")))
-STYLES = {k: {"kind": "tree", "form": "copied", "body": v["body"]} for k, v in TREES.items()}
-STYLES["watch"] = {"kind": "house", "shell": watch_shell()}
+SHOWCASE = json.load(open(os.path.join(REPO, "corpus", "tree-showcase", "trees.json")))["trees"]
+STYLES = {key: SHOWCASE[name]["style"] for key, name in {
+    "scrub-a": "olive-1", "scrub-b": "olive-4"}.items()}
+STYLES["watch"] = {"library": "hoar-watch", "kind": "house", "shell": watch_shell()}
 
 def tree(pid, st, x, z):
     return {"id": pid, "kind": "tree", "style": st, "x": x, "z": z, "layer": "ground"}

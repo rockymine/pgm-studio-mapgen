@@ -37,10 +37,10 @@ MASONRY = {"bedrock": {"relative": False, "value": 1}, "rimEdges": "boundary",
 # nines stands at four and not at three, a pair of fourteens at five and not at four.
 CROWN = {9: 4, 14: 5}
 
-# The two hand-built recipes, cut out of `tree-showcase` with `pgm-studio/tools/seed-trees.cs` and carried
-# here as their bodies. A body cannot be re-derived from anything, so it is committed data rather than a
-# script's output — `trees.json` beside this file, keyed the way the placements name it.
-SEEDED = json.load(open(os.path.join(HERE, "trees.json")))
+# The two hand-built recipes: `large-pine-1` and `large-pine-4` of the showcase, as
+# `corpus/tree-showcase/trees.json` carries every tree `pgm-studio/tools/seed-trees.cs` cuts out of that world.
+SHOWCASE = json.load(open(os.path.join(os.path.dirname(os.path.dirname(HERE)), "corpus", "tree-showcase",
+                                       "trees.json")))["trees"]
 
 STYLES = {
     "oak-9":  {"kind": "tree", "form": "template", "species": "oak", "height": 9},
@@ -48,7 +48,8 @@ STYLES = {
     "rock-3": {"kind": "boulder", "form": "round", "size": 3, "mossy": True,
                "rock": {"kind": "turbulence", "seed": 3302, "scale": 3, "octaves": 3, "rise": 3,
                         "stops": [SOLID(4), SOLID(48), SOLID(1, 5)]}},
-    **SEEDED,
+    "showcase-tall": SHOWCASE["large-pine-1"]["style"],
+    "showcase-giant": SHOWCASE["large-pine-4"]["style"],
 }
 
 

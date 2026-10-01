@@ -23,11 +23,11 @@ in the envelope is not a solid rectangle of land.
 and the two stairs, which are authored flights rather than graded relief: a flight states a boundary
 where a relief graded across the seam would delete it.
 """
-import json, math, os, urllib.request
+import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-flintwick"
-API = os.environ.get("PGM_STUDIO_API", "http://localhost:7894/api").rstrip("/").removesuffix("/api")
 
 # ── the plan: the arrangement, and nothing else ──────────────────────────────────────────────────
 # One headland piece carries the whole played ground. The three pieces behind it are the spawn and
@@ -364,17 +364,16 @@ watch = knap_style([dict(WORK_STOREY, clear=4)], tinted=False)
 
 # ── what stands on it ────────────────────────────────────────────────────────────────────────────
 # Thorn on the exposed down, birch in the coombe where it is out of the wind: two bodies for two
-# places, which is the only reason to carry two.
+# places, which is the only reason to carry two. Each is a copied tree of the tree showcase: a key
+# names the showcase tree it is, and its recipe is read whole from the showcase snapshot.
 THORN = ["tree-showcase-r4-%d" % n for n in (1, 2, 3, 4, 5)]
 BIRCH = ["tree-showcase-r13-%d" % n for n in (1, 3, 5)]
-
-
-def library_tree(name):
-    with urllib.request.urlopen(f"{API}/api/tree-styles") as handle:
-        index = {row["name"]: row["id"] for row in json.load(handle)}
-    with urllib.request.urlopen(f"{API}/api/tree-styles/{index[name]}") as handle:
-        style = json.load(handle)
-    return {"kind": "tree", "form": "copied", "body": style["body"]}
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+TREES = {key: SHOWCASE[tree]["style"] for key, tree in {
+    "tree-showcase-r4-1": "tiny-spruce-1", "tree-showcase-r4-2": "tiny-spruce-2",
+    "tree-showcase-r4-3": "tiny-spruce-3", "tree-showcase-r4-4": "tiny-spruce-4",
+    "tree-showcase-r4-5": "tiny-spruce-5", "tree-showcase-r13-1": "birch-1",
+    "tree-showcase-r13-3": "birch-3", "tree-showcase-r13-5": "birch-5"}.items()}
 
 
 def path(id_, points, radius, pave, style="solid", coverage=1.0, seed=0, claims=True):
@@ -430,8 +429,7 @@ finish = {
     "relief": relief,
     "addShapes": add_shapes,
     "roomStyles": {"wool": knapping_shed, "spawn": staith_hall},
-    "dressing": {"styles": dict({name: library_tree(name) for name in THORN + BIRCH},
-                                watch={"kind": "house", "shell": watch}),
+    "dressing": {"styles": dict(TREES, watch={"kind": "house", "shell": watch}),
                  "props": props},
 }
 

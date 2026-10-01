@@ -14,7 +14,6 @@ that arrives above.  The ground is finished by its angle, not by its height.
 import json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-peatgarth"
 
 # ---------------------------------------------------------------- materials
@@ -53,18 +52,16 @@ def house_shell(name):
     """A room style forked into a house prop. `beams: null` is legal in a room style and is
     not a shape the house prop reads: the store answers 500 on it rather than a refusal, so
     a building with no log ends states `block: -1`."""
-    st = style(name)
-    if not isinstance(st.get("beams"), dict):
-        st["beams"] = {"block": -1, "data": 0, "reach": 1, "any": True}
-    return st
+    return {"library": name, "kind": "house",
+            "shell": {"foundation": {"footing": None},
+                      "beams": {"block": -1, "data": 0, "reach": 1, "any": True}}}
 
 
 def style(name, footing=None):
-    """A shipped preset, forked.  Footing is null by default and that is the answer:
-    over a plate of one course it is a rim round a building with no foundation."""
-    st = json.load(open(os.path.join(REPO, "tools", "styles", name + ".json")))
-    st.setdefault("foundation", {})["footing"] = footing
-    return st
+    """A shipped preset, forked: the studio library's row of that name, its footing stated
+    beside it.  Footing is null by default and that is the answer: over a plate of one
+    course it is a rim round a building with no foundation."""
+    return {"library": name, "foundation": {"footing": footing}}
 
 # ---------------------------------------------------------------- themes
 # ground: black peat and olive moor grass.  built: grey stone.  accent: dark water.
@@ -215,7 +212,7 @@ DRESSING = {
         # of the tramway are one family rather than two styles eleven blocks apart. A
         # house prop reads `beams` and a null is not a shape it reads, so a building with
         # none states `block: -1`.
-        "peat-store":   {"kind": "house", "shell": house_shell("sb-spawn")},
+        "peat-store":   house_shell("sb-spawn"),
     },
     "props": [
         # the water fills the cutting the relief already dug, so the two agree:

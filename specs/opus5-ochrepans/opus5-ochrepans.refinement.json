@@ -3528,6 +3528,9 @@
       "thorn-1": {
         "kind": "tree",
         "form": "copied",
+        "builder": "rockymine",
+        "species": "oak",
+        "height": 9,
         "body": [
           [
             0,
@@ -5013,12 +5016,14 @@
             161,
             12
           ]
-        ],
-        "builder": "rockymine"
+        ]
       },
       "thorn-2": {
         "kind": "tree",
         "form": "copied",
+        "builder": "rockymine",
+        "species": "oak",
+        "height": 9,
         "body": [
           [
             0,
@@ -6350,8 +6355,7 @@
             161,
             12
           ]
-        ],
-        "builder": "rockymine"
+        ]
       },
       "shed": {
         "kind": "house",

@@ -10,6 +10,7 @@ import json
 from pathlib import Path
 
 HERE = Path(__file__).parent
+ROOT = HERE.parent.parent
 
 composed = json.loads((HERE / "composed-seed5.plan.json").read_text())
 
@@ -286,10 +287,18 @@ def finish():
     }
 
 
+SHOWCASE = json.loads((ROOT / "corpus" / "tree-showcase" / "trees.json").read_text())["trees"]
+
+
 def paint():
     """The finish run's paint -- themes, biome, room styles, dressing and the patches they need -- as the
-    studio stored it. It is laid over the ground's own finish, whose dressing it replaces whole."""
-    return json.loads((HERE / "paint.json").read_text())
+    studio stored it. It is laid over the ground's own finish, whose dressing it replaces whole. The dressing's
+    copied trees are the showcase world's: each key names the showcase tree it is, and its recipe is read whole
+    from the showcase snapshot."""
+    doc = json.loads((HERE / "paint.json").read_text())
+    doc["dressing"]["styles"].update({key: SHOWCASE[tree]["style"] for key, tree in {
+        "village-oak": "oak-7", "orchard-a": "tiny-oak-1"}.items()})
+    return doc
 
 
 if __name__ == "__main__":

@@ -24,7 +24,7 @@ follows from that asymmetry.
 Sixteen pads on one `ground` layer, one theme, and fifteen of them with no relief — a plain solved to y7,
 because a grade would put a second rule in every measurement. Two pads carry an authored wall, one carries
 a monument, and the last one is graded on purpose. Five recipes: two template oaks, a boulder, and two
-bodies cut out of the `tree-showcase` world, which ride in `trees.json` beside this file.
+bodies cut out of the `tree-showcase` world, taken from its snapshot `corpus/tree-showcase/trees.json`.
 
 | panel | asks for | what the book said |
 |---|---|---|
@@ -128,7 +128,7 @@ cells the pass left free. A wood's floor belongs to it and to the theme, not to 
 ## A tree somebody built
 
 **A copied recipe has no species and no nominal anything.** `showcase-tall` and `showcase-giant` are
-`large-pine-1` and `large-pine-4` (bands `r2` and `r3`), cut out of that world with `seed-trees.cs` and carried here as 299 and
+`large-pine-1` and `large-pine-4` (bands `r2` and `r3`), cut out of that world with `seed-trees.cs` and stated as 311 and
 412 blocks of `[x, y, z, id, data]`. What they look like is what was built; the studio's part is to seat
 them, turn them round the symmetry and keep their leaves.
 
@@ -137,7 +137,8 @@ them, turn them round the symmetry and keep their leaves.
 statement was a species and a number.
 
 **A body's foot is every cell of its lowest course, and that is what the standoff is measured from.**
-`showcase-tall` rests on one cell; `showcase-giant` rests on **nine**, spanning x 0..3 and z −1..3. Anchored
+`showcase-tall` rests on three, its trunk and the two planks laid under it at x −1; `showcase-giant` rests on
+**nine**, spanning x 0..3 and z −1..3. Anchored
 at the same three blocks off the same road, the slender one stands and the giant is declined — *"rests on
 (−26, 108), nearer than 3 blocks to the road at (−28, 106)"*, naming a foot cell rather than the anchor.
 
@@ -232,8 +233,6 @@ that will seat almost anywhere and mean nothing.
 - `seats.txt` — the forwards read: how many cells a tree, a boulder and two house footprints may seat
   on, what refused the rest by rule and cell count, and the two ways the route answers nothing at 200.
 - `census.txt` — two themes over 57,344 cells; the walls are 720 of them.
-- `trees.json` — the two hand-built recipes, block for block, with the `tree-showcase` row each came out of.
-  A body cannot be re-derived from anything, so it is committed rather than generated.
 - `incline.txt` — 97.3% of the ground under 10°, and the 2.3% at 40° or steeper is the two walls' faces and
   the one graded pad. Fifteen pads are flat on purpose: a grade puts a second rule into every measurement.
 - `trees-and-boulders.layout.json` · `.intent.json` — the two documents the board was stored from.

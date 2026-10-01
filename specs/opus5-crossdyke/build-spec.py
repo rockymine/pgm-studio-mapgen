@@ -14,7 +14,6 @@ Writes opus5-crossdyke.plan.json and opus5-crossdyke.refinement.json beside this
 import json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-crossdyke"
 
 CELL, SURFACE, REEF_Y = 5, 14, 9
@@ -55,19 +54,17 @@ def cell(seed, size, palette, jitter=40, warp=6, rise=0):
     return p
 
 def style(name, footing=None):
-    st = json.load(open(os.path.join(REPO, "tools", "styles", name + ".json")))
-    st.setdefault("foundation", {})["footing"] = footing
-    return st
+    """A preset: the studio library's row of that name, its footing stated beside it."""
+    return {"library": name, "foundation": {"footing": footing}}
 
 def house_shell(name):
     """A preset forked into a house prop. Two of the shipped presets carry a beam over a
     wall with no laid log in it (`HS9`) and a roof slab cut from a different block than the
     roof body (`HS3`); a house prop states neither rather than carrying both in."""
-    st = style(name)
-    st["beams"] = {"block": -1, "data": 0, "reach": 1, "any": True}
-    if isinstance(st.get("roof"), dict):
-        st["roof"]["slab"], st["roof"]["slabData"] = -1, 0
-    return st
+    return {"library": name, "kind": "house",
+            "shell": {"foundation": {"footing": None},
+                      "beams": {"block": -1, "data": 0, "reach": 1, "any": True},
+                      "roof": {"slab": -1, "slabData": 0}}}
 
 # ---------------------------------------------------------------- themes
 # ground family: green limestone moor.  built family: pale grey masonry.

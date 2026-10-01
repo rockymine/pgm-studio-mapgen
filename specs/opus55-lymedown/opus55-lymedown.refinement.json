@@ -1592,6 +1592,9 @@
    "beech": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 16,
     "body": [
      [
       0,
@@ -5695,14 +5698,14 @@
       18,
       14
      ]
-    ],
-    "species": "oak",
-    "height": 16,
-    "builder": "rockymine"
+    ]
    },
    "thorn": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 8,
     "body": [
      [
       -1,
@@ -6327,10 +6330,7 @@
       18,
       12
      ]
-    ],
-    "species": "oak",
-    "height": 8,
-    "builder": "rockymine"
+    ]
    }
   }
  }

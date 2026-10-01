@@ -19,10 +19,9 @@ import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, HERE)
-from opus5c import (solid, cells, field, voronoi, band, stack, soil,
-                    slope_stack, blob, wander_rect, tree_body, load_cache,
-                    save_cache, write)
+ROOT = os.path.dirname(os.path.dirname(HERE))
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from studio_kit import kit
 
 SLUG = "opus5c-ambertor"
 CELL = 4
@@ -120,17 +119,30 @@ plan = {
 # visible from the pan.
 
 relief = {
-    "*": {
-        "base": 9, "reach": 0, "step": 1, "landform": "hills",
-        "grain": {"amplitude": 1.4, "scale": 21, "seed": 5301},
-        "marks": [
-            {"id": "strand", "kind": "area", "h": 9, "bevel": 2,
-             "ring": wander_rect(-26, 14, 26, 32, wobble=2.5, seed=5311)},
-            {"id": "pan", "kind": "area", "h": 14, "bevel": 4,
-             "ring": blob(GOAL_AT[0], GOAL_AT[1], 20, points=13, wobble=0.2,
-                          seed=5312)},
-            {"id": "garth-apron", "kind": "area", "h": 19, "bevel": 4,
-             "ring": wander_rect(-22, 90, 22, 118, wobble=2.5, seed=5313)},
+    "*": kit.SketchReliefJson(
+        base=9, reach=0, step=1, landform="hills",
+        grain=kit.ReliefGrainJson(amplitude=1.4, scale=21, seed=5301),
+        marks=[
+            # the strand: x -26..26, z 14..32 walked as a wandering ring, a
+            # side a line
+            kit.ReliefMarkJson(id="strand", kind="area", h=9, bevel=2, ring=[
+                [-25.29, 15.23], [-10.67, 16.31], [-0.01, 16.34], [12.91, 13.52],
+                [24.75, 13.31], [27.54, 19.66], [26.43, 21.91], [27.15, 29.68],
+                [25.62, 33.54], [11.97, 31.55], [0.5, 33.53], [-11.82, 30.63],
+                [-26.4, 30.05], [-25.95, 26.12], [-27.63, 22.69], [-24.96, 17.6]]),
+            # the pan: a wobbled ring of radius 20 round the goal
+            kit.ReliefMarkJson(id="pan", kind="area", h=14, bevel=4, ring=[
+                [34.63, 62.0], [27.98, 70.39], [23.89, 79.23], [14.58, 83.25],
+                [4.13, 82.75], [-4.44, 76.56], [-5.79, 66.39], [-4.24, 58.0],
+                [-2.91, 48.79], [4.18, 41.37], [14.55, 41.04], [24.81, 43.45],
+                [31.21, 51.92]]),
+            # the garth's apron: x -22..22, z 90..118 walked as a wandering
+            # ring, a side a line
+            kit.ReliefMarkJson(id="garth-apron", kind="area", h=19, bevel=4, ring=[
+                [-24.43, 91.32], [-12.16, 89.44], [-2.25, 90.11], [8.99, 91.39],
+                [23.14, 88.27], [21.86, 99.02], [23.7, 106.01], [19.99, 109.66],
+                [21.34, 119.0], [9.74, 115.98], [0.53, 119.38], [-11.51, 116.81],
+                [-23.55, 120.02], [-23.05, 112.59], [-22.42, 102.76], [-19.55, 96.9]]),
             # The garth stands ten blocks over the fell and a player walks up
             # one, so the riser carries three cut ramps rather than a grade
             # across the whole seam: one out of the spawn's own door, which is
@@ -138,20 +150,21 @@ relief = {
             # descent a choice instead of a funnel. A line mark pins every cell
             # to the nearest pass of the line, so each is stated as a single
             # run with a height at either end.
-            {"id": "ramp-spawn", "kind": "line", "width": 6,
-             "points": [[-2, 91], [-2, 77]], "h": [19, 9], "tread": 2},
-            {"id": "ramp-west", "kind": "line", "width": 6,
-             "points": [[-16, 91], [-16, 77]], "h": [19, 9], "tread": 2},
-            {"id": "ramp-east", "kind": "line", "width": 6,
-             "points": [[14, 91], [14, 77]], "h": [19, 9], "tread": 2},
+            kit.ReliefMarkJson(id="ramp-spawn", kind="line", width=6,
+                               points=[[-2, 91], [-2, 77]], h=[19, 9], tread=2),
+            kit.ReliefMarkJson(id="ramp-west", kind="line", width=6,
+                               points=[[-16, 91], [-16, 77]], h=[19, 9], tread=2),
+            kit.ReliefMarkJson(id="ramp-east", kind="line", width=6,
+                               points=[[14, 91], [14, 77]], h=[19, 9], tread=2),
         ],
-        "pushes": [
-            {"id": "tor", "ring": blob(TOR_AT[0], TOR_AT[1], 10, points=11,
-                                       wobble=0.2, seed=5321),
-             "amount": 16, "falloff": 10, "crown": 9, "roughness": 0,
-             "seed": 5322},
-        ],
-    }
+        pushes=[
+            # the tor: a wobbled ring of radius 10 round TOR_AT
+            kit.ReliefPushJson(id="tor", ring=[
+                [-1.97, 48.0], [-2.47, 54.13], [-7.89, 57.0], [-13.19, 56.29],
+                [-17.9, 54.81], [-22.53, 51.09], [-21.85, 45.11], [-17.97, 41.12],
+                [-13.5, 37.57], [-8.15, 39.58], [-4.83, 43.39]],
+                amount=16, falloff=10, crown=9, roughness=0, seed=5322),
+        ]),
 }
 
 # ---------------------------------------------------------------- the paint
@@ -160,6 +173,40 @@ relief = {
 # axis so the flat, the shoulder and the crag face are three grounds on one
 # hillside; the clints and the garth are the two places made of something else,
 # each a shape carrying its own theme.
+
+
+def solid(block, data=0):
+    return kit.SolidMaterial(id=block, data=data)
+
+
+def cells(seed, size, rise, palette):
+    """A cell fabric of `size`-block patches, its sites jittered 45% and its
+    edges warped a block."""
+    return kit.CellMaterial(seed=seed, cellSize=size, jitter=45, warp=1,
+                            rise=rise, palette=palette)
+
+
+def voronoi(seed, size, bands):
+    """The fill's own pattern, made of stone: (depth, material) bands in from
+    each cell's edge, with a vertical period of 4 so a cut face shows grain
+    rather than vertical stripes."""
+    return kit.VoronoiMaterial(seed=seed, cellSize=size, rise=4, bands=[
+        kit.VoronoiBand(material=material, depth=depth)
+        for depth, material in bands])
+
+
+def stack(axis, *bands):
+    """(thickness, material) bands read along `axis`, the last carried on."""
+    return kit.LayeredMaterial(axis=axis, stack=kit.BandStack(
+        ending="repeat", bands=[kit.Band(material=material, thickness=thickness)
+                                for thickness, material in bands]))
+
+
+def soil(top, under):
+    """One course of a surfacing block over two of soil, which is what a depth
+    stack owes a surface that has to stay one course thick."""
+    return stack("depth", (1, top), (2, under))
+
 
 SANDSTONE = solid(24, 0)
 SAND_SMOOTH = solid(24, 2)
@@ -181,48 +228,46 @@ SHOULDER = cells(5332, 7, 3, [SANDSTONE, SAND_SMOOTH, WORN])
 # three real populations and neither runs through the middle of one.
 SLOPE_FLAT, SLOPE_SHOULDER = 20, 32
 
-pavement_theme = {
-    "bedrock": {"relative": False, "value": 1},
-    "fill": voronoi(5333, 9, [(5, SANDSTONE), (4, STONE)]),
-    "wall": CRAG_FACE,
-    "wallEnabled": True,
-    "wallOnTerrainFaces": True,
-    "rim": {"enabled": True, "depth": 1, "material": SANDSTONE},
-    "rimEdges": "void",
-    "surface": {"enabled": True, "depth": 3,
-                "material": slope_stack([
-                    (SLOPE_FLAT, soil(TURF, EARTH)),
-                    (SLOPE_SHOULDER, soil(SHOULDER, EARTH)),
-                    (90, stack("depth", [band(3, CRAG_FACE)])),
-                ])},
-}
+pavement_theme = kit.TerrainTheme(
+    bedrock=kit.BedrockSpec(relative=False, value=1),
+    fill=voronoi(5333, 9, [(5, SANDSTONE), (4, STONE)]),
+    wall=CRAG_FACE,
+    wallEnabled=True,
+    wallOnTerrainFaces=True,
+    rim=kit.TopBand(enabled=True, depth=1, material=SANDSTONE),
+    rimEdges="void",
+    # A thickness on the slope axis is a span of degrees, so one stack
+    # finishes the flat, the shoulder and the face of the same hill.
+    surface=kit.TopBand(enabled=True, depth=3, material=stack(
+        "slope",
+        (SLOPE_FLAT, soil(TURF, EARTH)),
+        (SLOPE_SHOULDER - SLOPE_FLAT, soil(SHOULDER, EARTH)),
+        (90 - SLOPE_SHOULDER, stack("depth", (3, CRAG_FACE))))),
+)
 
-clint_theme = {
-    "bedrock": {"relative": False, "value": 1},
-    "fill": voronoi(5334, 9, [(5, SANDSTONE), (4, STONE)]),
-    "wall": CRAG_FACE,
-    "wallEnabled": True,
-    "wallOnTerrainFaces": True,
-    "rim": {"enabled": False, "depth": 1, "material": SANDSTONE},
-    "rimEdges": "void",
-    "surface": {"enabled": True, "depth": 3,
-                "material": soil(cells(5335, 8, 0,
-                                       [SANDSTONE, SAND_SMOOTH, STONE]),
-                                 SANDSTONE)},
-}
+clint_theme = kit.TerrainTheme(
+    bedrock=kit.BedrockSpec(relative=False, value=1),
+    fill=voronoi(5334, 9, [(5, SANDSTONE), (4, STONE)]),
+    wall=CRAG_FACE,
+    wallEnabled=True,
+    wallOnTerrainFaces=True,
+    rim=kit.TopBand(enabled=False, depth=1, material=SANDSTONE),
+    rimEdges="void",
+    surface=kit.TopBand(enabled=True, depth=3, material=soil(
+        cells(5335, 8, 0, [SANDSTONE, SAND_SMOOTH, STONE]), SANDSTONE)),
+)
 
-garth_theme = {
-    "bedrock": {"relative": False, "value": 1},
-    "fill": voronoi(5336, 9, [(5, SANDSTONE), (4, STONE)]),
-    "wall": cells(5337, 6, 4, [COBBLE, STONE]),
-    "wallEnabled": True,
-    "wallOnTerrainFaces": True,
-    "rim": {"enabled": True, "depth": 1, "material": COBBLE},
-    "rimEdges": "boundary",
-    "surface": {"enabled": True, "depth": 3,
-                "material": soil(cells(5338, 5, 0, [COBBLE, GRAVEL, DARKOAK]),
-                                 STONE)},
-}
+garth_theme = kit.TerrainTheme(
+    bedrock=kit.BedrockSpec(relative=False, value=1),
+    fill=voronoi(5336, 9, [(5, SANDSTONE), (4, STONE)]),
+    wall=cells(5337, 6, 4, [COBBLE, STONE]),
+    wallEnabled=True,
+    wallOnTerrainFaces=True,
+    rim=kit.TopBand(enabled=True, depth=1, material=COBBLE),
+    rimEdges="boundary",
+    surface=kit.TopBand(enabled=True, depth=3, material=soil(
+        cells(5338, 5, 0, [COBBLE, GRAVEL, DARKOAK]), STONE)),
+)
 
 # ---------------------------------------------------------------- the shapes
 #
@@ -239,28 +284,52 @@ FELL, GARTH = 9, 19
 # 34 blocks for a rise of 17, which is the twice-the-run the ground wants, and
 # it is the one walked way onto the crag, running 33 blocks for a rise of 15.
 add_shapes = [
-    {"id": "tor-flight", "type": "polygon", "operation": "add", "floor": 0,
-     "base_height": FELL, "height_mode": "level", "skirt": 0,
-     "keepClear": True,
-     "anchor_heights": [11, 11, 26, 26],
-     "material": cells(5341, 4, 2, [COBBLE, STONE, GRAVEL]),
-     "vertices": [[9.2, 25.9], [14.8, 30.1], [-5.2, 56.1], [-10.8, 51.9]]},
+    kit.SketchShape(id="tor-flight", type="polygon", operation="add", floor=0,
+                    base_height=FELL, height_mode="level", skirt=0,
+                    keepClear=True,
+                    anchor_heights=[11, 11, 26, 26],
+                    material=cells(5341, 4, 2, [COBBLE, STONE, GRAVEL]),
+                    vertices=[[9.2, 25.9], [14.8, 30.1], [-5.2, 56.1],
+                              [-10.8, 51.9]]),
 
-    {"id": "clint-pan", "type": "polygon", "operation": "add", "floor": 0,
-     "base_height": FELL, "theme": "clint",
-     "vertices": blob(4, 74, 11, points=13, wobble=0.26, seed=5342)},
-    {"id": "clint-west", "type": "polygon", "operation": "add", "floor": 0,
-     "base_height": FELL, "theme": "clint",
-     "vertices": blob(-19, 70, 8, points=11, wobble=0.24, seed=5343)},
-    {"id": "clint-east", "type": "polygon", "operation": "add", "floor": 0,
-     "base_height": FELL, "theme": "clint",
-     "vertices": blob(19, 34, 8, points=11, wobble=0.24, seed=5344)},
-    {"id": "clint-front", "type": "polygon", "operation": "add", "floor": 0,
-     "base_height": FELL, "theme": "clint",
-     "vertices": blob(-14, 22, 8, points=11, wobble=0.24, seed=5345)},
-    {"id": "garth-yard", "type": "polygon", "operation": "add", "floor": 0,
-     "base_height": GARTH, "theme": "garth",
-     "vertices": wander_rect(-18, 94, 18, 114, wobble=2.0, seed=5346)},
+    # the clint by the pan: a wobbled ring of radius 11 round (4, 74)
+    kit.SketchShape(id="clint-pan", type="polygon", operation="add", floor=0,
+                    base_height=FELL, theme="clint", vertices=[
+                        [14.6, 74.0], [13.81, 79.15], [9.09, 81.37],
+                        [5.03, 82.49], [1.04, 81.81], [-2.4, 79.67],
+                        [-6.9, 76.69], [-7.86, 71.08], [-4.84, 66.17],
+                        [-0.14, 63.09], [5.4, 62.47], [9.88, 65.49],
+                        [13.87, 68.82]]),
+    # the west clint: a wobbled ring of radius 8 round (-19, 70)
+    kit.SketchShape(id="clint-west", type="polygon", operation="add", floor=0,
+                    base_height=FELL, theme="clint", vertices=[
+                        [-10.55, 70.0], [-13.81, 73.33], [-15.21, 78.3],
+                        [-20.29, 79.0], [-23.77, 75.5], [-27.97, 72.63],
+                        [-26.12, 67.91], [-23.99, 64.25], [-20.35, 60.64],
+                        [-16.46, 64.43], [-12.47, 65.8]]),
+    # the east clint: a wobbled ring of radius 8 round (19, 34)
+    kit.SketchShape(id="clint-east", type="polygon", operation="add", floor=0,
+                    base_height=FELL, theme="clint", vertices=[
+                        [28.16, 34.0], [25.83, 38.39], [22.23, 41.08],
+                        [17.86, 41.91], [13.54, 40.3], [10.85, 36.39],
+                        [12.59, 32.12], [14.8, 29.15], [18.07, 27.53],
+                        [22.17, 27.05], [24.99, 30.15]]),
+    # the front clint: a wobbled ring of radius 8 round (-14, 22)
+    kit.SketchShape(id="clint-front", type="polygon", operation="add", floor=0,
+                    base_height=FELL, theme="clint", vertices=[
+                        [-4.12, 22.0], [-8.76, 25.37], [-11.32, 27.86],
+                        [-14.98, 28.82], [-20.15, 29.1], [-21.33, 24.15],
+                        [-23.39, 19.24], [-19.93, 15.16], [-15.06, 14.63],
+                        [-10.2, 13.67], [-8.55, 18.5]]),
+    # the garth's yard: x -18..18, z 94..114 walked as a wandering ring, a
+    # side a line
+    kit.SketchShape(id="garth-yard", type="polygon", operation="add", floor=0,
+                    base_height=GARTH, theme="garth", vertices=[
+                        [-19.29, 94.19], [-8.02, 95.7], [-1.45, 92.73], [10.09, 93.85],
+                        [18.38, 92.79], [19.74, 99.91], [16.14, 102.48], [18.68, 109.46],
+                        [19.82, 113.67], [10.92, 113.69], [-1.3, 113.2], [-9.8, 113.42],
+                        [-18.42, 114.04], [-19.32, 107.52], [-16.47, 102.83],
+                        [-17.45, 99.54]]),
 ]
 
 # The drystone wall: one run across the pavement west of the pan, drawn as a
@@ -268,19 +337,19 @@ add_shapes = [
 # chain of chords. It is cover on the way in rather than a barrier — it stops
 # twelve blocks short of the pan's own edge, because the ground in front of a
 # goal is fought over and wants reading at a glance.
-field_wall = {
-    "id": "field-wall", "name": "the drystone wall", "base_y": 0,
-    "kind": "made", "part_of": "fell",
-    "groups": [{"id": "field-wall", "name": "the drystone wall",
-                "mirrors": True, "shapeIds": ["field-wall-run"]}],
-    "shapes": [
-        {"id": "field-wall-run", "type": "polyline", "operation": "add",
-         "floor": 12, "base_height": 2, "radius": 1.0,
-         "stroke_edge": "solid", "keepClear": True,
-         "material": cells(5351, 4, 2, [COBBLE, STONE]),
-         "vertices": [[-23, 62], [-20, 70], [-18, 78], [-19, 86]]},
+field_wall = kit.AddedLayer(
+    id="field-wall", name="the drystone wall", base_y=0,
+    kind="made", part_of="fell",
+    groups=[kit.SketchGroup(id="field-wall", name="the drystone wall",
+                            mirrors=True, shapeIds=["field-wall-run"])],
+    shapes=[
+        kit.SketchShape(id="field-wall-run", type="polyline", operation="add",
+                        floor=12, base_height=2, radius=1.0,
+                        stroke_edge="solid", keepClear=True,
+                        material=cells(5351, 4, 2, [COBBLE, STONE]),
+                        vertices=[[-23, 62], [-20, 70], [-18, 78], [-19, 86]]),
     ],
-}
+)
 
 # ---------------------------------------------------------------- the dressing
 #
@@ -290,35 +359,33 @@ field_wall = {
 # a bridger arrives; nothing stands within ten blocks of the goal's marker,
 # because OB19 leaves it out of the world and only a header says so.
 
-cache_path = os.path.join(HERE, "trees.json")
-cache = load_cache(cache_path)
-PINE = tree_body("showcase-r2-1", cache)       # large pine — the one accent
-THORN = tree_body("showcase-r6-5", cache)      # tiny oak — the scrub
-save_cache(cache_path, cache)
-
-styles = {
-    "pine": PINE,
-    "thorn": THORN,
-    "erratic": {"kind": "boulder", "form": "round", "size": 2, "mossy": False,
-                "rock": field(5361, 3, 3, [STONE, COBBLE, solid(1, 5)],
-                              rise=3, kind="turbulence")},
-    "barn": {"kind": "house", "shell": None},   # filled below
-}
+# The copied trees, each the showcase tree it names, as
+# corpus/tree-showcase/trees.json carries it.
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase",
+                                       "trees.json")))["trees"]
+styles = {key: kit.build("TreeStyle", SHOWCASE[tree]["style"]) for key, tree in {
+    "pine": "large-pine-1",     # large pine — the one accent
+    "thorn": "tiny-oak-5",      # tiny oak — the scrub
+}.items()}
+styles["erratic"] = kit.BoulderStyle(
+    form="round", size=2, mossy=False,
+    rock=kit.TurbulenceMaterial(seed=5361, scale=3, octaves=3,
+                                stops=[STONE, COBBLE, solid(1, 5)], rise=3))
 
 # gravel, andesite and cobblestone: three blocks a reader cannot quite tell
 # apart, which is what a path on hard ground is
 PAVE = cells(5362, 3, 0, [GRAVEL, solid(1, 5), COBBLE])
 
 props = [
-    {"id": "garth-way", "kind": "stroke", "seed": 5371, "radius": 2,
-     "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[-2, 96], [2, 88], [8, 78], [11, 70], [12, 64]]},
-    {"id": "tor-foot", "kind": "stroke", "seed": 5372, "radius": 2,
-     "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[10, 58], [2, 52], [-2, 44], [0, 34], [6, 24]]},
-    {"id": "east-foot", "kind": "stroke", "seed": 5373, "radius": 2,
-     "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[16, 56], [20, 46], [20, 34], [18, 24]]},
+    kit.StrokeProp(id="garth-way", seed=5371, radius=2,
+                   style="solid", claimsGround=True, pave=PAVE,
+                   points=[[-2, 96], [2, 88], [8, 78], [11, 70], [12, 64]]),
+    kit.StrokeProp(id="tor-foot", seed=5372, radius=2,
+                   style="solid", claimsGround=True, pave=PAVE,
+                   points=[[10, 58], [2, 52], [-2, 44], [0, 34], [6, 24]]),
+    kit.StrokeProp(id="east-foot", seed=5373, radius=2,
+                   style="solid", claimsGround=True, pave=PAVE,
+                   points=[[16, 56], [20, 46], [20, 34], [18, 24]]),
 
     # One barn, standing alone out on the pavement, and the board carries no
     # other free-standing house. The garth has three free columns on it once
@@ -327,36 +394,39 @@ props = [
     # that was not.
     # the field barn out on the pavement: a building alone on open ground, and
     # the second placement idea on the board
-    {"id": "field-barn", "kind": "house", "seed": 5376, "style": "barn",
-     "front": "posX",
-     "wings": [{"corners": [[-8, 68], [1, 74]], "spec": {"storeysHigh": 1}}]},
+    kit.HouseProp(id="field-barn", seed=5376, style="barn", front="posX",
+                  wings=[kit.AuthoredWing(corners=[[-8, 68], [1, 74]],
+                                          spec=kit.WingSpec(storeysHigh=1))]),
 ]
 
 # three pines, the one deep-green thing on a gold board, standing to the
 # outside of the fell rather than down the middle of it
-props += [{"id": f"pine-{i}", "kind": "tree", "seed": 5400 + i,
-           "x": x, "z": z, "style": "pine"}
+props += [kit.TreeProp(id=f"pine-{i}", seed=5400 + i, x=x, z=z, style="pine")
           for i, (x, z) in enumerate([(-22, 54), (20, 74), (-20, 66)])]
 # thorn scrub, and none of it on the strand a bridger lands on
-props += [{"id": f"thorn-{i}", "kind": "tree", "seed": 5420 + i,
-           "x": x, "z": z, "style": "thorn"}
+props += [kit.TreeProp(id=f"thorn-{i}", seed=5420 + i, x=x, z=z, style="thorn")
           for i, (x, z) in enumerate([(-18, 20), (-8, 34), (-16, 38),
                                       (12, 42), (-14, 52)])]
 # Three erratics on the strand, which the relief pins flat: the tor's own foot
 # is 48 to 55 degrees and the theme calls the ground a face from 32, so a rock
 # pinned to it reads as neither, which is what DR-STEEP says. Three rather than
 # five, because a boulder in five places is a sample board.
-props += [{"id": f"erratic-{i}", "kind": "boulder", "seed": 5440 + i,
-           "x": x, "z": z, "style": "erratic"}
+props += [kit.BoulderProp(id=f"erratic-{i}", seed=5440 + i, x=x, z=z,
+                          style="erratic")
           for i, (x, z) in enumerate([(-20, 22), (-8, 26), (14, 26)])]
 
 # a dry karst is sparse: the coverage is low and the tall share lower, because
 # two-block grass in front of an objective is cover nobody authored
 props += [
-    {"id": "flora", "kind": "flora", "seed": 5380,
-     "points": wander_rect(-24, 16, 24, 114, wobble=2.5, seed=5381),
-     "spec": {"coverage": 0.17, "scale": 27, "octaves": 3, "fernShare": 0.22,
-              "flowerShare": 0.06, "flowerScale": 19, "tallShare": 0.04}},
+    # over the fell and the garth: x -24..24, z 16..114 walked as a wandering
+    # ring, a side a line
+    kit.FloraProp(id="flora", seed=5380, points=[
+        [-22.94, 15.25], [-11.87, 17.93], [1.39, 15.5], [9.82, 16.1],
+        [26.19, 13.66], [21.82, 41.61], [23.92, 67.28], [24.53, 88.46],
+        [23.94, 111.63], [12.82, 113.68], [1.24, 115.48], [-10.19, 113.93],
+        [-24.64, 116.04], [-22.35, 87.18], [-23.54, 67.4], [-23.67, 42.76]],
+        spec=kit.FloraSpec(coverage=0.17, scale=27, octaves=3, fernShare=0.22,
+                           flowerShare=0.06, flowerScale=19, tallShare=0.04)),
 ]
 
 # ---------------------------------------------------------------- the house
@@ -368,7 +438,7 @@ props += [
 # across the pavement, which means its walls are not in the family under its
 # feet.
 
-DARKOAK_LOG = {"kind": "laidLog", "id": 162, "data": 1}
+DARKOAK_LOG = kit.LaidLogMaterial(id=162, data=1)
 OAK = solid(5, 0)
 
 PLAIN = {"field": None, "border": None, "borderWidth": 1, "inlay": None,
@@ -376,20 +446,25 @@ PLAIN = {"field": None, "border": None, "borderWidth": 1, "inlay": None,
 NO_WINDOW = {"form": "none", "block": 102, "hostBlock": -1, "hostData": 0,
              "data": 0, "sill": 2, "width": 2, "height": 2, "spacing": 3}
 
-BARN_STOREY = {
-    "clear": 5,
-    "wall": {"stack": {"bands": [
-        {"material": COBBLE, "thickness": 1},
-        {"material": cells(5391, 3, 2, [DARKOAK, OAK]), "thickness": 3},
-        {"material": DARKOAK_LOG, "thickness": 1}], "ending": "repeat"},
-        "extent": 5},
-    "post": solid(162, 1),
-    "windows": {"form": "arched", "block": 164, "hostBlock": -1, "hostData": 0,
-                "data": 0, "sill": 2, "width": 2, "height": 2, "spacing": 3},
-    "surface": PLAIN, "deck": None, "headroom": 5,
-}
 
-BARN = {
+def storey(height):
+    """One storey `height` blocks clear, its wall a course of cobble, dark oak
+    and oak, and a course of laid log at the top."""
+    return {
+        "clear": height,
+        "wall": {"stack": {"bands": [
+            {"material": COBBLE, "thickness": 1},
+            {"material": cells(5391, 3, 2, [DARKOAK, OAK]), "thickness": height - 2},
+            {"material": DARKOAK_LOG, "thickness": 1}], "ending": "repeat"},
+            "extent": height},
+        "post": solid(162, 1),
+        "windows": {"form": "arched", "block": 164, "hostBlock": -1, "hostData": 0,
+                    "data": 0, "sill": 2, "width": 2, "height": 2, "spacing": 3},
+        "surface": PLAIN, "deck": None, "headroom": height,
+    }
+
+
+BARN = kit.build("HouseStyle", {
     "foundation": {
         "plate": {"stack": {"bands": [{"material": COBBLE, "thickness": 1}],
                             "ending": "repeat"}, "extent": 1},
@@ -405,7 +480,7 @@ BARN = {
                        "ending": "repeat"}, "extent": 5},
     "post": solid(162, 1),
     "windows": NO_WINDOW,
-    "storeys": [BARN_STOREY],
+    "storeys": [storey(5)],
     "porch": None, "front": None,
     # a beam has to be the end of something, so the wall under it carries a
     # course of laid log, which is the last band of the storey
@@ -414,41 +489,41 @@ BARN = {
                 "head": {"form": "arched", "block": 164, "fill": "upperSlab",
                          "fillBlock": 126, "fillData": 5},
                 "width": 2, "height": 3},
-}
+})
 
 # The spawn hall is the two structures a player sees from the inside, and a
 # finish stating no roomStyles leaves it on the studio's bedrock box at 200
 # with no finding. It is this board's barn, hipped and built taller.
-HALL = json.loads(json.dumps(BARN))
-HALL["roof"] = {"form": "hip", "pitch": 2, "slab": 126, "slabData": 5,
-                "overhang": 1, "ridgeCap": False, "hole": False,
-                "body": DARKOAK, "verge": COBBLE, "gable": None,
-                "gableWindows": NO_WINDOW}
-HALL["storeys"][0] = json.loads(json.dumps(BARN_STOREY))
-HALL["storeys"][0]["clear"] = 7
-HALL["storeys"][0]["headroom"] = 7
-HALL["storeys"][0]["wall"]["extent"] = 7
-HALL["storeys"][0]["wall"]["stack"]["bands"][1]["thickness"] = 5
+HALL = kit.build("HouseStyle", {
+    **BARN,
+    "roof": {"form": "hip", "pitch": 2, "slab": 126, "slabData": 5,
+             "overhang": 1, "ridgeCap": False, "hole": False,
+             "body": DARKOAK, "verge": COBBLE, "gable": None,
+             "gableWindows": NO_WINDOW},
+    "storeys": [storey(7)],
+})
 
-styles["barn"] = {"kind": "house", "shell": BARN}
+styles["barn"] = kit.HouseStyleRef(shell=BARN)
 
-finish = {
-    "authors": ["Opus 5"],
-    "created": "2026-09-21",
-    "themes": {"pavement": pavement_theme, "clint": clint_theme,
-               "garth": garth_theme},
-    "mapTheme": "pavement",
+finish = kit.Refinement(
+    authors=["Opus 5"],
+    created="2026-09-21",
+    themes={"pavement": pavement_theme, "clint": clint_theme,
+            "garth": garth_theme},
+    mapTheme="pavement",
     # Savanna (#bfb755): a dry gold grass that agrees with sandstone instead of
     # fighting it. A tinted block takes its colour from the chunk's biome byte
     # and nothing else does, so the biome is a palette decision rather than a
     # line added at the end. Asked of GET /api/terrain/biomes.
-    "biome": {"kind": "solid", "id": 35},
-    "relief": relief,
-    "addShapes": add_shapes,
-    "addLayers": [field_wall],
-    "roomStyles": {"spawn": HALL, "wool": HALL},
-    "dressing": {"styles": styles, "props": props},
-}
+    biome=kit.SolidBiome(id=35),
+    relief=relief,
+    addShapes=add_shapes,
+    addLayers=[field_wall],
+    roomStyles={"spawn": HALL, "wool": HALL},
+    dressing=kit.DressingDoc(styles=styles, props=props),
+)
 
-write(os.path.join(HERE, f"{SLUG}.plan.json"), plan)
-write(os.path.join(HERE, f"{SLUG}.refinement.json"), finish)
+for path, doc in ((os.path.join(HERE, f"{SLUG}.plan.json"), plan),
+                  (os.path.join(HERE, f"{SLUG}.refinement.json"), finish)):
+    json.dump(doc, open(path, "w"), indent=1)
+    print(f"wrote {path}")

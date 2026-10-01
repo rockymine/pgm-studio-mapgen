@@ -436,8 +436,12 @@
   "holm-11": "orchard"
  },
  "roomStyles": {
-  "spawn": "@showcase-hall",
-  "wool": "@showcase-cage"
+  "spawn": {
+   "library": "showcase-hall"
+  },
+  "wool": {
+   "library": "showcase-cage"
+  }
  },
  "spawners": [
   {
@@ -536,7 +540,9 @@
     "id": "longhouse",
     "seed": 41,
     "front": "posX",
-    "style": "@17h-hall",
+    "style": {
+     "library": "17h-hall"
+    },
     "wings": [
      {
       "corners": [
@@ -557,7 +563,9 @@
     "id": "byre",
     "seed": 42,
     "front": "posX",
-    "style": "@17h-croft",
+    "style": {
+     "library": "17h-croft"
+    },
     "wings": [
      {
       "corners": [
@@ -578,7 +586,9 @@
     "id": "wool-store",
     "seed": 43,
     "front": "negX",
-    "style": "@hoar-store",
+    "style": {
+     "library": "hoar-store"
+    },
     "wings": [
      {
       "corners": [

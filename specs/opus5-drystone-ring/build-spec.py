@@ -14,7 +14,6 @@ Writes opus5-drystone-ring.plan.json and opus5-drystone-ring.refinement.json bes
 import json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-drystone-ring"
 
 CELL = 5
@@ -54,18 +53,16 @@ def cell(seed, size, palette, jitter=40, warp=6, rise=0):
     return p
 
 def style(name, footing=None):
-    st = json.load(open(os.path.join(REPO, "tools", "styles", name + ".json")))
-    st.setdefault("foundation", {})["footing"] = footing
-    return st
+    """A preset: the studio library's row of that name, its footing stated beside it."""
+    return {"library": name, "foundation": {"footing": footing}}
 
 def house_shell(name):
     """A preset forked into a house prop: no beam over a wall with no laid log in it
     (`HS9`) and no roof slab cut from a block the roof body is not (`HS3`)."""
-    st = style(name)
-    st["beams"] = {"block": -1, "data": 0, "reach": 1, "any": True}
-    if isinstance(st.get("roof"), dict):
-        st["roof"]["slab"], st["roof"]["slabData"] = -1, 0
-    return st
+    return {"library": name, "kind": "house",
+            "shell": {"foundation": {"footing": None},
+                      "beams": {"block": -1, "data": 0, "reach": 1, "any": True},
+                      "roof": {"slab": -1, "slabData": 0}}}
 
 # ---------------------------------------------------------------- themes
 # ground family: a cold dark moor — podzol and coarse dirt under a taiga tint.

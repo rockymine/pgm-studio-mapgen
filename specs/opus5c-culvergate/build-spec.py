@@ -23,9 +23,9 @@ import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, HERE)
-from opus5c import (solid, cells, field, voronoi, band, stack, soil,
-                    wander_rect, write)
+ROOT = os.path.dirname(os.path.dirname(HERE))
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from studio_kit import kit
 
 SLUG = "opus5c-culvergate"
 CELL = 4
@@ -117,10 +117,10 @@ plan = {
 # level, and every height on this board is a course somebody laid.
 
 relief = {
-    "*": {
-        "base": 9, "reach": 0, "step": 1, "landform": "plain",
-        "marks": [], "pushes": [],
-    }
+    "*": kit.SketchReliefJson(
+        base=9, reach=0, step=1, landform="plain",
+        marks=[], pushes=[],
+    )
 }
 
 # ---------------------------------------------------------------- the works
@@ -131,6 +131,18 @@ relief = {
 # absorbed into the layer under it.
 
 FLOOR_Y, ROOF_Y = 9, 15
+
+
+def solid(block, data=0):
+    return kit.SolidMaterial(id=block, data=data)
+
+
+def cells(seed, size, rise, palette):
+    """A cell fabric of `size`-block patches, its sites jittered 45% and its
+    edges warped a block."""
+    return kit.CellMaterial(seed=seed, cellSize=size, jitter=45, warp=1,
+                            rise=rise, palette=palette)
+
 
 BRICK = solid(45, 0)
 STONE = solid(1, 0)
@@ -150,9 +162,10 @@ GANTRY = cells(5704, 4, 2, [DARKOAK, BRICK])
 
 
 def slab(sid, x0, z0, x1, z1, material, height, floor=0):
-    return {"id": sid, "type": "rectangle", "operation": "add", "floor": floor,
-            "min_x": x0, "min_z": z0, "max_x": x1, "max_z": z1,
-            "base_height": height, "material": material, "keepClear": True}
+    return kit.SketchShape(id=sid, type="rectangle", operation="add",
+                           floor=floor, min_x=x0, min_z=z0, max_x=x1, max_z=z1,
+                           base_height=height, material=material,
+                           keepClear=True)
 
 
 # The engine hall: a shell with one mouth a side, and two cross-walls whose
@@ -203,14 +216,14 @@ pillars = [
     slab("pillar-s", -4, -26, 6, -18, BRICKWORK, 6),
 ]
 
-works_walls = {
-    "id": "works-walls", "name": "the works' walls", "base_y": FLOOR_Y,
-    "kind": "made", "part_of": "works-mid",
-    "groups": [{"id": "works-walls", "name": "the works' walls",
-                "mirrors": False,
-                "shapeIds": [s["id"] for s in hall + yards + pillars]}],
-    "shapes": hall + yards + pillars,
-}
+works_walls = kit.AddedLayer(
+    id="works-walls", name="the works' walls", base_y=FLOOR_Y,
+    kind="made", part_of="works-mid",
+    groups=[kit.SketchGroup(id="works-walls", name="the works' walls",
+                            mirrors=False,
+                            shapeIds=[s["id"] for s in hall + yards + pillars])],
+    shapes=hall + yards + pillars,
+)
 
 # Small cover: boxes two and three courses tall that a player crouches behind,
 # stands on or shoots over. These go INSIDE the spaces, the hall's rooms
@@ -229,14 +242,14 @@ cover_boxes = [
     slab("cover-appr-e", 11, -19, 14, -16, IRONWHITE, 2),
 ]
 
-works_cover = {
-    "id": "works-cover", "name": "the works' cover", "base_y": FLOOR_Y,
-    "kind": "made", "part_of": "works-mid",
-    "groups": [{"id": "works-cover", "name": "the works' cover",
-                "mirrors": False,
-                "shapeIds": [s["id"] for s in cover_boxes]}],
-    "shapes": cover_boxes,
-}
+works_cover = kit.AddedLayer(
+    id="works-cover", name="the works' cover", base_y=FLOOR_Y,
+    kind="made", part_of="works-mid",
+    groups=[kit.SketchGroup(id="works-cover", name="the works' cover",
+                            mirrors=False,
+                            shapeIds=[s["id"] for s in cover_boxes])],
+    shapes=cover_boxes,
+)
 
 # The roof and the two gantries, one course at the walls' own segment top. The
 # gantry crosses four blocks of open floor on nothing at all before it reaches
@@ -248,58 +261,73 @@ upper = [
     slab("gantry-e", 32, -4, 52, 4, GANTRY, 1),
 ]
 
-works_upper = {
-    "id": "works-upper", "name": "the roof and the gantries", "base_y": ROOF_Y,
-    "kind": "made", "part_of": "works-mid",
-    "groups": [{"id": "works-upper", "name": "the roof and the gantries",
-                "mirrors": False,
-                "shapeIds": [s["id"] for s in upper]}],
-    "shapes": upper,
-}
+works_upper = kit.AddedLayer(
+    id="works-upper", name="the roof and the gantries", base_y=ROOF_Y,
+    kind="made", part_of="works-mid",
+    groups=[kit.SketchGroup(id="works-upper", name="the roof and the gantries",
+                            mirrors=False,
+                            shapeIds=[s["id"] for s in upper])],
+    shapes=upper,
+)
 
 # ---------------------------------------------------------------- the paint
 
-flags_theme = {
-    "bedrock": {"relative": False, "value": 1},
-    "fill": voronoi(5711, 9, [(5, STONE), (4, ANDESITE)]),
-    "wall": cells(5712, 6, 4, [STONE, STONE_BRICK, ANDESITE]),
-    "wallEnabled": True,
-    "wallOnTerrainFaces": True,
-    "rim": {"enabled": True, "depth": 1, "material": STONE_BRICK},
-    "rimEdges": "void",
+
+def voronoi(seed, size, bands):
+    """The fill's own pattern, made of stone: (depth, material) bands in from
+    each cell's edge, with a vertical period of 4 so a cut face shows grain
+    rather than vertical stripes."""
+    return kit.VoronoiMaterial(seed=seed, cellSize=size, rise=4, bands=[
+        kit.VoronoiBand(material=material, depth=depth)
+        for depth, material in bands])
+
+
+def soil(top, under):
+    """One course of a surfacing block over two of soil, which is what a depth
+    stack owes a surface that has to stay one course thick."""
+    return kit.LayeredMaterial(axis="depth", stack=kit.BandStack(
+        ending="repeat", bands=[kit.Band(material=top, thickness=1),
+                                kit.Band(material=under, thickness=2)]))
+
+
+flags_theme = kit.TerrainTheme(
+    bedrock=kit.BedrockSpec(relative=False, value=1),
+    fill=voronoi(5711, 9, [(5, STONE), (4, ANDESITE)]),
+    wall=cells(5712, 6, 4, [STONE, STONE_BRICK, ANDESITE]),
+    wallEnabled=True,
+    wallOnTerrainFaces=True,
+    rim=kit.TopBand(enabled=True, depth=1, material=STONE_BRICK),
+    rimEdges="void",
     # A depth stack rather than a slope stack, because the slope axis answers a
     # landform's question and this board has no landform: every cell of it is
     # level and the only faces on it are courses somebody laid.
-    "surface": {"enabled": True, "depth": 3,
-                "material": soil(cells(5713, 6, 0, [STONE, STONE_BRICK,
-                                                    ANDESITE]), STONE)},
-}
+    surface=kit.TopBand(enabled=True, depth=3, material=soil(
+        cells(5713, 6, 0, [STONE, STONE_BRICK, ANDESITE]), STONE)),
+)
 
-settling_theme = {
-    "bedrock": {"relative": False, "value": 1},
-    "fill": voronoi(5714, 9, [(5, STONE), (4, ANDESITE)]),
-    "wall": cells(5715, 6, 4, [STONE, ANDESITE]),
-    "wallEnabled": True,
-    "wallOnTerrainFaces": True,
-    "rim": {"enabled": False, "depth": 1, "material": STONE},
-    "rimEdges": "void",
-    "surface": {"enabled": True, "depth": 3,
-                "material": soil(cells(5716, 5, 0, [CLAY, GRAVEL, STONE]),
-                                 STONE)},
-}
+settling_theme = kit.TerrainTheme(
+    bedrock=kit.BedrockSpec(relative=False, value=1),
+    fill=voronoi(5714, 9, [(5, STONE), (4, ANDESITE)]),
+    wall=cells(5715, 6, 4, [STONE, ANDESITE]),
+    wallEnabled=True,
+    wallOnTerrainFaces=True,
+    rim=kit.TopBand(enabled=False, depth=1, material=STONE),
+    rimEdges="void",
+    surface=kit.TopBand(enabled=True, depth=3, material=soil(
+        cells(5716, 5, 0, [CLAY, GRAVEL, STONE]), STONE)),
+)
 
-garth_theme = {
-    "bedrock": {"relative": False, "value": 1},
-    "fill": voronoi(5717, 9, [(5, STONE), (4, ANDESITE)]),
-    "wall": cells(5718, 6, 4, [COBBLE, STONE]),
-    "wallEnabled": True,
-    "wallOnTerrainFaces": True,
-    "rim": {"enabled": True, "depth": 1, "material": COBBLE},
-    "rimEdges": "boundary",
-    "surface": {"enabled": True, "depth": 3,
-                "material": soil(cells(5719, 5, 0, [COBBLE, GRAVEL, DARKOAK]),
-                                 STONE)},
-}
+garth_theme = kit.TerrainTheme(
+    bedrock=kit.BedrockSpec(relative=False, value=1),
+    fill=voronoi(5717, 9, [(5, STONE), (4, ANDESITE)]),
+    wall=cells(5718, 6, 4, [COBBLE, STONE]),
+    wallEnabled=True,
+    wallOnTerrainFaces=True,
+    rim=kit.TopBand(enabled=True, depth=1, material=COBBLE),
+    rimEdges="boundary",
+    surface=kit.TopBand(enabled=True, depth=3, material=soil(
+        cells(5719, 5, 0, [COBBLE, GRAVEL, DARKOAK]), STONE)),
+)
 
 # ---------------------------------------------------------------- the shapes
 
@@ -308,34 +336,44 @@ GROUND = 9
 add_shapes = [
     # the two settling beds, marked with shapes so the yards read as what they
     # are rather than as more of the works' floor
-    {"id": "bed-west", "type": "rectangle", "operation": "add", "floor": 0,
-     "min_x": -50, "min_z": -10, "max_x": -36, "max_z": 10,
-     "base_height": GROUND, "theme": "settling"},
-    {"id": "bed-east", "type": "rectangle", "operation": "add", "floor": 0,
-     "min_x": 36, "min_z": -10, "max_x": 50, "max_z": 10,
-     "base_height": GROUND, "theme": "settling"},
-    {"id": "garth-north", "type": "polygon", "operation": "add", "floor": 0,
-     "base_height": GROUND, "theme": "garth",
-     "vertices": wander_rect(-10, 46, 10, 66, wobble=1.5, seed=5721)},
-    {"id": "garth-south", "type": "polygon", "operation": "add", "floor": 0,
-     "base_height": GROUND, "theme": "garth",
-     "vertices": wander_rect(-10, -66, 10, -46, wobble=1.5, seed=5722)},
+    kit.SketchShape(id="bed-west", type="rectangle", operation="add", floor=0,
+                    min_x=-50, min_z=-10, max_x=-36, max_z=10,
+                    base_height=GROUND, theme="settling"),
+    kit.SketchShape(id="bed-east", type="rectangle", operation="add", floor=0,
+                    min_x=36, min_z=-10, max_x=50, max_z=10,
+                    base_height=GROUND, theme="settling"),
+    # the north garth: x -10..10, z 46..66 walked as a wandering ring, a side
+    # a line
+    kit.SketchShape(id="garth-north", type="polygon", operation="add", floor=0,
+                    base_height=GROUND, theme="garth", vertices=[
+                        [-10.92, 45.34], [-4.07, 45.63], [-0.25, 46.85], [6.16, 45.17],
+                        [11.47, 45.77], [8.59, 51.96], [10.61, 55.18], [8.94, 61.28],
+                        [8.76, 66.47], [5.73, 64.91], [-0.1, 67.18], [-5.96, 66.33],
+                        [-10.65, 67.27], [-9.91, 59.87], [-10.07, 56.35], [-10.17, 50.43]]),
+    # the south garth: x -10..10, z -66..-46 walked as a wandering ring, a side
+    # a line
+    kit.SketchShape(id="garth-south", type="polygon", operation="add", floor=0,
+                    base_height=GROUND, theme="garth", vertices=[
+                        [-10.36, -65.13], [-5.12, -67.23], [0.58, -65.82], [5.59, -64.77],
+                        [9.19, -65.04], [11.08, -59.78], [10.99, -55.89], [10.99, -51.77],
+                        [10.18, -47.19], [4.16, -46.06], [1.41, -44.86], [-4.97, -47.11],
+                        [-11.0, -45.04], [-8.73, -49.74], [-11.21, -55.92], [-9.75, -59.83]]),
 
     # The two flights onto the hall's roof, one a team, each the rot_180 image
     # of the other. height_mode level with anchor_heights, skirt 0, keepClear
     # and a MATERIAL rather than a theme — a stair is a thing somebody built.
     # It runs 16 blocks for a rise of 7, which is over twice the run the rise
     # wants, and its head stands one course over the roof's own edge.
-    {"id": "stair-nw", "type": "polygon", "operation": "add", "floor": 0,
-     "base_height": GROUND, "height_mode": "level", "skirt": 0,
-     "keepClear": True, "anchor_heights": [9, 9, 16, 16],
-     "material": cells(5723, 4, 2, [STONE_BRICK, STONE, ANDESITE]),
-     "vertices": [[-28, 26], [-20, 26], [-20, 10], [-28, 10]]},
-    {"id": "stair-se", "type": "polygon", "operation": "add", "floor": 0,
-     "base_height": GROUND, "height_mode": "level", "skirt": 0,
-     "keepClear": True, "anchor_heights": [9, 9, 16, 16],
-     "material": cells(5723, 4, 2, [STONE_BRICK, STONE, ANDESITE]),
-     "vertices": [[28, -26], [20, -26], [20, -10], [28, -10]]},
+    kit.SketchShape(id="stair-nw", type="polygon", operation="add", floor=0,
+                    base_height=GROUND, height_mode="level", skirt=0,
+                    keepClear=True, anchor_heights=[9, 9, 16, 16],
+                    material=cells(5723, 4, 2, [STONE_BRICK, STONE, ANDESITE]),
+                    vertices=[[-28, 26], [-20, 26], [-20, 10], [-28, 10]]),
+    kit.SketchShape(id="stair-se", type="polygon", operation="add", floor=0,
+                    base_height=GROUND, height_mode="level", skirt=0,
+                    keepClear=True, anchor_heights=[9, 9, 16, 16],
+                    material=cells(5723, 4, 2, [STONE_BRICK, STONE, ANDESITE]),
+                    vertices=[[28, -26], [20, -26], [20, -10], [28, -10]]),
 ]
 
 # ---------------------------------------------------------------- the dressing
@@ -352,24 +390,24 @@ add_shapes = [
 PAVE = cells(5731, 3, 0, [GRAVEL, ANDESITE, COBBLE])
 
 props = [
-    {"id": "gate-way-n", "kind": "stroke", "seed": 5741, "radius": 2,
-     "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[0, 46], [0, 34], [-8, 24], [-14, 14], [-14, 2]]},
-    {"id": "gate-way-s", "kind": "stroke", "seed": 5742, "radius": 2,
-     "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[0, -46], [0, -34], [8, -24], [14, -14], [14, -2]]},
-    {"id": "yard-way-w", "kind": "stroke", "seed": 5743, "radius": 2,
-     "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[-30, -14], [-36, -6], [-40, 0], [-44, 2]]},
-    {"id": "back-way-w", "kind": "stroke", "seed": 5745, "radius": 2,
-     "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[-22, 13], [-32, 14], [-42, 14], [-45, 13]]},
-    {"id": "yard-way-e", "kind": "stroke", "seed": 5744, "radius": 2,
-     "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[30, 14], [36, 6], [40, 0], [44, -2]]},
-    {"id": "back-way-e", "kind": "stroke", "seed": 5746, "radius": 2,
-     "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[22, -13], [32, -14], [42, -14], [45, -13]]},
+    kit.StrokeProp(id="gate-way-n", seed=5741, radius=2,
+                   style="solid", claimsGround=True, pave=PAVE,
+                   points=[[0, 46], [0, 34], [-8, 24], [-14, 14], [-14, 2]]),
+    kit.StrokeProp(id="gate-way-s", seed=5742, radius=2,
+                   style="solid", claimsGround=True, pave=PAVE,
+                   points=[[0, -46], [0, -34], [8, -24], [14, -14], [14, -2]]),
+    kit.StrokeProp(id="yard-way-w", seed=5743, radius=2,
+                   style="solid", claimsGround=True, pave=PAVE,
+                   points=[[-30, -14], [-36, -6], [-40, 0], [-44, 2]]),
+    kit.StrokeProp(id="back-way-w", seed=5745, radius=2,
+                   style="solid", claimsGround=True, pave=PAVE,
+                   points=[[-22, 13], [-32, 14], [-42, 14], [-45, 13]]),
+    kit.StrokeProp(id="yard-way-e", seed=5744, radius=2,
+                   style="solid", claimsGround=True, pave=PAVE,
+                   points=[[30, 14], [36, 6], [40, 0], [44, -2]]),
+    kit.StrokeProp(id="back-way-e", seed=5746, radius=2,
+                   style="solid", claimsGround=True, pave=PAVE,
+                   points=[[22, -13], [32, -14], [42, -14], [45, -13]]),
 ]
 
 
@@ -377,16 +415,27 @@ props = [
 TANK_BANK = cells(5761, 4, 0, [CLAY, GRAVEL, STONE])
 
 
-def tank(tid, x0, z0, x1, z1):
-    return {"id": tid, "kind": "fluid", "seed": 5760 + len(tid), "shape": "pool",
-            "points": wander_rect(x0, z0, x1, z1, wobble=1.2, seed=5762),
-            "radius": 2, "depth": 3, "level": 7, "shore": 1,
-            "bank": TANK_BANK}
+def tank(tid, points):
+    return kit.FluidProp(id=tid, seed=5760 + len(tid), shape="pool",
+                         points=points, radius=2, depth=3, level=7, shore=1,
+                         bank=TANK_BANK)
 
 
 props += [
-    tank("tank-n", 14, 16, 30, 26),
-    tank("tank-s", -30, -26, -14, -16),
+    # the north tank: x 14..30, z 16..26 walked as a wandering ring, a side a
+    # line
+    tank("tank-n", [
+        [14.84, 15.12], [17.99, 16.29], [22.5, 16.4], [24.87, 15.77],
+        [30.64, 16.31], [29.16, 18.09], [31.0, 22.01], [29.25, 22.68],
+        [29.89, 27.06], [25.49, 25.3], [20.93, 25.53], [18.54, 26.84],
+        [14.17, 26.49], [14.08, 24.25], [14.98, 21.8], [13.32, 17.56]]),
+    # the south tank: x -30..-14, z -26..-16 walked as a wandering ring, a
+    # side a line
+    tank("tank-s", [
+        [-29.16, -26.88], [-26.01, -25.71], [-21.5, -25.6], [-19.13, -26.23],
+        [-13.36, -25.69], [-14.84, -23.91], [-13.0, -19.99], [-14.75, -19.32],
+        [-14.11, -14.94], [-18.51, -16.7], [-23.07, -16.47], [-25.46, -15.16],
+        [-29.83, -15.51], [-29.92, -17.75], [-29.02, -20.2], [-30.68, -24.44]]),
 ]
 
 # ---------------------------------------------------------------- the house
@@ -406,7 +455,7 @@ GATE_STOREY = {
     "wall": {"stack": {"bands": [
         {"material": STONE_BRICK, "thickness": 1},
         {"material": cells(5751, 4, 2, [BRICK, QUARTZ]), "thickness": 5},
-        {"material": {"kind": "laidLog", "id": 17, "data": 0}, "thickness": 1}],
+        {"material": kit.LaidLogMaterial(id=17, data=0), "thickness": 1}],
         "ending": "repeat"},
         "extent": 7},
     "post": solid(17, 0),
@@ -415,7 +464,7 @@ GATE_STOREY = {
     "surface": PLAIN, "deck": None, "headroom": 7,
 }
 
-GATE_HALL = {
+GATE_HALL = kit.build("HouseStyle", {
     "foundation": {
         "plate": {"stack": {"bands": [{"material": STONE_BRICK,
                                        "thickness": 1}],
@@ -440,38 +489,42 @@ GATE_HALL = {
                 "head": {"form": "arched", "block": 108, "fill": "upperSlab",
                          "fillBlock": 44, "fillData": 4},
                 "width": 2, "height": 3},
-}
+})
 
-finish = {
-    "authors": ["Opus 5"],
-    "created": "2026-09-21",
-    "themes": {"flags": flags_theme, "settling": settling_theme,
-               "garth": garth_theme},
-    "mapTheme": "flags",
+finish = kit.Refinement(
+    authors=["Opus 5"],
+    created="2026-09-21",
+    themes={"flags": flags_theme, "settling": settling_theme,
+            "garth": garth_theme},
+    mapTheme="flags",
     # Plains: almost nothing on this board is tinted, because almost nothing on
     # it is grass, leaf or water — a works is a floor and its colour is stated.
-    "biome": {"kind": "solid", "id": 1},
-    "relief": relief,
-    "addShapes": add_shapes,
+    biome=kit.SolidBiome(id=1),
+    relief=relief,
+    addShapes=add_shapes,
     # in base_y order, which is the order the world builds them in
-    "addLayers": [works_walls, works_cover, works_upper],
-    "roomStyles": {"spawn": GATE_HALL, "wool": GATE_HALL},
-    "dressing": {"props": props},
+    addLayers=[works_walls, works_cover, works_upper],
+    roomStyles={"spawn": GATE_HALL, "wool": GATE_HALL},
+    dressing=kit.DressingDoc(props=props),
     # Every point of the board is stated here, already fanned: the intent
     # carries no symmetry, so a centre plus one side would be a two-hill board.
     # The middle pays two against the flanks' one, which is the corpus's own
     # ratio and what puts a reason to leave a held point back into the match.
-    "controlPoints": [
-        {"name": "The Cistern", "anchor": {"x": CENTRE[0], "y": 8,
-                                           "z": CENTRE[1]},
-         "size": 8, "points": 2},
-        {"name": "West Settling", "anchor": {"x": -FLANK_X, "y": 8, "z": 0},
-         "size": 8, "points": 1},
-        {"name": "East Settling", "anchor": {"x": FLANK_X, "y": 8, "z": 0},
-         "size": 8, "points": 1},
+    controlPoints=[
+        kit.ControlPointIntent(name="The Cistern",
+                               anchor=kit.Pt(x=CENTRE[0], y=8, z=CENTRE[1]),
+                               size=8, points=2),
+        kit.ControlPointIntent(name="West Settling",
+                               anchor=kit.Pt(x=-FLANK_X, y=8, z=0),
+                               size=8, points=1),
+        kit.ControlPointIntent(name="East Settling",
+                               anchor=kit.Pt(x=FLANK_X, y=8, z=0),
+                               size=8, points=1),
     ],
-    "scoreLimit": 750,
-}
+    scoreLimit=750,
+)
 
-write(os.path.join(HERE, f"{SLUG}.plan.json"), plan)
-write(os.path.join(HERE, f"{SLUG}.refinement.json"), finish)
+for path, doc in ((os.path.join(HERE, f"{SLUG}.plan.json"), plan),
+                  (os.path.join(HERE, f"{SLUG}.refinement.json"), finish)):
+    json.dump(doc, open(path, "w"), indent=1)
+    print(f"wrote {path}")

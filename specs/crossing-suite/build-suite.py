@@ -207,7 +207,7 @@ def finish(plan, cell):
         "created": "2026-09-17",
         "mapTheme": "moor",
         "themes": {"moor": moor_theme()},
-        "roomStyles": {"spawn": "@showcase-hall", "wool": "@showcase-cage"},
+        "roomStyles": {"spawn": {"library": "showcase-hall"}, "wool": {"library": "showcase-cage"}},
         "dressing": {"props": flora(plan, cell)},
         "relief": {"*": {
             "base": plan["globals"]["surface"],

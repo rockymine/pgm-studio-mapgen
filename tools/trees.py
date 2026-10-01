@@ -1,10 +1,9 @@
-"""Hand-built trees: catalogue a world's, match planted ones back to their originals, cut bodies for a spec,
-and verify a built world planted them block for block.
+"""Hand-built trees: catalogue a world's, match planted ones back to their originals, and verify a built world
+planted the showcase's trees block for block.
 
     python3 tools/trees.py catalogue <region> [--min 8] [--json <out>]
     python3 tools/trees.py match <catalogue-region> <planted-region> [--against <original-region>] [--min 20]
-    python3 tools/trees.py bodies <region> --row <z>=<prefix> [--row ...] [--all] --out <trees.json>
-    python3 tools/trees.py verify <region> <trees.json> [--min 20]
+    python3 tools/trees.py verify <region> [--min 20]
 
 A tree is a 26-connected body of wood, leaves and the carpentry a hand-built tree carries (slabs, stairs,
 fences, vines), whose foot is its lowest log. `catalogue` lists every tree standing in a world — a showcase
@@ -12,14 +11,13 @@ of trees on platforms, or a finished board — with its foot, its box, its block
 `match` takes every tree body in a planted world that the original world lacks (or every body, with no
 `--against`) and finds the catalogue tree it is, comparing leaf shapes alone under the eight symmetries of
 the square, so a tree pasted with a rotation is still found; the match is a Jaccard score, and 0.99 or
-better is the same tree. `bodies` cuts a showcase row into copied-tree bodies keyed `<prefix>-<n>` west to
-east, each as `[dx, dy, dz, id, data]` from its foot, which is the `body` a `copied` tree recipe carries;
-`--all` cuts every tree as `tree-<n>` instead. `verify` finds every tree body in a built world and reports
-whether it is one of the file's bodies block for block, under identity or a half turn, and what data bits
-the leaves carry, which is how a drive is checked to have planted what the spec named.
+better is the same tree. `verify` finds every tree body in a built world and reports which showcase tree it
+is, its wood and leaves block for block under identity or a half turn, and what data bits the leaves carry,
+which is how a drive is checked to have planted what the spec named.
 
-`pgm-studio/tools/seed-trees.cs` cuts the same bodies straight into the studio's library; this tool makes
-the file a spec's `build.py` reads, and the reads a review needs.
+The trees a board plants are cut by `pgm-studio/tools/seed-trees.cs`, into a studio's library and, with
+`--json`, into `corpus/tree-showcase/trees.json`, the snapshot every board copies a tree from and the one
+`verify` reads.
 """
 import json
 import os
@@ -162,47 +160,14 @@ def match():
     print("catalogue trees used, by index: " + ", ".join(f"#{k} x{n}" for k, n in sorted(used.items())))
 
 
-def bodies():
-    world = World(sys.argv[2])
-    voxels = world.voxels()
-    out = option("--out")
-    if not out:
-        raise SystemExit("bodies: --out <trees.json> is required")
-    rows = [(int(spec.split("=")[0]), spec.split("=")[1]) for i, spec in enumerate(sys.argv) if sys.argv[i - 1] == "--row"]
-    found = bodies_in(voxels, 8)
-    standing = []
-    for cells in found:
-        foot = foot_of(cells, voxels)
-        rests = any(voxels.get((foot[0], foot[1] - k, foot[2]), (0, 0))[0] not in TREE_BLOCKS | {0} for k in (1, 2))
-        if rests and any(voxels[p][0] in WOOD for p in cells):
-            standing.append((foot, cells))
-    written = {}
-
-    def cut(key, foot, cells):
-        body = sorted([[c[0] - foot[0], c[1] - foot[1], c[2] - foot[2], voxels[c][0], voxels[c][1]] for c in cells],
-                      key=lambda r: (r[1], r[2], r[0]))
-        written[key] = {"foot": list(foot), "body": body}
-        print(f"  {key}: foot {foot}, {len(body)} blocks, {max(r[1] for r in body) + 1} tall")
-
-    if "--all" in sys.argv:
-        for n, (foot, cells) in enumerate(sorted(standing, key=lambda t: (t[0][2], t[0][0])), 1):
-            cut(f"tree-{n}", foot, cells)
-    for band, prefix in rows:
-        row = sorted([t for t in standing if abs(t[0][2] - band) <= 3], key=lambda t: t[0][0])
-        print(f"row z={band} as {prefix}-*: {len(row)} trees")
-        for n, (foot, cells) in enumerate(row, 1):
-            cut(f"{prefix}-{n}", foot, cells)
-    if not written:
-        raise SystemExit("bodies: nothing cut — state --row <z>=<prefix> for each showcase row, or --all")
-    with open(out, "w") as handle:
-        json.dump(written, handle)
-    print(f"wrote {out}: {len(written)} bodies out of {len(standing)} standing trees")
+SNAPSHOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "corpus", "tree-showcase",
+                        "trees.json")
 
 
 def verify():
     world = World(sys.argv[2])
-    with open(sys.argv[3]) as handle:
-        named = json.load(handle)
+    with open(SNAPSHOT) as handle:
+        named = {key: tree["style"] for key, tree in json.load(handle)["trees"].items()}
     minimum = int(option("--min", 20))
     voxels = world.voxels()
     turns = {"none": SYMMETRIES["none"], "rot 180": SYMMETRIES["rot 180"]}
@@ -219,7 +184,7 @@ def verify():
 
     reference = {}
     for key, tree in named.items():
-        rows = [((x, y, z), (i, d)) for x, y, z, i, d in tree["body"]]
+        rows = [((x, y, z), (i, d)) for x, y, z, i, d in tree["body"] if i in WOOD | LEAF]
         for label, turn in turns.items():
             reference[(key, label)] = normalised(rows, turn)
     planted = bodies_in(voxels, minimum, blocks=WOOD | LEAF)
@@ -240,7 +205,7 @@ def verify():
     print(f"leaves: {len(leaves)}, no-decay {no_decay}, carrying the check bit {check}")
 
 
-COMMANDS = {"catalogue": catalogue, "match": match, "bodies": bodies, "verify": verify}
+COMMANDS = {"catalogue": catalogue, "match": match, "verify": verify}
 
 if __name__ == "__main__":
     if len(sys.argv) < 3 or sys.argv[1] not in COMMANDS:

@@ -18,6 +18,7 @@ import json
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "opus5-sluicehead"
 
 # ── blocks ────────────────────────────────────────────────────────────────────
@@ -359,9 +360,11 @@ SPAWN_SHELL = {
 # and frozen, so the swept track is gravel, andesite and cobblestone.
 TRACK = cells([GRAVEL, ANDESITE, COBBLE], 3, 43, rise=0)
 
-TREES = json.load(open(os.path.join(HERE, "trees.json")))
-TREE_KEYS = {"pine-a": "showcase-r2-1", "pine-b": "showcase-r7-3",
-             "spruce-a": "showcase-r4-2", "spruce-b": "showcase-r4-5"}
+# The copied trees are the showcase's own: each key names the showcase tree it is, and its
+# recipe comes whole from the showcase snapshot.
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+TREE_KEYS = {"pine-a": "large-pine-1", "pine-b": "tall-spruce-3",
+             "spruce-a": "tiny-spruce-2", "spruce-b": "tiny-spruce-5"}
 
 
 def tree(pid, style, x, z):
@@ -385,7 +388,7 @@ def house(pid, x0, z0, x1, z1, seed, front, storeys_high=0):
 dressing = {
     "styles": {
         "sluice": {"kind": "house", "shell": SLUICE_SHELL},
-        **{key: TREES[name] for key, name in TREE_KEYS.items()},
+        **{key: SHOWCASE[name]["style"] for key, name in TREE_KEYS.items()},
     },
     "props": [
         # The leat: a cut channel of meltwater running the length of the floor, past the

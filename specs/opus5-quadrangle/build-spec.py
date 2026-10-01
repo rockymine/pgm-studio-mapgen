@@ -324,7 +324,7 @@ finish = {
     "addShapes": add_shapes,
     "addLayers": structures,
     "relief": relief,
-    "roomStyles": {"spawn": "@sb-blockhouse", "wool": "@showcase-cage"},
+    "roomStyles": {"spawn": {"library": "sb-blockhouse"}, "wool": {"library": "showcase-cage"}},
     "dressing": {"props": props_list},
 }
 

@@ -11,6 +11,7 @@ import json
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "delverdale"
 CELL = 4
 
@@ -372,8 +373,14 @@ WORKS = house_style(solid(5, 5), [
      "windows": PANE},
 ], gable=solid(5, 5), pitch=1)
 
-with open(os.path.join(HERE, "trees.json")) as handle:
-    TREES = {key: row["style"] for key, row in json.load(handle).items()}
+# the copied trees are the showcase's own: each key names the showcase tree it is, and its recipe
+# comes whole from the showcase snapshot
+with open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")) as handle:
+    SHOWCASE = json.load(handle)["trees"]
+TREES = {key: SHOWCASE[name]["style"] for key, name in {
+    "oak-1": "tiny-oak-1", "oak-2": "tiny-oak-2", "oak-5": "tiny-oak-5", "oak-8": "tiny-oak-8",
+    "oak-great-3": "oak-7", "oak-great-5": "oak-9",
+    "birch-1": "birch-1", "birch-4": "birch-4", "birch-6": "birch-6", "birch-9": "birch-9"}.items()}
 
 ROCK_BOULDER = {"kind": "boulder", "form": "round", "size": 3, "mossy": False,
                 "rock": cell(51, 3, [STONE, ANDESITE, STONE, COBBLE])}
