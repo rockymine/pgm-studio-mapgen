@@ -332,20 +332,13 @@ BOULDERS = [("err-brow",  -37, 51, "angular", 6, GNEISS),
             ("err-lane",  -53, 20, "round",   5, GNEISS),
             ("err-stone", -26, -8, "cairn",   6, GNEISS)]
 
-STYLE   = json.load(open(f"{ROOT}/tools/styles/17h-croft.json"))
-# No cobble ring at the sill. `Foundation.footing` is the course ringing the plate one block proud, and
-# null -- its own default -- is a building that meets the ground without one.
-STYLE["foundation"]["footing"] = None
-VARIANT = json.loads(json.dumps(STYLE))
-SWAP = {(4, 0): (1, 5), (98, 0): (1, 0), (98, 1): (1, 5)}     # a greyer stone, not a second family
-def repaint(n):
-    if isinstance(n, dict):
-        if n.get("kind") == "solid" and (n.get("id"), n.get("data", 0)) in SWAP:
-            n["id"], n["data"] = SWAP[(n["id"], n.get("data", 0))]; return
-        for v in n.values(): repaint(v)
-    elif isinstance(n, list):
-        for v in n: repaint(v)
-repaint(VARIANT)
+# The library's `17h-croft`, with no cobble ring at the sill. `Foundation.footing` is the course ringing the
+# plate one block proud, and null -- its own default -- is a building that meets the ground without one.
+STYLE   = {"library": "17h-croft", "foundation": {"footing": None}}
+# A greyer stone, not a second family: andesite and stone where the croft's wall is cobble and stone brick,
+# its bands a list and so stated whole.
+VARIANT = {**STYLE, "wall": {"stack": {"bands": [{"material": ANDESITE, "thickness": 2},
+                                                 {"material": STONE, "thickness": 3}]}}}
 
 DRESSING = {"props": [
   # The tarn. Its ring is the hollow the relief already cut, so the water is the shape of the ground
@@ -381,7 +374,7 @@ finish = {
  "addShapes": shapes,
  "addLayers": layers,
  "relief": RELIEF,
- "roomStyles": {"spawn": "@showcase-hall"},
+ "roomStyles": {"spawn": {"library": "showcase-hall"}},
  "dressing": DRESSING,
  "authors": ["Opus 5"],
  "created": "2026-08-31",

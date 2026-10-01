@@ -2040,6 +2040,7 @@
  ],
  "roomStyles": {
   "spawn": {
+   "library": "showcase-hall",
    "foundation": {
     "plate": {
      "stack": {
@@ -2057,14 +2058,6 @@
      },
      "extent": 1
     },
-    "surface": {
-     "field": null,
-     "border": null,
-     "borderWidth": 1,
-     "inlay": null,
-     "inlayInset": 2,
-     "isPlain": true
-    },
     "footing": null
    },
    "roof": {
@@ -2074,7 +2067,6 @@
     "slabData": 1,
     "overhang": 1,
     "ridgeCap": true,
-    "hole": false,
     "body": {
      "kind": "solid",
      "id": 5,
@@ -2089,18 +2081,12 @@
      "kind": "solid",
      "id": 5,
      "data": 1
-    },
-    "gableWindows": {
-     "form": "pane",
-     "block": 102,
-     "hostBlock": -1,
-     "hostData": 0,
-     "data": 0,
-     "sill": 1,
-     "width": 1,
-     "height": 1,
-     "spacing": 3
     }
+   },
+   "post": {
+    "kind": "solid",
+    "id": 17,
+    "data": 1
    },
    "wall": {
     "stack": {
@@ -2126,25 +2112,20 @@
     },
     "extent": 5
    },
-   "post": {
-    "kind": "solid",
-    "id": 17,
-    "data": 1
-   },
-   "windows": {
-    "form": "pane",
-    "block": 102,
-    "hostBlock": -1,
-    "hostData": 0,
-    "data": 0,
-    "sill": 2,
-    "width": 2,
-    "height": 2,
-    "spacing": 3
+   "beams": {
+    "block": 17,
+    "data": 1,
+    "reach": 1,
+    "any": false
    },
    "storeys": [
     {
      "clear": 5,
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
      "wall": {
       "stack": {
        "ending": "repeat",
@@ -2177,21 +2158,16 @@
       },
       "extent": 5
      },
-     "post": {
-      "kind": "solid",
-      "id": 17,
-      "data": 1
-     },
      "windows": {
       "form": "pane",
       "block": 102,
       "hostBlock": -1,
       "hostData": 0,
       "data": 0,
-      "sill": 2,
       "width": 2,
       "height": 2,
-      "spacing": 4
+      "spacing": 4,
+      "sill": 2
      },
      "surface": {
       "field": null,
@@ -2206,6 +2182,11 @@
     },
     {
      "clear": 4,
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
      "wall": {
       "stack": {
        "ending": "repeat",
@@ -2230,21 +2211,16 @@
       },
       "extent": 4
      },
-     "post": {
-      "kind": "solid",
-      "id": 17,
-      "data": 1
-     },
      "windows": {
       "form": "pane",
       "block": 102,
       "hostBlock": -1,
       "hostData": 0,
       "data": 0,
-      "sill": 1,
       "width": 2,
       "height": 2,
-      "spacing": 4
+      "spacing": 4,
+      "sill": 1
      },
      "surface": {
       "field": null,
@@ -2257,27 +2233,7 @@
      "deck": null,
      "headroom": 4
     }
-   ],
-   "porch": null,
-   "front": null,
-   "beams": {
-    "block": 17,
-    "data": 1,
-    "reach": 1,
-    "any": false
-   },
-   "doorway": {
-    "door": "air",
-    "head": {
-     "form": "none",
-     "block": 53,
-     "fill": "upperSlab",
-     "fillBlock": 126,
-     "fillData": 0
-    },
-    "width": 2,
-    "height": 3
-   }
+   ]
   }
  },
  "dressing": {
@@ -2285,6 +2241,9 @@
    "fir-small-1": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 15,
     "body": [
      [
       0,
@@ -2804,12 +2763,14 @@
       18,
       14
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "fir-small-2": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 14,
     "body": [
      [
       0,
@@ -3224,12 +3185,14 @@
       18,
       14
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "fir-small-3": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 12,
     "body": [
      [
       0,
@@ -3644,12 +3607,14 @@
       18,
       14
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "fir-small-4": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 14,
     "body": [
      [
       0,
@@ -4155,12 +4120,14 @@
       18,
       14
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "fir-small-5": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 13,
     "body": [
      [
       0,
@@ -4750,12 +4717,14 @@
       18,
       14
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "oak-dense-1": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 15,
     "body": [
      [
       0,
@@ -8040,12 +8009,14 @@
       18,
       12
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "oak-dense-4": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 13,
     "body": [
      [
       -1,
@@ -11057,8 +11028,7 @@
       18,
       12
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "limestone": {
     "kind": "boulder",
@@ -11126,6 +11096,7 @@
     }
    },
    "works-shed": {
+    "library": "showcase-hall",
     "kind": "house",
     "shell": {
      "foundation": {
@@ -11145,14 +11116,6 @@
        },
        "extent": 1
       },
-      "surface": {
-       "field": null,
-       "border": null,
-       "borderWidth": 1,
-       "inlay": null,
-       "inlayInset": 2,
-       "isPlain": true
-      },
       "footing": null
      },
      "roof": {
@@ -11162,7 +11125,6 @@
       "slabData": 1,
       "overhang": 1,
       "ridgeCap": true,
-      "hole": false,
       "body": {
        "kind": "solid",
        "id": 5,
@@ -11177,18 +11139,12 @@
        "kind": "solid",
        "id": 5,
        "data": 1
-      },
-      "gableWindows": {
-       "form": "pane",
-       "block": 102,
-       "hostBlock": -1,
-       "hostData": 0,
-       "data": 0,
-       "sill": 1,
-       "width": 1,
-       "height": 1,
-       "spacing": 3
       }
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
      },
      "wall": {
       "stack": {
@@ -11214,25 +11170,20 @@
       },
       "extent": 5
      },
-     "post": {
-      "kind": "solid",
-      "id": 17,
-      "data": 1
-     },
-     "windows": {
-      "form": "pane",
-      "block": 102,
-      "hostBlock": -1,
-      "hostData": 0,
-      "data": 0,
-      "sill": 2,
-      "width": 2,
-      "height": 2,
-      "spacing": 3
+     "beams": {
+      "block": 17,
+      "data": 1,
+      "reach": 1,
+      "any": false
      },
      "storeys": [
       {
        "clear": 5,
+       "post": {
+        "kind": "solid",
+        "id": 17,
+        "data": 1
+       },
        "wall": {
         "stack": {
          "ending": "repeat",
@@ -11265,21 +11216,16 @@
         },
         "extent": 5
        },
-       "post": {
-        "kind": "solid",
-        "id": 17,
-        "data": 1
-       },
        "windows": {
         "form": "pane",
         "block": 102,
         "hostBlock": -1,
         "hostData": 0,
         "data": 0,
-        "sill": 2,
         "width": 2,
         "height": 2,
-        "spacing": 4
+        "spacing": 4,
+        "sill": 2
        },
        "surface": {
         "field": null,
@@ -11294,6 +11240,11 @@
       },
       {
        "clear": 4,
+       "post": {
+        "kind": "solid",
+        "id": 17,
+        "data": 1
+       },
        "wall": {
         "stack": {
          "ending": "repeat",
@@ -11318,21 +11269,16 @@
         },
         "extent": 4
        },
-       "post": {
-        "kind": "solid",
-        "id": 17,
-        "data": 1
-       },
        "windows": {
         "form": "pane",
         "block": 102,
         "hostBlock": -1,
         "hostData": 0,
         "data": 0,
-        "sill": 1,
         "width": 2,
         "height": 2,
-        "spacing": 4
+        "spacing": 4,
+        "sill": 1
        },
        "surface": {
         "field": null,
@@ -11345,27 +11291,7 @@
        "deck": null,
        "headroom": 4
       }
-     ],
-     "porch": null,
-     "front": null,
-     "beams": {
-      "block": 17,
-      "data": 1,
-      "reach": 1,
-      "any": false
-     },
-     "doorway": {
-      "door": "air",
-      "head": {
-       "form": "none",
-       "block": 53,
-       "fill": "upperSlab",
-       "fillBlock": 126,
-       "fillData": 0
-      },
-      "width": 2,
-      "height": 3
-     }
+     ]
     }
    }
   },

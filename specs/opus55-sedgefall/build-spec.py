@@ -144,8 +144,12 @@ HOLE_OPS = [
 # The island loses its square corners; it lies across the centre and is not fanned, so its ring is written
 # whole and is its own image under the half-turn.
 ISLAND_OPS = [
-    {"index": 0, "x": -7, "z": -8}, {"after": 0, "x": 2, "z": -9}, {"index": 2, "x": 8, "z": -5},
-    {"index": 3, "x": 7, "z": 8}, {"after": 3, "x": -2, "z": 9}, {"index": 5, "x": -8, "z": 5},
+    {"index": 0, "x": -7, "z": -8, "fan": False},
+    {"after": 0, "x": 2, "z": -9, "fan": False},
+    {"index": 2, "x": 8, "z": -5, "fan": False},
+    {"index": 3, "x": 7, "z": 8, "fan": False},
+    {"after": 3, "x": -2, "z": 9, "fan": False},
+    {"index": 5, "x": -8, "z": 5, "fan": False},
 ]
 
 

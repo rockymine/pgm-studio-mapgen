@@ -83,14 +83,14 @@ What each key states:
   themes          the theme registry;  mapTheme  the map default (first key unless stated)
   biome           SketchLayout's own biome field: {"kind": "cell"|"noise"|"solid", ...}. The byte each
                   chunk carries, which tints grass, leaves and water. Absent is plains everywhere
-  roomStyles      {"wool": ..., "spawn": ...} -- the two members SketchRoomStyles carries; a "@name"
-                  string loads tools/styles/<name>.json, resolved here before the refinement is sent. It
-                  was "cage" until 2026-09-07. A key
+  roomStyles      {"wool": ..., "spawn": ...} -- the two members SketchRoomStyles carries, each a style
+                  or {"library": "<name>"}, a row of the studio's room library with any changes laid
+                  beside the name. It was "cage" until 2026-09-07. A key
                   neither of those names is answered RQ3 by the whole-layout write below, and a
                   kind left unbound stands in the built-in bedrock box, which every build answers
                   WX14
-  dressing        {"styles": ..., "props": [...]};  a house prop's "style" takes the same "@name",
-                  resolved the same way.
+  dressing        {"styles": ..., "props": [...]};  a house prop's "style" names a library row the
+                  same way, and a copied tree is the recipe corpus/tree-showcase/trees.json states.
                   A style in "styles" is a discriminated PropStyle: a house is
                   {"kind": "house", "shell": <HouseStyle>}, and a bare HouseStyle is refused DR-DOC
   shops           [{"id", "name", "keeper": {"name", "mob"}, "categories": [...]}] -> intent.shops. The
@@ -148,8 +148,6 @@ lands beside the documents instead.
 """
 import json, re, sys, io, time, zipfile, urllib.request, urllib.error, urllib.parse, os, shutil, subprocess
 import studio_token
-
-STYLES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "styles")
 
 # Where the studio answers is a fact about the machine, not about this repository, and it has been a
 # different port on every environment the boards here were built on. So it is DISCOVERED rather than
@@ -324,26 +322,6 @@ def complaints(payload):
     """What a 2xx did not do. A decline means one piece of the document is not in the world and ignoring
     it does not put it back; a complaint means nothing was lost and something is worth saying anyway."""
     report(payload, keys=("warnings",))
-
-
-def resolve(style):
-    """A '@name' string is tools/styles/<name>.json. Anything else is the document itself."""
-    if isinstance(style, str) and style.startswith("@"):
-        with open(os.path.join(STYLES, style[1:] + ".json")) as handle:
-            return json.load(handle)
-    return style
-
-
-def resolved(refinement):
-    """The refinement as the studio takes it: every `@name` room style and house style loaded from
-    tools/styles/. The rest is sent as the spec states it."""
-    refinement = json.loads(json.dumps(refinement))
-    if "roomStyles" in refinement:
-        refinement["roomStyles"] = {part: resolve(style) for part, style in refinement["roomStyles"].items()}
-    for prop in (refinement.get("dressing") or {}).get("props", []):
-        if prop.get("kind") == "house":
-            prop["style"] = resolve(prop.get("style", {}))
-    return refinement
 
 
 def origin(specdir):
@@ -528,7 +506,7 @@ def main():
     if drawn_layout is not None:
         source.update(layout=drawn_layout, intent=drawn_intent)
     else:
-        source["refinement"] = resolved(refinement)
+        source["refinement"] = refinement
     # A change the spec has not seen — a hand edit in the Sketch tool, another writer's source — refuses the
     # run 409, printed with the edit each SR1 hands over; `--after` takes it in, `--discard` drops it.
     dropping = f"discard={urllib.parse.quote(discard)}" if discard else ""

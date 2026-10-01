@@ -320,7 +320,8 @@ EDIT_SHAPES = {
     "void-1-cut": chamfer_rect(-40, 52, -24, 88, 3),
     "void-2-cut": chamfer_rect(24, 52, 40, 88, 3),
     # the holm and the stone, cut to octagons; the holm stays its own image under the turn
-    "holm-9": chamfer_rect(-20, -8, 20, 8, 4),
+    # the holm lies across the centre and is its own image, and its eight edits are every corner of it
+    "holm-9": [{**op, "fan": False} for op in chamfer_rect(-20, -8, 20, 8, 4)],
     "stone-9": chamfer_rect(32, -4, 48, 4, 2),
 }
 

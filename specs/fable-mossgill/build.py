@@ -13,7 +13,7 @@ import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
-BODIES = json.load(open(f"{ROOT}/specs/fable-millrace-revamp/trees.json"))
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
 
 # ── the plan ──────────────────────────────────────────────────────────────────────────────────────────
 GOAL = [-29, -28]
@@ -170,25 +170,26 @@ relief = {"team": {
 }}
 
 # ── dressing ──────────────────────────────────────────────────────────────────────────────────────────
-STYLE = json.load(open(f"{ROOT}/tools/styles/17h-croft.json"))
-def repaint(style, swap):
-    def walk(n):
-        if isinstance(n, dict):
-            if n.get("kind") == "solid" and (n.get("id"), n.get("data", 0)) in swap:
-                n["id"], n["data"] = swap[(n["id"], n.get("data", 0))]; return
-            for v in n.values(): walk(v)
-        elif isinstance(n, list):
-            for v in n: walk(v)
-    copy = json.loads(json.dumps(style)); walk(copy); return copy
-VARIANT = repaint(STYLE, {(4, 0): (1, 5), (98, 0): (1, 0), (98, 1): (1, 5)})
+# Both crofts are the library's `17h-croft`; the grey one lays andesite and stone where the row is cobble and
+# stone brick — its footing, and its wall's two bands, which are a list and so stated whole.
+GREY = {"foundation": {"footing": ANDESITE},
+        "wall": {"stack": {"bands": [{"material": ANDESITE, "thickness": 2}, {"material": STONE, "thickness": 3}]}}}
 
-styles = {key: {"kind": "tree", "form": "copied", "body": tree["body"]} for key, tree in BODIES.items()}
+styles = {key: SHOWCASE[name]["style"] for key, name in {
+    "oak-dense-1": "dense-oak-1", "oak-dense-2": "dense-oak-2", "oak-dense-3": "dense-oak-3",
+    "oak-dense-4": "dense-oak-4", "oak-dense-5": "dense-oak-5", "oak-dense-6": "dense-oak-6",
+    "oak-dense-7": "dense-oak-7", "oak-dense-8": "dense-oak-8", "oak-dense-9": "dense-oak-9",
+    "fir-tall-1": "tall-spruce-1", "fir-tall-2": "tall-spruce-2", "fir-tall-3": "tall-spruce-3",
+    "fir-tall-4": "sequoia-1", "fir-tall-5": "tall-spruce-4", "fir-tall-6": "tall-spruce-5",
+    "fir-tall-7": "tall-spruce-6", "fir-tall-8": "tall-spruce-7",
+    "fir-small-1": "tiny-spruce-1", "fir-small-2": "tiny-spruce-2", "fir-small-3": "tiny-spruce-3",
+    "fir-small-4": "tiny-spruce-4", "fir-small-5": "tiny-spruce-5"}.items()}
 styles["erratic"] = {"kind": "boulder", "form": "angular", "size": 5, "mossy": True,
                      "rock": noise([MOSSY, MOSSY, PRISMARINE, PRISMARINE, COBBLE, EMERALD_ORE, ANDESITE], 3, 51, rise=3)}
 styles["shelf"] = {"kind": "boulder", "form": "outcrop", "size": 3, "mossy": True,
                    "rock": noise([MOSSY, PRISMARINE, COBBLE, MOSSY, EMERALD_ORE], 3, 53, rise=3)}
-styles["croft"] = {"kind": "house", "shell": STYLE}
-styles["croft-grey"] = {"kind": "house", "shell": VARIANT}
+styles["croft"] = {"library": "17h-croft", "kind": "house"}
+styles["croft-grey"] = {"library": "17h-croft", "kind": "house", "shell": GREY}
 
 def tree(pid, x, z, style): return {"id": pid, "kind": "tree", "seed": abs(x * 31 + z * 17) % 9973, "x": x, "z": z, "style": style}
 def boulder(pid, x, z, style): return {"id": pid, "kind": "boulder", "seed": abs(x * 11 + z * 5) % 9973, "x": x, "z": z, "style": style}
@@ -242,7 +243,7 @@ finish = {
     "relief": relief,
     "themes": THEMES, "mapTheme": "bank",
     "biome": {"kind": "cell", "seed": 8, "cellSize": 12, "jitter": 3, "palette": [4, 21, 16, 4, 27, 4, 21, 27]},
-    "roomStyles": {"spawn": "@17h-hall"},
+    "roomStyles": {"spawn": {"library": "17h-hall"}},
     "dressing": {"props": props, "styles": styles},
     "authors": [
         {"name": "Fable 5.1", "contribution": "layout, terrain, roads, composition"},

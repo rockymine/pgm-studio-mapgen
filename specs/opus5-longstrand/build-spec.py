@@ -403,16 +403,16 @@ finish = {
         ],
         # the two stones, rectangles in the plan and tide-worn rock in the world
         "stone-w-10": [
-            {"after": 0, "x": -18, "z": -8},
-            {"after": 2, "x": -7, "z": 0},
-            {"after": 4, "x": -18, "z": 8},
-            {"after": 6, "x": -28, "z": 0},
+            {"after": 0, "x": -18, "z": -8, "fan": False},
+            {"after": 2, "x": -7, "z": 0, "fan": False},
+            {"after": 4, "x": -18, "z": 8, "fan": False},
+            {"after": 6, "x": -28, "z": 0, "fan": False},
         ],
         "stone-e-10": [
-            {"after": 0, "x": 18, "z": -8},
-            {"after": 2, "x": 28, "z": 0},
-            {"after": 4, "x": 18, "z": 8},
-            {"after": 6, "x": 7, "z": 0},
+            {"after": 0, "x": 18, "z": -8, "fan": False},
+            {"after": 2, "x": 28, "z": 0, "fan": False},
+            {"after": 4, "x": 18, "z": 8, "fan": False},
+            {"after": 6, "x": 7, "z": 0, "fan": False},
         ],
     },
     # THE BLOWOUT IS NOT SCENERY. The donut's middle compiles to a subtract, which is the board's own

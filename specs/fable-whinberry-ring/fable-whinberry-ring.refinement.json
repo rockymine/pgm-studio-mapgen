@@ -863,22 +863,26 @@
    {
     "after": 3,
     "x": -8,
-    "z": 0
+    "z": 0,
+    "fan": false
    },
    {
     "after": 1,
     "x": 8,
-    "z": 0
+    "z": 0,
+    "fan": false
    },
    {
     "after": 0,
     "x": 0,
-    "z": -8
+    "z": -8,
+    "fan": false
    },
    {
     "after": 4,
     "x": 0,
-    "z": 8
+    "z": 8,
+    "fan": false
    }
   ]
  },
@@ -995,6 +999,9 @@
    "oak-a": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 15,
     "body": [
      [
       0,
@@ -4279,8 +4286,7 @@
       18,
       12
      ]
-    ],
-    "builder": "rockymine"
+    ]
    }
   },
   "props": [

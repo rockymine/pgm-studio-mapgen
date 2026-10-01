@@ -1,11 +1,14 @@
 """Millrace — the author's basin flooded, walled, and bridged."""
-import json, math, os
+import json, math, os, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+import drive
+from studio_kit import kit
 SPEC = f"{ROOT}/specs/opus5-millrace/opus5-millrace"
-plan   = json.load(open(f"{ROOT}/specs/rockymine-map-experiment/map-experiment.plan.json"))
-layout = json.load(open(f"{ROOT}/specs/rockymine-map-experiment/map-experiment.layout.json"))
-intent = json.load(open(f"{ROOT}/specs/rockymine-map-experiment/map-experiment.intent.json"))
+plan   = json.load(open(f"{ROOT}/specs/archive/rockymine-map-experiment/map-experiment.plan.json"))
+layout = json.load(open(f"{ROOT}/specs/archive/rockymine-map-experiment/map-experiment.layout.json"))
+intent = json.load(open(f"{ROOT}/specs/archive/rockymine-map-experiment/map-experiment.intent.json"))
 
 # G5 is the one hard term the base fails: the island sits 25 blocks off the mainland against a
 # band of 10..20, and the short alternative lies outside the build zone. The goals are the
@@ -210,7 +213,11 @@ layout["relief"] = {
    "pushes":[{"id":"crown","ring":ring(48,50,20,13),"amount":6,"falloff":26,"roughness":0.4,"crown":4,"seed":11}]},
 }
 layout["themes"], layout["mapTheme"] = THEMES, "moor"
-STYLE = json.load(open(f"{ROOT}/tools/styles/17h-croft.json"))
+# A stored layout holds its house styles whole, so each is the studio's composed library row, copied here.
+studio = kit.Studio(base=drive.endpoint(), quiet=True)
+ROWS = {row["name"]: row["id"] for row in studio.get_room_styles()}
+def library_style(name): return json.loads(studio.get_room_styles_json(ROWS[name])["styleJson"])
+STYLE = library_style("17h-croft")
 VARIANT = json.loads(json.dumps(STYLE))
 SWAP = {(4,0): (1,5), (98,0): (1,0), (98,1): (1,5)}      # the variation is a greyer stone, not sandstone
 def repaint(n):
@@ -221,7 +228,7 @@ def repaint(n):
     elif isinstance(n, list):
         for v in n: repaint(v)
 repaint(VARIANT)
-layout["roomStyles"] = {"spawn": json.load(open(f"{ROOT}/tools/styles/showcase-hall.json"))}
+layout["roomStyles"] = {"spawn": library_style("showcase-hall")}
 def prop_layer(lid, prop, shapes, mirrors=True):
     return {"id":lid,"name":lid,"base_y":0,"kind":"made","part_of":prop,
             "layout":{"shapes":shapes,"groups":[{"id":lid+"-body","name":prop,"mirrors":mirrors,

@@ -4,6 +4,7 @@ the valley a spruce-clad shoulder gives the long way round, and the height. The 
 the spawn."""
 import json, os
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "fable-hollin-tarn"
 
 def solid(b, d=0): return {"kind": "solid", "id": b, "data": d}
@@ -114,8 +115,7 @@ LOFT = storey(3, [{"material": PLANK_S, "thickness": 2}, {"material": LAID, "thi
 LODGE = lodge([GROUND, LOFT], beams=True)
 HUT = lodge([storey(3, [{"material": STONEFOOT, "thickness": 1}, {"material": PLANK_S, "thickness": 2}, {"material": LAID, "thickness": 1}], LOG_S, WIN_PANE)], beams=False)
 
-TREES = json.load(open(f"{os.path.dirname(HERE)}/fable-millrace-revamp/trees.json"))
-def body(name): return {"kind": "tree", "form": "copied", "body": TREES[name]["body"]}
+SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
 def tree(pid, x, z, style, seed):
     return {"id": pid, "kind": "tree", "seed": seed, "layer": "ground", "x": x, "z": z, "style": style}
 ERRATIC = {"kind": "noise", "seed": 51, "scale": 3, "octaves": 1, "stops": [STONE, COBBLE, ANDESITE], "rise": 2}
@@ -130,8 +130,9 @@ FIRS = [("fir-1", -40, -65, "fir-t1"), ("fir-2", -30, -50, "fir-t2"), ("fir-3", 
         ("fir-10", 34, -33, "fir-s1"), ("fir-11", 46, -26, "fir-s2"), ("fir-12", 26, -67, "fir-t2"),
         ("fir-13", -36, -87, "fir-s1"), ("fir-14", 36, -87, "fir-s2")]
 DRESSING = {
-  "styles": {"fir-t1": body("fir-tall-5"), "fir-t2": body("fir-tall-6"), "fir-t3": body("fir-tall-7"),
-             "fir-s1": body("fir-small-1"), "fir-s2": body("fir-small-4")},
+  "styles": {key: SHOWCASE[name]["style"] for key, name in {
+      "fir-t1": "tall-spruce-4", "fir-t2": "tall-spruce-5", "fir-t3": "tall-spruce-6",
+      "fir-s1": "tiny-spruce-1", "fir-s2": "tiny-spruce-4"}.items()},
   "props": [
     {"id": "track", "kind": "stroke", "seed": 5, "style": "solid", "claimsGround": True, "radius": 1.5,
      "points": [[0, -78], [-4, -69], [-14, -56], [-24, -46], [-27, -34], [-23, -24], [-19, -16], [-17, -11]], "pave": TRACK},

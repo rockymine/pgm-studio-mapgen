@@ -56,7 +56,7 @@ def load(specdir, slug):
     refinement_path = f"{specdir}/{base}.refinement.json"
     if os.path.exists(refinement_path):
         with open(refinement_path) as handle:
-            refinement = drive.resolved(json.load(handle))
+            refinement = json.load(handle)
         _, would = drive.call("PUT", f"/map/{slug}/source?dry=true",
                               {"name": slug, "plan": plan, "refinement": refinement})
         return would["layout"]

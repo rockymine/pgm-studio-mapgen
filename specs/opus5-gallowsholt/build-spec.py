@@ -450,10 +450,10 @@ finish = {
         # the causey: a rectangle in the plan and a lens in the world, its two shoulders 13 blocks
         # off each front and its two tips 25 off the gate
         "causey-15": [
-            {"after": 0, "x": 0, "z": -7},
-            {"after": 2, "x": 18, "z": 0},
-            {"after": 4, "x": 0, "z": 7},
-            {"after": 6, "x": -18, "z": 0},
+            {"after": 0, "x": 0, "z": -7, "fan": False},
+            {"after": 2, "x": 18, "z": 0, "fan": False},
+            {"after": 4, "x": 0, "z": 7, "fan": False},
+            {"after": 6, "x": -18, "z": 0, "fan": False},
         ],
     },
     # THE HOLE IS NOT SCENERY. The ring hub's four cells compile to a subtract, and a subtract is

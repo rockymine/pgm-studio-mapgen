@@ -3056,7 +3056,9 @@
   ]
  },
  "roomStyles": {
-  "spawn": "@17h-hall"
+  "spawn": {
+   "library": "17h-hall"
+  }
  },
  "dressing": {
   "props": [
@@ -3581,6 +3583,9 @@
    "oak-dense-1": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 15,
     "body": [
      [
       0,
@@ -6865,12 +6870,14 @@
       18,
       12
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "oak-dense-2": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 16,
     "body": [
      [
       0,
@@ -11926,12 +11933,14 @@
       18,
       12
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "oak-dense-3": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 14,
     "body": [
      [
       1,
@@ -15685,12 +15694,14 @@
       18,
       4
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "oak-dense-4": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 13,
     "body": [
      [
       -1,
@@ -18702,12 +18713,14 @@
       18,
       12
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "oak-dense-5": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 16,
     "body": [
      [
       0,
@@ -23504,12 +23517,14 @@
       18,
       12
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "oak-dense-6": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 16,
     "body": [
      [
       0,
@@ -29041,12 +29056,14 @@
       18,
       12
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "oak-dense-7": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 15,
     "body": [
      [
       1,
@@ -33759,12 +33776,14 @@
       18,
       12
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "oak-dense-8": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 15,
     "body": [
      [
       0,
@@ -39184,12 +39203,14 @@
       18,
       4
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "oak-dense-9": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 15,
     "body": [
      [
       0,
@@ -44000,12 +44021,14 @@
       18,
       12
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "fir-tall-1": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 27,
     "body": [
      [
       0,
@@ -46366,12 +46389,14 @@
       18,
       6
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "fir-tall-2": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 27,
     "body": [
      [
       1,
@@ -49110,12 +49135,14 @@
       18,
       6
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "fir-tall-3": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 27,
     "body": [
      [
       0,
@@ -51546,12 +51573,14 @@
       18,
       6
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "fir-tall-4": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 35,
     "body": [
      [
       2,
@@ -55781,12 +55810,14 @@
       18,
       6
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "fir-tall-5": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 24,
     "body": [
      [
       0,
@@ -57664,12 +57695,14 @@
       18,
       6
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "fir-tall-6": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 24,
     "body": [
      [
       0,
@@ -59484,12 +59517,14 @@
       18,
       6
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "fir-tall-7": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 24,
     "body": [
      [
       0,
@@ -61556,12 +61591,14 @@
       18,
       6
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "fir-tall-8": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 19,
     "body": [
      [
       0,
@@ -62669,12 +62706,14 @@
       18,
       6
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "fir-small-1": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 15,
     "body": [
      [
       0,
@@ -63194,12 +63233,14 @@
       18,
       14
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "fir-small-2": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 14,
     "body": [
      [
       0,
@@ -63614,12 +63655,14 @@
       18,
       14
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "fir-small-3": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 12,
     "body": [
      [
       0,
@@ -64034,12 +64077,14 @@
       18,
       14
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "fir-small-4": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 14,
     "body": [
      [
       0,
@@ -64545,12 +64590,14 @@
       18,
       14
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "fir-small-5": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 13,
     "body": [
      [
       0,
@@ -65140,8 +65187,7 @@
       18,
       14
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "erratic": {
     "kind": "boulder",
@@ -65234,204 +65280,18 @@
     }
    },
    "croft": {
-    "kind": "house",
-    "shell": {
-     "foundation": {
-      "plate": {
-       "stack": {
-        "bands": [
-         {
-          "material": {
-           "kind": "solid",
-           "id": 5,
-           "data": 1
-          },
-          "thickness": 1
-         }
-        ],
-        "ending": "repeat"
-       },
-       "extent": 2
-      },
-      "surface": {
-       "field": null,
-       "border": null,
-       "borderWidth": 1,
-       "inlay": null,
-       "inlayInset": 2,
-       "isPlain": true
-      },
-      "footing": {
-       "kind": "solid",
-       "id": 4,
-       "data": 0
-      }
-     },
-     "roof": {
-      "form": "gable",
-      "pitch": 1,
-      "slab": -1,
-      "slabData": 0,
-      "overhang": 1,
-      "ridgeCap": true,
-      "hole": false,
-      "body": {
-       "kind": "solid",
-       "id": 45,
-       "data": 0
-      },
-      "verge": {
-       "kind": "solid",
-       "id": 5,
-       "data": 5
-      },
-      "gable": {
-       "kind": "solid",
-       "id": 5,
-       "data": 5
-      },
-      "gableWindows": {
-       "form": "open",
-       "block": 102,
-       "hostBlock": -1,
-       "hostData": 0,
-       "data": 0,
-       "sill": 2,
-       "width": 1,
-       "height": 1,
-       "spacing": 3
-      }
-     },
-     "wall": {
-      "stack": {
-       "bands": [
-        {
-         "material": {
-          "kind": "solid",
-          "id": 4,
-          "data": 0
-         },
-         "thickness": 2
-        },
-        {
-         "material": {
-          "kind": "solid",
-          "id": 98,
-          "data": 0
-         },
-         "thickness": 3
-        }
-       ],
-       "ending": "repeat"
-      },
-      "extent": 5
-     },
-     "post": {
-      "kind": "solid",
-      "id": 162,
-      "data": 1
-     },
-     "windows": {
-      "form": "none",
-      "block": 109,
-      "hostBlock": -1,
-      "hostData": 0,
-      "data": 0,
-      "sill": 3,
-      "width": 2,
-      "height": 2,
-      "spacing": 3
-     },
-     "storeys": [],
-     "porch": null,
-     "front": null,
-     "beams": {
-      "block": -1,
-      "data": 0,
-      "reach": 1,
-      "any": false
-     },
-     "doorway": {
-      "door": "air",
-      "head": {
-       "form": "arched",
-       "block": 109,
-       "fill": "upperSlab",
-       "fillBlock": 44,
-       "fillData": 5
-      },
-      "width": 2,
-      "height": 3
-     }
-    }
+    "library": "17h-croft",
+    "kind": "house"
    },
    "croft-grey": {
+    "library": "17h-croft",
     "kind": "house",
     "shell": {
      "foundation": {
-      "plate": {
-       "stack": {
-        "bands": [
-         {
-          "material": {
-           "kind": "solid",
-           "id": 5,
-           "data": 1
-          },
-          "thickness": 1
-         }
-        ],
-        "ending": "repeat"
-       },
-       "extent": 2
-      },
-      "surface": {
-       "field": null,
-       "border": null,
-       "borderWidth": 1,
-       "inlay": null,
-       "inlayInset": 2,
-       "isPlain": true
-      },
       "footing": {
        "kind": "solid",
        "id": 1,
        "data": 5
-      }
-     },
-     "roof": {
-      "form": "gable",
-      "pitch": 1,
-      "slab": -1,
-      "slabData": 0,
-      "overhang": 1,
-      "ridgeCap": true,
-      "hole": false,
-      "body": {
-       "kind": "solid",
-       "id": 45,
-       "data": 0
-      },
-      "verge": {
-       "kind": "solid",
-       "id": 5,
-       "data": 5
-      },
-      "gable": {
-       "kind": "solid",
-       "id": 5,
-       "data": 5
-      },
-      "gableWindows": {
-       "form": "open",
-       "block": 102,
-       "hostBlock": -1,
-       "hostData": 0,
-       "data": 0,
-       "sill": 2,
-       "width": 1,
-       "height": 1,
-       "spacing": 3
       }
      },
      "wall": {
@@ -65453,47 +65313,8 @@
          },
          "thickness": 3
         }
-       ],
-       "ending": "repeat"
-      },
-      "extent": 5
-     },
-     "post": {
-      "kind": "solid",
-      "id": 162,
-      "data": 1
-     },
-     "windows": {
-      "form": "none",
-      "block": 109,
-      "hostBlock": -1,
-      "hostData": 0,
-      "data": 0,
-      "sill": 3,
-      "width": 2,
-      "height": 2,
-      "spacing": 3
-     },
-     "storeys": [],
-     "porch": null,
-     "front": null,
-     "beams": {
-      "block": -1,
-      "data": 0,
-      "reach": 1,
-      "any": false
-     },
-     "doorway": {
-      "door": "air",
-      "head": {
-       "form": "arched",
-       "block": 109,
-       "fill": "upperSlab",
-       "fillBlock": 44,
-       "fillData": 5
-      },
-      "width": 2,
-      "height": 3
+       ]
+      }
      }
     }
    }

@@ -1041,6 +1041,9 @@
    "oak-a": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 16,
     "body": [
      [
       0,
@@ -6096,12 +6099,14 @@
       18,
       12
      ]
-    ],
-    "builder": "rockymine"
+    ]
    },
    "oak-b": {
     "kind": "tree",
     "form": "copied",
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 13,
     "body": [
      [
       -1,
@@ -9113,8 +9118,7 @@
       18,
       12
      ]
-    ],
-    "builder": "rockymine"
+    ]
    }
   },
   "props": [
