@@ -465,21 +465,21 @@ foliage, and `r11`'s dense oaks are the worst of it because their crowns are the
 ## What a building is made of
 
 The two sections above are what the ground is made of. This is the other half, and it is shorter, because a
-building is a short list of decisions and a shorter list of things not to do. The list is the author's, and
-three of its rulings are refusals in the studio; the rest is enforced nowhere, which is why the shipped presets
-break the first item on it.
+building is a short list of decisions and a shorter list of things not to do.
 
-**No footing.** `Foundation.Footing` is null by default and that is the answer rather than an omission: a
-footing is the course ringing the plate one block proud, and it is what a **deep** plate stands on — over a
-plate of one course, which is what a house on a board has, it is a rim round a building with no foundation to
-speak of and it reads as noise rather than as masonry.
+**The list is the author's, and the studio refuses nearly all of it.** Each ruling below that names a rule id is
+a refusal when a style is stored or saved to the library. The one it does not name is enforced nowhere.
 
-Five of the thirteen presets carry one in cobblestone — `cottage`, `longhouse`, `terrace`, `counting house`
-and `workshop` — and a hand-authored style is as likely to, room shells included. A fork of any of them carries
-the footing in unless it is set back to null.
+**No footing.** `Foundation.Footing` is null by default and that is the answer rather than an omission: a footing
+is the course ringing the plate one block proud, and round a house it reads as a rim rather than as masonry the
+building stands on. The studio refuses one of any block round a plate of any depth (`HS7`).
 
-**No shed, and no shed roof.** `RoofForm` offers six — `gable`, `flat`, `hip`, `gambrel`, `shed`,
-`saltbox` — and one of them is not for a map.
+**No shed, and no shed roof.** `RoofForm` offers six — `gable`, `flat`, `hip`, `gambrel`, `shed`, `saltbox` — and
+one of them is not for a map. The studio refuses it on a house, on a wing that names its own roof and on a porch
+canopy (`HS14`); a porch that names no roof wears a gable.
+
+**A porch roof may be one block.** A canopy takes the house roof's body, with the verge along its ridge where the
+roof is capped; where that trim stands out, the `canopy` part lays the whole porch roof in one block.
 
 **A log is a post or a beam, and a wall is neither.** Posts at the corners are what make a house read as
 framed, which is what every hand-built house on the corpus does. Beams run out past those corners where two
@@ -492,7 +492,7 @@ timbered house. The log with bark on all six faces is a tree's: a tree is whole 
 into a wall it reads as a trunk.
 
 **A checker in the same log as the posts is one mass.** Where a wall wants a checker it wants a *different*
-log; where it does not, the posts are already doing that work.
+log; where it does not, the posts are already doing that work. The studio refuses the checker (`HS15`).
 
 **Corner beams need log posts and a laid course at their level.** Where a storey seam lays beam ends, the course
 they come out of is a laid log and the corners beside them are log posts; the studio refuses either missing (`HS9`,
@@ -506,7 +506,20 @@ block it borders nothing. The author's pairing is spruce planks under a dark oak
 the same block on both (`HS12`).
 
 **No birch log in a building.** Not as a post, a laid course, a beam or a band; birch planks, stairs and slabs
-are allowed.
+are allowed. This is the ruling the studio does not check.
+
+**A wall is never the ground's skin.** Grass, podzol, mycelium and farmland are the top of the ground and never a
+wall or a gable (`HS16`). Sand, gravel and even dirt can work in a wall.
+
+**No snow or ice in a building.** Snow, a snow layer, ice and packed ice are weather, never a wall, a gable or a
+roof (`HS17`). White blocks are not the fault: white clay, white wool and quartz are walls.
+
+**A storey over the stilts names its floor.** A stilt house's plate is air, and a storey naming no deck stands on
+that air; the studio refuses a storey above the ground with nothing under it (`HS18`).
+
+**A library style is named for what it is.** Its name is describing words then the kind of building —
+`brick-roofed-stone-cottage`, `oak-stilt-house` — every word from the two lists `GET /api/room-styles/name-words`
+answers (`HS19`). A board's name, a role, an occupation or a place says where a style was used, not what it is.
 
 **Two buildings are a row when they differ in height and footprint and in nothing else.** One style, three
 plots, one of them a storey taller: that is a town. Three styles is three ideas, and five styles on a board is

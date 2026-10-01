@@ -366,8 +366,7 @@ def works_style(storeys):
     return {
         "foundation": {"plate": {"stack": stack([(1, Q_CHISEL)], "repeat"), "extent": 1},
                        "surface": {"field": None, "border": None, "borderWidth": 1, "inlay": None,
-                                   "inlayInset": 2, "isPlain": True},
-                       "footing": STONEBRICK},
+                                   "inlayInset": 2, "isPlain": True}},
         "roof": {"form": "gable", "pitch": 1, "slab": Q_SLAB, "slabData": 7, "overhang": 1,
                  "ridgeCap": True, "hole": False,
                  "body": QUARTZ, "verge": LAID_BIRCH, "gable": BIRCH_PLANK,

@@ -380,7 +380,7 @@ FINISH = {
     "addShapes": ADD_SHAPES,
     "relief": RELIEF,
     # sb-spawn states no beams, so there are none to take off
-    "roomStyles": {"spawn": style("sb-spawn")},
+    "roomStyles": {"spawn": style("andesite-gabled-house")},
     "dressing": DRESSING,
     "authors": ["Opus 5"],
     "created": "2026-09-14",

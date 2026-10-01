@@ -481,7 +481,7 @@ styles["limestone"] = {"kind": "boulder", "form": "angular", "size": 6, "mossy":
 styles["clint"] = {"kind": "boulder", "form": "outcrop", "size": 7, "mossy": False,
                    "rock": {"kind": "noise", "seed": 73, "scale": 3, "octaves": 3, "rise": 2,
                             "stops": [STONE, ANDESITE, COBBLE]}}
-styles["works-shed"] = {"library": "showcase-hall", "kind": "house", "shell": WORKS_SHELL}
+styles["works-shed"] = {"library": "brick-roofed-stone-and-dark-oak-house", "kind": "house", "shell": WORKS_SHELL}
 
 props = []
 
@@ -581,7 +581,7 @@ finish = {
     "bendShapes": BENDS,
     "addShapes": ADD,
     "addLayers": LAYERS,
-    "roomStyles": {"spawn": {"library": "showcase-hall", **SHELL}},
+    "roomStyles": {"spawn": {"library": "brick-roofed-stone-and-dark-oak-house", **SHELL}},
     "dressing": {"styles": styles, "props": props},
 }
 

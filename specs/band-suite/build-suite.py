@@ -189,7 +189,7 @@ def finish(plan, name, cell):
         "created": "2026-09-16",
         "mapTheme": "moor",
         "themes": {"moor": moor_theme()},
-        "roomStyles": {"spawn": {"library": "showcase-hall"}, "wool": {"library": "showcase-cage"}},
+        "roomStyles": {"spawn": {"library": "brick-roofed-stone-and-dark-oak-house"}, "wool": {"library": "showcase-cage"}},
         "dressing": {"props": flora(plan, cell)},
         "relief": {"*": {
             "base": plan["globals"]["surface"],

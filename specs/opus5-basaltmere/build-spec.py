@@ -405,7 +405,7 @@ FINISH = {
     "addLayers": ADD_LAYERS,
     "addShapes": ADD_SHAPES,
     "relief": RELIEF,
-    "roomStyles": {"spawn": style("sb-spawn")},
+    "roomStyles": {"spawn": style("andesite-gabled-house")},
     "dressing": DRESSING,
     # one hill, stated absolutely: a compiled intent carries no symmetry, so nothing
     # downstream fans this and one entry is one hill

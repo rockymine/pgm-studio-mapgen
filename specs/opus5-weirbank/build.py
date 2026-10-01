@@ -334,7 +334,7 @@ BOULDERS = [("err-brow",  -37, 51, "angular", 6, GNEISS),
 
 # The library's `17h-croft`, with no cobble ring at the sill. `Foundation.footing` is the course ringing the
 # plate one block proud, and null -- its own default -- is a building that meets the ground without one.
-STYLE   = {"library": "17h-croft", "foundation": {"footing": None}}
+STYLE   = {"library": "brick-roofed-stone-cottage", "foundation": {"footing": None}}
 # A greyer stone, not a second family: andesite and stone where the croft's wall is cobble and stone brick,
 # its bands a list and so stated whole.
 VARIANT = {**STYLE, "wall": {"stack": {"bands": [{"material": ANDESITE, "thickness": 2},
@@ -374,7 +374,7 @@ finish = {
  "addShapes": shapes,
  "addLayers": layers,
  "relief": RELIEF,
- "roomStyles": {"spawn": {"library": "showcase-hall"}},
+ "roomStyles": {"spawn": {"library": "brick-roofed-stone-and-dark-oak-house"}},
  "dressing": DRESSING,
  "authors": ["Opus 5"],
  "created": "2026-08-31",

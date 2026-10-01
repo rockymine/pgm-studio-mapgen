@@ -328,28 +328,28 @@ ROADS = [
 # stands outside the +-10-block square a destroy goal keeps clear (`DressingScope.GoalStandoff`, `OB19`).
 HOUSES = [
     # The dock town, on the meadow: the sailmaker and the cooperage in the yard behind the crane.
-    ("sailmaker",      {"library": "sb-spawn"},        ( -69,  45), ( -60,  57), "posZ"),
-    ("cooperage",      {"library": "17h-hall"},        ( -53,  46), ( -42,  55), "negX"),
+    ("sailmaker",      {"library": "andesite-gabled-house"},        ( -69,  45), ( -60,  57), "posZ"),
+    ("cooperage",      {"library": "brick-roofed-stone-and-spruce-house"},        ( -53,  46), ( -42,  55), "negX"),
     # The quay east of the goal dock: a harbour office at the water, and a store along from it.
-    ("harbour-office", {"library": "sn-compass-well"}, (   5,  19), (  16,  32), "negZ"),
-    ("quay-store",     {"library": "17h-hall"},        (  35,  21), (  44,  29), "posX"),
+    ("harbour-office", {"library": "diorite-blue-clay-pyramid-house"}, (   5,  19), (  16,  32), "negZ"),
+    ("quay-store",     {"library": "brick-roofed-stone-and-spruce-house"},        (  35,  21), (  44,  29), "posX"),
     # The row across the middle, which is the one thing joining the two towns.
-    ("arcade-w",       {"library": "sb-spawn"},        ( -12,  46), (   2,  53), "negZ"),
-    ("arcade-e",       {"library": "17h-hall"},        (  16,  46), (  30,  53), "posZ"),
+    ("arcade-w",       {"library": "andesite-gabled-house"},        ( -12,  46), (   2,  53), "negZ"),
+    ("arcade-e",       {"library": "brick-roofed-stone-and-spruce-house"},        (  16,  46), (  30,  53), "posZ"),
     # The upland: a barn on the hill's own shoulder, and the back settlement flattened into it.
-    ("granary",        {"library": "17h-hall"},        ( -40,  75), ( -29,  86), "negX"),
-    ("counting",       {"library": "sb-spawn"},        (  28,  82), (  37,  91), "posZ"),
-    ("upland-hall",    {"library": "17h-hall"},        (  55,  66), (  66,  80), "posX"),
+    ("granary",        {"library": "brick-roofed-stone-and-spruce-house"},        ( -40,  75), ( -29,  86), "negX"),
+    ("counting",       {"library": "andesite-gabled-house"},        (  28,  82), (  37,  91), "posZ"),
+    ("upland-hall",    {"library": "brick-roofed-stone-and-spruce-house"},        (  55,  66), (  66,  80), "posX"),
     # The field the balloon flies off, which the drawn coast made room on: five, so it reads as somewhere
     # rather than as the ground beside somewhere.
     ("balloon-shed",   {"library": "hoar-longhall"},   ( -81,  18), ( -69,  27), "posZ"),
-    ("balloon-store",  {"library": "sb-spawn"},        ( -64,  20), ( -55,  28), "negZ"),
+    ("balloon-store",  {"library": "andesite-gabled-house"},        ( -64,  20), ( -55,  28), "negZ"),
     ("field-cottage",  {"library": "hoar-longhall"},   ( -94,  13), ( -86,  24), "posX"),
-    ("field-barn",     {"library": "sb-spawn"},        (-103, -13), ( -92,  -1), "posZ"),
+    ("field-barn",     {"library": "andesite-gabled-house"},        (-103, -13), ( -92,  -1), "posZ"),
     ("field-byre",     {"library": "hoar-longhall"},   ( -79,  -8), ( -69,   1), "negX"),
     # The port, beside the car park.
-    ("warehouse",      {"library": "sn-compass-well"}, (  99,  18), ( 110,  32), "posZ"),
-    ("port-office",    {"library": "17h-hall"},        (  90,  39), (  99,  50), "posX"),
+    ("warehouse",      {"library": "diorite-blue-clay-pyramid-house"}, (  99,  18), ( 110,  32), "posZ"),
+    ("port-office",    {"library": "brick-roofed-stone-and-spruce-house"},        (  90,  39), (  99,  50), "posX"),
 ]
 
 
@@ -810,7 +810,7 @@ def refinement(add_layers):
         # The stairs first: they are ground laid on the compiled ground, and the made things stand on both.
         "addLayers": [stairs()] + add_layers,
         # The spawn is a building rather than a bedrock box: a stamped two-storey hall with its own doorway.
-        "roomStyles": {"spawn": {"library": "sb-spawn"}},
+        "roomStyles": {"spawn": {"library": "andesite-gabled-house"}},
         # The ground the plan states is a set of plateaus; the relief is what makes it terrain. `reach` 26
         # shelves the quay into the basin over a beach rather than dropping it down a wall, and the marks
         # behind it roll the town — the two terraces excluded above stay flat inside it.

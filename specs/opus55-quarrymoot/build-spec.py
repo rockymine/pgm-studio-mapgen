@@ -201,7 +201,7 @@ shapes = [{**kit.SketchShape(id="rim-turf", type="polygon", operation="add",
 SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
 styles = {key: kit.build("TreeStyle", SHOWCASE[tree]["style"]) for key, tree in {
     "tree-showcase-r8-2": "acacia-2", "tree-showcase-r8-4": "acacia-4"}.items()}
-styles["works"] = kit.library("hw-stonehouse", kind="house")
+styles["works"] = kit.library("banded-stone-house", kind="house")
 
 
 def path(pid, seed, points):
@@ -239,7 +239,7 @@ refinement = kit.Refinement(
     outlines=outlines,
     addShapes=shapes,
     addLayers=layers,
-    roomStyles={"spawn": kit.library("sb-spawn")},
+    roomStyles={"spawn": kit.library("andesite-gabled-house")},
     controlPoints=[
         kit.ControlPointIntent(name="Crusher", anchor=kit.Pt(x=0, z=0), size=7, points=2),
         kit.ControlPointIntent(name="West Bench", anchor=kit.Pt(x=-42, z=0), size=7, points=1),

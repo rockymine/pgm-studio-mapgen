@@ -235,7 +235,7 @@ if STAGE >= 3:
     finish["addLayers"] = layers
 
     # The spawn's hall is the showcase hall under hay thatch; the wool rooms' is the 17h hall in spruce under hay.
-    finish["roomStyles"] = {"spawn": kit.library("showcase-hall-hay"), "wool": kit.library("17h-hall-spruce")}
+    finish["roomStyles"] = {"spawn": kit.library("hay-roofed-stone-and-dark-oak-house"), "wool": kit.library("hay-roofed-stone-and-spruce-house")}
 
 # --- stage 4: dressing — the roads first, then ground cover, then trees, rocks and cabins -------------------------------
 if STAGE >= 4:

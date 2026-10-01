@@ -212,7 +212,7 @@ DRESSING = {
         # of the tramway are one family rather than two styles eleven blocks apart. A
         # house prop reads `beams` and a null is not a shape it reads, so a building with
         # none states `block: -1`.
-        "peat-store":   house_shell("sb-spawn"),
+        "peat-store":   house_shell("andesite-gabled-house"),
     },
     "props": [
         # the water fills the cutting the relief already dug, so the two agree:
@@ -258,7 +258,7 @@ FINISH = {
     # rectangles.  The bend only ever moves a point inward, so the strait can only widen.
     "bendShapes": {"fore-13": {"tension": 0.24, "wander": 4, "step": 8, "seed": 5}},
     "relief": RELIEF,
-    "roomStyles": {"spawn": style("sb-spawn")},
+    "roomStyles": {"spawn": style("andesite-gabled-house")},
     "dressing": DRESSING,
     "authors": ["Opus 5"],
     "created": "2026-09-14",

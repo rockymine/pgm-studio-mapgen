@@ -217,7 +217,7 @@ layout["themes"], layout["mapTheme"] = THEMES, "moor"
 studio = kit.Studio(base=drive.endpoint(), quiet=True)
 ROWS = {row["name"]: row["id"] for row in studio.get_room_styles()}
 def library_style(name): return json.loads(studio.get_room_styles_json(ROWS[name])["styleJson"])
-STYLE = library_style("17h-croft")
+STYLE = library_style("brick-roofed-stone-cottage")
 VARIANT = json.loads(json.dumps(STYLE))
 SWAP = {(4,0): (1,5), (98,0): (1,0), (98,1): (1,5)}      # the variation is a greyer stone, not sandstone
 def repaint(n):
@@ -228,7 +228,7 @@ def repaint(n):
     elif isinstance(n, list):
         for v in n: repaint(v)
 repaint(VARIANT)
-layout["roomStyles"] = {"spawn": library_style("showcase-hall")}
+layout["roomStyles"] = {"spawn": library_style("brick-roofed-stone-and-dark-oak-house")}
 def prop_layer(lid, prop, shapes, mirrors=True):
     return {"id":lid,"name":lid,"base_y":0,"kind":"made","part_of":prop,
             "layout":{"shapes":shapes,"groups":[{"id":lid+"-body","name":prop,"mirrors":mirrors,

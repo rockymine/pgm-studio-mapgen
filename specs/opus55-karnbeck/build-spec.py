@@ -219,7 +219,7 @@ refinement = kit.Refinement(
         "2": [[0.06, 3], [0.18, 2], [0.3, 5], [0.42, 1], [0.55, 3], [0.68, 2], [0.8, 5], [0.92, 2]]})]},
     addShapes=shapes,
     addLayers=layers,
-    roomStyles={"spawn": kit.library("17h-hall")},
+    roomStyles={"spawn": kit.library("brick-roofed-stone-and-spruce-house")},
     dressing=kit.DressingDoc(styles=styles, props=props_),
 )
 

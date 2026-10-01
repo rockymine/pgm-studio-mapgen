@@ -322,7 +322,7 @@ def stone(storeys):
             "foundation": {"plate": {"stack": {"bands": [kit.Band(material=solid(98), thickness=1)]}}}}
 
 
-styles["stonehouse"] = kit.library("hw-stonehouse", kind="house", shell=stone([
+styles["stonehouse"] = kit.library("banded-stone-house", kind="house", shell=stone([
     kit.Storey(clear=5, wall=stone_wall(5), post=solid(1, 6), surface=PLAIN, deck=None, headroom=5,
                windows=kit.WindowStyle(form="pane", block=102, hostBlock=-1, hostData=0, data=0, sill=2, width=2,
                                        height=2, spacing=4)),
@@ -331,7 +331,7 @@ styles["stonehouse"] = kit.library("hw-stonehouse", kind="house", shell=stone([
                                        height=2, spacing=4))]))
 # The spawn room in the houses' own style (note 69): the shipped spawn room in the stone, so its entry and floor
 # stay what a room needs.
-SPAWN_ROOM = kit.library("sb-spawn", **stone([
+SPAWN_ROOM = kit.library("andesite-gabled-house", **stone([
     kit.Storey(clear=5, wall=stone_wall(5), post=solid(1, 6), surface=PLAIN, deck=None, headroom=5,
                windows=kit.WindowStyle(form="pane", block=160, hostBlock=-1, hostData=0, data=0, sill=3, width=2,
                                        height=2, spacing=3)),

@@ -188,8 +188,8 @@ styles["erratic"] = {"kind": "boulder", "form": "angular", "size": 5, "mossy": T
                      "rock": noise([MOSSY, MOSSY, PRISMARINE, PRISMARINE, COBBLE, EMERALD_ORE, ANDESITE], 3, 51, rise=3)}
 styles["shelf"] = {"kind": "boulder", "form": "outcrop", "size": 3, "mossy": True,
                    "rock": noise([MOSSY, PRISMARINE, COBBLE, MOSSY, EMERALD_ORE], 3, 53, rise=3)}
-styles["croft"] = {"library": "17h-croft", "kind": "house"}
-styles["croft-grey"] = {"library": "17h-croft", "kind": "house", "shell": GREY}
+styles["croft"] = {"library": "brick-roofed-stone-cottage", "kind": "house"}
+styles["croft-grey"] = {"library": "brick-roofed-stone-cottage", "kind": "house", "shell": GREY}
 
 def tree(pid, x, z, style): return {"id": pid, "kind": "tree", "seed": abs(x * 31 + z * 17) % 9973, "x": x, "z": z, "style": style}
 def boulder(pid, x, z, style): return {"id": pid, "kind": "boulder", "seed": abs(x * 11 + z * 5) % 9973, "x": x, "z": z, "style": style}
@@ -243,7 +243,7 @@ finish = {
     "relief": relief,
     "themes": THEMES, "mapTheme": "bank",
     "biome": {"kind": "cell", "seed": 8, "cellSize": 12, "jitter": 3, "palette": [4, 21, 16, 4, 27, 4, 21, 27]},
-    "roomStyles": {"spawn": {"library": "17h-hall"}},
+    "roomStyles": {"spawn": {"library": "brick-roofed-stone-and-spruce-house"}},
     "dressing": {"props": props, "styles": styles},
     "authors": [
         {"name": "Fable 5.1", "contribution": "layout, terrain, roads, composition"},

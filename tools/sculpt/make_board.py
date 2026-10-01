@@ -150,7 +150,7 @@ REFINEMENT_HEAD = {
     "created": "2026-08-28",
     "themes": THEMES,
     "mapTheme": "meadow",
-    "roomStyles": {"spawn": {"library": "showcase-hall"}},
+    "roomStyles": {"spawn": {"library": "brick-roofed-stone-and-dark-oak-house"}},
     # The board is flat, and that is a finding rather than a taste. A prop states an absolute floor, and a
     # relief moves the ground under it — so on rolling ground a prop either floats or is buried, and SK10
     # names every one of them. Seating a prop needs the *solved* surface, which nothing in the document can

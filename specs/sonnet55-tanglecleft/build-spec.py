@@ -248,7 +248,7 @@ if STAGE >= 3:
     finish["addLayers"] = layers
 
     # The spawn's hall is the tall timber hall in jungle wood, its logs, beam ends and spruce planks all jungle.
-    finish["roomStyles"] = {"spawn": kit.library("talltimber-hall-jungle"), "wool": kit.library("sb-spawn")}
+    finish["roomStyles"] = {"spawn": kit.library("talltimber-hall-jungle"), "wool": kit.library("andesite-gabled-house")}
 
 # --- stage 4: dressing — paths first (the circulation), then ground cover, then trees, rocks and a cabin ---------------
 if STAGE >= 4:
@@ -285,7 +285,7 @@ if STAGE >= 4:
     styles["wet-rock"] = kit.BoulderStyle(form="outcrop", size=3, mossy=True, rock=kit.CellMaterial(
         cellSize=2, seed=9, palette=[solid(STONE), solid(*ANDESITE), solid(COBBLE), solid(*ANDESITE)]))
     # The cabin is the tall timber cottage in jungle wood: jungle logs and beam ends, jungle and oak planks.
-    styles["cabin"] = kit.library("talltimber-cottage-jungle", kind="house")
+    styles["cabin"] = kit.library("jungle-framed-cottage", kind="house")
     placed += [
         kit.TreeProp(id="j-1", x=-90, z=-30, style=JUNGLE[0], seed=1),
         kit.TreeProp(id="j-2", x=-76, z=-36, style=JUNGLE[3], seed=2),

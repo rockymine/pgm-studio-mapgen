@@ -405,7 +405,7 @@ finish = {
     "addShapes": add_shapes,
     "addLayers": structures,
     "relief": relief,
-    "roomStyles": {"spawn": {"library": "sb-spawn"}, "wool": {"library": "ow-cage"}},
+    "roomStyles": {"spawn": {"library": "andesite-gabled-house"}, "wool": {"library": "ow-cage"}},
     "dressing": {"props": props_list},
 }
 

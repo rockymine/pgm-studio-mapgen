@@ -336,7 +336,7 @@ FINISH = {
     # the moor's coast drawn rather than left as the plan's staircase of rectangles
     "bendShapes": {"bank-e-14": {"tension": 0.22, "wander": 3, "step": 9, "seed": 5, "side": "in"}},
     "relief": RELIEF,
-    "roomStyles": {"spawn": style("showcase-hall"), "wool": style("showcase-cage")},
+    "roomStyles": {"spawn": style("brick-roofed-stone-and-dark-oak-house"), "wool": style("showcase-cage")},
     "dressing": DRESSING,
     "authors": ["Opus 5"],
     "created": "2026-09-15",

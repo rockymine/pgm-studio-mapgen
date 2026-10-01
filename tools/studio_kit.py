@@ -6,7 +6,7 @@ shape a route takes, `library()` and `use()` for a name, and `Studio` for every 
     from studio_kit import kit
 
     kit.SolidMaterial(id=1, data=5)
-    kit.library("showcase-hall")
+    kit.library("brick-roofed-stone-and-dark-oak-house")
 
 **A kit is one studio's words, so it is asked of the studio the board is driven against** — the one `drive.py`
 resolves — and kept under `out/kit/<hash>.py`, the hash being the `ETag` that studio answers it with. A studio whose

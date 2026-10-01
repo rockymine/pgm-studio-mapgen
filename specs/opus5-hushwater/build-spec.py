@@ -611,7 +611,7 @@ DRESSING = {
         # the whim house stands over the shaft at the head, facing the yard it worked. It is
         # the one building on the laid stone and it takes its own style: hardened clay walls
         # over a stone footing, and a roof that reads brick without being a course of brick.
-        {"id": "head-store", "kind": "house", "seed": 101, "style": {"library": "hw-stonehouse"}, "front": "negZ",
+        {"id": "head-store", "kind": "house", "seed": 101, "style": {"library": "banded-stone-house"}, "front": "negZ",
          "wings": [{"corners": [[17, 85], [23, 91]]}]},
         # the powder house, out on the spur away from everything, as a powder house is
         {"id": "powder", "kind": "house", "seed": 102, "style": {"library": "hw-minehouse"}, "front": "posZ",

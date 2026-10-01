@@ -298,7 +298,7 @@ FINISH = {
     "addShapes": ADD_SHAPES,
     "addLayers": ADD_LAYERS,
     "relief": RELIEF,
-    "roomStyles": {"spawn": style("showcase-hall"), "wool": style("showcase-cage")},
+    "roomStyles": {"spawn": style("brick-roofed-stone-and-dark-oak-house"), "wool": style("showcase-cage")},
     "dressing": DRESSING,
     "authors": ["Opus 5"],
     "created": "2026-09-15",

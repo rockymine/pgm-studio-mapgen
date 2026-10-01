@@ -146,7 +146,7 @@ HOLM = [[-70, -75], [-30, -75], [-25, -45], [-45, -32], [-70, -45]]
 studio = kit.Studio(base=drive.endpoint(), quiet=True)
 ROWS = {row["name"]: row["id"] for row in studio.get_room_styles()}
 def library_style(name): return json.loads(studio.get_room_styles_json(ROWS[name])["styleJson"])
-STYLE = library_style("17h-croft")
+STYLE = library_style("brick-roofed-stone-cottage")
 def repaint(style, swap):
     def walk(n):
         if isinstance(n, dict):
@@ -157,7 +157,7 @@ def repaint(style, swap):
             for v in n: walk(v)
     copy = json.loads(json.dumps(style)); walk(copy); return copy
 VARIANT = repaint(STYLE, {(4, 0): (1, 5), (98, 0): (1, 0), (98, 1): (1, 5)})
-layout["roomStyles"] = {"spawn": library_style("showcase-hall")}
+layout["roomStyles"] = {"spawn": library_style("brick-roofed-stone-and-dark-oak-house")}
 
 styles = {key: SHOWCASE[name]["style"] for key, name in {
     "oak-dense-1": "dense-oak-1", "oak-dense-2": "dense-oak-2", "oak-dense-3": "dense-oak-3",

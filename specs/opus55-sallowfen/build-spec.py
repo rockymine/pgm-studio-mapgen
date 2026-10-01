@@ -175,7 +175,7 @@ styles = {key: kit.build("TreeStyle", SHOWCASE[tree]["style"]) for key, tree in 
     "tree-showcase-r17-1": "willow-1", "tree-showcase-r17-3": "willow-3", "tree-showcase-r17-5": "willow-5",
     "tree-showcase-r5-1": "dark-oak-1", "tree-showcase-r5-2": "dark-oak-2"}.items()}
 # The stilt house stands over the fen rather than on a floor laid across it: the plate is air (HS10).
-styles["stilt"] = kit.library("stilts", kind="house", shell={"foundation": {
+styles["stilt"] = kit.library("oak-stilt-house", kind="house", shell={"foundation": {
     "plate": {"stack": {"bands": [kit.Band(material=solid(0), thickness=1)], "ending": "repeat"}, "extent": 1},
     "surface": {"field": None, "border": None, "borderWidth": 1, "inlay": None, "inlayInset": 2, "isPlain": True},
     "footing": None}})
@@ -254,7 +254,7 @@ refinement = kit.Refinement(
         "2": [[0.07, 2], [0.18, 4], [0.3, 7], [0.4, 2], [0.52, 3], [0.64, 1], [0.76, 5], [0.86, 2], [0.95, 3]]})]},
     addShapes=shapes,
     addLayers=layers,
-    roomStyles={"spawn": kit.library("sb-spawn")},
+    roomStyles={"spawn": kit.library("andesite-gabled-house")},
     dressing=kit.DressingDoc(styles=styles, props=props_),
 )
 
