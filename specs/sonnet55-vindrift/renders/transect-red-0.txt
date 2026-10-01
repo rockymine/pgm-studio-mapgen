@@ -1,0 +1,53 @@
+## red-0 (wool) along x
+TRANSECT 17 stations from (-48, 74) to (-32, 74), every 1
+  station        ground  surface  fluid  top  standing            step
+  (  -48,    74)      10       10           15                      
+  (  -47,    74)      10       10           16  wool wool-1         
+  (  -46,    74)      10       10           17  wool wool-1         
+  (  -45,    74)      10       10           39  wool wool-1         
+  (  -44,    74)      10       10           39  wool wool-1         
+  (  -43,    74)      10       10           39  wool wool-1         
+  (  -42,    74)      10       10           16  wool wool-1         
+  (  -41,    74)      10       10           15  redstoneline 0      
+  (  -40,    74)      10       10           10                      
+  (  -39,    74)      10       10           10                      
+  (  -38,    74)      10       10           10  stroke road-west-hall  
+  (  -37,    74)      10       10           10  stroke road-west-hall  
+  (  -36,    74)      10       10           10  stroke road-west-hall  
+  (  -35,    74)      10       10           10  stroke road-west-hall  
+  (  -34,    74)      10       10           10  stroke road-west-hall  
+  (  -33,    74)      10       10           10  stroke road-west-hall  
+  (  -32,    74)      10       10           10  stroke road-west-hall  
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-1 at (-47, 72), redstoneline 0 at (-41, 72), stroke road-west-hall at (-38, 72)
+
+## red-0 (wool) along z
+TRANSECT 25 stations from (-44, 62) to (-44, 86), every 1
+  station        ground  surface  fluid  top  standing            step
+  (  -44,    62)                                                    void
+  (  -44,    63)                                                    void
+  (  -44,    64)                                                    void
+  (  -44,    65)                                                    void
+  (  -44,    66)                                                    void
+  (  -44,    67)                                                    void
+  (  -44,    68)      10       10           18                      
+  (  -44,    69)      10       10           18  wool wool-1         
+  (  -44,    70)      10       10           18  wool wool-1         
+  (  -44,    71)      10       10           18  wool wool-1         
+  (  -44,    72)      10       10           18  wool wool-1         
+  (  -44,    73)      10       10           39  wool wool-1         
+  (  -44,    74)      10       10           39  wool wool-1         
+  (  -44,    75)      10       10           39  wool wool-1         
+  (  -44,    76)      10       10           18  wool wool-1         
+  (  -44,    77)      10       10           18  wool wool-1         
+  (  -44,    78)      10       10           18  wool wool-1         
+  (  -44,    79)      10       10           18                      
+  (  -44,    80)                                                    void
+  (  -44,    81)                                                    void
+  (  -44,    82)                                                    void
+  (  -44,    83)                                                    void
+  (  -44,    84)                                                    void
+  (  -44,    85)                                                    void
+  (  -44,    86)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-1 at (-46, 69)

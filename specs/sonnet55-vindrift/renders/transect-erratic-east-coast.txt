@@ -1,0 +1,61 @@
+## erratic-east-coast (boulder) along x
+TRANSECT 25 stations from (11, 45) to (35, 45), every 1
+  station        ground  surface  fluid  top  standing            step
+  (   11,    45)       9        9            9  stroke road-east    
+  (   12,    45)       9        9            9  stroke road-east    
+  (   13,    45)       9        9            9                      
+  (   14,    45)       9        9            9                      
+  (   15,    45)       9        9            9                      
+  (   16,    45)       9        9            9                      
+  (   17,    45)       9        9            9                      
+  (   18,    45)       9        9            9                      
+  (   19,    45)       9        9            9                      
+  (   20,    45)       9        9            9                      
+  (   21,    45)       9        9            9                      
+  (   22,    45)       9        9           12  boulder erratic-east-coast  
+  (   23,    45)       9        9           12  boulder erratic-east-coast  
+  (   24,    45)       9        9           12  boulder erratic-east-coast  
+  (   25,    45)       9        9            9                      
+  (   26,    45)       9        9            9                      
+  (   27,    45)                                                    void
+  (   28,    45)                                                    void
+  (   29,    45)                                                    void
+  (   30,    45)                                                    void
+  (   31,    45)                                                    void
+  (   32,    45)                                                    void
+  (   33,    45)                                                    void
+  (   34,    45)                                                    void
+  (   35,    45)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke road-east at (9, 43), boulder erratic-east-coast at (22, 44)
+
+## erratic-east-coast (boulder) along z
+TRANSECT 25 stations from (23, 33) to (23, 57), every 1
+  station        ground  surface  fluid  top  standing            step
+  (   23,    33)       9        9            9                      
+  (   23,    34)       9        9            9                      
+  (   23,    35)       9        9            9                      
+  (   23,    36)       9        9            9                      
+  (   23,    37)       9        9            9                      
+  (   23,    38)       9        9            9                      
+  (   23,    39)       9        9            9                      
+  (   23,    40)       9        9            9                      
+  (   23,    41)       9        9            9                      
+  (   23,    42)       9        9            9                      
+  (   23,    43)       9        9            9                      
+  (   23,    44)       9        9           12  boulder erratic-east-coast  
+  (   23,    45)       9        9           12  boulder erratic-east-coast  
+  (   23,    46)       9        9           12  boulder erratic-east-coast  
+  (   23,    47)       9        9           10  boulder erratic-east-coast  
+  (   23,    48)       9        9            9                      
+  (   23,    49)       9        9            9                      
+  (   23,    50)       9        9           15  tree spruce-east-bank-a  
+  (   23,    51)       9        9           15  tree spruce-east-bank-a  
+  (   23,    52)       9        9           18  tree spruce-east-bank-a  
+  (   23,    53)      10       10           23  tree spruce-east-bank-a  +1
+  (   23,    54)      10       10           20  tree spruce-east-bank-a  
+  (   23,    55)      10       10           19  tree spruce-east-bank-a  
+  (   23,    56)      10       10           14  tree spruce-east-bank-b  
+  (   23,    57)      10       10           15  tree spruce-east-bank-b  
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder erratic-east-coast at (22, 44), tree spruce-east-bank-a at (22, 49), tree spruce-east-bank-b at (22, 55)
