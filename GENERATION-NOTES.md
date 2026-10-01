@@ -1597,29 +1597,30 @@ Flatten every ring at the rasterizer's own 16 samples per edge before testing an
 
 Both arrive in the dressing read's `declines` array on a 200, and the `severity` field is the whole
 difference. A **decline** means the prop was never written; a **complaint** means it stands, minus what was
-cut off it. Measured on one board of 124 props: 18 declines and 4 complaints among 22 entries.
+cut off it. Measured on one board of 124 props: 20 declines and 4 complaints among 24 entries.
 
-**`DR-CUT` is the complaint that matters for a body.** *"seats clear of what it then reaches into: 70 of its
-299 blocks are inside something already standing and were not written, and that cut 51 more off its own
-footing, which stand in the air. 229 block(s) are in the world."* A prop seats on its **feet** and is then
-written wherever it meets air, so standing clear of something is not the same as fitting beside it.
-
-The count falls with separation and goes silent: measured on pairs of one 299-block tree, 70 blocks lost at
-2 apart, 17 at 8, and nothing at 16.
+**`DR-CUT` is the complaint that matters for a body.** *"seats clear of what it then reaches into: 62 of its
+99 blocks are inside something already standing and were not written, and that cut 0 more off its own
+footing, which stand in the air. 37 block(s) are in the world"* — a rock seated at the foot of a 63° face.
+A prop seats on its **feet** and is then written wherever it meets air, so standing clear of something is not
+the same as fitting beside it.
 
 ### A copied tree is a recipe with a body, and the body is the whole of it
 
 A `copied` style carries the blocks that were cut out of a world, so its footprint, its foot and its crown are
 whatever was cut rather than whatever was asked for. **A body's foot is every cell of its lowest course**, and
 that is what a standoff is measured from — a nine-cell foot owes three blocks from each of its nine.
-**A hand-built crown is not a disc, not symmetric, and not even solid**, so what decides a spacing is
-occupancy rather than distance. `techniques/trees-and-boulders` has both bodies measured against a template.
+
+**A hand-built crown is not symmetric and not even solid, and a tree still holds the whole disc out to its
+farthest leaf**, holes and all, so what decides a spacing is that radius: ten for `large-pine-1`, which admits
+a neighbour twelve along x and not before. `techniques/trees-and-boulders` has both bodies measured against a
+template.
 
 
 ### A prop is tested at its lowest course and claims everything it covers, and every distance follows
 
-The pass seats a prop by its **lowest course** and then claims every cell the whole prop covers, which is what
-makes a crown a keep-out and a trunk a seat. **So what two trees need between them is one crown and not two**,
+The pass seats a prop by its **lowest course** and then claims every cell the whole prop covers — a tree the
+disc out to its farthest leaf — which is what makes a crown a keep-out and a trunk a seat. **So what two trees need between them is one crown and not two**,
 and **a boulder's standoff is measured from its body**, so its centre owes the standoff plus its own reach.
 `techniques/trees-and-boulders` is the worked card, one ladder per rule.
 

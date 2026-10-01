@@ -1,4 +1,4 @@
-"""Writes trees-and-boulders.layout.json and .intent.json — twelve pads, one road or rock or wood each.
+"""Writes trees-and-boulders.layout.json and .intent.json — sixteen pads, one road or rock or wood each.
 
 A prop is not drawn, it is **asked for**. The dressing pass seats every one against a book of claims and
 answers on a 200: a prop the book refuses is simply not in the world, and the only thing that says so is the
@@ -34,8 +34,8 @@ MASONRY = {"bedrock": {"relative": False, "value": 1}, "rimEdges": "boundary",
            "surface": {"enabled": True, "depth": 1, "material": SOLID(98)}}
 
 # The crown reach of each recipe, in blocks from the trunk, read off the ladder in `two-trees`: a pair of
-# nines stands at four and not at three, a pair of fourteens at five and not at four.
-CROWN = {9: 4, 14: 5}
+# nines stands at five and not at four, a pair of fourteens at six and not at five.
+CROWN = {9: 5, 14: 6}
 
 # The two hand-built recipes: `large-pine-1` and `large-pine-4` of the showcase, as
 # `corpus/tree-showcase/trees.json` carries every tree `pgm-studio/tools/seed-trees.cs` cuts out of that world.
@@ -123,9 +123,9 @@ def wood(prefix, cx, cz, count=26, half_x=26, half_z=22, seed=7):
         z = cz - half_z + state % (2 * half_z + 1)
         state = (state * 1103515245 + 12345) & 0x7FFFFFFF
         height = 9 if state % 3 else 14
-        # The measured rule, not a remembered formula: a tree is TESTED at its trunk and CLAIMS its whole
-        # crown, so what two trees need between them is the larger of the two crowns — four blocks for a
-        # nine and five for a fourteen — rather than the sum of both.
+        # The measured rule, not a remembered formula: a tree is TESTED at its trunk and CLAIMS the disc its
+        # crown covers, so what two trees need between them is the larger of the two crowns — five blocks
+        # for a nine and six for a fourteen — rather than the sum of both.
         if any(math.dist((x, z), (px, pz)) < CROWN[max(height, ph)] for px, pz, ph in placed):
             continue
         placed.append((x, z, height))
@@ -191,11 +191,11 @@ cx, cz = centre("two-trees")
 # Two ladders rather than a formula, and the step is along x alone so the stated separation IS the
 # distance. Four pairs of nines and four of fourteens; the reading says where the pass actually cuts.
 # One seed pair down each ladder, so the step is the only thing that changes between rungs.
-for column, step in enumerate((1, 2, 3, 4)):
+for column, step in enumerate((2, 3, 4, 5)):
     px = cx - 24 + column * 16
     props += [tree(f"nine-{step}-a", px, cz - 14, "oak-9", seed=3411),
               tree(f"nine-{step}-b", px + step, cz - 14, "oak-9", seed=3412)]
-for column, step in enumerate((2, 3, 4, 5)):
+for column, step in enumerate((3, 4, 5, 6)):
     px = cx - 24 + column * 16
     props += [tree(f"tall-{step}-a", px, cz + 14, "oak-14", seed=3431),
               tree(f"tall-{step}-b", px + step, cz + 14, "oak-14", seed=3432)]
@@ -226,7 +226,7 @@ props.append(rock("cover-rock", cx - 14, cz + 12))
 props.append(flora("cover", cx, cz))
 
 cx, cz = centre("a-copied-tree")
-# What a body is: 299 blocks and 22 courses against 412 and 25, beside a template of the same order of
+# What a body is: 311 blocks and 22 courses against 412 and 25, beside a template of the same order of
 # height whose whole statement is a species and a number.
 props += [tree("showcase-tall-one", cx - 18, cz, "showcase-tall", seed=3801),
           tree("showcase-giant-one", cx + 2, cz, "showcase-giant", seed=3802),
@@ -241,19 +241,19 @@ props += [tree("foot-slender", cx - 14, cz + 4, "showcase-tall", seed=3811),
           tree("foot-buttressed", cx + 12, cz + 4, "showcase-giant", seed=3812)]
 
 cx, cz = centre("a-copied-crown")
-# A hand-built crown is not a disc and not even solid: `showcase-tall`'s plan footprint reads
-# `#######..####` across its own trunk row, so (1, 0) and (2, 0) are HOLES in it. Which decides which
-# answer a neighbour gets. Two apart the second tree's foot finds the hole and is placed, three apart it
-# lands on a written cell and is declined, and the overlap that survives is a COMPLAINT with a block count
-# rather than a refusal. Four pairs, stepped along x: two, three, eight and sixteen.
+# A hand-built crown is not solid: `showcase-tall`'s plan footprint reads `..########..####.` across its own
+# trunk row, so (1, 0) and (2, 0) are HOLES in it. They decide nothing, because a standing tree holds the disc
+# its crown covers, out to its farthest leaf, and a neighbour's whole foot — its trunk and the two planks laid
+# under it at x -1 — has to clear that disc. Four pairs, stepped along x: two, into the holes; six; eleven,
+# whose plank lands on the disc's last cell; and twelve.
 props += [tree("crown-2-a", cx - 24, cz - 15, "showcase-tall", seed=3821),
           tree("crown-2-b", cx - 22, cz - 15, "showcase-tall", seed=3822),
-          tree("crown-3-a", cx + 4, cz - 15, "showcase-tall", seed=3823),
-          tree("crown-3-b", cx + 7, cz - 15, "showcase-tall", seed=3824),
-          tree("crown-8-a", cx - 24, cz + 15, "showcase-tall", seed=3825),
-          tree("crown-8-b", cx - 16, cz + 15, "showcase-tall", seed=3826),
-          tree("crown-16-a", cx + 2, cz + 15, "showcase-tall", seed=3827),
-          tree("crown-16-b", cx + 18, cz + 15, "showcase-tall", seed=3828)]
+          tree("crown-6-a", cx + 4, cz - 15, "showcase-tall", seed=3823),
+          tree("crown-6-b", cx + 10, cz - 15, "showcase-tall", seed=3824),
+          tree("crown-11-a", cx - 24, cz + 15, "showcase-tall", seed=3825),
+          tree("crown-11-b", cx - 13, cz + 15, "showcase-tall", seed=3826),
+          tree("crown-12-a", cx + 2, cz + 15, "showcase-tall", seed=3827),
+          tree("crown-12-b", cx + 14, cz + 15, "showcase-tall", seed=3828)]
 
 cx, cz = centre("props-on-a-grade")
 # The one pad with ground in it. `DR-STEEP` is a ROCK's rule and nobody else's — `PlaceBoulder` asks it

@@ -2,10 +2,10 @@ POST …/sketch/seats — the forwards read: every cell a prop's footprint may s
 placed. It takes the **stored layout in the body**; its knobs are query words.
 
   kind           standoff  footprint   seats   refused, largest first
-  tree             3     1x1         47529   DR-CLAIM 7024 · DR-ROAD 1517 · DR-KEEP 851 · OB19 423
-  boulder          2     1x1         52710   DR-CLAIM 2544 · DR-KEEP 851 · DR-ROAD 816 · OB19 423
-  house 9x7        0     9x7         19543   DR-PASS 19093 · DR-SITE 11957 · DR-CLAIM 4399 · DR-KEEP 1569 · OB19 783
-  house 13x11      0     13x11       13989   DR-SITE 18113 · DR-PASS 16670 · DR-CLAIM 5527 · DR-KEEP 2022 · OB19 1023
+  tree             3     1x1         44056   DR-CLAIM 9711 · DR-ROAD 1442 · DR-ROOT 876 · DR-KEEP 851 · OB19 408
+  boulder          2     1x1         52725   DR-CLAIM 2544 · DR-KEEP 851 · DR-ROAD 816 · OB19 408
+  house 9x7        0     9x7         19293   DR-PASS 19009 · DR-SITE 11957 · DR-CLAIM 4399 · DR-KEEP 1569 · OB19 781 · DR-SLOPE 336
+  house 13x11      0     13x11       13609   DR-SITE 18113 · DR-PASS 16530 · DR-CLAIM 5527 · DR-KEEP 2022 · OB19 1023 · DR-SLOPE 520
 
 A mark is where the footprint's **minimum corner** may go, not its centre, so a house's mask is
 its own width and depth narrower than the ground it is read over.
@@ -20,7 +20,7 @@ An empty body answers an empty board, at 200, with no finding of any kind. The l
 body and the knobs are the query; a run that reads the route's parameters and not its body gets
 a clean answer to a board that is not there.
 
-  no `kind` at all: kind 'tree', seats 47529
+  no `kind` at all: kind 'tree', seats 44056
 
 The default is a tree, so a house mask asked for without `kind` is a tree mask that will seat almost
 anywhere and mean nothing.

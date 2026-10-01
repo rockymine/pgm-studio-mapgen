@@ -1,5 +1,5 @@
-POST /api/map/technique-trees-and-boulders/sketch/dressing — 106 props placed, 18 declined and 4 complained about,
-9627 cells claimed. Both arrive on a 200 and they are not the same answer: a
+POST /api/map/technique-trees-and-boulders/sketch/dressing — 104 props placed, 20 declined and 4 complained about,
+12304 cells claimed. Both arrive on a 200 and they are not the same answer: a
 DECLINE means the prop is not in the world, a COMPLAINT means it is, minus what was cut off it.
 
 ### tree-standoff — an oak at a stated Chebyshev reach from the road's nearest claimed cell
@@ -44,14 +44,14 @@ DECLINE means the prop is not in the world, a COMPLAINT means it is, minus what 
   rock-second        stated second                  placed
 
 ### two-trees — a pair of nines and a pair of fourteens, one seed pair per ladder, x-step only
-  nine-1-b           1 from its pair                DECLINED  DR-CLAIM  tree 'nine-1-b' rests on (16, -49), claimed by the prop 'nine-1-a'
-  nine-2-b           2 from its pair                DECLINED  DR-CLAIM  tree 'nine-2-b' rests on (33, -49), claimed by the prop 'nine-2-a'
-  nine-3-b           3 from its pair                DECLINED  DR-CLAIM  tree 'nine-3-b' rests on (50, -49), claimed by the prop 'nine-3-a'
-  nine-4-b           4 from its pair                placed
-  tall-2-b           2 from its pair                DECLINED  DR-CLAIM  tree 'tall-2-b' rests on (17, -21), claimed by the prop 'tall-2-a'
-  tall-3-b           3 from its pair                DECLINED  DR-CLAIM  tree 'tall-3-b' rests on (34, -21), claimed by the prop 'tall-3-a'
-  tall-4-b           4 from its pair                DECLINED  DR-CLAIM  tree 'tall-4-b' rests on (51, -21), claimed by the prop 'tall-4-a'
-  tall-5-b           5 from its pair                placed
+  nine-2-b           2 from its pair                DECLINED  DR-CLAIM  tree 'nine-2-b' rests on (17, -49), claimed by the prop 'nine-2-a'
+  nine-3-b           3 from its pair                DECLINED  DR-CLAIM  tree 'nine-3-b' rests on (34, -49), claimed by the prop 'nine-3-a'
+  nine-4-b           4 from its pair                DECLINED  DR-CLAIM  tree 'nine-4-b' rests on (51, -49), claimed by the prop 'nine-4-a'
+  nine-5-b           5 from its pair                placed
+  tall-3-b           3 from its pair                DECLINED  DR-CLAIM  tree 'tall-3-b' rests on (18, -21), claimed by the prop 'tall-3-a'
+  tall-4-b           4 from its pair                DECLINED  DR-CLAIM  tree 'tall-4-b' rests on (35, -21), claimed by the prop 'tall-4-a'
+  tall-5-b           5 from its pair                DECLINED  DR-CLAIM  tree 'tall-5-b' rests on (52, -21), claimed by the prop 'tall-5-a'
+  tall-6-b           6 from its pair                placed
 
 ### a-wood — forty-five darts accepted against the measured crown reach
   wood-0             first                          placed
@@ -65,7 +65,7 @@ DECLINE means the prop is not in the world, a COMPLAINT means it is, minus what 
 
 ### an-unmarked-wall — the same wall with the field left out
   plain-rock         leaning on it                  placed
-  plain-tree         leaning on it                  placed
+  plain-tree         leaning on it                  placed    DR-ROOT  tree 'plain-tree' stands at (-29, 35) on Stone Bricks, which is ground rather than soil — a trunk out of it reads as a model set down rather than as a wood. Paint a band of grass or dirt under the canopy, or move it onto ground that has one
 
 ### a-goal-clearance — a monument's 21 x 21 clearance, bracketed
   goal-off-9         Chebyshev 9 from the anchor    DECLINED  OB19  tree 'goal-off-9' rests on (48, 35), inside a goal's clearance
@@ -79,23 +79,23 @@ DECLINE means the prop is not in the world, a COMPLAINT means it is, minus what 
   cover              the overlay                    placed
 
 ### a-copied-tree — two bodies cut out of `tree-showcase`, and a template beside them
-  showcase-tall-one  tree-showcase-r2-1, 299 blocks placed
-  showcase-giant-one tree-showcase-r3-1, 412 blocks placed
+  showcase-tall-one  large-pine-1, 311 blocks       placed
+  showcase-giant-one large-pine-4, 412 blocks       placed
   template-beside    oak, height 14                 placed
 
 ### a-body-s-foot — both anchored three off one road; the giant's foot spans nine cells
   foot-slender       foot: one cell                 placed
   foot-buttressed    foot: nine cells               DECLINED  DR-ROAD  tree 'foot-buttressed' rests on (-26, 108), nearer than 3 blocks to the road at (-28, 106)
 
-### a-copied-crown — pairs of `showcase-tall`, whose trunk row reads `#######..####`
-  crown-2-b          two apart, into a hole         placed    DR-CUT  tree 'crown-2-b' seats clear of what it then reaches into: 70 of its 299 blocks are inside something already standing and were not written, and that cut 51 more off its own footing, which stand in the air. 229 block(s) are in the world; first stopped at (13, 10, 84). A prop seats on its feet and is written wherever it meets air, so standing clear of a wall is not the same as fitting beside one — move it further off, or make it smaller
-  crown-3-b          three apart, onto a block      DECLINED  DR-CLAIM  tree 'crown-3-b' rests on (46, 90), claimed by the prop 'crown-3-a'
-  crown-8-b          eight apart                    placed    DR-CUT  tree 'crown-8-b' seats clear of what it then reaches into: 17 of its 299 blocks are inside something already standing and were not written, and that cut 12 more off its own footing, which stand in the air. 282 block(s) are in the world; first stopped at (21, 11, 117). A prop seats on its feet and is written wherever it meets air, so standing clear of a wall is not the same as fitting beside one — move it further off, or make it smaller
-  crown-16-b         sixteen apart                  placed
+### a-copied-crown — pairs of `showcase-tall`, whose crown holds a disc out to its farthest leaf
+  crown-2-b          two apart, into the holes      DECLINED  DR-CLAIM  tree 'crown-2-b' rests on (16, 90), claimed by the prop 'crown-2-a'
+  crown-6-b          six apart                      DECLINED  DR-CLAIM  tree 'crown-6-b' rests on (48, 90), claimed by the prop 'crown-6-a'
+  crown-11-b         eleven apart                   DECLINED  DR-CLAIM  tree 'crown-11-b' rests on (25, 120), claimed by the prop 'crown-11-a'
+  crown-12-b         twelve apart                   placed
 
 ### props-on-a-grade — a face at sixty-three degrees, over this theme's cliff band of fifty-five
   grade-top          on the flat top                placed
-  grade-face         an oak on the face             placed
+  grade-face         an oak on the face             placed    DR-ROOT  tree 'grade-face' stands at (113, 105) on Stone, which is ground rather than soil — a trunk out of it reads as a model set down rather than as a wood. Paint a band of grass or dirt under the canopy, or move it onto ground that has one
   grade-face-rock    a rock on the face             placed    DR-STEEP  boulder 'grade-face-rock' stands at (131, 105) on ground inclined 63°, and the theme painting that cell calls the ground a face from 55° — the slope is already the feature there and a rock pinned to it reads as neither. Move it onto the flat, or onto the graded band below the face
   grade-face-rock    a rock on the face             placed    DR-CUT  boulder 'grade-face-rock' seats clear of what it then reaches into: 62 of its 99 blocks are inside something already standing and were not written, and that cut 0 more off its own footing, which stand in the air. 37 block(s) are in the world; first stopped at (130, 8, 103). Over half of it is buried, so what stands there is not the prop that was placed — a prop seats on the lowest column its feet cover, which on stepped ground is the bottom of a step, so move it onto one step or the other
   grade-foot         on the flat foot               placed
