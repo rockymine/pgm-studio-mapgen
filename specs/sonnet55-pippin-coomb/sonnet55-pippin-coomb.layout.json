@@ -460,6 +460,19 @@
       "theme": "farmstead"
      },
      {
+      "id": "mill-terrace",
+      "type": "circle",
+      "operation": "add",
+      "keepClear": false,
+      "center_x": 31.5,
+      "center_z": -52.5,
+      "radius": 7.5,
+      "height_mode": "level",
+      "skirt": 2,
+      "base_height": 38,
+      "floor": 0
+     },
+     {
       "id": "north-west-field-soil",
       "type": "polygon",
       "operation": "add",
@@ -1227,6 +1240,7 @@
        "grove-2",
        "fairy-ring",
        "grove-3",
+       "mill-terrace",
        "north-west-field-soil",
        "north-east-field-soil",
        "path-field-west-soil",
@@ -2235,300 +2249,23 @@
    }
   },
   {
-   "id": "mill-wall-36",
-   "name": "mill-wall-36",
-   "base_y": 36,
+   "id": "mill-lower",
+   "name": "mill-lower",
+   "base_y": 38,
    "kind": "made",
    "part_of": "windmill",
    "layout": {
     "shapes": [
      {
-      "id": "mill-ring0-n",
+      "id": "mill-lo-n",
       "type": "rectangle",
       "operation": "add",
       "keepClear": true,
-      "min_x": 27,
-      "min_z": -96,
-      "max_x": 36,
-      "max_z": -95,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "layered",
-       "stack": {
-        "bands": [
-         {
-          "material": {
-           "kind": "solid",
-           "id": 45
-          },
-          "thickness": 1
-         },
-         {
-          "material": {
-           "kind": "solid",
-           "id": 172
-          },
-          "thickness": 2
-         }
-        ],
-        "ending": "repeat"
-       },
-       "axis": "height",
-       "from": 36
-      }
-     },
-     {
-      "id": "mill-ring0-e",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 35,
-      "min_z": -95,
-      "max_x": 36,
-      "max_z": -88,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "layered",
-       "stack": {
-        "bands": [
-         {
-          "material": {
-           "kind": "solid",
-           "id": 45
-          },
-          "thickness": 1
-         },
-         {
-          "material": {
-           "kind": "solid",
-           "id": 172
-          },
-          "thickness": 2
-         }
-        ],
-        "ending": "repeat"
-       },
-       "axis": "height",
-       "from": 36
-      }
-     },
-     {
-      "id": "mill-ring0-w",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 27,
-      "min_z": -95,
-      "max_x": 28,
-      "max_z": -88,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "layered",
-       "stack": {
-        "bands": [
-         {
-          "material": {
-           "kind": "solid",
-           "id": 45
-          },
-          "thickness": 1
-         },
-         {
-          "material": {
-           "kind": "solid",
-           "id": 172
-          },
-          "thickness": 2
-         }
-        ],
-        "ending": "repeat"
-       },
-       "axis": "height",
-       "from": 36
-      }
-     },
-     {
-      "id": "mill-ring0-sl",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 27,
-      "min_z": -88,
-      "max_x": 31,
-      "max_z": -87,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "layered",
-       "stack": {
-        "bands": [
-         {
-          "material": {
-           "kind": "solid",
-           "id": 45
-          },
-          "thickness": 1
-         },
-         {
-          "material": {
-           "kind": "solid",
-           "id": 172
-          },
-          "thickness": 2
-         }
-        ],
-        "ending": "repeat"
-       },
-       "axis": "height",
-       "from": 36
-      }
-     },
-     {
-      "id": "mill-ring0-sr",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 33,
-      "min_z": -88,
-      "max_x": 36,
-      "max_z": -87,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "layered",
-       "stack": {
-        "bands": [
-         {
-          "material": {
-           "kind": "solid",
-           "id": 45
-          },
-          "thickness": 1
-         },
-         {
-          "material": {
-           "kind": "solid",
-           "id": 172
-          },
-          "thickness": 2
-         }
-        ],
-        "ending": "repeat"
-       },
-       "axis": "height",
-       "from": 36
-      }
-     },
-     {
-      "id": "mill-post0-nw",
-      "type": "rectangle",
-      "operation": "add",
-      "override": true,
-      "keepClear": true,
-      "min_x": 27,
-      "min_z": -96,
-      "max_x": 28,
-      "max_z": -95,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 17
-      }
-     },
-     {
-      "id": "mill-post0-ne",
-      "type": "rectangle",
-      "operation": "add",
-      "override": true,
-      "keepClear": true,
-      "min_x": 35,
-      "min_z": -96,
-      "max_x": 36,
-      "max_z": -95,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 17
-      }
-     },
-     {
-      "id": "mill-post0-sw",
-      "type": "rectangle",
-      "operation": "add",
-      "override": true,
-      "keepClear": true,
-      "min_x": 27,
-      "min_z": -88,
-      "max_x": 28,
-      "max_z": -87,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 17
-      }
-     },
-     {
-      "id": "mill-post0-se",
-      "type": "rectangle",
-      "operation": "add",
-      "override": true,
-      "keepClear": true,
-      "min_x": 35,
-      "min_z": -88,
-      "max_x": 36,
-      "max_z": -87,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 17
-      }
-     }
-    ],
-    "groups": [
-     {
-      "id": "mill-wall-36-g",
-      "name": "mill-wall-36",
-      "mirrors": true,
-      "shapeIds": [
-       "mill-ring0-n",
-       "mill-ring0-e",
-       "mill-ring0-w",
-       "mill-ring0-sl",
-       "mill-ring0-sr",
-       "mill-post0-nw",
-       "mill-post0-ne",
-       "mill-post0-sw",
-       "mill-post0-se"
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "id": "mill-wall-44",
-   "name": "mill-wall-44",
-   "base_y": 44,
-   "kind": "made",
-   "part_of": "windmill",
-   "layout": {
-    "shapes": [
-     {
-      "id": "mill-ring2-n",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 29,
-      "min_z": -94,
-      "max_x": 34,
-      "max_z": -93,
-      "base_height": 3,
+      "min_x": 28,
+      "min_z": -56,
+      "max_x": 35,
+      "max_z": -55,
+      "base_height": 8,
       "floor": 0,
       "material": {
        "kind": "layered",
@@ -2539,7 +2276,7 @@
            "kind": "solid",
            "id": 172
           },
-          "thickness": 2
+          "thickness": 3
          },
          {
           "material": {
@@ -2547,29 +2284,7 @@
            "id": 17
           },
           "thickness": 1
-         }
-        ],
-        "ending": "repeat"
-       },
-       "axis": "height",
-       "from": 44
-      }
-     },
-     {
-      "id": "mill-ring2-e",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 33,
-      "min_z": -93,
-      "max_x": 34,
-      "max_z": -90,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "layered",
-       "stack": {
-        "bands": [
+         },
          {
           "material": {
            "kind": "solid",
@@ -2579,380 +2294,320 @@
          },
          {
           "material": {
-           "kind": "laidLog",
-           "id": 17
-          },
-          "thickness": 1
-         }
-        ],
-        "ending": "repeat"
-       },
-       "axis": "height",
-       "from": 44
-      }
-     },
-     {
-      "id": "mill-ring2-w",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 29,
-      "min_z": -93,
-      "max_x": 30,
-      "max_z": -90,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "layered",
-       "stack": {
-        "bands": [
-         {
-          "material": {
            "kind": "solid",
-           "id": 172
+           "id": 45
           },
           "thickness": 2
-         },
-         {
-          "material": {
-           "kind": "laidLog",
-           "id": 17
-          },
-          "thickness": 1
          }
         ],
         "ending": "repeat"
        },
-       "axis": "height",
-       "from": 44
+       "axis": "depth"
       }
      },
      {
-      "id": "mill-ring2-s",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 29,
-      "min_z": -90,
-      "max_x": 34,
-      "max_z": -89,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "layered",
-       "stack": {
-        "bands": [
-         {
-          "material": {
-           "kind": "solid",
-           "id": 172
-          },
-          "thickness": 2
-         },
-         {
-          "material": {
-           "kind": "laidLog",
-           "id": 17
-          },
-          "thickness": 1
-         }
-        ],
-        "ending": "repeat"
-       },
-       "axis": "height",
-       "from": 44
-      }
-     },
-     {
-      "id": "mill-post2-nw",
-      "type": "rectangle",
-      "operation": "add",
-      "override": true,
-      "keepClear": true,
-      "min_x": 29,
-      "min_z": -94,
-      "max_x": 30,
-      "max_z": -93,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 17
-      }
-     },
-     {
-      "id": "mill-post2-ne",
-      "type": "rectangle",
-      "operation": "add",
-      "override": true,
-      "keepClear": true,
-      "min_x": 33,
-      "min_z": -94,
-      "max_x": 34,
-      "max_z": -93,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 17
-      }
-     },
-     {
-      "id": "mill-post2-sw",
-      "type": "rectangle",
-      "operation": "add",
-      "override": true,
-      "keepClear": true,
-      "min_x": 29,
-      "min_z": -90,
-      "max_x": 30,
-      "max_z": -89,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 17
-      }
-     },
-     {
-      "id": "mill-post2-se",
-      "type": "rectangle",
-      "operation": "add",
-      "override": true,
-      "keepClear": true,
-      "min_x": 33,
-      "min_z": -90,
-      "max_x": 34,
-      "max_z": -89,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 17
-      }
-     }
-    ],
-    "groups": [
-     {
-      "id": "mill-wall-44-g",
-      "name": "mill-wall-44",
-      "mirrors": true,
-      "shapeIds": [
-       "mill-ring2-n",
-       "mill-ring2-e",
-       "mill-ring2-w",
-       "mill-ring2-s",
-       "mill-post2-nw",
-       "mill-post2-ne",
-       "mill-post2-sw",
-       "mill-post2-se"
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "id": "mill-ledge-39",
-   "name": "mill-ledge-39",
-   "base_y": 39,
-   "kind": "made",
-   "part_of": "windmill",
-   "layout": {
-    "shapes": [
-     {
-      "id": "mill-ledge0-n",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 27,
-      "min_z": -96,
-      "max_x": 36,
-      "max_z": -94,
-      "base_height": 1,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-ledge0-s",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 27,
-      "min_z": -89,
-      "max_x": 36,
-      "max_z": -87,
-      "base_height": 1,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-ledge0-w",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 27,
-      "min_z": -94,
-      "max_x": 29,
-      "max_z": -89,
-      "base_height": 1,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-ledge0-e",
+      "id": "mill-lo-e",
       "type": "rectangle",
       "operation": "add",
       "keepClear": true,
       "min_x": 34,
-      "min_z": -94,
-      "max_x": 36,
-      "max_z": -89,
-      "base_height": 1,
+      "min_z": -55,
+      "max_x": 35,
+      "max_z": -50,
+      "base_height": 8,
+      "floor": 0,
+      "material": {
+       "kind": "layered",
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 172
+          },
+          "thickness": 3
+         },
+         {
+          "material": {
+           "kind": "laidLog",
+           "id": 17
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 172
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 45
+          },
+          "thickness": 2
+         }
+        ],
+        "ending": "repeat"
+       },
+       "axis": "depth"
+      }
+     },
+     {
+      "id": "mill-lo-w",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": 28,
+      "min_z": -55,
+      "max_x": 29,
+      "max_z": -50,
+      "base_height": 8,
+      "floor": 0,
+      "material": {
+       "kind": "layered",
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 172
+          },
+          "thickness": 3
+         },
+         {
+          "material": {
+           "kind": "laidLog",
+           "id": 17
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 172
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 45
+          },
+          "thickness": 2
+         }
+        ],
+        "ending": "repeat"
+       },
+       "axis": "depth"
+      }
+     },
+     {
+      "id": "mill-lo-sl",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": 28,
+      "min_z": -50,
+      "max_x": 31,
+      "max_z": -49,
+      "base_height": 8,
+      "floor": 0,
+      "material": {
+       "kind": "layered",
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 172
+          },
+          "thickness": 3
+         },
+         {
+          "material": {
+           "kind": "laidLog",
+           "id": 17
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 172
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 45
+          },
+          "thickness": 2
+         }
+        ],
+        "ending": "repeat"
+       },
+       "axis": "depth"
+      }
+     },
+     {
+      "id": "mill-lo-sr",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": 33,
+      "min_z": -50,
+      "max_x": 35,
+      "max_z": -49,
+      "base_height": 8,
+      "floor": 0,
+      "material": {
+       "kind": "layered",
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 172
+          },
+          "thickness": 3
+         },
+         {
+          "material": {
+           "kind": "laidLog",
+           "id": 17
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 172
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 45
+          },
+          "thickness": 2
+         }
+        ],
+        "ending": "repeat"
+       },
+       "axis": "depth"
+      }
+     },
+     {
+      "id": "mill-lo-post-nw",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": 28,
+      "min_z": -56,
+      "max_x": 29,
+      "max_z": -55,
+      "base_height": 8,
       "floor": 0,
       "material": {
        "kind": "solid",
-       "id": 5,
-       "data": 1
+       "id": 17
+      }
+     },
+     {
+      "id": "mill-lo-post-ne",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": 34,
+      "min_z": -56,
+      "max_x": 35,
+      "max_z": -55,
+      "base_height": 8,
+      "floor": 0,
+      "material": {
+       "kind": "solid",
+       "id": 17
+      }
+     },
+     {
+      "id": "mill-lo-post-sw",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": 28,
+      "min_z": -50,
+      "max_x": 29,
+      "max_z": -49,
+      "base_height": 8,
+      "floor": 0,
+      "material": {
+       "kind": "solid",
+       "id": 17
+      }
+     },
+     {
+      "id": "mill-lo-post-se",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": 34,
+      "min_z": -50,
+      "max_x": 35,
+      "max_z": -49,
+      "base_height": 8,
+      "floor": 0,
+      "material": {
+       "kind": "solid",
+       "id": 17
       }
      }
     ],
     "groups": [
      {
-      "id": "mill-ledge-39-g",
-      "name": "mill-ledge-39",
+      "id": "mill-lower-g",
+      "name": "mill-lower",
       "mirrors": true,
       "shapeIds": [
-       "mill-ledge0-n",
-       "mill-ledge0-s",
-       "mill-ledge0-w",
-       "mill-ledge0-e"
+       "mill-lo-n",
+       "mill-lo-e",
+       "mill-lo-w",
+       "mill-lo-sl",
+       "mill-lo-sr",
+       "mill-lo-post-nw",
+       "mill-lo-post-ne",
+       "mill-lo-post-sw",
+       "mill-lo-post-se"
       ]
      }
     ]
    }
   },
   {
-   "id": "mill-ledge-47",
-   "name": "mill-ledge-47",
+   "id": "mill-upper",
+   "name": "mill-upper",
    "base_y": 47,
    "kind": "made",
    "part_of": "windmill",
    "layout": {
     "shapes": [
      {
-      "id": "mill-ledge2-n",
+      "id": "mill-up-n",
       "type": "rectangle",
       "operation": "add",
       "keepClear": true,
       "min_x": 29,
-      "min_z": -94,
+      "min_z": -55,
       "max_x": 34,
-      "max_z": -92,
-      "base_height": 1,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-ledge2-s",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 29,
-      "min_z": -91,
-      "max_x": 34,
-      "max_z": -89,
-      "base_height": 1,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-ledge2-w",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 29,
-      "min_z": -92,
-      "max_x": 31,
-      "max_z": -91,
-      "base_height": 1,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-ledge2-e",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 32,
-      "min_z": -92,
-      "max_x": 34,
-      "max_z": -91,
-      "base_height": 1,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     }
-    ],
-    "groups": [
-     {
-      "id": "mill-ledge-47-g",
-      "name": "mill-ledge-47",
-      "mirrors": true,
-      "shapeIds": [
-       "mill-ledge2-n",
-       "mill-ledge2-s",
-       "mill-ledge2-w",
-       "mill-ledge2-e"
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "id": "mill-wall-40",
-   "name": "mill-wall-40",
-   "base_y": 40,
-   "kind": "made",
-   "part_of": "windmill",
-   "layout": {
-    "shapes": [
-     {
-      "id": "mill-ring1-n",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 28,
-      "min_z": -95,
-      "max_x": 35,
-      "max_z": -94,
-      "base_height": 3,
+      "max_z": -54,
+      "base_height": 6,
       "floor": 0,
       "material": {
        "kind": "layered",
@@ -2971,518 +2626,302 @@
            "id": 17
           },
           "thickness": 1
-         }
-        ],
-        "ending": "repeat"
-       },
-       "axis": "height",
-       "from": 40
-      }
-     },
-     {
-      "id": "mill-ring1-e",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 34,
-      "min_z": -94,
-      "max_x": 35,
-      "max_z": -89,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "layered",
-       "stack": {
-        "bands": [
+         },
          {
           "material": {
            "kind": "solid",
            "id": 172
           },
-          "thickness": 2
-         },
-         {
-          "material": {
-           "kind": "laidLog",
-           "id": 17
-          },
-          "thickness": 1
+          "thickness": 3
          }
         ],
         "ending": "repeat"
        },
-       "axis": "height",
-       "from": 40
+       "axis": "depth"
       }
      },
      {
-      "id": "mill-ring1-w",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 28,
-      "min_z": -94,
-      "max_x": 29,
-      "max_z": -89,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "layered",
-       "stack": {
-        "bands": [
-         {
-          "material": {
-           "kind": "solid",
-           "id": 172
-          },
-          "thickness": 2
-         },
-         {
-          "material": {
-           "kind": "laidLog",
-           "id": 17
-          },
-          "thickness": 1
-         }
-        ],
-        "ending": "repeat"
-       },
-       "axis": "height",
-       "from": 40
-      }
-     },
-     {
-      "id": "mill-ring1-s",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 28,
-      "min_z": -89,
-      "max_x": 35,
-      "max_z": -88,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "layered",
-       "stack": {
-        "bands": [
-         {
-          "material": {
-           "kind": "solid",
-           "id": 172
-          },
-          "thickness": 2
-         },
-         {
-          "material": {
-           "kind": "laidLog",
-           "id": 17
-          },
-          "thickness": 1
-         }
-        ],
-        "ending": "repeat"
-       },
-       "axis": "height",
-       "from": 40
-      }
-     },
-     {
-      "id": "mill-post1-nw",
-      "type": "rectangle",
-      "operation": "add",
-      "override": true,
-      "keepClear": true,
-      "min_x": 28,
-      "min_z": -95,
-      "max_x": 29,
-      "max_z": -94,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 17
-      }
-     },
-     {
-      "id": "mill-post1-ne",
-      "type": "rectangle",
-      "operation": "add",
-      "override": true,
-      "keepClear": true,
-      "min_x": 34,
-      "min_z": -95,
-      "max_x": 35,
-      "max_z": -94,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 17
-      }
-     },
-     {
-      "id": "mill-post1-sw",
-      "type": "rectangle",
-      "operation": "add",
-      "override": true,
-      "keepClear": true,
-      "min_x": 28,
-      "min_z": -89,
-      "max_x": 29,
-      "max_z": -88,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 17
-      }
-     },
-     {
-      "id": "mill-post1-se",
-      "type": "rectangle",
-      "operation": "add",
-      "override": true,
-      "keepClear": true,
-      "min_x": 34,
-      "min_z": -89,
-      "max_x": 35,
-      "max_z": -88,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 17
-      }
-     }
-    ],
-    "groups": [
-     {
-      "id": "mill-wall-40-g",
-      "name": "mill-wall-40",
-      "mirrors": true,
-      "shapeIds": [
-       "mill-ring1-n",
-       "mill-ring1-e",
-       "mill-ring1-w",
-       "mill-ring1-s",
-       "mill-post1-nw",
-       "mill-post1-ne",
-       "mill-post1-sw",
-       "mill-post1-se"
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "id": "mill-wall-48",
-   "name": "mill-wall-48",
-   "base_y": 48,
-   "kind": "made",
-   "part_of": "windmill",
-   "layout": {
-    "shapes": [
-     {
-      "id": "mill-ring3-n",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 30,
-      "min_z": -93,
-      "max_x": 33,
-      "max_z": -92,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "layered",
-       "stack": {
-        "bands": [
-         {
-          "material": {
-           "kind": "solid",
-           "id": 172
-          },
-          "thickness": 2
-         },
-         {
-          "material": {
-           "kind": "laidLog",
-           "id": 17
-          },
-          "thickness": 1
-         }
-        ],
-        "ending": "repeat"
-       },
-       "axis": "height",
-       "from": 48
-      }
-     },
-     {
-      "id": "mill-ring3-e",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 32,
-      "min_z": -92,
-      "max_x": 33,
-      "max_z": -91,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "layered",
-       "stack": {
-        "bands": [
-         {
-          "material": {
-           "kind": "solid",
-           "id": 172
-          },
-          "thickness": 2
-         },
-         {
-          "material": {
-           "kind": "laidLog",
-           "id": 17
-          },
-          "thickness": 1
-         }
-        ],
-        "ending": "repeat"
-       },
-       "axis": "height",
-       "from": 48
-      }
-     },
-     {
-      "id": "mill-ring3-w",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 30,
-      "min_z": -92,
-      "max_x": 31,
-      "max_z": -91,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "layered",
-       "stack": {
-        "bands": [
-         {
-          "material": {
-           "kind": "solid",
-           "id": 172
-          },
-          "thickness": 2
-         },
-         {
-          "material": {
-           "kind": "laidLog",
-           "id": 17
-          },
-          "thickness": 1
-         }
-        ],
-        "ending": "repeat"
-       },
-       "axis": "height",
-       "from": 48
-      }
-     },
-     {
-      "id": "mill-ring3-s",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 30,
-      "min_z": -91,
-      "max_x": 33,
-      "max_z": -90,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "layered",
-       "stack": {
-        "bands": [
-         {
-          "material": {
-           "kind": "solid",
-           "id": 172
-          },
-          "thickness": 2
-         },
-         {
-          "material": {
-           "kind": "laidLog",
-           "id": 17
-          },
-          "thickness": 1
-         }
-        ],
-        "ending": "repeat"
-       },
-       "axis": "height",
-       "from": 48
-      }
-     },
-     {
-      "id": "mill-post3-nw",
-      "type": "rectangle",
-      "operation": "add",
-      "override": true,
-      "keepClear": true,
-      "min_x": 30,
-      "min_z": -93,
-      "max_x": 31,
-      "max_z": -92,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 17
-      }
-     },
-     {
-      "id": "mill-post3-ne",
-      "type": "rectangle",
-      "operation": "add",
-      "override": true,
-      "keepClear": true,
-      "min_x": 32,
-      "min_z": -93,
-      "max_x": 33,
-      "max_z": -92,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 17
-      }
-     },
-     {
-      "id": "mill-post3-sw",
-      "type": "rectangle",
-      "operation": "add",
-      "override": true,
-      "keepClear": true,
-      "min_x": 30,
-      "min_z": -91,
-      "max_x": 31,
-      "max_z": -90,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 17
-      }
-     },
-     {
-      "id": "mill-post3-se",
-      "type": "rectangle",
-      "operation": "add",
-      "override": true,
-      "keepClear": true,
-      "min_x": 32,
-      "min_z": -91,
-      "max_x": 33,
-      "max_z": -90,
-      "base_height": 3,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 17
-      }
-     }
-    ],
-    "groups": [
-     {
-      "id": "mill-wall-48-g",
-      "name": "mill-wall-48",
-      "mirrors": true,
-      "shapeIds": [
-       "mill-ring3-n",
-       "mill-ring3-e",
-       "mill-ring3-w",
-       "mill-ring3-s",
-       "mill-post3-nw",
-       "mill-post3-ne",
-       "mill-post3-sw",
-       "mill-post3-se"
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "id": "mill-ledge-43",
-   "name": "mill-ledge-43",
-   "base_y": 43,
-   "kind": "made",
-   "part_of": "windmill",
-   "layout": {
-    "shapes": [
-     {
-      "id": "mill-ledge1-n",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 28,
-      "min_z": -95,
-      "max_x": 35,
-      "max_z": -93,
-      "base_height": 1,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-ledge1-s",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 28,
-      "min_z": -90,
-      "max_x": 35,
-      "max_z": -88,
-      "base_height": 1,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-ledge1-w",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": true,
-      "min_x": 28,
-      "min_z": -93,
-      "max_x": 30,
-      "max_z": -90,
-      "base_height": 1,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-ledge1-e",
+      "id": "mill-up-e",
       "type": "rectangle",
       "operation": "add",
       "keepClear": true,
       "min_x": 33,
-      "min_z": -93,
+      "min_z": -54,
+      "max_x": 34,
+      "max_z": -51,
+      "base_height": 6,
+      "floor": 0,
+      "material": {
+       "kind": "layered",
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 172
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "laidLog",
+           "id": 17
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 172
+          },
+          "thickness": 3
+         }
+        ],
+        "ending": "repeat"
+       },
+       "axis": "depth"
+      }
+     },
+     {
+      "id": "mill-up-w",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": 29,
+      "min_z": -54,
+      "max_x": 30,
+      "max_z": -51,
+      "base_height": 6,
+      "floor": 0,
+      "material": {
+       "kind": "layered",
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 172
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "laidLog",
+           "id": 17
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 172
+          },
+          "thickness": 3
+         }
+        ],
+        "ending": "repeat"
+       },
+       "axis": "depth"
+      }
+     },
+     {
+      "id": "mill-up-s",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": 29,
+      "min_z": -51,
+      "max_x": 34,
+      "max_z": -50,
+      "base_height": 6,
+      "floor": 0,
+      "material": {
+       "kind": "layered",
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 172
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "laidLog",
+           "id": 17
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 172
+          },
+          "thickness": 3
+         }
+        ],
+        "ending": "repeat"
+       },
+       "axis": "depth"
+      }
+     },
+     {
+      "id": "mill-up-post-nw",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": 29,
+      "min_z": -55,
+      "max_x": 30,
+      "max_z": -54,
+      "base_height": 6,
+      "floor": 0,
+      "material": {
+       "kind": "solid",
+       "id": 17
+      }
+     },
+     {
+      "id": "mill-up-post-ne",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": 33,
+      "min_z": -55,
+      "max_x": 34,
+      "max_z": -54,
+      "base_height": 6,
+      "floor": 0,
+      "material": {
+       "kind": "solid",
+       "id": 17
+      }
+     },
+     {
+      "id": "mill-up-post-sw",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": 29,
+      "min_z": -51,
+      "max_x": 30,
+      "max_z": -50,
+      "base_height": 6,
+      "floor": 0,
+      "material": {
+       "kind": "solid",
+       "id": 17
+      }
+     },
+     {
+      "id": "mill-up-post-se",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": 33,
+      "min_z": -51,
+      "max_x": 34,
+      "max_z": -50,
+      "base_height": 6,
+      "floor": 0,
+      "material": {
+       "kind": "solid",
+       "id": 17
+      }
+     }
+    ],
+    "groups": [
+     {
+      "id": "mill-upper-g",
+      "name": "mill-upper",
+      "mirrors": true,
+      "shapeIds": [
+       "mill-up-n",
+       "mill-up-e",
+       "mill-up-w",
+       "mill-up-s",
+       "mill-up-post-nw",
+       "mill-up-post-ne",
+       "mill-up-post-sw",
+       "mill-up-post-se"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "mill-ledge",
+   "name": "mill-ledge",
+   "base_y": 46,
+   "kind": "made",
+   "part_of": "windmill",
+   "layout": {
+    "shapes": [
+     {
+      "id": "mill-ledge-n",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": 28,
+      "min_z": -56,
       "max_x": 35,
-      "max_z": -90,
+      "max_z": -54,
+      "base_height": 1,
+      "floor": 0,
+      "material": {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      }
+     },
+     {
+      "id": "mill-ledge-s",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": 28,
+      "min_z": -51,
+      "max_x": 35,
+      "max_z": -49,
+      "base_height": 1,
+      "floor": 0,
+      "material": {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      }
+     },
+     {
+      "id": "mill-ledge-w",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": 28,
+      "min_z": -54,
+      "max_x": 30,
+      "max_z": -51,
+      "base_height": 1,
+      "floor": 0,
+      "material": {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      }
+     },
+     {
+      "id": "mill-ledge-e",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": 33,
+      "min_z": -54,
+      "max_x": 35,
+      "max_z": -51,
       "base_height": 1,
       "floor": 0,
       "material": {
@@ -3494,14 +2933,14 @@
     ],
     "groups": [
      {
-      "id": "mill-ledge-43-g",
-      "name": "mill-ledge-43",
+      "id": "mill-ledge-g",
+      "name": "mill-ledge",
       "mirrors": true,
       "shapeIds": [
-       "mill-ledge1-n",
-       "mill-ledge1-s",
-       "mill-ledge1-w",
-       "mill-ledge1-e"
+       "mill-ledge-n",
+       "mill-ledge-s",
+       "mill-ledge-w",
+       "mill-ledge-e"
       ]
      }
     ]
@@ -3510,7 +2949,7 @@
   {
    "id": "mill-cap",
    "name": "mill-cap",
-   "base_y": 51,
+   "base_y": 53,
    "kind": "made",
    "part_of": "windmill",
    "layout": {
@@ -3520,10 +2959,10 @@
       "type": "rectangle",
       "operation": "add",
       "keepClear": true,
-      "min_x": 29,
-      "min_z": -94,
-      "max_x": 34,
-      "max_z": -89,
+      "min_x": 28,
+      "min_z": -56,
+      "max_x": 35,
+      "max_z": -49,
       "base_height": 1,
       "floor": 0,
       "material": {
@@ -3533,14 +2972,13 @@
       }
      },
      {
-      "id": "mill-cap-0",
-      "type": "rectangle",
+      "id": "mill-dome-0",
+      "type": "circle",
       "operation": "add",
       "keepClear": true,
-      "min_x": 30,
-      "min_z": -93,
-      "max_x": 33,
-      "max_z": -90,
+      "center_x": 31.5,
+      "center_z": -52.5,
+      "radius": 2.9,
       "base_height": 2,
       "floor": 0,
       "material": {
@@ -3549,14 +2987,28 @@
       }
      },
      {
-      "id": "mill-cap-1",
-      "type": "rectangle",
+      "id": "mill-dome-1",
+      "type": "circle",
       "operation": "add",
       "keepClear": true,
-      "min_x": 31,
-      "min_z": -92,
-      "max_x": 32,
-      "max_z": -91,
+      "center_x": 31.5,
+      "center_z": -52.5,
+      "radius": 1.9,
+      "base_height": 3,
+      "floor": 0,
+      "material": {
+       "kind": "solid",
+       "id": 45
+      }
+     },
+     {
+      "id": "mill-dome-2",
+      "type": "circle",
+      "operation": "add",
+      "keepClear": true,
+      "center_x": 31.5,
+      "center_z": -52.5,
+      "radius": 0.9,
       "base_height": 4,
       "floor": 0,
       "material": {
@@ -3572,8 +3024,9 @@
       "mirrors": true,
       "shapeIds": [
        "mill-plate",
-       "mill-cap-0",
-       "mill-cap-1"
+       "mill-dome-0",
+       "mill-dome-1",
+       "mill-dome-2"
       ]
      }
     ]
@@ -3582,71 +3035,20 @@
   {
    "id": "mill-axle",
    "name": "mill-axle",
-   "base_y": 45,
+   "base_y": 55,
    "kind": "made",
    "part_of": "windmill",
    "layout": {
     "shapes": [
      {
-      "id": "mill-axle-0",
+      "id": "mill-axle",
       "type": "rectangle",
       "operation": "add",
       "keepClear": false,
-      "min_x": 33,
-      "min_z": -92,
-      "max_x": 34,
-      "max_z": -91,
-      "base_height": 1,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 162,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-axle-1",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 34,
-      "min_z": -92,
-      "max_x": 35,
-      "max_z": -91,
-      "base_height": 1,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 162,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-axle-2",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 35,
-      "min_z": -92,
-      "max_x": 36,
-      "max_z": -91,
-      "base_height": 1,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 162,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-axle-3",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -92,
-      "max_x": 37,
-      "max_z": -91,
+      "min_x": 31,
+      "min_z": -50,
+      "max_x": 32,
+      "max_z": -47,
       "base_height": 1,
       "floor": 0,
       "material": {
@@ -3662,50 +3064,30 @@
       "name": "mill-axle",
       "mirrors": true,
       "shapeIds": [
-       "mill-axle-0",
-       "mill-axle-1",
-       "mill-axle-2",
-       "mill-axle-3"
+       "mill-axle"
       ]
      }
     ]
    }
   },
   {
-   "id": "mill-sail-a",
-   "name": "mill-sail-a",
-   "base_y": 39,
+   "id": "mill-beams",
+   "name": "mill-beams",
+   "base_y": 46,
    "kind": "made",
    "part_of": "windmill",
    "layout": {
     "shapes": [
      {
-      "id": "mill-sail-a-6",
+      "id": "mill-beam-v",
       "type": "rectangle",
       "operation": "add",
       "keepClear": false,
-      "min_x": 36,
-      "min_z": -98,
-      "max_x": 37,
-      "max_z": -97,
-      "base_height": 2,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-sail-a-5",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -97,
-      "max_x": 37,
-      "max_z": -96,
-      "base_height": 2,
+      "min_x": 31,
+      "min_z": -47,
+      "max_x": 32,
+      "max_z": -46,
+      "base_height": 17,
       "floor": 1,
       "material": {
        "kind": "solid",
@@ -3714,16 +3096,16 @@
       }
      },
      {
-      "id": "mill-sail-a-4",
+      "id": "mill-beam-r",
       "type": "rectangle",
       "operation": "add",
       "keepClear": false,
-      "min_x": 36,
-      "min_z": -96,
-      "max_x": 37,
-      "max_z": -95,
-      "base_height": 2,
-      "floor": 2,
+      "min_x": 32,
+      "min_z": -47,
+      "max_x": 40,
+      "max_z": -46,
+      "base_height": 1,
+      "floor": 9,
       "material": {
        "kind": "solid",
        "id": 5,
@@ -3731,431 +3113,144 @@
       }
      },
      {
-      "id": "mill-sail-a-3",
+      "id": "mill-beam-l",
       "type": "rectangle",
       "operation": "add",
       "keepClear": false,
-      "min_x": 36,
-      "min_z": -95,
-      "max_x": 37,
-      "max_z": -94,
-      "base_height": 2,
-      "floor": 3,
+      "min_x": 23,
+      "min_z": -47,
+      "max_x": 31,
+      "max_z": -46,
+      "base_height": 1,
+      "floor": 9,
       "material": {
        "kind": "solid",
        "id": 5,
        "data": 1
       }
-     },
+     }
+    ],
+    "groups": [
      {
-      "id": "mill-sail-a-2",
+      "id": "mill-beams-g",
+      "name": "mill-beams",
+      "mirrors": true,
+      "shapeIds": [
+       "mill-beam-v",
+       "mill-beam-r",
+       "mill-beam-l"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "mill-wool-a",
+   "name": "mill-wool-a",
+   "base_y": 46,
+   "kind": "made",
+   "part_of": "windmill",
+   "layout": {
+    "shapes": [
+     {
+      "id": "mill-wool-up",
       "type": "rectangle",
       "operation": "add",
       "keepClear": false,
-      "min_x": 36,
-      "min_z": -94,
-      "max_x": 37,
-      "max_z": -93,
-      "base_height": 2,
-      "floor": 4,
+      "min_x": 32,
+      "min_z": -47,
+      "max_x": 35,
+      "max_z": -46,
+      "base_height": 7,
+      "floor": 11,
       "material": {
        "kind": "solid",
-       "id": 5,
-       "data": 1
+       "id": 35,
+       "data": 0
       }
      },
      {
-      "id": "mill-sail-a-1",
+      "id": "mill-wool-down",
       "type": "rectangle",
       "operation": "add",
       "keepClear": false,
-      "min_x": 36,
-      "min_z": -93,
-      "max_x": 37,
-      "max_z": -92,
-      "base_height": 2,
-      "floor": 5,
+      "min_x": 28,
+      "min_z": -47,
+      "max_x": 31,
+      "max_z": -46,
+      "base_height": 7,
+      "floor": 1,
       "material": {
        "kind": "solid",
-       "id": 5,
-       "data": 1
+       "id": 35,
+       "data": 0
       }
-     },
+     }
+    ],
+    "groups": [
      {
-      "id": "mill-sail-a0",
+      "id": "mill-wool-a-g",
+      "name": "mill-wool-a",
+      "mirrors": true,
+      "shapeIds": [
+       "mill-wool-up",
+       "mill-wool-down"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "mill-wool-b",
+   "name": "mill-wool-b",
+   "base_y": 46,
+   "kind": "made",
+   "part_of": "windmill",
+   "layout": {
+    "shapes": [
+     {
+      "id": "mill-wool-right",
       "type": "rectangle",
       "operation": "add",
       "keepClear": false,
-      "min_x": 36,
-      "min_z": -92,
-      "max_x": 37,
-      "max_z": -91,
-      "base_height": 2,
+      "min_x": 33,
+      "min_z": -47,
+      "max_x": 40,
+      "max_z": -46,
+      "base_height": 3,
       "floor": 6,
       "material": {
        "kind": "solid",
-       "id": 5,
-       "data": 1
+       "id": 35,
+       "data": 0
       }
      },
      {
-      "id": "mill-sail-a1",
+      "id": "mill-wool-left",
       "type": "rectangle",
       "operation": "add",
       "keepClear": false,
-      "min_x": 36,
-      "min_z": -91,
-      "max_x": 37,
-      "max_z": -90,
-      "base_height": 2,
-      "floor": 7,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-sail-a2",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -90,
-      "max_x": 37,
-      "max_z": -89,
-      "base_height": 2,
-      "floor": 8,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-sail-a3",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -89,
-      "max_x": 37,
-      "max_z": -88,
-      "base_height": 2,
-      "floor": 9,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-sail-a4",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -88,
-      "max_x": 37,
-      "max_z": -87,
-      "base_height": 2,
+      "min_x": 23,
+      "min_z": -47,
+      "max_x": 30,
+      "max_z": -46,
+      "base_height": 3,
       "floor": 10,
       "material": {
        "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-sail-a5",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -87,
-      "max_x": 37,
-      "max_z": -86,
-      "base_height": 2,
-      "floor": 11,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-sail-a6",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -86,
-      "max_x": 37,
-      "max_z": -85,
-      "base_height": 2,
-      "floor": 12,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
+       "id": 35,
+       "data": 0
       }
      }
     ],
     "groups": [
      {
-      "id": "mill-sail-a-g",
-      "name": "mill-sail-a",
+      "id": "mill-wool-b-g",
+      "name": "mill-wool-b",
       "mirrors": true,
       "shapeIds": [
-       "mill-sail-a-6",
-       "mill-sail-a-5",
-       "mill-sail-a-4",
-       "mill-sail-a-3",
-       "mill-sail-a-2",
-       "mill-sail-a-1",
-       "mill-sail-a0",
-       "mill-sail-a1",
-       "mill-sail-a2",
-       "mill-sail-a3",
-       "mill-sail-a4",
-       "mill-sail-a5",
-       "mill-sail-a6"
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "id": "mill-sail-b",
-   "name": "mill-sail-b",
-   "base_y": 39,
-   "kind": "made",
-   "part_of": "windmill",
-   "layout": {
-    "shapes": [
-     {
-      "id": "mill-sail-b-6",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -98,
-      "max_x": 37,
-      "max_z": -97,
-      "base_height": 2,
-      "floor": 12,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-sail-b-5",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -97,
-      "max_x": 37,
-      "max_z": -96,
-      "base_height": 2,
-      "floor": 11,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-sail-b-4",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -96,
-      "max_x": 37,
-      "max_z": -95,
-      "base_height": 2,
-      "floor": 10,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-sail-b-3",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -95,
-      "max_x": 37,
-      "max_z": -94,
-      "base_height": 2,
-      "floor": 9,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-sail-b-2",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -94,
-      "max_x": 37,
-      "max_z": -93,
-      "base_height": 2,
-      "floor": 8,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-sail-b-1",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -93,
-      "max_x": 37,
-      "max_z": -92,
-      "base_height": 2,
-      "floor": 7,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-sail-b1",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -91,
-      "max_x": 37,
-      "max_z": -90,
-      "base_height": 2,
-      "floor": 5,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-sail-b2",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -90,
-      "max_x": 37,
-      "max_z": -89,
-      "base_height": 2,
-      "floor": 4,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-sail-b3",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -89,
-      "max_x": 37,
-      "max_z": -88,
-      "base_height": 2,
-      "floor": 3,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-sail-b4",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -88,
-      "max_x": 37,
-      "max_z": -87,
-      "base_height": 2,
-      "floor": 2,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-sail-b5",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -87,
-      "max_x": 37,
-      "max_z": -86,
-      "base_height": 2,
-      "floor": 1,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     },
-     {
-      "id": "mill-sail-b6",
-      "type": "rectangle",
-      "operation": "add",
-      "keepClear": false,
-      "min_x": 36,
-      "min_z": -86,
-      "max_x": 37,
-      "max_z": -85,
-      "base_height": 2,
-      "floor": 0,
-      "material": {
-       "kind": "solid",
-       "id": 5,
-       "data": 1
-      }
-     }
-    ],
-    "groups": [
-     {
-      "id": "mill-sail-b-g",
-      "name": "mill-sail-b",
-      "mirrors": true,
-      "shapeIds": [
-       "mill-sail-b-6",
-       "mill-sail-b-5",
-       "mill-sail-b-4",
-       "mill-sail-b-3",
-       "mill-sail-b-2",
-       "mill-sail-b-1",
-       "mill-sail-b1",
-       "mill-sail-b2",
-       "mill-sail-b3",
-       "mill-sail-b4",
-       "mill-sail-b5",
-       "mill-sail-b6"
+       "mill-wool-right",
+       "mill-wool-left"
       ]
      }
     ]
@@ -17652,78 +16747,6 @@
      "low": 27,
      "face": 2,
      "band": 5
-    },
-    {
-     "id": "mill-pad",
-     "kind": "area",
-     "bevel": 3,
-     "ring": [
-      [
-       38.0,
-       -92.0
-      ],
-      [
-       37.5,
-       -89.3
-      ],
-      [
-       35.9,
-       -87.1
-      ],
-      [
-       33.7,
-       -85.5
-      ],
-      [
-       31.0,
-       -85.0
-      ],
-      [
-       28.3,
-       -85.5
-      ],
-      [
-       26.1,
-       -87.1
-      ],
-      [
-       24.5,
-       -89.3
-      ],
-      [
-       24.0,
-       -92.0
-      ],
-      [
-       24.5,
-       -94.7
-      ],
-      [
-       26.1,
-       -96.9
-      ],
-      [
-       28.3,
-       -98.5
-      ],
-      [
-       31.0,
-       -99.0
-      ],
-      [
-       33.7,
-       -98.5
-      ],
-      [
-       35.9,
-       -96.9
-      ],
-      [
-       37.5,
-       -94.7
-      ]
-     ],
-     "h": 36
     },
     {
      "id": "apron",

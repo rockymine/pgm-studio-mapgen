@@ -244,11 +244,14 @@ for patch in (
         disc("grove-3", -17, -48, 3.5, floor=0, height=60, theme="farmstead", keepClear=False)):
     patches.append(patch)
 
-# ── the windmill: stood on a pad at the back, beside the north-east field, its sails to the east ───────────
-MILL = os.environ.get("MILL", "made")        # "made" (layers) or "house" (a forked library style plus layer sails)
-MC = (31, -92)                               # the tower's centre cell
-GROUND = 36                                  # first free course over the pad (h 36)
+# the mill's terrace: a flat top cut at y38 after the relief is solved, so the tower stands level whatever the hill does
+patches.append(disc("mill-terrace", 31.5, -52.5, 7.5, floor=0, height=38, height_mode="level", skirt=2, keepClear=False))
+
+# ── the windmill: on Horse Hill, north of the white horse's head, its sails turned to the other team's island ───
+MC = (31, -53)                               # the tower's centre cell
+GROUND = int(os.environ.get("MILL_GROUND", "38"))   # first free course over the pad (read off `column` after the pad is stored)
 BRICK, TERRA, SPRUCE, OAK_POST, LAID = S(id=45), S(id=172), S(id=5, data=1), S(id=17), kit.LaidLogMaterial(id=17)
+WOOL = S(id=35, data=0)
 
 
 def box(d, grow=0):
@@ -256,86 +259,65 @@ def box(d, grow=0):
     return (MC[0] - d - grow, MC[1] - d - grow, MC[0] + d + 1 + grow, MC[1] + d + 1 + grow)
 
 
-def course_stack(floor, bands):
-    return kit.LayeredMaterial(axis="height", from_=floor, stack=kit.BandStack(ending="repeat", bands=[
+def courses(bands):
+    """A depth stack from the top of the shape down; the last band carries on."""
+    return kit.LayeredMaterial(axis="depth", stack=kit.BandStack(ending="repeat", bands=[
         kit.Band(material=m, thickness=n) for m, n in bands]))
 
 
-def mill_made():
-    """A tapered tower of four square rings, each a course-group narrower, ledges between them, a stepped brick cap,
-    an axle and two sail layers. Rings alternate between two layers and ledges between two others, because a layer
-    holds one span a column and a ledge shares columns with the ring it sits on and the ring above."""
-    ring_layers, ledge_layers = {0: [], 1: []}, {0: [], 1: []}
-    for k in range(4):
-        d, floor = 4 - k, GROUND + 4 * k
-        material = course_stack(floor, [(BRICK, 1), (TERRA, 2)] if k == 0 else [(TERRA, 2), (LAID, 1)])
-        x0, z0, x1, z1 = box(d)
-        strips = [("n", x0, z0, x1, z0 + 1), ("e", x1 - 1, z0 + 1, x1, z1 - 1), ("w", x0, z0 + 1, x0 + 1, z1 - 1)]
-        if k == 0:     # the door: two blocks wide in the south wall, to the yard
-            strips += [("sl", x0, z1 - 1, MC[0], z1), ("sr", MC[0] + 2, z1 - 1, x1, z1)]
-        else:
-            strips += [("s", x0, z1 - 1, x1, z1)]
-        shapes = [rect(f"mill-ring{k}-{n}", a, b, c, e, floor=0, height=3, material=material) for n, a, b, c, e in strips]
-        for n, cx, cz in (("nw", x0, z0), ("ne", x1 - 1, z0), ("sw", x0, z1 - 1), ("se", x1 - 1, z1 - 1)):
-            shapes.append(column(f"mill-post{k}-{n}", cx, cz, 0, 3, OAK_POST, override=True))
-        ring_layers[k % 2].append((floor, shapes))
-        if k < 3:
-            ledge = [rect(f"mill-ledge{k}-{n}", a, b, c, e, floor=0, height=1, material=SPRUCE)
-                     for n, a, b, c, e in (("n", *box(d)[:2], box(d)[2], box(d)[1] + 2),
-                                           ("s", box(d)[0], box(d)[3] - 2, box(d)[2], box(d)[3]),
-                                           ("w", box(d)[0], box(d)[1] + 2, box(d)[0] + 2, box(d)[3] - 2),
-                                           ("e", box(d)[2] - 2, box(d)[1] + 2, box(d)[2], box(d)[3] - 2))]
-            ledge_layers[k % 2].append((floor + 3, ledge))
-    out = []
-    for parity in (0, 1):
-        # a layer has one base_y, so each ring is its own layer and the parity only names which ones may share columns
-        for floor, shapes in ring_layers[parity]:
-            out.append(made_layer(f"mill-wall-{floor}", floor, shapes, part_of="windmill"))
-        for floor, shapes in ledge_layers[parity]:
-            out.append(made_layer(f"mill-ledge-{floor}", floor, shapes, part_of="windmill"))
-    # the cap: a plate over the top ring and a stepped brick pyramid on it
-    top = GROUND + 12
-    out.append(made_layer("mill-cap", top + 3, [
-        rect("mill-plate", *box(2), floor=0, height=1, material=SPRUCE),
-        rect("mill-cap-0", *box(1), floor=0, height=2, material=BRICK),
-        rect("mill-cap-1", *box(0), floor=0, height=4, material=BRICK)], part_of="windmill"))
-    return out + mill_sails(GROUND + 9)
+def square_ring(prefix, d, height, material, door=False):
+    x0, z0, x1, z1 = box(d)
+    strips = [("n", x0, z0, x1, z0 + 1), ("e", x1 - 1, z0 + 1, x1, z1 - 1), ("w", x0, z0 + 1, x0 + 1, z1 - 1)]
+    strips += ([("sl", x0, z1 - 1, MC[0], z1), ("sr", MC[0] + 2, z1 - 1, x1, z1)] if door else [("s", x0, z1 - 1, x1, z1)])
+    shapes = [rect(f"{prefix}-{n}", a, b, c, e, floor=0, height=height, material=material) for n, a, b, c, e in strips]
+    for n, cx, cz in (("nw", x0, z0), ("ne", x1 - 1, z0), ("sw", x0, z1 - 1), ("se", x1 - 1, z1 - 1)):
+        shapes.append(column(f"{prefix}-post-{n}", cx, cz, 0, height, OAK_POST, override=True))
+    return shapes
 
 
-def mill_sails(hub_y):
-    """The axle through the east wall and two layers of sails in the plane x = hub: the arms of an X, each column of
-    an arm a block two high, so the diagonals are unbroken. The arms of one diagonal share a layer."""
-    hub_x = MC[0] + 5
-    axle = [column(f"mill-axle-{i}", MC[0] + 2 + i, MC[1], 0, 1, S(id=162, data=1), keepClear=False) for i in range(4)]
-    layers_out = [made_layer("mill-axle", hub_y, axle, part_of="windmill")]
-    for name, sign in (("a", 1), ("b", -1)):
-        shapes = []
-        for k in range(-6, 7):
-            if name == "b" and k == 0:
-                continue
-            shapes.append(rect(f"mill-sail-{name}{k}", hub_x, MC[1] + k, hub_x + 1, MC[1] + k + 1,
-                               floor=6 + sign * k, height=2, material=SPRUCE, keepClear=False))
-        layers_out.append(made_layer(f"mill-sail-{name}", hub_y - 6, shapes, part_of="windmill"))
-    return layers_out
+def windmill():
+    """A smock mill in the farmhouse's blocks: a straight tower seven cells across for eight courses, one block in
+    and straight again for six, a brick dome for a cap; an axle out of the cap toward +z, the other team's island,
+    and four sails in the plane across its end: spruce beams one block thick with a white wool panel against
+    one side of each, set as a pinwheel. The mirror image turns toward -z."""
+    g = GROUND
+    out = [made_layer("mill-lower", g, square_ring("mill-lo", 3, 8, courses([(TERRA, 3), (LAID, 1), (TERRA, 2), (BRICK, 2)]),
+                                                   door=True), part_of="windmill"),
+           made_layer("mill-upper", g + 9, square_ring("mill-up", 2, 6, courses([(TERRA, 2), (LAID, 1), (TERRA, 3)])),
+                      part_of="windmill")]
+    x0, z0, x1, z1 = box(3)
+    ledge = [rect(f"mill-ledge-{n}", a, b, c, e, floor=0, height=1, material=SPRUCE) for n, a, b, c, e in (
+        ("n", x0, z0, x1, z0 + 2), ("s", x0, z1 - 2, x1, z1), ("w", x0, z0 + 2, x0 + 2, z1 - 2), ("e", x1 - 2, z0 + 2, x1, z1 - 2))]
+    out.append(made_layer("mill-ledge", g + 8, ledge, part_of="windmill"))
+    cap_y = g + 15
+    out.append(made_layer("mill-cap", cap_y, [
+        rect("mill-plate", *box(3), floor=0, height=1, material=SPRUCE),
+        disc("mill-dome-0", MC[0] + 0.5, MC[1] + 0.5, 2.9, floor=0, height=2, material=BRICK),
+        disc("mill-dome-1", MC[0] + 0.5, MC[1] + 0.5, 1.9, floor=0, height=3, material=BRICK),
+        disc("mill-dome-2", MC[0] + 0.5, MC[1] + 0.5, 0.9, floor=0, height=4, material=BRICK)], part_of="windmill"))
+    hub_y, hub_x, plane, arm, wide = g + 17, MC[0], MC[1] + 6, 8, 3
+    # the axle comes out of the dome toward +z and ends in the sail plane
+    out.append(made_layer("mill-axle", hub_y, [rect("mill-axle", hub_x, MC[1] + 3, hub_x + 1, plane, floor=0, height=1,
+                                                    material=S(id=162, data=1), keepClear=False)], part_of="windmill"))
+    def cell_rect(prefix, xa, xb, ya, yb, material):
+        """The block [xa, xb) wide, [ya, yb) tall, one thick in the sail plane."""
+        return rect(prefix, xa, plane, xb, plane + 1, floor=ya - hub_y + arm + 1, height=yb - ya, material=material,
+                    keepClear=False)
+    base_y = hub_y - arm - 1
+    beams = [cell_rect("mill-beam-v", hub_x, hub_x + 1, hub_y - arm, hub_y + arm + 1, SPRUCE),
+             cell_rect("mill-beam-r", hub_x + 1, hub_x + arm + 1, hub_y, hub_y + 1, SPRUCE),
+             cell_rect("mill-beam-l", hub_x - arm, hub_x, hub_y, hub_y + 1, SPRUCE)]
+    wool_a = [cell_rect("mill-wool-up", hub_x + 1, hub_x + 1 + wide, hub_y + 2, hub_y + arm + 1, WOOL),
+              cell_rect("mill-wool-down", hub_x - wide, hub_x, hub_y - arm, hub_y - 1, WOOL)]
+    wool_b = [cell_rect("mill-wool-right", hub_x + 2, hub_x + arm + 1, hub_y - wide, hub_y, WOOL),
+              cell_rect("mill-wool-left", hub_x - arm, hub_x - 1, hub_y + 1, hub_y + 1 + wide, WOOL)]
+    out += [made_layer("mill-beams", base_y, beams, part_of="windmill"),
+            made_layer("mill-wool-a", base_y, wool_a, part_of="windmill"),
+            made_layer("mill-wool-b", base_y, wool_b, part_of="windmill")]
+    return out
 
 
-MILL_PROPS, MILL_STYLES = [], {}
-
-
-def mill_house():
-    """The tower as a stamped house forked from the farmhouse's library row: narrow, two storeys, under a hip cap.
-    Only the sails can be layers, so they are the one made part."""
-    MILL_STYLES["mill"] = kit.library("brick-roofed-terracotta-and-oak-house", kind="house",
-                                      shell=kit.HouseStyle(roof=kit.RoofStyle(form="hip", pitch=3)))
-    MILL_PROPS.append(kit.HouseProp(id="windmill", style="mill", front="posZ", seed=7, wings=[
-        kit.AuthoredWing(corners=[[MC[0] - 3, MC[1] - 3], [MC[0] + 3, MC[1] + 3]], spec=kit.WingSpec(storeysHigh=2))]))
-    return mill_sails(GROUND + 7)
-
-
-if MILL == "made":
-    layers += mill_made()
-else:
-    layers += mill_house()
+layers += windmill()
 
 # ── fields: four plots of farmland, each a patch of its own theme with a low wall of fieldstone round it ────
 # A wall is a polyline shape draped one block over the ground at every cell, so it climbs the hillside; the edge that faces
@@ -455,7 +437,6 @@ for part in (("horse-body", [(3, 5), (15, 5), (15, 8.5), (3, 8.5)]),
 styles = {
     "cottage": kit.library("brick-roofed-terracotta-and-oak-house", kind="house"),
     "barn": kit.library("hay-gambrel-barn", kind="house"),
-    **MILL_STYLES,
     "orchard-oak": kit.library("tiny-oak-3", kind="tree"),
     "old-oak": kit.library("large-oak-1", kind="tree"),
     "flint-cairn": kit.BoulderStyle(form="cairn", size=2.0, mossy=False,
@@ -464,8 +445,6 @@ styles = {
                               rock=cell([(1, 0), (1, 5), (4, 0), (1, 0)], size=2, seed=41)),
 }
 props = []
-
-props += MILL_PROPS
 
 # paths first: each is a way somebody walks, three blocks wide, paved a third each of three earths
 LANE_PAVE = cell([(3, 0), (3, 1), (5, 1)], size=3, seed=51)
@@ -597,7 +576,6 @@ refinement = kit.Refinement(
                                points=[[-14, -55], [-44, -55]]),
             kit.ReliefMarkJson(id="bank-2", kind="scarp", high=29, low=27, face=2, band=5,
                                points=[[-14, -43], [-44, -43]]),
-            kit.ReliefMarkJson(id="mill-pad", kind="area", h=36, bevel=3, ring=circle(31, -92, 7)),
             kit.ReliefMarkJson(id="apron", kind="area", h=24, bevel=1,
                                ring=[[-43, -26], [43, -26], [43, -13], [-43, -13]]),
             # the undercroft: a sunk ramp from the lane, a cellar, a crawl and a chamber, all floored at 30
