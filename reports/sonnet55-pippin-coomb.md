@@ -222,3 +222,29 @@ Refinement() got an unexpected keyword argument 'theems'
 **The drape readings, from columns.** At z −30 the west strip's outer wall is andesite and cobble with its top at y25 beside grass tops at y24 on both sides, so it is one block over the ground. At z −40 the east strip's wall top is y29 beside grass at y28 and the field at y27; the transect there reads `scramble +2` from the field floor, which is the wall plus the slope, not a dug step. The eye render from the lane shows both strips' stone rings rising and falling with the ground.
 
 **Two outlines changed twice.** The lengthened strips lapped at their hairpins (`SK25 … crosses itself near (12, -47)`), so each end was made blunt with extra points, which cleared it, and the west strip's north edge moved south of the apple row.
+
+## The windmill, machinery, scarecrows, cover, boulders and back trees
+
+**The windmill was built twice on one pad and the all-layers one is kept.** The pad is a `mill-pad` area mark at 36 centred (31, −92) behind the barn and beside the north-east field, well off the door lanes, the monument's clearance and the lane. The tower's centre cell is (31, −92), its door in the south wall at (31…32, −88), its axle and sails east at x 36 (hub y45), team 1 having the mirror. The barn moved to x 12…24 so the cluster keeps eight blocks of free ground on its east side.
+
+**Attempt A, a stamped house forked from the farmhouse's library row.** `kit.library("brick-roofed-terracotta-and-oak-house", kind="house", shell=kit.HouseStyle(roof=kit.RoofStyle(form="hip", pitch=3)))` on a 7 × 7 wing, two storeys, with the sails as made layers beside it. It matches the farmhouse exactly because it *is* its row: the terracotta walls, brick plinth, oak posts and laid-log course, and the same windows. It could not taper, hold a door of its own design, or carry a hub, so the sails floated at y43 against a plain roof.
+
+**What fired for A.** First `DR-PASS … leaves no way past it … x 13…37` for the windmill and the barn (the east side had six blocks against the eight asked for), cured by moving both west. Then `SK18 the made thing 'mill-axle' and the house 'windmill' share the courses of 2 column(s) — first at (34, −92). Neither pass reads the other`, which stays while any made part touches the stamped one.
+
+**Attempt B, entirely made layers.** Four square rings, each a block narrower than the one below (nine, seven, five and three cells wide), each three courses in a `layered` height stack of the farmhouse's own blocks (a brick plinth course, terracotta, a laid oak log), with oak log corner posts, spruce ledges where the tower steps in, a two-wide door, a spruce plate and a two-step brick cap, an axle, and two sail layers (each sail a diagonal of one-block columns two high, the arms of one diagonal sharing a layer). It uses 11 layers for the body and 3 for axle and sails.
+
+**What B could and could not express, and what fired.** B tapers, has a door, a hub and sails that meet the tower, and reads as a windmill from every side checked; it cannot have windows or a pitched roof, and the cap is a solid pyramid. Nothing fired: `SK18` is between a made thing and a *stamped* house, so an all-layers building next to a house raises nothing. A first attempt at floors below zero raised `SK5 … stands its floor at y=-6`, fixed by putting the sail layers' `base_y` six lower.
+
+**Farm machinery, as made layers settled with `seat: "ground"`.**
+- **Tractor** at (−26, −96) facing east: red hood, a cab on four glass posts under a roof, a coal-block exhaust stack at (−25, −94), two black wheels of radius 1.5 at the front and two of radius 2.5 behind. It stands by the north-west field's gate.
+- **Flatbed** at (13, −97) facing east: a green cab with a glass front, a railed bed carrying hay bales, three small wheels a side. It stands behind the barn.
+
+**Scarecrows, one to a field and a dozen blocks apart.** A post whose column reads a plank hat, a hay-bale head and a log, with a crossbar of two log columns, at (−35, −99) and (36, −103) in the back fields and at (−9, −35) and (14, −38) in the path strips.
+
+**The ground cover is raised from patches to the whole turf.** `down-cover` over the whole ground is `coverage` 0.8 (from 0.2), `scale` 7, `octaves` 2, `fernShare` 0.18, `tallShare` 0.03, `flowerShare` 0.14 at `flowerScale` 6. Two flower meadows sit on top of it, `west-meadow` at x −44…−36, z −90…−64 and `hill-meadow` at x 18…42, z −66…−48, each `flowerShare` 0.45 and `tallShare` 0. The dead share fell from 42.7% to 37.0%.
+
+**Boulders, three sizes of one flint rock.** `flint-big` (size 2.8, angular) at (41, −60), (−39, −53) and (−27, −26); `flint-mid` (1.9, outcrop) at (30, −67), (−37, −63) and (−20, −52). Two were moved after `DR-CUT` (half buried) and `DR-ROAD` (nearer than two blocks to the orchard track).
+
+**Trees at the back, two species still.** Two large oaks at (−37, −111) and (41, −111) in the back corners, one small oak at (41, −93) behind the mill, and three down the west edge at (−41, −86), (−40, −79) and (−41, −72). The first back row at z −110 was declined as `kept clear as the approach in front of a door`: the hall's door lane covers its whole side, so the corners are the only back ground left.
+
+**The store, pre-flight and the picture.** Change 54: `16 672 walked · 392 scrambled · 212 barrier`, 98 props placed and none declined, worst step 26 on the enemy route (the coomb), export gate OPEN, re-exported. The isometric reads as a farm now, with the windmill at the back, flowers and tall turf over the slopes, and the red tractor beside the farmhouse; the `render/eye` views from the lane and the yard show dense short grass, the stone-ringed fields with scarecrows, and the hill meadow.
