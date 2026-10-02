@@ -23,6 +23,7 @@ in the envelope is not a solid rectangle of land.
 and the two stairs, which are authored flights rather than graded relief: a flight states a boundary
 where a relief graded across the seam would delete it.
 """
+import sys
 import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -368,7 +369,9 @@ watch = knap_style([dict(WORK_STOREY, clear=4)], tinted=False)
 # names the showcase tree it is, and its recipe is read whole from the showcase snapshot.
 THORN = ["tree-showcase-r4-%d" % n for n in (1, 2, 3, 4, 5)]
 BIRCH = ["tree-showcase-r13-%d" % n for n in (1, 3, 5)]
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 TREES = {key: SHOWCASE[tree]["style"] for key, tree in {
     "tree-showcase-r4-1": "tiny-spruce-1", "tree-showcase-r4-2": "tiny-spruce-2",
     "tree-showcase-r4-3": "tiny-spruce-3", "tree-showcase-r4-4": "tiny-spruce-4",

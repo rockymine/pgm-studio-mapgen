@@ -287,8 +287,9 @@ BOULDERS = [(-20, 70), (10, 72), (-22, 14)]
 PINES = [(-20, 76), (-14, 72), (-21, 62), (8, 60)]
 FIRS = [(4, 74), (14, 66)]
 
-# The copied trees, each the showcase tree it names, as corpus/tree-showcase/trees.json carries it.
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+# The copied trees, each the showcase tree it names, as the studio's tree library carries it.
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 styles = {key: kit.build("TreeStyle", SHOWCASE[tree]["style"]) for key, tree in {
     "pine": "large-pine-2", "fir": "tiny-spruce-3"}.items()}
 styles["erratic"] = kit.BoulderStyle(form="round", size=2, mossy=False, rock=kit.TurbulenceMaterial(

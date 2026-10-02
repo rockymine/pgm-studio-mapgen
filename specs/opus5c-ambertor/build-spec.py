@@ -360,9 +360,9 @@ field_wall = kit.AddedLayer(
 # because OB19 leaves it out of the world and only a header says so.
 
 # The copied trees, each the showcase tree it names, as
-# corpus/tree-showcase/trees.json carries it.
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase",
-                                       "trees.json")))["trees"]
+# the studio's tree library carries it.
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 styles = {key: kit.build("TreeStyle", SHOWCASE[tree]["style"]) for key, tree in {
     "pine": "large-pine-1",     # large pine — the one accent
     "thorn": "tiny-oak-5",      # tiny oak — the scrub

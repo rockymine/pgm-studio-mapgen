@@ -580,8 +580,8 @@ def house_styles():
 # The sea: a basin over the whole lagoon fills every column that stands under the line and cuts nothing.
 # --------------------------------------------------------------------------------------------------------------
 def tree_style(name):
-    with open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")) as handle:
-        return json.load(handle)["trees"][name]["style"]
+    from showcase import trees as studio_trees
+    return studio_trees()[name]["style"]
 
 
 def house(prop_id, style, wings, front="posZ", seed=1):

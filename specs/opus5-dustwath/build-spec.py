@@ -16,7 +16,7 @@ and the braided scours that run down to the bed are line marks with a narrow tre
 either side of each lofts back to the flat instead of walling itself.
 """
 
-import json, math, os
+import json, math, os, sys
 
 SLUG = "opus5-dustwath"
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -396,7 +396,9 @@ def dressing():
     # `tiny-spruce-4` are acacia log under BIRCH leaves (162:12 under 18:14) at fourteen blocks,
     # which is a pine silhouette and not a desert tree. What a body is has to be read off its
     # leaf id -- `thorn-1/2/3` are acacia under acacia, eight or nine tall.
-    showcase = json.load(open(f"{ROOT}/corpus/tree-showcase/trees.json"))["trees"]
+    sys.path.insert(0, os.path.join(ROOT, "tools"))
+    from showcase import trees as studio_trees
+    showcase = studio_trees()
     styles = {key: showcase[name]["style"] for key, name in {
         "thorn-1": "acacia-1", "thorn-2": "acacia-3", "thorn-3": "acacia-6"}.items()}
     styles["shelter"] = shelter()

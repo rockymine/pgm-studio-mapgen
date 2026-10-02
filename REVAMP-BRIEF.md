@@ -113,8 +113,8 @@ on leaf shape alone under the eight symmetries of the square, so a paste with a 
 A score of 0.99 or better is the same tree, and a lower score with a body two or three trees large is a grove
 that grew into one.
 
-The spec names each tree it plants from `corpus/tree-showcase/trees.json`, the snapshot
-`pgm-studio/tools/seed-trees.cs` cuts out of the showcase: every tree under the name the showcase files it as,
+The spec names each tree it plants from the studio's tree library (`tools/showcase.py`), which holds the cut
+`pgm-studio/tools/seed-trees.cs` takes out of the showcase: every tree under the name the showcase files it as,
 with its foot and its recipe. A spec keeps no cut of its own.
 
 A `copied` recipe carries the body block for block and is placed like any tree: seated on its foot's column,

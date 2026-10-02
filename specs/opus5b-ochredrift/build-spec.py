@@ -304,8 +304,9 @@ ROCKS = [(-46, 26), (22, 22), (36, 40)]
 HOUSES = [("crusher", [[-24, 17], [-16, 22]], 2, "posZ"),
           ("winding-house", [[38, 52], [46, 57]], 1, "negX")]
 
-# The copied trees, each the showcase tree it names, as corpus/tree-showcase/trees.json carries it.
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+# The copied trees, each the showcase tree it names, as the studio's tree library carries it.
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 styles = {key: kit.build("TreeStyle", SHOWCASE[tree]["style"]) for key, tree in {
     "scrub": "acacia-3", "olive": "olive-2"}.items()}
 styles["erratic"] = kit.BoulderStyle(form="round", size=2, mossy=False, rock=kit.TurbulenceMaterial(

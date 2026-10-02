@@ -55,7 +55,7 @@ refining it again gives two storeys called `under` and a ring bent twice.
 | `relief` | `{"<groupId>": {...}}`, or `{"*": {...}}` for every group. A compiled board's groups are `team` and `neutral` |
 | `themes` · `mapTheme` | the theme registry and the map default (the first key unless stated) |
 | `roomStyles` | `{"wool": …, "spawn": …}` — the two members `SketchRoomStyles` carries, each a style or `{"library": "<name>"}`, a row of the studio's room-style library with any changes laid beside the name (`pgm-studio/docs/tools/library.md`). A key neither of those names is answered `RQ3` (`refinement.roomStyles.cage`) and the room stamps the built-in bedrock box. It was `cage` until 2026-09-07, so a spec document older than that states the old word and re-driving it stamps the box |
-| `dressing` | `{"styles": …, "props": [...]}`; a house prop's `style` names a library row the same way, and a house in `styles` names one as `{"library": "<name>", "kind": "house", "shell": {…changes…}}`. A copied tree in `styles` is the recipe `corpus/tree-showcase/trees.json` states for the showcase tree it is. A style in `styles` is a `PropStyle` and is discriminated — a tree is `{"kind": "tree", …}`, a **house is `{"kind": "house", "shell": <HouseStyle>}`**. A bare `HouseStyle` here is a 500 rather than a 400, because the parse throws before any gate reads it |
+| `dressing` | `{"styles": …, "props": [...]}`; a house prop's `style` names a library row the same way, and a house in `styles` names one as `{"library": "<name>", "kind": "house", "shell": {…changes…}}`. A copied tree in `styles` is the recipe the studio's tree library answers for the showcase tree it is (`showcase.py`). A style in `styles` is a `PropStyle` and is discriminated — a tree is `{"kind": "tree", …}`, a **house is `{"kind": "house", "shell": <HouseStyle>}`**. A bare `HouseStyle` here is a 500 rather than a 400, because the parse throws before any gate reads it |
 | `authors` | `["Opus 5"]`, or `[{"name": …, "uuid": …, "role": …, "contribution": …}]`. PGM takes a person as an **account or a pseudonym**: a bare name writes `<author>Opus 5</author>`, a uuid writes `<author uuid="…"/>` with the name as a sibling comment, and a pseudonym may still carry a `contribution`. It also rides onto `intent.meta.authors`, because the observer platform's authors board reads that and a compiled intent leaves it empty — the map row's credit never reaches it |
 | `created` | `"2026-08-25"` — when the map was made, onto `intent.meta.created` and out as `<created>`. The studio derives every other identity field and cannot derive this one, so a refinement that states none builds a map with no date and the driver says so |
 | `controlPoints` · `scoreLimit` | a capture board's hills, onto `intent.controlPoints`, and the score the match ends at. Each point is `{name, anchor: {x, y, z}, size?, points?, captureTime?}` with the anchor in **blocks** — the pad is centred on it and cut into whatever ground the build solves there. The plan states no capture point, and a compiled intent carries no `symmetry`, so **every point of the board is stated here, already fanned**: a centre plus one side is a two-hill board. `scoreLimit` defaults to 750 on a board whose points pay, which is the corpus's own answer |
@@ -230,20 +230,13 @@ and the drive is the last step rather than the first.
 
 ### `seed-studio.py`
 
-**A studio seeds its own library at startup and nothing else.** `LibrarySeed` runs on every boot and is
-idempotent, so the materials, the house presets and parts, the themes, the biomes, the four erratic
-boulders and the seven vanilla tree recipes are always there. Two things this repository depends on are not,
-and this puts both in.
+**A studio seeds its own library at startup and nothing else.** `LibrarySeed` runs on every boot from the
+studio's seed folder, so the patterns, the houses and their parts, the themes, the biomes, the boulders, the
+seven vanilla tree recipes and the 94 copied trees of `corpus/tree-showcase` are always there. The one thing
+this repository depends on that is not is the technique cards' boards, and this puts them in.
 
 **The technique cards' boards** — thirty-two over twenty-nine cards — so *open it in the studio as
 `technique-<name>`* is true on a database nobody has driven them into.
-
-**The copied trees.** `corpus/tree-showcase` is a world of hand-built trees and the studio's
-`tools/seed-trees.cs` cuts each one into the tree library as a `copied` recipe: 94 of them, against the
-seven vanilla species a studio boots with. The warmup skill tells an author to prefer a copied tree over the
-vanilla stamp, so an unseeded studio is one where that instruction names nothing. It is a dotnet build and
-a scan of every region file, so it takes minutes; `PGM_STUDIO_REPO` says where the studio's checkout is
-and `--no-trees` skips it.
 
 **A card's files say which road it takes and nothing else decides.** A `<name>.layout.json`, with its
 `<name>.intent.json` beside it where the card has objectives, is stored directly — the shape the Sketch
@@ -314,7 +307,8 @@ they were written to produce.
 | `anvil.py` | the reader the other four import — `World(regionDir)` with `get`, `blocks`, `columns`, `voxels`, `bounds`, `biome` — and, run on its own, a census of a world. Numeric ids, 1.8 Anvil, nothing installed |
 | `world-diff.py` | two worlds of one board against each other, keyed by the first's `provenance.json`: how many columns kept their surface, what each block became by pass and depth, every added and removed thing with its box, the bed under the water, the plants, the biomes, and how much of each material shows on a face. `--json` writes it all for a lift or a review |
 | `lift.py` | a box cut out of a world into `models/<name>.json`, rows of `[x, y, z, id, data]`, which a spec's `build.py` turns into a made thing through `sculpt/layers.py`. `--against` keeps only what the other world lacks, `--ground-below` drops the terrain a footing stands in, `--cost` prints what it costs in layers and shapes, `--plan` prints the box as a plan of top blocks |
-| `trees.py` | `catalogue` every tree standing in a world; `match` planted trees back to their originals on leaf shape under the eight symmetries of the square; `verify` that a built world planted showcase trees block for block, against `corpus/tree-showcase/trees.json`, and every leaf no-decay |
+| `trees.py` | `catalogue` every tree standing in a world; `match` planted trees back to their originals on leaf shape under the eight symmetries of the square; `verify` that a built world planted showcase trees block for block, against the studio's tree library, and every leaf no-decay |
+| `showcase.py` | the showcase's copied trees by name, asked of the studio being driven: `showcase.trees()["tall-spruce-4"]["style"]` is the recipe and `["foot"]` where it stands in `corpus/tree-showcase`. The studio's seed folder holds the one cut and refuses an edit to a seeded row, so this repository keeps no copy |
 | `probe.py` | whether the ground varies down a column or each column is one material — the run lengths of one stone through the body, the earth's uniformity, a face as characters, and the floating columns bucketed by what stands at their top |
 
 ```bash

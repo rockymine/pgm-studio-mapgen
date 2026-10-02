@@ -22,7 +22,7 @@ forty-five minutes in: four crossings where there was one, and the last of them 
 The one idea: a sand spit — flat, pale and open nearly everywhere, with one dune ring on it that
 you have to walk round.
 """
-import json, os
+import json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -313,8 +313,10 @@ nethouse = hall(stack([(1, DARKOAK)], "repeat"), [dict(GROUND_STOREY, clear=6)])
 
 # ── what stands on the board ─────────────────────────────────────────────────────────────────────
 # the copied trees are the showcase's own: each key names the showcase tree it is, and its recipe
-# comes whole from the showcase snapshot
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+# comes whole from the studio's tree library
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 tree_styles = {key: SHOWCASE[tree]["style"] for key, tree in {
     "pine-1": "tiny-spruce-1", "pine-3": "tiny-spruce-3", "pine-5": "tiny-spruce-5",
     "scrub-1": "small-olive-1", "scrub-3": "small-olive-3"}.items()}

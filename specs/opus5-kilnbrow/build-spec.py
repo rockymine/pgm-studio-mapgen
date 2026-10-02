@@ -13,6 +13,7 @@ Scale: cell 5. The team unit is authored at -z and rot_180 fans the rest.
 """
 import json
 import os
+import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -412,7 +413,9 @@ SPAWN_SHELL = {
 # one would be turned away there anyway, and a stair is not a thing a road should repaint.
 TRACK = cells([GRAVEL, COARSE_DIRT, HARDENED_CLAY], 3, 41, rise=0)
 
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 TREE_KEYS = {"acacia-a": "acacia-2", "acacia-b": "acacia-5",
              "olive-a": "small-olive-1", "olive-b": "small-olive-3"}
 

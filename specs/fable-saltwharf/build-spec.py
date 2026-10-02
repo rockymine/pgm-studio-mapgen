@@ -2,7 +2,7 @@
 warehouse either side of it; the spawn is on the headland behind, ten blocks up. Two stone flights and a
 sandy bank are the three ways down from the headland to the quay, and the quay's front is the sea wall the
 bridges land on."""
-import json, os
+import json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "fable-saltwharf"
@@ -130,7 +130,9 @@ def warehouse():
     return w
 WAREHOUSE = warehouse()
 
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 def tree(pid, x, z, style, seed):
     return {"id": pid, "kind": "tree", "seed": seed, "layer": "ground", "x": x, "z": z, "style": style}
 ERRATIC = {"kind": "noise", "seed": 51, "scale": 3, "octaves": 1, "stops": [STONE, COBBLE, ANDESITE], "rise": 2}

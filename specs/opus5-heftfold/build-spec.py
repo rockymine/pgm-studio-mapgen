@@ -12,6 +12,7 @@ door, so a defender who commits to one yard has to come back down to reach the o
 
 In the middle, on the saddle, the fold: a walled sheepfold that is nobody's, open toward each team.
 """
+import sys
 import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -275,7 +276,9 @@ steading = hall_style(stack([(1, SPRUCE)], "repeat"), [GROUND_STOREY, UPPER_STOR
 outbarn = hall_style(stack([(1, SPRUCE)], "repeat"), [dict(GROUND_STOREY, clear=6)])
 
 # ── what stands on the board ─────────────────────────────────────────────────────────────────────
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 tree_styles = {key: SHOWCASE[name]["style"] for key, name in {
     "fir-1": "tiny-spruce-1", "fir-3": "tiny-spruce-3", "fir-5": "tiny-spruce-5",
     "holt-2": "olive-2", "holt-4": "olive-4"}.items()}

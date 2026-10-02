@@ -37,10 +37,11 @@ MASONRY = {"bedrock": {"relative": False, "value": 1}, "rimEdges": "boundary",
 # nines stands at five and not at four, a pair of fourteens at six and not at five.
 CROWN = {9: 5, 14: 6}
 
-# The two hand-built recipes: `large-pine-1` and `large-pine-4` of the showcase, as
-# `corpus/tree-showcase/trees.json` carries every tree `pgm-studio/tools/seed-trees.cs` cuts out of that world.
-SHOWCASE = json.load(open(os.path.join(os.path.dirname(os.path.dirname(HERE)), "corpus", "tree-showcase",
-                                       "trees.json")))["trees"]
+# The two hand-built recipes: `large-pine-1` and `large-pine-4` of the showcase, as the studio's tree library
+# carries every tree `pgm-studio/tools/seed-trees.cs` cuts out of that world.
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(HERE)), "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 
 STYLES = {
     "oak-9":  {"kind": "tree", "form": "template", "species": "oak", "height": 9},

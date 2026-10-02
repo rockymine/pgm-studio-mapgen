@@ -169,8 +169,9 @@ shapes = [{**kit.SketchShape(id=pid, type="polygon", operation="add", base_heigh
            **kit.ShapeJoin(group="team")} for pid in ("hummock-s-top", "hummock-n-top")]
 
 # --- dressing -------------------------------------------------------------------------------------------
-# The copied trees, each the showcase tree it names, as corpus/tree-showcase/trees.json carries it.
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+# The copied trees, each the showcase tree it names, as the studio's tree library carries it.
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 styles = {key: kit.build("TreeStyle", SHOWCASE[tree]["style"]) for key, tree in {
     "tree-showcase-r17-1": "willow-1", "tree-showcase-r17-3": "willow-3", "tree-showcase-r17-5": "willow-5",
     "tree-showcase-r5-1": "dark-oak-1", "tree-showcase-r5-2": "dark-oak-2"}.items()}
