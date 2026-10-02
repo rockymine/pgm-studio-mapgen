@@ -5,13 +5,13 @@ was driven lives in `maps/`; what is here was built by hand and is read by tools
 
 | World | What it is | Read by |
 |---|---|---|
-| `tree-showcase` | 95 author-built trees, one per 19 × 19 platform, in 20 bands along z | `pgm-studio/tools/seed-trees.cs`, which seeds the studio's tree corpus and writes `tree-showcase/trees.json`; `tools/trees.py catalogue\|match\|verify` |
+| `tree-showcase` | 95 author-built trees, one per 19 × 19 platform, in 20 bands along z | `pgm-studio/tools/seed-trees.cs`, which cuts it into the studio's seed folder; `tools/trees.py catalogue\|match\|verify` |
 
 **A tree here is the only thing a `copied` style may be cut from.** `copied` means cut out of a world, so a
 body assembled by hand and filed as one is a recipe claiming a provenance it does not have.
 
 **Every tree here was built by rockymine, and a board planting one credits them.** The seeder records the
-builder on each cut when it is run with `--builder=rockymine`, which `tools/seed-studio.py` passes, and the
+builder on each cut when it is run with `--builder=rockymine`, as the studio's seed folder was cut, and the
 studio credits them in `map.xml` as the original builder of the copied trees wherever one of theirs stands. A recipe pulled
 with `GET /api/tree-styles/{id}/json` carries the name as `builder`; a style copied into a spec by hand keeps it
 only if the copy does.
@@ -97,19 +97,21 @@ tree.** No 26-connected step reaches them from their own wood, so each joins the
 blocks come nearest it, within four blocks. Each is one or two blocks at a crown's tip, in `r3`, `r7`
 and `r9`.
 
-## The snapshot a board copies from
+## Where a board reads its trees
 
-**`tree-showcase/trees.json` is every filed tree as a board states it.** Each entry is a tree's name, the foot
-it stands on in this world, and the recipe the studio's library answers for it, body block for block. It is
-the one file here that is generated: the cut that seeds the library writes it, run from the studio's checkout
-after any change to the world or to `kinds.json`, and nothing edits it by hand.
+**The studio keeps the one cut of this world, and this repository keeps none.** The cut is
+`pgm-studio/src/PgmStudio.Minecraft/Library/trees.json`: every filed tree under its name, the foot it stands on
+in this world, and the recipe the studio's library answers for it, body block for block. Every studio files it
+into its tree library at start, and a row filed so is the seed folder's, which the studio refuses to edit
+(`LB6`). It is re-cut from the studio's checkout after any change to the world or to `kinds.json`, and nothing
+edits it by hand.
 
 ```
-dotnet run tools/seed-trees.cs ../pgm-studio-mapgen/corpus/tree-showcase --builder=rockymine \
-    --json=../pgm-studio-mapgen/corpus/tree-showcase/trees.json
+dotnet run tools/seed-trees.cs ../pgm-studio-mapgen/corpus/tree-showcase --builder=rockymine
 ```
 
-**A board copies its trees from the snapshot and keeps no cut of its own.** Its script names, for each style
-key of its own, the showcase tree that key is, and states that tree's recipe whole. So a board's trees are the
-world's as the cutter reads it, and a re-cut reaches a board the next time its script runs. The key is the
-board's word for a role; the name is the showcase's, and it is the name that says what a tree is.
+**A board asks the studio for its trees and keeps no cut of its own.** Its script names, for each style key of
+its own, the showcase tree that key is, and reads that tree's recipe whole through `tools/showcase.py`. So a
+board's trees are the world's as the cutter reads it, and a re-cut reaches a board the next time its script runs
+against a studio carrying it. The key is the board's word for a role; the name is the showcase's, and it is the
+name that says what a tree is.

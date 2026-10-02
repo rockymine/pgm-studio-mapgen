@@ -270,11 +270,12 @@ if STAGE >= 4:
     ]
 
     # Two species, and never three: jungle giants (library row r16) and, under them, dark oak (row r5), each the
-    # showcase tree it names, as corpus/tree-showcase/trees.json carries it. Every site stands where the seats mask
+    # showcase tree it names, as the studio's tree library carries it. Every site stands where the seats mask
     # leaves room once the paths are in, and each at least its crown and its neighbour's apart.
     JUNGLE = [f"tree-showcase-r16-{i}" for i in range(1, 7)]
     OAK = [f"tree-showcase-r5-{i}" for i in (1, 2, 3)]
-    SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+    from showcase import trees as studio_trees
+    SHOWCASE = studio_trees()
     styles.update({key: kit.build("TreeStyle", SHOWCASE[tree]["style"]) for key, tree in {
         "tree-showcase-r16-1": "jungle-1", "tree-showcase-r16-2": "jungle-2", "tree-showcase-r16-3": "jungle-3",
         "tree-showcase-r16-4": "jungle-4", "tree-showcase-r16-5": "jungle-5", "tree-showcase-r16-6": "jungle-6",

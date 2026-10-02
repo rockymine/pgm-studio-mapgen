@@ -550,8 +550,10 @@ def drying_shed():
 
 def dressing():
     # the copied trees are the showcase's own: each key names the showcase tree it is, and its
-    # recipe comes whole from the showcase snapshot
-    showcase = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+    # recipe comes whole from the studio's tree library
+    sys.path.insert(0, os.path.join(ROOT, "tools"))
+    from showcase import trees as studio_trees
+    showcase = studio_trees()
     styles = {key: showcase[tree]["style"] for key, tree in {
         "holt-1": "olive-1", "holt-2": "olive-3", "holt-3": "olive-5",
         "scrub-1": "tiny-oak-3"}.items()}

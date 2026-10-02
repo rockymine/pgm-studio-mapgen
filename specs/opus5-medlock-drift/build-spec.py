@@ -22,7 +22,7 @@ is the difference between rotating to the far wool and going the long way round 
 The one idea: a drift mine in red shale — stepped spoil, ochre pans, and a board where the only
 two flat places are the pit floor at the front and the mine yard at the back.
 """
-import json, os
+import json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -306,8 +306,10 @@ shed = hall(stack([(1, BIRCH)], "repeat"), [dict(GROUND_STOREY, clear=6)])
 
 # ── what stands on the board ─────────────────────────────────────────────────────────────────────
 # the copied trees are the showcase's own: each key names the showcase tree it is, and its recipe
-# comes whole from the showcase snapshot
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+# comes whole from the studio's tree library
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 tree_styles = {key: SHOWCASE[tree]["style"] for key, tree in {
     "birk-1": "birch-3", "birk-2": "birch-7", "birk-3": "birch-9",
     "roundel-1": "tiny-oak-3"}.items()}

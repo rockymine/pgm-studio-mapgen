@@ -24,7 +24,7 @@ farthest leaf. Every distance below follows from that asymmetry.
 Sixteen pads on one `ground` layer, one theme, and fifteen of them with no relief — a plain solved to y7,
 because a grade would put a second rule in every measurement. Two pads carry an authored wall, one carries
 a monument, and the last one is graded on purpose. Five recipes: two template oaks, a boulder, and two
-bodies cut out of the `tree-showcase` world, taken from its snapshot `corpus/tree-showcase/trees.json`.
+bodies cut out of the `tree-showcase` world, taken from the studio's tree library (`tools/showcase.py`).
 
 | panel | asks for | what the book said |
 |---|---|---|

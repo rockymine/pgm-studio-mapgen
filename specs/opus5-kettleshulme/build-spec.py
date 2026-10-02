@@ -21,7 +21,7 @@ east landing is walled.
 The one idea: a coal-measure clough, dark grit and podzol, with a mill launder carried over the
 hub's east slot on a deck a raider can run and a defender can shoot from.
 """
-import json, os
+import json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -323,7 +323,9 @@ mill = hall(stack([(1, BRICK)], "repeat"), [GROUND_STOREY, UPPER_STOREY])
 cot = hall(stack([(1, BRICK)], "repeat"), [dict(GROUND_STOREY, clear=6)])
 
 # ── what stands on the board ─────────────────────────────────────────────────────────────────────
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 tree_styles = {key: SHOWCASE[name]["style"] for key, name in {
     "birk-1": "birch-3", "birk-2": "birch-7", "birk-3": "birch-9",
     "roundel-1": "tiny-oak-3"}.items()}

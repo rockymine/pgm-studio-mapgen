@@ -23,7 +23,8 @@ OUT = f"{ROOT}/specs/fable-millrace-revamp/fable-millrace-revamp"
 plan = json.load(open(f"{SRC}.plan.json"))
 layout = json.load(open(f"{SRC}.layout.json"))
 intent = json.load(open(f"{SRC}.intent.json"))
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 MODELS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "models")
 
 # ── materials ────────────────────────────────────────────────────────────────────────────────────────

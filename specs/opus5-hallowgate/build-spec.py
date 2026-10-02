@@ -20,6 +20,7 @@ Scale: cell 4. The team unit is authored at +z and rot_180 fans the rest.
 """
 import json
 import os
+import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -426,7 +427,9 @@ def room_shell(roof_body, door_width):
 # colours a reader cannot quite tell apart.
 TRACK = cells([DIRT, COARSE_DIRT, (5, 1)], 3, 53, rise=0)
 
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 # Four modest recipes rather than the biggest in the corpus: a copied tree's foot is every
 # cell of its lowest course and its crown is wider again, and this board's seats mask leaves
 # very little ground with room round it.

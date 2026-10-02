@@ -9,7 +9,7 @@ The ground is stated as ONE shape and its shape is the relief's. What varies is 
 on the flat and on the shoulder, and a crag face holds none — which is a `layered` stack on the slope
 axis and not a theme per piece.
 """
-import json, os
+import json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -187,7 +187,9 @@ bothy = bothy_style([LOW_STOREY, UPPER_STOREY])
 hut = bothy_style([dict(LOW_STOREY, clear=4)])
 
 # ── what stands on it ────────────────────────────────────────────────────────────────────────────
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 tree_styles = {key: SHOWCASE[name]["style"] for key, name in {
     "fir-1": "tiny-spruce-1", "fir-2": "tiny-spruce-2", "fir-3": "tiny-spruce-3",
     "fir-4": "tiny-spruce-4", "fir-5": "tiny-spruce-5"}.items()}

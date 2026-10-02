@@ -19,7 +19,7 @@ planted on them, and the emptiness is what makes the room a place.
 The clearings the rooms stand in are the one lit ground on the board; everything else is
 dark-oak trunk, leaf litter and moss under a roofed-forest tint.
 """
-import json, os
+import json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
@@ -282,8 +282,10 @@ ADD_SHAPES = [
 
 # ---------------------------------------------------------------- dressing
 # the copied trees are the showcase's own: each key names the showcase tree it is, and its
-# recipe comes whole from the showcase snapshot
-SHOWCASE = json.load(open(os.path.join(REPO, "corpus", "tree-showcase", "trees.json")))["trees"]
+# recipe comes whole from the studio's tree library
+sys.path.insert(0, os.path.join(REPO, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 STYLES = {key: SHOWCASE[name]["style"] for key, name in {
     "mirk-tall-a": "large-pine-1", "mirk-tall-b": "large-pine-2", "mirk-giant": "large-pine-4",
     "mirk-dense-a": "dense-oak-8", "mirk-dense-b": "dense-oak-2",

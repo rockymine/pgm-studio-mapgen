@@ -12,6 +12,7 @@ is a column height, as `base_height` states one: the top block is one lower.
 import json
 import math
 import os
+import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -483,9 +484,10 @@ def boulders():
 
 def dressing():
     # the copied trees are the showcase's own: each key names the showcase tree it is, and its recipe
-    # comes whole from the showcase snapshot
-    with open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")) as handle:
-        showcase = json.load(handle)["trees"]
+    # comes whole from the studio's tree library
+    sys.path.insert(0, os.path.join(ROOT, "tools"))
+    from showcase import trees as studio_trees
+    showcase = studio_trees()
     styles = {key: showcase[tree]["style"] for key, tree in {
         "acacia-a": "acacia-1", "acacia-b": "acacia-2", "acacia-c": "acacia-3", "acacia-d": "acacia-4",
         "acacia-e": "acacia-5", "acacia-f": "acacia-6", "acacia-great": "acacia-7",

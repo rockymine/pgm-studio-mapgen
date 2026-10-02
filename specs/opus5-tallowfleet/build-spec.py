@@ -17,6 +17,7 @@ Scale: cell 5. The team unit is authored at -z and rot_180 fans the rest.
 """
 import json
 import os
+import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -374,8 +375,10 @@ TRY_WORKS_SHELL = {
 TRACK = cells([GRAVEL, ANDESITE, COBBLE], 3, 47, rise=0)
 
 # The copied trees are the showcase's own: each key names the showcase tree it is, and its
-# recipe comes whole from the showcase snapshot.
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+# recipe comes whole from the studio's tree library.
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 TREE_KEYS = {"willow-a": "willow-2", "birch-a": "birch-2",
              "oak-a": "tiny-oak-3", "olive-a": "olive-2"}
 

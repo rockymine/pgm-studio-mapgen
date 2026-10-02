@@ -9,7 +9,7 @@ retaining wall striped diagonally in the town's own colour, with two flights cut
 The two sides are joined by a build zone over void, and in the middle of it the stump of the old
 bridge — an island that is nobody's and halves both hops.
 """
-import json, os
+import json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -225,7 +225,9 @@ plot_low = burgage_style([SHOP, SOLAR], BRICK)                # two: the rest of
 gatehouse = burgage_style([SHOP, SOLAR], DARKOAK)
 
 # ── what stands on it ────────────────────────────────────────────────────────────────────────────
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 tree_styles = {key: SHOWCASE[name]["style"] for key, name in {
     "holt-1": "olive-1", "holt-2": "olive-2", "holt-4": "olive-4",
     "birch-3": "birch-3", "birch-7": "birch-7"}.items()}

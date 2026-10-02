@@ -17,7 +17,7 @@ about the whole stack, and the moor over it would fill what the storey below cal
 bands are clipped out of the moor's OWN drawn outline, so nothing of the storey below stands out past
 the coast as a ledge over the void.
 """
-import json, os
+import json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -343,7 +343,9 @@ relief = {
 # Three placement ideas and no more: the edge's own broken rock along the crest, a holt of birch in
 # the shelter of the slack, and one way underfoot from the door to the Stone and on to the nick.
 # Nothing is scattered: every one of them answers "why here".
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 tree_styles = {key: SHOWCASE[name]["style"] for key, name in {
     "birch-2": "birch-2", "birch-5": "birch-5", "birch-9": "birch-9",
     "holt-3": "olive-3", "holt-5": "olive-5"}.items()}

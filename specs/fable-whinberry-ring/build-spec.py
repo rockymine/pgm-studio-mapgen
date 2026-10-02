@@ -3,7 +3,7 @@ beside this file is the board as the composer emitted it). The composer's arrang
 a hole in it, a spawn behind, two flank wools. What is added is what the composer does not do: three
 levels of ground, a twin frontline with a bay between its prongs, a stepping stone on the axis, a defence
 wall on each wool approach, and an outline reshaped so the pieces read as heath rather than as tiles."""
-import json, os, copy
+import json, os, sys, copy
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "fable-whinberry-ring"
@@ -119,7 +119,9 @@ CAGE = shell([GROUND, LOFT, UPPER], beams=True)
 CAGE["doorway"]["door"] = "stainedGlassPane"
 
 ERRATIC = {"kind": "noise", "seed": 51, "scale": 3, "octaves": 1, "stops": [STONE, COBBLE, ANDESITE], "rise": 2}
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 def oak(pid, x, z, style, seed):
     return {"id": pid, "kind": "tree", "seed": seed, "layer": "ground", "x": x, "z": z, "style": style}
 def boulder(pid, x, z, form, size, seed):

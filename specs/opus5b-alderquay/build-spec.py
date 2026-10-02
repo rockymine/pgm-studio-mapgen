@@ -300,8 +300,9 @@ quay_deck = kit.AddedLayer(
 
 # ---------------------------------------------------------------- the dressing
 
-# The copied trees, each the showcase tree it names, as corpus/tree-showcase/trees.json carries it.
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+# The copied trees, each the showcase tree it names, as the studio's tree library carries it.
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 
 PAVE = cells(7162, 3, 0, [GRAVEL, WORN, COBBLE])
 

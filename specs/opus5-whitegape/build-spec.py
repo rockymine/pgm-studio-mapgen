@@ -467,7 +467,8 @@ SHELL["storeys"] = [
 WORKS_SHELL = json.loads(json.dumps(SHELL))
 
 # ── dressing ──────────────────────────────────────────────────────────────────────────────────────
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 SCRUB = ["fir-small-1", "fir-small-2", "fir-small-3", "fir-small-4", "fir-small-5"]
 SHELTER = ["oak-dense-1", "oak-dense-4"]
 

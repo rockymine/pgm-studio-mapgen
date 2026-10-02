@@ -14,7 +14,7 @@ The plan is two pieces and a build zone. Everything that is a shape of ground is
 what the ground is finished with is decided by its ANGLE — one `layered` stack on the slope axis —
 rather than by which piece it is on.
 """
-import json, os
+import json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -277,7 +277,9 @@ laithe = barn_style([dict(BYRE_STOREY, clear=4)])
 # the vanilla stamp. Row 13 of the tree showcase is the birch row: a key names the showcase tree it
 # is, and its recipe is read whole from the showcase snapshot.
 BIRCHES = ["tree-showcase-r13-%d" % n for n in (1, 3, 5, 7, 9)]
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 TREES = {key: SHOWCASE[tree]["style"] for key, tree in {
     "tree-showcase-r13-1": "birch-1", "tree-showcase-r13-3": "birch-3",
     "tree-showcase-r13-5": "birch-5", "tree-showcase-r13-7": "birch-7",
