@@ -1,0 +1,97 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Pippin Coomb",
+  "authors": [
+   "Claude Sonnet 5.5"
+  ]
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "mirror_z",
+  "maxPlayers": 10,
+  "surface": 34
+ },
+ "pieces": [
+  {
+   "id": "down-w",
+   "rect": [
+    -11,
+    -28,
+    8,
+    7
+   ]
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -3,
+    -28,
+    5,
+    7
+   ]
+  },
+  {
+   "id": "down-e",
+   "rect": [
+    2,
+    -28,
+    9,
+    7
+   ]
+  },
+  {
+   "id": "farm",
+   "rect": [
+    -11,
+    -21,
+    22,
+    18
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "bridge",
+   "rect": [
+    -11,
+    -4,
+    22,
+    8
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-0",
+    "piece": "spawn",
+    "at": [
+     10,
+     10
+    ],
+    "facing": "back",
+    "footprint": [
+     1,
+     1,
+     18,
+     18
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "monument",
+    "piece": "farm",
+    "at": [
+     52,
+     26
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4
+   }
+  ]
+ }
+}
