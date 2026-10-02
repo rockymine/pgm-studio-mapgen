@@ -1,11 +1,12 @@
 """What a chunk is built from: its ground, its made blocks and its dressing, all in chunk-local coordinates.
 
-A chunk is a 16 x 16 column whose terrain tops out at world y `BASE - 1`, so local y 0 is the first course a
-build stands on and local y 31 the last. Negative local y is underground. x runs east and z south, 0..15.
+A chunk is a `size` x `size` column (16 for one chunk, 32 for a plot of four) whose terrain tops out at world y
+`BASE - 1`, so local y 0 is the first course a build stands on and local y 31 the last. Negative local y is
+underground. x runs east and z south, from 0 to `size - 1`.
 
-* **Ground** is sketch shapes on the board's ground layer: the chunk's own block, raised parts (`raise_`), lowered
-  parts (`lower`, an override so it cuts under the chunk's top) and, for a cave or a tunnel, a roof on the
-  `upper` layer floating over a void.
+* **Ground** is sketch shapes on the board's ground layer: the chunk's own block, raised parts (`raise_`, `mound`,
+  `hill`, `raise_poly`), lowered parts (`lower`, `basin`, `lower_poly` — overrides, so they cut under the chunk's
+  top) and, for a cave or a tunnel, a roof on the `upper` layer floating over a void.
 * **Blocks** are made blocks, `(id, data)` per cell, compiled into `made` layers. A block inside the ground wins
   its cell, which is how a vault is lined or an ore shows on a cut face.
 * **Dressing** is the studio's own trees, boulders, ground cover and water, which seat on the ground.
@@ -88,12 +89,14 @@ THEMES = {
 
 
 class Chunk:
-    def __init__(self, name, title, theme_name, blurb=""):
+    def __init__(self, name, title, theme_name, blurb="", size=16):
+        self.size = size
         self.name = name
         self.title = title
         self.theme = theme_name
         self.blurb = blurb
         self.ground = []        # (cells, height, theme, override) — height is local, surface at BASE + h - 1
+        self.shapes = []        # round and polygonal ground, as {kind, h, theme, override, ...}
         self.upper = []         # (cells, floor, top, theme) — local y
         self.blocks = {}
         self.trees = []         # (x, z, style)
@@ -108,6 +111,31 @@ class Chunk:
     def lower(self, x0, z0, x1, z1, h, theme=None):
         """Ground cut down to local height h (h <= 0), whatever stands over it."""
         self.ground.append(((x0, z0, x1, z1), h, theme or self.theme, True))
+
+    def mound(self, cx, cz, r, h, theme=None):
+        """A round rise of radius r about the cell (cx, cz), its top course at local h - 1."""
+        self.shapes.append({"kind": "circle", "cx": cx, "cz": cz, "r": r, "h": h, "theme": theme,
+                            "override": False})
+
+    def hill(self, cx, cz, r, h, theme=None, squash=1.0):
+        """A terraced hill: one ring a course, narrowing from radius r at the foot to about a third of it at the
+        top. `squash` below 1 steepens it."""
+        for course in range(1, h + 1):
+            radius = r * (1 - (course - 1) / h * 0.7 / squash)
+            if radius >= 0.8:
+                self.mound(cx, cz, radius, course, theme)
+
+    def basin(self, cx, cz, r, h, theme=None):
+        """A round hollow cut down to local height h (h <= 0)."""
+        self.shapes.append({"kind": "circle", "cx": cx, "cz": cz, "r": r, "h": h, "theme": theme,
+                            "override": True})
+
+    def raise_poly(self, points, h, theme=None):
+        """Ground inside a polygon of corner points raised to local height h."""
+        self.shapes.append({"kind": "polygon", "points": points, "h": h, "theme": theme, "override": False})
+
+    def lower_poly(self, points, h, theme=None):
+        self.shapes.append({"kind": "polygon", "points": points, "h": h, "theme": theme, "override": True})
 
     def roof(self, x0, z0, x1, z1, floor, top, theme=None):
         """Ground floating over a void from local `floor` up to `top` — a cave's or a tunnel's roof."""

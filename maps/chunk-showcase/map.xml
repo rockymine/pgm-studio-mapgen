@@ -62,9 +62,9 @@
         <team id="only-visitors">visitors-team</team>
     </filters>
     <regions>
-        <point id="visitors-spawn-point">0,24,64</point>
-        <point id="observer-spawn">0,55,74</point>
-        <rectangle id="visitors-spawn" min="-8,56" max="8,72"/>
+        <point id="visitors-spawn-point">8,24,56</point>
+        <point id="observer-spawn">8,55,66</point>
+        <rectangle id="visitors-spawn" min="0,48" max="16,64"/>
         <union id="spawns">
             <region id="visitors-spawn"/>
         </union>
