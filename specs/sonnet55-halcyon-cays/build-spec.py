@@ -237,7 +237,7 @@ PATCHES = (
 
 # The resort terrace: made ground at its own height, out of the relief, with a pool sunk into it.
 TERRACE = [[-40, -77], [-3, -77], [-3, -70], [-1.5, -64], [-3, -57], [-10, -52.5], [-22, -51.5], [-33, -52], [-40, -55]]
-POOL = [[-29, -63], [-20, -63], [-20, -55], [-29, -55]]
+POOL = [[-28, -63], [-19, -63], [-19, -55], [-28, -55]]
 
 
 def flight(shape_id, corners, low, high):
@@ -377,13 +377,101 @@ def jetty(name, centreline, width, deck_y=11, stilt_every=4, thickness=1):
     return walk
 
 
+# --------------------------------------------------------------------------------------------------------------
+# The hotel, in layers: one made thing (`part_of` halcyon-hotel) on the resort terrace, built on a four-block bay
+# and a five-course storey. The facade is paint -- a wallRun of pier and bay, the bay a height stack pinned to
+# world Y -- so one mass is one layer; slabs share a layer per height; a door is a sill and a lintel.
+# --------------------------------------------------------------------------------------------------------------
+BASE = 14           # the first course above the terrace's top block (y13)
+BAY, STOREY = 4, 5
+PIER = solid(155, 2)                                        # quartz pillar
+QUARTZ_BLOCK = solid(155, 0)
+GLASS = solid(95, 9)                                        # cyan stained glass
+CORNICE = solid(35, 9)                                      # cyan wool: the accent, on the cornice and the roofs
+
+
+def storey_bands(storeys):
+    bands = []
+    for _ in range(storeys):
+        bands += [(QUARTZ_BLOCK, 2), (GLASS, 2), (QUARTZ_BLOCK, 1)]
+    return bands
+
+
+def height_stack(*bands, start=BASE):
+    return kit.LayeredMaterial(axis="height", from_=start, stack=kit.BandStack(
+        bands=[kit.Band(material=m, thickness=t) for m, t in bands], ending="repeat"))
+
+
+BAY_STACK = height_stack(*storey_bands(3), (CORNICE, 2))
+FACADE = kit.WallRunMaterial(runs=[{"material": PIER, "width": 1}, {"material": BAY_STACK, "width": BAY - 1}])
+LINTEL = BAY_STACK
+FLOOR_DECK = cells([solid(5, 3), solid(5, 3), solid(5, 4), solid(5, 3)], size=2, seed=91, rise=2)
+SLAB = cells([solid(155, 0), solid(155, 0), solid(155, 1), solid(155, 0)], size=2, seed=92, rise=2)
+
+
+def hotel_mass(hotel, key, x0, z0, bays_x, bays_z, storeys, floor=0, parapet=2, roofed=True):
+    """Walls as one facade-painted rectangle, the interior hollowed by a one-course override floor, and a slab a
+    storey on the layer every mass shares at that height. A mass standing on another's storey states `floor`."""
+    x1, z1 = x0 + bays_x * BAY, z0 + bays_z * BAY
+    hotel.rect(key, f"{key}-walls", x0, z0, x1, z1, BASE + floor, storeys * STOREY + parapet, FACADE)
+    low = BASE - 1 if floor == 0 else BASE + floor
+    hotel.put(key, f"{key}-floor", kit.SketchShape(
+        type="rectangle", operation="add", override=True, min_x=x0 + 1, min_z=z0 + 1, max_x=x1, max_z=z1,
+        floor=low, base_height=1, material=FLOOR_DECK))
+    for i in range(1, storeys + 1):
+        if i == storeys and not roofed:
+            continue
+        hotel.rect(f"slab-{floor // STOREY + i}", f"{key}-slab-{i}", x0 + 1, z0 + 1, x1 - 1, z1 - 1,
+                   BASE + floor + STOREY * i, 1, SLAB)
+    return x1, z1
+
+
+def hotel_door(hotel, layer, x0, z0, x1, z1, top, name):
+    """A sill on the wall's own layer and a lintel on the layer every lintel shares, in a bay."""
+    hotel.put(layer, f"{name}-sill", kit.SketchShape(
+        type="rectangle", operation="add", override=True, min_x=x0, min_z=z0, max_x=x1 + 1, max_z=z1 + 1,
+        floor=BASE - 1, base_height=1, material=FLOOR_DECK))
+    hotel.rect("lintels", f"{name}-lintel", x0, z0, x1, z1, BASE + 4, top - 4, LINTEL)
+
+
+def hotel_complex():
+    hotel = Made("halcyon-hotel")
+    # the open ground storey: a walled glass lobby under the main block, an arcade of quartz piers round it
+    hotel_mass(hotel, "lobby", -34, -73, 5, 1, 1, parapet=0, roofed=False)
+    for i, x in enumerate(range(-38, -9, BAY)):
+        for tag, z in (("south", -66), ("north", -74)):
+            hotel.rect("piers", f"pier-{tag}-{i}", x, z, x, z, BASE, STOREY, PIER)
+    hotel_door(hotel, "lobby", -29, -69, -27, -69, 5, "lobby-west")
+    hotel_door(hotel, "lobby", -21, -69, -19, -69, 5, "lobby-east")
+    # the main block: three storeys in all, two above the arcade; the wings step down to two
+    hotel_mass(hotel, "main", -38, -74, 7, 2, 2, floor=STOREY)
+    hotel_mass(hotel, "wings", -38, -65, 2, 2, 2)
+    hotel_mass(hotel, "wings", -18, -65, 2, 2, 2)
+    hotel_door(hotel, "wings", -30, -64, -30, -62, 12, "wing-west")
+    hotel_door(hotel, "wings", -18, -64, -18, -62, 12, "wing-east")
+    # balconies on the courtyard face of the main block, one level each, railed
+    for level, course in enumerate((STOREY, 2 * STOREY), start=1):
+        hotel.rect(f"balcony-{level}", "slab", -29, -65, -19, -64, BASE + course, 1, FLOOR_DECK)
+        hotel.rect(f"rail-{level}", "front", -29, -64, -19, -64, BASE + course + 1, 1, solid(190, 0))
+        hotel.rect(f"rail-{level}", "west", -29, -65, -29, -65, BASE + course + 1, 1, solid(190, 0))
+        hotel.rect(f"rail-{level}", "east", -19, -65, -19, -65, BASE + course + 1, 1, solid(190, 0))
+    # roof terraces on the wings: loungers and a striped shade
+    for tag, x in (("west", -37), ("east", -17)):
+        for i in range(3):
+            hotel.rect("roof-loungers", f"{tag}-{i}", x + 2 * i, -63, x + 2 * i, -60,
+                       BASE + 2 * STOREY + 1, 1, solid(35, 0))
+        hotel.rect("roof-poles", f"{tag}-pole", x + 1, -58, x + 1, -58, BASE + 2 * STOREY + 1, 3, solid(190, 0))
+        hotel.rect("roof-canopy", f"{tag}-canopy", x, -59, x + 2, -57, BASE + 2 * STOREY + 4, 1, STRIPED_CANOPY)
+    return hotel
+
+
 def pool_furniture():
-    """Loungers and umbrellas on the pool deck, south and east of the water."""
+    """Loungers and umbrellas on the pool deck, south of the water and on the courtyard banks."""
     deck = Made("pool-deck")
-    for i, x in enumerate([-14, -12, -10, -8, -6]):
-        deck.rect("loungers", f"bed-{i}", x, -57, x, -54, 14, 1, solid(35, 0))
-        deck.rect("backrests", f"back-{i}", x, -57, x, -57, 15, 1, solid(35, 0))
-    for i, (x, z) in enumerate([(-24, -52), (-31, -54), (-8, -62)]):
+    for i, x in enumerate([-27, -25, -23, -21]):
+        deck.rect("loungers", f"bed-{i}", x, -54, x, -52, 14, 1, solid(35, 0))
+        deck.rect("backrests", f"back-{i}", x, -54, x, -54, 15, 1, solid(35, 0))
+    for i, (x, z) in enumerate([(-31, -59), (-16, -59), (-12, -53)]):
         deck.rect("poles", f"pole-{i}", x, z, x, z, 14, 4, solid(190, 0))
         deck.rect("canopies", f"canopy-{i}", x - 1, z - 1, x + 1, z + 1, 18, 1, STRIPED_CANOPY)
     return deck
@@ -401,7 +489,7 @@ def cabanas():
 
 def made_layers():
     layers = []
-    for thing in (beach_bar(), lifeguard_tower(9, -36), pool_furniture(), cabanas(),
+    for thing in (hotel_complex(), beach_bar(), lifeguard_tower(9, -36), pool_furniture(), cabanas(),
                   jetty("palm-walk", [[13, -70], [19, -71.5], [26, -70.5]], 3),
                   jetty("sunset-pier", [[-14, -46], [-15, -40], [-15, -34]], 3)):
         layers.extend(thing.build())
@@ -449,24 +537,6 @@ def fork(base_name, **parts):
     return {"library": base_name, "kind": "house", "shell": parts}, full
 
 
-def hotel_parts():
-    plate = {"stack": {"bands": [{"material": TEAK_FLOOR, "thickness": 1}], "ending": "repeat"}, "extent": 1}
-    roof = {"form": "hip", "pitch": 1, "slab": -1, "slabData": 0, "overhang": 1, "ridgeCap": True, "hole": False,
-            "body": TURQUOISE_WOOL, "verge": TEAK_PLANK, "gable": QUARTZ,
-            "gableWindows": window("none", 102, 2, 2, 2, 3)}
-    glass = window("pane", 102)
-    deck = TEAK_FLOOR
-    return dict(
-        foundation={"plate": plate, "surface": PLAIN_FLOOR, "footing": None},
-        roof=roof, wall=wall_of(QUARTZ, 5), post=TEAK_LOG, windows=glass,
-        storeys=[storey(4, wall_of(QUARTZ, 4), TEAK_LOG, glass, None),
-                 storey(4, wall_of(QUARTZ, 4), TEAK_LOG, glass, deck),
-                 storey(4, wall_of(QUARTZ, 4), TEAK_LOG, glass, deck)],
-        beams={"block": -1, "data": 0, "reach": 1, "any": False},
-        doorway={"door": "air", "head": {"form": "arched", "block": 156, "fill": "upperSlab", "fillBlock": 44,
-                                         "fillData": 7}, "width": 3, "height": 4})
-
-
 def bungalow_parts():
     base = library_style("jungle-trimmed-stilt-house")
     thatch = dict(base["roof"], body=solid(170, 0), verge=TEAK_PLANK, gable=solid(5, 4), ridgeCap=False)
@@ -493,11 +563,9 @@ def pavilion_parts():
                                                  "fillData": 7}, "width": 3, "height": 4})
 
 
-HOTEL = "cyan-wool-roofed-three-storey-quartz-villa"
 BUNGALOW = "thatched-jungle-plank-stilt-bungalow"
 PAVILION = "cyan-wool-roofed-quartz-pavilion"
-FORKS = {HOTEL: ("cyan-roofed-white-clay-house", hotel_parts),
-         BUNGALOW: ("jungle-trimmed-stilt-house", bungalow_parts),
+FORKS = {BUNGALOW: ("jungle-trimmed-stilt-house", bungalow_parts),
          PAVILION: ("cyan-roofed-white-clay-house", pavilion_parts)}
 
 
@@ -545,10 +613,6 @@ def dressing():
                       radius=1, depth=1, shore=0, bank=cells(SAND, size=3, seed=31)),
         kit.FluidProp(id="pool-water", layer="ground", shape="basin", points=POOL, level=12, radius=1, depth=1,
                       shore=0, bank=TILE),
-        house("villa-west", HOTEL, [([[-38, -74], [-27, -67]], {"ridge": "alongX"}),
-                                    ([[-38, -66], [-31, -59]], {"ridge": "alongZ", "storeysHigh": 2})], seed=3),
-        house("villa-east", HOTEL, [([[-21, -74], [-10, -67]], {"ridge": "alongX"}),
-                                    ([[-17, -66], [-10, -59]], {"ridge": "alongZ", "storeysHigh": 2})], seed=4),
         house("bungalow-a", BUNGALOW, [([[28, -75], [34, -70]], {})], seed=5),
         house("bungalow-b", BUNGALOW, [([[40, -75], [46, -70]], {})], seed=6),
         tree("palm-1", "jungle-slim", 30, -63),

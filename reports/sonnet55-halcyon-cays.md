@@ -40,8 +40,7 @@
 | **Stair flight** | A 6-wide ramp from beach to terrace | One polygon, `height_mode: level`, `anchor_heights` 12/14, `skirt` 0 | x −26…−20, z −52…−47 | Where the terrace face opens |
 | **The pool** | A 10 × 8 courtyard pool, two blocks deep | A `sink` shape of 3 in prismarine tile, a `basin` at level 12 | x −29…−20, z −63…−55, floor y10, water y11–12 | Between the two hotel wings, where the loungers face it |
 | **Pool-deck furniture** | Five loungers and three striped umbrellas | Made things `pool-deck`, 4 layers, 5 beds, 3 poles and canopies | beds x −14…−6, z −57…−54, y14–15; canopies y18 | Human scale on the deck |
-| **Villa West** | A 3-storey hotel block with a 2-storey wing, 168 blocks | House prop of `cyan-wool-roofed-three-storey-quartz-villa` | main x −38…−27, z −74…−67; wing x −38…−31, z −66…−59 | The hotel's west half, behind the terrace |
-| **Villa East** | A 3-storey block with a 2-storey wing, 160 blocks | The same style and a different plan | main x −21…−10, z −74…−67; wing x −17…−10, z −66…−59 | The east half; the two make one U round the pool |
+| **The Halcyon Hotel** | One made thing: a 3-storey block on an open arcade, a glass lobby, two 2-storey wings, balconies, roof terraces | 15 `made` layers of one `part_of`, a wallRun facade, shared slab layers; see *The hotel, in layers* | x −38…−10, z −74…−57, y14–30 | The resort, stepped down toward the water; ground floor open to the terrace |
 | **Bungalows** | Two thatched stilt cabins | House props of `thatched-jungle-plank-stilt-bungalow` | (28…34, −75…−70) and (40…46, −75…−70) | The beach-cabana idea, on the palm cay |
 | **Spawn pavilions** | A 16 × 16 hip-roofed pavilion for each team | `roomStyles.spawn` of `cyan-wool-roofed-quartz-pavilion` | footprint x −8…8, z −103…−87 | The team's lobby, in the resort's own materials |
 | **Driftwood Bar** | An open thatched pavilion with a counter and eight stools | Made thing, 7 layers, 3 thatch tiers at y17–19, 8 jungle-log posts, `mirrors: false` | x −7…7, z −5…4, deck y12, counter y13–14 | The neutral structure on the axis, the spit running through it |
@@ -57,17 +56,51 @@
 
 **The three crossings differ in what they cost.** The spit is dry and fast and 8 wide, the reef ford is two blocks of wading under the Needle, and the islet hop crosses swim gaps of deeper water. All three meet in the Driftwood Bar's cay, so the contested middle is a structure.
 
+## The hotel, in layers
+
+**The hotel is one made thing, `halcyon-hotel`, of 15 layers and 56 shapes, standing on the resort terrace with no `seat`.** Its footprint is x −38…−10, z −74…−57, the stepped mass rising from the arcade at y14 to a parapet at y30, and team 1 gets its image at z′ = −z−1 because the group keeps `mirrors: true`. The terrace top is y13, so every wall starts at y14; `seat: "ground"` is unused because the facade stack is pinned to world Y and a seat would move its bands off the datum.
+
+**It follows one module: a four-block bay and a five-course storey.** A side of 4n+1 cells puts a quartz-pillar pier on each corner, the facade is a `wallRun` of pier and bay stated as a shape's `material`, and the bay is a `height` stack pinned to y14 (quartz 2, cyan stained glass 2, quartz 1, three storeys, then a two-course cyan-wool cornice). One mass is therefore one layer, and the window bands cost no layer.
+
+**Slabs and doors are shared across masses.** Slabs share one layer per height, a door is a sill override on the mass's layer plus a lintel on the shared one, and the interior is hollow because a one-course override floor sits inside each wall rectangle.
+
+| Layer | What it is | Base y (courses) | Shapes |
+|---|---|---|---|
+| `halcyon-hotel-lobby` | The glass lobby, set back under the main block | y14–18; floor y13 | 4: walls x −34…−14, z −73…−69; floor override; two door sills at x −29…−27 and −21…−19, z −69 |
+| `halcyon-hotel-piers` | The arcade of quartz pillars round the lobby | y14–18 | 16, one every 4 blocks along z −74 and z −66, x −38…−10 |
+| `halcyon-hotel-lintels` | The wall left over four doors | y18 (the wing lintels to y25) | 4: the two lobby doors, and the two wing doors at x −30 and x −18, z −64…−62 |
+| `halcyon-hotel-main` | The main block, two storeys on the arcade | y19–30; floor y19 | 2: walls x −38…−10, z −74…−66; floor override |
+| `halcyon-hotel-wings` | Two 2-storey wings that step down toward the pool | y14–25; floors y13 | 6: walls x −38…−30 and x −18…−10, z −65…−57; two floors; two door sills at x −30 and x −18 |
+| `halcyon-hotel-slab-1` | The wings' first-floor slabs | y19 | 2 |
+| `halcyon-hotel-slab-2` | The main block's middle slab and both wing roofs | y24 | 3 |
+| `halcyon-hotel-slab-3` | The main block's roof terrace | y29 | 1 |
+| `halcyon-hotel-balcony-1` and `-2` | A 2-deep balcony on the courtyard face, x −29…−19, z −65…−64 | y19 and y24 | 1 each |
+| `halcyon-hotel-rail-1` and `-2` | Jungle-fence rails on those balconies | y20 and y25 | 3 each |
+| `halcyon-hotel-roof-loungers` | Six white-wool loungers on the wing roofs | y25 | 6 |
+| `halcyon-hotel-roof-poles` and `-canopy` | A striped shade on each wing roof | poles y25–27, canopy y28 | 2 each |
+
+**It reads as a resort hotel from the lagoon.** The isometric shows a white block with turquoise window bands and a cyan cornice, two lower wings, balconies over the courtyard and an open pillared ground floor. `render/eye` from the beach shows the pool between the wings with the lobby doors behind it.
+
+**The ground floor is walkable and the routes are unchanged.** The x-ray reads one open void of 1 535 cells at x −38…−10, y14–18, z −74…−58, which is the arcade, the lobby and both wing ground floors through their doors. Pre-flight still says `export gate OPEN`, and no `OB19`, `DR-PASS` or spawn finding names the hotel, because a made thing is not a prop.
+
+**What the layer system could not express.**
+
+- **The upper storeys are sealed.** The x-ray lists 11 sealed voids, among them the main block's second and third storeys and both wings' second storeys, because a stair is not a made shape and nothing joins one floor to the next.
+- **A facade is the same on every face.** The `wallRun` paints the whole perimeter alike, so an open south side on the ground storey needed a separate lobby and a pier arcade.
+- **A roof is a slab.** There is no pitched or hip roof as a hollow made shape, so the hotel is flat-roofed with a parapet and a cornice.
+- **Height is pinned.** The facade datum is world Y, so the hotel cannot be seated onto a grade, and the build ceiling at y30 caps the main block at three storeys.
+- **A shape's `material` applies to every bucket**, so each paving cell needed `size` 2 and a `rise` to pass `PT3` and `PT4`.
+
 ## The new house styles
 
-**Three styles were forked from library rows and stated as snapshots, named for what they are.** Each is stated as `{"library": <base>, "kind": "house", "shell": <the changed parts>}` in `dressing.styles`, and none was saved to the shared library.
+**Two styles were forked from library rows and stated as snapshots, named for what they are; the hotel is not a house style.** Each is stated as `{"library": <base>, "kind": "house", "shell": <the changed parts>}` in `dressing.styles`, and none was saved to the shared library.
 
 | Name | Forks | What changed |
 |---|---|---|
-| `cyan-wool-roofed-three-storey-quartz-villa` | `cyan-roofed-white-clay-house` | A hip roof of cyan wool with a jungle-plank verge; quartz walls; jungle-log posts; three storeys with plank decks; a jungle-and-acacia plank floor; a quartz-stair arched door |
 | `thatched-jungle-plank-stilt-bungalow` | `jungle-trimmed-stilt-house` | A hay thatch roof; jungle-plank walls; jungle-log posts, beams and laid course; a jungle-stair lattice window; open stilts below |
-| `cyan-wool-roofed-quartz-pavilion` | `cyan-roofed-white-clay-house` | One storey, a 2-block overhang, the villa's roof and walls, no storey list |
+| `cyan-wool-roofed-quartz-pavilion` | `cyan-roofed-white-clay-house` | One storey, a 2-block overhang, the earlier villa's roof and walls, no storey list |
 
-**Each was looked at in section before the world was built.** `POST /room-styles/preview-snapshot?format=png&view=section` showed three storeys with windows on the upper two and an arched door below, a thatched upper room over open stilts, and a single storey under a stepped hip. No finding named any of them: I saw no `HS` complaint on the store or the export.
+**Each was looked at in section before the world was built.** `POST /room-styles/preview-snapshot?format=png&view=section` showed a thatched upper room over open stilts and a single storey under a stepped hip. A first hotel was also a style, `cyan-wool-roofed-three-storey-quartz-villa` placed twice, and the author had it rebuilt in layers. No finding named any of them: I saw no `HS` complaint on the store or the export.
 
 ## The kit
 
@@ -75,7 +108,7 @@
 
 **`roomStyles.spawn` does not honour that fork wrapper, and nothing says so.** I stated the wrapper there and the spawn halls came out in the base library style, cyan clay over pink-white clay, with a 200 and no finding. Stating the full merged style fixed it, which is why `house_styles()` returns both forms.
 
-**`POST /terrain/prop-preview` cannot preview a house whose style is a name or a snapshot I state.** It answered `DR-DOC` for a name and an empty plan for an inline style, so a multi-wing building is looked at on the board with `render/eye` and `render/section`. Its `HP3` cap of 192 blocks, counted over corners inclusive, is what made the hotel two placements.
+**`POST /terrain/prop-preview` cannot preview a house whose style is a name or a snapshot I state.** It answered `DR-DOC` for a name and an empty plan for an inline style, so a multi-wing building is looked at on the board with `render/eye` and `render/section`. Its `HP3` cap of 192 blocks, counted over corners inclusive, is what forced the first hotel into two placements.
 
 **A shape's `material` is held to the theme rules in every bucket.** A `cell` of size 1 answered `PT3`, and one with no `rise` answered `PT4` once for each of rim, surface and fill, about thirty refusals in one dry run. The fix was `size=2, rise=2`.
 
@@ -93,7 +126,7 @@
 
 **A placed tree needs soil, and a lagoon basin claims the shore.** The tree seat mask refused 3 304 cells to `DR-ROOT`, which are sand, and a basin with a default shore claimed the land round it, so my first 12 props were declined `DR-CLAIM` by the lagoon until `shore: 0`. I also lost two trees and two bungalows to the palm cay's size, then enlarged the cay.
 
-**`OB19` named my hotel the day after `DR-PASS` named its north side.** Moving the villas 4 blocks south fixed `DR-PASS`, which raised `OB19` on the monument's ten-block clearance, so the monument moved to (8, −53). Both gates are right; the order I found them in cost five stores.
+**`OB19` named the first hotel the day after `DR-PASS` named its north side.** Moving the villas 4 blocks south fixed `DR-PASS`, which raised `OB19` on the monument's ten-block clearance, so the monument moved to (8, −53). Both gates are right; the order I found them in cost five stores. The layered hotel is outside both gates, which read props.
 
 **Two `DR-PASS` complaints stand on the bungalows.** The palm cay is 26 blocks wide and the two cabins sit 4 apart, so the group has less than 8 blocks of ground on one side; the export carries `Pgm-Warnings: 2 DR-PASS`. The report counts them as "declined 2", but both buildings are in the world.
 
@@ -117,7 +150,7 @@
 
 ## The instrument count
 
-**One relief with 14 marks and one push, 22 ground shapes, 22 made layers holding 65 shapes, three themes and three house styles.** The zeros are copied trees and `polyline` shapes; the dressing is two flora lawns, two villas, two bungalows, three paths and four palms from the library's `jungle-2` and `jungle-5` recipes.
+**One relief with 14 marks and one push, 22 ground shapes, 37 made layers holding 119 shapes, three themes and two house styles.** The zeros are copied trees and `polyline` shapes; the dressing is two flora lawns, two bungalows, three paths and four palms from the library's `jungle-2` and `jungle-5` recipes.
 
 ## Timings, on the deployed studio
 

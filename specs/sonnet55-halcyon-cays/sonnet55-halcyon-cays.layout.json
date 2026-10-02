@@ -1974,19 +1974,19 @@
       "keepClear": true,
       "vertices": [
        [
-        -29,
+        -28,
         -63
        ],
        [
-        -20,
+        -19,
         -63
        ],
        [
-        -20,
+        -19,
         -55
        ],
        [
-        -29,
+        -28,
         -55
        ]
       ],
@@ -2117,6 +2117,2440 @@
        "resort-terrace",
        "pool",
        "stair-beach"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "halcyon-hotel-lobby",
+   "name": "halcyon-hotel-lobby",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "halcyon-hotel",
+   "layout": {
+    "shapes": [
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -34,
+      "min_z": -73,
+      "max_x": -13,
+      "max_z": -68,
+      "base_height": 5,
+      "floor": 14,
+      "material": {
+       "kind": "wallRun",
+       "runs": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 155,
+          "data": 2
+         },
+         "width": 1
+        },
+        {
+         "material": {
+          "kind": "layered",
+          "stack": {
+           "bands": [
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 95,
+              "data": 9
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 1
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 95,
+              "data": 9
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 1
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 95,
+              "data": 9
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 1
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 35,
+              "data": 9
+             },
+             "thickness": 2
+            }
+           ],
+           "ending": "repeat"
+          },
+          "axis": "height",
+          "from": 14
+         },
+         "width": 3
+        }
+       ]
+      },
+      "id": "halcyon-hotel-lobby-lobby-walls"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "min_x": -33,
+      "min_z": -72,
+      "max_x": -14,
+      "max_z": -69,
+      "base_height": 1,
+      "floor": 13,
+      "material": {
+       "kind": "cell",
+       "seed": 91,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 4
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-lobby-lobby-floor"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "min_x": -29,
+      "min_z": -69,
+      "max_x": -26,
+      "max_z": -68,
+      "base_height": 1,
+      "floor": 13,
+      "material": {
+       "kind": "cell",
+       "seed": 91,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 4
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-lobby-lobby-west-sill"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "min_x": -21,
+      "min_z": -69,
+      "max_x": -18,
+      "max_z": -68,
+      "base_height": 1,
+      "floor": 13,
+      "material": {
+       "kind": "cell",
+       "seed": 91,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 4
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-lobby-lobby-east-sill"
+     }
+    ],
+    "groups": [
+     {
+      "id": "halcyon-hotel-lobby",
+      "name": "halcyon-hotel-lobby",
+      "mirrors": true,
+      "shapeIds": [
+       "halcyon-hotel-lobby-lobby-walls",
+       "halcyon-hotel-lobby-lobby-floor",
+       "halcyon-hotel-lobby-lobby-west-sill",
+       "halcyon-hotel-lobby-lobby-east-sill"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "halcyon-hotel-piers",
+   "name": "halcyon-hotel-piers",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "halcyon-hotel",
+   "layout": {
+    "shapes": [
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -38,
+      "min_z": -66,
+      "max_x": -37,
+      "max_z": -65,
+      "base_height": 5,
+      "floor": 14,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "id": "halcyon-hotel-piers-pier-south-0"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -38,
+      "min_z": -74,
+      "max_x": -37,
+      "max_z": -73,
+      "base_height": 5,
+      "floor": 14,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "id": "halcyon-hotel-piers-pier-north-0"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -34,
+      "min_z": -66,
+      "max_x": -33,
+      "max_z": -65,
+      "base_height": 5,
+      "floor": 14,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "id": "halcyon-hotel-piers-pier-south-1"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -34,
+      "min_z": -74,
+      "max_x": -33,
+      "max_z": -73,
+      "base_height": 5,
+      "floor": 14,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "id": "halcyon-hotel-piers-pier-north-1"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -30,
+      "min_z": -66,
+      "max_x": -29,
+      "max_z": -65,
+      "base_height": 5,
+      "floor": 14,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "id": "halcyon-hotel-piers-pier-south-2"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -30,
+      "min_z": -74,
+      "max_x": -29,
+      "max_z": -73,
+      "base_height": 5,
+      "floor": 14,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "id": "halcyon-hotel-piers-pier-north-2"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -26,
+      "min_z": -66,
+      "max_x": -25,
+      "max_z": -65,
+      "base_height": 5,
+      "floor": 14,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "id": "halcyon-hotel-piers-pier-south-3"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -26,
+      "min_z": -74,
+      "max_x": -25,
+      "max_z": -73,
+      "base_height": 5,
+      "floor": 14,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "id": "halcyon-hotel-piers-pier-north-3"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -22,
+      "min_z": -66,
+      "max_x": -21,
+      "max_z": -65,
+      "base_height": 5,
+      "floor": 14,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "id": "halcyon-hotel-piers-pier-south-4"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -22,
+      "min_z": -74,
+      "max_x": -21,
+      "max_z": -73,
+      "base_height": 5,
+      "floor": 14,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "id": "halcyon-hotel-piers-pier-north-4"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -18,
+      "min_z": -66,
+      "max_x": -17,
+      "max_z": -65,
+      "base_height": 5,
+      "floor": 14,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "id": "halcyon-hotel-piers-pier-south-5"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -18,
+      "min_z": -74,
+      "max_x": -17,
+      "max_z": -73,
+      "base_height": 5,
+      "floor": 14,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "id": "halcyon-hotel-piers-pier-north-5"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -14,
+      "min_z": -66,
+      "max_x": -13,
+      "max_z": -65,
+      "base_height": 5,
+      "floor": 14,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "id": "halcyon-hotel-piers-pier-south-6"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -14,
+      "min_z": -74,
+      "max_x": -13,
+      "max_z": -73,
+      "base_height": 5,
+      "floor": 14,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "id": "halcyon-hotel-piers-pier-north-6"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -10,
+      "min_z": -66,
+      "max_x": -9,
+      "max_z": -65,
+      "base_height": 5,
+      "floor": 14,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "id": "halcyon-hotel-piers-pier-south-7"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -10,
+      "min_z": -74,
+      "max_x": -9,
+      "max_z": -73,
+      "base_height": 5,
+      "floor": 14,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "id": "halcyon-hotel-piers-pier-north-7"
+     }
+    ],
+    "groups": [
+     {
+      "id": "halcyon-hotel-piers",
+      "name": "halcyon-hotel-piers",
+      "mirrors": true,
+      "shapeIds": [
+       "halcyon-hotel-piers-pier-south-0",
+       "halcyon-hotel-piers-pier-north-0",
+       "halcyon-hotel-piers-pier-south-1",
+       "halcyon-hotel-piers-pier-north-1",
+       "halcyon-hotel-piers-pier-south-2",
+       "halcyon-hotel-piers-pier-north-2",
+       "halcyon-hotel-piers-pier-south-3",
+       "halcyon-hotel-piers-pier-north-3",
+       "halcyon-hotel-piers-pier-south-4",
+       "halcyon-hotel-piers-pier-north-4",
+       "halcyon-hotel-piers-pier-south-5",
+       "halcyon-hotel-piers-pier-north-5",
+       "halcyon-hotel-piers-pier-south-6",
+       "halcyon-hotel-piers-pier-north-6",
+       "halcyon-hotel-piers-pier-south-7",
+       "halcyon-hotel-piers-pier-north-7"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "halcyon-hotel-lintels",
+   "name": "halcyon-hotel-lintels",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "halcyon-hotel",
+   "layout": {
+    "shapes": [
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -29,
+      "min_z": -69,
+      "max_x": -26,
+      "max_z": -68,
+      "base_height": 1,
+      "floor": 18,
+      "material": {
+       "kind": "layered",
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 95,
+           "data": 9
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 95,
+           "data": 9
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 95,
+           "data": 9
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 35,
+           "data": 9
+          },
+          "thickness": 2
+         }
+        ],
+        "ending": "repeat"
+       },
+       "axis": "height",
+       "from": 14
+      },
+      "id": "halcyon-hotel-lintels-lobby-west-lintel"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -21,
+      "min_z": -69,
+      "max_x": -18,
+      "max_z": -68,
+      "base_height": 1,
+      "floor": 18,
+      "material": {
+       "kind": "layered",
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 95,
+           "data": 9
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 95,
+           "data": 9
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 95,
+           "data": 9
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 35,
+           "data": 9
+          },
+          "thickness": 2
+         }
+        ],
+        "ending": "repeat"
+       },
+       "axis": "height",
+       "from": 14
+      },
+      "id": "halcyon-hotel-lintels-lobby-east-lintel"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -30,
+      "min_z": -64,
+      "max_x": -29,
+      "max_z": -61,
+      "base_height": 8,
+      "floor": 18,
+      "material": {
+       "kind": "layered",
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 95,
+           "data": 9
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 95,
+           "data": 9
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 95,
+           "data": 9
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 35,
+           "data": 9
+          },
+          "thickness": 2
+         }
+        ],
+        "ending": "repeat"
+       },
+       "axis": "height",
+       "from": 14
+      },
+      "id": "halcyon-hotel-lintels-wing-west-lintel"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -18,
+      "min_z": -64,
+      "max_x": -17,
+      "max_z": -61,
+      "base_height": 8,
+      "floor": 18,
+      "material": {
+       "kind": "layered",
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 95,
+           "data": 9
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 95,
+           "data": 9
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 95,
+           "data": 9
+          },
+          "thickness": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 155,
+           "data": 0
+          },
+          "thickness": 1
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 35,
+           "data": 9
+          },
+          "thickness": 2
+         }
+        ],
+        "ending": "repeat"
+       },
+       "axis": "height",
+       "from": 14
+      },
+      "id": "halcyon-hotel-lintels-wing-east-lintel"
+     }
+    ],
+    "groups": [
+     {
+      "id": "halcyon-hotel-lintels",
+      "name": "halcyon-hotel-lintels",
+      "mirrors": true,
+      "shapeIds": [
+       "halcyon-hotel-lintels-lobby-west-lintel",
+       "halcyon-hotel-lintels-lobby-east-lintel",
+       "halcyon-hotel-lintels-wing-west-lintel",
+       "halcyon-hotel-lintels-wing-east-lintel"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "halcyon-hotel-main",
+   "name": "halcyon-hotel-main",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "halcyon-hotel",
+   "layout": {
+    "shapes": [
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -38,
+      "min_z": -74,
+      "max_x": -9,
+      "max_z": -65,
+      "base_height": 12,
+      "floor": 19,
+      "material": {
+       "kind": "wallRun",
+       "runs": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 155,
+          "data": 2
+         },
+         "width": 1
+        },
+        {
+         "material": {
+          "kind": "layered",
+          "stack": {
+           "bands": [
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 95,
+              "data": 9
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 1
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 95,
+              "data": 9
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 1
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 95,
+              "data": 9
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 1
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 35,
+              "data": 9
+             },
+             "thickness": 2
+            }
+           ],
+           "ending": "repeat"
+          },
+          "axis": "height",
+          "from": 14
+         },
+         "width": 3
+        }
+       ]
+      },
+      "id": "halcyon-hotel-main-main-walls"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "min_x": -37,
+      "min_z": -73,
+      "max_x": -10,
+      "max_z": -66,
+      "base_height": 1,
+      "floor": 19,
+      "material": {
+       "kind": "cell",
+       "seed": 91,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 4
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-main-main-floor"
+     }
+    ],
+    "groups": [
+     {
+      "id": "halcyon-hotel-main",
+      "name": "halcyon-hotel-main",
+      "mirrors": true,
+      "shapeIds": [
+       "halcyon-hotel-main-main-walls",
+       "halcyon-hotel-main-main-floor"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "halcyon-hotel-slab-2",
+   "name": "halcyon-hotel-slab-2",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "halcyon-hotel",
+   "layout": {
+    "shapes": [
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -37,
+      "min_z": -73,
+      "max_x": -10,
+      "max_z": -66,
+      "base_height": 1,
+      "floor": 24,
+      "material": {
+       "kind": "cell",
+       "seed": 92,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-slab-2-main-slab-1"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -37,
+      "min_z": -64,
+      "max_x": -30,
+      "max_z": -57,
+      "base_height": 1,
+      "floor": 24,
+      "material": {
+       "kind": "cell",
+       "seed": 92,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-slab-2-wings-slab-2"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -17,
+      "min_z": -64,
+      "max_x": -10,
+      "max_z": -57,
+      "base_height": 1,
+      "floor": 24,
+      "material": {
+       "kind": "cell",
+       "seed": 92,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-slab-2-wings-slab-2"
+     }
+    ],
+    "groups": [
+     {
+      "id": "halcyon-hotel-slab-2",
+      "name": "halcyon-hotel-slab-2",
+      "mirrors": true,
+      "shapeIds": [
+       "halcyon-hotel-slab-2-main-slab-1",
+       "halcyon-hotel-slab-2-wings-slab-2",
+       "halcyon-hotel-slab-2-wings-slab-2"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "halcyon-hotel-slab-3",
+   "name": "halcyon-hotel-slab-3",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "halcyon-hotel",
+   "layout": {
+    "shapes": [
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -37,
+      "min_z": -73,
+      "max_x": -10,
+      "max_z": -66,
+      "base_height": 1,
+      "floor": 29,
+      "material": {
+       "kind": "cell",
+       "seed": 92,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-slab-3-main-slab-2"
+     }
+    ],
+    "groups": [
+     {
+      "id": "halcyon-hotel-slab-3",
+      "name": "halcyon-hotel-slab-3",
+      "mirrors": true,
+      "shapeIds": [
+       "halcyon-hotel-slab-3-main-slab-2"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "halcyon-hotel-wings",
+   "name": "halcyon-hotel-wings",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "halcyon-hotel",
+   "layout": {
+    "shapes": [
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -38,
+      "min_z": -65,
+      "max_x": -29,
+      "max_z": -56,
+      "base_height": 12,
+      "floor": 14,
+      "material": {
+       "kind": "wallRun",
+       "runs": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 155,
+          "data": 2
+         },
+         "width": 1
+        },
+        {
+         "material": {
+          "kind": "layered",
+          "stack": {
+           "bands": [
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 95,
+              "data": 9
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 1
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 95,
+              "data": 9
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 1
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 95,
+              "data": 9
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 1
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 35,
+              "data": 9
+             },
+             "thickness": 2
+            }
+           ],
+           "ending": "repeat"
+          },
+          "axis": "height",
+          "from": 14
+         },
+         "width": 3
+        }
+       ]
+      },
+      "id": "halcyon-hotel-wings-wings-walls"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "min_x": -37,
+      "min_z": -64,
+      "max_x": -30,
+      "max_z": -57,
+      "base_height": 1,
+      "floor": 13,
+      "material": {
+       "kind": "cell",
+       "seed": 91,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 4
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-wings-wings-floor"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -18,
+      "min_z": -65,
+      "max_x": -9,
+      "max_z": -56,
+      "base_height": 12,
+      "floor": 14,
+      "material": {
+       "kind": "wallRun",
+       "runs": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 155,
+          "data": 2
+         },
+         "width": 1
+        },
+        {
+         "material": {
+          "kind": "layered",
+          "stack": {
+           "bands": [
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 95,
+              "data": 9
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 1
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 95,
+              "data": 9
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 1
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 95,
+              "data": 9
+             },
+             "thickness": 2
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 155,
+              "data": 0
+             },
+             "thickness": 1
+            },
+            {
+             "material": {
+              "kind": "solid",
+              "id": 35,
+              "data": 9
+             },
+             "thickness": 2
+            }
+           ],
+           "ending": "repeat"
+          },
+          "axis": "height",
+          "from": 14
+         },
+         "width": 3
+        }
+       ]
+      },
+      "id": "halcyon-hotel-wings-wings-walls"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "min_x": -17,
+      "min_z": -64,
+      "max_x": -10,
+      "max_z": -57,
+      "base_height": 1,
+      "floor": 13,
+      "material": {
+       "kind": "cell",
+       "seed": 91,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 4
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-wings-wings-floor"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "min_x": -30,
+      "min_z": -64,
+      "max_x": -29,
+      "max_z": -61,
+      "base_height": 1,
+      "floor": 13,
+      "material": {
+       "kind": "cell",
+       "seed": 91,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 4
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-wings-wing-west-sill"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "min_x": -18,
+      "min_z": -64,
+      "max_x": -17,
+      "max_z": -61,
+      "base_height": 1,
+      "floor": 13,
+      "material": {
+       "kind": "cell",
+       "seed": 91,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 4
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-wings-wing-east-sill"
+     }
+    ],
+    "groups": [
+     {
+      "id": "halcyon-hotel-wings",
+      "name": "halcyon-hotel-wings",
+      "mirrors": true,
+      "shapeIds": [
+       "halcyon-hotel-wings-wings-walls",
+       "halcyon-hotel-wings-wings-floor",
+       "halcyon-hotel-wings-wings-walls",
+       "halcyon-hotel-wings-wings-floor",
+       "halcyon-hotel-wings-wing-west-sill",
+       "halcyon-hotel-wings-wing-east-sill"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "halcyon-hotel-slab-1",
+   "name": "halcyon-hotel-slab-1",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "halcyon-hotel",
+   "layout": {
+    "shapes": [
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -37,
+      "min_z": -64,
+      "max_x": -30,
+      "max_z": -57,
+      "base_height": 1,
+      "floor": 19,
+      "material": {
+       "kind": "cell",
+       "seed": 92,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-slab-1-wings-slab-1"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -17,
+      "min_z": -64,
+      "max_x": -10,
+      "max_z": -57,
+      "base_height": 1,
+      "floor": 19,
+      "material": {
+       "kind": "cell",
+       "seed": 92,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 155,
+         "data": 0
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-slab-1-wings-slab-1"
+     }
+    ],
+    "groups": [
+     {
+      "id": "halcyon-hotel-slab-1",
+      "name": "halcyon-hotel-slab-1",
+      "mirrors": true,
+      "shapeIds": [
+       "halcyon-hotel-slab-1-wings-slab-1",
+       "halcyon-hotel-slab-1-wings-slab-1"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "halcyon-hotel-balcony-1",
+   "name": "halcyon-hotel-balcony-1",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "halcyon-hotel",
+   "layout": {
+    "shapes": [
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -29,
+      "min_z": -65,
+      "max_x": -18,
+      "max_z": -63,
+      "base_height": 1,
+      "floor": 19,
+      "material": {
+       "kind": "cell",
+       "seed": 91,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 4
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-balcony-1-slab"
+     }
+    ],
+    "groups": [
+     {
+      "id": "halcyon-hotel-balcony-1",
+      "name": "halcyon-hotel-balcony-1",
+      "mirrors": true,
+      "shapeIds": [
+       "halcyon-hotel-balcony-1-slab"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "halcyon-hotel-rail-1",
+   "name": "halcyon-hotel-rail-1",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "halcyon-hotel",
+   "layout": {
+    "shapes": [
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -29,
+      "min_z": -64,
+      "max_x": -18,
+      "max_z": -63,
+      "base_height": 1,
+      "floor": 20,
+      "material": {
+       "kind": "solid",
+       "id": 190,
+       "data": 0
+      },
+      "id": "halcyon-hotel-rail-1-front"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -29,
+      "min_z": -65,
+      "max_x": -28,
+      "max_z": -64,
+      "base_height": 1,
+      "floor": 20,
+      "material": {
+       "kind": "solid",
+       "id": 190,
+       "data": 0
+      },
+      "id": "halcyon-hotel-rail-1-west"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -19,
+      "min_z": -65,
+      "max_x": -18,
+      "max_z": -64,
+      "base_height": 1,
+      "floor": 20,
+      "material": {
+       "kind": "solid",
+       "id": 190,
+       "data": 0
+      },
+      "id": "halcyon-hotel-rail-1-east"
+     }
+    ],
+    "groups": [
+     {
+      "id": "halcyon-hotel-rail-1",
+      "name": "halcyon-hotel-rail-1",
+      "mirrors": true,
+      "shapeIds": [
+       "halcyon-hotel-rail-1-front",
+       "halcyon-hotel-rail-1-west",
+       "halcyon-hotel-rail-1-east"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "halcyon-hotel-balcony-2",
+   "name": "halcyon-hotel-balcony-2",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "halcyon-hotel",
+   "layout": {
+    "shapes": [
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -29,
+      "min_z": -65,
+      "max_x": -18,
+      "max_z": -63,
+      "base_height": 1,
+      "floor": 24,
+      "material": {
+       "kind": "cell",
+       "seed": 91,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 4
+        },
+        {
+         "kind": "solid",
+         "id": 5,
+         "data": 3
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-balcony-2-slab"
+     }
+    ],
+    "groups": [
+     {
+      "id": "halcyon-hotel-balcony-2",
+      "name": "halcyon-hotel-balcony-2",
+      "mirrors": true,
+      "shapeIds": [
+       "halcyon-hotel-balcony-2-slab"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "halcyon-hotel-rail-2",
+   "name": "halcyon-hotel-rail-2",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "halcyon-hotel",
+   "layout": {
+    "shapes": [
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -29,
+      "min_z": -64,
+      "max_x": -18,
+      "max_z": -63,
+      "base_height": 1,
+      "floor": 25,
+      "material": {
+       "kind": "solid",
+       "id": 190,
+       "data": 0
+      },
+      "id": "halcyon-hotel-rail-2-front"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -29,
+      "min_z": -65,
+      "max_x": -28,
+      "max_z": -64,
+      "base_height": 1,
+      "floor": 25,
+      "material": {
+       "kind": "solid",
+       "id": 190,
+       "data": 0
+      },
+      "id": "halcyon-hotel-rail-2-west"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -19,
+      "min_z": -65,
+      "max_x": -18,
+      "max_z": -64,
+      "base_height": 1,
+      "floor": 25,
+      "material": {
+       "kind": "solid",
+       "id": 190,
+       "data": 0
+      },
+      "id": "halcyon-hotel-rail-2-east"
+     }
+    ],
+    "groups": [
+     {
+      "id": "halcyon-hotel-rail-2",
+      "name": "halcyon-hotel-rail-2",
+      "mirrors": true,
+      "shapeIds": [
+       "halcyon-hotel-rail-2-front",
+       "halcyon-hotel-rail-2-west",
+       "halcyon-hotel-rail-2-east"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "halcyon-hotel-roof-loungers",
+   "name": "halcyon-hotel-roof-loungers",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "halcyon-hotel",
+   "layout": {
+    "shapes": [
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -37,
+      "min_z": -63,
+      "max_x": -36,
+      "max_z": -59,
+      "base_height": 1,
+      "floor": 25,
+      "material": {
+       "kind": "solid",
+       "id": 35,
+       "data": 0
+      },
+      "id": "halcyon-hotel-roof-loungers-west-0"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -35,
+      "min_z": -63,
+      "max_x": -34,
+      "max_z": -59,
+      "base_height": 1,
+      "floor": 25,
+      "material": {
+       "kind": "solid",
+       "id": 35,
+       "data": 0
+      },
+      "id": "halcyon-hotel-roof-loungers-west-1"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -33,
+      "min_z": -63,
+      "max_x": -32,
+      "max_z": -59,
+      "base_height": 1,
+      "floor": 25,
+      "material": {
+       "kind": "solid",
+       "id": 35,
+       "data": 0
+      },
+      "id": "halcyon-hotel-roof-loungers-west-2"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -17,
+      "min_z": -63,
+      "max_x": -16,
+      "max_z": -59,
+      "base_height": 1,
+      "floor": 25,
+      "material": {
+       "kind": "solid",
+       "id": 35,
+       "data": 0
+      },
+      "id": "halcyon-hotel-roof-loungers-east-0"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -15,
+      "min_z": -63,
+      "max_x": -14,
+      "max_z": -59,
+      "base_height": 1,
+      "floor": 25,
+      "material": {
+       "kind": "solid",
+       "id": 35,
+       "data": 0
+      },
+      "id": "halcyon-hotel-roof-loungers-east-1"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -13,
+      "min_z": -63,
+      "max_x": -12,
+      "max_z": -59,
+      "base_height": 1,
+      "floor": 25,
+      "material": {
+       "kind": "solid",
+       "id": 35,
+       "data": 0
+      },
+      "id": "halcyon-hotel-roof-loungers-east-2"
+     }
+    ],
+    "groups": [
+     {
+      "id": "halcyon-hotel-roof-loungers",
+      "name": "halcyon-hotel-roof-loungers",
+      "mirrors": true,
+      "shapeIds": [
+       "halcyon-hotel-roof-loungers-west-0",
+       "halcyon-hotel-roof-loungers-west-1",
+       "halcyon-hotel-roof-loungers-west-2",
+       "halcyon-hotel-roof-loungers-east-0",
+       "halcyon-hotel-roof-loungers-east-1",
+       "halcyon-hotel-roof-loungers-east-2"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "halcyon-hotel-roof-poles",
+   "name": "halcyon-hotel-roof-poles",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "halcyon-hotel",
+   "layout": {
+    "shapes": [
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -36,
+      "min_z": -58,
+      "max_x": -35,
+      "max_z": -57,
+      "base_height": 3,
+      "floor": 25,
+      "material": {
+       "kind": "solid",
+       "id": 190,
+       "data": 0
+      },
+      "id": "halcyon-hotel-roof-poles-west-pole"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -16,
+      "min_z": -58,
+      "max_x": -15,
+      "max_z": -57,
+      "base_height": 3,
+      "floor": 25,
+      "material": {
+       "kind": "solid",
+       "id": 190,
+       "data": 0
+      },
+      "id": "halcyon-hotel-roof-poles-east-pole"
+     }
+    ],
+    "groups": [
+     {
+      "id": "halcyon-hotel-roof-poles",
+      "name": "halcyon-hotel-roof-poles",
+      "mirrors": true,
+      "shapeIds": [
+       "halcyon-hotel-roof-poles-west-pole",
+       "halcyon-hotel-roof-poles-east-pole"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "halcyon-hotel-roof-canopy",
+   "name": "halcyon-hotel-roof-canopy",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "halcyon-hotel",
+   "layout": {
+    "shapes": [
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -37,
+      "min_z": -59,
+      "max_x": -34,
+      "max_z": -56,
+      "base_height": 1,
+      "floor": 28,
+      "material": {
+       "kind": "cell",
+       "seed": 82,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 35,
+         "data": 9
+        },
+        {
+         "kind": "solid",
+         "id": 35,
+         "data": 0
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-roof-canopy-west-canopy"
+     },
+     {
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -17,
+      "min_z": -59,
+      "max_x": -14,
+      "max_z": -56,
+      "base_height": 1,
+      "floor": 28,
+      "material": {
+       "kind": "cell",
+       "seed": 82,
+       "cellSize": 2,
+       "jitter": 60,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 35,
+         "data": 9
+        },
+        {
+         "kind": "solid",
+         "id": 35,
+         "data": 0
+        }
+       ],
+       "rise": 2
+      },
+      "id": "halcyon-hotel-roof-canopy-east-canopy"
+     }
+    ],
+    "groups": [
+     {
+      "id": "halcyon-hotel-roof-canopy",
+      "name": "halcyon-hotel-roof-canopy",
+      "mirrors": true,
+      "shapeIds": [
+       "halcyon-hotel-roof-canopy-west-canopy",
+       "halcyon-hotel-roof-canopy-east-canopy"
       ]
      }
     ]
@@ -3139,10 +5573,10 @@
      {
       "type": "rectangle",
       "operation": "add",
-      "min_x": -14,
-      "min_z": -57,
-      "max_x": -13,
-      "max_z": -53,
+      "min_x": -27,
+      "min_z": -54,
+      "max_x": -26,
+      "max_z": -51,
       "base_height": 1,
       "floor": 14,
       "material": {
@@ -3155,10 +5589,10 @@
      {
       "type": "rectangle",
       "operation": "add",
-      "min_x": -12,
-      "min_z": -57,
-      "max_x": -11,
-      "max_z": -53,
+      "min_x": -25,
+      "min_z": -54,
+      "max_x": -24,
+      "max_z": -51,
       "base_height": 1,
       "floor": 14,
       "material": {
@@ -3171,10 +5605,10 @@
      {
       "type": "rectangle",
       "operation": "add",
-      "min_x": -10,
-      "min_z": -57,
-      "max_x": -9,
-      "max_z": -53,
+      "min_x": -23,
+      "min_z": -54,
+      "max_x": -22,
+      "max_z": -51,
       "base_height": 1,
       "floor": 14,
       "material": {
@@ -3187,10 +5621,10 @@
      {
       "type": "rectangle",
       "operation": "add",
-      "min_x": -8,
-      "min_z": -57,
-      "max_x": -7,
-      "max_z": -53,
+      "min_x": -21,
+      "min_z": -54,
+      "max_x": -20,
+      "max_z": -51,
       "base_height": 1,
       "floor": 14,
       "material": {
@@ -3199,22 +5633,6 @@
        "data": 0
       },
       "id": "pool-deck-loungers-bed-3"
-     },
-     {
-      "type": "rectangle",
-      "operation": "add",
-      "min_x": -6,
-      "min_z": -57,
-      "max_x": -5,
-      "max_z": -53,
-      "base_height": 1,
-      "floor": 14,
-      "material": {
-       "kind": "solid",
-       "id": 35,
-       "data": 0
-      },
-      "id": "pool-deck-loungers-bed-4"
      }
     ],
     "groups": [
@@ -3226,8 +5644,7 @@
        "pool-deck-loungers-bed-0",
        "pool-deck-loungers-bed-1",
        "pool-deck-loungers-bed-2",
-       "pool-deck-loungers-bed-3",
-       "pool-deck-loungers-bed-4"
+       "pool-deck-loungers-bed-3"
       ]
      }
     ]
@@ -3244,10 +5661,10 @@
      {
       "type": "rectangle",
       "operation": "add",
-      "min_x": -14,
-      "min_z": -57,
-      "max_x": -13,
-      "max_z": -56,
+      "min_x": -27,
+      "min_z": -54,
+      "max_x": -26,
+      "max_z": -53,
       "base_height": 1,
       "floor": 15,
       "material": {
@@ -3260,10 +5677,10 @@
      {
       "type": "rectangle",
       "operation": "add",
-      "min_x": -12,
-      "min_z": -57,
-      "max_x": -11,
-      "max_z": -56,
+      "min_x": -25,
+      "min_z": -54,
+      "max_x": -24,
+      "max_z": -53,
       "base_height": 1,
       "floor": 15,
       "material": {
@@ -3276,10 +5693,10 @@
      {
       "type": "rectangle",
       "operation": "add",
-      "min_x": -10,
-      "min_z": -57,
-      "max_x": -9,
-      "max_z": -56,
+      "min_x": -23,
+      "min_z": -54,
+      "max_x": -22,
+      "max_z": -53,
       "base_height": 1,
       "floor": 15,
       "material": {
@@ -3292,10 +5709,10 @@
      {
       "type": "rectangle",
       "operation": "add",
-      "min_x": -8,
-      "min_z": -57,
-      "max_x": -7,
-      "max_z": -56,
+      "min_x": -21,
+      "min_z": -54,
+      "max_x": -20,
+      "max_z": -53,
       "base_height": 1,
       "floor": 15,
       "material": {
@@ -3304,22 +5721,6 @@
        "data": 0
       },
       "id": "pool-deck-backrests-back-3"
-     },
-     {
-      "type": "rectangle",
-      "operation": "add",
-      "min_x": -6,
-      "min_z": -57,
-      "max_x": -5,
-      "max_z": -56,
-      "base_height": 1,
-      "floor": 15,
-      "material": {
-       "kind": "solid",
-       "id": 35,
-       "data": 0
-      },
-      "id": "pool-deck-backrests-back-4"
      }
     ],
     "groups": [
@@ -3331,8 +5732,7 @@
        "pool-deck-backrests-back-0",
        "pool-deck-backrests-back-1",
        "pool-deck-backrests-back-2",
-       "pool-deck-backrests-back-3",
-       "pool-deck-backrests-back-4"
+       "pool-deck-backrests-back-3"
       ]
      }
     ]
@@ -3349,10 +5749,10 @@
      {
       "type": "rectangle",
       "operation": "add",
-      "min_x": -24,
-      "min_z": -52,
-      "max_x": -23,
-      "max_z": -51,
+      "min_x": -31,
+      "min_z": -59,
+      "max_x": -30,
+      "max_z": -58,
       "base_height": 4,
       "floor": 14,
       "material": {
@@ -3365,10 +5765,10 @@
      {
       "type": "rectangle",
       "operation": "add",
-      "min_x": -31,
-      "min_z": -54,
-      "max_x": -30,
-      "max_z": -53,
+      "min_x": -16,
+      "min_z": -59,
+      "max_x": -15,
+      "max_z": -58,
       "base_height": 4,
       "floor": 14,
       "material": {
@@ -3381,10 +5781,10 @@
      {
       "type": "rectangle",
       "operation": "add",
-      "min_x": -8,
-      "min_z": -62,
-      "max_x": -7,
-      "max_z": -61,
+      "min_x": -12,
+      "min_z": -53,
+      "max_x": -11,
+      "max_z": -52,
       "base_height": 4,
       "floor": 14,
       "material": {
@@ -3420,10 +5820,10 @@
      {
       "type": "rectangle",
       "operation": "add",
-      "min_x": -25,
-      "min_z": -53,
-      "max_x": -22,
-      "max_z": -50,
+      "min_x": -32,
+      "min_z": -60,
+      "max_x": -29,
+      "max_z": -57,
       "base_height": 1,
       "floor": 18,
       "material": {
@@ -3451,10 +5851,10 @@
      {
       "type": "rectangle",
       "operation": "add",
-      "min_x": -32,
-      "min_z": -55,
-      "max_x": -29,
-      "max_z": -52,
+      "min_x": -17,
+      "min_z": -60,
+      "max_x": -14,
+      "max_z": -57,
       "base_height": 1,
       "floor": 18,
       "material": {
@@ -3482,10 +5882,10 @@
      {
       "type": "rectangle",
       "operation": "add",
-      "min_x": -9,
-      "min_z": -63,
-      "max_x": -6,
-      "max_z": -60,
+      "min_x": -13,
+      "min_z": -54,
+      "max_x": -10,
+      "max_z": -51,
       "base_height": 1,
       "floor": 18,
       "material": {
@@ -5517,19 +7917,19 @@
     "shape": "basin",
     "points": [
      [
-      -29,
+      -28,
       -63
      ],
      [
-      -20,
+      -19,
       -63
      ],
      [
-      -20,
+      -19,
       -55
      ],
      [
-      -29,
+      -28,
       -55
      ]
     ],
@@ -5567,88 +7967,6 @@
      ],
      "rise": 2
     }
-   },
-   {
-    "kind": "house",
-    "id": "villa-west",
-    "layer": "ground",
-    "seed": 3,
-    "wings": [
-     {
-      "corners": [
-       [
-        -38,
-        -74
-       ],
-       [
-        -27,
-        -67
-       ]
-      ],
-      "spec": {
-       "ridge": "alongX"
-      }
-     },
-     {
-      "corners": [
-       [
-        -38,
-        -66
-       ],
-       [
-        -31,
-        -59
-       ]
-      ],
-      "spec": {
-       "storeysHigh": 2,
-       "ridge": "alongZ"
-      }
-     }
-    ],
-    "front": "posZ",
-    "style": "cyan-wool-roofed-three-storey-quartz-villa"
-   },
-   {
-    "kind": "house",
-    "id": "villa-east",
-    "layer": "ground",
-    "seed": 4,
-    "wings": [
-     {
-      "corners": [
-       [
-        -21,
-        -74
-       ],
-       [
-        -10,
-        -67
-       ]
-      ],
-      "spec": {
-       "ridge": "alongX"
-      }
-     },
-     {
-      "corners": [
-       [
-        -17,
-        -66
-       ],
-       [
-        -10,
-        -59
-       ]
-      ],
-      "spec": {
-       "storeysHigh": 2,
-       "ridge": "alongZ"
-      }
-     }
-    ],
-    "front": "posZ",
-    "style": "cyan-wool-roofed-three-storey-quartz-villa"
    },
    {
     "kind": "house",
@@ -6125,347 +8443,6 @@
    }
   ],
   "styles": {
-   "cyan-wool-roofed-three-storey-quartz-villa": {
-    "kind": "house",
-    "shell": {
-     "foundation": {
-      "plate": {
-       "stack": {
-        "bands": [
-         {
-          "material": {
-           "kind": "cell",
-           "seed": 71,
-           "cellSize": 3,
-           "jitter": 60,
-           "warp": 1,
-           "palette": [
-            {
-             "kind": "solid",
-             "id": 5,
-             "data": 3
-            },
-            {
-             "kind": "solid",
-             "id": 5,
-             "data": 3
-            },
-            {
-             "kind": "solid",
-             "id": 5,
-             "data": 4
-            },
-            {
-             "kind": "solid",
-             "id": 5,
-             "data": 3
-            }
-           ],
-           "rise": 0
-          },
-          "thickness": 1
-         }
-        ],
-        "ending": "repeat"
-       },
-       "extent": 1
-      },
-      "surface": {
-       "field": null,
-       "border": null,
-       "borderWidth": 1,
-       "inlay": null,
-       "inlayInset": 2,
-       "isPlain": true
-      },
-      "footing": null
-     },
-     "roof": {
-      "form": "hip",
-      "pitch": 1,
-      "slab": -1,
-      "slabData": 0,
-      "stair": -1,
-      "wear": 0,
-      "overhang": 1,
-      "ridgeCap": true,
-      "hole": false,
-      "body": {
-       "kind": "solid",
-       "id": 35,
-       "data": 9
-      },
-      "verge": {
-       "kind": "solid",
-       "id": 5,
-       "data": 3
-      },
-      "gable": {
-       "kind": "solid",
-       "id": 155,
-       "data": 0
-      },
-      "gableWindows": {
-       "form": "none",
-       "block": 102,
-       "hostBlock": -1,
-       "hostData": 0,
-       "data": 0,
-       "sill": 2,
-       "width": 2,
-       "height": 2,
-       "spacing": 3
-      }
-     },
-     "wall": {
-      "stack": {
-       "bands": [
-        {
-         "material": {
-          "kind": "solid",
-          "id": 155,
-          "data": 0
-         },
-         "thickness": 5
-        }
-       ],
-       "ending": "repeat"
-      },
-      "extent": 5
-     },
-     "post": {
-      "kind": "solid",
-      "id": 17,
-      "data": 3
-     },
-     "windows": {
-      "form": "pane",
-      "block": 102,
-      "hostBlock": -1,
-      "hostData": 0,
-      "data": 0,
-      "sill": 2,
-      "width": 2,
-      "height": 2,
-      "spacing": 3
-     },
-     "storeys": [
-      {
-       "clear": 4,
-       "wall": {
-        "stack": {
-         "bands": [
-          {
-           "material": {
-            "kind": "solid",
-            "id": 155,
-            "data": 0
-           },
-           "thickness": 4
-          }
-         ],
-         "ending": "repeat"
-        },
-        "extent": 4
-       },
-       "post": {
-        "kind": "solid",
-        "id": 17,
-        "data": 3
-       },
-       "windows": {
-        "form": "pane",
-        "block": 102,
-        "hostBlock": -1,
-        "hostData": 0,
-        "data": 0,
-        "sill": 2,
-        "width": 2,
-        "height": 2,
-        "spacing": 3
-       },
-       "surface": {
-        "field": null,
-        "border": null,
-        "borderWidth": 1,
-        "inlay": null,
-        "inlayInset": 2,
-        "isPlain": true
-       },
-       "deck": null,
-       "headroom": 4
-      },
-      {
-       "clear": 4,
-       "wall": {
-        "stack": {
-         "bands": [
-          {
-           "material": {
-            "kind": "solid",
-            "id": 155,
-            "data": 0
-           },
-           "thickness": 4
-          }
-         ],
-         "ending": "repeat"
-        },
-        "extent": 4
-       },
-       "post": {
-        "kind": "solid",
-        "id": 17,
-        "data": 3
-       },
-       "windows": {
-        "form": "pane",
-        "block": 102,
-        "hostBlock": -1,
-        "hostData": 0,
-        "data": 0,
-        "sill": 2,
-        "width": 2,
-        "height": 2,
-        "spacing": 3
-       },
-       "surface": {
-        "field": null,
-        "border": null,
-        "borderWidth": 1,
-        "inlay": null,
-        "inlayInset": 2,
-        "isPlain": true
-       },
-       "deck": {
-        "kind": "cell",
-        "seed": 71,
-        "cellSize": 3,
-        "jitter": 60,
-        "warp": 1,
-        "palette": [
-         {
-          "kind": "solid",
-          "id": 5,
-          "data": 3
-         },
-         {
-          "kind": "solid",
-          "id": 5,
-          "data": 3
-         },
-         {
-          "kind": "solid",
-          "id": 5,
-          "data": 4
-         },
-         {
-          "kind": "solid",
-          "id": 5,
-          "data": 3
-         }
-        ],
-        "rise": 0
-       },
-       "headroom": 4
-      },
-      {
-       "clear": 4,
-       "wall": {
-        "stack": {
-         "bands": [
-          {
-           "material": {
-            "kind": "solid",
-            "id": 155,
-            "data": 0
-           },
-           "thickness": 4
-          }
-         ],
-         "ending": "repeat"
-        },
-        "extent": 4
-       },
-       "post": {
-        "kind": "solid",
-        "id": 17,
-        "data": 3
-       },
-       "windows": {
-        "form": "pane",
-        "block": 102,
-        "hostBlock": -1,
-        "hostData": 0,
-        "data": 0,
-        "sill": 2,
-        "width": 2,
-        "height": 2,
-        "spacing": 3
-       },
-       "surface": {
-        "field": null,
-        "border": null,
-        "borderWidth": 1,
-        "inlay": null,
-        "inlayInset": 2,
-        "isPlain": true
-       },
-       "deck": {
-        "kind": "cell",
-        "seed": 71,
-        "cellSize": 3,
-        "jitter": 60,
-        "warp": 1,
-        "palette": [
-         {
-          "kind": "solid",
-          "id": 5,
-          "data": 3
-         },
-         {
-          "kind": "solid",
-          "id": 5,
-          "data": 3
-         },
-         {
-          "kind": "solid",
-          "id": 5,
-          "data": 4
-         },
-         {
-          "kind": "solid",
-          "id": 5,
-          "data": 3
-         }
-        ],
-        "rise": 0
-       },
-       "headroom": 4
-      }
-     ],
-     "porch": null,
-     "front": null,
-     "beams": {
-      "block": -1,
-      "data": 0,
-      "reach": 1,
-      "any": false
-     },
-     "doorway": {
-      "door": "air",
-      "head": {
-       "form": "arched",
-       "block": 156,
-       "fill": "upperSlab",
-       "fillBlock": 44,
-       "fillData": 7
-      },
-      "width": 3,
-      "height": 4
-     }
-    }
-   },
    "thatched-jungle-plank-stilt-bungalow": {
     "kind": "house",
     "shell": {
