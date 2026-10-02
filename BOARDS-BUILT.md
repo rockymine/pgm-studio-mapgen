@@ -777,6 +777,14 @@ note ids are listed in `reports/opus55-notes-run.md`, which is the run's account
 |---|---|---|---|
 | `sonnet55-pippin-coomb` | dtm | Sonnet 5.5 | **A late-summer cider-orchard valley in chalk downland: two farm hamlets across a dry coomb, each with a sunk cellar under its yard that runs east to a hidden chamber under a barrow, a white horse cut into the down above, and a bench under the old oak facing the other side.** One monument a team on a shelf at 32 with the orchard terraces west, Horse Hill east and the hamlet behind, 49 blocks of walk against 165 (`GO1` 3.37), a 24-to-32-block build zone over void the whole width. A spawn pad at 36, a yard at 34, two chalk-cut lynchets, a landing apron at 24; turf up to 36 degrees, dirt to 45, chalk beyond, over chalk beds level from y0 with a flint line. Savanna biome, three themes, terracotta cottages and a hay-roofed barn, eight apple trees and an old oak, a dew pond with lilies and a flint boulder in the water, a fairy ring with mushrooms, a well, a cider press, three hayricks. 88 × 224. **16 808 walked · 256 scrambled · 212 barrier** (the sunk rooms' walls), 42.7% dead, 64 props placed and none declined, export gate OPEN. Own walk 49, enemy 165 on the plan tier. No notes |
 
+### Sonnet 5.5 — a tropical atoll resort joined by terrain (2026-10-02)
+
+**One board authored through the kit on the deployed studio to a brief that overrides one ruling: the middle is joined by sandbars, not by a build zone over void.** The account is `reports/sonnet55-halcyon-cays.md`.
+
+| Board | Mode | Author | What it turned out to be |
+|---|---|---|---|
+| `sonnet55-halcyon-cays` | dtm | Sonnet 5.5 | **A holiday resort on a string of cays in a lagoon: a white stepped hotel built out of 15 made layers (an open pillared arcade, a glass lobby, balconies, two lower wings and roof terraces) round a pool courtyard on each shore, thatched stilt bungalows on a palm cay, five rock stacks standing out of the water, and a thatched bar on the sandbar in the middle.** One monument a team on open sand at (8, −53) with the terrace west, a lawn and the Sentinel east and the spit south, 45 blocks of walk against 151 (`GO1` 3.36). Three crossings join the halves with no build zone: a dry sand spit, a one-block reef ford, and a hop between islets. Swampland biome, chosen because it is the only one that tints water, so the water reads teal and the vegetation olive; three themes (sand, jungle lawn, karst), two forked house styles, 37 made layers. 100 × 210. **16 404 walked · 522 scrambled · 894 barrier**, 55.3% dead (open lagoon), 22 props placed with two `DR-PASS` complaints on the bungalows, export gate OPEN. No notes |
+
 ## Not boards
 
 Folders under `maps/` or `specs/` that exist for a reading rather than for a game. They are named

@@ -108,6 +108,11 @@ themes = {
         rim=kit.TopBand(enabled=False, depth=1, material=CHALK),
         surface=kit.TopBand(enabled=True, depth=3, material=depth_stack((EARTH, 1), (DIRT, 2))),
         wallEnabled=True, wallOnTerrainFaces=True, wall=STRATA, fill=STRATA),
+    "field": kit.TerrainTheme(
+        bedrock=kit.BedrockSpec(relative=False, value=1), rimEdges="void", edgesFromGround=True,
+        rim=kit.TopBand(enabled=False, depth=1, material=CHALK),
+        surface=kit.TopBand(enabled=True, depth=3, material=depth_stack((S(id=60), 1), (DIRT, 2))),
+        wallEnabled=True, wallOnTerrainFaces=True, wall=STRATA, fill=STRATA),
     "chalk": kit.TerrainTheme(
         bedrock=kit.BedrockSpec(relative=False, value=1), rimEdges="void", edgesFromGround=True,
         rim=kit.TopBand(enabled=False, depth=1, material=CHALK),
@@ -235,9 +240,177 @@ for patch in (
         disc("pond-bed", POND[0], POND[1], 5.2, floor=0, height=60, theme="chalk", keepClear=False),
         disc("grove-1", -42, -48, 3.5, floor=0, height=60, theme="farmstead", keepClear=False),
         disc("grove-2", -34, -48, 3.5, floor=0, height=60, theme="farmstead", keepClear=False),
-        disc("fairy-ring", 36, -86, 3.8, floor=0, height=60, theme="farmstead", keepClear=False),
+        disc("fairy-ring", 38, -84, 3.3, floor=0, height=60, theme="farmstead", keepClear=False),
         disc("grove-3", -17, -48, 3.5, floor=0, height=60, theme="farmstead", keepClear=False)):
     patches.append(patch)
+
+# the mill's terrace: a flat top cut at y38 after the relief is solved, so the tower stands level whatever the hill does
+patches.append(disc("mill-terrace", 31.5, -52.5, 7.5, floor=0, height=38, height_mode="level", skirt=2, keepClear=False))
+
+# ── the windmill: on Horse Hill, north of the white horse's head, its sails turned to the other team's island ───
+MC = (31, -53)                               # the tower's centre cell
+GROUND = int(os.environ.get("MILL_GROUND", "38"))   # first free course over the pad (read off `column` after the pad is stored)
+BRICK, TERRA, SPRUCE, OAK_POST, LAID = S(id=45), S(id=172), S(id=5, data=1), S(id=17), kit.LaidLogMaterial(id=17)
+WOOL = S(id=35, data=0)
+
+
+def box(d, grow=0):
+    """Edges of the square of cells within `d` of the tower's centre cell."""
+    return (MC[0] - d - grow, MC[1] - d - grow, MC[0] + d + 1 + grow, MC[1] + d + 1 + grow)
+
+
+def courses(bands):
+    """A depth stack from the top of the shape down; the last band carries on."""
+    return kit.LayeredMaterial(axis="depth", stack=kit.BandStack(ending="repeat", bands=[
+        kit.Band(material=m, thickness=n) for m, n in bands]))
+
+
+def square_ring(prefix, d, height, material, door=False):
+    x0, z0, x1, z1 = box(d)
+    strips = [("n", x0, z0, x1, z0 + 1), ("e", x1 - 1, z0 + 1, x1, z1 - 1), ("w", x0, z0 + 1, x0 + 1, z1 - 1)]
+    strips += ([("sl", x0, z1 - 1, MC[0], z1), ("sr", MC[0] + 2, z1 - 1, x1, z1)] if door else [("s", x0, z1 - 1, x1, z1)])
+    shapes = [rect(f"{prefix}-{n}", a, b, c, e, floor=0, height=height, material=material) for n, a, b, c, e in strips]
+    for n, cx, cz in (("nw", x0, z0), ("ne", x1 - 1, z0), ("sw", x0, z1 - 1), ("se", x1 - 1, z1 - 1)):
+        shapes.append(column(f"{prefix}-post-{n}", cx, cz, 0, height, OAK_POST, override=True))
+    return shapes
+
+
+def windmill():
+    """A smock mill in the farmhouse's blocks: a straight tower seven cells across for eight courses, one block in
+    and straight again for six, a brick dome for a cap; an axle out of the cap toward +z, the other team's island,
+    and four sails in the plane across its end: spruce beams one block thick with a white wool panel against
+    one side of each, set as a pinwheel. The mirror image turns toward -z."""
+    g = GROUND
+    out = [made_layer("mill-lower", g, square_ring("mill-lo", 3, 8, courses([(TERRA, 3), (LAID, 1), (TERRA, 2), (BRICK, 2)]),
+                                                   door=True), part_of="windmill"),
+           made_layer("mill-upper", g + 9, square_ring("mill-up", 2, 6, courses([(TERRA, 2), (LAID, 1), (TERRA, 3)])),
+                      part_of="windmill")]
+    x0, z0, x1, z1 = box(3)
+    ledge = [rect(f"mill-ledge-{n}", a, b, c, e, floor=0, height=1, material=SPRUCE) for n, a, b, c, e in (
+        ("n", x0, z0, x1, z0 + 2), ("s", x0, z1 - 2, x1, z1), ("w", x0, z0 + 2, x0 + 2, z1 - 2), ("e", x1 - 2, z0 + 2, x1, z1 - 2))]
+    out.append(made_layer("mill-ledge", g + 8, ledge, part_of="windmill"))
+    cap_y = g + 15
+    out.append(made_layer("mill-cap", cap_y, [
+        rect("mill-plate", *box(3), floor=0, height=1, material=SPRUCE),
+        disc("mill-dome-0", MC[0] + 0.5, MC[1] + 0.5, 2.9, floor=0, height=2, material=BRICK),
+        disc("mill-dome-1", MC[0] + 0.5, MC[1] + 0.5, 1.9, floor=0, height=3, material=BRICK),
+        disc("mill-dome-2", MC[0] + 0.5, MC[1] + 0.5, 0.9, floor=0, height=4, material=BRICK)], part_of="windmill"))
+    hub_y, hub_x, plane, arm, wide = g + 17, MC[0], MC[1] + 6, 8, 3
+    # the axle comes out of the dome toward +z and ends in the sail plane
+    out.append(made_layer("mill-axle", hub_y, [rect("mill-axle", hub_x, MC[1] + 3, hub_x + 1, plane, floor=0, height=1,
+                                                    material=S(id=162, data=1), keepClear=False)], part_of="windmill"))
+    def cell_rect(prefix, xa, xb, ya, yb, material):
+        """The block [xa, xb) wide, [ya, yb) tall, one thick in the sail plane."""
+        return rect(prefix, xa, plane, xb, plane + 1, floor=ya - hub_y + arm + 1, height=yb - ya, material=material,
+                    keepClear=False)
+    base_y = hub_y - arm - 1
+    beams = [cell_rect("mill-beam-v", hub_x, hub_x + 1, hub_y - arm, hub_y + arm + 1, SPRUCE),
+             cell_rect("mill-beam-r", hub_x + 1, hub_x + arm + 1, hub_y, hub_y + 1, SPRUCE),
+             cell_rect("mill-beam-l", hub_x - arm, hub_x, hub_y, hub_y + 1, SPRUCE)]
+    wool_a = [cell_rect("mill-wool-up", hub_x + 1, hub_x + 1 + wide, hub_y + 2, hub_y + arm + 1, WOOL),
+              cell_rect("mill-wool-down", hub_x - wide, hub_x, hub_y - arm, hub_y - 1, WOOL)]
+    wool_b = [cell_rect("mill-wool-right", hub_x + 2, hub_x + arm + 1, hub_y - wide, hub_y, WOOL),
+              cell_rect("mill-wool-left", hub_x - arm, hub_x - 1, hub_y + 1, hub_y + 1 + wide, WOOL)]
+    out += [made_layer("mill-beams", base_y, beams, part_of="windmill"),
+            made_layer("mill-wool-a", base_y, wool_a, part_of="windmill"),
+            made_layer("mill-wool-b", base_y, wool_b, part_of="windmill")]
+    return out
+
+
+layers += windmill()
+
+# ── fields: four plots of farmland, each a patch of its own theme with a low wall of fieldstone round it ────
+# A wall is a polyline shape draped one block over the ground at every cell, so it climbs the hillside; the edge that faces
+# the nearest lane is left out, so each field has its gate.
+FIELDSTONE = cell([(4, 0), (1, 5), (4, 0), (1, 0)], size=2, seed=71, rise=2)
+FIELDS = {   # id: (outline, crops, ripeness, plot scale)
+    "north-west-field": ([(-29, -102), (-33, -105), (-39, -104), (-40, -97), (-37, -93), (-31, -94), (-29, -98)],
+                         ["potatoes", "carrots"], 0.45, 4),
+    "north-east-field": ([(29, -103), (31, -106), (38, -107), (41, -104), (38, -100), (32, -99.5)],
+                         ["wheat", "carrots"], 0.7, 4),
+    "path-field-west": ([(-3, -31), (-4, -26), (-5, -21), (-9, -20), (-13, -21), (-16, -26), (-14, -31), (-17, -36),
+                         (-14, -41), (-11, -44), (-5, -44.5), (-1, -42), (-1, -37)],
+                        ["wheat", "wheat", "potatoes"], 0.92, 5),
+    "path-field-east": ([(10, -34), (9, -28), (9, -23), (11, -21), (15, -22), (17, -27), (16.5, -33), (17, -39),
+                         (16, -43), (13, -45.5), (11, -43), (10.5, -38.5)],
+                        ["wheat", "carrots"], 0.85, 4),
+}
+field_walls, field_flora = [], []
+for field_id, (outline, crops, ripeness, scale) in FIELDS.items():
+    patches.append(kit.SketchShape(id=f"{field_id}-soil", type="polygon", operation="add", keepClear=False, floor=0,
+                                   base_height=60, theme="field", vertices=[list(point) for point in outline]))
+    cx = sum(x for x, _ in outline) / len(outline)
+    cz = sum(z for _, z in outline) / len(outline)
+    around = [[round(cx + (x - cx) * 1.07, 1), round(cz + (z - cz) * 1.07, 1)] for x, z in outline]
+    field_walls.append(kit.SketchShape(id=f"{field_id}-wall", type="polyline", operation="add", keepClear=True, floor=0,
+                                       base_height=1, height_mode="drape", skirt=0, radius=0.6, stroke_edge="rough",
+                                       stroke_seed=len(field_walls) + 3, vertices=around, material=FIELDSTONE))
+    field_flora.append(kit.FloraProp(id=field_id, seed=80 + len(field_flora), points=[list(point) for point in outline],
+                                     spec=kit.FloraSpec(cropShare=0.95, crops=crops, ripeness=ripeness, scale=scale)))
+patches += field_walls
+
+# ── farm machinery: a tractor at the north-west field's gate and a flatbed with hay behind the barn ─────
+RED, GREEN_CLAY, BLACK = S(id=159, data=14), S(id=159, data=13), S(id=159, data=15)
+GLASS, COAL, HAYBALE = S(id=20), S(id=173), S(id=170)
+
+
+def wheel(prefix, u0, w, radius, material):
+    """A wheel standing in the plane w: one column per u, the columns' floors and heights cutting a round profile."""
+    parts, centre = [], radius
+    for d in range(-int(radius), int(radius) + 1):
+        half = (radius * radius - d * d) ** 0.5
+        floor = max(0, round(centre - half))
+        top = round(centre + half)
+        parts.append(column(f"{prefix}-{d}", u0 + d + int(radius), w, floor, max(1, top - floor), material, keepClear=False))
+    return parts
+
+
+def tractor(x, z):
+    """Faces +x. Hood, cab on four posts under a roof, an exhaust stack, big back wheels and small front ones."""
+    def at(u, w):
+        return x + u, z + w
+    shapes = [rect("tractor-hood", *at(0, 1), *at(4, 4), floor=1, height=2, material=RED, keepClear=False),
+              rect("tractor-roof", *at(4, 1), *at(7, 4), floor=5, height=1, material=RED, keepClear=False)]
+    for i, (u, w) in enumerate(((4, 1), (4, 3), (6, 1), (6, 3))):
+        shapes.append(column(f"tractor-post-{i}", *at(u, w), 1, 5, GLASS, override=True, keepClear=False))
+    shapes.append(column("tractor-stack", *at(1, 2), 1, 5, COAL, override=True, keepClear=False))
+    for w in (0, 4):
+        shapes += wheel(f"tractor-front-{w}", x + 0, z + w, 1.5, BLACK)
+    for w in (0, 4):
+        shapes += wheel(f"tractor-back-{w}", x + 4, z + w, 2.5, BLACK)
+    return made_layer("tractor", 0, shapes, part_of="tractor", seat="ground")
+
+
+def flatbed(x, z):
+    """Faces +x. A chassis, a cab with a glass front, a railed bed carrying hay bales, three small wheels a side."""
+    def at(u, w):
+        return x + u, z + w
+    shapes = [rect("truck-chassis", *at(0, 0), *at(9, 4), floor=1, height=1, material=S(id=5, data=5), keepClear=False),
+              rect("truck-cab", *at(6, 0), *at(9, 4), floor=1, height=4, material=GREEN_CLAY, override=True, keepClear=False),
+              rect("truck-glass", *at(8, 1), *at(9, 3), floor=1, height=4, material=GLASS, override=True, keepClear=False),
+              rect("truck-rail-n", *at(0, 0), *at(6, 1), floor=1, height=2, material=PLANK, override=True, keepClear=False),
+              rect("truck-rail-s", *at(0, 3), *at(6, 4), floor=1, height=2, material=PLANK, override=True, keepClear=False),
+              rect("truck-tail", *at(0, 1), *at(1, 3), floor=1, height=2, material=PLANK, override=True, keepClear=False),
+              rect("truck-hay", *at(1, 1), *at(5, 3), floor=1, height=3, material=HAYBALE, override=True, keepClear=False)]
+    for w in (-1, 4):
+        shapes += wheel(f"truck-rear-{w}", x + 0, z + w, 1.5, BLACK)
+        shapes += wheel(f"truck-fore-{w}", x + 6, z + w, 1.5, BLACK)
+    return made_layer("flatbed", 0, shapes, part_of="flatbed", seat="ground")
+
+
+layers += [tractor(-26, -96), flatbed(13, -97)]
+
+# ── scarecrows: a post that ends in a hay-bale head under a plank hat, and a crossbar, one to a field ───────
+SCARECROW = kit.LayeredMaterial(axis="depth", stack=kit.BandStack(ending="repeat", bands=[
+    kit.Band(material=S(id=5, data=5), thickness=1), kit.Band(material=HAYBALE, thickness=1),
+    kit.Band(material=S(id=17), thickness=3)]))
+for k, (sx, sz) in enumerate(((-35, -99), (36, -103), (-9, -35), (14, -38))):
+    layers.append(made_layer(f"scarecrow-{k}", 0, [
+        column(f"scarecrow-{k}-post", sx, sz, 0, 5, SCARECROW, keepClear=False),
+        column(f"scarecrow-{k}-arm-w", sx - 1, sz, 2, 1, S(id=17), keepClear=False),
+        column(f"scarecrow-{k}-arm-e", sx + 1, sz, 2, 1, S(id=17), keepClear=False)],
+        part_of=f"scarecrow-{k}", seat="ground"))
+
 
 # the white horse: cut into the south face of Horse Hill, drawn upright for someone standing south of it
 HORSE_X, HORSE_Z = 19.0, -27.0
@@ -303,7 +476,7 @@ props += [
     kit.HouseProp(id="cottage", style="cottage", front="posX", seed=4,
                   wings=[kit.AuthoredWing(corners=[[-35, -77], [-29, -70]], spec=kit.WingSpec(storeysHigh=1))]),
     kit.HouseProp(id="cider-barn", style="barn", front="posZ", seed=5,
-                  wings=[kit.AuthoredWing(corners=[[14, -91], [26, -83]], spec=kit.WingSpec(storeysHigh=1))]),
+                  wings=[kit.AuthoredWing(corners=[[12, -91], [24, -83]], spec=kit.WingSpec(storeysHigh=1))]),
 ]
 
 # the well's water, three blocks down inside the stone ring
@@ -315,7 +488,7 @@ props += [
     kit.FluidProp(id="dew-pond", shape="basin", fluid="water", level=25, points=ring_points(POND[0], POND[1], 5.4, points=18),
                   seed=11),
     kit.BoulderProp(id="pond-stone", style="flint", x=POND[0], z=POND[1], seed=12),
-    kit.BoulderProp(id="barrow-stone", style="flint", x=36, z=-85, seed=13),
+    kit.BoulderProp(id="barrow-stone", style="flint", x=38, z=-83, seed=13),
     kit.BoulderProp(id="down-cairn", style="flint-cairn", x=30, z=-46, seed=14),
 ]
 
@@ -325,6 +498,29 @@ for k, (xa, xb) in enumerate(((-42, -42), (-34, -34), (-16, -17), (-8, -9))):
     props.append(kit.TreeProp(id=f"apple-b{k}", style="orchard-oak", x=xb, z=-48, seed=30 + k))
 props.append(kit.TreeProp(id="old-oak", style="old-oak", x=-38, z=-34, seed=40))
 
+
+# boulders: one rock (stone, andesite, cobble) at three sizes, where the open slopes and lynchets have room
+styles["flint-big"] = kit.BoulderStyle(form="angular", size=2.8, mossy=False, rock=cell([(1, 0), (1, 5), (4, 0), (1, 0)], size=2, seed=44))
+styles["flint-mid"] = kit.BoulderStyle(form="outcrop", size=1.9, mossy=False, rock=cell([(1, 0), (1, 5), (4, 0), (1, 0)], size=2, seed=45))
+props += [
+    kit.BoulderProp(id="slope-erratic", style="flint-big", x=41, z=-60, seed=21),
+    kit.BoulderProp(id="hill-outcrop", style="flint-mid", x=30, z=-67, seed=22),
+    kit.BoulderProp(id="lynchet-erratic", style="flint-big", x=-39, z=-53, seed=23),
+    kit.BoulderProp(id="bank-outcrop", style="flint-mid", x=-20, z=-52, seed=24),
+    kit.BoulderProp(id="orchard-outcrop", style="flint-mid", x=-37, z=-63, seed=25),
+    kit.BoulderProp(id="knoll-erratic", style="flint-big", x=-27, z=-26, seed=26),
+]
+
+# trees at the back, to the outside of the hamlets: two large oaks, four small, three down the west edge
+props += [
+    kit.TreeProp(id="back-oak-w", style="old-oak", x=-37, z=-111, seed=61),
+    kit.TreeProp(id="back-oak-e", style="old-oak", x=41, z=-111, seed=62),
+    kit.TreeProp(id="back-tiny-e1", style="orchard-oak", x=41, z=-93, seed=63),
+    kit.TreeProp(id="edge-tiny-1", style="orchard-oak", x=-41, z=-86, seed=67),
+    kit.TreeProp(id="edge-tiny-2", style="orchard-oak", x=-40, z=-79, seed=68),
+    kit.TreeProp(id="edge-tiny-3", style="orchard-oak", x=-41, z=-72, seed=69),
+]
+
 # the hidden room's chest
 props.append(kit.ChestProp(id="barrow-chest", x=36, z=-74, y=30, facing="posZ", seed=50, items=[
     kit.ChestItem(item="apple", count=6), kit.ChestItem(item="bread", count=4)]))
@@ -333,13 +529,18 @@ props.append(kit.ChestProp(id="barrow-chest", x=36, z=-74, y=30, facing="posZ", 
 props += [
     kit.FloraProp(id="pond-lilies", seed=61, points=ring_points(POND[0], POND[1], 5.4, points=12),
                   spec=kit.FloraSpec(coverage=0.3, scale=3, fernShare=0, tallShare=0, flowerShare=0, lilyShare=0.6)),
-    kit.FloraProp(id="fairy-ring", seed=63, points=ring_points(36, -86, 4.2, points=10),
+    kit.FloraProp(id="fairy-ring", seed=63, points=ring_points(38, -84, 3.7, points=10),
                   spec=kit.FloraSpec(coverage=0.8, scale=3, fernShare=0, tallShare=0, flowerShare=0, mushroomShare=0.7)),
     kit.FloraProp(id="grove-fungi", seed=62, points=[[-45, -52], [-14, -52], [-14, -44], [-45, -44]],
                   spec=kit.FloraSpec(coverage=0.5, scale=4, fernShare=0, tallShare=0, mushroomShare=0.4)),
+    *field_flora,
+    kit.FloraProp(id="west-meadow", seed=70, points=[[-44, -88], [-37, -90], [-36, -66], [-44, -64]],
+                  spec=kit.FloraSpec(coverage=0.9, scale=6, fernShare=0.1, tallShare=0, flowerShare=0.45, flowerScale=5)),
+    kit.FloraProp(id="hill-meadow", seed=71, points=[[18, -66], [42, -66], [42, -50], [28, -48]],
+                  spec=kit.FloraSpec(coverage=0.9, scale=6, fernShare=0.1, tallShare=0, flowerShare=0.45, flowerScale=5)),
     kit.FloraProp(id="down-cover", seed=60, points=[[-43, -111], [42, -111], [42, -14], [-43, -14]],
-                  spec=kit.FloraSpec(coverage=0.2, scale=9, fernShare=0, tallShare=0.02, flowerShare=0.12,
-                                     flowerScale=7)),
+                  spec=kit.FloraSpec(coverage=0.8, scale=7, octaves=2, fernShare=0.18, tallShare=0.03, flowerShare=0.14,
+                                     flowerScale=6)),
 ]
 
 refinement = kit.Refinement(

@@ -199,3 +199,56 @@ Refinement() got an unexpected keyword argument 'theems'
 **Checked before storing.** `POST /terrain/theme-preview` answered the section, wall and fill views; its sample plateau is too short to reach chalk, so it showed only the dirt-to-granite fade, and the deep beds were read on the stored board.
 
 **The isometric now shows turf over a brown band over a red-brown granite fade, with chalk only in the lower third of each cut face.** No face is blotchy white from top to bottom; the coomb's two cliffs read as earth over rock, the horse is still the one white figure on the hill, and the granite reads redder in the picture than I expected. Store: change 38, 64 props placed and none declined, export gate OPEN, re-exported to `maps/sonnet55-pippin-coomb/`.
+
+## Fields
+
+**Four plots of farmland, each its own `field` theme (block 60 over two dirt) with a `FloraProp` that sows it and a one-block fieldstone wall round it.** The wall is a `polyline` shape, `height_mode: "drape"` with `base_height` 1, `skirt` 0, `stroke_edge: "rough"`, in a cobble-and-stone cell, so it holds one block above the ground at every cell and climbs the hillside. Its outline is the field's outline scaled 1.07 about its centre, and the edge facing the nearest lane is left open as the gate. Coordinates are team 0's; team 1 has the mirror at `z′ = −z−1`. Every `FloraSpec` has `cropShare` 0.95.
+
+| Field | Crops (one per plot) | Ripeness | Plot | Outline (x, z), clockwise from the gate |
+|---|---|---|---|---|
+| `north-west-field`, behind the farmhouse | potatoes, carrots | 0.45, young | 4 | (−29,−104) (−33,−108) (−39,−107) (−40,−98) (−37,−93) (−31,−94) (−29,−99) |
+| `north-east-field`, behind the barn | wheat, carrots | 0.70 | 4 | (29,−101) (31,−107) (38,−108) (41,−104) (38,−97) (32,−95) |
+| `path-field-west`, a strip down the west side of the lane toward the front | wheat, wheat, potatoes | 0.92, nearly ripe | 5 | (−3,−31) (−4,−26) (−5,−21) (−9,−20) (−13,−21) (−16,−26) (−14,−31) (−17,−36) (−14,−41) (−11,−44) (−5,−44.5) (−1,−42) (−1,−37) |
+| `path-field-east`, a strip down the east side, short of the horse | wheat, carrots | 0.85 | 4 | (10,−34) (9,−28) (9,−23) (11,−21) (15,−22) (17,−27) (16.5,−33) (17,−39) (16,−43) (13,−45.5) (11,−43) (10.5,−38.5) |
+
+**The fields keep the gameplay ground clear.** The back fields stay out of the hall's door lanes (x beyond −31 and 29), the path fields start at z −46 and sit outside the monument's 10-block clearance and the lane's 3-block verge, and 72 props were placed with none declined. The strips run from z −46 to z −20 along the lane, about 26 blocks long and 8 to 10 wide, against a 10 × 16 blob before, and stay 5 to 6 blocks off the lane's centreline.
+
+**What the render shows.** From above the back fields read as bright green plots in grey rings and the path fields as straw-gold ripe wheat in rings; from the eye the west path field is rows of ripe wheat with bare furrows between plots, stepped down the slope. Change 42 onward; re-exported.
+
+**Two kit and studio notes from this round.** The rebuilt kit's `SketchShape` text still lists `path` as a shape type, and the studio answered `SK3 … 'path' … is not a kind the studio draws — it has 5 (rectangle, circle, polygon, lasso, polyline)`, so the kit's own words lag the studio's. A wall outline with a sharp inward turn was refused as `SK25 the band … crosses itself near (-29, -93) … Draw the stroke as several, one per part-turn, or widen the turn`, which I fixed by rounding the outlines.
+
+**The wall pass: `raise` dug into the slope, and `drape` does not.** A `raise` wall stood one block over the median ground at one flat height, so on a hillside it cut into the uphill side and stood as a cliff on the downhill side. With `drape`, `base_height` 1 and `skirt` 0 the store reads `16 746 walked · 318 scrambled · 212 barrier`, and the barrier count is back to what it was before the fields.
+
+**The drape readings, from columns.** At z −30 the west strip's outer wall is andesite and cobble with its top at y25 beside grass tops at y24 on both sides, so it is one block over the ground. At z −40 the east strip's wall top is y29 beside grass at y28 and the field at y27; the transect there reads `scramble +2` from the field floor, which is the wall plus the slope, not a dug step. The eye render from the lane shows both strips' stone rings rising and falling with the ground.
+
+**Two outlines changed twice.** The lengthened strips lapped at their hairpins (`SK25 … crosses itself near (12, -47)`), so each end was made blunt with extra points, which cleared it, and the west strip's north edge moved south of the apple row.
+
+## The windmill, machinery, scarecrows, cover, boulders and back trees
+
+**The windmill stands on Horse Hill, north of the white horse's head, and nothing is behind the barn any more.** The tower's centre cell is (31, −53) on a flat terrace: a `level` disc at (31.5, −52.5), radius 7.5, cut at y38 after the relief is solved, so the tower stands level however the hill is lifted. The tower covers x 28…34, z −56…−50, the horse lies at z −41.5…−27 below it, and the barn stays at x 12…24. The monument's clearance (x −2…18, z −68…−48) ends ten blocks west of the terrace, and the cairn path ends at (24, −51), four blocks short of the tower.
+
+**The body is straight, with one step.** Seven cells across for eight courses (brick plinth, terracotta, a laid oak log, terracotta), a spruce ledge, then five cells across for six courses, so the whole taper is one block each side. The farmhouse's blocks are kept: terracotta infill, a brick plinth course, a laid oak log band, and a two-wide door in the south wall. The cap is a spruce plate under a three-step brick dome (radius 2.9, 1.9, 0.9 and 2, 3, 4 courses tall) and its top is y56.
+
+**The sails are beams with wool against them.** An axle of dark oak leaves the dome at y55 and runs three blocks to the sail plane at z −47. In that plane a spruce cross, one block thick and 17 blocks tall and wide, is set around the hub, and against one side of each arm sits a three-wide white wool panel, eight blocks long, in the four-way pinwheel arrangement. The beams are one layer and the panels two, because a layer has one span per column. The three sail layers sit at `base_y` 46 with floors counted up from there, because a negative floor raises `SK5`.
+
+**The sails face the enemy.** Team 0 has its mill at negative z, so the axle points +z across the coomb and the wool faces the blue island. Team 1's mirror stands at z 49…55 with its plane at z 46 and faces −z. A `render/eye` from above the coomb at (31, 45, 15), looking north, shows the white pinwheel face on above the tower. From (31, 50, 10) it shows the mirror mill the same way, wool toward the red island.
+
+**The hill is still crossable.** A transect from (31, −70) to (31, −30) walks end to end: the terrace is entered by a two-a-block rise on its north face (three scrambles at z −60…−58), the tower is a barrier as a building should be, and the sails hang 9 blocks over the terrace so the way under them stays open. The transect from (10, −47) to (50, −47) and the diagonal (20, −60) to (40, −40) also walk end to end, the barriers on them being the tower and sail planes only.
+
+**The store, with the mill moved.** Change 57: `16 528 walked · 536 scrambled · 212 barrier`, 98 props placed and none declined, worst step 26 on the enemy route (the coomb, as before), pre-flight passes and the export gate is open, 37.0% dead. The scrambled count rose from 392 to 536: the terrace skirt and a steeper hillside add them, and none are barriers. The isometric reads the mill as a tower with a cross of white sails on each island's rise, and `maps/sonnet55-pippin-coomb` is re-exported at this change.
+
+**Earlier mill, superseded.** The mill behind the barn at (31, −92), built as a stamped-house fork (A) and as four stepped rings (B), is gone from the spec and the board; the finding that a stamped house beside a made part raises `SK18` stands, and a made-only building next to a stamped one raises nothing.
+
+**Farm machinery, as made layers settled with `seat: "ground"`.**
+- **Tractor** at (−26, −96) facing east: red hood, a cab on four glass posts under a roof, a coal-block exhaust stack at (−25, −94), two black wheels of radius 1.5 at the front and two of radius 2.5 behind. It stands by the north-west field's gate.
+- **Flatbed** at (13, −97) facing east: a green cab with a glass front, a railed bed carrying hay bales, three small wheels a side. It stands behind the barn.
+
+**Scarecrows, one to a field and a dozen blocks apart.** A post whose column reads a plank hat, a hay-bale head and a log, with a crossbar of two log columns, at (−35, −99) and (36, −103) in the back fields and at (−9, −35) and (14, −38) in the path strips.
+
+**The ground cover is raised from patches to the whole turf.** `down-cover` over the whole ground is `coverage` 0.8 (from 0.2), `scale` 7, `octaves` 2, `fernShare` 0.18, `tallShare` 0.03, `flowerShare` 0.14 at `flowerScale` 6. Two flower meadows sit on top of it, `west-meadow` at x −44…−36, z −90…−64 and `hill-meadow` at x 18…42, z −66…−48, each `flowerShare` 0.45 and `tallShare` 0. The dead share fell from 42.7% to 37.0%.
+
+**Boulders, three sizes of one flint rock.** `flint-big` (size 2.8, angular) at (41, −60), (−39, −53) and (−27, −26); `flint-mid` (1.9, outcrop) at (30, −67), (−37, −63) and (−20, −52). Two were moved after `DR-CUT` (half buried) and `DR-ROAD` (nearer than two blocks to the orchard track).
+
+**Trees at the back, two species still.** Two large oaks at (−37, −111) and (41, −111) in the back corners, one small oak at (41, −93) behind the north-east field, and three down the west edge at (−41, −86), (−40, −79) and (−41, −72). The first back row at z −110 was declined as `kept clear as the approach in front of a door`: the hall's door lane covers its whole side, so the corners are the only back ground left.
+
+**The store, pre-flight and the picture.** Change 54: `16 672 walked · 392 scrambled · 212 barrier`, 98 props placed and none declined, worst step 26 on the enemy route (the coomb), export gate OPEN, re-exported. The isometric reads as a farm now, with the windmill on Horse Hill, flowers and tall turf over the slopes, and the red tractor beside the farmhouse; the `render/eye` views from the lane and the yard show dense short grass, the stone-ringed fields with scarecrows, and the hill meadow.
