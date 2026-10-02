@@ -199,3 +199,20 @@ Refinement() got an unexpected keyword argument 'theems'
 **Checked before storing.** `POST /terrain/theme-preview` answered the section, wall and fill views; its sample plateau is too short to reach chalk, so it showed only the dirt-to-granite fade, and the deep beds were read on the stored board.
 
 **The isometric now shows turf over a brown band over a red-brown granite fade, with chalk only in the lower third of each cut face.** No face is blotchy white from top to bottom; the coomb's two cliffs read as earth over rock, the horse is still the one white figure on the hill, and the granite reads redder in the picture than I expected. Store: change 38, 64 props placed and none declined, export gate OPEN, re-exported to `maps/sonnet55-pippin-coomb/`.
+
+## Fields
+
+**Four plots of farmland, each its own `field` theme (block 60 over two dirt) with a `FloraProp` that sows it and a one-block fieldstone wall round it.** The wall is a `polyline` shape, `height_mode: "raise"` 1, `skirt` 0, `stroke_edge: "rough"`, in a cobble-and-stone cell, so it follows the terrain. Its outline is the field's outline scaled 1.07 about its centre, and the edge facing the nearest lane is left open as the gate. Coordinates are team 0's; team 1 has the mirror at `z′ = −z−1`. Every `FloraSpec` has `cropShare` 0.95.
+
+| Field | Crops (one per plot) | Ripeness | Plot | Outline (x, z), clockwise from the gate |
+|---|---|---|---|---|
+| `north-west-field`, behind the farmhouse | potatoes, carrots | 0.45, young | 4 | (−29,−104) (−33,−108) (−39,−107) (−40,−98) (−37,−93) (−31,−94) (−29,−99) |
+| `north-east-field`, behind the barn | wheat, carrots | 0.70 | 4 | (29,−101) (31,−107) (38,−108) (41,−104) (38,−97) (32,−95) |
+| `path-field-west`, the large one along the lane to the front | wheat, wheat, potatoes | 0.92, nearly ripe | 5 | (−4,−40) (−5,−33) (−4,−28) (−11,−27) (−14,−31) (−13,−37) (−10,−42) (−5,−43) |
+| `path-field-east`, the other side of the lane | wheat, carrots | 0.85 | 4 | (11,−46) (16,−45) (17,−39) (15,−34) (11,−32) (10,−38) |
+
+**The fields keep the gameplay ground clear.** The back fields stay out of the hall's door lanes (x beyond −31 and 29), the path fields start at z −46 and sit outside the monument's 10-block clearance and the lane's 3-block verge, and every placement was kept with 72 props placed and none declined. A one-block wall adds scrambles, so the store reads `16 580 walked · 424 scrambled · 272 barrier`, against 256 and 212 before.
+
+**What the render shows.** From above the back fields read as bright green plots in grey rings and the path fields as straw-gold ripe wheat in rings; from the eye the west path field is rows of ripe wheat with bare furrows between plots, stepped down the slope. Change 42 onward; re-exported.
+
+**Two kit and studio notes from this round.** The rebuilt kit's `SketchShape` text still lists `path` as a shape type, and the studio answered `SK3 … 'path' … is not a kind the studio draws — it has 5 (rectangle, circle, polygon, lasso, polyline)`, so the kit's own words lag the studio's. A wall outline with a sharp inward turn was refused as `SK25 the band … crosses itself near (-29, -93) … Draw the stroke as several, one per part-turn, or widen the turn`, which I fixed by rounding the outlines.

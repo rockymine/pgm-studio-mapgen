@@ -108,6 +108,11 @@ themes = {
         rim=kit.TopBand(enabled=False, depth=1, material=CHALK),
         surface=kit.TopBand(enabled=True, depth=3, material=depth_stack((EARTH, 1), (DIRT, 2))),
         wallEnabled=True, wallOnTerrainFaces=True, wall=STRATA, fill=STRATA),
+    "field": kit.TerrainTheme(
+        bedrock=kit.BedrockSpec(relative=False, value=1), rimEdges="void", edgesFromGround=True,
+        rim=kit.TopBand(enabled=False, depth=1, material=CHALK),
+        surface=kit.TopBand(enabled=True, depth=3, material=depth_stack((S(id=60), 1), (DIRT, 2))),
+        wallEnabled=True, wallOnTerrainFaces=True, wall=STRATA, fill=STRATA),
     "chalk": kit.TerrainTheme(
         bedrock=kit.BedrockSpec(relative=False, value=1), rimEdges="void", edgesFromGround=True,
         rim=kit.TopBand(enabled=False, depth=1, material=CHALK),
@@ -239,6 +244,34 @@ for patch in (
         disc("grove-3", -17, -48, 3.5, floor=0, height=60, theme="farmstead", keepClear=False)):
     patches.append(patch)
 
+# ── fields: four plots of farmland, each a patch of its own theme with a low wall of fieldstone round it ────
+# A wall is a path shape raised one block over the ground under it, so it follows the terrain; the edge that faces
+# the nearest lane is left out, so each field has its gate.
+FIELDSTONE = cell([(4, 0), (1, 5), (4, 0), (1, 0)], size=2, seed=71, rise=2)
+FIELDS = {   # id: (outline, crops, ripeness, plot scale)
+    "north-west-field": ([(-29, -104), (-33, -108), (-39, -107), (-40, -98), (-37, -93), (-31, -94), (-29, -99)],
+                         ["potatoes", "carrots"], 0.45, 4),
+    "north-east-field": ([(29, -101), (31, -107), (38, -108), (41, -104), (38, -97), (32, -95)],
+                         ["wheat", "carrots"], 0.7, 4),
+    "path-field-west": ([(-4, -40), (-5, -33), (-4, -28), (-11, -27), (-14, -31), (-13, -37), (-10, -42), (-5, -43)],
+                        ["wheat", "wheat", "potatoes"], 0.92, 5),
+    "path-field-east": ([(11, -46), (16, -45), (17, -39), (15, -34), (11, -32), (10, -38)],
+                        ["wheat", "carrots"], 0.85, 4),
+}
+field_walls, field_flora = [], []
+for field_id, (outline, crops, ripeness, scale) in FIELDS.items():
+    patches.append(kit.SketchShape(id=f"{field_id}-soil", type="polygon", operation="add", keepClear=False, floor=0,
+                                   base_height=60, theme="field", vertices=[list(point) for point in outline]))
+    cx = sum(x for x, _ in outline) / len(outline)
+    cz = sum(z for _, z in outline) / len(outline)
+    around = [[round(cx + (x - cx) * 1.07, 1), round(cz + (z - cz) * 1.07, 1)] for x, z in outline]
+    field_walls.append(kit.SketchShape(id=f"{field_id}-wall", type="polyline", operation="add", keepClear=True, floor=0,
+                                       base_height=1, height_mode="raise", skirt=0, radius=0.6, stroke_edge="rough",
+                                       stroke_seed=len(field_walls) + 3, vertices=around, material=FIELDSTONE))
+    field_flora.append(kit.FloraProp(id=field_id, seed=80 + len(field_flora), points=[list(point) for point in outline],
+                                     spec=kit.FloraSpec(cropShare=0.95, crops=crops, ripeness=ripeness, scale=scale)))
+patches += field_walls
+
 # the white horse: cut into the south face of Horse Hill, drawn upright for someone standing south of it
 HORSE_X, HORSE_Z = 19.0, -27.0
 
@@ -337,6 +370,7 @@ props += [
                   spec=kit.FloraSpec(coverage=0.8, scale=3, fernShare=0, tallShare=0, flowerShare=0, mushroomShare=0.7)),
     kit.FloraProp(id="grove-fungi", seed=62, points=[[-45, -52], [-14, -52], [-14, -44], [-45, -44]],
                   spec=kit.FloraSpec(coverage=0.5, scale=4, fernShare=0, tallShare=0, mushroomShare=0.4)),
+    *field_flora,
     kit.FloraProp(id="down-cover", seed=60, points=[[-43, -111], [42, -111], [42, -14], [-43, -14]],
                   spec=kit.FloraSpec(coverage=0.2, scale=9, fernShare=0, tallShare=0.02, flowerShare=0.12,
                                      flowerScale=7)),
