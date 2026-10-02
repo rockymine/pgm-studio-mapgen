@@ -197,8 +197,9 @@ shapes = [{**kit.SketchShape(id="rim-turf", type="polygon", operation="add",
            **kit.ShapeJoin(group="team")}]
 
 # --- dressing --------------------------------------------------------------------------------------------
-# The copied trees, each the showcase tree it names, as corpus/tree-showcase/trees.json carries it.
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+# The copied trees, each the showcase tree it names, as the studio's tree library carries it.
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 styles = {key: kit.build("TreeStyle", SHOWCASE[tree]["style"]) for key, tree in {
     "tree-showcase-r8-2": "acacia-2", "tree-showcase-r8-4": "acacia-4"}.items()}
 styles["works"] = kit.library("banded-stone-house", kind="house")

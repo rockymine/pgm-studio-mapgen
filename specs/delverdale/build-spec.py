@@ -9,6 +9,7 @@ Every rectangle is written in blocks and divided by the cell here, so the number
 """
 import json
 import os
+import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -375,9 +376,10 @@ WORKS = house_style(solid(5, 5), [
 ], gable=solid(5, 5), pitch=1)
 
 # the copied trees are the showcase's own: each key names the showcase tree it is, and its recipe
-# comes whole from the showcase snapshot
-with open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")) as handle:
-    SHOWCASE = json.load(handle)["trees"]
+# comes whole from the studio's tree library
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 TREES = {key: SHOWCASE[name]["style"] for key, name in {
     "oak-1": "tiny-oak-1", "oak-2": "tiny-oak-2", "oak-5": "tiny-oak-5", "oak-8": "tiny-oak-8",
     "oak-great-3": "oak-7", "oak-great-5": "oak-9",

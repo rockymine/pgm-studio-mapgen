@@ -2,7 +2,7 @@
 tarn is the open ground in front of it, and whoever crosses the ice does so in plain view. Either side of
 the valley a spruce-clad shoulder gives the long way round, and the height. The lodge at the valley head is
 the spawn."""
-import json, os
+import json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 SLUG = "fable-hollin-tarn"
@@ -115,7 +115,9 @@ LOFT = storey(3, [{"material": PLANK_S, "thickness": 2}, {"material": LAID, "thi
 LODGE = lodge([GROUND, LOFT], beams=True)
 HUT = lodge([storey(3, [{"material": STONEFOOT, "thickness": 1}, {"material": PLANK_S, "thickness": 2}, {"material": LAID, "thickness": 1}], LOG_S, WIN_PANE)], beams=False)
 
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 def tree(pid, x, z, style, seed):
     return {"id": pid, "kind": "tree", "seed": seed, "layer": "ground", "x": x, "z": z, "style": style}
 ERRATIC = {"kind": "noise", "seed": 51, "scale": 3, "octaves": 1, "stops": [STONE, COBBLE, ANDESITE], "rise": 2}

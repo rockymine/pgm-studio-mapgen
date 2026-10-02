@@ -265,10 +265,12 @@ if STAGE >= 4:
     finish["addLayers"] += made(stacks.done(), "hay-stacks", seat="ground")
 
     # Two species and no third: willows (row r17) on the ring and the back bar, and under them a small oak (row r6),
-    # each the showcase tree it names, as corpus/tree-showcase/trees.json carries it.
+    # each the showcase tree it names, as the studio's tree library carries it.
     WILLOW = [f"tree-showcase-r17-{i}" for i in range(1, 6)]
     OAK = [f"tree-showcase-r6-{i}" for i in (1, 4, 6)]
-    SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+    sys.path.insert(0, os.path.join(ROOT, "tools"))
+    from showcase import trees as studio_trees
+    SHOWCASE = studio_trees()
     styles.update({key: kit.build("TreeStyle", SHOWCASE[tree]["style"]) for key, tree in {
         "tree-showcase-r17-1": "willow-1", "tree-showcase-r17-2": "willow-2", "tree-showcase-r17-3": "willow-3",
         "tree-showcase-r17-4": "willow-4", "tree-showcase-r17-5": "willow-5", "tree-showcase-r6-1": "tiny-oak-1",

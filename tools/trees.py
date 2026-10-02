@@ -15,9 +15,9 @@ better is the same tree. `verify` finds every tree body in a built world and rep
 is, its wood and leaves block for block under identity or a half turn, and what data bits the leaves carry,
 which is how a drive is checked to have planted what the spec named.
 
-The trees a board plants are cut by `pgm-studio/tools/seed-trees.cs`, into a studio's library and, with
-`--json`, into `corpus/tree-showcase/trees.json`, the snapshot every board copies a tree from and the one
-`verify` reads.
+The trees a board plants are cut by `pgm-studio/tools/seed-trees.cs` into the studio's seed folder, which every
+studio files into its tree library; `verify` reads them from the studio being driven, as a board does
+(`showcase.py`).
 """
 import json
 import os
@@ -160,14 +160,10 @@ def match():
     print("catalogue trees used, by index: " + ", ".join(f"#{k} x{n}" for k, n in sorted(used.items())))
 
 
-SNAPSHOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "corpus", "tree-showcase",
-                        "trees.json")
-
-
 def verify():
+    from showcase import trees as studio_trees
     world = World(sys.argv[2])
-    with open(SNAPSHOT) as handle:
-        named = {key: tree["style"] for key, tree in json.load(handle)["trees"].items()}
+    named = {key: tree["style"] for key, tree in studio_trees().items() if tree["foot"] is not None}
     minimum = int(option("--min", 20))
     voxels = world.voxels()
     turns = {"none": SYMMETRIES["none"], "rot 180": SYMMETRIES["rot 180"]}

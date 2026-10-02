@@ -122,10 +122,10 @@ because there is an answer to *why here*:
   space rather than cut with a `subtract`: `SK13` reads a subtract as the board's negative
   space and refuses any add that fills it, on any layer.
 - **copied trees rather than the vanilla stamp.** A `copied` recipe carries a `body` block for
-  block, and `corpus/tree-showcase/trees.json` holds every tree of the showcase world as
+  block, and the studio's tree library holds every tree of the showcase world as
   `pgm-studio/tools/seed-trees.cs` cuts it. State each under a name of the board's own in
-  `dressing.styles`, as the recipe the snapshot gives the showcase tree it is, and let the
-  placements name those.
+  `dressing.styles`, as the recipe `tools/showcase.py` reads for the showcase tree it is, and let
+  the placements name those.
   **A seeded name is `<kind>-<n>` and the kind is the author's** — `large-pine`, `olive`, `jungle`,
   `willow-1`…`willow-5` — as `corpus/README.md`'s table states it per band. The log a tree is built of
   is **not** what it is.
@@ -143,11 +143,6 @@ opening anything else. `techniques/README.md` indexes them.
 
 **Every card's world is in the studio, so a card can be opened as well as read.** Each names its slug —
 `technique-<card>` — and `tools/seed-studio.py --check` says whether this database has them.
-
-**It answers for the copied trees too, and those are the half a fresh studio is missing.** A studio seeds
-its own library on every boot — materials, house presets, themes, biomes, four boulders and the seven
-vanilla tree species — but the 94 trees cut out of `corpus/tree-showcase` are this repository's, and
-`--check` reporting none of them means the recipe named two sections below does not exist yet.
 
 **A card's variants stand side by side in one world, which is what makes the comparison the lesson.** Read
 the two nearest what is about to be built, and say what separates their panels before authoring anything —

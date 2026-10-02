@@ -9,11 +9,14 @@ courses of earth as a volume, the author's copied trees, granite roads, ferns on
     python3 specs/fable-mossgill/build.py
     python3 tools/drive.py specs/fable-mossgill "Mossgill" --out maps/fable-mossgill
 """
+import sys
 import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 
 # ── the plan ──────────────────────────────────────────────────────────────────────────────────────────
 GOAL = [-29, -28]

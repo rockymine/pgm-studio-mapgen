@@ -453,8 +453,10 @@ def dressing():
     # leaves (162:12 under 18:14) at fifteen and thirteen blocks, which is a pine silhouette and not
     # a dry-country tree; a showcase name is not a species, so what a body is has to be read off its
     # leaf id -- `thorn-1/2` are acacia under acacia. Each key names the showcase tree it is, and
-    # its recipe comes whole from the showcase snapshot.
-    showcase = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+    # its recipe comes whole from the studio's tree library.
+    sys.path.insert(0, os.path.join(ROOT, "tools"))
+    from showcase import trees as studio_trees
+    showcase = studio_trees()
     styles = {key: showcase[tree]["style"] for key, tree in {
         "thorn-1": "acacia-4", "thorn-2": "acacia-7"}.items()}
     styles["shed"] = pan_house()

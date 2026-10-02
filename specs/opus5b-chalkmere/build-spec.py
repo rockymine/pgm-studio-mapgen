@@ -297,8 +297,9 @@ yard_wall = kit.AddedLayer(
 # which is a raster of the cells a footprint's minimum corner may sit on; none
 # was chosen by eye.
 
-# The copied trees, each the showcase tree it names, as corpus/tree-showcase/trees.json carries it.
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+# The copied trees, each the showcase tree it names, as the studio's tree library carries it.
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 
 styles = {key: kit.build("TreeStyle", SHOWCASE[tree]["style"]) for key, tree in {
     "beech": "dense-oak-3",     # the shaw

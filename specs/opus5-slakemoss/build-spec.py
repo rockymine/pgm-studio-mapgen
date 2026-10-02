@@ -12,6 +12,7 @@ round the fen on either flank, dry and slow and out of sight.
 The green is the moss on the stone and the fen round it, and it is the board's own colour
 rather than a tint: mossy cobble, mossy brick, podzol and peat water under a swamp sky.
 """
+import sys
 import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -305,8 +306,10 @@ ADD_LAYERS = [
 
 # ---------------------------------------------------------------- dressing
 # the copied trees are the showcase's own: each key names the showcase tree it is, and its
-# recipe comes whole from the showcase snapshot
-SHOWCASE = json.load(open(os.path.join(REPO, "corpus", "tree-showcase", "trees.json")))["trees"]
+# recipe comes whole from the studio's tree library
+sys.path.insert(0, os.path.join(REPO, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 STYLES = {key: SHOWCASE[name]["style"] for key, name in {
     "carr-tall": "large-pine-3", "carr-dense": "dense-oak-7",
     "scrub-a": "olive-3", "scrub-b": "olive-5"}.items()}

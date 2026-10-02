@@ -5,6 +5,7 @@ canyon-mouth bays. Relief in four layers — the rim (one scarp per run, broken 
 down), the bench and the lip, the canyon (a line mark with a ford where it shallows), and flat-topped
 buttes (crownless pushes on short falloffs). Unthemed. Team 0 is authored on x < 0; rot_180 fans it.
 """
+import sys
 import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -205,7 +206,9 @@ with open(os.path.join(HERE, "paint.json")) as f:
 
 # The dressing's copied trees are the showcase world's: each key names the showcase tree it is, and its recipe
 # is read whole from the showcase snapshot.
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 finish["dressing"]["styles"].update({key: SHOWCASE[tree]["style"] for key, tree in {
     "acacia-a": "acacia-1", "acacia-b": "acacia-3", "acacia-c": "acacia-5", "olive": "olive-2"}.items()})
 

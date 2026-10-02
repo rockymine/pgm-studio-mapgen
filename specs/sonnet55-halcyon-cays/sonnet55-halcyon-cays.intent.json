@@ -1,0 +1,166 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "reflected": false,
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 9,
+    "z": -95
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -105,
+     "maxX": 10,
+     "maxZ": -85
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -8,
+    "minZ": -103,
+    "maxX": 8,
+    "maxZ": -87
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "reflected": true,
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 9,
+    "z": 95
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 85,
+     "maxX": 10,
+     "maxZ": 105
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": -8,
+    "minZ": 87,
+    "maxX": 8,
+    "maxZ": 103
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 24,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": []
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Red Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 8,
+    "y": 9,
+    "z": -53
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Blue Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 8,
+    "y": 9,
+    "z": 52
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Halcyon Cays",
+  "created": "2026-10-02",
+  "authors": [
+   {
+    "name": "Sonnet 5.5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

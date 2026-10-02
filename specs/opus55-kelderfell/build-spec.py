@@ -5,6 +5,7 @@ Ground: the outline reshaped point by point, then relief in five layers — a le
 a fell massif off the north-back corner, a south headland, and a tarn hollow with a knoll.
 Unthemed. Team 0 is authored on x < 0; rot_180 fans it.
 """
+import sys
 import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -121,7 +122,9 @@ with open(os.path.join(HERE, "paint.json")) as f:
 
 # The dressing's copied trees are the showcase world's: each key names the showcase tree it is, and its recipe
 # is read whole from the showcase snapshot.
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 finish["dressing"]["styles"].update({key: SHOWCASE[tree]["style"] for key, tree in {
     "spruce-a": "tiny-spruce-2", "spruce-b": "tiny-spruce-3", "spruce-c": "tiny-spruce-5",
     "birch-a": "birch-1", "birch-b": "birch-3"}.items()})

@@ -13,7 +13,7 @@ The darkness is the rock's own and not a shadow: the face bands are coal block a
 stained clay, and the only green on the board is the weed on the drowned shelf, which is
 where a player stands when they are in the water.
 """
-import json, os
+import json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
@@ -330,7 +330,9 @@ ADD_LAYERS = [{"id": "crown", "name": "crown", "base_y": 0, "kind": "made",
                            "shapeIds": [x["id"] for x in crown_shapes]}]}]
 
 # ---------------------------------------------------------------- dressing
-SHOWCASE = json.load(open(os.path.join(REPO, "corpus", "tree-showcase", "trees.json")))["trees"]
+sys.path.insert(0, os.path.join(REPO, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 STYLES = {key: SHOWCASE[name]["style"] for key, name in {
     "scrub-a": "olive-1", "scrub-b": "olive-4"}.items()}
 STYLES["watch"] = {"library": "hoar-watch", "kind": "house", "shell": watch_shell()}

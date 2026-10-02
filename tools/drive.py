@@ -90,7 +90,7 @@ What each key states:
                   kind left unbound stands in the built-in bedrock box, which every build answers
                   WX14
   dressing        {"styles": ..., "props": [...]};  a house prop's "style" names a library row the
-                  same way, and a copied tree is the recipe corpus/tree-showcase/trees.json states.
+                  same way, and a copied tree is the recipe the studio's tree library answers.
                   A style in "styles" is a discriminated PropStyle: a house is
                   {"kind": "house", "shell": <HouseStyle>}, and a bare HouseStyle is refused DR-DOC
   shops           [{"id", "name", "keeper": {"name", "mob"}, "categories": [...]}] -> intent.shops. The

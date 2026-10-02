@@ -7,6 +7,7 @@ gorge, and the whole team unit is stated at one surface so the relief alone give
 """
 import copy
 import json
+import sys
 from pathlib import Path
 
 HERE = Path(__file__).parent
@@ -287,7 +288,9 @@ def finish():
     }
 
 
-SHOWCASE = json.loads((ROOT / "corpus" / "tree-showcase" / "trees.json").read_text())["trees"]
+sys.path.insert(0, str(ROOT / "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 
 
 def paint():

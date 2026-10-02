@@ -16,6 +16,7 @@ stands between its wools rather than behind both of them.
 The one idea: a limestone moor whose only made ground is the causey in the middle of the crossing
 and the walled garths the wools sit in, and everything between is grown.
 """
+import sys
 import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -333,7 +334,9 @@ stell = hall(stack([(1, SPRUCE)], "repeat"), [GROUND_STOREY, UPPER_STOREY])
 laithe = hall(stack([(1, SPRUCE)], "repeat"), [dict(GROUND_STOREY, clear=6)])
 
 # ── what stands on the board ─────────────────────────────────────────────────────────────────────
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 tree_styles = {key: SHOWCASE[name]["style"] for key, name in {
     "thorn-1": "acacia-1", "thorn-2": "acacia-3", "thorn-3": "acacia-6",
     "spar-1": "tiny-spruce-2", "spar-2": "tiny-spruce-4"}.items()}

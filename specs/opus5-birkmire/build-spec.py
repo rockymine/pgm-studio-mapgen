@@ -14,6 +14,7 @@ The ground is finished by its ANGLE. A mire is flat, so almost all of it takes t
 second is the drier shoulder of a hummock and the third is a peat hag's cut face, which is the one
 dark thing on the board and is dark because it is a hole in the ground.
 """
+import sys
 import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -262,8 +263,10 @@ hut = bothy_style([dict(GROUND_STOREY, clear=4)])
 
 # ── what stands on it ────────────────────────────────────────────────────────────────────────────
 # The birches are the showcase's, every second tree of its birch row, each the recipe
-# corpus/tree-showcase/trees.json states for it.
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+# the studio's tree library states for it.
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 BIRCHES = {f"tree-showcase-r13-{n}": f"birch-{n}" for n in (2, 4, 6, 8, 10)}
 BIRCH_KEYS = list(BIRCHES)
 

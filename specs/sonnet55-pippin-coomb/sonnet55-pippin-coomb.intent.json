@@ -1,0 +1,176 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 10,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-0",
+    "image": 0
+   },
+   "reflected": false,
+   "team": "red",
+   "point": {
+    "x": -2,
+    "y": 34,
+    "z": -102
+   },
+   "protection": [
+    {
+     "minX": -12,
+     "minZ": -112,
+     "maxX": 8,
+     "maxZ": -84
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "-x",
+    "+x"
+   ],
+   "footprint": {
+    "minX": -11,
+    "minZ": -111,
+    "maxX": 7,
+    "maxZ": -93
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-0",
+    "image": 1
+   },
+   "reflected": true,
+   "team": "blue",
+   "point": {
+    "x": -2,
+    "y": 34,
+    "z": 102
+   },
+   "protection": [
+    {
+     "minX": -12,
+     "minZ": 84,
+     "maxX": 8,
+     "maxZ": 112
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-x",
+    "+x"
+   ],
+   "footprint": {
+    "minX": -11,
+    "minZ": 93,
+    "maxX": 7,
+    "maxZ": 111
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 49,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -44,
+    "minZ": -16,
+    "maxX": 44,
+    "maxZ": 16
+   }
+  ],
+  "holes": []
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Red Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 8,
+    "y": 34,
+    "z": -58
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Blue Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 8,
+    "y": 34,
+    "z": 57
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Pippin Coomb",
+  "created": "2026-10-02",
+  "authors": [
+   {
+    "name": "Claude Sonnet 5.5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": null
+}

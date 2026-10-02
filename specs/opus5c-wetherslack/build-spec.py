@@ -322,8 +322,9 @@ add_shapes = [
 
 # ---------------------------------------------------------------- the dressing
 
-# The copied trees, each the showcase tree it names, as corpus/tree-showcase/trees.json carries it.
-SHOWCASE = json.load(open(os.path.join(ROOT, "corpus", "tree-showcase", "trees.json")))["trees"]
+# The copied trees, each the showcase tree it names, as the studio's tree library carries it.
+from showcase import trees as studio_trees
+SHOWCASE = studio_trees()
 styles = {key: kit.build("TreeStyle", SHOWCASE[tree]["style"]) for key, tree in {
     "oak": "dense-oak-5",        # dense oak — the gill's wood
     "birch": "birch-4",          # birch — the shoulders
