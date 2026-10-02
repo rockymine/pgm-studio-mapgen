@@ -169,10 +169,11 @@ def build(selected):
     report = []
     for chunk in selected:
         ox, oz = placed[chunk.name]
-        cells = {(ox + x, BASE + y, oz + z): block for (x, y, z), block in chunk.blocks.items()}
-        out = [(x, y, z) for (x, y, z) in chunk.blocks if not (0 <= x < 16 and 0 <= z < 16 and -BASE < y < 32)]
+        inside = lambda x, y, z: 0 <= x < 16 and 0 <= z < 16 and -BASE < y < 32   # noqa: E731
+        out = [cell for cell in chunk.blocks if not inside(*cell)]
         if out:
-            print(f"  ! {chunk.name}: {len(out)} blocks outside the chunk, e.g. {out[:3]}")
+            print(f"  ! {chunk.name}: {len(out)} blocks outside the chunk left out, e.g. {out[:3]}")
+        cells = {(ox + x, BASE + y, oz + z): block for (x, y, z), block in chunk.blocks.items() if inside(x, y, z)}
         made_layers = add(cells, chunk.name) if cells else []
         layers += made_layers
         report.append({"name": chunk.name, "title": chunk.title, "blurb": chunk.blurb, "origin": [ox, oz],
