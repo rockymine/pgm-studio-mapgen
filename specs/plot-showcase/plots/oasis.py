@@ -5,16 +5,16 @@ import math
 
 from kit import Chunk
 
-POOL_X, POOL_Z, POOL_RX, POOL_RZ = 9.0, 21.0, 5.5, 4.0
-HOLLOW = ((8.0, -2), (6.5, -3))            # radius, top course of the hollow's steps
-WATER_TOP = -4
-POOL_BED = -7
+POOL_X, POOL_Z, POOL_RX, POOL_RZ = 10.0, 23.5, 6.0, 4.2
+HOLLOW = ((8.0, -3), (6.8, -5))            # radius, top course of the hollow's steps
+WATER_TOP = -6
+POOL_BED = -9
 LEAF = "18:7"
 SMOOTH, CHISEL, PLAIN = "24:2", "24:1", "24:0"
 RED_SMOOTH, RED_CHISEL, RED = "179:2", "179:1", "179:0"
-DUNES = ((5, 4, 10.5, 6), (30, 30, 6, 3), (4, 13, 4, 3))            # cx, cz, r, h as handed to c.hill
-GRASS_PATCH = (14, 11, 3.5, 1)                                         # soil under the olive
-TERRACE = (24, 6, 7.5, 2)                                            # cx, cz, r, h as handed to c.mound
+DUNES = ((10, 10, 10, 6), (28, 28, 3.5, 3))            # cx, cz, r, h as handed to c.hill
+GRASS_PATCH = (16, 18, 3, 1)                                         # soil under the olive
+TERRACE = (25, 7, 6.5, 2)                                            # cx, cz, r, h as handed to c.mound
 TOMB_X1, TOMB_Z1, TOMB_FLOOR = 9, 8, -8
 SHAFT = ((7, 1), (8, 1), (7, 2), (8, 2))
 NEIGHBOURS = ((1, 0), (-1, 0), (0, 1), (0, -1))
@@ -125,42 +125,40 @@ def palm(c, x, z, lean, height):
 
 
 def pillar(c, x, z, height, broken=False):
-    b = base(x, z)
-    c.set(x, b, z, CHISEL)
+    c.set(x, base(x, z), z, CHISEL)
     for y in range(1, height):
-        c.set(x, b + y, z, RED_SMOOTH if y == 3 else SMOOTH)
-    c.set(x, b + height, z, "44:1" if broken else CHISEL)
+        put(c, x, z, y, RED_SMOOTH if y == 3 else SMOOTH)
+    put(c, x, z, height, "44:1" if broken else CHISEL)
 
 
 def ruins(c):
     """On the terrace: an arch of two pillars, one broken, an altar, a fallen column, rubble and a forecourt."""
-    flat(19, 3, 29, 9, 1)
-    b = 2
-    pillar(c, 20, 6, 7)
-    pillar(c, 25, 6, 5, broken=True)
-    c.set(21, b + 7, 6, "128:5"); c.set(21, b + 6, 6, SMOOTH)            # the arch springing from the tall pillar
-    c.set(22, b + 7, 6, "44:9"); c.set(22, b + 6, 6, "128:5")
-    c.set(23, b + 6, 6, "44:1"); c.set(23, b + 5, 6, "128:0")
-    c.set(24, b + 4, 6, "44:1")
-    pillar(c, 28, 10, 3, broken=True)                                    # stumps and a fallen column
-    pillar(c, 22, 10, 2, broken=True)
-    for x in range(23, 28):
-        c.set(x, b, 8, SMOOTH)
-    c.set(28, b, 8, "128:0"); c.set(28, b, 7, "128:3")
-    for x, z, block in ((19, 4, "44:1"), (27, 4, "44:1"), (23, 4, "128:2"), (28, 5, RED_CHISEL), (21, 5, "44:1"),
-                        (26, 10, "128:1"), (19, 8, "44:9"), (29, 8, "44:1"), (27, 11, RED), (23, 11, "44:1")):
-        c.set(x, b, z, block)
-    c.set(28, b + 1, 5, "44:1")
-    for x in range(20, 26):                                              # paved forecourt, sand-drifted
+    pillar(c, 21, 6, 7)
+    pillar(c, 26, 6, 5, broken=True)
+    top = base(21, 6)
+    c.set(22, top + 7, 6, "128:5"); c.set(22, top + 6, 6, SMOOTH)        # the arch springing from the tall pillar
+    c.set(23, top + 7, 6, "44:9"); c.set(23, top + 6, 6, "128:5")
+    c.set(24, top + 6, 6, "44:1"); c.set(24, top + 5, 6, "128:0")
+    c.set(25, top + 4, 6, "44:1")
+    pillar(c, 29, 10, 3, broken=True)                                    # stumps and a fallen column
+    pillar(c, 23, 10, 2, broken=True)
+    for x in range(24, 29):
+        put(c, x, 8, 0, SMOOTH)
+    put(c, 29, 8, 0, "128:0"); put(c, 29, 7, 0, "128:3")
+    for x, z, block in ((20, 4, "44:1"), (28, 4, "44:1"), (24, 4, "128:2"), (29, 5, RED_CHISEL), (22, 5, "44:1"),
+                        (27, 10, "128:1"), (20, 8, "44:9"), (30, 8, "44:1"), (28, 11, RED), (24, 11, "44:1")):
+        put(c, x, z, 0, block)
+    put(c, 29, 5, 1, "44:1")
+    for x in range(21, 27):                                              # paved forecourt, sand-drifted
         for z in (7, 8):
-            if (x, z) not in c.blocks:
-                c.set(x, b - 1, z, SMOOTH if (x + z) % 3 else RED_SMOOTH)
-    c.set(22, b - 1, 6, RED_CHISEL); c.set(22, b - 1, 5, SMOOTH); c.set(23, b - 1, 6, SMOOTH)
-    c.set(22, b, 4, CHISEL); c.set(22, b + 1, 4, "85"); c.set(22, b + 2, 4, "89")      # altar and brazier
+            if (x, base(x, z), z) not in c.blocks:
+                c.set(x, ground(x, z), z, SMOOTH if (x + z) % 3 else RED_SMOOTH)
+    c.set(23, ground(23, 6), 6, RED_CHISEL); c.set(23, ground(23, 5), 5, SMOOTH); c.set(24, ground(24, 6), 6, SMOOTH)
+    put(c, 23, 4, 0, CHISEL); put(c, 23, 4, 1, "85"); put(c, 23, 4, 2, "89")           # altar and brazier
 
 
 def tent(c):
-    x0, x1, z0, z1 = 20, 26, 15, 19
+    x0, x1, z0, z1 = 22, 28, 15, 19
     flat(x0 - 1, z0 - 1, x1 + 2, z1 + 2)
     for x in range(x0, x1 + 1):
         stripe = "35:14" if (x - x0) % 2 == 0 else "35:0"
@@ -183,7 +181,7 @@ def tent(c):
     c.set(x0 + 1, 0, z1 - 1, "126:8"); c.set(x0 + 2, 0, z1 - 1, "126:8"); c.set(x0 + 3, 0, z1 - 1, "126:8")
     c.set(x0 + 1, 1, z1 - 1, "140"); c.set(x0 + 3, 1, z1 - 1, "140")
     c.set(x0 + 5, 0, z1 - 1, "145:0")
-    c.set(x0 + 3, 2, z0 + 1, "89"); c.set(x0 + 3, 2, z0 + 2, "85") if False else None
+    c.set(x0 + 3, 2, z0 + 1, "89")
     for dz in (1, 2):                                                    # sacks and crates beside the tent
         c.set(x1 + 1, 0, z0 + dz, "35:12")
     c.set(x1 + 1, 1, z0 + 1, "35:12"); c.set(x1 + 2, 0, z0 + 1, "170:0")
@@ -191,33 +189,32 @@ def tent(c):
 
 def camel(c):
     """A pack camel in coarse dirt: fence legs, a long body with a saddled hump, a lean neck and a head."""
-    x, z = 21, 24
+    x, z = 23, 23
     flat(x - 4, z - 1, x + 5, z + 1)
     for dx, dz in ((0, 0), (0, 1), (4, 0), (4, 1)):
         c.box(x + dx, 0, z + dz, x + dx, 2, z + dz, "85")
     for dx in range(0, 5):
         for dz in (0, 1):
-            c.set(x + dx, 3, z + dz, "3:1")
+            c.set(x + dx, 3, z + dz, "172")
     for dx in (1, 2, 3):
         for dz in (0, 1):
-            c.set(x + dx, 4, z + dz, "3:1")
+            c.set(x + dx, 4, z + dz, "172")
     for dz in (0, 1):
         c.set(x + 1, 5, z + dz, "171:14"); c.set(x + 2, 5, z + dz, "171:0"); c.set(x + 3, 5, z + dz, "171:14")
     for dx, dy in ((-1, 4), (-1, 5), (-2, 5), (-2, 6), (-3, 6), (-3, 7)):
-        c.set(x + dx, dy, z, "3:1")
+        c.set(x + dx, dy, z, "172")
     c.set(x + 5, 3, z + 1, "85"); c.set(x + 5, 2, z + 1, "85")           # tail
 
 
 def bones(c):
-    """A half-buried ribcage with a skull."""
-    x0, z0 = 1, 30
-    flat(x0 - 1, z0 - 1, x0 + 7, z0 + 1)
+    """A half-buried ribcage with a skull, on the terrace's foot."""
+    x0, z0 = 19, 13
     for i in range(6):
-        c.set(x0 + i, 0, z0, "44:7")
-    c.set(x0 + 6, 0, z0, "144:1")
+        put(c, x0 + i, z0, 0, "44:7")
+    put(c, x0 + 6, z0, 0, "144:1")
     for i in (1, 3, 4):
         for dz in (-1, 1):
-            c.set(x0 + i, 0, z0 + dz, "44:7"); c.set(x0 + i, 1, z0 + dz, "44:7")
+            put(c, x0 + i, z0 + dz, 0, "44:7"); put(c, x0 + i, z0 + dz, 1, "44:7")
 
 
 def tomb(c):
@@ -242,7 +239,7 @@ def tomb(c):
             c.set(TOMB_X1, y, z, RED_CHISEL if y == f + 2 else CHISEL if y == f + 3 else SMOOTH)
     for y in range(f, 5):
         c.set(8, y, 1, "65:4") if y <= dune_top(9, 1) else None          # ladder up the shaft
-    for x, z in ((4, 0), (0, 8), (4, 8), (8, 8), (0, 0)):               # supporting columns
+    for x, z in ((4, 0), (0, 8), (4, 8), (8, 8)):                        # supporting columns
         c.box(x, f, z, x, -3, z, SMOOTH)
         c.set(x, f, z, CHISEL); c.set(x, -3, z, CHISEL)
     c.box(2, f, 4, 4, f, 5, CHISEL)                                      # sarcophagus with a slab lid
@@ -262,10 +259,10 @@ def tomb(c):
 
 def plants(c):
     """Cacti, dead bushes and sugar cane on the open sand."""
-    spots = ((15, 3, 3), (30, 13, 2), (2, 22, 2), (27, 16, 3), (8, 12, 1), (13, 1, 2), (1, 30, 1), (30, 21, 1),
-             (13, 15, 1), (14, 29, 2))
+    spots = ((16, 3, 3), (30, 14, 2), (1, 24, 2), (30, 22, 3), (21, 13, 1), (14, 1, 2), (1, 28, 1), (20, 28, 1),
+             (20, 20, 1), (14, 30, 2))
     for x, z, height in spots:
-        if (x, base(x, z), z) not in c.blocks and not in_pool(x, z) and cut_top(x, z) is None:
+        if (x, base(x, z), z) not in c.blocks and not in_pool(x, z) and cut_top(x, z) is None and (x, z) not in SHAFT:
             for dy in range(height):
                 put(c, x, z, dy, "81")
     for x, z in ((12, 14), (18, 12), (2, 18), (24, 22), (28, 13), (7, 30), (17, 7), (30, 24), (6, 11), (16, 22)):
@@ -291,9 +288,9 @@ def build():
     camel(c)
     bones(c)
     plants(c)
-    palm(c, 4, 19, (2, 0), 8)
-    palm(c, 14, 25, (-1, -1), 7)
-    c.tree(14, 11, "olive-6")
+    palm(c, 5, 21, (2, 0), 8)
+    palm(c, 16, 27, (-1, -1), 7)
+    c.tree(16, 18, "olive-6")
     c.cover([(0, 0), (32, 0), (32, 32), (0, 32)], coverage=0.25, deadBushShare=0.5, cactusShare=0.35,
             tallShare=0.0, flowerShare=0.0, fernShare=0.0)
     return c

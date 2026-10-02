@@ -788,6 +788,14 @@ note ids are listed in `reports/opus55-notes-run.md`, which is the run's account
 |---|---|---|---|
 | `chunk-showcase` | — | Claude | **A 4 x 3 grid of chunks on real chunk boundaries, a chunk apart, joined by plank bridges at their surface height, with a spawn platform to the south**: a forgotten crypt over a lava-lit vault, a hunters' camp with a stash cave, a wizard's tower over a mushroom cellar, a fisherman's pond with a stilt hut, an abandoned mine in a terraced hill, a windmill farm with a root cellar, a smithy with a stock cellar, a desert oasis over a tomb, a lighthouse with a cove and a smugglers' cave, a chapel and churchyard over a burial gallery, a snowy outpost over an ice cave, and a stepped jungle shrine over a treasure vault. 8,906 made blocks, 127 layers, 6,236 shapes, 35 dressing props placed. One visitor team and no objective |
 
+### Claude, with two Sonnet 5 helpers — the twelve points of interest given room (2026-10-02)
+
+**The chunk showcase's twelve points of interest re-composed on 32 x 32 plots of four chunks each, with the same things on each plot, laid out with space between them and relief under them.** The author's ruling on the chunks was that they were crammed, which a 16 x 16 column made inevitable. Each plot keeps its chunk's buildings, props, trees, boulders and cave. Buildings grow by about a third, small props keep their size, and the ground takes knolls, terraced hills, dells, ridges and headlands. `specs/plot-showcase/plots/` holds one file per plot, and the board, kit and tree registry are the chunk showcase's (`board_builder.py`, `kit.py`). Round ground is clipped to its plot. Built on a session's own studio.
+
+| Board | Mode | Author | What it turned out to be |
+|---|---|---|---|
+| `plot-showcase` | — | Claude | **A 4 x 3 grid of 32 x 32 plots on chunk boundaries, half a plot apart, bridged at their surface height, with a spawn platform to the south**: the crypt ruin on a ridge over its vault, the camp in a clearing under a spruce knoll, the wizard's tower on a two-step knoll above a pond, the fishing hut on stilts in a dell pond, the mine's adit driven into a terraced hill, the windmill on a rise above its fields, the smithy on a terrace under a wooded rise, the oasis pool in a hollow under a dune, the lighthouse on a terraced headland over a curving cove, the chapel on a knoll above its churchyard, the outpost's watchtower on a knoll over an ice cave, and the jungle temple behind its lily moat among hummocks. 16,409 made blocks, 125 layers, 9,847 shapes, 40 dressing props placed and none declined. One visitor team and no objective |
+
 ## Not boards
 
 Folders under `maps/` or `specs/` that exist for a reading rather than for a game. They are named

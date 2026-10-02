@@ -32,6 +32,42 @@ def origins(names, step):
             for index, name in enumerate(names)}
 
 
+def circle_points(cx, cz, r, segments=40):
+    import math
+    return [(cx + r * math.cos(2 * math.pi * k / segments), cz + r * math.sin(2 * math.pi * k / segments))
+            for k in range(segments)]
+
+
+def clip_to_square(points, size):
+    """A polygon cut to the plot's square, so round ground reaching past the edge stops at it rather than
+    building terrain outside the plot."""
+    def clip(polygon, inside, cross):
+        out = []
+        for index, current in enumerate(polygon):
+            previous = polygon[index - 1]
+            if inside(current):
+                if not inside(previous):
+                    out.append(cross(previous, current))
+                out.append(current)
+            elif inside(previous):
+                out.append(cross(previous, current))
+        return out
+
+    def at_x(edge):
+        return lambda a, b: (edge, a[1] + (b[1] - a[1]) * (edge - a[0]) / (b[0] - a[0]))
+
+    def at_z(edge):
+        return lambda a, b: (a[0] + (b[0] - a[0]) * (edge - a[1]) / (b[1] - a[1]), edge)
+
+    polygon = list(points)
+    for inside, cross in ((lambda p: p[0] >= 0, at_x(0)), (lambda p: p[0] <= size, at_x(size)),
+                          (lambda p: p[1] >= 0, at_z(0)), (lambda p: p[1] <= size, at_z(size))):
+        if not polygon:
+            break
+        polygon = clip(polygon, inside, cross)
+    return [(round(x, 3), round(z, 3)) for x, z in polygon]
+
+
 SURFACING = {2, 60, 110, (3, 2)}
 
 
@@ -73,11 +109,13 @@ def build(selected, size, step):
             theme = shape.pop("theme") or chunk.theme
             extra = {"override": True} if shape.pop("override") else {}
             if kind == "circle":
-                ground.disc(ox + shape["cx"] + 0.5, oz + shape["cz"] + 0.5, shape["r"], 0, height, theme,
-                            keepClear=False, **extra)
+                points = circle_points(shape["cx"] + 0.5, shape["cz"] + 0.5, shape["r"])
             else:
-                ground.poly([(ox + px, oz + pz) for px, pz in shape["points"]], 0, height, theme,
-                            keepClear=False, **extra)
+                points = shape["points"]
+            points = clip_to_square(points, size)
+            if len(points) >= 3:
+                ground.poly([(ox + px, oz + pz) for px, pz in points], 0, height, theme, keepClear=False,
+                            **extra)
         for (x0, z0, x1, z1), h, theme, override in chunk.ground:
             ground.rect(ox + x0, oz + z0, ox + x1 + 1, oz + z1 + 1, 0, BASE + h, theme, keepClear=False,
                         **({"override": True} if override else {}))
