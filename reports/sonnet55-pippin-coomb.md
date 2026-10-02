@@ -177,3 +177,25 @@ Refinement() got an unexpected keyword argument 'theems'
 ## Where the board is
 
 `specs/sonnet55-pippin-coomb/` holds `build-spec.py`, the plan and refinement it writes, the layout and intent the studio stored, `provenance.json` and the board's picture; `maps/sonnet55-pippin-coomb/` holds the world. The map is stored on the deployed studio as `sonnet55-pippin-coomb`, with 37 changes, and `sonnet55-probe`, a scratch map of mine that held the carve, `SR1`, restore and house-style probes, was deleted when the run ended, so the evidence for those is in this report and nowhere else.
+
+## Revision: a layer stack under the turf, and chalk as the deep rock
+
+**The author's feedback was that chalk walled every cut edge, so the faces are now a stack that reaches chalk gradually.** The `down` theme's `fill` and `wall` are one `layered` material on the `height` axis with `from` −60, `follow` 100 and `reach` 16, so the beds ride the ground; the rim is off, and the steepest slope band (above 45°) is earth over the first two fade beds, not chalk. The `farmstead` and `chalk` themes state the same fill and wall. Chalk stays where it is made or cut on purpose: the white horse, the sunk rooms' floors and the pond bed.
+
+**The beds, top to bottom, as a column at (0, −24) reads them.** Every bed is a `cell` with a `rise` of 2 whose palette repeats entries to set its shares, and the dirt mix is dirt and coarse dirt half and half.
+
+| Bed | Depth | Blocks and shares |
+|---|---|---|
+| turf | 1 | grass (the surface bucket) |
+| earth | 2 | dirt, dirt (surface bucket) |
+| dirt mix | 1 | dirt and coarse dirt, 50/50 |
+| fade into granite | 2 + 2 + 2 | dirt mix 75% / granite 25%, then 50/50, then 25% / 75% |
+| granite | 3 | granite 67%, polished granite 33% |
+| fade into chalk | 2 + 2 + 2 | granite and polished granite 75% / chalk 25%, then 50/50, then 25% / 75% |
+| chalk | the rest, to bedrock | quartz 60%, polished diorite 20%, diorite 20% |
+
+**The column reads it:** grass y23, dirt y22–20, coarse dirt y19–18, granite y17–12, polished granite and quartz from y11, bedrock y0.
+
+**Checked before storing.** `POST /terrain/theme-preview` answered the section, wall and fill views; its sample plateau is too short to reach chalk, so it showed only the dirt-to-granite fade, and the deep beds were read on the stored board.
+
+**The isometric now shows turf over a brown band over a red-brown granite fade, with chalk only in the lower third of each cut face.** No face is blotchy white from top to bottom; the coomb's two cliffs read as earth over rock, the horse is still the one white figure on the hill, and the granite reads redder in the picture than I expected. Store: change 38, 64 props placed and none declined, export gate OPEN, re-exported to `maps/sonnet55-pippin-coomb/`.

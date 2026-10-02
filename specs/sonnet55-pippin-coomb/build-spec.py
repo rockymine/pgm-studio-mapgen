@@ -62,20 +62,41 @@ def cell(blocks, size=3, seed=1, jitter=70, warp=2, rise=None):
 
 # chalk: warm white and two pale greys, one tone carried by three textures
 CHALK = cell([(155, 0), (155, 0), (155, 0), (1, 4), (1, 3)], size=3, seed=11)
-# the beds the cut faces show: chalk with a thin flint line, following the ground
+# The strata under the turf, read top to bottom: grass and two dirt (the surface bucket), then a slow fade from
+# the dirt mix into granite, a granite bed that fades into chalk, and chalk as the deep rock. Each fade bed is a
+# `cell` whose palette repeats entries to set the shares; `rise` gives a face its grain (PT4).
+DIRTMIX = [(3, 0), (3, 1)]
+GRANITE, POLISHED, CHALKBLOCKS = [(1, 1)], [(1, 2)], [(155, 0), (1, 4), (1, 3)]
+
+
+def mix(upper, lower, upper_parts, total=8, seed=0, size=3):
+    """`upper_parts` of `total` palette entries from `upper`, the rest from `lower`."""
+    upper_cells = [upper[k % len(upper)] for k in range(upper_parts)]
+    lower_cells = [lower[k % len(lower)] for k in range(total - upper_parts)]
+    return cell(upper_cells + lower_cells, size=size, seed=seed, rise=2)
+
+
 CHALK_FACE = cell([(155, 0), (155, 0), (155, 0), (1, 4), (1, 3)], size=3, seed=11, rise=3)
-FLINT = cell([(1, 5), (1, 4), (1, 3)], size=4, seed=13, rise=2)
-# beds lie level in the world, y0 up: a face shows a flint line every ten courses, whatever height it is cut at
-CHALK_BEDS = kit.LayeredMaterial(axis="height", from_=0, stack=kit.BandStack(ending="repeat", bands=[
-    band for _ in range(7) for band in (
-        kit.Band(material=CHALK_FACE, thickness=5),
-        kit.Band(material=FLINT, thickness=1),
-        kit.Band(material=CHALK_FACE, thickness=4))]))
+# bottom to top, because a height stack reads upward from `from`: chalk, chalk into granite, granite, granite into
+# dirt, dirt. `follow` 100 carries the datum with the ground averaged over `reach` cells, so the beds ride the land.
+STRATA_BEDS = [
+    (CHALK_FACE, 42),                                         # the deep rock
+    (mix(GRANITE + POLISHED, CHALKBLOCKS, 2, seed=61), 2),     # 25% granite, 75% chalk
+    (mix(GRANITE + POLISHED, CHALKBLOCKS, 4, seed=62), 2),     # 50 / 50
+    (mix(GRANITE + POLISHED, CHALKBLOCKS, 6, seed=63), 2),     # 75 / 25
+    (cell([(1, 1), (1, 1), (1, 2)], size=3, seed=64, rise=2), 3),  # granite
+    (mix(DIRTMIX, GRANITE, 2, seed=65), 2),                    # 25% dirt mix, 75% granite
+    (mix(DIRTMIX, GRANITE, 4, seed=66), 2),                    # 50 / 50
+    (mix(DIRTMIX, GRANITE, 6, seed=67), 2),                    # 75 / 25
+    (cell(DIRTMIX, size=3, seed=68, rise=2), 1),               # the dirt mix, carried up to the surface bucket
+]
+STRATA = kit.LayeredMaterial(axis="height", from_=-60, follow=100, reach=16, stack=kit.BandStack(
+    ending="repeat", bands=[kit.Band(material=m, thickness=n) for m, n in STRATA_BEDS]))
 
 DOWN_SURFACE = kit.LayeredMaterial(axis="slope", stack=kit.BandStack(ending="repeat", bands=[
     kit.Band(material=depth_stack((GRASS, 1), (DIRT, 2)), thickness=36),
     kit.Band(material=depth_stack((cell([(3, 0), (3, 1)], size=3, seed=5), 1), (DIRT, 2)), thickness=9),
-    kit.Band(material=depth_stack((CHALK, 3)), thickness=45),
+    kit.Band(material=depth_stack((cell(DIRTMIX, size=3, seed=5, rise=2), 1), (mix(DIRTMIX, GRANITE, 4, seed=66), 1), (mix(DIRTMIX, GRANITE, 2, seed=65), 1)), thickness=45),
 ]))
 
 # the brown earth of yards, grove floors and lanes: three textures of one tone
@@ -86,18 +107,18 @@ themes = {
         bedrock=kit.BedrockSpec(relative=False, value=1), rimEdges="void", edgesFromGround=True,
         rim=kit.TopBand(enabled=False, depth=1, material=CHALK),
         surface=kit.TopBand(enabled=True, depth=3, material=depth_stack((EARTH, 1), (DIRT, 2))),
-        wallEnabled=True, wallOnTerrainFaces=True, wall=CHALK_BEDS, fill=CHALK_BEDS),
+        wallEnabled=True, wallOnTerrainFaces=True, wall=STRATA, fill=STRATA),
     "chalk": kit.TerrainTheme(
         bedrock=kit.BedrockSpec(relative=False, value=1), rimEdges="void", edgesFromGround=True,
         rim=kit.TopBand(enabled=False, depth=1, material=CHALK),
         surface=kit.TopBand(enabled=True, depth=3, material=CHALK),
-        wallEnabled=True, wallOnTerrainFaces=True, wall=CHALK_BEDS, fill=CHALK_BEDS),
+        wallEnabled=True, wallOnTerrainFaces=True, wall=STRATA, fill=STRATA),
     "down": kit.TerrainTheme(
         bedrock=kit.BedrockSpec(relative=False, value=1),
         rimEdges="void",
-        rim=kit.TopBand(enabled=True, depth=1, material=CHALK),
+        rim=kit.TopBand(enabled=False, depth=1, material=CHALK),
         surface=kit.TopBand(enabled=True, depth=3, material=DOWN_SURFACE),
-        wallEnabled=True, wallOnTerrainFaces=True, wall=CHALK_BEDS, fill=CHALK_BEDS),
+        wallEnabled=True, wallOnTerrainFaces=True, wall=STRATA, fill=STRATA),
 }
 
 # ── shapes and layers, stated through the kit ────────────────────────────────────────────────────────────
