@@ -245,7 +245,7 @@ for patch in (
     patches.append(patch)
 
 # ── fields: four plots of farmland, each a patch of its own theme with a low wall of fieldstone round it ────
-# A wall is a path shape raised one block over the ground under it, so it follows the terrain; the edge that faces
+# A wall is a polyline shape draped one block over the ground at every cell, so it climbs the hillside; the edge that faces
 # the nearest lane is left out, so each field has its gate.
 FIELDSTONE = cell([(4, 0), (1, 5), (4, 0), (1, 0)], size=2, seed=71, rise=2)
 FIELDS = {   # id: (outline, crops, ripeness, plot scale)
@@ -253,9 +253,11 @@ FIELDS = {   # id: (outline, crops, ripeness, plot scale)
                          ["potatoes", "carrots"], 0.45, 4),
     "north-east-field": ([(29, -101), (31, -107), (38, -108), (41, -104), (38, -97), (32, -95)],
                          ["wheat", "carrots"], 0.7, 4),
-    "path-field-west": ([(-4, -40), (-5, -33), (-4, -28), (-11, -27), (-14, -31), (-13, -37), (-10, -42), (-5, -43)],
+    "path-field-west": ([(-3, -31), (-4, -26), (-5, -21), (-9, -20), (-13, -21), (-16, -26), (-14, -31), (-17, -36),
+                         (-14, -41), (-11, -44), (-5, -44.5), (-1, -42), (-1, -37)],
                         ["wheat", "wheat", "potatoes"], 0.92, 5),
-    "path-field-east": ([(11, -46), (16, -45), (17, -39), (15, -34), (11, -32), (10, -38)],
+    "path-field-east": ([(10, -34), (9, -28), (9, -23), (11, -21), (15, -22), (17, -27), (16.5, -33), (17, -39),
+                         (16, -43), (13, -45.5), (11, -43), (10.5, -38.5)],
                         ["wheat", "carrots"], 0.85, 4),
 }
 field_walls, field_flora = [], []
@@ -266,7 +268,7 @@ for field_id, (outline, crops, ripeness, scale) in FIELDS.items():
     cz = sum(z for _, z in outline) / len(outline)
     around = [[round(cx + (x - cx) * 1.07, 1), round(cz + (z - cz) * 1.07, 1)] for x, z in outline]
     field_walls.append(kit.SketchShape(id=f"{field_id}-wall", type="polyline", operation="add", keepClear=True, floor=0,
-                                       base_height=1, height_mode="raise", skirt=0, radius=0.6, stroke_edge="rough",
+                                       base_height=1, height_mode="drape", skirt=0, radius=0.6, stroke_edge="rough",
                                        stroke_seed=len(field_walls) + 3, vertices=around, material=FIELDSTONE))
     field_flora.append(kit.FloraProp(id=field_id, seed=80 + len(field_flora), points=[list(point) for point in outline],
                                      spec=kit.FloraSpec(cropShare=0.95, crops=crops, ripeness=ripeness, scale=scale)))
