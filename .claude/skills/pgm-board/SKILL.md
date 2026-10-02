@@ -105,9 +105,10 @@ nothing at all in an isometric — the report's `slopes` names it with its coord
 consecutive builds of one board because nobody opened the slope grid.
 
 **After a drive, reply on every note it answered.** The reply names what changed, the change it landed as
-and the number that moved ("dead share in this area 41% → 6%"), and carries the same camera drawn after the
-change: fetch `render/eye` with the note's camera, post the PNG to `POST /notes/pictures`, and name the hash
-as the reply's `picture`. The thread then waits on the author, who resolves it; an agent never does.
+and the number that moved ("dead share in this area 41% → 6%"). The studio draws the note's camera over the
+board as stored and attaches it as the after picture whenever an answer on a picture note is written at the
+latest change, so post the reply after the drive's last store and do not draw it yourself. The thread then
+waits on the author, who resolves it; an agent never does.
 
 **Where a note could mean two places or two things, the reply is the question.** Post it with
 `"status": "needs-info"` and build nothing on a guess; a note declined is `"status": "wont-do"` with the reason
