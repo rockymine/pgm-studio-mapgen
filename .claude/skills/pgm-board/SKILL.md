@@ -31,7 +31,7 @@ about it."*
 
 | The question | The read | Not |
 |---|---|---|
-| **What did the author say here?** | `GET /notes?status=open` across every map, or `GET /map/{slug}/notes` — each note's `anchor` is the place: a point's `hit` and `ground`, an area's `columns` as `[x, y, z]`, and the exact `camera`, which `render/eye?eye=x,y,z&yaw=&pitch=&fov=` draws again | a remark in chat turned into coordinates of your own choosing, which is the place guessed |
+| **What did the author say here?** | `GET /notes?status=open` across every map, or `GET /map/{slug}/notes` — each note's `anchor` is the place: a point's `hit` and `ground`, an area's `columns` as `[x, y, z]` and, where it was drawn over the void, `overVoid` — the empty cells it covers, at the level of the ground beside them — and the exact `camera`, which `render/eye?eye=x,y,z&yaw=&pitch=&fov=` draws again; a reply's `mark` is the same shape, the author pointing again | a remark in chat turned into coordinates of your own choosing, which is the place guessed |
 | What is actually at this coordinate? | `GET /map/{slug}/column?at=x,z` | any render — every other read is a projection |
 | Does this climb? Is that step walkable? | `GET …/transect?points=x,z;x,z&beside=2&format=text`, or the report's `slopes` | eyeballing a heightmap shade |
 | Does this **flight** actually walk? | the same transect across the crossing — rises, falls, worst step, walked end to end | `EL1` or `WL11`, which walk the pieces flat and cannot see an authored flight at all |
@@ -76,9 +76,10 @@ takes an **xml-less** folder under a configured `MapsRoots` only. Use `tools/anv
 A rule in a document does not fire. These are the three places to stop, and they are cheap.
 
 **Before the first change, read the open notes.** The author leaves feedback as notes pinned to the board
-in the Sketch tool's In game phase, and a revision starts from `GET /notes?status=open`. A note tagged `look`,
-`terrain` or `gameplay` is work on that map; `studio` is a backlog task for the studio instead; `ruling` is a
-gameplay decision for every map. An untagged note is read for what it is about, and the reply says which.
+in the Sketch tool's Review phase, and a revision starts from `GET /notes?status=open`. A note carries no tag:
+read each for what it asks — work on that map (the look, the ground, the play), a backlog task for the studio, or
+a gameplay ruling for every map — and say in the reply which you took it for, since one note often asks for
+several.
 
 **Beside the notes, read what changed since your last run.** `GET /map/{slug}/changes?since=<the change your
 last run landed as>&format=text` lists every change made to the board since, and `GET …/diff?from=&to=&format=text`
