@@ -206,7 +206,7 @@ read:
   interfacing zone component touches only one team's islands is a **team transient-link**, not a mid stone —
   the encased pad between a team's own islands"*, with `rotate-wide-frontline`'s four 100-block corner pads
   cited; `BZ5` carries the same motif at the spawn as the **defender-egress bridge**; and it is *measured*,
-  as the `team-stepping-count` term under `CT4`, band **[0, 2]**. Not one of the three contains the word
+  as the `team-stepping-count` term under `CT13`, band **[0, 2]**. Not one of the three contains the word
   **zone**, and the grep was for *zone*.
 
 So run **three** searches before writing the word missing: the name you would give it, the sentence
