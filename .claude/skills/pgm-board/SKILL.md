@@ -76,9 +76,10 @@ takes an **xml-less** folder under a configured `MapsRoots` only. Use `tools/anv
 A rule in a document does not fire. These are the three places to stop, and they are cheap.
 
 **Before the first change, read the open notes.** The author leaves feedback as notes pinned to the board
-in the Sketch tool's In game phase, and a revision starts from `GET /notes?status=open`. A note tagged `look`,
-`terrain` or `gameplay` is work on that map; `studio` is a backlog task for the studio instead; `ruling` is a
-gameplay decision for every map. An untagged note is read for what it is about, and the reply says which.
+in the Sketch tool's Review phase, and a revision starts from `GET /notes?status=open`. A note carries no tag:
+read each for what it asks — work on that map (the look, the ground, the play), a backlog task for the studio, or
+a gameplay ruling for every map — and say in the reply which you took it for, since one note often asks for
+several.
 
 **Beside the notes, read what changed since your last run.** `GET /map/{slug}/changes?since=<the change your
 last run landed as>&format=text` lists every change made to the board since, and `GET …/diff?from=&to=&format=text`
