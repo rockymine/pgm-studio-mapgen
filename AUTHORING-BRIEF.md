@@ -19,11 +19,15 @@ describes.
 |---|---|
 | `GET /api/openapi/v1.json` | every route, its request body, its answer, and the failure codes it declares. Every answered field carries a description, and every part of a document a route writes has a type in there rather than a sentence about it |
 | `/api-docs` | the same document as a browsable page, if you have a browser |
-| `GET /api/rules` | every rule id the studio can raise, by family, each with what it *means*, how to *fix* it, and the evidence behind its numbers. `?rule=GO1` and `?family=DR` filter it |
+| `GET /api/glossary` | every word the rules and the studio use, each defined once. `?term=board` answers the term an older word now goes by |
+| `GET /api/rules` | every rule id the studio can raise, by family, each with what it *means* and how to *fix* it. `?rule=GO1` and `?family=DR` filter it |
 | the answer itself | a refusal names its rule ids; a success carries `warnings` for what it did not do |
 
-Read `GET /api/rules` once at the start of a run. It is the whole vocabulary of every no the system can say,
-and it is cheaper to read 113 rows now than to meet them one build at a time.
+**Read `GET /api/glossary` once at the start of a run.** The rules and the findings use its words and never
+explain them, so it is what makes every later answer readable.
+
+**Look a rule up when a finding cites it, not before.** `GET /api/rules?rule=<id>` answers one rule; the whole
+catalogue read up front is two hundred rows, most of which no run meets.
 
 ### What a refusal looks like
 
