@@ -785,6 +785,16 @@ note ids are listed in `reports/opus55-notes-run.md`, which is the run's account
 |---|---|---|---|
 | `sonnet55-halcyon-cays` | dtm | Sonnet 5.5 | **A holiday resort on a string of cays in a lagoon: a white stepped hotel built out of 15 made layers (an open pillared arcade, a glass lobby, balconies, two lower wings and roof terraces) round a pool courtyard on each shore, thatched stilt bungalows on a palm cay, five rock stacks standing out of the water, and a thatched bar on the sandbar in the middle.** One monument a team on open sand at (8, −53) with the terrace west, a lawn and the Sentinel east and the spit south, 45 blocks of walk against 151 (`GO1` 3.36). Three crossings join the halves with no build zone: a dry sand spit, a one-block reef ford, and a hop between islets. Swampland biome, chosen because it is the only one that tints water, so the water reads teal and the vegetation olive; three themes (sand, jungle lawn, karst), two forked house styles, 37 made layers. 100 × 210. **16 404 walked · 522 scrambled · 894 barrier**, 55.3% dead (open lagoon), 22 props placed with two `DR-PASS` complaints on the bungalows, export gate OPEN. No notes |
 
+### Opus 5.5 — a terraced volcano board on the deployed studio, after the rules language (2026-10-05)
+
+**One board authored on pgmstudio.de against the finding record, the rule catalogue and the glossary as they now
+stand, to see what an agent meets when something is wrong.** The account, with the studio's faults it found
+and the dry probes that separate them, is `reports/opus55-sciara.md`.
+
+| Board | Mode | Author | What it turned out to be |
+|---|---|---|---|
+| `opus55-sciara` | dtc | Opus 5.5 | **Two Sicilian hill villages on a volcano's flank across a ravine, each defending a core floating over the paved threshing floor at the top of its olive terraces, every made thing held up by walls of the black lava stone the mountain is made of.** The core is in the open on the aia at 31. Olives stand on two terraces west at 25 and 28; the sciara, a push of black lava, runs east with its crest at 39 over a casing whose lowest course is 37. A quarry pit lies in front, and open ground climbs to a 4-block wall. The village yard and piazza at 34 hold three quartz houses and a campanile. Seven `level` flights join the tiers, every one walked end to end. Savanna biome, three themes (campagna, sciara, borgo), eleven copied olives a side, two lava boulders, five farm tracks. 96 × 248. Own walk 50 against 168 on the plan tier (`GO1` 3.23). **20 796 walked · 840 scrambled · 1 122 barrier**, 48.0% dead (the grove and the sciara are approaches no shortest route takes), 44 props placed and none declined, export gate OPEN. No notes |
+
 ## Not boards
 
 Folders under `maps/` or `specs/` that exist for a reading rather than for a game. They are named

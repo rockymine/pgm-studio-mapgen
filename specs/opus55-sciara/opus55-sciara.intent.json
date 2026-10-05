@@ -1,0 +1,187 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 20,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-0",
+    "image": 0
+   },
+   "reflected": false,
+   "team": "red",
+   "point": {
+    "x": -9,
+    "y": 34,
+    "z": -106
+   },
+   "protection": [
+    {
+     "minX": -20,
+     "minZ": -116,
+     "maxX": 4,
+     "maxZ": -96
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z",
+    "-z"
+   ],
+   "footprint": {
+    "minX": -17,
+    "minZ": -112,
+    "maxX": -1,
+    "maxZ": -100
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-0",
+    "image": 1
+   },
+   "reflected": false,
+   "team": "blue",
+   "point": {
+    "x": 9,
+    "y": 34,
+    "z": 106
+   },
+   "protection": [
+    {
+     "minX": -4,
+     "minZ": 96,
+     "maxX": 20,
+     "maxZ": 116
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z",
+    "+z"
+   ],
+   "footprint": {
+    "minX": 1,
+    "minZ": 100,
+    "maxX": 17,
+    "maxZ": 112
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 60,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -48,
+    "minZ": -12,
+    "maxX": 48,
+    "maxZ": 0
+   },
+   {
+    "minX": -48,
+    "minZ": 0,
+    "maxX": 48,
+    "maxZ": 12
+   }
+  ],
+  "holes": []
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-0",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Aia Core",
+   "anchor": {
+    "x": 10,
+    "y": 22,
+    "z": -64
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-0",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Aia Core",
+   "anchor": {
+    "x": -11,
+    "y": 22,
+    "z": 63
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  }
+ ],
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtc"
+ ],
+ "meta": {
+  "name": "Sciara",
+  "created": "2026-10-05",
+  "authors": [
+   {
+    "name": "Opus 5.5",
+    "contribution": "authored through the studio's API"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": null
+}

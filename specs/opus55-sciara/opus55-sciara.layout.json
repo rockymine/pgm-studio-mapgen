@@ -1,0 +1,7218 @@
+{
+ "setup": {
+  "mirror_mode": "rot_180",
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "bbox": {
+   "min_x": -52,
+   "max_x": 52,
+   "min_z": -128,
+   "max_z": 128
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "kind": null,
+   "part_of": null,
+   "seat": null,
+   "layout": {
+    "shapes": [
+     {
+      "id": "back-e-22",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -48,
+        -96
+       ],
+       [
+        -38.4,
+        -96.6
+       ],
+       [
+        -28.8,
+        -97.2
+       ],
+       [
+        -19.2,
+        -98
+       ],
+       [
+        -9.6,
+        -98.5
+       ],
+       [
+        0,
+        -98.6
+       ],
+       [
+        9.6,
+        -98.1
+       ],
+       [
+        19.2,
+        -97.4
+       ],
+       [
+        28.8,
+        -96.7
+       ],
+       [
+        38.4,
+        -96.4
+       ],
+       [
+        48,
+        -96
+       ],
+       [
+        48.4,
+        -86.7
+       ],
+       [
+        48.3,
+        -77.3
+       ],
+       [
+        48.5,
+        -68
+       ],
+       [
+        48.9,
+        -58.7
+       ],
+       [
+        49.4,
+        -49.3
+       ],
+       [
+        49.9,
+        -40
+       ],
+       [
+        50.3,
+        -30.7
+       ],
+       [
+        50.6,
+        -21.3
+       ],
+       [
+        48,
+        -12
+       ],
+       [
+        38.4,
+        -9
+       ],
+       [
+        28.8,
+        -9.4
+       ],
+       [
+        19.2,
+        -10.3
+       ],
+       [
+        9.6,
+        -11.3
+       ],
+       [
+        0,
+        -11.9
+       ],
+       [
+        -9.6,
+        -11.9
+       ],
+       [
+        -19.2,
+        -11.2
+       ],
+       [
+        -28.8,
+        -10.1
+       ],
+       [
+        -38.4,
+        -9.3
+       ],
+       [
+        -48,
+        -12
+       ],
+       [
+        -50.9,
+        -21.3
+       ],
+       [
+        -50.5,
+        -30.7
+       ],
+       [
+        -50,
+        -40
+       ],
+       [
+        -49.4,
+        -49.3
+       ],
+       [
+        -48.7,
+        -58.7
+       ],
+       [
+        -48.3,
+        -68
+       ],
+       [
+        -48,
+        -77.3
+       ],
+       [
+        -48.1,
+        -86.7
+       ]
+      ],
+      "controls": {
+       "1": {
+        "in": [
+         -40.512,
+         -96.46799999999999
+        ],
+        "out": [
+         -36.288,
+         -96.732
+        ]
+       },
+       "2": {
+        "in": [
+         -30.910517774536025,
+         -97.04610807894008
+        ],
+        "out": [
+         -26.68629103141289,
+         -97.35412461229281
+        ]
+       },
+       "3": {
+        "in": [
+         -21.314479359100638,
+         -97.85683212672757
+        ],
+        "out": [
+         -17.089968459799717,
+         -98.14286671886772
+        ]
+       },
+       "4": {
+        "in": [
+         -11.713830751237678,
+         -98.43394278902382
+        ],
+        "out": [
+         -7.488915970985291,
+         -98.56597137590671
+        ]
+       },
+       "5": {
+        "in": [
+         -2.111656371177594,
+         -98.6439928410662
+        ],
+        "out": [
+         2.1144038380724557,
+         -98.55594992004015
+        ]
+       },
+       "6": {
+        "in": [
+         7.4892558857234,
+         -98.23192150714227
+        ],
+        "out": [
+         11.713483266437121,
+         -97.96790729584768
+        ]
+       },
+       "7": {
+        "in": [
+         17.088,
+         -97.554
+        ],
+        "out": [
+         21.311999999999998,
+         -97.24600000000001
+        ]
+       },
+       "8": {
+        "in": [
+         26.68525921805306,
+         -96.81014274905974
+        ],
+        "out": [
+         30.910170834343425,
+         -96.59009526904461
+        ]
+       },
+       "9": {
+        "in": [
+         36.2883719342479,
+         -96.47698643989722
+        ],
+        "out": [
+         40.51242907352796,
+         -96.32298435669429
+        ]
+       },
+       "11": {
+        "in": [
+         48.36715035108361,
+         -88.74762811578813
+        ],
+        "out": [
+         48.43317407913657,
+         -84.63214906715368
+        ]
+       },
+       "12": {
+        "in": [
+         48.288940708834865,
+         -79.36808744788003
+        ],
+        "out": [
+         48.31094354974851,
+         -75.25355619702887
+        ]
+       },
+       "13": {
+        "in": [
+         48.43401906027128,
+         -70.04540913159019
+        ],
+        "out": [
+         48.56602667513605,
+         -65.95317307078237
+        ]
+       },
+       "14": {
+        "in": [
+         48.80155232531695,
+         -60.74552390730334
+        ],
+        "out": [
+         48.99955487866451,
+         -56.63147085441513
+        ]
+       },
+       "15": {
+        "in": [
+         49.28941343762292,
+         -51.367968716451394
+        ],
+        "out": [
+         49.509413446567464,
+         -47.25396854918839
+        ]
+       },
+       "16": {
+        "in": [
+         49.80097288199074,
+         -42.04656043885803
+        ],
+        "out": [
+         49.99897573022005,
+         -37.95450157545223
+        ]
+       },
+       "17": {
+        "in": [
+         50.22339460872152,
+         -32.746458309867826
+        ],
+        "out": [
+         50.37739697202585,
+         -28.632395175880742
+        ]
+       },
+       "18": {
+        "in": [
+         50.85257914740306,
+         -23.353578285407487
+        ],
+        "out": [
+         50.340657917102796,
+         -19.191436108618348
+        ]
+       },
+       "20": {
+        "in": [
+         40.59270994184783,
+         -9.296929471291893
+        ],
+        "out": [
+         36.305286299196844,
+         -8.71634085301624
+        ]
+       },
+       "21": {
+        "in": [
+         30.909003788340538,
+         -9.257202868497776
+        ],
+        "out": [
+         26.68358477334766,
+         -9.543298947637918
+        ]
+       },
+       "22": {
+        "in": [
+         21.31095012185931,
+         -10.091103894191006
+        ],
+        "out": [
+         17.08689393636796,
+         -10.509109454213588
+        ]
+       },
+       "23": {
+        "in": [
+         11.716092586462784,
+         -11.123658951128101
+        ],
+        "out": [
+         7.491188613918029,
+         -11.475734282173498
+        ]
+       },
+       "24": {
+        "in": [
+         2.115088473499798,
+         -11.833903485203132
+        ],
+        "out": [
+         -2.1109695046959107,
+         -11.965967797021747
+        ]
+       },
+       "25": {
+        "in": [
+         -7.489402248076376,
+         -11.976948876372216
+        ],
+        "out": [
+         -11.716201169247583,
+         -11.822846832371182
+        ]
+       },
+       "26": {
+        "in": [
+         -17.091637853922485,
+         -11.397658951194767
+        ],
+        "out": [
+         -21.31653852462795,
+         -11.001574513316129
+        ]
+       },
+       "27": {
+        "in": [
+         -26.68451360961965,
+         -10.309345007381388
+        ],
+        "out": [
+         -30.90901925319389,
+         -9.891294969736022
+        ]
+       },
+       "28": {
+        "in": [
+         -36.29098074680611,
+         -9.091294969736023
+        ],
+        "out": [
+         -40.58327755488521,
+         -9.516053508035517
+        ]
+       },
+       "30": {
+        "in": [
+         -50.61600715551355,
+         -19.175733523241377
+        ],
+        "out": [
+         -51.17428053888965,
+         -23.351618430894597
+        ]
+       },
+       "31": {
+        "in": [
+         -50.59950430753621,
+         -28.632521610081078
+        ],
+        "out": [
+         -50.40150121169199,
+         -32.746585934844134
+        ]
+       },
+       "32": {
+        "in": [
+         -50.12096339856017,
+         -37.954618897073516
+        ],
+        "out": [
+         -49.87895992540803,
+         -42.04667762491868
+        ]
+       },
+       "33": {
+        "in": [
+         -49.54218782966917,
+         -47.254682757835845
+        ],
+        "out": [
+         -49.25618432302366,
+         -51.368733199582735
+        ]
+       },
+       "34": {
+        "in": [
+         -48.821773390445905,
+         -56.6298523624197
+        ],
+        "out": [
+         -48.57974366458728,
+         -60.74435770201624
+        ]
+       },
+       "35": {
+        "in": [
+         -48.37701666726813,
+         -65.9535571268753
+        ],
+        "out": [
+         -48.22301444788454,
+         -70.04561609906783
+        ]
+       },
+       "36": {
+        "in": [
+         -48.021892483107905,
+         -75.25305282941073
+        ],
+        "out": [
+         -47.97788236636115,
+         -79.36799874523226
+        ]
+       },
+       "37": {
+        "in": [
+         -48.1,
+         -84.63188298203414
+        ],
+        "out": [
+         -48.1,
+         -88.74611827615121
+        ]
+       }
+      },
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 22,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "back-e-34",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -48,
+        -124
+       ],
+       [
+        -38.4,
+        -125.1
+       ],
+       [
+        -28.8,
+        -125.6
+       ],
+       [
+        -19.2,
+        -125.9
+       ],
+       [
+        -9.6,
+        -125.8
+       ],
+       [
+        0,
+        -125.3
+       ],
+       [
+        9.6,
+        -124.6
+       ],
+       [
+        19.2,
+        -124.2
+       ],
+       [
+        28.8,
+        -124.1
+       ],
+       [
+        38.4,
+        -124.4
+       ],
+       [
+        48,
+        -124
+       ],
+       [
+        49.1,
+        -114.7
+       ],
+       [
+        49.1,
+        -105.3
+       ],
+       [
+        48,
+        -96
+       ],
+       [
+        38.4,
+        -95.3
+       ],
+       [
+        28.8,
+        -95.5
+       ],
+       [
+        19.2,
+        -95.5
+       ],
+       [
+        9.6,
+        -95.2
+       ],
+       [
+        0,
+        -94.8
+       ],
+       [
+        -9.6,
+        -94.5
+       ],
+       [
+        -19.2,
+        -94.4
+       ],
+       [
+        -28.8,
+        -94.6
+       ],
+       [
+        -38.4,
+        -95
+       ],
+       [
+        -48,
+        -96
+       ],
+       [
+        -48.5,
+        -105.3
+       ],
+       [
+        -48.4,
+        -114.7
+       ]
+      ],
+      "controls": {
+       "1": {
+        "in": [
+         -40.518476277405775,
+         -124.92346031021619
+        ],
+        "out": [
+         -36.292442603554925,
+         -125.27562978303709
+        ]
+       },
+       "2": {
+        "in": [
+         -30.913029211962435,
+         -125.51195711616822
+        ],
+        "out": [
+         -26.688800845076326,
+         -125.68796663145515
+        ]
+       },
+       "3": {
+        "in": [
+         -21.31291636841279,
+         -125.8779904544957
+        ],
+        "out": [
+         -17.088,
+         -125.92200000000001
+        ]
+       },
+       "4": {
+        "in": [
+         -11.711084029014708,
+         -125.86597137590671
+        ],
+        "out": [
+         -7.486169248762321,
+         -125.73394278902381
+        ]
+       },
+       "5": {
+        "in": [
+         -2.1107441142765997,
+         -125.43192150714229
+        ],
+        "out": [
+         2.113483266437122,
+         -125.16790729584768
+        ]
+       },
+       "6": {
+        "in": [
+         7.485859675834899,
+         -124.72112262273862
+        ],
+        "out": [
+         11.710371901869834,
+         -124.47909327645537
+        ]
+       },
+       "7": {
+        "in": [
+         17.086883864551652,
+         -124.2550290660273
+        ],
+        "out": [
+         21.311398759604177,
+         -124.14501565730198
+        ]
+       },
+       "8": {
+        "in": [
+         26.688000000000002,
+         -124.07799999999999
+        ],
+        "out": [
+         30.91291636841279,
+         -124.1220095455043
+        ]
+       },
+       "9": {
+        "in": [
+         36.28699766088123,
+         -124.41100522051624
+        ],
+        "out": [
+         40.513803868200284,
+         -124.38899060485313
+        ]
+       },
+       "11": {
+        "in": [
+         48.97901724260785,
+         -116.75670687566648
+        ],
+        "out": [
+         49.22143714139564,
+         -112.63556859627411
+        ]
+       },
+       "12": {
+        "in": [
+         49.22143714139564,
+         -107.36443140372589
+        ],
+        "out": [
+         48.97901724260785,
+         -103.24329312433352
+        ]
+       },
+       "14": {
+        "in": [
+         40.51688945803204,
+         -95.35512732963625
+        ],
+        "out": [
+         36.28825765349442,
+         -95.24500670972641
+        ]
+       },
+       "15": {
+        "in": [
+         30.912343684740957,
+         -95.47799641995061
+        ],
+        "out": [
+         26.68811457400936,
+         -95.52199880652074
+        ]
+       },
+       "16": {
+        "in": [
+         21.311742234697277,
+         -95.53299597241714
+        ],
+        "out": [
+         17.087226892781132,
+         -95.4669879201997
+        ]
+       },
+       "17": {
+        "in": [
+         11.7116280657521,
+         -95.27698643989721
+        ],
+        "out": [
+         7.487570926472037,
+         -95.12298435669429
+        ]
+       },
+       "18": {
+        "in": [
+         2.112429073527963,
+         -94.87701564330571
+        ],
+        "out": [
+         -2.1116280657521,
+         -94.72301356010279
+        ]
+       },
+       "19": {
+        "in": [
+         -7.487427409505543,
+         -94.54401192896863
+        ],
+        "out": [
+         -11.711656371177593,
+         -94.4560071589338
+        ]
+       },
+       "20": {
+        "in": [
+         -17.087914066579376,
+         -94.3889995524301
+        ],
+        "out": [
+         -21.312429632145484,
+         -94.41100223766743
+        ]
+       },
+       "21": {
+        "in": [
+         -26.68857243529985,
+         -94.53401788860312
+        ],
+        "out": [
+         -30.912801148862368,
+         -94.66602503590194
+        ]
+       },
+       "22": {
+        "in": [
+         -36.29176460720068,
+         -94.84627450260838
+        ],
+        "out": [
+         -40.51780486665108,
+         -95.15442327152664
+        ]
+       },
+       "24": {
+        "in": [
+         -48.4561821119014,
+         -103.25151373139028
+        ],
+        "out": [
+         -48.54422768018703,
+         -107.36764404874371
+        ]
+       },
+       "25": {
+        "in": [
+         -48.455277490537874,
+         -112.63262185388356
+        ],
+        "out": [
+         -48.34526310286798,
+         -116.74715995273755
+        ]
+       }
+      },
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "exclude",
+      "base_height": 34,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "spawn-red",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -20,
+      "min_z": -116,
+      "max_x": 4,
+      "max_z": -96,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "follow",
+      "base_height": 34,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "red",
+      "color": "red",
+      "height_authored": null,
+      "doors": [
+       "+z",
+       "-z"
+      ],
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "spawn-red-building",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -17,
+      "min_z": -112,
+      "max_x": -1,
+      "max_z": -100,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "building",
+      "intentRef": null,
+      "color": "red",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "spawn-blue",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -4,
+      "min_z": 96,
+      "max_x": 20,
+      "max_z": 116,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "blue",
+      "color": "blue",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "spawn-blue-building",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": 1,
+      "min_z": 100,
+      "max_x": 17,
+      "max_z": 112,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "building",
+      "intentRef": null,
+      "color": "blue",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "piazza",
+      "type": "polygon",
+      "operation": "add",
+      "base_height": 34,
+      "relief_scope": "exclude",
+      "theme": "borgo",
+      "vertices": [
+       [
+        -24,
+        -100
+       ],
+       [
+        18,
+        -100
+       ],
+       [
+        18,
+        -80
+       ],
+       [
+        11,
+        -80
+       ],
+       [
+        11,
+        -86
+       ],
+       [
+        6,
+        -86
+       ],
+       [
+        6,
+        -80
+       ],
+       [
+        -24,
+        -80
+       ]
+      ]
+     },
+     {
+      "id": "stair-piazza",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "level",
+      "skirt": 0,
+      "keepClear": true,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      },
+      "vertices": [
+       [
+        6,
+        -80
+       ],
+       [
+        11,
+        -80
+       ],
+       [
+        11,
+        -86
+       ],
+       [
+        6,
+        -86
+       ]
+      ],
+      "anchor_heights": [
+       31.5,
+       31.5,
+       34.5,
+       34.5
+      ]
+     },
+     {
+      "id": "aia",
+      "type": "polygon",
+      "operation": "add",
+      "base_height": 31,
+      "relief_scope": "exclude",
+      "theme": "campagna",
+      "vertices": [
+       [
+        -6,
+        -80
+       ],
+       [
+        26,
+        -80
+       ],
+       [
+        26,
+        -48
+       ],
+       [
+        23,
+        -48
+       ],
+       [
+        23,
+        -56
+       ],
+       [
+        18,
+        -56
+       ],
+       [
+        18,
+        -48
+       ],
+       [
+        -6,
+        -48
+       ],
+       [
+        -6,
+        -57
+       ],
+       [
+        0,
+        -57
+       ],
+       [
+        0,
+        -62
+       ],
+       [
+        -6,
+        -62
+       ]
+      ]
+     },
+     {
+      "id": "aia-floor",
+      "type": "circle",
+      "operation": "add",
+      "center_x": 10,
+      "center_z": -64,
+      "radius": 8,
+      "base_height": 31,
+      "relief_scope": "exclude",
+      "theme": "borgo"
+     },
+     {
+      "id": "stair-olive",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "level",
+      "skirt": 0,
+      "keepClear": true,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      },
+      "vertices": [
+       [
+        -6,
+        -62
+       ],
+       [
+        -6,
+        -57
+       ],
+       [
+        0,
+        -57
+       ],
+       [
+        0,
+        -62
+       ]
+      ],
+      "anchor_heights": [
+       28.5,
+       28.5,
+       31.5,
+       31.5
+      ]
+     },
+     {
+      "id": "stair-front",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "level",
+      "skirt": 0,
+      "keepClear": true,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      },
+      "vertices": [
+       [
+        18,
+        -48
+       ],
+       [
+        23,
+        -48
+       ],
+       [
+        23,
+        -56
+       ],
+       [
+        18,
+        -56
+       ]
+      ],
+      "anchor_heights": [
+       27.5,
+       27.5,
+       31.5,
+       31.5
+      ]
+     },
+     {
+      "id": "olive-upper",
+      "type": "polygon",
+      "operation": "add",
+      "base_height": 28,
+      "relief_scope": "exclude",
+      "theme": "campagna",
+      "vertices": [
+       [
+        -47,
+        -76
+       ],
+       [
+        -6,
+        -76
+       ],
+       [
+        -6,
+        -48
+       ],
+       [
+        -25,
+        -48
+       ],
+       [
+        -25,
+        -54
+       ],
+       [
+        -30,
+        -54
+       ],
+       [
+        -30,
+        -48
+       ],
+       [
+        -47,
+        -48
+       ]
+      ]
+     },
+     {
+      "id": "stair-olives",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "level",
+      "skirt": 0,
+      "keepClear": true,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      },
+      "vertices": [
+       [
+        -30,
+        -48
+       ],
+       [
+        -25,
+        -48
+       ],
+       [
+        -25,
+        -54
+       ],
+       [
+        -30,
+        -54
+       ]
+      ],
+      "anchor_heights": [
+       25.5,
+       25.5,
+       28.5,
+       28.5
+      ]
+     },
+     {
+      "id": "olive-lower",
+      "type": "polygon",
+      "operation": "add",
+      "base_height": 25,
+      "relief_scope": "exclude",
+      "theme": "campagna",
+      "vertices": [
+       [
+        -47,
+        -48
+       ],
+       [
+        -6,
+        -48
+       ],
+       [
+        -6,
+        -22
+       ],
+       [
+        -17,
+        -22
+       ],
+       [
+        -17,
+        -28
+       ],
+       [
+        -22,
+        -28
+       ],
+       [
+        -22,
+        -22
+       ],
+       [
+        -47,
+        -22
+       ]
+      ]
+     },
+     {
+      "id": "stair-lip",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "level",
+      "skirt": 0,
+      "keepClear": true,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      },
+      "vertices": [
+       [
+        -22,
+        -22
+       ],
+       [
+        -17,
+        -22
+       ],
+       [
+        -17,
+        -28
+       ],
+       [
+        -22,
+        -28
+       ]
+      ],
+      "anchor_heights": [
+       22.5,
+       22.5,
+       25.5,
+       25.5
+      ]
+     },
+     {
+      "id": "stair-yard",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "level",
+      "skirt": 0,
+      "keepClear": true,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      },
+      "vertices": [
+       [
+        -40,
+        -90
+       ],
+       [
+        -35,
+        -90
+       ],
+       [
+        -35,
+        -96
+       ],
+       [
+        -40,
+        -96
+       ]
+      ],
+      "anchor_heights": [
+       31.5,
+       31.5,
+       34.5,
+       34.5
+      ]
+     },
+     {
+      "id": "stair-grove",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "level",
+      "skirt": 0,
+      "keepClear": true,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      },
+      "vertices": [
+       [
+        -40,
+        -76
+       ],
+       [
+        -35,
+        -76
+       ],
+       [
+        -35,
+        -82
+       ],
+       [
+        -40,
+        -82
+       ]
+      ],
+      "anchor_heights": [
+       28.5,
+       28.5,
+       31.5,
+       31.5
+      ]
+     },
+     {
+      "id": "sciara-flow",
+      "type": "polygon",
+      "operation": "add",
+      "base_height": 22,
+      "theme": "sciara",
+      "vertices": [
+       [
+        56.2,
+        -65
+       ],
+       [
+        54.3,
+        -58.4
+       ],
+       [
+        51.8,
+        -53.6
+       ],
+       [
+        50.6,
+        -49.1
+       ],
+       [
+        51.1,
+        -42.7
+       ],
+       [
+        51.7,
+        -34.3
+       ],
+       [
+        50.8,
+        -26.8
+       ],
+       [
+        47.9,
+        -23.7
+       ],
+       [
+        44,
+        -26
+       ],
+       [
+        40.4,
+        -30.5
+       ],
+       [
+        37.7,
+        -33
+       ],
+       [
+        35.1,
+        -31.9
+       ],
+       [
+        31.7,
+        -29.2
+       ],
+       [
+        27.9,
+        -29.1
+       ],
+       [
+        24.8,
+        -33.8
+       ],
+       [
+        23.5,
+        -41.8
+       ],
+       [
+        23.8,
+        -50
+       ],
+       [
+        23.9,
+        -56.3
+       ],
+       [
+        22.4,
+        -61.5
+       ],
+       [
+        19.7,
+        -67.6
+       ],
+       [
+        17.4,
+        -75.4
+       ],
+       [
+        17.5,
+        -82.8
+       ],
+       [
+        20.2,
+        -87.3
+       ],
+       [
+        24,
+        -88.4
+       ],
+       [
+        27.2,
+        -88.7
+       ],
+       [
+        29,
+        -91.7
+       ],
+       [
+        30.5,
+        -97.8
+       ],
+       [
+        32.7,
+        -104.1
+       ],
+       [
+        36,
+        -106.1
+       ],
+       [
+        39.4,
+        -102.2
+       ],
+       [
+        41.9,
+        -94.7
+       ],
+       [
+        43.7,
+        -87.8
+       ],
+       [
+        45.7,
+        -83.8
+       ],
+       [
+        48.9,
+        -81.7
+       ],
+       [
+        52.9,
+        -78.5
+       ],
+       [
+        55.8,
+        -72.6
+       ]
+      ]
+     },
+     {
+      "id": "cava-floor",
+      "type": "polygon",
+      "operation": "add",
+      "base_height": 22,
+      "theme": "sciara",
+      "vertices": [
+       [
+        22.4,
+        -32
+       ],
+       [
+        20.7,
+        -30.1
+       ],
+       [
+        19.2,
+        -28.7
+       ],
+       [
+        18.2,
+        -27
+       ],
+       [
+        16.6,
+        -24.9
+       ],
+       [
+        14,
+        -23.7
+       ],
+       [
+        11.1,
+        -24.3
+       ],
+       [
+        9.3,
+        -26.4
+       ],
+       [
+        8.6,
+        -28.6
+       ],
+       [
+        7.8,
+        -30.2
+       ],
+       [
+        6.4,
+        -32
+       ],
+       [
+        5.4,
+        -34.4
+       ],
+       [
+        6.2,
+        -36.9
+       ],
+       [
+        8.8,
+        -38.3
+       ],
+       [
+        11.7,
+        -38.2
+       ],
+       [
+        14,
+        -37.7
+       ],
+       [
+        16.1,
+        -37.6
+       ],
+       [
+        18.7,
+        -37.7
+       ],
+       [
+        21.6,
+        -36.8
+       ],
+       [
+        23,
+        -34.6
+       ]
+      ]
+     }
+    ],
+    "groups": [
+     {
+      "id": "team",
+      "name": "Team island",
+      "mirrors": true,
+      "shapeIds": [
+       "back-e-22",
+       "back-e-34",
+       "piazza",
+       "stair-piazza",
+       "aia",
+       "aia-floor",
+       "stair-olive",
+       "stair-front",
+       "olive-upper",
+       "stair-olives",
+       "olive-lower",
+       "stair-lip",
+       "stair-yard",
+       "stair-grove",
+       "sciara-flow",
+       "cava-floor"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "campanile-body",
+   "name": "Campanile",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "campanile",
+   "layout": {
+    "shapes": [
+     {
+      "id": "campanile-shaft",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": -31,
+      "min_z": -106,
+      "max_x": -26,
+      "max_z": -101,
+      "floor": 34,
+      "base_height": 13,
+      "material": {
+       "kind": "solid",
+       "id": 155
+      }
+     },
+     {
+      "id": "campanile-post-0",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": -31,
+      "min_z": -106,
+      "max_x": -30,
+      "max_z": -105,
+      "floor": 34,
+      "base_height": 17,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      }
+     },
+     {
+      "id": "campanile-post-1",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": -27,
+      "min_z": -106,
+      "max_x": -26,
+      "max_z": -105,
+      "floor": 34,
+      "base_height": 17,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      }
+     },
+     {
+      "id": "campanile-post-2",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": -31,
+      "min_z": -102,
+      "max_x": -30,
+      "max_z": -101,
+      "floor": 34,
+      "base_height": 17,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      }
+     },
+     {
+      "id": "campanile-post-3",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": -27,
+      "min_z": -102,
+      "max_x": -26,
+      "max_z": -101,
+      "floor": 34,
+      "base_height": 17,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      }
+     }
+    ],
+    "groups": [
+     {
+      "id": "campanile-body-body",
+      "name": "Campanile",
+      "mirrors": true,
+      "shapeIds": [
+       "campanile-shaft",
+       "campanile-post-0",
+       "campanile-post-1",
+       "campanile-post-2",
+       "campanile-post-3"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "campanile-cap",
+   "name": "Campanile cap",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "campanile",
+   "layout": {
+    "shapes": [
+     {
+      "id": "campanile-cap-0",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": -32,
+      "min_z": -107,
+      "max_x": -25,
+      "max_z": -100,
+      "floor": 51,
+      "base_height": 1,
+      "material": {
+       "kind": "solid",
+       "id": 45
+      }
+     },
+     {
+      "id": "campanile-cap-1",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": -31,
+      "min_z": -106,
+      "max_x": -26,
+      "max_z": -101,
+      "floor": 51,
+      "base_height": 2,
+      "material": {
+       "kind": "solid",
+       "id": 45
+      }
+     },
+     {
+      "id": "campanile-cap-2",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": -30,
+      "min_z": -105,
+      "max_x": -27,
+      "max_z": -102,
+      "floor": 51,
+      "base_height": 3,
+      "material": {
+       "kind": "solid",
+       "id": 45
+      }
+     },
+     {
+      "id": "campanile-cap-3",
+      "type": "rectangle",
+      "operation": "add",
+      "keepClear": true,
+      "min_x": -29,
+      "min_z": -104,
+      "max_x": -28,
+      "max_z": -103,
+      "floor": 51,
+      "base_height": 4,
+      "material": {
+       "kind": "solid",
+       "id": 45
+      }
+     }
+    ],
+    "groups": [
+     {
+      "id": "campanile-cap-body",
+      "name": "Campanile cap",
+      "mirrors": true,
+      "shapeIds": [
+       "campanile-cap-0",
+       "campanile-cap-1",
+       "campanile-cap-2",
+       "campanile-cap-3"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "themes": {
+  "campagna": {
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 2
+    },
+    "depth": 1
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 2
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 34
+       },
+       {
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "seed": 5,
+             "cellSize": 2,
+             "jitter": 1,
+             "warp": 1,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 3
+              },
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 1
+              }
+             ]
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 14
+       },
+       {
+        "material": {
+         "kind": "cell",
+         "seed": 11,
+         "cellSize": 2,
+         "jitter": 1,
+         "warp": 1,
+         "palette": [
+          {
+           "kind": "solid",
+           "id": 159,
+           "data": 15
+          },
+          {
+           "kind": "solid",
+           "id": 159,
+           "data": 15
+          },
+          {
+           "kind": "solid",
+           "id": 159,
+           "data": 7
+          },
+          {
+           "kind": "solid",
+           "id": 173
+          }
+         ],
+         "rise": 2
+        },
+        "thickness": 42
+       }
+      ]
+     }
+    },
+    "depth": 3
+   },
+   "wall": {
+    "kind": "cell",
+    "seed": 11,
+    "cellSize": 2,
+    "jitter": 1,
+    "warp": 1,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     },
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     },
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 7
+     },
+     {
+      "kind": "solid",
+      "id": 173
+     }
+    ],
+    "rise": 2
+   },
+   "fill": {
+    "kind": "cell",
+    "seed": 11,
+    "cellSize": 2,
+    "jitter": 1,
+    "warp": 1,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     },
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     },
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 7
+     },
+     {
+      "kind": "solid",
+      "id": 173
+     }
+    ],
+    "rise": 2
+   }
+  },
+  "sciara": {
+   "rim": {
+    "material": {
+     "kind": "cell",
+     "seed": 11,
+     "cellSize": 2,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 15
+      },
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 15
+      },
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 7
+      },
+      {
+       "kind": "solid",
+       "id": 173
+      }
+     ],
+     "rise": 2
+    },
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "noise",
+     "seed": 23,
+     "scale": 3,
+     "octaves": 2,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 7
+      },
+      {
+       "kind": "cell",
+       "seed": 11,
+       "cellSize": 2,
+       "jitter": 1,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 159,
+         "data": 15
+        },
+        {
+         "kind": "solid",
+         "id": 159,
+         "data": 15
+        },
+        {
+         "kind": "solid",
+         "id": 159,
+         "data": 7
+        },
+        {
+         "kind": "solid",
+         "id": 173
+        }
+       ],
+       "rise": 2
+      },
+      {
+       "kind": "cell",
+       "seed": 11,
+       "cellSize": 2,
+       "jitter": 1,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 159,
+         "data": 15
+        },
+        {
+         "kind": "solid",
+         "id": 159,
+         "data": 15
+        },
+        {
+         "kind": "solid",
+         "id": 159,
+         "data": 7
+        },
+        {
+         "kind": "solid",
+         "id": 173
+        }
+       ],
+       "rise": 2
+      },
+      {
+       "kind": "solid",
+       "id": 173
+      }
+     ]
+    },
+    "depth": 2
+   },
+   "wall": {
+    "kind": "cell",
+    "seed": 11,
+    "cellSize": 2,
+    "jitter": 1,
+    "warp": 1,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     },
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     },
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 7
+     },
+     {
+      "kind": "solid",
+      "id": 173
+     }
+    ],
+    "rise": 2
+   },
+   "fill": {
+    "kind": "cell",
+    "seed": 11,
+    "cellSize": 2,
+    "jitter": 1,
+    "warp": 1,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     },
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     },
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 7
+     },
+     {
+      "kind": "solid",
+      "id": 173
+     }
+    ],
+    "rise": 2
+   }
+  },
+  "borgo": {
+   "rim": {
+    "material": {
+     "kind": "cell",
+     "seed": 11,
+     "cellSize": 2,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 15
+      },
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 15
+      },
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 7
+      },
+      {
+       "kind": "solid",
+       "id": 173
+      }
+     ],
+     "rise": 2
+    },
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "cell",
+     "seed": 3,
+     "cellSize": 3,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 2
+      },
+      {
+       "kind": "solid",
+       "id": 172
+      },
+      {
+       "kind": "solid",
+       "id": 45
+      }
+     ]
+    },
+    "depth": 2
+   },
+   "wall": {
+    "kind": "cell",
+    "seed": 11,
+    "cellSize": 2,
+    "jitter": 1,
+    "warp": 1,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     },
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     },
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 7
+     },
+     {
+      "kind": "solid",
+      "id": 173
+     }
+    ],
+    "rise": 2
+   },
+   "fill": {
+    "kind": "cell",
+    "seed": 11,
+    "cellSize": 2,
+    "jitter": 1,
+    "warp": 1,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     },
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     },
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 7
+     },
+     {
+      "kind": "solid",
+      "id": 173
+     }
+    ],
+    "rise": 2
+   }
+  }
+ },
+ "mapTheme": "campagna",
+ "roomStyles": {
+  "spawn": {
+   "foundation": {
+    "plate": {
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        "thickness": 1
+       }
+      ],
+      "ending": "repeat"
+     },
+     "extent": 1
+    },
+    "surface": {
+     "field": null,
+     "border": {
+      "kind": "solid",
+      "id": 155,
+      "data": 1
+     },
+     "borderWidth": 1,
+     "inlay": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     },
+     "inlayInset": 3,
+     "isPlain": false
+    },
+    "footing": null
+   },
+   "roof": {
+    "form": "hip",
+    "pitch": 1,
+    "slab": 44,
+    "slabData": 4,
+    "stair": -1,
+    "wear": 0,
+    "overhang": 1,
+    "ridgeCap": true,
+    "hole": false,
+    "body": {
+     "kind": "solid",
+     "id": 45,
+     "data": 0
+    },
+    "verge": {
+     "kind": "solid",
+     "id": 155,
+     "data": 2
+    },
+    "gable": {
+     "kind": "solid",
+     "id": 155,
+     "data": 0
+    },
+    "gableWindows": {
+     "form": "none",
+     "block": 0,
+     "hostBlock": -1,
+     "hostData": 0,
+     "data": 0,
+     "sill": 1,
+     "width": 1,
+     "height": 1,
+     "spacing": 3
+    }
+   },
+   "wall": {
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 155,
+        "data": 0
+       },
+       "thickness": 4
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 155,
+        "data": 1
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 159,
+        "data": 14
+       },
+       "thickness": 1
+      }
+     ],
+     "ending": "repeat"
+    },
+    "extent": 8
+   },
+   "post": {
+    "kind": "solid",
+    "id": 155,
+    "data": 2
+   },
+   "windows": {
+    "form": "arched",
+    "block": 156,
+    "hostBlock": -1,
+    "hostData": 0,
+    "data": 0,
+    "sill": 2,
+    "width": 2,
+    "height": 3,
+    "spacing": 3
+   },
+   "storeys": [],
+   "porch": null,
+   "front": null,
+   "beams": {
+    "block": -1,
+    "data": 0,
+    "reach": 1,
+    "any": false
+   },
+   "doorway": {
+    "door": "air",
+    "head": {
+     "form": "arched",
+     "block": 108,
+     "fill": "upperSlab",
+     "fillBlock": 44,
+     "fillData": 4
+    },
+    "width": 3,
+    "height": 4
+   }
+  }
+ },
+ "dressing": {
+  "styles": {
+   "olive-a": {
+    "kind": "tree",
+    "form": "copied",
+    "body": [
+     [
+      1,
+      0,
+      -1,
+      162,
+      13
+     ],
+     [
+      2,
+      0,
+      -1,
+      162,
+      13
+     ],
+     [
+      0,
+      0,
+      0,
+      162,
+      13
+     ],
+     [
+      1,
+      0,
+      0,
+      162,
+      13
+     ],
+     [
+      0,
+      0,
+      1,
+      162,
+      13
+     ],
+     [
+      0,
+      1,
+      -5,
+      161,
+      13
+     ],
+     [
+      1,
+      1,
+      -3,
+      161,
+      13
+     ],
+     [
+      1,
+      1,
+      -1,
+      162,
+      13
+     ],
+     [
+      0,
+      1,
+      0,
+      162,
+      13
+     ],
+     [
+      1,
+      1,
+      0,
+      162,
+      13
+     ],
+     [
+      1,
+      2,
+      -6,
+      161,
+      13
+     ],
+     [
+      -1,
+      2,
+      -5,
+      161,
+      13
+     ],
+     [
+      -1,
+      2,
+      -4,
+      161,
+      13
+     ],
+     [
+      1,
+      2,
+      -4,
+      161,
+      13
+     ],
+     [
+      0,
+      2,
+      -3,
+      161,
+      13
+     ],
+     [
+      3,
+      2,
+      -3,
+      161,
+      13
+     ],
+     [
+      1,
+      2,
+      -2,
+      162,
+      13
+     ],
+     [
+      1,
+      2,
+      -1,
+      162,
+      13
+     ],
+     [
+      1,
+      2,
+      0,
+      162,
+      13
+     ],
+     [
+      2,
+      2,
+      0,
+      162,
+      13
+     ],
+     [
+      1,
+      2,
+      4,
+      161,
+      13
+     ],
+     [
+      2,
+      3,
+      -7,
+      161,
+      13
+     ],
+     [
+      0,
+      3,
+      -6,
+      161,
+      13
+     ],
+     [
+      1,
+      3,
+      -6,
+      161,
+      13
+     ],
+     [
+      -2,
+      3,
+      -4,
+      161,
+      13
+     ],
+     [
+      -1,
+      3,
+      -4,
+      161,
+      13
+     ],
+     [
+      2,
+      3,
+      -4,
+      161,
+      13
+     ],
+     [
+      3,
+      3,
+      -4,
+      161,
+      13
+     ],
+     [
+      -2,
+      3,
+      -3,
+      161,
+      13
+     ],
+     [
+      0,
+      3,
+      -2,
+      161,
+      13
+     ],
+     [
+      1,
+      3,
+      -2,
+      162,
+      13
+     ],
+     [
+      3,
+      3,
+      -2,
+      161,
+      13
+     ],
+     [
+      2,
+      3,
+      0,
+      162,
+      13
+     ],
+     [
+      2,
+      3,
+      1,
+      162,
+      13
+     ],
+     [
+      2,
+      3,
+      2,
+      161,
+      13
+     ],
+     [
+      5,
+      3,
+      2,
+      161,
+      13
+     ],
+     [
+      0,
+      3,
+      3,
+      161,
+      13
+     ],
+     [
+      3,
+      3,
+      3,
+      161,
+      13
+     ],
+     [
+      -1,
+      3,
+      4,
+      161,
+      13
+     ],
+     [
+      1,
+      3,
+      4,
+      161,
+      13
+     ],
+     [
+      0,
+      3,
+      5,
+      161,
+      13
+     ],
+     [
+      3,
+      3,
+      5,
+      161,
+      13
+     ],
+     [
+      -1,
+      4,
+      -6,
+      161,
+      13
+     ],
+     [
+      0,
+      4,
+      -6,
+      161,
+      13
+     ],
+     [
+      2,
+      4,
+      -6,
+      161,
+      13
+     ],
+     [
+      0,
+      4,
+      -5,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      -5,
+      161,
+      13
+     ],
+     [
+      3,
+      4,
+      -5,
+      161,
+      13
+     ],
+     [
+      -2,
+      4,
+      -4,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      -4,
+      161,
+      13
+     ],
+     [
+      -1,
+      4,
+      -3,
+      161,
+      13
+     ],
+     [
+      0,
+      4,
+      -3,
+      162,
+      13
+     ],
+     [
+      1,
+      4,
+      -3,
+      162,
+      13
+     ],
+     [
+      2,
+      4,
+      -3,
+      161,
+      13
+     ],
+     [
+      4,
+      4,
+      -3,
+      161,
+      5
+     ],
+     [
+      -2,
+      4,
+      -2,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      -2,
+      162,
+      13
+     ],
+     [
+      0,
+      4,
+      -1,
+      161,
+      13
+     ],
+     [
+      3,
+      4,
+      -1,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      1,
+      161,
+      13
+     ],
+     [
+      2,
+      4,
+      1,
+      162,
+      13
+     ],
+     [
+      5,
+      4,
+      1,
+      161,
+      13
+     ],
+     [
+      -1,
+      4,
+      2,
+      161,
+      13
+     ],
+     [
+      4,
+      4,
+      2,
+      161,
+      13
+     ],
+     [
+      0,
+      4,
+      3,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      3,
+      161,
+      5
+     ],
+     [
+      0,
+      4,
+      4,
+      161,
+      13
+     ],
+     [
+      2,
+      4,
+      4,
+      161,
+      13
+     ],
+     [
+      4,
+      4,
+      4,
+      161,
+      13
+     ],
+     [
+      -1,
+      4,
+      5,
+      161,
+      5
+     ],
+     [
+      0,
+      4,
+      5,
+      161,
+      13
+     ],
+     [
+      2,
+      4,
+      5,
+      161,
+      13
+     ],
+     [
+      4,
+      4,
+      5,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      6,
+      161,
+      13
+     ],
+     [
+      0,
+      5,
+      -7,
+      161,
+      13
+     ],
+     [
+      1,
+      5,
+      -6,
+      161,
+      13
+     ],
+     [
+      3,
+      5,
+      -6,
+      161,
+      13
+     ],
+     [
+      -1,
+      5,
+      -5,
+      161,
+      13
+     ],
+     [
+      2,
+      5,
+      -5,
+      161,
+      13
+     ],
+     [
+      0,
+      5,
+      -4,
+      161,
+      13
+     ],
+     [
+      2,
+      5,
+      -4,
+      162,
+      13
+     ],
+     [
+      3,
+      5,
+      -4,
+      161,
+      13
+     ],
+     [
+      -2,
+      5,
+      -3,
+      161,
+      13
+     ],
+     [
+      2,
+      5,
+      -3,
+      162,
+      13
+     ],
+     [
+      4,
+      5,
+      -3,
+      161,
+      13
+     ],
+     [
+      0,
+      5,
+      -2,
+      161,
+      13
+     ],
+     [
+      3,
+      5,
+      -2,
+      161,
+      13
+     ],
+     [
+      1,
+      5,
+      -1,
+      161,
+      13
+     ],
+     [
+      3,
+      5,
+      0,
+      161,
+      13
+     ],
+     [
+      -1,
+      5,
+      1,
+      161,
+      13
+     ],
+     [
+      2,
+      5,
+      1,
+      162,
+      13
+     ],
+     [
+      4,
+      5,
+      1,
+      161,
+      13
+     ],
+     [
+      -1,
+      5,
+      2,
+      161,
+      13
+     ],
+     [
+      0,
+      5,
+      2,
+      161,
+      13
+     ],
+     [
+      2,
+      5,
+      2,
+      162,
+      13
+     ],
+     [
+      3,
+      5,
+      2,
+      161,
+      13
+     ],
+     [
+      -3,
+      5,
+      3,
+      161,
+      13
+     ],
+     [
+      -2,
+      5,
+      3,
+      161,
+      13
+     ],
+     [
+      0,
+      5,
+      3,
+      162,
+      13
+     ],
+     [
+      1,
+      5,
+      3,
+      162,
+      13
+     ],
+     [
+      3,
+      5,
+      3,
+      161,
+      13
+     ],
+     [
+      5,
+      5,
+      3,
+      161,
+      13
+     ],
+     [
+      -1,
+      5,
+      4,
+      161,
+      13
+     ],
+     [
+      3,
+      5,
+      4,
+      161,
+      13
+     ],
+     [
+      4,
+      5,
+      4,
+      161,
+      13
+     ],
+     [
+      1,
+      5,
+      5,
+      161,
+      13
+     ],
+     [
+      0,
+      5,
+      6,
+      161,
+      13
+     ],
+     [
+      2,
+      5,
+      6,
+      161,
+      13
+     ],
+     [
+      1,
+      6,
+      -7,
+      161,
+      13
+     ],
+     [
+      2,
+      6,
+      -7,
+      161,
+      13
+     ],
+     [
+      0,
+      6,
+      -5,
+      161,
+      13
+     ],
+     [
+      3,
+      6,
+      -5,
+      161,
+      13
+     ],
+     [
+      -1,
+      6,
+      -4,
+      161,
+      13
+     ],
+     [
+      2,
+      6,
+      -4,
+      161,
+      13
+     ],
+     [
+      3,
+      6,
+      -4,
+      161,
+      13
+     ],
+     [
+      -1,
+      6,
+      -3,
+      161,
+      13
+     ],
+     [
+      0,
+      6,
+      -3,
+      161,
+      13
+     ],
+     [
+      3,
+      6,
+      -3,
+      161,
+      13
+     ],
+     [
+      1,
+      6,
+      -2,
+      161,
+      13
+     ],
+     [
+      2,
+      6,
+      -2,
+      161,
+      13
+     ],
+     [
+      0,
+      6,
+      -1,
+      161,
+      13
+     ],
+     [
+      -1,
+      6,
+      0,
+      161,
+      13
+     ],
+     [
+      2,
+      6,
+      0,
+      161,
+      13
+     ],
+     [
+      4,
+      6,
+      0,
+      161,
+      13
+     ],
+     [
+      -1,
+      6,
+      1,
+      161,
+      5
+     ],
+     [
+      1,
+      6,
+      1,
+      161,
+      13
+     ],
+     [
+      5,
+      6,
+      1,
+      161,
+      13
+     ],
+     [
+      -2,
+      6,
+      2,
+      161,
+      13
+     ],
+     [
+      3,
+      6,
+      2,
+      162,
+      13
+     ],
+     [
+      4,
+      6,
+      2,
+      161,
+      13
+     ],
+     [
+      5,
+      6,
+      2,
+      161,
+      13
+     ],
+     [
+      2,
+      6,
+      3,
+      161,
+      13
+     ],
+     [
+      4,
+      6,
+      3,
+      161,
+      13
+     ],
+     [
+      0,
+      6,
+      4,
+      161,
+      13
+     ],
+     [
+      -2,
+      6,
+      5,
+      161,
+      13
+     ],
+     [
+      -1,
+      6,
+      5,
+      161,
+      13
+     ],
+     [
+      1,
+      6,
+      5,
+      161,
+      13
+     ],
+     [
+      3,
+      6,
+      5,
+      161,
+      13
+     ],
+     [
+      2,
+      6,
+      6,
+      161,
+      13
+     ],
+     [
+      0,
+      7,
+      -6,
+      161,
+      13
+     ],
+     [
+      2,
+      7,
+      -5,
+      161,
+      13
+     ],
+     [
+      1,
+      7,
+      -4,
+      161,
+      13
+     ],
+     [
+      4,
+      7,
+      -4,
+      161,
+      13
+     ],
+     [
+      1,
+      7,
+      -3,
+      161,
+      13
+     ],
+     [
+      1,
+      7,
+      -1,
+      161,
+      13
+     ],
+     [
+      2,
+      7,
+      0,
+      161,
+      13
+     ],
+     [
+      3,
+      7,
+      0,
+      161,
+      13
+     ],
+     [
+      2,
+      7,
+      1,
+      161,
+      13
+     ],
+     [
+      0,
+      7,
+      2,
+      161,
+      13
+     ],
+     [
+      3,
+      7,
+      2,
+      161,
+      5
+     ],
+     [
+      4,
+      7,
+      2,
+      161,
+      13
+     ],
+     [
+      -1,
+      7,
+      3,
+      161,
+      13
+     ],
+     [
+      0,
+      7,
+      3,
+      161,
+      13
+     ],
+     [
+      1,
+      7,
+      3,
+      161,
+      13
+     ],
+     [
+      -2,
+      7,
+      4,
+      161,
+      13
+     ],
+     [
+      2,
+      7,
+      4,
+      161,
+      13
+     ],
+     [
+      5,
+      7,
+      4,
+      161,
+      13
+     ],
+     [
+      0,
+      7,
+      5,
+      161,
+      13
+     ],
+     [
+      4,
+      7,
+      5,
+      161,
+      13
+     ],
+     [
+      2,
+      8,
+      2,
+      161,
+      13
+     ],
+     [
+      3,
+      8,
+      3,
+      161,
+      13
+     ],
+     [
+      2,
+      8,
+      4,
+      161,
+      13
+     ],
+     [
+      3,
+      8,
+      4,
+      161,
+      13
+     ]
+    ],
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 9
+   },
+   "olive-b": {
+    "kind": "tree",
+    "form": "copied",
+    "body": [
+     [
+      1,
+      0,
+      -1,
+      162,
+      13
+     ],
+     [
+      0,
+      0,
+      0,
+      162,
+      13
+     ],
+     [
+      1,
+      0,
+      0,
+      162,
+      13
+     ],
+     [
+      2,
+      0,
+      0,
+      162,
+      13
+     ],
+     [
+      1,
+      0,
+      1,
+      162,
+      13
+     ],
+     [
+      2,
+      0,
+      1,
+      162,
+      13
+     ],
+     [
+      1,
+      1,
+      -1,
+      162,
+      13
+     ],
+     [
+      1,
+      1,
+      0,
+      162,
+      13
+     ],
+     [
+      2,
+      1,
+      0,
+      162,
+      13
+     ],
+     [
+      1,
+      1,
+      1,
+      162,
+      13
+     ],
+     [
+      0,
+      2,
+      -4,
+      161,
+      5
+     ],
+     [
+      5,
+      2,
+      -1,
+      161,
+      13
+     ],
+     [
+      1,
+      2,
+      0,
+      162,
+      13
+     ],
+     [
+      2,
+      2,
+      0,
+      162,
+      13
+     ],
+     [
+      0,
+      3,
+      -4,
+      161,
+      13
+     ],
+     [
+      1,
+      3,
+      -4,
+      161,
+      13
+     ],
+     [
+      -3,
+      3,
+      -2,
+      161,
+      13
+     ],
+     [
+      5,
+      3,
+      -2,
+      161,
+      13
+     ],
+     [
+      -3,
+      3,
+      -1,
+      161,
+      13
+     ],
+     [
+      -2,
+      3,
+      -1,
+      161,
+      13
+     ],
+     [
+      4,
+      3,
+      -1,
+      126,
+      13
+     ],
+     [
+      6,
+      3,
+      -1,
+      161,
+      13
+     ],
+     [
+      -5,
+      3,
+      0,
+      161,
+      5
+     ],
+     [
+      -4,
+      3,
+      0,
+      126,
+      13
+     ],
+     [
+      -3,
+      3,
+      0,
+      126,
+      5
+     ],
+     [
+      -2,
+      3,
+      0,
+      162,
+      13
+     ],
+     [
+      -1,
+      3,
+      0,
+      162,
+      13
+     ],
+     [
+      0,
+      3,
+      0,
+      162,
+      13
+     ],
+     [
+      1,
+      3,
+      0,
+      162,
+      13
+     ],
+     [
+      4,
+      3,
+      0,
+      161,
+      13
+     ],
+     [
+      -5,
+      3,
+      1,
+      161,
+      5
+     ],
+     [
+      -4,
+      3,
+      1,
+      161,
+      13
+     ],
+     [
+      -2,
+      3,
+      1,
+      161,
+      5
+     ],
+     [
+      5,
+      3,
+      1,
+      161,
+      13
+     ],
+     [
+      2,
+      3,
+      2,
+      161,
+      5
+     ],
+     [
+      2,
+      3,
+      3,
+      161,
+      13
+     ],
+     [
+      3,
+      3,
+      3,
+      161,
+      13
+     ],
+     [
+      -1,
+      3,
+      4,
+      161,
+      13
+     ],
+     [
+      0,
+      3,
+      5,
+      161,
+      13
+     ],
+     [
+      -1,
+      4,
+      -4,
+      161,
+      13
+     ],
+     [
+      2,
+      4,
+      -4,
+      161,
+      13
+     ],
+     [
+      4,
+      4,
+      -4,
+      161,
+      13
+     ],
+     [
+      0,
+      4,
+      -3,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      -3,
+      161,
+      13
+     ],
+     [
+      3,
+      4,
+      -3,
+      126,
+      13
+     ],
+     [
+      -2,
+      4,
+      -2,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      -2,
+      162,
+      13
+     ],
+     [
+      3,
+      4,
+      -2,
+      5,
+      5
+     ],
+     [
+      4,
+      4,
+      -2,
+      161,
+      13
+     ],
+     [
+      -4,
+      4,
+      -1,
+      161,
+      13
+     ],
+     [
+      -3,
+      4,
+      -1,
+      161,
+      13
+     ],
+     [
+      -2,
+      4,
+      -1,
+      161,
+      13
+     ],
+     [
+      -1,
+      4,
+      -1,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      -1,
+      162,
+      13
+     ],
+     [
+      2,
+      4,
+      -1,
+      162,
+      13
+     ],
+     [
+      3,
+      4,
+      -1,
+      162,
+      13
+     ],
+     [
+      5,
+      4,
+      -1,
+      161,
+      13
+     ],
+     [
+      -3,
+      4,
+      0,
+      161,
+      13
+     ],
+     [
+      -2,
+      4,
+      0,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      0,
+      162,
+      13
+     ],
+     [
+      3,
+      4,
+      0,
+      161,
+      13
+     ],
+     [
+      4,
+      4,
+      0,
+      161,
+      13
+     ],
+     [
+      5,
+      4,
+      0,
+      161,
+      13
+     ],
+     [
+      6,
+      4,
+      0,
+      161,
+      13
+     ],
+     [
+      -5,
+      4,
+      1,
+      161,
+      13
+     ],
+     [
+      -4,
+      4,
+      1,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      1,
+      162,
+      13
+     ],
+     [
+      -4,
+      4,
+      2,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      2,
+      162,
+      13
+     ],
+     [
+      2,
+      4,
+      2,
+      161,
+      13
+     ],
+     [
+      3,
+      4,
+      2,
+      161,
+      13
+     ],
+     [
+      -1,
+      4,
+      3,
+      161,
+      13
+     ],
+     [
+      0,
+      4,
+      3,
+      126,
+      5
+     ],
+     [
+      1,
+      4,
+      3,
+      5,
+      5
+     ],
+     [
+      2,
+      4,
+      3,
+      161,
+      13
+     ],
+     [
+      -2,
+      4,
+      4,
+      161,
+      13
+     ],
+     [
+      0,
+      4,
+      4,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      4,
+      126,
+      13
+     ],
+     [
+      2,
+      4,
+      4,
+      161,
+      13
+     ],
+     [
+      3,
+      4,
+      4,
+      161,
+      13
+     ],
+     [
+      4,
+      4,
+      4,
+      161,
+      5
+     ],
+     [
+      1,
+      4,
+      5,
+      161,
+      13
+     ],
+     [
+      3,
+      4,
+      5,
+      161,
+      5
+     ],
+     [
+      1,
+      5,
+      -5,
+      161,
+      13
+     ],
+     [
+      0,
+      5,
+      -4,
+      161,
+      13
+     ],
+     [
+      3,
+      5,
+      -4,
+      161,
+      13
+     ],
+     [
+      4,
+      5,
+      -3,
+      161,
+      13
+     ],
+     [
+      -1,
+      5,
+      -2,
+      161,
+      13
+     ],
+     [
+      1,
+      5,
+      -2,
+      162,
+      13
+     ],
+     [
+      5,
+      5,
+      -2,
+      161,
+      13
+     ],
+     [
+      -2,
+      5,
+      -1,
+      161,
+      5
+     ],
+     [
+      -1,
+      5,
+      -1,
+      161,
+      5
+     ],
+     [
+      4,
+      5,
+      -1,
+      161,
+      13
+     ],
+     [
+      -4,
+      5,
+      0,
+      161,
+      13
+     ],
+     [
+      5,
+      5,
+      0,
+      161,
+      13
+     ],
+     [
+      -3,
+      5,
+      1,
+      161,
+      13
+     ],
+     [
+      1,
+      5,
+      1,
+      162,
+      13
+     ],
+     [
+      1,
+      5,
+      2,
+      161,
+      13
+     ],
+     [
+      2,
+      5,
+      2,
+      161,
+      13
+     ],
+     [
+      -1,
+      5,
+      3,
+      161,
+      13
+     ],
+     [
+      1,
+      5,
+      3,
+      161,
+      13
+     ],
+     [
+      2,
+      5,
+      3,
+      161,
+      13
+     ],
+     [
+      3,
+      5,
+      3,
+      161,
+      5
+     ],
+     [
+      2,
+      5,
+      4,
+      161,
+      13
+     ],
+     [
+      3,
+      5,
+      4,
+      161,
+      13
+     ],
+     [
+      0,
+      5,
+      5,
+      161,
+      13
+     ],
+     [
+      2,
+      5,
+      5,
+      161,
+      5
+     ],
+     [
+      0,
+      6,
+      -5,
+      161,
+      5
+     ],
+     [
+      0,
+      6,
+      -4,
+      161,
+      13
+     ],
+     [
+      1,
+      6,
+      -4,
+      161,
+      13
+     ],
+     [
+      0,
+      6,
+      -3,
+      126,
+      13
+     ],
+     [
+      1,
+      6,
+      -3,
+      126,
+      5
+     ],
+     [
+      3,
+      6,
+      -3,
+      161,
+      13
+     ],
+     [
+      1,
+      6,
+      -2,
+      162,
+      13
+     ],
+     [
+      4,
+      6,
+      -2,
+      161,
+      13
+     ],
+     [
+      1,
+      6,
+      -1,
+      161,
+      13
+     ],
+     [
+      2,
+      6,
+      -1,
+      161,
+      13
+     ],
+     [
+      2,
+      6,
+      3,
+      161,
+      13
+     ],
+     [
+      1,
+      6,
+      4,
+      161,
+      13
+     ],
+     [
+      1,
+      7,
+      -4,
+      161,
+      13
+     ],
+     [
+      2,
+      7,
+      -4,
+      161,
+      13
+     ],
+     [
+      0,
+      7,
+      -3,
+      161,
+      13
+     ],
+     [
+      1,
+      7,
+      -3,
+      161,
+      13
+     ],
+     [
+      1,
+      7,
+      -2,
+      161,
+      13
+     ],
+     [
+      0,
+      7,
+      -1,
+      161,
+      13
+     ],
+     [
+      2,
+      7,
+      -1,
+      161,
+      13
+     ],
+     [
+      1,
+      7,
+      0,
+      161,
+      13
+     ],
+     [
+      2,
+      8,
+      -3,
+      161,
+      13
+     ],
+     [
+      1,
+      8,
+      -2,
+      161,
+      5
+     ]
+    ],
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 9
+   },
+   "olive-c": {
+    "kind": "tree",
+    "form": "copied",
+    "body": [
+     [
+      1,
+      0,
+      -1,
+      162,
+      13
+     ],
+     [
+      0,
+      0,
+      0,
+      162,
+      13
+     ],
+     [
+      0,
+      0,
+      1,
+      162,
+      13
+     ],
+     [
+      -2,
+      1,
+      -3,
+      161,
+      13
+     ],
+     [
+      0,
+      1,
+      0,
+      162,
+      13
+     ],
+     [
+      1,
+      1,
+      0,
+      162,
+      13
+     ],
+     [
+      0,
+      1,
+      1,
+      162,
+      13
+     ],
+     [
+      1,
+      1,
+      1,
+      162,
+      13
+     ],
+     [
+      -1,
+      2,
+      -3,
+      161,
+      13
+     ],
+     [
+      -2,
+      2,
+      -2,
+      161,
+      13
+     ],
+     [
+      -1,
+      2,
+      -2,
+      161,
+      13
+     ],
+     [
+      1,
+      2,
+      0,
+      162,
+      13
+     ],
+     [
+      0,
+      2,
+      1,
+      162,
+      13
+     ],
+     [
+      1,
+      2,
+      1,
+      162,
+      13
+     ],
+     [
+      -4,
+      2,
+      2,
+      161,
+      13
+     ],
+     [
+      -2,
+      2,
+      2,
+      161,
+      13
+     ],
+     [
+      1,
+      2,
+      3,
+      161,
+      13
+     ],
+     [
+      -2,
+      3,
+      -4,
+      161,
+      13
+     ],
+     [
+      0,
+      3,
+      -4,
+      161,
+      13
+     ],
+     [
+      -3,
+      3,
+      -3,
+      161,
+      13
+     ],
+     [
+      -1,
+      3,
+      -3,
+      126,
+      5
+     ],
+     [
+      -1,
+      3,
+      -2,
+      5,
+      5
+     ],
+     [
+      0,
+      3,
+      -2,
+      161,
+      13
+     ],
+     [
+      -2,
+      3,
+      -1,
+      126,
+      13
+     ],
+     [
+      -1,
+      3,
+      -1,
+      162,
+      13
+     ],
+     [
+      -3,
+      3,
+      0,
+      161,
+      13
+     ],
+     [
+      -1,
+      3,
+      0,
+      162,
+      13
+     ],
+     [
+      -4,
+      3,
+      1,
+      161,
+      13
+     ],
+     [
+      -2,
+      3,
+      1,
+      162,
+      13
+     ],
+     [
+      -1,
+      3,
+      1,
+      162,
+      13
+     ],
+     [
+      0,
+      3,
+      1,
+      162,
+      13
+     ],
+     [
+      1,
+      3,
+      1,
+      162,
+      13
+     ],
+     [
+      -3,
+      3,
+      2,
+      161,
+      13
+     ],
+     [
+      -3,
+      3,
+      3,
+      161,
+      13
+     ],
+     [
+      0,
+      3,
+      4,
+      161,
+      13
+     ],
+     [
+      1,
+      3,
+      5,
+      161,
+      13
+     ],
+     [
+      2,
+      3,
+      5,
+      161,
+      13
+     ],
+     [
+      0,
+      3,
+      6,
+      161,
+      13
+     ],
+     [
+      2,
+      3,
+      6,
+      161,
+      13
+     ],
+     [
+      -1,
+      4,
+      -4,
+      161,
+      13
+     ],
+     [
+      -3,
+      4,
+      -3,
+      161,
+      13
+     ],
+     [
+      -2,
+      4,
+      -3,
+      161,
+      13
+     ],
+     [
+      0,
+      4,
+      -3,
+      161,
+      13
+     ],
+     [
+      -2,
+      4,
+      -2,
+      161,
+      13
+     ],
+     [
+      -1,
+      4,
+      -2,
+      161,
+      13
+     ],
+     [
+      -1,
+      4,
+      -1,
+      161,
+      13
+     ],
+     [
+      0,
+      4,
+      -1,
+      161,
+      13
+     ],
+     [
+      -4,
+      4,
+      0,
+      161,
+      13
+     ],
+     [
+      -3,
+      4,
+      1,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      1,
+      162,
+      13
+     ],
+     [
+      5,
+      4,
+      1,
+      161,
+      13
+     ],
+     [
+      -2,
+      4,
+      2,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      2,
+      162,
+      13
+     ],
+     [
+      -2,
+      4,
+      3,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      3,
+      162,
+      13
+     ],
+     [
+      0,
+      4,
+      4,
+      126,
+      13
+     ],
+     [
+      1,
+      4,
+      4,
+      5,
+      5
+     ],
+     [
+      0,
+      4,
+      5,
+      161,
+      5
+     ],
+     [
+      1,
+      4,
+      5,
+      126,
+      5
+     ],
+     [
+      3,
+      4,
+      5,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      6,
+      161,
+      13
+     ],
+     [
+      -1,
+      5,
+      -3,
+      161,
+      13
+     ],
+     [
+      -2,
+      5,
+      -2,
+      161,
+      5
+     ],
+     [
+      -1,
+      5,
+      -1,
+      161,
+      13
+     ],
+     [
+      3,
+      5,
+      0,
+      162,
+      13
+     ],
+     [
+      5,
+      5,
+      0,
+      161,
+      13
+     ],
+     [
+      -3,
+      5,
+      1,
+      161,
+      13
+     ],
+     [
+      1,
+      5,
+      1,
+      162,
+      13
+     ],
+     [
+      2,
+      5,
+      1,
+      162,
+      13
+     ],
+     [
+      3,
+      5,
+      1,
+      162,
+      13
+     ],
+     [
+      4,
+      5,
+      1,
+      162,
+      13
+     ],
+     [
+      6,
+      5,
+      1,
+      161,
+      13
+     ],
+     [
+      -3,
+      5,
+      2,
+      161,
+      13
+     ],
+     [
+      4,
+      5,
+      2,
+      126,
+      13
+     ],
+     [
+      5,
+      5,
+      2,
+      126,
+      5
+     ],
+     [
+      5,
+      5,
+      3,
+      161,
+      13
+     ],
+     [
+      0,
+      5,
+      4,
+      161,
+      5
+     ],
+     [
+      1,
+      5,
+      4,
+      161,
+      5
+     ],
+     [
+      1,
+      5,
+      5,
+      161,
+      5
+     ],
+     [
+      2,
+      5,
+      5,
+      161,
+      5
+     ],
+     [
+      3,
+      6,
+      -1,
+      161,
+      13
+     ],
+     [
+      -1,
+      6,
+      0,
+      161,
+      13
+     ],
+     [
+      3,
+      6,
+      0,
+      161,
+      13
+     ],
+     [
+      4,
+      6,
+      0,
+      161,
+      13
+     ],
+     [
+      1,
+      6,
+      1,
+      162,
+      13
+     ],
+     [
+      2,
+      6,
+      1,
+      161,
+      13
+     ],
+     [
+      3,
+      6,
+      1,
+      161,
+      13
+     ],
+     [
+      5,
+      6,
+      1,
+      161,
+      13
+     ],
+     [
+      0,
+      6,
+      2,
+      161,
+      13
+     ],
+     [
+      2,
+      6,
+      2,
+      161,
+      5
+     ],
+     [
+      4,
+      6,
+      2,
+      161,
+      13
+     ],
+     [
+      5,
+      6,
+      2,
+      161,
+      13
+     ],
+     [
+      -1,
+      6,
+      3,
+      161,
+      13
+     ],
+     [
+      4,
+      6,
+      3,
+      161,
+      13
+     ],
+     [
+      0,
+      7,
+      -1,
+      161,
+      5
+     ],
+     [
+      1,
+      7,
+      -1,
+      161,
+      5
+     ],
+     [
+      3,
+      7,
+      -1,
+      161,
+      13
+     ],
+     [
+      4,
+      7,
+      -1,
+      161,
+      13
+     ],
+     [
+      0,
+      7,
+      0,
+      161,
+      13
+     ],
+     [
+      4,
+      7,
+      0,
+      161,
+      13
+     ],
+     [
+      -1,
+      7,
+      1,
+      161,
+      13
+     ],
+     [
+      0,
+      7,
+      1,
+      126,
+      13
+     ],
+     [
+      1,
+      7,
+      1,
+      126,
+      5
+     ],
+     [
+      2,
+      7,
+      1,
+      161,
+      13
+     ],
+     [
+      -1,
+      7,
+      2,
+      161,
+      13
+     ],
+     [
+      0,
+      7,
+      2,
+      161,
+      13
+     ],
+     [
+      4,
+      7,
+      2,
+      161,
+      5
+     ],
+     [
+      0,
+      7,
+      3,
+      161,
+      5
+     ],
+     [
+      0,
+      8,
+      -1,
+      161,
+      5
+     ],
+     [
+      0,
+      8,
+      0,
+      161,
+      5
+     ],
+     [
+      1,
+      8,
+      0,
+      161,
+      5
+     ],
+     [
+      1,
+      8,
+      1,
+      161,
+      13
+     ],
+     [
+      0,
+      8,
+      2,
+      161,
+      13
+     ]
+    ],
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 9
+   },
+   "olive-young": {
+    "kind": "tree",
+    "form": "copied",
+    "body": [
+     [
+      0,
+      0,
+      0,
+      5,
+      1
+     ],
+     [
+      1,
+      0,
+      0,
+      5,
+      1
+     ],
+     [
+      0,
+      0,
+      1,
+      5,
+      1
+     ],
+     [
+      0,
+      1,
+      0,
+      17,
+      12
+     ],
+     [
+      -3,
+      2,
+      -1,
+      18,
+      12
+     ],
+     [
+      -4,
+      2,
+      0,
+      18,
+      14
+     ],
+     [
+      -1,
+      2,
+      0,
+      17,
+      12
+     ],
+     [
+      0,
+      2,
+      0,
+      17,
+      12
+     ],
+     [
+      1,
+      2,
+      4,
+      18,
+      14
+     ],
+     [
+      0,
+      3,
+      -3,
+      18,
+      12
+     ],
+     [
+      -3,
+      3,
+      -2,
+      18,
+      14
+     ],
+     [
+      -4,
+      3,
+      -1,
+      18,
+      12
+     ],
+     [
+      -5,
+      3,
+      0,
+      18,
+      12
+     ],
+     [
+      -3,
+      3,
+      0,
+      126,
+      9
+     ],
+     [
+      -1,
+      3,
+      0,
+      17,
+      12
+     ],
+     [
+      3,
+      3,
+      0,
+      18,
+      14
+     ],
+     [
+      -4,
+      3,
+      1,
+      126,
+      9
+     ],
+     [
+      -3,
+      3,
+      1,
+      17,
+      12
+     ],
+     [
+      -1,
+      3,
+      1,
+      17,
+      12
+     ],
+     [
+      -2,
+      3,
+      2,
+      18,
+      12
+     ],
+     [
+      -3,
+      3,
+      3,
+      18,
+      14
+     ],
+     [
+      -2,
+      3,
+      4,
+      18,
+      14
+     ],
+     [
+      0,
+      3,
+      4,
+      18,
+      14
+     ],
+     [
+      2,
+      3,
+      4,
+      18,
+      14
+     ],
+     [
+      1,
+      3,
+      5,
+      18,
+      12
+     ],
+     [
+      0,
+      4,
+      -4,
+      18,
+      12
+     ],
+     [
+      -3,
+      4,
+      -3,
+      18,
+      14
+     ],
+     [
+      1,
+      4,
+      -3,
+      18,
+      14
+     ],
+     [
+      -4,
+      4,
+      -2,
+      18,
+      12
+     ],
+     [
+      -3,
+      4,
+      -2,
+      18,
+      14
+     ],
+     [
+      -2,
+      4,
+      -2,
+      18,
+      14
+     ],
+     [
+      0,
+      4,
+      -2,
+      126,
+      9
+     ],
+     [
+      1,
+      4,
+      -2,
+      17,
+      12
+     ],
+     [
+      2,
+      4,
+      -2,
+      18,
+      12
+     ],
+     [
+      -3,
+      4,
+      -1,
+      18,
+      14
+     ],
+     [
+      0,
+      4,
+      -1,
+      17,
+      12
+     ],
+     [
+      3,
+      4,
+      -1,
+      18,
+      12
+     ],
+     [
+      -4,
+      4,
+      0,
+      18,
+      12
+     ],
+     [
+      -2,
+      4,
+      0,
+      17,
+      12
+     ],
+     [
+      -1,
+      4,
+      0,
+      17,
+      12
+     ],
+     [
+      0,
+      4,
+      0,
+      18,
+      12
+     ],
+     [
+      2,
+      4,
+      0,
+      18,
+      12
+     ],
+     [
+      -5,
+      4,
+      1,
+      18,
+      12
+     ],
+     [
+      -3,
+      4,
+      1,
+      18,
+      14
+     ],
+     [
+      0,
+      4,
+      1,
+      18,
+      12
+     ],
+     [
+      1,
+      4,
+      1,
+      18,
+      14
+     ],
+     [
+      2,
+      4,
+      1,
+      18,
+      14
+     ],
+     [
+      3,
+      4,
+      1,
+      18,
+      12
+     ],
+     [
+      -4,
+      4,
+      2,
+      18,
+      14
+     ],
+     [
+      -1,
+      4,
+      2,
+      17,
+      12
+     ],
+     [
+      2,
+      4,
+      2,
+      18,
+      14
+     ],
+     [
+      -2,
+      4,
+      3,
+      18,
+      14
+     ],
+     [
+      -1,
+      4,
+      3,
+      18,
+      14
+     ],
+     [
+      0,
+      4,
+      3,
+      17,
+      12
+     ],
+     [
+      1,
+      4,
+      3,
+      18,
+      14
+     ],
+     [
+      2,
+      4,
+      3,
+      18,
+      12
+     ],
+     [
+      -3,
+      4,
+      4,
+      18,
+      12
+     ],
+     [
+      -1,
+      4,
+      4,
+      18,
+      12
+     ],
+     [
+      1,
+      4,
+      4,
+      18,
+      12
+     ],
+     [
+      0,
+      4,
+      5,
+      18,
+      14
+     ],
+     [
+      -2,
+      5,
+      -4,
+      18,
+      14
+     ],
+     [
+      0,
+      5,
+      -4,
+      18,
+      12
+     ],
+     [
+      1,
+      5,
+      -4,
+      18,
+      14
+     ],
+     [
+      -2,
+      5,
+      -3,
+      18,
+      14
+     ],
+     [
+      -1,
+      5,
+      -3,
+      18,
+      14
+     ],
+     [
+      0,
+      5,
+      -3,
+      17,
+      12
+     ],
+     [
+      2,
+      5,
+      -3,
+      18,
+      14
+     ],
+     [
+      -3,
+      5,
+      -2,
+      18,
+      14
+     ],
+     [
+      1,
+      5,
+      -2,
+      18,
+      14
+     ],
+     [
+      -4,
+      5,
+      -1,
+      18,
+      14
+     ],
+     [
+      -3,
+      5,
+      -1,
+      18,
+      12
+     ],
+     [
+      -2,
+      5,
+      -1,
+      18,
+      12
+     ],
+     [
+      2,
+      5,
+      -1,
+      18,
+      14
+     ],
+     [
+      -4,
+      5,
+      1,
+      18,
+      14
+     ],
+     [
+      -3,
+      5,
+      1,
+      18,
+      14
+     ],
+     [
+      1,
+      5,
+      1,
+      18,
+      14
+     ],
+     [
+      2,
+      5,
+      1,
+      18,
+      12
+     ],
+     [
+      -3,
+      5,
+      2,
+      18,
+      12
+     ],
+     [
+      0,
+      5,
+      2,
+      18,
+      14
+     ],
+     [
+      3,
+      5,
+      2,
+      18,
+      14
+     ],
+     [
+      -2,
+      5,
+      3,
+      18,
+      12
+     ],
+     [
+      0,
+      5,
+      3,
+      18,
+      12
+     ],
+     [
+      1,
+      5,
+      3,
+      18,
+      12
+     ],
+     [
+      -1,
+      5,
+      5,
+      18,
+      14
+     ],
+     [
+      -1,
+      6,
+      -4,
+      18,
+      14
+     ],
+     [
+      -3,
+      6,
+      -3,
+      18,
+      12
+     ],
+     [
+      0,
+      6,
+      -3,
+      18,
+      12
+     ],
+     [
+      1,
+      6,
+      -3,
+      18,
+      14
+     ],
+     [
+      -4,
+      6,
+      -2,
+      18,
+      12
+     ],
+     [
+      -2,
+      6,
+      -2,
+      18,
+      14
+     ],
+     [
+      0,
+      6,
+      -2,
+      18,
+      14
+     ],
+     [
+      1,
+      6,
+      -2,
+      18,
+      14
+     ],
+     [
+      2,
+      6,
+      -2,
+      18,
+      14
+     ],
+     [
+      -3,
+      6,
+      -1,
+      18,
+      14
+     ],
+     [
+      1,
+      6,
+      -1,
+      18,
+      14
+     ],
+     [
+      0,
+      6,
+      0,
+      18,
+      12
+     ],
+     [
+      1,
+      6,
+      0,
+      18,
+      14
+     ],
+     [
+      2,
+      6,
+      0,
+      18,
+      14
+     ],
+     [
+      -2,
+      6,
+      1,
+      18,
+      12
+     ],
+     [
+      -1,
+      6,
+      1,
+      18,
+      14
+     ],
+     [
+      1,
+      6,
+      1,
+      18,
+      14
+     ],
+     [
+      3,
+      6,
+      1,
+      18,
+      14
+     ],
+     [
+      -4,
+      6,
+      2,
+      18,
+      14
+     ],
+     [
+      -1,
+      6,
+      2,
+      18,
+      14
+     ],
+     [
+      2,
+      6,
+      2,
+      18,
+      14
+     ],
+     [
+      -1,
+      6,
+      4,
+      18,
+      14
+     ],
+     [
+      0,
+      6,
+      4,
+      18,
+      12
+     ],
+     [
+      -2,
+      7,
+      -3,
+      18,
+      14
+     ],
+     [
+      0,
+      7,
+      -3,
+      18,
+      14
+     ],
+     [
+      -3,
+      7,
+      -2,
+      18,
+      12
+     ],
+     [
+      -1,
+      7,
+      -1,
+      18,
+      12
+     ],
+     [
+      1,
+      7,
+      -1,
+      18,
+      12
+     ],
+     [
+      -2,
+      7,
+      0,
+      18,
+      12
+     ],
+     [
+      0,
+      7,
+      0,
+      18,
+      12
+     ],
+     [
+      -1,
+      7,
+      1,
+      18,
+      12
+     ],
+     [
+      -2,
+      7,
+      2,
+      18,
+      14
+     ],
+     [
+      0,
+      7,
+      2,
+      18,
+      12
+     ],
+     [
+      1,
+      7,
+      3,
+      18,
+      12
+     ]
+    ],
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 8
+   },
+   "casa": {
+    "kind": "house",
+    "shell": {
+     "foundation": {
+      "plate": {
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 98,
+           "data": 0
+          },
+          "thickness": 1
+         }
+        ],
+        "ending": "repeat"
+       },
+       "extent": 1
+      },
+      "surface": {
+       "field": null,
+       "border": {
+        "kind": "solid",
+        "id": 155,
+        "data": 1
+       },
+       "borderWidth": 1,
+       "inlay": {
+        "kind": "solid",
+        "id": 159,
+        "data": 14
+       },
+       "inlayInset": 3,
+       "isPlain": false
+      },
+      "footing": null
+     },
+     "roof": {
+      "form": "hip",
+      "pitch": 1,
+      "slab": 44,
+      "slabData": 4,
+      "stair": -1,
+      "wear": 0,
+      "overhang": 1,
+      "ridgeCap": true,
+      "hole": false,
+      "body": {
+       "kind": "solid",
+       "id": 45,
+       "data": 0
+      },
+      "verge": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "gable": {
+       "kind": "solid",
+       "id": 155,
+       "data": 0
+      },
+      "gableWindows": {
+       "form": "none",
+       "block": 0,
+       "hostBlock": -1,
+       "hostData": 0,
+       "data": 0,
+       "sill": 1,
+       "width": 1,
+       "height": 1,
+       "spacing": 3
+      }
+     },
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 24,
+          "data": 2
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 155,
+          "data": 0
+         },
+         "thickness": 4
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 155,
+          "data": 1
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 159,
+          "data": 14
+         },
+         "thickness": 1
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 8
+     },
+     "post": {
+      "kind": "solid",
+      "id": 155,
+      "data": 2
+     },
+     "windows": {
+      "form": "arched",
+      "block": 156,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 2,
+      "width": 2,
+      "height": 3,
+      "spacing": 3
+     },
+     "storeys": [],
+     "porch": null,
+     "front": null,
+     "beams": {
+      "block": -1,
+      "data": 0,
+      "reach": 1,
+      "any": false
+     },
+     "doorway": {
+      "door": "air",
+      "head": {
+       "form": "arched",
+       "block": 108,
+       "fill": "upperSlab",
+       "fillBlock": 44,
+       "fillData": 4
+      },
+      "width": 3,
+      "height": 4
+     }
+    }
+   },
+   "lava-erratic": {
+    "kind": "boulder",
+    "form": "angular",
+    "size": 3,
+    "rock": {
+     "kind": "cell",
+     "seed": 11,
+     "cellSize": 2,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 15
+      },
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 15
+      },
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 7
+      },
+      {
+       "kind": "solid",
+       "id": 173
+      }
+     ],
+     "rise": 2
+    },
+    "mossy": false
+   }
+  },
+  "props": [
+   {
+    "id": "track-yard",
+    "kind": "stroke",
+    "points": [
+     [
+      -25,
+      -97
+     ],
+     [
+      -31,
+      -98.5
+     ],
+     [
+      -37.5,
+      -97.5
+     ]
+    ],
+    "radius": 1.5,
+    "style": "solid",
+    "claimsGround": true,
+    "wander": 1,
+    "wanderLength": 14,
+    "pave": {
+     "kind": "cell",
+     "seed": 17,
+     "cellSize": 1,
+     "jitter": 0,
+     "warp": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 3
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "track-upper",
+    "kind": "stroke",
+    "points": [
+     [
+      -37.5,
+      -75
+     ],
+     [
+      -33,
+      -67
+     ],
+     [
+      -27.5,
+      -56
+     ]
+    ],
+    "radius": 1.5,
+    "style": "solid",
+    "claimsGround": true,
+    "wander": 2,
+    "wanderLength": 14,
+    "pave": {
+     "kind": "cell",
+     "seed": 17,
+     "cellSize": 1,
+     "jitter": 0,
+     "warp": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 3
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "track-upper-aia",
+    "kind": "stroke",
+    "points": [
+     [
+      -31,
+      -64
+     ],
+     [
+      -20,
+      -63
+     ],
+     [
+      -8,
+      -59.5
+     ]
+    ],
+    "radius": 1.5,
+    "style": "solid",
+    "claimsGround": true,
+    "wander": 2,
+    "wanderLength": 14,
+    "pave": {
+     "kind": "cell",
+     "seed": 17,
+     "cellSize": 1,
+     "jitter": 0,
+     "warp": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 3
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "track-lower",
+    "kind": "stroke",
+    "points": [
+     [
+      -27.5,
+      -47
+     ],
+     [
+      -25,
+      -38
+     ],
+     [
+      -19.5,
+      -30
+     ]
+    ],
+    "radius": 1.5,
+    "style": "solid",
+    "claimsGround": true,
+    "wander": 2,
+    "wanderLength": 14,
+    "pave": {
+     "kind": "cell",
+     "seed": 17,
+     "cellSize": 1,
+     "jitter": 0,
+     "warp": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 3
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "track-front",
+    "kind": "stroke",
+    "points": [
+     [
+      20.5,
+      -46
+     ],
+     [
+      24,
+      -38
+     ],
+     [
+      21,
+      -26
+     ],
+     [
+      17,
+      -17
+     ]
+    ],
+    "radius": 1.5,
+    "style": "solid",
+    "claimsGround": true,
+    "wander": 2,
+    "wanderLength": 14,
+    "pave": {
+     "kind": "cell",
+     "seed": 17,
+     "cellSize": 1,
+     "jitter": 0,
+     "warp": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 3
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "erratic-snout",
+    "kind": "boulder",
+    "x": 24,
+    "z": -22,
+    "style": "lava-erratic"
+   },
+   {
+    "id": "erratic-lip",
+    "kind": "boulder",
+    "x": -2,
+    "z": -30,
+    "style": "lava-erratic"
+   },
+   {
+    "id": "olive-1",
+    "kind": "tree",
+    "x": -42,
+    "z": -70,
+    "style": "olive-a"
+   },
+   {
+    "id": "olive-2",
+    "kind": "tree",
+    "x": -30,
+    "z": -73,
+    "style": "olive-b"
+   },
+   {
+    "id": "olive-3",
+    "kind": "tree",
+    "x": -20,
+    "z": -69,
+    "style": "olive-c"
+   },
+   {
+    "id": "olive-4",
+    "kind": "tree",
+    "x": -41,
+    "z": -59,
+    "style": "olive-b"
+   },
+   {
+    "id": "olive-5",
+    "kind": "tree",
+    "x": -15,
+    "z": -54,
+    "style": "olive-a"
+   },
+   {
+    "id": "olive-6",
+    "kind": "tree",
+    "x": -43,
+    "z": -42,
+    "style": "olive-c"
+   },
+   {
+    "id": "olive-7",
+    "kind": "tree",
+    "x": -34,
+    "z": -35,
+    "style": "olive-a"
+   },
+   {
+    "id": "olive-8",
+    "kind": "tree",
+    "x": -12,
+    "z": -38,
+    "style": "olive-b"
+   },
+   {
+    "id": "olive-9",
+    "kind": "tree",
+    "x": -44,
+    "z": -31,
+    "style": "olive-young"
+   },
+   {
+    "id": "olive-10",
+    "kind": "tree",
+    "x": -44,
+    "z": -102,
+    "style": "olive-young"
+   },
+   {
+    "id": "olive-11",
+    "kind": "tree",
+    "x": 22,
+    "z": -90,
+    "style": "olive-young"
+   },
+   {
+    "id": "casa-west",
+    "kind": "house",
+    "style": "casa",
+    "front": "posZ",
+    "wings": [
+     {
+      "corners": [
+       [
+        -38,
+        -114
+       ],
+       [
+        -28,
+        -108
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "casa-east",
+    "kind": "house",
+    "style": "casa",
+    "front": "posZ",
+    "wings": [
+     {
+      "corners": [
+       [
+        12,
+        -114
+       ],
+       [
+        22,
+        -107
+       ]
+      ],
+      "spec": {
+       "storeysHigh": 2
+      }
+     }
+    ]
+   },
+   {
+    "id": "casa-tongue",
+    "kind": "house",
+    "style": "casa",
+    "front": "negX",
+    "wings": [
+     {
+      "corners": [
+       [
+        30,
+        -112
+       ],
+       [
+        38,
+        -104
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "cover",
+    "kind": "flora",
+    "points": [
+     [
+      -56,
+      -120
+     ],
+     [
+      56,
+      -120
+     ],
+     [
+      56,
+      -8
+     ],
+     [
+      -56,
+      -8
+     ]
+    ],
+    "spec": {
+     "coverage": 0.22,
+     "scale": 9,
+     "octaves": 2,
+     "fernShare": 0.1,
+     "flowerShare": 0.04,
+     "flowerScale": 7,
+     "tallShare": 0.03,
+     "deadBushShare": 0.15
+    }
+   }
+  ]
+ },
+ "biome": {
+  "kind": "solid",
+  "id": 35
+ },
+ "relief": {
+  "team": {
+   "base": 22,
+   "reach": 0,
+   "step": 1,
+   "landform": "rolling",
+   "grain": {
+    "amplitude": 2,
+    "scale": 32,
+    "seed": 9
+   },
+   "marks": [
+    {
+     "id": "lip",
+     "kind": "line",
+     "points": [
+      [
+       -56,
+       -17
+      ],
+      [
+       -20,
+       -16
+      ],
+      [
+       12,
+       -18
+      ],
+      [
+       56,
+       -17
+      ]
+     ],
+     "h": 22,
+     "r": 3
+    },
+    {
+     "id": "slope-top",
+     "kind": "line",
+     "points": [
+      [
+       -6,
+       -44
+      ],
+      [
+       12,
+       -45
+      ],
+      [
+       32,
+       -43
+      ]
+     ],
+     "h": 27,
+     "r": 2
+    },
+    {
+     "id": "verge",
+     "kind": "line",
+     "points": [
+      [
+       -56,
+       -93
+      ],
+      [
+       -20,
+       -92
+      ],
+      [
+       20,
+       -93
+      ],
+      [
+       56,
+       -93
+      ]
+     ],
+     "h": 31,
+     "r": 3
+    }
+   ],
+   "pushes": [
+    {
+     "id": "tongue",
+     "ring": [
+      [
+       45.9,
+       -63.9
+      ],
+      [
+       45.2,
+       -58.5
+      ],
+      [
+       44.3,
+       -54.4
+      ],
+      [
+       44.2,
+       -50.2
+      ],
+      [
+       44.6,
+       -44.1
+      ],
+      [
+       44.7,
+       -37.7
+      ],
+      [
+       43.6,
+       -34
+      ],
+      [
+       41.6,
+       -34.7
+      ],
+      [
+       39.6,
+       -37.8
+      ],
+      [
+       38.1,
+       -39.6
+      ],
+      [
+       36.7,
+       -38.8
+      ],
+      [
+       34.9,
+       -37.7
+      ],
+      [
+       32.9,
+       -39.7
+      ],
+      [
+       31.5,
+       -45.3
+      ],
+      [
+       31.1,
+       -52.1
+      ],
+      [
+       30.8,
+       -57.6
+      ],
+      [
+       30,
+       -62.3
+      ],
+      [
+       28.5,
+       -67.7
+      ],
+      [
+       27.4,
+       -74.2
+      ],
+      [
+       27.7,
+       -79.7
+      ],
+      [
+       29.2,
+       -82.3
+      ],
+      [
+       30.9,
+       -83
+      ],
+      [
+       32.1,
+       -84.8
+      ],
+      [
+       32.8,
+       -89
+      ],
+      [
+       33.8,
+       -93.5
+      ],
+      [
+       35.5,
+       -94.6
+      ],
+      [
+       37.4,
+       -90.8
+      ],
+      [
+       38.8,
+       -84.9
+      ],
+      [
+       40,
+       -80.3
+      ],
+      [
+       41.5,
+       -77.7
+      ],
+      [
+       43.5,
+       -74.9
+      ],
+      [
+       45.3,
+       -70.2
+      ]
+     ],
+     "amount": 8,
+     "falloff": 10,
+     "crown": 4,
+     "roughness": 0.5,
+     "seed": 3
+    },
+    {
+     "id": "cava",
+     "ring": [
+      [
+       20.2,
+       -32
+      ],
+      [
+       19,
+       -30.5
+      ],
+      [
+       17.9,
+       -29.3
+      ],
+      [
+       16.9,
+       -27.8
+      ],
+      [
+       15.2,
+       -26.6
+      ],
+      [
+       12.8,
+       -26.4
+      ],
+      [
+       10.9,
+       -27.5
+      ],
+      [
+       9.9,
+       -29.1
+      ],
+      [
+       9.2,
+       -30.5
+      ],
+      [
+       8.2,
+       -32
+      ],
+      [
+       7.8,
+       -33.9
+      ],
+      [
+       8.7,
+       -35.7
+      ],
+      [
+       10.9,
+       -36.5
+      ],
+      [
+       13.1,
+       -36.4
+      ],
+      [
+       14.9,
+       -36.2
+      ],
+      [
+       16.9,
+       -36.2
+      ],
+      [
+       19.1,
+       -35.6
+      ],
+      [
+       20.5,
+       -34
+      ]
+     ],
+     "amount": -6,
+     "falloff": 3,
+     "crown": 0,
+     "roughness": 0.3,
+     "seed": 4
+    }
+   ]
+  }
+ }
+}

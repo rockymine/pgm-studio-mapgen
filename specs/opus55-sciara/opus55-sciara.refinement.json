@@ -1,0 +1,1565 @@
+{
+ "materials": {
+  "lava-rock": {
+   "kind": "cell",
+   "seed": 11,
+   "cellSize": 2,
+   "jitter": 1,
+   "warp": 1,
+   "palette": [
+    {
+     "kind": "solid",
+     "id": 159,
+     "data": 15
+    },
+    {
+     "kind": "solid",
+     "id": 159,
+     "data": 15
+    },
+    {
+     "kind": "solid",
+     "id": 159,
+     "data": 7
+    },
+    {
+     "kind": "solid",
+     "id": 173
+    }
+   ],
+   "rise": 2
+  },
+  "worn": {
+   "kind": "cell",
+   "seed": 5,
+   "cellSize": 2,
+   "jitter": 1,
+   "warp": 1,
+   "palette": [
+    {
+     "kind": "solid",
+     "id": 3
+    },
+    {
+     "kind": "solid",
+     "id": 3,
+     "data": 1
+    }
+   ]
+  },
+  "sciara-top": {
+   "kind": "noise",
+   "seed": 23,
+   "scale": 3,
+   "octaves": 2,
+   "stops": [
+    {
+     "kind": "solid",
+     "id": 159,
+     "data": 7
+    },
+    {
+     "kind": "cell",
+     "seed": 11,
+     "cellSize": 2,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 15
+      },
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 15
+      },
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 7
+      },
+      {
+       "kind": "solid",
+       "id": 173
+      }
+     ],
+     "rise": 2
+    },
+    {
+     "kind": "cell",
+     "seed": 11,
+     "cellSize": 2,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 15
+      },
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 15
+      },
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 7
+      },
+      {
+       "kind": "solid",
+       "id": 173
+      }
+     ],
+     "rise": 2
+    },
+    {
+     "kind": "solid",
+     "id": 173
+    }
+   ]
+  },
+  "paving": {
+   "kind": "cell",
+   "seed": 3,
+   "cellSize": 3,
+   "jitter": 1,
+   "warp": 1,
+   "palette": [
+    {
+     "kind": "solid",
+     "id": 1,
+     "data": 1
+    },
+    {
+     "kind": "solid",
+     "id": 1,
+     "data": 2
+    },
+    {
+     "kind": "solid",
+     "id": 172
+    },
+    {
+     "kind": "solid",
+     "id": 45
+    }
+   ]
+  },
+  "track": {
+   "kind": "cell",
+   "seed": 17,
+   "cellSize": 1,
+   "jitter": 0,
+   "warp": 0,
+   "palette": [
+    {
+     "kind": "solid",
+     "id": 3
+    },
+    {
+     "kind": "solid",
+     "id": 3,
+     "data": 1
+    },
+    {
+     "kind": "solid",
+     "id": 5,
+     "data": 1
+    }
+   ]
+  }
+ },
+ "themes": {
+  "campagna": {
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 2
+    },
+    "depth": 1
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 2
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 34
+       },
+       {
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "use": "worn"
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 14
+       },
+       {
+        "material": {
+         "use": "lava-rock"
+        },
+        "thickness": 42
+       }
+      ]
+     }
+    },
+    "depth": 3
+   },
+   "wall": {
+    "use": "lava-rock"
+   },
+   "fill": {
+    "use": "lava-rock"
+   }
+  },
+  "sciara": {
+   "rim": {
+    "material": {
+     "use": "lava-rock"
+    },
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "use": "sciara-top"
+    },
+    "depth": 2
+   },
+   "wall": {
+    "use": "lava-rock"
+   },
+   "fill": {
+    "use": "lava-rock"
+   }
+  },
+  "borgo": {
+   "rim": {
+    "material": {
+     "use": "lava-rock"
+    },
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "use": "paving"
+    },
+    "depth": 2
+   },
+   "wall": {
+    "use": "lava-rock"
+   },
+   "fill": {
+    "use": "lava-rock"
+   }
+  }
+ },
+ "mapTheme": "campagna",
+ "biome": {
+  "kind": "solid",
+  "id": 35
+ },
+ "shapePropsById": {
+  "back-e-34": {
+   "relief_scope": "exclude"
+  }
+ },
+ "addShapes": [
+  {
+   "id": "piazza",
+   "type": "polygon",
+   "operation": "add",
+   "base_height": 34,
+   "relief_scope": "exclude",
+   "theme": "borgo",
+   "vertices": [
+    [
+     -24,
+     -100
+    ],
+    [
+     18,
+     -100
+    ],
+    [
+     18,
+     -80
+    ],
+    [
+     11,
+     -80
+    ],
+    [
+     11,
+     -86
+    ],
+    [
+     6,
+     -86
+    ],
+    [
+     6,
+     -80
+    ],
+    [
+     -24,
+     -80
+    ]
+   ]
+  },
+  {
+   "id": "stair-piazza",
+   "type": "polygon",
+   "operation": "add",
+   "height_mode": "level",
+   "skirt": 0,
+   "keepClear": true,
+   "material": {
+    "kind": "solid",
+    "id": 1,
+    "data": 6
+   },
+   "vertices": [
+    [
+     6,
+     -80
+    ],
+    [
+     11,
+     -80
+    ],
+    [
+     11,
+     -86
+    ],
+    [
+     6,
+     -86
+    ]
+   ],
+   "anchor_heights": [
+    31.5,
+    31.5,
+    34.5,
+    34.5
+   ]
+  },
+  {
+   "id": "aia",
+   "type": "polygon",
+   "operation": "add",
+   "base_height": 31,
+   "relief_scope": "exclude",
+   "theme": "campagna",
+   "vertices": [
+    [
+     -6,
+     -80
+    ],
+    [
+     26,
+     -80
+    ],
+    [
+     26,
+     -48
+    ],
+    [
+     23,
+     -48
+    ],
+    [
+     23,
+     -56
+    ],
+    [
+     18,
+     -56
+    ],
+    [
+     18,
+     -48
+    ],
+    [
+     -6,
+     -48
+    ],
+    [
+     -6,
+     -57
+    ],
+    [
+     0,
+     -57
+    ],
+    [
+     0,
+     -62
+    ],
+    [
+     -6,
+     -62
+    ]
+   ]
+  },
+  {
+   "id": "aia-floor",
+   "type": "circle",
+   "operation": "add",
+   "center_x": 10,
+   "center_z": -64,
+   "radius": 8,
+   "base_height": 31,
+   "relief_scope": "exclude",
+   "theme": "borgo"
+  },
+  {
+   "id": "stair-olive",
+   "type": "polygon",
+   "operation": "add",
+   "height_mode": "level",
+   "skirt": 0,
+   "keepClear": true,
+   "material": {
+    "kind": "solid",
+    "id": 1,
+    "data": 6
+   },
+   "vertices": [
+    [
+     -6,
+     -62
+    ],
+    [
+     -6,
+     -57
+    ],
+    [
+     0,
+     -57
+    ],
+    [
+     0,
+     -62
+    ]
+   ],
+   "anchor_heights": [
+    28.5,
+    28.5,
+    31.5,
+    31.5
+   ]
+  },
+  {
+   "id": "stair-front",
+   "type": "polygon",
+   "operation": "add",
+   "height_mode": "level",
+   "skirt": 0,
+   "keepClear": true,
+   "material": {
+    "kind": "solid",
+    "id": 1,
+    "data": 6
+   },
+   "vertices": [
+    [
+     18,
+     -48
+    ],
+    [
+     23,
+     -48
+    ],
+    [
+     23,
+     -56
+    ],
+    [
+     18,
+     -56
+    ]
+   ],
+   "anchor_heights": [
+    27.5,
+    27.5,
+    31.5,
+    31.5
+   ]
+  },
+  {
+   "id": "olive-upper",
+   "type": "polygon",
+   "operation": "add",
+   "base_height": 28,
+   "relief_scope": "exclude",
+   "theme": "campagna",
+   "vertices": [
+    [
+     -47,
+     -76
+    ],
+    [
+     -6,
+     -76
+    ],
+    [
+     -6,
+     -48
+    ],
+    [
+     -25,
+     -48
+    ],
+    [
+     -25,
+     -54
+    ],
+    [
+     -30,
+     -54
+    ],
+    [
+     -30,
+     -48
+    ],
+    [
+     -47,
+     -48
+    ]
+   ]
+  },
+  {
+   "id": "stair-olives",
+   "type": "polygon",
+   "operation": "add",
+   "height_mode": "level",
+   "skirt": 0,
+   "keepClear": true,
+   "material": {
+    "kind": "solid",
+    "id": 1,
+    "data": 6
+   },
+   "vertices": [
+    [
+     -30,
+     -48
+    ],
+    [
+     -25,
+     -48
+    ],
+    [
+     -25,
+     -54
+    ],
+    [
+     -30,
+     -54
+    ]
+   ],
+   "anchor_heights": [
+    25.5,
+    25.5,
+    28.5,
+    28.5
+   ]
+  },
+  {
+   "id": "olive-lower",
+   "type": "polygon",
+   "operation": "add",
+   "base_height": 25,
+   "relief_scope": "exclude",
+   "theme": "campagna",
+   "vertices": [
+    [
+     -47,
+     -48
+    ],
+    [
+     -6,
+     -48
+    ],
+    [
+     -6,
+     -22
+    ],
+    [
+     -17,
+     -22
+    ],
+    [
+     -17,
+     -28
+    ],
+    [
+     -22,
+     -28
+    ],
+    [
+     -22,
+     -22
+    ],
+    [
+     -47,
+     -22
+    ]
+   ]
+  },
+  {
+   "id": "stair-lip",
+   "type": "polygon",
+   "operation": "add",
+   "height_mode": "level",
+   "skirt": 0,
+   "keepClear": true,
+   "material": {
+    "kind": "solid",
+    "id": 1,
+    "data": 6
+   },
+   "vertices": [
+    [
+     -22,
+     -22
+    ],
+    [
+     -17,
+     -22
+    ],
+    [
+     -17,
+     -28
+    ],
+    [
+     -22,
+     -28
+    ]
+   ],
+   "anchor_heights": [
+    22.5,
+    22.5,
+    25.5,
+    25.5
+   ]
+  },
+  {
+   "id": "stair-yard",
+   "type": "polygon",
+   "operation": "add",
+   "height_mode": "level",
+   "skirt": 0,
+   "keepClear": true,
+   "material": {
+    "kind": "solid",
+    "id": 1,
+    "data": 6
+   },
+   "vertices": [
+    [
+     -40,
+     -90
+    ],
+    [
+     -35,
+     -90
+    ],
+    [
+     -35,
+     -96
+    ],
+    [
+     -40,
+     -96
+    ]
+   ],
+   "anchor_heights": [
+    31.5,
+    31.5,
+    34.5,
+    34.5
+   ]
+  },
+  {
+   "id": "stair-grove",
+   "type": "polygon",
+   "operation": "add",
+   "height_mode": "level",
+   "skirt": 0,
+   "keepClear": true,
+   "material": {
+    "kind": "solid",
+    "id": 1,
+    "data": 6
+   },
+   "vertices": [
+    [
+     -40,
+     -76
+    ],
+    [
+     -35,
+     -76
+    ],
+    [
+     -35,
+     -82
+    ],
+    [
+     -40,
+     -82
+    ]
+   ],
+   "anchor_heights": [
+    28.5,
+    28.5,
+    31.5,
+    31.5
+   ]
+  },
+  {
+   "id": "sciara-flow",
+   "type": "polygon",
+   "operation": "add",
+   "base_height": 22,
+   "theme": "sciara",
+   "vertices": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     1
+    ]
+   ]
+  },
+  {
+   "id": "cava-floor",
+   "type": "polygon",
+   "operation": "add",
+   "base_height": 22,
+   "theme": "sciara",
+   "vertices": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     1,
+     1
+    ]
+   ]
+  }
+ ],
+ "addLayers": [
+  {
+   "id": "campanile-body",
+   "name": "Campanile",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "campanile",
+   "shapes": [
+    {
+     "id": "campanile-shaft",
+     "type": "rectangle",
+     "operation": "add",
+     "keepClear": true,
+     "min_x": -31,
+     "min_z": -106,
+     "max_x": -26,
+     "max_z": -101,
+     "floor": 34,
+     "base_height": 13,
+     "material": {
+      "kind": "solid",
+      "id": 155
+     }
+    },
+    {
+     "id": "campanile-post-0",
+     "type": "rectangle",
+     "operation": "add",
+     "keepClear": true,
+     "min_x": -31,
+     "min_z": -106,
+     "max_x": -30,
+     "max_z": -105,
+     "floor": 34,
+     "base_height": 17,
+     "material": {
+      "kind": "solid",
+      "id": 155,
+      "data": 2
+     }
+    },
+    {
+     "id": "campanile-post-1",
+     "type": "rectangle",
+     "operation": "add",
+     "keepClear": true,
+     "min_x": -27,
+     "min_z": -106,
+     "max_x": -26,
+     "max_z": -105,
+     "floor": 34,
+     "base_height": 17,
+     "material": {
+      "kind": "solid",
+      "id": 155,
+      "data": 2
+     }
+    },
+    {
+     "id": "campanile-post-2",
+     "type": "rectangle",
+     "operation": "add",
+     "keepClear": true,
+     "min_x": -31,
+     "min_z": -102,
+     "max_x": -30,
+     "max_z": -101,
+     "floor": 34,
+     "base_height": 17,
+     "material": {
+      "kind": "solid",
+      "id": 155,
+      "data": 2
+     }
+    },
+    {
+     "id": "campanile-post-3",
+     "type": "rectangle",
+     "operation": "add",
+     "keepClear": true,
+     "min_x": -27,
+     "min_z": -102,
+     "max_x": -26,
+     "max_z": -101,
+     "floor": 34,
+     "base_height": 17,
+     "material": {
+      "kind": "solid",
+      "id": 155,
+      "data": 2
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "campanile-body-body",
+     "name": "Campanile",
+     "mirrors": true,
+     "shapeIds": [
+      "campanile-shaft",
+      "campanile-post-0",
+      "campanile-post-1",
+      "campanile-post-2",
+      "campanile-post-3"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "campanile-cap",
+   "name": "Campanile cap",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "campanile",
+   "shapes": [
+    {
+     "id": "campanile-cap-0",
+     "type": "rectangle",
+     "operation": "add",
+     "keepClear": true,
+     "min_x": -32,
+     "min_z": -107,
+     "max_x": -25,
+     "max_z": -100,
+     "floor": 51,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 45
+     }
+    },
+    {
+     "id": "campanile-cap-1",
+     "type": "rectangle",
+     "operation": "add",
+     "keepClear": true,
+     "min_x": -31,
+     "min_z": -106,
+     "max_x": -26,
+     "max_z": -101,
+     "floor": 51,
+     "base_height": 2,
+     "material": {
+      "kind": "solid",
+      "id": 45
+     }
+    },
+    {
+     "id": "campanile-cap-2",
+     "type": "rectangle",
+     "operation": "add",
+     "keepClear": true,
+     "min_x": -30,
+     "min_z": -105,
+     "max_x": -27,
+     "max_z": -102,
+     "floor": 51,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 45
+     }
+    },
+    {
+     "id": "campanile-cap-3",
+     "type": "rectangle",
+     "operation": "add",
+     "keepClear": true,
+     "min_x": -29,
+     "min_z": -104,
+     "max_x": -28,
+     "max_z": -103,
+     "floor": 51,
+     "base_height": 4,
+     "material": {
+      "kind": "solid",
+      "id": 45
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "campanile-cap-body",
+     "name": "Campanile cap",
+     "mirrors": true,
+     "shapeIds": [
+      "campanile-cap-0",
+      "campanile-cap-1",
+      "campanile-cap-2",
+      "campanile-cap-3"
+     ]
+    }
+   ]
+  }
+ ],
+ "outlines": {
+  "sciara-flow": {
+   "at": [
+    37,
+    -63
+   ],
+   "radius": 17,
+   "radiusZ": 37,
+   "points": 36,
+   "lobes": 5,
+   "wobble": 0.18,
+   "phase": 0.7,
+   "turn": -6
+  },
+  "cava-floor": {
+   "at": [
+    14,
+    -32
+   ],
+   "radius": 8,
+   "radiusZ": 7,
+   "points": 20,
+   "lobes": 3,
+   "wobble": 0.2,
+   "phase": 1.3
+  },
+  "tongue": {
+   "at": [
+    37,
+    -63
+   ],
+   "radius": 8,
+   "radiusZ": 28,
+   "points": 32,
+   "lobes": 5,
+   "wobble": 0.15,
+   "phase": 0.7,
+   "turn": -6
+  },
+  "cava": {
+   "at": [
+    14,
+    -32
+   ],
+   "radius": 6,
+   "radiusZ": 5,
+   "points": 18,
+   "lobes": 3,
+   "wobble": 0.15,
+   "phase": 1.3
+  }
+ },
+ "bendShapes": {
+  "back-e-22": {
+   "tension": 0.22,
+   "wander": 3,
+   "step": 9,
+   "seed": 5,
+   "side": "out"
+  },
+  "back-e-34": {
+   "tension": 0.22,
+   "wander": 2,
+   "step": 9,
+   "seed": 6,
+   "side": "out"
+  }
+ },
+ "relief": {
+  "team": {
+   "base": 22,
+   "reach": 0,
+   "step": 1,
+   "landform": "rolling",
+   "grain": {
+    "amplitude": 2,
+    "scale": 32,
+    "seed": 9
+   },
+   "marks": [
+    {
+     "id": "lip",
+     "kind": "line",
+     "points": [
+      [
+       -56,
+       -17
+      ],
+      [
+       -20,
+       -16
+      ],
+      [
+       12,
+       -18
+      ],
+      [
+       56,
+       -17
+      ]
+     ],
+     "h": 22,
+     "r": 3
+    },
+    {
+     "id": "slope-top",
+     "kind": "line",
+     "points": [
+      [
+       -6,
+       -44
+      ],
+      [
+       12,
+       -45
+      ],
+      [
+       32,
+       -43
+      ]
+     ],
+     "h": 27,
+     "r": 2
+    },
+    {
+     "id": "verge",
+     "kind": "line",
+     "points": [
+      [
+       -56,
+       -93
+      ],
+      [
+       -20,
+       -92
+      ],
+      [
+       20,
+       -93
+      ],
+      [
+       56,
+       -93
+      ]
+     ],
+     "h": 31,
+     "r": 3
+    }
+   ],
+   "pushes": [
+    {
+     "id": "tongue",
+     "ring": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "amount": 8,
+     "falloff": 10,
+     "crown": 4,
+     "roughness": 0.5,
+     "seed": 3
+    },
+    {
+     "id": "cava",
+     "ring": [
+      [
+       0,
+       0
+      ],
+      [
+       1,
+       0
+      ],
+      [
+       1,
+       1
+      ]
+     ],
+     "amount": -6,
+     "falloff": 3,
+     "crown": 0,
+     "roughness": 0.3,
+     "seed": 4
+    }
+   ]
+  }
+ },
+ "roomStyles": {
+  "spawn": {
+   "library": "brick-roofed-quartz-house"
+  }
+ },
+ "dressing": {
+  "styles": {
+   "olive-a": {
+    "library": "olive-3"
+   },
+   "olive-b": {
+    "library": "olive-7"
+   },
+   "olive-c": {
+    "library": "olive-9"
+   },
+   "olive-young": {
+    "library": "small-olive-2"
+   },
+   "casa": {
+    "kind": "house",
+    "library": "brick-roofed-quartz-house"
+   },
+   "lava-erratic": {
+    "kind": "boulder",
+    "form": "angular",
+    "size": 3,
+    "rock": {
+     "use": "lava-rock"
+    },
+    "mossy": false
+   }
+  },
+  "props": [
+   {
+    "id": "track-yard",
+    "kind": "stroke",
+    "points": [
+     [
+      -25,
+      -97
+     ],
+     [
+      -31,
+      -98.5
+     ],
+     [
+      -37.5,
+      -97.5
+     ]
+    ],
+    "radius": 1.5,
+    "style": "solid",
+    "claimsGround": true,
+    "wander": 1,
+    "wanderLength": 14,
+    "pave": {
+     "use": "track"
+    }
+   },
+   {
+    "id": "track-upper",
+    "kind": "stroke",
+    "points": [
+     [
+      -37.5,
+      -75
+     ],
+     [
+      -33,
+      -67
+     ],
+     [
+      -27.5,
+      -56
+     ]
+    ],
+    "radius": 1.5,
+    "style": "solid",
+    "claimsGround": true,
+    "wander": 2,
+    "wanderLength": 14,
+    "pave": {
+     "use": "track"
+    }
+   },
+   {
+    "id": "track-upper-aia",
+    "kind": "stroke",
+    "points": [
+     [
+      -31,
+      -64
+     ],
+     [
+      -20,
+      -63
+     ],
+     [
+      -8,
+      -59.5
+     ]
+    ],
+    "radius": 1.5,
+    "style": "solid",
+    "claimsGround": true,
+    "wander": 2,
+    "wanderLength": 14,
+    "pave": {
+     "use": "track"
+    }
+   },
+   {
+    "id": "track-lower",
+    "kind": "stroke",
+    "points": [
+     [
+      -27.5,
+      -47
+     ],
+     [
+      -25,
+      -38
+     ],
+     [
+      -19.5,
+      -30
+     ]
+    ],
+    "radius": 1.5,
+    "style": "solid",
+    "claimsGround": true,
+    "wander": 2,
+    "wanderLength": 14,
+    "pave": {
+     "use": "track"
+    }
+   },
+   {
+    "id": "track-front",
+    "kind": "stroke",
+    "points": [
+     [
+      20.5,
+      -46
+     ],
+     [
+      24,
+      -38
+     ],
+     [
+      21,
+      -26
+     ],
+     [
+      17,
+      -17
+     ]
+    ],
+    "radius": 1.5,
+    "style": "solid",
+    "claimsGround": true,
+    "wander": 2,
+    "wanderLength": 14,
+    "pave": {
+     "use": "track"
+    }
+   },
+   {
+    "id": "erratic-snout",
+    "kind": "boulder",
+    "x": 24,
+    "z": -22,
+    "style": "lava-erratic"
+   },
+   {
+    "id": "erratic-lip",
+    "kind": "boulder",
+    "x": -2,
+    "z": -30,
+    "style": "lava-erratic"
+   },
+   {
+    "id": "olive-1",
+    "kind": "tree",
+    "x": -42,
+    "z": -70,
+    "style": "olive-a"
+   },
+   {
+    "id": "olive-2",
+    "kind": "tree",
+    "x": -30,
+    "z": -73,
+    "style": "olive-b"
+   },
+   {
+    "id": "olive-3",
+    "kind": "tree",
+    "x": -20,
+    "z": -69,
+    "style": "olive-c"
+   },
+   {
+    "id": "olive-4",
+    "kind": "tree",
+    "x": -41,
+    "z": -59,
+    "style": "olive-b"
+   },
+   {
+    "id": "olive-5",
+    "kind": "tree",
+    "x": -15,
+    "z": -54,
+    "style": "olive-a"
+   },
+   {
+    "id": "olive-6",
+    "kind": "tree",
+    "x": -43,
+    "z": -42,
+    "style": "olive-c"
+   },
+   {
+    "id": "olive-7",
+    "kind": "tree",
+    "x": -34,
+    "z": -35,
+    "style": "olive-a"
+   },
+   {
+    "id": "olive-8",
+    "kind": "tree",
+    "x": -12,
+    "z": -38,
+    "style": "olive-b"
+   },
+   {
+    "id": "olive-9",
+    "kind": "tree",
+    "x": -44,
+    "z": -31,
+    "style": "olive-young"
+   },
+   {
+    "id": "olive-10",
+    "kind": "tree",
+    "x": -44,
+    "z": -102,
+    "style": "olive-young"
+   },
+   {
+    "id": "olive-11",
+    "kind": "tree",
+    "x": 22,
+    "z": -90,
+    "style": "olive-young"
+   },
+   {
+    "id": "casa-west",
+    "kind": "house",
+    "style": "casa",
+    "front": "posZ",
+    "wings": [
+     {
+      "corners": [
+       [
+        -38,
+        -114
+       ],
+       [
+        -28,
+        -108
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "casa-east",
+    "kind": "house",
+    "style": "casa",
+    "front": "posZ",
+    "wings": [
+     {
+      "corners": [
+       [
+        12,
+        -114
+       ],
+       [
+        22,
+        -107
+       ]
+      ],
+      "spec": {
+       "storeysHigh": 2
+      }
+     }
+    ]
+   },
+   {
+    "id": "casa-tongue",
+    "kind": "house",
+    "style": "casa",
+    "front": "negX",
+    "wings": [
+     {
+      "corners": [
+       [
+        30,
+        -112
+       ],
+       [
+        38,
+        -104
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "cover",
+    "kind": "flora",
+    "points": [
+     [
+      -56,
+      -120
+     ],
+     [
+      56,
+      -120
+     ],
+     [
+      56,
+      -8
+     ],
+     [
+      -56,
+      -8
+     ]
+    ],
+    "spec": {
+     "coverage": 0.22,
+     "scale": 9,
+     "octaves": 2,
+     "fernShare": 0.1,
+     "flowerShare": 0.04,
+     "flowerScale": 7,
+     "tallShare": 0.03,
+     "deadBushShare": 0.15
+    }
+   }
+  ]
+ },
+ "authors": [
+  {
+   "name": "Opus 5.5",
+   "contribution": "authored through the studio's API"
+  }
+ ],
+ "created": "2026-10-05"
+}

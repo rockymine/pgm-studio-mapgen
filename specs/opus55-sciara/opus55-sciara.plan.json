@@ -1,0 +1,107 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Sciara"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 20,
+  "surface": 22,
+  "observerY": 60
+ },
+ "pieces": [
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -5,
+    -29,
+    6,
+    5
+   ],
+   "surface": 34
+  },
+  {
+   "id": "back-w",
+   "rect": [
+    -12,
+    -29,
+    7,
+    5
+   ],
+   "surface": 34
+  },
+  {
+   "id": "back-e",
+   "rect": [
+    1,
+    -29,
+    11,
+    5
+   ],
+   "surface": 34
+  },
+  {
+   "id": "flank",
+   "rect": [
+    -12,
+    -24,
+    24,
+    21
+   ],
+   "surface": 22
+  },
+  {
+   "id": "back-lane",
+   "rect": [
+    -12,
+    -31,
+    24,
+    2
+   ],
+   "surface": 34
+  }
+ ],
+ "zones": [
+  {
+   "id": "ravine",
+   "rect": [
+    -12,
+    -3,
+    24,
+    3
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-0",
+    "piece": "spawn",
+    "at": [
+     11,
+     10
+    ],
+    "facing": "back",
+    "footprint": [
+     3,
+     4,
+     16,
+     12
+    ]
+   }
+  ],
+  "cores": [
+   {
+    "id": "core-0",
+    "piece": "",
+    "at": [
+     10,
+     -64
+    ],
+    "name": "Aia Core"
+   }
+  ]
+ }
+}
