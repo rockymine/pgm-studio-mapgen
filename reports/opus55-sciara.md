@@ -87,3 +87,68 @@ placed a side · boulders 2 · strokes 5 · flora 1.
 
 `specs/opus55-sciara/` (the spec and its two documents), `maps/opus55-sciara/` (the world), `review/opus55-sciara.md`
 (what it is). On the deployed studio it is the map `opus55-sciara`.
+
+## Revision 2 — the author's review, and what it changed
+
+**The author read revision 1 as empty and flat, and was right.** Five houses had been called two villages,
+the terraces were square three-block steps of grass with nothing on them, the threshing floor was a disc of
+paving with no edge, and the pit gave nobody a reason to go there. The ruling on how a terraced slope should
+look is now `WHAT-A-BOARD-IS-MADE-OF.md`, *A terraced hillside*. How it is drawn without spilling is in
+`GENERATION-NOTES.md`, *Shapes*.
+
+**What the board is now** is `review/opus55-sciara.md`:
+- nine tilted polygon terraces in four rows, sharing their contours, every made face a cobbled wall with a
+  course on top, and twelve flights;
+- a town of thirteen houses and a church on three tiers, with streets, a well and a campanile, the spawn moved
+  twelve blocks back into it;
+- a kerbed threshing floor with two market stalls;
+- the pit opening into a tunnel under the aia;
+- a lookout, a shrine, crates, a second lava lobe, and the boulders moved to the flows' feet.
+
+`GO1` reads 3.15, 94 props are placed with no decline, and the dead share fell from 48.0% to 38.6%.
+
+**The board stopped being called a lane in `ORDER-OF-WORK.md` §1**, which had stated that a destroy board *is*
+a lane. It now says what a destroy board must hold (`GO1`) and that a lane is one arrangement among several.
+
+### Was the village hard to make? Yes, by one rule, and the rule is precise
+
+**`DR-PASS` is the whole of it, and it is not about houses being close together.** Houses within a passage of
+each other are one group, and a group may be as dense as an author likes. What the rule asks is that the
+group's **bounding rectangle** carry eight blocks of ground with no other building on every side, and it
+excuses a side only where the void begins at the very first block past the eaves (`Passage.Blocks` in
+`PgmStudio.Minecraft/Dressing/Passage.cs`).
+
+**Three things follow, and each cost a build to find:**
+- A house two to four blocks from the coast is short on that side, however much ground lies elsewhere; it
+  has to stand flush or eight clear.
+- A spawn hall within eight blocks of a group's side makes that side short, because the hall is a building.
+- A made tier drawn one block past the plan's coast moves the coast out by that block, so a row stated
+  flush becomes a row one block short. A coast that `bendShapes` wanders cannot hold a flush row at all.
+
+**The finding names the group's rectangle and not the side**, so the side was found by elimination: a dressing
+pass with one house left in says whether that house is the one (`tools/loop.py` on a copy of the refinement).
+Two changes would make a village much cheaper to place, and both are the author's to decide:
+- excuse a side whose ground runs out to the coast within the band, not only one flush against it;
+- name the short side, and its width, in the finding.
+
+### What I got wrong in revision 2
+
+- **Every terrace first built seven to ten blocks low.** My helper stated a ring's back edge in the same
+  direction as its front, so each ring crossed itself and the even-odd fill left its middle to the relief. The
+  store answered 200. `GET …/sketch/shapes/{id}?format=text` showed it, the edge from `(−6, −70)` jumping to
+  `(−27, −90.73)`.
+- **The parapets took three tries.** A polyline with random extra height read as black teeth. A polyline
+  moved a block back in `z` still spilled over slanting edges as cobble posts down the faces. Only a thin
+  polygon strip set inside the terrace holds none.
+- **I wrote that the sciara's crest stands over the casing** and then measured it level with it (38 against
+  the casing's lowest course at 38), because the threshing floor rose a block and took the casing with it.
+
+### The open gameplay questions now
+
+1. **The pit was not an approach**, in the author's reading, because nothing drew a player to it. It now
+   opens into a three-high tunnel reaching seven blocks under the aia toward the core. Is that enough reason
+   to go there?
+2. **The lookout at the grove's front** gives the defence a deck at y32 over the lip at 22. Is a structure that
+   high at the front line a fair one, or does it hold the landing ground too easily?
+3. **The town's coastal faces are cobble** from y23 up, which reads as a town wall along the cliff. Is that
+   right for a hill town, or should the coast stay the mountain's rock to the top?

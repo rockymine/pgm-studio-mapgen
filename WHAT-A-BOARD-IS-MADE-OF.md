@@ -569,3 +569,24 @@ build.
 
 Where the land is one piece, put the tint on a **shape's own theme** — the terrace, the wall, the
 structure that actually belongs to somebody — rather than on the terrain.
+
+### A terraced hillside
+
+**A terraced slope is polygons stacked against each other at different levels, never rectangles in a row.**
+Each terrace is a field somebody levelled: its outline is angled, its neighbours share its edges, and it stands
+two or three blocks over the one in front of it. A row of square terraces reads as plinths and a grass slope
+cut into three-block steps reads as nothing at all. (The author's ruling.)
+
+**A terrace is a little out of level.** It tilts a block or so across its width, so one dips toward a corner
+and the next leans the other way, and two terraces of one row a block apart merge into each other with no wall
+between them. The tilt is the polygon's vertex heights, read off one plane per terrace.
+
+**Every face a terrace stands on is a wall somebody built to hold it, and its top is a low wall.** The face is
+cobbled — dry stone, cobblestone with andesite — where the natural faces round it stay the board's own rock,
+and along the terrace's front runs a wall one course high and a little crumbled, following the ground's tilt.
+A wall several blocks tall, or one that stands as posts down the face, is the fault this rules out.
+
+**A path crosses a face by a flight set into a notch in the upper terrace**, as above, and the wall stops
+short of it on both sides. `GENERATION-NOTES.md`, *Shapes*, carries how the rows, the tilt and the wall are
+drawn so that none of them spills.
+

@@ -8,7 +8,7 @@
   "symmetry": "rot_180",
   "maxPlayers": 20,
   "surface": 22,
-  "observerY": 60
+  "observerY": 64
  },
  "pieces": [
   {
@@ -16,28 +16,48 @@
    "role": "spawn",
    "rect": [
     -5,
-    -29,
+    -32,
     6,
     5
    ],
    "surface": 34
   },
   {
-   "id": "back-w",
+   "id": "village-w",
    "rect": [
     -12,
-    -29,
+    -37,
     7,
-    5
+    13
    ],
    "surface": 34
   },
   {
-   "id": "back-e",
+   "id": "village-e",
    "rect": [
     1,
-    -29,
+    -37,
     11,
+    13
+   ],
+   "surface": 34
+  },
+  {
+   "id": "village-front",
+   "rect": [
+    -5,
+    -27,
+    6,
+    3
+   ],
+   "surface": 34
+  },
+  {
+   "id": "village-rear",
+   "rect": [
+    -5,
+    -37,
+    6,
     5
    ],
    "surface": 34
@@ -51,16 +71,6 @@
     21
    ],
    "surface": 22
-  },
-  {
-   "id": "back-lane",
-   "rect": [
-    -12,
-    -31,
-    24,
-    2
-   ],
-   "surface": 34
   }
  ],
  "zones": [
@@ -80,12 +90,12 @@
     "id": "spawn-0",
     "piece": "spawn",
     "at": [
-     11,
+     12,
      10
     ],
     "facing": "back",
     "footprint": [
-     3,
+     4,
      4,
      16,
      12
@@ -98,7 +108,7 @@
     "piece": "",
     "at": [
      10,
-     -64
+     -68
     ],
     "name": "Aia Core"
    }

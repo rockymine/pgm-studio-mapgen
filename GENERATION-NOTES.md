@@ -1065,11 +1065,38 @@ taken once per cell: what a player meets is a two-block rise, which is a placed 
 worked card, with the same climb built both ways.
 
 
-### Three points and a plane is how you tilt a shape deliberately
+### A polygon's vertex heights tilt it over a triangulation; a polyline's run along its length
 
-`anchor_heights` states a height per vertex, and three points define the plane the rest of the shape is fitted
-to — so a deliberate tilt is three anchors chosen for the plane you want rather than a number per corner
-adjusted until it looks right. `techniques/ramp-and-stair` is the worked card.
+`anchor_heights` states a height per vertex, and the two kinds of shape read it differently. A polygon's ring is
+ear-clipped into triangles and the height is linear inside each one, so anchors taken from one plane build that
+plane exactly, at any number of vertices and through any notch in the ring. A deliberate tilt is therefore a
+plane chosen first — a base height and a fall a block east and a block forward — with every vertex's anchor
+read off it, rather than a number per corner adjusted until it looks right.
+
+A polyline's vertices are its centreline and enclose nothing, so its heights are read along the arc: a cell of
+the band takes the height of the nearest point of the line. `techniques/ramp-and-stair` is the worked card for
+the polygon case.
+
+### A wall along an edge is a thin polygon inside it, not a polyline with a width
+
+A polyline's band reaches its radius either side of the line, and wherever the edge it follows slants or turns
+the band spills over the face onto the ground in front. That column is then the wall's from the bedrock up, so
+it rises from the lower ground to the course over the upper one: measured, a one-course parapet came out as
+posts three and four blocks tall down the terrace faces, and moving the line a block back in `z` left them
+wherever the edge was not running east-west.
+
+A strip of polygon between two lines set about 0.15 and 1.6 blocks in from the edge, each moved along its own
+segment's inward normal, holds no column outside the shape it stands on. Its anchors are the ground's plane plus
+one, so it follows a tilt, and it wants stopping two blocks short of the shape's corners and of every flight.
+
+### A ring stated as front edge then back edge has to run the back edge the other way
+
+A polygon built from two lines across a slope — a terrace between two contours — is a simple ring only if the
+back line is stated from its far end to its near end. Stated in the same direction as the front, the ring
+crosses itself; the even-odd fill then leaves its middle out, and the relief solves the hole. The store answers
+200 and nothing complains: measured, three terraces stated at 32, 33 and 35 built at 25 across most of their
+width, and `GET …/sketch/shapes/{id}?format=text` was the read that showed an edge jumping twenty blocks back
+across the ring.
 
 
 ### `rot_180` maps a shape centred on the origin onto itself, so a central lake may be any shape
@@ -1552,6 +1579,21 @@ the answer is **`DR-DOC`** naming the recipe and the field, and the same holds f
 shell that names no `kind` — a storey `deck` written as a band stack is `shell.storeys[1].deck`.
 
 ---
+
+### A house stands flush against the coast or eight blocks clear of it, never between
+
+`DR-PASS` measures a group of houses — every house within a passage of another — as one bounding rectangle,
+and wants every side of it to carry eight blocks of ground with no other building on them. A side is excused
+only where the void begins at the very first block past the eaves. So a house two to four blocks from the coast
+is short on that side however wide the rest of its ground is, and a spawn hall inside the eight blocks beside a
+group is short too, because the hall is a building.
+
+The coast it is measured against is the built one. A made tier drawn a block past the plan's coast moves the
+coast out by that block, which turns a row stated flush into a row standing one block short. A coast left to
+`bendShapes` wanders by design, so a row meant to stand flush wants a stretch of coast that is not bent.
+
+The finding names the group's rectangle and not the side, so the side is found by elimination: a dressing pass
+with one house left in answers whether that house is the one.
 
 ## Dressing
 

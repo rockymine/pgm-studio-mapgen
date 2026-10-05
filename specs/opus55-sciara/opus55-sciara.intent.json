@@ -23,16 +23,16 @@
    "reflected": false,
    "team": "red",
    "point": {
-    "x": -9,
+    "x": -8,
     "y": 34,
-    "z": -106
+    "z": -118
    },
    "protection": [
     {
      "minX": -20,
-     "minZ": -116,
+     "minZ": -128,
      "maxX": 4,
-     "maxZ": -96
+     "maxZ": -108
     }
    ],
    "yaw": 0,
@@ -41,10 +41,10 @@
     "-z"
    ],
    "footprint": {
-    "minX": -17,
-    "minZ": -112,
-    "maxX": -1,
-    "maxZ": -100
+    "minX": -16,
+    "minZ": -124,
+    "maxX": 0,
+    "maxZ": -112
    },
    "iron": []
   },
@@ -58,16 +58,16 @@
    "reflected": false,
    "team": "blue",
    "point": {
-    "x": 9,
+    "x": 8,
     "y": 34,
-    "z": 106
+    "z": 118
    },
    "protection": [
     {
      "minX": -4,
-     "minZ": 96,
+     "minZ": 108,
      "maxX": 20,
-     "maxZ": 116
+     "maxZ": 128
     }
    ],
    "yaw": 180,
@@ -76,10 +76,10 @@
     "+z"
    ],
    "footprint": {
-    "minX": 1,
-    "minZ": 100,
-    "maxX": 17,
-    "maxZ": 112
+    "minX": 0,
+    "minZ": 112,
+    "maxX": 16,
+    "maxZ": 124
    },
    "iron": []
   }
@@ -87,7 +87,7 @@
  "observer": {
   "point": {
    "x": 0,
-   "y": 60,
+   "y": 64,
    "z": 0
   },
   "yaw": 0
@@ -126,7 +126,7 @@
    "anchor": {
     "x": 10,
     "y": 22,
-    "z": -64
+    "z": -68
    },
    "lava": 3,
    "lavaHeight": 3,
@@ -148,7 +148,7 @@
    "anchor": {
     "x": -11,
     "y": 22,
-    "z": 63
+    "z": 67
    },
    "lava": 3,
    "lavaHeight": 3,

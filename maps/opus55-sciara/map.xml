@@ -95,13 +95,13 @@
         </not>
     </filters>
     <regions>
-        <point id="blue-spawn-point">9,34,106</point>
-        <point id="red-spawn-point">-9,34,-106</point>
-        <point id="observer-spawn">0,61,0</point>
-        <rectangle id="blue-spawn" min="-4,96" max="20,116"/>
-        <rectangle id="red-spawn" min="-20,-116" max="4,-96"/>
-        <cuboid id="aia-core-region" min="8,37,-66" max="13,42,-61"/>
-        <cuboid id="aia-core-2-region" min="-13,37,61" max="-8,42,66"/>
+        <point id="blue-spawn-point">8,34,118</point>
+        <point id="red-spawn-point">-8,34,-118</point>
+        <point id="observer-spawn">0,65,0</point>
+        <rectangle id="blue-spawn" min="-4,108" max="20,128"/>
+        <rectangle id="red-spawn" min="-20,-128" max="4,-108"/>
+        <cuboid id="aia-core-region" min="8,38,-70" max="13,43,-65"/>
+        <cuboid id="aia-core-2-region" min="-13,38,65" max="-8,43,70"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
@@ -173,5 +173,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>50</maxbuildheight>
+    <maxbuildheight>51</maxbuildheight>
 </map>

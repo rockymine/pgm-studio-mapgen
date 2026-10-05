@@ -15,11 +15,14 @@ making one of them badly.
 is, and what a player remembers about it. If the sentence cannot be written the board is not ready, and no
 amount of terrain will supply it later.
 
-**The gamemode decides the board's shape, not its rules.** A destroy board is a **lane**: on a square every
-goal is equidistant from both spawns and the ratio that gates it flattens. A capture board is about **a third
-land**, and its arrangement — a hub, a spawn hung off it, wool approaches, a frontline, a mid band with
-stepping stones — is hard to invent and easy to get wrong, so a capture board may start from a composed plan
-and be taken over.
+**The gamemode decides what the board has to hold, not its outline.** A destroy board has to put each goal
+between a fifth and a quarter of the walk from its own spawn to the enemy's (`GO1`). A lane is the easiest
+arrangement that does it and one arrangement among several, and a run of destroy boards that are all lanes is
+a run of one board (the author's ruling).
+
+A capture board is about **a third land**, and its arrangement — a hub, a spawn hung off it, wool approaches,
+a frontline, a mid band with stepping stones — is hard to invent and easy to get wrong, so a capture board may
+start from a composed plan and be taken over.
 
 **State the extent, the aspect and the two lines before any shape exists.** Where each spawn sits, where each
 objective sits, and the two routes between them. Five numbers and two lines are the board; everything after
