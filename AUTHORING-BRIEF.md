@@ -60,7 +60,7 @@ anything is posted.
 | `complaint` | the work happened and lost nothing; something is worth saying anyway |
 
 **A 2xx answer declares a `warnings` array wherever it can carry one**, and every operation declares a
-`Pgm-Warnings` response header — `6 RQ3 SK3 SK4` — which is written whenever the complaint channel collected anything, so
+`Pgm-Warnings` response header — `6 RQ3 SK3 SK31` — which is written whenever the complaint channel collected anything, so
 the count and the rule ids are readable without parsing the body.
 
 **Read the body either way**: an endpoint that answers `warnings` as its own field — `/plan/evaluate` is
@@ -74,11 +74,10 @@ answer that says what the map actually became.
 **`RQ3` names every field of a posted document that went unread**, by its JSON path:
 
 ```
-[complaint] RQ3  layout.shapes[1].x   field 'layout.shapes[1].x' was not read …
-[complaint] SK3  layout.shapes[0].type
-                 shape 'nokind' states kind '', which is not a kind the studio draws
-                 — it has 5 (rectangle, circle, polygon, lasso, path) — so it draws no ground
-[complaint] SK4  layout.shapes[1]     shape 'rectwh' is a rectangle with no area, so it draws no ground
+[complaint] RQ3   layout.shapes[1].x     the document has no field 'layout.shapes[1].x'
+[complaint] SK3   layout.shapes[0].type
+                  shape 'nokind' names the kind '', which is not one of rectangle, circle, polygon, lasso, polyline
+[complaint] SK31  layout.shapes[1]       shape 'rectwh' has no area
 ```
 
 Guessing a field name, nesting a block one level too deep, writing `x`/`z`/`w`/`h` where the rectangle wants
