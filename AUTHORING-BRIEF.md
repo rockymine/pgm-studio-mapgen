@@ -19,11 +19,15 @@ describes.
 |---|---|
 | `GET /api/openapi/v1.json` | every route, its request body, its answer, and the failure codes it declares. Every answered field carries a description, and every part of a document a route writes has a type in there rather than a sentence about it |
 | `/api-docs` | the same document as a browsable page, if you have a browser |
-| `GET /api/rules` | every rule id the studio can raise, by family, each with what it *means*, how to *fix* it, and the evidence behind its numbers. `?rule=GO1` and `?family=DR` filter it |
+| `GET /api/glossary` | every word the rules and the studio use, each defined once. `?term=board` answers the term an older word now goes by |
+| `GET /api/rules` | every rule id the studio can raise, by family, each with what it *means* and how to *fix* it. `?rule=GO1` and `?family=DR` filter it |
 | the answer itself | a refusal names its rule ids; a success carries `warnings` for what it did not do |
 
-Read `GET /api/rules` once at the start of a run. It is the whole vocabulary of every no the system can say,
-and it is cheaper to read 113 rows now than to meet them one build at a time.
+**Read `GET /api/glossary` once at the start of a run.** The rules and the findings use its words and never
+explain them, so it is what makes every later answer readable.
+
+**Look a rule up when a finding cites it, not before.** `GET /api/rules?rule=<id>` answers one rule; the whole
+catalogue read up front is two hundred rows, most of which no run meets.
 
 ### What a refusal looks like
 
@@ -56,7 +60,7 @@ anything is posted.
 | `complaint` | the work happened and lost nothing; something is worth saying anyway |
 
 **A 2xx answer declares a `warnings` array wherever it can carry one**, and every operation declares a
-`Pgm-Warnings` response header — `6 RQ3 SK3 SK4` — which is written whenever the complaint channel collected anything, so
+`Pgm-Warnings` response header — `6 RQ3 SK3 SK31` — which is written whenever the complaint channel collected anything, so
 the count and the rule ids are readable without parsing the body.
 
 **Read the body either way**: an endpoint that answers `warnings` as its own field — `/plan/evaluate` is
@@ -70,11 +74,10 @@ answer that says what the map actually became.
 **`RQ3` names every field of a posted document that went unread**, by its JSON path:
 
 ```
-[complaint] RQ3  layout.shapes[1].x   field 'layout.shapes[1].x' was not read …
-[complaint] SK3  layout.shapes[0].type
-                 shape 'nokind' states kind '', which is not a kind the studio draws
-                 — it has 5 (rectangle, circle, polygon, lasso, path) — so it draws no ground
-[complaint] SK4  layout.shapes[1]     shape 'rectwh' is a rectangle with no area, so it draws no ground
+[complaint] RQ3   layout.shapes[1].x     the document has no field 'layout.shapes[1].x'
+[complaint] SK3   layout.shapes[0].type
+                  shape 'nokind' names the kind '', which is not one of rectangle, circle, polygon, lasso, polyline
+[complaint] SK31  layout.shapes[1]       shape 'rectwh' has no area
 ```
 
 Guessing a field name, nesting a block one level too deep, writing `x`/`z`/`w`/`h` where the rectangle wants

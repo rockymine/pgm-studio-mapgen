@@ -162,10 +162,11 @@ Everything else can be changed by posting a different document.
 
 ## Where the detail is
 
-**The studio describes itself, and four reads answer every capability question.** They are generated from
+**The studio describes itself, and five reads answer every capability question.** They are generated from
 the routes and the types, so they are current by construction where a document is not:
 
 - `GET /api/openapi/v1.json` — every route, its request, its answer and the failure codes it declares;
+- `GET /api/glossary` — every word the rules and the studio use, defined once;
 - `GET /api/rules` — every refusal the studio can raise, with what it means and how to fix it;
 - `GET /api/rules/terms` — every measured number with its band and where the band came from;
 - `GET /api/terrain/patterns` — the fourteen material kinds with their exact field names.

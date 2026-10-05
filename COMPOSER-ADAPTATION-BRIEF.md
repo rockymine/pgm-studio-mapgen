@@ -110,7 +110,7 @@ arrives late — it can never be the connection the lint reads a board as joined
 **Add the intra-team build zone.** This is the thing `CT4` calls a **team transient-link** and `BZ5` calls
 the **defender-egress bridge**: a build region every interfacing component of which touches only *one*
 team's islands — the encased pad between a team's own islands, the bridge off the back of the spawn. It is
-measured, as the `team-stepping-count` term under `CT4`, band **[0, 2]**. The composer models none; a board
+measured, as the `team-stepping-count` term under `CT13`, band **[0, 2]**. The composer models none; a board
 that chops a piece off its own team's ground and bridges it back has one. It is a lane a defender owns and
 an attacker cannot flank, and it changes how a team rotates between its two wools.
 

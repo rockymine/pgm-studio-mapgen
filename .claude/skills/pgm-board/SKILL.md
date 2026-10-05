@@ -55,6 +55,7 @@ about it."*
 | What is the plan's shape, before a map row exists? | `tools/board.py specs/<slug>/<slug>.plan.json` | a render of a built world |
 | Is this section of the world what I think? | `GET …/render/section?axis=&at=&from=&to=&format=text` — **`axis` names the direction the cut runs, so `at` is the other coordinate** | a PNG section, which blends renderer gridlines over it |
 | What fields does this pattern take? | `GET /api/terrain/patterns` — fourteen kinds with exact field names | guessing. One run invented **five field names out of five** |
+| What does this word mean? | `GET /api/glossary?term=<word>` | guessing from the code's name for it |
 | What does this refusal mean? | `GET /api/rules?rule=<id>` | inferring from the sentence |
 | Is there a **number** for this, and what is the band? | `GET /api/rules/terms` — every evaluator term with its rule, its band and where the band came from | reading the rule prose, which states the mechanism and not the envelope |
 | What does the house style build? | `POST /room-styles/preview-snapshot?format=png&view=section` (and `plan`; other views 400) | a top-down — every shipped roof fault was visible in a section and invisible from above |
@@ -205,7 +206,7 @@ read:
   interfacing zone component touches only one team's islands is a **team transient-link**, not a mid stone —
   the encased pad between a team's own islands"*, with `rotate-wide-frontline`'s four 100-block corner pads
   cited; `BZ5` carries the same motif at the spawn as the **defender-egress bridge**; and it is *measured*,
-  as the `team-stepping-count` term under `CT4`, band **[0, 2]**. Not one of the three contains the word
+  as the `team-stepping-count` term under `CT13`, band **[0, 2]**. Not one of the three contains the word
   **zone**, and the grep was for *zone*.
 
 So run **three** searches before writing the word missing: the name you would give it, the sentence
