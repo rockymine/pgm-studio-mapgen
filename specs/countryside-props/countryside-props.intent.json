@@ -1,0 +1,51 @@
+{
+ "meta": {
+  "name": "Countryside props (rebuilt)",
+  "created": "2026-10-06"
+ },
+ "teams": [
+  {
+   "id": "visitors",
+   "name": "Visitors",
+   "color": "aqua"
+  }
+ ],
+ "maxPlayers": 8,
+ "spawns": [
+  {
+   "layer": null,
+   "team": "visitors",
+   "point": {
+    "x": -14,
+    "y": 7,
+    "z": 6
+   },
+   "protection": [
+    {
+     "minX": -22,
+     "minZ": -2,
+     "maxX": -6,
+     "maxZ": 14
+    }
+   ],
+   "yaw": 180,
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 30,
+   "y": 40,
+   "z": 30
+  },
+  "yaw": 180
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": []
+ },
+ "wools": [],
+ "destroyables": [],
+ "cores": null
+}

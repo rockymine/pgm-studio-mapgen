@@ -212,6 +212,12 @@ no ground at all, and a labyrinth whose walls are their own slab.
 | `sculpture-gallery` | — | Opus 5 | nine solids compiled into layers — a robot, a droid, a **Rubik's cube**, a hooded statue, a coupe, a four-legged **walker**, a **dragon** rearing off a crag, a **starship** and a ring station, the last two flying. 65 layers, 7,423 shapes, and the table that says why: the cube is one run per column and takes seven layers, all of them colour |
 | `opus5-automaton` | dtm | Opus 5 | **110 × 110** — a flat green square whose whole finish is *props*: a 45-block brass colossus standing on a stepped granite plinth over the symmetry centre, four hooded sentinels holding lanterns on the spawn approaches, two tile rotundas under clay cones with doorways cut through them, and two tapered slate watchtowers. Every one of them is shapes on layers of the ordinary sketch document, arriving through the finish's `addLayers` with nothing about the studio changed; the four sentinels are two authored on the north half and fanned. Scores **0 with no violation and no lint**. Flat because a prop states an absolute floor and a relief moves the ground under it — [SCULPTING-WITH-LAYERS.md](SCULPTING-WITH-LAYERS.md) §5 |
 
+### Countryside props — a hand-built map's details, rebuilt
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `countryside-props` | — | Alphaboy98yt (the props) · Claude Code (the rebuild) | **19 props lifted block for block** from a hand-built farm map's world with `tools/lift.py` and compiled to made layers, each on a pad of its own and named `REBUILT · …` with the coordinates of the original: two red-clay-and-brick barns with soul-sand roofs, loft chests and a wall of spruce doors inside, a tractor on its road through a field (coal-block wheels, dropper grille, a lever for the exhaust), a wheat field with its water, a thin windmill with crates of crafting tables, a water tower, a scarecrow, a cart, a bench, a barrel with a trough, two bush batches, two fences, a supply wall on bedrock, a wool-room line and, over the void, a floating fence and a glass wall that stops bow spam. Stored on the studio as `countryside-props`. Read back through `column`, 6,089 of 6,190 blocks are the original's and none are missing; the other 101 are stone at y 6 under a floor. Signs are placed without their text, skulls are left out, chests are empty and there are no animals. |
+
 ### Opus 5 — authored to record the method
 
 Boards authored end to end with the process written down rather than the result:
