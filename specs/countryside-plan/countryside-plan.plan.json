@@ -1,0 +1,257 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Countryside",
+  "authors": [
+   "Alphaboy98yt"
+  ],
+  "contributors": [
+   {
+    "name": "Claude Code",
+    "contribution": "traced this plan from the map's world"
+   }
+  ]
+ },
+ "globals": {
+  "cell": 1,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 7,
+  "observerY": 31
+ },
+ "reference": {
+  "map": "alphaboy98yt-4",
+  "offset": [
+   0,
+   0
+  ],
+  "scale": 1,
+  "opacity": 0.5
+ },
+ "pieces": [
+  {
+   "id": "spawn-barn",
+   "role": "spawn",
+   "rect": [
+    -80,
+    25,
+    17,
+    13
+   ],
+   "surface": 9
+  },
+  {
+   "id": "wheat-bed",
+   "role": "piece",
+   "rect": [
+    -63,
+    25,
+    7,
+    13
+   ],
+   "surface": 8
+  },
+  {
+   "id": "south-field",
+   "role": "piece",
+   "rect": [
+    -56,
+    25,
+    16,
+    13
+   ]
+  },
+  {
+   "id": "east-pad",
+   "role": "piece",
+   "rect": [
+    -40,
+    25,
+    6,
+    13
+   ]
+  },
+  {
+   "id": "mid-stem",
+   "role": "piece",
+   "rect": [
+    -53,
+    10,
+    13,
+    15
+   ]
+  },
+  {
+   "id": "wool-barn",
+   "role": "wool-room",
+   "rect": [
+    -81,
+    -1,
+    20,
+    11
+   ],
+   "surface": 8
+  },
+  {
+   "id": "apron-field",
+   "role": "piece",
+   "rect": [
+    -61,
+    -1,
+    21,
+    11
+   ]
+  },
+  {
+   "id": "north-bed",
+   "role": "piece",
+   "rect": [
+    -53,
+    -12,
+    9,
+    11
+   ],
+   "surface": 8
+  },
+  {
+   "id": "north-pad",
+   "role": "piece",
+   "rect": [
+    -44,
+    -12,
+    6,
+    11
+   ]
+  },
+  {
+   "id": "garden-n",
+   "role": "piece",
+   "rect": [
+    -24,
+    -12,
+    13,
+    11
+   ]
+  },
+  {
+   "id": "garden-s",
+   "role": "piece",
+   "rect": [
+    -22,
+    -1,
+    11,
+    14
+   ]
+  },
+  {
+   "id": "field-n",
+   "role": "piece",
+   "rect": [
+    -24,
+    -37,
+    19,
+    13
+   ]
+  },
+  {
+   "id": "field-s",
+   "role": "piece",
+   "rect": [
+    -22,
+    25,
+    11,
+    13
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "west-gap",
+   "rect": [
+    -38,
+    -24,
+    14,
+    37
+   ],
+   "holes": []
+  },
+  {
+   "id": "south-gap",
+   "rect": [
+    -34,
+    25,
+    12,
+    13
+   ],
+   "holes": []
+  },
+  {
+   "id": "garden-gap-s",
+   "rect": [
+    -22,
+    13,
+    11,
+    12
+   ],
+   "holes": []
+  },
+  {
+   "id": "garden-gap-n",
+   "rect": [
+    -24,
+    -24,
+    19,
+    12
+   ],
+   "holes": []
+  },
+  {
+   "id": "mid-band",
+   "rect": [
+    -11,
+    -37,
+    22,
+    75
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-barn",
+    "at": [
+     4.5,
+     6.5
+    ],
+    "facing": "right",
+    "footprint": [
+     0,
+     0,
+     17,
+     13
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-barn",
+    "at": [
+     7.5,
+     5.5
+    ],
+    "footprint": [
+     0,
+     0,
+     20,
+     11
+    ]
+   }
+  ],
+  "iron": []
+ },
+ "walls": [],
+ "boxes": []
+}

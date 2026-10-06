@@ -1,0 +1,738 @@
+{
+ "setup": {
+  "mirror_mode": "rot_180",
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "bbox": {
+   "min_x": -82,
+   "max_x": 82,
+   "min_z": -39,
+   "max_z": 39
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "kind": null,
+   "part_of": null,
+   "seat": null,
+   "layout": {
+    "shapes": [
+     {
+      "id": "apron-field-7",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -61,
+        -1
+       ],
+       [
+        -44,
+        -1
+       ],
+       [
+        -44,
+        -12
+       ],
+       [
+        -38,
+        -12
+       ],
+       [
+        -38,
+        -1
+       ],
+       [
+        -40,
+        -1
+       ],
+       [
+        -40,
+        25
+       ],
+       [
+        -34,
+        25
+       ],
+       [
+        -34,
+        38
+       ],
+       [
+        -56,
+        38
+       ],
+       [
+        -56,
+        25
+       ],
+       [
+        -53,
+        25
+       ],
+       [
+        -53,
+        10
+       ],
+       [
+        -61,
+        10
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 7,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "apron-field-8",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -81,
+        -1
+       ],
+       [
+        -61,
+        -1
+       ],
+       [
+        -61,
+        10
+       ],
+       [
+        -81,
+        10
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 8,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "apron-field-8-2",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -53,
+        -12
+       ],
+       [
+        -44,
+        -12
+       ],
+       [
+        -44,
+        -1
+       ],
+       [
+        -53,
+        -1
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 8,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "apron-field-8-3",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -63,
+        25
+       ],
+       [
+        -56,
+        25
+       ],
+       [
+        -56,
+        38
+       ],
+       [
+        -63,
+        38
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 8,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "apron-field-9",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -80,
+        25
+       ],
+       [
+        -63,
+        25
+       ],
+       [
+        -63,
+        38
+       ],
+       [
+        -80,
+        38
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 9,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "garden-n-7",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -24,
+        -12
+       ],
+       [
+        -11,
+        -12
+       ],
+       [
+        -11,
+        13
+       ],
+       [
+        -22,
+        13
+       ],
+       [
+        -22,
+        -1
+       ],
+       [
+        -24,
+        -1
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 7,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "field-n-7",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -24,
+        -37
+       ],
+       [
+        -5,
+        -37
+       ],
+       [
+        -5,
+        -24
+       ],
+       [
+        -24,
+        -24
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 7,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "field-s-7",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -22,
+        25
+       ],
+       [
+        -11,
+        25
+       ],
+       [
+        -11,
+        38
+       ],
+       [
+        -22,
+        38
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 7,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "spawn-red",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -80,
+      "min_z": 25,
+      "max_x": -63,
+      "max_z": 38,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "follow",
+      "base_height": 9,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "red",
+      "color": "red",
+      "height_authored": null,
+      "doors": [
+       "+x"
+      ],
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "spawn-red-building",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -80,
+      "min_z": 25,
+      "max_x": -63,
+      "max_z": 38,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "building",
+      "intentRef": null,
+      "color": "red",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "spawn-blue",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": 63,
+      "min_z": -38,
+      "max_x": 80,
+      "max_z": -25,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "blue",
+      "color": "blue",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "spawn-blue-building",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": 63,
+      "min_z": -38,
+      "max_x": 80,
+      "max_z": -25,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "building",
+      "intentRef": null,
+      "color": "blue",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "wool-red-red",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -81,
+      "min_z": -1,
+      "max_x": -61,
+      "max_z": 10,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "follow",
+      "base_height": 8,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "woolRoom",
+      "intentRef": "red:red",
+      "color": "red",
+      "height_authored": null,
+      "doors": [
+       "+x"
+      ],
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "wool-red-red-building",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -81,
+      "min_z": -1,
+      "max_x": -61,
+      "max_z": 10,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "building",
+      "intentRef": null,
+      "color": "red",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "wool-blue-blue",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": 61,
+      "min_z": -10,
+      "max_x": 81,
+      "max_z": 1,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "woolRoom",
+      "intentRef": "blue:blue",
+      "color": "blue",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "wool-blue-blue-building",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": 61,
+      "min_z": -10,
+      "max_x": 81,
+      "max_z": 1,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "building",
+      "intentRef": null,
+      "color": "blue",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     }
+    ],
+    "groups": [
+     {
+      "id": "team",
+      "name": "Team island",
+      "mirrors": true,
+      "shapeIds": [
+       "apron-field-7",
+       "apron-field-8",
+       "apron-field-8-2",
+       "apron-field-8-3",
+       "apron-field-9",
+       "garden-n-7",
+       "field-n-7",
+       "field-s-7"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "themes": null,
+ "themeSources": null,
+ "mapTheme": null,
+ "roomStyles": null,
+ "dressing": null,
+ "biome": null,
+ "biomeSource": null,
+ "relief": null
+}
