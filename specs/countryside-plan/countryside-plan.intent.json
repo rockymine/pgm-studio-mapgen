@@ -25,13 +25,13 @@
    "point": {
     "x": -75.5,
     "y": 9,
-    "z": 31.5
+    "z": 30.5
    },
    "protection": [
     {
      "minX": -80,
      "minZ": 25,
-     "maxX": -63,
+     "maxX": -61,
      "maxZ": 38
     }
    ],
@@ -41,9 +41,9 @@
    ],
    "footprint": {
     "minX": -80,
-    "minZ": 25,
-    "maxX": -63,
-    "maxZ": 38
+    "minZ": 26,
+    "maxX": -64,
+    "maxZ": 37
    },
    "iron": []
   },
@@ -59,11 +59,11 @@
    "point": {
     "x": 75.5,
     "y": 9,
-    "z": -31.5
+    "z": -30.5
    },
    "protection": [
     {
-     "minX": 63,
+     "minX": 61,
      "minZ": -38,
      "maxX": 80,
      "maxZ": -25
@@ -74,10 +74,10 @@
     "-x"
    ],
    "footprint": {
-    "minX": 63,
-    "minZ": -38,
+    "minX": 64,
+    "minZ": -37,
     "maxX": 80,
-    "maxZ": -25
+    "maxZ": -26
    },
    "iron": []
   }
@@ -95,15 +95,15 @@
   "areas": [
    {
     "minX": -38,
-    "minZ": -24,
+    "minZ": -12,
     "maxX": -24,
-    "maxZ": 13
+    "maxZ": -1
    },
    {
     "minX": 24,
-    "minZ": -13,
+    "minZ": 1,
     "maxX": 38,
-    "maxZ": 24
+    "maxZ": 12
    },
    {
     "minX": -34,
@@ -132,26 +132,26 @@
    {
     "minX": -24,
     "minZ": -24,
-    "maxX": -5,
+    "maxX": -11,
     "maxZ": -12
    },
    {
-    "minX": 5,
+    "minX": 11,
     "minZ": 12,
     "maxX": 24,
     "maxZ": 24
    },
    {
     "minX": -11,
-    "minZ": -37,
-    "maxX": 11,
+    "minZ": 25,
+    "maxX": 5,
     "maxZ": 38
    },
    {
-    "minX": -11,
+    "minX": -5,
     "minZ": -38,
     "maxX": 11,
-    "maxZ": 37
+    "maxZ": -25
    }
   ],
   "holes": []
@@ -172,12 +172,12 @@
     {
      "minX": -81,
      "minZ": -1,
-     "maxX": -61,
+     "maxX": -62,
      "maxZ": 10
     }
    ],
    "spawn": {
-    "x": -73.5,
+    "x": -79.5,
     "y": 8,
     "z": 4.5
    },
@@ -185,14 +185,14 @@
    "footprint": {
     "minX": -81,
     "minZ": -1,
-    "maxX": -61,
+    "maxX": -65,
     "maxZ": 10
    },
    "entries": [
     {
-     "minX": -61,
+     "minX": -62,
      "minZ": -1,
-     "maxX": -61,
+     "maxX": -62,
      "maxZ": 10
     }
    ]
@@ -209,29 +209,29 @@
    "color": "blue",
    "protection": [
     {
-     "minX": 61,
+     "minX": 62,
      "minZ": -10,
      "maxX": 81,
      "maxZ": 1
     }
    ],
    "spawn": {
-    "x": 73.5,
+    "x": 79.5,
     "y": 8,
     "z": -4.5
    },
    "monuments": [],
    "footprint": {
-    "minX": 61,
+    "minX": 65,
     "minZ": -10,
     "maxX": 81,
     "maxZ": 1
    },
    "entries": [
     {
-     "minX": 61,
+     "minX": 62,
      "minZ": -10,
-     "maxX": 61,
+     "maxX": 62,
      "maxZ": 1
     }
    ]
@@ -260,10 +260,6 @@
    {
     "name": "Claude Code",
     "contribution": "traced this plan from the map's world"
-   },
-   {
-    "name": "Claude Code",
-    "contribution": "traced this plan from the map's world"
    }
   ]
  },
@@ -282,9 +278,9 @@
   "layer": null,
   "redstoneLines": [
    {
-    "x1": -62,
+    "x1": -63,
     "z1": -1,
-    "x2": -62,
+    "x2": -63,
     "z2": 9,
     "stamp": {
      "kind": "redstoneline",
@@ -293,9 +289,9 @@
     }
    },
    {
-    "x1": 61,
+    "x1": 62,
     "z1": -10,
-    "x2": 61,
+    "x2": 62,
     "z2": 0,
     "stamp": {
      "kind": "redstoneline",

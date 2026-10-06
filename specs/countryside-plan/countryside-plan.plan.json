@@ -4,12 +4,6 @@
   "name": "Countryside",
   "authors": [
    "Alphaboy98yt"
-  ],
-  "contributors": [
-   {
-    "name": "Claude Code",
-    "contribution": "traced this plan from the map's world"
-   }
   ]
  },
  "globals": {
@@ -35,7 +29,7 @@
    "rect": [
     -80,
     25,
-    17,
+    19,
     13
    ],
    "surface": 9
@@ -44,9 +38,9 @@
    "id": "wheat-bed",
    "role": "piece",
    "rect": [
-    -63,
+    -61,
     25,
-    7,
+    5,
     13
    ],
    "surface": 8
@@ -87,7 +81,7 @@
    "rect": [
     -81,
     -1,
-    20,
+    19,
     11
    ],
    "surface": 8
@@ -96,9 +90,9 @@
    "id": "apron-field",
    "role": "piece",
    "rect": [
-    -61,
+    -62,
     -1,
-    21,
+    22,
     11
    ]
   },
@@ -166,12 +160,12 @@
  ],
  "zones": [
   {
-   "id": "west-gap",
+   "id": "north-gap",
    "rect": [
     -38,
-    -24,
+    -12,
     14,
-    37
+    11
    ],
    "holes": []
   },
@@ -200,18 +194,18 @@
    "rect": [
     -24,
     -24,
-    19,
+    13,
     12
    ],
    "holes": []
   },
   {
-   "id": "mid-band",
+   "id": "strait-south",
    "rect": [
     -11,
-    -37,
-    22,
-    75
+    25,
+    16,
+    13
    ],
    "holes": []
   }
@@ -223,14 +217,14 @@
     "piece": "spawn-barn",
     "at": [
      4.5,
-     6.5
+     5.5
     ],
     "facing": "right",
     "footprint": [
      0,
-     0,
-     17,
-     13
+     1,
+     16,
+     11
     ]
    }
   ],
@@ -239,13 +233,13 @@
     "id": "wool-1",
     "piece": "wool-barn",
     "at": [
-     7.5,
+     1.5,
      5.5
     ],
     "footprint": [
      0,
      0,
-     20,
+     16,
      11
     ]
    }
