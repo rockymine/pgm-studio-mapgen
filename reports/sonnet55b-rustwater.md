@@ -132,3 +132,86 @@ piece and its mirror. I left it, since trees may not stand there.
 
 **Is the Millstone's gold the right monument for a board this size?** `cube-3` needs ender stone, gold or
 emerald, and I chose gold so the hay roofs and the goal carry one accent.
+
+# Round two — after the author's review
+
+**The author's verdict: the land is a fair start, the rest is unfinished.** They liked the ridge behind the spawn
+that continues toward the monument and asked that the terrain not be touched. They asked for what a map is meant to
+feel like: a place with a reason for each area, paths between them, and a plan drawn before anything is placed.
+
+## What I had got wrong in round one
+
+**I planned a layout and not a world.** I wrote one sentence and then fixed gate after gate: a spawn, a goal, three
+houses, some trees and flora. The dead share fell as props went down, and it could not say whether any of them
+served a purpose; mine did not.
+
+**I read "ground cover everywhere" as detail.** Ferns and grass over the whole board do not make an area less
+dead, and I had treated the coverage number as the thing to lower.
+
+**I took beamed houses without looking.** I picked library styles by name and saw them only in the overview. The
+preview sheet shows most of them are timber-framed, and a village of one timbered cottage repeated is a swatch.
+
+## What I did
+
+**I wrote the places down first, in `build-spec.py`, before placing anything.** Seven places and eleven lanes, which
+the review lists with the reason for each: the Ridge, the Watch, the Millstone terrace, Haldenwood and its clearing,
+the hamlet, the mill race and the river. The land, the relief and the objective were left as they were.
+
+**Each place got a reason to be visited.** The ridge path leads from the barn yard to the Watch, a ruined round
+tower on the fell's crest with a chest on its floor and the Millstone 26 blocks below it. The wood and clearing are
+cover on the west of the terrace. The cellar is below it, the mill race and fields are the valley floor, and a
+footbridge gives a dry way from the mill yard to the water's edge.
+
+**The village is one idea.** Plain rubble cottages with dark-oak roofs, a gambrel hay barn and a dark-oak quay mill,
+none beamed but the mill. Paths are gravel, andesite and cobblestone and join door to door, with a lane from the
+barn along the ridge and one from the Watch down to the terrace.
+
+**The numbers after nine more stores.** Dead ground fell from 27.5% to 18.5%, `level` stands at 0.41, and props placed
+went from 24 to 90 with 3 declined. The last drive printed:
+
+```
+ground   11949 walked, 654 scrambled, 140 barrier — 6.2% steps further than a player walks
+props    90 placed, 3 declined
+routes   worst step 22, on route spawn-0 to destroyable-1
+```
+
+Round two took 7 minutes from 21:44 to 21:51 and nine stores (changes 8 to 16), none refused. The worst step of 22
+is where the walk enters the build zone, and the first build read it as 4 on a different crossing; I did not trace
+why the route moved, and pre-flight reads `export gate OPEN`.
+
+## What could still not be said
+
+**A stump, a log pile, a haystack or a pumpkin as a prop.** *Looked for:* `stump`, `log pile`, `hay` and `pumpkin` in the OpenAPI
+document, the glossary and the rules, none found by name; I did not search by function beyond that. *Verdict:* **missing**; I made each as a boulder recipe whose rock is a log,
+hay or pumpkin block, against the author's ruling that boulders are stone, and the pumpkins first read as 3-block
+cubes at size 1.1 until I cut them to 0.7.
+
+**A woodcutter's cottage in the glade.** Five placements were declined: three for standing in front of the
+spawn hall's door (its approach runs 15 blocks, to z −66 by the claims read) and two for standing in the cottage's and the mill's claims.
+*Verdict:* **out of reach from where I stood**; I did not find the keep-out's extent before placing and cut it.
+
+**A mill wheel and a reachable tower top.** Both still missing: the wheel for the reason in round one, and a stair
+up the Watch because no sculpt form is a stair. The tower is `kind: "made"` so `SK11` stays quiet about its crown.
+
+## What worked in round two
+
+**Split the plan piece and keep the land.** Cutting the ridge piece in two freed the fell for trees and boulders
+and left every cell of ground where it was.
+
+**A relief pad under the made thing.** A radius-5 mark pinning the crest let the Watch stand level on a hill that
+a push had raised, and my first height guess was 9 blocks high because the push adds after the marks.
+
+**`render/eye` on one place.** Four close pictures found the oversized pumpkins, the over-planted glade and the
+tower standing clear, none of which the overview showed.
+
+## Open gameplay questions
+
+**Should a chest stand in the Watch?** Two golden apples and sixteen arrows, which I chose to be worth the climb and
+not worth a race. It is a reward the author did not ask for, so it is listed here and easy to remove.
+
+**Is the dry way to the water's edge right?** The footbridge lets any player reach the build zone without
+swimming, which the first build did not. I kept it because a team that has to swim to start bridging is
+slower to begin and nothing in the documents says that is wanted.
+
+**Is the hill above the objective too strong?** The Watch overlooks the Millstone by 26 blocks of line and the
+author's law says that is an approach from above; whether a defender can hold it is the oracle's call.

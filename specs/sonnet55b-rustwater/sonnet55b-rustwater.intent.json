@@ -31,12 +31,13 @@
     {
      "minX": -32,
      "minZ": -116,
-     "maxX": 36,
+     "maxX": 4,
      "maxZ": -80
     }
    ],
    "yaw": 0,
    "doors": [
+    "+x",
     "+z"
    ],
    "footprint": {
@@ -63,7 +64,7 @@
    },
    "protection": [
     {
-     "minX": -36,
+     "minX": -4,
      "minZ": 80,
      "maxX": 32,
      "maxZ": 116
@@ -71,6 +72,7 @@
    ],
    "yaw": 180,
    "doors": [
+    "-x",
     "-z"
    ],
    "footprint": {

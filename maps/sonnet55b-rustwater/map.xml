@@ -98,8 +98,8 @@
         <point id="blue-spawn-point">20,32,92</point>
         <point id="red-spawn-point">-20,32,-92</point>
         <point id="observer-spawn">0,36,0</point>
-        <rectangle id="blue-spawn" min="-36,80" max="32,116"/>
-        <rectangle id="red-spawn" min="-32,-116" max="36,-80"/>
+        <rectangle id="blue-spawn" min="-4,80" max="32,116"/>
+        <rectangle id="red-spawn" min="-32,-116" max="4,-80"/>
         <cuboid id="millstone-region" min="15,29,-67" max="18,32,-64"/>
         <cuboid id="millstone-2-region" min="-18,29,64" max="-15,32,67"/>
         <union id="spawns">
