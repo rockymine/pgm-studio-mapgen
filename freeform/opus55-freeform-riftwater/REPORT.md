@@ -163,7 +163,7 @@ have to offer to let an author build it without writing a generator.
 
 - `scripts/` holds every script written in this run, all of which still run. `cut_trees.py` is run once
   and wrote `trees.json`. `build.sh` regenerates `world/` and `renders/` from nothing.
-- The world is 240 × 176 blocks, 1,008,164 blocks in 192 chunks, with 16 tile entities: chests, signs.
+- The world is 240 × 176 blocks: 1,007,258 blocks in 192 chunks, 106 trees, and 16 tile entities (chests and signs).
 - `world/map.xml` is minimal: teams, spawns, a kit, four destroyables, the rift as the only place to build
   over void, and spawn protection. The trees are credited to rockymine, who built them.
 - Requirements: python3 with numpy, scipy and pillow; dotnet 10; the studio repository at

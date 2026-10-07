@@ -448,7 +448,7 @@ def fallen_logs(w, L):
         for k in range(n):
             X, Z = (x + k, z) if ax == 4 else (x, z + k)
             gg = H(L, X, Z)
-            if abs(gg - g) > 1 or w.id(X, gg + 1, Z) not in (B.AIR, B.TALLGRASS, B.FLOWER):
+            if gg < 0 or g < 0 or abs(gg - g) > 1 or w.id(X, gg + 1, Z) not in (B.AIR, B.TALLGRASS, B.FLOWER):
                 ok = False
         if not ok:
             continue
