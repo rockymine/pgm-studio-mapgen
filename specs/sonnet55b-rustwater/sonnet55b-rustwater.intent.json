@@ -1,0 +1,175 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn",
+    "image": 0
+   },
+   "reflected": false,
+   "team": "red",
+   "point": {
+    "x": -20,
+    "y": 20,
+    "z": -92
+   },
+   "protection": [
+    {
+     "minX": -32,
+     "minZ": -116,
+     "maxX": 36,
+     "maxZ": -80
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -27,
+    "minZ": -99,
+    "maxX": -13,
+    "maxZ": -85
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn",
+    "image": 1
+   },
+   "reflected": false,
+   "team": "blue",
+   "point": {
+    "x": 20,
+    "y": 20,
+    "z": 92
+   },
+   "protection": [
+    {
+     "minX": -36,
+     "minZ": 80,
+     "maxX": 32,
+     "maxZ": 116
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": 13,
+    "minZ": 85,
+    "maxX": 27,
+    "maxZ": 99
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 35,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -52,
+    "minZ": -12,
+    "maxX": 52,
+    "maxZ": 12
+   }
+  ],
+  "holes": []
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "millstone",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Millstone",
+   "style": "cube-3",
+   "materials": "gold block",
+   "repairable": false,
+   "anchor": {
+    "x": 16,
+    "y": 20,
+    "z": -66
+   },
+   "float": 3,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "millstone",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Millstone",
+   "style": "cube-3",
+   "materials": "gold block",
+   "repairable": false,
+   "anchor": {
+    "x": -17,
+    "y": 20,
+    "z": 65
+   },
+   "float": 3,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Rustwater Vale",
+  "created": "2026-10-07",
+  "authors": [
+   {
+    "name": "Sonnet 5.5",
+    "contribution": "map"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": null
+}

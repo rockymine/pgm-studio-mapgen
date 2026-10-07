@@ -785,6 +785,14 @@ note ids are listed in `reports/opus55-notes-run.md`, which is the run's account
 |---|---|---|---|
 | `sonnet55-halcyon-cays` | dtm | Sonnet 5.5 | **A holiday resort on a string of cays in a lagoon: a white stepped hotel built out of 15 made layers (an open pillared arcade, a glass lobby, balconies, two lower wings and roof terraces) round a pool courtyard on each shore, thatched stilt bungalows on a palm cay, five rock stacks standing out of the water, and a thatched bar on the sandbar in the middle.** One monument a team on open sand at (8, −53) with the terrace west, a lawn and the Sentinel east and the spit south, 45 blocks of walk against 151 (`GO1` 3.36). Three crossings join the halves with no build zone: a dry sand spit, a one-block reef ford, and a hop between islets. Swampland biome, chosen because it is the only one that tints water, so the water reads teal and the vegetation olive; three themes (sand, jungle lawn, karst), two forked house styles, 37 made layers. 100 × 210. **16 404 walked · 522 scrambled · 894 barrier**, 55.3% dead (open lagoon), 22 props placed with two `DR-PASS` complaints on the bungalows, export gate OPEN. No notes |
 
+### Sonnet 5.5 — an autumn river valley, one board, authored plan (2026-10-07)
+
+**One destroy board on the deployed studio, the plan authored by hand and the spawn seated in the land.** The account is `reports/sonnet55b-rustwater.md`.
+
+| Board | Mode | Author | What it turned out to be |
+|---|---|---|---|
+| `sonnet55b-rustwater` | dtm | Sonnet 5.5 | **A valley whose two sides face each other across a slow river: each spawn hall stands on a shelf high on its own hillside with 21 blocks of land and a ridge 8 above behind it, a gold Millstone on a terrace 41° off the line below and to the east, a dark-oak watermill and a wadeable river at the foot, and a roofed cellar beside the cottage on the lower shelf.** One landmass a side, 112 × 232 blocks under `rot_180`, a 24-block build zone between the banks. Biome Mesa, so grass and leaves come out olive-brown; two themes, three families (olive-brown turf, dark-oak and hay, gold). Measured: goal walk 3.4 times its own spawn's, 27.5% of the ground dead, the east half of the spawn's own piece unreached. The river is two half-rivers a bank each with the void between them, which is the board's one compromise. |
+
 ## Not boards
 
 Folders under `maps/` or `specs/` that exist for a reading rather than for a game. They are named

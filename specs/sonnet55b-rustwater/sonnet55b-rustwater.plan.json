@@ -1,0 +1,88 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Rustwater Vale",
+  "authors": [
+   "Sonnet 5.5"
+  ]
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 20
+ },
+ "pieces": [
+  {
+   "id": "ridge",
+   "rect": [
+    -8,
+    -29,
+    17,
+    9
+   ]
+  },
+  {
+   "id": "slope",
+   "rect": [
+    -6,
+    -20,
+    18,
+    9
+   ]
+  },
+  {
+   "id": "bank",
+   "rect": [
+    -6,
+    -11,
+    20,
+    8
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "river-gap",
+   "rect": [
+    -13,
+    -3,
+    26,
+    6
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn",
+    "piece": "ridge",
+    "at": [
+     12,
+     24
+    ],
+    "facing": "back",
+    "footprint": [
+     5,
+     17,
+     14,
+     14
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "millstone",
+    "piece": "slope",
+    "at": [
+     40,
+     14
+    ],
+    "style": "cube-3",
+    "materials": "gold block",
+    "float": 3,
+    "name": "Millstone"
+   }
+  ]
+ }
+}
