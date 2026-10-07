@@ -125,7 +125,7 @@ def cover(w, L):
             wood = L.forest[ix, iz]
             p = (0.30 if wood else 0.07) * (0.6 + dens[ix, iz])
             r = RNG.random()
-            if flowers[ix, iz] > 0.58 and not wood and r < 0.3:
+            if flowers[ix, iz] > 0.6 and not wood and r < 0.18:
                 t = ftype[ix, iz]
                 kind = (B.DANDELION, 0) if t < -0.3 else (B.FLOWER, 3) if t < 0.0 else (B.FLOWER, 8) if t < 0.3 else (B.FLOWER, 0)
                 w.set(x, g + 1, z, *kind)
@@ -410,6 +410,116 @@ def benches(w, L):
             w.set(x, g + 1, z, B.SPRUCE_STAIRS, 3)
 
 
+def boulder(w, L, x, z, r, rng):
+    """One rock: stone and andesite with a little cobblestone for grain, sunk a block into the ground."""
+    g = H(L, x, z)
+    for dx in range(-r - 1, r + 2):
+        for dz in range(-r - 1, r + 2):
+            for dy in range(-1, r + 1):
+                d = np.hypot(dx / (r + 0.3), dz / (r * 0.85 + 0.3)) + max(0, dy) / (r * 0.9 + 0.5)
+                if d > 1.0 + 0.15 * rng.standard_normal():
+                    continue
+                X, Y, Z = x + dx, g + dy, z + dz
+                if w.id(X, Y, Z) in (B.AIR, B.TALLGRASS, B.FLOWER, B.GRASS, B.DIRT):
+                    q = rng.random()
+                    w.set(X, Y, Z, *((B.STONE, 0) if q < 0.45 else (B.STONE, 5) if q < 0.8 else (B.COBBLE, 0)))
+
+
+def boulders(w, L):
+    """Rocks where a ridge sheds them: at the foot of its steep faces and among the trees, never in a field."""
+    rng = np.random.default_rng(31)
+    sites = [(-99, -30, 2), (-104, -46, 1), (-95, -76, 2), (-110, 30, 2), (-103, 46, 1), (-112, 84, 2),
+             (-80, -84, 1), (-117, -8, 1), (-89, -60, 1), (-60, -86, 1)]
+    for x, z, r in sites:
+        ix, iz = x - L.x0, z - L.z0
+        if L.land[ix, iz] and not L.water[ix, iz] and L.route_d[ix, iz] > 2 and L.mon_d[ix, iz] > 8:
+            boulder(w, L, x, z, r, rng)
+
+
+def fallen_logs(w, L):
+    """Trees that came down in the woods, lying along the slope with a stump beside them."""
+    for x, z, ax, n in ((-90, -70, 4, 6), (-112, -40, 8, 5), (-106, 52, 4, 5), (-116, 10, 8, 4)):
+        g = H(L, x, z)
+        ok = True
+        for k in range(n):
+            X, Z = (x + k, z) if ax == 4 else (x, z + k)
+            gg = H(L, X, Z)
+            if abs(gg - g) > 1 or w.id(X, gg + 1, Z) not in (B.AIR, B.TALLGRASS, B.FLOWER):
+                ok = False
+        if not ok:
+            continue
+        for k in range(n):
+            X, Z = (x + k, z) if ax == 4 else (x, z + k)
+            w.set(X, H(L, X, Z) + 1, Z, B.LOG, ax | (2 if k % 4 == 1 else 0) if False else ax)
+        sx, sz = (x - 1, z + 1) if ax == 4 else (x + 1, z - 1)
+        if w.id(sx, H(L, sx, sz) + 1, sz) == B.AIR:
+            w.set(sx, H(L, sx, sz) + 1, sz, B.LOG, 0)
+
+
+def hedgerows(w, L):
+    """Hedges of oak leaf on the field lanes' outer side: what divides a farm's ground, and a little cover
+    along the walk from the green to the knoll, with gaps where a gate would be."""
+    from noise import spline
+    for name in ("Farm Track",):
+        pts = dict((r["name"], r) for r in P.ROUTES)[name]["pts"]
+        sp = spline(pts, 1.0)
+        for i, (x, z) in enumerate(sp):
+            if i % 13 in (0, 1):
+                continue
+            X, Z = int(round(x)) + 2, int(round(z)) + 2
+            g = H(L, X, Z)
+            if w.id(X, g, Z) == B.GRASS and w.id(X, g + 1, Z) in (B.AIR, B.TALLGRASS, B.FLOWER):
+                w.set(X, g + 1, Z, B.LEAVES, 4)
+                if i % 3 == 0:
+                    w.set(X, g + 2, Z, B.LEAVES, 4)
+
+
+def rift_face(w, L):
+    """The rift's walls: vines hanging from the lip, the odd grassy ledge a bridger can land on."""
+    rng = np.random.default_rng(41)
+    for iz in range(L.nz):
+        xs = np.nonzero(L.land[:, iz])[0]
+        if len(xs) == 0:
+            continue
+        ix = xs.max()
+        x, z = L.x0 + ix, L.z0 + iz
+        if L.water[ix, iz]:
+            continue
+        top = L.H[ix, iz]
+        if rng.random() < 0.35:
+            n = int(rng.integers(3, 12))
+            for y in range(top - n, top):
+                if w.id(x + 1, y, z) == B.AIR:
+                    w.set(x + 1, y, z, B.VINE, 2)
+        if rng.random() < 0.04:
+            y = top - int(rng.integers(5, 14))
+            for dz in range(0, 3):
+                if w.id(x + 1, y, z + dz) == B.AIR and w.id(x, y, z + dz) != B.AIR:
+                    w.set(x + 1, y, z + dz, B.STONE, 5)
+                    w.set(x + 1, y + 1, z + dz, B.TALLGRASS, 1) if rng.random() < 0.5 else None
+
+
+def shop_signs(w, L):
+    """Each shop says what it is on the wall beside its door."""
+    names = {"bakery": ["Baker", "", "fresh bread", ""], "shop": ["Chandler", "", "rope & candles", ""],
+             "hall": ["Town Hall", "", "", ""], "gaol": ["The Gaol", "", "", ""], "smithy": ["Smithy", "", "", ""],
+             "engine": ["Ironhollow", "Mine Co.", "", ""], "mill": ["The Mill", "", "", ""]}
+    facing = {"n": 2, "s": 3, "w": 4, "e": 5}
+    for rec in L.records:
+        k = rec.get("kind")
+        if k not in names:
+            continue
+        dx, dz = rec["door"]
+        ox, oz = rec["out"]
+        # beside the door, on the outside face of the wall
+        side = (1, 0) if dz != oz else (0, 1)
+        sx, sz = ox + side[0], oz + side[1]
+        y = rec["floor"] + 2
+        if w.id(sx, y, sz) == B.AIR and w.id(dx + side[0], y, dz + side[1]) not in (B.AIR, B.PANE):
+            door = "n" if oz < dz else "s" if oz > dz else "w" if ox < dx else "e"
+            w.sign(sx, y, sz, names[k], wall_facing=facing[door])
+
+
 def build(w, L):
     L.route_d = route_distance(L)
     mons = list(P.MONUMENTS.values())
@@ -461,4 +571,9 @@ def build(w, L):
             L.trees.append((x, z, t["crown"] * 0.6))
             n += 1
     print(f"  planted {n} trees")
+    boulders(w, L)
+    fallen_logs(w, L)
+    hedgerows(w, L)
+    rift_face(w, L)
+    shop_signs(w, L)
     cover(w, L)

@@ -72,7 +72,9 @@ def build_heights(L: Land):
     zr = river_z_of_x(course)(X)                      # river centreline z at each x
     north = Z < zr
     # town bluff: 51 by the rift, 52 toward the square
-    h_n = 51 + 1.0 * smoothstep(-30, -70, X) + 2.0 * smoothstep(-74, -96, X)
+    # the town climbs from the rift to the square, and its north quarter rises to the chapel's hill
+    h_n = 48.5 + 3.5 * smoothstep(-14, -64, X) + 2.0 * smoothstep(-74, -96, X)
+    h_n = h_n + 4.5 * np.exp(-(((X + 44) / 16.0) ** 2 + ((Z + 78) / 11.0) ** 2))
     # fields and village: 47 by the river, rising to the south and toward the ridge
     h_s = 47.2 + 1.8 * smoothstep(25, 80, Z) + 4.5 * smoothstep(-64, -98, X)
     h = np.where(north, h_n, h_s)

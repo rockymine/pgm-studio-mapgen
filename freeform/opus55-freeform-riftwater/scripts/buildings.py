@@ -128,25 +128,25 @@ def town(w, L):
     # the town hall closes the square's north side
     T(-74, -64, -59, -56, storeys=2, door="s", kind="hall", floor_y=52)
     # Main Street, north side
-    T(-54, -56, -48, -48, storeys=2, door="s", kind="house", floor_y=52)
-    T(-46, -55, -41, -48, storeys=3, door="s", kind="shop", floor_y=52)
-    T(-36, -56, -29, -48, storeys=2, door="s", kind="house", floor_y=52)
-    T(-27, -54, -22, -48, storeys=2, door="s", kind="bakery", floor_y=51)
-    T(-20, -55, -15, -48, storeys=2, door="s", kind="house", floor_y=51)
+    T(-54, -56, -48, -48, storeys=2, door="s", kind="house")
+    T(-46, -55, -41, -48, storeys=3, door="s", kind="shop")
+    T(-36, -56, -29, -48, storeys=2, door="s", kind="house")
+    T(-27, -54, -22, -48, storeys=2, door="s", kind="bakery")
+    T(-20, -55, -15, -48, storeys=2, door="s", kind="house")
     # Main Street, south side
-    T(-37, -40, -30, -33, storeys=2, door="n", kind="house", floor_y=52)
-    T(-27, -40, -21, -34, storeys=2, door="n", kind="shop", floor_y=51)
-    T(-18, -40, -14, -35, storeys=1, door="n", kind="house", floor_y=51)
+    T(-37, -40, -30, -33, storeys=2, door="n", kind="house")
+    T(-27, -40, -21, -34, storeys=2, door="n", kind="shop")
+    T(-18, -40, -14, -35, storeys=1, door="n", kind="house")
     # the gaol, on the square's south-east corner, over the cellar
     T(-56, -38, -48, -30, storeys=2, door="w", kind="gaol", floor_y=52, style="stone")
     # Bridge Street
-    T(-49, -26, -43, -19, storeys=2, door="e", kind="house", floor_y=51)
-    T(-48, -15, -43, -11, storeys=1, door="e", kind="house", floor_y=51)
-    T(-33, -28, -24, -17, storeys=2, door="w", kind="inn", floor_y=51)
+    T(-49, -26, -43, -19, storeys=2, door="e", kind="house")
+    T(-48, -15, -43, -11, storeys=1, door="e", kind="house")
+    T(-33, -28, -24, -17, storeys=2, door="w", kind="inn")
     # North Lane
-    T(-34, -78, -28, -70, storeys=2, door="s", kind="house", floor_y=52)
-    T(-24, -80, -18, -73, storeys=2, door="s", kind="house", floor_y=52)
-    T(-69, -80, -61, -72, storeys=1, door="s", kind="shop", floor_y=52)
+    T(-34, -78, -28, -70, storeys=2, door="s", kind="house")
+    T(-24, -80, -18, -73, storeys=2, door="s", kind="house")
+    T(-69, -80, -61, -72, storeys=1, door="s", kind="shop")
     return recs
 
 
@@ -163,35 +163,37 @@ def gaol_stair(w, L):
 
 def chapel(w, L):
     """A stone nave with a belfry tower at its west end: the tallest thing in town, laddered to the bells."""
-    rec = house(w, L, -50, -80, -38, -71, storeys=2, style="stone", door="s", kind="chapel", floor_y=52,
+    rec = house(w, L, -50, -80, -38, -71, storeys=2, style="stone", door="s", kind="chapel",
                 chimney=False, along_x=True)
+    f = rec["floor"]
+    dy = f - 52
     # pews and an altar
     for x in range(-48, -41, 2):
         for z in (-77, -76, -74, -73):
-            w.set(x, 53, z, B.SPRUCE_STAIRS, 0)
-    w.set(-40, 53, -76, B.QUARTZ); w.set(-40, 53, -75, B.QUARTZ); w.set(-40, 54, -76, B.CANDLE if hasattr(B, "CANDLE") else B.TORCH, 5)
+            w.set(x, 53 + dy, z, B.SPRUCE_STAIRS, 0)
+    w.set(-40, 53 + dy, -76, B.QUARTZ); w.set(-40, 53 + dy, -75, B.QUARTZ); w.set(-40, 54 + dy, -76, B.TORCH, 5)
     # the upper floor is a gallery: open the middle so the nave is tall
     for x in range(-48, -40):
         for z in range(-78, -72):
-            w.set(x, 56, z, B.AIR)
+            w.set(x, 56 + dy, z, B.AIR)
     # tall windows
     for x in (-47, -44, -41):
         for z in (-80, -71):
-            for y in range(54, 59):
+            for y in range(54 + dy, 59 + dy):
                 w.set(x, y, z, B.PANE)
     # the tower
     tx0, tz0, tx1, tz1 = -55, -79, -51, -73
-    site(w, L, tx0, tz0, tx1, tz1, 52)
-    top = 52 + 20
+    site(w, L, tx0, tz0, tx1, tz1, f)
+    top = f + 20
     for x in range(tx0, tx1 + 1):
         for z in range(tz0, tz1 + 1):
             edge = x in (tx0, tx1) or z in (tz0, tz1)
-            for y in range(52, top + 1):
+            for y in range(f, top + 1):
                 if edge:
                     corner = x in (tx0, tx1) and z in (tz0, tz1)
                     w.set(x, y, z, *((B.STONE, 6) if corner else (B.STONEBRICK, 0)))
                 else:
-                    w.set(x, y, z, B.AIR if y > 52 else B.PLANKS, 5)
+                    w.set(x, y, z, B.AIR if y > f else B.PLANKS, 5)
     # belfry openings near the top, and the bell
     for y in (top - 4, top - 3, top - 2):
         for d in (-1, 0, 1):
@@ -203,14 +205,14 @@ def chapel(w, L):
     w.set(tx0 + 2, top - 1, tz0 + 3, B.FENCE)
     w.set(tx0 + 2, top - 2, tz0 + 3, B.GOLD_BLOCK)
     # a ladder up the inside, a hatch in the belfry floor
-    for y in range(53, top - 4):
+    for y in range(f + 1, top - 4):
         w.set(tx0 + 1, y, tz0 + 1, B.LADDER, 3)
     w.set(tx0 + 1, top - 5, tz0 + 1, B.LADDER, 3)
     # door from the nave into the tower, and from the lane
-    for y in (53, 54):
+    for y in (f + 1, f + 2):
         w.set(tx1, y, -76, B.AIR)
         w.set(tx0 + 2, y, tz1, B.AIR)
-    w.set(tx0 + 2, 53, tz1, B.DARK_OAK_DOOR, 1); w.set(tx0 + 2, 54, tz1, B.DARK_OAK_DOOR, 8)
+    w.set(tx0 + 2, f + 1, tz1, B.DARK_OAK_DOOR, 1); w.set(tx0 + 2, f + 2, tz1, B.DARK_OAK_DOOR, 8)
     # the spire: a pyramid of dark oak stairs
     for k in range(4):
         for x in range(tx0 - 1 + k, tx1 + 2 - k):
@@ -223,8 +225,8 @@ def chapel(w, L):
     return rec
 
 
-def inn_sign(w, L):
-    w.sign(-34, 53, -22, ["The Falls Inn", "", "rooms & ale", ""], wall_facing=4)
+def inn_sign(w, L, inn):
+    w.sign(-34, inn["floor"] + 2, -21, ["The Falls Inn", "", "rooms & ale", ""], wall_facing=4)
 
 
 # ---------------------------------------------------------------------------------------------------------
@@ -493,10 +495,13 @@ def stone_bridge(w, L):
     x0, x1 = -38, -34
     zN, zS = -10, 14
     zc, half = 3, 6.5
+    yN = int(np.median([H(L, x, zN - 1) for x in range(x0, x1 + 1)]))
+    yS = int(np.median([H(L, x, zS + 1) for x in range(x0, x1 + 1)]))
+    crown = max(yN, yS) + 1
     def deck_y(z):
         if z <= 1:
-            return int(round(51 + (z - zN) / (1 - zN)))
-        return int(round(52 - 5 * (z - 1) / (zS - 1)))
+            return int(round(yN + (crown - yN) * (z - zN) / (1 - zN)))
+        return int(round(crown - (crown - yS) * (z - 1) / (zS - 1)))
     for z in range(zN, zS + 1):
         dy = deck_y(z)
         prev, nxt = deck_y(z - 1), deck_y(z + 1)
@@ -548,8 +553,9 @@ def old_bridge(w, L):
     """The Old Bridge's stub: Main Street carried out over the rift on a half-arch springing from the rift
     face, broken off where the middle span fell. The deck runs out six blocks; the arch ring curls up under
     it from ten blocks down the face; the break is ragged, its parapet gone first."""
-    zc, deck = -44, 51
+    zc = -44
     face = -12
+    deck = H(L, -15, -44)
     end = -5
     rng = np.random.default_rng(17)
     for x in range(face - 3, end + 1):
@@ -595,7 +601,7 @@ def build(w, L):
     recs = town(w, L)
     gaol_stair(w, L)
     recs.append(chapel(w, L))
-    inn_sign(w, L)
+    inn_sign(w, L, [r for r in recs if r['kind'] == 'inn'][0])
     recs += village(w, L)
     well(w, L, -87, 46)
     L.headframe_top = headframe(w, L)

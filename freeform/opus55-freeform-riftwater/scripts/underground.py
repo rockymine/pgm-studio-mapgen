@@ -22,6 +22,8 @@ CAVE = {
     # north: under the river and up to the gaol cellar
     "north": [(-40, 32, 14, 3.0), (-43, 32, 7, 2.6), (-46, 33, 0, 2.6), (-49, 35, -8, 2.8), (-52, 37, -15, 2.6),
               (-53, 40, -21, 2.5), (-53, 42, -28, 2.2)],
+    # a side passage off the north branch, under the mill, to the smugglers' grotto
+    "grotto": [(-46, 33, 0, 2.2), (-50, 33, 2, 2.0), (-54, 33, 4, 2.4), (-58, 33, 5, 2.2)],
     # west: toward the mine's breakthrough
     "west": [(-49, 37, 33, 2.4), (-53, 38, 35, 2.2), (-57, 39, 37, 2.0)],
 }
@@ -333,14 +335,75 @@ def cellar(w, L):
     L.cellar = CELLAR
 
 
+PILLAR_HALL = (-46, 34, 26)
+GROTTO = (-60, 33, 6)
+
+
+def pillar_hall(w, L):
+    """A low wide hall on the south branch where the water once pooled: natural pillars hold its roof, and
+    the fight in it is from pillar to pillar."""
+    cx, cy, cz = PILLAR_HALL
+    carve_ellipsoid(w, L, cx, cy + 2.6, cz, 7.5, 4.2, cy)
+    carve_ellipsoid(w, L, cx + 3, cy + 2.2, cz - 3, 5.0, 3.6, cy)
+    rng = np.random.default_rng(8)
+    for _ in range(7):
+        a = rng.uniform(0, 2 * np.pi); r = rng.uniform(2.5, 6.0)
+        px, pz = int(round(cx + r * np.cos(a))), int(round(cz + r * 0.9 * np.sin(a)))
+        wide = rng.random() < 0.4
+        for x in range(px, px + (2 if wide else 1)):
+            for y in range(cy - 1, cy + 9):
+                if w.id(x, y, pz) == B.AIR:
+                    w.set(x, y, pz, B.STONE, 5 if (y + x) % 3 else 0)
+
+
+def grotto(w, L):
+    """The smugglers' grotto: a dead end off the north branch, under the mill, with what they left."""
+    cx, cy, cz = GROTTO
+    carve_ellipsoid(w, L, cx, cy + 2.2, cz, 3.6, 3.0, cy)
+    w.chest(cx - 2, cy, cz, [(0, "minecraft:golden_apple", 2, 0), (1, "minecraft:arrow", 32, 0),
+                             (4, "minecraft:iron_leggings", 1, 0), (13, "minecraft:paper", 3, 0)], facing=5)
+    w.set(cx - 2, cy, cz + 1, B.WOOD_SLAB, 1)    # barrels and a plank, as a stash would be
+    w.set(cx - 1, cy, cz - 2, B.PLANKS, 1)
+    w.set(cx - 1, cy + 1, cz - 2, B.WOOD_SLAB, 1)
+    w.set(cx, cy, cz + 2, B.TORCH, 5)
+
+
+def alcoves(w, L):
+    """Pockets off the long gallery, so it is not a tube: each a step aside to wait in."""
+    for (x, y, z, r) in ((-18, 35, 9, 2.2), (-26, 34, 2, 2.0), (-31, 33, 15, 2.4), (-48, 36, 31, 2.0), (-50, 35, -6, 2.0)):
+        carve_ellipsoid(w, L, x, y + 1.6, z, r, 2.0, y)
+
+
+def stalagmites(w, L, box):
+    x0, x1, z0, z1, y0, y1 = box
+    rng = np.random.default_rng(9)
+    for _ in range(900):
+        x = int(rng.integers(x0, x1 + 1)); z = int(rng.integers(z0, z1 + 1)); y = int(rng.integers(y0, y1))
+        if w.id(x, y, z) != B.AIR or w.id(x, y - 1, z) not in (B.GRAVEL, B.STONE, B.CLAY, B.COBBLE):
+            continue
+        ix, iz = x - L.x0, z - L.z0
+        if not (0 <= ix < L.nx and 0 <= iz < L.nz) or y > L.H[ix, iz] - 3:
+            continue
+        # only against a wall, so the floor stays walkable
+        walls = sum(w.id(x + dx, y, z + dz) not in (B.AIR, B.WATER) for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+        if walls >= 1 and w.id(x, y + 1, z) == B.AIR and w.id(x, y + 2, z) == B.AIR:
+            w.set(x, y, z, B.STONE, 5)
+            if rng.random() < 0.5:
+                w.set(x, y + 1, z, B.COBBLE_WALL)
+
+
 def build(w, L):
     for name, pts in CAVE.items():
         carve_tube(w, L, pts)
+    pillar_hall(w, L)
+    alcoves(w, L)
     # the lake chamber: a wide low hall
     cx, cy, cz = LAKE
     carve_ellipsoid(w, L, cx, cy + 3, cz + 1, 8.5, 4.8, cy - 1)
     carve_ellipsoid(w, L, cx - 3, cy + 2.5, cz - 2, 5.5, 4.0, cy)
-    dress_cave(w, L, (-60, -9, -30, 45, 26, 46))
+    dress_cave(w, L, (-64, -9, -30, 45, 26, 46))
+    stalagmites(w, L, (-64, -11, -30, 45, 28, 44))
+    grotto(w, L)
     lake(w, L)
     mouth(w, L)
     sinkhole(w, L)

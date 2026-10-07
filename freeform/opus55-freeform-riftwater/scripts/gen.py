@@ -39,6 +39,10 @@ def main():
         dressing.build(w, L)
         print(f"dressing {time.time() - t0:.1f}s")
     mirror_world(w)
+    # blue's spawn flies blue: recolour the team wool the mirror copied from red's tower
+    sub = w.ids[84 - w.x0:111 - w.x0, 50:90, -16 - w.z0:3 - w.z0]
+    dsub = w.dat[84 - w.x0:111 - w.x0, 50:90, -16 - w.z0:3 - w.z0]
+    dsub[(sub == B.WOOL) & (dsub == 14)] = 11
     spawn = (0, 90, 0)
     w.save(a.build, "Riftwater", spawn)
     np.save(f"{a.build}/heights_red.npy", L.H)
