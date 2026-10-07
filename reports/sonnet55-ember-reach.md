@@ -17,10 +17,11 @@ The numbers decided first, from `ORDER-OF-WORK.md`: 104 × 224 blocks, `rot_180`
 image, monuments at (−14, −60) and its image, a 32-block gap between the banks (`z = −16..16`) holding the
 river and a build zone the whole width. The goal band is `L/5..L/4` of a 204-block lane, 41 to 51 blocks.
 
-The gameplay reading that shaped it (`match-flow.md` §4, §6; `approaches.md`): void belongs between the
-teams and not across an approach; an objective sits exposed with approaches that differ — around, above,
-below and through; a wall of the sky is built over the gap, so the gap is the join. The valley sides are the
-*above*, the cellar the *below*, the houses the *through*, and the lane the *around*.
+The gameplay reading that shaped it is `match-flow.md` §4 and §6 and `approaches.md`. Void belongs between
+the teams and not across an approach, and an objective sits exposed with approaches that differ.
+
+Those four are around, above, below and through. The lane is the *around*, the valley sides the *above*, the
+cellar the *below* and the houses the *through*, and the gap is the join because the sky is built over it.
 
 ## What was built
 
@@ -86,12 +87,19 @@ skirt of a push reaches `falloff` past its ring, and I had read the ring. I move
 
 ## What worked first time
 
-The plan: after `PL12`, `valid True`, no complaint but `LN5` (47% of ground off every route, 38% once I
-narrowed the board from 26 to 22 cells), and `GO1` in band once the monument moved. The store: eight `PUT
-/source` calls, none refused. The export gate read OPEN after every store. The cellar: the sunk floor, five
-sunk steps and the turf roof stamped as asked the first time they were stored, and the transect from the
-road down the stair reads `rises 5, falls 5, worst step 7` with one drop at the roof's edge, which is the
-deck and not the floor. The relief read: symmetry error 0 on every store, and at the final one no seam and no silent mark. The first stores drew two `RL6` complaints on the hills, which a wider `falloff` and a `crown` of 4 cleared.
+**The plan evaluated clean once `PL12` was met.** It read `valid True` with no complaint but `LN5` (47% of
+ground off every route, 38% once I narrowed the board from 26 to 22 cells), and `GO1` was in band once the
+monument moved.
+
+**The store never refused.** Eight `PUT /source` calls, and the export gate read OPEN after every one.
+
+**The cellar stamped as asked the first time it was stored.** The sunk floor, five sunk steps and the turf
+roof came out as drawn, and the transect from the road down the stair reads `rises 5, falls 5, worst step 7`,
+the one drop being the roof's edge and not the floor.
+
+**The relief read was clean where it counted.** Symmetry error 0 on every store, and at the final one no seam
+and no silent mark. The first stores drew two `RL6` complaints on the hills, which a wider `falloff` and a
+`crown` of 4 cleared.
 
 ## Open gameplay questions
 
