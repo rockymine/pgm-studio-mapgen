@@ -271,8 +271,12 @@ def jetty_and_boat(w, L):
             g = L.H[ix, iz]
             if w.id(x, g, z) in (B.GRASS, B.SAND, B.DIRT) and w.id(x, g + 1, z) == B.AIR and g == 49:
                 if any(L.water[ix + a, iz + b] == 48 for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1))) and RNG.random() < 0.35:
+                    # sugar cane needs water beside the block it grows from: lower the shore to the water's level
+                    w.set(x, 49, z, B.AIR)
+                    w.set(x, 48, z, B.SAND)
+                    L.H[ix, iz] = 48
                     for k in range(1, 2 + int(RNG.integers(0, 2))):
-                        w.set(x, g + k, z, B.REEDS)
+                        w.set(x, 48 + k, z, B.REEDS)
 
 
 def spring(w, L):

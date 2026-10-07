@@ -97,3 +97,28 @@ lane repeated (`approaches.md`: *the approaches differ*).
 ## As first drawn
 
 The table and sketch above are the plan as written before building.
+
+## How the plan changed
+
+**Built against the plan, the board kept every place and moved five of them.** Each change below was made
+looking at a render of the built world, and the reason is the render's.
+
+- **The rift stopped being a ruled line.** From above it read as a wall between two slabs. Its lip now
+  wanders and is bitten into bays where nothing stands, and is held straight only under the town's houses,
+  at the Old Bridge and at the falls. The build zone widened from `|x| ≤ 10` to `|x| ≤ 16` so a bay's edge
+  can still be bridged from.
+- **The southern lanes were cut from five to three.** The first build's Field Road, Farm Track, Spawn Lane
+  south and Village Road crossed each other in front of the south monument like spaghetti. Field Road now
+  runs bridge to green, Farm Track runs green to barn to knoll round the field's back, and the field sits in
+  the open between them.
+- **Lone Oak Knoll moved from (−26, 66) to (−22, 74)** so the wheat field could stand directly in front of
+  the south monument, which is the open ground an objective wants in front of it.
+- **The gaol and its cellar moved onto the square's south-east corner** (−56…−48, −38…−30), so the cave's
+  way up arrives eighteen blocks from the north monument rather than behind a row of houses.
+- **The town was given a climb.** The first build's town was flat at 51–52 from the square to the rift. The
+  ground now falls from 52 at the square to 49 at the rift, and the chapel stands on a rise at 55, so the
+  north attack is uphill and Main Street steps.
+- **The spawn terrace became a shoulder.** Drawn as a rectangle it built as a square pad against the ridge;
+  it is now an oval spur at the ridge's foot with the ridge standing over it.
+- **The cave gained a pillared hall, a smugglers' grotto and alcoves.** The first build's cave was four
+  tubes meeting at a lake; it now has places in it.

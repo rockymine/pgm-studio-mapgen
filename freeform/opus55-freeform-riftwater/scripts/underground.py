@@ -175,7 +175,8 @@ def sinkhole(w, L):
         for z in range(cz - 6, cz + 7):
             if 4.2 < np.hypot(x - cx, z - cz) < 5.5 and RNG.random() < 0.25:
                 y = w.top(x, z) - 1
-                if w.id(x, y, z) == B.AIR:
+                # a vine hangs only off a face it can hold: rock or soil on its south side
+                if w.id(x, y, z) == B.AIR and w.id(x, y, z + 1) in (B.STONE, B.DIRT, B.GRASS, B.COBBLE, B.GRAVEL):
                     w.set(x, y, z, B.VINE, 1)
 
 
@@ -235,8 +236,9 @@ def mine(w, L):
                 ox, oz = (0, k) if along_x else (k, 0)
                 w.set(x + ox, y + 2, z + oz, B.LOG, 1 | (8 if along_x else 4))
             if i % 12 == 2:
+                # on the gallery wall: facing north off the south wall, or west off the east wall
                 tx, tz = (x, z + 1) if along_x else (x + 1, z)
-                w.set(tx, y + 1, tz, B.TORCH, 3 if along_x else 1)
+                w.set(tx, y + 1, tz, B.TORCH, 4 if along_x else 2)
     # iron ore in the gallery walls, richer toward the shaft
     for x, y, z in clean[::2]:
         for _ in range(3):

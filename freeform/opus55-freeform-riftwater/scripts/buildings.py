@@ -328,8 +328,9 @@ def headframe(w, L):
     for y in range(g + 1, top):
         k = (y - g) // 6
         w.set(sx - 2 + k, y, sz - 3 + k + 1, B.LADDER, 3) if False else None
-    # a ladder on the inside face of the north-west leg's column
+    # a ladder up a post of its own on the north side, so it has something to hang on
     for y in range(g + 1, top):
+        w.set(sx - 1, y, sz - 3, B.LOG, 1)
         w.set(sx - 1, y, sz - 2, B.LADDER, 3)
     w.set(sx - 1, top, sz - 2, B.AIR)
     # ore cart track from the collar to the bin, an ore pile
