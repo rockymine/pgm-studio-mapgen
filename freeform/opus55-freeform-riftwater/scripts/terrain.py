@@ -203,6 +203,11 @@ def write_land(w, L: Land, seed=7):
     rng = np.random.default_rng(seed)
     H, bottom, water, land = L.H, L.bottom, L.water, L.land
     ang = slope_deg(H, land)
+    # a ledge is a cell level with most of its neighbours, however steep the hill it sits on: grass holds
+    # there, and the rock shows on the risers between ledges
+    Hf = H.astype(int)
+    flatn = sum((np.abs(np.roll(Hf, s, a) - Hf) <= 1).astype(int) for a in (0, 1) for s in (1, -1))
+    ang = np.where((flatn >= 3) & (ang < 60), np.minimum(ang, 30), ang)
     L.angle = ang
     sh = L.shape
     patch = fbm(sh, 5, 2, seed=61)       # five-block patches

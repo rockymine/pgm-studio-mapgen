@@ -49,7 +49,7 @@ SECTIONS = [
     ("21-section-mine-adit-x-103", ["--z", "-14", "40", "--x", "-103", "--ymin", "36", "--ymax", "84", "--depth", "2", "--scale", "5"]),
 ]
 for name, args in SECTIONS:
-    run(["--section", region, o(name + ".png")] + args)
+    run(["--section", region, o(name + ".png")] + (args if "--scale" in args else args + ["--scale", "6"]))
 
 # isometric views over the volume
 x0, z0, ids, dat = render_iso.load(build)
