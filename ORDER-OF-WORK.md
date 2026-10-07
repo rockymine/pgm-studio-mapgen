@@ -29,10 +29,10 @@ the main island across a gap is attached to the board without belonging to it. S
 ground — on a hill, beside a mountain or a stack of rock, near a mine — up to ten blocks into the land, and it is
 still at the back.
 
-**The boards built here seat the spawn on a bare pad at the edge.** On the boards the author points to, a spawn
+**The boards built here seat the spawn on a bare pad at the edge.** On the corpus layouts the author points to, a spawn
 has a median 20 blocks of its own land behind it and ground 8 blocks above it within 20; on the boards built
 here, 10 and none, and 29% of them have neither a rise nor a tree within 20 blocks
-(`pgm-studio/docs/world-scan/destroy-reference-boards.md`).
+(`pgm-studio/docs/world-scan/destroy-layouts.md`).
 
 **The objective stands in front of the spawn and off to one side.** A defender has to see it, and it is rarely
 straight ahead: the goals of the corpus destroy maps sit a median 42° off the line from the spawn to the enemy
