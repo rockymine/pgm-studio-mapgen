@@ -1,0 +1,83 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Ember Reach",
+  "authors": [
+   "Sonnet 5.5"
+  ]
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 20
+ },
+ "pieces": [
+  {
+   "id": "hall",
+   "role": "spawn",
+   "rect": [
+    -3,
+    -28,
+    6,
+    5
+   ],
+   "surface": 20
+  },
+  {
+   "id": "bank",
+   "rect": [
+    -11,
+    -23,
+    22,
+    19
+   ],
+   "surface": 20
+  }
+ ],
+ "zones": [
+  {
+   "id": "river",
+   "rect": [
+    -11,
+    -4,
+    22,
+    8
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "s0",
+    "piece": "hall",
+    "at": [
+     12,
+     10
+    ],
+    "facing": "back",
+    "footprint": [
+     2,
+     1,
+     20,
+     14
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "d0",
+    "piece": "bank",
+    "at": [
+     30,
+     32
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Monument"
+   }
+  ]
+ },
+ "walls": []
+}
