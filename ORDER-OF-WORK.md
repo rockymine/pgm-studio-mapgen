@@ -24,6 +24,16 @@ holding the objective; a peninsula of several islands; one large island of abstr
 between; a large flat island where built ground and grown ground take turns; floating islands. Choose the
 arrangement in the identity sentence, because it is what a player remembers the board by.
 
+**A destroy spawn stands in the land at its back, not on a box behind it.** A spawn piece hung off the back of
+the main island across a gap is attached to the board without belonging to it. Seat the spawn house on the
+ground — on a hill, beside a mountain or a stack of rock, near a mine — up to ten blocks into the land, and it is
+still at the back.
+
+**The objective stands in front of the spawn and off to one side.** A defender has to see it, and it is rarely
+straight ahead: the goals of the corpus destroy maps sit a median 42° off the line from the spawn to the enemy
+spawn, and the boards built here a median 28°. Two goals are an east and a west, or a front and a back near the
+spawn. `pgm-studio/docs/gameplay/approaches.md` lists the destroy boards worth reading and what each shows.
+
 **An arrangement can be drawn from a rule rather than invented.** Points sampled at random over the area, a
 noise field cut at a level, or a set of about twenty points joined by a tour that annealing solves each give
 islands no hand would draw. Take the land the rule gives, then decide where the spawns and goals stand on it.
