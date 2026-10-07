@@ -15,21 +15,31 @@ making one of them badly.
 is, and what a player remembers about it. If the sentence cannot be written the board is not ready, and no
 amount of terrain will supply it later.
 
-**The gamemode decides the board's shape, not its rules.** A destroy board is a **lane**: on a square every
-goal is equidistant from both spawns and the ratio that gates it flattens. A capture board is about **a third
-land**, and its arrangement — a hub, a spawn hung off it, wool approaches, a frontline, a mid band with
-stepping stones — is hard to invent and easy to get wrong, so a capture board may start from a composed plan
-and be taken over.
+**A monument or a core never stands at the end of a lane.** Ending a lane is what a wool does, and a destroy or
+core board that copies it comes out as a straight box with a spawn glued to each end and the goal partway along.
+That box is the one shape ruled out, and nearly every other shape is open.
 
-**State the extent, the aspect and the two lines before any shape exists.** Where each spawn sits, where each
-objective sits, and the two routes between them. Five numbers and two lines are the board; everything after
-them is detail.
+**A destroy or core board can be any arrangement of land in the void.** One long island with a side island
+holding the objective; a peninsula of several islands; one large island of abstract shapes with smaller islands
+between; a large flat island where built ground and grown ground take turns; floating islands. Choose the
+arrangement in the identity sentence, because it is what a player remembers the board by.
 
-**A goal's position is arithmetic at this point, not a thing to be found later.** With the goal `d` blocks
-along the lane from its own spawn and the spawns `L` apart, the enemy-to-own ratio is about `(L − d) / d`, so
-the band that gates it puts the goal between `L/5` and `L/4` from its own spawn — 42 to 52 blocks on a
-208-block lane. Place it there and the plan agrees on the first read; place it wrong and no downstream edit
-rescues it.
+**An arrangement can be drawn from a rule rather than invented.** Points sampled at random over the area, a
+noise field cut at a level, or a set of about twenty points joined by a tour that annealing solves each give
+islands no hand would draw. Take the land the rule gives, then decide where the spawns and goals stand on it.
+
+**A capture board is about a third land, and its arrangement is the hard one to invent.** A hub, a spawn hung
+off it, wool approaches at the ends of their lanes, a frontline and a mid band with stepping stones are easy to
+get wrong, so a capture board may start from a composed plan and be taken over.
+
+**State the land, the spawns, the objectives and the routes before any detail.** Where the islands lie, where
+each spawn and each objective sits, and how a player walks from one to the next. That is the board; everything
+after it is detail.
+
+**A goal's position is a walk, and the studio gates it.** The walk from a monument or core to the nearest enemy
+spawn is 3 to 4 times the walk to its own (`GO1`), its own spawn is 40 to 90 blocks of walk away (`GO4`), and
+an enemy goal 85 to 150 (`GO3`). A route that bends round an island or crosses between two meets all three as
+well as a straight one does, so a refusal moves the goal or a spawn, never the board back into a box.
 
 **Choose the biome now, with the three tone families.** A tinted block takes its colour from the chunk's
 biome byte and nothing else on a board does, so the biome is a palette decision rather than a line added at
