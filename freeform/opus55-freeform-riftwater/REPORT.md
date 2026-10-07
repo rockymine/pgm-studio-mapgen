@@ -57,7 +57,7 @@ chest; and west into the iron mine, which climbs to an adit beside the spawn.
 | Smugglers' grotto | −60, 6 (33) | A dead end under the mill with a chest of what they left. |
 | The Sinkhole | −50, 40 | A funnel in the field where the cave roof fell in, climbable in one-block steps. |
 | Winding Green, **south monument** | −66, 48 (52–53) | Open grass where Ironhollow's carts turn, the monument floating on it, the fields open in front. |
-| Ironhollow | −99…−72, 38…76 | A mining village of spruce cottages on lanes, gardens behind them, a smithy open to the lane, a well, a spoil heap, the stone engine house with its brick stack. |
+| Ironhollow | −99…−72, 38…76 | A mining village of spruce cottages on lanes — two of them a tall house with a low wing — gardens behind them, a smithy open to the lane, a well and the headframe collar in worn ground, a spoil heap, the stone engine house with its brick stack. |
 | The Headframe | −84, 56 | A timber tower 17 blocks over the shaft with a winding wheel; the shaft drops by ladder to the mine gallery. |
 | The Fields | −50…−31, 45…69 | Wheat in strips with ditches every ninth row, carrots and potatoes, a fence and gate on the village side, the scarecrow in the middle, a hay cart at its foot, a barn with hay and haystacks, a hedgerow along the farm track. |
 | Lone Oak Knoll | −22, 74 | A grassy rise by the rift with one great oak: the south crossing's lookout. |

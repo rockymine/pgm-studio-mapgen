@@ -30,10 +30,14 @@ DOOR_FACING = {"e": 0, "s": 1, "w": 2, "n": 3}
 def site(w, L, x0, z0, x1, z1, y, margin=2, ground=(B.GRASS, 0)):
     """Level the ground for a footprint at floor y: cut what stands above, fill what is missing below,
     and ease the ground round it over `margin` blocks so the house sits on the land rather than on a step."""
+    built = getattr(L, "footprints", [])
     for x in range(x0 - margin, x1 + margin + 1):
         for z in range(z0 - margin, z1 + margin + 1):
             ix, iz = x - L.x0, z - L.z0
             if not (0 <= ix < L.nx and 0 <= iz < L.nz) or not L.land[ix, iz] or L.water[ix, iz] > 0:
+                continue
+            # never cut or fill under something already built
+            if any(a <= x <= c and b <= z <= d for a, b, c, d in built):
                 continue
             dx = max(x0 - x, 0, x - x1)
             dz = max(z0 - z, 0, z - z1)
@@ -106,6 +110,9 @@ def house(w, L, x0, z0, x1, z1, storeys=2, style="town", door="s", kind="house",
         hs = L.H[x0 - L.x0:x1 - L.x0 + 1, z0 - L.z0:z1 - L.z0 + 1]
         floor_y = int(np.median(hs))
     site(w, L, x0, z0, x1, z1, floor_y)
+    if not hasattr(L, "footprints"):
+        L.footprints = []
+    L.footprints.append((x0, z0, x1, z1))
     if along_x is None:
         along_x = (x1 - x0) >= (z1 - z0)
     # foundations: solid under the floor, so nothing floats over a dip

@@ -524,6 +524,25 @@ def shop_signs(w, L):
             w.sign(sx, y, sz, names[k], wall_facing=facing[door])
 
 
+def worn(w, L, cx, cz, r, rng):
+    """Worn ground: a shallow pit sunk a block where feet and carts have stood, dirt and coarse dirt half and
+    half, with a ragged edge."""
+    for x in range(int(cx - r - 1), int(cx + r + 2)):
+        for z in range(int(cz - r - 1), int(cz + r + 2)):
+            if np.hypot(x - cx, z - cz) > r + 0.6 * rng.standard_normal():
+                continue
+            ix, iz = x - L.x0, z - L.z0
+            if not (0 <= ix < L.nx and 0 <= iz < L.nz):
+                continue
+            g = int(L.H[ix, iz])
+            if w.id(x, g, z) != B.GRASS or w.id(x, g + 1, z) not in (B.AIR, B.TALLGRASS, B.FLOWER):
+                continue
+            w.set(x, g + 1, z, B.AIR)
+            w.set(x, g, z, B.AIR)
+            w.set(x, g - 1, z, B.DIRT, 1 if rng.random() < 0.5 else 0)
+            L.H[ix, iz] = g - 1
+
+
 def build(w, L):
     L.route_d = route_distance(L)
     mons = list(P.MONUMENTS.values())
@@ -536,6 +555,9 @@ def build(w, L):
     spring(w, L)
     cutting(w, L)
     stalls(w, L)
+    rng = np.random.default_rng(55)
+    for cx, cz, r in ((-87, 46, 3.2), (-84, 61, 3.0), (-81, 61, 2.5), (-100, -64, 2.2), (-56, 69, 2.6), (-79, 57, 2.0)):
+        worn(w, L, cx, cz, r, rng)
     for r in P.ROUTES:
         if r["kind"] == "street":
             lamps(w, L, r["pts"])

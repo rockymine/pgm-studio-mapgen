@@ -234,9 +234,16 @@ def village(w, L):
     recs = []
     V = lambda *a, **k: recs.append(house(w, L, *a, style=k.pop("style", "village"), **k))
     V(-98, 38, -92, 44, storeys=1, door="e", kind="cottage")
-    V(-99, 49, -92, 55, storeys=2, door="e", kind="house")
+    main = house(w, L, -99, 49, -92, 55, storeys=2, style="village", door="e", kind="house")
+    recs.append(main)
+    # a low wing against the tall house: one storey, its ridge across the main ridge
+    recs.append(house(w, L, -98, 46, -93, 48, storeys=1, style="village", door="e", kind="none", along_x=True,
+                      floor_y=main["floor"], chimney=False, windows=True))
     V(-97, 61, -91, 68, storeys=1, door="e", kind="cottage", along_x=False)
-    V(-90, 71, -82, 76, storeys=2, door="n", kind="house")
+    big = house(w, L, -90, 71, -82, 76, storeys=2, style="village", door="n", kind="house")
+    recs.append(big)
+    recs.append(house(w, L, -95, 72, -91, 76, storeys=1, style="village", door="n", kind="none", along_x=False,
+                      floor_y=big["floor"], chimney=True))
     V(-79, 69, -74, 75, storeys=1, door="n", kind="cottage", along_x=False)
     eng = house(w, L, -80, 49, -75, 55, storeys=1, style="stone", door="w", kind="engine", chimney=False)
     recs.append(eng)
