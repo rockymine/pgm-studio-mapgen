@@ -1,0 +1,94 @@
+{
+  "plan": 2,
+  "meta": {
+    "name": "Rowan Ford",
+    "authors": [
+      "Haiku 5.5"
+    ],
+    "notes": "An autumn valley cut by a slow river. One monument a team, set forward on the bank."
+  },
+  "globals": {
+    "cell": 4,
+    "symmetry": "mirror_x",
+    "maxPlayers": 16,
+    "surface": 9
+  },
+  "pieces": [
+    {
+      "id": "highland-north",
+      "rect": [
+        -21,
+        -11,
+        5,
+        9
+      ]
+    },
+    {
+      "id": "spawn-highland",
+      "role": "spawn",
+      "rect": [
+        -21,
+        -2,
+        5,
+        4
+      ]
+    },
+    {
+      "id": "highland-south",
+      "rect": [
+        -21,
+        2,
+        5,
+        9
+      ]
+    },
+    {
+      "id": "bank",
+      "rect": [
+        -16,
+        -11,
+        14,
+        22
+      ]
+    }
+  ],
+  "zones": [
+    {
+      "id": "river-crossing",
+      "rect": [
+        -2,
+        -11,
+        4,
+        22
+      ]
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn",
+        "piece": "spawn-highland",
+        "at": [
+          2,
+          8
+        ],
+        "facing": "right"
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "monument",
+        "piece": "bank",
+        "at": [
+          3,
+          6
+        ],
+        "style": "pillar-3"
+      }
+    ],
+    "wools": [],
+    "iron": []
+  },
+  "walls": [],
+  "boxes": []
+}

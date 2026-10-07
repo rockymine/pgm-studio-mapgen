@@ -812,6 +812,12 @@ here so `tools/boards-check.py` can tell them from a board nobody wrote up.
 | `paint-plains` | the author's probe board (`specs/archive/rockymine-probe`) painted as plains by one painter in the texturing probe, its monuments centred across their cages |
 | `paint-snowfield` | the author's probe board (`specs/archive/rockymine-probe`) painted as a snowfield by one painter in the texturing probe, its monuments centred across their cages |
 
+### Haiku 5.5 — the haiku55b run
+
+| Folder | Objective | Author | What it is |
+|---|---|---|---|
+| `haiku55b-rowanford` | monument | Haiku 5.5 | a golden Savanna valley split by a sixteen-block void river, bridged by a build zone; one monument a team on the bank, a flat crest for the spawn, three buildings a team and no below-ground place yet |
+
 ## Not yet written up
 
 A board lands in `maps/` and `specs/` the moment it is driven, and its entry above is written by the
