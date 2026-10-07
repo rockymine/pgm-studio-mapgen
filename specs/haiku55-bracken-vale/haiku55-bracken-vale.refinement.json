@@ -1,0 +1,586 @@
+{
+  "authors": [
+    "Haiku 5.5"
+  ],
+  "created": "2026-10-07",
+  "biome": {
+    "kind": "solid",
+    "id": 35
+  },
+  "themes": {
+    "meadow": {
+      "bedrock": {
+        "relative": false,
+        "value": 1
+      },
+      "rimEdges": "void",
+      "surface": {
+        "enabled": true,
+        "depth": 3,
+        "material": {
+          "kind": "layered",
+          "axis": "slope",
+          "stack": {
+            "ending": "repeat",
+            "bands": [
+              {
+                "thickness": 40,
+                "material": {
+                  "kind": "layered",
+                  "axis": "depth",
+                  "stack": {
+                    "ending": "repeat",
+                    "bands": [
+                      {
+                        "thickness": 1,
+                        "material": {
+                          "kind": "solid",
+                          "id": 2
+                        }
+                      },
+                      {
+                        "thickness": 2,
+                        "material": {
+                          "kind": "solid",
+                          "id": 3
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "thickness": 10,
+                "material": {
+                  "kind": "layered",
+                  "axis": "depth",
+                  "stack": {
+                    "ending": "repeat",
+                    "bands": [
+                      {
+                        "thickness": 1,
+                        "material": {
+                          "kind": "solid",
+                          "id": 3,
+                          "data": 1
+                        }
+                      },
+                      {
+                        "thickness": 2,
+                        "material": {
+                          "kind": "solid",
+                          "id": 3
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "thickness": 40,
+                "material": {
+                  "kind": "cell",
+                  "seed": 11,
+                  "cellSize": 3,
+                  "jitter": 1,
+                  "warp": 1,
+                  "palette": [
+                    {
+                      "kind": "solid",
+                      "id": 1
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 1,
+                      "data": 5
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 4
+                    }
+                  ],
+                  "rise": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      "wallEnabled": true,
+      "wallOnTerrainFaces": true,
+      "wall": {
+        "kind": "solid",
+        "id": 1
+      },
+      "fill": {
+        "kind": "solid",
+        "id": 1
+      }
+    },
+    "path": {
+      "bedrock": {
+        "relative": false,
+        "value": 1
+      },
+      "rimEdges": "void",
+      "surface": {
+        "enabled": true,
+        "depth": 1,
+        "material": {
+          "kind": "cell",
+          "seed": 31,
+          "cellSize": 2,
+          "jitter": 0,
+          "warp": 0,
+          "palette": [
+            {
+              "kind": "solid",
+              "id": 3
+            },
+            {
+              "kind": "solid",
+              "id": 3,
+              "data": 1
+            },
+            {
+              "kind": "solid",
+              "id": 5,
+              "data": 1
+            }
+          ],
+          "rise": 0
+        }
+      },
+      "wallEnabled": false,
+      "fill": {
+        "kind": "solid",
+        "id": 1
+      }
+    }
+  },
+  "mapTheme": "meadow",
+  "themeById": {},
+  "relief": {
+    "*": {
+      "base": 10,
+      "reach": 0,
+      "step": 1,
+      "marks": [
+        {
+          "id": "bank-a",
+          "kind": "area",
+          "h": 14,
+          "bevel": 4,
+          "ring": [
+            [
+              -86,
+              -34
+            ],
+            [
+              -34,
+              -34
+            ],
+            [
+              -34,
+              34
+            ],
+            [
+              -86,
+              34
+            ]
+          ]
+        }
+      ],
+      "pushes": [
+        {
+          "id": "wall-north",
+          "ring": [
+            [
+              -108,
+              -36
+            ],
+            [
+              -36,
+              -36
+            ],
+            [
+              -36,
+              -20
+            ],
+            [
+              -108,
+              -20
+            ]
+          ],
+          "amount": 14,
+          "falloff": 12,
+          "crown": 10,
+          "roughness": 1,
+          "seed": 7
+        },
+        {
+          "id": "wall-south",
+          "ring": [
+            [
+              36,
+              20
+            ],
+            [
+              108,
+              20
+            ],
+            [
+              108,
+              36
+            ],
+            [
+              36,
+              36
+            ]
+          ],
+          "amount": 14,
+          "falloff": 12,
+          "crown": 10,
+          "roughness": 1,
+          "seed": 8
+        }
+      ]
+    }
+  },
+  "addShapes": [
+    {
+      "id": "cellar-void",
+      "type": "rectangle",
+      "operation": "subtract",
+      "override": false,
+      "keepClear": false,
+      "floor": 6,
+      "base_height": 5,
+      "min_x": -52,
+      "min_z": 14,
+      "max_x": -40,
+      "max_z": 26,
+      "group": "team"
+    },
+    {
+      "id": "cellar-floor",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": false,
+      "floor": 0,
+      "base_height": 6,
+      "relief_scope": "exclude",
+      "min_x": -52,
+      "min_z": 14,
+      "max_x": -40,
+      "max_z": 26,
+      "material": {
+        "kind": "solid",
+        "id": 1
+      },
+      "group": "team"
+    },
+    {
+      "id": "path-spawn-a",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -104,
+      "min_z": -2,
+      "max_x": -58,
+      "max_z": 2,
+      "base_height": 14,
+      "theme": "path",
+      "group": "team"
+    },
+    {
+      "id": "path-bridge-a",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -56,
+      "min_z": -2,
+      "max_x": -20,
+      "max_z": 2,
+      "base_height": 14,
+      "theme": "path",
+      "group": "team"
+    }
+  ],
+  "addLayers": [
+    {
+      "id": "cellar-roof",
+      "name": "The cellar's roof",
+      "base_y": 0,
+      "below": false,
+      "kind": "made",
+      "part_of": "cellar",
+      "shapes": [
+        {
+          "id": "cellar-roof-plate",
+          "type": "rectangle",
+          "operation": "add",
+          "override": false,
+          "keepClear": false,
+          "floor": 11,
+          "base_height": 3,
+          "min_x": -52,
+          "min_z": 14,
+          "max_x": -40,
+          "max_z": 22,
+          "material": {
+            "kind": "solid",
+            "id": 1
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "cellar-roof",
+          "name": "The cellar's roof",
+          "mirrors": true,
+          "shapeIds": [
+            "cellar-roof-plate"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bridge",
+      "name": "Bridge",
+      "base_y": 14,
+      "below": false,
+      "kind": "made",
+      "part_of": "river-bridge",
+      "shapes": [
+        {
+          "id": "bridge-deck",
+          "type": "rectangle",
+          "operation": "add",
+          "override": false,
+          "keepClear": false,
+          "min_x": -12,
+          "min_z": -3,
+          "max_x": 12,
+          "max_z": 3,
+          "theme": "path"
+        }
+      ],
+      "groups": []
+    }
+  ],
+  "roomStyles": {
+    "spawn": {
+      "library": "oak-and-spruce-timbered-house"
+    }
+  },
+  "dressing": {
+    "styles": {
+      "mill": {
+        "kind": "house",
+        "library": "oak-stilt-house"
+      },
+      "cottage": {
+        "kind": "house",
+        "library": "oak-and-spruce-timbered-house"
+      },
+      "barn": {
+        "kind": "house",
+        "library": "hay-gambrel-barn"
+      },
+      "oak-9": {
+        "kind": "tree",
+        "form": "template",
+        "species": "oak",
+        "height": 9
+      },
+      "birch-8": {
+        "kind": "tree",
+        "form": "template",
+        "species": "birch",
+        "height": 8
+      }
+    },
+    "props": [
+      {
+        "kind": "fluid",
+        "id": "river",
+        "shape": "channel",
+        "form": "canal",
+        "layer": "ground",
+        "points": [
+          [
+            -2,
+            -40
+          ],
+          [
+            5,
+            -28
+          ],
+          [
+            -4,
+            -14
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            -3,
+            16
+          ],
+          [
+            4,
+            28
+          ],
+          [
+            -1,
+            40
+          ]
+        ],
+        "radius": 9,
+        "depth": 4,
+        "level": 9,
+        "shore": 3,
+        "shoreWander": true,
+        "edge": 2,
+        "bank": {
+          "kind": "cell",
+          "seed": 41,
+          "cellSize": 3,
+          "jitter": 1,
+          "warp": 1,
+          "palette": [
+            {
+              "kind": "solid",
+              "id": 13
+            },
+            {
+              "kind": "solid",
+              "id": 12
+            }
+          ],
+          "rise": 0
+        }
+      },
+      {
+        "kind": "house",
+        "id": "mill-a",
+        "layer": "ground",
+        "seed": 5,
+        "front": "posX",
+        "style": "mill",
+        "wings": [
+          {
+            "corners": [
+              [
+                -30,
+                -12
+              ],
+              [
+                -20,
+                -5
+              ]
+            ],
+            "spec": {
+              "ridge": "alongZ"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "house",
+        "id": "cottage-a",
+        "layer": "ground",
+        "seed": 6,
+        "front": "posZ",
+        "style": "cottage",
+        "wings": [
+          {
+            "corners": [
+              [
+                -38,
+                6
+              ],
+              [
+                -28,
+                13
+              ]
+            ],
+            "spec": {
+              "ridge": "alongX"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "house",
+        "id": "barn-a",
+        "layer": "ground",
+        "seed": 7,
+        "front": "posX",
+        "style": "barn",
+        "wings": [
+          {
+            "corners": [
+              [
+                -72,
+                18
+              ],
+              [
+                -60,
+                26
+              ]
+            ],
+            "spec": {
+              "ridge": "alongZ"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "tree",
+        "id": "oak-a1",
+        "seed": 21,
+        "x": -46,
+        "z": 8,
+        "style": "oak-9"
+      },
+      {
+        "kind": "tree",
+        "id": "oak-a2",
+        "seed": 22,
+        "x": -72,
+        "z": -30,
+        "style": "oak-9"
+      },
+      {
+        "kind": "tree",
+        "id": "birch-a1",
+        "seed": 23,
+        "x": -64,
+        "z": 28,
+        "style": "birch-8"
+      },
+      {
+        "kind": "tree",
+        "id": "birch-a2",
+        "seed": 24,
+        "x": -84,
+        "z": 26,
+        "style": "birch-8"
+      },
+      {
+        "kind": "tree",
+        "id": "birch-a3",
+        "seed": 25,
+        "x": -34,
+        "z": 24,
+        "style": "birch-8"
+      }
+    ]
+  }
+}

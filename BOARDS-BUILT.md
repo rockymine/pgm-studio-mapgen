@@ -785,6 +785,14 @@ note ids are listed in `reports/opus55-notes-run.md`, which is the run's account
 |---|---|---|---|
 | `sonnet55-halcyon-cays` | dtm | Sonnet 5.5 | **A holiday resort on a string of cays in a lagoon: a white stepped hotel built out of 15 made layers (an open pillared arcade, a glass lobby, balconies, two lower wings and roof terraces) round a pool courtyard on each shore, thatched stilt bungalows on a palm cay, five rock stacks standing out of the water, and a thatched bar on the sandbar in the middle.** One monument a team on open sand at (8, −53) with the terrace west, a lawn and the Sentinel east and the spit south, 45 blocks of walk against 151 (`GO1` 3.36). Three crossings join the halves with no build zone: a dry sand spit, a one-block reef ford, and a hop between islets. Swampland biome, chosen because it is the only one that tints water, so the water reads teal and the vegetation olive; three themes (sand, jungle lawn, karst), two forked house styles, 37 made layers. 100 × 210. **16 404 walked · 522 scrambled · 894 barrier**, 55.3% dead (open lagoon), 22 props placed with two `DR-PASS` complaints on the bungalows, export gate OPEN. No notes |
 
+### Haiku 5.5 — a destroy valley on the deployed studio (2026-10-07)
+
+**One board, authored from the brief in one run on pgmstudio.de, twenty stores.** The account, with every refusal, the store history and the coordinates, is `reports/haiku55-bracken-vale.md`.
+
+| Board | Mode | Author | What it turned out to be |
+|---|---|---|---|
+| `haiku55-bracken-vale` | dtm | Haiku 5.5 | **An autumn river valley: one monument a team on a hub bench 44 blocks from its own spawn, a single bridged channel between them, a stilt-house watermill on each bank, a roofed cellar a player drops into, and terraced valley sides on both flanks.** `rot_180`, 208 blocks spawn to spawn, savanna grass; the goal ratio is 3.68. Export gate OPEN; 54% of the ground is off every route, which is the open question. |
+
 ## Not boards
 
 Folders under `maps/` or `specs/` that exist for a reading rather than for a game. They are named

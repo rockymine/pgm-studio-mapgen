@@ -1,0 +1,93 @@
+{
+  "plan": 2,
+  "meta": {
+    "name": "Bracken Vale",
+    "notes": "Destroy-the-monument valley. A slow river runs across the middle between two wooded banks.",
+    "authors": [
+      "Haiku 5.5"
+    ]
+  },
+  "globals": {
+    "cell": 4,
+    "symmetry": "rot_180",
+    "maxPlayers": 16,
+    "surface": 10
+  },
+  "pieces": [
+    {
+      "id": "spawn-a",
+      "role": "spawn",
+      "rect": [
+        -27,
+        -3,
+        5,
+        6
+      ]
+    },
+    {
+      "id": "hub-a",
+      "rect": [
+        -22,
+        -10,
+        14,
+        20
+      ]
+    },
+    {
+      "id": "floor-a",
+      "rect": [
+        -8,
+        -10,
+        4,
+        20
+      ]
+    },
+    {
+      "id": "mid",
+      "rect": [
+        -4,
+        -10,
+        8,
+        20
+      ]
+    }
+  ],
+  "zones": [],
+  "walls": [],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-a-1",
+        "piece": "spawn-a",
+        "at": [
+          4,
+          12
+        ],
+        "facing": "right",
+        "footprint": [
+          0,
+          2,
+          20,
+          20
+        ]
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "monument-a",
+        "piece": "hub-a",
+        "at": [
+          31,
+          40
+        ],
+        "style": "cube-4",
+        "materials": "ender stone",
+        "float": 4,
+        "name": "Bracken Monument"
+      }
+    ],
+    "wools": [],
+    "iron": [],
+    "cores": []
+  }
+}

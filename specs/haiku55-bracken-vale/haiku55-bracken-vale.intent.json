@@ -1,0 +1,166 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-a-1",
+    "image": 0
+   },
+   "reflected": false,
+   "team": "red",
+   "point": {
+    "x": -104,
+    "y": 10,
+    "z": 0
+   },
+   "protection": [
+    {
+     "minX": -108,
+     "minZ": -12,
+     "maxX": -88,
+     "maxZ": 12
+    }
+   ],
+   "yaw": 270,
+   "doors": [
+    "+x"
+   ],
+   "footprint": {
+    "minX": -108,
+    "minZ": -10,
+    "maxX": -88,
+    "maxZ": 10
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-a-1",
+    "image": 1
+   },
+   "reflected": false,
+   "team": "blue",
+   "point": {
+    "x": 104,
+    "y": 10,
+    "z": 0
+   },
+   "protection": [
+    {
+     "minX": 88,
+     "minZ": -12,
+     "maxX": 108,
+     "maxZ": 12
+    }
+   ],
+   "yaw": 90,
+   "doors": [
+    "-x"
+   ],
+   "footprint": {
+    "minX": 88,
+    "minZ": -10,
+    "maxX": 108,
+    "maxZ": 10
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 25,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": []
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument-a",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Bracken Monument",
+   "style": "cube-4",
+   "materials": "ender stone",
+   "repairable": false,
+   "anchor": {
+    "x": -57,
+    "y": 10,
+    "z": 0
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument-a",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Bracken Monument",
+   "style": "cube-4",
+   "materials": "ender stone",
+   "repairable": false,
+   "anchor": {
+    "x": 55,
+    "y": 10,
+    "z": -2
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Bracken Vale",
+  "created": "2026-10-07",
+  "authors": [
+   {
+    "name": "Haiku 5.5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}
