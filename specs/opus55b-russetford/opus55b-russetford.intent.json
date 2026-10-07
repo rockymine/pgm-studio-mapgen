@@ -24,15 +24,15 @@
    "team": "red",
    "point": {
     "x": -32,
-    "y": 44,
-    "z": -80
+    "y": 40,
+    "z": -76
    },
    "protection": [
     {
      "minX": -40,
-     "minZ": -88,
+     "minZ": -84,
      "maxX": -24,
-     "maxZ": -72
+     "maxZ": -68
     }
    ],
    "yaw": 0,
@@ -54,15 +54,15 @@
    "team": "blue",
    "point": {
     "x": 32,
-    "y": 44,
-    "z": 80
+    "y": 40,
+    "z": 76
    },
    "protection": [
     {
      "minX": 24,
-     "minZ": 72,
+     "minZ": 68,
      "maxX": 40,
-     "maxZ": 88
+     "maxZ": 84
     }
    ],
    "yaw": 180,
@@ -84,14 +84,7 @@
  },
  "build": {
   "maxHeight": null,
-  "areas": [
-   {
-    "minX": -64,
-    "minZ": -12,
-    "maxX": 64,
-    "maxZ": 12
-   }
-  ],
+  "areas": [],
   "holes": []
  },
  "waterLanes": null,
@@ -110,9 +103,9 @@
    "materials": "obsidian",
    "repairable": false,
    "anchor": {
-    "x": 7,
+    "x": 4,
     "y": 24,
-    "z": -61
+    "z": -56
    },
    "float": 4,
    "box": null
@@ -130,9 +123,9 @@
    "materials": "obsidian",
    "repairable": false,
    "anchor": {
-    "x": -8,
+    "x": -5,
     "y": 24,
-    "z": 60
+    "z": 55
    },
    "float": 4,
    "box": null
@@ -159,8 +152,7 @@
  },
  "symmetry": null,
  "islandTeams": {
-  "1": "red",
-  "2": "blue"
+  "1": "red"
  },
  "structures": null
 }

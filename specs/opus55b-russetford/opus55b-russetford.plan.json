@@ -14,39 +14,39 @@
  },
  "pieces": [
   {
-   "id": "brow",
+   "id": "ridge",
    "rect": [
     -16,
-    -25,
+    -24,
     32,
     3
    ]
   },
   {
-   "id": "westbrow",
+   "id": "westfarm",
    "rect": [
     -16,
-    -22,
+    -21,
     6,
     4
    ]
   },
   {
-   "id": "eastbrow",
+   "id": "eastfarm",
    "rect": [
     -6,
-    -22,
+    -21,
     22,
     4
    ]
   },
   {
-   "id": "bank",
+   "id": "valley",
    "rect": [
     -16,
-    -18,
+    -17,
     32,
-    16
+    17
    ]
   },
   {
@@ -54,25 +54,14 @@
    "role": "spawn",
    "rect": [
     -10,
-    -22,
+    -21,
     4,
     4
    ],
-   "surface": 44
+   "surface": 40
   }
  ],
- "zones": [
-  {
-   "id": "ford",
-   "rect": [
-    -16,
-    -3,
-    32,
-    6
-   ],
-   "holes": []
-  }
- ],
+ "zones": [],
  "placements": {
   "spawns": [
    {
@@ -90,8 +79,8 @@
     "id": "monument",
     "piece": "",
     "at": [
-     7,
-     -61
+     4,
+     -56
     ],
     "style": "pillar-3",
     "float": 4

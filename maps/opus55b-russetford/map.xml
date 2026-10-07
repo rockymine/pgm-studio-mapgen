@@ -72,36 +72,15 @@
     <filters>
         <team id="only-blue">blue-team</team>
         <team id="only-red">red-team</team>
-        <any id="block-break-void-filter">
-            <all>
-                <any>
-                    <material>log</material>
-                    <material>log 2</material>
-                    <material>leaves</material>
-                    <material>leaves 2</material>
-                    <material>long grass</material>
-                    <material>yellow flower</material>
-                    <material>red rose</material>
-                    <material>double plant</material>
-                    <material>water lily</material>
-                    <material>vine</material>
-                </any>
-                <void/>
-            </all>
-            <filter id="block-place-void-filter"/>
-        </any>
-        <not id="block-place-void-filter">
-            <void/>
-        </not>
     </filters>
     <regions>
-        <point id="blue-spawn-point">32,44,80</point>
-        <point id="red-spawn-point">-32,44,-80</point>
+        <point id="blue-spawn-point">32,40,76</point>
+        <point id="red-spawn-point">-32,40,-76</point>
         <point id="observer-spawn">0,40,0</point>
-        <rectangle id="blue-spawn" min="24,72" max="40,88"/>
-        <rectangle id="red-spawn" min="-40,-88" max="-24,-72"/>
-        <cuboid id="red-monument-region" min="7,37,-61" max="8,40,-60"/>
-        <cuboid id="blue-monument-region" min="-8,37,60" max="-7,40,61"/>
+        <rectangle id="blue-spawn" min="24,68" max="40,84"/>
+        <rectangle id="red-spawn" min="-40,-84" max="-24,-68"/>
+        <cuboid id="red-monument-region" min="4,36,-56" max="5,39,-55"/>
+        <cuboid id="blue-monument-region" min="-5,36,55" max="-4,39,56"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
@@ -109,14 +88,10 @@
         <negative id="not-spawns">
             <region id="spawns"/>
         </negative>
-        <negative id="not-build-area">
-            <rectangle id="build-area-1" min="-64,-12" max="64,12"/>
-        </negative>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
         <apply block="never" region="spawns" message="You may not block/break spawns!"/>
         <apply kit="reset-resistance-kit" region="not-spawns"/>
-        <apply block-place="block-place-void-filter" block-break="block-break-void-filter" region="not-build-area" message="You may not edit the void!"/>
     </regions>
     <block-drops>
         <rule>

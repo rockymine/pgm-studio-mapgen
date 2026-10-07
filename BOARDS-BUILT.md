@@ -787,11 +787,11 @@ note ids are listed in `reports/opus55-notes-run.md`, which is the run's account
 
 ### Opus 5.5 — an autumn river valley on the deployed studio, one of three models to one brief (2026-10-07)
 
-**One board to a brief given to three models at once, for the author to compare boards, reports and cost.** The account is `reports/opus55b-russetford.md`.
+**One board to a brief given to three models at once, for the author to compare boards, reports and cost, rebuilt once after the author's review.** The account is `reports/opus55b-russetford.md`.
 
 | Board | Mode | Author | What it turned out to be |
 |---|---|---|---|
-| `opus55b-russetford` | dtm | Opus 5.5 | **An autumn valley under a Mesa tint: each side falls from a ridge where the white-clay spawn house stands under a crag, past a shelf holding the obsidian monument 42° off the spawn line, to a sand strand with a mill hamlet and a slatted waterwheel in a pool bay.** A timbered adit runs from the strand under the valley side to a chamber eleven blocks from the monument. The river's water runs along each bank and its middle is sixteen blocks of void under a build zone, so the crossing is a bridge. One relief, six marks, two pushes; no flight and no polyline. 16 a side, 1.8% steep, worst route step 0. |
+| `opus55b-russetford` | dtm | Opus 5.5 | **An autumn valley with a meandering river through its middle, rebuilt from a zone plan after the author's review: each side has a farm (the spawn) under a wooded ridge with a hay barn, an orchard down to a cut bank with a cave at water level, the monument on the village green, a street of cottages and a well, a stone mill on a leat with a slatted wheel, and an oak hanger with a ruined tower.** The S-shaped river gives each team one cut cliff and one gravel beach; a stone bridge is the one dry crossing in the middle. Hedged lanes, dry-stone walls, fenced gardens with pumpkins, hay and a woodpile; a noise biome of Plains, Savanna and Mesa for green, gold and russet. The first build (two canals over a void, one brown slope) is described in the report. 16 a side, 4.3% steep, worst route step 2. |
 
 ## Not boards
 
