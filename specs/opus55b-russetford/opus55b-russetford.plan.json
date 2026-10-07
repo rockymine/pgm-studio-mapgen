@@ -1,0 +1,101 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Russetford",
+  "authors": [
+   "Opus 5.5"
+  ]
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 24
+ },
+ "pieces": [
+  {
+   "id": "brow",
+   "rect": [
+    -16,
+    -25,
+    32,
+    3
+   ]
+  },
+  {
+   "id": "westbrow",
+   "rect": [
+    -16,
+    -22,
+    6,
+    4
+   ]
+  },
+  {
+   "id": "eastbrow",
+   "rect": [
+    -6,
+    -22,
+    22,
+    4
+   ]
+  },
+  {
+   "id": "bank",
+   "rect": [
+    -16,
+    -18,
+    32,
+    16
+   ]
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    -10,
+    -22,
+    4,
+    4
+   ],
+   "surface": 44
+  }
+ ],
+ "zones": [
+  {
+   "id": "ford",
+   "rect": [
+    -16,
+    -3,
+    32,
+    6
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     8,
+     8
+    ],
+    "facing": "back"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "monument",
+    "piece": "",
+    "at": [
+     7,
+     -61
+    ],
+    "style": "pillar-3",
+    "float": 4
+   }
+  ]
+ }
+}
