@@ -139,6 +139,9 @@ def render(ids, dat, x0, z0, out, scale=2, corner="se", box=None, ymin=0, ymax=N
     X, Y, Z = np.nonzero(vis)
     I = ids[X, Y, Z]; D = dat[X, Y, Z]
     col = table[I, D & 15]
+    # texture: a fixed per-block brightness jitter, so a wall of one block reads as blocks
+    hsh = ((X * 73856093) ^ (Y * 19349663) ^ (Z * 83492791)) & 1023
+    col = col * (0.93 + 0.14 * (hsh / 1023.0))[:, None]
     s = scale
     u = (X - Z) * s + (nz - 1) * s
     v = (X + Z) * s // 2 - Y * s + ny * s
@@ -160,6 +163,8 @@ def render(ids, dat, x0, z0, out, scale=2, corner="se", box=None, ymin=0, ymax=N
                 shade = 0.78
             else:
                 shade = 0.62
+            if s >= 4 and (dx in (0, 2 * s - 1) or dy in (0, 2 * s - 1) or (dy == s and True)):
+                shade *= 0.82
             py = v + dy; pxx = u + dx
             ok = (py >= 0) & (py < Hh) & (pxx >= 0) & (pxx < W)
             keys.append(py[ok] * W + pxx[ok])
@@ -186,3 +191,33 @@ if __name__ == "__main__":
     a = ap.parse_args()
     x0, z0, ids, dat = load(a.build)
     render(ids, dat, x0, z0, a.out, a.scale, a.corner, a.box, a.ymin, a.ymax, a.xray)
+
+
+def elevation(ids, dat, x0, z0, out, box, ymin, ymax, look="north", scale=8):
+    """An orthographic elevation of a box: the first block met looking `look` (north/south/east/west),
+    shaded darker the further back it stands, so a facade, an arch or a cave mouth reads straight on."""
+    bx0, bz0, bx1, bz1 = box
+    sub = ids[bx0 - x0:bx1 - x0 + 1, ymin:ymax + 1, bz0 - z0:bz1 - z0 + 1]
+    sd = dat[bx0 - x0:bx1 - x0 + 1, ymin:ymax + 1, bz0 - z0:bz1 - z0 + 1]
+    if look == "north":      # viewer at +z looking toward -z: columns are x, depth runs z descending
+        sub, sd = sub[:, :, ::-1], sd[:, :, ::-1]
+    elif look == "south":
+        sub, sd = sub[::-1, :, :], sd[::-1, :, :]
+    elif look == "west":     # viewer at +x looking -x: columns are z (reversed), depth x descending
+        sub, sd = np.transpose(sub[::-1, :, ::-1], (2, 1, 0)), np.transpose(sd[::-1, :, ::-1], (2, 1, 0))
+    elif look == "east":
+        sub, sd = np.transpose(sub, (2, 1, 0)), np.transpose(sd, (2, 1, 0))
+    table = colour_table()
+    nu, ny, nd = sub.shape
+    img = np.zeros((ny, nu, 3), np.float32); img[:] = (205, 220, 235)
+    for u in range(nu):
+        for y in range(ny):
+            col = sub[u, y, :]
+            nz = np.nonzero(col)[0]
+            if len(nz) == 0:
+                continue
+            k = nz[0]
+            c = table[col[k], sd[u, y, k] & 15] * (1.0 - min(0.6, k * 0.04))
+            img[ny - 1 - y, u] = c
+    im = Image.fromarray(np.clip(img, 0, 255).astype(np.uint8)).resize((nu * scale, ny * scale), Image.NEAREST)
+    im.save(out)

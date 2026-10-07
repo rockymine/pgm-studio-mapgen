@@ -231,12 +231,24 @@ def inn_sign(w, L):
 def village(w, L):
     recs = []
     V = lambda *a, **k: recs.append(house(w, L, *a, style=k.pop("style", "village"), **k))
-    V(-97, 39, -92, 44, storeys=1, door="e", kind="cottage")
-    V(-98, 49, -92, 54, storeys=2, door="e", kind="house")
-    V(-97, 61, -92, 66, storeys=1, door="e", kind="cottage")
-    V(-89, 70, -83, 75, storeys=1, door="n", kind="cottage")
-    V(-79, 68, -74, 73, storeys=1, door="n", kind="cottage")
-    V(-80, 50, -75, 55, storeys=1, door="w", kind="engine")
+    V(-98, 38, -92, 44, storeys=1, door="e", kind="cottage")
+    V(-99, 49, -92, 55, storeys=2, door="e", kind="house")
+    V(-97, 61, -91, 68, storeys=1, door="e", kind="cottage", along_x=False)
+    V(-90, 71, -82, 76, storeys=2, door="n", kind="house")
+    V(-79, 69, -74, 75, storeys=1, door="n", kind="cottage", along_x=False)
+    eng = house(w, L, -80, 49, -75, 55, storeys=1, style="stone", door="w", kind="engine", chimney=False)
+    recs.append(eng)
+    # the engine house's stack: the tallest made thing in Ironhollow after the headframe
+    f = eng["floor"]
+    for y in range(f + 1, f + 19):
+        for dx in (0, 1):
+            for dz in (0, 1):
+                w.set(-74 + dx, y, 50 + dz, B.BRICK)
+    for dx in (-1, 0, 1, 2):
+        for dz in (-1, 0, 1, 2):
+            if dx in (-1, 2) or dz in (-1, 2):
+                w.set(-74 + dx, f + 18, 50 + dz, B.BRICK)
+    w.set(-74, f + 18, 50, B.AIR); w.set(-73, f + 18, 51, B.AIR)
     smith = house(w, L, -78, 59, -72, 64, storeys=1, style="village", door="w", kind="smithy")
     # the forge is open on its lane side: take out the wall between the posts
     for z in range(60, 64):
@@ -281,7 +293,7 @@ def headframe(w, L):
         for dz in (-1, 0, 1):
             w.set(sx + dx, g, sz + dz, B.AIR)
     w.set(sx, g, sz + 1, B.LADDER, 2)
-    top = g + 14
+    top = g + 17
     for dx, dz in ((-3, -3), (-3, 3), (3, -3), (3, 3)):
         for y in range(g + 1, top + 1):
             # legs lean in: step in by one every five blocks
@@ -476,70 +488,106 @@ def footbridge(w, L):
 
 
 def stone_bridge(w, L):
-    """Three arches of stone carrying the road from the bluff to the field bank."""
+    """A hump-backed stone bridge: one arch over the river, its deck climbing from the field bank to a crown
+    over the water and easing onto the town bluff, stepped with stairs so it walks rather than jumps."""
     x0, x1 = -38, -34
-    zN, zS = -9, 13
-    yN, yS = 51, 47
-    piers = (-3, 3)
+    zN, zS = -10, 14
+    zc, half = 3, 6.5
+    def deck_y(z):
+        if z <= 1:
+            return int(round(51 + (z - zN) / (1 - zN)))
+        return int(round(52 - 5 * (z - 1) / (zS - 1)))
     for z in range(zN, zS + 1):
-        t = (z - zN) / (zS - zN)
-        deck = int(round(yN + (yS - yN) * t))
-        for x in range(x0, x1 + 1):
-            # the deck and the parapets
-            w.set(x, deck, z, *FLOOR[(x + z) % 4])
-            for yy in range(deck + 1, deck + 4):
-                w.set(x, yy, z, B.AIR)
-            if x in (x0, x1):
-                w.set(x, deck + 1, z, B.STONEBRICK, 0)
-                if z % 3 == 0:
-                    w.set(x, deck + 2, z, B.SLAB, 5)
-            # the arch below: solid down to the arch's soffit, open under it
-            spans = [(zN + 2, piers[0] - 1), (piers[0] + 1, piers[1] - 1), (piers[1] + 1, zS - 2)]
-            soffit = -1
-            for a, b in spans:
-                if a <= z <= b:
-                    c = (a + b) / 2.0
-                    half = (b - a) / 2.0 + 0.5
-                    soffit = int(round(43 + 3.5 * np.sqrt(max(0, 1 - ((z - c) / half) ** 2))))
-            bottom = soffit + 1 if soffit > 0 else 38
-            for yy in range(bottom, deck):
-                w.set(x, yy, z, B.STONEBRICK, 0 if (yy + z) % 7 else 2)
-            if soffit > 0:
-                for yy in range(38, soffit + 1):
-                    if w.id(x, yy, z) in (B.STONE, B.DIRT, B.GRASS, B.GRAVEL, B.SAND, B.COBBLE, B.CLAY):
-                        w.set(x, yy, z, B.AIR if yy > 45 else w.id(x, yy, z))
+        dy = deck_y(z)
+        prev, nxt = deck_y(z - 1), deck_y(z + 1)
+        t = (z - zc) / half
+        soffit = int(round(45 + 5.2 * np.sqrt(1 - t * t))) if abs(t) < 1 else None
         for x in range(x0, x1 + 1):
             ix, iz = x - L.x0, z - L.z0
-            L.H[ix, iz] = max(L.H[ix, iz], deck)
-    # piers' cutwaters
-    for pz in piers:
-        for y in range(40, 47):
-            w.set(x0 - 1, y, pz, B.STONEBRICK, 0); w.set(x1 + 1, y, pz, B.STONEBRICK, 0)
-        w.set(x0 - 1, 47, pz, B.STONEBRICK_STAIRS, 0); w.set(x1 + 1, 47, pz, B.STONEBRICK_STAIRS, 1)
+            ground = int(L.H[ix, iz])
+            lo = (soffit + 1) if soffit is not None else min(ground, dy) - 1
+            for y in range(lo, dy):
+                ring = soffit is not None and y == soffit + 1
+                keystone = ring and abs(z - zc) < 1
+                w.set(x, y, z, B.STONEBRICK, 3 if keystone else (0 if (y * 3 + z) % 9 else 2))
+            if soffit is not None:
+                for y in range(46, soffit + 1):
+                    w.set(x, y, z, B.AIR)
+            # the deck: a stair where it climbs toward the crown, a built floor where it is level
+            if nxt > dy and z < 1:
+                w.set(x, dy + 1, z, B.STONEBRICK_STAIRS, 2)
+                w.set(x, dy, z, B.STONEBRICK, 0)
+            elif prev > dy and z > 1:
+                w.set(x, dy + 1, z, B.STONEBRICK_STAIRS, 3)
+                w.set(x, dy, z, B.STONEBRICK, 0)
+            else:
+                w.set(x, dy, z, *FLOOR[(x + z) % 4])
+            for y in range(dy + 2 if (nxt > dy and z < 1) or (prev > dy and z > 1) else dy + 1, dy + 5):
+                if x not in (x0, x1):
+                    w.set(x, y, z, B.AIR)
+            if x in (x0, x1):
+                top = dy + 1 if not ((nxt > dy and z < 1) or (prev > dy and z > 1)) else dy + 2
+                w.set(x, top, z, B.STONEBRICK, 0)
+                w.set(x, top + 1, z, B.SLAB, 5)
+                for y in range(top + 2, top + 4):
+                    w.set(x, y, z, B.AIR)
+            L.H[ix, iz] = max(L.H[ix, iz], dy + (1 if (nxt > dy and z < 1) or (prev > dy and z > 1) else 0))
+    # cutwaters at the arch's feet and lamps at its ends
+    for pz in (zc - 7, zc + 7):
+        for x in (x0 - 1, x1 + 1):
+            g = int(L.H[x - L.x0, pz - L.z0])
+            for y in range(min(g, 44), 49):
+                w.set(x, y, pz, B.STONEBRICK, 0)
+            w.set(x, 49, pz, B.SLAB, 5)
+    for z, x in ((zN, x0), (zN, x1), (zS, x0), (zS, x1)):
+        y = deck_y(z) + 2
+        w.set(x, y, z, B.STONEBRICK, 0); w.set(x, y + 1, z, B.FENCE); w.set(x, y + 2, z, B.GLOWSTONE)
 
 
 def old_bridge(w, L):
-    """The Old Bridge's stub: Main Street carried out over the rift on one arch, broken off mid-span."""
-    zc = -44
-    deck = 51
-    for x in range(-14, -4):
-        out = x - (-12)
-        for z in range(zc - 2, zc + 3):
-            broken = x >= -6 and (RNG.random() < 0.35 * (x + 7))
-            if broken:
+    """The Old Bridge's stub: Main Street carried out over the rift on a half-arch springing from the rift
+    face, broken off where the middle span fell. The deck runs out six blocks; the arch ring curls up under
+    it from ten blocks down the face; the break is ragged, its parapet gone first."""
+    zc, deck = -44, 51
+    face = -12
+    end = -5
+    rng = np.random.default_rng(17)
+    for x in range(face - 3, end + 1):
+        out = x - face                        # 0 at the face, 7 at the end
+        for z in range(zc - 3, zc + 4):
+            edge = abs(z - zc) == 3
+            k = (x - face) / (end - face)
+            # ragged break: the last blocks survive by chance, less near the parapet
+            if x >= end - 1 and rng.random() < (0.45 if x == end else 0.2) + (0.3 if edge else 0):
                 continue
-            w.set(x, deck, z, *FLOOR[(x + z) % 4])
-            if z in (zc - 2, zc + 2):
-                if not (x >= -7 and RNG.random() < 0.5):
-                    w.set(x, deck + 1, z, B.STONEBRICK, 0 if RNG.random() < 0.8 else 2)
-            # the arch springs from the rift face and curls under the deck
-            depth = int(round(10 - max(0, out) * 1.3))
-            for y in range(deck - max(1, depth), deck):
-                w.set(x, y, z, B.STONEBRICK, 0 if RNG.random() < 0.85 else 2)
-        # rubble hanging from the break
-    for z in range(zc - 2, zc + 3):
-        if RNG.random() < 0.6:
-            w.set(-5, deck - 1, z, B.COBBLE_WALL)
+            soffit = int(round(deck - 2 - 9 * (1 - k) ** 2)) if x >= face else deck - 12
+            ring = soffit
+            for y in range(soffit, deck):
+                if x < face and w.id(x, y, z) not in (B.AIR,):
+                    continue
+                w.set(x, y, z, B.STONEBRICK, 0 if (y + z + x) % 5 else 2)
+            if x >= face:
+                w.set(x, ring, z, B.STONEBRICK, 3 if (z == zc and x == face + 3) else 0)
+            if edge:
+                # the parapet, broken first at the end
+                if not (x >= end - 2 and rng.random() < 0.6):
+                    w.set(x, deck, z, B.STONEBRICK, 0)
+                    w.set(x, deck + 1, z, B.SLAB, 5)
+            else:
+                w.set(x, deck, z, *FLOOR[(x * 7 + z * 3) % 4])
+                for y in range(deck + 1, deck + 4):
+                    if x >= face - 1:
+                        w.set(x, y, z, B.AIR)
+    # what hangs from the break: iron ties and a fallen voussoir caught on them
+    for z in (zc - 1, zc + 1):
+        for y in range(deck - 4, deck):
+            w.set(end + 1, y, z, B.IRON_BARS)
+    w.set(end + 1, deck - 5, zc - 1, B.STONEBRICK, 2)
+    # lamps at the bridge head, on the land
+    for z in (zc - 3, zc + 3):
+        g = H(L, face - 2, z)
+        w.set(face - 2, deck + 1, z, B.STONEBRICK, 0)
+        w.set(face - 2, deck + 2, z, B.FENCE); w.set(face - 2, deck + 3, z, B.GLOWSTONE)
 
 
 def build(w, L):

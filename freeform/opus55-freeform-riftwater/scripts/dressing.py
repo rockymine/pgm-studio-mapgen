@@ -450,7 +450,7 @@ def build(w, L):
     # birches along the field bank between the bridge and the falls, oaks shading the village well and green
     for (x, z, kind, i) in ((-22, -24, "tiny-oak", 2), (-36, -84, "oak", 6), (-70, 4, "birch", 3),
                             (-54, 2, "tiny-oak", 5), (-28, 20, "birch", 1), (-20, 24, "birch", 4),
-                            (-44, 18, "birch", 7), (-91, 47, "tiny-oak", 0), (-82, 64, "oak", 8),
+                            (-44, 18, "birch", 7), (-91, 47, "tiny-oak", 0), (-68, 78, "oak", 8),
                             (-90, 80, "tiny-oak", 3), (-70, -24, "tiny-oak", 6), (-80, -36, "oak", 7),
                             (-82, 30, "birch", 2), (-62, -84, "birch", 5)):
         t = TREES[kind][i % len(TREES[kind])]
