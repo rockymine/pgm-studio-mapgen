@@ -76,6 +76,15 @@ happened to be divided.
 one, and the instrument that cuts ground away is downstream, so a board that needs holes is arranged for them
 here or not at all.
 
+**Plan the places once the land's outline stands, and before the relief.** Draw each place on the outline:
+where it is, what it is, why a player goes there or what it frames, and how a player gets there. A place nobody
+reaches wants a path, and a path is itself part of the plan. `WHAT-A-BOARD-IS-MADE-OF.md`, *A board is a small
+world*, is what a place is.
+
+**Read the places from above and revise them before anything is built.** The top-down view is where an empty
+lake, a flat corner nobody enters or a village with no way in shows. Ask of each area what is there and why;
+cut away what has no answer, and move its land toward the front.
+
 **Read the plan as a grid before posting it.** Most of what goes wrong with a plan is a relation between two
 rectangles — a landform wider than the window that reaches it, a wall on the only throat, a room whose door
 opens onto its own apron — and no render of a built world can show that, because by then they are terrain.
