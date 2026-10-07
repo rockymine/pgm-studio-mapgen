@@ -22,7 +22,7 @@ below the village.
 ```
  z    x -64 ............ -32 ............. 0 .............. 32 ............. 64
  -96  [ ridge wood ~~~~~~~~~~~~~~~~~~~~ ][ saddle pasture ][ the hanger ~~~~~~~ ]
- -84  [ wood ][ barn ][ SPAWN farm ]   [ walls, sheep ]   [ ~~ oak wood ~~ (T) ]
+ -84  [ wood ][ SPAWN tower+farm ]   [ walls, sheep ]   [ ~~ oak wood ~~ (T) ]
  -70  [ wheat | roots ][ hay yard ]       \  lane          [ ~~ wood edge ~~~~  ]
  -56  [ fields ]        \                 [ GREEN  (M) ]---[ village street --- ]
  -44  [ orchard terraces . . . . ]          |   chamber     [ cottages ][ well ]  ]
@@ -34,11 +34,11 @@ below the village.
 | Zone | Where (red) | What it is for |
 |---|---|---|
 | river | an S through the origin, 12 wide, water at y20 | the frontline. It is swum or bridged anywhere, and crossed dry only at the bridge |
-| bridge | `x −2..2, z −11..11`, a stone arch | the one made crossing, on the contested middle. It is a structure, not scenery |
+| bridge | `x −3..3, z −12..12`, a humpback stone arch | the one made crossing, on the contested middle. It is a structure, not scenery |
 | cut bank | `x −50..−8`, the river's outer bend | a cliff the attacker must climb or bridge up, with a cave mouth at water level |
 | cave | from the cliff at `(−28, −20)` under the orchard to a chamber under the green's west lip | the approach from below: swum to from the far beach, and dug up from near the monument |
 | orchard | `x −62..−30, z −52..−24`, a quincunx on the slope | the west approach from the cliff top to the farm and the green. Rows of fruit trees give cover in lines, not in a mass |
-| farm | spawn farmhouse on a knoll at `(−32, −76)`, the hay barn and hay yard east | the spawn seated in a working place: land behind it, the ridge above, buildings beside |
+| farm | the spawn tower on a knoll at `(−32, −76)`, the farmhouse built onto it, the hay yard east | the spawn seated in a working place: land behind it, the ridge above, buildings beside |
 | fields | `x −62..−42, z −68..−54`, wheat and roots, hedged | what the farm is for, beside the defenders' walk to the orchard |
 | ridge wood | the back strip, `z −96..−84`, rising to y48 | the frame behind the spawn, wooded and rocky, with a woodcutter's clearing in it |
 | green | a knoll at `(4, −56)` | the monument in the open, where the lanes meet and a defender can see it from the spawn |

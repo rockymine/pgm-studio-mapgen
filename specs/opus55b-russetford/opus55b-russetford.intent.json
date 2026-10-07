@@ -40,7 +40,12 @@
     "+z",
     "-x"
    ],
-   "footprint": null,
+   "footprint": {
+    "minX": -37,
+    "minZ": -80,
+    "maxX": -28,
+    "maxZ": -71
+   },
    "iron": []
   },
   {
@@ -70,7 +75,12 @@
     "-z",
     "+x"
    ],
-   "footprint": null,
+   "footprint": {
+    "minX": 28,
+    "minZ": 71,
+    "maxX": 37,
+    "maxZ": 80
+   },
    "iron": []
   }
  ],

@@ -4,7 +4,7 @@
 > a mill hamlet and a wooded hill with a ruin on each side, one monument a team on the village green.
 
 **In one sentence:** the Russet winds through the bottom of an autumn valley, and each team holds one side.
-Its spawn is a farmhouse under a wooded ridge, with a hay barn across the yard. Below that an orchard
+Its spawn is a three-storey tower under a wooded ridge, with the farmhouse built onto it. Below that an orchard
 runs down to a cut bank with a cave in it, and the monument stands on the village green where the lanes
 meet. The street runs east past cottages and a well to a mill on a leat, and above the village a hanger
 of oaks climbs to a ruined tower.
@@ -32,7 +32,7 @@ by zone, and the board was looked at from above and from a player's eye after ea
 | a slow river between the sides | one `fluid` channel, an S through the origin, radius 6, `level` 20 | water y19–20; the S is its own image under `rot_180`, so each bank has one cut cliff and one gravel beach |
 | a watermill on each bank | the mill (`spruce-roofed-stone-longhouse`) on a leat, a slatted wheel in the leat, an axle into the wall | wheel at `(36, −21)` over water y19–20 |
 | real relief | ridge 48, farm 40, green 32, orchard 28, village 24, flats 21, hanger summit 42 | `low 21, high 50, relief 29`; 4.3% of steps further than a player walks |
-| three buildings a team | farmhouse (spawn), hay barn, mill, miller's house, three cottages, a ruined tower | all standing; `DR-PASS` complaints only, on the village alleys |
+| three buildings a team | spawn tower and farmhouse, mill, miller's house, three cottages, a market stand, a ruined castle of two towers | all standing; `DR-PASS` complaints only, on the village alleys |
 | one place below ground | a cave from the cut bank at water level, under the orchard, to a chamber under the green's west lip | `walk (−28,−19,21) → (−7,−55,22)` walked end to end, worst step 0 |
 | an authored plan | five pieces, no zone: the valley crosses the axis | one island |
 
@@ -59,14 +59,14 @@ on it.
 
 ## What the ground is made of
 
-**Four themes: the valley, the hanger's leaf floor, the gravel bars and the field.** `valley` is grass to
+**Five themes: the valley, the hanger's leaf floor, the gravel bars, the field and the paved place round the monument.** `valley` is grass to
 30°, dirt and coarse dirt half and half to 42°, then stone and andesite with cobblestone. `wood` is podzol
 with grass and coarse dirt inset, carried to 42° because the hanger's oaks stand on its slope. `beach` is
 gravel with sand and andesite patches on the two point bars, and `field` is farmland the flora sows with
 wheat and potatoes.
 
 **The built family is three house types, none of them timber-framed.** The cottages are white clay under
-spruce, two are stone under brick, the mill is a stone longhouse and the barn has a hay gambrel roof. The
+spruce, two are stone under brick, the mill is a stone longhouse, and the spawn is a tower on a stone ground floor. The
 accent is dark oak: the wheel, the axle, the cave's portal timbers. The bridge, the tower and the walls are
 stone.
 
@@ -86,7 +86,7 @@ farm yard has hay bales. The woodcutter's clearing on the hanger has a log pile 
 | a summit mark instead of a push | the hanger | a hill graded to the village; the push it replaced gave 55–60° at its foot |
 | override add with a `floor` over a `below` layer | the cave | three courses of air under relief-solved ground |
 | `polyline` shapes, `height_mode: drape` | hedges, walls, fences | field boundaries laid over the slope at a constant height |
-| made layers, three of them seated | bridge, wheel, footbridges, well, tower, hay, logs, pumpkins, cave mouth | the made things a valley is lived in with |
+| made layers, most of them seated | bridge, wheel, footbridges, well, castle, market stand, hay, logs, pumpkins, cave mouth | the made things a valley is lived in with |
 | a noise `BiomeField` | the whole board | autumn colour in regions rather than one brown |
 
 ## What went wrong in the rebuild
@@ -101,6 +101,29 @@ met solid ground. The polygon now runs into the water's edge.
 **The hedges were first stated in decayable leaves.** They would have vanished in game, though every read
 showed them. `18:4` is the leaf that never decays.
 
+## The third pass, after the author's second review
+
+**The author asked for twelve changes and all twelve are in.** Each is listed with how it was made.
+
+| Asked for | What was built |
+|---|---|
+| more walls round the castle, another tower, rocks on the hillside | a second `drum_tower` at `(38, −94)`, four runs of curtain wall laid over the hill as draped polylines with gaps, and outcrop boulders on the hanger |
+| a market stand with a striped wool roof | fence posts, a spruce counter with a pumpkin and a hay bale on it, and a red-and-white wool awning, between the first two cottages |
+| the spawn inside a tower with the house attached | the spawn room is the white-clay style forked to three storeys on a stone-brick ground floor under a hip roof, on a 9 × 9 footprint; the farmhouse is a house prop built onto its east side |
+| the hay-roofed barn did not fit | removed |
+| boulders around the terrain | ten boulders in two forms: on the hanger, in the ridge wood, at the cut bank's top and on the flats |
+| footbridges that do not cross water | the lanes were strokes, which repaint what they cross, water included; they now stop at the leat's banks, and the bridges span open water |
+| the wheel on the wrong side | the leat had carved three blocks north of where it was drawn, and the carve emptied the course above the water. The wheel is re-seated in the measured water, and the mill yard is lowered to the holm's level so the wheel survives to the water |
+| the rock too bland | the fill, the steepest slope band and the risers are one set of beds: stone, andesite, pale clay and terracotta, written out to the top of the board, with the risers sheared diagonally |
+| the field's hedge falling down the coast to bedrock | the coast run is gone; the hedge stands on the field's two inland sides |
+| a path that stands out | the lanes are gravel, andesite and cobblestone, a third each |
+| an arched bridge | a humpback: the deck climbs from y23 at the banks to y27 over the water, the arch springs at z ±10, and cobble parapets stand a course over the deck |
+| a place round the monument | a paved disc of radius 7 in stone brick, polished andesite, andesite and stone, the lanes running into it |
+
+**Two of those were faults the reads had missed.** The footbridges and the wheel both stored at 200 and
+passed every check; `column` at the bridges and the wheel is what showed them standing on paving and on dry
+ground.
+
 ## Standing complaints
 
 | Rule | Where | Why it stands |
@@ -108,7 +131,8 @@ showed them. `18:4` is the leaf that never decays.
 | `DR-BANK` | the cut bank at `(−33, −19)`, the leat at `(23, 4)` | the cut bank is the point of the outer bend |
 | `DR-PASS` | the village | the alleys between the mill and its neighbours are lanes, deliberately narrower than eight |
 | `SK9`, `SK14` | `cave-roof` | the override is meant to replace the ground there; `column` reads the roof and the air under it |
-| `DR-CUT` | `ridge-3` | fourteen blocks of root trimmed on the ridge's slope |
+| `DR-CUT` | `ridge-3`, `hanger-3` | roots trimmed on a slope |
+| `SK18` | the east footbridge's end at `(44, −27)` | it meets the mill's eaves, as a landing stage would |
 | `EL1`, `SP8` | the spawn piece | the plan tier walks pieces flat; the farm's mark seats the house level |
 
 ## Coordinates
@@ -117,7 +141,7 @@ showed them. `18:4` is the leaf that never decays.
 |---|---|---|
 | spawn | `(−32, −76)`, ground y40 | `(31, 75)` |
 | monument | `(4, −56)`, green y32, obsidian y36–39 | `(−5, 55)` |
-| bridge | `x −2..2, z −12..12`, deck y25 | the same |
+| bridge | `x −3..3, z −12..12`, deck y23 at the banks to y27 at the crown | the same |
 | cave mouth | `(−28, −20)` | `(27, 19)` |
 | cave chamber | `x −11..−3, z −60..−47`, floor y21 | `x 2..10, z 46..59` |
 | mill wheel | `(36, −21)` | `(−37, 20)` |

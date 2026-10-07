@@ -12,8 +12,8 @@ runs down to a cut bank with a cave in it, and the monument stands on the green 
 street runs past cottages to a mill on a leat, and a hanger of oaks climbs to a ruined tower.*
 
 **Tone families.** Ground: grass under a mosaic of Plains, Savanna and Mesa tints (green, gold and russet),
-over earth, with grey rock on the steep. Built: white clay, stone under brick, a stone longhouse and a hay
-barn, none of them timber-framed. Accent: dark oak.
+over earth, with rock in beds of stone, andesite, pale clay and terracotta on the steep. Built: white clay,
+stone under brick, a stone longhouse and a stone-footed tower, none of them timber-framed. Accent: dark oak.
 
 Slug `opus55b-russetford`, map name **Russetford**, credited to Opus 5.5. The board is written up in
 `review/opus55b-russetford.md`.
@@ -52,7 +52,7 @@ the board being unfair.
 
 **`ORDER-OF-WORK.md` §1 decided three things.** No lane: the monument is on the green where three lanes
 meet, at the end of none of them. The spawn stands in its land: the farm is seated on a knoll with twenty
-blocks of its own land behind it, the ridge rising behind and the barn beside it. The objective stands in
+blocks of its own land behind it, the ridge rising behind and the farmhouse built onto it. The objective stands in
 front and to one side: 38° off the line between the spawns.
 
 ### The spawn's seat, measured
@@ -61,7 +61,7 @@ front and to one side: 38° off the line between the spawns.
 |---|---|---|
 | land behind | **20 blocks**, ground to `z −96`, void at `z −97` | `column` at `(−32, z)` |
 | highest ground within 20 | **8 above**: the ridge at y48 from `z −94` | `transect (−32,−76) → (−32,−96)` |
-| what stands beside | the hay barn and hay yard east, oaks on the ridge at `(−14, −90)` and `(−2, −86)` | the dressing |
+| what stands beside | the farmhouse built onto the spawn tower, the hay yard east, oaks on the ridge at `(−14, −90)` and `(−2, −86)` | the dressing |
 | corpus median / agent boards | 20 behind, 8 above / 10 behind, 0 above | `destroy-layouts.md` |
 
 ### The goal against its spawn
@@ -98,6 +98,34 @@ alleys, two `DR-BANK` (the cut bank and the leat's tail) and one `DR-CUT`. Every
 `column`. Part of the barrier is the hedges, which are two-block walls of leaves by design.
 
 **The deployed studio never made me wait.** No `429` reached the driver in twenty-four stores.
+
+## The third pass, after the author's second review
+
+**Twelve asks, seven stores, 22:22 → 22:30 UTC, none refused.** The asks and what was built for each are
+in the review's *third pass* table. Three of the fixes taught something about the instruments.
+
+**A stroke repaints water.** A lane drawn across the leat paved its surface, so the footbridges stood over a
+strip of andesite. A lane now stops at a bank. *Mistaken on my part*: `GENERATION-NOTES.md` says a stroke
+reads the surface top of every column it crosses.
+
+**A fluid's carve empties the ground's course above its line, made things included.** The wheel lost the
+course between the water and its own lowest block, so it hovered a block over the water. The carve reaches
+only as high as the ground the channel crosses, so the mill yard is now at the holm's level and the wheel
+stands on the water.
+
+**A height stack does not cycle.** `ending: repeat` carries the last band on for good, so a nine-block set of
+beds painted everything above y11 pale clay. The beds are written out seven times.
+
+**The final store's three numbers:**
+
+```
+ground   23402 walked, 804 scrambled, 382 barrier — 4.8% steps further than a player walks
+props    86 placed, 9 declined
+routes   worst step 2, on route spawn-0 to destroyable-1
+```
+
+**The nine "declined" are complaints everywhere else.** They are five `DR-PASS` on the village alleys, two
+`DR-BANK`, two `DR-CUT`, and an `SK18` where a footbridge meets the mill's eaves. Coverage reads 40.2% dead.
 
 ## What I could not say
 
@@ -149,7 +177,7 @@ landed on the hanger's summit without a height being stated.
 ## Instruments, counted
 
 One relief, eleven `area` marks and one `line`, no push, one made-ground shape (the cave roof), eight
-draped polylines, eleven made layers, five copied tree styles, two fluids, four themes. There is still no
+draped polylines, nineteen made layers, five copied tree styles, two boulder styles, two fluids, five themes. There is still no
 authored flight: the farm and the green are reached by graded slopes, not stairs.
 
 ## Open gameplay questions
