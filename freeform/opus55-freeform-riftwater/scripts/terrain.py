@@ -52,12 +52,17 @@ def build_heights(L: Land):
     n_big = fbm(sh, 40, 3, seed=12)
 
     # --- the land's outline ---------------------------------------------------------------------------
+    # the rift's lip: ragged everywhere, bitten into bays where nothing stands, held straight under the
+    # town's houses and at the two places a thing meets it (the Old Bridge, the falls)
+    zz = np.arange(L.z0, P.Z_MAX + 1)
     edge_n = fbm((sh[1],), 10, 2, seed=21)
-    rift_edge = -11 + np.round(edge_n * 1.2).clip(-1, 0)     # -12 .. -11
+    bays = 4.5 * (0.5 + 0.5 * fbm((sh[1],), 22, 2, seed=25))
+    hold = np.maximum.reduce([np.exp(-((zz + 45) / 16.0) ** 4), np.exp(-((zz - 1) / 6.0) ** 4)])
+    rift_edge = -11 + np.round(edge_n * 1.2).clip(-1, 0) - np.round(bays * (1 - hold))
     land = X <= rift_edge[None, :]
-    inset_w = (2 + 2 * fbm((sh[1],), 14, 2, seed=22)).clip(0, 4)
-    inset_n = (2 + 2.5 * fbm((sh[0],), 14, 2, seed=23)).clip(0, 5)
-    inset_s = (2 + 2.5 * fbm((sh[0],), 14, 2, seed=24)).clip(0, 5)
+    inset_w = (2 + 4 * fbm((sh[1],), 16, 2, seed=22)).clip(0, 6)
+    inset_n = (2 + 5 * fbm((sh[0],), 16, 2, seed=23)).clip(0, 7)
+    inset_s = (2 + 5 * fbm((sh[0],), 16, 2, seed=24)).clip(0, 7)
     land &= X >= P.X_MIN + inset_w[None, :]
     land &= Z >= P.Z_MIN + inset_n[:, None]
     land &= Z <= P.Z_MAX - inset_s[:, None]
@@ -140,7 +145,7 @@ def build_heights(L: Land):
         h = np.where(d < r + 8, lvl * (1 - k) + h * k, h)
 
     # --- Lone Oak Knoll ---------------------------------------------------------------------------
-    d = np.hypot((X + 26) / 1.0, (Z - 66) / 1.25)
+    d = np.hypot((X + 22) / 1.0, (Z - 74) / 1.25)
     h += 6.5 * np.exp(-(d / 8.0) ** 2)
 
     H = np.round(h).astype(int)

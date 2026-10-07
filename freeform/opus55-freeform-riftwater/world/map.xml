@@ -1,0 +1,77 @@
+<map proto="1.5.0">
+    <name>Riftwater</name>
+    <version>0.1.0</version>
+    <gamemode>dtm</gamemode>
+    <objective>Destroy both of the enemy's monuments: one in their market square, one on their village green.</objective>
+    <authors>
+        <author>Claude (freeform generator)</author>
+    </authors>
+    <contributors>
+        <contributor contribution="Built the oak and birch trees (tree showcase)">rockymine</contributor>
+    </contributors>
+    <teams>
+        <team id="red-team" color="red" max="16">Red</team>
+        <team id="blue-team" color="blue" max="16">Blue</team>
+    </teams>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="stained clay" amount="32" team-color="true"/>
+            <item slot="6" material="golden apple" amount="1"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <spawns>
+        <default yaw="90" region="observer-spawn"/>
+        <spawn team="red-team" kit="spawn-kit" yaw="270" region="red-spawn-point"/>
+        <spawn team="blue-team" kit="spawn-kit" yaw="90" region="blue-spawn-point"/>
+    </spawns>
+    <destroyables>
+        <destroyable id="red-square" name="Market Square Monument" owner="red-team" materials="obsidian" region="red-square-monument"/>
+        <destroyable id="red-green" name="Winding Green Monument" owner="red-team" materials="obsidian" region="red-green-monument"/>
+        <destroyable id="blue-square" name="Market Square Monument" owner="blue-team" materials="obsidian" region="blue-square-monument"/>
+        <destroyable id="blue-green" name="Winding Green Monument" owner="blue-team" materials="obsidian" region="blue-green-monument"/>
+    </destroyables>
+    <filters>
+        <team id="only-red">red-team</team>
+        <team id="only-blue">blue-team</team>
+        <not id="no-void">
+            <void/>
+        </not>
+    </filters>
+    <regions>
+        <point id="red-spawn-point">-97.5,60,-6.5</point>
+        <point id="blue-spawn-point">97.5,60,-6.5</point>
+        <point id="observer-spawn">0.5,80,0.5</point>
+        <rectangle id="red-spawn" min="-108,-14" max="-84,0"/>
+        <rectangle id="blue-spawn" min="84,-14" max="108,0"/>
+        <cuboid id="red-square-monument" min="-66,54,-44" max="-65,56,-43"/>
+        <cuboid id="red-green-monument" min="-66,52,48" max="-65,54,49"/>
+        <cuboid id="blue-square-monument" min="65,54,-44" max="66,56,-43"/>
+        <cuboid id="blue-green-monument" min="65,52,48" max="66,54,49"/>
+        <union id="spawns">
+            <region id="red-spawn"/>
+            <region id="blue-spawn"/>
+        </union>
+        <negative id="not-build-area">
+            <rectangle id="the-rift" min="-10,-88" max="10,88"/>
+        </negative>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply block="never" region="spawns" message="You may not edit the spawn!"/>
+        <apply block="no-void" region="not-build-area" message="You may only bridge over the rift!"/>
+    </regions>
+    <maxbuildheight>90</maxbuildheight>
+</map>

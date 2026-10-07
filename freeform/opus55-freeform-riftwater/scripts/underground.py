@@ -21,7 +21,7 @@ CAVE = {
     "south": [(-40, 32, 14, 3.0), (-44, 33, 20, 2.8), (-47, 35, 27, 2.6), (-49, 37, 33, 2.8), (-50, 39, 38, 3.0)],
     # north: under the river and up to the gaol cellar
     "north": [(-40, 32, 14, 3.0), (-43, 32, 7, 2.6), (-46, 33, 0, 2.6), (-49, 35, -8, 2.8), (-52, 37, -15, 2.6),
-              (-54, 40, -21, 2.5), (-56, 42, -26, 2.2)],
+              (-53, 40, -21, 2.5), (-53, 42, -28, 2.2)],
     # west: toward the mine's breakthrough
     "west": [(-49, 37, 33, 2.4), (-53, 38, 35, 2.2), (-57, 39, 37, 2.0)],
 }
@@ -32,7 +32,7 @@ MINE = [  # (x, y_floor, z): straight runs between these, three wide, three tall
     (-76, 44, 52), (-68, 42, 46), (-62, 40, 41), (-57, 39, 37),
 ]
 SHAFT = (-84, 56)
-CELLAR = (-61, 43, -35, -51, -27)   # x0, floor y, z0, x1, z1
+CELLAR = (-55, 43, -37, -49, -31)   # x0, floor y, z0, x1, z1
 
 
 def carve_ellipsoid(w, L, cx, cy, cz, r, rv, floor_y, allow_surface=False):
