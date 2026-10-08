@@ -1,0 +1,72 @@
+<map proto="1.5.0">
+<name>Spark</name>
+<version>1.0.0</version>
+<objective>Knock the other players off the spark and be the last one standing!</objective>
+<gamemode>blitz</gamemode>
+<rules><rule>Players can only die to the void.</rule><rule>Your stick gets stronger at one, two and four minutes.</rule></rules>
+<players min="2" max="64" colors="true"/>
+<broadcasts>
+    <alert after="1m">Your sticks are now knockback 2!</alert>
+    <alert after="2m">Your sticks are now knockback 3!</alert>
+    <alert after="4m">Your sticks are now knockback 10!</alert>
+</broadcasts>
+<kits>
+    <kit id="stick">
+        <item slot="0" material="stick" name="`r`lKnockback 1 Stick"><enchantment>knockback</enchantment></item>
+        <effect amplifier="255" duration="3s">damage resistance</effect>
+        <effect amplifier="255" duration="1s">slowness</effect>
+        <effect>regeneration</effect>
+        <knockback-reduction>0.9</knockback-reduction>
+        <game-mode>adventure</game-mode>
+    </kit>
+    <kit id="stick2" force="true">
+        <item slot="0" material="stick" name="`r`a`lKnockback 2 Stick"><enchantment level="2">knockback</enchantment></item>
+    </kit>
+    <kit id="stick3" force="true">
+        <item slot="0" material="stick" name="`r`e`lKnockback 3 Stick"><enchantment level="3">knockback</enchantment></item>
+    </kit>
+    <kit id="stick10" force="true">
+        <item slot="0" material="stick" name="`r`c`lKnockback 10 Stick"><enchantment level="10">knockback</enchantment></item>
+    </kit>
+    <give><kit force="true"><knockback-reduction>0</knockback-reduction></kit><filter><time>3s</time></filter></give>
+    <give kit="stick2" filter="from-60"/>
+    <give kit="stick3" filter="from-120"/>
+    <give kit="stick10" filter="from-240"/>
+</kits>
+<spawns>
+    <spawn kit="stick" spread="true" safe="true">
+        <regions>
+            <point yaw="-86">8.5,65,0.5</point>
+            <point yaw="-57">7.5,65,4.5</point>
+            <point yaw="-29">4.5,65,7.5</point>
+            <point yaw="2">-0.5,65,8.5</point>
+            <point yaw="28">-3.5,65,7.5</point>
+            <point yaw="60">-7.5,65,4.5</point>
+            <point yaw="88">-8.5,65,0.5</point>
+            <point yaw="118">-7.5,65,-3.5</point>
+            <point yaw="147">-4.5,65,-7.5</point>
+            <point yaw="176">-0.5,65,-8.5</point>
+            <point yaw="-155">3.5,65,-7.5</point>
+            <point yaw="-124">7.5,65,-4.5</point>
+        </regions>
+    </spawn>
+    <default yaw="0" pitch="40"><region><point>0.5,89,-40.5</point></region></default>
+</spawns>
+<filters>
+    <all id="from-60"><time>60s</time><participating/></all>
+    <all id="from-120"><time>120s</time><participating/></all>
+    <all id="from-240"><time>240s</time><participating/></all>
+</filters>
+<regions>
+    <apply block="never"/>
+</regions>
+<portals>
+    <portal y="@-64" sound="false" observers="never"><region><below y="40"/></region></portal>
+</portals>
+<time>5m</time>
+<blitz><lives>1</lives><broadcastLives>true</broadcastLives></blitz>
+<itemremove><item>stick</item></itemremove>
+<disabledamage><damage>fall</damage></disabledamage>
+<hunger><depletion>off</depletion></hunger>
+<world><timeset>6000</timeset><timelock>on</timelock></world>
+</map>
