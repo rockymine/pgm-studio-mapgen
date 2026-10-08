@@ -42,7 +42,7 @@ for team, start in (("red", red), ("blue", blue)):
     adit = (ax, ay, az - 3) if team == "red" else (P.SYM.point(ax, az - 3)[0], ay, az - 3)
     print(f"  to the mine adit: {reach(d, *adit)}")
     sh = P.SHAFT if team == "red" else P.SYM.point(*P.SHAFT)
-    print(f"  to the gallery under the headframe (down the shaft): {reach(d, sh[0], 45, sh[1] + 2)}")
+    print(f"  to the gallery under the headframe, down the shaft's ladder: {reach(d, sh[0], 45, sh[1])}")
 print(f"[{time.time() - t0:.0f}s]")
 
 d = walk.walk(ids, [(-11, 36, 6)], w.x0, w.z0, rules)
@@ -55,6 +55,9 @@ print(f"  up the gaol ladder into the gaol: {reach(d, -52, 53, -34)}")
 x, y, z = P.MINE[-1]
 print(f"  to the mine breakthrough: {reach(d, x, y, z)}")
 print(f"  to red's spawn, through the mine: {reach(d, *red)}")
+sx_, sz_ = P.SHAFT
+g = P.at(P.land(), sx_, sz_)
+print(f"  up the shaft's ladder onto the headframe's collar: {reach(d, sx_, g + 1, sz_ + 3, 1)}")
 print(f"[{time.time() - t0:.0f}s]")
 
 jr = walk.MoveRules(max_drop=3, jumps=True)

@@ -362,7 +362,8 @@ def ironhollow(w, built):
         for yy in range(g - 6, g + 1):
             if w.id(x, yy, z) in (B.DIRT, B.GRASS, B.STONE):
                 c = R_.random()
-                w.set(x, yy, z, *((B.GRAVEL, 0) if c < 0.5 else (B.COBBLE, 0) if c < 0.75 else (B.STONE, 5)))
+                held = w.id(x, yy - 1, z) != B.AIR                      # gravel only where something holds it
+                w.set(x, yy, z, *((B.GRAVEL, 0) if c < 0.5 and held else (B.COBBLE, 0) if c < 0.75 else (B.STONE, 5)))
         if w.id(x, g - 1, z) == B.AIR:
             w.set(x, g - 1, z, B.COBBLE)
 

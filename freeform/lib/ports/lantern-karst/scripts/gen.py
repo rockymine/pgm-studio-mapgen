@@ -18,7 +18,7 @@ import plan  # noqa: F401  (puts the library on the path)
 import dress as D
 from plan import (FOUNDATION, KILL_Y, MAX_BUILD, MIST_Y, OBSERVER_AT, WALL, X_MAX, X_MIN, Z_MAX, Z_MIN, build,
                   objectives, zone_mask)
-from pgmvox import B, World, landform, noise, rng
+from pgmvox import B, World, forms, noise, rng
 from pgmvox import terrain as T
 from pgmvox.objectives import DYES, Wool
 from pgmvox.orient import turn_world
@@ -89,23 +89,6 @@ def skirt(w, g, beds, r):
             w.set(x, y, z, B.AIR)
 
 
-def vines(w, g, r):
-    """Vines on the roots only, below the course, where no one reaches them from a floor."""
-    X, Z = w.grid()
-    n = 0
-    for i, k in np.argwhere(g.land):
-        x, z, h = int(X[i, k]), int(Z[i, k]), int(g.floor[i, k])
-        for dx, dz, bit in ((1, 0, 2), (-1, 0, 8), (0, 1, 4), (0, -1, 1)):
-            if r.random() > 0.05:
-                continue
-            top = h - FOUNDATION - 3 - int(r.integers(0, 8))
-            for y in range(top, top - int(r.integers(3, 10)), -1):
-                if w.id(x, y, z) not in (B.AIR, B.VINE) and w.id(x + dx, y, z + dz) == B.AIR:
-                    w.set(x + dx, y, z + dz, B.VINE, bit)
-                    n += 1
-    return n
-
-
 def markers(w, R):
     """Block 36 at y 0 under every column a player may build in: land and build zones, both halves."""
     build_cols = ~R.mask("void") | zone_mask(R)
@@ -146,11 +129,11 @@ def outline(w, R):
     return n
 
 
-def towers(w, R, beds, offset, r, count=16):
+def towers(w, R, beds, r, count=16):
     """Karst towers standing alone in the mist round the board: scenery, never play. Each stands at least 16
-    plus its radius off any island or build zone of either half, rises from the mist to 60..96 (a
-    landform.spire with a high taper is a steep-walled column with a rounded crown), laid in the same beds,
-    and carries a pine or two on its crown."""
+    plus its radius off any island or build zone of either half and rises from the mist to 60..96 as
+    forms.tower: rings tapering up the stack, a ledge every nine courses, faces bulging between them, laid in
+    the karst's beds, a pine or two on the crown and vines down the faces."""
     from scipy import ndimage
     solid = ~R.mask("void") | zone_mask(R)
     clear = ndimage.distance_transform_edt(~solid)
@@ -164,17 +147,19 @@ def towers(w, R, beds, offset, r, count=16):
         if clear[i, k] < 16 + rad or any(np.hypot(i - a, k - b) < rad + q + 6 for a, b, q, _ in sites):
             continue
         sites.append((i, k, rad, int(r.integers(60, 97))))
-    top = T.by_angle([(40, (B.GRASS, 0)), (90, (B.STONE, 0))])
+
+    def rock(y, b):
+        bed = beds(y + int(4 * b))
+        return (B.COBBLE, 0) if bed == (B.STONE, 0) and r.random() < 0.06 else bed
     for n, (i, k, rad, peak) in enumerate(sites):
         cx, cz = int(X[i, k]), int(Z[i, k])
-        Hs = landform.spire(np.full(X.shape, float(MIST_Y[0] + 4)), X, Z, (cx, cz), rad + 1.5, peak, taper=6,
-                            jag=0.25, seed=40 + n)
-        m = Hs > MIST_Y[0] + 4.5
-        T.lay(w, np.round(Hs).astype(int), mask=m, top=top, dirt_depth=1, from_y=MIST_Y[0] + 4,
-              bands=T.beds(beds, offset, seed=n))
-        D.pine(w, cx, int(round(Hs[i, k])), cz, int(r.integers(7, 12)))
-        if rad > 5:
-            D.pine(w, cx + int(rad * 0.5), w.top(cx + int(rad * 0.5), cz - 1), cz - 1, int(r.integers(5, 8)))
+
+        def crown(w, x, y, z, rr, rad=rad):
+            D.pine(w, x, y, z, int(rr.integers(7, 12)))
+            if rad > 5:
+                c = int(rad * 0.7)
+                D.pine(w, x + c - 1, y, z - 1, int(rr.integers(5, 8)))
+        forms.tower(w, cx, cz, 28, peak, rad, rock, r, seed=int(i * 31 + k), tree=crown)
     return len(sites)
 
 
@@ -199,7 +184,10 @@ def make():
     D.store_wall(w, g, WALL)
     D.lanes(w, g, rng(BOARD, "lanes"))
     n_ferns = D.ferns(w, g, rng(BOARD, "ferns"))
-    n_vines = vines(w, g, rng(BOARD, "vines"))
+    solid = w.ids[:, 1:, :] != 0                                 # each column's lowest block: its root's tip
+    bottom = 1 + np.argmax(solid, axis=1)
+    n_vines = forms.root_vines(w, g.land & g.red, g.floor, bottom, rng(BOARD, "vines"),
+                               keep=np.isin(g.piece, [g.R.kinds["pillar"], g.R.kinds["store"]]))
     n_marked = markers(w, R)
     # blue's half: red's turned half a circle. Its team banners are recoloured: turn_world's recolour reaches
     # block ids and data, not a banner's colour, which lives in its tile entity
@@ -213,7 +201,7 @@ def make():
     before = int((w.ids == B.STAINED_GLASS).sum())
     T.cloud_deck(w, 31, seed=50, cell=18, puff=5, breaks=0.02, materials=((B.STAINED_GLASS, 0), (B.STAINED_GLASS, 8)))
     n_mist = int((w.ids == B.STAINED_GLASS).sum()) - before
-    n_towers = towers(w, R, beds, offset, rng(BOARD, "towers"))
+    n_towers = towers(w, R, beds, rng(BOARD, "towers"))
     n_red = outline(w, R)
     loose = (w.ids[:, 1:, :] == B.GRAVEL) & (w.ids[:, :-1, :] == B.AIR)     # gravel the undercuts left hanging
     w.ids[:, 1:, :][loose], w.dat[:, 1:, :][loose] = B.STONE, 5

@@ -21,7 +21,7 @@ from pgmvox import facade as F  # noqa: E402
 from pgmvox import pieces as P  # noqa: E402
 from pgmvox import objectives as O  # noqa: E402
 from pgmvox import solid as SOL  # noqa: E402
-from pgmvox import landform as LF, noise, route as RT  # noqa: E402
+from pgmvox import forms, landform as LF, noise, route as RT  # noqa: E402
 from pgmvox.mapxml import Doc, E, duration, point  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
 from pgmvox.sketch import TEAM, SectionPanel, Sheet  # noqa: E402
@@ -214,6 +214,33 @@ class Landforms(unittest.TestCase):
         self.assertFalse((sea.mask & (np.abs(X) < 38) & (np.abs(Z) < 38)).any())
         T = LF.terraces(H, np.ones(H.shape, bool), step=4, base=0)
         self.assertTrue((T % 4 == 0).all())
+
+
+class Forms(unittest.TestCase):
+    def test_a_tower_carries_its_ledge_rings(self):
+        w = World(-16, -16, 32, 32, sy=80)
+        rng = np.random.default_rng(1)
+        n = forms.tower(w, 0, 0, 10, 60, 5, lambda y, b: (B.STONE, 0), rng, bulge=0.0, vines=0)
+        self.assertGreater(n, 0)
+
+        def area(y):
+            return int((w.ids[:, y, :] == B.STONE).sum())
+        self.assertGreater(area(18), area(17))                              # a ledge every nine courses
+        self.assertGreater(area(18), area(19))
+        self.assertGreater(area(11), area(58))                              # tapering up the stack
+        self.assertEqual(w.id(0, 60, 0), B.GRASS)                           # the crown
+
+    def test_a_skirt_never_rises_into_the_floor(self):
+        w = World(-10, -10, 20, 20, sy=40)
+        land = np.zeros((20, 20), bool)
+        land[5:15, 5:15] = True
+        floor = np.where(land, 30, 0)
+        T = __import__("pgmvox.terrain", fromlist=["lay"])
+        T.lay(w, floor, mask=land, from_y=20)
+        forms.skirt(w, land, floor, lambda y: (B.STONE, 0), np.random.default_rng(2), bulge=np.ones((20, 20)))
+        cols = w.ids.transpose(0, 2, 1)[~land]                              # every column off the floor, by y
+        self.assertFalse((cols[:, 29:] != 0).any())                         # nothing at floor - 1 or above
+        self.assertTrue((cols[:, 20:28] != 0).any())                        # but ledges below it
 
 
 class Routes(unittest.TestCase):

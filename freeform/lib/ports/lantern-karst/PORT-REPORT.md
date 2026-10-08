@@ -321,3 +321,14 @@ changed during building.
 
 **The pavilions were planned as boxes with a top height and nothing more.** The original's buildings were
 written straight into code, and so were the port's. A plan for them would have named the parts the library lacks.
+
+## After review
+
+**The towers were not a simplification; they were the board's look.** The author singled out the original towers
+as structural and the port's heightfield spires as plain terrain. The original recipe is a stack of rings with a
+ledge every nine courses, faces bulging between them and beds in courses. It is now `pgmvox.forms.tower`, and the
+port's towers are built with it.
+
+**The vines hang from the root tips again.** The port hung its vines just under the floor, where they hid against
+the faces; the original hangs them from the lower roots, where they trail below the islands. That is now
+`pgmvox.forms.root_vines`, and the karst faces under the rims are `pgmvox.forms.skirt`.

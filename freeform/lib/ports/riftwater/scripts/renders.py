@@ -25,12 +25,20 @@ def iso(name, scale, corner, box=None, ymin=0, ymax=None, xray=False):
 
 
 iso("30-iso-board-se.png", 2, "se")
-iso("31-iso-board-nw.png", 2, "sw")
+iso("31-iso-board-sw.png", 2, "sw")             # iso has se and sw only: no view from the north
 iso("33-iso-town.png", 4, "se", (-80, -88, -8, -10), 30)
 iso("34-iso-village.png", 4, "se", (-112, 34, -64, 87), 30)
 iso("35-iso-river-mill.png", 4, "se", (-92, -14, -26, 30), 30)
 iso("38-iso-rift-falls.png", 4, "se", (-40, -20, 39, 24), 20)
-iso("40-xray-underground.png", 3, "se", (-120, -50, -1, 70), 20, 62, True)
+# the x-ray keeps every roofed void, and a house or a tree crown is one: clear everything over the plan's ground
+# first, so only what is under it is seen
+L = P.land()
+under = w.ids.copy()
+for i, k in np.argwhere(L.land):
+    under[i, int(L.H[i, k]) - 1:, k] = 0
+p = os.path.join(out, "40-xray-underground.png")
+render.iso(under, w.dat, w.x0, w.z0, p, 3, "se", (-120, -50, -1, 70), 20, 62, True)
+render.trim(p)
 render.cutaway(w, os.path.join(out, "10-section-falls-cave-z3.png"), [(-120, 3), (119, 3)], 20, 90, 4,
                title="along x at z 3: the ridge, the pond, the mill race, the cave under the bank, the falls, the rift")
 render.cutaway(w, os.path.join(out, "12-section-cellar-gaol-x-52.png"), [(-52, -50), (-52, 50)], 20, 80, 4,

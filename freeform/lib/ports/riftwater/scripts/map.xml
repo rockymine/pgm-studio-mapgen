@@ -1,0 +1,90 @@
+<map proto="1.5.0">
+    <name>Riftwater</name>
+    <version>0.2.0</version>
+    <objective>Destroy both of the enemy's monuments: one in their market square, one on their village green.</objective>
+    <gamemode>dtm</gamemode>
+    <authors>
+        <author>Claude (freeform generator, ported onto pgmvox)</author>
+    </authors>
+    <contributors>
+        <contributor contribution="Built the oak and birch trees (tree showcase)">rockymine</contributor>
+    </contributors>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="stained clay" amount="32" team-color="true"/>
+            <item slot="6" material="golden apple" amount="1"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <teams>
+        <team id="red-team" color="red" max="16">Red</team>
+        <team id="blue-team" color="blue" max="16">Blue</team>
+    </teams>
+    <filters>
+        <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
+        <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
+        <not id="no-void">
+            <void/>
+        </not>
+    </filters>
+    <spawns>
+        <spawn team="red-team" kit="spawn-kit" yaw="270">
+            <region>
+                <point>-97.5,60,-6.5</point>
+            </region>
+        </spawn>
+        <spawn team="blue-team" kit="spawn-kit" yaw="90">
+            <region>
+                <point>97.5,60,-6.5</point>
+            </region>
+        </spawn>
+        <default yaw="90">
+            <region>
+                <point>0.5,80,0.5</point>
+            </region>
+        </default>
+    </spawns>
+    <regions>
+        <cuboid min="-108,0,-14" max="-84,128,0" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="84,0,-14" max="108,128,0" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-66,54,-44" max="-65,56,-43" id="red-square-region"/>
+        <cuboid min="65,54,-44" max="66,56,-43" id="blue-square-region"/>
+        <cuboid min="-66,52,48" max="-65,54,49" id="red-green-region"/>
+        <cuboid min="65,52,48" max="66,54,49" id="blue-green-region"/>
+        <negative id="not-build-area">
+            <rectangle min="-16,-88" max="16,88"/>
+        </negative>
+        <apply block="no-void" region="not-build-area" message="You may only bridge over the rift!"/>
+    </regions>
+    <destroyables>
+        <destroyable id="red-square" name="Market Square Monument" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-square-region"/>
+        <destroyable id="blue-square" name="Market Square Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-square-region"/>
+        <destroyable id="red-green" name="Winding Green Monument" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-green-region"/>
+        <destroyable id="blue-green" name="Winding Green Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-green-region"/>
+    </destroyables>
+    <maxbuildheight>90</maxbuildheight>
+</map>
+

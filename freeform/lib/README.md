@@ -26,6 +26,7 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `facade` | face patterns (`band`, `courses`, `flutes`, `panels`, `slits`, `checker`, `windows`, `glyph_row`, `word`) set back or flush on an `extrude`d mass, `coffer`, `top_course`; floor fields (`border`, `medallion`, `corners`, `diamonds`, `steps`, `star`, `cross`, `tiles`) composed by `first_of` and laid by `carpet` |
 | `terrain` | `slope_deg` as the studio reads it; `lay` (ground painted by slope, a snow line); `Strata`, `bed_offset` and `beds` (rock beds that tilt and fold); `mountain_ring`; `underside` and `root_depth` (cones, flutes, spires); `cloud_deck` |
 | `route` | `find` (a least-cost route over the ground, held to a grade, switchbacks and all), `network` (places joined by roads that share their trunk), `simplify`, `smooth`, `footprint`, `pave` (surface and bridges), `steps` |
+| `forms` | scenery built block by block where a heightfield cannot say it: `tower` (rings tapering up a stack, ledges every few courses, bulging faces, beds in courses, a crown and vines), `skirt` (karst faces under a floating floor's rim), `root_vines` |
 | `landform` | heightfield operations: `watercourse` (reaches and falls), `canyon` and washes, `spire`, `butte`, `scarp`, `terraces`, `stage`, `grade` (a route held to a grade, bridging water, keeping earlier roads), `coast`, `blend` |
 | `walk` | the voxel walk over built blocks with `MoveRules`; `no_stand_above`, `catchers`, `unreached`, `nearest`, `gap_cleared` |
 | `audit` | `footing`: blocks that would fall, or have nothing to hang on |
@@ -157,6 +158,17 @@ uplands and the canyon rim unreachable, which the built world's walk had only fo
 canyon through it into a river with falls, a graded road, a terraced hill and a floating island with a fluted,
 spired underside. Its first build showed a whole board lifted to a flat plateau: a spire raised every column to
 its own base height. A test now holds a spire to its radius.
+
+## Forms
+
+**A tower is a stack of rings, not a heightfield.** The karst towers of a capture board were drawn this way and
+the author singled them out: rings tapering up the stack, a ring of ledges every nine courses, faces bulging
+between them, the rock's beds running round in courses. Rebuilt as a heightfield spire they came out as plain
+terrain, so `forms.tower` keeps the recipe, with the rock, the ledges and the crown as parameters.
+
+**A floating floor's box sides become a cliff with `skirt`.** Rock juts out in ledges under the rim, never higher
+than two under the floor, is cut back where the noise is low, and carries moss and grass. `root_vines` hangs vines
+from the lower roots, where they trail below an island rather than hiding against its faces.
 
 ## Routes
 
