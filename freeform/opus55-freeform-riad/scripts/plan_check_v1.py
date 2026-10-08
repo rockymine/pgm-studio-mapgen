@@ -11,7 +11,7 @@ Two storeys: the ground raster and, over it, the arcade roofs and the spawn deck
   - from a roof, a drop off its edge; from a spawn deck, a drop through the hole into the pool.
 
 It prints the jumps, a check that every stair is met head-on, every walk from a spawn to each post and between
-the posts, whether the ground climbs back onto a spawn, and what can be seen from each post.
+the posts, the ground the carrier is allowed, and what can be seen from each post.
 
     python3 plan_check.py
 """
@@ -123,14 +123,14 @@ def graph(use_jumps=True):
                 if kb == swim:
                     continue                                   # entered only from under its cage, below
                 if kb == ladder:
-                    if ha < hb - 2:
-                        add(a, (p, q, 0), 1 + (hb - ha) * 1.8, "ladder")
+                    if ha <= P.G + 1:
+                        add(a, (p, q, 0), 1 + (hb - P.G) * 1.8, "ladder")
                     continue
                 if ka == ladder:
                     if hb <= ha:
                         add(a, (p, q, 0), 1)                   # off the top of the ladder
-                    elif hb < ha - 2:
-                        add(a, (p, q, 0), 1 + (ha - hb) * 0.5)   # or back down it
+                    if hb <= P.G + 1:
+                        add(a, (p, q, 0), 1 + (ha - P.G) * 0.5)   # or back down it
                     continue
                 if ka == swim:
                     if hb <= ha and kb != WATER:
@@ -212,7 +212,7 @@ def post_cell(post):
 
 def spawn_node(team):
     x, y, z, _ = P.SPAWNS[team]
-    return (P.ix(math.floor(x)), P.iz(math.floor(z)), 0)
+    return (P.ix(math.floor(x)), P.iz(math.floor(z)), 1)
 
 
 def walk_near(E, a, b, limit=10):
@@ -313,23 +313,22 @@ def main():
             d = D.get(u)
             parts.append(f"{other['key']} {d:.0f} ({', '.join(path_tags(prev, u))})" if d is not None else f"{other['key']} UNREACHABLE")
         out.append(f"from {post['key']}: " + "; ".join(parts))
-    # the reach of each spawn, and whether the ground climbs back onto a spawn terrace
+    # the reach of each spawn, and the carrier's ground
     D, _ = dijkstra(E, spawn_node("blue"))
     ground = [u for u in D if u[2] == 0 and K[u[0], u[1]] in WALKK]
-    out.append(f"blue spawn reaches {len(ground)} ground cells")
-    D, _ = dijkstra(E, c(30, 0))
-    back = [team for team in ("red", "blue") if any(
-        (P.ix(x), P.iz(z), 0) in D for x in range(-10, 11)
-        for z in (range(46, 57) if team == "blue" else range(-56, -45)))]
-    out.append("from the ground back onto a spawn terrace: " + (", ".join(back) if back else "neither"))
-    # what each post sees of blue's spawn terrace and of its half's gardens
-    terrace = [(x + 0.5, P.G + 3, z + 0.5) for x in (-8, 0, 8) for z in (47, 51, 55)]
-    standing = [(x + 0.5, P.H_at(x, z) + 1, z + 0.5) for x in range(-36, 37, 3) for z in range(17, 37, 3)
-                if K[P.ix(x), P.iz(z)] in WALKK]
+    carrier = [u for u in ground if abs(u[1] + P.Z_MIN) < P.CARRIER_LINE and K[u[0], u[1]] != P.KINDS["spawn"]]
+    out.append(f"blue spawn reaches {len(ground)} ground cells; the carrier is allowed {len(carrier)} of them (|z| < {P.CARRIER_LINE})")
+    standing = [(x + 0.5, P.G + 1, z + 0.5) for x in range(-36, 37, 3) for z in range(17, 32, 3)]
+    # what each post sees: the far spawn's pool and doors, and how much of the carrier's ground
     for post in P.POSTS:
-        eye = post["at"]
-        out.append(f"{post['key']} post: sees {sum(sight(eye, p) for p in terrace)}/9 of blue's spawn terrace, "
-                   f"{sum(sight(eye, p) for p in standing)}/{len(standing)} points of blue's half")
+        x, y, z = post["at"]
+        eye = (x, y, z)
+        pool = [(px + 0.5, P.G + 1, pz + 0.5) for px in (-2, 0, 2) for pz in (47, 49, 51)]
+        doors = [(-10.5, P.G + 1, 52.5), (10.5, P.G + 1, 52.5)]
+        seen_pool = sum(sight(eye, p) for p in pool)
+        seen_doors = sum(sight(eye, p) for p in doors)
+        out.append(f"{post['key']} post: sees {seen_pool}/9 of blue's pool, {seen_doors}/2 of its doors, "
+                   f"{sum(sight(eye, p) for p in standing)}/{len(standing)} points of blue's gardens")
     print("\n".join(out))
     return out
 

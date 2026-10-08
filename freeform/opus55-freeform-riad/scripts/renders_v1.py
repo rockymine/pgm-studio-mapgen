@@ -29,10 +29,9 @@ run(["--topdown", region, o("01-topdown-material.png"), "--material", "--scale",
 run(["--heightmap", region, o("02-heightmap.png"), "--scale", "5"])
 for name, args in [("10-section-north-south-x0", ["--z", "-61", "61", "--x", "0", "--ymin", "4", "--ymax", "40", "--depth", "1", "--scale", "5"]),
                    ("11-section-west-east-z0", ["--x", "-49", "48", "--z", "0", "--ymin", "4", "--ymax", "40", "--depth", "1", "--scale", "6"]),
-                   ("12-section-swim-column-x0", ["--z", "-12", "12", "--x", "0", "--ymin", "8", "--ymax", "30", "--depth", "1", "--scale", "10"]),
+                   ("12-section-swim-column-z2", ["--x", "-12", "12", "--z", "2", "--ymin", "8", "--ymax", "30", "--depth", "1", "--scale", "10"]),
                    ("13-section-porch-stairs-x-26", ["--z", "-20", "20", "--x", "-26", "--ymin", "10", "--ymax", "30", "--depth", "1", "--scale", "8"]),
-                   ("14-section-spawn-terrace-x0", ["--z", "30", "58", "--x", "0", "--ymin", "10", "--ymax", "40", "--depth", "1", "--scale", "8"]),
-                   ("16-section-gardens-z27", ["--x", "-49", "48", "--z", "27", "--ymin", "4", "--ymax", "34", "--depth", "1", "--scale", "6"]),
+                   ("14-section-spawn-house-x0", ["--z", "36", "61", "--x", "0", "--ymin", "10", "--ymax", "40", "--depth", "1", "--scale", "8"]),
                    ("15-section-arcade-x11", ["--z", "-61", "61", "--x", "11", "--ymin", "10", "--ymax", "32", "--depth", "1", "--scale", "5"])]:
     run(["--section", region, o(name + ".png")] + args)
 
@@ -43,9 +42,7 @@ render_iso.render(ids, dat, x0, z0, o("32-iso-the-cistern.png"), 7, "se", (-16, 
 render_iso.render(ids, dat, x0, z0, o("33-iso-the-mirador.png"), 6, "sw", (-49, -18, -14, 18), 0, 30)
 render_iso.render(ids, dat, x0, z0, o("34-iso-the-minaret.png"), 6, "se", (16, -18, 48, 18), 0, 30)
 render_iso.render(ids, dat, x0, z0, o("35-iso-blue-half.png"), 4, "nw", (-37, 14, 37, 61), 0, 40)
-render_iso.render(ids, dat, x0, z0, o("36-iso-blue-spawn.png"), 7, "nw", (-24, 36, 24, 58), 0, 40)
-render_iso.render(ids, dat, x0, z0, o("37-iso-east-garden.png"), 7, "nw", (8, 14, 38, 40), 0, 40)
-render_iso.render(ids, dat, x0, z0, o("38-iso-the-cistern-landings.png"), 9, "sw", (-9, -9, 9, 9), 0, 30)
+render_iso.render(ids, dat, x0, z0, o("36-iso-blue-spawn-cut-at-31.png"), 7, "nw", (-15, 42, 15, 60), 0, 31)
 render_iso.elevation(ids, dat, x0, z0, o("50-elev-the-mirador-from-the-south.png"), (-49, -20, -15, 20), 10, 32, "north", 8)
 render_iso.elevation(ids, dat, x0, z0, o("51-elev-the-court-from-blue.png"), (-30, -16, 30, 30), 10, 32, "north", 6)
 print("renders written to", out)

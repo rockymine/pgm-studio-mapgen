@@ -5,7 +5,7 @@ heart, any height into water; swims, and is lifted by water and ladders.
     python3 walk.py <build-dir>
 
 Prints the walks from each spawn to the three posts and the places on the way, and checks that nobody on the
-ground can get back up onto a spawn terrace.
+ground can get back up into a spawn.
 """
 import sys
 from collections import deque
@@ -33,10 +33,6 @@ def standable(passable, water, solid):
     st = np.zeros_like(passable)
     st[:, 1:-1, :] = passable[:, 1:-1, :] & passable[:, 2:, :] & (solid[:, :-2, :] | water[:, 1:-1, :] | water[:, :-2, :])
     return st
-
-
-JUMPS = [(dx, dz) for dx in range(-4, 5) for dz in range(-4, 5)
-         if 1 <= ((max(abs(dx) - 1, 0)) ** 2 + (max(abs(dz) - 1, 0)) ** 2) ** 0.5 <= 3]
 
 
 def bfs(st, ladder, water, passable, start, x0, z0, jumps=False):
@@ -75,20 +71,19 @@ def bfs(st, ladder, water, passable, start, x0, z0, jumps=False):
                         push((nx, ny, nz), d)
                     break
         if jumps:                                            # a running jump over a gap of one to three, at most one up
-            for dx, dz in JUMPS:
-                nx, nz = x + dx, z + dz
-                if not (0 <= nx < sx and 0 <= nz < sz) or y + 3 >= sy:
-                    continue
-                n = max(abs(dx), abs(dz)) * 3
-                line = {(x + round(dx * s / n), z + round(dz * s / n)) for s in range(1, n)} - {(x, z), (nx, nz)}
-                if not line or any(st[a, y, b] or st[a, y + 1, b] for a, b in line):
-                    continue                                 # not a gap: the ground runs on
-                if not all(passable[a, y + 1, b] and passable[a, y + 2, b] for a, b in line):
-                    continue
-                for ny in (y + 1, y):
-                    if st[nx, ny, nz]:
-                        push((nx, ny, nz), d + max(abs(dx), abs(dz)))
+            for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                for g in (2, 3, 4):
+                    nx, nz = x + dx * g, z + dz * g
+                    if not (0 <= nx < sx and 0 <= nz < sz) or y + 3 >= sy:
+                        continue
+                    clear = all(passable[x + dx * k, y + 1, z + dz * k] and passable[x + dx * k, y + 2, z + dz * k]
+                                for k in range(1, g))
+                    if not clear:
                         break
+                    for ny in (y + 1, y):
+                        if st[nx, ny, nz] and not st[x + dx, y, z + dz]:
+                            push((nx, ny, nz), d + g)
+                            break
         for dy in (1, -1):                                   # ladders and water lift a player straight up
             ny = y + dy
             if 1 <= ny < sy - 1 and (ladder[x, ny, z] or ladder[x, y, z] or water[x, ny, z]) and (st[x, ny, z] or ladder[x, ny, z]):
@@ -112,12 +107,11 @@ def main(build):
     x0, z0, ids, dat = render_iso.load(build)
     passable, water, ladder, solid = grid(ids)
     st = standable(passable, water, solid) | (ladder & passable)
-    spawns = {"red": (0, 23, -52), "blue": (0, 23, 52)}
+    spawns = {"red": (0, 33, -55), "blue": (0, 33, 55)}
     places = [("the Cistern's top, the post", (0, 25, 0)), ("the Mirador's pad, the post", (-42, 25, 0)),
-              ("the Minaret's top, the post", (30, 23, 0)), ("the Mirador's porch", (-25, 25, 0)),
-              ("a Cistern landing", (4, 23, 0)), ("the canal's head at the court", (5, 21, 17)),
-              ("the arcade roof's north end", (11, 25, 18)), ("the west garden, by its kiosk", (-25, 18, 22)),
-              ("the east garden's void-hole stones", (33, 18, 25))]
+              ("the Minaret's top, the post", (30, 26, 0)), ("the Mirador's porch", (-25, 25, 0)),
+              ("the pool under the spawn", (0, 18, 49)), ("the canal's head at the court", (5, 21, 17)),
+              ("the arcade roof's north end", (11, 25, 18)), ("the west garden's kiosk", (-25, 21, 22))]
     out = []
     for team, s in spawns.items():
         dist = bfs(st, ladder, water, passable, [s], x0, z0)
@@ -129,9 +123,8 @@ def main(build):
             out.append(f"  to {name}: {v if v is not None else 'NOT REACHED on foot'}")
     dist = bfs(st, ladder, water, passable, [spawns["blue"]], x0, z0, jumps=True)
     v = nearest(dist, x0, z0, 11, 25, 18)
-    vs = nearest(dist, x0, z0, 33, 18, 25, r=0)
     out.append(f"blue spawn, with running jumps: the arcade roof's north end {v if v is not None else 'NOT REACHED'}, "
-               f"the void-hole stone {vs if vs is not None else 'NOT REACHED'}, {int((dist >= 0).sum())} cells in all")
+               f"{int((dist >= 0).sum())} cells in all")
     for name, (x, y, z) in places[:3]:
         dist = bfs(st, ladder, water, passable, [(x, y, z)], x0, z0)
         parts = []
@@ -141,10 +134,10 @@ def main(build):
                 parts.append(f"{other.split(',')[0]} {v if v is not None else 'not on foot'}")
         out.append(f"from {name.split(',')[0]}: " + "; ".join(parts))
     # can anyone on the ground get back up into a spawn room?
-    dist = bfs(st, ladder, water, passable, [(25, 18, 0)], x0, z0, jumps=True)
+    dist = bfs(st, ladder, water, passable, [(25, 21, 0)], x0, z0)
     for team, s in spawns.items():
         v = nearest(dist, x0, z0, *s, r=3)
-        out.append(f"from the ground, jumps allowed, back onto {team}'s spawn terrace: {'REACHED in ' + str(v) if v is not None else 'not reachable'}")
+        out.append(f"from the ground into {team}'s spawn room: {'REACHED in ' + str(v) if v is not None else 'not reachable'}")
     print("\n".join(out))
     return out
 

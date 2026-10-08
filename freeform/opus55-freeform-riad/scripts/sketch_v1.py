@@ -2,7 +2,7 @@
 
 1. THE BOARD — every column by what it is and how high: the void, the ground, the water, the walls and
    hedges, the arcade roofs hatched over the walks under them, the stairs with the way they rise, the ladders,
-   the Cistern's water columns, the three posts, and the spawn terraces.
+   the Cistern's water columns, the three posts, the spawn houses, and the line the carrier may not cross.
 2. THE ROUTES — blue's ways from the spawn to each post and between them, with the checker's numbers.
 3. TWO SECTIONS at true scale — north to south down the axis, through both spawns, the canal and the
    Cistern; and west to east through the Mirador, the court and the Minaret.
@@ -55,8 +55,6 @@ def colour(i, j):
     if k == "spawn":
         z = j + P.Z_MIN
         return (230, 170, 170) if z < 0 else (170, 185, 235)
-    if k == "tree":
-        return (20, 70, 20)
     if k == "stone":
         return (210, 200, 150)
     if k == "bridge":
@@ -87,6 +85,12 @@ def bowl(d, oy):
         cx, cy = a + S / 2, b + S / 2
         dx, dz = {"+x": (1, 0), "-x": (-1, 0), "+z": (0, 1), "-z": (0, -1)}[r]
         d.line([(cx - dx * 2, cy - dz * 2), (cx + dx * 2, cy + dz * 2)], fill=(40, 40, 40), width=2)
+    # the carrier's line
+    for zl in (-P.CARRIER_LINE, P.CARRIER_LINE):
+        a, b = px(-36, zl + (0 if zl > 0 else 1), oy)
+        c, e = px(37, zl + (0 if zl > 0 else 1), oy)
+        for s in range(int(a), int(c), 8):
+            d.line([(s, b), (s + 4, b)], fill=(240, 60, 200), width=2)
     # the posts
     for post in P.POSTS:
         x, y, z = post["at"]
@@ -97,23 +101,24 @@ def bowl(d, oy):
     for team, (x, y, z, yaw) in P.SPAWNS.items():
         a, b = px(x, z, oy)
         d.polygon([(a, b - 5), (a + 5, b), (a, b + 5), (a - 5, b)], fill=TEAM[team], outline=(255, 255, 255))
-    labels = [(-34, 10, "balcony 20"), (-29, -1, "porch 24"), (-40, -3, "bridge 24"), (22, -12, "the Minaret's garden 17"),
-              (-16, -15, "the court 20"), (-34, 18, "west garden 17"), (15, 18, "east garden 17"), (-1, 30, "canal"),
-              (-21, 42, "back garden 20"), (-9, 49, "spawn terrace 22"), (3, -1, "landings 22")]
+    labels = [(-34, 10, "balcony 20"), (-29, -1, "porch 24"), (-40, -3, "bridge 24"), (19, -14, "the Minaret's garden 20"),
+              (-14, -14, "the court 20"), (-34, 22, "west garden"), (16, 22, "east garden"), (-1, 30, "canal"),
+              (-34, 44, "back garden"), (-6, 59, "spawn house, deck 32"), (-12, 36, "arcade, roof 24")]
     for x, z, t in labels:
         a, b = px(x, z, oy)
         d.text((a, b), t, fill=(20, 20, 20))
     d.text((6, oy + 4), "1. THE BOARD — ground (sand, by height), void (black), water (blue), canal (pale blue), walls (brown), hedges and planters (green),"
            " arcade roofs (hatched), stairs (ticks), posts (purple, circled),", fill=(255, 255, 255))
-    d.text((6, oy + 16), "   the swim columns (cyan, caged), ladders (brown), parkour stones (pale), spawn terraces (team colour), trees (dark green)", fill=(255, 255, 255))
+    d.text((6, oy + 16), "   the swim columns (cyan, caged), ladders (brown), parkour stones (pale), spawn patios (team colour) under their decks (boxed),"
+           " the carrier's line (magenta dashes)", fill=(255, 255, 255))
 
 
 ROUTES = [
-    ("spawn to the Cistern down the canal, swim up", [(0, 46), (4, 44), (4, 8), (0, 4)], (90, 170, 255), 4),
-    ("spawn to the Mirador: down into the west garden, up onto the balcony, blue's stair", [(-11, 44), (-19, 36), (-19, 32), (-25, 20), (-25, 16), (-26, 10), (-26, 6), (-30, 1), (-41, 1)], (250, 220, 90), 3),
-    ("spawn to the Minaret: the east garden, the ring, down its side stair", [(11, 44), (19, 36), (19, 32), (25, 20), (25, 16), (34, 15), (34, 10), (30, 3)], (240, 120, 60), 3),
-    ("the roof walk: three stones up, the arcade roof to the court", [(17, 44), (16, 41), (14, 40), (11, 38), (11, 18)], (200, 120, 255), 3),
-    ("the garden's edge: two stones over the void hole", [(33, 21), (33, 25), (33, 27), (33, 31)], (255, 90, 90), 3),
+    ("spawn to the Cistern down the canal", [(10, 52), (10, 43), (4, 40), (4, 8), (0, 4)], (90, 170, 255), 4),
+    ("spawn to the Mirador by the west garden and blue's stair", [(-10, 52), (-15, 43), (-30, 36), (-26, 12), (-26, 6), (-30, 1), (-41, 1)], (250, 220, 90), 3),
+    ("spawn to the Minaret by the east garden", [(10, 52), (15, 43), (30, 36), (32, 12), (30, 3)], (240, 120, 60), 3),
+    ("the roof walk: three stones up, the arcade roof to the court", [(11, 47), (11, 40), (11, 38), (11, 18)], (200, 120, 255), 3),
+    ("the Mirador's other stair: red's, from the north balcony", [(-26, -12), (-26, -6), (-26, -2)], (250, 220, 90), 2),
 ]
 
 

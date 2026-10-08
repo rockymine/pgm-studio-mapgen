@@ -70,9 +70,6 @@
             </same-team>
         </not>
     </any>
-    <deny id="deny-flag-carrier">
-        <filter id="flag-carrier"/>
-    </deny>
     <team id="only-red">red-team</team>
     <team id="only-blue">blue-team</team>
 </filters>
@@ -81,10 +78,10 @@
         <region><point>0.5,40,0.5</point></region>
     </default>
     <spawn team="red-team" kit="spawn-kit" filter="has-flag" yaw="0">
-        <region><point>0.5,33,-54.5</point></region>
+        <region><point>0.5,23,-51.5</point></region>
     </spawn>
     <spawn team="blue-team" kit="spawn-kit" filter="has-flag" yaw="180">
-        <region><point>0.5,33,55.5</point></region>
+        <region><point>0.5,23,52.5</point></region>
     </spawn>
 </spawns>
 <respawn delay="3s" auto="true" spectate="true">
@@ -93,22 +90,11 @@
     </message>
 </respawn>
 <regions>
-    <!-- the spawn houses: the deck room, the patio under it and its doors -->
-    <cuboid id="red-spawn" min="-9,20,-59" max="10,38,-44"/>
-    <cuboid id="blue-spawn" min="-9,20,45" max="10,38,60"/>
+    <!-- the spawn terraces: two over the back garden, so nobody climbs back; the enemy may not enter either -->
+    <cuboid id="red-spawn" min="-10,22,-56" max="11,30,-45"/>
+    <cuboid id="blue-spawn" min="-10,22,46" max="11,30,57"/>
     <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
     <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
-    <!-- the carrier stays in the middle: up to the purple line and no further into either back garden, and
-         off the arcade roofs; the stones that climb to them stand behind the line -->
-    <union id="carrier-out">
-        <cuboid min="-60,0,-70" max="60,64,-32"/>
-        <cuboid min="-60,0,33" max="60,64,70"/>
-        <cuboid min="-13,25,-38" max="-8,64,-17"/>
-        <cuboid min="9,25,-38" max="14,64,-17"/>
-        <cuboid min="-13,25,18" max="-8,64,39"/>
-        <cuboid min="9,25,18" max="14,64,39"/>
-    </union>
-    <apply enter="deny-flag-carrier" region="carrier-out" message="You may not take the flag past the purple line or onto the roofs!"/>
     <apply block="never" use="never"/>
 </regions>
 <flags>
@@ -117,7 +103,7 @@
         <post return-time="0s" respawn-time="15s">
             <post name="the Cistern">0.5,25,0.5</post>
             <post name="the Mirador" yaw="90">-41.5,25,0.5</post>
-            <post name="the Minaret" yaw="-90">30.5,26,0.5</post>
+            <post name="the Minaret" yaw="-90">30.5,23,0.5</post>
         </post>
     </flag>
 </flags>
