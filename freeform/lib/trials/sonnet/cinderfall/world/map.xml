@@ -1,0 +1,96 @@
+<map proto="1.5.0">
+    <name>Cinderfall</name>
+    <version>0.1.0</version>
+    <objective>Break the enemy's core: lava must leak out of it.</objective>
+    <gamemode>dtc</gamemode>
+    <authors>
+        <author>Claude (freeform generator, on pgmvox)</author>
+    </authors>
+    <teams>
+        <team id="red-team" color="red" max="16">Red</team>
+        <team id="blue-team" color="blue" max="16">Blue</team>
+    </teams>
+    <filters>
+        <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
+        <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
+        <any id="spawn-minable">
+            <material>iron ore</material>
+        </any>
+        <all id="spawn-minable-regrowth">
+            <filter id="spawn-minable"/>
+            <cause>world</cause>
+        </all>
+        <not id="not-void">
+            <void/>
+        </not>
+    </filters>
+    <spawns>
+        <spawn team="red-team" kit="spawn-kit" yaw="270">
+            <region>
+                <point>-73.5,64,12.5</point>
+            </region>
+        </spawn>
+        <spawn team="blue-team" kit="spawn-kit" yaw="90">
+            <region>
+                <point>73.5,64,-12.5</point>
+            </region>
+        </spawn>
+        <default yaw="90">
+            <region>
+                <point>0.5,90,0.5</point>
+            </region>
+        </default>
+    </spawns>
+    <regions>
+        <cuboid min="-82,0,3" max="-62,128,30" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block-place="spawn-minable-regrowth" block-break="spawn-minable" region="red-spawn" message="You may not edit the spawn!"/>
+        <cuboid min="62,0,-30" max="82,128,-3" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block-place="spawn-minable-regrowth" block-break="spawn-minable" region="blue-spawn" message="You may not edit the spawn!"/>
+        <cuboid min="-50,65,-12" max="-45,70,-7" id="red-core-region"/>
+        <cuboid min="45,65,7" max="50,70,12" id="blue-core-region"/>
+        <below y="10" id="the-fall"/>
+        <apply kit="fall-kill" region="the-fall"/>
+        <apply block-place="not-void" message="You may not build in the void!"/>
+    </regions>
+    <renewables>
+        <renewable region="red-spawn" renew-filter="spawn-minable"/>
+        <renewable region="blue-spawn" renew-filter="spawn-minable"/>
+    </renewables>
+    <cores>
+        <core id="red-core" name="Red Core" team="red-team" leak="5" mode-changes="true" region="red-core-region"/>
+        <core id="blue-core" name="Blue Core" team="blue-team" leak="5" mode-changes="true" region="blue-core-region"/>
+    </cores>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="stained clay" amount="32" team-color="true"/>
+            <item slot="6" material="golden apple" amount="4"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+        <kit id="fall-kill" force="true">
+            <effect duration="1" amplifier="5">instant damage</effect>
+        </kit>
+    </kits>
+    <maxbuildheight>100</maxbuildheight>
+</map>
+
