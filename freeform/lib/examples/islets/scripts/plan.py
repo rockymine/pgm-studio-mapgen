@@ -2,19 +2,22 @@
 hill, drawn once as a raster with its half turn in the plan, and read by the checker, the sketch and the generator.
 
     floors: 30 the islands, 33 the middle hill; the void below, the kill height at 20, cloud far under it
+    a house on each island at 20 degrees to the board, its footprint in the plan so the checker walks round it
 """
 import os
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
+from pgmvox.build import Frame  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
 
 KILL_Y = 20
 GROUND = 30
 HILL = 33
-KINDS = ["void", "floor", "stair", "hill", "spawn"]
+KINDS = ["void", "floor", "stair", "hill", "spawn", "house"]
 COLOURS = {"void": (34, 38, 52), "floor": (150, 175, 110), "stair": (170, 160, 130), "hill": (225, 205, 120),
-           "spawn": (120, 150, 200)}
+           "spawn": (120, 150, 200), "house": (150, 110, 80)}
+HOUSE = dict(cx=-19, cz=-5, heading=20, L=7, W=5)                               # red's; blue's is its half turn
 WALK = {"floor", "stair", "hill", "spawn"}
 
 
@@ -26,4 +29,6 @@ def build():
     R.rect(-8, -3, -1, 0, GROUND)                                                  # a causeway out to it
     R.flight((-3, -1), "e", width=(0, 1), h0=GROUND + 1, n=2)                      # two steps up onto the hill
     R.rect(-8, -6, -6, -5, GROUND)                                                 # a stepping stone, a jump away
+    for x, z in Frame(HOUSE["cx"], HOUSE["cz"], HOUSE["heading"]).cells(HOUSE["L"], HOUSE["W"]):
+        R.cell(x, z, GROUND, "house")                                              # a house, turned 20 degrees
     return R

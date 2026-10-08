@@ -25,8 +25,8 @@ m = S.map(R.x_min, R.z_min, R.x_max, R.z_max, scale=12, title="THE BOARD",
           legend="number on each piece: its floor height; A the hill; S spawns; blue's half drawn paler")
 m.raster(R, COLOURS)
 m.heights(R)
-m.place(-20, -7, "Red's island")
-m.place(*R.symmetry.point(-20, -7), "Blue's island")
+m.place(-20, 6, "Red's island")
+m.place(*R.symmetry.point(-20, 6), "Blue's island")
 m.jumps(J, R=R)
 m.route(red, TEAM["red"], both=True)
 m.marker(-24, 0, "S", TEAM["red"], both=True)
@@ -34,6 +34,7 @@ m.marker(-1, 2, "A", TEAM["neutral"])
 m.callout(-7, -6, "stepping stone, a jump off the causeway", dx=-40, dz=-34)
 m.callout(-3, -1, f"two steps, {GROUND} to {HILL}", dx=-10, dz=60)
 m.callout(-24, 12, f"void: kill below y {KILL_Y}", dx=30, dz=20)
+m.callout(-21, -7, "house at 20 degrees; its eave reaches a block past the walls", dx=-20, dz=-40)
 
 along_x = SectionPanel(R.x_min, R.x_max, KILL_Y - 2, 38, scale=8, title="ACROSS",
                        legend="along x at z 0, true scale")

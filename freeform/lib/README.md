@@ -19,6 +19,8 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `plangraph` | the walk over a plan: `graph`, `jumps`, `dijkstra`, `route`, `path`, `arrivals` per team, `pad_edges` |
 | `sight` | `line_clear`, `visibility`, `hidden`, with an opaque test for a plan or a built world |
 | `sketch` | the annotated sheet: map panels (a plan raster or a built top-down) with heights, places, markers, routes, jumps, zones and callouts; true-scale and unrolled sections; the checker's numbers against their targets |
+| `build` | `Frame`, a building's own axes at any heading; `RoofField`, the studio's six roof forms block for block, and `lay_roof`; `house`; `parapet`, `site`, `stairs`, `ladder`, `Claims` |
+| `facade` | face patterns (`band`, `courses`, `flutes`, `panels`, `slits`, `checker`, `windows`, `glyph_row`, `word`) set back or flush on an `extrude`d mass, `coffer`, `top_course`; floor fields (`border`, `medallion`, `corners`, `diamonds`, `steps`, `star`, `cross`, `tiles`) composed by `first_of` and laid by `carpet` |
 | `terrain` | `mountain_ring`, `slope_deg`, `lay` (ground painted by slope, rock bands, snow line), `underside`, `cloud_deck` |
 | `walk` | the voxel walk over built blocks with `MoveRules`; `no_stand_above`, `catchers`, `unreached`, `nearest`, `gap_cleared` |
 | `audit` | `footing`: blocks that would fall, or have nothing to hang on |
@@ -84,6 +86,38 @@ marks a miss in red, so the review sees it first.
 **`examples/islets/` draws both.** `scripts/sketch.py` writes `renders/00-plan-sketch.png`, and `renders.py`
 writes `05-topdown-annotated.png`, where the plan's island outline is ghosted over the built blocks.
 
+## Buildings and patterns
+
+**The roof is the studio's, and a test holds it there.** `build.RoofField` is a port of the studio's own
+`RoofField`: gable, flat, hip, gambrel, shed and saltbox, in whole or half courses, with the eave falling to two
+courses under the wall top. `data/export_roofs.cs` runs the studio's class over 300 roofs and writes every cell's
+answer to `data/roofs.json.gz`. The test asks the port the same 34,500 questions and wants the same crown, riser,
+slope and ridge. `lay_roof` lays a field the way the stamper does, in stairs climbing toward the higher neighbour.
+
+**What the library adds to the studio's houses is a heading.** A `Frame` places a building's own axes on the
+board at any angle, and a block belongs to a shape when its centre lies inside it. Walls come from eight
+neighbours, so a 45 degree wall is closed. A roof measured in the frame is the studio's roof turned. At 0 or 90
+degrees it is the studio's exactly; turned, it is laid in cubes and slabs to the half block, because a stair can
+face only four ways.
+
+**One convention settles the half blocks.** An even side wants its centre on a whole block and an odd side on a
+half; `house` snaps an axis-aligned centre that way. A distance in a frame is measured from the wall line's outer
+face, the same test the wall mask uses, so a wall and its roof never disagree by half a block.
+
+**A face pattern is a function of where a block falls on its face**, so one pattern fits a long wall and a short
+one. Faces are walked left to right as seen from outside, and a word in `facade.word` reads correctly on every
+side. An inset sets the face back a block, so a band or a glyph is a recess and not a paint. Corners stay flush.
+
+**A floor field is a function of where a cell falls in its rectangle.** The five carpets of the woven board were
+one chain of conditions; they are now borders, medallions, diamonds and stars that `first_of` composes.
+
+**`examples/parts/` lays every piece on one yard:** the four house styles at 0, 20, 45 and 90 degrees, the six
+roof forms, a mass on piers with a word, glyphs, flutes and a coffered underside, and three carpets. Islets uses
+them too: a house on each island at 20 degrees, its footprint in the plan.
+
+**Islets' read-back caught the first such house.** Its eave hung a block past the island's edge, over the void,
+because the plan held the walls and not the roof. It was moved two blocks in.
+
 ## Starting a board
 
 **`examples/islets/` is a whole board written against the library.** It has a plan raster with its half turn, a
@@ -110,14 +144,18 @@ cd freeform/lib && python3 -m unittest discover -s tests -v
 
 **The tests check what each module promises.** They cover the studio-exported table, turns and their round trips,
 the physics numbers the boards measured, the headroom fix, ladders, footing, plan symmetry and fair arrivals,
-sight, slope without wrapping, save and load, rendering, a sketch sheet with every kind of panel, map.xml, and a
-Curio plot passing the plot check.
+sight, slope without wrapping, save and load, rendering, a sketch sheet with every kind of panel, the roof
+against the studio's own, a house at 45 degrees with no gap in its walls, a word read from both sides, map.xml,
+and a Curio plot passing the plot check.
 
 ## What it does not do yet
 
-**The assessment's building and pattern modules are not here yet.** `build` (one roof field for the six gable
-roofs, the `Frame` house at any angle, parapets) and `facade` (insets, flutes, glyph rows, floor figures) are the
-next to write, against the studio's own `RoofField` and stamper so the two do not drift.
+**The house is simpler than the studio's.** It has one rectangle per storey, so no wings, porches or dormers,
+and its timber frame and window rhythm come from the boards, not from the studio's `HouseStyle`. Only the roof
+is held to the studio's formulas.
+
+**A plan holds a building's walls, not its roof.** A roof's overhang is not in the raster, so the checker cannot
+see an eave over the void; the read-back can.
 
 **Course plans are not here yet.** The boards built of pieces (the water drop, the wool run) need a `Pieces` plan
 beside `Raster`.

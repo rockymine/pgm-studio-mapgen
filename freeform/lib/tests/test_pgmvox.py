@@ -2,6 +2,8 @@
 
     cd freeform/lib && python3 -m unittest discover -s tests -v
 """
+import gzip
+import json
 import os
 import sys
 import tempfile
@@ -14,6 +16,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 
 from pgmvox import B, World, audit, blocks, move, orient, plangraph, plot, render, sight, terrain, walk  # noqa: E402
+from pgmvox import build as BLD  # noqa: E402
+from pgmvox import facade as F  # noqa: E402
 from pgmvox.mapxml import Doc, E, duration, point  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
 from pgmvox.sketch import TEAM, SectionPanel, Sheet  # noqa: E402
@@ -194,6 +198,95 @@ class Sketch(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             p = S.save(os.path.join(d, "s.png"))
             self.assertTrue(os.path.getsize(p) > 0)
+
+
+class Roofs(unittest.TestCase):
+    def test_the_roof_is_the_studios(self):
+        """Every cell of 300 roofs answered by the studio's own RoofField (data/export_roofs.cs)."""
+        with gzip.open(os.path.join(os.path.dirname(HERE), "pgmvox", "data", "roofs.json.gz"), "rt") as f:
+            cases = json.load(f)
+        for c in cases:
+            r = BLD.RoofField(c["form"], tuple(c["box"]), c["overhang"], 70, c["pitch"], c["front"], c["halves"])
+            self.assertEqual((r.peak, r.trough), (c["peak"], c["trough"]))
+            for x, z, crown, riser, half, up, ridge, verge in c["cells"]:
+                self.assertEqual((r.crown(x, z), r.riser(x, z), r.half(x, z), r.upslope(x, z) or "",
+                                  r.on_ridge(x, z), r.past_verge(x, z)), (crown, riser, half, up, ridge, verge),
+                                 f"{c['form']} {c['box']} at {x},{z}")
+
+    def test_a_framed_roof_square_to_the_board_is_the_studios(self):
+        for form in BLD.FORMS:
+            for L, W, cx, cz in ((10, 6, 3, 2), (9, 5, 0.5, -1.5), (6, 12, 0, 0)):
+                a = BLD.RoofField.framed(form, BLD.Frame(cx, cz, 0), L, W, 1, 70)
+                x0, z0 = round(cx - L / 2), round(cz - W / 2)
+                b = BLD.RoofField(form, (x0, z0, x0 + L - 1, z0 + W - 1), 1, 70)
+                self.assertEqual(sorted(a.cells()), sorted(b.cells()))
+                for x, z in b.cells():
+                    self.assertEqual((a.crown(x, z), a.upslope(x, z)), (b.crown(x, z), b.upslope(x, z)))
+
+    def test_frame_covers_its_length(self):
+        self.assertEqual(len(BLD.Frame(0, 0, 0).cells(8, 6)), 48)
+        self.assertEqual(len(BLD.Frame(0, 0.5, 90).cells(7, 6)), 42)          # u runs along z here
+
+
+class Houses(unittest.TestCase):
+    def test_a_house_at_45_degrees_is_closed(self):
+        """Walls from eight neighbours: nothing outside reaches inside but through the door."""
+        w = World(-16, -16, 32, 32, sy=30)
+        w.fill(-16, 0, -16, 15, 4, 15, B.STONE)
+        r = BLD.house(w, BLD.House(0, 0, 45, L=10, W=7, floor=4, storeys=1, door=1))
+        dx, dz, _ = r["door"]
+        w.set(dx, 5, dz, B.STONE)                                # shut the door for the test
+        w.set(dx, 6, dz, B.STONE)
+        seen, todo = {(-16, -16)}, [(-16, -16)]
+        while todo:
+            x, z = todo.pop()
+            for ex, ez in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                n = (x + ex, z + ez)
+                if -16 <= n[0] < 16 and -16 <= n[1] < 16 and n not in seen and w.id(n[0], 6, n[1]) == B.AIR:
+                    seen.add(n)
+                    todo.append(n)
+        self.assertNotIn((0, 0), seen)
+        self.assertEqual(w.id(0, 6, 0), B.AIR)
+
+    def test_square_house_has_its_door_and_roof(self):
+        w = World(-12, -12, 24, 24, sy=30)
+        r = BLD.house(w, BLD.House(0, 0, 0, L=9, W=6, floor=2, storeys=2))
+        x, z, facing = r["door"]
+        self.assertEqual(facing, (0, 1))
+        self.assertIn(w.id(x, 3, z), blocks.DOORS)
+        self.assertEqual(r["roof"].peak, r["eave"] + 1 + 2)     # a pitch-1 gable over six: two courses up
+
+    def test_claims(self):
+        c = BLD.Claims()
+        c.claim("a", {(0, 0), (1, 0)})
+        c.claim("b", {(1, 0)})
+        c.claim("c", {(1, 0)}, layer="sky")
+        self.assertEqual(c.overlaps(), [("ground", "a", "b", 1)])
+
+
+class Facades(unittest.TestCase):
+    def test_a_word_reads_left_to_right_from_outside(self):
+        w = World(-2, -2, 30, 10, sy=12)
+        F.extrude(w, F.rect_cells(0, 0, 20, 5), 0, 8, faces_=[F.word(2, "LT", F.DARK)])
+        south = ["".join("#" if w.id(x, y, 5) == B.AIR else "." for x in range(0, 21)) for y in range(6, 1, -1)]
+        north = ["".join("#" if w.id(x, y, 0) == B.AIR else "." for x in range(20, -1, -1)) for y in range(6, 1, -1)]
+        self.assertEqual(south[0].strip("."), "#...###")
+        self.assertEqual(south, north)                           # the same word, read from its own side
+        self.assertEqual(w.get(7, 6, 4), F.DARK)                 # set back, in the inset block
+
+    def test_corners_stay_flush(self):
+        w = World(-2, -2, 12, 12, sy=8)
+        F.extrude(w, F.rect_cells(0, 0, 5, 5), 0, 5, faces_=[F.band(0, 5, F.DARK)])
+        self.assertEqual(w.get(0, 2, 0), F.CONCRETE)
+        self.assertEqual(w.id(2, 2, 0), B.AIR)
+
+    def test_carpet(self):
+        w = World(0, 0, 12, 12, sy=2)
+        n = F.carpet(w, 0, 0, 10, 10, 0, F.first_of(F.border(1, (B.WOOL, 15)), F.star(2, (B.WOOL, 4)),
+                                                    default=(B.WOOL, 11)))
+        self.assertEqual(w.get(0, 0, 5), (B.WOOL, 15))
+        self.assertEqual(w.get(5, 0, 5), (B.WOOL, 4))
+        self.assertEqual(sum(n.values()), 121)
 
 
 class Terrain(unittest.TestCase):

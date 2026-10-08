@@ -23,8 +23,8 @@ m = S.map(R.x_min, R.z_min, R.x_max, R.z_max, scale=12, title="FROM ABOVE",
           legend="the built world's top blocks, with the plan's names over them",
           symmetry=R.symmetry)
 m.built(w, ymin=15)
-m.place(-20, -7, "Red's island")
-m.place(*R.symmetry.point(-20, -7), "Blue's island")
+m.place(-20, 6, "Red's island")
+m.place(*R.symmetry.point(-20, 6), "Blue's island")
 m.marker(-24, 0, "S", TEAM["red"], both=True)
 m.marker(-1, 2, "A", TEAM["neutral"])
 m.ghost([(-28, -9), (-14, -12), (-11, -2), (-14, 9), (-26, 10)], (255, 255, 255), both=True)
