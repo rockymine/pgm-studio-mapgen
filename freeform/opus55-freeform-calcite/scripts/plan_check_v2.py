@@ -13,14 +13,14 @@ import math
 
 import numpy as np
 
-import plan as P
+import plan_v2 as P
 from pad import fly
 
 R = P.build()
 H, K = R.H, R.K
 WALK = {P.KINDS[k] for k in ("floor", "stair", "pad", "hill", "spawn")}
 LADDER = P.KINDS["ladder"]
-LAVA = P.KINDS["lava"]
+WATER = P.KINDS["water"]
 
 
 def walkable(i, j):
@@ -41,8 +41,8 @@ def land_of_pad(pad, v=None):
         floor = H[i, j] + 1
         if K[i, j] == P.KINDS["wall"] and yy < P.WALL_Y + 1:
             return dict(t=t, x=x, z=z, y=yy, apex=apex, hit="wall")
-        if yy <= floor and prev_y >= floor - 0.01 or (yy <= floor and K[i, j] == LAVA):
-            return dict(t=t, x=x, z=z, y=floor, apex=apex, hit=["wall", "floor", "lava", "stair", "ladder", "pad", "hill", "spawn"][K[i, j]],
+        if yy <= floor and prev_y >= floor - 0.01 or (yy <= floor and K[i, j] == WATER):
+            return dict(t=t, x=x, z=z, y=floor, apex=apex, hit=["wall", "floor", "water", "stair", "ladder", "pad", "hill", "spawn"][K[i, j]],
                         cell=(i, j), dist=math.hypot(x - px, z - pz))
         prev_y = yy
     return None
@@ -68,82 +68,26 @@ def tune(pad, target, rng=np.random.default_rng(1)):
 
 
 def jumps():
-    """Every jump the raster allows, in any direction: from a floor to another floor whose nearest edge is one to
-    three blocks away, landing no more than a block higher, over cells that are not floor at a height a player
-    would walk on. A hop across a stairwell cut into a floor is left out."""
+    """Every gap of 1..3 blocks across which a player lands no more than a block higher."""
     out = []
     for i in range(P.NX):
         for j in range(P.NZ):
             if not walkable(i, j):
                 continue
-            h0 = H[i, j]
-            for di in range(-4, 5):
-                for dj in range(-4, 5):
-                    gx, gz = max(0, abs(di) - 1), max(0, abs(dj) - 1)
-                    gap = math.hypot(gx, gz)
-                    if gap < 1 or gap > 3.0:
+            for di, dj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                for g in (1, 2, 3):
+                    a, b = i + di * (g + 1), j + dj * (g + 1)
+                    if not walkable(a, b):
                         continue
-                    a, b = i + di, j + dj
-                    if not walkable(a, b) or H[a, b] - h0 > 1:
-                        continue
-                    # the cells the jump passes over, sampled along the line between the two
-                    n = max(abs(di), abs(dj)) * 3
-                    over = set()
-                    for s in range(1, n):
-                        p = int(round(i + di * s / n)); q = int(round(j + dj * s / n))
-                        if (p, q) not in ((i, j), (a, b)):
-                            over.add((p, q))
-                    if not over:
-                        continue
-                    if any(K[p, q] == P.KINDS["wall"] or (walkable(p, q) and H[p, q] >= min(h0, H[a, b]) - 1) for p, q in over):
-                        continue
-                    if all(K[p, q] == P.KINDS["stair"] for p, q in over):
-                        continue
-                    out.append(((i, j), (a, b), round(gap, 1)))
+                    mid = [(i + di * s, j + dj * s) for s in range(1, g + 1)]
+                    if all(K[p, q] == P.KINDS["stair"] for p, q in mid):
+                        continue                    # across a stairwell cut into a floor: a hop, not a route
+                    if all(not walkable(p, q) or H[p, q] <= min(H[i, j], H[a, b]) - 2 for p, q in mid) and \
+                            all(K[p, q] != P.KINDS["wall"] for p, q in mid) and H[a, b] - H[i, j] <= 1 and \
+                            not any(walkable(p, q) and H[p, q] >= H[i, j] - 1 for p, q in mid):
+                        out.append(((i, j), (a, b), g))
+                        break
     return out
-
-
-def walk_near(a, b, limit=12):
-    """Whether b is reached from a on foot (steps of at most one up, drops of any height) within `limit` moves."""
-    from collections import deque
-    seen = {a: 0}
-    q = deque([a])
-    while q:
-        u = q.popleft()
-        if seen[u] >= limit:
-            continue
-        i, j = u
-        for di, dj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-            v = (i + di, j + dj)
-            if v not in seen and walkable(*v) and H[v] - H[u] <= 1:
-                if v == b:
-                    return True
-                seen[v] = seen[u] + 1
-                q.append(v)
-    return False
-
-
-def shortcuts(J):
-    """The jumps that are routes: those whose two ends are not already a few steps apart on foot."""
-    return [(a, b, g) for a, b, g in J if not walk_near(a, b)]
-
-
-def jump_groups(J):
-    """The jumps grouped by the two floors they join, so a long edge reads as one jump, with its smallest gap."""
-    from scipy import ndimage
-    lab = np.zeros(H.shape, int)
-    n = 0
-    for h in np.unique(H):
-        m = np.isin(K, list(WALK)) & (H == h)
-        l, k = ndimage.label(m)
-        lab[m] = l[m] + n
-        n += k
-    groups = {}
-    for a, b, g in J:
-        key = (lab[a], lab[b])
-        if key not in groups or g < groups[key][2]:
-            groups[key] = (a, b, g)
-    return groups
 
 
 def graph(use_tunnel=True, use_pads=True, use_jumps=True, use_drops=True):
@@ -154,14 +98,28 @@ def graph(use_tunnel=True, use_pads=True, use_jumps=True, use_drops=True):
         edges.setdefault(a, []).append((b, c, tag))
     for i in range(P.NX):
         for j in range(P.NZ):
-            if not walkable(i, j):
+            if K[i, j] == LADDER:                       # climbed out onto the Ledge beside it
+                for di, dj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    if walkable(i + di, j + dj) and H[i + di, j + dj] == 16:
+                        add((i, j), (i + di, j + dj), 6, "ladder")
+                continue
+            if not (walkable(i, j) or K[i, j] == WATER):
                 continue
             for di, dj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
                 a, b = i + di, j + dj
                 if not (0 <= a < P.NX and 0 <= b < P.NZ):
                     continue
+                if K[i, j] == WATER:
+                    if K[a, b] == WATER or K[a, b] == P.KINDS["ladder"]:
+                        add((i, j), (a, b), 1.5, "swim")
+                    continue
+                if K[a, b] == WATER:
+                    add((i, j), (a, b), 1, "fall into the pool")
+                    continue
+                if K[a, b] == LADDER:
+                    continue
                 if not walkable(a, b):
-                    continue                            # a wall, or the lava: no way on
+                    continue
                 dh = H[a, b] - H[i, j]
                 if dh <= 1 and (dh >= -3 or use_drops):
                     add((i, j), (a, b), 1 if dh <= 0 else 1.2, "walk" if dh >= -3 else f"drop {-dh}")
@@ -231,15 +189,19 @@ def to_hill(D, prev, hill):
 def main():
     out = []
     # the pads: tune each, then report where it lands
-    targets = {"mid-north-w": (-13.5, -29.5), "mid-north-e": (12.5, -29.5), "ledge-rim": (-40.5, -37.5)}
+    targets = {"mid-north": (-13.5, -29.5), "ledge-rim": (-40.5, -37.5)}
     for pad in P.PADS:
         L = land_of_pad(pad)
         out.append(f"pad {pad['key']}: velocity {pad['v']} -> lands on the {L['hit']} at ({L['x']:.1f}, {L['z']:.1f}) y {L['y']:.0f}, "
                    f"{L['dist']:.1f} out after {L['t']} ticks, apex {L['apex']:.1f}")
-    J = shortcuts(jumps())
-    G = jump_groups(J)
-    out.append(f"jumps the raster allows (edge gap 1..3 in any direction, landing no more than 1 up): {len(G)} between floors")
-    for (a, b, g) in sorted(G.values(), key=lambda t: (t[0][1], t[0][0])):
+    J = jumps()
+    out.append(f"jumps the raster allows (gap 1..3, landing no more than 1 up): {len(J)}")
+    seen = set()
+    for (a, b, g) in J:
+        key = (min(a, b), max(a, b))
+        if key in seen:
+            continue
+        seen.add(key)
         (i, j), (p, q) = a, b
         out.append(f"   ({i + P.X_MIN},{j + P.Z_MIN}) y{H[i, j]} -> ({p + P.X_MIN},{q + P.Z_MIN}) y{H[p, q]}, gap {g}")
     sp = (P.ix(int(math.floor(P.SPAWN_POINT[0]))), P.iz(int(math.floor(P.SPAWN_POINT[2]))))
@@ -291,13 +253,9 @@ ROUTES = [
     ("Rim to the North hill, dropping on it", [(-50, -1), (-45, -7), (-41, -37), (-1, -35), (-1, -30)], ""),
     ("spawn tunnel, Ledge pad to the Rim, drop on the North hill", [(-50, -1), (-28, -24), (-40, -37), (-1, -35), (-1, -30)], ""),
     ("spawn tunnel, Ledge, parkour onto the Middle", [(-50, -1), (-29, -21), (-1, -20), (-1, -9), (-1, -1)], ""),
-    ("Middle to the North hill by the west pad and the west window", [(-1, -1), (-6, -8), (-14, -30), (-9, -31), (-8, -27), (-4, -28)], ""),
-    ("Middle to the North hill by the east pad and the east window", [(-1, -1), (5, -8), (13, -30), (8, -31), (7, -27), (3, -28)], ""),
-    ("arrows' corner to the Middle by the diagonal steps", [(25, -22), (23, -20), (19, -16), (15, -13), (11, -10), (8, -9), (-1, -1)], ""),
+    ("Middle to the North hill by the pad and the side stair", [(-1, -1), (-8, -8), (-13, -29), (-9, -31), (-8, -27), (-4, -28)], ""),
     ("Middle to the North hill through the Spring", [(-1, -1), (8, -6), (6, -20), (6, -25), (-1, -21), (-1, -30)], ""),
-    ("Bench round to the North hill, in by the east window", [(-50, -1), (-44, -1), (-37, -1), (-37, -31), (-20, -31), (-16, -25), (10, -25), (15, -27), (8, -31), (7, -27), (3, -28)], ""),
     ("North hill back to the Middle by the parkour", [(-1, -30), (-1, -20), (-1, -9), (-1, -1)], ""),
-    ("South hill (blue's near) from red's spawn, Bench round, in by its west window", [(-50, -1), (-44, -1), (-37, -1), (-37, 30), (-9, 30), (-9, 26), (-6, 26), (-4, 27)], ""),
     ("North hill back to the Middle through the Spring", [(-1, -30), (-1, -21), (6, -25), (6, -20), (8, -6), (-1, -1)], ""),
 ]
 

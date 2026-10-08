@@ -16,8 +16,8 @@ X_MIN, X_MAX = -60, 59
 Z_MIN, Z_MAX = -48, 47
 NX, NZ = X_MAX - X_MIN + 1, Z_MAX - Z_MIN + 1
 WALL_Y = 40
-LAVA_Y = 10                 # the pool is lava: a fall into it is the end
-KINDS = {"wall": 0, "floor": 1, "lava": 2, "stair": 3, "ladder": 4, "pad": 5, "hill": 6, "spawn": 7}
+WATER_Y = 10
+KINDS = {"wall": 0, "floor": 1, "water": 2, "stair": 3, "ladder": 4, "pad": 5, "hill": 6, "spawn": 7}
 
 
 def rot(x, z):
@@ -76,7 +76,7 @@ def build():
     R.rect(-45, 44, -41, 40, 28, both=False)                 # the Rim, the high ground
     R.rect(-37, 36, -33, 32, 22, both=False)                 # the Bench, the middle ground
     R.rect(-29, 28, -25, 24, 16, both=False)                 # the Ledge, the low ground
-    R.rect(-23, 22, -19, 18, LAVA_Y, "lava", both=False)     # the lava pool
+    R.rect(-23, 22, -19, 18, WATER_Y, "water", both=False)   # the pool
     # the spawns, cut into the wall behind the Rim
     R.rect(-55, -46, -6, 5, 28, "spawn")
     # the Middle: an island apron at 19, two steps of ring, the hill on top at 22
@@ -91,12 +91,9 @@ def build():
     R.rect(4, 6, -34, -26, 30, "wall")                       # the east wall
     # the hill's front: a stair eight wide from the Ledge straight up onto it
     R.flight_z([(z, -4, 3) for z in range(-21, -27, -1)], 17, "-z")
-    # the side ways in, one through each wall, the hill mirrored about its own middle so either team may take
-    # either side: a narrow stair up the outside of the wall, a window through it, a drop of four
-    R.flight_z([(z, -9, -8) for z in range(-31, -26)], 23, "+z")             # west: 23 at -31 .. 27 at -27
-    R.flight_z([(z, 7, 8) for z in range(-31, -26)], 23, "+z")               # east, its mirror
-    R.rect(-7, -5, -27, -27, 27, "floor")                    # the west window's sill, out of reach of the Rim
-    R.rect(4, 6, -27, -27, 27, "floor")                      # the east window's sill
+    # the side way in: a narrow stair up the outside of the west wall, a window through it, a drop of four
+    R.flight_z([(z, -9, -8) for z in range(-31, -26)], 23, "+z")             # 23 at -31 .. 27 at -27, its top by the front
+    R.rect(-7, -5, -27, -27, 27, "floor")                    # the window's sill, out of reach of the Rim
     # the causeways from the Ledge to the island, and their stairs up onto the apron
     R.rect(-23, -10, -2, 1, 16)
     R.flight([(-12, -2, 1), (-11, -2, 1), (-10, -2, 1)], 17, "+x")
@@ -114,15 +111,13 @@ def build():
     # the parkour from the Ledge to the Middle: two pillars, 2 then 2 then 3 blocks apart, each a block higher
     R.rect(-1, 0, -17, -16, 17, "floor")
     R.rect(-1, 0, -13, -12, 18, "floor")
-    # the Spring's tunnel forks under the Ledge and comes up in a trench of stairs on either side of each side
-    # hill's front stair
-    R.flight_z([(z, 5, 7) for z in range(-20, -26, -1)], 11, "-z")       # east: 11 at -20 .. 16 at -25
-    R.flight_z([(z, -8, -6) for z in range(-20, -26, -1)], 11, "-z")     # west, its mirror
-    # the diagonal steps from the arrows' corner of the Ledge to the Middle's apron: three pillars, each jump a
-    # gap of two by one, each a block higher; in the north-east, and turned, the south-west
-    R.rect(19, 20, -17, -16, 17, "floor")                   # two clear of both edges of the Ledge's corner
-    R.rect(15, 16, -14, -13, 18, "floor")
-    R.rect(11, 12, -11, -10, 19, "floor")                   # then a straight gap of two onto the apron
+    # the Spring's tunnels come up through the Ledge in a trench of stairs beside each side hill's front stair
+    R.flight_z([(z, 5, 7) for z in range(-20, -26, -1)], 11, "-z")       # 11 at -20 .. 16 at -25: the last step is the Ledge
+    # ladders out of the pool, up the Ledge's face, four a side
+    for x, z in ((-20, -19), (-20, 18), (-23, -12), (-23, 11)):
+        for a, b in ((x, z), rot(x, z)):
+            R.K[ix(a), iz(b)] = KINDS["ladder"]
+            R.H[ix(a), iz(b)] = 16
     return R
 
 
@@ -134,13 +129,9 @@ TUNNELS = [
     # the Spring: down a stairwell from the apron's west side to the golden apples under the hill, then north
     # under the pool in a glass tube, and up the trench onto the Ledge below the North hill
     dict(key="spring-north", a=(-9, 5), b=(6, -20),
-         pts=[(-9, 5, 19), (-4, 5, 13), (-1, -5, 13), (-1, -13, 6), (-1, -17, 6), (6, -20, 11)]),
+         pts=[(-9, 5, 19), (-4, 5, 13), (4, -5, 13), (6, -7, 13), (6, -13, 6), (6, -16, 6), (6, -20, 11)]),
     dict(key="spring-north-e", a=(8, -6), b=(6, -20),
-         pts=[(8, -6, 19), (3, -6, 13), (-1, -6, 13), (-1, -13, 6), (-1, -17, 6), (6, -20, 11)]),
-    dict(key="spring-north-w", a=(8, -6), b=(-7, -20),
-         pts=[(8, -6, 19), (3, -6, 13), (-1, -6, 13), (-1, -13, 6), (-1, -17, 6), (-7, -20, 11)]),
-    dict(key="spring-north-ww", a=(-9, 5), b=(-7, -20),
-         pts=[(-9, 5, 19), (-4, 5, 13), (-1, -5, 13), (-1, -13, 6), (-1, -17, 6), (-7, -20, 11)]),
+         pts=[(8, -6, 19), (3, -6, 13), (6, -7, 13), (6, -13, 6), (6, -16, 6), (6, -20, 11)]),
     # the Spring's two stairwells joined under the hill: west to east, past the apples
     dict(key="spring-across", a=(-9, 5), b=(8, -6), pts=[(-9, 5, 19), (-4, 5, 13), (3, -6, 13), (8, -6, 19)]),
 ]
@@ -148,17 +139,14 @@ SPRING = dict(box=(-5, 4, -5, 4), floor=13, ceil=18)        # the room under the
 
 # jump pads: the pad's cells (x0, x1, z0, z1, floor y), the velocity, and what it is for
 PADS = [
-    dict(key="mid-north-w", cells=(-6, -5, -9, -8, 19), v=(-1.08, 0.75, -2.74),
-         why="from the Middle's apron to the Bench beside the North hill's west side stair"),
-    dict(key="mid-north-e", cells=(4, 5, -9, -8, 19), v=(1.08, 0.75, -2.74),
-         why="its mirror: to the Bench beside the North hill's east side stair"),
+    dict(key="mid-north", cells=(-9, -8, -9, -8, 19), v=(-0.62, 0.85, -2.42),
+         why="from the Middle's apron to the Bench beside the North hill's side stair"),
     dict(key="ledge-rim", cells=(-29, -27, -25, -23, 16), v=(-1.33, 1.55, -1.43),
          why="from the Ledge's corner up to the Rim's corner: out of the low ground, onto the drop above a hill"),
 ]
 # the drop: from the Rim straight down onto a side hill, 5 blocks, one way
 DROPS = [dict(key="rim-north", at=(-4, 3, -35, -35), onto="hill N", height=5)]
-# arrows in two diagonal inner corners of the Ledge (the north-east, and its turn, the south-west), where the
-# diagonal steps to the Middle start; the other two corners carry the pads up to the Rim
+# arrows in two diagonal inner corners of the Ledge (the north-east, and its turn, the south-west)
 ARROWS_AT = [(25.5, 17, -22.5), (-25.5, 17, 21.5)]
 
 HILLS = [dict(key="mid", name="the Middle", box=(-4, 3, -4, 3), y=22, points=2),

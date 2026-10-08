@@ -14,8 +14,8 @@ import sys
 
 from PIL import Image, ImageDraw
 
-import plan as P
-import plan_check as C
+import plan_v2 as P
+import plan_check_v2 as C
 from pad import fly
 
 S = 6
@@ -30,8 +30,8 @@ def px(x, z, oy=0):
 def colour(h, k):
     if k == P.KINDS["wall"]:
         return (70, 66, 62)
-    if k == P.KINDS["lava"]:
-        return (225, 95, 20)
+    if k == P.KINDS["water"]:
+        return (70, 160, 175)
     if k == P.KINDS["ladder"]:
         return (150, 110, 60)
     if k == P.KINDS["hill"]:
@@ -59,7 +59,7 @@ def bowl(d, oy):
         dx, dz = {"+x": (1, 0), "-x": (-1, 0), "+z": (0, 1), "-z": (0, -1)}[r]
         d.line([(cx - dx * 2, cy - dz * 2), (cx + dx * 2, cy + dz * 2)], fill=(40, 40, 40), width=1)
     # floor heights
-    labels = [(-49, 20, "Rim 28"), (-34, 12, "Bench 22"), (-27, 12, "Ledge 16"), (-17, 10, "lava 10"),
+    labels = [(-49, 20, "Rim 28"), (-34, 12, "Bench 22"), (-27, 12, "Ledge 16"), (-17, 10, "pool 10"),
               (-8, 10, "apron 19"), (-2, -1, "22"), (-2, -30, "23"), (-2, 28, "23"), (-52, 0, "SPAWN")]
     for x, z, t in labels:
         a, b = px(x, z, oy)
@@ -106,8 +106,8 @@ def bowl(d, oy):
     # the gapple spring
     a, b = px(-0.5, -0.5, oy)
     d.ellipse([a - 5, b - 5, a + 5, b + 5], outline=(220, 170, 0), width=2)
-    d.text((6, oy + 4), "1. THE BOWL — floor height (pool, Ledge 16, Bench 22, Rim 28), stairs (ticks), lava (orange), hills (pale yellow),"
-           " pads (green, simulated flights),\n   the spawn tunnels (purple dashes), the Spring's tunnels under the lava (orange dashes), drops onto the side hills (red),"
+    d.text((6, oy + 4), "1. THE BOWL — floor height (pool, Ledge 16, Bench 22, Rim 28), stairs (ticks), ladders (brown), hills (pale yellow),"
+           " pads (green, simulated flights),\n   the spawn tunnels (purple dashes), the Spring's tunnels under the pool (orange dashes), drops onto the side hills (red),"
            " the golden apples (gold ring), arrows (blue diamonds), walls (dark)",
            fill=(255, 255, 255))
 
@@ -122,13 +122,11 @@ def routes(d, oy, lines):
     R_ = [
         ("main lane: notch, well, causeway, apron", [(-50, 0), (-44, 0), (-36, 0), (-29, 0), (-10, 0), (-4, 0)], (240, 80, 70), 4),
         ("Bench round, in by the side stair and the window", [(-46, -2), (-37, -2), (-37, -31), (-9, -31), (-8, -27), (-4, -27)], (250, 220, 90), 3),
-        ("... or by the east window", [(13.5, -29.5), (8, -31), (7, -27), (3, -27)], (250, 220, 90), 2),
         ("spawn tunnel to the Ledge, up the front stair", [(-50, -6), (-50, -21), (-29, -21), (-2, -20), (-2, -27)], (190, 90, 210), 3),
         ("the Rim, dropping onto the hill", [(-46, -4), (-41, -38), (-2, -38), (-1, -34)], (250, 160, 60), 3),
-        ("the Spring: down from the apron, the apples, under the lava, up either trench", [(8, -6), (-1, -6), (-1, -17), (6, -20), (6, -25), (2, -21)], (240, 150, 30), 3),
+        ("the Spring: down from the apron, the apples, under the pool, up the trench", [(8, -6), (3, -6), (6, -7), (6, -20), (6, -25), (2, -21)], (240, 150, 30), 3),
         ("parkour: the Ledge to the Middle", [(-1, -21), (-1, -16), (-1, -12), (-1, -8)], (120, 220, 255), 3),
-        ("pads: the Middle to the Bench by either side stair", [(-5, -8), (-13.5, -29.5)], (60, 200, 60), 3),
-        ("diagonal steps: the arrows' corner to the Middle", [(23, -20), (19.5, -16.5), (15.5, -13.5), (11.5, -10.5), (8, -9)], (120, 220, 255), 3),
+        ("pad: the Middle to the Bench by the side stair", [(-8, -8), (-13.5, -29.5)], (60, 200, 60), 3),
         ("pad: the Ledge's corner to the Rim", [(-28, -24), (-40.5, -37.5)], (60, 200, 60), 2),
     ]
     for k, (name, pts, col, w) in enumerate(R_):
@@ -158,8 +156,8 @@ def sections(d, oy, hgt):
             i, j = (P.ix(u), P.iz(fixed)) if axis == "x" else (P.ix(fixed), P.iz(u))
             h, k = R.H[i, j], R.K[i, j]
             col = colour(h, k)
-            if k == P.KINDS["lava"]:
-                d.rectangle([sx(u), py(P.LAVA_Y + 1), sx(u + 1) - 1, py(7)], fill=col)
+            if k == P.KINDS["water"]:
+                d.rectangle([sx(u), py(P.WATER_Y + 1), sx(u + 1) - 1, py(7)], fill=col)
                 d.rectangle([sx(u), py(7), sx(u + 1) - 1, py(y_lo)], fill=(150, 145, 135))
             else:
                 d.rectangle([sx(u), py(min(h, P.WALL_Y) + 1), sx(u + 1) - 1, py(y_lo)],
@@ -171,12 +169,12 @@ def sections(d, oy, hgt):
         d.text((sx(a0) + 2, py(P.SPRING["ceil"]) + 2), "apples", fill=(120, 80, 0))
         if axis == "z":
             for twin in (1, -1):
-                pts = [(0, -6 * twin, 13), (0, -13 * twin, 6), (0, -17 * twin, 6), (0, -20 * twin, 11), (0, -25 * twin, 16)]
+                pts = [(6 * twin if twin > 0 else -7, -7 * twin, 13), (0, -13 * twin, 6), (0, -16 * twin, 6), (0, -20 * twin, 11), (0, -25 * twin, 16)]
                 q = [(sx(z), py(y + 1.5)) for _, z, y in pts]
                 d.line(q, fill=(230, 150, 30), width=3)
         d.text((6, top + 4), title, fill=(0, 0, 0))
     one("x", -1, oy, "3a. WEST TO EAST through the Middle, true scale: spawn, Rim notch, Bench well, Ledge, causeway, the stepped hill, the Spring under it")
-    one("z", -1, oy + band, "3b. NORTH TO SOUTH through all three hills, true scale: alcove, front stair, Ledge, parkour, the Middle; the Spring's tunnels under the lava (orange)")
+    one("z", -1, oy + band, "3b. NORTH TO SOUTH through all three hills, true scale: alcove, front stair, Ledge, parkour, the Middle; the Spring's tunnels under the pool (orange)")
     d.line([(0, oy + band), (W, oy + band)], fill=(0, 0, 0))
 
 
