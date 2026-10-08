@@ -64,6 +64,17 @@ may be set outside the box: the canvas refuses it, and the check fails.
 **Block ids are Minecraft 1.8's.** `scripts/mc.py` names the common ones in class `B`, with their data values in
 its comments. Any other 1.8 id may be used as a number.
 
+**Blocks that face a way take it from their data.** Minecraft 1.8's values, with x east and z south:
+
+| Block | Data |
+|---|---|
+| stairs (any) | 0 rising toward the east, 1 west, 2 south, 3 north; add 4 for upside down |
+| slabs | the lower half; add 8 for the upper half |
+| ladder, wall sign | 2 on the north face of the block south of it, 3 the south face of the block north, 4 the west face of the block east, 5 the east face of the block west |
+| torch | 1 on the block to its west, 2 to its east, 3 to its north, 4 to its south, 5 standing on the block below |
+| log | 0 to 3 upright by wood; add 4 for lying along x, 8 along z |
+| wool, stained clay, stained glass, carpet | the 16 colours: 0 white, 1 orange, 2 magenta, 3 light blue, 4 yellow, 5 lime, 6 pink, 7 grey, 8 light grey, 9 cyan, 10 purple, 11 blue, 12 brown, 13 green, 14 red, 15 black |
+
 **A plot is plain, deterministic Python.** It uses no imports but `mc`, `math` and `random` seeded with a constant,
 reads no files and finishes in under a second.
 
@@ -90,6 +101,7 @@ draws the plot from two corners.
 - **Places to stand:** every cell on the plot a player can reach and stand in.
 - **The highest:** how far over the street the highest of them is. It must be at least six.
 - **Out of sight:** how many of them no eye on the street round the plot can see. It must be at least twelve.
+  A seeker sees through glass, panes, iron bars, fences and walls; leaves and solid blocks hide a player.
 
 **A plot passes when the check prints `pass`.** Then look at the two pictures, since a plot that passes can still
 read as nothing from the street.

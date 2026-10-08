@@ -1,0 +1,514 @@
+<map proto="1.5.0">
+<name>Curio Square</name>
+<version>1.0.0</version>
+<objective>Hide from the seekers until the time runs out!</objective>
+<gamemode>arcade</gamemode>
+<rules><rule>Fall damage is disabled.</rule><rule>Hiders' name tags are hidden.</rule><rule>Every minute six of the fair's curiosities vanish.</rule></rules>
+<teams>
+    <team id="hiders" color="green" show-name-tags="false" max="50" plural="true">Hiders</team>
+    <team id="seekers" color="dark aqua" max="3" max-overfill="3" plural="true">Seekers</team>
+</teams>
+<time result="hiders">7m</time>
+<blitz filter="only-hiders"/>
+<kits>
+    <kit id="seeker-blind"><effect>blindness</effect><game-mode>adventure</game-mode></kit>
+    <kit id="seeker" force="true">
+        <clear effects="true"/>
+        <game-mode>adventure</game-mode>
+        <item slot="0" material="iron sword" unbreakable="true" locked="true"/>
+        <helmet material="diamond helmet" unbreakable="true" locked="true"/>
+        <chestplate material="diamond chestplate" unbreakable="true" locked="true"/>
+        <leggings material="diamond leggings" unbreakable="true" locked="true"/>
+        <boots material="diamond boots" unbreakable="true" locked="true"/>
+        <effect>speed</effect>
+    </kit>
+    <kit id="hider">
+        <game-mode>adventure</game-mode>
+        <item slot="0" material="compass" locked="true"/>
+        <item material="potion" name="`rPotion of Invisibility `7(15s)"><effect duration="15s">invisibility</effect></item>
+    </kit>
+    <kit id="hider-potion" deduct-items="false">
+        <item material="potion" name="`rPotion of Invisibility `7(15s)"><effect duration="15s">invisibility</effect></item>
+    </kit>
+    <give kit="hider-potion" filter="potion-1"/>
+    <give kit="hider-potion" filter="potion-3"/>
+    <give kit="hider-potion" filter="potion-5"/>
+    <give kit="seeker" filter="seekers-out"/>
+</kits>
+<spawns>
+    <spawn team="hiders" kit="hider" safe="true">
+        <regions>
+            <cuboid min="-8,64,-8" max="9,65,-6"/>
+            <cuboid min="-8,64,7" max="9,65,9"/>
+            <cuboid min="-8,64,-6" max="-6,65,7"/>
+            <cuboid min="7,64,-6" max="9,65,7"/>
+        </regions>
+    </spawn>
+    <spawn team="seekers" kit="seeker-blind" filter="not(seekers-released)"><region><point>0.5,79,0.5</point></region></spawn>
+    <spawn team="seekers" kit="seeker" filter="seekers-released"><region><point>0.5,64,7.5</point></region></spawn>
+    <default yaw="180" pitch="35"><region><point>0.5,94,60.5</point></region></default>
+</spawns>
+<filters>
+    <team id="only-hiders">hiders</team>
+    <team id="only-seekers">seekers</team>
+    <after id="seekers-released" duration="25s" filter="match-started" message="`3`lSeekers`r will be released in {0}"/>
+    <all id="seekers-out"><filter id="seekers-released"/><team>seekers</team></all>
+    <time id="round-1">85s</time>
+    <time id="round-2">145s</time>
+    <time id="round-3">205s</time>
+    <time id="round-4">265s</time>
+    <time id="round-5">325s</time>
+    <time id="round-6">385s</time>
+    <all id="potion-1"><time>85s</time><team>hiders</team></all>
+    <all id="potion-3"><time>205s</time><team>hiders</team></all>
+    <all id="potion-5"><time>325s</time><team>hiders</team></all>
+    <deny id="not-players"><any><cause>player</cause><cause>explosion</cause></any></deny>
+</filters>
+<regions>
+    <cuboid id="seeker-cage" min="-2,78,-2" max="3,83,3"/>
+    <cuboid id="plot-0-0" min="-47,64,-47" max="-36,88,-36"/>  <!-- The Hot-Air Balloon, opus -->
+    <cuboid id="plot-0-1" min="-33,64,-47" max="-22,88,-36"/>  <!-- The Bell Frame, sonnet -->
+    <cuboid id="plot-0-2" min="-19,64,-47" max="-8,88,-36"/>  <!-- The Hollow Stump, haiku -->
+    <cuboid id="plot-0-3" min="-5,64,-47" max="6,88,-36"/>  <!-- The Bandstand, opus -->
+    <cuboid id="plot-0-4" min="9,64,-47" max="20,88,-36"/>  <!-- The Teetering Teacups, sonnet -->
+    <cuboid id="plot-0-5" min="23,64,-47" max="34,88,-36"/>  <!-- The Spinning Top, haiku -->
+    <cuboid id="plot-0-6" min="37,64,-47" max="48,88,-36"/>  <!-- The Crooked House, opus -->
+    <cuboid id="plot-1-0" min="-47,64,-33" max="-36,88,-22"/>  <!-- The Garden Gnome, haiku -->
+    <cuboid id="plot-1-1" min="-33,64,-33" max="-22,88,-22"/>  <!-- The Treehouse, opus -->
+    <cuboid id="plot-1-2" min="-19,64,-33" max="-8,88,-22"/>  <!-- The Cuckoo Clock, sonnet -->
+    <cuboid id="plot-1-3" min="-5,64,-33" max="6,88,-22"/>  <!-- The Giant Die, haiku -->
+    <cuboid id="plot-1-4" min="9,64,-33" max="20,88,-22"/>  <!-- The Viaduct, opus -->
+    <cuboid id="plot-1-5" min="23,64,-33" max="34,88,-22"/>  <!-- The Standing Marmot, sonnet -->
+    <cuboid id="plot-1-6" min="37,64,-33" max="48,88,-22"/>  <!-- The Leaping Trout, haiku -->
+    <cuboid id="plot-2-0" min="-47,64,-19" max="-36,88,-8"/>  <!-- The Upside-Down House, sonnet -->
+    <cuboid id="plot-2-1" min="-33,64,-19" max="-22,88,-8"/>  <!-- The Beehive Hut, haiku -->
+    <cuboid id="plot-2-2" min="-19,64,-19" max="-8,88,-8"/>  <!-- The Watermill, opus -->
+    <cuboid id="plot-2-3" min="-5,64,-19" max="6,88,-8"/>  <!-- The Cheese Wheel Cellar, sonnet -->
+    <cuboid id="plot-2-4" min="9,64,-19" max="20,88,-8"/>  <!-- The Thermometer, haiku -->
+    <cuboid id="plot-2-5" min="23,64,-19" max="34,88,-8"/>  <!-- The Ruined Chapel, opus -->
+    <cuboid id="plot-2-6" min="37,64,-19" max="48,88,-8"/>  <!-- The Ski Lift Station, sonnet -->
+    <cuboid id="plot-3-0" min="-47,64,-5" max="-36,88,6"/>  <!-- The Gingerbread House, opus -->
+    <cuboid id="plot-3-1" min="-33,64,-5" max="-22,88,6"/>  <!-- The Snow Shed Bridge, sonnet -->
+    <cuboid id="plot-3-2" min="-19,64,-5" max="-8,88,6"/>  <!-- The Copper Kettle, haiku -->
+    <cuboid id="plot-3-4" min="9,64,-5" max="20,88,6"/>  <!-- The Giant Hiking Boot, sonnet -->
+    <cuboid id="plot-3-5" min="23,64,-5" max="34,88,6"/>  <!-- The Ski Jump, haiku -->
+    <cuboid id="plot-3-6" min="37,64,-5" max="48,88,6"/>  <!-- The Igloo Inn, opus -->
+    <cuboid id="plot-4-0" min="-47,64,9" max="-36,88,20"/>  <!-- The Milk Churn, haiku -->
+    <cuboid id="plot-4-1" min="-33,64,9" max="-22,88,20"/>  <!-- The Chess Knight, opus -->
+    <cuboid id="plot-4-2" min="-19,64,9" max="-8,88,20"/>  <!-- The Cheese Chalet, sonnet -->
+    <cuboid id="plot-4-3" min="-5,64,9" max="6,88,20"/>  <!-- The Book Stack, haiku -->
+    <cuboid id="plot-4-4" min="9,64,9" max="20,88,20"/>  <!-- The Sleeping St Bernard, opus -->
+    <cuboid id="plot-4-5" min="23,64,9" max="34,88,20"/>  <!-- The Cone of Scoops, sonnet -->
+    <cuboid id="plot-4-6" min="37,64,9" max="48,88,20"/>  <!-- The Pocket Watch, haiku -->
+    <cuboid id="plot-5-0" min="-47,64,23" max="-36,88,34"/>  <!-- The Snail House, sonnet -->
+    <cuboid id="plot-5-1" min="-33,64,23" max="-22,88,34"/>  <!-- The Organ Pipes, haiku -->
+    <cuboid id="plot-5-2" min="-19,64,23" max="-8,88,34"/>  <!-- The Hay Barn, opus -->
+    <cuboid id="plot-5-3" min="-5,64,23" max="6,88,34"/>  <!-- The Pretzel Knot, sonnet -->
+    <cuboid id="plot-5-4" min="9,64,23" max="20,88,34"/>  <!-- The Radio Mast, haiku -->
+    <cuboid id="plot-5-5" min="23,64,23" max="34,88,34"/>  <!-- The Fairy Ring, opus -->
+    <cuboid id="plot-5-6" min="37,64,23" max="48,88,34"/>  <!-- The Water Tower Funicular, sonnet -->
+    <cuboid id="plot-6-0" min="-47,64,37" max="-36,88,48"/>  <!-- The Palm House, opus -->
+    <cuboid id="plot-6-1" min="-33,64,37" max="-22,88,48"/>  <!-- The Stilt Fisher Hut, sonnet -->
+    <cuboid id="plot-6-2" min="-19,64,37" max="-8,88,48"/>  <!-- The Upturned Rowboat, haiku -->
+    <cuboid id="plot-6-3" min="-5,64,37" max="6,88,48"/>  <!-- The Ibex on its Crag, opus -->
+    <cuboid id="plot-6-4" min="9,64,37" max="20,88,48"/>  <!-- The Chain Swing Carousel, sonnet -->
+    <cuboid id="plot-6-5" min="23,64,37" max="34,88,48"/>  <!-- The Alphorn, haiku -->
+    <cuboid id="plot-6-6" min="37,64,37" max="48,88,48"/>  <!-- The Edelweiss, opus -->
+    <negative id="outside"><cuboid min="-51,0,-51" max="52,256,52"/></negative>
+    <apply enter="never" region="outside" message="The fair is inside the walls!"/>
+    <apply block="not-players"/>
+</regions>
+<variables>
+    <variable id="order" scope="match" default="0"/>
+</variables>
+<actions>
+    <action id="cage-clearer" scope="match"><fill region="seeker-cage" material="air"/></action>
+    <trigger filter="seekers-released" action="cage-clearer" scope="match"/>
+    <trigger scope="match" filter="always">
+        <action><set var="order" value="floor(random() * 4)"/></action>
+    </trigger>
+    <trigger scope="match" filter="round-1">
+        <action id="vanish-1" scope="match">
+            <message text="`6`l6 curiosities have vanished!"/>
+            <action filter="order=0">
+                <fill region="plot-6-2" material="air"/>
+                <message text="`7- The Upturned Rowboat"/>
+                <fill region="plot-2-1" material="air"/>
+                <message text="`7- The Beehive Hut"/>
+                <fill region="plot-4-3" material="air"/>
+                <message text="`7- The Book Stack"/>
+                <fill region="plot-2-5" material="air"/>
+                <message text="`7- The Ruined Chapel"/>
+                <fill region="plot-5-1" material="air"/>
+                <message text="`7- The Organ Pipes"/>
+                <fill region="plot-4-6" material="air"/>
+                <message text="`7- The Pocket Watch"/>
+            </action>
+            <action filter="order=1">
+                <fill region="plot-5-2" material="air"/>
+                <message text="`7- The Hay Barn"/>
+                <fill region="plot-4-0" material="air"/>
+                <message text="`7- The Milk Churn"/>
+                <fill region="plot-0-0" material="air"/>
+                <message text="`7- The Hot-Air Balloon"/>
+                <fill region="plot-1-1" material="air"/>
+                <message text="`7- The Treehouse"/>
+                <fill region="plot-3-6" material="air"/>
+                <message text="`7- The Igloo Inn"/>
+                <fill region="plot-3-5" material="air"/>
+                <message text="`7- The Ski Jump"/>
+            </action>
+            <action filter="order=2">
+                <fill region="plot-0-0" material="air"/>
+                <message text="`7- The Hot-Air Balloon"/>
+                <fill region="plot-2-1" material="air"/>
+                <message text="`7- The Beehive Hut"/>
+                <fill region="plot-3-2" material="air"/>
+                <message text="`7- The Copper Kettle"/>
+                <fill region="plot-4-5" material="air"/>
+                <message text="`7- The Cone of Scoops"/>
+                <fill region="plot-1-1" material="air"/>
+                <message text="`7- The Treehouse"/>
+                <fill region="plot-3-6" material="air"/>
+                <message text="`7- The Igloo Inn"/>
+            </action>
+            <action filter="order=3">
+                <fill region="plot-1-3" material="air"/>
+                <message text="`7- The Giant Die"/>
+                <fill region="plot-0-0" material="air"/>
+                <message text="`7- The Hot-Air Balloon"/>
+                <fill region="plot-0-6" material="air"/>
+                <message text="`7- The Crooked House"/>
+                <fill region="plot-1-5" material="air"/>
+                <message text="`7- The Standing Marmot"/>
+                <fill region="plot-4-5" material="air"/>
+                <message text="`7- The Cone of Scoops"/>
+                <fill region="plot-3-5" material="air"/>
+                <message text="`7- The Ski Jump"/>
+            </action>
+        </action>
+    </trigger>
+    <trigger scope="match" filter="round-2">
+        <action id="vanish-2" scope="match">
+            <message text="`6`l6 curiosities have vanished!"/>
+            <action filter="order=0">
+                <fill region="plot-6-0" material="air"/>
+                <message text="`7- The Palm House"/>
+                <fill region="plot-0-0" material="air"/>
+                <message text="`7- The Hot-Air Balloon"/>
+                <fill region="plot-4-4" material="air"/>
+                <message text="`7- The Sleeping St Bernard"/>
+                <fill region="plot-0-1" material="air"/>
+                <message text="`7- The Bell Frame"/>
+                <fill region="plot-1-3" material="air"/>
+                <message text="`7- The Giant Die"/>
+                <fill region="plot-0-2" material="air"/>
+                <message text="`7- The Hollow Stump"/>
+            </action>
+            <action filter="order=1">
+                <fill region="plot-2-5" material="air"/>
+                <message text="`7- The Ruined Chapel"/>
+                <fill region="plot-6-3" material="air"/>
+                <message text="`7- The Ibex on its Crag"/>
+                <fill region="plot-6-2" material="air"/>
+                <message text="`7- The Upturned Rowboat"/>
+                <fill region="plot-1-2" material="air"/>
+                <message text="`7- The Cuckoo Clock"/>
+                <fill region="plot-6-4" material="air"/>
+                <message text="`7- The Chain Swing Carousel"/>
+                <fill region="plot-0-1" material="air"/>
+                <message text="`7- The Bell Frame"/>
+            </action>
+            <action filter="order=2">
+                <fill region="plot-1-5" material="air"/>
+                <message text="`7- The Standing Marmot"/>
+                <fill region="plot-1-6" material="air"/>
+                <message text="`7- The Leaping Trout"/>
+                <fill region="plot-0-3" material="air"/>
+                <message text="`7- The Bandstand"/>
+                <fill region="plot-4-4" material="air"/>
+                <message text="`7- The Sleeping St Bernard"/>
+                <fill region="plot-3-0" material="air"/>
+                <message text="`7- The Gingerbread House"/>
+                <fill region="plot-6-5" material="air"/>
+                <message text="`7- The Alphorn"/>
+            </action>
+            <action filter="order=3">
+                <fill region="plot-3-2" material="air"/>
+                <message text="`7- The Copper Kettle"/>
+                <fill region="plot-4-0" material="air"/>
+                <message text="`7- The Milk Churn"/>
+                <fill region="plot-2-3" material="air"/>
+                <message text="`7- The Cheese Wheel Cellar"/>
+                <fill region="plot-5-0" material="air"/>
+                <message text="`7- The Snail House"/>
+                <fill region="plot-2-6" material="air"/>
+                <message text="`7- The Ski Lift Station"/>
+                <fill region="plot-2-1" material="air"/>
+                <message text="`7- The Beehive Hut"/>
+            </action>
+        </action>
+    </trigger>
+    <trigger scope="match" filter="round-3">
+        <action id="vanish-3" scope="match">
+            <message text="`6`l6 curiosities have vanished!"/>
+            <action filter="order=0">
+                <fill region="plot-2-4" material="air"/>
+                <message text="`7- The Thermometer"/>
+                <fill region="plot-2-3" material="air"/>
+                <message text="`7- The Cheese Wheel Cellar"/>
+                <fill region="plot-5-4" material="air"/>
+                <message text="`7- The Radio Mast"/>
+                <fill region="plot-1-1" material="air"/>
+                <message text="`7- The Treehouse"/>
+                <fill region="plot-2-0" material="air"/>
+                <message text="`7- The Upside-Down House"/>
+                <fill region="plot-1-5" material="air"/>
+                <message text="`7- The Standing Marmot"/>
+            </action>
+            <action filter="order=1">
+                <fill region="plot-6-1" material="air"/>
+                <message text="`7- The Stilt Fisher Hut"/>
+                <fill region="plot-6-0" material="air"/>
+                <message text="`7- The Palm House"/>
+                <fill region="plot-2-6" material="air"/>
+                <message text="`7- The Ski Lift Station"/>
+                <fill region="plot-6-6" material="air"/>
+                <message text="`7- The Edelweiss"/>
+                <fill region="plot-4-6" material="air"/>
+                <message text="`7- The Pocket Watch"/>
+                <fill region="plot-3-2" material="air"/>
+                <message text="`7- The Copper Kettle"/>
+            </action>
+            <action filter="order=2">
+                <fill region="plot-0-6" material="air"/>
+                <message text="`7- The Crooked House"/>
+                <fill region="plot-6-6" material="air"/>
+                <message text="`7- The Edelweiss"/>
+                <fill region="plot-2-3" material="air"/>
+                <message text="`7- The Cheese Wheel Cellar"/>
+                <fill region="plot-5-3" material="air"/>
+                <message text="`7- The Pretzel Knot"/>
+                <fill region="plot-2-6" material="air"/>
+                <message text="`7- The Ski Lift Station"/>
+                <fill region="plot-4-2" material="air"/>
+                <message text="`7- The Cheese Chalet"/>
+            </action>
+            <action filter="order=3">
+                <fill region="plot-4-6" material="air"/>
+                <message text="`7- The Pocket Watch"/>
+                <fill region="plot-5-6" material="air"/>
+                <message text="`7- The Water Tower Funicular"/>
+                <fill region="plot-5-5" material="air"/>
+                <message text="`7- The Fairy Ring"/>
+                <fill region="plot-1-4" material="air"/>
+                <message text="`7- The Viaduct"/>
+                <fill region="plot-5-2" material="air"/>
+                <message text="`7- The Hay Barn"/>
+                <fill region="plot-3-6" material="air"/>
+                <message text="`7- The Igloo Inn"/>
+            </action>
+        </action>
+    </trigger>
+    <trigger scope="match" filter="round-4">
+        <action id="vanish-4" scope="match">
+            <message text="`6`l6 curiosities have vanished!"/>
+            <action filter="order=0">
+                <fill region="plot-3-2" material="air"/>
+                <message text="`7- The Copper Kettle"/>
+                <fill region="plot-5-6" material="air"/>
+                <message text="`7- The Water Tower Funicular"/>
+                <fill region="plot-2-6" material="air"/>
+                <message text="`7- The Ski Lift Station"/>
+                <fill region="plot-6-1" material="air"/>
+                <message text="`7- The Stilt Fisher Hut"/>
+                <fill region="plot-6-3" material="air"/>
+                <message text="`7- The Ibex on its Crag"/>
+                <fill region="plot-4-1" material="air"/>
+                <message text="`7- The Chess Knight"/>
+            </action>
+            <action filter="order=1">
+                <fill region="plot-5-1" material="air"/>
+                <message text="`7- The Organ Pipes"/>
+                <fill region="plot-6-5" material="air"/>
+                <message text="`7- The Alphorn"/>
+                <fill region="plot-1-0" material="air"/>
+                <message text="`7- The Garden Gnome"/>
+                <fill region="plot-1-3" material="air"/>
+                <message text="`7- The Giant Die"/>
+                <fill region="plot-2-1" material="air"/>
+                <message text="`7- The Beehive Hut"/>
+                <fill region="plot-4-3" material="air"/>
+                <message text="`7- The Book Stack"/>
+            </action>
+            <action filter="order=2">
+                <fill region="plot-4-1" material="air"/>
+                <message text="`7- The Chess Knight"/>
+                <fill region="plot-4-3" material="air"/>
+                <message text="`7- The Book Stack"/>
+                <fill region="plot-6-0" material="air"/>
+                <message text="`7- The Palm House"/>
+                <fill region="plot-2-5" material="air"/>
+                <message text="`7- The Ruined Chapel"/>
+                <fill region="plot-0-5" material="air"/>
+                <message text="`7- The Spinning Top"/>
+                <fill region="plot-6-3" material="air"/>
+                <message text="`7- The Ibex on its Crag"/>
+            </action>
+            <action filter="order=3">
+                <fill region="plot-6-1" material="air"/>
+                <message text="`7- The Stilt Fisher Hut"/>
+                <fill region="plot-4-3" material="air"/>
+                <message text="`7- The Book Stack"/>
+                <fill region="plot-4-1" material="air"/>
+                <message text="`7- The Chess Knight"/>
+                <fill region="plot-2-4" material="air"/>
+                <message text="`7- The Thermometer"/>
+                <fill region="plot-6-6" material="air"/>
+                <message text="`7- The Edelweiss"/>
+                <fill region="plot-5-1" material="air"/>
+                <message text="`7- The Organ Pipes"/>
+            </action>
+        </action>
+    </trigger>
+    <trigger scope="match" filter="round-5">
+        <action id="vanish-5" scope="match">
+            <message text="`6`l6 curiosities have vanished!"/>
+            <action filter="order=0">
+                <fill region="plot-0-4" material="air"/>
+                <message text="`7- The Teetering Teacups"/>
+                <fill region="plot-5-2" material="air"/>
+                <message text="`7- The Hay Barn"/>
+                <fill region="plot-0-6" material="air"/>
+                <message text="`7- The Crooked House"/>
+                <fill region="plot-3-4" material="air"/>
+                <message text="`7- The Giant Hiking Boot"/>
+                <fill region="plot-3-6" material="air"/>
+                <message text="`7- The Igloo Inn"/>
+                <fill region="plot-6-6" material="air"/>
+                <message text="`7- The Edelweiss"/>
+            </action>
+            <action filter="order=1">
+                <fill region="plot-1-4" material="air"/>
+                <message text="`7- The Viaduct"/>
+                <fill region="plot-2-3" material="air"/>
+                <message text="`7- The Cheese Wheel Cellar"/>
+                <fill region="plot-3-4" material="air"/>
+                <message text="`7- The Giant Hiking Boot"/>
+                <fill region="plot-5-5" material="air"/>
+                <message text="`7- The Fairy Ring"/>
+                <fill region="plot-0-2" material="air"/>
+                <message text="`7- The Hollow Stump"/>
+                <fill region="plot-0-5" material="air"/>
+                <message text="`7- The Spinning Top"/>
+            </action>
+            <action filter="order=2">
+                <fill region="plot-0-1" material="air"/>
+                <message text="`7- The Bell Frame"/>
+                <fill region="plot-3-5" material="air"/>
+                <message text="`7- The Ski Jump"/>
+                <fill region="plot-6-1" material="air"/>
+                <message text="`7- The Stilt Fisher Hut"/>
+                <fill region="plot-0-4" material="air"/>
+                <message text="`7- The Teetering Teacups"/>
+                <fill region="plot-2-2" material="air"/>
+                <message text="`7- The Watermill"/>
+                <fill region="plot-1-0" material="air"/>
+                <message text="`7- The Garden Gnome"/>
+            </action>
+            <action filter="order=3">
+                <fill region="plot-1-2" material="air"/>
+                <message text="`7- The Cuckoo Clock"/>
+                <fill region="plot-2-2" material="air"/>
+                <message text="`7- The Watermill"/>
+                <fill region="plot-2-5" material="air"/>
+                <message text="`7- The Ruined Chapel"/>
+                <fill region="plot-6-2" material="air"/>
+                <message text="`7- The Upturned Rowboat"/>
+                <fill region="plot-3-1" material="air"/>
+                <message text="`7- The Snow Shed Bridge"/>
+                <fill region="plot-0-3" material="air"/>
+                <message text="`7- The Bandstand"/>
+            </action>
+        </action>
+    </trigger>
+    <trigger scope="match" filter="round-6">
+        <action id="vanish-6" scope="match">
+            <message text="`6`l6 curiosities have vanished!"/>
+            <action filter="order=0">
+                <fill region="plot-5-3" material="air"/>
+                <message text="`7- The Pretzel Knot"/>
+                <fill region="plot-3-0" material="air"/>
+                <message text="`7- The Gingerbread House"/>
+                <fill region="plot-1-6" material="air"/>
+                <message text="`7- The Leaping Trout"/>
+                <fill region="plot-0-3" material="air"/>
+                <message text="`7- The Bandstand"/>
+                <fill region="plot-2-2" material="air"/>
+                <message text="`7- The Watermill"/>
+                <fill region="plot-6-4" material="air"/>
+                <message text="`7- The Chain Swing Carousel"/>
+            </action>
+            <action filter="order=1">
+                <fill region="plot-0-6" material="air"/>
+                <message text="`7- The Crooked House"/>
+                <fill region="plot-2-2" material="air"/>
+                <message text="`7- The Watermill"/>
+                <fill region="plot-0-4" material="air"/>
+                <message text="`7- The Teetering Teacups"/>
+                <fill region="plot-4-1" material="air"/>
+                <message text="`7- The Chess Knight"/>
+                <fill region="plot-3-0" material="air"/>
+                <message text="`7- The Gingerbread House"/>
+                <fill region="plot-5-6" material="air"/>
+                <message text="`7- The Water Tower Funicular"/>
+            </action>
+            <action filter="order=2">
+                <fill region="plot-2-0" material="air"/>
+                <message text="`7- The Upside-Down House"/>
+                <fill region="plot-6-4" material="air"/>
+                <message text="`7- The Chain Swing Carousel"/>
+                <fill region="plot-5-6" material="air"/>
+                <message text="`7- The Water Tower Funicular"/>
+                <fill region="plot-5-0" material="air"/>
+                <message text="`7- The Snail House"/>
+                <fill region="plot-4-6" material="air"/>
+                <message text="`7- The Pocket Watch"/>
+                <fill region="plot-0-2" material="air"/>
+                <message text="`7- The Hollow Stump"/>
+            </action>
+            <action filter="order=3">
+                <fill region="plot-5-3" material="air"/>
+                <message text="`7- The Pretzel Knot"/>
+                <fill region="plot-0-2" material="air"/>
+                <message text="`7- The Hollow Stump"/>
+                <fill region="plot-0-1" material="air"/>
+                <message text="`7- The Bell Frame"/>
+                <fill region="plot-2-0" material="air"/>
+                <message text="`7- The Upside-Down House"/>
+                <fill region="plot-1-1" material="air"/>
+                <message text="`7- The Treehouse"/>
+                <fill region="plot-0-5" material="air"/>
+                <message text="`7- The Spinning Top"/>
+            </action>
+        </action>
+    </trigger>
+</actions>
+<compass show-distance="true"><player filter="only-seekers" name="`3Closest Seeker"/></compass>
+<broadcasts>
+    <alert after="25s">Seekers have been released!</alert>
+    <tip after="35s">Every minute, six of the curiosities will vanish!</tip>
+    <alert after="75s">Six curiosities vanish in 10 seconds!</alert>
+    <alert after="135s">Six curiosities vanish in 10 seconds!</alert>
+    <alert after="195s">Six curiosities vanish in 10 seconds!</alert>
+    <alert after="255s">Six curiosities vanish in 10 seconds!</alert>
+    <alert after="315s">Six curiosities vanish in 10 seconds!</alert>
+    <alert after="375s">Six curiosities vanish in 10 seconds!</alert>
+    <tip filter="only-hiders" after="5s">Your name tag is hidden from the seekers.</tip>
+</broadcasts>
+<disabledamage><damage>fall</damage></disabledamage>
+<gamerules><doTileDrops>false</doTileDrops></gamerules>
+<hunger><depletion>off</depletion></hunger>
+<world><timeset>6000</timeset><timelock>on</timelock></world>
+<itemremove><item>potion</item><item>glass bottle</item></itemremove>
+</map>

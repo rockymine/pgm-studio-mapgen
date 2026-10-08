@@ -36,6 +36,9 @@ TORCH_ON = {1: (-1, 0), 2: (1, 0), 3: (0, -1), 4: (0, 1), 5: (0, 0)}
 LADDER_ON = {2: (0, 1), 3: (0, -1), 4: (1, 0), 5: (-1, 0)}
 NEED_TOP = 6                     # a plot's highest reachable standing place, at least this far over the street
 NEED_HIDES = 12                  # standing places a seeker on the street cannot see
+# blocks a seeker sees through: glass, panes, bars, fences, walls of cobble, gates, and everything a player walks
+# through; leaves are not among them
+SEE_THROUGH = {20, 95, 102, 160, 101, 85, 113, 139, 107, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192}
 
 
 class OutOfPlot(Exception):
@@ -110,9 +113,10 @@ def check(world, x0, z0, y0, margin):
     top = int(spots[:, 1].max()) - y0 if len(spots) else 0
     eyes = [(i, y0 + 1.6, k) for i in range(sx) for k in range(sz)
             if not (margin <= i < margin + SIZE and margin <= k < margin + SIZE) and (i + k) % 2 == 0]
+    clear = passable | np.isin(ids, list(SEE_THROUGH))
     hidden = 0
     for x, y, z in spots:
-        if not any(_sees(passable, e, (x + 0.5, y + 0.9, z + 0.5)) for e in eyes):
+        if not any(_sees(clear, e, (x + 0.5, y + 0.9, z + 0.5)) for e in eyes):
             hidden += 1
     return dict(spots=len(spots), top=top, hidden=hidden)
 

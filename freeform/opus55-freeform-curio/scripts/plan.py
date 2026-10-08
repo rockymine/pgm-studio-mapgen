@@ -22,9 +22,12 @@ PER_ROUND = 6
 TIME = "7m"
 
 
+CENTRE_X, CENTRE_Z = 0, 0                                       # the fountain's middle block
+
+
 def origin(i, j):
     """The north-west corner of plot (row i, column j), in world x and z."""
-    return -PLOT // 2 + STEP * (j - N // 2), -PLOT // 2 + STEP * (i - N // 2)
+    return -(PLOT // 2) + STEP * (j - N // 2), -(PLOT // 2) + STEP * (i - N // 2)
 
 
 def builder(i, j):
