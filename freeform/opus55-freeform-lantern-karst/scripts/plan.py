@@ -69,13 +69,14 @@ PIECES = [
     dict(key="drying", name="the Drying Floor", kind="lane", poly=rect(30, -64, 47, -57), y=67),
     dict(key="road", name="the Store Road", kind="lane", poly=rect(48, -72, 57, -30), y=66, climb=(66, 70, -52, -72)),
     dict(key="store", name="the Tea Store", kind="wool", poly=rect(45, -85, 60, -73), y=70),
-    # the Store's flank: two islets from the band's east end to the road's foot
-    dict(key="e-1", name="Tea Step I", kind="islet", poly=rect(41, -23, 46, -18), y=64),
-    dict(key="e-2", name="Tea Step II", kind="islet", poly=rect(53, -23, 58, -18), y=65),
+    # the Store's flank: two islets from the band's east end, one to the road's foot and one to a landing off the Rows
+    dict(key="landing", name="the Tea Landing", kind="lane", poly=rect(42, -32, 47, -30), y=66),
+    dict(key="e-1", name="Tea Step I", kind="islet", poly=rect(42, -23, 47, -18), y=64),
+    dict(key="e-2", name="Tea Step II", kind="islet", poly=rect(54, -23, 59, -18), y=65),
 ]
 
 # the middle: the build band across the chasm, and the Bell Rock standing in it
-BAND = rect(-40, -11, 39, 10)
+BAND = rect(-48, -11, 47, 10)       # wide enough to reach under the first column of each chain of steps
 BELL_ROCK = dict(key="bell", name="the Bell Rock", poly=rect(-5, -5, 4, 4), y=68)
 
 # where blocks may be placed over void. Everywhere else the void cannot be built over, at any height.
@@ -83,7 +84,7 @@ BUILD_ZONES = [
     dict(key="band", name="the band", poly=BAND),
     dict(key="pit", name="the Pillar's pit", poly=rect(-70, -92, -37, -53)),
     dict(key="w-steps", name="the Mist Steps", poly=rect(-62, -42, -41, -12)),
-    dict(key="e-steps", name="the Tea Steps", poly=rect(40, -29, 59, -12)),
+    dict(key="e-steps", name="the Tea Steps", poly=rect(34, -32, 59, -12)),
 ]
 
 # a bedrock defence wall: one across the Store Road's last stretch, where its three ways in have met.
@@ -116,6 +117,6 @@ PLACES = [
     dict(name="the Pillar Shrine", why="WOOL: lime, on a pillar between the Arms, 13 off each and 7 above them"),
     dict(name="the Mist Steps", why="the Pillar's flank: four islets on a grid from the band onto the Long Terrace"),
     dict(name="the Tea Rows, the Drying Floor and the Store Road", why="the Store's F: two ways from the hub onto a short road"),
-    dict(name="the Tea Steps", why="the Store's flank: two islets from the band to the road's foot"),
+    dict(name="the Tea Steps", why="the Store's flank: two islets from the band to the road's foot and the Rows' landing"),
     dict(name="the Tea Store", why="WOOL: yellow, a storehouse at the road's head, two faces on void"),
 ]

@@ -16,6 +16,10 @@ lanterns along the Store Road, and the Bell Rock in the middle of the chasm wher
 
 The first version's sketch is `renders/00-plan-sketch-v1.png`, drawn by `scripts/sketch_v1.py`.
 
+**How to read the sketch.** The number on each piece is its floor height in blocks (y). Yellow dots are
+void that may be built over; everything dark without dots cannot be. The table in the second panel is the
+walking distances below, each with the rule it is held to.
+
 ## How the plan changed
 
 | The review said | What changed |
@@ -28,6 +32,14 @@ The first version's sketch is `renders/00-plan-sketch-v1.png`, drawn by `scripts
 | Bring the frontline closer, legs wider and shorter | The Stairs are 18 wide and 11 long (were 12 by 19); the bar is 8 nearer the band |
 | Steps like the Mist Steps would also suit the Store Road | The Tea Steps, two islets from the band's east end to the road's foot |
 | A floating map needs a bedrock floor and an obvious build area | A bedrock course under every island; block 36 at y 0 under every buildable column |
+
+**The second review joined the steps to the band and the Rows.**
+
+| The review said | What changed |
+|---|---|
+| The band meets each chain of steps only at a corner, which cannot be crossed well | The band is 96 wide (was 80); it runs under the first column of steps on each side and shares an edge with their zone |
+| The Tea Steps' zone meets only the Store Road | The zone is widened west to meet the Tea Rows along 14 blocks |
+| Add a small piece off the Tea Rows to step onto | The Tea Landing, 6 × 3 off the Rows, in line with the first Tea Step and 6 from it |
 
 **No lane on the board is longer than 46 blocks, and none is a dead end.** The longest is the Long Terrace,
 and both its ends lead somewhere: the Near Arm meets the hub, and the Far Arm stands over the pit.
@@ -90,7 +102,7 @@ reverse.
 | The Tea Court | 60 × 32 ring round a 16 × 14 sinkhole | 66 | the hub: tea terraces, a well, lanterns; every crossing has a near and a far side |
 | The Gate Terrace | 56 × 10 | 65 | the frontline's bar, a gate pavilion over its middle |
 | The West and East Stairs | 18 × 11 each | 64 | the frontline's legs down to the band, 20 of void between them |
-| The band and the Bell Rock | 80 × 22 of void, a 10 × 10 islet | 68 | the build band across the chasm; a bell pavilion on the islet |
+| The band and the Bell Rock | 96 × 22 of void, a 10 × 10 islet | 68 | the build band across the chasm; a bell pavilion on the islet |
 | The Long Terrace | 46 × 10 west out of the hub | 66 | the Pillar's F, its long stroke |
 | The Near and Far Arms | 6 × 32 each, back from the Terrace | 67 | the F's short strokes; the Near Arm also touches the hub |
 | **The Pillar Shrine** | 8 × 8 on a pillar | 74 | **lime wool**: an open shrine, 13 off each Arm, 18 off the Terrace, 7 above |
@@ -101,6 +113,7 @@ reverse.
 | The bedrock wall | 10 across the road, 4 high | — | the Store's prepared line, 3 after the Drying Floor joins and 4 before the room |
 | **The Tea Store** | 16 × 13 at the road's head | 70 | **yellow wool**: a stone storehouse, two faces on void, chests of better gear |
 | The Tea Steps | two 6 × 6 islets | 64–65 | the Store's flank: from the band's east end to the road's foot |
+| The Tea Landing | 6 × 3 off the Tea Rows | 66 | where the first Tea Step leads, so a climber need not go to the road |
 
 **The monuments stand on the Monument Terrace either side of the steps**, where a carrier coming home
 cannot miss them: lime on the left, yellow on the right.
@@ -134,7 +147,8 @@ onto the Long Terrace, 6-block gaps each, and the attacker who takes them never 
 
 **The Tea Store stands at the head of a short road with three ways onto it.** The Tea Rows and the Drying
 Floor both leave the hub's east face and meet the Store Road, with 16 of void between them, so the attacker
-chooses a side as at the hub. The Tea Steps bring a third way from the band's east end to the road's foot.
+chooses a side as at the hub. The Tea Steps bring a third way from the band's east end, to the road's foot or to the Tea Landing on the
+Rows.
 
 **All three meet at one wall, eight blocks before the room.** That is the Store's prepared line, as a
 capture room has one. What the first version lacked is that there are three ways to the line, and that the
@@ -149,8 +163,9 @@ length):
 | spawn to the Tea Store, walked | 80 | WL9: comparable |
 | spawn to the Pillar (13 of it bridged) | 75 | WL9: comparable |
 | their ratio | 1.07 | WL9: ideal 1 |
-| band to the Tea Store | 78 | WL10e: at least 59 |
-| band to the Pillar, shortest (18 of it bridged) | 69 | WL10e: at least 59 |
+| band to the Tea Store, shortest (12 of it bridged) | 62 | WL10e: at least 59 |
+| band to the Tea Store, walked | 78 | — |
+| band to the Pillar, shortest, by the Mist Steps (37 of it bridged) | 61 | WL10e: at least 59 |
 | Pillar to Tea Store, straight | 106 | WL7: 46 to 143 |
 | Pillar to the Arms and the Terrace | 13, 13, 18 | WL20: at least 12 |
 | the Store Road alone, after its last join | 8 | — |
@@ -159,7 +174,7 @@ length):
 | the void between the Stairs | 20 | WL12: at least 16 |
 | the void from the spawn to the Near Arm | 12 | — |
 | the Mist Steps' and Tea Steps' gaps | 6 each | — |
-| land on red's half | 5,616 blocks | — |
+| land on red's half | 5,634 blocks | — |
 
 `scripts/plan_check.py` prints this table from the plan's polygons.
 
@@ -216,9 +231,9 @@ spawn stay uncrossable all match. That is the rule the account says makes a void
 
 ## Decisions for you
 
-1. **The Drying Floor is terrace.** You offered a build zone for the F's second stroke. I made it terrace
-   so the defenders walk to their Store in 80; as a build zone they walk 116. Keep it terrace?
-2. **The Near Arm touches the hub.** That makes the Pillar easy to reach from the middle, at 13 blocks of
-   bridge. Should the Near Arm stand off the hub instead, so the hub is not a launch point?
+1. **The two flanks are now the shortest ways from the band to each wool**, at 61 and 62 against a floor
+   of 59. That is near the floor. Should the steps be pushed back a few blocks for margin?
+2. **The arm nearest the hub touches it.** That makes the Pillar reachable straight from the middle, at 13
+   blocks of bridge. Should that arm stand off the hub instead?
 3. **The spawn is 12 blocks of void from the Near Arm.** An attacker there can shoot into the spawn's
-   front terrace. Is that a problem, or a reason for the spawn's west tower?
+   front terrace. Is that acceptable?

@@ -84,6 +84,8 @@ def board(d, oy):
     for p in P.PIECES:
         if p["key"] in names:
             x0 = min(q[0] for q in p["poly"]); z1 = max(q[1] for q in p["poly"])
+            if p["key"] == "rows":
+                z1 = min(q[1] for q in p["poly"]) - 6
             if p["key"] in ("store", "sp-mid"):
                 x0, z1 = (x0 - 4, min(q[1] for q in p["poly"]) - 6) if p["key"] == "store" else (x0 + 30, z1 - 8)
             label(d, x0, z1 + 1, names[p["key"]], oy, fill=(255, 255, 255) if p["key"] not in ("pillar", "store") else (255, 240, 120))
@@ -92,7 +94,7 @@ def board(d, oy):
             d.rectangle([px(min(x for x, z in qq), min(z for x, z in qq), 0, oy), px(max(x for x, z in qq) - 1, max(z for x, z in qq) - 1, 0, oy)],
                         outline=(120, 70, 30), width=1)
     label(d, -38, -2, "the band (build) and the Bell Rock", oy, fill=(255, 230, 140))
-    d.text((6, oy + 4), "1. THE BOARD - pieces by kind, numbered with their floor y; yellow dots: build zones over void;"
+    d.text((6, oy + 4), "1. THE BOARD - the number on each piece is its floor height (y); yellow dots: build zones over void;"
            " black bar: bedrock wall;\n   squares: wools (rim = owner); dots: monuments; discs: spawns; brown boxes: the spawn's relief (pavilion, pool, outcrop, towers)", fill=(255, 255, 255))
 
 
@@ -103,14 +105,15 @@ def routes(d, oy, table):
             d.polygon([px(x, z, 0, oy) for x, z in q], fill=(70, 75, 70), outline=(40, 40, 40))
     blue_store = [(18, -12), (20, -28), (26, -37), (52, -37), (52, -66), (52, -76)]
     blue_store_far = [(20, -28), (22, -40), (18, -60), (38, -60), (50, -62)]
-    blue_store_flank = [(39, -12), (43, -20), (55, -21), (53, -30)]
+    blue_store_flank = [(40, -10), (45, -20), (45, -31), (45, -36)]
+    blue_store_flank2 = [(45, -20), (57, -21), (55, -31)]
     blue_pillar = [(-20, -12), (-24, -28), (-29, -40), (-33, -56), (-34, -74), (-50, -74)]
     blue_pillar_far = [(-29, -40), (-60, -47), (-73, -55), (-73, -74), (-57, -74)]
     blue_flank = [(-40, -11), (-45, -21), (-45, -33), (-52, -45), (-54, -70)]
     red_store = [(0, -88), (0, -68), (20, -60), (40, -60), (52, -62), (52, -76)]
     red_pillar = [(0, -88), (0, -68), (-25, -60), (-33, -66), (-33, -74)]
     for pts, col, w_ in ((blue_store, (90, 140, 255), 4), (blue_store_far, (90, 140, 255), 2), (blue_pillar, (90, 140, 255), 4),
-                         (blue_flank, (150, 190, 255), 3), (blue_store_flank, (150, 190, 255), 3),
+                         (blue_flank, (150, 190, 255), 3), (blue_store_flank, (150, 190, 255), 3), (blue_store_flank2, (150, 190, 255), 2),
                          (blue_pillar_far, (90, 140, 255), 2), (red_store, (240, 90, 80), 2), (red_pillar, (240, 90, 80), 2)):
         d.line([px(x, z, 0, oy) for x, z in pts], fill=col, width=w_)
     for wl in P.WOOLS:
@@ -122,7 +125,7 @@ def routes(d, oy, table):
     label(d, -94, -98, "the Pillar: bridge from", oy, fill=(170, 200, 255))
     label(d, -94, -93, "either Arm or the Terrace", oy, fill=(170, 200, 255))
     label(d, -94, -30, "the Mist Steps", oy, fill=(190, 215, 255))
-    label(d, 62, -20, "the Tea Steps", oy, fill=(190, 215, 255))
+    label(d, 62, -14, "the Tea Steps", oy, fill=(190, 215, 255))
     label(d, -40, -108, "red's own lanes (red)", oy, fill=(255, 160, 150))
     y = int(H * 0.55)
     d.rectangle([4, oy + y - 6, W - 4, oy + y + 12 * len(table) + 4], fill=(20, 22, 30), outline=(90, 90, 90))

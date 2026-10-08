@@ -124,7 +124,7 @@ def main():
     out.append(("the void from the spawn to the Near Arm", f"{gap(X, Z, owner, 'sp-front', 'f-east'):.0f}"))
     out.append(("the Mist Steps' gaps", ", ".join(f"{gap(X, Z, owner, a, b):.0f}" for a, b in
                                                (("w-1", "w-2"), ("w-1", "w-3"), ("w-3", "f-stem"), ("w-4", "f-stem")))))
-    out.append(("the Tea Steps' gaps", ", ".join(f"{gap(X, Z, owner, a, b):.0f}" for a, b in (("e-1", "e-2"), ("e-2", "road")))))
+    out.append(("the Tea Steps' gaps", ", ".join(f"{gap(X, Z, owner, a, b):.0f}" for a, b in (("e-1", "e-2"), ("e-2", "road"), ("e-1", "landing")))))
     out.append(("land on red's half, in blocks", f"{int((land & (Z < 0)).sum())}"))
     w_ = max(len(a) for a, b in out)
     for a, b in out:
