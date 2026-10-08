@@ -111,9 +111,14 @@ class B:
     CARPET = 171
     HARDENED_CLAY = 172
     COAL_BLOCK = 173
+    RED_SANDSTONE = 179
+    CACTUS = 81
     DOUBLE_PLANT = 175  # 0 sunflower 1 lilac 2 tallgrass 3 fern 4 rose 5 peony; top half = 8
     BANNER = 176
+    ACACIA_STAIRS = 163
     SPRUCE_FENCE_GATE = 183
+    ACACIA_FENCE = 192
+    DARK_OAK_FENCE_GATE = 186
     SPRUCE_FENCE = 188
     DARK_OAK_FENCE = 191
     SPRUCE_DOOR = 193

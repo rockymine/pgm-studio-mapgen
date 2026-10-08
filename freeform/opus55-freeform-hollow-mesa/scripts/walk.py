@@ -90,29 +90,26 @@ def main(build):
     x0, z0, ids, dat = render_iso.load(build)
     passable, water, ladder, solid = grid(ids)
     st = standable(passable, water, solid) | (ladder & passable)
-    spawns = {"red": (-98, 60, -7), "blue": (97, 60, -7)}
-    mons = {"red north": (-66, 52, -44), "red south": (-66, 50, 48), "blue north": (65, 52, -44), "blue south": (65, 50, 48)}
-    places = {"cave lake": (-40, 32, 14), "cave mouth": (-12, 36, 3), "cellar": (-52, 43, -34),
-              "mine breakthrough": (-57, 39, 37), "mine adit": (-104, 59, 6), "shaft foot": (-84, 45, 57),
-              "sinkhole floor": (-50, 40, 40), "chapel belfry": (-53, 69, -76), "headframe top": (-84, 66, 55),
-              "rift lip (red, falls)": (-12, 46, 8), "old bridge end": (-7, 52, -44), "rift lip (red, south)": (-14, 48, 60)}
+    spawns = {"red": (-101, 76, 6), "blue": (100, 76, -7)}
+    cores = {"red core": (-74, 47, -24), "blue core": (73, 47, 23)}
+    places = {"shaft head": (-78, 74, -27), "Bench Adit mouth": (-47, 57, -34), "Chimney mouth": (-30, 41, -14),
+              "Sky Arch crown": (-1, 76, 0), "Gilt Spring": (-9, 41, -2), "Mule Trail top": (-54, 74, -80),
+              "bench by the tipple": (-28, 57, 26), "South Drift": (-44, 57, 80), "Wash head": (-100, 74, 52),
+              "water tower walk": (-24, 53, -14), "High Butte": (-124, 94, 0), "Table Rock": (-80, 86, 86),
+              "Olive Grove": (-88, 74, -58), "Rancho": (-100, 84, 74)}
     out = []
     for team, s in spawns.items():
         dist = bfs(st, ladder, water, [s], x0, z0)
-        reach = int((dist >= 0).sum())
-        out.append(f"from {team} spawn {s}: {reach} standable cells reached")
-        for name, m in mons.items():
-            out.append(f"  to {name} monument: {nearest(dist, x0, z0, *m)}")
+        out.append(f"from {team} spawn {s}: {int((dist >= 0).sum())} standable cells reached")
+        for name, m in cores.items():
+            out.append(f"  to {name}: {nearest(dist, x0, z0, *m, r=4)}")
         if team == "red":
             for name, p in places.items():
-                out.append(f"  to {name}: {nearest(dist, x0, z0, *p)}")
-    # from the cave mouth: the approach from below
-    dist = bfs(st, ladder, water, [(-13, 36, 3), (-12, 36, 2), (-14, 36, 4)], x0, z0)
-    out.append("from the cave mouth (behind red's falls):")
-    for name, m in list(mons.items())[:2]:
-        out.append(f"  to {name} monument: {nearest(dist, x0, z0, *m)}")
-    for name in ("cellar", "sinkhole floor", "mine breakthrough", "mine adit"):
-        out.append(f"  to {name}: {nearest(dist, x0, z0, *places[name])}")
+                out.append(f"  to {name}: {nearest(dist, x0, z0, *p, r=4)}")
+    for name, s in (("Bench Adit mouth", places["Bench Adit mouth"]), ("Chimney mouth", places["Chimney mouth"]),
+                    ("shaft head", places["shaft head"])):
+        dist = bfs(st, ladder, water, [s, (s[0], s[1] + 1, s[2]), (s[0] + 1, s[1], s[2])], x0, z0)
+        out.append(f"from the {name} to the red core: {nearest(dist, x0, z0, *cores['red core'], r=4)}")
     print("\n".join(out))
     return out
 
