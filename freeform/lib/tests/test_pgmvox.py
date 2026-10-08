@@ -23,6 +23,7 @@ from pgmvox import pieces as P  # noqa: E402
 from pgmvox import objectives as O  # noqa: E402
 from pgmvox import solid as SOL  # noqa: E402
 from pgmvox import forms, landform as LF, noise, route as RT  # noqa: E402
+from pgmvox import props, trees as TR, under as U  # noqa: E402
 from pgmvox.mapxml import Doc, E, duration, point  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
 from pgmvox.sketch import TEAM, SectionPanel, Sheet  # noqa: E402
@@ -664,6 +665,90 @@ class WorldAndOutput(unittest.TestCase):
         d.time(90)
         xml.dom.minidom.parseString(d.tostring())
         self.assertEqual(duration(90), "1m30s")
+
+
+class Underground(unittest.TestCase):
+    def rock(self):
+        w = World(0, 0, 60, 30, sy=64)
+        w.ids[:, :41, :] = B.STONE
+        return w, np.full((60, 30), 40)
+
+    def test_a_tunnel_has_a_level_floor_and_keeps_its_cover(self):
+        w, H = self.rock()
+        n, floor = U.tunnel(w, [(5, 20, 15, 2.5), (30, 22, 15, 3), (50, 24, 10, 2.5)], ground=H)
+        self.assertGreater(n, 500)
+        self.assertEqual(w.id(30, floor(30, 15) - 1, 15), B.STONE)       # nothing carved under the floor
+        self.assertFalse((w.ids[:, 38:41, :] == B.AIR).any())             # nor within three of the surface
+        d = walk.walk(w.ids, [(5, 20, 15)], w.x0, w.z0)
+        self.assertIsNotNone(walk.nearest(d, 0, 0, 50, 24, 10, r=2))
+
+    def test_a_gallery_climbs_by_stairs_and_its_shaft_reaches_the_top(self):
+        w, _ = self.rock()
+        line = U.gallery_line([(5, 10, 5), (40, 14, 5), (40, 14, 25)])
+        self.assertTrue(all(abs(b[1] - a[1]) <= 1 for a, b in zip(line, line[1:])))
+        U.gallery(w, line, np.random.default_rng(2))
+        U.shaft(w, 5, 5, 10, 40)
+        self.assertIn(B.COBBLE_STAIRS, w.ids)
+        d = walk.walk(w.ids, [line[3]], w.x0, w.z0)
+        self.assertIsNotNone(walk.nearest(d, 0, 0, *line[-1]))
+        self.assertIsNotNone(walk.nearest(d, 0, 0, 5, 41, 5, r=2))         # into the well and up its ladder
+
+
+class Trees(unittest.TestCase):
+    def tree(self):
+        logs = [(0, y, 0, B.LOG, 0) for y in range(4)] + [(1, 2, 0, B.LOG, 4)]
+        leaves = [(dx, 4, dz, B.LEAVES, 0) for dx in (-1, 0, 1) for dz in (-1, 0, 1)]
+        return TR._tree("t-1", "t", logs + leaves)
+
+    def ground(self):
+        w = World(0, 0, 30, 30, sy=30)
+        w.ids[:, :11, :] = B.DIRT
+        w.ids[:, 10, :] = B.GRASS
+        return w
+
+    def test_a_tree_is_planted_whole_and_turned(self):
+        w, t = self.ground(), self.tree()
+        self.assertEqual((t.crown, t.height), (1, 5))
+        self.assertTrue(TR.plant(w, 10, 10, t, turn=1))
+        self.assertEqual(w.id(10, 11, 10), B.LOG)
+        self.assertEqual(w.id(10, 10, 10), B.DIRT)                        # no grass under the trunk
+        self.assertEqual(w.get(10, 13, 11), (B.LOG, 8))                   # the branch along x now lies along z
+        self.assertEqual(w.get(10, 15, 10), (B.LEAVES, 4))                # leaves do not decay
+
+    def test_a_tree_is_refused_whole(self):
+        w, t = self.ground(), self.tree()
+        w.set(11, 15, 11, B.PLANKS)
+        before = w.ids.copy()
+        self.assertFalse(TR.plant(w, 10, 10, t))
+        self.assertTrue((w.ids == before).all())
+        self.assertFalse(TR.plant(w, 20, 20, t, allowed=lambda x, z: x < 20))
+
+    def test_a_wood_keeps_its_crowns_apart(self):
+        w, t = self.ground(), self.tree()
+        placed = []
+        n = TR.scatter(w, np.ones((30, 30), bool), {"t": [t]}, {"t": 1}, np.random.default_rng(3), spacing=2,
+                       planted=placed)
+        self.assertEqual(n, len(placed))
+        for i, (ax, az, _) in enumerate(placed):
+            for bx, bz, _ in placed[i + 1:]:
+                self.assertGreaterEqual(math.hypot(ax - bx, az - bz), 2)
+
+    @unittest.skipUnless(os.path.exists(os.path.join(TR.studio_root(), "src", "PgmStudio.Minecraft", "Library",
+                                                     "trees.json")), "the studio is not checked out")
+    def test_the_studio_library_reads(self):
+        by = TR.kinds(TR.library())
+        self.assertIn("birch", by)
+        self.assertTrue(all(t.blocks and t.crown > 0 for t in by["oak"]))
+
+
+class Props(unittest.TestCase):
+    def test_a_row_of_stalls_faces_one_way(self):
+        w = World(0, 0, 30, 30, sy=20)
+        w.ids[:, :6, :] = B.STONE
+        cells = props.stalls(w, [(5, z) for z in range(2, 26)], 5, "e")
+        self.assertEqual(len(cells) % 9, 0)
+        self.assertGreater(len(cells), 9)
+        self.assertEqual(w.id(6, 6, 3), B.WOOD_SLAB)                      # the counter on the east side
 
 
 class Plots(unittest.TestCase):

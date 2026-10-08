@@ -2,9 +2,9 @@
 grotto and alcoves; Ironhollow Mine from the adit by the spawn to the shaft and the breakthrough; the gaol
 cellar whose south wall has fallen into the cave; the sinkhole's rubble.
 
-The cave's passages are pgmvox.solid tubes (capsules along the branch) clamped to a level floor and kept three
-blocks under the surface; the chambers are solid ellipsoids. The floor clamp, the surface guard, the dressing,
-the mine's timbering and the cellar are local: the library has no tunnel, gallery or cave finish.
+The passages, chambers, cave finish, galleries and shaft are pgmvox.under's; what is local is where they go
+(plan.py) and the pieces only this board has: the lake, the pillar hall, the grotto, the falls mouth, the
+sinkhole's rubble, the adit portal and the gaol cellar.
 """
 import math
 
@@ -12,8 +12,8 @@ import numpy as np
 
 import plan as P
 from pgmvox import B, rng
-from pgmvox import solid as S
-from pgmvox.orient import ladder, stair, torch
+from pgmvox import under as U
+from pgmvox.orient import ladder, torch
 
 R_ = rng(P.BOARD, "under")
 
@@ -25,78 +25,17 @@ def ground_at(L, x, z):
     return None
 
 
-def carve(w, L, solid, floor, keep_surface=True):
-    """Air in a solid's cells at or over floor(x, z), never within three of the surface, never into water."""
-    n = 0
-    for x, y, z in solid.cells():
-        if x >= -1 or y < floor(x, z):
-            continue
-        g = ground_at(L, x, z)
-        if keep_surface and g is not None and y > g - 3:
-            continue
-        if w.id(x, y, z) in (B.WATER, B.WATER_FLOW):
-            continue
-        w.set(x, y, z, B.AIR)
-        n += 1
-    return n
+def red(x, y, z):
+    """Held back from every carve and finish: the mirror line and blue's half, which the turn writes."""
+    return x >= -1
 
 
 def branch(w, L, pts):
-    """One cave branch: a tube through (x, floor + 0.45 r, z) with its radius, its floor held level across."""
-    arc = np.concatenate([[0], np.cumsum([math.hypot(b[0] - a[0], b[2] - a[2]) for a, b in zip(pts, pts[1:])])])
-    path = [(x + 0.5, fy + 0.45 * r, z + 0.5) for x, fy, z, r in pts]
-    tube = S.tube(path, [p[3] for p in pts])
-
-    def floor(x, z):
-        return int(round(np.interp(P._arc_of(pts, x, z), arc, [p[1] for p in pts])))
-    return carve(w, L, tube, floor)
+    return U.tunnel(w, pts, ground=lambda x, z: ground_at(L, x, z), keep=red)[0]
 
 
 def chamber(w, L, cx, fy, cz, rx, h):
-    e = S.ellipsoid(cx + 0.5, fy + 0.6 * h, cz + 0.5, rx, h, rx * 0.9)
-    return carve(w, L, e, lambda x, z: fy)
-
-
-def dress(w, L, box):
-    """Floors of gravel and clay, stalactites, mushrooms; ore in the walls; stalagmites against the walls."""
-    x0, x1, z0, z1, y0, y1 = box
-    for x in range(x0, min(x1, -2) + 1):
-        for z in range(z0, z1 + 1):
-            g = ground_at(L, x, z)
-            if g is None:
-                continue
-            col = w.ids[x - w.x0, :, z - w.z0]
-            for y in range(max(2, y0), min(y1, g - 2)):
-                if col[y] != B.AIR:
-                    continue
-                r = R_.random()
-                if col[y - 1] in (B.STONE, B.COBBLE, B.DIRT) and y - 1 < g - 3:
-                    w.set(x, y - 1, z, *((B.GRAVEL, 0) if r < 0.45 else (B.STONE, 5) if r < 0.7 else
-                                         (B.CLAY, 0) if r < 0.8 else (B.COBBLE, 0)))
-                    if r > 0.985:
-                        w.set(x, y, z, B.BROWN_MUSHROOM if R_.random() < 0.6 else B.RED_MUSHROOM)
-                if col[y + 1] == B.STONE and col[y - 1] == B.AIR and r < 0.05:
-                    n = 1 + int(R_.random() * 2.5)
-                    for k in range(n):
-                        if col[y - k] == B.AIR and col[y - k - 1] == B.AIR:
-                            w.set(x, y - k, z, B.STONE if k < n - 1 else B.COBBLE_WALL, 0)
-    for _ in range(300):
-        x, z, y = int(R_.integers(x0, x1 + 1)), int(R_.integers(z0, z1 + 1)), int(R_.integers(y0, y1))
-        if x < -1 and w.id(x, y, z) == B.STONE and any(w.id(x + a, y + b, z + c) == B.AIR for a, b, c in
-                                                        ((1, 0, 0), (-1, 0, 0), (0, 0, 1), (0, 0, -1), (0, 1, 0))):
-            w.set(x, y, z, B.COAL_ORE if R_.random() < 0.6 else B.IRON_ORE)
-    for _ in range(900):
-        x, z, y = int(R_.integers(x0, x1 + 1)), int(R_.integers(z0, z1 + 1)), int(R_.integers(y0, y1))
-        g = ground_at(L, x, z)
-        if g is None or x >= -1 or y > g - 3 or w.id(x, y, z) != B.AIR:
-            continue
-        if w.id(x, y - 1, z) not in (B.GRAVEL, B.STONE, B.CLAY, B.COBBLE):
-            continue
-        walls = sum(w.id(x + a, y, z + c) not in (B.AIR, B.WATER) for a, c in ((1, 0), (-1, 0), (0, 1), (0, -1)))
-        if walls >= 1 and w.id(x, y + 1, z) == B.AIR and w.id(x, y + 2, z) == B.AIR:
-            w.set(x, y, z, B.STONE, 5)
-            if R_.random() < 0.5:
-                w.set(x, y + 1, z, B.COBBLE_WALL)
+    return U.chamber(w, cx, fy, cz, rx, h, ground=lambda x, z: ground_at(L, x, z), keep=red)
 
 
 def lake(w):
@@ -168,51 +107,9 @@ def sinkhole(w, L):
 
 
 def mine(w, L):
-    """Three-wide, three-tall galleries; spruce sets every four blocks; rails on the level runs; stairs on the
-    rises; iron in the walls; a timber portal at the adit; the foreman's chest at the breakthrough."""
-    clean = P.mine_line()
-    for x, y, z in clean:
-        for dx in (-1, 0, 1):
-            for dz in (-1, 0, 1):
-                for dy in (0, 1, 2):
-                    w.set(x + dx, y + dy, z + dz, B.AIR)
-                w.set(x + dx, y - 1, z + dz, B.GRAVEL if R_.random() < 0.3 else B.STONE, 0 if R_.random() < 0.5 else 5)
-    for i, (x, y, z) in enumerate(clean):
-        nxt, prv = clean[min(i + 1, len(clean) - 1)], clean[max(i - 1, 0)]
-        along_x = abs(nxt[0] - prv[0]) >= abs(nxt[2] - prv[2])
-        step = None
-        if nxt[1] > y and i + 1 < len(clean):
-            step = (nxt[0] - x, nxt[2] - z)
-        elif prv[1] > y and i > 0:
-            step = (prv[0] - x, prv[2] - z)
-        if step is not None and step != (0, 0):
-            for k in (-1, 0, 1):
-                ox, oz = (0, k) if along_x else (k, 0)
-                if w.id(x + ox, y, z + oz) == B.AIR:
-                    w.set(x + ox, y, z + oz, B.COBBLE_STAIRS, stair(step))
-        elif nxt[1] == y and prv[1] == y and w.id(x, y, z) == B.AIR:
-            w.set(x, y, z, B.RAIL, 1 if along_x else 0)
-        if i % 4 == 2 and nxt[1] == y and prv[1] == y:          # a timber set only where the floor is level:
-            for k in (-1, 1):                                      # over a stair its cap takes the headroom
-                ox, oz = (0, k * 2) if along_x else (k * 2, 0)
-                for dy in (0, 1, 2):
-                    if w.id(x + ox, y + dy, z + oz) != B.AIR:
-                        w.set(x + ox, y + dy, z + oz, B.LOG, 1)
-                for dy in (0, 1):
-                    if w.id(x + ox // 2, y + dy, z + oz // 2) in (B.AIR, B.RAIL):
-                        w.set(x + ox // 2, y + dy, z + oz // 2, B.SPRUCE_FENCE)
-            for k in (-1, 0, 1):
-                ox, oz = (0, k) if along_x else (k, 0)
-                w.set(x + ox, y + 2, z + oz, B.LOG, 1 | (4 if along_x else 8))
-            if i % 12 == 2:
-                tx, tz = (x, z + 1) if along_x else (x + 1, z)
-                if w.id(tx, y + 1, tz) == B.AIR:
-                    w.set(tx, y + 1, tz, B.TORCH, torch("s" if along_x else "e"))
-    for x, y, z in clean[::2]:
-        for _ in range(3):
-            ox, oy, oz = int(R_.integers(-2, 3)), int(R_.integers(0, 3)), int(R_.integers(-2, 3))
-            if w.id(x + ox, y + oy, z + oz) == B.STONE:
-                w.set(x + ox, y + oy, z + oz, B.IRON_ORE)
+    """The galleries (pgmvox.under.gallery: three wide, timber sets on the level, rails, stairs on the rises,
+    iron in the walls), a timber portal at the adit and the foreman's chest at the breakthrough."""
+    U.gallery(w, P.mine_line(), R_, floor=((B.GRAVEL, 0), (B.STONE, 0), (B.STONE, 5)))
     ax, ay, az = P.MINE[0]
     for dx in (-2, -1, 0, 1, 2):
         for dy in (0, 1, 2, 3):
@@ -231,19 +128,7 @@ def shaft(w, L):
     """The shaft from the gallery up to the headframe's collar: a ladder in a timber-lined well."""
     sx, sz = P.SHAFT
     g = ground_at(L, sx, sz)
-    gy = 45
-    for y in range(gy, g + 1):
-        for dx in (-1, 0, 1):
-            for dz in (-1, 0, 1):
-                w.set(sx + dx, y, sz + dz, B.AIR)
-        for dx, dz in ((-2, -2), (-2, 2), (2, -2), (2, 2)):
-            w.set(sx + dx, y, sz + dz, B.LOG, 1)
-        for d in (-1, 0, 1):
-            for ox, oz in ((d, -2), (d, 2), (-2, d), (2, d)):
-                if y <= g:
-                    w.set(sx + ox, y, sz + oz, B.PLANKS, 1)
-        w.set(sx, y, sz + 1, B.LADDER, 2)
-    w.set(sx, gy - 1, sz + 1, B.PLANKS, 1)
+    U.shaft(w, sx, sz, 45, g, ladder_on="s")
     return g
 
 
@@ -304,7 +189,7 @@ def build(w, L):
     for cx, fy, cz, rx, h, _ in P.CHAMBERS:
         n += chamber(w, L, cx, fy, cz, rx, h)
     pillars(w)
-    dress(w, L, (-64, -9, -30, 45, 26, 46))
+    U.dress_cave(w, (-64, -9, -30, 45, 26, 46), R_, ground=lambda x, z: ground_at(L, x, z), keep=red)
     grotto(w)
     lake(w)
     mouth(w)

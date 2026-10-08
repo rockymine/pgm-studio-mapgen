@@ -45,13 +45,13 @@ Region files were not written (`--skip write`); `world/map.xml` is the only file
 | Stone Bridge: hump-backed, arched, keystoned, stair-stepped | local | `works.stone_bridge` |
 | The Old Bridge's broken stub and iron ties | local | `works.old_bridge` |
 | The mill, its race, wheel and weir | local | `works.mill` |
-| Headframe with winding wheel, shaft and ladder | local | `works.headframe`, `under.shaft` |
+| Headframe with winding wheel, shaft and ladder | local + library | `works.headframe`; the shaft is `pgmvox.under.shaft` |
 | Engine house stack, smithy, well, spoil heap | local | `works.ironhollow` |
-| Falls Cave: gallery, branches, lake chamber, pillar hall, grotto, alcoves | library + local | `solid.tube` and `solid.ellipsoid`; floor clamp, surface guard local |
-| Cave mouth ledge, vines, dressing, stalagmites, ores, lake | local | `under.mouth`, `under.dress`, `under.lake` |
+| Falls Cave: gallery, branches, lake chamber, pillar hall, grotto, alcoves | library + local | `pgmvox.under.tunnel` and `chamber`; pillar hall and grotto local |
+| Cave mouth ledge, vines, dressing, stalagmites, ores, lake | library + local | `pgmvox.under.dress_cave`; `under.mouth` and `under.lake` local |
 | The sinkhole | local | funnel in the plan's heights, rubble in `under.sinkhole` |
-| Ironhollow Mine: galleries, sets, rails, stairs, adit, chests | local | `under.mine` |
-| Trees from the tree showcase, crown spacing, the Cutting's ring, the knoll oak | local | `dress.plant`, `forest` (reads the original's `trees.json`) |
+| Ironhollow Mine: galleries, sets, rails, stairs, adit, chests | library + local | `pgmvox.under.gallery_line` and `gallery`; adit portal and chest local |
+| Trees from the tree showcase, crown spacing, the Cutting's ring, the knoll oak | library | `pgmvox.trees.load`, `plant`, `scatter` (reads the original's `trees.json`) |
 | Wheat field, ditches, fence and gate, scarecrow | local | `dress.build` |
 | Grass, ferns, flower drifts; vines down the rift face | local | `dress.build` |
 | The Cutting's stumps and log piles | local, reduced | stumps and two piles; no sawhorse or sledge |
@@ -60,7 +60,8 @@ Region files were not written (`--skip write`); `world/map.xml` is the only file
 | Plan sketch, annotated top-down, iso, x-ray, cutaways, elevation | library | `sketch`, `render` |
 | Read-back walks, objectives, footing | library | `walk`, `Objectives.check`, `audit.footing` |
 | Barn, haystacks, hay cart, jetty and rowboat, spring off the ridge | not ported | — |
-| Market stalls, village gardens, benches, boulders, fallen logs, hedgerows | not ported | — |
+| Market stalls on the square's west edge | library | `pgmvox.props.stalls` |
+| Village gardens, benches, boulders, fallen logs, hedgerows | not ported | — |
 | Worn ground patches, furnishing inside every house, door paths | not ported | — |
 | Chapel's tall windows, the wing and lean-to roofs crossing their main ridges | not ported | the library's house is one rectangle |
 | Region files (`world/region`) | not written | `--skip write`, as asked |
@@ -286,3 +287,14 @@ Three problems were found only once the world was built and walked.
 patches, how a tower meets a house, where a sign hangs and which way a ladder faces were decided in gen. The
 plan was enough for every place and every walk: the built walks agree with the plan's to the block for both
 monuments.
+
+## After review: the board's pieces moved into the library
+
+**The cave, the mine, the shaft and the trees now come from the library.** `pgmvox.under` holds the tunnel,
+chamber, cave finish, gallery and shaft this port had written locally, and `pgmvox.trees` plants the original's
+cut trees. What stays local is where they go and the pieces only this board has.
+
+**The walks did not move.** Every number in `renders/walks.txt` is the one the local code gave, and the carve
+removed the same 5,568 blocks. One tree fewer stands (53), because a tree now rests on the lowest ground under
+its whole bottom row, as the studio seats it.
+

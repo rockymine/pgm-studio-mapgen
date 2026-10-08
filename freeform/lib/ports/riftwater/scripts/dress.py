@@ -2,10 +2,9 @@
 the wheat field with its ditches and scarecrow, the Cutting's stumps and log piles, vines down the rift face,
 grass and flowers.
 
-All local: the library has no tree source, no planting with crown spacing, no field and no ground cover. The
-trees are read from the original board's trees.json (cut from the tree showcase), which is read, not copied.
+The trees are the original board's cut from the tree showcase (its trees.json, read, not copied), planted and
+spaced by pgmvox.trees. The field, the Cutting and the ground cover are local.
 """
-import json
 import os
 
 import numpy as np
@@ -14,44 +13,21 @@ from scipy import ndimage
 import plan as P
 from pgmvox import B, rng
 from pgmvox import shapes
+from pgmvox import trees as T
 from pgmvox.noise import fbm
 
 TREES_JSON = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "..",
                           "opus55-freeform-riftwater", "scripts", "trees.json")
 NATURAL = {B.GRASS, B.DIRT}
-PLANTS = {B.AIR, B.TALLGRASS, B.FLOWER, B.DANDELION, B.DOUBLE_PLANT, B.LEAVES, B.LEAVES2}
 
 
-def plant(w, x, z, tree, turn=0):
-    """A tree whole with its foot on the ground at (x, z), turned by quarter turns; refused if a block would land
-    in anything but air or plants, or in the rift."""
-    g = w.top(x, z)
-    cells = []
-    for dx, dy, dz, i, d in tree["blocks"]:
-        for _ in range(turn):
-            dx, dz = -dz, dx
-        X, Y, Z = x + dx, g + 1 + dy, z + dz
-        if not w.inside(X, Y, Z) or X >= -1:
-            return False
-        cur = w.id(X, Y, Z)
-        if cur in (B.GRASS, B.DIRT, B.STONE, B.COBBLE, B.GRAVEL):
-            continue                                             # a crown meets a hillside: the hill wins
-        if cur not in PLANTS:
-            return False
-        cells.append((X, Y, Z, i, d))
-    for X, Y, Z, i, d in cells:
-        if i in (17, 162) and turn % 2 == 1 and (d & 12) in (4, 8):
-            d = (d & 3) | (12 - (d & 12))
-        if w.id(X, Y, Z) in (B.LEAVES, B.LEAVES2) and i in (18, 161):
-            continue
-        w.set(X, Y, Z, i, d)
-    if w.id(x, g, z) == B.GRASS:
-        w.set(x, g, z, B.DIRT)
-    return True
+def red(x, z):
+    """Trees stand on red's half only; the turn writes blue's."""
+    return x < -1
 
 
 def build(w, L):
-    trees = json.load(open(TREES_JSON))
+    trees = T.kinds(T.load(TREES_JSON))
     r = rng(P.BOARD, "dress")
     X, Z = L.X, L.Z
     Xf, Zf = X.astype(float), Z.astype(float)
@@ -71,21 +47,9 @@ def build(w, L):
     planted = []
 
     def forest(zone, kinds, weights, spacing, seed, tries=4000):
-        rr = np.random.default_rng(seed)
-        pts = np.argwhere(zone & ~blocked)
-        rr.shuffle(pts)
-        n = 0
-        for i, k in pts[:tries]:
-            x, z = P.X_MIN + int(i), P.Z_MIN + int(k)
-            t = trees[rr.choice(kinds, p=weights)]
-            t = t[rr.integers(len(t))]
-            c = t["crown"] * 0.5
-            if mon_d[i, k] < 4 + t["crown"] or any(np.hypot(x - px, z - pz) < (c + pc) * spacing for px, pz, pc in planted):
-                continue
-            if plant(w, x, z, t, int(rr.integers(4))):
-                planted.append((x, z, c))
-                n += 1
-        return n
+        return T.scatter(w, zone & ~blocked, trees, dict(zip(kinds, weights)), np.random.default_rng(seed),
+                         spacing, tries, planted, ok=lambda x, z, t: mon_d[x - P.X_MIN, z - P.Z_MIN] >= 4 + t.crown,
+                         allowed=red)
 
     woods = shapes.inside(Xf, Zf, P.NORTH_WOOD)
     ridge = (X < -101) & ~((X > -110) & (Z > -18) & (Z < 6))
@@ -94,14 +58,14 @@ def build(w, L):
     n += forest(ridge & ~south_wood, ["birch", "oak", "tiny-oak"], [0.45, 0.2, 0.35], 0.85, 2)
     n += forest(south_wood, ["oak", "birch", "tiny-oak"], [0.25, 0.4, 0.35], 0.85, 3)
     n += forest(np.abs(np.hypot(X + 110, Z - 68) - 11) < 2, ["tiny-oak", "birch"], [0.6, 0.4], 0.8, 4)
-    if plant(w, -22, 74, trees["big-oak"][1], 1):
+    if T.plant(w, -22, 74, trees["big-oak"][1], 1, red):
         n += 1
     for (x, z, kind, i) in ((-22, -24, "tiny-oak", 2), (-36, -84, "oak", 6), (-70, 4, "birch", 3),
                             (-28, 20, "birch", 1), (-20, 24, "birch", 4), (-44, 18, "birch", 7),
                             (-68, 78, "oak", 8), (-90, 80, "tiny-oak", 3), (-80, -36, "oak", 7), (-82, 30, "birch", 2)):
         t = trees[kind][i % len(trees[kind])]
         ii, kk = x - P.X_MIN, z - P.Z_MIN
-        if mon_d[ii, kk] >= 4 + t["crown"] and not blocked[ii, kk] and plant(w, x, z, t, i % 4):
+        if mon_d[ii, kk] >= 4 + t.crown and not blocked[ii, kk] and T.plant(w, x, z, t, i % 4, red):
             n += 1
 
     # the wheat field: strips of wheat, carrots and potatoes on farmland, a ditch every ninth row, a fence

@@ -27,6 +27,8 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `terrain` | `slope_deg` as the studio reads it; `lay` (ground painted by slope, a snow line); `Strata`, `bed_offset` and `beds` (rock beds that tilt and fold); `mountain_ring`; `underside` and `root_depth` (cones, flutes, spires); `cloud_deck` |
 | `route` | `find` (a least-cost route over the ground, held to a grade, switchbacks and all), `network` (places joined by roads that share their trunk), `simplify`, `smooth`, `footprint`, `pave` (surface and bridges), `steps` |
 | `props` | small built things placed on a floor, facing a way: `stall` and `stalls` (a market row), `lamp` |
+| `under` | caves and mines carved into a built world: `tunnel` (a level-floored passage), `chamber`, `carve`, `dress_cave` (floors, stalactites, ore), `gallery_line` and `gallery` (timbered, railed, stepped), `shaft` |
+| `trees` | hand-built trees planted whole: `library` (the studio's copied trees), `load` (a board's own cut), `kinds`, `plant` (turned, refused whole), `scatter` (a wood with its crowns apart) |
 | `forms` | scenery built block by block where a heightfield cannot say it: `tower` (rings tapering up a stack, ledges every few courses, bulging faces, beds in courses, a crown and vines), `skirt` (karst faces under a floating floor's rim), `root_vines` |
 | `landform` | heightfield operations: `watercourse` (reaches and falls), `canyon` and washes, `spire`, `butte`, `scarp`, `terraces`, `stage`, `grade` (a route held to a grade, bridging water, keeping earlier roads), `coast`, `blend` |
 | `walk` | the voxel walk over built blocks with `MoveRules`; `no_stand_above`, `catchers`, `unreached`, `nearest`, `gap_cleared` |
@@ -194,6 +196,36 @@ terrain, so `forms.tower` keeps the recipe, with the rock, the ledges and the cr
 than two under the floor, is cut back where the noise is low, and carries moss and grass. `root_vines` hangs vines
 from the lower roots, where they trail below an island rather than hiding against its faces.
 
+## Underground
+
+**A cave passage is a tube held to a level floor.** `under.tunnel` carves a tube through waypoints and leaves
+solid everything under the floor interpolated along it, so a player walks a cave rather than the inside of a pipe.
+Every carve stays `cover` blocks under the ground it is given and never cuts into water.
+
+**A mine gallery rises a block at a time, and only by stairs.** `gallery_line` holds each step of the floor to one
+block, and `gallery` lays its floor after the whole carve, so every rise keeps room for its stair. A floor laid cell
+by cell had filled the place each stair stood.
+
+**A timber set stands only on the level.** Over a stair its cap takes the headroom a player needs to climb it.
+
+**A shaft leaves its foot open where a passage reaches it.** Its lining is not laid over cells already open in its
+lowest three courses. A test walk found a shaft built after its gallery had walled the gallery's end shut.
+
+## Trees
+
+**The trees come from the studio's own library.** `trees.library()` reads its copied trees, the ones hand-built
+in the tree showcase, and `kinds` groups them by name. A board with its own cut reads it with `trees.load`.
+
+**A tree is planted whole or not at all.** `plant` seats it on the lowest ground under its bottom row, as the
+studio's stamp does, and refuses it entirely if any block would land in anything but air or plants. Ground and
+rock give way to a crown that meets a hillside, and leaves never decay.
+
+**A turn turns the blocks too.** A quarter turn moves every offset and turns each block's data, so a lying
+branch follows the body.
+
+**A wood is scattered with its crowns apart.** `scatter` keeps two trees `spacing` times their crown radii
+apart, so a wood reads as trees rather than one mass of leaves.
+
 ## Routes
 
 **A route is found over the ground, not drawn on it.** `route.find` searches nodes a few blocks apart, with 48
@@ -314,10 +346,12 @@ cd freeform/lib && python3 -m unittest discover -s tests -v
 
 **The tests check what each module promises.** They cover the studio-exported table, turns and their round trips,
 the physics numbers the boards measured, the headroom fix, ladders, footing, plan symmetry and fair arrivals,
-sight, slope without wrapping, save and load, rendering, a sketch sheet with every kind of panel, the roof
-against the studio's own, a house at 45 degrees with no gap in its walls, a word read from both sides, a course
+sight, slope without wrapping, save and load, rendering, and a sketch sheet with every kind of panel.
+
+**The pieces are tested as built and walked.** The tests check the roof against the studio's own, a house at 45 degrees with no gap in its walls, a word read from both sides, a course
 and its mirrored audit, a roof walked over the ground, solids turned with the plan, objectives mirrored, written
-and read back, map.xml, and a Curio plot passing the plot check.
+and read back, a tunnel and a mine walked end to end, a tree planted, turned and refused, map.xml, and a Curio plot
+passing the plot check.
 
 **The studio's reader is run by hand,** since it needs the studio's checkout and the .NET SDK:
 

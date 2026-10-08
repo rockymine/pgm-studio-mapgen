@@ -25,6 +25,7 @@ from scipy import ndimage
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import landform as LF  # noqa: E402
 from pgmvox import shapes  # noqa: E402
+from pgmvox import under as under_lib  # noqa: E402
 from pgmvox.build import Frame, House  # noqa: E402
 from pgmvox.noise import fbm, spline, smoothstep  # noqa: E402
 from pgmvox.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
@@ -430,19 +431,7 @@ def _arc_of(pts, x, z):
 def mine_line():
     """The mine's galleries: one cell a block along the waypoints, the floor (lowest air) changing at most
     one a step, as gen.py carves them."""
-    path = []
-    for (ax, ay, az), (bx, by, bz) in zip(MINE, MINE[1:]):
-        n = int(max(abs(bx - ax), abs(bz - az)))
-        for i in range(n):
-            t = i / n
-            path.append((round(ax + (bx - ax) * t), ay + (by - ay) * t, round(az + (bz - az) * t)))
-    path.append(MINE[-1])
-    clean = [(int(path[0][0]), int(path[0][1]), int(path[0][2]))]
-    for x, y, z in path[1:]:
-        if (x, z) == (clean[-1][0], clean[-1][2]):
-            continue
-        clean.append((int(x), clean[-1][1] + int(np.clip(round(y) - clean[-1][1], -1, 1)), int(z)))
-    return clean
+    return under_lib.gallery_line(MINE)
 
 
 def deck_y(L, z):
