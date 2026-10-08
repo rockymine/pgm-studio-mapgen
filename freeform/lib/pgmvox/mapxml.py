@@ -73,6 +73,14 @@ def union(*children, **attrs):
     return E("union", *children, **attrs)
 
 
+def item(material, slot=None, amount=None, damage=None, enchant=(), unbreakable=None, team_color=None,
+         tag="item"):
+    """A kit's item: item("bow", 1, enchant=[("infinity", 1)], unbreakable=True); tag "helmet", "chestplate",
+    "leggings" or "boots" for armour."""
+    return E(tag, *[E("enchantment", text=n, level=lv) for n, lv in enchant], slot=slot, material=material,
+             amount=amount, damage=damage, unbreakable=unbreakable, team_color=team_color)
+
+
 def duration(seconds):
     """PGM's duration text: 90 -> "1m30s"."""
     m, s = divmod(int(seconds), 60)
@@ -146,8 +154,19 @@ class Doc:
             kids.append(E("default", E("region", default)) if default.tag != "default" else default)
         return self.add(E("spawns", kids))
 
-    def kill_below(self, y):
-        """A portal that sends anyone below y into the void, the way the arcade boards end a fall."""
+    def kit(self, id_, *items, force=None, **attrs):
+        """A kit under <kits>: doc.kit("spawn-kit", item("iron sword", 0, unbreakable=True), ...)."""
+        el = E("kit", *items, id=id_, force=force, **attrs)
+        self.child("kits").append(el)
+        return el
+
+    def kill_below(self, y, how="portal"):
+        """Anyone below y dies. how="portal" sends them into the void (the arcade boards' way); how="kit" gives
+        them instant damage, as a capture board's fall region does, and keeps them in the world until it lands."""
+        if how == "kit":
+            self.kit("fall-kill", E("effect", text="instant damage", duration=1, amplifier=5), force=True)
+            self.region("the-fall", below(y))
+            return self.apply(kit="fall-kill", region="the-fall")
         return self.add(E("portals", E("portal", E("region", below(y)), y="@-64", sound=False, observers="never")))
 
     def time(self, seconds, result=None):

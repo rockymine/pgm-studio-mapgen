@@ -118,6 +118,24 @@ taken, because a duplicate silently re-points every reference.
 and points turned, yaws turned, team and id swapped, and any field given for the image changed, such as a wool's
 colour. The sketch draws every marker from the same objects, in its team's colour.
 
+## Capture boards
+
+**A capture board is crossed by building, and the plan walk says how much.** `plangraph.graph(bridge=zones)`
+joins every cell of a build zone to its eight neighbours at any height, tagged as built, and `PlanRules(diagonals=
+True)` walks corner to corner, so distances are the octile ones a capture board's targets are set against.
+`measure` gives a route's cost and how much of it was built: "79, 22 of it bridged".
+
+**A wool is drawn once and carries its room.** `Wool` places its wool in the room and its monument on the other
+side, writes the spawner and the room's entry rule, and checks both blocks. `Objectives.write` keeps each team's
+rooms from the other team's hands but for what an attacker brings in. A `Spawn` may name blocks that are mined in
+it and grow back, and `mapxml` writes kits and a kill height by instant damage.
+
+**The voxel walk builds too.** `MoveRules(build=(mask, (lo, hi)))` lets a player stand in a build zone's air as
+on a placed block, and `kill_y` counts nothing below the kill height as a place.
+
+**The capture rebuild proves the set.** With its local walk and rules replaced by these, its plan check and its
+walks read the same to the last digit, and the studio reads its map.xml as valid.
+
 ## Storeys and solids
 
 **A plan can have storeys.** `R.storey(1)` is a raster over the same ground, drawn with the same methods, with

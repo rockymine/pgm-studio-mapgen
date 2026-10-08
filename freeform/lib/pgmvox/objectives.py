@@ -162,13 +162,15 @@ class Objective:
 
 @dataclass
 class Spawn(Objective):
-    """A team's spawn: the block their feet stand in, the way they face, a kit, and the area kept to them."""
+    """A team's spawn: the block their feet stand in, the way they face, a kit, and the area kept to them.
+    protect: True keeps every block of the area as it is; a tuple of material names lets those be mined there
+    and grow back (a spawn's iron), everything else kept; False writes no rule."""
     team: str
     at: tuple
     yaw: int = 0
     kit: str = None
     area: Box = None
-    protect: bool = True
+    protect: object = True
 
     def turned(self, sym):
         return replace(self, at=turn_point(self.at, sym), yaw=turn_yaw(self.yaw, sym),
@@ -184,7 +186,16 @@ class Spawn(Objective):
                 if others:
                     doc.apply(enter=f"only-{teams.short(self.team)}", region=rid,
                               message="You may not enter the enemy spawn!")
-                doc.apply(block="never", region=rid, message="You may not build in a spawn!")
+                if isinstance(self.protect, (tuple, list)):
+                    mats = E("any", *[E("material", text=m) for m in self.protect])
+                    doc.filter("spawn-minable", mats)
+                    doc.filter("spawn-minable-regrowth", E("all", E("filter", id="spawn-minable"),
+                                                          E("cause", text="world")))
+                    doc.apply(block_place="spawn-minable-regrowth", block_break="spawn-minable", region=rid,
+                              message="You may not edit the spawn!")
+                    doc.child("renewables").append(E("renewable", region=rid, renew_filter="spawn-minable"))
+                else:
+                    doc.apply(block="never", region=rid, message="You may not build in a spawn!")
 
     def check(self, w):
         return [] if _stands(w, self.at) else [f"{self.team} spawn at {self.at}: nowhere to stand"]
@@ -291,17 +302,28 @@ class Flag(Objective):
 
 @dataclass
 class Wool(Objective):
-    """A wool to capture (CTW): `team` places it, at `slot`, the air cell over a bedrock pedestal with the dyed
-    glass over it, as the studio stamps a monument. `found` is where the wool is (default the slot)."""
+    """A wool to capture (CTW). `team` is the team that captures it, so it is the other team that keeps it: the
+    wool lies at `found` in the keepers' `room`, and `team` places it at `slot` on its own side, the air cell over a
+    bedrock pedestal with the dyed glass over it, as the studio stamps a monument. Drawn once, its image is the
+    other team's wool of another colour: O.add(Wool("blue-team", "lime", slot, found, room), color="magenta").
+
+    It stamps its monument and its wool; writes the wool, its monument, the room's entry rule, and with `spawner`
+    a spawner giving the wool to a player in the room (at spawn_at, default over `found`); and its check looks for
+    the slot and the wool. Objectives.write adds each team's rooms' block protection (protect_room)."""
     team: str
     color: str
     slot: tuple
     found: tuple = None
     room: Box = None                     # the room the wool is kept in; its keepers are not the team placing it
+    spawner: bool = True
+    spawn_at: tuple = None
+    delay: str = "1.5s"
+    protect_room: bool = True
 
     def turned(self, sym):
         return replace(self, slot=turn_point(self.slot, sym), found=turn_point(self.found, sym) if self.found else None,
-                       room=self.room.image(sym) if self.room else None)
+                       room=self.room.image(sym) if self.room else None,
+                       spawn_at=turn_point(self.spawn_at, sym) if self.spawn_at else None)
 
     @property
     def id(self):
@@ -312,6 +334,8 @@ class Wool(Objective):
         w.set(x, y - 1, z, B.BEDROCK)
         w.set(x, y, z, B.AIR)
         w.set(x, y + 1, z, B.STAINED_GLASS, DYES[self.color])
+        if self.found:
+            w.set(*self.found, B.WOOL, DYES[self.color])
 
     def write(self, doc, teams):
         mid = doc.region(f"{self.color}-{teams.short(self.team)}-monument",
@@ -324,6 +348,12 @@ class Wool(Objective):
             keeper = teams.other(self.team)
             rid = doc.region(f"{self.color}-room", self.room.cuboid())
             doc.apply(enter=f"not-{teams.short(keeper)}", region=rid, message="You may not enter your own wool room!")
+            if self.spawner and self.found:
+                sx, sy, sz = self.spawn_at or (self.found[0], self.found[1] + 1, self.found[2])
+                doc.region(f"{self.color}-wool-spawn", point_el(sx + 0.5, sy, sz + 0.5))
+                doc.child("spawners").append(E("spawner", E("item", material="wool", damage=DYES[self.color]),
+                                               spawn_region=f"{self.color}-wool-spawn", player_region=rid,
+                                               delay=self.delay))
 
     def check(self, w):
         x, y, z = self.slot
@@ -332,13 +362,39 @@ class Wool(Objective):
             bad.append(f"wool {self.color}: the monument slot {self.slot} is not air")
         if w.id(x, y - 1, z) in PASSABLE:
             bad.append(f"wool {self.color}: nothing under the slot to place on")
+        if self.found and w.get(*self.found) != (B.WOOL, DYES[self.color]):
+            bad.append(f"wool {self.color}: no wool at {self.found}")
         return bad
 
     def cells(self):
         return {(self.slot[0], self.slot[2])}
 
     def marker(self):
-        return (self.slot[0], self.slot[2], "W")
+        out = [(self.slot[0], self.slot[2], "W")]
+        if self.found:
+            out.append((self.found[0], self.found[2], "w"))                # the room, in its wool's place
+        return out
+
+
+WOOLROOM_MATERIALS = ("wood", "stained clay", "web")
+
+
+def wool_rooms(doc, teams, wools, materials=WOOLROOM_MATERIALS):
+    """Each keeping team's rooms in one region, and their blocks kept from the other team except what an attacker
+    brings in: `materials`, and water a player places."""
+    if not any(o.room and o.protect_room for o in wools):
+        return
+    doc.filter("woolroom-materials", E("any", *[E("material", text=m) for m in materials],
+                                       E("all", E("cause", text="player"),
+                                         E("any", E("material", text="water"), E("material", text="stationary water")))))
+    for keeper, _, _ in teams.teams:
+        rooms = [o for o in wools if o.room and o.protect_room and teams.other(o.team) == keeper]
+        if not rooms:
+            continue
+        t = teams.short(keeper)
+        doc.region(f"{t}s-woolrooms", E("union", *[E("region", id=f"{o.color}-room") for o in rooms]))
+        doc.filter(f"{t}s-woolrooms-filter", E("all", E("filter", id=f"not-{t}"), E("filter", id="woolroom-materials")))
+        doc.apply(block=f"{t}s-woolrooms-filter", region=f"{t}s-woolrooms", message="You may not edit the wool room!")
 
 
 @dataclass
@@ -511,6 +567,7 @@ class Objectives:
             self.teams.write(doc)
         for o in self.items:
             o.write(doc, self.teams)
+        wool_rooms(doc, self.teams, self.of(Wool))
         if limit is not None:
             doc.child("score").append(E("limit", text=limit))
         return doc
@@ -534,7 +591,7 @@ class Objectives:
         out = []
         for o in self.items:
             m = o.marker()
-            if m:
-                out.append((*m, getattr(o, "team", None)))
+            for one in (m if isinstance(m, list) else [m] if m else []):
+                out.append((*one, getattr(o, "team", None)))
         return out
 

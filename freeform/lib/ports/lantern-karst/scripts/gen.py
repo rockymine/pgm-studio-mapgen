@@ -20,7 +20,7 @@ from plan import (FOUNDATION, KILL_Y, MAX_BUILD, MIST_Y, OBSERVER_AT, WALL, X_MA
                   objectives, zone_mask)
 from pgmvox import B, World, forms, noise, rng
 from pgmvox import terrain as T
-from pgmvox.objectives import DYES, Wool
+from pgmvox.objectives import Wool
 from pgmvox.orient import turn_world
 from pgmvox.shapes import edge_depth
 
@@ -195,9 +195,7 @@ def make():
     for te in w.tiles:
         if te["kind"] == "Banner" and te["z"] >= 0:
             te["base"] = 4
-    O.stamp(w)                                                   # the monument slots, both halves
-    for o in O.of(Wool):                                         # the wools in their rooms (stamp does not)
-        w.set(*o.found, B.WOOL, DYES[o.color])
+    O.stamp(w)                                                   # the monument slots and the wools, both halves
     before = int((w.ids == B.STAINED_GLASS).sum())
     T.cloud_deck(w, 31, seed=50, cell=18, puff=5, breaks=0.02, materials=((B.STAINED_GLASS, 0), (B.STAINED_GLASS, 8)))
     n_mist = int((w.ids == B.STAINED_GLASS).sum()) - before

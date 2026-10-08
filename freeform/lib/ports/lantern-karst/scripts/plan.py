@@ -195,15 +195,16 @@ def objectives():
     """Teams, spawns and the four wools, drawn once for red's rooms: a Wool's team is the team that captures it,
     so red's lime is blue's to take and place on blue's monument; its image is red's to take from blue's room."""
     O = Objectives(Teams(("red-team", "Red", "red", 16), ("blue-team", "Blue", "blue", 16)), SYM)
-    O.add(Spawn("red-team", SPAWN_AT, yaw=0, kit="spawn-kit", area=Box(-20, 0, -120, 19, 127, -79), protect=False))
+    O.add(Spawn("red-team", SPAWN_AT, yaw=0, kit="spawn-kit", area=Box(-20, 0, -120, 19, 127, -79),
+                protect=("iron block",)))                         # its iron is mined and grows back
     O.add(Observer(OBSERVER_AT, yaw=90), mirror=False)
     pillar_room = Box(-66, 75, -97, -59, 91, -90)
     store_room = Box(47, 71, -110, 66, 83, -97)
     # blue's monuments are the images of red's, (-4, -89) and (3, -89) on red's Monument Terrace
-    O.add(Wool("blue-team", "lime", slot=(3, MONUMENT_Y, 88), found=(-63, 75, -94), room=pillar_room),
-          color="magenta")
-    O.add(Wool("blue-team", "yellow", slot=(-4, MONUMENT_Y, 88), found=(56, 71, -106), room=store_room),
-          color="orange")
+    O.add(Wool("blue-team", "lime", slot=(3, MONUMENT_Y, 88), found=(-63, 75, -94), room=pillar_room,
+               spawn_at=(-63, 76, -92)), color="magenta")
+    O.add(Wool("blue-team", "yellow", slot=(-4, MONUMENT_Y, 88), found=(56, 71, -106), room=store_room,
+               spawn_at=(56, 72, -104)), color="orange")
     return O
 
 

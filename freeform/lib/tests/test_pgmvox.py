@@ -3,6 +3,7 @@
     cd freeform/lib && python3 -m unittest discover -s tests -v
 """
 import gzip
+import math
 import json
 import os
 import sys
@@ -214,6 +215,62 @@ class Landforms(unittest.TestCase):
         self.assertFalse((sea.mask & (np.abs(X) < 38) & (np.abs(Z) < 38)).any())
         T = LF.terraces(H, np.ones(H.shape, bool), step=4, base=0)
         self.assertTrue((T % 4 == 0).all())
+
+
+class Capture(unittest.TestCase):
+    def test_a_wool_places_itself_its_spawner_and_its_room(self):
+        o = O.Objectives(O.Teams(("red-team", "Red", "red"), ("blue-team", "Blue", "blue")), Symmetry("half"))
+        o.add(O.Wool("blue-team", "lime", slot=(3, 11, 6), found=(-8, 11, -6), room=O.Box(-10, 11, -8, -6, 14, -4)),
+              color="magenta")
+        o.add(O.Spawn("red-team", (-2, 11, -10), area=O.Box(-4, 11, -12, 0, 14, -8), protect=("iron block",)))
+        w = World(-12, -12, 24, 24, sy=20)
+        w.fill(-12, 0, -12, 11, 10, 11, B.STONE)
+        o.stamp(w)
+        self.assertEqual(w.get(-8, 11, -6), (B.WOOL, 5))
+        self.assertEqual(o.check(w), [])
+        w.set(-8, 11, -6, B.AIR)
+        self.assertEqual(len(o.check(w)), 1)                                # the wool is missed
+        x = xml.dom.minidom.parseString(o.write(Doc("T", "1", "t")).tostring())
+        self.assertEqual(len(x.getElementsByTagName("spawner")), 2)
+        self.assertEqual({r.getAttribute("id") for r in x.getElementsByTagName("union")},
+                         {"reds-woolrooms", "blues-woolrooms"})
+        self.assertEqual(len(x.getElementsByTagName("renewable")), 2)
+        self.assertEqual([m[2] for m in o.markers()].count("w"), 2)          # each room marked
+
+    def test_a_walk_over_build_zones(self):
+        R = Raster((0, 19), (0, 4), ["void", "floor"], base_h=0, base_kind="void")
+        R.rect(0, 5, 0, 4, 10, "floor", both=False)
+        R.rect(14, 19, 0, 4, 10, "floor", both=False)
+        zone = R.mask("void")
+        E = plangraph.graph(R, {"floor"}, rules=plangraph.PlanRules(jumps=False, diagonals=True), bridge=zone)
+        D, prev = plangraph.dijkstra(E, [(0, 2)])
+        cost, by, _ = plangraph.measure(D, prev, E, [(19, 2)])
+        self.assertAlmostEqual(by["bridge"], 9.0)                           # the gap, built over
+        self.assertLess(cost, 20)
+        Ed = plangraph.graph(R, {"floor"}, rules=plangraph.PlanRules(jumps=False, diagonals=True))
+        Dd, _ = plangraph.dijkstra(Ed, [(0, 0)])
+        self.assertAlmostEqual(Dd[(4, 4)], 4 * math.sqrt(2))                # octile, not four-way
+
+    def test_the_voxel_walk_builds_and_dies(self):
+        w = World(-1, -1, 24, 3, sy=40)
+        w.fill(0, 20, 0, 4, 20, 0, B.STONE)
+        w.fill(15, 20, 0, 19, 20, 0, B.STONE)
+        zone = np.zeros((w.sx, w.sz), bool)
+        zone[6:16, :] = True
+        d = walk.walk(w.ids, [(0, 21, 0)], w.x0, w.z0, walk.MoveRules(jumps=False, build=(zone, (21, 21))))
+        self.assertGreater(d[19 - w.x0, 21, 0 - w.z0], 0)
+        w.fill(0, 5, 0, 19, 5, 0, B.STONE)                                  # a floor below the kill height
+        d = walk.walk(w.ids, [(0, 21, 0)], w.x0, w.z0, walk.MoveRules(jumps=False, kill_y=10))
+        self.assertEqual(d[8 - w.x0, 6, 0 - w.z0], -1)
+
+    def test_a_kit(self):
+        from pgmvox.mapxml import item
+        d = Doc("T", "1", "t")
+        d.kit("k", item("bow", 1, enchant=[("infinity", 1)], unbreakable=True), item("leather boots", tag="boots"))
+        d.kill_below(40, how="kit")
+        x = xml.dom.minidom.parseString(d.tostring())
+        self.assertEqual(len(x.getElementsByTagName("kit")), 2)
+        self.assertEqual(x.getElementsByTagName("enchantment")[0].getAttribute("level"), "1")
 
 
 class Forms(unittest.TestCase):

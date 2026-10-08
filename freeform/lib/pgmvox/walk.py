@@ -34,6 +34,8 @@ class MoveRules:
     max_gap: int = 3                     # the widest gap a running jump clears
     climb: bool = True                   # ladders, vines and water lift a player
     doors: bool = True                   # wooden doors and fence gates open (an iron door does not)
+    kill_y: int | None = None            # nobody stands below this: a fall past it is a death, not a place
+    build: tuple | None = None           # (mask over the world's columns, (y_lo, y_hi)): air a player builds in
 
 
 OPENABLE = (K.DOORS - {K.B.IRON_DOOR}) | K.FENCE_GATES
@@ -64,12 +66,20 @@ def _jump_offsets(max_gap):
 def walk(ids, starts, x0, z0, rules=None):
     """Moves to every standing place from the starts (world (x, y, z) of the feet), -1 where unreached.
 
-    The least number of moves, exactly: a jump costs as many moves as the blocks it crosses, so the search takes
+    rules.build lets a player stand in the air of a build zone, as on the block they placed, and rules.kill_y
+    counts nothing below the kill height as a place. The least number of moves, exactly: a jump costs as many moves as the blocks it crosses, so the search takes
     places in order of their distance (a bucket queue), not in the order they were found. A first-in first-out
     queue settled a far place before a nearer one and gave a mirrored board two different answers."""
     rules = rules or MoveRules()
     st, (passable, water, climb, solid) = standing(ids, rules.doors)
     sx, sy, sz = st.shape
+    if rules.build is not None:                                  # a capture board's build zones: bridged over
+        m, (lo, hi) = rules.build
+        lo, hi = max(1, lo), min(sy - 2, hi)
+        st[:, lo:hi + 1, :] |= np.asarray(m, bool)[:, None, :] & passable[:, lo:hi + 1, :] & \
+            passable[:, lo + 1:hi + 2, :]
+    if rules.kill_y is not None:
+        st[:, :rules.kill_y, :] = False
     dist = np.full(st.shape, -1, np.int32)
     buckets = [deque()]
     for (x, y, z) in starts:
