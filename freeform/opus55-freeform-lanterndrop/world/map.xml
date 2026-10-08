@@ -1,0 +1,94 @@
+<map proto="1.5.0">
+<name>Lantern Drop</name>
+<version>1.0.0</version>
+<objective>Drop down the broken pass and hold the most hills when the clock runs out.</objective>
+<gamemode>arcade</gamemode>
+<rules><rule>A drop of nineteen kills unless it ends in water: a cistern, the paddies, the harbour or your bucket.</rule><rule>Touch a hill to take it; it scores for you until someone else touches it, even after you die.</rule><rule>The slipway in the harbour takes you back to the bell court.</rule></rules>
+<players min="1" max="40" colors="true"/>
+<kits>
+    <kit id="players">
+        <clear/>
+        <item slot="0" locked="true" name="`b`lWater Drop" material="water bucket"/>
+        <item slot="1" locked="true" name="`b`lWater Drop" material="water bucket"/>
+        <item slot="2" locked="true" name="`b`lWater Drop" material="water bucket"/>
+        <effect duration="3s" amplifier="5">resistance</effect>
+        <effect duration="oo" amplifier="-2">health boost</effect>
+        <game-mode>survival</game-mode>
+    </kit>
+</kits>
+<spawns>
+    <spawn kit="players" yaw="0"><region><cuboid min="-5,241,7" max="6,241,14"/></region></spawn>
+    <default yaw="0"><region><point>0.5,252,-6.5</point></region></default>
+</spawns>
+<filters>
+    <any id="water"><material>water</material><material>stationary water</material></any>
+    <not id="holding-hill-1"><objective>hill-1</objective></not>
+    <not id="holding-hill-2"><objective>hill-2</objective></not>
+    <not id="holding-hill-3"><objective>hill-3</objective></not>
+    <not id="holding-hill-4"><objective>hill-4</objective></not>
+    <not id="holding-hill-5"><objective>hill-5</objective></not>
+    <not id="holding-hill-6"><objective>hill-6</objective></not>
+    <not id="holding-hill-7"><objective>hill-7</objective></not>
+    <not id="holding-hill-8"><objective>hill-8</objective></not>
+    <not id="holding-hill-9"><objective>hill-9</objective></not>
+    <not id="holding-hill-10"><objective>hill-10</objective></not>
+    <not id="holding-hill-11"><objective>hill-11</objective></not>
+    <not id="holding-hill-12"><objective>hill-12</objective></not>
+    <not id="holding-hill-13"><objective>hill-13</objective></not>
+    <not id="holding-hill-14"><objective>hill-14</objective></not>
+</filters>
+<regions>
+    <cuboid id="bell-court" min="-10,236,-4" max="11,252,18"/>
+    <cuboid id="court-floor" min="-5,241,7" max="6,241,14"/>
+    <union id="built-water">
+        <cuboid min="-3,195,52" max="4,199,58"/>
+        <cuboid min="-11,128,166" max="-6,132,171"/>
+        <cuboid min="7,128,166" max="12,132,171"/>
+        <cuboid min="-9,112,188" max="10,116,199"/>
+        <cuboid min="-22,21,276" max="23,28,317"/>
+    </union>
+    <cuboid id="slipway" min="-4,24,312" max="5,31,318"/>
+    <cuboid id="hill-1-box" min="-15,216,38" max="-10,222,43"/>
+    <cuboid id="hill-2-box" min="11,216,38" max="16,222,43"/>
+    <cuboid id="hill-3-box" min="-2,196,56" max="3,202,61"/>
+    <cuboid id="hill-4-box" min="-13,176,91" max="-8,182,96"/>
+    <cuboid id="hill-5-box" min="9,176,91" max="14,182,96"/>
+    <cuboid id="hill-6-box" min="-1,158,130" max="2,164,135"/>
+    <cuboid id="hill-7-box" min="-11,129,171" max="-6,135,176"/>
+    <cuboid id="hill-8-box" min="7,129,171" max="12,135,176"/>
+    <cuboid id="hill-9-box" min="-2,113,191" max="3,119,196"/>
+    <cuboid id="hill-10-box" min="-15,92,222" max="-10,98,227"/>
+    <cuboid id="hill-11-box" min="11,92,222" max="16,98,227"/>
+    <cuboid id="hill-12-box" min="-8,64,254" max="-5,70,257"/>
+    <cuboid id="hill-13-box" min="6,64,254" max="9,70,257"/>
+    <cuboid id="hill-14-box" min="-2,28,287" max="3,34,292"/>
+    <apply region="built-water" block-break="never" block-place="never" message="This water belongs to the pass."/>
+    <apply region="bell-court" block-place="never"/>
+    <apply block-place="water" block-break="water" block-physics="never"/>
+</regions>
+<damage><deny><region id="bell-court"/></deny></damage>
+<score/>
+<control-points required="false" neutral-state="false" capture-time="0.1s" capture-rule="lead" show="false">
+    <control-point id="hill-1" name="Drum Towers (left)" points="1" capture="hill-1-box" captured="hill-1-box" player-filter="holding-hill-1"/>
+    <control-point id="hill-2" name="Drum Towers (right)" points="1" capture="hill-2-box" captured="hill-2-box" player-filter="holding-hill-2"/>
+    <control-point id="hill-3" name="Great Pagoda" points="1" capture="hill-3-box" captured="hill-3-box" player-filter="holding-hill-3"/>
+    <control-point id="hill-4" name="Bamboo Crowns (left)" points="1" capture="hill-4-box" captured="hill-4-box" player-filter="holding-hill-4"/>
+    <control-point id="hill-5" name="Bamboo Crowns (right)" points="1" capture="hill-5-box" captured="hill-5-box" player-filter="holding-hill-5"/>
+    <control-point id="hill-6" name="Rope Bridge" points="1" capture="hill-6-box" captured="hill-6-box" player-filter="holding-hill-6"/>
+    <control-point id="hill-7" name="Gallery Roofs (left)" points="1" capture="hill-7-box" captured="hill-7-box" player-filter="holding-hill-7"/>
+    <control-point id="hill-8" name="Gallery Roofs (right)" points="1" capture="hill-8-box" captured="hill-8-box" player-filter="holding-hill-8"/>
+    <control-point id="hill-9" name="Terrace" points="1" capture="hill-9-box" captured="hill-9-box" player-filter="holding-hill-9"/>
+    <control-point id="hill-10" name="Stall Roofs (left)" points="1" capture="hill-10-box" captured="hill-10-box" player-filter="holding-hill-10"/>
+    <control-point id="hill-11" name="Stall Roofs (right)" points="1" capture="hill-11-box" captured="hill-11-box" player-filter="holding-hill-11"/>
+    <control-point id="hill-12" name="Crow'S Nests (left)" points="1" capture="hill-12-box" captured="hill-12-box" player-filter="holding-hill-12"/>
+    <control-point id="hill-13" name="Crow'S Nests (right)" points="1" capture="hill-13-box" captured="hill-13-box" player-filter="holding-hill-13"/>
+    <control-point id="hill-14" name="Barge" points="3" capture="hill-14-box" captured="hill-14-box" player-filter="holding-hill-14"/>
+</control-points>
+<time>5m</time>
+<portals sound="true">
+    <portal region="slipway" destination="court-floor" yaw="@0"/>
+    <portal y="-64"><region><below y="-5"/></region></portal>
+</portals>
+<itemremove><item>bucket</item><item>water bucket</item></itemremove>
+<hunger><depletion>off</depletion></hunger>
+</map>
