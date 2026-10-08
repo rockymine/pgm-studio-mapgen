@@ -1,5 +1,9 @@
 # Sunwell — the plan
 
+> **Superseded.** Reviewed and set aside: a closed shaft gives no void to knock a player into and no way to run, which
+> is the half of water drop that makes it a fight. Its fall model, its mirrored ways and its fourteen hills went into
+> `../opus55-freeform-lanterndrop/`. The scripts here, `gen.py` among them, stopped part-way through the build.
+
 A water drop board, planned and waiting on a review before anything is built. Every player against every other
 drops down a jungle sinkhole two hundred deep, shelf by shelf, taking hills on the way. Every drop is twenty-two
 blocks and kills unless it ends in water: a pool hit, a bucket placed in time, or the waterfall ridden down. A hill

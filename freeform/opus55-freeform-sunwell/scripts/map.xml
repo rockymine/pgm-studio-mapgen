@@ -1,0 +1,165 @@
+<map proto="1.5.0">
+<name>Sunwell</name>
+<version>1.0.0</version>
+<objective>Drop down the sinkhole and hold the most hills when the clock runs out.</objective>
+<gamemode>arcade</gamemode>
+<rules><rule>Every drop kills unless it ends in water: hit a pool, place a bucket, or ride the falls.</rule><rule>Touch a hill to take it; it scores for you until someone else touches it, even after you die.</rule><rule>The spring in the lake takes you back to the top.</rule></rules>
+<players min="1" max="40" colors="true"/>
+<kits>
+    <kit id="players">
+        <clear/>
+        <item slot="0" locked="true" name="`b`lWater Drop" material="water bucket"/>
+        <item slot="1" locked="true" name="`b`lWater Drop" material="water bucket"/>
+        <item slot="2" locked="true" name="`b`lWater Drop" material="water bucket"/>
+        <effect duration="3s" amplifier="5">resistance</effect>
+        <effect duration="oo" amplifier="-2">health boost</effect>
+        <game-mode>survival</game-mode>
+    </kit>
+</kits>
+<spawns>
+    <spawn kit="players" yaw="0"><region><cuboid min="-4,237,-17" max="5,237,-10"/></region></spawn>
+    <default yaw="0"><region><point>0.5,248,-14.5</point></region></default>
+</spawns>
+<filters>
+    <any id="water"><material>water</material><material>stationary water</material></any>
+    <not id="holding-hill-1"><objective>hill-1</objective></not>
+    <not id="holding-hill-2"><objective>hill-2</objective></not>
+    <not id="holding-hill-3"><objective>hill-3</objective></not>
+    <not id="holding-hill-4"><objective>hill-4</objective></not>
+    <not id="holding-hill-5"><objective>hill-5</objective></not>
+    <not id="holding-hill-6"><objective>hill-6</objective></not>
+    <not id="holding-hill-7"><objective>hill-7</objective></not>
+    <not id="holding-hill-8"><objective>hill-8</objective></not>
+    <not id="holding-hill-9"><objective>hill-9</objective></not>
+    <not id="holding-hill-10"><objective>hill-10</objective></not>
+    <not id="holding-hill-11"><objective>hill-11</objective></not>
+    <not id="holding-hill-12"><objective>hill-12</objective></not>
+    <not id="holding-hill-13"><objective>hill-13</objective></not>
+    <not id="holding-hill-14"><objective>hill-14</objective></not>
+</filters>
+<regions>
+    <cuboid id="spawn-shelf" min="-32,232,-32" max="32,256,32"/>
+    <cuboid id="top-shelf" min="-4,237,-17" max="5,237,-10"/>
+    <union id="built-water">
+        <cuboid min="-5,211,3" max="-2,215,6"/>
+        <cuboid min="3,211,3" max="6,215,6"/>
+        <cuboid min="-11,211,9" max="-6,215,13"/>
+        <cuboid min="7,211,9" max="12,215,13"/>
+        <cuboid min="-20,211,3" max="-16,215,7"/>
+        <cuboid min="17,211,3" max="21,215,7"/>
+        <cuboid min="-20,214,3" max="-16,237,5"/>
+        <cuboid min="-20,235,-3" max="-16,237,3"/>
+        <cuboid min="17,214,3" max="21,237,5"/>
+        <cuboid min="17,235,-3" max="21,237,3"/>
+        <cuboid min="-9,189,-5" max="-6,193,-2"/>
+        <cuboid min="7,189,-5" max="10,193,-2"/>
+        <cuboid min="-2,189,-10" max="3,193,-5"/>
+        <cuboid min="-20,189,-6" max="-16,193,-2"/>
+        <cuboid min="17,189,-6" max="21,193,-2"/>
+        <cuboid min="-20,192,-4" max="-16,215,-2"/>
+        <cuboid min="-20,213,-2" max="-16,215,4"/>
+        <cuboid min="17,192,-4" max="21,215,-2"/>
+        <cuboid min="17,213,-2" max="21,215,4"/>
+        <cuboid min="-4,167,4" max="-1,171,7"/>
+        <cuboid min="2,167,4" max="5,171,7"/>
+        <cuboid min="-12,167,10" max="-7,171,14"/>
+        <cuboid min="8,167,10" max="13,171,14"/>
+        <cuboid min="-20,167,3" max="-16,171,7"/>
+        <cuboid min="17,167,3" max="21,171,7"/>
+        <cuboid min="-20,170,3" max="-16,193,5"/>
+        <cuboid min="-20,191,-3" max="-16,193,3"/>
+        <cuboid min="17,170,3" max="21,193,5"/>
+        <cuboid min="17,191,-3" max="21,193,3"/>
+        <cuboid min="-14,145,-14" max="-7,149,-7"/>
+        <cuboid min="8,145,-14" max="15,149,-7"/>
+        <cuboid min="-20,145,-6" max="-16,149,-2"/>
+        <cuboid min="17,145,-6" max="21,149,-2"/>
+        <cuboid min="-20,148,-4" max="-16,171,-2"/>
+        <cuboid min="-20,169,-2" max="-16,171,4"/>
+        <cuboid min="17,148,-4" max="21,171,-2"/>
+        <cuboid min="17,169,-2" max="21,171,4"/>
+        <cuboid min="-3,123,3" max="0,127,6"/>
+        <cuboid min="1,123,3" max="4,127,6"/>
+        <cuboid min="-10,123,9" max="-5,127,13"/>
+        <cuboid min="6,123,9" max="11,127,13"/>
+        <cuboid min="-20,123,3" max="-16,127,7"/>
+        <cuboid min="17,123,3" max="21,127,7"/>
+        <cuboid min="-20,126,3" max="-16,149,5"/>
+        <cuboid min="-20,147,-3" max="-16,149,3"/>
+        <cuboid min="17,126,3" max="21,149,5"/>
+        <cuboid min="17,147,-3" max="21,149,3"/>
+        <cuboid min="-9,101,-5" max="-6,105,-2"/>
+        <cuboid min="7,101,-5" max="10,105,-2"/>
+        <cuboid min="-2,101,-9" max="3,105,-5"/>
+        <cuboid min="-20,101,-6" max="-16,105,-2"/>
+        <cuboid min="17,101,-6" max="21,105,-2"/>
+        <cuboid min="-20,104,-4" max="-16,127,-2"/>
+        <cuboid min="-20,125,-2" max="-16,127,4"/>
+        <cuboid min="17,104,-4" max="21,127,-2"/>
+        <cuboid min="17,125,-2" max="21,127,4"/>
+        <cuboid min="-7,79,11" max="-4,83,14"/>
+        <cuboid min="5,79,11" max="8,83,14"/>
+        <cuboid min="-16,79,5" max="-9,83,12"/>
+        <cuboid min="10,79,5" max="17,83,12"/>
+        <cuboid min="-20,79,3" max="-16,83,7"/>
+        <cuboid min="17,79,3" max="21,83,7"/>
+        <cuboid min="-20,82,3" max="-16,105,5"/>
+        <cuboid min="-20,103,-3" max="-16,105,3"/>
+        <cuboid min="17,82,3" max="21,105,5"/>
+        <cuboid min="17,103,-3" max="21,105,3"/>
+        <cuboid min="-4,57,-5" max="-1,61,-2"/>
+        <cuboid min="2,57,-5" max="5,61,-2"/>
+        <cuboid min="-10,57,-10" max="-5,61,-6"/>
+        <cuboid min="6,57,-10" max="11,61,-6"/>
+        <cuboid min="-20,57,-6" max="-16,61,-2"/>
+        <cuboid min="17,57,-6" max="21,61,-2"/>
+        <cuboid min="-20,60,-4" max="-16,83,-2"/>
+        <cuboid min="-20,81,-2" max="-16,83,4"/>
+        <cuboid min="17,60,-4" max="21,83,-2"/>
+        <cuboid min="17,81,-2" max="21,83,4"/>
+        <cuboid min="-25,30,-25" max="26,39,30"/>
+    </union>
+    <cuboid id="spring" min="-4,36,18" max="5,42,26"/>
+    <cuboid id="hill-1-box" min="-11,212,8" max="-6,218,13"/>
+    <cuboid id="hill-2-box" min="7,212,8" max="12,218,13"/>
+    <cuboid id="hill-3-box" min="-2,190,-10" max="3,196,-5"/>
+    <cuboid id="hill-4-box" min="-5,168,3" max="0,174,8"/>
+    <cuboid id="hill-5-box" min="1,168,3" max="6,174,8"/>
+    <cuboid id="hill-6-box" min="-2,146,-8" max="3,152,-3"/>
+    <cuboid id="hill-7-box" min="-10,124,8" max="-5,130,13"/>
+    <cuboid id="hill-8-box" min="6,124,8" max="11,130,13"/>
+    <cuboid id="hill-9-box" min="-2,102,-9" max="3,108,-4"/>
+    <cuboid id="hill-10-box" min="-16,80,6" max="-11,86,11"/>
+    <cuboid id="hill-11-box" min="12,80,6" max="17,86,11"/>
+    <cuboid id="hill-12-box" min="-10,58,-10" max="-5,64,-5"/>
+    <cuboid id="hill-13-box" min="6,58,-10" max="11,64,-5"/>
+    <cuboid id="hill-14-box" min="-2,38,7" max="3,44,12"/>
+    <apply region="built-water" block-break="never" block-place="never" message="This water belongs to the well."/>
+    <apply region="spawn-shelf" block-place="never"/>
+    <apply block-place="water" block-break="water" block-physics="never"/>
+</regions>
+<damage><deny><region id="spawn-shelf"/></deny></damage>
+<score/>
+<control-points required="false" neutral-state="false" capture-time="0.1s" capture-rule="lead" show="false">
+    <control-point id="hill-1" name="1. Far Pool (left)" points="1" capture="hill-1-box" captured="hill-1-box" player-filter="holding-hill-1"/>
+    <control-point id="hill-2" name="1. Far Pool (right)" points="1" capture="hill-2-box" captured="hill-2-box" player-filter="holding-hill-2"/>
+    <control-point id="hill-3" name="2. Sun Pool" points="1" capture="hill-3-box" captured="hill-3-box" player-filter="holding-hill-3"/>
+    <control-point id="hill-4" name="3. Near Pool (left)" points="1" capture="hill-4-box" captured="hill-4-box" player-filter="holding-hill-4"/>
+    <control-point id="hill-5" name="3. Near Pool (right)" points="1" capture="hill-5-box" captured="hill-5-box" player-filter="holding-hill-5"/>
+    <control-point id="hill-6" name="4. Bare Rock" points="1" capture="hill-6-box" captured="hill-6-box" player-filter="holding-hill-6"/>
+    <control-point id="hill-7" name="5. Far Pool (left)" points="1" capture="hill-7-box" captured="hill-7-box" player-filter="holding-hill-7"/>
+    <control-point id="hill-8" name="5. Far Pool (right)" points="1" capture="hill-8-box" captured="hill-8-box" player-filter="holding-hill-8"/>
+    <control-point id="hill-9" name="6. Moon Pool" points="1" capture="hill-9-box" captured="hill-9-box" player-filter="holding-hill-9"/>
+    <control-point id="hill-10" name="7. Shaft'S Pool (left)" points="1" capture="hill-10-box" captured="hill-10-box" player-filter="holding-hill-10"/>
+    <control-point id="hill-11" name="7. Shaft'S Pool (right)" points="1" capture="hill-11-box" captured="hill-11-box" player-filter="holding-hill-11"/>
+    <control-point id="hill-12" name="8. Middle Pool (left)" points="1" capture="hill-12-box" captured="hill-12-box" player-filter="holding-hill-12"/>
+    <control-point id="hill-13" name="8. Middle Pool (right)" points="1" capture="hill-13-box" captured="hill-13-box" player-filter="holding-hill-13"/>
+    <control-point id="hill-14" name="9. Islet" points="3" capture="hill-14-box" captured="hill-14-box" player-filter="holding-hill-14"/>
+</control-points>
+<time>5m</time>
+<portals sound="true">
+    <portal region="spring" destination="top-shelf" yaw="@0"/>
+</portals>
+<itemremove><item>bucket</item><item>water bucket</item></itemremove>
+<hunger><depletion>off</depletion></hunger>
+</map>
