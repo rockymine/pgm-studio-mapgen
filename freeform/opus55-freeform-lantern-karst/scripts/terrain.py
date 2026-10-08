@@ -83,6 +83,23 @@ class Field:
         self.paint = {}                         # (x, z) -> (id, data) of the top block, set by dressing
 
 
+# The karst's beds, by world height (they follow the ground, tilted a little by the strata noise): stone carries
+# them, andesite in courses, a dark bed of cyan stained clay (dark grey in this version), a pale bed of light grey
+# stained clay, and a thin seam of gravel. One rock read in several tones, never two rocks.
+BEDS = [(B.STONE, 0)] * 3 + [(B.STONE, 5)] * 2 + [(B.STAINED_CLAY, 9)] + [(B.STONE, 0)] * 2 + \
+       [(B.STONE, 5)] + [(B.STAINED_CLAY, 8)] + [(B.STONE, 0)] * 3 + [(B.STAINED_CLAY, 9)] * 2 + [(B.STONE, 5)]
+
+
+def rock(y, tilt, rng):
+    bed = BEDS[(y + int(4 * tilt)) % len(BEDS)]
+    r = rng.random()
+    if bed == (B.STONE, 0) and r < 0.06:
+        return (B.COBBLE, 0)
+    if bed == (B.STONE, 5) and r < 0.08:
+        return (B.GRAVEL, 0) if r < 0.02 else (B.STONE, 0)
+    return bed
+
+
 def root_bottom(F):
     """The lowest y of each land column: a cone under the course, deeper inland, fluted, with spires."""
     d = F.depth_in
@@ -100,15 +117,10 @@ def write(w, F):
         h = int(F.H[i, j])
         edge = F.depth_in[i, j] <= 1.0
         for y in range(int(bottom[i, j]), h + 1):
-            band = (y + int(3 * F.strata[i, j])) % 7
             if y == h - 6 and not edge:
                 bid, dd = B.BEDROCK, 0
-            elif band in (0, 1):
-                bid, dd = B.STONE, 5                               # andesite courses
-            elif band == 4 and rng.random() < 0.5:
-                bid, dd = B.STONE, 6
             else:
-                bid, dd = B.STONE, 0
+                bid, dd = rock(y, F.strata[i, j], rng)
             if edge and y > h - 6 and rng.random() < 0.18:
                 bid, dd = B.MOSSY, 0
             w.set(x, y, z, bid, dd)
@@ -134,7 +146,7 @@ def skirt(w, F, rng):
         top = h - 2 - int(near[i, j]) - (1 if b < 0.2 else 0)
         bot = h - 6 - int(4 * max(0, b)) - int(rng.integers(0, 3))
         for y in range(bot, top + 1):
-            w.set(x, y, z, *((B.MOSSY, 0) if rng.random() < 0.15 else (B.STONE, 5 if (y % 5) < 2 else 0)))
+            w.set(x, y, z, *((B.MOSSY, 0) if rng.random() < 0.12 else rock(y, F.strata[i, j], rng)))
         if rng.random() < 0.5 and w.id(x, top + 1, z) == B.AIR:
             w.set(x, top + 1, z, B.TALLGRASS, 2 if rng.random() < 0.5 else 1)
     # undercuts: the rim cell's rock between floor-2 and floor-5 cut back where the noise is low
@@ -187,20 +199,53 @@ def joins(w, F):
 
 
 def markers(w, F):
-    """Block 36 at y 0 under every buildable column; redstone along every island edge that faces a build zone."""
+    """Block 36 at y 0 under every buildable column, red's half (the turn copies it)."""
     build = (F.land | F.zone) & RED
     for i, j in zip(*np.nonzero(build)):
         w.set(int(XS[i]), P.MARKER_Y, int(ZS[j]), 36)
-    edge_zone = np.zeros_like(F.land)
-    open_zone = F.zone & ~F.land
-    for di, dj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-        edge_zone |= np.roll(open_zone, (-di, -dj), (0, 1))
-    edge_zone &= F.land & RED & (F.kind != "wool") & (F.kind != "spawn")
+    return int(build.sum())
+
+
+def build_outline(w):
+    """The build region's outline as the studio stamps it (rules.md ST5, BuildMarkerStamper): an unpowered
+    redstone line at y 1, two blocks out from every void-facing edge of the build zones, one air block clear
+    of the zones and of the terrain; at a convex corner the two lines turn into each other. Over both halves,
+    from the zones and islands of both."""
+    build = np.zeros((NX, NZ), bool)
+    for zn in P.BUILD_ZONES:
+        for poly in (zn["poly"], [P.rot(a, b) for a, b in zn["poly"]]):
+            build |= G.inside(X, Z, poly)
+    terr = np.zeros((NX, NZ), bool)
+    for p in P.PIECES + [P.BELL_ROCK]:
+        for poly in (p["poly"], [P.rot(a, b) for a, b in p["poly"]]):
+            terr |= G.inside(X, Z, poly)
+    # what the islands actually occupy at any height in play counts as terrain too (ledges of the skirt)
+    terr |= (w.ids[:, 40:100, :] != 0).any(axis=1)          # the mist lies below 40
+    sides = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+    corners = [(0, 2), (0, 3), (1, 2), (1, 3)]
+    marker = set()
+
+    def ok(i, j):
+        return 0 <= i < NX and 0 <= j < NZ
+    for i, j in zip(*np.nonzero(build)):
+        fv = []
+        for dx, dz in sides:
+            a, b = i + dx, j + dz
+            fv.append(ok(a, b) and not build[a, b] and not terr[a, b])
+        for k, (dx, dz) in enumerate(sides):
+            if fv[k]:
+                marker.add((i + 2 * dx, j + 2 * dz))
+        for f, g in corners:
+            if fv[f] and fv[g]:
+                (ax, az), (bx, bz) = sides[f], sides[g]
+                for st in (1, 2):
+                    marker.add((i + ax * st + bx * 2, j + az * st + bz * 2))
+                    marker.add((i + ax * 2 + bx * st, j + az * 2 + bz * st))
+    crowd = ndimage.maximum_filter(build | terr, size=3)
     n = 0
-    for i, j in zip(*np.nonzero(edge_zone)):
-        x, z, h = int(XS[i]), int(ZS[j]), int(F.H[i, j])
-        if w.id(x, h + 1, z) == B.AIR and w.id(x, h, z) not in (B.SLAB, B.STONEBRICK_STAIRS):
-            w.set(x, h + 1, z, 55)
+    for i, j in marker:
+        if ok(i, j) and not crowd[i, j]:
+            w.set(int(XS[i]), 1, int(ZS[j]), 55, 0)
             n += 1
     return n
 
@@ -294,7 +339,7 @@ def spires(w, rng):
                     if dx * dx + dz * dz <= (rr + 1.4 * b) ** 2:
                         x, z = int(XS[i]) + dx, int(ZS[j]) + dz
                         if w.id(x, y, z) in (B.AIR, 95, B.GLASS):
-                            w.set(x, y, z, B.STONE, 5 if (y + int(3 * b)) % 7 < 2 else 0)
+                            w.set(x, y, z, *rock(y, b, rng))
                             n += 1
         cx, cz = int(XS[i]), int(ZS[j])
         cr = int(r * 0.7)

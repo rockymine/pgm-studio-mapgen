@@ -329,6 +329,9 @@ def spawn(w, F, rng):
     # the tea beds either side of the monuments
     tea_rows(w, F, -12, -97, -7, -92, along_x=False)
     tea_rows(w, F, 6, -97, 11, -92, along_x=False)
+    # iron on the Pool Terrace, either side of where a player arrives
+    iron(w, -15, 72, -104)
+    iron(w, 14, 72, -104)
     # stone lanterns at the heads of the two exits
     for x in (-20, -9, 8, 19):
         toro(w, x, 70, -87)
@@ -420,12 +423,17 @@ def shrine(w, F):
         for dz in (-1, 0, 1):
             w.set(wx + dx, y, wz + dz, *JADE)
     w.set(wx, y + 1, wz, B.WOOL, 5)                         # lime; blue's is recoloured in gen.py
+    # the entrance marker on every side: each side of the top abuts the pit's build zone
+    entrance_line(w, [(x, z0) for x in range(x0 + 1, x1)], y)
+    entrance_line(w, [(x, z1) for x in range(x0 + 1, x1)], y)
+    entrance_line(w, [(x0, z) for z in range(z0 + 1, z1)], y)
+    entrance_line(w, [(x1, z) for z in range(z0 + 1, z1)], y)
 
 
 def store(w, F):
     """The Tea Store: a stone storehouse at the head of the road, its door the road's width less two, its
     upper walls white and jade between dark oak posts, chests along the walls, the wool on a shelf at the back."""
-    x0, z0, x1, z1 = 47, -100, 66, -87
+    x0, z0, x1, z1 = 47, -110, 66, -97
     y = 70
     for x in range(x0, x1 + 1):
         for z in range(z0, z1 + 1):
@@ -454,7 +462,7 @@ def store(w, F):
     lanterns_under_eaves(w, x0 - 2, z0 - 2, x1 + 2, z1 + 2, y + 7)
     # inside: lantern light, shelves of tea, the wool on a jade shelf at the back
     for x in (52, 56, 61):
-        w.set(x, y + 7, -94, B.GLOWSTONE)
+        w.set(x, y + 7, (z0 + z1) // 2, B.GLOWSTONE)
     for x in range(x0 + 1, x1):
         if x % 2 == 0 and not 54 <= x <= 58:
             w.set(x, y + 1, z0 + 1, B.HAY, 0)
@@ -465,8 +473,44 @@ def store(w, F):
     gear = [(0, "minecraft:iron_chestplate", 1, 0), (1, "minecraft:iron_leggings", 1, 0),
             (2, "minecraft:iron_boots", 1, 0), (3, "minecraft:iron_helmet", 1, 0),
             (4, "minecraft:golden_apple", 2, 0), (5, "minecraft:arrow", 32, 0)]
-    w.chest(x0 + 1, y + 1, -93, gear, facing=5)
-    w.chest(x1 - 1, y + 1, -93, gear, facing=4)
+    w.chest(x0 + 1, y + 1, (z0 + z1) // 2 + 1, gear, facing=5)
+    w.chest(x1 - 1, y + 1, (z0 + z1) // 2 + 1, gear, facing=4)
+    entrance_line(w, [(x, z1) for x in range(51, 63)], y)
+
+
+def entrance_line(w, cells, y):
+    """A wool room's entrance marker (ST1): a redstone line on the room's last row at an entry interface, a
+    redstone torch at either end."""
+    for k, (x, z) in enumerate(cells):
+        if k in (0, len(cells) - 1):
+            w.set(x, y + 1, z, 76, 5)
+        else:
+            w.set(x, y + 1, z, 55, 0)
+
+
+def iron(w, cx, y, cz):
+    """A 3 x 3 x 3 cube of iron on the spawn, broken by players and renewed by the map."""
+    for dx in (-1, 0, 1):
+        for dz in (-1, 0, 1):
+            for dy in (1, 2, 3):
+                w.set(cx + dx, y + dy, cz + dz, B.IRON_BLOCK)
+
+
+def ferns(w, F, rng):
+    """Ferns on the grass, sparse, never on a path or paving and never on a bridging rim."""
+    n = 0
+    for i, j in zip(*np.nonzero(F.land)):
+        x, z, h = int(T.XS[i]), int(T.ZS[j]), int(F.H[i, j])
+        if w.id(x, h, z) != B.GRASS or w.id(x, h + 1, z) != B.AIR or F.depth_in[i, j] <= 2:
+            continue
+        r = rng.random()
+        if r < 0.035:
+            w.set(x, h + 1, z, B.TALLGRASS, 2); n += 1
+        elif r < 0.045 and w.id(x, h + 2, z) == B.AIR:
+            w.set(x, h + 1, z, B.DOUBLE_PLANT, 3); w.set(x, h + 2, z, B.DOUBLE_PLANT, 8); n += 1
+        elif r < 0.06:
+            w.set(x, h + 1, z, B.TALLGRASS, 1); n += 1
+    return n
 
 
 def store_wall(w, F):
@@ -532,3 +576,4 @@ def build(w, F, rng):
     store(w, F)
     store_wall(w, F)
     lanes(w, F, rng)
+    ferns(w, F, rng)

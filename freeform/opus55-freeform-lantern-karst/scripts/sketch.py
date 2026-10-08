@@ -103,14 +103,14 @@ def routes(d, oy, table):
     for p in P.PIECES + [P.BELL_ROCK]:
         for q, team in both(p["poly"]):
             d.polygon([px(x, z, 0, oy) for x, z in q], fill=(70, 75, 70), outline=(40, 40, 40))
-    blue_store = [(18, -12), (20, -32), (26, -44), (56, -44), (56, -80), (56, -90)]
+    blue_store = [(18, -12), (20, -32), (26, -44), (56, -44), (56, -90), (56, -100)]
     blue_store_far = [(20, -32), (24, -48), (20, -70), (40, -72), (56, -76)]
     blue_store_flank = [(46, -10), (46, -24), (46, -40)]
     blue_store_flank2 = [(46, -24), (64, -24), (60, -40)]
     blue_pillar = [(-20, -12), (-24, -32), (-30, -48), (-37, -70), (-37, -94), (-59, -94)]
     blue_pillar_far = [(-30, -48), (-37, -66), (-87, -66), (-87, -94), (-67, -94)]
     blue_flank = [(-48, -10), (-48, -26), (-48, -44), (-56, -62), (-62, -89)]
-    red_store = [(0, -104), (0, -92), (13, -88), (13, -78), (40, -72), (56, -74), (56, -88)]
+    red_store = [(0, -104), (0, -92), (13, -88), (13, -78), (40, -72), (56, -74), (56, -98)]
     red_pillar = [(0, -104), (0, -92), (-14, -88), (-14, -78), (-30, -74), (-37, -80), (-37, -90)]
     for pts, col, w_ in ((blue_store, (90, 140, 255), 4), (blue_store_far, (90, 140, 255), 2), (blue_pillar, (90, 140, 255), 4),
                          (blue_flank, (150, 190, 255), 3), (blue_store_flank, (150, 190, 255), 3), (blue_store_flank2, (150, 190, 255), 2),
@@ -173,25 +173,25 @@ def sections(d, oy, hgt):
     d.text((sx(-95), py(P.MIST_Y[1]) + 2), "mist", fill=(90, 90, 90))
     d.text((sx(-95), py(26)), f"black: bedrock {fd} under every floor; block 36 at y 0 under every buildable column", fill=(20, 20, 20))
     d.text((6, oy + 4), "3a. THE PILLAR'S PIT, seen from the Long Terrace", fill=(0, 0, 0))
-    # right: along the Store Road at x 56, z -24..-101
-    sz = lambda z: half + 10 + (-z - 24) * (half - 30) / 78.0
-    prof = [(-39, 66), (-50, 66), (-59, 67), (-68, 68), (-77, 69), (-86, 70), (-100, 70)]
+    # right: along the Store Road at x 56, z -20..-112
+    sz = lambda z: half + 10 + (-z - 20) * (half - 30) / 92.0
+    prof = [(-39, 66), (-58, 66), (-59, 67), (-66, 67), (-67, 68), (-78, 68), (-79, 69), (-96, 69), (-97, 70), (-110, 70)]
     pts = [(sz(z), py(y)) for z, y in prof]
-    d.polygon(pts + [(sz(-100), py(70 - fd)), (sz(-39), py(66 - fd))], fill=(150, 145, 130), outline=(60, 60, 60))
-    d.line([(sz(-39), py(66 - fd)), (sz(-100), py(70 - fd))], fill=(25, 25, 25), width=3)
-    d.polygon([(sz(-39), py(66 - fd - 1)), (sz(-100), py(70 - fd - 1)), (sz(-94), py(44)), (sz(-45), py(44))],
+    d.polygon(pts + [(sz(-110), py(70 - fd)), (sz(-39), py(66 - fd))], fill=(150, 145, 130), outline=(60, 60, 60))
+    d.line([(sz(-39), py(66 - fd)), (sz(-110), py(70 - fd))], fill=(25, 25, 25), width=3)
+    d.polygon([(sz(-39), py(66 - fd - 1)), (sz(-110), py(70 - fd - 1)), (sz(-104), py(44)), (sz(-45), py(44))],
               fill=(175, 170, 160), outline=(120, 120, 120))
     d.rectangle([sz(-22), py(65), sz(-27), py(59)], fill=(150, 145, 130), outline=(60, 60, 60))
-    d.rectangle([sz(-82), py(74), sz(-83), py(70)], fill=(20, 20, 20))
-    d.rectangle([sz(-87), py(76), sz(-100), py(70)], outline=(60, 40, 20), width=2)
-    d.rectangle([sz(-95), py(72), sz(-96), py(71)], fill=(250, 220, 40))
-    for z0, z1, t in ((-39, -50, "Tea Rows join"), (-67, -78, "Drying Floor joins")):
+    d.rectangle([sz(-82), py(73), sz(-84), py(70)], fill=(20, 20, 20))
+    d.rectangle([sz(-97), py(76), sz(-110), py(70)], outline=(60, 40, 20), width=2)
+    d.rectangle([sz(-105), py(72), sz(-106), py(71)], fill=(250, 220, 40))
+    for z0, z1, t in ((-39, -50, "Tea Rows join"), (-67, -78, "Drying Floor")):
         d.rectangle([sz(z0), py(83), sz(z1), py(82)], fill=(90, 140, 255))
         d.text((sz(z0), py(88)), t, fill=(0, 0, 0))
     d.text((sz(-24), py(70)), "Tea Step II", fill=(0, 0, 0))
     d.text((sz(-80), py(78)), "wall", fill=(0, 0, 0))
-    d.text((sz(-88), py(80)), "Tea Store 70", fill=(0, 0, 0))
-    d.text((sz(-50), py(72)), "Store Road, 14 wide, 66 -> 70", fill=(0, 0, 0))
+    d.text((sz(-96), py(80)), "Tea Store 70", fill=(0, 0, 0))
+    d.text((sz(-46), py(72)), "Store Road, 14 wide, 66 -> 70", fill=(0, 0, 0))
     d.text((half + 6, oy + 4), "3b. ALONG THE STORE ROAD, x 56", fill=(0, 0, 0))
     d.line([(half, oy), (half, oy + hgt)], fill=(0, 0, 0), width=1)
 

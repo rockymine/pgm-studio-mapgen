@@ -32,7 +32,7 @@ SECTIONS = [
     ("10-section-spawn-to-spawn-x0", ["--z", "-127", "127", "--x", "0", "--ymin", "20", "--ymax", "100", "--depth", "1", "--scale", "3"]),
     ("11-section-pillar-z-94", ["--x", "-100", "-20", "--z", "-94", "--ymin", "20", "--ymax", "100", "--depth", "1", "--scale", "5"]),
     ("12-section-ledges-z-79", ["--x", "-100", "-20", "--z", "-79", "--ymin", "20", "--ymax", "100", "--depth", "1", "--scale", "5"]),
-    ("13-section-store-road-x56", ["--z", "-104", "-20", "--x", "56", "--ymin", "20", "--ymax", "100", "--depth", "1", "--scale", "5"]),
+    ("13-section-store-road-x56", ["--z", "-112", "-20", "--x", "56", "--ymin", "20", "--ymax", "100", "--depth", "1", "--scale", "5"]),
 ]
 for name, args in SECTIONS:
     run(["--section", region, o(name + ".png")] + args)
@@ -43,10 +43,10 @@ render_iso.render(ids, dat, x0, z0, o("31-iso-board-nw.png"), 2, "nw")
 render_iso.render(ids, dat, x0, z0, o("32-iso-red-half-sw.png"), 4, "sw", (-100, -128, 70, -12), 25)
 render_iso.render(ids, dat, x0, z0, o("33-iso-spawn.png"), 6, "se", (-24, -122, 22, -64), 55)
 render_iso.render(ids, dat, x0, z0, o("34-iso-pillar-and-arms.png"), 6, "ne", (-96, -100, -28, -60), 30)
-render_iso.render(ids, dat, x0, z0, o("35-iso-store-and-road.png"), 6, "sw", (26, -104, 70, -30), 50)
+render_iso.render(ids, dat, x0, z0, o("35-iso-store-and-road.png"), 6, "sw", (26, -114, 70, -30), 50)
 render_iso.render(ids, dat, x0, z0, o("36-iso-hub-and-gate.png"), 5, "se", (-34, -80, 32, -10), 50)
 render_iso.render(ids, dat, x0, z0, o("37-iso-middle-and-steps.png"), 4, "se", (-72, -50, 71, 49), 30)
-render_iso.elevation(ids, dat, x0, z0, o("50-elev-store-from-the-road.png"), (44, -102, 69, -84), 66, 86, "north", 10)
+render_iso.elevation(ids, dat, x0, z0, o("50-elev-store-from-the-road.png"), (44, -112, 69, -94), 66, 90, "north", 10)
 render_iso.elevation(ids, dat, x0, z0, o("51-elev-pavilion-from-the-pool.png"), (-12, -122, 11, -100), 70, 92, "north", 10)
 render_iso.elevation(ids, dat, x0, z0, o("52-elev-pillar-from-the-terrace.png"), (-96, -98, -28, -60), 24, 90, "north", 6)
 render_iso.elevation(ids, dat, x0, z0, o("53-elev-gate.png"), (-30, -40, 29, -24), 56, 84, "north", 8)

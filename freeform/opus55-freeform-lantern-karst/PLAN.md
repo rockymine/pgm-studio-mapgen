@@ -133,9 +133,9 @@ Width is across the way a player walks, length along it.
 | The Mist Steps | four 6 × 6 islets, 12 apart | 63–65 | the Pillar's flank: from the band's west end onto the Long Terrace |
 | The Tea Rows | 12 × 18, east out of the hub | 66 | the Store's F, its south short stroke |
 | The Drying Floor | 12 × 18, east out of the hub | 67 | the Store's F, its north short stroke; tea laid out on mats |
-| The Store Road | 14 × 48, north | 66 → 70 | the F's long stroke: flat past the Rows, then a block every nine |
-| The bedrock wall | 14 across the road, 4 high | — | the Store's prepared line, 3 after the Drying Floor joins and 4 before the room |
-| **The Tea Store** | 20 × 14 at the road's head | 70 | **yellow wool**: a stone storehouse, two faces on void, chests of better gear |
+| The Store Road | 14 × 58, north | 66 → 70 | the F's long stroke: flat past the Rows, then a block every nine |
+| The bedrock wall | 14 across the road, 2 thick, 3 of bedrock and 1 of cobweb | — | the Store's entry line, 3 after the Drying Floor joins and 13 before the room |
+| **The Tea Store** | 20 × 14 at the road's head | 70 | **yellow wool**: a timber storehouse, two faces on void, chests of better gear |
 | The Tea Steps | two 6 × 6 islets, 12 apart | 64–65 | the Store's flank: one under the Tea Rows, one under the road's foot |
 
 **The monuments stand on the Monument Terrace between its two exits**, where a carrier coming home
@@ -179,8 +179,8 @@ Floor both leave the hub's east face and meet the Store Road, with 16 of void be
 chooses a side as at the hub. The Tea Steps bring a third way from the band's east end, onto the Rows or
 the road's foot.
 
-**All three meet at one wall, eight blocks before the room.** That is the Store's prepared line, as a
-capture room has one, and the road there is 14 wide.
+**All three meet at one wall, thirteen blocks before the room.** The wall is where an attacker enters:
+once past it they are in the Store's yard, with the room's door ahead and a redstone line across it.
 
 **The two are balanced by distance.** By walking the plan (octile, land, a build zone bridged at its
 length; the Ledges left out, since they are reached by a fall):
@@ -188,23 +188,23 @@ length; the Ledges left out, since they are reached by a fall):
 | Measured | Lantern Karst | Rule |
 |---|---|---|
 | spawn to the band | 98 | SP10: at least 55 |
-| spawn to the Tea Store, walked | 75 | WL9: comparable |
+| spawn to the Tea Store, walked | 85 | WL9: comparable |
 | spawn to the Pillar (17 of it bridged) | 79 | WL9: comparable |
-| their ratio | 1.05 | WL9: ideal 1 |
-| band to the Tea Store, shortest (27 of it bridged) | 76 | WL10e: at least 59 |
-| band to the Tea Store, walked | 90 | — |
+| their ratio | 1.08 | WL9: ideal 1 |
+| band to the Tea Store, shortest (27 of it bridged) | 86 | WL10e: at least 59 |
+| band to the Tea Store, walked | 100 | — |
 | band to the Pillar, shortest (64 of it bridged) | 80 | WL10e: at least 59 |
-| Pillar to Tea Store, straight | 119 | WL7: 46 to 143 |
+| Pillar to Tea Store, straight | 120 | WL7: 46 to 143 |
 | Pillar to the Arms and the Terrace | 16, 16, 16 | WL20: at least 12 |
 | the Ledges | 20 down, 8 off the pillar | — |
-| the Store Road alone, after its last join | 8 | — |
+| the Store Road alone, after its last join | 18 | — |
 | the Tea Court's sinkhole | 16 × 16 | LN6: at least 12 |
 | the void inside the Store's F | 16 × 18 | LN6: at least 12 |
 | the Pillar's pit | 40 × 24 | — |
 | the void between the Stairs | 20 | WL12: at least 16 |
 | the void from the spawn to the Near Arm | 12 | — |
 | the gaps between steps | 11 to 12 | — |
-| land on red's half | 7,710 blocks | — |
+| land on red's half | 7,946 blocks | — |
 
 `scripts/plan_check.py` prints this table from the plan's polygons.
 
@@ -225,9 +225,10 @@ mist, tapering, as rock no one plays on.
 `(x, 0, z)`, and a column with block 36 there is not void. So the block 36 sheet is the build area, laid
 under the islands and the four build zones and nowhere else.
 
-**The build zones are drawn on the islands as well.** Where an island's edge meets a build zone, a line of
-redstone runs along the edge's last row of blocks. A player standing at it knows the void ahead can be
-bridged, and an edge with no line cannot.
+**The build zones are outlined below the board, as the studio's generator does it.** An unpowered redstone
+line lies at y 1, two blocks out from every void-facing edge of a build zone and one block clear of the zone
+and of the islands, turning at the corners. It is read from below or in an editor, never from the play
+surface.
 
 **The four build zones are** the band, the Pillar's pit, the Mist Steps and the Tea Steps.
 The Court's sinkhole, the void inside the Store's F, the void between the Stairs and the void round the

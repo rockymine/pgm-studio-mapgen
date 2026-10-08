@@ -75,8 +75,8 @@ PIECES = [
     # the Store's F: the long stroke is the road, its two short strokes terraces back to the hub
     dict(key="rows", name="the Tea Rows", kind="lane", poly=rect(32, -50, 49, -39), y=66),
     dict(key="drying", name="the Drying Floor", kind="lane", poly=rect(32, -78, 49, -67), y=67),
-    dict(key="road", name="the Store Road", kind="lane", poly=rect(50, -86, 63, -39), y=66, climb=(66, 70, -50, -86)),
-    dict(key="store", name="the Tea Store", kind="wool", poly=rect(47, -100, 66, -87), y=70),
+    dict(key="road", name="the Store Road", kind="lane", poly=rect(50, -96, 63, -39), y=66, climb=(66, 70, -50, -96)),
+    dict(key="store", name="the Tea Store", kind="wool", poly=rect(47, -110, 66, -97), y=70),
     # the Store's flank: two islets from the band's east end, one under the Rows and one under the road's foot
     dict(key="e-1", name="Tea Step I", kind="islet", poly=rect(44, -27, 49, -22), y=64),
     dict(key="e-2", name="Tea Step II", kind="islet", poly=rect(62, -27, 67, -22), y=65),
@@ -100,7 +100,7 @@ WALLS = [dict(wool="store", x0=50, x1=63, z=-82, height=3)]    # two thick (z -8
 
 # the wools (what each team captures is the other team's colour of room: red captures from blue's rooms)
 WOOLS = [dict(room="pillar", at=(-62.5, -93.5), y=75, colour="lime", capturer="blue"),
-         dict(room="store", at=(56.5, -95.5), y=71, colour="yellow", capturer="blue")]
+         dict(room="store", at=(56.5, -105.5), y=71, colour="yellow", capturer="blue")]
 # the monuments where a team places what it captured: on the Monument Terrace between its two exits
 MONUMENTS = [dict(at=(-4, -89), y=70, colour="lime"), dict(at=(3, -89), y=70, colour="yellow")]
 SPAWN_POINT = (-0.5, 73, -104.5)

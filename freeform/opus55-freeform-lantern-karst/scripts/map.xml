@@ -48,9 +48,9 @@
 <wools craftable="false">
     <!-- red's rooms hold lime (the Pillar Shrine) and yellow (the Tea Store); blue's hold magenta and orange -->
     <wool team="blue-team" color="lime" location="-62.5,75,-93.5" monument="lime-monument"/>
-    <wool team="blue-team" color="yellow" location="56.5,71,-95.5" monument="yellow-monument"/>
+    <wool team="blue-team" color="yellow" location="56.5,71,-105.5" monument="yellow-monument"/>
     <wool team="red-team" color="magenta" location="62.5,75,93.5" monument="magenta-monument"/>
-    <wool team="red-team" color="orange" location="-56.5,71,95.5" monument="orange-monument"/>
+    <wool team="red-team" color="orange" location="-56.5,71,105.5" monument="orange-monument"/>
 </wools>
 <filters>
     <team id="only-red">red-team</team>
@@ -59,6 +59,11 @@
     <not id="not-blue"><filter id="only-blue"/></not>
     <!-- block 36 at y 0 marks every column a player may build in; the void filter reads it -->
     <not id="not-void"><void/></not>
+    <material id="only-iron">iron block</material>
+    <all id="only-iron-cause-world">
+        <material>iron block</material>
+        <cause>world</cause>
+    </all>
     <any id="woolroom-materials">
         <material>wood</material>
         <material>stained clay</material>
@@ -97,9 +102,9 @@
     <block id="yellow-monument">-4,71,88</block>
     <!-- the rooms: the shrine on each Pillar, the inside of each Tea Store -->
     <cuboid id="red-pillar-room" min="-66,75,-97" max="-58,92,-89"/>
-    <cuboid id="red-store-room" min="47,71,-100" max="67,80,-86"/>
+    <cuboid id="red-store-room" min="47,71,-110" max="67,84,-96"/>
     <cuboid id="blue-pillar-room" min="58,75,89" max="66,92,97"/>
-    <cuboid id="blue-store-room" min="-67,71,86" max="-47,80,100"/>
+    <cuboid id="blue-store-room" min="-67,71,96" max="-47,84,110"/>
     <union id="reds-woolrooms">
         <region id="red-pillar-room"/>
         <region id="red-store-room"/>
@@ -109,15 +114,15 @@
         <region id="blue-store-room"/>
     </union>
     <point id="lime-wool-spawn">-62.5,76,-91.5</point>
-    <point id="yellow-wool-spawn">56.5,72,-93.5</point>
+    <point id="yellow-wool-spawn">56.5,72,-103.5</point>
     <point id="magenta-wool-spawn">62.5,76,91.5</point>
-    <point id="orange-wool-spawn">-56.5,72,93.5</point>
+    <point id="orange-wool-spawn">-56.5,72,103.5</point>
     <below id="the-fall" y="40"/>
     <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
     <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
     <apply enter="not-red" region="reds-woolrooms" message="You may not enter your own wool room!"/>
     <apply enter="not-blue" region="blues-woolrooms" message="You may not enter your own wool room!"/>
-    <apply block="never" region="spawns" message="You may not edit the spawn!"/>
+    <apply block-place="only-iron-cause-world" block-break="only-iron" region="spawns" message="You may not edit the spawn!"/>
     <apply block="reds-woolrooms-filter" region="reds-woolrooms" message="You may not edit the wool room!"/>
     <apply block="blues-woolrooms-filter" region="blues-woolrooms" message="You may not edit the wool room!"/>
     <apply block-place="not-void" message="You may not build in the void!"/>
@@ -137,6 +142,10 @@
         <item material="wool" damage="1"/>
     </spawner>
 </spawners>
+<renewables>
+    <!-- the two iron cubes on each Pool Terrace grow back as they are mined -->
+    <renewable region="spawns" renew-filter="only-iron"/>
+</renewables>
 <itemkeep>
     <item>iron sword</item>
     <item>bow</item>

@@ -29,7 +29,7 @@ def make():
     T.write(w, F)
     buildings.build(w, F, rng)
     T.joins(w, F)
-    n_red = T.markers(w, F)
+    n_marked = T.markers(w, F)
     n_vine = T.vines(w, F, rng)
     for k, (m, c) in enumerate(zip(P.MONUMENTS, RED_MONUMENTS)):
         w.set(int(np.floor(m["at"][0])), 70, int(np.floor(m["at"][1])), B.STAINED_CLAY, c)
@@ -46,6 +46,7 @@ def make():
         w.set(x, 70, z, B.STAINED_CLAY, c)
     n_spires = T.spires(w, np.random.default_rng(31))
     n_mist = T.mist(w)
+    n_red = T.build_outline(w)
     w.biome[:, :] = 3                              # extreme hills: the cool green of a misty karst
     return w, F, dict(redstone=n_red, vines=n_vine, mist=n_mist, spires=n_spires)
 

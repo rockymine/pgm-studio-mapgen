@@ -14,22 +14,36 @@ over both halves with no symmetry. `write_world.cs` writes the volume to 1.8 reg
 studio's own writer, and `scripts/build.sh` runs the whole thing in about twenty seconds.
 
 **The walked top of every island is its plan polygon, exactly.** Each piece is filled at its floor height,
-so every gap `plan_check.py` measured is the gap in the world. The karst is all under the floor: a cliff of
-stone with andesite courses, a bedrock course six below, and a fluted cone with spires below that.
+so every gap `plan_check.py` measured is the gap in the world. The karst is all under the floor: a cliff, a bedrock course six below, and a
+fluted cone with spires below that.
+
+**The rock is laid in beds by world height.** Stone carries them, with andesite courses, dark beds of cyan
+stained clay (dark grey in 1.8), a pale bed of light grey stained clay, and specks of cobblestone and gravel.
+The beds tilt a little by noise, and the karst towers carry the same beds.
 
 **Joins between pieces are made walkable by rule.** One block of difference is a row of slabs on the lower
 side. Two is a flight of stone brick stairs, the run's full width up to 14 and a flight of 10 in the middle
 of a longer run, with a retaining wall either side. That is what gives the spawn its terraces.
 
 **The floating board carries the two marks the author asked for.** Block 36 lies at y 0 under all 23,688
-buildable columns, so PGM's void filter allows building there and nowhere else. Redstone runs along every island edge
-that faces a build zone, 682 blocks of it over both halves.
+buildable columns, so PGM's void filter allows building there and nowhere else. The build zones are outlined
+as the studio's generator does it (`ST5`): 518 blocks of unpowered redstone at y 1, two out from every
+void-facing zone edge and one clear of the islands.
+
+**Each wool room carries its entrance line (`ST1`).** A redstone line with a redstone torch at either end lies
+across the Store's doorway and along all four sides of the Shrine's top, since every side of it faces the
+pit's build zone.
+
+**The spawn carries iron to mine.** Two 3 × 3 × 3 cubes of iron stand on each Pool Terrace either side of the
+spawn point. The spawn region lets players break iron and nothing else, and `<renewables>` grows it back.
 
 **The paint follows `WHAT-A-BOARD-IS-MADE-OF.md`.** Three families were named first: grass on stone for the
 ground; a built floor of stone brick, polished andesite, andesite and stone, a quarter each in cells of
 three; and the accent of tea green and glowstone. Paths are solid dirt, coarse dirt and spruce planks, and
 they wander three blocks either side as they run from both spawn exits to every lane, room and bridging
 edge.
+
+**Ferns, large ferns and grass grow on about 6% of the grass, never on a rim a bridger leaves from.**
 
 **Trees are pines only, and never where a bridger lands.** The islets and the ledges carry none. Pines stand
 on the outer edges of the Arms, the hub's corners, the spawn's outcrop and the tops of the sixteen karst
@@ -40,6 +54,7 @@ towers out in the mist.
 | The plan said | What was built | Why |
 |---|---|---|
 | A bedrock wall 4 high across the Store Road | 2 thick, 3 courses of bedrock and one of cobweb | The studio's wall rule `ST4`; the web is cut with the shears in the kit |
+| The wall 4 before the room | The wall where it was, the room 10 further back, 13 after the wall | The author's call: the wall is where attackers enter, and the room sat too close behind it |
 | The Store Road climbs a block every nine | 66 past the Rows, then 67, 68, 69 in stretches of about nine, slabbed | So each step is one block and the Drying Floor meets it level |
 | The Drying Floor at 67 | Rises 66, 67, 68 from the hub to the road | It joins the hub and the road with no step bigger than a slab |
 | One neck from the spawn at 68 | Two exits, each 67 off the hub and 68 under the terrace | The author's last change; two one-block steps instead of one two-block one |
@@ -62,6 +77,7 @@ draw.
 | red spawn to the Far Arm's end | 135 |
 | red spawn to the West and East Stairs' feet at the band | 104, 105 |
 | red spawn to the Store Road's foot | 116 |
+| red spawn to the Store Road at its wall | 82 |
 | red spawn to its own Store's door | not walked: behind the bedrock wall |
 | blue spawn to anything of red's | not walked: every way crosses a build zone |
 
@@ -83,7 +99,7 @@ holds the plan's own distances, unchanged from `PLAN.md`.
 |---|---|---|
 | A plan revised four times with the author before a block was placed | Easy in code: one polygon file, a checker and a three-panel sketch, rerun in seconds | A plan view that redraws as a piece is dragged, and prints the WL and SP numbers beside it |
 | Lanes, gaps and holes held to stated widths (lanes 12–16, steps 12 apart, pillar 16 off) | Easy once stated; the hard part was knowing the numbers, which came from the author | Width rules per piece kind, checked on the plan with the measured value shown |
-| A floating board whose build area is obvious | Moderate: block 36 at y 0 and redstone on the edges, both computed from the zones | A build-zone layer that writes its own y 0 marker and edge line, so they cannot drift from the XML |
+| A floating board whose build area is obvious | Moderate: block 36 at y 0 and the studio's y 1 redstone outline, both computed from the zones; I first laid the redstone on the island edges, which inverts its meaning | A build-zone layer that writes its own y 0 marker and edge line, so they cannot drift from the XML |
 | A bedrock course under every island so a dug pit stops | Easy: one course six below each floor, skipped at the rim | A foundation option on a floating piece: depth and material |
 | Karst cliffs instead of box sides, without moving the walked edge | Moderate: ledges and undercuts below floor-2 only, from noise | A cliff style for a piece's skirt that is guaranteed never to rise into the floor |
 | Joins between pieces that are always walkable | Moderate: slabs for one block, stair flights for two, found by scanning neighbour heights | Automatic join stamping between adjacent pieces, with a flight width per join |

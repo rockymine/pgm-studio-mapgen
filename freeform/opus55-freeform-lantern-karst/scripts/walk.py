@@ -92,11 +92,11 @@ def main(build):
     st = standable(passable, water, solid) | (ladder & passable)
     st[:, :41, :] = False                     # below the kill height nobody stands
     spawns = {"red": (-1, 73, -105), "blue": (0, 73, 104)}
-    red_places = {"its own monuments": (-1, 71, -89), "the Tea Store's door (its own)": (56, 70, -86),
+    red_places = {"its own monuments": (-1, 71, -89), "the Tea Store's door (its own)": (56, 70, -96),
                   "the Near Arm's end": (-37, 68, -95), "the Far Arm's end": (-88, 68, -95),
                   "the Long Terrace's west end": (-86, 67, -66), "the West Stair's foot at the band": (-19, 65, -13),
-                  "the East Stair's foot at the band": (18, 65, -13), "the Store Road's foot": (56, 67, -40)}
-    enemy = {"red's Tea Store, inside the door": (56, 71, -88), "red's Near Arm (the Pillar's launch)": (-37, 68, -80),
+                  "the East Stair's foot at the band": (18, 65, -13), "the Store Road's foot": (56, 67, -40), "the Store Road at its wall": (56, 70, -80)}
+    enemy = {"red's Tea Store, inside the door": (56, 71, -99), "red's Near Arm (the Pillar's launch)": (-37, 68, -80),
              "red's Pillar Shrine": (-63, 75, -94), "red's West Ledge": (-73, 47, -79)}
     out = []
     for team, s in spawns.items():
