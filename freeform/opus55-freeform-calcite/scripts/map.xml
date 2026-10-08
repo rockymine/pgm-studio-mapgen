@@ -64,13 +64,13 @@
 </damage>
 <spawns>
     <default yaw="90">
-        <region><point>0.5,40,0.5</point></region>
+        <region><point>0.5,32,0.5</point></region>
     </default>
     <spawn team="red-team" kit="spawn-kit" yaw="-90">
-        <region><point>-51.5,29,-0.5</point></region>
+        <region><point>-46.5,22,-0.5</point></region>
     </spawn>
     <spawn team="blue-team" kit="spawn-kit" yaw="90">
-        <region><point>51.5,29,0.5</point></region>
+        <region><point>46.5,22,0.5</point></region>
     </spawn>
 </spawns>
 <filters>
@@ -78,34 +78,34 @@
     <team id="only-blue">blue-team</team>
 </filters>
 <regions>
-    <rectangle id="red-spawn" min="-55,-6" max="-45,6"/>
-    <rectangle id="blue-spawn" min="45,-6" max="55,6"/>
+    <rectangle id="red-spawn" min="-49,-6" max="-41,6"/>
+    <rectangle id="blue-spawn" min="41,-6" max="49,6"/>
     <!-- the hills: where a player stands to capture, and the wool ring that shows the holder -->
-    <cuboid id="mid-capture" min="-4,22,-4" max="4,27,4"/>
-    <cuboid id="mid-ring" min="-4,22,-4" max="4,23,4"/>
-    <cuboid id="north-capture" min="-4,23,-34" max="4,28,-26"/>
-    <cuboid id="north-ring" min="-4,23,-34" max="4,24,-26"/>
-    <cuboid id="south-capture" min="-4,23,26" max="4,28,34"/>
-    <cuboid id="south-ring" min="-4,23,26" max="4,24,34"/>
+    <cuboid id="mid-capture" min="-4,17,-4" max="4,22,4"/>
+    <cuboid id="mid-ring" min="-4,17,-4" max="4,18,4"/>
+    <cuboid id="north-capture" min="-4,20,-41" max="4,25,-33"/>
+    <cuboid id="north-ring" min="-4,20,-41" max="4,21,-33"/>
+    <cuboid id="south-capture" min="-4,20,33" max="4,25,41"/>
+    <cuboid id="south-ring" min="-4,20,33" max="4,21,41"/>
     <!-- the pads: four on the Middle's apron, two to each side hill's flanks; two in the Ledge's corners over the lava onto the Middle -->
     <union id="jump-pads">
-        <cuboid id="pad-mid-nw" min="-6,20,-9" max="-4,22,-7"/>
-        <cuboid id="pad-mid-ne" min="4,20,-9" max="6,22,-7"/>
-        <cuboid id="pad-mid-se" min="4,20,7" max="6,22,9"/>
-        <cuboid id="pad-mid-sw" min="-6,20,7" max="-4,22,9"/>
-        <cuboid id="pad-ledge-nw" min="-29,17,-25" max="-26,19,-22"/>
-        <cuboid id="pad-ledge-se" min="26,17,22" max="29,19,25"/>
+        <cuboid id="pad-mid-nw" min="-6,15,-9" max="-4,17,-7"/>
+        <cuboid id="pad-mid-ne" min="4,15,-9" max="6,17,-7"/>
+        <cuboid id="pad-mid-se" min="4,15,7" max="6,17,9"/>
+        <cuboid id="pad-mid-sw" min="-6,15,7" max="-4,17,9"/>
+        <cuboid id="pad-ledge-nw" min="-29,14,-25" max="-26,16,-22"/>
+        <cuboid id="pad-ledge-se" min="26,14,22" max="29,16,25"/>
     </union>
-    <apply region="pad-mid-nw" kit="used-jump-pad" velocity="-1.08,0.75,-2.74"/>
-    <apply region="pad-mid-ne" kit="used-jump-pad" velocity="1.08,0.75,-2.74"/>
-    <apply region="pad-mid-se" kit="used-jump-pad" velocity="1.08,0.75,2.74"/>
-    <apply region="pad-mid-sw" kit="used-jump-pad" velocity="-1.08,0.75,2.74"/>
-    <apply region="pad-ledge-nw" kit="used-jump-pad" velocity="2.21,0.9,1.88"/>
-    <apply region="pad-ledge-se" kit="used-jump-pad" velocity="-2.21,0.9,-1.88"/>
+    <apply region="pad-mid-nw" kit="used-jump-pad" velocity="-0.7,0.75,-2.87"/>
+    <apply region="pad-mid-ne" kit="used-jump-pad" velocity="0.7,0.75,-2.87"/>
+    <apply region="pad-mid-se" kit="used-jump-pad" velocity="0.7,0.75,2.87"/>
+    <apply region="pad-mid-sw" kit="used-jump-pad" velocity="-0.7,0.75,2.87"/>
+    <apply region="pad-ledge-nw" kit="used-jump-pad" velocity="2.1,0.8,1.78"/>
+    <apply region="pad-ledge-se" kit="used-jump-pad" velocity="-2.1,0.8,-1.78"/>
     <!-- the spawners: golden apples in the Spring under the Middle; arrows in two diagonal corners of the Ledge -->
-    <cuboid id="apples" min="-1,14,-1" max="1,15,1"/>
-    <cuboid id="arrows-ne" min="25,17,-23" max="26,18,-22"/>
-    <cuboid id="arrows-sw" min="-26,17,21" max="-25,18,22"/>
+    <cuboid id="apples" min="-1,10,-1" max="1,11,1"/>
+    <cuboid id="arrows-ne" min="25,14,-23" max="26,15,-22"/>
+    <cuboid id="arrows-sw" min="-26,14,21" max="-25,15,22"/>
     <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
     <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
     <apply block="never" use="never"/>

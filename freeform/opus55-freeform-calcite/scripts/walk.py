@@ -123,13 +123,12 @@ def main(build):
     st = standable(passable, water, solid) | (ladder & passable)
     lava = (ids == 10) | (ids == 11)
     st &= ~np.roll(lava, 1, axis=1)          # nobody stands in lava
-    spawns = {"red": (-52, 29, -1), "blue": (51, 29, 0)}
-    places = {"the Middle's top": (-1, 23, -1), "the North hill": (-1, 24, -30), "the South hill": (-1, 24, 29),
-              "the Spring (the apples)": (-1, 14, -2), "the north tunnel's fork under the lava": (-1, 7, -12),
-              "the north-east trench's top": (6, 17, -25), "the north hill's west window": (-6, 28, -27),
-              "the north hill's east window": (5, 28, -27), "the north-east arrows": (24, 17, -22),
-              "the Rim above the North hill": (-1, 29, -37), "red's tunnel mouth on the Ledge": (-29, 17, -21),
-              "the east causeway": (15, 17, -1)}
+    spawns = {"red": (-47, 22, -1), "blue": (46, 22, 0)}
+    places = {"the Middle's top": (-1, 18, -1), "the North hill": (-1, 21, -37), "the South hill": (-1, 21, 36),
+              "the Spring (the apples)": (-2, 10, -2), "the north tunnel's fork under the lava": (-1, 8, -12),
+              "the north-east trench's top": (14, 14, -22), "the north hill's west door": (-6, 21, -38),
+              "the north hill's east door": (5, 21, -38), "the north-east arrows": (24, 14, -21),
+              "red's tunnel mouth on the Ledge": (-28, 14, -21), "the east causeway": (15, 14, -1)}
     out = []
     for team, s in spawns.items():
         dist = bfs(st, ladder, water, [s], x0, z0)
@@ -140,7 +139,7 @@ def main(build):
             v = nearest(dist, x0, z0, *p, r=2)
             out.append(f"  to {name}: {v if v is not None else 'NOT REACHED on foot'}")
         if team == "blue":
-            for name, p in (("the Middle's top", (-1, 23, -1)), ("the North hill", (-1, 24, -30)), ("the South hill", (-1, 24, 29))):
+            for name, p in (("the Middle's top", (-1, 18, -1)), ("the North hill", (-1, 21, -37)), ("the South hill", (-1, 21, 36))):
                 v = nearest(dist, x0, z0, *p, r=2)
                 out.append(f"  to {name}: {v if v is not None else 'NOT REACHED on foot'}")
     out.append("the pads, flown in the built world:")

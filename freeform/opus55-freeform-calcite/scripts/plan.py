@@ -1,22 +1,23 @@
-"""Calcite — a King of the Hill plan: a white marble quarry cut in square benches round a flooded pit.
+"""Calcite — a King of the Hill plan: a white marble quarry cut in two grounds round a lava pit.
 
-Three hills. The Middle stands on an island in the pit and pays double; the North and South hills stand on the
-second bench and pay single. Red spawns in the west wall, blue in the east; blue's half is red's turned half a
-circle, (x, z) -> (-1 - x, -1 - z), so the North hill is red's near side hill and the South hill blue's.
+Three hills. The Middle stands on an island in the pit and pays double; the North and South hills stand in
+alcoves cut into the quarry wall behind the Bench and pay single. Red spawns in the west wall, blue in the east;
+blue's half is red's turned half a circle, (x, z) -> (-1 - x, -1 - z), and each side hill is mirrored about its
+own middle, so either team may take either of its flanks.
 
 The plan is a height raster: every column's floor, and what kind of floor it is. The checker walks it, the
 sketch draws it, and the generator builds from it, so all three read the same board.
 
-    levels:  10 the pool, 16 the Ledge, 19 the Middle's apron, 22 the Bench and the Middle's top,
-             23 the side hills, 28 the Rim and the spawns; the quarry wall stands to 40 round everything.
+    levels:  11 the lava, 13 the Ledge, 14 the Middle's apron, 17 the Bench and the Middle's top, 20 the side
+             hills, 21 the spawns' terraces; the quarry wall stands to 28 round everything.
 """
 import numpy as np
 
 X_MIN, X_MAX = -60, 59
 Z_MIN, Z_MAX = -48, 47
 NX, NZ = X_MAX - X_MIN + 1, Z_MAX - Z_MIN + 1
-WALL_Y = 40
-LAVA_Y = 10                 # the pool is lava: a fall into it is the end
+WALL_Y = 28
+LAVA_Y = 11                 # the pit is lava, two below the Ledge: a fall into it is the end
 KINDS = {"wall": 0, "floor": 1, "lava": 2, "stair": 3, "ladder": 4, "pad": 5, "hill": 6, "spawn": 7}
 
 
@@ -72,98 +73,87 @@ class Raster:
 
 def build():
     R = Raster()
-    # the bowl: four square rings stepping down to the pool — three grounds to fight on, the pool under them
-    R.rect(-45, 44, -41, 40, 28, both=False)                 # the Rim, the high ground
-    R.rect(-37, 36, -33, 32, 22, both=False)                 # the Bench, the middle ground
-    R.rect(-29, 28, -25, 24, 16, both=False)                 # the Ledge, the low ground
-    R.rect(-23, 22, -19, 18, LAVA_Y, "lava", both=False)     # the lava pool
-    # the spawns, cut into the wall behind the Rim
-    R.rect(-55, -46, -6, 5, 28, "spawn")
-    # the Middle: an island apron at 19, two steps of ring, the hill on top at 22
-    R.rect(-9, 8, -9, 8, 19, both=False)
-    R.rect(-6, 5, -6, 5, 20, both=False)
-    R.rect(-5, 4, -5, 4, 21, both=False)
-    R.rect(-4, 3, -4, 3, 22, "hill", both=False)
-    # the side hills: each in an alcove cut into the Rim's face, walled on three sides and open toward the Middle.
-    # The hill is one step over the Bench; the walls stand two over the Rim, so nobody walks along their tops.
-    R.rect(-4, 3, -34, -27, 23, "hill")
-    R.rect(-7, -5, -34, -26, 30, "wall")                     # the west wall
-    R.rect(4, 6, -34, -26, 30, "wall")                       # the east wall
-    # the hill's front: a stair eight wide from the Ledge straight up onto it
-    R.flight_z([(z, -4, 3) for z in range(-21, -27, -1)], 17, "-z")
-    # the side ways in, one through each wall, the hill mirrored about its own middle so either team may take
-    # either side: a narrow stair up the outside of the wall, a window through it, a drop of four
-    R.flight_z([(z, -9, -8) for z in range(-31, -26)], 23, "+z")             # west: 23 at -31 .. 27 at -27
-    R.flight_z([(z, 7, 8) for z in range(-31, -26)], 23, "+z")               # east, its mirror
-    R.rect(-7, -5, -27, -27, 27, "floor")                    # the west window's sill, out of reach of the Rim
-    R.rect(4, 6, -27, -27, 27, "floor")                      # the east window's sill
-    # the causeways from the Ledge to the island, and their stairs up onto the apron
-    R.rect(-23, -10, -2, 1, 16)
-    R.flight([(-12, -2, 1), (-11, -2, 1), (-10, -2, 1)], 17, "+x")
-    # the main stairs: Rim to Bench in a notch, Bench to Ledge in a well, on the team's axis
-    R.flight([(x, -2, 1) for x in range(-38, -44, -1)], 23, "-x")          # 23 at -38 .. 28 at -43
-    R.flight([(x, -2, 1) for x in range(-30, -36, -1)], 17, "-x")          # 17 at -30 .. 22 at -35
-    # the side stairs from the Ledge up to the Bench on either side of each side hill's alcove
-    R.flight([(x, -27, -26) for x in range(-16, -10)], 17, "+x")           # west, rising east
-    R.flight([(x, -27, -26) for x in range(15, 9, -1)], 17, "-x")          # east, rising west
-    # the corner stairs: Ledge up to Bench, and Bench up to Rim, at every corner of the bowl
-    R.flight_z([(z, -31, -30) for z in range(-26, -32, -1)], 17, "-z")     # north-west, Ledge to Bench
-    R.flight_z([(z, 29, 30) for z in range(-26, -32, -1)], 17, "-z")       # north-east, Ledge to Bench
-    R.flight_z([(z, -37, -36) for z in range(-28, -34, -1)], 23, "-z")     # north-west, Bench to Rim
-    R.flight_z([(z, 35, 36) for z in range(-28, -34, -1)], 23, "-z")       # north-east, Bench to Rim
-    # the parkour from the Ledge to the Middle: two pillars, 2 then 2 then 3 blocks apart, each a block higher
-    R.rect(-1, 0, -17, -16, 17, "floor")
-    R.rect(-1, 0, -13, -12, 18, "floor")
-    # the Spring's tunnel forks under the Ledge and comes up in a trench of stairs on either side of each side
-    # hill's front stair
-    R.flight_z([(z, 5, 7) for z in range(-20, -26, -1)], 11, "-z")       # east: 11 at -20 .. 16 at -25
-    R.flight_z([(z, -8, -6) for z in range(-20, -26, -1)], 11, "-z")     # west, its mirror
+    # the bowl: two grounds round the lava, four blocks apart, the quarry wall standing straight behind the Bench
+    R.rect(-37, 36, -33, 32, 17, both=False)                 # the Bench, the high ground
+    R.rect(-29, 28, -25, 24, 13, both=False)                 # the Ledge, the low ground
+    R.rect(-23, 22, -19, 18, LAVA_Y, "lava", both=False)     # the lava pit
+    # the spawns: a terrace cut into the wall, four over the Bench, a stair of three down to a landing
+    R.rect(-49, -42, -6, 5, 21, "spawn")
+    R.rect(-41, -38, -6, 5, 17)                              # the notch beside the stair, open to the Bench
+    R.flight([(x, -3, 2) for x in range(-38, -42, -1)], 18, "-x")          # 18 at -38 .. 21 at -41, the terrace's level
+    # the Middle: an island apron at 14, two steps of ring, the hill on top at 17, level with the Bench
+    R.rect(-9, 8, -9, 8, 14, both=False)
+    R.rect(-6, 5, -6, 5, 15, both=False)
+    R.rect(-5, 4, -5, 4, 16, both=False)
+    R.rect(-4, 3, -4, 3, 17, "hill", both=False)
+    # the causeways from the Ledge to the island, a step up onto the apron
+    R.rect(-23, -11, -2, 1, 13)
+    R.flight([(-10, -2, 1)], 14, "+x")
+    # the main stair from the Bench down to the Ledge, on each team's axis: three steps, landings either end
+    R.flight([(x, -2, 1) for x in range(-30, -34, -1)], 14, "-x")          # 14 at -30 .. 17 at -33, the Bench's level
+    # the stairs from the Ledge up to the Bench, each straight off the Ledge into the Bench with the Bench's width
+    # as its landing: at every corner, and either side of each side hill's forecourt
+    for x0, x1 in ((-29, -28), (27, 28), (-14, -11), (10, 13)):
+        R.flight_z([(z, x0, x1) for z in range(-26, -30, -1)], 14, "-z")   # 14 at -26 .. 17 at -29
+    # the side hills: each in an alcove cut into the wall behind the Bench, three over it, its front stair two
+    # steps up out of the Bench, which is its forecourt
+    R.rect(-4, 3, -41, -34, 20, "hill")
+    R.flight_z([(z, -4, 3) for z in range(-31, -34, -1)], 18, "-z")       # 18 at -31 .. 20 at -33
+    # either side, a passage cut into the wall from the Bench, wide enough to turn in, and a stair of two up
+    # through a door in the alcove's wall onto the hill
+    R.rect(-13, -8, -40, -34, 17)                             # the west passage
+    R.flight([(x, -39, -37) for x in range(-11, -8)], 18, "+x")            # 18 at -11 .. 20 at -9
+    R.rect(-8, -5, -39, -37, 20)                              # the west door, at the hill's height
+    R.rect(7, 12, -40, -34, 17)                               # the east passage, its mirror
+    R.flight([(x, -39, -37) for x in range(10, 7, -1)], 18, "-x")          # 18 at 10 .. 20 at 8
+    R.rect(4, 7, -39, -37, 20)                                # the east door
+    # the parkour from the Ledge to the Middle: two pillars, gaps of two, the first a block up
+    R.rect(-1, 0, -17, -16, 14, "floor")
+    R.rect(-1, 0, -13, -12, 14, "floor")
+    # the Spring's tunnel forks under the lava, runs on under the Ledge, and turns to climb a trench of stairs
+    # along the Ledge, coming up in line with it, two cells of Ledge ahead
+    R.flight([(x, -23, -21) for x in range(8, 14)], 8, "+x")               # 8 at 8 .. 13 at 13, the Ledge's level
+    R.flight([(x, -23, -21) for x in range(-9, -15, -1)], 8, "-x")         # its mirror
     # the diagonal steps from the arrows' corner of the Ledge to the Middle's apron: three pillars, each jump a
-    # gap of two by one, each a block higher; in the north-east, and turned, the south-west
-    R.rect(19, 20, -17, -16, 17, "floor")                   # two clear of both edges of the Ledge's corner
-    R.rect(15, 16, -14, -13, 18, "floor")
-    R.rect(11, 12, -11, -10, 19, "floor")                   # then a straight gap of two onto the apron
+    # gap of two by one; in the north-east, and turned, the south-west
+    R.rect(19, 20, -17, -16, 14, "floor")
+    R.rect(15, 16, -14, -13, 14, "floor")
+    R.rect(11, 12, -11, -10, 14, "floor")
     return R
 
 
 # ---- the routes' special edges, which a height raster cannot hold ----------------------------------------------
 # tunnels: two surface cells and the way between them, a polyline of (x, z, y). Each has a turned twin.
 TUNNELS = [
-    # red's: from the spawn, down inside the wall to the Ledge's north-west corner
-    dict(key="spawn-tunnel", a=(-50, -6), b=(-29, -21), pts=[(-50, -7, 28), (-50, -21, 16), (-29, -21, 16)]),
-    # the Spring: down a stairwell from the apron's west side to the golden apples under the hill, then north
-    # under the pool in a glass tube, and up the trench onto the Ledge below the North hill
-    dict(key="spring-north", a=(-9, 5), b=(6, -20),
-         pts=[(-9, 5, 19), (-4, 5, 13), (-1, -5, 13), (-1, -13, 6), (-1, -17, 6), (6, -20, 11)]),
-    dict(key="spring-north-e", a=(8, -6), b=(6, -20),
-         pts=[(8, -6, 19), (3, -6, 13), (-1, -6, 13), (-1, -13, 6), (-1, -17, 6), (6, -20, 11)]),
-    dict(key="spring-north-w", a=(8, -6), b=(-7, -20),
-         pts=[(8, -6, 19), (3, -6, 13), (-1, -6, 13), (-1, -13, 6), (-1, -17, 6), (-7, -20, 11)]),
-    dict(key="spring-north-ww", a=(-9, 5), b=(-7, -20),
-         pts=[(-9, 5, 19), (-4, 5, 13), (-1, -5, 13), (-1, -13, 6), (-1, -17, 6), (-7, -20, 11)]),
-    # the Spring's two stairwells joined under the hill: west to east, past the apples
-    dict(key="spring-across", a=(-9, 5), b=(8, -6), pts=[(-9, 5, 19), (-4, 5, 13), (3, -6, 13), (8, -6, 19)]),
+    # red's: from the spawn terrace, down inside the wall to the Ledge's north-west corner
+    dict(key="spawn-tunnel", a=(-46, -6), b=(-29, -21), pts=[(-46, -6, 21), (-46, -15, 13), (-46, -21, 13), (-29, -21, 13)]),
+    # the Spring: down a stairwell from the apron's west side to the apples under the Middle, north under the
+    # lava, a fork, and up a trench onto the Ledge on either side of the North hill's forecourt stairs
+    dict(key="spring-w-e", a=(-8, 8), b=(8, -22), pts=[(-8, 8, 14), (-8, 2, 9), (-4, 2, 9), (-1, -5, 9), (-1, -7, 7), (-1, -12, 7), (6, -12, 7), (6, -22, 7), (8, -22, 8)]),
+    dict(key="spring-w-w", a=(-8, 8), b=(-9, -22), pts=[(-8, 8, 14), (-8, 2, 9), (-4, 2, 9), (-1, -5, 9), (-1, -7, 7), (-1, -12, 7), (-7, -12, 7), (-7, -22, 7), (-9, -22, 8)]),
+    dict(key="spring-e-e", a=(7, -9), b=(8, -22), pts=[(7, -9, 14), (7, -3, 9), (3, -3, 9), (-1, -5, 9), (-1, -7, 7), (-1, -12, 7), (6, -12, 7), (6, -22, 7), (8, -22, 8)]),
+    dict(key="spring-e-w", a=(7, -9), b=(-9, -22), pts=[(7, -9, 14), (7, -3, 9), (3, -3, 9), (-1, -5, 9), (-1, -7, 7), (-1, -12, 7), (-7, -12, 7), (-7, -22, 7), (-9, -22, 8)]),
+    dict(key="spring-across", a=(-8, 8), b=(7, -9), pts=[(-8, 8, 14), (-8, 2, 9), (7, -3, 9), (7, -9, 14)]),
 ]
-SPRING = dict(box=(-5, 4, -5, 4), floor=13, ceil=18)        # the room under the Middle; the apples at its centre
+SPRING = dict(box=(-4, 3, -4, 3), floor=9, ceil=13)         # the room under the Middle; the apples at its centre
+TUNNEL_FLOOR = 7                                            # under the lava: air 8..9, a glass roof at 10, lava at 11
 
-# jump pads: the pad's cells (x0, x1, z0, z1, floor y), the velocity, and what it is for
+# jump pads: the pad's cells (x0, x1, z0, z1, floor y), the velocity, and what it is for. Each has a turned twin.
 PADS = [
-    dict(key="mid-north-w", cells=(-6, -5, -9, -8, 19), v=(-1.08, 0.75, -2.74),
-         why="from the Middle's apron to the Bench beside the North hill's west side stair"),
-    dict(key="mid-north-e", cells=(4, 5, -9, -8, 19), v=(1.08, 0.75, -2.74),
-         why="its mirror: to the Bench beside the North hill's east side stair"),
-    dict(key="ledge-mid", cells=(-29, -27, -25, -23, 16), v=(2.21, 0.90, 1.88),
-         why="from the Ledge's corner over the lava onto the Middle's apron: the corner's way onto the Middle, "
-             "answering the diagonal steps in the other two corners"),
+    dict(key="mid-north-w", cells=(-6, -5, -9, -8, 14), v=(-0.7, 0.75, -2.87),
+         why="from the Middle's apron to the Bench at the mouth of the North hill's west passage"),
+    dict(key="mid-north-e", cells=(4, 5, -9, -8, 14), v=(0.7, 0.75, -2.87),
+         why="its mirror: to the mouth of the east passage"),
+    dict(key="ledge-mid", cells=(-29, -27, -25, -23, 13), v=(2.1, 0.8, 1.78),
+         why="from the Ledge's corner over the lava onto the Middle's apron, answering the diagonal steps"),
 ]
-# the drop: from the Rim straight down onto a side hill, 5 blocks, one way
-DROPS = [dict(key="rim-north", at=(-4, 3, -35, -35), onto="hill N", height=5)]
+DROPS = []
 # arrows in two diagonal inner corners of the Ledge (the north-east, and its turn, the south-west), where the
-# diagonal steps to the Middle start; the other two corners carry the pads up to the Rim
-ARROWS_AT = [(25.5, 17, -22.5), (-25.5, 17, 21.5)]
+# diagonal steps to the Middle start; the other two corners carry a pad onto the Middle
+ARROWS_AT = [(25.5, 14, -22.5), (-25.5, 14, 21.5)]
 
-HILLS = [dict(key="mid", name="the Middle", box=(-4, 3, -4, 3), y=22, points=2),
-         dict(key="north", name="the North hill", box=(-4, 3, -34, -27), y=23, points=1),
-         dict(key="south", name="the South hill", box=(-4, 3, 26, 33), y=23, points=1)]
-GAPPLE_AT = (-0.5, 14, -0.5)        # the Spring: under the Middle
-SPAWN_POINT = (-51.5, 29, -0.5)
+HILLS = [dict(key="mid", name="the Middle", box=(-4, 3, -4, 3), y=17, points=2),
+         dict(key="north", name="the North hill", box=(-4, 3, -41, -34), y=20, points=1),
+         dict(key="south", name="the South hill", box=(-4, 3, 33, 40), y=20, points=1)]
+GAPPLE_AT = (-0.5, 10, -0.5)        # the Spring: under the Middle
+SPAWN_POINT = (-46.5, 22, -0.5)

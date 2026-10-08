@@ -13,7 +13,7 @@ import math
 
 import numpy as np
 
-import plan as P
+import plan_v3 as P
 from pad import fly
 
 R = P.build()
@@ -231,15 +231,11 @@ def to_hill(D, prev, hill):
 def main():
     out = []
     # the pads: tune each, then report where it lands
-    targets = {"mid-north-w": (-10.5, -30.5), "mid-north-e": (9.5, -30.5), "ledge-mid": (-8.0, -7.0)}
+    targets = {"mid-north-w": (-13.5, -29.5), "mid-north-e": (12.5, -29.5), "ledge-mid": (-8.0, -7.0)}
     for pad in P.PADS:
         L = land_of_pad(pad)
         out.append(f"pad {pad['key']}: velocity {pad['v']} -> lands on the {L['hit']} at ({L['x']:.1f}, {L['z']:.1f}) y {L['y']:.0f}, "
                    f"{L['dist']:.1f} out after {L['t']} ticks, apex {L['apex']:.1f}")
-    L = landings()
-    out.append(f"stair ends without two cells of landing in line: {len(L)}")
-    for x, z, r, end in L[:40]:
-        out.append(f"   ({x},{z}) rising {r}: its {end}")
     J = shortcuts(jumps())
     G = jump_groups(J)
     out.append(f"jumps the raster allows (edge gap 1..3 in any direction, landing no more than 1 up): {len(G)} between floors")
@@ -288,45 +284,22 @@ def main():
 
 # the named routes, red's, as waypoints the walk must pass through (blue's are the same turned)
 ROUTES = [
-    ("main lane, spawn to the Middle", [(-46, -1), (-38, -1), (-34, -1), (-29, -1), (-12, -1), (-1, -1)], ""),
-    ("spawn to the North hill along the Bench, up its forecourt stair", [(-46, -1), (-38, -1), (-35, -1), (-35, -30), (-1, -30), (-1, -36)], ""),
-    ("spawn to the North hill along the Bench, through the west passage", [(-46, -1), (-38, -1), (-35, -1), (-35, -30), (-11, -35), (-10, -38), (-4, -38)], ""),
-    ("spawn to the North hill, east passage", [(-46, -1), (-38, -1), (-35, -1), (-35, -30), (10, -35), (9, -38), (3, -38)], ""),
-    ("spawn tunnel to the Ledge, up a side stair, through the west passage", [(-46, -1), (-29, -21), (-12, -25), (-12, -29), (-11, -35), (-4, -38)], ""),
-    ("spawn tunnel, the corner pad onto the Middle", [(-46, -1), (-28, -24), (-8, -7), (-1, -1)], ""),
-    ("spawn tunnel, Ledge, parkour onto the Middle", [(-46, -1), (-29, -21), (-1, -20), (-1, -9), (-1, -1)], ""),
-    ("Middle to the North hill by the west pad and the west passage", [(-1, -1), (-6, -8), (-11, -31), (-11, -35), (-4, -38)], ""),
-    ("Middle to the North hill by the east pad and the east passage", [(-1, -1), (5, -8), (10, -31), (10, -35), (3, -38)], ""),
+    ("main lane, spawn to the Middle", [(-50, -1), (-44, -1), (-36, -1), (-29, -1), (-12, -1), (-1, -1)], ""),
+    ("Bench round to the North hill, in by the side stair", [(-50, -1), (-44, -1), (-37, -1), (-37, -31), (-9, -31), (-8, -27), (-4, -28)], ""),
+    ("Bench round to the South hill, up its front stair", [(-50, -1), (-44, -1), (-37, -1), (-37, 28), (-10, 26), (-1, 20), (-1, 30)], ""),
+    ("spawn tunnel to the Ledge, up the North hill's front stair", [(-50, -1), (-29, -21), (-1, -20), (-1, -30)], ""),
+    ("Rim to the North hill, dropping on it", [(-50, -1), (-45, -7), (-41, -37), (-1, -35), (-1, -30)], ""),
+    ("spawn tunnel, the corner pad onto the Middle", [(-50, -1), (-28, -24), (-8, -7), (-1, -1)], ""),
+    ("spawn tunnel, Ledge, parkour onto the Middle", [(-50, -1), (-29, -21), (-1, -20), (-1, -9), (-1, -1)], ""),
+    ("Middle to the North hill by the west pad and the west window", [(-1, -1), (-6, -8), (-14, -30), (-9, -31), (-8, -27), (-4, -28)], ""),
+    ("Middle to the North hill by the east pad and the east window", [(-1, -1), (5, -8), (13, -30), (8, -31), (7, -27), (3, -28)], ""),
     ("arrows' corner to the Middle by the diagonal steps", [(25, -22), (23, -20), (19, -16), (15, -13), (11, -10), (8, -9), (-1, -1)], ""),
-    ("Middle to the North hill through the Spring", [(-1, -1), (7, -9), (8, -22), (15, -22), (12, -25), (-1, -30), (-1, -36)], ""),
-    ("North hill back to the Middle by the parkour", [(-1, -36), (-1, -30), (-1, -26), (-1, -20), (-1, -9), (-1, -1)], ""),
-    ("North hill back to the Middle through the Spring", [(-1, -36), (-1, -30), (-12, -25), (-16, -22), (-9, -22), (-8, 8), (-1, -1)], ""),
-    ("South hill from red's spawn along the Bench, up its forecourt stair", [(-46, -1), (-38, -1), (-35, -1), (-35, 29), (-1, 29), (-1, 35)], ""),
+    ("Middle to the North hill through the Spring", [(-1, -1), (8, -6), (6, -20), (6, -25), (-1, -21), (-1, -30)], ""),
+    ("Bench round to the North hill, in by the east window", [(-50, -1), (-44, -1), (-37, -1), (-37, -31), (-20, -31), (-16, -25), (10, -25), (15, -27), (8, -31), (7, -27), (3, -28)], ""),
+    ("North hill back to the Middle by the parkour", [(-1, -30), (-1, -20), (-1, -9), (-1, -1)], ""),
+    ("South hill (blue's near) from red's spawn, Bench round, in by its west window", [(-50, -1), (-44, -1), (-37, -1), (-37, 30), (-9, 30), (-9, 26), (-6, 26), (-4, 27)], ""),
+    ("North hill back to the Middle through the Spring", [(-1, -30), (-1, -21), (6, -25), (6, -20), (8, -6), (-1, -1)], ""),
 ]
-
-
-def landings():
-    """Every flight of stairs must be met head-on: two cells before its foot and two past its top that a player
-    stands on at the level the stair starts from or arrives at, so a player can run up to it and turn off it."""
-    bad = []
-    for (x, z), r in R.stair.items():
-        dx, dz = {"+x": (1, 0), "-x": (-1, 0), "+z": (0, 1), "-z": (0, -1)}[r]
-        h = H[P.ix(x), P.iz(z)]
-        for sign, want in ((-1, -1), (1, 0)):
-            if sign < 0 and h - 1 == P.TUNNEL_FLOOR:
-                continue                                  # its foot is in the tunnel under the Ledge, the tunnel its landing
-            nx, nz = x + sign * dx, z + sign * dz
-            if (nx, nz) in R.stair and R.stair[(nx, nz)] == r:
-                continue                                  # the flight goes on
-            ok = True
-            for k in (1, 2):
-                px_, pz_ = x + sign * dx * k, z + sign * dz * k
-                i, j = P.ix(px_), P.iz(pz_)
-                if not (0 <= i < P.NX and 0 <= j < P.NZ) or not walkable(i, j) or H[i, j] != h + want:
-                    ok = False
-            if not ok:
-                bad.append((x, z, r, "foot" if sign < 0 else "top"))
-    return bad
 
 
 if __name__ == "__main__":

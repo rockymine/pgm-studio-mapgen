@@ -1,57 +1,55 @@
-pad mid-north-w: velocity (-1.08, 0.75, -2.74) -> lands on the floor at (-13.5, -29.5) y 23, 23.1 out after 13 ticks, apex 23.5
-pad mid-north-e: velocity (1.08, 0.75, -2.74) -> lands on the floor at (13.5, -29.5) y 23, 23.1 out after 13 ticks, apex 23.5
-pad ledge-mid: velocity (2.21, 0.9, 1.88) -> lands on the floor at (-7.4, -6.4) y 20, 26.3 out after 18 ticks, apex 21.9
-jumps the raster allows (edge gap 1..3 in any direction, landing no more than 1 up): 30 between floors
-   (-28,-26) y22 -> (-30,-24) y22, gap 1.4
-   (27,-26) y22 -> (29,-24) y22, gap 1.4
-   (-2,-20) y16 -> (-1,-17) y17, gap 2.0
-   (18,-20) y16 -> (19,-17) y17, gap 2.0
-   (-1,-17) y17 -> (-2,-20) y16, gap 2.0
-   (19,-17) y17 -> (18,-20) y16, gap 2.0
-   (-1,-16) y17 -> (-1,-13) y18, gap 2.0
-   (19,-16) y17 -> (16,-14) y18, gap 2.2
-   (16,-14) y18 -> (19,-16) y17, gap 2.2
-   (-1,-13) y18 -> (-1,-16) y17, gap 2.0
-   (15,-13) y18 -> (12,-11) y19, gap 2.2
-   (-1,-12) y18 -> (-2,-9) y19, gap 2.0
-   (12,-11) y19 -> (15,-13) y18, gap 2.2
-   (11,-10) y19 -> (8,-9) y19, gap 2.0
-   (-2,-9) y19 -> (-1,-12) y18, gap 2.0
-   (8,-9) y19 -> (11,-10) y19, gap 2.0
-   (-9,8) y19 -> (-12,9) y19, gap 2.0
-   (-2,8) y19 -> (-1,11) y18, gap 2.0
-   (-12,9) y19 -> (-9,8) y19, gap 2.0
-   (-13,10) y19 -> (-16,12) y18, gap 2.2
-   (-1,11) y18 -> (-2,8) y19, gap 2.0
-   (-16,12) y18 -> (-13,10) y19, gap 2.2
-   (-1,12) y18 -> (-1,15) y17, gap 2.0
-   (-17,13) y18 -> (-20,15) y17, gap 2.2
-   (-24,14) y16 -> (-21,15) y17, gap 2.0
-   (-21,15) y17 -> (-24,14) y16, gap 2.0
-   (-20,15) y17 -> (-17,13) y18, gap 2.2
-   (-1,15) y17 -> (-1,12) y18, gap 2.0
-   (-1,16) y17 -> (-2,19) y16, gap 2.0
-   (-2,19) y16 -> (-1,16) y17, gap 2.0
-red spawn, every route: mid 49; north 70 (drop 6, drop 6, pad ledge-mid, pad mid-north-w, drop 4); south 71 (jump 1.4, pad mid-north-e, drop 4)
-red spawn, no tunnel: mid 49; north 70 (drop 6, drop 6, pad ledge-mid, pad mid-north-w, drop 4); south 71 (jump 1.4, pad mid-north-e, drop 4)
-red spawn, no pads: mid 49; north 75 (jump 1.4, jump 2.8, jump 2.0, jump 2.0); south 76 (jump 1.4, jump 2.8, jump 2.0, jump 2.0)
-red spawn, no jumps: mid 49; north 70 (drop 6, drop 6, pad ledge-mid, pad mid-north-w, drop 4); south 73 (pad mid-north-e, drop 4)
-red spawn, walking only: mid 49; north 82 (drop 6, drop 6); south 83 (drop 6, drop 6)
-from mid: north 27 (jump 2.0, jump 2.0, jump 2.0); south 28 (jump 2.0, jump 2.0, jump 2.0)
-from north: mid 28 (jump 2.0, jump 2.0, jump 2.0); south 59 (jump 2.0, jump 2.0, jump 2.8, pad mid-north-e, drop 4)
-from south: mid 27 (jump 2.0, jump 2.0, jump 2.0); north 58 (jump 2.0, jump 2.0, jump 2.8, pad mid-north-w, drop 4)
-route main lane, spawn to the Middle: 50
-route Bench round to the North hill, in by the side stair: 83
-route Bench round to the South hill, up its front stair: 100
-route spawn tunnel to the Ledge, up the North hill's front stair: 76
-route Rim to the North hill, dropping on it: 92
-route spawn tunnel, the corner pad onto the Middle: 62
-route spawn tunnel, Ledge, parkour onto the Middle: 84
-route Middle to the North hill by the west pad and the west window: 32
-route Middle to the North hill by the east pad and the east window: 33
+pad mid-north-w: velocity (-0.7, 0.75, -2.87) -> lands on the floor at (-10.5, -30.5) y 18, 23.2 out after 13 ticks, apex 18.5
+pad mid-north-e: velocity (0.7, 0.75, -2.87) -> lands on the floor at (10.5, -30.5) y 18, 23.2 out after 13 ticks, apex 18.5
+pad ledge-mid: velocity (2.1, 0.8, 1.78) -> lands on the floor at (-8.1, -7.0) y 15, 25.5 out after 19 ticks, apex 18.0
+stair ends without two cells of landing in line: 0
+jumps the raster allows (edge gap 1..3 in any direction, landing no more than 1 up): 28 between floors
+   (-2,-20) y13 -> (-1,-17) y14, gap 2.0
+   (18,-20) y13 -> (19,-17) y14, gap 2.0
+   (-1,-17) y14 -> (-2,-20) y13, gap 2.0
+   (19,-17) y14 -> (18,-20) y13, gap 2.0
+   (-1,-16) y14 -> (-1,-13) y14, gap 2.0
+   (19,-16) y14 -> (16,-14) y14, gap 2.2
+   (16,-14) y14 -> (19,-16) y14, gap 2.2
+   (-1,-13) y14 -> (-1,-16) y14, gap 2.0
+   (15,-13) y14 -> (12,-11) y14, gap 2.2
+   (-1,-12) y14 -> (-2,-9) y14, gap 2.0
+   (12,-11) y14 -> (15,-13) y14, gap 2.2
+   (11,-10) y14 -> (8,-9) y14, gap 2.0
+   (-2,-9) y14 -> (-1,-12) y14, gap 2.0
+   (8,-9) y14 -> (11,-10) y14, gap 2.0
+   (-9,8) y14 -> (-12,9) y14, gap 2.0
+   (-2,8) y14 -> (-1,11) y14, gap 2.0
+   (-12,9) y14 -> (-9,8) y14, gap 2.0
+   (-13,10) y14 -> (-16,12) y14, gap 2.2
+   (-1,11) y14 -> (-2,8) y14, gap 2.0
+   (-16,12) y14 -> (-13,10) y14, gap 2.2
+   (-1,12) y14 -> (-1,15) y14, gap 2.0
+   (-17,13) y14 -> (-20,15) y14, gap 2.2
+   (-24,14) y13 -> (-21,15) y14, gap 2.0
+   (-21,15) y14 -> (-24,14) y13, gap 2.0
+   (-20,15) y14 -> (-17,13) y14, gap 2.2
+   (-1,15) y14 -> (-1,12) y14, gap 2.0
+   (-1,16) y14 -> (-2,19) y13, gap 2.0
+   (-2,19) y13 -> (-1,16) y14, gap 2.0
+red spawn, every route: mid 44; north 59 (jump 2.8, pad mid-north-w); south 60 (jump 2.8, pad mid-north-e)
+red spawn, no tunnel: mid 44; north 59 (jump 2.8, pad mid-north-w); south 60 (jump 2.8, pad mid-north-e)
+red spawn, no pads: mid 44; north 74 (drop 4, jump 2.8); south 74 (drop 4, drop 4, jump 2.8)
+red spawn, no jumps: mid 44; north 60 (drop 4, drop 4, pad ledge-mid, pad mid-north-w); south 62 (pad mid-north-e)
+red spawn, walking only: mid 44; north 77 (drop 4); south 78 (drop 4)
+from mid: north 24 (pad mid-north-w); south 25 (pad mid-north-e)
+from north: mid 35 (drop 4, jump 2.0, jump 2.0, jump 2.0); south 60 (drop 4, jump 2.0, jump 2.0, jump 2.8, pad mid-north-e)
+from south: mid 34 (drop 4, jump 2.0, jump 2.0, jump 2.0); north 59 (drop 4, jump 2.0, jump 2.0, jump 2.8, pad mid-north-w)
+route main lane, spawn to the Middle: 46
+route spawn to the North hill along the Bench, up its forecourt stair: 78
+route spawn to the North hill along the Bench, through the west passage: 75
+route spawn to the North hill, east passage: 85
+route spawn tunnel to the Ledge, up a side stair, through the west passage: 78
+route spawn tunnel, the corner pad onto the Middle: 60
+route spawn tunnel, Ledge, parkour onto the Middle: 80
+route Middle to the North hill by the west pad and the west passage: 29
+route Middle to the North hill by the east pad and the east passage: 30
 route arrows' corner to the Middle by the diagonal steps: 40
-route Middle to the North hill through the Spring: 65
-route Bench round to the North hill, in by the east window: 135
-route North hill back to the Middle by the parkour: 30
-route South hill (blue's near) from red's spawn, Bench round, in by its west window: 84
-route North hill back to the Middle through the Spring: 72
+route Middle to the North hill through the Spring: 71
+route North hill back to the Middle by the parkour: 36
+route North hill back to the Middle through the Spring: 93
+route South hill from red's spawn along the Bench, up its forecourt stair: 82
