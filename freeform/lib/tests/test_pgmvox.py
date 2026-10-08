@@ -427,6 +427,20 @@ class Storeys(unittest.TestCase):
         E = plangraph.graph(self.raster(roof=12), {"floor", "stair", "roof"})
         self.assertNotIn((12, 4), E)
 
+    def test_a_plan_read_off_terrain(self):
+        H = np.zeros((20, 10), int)
+        H[10:, :] = 3                                                       # a three-block step across x = 10
+        water = np.zeros(H.shape, bool)
+        water[2:4, :] = True
+        R = Raster.from_heights(H, -10, 0, water=water)
+        self.assertEqual((R.at(-10, 0), R.at(-7, 5)), ((0, "ground"), (0, "water")))
+        E = plangraph.graph(R, {"ground"}, rules=plangraph.PlanRules(jumps=False))
+        up, _ = plangraph.dijkstra(E, [(-5, 5)])
+        down, _ = plangraph.dijkstra(E, [(5, 5)])
+        self.assertNotIn((5, 5), up)                                        # three up is a wall
+        self.assertIn((-5, 5), down)                                        # three down is a drop
+        self.assertNotIn((-7, 5), down)                                     # water is not walked
+
     def test_one_storey_is_unchanged(self):
         R = Plan.raster(None)
         self.assertEqual(R.storeys, [R])

@@ -15,7 +15,7 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `noise` | `fbm`, `ridged`, `smoothstep`, `spline` |
 | `shapes` | polygons, polylines, discs, rings, ellipses, tapered strokes, `boundary`, `edge_depth` |
 | `move` | the 1.8 tick model: `fly`, `fall`, `fall_damage`, `jump_reach`, `knockback`, `solve_launch` |
-| `plan` | `Raster`, the plan as every column's floor and kind, with `Symmetry` drawn in the plan; `rect`, `poly`, `where`, `flight`; `storey(n)`, an upper storey drawn the same way |
+| `plan` | `Raster`, the plan as every column's floor and kind, with `Symmetry` drawn in the plan; `rect`, `poly`, `where`, `flight`; `storey(n)`, an upper storey drawn the same way; `from_heights`, a plan read off shaped terrain |
 | `objectives` | spawns, the observer point, hills, flags, wools and monuments, destroyables, cores, score boxes and portals: each stamps its blocks, writes its regions and XML, carries itself to the other team, and checks the built world |
 | `solid` | the repository's `tools/sculpt/solid.py` (booleans, turns, revolves, extrusions, tubes), with `fill` into a `World` and `image` through a plan `Symmetry` |
 | `pieces` | `Course`, the plan of a board played in order (a water drop, a parkour run): pieces by step with their images, the links between steps, and an audit of each link's gap, drop, way across, landing cell and damage; `raster()` turns a course into a `Raster` |
@@ -148,6 +148,11 @@ the board's own numbers, and each only cuts or only lifts unless it says otherwi
 a canyon and drops to the sea. `lowest` keeps a bed off the sea floor. A path that starts out at sea once held a
 canyon and its river fifteen blocks under the water all the way inland.
 
+**A terrain board is checked before it is built.** `Raster.from_heights` reads the shaped heights as a plan, with
+water and steep ground as their own kinds, and the walk graph runs over it. The Vale's plan check walks from the
+harbour to every place before a block is written. With the junction fault below put back, it reports the
+uplands and the canyon rim unreachable, which the built world's walk had only found after the build.
+
 **`examples/vale/` uses every landform on one stretch of ground.** A coast, a scarp with a butte and a spire, a
 canyon through it into a river with falls, a graded road, a terraced hill and a floating island with a fluted,
 spired underside. Its first build showed a whole board lifted to a flat plateau: a spire raised every column to
@@ -249,7 +254,18 @@ height: cloud billows rising through it. The deck now sits far below.
 **A board's scripts put the library on their path themselves,** as `examples/islets/scripts/plan.py` does, and
 `run` also sets `PYTHONPATH`. Every build writes `renders/build-info.txt` with the library version it used.
 
+## Building a board with it
+
+**`AGENT-GUIDE.md` is for an agent handed a board to build.** It is about the plan and the sketch: what a plan
+must state and to what detail for each mode, the panels a sketch needs, and what must, should and may come from
+the library.
+
 ## Tests
+
+**`python3 check.py` is the one command that says nothing is broken.** It runs the tests and the prose gate, then
+rebuilds every example and compares what each reads back (its plan check, generator and walk numbers, and how many
+of each block it built) with `check/snapshot.json`. A change that moves a number fails with a diff until it is
+looked at and accepted with `--update`. `--studio` also re-exports the studio's tables and reads every map.xml.
 
 ```
 cd freeform/lib && python3 -m unittest discover -s tests -v

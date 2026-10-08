@@ -52,6 +52,22 @@ class Raster:
         self.storeys = [self]                                    # storey 0 is this raster; storey(n) adds more
         self.level = 0
 
+    @classmethod
+    def from_heights(cls, H, x0, z0, water=None, steep=None, symmetry=None):
+        """A plan read off a heightfield (a terrain board's shaped ground, before any world is written): every
+        column's floor at H, kind "ground", "water" where the mask says, and "steep" where the slope as the studio
+        reads it passes `steep` degrees. The walk graph and the sketch then read a terrain board as any plan."""
+        from .terrain import slope_deg
+        H = np.asarray(np.round(H)).astype(int)
+        R = cls((x0, x0 + H.shape[0] - 1), (z0, z0 + H.shape[1] - 1), ["ground", "steep", "water"], 0, "ground",
+                symmetry)
+        R.H[:] = H
+        if steep is not None:
+            R.K[slope_deg(H) > steep] = R.kinds["steep"]
+        if water is not None:
+            R.K[np.asarray(water, bool)] = R.kinds["water"]
+        return R
+
     # --- storeys ---------------------------------------------------------------------------------------
     def storey(self, n=1):
         """The raster of the n-th storey over this one: the same extent, kinds and symmetry, with "none" where

@@ -1,0 +1,112 @@
+{
+ "drop": {
+  "plan-check.txt": [
+   "the start               the ledges                  3.2     8  run off       0.59     5  lands (-8, 12)",
+   "the start               the ledges (image)          3.2     8  run off       0.59     5  lands (7, 12)",
+   "the ledges              the roofs                   4.0    12  run off       0.55     9  lands (-11, 24)",
+   "the ledges (image)      the roofs (image)           4.0    12  run off       0.55     9  lands (10, 24)",
+   "the roofs               the beam                    4.5     5  sprint jump   1.93     2  lands (0, 38)",
+   "the roofs (image)       the beam                    4.5     5  sprint jump   1.93     2  lands (-1, 38)",
+   "the beam                the pillars                 4.2     3  sprint jump   1.55     0  lands (-6, 55)",
+   "the beam                the pillars (image)         4.2     3  sprint jump   1.55     0  lands (5, 55)",
+   "the pillars             the galleries               4.0    12  run off       0.55     9  lands (-7, 61)",
+   "the pillars (image)     the galleries (image)       4.0    12  run off       0.55     9  lands (6, 61)",
+   "the galleries           the terrace                 5.0    20  run off       1.14     0  lands (-9, 77) in water",
+   "the galleries (image)   the terrace                 5.0    20  run off       1.14     0  lands (8, 77) in water",
+   "the terrace             the barge                   6.0    30  run off       1.73     0  lands (-5, 95) in water",
+   "links that nothing clears: 0",
+   "lethal links: 0",
+   "landings off the piece: 0"
+  ]
+ },
+ "islets": {
+  "blocks": {
+   "Dirt (3)": 47730,
+   "Glass Pane (102)": 10,
+   "Grass Block (2)": 15960,
+   "Oak Log (17)": 60,
+   "Oak Planks (5)": 144,
+   "Oak Wood Slab (126)": 60,
+   "Sandstone (24)": 36,
+   "Snow Block (80)": 23976,
+   "Spruce Door (193)": 4,
+   "Stone (1)": 328969,
+   "Stone Bricks (98)": 32,
+   "White Wool (35)": 65600
+  },
+  "gen.txt": [],
+  "plan-check.txt": [
+   "to the hill: red 22.4, blue 22.4",
+   "jumps the plan allows: 126, the widest 3.0"
+  ],
+  "walks.txt": [
+   "standable over the kill height beside the islands: 0",
+   "footing problems: 0",
+   "objectives with a problem: 0"
+  ]
+ },
+ "parts": {
+  "blocks": {
+   "Bricks (45)": 131,
+   "Cobblestone (4)": 481,
+   "Cobblestone Stairs (67)": 116,
+   "Cobblestone Wall (139)": 4,
+   "Dark Oak Door (197)": 2,
+   "Dark Oak Stairs (164)": 675,
+   "Double Stone Slab (43)": 48,
+   "Glass Pane (102)": 98,
+   "Grass Block (2)": 8501,
+   "Iron Bars (101)": 18,
+   "Oak Door (64)": 2,
+   "Oak Log (17)": 584,
+   "Oak Planks (5)": 1421,
+   "Oak Wood Slab (126)": 157,
+   "Sea Lantern (169)": 5,
+   "Spruce Door (193)": 16,
+   "Stone (1)": 109478,
+   "Stone Bricks (98)": 268,
+   "White Stained Clay (159)": 143,
+   "White Wool (35)": 1023
+  },
+  "gen.txt": []
+ },
+ "vale": {
+  "blocks": {
+   "Cobblestone (4)": 56940,
+   "Cobblestone Stairs (67)": 68,
+   "Dirt (3)": 126324,
+   "Grass Block (2)": 13836,
+   "Gravel (13)": 1052,
+   "Hardened Clay (172)": 46554,
+   "Oak Fence (85)": 33,
+   "Oak Planks (5)": 56,
+   "Sand (12)": 11303,
+   "Snow Block (80)": 14,
+   "Snow Layer (78)": 14,
+   "Stone (1)": 1442015,
+   "Water (9)": 27439,
+   "White Stained Clay (159)": 11524
+  },
+  "gen.txt": [
+   "generated; slope: 22672 grass-flat, 5939 cliff columns; 1 falls; 4 roads, 56 bridge blocks, 68 footpath stairs"
+  ],
+  "plan-check.txt": [
+   "harbour: 0 blocks of walk from the harbour",
+   "west shore: 431 blocks of walk from the harbour",
+   "village: 471 blocks of walk from the harbour",
+   "uplands: 174 blocks of walk from the harbour",
+   "canyon rim: 228 blocks of walk from the harbour",
+   "the spire's foot: 468 blocks of walk from the harbour",
+   "ground reached: 30237 of 31832 dry columns"
+  ],
+  "walks.txt": [
+   "harbour: reached on foot from the harbour, no jumps, no drop over 3",
+   "west shore: reached on foot from the harbour, no jumps, no drop over 3",
+   "village: reached on foot from the harbour, no jumps, no drop over 3",
+   "uplands: reached on foot from the harbour, no jumps, no drop over 3",
+   "canyon rim: reached on foot from the harbour, no jumps, no drop over 3",
+   "the spire's foot: reached on foot from the harbour, no jumps, no drop over 3",
+   "columns reached: 38479"
+  ]
+ }
+}

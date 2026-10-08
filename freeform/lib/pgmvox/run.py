@@ -10,7 +10,7 @@
 
 and writes renders/build-info.txt with the library version, so a board records what it was built with.
 
-    python3 -m pgmvox.run <board-dir> [--build <build-dir>] [--from STEP] [--only STEP]
+    python3 -m pgmvox.run <board-dir> [--build <build-dir>] [--from STEP] [--only STEP] [--skip STEP ...]
 
 Run from freeform/lib (or with it on PYTHONPATH). A board's scripts find the library on their own sys.path.
 """
@@ -26,7 +26,7 @@ from .world import studio_root, write
 STEPS = ["plan_check", "sketch", "gen", "write", "mapxml", "renders", "walk"]
 
 
-def run(board, build=None, start=None, only=None):
+def run(board, build=None, start=None, only=None, skip=()):
     board = os.path.abspath(board)
     scripts = os.path.join(board, "scripts")
     renders = os.path.join(board, "renders")
@@ -38,6 +38,7 @@ def run(board, build=None, start=None, only=None):
     steps = STEPS[STEPS.index(start):] if start else STEPS
     if only:
         steps = [only]
+    steps = [st for st in steps if st not in skip]
     log = []
 
     def py(name, *args, out=None):
@@ -59,7 +60,10 @@ def run(board, build=None, start=None, only=None):
         elif step == "sketch":
             py("sketch", os.path.join(renders, "00-plan-sketch.png"))
         elif step == "gen":
-            print(py("gen", build) or "", end="")
+            out = py("gen", build) or ""
+            print(out, end="")
+            with open(os.path.join(renders, "gen.txt"), "w") as f:
+                f.write(out)
         elif step == "write":
             print(write(build, os.path.join(board, "world")))
             log.append("write: ok")
@@ -88,8 +92,9 @@ def main():
     ap.add_argument("--build")
     ap.add_argument("--from", dest="start", choices=STEPS)
     ap.add_argument("--only", choices=STEPS)
+    ap.add_argument("--skip", choices=STEPS, action="append", default=[])
     a = ap.parse_args()
-    for line in run(a.board, a.build, a.start, a.only):
+    for line in run(a.board, a.build, a.start, a.only, a.skip):
         print(line)
 
 
