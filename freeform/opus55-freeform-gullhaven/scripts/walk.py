@@ -130,12 +130,15 @@ def main(build):
         out.append(f"  to {name}: {v if v is not None else 'NOT REACHED'}")
     reached = [s for s in spawns if nearest(dist, x0, z0, *s, r=0) is not None]
     out.append(f"spawns reached from the first: {len(reached)} of {len(spawns)}")
-    near = []
+    near, trapped = [], []
     for s in spawns:
         d = bfs(st, ladder, water, passable, [s], x0, z0)
         vs = [nearest(d, x0, z0, *t, r=0) for t in spawns if t != s]
+        if any(v is None for v in vs):
+            trapped.append(s)
         vs = [v for v in vs if v is not None]
         near.append(min(vs) if vs else None)
+    out.append(f"spawns that cannot reach every other spawn: {len(trapped)}" + (f" {trapped}" if trapped else ""))
     ok = [v for v in near if v is not None]
     out.append(f"each spawn's nearest other spawn on foot: min {min(ok)}, median {int(np.median(ok))}, max {max(ok)}")
     print("\n".join(out))

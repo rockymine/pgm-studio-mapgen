@@ -43,4 +43,9 @@ render_iso.render(ids, dat, x0, z0, o("34-iso-the-harbour.png"), 5, "nw", (4, 4,
 render_iso.render(ids, dat, x0, z0, o("35-iso-the-downs-and-skerry.png"), 4, "ne", (-56, -12, 12, 68), 0, 72)
 render_iso.render(ids, dat, x0, z0, o("36-iso-the-caves-cut-at-24.png"), 6, "se", (-50, -36, -8, 10), 0, 24)
 render_iso.render(ids, dat, x0, z0, o("37-iso-the-ravine.png"), 6, "sw", (-20, -50, 4, -14), 0, 50)
+
+render_iso.render(ids, dat, x0, z0, o("38-iso-the-headland-cliffs-nw.png"), 6, "nw", (-56, -50, -8, -10), 0, 72)
+render_iso.render(ids, dat, x0, z0, o("39-iso-the-east-cliffs-ne.png"), 5, "ne", (10, -50, 55, 20), 0, 72)
+render_iso.elevation(ids, dat, x0, z0, o("50-elev-the-north-shore.png"), (-56, -50, 55, -20), 12, 50, "south", 5)
+render_iso.elevation(ids, dat, x0, z0, o("51-elev-the-west-shore.png"), (-56, -50, -30, 68), 12, 50, "east", 5)
 print("renders written to", out)

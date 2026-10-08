@@ -119,7 +119,7 @@ def columns(w):
                 w.set(x, h - 1, z, *GRAVEL)
                 w.set(x, h, z, B.WATER)
                 continue
-            low = min([g(x + dx, z + dz) for dx, dz in N4 if kind(x + dx, z + dz) != "sea"] + [h])
+            low = min([g(x + dx, z + dz) for dx, dz in N4] + [h])
             for y in range(BASE_Y, h + 1):
                 w.set(x, y, z, *strata(y))
             if k in ("street", "quay") or (k == "ramp" and top_block(x, z, k, h) == SBRICK):
@@ -139,77 +139,6 @@ def columns(w):
                 w.set(x, h, z, BRICK_STAIRS if t == SBRICK else COBBLE_STAIRS, sd)
             else:
                 w.set(x, h, z, *t)
-
-
-NATURAL = ("grass", "beach", "ravine", "stream")
-
-
-def cliffs(w):
-    """Break the cliffs. Three things, none of which a player can climb:
-
-    - the face: level by level, rock within a block or three of the open air is cut away where a noise that
-      changes with height says so — notches, ledges, overhangs — never in the top two courses, so the edge a
-      player walks to stays where the plan put it;
-    - the foot: below every cliff that stands over the sea or the beach, a slope of fallen rock rising toward
-      the face, two and a half blocks up for every block in, its top four under the cliff's edge, so no step
-      of it is a block high and it is never a way up;
-    - sea stacks off the Headland, the Cove and the town.
-
-    The terraces' walls between the town's levels keep their built stone brick."""
-    from scipy import ndimage
-    from noise import fbm
-    shape = (P.NX, P.NZ)
-    a, b, c = fbm(shape, 7, 3, seed=31), fbm(shape, 5, 2, seed=32), fbm(shape, 11, 2, seed=33)
-    Gi = G.astype(int)
-    land = ~np.isin(R.K, [K["sea"], K["pier"]])
-    natural = np.isin(R.K, [K[k] for k in NATURAL])
-    built = np.isin(R.K, [K["street"], K["quay"], K["ramp"]])
-    sea = R.K == K["sea"]
-    near_sea = ndimage.binary_dilation(sea, iterations=4)
-    # the face
-    for y in range(SEA_FLOOR + 1, int(Gi.max()) + 1):
-        solid = (Gi >= y) & land
-        n3 = a * math.cos(y * 0.55) + b * math.sin(y * 0.8 + 1.0) + 0.5 * c
-        din = ndimage.distance_transform_edt(solid)
-        depth = np.clip((n3 - 0.05) * 5.0, 0, 3.2)
-        cut = solid & (din <= depth) & (depth > 0.3) & (
-            (natural & (y <= Gi - 2)) | (built & near_sea & (y <= Gi - 3)))
-        for i, j in zip(*np.nonzero(cut)):
-            x, z = i + P.X_MIN, j + P.Z_MIN
-            if w.id(x, y, z) not in (B.AIR, B.WATER):
-                w.set(x, y, z, B.WATER if y <= P.SEA else B.AIR)
-    # the foot: for every sea or beach column near a cliff, the height of the nearest cliff top and how far
-    land_top = np.where(land & (Gi >= P.SEA + 6), Gi, 0)
-    d, (ii, jj) = ndimage.distance_transform_edt(land_top == 0, return_indices=True)
-    scale = 1.0 + 0.6 * c
-    for i in range(P.NX):
-        for j in range(P.NZ):
-            k = KN[R.K[i, j]]
-            if k not in ("sea", "beach") or d[i, j] > 7 or d[i, j] < 1:
-                continue
-            ht = int(land_top[ii[i, j], jj[i, j]])
-            top = int(math.floor(ht - 4 - 2.5 * (d[i, j] - 1) * scale[i, j] + 1.2 * a[i, j]))
-            x, z = i + P.X_MIN, j + P.Z_MIN
-            base = SEA_FLOOR if k == "sea" else int(Gi[i, j])
-            if top <= base:
-                continue
-            for y in range(base + 1, top + 1):
-                w.set(x, y, z, *pick([STONE, ANDESITE, MOSSY_COBBLE, COBBLE, GRAVEL], [45, 25, 12, 10, 8]))
-            if top > P.SEA and rng.random() < 0.15:
-                w.set(x, top + 1, z, *MOSSY_COBBLE)
-    # sea stacks
-    for cx, cz, r, top in ((-54, -40, 1.8, 31), (-30, -49, 1.4, 26), (-55, 28, 1.6, 27), (52, -38, 1.5, 24)):
-        for x in range(int(cx - r) - 1, int(cx + r) + 2):
-            for z in range(int(cz - r) - 1, int(cz + r) + 2):
-                for y in range(SEA_FLOOR, top + 1):
-                    rr = r * (1.0 - 0.35 * (y - SEA_FLOOR) / (top - SEA_FLOOR)) + 0.4 * math.sin(y * 1.3 + x)
-                    if (x - cx) ** 2 + (z - cz) ** 2 <= rr * rr and kind(x, z) == "sea":
-                        w.set(x, y, z, *(GRASS if y == top else strata(y)))
-
-
-def sea_near(i, j):
-    return any(0 <= i + a < P.NX and 0 <= j + b < P.NZ and R.K[i + a, j + b] == K["sea"]
-               for a in (-3, 0, 3) for b in (-3, 0, 3))
 
 
 def houses(w):
@@ -373,8 +302,6 @@ def bridges(w):
             for j in range(P.NZ):
                 x, z = i + P.X_MIN, j + P.Z_MIN
                 u = R.U[i, j]
-                if d[i, j] > br["half"] + 1.0:
-                    continue                                # another bridge's cell, or no bridge's
                 if u >= 0:
                     sd = None
                     for (dx, dz), dd in zip(N4, (1, 0, 3, 2)):
@@ -517,7 +444,6 @@ def flowers(w):
 def make():
     w = World(P.X_MIN, P.Z_MIN, P.NX, P.NZ, sy=72)
     columns(w)
-    cliffs(w)
     caves(w)
     chapel(w)
     houses(w)
