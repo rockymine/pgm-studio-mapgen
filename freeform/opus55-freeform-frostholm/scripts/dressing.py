@@ -152,10 +152,10 @@ def build(w, F):
                                 ("northwood", ["pine", "spruce", "tiny-spruce"], [0.45, 0.35, 0.2])):
         (cx, cz), r = places[key]["at"], places[key]["r"]
         zone = np.hypot(F.X - cx, F.Z - cz) + 3 * wd < r + 4
-        n += wood(w, F, zone, kinds, weights, 0.75, 3000, hash(key) % 100)
+        n += wood(w, F, zone, kinds, weights, 0.75, 3000, sum(map(ord, key)))
     # copses on the middle island and round the hall, where the ground is sheltered: a field, not a scatter
-    copse = (wd > 0.6) & ((F.X + F.Z) > -60) & ((F.X + F.Z) < -10)
-    n += wood(w, F, copse, ["spruce", "tiny-spruce"], [0.6, 0.4], 0.85, 2000, 5)
+    copse = (wd > 0.32) & ((F.X + F.Z) > -60) & ((F.X + F.Z) < -10)
+    n += wood(w, F, copse, ["spruce", "pine", "tiny-spruce"], [0.45, 0.25, 0.3], 0.8, 5000, 5)
     behind = (np.hypot(F.X - P.SPAWN[0], F.Z - P.SPAWN[1]) < 26) & ((F.X + F.Z) < -135)
     n += wood(w, F, behind, ["pine", "spruce"], [0.5, 0.5], 0.85, 800, 6)
     print(f"  planted {n} trees")

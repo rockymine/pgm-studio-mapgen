@@ -3,8 +3,8 @@ placed? A step climbs one block, drops at most three, swims through water, climb
 
     python3 walk.py <build-dir>
 
-Prints the walks from each spawn to each monument, the rift crossing, and whether the cave's three ways up
-and the mine join the board — the numbers the report quotes.
+Prints the walks from each spawn to each core and monument and to the places between, once swimming and once
+dry (the bridge, the ice and the islets only) — the numbers the report quotes.
 """
 import sys
 from collections import deque
@@ -90,26 +90,24 @@ def main(build):
     x0, z0, ids, dat = render_iso.load(build)
     passable, water, ladder, solid = grid(ids)
     st = standable(passable, water, solid) | (ladder & passable)
-    spawns = {"red": (-101, 76, 6), "blue": (100, 76, -7)}
-    cores = {"red core": (-74, 47, -24), "blue core": (73, 47, 23)}
-    places = {"shaft head": (-78, 74, -27), "Bench Adit mouth": (-47, 57, -34), "Chimney mouth": (-30, 41, -14),
-              "Sky Arch crown": (-1, 76, 0), "Gilt Spring": (-9, 41, -2), "Mule Trail top": (-54, 74, -80),
-              "bench by the tipple": (-28, 57, 26), "South Drift": (-44, 57, 80), "Wash head": (-100, 74, 52),
-              "water tower walk": (-24, 53, -14), "High Butte": (-124, 94, 0), "Table Rock": (-80, 86, 86),
-              "Olive Grove": (-88, 74, -58), "Rancho": (-100, 84, 74)}
+    # a dry walk: no swimming, so the straits are crossed only by the bridge, the ice and Tingholm's ford
+    dry_st = standable(passable, np.zeros_like(water), solid) | (ladder & passable)
+    spawns = {"red": (-60, 57, -64), "blue": (59, 57, 63)}
+    goals = {"red core (the Beacon's lantern)": (-17, 75, -67), "blue core": (16, 75, 66),
+             "red monument (Holmstein)": (-58, 60, -20), "blue monument": (57, 60, 19)}
+    places = {"the Old Bridge": (-38, 50, -26), "the whaler's deck": (-25, 51, -42), "Skarvik green": (-16, 54, -14),
+              "Tingholm": (0, 55, 0), "Kraakodde": (38, 53, -60), "Sealers' Point": (-60, 55, 38)}
     out = []
-    for team, s in spawns.items():
-        dist = bfs(st, ladder, water, [s], x0, z0)
-        out.append(f"from {team} spawn {s}: {int((dist >= 0).sum())} standable cells reached")
-        for name, m in cores.items():
-            out.append(f"  to {name}: {nearest(dist, x0, z0, *m, r=4)}")
-        if team == "red":
-            for name, p in places.items():
-                out.append(f"  to {name}: {nearest(dist, x0, z0, *p, r=4)}")
-    for name, s in (("Bench Adit mouth", places["Bench Adit mouth"]), ("Chimney mouth", places["Chimney mouth"]),
-                    ("shaft head", places["shaft head"])):
-        dist = bfs(st, ladder, water, [s, (s[0], s[1] + 1, s[2]), (s[0] + 1, s[1], s[2])], x0, z0)
-        out.append(f"from the {name} to the red core: {nearest(dist, x0, z0, *cores['red core'], r=4)}")
+    for label, grid_st, wet in (("swimming allowed", st, water), ("dry: no swimming", dry_st, np.zeros_like(water))):
+        out.append(f"== {label}")
+        for team, s in spawns.items():
+            dist = bfs(grid_st, ladder, wet, [s], x0, z0)
+            out.append(f"from {team} spawn {s}: {int((dist >= 0).sum())} standable cells reached")
+            for name, m in goals.items():
+                out.append(f"  to {name}: {nearest(dist, x0, z0, *m, r=4)}")
+            if team == "red":
+                for name, p in places.items():
+                    out.append(f"  to {name}: {nearest(dist, x0, z0, *p, r=4)}")
     print("\n".join(out))
     return out
 

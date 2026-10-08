@@ -102,6 +102,12 @@ def build(F):
     h = np.where(dk < 2.2, lake_level + 8, h)       # the knoll's flat crown where the monument floats
 
     # --- level ground for the hall, the village, the Beacon ------------------------------------------
+    # the Beacon's headland is rock all the way under the tower: the strait gives way round it
+    db = np.hypot(X - P.BEACON[0], Z - P.BEACON[1])
+    head = db < 8.5
+    water &= ~head
+    ice &= ~head
+    h = np.where(head, np.maximum(h, P.WATER_Y + 4), h)
     for (fx, fz, r) in ((P.SPAWN[0], P.SPAWN[1], 10), (P.BEACON[0], P.BEACON[1], 7), (-16, -14, 12)):
         d = np.hypot(X - fx, Z - fz)
         level = float(np.median(h[(d < r) & ~water]))
@@ -111,11 +117,22 @@ def build(F):
     # the board: the band along the diagonal, a ragged cut; the square's edges are the board's too
     cut = F.sym(P.BAND + 4 * fbm(sh, 14, 2, seed=10))
     inside = np.abs(X - Z) < cut
+    # the sea round the outside: every landmass is an island, falling to a shore of gravel before the edge.
+    # The crags in the corner stand straight out of it as sea cliffs; everywhere else the land slopes down.
+    coast = np.minimum((cut - np.abs(X - Z)) / np.sqrt(2),
+                       np.minimum(np.minimum(X - P.X_MIN, P.X_MAX - X), np.minimum(Z - P.Z_MIN, P.Z_MAX - Z)))
+    sea_w = 5 + 2.5 * fbm(sh, 9, 2, seed=11)
+    cw = np.clip(np.exp(-(dc / 13.0) ** 2) * 1.6, 0, 1)
+    k = smoothstep(sea_w, sea_w + 10, coast) * (1 - cw) + smoothstep(sea_w, sea_w + 2.5, coast) * cw
+    h = np.where(water, h, P.WATER_Y + 1 + (h - P.WATER_Y - 1) * k)
+    sea = coast < sea_w
+    water |= sea
+    ice |= sea & (fbm(sh, 5, 2, seed=12) > 0.45)           # floes drifting along the shore
 
     H = np.round(h).astype(int)
     H = F.sym(H)
     water = F.sym(water); ice = F.sym(ice); lake = F.sym(lake); islet = F.sym(islet)
-    seabed = P.WATER_Y - 3 - 4 * np.clip(1 - np.abs(st["midsund"][0]) / 6, 0, 1) \
+    seabed = P.WATER_Y - 3 - 4 * np.clip(1 - coast / 6, 0, 1) - 4 * np.clip(1 - np.abs(st["midsund"][0]) / 6, 0, 1) \
         - 3 * np.clip(1 - np.abs(st["ravnsund"][0]) / 6, 0, 1) + small
     seabed = F.sym(np.round(seabed).astype(int))
     H = np.where(water, seabed, H)
@@ -176,7 +193,7 @@ def write(w, F):
                 cd[top - 3:top] = 0
                 ci[top], cd[top] = B.GRASS, 0
                 # snow on the ground, deeper in the drifts; podzol where the wind has scoured it bare
-                if patch[ix, iz] > -0.55:
+                if patch[ix, iz] > -0.72:
                     ci[top + 1], cd[top + 1] = B.SNOW_LAYER, 0 if drift[ix, iz] < 0.25 else 1
                 else:
                     ci[top], cd[top] = B.DIRT, 2

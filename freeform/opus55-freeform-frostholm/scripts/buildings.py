@@ -24,7 +24,7 @@ def H(F, x, z):
 def claim(F, name, box):
     a0, b0, a1, b1 = box
     for other, (c0, d0, c1, d1) in F.things:
-        if a0 <= c1 and c0 <= a1 and b0 <= d1 and d0 <= b1:
+        if other != name and a0 <= c1 and c0 <= a1 and b0 <= d1 and d0 <= b1:
             F.conflicts.append((name, other, box))
     F.things.append((name, box))
 
@@ -290,18 +290,29 @@ def beacon(w, F):
                 if ang > 6:
                     w.set(x, top + 1, z, B.STONEBRICK, 0)
                     w.set(x, top + 2, z, B.SLAB, 5)
-    # the spiral stair, one step a block round the inside wall, landing under the lantern floor
+    # the spiral stair round the inside wall: the ring's cells in order of angle, a corner cell let in wherever
+    # two would only touch diagonally, so every step is a plain step a player walks up; it rises a block per
+    # step and turns on a landing at each corner
+    ring = sorted({(x, z) for x in range(cx - 4, cx + 5) for z in range(cz - 4, cz + 5)
+                   if 2.0 < np.hypot(x - cx, z - cz) <= 3.0}, key=lambda p: np.arctan2(p[1] - cz, p[0] - cx))
+    path = []
+    for p in ring:
+        if path and abs(p[0] - path[-1][0]) + abs(p[1] - path[-1][1]) == 2:
+            path.append((p[0], path[-1][1], True))
+        path.append((p[0], p[1], False))
     steps = []
-    angle = 0.0
-    y = g + 1
-    while y < top:
-        a = np.radians(angle)
-        x = cx + int(round(2.6 * np.cos(a))); z = cz + int(round(2.6 * np.sin(a)))
-        if (x, z) != (cx, cz) and (not steps or (x, z) != steps[-1][:2]):
-            w.set(x, y, z, B.STONEBRICK, 0)
-            steps.append((x, z, y))
+    y = g
+    i = 0
+    while y < top - 1:
+        x, z, corner = path[i % len(path)]
+        if not corner:
             y += 1
-        angle += 26
+        w.set(x, y, z, B.STONEBRICK, 0)
+        for k in (1, 2, 3):                     # headroom over every step
+            if y + k < top:
+                w.set(x, y + k, z, B.AIR)
+        steps.append((x, z, y))
+        i += 1
     # the hatch from the stair's head into the lantern: one open block in the floor
     hx, hz, hy = steps[-1]
     w.set(hx, top, hz, B.AIR)
@@ -335,6 +346,11 @@ def beacon(w, F):
                 inner = (x, z, y) == (cx, cz, c0 + 1)
                 w.set(x, y, z, B.LAVA if inner else B.OBSIDIAN)
     w.set(cx, top, cz, B.AIR)                     # the well's mouth, under the core
+    # the hatch comes up inside the glass: open the panes over it and beside it into a doorway
+    for x, z in ((hx, hz), (hx + 1, hz), (hx - 1, hz), (hx, hz + 1), (hx, hz - 1)):
+        for y in (top + 1, top + 2, top + 3):
+            if w.id(x, y, z) == B.PANE:
+                w.set(x, y, z, B.AIR)
     # the door at the foot, facing the headland path
     for y in (g + 1, g + 2):
         w.set(cx - 4, y, cz, B.AIR); w.set(cx - 3, y, cz, B.AIR)
@@ -415,11 +431,12 @@ def whaler(w, F):
     """A three-masted whaler frozen into Ravnsund's ice, lying along the strait (on the diagonal, not on the
     grid): a dark oak hull, a spruce deck under snow, three masts with furled sails, the stern cabin."""
     cx, cz = dict((p["key"], p) for p in P.PLACES)["whaler"]["at"]
-    L = 22
+    L = 18
     keel, deck = P.WATER_Y - 4, P.WATER_Y + 3
-    ends = [(cx + a * 1 / np.sqrt(2), cz - a * 1 / np.sqrt(2)) for a in (-L / 2 - 1, L / 2 + 5)]
-    claim(F, "the whaler", (int(min(e[0] for e in ends)) - 3, int(min(e[1] for e in ends)) - 3,
-                            int(max(e[0] for e in ends)) + 3, int(max(e[1] for e in ends)) + 3))
+    # the hull lies on the diagonal, so it claims a string of small boxes along its keel, not one big one
+    for a in np.arange(-L / 2 - 1, L / 2 + 5.1, 3.0):
+        px, pz = cx + a / np.sqrt(2), cz - a / np.sqrt(2)
+        claim(F, "the whaler", (int(np.floor(px)) - 4, int(np.floor(pz)) - 4, int(np.ceil(px)) + 4, int(np.ceil(pz)) + 4))
     ax, az = 1 / np.sqrt(2), -1 / np.sqrt(2)          # along the strait
     bx, bz = 1 / np.sqrt(2), 1 / np.sqrt(2)           # across it
 
@@ -455,7 +472,7 @@ def whaler(w, F):
             if half + 0.5 < abs(b) < half + 2.2 and w.id(x, P.WATER_Y, z) in (B.ICE, B.WATER) and RNG.random() < 0.5:
                 w.set(x, P.WATER_Y + 1, z, B.PACKED_ICE)
     # masts with yards across the hull and the sails furled on them
-    for (a, ht) in ((-6, 15), (0, 19), (6, 13)):
+    for (a, ht) in ((-5, 14), (0, 18), (5, 12)):
         mx, mz = int(round(cx + a * ax)), int(round(cz + a * az))
         for y in range(deck + 1, deck + ht):
             w.set(mx, y, mz, B.LOG, 1)
@@ -470,7 +487,7 @@ def whaler(w, F):
         a = L / 2 + k * 0.9
         w.set(int(round(cx + a * ax)), deck + 1 + k // 2, int(round(cz + a * az)), B.SPRUCE_FENCE)
     # the stern cabin: a little planked box on the after deck, a chest inside
-    sx, sz = int(round(cx - 8 * ax)), int(round(cz - 8 * az))
+    sx, sz = int(round(cx - 6.5 * ax)), int(round(cz - 6.5 * az))
     for dx in (-1, 0, 1):
         for dz in (-1, 0, 1):
             for k in (1, 2):
@@ -540,6 +557,31 @@ def pier(w, F, x, z, length, dx, dz):
                     if w.id(XX, yy, ZZ) in (B.WATER, B.ICE, B.AIR):
                         w.set(XX, yy, ZZ, B.LOG, 1)
     claim(F, "pier", (min(x, x + dx * length) - 1, min(z, z + dz * length) - 1, max(x, x + dx * length) + 1, max(z, z + dz * length) + 1))
+
+
+def landing_stage(w, F, x, z0, z1):
+    """Skarvik's landing stage over the lead onto Tingholm: planks on log piles along z, from the village shore
+    to the islet's rock, its deck sloping from one bank's height to the other's a block at a time."""
+    y0, y1 = H(F, x, z0), H(F, x, z1)
+    n = z1 - z0
+    for i, z in enumerate(range(z0, z1 + 1)):
+        y = int(round(y0 + (y1 - y0) * i / n))
+        for s in (-1, 0, 1):
+            X = x + s
+            if H(F, X, z) > y and not F.water[X - F.x0, z - F.z0]:
+                continue
+            w.set(X, y, z, *((B.PLANKS, 1) if s == 0 or i % 2 else (B.WOOD_SLAB, 9)))
+            for k in (1, 2):
+                if w.id(X, y + k, z) not in (B.AIR,):
+                    w.set(X, y + k, z, B.AIR)
+            if s != 0 and i % 3 == 1:
+                for yy in range(P.WATER_Y - 4, y):
+                    if w.id(X, yy, z) in (B.WATER, B.ICE, B.AIR):
+                        w.set(X, yy, z, B.LOG, 1)
+        for X in (x - 2, x + 2):
+            if F.water[X - F.x0, z - F.z0]:
+                w.set(X, y + 1, z, B.SPRUCE_FENCE)
+    claim(F, "landing stage", (x - 2, z0, x + 2, z1 - 1))
 
 
 def tingholm(w, F):
@@ -642,11 +684,16 @@ def build(w, F):
     boathouse(w, F, vx + 8, vz + 1, vx + 13, vz + 7, "e")
     x0, z0, x1, z1 = free_spot(F, vx - 4, vz + 16, 10, 4, margin=1)
     racks(w, F, x0, z0, 3, True)
-    pier(w, F, vx + 8, vz + 10, 9, 1, 1) if False else pier(w, F, vx + 12, vz + 9, 7, 1, 0)
+    landing_stage(w, F, 0, -13, -5)
     tingholm(w, F)
-    watchtower(w, F, *dict((p["key"], p) for p in P.PLACES)["kraak"]["at"])
+    # the points: each takes the nearest ground level enough to stand on, back from the shore
+    kx, kz = dict((p["key"], p) for p in P.PLACES)["kraak"]["at"]
+    x0, z0, x1, z1 = free_spot(F, kx, kz, 9, 9, relief=4)
+    watchtower(w, F, (x0 + x1) // 2, (z0 + z1) // 2)
     sx2, sz2 = dict((p["key"], p) for p in P.PLACES)["sealers"]["at"]
-    longhouse(w, F, sx2 - 3, sz2 - 2, sx2 + 3, sz2 + 3, along_x=True, kind="hut", doors=("e",), height=3)
-    racks(w, F, sx2 - 4, sz2 + 6, 2, True)
+    x0, z0, x1, z1 = free_spot(F, sx2, sz2, 7, 6, relief=3)
+    longhouse(w, F, x0, z0, x1, z1, along_x=True, kind="hut", doors=("e",), height=3)
+    x0, z0, x1, z1 = free_spot(F, sx2 - 1, sz2 + 8, 7, 4, relief=3, margin=1)
+    racks(w, F, x0, z0 + 1, 2, True)
     paths(w, F)
     F.records = RECORDS

@@ -1,0 +1,73 @@
+<map proto="1.5.0">
+    <name>Frostholm</name>
+    <version>0.1.0</version>
+    <gamemode>dtm</gamemode>
+    <gamemode>dtc</gamemode>
+    <objective>Leak the core burning in the enemy's lighthouse lantern, and break the monument on their lake knoll.</objective>
+    <authors>
+        <author>Claude (freeform generator)</author>
+    </authors>
+    <contributors>
+        <contributor contribution="Built the pine and spruce trees (tree showcase)">rockymine</contributor>
+    </contributors>
+    <teams>
+        <team id="red-team" color="red" max="16">Red</team>
+        <team id="blue-team" color="blue" max="16">Blue</team>
+    </teams>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="wool" amount="32" team-color="true"/>
+            <item slot="6" material="golden apple" amount="1"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <spawns>
+        <default yaw="90" region="observer-spawn"/>
+        <spawn team="red-team" kit="spawn-kit" yaw="270" region="red-spawn-point"/>
+        <spawn team="blue-team" kit="spawn-kit" yaw="90" region="blue-spawn-point"/>
+    </spawns>
+    <cores>
+        <core id="red-core" name="The Beacon" team="red-team" leak="5" region="red-core-region"/>
+        <core id="blue-core" name="The Beacon" team="blue-team" leak="5" region="blue-core-region"/>
+    </cores>
+    <destroyables>
+        <destroyable id="red-holmstein" name="Holmstein" owner="red-team" materials="obsidian" region="red-monument"/>
+        <destroyable id="blue-holmstein" name="Holmstein" owner="blue-team" materials="obsidian" region="blue-monument"/>
+    </destroyables>
+    <filters>
+        <team id="only-red">red-team</team>
+        <team id="only-blue">blue-team</team>
+    </filters>
+    <regions>
+        <point id="red-spawn-point">-59.5,57,-63.5</point>
+        <point id="blue-spawn-point">59.5,57,63.5</point>
+        <point id="observer-spawn">0.5,80,0.5</point>
+        <rectangle id="red-spawn" min="-76,-69" max="-51,-58"/>
+        <rectangle id="blue-spawn" min="51,58" max="76,69"/>
+        <cuboid id="red-core-region" min="-18,75,-68" max="-15,78,-65"/>
+        <cuboid id="blue-core-region" min="15,75,65" max="18,78,68"/>
+        <cuboid id="red-monument" min="-58,62,-20" max="-57,64,-19"/>
+        <cuboid id="blue-monument" min="57,62,19" max="58,64,20"/>
+        <union id="spawns">
+            <region id="red-spawn"/>
+            <region id="blue-spawn"/>
+        </union>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply block="never" region="spawns" message="You may not edit the spawn!"/>
+    </regions>
+    <maxbuildheight>96</maxbuildheight>
+</map>

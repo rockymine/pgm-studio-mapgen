@@ -12,7 +12,7 @@ import math
 
 X_MIN, X_MAX = -90, 89
 Z_MIN, Z_MAX = -90, 89
-BAND = 112                 # the board is |x - z| < BAND: the corners off the diagonal are cut away
+BAND = 116                 # the board is |x - z| < BAND: the corners off the diagonal are cut away
 WATER_Y = 47               # the straits' surface; their ice is at this height too
 LAND_Y = 50                # the lowland
 
@@ -23,7 +23,7 @@ def rot(x, z):
 
 # ---- the straits: x + z = c + wander(u), half-width w; frozen where u is in `ice` ----------------------
 STRAITS = [
-    dict(key="ravnsund", name="Ravnsund", c=-66, w=5.5, ice=[(-30, -6), (12, 32)], end=-46),
+    dict(key="ravnsund", name="Ravnsund", c=-66, w=5.5, ice=[(-40, -15), (3, 40)], end=-52),
     dict(key="midsund", name="Midsund", c=-1, w=4.5, ice=[(-78, -46), (46, 78)]),
 ]
 
@@ -37,7 +37,7 @@ def wander(u, key):
 
 # ---- objectives ---------------------------------------------------------------------------------------
 SPAWN = (-64, -64)
-BEACON = (-14, -64)        # the lighthouse on Ravnsodde, the headland over Ravnsund; the core in its lantern
+BEACON = (-17, -67)        # the lighthouse on Ravnsodde, the headland over Ravnsund; the core in its lantern
 MONUMENT = (-58, -20)      # on Holmstein, the rock knoll on Kaldvatn's shore
 LAKE = (-70, -26)
 
@@ -46,7 +46,7 @@ PLACES = [
          what="Red's spawn: a long hall of dark timber on a stone plinth, the crags at its back",
          why="spawn; its doors look out over the island", how="its two doors"),
     dict(key="crags", name="Ulvefjell", at=(-80, -80), r=10,
-         what="crags in the corner, snow on their ledges", why="frames the spawn; a lookout", how="a goat path"),
+         what="sea crags in the corner, snow on their ledges", why="the back wall of the spawn", how="not climbed without blocks"),
     dict(key="beacon", name="The Beacon", at=BEACON, r=6,
          what="a stone lighthouse on the headland over Ravnsund; the core burns in its lantern",
          why="RED CORE", how="the headland path; its stair; the strait below"),
@@ -60,9 +60,9 @@ PLACES = [
          what="pine and spruce between the hall and the lake", why="cover from the hall to the monument", how="the lake path"),
     dict(key="northwood", name="Nordskog", at=(-40, -78), r=10,
          what="pine on the north shore toward the headland", why="cover on the way to the Beacon", how="the headland path"),
-    dict(key="bridge", name="The Old Bridge", at=(-31, -35), r=5,
+    dict(key="bridge", name="The Old Bridge", at=(-40, -26), r=5,
          what="a timber trestle bridge over Ravnsund", why="the one dry crossing between home and the middle", how="the bridge road"),
-    dict(key="whaler", name="The Whaler", at=(-18, -48), r=7,
+    dict(key="whaler", name="The Whaler", at=(-25, -42), r=7,
          what="a three-master frozen into Ravnsund's ice", why="cover and height on the strait", how="over the ice"),
     dict(key="village", name="Skarvik", at=(-16, -14), r=13,
          what="a fishing village on the middle island: boathouses on Midsund, drying racks, a stave church, the smithy, longhouses",
@@ -78,7 +78,7 @@ PLACES = [
 ROUTES = [
     dict(name="Headland Path", kind="path", pts=[(-56, -66), (-44, -72), (-30, -72), (-18, -66)]),
     dict(name="Lake Path", kind="path", pts=[(-66, -56), (-76, -44), (-72, -34), (-62, -24)]),
-    dict(name="Bridge Road", kind="road", pts=[(-58, -58), (-48, -48), (-42, -38), (-22, -36), (-18, -26), (-16, -20)]),
+    dict(name="Bridge Road", kind="road", pts=[(-58, -58), (-50, -46), (-48, -28), (-30, -25), (-22, -22), (-16, -18)]),
     dict(name="Point Path NE", kind="path", pts=[(-12, -24), (4, -38), (22, -50), (34, -58)]),
     dict(name="Point Path SW", kind="path", pts=[(-24, -12), (-38, 4), (-50, 22), (-58, 34)]),
 ]

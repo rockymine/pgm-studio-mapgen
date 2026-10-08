@@ -82,3 +82,52 @@ down the tower's face, and that fall is the leak.
 ## As first drawn
 
 The table and sketch above are the plan as written before building.
+
+## How the plan changed
+
+**The first build was a frozen sea, and the author turned it down.** It was built as drawn: two crescents
+round bays of sea ice, the islands small in a lot of white. The author's verdict was that it was too much ice
+and not enough land, that the monument sat on a cylindrical island, and that the board should be set in the
+winter, not in Antarctica. That version's plan and terrain are kept as `scripts/plan_v1_frozen_sea.py` and
+`scripts/terrain_v1_frozen_sea.py`; the sketch above is still that first drawing.
+
+**The second plan is land first.** Rolling snowfields cover most of the board, with rock outcrops standing out
+of them, sea crags in the home corner and a lake in a hollow. Two narrow straits a side cut the land across
+the line between the spawns: Ravnsund off each home island and Midsund, the lead between the teams, through the
+middle. Each strait is frozen in stretches and open in others, so ice is a crossing, not the ground.
+
+**The corners off the diagonal are cut away, as the author suggested mid-build.** The board is the band
+`|x − z| < 116`, with a ragged edge, so the play runs corner to corner and nothing is wasted in the two empty
+corners. A strip of sea runs round the whole outside, so every landmass is an island with a gravel shore
+and the board does not read as a slab.
+
+**The monument moved off its islet onto a knoll on the lake's shore.** Holmstein is now a rock knoll on
+Kaldvatn's east shore, reached up its sides from the lake ice, the wood or the road. Kaldvatn itself is a small
+frozen lake in a hollow, no longer held high behind a frozen fall.
+
+**The village moved from the bay to the middle island, and the Beacon from a sea stack to a headland.**
+Skarvik stands on the middle island over Midsund, with a landing stage onto Tingholm. The Beacon stands on
+Ravnsodde, the headland over Ravnsund, on rock all the way under the tower after the first placement left its
+east wall hanging over the strait.
+
+**The Old Bridge moved south-west so the whaler fits between it and the Beacon.** On the diagonal, the whaler's
+hull claims a string of small boxes along its keel rather than one bounding box. Even so, the stretch of
+Ravnsund between the bridge and the Beacon was too short for it until the bridge moved twelve blocks along the
+strait and the frozen stretches were moved to match.
+
+### The places as built (red; blue's are the half-turn)
+
+| Place | Where (x, z) | What it is |
+|---|---|---|
+| Jarlshall | −64, −64 | Red's spawn: a long dark-timber hall, doors east and west, banners at the east door |
+| Ulvefjell | −80, −80 | Sea crags in the corner, behind the hall |
+| The Beacon | −17, −67 | The lighthouse on Ravnsodde; **red core** in its lantern at y 75–77 |
+| Kaldvatn | −70, −26 | A frozen lake in a hollow, two ice-fishing huts on it |
+| Holmstein | −58, −20 | A rock knoll on the lake's shore, standing stones round its foot; **red monument** at y 62–63 |
+| Granskog, Nordskog | −80, −44; −40, −78 | Pine and spruce woods: to the lake, and to the Beacon |
+| The Old Bridge | −48…−29, −26 | A timber trestle over Ravnsund's open water |
+| The Whaler | −25, −42 | A three-master frozen into Ravnsund's ice |
+| Skarvik | −16, −14 | Stave church, longhouses, smithy, boathouse, drying racks, the landing stage |
+| Tingholm | 0, 0 | The rock islet in Midsund, a ring of standing stones and a cairn, shared by both teams |
+| Kraakodde | 38, −60 | The middle island's north-east point, a ruined watchtower |
+| Sealers' Point | −60, 38 | The middle island's south-west point, a sealers' hut and racks |
