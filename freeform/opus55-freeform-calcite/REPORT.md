@@ -16,8 +16,8 @@ stair the checker climbed is a quartz stair in the world, facing the way the ras
 the glass tunnels under the lava, the spawn tunnels inside the quarry wall, the spawn roofs and banners, the
 slime pads, the hills' wool rings and the derricks. Each is built for red and turned for blue.
 
-**Each ground has its own floor tone.** The Ledge is andesite and stone, the Bench diorite, the side hills'
-forecourts polished diorite with quartz, in cells of three. A player knows their level by what is under their
+**Each ground has its own floor tone.** The Ledge is andesite and stone, the Bench diorite, the floors at a side hill
+polished diorite with quartz, in cells of three. A player knows their level by what is under their
 feet. The cut faces run in courses of diorite and polished diorite, with a darker course of stone and a drill
 line of andesite every fourth column.
 
