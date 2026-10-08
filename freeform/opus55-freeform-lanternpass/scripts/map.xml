@@ -1,0 +1,65 @@
+<map proto="1.5.0">
+<name>Lantern Pass</name>
+<version>1.0.0</version>
+<objective>Runners: reach the temple and hold the bell for two seconds. Shooters: stop every runner before the clock runs out.</objective>
+<gamemode>arcade</gamemode>
+<gamemode>blitz</gamemode>
+<rules><rule>Fall damage is off. Runners have one life.</rule><rule>Shooters: step on the yellow row to cross to the other walkway.</rule></rules>
+<time result="shooters">5m</time>
+<teams>
+    <team id="runners" color="light purple" max="25" max-overfill="30" plural="true">Runners</team>
+    <team id="shooters" color="dark blue" max="4" plural="true">Shooters</team>
+</teams>
+<kits>
+    <kit id="fed"><saturation>20</saturation><foodlevel>20</foodlevel></kit>
+    <kit id="runner-kit" parents="fed">
+        <clear/>
+        <helmet color="E07AAE" material="leather helmet"/><chestplate color="E07AAE" material="leather chestplate"/>
+        <leggings color="E07AAE" material="leather leggings"/><boots color="FFFFFF" material="leather boots"/>
+        <effect duration="oo">speed</effect>
+    </kit>
+    <kit id="shooter-kit" parents="fed">
+        <clear/>
+        <helmet color="1D2A5C" material="leather helmet"/><chestplate color="1D2A5C" material="leather chestplate"/>
+        <leggings color="1D2A5C" material="leather leggings"/><boots color="111111" material="leather boots"/>
+        <item slot="0" unbreakable="true" enchantment="ARROW_DAMAGE:3;ARROW_KNOCKBACK:1;ARROW_INFINITE" material="bow"/>
+        <item slot="28" material="arrow"/>
+        <effect duration="oo" amplifier="1">speed</effect>
+    </kit>
+    <kit id="heal"><health>20</health></kit>
+</kits>
+<spawns>
+    <default><region yaw="0"><point>0.5,70,-20.5</point></region></default>
+    <spawn team="runners" kit="runner-kit"><region yaw="0"><cuboid min="-8,21,-8" max="8,21,3"/></region></spawn>
+    <spawn team="shooters" kit="shooter-kit"><region yaw="0"><union><cuboid min="-30,31,-8" max="-26,31,-4"/><cuboid min="26,31,-8" max="30,31,-4"/></union></region></spawn>
+</spawns>
+<filters>
+    <team id="only-runners">runners</team>
+    <after id="warmup-over" duration="10s"><match-started/></after>
+</filters>
+<blitz filter="only-runners"><lives>1</lives><broadcastLives>true</broadcastLives></blitz>
+<control-points>
+    <control-point id="the-bell" name="The Bell" capture-time="2s" capture-filter="only-runners" capture="bell" progress="bell" captured="bell"/>
+</control-points>
+<regions>
+    <cuboid id="bell" min="-3,51,357" max="3,54,364"/>
+    <cuboid id="shrine" min="-5,33,218" max="5,36,225"/>
+    <cuboid id="boathouse" min="-9,20,-9" max="9,28,4"/>
+    <cuboid id="gate-warmup" min="-3,21,4" max="3,25,5"/>
+    <cuboid id="swap-left" min="-31,0,-10" max="-30,oo,373"/>
+    <cuboid id="swap-right" min="30,0,-10" max="31,oo,373"/>
+    <apply block="never" use="never"/>
+    <apply region="shrine" kit="heal"/>
+    <apply region="boathouse" enter="never" message="You may not go back into the boathouse!"/>
+</regions>
+<actions>
+    <trigger scope="match" filter="warmup-over"><action><fill region="gate-warmup" material="air"/></action></trigger>
+</actions>
+<portals>
+    <portal x="58" y="0" z="0" region="swap-left"/>
+    <portal x="-58" y="0" z="0" region="swap-right"/>
+</portals>
+<disabledamage><damage>fall</damage></disabledamage>
+<hunger><depletion>off</depletion></hunger>
+<itemremove><item>arrow</item><item>bow</item><item>leather helmet</item><item>leather chestplate</item><item>leather leggings</item><item>leather boots</item></itemremove>
+</map>

@@ -151,6 +151,7 @@ def build():
         R.rect(x0, x1, z0, z1, 20, "plank")
     R.rect(lx0, lx1, 5, 6, 20, "plank")                       # the landing outside the boathouse
     R.rect(lx0, lx1, 53, 60, 20, "stone")                     # the quay
+    R.rect(lx1, lx1, 5, 60, 20, "stone")                      # the harbour wall on the east, holding the water
     for x0, x1, z0, z1 in CABINS:
         R.solid(x0, x1, z0, z1, 3, "house")
     for x0, x1, z0, z1, t in HARBOUR_COVER:
@@ -169,9 +170,10 @@ def build():
     for z0, z1, h in TERRACES:
         R.rect(lx0, lx1, z0, z1, h, "paddy")
         R.H[ix(lx0):ix(lx1) + 1, iz(z0):iz(z1) + 1] = h - 1     # a paddy's floor is a block under its bund
+        R.T[ix(lx0):ix(lx1) + 1, iz(z0):iz(z1) + 1] = h - 1
         for x in range(lx0, lx1 + 1):
             for z in range(z0, z1 + 1):
-                if (x - lx0) % 5 == 0 or (z - z0) % 5 == 0 or z == z1:
+                if (x - lx0) % 5 == 0 or (z - z0) % 5 == 0 or z == z1 or x == lx1:
                     R.rect(x, x, z, z, h, "bund")
         if z0 > 116:
             n = (z0 - 116) // 10
