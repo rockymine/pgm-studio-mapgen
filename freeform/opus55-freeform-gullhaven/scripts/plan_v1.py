@@ -7,17 +7,15 @@ and nothing a player can hide inside. The houses are closed; nobody walks into t
 
 The island, north at the top:
 
-    the Headland   the north-west: a grass plateau at 38 to 41, rolling and falling toward its edges, with
-                   cliffs on three sides,, a lighthouse and a
+    the Headland   the north-west: a grass plateau at 40 with cliffs on three sides, a lighthouse and a
                    ruined chapel whose crypt drops into the caves
     the Ravine     a cleft between the Headland and the town, its floor at 24 with a stream; a bridge across
     the Town       the north-east: three terraces at 36, 32 and 28, streets and stairs between closed houses
     the Harbour    the south-east: a quay at 22 round a basin open to the sea, piers, sheds, boats, crates
-    the Downs      the south-west: grass rising from 24 at the shore to 31 under the Headland, rolling, a
-                   ring of standing stones, a mill, a sinkhole
+    the Downs      the south-west: rolling grass at 26 to 30, a ring of standing stones, a mill, a sinkhole
     the Cove       the west: a beach at 19 to 21 under the Downs' edge, with the sea cave's mouth
     the Caves      under the Headland and the Downs: a grotto at 21 and four ways into it
-    the Skerry     a rocky islet off the Downs' south shore, 23 at its rim to 26 at its crown, reached by a bridge over the sea
+    the Skerry     a rocky islet off the Downs' south shore at 25, reached by a bridge over the sea
 
 The plan is a height raster with a kind for every column, an upper raster for the bridge, and lists of what
 a raster cannot hold: the caves, the ramps, the houses and the cover. The checker walks it, the sketch draws
@@ -83,25 +81,18 @@ def build():
     n2 = fbm((NX, NZ), 9, 2, seed=12)
     land = signed_distance(XS, ZS, ISLAND) + 2.2 * n2 < 0
     # the Downs: everything on the island not otherwise claimed, rolling between 26 and 30
-    # the Downs: rising from about 24 at the shore to about 31 under the Headland, rolling a block or two
-    from scipy import ndimage
-    d_sea = ndimage.distance_transform_edt(land)
-    d_head = signed_distance(XS, ZS, HEADLAND)
-    rise = 4.5 * np.clip(d_sea / 14.0, 0, 1) + 2.5 * (1 - np.clip(d_head / 30.0, 0, 1))
-    downs = np.rint(24 + rise + 1.4 * n1 + 0.6 * n2).astype(int)
+    downs = np.rint(28 + 2.2 * n1).astype(int)
     R.set(land, downs, "grass")
     # the Skerry: a rocky islet off the Downs' south shore, at 24 to 26
     sk = signed_distance(XS, ZS, SKERRY) + 1.2 * n2 < 0
-    d_sk = -signed_distance(XS, ZS, SKERRY)
-    R.set(sk, np.rint(23 + 3.0 * np.clip(d_sk / 5.0, 0, 1) + 1.2 * n1).astype(int), "grass")
+    R.set(sk, np.rint(25 + 1.0 * n1).astype(int), "grass")
     land = land | sk
     # the Cove: a beach rising from the sea to the Downs' foot
     cove = inside(XS, ZS, COVE) & land
     R.set(cove, np.clip(19 + (XS + 56) // 5, 19, 21).astype(int), "beach")
     # the Headland: a plateau at 40, cliffs on every side
     head = inside(XS, ZS, HEADLAND) & land
-    d_edge = -d_head
-    R.set(head, np.rint(38 + 2.2 * np.clip(d_edge / 6.0, 0, 1) + 1.3 * n1 + 0.6 * n2).astype(int), "grass")
+    R.set(head, np.rint(40 + 0.8 * n2).astype(int), "grass")
     # the Town's terraces
     for h, poly in TOWN:
         R.set(inside(XS, ZS, poly) & land, h, "street")
@@ -114,21 +105,19 @@ def build():
         R.set(m, 22, "pier")
     # the Ravine: a floor at 24 seven wide, a stream down its middle, rising at its south end to the Downs
     d, along = polyline(XS, ZS, RAVINE)
-    floor = np.where(ZS > -24, np.minimum(24 + (ZS + 24) // 2, R.H), 24)
+    floor = np.where(ZS > -24, np.minimum(24 + (ZS + 24) // 2, 30), 24)
     rv = (d < 3.6) & (land | (ZS < -46))
     R.set(rv, floor, "ravine")
     R.set(rv & (d < 0.9) & (ZS < -22), 23, "stream")
     for ramp in RAMPS:
         lay_ramp(R, ramp)
-    R.ramp_heights = {r["key"]: (r["_h0"], r["_h1"]) for r in RAMPS}
     R.set(~land & ~rv & (R.K != KINDS["beach"]), SEA, "sea")
     # the bridges: over the Ravine from the Headland's lip to the upper terrace, and over the sea from the
     # Downs' south shore to the Skerry; each deck slopes no more than one in three
     for br in BRIDGES:
         d, along = polyline(XS, ZS, br["pts"])
         L = sum(math.dist(a, b) for a, b in zip(br["pts"], br["pts"][1:]))
-        h0, h1 = end_height(R, br["pts"], br["h0"], True), end_height(R, br["pts"], br["h1"], False)
-        deck = np.rint(h0 + (h1 - h0) * along / L).astype(int)
+        deck = np.rint(br["h0"] + (br["h1"] - br["h0"]) * along / L).astype(int)
         m = (d <= br["half"]) & np.isin(R.K, [KINDS[k] for k in br["over"]])
         R.U[m] = deck[m]
     R.G = R.H.copy()                                           # the ground, before anything stands on it
@@ -157,41 +146,28 @@ def build():
 
 # ---- ramps: a polyline, its half-width, and the heights at its two ends. Slope at most one in one. -------
 RAMPS = [
-    dict(key="headland-path", pts=[(-38, -15), (-31, -9), (-24, -3)], half=1.5, h0=None, h1=None),
+    dict(key="headland-path", pts=[(-38, -15), (-31, -9), (-24, -3)], half=1.5, h0=40, h1=28),
     dict(key="town-stair-1", pts=[(14, -30), (14, -24)], half=1.5, h0=36, h1=32),
     dict(key="town-stair-2", pts=[(22, -14), (22, -8)], half=1.5, h0=32, h1=28),
     dict(key="town-stair-3", pts=[(-1, -14), (-1, -9)], half=1.0, h0=32, h1=28),
     dict(key="quay-road", pts=[(30, 6), (30, 14)], half=2.0, h0=28, h1=22),
     dict(key="quay-steps", pts=[(9, 6), (9, 12)], half=1.0, h0=28, h1=22),
-    dict(key="cove-path", pts=[(-43, 8), (-34, 9)], half=1.5, h0=21, h1=None),
-    dict(key="downs-quay", pts=[(8, 30), (1, 30)], half=1.5, h0=22, h1=None),
+    dict(key="cove-path", pts=[(-43, 8), (-34, 9)], half=1.5, h0=21, h1=28),
+    dict(key="downs-quay", pts=[(8, 30), (1, 30)], half=1.5, h0=22, h1=28),
 ]
-
-
-def end_height(R, pts, h, at_start):
-    """A ramp's or bridge's end height: as written, or, where None, the ground's just past that end."""
-    if h is not None:
-        return h
-    (ax, az), (bx, bz) = (pts[0], pts[1]) if at_start else (pts[-1], pts[-2])
-    L = math.dist((ax, az), (bx, bz))
-    x, z = int(round(ax + (ax - bx) / L * 2)), int(round(az + (az - bz) / L * 2))
-    return int(R.H[ix(x), iz(z)])
 
 
 def lay_ramp(R, ramp):
     d, along = polyline(XS, ZS, ramp["pts"])
     L = sum(math.dist(a, b) for a, b in zip(ramp["pts"], ramp["pts"][1:]))
-    h0, h1 = end_height(R, ramp["pts"], ramp["h0"], True), end_height(R, ramp["pts"], ramp["h1"], False)
-    assert abs(h1 - h0) <= L, (ramp["key"], h0, h1, L)
-    ramp["_h0"], ramp["_h1"] = h0, h1
-    h = np.rint(h0 + (h1 - h0) * np.clip(along / L, 0, 1)).astype(int)
+    h = np.rint(ramp["h0"] + (ramp["h1"] - ramp["h0"]) * np.clip(along / L, 0, 1)).astype(int)
     m = d <= ramp["half"]
     R.H[m] = h[m]
     R.K[m] = KINDS["ramp"]
 
 
 BRIDGES = [dict(key="ravine-bridge", pts=[(-14, -34), (-2, -33)], half=1.0, h0=40, h1=36, over=("ravine", "stream")),
-           dict(key="skerry-bridge", pts=[(-13, 43), (-15, 52)], half=1.0, h0=None, h1=None, over=("sea",))]
+           dict(key="skerry-bridge", pts=[(-13, 43), (-15, 52)], half=1.0, h0=28, h1=25, over=("sea",))]
 
 # ---- the caves: (x, z, floor) polylines three wide and three high, and the grotto they meet in -----------
 GROTTO = dict(box=(-38, -30, -28, -20), floor=21, ceil=27)

@@ -28,13 +28,13 @@ minutes. Gullhaven is the same size for up to sixteen players.
 
 | Place | Height | What it is, and what it is for |
 |---|---|---|
-| **The Headland** | 40 | a grass plateau in the north-west with cliffs on three sides, the lighthouse, a ruined chapel and a dry-stone wall across it. The high ground: it sees far, and is seen from far |
+| **The Headland** | 38 to 41 | a grass plateau, rolling and falling toward its edges, in the north-west with cliffs on three sides, the lighthouse, a ruined chapel and a dry-stone wall across it. The high ground: it sees far, and is seen from far |
 | **The Ravine** | 23 to 24 | a cleft seven wide between the Headland and the town, a stream down its floor, rising at its south end to the Downs. A sheltered lane, crossed overhead by a bridge |
 | **The Town** | 36, 32, 28 | three terraces on the north-east, fourteen closed houses in rows with streets and a lane between, stairs between the terraces. Short sightlines and corners |
 | **The Harbour** | 22 | a quay round a basin open to the sea, two piers, a fish shed and a net loft, crates, two boats |
-| **The Downs** | 26 to 30 | rolling grass on the south-west, hedgerows with gaps, a copse, a ring of standing stones, the mill. The open ground, broken up |
+| **The Downs** | 22 to 31 | grass on the south-west rising from the shore toward the Headland's foot, rolling, with hedgerows with gaps, a copse, a ring of standing stones, the mill. The open ground, broken up |
 | **The Cove** | 19 to 21 | a beach on the west under the Downs' edge, with driftwood and the sea cave's mouth |
-| **The Skerry** | 24 to 26 | a rocky islet off the Downs' south shore, reached by a bridge over the sea. Two spawns, rocks and two spruces |
+| **The Skerry** | 23 to 26 | a rocky islet off the Downs' south shore, reached by a bridge over the sea. Two spawns, rocks and two spruces |
 | **The Caves** | 21 | a grotto under the Headland and four ways into it: the sea cave from the Cove, a sinkhole on the Downs, a door from the Ravine's floor, and a ladder down from the chapel's crypt |
 
 **Nothing is enterable.** Every house, the lighthouse and the mill are closed, with doors that do not open. The
@@ -104,4 +104,5 @@ ground's price and its reward: a player there sees the whole island and is seen 
 |---|---|---|
 | first | an islet with a bridge to it, so players spawn there too; otherwise build | the Skerry off the Downs' south shore with two spawns, and a bridge to it over the sea; built |
 | building | the harbourmaster's house stood a step below the lower terrace, and its roof could be walked onto | taken out; crates in its place |
+| the built world, again | the grass flat; it may follow the ground, four blocks or so from the shore up to the high ground | the Downs rising from about 24 at the shore to 31 under the Headland with a roll of a block or two; the Headland's top rolling between 38 and 41 and falling toward its edges; the Skerry crowned; every ramp and bridge taking its end heights from the ground |
 | building | the Cove was a strip three blocks wide, and its path and the sea cave both started inland of it | the Cove widened to its polygon; the path and the sea cave start on the sand |

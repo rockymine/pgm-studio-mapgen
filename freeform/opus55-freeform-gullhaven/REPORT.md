@@ -41,13 +41,13 @@ house is gone, and the walk now reaches no roof.
 
 | Place | Height | In the world |
 |---|---|---|
-| the Headland | 40 | grass and ferns, spruces along its southern lip, a dry-stone wall, rocks, the lighthouse, the chapel's ruin with the crypt's ladder |
+| the Headland | 38 to 41 | grass and ferns on ground that rolls and falls toward the cliffs, spruces along its southern lip, a dry-stone wall, rocks, the lighthouse, the chapel's ruin with the crypt's ladder |
 | the Ravine | 23 to 24 | gravel and coarse dirt, a stream, the bridge overhead, the cave door in its west wall |
 | the Town | 36, 32, 28 | streets of stone brick, cobble and gravel; crates and hay; stairs between the terraces |
 | the Harbour | 22 | a quay edged in spruce, two piers, crates, two moored boats |
-| the Downs | 26 to 30 | grass, flowers, hedgerows, a copse of oaks, the ring of standing stones, the mill, the sinkhole |
+| the Downs | 22 to 31 | grass rising from the shore toward the Headland, flowers, hedgerows, a copse of oaks, the ring of standing stones, the mill, the sinkhole |
 | the Cove | 19 to 21 | a sand beach with driftwood, the path up to the Downs, the sea cave's mouth |
-| the Skerry | 24 to 26 | a rocky islet with two spruces and a bridge to the Downs |
+| the Skerry | 23 to 26 | a rocky islet with two spruces and a bridge to the Downs |
 | the Caves | 21 | the grotto with a pool and glowstone in its roof, four tunnels lit along their walls |
 
 ## What the built world measures
