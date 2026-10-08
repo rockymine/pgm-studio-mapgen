@@ -149,7 +149,7 @@ def fmt(v):
 # the ways forward on each leg: (name, approach, via point (x, z, layer) or a connector's name)
 WAYS = {
     "A": [("Main Street", "through", (8, 45, 0)), ("the back alley", "through", (-6, 45, 0)),
-          ("the slag heap", "above", (34, 36, 0))],
+          ("the slag heap", "above", (40, 36, 0))],
     "B": [("the trestle", "through", (16, -12, 1)), ("the riverbed", "below", "the north ladder"),
           ("the footbridge", "around", (-25, -12, 1))],
     "C": [("the shelf", "through", (0, -38, 0)), ("the gantry", "above", "the gantry"),
@@ -158,9 +158,9 @@ WAYS = {
 
 # the places that look down on each leg's track: (name, (x, z, layer))
 VANTAGE = {
-    "A": [("the slag heap's top", (34, 36, 0)), ("the station platforms", (-17, 20, 0))],
+    "A": [("the slag heap's top", (40, 36, 0)), ("the station platforms", (-17, 20, 0))],
     "B": [("the north bank over the trestle", (24, -24, 0)), ("the trestle's far end", (16, -19, 1))],
-    "C": [("the mine yard over the shelf", (0, -42, 0)), ("the gantry's foot in the yard", (4, -51, 0))],
+    "C": [("the mine yard over the shelf", (0, -42, 0)), ("the gantry's foot in the yard", (4, -56, 0))],
 }
 
 

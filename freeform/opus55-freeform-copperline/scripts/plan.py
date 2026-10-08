@@ -153,7 +153,8 @@ COVER = [  # x0, x1, z0, z1, height over the ground: wagons, coal stacks, crates
     (-6, -4, -53, -52, 2), (-30, -27, -50, -48, 3), (0, 2, -55, -54, 2), (20, 24, -54, -52, 2),
     (-26, -25, -44, -43, 2), (-2, 0, -42, -41, 1),
 ]
-HEAP = dict(c=(34, 36), r=13, top=8)                                       # the slag heap, east of the town
+HEAP = dict(c=(42, 36), r=13, top=8, box=(25, 50, 22, 53))               # the slag heap: a tip fanned out from
+#                                                                           the old upper adit, its back on the mountain
 TRESTLE = dict(x0=12, x1=20, z0=-20, z1=-4, h=26)                          # the track's bridge, the track on x 16
 FOOTBRIDGE = dict(x0=-26, x1=-25, z0=-20, z1=-4, h=26)                     # a plank bridge, the west crossing
 WATER_TOWER = (-12, -28)
@@ -169,9 +170,9 @@ BUILDINGS = {  # spawn rooms and halls: x0, x1, z0, z1, floor, doors (x0, x1, z0
 # what a raster cannot hold: (name, approach, a, b, length) between two cells, each way
 CONNECTORS = [
     ("the north ladder", "below", (2, -20), (2, -22), 22),               # up the gorge's north cliff, 16 rungs
-    ("the gantry", "above", (4, -27), (4, -51), 50),                       # a stair tower to 42, the gantry over
+    ("the gantry", "above", (4, -28), (4, -56), 50),                       # a stair tower to 42, the gantry over
     #                                                                         the shelf, the headframe's stair down
-    ("the adit", "below", (-16, -30), (-30, -66), 42),                      # an old drift under the mine yard,
+    ("the adit", "below", (-16, -36), (-30, -62), 44),                      # an old drift under the mine yard,
     #                                                                         into the mine hall's west end
 ]
 # spawns by stage: (x, y, z, yaw)
@@ -186,7 +187,7 @@ RADIUS = 3.5
 
 
 def heap_h(x, z):
-    d = ((x - HEAP["c"][0]) ** 2 + (z - HEAP["c"][1]) ** 2) ** 0.5
+    d = (min(0, x - HEAP["c"][0]) ** 2 + (z - HEAP["c"][1]) ** 2) ** 0.5    # full height east of the apex
     return 26 + int(min(HEAP["top"], max(0, round(HEAP["r"] - d))))
 
 
@@ -197,15 +198,16 @@ def build():
     R.rect(-24, 40, 54, 54, 25, "yard")                                     # one step up into the town
     R.rect(-36, 24, 8, 53, 26, "street")
     R.rect(25, 44, 8, 21, 26, "street")                                    # the office's yard
-    for x in range(HEAP["c"][0] - HEAP["r"], HEAP["c"][0] + HEAP["r"] + 1):
-        for z in range(HEAP["c"][1] - HEAP["r"], HEAP["c"][1] + HEAP["r"] + 1):
-            if heap_h(x, z) > 26 or (x > 24 and ((x - 34) ** 2 + (z - 36) ** 2) <= 14 ** 2):
+    x0, x1, z0, z1 = HEAP["box"]
+    for x in range(x0 - 6, x1 + 1):
+        for z in range(z0, z1 + 1):
+            if x >= x0 or heap_h(x, z) > 26:
                 R.rect(x, x, z, z, heap_h(x, z), "heap")
     R.rect(-18, -16, 12, 29, 27, "platform")                               # the station's two platforms
     R.rect(-8, -6, 12, 29, 27, "platform")
     # ---- leg B: the brow, the gorge and its crossings, the north bank -----------------------------------------
     R.rect(-48, 44, -3, 7, 26, "ground")
-    R.rect(X_MIN, X_MAX, -20, -4, 12, "river")
+    R.rect(-50, 51, -20, -4, 12, "river")
     R.flight_x(range(-17, -3), -5, -4, 25, -1, "-x")                       # down the south wall to the river
     for b in (TRESTLE, FOOTBRIDGE):
         R.U[ix(b["x0"]):ix(b["x1"]) + 1, iz(b["z0"]):iz(b["z1"]) + 1] = b["h"]

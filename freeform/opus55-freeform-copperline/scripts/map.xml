@@ -1,0 +1,94 @@
+<map proto="1.5.0">
+<name>Copperline</name>
+<version>1.0.0</version>
+<objective>Attackers push the ore cart up the line to the mine in three legs; defenders stop it until the clock runs out.</objective>
+<gamemode>payload</gamemode>
+<!-- needs experiments.payload: true in the PGM config -->
+<time result="defenders">12m</time>
+<teams>
+    <team id="attackers" color="dark red" max="12">Attackers</team>
+    <team id="defenders" color="blue" max="12">Defenders</team>
+</teams>
+<broadcasts>
+    <alert after="2s" filter="attackers">Push the ore cart up the line to the mine. The shed opens in 20s.</alert>
+    <alert after="2s" filter="defenders">Stop the ore cart before it reaches the mine. Stand by it to hold it still.</alert>
+</broadcasts>
+<kits>
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" material="golden apple"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings"/>
+        <boots unbreakable="true" material="iron boots"/>
+        <effect duration="3s" amplifier="255">resistance</effect>
+        <game-mode>adventure</game-mode>
+    </kit>
+    <kit id="attacker-kit" parent="spawn-kit"><item slot="8" amount="20" material="arrow"/></kit>
+    <kit id="defender-kit" parent="spawn-kit"><item slot="8" amount="16" material="arrow"/></kit>
+</kits>
+<spawns>
+    <default><region yaw="180"><point>0.5,70,20.5</point></region></default>
+    <spawns team="attackers" kit="attacker-kit">
+        <spawn filter="first-leg"><region yaw="90"><cuboid min="20,25,60" max="33,26,63"/></region></spawn>
+        <spawn filter="second-leg"><region yaw="-90"><cuboid min="-30,27,16" max="-23,28,25"/></region></spawn>
+        <spawn filter="third-leg"><region yaw="90"><cuboid min="24,29,-32" max="31,30,-27"/></region></spawn>
+    </spawns>
+    <spawns team="defenders" kit="defender-kit">
+        <spawn filter="first-leg"><region yaw="90"><cuboid min="30,27,2" max="39,28,11"/></region></spawn>
+        <spawn filter="second-leg"><region yaw="90"><cuboid min="38,29,-32" max="47,30,-25"/></region></spawn>
+        <spawn filter="third-leg"><region yaw="0"><cuboid min="-2,37,-69" max="7,38,-60"/></region></spawn>
+    </spawns>
+</spawns>
+<filters>
+    <after id="warmup-over" duration="20s"><match-started/></after>
+    <not id="first-leg"><completed>checkpoint-a</completed></not>
+    <all id="second-leg"><completed id="a-done">checkpoint-a</completed><not><completed>checkpoint-b</completed></not></all>
+    <all id="third-leg"><completed>checkpoint-a</completed><completed id="b-done">checkpoint-b</completed></all>
+</filters>
+<actions>
+    <message id="a-message" text="`6The cart is at the station. `fSpawns move up the line."/>
+    <message id="b-message" text="`6The cart is over the gorge. `fSpawns move up the line."/>
+    <trigger filter="a-done" trigger="a-message" scope="match"/>
+    <trigger filter="b-done" trigger="b-message" scope="match"/>
+    <trigger scope="match" filter="warmup-over"><action><fill region="gate-warmup" material="air"/></action></trigger>
+    <trigger scope="match" filter="a-done"><action><fill region="gate-a" material="air"/></action></trigger>
+    <trigger scope="match" filter="b-done"><action><fill region="gate-b" material="air"/></action></trigger>
+</actions>
+<payloads permanent="true" radius="3.5" capture-filter="attackers" capture-time="60s" decay-rate="0.1" recovery-rate="0.5" contested-rate="0" time-multiplier="0.1">
+    <payload id="checkpoint-a" name="Main Street" location="8,25,66" display-filter="first-leg"/>
+    <payload id="checkpoint-b" name="the Gorge" location="-12,27,12" player-filter="a-done" display-filter="second-leg"/>
+    <payload id="checkpoint-c" name="the Mine Head" location="16,29,-26" player-filter="b-done" display-filter="third-leg"/>
+</payloads>
+<regions>
+    <union id="gate-warmup">
+        <cuboid min="18,25,61" max="19,29,66"/>
+    </union>
+    <union id="gate-a">
+        <cuboid min="-22,27,18" max="-21,31,23"/>
+    </union>
+    <union id="gate-b">
+        <cuboid min="22,29,-32" max="23,33,-27"/>
+    </union>
+    <union id="attackers-rooms">
+        <cuboid min="18,0,58" max="35,oo,69"/>
+        <cuboid min="-32,0,14" max="-21,oo,27"/>
+        <cuboid min="22,0,-34" max="33,oo,-25"/>
+    </union>
+    <union id="defenders-rooms">
+        <cuboid min="28,0,0" max="41,oo,13"/>
+        <cuboid min="36,0,-34" max="49,oo,-23"/>
+        <cuboid min="-4,0,-71" max="9,oo,-58"/>
+    </union>
+    <apply block="never" use="never"/>
+    <apply enter="attackers" region="defenders-rooms" message="You may not enter the defenders' spawn!"/>
+    <apply enter="defenders" region="attackers-rooms" message="You may not enter the attackers' spawn!"/>
+</regions>
+<itemremove><item>leather helmet</item><item>leather chestplate</item><item>chainmail leggings</item><item>iron boots</item></itemremove>
+<itemkeep><item>stone sword</item><item>bow</item></itemkeep>
+<kill-rewards><kill-reward><item amount="4" material="arrow"/></kill-reward></kill-rewards>
+<respawns><respawn delay="5s" filter="attackers"/><respawn delay="7s" filter="defenders"/></respawns>
+<hunger><depletion>off</depletion></hunger>
+</map>
