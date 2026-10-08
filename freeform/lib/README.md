@@ -18,7 +18,7 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `plan` | `Raster`, the plan as every column's floor and kind, with `Symmetry` drawn in the plan; `rect`, `poly`, `where`, `flight` |
 | `plangraph` | the walk over a plan: `graph`, `jumps`, `dijkstra`, `route`, `path`, `arrivals` per team, `pad_edges` |
 | `sight` | `line_clear`, `visibility`, `hidden`, with an opaque test for a plan or a built world |
-| `sketch` | the plan drawn before building: the board from above, routes and jumps over it, true-scale sections, the checker's numbers |
+| `sketch` | the annotated sheet: map panels (a plan raster or a built top-down) with heights, places, markers, routes, jumps, zones and callouts; true-scale and unrolled sections; the checker's numbers against their targets |
 | `terrain` | `mountain_ring`, `slope_deg`, `lay` (ground painted by slope, rock bands, snow line), `underside`, `cloud_deck` |
 | `walk` | the voxel walk over built blocks with `MoveRules`; `no_stand_above`, `catchers`, `unreached`, `nearest`, `gap_cleared` |
 | `audit` | `footing`: blocks that would fall, or have nothing to hang on |
@@ -61,6 +61,29 @@ applies symmetry in the plan, so the checker measures both halves.
 block, so the plot check's out-of-sight counts run a little higher than Curio's own kit, which sampled at half a
 block and let more lines slip between block corners.
 
+## The sketch is a reviewed drawing, not the plan
+
+**A board has three drawings of itself, and the library keeps them apart.** The plan is data: the raster and its
+pieces, with `PLAN.md` saying why. The sketch is the plan drawn and annotated before anything is built, with the
+checker's numbers on the same sheet, and it is what the author reviews. The annotated top-down is the same
+annotation drawn over the built world afterwards, to show the board landed where the plan put it.
+
+**The annotations are what make a sketch readable, so they are the library's, not each board's.** Every panel's
+title carries its legend. Floor heights are written on each piece, places are named with a halo, objectives and
+spawns are team-coloured discs, and routes end in arrows. Between pieces only the shortest jump is drawn, with
+its gap. A detail too small to write on gets a callout with a leader line.
+
+**Symmetry is drawn as well as computed.** Given the plan's `Symmetry`, the image half is washed paler, and
+anything drawn with `both=True` appears in both halves, a red marker turning blue in the image.
+
+**A section is true scale, and it can follow a route.** `SectionPanel.raster` cuts along x or z, `along` unrolls
+the plan under any polyline such as a team's walk, and `level` draws the kill height or a water line across it.
+`Sheet.row` sets sections side by side as 2a and 2b. `TablePanel` lists each measurement with its target and
+marks a miss in red, so the review sees it first.
+
+**`examples/islets/` draws both.** `scripts/sketch.py` writes `renders/00-plan-sketch.png`, and `renders.py`
+writes `05-topdown-annotated.png`, where the plan's island outline is ghosted over the built blocks.
+
 ## Starting a board
 
 **`examples/islets/` is a whole board written against the library.** It has a plan raster with its half turn, a
@@ -87,7 +110,8 @@ cd freeform/lib && python3 -m unittest discover -s tests -v
 
 **The tests check what each module promises.** They cover the studio-exported table, turns and their round trips,
 the physics numbers the boards measured, the headroom fix, ladders, footing, plan symmetry and fair arrivals,
-sight, slope without wrapping, save and load, rendering, map.xml, and a Curio plot passing the plot check.
+sight, slope without wrapping, save and load, rendering, a sketch sheet with every kind of panel, map.xml, and a
+Curio plot passing the plot check.
 
 ## What it does not do yet
 

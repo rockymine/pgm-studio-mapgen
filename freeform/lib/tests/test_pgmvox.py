@@ -16,6 +16,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 from pgmvox import B, World, audit, blocks, move, orient, plangraph, plot, render, sight, terrain, walk  # noqa: E402
 from pgmvox.mapxml import Doc, E, duration, point  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
+from pgmvox.sketch import TEAM, SectionPanel, Sheet  # noqa: E402
 
 CURIO = os.path.join(HERE, "..", "..", "opus55-freeform-curio", "plots")
 
@@ -168,6 +169,31 @@ class Plan(unittest.TestCase):
         op = sight.plan_opaque(R)
         self.assertFalse(sight.line_clear(sight.eye(-15, 11, 0), sight.target(15, 11, 0), op))
         self.assertTrue(sight.line_clear(sight.eye(-2, 13, 0), sight.target(15, 11, 0), op))
+
+
+class Sketch(unittest.TestCase):
+    def test_a_sheet_with_every_panel(self):
+        R = Plan.raster(None)
+        J = plangraph.jumps(R, {"floor", "stair"})
+        S = Sheet("t")
+        m = S.map(R.x_min, R.z_min, R.x_max, R.z_max, scale=4, title="BOARD", legend="a legend")
+        m.raster(R, {"floor": (150, 175, 110), "stair": (170, 160, 130), "wall": (90, 90, 90)})
+        m.heights(R)
+        m.jumps(J, R=R)
+        m.marker(-15, 0, "S", TEAM["red"], both=True)
+        m.route([(-15, 0), (-6, 0), (0, 0)], TEAM["red"], both=True)
+        m.callout(0, 0, "the middle")
+        m.zone([(-6, -5), (0, -5), (0, 0), (-6, 0)], both=True)
+        a = SectionPanel(R.x_min, R.x_max, 0, 20, scale=3, title="ACROSS")
+        a.raster(R, "x", 0)
+        a.level(6, "kill")
+        b = SectionPanel(0, 20, 0, 20, scale=3, title="ALONG")
+        b.along(R, [(-15.5, 0.5), (4.5, 0.5)])
+        S.row(a, b)
+        S.table([("1", "a number", "at most 2", True), ("3", "another", "at most 2", False), "a note"])
+        with tempfile.TemporaryDirectory() as d:
+            p = S.save(os.path.join(d, "s.png"))
+            self.assertTrue(os.path.getsize(p) > 0)
 
 
 class Terrain(unittest.TestCase):
