@@ -1,0 +1,89 @@
+<map proto="1.5.0">
+    <name>Tamarisk Wash</name>
+    <version>0.1.0</version>
+    <objective>Destroy both of the enemy's monuments: the Obelisk on Table Rock and the Sunstone in the Souk.</objective>
+    <gamemode>dtm</gamemode>
+    <authors>
+        <author>Claude (freeform generator, on pgmvox)</author>
+    </authors>
+    <teams>
+        <team id="red-team" color="red" max="16">Red</team>
+        <team id="blue-team" color="blue" max="16">Blue</team>
+    </teams>
+    <filters>
+        <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
+        <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
+        <not id="not-void">
+            <void/>
+        </not>
+    </filters>
+    <spawns>
+        <spawn team="red-team" kit="spawn-kit" yaw="270">
+            <region>
+                <point>-86.5,67,-3.5</point>
+            </region>
+        </spawn>
+        <spawn team="blue-team" kit="spawn-kit" yaw="90">
+            <region>
+                <point>86.5,67,-3.5</point>
+            </region>
+        </spawn>
+        <default yaw="90">
+            <region>
+                <point>0.5,100,0.5</point>
+            </region>
+        </default>
+    </spawns>
+    <regions>
+        <cuboid min="-99,0,-16" max="-79,128,7" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="79,0,-16" max="99,128,7" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-58,74,-28" max="-57,77,-27" id="red-obelisk-region"/>
+        <cuboid min="57,74,-28" max="58,77,-27" id="blue-obelisk-region"/>
+        <cuboid min="-63,65,21" max="-62,67,22" id="red-sunstone-region"/>
+        <cuboid min="62,65,21" max="63,67,22" id="blue-sunstone-region"/>
+        <below y="6" id="the-fall"/>
+        <apply kit="fall-kill" region="the-fall"/>
+        <apply block-place="not-void" message="You may not build in the void!"/>
+    </regions>
+    <destroyables>
+        <destroyable id="red-obelisk" name="Red Obelisk" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-obelisk-region"/>
+        <destroyable id="blue-obelisk" name="Blue Obelisk" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-obelisk-region"/>
+        <destroyable id="red-sunstone" name="Red Sunstone" owner="red-team" materials="lapis block" completion="100%" mode-changes="true" region="red-sunstone-region"/>
+        <destroyable id="blue-sunstone" name="Blue Sunstone" owner="blue-team" materials="lapis block" completion="100%" mode-changes="true" region="blue-sunstone-region"/>
+    </destroyables>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64" damage="4"/>
+            <item slot="5" material="stained clay" amount="32" team-color="true"/>
+            <item slot="6" material="golden apple" amount="4"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+        <kit id="fall-kill" force="true">
+            <effect duration="1" amplifier="5">instant damage</effect>
+        </kit>
+    </kits>
+    <maxbuildheight>104</maxbuildheight>
+</map>
+
