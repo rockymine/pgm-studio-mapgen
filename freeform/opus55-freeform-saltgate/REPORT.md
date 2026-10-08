@@ -26,6 +26,32 @@ it, and `gen.py` builds each column to that height, its paving or masonry by kin
 the citadel's portcullis and the keep's two doors. `gen.GATE_REGIONS` lists their boxes, and `map.xml` fills
 those same boxes with air when the stage falls.
 
+## The detail pass
+
+**The review asked for ships shaped like ships and for more on the ground; this is what was added.**
+
+- **The ships** lie broadside to the beach, bow to the east, and each is its own shape. The deck is a hull's outline,
+  rounded at the bow and full at the stern, and every course below it is a little shorter and narrower down to a
+  keel of logs, so the sides curve in under the water. A spruce band runs along the waterline, and the bulwark and
+  rail rise at the ends. Each has a stern cabin with windows and a railed roof, a bowsprit, and red sails striped
+  in white under a yard; the flagship has two masts. The plan's decks are the same outline, so the walk stands on
+  what is built.
+- **The beach** has palms of my own: a jungle-wood trunk that leans as it rises, and a crown of two crosses of
+  leaves laid one over the other, the second turned an eighth, each frond level and then drooping toward its
+  tip. The landing stage is fenced along its seaward edge, with a lantern on a post either side of each
+  gangplank.
+- **The town's streets** have crates, logs and hay stacked against the houses' walls here and there, never on a
+  stair, by a gate or near a spawn.
+- **The keep** has a chiseled course at 42 and under the battlements, and dark glass windows two high on the
+  upper storey, each with a sill. Arrow slits run along the lower storey, and a stone canopy stands over the door.
+- **The flags** are blue wool on fence poles: a large one over the keep, four on the citadel wall and one on each
+  of the sea wall's towers.
+- **Smoke** rises from about a third of the chimneys. It is white glass, two by two where it leaves the chimney,
+  swelling into a long balloon as it drifts east and a little north, each plume bending its own way.
+
+**The walks did not move.** The stage-by-stage walk over the built blocks gives the same numbers within a block
+or two, and still finds no stage that can be skipped.
+
 ## The match in `map.xml`
 
 | Stage | Goal | When it is done |
@@ -53,7 +79,7 @@ foot:
 
 | Stage | Attackers | Defenders |
 |---|---|---|
-| A: to the Sea Gate | 36 from the flagship | 21 from the town square |
+| A: to the Sea Gate | 34 from the flagship | 21 from the town square |
 | B: to the west store | 43 from the yard | 37 from the top terrace |
 | B: to the east store | 58 from the yard | 26 from the top terrace |
 | C: to the banner | 44 from the top terrace | 36 from the courtyard |
@@ -80,7 +106,9 @@ stores fall the banner is not. In every case the walk finds no way, not a long o
   - the town;
   - the west powder store cut open;
   - the citadel;
-  - the treasury cut open.
+  - the treasury cut open;
+  - the flagship, the beach and its palms, and the keep.
+- `50`: an elevation of the town from the south, with its smoke.
 
 ## What I wanted, how hard it was, and what a studio feature would need
 
@@ -91,4 +119,5 @@ stores fall the banner is not. In every case the walk finds no way, not a long o
 | Proof that no stage can be skipped | Moderate: the walk run on a copy of the world with each stage's gates opened and the posterns shut to the attackers | A stage-by-stage walk in the studio's reads, from each team's spawn to each objective |
 | The defenders arriving first, every stage | Easy to read once the walk ran by stage; three spawns moved to get it | Arrival times by team and stage shown on the plan as it is drawn |
 | Three different ways into the first objective | Easy: a passage, two ladders, a culvert, side by side | Approach pieces — gate, ladder, culvert — that measure themselves against each other |
+| Ships, palms and smoke that read as themselves | Moderate: a hull drawn as an outline carried down to a keel, a palm as two turned crosses drooping, smoke as a swelling plume bent by a wind | Prop pieces with a shape rule — hull, palm, plume — rather than boxes |
 | Validation of an attack/defend map | Not attempted here; the XML follows PGM's source and Bardo's | Attack/defend in the studio's round-trip, the gates and stages read back against the world |

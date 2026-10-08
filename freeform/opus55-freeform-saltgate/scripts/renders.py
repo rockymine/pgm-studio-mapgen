@@ -43,4 +43,8 @@ render_iso.render(ids, dat, x0, z0, o("33-iso-stage-b-the-town.png"), 4, "sw", (
 render_iso.render(ids, dat, x0, z0, o("34-iso-west-powder-store-cut-at-31.png"), 9, "sw", (-26, -8, -10, 9), 0, 31)
 render_iso.render(ids, dat, x0, z0, o("35-iso-stage-c-the-citadel.png"), 4, "sw", (-48, 20, 47, 63), 0, 58)
 render_iso.render(ids, dat, x0, z0, o("36-iso-the-treasury-cut-at-40.png"), 8, "sw", (-14, 42, 13, 62), 0, 40)
+render_iso.render(ids, dat, x0, z0, o("37-iso-the-flagship.png"), 9, "se", (-16, -68, 16, -50), 14, 45)
+render_iso.render(ids, dat, x0, z0, o("38-iso-the-beach-and-its-palms.png"), 8, "nw", (-26, -48, -2, -32), 15, 40)
+render_iso.render(ids, dat, x0, z0, o("39-iso-the-keep.png"), 6, "sw", (-20, 38, 20, 63), 0, 64)
+render_iso.elevation(ids, dat, x0, z0, o("50-elev-the-town-and-its-smoke.png"), (-48, -20, 47, 22), 24, 64, "north", 6)
 print("renders written to", out)

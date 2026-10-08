@@ -76,11 +76,10 @@ class Raster:
 def build():
     R = Raster()
     # ---- the sea, the ships, the landing ------------------------------------------------------------------
-    for ship in SHIPS:
-        for x, z in ship_deck(ship):
-            R.rect(x, x, z, z, 24, "deck")
-        cx = ship["cx"]
-        R.rect(cx - 1, cx + 1, -56, -54, 24, "deck")                       # the gangplank's head
+    for x0, x1 in ((-30, -22), (-6, 5), (21, 29)):
+        R.rect(x0, x1, -66, -56, 24, "deck")
+        cx = (x0 + x1) // 2
+        R.rect(cx - 1, cx + 1, -55, -54, 24, "deck")                       # the gangplank's head
         R.flight_z([(z, cx - 1, cx + 1) for z in (-51, -52, -53)], 22, "-z")  # down to the landing
         R.gates(cx - 1, cx + 1, -55, -55, 24, "warmup")                     # shut until the attackers go
     R.rect(-36, 35, -50, -47, 21, "pier")                                   # the landing stage
@@ -89,8 +88,6 @@ def build():
     # passage under the gatehouse, a siege ladder either side of it up to the walk, and the culvert under it
     R.rect(-46, 45, -46, -40, 21, "beach")
     R.rect(-46, 45, -39, -32, 22, "beach")
-    for x, z in PALMS:
-        R.rect(x, x, z, z, int(R.H[ix(x), iz(z)]) + 7, "cover")
     R.rect(-46, 45, -31, -29, 28, "rampart")                                # the wall, its walk on top
     for x0, x1 in ((-30, -25), (24, 29), (-48, -43), (42, 47)):
         R.rect(x0, x1, -33, -27, 33, "tower")
@@ -137,36 +134,6 @@ def build():
     return R
 
 
-# the ships lie broadside to the beach, bow to the east: a deck shaped like a hull, rounded at the bow and full
-# at the stern; the gangplank leaves from amidships on the landward side
-SHIPS = [dict(key="west", cx=-26, zc=-61, length=16, beam=9, masts=(0,)),
-         dict(key="flagship", cx=-1, zc=-61, length=22, beam=9, masts=(-3, 4)),
-         dict(key="east", cx=25, zc=-61, length=16, beam=9, masts=(0,))]
-
-
-def half_width(ship, u):
-    """The deck's half-width a distance u along the ship from its middle, bow at +u."""
-    a = ship["length"] / 2.0
-    t = min(abs(u) / a, 1.0)
-    full = ship["beam"] / 2.0
-    return full * (1 - t ** 2) ** 0.5 if u > 0 else full * (1 - t ** 4) ** 0.5
-
-
-def ship_deck(ship):
-    out = []
-    a = ship["length"] / 2.0
-    for x in range(int(ship["cx"] - a) - 1, int(ship["cx"] + a) + 2):
-        u = x + 0.5 - (ship["cx"] + 0.5)
-        if abs(u) > a:
-            continue
-        hw = half_width(ship, u)
-        for z in range(ship["zc"] - 5, ship["zc"] + 6):
-            if abs(z - ship["zc"]) <= hw:
-                out.append((x, z))
-    return out
-
-
-PALMS = [(-40, -44), (-31, -38), (-17, -45), (-10, -36), (12, -40), (21, -44), (34, -40), (42, -36), (-45, -38)]
 HOUSES = [  # x0, x1, z0, z1: closed houses in the lower town, streets left between them
     (-40, -34, -18, -14), (-26, -6, -18, -14), (5, 24, -18, -14), (35, 43, -18, -14),
     (-26, -6, -12, -9), (5, 24, -12, -9),
@@ -191,7 +158,7 @@ WOOL = dict(at=(0, 35, 54), colour=10, monument=(0, 23, -23))
 CULVERT = dict(a=(-14, -36), b=(-14, -22), pts=[(-14, -36, 21), (-14, -31, 18), (-14, -26, 18), (-14, -22, 22)])
 # spawns by stage: (x, y, z, yaw)
 SPAWNS = {
-    "attackers": {"1": (-0.5, 25, -60.5, 0), "2": (0.5, 23, -27.5, 0), "3": (0.5, 31, 13.5, 0)},
+    "attackers": {"1": (0.5, 25, -61.5, 0), "2": (0.5, 23, -27.5, 0), "3": (0.5, 31, 13.5, 0)},
     "defenders": {"1": (0.5, 27, 0.5, 180), "2": (0.5, 31, 20.5, 180), "3": (-20.5, 35, 50.5, 180)},
 }
 TIME = "15m"

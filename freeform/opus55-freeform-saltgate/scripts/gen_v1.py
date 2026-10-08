@@ -120,147 +120,51 @@ def ground_under(x, z, k):
 
 
 def ships(w):
-    """Three ships lying broadside to the beach, bow to the east. The hull is the deck's outline carried down to a
-    keel: each course below the deck is a little shorter and narrower than the one above, so the sides curve in
-    under the water. Dark oak strakes with a band of spruce at the waterline; a bulwark round the deck with a rail
-    on it, rising at the bow and the stern; a stern cabin with windows and a railed roof; a bowsprit; a mast or
-    two with red sails and a pennant; the gangplank's head amidships on the landward side, fenced until the
-    warm-up ends."""
-    for ship in P.SHIPS:
-        cx, zc, a = ship["cx"], ship["zc"], ship["length"] / 2.0
-        deck = set(P.ship_deck(ship))
-        # the hull, course by course from the deck down to the keel
-        for y in range(P.SEA - 4, 25):
-            d = 24 - y
-            shrink_l = 1.0 - 0.18 * (d / 10.0) ** 2
-            shrink_w = 1.0 - 0.55 * (d / 10.0) ** 1.6
-            for x in range(int(cx - a) - 1, int(cx + a) + 2):
-                u = x + 0.5 - (cx + 0.5)
-                if abs(u) > a * shrink_l:
-                    continue
-                hw = P.half_width(ship, u / shrink_l) * shrink_w
-                for z in range(zc - 5, zc + 6):
-                    if abs(z - zc) <= hw:
-                        if y == 24:
-                            blk = SPRUCE if (x, z) in deck and abs(z - zc) < hw - 0.9 else DARK_OAK
-                        elif y in (P.SEA, P.SEA + 1):
-                            blk = SPRUCE
-                        elif y < P.SEA - 1 and abs(z - zc) < 0.6:
-                            blk = DARK_LOG                                  # the keel
-                        else:
-                            blk = DARK_OAK
-                        w.set(x, y, z, *blk)
-        # the bulwark: a course of planks and a rail round the deck's edge, higher at the ends
-        for x, z in deck:
-            edge = any((x + dx, z + dz) not in deck for dx, dz in N4)
-            if not edge:
-                continue
-            u = x + 0.5 - (cx + 0.5)
-            if abs(x - cx) <= 1 and z > zc:
-                continue                                            # the gangplank's opening
-            w.set(x, 25, z, *DARK_OAK)
-            w.set(x, 26, z, B.DARK_OAK_FENCE)
-            if abs(u) > 0.7 * a:
-                w.set(x, 26, z, *DARK_OAK)
-                w.set(x, 27, z, B.DARK_OAK_FENCE)
-        # the stern cabin, with windows, and its railed roof
-        for x, z in deck:
-            u = x + 0.5 - (cx + 0.5)
-            if u < -0.62 * a:
-                edge = any((x + dx, z + dz) not in deck or (x + dx + 0.5 - (cx + 0.5)) >= -0.62 * a for dx, dz in N4)
-                for y in range(25, 29):
-                    win = edge and y == 26 and (x + z) % 2 == 0
-                    w.set(x, y, z, *((B.PANE, 0) if win else DARK_OAK))
-                w.set(x, 29, z, *SPRUCE)
-                if edge:
-                    w.set(x, 30, z, B.DARK_OAK_FENCE)
-        # the bowsprit
-        bx = int(cx + a)
-        for k in range(0, 6):
-            w.set(bx + k, 26 + k // 2, zc, *DARK_LOG)
-        w.set(bx + 6, 29, zc, B.DARK_OAK_FENCE)
-        # the masts, the yards, the sails and the pennants
-        for mu in ship["masts"]:
-            mx = cx + mu
-            top = 40 if len(ship["masts"]) == 1 or mu > 0 else 37
-            for y in range(25, top):
-                w.set(mx, y, zc, *DARK_LOG)
-            for dz in range(-5, 6):
-                w.set(mx, top - 2, zc + dz, B.LOG2, 9)                # the yard, along z
-            for y in range(28, top - 2):
-                spread = 5 - max(0, (top - 3 - y) // 4)
-                for dz in range(-spread, spread + 1):
-                    stripe = (top - 3 - y) % 4 == 0
-                    w.set(mx + 1, y, zc + dz, B.WOOL, 0 if stripe else RED)
-            w.set(mx, top, zc, B.FENCE)
-            for k in range(1, 4):
-                w.set(mx - k, top, zc, B.WOOL, RED)
-        # the gangplank's head and its warm-up fence
-        gx = cx
-        for x in range(gx - 1, gx + 2):
-            for z in (-56, -55, -54):
-                for y in range(P.SEA - 1, 24):
+    """Three ships: hulls of dark oak from the water to a spruce deck at 24, raised ends, a mast with a red sail,
+    rails round the deck but at the gangplank."""
+    for x0, x1 in ((-30, -22), (-6, 5), (21, 29)):
+        z0, z1 = -66, -56
+        cx = (x0 + x1) / 2
+        for x in range(x0, x1 + 1):
+            for z in range(z0, z1 + 1):
+                edge = x in (x0, x1) or z in (z0, z1)
+                for y in range(P.SEA - 2, 24):
                     w.set(x, y, z, *DARK_OAK)
-                w.set(x, 24, z, *SPRUCE)
+                w.set(x, 24, z, *(DARK_OAK if edge else SPRUCE))
+                gang = abs(x - (x0 + x1) // 2) <= 1 and z == z1
+                if edge and not gang:
+                    w.set(x, 25, z, B.DARK_OAK_FENCE)
+        for x in range(x0, x1 + 1):                                  # the stern raised
+            for z in range(z0, z0 + 3):
+                w.set(x, 25, z, *DARK_OAK)
+                if z == z0 or x in (x0, x1):
+                    w.set(x, 26, z, B.DARK_OAK_FENCE)
+        mx, mz = int(cx), (z0 + z1) // 2
+        for y in range(25, 40):
+            w.set(mx, y, mz, *DARK_LOG)
+        for y in range(29, 38):
+            for dx in range(-4, 5):
+                if abs(dx) <= 4 - (y - 29) // 3:
+                    w.set(mx + dx, y, mz + 1, B.WOOL, RED)
+        for dx in range(-5, 6):
+            w.set(mx + dx, 38, mz + 1, B.LOG2, 5)                    # the yard, along x
+        w.set(mx, 40, mz, B.WOOL, RED)
+        gx = (x0 + x1) // 2                                          # the gangplank's middle, as the plan has it
+        for x in range(gx - 1, gx + 2):                              # the gangplank's gate: a fence, warm-up
             w.set(x, 25, -55, B.DARK_OAK_FENCE)
             w.set(x, 26, -55, B.DARK_OAK_FENCE)
-
-
-def palm(w, x, y, z, lean, seed):
-    """A palm: a jungle-wood trunk that leans as it rises, and a crown of two crosses of leaves laid one over the
-    other, the second turned an eighth, each arm drooping at its tip."""
-    r = random.Random(seed)
-    import math
-    tall = r.randint(7, 9)
-    lx, lz = lean
-    px, pz = x, z
-    for k in range(1, tall + 1):
-        f = (k / tall) ** 1.6
-        px, pz = x + round(lx * f), z + round(lz * f)
-        w.set(px, y + k, pz, B.LOG, 3)
-    top = y + tall
-    w.set(px, top + 1, pz, B.LEAVES, 7)
-    turn = r.random() * 0.4
-    for i in range(8):
-        ang = turn + i * math.pi / 4
-        dx, dz = math.cos(ang), math.sin(ang)
-        length = 5 if i % 2 == 0 else 4
-        for k in range(1, length + 1):
-            yy = top + 1 - max(0, k - 2)                                  # level, then drooping toward the tip
-            w.set(px + round(dx * k), yy, pz + round(dz * k), B.LEAVES, 7)
-
-
-def palms(w):
-    for n, (x, z) in enumerate(P.PALMS):
-        lean = [(2, 1), (-2, 1), (1, -2), (2, -1), (-1, -2), (-2, -1), (1, 2), (2, 2), (-2, 2)][n % 9]
-        palm(w, x, h_ground(x, z), z, lean, n + 1)
-
-
-def h_ground(x, z):
-    hs = [h(x + dx, z + dz) for dx, dz in N4 if kind(x + dx, z + dz) == "beach"]
-    return min(hs) if hs else 22
+            w.set(x, 24, -55, *SPRUCE)
+            w.set(x, 24, -54, *SPRUCE)
 
 
 def landing(w):
-    """The landing stage: spruce planks on log posts, over the water, a fence along its seaward edge and ends but
-    for the three gangplanks, a lantern on a post at each."""
-    gaps = {s["cx"] + d for s in P.SHIPS for d in (-1, 0, 1)}
+    """The landing stage: spruce planks on log posts, over the water."""
     for x in range(-36, 36):
         for z in range(-50, -46):
             w.set(x, 21, z, *SPRUCE)
             if x % 4 == 0 and z in (-50, -47):
                 for y in range(SEA_FLOOR + 1, 21):
                     w.set(x, y, z, *SPRUCE_LOG)
-        if x not in gaps:
-            w.set(x, 22, -50, B.SPRUCE_FENCE)
-    for z in range(-50, -46):
-        w.set(-36, 22, z, B.SPRUCE_FENCE)
-        w.set(35, 22, z, B.SPRUCE_FENCE)
-    for s in P.SHIPS:
-        for x in (s["cx"] - 2, s["cx"] + 2):
-            w.set(x, 22, -50, B.SPRUCE_FENCE)
-            w.set(x, 23, -50, B.SPRUCE_FENCE)
-            w.set(x, 24, -50, B.GLOWSTONE)
 
 
 def sea_wall(w):
@@ -466,118 +370,6 @@ def spawns_dress(w):
                     w.set(int(x - 0.5) + dx, int(y) - 1, int(z - 0.5) + dz, B.WOOL, col)
 
 
-def crates(w):
-    """Crates, barrels and sacks against the houses' walls along the streets: a stack of one or two in a few
-    places, never on a stair, by a door or gate, or near a spawn."""
-    r = random.Random(21)
-    keep_clear = set()
-    for (x, z) in list(R.stair) + list(R.gate):
-        for dx in range(-2, 3):
-            for dz in range(-2, 3):
-                keep_clear.add((x + dx, z + dz))
-    for st in P.SPAWNS.values():
-        for (sx, sy, sz, _) in st.values():
-            for dx in range(-3, 4):
-                for dz in range(-3, 4):
-                    keep_clear.add((int(sx) + dx, int(sz) + dz))
-    for i in range(1, P.NX - 1):
-        for j in range(1, P.NZ - 1):
-            x, z = i + P.X_MIN, j + P.Z_MIN
-            if kind(x, z) not in ("street", "court") or (x, z) in keep_clear or not (-19 <= z <= 60):
-                continue
-            if not any(kind(x + dx, z + dz) in ("house", "magazine") for dx, dz in N4):
-                continue
-            if r.random() > 0.07:
-                continue
-            f = h(x, z)
-            if w.id(x, f + 1, z) != B.AIR:
-                continue
-            stack = 1 if r.random() < 0.6 else 2
-            for y in range(f + 1, f + 1 + stack):
-                w.set(x, y, z, *r.choice([SPRUCE, (B.HAY, 0), SPRUCE_LOG, (B.PLANKS, 0), (B.LOG, 12)]))
-
-
-def flag(w, x, y, z, height, colour, along="x", length=5, drop=3):
-    """A flagpole of fence on the wall's top with a flag of wool flying from it, its far edge ragged."""
-    for k in range(height):
-        w.set(x, y + k, z, B.FENCE)
-    top = y + height - 1
-    for u in range(1, length + 1):
-        for v in range(drop):
-            if u == length and v == drop - 1:
-                continue
-            fx, fz = (x + u, z) if along == "x" else (x, z + u)
-            w.set(fx, top - v, fz, B.WOOL, colour)
-
-
-def flags(w):
-    """The defenders' blue over the keep, on the citadel wall and on the sea wall's towers."""
-    flag(w, -1, 51, 52, 10, BLUE, length=7, drop=4)
-    for x in (-40, -22, 20, 38):
-        flag(w, x, 45, 24, 5, BLUE)
-    for x, z in ((-28, -30), (26, -30), (-46, -30), (44, -30)):
-        flag(w, x, 34, z, 5, BLUE, along="z", length=4, drop=3)
-
-
-def keep_detail(w):
-    """The keep's faces: a chiseled course at 42 and under the battlements, windows of dark glass two high every
-    four blocks on the upper storey with a sill under each, arrow slits two high on the lower, and a canopy of stone brick stairs over the door."""
-    x0, x1, z0, z1 = -12, 11, 44, 60
-    for x in range(x0, x1 + 1):
-        for z in range(z0, z1 + 1):
-            if not (x in (x0, x1) or z in (z0, z1)):
-                continue
-            for y in (42, 50):
-                w.set(x, y, z, *CHISELED)
-            run = x if z in (z0, z1) else z
-            corner = x in (x0, x1) and z in (z0, z1)
-            if corner:
-                continue
-            ix_, iz_ = (0 if x not in (x0, x1) else (1 if x == x0 else -1)), (0 if z not in (z0, z1) else (1 if z == z0 else -1))
-            if run % 4 == 0:
-                for y in (45, 46):
-                    w.set(x, y, z, B.STAINED_PANE, 15)                # dark glass, the room behind unlit
-                    w.set(x + ix_, y, z + iz_, B.WOOL, 15)
-                w.set(x, 44, z, 109, 2 if z == z1 else 3) if z in (z0, z1) else w.set(x, 44, z, *CHISELED)
-            if run % 4 == 2 and not (-2 <= x <= 1 and z == z0):
-                w.set(x, 38, z, B.STAINED_PANE, 15)
-                w.set(x, 39, z, B.STAINED_PANE, 15)
-                w.set(x + ix_, 38, z + iz_, B.WOOL, 15)
-                w.set(x + ix_, 39, z + iz_, B.WOOL, 15)
-    for x in range(-3, 3):
-        w.set(x, 40, z0 - 1, 109, 6)                            # the canopy over the door, stone brick stairs
-
-
-def smoke(w):
-    """Smoke from some of the town's chimneys: white glass, two by two where it leaves the chimney, swelling into a
-    long balloon as the wind carries it east and a little north, curving as it goes."""
-    import math
-    r = random.Random(31)
-    tops = []
-    xs, ys, zs = np.nonzero(w.ids == B.COBBLE_WALL)
-    for i, y, k in zip(xs, ys, zs):
-        tops.append((int(i) + w.x0, int(y), int(k) + w.z0))
-    r.shuffle(tops)
-    for (x, y, z) in tops[: max(1, int(len(tops) * 0.3))]:
-        length = r.randint(12, 18)
-        bend = r.uniform(-0.6, 0.6)
-        for s in range(length * 3):
-            t = s / 3.0
-            f = t / length
-            cx = x + 0.5 + t * 0.95
-            cz = z + 0.5 - t * 0.25 + bend * (t ** 2) / length
-            cy = y + 1.5 + t * 0.55 + 1.2 * math.sin(f * math.pi) * 0.5
-            rad = 0.75 + 1.25 * math.sin(f * math.pi * 0.9) ** 1.5      # two by two at the chimney, swelling
-            if cy + rad >= w.sy - 1:
-                break
-            for bx in range(int(cx - rad) - 1, int(cx + rad) + 2):
-                for by in range(int(cy - rad * 0.8) - 1, int(cy + rad * 0.8) + 2):
-                    for bz in range(int(cz - rad) - 1, int(cz + rad) + 2):
-                        dx, dy, dz = bx + 0.5 - cx, (by + 0.5 - cy) / 0.8, bz + 0.5 - cz
-                        if dx * dx + dy * dy + dz * dz <= rad * rad and w.id(bx, by, bz) == B.AIR:
-                            w.set(bx, by, bz, 95, 0)
-
-
 GATE_REGIONS = {
     # stage -> boxes (x0, y0, z0, x1, y1, z1) inclusive, filled with air when it falls
     "warmup": [((a + b) // 2 - 1, 25, -55, (a + b) // 2 + 1, 26, -55) for a, b in ((-30, -22), (-6, 5), (21, 29))],
@@ -599,13 +391,8 @@ def make():
     citadel(w)
     keep(w)
     wool_monument(w)
-    keep_detail(w)
-    flags(w)
     cover(w)
-    palms(w)
-    crates(w)
     spawns_dress(w)
-    smoke(w)
     w.biome[:, :] = 1
     return w
 
