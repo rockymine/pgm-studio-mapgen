@@ -1,0 +1,71 @@
+<map proto="1.5.0">
+    <name>Hollow Mesa</name>
+    <version>0.1.0</version>
+    <gamemode>dtc</gamemode>
+    <objective>Leak the enemy's core: it hangs over a hole through their mesa, in the cavern they call the Throat.</objective>
+    <authors>
+        <author>Claude (freeform generator)</author>
+    </authors>
+    <contributors>
+        <contributor contribution="Built the acacia and olive trees (tree showcase)">rockymine</contributor>
+    </contributors>
+    <teams>
+        <team id="red-team" color="red" max="16">Red</team>
+        <team id="blue-team" color="blue" max="16">Blue</team>
+    </teams>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="stained clay" amount="32" team-color="true"/>
+            <item slot="6" material="golden apple" amount="1"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <spawns>
+        <default yaw="90" region="observer-spawn"/>
+        <spawn team="red-team" kit="spawn-kit" yaw="270" region="red-spawn-point"/>
+        <spawn team="blue-team" kit="spawn-kit" yaw="90" region="blue-spawn-point"/>
+    </spawns>
+    <cores>
+        <core id="red-core" name="The Throat" team="red-team" leak="5" region="red-core-region"/>
+        <core id="blue-core" name="The Throat" team="blue-team" leak="5" region="blue-core-region"/>
+    </cores>
+    <filters>
+        <team id="only-red">red-team</team>
+        <team id="only-blue">blue-team</team>
+        <not id="no-void">
+            <void/>
+        </not>
+    </filters>
+    <regions>
+        <point id="red-spawn-point">-101.5,76,6.5</point>
+        <point id="blue-spawn-point">101.5,76,-6.5</point>
+        <point id="observer-spawn">0.5,95,0.5</point>
+        <everywhere id="everywhere"/>
+        <rectangle id="red-spawn" min="-113,-8" max="-96,17"/>
+        <rectangle id="blue-spawn" min="96,-16" max="113,9"/>
+        <cuboid id="red-core-region" min="-73,49,-26" max="-69,53,-22"/>
+        <cuboid id="blue-core-region" min="69,49,22" max="73,53,26"/>
+        <union id="spawns">
+            <region id="red-spawn"/>
+            <region id="blue-spawn"/>
+        </union>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply block="never" region="spawns" message="You may not edit the spawn!"/>
+        <apply block="no-void" region="everywhere" message="You may not build over the void, nor plug the Throat!"/>
+    </regions>
+    <maxbuildheight>100</maxbuildheight>
+</map>

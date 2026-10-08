@@ -87,3 +87,24 @@ whole fight underground and at the canyon wall.
 ## As first drawn
 
 The table and sketch above are the plan as written before building.
+
+## How the plan changed
+
+**Built against the plan, the board kept every place; these are the changes, each made from a render or a
+check of the built world.**
+
+- **The canyon bends more and is wider.** The first build's canyon ran nearly straight and its floor was 44
+  blocks wide, which left the Adobe Quarter a 14-block strip. The centreline now carries a second, shorter
+  bend, and the floor is 26 blocks either side of it. The cavern, the hole, the core, the shaft, the adit and
+  the Chimney all moved west with the rim (core at x −73…−70). The revised sketch is
+  `renders/00b-plan-sketch-revised.png`.
+- **The mesa top steps.** A scarp across each plateau at about x −96 puts the fort and the Rancho on an
+  upper tier six blocks higher, with gullies where Fort Road, Ranch Road and the Grove Track go down.
+- **The water tower moved off the arch and out from under it,** from (−16, 2) to (−19, −14) over Main
+  Street. The cause was the arch writing its deck into the ground map, which also let the plaza's paving cut
+  the arch out over the spring; the arch is now a storey apart from the ground.
+- **The adobe house at (−21, 22) was dropped;** the tipple stands where it was.
+- **The Rancho's corral, windmill and tank moved west of the house** onto level ground; they had been laid
+  across the scarp. The Grove's stock tank moved to (−82, −54) for the same reason, and the Wash's wagon to
+  the Wash's centreline.
+- **The ladders on High Butte and Table Rock climb both tiers;** the first ones stopped at the lower tier.
