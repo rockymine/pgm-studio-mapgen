@@ -6,7 +6,8 @@
 //   volume.bin  "RWV1", int32 x0 y0 z0 sx sy sz, then uint16 ids[sx*sy*sz] and uint8 data[sx*sy*sz]
 //               indexed ((x*sy)+y)*sz+z, then uint8 biomes[sx*sz] indexed x*sz+z
 //   tiles.json  [{ "kind": "Chest", x, y, z, items: [{slot, id, count, damage}] },
-//                { "kind": "Sign", x, y, z, lines: ["..", ..] }]
+//                { "kind": "Sign", x, y, z, lines: ["..", ..] },
+//                { "kind": "Banner", x, y, z, base: <dye 0..15>, patterns: [{pattern, color}] }]
 //   level.json  { name, spawn: [x, y, z] }
 // Air is skipped, so a chunk exists only where something stands and the void stays void.
 #:project /home/user/pgm-studio/src/PgmStudio.Minecraft/PgmStudio.Minecraft.csproj
@@ -74,6 +75,14 @@ foreach (var t in tiles)
             var text = k < lines.Count ? (string)lines[k]! : "";
             tag.Add(new NbtString($"Text{k + 1}", JsonSerializer.Serialize(new Dictionary<string, string> { ["text"] = text })));
         }
+    }
+    else if (kind == "Banner")
+    {
+        tag.Add(new NbtInt("Base", (int)t["base"]!));
+        var pats = new NbtList("Patterns", NbtTagType.Compound);
+        foreach (var p in (t["patterns"]?.AsArray() ?? new JsonArray()))
+            pats.Add(new NbtCompound { new NbtString("Pattern", (string)p!["pattern"]!), new NbtInt("Color", (int)p["color"]!) });
+        tag.Add(pats);
     }
     world.AddTileEntity(tx, tz, tag);
 }

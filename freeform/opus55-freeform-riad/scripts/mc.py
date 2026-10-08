@@ -196,6 +196,16 @@ class World:
             self.set(x, y, z, B.WALL_SIGN, wall_facing)
         self.tiles.append({"kind": "Sign", "x": x, "y": y, "z": z, "lines": list(lines)})
 
+    def banner(self, x, y, z, base, patterns=(), wall_facing=None, rot=0):
+        """A banner, standing (rot 0..15) or on a wall (facing 2 north 3 south 4 west 5 east); base is the dye
+        colour, 1.8's numbering (0 black .. 15 white); patterns are (code, dye) pairs."""
+        if wall_facing is None:
+            self.set(x, y, z, B.BANNER, rot)
+        else:
+            self.set(x, y, z, 177, wall_facing)
+        self.tiles.append({"kind": "Banner", "x": x, "y": y, "z": z, "base": base,
+                           "patterns": [{"pattern": p, "color": c} for p, c in patterns]})
+
     # --- output ------------------------------------------------------------------------------------
     def save(self, build_dir, name, spawn):
         os.makedirs(build_dir, exist_ok=True)
