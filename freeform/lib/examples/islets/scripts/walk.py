@@ -4,7 +4,7 @@ import sys
 
 import numpy as np
 
-from plan import KILL_Y, build
+from plan import KILL_Y, build, objectives
 from pgmvox import World, audit, walk
 
 R = build()
@@ -16,3 +16,7 @@ islands = np.vectorize(lambda x, z: R.inside(x, z) and R.kind(x, z) != "void")(X
 print("standable over the kill height beside the islands:", len(walk.no_stand_above(w, KILL_Y, np.hypot(X, Z) < 60,
                                                                                       islands)))
 print("footing problems:", len(audit.footing(w)))
+problems = objectives().check(w)
+print("objectives with a problem:", len(problems))
+for p in problems:
+    print("  ", p)

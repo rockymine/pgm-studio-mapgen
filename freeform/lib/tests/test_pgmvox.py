@@ -19,6 +19,8 @@ from pgmvox import B, World, audit, blocks, move, orient, plangraph, plot, rende
 from pgmvox import build as BLD  # noqa: E402
 from pgmvox import facade as F  # noqa: E402
 from pgmvox import pieces as P  # noqa: E402
+from pgmvox import objectives as O  # noqa: E402
+from pgmvox import solid as SOL  # noqa: E402
 from pgmvox.mapxml import Doc, E, duration, point  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
 from pgmvox.sketch import TEAM, SectionPanel, Sheet  # noqa: E402
@@ -324,6 +326,95 @@ class Courses(unittest.TestCase):
         self.assertEqual(R.at(-7, 10), (52, "floor"))
         self.assertEqual(R.at(6, 10), (52, "floor"))
         self.assertEqual(R.at(0, 6)[1], "void")
+
+
+class Storeys(unittest.TestCase):
+    def raster(self, roof=14):
+        R = Raster((0, 19), (0, 9), ["floor", "stair", "roof"], base_h=10, base_kind="floor")
+        R.storey(1).rect(10, 15, 2, 7, roof, "roof", both=False)
+        R.flight((6, 4), "e", h0=11, n=3, both=False)
+        R.rect(9, 9, 4, 4, 13, "stair", both=False)
+        return R
+
+    def test_a_roof_is_walked_and_so_is_the_ground_under_it(self):
+        E = plangraph.graph(self.raster(), {"floor", "stair", "roof"})
+        D, _ = plangraph.dijkstra(E, [(0, 4)])
+        self.assertIn((12, 4, 1), D)
+        self.assertIn((12, 4), D)
+        self.assertIn((16, 4), [v for v, _, _ in E[(15, 4, 1)]])          # off the far edge to the ground
+
+    def test_a_low_storey_closes_the_ground_under_it(self):
+        E = plangraph.graph(self.raster(roof=12), {"floor", "stair", "roof"})
+        self.assertNotIn((12, 4), E)
+
+    def test_one_storey_is_unchanged(self):
+        R = Plan.raster(None)
+        self.assertEqual(R.storeys, [R])
+        self.assertTrue(R.has().all())
+
+
+class Solids(unittest.TestCase):
+    def test_the_image_is_the_plans_turn(self):
+        v = SOL.revolve([(3, 0), (4, 3), (2, 6)], -5.5, -3.5, 10)
+        for op in ("half", "mirror_x", "mirror_z"):
+            sym = Symmetry(op)
+            want = {(*sym.point(x, z), y) for x, y, z in v.cells()}
+            got = {(x, z, y) for x, y, z in SOL.image(v, sym).cells()}
+            self.assertEqual(got, want, op)
+
+    def test_fill(self):
+        w = World(-8, -8, 16, 16, sy=12)
+        n = SOL.fill(w, SOL.box(0, 1, 2, 3, 0, 1), (B.QUARTZ, 0))
+        self.assertEqual(n, 8)
+        self.assertEqual(w.get(1, 3, 1), (B.QUARTZ, 0))
+
+
+class Objectives(unittest.TestCase):
+    def objectives(self):
+        o = O.Objectives(O.Teams(("red-team", "Red", "red"), ("blue-team", "Blue", "blue")), Symmetry("half"))
+        o.add(O.Spawn("red-team", (-20, 11, 0), yaw=-90, area=O.Box(-21, 11, -1, -19, 13, 1)))
+        o.add(O.Hill("mid", "the Middle", O.Box(-2, 10, -2, 1, 10, 1)), mirror=False)
+        o.add(O.Wool("blue-team", "lime", slot=(-15, 12, 6)), color="pink")
+        o.add(O.Destroyable("red-dtm", "Red's", "red-team", O.Box(-16, 11, -8, -15, 12, -7)))
+        o.add(O.Core("red-core", "Red's Core", "red-team", O.Box(-12, 11, 4, -10, 13, 6)))
+        return o
+
+    def world(self, o):
+        w = World(-24, -12, 48, 24, sy=24)
+        w.fill(-24, 0, -12, 23, 10, 11, B.STONE)
+        o.stamp(w)
+        return w
+
+    def test_the_other_half(self):
+        o = self.objectives()
+        spawns = o.of(O.Spawn)
+        self.assertEqual([s.team for s in spawns], ["red-team", "blue-team"])
+        self.assertEqual(spawns[1].at, (19, 11, -1))
+        self.assertEqual(spawns[1].yaw, 90)
+        self.assertEqual(o.of(O.Destroyable)[1].id, "blue-dtm")
+        self.assertEqual(o.of(O.Wool)[1].color, "pink")
+        self.assertEqual(len(o.of(O.Hill)), 1)
+
+    def test_the_xml(self):
+        o = self.objectives()
+        d = o.write(Doc("T", "1.0.0", "t"), limit=100)
+        x = xml.dom.minidom.parseString(d.tostring())
+        cub = [c for c in x.getElementsByTagName("cuboid") if c.getAttribute("id") == "mid-capture"][0]
+        self.assertEqual((cub.getAttribute("min"), cub.getAttribute("max")), ("-2,10,-2", "2,15,2"))   # max exclusive
+        hill = x.getElementsByTagName("hill")[0]
+        self.assertEqual(hill.getAttribute("capture-region"), "mid-capture")
+        self.assertEqual(len(x.getElementsByTagName("wool")), 2)
+        self.assertEqual(x.getElementsByTagName("point")[0].firstChild.data, "-19.5,11,0.5")
+        with self.assertRaises(ValueError):
+            d.region("mid-capture", O.Box(0, 0, 0, 1, 1, 1).cuboid())
+
+    def test_stamped_and_read_back(self):
+        o = self.objectives()
+        w = self.world(o)
+        self.assertEqual(o.check(w), [])
+        w.set(-15, 12, 6, B.STONE)                                # the wool slot filled in
+        w.set(-20, 12, 0, B.STONE)                                # a block in the spawn's head
+        self.assertEqual(len(o.check(w)), 2)
 
 
 class Terrain(unittest.TestCase):

@@ -92,6 +92,44 @@ class Doc:
         self.root.append(el)
         return el
 
+    def child(self, *path, **attrs):
+        """The element at a path of tags under <map>, made on first use with attrs: doc.child("king", "hills")."""
+        el = self.root
+        for k, tag in enumerate(path):
+            found = el.find(tag)
+            if found is None:
+                found = ET.SubElement(el, tag, {_attr(a): _fmt(v) for a, v in attrs.items() if v is not None}
+                                      if k == len(path) - 1 else {})
+            el = found
+        return el
+
+    def ids(self):
+        return {e.get("id") for e in self.root.iter() if e.get("id")}
+
+    def region(self, id_, el):
+        """A named region under <regions>: el is a shape element (cuboid, block, point, union ...) given the id.
+        An id already taken is refused, since a duplicate silently re-points every reference to it."""
+        if id_ in self.ids():
+            raise ValueError(f"region id {id_!r} is taken")
+        el.set("id", id_)
+        self.child("regions").append(el)
+        return id_
+
+    def filter(self, id_, el):
+        """A named filter under <filters>; an id given twice with the same filter is kept once."""
+        existing = self.root.find(f".//filters/*[@id='{id_}']")
+        if existing is not None:
+            return id_
+        el.set("id", id_)
+        self.child("filters").append(el)
+        return id_
+
+    def apply(self, **attrs):
+        """An applicator under <regions>: doc.apply(enter="only-red", region="red-spawn", message="...")."""
+        el = E("apply", **attrs)
+        self.child("regions").append(el)
+        return el
+
     def rules(self, *lines):
         return self.add(E("rules", [E("rule", text=s) for s in lines]))
 

@@ -9,6 +9,7 @@ import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox.build import Frame  # noqa: E402
+from pgmvox.objectives import Box, Hill, Objectives, Observer, Spawn, Teams  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
 
 KILL_Y = 20
@@ -32,3 +33,13 @@ def build():
     for x, z in Frame(HOUSE["cx"], HOUSE["cz"], HOUSE["heading"]).cells(HOUSE["L"], HOUSE["W"]):
         R.cell(x, z, GROUND, "house")                                              # a house, turned 20 degrees
     return R
+
+
+def objectives():
+    """The teams, their spawns and the hill: drawn once here, with blue's spawn the half turn of red's, and read
+    by map.xml, the sketch and the read-back alike."""
+    O = Objectives(Teams(("red-team", "Red", "red"), ("blue-team", "Blue", "blue")), Symmetry("half"))
+    O.add(Spawn("red-team", (-24, GROUND + 1, 0), yaw=-90, area=Box(-25, GROUND + 1, -2, -22, GROUND + 4, 1)))
+    O.add(Hill("hill", "the Hill", Box(-2, HILL, -4, 1, HILL, 3), points=1, capture_time="5s"), mirror=False)
+    O.add(Observer((0, 50, 20), yaw=180), mirror=False)
+    return O

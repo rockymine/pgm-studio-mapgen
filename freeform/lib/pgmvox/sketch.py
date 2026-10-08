@@ -154,6 +154,32 @@ class MapPanel(Panel):
                             fill=(60, 50, 40), width=max(1, s // 5))
         return self
 
+    def storey(self, U, colours, alpha=0.65, outline=(20, 20, 24), label=True):
+        """An upper storey over the board: its floors blended over what is under them, outlined, with its
+        height written on each piece, so a roof or a deck reads as lying over the ground rather than as it."""
+        has = U.has()
+        s = self.s
+        over = self.img.copy()
+        d = ImageDraw.Draw(over)
+        for i, k in np.argwhere(has):
+            x, z = U.x_min + int(i), U.z_min + int(k)
+            if self.x0 <= x <= self.x1 and self.z0 <= z <= self.z1:
+                a, b = (x - self.x0) * s, (z - self.z0) * s
+                d.rectangle([a, b, a + s - 1, b + s - 1], fill=colours.get(U.names[int(U.K[i, k])], (200, 200, 200)))
+        self.img = Image.blend(self.img, over, alpha)
+        self.d = ImageDraw.Draw(self.img)
+        for i, k in np.argwhere(has):
+            x, z = U.x_min + int(i), U.z_min + int(k)
+            a, b = (x - self.x0) * s, (z - self.z0) * s
+            for di, dk, seg in ((1, 0, [(a + s - 1, b), (a + s - 1, b + s - 1)]), (-1, 0, [(a, b), (a, b + s - 1)]),
+                                (0, 1, [(a, b + s - 1), (a + s - 1, b + s - 1)]), (0, -1, [(a, b), (a + s - 1, b)])):
+                p, q = i + di, k + dk
+                if not (0 <= p < has.shape[0] and 0 <= q < has.shape[1]) or not has[p, q]:
+                    self.d.line(seg, fill=outline, width=2)
+        if label:
+            self.heights(U, kinds=[k for k in U.kinds if k != "none"], both=True)
+        return self
+
     def built(self, w, ymin=0, ymax=None):
         """A built world's top-down: the highest block of every column in the studio's colour, lit by height,
         the void left dark."""
@@ -321,6 +347,13 @@ class MapPanel(Panel):
             self.d.ellipse([cx - r, cz - r, cx + r, cz + r], fill=col, outline=HALO, width=2)
             _text(self.d, (cx, cz), text, HALO, max(10, int(r * 1.2)), None)
 
+    def objectives(self, markers, r=None):
+        """Every objective's marker, from Objectives.markers(): a disc in its team's colour (the team id's first
+        word: red-team is red) with its letter, neutral gold for none. Both halves are already there."""
+        for x, z, letter, team in markers:
+            colour = TEAM.get((team or "neutral").split("-")[0], TEAM["neutral"])
+            self.marker(x, z, letter, colour, r)
+
     def callout(self, x, z, text, dx=30, dz=-24, colour=INK, size=11):
         """A label set off from its point by a leader line: for a detail too small to write on. A label that
         would run off the panel is turned to the other side."""
@@ -368,6 +401,15 @@ class SectionPanel(Panel):
             c = (colours or {}).get(kind, (170, 160, 140))
             bottom = self.img.height - 1 if depth is None else self.py(h - depth)
             self.d.rectangle([self.px(s), self.py(h), self.px(s + 1) - 1, bottom], fill=c)
+        for U in R.storeys[1:]:                                   # upper storeys: a floor a block thick
+            for s in rng:
+                x, z = (s, at) if axis == "x" else (at, s)
+                h, kind = U.at(x, z)
+                if kind in (None, "none") or h < self.y0:
+                    continue
+                c = (colours or {}).get(kind, (170, 160, 140))
+                self.d.rectangle([self.px(s), self.py(h), self.px(s + 1) - 1, self.py(h - 1) - 1], fill=c,
+                                 outline=dark(c))
         return self
 
     def along(self, R, pts, colours=None, step=0.5, depth=None):

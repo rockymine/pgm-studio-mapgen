@@ -1,36 +1,57 @@
 <map proto="1.5.0">
     <name>Islets</name>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <objective>Hold the middle hill.</objective>
     <gamemode>koth</gamemode>
     <teams>
-        <team id="red" color="red" max="8">Red</team>
-        <team id="blue" color="blue" max="8">Blue</team>
+        <team id="red-team" color="red" max="8">Red</team>
+        <team id="blue-team" color="blue" max="8">Blue</team>
     </teams>
+    <filters>
+        <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
+        <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
+    </filters>
     <spawns>
-        <spawn team="red">
+        <spawn team="red-team" yaw="-90">
             <region>
-                <point yaw="-90">-23,31,0</point>
+                <point>-23.5,31,0.5</point>
             </region>
         </spawn>
-        <spawn team="blue">
+        <spawn team="blue-team" yaw="90">
             <region>
-                <point yaw="90">23,31,0</point>
+                <point>23.5,31,-0.5</point>
             </region>
         </spawn>
-        <default>
+        <default yaw="180">
             <region>
                 <point>0.5,50,20.5</point>
             </region>
         </default>
     </spawns>
-    <control-points capture-time="5s">
-        <control-point id="hill" name="the Hill">
-            <captured>
-                <cuboid min="-2,33,-4" max="2,36,4"/>
-            </captured>
-        </control-point>
-    </control-points>
+    <regions>
+        <cuboid min="-25,31,-2" max="-21,35,2" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="21,31,-2" max="25,35,2" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-2,33,-4" max="2,38,4" id="hill-capture"/>
+        <cuboid min="-2,33,-4" max="2,34,4" id="hill-pad"/>
+    </regions>
+    <king>
+        <hills required="false" neutral-state="true" incremental="true" show-progress="true" time-multiplier="0" permanent="false">
+            <hill id="hill" name="the Hill" capture-region="hill-capture" progress-display-region="hill-pad" owner-display-region="hill-pad" capture-time="5s" points="1"/>
+        </hills>
+    </king>
+    <score>
+        <limit>300</limit>
+    </score>
     <portals>
         <portal y="@-64" sound="false" observers="never">
             <region>

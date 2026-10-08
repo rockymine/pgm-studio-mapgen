@@ -12,6 +12,7 @@ rectangle, cell, polygon and flight twice, the second time at its image, with st
     R.rect(-40, -20, -10, 10, 13)                 # floor at 13, and its image
     R.flight((-20, -2), "e", width=(-2, 2), h0=14, n=3)
     R.poly([(...), ...], 17, "hill")
+    R.storey(1).rect(-30, -26, -4, 4, 24, "roof")  # an upper storey: a roof walked over the floor at 13
 """
 import numpy as np
 
@@ -48,6 +49,28 @@ class Raster:
         self.symmetry = symmetry
         self.X, self.Z = np.meshgrid(np.arange(self.x_min, self.x_max + 1), np.arange(self.z_min, self.z_max + 1),
                                      indexing="ij")
+        self.storeys = [self]                                    # storey 0 is this raster; storey(n) adds more
+        self.level = 0
+
+    # --- storeys ---------------------------------------------------------------------------------------
+    def storey(self, n=1):
+        """The raster of the n-th storey over this one: the same extent, kinds and symmetry, with "none" where
+        it has no floor. Draw on it with the same methods: R.storey(1).rect(..., 24, "roof"). A storey's
+        floor must stand at least three over the floor under it for the floor under it to be walked."""
+        while len(self.storeys) <= n:
+            kinds = dict(self.kinds)
+            if "none" not in kinds:
+                kinds["none"] = max(kinds.values()) + 1
+            up = Raster((self.x_min, self.x_max), (self.z_min, self.z_max), kinds, -1, "none", self.symmetry)
+            up.storeys, up.level = self.storeys, len(self.storeys)
+            self.storeys.append(up)
+        return self.storeys[n]
+
+    def has(self):
+        """Where this storey has a floor (every cell, for storey 0)."""
+        if self.level == 0:
+            return np.ones(self.H.shape, bool)
+        return self.K != self.kinds["none"]
 
     # --- coordinates -----------------------------------------------------------------------------------
     def ix(self, x):

@@ -15,9 +15,11 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `noise` | `fbm`, `ridged`, `smoothstep`, `spline` |
 | `shapes` | polygons, polylines, discs, rings, ellipses, tapered strokes, `boundary`, `edge_depth` |
 | `move` | the 1.8 tick model: `fly`, `fall`, `fall_damage`, `jump_reach`, `knockback`, `solve_launch` |
-| `plan` | `Raster`, the plan as every column's floor and kind, with `Symmetry` drawn in the plan; `rect`, `poly`, `where`, `flight` |
+| `plan` | `Raster`, the plan as every column's floor and kind, with `Symmetry` drawn in the plan; `rect`, `poly`, `where`, `flight`; `storey(n)`, an upper storey drawn the same way |
+| `objectives` | spawns, the observer point, hills, flags, wools and monuments, destroyables, cores, score boxes and portals: each stamps its blocks, writes its regions and XML, carries itself to the other team, and checks the built world |
+| `solid` | the repository's `tools/sculpt/solid.py` (booleans, turns, revolves, extrusions, tubes), with `fill` into a `World` and `image` through a plan `Symmetry` |
 | `pieces` | `Course`, the plan of a board played in order (a water drop, a parkour run): pieces by step with their images, the links between steps, and an audit of each link's gap, drop, way across, landing cell and damage; `raster()` turns a course into a `Raster` |
-| `plangraph` | the walk over a plan: `graph`, `jumps`, `dijkstra`, `route`, `path`, `arrivals` per team, `pad_edges` |
+| `plangraph` | the walk over a plan and its storeys: `graph`, `jumps`, `dijkstra`, `route`, `path`, `arrivals` per team, `pad_edges` |
 | `sight` | `line_clear`, `visibility`, `hidden`, with an opaque test for a plan or a built world |
 | `sketch` | the annotated sheet: map panels (a plan raster or a built top-down) with heights, places, markers, routes, jumps, zones and callouts; true-scale and unrolled sections; the checker's numbers against their targets |
 | `build` | `Frame`, a building's own axes at any heading; `RoofField`, the studio's six roof forms block for block, and `lay_roof`; `house`; `parapet`, `site`, `stairs`, `ladder`, `Claims` |
@@ -86,6 +88,43 @@ marks a miss in red, so the review sees it first.
 
 **`examples/islets/` draws both.** `scripts/sketch.py` writes `renders/00-plan-sketch.png`, and `renders.py`
 writes `05-topdown-annotated.png`, where the plan's island outline is ghosted over the built blocks.
+
+## Objectives
+
+**An objective is one object from the plan to the map.xml.** A `Hill`, a `Wool` or a `Core` stamps its own blocks,
+names the ground it claims, writes its own regions and XML into a `mapxml.Doc`, and reads the built world back.
+
+**Each one checks what makes it playable.** A spawn checks there is room to stand. A monument checks its slot is
+air over something to place on. A core checks there is lava in it.
+
+**The XML is the studio's shape, and the studio reads it.** Control points carry the long attribute names and the
+defaults the studio's generator chose from the corpus. Destroyables and cores name a `{id}-region`, and a wool's
+monument is a named block. `data/read_mapxml.cs` runs the studio's own parser and validity check over a written
+map. It reads the library's spawns, hills, wools, destroyables and cores as a valid map, and Islets with them.
+
+**The studio does not read every objective the boards used.** It refuses a map with flags or score boxes, which
+the King of the Flag and Deathmatch boards needed. The library writes them, and the studio is where they are
+missing.
+
+**Regions follow one convention.** A `Box` is inclusive blocks written with an exclusive max, since a PGM cuboid
+spans `[min, max)`. A point is a block written at its centre, where a player stands. Region ids are refused when
+taken, because a duplicate silently re-points every reference.
+
+**An objective is drawn once.** `Objectives.add` adds a team's objective and its image for the other team: boxes
+and points turned, yaws turned, team and id swapped, and any field given for the image changed, such as a wool's
+colour. The sketch draws every marker from the same objects, in its team's colour.
+
+## Storeys and solids
+
+**A plan can have storeys.** `R.storey(1)` is a raster over the same ground, drawn with the same methods, with
+"none" where it has no floor. Ground cells keep their (x, z) names, and a storey's cells are (x, z, n).
+
+**The walk graph joins the storeys.** A player steps onto a roof from a floor one below, walks it, and drops off
+its edge. The ground under a storey is walked only where two blocks of air are left over it.
+
+**Solids are the repository's one solid module.** `pgmvox.solid` loads `tools/sculpt/solid.py` rather than copying
+it, and adds `fill` and `image`. A sculpture is drawn once and its other half is its image under the plan's own
+symmetry, block for block.
 
 ## Course plans
 
@@ -166,13 +205,22 @@ cd freeform/lib && python3 -m unittest discover -s tests -v
 the physics numbers the boards measured, the headroom fix, ladders, footing, plan symmetry and fair arrivals,
 sight, slope without wrapping, save and load, rendering, a sketch sheet with every kind of panel, the roof
 against the studio's own, a house at 45 degrees with no gap in its walls, a word read from both sides, a course
-and its mirrored audit, map.xml, and a Curio plot passing the plot check.
+and its mirrored audit, a roof walked over the ground, solids turned with the plan, objectives mirrored, written
+and read back, map.xml, and a Curio plot passing the plot check.
+
+**The studio's reader is run by hand,** since it needs the studio's checkout and the .NET SDK:
+
+```
+cd /tmp && dotnet run /path/to/freeform/lib/pgmvox/data/read_mapxml.cs -- /path/to/map.xml
+```
 
 ## What it does not do yet
 
 **The house is simpler than the studio's.** It has one rectangle per storey, so no wings, porches or dormers,
 and its timber frame and window rhythm come from the boards, not from the studio's `HouseStyle`. Only the roof
 is held to the studio's formulas.
+
+**Jumps are taken on the ground storey only.** A jump from one roof to another is not in the walk graph yet.
 
 **A plan holds a building's walls, not its roof.** A roof's overhang is not in the raster, so the checker cannot
 see an eave over the void; the read-back can.

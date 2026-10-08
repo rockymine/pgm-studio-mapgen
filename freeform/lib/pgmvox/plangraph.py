@@ -66,25 +66,61 @@ def jumps(R, walk_kinds, wall_kinds=(), max_gap=3.0):
     return out
 
 
+def node(R, x, z, storey=0):
+    """A cell's node: (x, z) on the ground storey, (x, z, n) on storey n."""
+    x, z = int(x), int(z)
+    return (x, z) if storey == 0 else (x, z, int(storey))
+
+
+def walkable(R, walk_kinds):
+    """Per storey, the cells a player can stand on: a walkable kind with two blocks of air over its floor, so
+    the ground under a storey that hangs too low is not walked."""
+    levels = R.storeys
+    out = []
+    for s, L in enumerate(levels):
+        w = L.mask(*[k for k in walk_kinds if k in L.kinds]) & L.has()
+        for t, U in enumerate(levels):
+            if t != s:
+                w &= ~(U.has() & (U.H > L.H) & (U.H - L.H < 3))
+        out.append(w)
+    return out
+
+
 def graph(R, walk_kinds, wall_kinds=(), rules=None, extra=()):
-    """Edges {(x, z): [((x, z), cost, tag)]} over the raster. extra is [(a, b, cost, tag)]."""
+    """Edges {node: [(node, cost, tag)]} over the raster and its storeys. A step to a neighbouring column lands
+    on the highest floor there no more than one up, if that floor is walkable; a floor at head height blocks
+    it. So a player walks on and off a roof at its own height, drops off its edge, and climbs onto it from a
+    floor one below. Jumps are taken on the ground storey only. extra is [(a, b, cost, tag)]."""
     rules = rules or PlanRules()
-    walk = R.mask(*walk_kinds)
-    H = R.H
+    levels = R.storeys
+    walk = walkable(R, walk_kinds)
+    has = [L.has() for L in levels]
     edges = {}
 
     def add(a, b, c, tag):
         edges.setdefault(a, []).append((b, c, tag))
-    for i, j in np.argwhere(walk):
-        for di, dj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-            a, b = i + di, j + dj
-            if not (0 <= a < R.nx and 0 <= b < R.nz) or not walk[a, b]:
-                continue
-            dh = int(H[a, b] - H[i, j])
-            if dh > 1 or (rules.max_drop is not None and -dh > rules.max_drop):
-                continue
-            cost = rules.step_up_cost if dh == 1 else 1 + max(0, -dh - 3) * rules.drop_cost
-            add((R.x_min + i, R.z_min + j), (R.x_min + a, R.z_min + b), cost, "walk" if dh >= -3 else f"drop {-dh}")
+    for s, L in enumerate(levels):
+        for i, j in np.argwhere(walk[s]):
+            h = int(L.H[i, j])
+            for di, dj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                a, b = i + di, j + dj
+                if not (0 <= a < R.nx and 0 <= b < R.nz):
+                    continue
+                floors = [(int(U.H[a, b]), t) for t, U in enumerate(levels) if has[t][a, b]]
+                if any(fh == h + 2 for fh, _ in floors):
+                    continue                                     # a floor at head height
+                under = [(fh, t) for fh, t in floors if fh <= h + 1]
+                if not under:
+                    continue
+                fh, t = max(under)
+                if not walk[t][a, b]:
+                    continue
+                dh = fh - h
+                if rules.max_drop is not None and -dh > rules.max_drop:
+                    continue
+                cost = rules.step_up_cost if dh == 1 else 1 + max(0, -dh - 3) * rules.drop_cost
+                add(node(R, R.x_min + i, R.z_min + j, s), node(R, R.x_min + a, R.z_min + b, t), cost,
+                    "walk" if dh >= -3 else f"drop {-dh}")
     if rules.jumps:
         for a, b, g in jumps(R, walk_kinds, wall_kinds, rules.max_gap):
             add(a, b, g + 1, f"jump {g}")
