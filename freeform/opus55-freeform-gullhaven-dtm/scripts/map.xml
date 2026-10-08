@@ -1,0 +1,109 @@
+<map proto="1.5.0">
+<name>Gullhaven DTM</name>
+<version>0.1.0</version>
+<objective>Destroy both of the other team's gold monuments: one over the harbour, one on the beach.</objective>
+<gamemode>dtm</gamemode>
+<authors>
+    <author>Claude (freeform generator)</author>
+</authors>
+<teams>
+    <team id="red-team" color="red" max="16">Red</team>
+    <team id="blue-team" color="blue" max="16">Blue</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="iron sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" unbreakable="true" material="iron pickaxe"/>
+        <item slot="3" unbreakable="true" material="iron axe"/>
+        <item slot="4" amount="64" material="wood"/>
+        <item slot="5" amount="2" material="golden apple"/>
+        <item slot="6" amount="16" material="cooked beef"/>
+        <item slot="7" material="water bucket"/>
+        <item slot="28" amount="32" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" material="iron chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings"/>
+        <boots unbreakable="true" team-color="true" material="leather boots"/>
+        <effect duration="5s" amplifier="5">damage resistance</effect>
+    </kit>
+</kits>
+<spawns>
+    <default yaw="0">
+        <region><point>-19,60,57</point></region>
+    </default>
+    <spawn team="red-team" kit="spawn-kit" yaw="0">
+        <region><point>16.5,37,-38.5</point></region>
+    </spawn>
+    <spawn team="blue-team" kit="spawn-kit" yaw="180">
+        <region><point>-53.5,37,154.5</point></region>
+    </spawn>
+</spawns>
+<respawn delay="5s"/>
+<filters>
+    <team id="only-red">red-team</team>
+    <team id="only-blue">blue-team</team>
+</filters>
+<regions>
+    <!-- each team's spawn square in its town's upper street: no building, and no enemy -->
+    <rectangle id="red-spawn" min="10,-40" max="23,-35"/>
+    <rectangle id="blue-spawn" min="-60,151" max="-47,156"/>
+    <union id="spawns">
+        <region id="red-spawn"/>
+        <region id="blue-spawn"/>
+    </union>
+    <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+    <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+    <apply block="never" region="spawns" message="You may not build in a spawn!"/>
+    <!-- building is open everywhere else up to a height, and off the board's edge nobody builds -->
+    <above id="sky" y="56"/>
+    <apply block="never" region="sky" message="You have reached the maximum build height!"/>
+    <negative id="outside">
+        <cuboid min="-92,0,-49" max="55,256,165"/>
+    </negative>
+    <apply block="never" enter="never" region="outside" message="The sea is too rough past here."/>
+</regions>
+<destroyables>
+        <destroyable id="red-harbour" name="Red's Harbour Monument" owner="red-team" materials="gold block" completion="100%">
+            <region><cuboid min="31,20,23" max="32,22,24"/></region>
+        </destroyable>
+        <destroyable id="red-beach" name="Red's Beach Monument" owner="red-team" materials="gold block" completion="100%">
+            <region><cuboid min="-51,22,8" max="-50,24,9"/></region>
+        </destroyable>
+        <destroyable id="blue-harbour" name="Blue's Harbour Monument" owner="blue-team" materials="gold block" completion="100%">
+            <region><cuboid min="-69,20,92" max="-68,22,93"/></region>
+        </destroyable>
+        <destroyable id="blue-beach" name="Blue's Beach Monument" owner="blue-team" materials="gold block" completion="100%">
+            <region><cuboid min="13,22,107" max="14,24,108"/></region>
+        </destroyable>
+</destroyables>
+<toolrepair>
+    <tool>iron sword</tool>
+    <tool>bow</tool>
+    <tool>iron pickaxe</tool>
+    <tool>iron axe</tool>
+</toolrepair>
+<itemkeep>
+    <item>iron sword</item>
+    <item>bow</item>
+    <item>iron pickaxe</item>
+    <item>iron axe</item>
+</itemkeep>
+<itemremove>
+    <item>leather helmet</item>
+    <item>iron chestplate</item>
+    <item>chainmail leggings</item>
+    <item>leather boots</item>
+</itemremove>
+<kill-rewards>
+    <kill-reward>
+        <item amount="6" material="arrow"/>
+        <item material="golden apple"/>
+    </kill-reward>
+</kill-rewards>
+<world>
+    <timeset>5000</timeset>
+    <timelock>on</timelock>
+</world>
+</map>
