@@ -1,0 +1,46 @@
+<map proto="1.5.0">
+    <name>Islets</name>
+    <version>0.1.0</version>
+    <objective>Hold the middle hill.</objective>
+    <gamemode>koth</gamemode>
+    <teams>
+        <team id="red" color="red" max="8">Red</team>
+        <team id="blue" color="blue" max="8">Blue</team>
+    </teams>
+    <spawns>
+        <spawn team="red">
+            <region>
+                <point yaw="-90">-23,31,0</point>
+            </region>
+        </spawn>
+        <spawn team="blue">
+            <region>
+                <point yaw="90">23,31,0</point>
+            </region>
+        </spawn>
+        <default>
+            <region>
+                <point>0.5,50,20.5</point>
+            </region>
+        </default>
+    </spawns>
+    <control-points capture-time="5s">
+        <control-point id="hill" name="the Hill">
+            <captured>
+                <cuboid min="-2,33,-4" max="2,36,4"/>
+            </captured>
+        </control-point>
+    </control-points>
+    <portals>
+        <portal y="@-64" sound="false" observers="never">
+            <region>
+                <below y="20"/>
+            </region>
+        </portal>
+    </portals>
+    <time>10m</time>
+    <disabledamage>
+        <damage>fall</damage>
+    </disabledamage>
+</map>
+

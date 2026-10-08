@@ -16,6 +16,14 @@ import numpy as np
 from PIL import Image, ImageDraw
 
 BG = (30, 32, 40)
+_PLAIN = {"\u2014": " - ", "\u2013": "-", "\u2018": "'", "\u2019": "'", "\u201c": '"', "\u201d": '"', "\u00d7": "x"}
+
+
+def plain(s):
+    """The default bitmap font draws Latin-1 only: dashes, curly quotes and the times sign become plain ones."""
+    for a, b in _PLAIN.items():
+        s = s.replace(a, b)
+    return s.encode("latin-1", "replace").decode("latin-1")
 INK = (235, 235, 235)
 DIM = (150, 155, 165)
 
@@ -89,8 +97,10 @@ class Sketch:
         img = Image.new("RGB", (len(cols) * scale, (y1 - y0 + 1) * scale), BG)
         d = ImageDraw.Draw(img)
         for k, (p, h, kind) in enumerate(cols):
+            if h < y0:
+                continue                                         # a column below the range: nothing to draw
             c = (colours or {}).get(kind, (180, 175, 160))
-            top = (y1 - h) * scale
+            top = max(0, (y1 - h) * scale)
             d.rectangle([k * scale, top, (k + 1) * scale - 1, img.height - 1], fill=c)
         for y in range(y0, y1 + 1, 5):                           # a height scale every five
             yy = (y1 - y) * scale
@@ -111,7 +121,7 @@ class Sketch:
         img = Image.new("RGB", (w, 18 * len(lines) + 12), BG)
         d = ImageDraw.Draw(img)
         for k, s in enumerate(lines):
-            d.text((10, 6 + 18 * k), s, fill=INK)
+            d.text((10, 6 + 18 * k), plain(s), fill=INK)
         self.panels.append((img, title))
         return img
 
@@ -123,10 +133,10 @@ class Sketch:
         height = 40 + sum(p[0].height + 30 for p in self.panels) + pad
         out = Image.new("RGB", (width, height), BG)
         d = ImageDraw.Draw(out)
-        d.text((pad, 12), self.title, fill=INK)
+        d.text((pad, 12), plain(self.title), fill=INK)
         y = 40
         for img, title in self.panels:
-            d.text((pad, y), title, fill=DIM)
+            d.text((pad, y), plain(title), fill=DIM)
             out.paste(img, (pad, y + 16))
             y += img.height + 30
         out.save(path)
