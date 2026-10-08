@@ -16,6 +16,7 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `shapes` | polygons, polylines, discs, rings, ellipses, tapered strokes, `boundary`, `edge_depth` |
 | `move` | the 1.8 tick model: `fly`, `fall`, `fall_damage`, `jump_reach`, `knockback`, `solve_launch` |
 | `plan` | `Raster`, the plan as every column's floor and kind, with `Symmetry` drawn in the plan; `rect`, `poly`, `where`, `flight` |
+| `pieces` | `Course`, the plan of a board played in order (a water drop, a parkour run): pieces by step with their images, the links between steps, and an audit of each link's gap, drop, way across, landing cell and damage; `raster()` turns a course into a `Raster` |
 | `plangraph` | the walk over a plan: `graph`, `jumps`, `dijkstra`, `route`, `path`, `arrivals` per team, `pad_edges` |
 | `sight` | `line_clear`, `visibility`, `hidden`, with an opaque test for a plan or a built world |
 | `sketch` | the annotated sheet: map panels (a plan raster or a built top-down) with heights, places, markers, routes, jumps, zones and callouts; true-scale and unrolled sections; the checker's numbers against their targets |
@@ -86,6 +87,25 @@ marks a miss in red, so the review sees it first.
 **`examples/islets/` draws both.** `scripts/sketch.py` writes `renders/00-plan-sketch.png`, and `renders.py`
 writes `05-topdown-annotated.png`, where the plan's island outline is ghosted over the built blocks.
 
+## Course plans
+
+**A course is a board seen as a sequence.** Each `Course.add` is one step: a piece off the symmetry axis brings
+its image with it, and one whose image overlaps it is the middle. A piece links to every piece of the next step
+on its own side or in the middle.
+
+**The audit judges every link with the tick model.** It finds the nearest take-off and landing cells, names the
+gentlest way across, and follows the fall to the cell it comes down in. So it says whether that cell is water
+and whether it is still on the piece, and water elsewhere on the piece saves nobody. A level gap is judged by
+the same rule as the walk graph's jumps, so the course and the raster plan agree.
+
+**An image link is the mirror of the link it copies.** The nearest pair of cells can tie, and a tie broken two
+ways gave the two halves different landings; the audit now mirrors the first half's answer.
+
+**`examples/drop/` is a course in the plan phase:** eight steps from 120 down to 30, its audit, and a sketch with
+every link drawn from take-off to landing and the course unrolled as a section. Its audit failed twice before
+the sketch was drawn. A run off the galleries landed on the terrace's rim, a block short of its pool, and a
+sixteen-block drop cost more than half a player's health.
+
 ## Buildings and patterns
 
 **The roof is the studio's, and a test holds it there.** `build.RoofField` is a port of the studio's own
@@ -145,8 +165,8 @@ cd freeform/lib && python3 -m unittest discover -s tests -v
 **The tests check what each module promises.** They cover the studio-exported table, turns and their round trips,
 the physics numbers the boards measured, the headroom fix, ladders, footing, plan symmetry and fair arrivals,
 sight, slope without wrapping, save and load, rendering, a sketch sheet with every kind of panel, the roof
-against the studio's own, a house at 45 degrees with no gap in its walls, a word read from both sides, map.xml,
-and a Curio plot passing the plot check.
+against the studio's own, a house at 45 degrees with no gap in its walls, a word read from both sides, a course
+and its mirrored audit, map.xml, and a Curio plot passing the plot check.
 
 ## What it does not do yet
 
@@ -157,8 +177,9 @@ is held to the studio's formulas.
 **A plan holds a building's walls, not its roof.** A roof's overhang is not in the raster, so the checker cannot
 see an eave over the void; the read-back can.
 
-**Course plans are not here yet.** The boards built of pieces (the water drop, the wool run) need a `Pieces` plan
-beside `Raster`.
+**A course checks the nearest pair of cells only.** A player can leave a piece anywhere along its edge, and a
+take-off from the far end of a wide piece may miss what the nearest one reaches. The built world's read-back has
+to walk those.
 
 **`write_world.cs` names the studio's path in its project line.** C# cannot read an environment variable there, so
 a checkout elsewhere edits that one line. `world.write` finds the studio by `PGM_STUDIO_ROOT` for everything else.

@@ -322,8 +322,14 @@ class MapPanel(Panel):
             _text(self.d, (cx, cz), text, HALO, max(10, int(r * 1.2)), None)
 
     def callout(self, x, z, text, dx=30, dz=-24, colour=INK, size=11):
-        """A label set off from its point by a leader line: for a detail too small to write on."""
+        """A label set off from its point by a leader line: for a detail too small to write on. A label that
+        would run off the panel is turned to the other side."""
         cx, cz = self.px(x, z)
+        width = font(size).getlength(text)
+        if dx >= 0 and cx + dx + width > self.img.width:
+            dx = -dx
+        elif dx < 0 and cx + dx - width < 0:
+            dx = -dx
         tx, tz = cx + dx, cz + dz
         self.d.line([(cx, cz), (tx, tz)], fill=colour, width=1)
         self.d.ellipse([cx - 2, cz - 2, cx + 2, cz + 2], fill=colour)
@@ -350,8 +356,9 @@ class SectionPanel(Panel):
     def py(self, y):
         return (self.y1 - y) * self.sc
 
-    def raster(self, R, axis="x", at=0, colours=None, symmetry_pale=False):
-        """The raster's columns along x (at z = at) or along z (at x = at), each solid from its floor down."""
+    def raster(self, R, axis="x", at=0, colours=None, symmetry_pale=False, depth=None):
+        """The raster's columns along x (at z = at) or along z (at x = at), each solid from its floor down, or
+        `depth` blocks thick."""
         rng = range(max(self.s0, R.x_min if axis == "x" else R.z_min), min(self.s1, R.x_max if axis == "x" else R.z_max) + 1)
         for s in rng:
             x, z = (s, at) if axis == "x" else (at, s)
@@ -359,11 +366,13 @@ class SectionPanel(Panel):
             if h is None or h < self.y0 or kind in EMPTY:
                 continue
             c = (colours or {}).get(kind, (170, 160, 140))
-            self.d.rectangle([self.px(s), self.py(h), self.px(s + 1) - 1, self.img.height - 1], fill=c)
+            bottom = self.img.height - 1 if depth is None else self.py(h - depth)
+            self.d.rectangle([self.px(s), self.py(h), self.px(s + 1) - 1, bottom], fill=c)
         return self
 
-    def along(self, R, pts, colours=None, step=0.5):
-        """The raster unrolled along a polyline: s is the distance along it."""
+    def along(self, R, pts, colours=None, step=0.5, depth=None):
+        """The raster unrolled along a polyline: s is the distance along it. With depth, each column is drawn
+        that many blocks thick under its floor, as a floating piece is, instead of solid to the bottom."""
         L = [math.dist(a, b) for a, b in zip(pts, pts[1:])]
         total = sum(L)
         k, s = 0, 0.0
@@ -378,7 +387,8 @@ class SectionPanel(Panel):
             h, kind = R.at(x, z)
             if h is not None and kind not in EMPTY and h >= self.y0:
                 c = (colours or {}).get(kind, (170, 160, 140))
-                self.d.rectangle([self.px(self.s0 + s), self.py(h), self.px(self.s0 + s + step), self.img.height - 1], fill=c)
+                bottom = self.img.height - 1 if depth is None else self.py(h - depth)
+                self.d.rectangle([self.px(self.s0 + s), self.py(h), self.px(self.s0 + s + step), bottom], fill=c)
             s += step
         return self
 
@@ -407,6 +417,8 @@ class SectionPanel(Panel):
 
     def callout(self, s, y, text, dx=20, dy=-18, colour=INK, size=11):
         cx, cy = self.px(s), self.py(y)
+        if dx >= 0 and cx + dx + font(size).getlength(text) > self.img.width - 36:
+            dx = -dx                                              # turned back rather than cut off at the edge
         tx, ty = cx + dx, cy + dy
         self.d.line([(cx, cy), (tx, ty)], fill=colour, width=1)
         self.d.ellipse([cx - 2, cy - 2, cx + 2, cy + 2], fill=colour)

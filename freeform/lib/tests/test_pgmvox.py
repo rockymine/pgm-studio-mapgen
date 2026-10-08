@@ -18,6 +18,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 from pgmvox import B, World, audit, blocks, move, orient, plangraph, plot, render, sight, terrain, walk  # noqa: E402
 from pgmvox import build as BLD  # noqa: E402
 from pgmvox import facade as F  # noqa: E402
+from pgmvox import pieces as P  # noqa: E402
 from pgmvox.mapxml import Doc, E, duration, point  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
 from pgmvox.sketch import TEAM, SectionPanel, Sheet  # noqa: E402
@@ -287,6 +288,42 @@ class Facades(unittest.TestCase):
         self.assertEqual(w.get(0, 0, 5), (B.WOOL, 15))
         self.assertEqual(w.get(5, 0, 5), (B.WOOL, 4))
         self.assertEqual(sum(n.values()), 121)
+
+
+class Courses(unittest.TestCase):
+    def course(self, pool=True):
+        C = P.Course(Symmetry("mirror_x"))
+        C.add("start", P.box(-4, 3, 0, 4), 60)
+        C.add("ledge", P.box(-9, -6, 8, 12), 52)
+        C.add("pool", P.box(-6, 5, 16, 24), 30, **({"water": P.box(-6, 5, 16, 24)} if pool else {}))
+        return C
+
+    def test_images_and_the_middle(self):
+        C = self.course()
+        self.assertEqual([p.side for p in C.pieces], ["middle", "main", "image", "middle"])
+        self.assertEqual(min(x for x, _ in C.pieces[2].cells), 5)            # -9..-6 mirrored about -0.5
+        self.assertEqual(len(C.links()), 4)
+
+    def test_the_audit(self):
+        rows = self.course().audit()
+        self.assertTrue(all(r["how"] for r in rows))
+        self.assertEqual(rows[0]["damage"], move.fall_damage(8))
+        self.assertEqual(rows[1]["lands"], (-1 - rows[0]["lands"][0], rows[0]["lands"][1]))   # mirrored exactly
+        self.assertTrue(rows[2]["water"] and rows[2]["damage"] == 0)
+        dry = self.course(pool=False).audit()
+        self.assertEqual(dry[2]["damage"], move.fall_damage(22))
+
+    def test_a_gap_is_judged_as_the_walk_judges_it(self):
+        for g in range(0, 6):
+            how, _ = P.clears(g, 0)
+            self.assertEqual(how is not None, walk.gap_cleared(g), g)
+        self.assertEqual(move.jump_reach(1.3), 0.0)                         # higher than any jump
+
+    def test_a_course_is_a_raster(self):
+        R = self.course().raster()
+        self.assertEqual(R.at(-7, 10), (52, "floor"))
+        self.assertEqual(R.at(6, 10), (52, "floor"))
+        self.assertEqual(R.at(0, 6)[1], "void")
 
 
 class Terrain(unittest.TestCase):

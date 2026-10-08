@@ -91,15 +91,16 @@ def jump_reach(rise=0, how="sprint jump"):
     """The horizontal distance a jump carries before the feet come back down to `rise` blocks over the take-off
     (negative for lower); a gap is cleared when it is shorter than this less the player's width (0.6)."""
     vx, vy, acc = LEAVES[how]
-    x = y = 0.0
+    x = y = top = 0.0
     best = 0.0
     for _ in range(400):
         x += vx
         y += vy
+        top = max(top, y)
         vy = (vy - GRAVITY) * DRAG_Y
         vx = (vx + acc) * AIR
         if vy < 0 and y < rise:
-            return best
+            return best if top >= rise else 0.0          # a rise the jump never reaches is not reached at all
         best = x
     return best
 
