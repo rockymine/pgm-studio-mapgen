@@ -1,0 +1,31 @@
+jumps the plan allows (edge gap 1..3 in any direction, no more than 1 up), shortcuts only:
+   stone (-11,-43) y22 -> stone (-11,-40) y23, gap 2.0
+   stone (11,-43) y22 -> stone (11,-40) y23, gap 2.0
+   stone (-11,-40) y23 -> roof (-13,-38) y24, gap 1.4
+   stone (-11,-40) y23 -> stone (-11,-43) y22, gap 2.0
+   stone (11,-40) y23 -> roof (9,-38) y24, gap 1.4
+   stone (11,-40) y23 -> stone (11,-43) y22, gap 2.0
+   roof (-13,-38) y24 -> stone (-11,-40) y23, gap 1.4
+   roof (-12,-38) y24 -> stone (-11,-40) y23, gap 1.0
+   roof (9,-38) y24 -> stone (11,-40) y23, gap 1.4
+   roof (12,-38) y24 -> stone (11,-40) y23, gap 1.0
+   roof (-13,38) y24 -> stone (-11,40) y23, gap 1.4
+   roof (-12,38) y24 -> stone (-11,40) y23, gap 1.0
+   roof (9,38) y24 -> stone (11,40) y23, gap 1.4
+   roof (12,38) y24 -> stone (11,40) y23, gap 1.0
+   stone (-11,40) y23 -> roof (-13,38) y24, gap 1.4
+   stone (-11,40) y23 -> stone (-11,43) y22, gap 2.0
+   stone (11,40) y23 -> roof (9,38) y24, gap 1.4
+   stone (11,40) y23 -> stone (11,43) y22, gap 2.0
+   stone (-11,43) y22 -> stone (-11,40) y23, gap 2.0
+   stone (11,43) y22 -> stone (11,40) y23, gap 2.0
+stair ends without two cells of landing in line: 0
+red spawn: cistern 86 (drop 12 into water, swim up); mirador 94 (drop 12 into water, jump 1.4, jump 2.8); minaret 92 (drop 12 into water, jump 2.8, ladder)
+blue spawn: cistern 86 (drop 12 into water, swim up); mirador 94 (drop 12 into water, jump 1.4, jump 2.8); minaret 92 (drop 12 into water, jump 2.8, ladder)
+from cistern: mirador 61 (drop 5, jump 1.4, jump 2.8); minaret 45 (drop 5, ladder)
+from mirador: cistern 62 (drop 4, swim up); minaret 91 (jump 2.8, jump 1.4, ladder)
+from minaret: cistern 52 (drop 5, swim up); mirador 91 (drop 5, jump 1.4, jump 2.8)
+blue spawn reaches 6678 ground cells; the carrier is allowed 4372 of them (|z| < 32)
+cistern post: sees 0/9 of blue's pool, 0/2 of its doors, 80/125 points of blue's gardens
+mirador post: sees 0/9 of blue's pool, 0/2 of its doors, 66/125 points of blue's gardens
+minaret post: sees 0/9 of blue's pool, 0/2 of its doors, 74/125 points of blue's gardens
