@@ -152,8 +152,9 @@ PADS = [
          why="from the Middle's apron to the Bench beside the North hill's west side stair"),
     dict(key="mid-north-e", cells=(4, 5, -9, -8, 19), v=(1.08, 0.75, -2.74),
          why="its mirror: to the Bench beside the North hill's east side stair"),
-    dict(key="ledge-rim", cells=(-29, -27, -25, -23, 16), v=(-1.33, 1.55, -1.43),
-         why="from the Ledge's corner up to the Rim's corner: out of the low ground, onto the drop above a hill"),
+    dict(key="ledge-mid", cells=(-29, -27, -25, -23, 16), v=(2.21, 0.90, 1.88),
+         why="from the Ledge's corner over the lava onto the Middle's apron: the corner's way onto the Middle, "
+             "answering the diagonal steps in the other two corners"),
 ]
 # the drop: from the Rim straight down onto a side hill, 5 blocks, one way
 DROPS = [dict(key="rim-north", at=(-4, 3, -35, -35), onto="hill N", height=5)]

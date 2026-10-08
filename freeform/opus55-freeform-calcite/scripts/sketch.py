@@ -129,7 +129,7 @@ def routes(d, oy, lines):
         ("parkour: the Ledge to the Middle", [(-1, -21), (-1, -16), (-1, -12), (-1, -8)], (120, 220, 255), 3),
         ("pads: the Middle to the Bench by either side stair", [(-5, -8), (-13.5, -29.5)], (60, 200, 60), 3),
         ("diagonal steps: the arrows' corner to the Middle", [(23, -20), (19.5, -16.5), (15.5, -13.5), (11.5, -10.5), (8, -9)], (120, 220, 255), 3),
-        ("pad: the Ledge's corner to the Rim", [(-28, -24), (-40.5, -37.5)], (60, 200, 60), 2),
+        ("pad: the Ledge's corner onto the Middle", [(-28, -24), (-8, -7)], (60, 200, 60), 2),
     ]
     for k, (name, pts, col, w) in enumerate(R_):
         d.line([px(x, z, oy) for x, z in pts], fill=col, width=w)

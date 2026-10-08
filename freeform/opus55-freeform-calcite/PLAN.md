@@ -72,7 +72,7 @@ plan by `scripts/plan_check.py`; blue's are the same turned.
 | **The parkour:** two pillars from the Ledge onto the apron over the lava, gaps 2, 2 and 2, each a block higher | 30 from a side hill | no, but up is the point | a side hill's way back to the Middle, fast and exposed; a miss is death |
 | **The diagonal steps:** three pillars from the arrows' corner of the Ledge to the apron's corner, gaps of two by one | 40 from the arrows to the Middle | no, but up is the point | the corner's way onto the Middle, mirroring the pad in the opposite corner: restock arrows, then jump in |
 | **The Spring:** down a stairwell from the apron, past the golden apples, under the lava in a glass tunnel that forks, up either trench beside a side hill's front stair | 65 from the Middle to a side hill | no | the covered rotation: slower than a pad or the parkour, out of sight and through the apples; the attackers' way to arrive at a hill's front stair unseen |
-| **The pad from the Ledge's corner** up to the Rim's corner | 97 via the tunnel to a hill | yes | the way out of the low ground in the two corners without arrows: up to the Rim and onto a drop |
+| **The pad from the Ledge's corner** over the lava onto the Middle's apron | 18 ticks of flight | yes | the corner's way onto the Middle, in the two corners without arrows, answering the diagonal steps in the other two |
 | **The drops** from the Rim to the Bench, 6, all round | — | yes | a flank anywhere; costs a heart and a half, never a route back |
 
 **The Middle is the hub, as it should be in King of the Hill.** The shortest way from a spawn to a side hill
@@ -91,7 +91,7 @@ lands within a block of it.
 |---|---|---|---|
 | apron, west, to the Bench by the North hill's west stair | −1.08, 0.75, −2.74 | (−13.5, −29.5), y 23 | 23 out, 13 ticks, apex 23.5 |
 | apron, east, to the Bench by the North hill's east stair | 1.08, 0.75, −2.74 | (13.5, −29.5), y 23 | its mirror exactly |
-| Ledge corner to the Rim | −1.33, 1.55, −1.43 | the Rim at (−40.4, −37.4), y 29 | 19 out, 22 ticks, apex 29.9 |
+| Ledge corner onto the Middle's apron | 2.21, 0.90, 1.88 | the apron at (−7.4, −6.4), y 20 | 18 ticks, apex 21.9 |
 
 No pad lands lower than it starts, so none costs fall damage. The XML will still clear fall damage
 after a pad as Mush does, in case a player is pushed off course.
@@ -160,9 +160,14 @@ causeway sees them below.
 | The jump pads mirrored | The apron's pads come in mirrored pairs, the east one the west one's exact mirror |
 | Diagonal steps from the arrow spawner to the Middle, since the other corner has the pad | Three pillars from each arrows' corner to the apron's corner, gaps of two by one, each a block higher |
 
+## Built
+
+**The plan was built as approved, with one change.** The pad in the corners without arrows was to lift a
+player from the Ledge to the Rim. Flown against the built blocks, the search found no velocity that clears the
+Bench's face two blocks away and still lands on the Rim, so it now carries the player over the lava onto the
+Middle instead.
+`REPORT.md` has the rest.
+
 ## Decisions for you
 
-1. **Scale.** The playable bowl is 90 × 82 inside the quarry wall, against Mush Pit's 70 × 87. Keep it, or
-   tighten it by narrowing the Bench and the Rim to 6?
-2. **The corners.** Two diagonal corners carry arrows and steps to the Middle, the other two a pad up to the
-   Rim, which turns with the teams rather than mirroring. Is that the balance you meant?
+None open: the scale and the corners were confirmed, and the board is built.

@@ -231,7 +231,7 @@ def to_hill(D, prev, hill):
 def main():
     out = []
     # the pads: tune each, then report where it lands
-    targets = {"mid-north-w": (-13.5, -29.5), "mid-north-e": (12.5, -29.5), "ledge-rim": (-40.5, -37.5)}
+    targets = {"mid-north-w": (-13.5, -29.5), "mid-north-e": (12.5, -29.5), "ledge-mid": (-8.0, -7.0)}
     for pad in P.PADS:
         L = land_of_pad(pad)
         out.append(f"pad {pad['key']}: velocity {pad['v']} -> lands on the {L['hit']} at ({L['x']:.1f}, {L['z']:.1f}) y {L['y']:.0f}, "
@@ -289,7 +289,7 @@ ROUTES = [
     ("Bench round to the South hill, up its front stair", [(-50, -1), (-44, -1), (-37, -1), (-37, 28), (-10, 26), (-1, 20), (-1, 30)], ""),
     ("spawn tunnel to the Ledge, up the North hill's front stair", [(-50, -1), (-29, -21), (-1, -20), (-1, -30)], ""),
     ("Rim to the North hill, dropping on it", [(-50, -1), (-45, -7), (-41, -37), (-1, -35), (-1, -30)], ""),
-    ("spawn tunnel, Ledge pad to the Rim, drop on the North hill", [(-50, -1), (-28, -24), (-40, -37), (-1, -35), (-1, -30)], ""),
+    ("spawn tunnel, the corner pad onto the Middle", [(-50, -1), (-28, -24), (-8, -7), (-1, -1)], ""),
     ("spawn tunnel, Ledge, parkour onto the Middle", [(-50, -1), (-29, -21), (-1, -20), (-1, -9), (-1, -1)], ""),
     ("Middle to the North hill by the west pad and the west window", [(-1, -1), (-6, -8), (-14, -30), (-9, -31), (-8, -27), (-4, -28)], ""),
     ("Middle to the North hill by the east pad and the east window", [(-1, -1), (5, -8), (13, -30), (8, -31), (7, -27), (3, -28)], ""),
