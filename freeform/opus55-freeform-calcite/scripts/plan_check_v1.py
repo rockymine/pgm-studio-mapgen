@@ -13,7 +13,7 @@ import math
 
 import numpy as np
 
-import plan as P
+import plan_v1 as P
 from pad import fly
 
 R = P.build()
@@ -80,8 +80,6 @@ def jumps():
                     if not walkable(a, b):
                         continue
                     mid = [(i + di * s, j + dj * s) for s in range(1, g + 1)]
-                    if all(K[p, q] == P.KINDS["stair"] for p, q in mid):
-                        continue                    # across a stairwell cut into a floor: a hop, not a route
                     if all(not walkable(p, q) or H[p, q] <= min(H[i, j], H[a, b]) - 2 for p, q in mid) and \
                             all(K[p, q] != P.KINDS["wall"] for p, q in mid) and H[a, b] - H[i, j] <= 1 and \
                             not any(walkable(p, q) and H[p, q] >= H[i, j] - 1 for p, q in mid):
@@ -145,14 +143,12 @@ def graph(use_tunnel=True, use_pads=True, use_jumps=True, use_drops=True):
                     for x, z in cells:
                         add((P.ix(x), P.iz(z)), (li, lj), L["t"] / 5.0, f"pad {pad['key']}")
     if use_tunnel:
-        for t in P.TUNNELS:
-            pts = t["pts"]
+        for twin in (False, True):
+            pts = P.TUNNEL if not twin else [(*P.rot(x, z), y) for x, z, y in P.TUNNEL]
             L = sum(math.dist(p[:2], q[:2]) + abs(p[2] - q[2]) * 0.4 for p, q in zip(pts, pts[1:]))
-            for twin in (False, True):
-                a_, b_ = (t["a"], t["b"]) if not twin else (P.rot(*t["a"]), P.rot(*t["b"]))
-                A, B = (P.ix(a_[0]), P.iz(a_[1])), (P.ix(b_[0]), P.iz(b_[1]))
-                add(A, B, L, t["key"])
-                add(B, A, L, t["key"])
+            (ax, az, _), (bx, bz, _) = pts[0], pts[-1]
+            # enter from the spawn floor next to its mouth; come out onto the Ledge
+            add((P.ix(ax), P.iz(az + (1 if not twin else -1))), (P.ix(bx + (1 if not twin else -1)), P.iz(bz)), L, "tunnel")
     return edges, J
 
 
@@ -247,16 +243,14 @@ def main():
 # the named routes, red's, as waypoints the walk must pass through (blue's are the same turned)
 ROUTES = [
     ("main lane, spawn to the Middle", [(-50, -1), (-44, -1), (-36, -1), (-29, -1), (-12, -1), (-1, -1)], ""),
-    ("Bench round to the North hill, in by the side stair", [(-50, -1), (-44, -1), (-37, -1), (-37, -31), (-9, -31), (-8, -27), (-4, -28)], ""),
-    ("Bench round to the South hill, up its front stair", [(-50, -1), (-44, -1), (-37, -1), (-37, 28), (-10, 26), (-1, 20), (-1, 30)], ""),
-    ("spawn tunnel to the Ledge, up the North hill's front stair", [(-50, -1), (-29, -21), (-1, -20), (-1, -30)], ""),
     ("Rim to the North hill, dropping on it", [(-50, -1), (-45, -7), (-41, -37), (-1, -35), (-1, -30)], ""),
-    ("spawn tunnel, Ledge pad to the Rim, drop on the North hill", [(-50, -1), (-28, -24), (-40, -37), (-1, -35), (-1, -30)], ""),
-    ("spawn tunnel, Ledge, parkour onto the Middle", [(-50, -1), (-29, -21), (-1, -20), (-1, -9), (-1, -1)], ""),
-    ("Middle to the North hill by the pad and the side stair", [(-1, -1), (-8, -8), (-13, -29), (-9, -31), (-8, -27), (-4, -28)], ""),
-    ("Middle to the North hill through the Spring", [(-1, -1), (8, -6), (6, -20), (6, -25), (-1, -21), (-1, -30)], ""),
-    ("North hill back to the Middle by the parkour", [(-1, -30), (-1, -20), (-1, -9), (-1, -1)], ""),
-    ("North hill back to the Middle through the Spring", [(-1, -30), (-1, -21), (6, -25), (6, -20), (8, -6), (-1, -1)], ""),
+    ("tunnel to the Ledge, side stair to the North hill", [(-50, -6), (-29, -24), (-16, -25), (-10, -27), (-4, -29)], ""),
+    ("Bench round to the North hill", [(-50, -1), (-44, -1), (-37, -1), (-37, -29), (-5, -29)], ""),
+    ("Bench round to the South hill", [(-50, -1), (-44, -1), (-37, -1), (-37, 28), (-5, 28)], ""),
+    ("tunnel, Ledge, parkour onto the Middle", [(-50, -6), (-29, -24), (-1, -21), (-1, -9), (-1, -1)], ""),
+    ("tunnel, Ledge pad to the Rim, drop on the North hill", [(-50, -6), (-28, -24), (-40, -37), (-1, -35), (-1, -30)], ""),
+    ("Middle to the North hill by the pad", [(-1, -1), (-8, -8), (-13, -29), (-4, -29)], ""),
+    ("North hill back to the Middle by the parkour", [(-1, -29), (-1, -21), (-1, -9), (-1, -1)], ""),
 ]
 
 
