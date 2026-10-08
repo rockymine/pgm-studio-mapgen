@@ -1,7 +1,7 @@
 """Floe's plan, drawn before anything is built:
 
-1. THE FLOES — from above: snow shaded by the floe's height, bare ice blue, the holes and the void black, the crates
-   brown, each floe's spawn marked.
+1. THE SPARK — from above: the terracotta floor, its rim a shade darker, the eye and the void black, the blocks to
+   brace against cream, the ring the players spawn on.
 2. WHERE A HIT KILLS — from above again, every cell by the share of the directions a plain knockback-one hit could
    push a player in that ends off the ice: white for none, red for all.
 3. THE SAME AT KNOCKBACK THREE, from two minutes on.
@@ -17,11 +17,11 @@ from PIL import Image, ImageDraw
 
 import plan as P
 
-S = 6
-R = 42
-SNOW = {64: (205, 212, 222), 65: (226, 232, 240), 66: (246, 249, 252)}
-ICE = (120, 165, 225)
-CRATE = (150, 105, 60)
+S = 5
+R = 50
+CLAY = (217, 119, 87)                                            # the Claude terracotta
+RIM = (175, 88, 58)
+CRATE = (240, 238, 230)
 VOID = (14, 18, 30)
 DIRS = [(math.cos(a), math.sin(a)) for a in [i * math.pi / 16 for i in range(32)]]
 
@@ -50,20 +50,14 @@ def panel(d, ox, oy, title, colour):
                 continue
             a, b = ox + (x + R) * S, oy + (z + R) * S
             d.rectangle([a, b, a + S - 1, b + S - 1], fill=colour(x, z))
-            for dx, dz in ((1, 0), (0, 1)):                       # the step where one floe lies over the next
-                t2 = P.top(x + dx, z + dz)
-                if t2 is not None and t2 != P.top(x, z) and P.is_floor(x + dx, z + dz):
-                    if dx:
-                        d.line([(a + S - 1, b), (a + S - 1, b + S - 1)], fill=(90, 100, 120))
-                    else:
-                        d.line([(a, b + S - 1), (a + S - 1, b + S - 1)], fill=(90, 100, 120))
     d.text((ox, oy - 14), title, fill=(255, 255, 255))
 
 
 def floor_colour(x, z):
     if P.crate_at(x, z):
-        return CRATE if P.crate_at(x, z) == 1 else (115, 75, 40)
-    return ICE if P.surface(x, z) == "ice" else SNOW[P.top(x, z)]
+        return CRATE if P.crate_at(x, z) == 1 else (205, 200, 185)
+    rim = any(not P.is_floor(x + dx, z + dz) for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+    return RIM if rim else CLAY
 
 
 def heat(level):
@@ -81,11 +75,10 @@ def main(out):
     W = (2 * R + 1) * S
     img = Image.new("RGB", (3 * W + 80, W + 260), (30, 32, 40))
     d = ImageDraw.Draw(img)
-    panel(d, 20, 30, "1. the floes: snow by height (darker lower), blue ice, brown crates (dark: two high)", floor_colour)
-    for f in P.FLOES:
-        a, b = 20 + (f[0] + R) * S + S // 2, 30 + (f[1] + R) * S + S // 2
-        d.ellipse([a - 4, b - 4, a + 4, b + 4], outline=(40, 160, 60), width=2)
-        d.text((a + 6, b - 6), f"y {f[3]}", fill=(30, 60, 30))
+    panel(d, 20, 30, "1. the spark: terracotta, its rim darker; cream blocks (greyer: two high); the spawn ring", floor_colour)
+    c = 20 + R * S + S // 2, 30 + R * S + S // 2
+    r = P.SPAWN_R * S
+    d.ellipse([c[0] - r, c[1] - r, c[0] + r, c[1] + r], outline=(40, 160, 60), width=2)
     panel(d, 40 + W, 30, "2. where a plain hit kills, knockback one: the share of directions", heat(1))
     panel(d, 60 + 2 * W, 30, "3. the same at knockback three, from two minutes", heat(3))
     path = os.path.join(os.path.dirname(out), "plan-check.txt")

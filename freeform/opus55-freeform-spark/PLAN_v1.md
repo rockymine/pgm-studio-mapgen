@@ -1,10 +1,10 @@
-# Floe — the plan
+# Floe — the plan, superseded by the spark in PLAN.md
 
 A knockback board, planned and waiting on a review before anything is built. Five floes of lake ice hang in the
 sky over a polar sea, overlapping one another a step or two apart in height, with holes cut through them. Everyone
 has a stick whose knockback grows as the match goes on. One life each; the last player on the ice wins.
 
-![plan sketch](renders/00-plan-sketch.png)
+![plan sketch](renders/00-plan-sketch-v1.png)
 
 ## What the knockback maps do
 
@@ -55,7 +55,7 @@ of floor is walled on three sides by them. They are something to brace against, 
 
 ## Where a hit kills
 
-**The checker models a hit with Minecraft 1.8's own knockback code** (`renders/plan-check.txt`). The horizontal
+**The checker models a hit with Minecraft 1.8's own knockback code** (`renders/plan-check-v1.txt`). The horizontal
 speed is 0.4 plus 0.5 for each level, sprinting counting as one level, and 0.4 up. Air drag is 0.91 a tick, and on
 the ground the speed falls by the footing's slipperiness times 0.91. It is an upper bound, because a player who
 steers against the hit goes less far.
