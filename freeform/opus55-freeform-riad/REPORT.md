@@ -11,7 +11,7 @@ either side of a canal, and two spawn terraces a player steps off and cannot cli
 | What the review said | What was built |
 |---|---|
 | sink the gardens three, with stairs in and out | the four gardens and the Minaret's garden at 17, three under the ground, a stair on three sides of each |
-| a safe landing off the middle post | a landing east and west off the Cistern's tower, two under its top and two over the court, arched over the pool |
+| a safe landing off the middle post | a landing east and west off the Cistern's tower, two under its top and two over the court, arched over the pool; later, a short caged column onto each from the pool, so the climb can be taken in two stages |
 | shallow pools | the Cistern one deep, two at the foot of each water column so a swimmer can duck under the cage; the canal one deep; the spawn pools gone |
 | a two-block ledge, not a box, at the spawn | a terrace two over the back garden, a canopy over its back half |
 | no purple line | the carrier line and its XML removed; the carrier may go anywhere |
@@ -65,16 +65,20 @@ no block interaction.
 |---|---|
 | the canal's head at the court | 38 |
 | the Cistern's top, by the water column | 59 |
-| a Cistern landing, by the tower | 62 |
+| a Cistern landing, by its own column | 61 |
 | the Mirador's porch | 76 |
 | the Mirador's pad, across the bridge | 92 |
 | the Minaret's top, up a ladder | 84 |
 
-**The two spawns are exactly even.** Each reaches 7,109 standing cells on foot and every place in the table in
+**The middle post can be climbed in two stages.** From the pool a player swims up a short column onto a landing
+in 11, and from the landing drops back into the sump and swims up the tower's column to the top in 16 more.
+The direct way, straight up the tower's column, is 17 from the same place in the pool.
+
+**The two spawns are exactly even.** Each reaches 7,145 standing cells on foot and every place in the table in
 the same number of steps.
 
 **Between the posts the Cistern is the hub.** From the Cistern's top the Minaret is 32 and the Mirador's pad
-58, each by way of a landing; from one side post to the other is 80 to 88.
+58, each by way of a landing; from the Mirador's pad back to it is 55 and from the Minaret's top 43.
 
 **The roofs and the void-hole stones are reached only by jumping.** With running jumps allowed, a player from
 the spawn reaches the arcade roof's far end in 54 and a garden's void-hole stone in 72.

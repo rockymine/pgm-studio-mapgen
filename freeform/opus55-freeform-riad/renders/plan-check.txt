@@ -73,8 +73,8 @@ stair ends without two cells of landing in line: 0
 red spawn: cistern 64 (swim up); mirador 88 (jump 2.8, jump 2.0, jump 1.4, jump 2.8); minaret 87 (jump 2.8, ladder)
 blue spawn: cistern 64 (swim up); mirador 88 (jump 2.8, jump 2.0, jump 1.4, jump 2.8); minaret 87 (jump 2.8, ladder)
 from cistern: mirador 55 (jump 1.4, jump 2.8); minaret 39 (ladder)
-from mirador: cistern 62 (drop 4, swim up); minaret 91 (jump 2.8, jump 1.4, ladder)
-from minaret: cistern 52 (drop 5, swim up); mirador 90 (drop 5, jump 1.4, jump 2.0, jump 1.4, jump 2.8)
+from mirador: cistern 64 (jump 2.8, jump 1.4, swim up); minaret 91 (jump 2.8, jump 1.4, ladder)
+from minaret: cistern 56 (drop 5, swim up, drop 3 into water, swim up); mirador 90 (drop 5, jump 1.4, jump 2.0, jump 1.4, jump 2.8)
 blue spawn reaches 6557 ground cells
 from the ground back onto a spawn terrace: neither
 cistern post: sees 9/9 of blue's spawn terrace, 89/155 points of blue's half

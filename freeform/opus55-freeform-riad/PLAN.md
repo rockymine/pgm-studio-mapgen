@@ -68,7 +68,7 @@ After each carrier's death it comes back 15 seconds later at one of the three, c
 
 | Post | Where | How it is reached | The fight it makes |
 |---|---|---|---|
-| **The Cistern** | the middle: a banner on a tower 3 × 3 in a pool one deep, four over the court | by swimming up one of two water columns caged in glass against the tower's north and south faces. The pool is two deep at their feet, so a player ducks under the cage's lip and rises | the mosh pit round the columns. The carrier leaves by a landing: a bridge east or west off the tower, two under its top and two over the court, which nobody can climb onto from below |
+| **The Cistern** | the middle: a banner on a tower 3 × 3 in a pool one deep, four over the court | by swimming up one of two water columns caged in glass against the tower's north and south faces. The pool is two deep at their feet, so a player ducks under the cage's lip and rises | the mosh pit round the columns. A shorter column rises from the pool onto each landing, so a climber can stop there, out of the water, and drop back in for the tower's column. The carrier leaves by a landing: a bridge east or west off the tower, two under its top and two over the court, which nobody can climb onto from below |
 | **The Mirador** | the west: a banner on a 3 × 3 pad at the end of a bridge over the void, ten long and three wide | from a porch four over the ground. Red climbs to it by a stair from the north balcony, blue by one from the south, and the court's side is a drop only | the waiting room: both teams on the porch, then a run across ten blocks of bridge in the open, in bow range of both balconies below |
 | **The Minaret** | the east: a banner on a pillar 3 × 3, five over a sunken garden | by a ladder on any of its four faces | four ways up and one top. The court and the ring stand three over the garden and look down on the climbers. The void behind is a knock-off |
 
@@ -108,4 +108,5 @@ holes and the stones in the four garden holes, and nothing else.
 | Review | What it said | What changed |
 |---|---|---|
 | first | keep the middle post; the bridge is fine; build | built |
+| the rebuilt world | swim up to a landing first, rest, then drop back in for the tower's column | a shorter caged column from the pool onto each landing, four in all |
 | the built world | gardens three down with stairs; a landing off the middle post; pools one deep; a spawn left by a two-block ledge, not a box; no carrier line; trees for cover; void holes with a little parkour; a better look | the gardens and the Minaret's garden sunk to 17 with stairs on three sides; landings east and west off the tower at 22; the pools one deep with a sump at each column; terraces at 22 with canopies; the carrier line and its XML removed; oaks and birches; void holes in the court and the gardens with stones; arcades with arches, parapets, a stepped underside, a domed kiosk and a fountain house |

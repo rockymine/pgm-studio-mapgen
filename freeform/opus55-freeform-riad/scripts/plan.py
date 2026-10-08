@@ -5,7 +5,8 @@ its dead do not come back. When the carrier dies the flag is gone for a while an
 three posts, chosen at random:
 
     the Cistern   the middle: a banner on a tower in a pool one deep, reached only by swimming up one of two
-                  water columns caged against its faces; a landing either side, two under the top, takes the
+                  water columns caged against its faces; a landing either side, two under the top, reached by
+                  its own shorter column from the pool, is a resting point on the way up and takes the
                   carrier back to the court
     the Mirador   the west: a banner on a pad at the end of a bridge over the void, ten long, from a raised
                   porch that each team climbs to by its own stair
@@ -102,6 +103,10 @@ def build():
     R.cell(0, 2, 24, "swim")                                   # a water column on its north and south faces,
     for x, z in ((-1, 2), (1, 2), (0, 3)):                     # caged in glass from 20 to 24, over a sump two
         R.cell(x, z, 24, "cage")                               # deep: duck under the cage's lip, swim up
+    for sx in (-1, 1):                                         # and a shorter column up onto each landing from
+        R.cell(4 * sx, 2, 22, "swim")                          # the pool beside it: swim to the landing, rest,
+        for x, z in ((3 * sx, 2), (5 * sx, 2), (4 * sx, 3)):   # drop back in and take the tower's column
+            R.cell(x, z, 22, "cage")
     R.rect(2, 6, -1, 1, 22, both=False)                        # the landings: a causeway east and west off the
     R.rect(-6, -2, -1, 1, 22, both=False)                      # tower, two under its top and two over the court
     for sx in (-1, 1):                                         # the court's void holes, a stone in each
@@ -172,7 +177,7 @@ POSTS = [dict(key="cistern", name="the Cistern", at=(0.5, 25, 0.5), yaw=None),
          dict(key="mirador", name="the Mirador", at=(-41.5, 25, 0.5), yaw=90),
          dict(key="minaret", name="the Minaret", at=(30.5, 23, 0.5), yaw=-90)]
 SPAWNS = dict(red=(0.5, 23, -51.5, 0), blue=(0.5, 23, 52.5, 180))
-SUMP = {(x, z) for x in range(-2, 3) for z in (2, 3, 4, -2, -3, -4)}    # the water two deep at the columns' feet
+SUMP = {(x, z) for x in range(-5, 6) for z in (2, 3, 4, -2, -3, -4)}    # the water two deep at the columns' feet
 
 
 _R = build()
