@@ -1,0 +1,178 @@
+<map proto="1.5.0">
+<name>Saltgate</name>
+<version>0.1.0</version>
+<objective>Attackers: take the Sea Gate, blow both powder stores, and carry the city's banner down to the Sea Gate. Defenders: hold out for 15 minutes.</objective>
+<gamemode>ad</gamemode>
+<authors>
+    <author>Claude (freeform generator)</author>
+</authors>
+<teams>
+    <team id="attackers" color="red" max="16">Attackers</team>
+    <team id="defenders" color="blue" max="16">Defenders</team>
+</teams>
+<time result="defenders">15m</time>
+<broadcasts>
+    <tip after="2s" filter="only-attackers">Your gangplanks open after 20 seconds. Take the Sea Gate!</tip>
+    <tip after="2s" filter="only-defenders">Man the sea wall. The attackers land in 20 seconds.</tip>
+</broadcasts>
+<kits>
+    <kit id="base-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="iron sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" amount="2" material="golden apple"/>
+        <item slot="3" amount="16" material="cooked beef"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" material="chainmail chestplate"/>
+        <leggings unbreakable="true" material="iron leggings"/>
+        <boots unbreakable="true" material="iron boots">
+            <enchantment level="2">feather_falling</enchantment>
+        </boots>
+        <effect duration="3s" amplifier="255">resistance</effect>
+        <game-mode>survival</game-mode>
+    </kit>
+    <!-- the attackers carry a pick that cuts obsidian; the defenders more arrows -->
+    <kit id="attacker-kit" parent="base-kit">
+        <item slot="4" unbreakable="true" material="diamond pickaxe">
+            <enchantment level="2">efficiency</enchantment>
+        </item>
+        <item slot="8" amount="24" material="arrow"/>
+    </kit>
+    <kit id="defender-kit" parent="base-kit">
+        <item slot="8" amount="40" material="arrow"/>
+    </kit>
+</kits>
+<filters>
+    <team id="only-attackers">attackers</team>
+    <team id="only-defenders">defenders</team>
+    <after id="warmup-over" duration="20s">
+        <match-started/>
+    </after>
+    <completed id="sea-gate-taken">sea-gate</completed>
+    <all id="stores-blown">
+        <completed>west-store</completed>
+        <completed>east-store</completed>
+    </all>
+    <not id="stage-1"><filter id="sea-gate-taken"/></not>
+    <all id="stage-2">
+        <filter id="sea-gate-taken"/>
+        <not><filter id="stores-blown"/></not>
+    </all>
+    <all id="stage-3">
+        <filter id="sea-gate-taken"/>
+        <filter id="stores-blown"/>
+    </all>
+    <!-- only the objectives' blocks may be broken: the stores' obsidian and the banner's wool -->
+    <any id="breakable">
+        <material>obsidian</material>
+        <material>wool:10</material>
+    </any>
+</filters>
+<spawns>
+    <default>
+        <region yaw="0"><point>0.5,50,-40.5</point></region>
+    </default>
+    <spawns team="attackers" kit="attacker-kit">
+        <spawn filter="stage-1"><region yaw="0"><point>0.5,25,-61.5</point></region></spawn>
+        <spawn filter="stage-2"><region yaw="0"><point>0.5,23,-27.5</point></region></spawn>
+        <spawn filter="stage-3"><region yaw="0"><point>0.5,31,13.5</point></region></spawn>
+    </spawns>
+    <spawns team="defenders" kit="defender-kit">
+        <spawn filter="stage-1"><region yaw="180"><point>0.5,27,0.5</point></region></spawn>
+        <spawn filter="stage-2"><region yaw="180"><point>0.5,31,20.5</point></region></spawn>
+        <spawn filter="stage-3"><region yaw="180"><point>-20.5,35,50.5</point></region></spawn>
+    </spawns>
+</spawns>
+<respawn delay="4s"/>
+<regions>
+    <!-- the gates, by the stage whose fall opens them -->
+    <union id="gates-warmup">
+        <cuboid min="-27,25,-55" max="-24,27,-54"/>
+        <cuboid min="-2,25,-55" max="1,27,-54"/>
+        <cuboid min="24,25,-55" max="27,27,-54"/>
+    </union>
+    <union id="gates-A">
+        <cuboid min="-19,27,-4" max="-16,30,-3"/>
+        <cuboid min="-19,27,5" max="-16,30,6"/>
+        <cuboid min="17,31,11" max="20,34,12"/>
+        <cuboid min="17,31,20" max="20,34,21"/>
+    </union>
+    <union id="gates-B">
+        <cuboid min="-3,31,22" max="3,36,23"/>
+        <cuboid min="-2,35,44" max="2,39,45"/>
+        <cuboid min="11,35,51" max="12,38,54"/>
+    </union>
+    <!-- the Sea Gate's capture ground, in the yard behind the gate -->
+    <cuboid id="sea-gate-capture" min="-6,22,-26" max="6,28,-20"/>
+    <cuboid id="sea-gate-ring" min="-6,22,-26" max="6,23,-20"/>
+    <!-- the defenders' posterns through the citadel wall -->
+    <union id="posterns">
+        <cuboid min="36,30,23" max="38,36,26"/>
+        <cuboid min="-38,30,23" max="-36,36,26"/>
+    </union>
+    <apply enter="only-defenders" region="posterns" message="Only the defenders know the postern's key."/>
+    <!-- each team's spawn is closed to the other: the flagship, and the defenders' squares -->
+    <cuboid id="flagship" min="-6,24,-66" max="6,40,-55"/>
+    <apply enter="only-attackers" region="flagship" message="You may not board the enemy's flagship!"/>
+    <block id="banner-slot">0,23,-23</block>
+    <apply block-place="always" region="banner-slot"/>
+    <apply block-break="breakable" block-place="never" message="The town's stones will not move."/>
+</regions>
+<actions>
+    <trigger scope="match" filter="warmup-over">
+        <action><fill region="gates-warmup" material="air"/></action>
+    </trigger>
+    <trigger scope="match" filter="sea-gate-taken">
+        <action>
+            <fill region="gates-A" material="air"/>
+            <message text="`c`lThe Sea Gate has fallen! `7The powder stores' doors are open and the spawns move up."/>
+        </action>
+    </trigger>
+    <trigger scope="match" filter="stores-blown">
+        <action>
+            <fill region="gates-B" material="air"/>
+            <message text="`c`lBoth powder stores are blown! `7The citadel's gate and the keep's doors are open."/>
+        </action>
+    </trigger>
+</actions>
+<control-points>
+    <control-point id="sea-gate" name="the Sea Gate" capture="sea-gate-capture" progress="sea-gate-ring" captured="sea-gate-ring"
+                   initial-owner="defenders" capture-filter="only-attackers" permanent="true" capture-time="15s" show-progress="true"/>
+</control-points>
+<destroyables>
+    <destroyable id="west-store" name="West Powder Store" owner="defenders" materials="obsidian" completion="100%">
+        <region><cuboid min="-18,27,0" max="-17,29,1"/></region>
+    </destroyable>
+    <destroyable id="east-store" name="East Powder Store" owner="defenders" materials="obsidian" completion="100%">
+        <region><cuboid min="18,31,15" max="19,33,16"/></region>
+    </destroyable>
+</destroyables>
+<wools craftable="false">
+    <wool id="banner" team="attackers" color="purple" location="0.5,35,54.5" monument="banner-slot"/>
+</wools>
+<toolrepair>
+    <tool>iron sword</tool>
+    <tool>bow</tool>
+    <tool>diamond pickaxe</tool>
+</toolrepair>
+<itemkeep>
+    <item>iron sword</item>
+    <item>bow</item>
+    <item>diamond pickaxe</item>
+</itemkeep>
+<itemremove>
+    <item>leather helmet</item>
+    <item>chainmail chestplate</item>
+    <item>iron leggings</item>
+    <item>iron boots</item>
+</itemremove>
+<kill-rewards>
+    <kill-reward>
+        <item amount="4" material="arrow"/>
+    </kill-reward>
+</kill-rewards>
+<world>
+    <timeset>3000</timeset>
+    <timelock>on</timelock>
+</world>
+</map>
