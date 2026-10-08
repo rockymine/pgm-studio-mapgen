@@ -24,7 +24,8 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `sketch` | the annotated sheet: map panels (a plan raster or a built top-down) with heights, places, markers, routes, jumps, zones and callouts; true-scale and unrolled sections; the checker's numbers against their targets |
 | `build` | `Frame`, a building's own axes at any heading; `RoofField`, the studio's six roof forms block for block, and `lay_roof`; `house`; `parapet`, `site`, `stairs`, `ladder`, `Claims` |
 | `facade` | face patterns (`band`, `courses`, `flutes`, `panels`, `slits`, `checker`, `windows`, `glyph_row`, `word`) set back or flush on an `extrude`d mass, `coffer`, `top_course`; floor fields (`border`, `medallion`, `corners`, `diamonds`, `steps`, `star`, `cross`, `tiles`) composed by `first_of` and laid by `carpet` |
-| `terrain` | `mountain_ring`, `slope_deg`, `lay` (ground painted by slope, rock bands, snow line), `underside`, `cloud_deck` |
+| `terrain` | `slope_deg` as the studio reads it; `lay` (ground painted by slope, a snow line); `Strata`, `bed_offset` and `beds` (rock beds that tilt and fold); `mountain_ring`; `underside` and `root_depth` (cones, flutes, spires); `cloud_deck` |
+| `landform` | heightfield operations: `watercourse` (reaches and falls), `canyon` and washes, `spire`, `butte`, `scarp`, `terraces`, `stage`, `grade` (a route held to a grade), `coast`, `blend` |
 | `walk` | the voxel walk over built blocks with `MoveRules`; `no_stand_above`, `catchers`, `unreached`, `nearest`, `gap_cleared` |
 | `audit` | `footing`: blocks that would fall, or have nothing to hang on |
 | `render` | `iso`, `elevation`, `cutaway` along any polyline, x-ray, `trim`, all in the studio's colours |
@@ -125,6 +126,31 @@ its edge. The ground under a storey is walked only where two blocks of air are l
 **Solids are the repository's one solid module.** `pgmvox.solid` loads `tools/sculpt/solid.py` rather than copying
 it, and adds `fill` and `image`. A sculpture is drawn once and its other half is its image under the plan's own
 symmetry, block for block.
+
+## Terrain
+
+**Slope is read as the studio reads it, and a test holds it there.** `slope_deg` is the studio's `SurfaceGradient`:
+Horn's gradient over the tops two cells either side, a missing neighbour level with the cell, whole degrees.
+`data/export_slopes.cs` writes the studio's answers over sixteen grounds at windows one to three, and the test
+wants every cell. The library first read one cell either side, and a gentle grade quantised to blocks came out
+0 and 27 degrees by turns instead of the 14 it is.
+
+**Rock is laid in beds.** `Strata` draws a sequence of beds from weighted choices with a thickest for each, one
+for a bed that is only ever a block. `bed_offset` tilts and folds them across the ground, and `beds` hands them to
+`lay`, so a cliff or a canyon wall shows its beds dipping across it.
+
+**A landform is an operation on heights.** `pgmvox.landform` cuts rivers, canyons and terraces and lifts spires,
+buttes and scarps. It grades routes, meets the sea at an outline, and blends one terrain into another. Each takes
+the board's own numbers, and each only cuts or only lifts unless it says otherwise, so the board decides the order.
+
+**A watercourse never climbs.** Its bed holds level in reaches and steps down in falls, which is how a river leaves
+a canyon and drops to the sea. `lowest` keeps a bed off the sea floor. A path that starts out at sea once held a
+canyon and its river fifteen blocks under the water all the way inland.
+
+**`examples/vale/` uses every landform on one stretch of ground.** A coast, a scarp with a butte and a spire, a
+canyon through it into a river with falls, a graded road, a terraced hill and a floating island with a fluted,
+spired underside. Its first build showed a whole board lifted to a flat plateau: a spire raised every column to
+its own base height. A test now holds a spire to its radius.
 
 ## Course plans
 

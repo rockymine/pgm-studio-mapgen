@@ -1,10 +1,11 @@
-"""Terrain at block scale: heightfields, the paint that follows their slope, scenery mountains outside the play,
-the undersides of floating ground, and a sea of cloud.
+"""Terrain at block scale: heights read and painted by slope, rock beds, scenery mountains outside the play, the
+undersides of floating ground, and a sea of cloud. The landforms that shape the heights are in `landform`.
 
+    deg = slope_deg(H)                            # each column's slope, as the studio's SurfaceGradient reads it
+    beds = beds(Strata(...), bed_offset(H.shape, dip=(0.04, 0), fold=3))
+    lay(w, H, mask, top=by_angle([...]), bands=beds)   # columns up to H, painted by slope, rock in beds
     H = mountain_ring(X, Z, clear=120, ...)       # a ring of separate massifs rising outside a clear radius
-    deg = slope_deg(H)                            # each column's slope in degrees, without wrapping at the edges
-    lay(w, H, mask, paint)                        # columns up to H, painted by a rule per column
-    underside(w, mask, top_y, depth, paint)       # a tapering underside below a floating floor
+    underside(w, mask, top_y, root_depth(mask, flutes=4, spires=12))
     cloud_deck(w, y, mask, seed)                  # a deck of cloud with billows and breaks
 
 The numbers that give a board its look stay in the board's plan; nothing here is a recipe.
@@ -37,13 +38,50 @@ def mountain_ring(X, Z, clear, rise=45.0, base=45.0, relief=45.0, crest=80.0, se
     return h
 
 
-def slope_deg(H):
-    """The slope of every column in degrees, by Horn's 3x3 gradient as the studio reads it, edges padded by their
-    own values so the west edge is not a neighbour of the east."""
-    P = np.pad(H.astype(float), 1, mode="edge")
-    gx = ((P[2:, :-2] + 2 * P[2:, 1:-1] + P[2:, 2:]) - (P[:-2, :-2] + 2 * P[:-2, 1:-1] + P[:-2, 2:])) / 8.0
-    gz = ((P[:-2, 2:] + 2 * P[1:-1, 2:] + P[2:, 2:]) - (P[:-2, :-2] + 2 * P[1:-1, :-2] + P[2:, :-2])) / 8.0
-    return np.degrees(np.arctan(np.hypot(gx, gz)))
+SLOPE_WINDOW = 2                                  # the studio's SurfaceGradient.Window
+
+
+def slope_deg(H, mask=None, window=SLOPE_WINDOW):
+    """Each column's slope in whole degrees from level, 0 to 89, as the studio's SurfaceGradient reads it: Horn's
+    3x3 gradient over the tops `window` cells either side, a neighbour off the board or outside `mask` read as
+    level with the column itself, rounded half to even. The window is two because ground quantised to whole
+    blocks is a staircase, and one cell reads each step (27 degrees on a riser, 0 on a tread) instead of the grade."""
+    H = np.asarray(H).astype(np.int64)
+    sx, sz = H.shape
+    m = np.ones(H.shape, bool) if mask is None else np.asarray(mask, bool)
+    step = max(1, int(window))
+
+    def top(dx, dz):
+        out = H.copy()
+        a0, a1 = max(0, -dx * step), min(sx, sx - dx * step)
+        b0, b1 = max(0, -dz * step), min(sz, sz - dz * step)
+        if a0 < a1 and b0 < b1:
+            src = H[a0 + dx * step:a1 + dx * step, b0 + dz * step:b1 + dz * step]
+            ok = m[a0 + dx * step:a1 + dx * step, b0 + dz * step:b1 + dz * step]
+            out[a0:a1, b0:b1] = np.where(ok, src, H[a0:a1, b0:b1])
+        return out
+    along_x = top(-1, -1) + 2 * top(-1, 0) + top(-1, 1) - top(1, -1) - 2 * top(1, 0) - top(1, 1)
+    along_z = top(-1, -1) + 2 * top(0, -1) + top(1, -1) - top(-1, 1) - 2 * top(0, 1) - top(1, 1)
+    rise = np.hypot(along_x, along_z) / (8.0 * step)
+    deg = np.minimum(89, np.round(np.degrees(np.arctan(rise)))).astype(int)
+    return np.where(m, deg, 0)
+
+
+def _slope_cases(path, seed=5):
+    """Write the test grounds data/export_slopes.cs reads: ramps, a staircase, a cliff, noise, and holes."""
+    import json
+    rng = np.random.default_rng(seed)
+    X, Z = np.meshgrid(np.arange(24), np.arange(20), indexing="ij")
+    grounds = [X // 1, X // 2, X // 3, (X + Z) // 2, np.where(X > 11, 40, 34), 30 + 6 * noise.fbm((24, 20), 6, 3, seed=1),
+               30 + 18 * noise.fbm((24, 20), 4, 3, seed=2), rng.integers(20, 40, (24, 20))]
+    cases = []
+    for k, g in enumerate(grounds):
+        g = np.asarray(g).astype(int)
+        hole = (np.hypot(X - 12, Z - 10) < 4) if k % 2 else (X + 2 * Z) % 11 == 0
+        for m in (np.ones(g.shape, bool), ~hole):
+            cases.append([[int(g[i, j]) if m[i, j] else None for j in range(g.shape[1])] for i in range(g.shape[0])])
+    with open(path, "w") as f:
+        json.dump(cases, f)
 
 
 def by_angle(stops):
@@ -66,12 +104,76 @@ def banded(choices, period=6, offset=None):
     return fill
 
 
+class Strata:
+    """A sequence of rock beds by height, drawn from weighted choices: each (block, weight, thickest), a bed `thickest`
+    blocks at most, 1 for a bed that is only ever one block (the red in a mesa). A weight counts per draw, and no
+    bed follows itself, which lifts the rarer beds a little (a weight of 0.04 among four came out 9 in 100). Two
+    draws of one block would read as one bed. Below `start` the rock is `below`; past the drawn length the
+    sequence repeats."""
+
+    def __init__(self, choices, length=160, seed=0, start=0, below=(B.STONE, 0)):
+        rng = np.random.default_rng(seed)
+        w = np.array([c[1] for c in choices], float)
+        self.seq = []
+        while len(self.seq) < length:
+            block, _, thickest = choices[int(rng.choice(len(choices), p=w / w.sum()))]
+            if self.seq and self.seq[-1] == block:
+                continue
+            self.seq += [block] * int(rng.integers(1, max(1, thickest) + 1))
+        self.start, self.below = start, below
+
+    def __call__(self, y):
+        if y < self.start:
+            return self.below
+        return self.seq[(y - self.start) % len(self.seq)]
+
+    def thicknesses(self):
+        """[(block, thickness)] bed by bed, for a legend or a test."""
+        out = []
+        for b in self.seq:
+            if out and out[-1][0] == b:
+                out[-1][1] += 1
+            else:
+                out.append([b, 1])
+        return [tuple(o) for o in out]
+
+
+def bed_offset(shape, dip=(0.0, 0.0), fold=0.0, cell=24, seed=0):
+    """How far the beds are lifted at each column: a planar dip (blocks of lift per block east and south) and folds
+    of `fold` blocks from noise, so the beds tilt and bend across a cliff instead of running dead level."""
+    sx, sz = shape
+    X, Z = np.meshgrid(np.arange(sx), np.arange(sz), indexing="ij")
+    off = dip[0] * X + dip[1] * Z
+    if fold:
+        off = off + fold * noise.fbm(shape, cell, 3, seed=seed)
+    return np.round(off).astype(int)
+
+
+def beds(strata, offset=None, flecks=(), seed=0):
+    """A column fill for lay(bands=...): the strata at each height, shifted by the column's offset, with flecks:
+    [(in_bed, block, chance)], another block now and then inside one bed (cobble in stone, gravel in andesite)."""
+    rng = np.random.default_rng(seed)
+
+    def fill(i, k, ys):
+        o = 0 if offset is None else int(offset[i, k])
+        out = []
+        for y in ys:
+            b = strata(y - o)
+            for bed, other, chance in flecks:
+                if b == bed and rng.random() < chance:
+                    b = other
+                    break
+            out.append(b)
+        return out
+    return fill
+
+
 def lay(w, H, mask=None, top=None, under=(B.DIRT, 0), rock=(B.STONE, 0), dirt_depth=3, snow_above=None,
         snow=(B.SNOW, 0), bands=None, from_y=1):
     """Columns of ground up to H (world heights): rock, then `dirt_depth` of `under`, then the top block, which
     `top(deg, h)` chooses by slope (default grass); above snow_above the top is snow with a layer over it.
     bands(i, k, ys) may paint the rock instead."""
-    deg = slope_deg(H)
+    deg = slope_deg(H, mask)
     sx, sz = H.shape
     for i in range(sx):
         for k in range(sz):
@@ -98,15 +200,36 @@ def lay(w, H, mask=None, top=None, under=(B.DIRT, 0), rock=(B.STONE, 0), dirt_de
     return deg
 
 
+def root_depth(mask, cone=3.2, power=0.85, rough=0.35, flutes=0.0, flute_cell=5, spires=0.0, spire_cell=18,
+               cap=None, seed=0):
+    """How far a floating island's underside hangs under each column: a cone deeper inland (cone * edge
+    distance ** power), roughened by `rough`, with vertical flutes of `flutes` blocks and spires of up to `spires`
+    blocks hanging from it, as the karst islands were cut. An array for underside(depth=...)."""
+    d = np.maximum(edge_depth(mask), 0).astype(float) + 1
+    shape = mask.shape
+    n = noise.fbm(shape, 12, 3, seed=seed)
+    out = cone * d ** power * (1 + rough * n)
+    if flutes:
+        out += flutes * np.abs(noise.fbm(shape, flute_cell, 2, seed=seed + 1))
+    if spires:
+        sp = noise.fbm(shape, spire_cell, 2, seed=seed + 2)
+        out += spires * np.maximum(sp - 0.25, 0) / 0.75
+    if cap is not None:
+        out = np.minimum(out, cap)
+    return np.where(mask, np.maximum(1, np.round(out)), 0).astype(int)
+
+
 def underside(w, mask, top_y, depth=lambda d: 1 + int(1.6 * min(d, 7) ** 0.9), paint=None, rng=None, jitter=1):
     """Hang a tapering underside below a floating floor: under every column of mask (a (sx, sz) boolean over the
-    world), from top_y - 1 down by depth(edge_depth) blocks plus a little jitter, painted by paint(k, x, z) for
-    the k-th block down (default stone). The underside lies wholly inside the floor's outline, so a player falling
-    past an edge never touches it."""
+    world), from top_y - 1 down by depth blocks plus a little jitter, painted by paint(k, x, z) for the k-th block
+    down (default stone). depth is a function of the column's edge depth, or an array (root_depth). The underside
+    lies wholly inside the floor's outline, so a player falling past an edge never touches it."""
     ed = edge_depth(mask)
     rng = rng or np.random.default_rng(0)
+    table = depth if isinstance(depth, np.ndarray) else None
     for i, k in np.argwhere(mask):
-        n = depth(int(ed[i, k])) + (int(rng.integers(0, jitter + 1)) if jitter else 0)
+        n = (int(table[i, k]) if table is not None else depth(int(ed[i, k]))) + \
+            (int(rng.integers(0, jitter + 1)) if jitter else 0)
         for j in range(1, n + 1):
             y = top_y - j
             if y < 0:

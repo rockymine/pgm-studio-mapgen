@@ -21,6 +21,7 @@ from pgmvox import facade as F  # noqa: E402
 from pgmvox import pieces as P  # noqa: E402
 from pgmvox import objectives as O  # noqa: E402
 from pgmvox import solid as SOL  # noqa: E402
+from pgmvox import landform as LF, noise  # noqa: E402
 from pgmvox.mapxml import Doc, E, duration, point  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
 from pgmvox.sketch import TEAM, SectionPanel, Sheet  # noqa: E402
@@ -176,6 +177,43 @@ class Plan(unittest.TestCase):
         op = sight.plan_opaque(R)
         self.assertFalse(sight.line_clear(sight.eye(-15, 11, 0), sight.target(15, 11, 0), op))
         self.assertTrue(sight.line_clear(sight.eye(-2, 13, 0), sight.target(15, 11, 0), op))
+
+
+class Landforms(unittest.TestCase):
+    def setUp(self):
+        self.X, self.Z = np.meshgrid(np.arange(-60, 60), np.arange(-60, 60), indexing="ij")
+        self.H = 40 + 12 * noise.fbm(self.X.shape, 30, 3, seed=3) - 0.05 * self.Z
+
+    def test_a_river_never_climbs_and_only_cuts(self):
+        X, Z, H = self.X, self.Z, self.H
+        path = [(-50, -55), (0, 0), (40, 55)]
+        H2, river = LF.watercourse(H, X, Z, path, width=5, depth=2, lowest=20)
+        self.assertTrue((H2 <= H + 1e-9).all())
+        s, bed, _ = LF._sample(H2, X, Z, path)
+        self.assertTrue((np.diff(bed) <= 1e-9).all())
+        self.assertGreaterEqual(bed.min(), 20)
+        self.assertTrue(river.mask.any())
+
+    def test_a_spire_leaves_the_rest_alone(self):
+        X, Z, H = self.X, self.Z, self.H
+        H2 = LF.spire(H, X, Z, (0, 0), r=6, top=90, jag=0)
+        far = np.hypot(X, Z) >= 6
+        self.assertTrue((H2[far] == H[far]).all())                         # it once lifted the whole world
+        self.assertEqual(H2.max(), 90)
+        jagged = LF.spire(H, X, Z, (0, 0), r=6, top=90, jag=0.15)
+        self.assertTrue((jagged[np.hypot(X, Z) >= 12] == H[np.hypot(X, Z) >= 12]).all())
+
+    def test_butte_canyon_grade_coast_terraces(self):
+        X, Z, H = self.X, self.Z, self.H
+        self.assertEqual(set(LF.butte(H, X, Z, (10, 10), 6, 80)[np.hypot(X - 10, Z - 10) < 4]), {80})
+        self.assertTrue((LF.canyon(H, X, Z, [(-50, 0), (50, 0)], width=16, depth=8) <= H + 1e-9).all())
+        _, (s, p) = LF.grade(H, X, Z, [(-50, -40), (50, 40)], width=4, max_grade=0.2)
+        self.assertLessEqual(np.max(np.abs(np.diff(p)) / np.diff(s)), 0.2 + 1e-9)
+        outline = [(-40, -40), (40, -40), (40, 40), (-40, 40)]
+        H2, sea = LF.coast(H, X, Z, 45, outline=outline)
+        self.assertFalse((sea.mask & (np.abs(X) < 38) & (np.abs(Z) < 38)).any())
+        T = LF.terraces(H, np.ones(H.shape, bool), step=4, base=0)
+        self.assertTrue((T % 4 == 0).all())
 
 
 class Sketch(unittest.TestCase):
@@ -418,6 +456,36 @@ class Objectives(unittest.TestCase):
 
 
 class Terrain(unittest.TestCase):
+    def test_slope_is_the_studios(self):
+        """Every cell of sixteen grounds at windows 1 to 3, answered by the studio's SurfaceGradient."""
+        with gzip.open(os.path.join(os.path.dirname(HERE), "pgmvox", "data", "slopes.json.gz"), "rt") as f:
+            cases = json.load(f)
+        for c in cases:
+            m = np.array([[v is not None for v in r] for r in c["grid"]])
+            H = np.array([[v if v is not None else 0 for v in r] for r in c["grid"]])
+            for window, want in c["degrees"].items():
+                got = terrain.slope_deg(H, m, int(window))
+                self.assertTrue(((got == np.array(want)) | ~m).all(), f"window {window}")
+
+    def test_a_gentle_grade_reads_as_a_grade(self):
+        X = np.arange(30)[:, None] + np.zeros((1, 10), int)
+        self.assertEqual(set(terrain.slope_deg(X // 4)[6:24, 5]), {14})        # not 0 and 27 by turns
+        self.assertEqual(set(terrain.slope_deg(X // 4, window=1)[6:24, 5]), {0, 27})
+
+    def test_strata(self):
+        S = terrain.Strata([((B.STONE, 0), 0.5, 4), ((B.WOOL, 14), 0.2, 1), ((B.STONE, 5), 0.3, 3)], seed=3, start=10)
+        beds = S.thicknesses()
+        self.assertTrue(all(n == 1 for b, n in beds if b == (B.WOOL, 14)))
+        self.assertTrue(all(a[0] != b[0] for a, b in zip(beds, beds[1:])))
+        self.assertEqual(S(5), (B.STONE, 0))
+
+    def test_root_depth(self):
+        m = np.zeros((20, 20), bool)
+        m[4:16, 4:16] = True
+        d = terrain.root_depth(m, flutes=3, spires=8)
+        self.assertTrue((d[~m] == 0).all() and (d[m] >= 1).all())
+        self.assertGreater(d[10, 10], d[4, 10])                             # deeper inland
+
     def test_slope_does_not_wrap(self):
         H = np.zeros((10, 10))
         H[0, :] = 0
