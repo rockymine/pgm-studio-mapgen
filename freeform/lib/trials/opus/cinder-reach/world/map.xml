@@ -1,0 +1,85 @@
+<map proto="1.5.0">
+    <name>Cinder Reach</name>
+    <version>1.0.0</version>
+    <objective>Leak the enemy's core: it hangs over the vent of the cinder cone in front of their lodge.</objective>
+    <gamemode>dtc</gamemode>
+    <authors>
+        <author>Claude (pgmvox trial)</author>
+    </authors>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="iron pickaxe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="stained clay" amount="48" team-color="true"/>
+            <item slot="6" material="golden apple"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <teams>
+        <team id="red-team" color="red" max="20">Red</team>
+        <team id="blue-team" color="blue" max="20">Blue</team>
+    </teams>
+    <filters>
+        <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
+        <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
+        <not id="not-void">
+            <void/>
+        </not>
+    </filters>
+    <spawns>
+        <spawn team="red-team" kit="spawn-kit" yaw="-90">
+            <region>
+                <point>-83.5,58,-5.5</point>
+            </region>
+        </spawn>
+        <spawn team="blue-team" kit="spawn-kit" yaw="90">
+            <region>
+                <point>83.5,58,5.5</point>
+            </region>
+        </spawn>
+        <default yaw="90">
+            <region>
+                <point>0.5,92,0.5</point>
+            </region>
+        </default>
+    </spawns>
+    <regions>
+        <cuboid min="-90,58,-13" max="-77,64,2" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="77,58,-2" max="90,64,13" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-53,52,22" max="-48,57,27" id="red-core-region"/>
+        <cuboid min="48,52,-27" max="53,57,-22" id="blue-core-region"/>
+        <negative id="not-build-area">
+            <rectangle min="-24,-72" max="25,72"/>
+        </negative>
+        <apply block-place="not-void" region="not-build-area" message="You may only build over the void in the fissure!"/>
+    </regions>
+    <cores>
+        <core id="red-core" name="West Core" team="red-team" leak="5" mode-changes="true" region="red-core-region"/>
+        <core id="blue-core" name="East Core" team="blue-team" leak="5" mode-changes="true" region="blue-core-region"/>
+    </cores>
+    <maxbuildheight>80</maxbuildheight>
+</map>
+
