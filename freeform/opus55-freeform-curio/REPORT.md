@@ -48,11 +48,15 @@ above, through a trap or a hole on top, or by a passage that turns.
 | Builder | Plots | Places to stand, on average | Highest, on average | Out of sight, on average | Fewest out of sight |
 |---|---|---|---|---|---|
 | Opus | 16 | 177 | 11.3 | 28.5 | 12 |
-| Sonnet | 16 | 182 | 12.4 | 31.6 | 9 |
+| Sonnet | 16 | 190 | 13.5 | 34.5 | 12 |
 | Haiku | 16 | 138 | 10.4 | 23.8 | 12 |
 
-**Every plot's line is in `renders/walks.txt`.** The tallest climb is the Radio Mast's, twenty-one blocks; the most
-places out of sight are the Upside-Down House's, 123.
+**Every plot's line is in `renders/walks.txt`.** The tallest climb is the Teetering Teacups', twenty-two blocks; the
+most places out of sight are the Upside-Down House's, 123.
+
+**Sonnet's builder named its weakest plot itself.** The Pretzel Knot lies flat on salt-crystal huts, because
+standing up it read as a thin slab, and from the street its knot is hard to read. The Cone of Scoops has a hollow
+scoop nobody can get into. Four of its plots top out lower than its plan said, all over the minimum.
 
 **Haiku's builder reviewed its own pictures and flagged what did not read.** It rebuilt the gnome, the die, the
 alphorn, the trout, the thermometer, the pocket watch and the book stack until they did. It named the Spinning Top
@@ -101,7 +105,7 @@ follow PGM's parser and the US States map, but the vanishing wants a real match 
 **The plots are checked against a seeker standing on the street, not one climbing.** A seeker who climbs a
 neighbour's roof sees more, so the out-of-sight counts are an upper bound.
 
-**The Spinning Top and the Pocket Watch read as their subjects only with effort.** Their builder said so; the rule
+**The Spinning Top, the Pocket Watch and the Pretzel Knot read as their subjects only with effort.** Their builder said so; the rule
 that a plot belongs to its builder kept them as they are.
 
 ## What I wanted, how hard it was, and what a studio feature would need
