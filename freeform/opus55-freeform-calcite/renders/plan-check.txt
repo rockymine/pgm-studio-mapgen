@@ -1,0 +1,32 @@
+pad mid-north: velocity (-0.62, 0.85, -2.42) -> lands on the floor at (-13.5, -29.5) y 23, 22.2 out after 17 ticks, apex 24.4
+pad ledge-rim: velocity (-1.33, 1.55, -1.43) -> lands on the floor at (-40.4, -37.4) y 29, 19.0 out after 22 ticks, apex 29.9
+jumps the raster allows (gap 1..3, landing no more than 1 up): 24
+   (-1,-20) y16 -> (-1,-17) y17, gap 2
+   (-1,-16) y17 -> (-1,-13) y18, gap 2
+   (-1,-12) y18 -> (-1,-9) y19, gap 2
+   (-1,8) y19 -> (-1,11) y18, gap 2
+   (-1,12) y18 -> (-1,15) y17, gap 2
+   (-1,16) y17 -> (-1,19) y16, gap 2
+   (0,-20) y16 -> (0,-17) y17, gap 2
+   (0,-16) y17 -> (0,-13) y18, gap 2
+   (0,-12) y18 -> (0,-9) y19, gap 2
+   (0,8) y19 -> (0,11) y18, gap 2
+   (0,12) y18 -> (0,15) y17, gap 2
+   (0,16) y17 -> (0,19) y16, gap 2
+red spawn, every route: mid 49; north 64 (pad mid-north); south 75 (drop 6, drop 5)
+red spawn, no tunnel: mid 49; north 64 (pad mid-north); south 75 (drop 6, drop 5)
+red spawn, no pads: mid 49; north 74 (drop 6, drop 5); south 75 (drop 6, drop 5)
+red spawn, no jumps: mid 49; north 64 (pad mid-north); south 75 (drop 6, drop 5)
+red spawn, walking only: mid 49; north 74 (drop 6, drop 5); south 75 (drop 6, drop 5)
+from mid: north 28 (pad mid-north); south 30 (pad mid-north)
+from north: mid 27 (drop 7, jump 2, jump 2, jump 2); south 59 (drop 7, jump 2, jump 2, jump 2, pad mid-north)
+from south: mid 26 (drop 7, jump 2, jump 2, jump 2); north 57 (drop 7, jump 2, jump 2, jump 2, pad mid-north)
+route main lane, spawn to the Middle: 50
+route Rim to the North hill, dropping on it: 92
+route tunnel to the Ledge, side stair to the North hill: 70
+route Bench round to the North hill: 73
+route Bench round to the South hill: 74
+route tunnel, Ledge, parkour onto the Middle: 91
+route tunnel, Ledge pad to the Rim, drop on the North hill: 92
+route Middle to the North hill by the pad: 29
+route North hill back to the Middle by the parkour: 29
