@@ -29,7 +29,13 @@ class Symmetry:
         self.op, self.axis = op, axis
 
     def point(self, x, z):
-        return turn_xz(x, z, self.op, self.axis)
+        """The image of a point. A block (whole numbers) lands on a block; a point between blocks, such as a label
+        or a route's bend at a block's centre, lands exactly on its image rather than rounded to a block."""
+        if float(x).is_integer() and float(z).is_integer():
+            return turn_xz(int(x), int(z), self.op, self.axis)
+        cx, cz = self.axis
+        dx, dz = OPS[self.op](x - cx, z - cz)
+        return cx + dx, cz + dz
 
     def direction(self, d):
         dx, dz = vec(d)
@@ -114,12 +120,19 @@ class Raster:
             yield self.symmetry.point(x, z)
 
     def cell(self, x, z, h, kind="floor", both=True):
+        if kind not in self.kinds:
+            raise ValueError(f"kind {kind!r} is not one of this raster's kinds {list(self.kinds)}")
         for a, b in self._images(x, z, both):
             if self.inside(a, b):
                 self.H[self.ix(a), self.iz(b)] = h
                 self.K[self.ix(a), self.iz(b)] = self.kinds[kind]
 
+    def box(self, x0, z0, x1, z1, h, kind="floor", both=True):
+        """A rectangle by its corners, (x0, z0) to (x1, z1) inclusive: the order every other module takes."""
+        self.rect(x0, x1, z0, z1, h, kind, both)
+
     def rect(self, x0, x1, z0, z1, h, kind="floor", both=True):
+        """A rectangle by its ranges, x0..x1 and z0..z1 inclusive (the older order; box takes corners)."""
         x0, x1 = sorted((x0, x1)); z0, z1 = sorted((z0, z1))
         for x in range(x0, x1 + 1):
             for z in range(z0, z1 + 1):

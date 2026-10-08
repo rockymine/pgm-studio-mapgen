@@ -362,7 +362,7 @@ class Houses(unittest.TestCase):
         w = World(-12, -12, 24, 24, sy=30)
         r = BLD.house(w, BLD.House(0, 0, 0, L=9, W=6, floor=2, storeys=2))
         x, z, facing = r["door"]
-        self.assertEqual(facing, (0, 1))
+        self.assertEqual(facing, "s")
         self.assertIn(w.id(x, 3, z), blocks.DOORS)
         self.assertEqual(r["roof"].peak, r["eave"] + 1 + 2)     # a pitch-1 gable over six: two courses up
 

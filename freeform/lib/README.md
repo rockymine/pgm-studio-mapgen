@@ -26,6 +26,7 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `facade` | face patterns (`band`, `courses`, `flutes`, `panels`, `slits`, `checker`, `windows`, `glyph_row`, `word`) set back or flush on an `extrude`d mass, `coffer`, `top_course`; floor fields (`border`, `medallion`, `corners`, `diamonds`, `steps`, `star`, `cross`, `tiles`) composed by `first_of` and laid by `carpet` |
 | `terrain` | `slope_deg` as the studio reads it; `lay` (ground painted by slope, a snow line); `Strata`, `bed_offset` and `beds` (rock beds that tilt and fold); `mountain_ring`; `underside` and `root_depth` (cones, flutes, spires); `cloud_deck` |
 | `route` | `find` (a least-cost route over the ground, held to a grade, switchbacks and all), `network` (places joined by roads that share their trunk), `simplify`, `smooth`, `footprint`, `pave` (surface and bridges), `steps` |
+| `props` | small built things placed on a floor, facing a way: `stall` and `stalls` (a market row), `lamp` |
 | `forms` | scenery built block by block where a heightfield cannot say it: `tower` (rings tapering up a stack, ledges every few courses, bulging faces, beds in courses, a crown and vines), `skirt` (karst faces under a floating floor's rim), `root_vines` |
 | `landform` | heightfield operations: `watercourse` (reaches and falls), `canyon` and washes, `spire`, `butte`, `scarp`, `terraces`, `stage`, `grade` (a route held to a grade, bridging water, keeping earlier roads), `coast`, `blend` |
 | `walk` | the voxel walk over built blocks with `MoveRules`; `no_stand_above`, `catchers`, `unreached`, `nearest`, `gap_cleared` |
@@ -136,6 +137,11 @@ Horn's gradient over the tops two cells either side, a missing neighbour level w
 `data/export_slopes.cs` writes the studio's answers over sixteen grounds at windows one to three, and the test
 wants every cell. The library first read one cell either side, and a gentle grade quantised to blocks came out
 0 and 27 degrees by turns instead of the 14 it is.
+
+**Soil follows the slope, so a cliff is rock to its face.** `lay` lays three blocks of soil on gentle ground, less
+on steeper and none past 55 degrees. A cell exactly level with three of its neighbours reads as a ledge, so grass
+holds on it however steep its hill. With one soil depth everywhere, every riser and cliff showed a band of dirt.
+Counting cells only within a block of their neighbours as ledges turned whole hillsides green.
 
 **Rock is laid in beds.** `Strata` draws a sequence of beds from weighted choices with a thickest for each, one
 for a bed that is only ever a block. `bed_offset` tilts and folds them across the ground, and `beds` hands them to
@@ -273,6 +279,11 @@ must state and to what detail for each mode, the panels a sketch needs, and what
 the library.
 
 ## Tests
+
+**The walk is exact and opens doors.** It takes places in order of distance, so a jump that crosses several
+blocks costs exactly that many moves and a mirrored board walks the same from either side. A first-in first-out
+queue had given one board 81 and 83. A wooden door or fence gate opens, an iron door does not, and a ladder or
+vine catches a player falling past it.
 
 **`python3 check.py` is the one command that says nothing is broken.** It runs the tests and the prose gate, then
 rebuilds every example and compares what each reads back (its plan check, generator and walk numbers, and how many

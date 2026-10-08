@@ -38,31 +38,45 @@ class PlanRules:
 def jumps(R, walk_kinds, wall_kinds=(), max_gap=3.0):
     """Every jump the raster allows, in any direction: from a walkable cell to another whose nearest edge is one
     to max_gap cells away, landing no more than one higher, over cells that are neither wall nor floor at the
-    height a player would walk on. Returns [((x, z), (x, z), gap)]."""
+    height a player would walk on. Returns [((x, z), (x, z), gap)].
+
+    Worked one offset at a time over the whole raster at once (the jump's reach for each rise is solved once),
+    so a board of a few hundred blocks a side takes about a second rather than a minute."""
     walk = R.mask(*walk_kinds)
     wall = R.mask(*wall_kinds) if wall_kinds else np.zeros_like(walk)
     H = R.H
+    nx, nz = walk.shape
+    reach = {dh: jump_reach(dh) - 0.6 for dh in range(-64, 2)}
     out = []
     r = int(math.ceil(max_gap)) + 1
-    for i, j in np.argwhere(walk):
-        h0 = H[i, j]
-        for di in range(-r, r + 1):
-            for dj in range(-r, r + 1):
-                gap = math.hypot(max(0, abs(di) - 1), max(0, abs(dj) - 1))
-                if gap < 1 or gap > max_gap:
-                    continue
-                a, b = i + di, j + dj
-                if not (0 <= a < R.nx and 0 <= b < R.nz) or not walk[a, b] or H[a, b] - h0 > 1:
-                    continue
-                if gap > jump_reach(H[a, b] - h0) - 0.6:
-                    continue
-                n = max(abs(di), abs(dj)) * 3
-                over = {(int(round(i + di * s / n)), int(round(j + dj * s / n))) for s in range(1, n)} - {(i, j), (a, b)}
-                if not over:
-                    continue
-                if any(wall[p, q] or (walk[p, q] and H[p, q] >= min(h0, H[a, b]) - 1) for p, q in over):
-                    continue
-                out.append(((R.x_min + i, R.z_min + j), (R.x_min + a, R.z_min + b), round(gap, 1)))
+    for di in range(-r, r + 1):
+        for dj in range(-r, r + 1):
+            gap = math.hypot(max(0, abs(di) - 1), max(0, abs(dj) - 1))
+            if gap < 1 or gap > max_gap:
+                continue
+            n = max(abs(di), abs(dj)) * 3
+            over = sorted({(int(round(di * s / n)), int(round(dj * s / n))) for s in range(1, n)} - {(0, 0), (di, dj)})
+            if not over:
+                continue
+            i0, i1 = max(0, -di), min(nx, nx - di)                 # sources whose landing is on the raster
+            j0, j1 = max(0, -dj), min(nz, nz - dj)
+            if i0 >= i1 or j0 >= j1:
+                continue
+            src = walk[i0:i1, j0:j1]
+            dst = walk[i0 + di:i1 + di, j0 + dj:j1 + dj]
+            h0 = H[i0:i1, j0:j1]
+            h1 = H[i0 + di:i1 + di, j0 + dj:j1 + dj]
+            dh = h1 - h0
+            ok = src & dst & (dh <= 1)
+            ok &= gap <= np.vectorize(lambda v: reach.get(int(v), reach[-64]))(np.clip(dh, -64, 1))
+            low = np.minimum(h0, h1) - 1
+            for oi, oj in over:                                  # nothing in the way: no wall, no floor to walk on
+                w_ = wall[i0 + oi:i1 + oi, j0 + oj:j1 + oj]
+                f_ = walk[i0 + oi:i1 + oi, j0 + oj:j1 + oj] & (H[i0 + oi:i1 + oi, j0 + oj:j1 + oj] >= low)
+                ok &= ~(w_ | f_)
+            for a, b in np.argwhere(ok):
+                i, k = int(a) + i0, int(b) + j0
+                out.append(((R.x_min + i, R.z_min + k), (R.x_min + i + di, R.z_min + k + dj), round(gap, 1)))
     return out
 
 
@@ -151,10 +165,10 @@ def dijkstra(edges, starts):
 
 def route(D, prev, cells):
     """The cheapest of a set of target cells: (cost, [the moves other than plain walking, in order]), or
-    (None, []) if none is reached."""
+    (math.inf, []) if none is reached, as dijkstra's distances read for an unreached cell."""
     reached = [c for c in cells if c in D]
     if not reached:
-        return None, []
+        return math.inf, []
     c = min(reached, key=lambda c: D[c])
     tags, u = [], c
     while u in prev:
@@ -173,13 +187,15 @@ def path(prev, cell):
 
 
 def arrivals(edges, spawns_by_team, targets):
-    """For every team and every named target (a list of cells), the cheapest cost from the team's spawns:
-    {target: {team: cost}}. A fair symmetric board shows the same numbers for both teams."""
+    """For every team and every named target, the cheapest cost from the team's spawns: {target: {team: cost}},
+    math.inf where unreached. A target is a list of cells, the same for every team, or a dict {team: cells} when
+    each team has its own (its own wool room, the enemy's monument: the image of the other team's). A fair
+    symmetric board shows the same numbers for both teams."""
     out = {name: {} for name in targets}
     for team, spawns in spawns_by_team.items():
         D, prev = dijkstra(edges, spawns)
         for name, cells in targets.items():
-            out[name][team] = route(D, prev, cells)[0]
+            out[name][team] = route(D, prev, cells[team] if isinstance(cells, dict) else cells)[0]
     return out
 
 

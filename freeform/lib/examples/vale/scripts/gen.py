@@ -15,7 +15,7 @@ beds = T.Strata([((B.STONE, 0), 0.35, 4), ((B.STONE, 5), 0.2, 3), ((B.HARDENED_C
 offset = T.bed_offset(H.shape, dip=(0.04, -0.02), fold=3, seed=5)
 top = T.by_angle([(30, (B.GRASS, 0)), (42, (B.DIRT, 1)), (55, (B.STONE, 5)), (90, (B.STONE, 0))])
 deg = T.lay(w, H, top=top, bands=T.beds(beds, offset, flecks=[((B.STONE, 0), (B.COBBLE, 0), 0.04)], seed=6),
-            dirt_depth=3, snow_above=92)
+            snow_above=92)
 for water in (sea, river):
     for i, k in np.argwhere(water.mask):
         x, z = int(X[i, k]), int(Z[i, k])
@@ -35,7 +35,7 @@ for i, k in np.argwhere(beach):
 
 (cx, cz), r, y = ISLAND
 isl = np.hypot(X - cx, Z - cz) < r
-T.lay(w, np.where(isl, y, 0), mask=isl, top=top, dirt_depth=2, from_y=y - 2)
+T.lay(w, np.where(isl, y, 0), mask=isl, top=top, from_y=y - 2)
 T.underside(w, isl, y - 2, depth=T.root_depth(isl, cone=2.6, flutes=4, spires=12, seed=8),
             paint=lambda k, x, z: beds(y - k - int(offset[x + 100, z + 100])))
 w.save(sys.argv[1], "Vale", (0, 80, 0))

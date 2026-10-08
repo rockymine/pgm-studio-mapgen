@@ -27,7 +27,7 @@ def lay_ground(w, L):
     rock = Strata([((B.STONE, 0), 3, 6), ((B.STONE, 5), 1.4, 3)], length=60, seed=7, start=-300)
     # beds follow the ground: a column's beds are counted down from its own surface (offset = its height)
     deg = lay(w, H, mask, top=by_angle([(38, (B.GRASS, 0)), (55, (B.GRASS, 0)), (90, (B.STONE, 0))]),
-              bands=beds(rock, H, flecks=[((B.STONE, 0), (B.COBBLE, 0), 0.04)], seed=3), dirt_depth=3, from_y=3)
+              bands=beds(rock, H, flecks=[((B.STONE, 0), (B.COBBLE, 0), 0.04)], seed=3), from_y=3)
     r = rng(P.BOARD, "ground")
     sh = (w.sx, w.sz)
     patch, patch2, cell = fbm(sh, 5, 2, seed=61), fbm(sh, 4, 2, seed=62), r.random(sh)

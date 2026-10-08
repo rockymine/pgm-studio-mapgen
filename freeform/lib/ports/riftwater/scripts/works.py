@@ -16,7 +16,7 @@ from pgmvox import B, rng
 from pgmvox import build as BLD
 from pgmvox import facade as F
 from pgmvox import route
-from pgmvox.orient import door as door_data, ladder as ladder_data, stair, torch
+from pgmvox.orient import DIRS, door as door_data, ladder as ladder_data, stair, torch
 
 R_ = rng(P.BOARD, "works")
 HARD = ((B.GRAVEL, 0), (B.STONE, 5), (B.COBBLE, 0))
@@ -59,7 +59,7 @@ def houses(w):
     for key, b in hs.items():                                    # shop signs beside the door
         if "sign" in b["spec"]:
             x, z, facing = built[key]["door"]
-            dx, dz = facing                                      # the library's door facing is a (dx, dz)
+            dx, dz = DIRS[facing]                                # the library's door facing is a letter
             sx, sz = x + dx - dz, z + dz + dx                    # outside the wall, beside the door
             w.sign(sx, b["floor"] + 3, sz, [b["spec"]["sign"], "", "", ""], wall_facing=ladder_data((-dx, -dz)))
     return built

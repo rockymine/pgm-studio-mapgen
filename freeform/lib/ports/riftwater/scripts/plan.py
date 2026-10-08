@@ -337,13 +337,13 @@ def full(a):
 STYLES = {
     # the town: brick ground storey, spruce posts with white clay infill above, a dark oak roof
     "town": dict(ground=[(45, 0)], upper=[(159, 0)], post=1, gable=(5, 1), floor=(5, 1), roof=(5, 5),
-                 stair=164, slab=(126, 5), door=193, window=(102, 0)),
+                 stair=164, slab=(126, 5), door=193, window=(102, 0), chimney=(45, 0)),
     # Ironhollow: spruce plank walls in spruce posts, a spruce roof, oak gables
     "village": dict(ground=[(5, 1)], upper=[(5, 1)], post=1, gable=(5, 0), floor=(5, 0), roof=(5, 1),
-                    stair=134, slab=(126, 1), door=193, window=(102, 0)),
+                    stair=134, slab=(126, 1), door=193, window=(102, 0), chimney=(4, 0)),
     # stone: stone brick under a dark oak roof (the gaol, the chapel, the engine house)
     "stone": dict(ground=[(98, 0), (98, 0), (98, 2)], upper=[(98, 0)], post=None, gable=(98, 0), floor=(5, 5),
-                  roof=(5, 5), stair=164, slab=(126, 5), door=197, window=(101, 0)),
+                  roof=(5, 5), stair=164, slab=(126, 5), door=197, window=(101, 0), chimney=(98, 0)),
     # the mill: a stone ground storey with a spruce plank one over it
     "mill": dict(ground=[(98, 0), (4, 0)], upper=[(5, 1)], post=1, gable=(5, 1), floor=(5, 1), roof=(5, 5),
                  stair=164, slab=(126, 5), door=197, window=(102, 0)),

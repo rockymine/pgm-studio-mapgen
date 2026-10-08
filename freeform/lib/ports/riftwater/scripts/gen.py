@@ -15,6 +15,7 @@ import plan as P
 import under
 import works
 from pgmvox import B, World
+from pgmvox import props
 from pgmvox.orient import turn_world
 
 t0 = time.time()
@@ -28,6 +29,11 @@ print(f"underground {time.time() - t0:.1f}s: {u['carved']} blocks carved")
 k = works.build(w, L, u["shaft_top"])
 under.gaol_ladder(w)
 print(f"buildings {time.time() - t0:.1f}s: {len(k['built'])} houses, headframe to {k['headframe_top']}")
+# market stalls along the square's west edge, well back from the monument, as the original stood them
+sq_x, sq_z = L.X[L.square], L.Z[L.square]
+west = int(sq_x.min()) + 2
+stalls = props.stalls(w, [(west, z) for z in range(int(sq_z.min()) + 3, int(sq_z.max()) - 1)], 52, "e")
+print(f"stalls: {len(stalls) // 9}")
 d = dress.build(w, L)
 print(f"dressing {time.time() - t0:.1f}s: {d['trees']} trees")
 X, _ = w.grid()

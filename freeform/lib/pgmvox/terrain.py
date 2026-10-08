@@ -168,12 +168,44 @@ def beds(strata, offset=None, flecks=(), seed=0):
     return fill
 
 
-def lay(w, H, mask=None, top=None, under=(B.DIRT, 0), rock=(B.STONE, 0), dirt_depth=3, snow_above=None,
-        snow=(B.SNOW, 0), bands=None, from_y=1):
-    """Columns of ground up to H (world heights): rock, then `dirt_depth` of `under`, then the top block, which
+SOIL = ((25, 3), (38, 2), (55, 1))                  # (steeper than this, soil this deep): none past the last
+
+
+def ledge_angle(H, deg, mask=None):
+    """The slope a paint should read: a cell exactly level with three or more of its four neighbours reads as a
+    ledge, at most 30 degrees, however steep the hill it sits on, so grass holds on it and the rock shows on the
+    risers between ledges. Level means level: on an even slope of block steps every cell is within a block of its
+    neighbours, and counting those turned whole hillsides into ledges. Cells past 60 degrees are left alone."""
+    Hp = np.pad(np.asarray(H).astype(int), 1, mode="edge")
+    c = Hp[1:-1, 1:-1]
+    flat = sum((Hp[1 + di:Hp.shape[0] - 1 + di, 1 + dj:Hp.shape[1] - 1 + dj] == c).astype(int)
+               for di, dj in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+    return np.where((flat >= 3) & (deg < 60), np.minimum(deg, 30), deg)
+
+
+def soil_depth(deg, soil=SOIL):
+    """How deep the soil lies on ground of each slope: `soil` is ((up to degrees, depth), ...) in rising order, and
+    ground steeper than the last has none, so a cliff is rock to its face and shows no band of dirt."""
+    out = np.zeros(np.shape(deg), int)
+    for limit, depth in reversed(soil):
+        out = np.where(deg < limit, depth, out)
+    return out
+
+
+def lay(w, H, mask=None, top=None, under=(B.DIRT, 0), rock=(B.STONE, 0), dirt_depth=None, snow_above=None,
+        snow=(B.SNOW, 0), bands=None, from_y=1, soil=SOIL, ledges=True):
+    """Columns of ground up to H (world heights): rock, then soil of `under`, then the top block, which
     `top(deg, h)` chooses by slope (default grass); above snow_above the top is snow with a layer over it.
-    bands(i, k, ys) may paint the rock instead."""
+    bands(i, k, ys) may paint the rock instead.
+
+    The soil's depth follows the slope (`soil`): three blocks on gentle ground, less on steeper, none on a cliff,
+    so a cliff face is rock and a terrace's riser is not a band of dirt. With `ledges`, a cell level with its
+    neighbours reads as gentle however steep its hill (ledge_angle). `dirt_depth` gives one depth everywhere
+    instead. Returns the slope the paint read."""
     deg = slope_deg(H, mask)
+    if ledges:
+        deg = ledge_angle(H, deg, mask)
+    depth = soil_depth(deg, soil) if dirt_depth is None else np.full(np.shape(H), dirt_depth, int)
     sx, sz = H.shape
     for i in range(sx):
         for k in range(sz):
@@ -182,16 +214,17 @@ def lay(w, H, mask=None, top=None, under=(B.DIRT, 0), rock=(B.STONE, 0), dirt_de
             h = int(H[i, k])
             if h < from_y:
                 continue
-            ys = range(from_y, max(from_y, h - dirt_depth))
+            dd = int(depth[i, k])
+            ys = range(from_y, max(from_y, h - dd))
             if bands:
                 for y, (bid, d) in zip(ys, bands(i, k, ys)):
                     w.ids[i, y, k], w.dat[i, y, k] = bid, d
             else:
-                w.ids[i, from_y:max(from_y, h - dirt_depth), k] = rock[0]
-                w.dat[i, from_y:max(from_y, h - dirt_depth), k] = rock[1]
-            w.ids[i, max(from_y, h - dirt_depth):h, k] = under[0]
-            w.dat[i, max(from_y, h - dirt_depth):h, k] = under[1]
-            bid, d = top(deg[i, k], h) if top else (B.GRASS, 0)
+                w.ids[i, from_y:max(from_y, h - dd), k] = rock[0]
+                w.dat[i, from_y:max(from_y, h - dd), k] = rock[1]
+            w.ids[i, max(from_y, h - dd):h, k] = under[0]
+            w.dat[i, max(from_y, h - dd):h, k] = under[1]
+            bid, d = top(deg[i, k], h) if top else ((B.GRASS, 0) if dd > 0 else rock)
             if snow_above is not None and h > snow_above:
                 bid, d = snow
                 if h + 1 < w.sy:
@@ -222,16 +255,18 @@ def root_depth(mask, cone=3.2, power=0.85, rough=0.35, flutes=0.0, flute_cell=5,
 def underside(w, mask, top_y, depth=lambda d: 1 + int(1.6 * min(d, 7) ** 0.9), paint=None, rng=None, jitter=1):
     """Hang a tapering underside below a floating floor: under every column of mask (a (sx, sz) boolean over the
     world), from top_y - 1 down by depth blocks plus a little jitter, painted by paint(k, x, z) for the k-th block
-    down (default stone). depth is a function of the column's edge depth, or an array (root_depth). The underside
-    lies wholly inside the floor's outline, so a player falling past an edge never touches it."""
+    down (default stone). top_y is one height, or an array (each column's own: islands at several heights in one
+    call). depth is a function of the column's edge depth, or an array (root_depth). The underside lies wholly
+    inside the floor's outline, so a player falling past an edge never touches it."""
     ed = edge_depth(mask)
     rng = rng or np.random.default_rng(0)
     table = depth if isinstance(depth, np.ndarray) else None
     for i, k in np.argwhere(mask):
         n = (int(table[i, k]) if table is not None else depth(int(ed[i, k]))) + \
             (int(rng.integers(0, jitter + 1)) if jitter else 0)
+        ty = int(top_y[i, k]) if isinstance(top_y, np.ndarray) else top_y
         for j in range(1, n + 1):
-            y = top_y - j
+            y = ty - j
             if y < 0:
                 break
             bid, d = paint(j, i + w.x0, k + w.z0) if paint else (B.STONE, 0)

@@ -221,10 +221,12 @@ def turn_xz(x, z, op, axis=(-0.5, -0.5)):
     return int(round(cx + dx)), int(round(cz + dz))
 
 
-def turn_world(w, op, keep, axis=(-0.5, -0.5), recolour=None):
+def turn_world(w, op, keep, axis=(-0.5, -0.5), recolour=None, banners=None):
     """Copy the part of the world where keep(x, z) is True onto its image under the operation, turning every
     block's data with it. Only mirrors and the half turn are supported on a whole world, so the image stays
-    inside the volume; recolour maps (id, data) -> (id, data) on the image, for a team's colours."""
+    inside the volume; recolour maps (id, data) -> (id, data) on the image, for a team's colours. A banner's
+    colours live in its tile, not its data, so `banners` maps a banner colour (the banner's own numbering, 0 black
+    to 15 white) to another on the image, base and patterns alike."""
     assert op in ("half", "mirror_x", "mirror_z"), "a whole world turns by half or by a mirror"
     t = data_table(op)
     ids, dat = w.ids, w.dat
@@ -258,6 +260,9 @@ def turn_world(w, op, keep, axis=(-0.5, -0.5), recolour=None):
         if in_keep(te["x"], te["z"]):
             m = dict(te)
             m["x"], m["z"] = turn_xz(te["x"], te["z"], op, axis)
+            if banners and te.get("kind") == "Banner":
+                m["base"] = banners.get(te["base"], te["base"])
+                m["patterns"] = [dict(p, color=banners.get(p["color"], p["color"])) for p in te.get("patterns", [])]
             images.append(m)
     taken = {(m["x"], m["y"], m["z"]) for m in images}
     w.tiles = [te for te in w.tiles if (te["x"], te["y"], te["z"]) not in taken] + images

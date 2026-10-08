@@ -226,13 +226,17 @@ def grades(H, X, Z, cells):
 
 # ---- laying a route into the world -----------------------------------------------------------------------
 def pave(w, H, X, Z, pts, width=4, surface=((B.GRAVEL, 0), (B.DIRT, 1), (B.COBBLE, 0)), weights=(0.6, 0.3, 0.1),
-         water=None, deck=(B.PLANKS, 1), rail=(B.FENCE, 0), clear=3, seed=0, level=None):
+         water=None, deck=(B.PLANKS, 1), rail=(B.FENCE, 0), clear=3, seed=0, level=None, keep=None):
     """Lay a route's surface: every column within width / 2 of the line takes a block from `surface` (by
     `weights`) with `clear` blocks of air over it; over water the route is a bridge, a deck of `deck` at
-    level(s) (the graded level, or the banks' height) with a rail each side. Returns the bridge cells."""
+    level(s) (the graded level, or the banks' height) with a rail each side. Columns in `keep` (a house, a wall)
+    are never written, and a void column (no ground, H under 1) is never paved. Returns the bridge cells."""
     rng = np.random.default_rng(seed)
     d, s = polyline(X, Z, pts)
     on = d <= width / 2
+    if keep is not None:
+        on &= ~keep
+    on &= (H >= 1) | (water if water is not None else False)
     edge = on & (d > width / 2 - 1)
     p = np.array(weights, float) / sum(weights)
     bridge = []

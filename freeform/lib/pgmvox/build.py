@@ -28,7 +28,7 @@ from dataclasses import dataclass, field as _field
 import numpy as np
 
 from .blocks import B
-from .orient import DIRS, door as door_data, ladder as ladder_data, opposite, stair as stair_data, vec
+from .orient import DIRS, NAMES, door as door_data, ladder as ladder_data, opposite, stair as stair_data, vec
 from .shapes import boundary
 
 FORMS = ("gable", "flat", "hip", "gambrel", "shed", "saltbox")
@@ -326,16 +326,16 @@ def _stair_top(field, stair, slab, x, z):
 # ---- the house -------------------------------------------------------------------------------------------
 STYLES = {
     # walls of the ground storey and the upper ones (a mix), the frame's log wood (None: no timber frame),
-    # gable, floor, roof body, its stair and slab, door, window
+    # gable, floor, roof body, its stair and slab, door, window; a style may name its chimney (cobble if not)
     "town": dict(ground=[(B.COBBLE, 0), (B.STONE, 5), (B.STONE, 0)], upper=[(B.PLANKS, 1)], post=0,
                  gable=(B.PLANKS, 1), floor=(B.PLANKS, 0), roof=(B.PLANKS, 5), stair=B.DARK_OAK_STAIRS,
-                 slab=(B.WOOD_SLAB, 5), door=B.SPRUCE_DOOR, window=(B.PANE, 0)),
+                 slab=(B.WOOD_SLAB, 5), door=B.SPRUCE_DOOR, window=(B.PANE, 0), chimney=(B.BRICK, 0)),
     "plaster": dict(ground=[(B.STONE, 0), (B.STONE, 5)], upper=[(B.STAINED_CLAY, 0)], post=1,
                     gable=(B.PLANKS, 1), floor=(B.PLANKS, 1), roof=(B.PLANKS, 1), stair=B.SPRUCE_STAIRS,
                     slab=(B.WOOD_SLAB, 1), door=B.SPRUCE_DOOR, window=(B.PANE, 0)),
     "brick": dict(ground=[(B.BRICK, 0)], upper=[(B.PLANKS, 2)], post=0, gable=(B.PLANKS, 1),
                   floor=(B.PLANKS, 0), roof=(B.PLANKS, 5), stair=B.DARK_OAK_STAIRS, slab=(B.WOOD_SLAB, 5),
-                  door=B.OAK_DOOR, window=(B.PANE, 0)),
+                  door=B.OAK_DOOR, window=(B.PANE, 0), chimney=(B.BRICK, 0)),
     "stone": dict(ground=[(B.STONEBRICK, 0), (B.STONEBRICK, 0), (B.STONEBRICK, 2)], upper=[(B.STONEBRICK, 0)],
                   post=None, gable=(B.COBBLE, 0), floor=(B.PLANKS, 1), roof=(B.COBBLE, 0),
                   stair=B.COBBLE_STAIRS, slab=(B.SLAB, 3), door=B.DARK_OAK_DOOR, window=(B.IRON_BARS, 0)),
@@ -376,7 +376,7 @@ class House:
 
 def house(w, h, ground_at=None, rng=None):
     """Build one house. ground_at(x, z) gives the ground's height, so the plate is filled down to it. Returns
-    the door (x, z, facing), the footprint cells, the eave course and the roof field."""
+    the door (x, z, the letter it faces), the footprint cells, the eave course and the roof field."""
     st = STYLES[h.style] if isinstance(h.style, str) else h.style
     rng = rng or np.random.default_rng(int(abs(h.cx * 31 + h.cz * 17 + h.heading)))
     square = h.heading % 90 == 0
@@ -448,7 +448,7 @@ def house(w, h, ground_at=None, rng=None):
         facing = fr.across(h.door)
         w.set(x, f + 1, z, st["door"], door_data(facing))
         w.set(x, f + 2, z, st["door"], door_data(facing, upper=True))
-        door_at = (x, z, facing)
+        door_at = (x, z, NAMES[facing])                          # the way it faces, as a letter
     # the roof
     mt, wt, Lt, Wt = storeys[-1]
     top_cells = {(int(X[i, k]), int(Z[i, k])) for i, k in zip(*np.nonzero(mt))}
@@ -470,7 +470,8 @@ def house(w, h, ground_at=None, rng=None):
         x, z = fr.cell(Lt / 4, Wt / 4)
         top = field.crown(x, z) + 2
         for y in range(f + 1, top + 1):
-            w.set(x, y, z, *((B.COBBLE, 0) if y < top else (B.COBBLE_WALL, 0)))
+            cap = st.get("chimney_cap", st["chimney"] if "chimney" in st else (B.COBBLE_WALL, 0))
+            w.set(x, y, z, *(st.get("chimney", (B.COBBLE, 0)) if y < top else cap))
     return dict(door=door_at, footprint=fr.cells(h.L, h.W + (2 if jetty else 0)), eave=eave, roof=field)
 
 

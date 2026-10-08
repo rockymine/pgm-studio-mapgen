@@ -33,19 +33,24 @@ class MoveRules:
     jumps: bool = True                   # running jumps over gaps
     max_gap: int = 3                     # the widest gap a running jump clears
     climb: bool = True                   # ladders, vines and water lift a player
+    doors: bool = True                   # wooden doors and fence gates open (an iron door does not)
 
 
-def classes(ids):
-    """passable, water, climbable and solid masks over an id volume."""
-    passable = K.mask(ids, K.PASSABLE)
+OPENABLE = (K.DOORS - {K.B.IRON_DOOR}) | K.FENCE_GATES
+
+
+def classes(ids, doors=False):
+    """passable, water, climbable and solid masks over an id volume; with doors, a wooden door or a fence gate is
+    passable, as a player opens it."""
+    passable = K.mask(ids, K.PASSABLE | (OPENABLE if doors else set()))
     water = K.mask(ids, {K.B.WATER, K.B.WATER_FLOW})
     climb = K.mask(ids, K.CLIMBABLE)
     return passable, water, climb, ~passable
 
 
-def standing(ids):
+def standing(ids, doors=False):
     """A cell a player can occupy: two passable cells high, with solid ground or water under or in it."""
-    passable, water, climb, solid = classes(ids)
+    passable, water, climb, solid = classes(ids, doors)
     st = np.zeros_like(passable)
     st[:, 1:-1, :] = passable[:, 1:-1, :] & passable[:, 2:, :] & (solid[:, :-2, :] | water[:, 1:-1, :] | water[:, :-2, :])
     return st, (passable, water, climb, solid)
@@ -57,26 +62,39 @@ def _jump_offsets(max_gap):
 
 
 def walk(ids, starts, x0, z0, rules=None):
-    """Moves to every standing place from the starts (world (x, y, z) of the feet), -1 where unreached."""
+    """Moves to every standing place from the starts (world (x, y, z) of the feet), -1 where unreached.
+
+    The least number of moves, exactly: a jump costs as many moves as the blocks it crosses, so the search takes
+    places in order of their distance (a bucket queue), not in the order they were found. A first-in first-out
+    queue settled a far place before a nearer one and gave a mirrored board two different answers."""
     rules = rules or MoveRules()
-    st, (passable, water, climb, solid) = standing(ids)
+    st, (passable, water, climb, solid) = standing(ids, rules.doors)
     sx, sy, sz = st.shape
     dist = np.full(st.shape, -1, np.int32)
-    q = deque()
+    buckets = [deque()]
     for (x, y, z) in starts:
         i = (x - x0, y, z - z0)
         if 0 <= i[0] < sx and 0 <= i[2] < sz and st[i]:
             dist[i] = 0
-            q.append(i)
+            buckets[0].append(i)
     jumps = _jump_offsets(rules.max_gap) if rules.jumps else []
 
     def push(i, d):
-        if dist[i] < 0:
+        if dist[i] < 0 or d < dist[i]:
             dist[i] = d
-            q.append(i)
-    while q:
+            while len(buckets) <= d:
+                buckets.append(deque())
+            buckets[d].append(i)
+    k = 0
+    while k < len(buckets):
+        q = buckets[k]
+        if not q:
+            k += 1
+            continue
         x, y, z = q.popleft()
-        d = dist[x, y, z] + 1
+        if dist[x, y, z] != k:
+            continue                                             # settled nearer since it was queued
+        d = k + 1
         for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
             nx, nz = x + dx, z + dz
             if not (0 <= nx < sx and 0 <= nz < sz):
@@ -93,8 +111,8 @@ def walk(ids, starts, x0, z0, rules=None):
                     break
                 if not passable[nx, ny, nz]:
                     break
-                if st[nx, ny, nz]:
-                    push((nx, ny, nz), d)
+                if st[nx, ny, nz] or (rules.climb and climb[nx, ny, nz]):
+                    push((nx, ny, nz), d)                        # a ladder or a vine catches a fall
                     break
         for dx, dz in jumps:                                     # a running jump over a gap, at most one up
             nx, nz = x + dx, z + dz
@@ -108,7 +126,7 @@ def walk(ids, starts, x0, z0, rules=None):
                 continue
             for ny in (y + 1, y):
                 if st[nx, ny, nz]:
-                    push((nx, ny, nz), d + max(abs(dx), abs(dz)))
+                    push((nx, ny, nz), d + max(abs(dx), abs(dz)) - 1)
                     break
         if rules.climb:
             for dy in (1, -1):                                   # ladders, vines and water lift a player
