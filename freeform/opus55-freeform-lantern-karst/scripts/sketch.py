@@ -157,8 +157,6 @@ def sections(d, oy, hgt):
     d.line([(0, py(P.KILL_Y)), (half, py(P.KILL_Y))], fill=(200, 30, 30), width=2)
     for (x0, x1, top, bot) in ((-92, -83, 67, 46), (-42, -33, 67, 46), (-66, -59, 74, 42), (-75, -70, 46, 30), (-55, -50, 46, 30)):
         column(x0, x1, top, bot, sx)
-    for x0, x1 in ((-74, -71), (-54, -51)):
-        d.rectangle([sx(x0), py(46), sx(x1 + 1), py(45)], fill=(70, 130, 220))
     d.rectangle([sx(-66), py(78), sx(-58), py(74)], outline=(60, 40, 20), width=2)
     d.rectangle([sx(-63), py(76), sx(-62), py(75)], fill=(120, 220, 40))
     for a, b in ((-82, -67), (-58, -43)):
@@ -169,7 +167,7 @@ def sections(d, oy, hgt):
     d.text((sx(-70), py(81)), "Pillar Shrine 74", fill=(0, 0, 0))
     d.text((sx(-82), py(64)), "16 to bridge", fill=(120, 80, 0))
     d.text((sx(-57), py(64)), "16 to bridge", fill=(120, 80, 0))
-    d.text((sx(-80), py(50)), "Ledges 46: drop 20 into a pool,", fill=(40, 70, 220))
+    d.text((sx(-80), py(50)), "Ledges 46: drop 20 onto a bucket,", fill=(40, 70, 220))
     d.text((sx(-80), py(47) + 2), "pillar up 28 beside the pillar", fill=(40, 70, 220))
     d.text((sx(-95), py(P.KILL_Y) - 12), f"kill below y {P.KILL_Y}", fill=(200, 30, 30))
     d.text((sx(-95), py(P.MIST_Y[1]) + 2), "mist", fill=(90, 90, 90))

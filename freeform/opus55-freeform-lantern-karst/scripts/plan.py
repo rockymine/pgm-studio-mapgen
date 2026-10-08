@@ -62,9 +62,9 @@ PIECES = [
     dict(key="f-west", name="the Far Arm", kind="approach", poly=rect(-92, -97, -83, -74), y=67),
     dict(key="f-east", name="the Near Arm", kind="approach", poly=rect(-42, -97, -33, -74), y=67),
     dict(key="pillar", name="the Pillar Shrine", kind="wool", poly=rect(-66, -97, -59, -90), y=74),
-    # the secret way: two ledges twenty blocks down in front of the pillar; drop onto them, pillar up
-    dict(key="ledge-w", name="the West Ledge", kind="ledge", poly=rect(-75, -88, -70, -76), y=46),
-    dict(key="ledge-e", name="the East Ledge", kind="ledge", poly=rect(-55, -88, -50, -76), y=46),
+    # the secret way: two small ledges twenty down in front of the pillar; drop with a water bucket, pillar up
+    dict(key="ledge-w", name="the West Ledge", kind="ledge", poly=rect(-75, -82, -70, -76), y=46),
+    dict(key="ledge-e", name="the East Ledge", kind="ledge", poly=rect(-55, -82, -50, -76), y=46),
     # the Pillar's flank: a grid of stepping islets, 12 apart, from the band's west end onto the Long Terrace
     dict(key="w-1", name="Mist Step I", kind="islet", poly=rect(-50, -29, -45, -24), y=63),
     dict(key="w-2", name="Mist Step II", kind="islet", poly=rect(-68, -29, -63, -24), y=64),
@@ -81,7 +81,7 @@ PIECES = [
 ]
 
 # the middle: the build band across the chasm, and the Bell Rock standing in it
-BAND = rect(-50, -11, 49, 10)       # wide enough to reach under the first column of each chain of steps
+BAND = rect(-57, -11, 56, 10)       # reaches to the middle of each chain of steps, between its two columns
 BELL_ROCK = dict(key="bell", name="the Bell Rock", poly=rect(-5, -5, 4, 4), y=68)
 
 # where blocks may be placed over void. Everywhere else the void cannot be built over, at any height.
@@ -113,8 +113,7 @@ SPAWN_DETAIL = [
     ("the tea beds, rows of leaves on both sides of the steps", rect(-16, -97, -9, -95), 71),
 ]
 
-# the secret way's landing: a spring pool at each ledge's near end, so the twenty-block drop costs no health
-LEDGE_POOLS = [rect(-74, -79, -71, -77), rect(-54, -79, -51, -77)]
+# the secret way has no pool: a player who drops onto a Ledge places a water bucket as they land, or dies
 
 PLACES = [
     dict(name="the Pavilion of Arrival", why="spawn: three terraces up from the hub, a pool, an outcrop, two lantern towers"),

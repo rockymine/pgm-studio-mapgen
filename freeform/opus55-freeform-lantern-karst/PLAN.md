@@ -54,6 +54,14 @@ walking distances below, each with the rule it is held to.
 | Steps about 12 apart, and further toward the middle | All gaps between steps are 11 or 12 (were 6); each chain's first column stands over the band's end |
 | Two more steps in front of the pillar, twenty down, a secret way | The West and East Ledges at 46, three blocks off the pillar's foot; drop, then pillar up |
 
+**The fourth review trimmed the Ledges and widened the band again.**
+
+| The review said | What changed |
+|---|---|
+| No pool on the Ledges: players carry water buckets, and the drop is the skill | The pools are gone; the kit carries a water bucket |
+| The Ledges reach too far toward the pillar; half the length | 6 × 7 each (were 6 × 13), 8 off the pillar's foot |
+| Widen the band to the middle of each chain of steps | The band is 114 wide (was 100), ending between each chain's two columns |
+
 **The board grew to hold the widths: 224 × 256 blocks (was 192 × 224).** The Tea Landing is gone, because
 the wider Tea Rows now stand right over the first Tea Step.
 
@@ -117,11 +125,11 @@ Width is across the way a player walks, length along it.
 | The Tea Court | 64 × 40, a ring round a 16 × 16 sinkhole | 66 | the hub: 12 of ground in front of and behind the sinkhole, 24 at each side |
 | The Gate Terrace | 56 × 12 | 65 | the frontline's bar, a gate pavilion over its middle |
 | The West and East Stairs | 18 × 15 each | 64 | the frontline's legs down to the band, 20 of void between them |
-| The band and the Bell Rock | 100 × 22 of void, a 10 × 10 islet | 68 | the build band across the chasm; a bell pavilion on the islet |
+| The band and the Bell Rock | 114 × 22 of void, a 10 × 10 islet | 68 | the build band across the chasm; a bell pavilion on the islet |
 | The Long Terrace | 14 × 60, west out of the hub | 66 | the Pillar's F, its long stroke |
 | The Near and Far Arms | 10 × 24 each | 67 | the F's short strokes, ending level with the pillar's far side; the Near Arm touches the hub |
 | **The Pillar Shrine** | 8 × 8 on a pillar | 74 | **lime wool**: an open shrine, 16 off each Arm and off the Terrace, 7 above |
-| The West and East Ledges | 6 × 13 each | 46 | the secret way: twenty below the Terrace, 3 off the pillar's foot, a spring pool to land in |
+| The West and East Ledges | 6 × 7 each | 46 | the secret way: twenty below the Terrace's edge, 8 off the pillar's foot |
 | The Mist Steps | four 6 × 6 islets, 12 apart | 63–65 | the Pillar's flank: from the band's west end onto the Long Terrace |
 | The Tea Rows | 12 × 18, east out of the hub | 66 | the Store's F, its south short stroke |
 | The Drying Floor | 12 × 18, east out of the hub | 67 | the Store's F, its north short stroke; tea laid out on mats |
@@ -157,9 +165,11 @@ them, which is a build zone, so a bridge may start from either Arm or from the T
 shortest attack walks out of the hub's corner and bridges 16. The Far Arm is the long way round, along the
 Long Terrace.
 
-**The Ledges are the secret way.** Two shelves of karst stand twenty blocks below the Terrace's edge, either
-side of the pillar's foot and three blocks off it. An attacker drops onto one, lands in its spring pool,
-and pillars up twenty-eight blocks beside the shrine, in full view of anyone on the Arms.
+**The Ledges are the secret way.** Two small shelves of karst stand twenty blocks below the Terrace's edge,
+either side of the pillar and eight blocks off its foot. An attacker drops onto one, saves the fall with a
+water bucket placed as they land, and builds up and across to the shrine in full view of the Arms.
+
+**The drop is the skill.** There is no pool: a player who misses the bucket dies of the fall.
 
 **The Mist Steps are the Pillar's fourth way in.** Four islets on a grid, 12 apart, climb from the band's
 west end onto the Long Terrace, and the attacker who takes them never passes the hub.
@@ -181,12 +191,12 @@ length; the Ledges left out, since they are reached by a fall):
 | spawn to the Tea Store, walked | 83 | WL9: comparable |
 | spawn to the Pillar (17 of it bridged) | 87 | WL9: comparable |
 | their ratio | 1.04 | WL9: ideal 1 |
-| band to the Tea Store, shortest (21 of it bridged) | 76 | WL10e: at least 59 |
+| band to the Tea Store, shortest (27 of it bridged) | 76 | WL10e: at least 59 |
 | band to the Tea Store, walked | 90 | — |
-| band to the Pillar, shortest (52 of it bridged) | 83 | WL10e: at least 59 |
+| band to the Pillar, shortest (64 of it bridged) | 80 | WL10e: at least 59 |
 | Pillar to Tea Store, straight | 119 | WL7: 46 to 143 |
 | Pillar to the Arms and the Terrace | 16, 16, 16 | WL20: at least 12 |
-| the Ledges | 20 down, 3 off the pillar | — |
+| the Ledges | 20 down, 8 off the pillar | — |
 | the Store Road alone, after its last join | 8 | — |
 | the Tea Court's sinkhole | 16 × 16 | LN6: at least 12 |
 | the void inside the Store's F | 16 × 18 | LN6: at least 12 |
@@ -233,8 +243,8 @@ spawn stay uncrossable all match. That is the rule the account says makes a void
 - **Building:** `<void/>` denies placing where y 0 is empty, which the block 36 sheet decides. The bedrock
   courses and the wall cannot be broken.
 - **The fall:** `<apply kit="fall-kill" region="the-fall"/>` on `<below y="40"/>`.
-- **The kit:** sword, bow, pickaxe, axe, shears, wood and team-coloured wool for bridging, and a golden
-  apple. The rooms' chests hold better armour, as the account says a room should.
+- **The kit:** sword, bow, pickaxe, axe, shears, wood and team-coloured wool for bridging, a water bucket
+  and a golden apple. The rooms' chests hold better armour, as the account says a room should.
 
 ## Theme and palette, decided now
 
@@ -251,7 +261,4 @@ spawn stay uncrossable all match. That is the rule the account says makes a void
 
 ## Decisions for you
 
-1. **The drop onto a Ledge is twenty blocks, which costs 17 of a player's 20 health.** I put a spring pool
-   at each Ledge's near end to land in, which costs nothing. Keep the pool, or let the drop hurt?
-2. **The Near Arm touches the hub.** That makes the Pillar reachable straight from the middle, at 16 blocks
-   of bridge. Keep it, or stand it off the hub?
+None open. The author's go is to build after this revision.
