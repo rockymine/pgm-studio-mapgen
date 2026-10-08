@@ -2,8 +2,8 @@
 
 1. the city — every mass as its footprint, shaded by the height of its top (paler is higher), the skyways,
    the objectives; the gaps between masses are what players bridge;
-2. the land — the lake, the fragments of the city stuck into the ground drawn as their turned footprints,
-   the spawn's pylons, and the city's outline faint above;
+2. the land — drawn once, since it keeps no symmetry: the river, the lake, the mesa, the crater, the
+   fragments of the city drawn as their turned footprints, the pylons, and the city's outline above;
 3. a section west to east along z = 0 and along z = -48: the city's masses at their heights, the cloud sea,
    the kill height, the land.
 
@@ -95,29 +95,44 @@ def turned_rect(cx, cz, w, l, yaw):
 
 
 def panel_land(d, oy):
+    """The land keeps no symmetry, so it is drawn once: nothing here is mirrored but the city's outline."""
     d.rectangle([0, oy, W, oy + H], fill=(120, 160, 80))
-    # swathes of colour as the land will be painted: drawn as bands
     for k, col in enumerate(((190, 80, 70), (220, 200, 70), (160, 110, 190), (110, 140, 70))):
         for z in range(P.Z_MIN + 6 * k, P.Z_MAX, 26):
             pts = [px(x, z + 5 * math.sin(x / 13.0 + k), oy) for x in range(P.X_MIN, P.X_MAX + 1, 4)]
             d.line(pts, fill=col, width=5)
+    d.polygon([px(x, z, oy) for x, z in P.MESA], fill=(205, 130, 80), outline=(120, 60, 30))
+    for k in range(1, 4):
+        d.line([px(x, z + 2 * k, oy) for x, z in P.MESA[:3]], fill=(230, 200, 120), width=2)
+    cx, cz = P.CRATER["at"]
+    r = P.CRATER["r"]
+    d.ellipse([px(cx - r, cz - r, oy), px(cx + r, cz + r, oy)], fill=(100, 120, 70), outline=(60, 70, 40), width=2)
+    for pts in (P.RIVER_IN, P.RIVER_OUT):
+        d.line([px(x, z, oy) for x, z in pts], fill=(70, 120, 200), width=4 * S)
     d.polygon([px(x, z, oy) for x, z in P.LAKE], fill=(70, 120, 200), outline=(30, 70, 150))
+    paint = {1: (230, 130, 40), 2: (200, 60, 200), 4: (240, 210, 40), 5: (120, 200, 40), 6: (240, 150, 180),
+             10: (130, 60, 180)}
     for f in P.FRAGMENTS:
         x, z = f["at"]
         w_, l_ = f["size"][0], f["size"][2]
-        for q in both(turned_rect(x, z, w_, l_, f["yaw"])):
-            d.polygon([px(a, b, oy) for a, b in q], fill=(170, 170, 175), outline=(40, 40, 40))
+        if f["kind"] == "columns":
+            for dx, dz in ((0, 0), (5, 3), (-4, 5), (3, -6), (-7, -3)):
+                d.rectangle([px(x + dx - 1, z + dz - 1, oy), px(x + dx + 1, z + dz + 1, oy)], fill=(170, 170, 175), outline=(40, 40, 40))
+        else:
+            fill = paint.get(f["paint"][1], (170, 170, 175)) if f["paint"][0] == "solid" else (170, 170, 175)
+            d.polygon([px(a, b, oy) for a, b in turned_rect(x, z, w_, l_, f["yaw"])], fill=fill, outline=(40, 40, 40))
+        label(d, x - 6, z + 5, f["kind"], oy)
     for p in P.PYLONS:
         for q in both(p):
             d.polygon([px(x, z, oy) for x, z in q], fill=(150, 150, 155), outline=(40, 40, 40))
     for poly, top, name in city_masses():
         for q in both(poly):
             d.line([px(x, z, oy) for x, z in q + q[:1]], fill=(255, 255, 255), width=1)
-    for f in P.FRAGMENTS:
-        label(d, f["at"][0] - 6, f["at"][1] + 4, f["kind"], oy)
-    label(d, -10, 0, "the Mirror", oy)
-    d.text((6, oy + 4), "2. THE LAND, y 6-40: the lake, swathes of colour, the city's fragments stuck in the ground"
-           " (grey, turned); white: the city above", fill=(0, 0, 0))
+    label(d, 14, 6, "the Mirror", oy)
+    label(d, 66, -40, "the Mesa", oy)
+    label(d, cx - 8, cz - r - 4, "the crater", oy)
+    d.text((6, oy + 4), "2. THE LAND, y 6-42, drawn once and not mirrored: the river and the lake, the mesa, the crater,"
+           " the city's fragments where they fell; white: the city above", fill=(0, 0, 0))
 
 
 def panel_section(d, oy, hgt):
@@ -127,9 +142,9 @@ def panel_section(d, oy, hgt):
         return oy + hgt - y * hgt / 128.0
     # land
     prof = [(x, 22 + 10 * math.sin(x / 17.0) + 5 * math.sin(x / 7.0)) for x in range(P.X_MIN, P.X_MAX + 1, 2)]
-    prof = [(x, min(y, P.LAKE_Y - 2) if abs(x + 0.5) < 27 else y) for x, y in prof]
+    prof = [(x, min(y, P.LAKE_Y - 2) if 0 <= x <= 44 else y) for x, y in prof]
     d.polygon([(px(x, 0)[0], py(y)) for x, y in prof] + [(W, py(0)), (0, py(0))], fill=(110, 150, 70))
-    d.rectangle([px(-27, 0)[0], py(P.LAKE_Y), px(26, 0)[0], py(P.LAKE_Y - 3)], fill=(70, 120, 200))
+    d.rectangle([px(0, 0)[0], py(P.LAKE_Y), px(44, 0)[0], py(P.LAKE_Y - 3)], fill=(70, 120, 200))
     # cloud sea and the kill height
     d.rectangle([0, py(P.CLOUD_Y[1]), W, py(P.CLOUD_Y[0])], fill=(240, 245, 250))
     d.line([(0, py(P.KILL_Y)), (W, py(P.KILL_Y))], fill=(200, 30, 30), width=2)

@@ -4,7 +4,8 @@
 are the board: an Atrium where each team spawns, an Obelisk with the monument on a balcony, a Reactor with the
 core hung over a shaft into the void, and between them Columns, a Forum, a Gate, a Lens, a Ziggurat and a
 Cantilever. Two skyways a side join the spawn to its objectives; every other gap is bridged. Anyone who falls
-dies at y 58, long before the clouds, and the land below is there to be seen.
+dies at y 58, long before the clouds. The land below is there to be seen, and since nobody plays on it, it keeps
+no symmetry.
 
 It is a combined board, one core and one monument a team (`<gamemode>dtm</gamemode><gamemode>dtc</gamemode>`).
 It is sixteen a side, 200 × 144 blocks, the city from y 62 to 121. Blue's half is red's mirrored across
@@ -20,9 +21,11 @@ x = −0.5.
 | Clean geometry, patterns above all | every face patterned by `scripts/facade.py`: insets, stripes, flutes, panels, glyphs, slits, cornices, coffers |
 | What the studio cannot do: inset faces, an inset colour stripe, flat and inset segments alternating, glyphs in the shapes | all of them, and each is a recess rather than a paint (below) |
 | Players bridge | the walk reaches only the Atrium, the skyways, the plaza, the Obelisk and the Reactor; everything else is reached by building |
-| Painterly terrain below, with the city's shapes stuck into it | the land in swathes of colour, a lake, woods; the Atrium's pylons come down to it; a monolith driven in at 24°, a fallen obelisk, a cube half sunk in the lake, a ring tipped on a hill, a slab askew |
+| Painterly terrain below, with the city's shapes stuck into it | the land in swathes of colour, a river into a lake, a mesa banded in coloured clay, a crater, woods; the pylons come down to it; ten fragments of the city where they fell |
+| Pops of colour (second pass) | wool on whole surfaces: lime, magenta and yellow Columns, purple piers, coloured tiers and rims, an orange Reactor, a magenta slab (below) |
+| An underground that need not be symmetric (second pass) | the land, its fragments, woods and clouds drawn once over the whole board; only the city is mirrored |
 | Obelisks, pillars with staircases | the Obelisk, its stair wound round it to the top; three Columns, a stair wound round each |
-| A floating city above the clouds | the cloud sea, 25,825 blocks of glass on each half between y 44 and 54, broken so the land shows through |
+| A floating city above the clouds | the cloud sea, 46,654 blocks of glass over the board between y 44 and 54, broken so the land shows through |
 | Kill players mid-fall | `<apply kit="fall-kill" region="the-fall"/>` on `<below y="58"/>` (below) |
 
 ## The faces
@@ -60,6 +63,55 @@ bench: four masses, one pattern set each.
 
 ![the Obelisk's south face](renders/51-elev-obelisk-south-face.png)
 ![the Atrium's south face](renders/50-elev-atrium-south-face.png)
+
+## Colour
+
+**The first build was concrete with orange, and the author called it too much stone.** Two things kept the
+colour from showing. It was in one-block recesses, which sit in shadow and do not carry at a distance. And it
+was stained clay, which 1.8 renders as a dusty terracotta.
+
+**The accents are now wool, and colour is given to whole surfaces.**
+
+- **Columns:** each is solid lime, magenta or yellow, fluted in dark concrete.
+- **Forum:** the piers are purple.
+- **Ziggurat:** the treads are laid orange, yellow, lime and magenta, tier by tier.
+- **Lens:** the rim is striped lime.
+- **Gate:** the opening is lined in yellow.
+- **Reactor:** the hollow is painted orange inside, and its gallery is striped yellow and black round the
+  shaft.
+- **Cantilever:** the arm is a magenta slab.
+- **Smaller accents:** the skyways run a yellow centre line, the Obelisk's glyph rows each take a colour and
+  its stair is yellow, and the Atrium has yellow glyphs, magenta flutes and a yellow line round its roof.
+
+**Red and blue appear only where they are the teams'.** Wool is quick to break with shears, so a player can
+cut through a coloured face. On a bridging board that is a feature as much as a cost.
+
+![the city alone, in colour](renders/32-iso-city-only-se.png)
+
+## The land, unsymmetric
+
+**Only the city is mirrored.** The generator builds the city on red's half, mirrors it, and only then draws
+the land, its fragments, its woods and the clouds over the whole board. The pylons are built last of the
+city, each down to the ground under it, since the ground under a blue pylon is no longer its red twin's.
+
+**The land is wilder for it.**
+
+- **Water:** a river winds in from the west into a lake off the middle, and out to the east, its banks
+  shelving.
+- **The mesa:** in the north-east it stands at y 40, its cliffs stepped four at a time and banded in orange,
+  yellow, white, pink and brown clay.
+- **The crater:** in the south-west, with the fallen obelisk lying in it.
+- **Fragments:** ten of the city's pieces lie where they fell:
+  - a yellow cube half sunk in the lake;
+  - a magenta cube on its corner;
+  - a lime ring tipped on a hill;
+  - an orange stump on the mesa;
+  - a tablet with a purple glyph across its face;
+  - a fallen gate frame;
+  - a stand of broken columns, one toppled;
+  - a monolith, a slab and the obelisk, banded.
+
+![the land with the city lifted off](renders/33-iso-land-only-se.png)
 
 ## A tour (red's side; blue's is its mirror)
 
@@ -150,8 +202,8 @@ found`. `PLAN.md` lists what moved. In short:
 
 ## What I would do next
 
-- **More colour.** The board is grey with orange, as concrete is. A second accent per flank, and coloured
-  glyphs on the Forum's floor, would help players tell the flanks apart from a distance.
+- **Colour on the spawn.** The Atrium is still mostly concrete; its court walls could take a colour of their
+  own without confusing it with the team's.
 - **Patterned undersides beyond coffers**: ribs, and stepped soffits on the Cantilever's arm.
 - **Shorter walks to the monument.** The stair is 34 of its 95 blocks; a second stair on the other side
   would halve that for defenders.

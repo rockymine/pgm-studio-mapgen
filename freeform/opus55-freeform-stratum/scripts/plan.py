@@ -78,15 +78,28 @@ SKYWAYS = [
     dict(name="the South Skyway", pts=[(-74, 14), (-62, 26), (-57, 36)], y=(80, 80), half=2),
 ]
 
-# ---- the land below ----------------------------------------------------------------------------------
-LAKE = [(-24, -26), (-8, -32), (7, -32), (23, -26), (28, -6), (23, 18), (7, 28), (-8, 28), (-24, 18), (-29, -6)]
-# fragments of the city stuck into the land: (kind, centre x, z, size, yaw degrees, tilt degrees)
+# ---- the land below: not played, so not symmetric ---------------------------------------------------------
+# The land is drawn once over the whole board, wilder than the city it sits under: a river winding across it
+# into a lake off the middle, a mesa in the north-east whose cliffs show their strata in coloured clay, a
+# crater in the south-west, and the city's fragments scattered where they fell.
+LAKE = [(4, -8), (22, -16), (40, -8), (44, 10), (32, 26), (12, 24), (0, 10)]
+RIVER_IN = [(-100, -34), (-76, -40), (-52, -26), (-30, -20), (-8, -6), (6, -2)]
+RIVER_OUT = [(40, 18), (56, 34), (74, 40), (88, 54), (99, 60)]
+MESA = [(40, -72), (99, -72), (99, -18), (74, -14), (56, -26), (44, -44)]
+MESA_Y = 40
+CRATER = dict(at=(-58, 40), r=15)
+# fragments of the city stuck into the land: kind, centre, size (w, h, d), yaw, tilt, paint
 FRAGMENTS = [
-    dict(kind="monolith", at=(-74, -52), size=(5, 30, 9), yaw=20, tilt=24),
-    dict(kind="fallen-obelisk", at=(-40, 46), size=(6, 34, 6), yaw=-35, tilt=80),
-    dict(kind="sunk-cube", at=(-13, -12), size=(11, 11, 11), yaw=27, tilt=18),
-    dict(kind="ring", at=(-88, 50), size=(16, 16, 4), yaw=0, tilt=62),
-    dict(kind="slab", at=(-50, -20), size=(18, 3, 10), yaw=-12, tilt=8),
+    dict(kind="monolith", at=(-74, -54), size=(5, 30, 9), yaw=20, tilt=24, paint=("band", 2)),
+    dict(kind="fallen-obelisk", at=(-56, 38), size=(6, 34, 6), yaw=-35, tilt=80, paint=("band", 4)),
+    dict(kind="sunk-cube", at=(24, 6), size=(11, 11, 11), yaw=27, tilt=18, paint=("solid", 4)),
+    dict(kind="ring", at=(-90, 58), size=(16, 16, 4), yaw=10, tilt=62, paint=("solid", 5)),
+    dict(kind="slab", at=(-44, -12), size=(18, 3, 10), yaw=-12, tilt=8, paint=("band", 1)),
+    dict(kind="cube", at=(66, 46), size=(9, 9, 9), yaw=40, tilt=35, paint=("solid", 2)),
+    dict(kind="tablet", at=(-18, 56), size=(14, 2, 10), yaw=-20, tilt=72, paint=("glyph", 10)),
+    dict(kind="gate", at=(12, -50), size=(20, 20, 3), yaw=15, tilt=50, paint=("band", 4)),
+    dict(kind="stump", at=(84, -46), size=(10, 8, 10), yaw=0, tilt=0, paint=("solid", 1)),
+    dict(kind="columns", at=(76, 8), size=(3, 18, 3), yaw=0, tilt=0, paint=("band", 6)),
 ]
 
 PLACES = [
@@ -114,5 +127,7 @@ PLACES = [
          what="a tower with a slab thrown out from its head toward the Lens", why="the south flank, toward the enemy's Reactor",
          y="62-88"),
     dict(key="lake", name="the Mirror", poly=LAKE, layer="land",
-         what="a lake under the Forum, shelving shores, the sunk cube in it", why="seen through the clouds", y="16"),
+         what="a lake off the middle, shelving shores, a yellow cube half sunk in it", why="seen through the clouds", y="16"),
+    dict(key="mesa", name="the Mesa", poly=MESA, layer="land",
+         what="a table of land whose cliffs show their strata in coloured clay", why="seen through the clouds", y="40"),
 ]

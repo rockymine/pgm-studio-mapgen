@@ -1,5 +1,5 @@
-"""The land's woods, and the city's few living things: oak and birch in the swathes the noise gathers into
-woods, lilies on the lake."""
+"""The land's woods over the whole board (the land keeps no symmetry): oak and birch where the noise gathers
+into woods, none on the mesa, the shores or the water; lilies on the lake."""
 import json
 import os
 
@@ -21,7 +21,7 @@ def plant(w, F, x, z, tree, turn):
         for _ in range(turn):
             dx, dz = -dz, dx
         X, Y, Z = x + dx, g + 1 + dy, z + dz
-        if X >= 0 or not w.inside(X, Y, Z) or Y > 42:
+        if not w.inside(X, Y, Z) or Y > 42:
             return False
         cur = w.id(X, Y, Z)
         if cur in (B.GRASS, B.DIRT, B.STONE):
@@ -41,7 +41,7 @@ def plant(w, F, x, z, tree, turn):
 def build(w, F):
     rng = np.random.default_rng(3)
     F.trees = []
-    pts = np.argwhere((F.wood > 0.25) & F.red & ~F.lake & ~F.shore & (F.angle < 40))
+    pts = np.argwhere((F.wood > 0.25) & ~F.lake & ~F.shore & ~F.mesa & (F.angle < 40))
     rng.shuffle(pts)
     n = 0
     for ix, iz in pts:
@@ -55,7 +55,7 @@ def build(w, F):
             F.trees.append((x, z, c))
             n += 1
     lil = 0
-    for ix, iz in zip(*np.nonzero(F.lake & F.red & (F.sd > -3))):
+    for ix, iz in zip(*np.nonzero(F.lake & (F.sd > -3) & (F.sd < 0))):
         if rng.random() < 0.06:
             x, z = F.x0 + ix, F.z0 + iz
             if w.id(x, 16 + 1, z) == B.AIR:

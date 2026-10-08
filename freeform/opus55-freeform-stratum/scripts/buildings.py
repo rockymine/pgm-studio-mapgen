@@ -14,10 +14,18 @@ import geometry as G
 import plan as P
 from mc import B
 
-ORANGE = (B.STAINED_CLAY, 1)
+ORANGE = (B.WOOL, 1)
 BLACK = (B.STAINED_CLAY, 15)
 GREY = (B.STAINED_CLAY, 7)
 LIGHT = (B.STAINED_CLAY, 8)
+# the pops of colour: each mass takes its own, none of them red or blue, which are the teams'. They are wool,
+# because 1.8's stained clay is a dusty terracotta and wool is the one vivid colour it has
+YELLOW = (B.WOOL, 4)
+MAGENTA = (B.WOOL, 2)
+LIME = (B.WOOL, 5)
+PINK = (B.WOOL, 6)
+PURPLE = (B.WOOL, 10)
+WOOL_YELLOW = (B.WOOL, 4)
 WHITE = (B.STAINED_CLAY, 0)
 TEAM = (B.STAINED_CLAY, 14)          # red; the mirror turns red clay and wool to blue
 QUARTZ = (B.QUARTZ, 0)
@@ -86,8 +94,8 @@ def atrium(w, F):
     court = Fa.rect_cells(-87, -7, -73, 7)
     ring = Fa.Mass(outer - court, 76, 88)
     faces = [Fa.band_from_top(2, 2, TEAM),                                   # the team's colour, set back, under the cornice
-             Fa.glyph_row(4, ["gate", "eye", "step", "key", "sun", "chevron"], BLACK, spacing=7),
-             Fa.flutes(3, 1, 1, 2),
+             Fa.glyph_row(4, ["gate", "eye", "step", "key", "sun", "chevron"], YELLOW, spacing=7),
+             Fa.flutes(3, 1, 1, 2, mat=MAGENTA),
              Fa.courses(4, Fa.DARK_CONCRETE)]
     Fa.build(w, ring, base=Fa.concrete(), faces=faces, top="cornice", bottom="coffer")
     floor = Fa.Mass(court, 76, P.COURT_Y)
@@ -99,6 +107,10 @@ def atrium(w, F):
         w.set(x, P.COURT_Y, z, *(Fa.SMOOTH if q else Fa.DARK_CONCRETE))
         if abs(x - cx) <= 1 and abs(z - cz) <= 1:
             w.set(x, P.COURT_Y, z, *TEAM)
+    # the roof: a yellow line round the court, two blocks back from its edge
+    for (x, z) in outer - court:
+        if max(abs(x - cx), abs(z - cz)) == 9:
+            w.set(x, 88, z, *YELLOW)
     # gates: north and south near the east end, toward the skyways, and one east toward the middle
     gates = []
     for gx0, gx1, gz0, gz1 in ((-76, -72, -13, -8), (-76, -72, 8, 13), (-73, -67, -2, 2)):
@@ -121,15 +133,32 @@ def atrium(w, F):
     w.chest(cx - 4, P.COURT_Y + 1, cz + 5, [(0, "minecraft:planks", 64, 0), (1, "minecraft:stone", 64, 0)], facing=2)
     claim(F, "the Atrium", outer)
     F.spawn = (cx, P.COURT_Y + 1, cz)
-    # the pylons, down through the cloud to the land
+    RECORDS.append(dict(kind="the Atrium", floor=P.COURT_Y, cells=court | set(gates)))
+
+
+def pylons(w, F):
+    """The Atrium's four pylons on each side, down through the cloud to the land. They are built after the
+    mirror, each to the ground under it, because the land is not symmetric and the ground under a blue pylon
+    is not the ground under its red twin."""
     for p in P.PYLONS:
         (x0, z0), (x1, _), (_, z1) = p[0], p[1], p[2]
-        cells = Fa.rect_cells(x0, z0, x1, z1)
-        g = min(ground(F, x, z) for x, z in cells)
-        m = Fa.Mass(cells, g - 3, 75)
-        Fa.build(w, m, base=Fa.concrete(), faces=[Fa.flutes(2, 1, 0, 200), Fa.band(75 - (g - 3) - 6, 75 - (g - 3) - 6, ORANGE)])
-        claim(F, "the Atrium", cells)            # under the Atrium: one mass with it
-    RECORDS.append(dict(kind="the Atrium", floor=P.COURT_Y, cells=court | set(gates)))
+        for cells in (Fa.rect_cells(x0, z0, x1, z1), Fa.rect_cells(-1 - x1, z0, -1 - x0, z1)):
+            g = min(int(F.H[x - F.x0, z - F.z0]) for x, z in cells)
+            m = Fa.Mass(cells, g - 3, 75)
+            if min(x for x, z in cells) >= 0:
+                # build the blue pylon through its own mirror-free mass: facade writes only x < 0, so pour it
+                # directly, fluted on its four faces
+                for (x, z) in cells:
+                    for y in range(g - 3, 76):
+                        edge_x = x in (min(c[0] for c in cells), max(c[0] for c in cells))
+                        edge_z = z in (min(c[1] for c in cells), max(c[1] for c in cells))
+                        flute = (edge_x and not edge_z and z % 2 == 0) or (edge_z and not edge_x and x % 2 == 0)
+                        blk = (B.STAINED_CLAY, 1) if y == 69 and (edge_x or edge_z) else (
+                            Fa.DARK_CONCRETE if flute or y % 4 == 0 else Fa.CONCRETE)
+                        w.set(x, y, z, *blk)
+            else:
+                Fa.build(w, m, base=Fa.concrete(), faces=[Fa.flutes(2, 1, 0, 200), Fa.band(75 - (g - 3) - 6, 75 - (g - 3) - 6, ORANGE)])
+            claim(F, "the Atrium", cells)
 
 
 def skyway(w, F, s):
@@ -148,8 +177,8 @@ def skyway(w, F, s):
         t = along[i, k] / L
         y = int(round(y0 + (y1 - y0) * t))
         edge = d[i, k] > s["half"] - 0.5
-        w.set(x, y, z, *Fa.SMOOTH)
-        w.set(x, y - 1, z, *(ORANGE if edge else Fa.CONCRETE))
+        w.set(x, y, z, *(YELLOW if d[i, k] < 0.5 else Fa.SMOOTH))
+        w.set(x, y - 1, z, *(YELLOW if edge else Fa.CONCRETE))
         w.set(x, y - 2, z, *Fa.DARK_CONCRETE)
         if edge and 0.04 < t < 0.96:
             w.set(x, y + 1, z, B.SLAB, 0)
@@ -162,16 +191,17 @@ def skyway(w, F, s):
 
 def obelisk(w, F):
     plaza = Fa.Mass(Fa.poly_cells(P.PLAZA), 72, 78)
-    Fa.build(w, plaza, base=Fa.concrete(), faces=[Fa.band(4, 4, ORANGE), Fa.flutes(4, 2, 0, 2)],
+    Fa.build(w, plaza, base=Fa.concrete(), faces=[Fa.band(4, 4, MAGENTA), Fa.flutes(4, 2, 0, 2, mat=PINK)],
              top="parapet-slotted", bottom="coffer")
     claim(F, "the plaza", plaza.cells)
     # the plaza's top: long bands of light and dark running toward the Obelisk
     for (x, z) in plaza.cells:
-        w.set(x, 78, z, *(Fa.SMOOTH if (z % 4) in (0, 1) else Fa.DARK_CONCRETE))
+        w.set(x, 78, z, *(Fa.SMOOTH if (z % 6) in (0, 1, 2) else (PINK if (z % 6) == 4 else Fa.DARK_CONCRETE)))
     (x0, z0), (x1, _), (_, z1) = P.OBELISK[0], P.OBELISK[1], P.OBELISK[2]
     shaft = Fa.Mass(Fa.rect_cells(x0, z0, x1, z1), 78, P.OBELISK_TOP)
     names = ["eye", "key", "sun", "step", "gate", "chevron", "cross", "bars"]
-    faces = [Fa.glyph_row(t0, names[k:] + names[:k], BLACK, spacing=6, min_run=4) for k, t0 in enumerate(range(5, 40, 8))]
+    glyph_cols = [BLACK, MAGENTA, YELLOW, PURPLE, ORANGE]
+    faces = [Fa.glyph_row(t0, names[k:] + names[:k], glyph_cols[k], spacing=6, min_run=4) for k, t0 in enumerate(range(5, 40, 8))]
     faces.append(Fa.courses(8, LIGHT, offset=1))
     Fa.build(w, shaft, base=lambda x, y, z: QUARTZ if y % 8 else Fa.SMOOTH, faces=faces)
     # the pyramidion
@@ -199,7 +229,7 @@ def obelisk(w, F):
             i += 1
         return False
     start = next(s for s in range(n) if lands(s))
-    steps = wound_stair(w, F, x0, z0, x1, z1, 79, P.OBELISK_TOP, start=start, mat=Fa.SMOOTH)
+    steps = wound_stair(w, F, x0, z0, x1, z1, 79, P.OBELISK_TOP, start=start, mat=YELLOW)
     # the balcony on the east face: a slab thrown out three, the monument in a niche cut two into the shaft
     by = P.MONUMENT_Y - 1
     east = x1
@@ -231,7 +261,7 @@ def obelisk(w, F):
 def reactor(w, F):
     cx, cz = -56, 48
     shell = Fa.Mass(Fa.poly_cells(P.REACTOR), 66, 96)
-    faces = [Fa.slits(3, 6, 26, mat=(95, 0)), Fa.band(4, 4, ORANGE), Fa.band_from_top(3, 3, TEAM),
+    faces = [Fa.slits(3, 6, 26, mat=(95, 1)), Fa.band(4, 4, YELLOW), Fa.band_from_top(3, 3, TEAM),
              Fa.courses(4, Fa.DARK_CONCRETE)]
     Fa.build(w, shell, base=Fa.concrete(), faces=faces, top="parapet", bottom="coffer")
     claim(F, "the Reactor", shell.cells)
@@ -245,7 +275,14 @@ def reactor(w, F):
             for y in range(66, gallery + 1):
                 w.set(x, y, z, B.AIR)                     # the shaft, open to the void
         elif d < 7.0:
-            w.set(x, gallery, z, *(Fa.SMOOTH if int(d) % 2 else Fa.DARK_CONCRETE))
+            w.set(x, gallery, z, *(YELLOW if (int(d) % 2 and (x + z) % 4 < 2) else (BLACK if int(d) % 2 else Fa.DARK_CONCRETE)))
+    # the hollow's walls painted orange, seen from the gallery and from above
+    for (x, z) in shell.cells:
+        d = math.hypot(x - cx, z - cz)
+        if 7.0 <= d < 8.0:
+            for y in range(gallery + 1, 97):
+                if w.id(x, y, z) not in (B.AIR,):
+                    w.set(x, y, z, *((B.WOOL, 1) if y % 4 else Fa.DARK_CONCRETE))
     # the core, hung over the shaft on four beams
     c0 = gallery + 1
     for x in range(cx - 1, cx + 2):
@@ -276,15 +313,17 @@ def columns(w, F):
         x, z = c["c"]
         h = P.COLUMN_HALF
         m = Fa.Mass(Fa.rect_cells(x - h, z - h, x + h, z + h), 62, c["top"])
-        Fa.build(w, m, base=Fa.concrete(), faces=[Fa.flutes(2, 1, 0, 200), Fa.band_from_top(2, 2, ORANGE)], top="cornice")
-        steps = wound_stair(w, F, x - h, z - h, x + h, z + h, 68, c["top"], start=3 * k, mat=Fa.SMOOTH)
+        col = (LIME, MAGENTA, YELLOW)[k]
+        Fa.build(w, m, base=lambda x, y, z, c=col: Fa.DARK_CONCRETE if y % 6 == 0 else c,
+                 faces=[Fa.flutes(2, 1, 0, 200, mat=Fa.DARK_CONCRETE), Fa.band_from_top(2, 2, WHITE)], top="cornice")
+        steps = wound_stair(w, F, x - h, z - h, x + h, z + h, 68, c["top"], start=3 * k, mat=col)
         claim(F, f"column {k}", m.cells | {(s[0], s[1]) for s in steps})
 
 
 def forum(w, F):
     x0, z0, x1, z1 = -26, -9, 25, 8
     m = Fa.Mass(Fa.rect_cells(x0, z0, x1, z1), 74, P.FORUM_Y, seam=True)
-    Fa.build(w, m, base=Fa.concrete(), faces=[Fa.panels(4, 1, 4, GREY), Fa.band(5, 5, ORANGE)], top=None, bottom="coffer")
+    Fa.build(w, m, base=Fa.concrete(), faces=[Fa.panels(4, 1, 4, PURPLE), Fa.band(5, 5, YELLOW)], top=None, bottom="coffer")
     claim(F, "the Forum", {c for c in m.cells if c[0] < 0})
     # the sunken court, its floor a mosaic of glyphs
     cx0, cz0, cx1, cz1 = -10, -4, 9, 3
@@ -299,7 +338,7 @@ def forum(w, F):
         for r in range(5):
             for c in range(5):
                 if g[r][c] == "#":
-                    w.set(gx + c, P.FORUM_Y - 2, cz0 + 1 + r, *BLACK)
+                    w.set(gx + c, P.FORUM_Y - 2, cz0 + 1 + r, *(MAGENTA, LIME)[gi])
     for x in range(cx0, 0):
         w.set(x, P.FORUM_Y - 1, cz0 - 0, B.STONEBRICK_STAIRS, 2) if False else None
     # steps down into the court at its west end
@@ -311,9 +350,9 @@ def forum(w, F):
             if (x - x0) % 6 in (0, 1):
                 for z in zz:
                     for y in range(P.FORUM_Y + 1, P.FORUM_Y + 9):
-                        w.set(x, y, z, *Fa.concrete()(x, y, z))
+                        w.set(x, y, z, *(PURPLE if y < P.FORUM_Y + 8 else Fa.DARK_CONCRETE))
         arch = Fa.Mass(Fa.rect_cells(x0, zz[0], x1, zz[1]), P.FORUM_Y + 9, P.FORUM_Y + 12, seam=True)
-        Fa.build(w, arch, base=Fa.SMOOTH, faces=[Fa.flutes(2, 1, 1, 2, mat=GREY)], top="parapet-slotted")
+        Fa.build(w, arch, base=Fa.SMOOTH, faces=[Fa.flutes(2, 1, 1, 2, mat=PURPLE)], top="parapet-slotted")
 
 
 def gate(w, F):
@@ -334,14 +373,25 @@ def gate(w, F):
                        (y in (g["y0"] + b - 2, g["y1"] - b + 2) and x >= g["x0"] + b - 2)
                 if face and ring:
                     w.set(x, y, z, B.AIR)
-                    w.set(x, y, z + (1 if z == g["z0"] else -1), *ORANGE)
+                    w.set(x, y, z + (1 if z == g["z0"] else -1), *YELLOW)
                 elif w.id(x, y, z) == B.AIR or not face:
                     w.set(x, y, z, *(Fa.DARK_CONCRETE if y % 4 == 0 else Fa.CONCRETE))
                 cells.add((x, z))
+    # the opening is lined in yellow: every block of the frame that faces the hole
+    for x in range(g["x0"], 0):
+        for y in range(g["y0"], g["y1"] + 1):
+            inner = (g["x0"] + b <= x <= g["x1"] - b) and (g["y0"] + b <= y <= g["y1"] - b)
+            if inner:
+                continue
+            near = any((g["x0"] + b <= x + dx <= g["x1"] - b) and (g["y0"] + b <= y + dy <= g["y1"] - b)
+                       for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+            if near:
+                for z in range(g["z0"] + 1, g["z1"]):
+                    w.set(x, y, z, *YELLOW)
     # the foot is a bridge: its top laid smooth
     for x in range(g["x0"], 0):
         for z in range(g["z0"], g["z1"] + 1):
-            w.set(x, g["y0"] + b - 1, z, *Fa.SMOOTH)
+            w.set(x, g["y0"] + b - 1, z, *(YELLOW if z in (g["z0"], g["z1"]) else Fa.SMOOTH))
     claim(F, "the Gate", cells)
 
 
@@ -351,8 +401,11 @@ def lens(w, F):
     (ix0, iz0), (ix1, _), (_, iz1) = L["inner"][0], L["inner"][1], L["inner"][2]
     cells = Fa.rect_cells(ox0, oz0, ox1, oz1) - Fa.rect_cells(ix0, iz0, ix1, iz1)
     m = Fa.Mass(cells, L["y0"], L["y1"], seam=True)
-    Fa.build(w, m, base=Fa.concrete(2), faces=[Fa.band(2, 2, ORANGE), Fa.checker(0, 1, GREY)], top="parapet-slotted",
+    Fa.build(w, m, base=Fa.concrete(2), faces=[Fa.band(2, 2, ORANGE), Fa.checker(0, 1, LIME)], top="parapet-slotted",
              bottom="coffer")
+    for (x, z) in cells:
+        if x < 0:
+            w.set(x, L["y1"], z, *(LIME if (x + z) % 4 < 2 else Fa.SMOOTH))
     claim(F, "the Lens", {c for c in cells if c[0] < 0})
 
 
@@ -361,9 +414,14 @@ def ziggurat(w, F):
     allc = set()
     for k, (r, y0, y1) in enumerate(P.ZIGGURAT["tiers"]):
         m = Fa.Mass(Fa.rect_cells(cx - r, cz - r, cx + r, cz + r), y0, y1)
-        Fa.build(w, m, base=Fa.concrete(), faces=[Fa.band(1, 1, ORANGE if k % 2 == 0 else GREY), Fa.flutes(2, 1, 2, 3)],
+        Fa.build(w, m, base=Fa.concrete(), faces=[Fa.band(1, 1, (ORANGE, YELLOW, LIME, MAGENTA)[k]), Fa.flutes(2, 1, 2, 3, mat=(ORANGE, YELLOW, LIME, MAGENTA)[k])],
                  bottom="coffer" if k == 0 else None)
         allc |= m.cells
+        col = (ORANGE, YELLOW, LIME, MAGENTA)[k]
+        for (x, z) in m.cells:
+            ring = max(abs(x - cx), abs(z - cz))
+            if k == len(P.ZIGGURAT["tiers"]) - 1 or ring > P.ZIGGURAT["tiers"][k + 1][0]:
+                w.set(x, y1, z, *(col if (x + z) % 2 == 0 or k == len(P.ZIGGURAT["tiers"]) - 1 else Fa.SMOOTH))
     # a straight flight up the east face, tier to tier
     tiers = P.ZIGGURAT["tiers"]
     for k in range(len(tiers) - 1):
@@ -384,15 +442,16 @@ def cantilever(w, F):
     C = P.CANTILEVER
     (x0, z0), (x1, _), (_, z1) = C["core"][0], C["core"][1], C["core"][2]
     core = Fa.Mass(Fa.rect_cells(x0, z0, x1, z1), *C["core_y"])
-    Fa.build(w, core, base=Fa.concrete(), faces=[Fa.panels(3, 2, 22, GREY), Fa.band_from_top(1, 1, ORANGE),
-                                                  Fa.glyph_row(14, ["sun", "eye", "key"], BLACK, spacing=6)],
+    Fa.build(w, core, base=Fa.concrete(), faces=[Fa.panels(3, 2, 22, PINK), Fa.band_from_top(1, 1, ORANGE),
+                                                  Fa.glyph_row(14, ["sun", "eye", "key"], PURPLE, spacing=6)],
              top="cornice", bottom="coffer")
     (ax0, az0), (ax1, _), (_, az1) = C["arm"][0], C["arm"][1], C["arm"][2]
     arm = Fa.Mass(Fa.rect_cells(ax0, az0, ax1, az1), *C["arm_y"])
-    Fa.build(w, arm, base=Fa.concrete(2), faces=[Fa.band(2, 2, ORANGE), Fa.slits(2, 1, 3, mat=GREY)],
+    Fa.build(w, arm, base=lambda x, y, z: Fa.DARK_CONCRETE if y == C["arm_y"][0] else MAGENTA,
+             faces=[Fa.band(2, 2, WHITE), Fa.slits(2, 1, 3, mat=PINK)],
              top="parapet-slotted", bottom="coffer")
     # a stair up the core's west face from its foot to its head
-    steps = wound_stair(w, F, x0, z0, x1, z1, 68, C["core_y"][1], start=20, mat=Fa.SMOOTH)
+    steps = wound_stair(w, F, x0, z0, x1, z1, 68, C["core_y"][1], start=20, mat=PINK)
     claim(F, "the Cantilever", core.cells | arm.cells | {(s[0], s[1]) for s in steps})
 
 

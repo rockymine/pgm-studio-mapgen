@@ -111,3 +111,40 @@ face.
 | The Lens | 26 × 24 ring | 70–74 | grey checker, orange band, slotted parapet, coffers |
 | The Ziggurat | four tiers | 64–80 | alternating orange and grey bands, flutes, a stair up the east face |
 | The Cantilever | 9 × 9 tower and an 11 × 7 arm | 62–88 | panels, a glyph row, slits; a stair wound round the tower |
+
+## The second pass: colour, and a land that keeps no symmetry
+
+**The author's verdict on the first build was that it was too much stone.** Colour had gone only into
+one-block recesses, which sit in shadow and do not carry at a distance. It was also clay, and 1.8's stained
+clay is a dusty terracotta. The accents are now wool, the one vivid colour 1.8 has, and colour is given to
+whole surfaces, not only to insets:
+
+- each Column is solid lime, magenta or yellow, fluted in dark concrete;
+- the Forum's piers are purple;
+- the Ziggurat's tiers are laid orange, yellow, lime and magenta on their treads;
+- the Lens's rim is striped lime;
+- the Gate's opening is lined in yellow;
+- the Reactor's hollow is painted orange inside;
+- the Cantilever's arm is a magenta slab;
+- the skyways run a yellow centre line;
+- the Obelisk's glyph rows each take a colour, and its stair is yellow;
+- the Atrium's roof has a yellow line round its court.
+
+Red and blue appear only where they are the teams'.
+
+**The land keeps no symmetry, because nobody plays on it.** The city is still mirrored; the land, its
+fragments, its woods and the clouds are drawn once over the whole board.
+
+**The land is wilder for it.** A river winds in from the west
+into a lake off the middle and out to the east, its banks shelving. In the north-east a mesa stands at 40,
+its cliffs stepped and banded in orange, yellow, white, pink and brown clay. There is a crater in the
+south-west with the fallen obelisk in it.
+
+**The city's fragments are ten, not five, and lie where they fell.** Some are painted solid in colour (a yellow cube in the lake, a magenta cube on its corner, a lime ring, an
+orange stump on the mesa), a tablet with a purple glyph across its face, a fallen gate frame, and a stand of
+broken columns.
+
+**The pylons are built after the mirror, each to the ground under it,** because the ground under a blue
+pylon is no longer the ground under its red twin.
+
+![the plan, second pass](renders/00-plan-sketch-v2.png)
