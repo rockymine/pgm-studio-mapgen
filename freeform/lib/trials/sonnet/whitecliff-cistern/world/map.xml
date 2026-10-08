@@ -1,0 +1,101 @@
+<map proto="1.5.0">
+    <name>Whitecliff Cistern</name>
+    <version>0.1.0</version>
+    <objective>Hold the hills: the Cistern pays two a second, the Garden and the Boatyard one.</objective>
+    <gamemode>koth</gamemode>
+    <authors>
+        <author>Claude (freeform generator, on pgmvox)</author>
+    </authors>
+    <teams>
+        <team id="red-team" color="red" max="16">Red</team>
+        <team id="blue-team" color="blue" max="16">Blue</team>
+    </teams>
+    <filters>
+        <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
+        <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
+        <not id="not-void">
+            <void/>
+        </not>
+    </filters>
+    <spawns>
+        <spawn team="red-team" kit="spawn-kit" yaw="270">
+            <region>
+                <point>-51.5,69,0.5</point>
+            </region>
+        </spawn>
+        <spawn team="blue-team" kit="spawn-kit" yaw="90">
+            <region>
+                <point>51.5,69,0.5</point>
+            </region>
+        </spawn>
+        <default yaw="90">
+            <region>
+                <point>0.5,100,0.5</point>
+            </region>
+        </default>
+    </spawns>
+    <regions>
+        <cuboid min="-59,0,-9" max="-46,128,9" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="46,0,-9" max="59,128,9" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-3,56,-3" max="3,61,3" id="cistern-capture"/>
+        <cuboid min="-3,56,-3" max="3,57,3" id="cistern-pad"/>
+        <cuboid min="-3,72,-45" max="3,77,-39" id="garden-capture"/>
+        <cuboid min="-3,72,-45" max="3,73,-39" id="garden-pad"/>
+        <cuboid min="-3,66,40" max="3,71,46" id="boatyard-capture"/>
+        <cuboid min="-3,66,40" max="3,67,46" id="boatyard-pad"/>
+        <below y="30" id="the-fall"/>
+        <apply kit="fall-kill" region="the-fall"/>
+        <apply block-place="not-void" message="You may not build in the void!"/>
+    </regions>
+    <king>
+        <hills required="false" neutral-state="true" incremental="true" show-progress="true" time-multiplier="0" permanent="false">
+            <hill id="cistern" name="The Cistern" capture-region="cistern-capture" progress-display-region="cistern-pad" owner-display-region="cistern-pad" capture-time="5s" points="2"/>
+            <hill id="garden" name="The Garden" capture-region="garden-capture" progress-display-region="garden-pad" owner-display-region="garden-pad" capture-time="5s" points="1"/>
+            <hill id="boatyard" name="The Boatyard" capture-region="boatyard-capture" progress-display-region="boatyard-pad" owner-display-region="boatyard-pad" capture-time="5s" points="1"/>
+        </hills>
+    </king>
+    <score>
+        <limit>300</limit>
+    </score>
+    <time result="score">20m</time>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="iron pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64" damage="0"/>
+            <item slot="5" material="stained clay" amount="32" team-color="true"/>
+            <item slot="6" material="golden apple" amount="4"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+        <kit id="fall-kill" force="true">
+            <effect duration="1" amplifier="5">instant damage</effect>
+        </kit>
+    </kits>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>iron pickaxe</item>
+        <item>iron axe</item>
+    </itemkeep>
+    <maxbuildheight>112</maxbuildheight>
+</map>
+
