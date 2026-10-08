@@ -1,0 +1,155 @@
+<map proto="1.5.0">
+<name>Lantern Karst</name>
+<version>0.1.0</version>
+<objective>Capture the enemy's two wools: the Pillar Shrine's and the Tea Store's.</objective>
+<gamemode>ctw</gamemode>
+<authors>
+    <author>Claude (freeform generator)</author>
+</authors>
+<teams>
+    <team id="red-team" color="red" max="16">Red</team>
+    <team id="blue-team" color="blue" max="16">Blue</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <item slot="0" material="iron sword" unbreakable="true"/>
+        <item slot="1" material="bow" unbreakable="true">
+            <enchantment level="1">infinity</enchantment>
+        </item>
+        <item slot="2" material="iron pickaxe" unbreakable="true">
+            <enchantment level="1">efficiency</enchantment>
+        </item>
+        <item slot="3" material="iron axe" unbreakable="true">
+            <enchantment level="1">efficiency</enchantment>
+        </item>
+        <item slot="4" material="wood" damage="1" amount="64"/>
+        <item slot="5" material="stained clay" amount="48" team-color="true"/>
+        <item slot="6" material="golden apple"/>
+        <item slot="7" material="water bucket"/>
+        <item slot="8" material="cooked beef" amount="16"/>
+        <item slot="28" material="arrow"/>
+        <item slot="29" material="shears" unbreakable="true"/>
+        <item slot="31" material="wood" damage="1" amount="64"/>
+        <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+        <chestplate material="leather chestplate" unbreakable="true" team-color="true"/>
+        <leggings material="chainmail leggings" unbreakable="true"/>
+        <boots material="leather boots" unbreakable="true" team-color="true"/>
+    </kit>
+    <!-- a fall into the mist is fatal: below y 40 a player takes enough instant damage to die -->
+    <kit id="fall-kill" force="true">
+        <effect duration="1" amplifier="5">instant damage</effect>
+    </kit>
+</kits>
+<spawns>
+    <default region="observer-spawn" yaw="90"/>
+    <spawn team="red-team" kit="spawn-kit" yaw="0" region="red-spawn-point"/>
+    <spawn team="blue-team" kit="spawn-kit" yaw="180" region="blue-spawn-point"/>
+</spawns>
+<wools craftable="false">
+    <!-- red's rooms hold lime (the Pillar Shrine) and yellow (the Tea Store); blue's hold magenta and orange -->
+    <wool team="blue-team" color="lime" location="-62.5,75,-93.5" monument="lime-monument"/>
+    <wool team="blue-team" color="yellow" location="56.5,71,-95.5" monument="yellow-monument"/>
+    <wool team="red-team" color="magenta" location="62.5,75,93.5" monument="magenta-monument"/>
+    <wool team="red-team" color="orange" location="-56.5,71,95.5" monument="orange-monument"/>
+</wools>
+<filters>
+    <team id="only-red">red-team</team>
+    <team id="only-blue">blue-team</team>
+    <not id="not-red"><filter id="only-red"/></not>
+    <not id="not-blue"><filter id="only-blue"/></not>
+    <!-- block 36 at y 0 marks every column a player may build in; the void filter reads it -->
+    <not id="not-void"><void/></not>
+    <any id="woolroom-materials">
+        <material>wood</material>
+        <material>stained clay</material>
+        <material>web</material>
+        <all>
+            <cause>player</cause>
+            <any>
+                <material>water</material>
+                <material>stationary water</material>
+            </any>
+        </all>
+    </any>
+    <all id="reds-woolrooms-filter">
+        <filter id="not-red"/>
+        <filter id="woolroom-materials"/>
+    </all>
+    <all id="blues-woolrooms-filter">
+        <filter id="not-blue"/>
+        <filter id="woolroom-materials"/>
+    </all>
+</filters>
+<regions>
+    <point id="red-spawn-point">-0.5,73,-104.5</point>
+    <point id="blue-spawn-point">0.5,73,104.5</point>
+    <point id="observer-spawn">0.5,90,0.5</point>
+    <rectangle id="red-spawn" min="-20,-120" max="20,-78"/>
+    <rectangle id="blue-spawn" min="-20,78" max="20,120"/>
+    <union id="spawns">
+        <region id="red-spawn"/>
+        <region id="blue-spawn"/>
+    </union>
+    <!-- the monuments: red's on its Monument Terrace wait for blue's colours, blue's for red's -->
+    <block id="magenta-monument">-4,71,-89</block>
+    <block id="orange-monument">3,71,-89</block>
+    <block id="lime-monument">3,71,88</block>
+    <block id="yellow-monument">-4,71,88</block>
+    <!-- the rooms: the shrine on each Pillar, the inside of each Tea Store -->
+    <cuboid id="red-pillar-room" min="-66,75,-97" max="-58,92,-89"/>
+    <cuboid id="red-store-room" min="47,71,-100" max="67,80,-86"/>
+    <cuboid id="blue-pillar-room" min="58,75,89" max="66,92,97"/>
+    <cuboid id="blue-store-room" min="-67,71,86" max="-47,80,100"/>
+    <union id="reds-woolrooms">
+        <region id="red-pillar-room"/>
+        <region id="red-store-room"/>
+    </union>
+    <union id="blues-woolrooms">
+        <region id="blue-pillar-room"/>
+        <region id="blue-store-room"/>
+    </union>
+    <point id="lime-wool-spawn">-62.5,76,-91.5</point>
+    <point id="yellow-wool-spawn">56.5,72,-93.5</point>
+    <point id="magenta-wool-spawn">62.5,76,91.5</point>
+    <point id="orange-wool-spawn">-56.5,72,93.5</point>
+    <below id="the-fall" y="40"/>
+    <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
+    <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
+    <apply enter="not-red" region="reds-woolrooms" message="You may not enter your own wool room!"/>
+    <apply enter="not-blue" region="blues-woolrooms" message="You may not enter your own wool room!"/>
+    <apply block="never" region="spawns" message="You may not edit the spawn!"/>
+    <apply block="reds-woolrooms-filter" region="reds-woolrooms" message="You may not edit the wool room!"/>
+    <apply block="blues-woolrooms-filter" region="blues-woolrooms" message="You may not edit the wool room!"/>
+    <apply block-place="not-void" message="You may not build in the void!"/>
+    <apply kit="fall-kill" region="the-fall"/>
+</regions>
+<spawners>
+    <spawner spawn-region="lime-wool-spawn" player-region="red-pillar-room" delay="1.5s">
+        <item material="wool" damage="5"/>
+    </spawner>
+    <spawner spawn-region="yellow-wool-spawn" player-region="red-store-room" delay="1.5s">
+        <item material="wool" damage="4"/>
+    </spawner>
+    <spawner spawn-region="magenta-wool-spawn" player-region="blue-pillar-room" delay="1.5s">
+        <item material="wool" damage="2"/>
+    </spawner>
+    <spawner spawn-region="orange-wool-spawn" player-region="blue-store-room" delay="1.5s">
+        <item material="wool" damage="1"/>
+    </spawner>
+</spawners>
+<itemkeep>
+    <item>iron sword</item>
+    <item>bow</item>
+    <item>iron pickaxe</item>
+    <item>iron axe</item>
+    <item>water bucket</item>
+    <item>shears</item>
+</itemkeep>
+<kill-rewards>
+    <kill-reward>
+        <item material="wood" damage="1" amount="16"/>
+        <item material="golden apple"/>
+    </kill-reward>
+</kill-rewards>
+<maxbuildheight>92</maxbuildheight>
+</map>

@@ -14,7 +14,7 @@ import numpy as np
 import render_iso
 from mc import B
 
-PASS = {0, 31, 32, 37, 38, 175, 50, 59, 141, 142, 83, 106, 65, 66, 27, 28, 63, 68, 72, 70, 78, 111, 30, 64,
+PASS = {0, 36, 55, 31, 32, 37, 38, 175, 50, 59, 141, 142, 83, 106, 65, 66, 27, 28, 63, 68, 72, 70, 78, 111, 30, 64,
         193, 194, 195, 196, 197, 171, 6, 39, 40, 8, 9, 69, 77, 143, 131, 132}
 WATER = {8, 9}
 
@@ -90,23 +90,26 @@ def main(build):
     x0, z0, ids, dat = render_iso.load(build)
     passable, water, ladder, solid = grid(ids)
     st = standable(passable, water, solid) | (ladder & passable)
-    st[:, :58, :] = False                     # below the kill height nobody stands for long
-    spawns = {"red": (-80, 81, 0), "blue": (79, 81, 0)}
-    goals = {"red monument (the Obelisk's balcony)": (-53, 100, -50), "red core (the Reactor's gallery)": (-52, 81, 48),
-             "blue monument": (52, 100, -50), "blue core": (51, 81, 48)}
-    places = {"the plaza": (-56, 79, -45), "the Obelisk's top": (-57, 119, -46), "the Atrium's roof": (-80, 89, -10),
-              "the Forum": (-15, 81, 0), "a Column's top": (-47, 107, 0), "the Gate's foot": (-8, 72, -50),
-              "the Lens": (-9, 75, 40), "the Ziggurat's top": (-29, 81, -46), "the Cantilever's arm": (-20, 89, 46)}
+    st[:, :41, :] = False                     # below the kill height nobody stands
+    spawns = {"red": (-1, 73, -105), "blue": (0, 73, 104)}
+    red_places = {"its own monuments": (-1, 71, -89), "the Tea Store's door (its own)": (56, 70, -86),
+                  "the Near Arm's end": (-37, 68, -95), "the Far Arm's end": (-88, 68, -95),
+                  "the Long Terrace's west end": (-86, 67, -66), "the West Stair's foot at the band": (-19, 65, -13),
+                  "the East Stair's foot at the band": (18, 65, -13), "the Store Road's foot": (56, 67, -40)}
+    enemy = {"red's Tea Store, inside the door": (56, 71, -88), "red's Near Arm (the Pillar's launch)": (-37, 68, -80),
+             "red's Pillar Shrine": (-63, 75, -94), "red's West Ledge": (-73, 47, -79)}
     out = []
     for team, s in spawns.items():
         dist = bfs(st, ladder, water, [s], x0, z0)
         out.append(f"from {team} spawn {s}: {int((dist >= 0).sum())} standable cells reached on foot, no blocks placed")
-        for name, m in goals.items():
-            out.append(f"  to {name}: {nearest(dist, x0, z0, *m, r=4)}")
         if team == "red":
-            for name, p in places.items():
-                v = nearest(dist, x0, z0, *p, r=4)
-                out.append(f"  to {name}: {v if v is not None else 'bridged to, not walked'}")
+            for name, p in red_places.items():
+                v = nearest(dist, x0, z0, *p, r=3)
+                out.append(f"  to {name}: {v if v is not None else 'not walked: behind the bedrock wall, crossed by building'}")
+        else:
+            for name, p in enemy.items():
+                v = nearest(dist, x0, z0, *p, r=3)
+                out.append(f"  to {name}: {v if v is not None else 'not walked: built to, or dropped to'}")
     print("\n".join(out))
     return out
 

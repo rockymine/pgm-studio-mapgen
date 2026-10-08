@@ -25,7 +25,7 @@ X_MIN, X_MAX = -112, 111
 Z_MIN, Z_MAX = -128, 127
 BASE_Y = 64
 KILL_Y = 40                 # below this a fall kills; the mist lies under it
-MIST_Y = (28, 38)
+MIST_Y = (24, 38)
 MAX_BUILD = 92              # the late game's ceiling: 28 over the base, room for the sky network
 FOUNDATION_DEPTH = 6        # the bedrock course under every island, this far below its floor
 MARKER_Y = 0                # block 36 here under every buildable column
@@ -96,7 +96,7 @@ BUILD_ZONES = [
 
 # a bedrock defence wall: one across the Store Road's last stretch, where its three ways in have met.
 # The Pillar has none, since its pit is the line.
-WALLS = [dict(wool="store", x0=50, x1=63, z=-82, height=4)]
+WALLS = [dict(wool="store", x0=50, x1=63, z=-82, height=3)]    # two thick (z -82, -83), cobweb on top
 
 # the wools (what each team captures is the other team's colour of room: red captures from blue's rooms)
 WOOLS = [dict(room="pillar", at=(-62.5, -93.5), y=75, colour="lime", capturer="blue"),
