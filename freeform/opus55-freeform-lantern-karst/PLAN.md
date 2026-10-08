@@ -120,8 +120,8 @@ Width is across the way a player walks, length along it.
 |---|---|---|---|
 | The Pavilion of Arrival | 20 × 10 | 74 | the top terrace: a two-storey pavilion, its hall open to the terrace below |
 | The Pool Terrace | 32 × 12 | 72 | the spawn point; a one-deep pool with stepping stones, a karst outcrop with a pine |
-| The Monument Terrace | 40 × 12 | 70 | the monuments either side of the steps, tea beds, a lantern tower at each end |
-| The Lantern Steps | 12 × 8 | 68 | the spawn's neck, a block a step down to the hub |
+| The Monument Terrace | 40 × 12 | 70 | the monuments between the two exits, tea beds, a lantern tower at each end |
+| The West and East Lantern Steps | 12 × 8 each, 16 apart | 68 | the spawn's two exits, a block a step down to the hub: one toward the Pillar, one toward the Store |
 | The Tea Court | 64 × 40, a ring round a 16 × 16 sinkhole | 66 | the hub: 12 of ground in front of and behind the sinkhole, 24 at each side |
 | The Gate Terrace | 56 × 12 | 65 | the frontline's bar, a gate pavilion over its middle |
 | The West and East Stairs | 18 × 15 each | 64 | the frontline's legs down to the band, 20 of void between them |
@@ -138,7 +138,7 @@ Width is across the way a player walks, length along it.
 | **The Tea Store** | 20 × 14 at the road's head | 70 | **yellow wool**: a stone storehouse, two faces on void, chests of better gear |
 | The Tea Steps | two 6 × 6 islets, 12 apart | 64–65 | the Store's flank: one under the Tea Rows, one under the road's foot |
 
-**The monuments stand on the Monument Terrace either side of the steps**, where a carrier coming home
+**The monuments stand on the Monument Terrace between its two exits**, where a carrier coming home
 cannot miss them: lime on the left, yellow on the right.
 
 ## The spawn, in relief
@@ -150,7 +150,7 @@ yard.** A player arrives on the Pool Terrace at 72 and looks down over the Monum
   ridge at 84, its hall open to the terrace below.
 - **The Pool Terrace** carries a pool one block deep with a path of stepping stones across it, and a karst
   outcrop four high with a pine on top.
-- **The Monument Terrace** carries the two monuments, beds of tea either side of the steps, and a lantern
+- **The Monument Terrace** carries the two monuments, beds of tea either side of the monuments, and a lantern
   tower at each end. The west tower looks out over the Pillar, the east over the Store.
 - **Each terrace edge is a step of one block or a stair**, so the spawn is walked straight down with no
   jumps.
@@ -188,9 +188,9 @@ length; the Ledges left out, since they are reached by a fall):
 | Measured | Lantern Karst | Rule |
 |---|---|---|
 | spawn to the band | 98 | SP10: at least 55 |
-| spawn to the Tea Store, walked | 83 | WL9: comparable |
-| spawn to the Pillar (17 of it bridged) | 87 | WL9: comparable |
-| their ratio | 1.04 | WL9: ideal 1 |
+| spawn to the Tea Store, walked | 75 | WL9: comparable |
+| spawn to the Pillar (17 of it bridged) | 79 | WL9: comparable |
+| their ratio | 1.05 | WL9: ideal 1 |
 | band to the Tea Store, shortest (27 of it bridged) | 76 | WL10e: at least 59 |
 | band to the Tea Store, walked | 90 | — |
 | band to the Pillar, shortest (64 of it bridged) | 80 | WL10e: at least 59 |
@@ -258,6 +258,10 @@ spawn stay uncrossable all match. That is the rule the account says makes a void
 - **Red and blue only on the teams':** banners on the Pavilion and wool rooms. The lacquer red of a real
   pavilion is left out, because it would read as a team.
 - **The mist:** white and light grey stained glass far below, as Stratum's clouds.
+
+**The last change before building gave the spawn two exits.** The single neck became the West and East
+Lantern Steps, 12 wide each with 16 of void between them, so a player picks the exit nearer the wool they
+are going to. The spawn now stands on the hub at two points instead of hanging from one.
 
 ## Decisions for you
 

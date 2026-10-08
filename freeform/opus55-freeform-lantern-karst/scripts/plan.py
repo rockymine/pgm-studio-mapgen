@@ -52,7 +52,9 @@ PIECES = [
     dict(key="hub", name="the Tea Court", kind="hub", poly=rect(-32, -78, 31, -39), y=66,
          hole=rect(-8, -66, 7, -51)),
     # the spawn: three terraces up from the hub, the pavilion on the top one
-    dict(key="neck", name="the Lantern Steps", kind="spawn", poly=rect(-6, -86, 5, -79), y=68),
+    # two exits down to the hub, 16 apart, one toward the Pillar and one toward the Store
+    dict(key="neck-w", name="the West Lantern Steps", kind="spawn", poly=rect(-20, -86, -9, -79), y=68),
+    dict(key="neck-e", name="the East Lantern Steps", kind="spawn", poly=rect(8, -86, 19, -79), y=68),
     dict(key="sp-front", name="the Monument Terrace", kind="spawn", poly=rect(-20, -98, 19, -87), y=70),
     dict(key="sp-mid", name="the Pool Terrace", kind="spawn", poly=rect(-16, -110, 15, -99), y=72),
     dict(key="sp-back", name="the Pavilion of Arrival", kind="spawn", poly=rect(-10, -120, 9, -111), y=74),
@@ -99,8 +101,8 @@ WALLS = [dict(wool="store", x0=50, x1=63, z=-82, height=4)]
 # the wools (what each team captures is the other team's colour of room: red captures from blue's rooms)
 WOOLS = [dict(room="pillar", at=(-62.5, -93.5), y=75, colour="lime", capturer="blue"),
          dict(room="store", at=(56.5, -95.5), y=71, colour="yellow", capturer="blue")]
-# the monuments where a team places what it captured: on the Monument Terrace either side of the steps
-MONUMENTS = [dict(at=(-12, -90), y=70, colour="lime"), dict(at=(11, -90), y=70, colour="yellow")]
+# the monuments where a team places what it captured: on the Monument Terrace between its two exits
+MONUMENTS = [dict(at=(-4, -89), y=70, colour="lime"), dict(at=(3, -89), y=70, colour="yellow")]
 SPAWN_POINT = (-0.5, 73, -104.5)
 
 # the spawn's relief, planned now so it is not a flat yard: (what, rect, y of its top)
@@ -110,7 +112,7 @@ SPAWN_DETAIL = [
     ("the karst outcrop, a rock four high with a pine on it", rect(6, -108, 11, -102), 76),
     ("west lantern tower, the spawn's lookout over the Pillar", rect(-20, -96, -17, -93), 78),
     ("east lantern tower, the lookout over the Store", rect(16, -96, 19, -93), 78),
-    ("the tea beds, rows of leaves on both sides of the steps", rect(-16, -97, -9, -95), 71),
+    ("the tea beds, rows of leaves either side of the monuments", rect(-12, -97, -7, -92), 71),
 ]
 
 # the secret way has no pool: a player who drops onto a Ledge places a water bucket as they land, or dies
