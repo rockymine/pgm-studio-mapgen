@@ -1,4 +1,4 @@
-"""Draw the pictures that show Frostholm: the studio's round-trip reads over the written region files, and
+"""Draw the pictures that show Cloudhaven: the studio's round-trip reads over the written region files, and
 the isometric and elevation views over the generated volume.
 
     python3 renders.py <build-dir> <deliverable-root> "<round-trip command>"
@@ -26,14 +26,14 @@ def o(name):
     return os.path.join(out, name)
 
 
-run(["--topdown", region, o("01-topdown-material.png"), "--material", "--map", mapxml, "--scale", "4"])
-run(["--heightmap", region, o("02-heightmap.png"), "--scale", "4", "--contour", "3", "--water"])
-run(["--topdown", region, o("03-topdown-objectives.png"), "--map", mapxml, "--scale", "4"])
+run(["--topdown", region, o("01-topdown-material.png"), "--material", "--map", mapxml, "--scale", "3"])
+run(["--heightmap", region, o("02-heightmap.png"), "--scale", "3", "--contour", "4"])
+run(["--topdown", region, o("03-topdown-objectives.png"), "--map", mapxml, "--scale", "3"])
 SECTIONS = [
-    ("10-section-beacon-z-67", ["--x", "-40", "10", "--z", "-67", "--ymin", "36", "--ymax", "96", "--depth", "1", "--scale", "8"]),
-    ("11-section-holmstein-lake-z-20", ["--x", "-90", "-40", "--z", "-20", "--ymin", "36", "--ymax", "76", "--depth", "1", "--scale", "8"]),
-    ("12-section-diagonal-spawn-to-spawn-z0", ["--x", "-90", "89", "--z", "0", "--ymin", "30", "--ymax", "90", "--depth", "1", "--scale", "4"]),
-    ("13-section-hall-z-64", ["--x", "-90", "-40", "--z", "-64", "--ymin", "40", "--ymax", "90", "--depth", "1", "--scale", "8"]),
+    ("10-section-spawn-to-spawn-z0", ["--x", "-132", "131", "--z", "0", "--ymin", "20", "--ymax", "120", "--depth", "1", "--scale", "3"]),
+    ("11-section-lantern-isle-z-60", ["--x", "-100", "-40", "--z", "-60", "--ymin", "30", "--ymax", "100", "--depth", "1", "--scale", "6"]),
+    ("12-section-gardens-z59", ["--x", "-100", "-40", "--z", "59", "--ymin", "20", "--ymax", "90", "--depth", "1", "--scale", "6"]),
+    ("13-section-albatross-x-40", ["--z", "-70", "10", "--x", "-40", "--ymin", "40", "--ymax", "100", "--depth", "1", "--scale", "5"]),
 ]
 for name, args in SECTIONS:
     run(["--section", region, o(name + ".png")] + args)
@@ -41,13 +41,14 @@ for name, args in SECTIONS:
 x0, z0, ids, dat = render_iso.load(build)
 render_iso.render(ids, dat, x0, z0, o("30-iso-board-se.png"), 2, "se")
 render_iso.render(ids, dat, x0, z0, o("31-iso-board-nw.png"), 2, "nw")
-render_iso.render(ids, dat, x0, z0, o("32-iso-red-home.png"), 4, "se", (-90, -90, -10, -10), 40)
-render_iso.render(ids, dat, x0, z0, o("33-iso-skarvik-tingholm.png"), 5, "se", (-42, -40, 6, 8), 40)
-render_iso.render(ids, dat, x0, z0, o("34-iso-beacon-whaler.png"), 5, "se", (-44, -76, 0, -30), 40)
-render_iso.render(ids, dat, x0, z0, o("35-iso-kaldvatn-holmstein.png"), 5, "se", (-90, -48, -44, -4), 40)
-render_iso.render(ids, dat, x0, z0, o("36-iso-hall-crags.png"), 5, "se", (-90, -90, -46, -50), 40)
-render_iso.render(ids, dat, x0, z0, o("37-iso-kraakodde.png"), 5, "se", (16, -80, 60, -36), 40)
-render_iso.render(ids, dat, x0, z0, o("38-iso-board-sw.png"), 2, "sw")
-render_iso.elevation(ids, dat, x0, z0, o("50-elev-beacon-from-south.png"), (-32, -69, -2, -40), 40, 96, "north", 6)
-render_iso.elevation(ids, dat, x0, z0, o("51-elev-hall-from-east.png"), (-80, -76, -40, -52), 44, 90, "west", 6)
+render_iso.render(ids, dat, x0, z0, o("32-iso-board-sw.png"), 2, "sw")
+render_iso.render(ids, dat, x0, z0, o("33-iso-red-half.png"), 3, "se", (-132, -100, -1, 99))
+render_iso.render(ids, dat, x0, z0, o("34-iso-highmoor-keep.png"), 5, "se", (-132, -26, -86, 26), 40)
+render_iso.render(ids, dat, x0, z0, o("35-iso-lantern-isle-gazebo.png"), 6, "se", (-90, -78, -54, -42), 40)
+render_iso.render(ids, dat, x0, z0, o("36-iso-hanging-gardens.png"), 5, "se", (-96, 34, -52, 78), 20)
+render_iso.render(ids, dat, x0, z0, o("37-iso-port-albatross.png"), 4, "se", (-76, -66, -20, 26), 30)
+render_iso.render(ids, dat, x0, z0, o("38-iso-concord.png"), 5, "se", (-34, -16, 33, 15), 40)
+render_iso.render(ids, dat, x0, z0, o("39-iso-north-flank-balloons.png"), 5, "se", (-34, -90, 34, -58), 30)
+render_iso.elevation(ids, dat, x0, z0, o("50-elev-board-from-south.png"), (-132, -100, 131, 99), 10, 120, "north", 3)
+render_iso.elevation(ids, dat, x0, z0, o("51-elev-concord-from-south.png"), (-34, -8, 33, 8), 50, 100, "north", 6)
 print("renders written to", out)

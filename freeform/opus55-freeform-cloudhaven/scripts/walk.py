@@ -3,8 +3,8 @@ placed? A step climbs one block, drops at most three, swims through water, climb
 
     python3 walk.py <build-dir>
 
-Prints the walks from each spawn to each core and monument and to the places between, once swimming and once
-dry (the bridge, the ice and the islets only) — the numbers the report quotes.
+Prints the walks from each spawn to each monument and to the islands, ships and rocks between — the numbers
+the report quotes. Water here only falls, so nobody swims.
 """
 import sys
 from collections import deque
@@ -87,27 +87,31 @@ def nearest(dist, x0, z0, x, y, z, r=3):
 
 
 def main(build):
+    import plan as P
     x0, z0, ids, dat = render_iso.load(build)
     passable, water, ladder, solid = grid(ids)
-    st = standable(passable, water, solid) | (ladder & passable)
-    # a dry walk: no swimming, so the straits are crossed only by the bridge, the ice and Tingholm's ford
-    dry_st = standable(passable, np.zeros_like(water), solid) | (ladder & passable)
-    spawns = {"red": (-60, 57, -64), "blue": (59, 57, 63)}
-    goals = {"red core (the Beacon's lantern)": (-17, 75, -67), "blue core": (16, 75, 66),
-             "red monument (Holmstein)": (-58, 60, -20), "blue monument": (57, 60, 19)}
-    places = {"the Old Bridge": (-38, 50, -26), "the whaler's deck": (-25, 51, -42), "Skarvik green": (-16, 54, -14),
-              "Tingholm": (0, 55, 0), "Kraakodde": (38, 53, -60), "Sealers' Point": (-60, 55, 38)}
+    st = standable(passable, np.zeros_like(water), solid) | (ladder & passable)
+    H = np.load(f"{build}/heights.npy")
+
+    def at(key, dy=1):
+        x, z = [i for i in P.ISLANDS if i["key"] == key][0]["at"]
+        return (x, int(H[x - x0, z - z0]) + dy, z)
+    spawns = {"red": (-110, 94, 0), "blue": (109, 94, -1)}
+    goals = {"red monument A (Lantern Isle)": (-72, 80, -60), "red monument B (the Gardens)": (-71, 60, 59),
+             "blue monument A": (71, 80, 59), "blue monument B": (70, 60, -60)}
+    places = {"Windmill Isle": at("windmill"), "Sentinel Rock": at("sentinel"), "Port Aerie": at("port"),
+              "Gate Rock": at("gate"), "the Concord's deck": (-12, 75, -1), "the Concord's far end": (14, 75, -1),
+              "the Albatross's deck": (-40, 73, -27), "Cloudstep": at("cloudstep"), "North Reach": at("northreach"),
+              "Fernrock": at("fernrock"), "South Reach": at("southreach")}
     out = []
-    for label, grid_st, wet in (("swimming allowed", st, water), ("dry: no swimming", dry_st, np.zeros_like(water))):
-        out.append(f"== {label}")
-        for team, s in spawns.items():
-            dist = bfs(grid_st, ladder, wet, [s], x0, z0)
-            out.append(f"from {team} spawn {s}: {int((dist >= 0).sum())} standable cells reached")
-            for name, m in goals.items():
-                out.append(f"  to {name}: {nearest(dist, x0, z0, *m, r=4)}")
-            if team == "red":
-                for name, p in places.items():
-                    out.append(f"  to {name}: {nearest(dist, x0, z0, *p, r=4)}")
+    for team, s in spawns.items():
+        dist = bfs(st, ladder, np.zeros_like(water), [s], x0, z0)
+        out.append(f"from {team} spawn {s}: {int((dist >= 0).sum())} standable cells reached on foot")
+        for name, m in goals.items():
+            out.append(f"  to {name}: {nearest(dist, x0, z0, *m, r=4)}")
+        if team == "red":
+            for name, p in places.items():
+                out.append(f"  to {name}: {nearest(dist, x0, z0, *p, r=4)}")
     print("\n".join(out))
     return out
 

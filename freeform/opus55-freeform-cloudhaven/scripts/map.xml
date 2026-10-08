@@ -1,0 +1,71 @@
+<map proto="1.5.0">
+    <name>Cloudhaven</name>
+    <version>0.1.0</version>
+    <gamemode>dtm</gamemode>
+    <objective>Break both of the enemy's monuments: one under the gazebo on Lantern Isle, one in the sunken garden of the Hanging Gardens.</objective>
+    <authors>
+        <author>Claude (freeform generator)</author>
+    </authors>
+    <contributors>
+        <contributor contribution="Built the willow and dense oak trees (tree showcase)">rockymine</contributor>
+    </contributors>
+    <teams>
+        <team id="red-team" color="red" max="16">Red</team>
+        <team id="blue-team" color="blue" max="16">Blue</team>
+    </teams>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="wool" amount="64" team-color="true"/>
+            <item slot="27" material="wood" amount="64"/>
+            <item slot="6" material="golden apple" amount="1"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <spawns>
+        <default yaw="90" region="observer-spawn"/>
+        <spawn team="red-team" kit="spawn-kit" yaw="270" region="red-spawn-point"/>
+        <spawn team="blue-team" kit="spawn-kit" yaw="90" region="blue-spawn-point"/>
+    </spawns>
+    <destroyables>
+        <destroyable id="red-lantern" name="Lantern Isle" owner="red-team" materials="obsidian" region="red-lantern-monument"/>
+        <destroyable id="red-gardens" name="Hanging Gardens" owner="red-team" materials="obsidian" region="red-gardens-monument"/>
+        <destroyable id="blue-lantern" name="Lantern Isle" owner="blue-team" materials="obsidian" region="blue-lantern-monument"/>
+        <destroyable id="blue-gardens" name="Hanging Gardens" owner="blue-team" materials="obsidian" region="blue-gardens-monument"/>
+    </destroyables>
+    <filters>
+        <team id="only-red">red-team</team>
+        <team id="only-blue">blue-team</team>
+    </filters>
+    <regions>
+        <point id="red-spawn-point">-109.5,94,0.5</point>
+        <point id="blue-spawn-point">109.5,94,-0.5</point>
+        <point id="observer-spawn">0.5,100,0.5</point>
+        <rectangle id="red-spawn" min="-117,-7" max="-102,8"/>
+        <rectangle id="blue-spawn" min="102,-8" max="117,7"/>
+        <cuboid id="red-lantern-monument" min="-72,81,-60" max="-71,83,-59"/>
+        <cuboid id="red-gardens-monument" min="-71,61,59" max="-70,63,60"/>
+        <cuboid id="blue-lantern-monument" min="71,81,59" max="72,83,60"/>
+        <cuboid id="blue-gardens-monument" min="70,61,-60" max="71,63,-59"/>
+        <union id="spawns">
+            <region id="red-spawn"/>
+            <region id="blue-spawn"/>
+        </union>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply block="never" region="spawns" message="You may not edit the spawn!"/>
+    </regions>
+    <maxbuildheight>116</maxbuildheight>
+</map>

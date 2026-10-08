@@ -7,8 +7,8 @@ Red holds the west (x < 0), blue the east; blue's half is red's turned half a ci
 (x, z) -> (-1 - x, -1 - z). Coordinates are world x, z (north is -z); `top` is the y of an island's grass.
 """
 
-X_MIN, X_MAX = -110, 109
-Z_MIN, Z_MAX = -84, 83
+X_MIN, X_MAX = -132, 131
+Z_MIN, Z_MAX = -100, 99
 
 
 def rot(x, z):
@@ -17,7 +17,7 @@ def rot(x, z):
 
 SPAWN = (-92, 0)
 MON_A = (-60, -50)          # Lantern Isle: the monument under the stone gazebo
-MON_B = (-62, 46)           # the Hanging Gardens: the monument in the sunken garden
+MON_B = (-59, 49)           # the Hanging Gardens: the monument in the sunken garden
 
 # Each island: centre, radius, the height of its grass, how deep its rock hangs (times r), its outline's
 # raggedness, and what is on it.
@@ -30,7 +30,7 @@ ISLANDS = [
          what="a stone gazebo over the monument, lanterns on posts round it", why="RED MONUMENT A"),
     dict(key="sentinel", name="Sentinel Rock", at=(-80, 26), r=7, top=78, deep=1.8, rag=0.3,
          what="a crag with a lookout platform", why="the step from the spawn down to the Gardens"),
-    dict(key="gardens", name="the Hanging Gardens", at=MON_B, r=12, top=60, deep=1.3, rag=0.2,
+    dict(key="gardens", name="the Hanging Gardens", at=(-62, 46), r=12, top=60, deep=1.3, rag=0.2,
          what="terraced gardens, willows trailing over the rim, a sunken garden round the monument", why="RED MONUMENT B"),
     dict(key="port", name="Port Aerie", at=(-46, 4), r=13, top=72, deep=1.5, rag=0.2,
          what="the harbour: a dock with an airship moored at its pier, a warehouse, a crane", why="the forward base"),
@@ -62,10 +62,30 @@ BALLOONS = [(-5, -63, 68, "flank"), (-5, 60, 62, "flank"), (-54, -36, 88, "free"
 # The Concord: a double-ended airship along x across the centre, its deck at y 74, symmetric under the
 # half-turn so each team builds its half. The Albatross: moored along z at Port Aerie's pier.
 CONCORD = dict(x0=-19, x1=18, zc=-0.5, deck=74, half=4.5)
-ALBATROSS = dict(x=-36, z0=-34, z1=-12, deck=72, half=3.5)
+ALBATROSS = dict(x=-33, z0=-34, z1=-12, deck=72, half=3.5)
+
+# ---- the first build found too little ground: red had 3,500 blocks of grass for sixteen players. Every
+# position above is scaled out by 1.2 from the centre and every island's radius by 1.3, so the islands grow
+# more than the gaps between them do.
+S_POS, S_R = 1.2, 1.3
+
+
+def _p(x, z):
+    return int(round(x * S_POS)), int(round(z * S_POS))
+
+
+SPAWN, MON_A, MON_B = _p(*SPAWN), _p(*MON_A), _p(*MON_B)
+for _i in ISLANDS:
+    _i["at"] = _p(*_i["at"])
+    _i["r"] = int(round(_i["r"] * S_R))
+DEBRIS = [(*_p(x, z), y, r + 1) for x, z, y, r in DEBRIS]
+BALLOONS = [(*_p(x, z), y, k) for x, z, y, k in BALLOONS]
+CONCORD = dict(CONCORD, x0=int(round(CONCORD["x0"] * S_POS)), x1=-1 - int(round(CONCORD["x0"] * S_POS)))
+ALBATROSS = dict(ALBATROSS, x=int(round(ALBATROSS["x"] * S_POS)), z0=int(round(ALBATROSS["z0"] * S_POS)),
+                 z1=int(round(ALBATROSS["z1"] * S_POS)))
 
 PLACES = [dict(key=i["key"], name=i["name"], at=i["at"], what=i["what"], why=i["why"]) for i in ISLANDS] + [
     dict(key="concord", name="the Concord", at=(-0.5, -0.5), what="the great airship at the centre", why="the middle crossing"),
-    dict(key="albatross", name="the Albatross", at=(-36, -23), what="an airship moored at Port Aerie's pier",
+    dict(key="albatross", name="the Albatross", at=(ALBATROSS["x"], (ALBATROSS["z0"] + ALBATROSS["z1"]) // 2), what="an airship moored at Port Aerie's pier",
          why="the way from the port to Cloudstep, and cover over the gap"),
 ]

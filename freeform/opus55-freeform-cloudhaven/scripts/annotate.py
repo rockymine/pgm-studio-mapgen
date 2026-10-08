@@ -1,5 +1,5 @@
-"""Frostholm from above with the plan written on it: each place's name where it stands, the spawns, the cores
-and the monuments, and the routes drawn over the snow.
+"""Cloudhaven from above with the plan written on it: each place's name where it stands, the spawns, the
+monuments, and the bridges drawn over the islands.
 
     python3 annotate.py <build-dir> <out.png>
 """
@@ -23,7 +23,7 @@ def main(build, out):
     has = nonair.any(axis=1)
     X, Z = np.meshgrid(np.arange(sx), np.arange(sz), indexing="ij")
     col = table[ids[X, ytop, Z], dat[X, ytop, Z] & 15]
-    shade = 0.8 + 0.3 * (ytop - 47) / 30.0
+    shade = 0.7 + 0.4 * (ytop - 56) / 40.0
     hs = np.roll(ytop, 1, 0) - ytop + np.roll(ytop, 1, 1) - ytop
     shade = shade - 0.05 * np.clip(hs, -3, 3)
     col = col * np.clip(shade, 0.5, 1.2)[..., None]
@@ -34,14 +34,13 @@ def main(build, out):
     def px(x, z):
         return ((x - x0 + 0.5) * S, (z - z0 + 0.5) * S)
 
-    for r in P.ROUTES:
-        for pts in (r["pts"], [P.rot(x, z) for x, z in r["pts"]]):
-            d.line([px(*q) for q in pts], fill=(120, 70, 30), width=2)
+    isl = {i["key"]: i for i in P.ISLANDS}
     for f, colr in ((lambda x, z: (x, z), (230, 40, 40)), (P.rot, (50, 90, 240))):
-        x, z = f(*P.BEACON)
-        d.rectangle([px(x - 2, z - 2), px(x + 2, z + 2)], fill=(0, 0, 0), outline=colr, width=3)
-        x, z = f(*P.MONUMENT)
-        d.polygon([px(x, z - 3), px(x + 3, z), px(x, z + 3), px(x - 3, z)], fill=(20, 0, 30), outline=colr)
+        for a_, b_ in P.BRIDGES:
+            d.line([px(*f(*isl[a_]["at"])), px(*f(*isl[b_]["at"]))], fill=(200, 160, 60), width=1)
+        for m in (P.MON_A, P.MON_B):
+            x, z = f(*m)
+            d.polygon([px(x, z - 3), px(x + 3, z), px(x, z + 3), px(x - 3, z)], fill=(20, 0, 30), outline=colr)
         x, z = f(*P.SPAWN)
         d.ellipse([px(x - 3, z - 3), px(x + 3, z + 3)], fill=colr, outline=(255, 255, 255), width=2)
     for p in P.PLACES:
@@ -50,8 +49,8 @@ def main(build, out):
         d.text((tx + 1, tz + 1), p["name"], fill=(0, 0, 0))
         d.text((tx, tz), p["name"], fill=(255, 255, 255))
     d.rectangle([0, 0, 470, 32], fill=(18, 18, 26))
-    d.text((8, 8), "Frostholm - red (north-west) is named; blue (south-east) is its half-turn.", fill=(255, 255, 255))
-    d.text((8, 20), "Square: the Beacon's core. Diamond: Holmstein's monument. Disc: spawn. Brown: paths.", fill=(255, 255, 255))
+    d.text((8, 8), "Cloudhaven - red (west) is named; blue (east) is its half-turn.", fill=(255, 255, 255))
+    d.text((8, 20), "Diamond: monument. Disc: spawn. Gold lines: which islands a bridge joins (not its course).", fill=(255, 255, 255))
     im.save(out)
 
 

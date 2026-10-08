@@ -68,3 +68,43 @@ not reach it quickly: the way between them runs back through the spawn.
 ## As first drawn
 
 The table and sketch above are the plan as written before building.
+
+## How the plan changed
+
+**The first build had too little ground, so the whole layout was scaled out.** Red had 3,500 blocks of
+grass for sixteen players, and the trees could not find room. Every position was moved out from the centre
+by 1.2 and every island's radius grown by 1.3, so the islands grew more than the gaps between them. Red now
+has 5,910 blocks of grass, 665 of bridge deck and 481 of ship deck and basket. The board grew to 264 × 200,
+and the spawns moved to x ±110.
+
+**Monument B moved off the Gardens' centre, and Sentinel's lookout off Sentinel's.** The bridge down from
+Sentinel Rock ran through both. The sunken garden is now five blocks south-east of the island's centre and
+the lookout four blocks west of the rock's, so the two bridges that cross Sentinel pass beside it.
+
+**Most bridges drop more than their gaps allow, so they became stairs as well as bridges.** Highmoor's
+grass is 13 blocks above Sentinel Rock's, and Sentinel's 18 above the Gardens', each across a gap of under
+ten blocks. A bridge
+whose drop is more than its gap starts early, as a stair cut into the higher island's grass. Where that is
+not enough, it lands as a ramp on log posts onto the lower island. Every step is one block, and the audit
+checks it.
+
+**Trees keep their crowns off the monuments, not just their trunks.** The willows' crowns are 8 to 10
+blocks across. With only their trunks kept back, their crowns roofed the sunken garden over.
+
+### The places as built (red; blue's are the half-turn)
+
+| Place | Centre (x, z) | Radius | Grass at |
+|---|---|---|---|
+| Highmoor (spawn) | −110, 0 | 21 | 92 |
+| Windmill Isle | −84, −29 | 10 | 86 |
+| Lantern Isle (monument A at −72, −60) | −72, −60 | 14 | 78 |
+| Sentinel Rock | −96, 31 | 9 | 78 |
+| The Hanging Gardens (monument B at −71, 59) | −74, 55 | 16 | 60 |
+| Port Aerie | −55, 5 | 17 | 72 |
+| Gate Rock | −31, 0 | 6 | 74 |
+| Cloudstep | −36, −53 | 9 | 70 |
+| North Reach | −23, −72 | 10 | 64 |
+| Fernrock | −36, 46 | 9 | 66 |
+| South Reach | −23, 72 | 10 | 58 |
+| The Concord | x −23…22 along z −0.5 | — | deck 74 |
+| The Albatross | x −40, z −41…−14 | — | deck 72 |

@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Regenerate Frostholm from nothing: audit the placements, generate the volume, write the region files,
+# Regenerate Cloudhaven from nothing: audit the placements, generate the volume, write the region files,
 # draw the renders, walk the routes.
 #   scripts/build.sh [build-dir]        (python3 with numpy, scipy, pillow; dotnet 10; the studio at
 #                                        /home/user/pgm-studio with tools/PgmStudio.RoundTrip built)
 set -euo pipefail
 here="$(cd "$(dirname "$0")" && pwd)"
 root="$(dirname "$here")"
-build="${1:-/tmp/frostholm-build}"
+build="${1:-/tmp/cloudhaven-build}"
 RT="dotnet /home/user/pgm-studio/tools/PgmStudio.RoundTrip/bin/Debug/net10.0/PgmStudio.RoundTrip.dll"
 
 cd "$here"
