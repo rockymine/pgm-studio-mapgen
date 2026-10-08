@@ -1,85 +1,84 @@
-"""Frostholm's plan: an archipelago in a frozen sea, played corner to corner. Red holds the north-west, blue
-the south-east; blue's half is red's turned half a circle about the centre, (x, z) -> (-1 - x, -1 - z).
-The two halves meet along the diagonal x + z = -1, where a lead of open water runs between the teams and
-three islands stand astride it.
+"""Frostholm's plan (second version, after the author's look at the first): a winter landscape, mostly land,
+played corner to corner along a band. Red holds the north-west, blue the south-east; blue's half is red's
+turned half a circle about the centre, (x, z) -> (-1 - x, -1 - z).
 
-Coordinates are world x, z (north is -z). Heights are the ground a player stands on.
+Two narrow straits a side cross the band at right angles to the line between the spawns — Ravnsund off each
+home island, and Midsund, the lead between the teams, through the middle — cutting it into four landmasses:
+red's home, red's middle, blue's middle, blue's home. Straits are frozen in stretches and open in others.
+
+Coordinates are world x, z (north is -z). u = x - z runs along a strait; x + z runs from red to blue.
 """
+import math
+
 X_MIN, X_MAX = -90, 89
 Z_MIN, Z_MAX = -90, 89
-SEA_ICE_Y = 47            # the top of the sea ice; a player on the ice stands at 48
-SEA_FLOOR = 30
-LAKE_Y = 57               # Kaldvatn, held high in the south-west horn
+BAND = 112                 # the board is |x - z| < BAND: the corners off the diagonal are cut away
+WATER_Y = 47               # the straits' surface; their ice is at this height too
+LAND_Y = 50                # the lowland
 
 
 def rot(x, z):
     return -1 - x, -1 - z
 
 
-def red_half(x, z):
-    """The cells red's scripts author; blue's are their half-turn."""
-    s = x + z
-    return s < -1 or (s == -1 and x <= -1)
-
-
-# ---- the land ------------------------------------------------------------------------------------
-# Red's home island, Nordholm: a crescent round its bay, its back in the north-west corner. The spine runs
-# from the north-east horn round the corner to the south-west horn; the width is the island's half-width.
-SPINE = [(-3, -72, 7), (-20, -75, 10), (-40, -73, 13), (-56, -66, 19), (-63, -63, 22), (-66, -56, 19),
-         (-73, -40, 15), (-75, -22, 13), (-72, -4, 8)]
-ISLANDS = [  # other islands red authors (centre, radii x/z, peak height over the ice)
-    dict(key="tingholm", at=(-0.5, -0.5), r=(19, 19), peak=10),        # astride the seam at the centre
-    dict(key="kraakholm", at=(36, -37), r=(17, 13), peak=13),         # astride the seam, north-east
-    dict(key="skerry_n", at=(16, -54), r=(6, 4), peak=4),
-    dict(key="skerry_w", at=(-50, 20), r=(4, 6), peak=5),
-    dict(key="skerry_bay", at=(-24, -22), r=(4, 3), peak=3),
+# ---- the straits: x + z = c + wander(u), half-width w; frozen where u is in `ice` ----------------------
+STRAITS = [
+    dict(key="ravnsund", name="Ravnsund", c=-66, w=5.5, ice=[(-30, -6), (12, 32)], end=-46),
+    dict(key="midsund", name="Midsund", c=-1, w=4.5, ice=[(-78, -46), (46, 78)]),
 ]
 
-# ---- objectives ------------------------------------------------------------------------------------
-SPAWN = (-62, 64, -62)                 # Jarlshall's floor
-BEACON = (5, -79)                      # the lighthouse on its stack off the north-east horn; the core in its lantern
-CORE_Y = 82                            # the core's lowest course
-MONUMENT = (-68, -24)                  # on the islet in Kaldvatn
+
+def wander(u, key):
+    """Odd in u for the middle strait, so the half-turn maps it onto itself."""
+    if key == "midsund":
+        return 5.0 * math.sin(u * 2 * math.pi / 96.0) + 2.0 * math.sin(u * 2 * math.pi / 41.0)
+    return 4.0 * math.sin(u * 2 * math.pi / 70.0 + 1.3) + 2.0 * math.sin(u * 2 * math.pi / 29.0)
+
+
+# ---- objectives ---------------------------------------------------------------------------------------
+SPAWN = (-64, -64)
+BEACON = (-14, -64)        # the lighthouse on Ravnsodde, the headland over Ravnsund; the core in its lantern
+MONUMENT = (-58, -20)      # on Holmstein, the rock knoll on Kaldvatn's shore
+LAKE = (-70, -26)
 
 PLACES = [
-    dict(key="hall", name="Jarlshall", at=(-62, -62), r=8,
-         what="Red's spawn: a long hall of dark timber on a stone plinth, crags at its back in the corner",
-         why="spawn; its doors look down the island to the bay", how="the hall's two doors"),
-    dict(key="crags", name="Ulvefjell", at=(-74, -74), r=10,
-         what="the island's crags, 30 blocks over the ice, snow on their ledges", why="frames the spawn; a high lookout",
-         how="a goat path from the hall"),
+    dict(key="hall", name="Jarlshall", at=SPAWN, r=9,
+         what="Red's spawn: a long hall of dark timber on a stone plinth, the crags at its back",
+         why="spawn; its doors look out over the island", how="its two doors"),
+    dict(key="crags", name="Ulvefjell", at=(-80, -80), r=10,
+         what="crags in the corner, snow on their ledges", why="frames the spawn; a lookout", how="a goat path"),
     dict(key="beacon", name="The Beacon", at=BEACON, r=6,
-         what="a stone lighthouse on a sea stack off the north-east horn; the core burns in its lantern",
-         why="RED CORE", how="its stair; the stone footbridge from the horn; the sea cave in the stack's foot"),
-    dict(key="horn_ne", name="Ravnsodde", at=(-18, -75), r=9,
-         what="the north-east horn: a bare rock ridge running out to the Beacon", why="the way to the core, and its guard",
-         how="the ridge path from the hall"),
-    dict(key="lake", name="Kaldvatn", at=MONUMENT, r=11,
-         what="a frozen lake held high in the south-west horn, a frozen fall pouring from its lip into the bay",
-         why="RED MONUMENT on its islet, Holmstein", how="across the lake ice; from the pine wood; from the crag above"),
-    dict(key="wood", name="Granskog", at=(-74, -44), r=9,
-         what="pine and spruce in the valley between the hall and the lake", why="cover from the hall to the monument",
-         how="the wood path"),
-    dict(key="village", name="Skarvik", at=(-46, -46), r=12,
-         what="a fishing village on the bay's shore: boathouses, drying racks, a stave church, the smithy, longhouses",
-         why="cover the whole way from the bay to the hall; fought through", how="the shore road; the pier"),
-    dict(key="whaler", name="The Whaler", at=(-26, -36), r=7,
-         what="a three-masted ship frozen into the bay ice, listing", why="cover and height in the middle of the open bay",
-         how="over the ice"),
-    dict(key="tingholm", name="Tingholm", at=(-0.5, -0.5), r=19,
-         what="the centre island: a ring of standing stones on a low rise, a cairn", why="the middle crossing of the lead",
-         how="over the ice from both bays"),
-    dict(key="kraakholm", name="Kraakholm", at=(36, -37), r=16,
-         what="a rocky island astride the lead: a ruined watchtower on red's side, a sealers' hut on blue's",
-         why="the crossing between red's core and blue's monument", how="over the ice; across the lead"),
-    dict(key="ridges", name="The Pressure Ridges", at=(-14, -48), r=8,
-         what="ridges of broken ice heaved up across the sea ice", why="the only cover on the open ice", how="—"),
+         what="a stone lighthouse on the headland over Ravnsund; the core burns in its lantern",
+         why="RED CORE", how="the headland path; its stair; the strait below"),
+    dict(key="lake", name="Kaldvatn", at=LAKE, r=10,
+         what="a frozen lake in a hollow of the snowfields, ice-fishing huts on it", why="frames the monument; its ice is the open approach",
+         how="the lake path"),
+    dict(key="holmstein", name="Holmstein", at=MONUMENT, r=5,
+         what="a rock knoll on the lake's east shore with standing stones round its foot", why="RED MONUMENT",
+         how="up the knoll from the lake ice, the wood or the road"),
+    dict(key="wood", name="Granskog", at=(-80, -44), r=12,
+         what="pine and spruce between the hall and the lake", why="cover from the hall to the monument", how="the lake path"),
+    dict(key="northwood", name="Nordskog", at=(-40, -78), r=10,
+         what="pine on the north shore toward the headland", why="cover on the way to the Beacon", how="the headland path"),
+    dict(key="bridge", name="The Old Bridge", at=(-31, -35), r=5,
+         what="a timber trestle bridge over Ravnsund", why="the one dry crossing between home and the middle", how="the bridge road"),
+    dict(key="whaler", name="The Whaler", at=(-18, -48), r=7,
+         what="a three-master frozen into Ravnsund's ice", why="cover and height on the strait", how="over the ice"),
+    dict(key="village", name="Skarvik", at=(-16, -14), r=13,
+         what="a fishing village on the middle island: boathouses on Midsund, drying racks, a stave church, the smithy, longhouses",
+         why="cover the whole way over the middle island", how="the bridge road"),
+    dict(key="tingholm", name="Tingholm", at=(-0.5, -0.5), r=7,
+         what="a rock islet in Midsund with a ring of standing stones", why="the stepping stone over the lead", how="from Skarvik's pier"),
+    dict(key="kraak", name="Kraakodde", at=(38, -60), r=9,
+         what="the middle island's north-east point: a ruined watchtower", why="the high ground over the north-east crossings", how="the point path"),
+    dict(key="sealers", name="Sealers' Point", at=(-60, 38), r=9,
+         what="the middle island's south-west point: a sealers' hut, its boats drawn up", why="the south-west crossing", how="the point path"),
 ]
 
 ROUTES = [
-    dict(name="Ridge Path", kind="path", pts=[(-56, -66), (-42, -72), (-26, -75), (-12, -74), (-4, -73)]),
-    dict(name="Lake Path", kind="path", pts=[(-66, -56), (-72, -44), (-72, -34), (-70, -28)]),
-    dict(name="Shore Road", kind="road", pts=[(-58, -58), (-50, -50), (-42, -44)]),
-    dict(name="Bay Road", kind="road", pts=[(-62, -54), (-64, -40), (-62, -28)]),
-    dict(name="Village Lane", kind="road", pts=[(-54, -56), (-44, -60), (-34, -64)]),
+    dict(name="Headland Path", kind="path", pts=[(-56, -66), (-44, -72), (-30, -72), (-18, -66)]),
+    dict(name="Lake Path", kind="path", pts=[(-66, -56), (-76, -44), (-72, -34), (-62, -24)]),
+    dict(name="Bridge Road", kind="road", pts=[(-58, -58), (-48, -48), (-42, -38), (-22, -36), (-18, -26), (-16, -20)]),
+    dict(name="Point Path NE", kind="path", pts=[(-12, -24), (4, -38), (22, -50), (34, -58)]),
+    dict(name="Point Path SW", kind="path", pts=[(-24, -12), (-38, 4), (-50, 22), (-58, 34)]),
 ]

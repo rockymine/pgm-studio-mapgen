@@ -70,6 +70,8 @@ class B:
     IRON_DOOR = 71
     PLATE_WOOD = 72
     SNOW_LAYER = 78
+    ICE = 79
+    SNOW = 80
     CLAY = 82
     REEDS = 83
     FENCE = 85
@@ -111,6 +113,7 @@ class B:
     CARPET = 171
     HARDENED_CLAY = 172
     COAL_BLOCK = 173
+    PACKED_ICE = 174
     RED_SANDSTONE = 179
     CACTUS = 81
     DOUBLE_PLANT = 175  # 0 sunflower 1 lilac 2 tallgrass 3 fern 4 rose 5 peony; top half = 8

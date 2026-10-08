@@ -1,11 +1,10 @@
 """Cut the board's two species out of rockymine's hand-built tree showcase (corpus/tree-showcase), each as
 its blocks relative to its foot, so dressing.py can plant them whole. Run once; writes trees.json.
 
-Hollow Mesa takes the dry board's two species: acacia (r8) and olive (r10, r19, and the small olive r1).
-
     python3 cut_trees.py <pgm-studio-mapgen root> <out.json>
 
-The kinds are the showcase's own rows (corpus/README.md).
+Frostholm takes the cold board's two species: pine (r2, r3 large-pine) and spruce (r7 tall-spruce without
+the sequoia, r4 tiny-spruce), the rows corpus/README.md names.
 """
 import json
 import os
@@ -17,9 +16,9 @@ from anvil import World, WOOD  # noqa: E402
 from trees import bodies_in, foot_of, TREE_BLOCKS  # noqa: E402
 
 KINDS = {
-    "acacia": [34, 35, 36, 37, 38, 39, 40],
-    "olive": [45, 46, 47, 48, 49, 94, 95, 96, 97, 98],
-    "small-olive": [0, 1, 2],
+    "pine": [3, 4, 6, 7, 8],
+    "spruce": [26, 27, 29, 30, 31, 32, 33],
+    "tiny-spruce": [9, 10, 11, 12, 13],
 }
 
 world = World(os.path.join(root, "corpus", "tree-showcase", "region"))
