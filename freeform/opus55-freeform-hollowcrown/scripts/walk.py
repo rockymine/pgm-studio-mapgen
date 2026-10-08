@@ -3,8 +3,8 @@ placed? A step climbs one block, drops at most three, swims through water, climb
 
     python3 walk.py <build-dir>
 
-Prints the walks from each spawn to each monument and to the islands, ships and rocks between — the numbers
-the report quotes. Water here only falls, so nobody swims.
+Prints the walks from each of a team's two spawns (Crownhold's court and the Lower Gate) to each monument and
+to the places between, without the lifts between the spawns — the numbers the report quotes.
 """
 import sys
 from collections import deque
@@ -90,26 +90,22 @@ def main(build):
     import plan as P
     x0, z0, ids, dat = render_iso.load(build)
     passable, water, ladder, solid = grid(ids)
-    st = standable(passable, np.zeros_like(water), solid) | (ladder & passable)
-    H = np.load(f"{build}/heights.npy")
-
-    def at(key, dy=1):
-        x, z = [i for i in P.ISLANDS if i["key"] == key][0]["at"]
-        return (x, int(H[x - x0, z - z0]) + dy, z)
-    spawns = {"red": (-110, 94, 0), "blue": (109, 94, -1)}
-    goals = {"red monument A (Lantern Isle)": (-72, 80, -60), "red monument B (the Gardens)": (-71, 60, 59),
-             "blue monument A": (71, 80, 59), "blue monument B": (70, 60, -60)}
-    places = {"Windmill Isle": at("windmill"), "Sentinel Rock": at("sentinel"), "Port Aerie": at("port"),
-              "Gate Rock": at("gate"), "the Concord's deck": (-12, 75, -1), "the Concord's far end": (14, 75, -1),
-              "the Albatross's deck": (-40, 73, -27), "Cloudstep": at("cloudstep"), "North Reach": at("northreach"),
-              "Fernrock": at("fernrock"), "South Reach": at("southreach")}
+    st = standable(passable, water, solid) | (ladder & passable)
+    spawns = {"red top (Crownhold's court)": (-84, 99, -18), "red lower (the Lower Gate)": (-112, 22, -14),
+              "blue top": (83, 99, 17), "blue lower": (111, 22, 13)}
+    goals = {"red monument A (the Eyrie's crown)": (-54, 105, -70), "red monument B (the Hall of Echoes)": (-66, 22, 16),
+             "blue monument A": (53, 105, 69), "blue monument B": (65, 22, -17)}
+    places = {"the Eyrie's door": (-54, 93, -64), "Market Cross": (-44, 65, 0), "the Wend's foot": (-20, 46, 22),
+              "Kingsbridge": (-6, 47, 0), "Delver's Door": (-29, 47, -36), "the Goat Stair's foot": (-27, 47, -62),
+              "the Deep Stair's foot": (-86, 21, -22), "Underhall's middle": (-74, 21, -8),
+              "the Weeping Gallery": (-2, 19, 0), "Tarnhollow's shore": (-75, 72, 50)}
     out = []
     for team, s in spawns.items():
-        dist = bfs(st, ladder, np.zeros_like(water), [s], x0, z0)
+        dist = bfs(st, ladder, water, [s], x0, z0)
         out.append(f"from {team} spawn {s}: {int((dist >= 0).sum())} standable cells reached on foot")
         for name, m in goals.items():
             out.append(f"  to {name}: {nearest(dist, x0, z0, *m, r=4)}")
-        if team == "red":
+        if team.startswith("red"):
             for name, p in places.items():
                 out.append(f"  to {name}: {nearest(dist, x0, z0, *p, r=4)}")
     print("\n".join(out))

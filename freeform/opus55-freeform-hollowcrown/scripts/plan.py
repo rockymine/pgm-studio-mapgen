@@ -48,7 +48,7 @@ BROOK = [(-76, 48, 71), (-70, 49, 71), (-66, 50, 71), (-63, 51, 59), (-58, 52, 5
 FALLS = [(-64, 51), (-46, 55)]          # Greyfall (upper) and the Mill Leap (lower)
 
 # ---- the town ------------------------------------------------------------------------------------------
-TOWN = [(-66, -28), (-30, -30), (-24, -10), (-23, 24), (-30, 34), (-50, 34), (-62, 10)]
+TOWN = [(-70, -32), (-28, -34), (-18, -12), (-17, 22), (-26, 38), (-52, 38), (-68, 12)]
 # The Wend: four legs and three hairpins from the valley to Crownhold's gate.
 WEND = [(-20, 22, 45), (-25, 8, 48), (-30, -6, 52), (-33, -18, 56),        # leg 1, north
         (-37, -23, 58),                                                    # hairpin
@@ -57,23 +57,24 @@ WEND = [(-20, 22, 45), (-25, 8, 48), (-30, -6, 52), (-33, -18, 56),        # leg
         (-50, 16, 73), (-52, 2, 77), (-54, -12, 81), (-56, -20, 83),       # leg 3, north
         (-59, -24, 84),                                                    # hairpin
         (-61, -14, 87), (-62, -6, 90), (-66, -9, 94), (-70, -12, 98)]      # leg 4, up to the gate
-MARKET = [(-47, -4), (-36, -7), (-33, 4), (-37, 10), (-46, 8)]
+MARKET = [(-47, -8), (-35, -10), (-33, 4), (-36, 12), (-47, 10)]
 MARKET_Y = 64
 
 # ---- the Eyrie's ways: the Knife from Crownhold, the Goat Stair from the valley ---------------------------
 KNIFE = [(-76, -38, 98), (-68, -46, 96), (-62, -54, 94), (-56, -62, 92)]
 GOAT_STAIR = [(-27, -62, 46), (-32, -55, 50), (-37, -61, 55), (-35, -70, 60), (-40, -76, 65), (-43, -67, 70),
-              (-39, -59, 75), (-44, -55, 80), (-48, -61, 85), (-48, -67, 90), (-52, -69, 92)]
+              (-39, -59, 75), (-44, -55, 80), (-48, -61, 85), (-46, -65, 89), (-48, -69, 92)]
 
 # ---- the valley -------------------------------------------------------------------------------------------
 VALLEY_ROAD = [(-12, 0, 44), (-16, 6, 44), (-19, 14, 45), (-20, 22, 45)]
 NORTH_PATH = [(-16, -2, 44), (-20, -18, 45), (-23, -34, 46), (-26, -50, 46), (-27, -62, 46)]
-FIELDS = [[(-26, -30), (-14, -36), (-10, -22), (-22, -14)],
+FIELDS = [[(-22, -40), (-12, -44), (-11, -30), (-19, -24)],
           [(-24, -58), (-12, -62), (-10, -48), (-20, -42)],
           [(-30, 66), (-18, 62), (-14, 78), (-26, 84)]]
 BRIDGE = dict(x0=-14, z=-0.5, half=2)           # Kingsbridge, along x across the river, symmetric
 FORDS = [-74, 73]                               # stepping stones across the river; each half builds both
 MILL = (-20, 50)
+GREEN = (-15, 32)                                # Wendfoot green, at the foot of the Wend
 
 # ---- under the mountain -----------------------------------------------------------------------------------
 UNDERHALL = [(-106, -26), (-86, -36), (-64, -32), (-48, -14), (-46, 10), (-58, 30), (-84, 32), (-108, 16)]
@@ -94,8 +95,8 @@ MON_A = (-54, -70)                              # the Eyrie
 MON_B = TEMPLE
 
 # ---- glass clouds: (x, z, y, length, width, heading in degrees) -------------------------------------------
-CLOUDS = [(-96, -70, 116, 26, 11, 20), (-40, -86, 112, 20, 9, -15), (-70, 44, 114, 30, 12, 35),
-          (-20, 30, 118, 22, 9, 70), (-110, 74, 110, 18, 8, 0), (-56, -40, 120, 16, 7, 50)]
+CLOUDS = [(-96, -70, 118, 26, 11, 20), (-40, -86, 117, 20, 9, -15), (-70, 44, 119, 30, 12, 35),
+          (-20, 30, 121, 22, 9, 70), (-110, 74, 117, 18, 8, 0), (-56, -40, 120, 16, 7, 50)]
 
 PLACES = [
     dict(key="crown", name="Crownhold", poly=CROWN, kind="citadel",
@@ -107,7 +108,7 @@ PLACES = [
          what="the town on the valley face: houses along the Wend's four legs, set to the road's angle",
          why="the main way up, and cover the whole way"),
     dict(key="market", name="Market Cross", poly=MARKET, kind="plaza",
-         what="the market square on the second leg: a cross, a well, three houses at 0, 12 and 45 degrees",
+         what="the market square on the second leg: a cross, a well, stalls",
          why="the middle of the climb"),
     dict(key="shoulder", name="Tarnhollow", poly=TARN, kind="water",
          what="a tarn on the south shoulder, shelving shores, reeds", why="the head of Millbrook"),
@@ -125,6 +126,7 @@ POINTS = [
     dict(key="temple", name="the Hall of Echoes", at=TEMPLE, why="RED MONUMENT B"),
     dict(key="bridge", name="Kingsbridge", at=(-8, 0), why="the middle crossing"),
     dict(key="mill", name="the Mill", at=MILL, why="where Millbrook meets the river"),
+    dict(key="green", name="Wendfoot", at=GREEN, why="the green at the Wend's foot: three houses at 0, 12 and 45 degrees"),
     dict(key="minedoor", name="Delver's Door", at=MINE_ROAD[0][:2], why="the valley's way into Underhall"),
     dict(key="stair", name="the Deep Stair", at=DEEP_STAIR, why="Crownhold to Underhall, eighty steps"),
     dict(key="gallery", name="the Weeping Gallery", at=(-1, -1), why="the Delving's middle, under the river"),

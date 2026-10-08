@@ -1,0 +1,92 @@
+<map proto="1.5.0">
+    <name>Hollowcrown</name>
+    <version>0.1.0</version>
+    <gamemode>dtm</gamemode>
+    <objective>Break both of the enemy's monuments: one atop the Eyrie on their mountain's north spur, one in the Hall of Echoes in the cavern beneath it.</objective>
+    <authors>
+        <author>Claude (freeform generator)</author>
+    </authors>
+    <contributors>
+        <contributor contribution="Built the oak and spruce trees (tree showcase)">rockymine</contributor>
+    </contributors>
+    <teams>
+        <team id="red-team" color="red" max="16">Red</team>
+        <team id="blue-team" color="blue" max="16">Blue</team>
+    </teams>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="wool" amount="64" team-color="true"/>
+            <item slot="27" material="wood" amount="64"/>
+            <item slot="6" material="golden apple" amount="1"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <spawns>
+        <default yaw="90" region="observer-spawn"/>
+        <spawn team="red-team" kit="spawn-kit" yaw="270" region="red-spawn-top"/>
+        <spawn team="blue-team" kit="spawn-kit" yaw="90" region="blue-spawn-top"/>
+    </spawns>
+    <destroyables>
+        <destroyable id="red-eyrie" name="the Eyrie" owner="red-team" materials="obsidian" region="red-eyrie-monument"/>
+        <destroyable id="red-echoes" name="the Hall of Echoes" owner="red-team" materials="obsidian" region="red-echoes-monument"/>
+        <destroyable id="blue-eyrie" name="the Eyrie" owner="blue-team" materials="obsidian" region="blue-eyrie-monument"/>
+        <destroyable id="blue-echoes" name="the Hall of Echoes" owner="blue-team" materials="obsidian" region="blue-echoes-monument"/>
+    </destroyables>
+    <portals>
+        <!-- each team's lifts between its two spawns: the court of Crownhold and the Lower Gate under it -->
+        <portal region="red-lift-top" filter="only-red" x="@-111.5" y="@22" z="@-13.5" yaw="@90"/>
+        <portal region="red-lift-low" filter="only-red" x="@-83.5" y="@99" z="@-17.5" yaw="@270"/>
+        <portal region="blue-lift-top" filter="only-blue" x="@111.5" y="@22" z="@13.5" yaw="@270"/>
+        <portal region="blue-lift-low" filter="only-blue" x="@83.5" y="@99" z="@17.5" yaw="@90"/>
+    </portals>
+    <filters>
+        <team id="only-red">red-team</team>
+        <team id="only-blue">blue-team</team>
+    </filters>
+    <regions>
+        <point id="red-spawn-top">-83.5,99,-17.5</point>
+        <point id="blue-spawn-top">83.5,99,17.5</point>
+        <point id="observer-spawn">0.5,80,0.5</point>
+        <rectangle id="red-court" min="-90,-24" max="-77,-11"/>
+        <rectangle id="blue-court" min="77,11" max="90,24"/>
+        <rectangle id="red-lower-gate" min="-118,-26" max="-103,-3"/>
+        <rectangle id="blue-lower-gate" min="103,3" max="118,26"/>
+        <cuboid id="red-lift-top" min="-78,99,-27" max="-75,102,-24"/>
+        <cuboid id="red-lift-low" min="-115,22,-22" max="-112,25,-19"/>
+        <cuboid id="blue-lift-top" min="75,99,24" max="78,102,27"/>
+        <cuboid id="blue-lift-low" min="112,22,19" max="115,25,22"/>
+        <cuboid id="red-eyrie-monument" min="-54,106,-70" max="-53,108,-69"/>
+        <cuboid id="red-echoes-monument" min="-66,23,16" max="-65,25,17"/>
+        <cuboid id="blue-eyrie-monument" min="53,106,69" max="54,108,70"/>
+        <cuboid id="blue-echoes-monument" min="65,23,-17" max="66,25,-16"/>
+        <union id="red-spawn">
+            <region id="red-court"/>
+            <region id="red-lower-gate"/>
+        </union>
+        <union id="blue-spawn">
+            <region id="blue-court"/>
+            <region id="blue-lower-gate"/>
+        </union>
+        <union id="spawns">
+            <region id="red-spawn"/>
+            <region id="blue-spawn"/>
+        </union>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply block="never" region="spawns" message="You may not edit the spawn!"/>
+    </regions>
+    <maxbuildheight>112</maxbuildheight>
+</map>

@@ -93,3 +93,49 @@ cavern's west end, and a lift there returns to the top. Only the team's own play
 ## As first drawn
 
 The tables and sketch above are the plan as written before building.
+
+## How the plan changed
+
+**The town's polygon was too tight for its own road.** As first drawn, the Wend's first and last legs ran
+along the town polygon's edges, so every house on their outer side fell outside the town. The polygon was
+widened by four to six blocks on each side, out to the vale on the east and to Crownhold's foot on the west.
+
+**The three houses at 0, 12 and 45 degrees moved from Market Cross to a green at the Wend's foot.** Market
+Cross turned out to be hemmed in: one leg of the Wend runs through it, and the legs above and below pass
+within three blocks of each side. There was no room left on the square for a house that did not stand on a
+road or hang over another shelf. The square kept its cross, well and stalls and shrank clear of the
+neighbouring legs.
+
+**Wendfoot green is where the three angles are compared.** The three houses stand round Wendfoot green on the level vale, where the same plan
+rasterised three ways can be compared side by side.
+
+**The drop between two shelves is laid in ledges three blocks high.** The first build cut each shelf
+straight down to the next, a single wall up to twelve blocks high. Now the higher shelf gives way a block at a
+time, never on the road itself, so each drop reads as a flight of terraces with grass on every ledge.
+
+**The underground is claimed apart from the surface.** The Hall of Echoes lies under the town, and the
+Weeping Gallery under Kingsbridge. With a single layer of claims each was reported as overlapping the
+buildings above it, so the surface and the cavern now keep their own claims.
+
+**The Goat Stair ends beside the Eyrie, not in it.** Its last bend was drawn inside the tower's footprint,
+so it now arrives at the tower's east door.
+
+**The glass clouds were raised above the build height.** One came down to y 109, inside the 112 a player
+can build to, and all six now sit between 114 and 124.
+
+**The first field moved north, off the town's polygon.**
+
+### The places as built (red; blue's are the half-turn)
+
+| Place | At | Height | As built |
+|---|---|---|---|
+| Crownhold | heptagon round −84, −18 | 98 | curtain walls on the polygon inset 2.5, seven round towers, gates where the Wend and the Knife arrive, the keep at 25°, the Deep Stair's head, the upper lift |
+| The Eyrie | −54, −70 | 92 → 104 | a round tower with a spiral stair; **monument A** at 106–107 on its open crown |
+| Wendholm | the Wend's four legs | 45 → 98 | 13 houses set to the road's heading, turned 7–12° or 45° to it at random; parapets along the drops |
+| Market Cross | pentagon round −40, 1 | 64 | the cross, the well, two stalls |
+| Wendfoot | −15, 32 | 45 | the green: houses at 0°, 12° and 45°, a maypole |
+| Kingsbridge | x −14 … 13, z −3 … 2 | 44 → 46 | a stone bridge with an arch over the channel |
+| The Mill | −20, 50 | 46 | the mill and its wheel on Millbrook |
+| Underhall | octagon under the mountain | 20 | 7 delved houses along Undergate, lanterns, a pier into Deepmere |
+| The Hall of Echoes | −66, 16 | 20 | an octagon turned 22.5°, pillars of quartz; **monument B** at 23–24 on a stepped dais |
+| The Lower Gate | −112, −14 | 21 | the lower spawn, the lower lift |
