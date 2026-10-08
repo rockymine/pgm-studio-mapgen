@@ -21,7 +21,7 @@ from pgmvox import facade as F  # noqa: E402
 from pgmvox import pieces as P  # noqa: E402
 from pgmvox import objectives as O  # noqa: E402
 from pgmvox import solid as SOL  # noqa: E402
-from pgmvox import landform as LF, noise  # noqa: E402
+from pgmvox import landform as LF, noise, route as RT  # noqa: E402
 from pgmvox.mapxml import Doc, E, duration, point  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
 from pgmvox.sketch import TEAM, SectionPanel, Sheet  # noqa: E402
@@ -214,6 +214,48 @@ class Landforms(unittest.TestCase):
         self.assertFalse((sea.mask & (np.abs(X) < 38) & (np.abs(Z) < 38)).any())
         T = LF.terraces(H, np.ones(H.shape, bool), step=4, base=0)
         self.assertTrue((T % 4 == 0).all())
+
+
+class Routes(unittest.TestCase):
+    def slope(self):
+        X, Z = np.meshgrid(np.arange(0, 60), np.arange(0, 60), indexing="ij")
+        return X, Z, (0.5 * Z).astype(float)                                # 1 in 2, straight up the z axis
+
+    def test_switchbacks_come_out_of_the_cost(self):
+        X, Z, H = self.slope()
+        pts = RT.find(H, X, Z, (30, 2), (30, 56), max_grade=1 / 8)
+        legs = RT.simplify(pts)
+        self.assertGreaterEqual(len(legs) - 1, 3)                           # it turns about at least twice
+        self.assertLessEqual(len(legs) - 1, 9)                              # in long legs, not a zig-zag
+        _, (s, p) = LF.grade(H, X, Z, RT.smooth(legs), width=3, max_grade=1 / 8)
+        self.assertLessEqual(np.max(np.abs(np.diff(p)) / np.diff(s)), 1 / 8 + 1e-9)
+
+    def test_avoid_and_water(self):
+        X, Z = np.meshgrid(np.arange(0, 40), np.arange(0, 40), indexing="ij")
+        H = np.zeros(X.shape)
+        wall = (X == 20) & (Z < 35)
+        pts = RT.find(H, X, Z, (5, 5), (35, 5), avoid=wall)
+        self.assertTrue(all(not wall[int(round(x)), int(round(z))] for x, z in pts))
+        self.assertGreater(max(z for _, z in pts), 30)                      # round the end of the wall
+        river = (X >= 18) & (X <= 22)
+        self.assertIsNone(RT.find(H, X, Z, (5, 5), (35, 5), water=river, bridge=None))
+        self.assertIsNotNone(RT.find(H, X, Z, (5, 5), (35, 5), water=river, bridge=6))
+
+    def test_a_network_shares_its_trunk(self):
+        X, Z = np.meshgrid(np.arange(0, 60), np.arange(0, 60), indexing="ij")
+        H = np.zeros(X.shape)
+        branches, roads = RT.network(H, X, Z, {"a": (5, 30), "b": (55, 25), "c": (55, 35)})
+        separate = sum(len(RT.find(H, X, Z, (5, 30), p)) for p in ((55, 25), (55, 35)))
+        self.assertLess(sum(len(b) for b in branches.values()), separate)
+
+    def test_grade_keeps_water_and_earlier_roads(self):
+        X, Z, H = self.slope()
+        river = (Z >= 28) & (Z <= 30)
+        earlier = (X >= 28) & (X <= 32) & (Z >= 40)
+        H2, _ = LF.grade(H, X, Z, [(30, 2), (30, 56)], width=4, max_grade=0.1, water=river, keep=earlier)
+        self.assertTrue((H2[river] == H[river]).all() and (H2[earlier] == H[earlier]).all())
+        _, (s, p) = LF.grade(H, X, Z, [(30, 2), (30, 56)], width=4, max_grade=0.6)
+        self.assertEqual((round(p[0]), round(p[-1])), (1, 28))                 # the ends hold their ground
 
 
 class Sketch(unittest.TestCase):

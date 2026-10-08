@@ -25,7 +25,8 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `build` | `Frame`, a building's own axes at any heading; `RoofField`, the studio's six roof forms block for block, and `lay_roof`; `house`; `parapet`, `site`, `stairs`, `ladder`, `Claims` |
 | `facade` | face patterns (`band`, `courses`, `flutes`, `panels`, `slits`, `checker`, `windows`, `glyph_row`, `word`) set back or flush on an `extrude`d mass, `coffer`, `top_course`; floor fields (`border`, `medallion`, `corners`, `diamonds`, `steps`, `star`, `cross`, `tiles`) composed by `first_of` and laid by `carpet` |
 | `terrain` | `slope_deg` as the studio reads it; `lay` (ground painted by slope, a snow line); `Strata`, `bed_offset` and `beds` (rock beds that tilt and fold); `mountain_ring`; `underside` and `root_depth` (cones, flutes, spires); `cloud_deck` |
-| `landform` | heightfield operations: `watercourse` (reaches and falls), `canyon` and washes, `spire`, `butte`, `scarp`, `terraces`, `stage`, `grade` (a route held to a grade), `coast`, `blend` |
+| `route` | `find` (a least-cost route over the ground, held to a grade, switchbacks and all), `network` (places joined by roads that share their trunk), `simplify`, `smooth`, `footprint`, `pave` (surface and bridges), `steps` |
+| `landform` | heightfield operations: `watercourse` (reaches and falls), `canyon` and washes, `spire`, `butte`, `scarp`, `terraces`, `stage`, `grade` (a route held to a grade, bridging water, keeping earlier roads), `coast`, `blend` |
 | `walk` | the voxel walk over built blocks with `MoveRules`; `no_stand_above`, `catchers`, `unreached`, `nearest`, `gap_cleared` |
 | `audit` | `footing`: blocks that would fall, or have nothing to hang on |
 | `render` | `iso`, `elevation`, `cutaway` along any polyline, x-ray, `trim`, all in the studio's colours |
@@ -152,6 +153,33 @@ canyon through it into a river with falls, a graded road, a terraced hill and a 
 spired underside. Its first build showed a whole board lifted to a flat plateau: a spire raised every column to
 its own base height. A test now holds a spire to its radius.
 
+## Routes
+
+**A route is found over the ground, not drawn on it.** `route.find` searches nodes a few blocks apart, with 48
+headings out of each. A step costs its length, more for its grade and for the ground it rises and falls over,
+steeply more past the grade allowed, and more for turning. On a slope too steep to climb straight, it runs long
+legs across it joined by hairpins.
+
+**The turn cost is what makes a switchback.** Without it, a route held to 1 in 8 up a 1 in 2 slope came out as 71
+zig-zags a block or two long, since every zig-zag at the limit costs the same. With it, the same climb is five
+legs across the slope.
+
+**A network shares its trunk.** `network` joins places nearest first, each to the nearest road already found,
+where a step costs a third of what it would. Water costs a bridge's price a block, or is refused.
+
+**Grading keeps what is already there.** `landform.grade` runs the level from bank to bank over water, which is
+where `pave` lays a bridge deck. It leaves earlier roads alone and pins its ends to their ground, so a branch
+meets its road at that road's level. A footpath is graded too, at a block a block, and `steps` puts a stair on
+every rise.
+
+**The Vale's read-back found both of those the hard way.** Walked from the harbour with no jumps, the uplands,
+the canyon rim and the spire were cut off. A later branch had re-graded the junction two blocks over the road it
+joined, and the ungraded footpath met two-block rises. Both are fixed in the library, and the walk now reaches
+every place.
+
+**The studio's routes are strokes an author drags.** It paints them and claims their cells against the scatter,
+but does not find them or grade them into the ground. Those are the two halves here.
+
 ## Course plans
 
 **A course is a board seen as a sequence.** Each `Course.add` is one step: a piece off the symmetry axis brings
@@ -245,6 +273,9 @@ cd /tmp && dotnet run /path/to/freeform/lib/pgmvox/data/read_mapxml.cs -- /path/
 **The house is simpler than the studio's.** It has one rectangle per storey, so no wings, porches or dormers,
 and its timber frame and window rhythm come from the boards, not from the studio's `HouseStyle`. Only the roof
 is held to the studio's formulas.
+
+**A route finds its way in seconds, not instantly.** A network of four branches over a 200-block board takes
+about twelve seconds in pure Python; a board with many routes will want it faster.
 
 **Jumps are taken on the ground storey only.** A jump from one roof to another is not in the walk graph yet.
 

@@ -191,12 +191,22 @@ def stage(H, X, Z, centre, rings, jag=0.0, seed=0):
     return out
 
 
-def grade(H, X, Z, pts, width=5, max_grade=0.25, shoulder=4):
+def grade(H, X, Z, pts, width=5, max_grade=0.25, shoulder=4, water=None, keep=None):
     """A route graded into the ground: the ground along the path smoothed so it climbs or falls no more than
     `max_grade` blocks a block, cut and filled to that level `width` wide, with shoulders easing back to the
-    ground over `shoulder` blocks. Cuts and fills. Returns (H, level along the path as (s, y) arrays)."""
+    ground over `shoulder` blocks. Over `water` (a mask) the ground is not followed: the level runs on from bank
+    to bank, which is a bridge deck's, and the water is neither cut nor filled. Ground in `keep` (roads already
+    graded) is left as it is, and the route's ends hold the ground they stand on, so a branch meets the road it
+    joins at that road's level; where the grade cannot join the two, the last point's ground wins, which is the
+    end a network branch joins by. Cuts and fills. Returns (H, (s, level)), the level along the path by arc length."""
     H = np.asarray(H, float)
-    s, g, _ = _sample(H, X, Z, pts)
+    s, g, xz = _sample(H, X, Z, pts)
+    if water is not None:
+        x0, z0 = X[0, 0], Z[0, 0]
+        wet = np.array([bool(water[int(np.clip(round(x - x0), 0, H.shape[0] - 1)),
+                                   int(np.clip(round(z - z0), 0, H.shape[1] - 1))]) for x, z in xz])
+        if wet.any() and (~wet).any():
+            g = np.where(wet, np.interp(s, s[~wet], g[~wet]), g)
     p = g.copy()
     for j in range(1, len(p)):                                   # forward and back: no step steeper than the grade
         dg = max_grade * (s[j] - s[j - 1])
@@ -204,12 +214,32 @@ def grade(H, X, Z, pts, width=5, max_grade=0.25, shoulder=4):
     for j in range(len(p) - 2, -1, -1):
         dg = max_grade * (s[j + 1] - s[j])
         p[j] = np.clip(p[j], p[j + 1] - dg, p[j + 1] + dg)
+    for end in (0, -1):                                          # the ends hold their ground, eased in
+        p = _pin(p, s, end, g[end], max_grade)
     d, along = polyline(X, Z, pts)
     r = np.round(np.interp(along, s, p))
     half = width / 2
     t = smoothstep(half, half + shoulder, d)
     Hn = np.where(d <= half, r, np.where(d <= half + shoulder, r + t * (H - r), H))
+    if water is not None:
+        Hn = np.where(water, H, Hn)
+    if keep is not None:
+        Hn = np.where(keep, H, Hn)
     return Hn, (s, p)
+
+
+def _pin(p, s, end, value, max_grade):
+    """The profile held to `value` at one end, the change eased back along it no steeper than the grade."""
+    p = p.copy()
+    idx = range(len(p)) if end == 0 else range(len(p) - 1, -1, -1)
+    origin = s[0] if end == 0 else s[-1]
+    for j in idx:
+        reach = max_grade * abs(s[j] - origin)
+        lo, hi = value - reach, value + reach
+        if lo <= p[j] <= hi:
+            break
+        p[j] = min(max(p[j], lo), hi)
+    return p
 
 
 def coast(H, X, Z, sea, outline=None, shelf=10, depth=6, slope=0.35):

@@ -4,9 +4,8 @@ import sys
 
 import numpy as np
 
-from land import ISLAND, ROAD, SEA, ground
-from pgmvox import B, World, terrain as T
-from pgmvox.shapes import polyline
+from land import ISLAND, SEA, ground
+from pgmvox import B, World, route as R, terrain as T
 
 X, Z, H, river, sea, road = ground()
 w = World(-100, -100, 200, 200, sy=128)
@@ -17,9 +16,6 @@ offset = T.bed_offset(H.shape, dip=(0.04, -0.02), fold=3, seed=5)
 top = T.by_angle([(30, (B.GRASS, 0)), (42, (B.DIRT, 1)), (55, (B.STONE, 5)), (90, (B.STONE, 0))])
 deg = T.lay(w, H, top=top, bands=T.beds(beds, offset, flecks=[((B.STONE, 0), (B.COBBLE, 0), 0.04)], seed=6),
             dirt_depth=3, snow_above=92)
-road_d, _ = polyline(X, Z, ROAD)
-for i, k in np.argwhere(road_d <= 2):
-    w.set(int(X[i, k]), int(H[i, k]), int(Z[i, k]), B.GRAVEL)
 for water in (sea, river):
     for i, k in np.argwhere(water.mask):
         x, z = int(X[i, k]), int(Z[i, k])
@@ -27,6 +23,12 @@ for water in (sea, river):
             w.set(x, y, z, B.WATER)
         if water is sea or H[i, k] <= SEA:
             w.set(x, int(H[i, k]), z, B.SAND)
+bridges = 0
+for name, pts, (s, level) in road["roads"]:                 # laid after the water, so a deck spans it
+    bridges += len(R.pave(w, H, X, Z, pts, width=4, water=river.mask | sea.mask,
+                          level=lambda v, s=s, level=level: np.interp(v, s, level), seed=len(name)))
+R.pave(w, H, X, Z, road["footpath"], width=2, surface=((B.DIRT, 1), (B.GRAVEL, 0)), weights=(0.7, 0.3), seed=9)
+stairs = R.steps(w, H, X, Z, road["footpath"], width=2)
 beach = (H <= SEA + 2) & (H > SEA) & ~sea.mask
 for i, k in np.argwhere(beach):
     w.set(int(X[i, k]), int(H[i, k]), int(Z[i, k]), B.SAND)
@@ -38,4 +40,4 @@ T.underside(w, isl, y - 2, depth=T.root_depth(isl, cone=2.6, flutes=4, spires=12
             paint=lambda k, x, z: beds(y - k - int(offset[x + 100, z + 100])))
 w.save(sys.argv[1], "Vale", (0, 80, 0))
 print(f"generated; slope: {int((deg <= 30).sum())} grass-flat, {int((deg > 55).sum())} cliff columns; "
-      f"{len(river.falls)} falls")
+      f"{len(river.falls)} falls; {len(road['roads'])} roads, {bridges} bridge blocks, {stairs} footpath stairs")
