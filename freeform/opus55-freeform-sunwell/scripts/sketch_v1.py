@@ -1,11 +1,10 @@
 """Sunwell's plan, drawn before anything is built:
 
 1. THE SECTION — the shaft cut north to south down its middle, true scale: the shelves stepping down from side to
-   side, the middle's pools and hills, the lake; from the first edge, the three ways of leaving it drawn as the
-   fall model flies them.
+   side, their pools, the shafts through them, the lake; from the first edge, the three ways of leaving it drawn
+   as the fall model flies them.
 2. THE SHELVES — each shelf from above: its rock, the overhang of the shelf above it (hatched), its pools (blue),
-   its shafts (black), the falls' basins (pale blue), its hills (red), and the rim along its own edge with its
-   gaps (yellow); at the foot, the lake with its islet and spring.
+   its shaft (black), the falls' basin (pale blue), and the rim along its own edge with its gaps (yellow).
 3. THE CHECK — the checker's numbers.
 
     python3 sketch.py <out.png>
@@ -16,8 +15,8 @@ import sys
 
 from PIL import Image, ImageDraw
 
-import plan as P
-import plan_check as C
+import plan_v1 as P
+import plan_check_v1 as C
 
 ROCK, SHELF, POOL, FALLS, SHAFT, RIM, GAP = (90, 85, 80), (150, 140, 110), (50, 110, 200), (150, 200, 240), (10, 10, 10), \
     (120, 70, 50), (250, 210, 60)
@@ -42,14 +41,15 @@ def section(d, ox, oy, scale):
         if dr.get("lake"):
             continue
         y = P.shelf_y(k + 1)
-        for name, x0, x1, s0, s1, sd in P.pools(k):
+        for name, x0, x1, s0, s1 in P.pools(k):
             if x0 <= 0 <= x1:
                 za, zb = sorted((P.z_of(k, s0), P.z_of(k, s1)))
                 d.rectangle([px(za), py(y), px(zb + 1), py(y - 3)], fill=POOL)
-        for name, x0, x1, s0, s1, sd in P.hills(k):
-            if x0 <= 0 <= x1:
-                za, zb = sorted((P.z_of(k, s0), P.z_of(k, s1)))
-                d.rectangle([px(za), py(y + 5), px(zb + 1), py(y)], outline=(220, 40, 40), width=2)
+        if "shaft" in dr:
+            x0, x1, s0, s1 = dr["shaft"]
+            za, zb = sorted((P.z_of(k, s0), P.z_of(k, s1)))
+            d.rectangle([px(za), py(y + 1), px(zb + 1), py(y - P.THICK - 1)], fill=(215, 228, 240))
+            d.text((px(za), py(y) + 6), "shaft", fill=(0, 0, 0))
     k = 0
     for how, col in (("step off", (255, 255, 255)), ("run off", (250, 210, 60)), ("sprint jump", (230, 60, 60))):
         vx, vy, acc = P.LEAVES[how]
@@ -83,23 +83,20 @@ def shelf_plan(d, ox, oy, k, scale):
             d.rectangle([px(x), pz(z), px(x) + scale - 1, pz(z) + scale - 1], fill=c)
             if above >= 0 and P.on_shelf(above, x, z) and (P.on_shelf(k, x, z) or k == P.N_SHELVES):
                 d.line([(px(x), pz(z) + scale - 1), (px(x) + scale - 1, pz(z))], fill=(90, 85, 70))
-    if above >= 0:
-        def box(x0, x1, s0, s1, **kw):
+    if above >= 0 and not P.DROPS[above].get("lake"):
+        for name, x0, x1, s0, s1 in P.pools(above):
             za, zb = sorted((P.z_of(above, s0), P.z_of(above, s1)))
-            d.rectangle([px(x0), pz(za), px(x1 + 1) - 1, pz(zb + 1) - 1], **kw)
-        if P.DROPS[above].get("lake"):
-            i = P.ISLET
-            box(i["x"][0], i["x"][1], i["s"][0], i["s"][1], fill=(110, 160, 80))
-            za, zb = sorted(P.SPRING["z"])
-            d.rectangle([px(P.SPRING["x"][0]), pz(za), px(P.SPRING["x"][1] + 1) - 1, pz(zb + 1) - 1], fill=(250, 250, 250))
-        for name, x0, x1, s0, s1, sd in P.pools(above):
-            box(x0, x1, s0, s1, fill=POOL)
-        for name, x0, x1, s0, s1, sd in P.shafts(above):
-            box(x0, x1, s0, s1, fill=SHAFT)
-        for name, x0, x1, s0, s1, sd in P.falls(above):
-            box(x0, x1, s0, s1, fill=FALLS)
-        for name, x0, x1, s0, s1, sd in P.hills(above):
-            box(x0, x1, s0, s1, outline=(230, 40, 40), width=2)
+            d.rectangle([px(x0), pz(za), px(x1 + 1) - 1, pz(zb + 1) - 1], fill=POOL)
+        dr = P.DROPS[above]
+        if "shaft" in dr:
+            x0, x1, s0, s1 = dr["shaft"]
+            za, zb = sorted((P.z_of(above, s0), P.z_of(above, s1)))
+            d.rectangle([px(x0), pz(za), px(x1 + 1) - 1, pz(zb + 1) - 1], fill=SHAFT)
+        if dr.get("falls") is not None:
+            fx = dr["falls"]
+            xa, xb = sorted((fx, fx - 3 * (fx // abs(fx))))
+            za, zb = sorted((P.z_of(above, 1), P.z_of(above, 4)))
+            d.rectangle([px(xa), pz(za), px(xb + 1) - 1, pz(zb + 1) - 1], fill=FALLS)
     if k < P.N_SHELVES:
         ze = P.EDGE if P.side(k) == "N" else -P.EDGE
         for x in range(-R, R + 1):
@@ -131,8 +128,8 @@ def main(out):
     d.text((10, SH + 34), "north left; off the top edge: step off white,", fill=(255, 255, 255))
     d.text((10, SH + 48), "run off yellow, sprint jump red", fill=(255, 255, 255))
     section(d, 30 + 8 * sc, 30, sc)
-    d.text((SW + 20, 4), "2. THE SHELVES from above, north up: the shelf above overhead hatched, pools blue, shafts black, "
-           "the falls pale, hills red; the rim brown, its gaps yellow; the islet green, the spring white", fill=(255, 255, 255))
+    d.text((SW + 20, 4), "2. THE SHELVES from above, north up: rock, the shelf above overhead (hatched), pools blue, "
+           "shafts black, the falls' basin pale; the rim on the edge brown, its gaps yellow", fill=(255, 255, 255))
     for k in range(P.N_SHELVES + 1):
         r, c = divmod(k, cols)
         shelf_plan(d, SW + 20 + c * (cell + 18), 40 + r * (cell + 30), k, ps)
