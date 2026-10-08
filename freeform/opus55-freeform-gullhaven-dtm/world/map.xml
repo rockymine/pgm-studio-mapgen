@@ -60,7 +60,7 @@
     <above id="sky" y="56"/>
     <apply block="never" region="sky" message="You have reached the maximum build height!"/>
     <negative id="outside">
-        <cuboid min="-92,0,-49" max="55,256,165"/>
+        <cuboid min="-96,0,-56" max="59,256,172"/>
     </negative>
     <apply block="never" enter="never" region="outside" message="The sea is too rough past here."/>
 </regions>

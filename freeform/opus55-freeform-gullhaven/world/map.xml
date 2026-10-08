@@ -72,7 +72,7 @@
 <regions>
     <!-- the sea round the island is for swimming in, not for swimming away -->
     <negative id="outside">
-        <cuboid min="-54,0,-48" max="54,256,67"/>
+        <cuboid min="-62,0,-56" max="59,256,73"/>
     </negative>
     <apply enter="never" region="outside" message="The sea is too rough past here."/>
     <apply block="never" use="never"/>

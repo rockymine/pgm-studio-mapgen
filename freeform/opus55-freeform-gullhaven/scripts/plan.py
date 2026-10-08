@@ -30,8 +30,8 @@ import numpy as np
 from geometry import inside, polyline, signed_distance
 from noise import fbm
 
-X_MIN, X_MAX = -56, 55
-Z_MIN, Z_MAX = -50, 68
+X_MIN, X_MAX = -68, 67              # the island and twelve blocks of sea round it, so every cliff has a foot
+Z_MIN, Z_MAX = -62, 80
 NX, NZ = X_MAX - X_MIN + 1, Z_MAX - Z_MIN + 1
 SEA = 18                    # the sea's surface; its floor at 13
 KINDS = {"sea": 0, "grass": 1, "beach": 2, "rock": 3, "street": 4, "quay": 5, "ramp": 6, "ravine": 7,
@@ -66,6 +66,17 @@ BASIN = [(20, 19), (42, 17), (47, 50), (18, 50)]
 PIERS = [(26, 27, 19, 34), (35, 36, 18, 30)]           # x0, x1, z0, z1 at the quay's height
 
 
+# the noise was laid on the first board, x -56..55 and z -50..68; it is laid there still and padded out over the
+# sea margin added round it, so the island the reviews approved is the island built
+NOISE_BOX = (-56, -50, 112, 119)
+
+
+def noise(cell, octaves, seed):
+    x0, z0, sx, sz = NOISE_BOX
+    n = fbm((sx, sz), cell, octaves, seed=seed)
+    return np.pad(n, ((x0 - X_MIN, X_MAX - (x0 + sx - 1)), (z0 - Z_MIN, Z_MAX - (z0 + sz - 1))), mode="edge")
+
+
 class Raster:
     def __init__(self):
         self.H = np.full((NX, NZ), SEA, int)
@@ -79,8 +90,8 @@ class Raster:
 
 def build():
     R = Raster()
-    n1 = fbm((NX, NZ), 24, 3, seed=11)
-    n2 = fbm((NX, NZ), 9, 2, seed=12)
+    n1 = noise(24, 3, 11)
+    n2 = noise(9, 2, 12)
     land = signed_distance(XS, ZS, ISLAND) + 2.2 * n2 < 0
     # the Downs: everything on the island not otherwise claimed, rolling between 26 and 30
     # the Downs: rising from about 24 at the shore to about 31 under the Headland, rolling a block or two
@@ -115,7 +126,7 @@ def build():
     # the Ravine: a floor at 24 seven wide, a stream down its middle, rising at its south end to the Downs
     d, along = polyline(XS, ZS, RAVINE)
     floor = np.where(ZS > -24, np.minimum(24 + (ZS + 24) // 2, R.H), 24)
-    rv = (d < 3.6) & (land | (ZS < -46))
+    rv = (d < 3.6) & land                                     # it ends at the shore, a valley mouth over the sea
     R.set(rv, floor, "ravine")
     R.set(rv & (d < 0.9) & (ZS < -22), 23, "stream")
     for ramp in RAMPS:

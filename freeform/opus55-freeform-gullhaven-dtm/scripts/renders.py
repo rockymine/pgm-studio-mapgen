@@ -39,3 +39,10 @@ render_iso.render(ids, dat, x0, z0, o("33-iso-red-beach-monument.png"), 8, "se",
 render_iso.render(ids, dat, x0, z0, o("34-iso-the-skerry-between.png"), 5, "se", (-40, 36, 2, 80), 0, 50)
 render_iso.render(ids, dat, x0, z0, o("35-iso-blue-island.png"), 3, "nw", (-93, 46, 20, 165), 0, 72)
 print("renders written to", out)
+import cutaway  # noqa: E402
+cutaway.cut(build, o("11-cutaway-the-axis.png"), [(16, -62), (16, -39), (-19, 57.5), (-54, 154), (-54, 177)],
+            title="11. THE AXIS, true scale: red's back (left) over the sea, red's town, the Skerry, blue's town, blue's back (right)")
+cutaway.cut(build, o("12-cutaway-red-back-z-47.png"), [(-68, -47), (67, -47)], scale=6,
+            title="12. WEST TO EAST at z = -47, red's back: the Headland's cliff, the Ravine's mouth, the town on its sea wall")
+render_iso.render(ids, dat, x0, z0, o("36-iso-red-back-from-the-north.png"), 5, "ne", (-68, -62, 67, -28), 0, 60)
+print("cutaways written")

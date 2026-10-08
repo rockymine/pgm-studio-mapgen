@@ -165,7 +165,7 @@ def cliffs(w):
     from scipy import ndimage
     from noise import fbm
     shape = (P.NX, P.NZ)
-    a, b, c = fbm(shape, 7, 3, seed=31), fbm(shape, 5, 2, seed=32), fbm(shape, 11, 2, seed=33)
+    a, b, c = P.noise(7, 3, 31), P.noise(5, 2, 32), P.noise(11, 2, 33)
     Gi = G.astype(int)
     land = ~np.isin(R.K, [K["sea"], K["pier"]])
     natural = np.isin(R.K, [K[k] for k in NATURAL])

@@ -22,6 +22,10 @@ blocks apart across the strait.
 **The island underneath is the free-for-all's, fixes included.** Its town now stands on a sea wall with whole
 rock under it, where a first build had cut the cliff away beneath the edge houses; both islands here carry it.
 
+**Each island has sea behind it.** A cutaway along the axis, from red's back through both towns to blue's back,
+showed the first build's islands stopping at the edge of the world behind each town. The island now carries
+twelve blocks of sea on every side, so both backs end in a cliff with its scree and the sea beyond.
+
 **Red holds the first island and blue the turned one.** The copy's red wool is made blue, so blue's lighthouse
 is banded blue and white and its beach monument's plinth is ringed in blue.
 
@@ -46,7 +50,7 @@ each monument: the water at the harbour, the pad on the beach.
 | its own harbour monument | 72 | 72 |
 | its own beach monument | 106 | 106 |
 | the Skerry | 125 | 127 |
-| the other team's beach monument | 157 | 157 |
+| the other team's beach monument | 159 | 159 |
 | the other team's harbour monument | 206 | 206 |
 
 **The two teams are even.** The Skerry is two blocks longer for blue because the merged islet is not exactly
@@ -74,10 +78,13 @@ long way round, not the way the match will go.
 
 - `01`, `02`: the studio's top-down and height reads.
 - `10`: a section down the strait through the Skerry.
+- `11`, `12`: cutaways at true scale along the axis from red's back to blue's, and across red's back, drawn by
+  `scripts/cutaway.py`, which cuts along any line.
 - `30`, `31`: the board from two corners.
 - `32`, `33`: red's harbour and beach monuments.
 - `34`: the Skerry between the islands.
 - `35`: blue's island.
+- `36`: red's back, from the north.
 
 ## What I wanted, how hard it was, and what a studio feature would need
 
@@ -86,6 +93,7 @@ long way round, not the way the match will go.
 | A second gamemode from a finished board | Easy: build the island, add the objectives, copy and turn it, merge at the islet | A board as a piece: placed twice, turned, and joined to itself at a chosen piece |
 | The turned copy to read as the other team's | Easy: the copy's red wool made blue | A team-colour slot that a turn swaps |
 | Facing blocks right after the turn | Easy with a turn table for stairs, doors, ladders and the rest, reused from an earlier board | The same table in the studio's own turn |
+| A section along the board's own axis | Easy: a cut along any line, drawn from the built volume | Sections along any line in the studio's reads, not only along x and z |
 | A monument that floats, a cube with a bedrock heart | Easy: the cube, three blocks of air cleared under it, the destroyable's region round it, the gold its material | A monument piece with a float height and a core block |
 | Monuments forward of each spawn, the same walk for both | Easy to place; the walk shows them even | Objective placement read against both spawns on the plan |
 | Validation of the variant | Not attempted here; the XML follows PGM's destroyable module | DTM in the studio's round-trip, with the monuments read back against the world |
