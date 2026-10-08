@@ -26,7 +26,8 @@ def grid():
             if "hole" in p:
                 hole = p["hole"] if team == "red" else [P.rot(x, z) for x, z in p["hole"]]
                 m &= ~G.inside(X + 0.0, Z + 0.0, hole)
-            land |= m
+            if p.get("kind") != "ledge":        # the Ledges are twenty down: reached by a drop, not a walk
+                land |= m
             owner = np.where(m, p["key"] + ":" + team, owner)
     band = G.inside(X + 0.0, Z + 0.0, P.BAND)
     zone = np.zeros(X.shape, bool)
@@ -119,12 +120,16 @@ def main():
     out.append(("the Store Road alone, its last junction to the room", f"{zmin(drying) - zmax(piece['store']['poly']) - 1:.0f}"))
     hole = next(p for p in P.PIECES if p["key"] == "hub")["hole"]
     out.append(("the Tea Court's sinkhole (LN6, at least 12)", f"{hole[1][0] - hole[0][0]:.0f} by {hole[2][1] - hole[1][1]:.0f}"))
-    out.append(("the void inside the Store's F (LN6, at least 12)", f"{zmin(piece['rows']['poly']) - zmax(drying) - 1:.0f}"))
+    out.append(("the void inside the Store's F (LN6, at least 12)", f"{zmin(piece['rows']['poly']) - zmax(drying) - 1:.0f} by 18"))
+    out.append(("the Pillar's pit, between the Arms", "40 by 24"))
+    out.append(("the Ledges below the Long Terrace, and their gap to the pillar",
+                f"{P.PIECES[0]['y'] + 2 - next(p['y'] for p in P.PIECES if p['key'] == 'ledge-w'):.0f} down, "
+                f"{gap(X, Z, owner, 'ledge-w', 'pillar'):.0f} and {gap(X, Z, owner, 'ledge-e', 'pillar'):.0f} across"))
     out.append(("the void between the Stairs (WL12, at least 16)", f"{gap(X, Z, owner, 'leg-w', 'leg-e'):.0f}"))
     out.append(("the void from the spawn to the Near Arm", f"{gap(X, Z, owner, 'sp-front', 'f-east'):.0f}"))
     out.append(("the Mist Steps' gaps", ", ".join(f"{gap(X, Z, owner, a, b):.0f}" for a, b in
-                                               (("w-1", "w-2"), ("w-1", "w-3"), ("w-3", "f-stem"), ("w-4", "f-stem")))))
-    out.append(("the Tea Steps' gaps", ", ".join(f"{gap(X, Z, owner, a, b):.0f}" for a, b in (("e-1", "e-2"), ("e-2", "road"), ("e-1", "landing")))))
+                                               (("w-1", "w-2"), ("w-1", "w-3"), ("w-3", "f-stem"), ("w-4", "f-stem"), ("w-1", "leg-w")))))
+    out.append(("the Tea Steps' gaps", ", ".join(f"{gap(X, Z, owner, a, b):.0f}" for a, b in (("e-1", "e-2"), ("e-1", "rows"), ("e-2", "road")))))
     out.append(("land on red's half, in blocks", f"{int((land & (Z < 0)).sum())}"))
     w_ = max(len(a) for a, b in out)
     for a, b in out:

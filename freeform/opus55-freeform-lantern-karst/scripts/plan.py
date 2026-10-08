@@ -21,8 +21,8 @@ void filter reads; every island stands on a bedrock course FOUNDATION_DEPTH belo
 into it stops there.
 """
 
-X_MIN, X_MAX = -96, 95
-Z_MIN, Z_MAX = -112, 111
+X_MIN, X_MAX = -112, 111
+Z_MIN, Z_MAX = -128, 127
 BASE_Y = 64
 KILL_Y = 40                 # below this a fall kills; the mist lies under it
 MIST_Y = (28, 38)
@@ -41,72 +41,80 @@ def rect(x0, z0, x1, z1):
 
 
 # ---- pieces: (key, name, kind, polygon, floor y) ----------------------------------------------------------
+# Widths, as the author set them: lanes 12 to 16, the Store Road 14 and its two ways in 12, the Long Terrace 14
+# and its Arms 10; gaps between steps about 12; the pillar 16 off everything; holes 14 x 16 to 40 x 40.
 PIECES = [
     # the front: two legs from the band, wide and short, a bar across them; the void between the legs is 20
-    dict(key="leg-w", name="the West Stair", kind="frontline", poly=rect(-28, -22, -11, -12), y=64),
-    dict(key="leg-e", name="the East Stair", kind="frontline", poly=rect(10, -22, 27, -12), y=64),
-    dict(key="bar", name="the Gate Terrace", kind="frontline", poly=rect(-28, -32, 27, -23), y=65),
-    # the hub: a ring of tea terraces round a sinkhole, so every crossing has a near side and a far side
-    dict(key="hub", name="the Tea Court", kind="hub", poly=rect(-30, -64, 29, -33), y=66,
-         hole=rect(-8, -56, 7, -43)),
+    dict(key="leg-w", name="the West Stair", kind="frontline", poly=rect(-28, -26, -11, -12), y=64),
+    dict(key="leg-e", name="the East Stair", kind="frontline", poly=rect(10, -26, 27, -12), y=64),
+    dict(key="bar", name="the Gate Terrace", kind="frontline", poly=rect(-28, -38, 27, -27), y=65),
+    # the hub: a ring of tea terraces round a sinkhole, 12 deep in front and behind, 24 at the sides
+    dict(key="hub", name="the Tea Court", kind="hub", poly=rect(-32, -78, 31, -39), y=66,
+         hole=rect(-8, -66, 7, -51)),
     # the spawn: three terraces up from the hub, the pavilion on the top one
-    dict(key="neck", name="the Lantern Steps", kind="spawn", poly=rect(-5, -72, 4, -65), y=68),
-    dict(key="sp-front", name="the Monument Terrace", kind="spawn", poly=rect(-18, -82, 17, -73), y=70),
-    dict(key="sp-mid", name="the Pool Terrace", kind="spawn", poly=rect(-14, -92, 13, -83), y=72),
-    dict(key="sp-back", name="the Pavilion of Arrival", kind="spawn", poly=rect(-9, -100, 8, -93), y=74),
-    # the Pillar's F: the long stroke out of the hub's west face, two short strokes back from it
-    dict(key="f-stem", name="the Long Terrace", kind="lane", poly=rect(-76, -52, -31, -43), y=66),
-    dict(key="f-west", name="the Far Arm", kind="approach", poly=rect(-76, -84, -71, -53), y=67),
-    dict(key="f-east", name="the Near Arm", kind="approach", poly=rect(-36, -84, -31, -53), y=67),
-    dict(key="pillar", name="the Pillar Shrine", kind="wool", poly=rect(-57, -78, -50, -71), y=74),
-    # the Pillar's flank: a grid of stepping islets from the band's west end up onto the Long Terrace
-    dict(key="w-1", name="Mist Step I", kind="islet", poly=rect(-48, -24, -43, -19), y=63),
-    dict(key="w-2", name="Mist Step II", kind="islet", poly=rect(-60, -24, -55, -19), y=64),
-    dict(key="w-3", name="Mist Step III", kind="islet", poly=rect(-48, -36, -43, -31), y=64),
-    dict(key="w-4", name="Mist Step IV", kind="islet", poly=rect(-60, -36, -55, -31), y=65),
-    # the Store's F: the long stroke is the road, its south short stroke a terrace back to the hub
-    dict(key="rows", name="the Tea Rows", kind="lane", poly=rect(30, -40, 47, -33), y=66),
-    dict(key="drying", name="the Drying Floor", kind="lane", poly=rect(30, -64, 47, -57), y=67),
-    dict(key="road", name="the Store Road", kind="lane", poly=rect(48, -72, 57, -30), y=66, climb=(66, 70, -52, -72)),
-    dict(key="store", name="the Tea Store", kind="wool", poly=rect(45, -85, 60, -73), y=70),
-    # the Store's flank: two islets from the band's east end, one to the road's foot and one to a landing off the Rows
-    dict(key="landing", name="the Tea Landing", kind="lane", poly=rect(42, -32, 47, -30), y=66),
-    dict(key="e-1", name="Tea Step I", kind="islet", poly=rect(42, -23, 47, -18), y=64),
-    dict(key="e-2", name="Tea Step II", kind="islet", poly=rect(54, -23, 59, -18), y=65),
+    dict(key="neck", name="the Lantern Steps", kind="spawn", poly=rect(-6, -86, 5, -79), y=68),
+    dict(key="sp-front", name="the Monument Terrace", kind="spawn", poly=rect(-20, -98, 19, -87), y=70),
+    dict(key="sp-mid", name="the Pool Terrace", kind="spawn", poly=rect(-16, -110, 15, -99), y=72),
+    dict(key="sp-back", name="the Pavilion of Arrival", kind="spawn", poly=rect(-10, -120, 9, -111), y=74),
+    # the Pillar's F: the long stroke out of the hub's west face, two short strokes back from it, ending level
+    # with the pillar's far side
+    dict(key="f-stem", name="the Long Terrace", kind="lane", poly=rect(-92, -73, -33, -60), y=66),
+    dict(key="f-west", name="the Far Arm", kind="approach", poly=rect(-92, -97, -83, -74), y=67),
+    dict(key="f-east", name="the Near Arm", kind="approach", poly=rect(-42, -97, -33, -74), y=67),
+    dict(key="pillar", name="the Pillar Shrine", kind="wool", poly=rect(-66, -97, -59, -90), y=74),
+    # the secret way: two ledges twenty blocks down in front of the pillar; drop onto them, pillar up
+    dict(key="ledge-w", name="the West Ledge", kind="ledge", poly=rect(-75, -88, -70, -76), y=46),
+    dict(key="ledge-e", name="the East Ledge", kind="ledge", poly=rect(-55, -88, -50, -76), y=46),
+    # the Pillar's flank: a grid of stepping islets, 12 apart, from the band's west end onto the Long Terrace
+    dict(key="w-1", name="Mist Step I", kind="islet", poly=rect(-50, -29, -45, -24), y=63),
+    dict(key="w-2", name="Mist Step II", kind="islet", poly=rect(-68, -29, -63, -24), y=64),
+    dict(key="w-3", name="Mist Step III", kind="islet", poly=rect(-50, -47, -45, -42), y=64),
+    dict(key="w-4", name="Mist Step IV", kind="islet", poly=rect(-68, -47, -63, -42), y=65),
+    # the Store's F: the long stroke is the road, its two short strokes terraces back to the hub
+    dict(key="rows", name="the Tea Rows", kind="lane", poly=rect(32, -50, 49, -39), y=66),
+    dict(key="drying", name="the Drying Floor", kind="lane", poly=rect(32, -78, 49, -67), y=67),
+    dict(key="road", name="the Store Road", kind="lane", poly=rect(50, -86, 63, -39), y=66, climb=(66, 70, -50, -86)),
+    dict(key="store", name="the Tea Store", kind="wool", poly=rect(47, -100, 66, -87), y=70),
+    # the Store's flank: two islets from the band's east end, one under the Rows and one under the road's foot
+    dict(key="e-1", name="Tea Step I", kind="islet", poly=rect(44, -27, 49, -22), y=64),
+    dict(key="e-2", name="Tea Step II", kind="islet", poly=rect(62, -27, 67, -22), y=65),
 ]
 
 # the middle: the build band across the chasm, and the Bell Rock standing in it
-BAND = rect(-48, -11, 47, 10)       # wide enough to reach under the first column of each chain of steps
+BAND = rect(-50, -11, 49, 10)       # wide enough to reach under the first column of each chain of steps
 BELL_ROCK = dict(key="bell", name="the Bell Rock", poly=rect(-5, -5, 4, 4), y=68)
 
 # where blocks may be placed over void. Everywhere else the void cannot be built over, at any height.
 BUILD_ZONES = [
     dict(key="band", name="the band", poly=BAND),
-    dict(key="pit", name="the Pillar's pit", poly=rect(-70, -92, -37, -53)),
-    dict(key="w-steps", name="the Mist Steps", poly=rect(-62, -42, -41, -12)),
-    dict(key="e-steps", name="the Tea Steps", poly=rect(34, -32, 59, -12)),
+    dict(key="pit", name="the Pillar's pit", poly=rect(-82, -97, -43, -74)),
+    dict(key="w-steps", name="the Mist Steps", poly=rect(-70, -59, -43, -12)),
+    dict(key="e-steps", name="the Tea Steps", poly=rect(40, -38, 69, -12)),
 ]
 
 # a bedrock defence wall: one across the Store Road's last stretch, where its three ways in have met.
 # The Pillar has none, since its pit is the line.
-WALLS = [dict(wool="store", x0=48, x1=57, z=-68, height=4)]
+WALLS = [dict(wool="store", x0=50, x1=63, z=-82, height=4)]
 
 # the wools (what each team captures is the other team's colour of room: red captures from blue's rooms)
-WOOLS = [dict(room="pillar", at=(-53.5, -74.5), y=75, colour="lime", capturer="blue"),
-         dict(room="store", at=(52.5, -81.5), y=71, colour="yellow", capturer="blue")]
+WOOLS = [dict(room="pillar", at=(-62.5, -93.5), y=75, colour="lime", capturer="blue"),
+         dict(room="store", at=(56.5, -95.5), y=71, colour="yellow", capturer="blue")]
 # the monuments where a team places what it captured: on the Monument Terrace either side of the steps
-MONUMENTS = [dict(at=(-10, -76), y=70, colour="lime"), dict(at=(9, -76), y=70, colour="yellow")]
-SPAWN_POINT = (-0.5, 73, -88.5)
+MONUMENTS = [dict(at=(-12, -90), y=70, colour="lime"), dict(at=(11, -90), y=70, colour="yellow")]
+SPAWN_POINT = (-0.5, 73, -104.5)
 
 # the spawn's relief, planned now so it is not a flat yard: (what, rect, y of its top)
 SPAWN_DETAIL = [
-    ("the pavilion: two storeys, its hall open to the Pool Terrace", rect(-7, -99, 6, -94), 84),
-    ("the pool, one block deep, a stepping-stone path across it", rect(-11, -90, -4, -85), 71),
-    ("the karst outcrop, a rock four high with a pine on it", rect(6, -91, 11, -86), 76),
-    ("west lantern tower, the spawn's lookout over the Pillar", rect(-18, -80, -15, -77), 78),
-    ("east lantern tower, the lookout over the Store", rect(14, -80, 17, -77), 78),
-    ("the tea beds, rows of leaves on both sides of the steps", rect(-14, -82, -7, -80), 71),
+    ("the pavilion: two storeys, its hall open to the Pool Terrace", rect(-8, -119, 7, -112), 84),
+    ("the pool, one block deep, a stepping-stone path across it", rect(-13, -108, -6, -102), 71),
+    ("the karst outcrop, a rock four high with a pine on it", rect(6, -108, 11, -102), 76),
+    ("west lantern tower, the spawn's lookout over the Pillar", rect(-20, -96, -17, -93), 78),
+    ("east lantern tower, the lookout over the Store", rect(16, -96, 19, -93), 78),
+    ("the tea beds, rows of leaves on both sides of the steps", rect(-16, -97, -9, -95), 71),
 ]
+
+# the secret way's landing: a spring pool at each ledge's near end, so the twenty-block drop costs no health
+LEDGE_POOLS = [rect(-74, -79, -71, -77), rect(-54, -79, -51, -77)]
 
 PLACES = [
     dict(name="the Pavilion of Arrival", why="spawn: three terraces up from the hub, a pool, an outcrop, two lantern towers"),
@@ -114,9 +122,10 @@ PLACES = [
     dict(name="the Gate Terrace and its two Stairs", why="the frontline: two wide short legs down to the band, a void between them"),
     dict(name="the Bell Rock", why="the middle: a karst islet in the band, a bell pavilion on it, where the staircases meet"),
     dict(name="the Long Terrace and its two Arms", why="the Pillar's F: a lane out of the hub, two arms back from it"),
-    dict(name="the Pillar Shrine", why="WOOL: lime, on a pillar between the Arms, 13 off each and 7 above them"),
+    dict(name="the Pillar Shrine", why="WOOL: lime, on a pillar between the Arms, 16 off each and 7 above them"),
+    dict(name="the West and East Ledges", why="the secret way: twenty blocks down in front of the pillar; drop, then pillar up"),
     dict(name="the Mist Steps", why="the Pillar's flank: four islets on a grid from the band onto the Long Terrace"),
     dict(name="the Tea Rows, the Drying Floor and the Store Road", why="the Store's F: two ways from the hub onto a short road"),
-    dict(name="the Tea Steps", why="the Store's flank: two islets from the band to the road's foot and the Rows' landing"),
+    dict(name="the Tea Steps", why="the Store's flank: two islets from the band, under the Rows and the road's foot"),
     dict(name="the Tea Store", why="WOOL: yellow, a storehouse at the road's head, two faces on void"),
 ]
