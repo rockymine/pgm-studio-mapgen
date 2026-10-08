@@ -1,0 +1,85 @@
+<map proto="1.5.0">
+    <name>Stratum</name>
+    <version>0.1.0</version>
+    <gamemode>dtm</gamemode>
+    <gamemode>dtc</gamemode>
+    <objective>Leak the core hung in the enemy's Reactor, and break the monument on their Obelisk's balcony.</objective>
+    <authors>
+        <author>Claude (freeform generator)</author>
+    </authors>
+    <contributors>
+        <contributor contribution="Built the oak and birch trees (tree showcase)">rockymine</contributor>
+    </contributors>
+    <teams>
+        <team id="red-team" color="red" max="16">Red</team>
+        <team id="blue-team" color="blue" max="16">Blue</team>
+    </teams>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="wool" amount="64" team-color="true"/>
+            <item slot="6" material="golden apple" amount="1"/>
+            <item slot="7" material="shears" unbreakable="true"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="27" material="wood" amount="64"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+        <!-- a fall is fatal: anyone below y 58 takes enough instant damage to die before the clouds -->
+        <kit id="fall-kill" force="true">
+            <effect duration="1" amplifier="5">instant damage</effect>
+        </kit>
+    </kits>
+    <spawns>
+        <default yaw="90" region="observer-spawn"/>
+        <spawn team="red-team" kit="spawn-kit" yaw="270" region="red-spawn-point"/>
+        <spawn team="blue-team" kit="spawn-kit" yaw="90" region="blue-spawn-point"/>
+    </spawns>
+    <cores>
+        <core id="red-core" name="the Reactor" team="red-team" leak="10" region="red-core-region"/>
+        <core id="blue-core" name="the Reactor" team="blue-team" leak="10" region="blue-core-region"/>
+    </cores>
+    <destroyables>
+        <destroyable id="red-obelisk" name="the Obelisk" owner="red-team" materials="obsidian" region="red-monument"/>
+        <destroyable id="blue-obelisk" name="the Obelisk" owner="blue-team" materials="obsidian" region="blue-monument"/>
+    </destroyables>
+    <filters>
+        <team id="only-red">red-team</team>
+        <team id="only-blue">blue-team</team>
+    </filters>
+    <regions>
+        <point id="red-spawn-point">-79.5,81,0.5</point>
+        <point id="blue-spawn-point">79.5,81,0.5</point>
+        <point id="observer-spawn">0.5,100,0.5</point>
+        <rectangle id="red-spawn" min="-93,-13" max="-66,14"/>
+        <rectangle id="blue-spawn" min="66,-13" max="93,14"/>
+        <cuboid id="red-core-region" min="-57,81,47" max="-54,84,50"/>
+        <cuboid id="blue-core-region" min="54,81,47" max="57,84,50"/>
+        <cuboid id="red-monument" min="-55,100,-50" max="-54,102,-49"/>
+        <cuboid id="blue-monument" min="54,100,-50" max="55,102,-49"/>
+        <below id="the-fall" y="58"/>
+        <union id="spawns">
+            <region id="red-spawn"/>
+            <region id="blue-spawn"/>
+        </union>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply block="never" region="spawns" message="You may not edit the spawn!"/>
+        <apply kit="fall-kill" region="the-fall"/>
+    </regions>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16"/>
+        </kill-reward>
+    </kill-rewards>
+    <maxbuildheight>122</maxbuildheight>
+</map>

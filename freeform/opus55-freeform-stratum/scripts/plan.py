@@ -58,11 +58,11 @@ FORUM = rect(-26, -9, 25, 8)                                       # self-mirror
 FORUM_COURT = rect(-10, -4, 9, 3)
 FORUM_Y = 80
 
-GATE = dict(z0=-62, z1=-40, y0=68, y1=94, x0=-3, x1=2, bar=4)     # a square frame standing across the seam
+GATE = dict(x0=-14, x1=13, z0=-52, z1=-48, y0=68, y1=94, bar=4)  # a square frame standing across the seam, its foot a bridge
 LENS = dict(outer=rect(-13, 38, 12, 61), inner=rect(-6, 45, 5, 54), y0=70, y1=74)
 
 ZIGGURAT = dict(c=(-29, -46), tiers=[(9, 64, 68), (7, 68, 72), (5, 72, 76), (3, 76, 80)])
-CANTILEVER = dict(core=rect(-35, 42, -27, 50), core_y=(62, 88), arm=rect(-26, 43, -13, 49), arm_y=(84, 88))
+CANTILEVER = dict(core=rect(-35, 42, -27, 50), core_y=(62, 88), arm=rect(-26, 43, -16, 49), arm_y=(84, 88))
 
 MASSES = [
     dict(key="atrium", name="the Atrium", poly=ATRIUM, y0=76, y1=88, style="atrium", role="spawn"),
@@ -74,8 +74,8 @@ MASSES = [
 ]
 
 SKYWAYS = [
-    dict(name="the North Skyway", pts=[(-69, -9), (-61, -24), (-58, -38)], y=(80, 78), half=1),
-    dict(name="the South Skyway", pts=[(-69, 9), (-61, 26), (-58, 37)], y=(80, 80), half=1),
+    dict(name="the North Skyway", pts=[(-74, -14), (-62, -25), (-58, -38)], y=(80, 78), half=2),
+    dict(name="the South Skyway", pts=[(-74, 14), (-62, 26), (-57, 36)], y=(80, 80), half=2),
 ]
 
 # ---- the land below ----------------------------------------------------------------------------------
@@ -83,7 +83,7 @@ LAKE = [(-24, -26), (-8, -32), (7, -32), (23, -26), (28, -6), (23, 18), (7, 28),
 # fragments of the city stuck into the land: (kind, centre x, z, size, yaw degrees, tilt degrees)
 FRAGMENTS = [
     dict(kind="monolith", at=(-74, -52), size=(5, 30, 9), yaw=20, tilt=24),
-    dict(kind="fallen-obelisk", at=(-40, 46), size=(6, 6, 34), yaw=-35, tilt=84),
+    dict(kind="fallen-obelisk", at=(-40, 46), size=(6, 34, 6), yaw=-35, tilt=80),
     dict(kind="sunk-cube", at=(-13, -12), size=(11, 11, 11), yaw=27, tilt=18),
     dict(kind="ring", at=(-88, 50), size=(16, 16, 4), yaw=0, tilt=62),
     dict(kind="slab", at=(-50, -20), size=(18, 3, 10), yaw=-12, tilt=8),
@@ -104,7 +104,7 @@ PLACES = [
     dict(key="forum", name="the Forum", poly=FORUM, layer="city",
          what="the long slab astride the seam, a colonnade down each side, a sunken court with a glyph floor",
          why="THE MIDDLE", y="80"),
-    dict(key="gate", name="the Gate", poly=rect(-3, -62, 2, -40), layer="city",
+    dict(key="gate", name="the Gate", poly=rect(-14, -52, 13, -48), layer="city",
          what="a square frame 26 high standing across the seam; its foot is a bridge", why="the north crossing", y="68-94"),
     dict(key="lens", name="the Lens", poly=LENS["outer"], layer="city",
          what="a square ring lying flat across the seam", why="the south crossing", y="74"),

@@ -3,8 +3,8 @@ placed? A step climbs one block, drops at most three, swims through water, climb
 
     python3 walk.py <build-dir>
 
-Prints the walks from each of a team's two spawns (Crownhold's court and the Lower Gate) to each monument and
-to the places between, without the lifts between the spawns — the numbers the report quotes.
+Prints the walks from each spawn to its objectives along the skyways and stairs, and says which masses are
+reached only by bridging — the numbers the report quotes. Nothing below the kill height counts as ground.
 """
 import sys
 from collections import deque
@@ -87,27 +87,26 @@ def nearest(dist, x0, z0, x, y, z, r=3):
 
 
 def main(build):
-    import plan as P
     x0, z0, ids, dat = render_iso.load(build)
     passable, water, ladder, solid = grid(ids)
     st = standable(passable, water, solid) | (ladder & passable)
-    spawns = {"red top (Crownhold's court)": (-84, 99, -18), "red lower (the Lower Gate)": (-112, 22, -14),
-              "blue top": (83, 99, 17), "blue lower": (111, 22, 13)}
-    goals = {"red monument A (the Eyrie's crown)": (-54, 105, -70), "red monument B (the Hall of Echoes)": (-66, 22, 16),
-             "blue monument A": (53, 105, 69), "blue monument B": (65, 22, -17)}
-    places = {"the Eyrie's door": (-54, 93, -64), "Market Cross": (-44, 65, 0), "the Wend's foot": (-20, 46, 22),
-              "Kingsbridge": (-6, 47, 0), "Delver's Door": (-29, 47, -36), "the Goat Stair's foot": (-27, 47, -62),
-              "the Deep Stair's foot": (-86, 21, -22), "Underhall's middle": (-74, 21, -8),
-              "the Weeping Gallery": (-2, 19, 0), "Tarnhollow's shore": (-75, 72, 50)}
+    st[:, :58, :] = False                     # below the kill height nobody stands for long
+    spawns = {"red": (-80, 81, 0), "blue": (79, 81, 0)}
+    goals = {"red monument (the Obelisk's balcony)": (-53, 100, -50), "red core (the Reactor's gallery)": (-52, 81, 48),
+             "blue monument": (52, 100, -50), "blue core": (51, 81, 48)}
+    places = {"the plaza": (-56, 79, -45), "the Obelisk's top": (-57, 119, -46), "the Atrium's roof": (-80, 89, -10),
+              "the Forum": (-15, 81, 0), "a Column's top": (-47, 107, 0), "the Gate's foot": (-8, 72, -50),
+              "the Lens": (-9, 75, 40), "the Ziggurat's top": (-29, 81, -46), "the Cantilever's arm": (-20, 89, 46)}
     out = []
     for team, s in spawns.items():
         dist = bfs(st, ladder, water, [s], x0, z0)
-        out.append(f"from {team} spawn {s}: {int((dist >= 0).sum())} standable cells reached on foot")
+        out.append(f"from {team} spawn {s}: {int((dist >= 0).sum())} standable cells reached on foot, no blocks placed")
         for name, m in goals.items():
             out.append(f"  to {name}: {nearest(dist, x0, z0, *m, r=4)}")
-        if team.startswith("red"):
+        if team == "red":
             for name, p in places.items():
-                out.append(f"  to {name}: {nearest(dist, x0, z0, *p, r=4)}")
+                v = nearest(dist, x0, z0, *p, r=4)
+                out.append(f"  to {name}: {v if v is not None else 'bridged to, not walked'}")
     print("\n".join(out))
     return out
 

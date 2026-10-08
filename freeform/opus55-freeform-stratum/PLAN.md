@@ -76,3 +76,38 @@ distance along the face, the height up it — and says whether that block stands
 ## As first drawn
 
 The tables and sketch above are the plan as written before building.
+
+## How the plan changed
+
+**The skyways leave from gates in the Atrium's north and south walls.** As first drawn they left from its
+east corners, where the wall is solid six blocks deep with no way into the court. Each skyway is now five
+wide with a slab parapet, so three blocks of it are walked.
+
+**The Gate was turned to face along the crossing.** As first drawn it stood in the plane of the seam, so its
+foot ran north to south and crossed nothing. It now stands across the board from x −14 to 13, and its foot
+is a bridge between the teams.
+
+**The Obelisk's stair is wound from a corner chosen to meet the balcony.** Wound from the north-west
+corner, it passed the east face at 85 to 91 and 109 to 115 and missed the balcony at 100. The builder now
+tries each starting corner of the stair and keeps the one that puts the step at 99 in the middle of the east
+face.
+
+**The Cantilever's arm stops three blocks short of the Lens**, where it had run into the Lens's rim.
+
+**The fallen obelisk is laid at 80° from upright**, so that its long side lies along the ground.
+
+### The masses as built (red; blue's are their mirror image)
+
+| Place | Footprint | Height | Faces |
+|---|---|---|---|
+| The Atrium | 27 × 27, court 15 × 15 | 76–88, court 80 | flutes, a glyph row, a team-coloured inset course, cornice, coffered underside |
+| Pylons | four 4 × 4 | land to 75 | flutes all the way down, an orange inset course |
+| The plaza | a skewed quadrilateral | 72–78 | orange inset band, flutes, slotted parapet, coffers |
+| The Obelisk | 6 × 6 | 78–118, pyramidion to 121 | five rows of glyphs, light courses; a stair wound round it; the monument in a niche at 100 |
+| The Reactor | octagon r 10.5 | 66–96 | glass slits, orange and team bands, parapet, coffers; a gallery at 80, a shaft open to the void |
+| The Columns | three 5 × 5 | to 98, 106, 92 | flutes, cornice, a stair wound round each |
+| The Forum | 52 × 18 | 74–80 | panels and an orange band; colonnades of 2 × 2 piers; architraves fluted in grey; a sunken court with glyphs in its floor |
+| The Gate | 28 × 27 × 5 frame | 68–94 | an orange line inset round the frame on both faces |
+| The Lens | 26 × 24 ring | 70–74 | grey checker, orange band, slotted parapet, coffers |
+| The Ziggurat | four tiers | 64–80 | alternating orange and grey bands, flutes, a stair up the east face |
+| The Cantilever | 9 × 9 tower and an 11 × 7 arm | 62–88 | panels, a glyph row, slits; a stair wound round the tower |
