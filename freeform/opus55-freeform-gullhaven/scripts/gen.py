@@ -123,9 +123,13 @@ def columns(w):
             for y in range(BASE_Y, h + 1):
                 w.set(x, y, z, *strata(y))
             if k in ("street", "quay") or (k == "ramp" and top_block(x, z, k, h) == SBRICK):
-                # a terrace's retaining wall where the ground falls away: stone brick, mossy toward its foot
+                # a terrace's retaining wall where the ground falls away to lower ground: stone brick, mossy
+                # toward its foot; where it falls to the sea, a sea wall five courses deep on the rock
                 for y in range(max(low, BASE_Y), h):
                     w.set(x, y, z, *(MOSSY_BRICK if y < low + 2 or rng.random() < 0.15 else SBRICK))
+                if any(kind(x + dx, z + dz) == "sea" for dx in (-1, 0, 1) for dz in (-1, 0, 1)) and h - P.SEA > 4:
+                    for y in range(max(h - 6, P.SEA + 1), h):
+                        w.set(x, y, z, *(MOSSY_BRICK if y < h - 4 or rng.random() < 0.2 else SBRICK))
             elif k == "beach":
                 for y in range(h - 3, h):
                     w.set(x, y, z, *SANDSTONE)
@@ -149,13 +153,15 @@ def cliffs(w):
 
     - the face: level by level, rock within a block or three of the open air is cut away where a noise that
       changes with height says so — notches, ledges, overhangs — never in the top two courses, so the edge a
-      player walks to stays where the plan put it;
+      player walks to stays where the plan put it, and never within three blocks of the town, the quay or a
+      building, which stand on whole rock behind a sea wall;
     - the foot: below every cliff that stands over the sea or the beach, a slope of fallen rock rising toward
       the face, two and a half blocks up for every block in, its top four under the cliff's edge, so no step
       of it is a block high and it is never a way up;
     - sea stacks off the Headland, the Cove and the town.
 
-    The terraces' walls between the town's levels keep their built stone brick."""
+    The terraces' walls between the town's levels keep their built stone brick, and where the town stands over
+    the sea it stands on a sea wall of stone brick six courses deep."""
     from scipy import ndimage
     from noise import fbm
     shape = (P.NX, P.NZ)
@@ -165,15 +171,16 @@ def cliffs(w):
     natural = np.isin(R.K, [K[k] for k in NATURAL])
     built = np.isin(R.K, [K["street"], K["quay"], K["ramp"]])
     sea = R.K == K["sea"]
-    near_sea = ndimage.binary_dilation(sea, iterations=4)
+    # nothing is cut within three blocks of the town, the quay or anything built on the ground
+    standing = np.isin(R.K, [K["house"], K["landmark"]]) | built
+    keep = ndimage.binary_dilation(standing, iterations=3)
     # the face
     for y in range(SEA_FLOOR + 1, int(Gi.max()) + 1):
         solid = (Gi >= y) & land
         n3 = a * math.cos(y * 0.55) + b * math.sin(y * 0.8 + 1.0) + 0.5 * c
         din = ndimage.distance_transform_edt(solid)
         depth = np.clip((n3 - 0.05) * 5.0, 0, 3.2)
-        cut = solid & (din <= depth) & (depth > 0.3) & (
-            (natural & (y <= Gi - 2)) | (built & near_sea & (y <= Gi - 3)))
+        cut = solid & (din <= depth) & (depth > 0.3) & natural & ~keep & (y <= Gi - 2)
         for i, j in zip(*np.nonzero(cut)):
             x, z = i + P.X_MIN, j + P.Z_MIN
             if w.id(x, y, z) not in (B.AIR, B.WATER):

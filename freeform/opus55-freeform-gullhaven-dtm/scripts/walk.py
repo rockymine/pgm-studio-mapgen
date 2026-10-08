@@ -23,7 +23,8 @@ def main(build):
     st = W.standable(passable, water, solid) | (ladder & passable)
     sx, sy, sz = C.SPAWN["at"]
     spawns = {"red": (int(sx), sy, int(sz) - 1), "blue": (C.AX - int(sx), sy, C.BZ - (int(sz) - 1))}
-    mons = {"red": {m["key"]: m["blocks"][0] for m in C.MONUMENTS}}
+    # a monument is reached when a player stands under it: on the beach's pad, or in the water at the harbour
+    mons = {"red": {m["key"]: (m["centre"][0], m["y0"] - 3, m["centre"][1]) for m in C.MONUMENTS}}
     mons["blue"] = {k: (C.AX - x, y, C.BZ - z) for k, (x, y, z) in mons["red"].items()}
     out = []
     for team, enemy in (("red", "blue"), ("blue", "red")):

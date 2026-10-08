@@ -1,7 +1,8 @@
 """Gullhaven DTM — Gullhaven turned into a destroy-the-monument board by putting two of it together.
 
-The free-for-all island is built as it is, with two monuments of gold added: one hanging over the water between
-the harbour's two piers, one on a plinth on the Cove's beach. Then the whole island is copied and turned half a
+The free-for-all island is built as it is, with two monuments of gold added: one floating over the water between
+the harbour's two piers, one floating over a pad on the Cove's beach: cubes of gold three on a side with bedrock
+at their hearts. Then the whole island is copied and turned half a
 circle about the Skerry, (x, z) -> (-38 - x, 115 - z), so that the Skerry falls on itself and becomes the islet
 between the two islands, each joined to it by its own bridge. Red holds the first island, blue the turned one.
 Each team spawns in its own town's upper street, and wins by breaking both of the other's monuments.
@@ -30,10 +31,19 @@ GOLD = (B.GOLD_BLOCK, 0)
 RED, BLUE = 14, 11
 
 # the monuments, on the first (red) island; blue's are their turned images
+def cube(cx, y0, cz):
+    """A monument: a three-block cube of gold, bedrock at its heart."""
+    return [(cx + dx, y0 + dy, cz + dz) for dx in (-1, 0, 1) for dy in (0, 1, 2) for dz in (-1, 0, 1)]
+
+
+# the monuments, on the first (red) island; blue's are their turned images. Each floats with three blocks of
+# air under it: the harbour's over the water between the piers, the beach's over its pad.
 MONUMENTS = [
-    dict(key="harbour", name="the Harbour Monument", blocks=[(31, 20, 23), (31, 21, 23)]),
-    dict(key="beach", name="the Beach Monument", blocks=[(-51, 22, 8), (-51, 23, 8)]),
+    dict(key="harbour", name="the Harbour Monument", centre=(31, 25), y0=P.SEA + 4),
+    dict(key="beach", name="the Beach Monument", centre=(-51, 8), y0=21 + 4, pad_y=21),
 ]
+for m in MONUMENTS:
+    m["blocks"] = cube(m["centre"][0], m["y0"], m["centre"][1])
 SPAWN = dict(at=(16.5, 37, -38.5), yaw=0, box=(10, 22, -40, -36))     # the upper street, facing the harbour
 
 
@@ -42,23 +52,26 @@ def turn(x, z):
 
 
 def monuments(w):
-    """The harbour's monument hangs over the water between the piers, two blocks of gold under a spruce beam
-    from a fence post on each pier; the beach's stands on a plinth of mossy cobble ringed in the team's wool."""
-    for x, y, z in MONUMENTS[0]["blocks"]:
-        w.set(x, y, z, *GOLD)
-    for x in range(27, 36):
-        w.set(x, 24, 23, B.LOG, 4)                           # the beam, along x, pier to pier
-    w.set(31, 23, 23, B.FENCE)
-    w.set(31, 22, 23, B.FENCE)
-    for x in (27, 35):
-        w.set(x, 23, 23, B.FENCE)
-    for x, y, z in MONUMENTS[1]["blocks"]:
-        w.set(x, y, z, *GOLD)
+    """Each monument a cube of gold three on a side with a block of bedrock at its centre, floating: the
+    harbour's over the basin between the two piers, three blocks of air over the water; the beach's over a pad
+    of mossy cobble ringed in the team's wool, three blocks of air over the pad."""
+    for m in MONUMENTS:
+        cx, cz = m["centre"]
+        for x, y, z in m["blocks"]:
+            centre = (x, z) == (cx, cz) and y == m["y0"] + 1
+            w.set(x, y, z, *((B.BEDROCK, 0) if centre else GOLD))
+        for x in range(cx - 1, cx + 2):                  # three blocks of air under it
+            for z in range(cz - 1, cz + 2):
+                for y in range(m["y0"] - 3, m["y0"]):
+                    if y > P.SEA:
+                        w.set(x, y, z, B.AIR)
+    cx, cz = MONUMENTS[1]["centre"]
+    py = MONUMENTS[1]["pad_y"]
     for dx in (-1, 0, 1):
         for dz in (-1, 0, 1):
-            w.set(-51 + dx, 21, 8 + dz, *((B.WOOL, RED) if (dx, dz) != (0, 0) else (B.MOSSY, 0)))
-            for y in range(18, 21):
-                w.set(-51 + dx, y, 8 + dz, B.MOSSY, 0)
+            w.set(cx + dx, py, cz + dz, *((B.WOOL, RED) if (dx, dz) != (0, 0) else (B.MOSSY, 0)))
+            for y in range(18, py):
+                w.set(cx + dx, y, cz + dz, B.MOSSY, 0)
 
 
 def spawn_square(w):

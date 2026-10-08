@@ -2,8 +2,8 @@
 
 A destroy-the-monument board made from the free-for-all island without redrawing it. Two copies of Gullhaven
 face each other across a strait, the second turned half a circle about the Skerry, which becomes the islet
-between them. Each team spawns in its own town and defends two gold monuments: one hanging over the water
-between its harbour's piers, one on a plinth on its beach.
+between them. Each team spawns in its own town and defends two monuments, each a cube of gold three on a side
+with bedrock at its heart. One floats over the water between its harbour's piers, one over a pad on its beach.
 
 ![the board](renders/30-iso-board-se.png)
 
@@ -19,6 +19,9 @@ build.
 first island's and the copy's, both land on it. The two islands' south shores face each other about thirty
 blocks apart across the strait.
 
+**The island underneath is the free-for-all's, fixes included.** Its town now stands on a sea wall with whole
+rock under it, where a first build had cut the cliff away beneath the edge houses; both islands here carry it.
+
 **Red holds the first island and blue the turned one.** The copy's red wool is made blue, so blue's lighthouse
 is banded blue and white and its beach monument's plinth is ringed in blue.
 
@@ -26,8 +29,8 @@ is banded blue and white and its beach monument's plinth is ringed in blue.
 
 | Monument | Where | What a player does |
 |---|---|---|
-| **the Harbour** | two blocks of gold hanging over the basin between the two piers, from a spruce beam laid pier to pier | builds out from a pier or swims under it, and breaks it with the water round it |
-| **the Beach** | two blocks of gold on a plinth of mossy cobble on the Cove's sand, ringed in the team's wool | comes down the Cove's path or along the sand, in sight of the Downs' edge |
+| **the Harbour** | a cube of gold three on a side, bedrock at its centre, floating over the basin between the two piers with three blocks of air under it and two of water either side | builds out from a pier to it, or up from the water under it, and breaks the 26 gold round the bedrock |
+| **the Beach** | the same cube floating three blocks over a pad of mossy cobble on the Cove's sand, the pad ringed in the team's wool | comes down the Cove's path or along the sand, in sight of the Downs' edge, and pillars up from the pad |
 
 **Each monument is forward of its team's spawn,** in front of the town on its own island, so the defence holds
 ground between the spawn and the monument. The harbour's sits under the town's terraces; the beach's is the far
@@ -35,15 +38,16 @@ side of the Downs.
 
 ## What the built board measures
 
-`renders/walks.txt` walks the built board from each spawn, on foot, with no blocks placed:
+`renders/walks.txt` walks the built board from each spawn, on foot, with no blocks placed, to the place under
+each monument: the water at the harbour, the pad on the beach.
 
 | From a team's spawn | Red | Blue |
 |---|---|---|
-| its own harbour monument | 70 | 70 |
+| its own harbour monument | 72 | 72 |
 | its own beach monument | 106 | 106 |
 | the Skerry | 125 | 127 |
-| the other team's beach monument | 155 | 155 |
-| the other team's harbour monument | 208 | 208 |
+| the other team's beach monument | 157 | 157 |
+| the other team's harbour monument | 206 | 206 |
 
 **The two teams are even.** The Skerry is two blocks longer for blue because the merged islet is not exactly
 symmetric about the turn; every objective is the same walk for both.
@@ -60,8 +64,9 @@ long way round, not the way the match will go.
   - a stack of wood, two golden apples, food and a water bucket;
   - 32 arrows;
   - armour, the helmet and boots in the team's colour.
-- **The objective:** four destroyables of gold, two each, `completion="100%"`. A team wins by breaking both of
-  the other's.
+- **The objective:** four destroyables, two each, every one a cuboid round its cube with `materials="gold
+  block"` and `completion="100%"`: all 26 gold blocks, the bedrock at the centre left standing. A team wins
+  by breaking both of the other's.
 - **Building:** open everywhere except the spawn squares and above y 56. The enemy may not enter a spawn.
 - **Fall damage on,** as usual for the mode.
 
@@ -81,5 +86,6 @@ long way round, not the way the match will go.
 | A second gamemode from a finished board | Easy: build the island, add the objectives, copy and turn it, merge at the islet | A board as a piece: placed twice, turned, and joined to itself at a chosen piece |
 | The turned copy to read as the other team's | Easy: the copy's red wool made blue | A team-colour slot that a turn swaps |
 | Facing blocks right after the turn | Easy with a turn table for stairs, doors, ladders and the rest, reused from an earlier board | The same table in the studio's own turn |
+| A monument that floats, a cube with a bedrock heart | Easy: the cube, three blocks of air cleared under it, the destroyable's region round it, the gold its material | A monument piece with a float height and a core block |
 | Monuments forward of each spawn, the same walk for both | Easy to place; the walk shows them even | Objective placement read against both spawns on the plan |
 | Validation of the variant | Not attempted here; the XML follows PGM's destroyable module | DTM in the studio's round-trip, with the monuments read back against the world |

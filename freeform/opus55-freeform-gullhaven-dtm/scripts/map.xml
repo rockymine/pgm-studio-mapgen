@@ -1,7 +1,7 @@
 <map proto="1.5.0">
 <name>Gullhaven DTM</name>
 <version>0.1.0</version>
-<objective>Destroy both of the other team's gold monuments: one over the harbour, one on the beach.</objective>
+<objective>Destroy both of the other team's gold monuments: one floating over the harbour, one over the beach.</objective>
 <gamemode>dtm</gamemode>
 <authors>
     <author>Claude (freeform generator)</author>
@@ -66,16 +66,16 @@
 </regions>
 <destroyables>
         <destroyable id="red-harbour" name="Red's Harbour Monument" owner="red-team" materials="gold block" completion="100%">
-            <region><cuboid min="31,20,23" max="32,22,24"/></region>
+            <region><cuboid min="30,22,24" max="33,25,27"/></region>
         </destroyable>
         <destroyable id="red-beach" name="Red's Beach Monument" owner="red-team" materials="gold block" completion="100%">
-            <region><cuboid min="-51,22,8" max="-50,24,9"/></region>
+            <region><cuboid min="-52,25,7" max="-49,28,10"/></region>
         </destroyable>
         <destroyable id="blue-harbour" name="Blue's Harbour Monument" owner="blue-team" materials="gold block" completion="100%">
-            <region><cuboid min="-69,20,92" max="-68,22,93"/></region>
+            <region><cuboid min="-70,22,89" max="-67,25,92"/></region>
         </destroyable>
         <destroyable id="blue-beach" name="Blue's Beach Monument" owner="blue-team" materials="gold block" completion="100%">
-            <region><cuboid min="13,22,107" max="14,24,108"/></region>
+            <region><cuboid min="12,25,106" max="15,28,109"/></region>
         </destroyable>
 </destroyables>
 <toolrepair>
