@@ -1,8 +1,8 @@
 # Gullhaven — the plan
 
-A free-for-all board, planned and waiting on a review before anything is built. It is a fishing island with no
-symmetry at all: a headland with a lighthouse, a ravine, a terraced town of closed houses, a harbour, rolling
-downs, a beach cove, and sea caves under the headland. Everyone is against everyone, and one hit kills.
+A free-for-all board, planned, reviewed and built. It is a fishing island with no symmetry at all: a headland
+with a lighthouse, a ravine, a terraced town of closed houses, a harbour, rolling downs, a beach cove, sea caves
+under the headland, and an islet off the south shore. Everyone is against everyone, and one hit kills.
 
 ![plan sketch](renders/00-plan-sketch.png)
 
@@ -30,10 +30,11 @@ minutes. Gullhaven is the same size for up to sixteen players.
 |---|---|---|
 | **The Headland** | 40 | a grass plateau in the north-west with cliffs on three sides, the lighthouse, a ruined chapel and a dry-stone wall across it. The high ground: it sees far, and is seen from far |
 | **The Ravine** | 23 to 24 | a cleft seven wide between the Headland and the town, a stream down its floor, rising at its south end to the Downs. A sheltered lane, crossed overhead by a bridge |
-| **The Town** | 36, 32, 28 | three terraces on the north-east, seventeen closed houses in rows with streets and a lane between, stairs between the terraces. Short sightlines and corners |
-| **The Harbour** | 22 | a quay round a basin open to the sea, two piers, a fish shed, a net loft and the harbourmaster's, crates |
+| **The Town** | 36, 32, 28 | three terraces on the north-east, fourteen closed houses in rows with streets and a lane between, stairs between the terraces. Short sightlines and corners |
+| **The Harbour** | 22 | a quay round a basin open to the sea, two piers, a fish shed and a net loft, crates, two boats |
 | **The Downs** | 26 to 30 | rolling grass on the south-west, hedgerows with gaps, a copse, a ring of standing stones, the mill. The open ground, broken up |
 | **The Cove** | 19 to 21 | a beach on the west under the Downs' edge, with driftwood and the sea cave's mouth |
+| **The Skerry** | 24 to 26 | a rocky islet off the Downs' south shore, reached by a bridge over the sea. Two spawns, rocks and two spruces |
 | **The Caves** | 21 | a grotto under the Headland and four ways into it: the sea cave from the Cove, a sinkhole on the Downs, a door from the Ravine's floor, and a ladder down from the chapel's crypt |
 
 **Nothing is enterable.** Every house, the lighthouse and the mill are closed, with doors that do not open. The
@@ -50,12 +51,12 @@ pair of terraces, the quay road and the quay's steps, the Cove's path and the Do
 
 | What | Measured |
 |---|---|
-| spawns | 27: four on the Headland, two in the Ravine, eight in the Town, four in the Harbour, five on the Downs, two in the Cove, two in the Caves |
-| reach | every spawn reaches every other; 7,084 of 7,214 walkable cells are reached from one spawn |
-| nearest spawn on foot | 10 to 32 blocks, median 20 |
-| other spawns seen from a spawn, within 60 | median 1, at most 6 |
-| open ground | 5% of the walkable ground is more than six blocks from anything to stand behind, 1% more than ten |
-| the longest clear sightline | 113 blocks, from the Headland's west edge to the far end of the quay |
+| spawns | 29: four on the Headland, two in the Ravine, eight in the Town, four in the Harbour, five on the Downs, two in the Cove, two on the Skerry, two in the Caves |
+| reach | every spawn reaches every other; 7,337 of 7,413 walkable cells are reached from one spawn |
+| nearest spawn on foot | 8 to 37 blocks, median 18 |
+| other spawns seen from a spawn, within 60 | median 1, at most 7 |
+| open ground | 5% of the walkable ground is more than six blocks from anything to stand behind, none more than ten |
+| the longest clear sightline | 110 blocks, from the Headland's west edge to the far end of the quay |
 
 **The Headland's view is the one long sightline left.** From its edge at 40 the island falls away below it,
 and a row of trees along its southern lip breaks most of the lines but not every one. That is the high
@@ -72,7 +73,7 @@ ground's price and its reward: a player there sees the whole island and is seen 
   - a leather tunic in the player's colour.
 
   A kill pays one arrow, and arrows are removed on death.
-- **The spawns:** the 27 points, `spread="true" safe="true"`, each facing into the island.
+- **The spawns:** the 29 points, `spread="true" safe="true"`, each facing into the island.
 - **Fall damage off, no block interaction, no use;** the sea is deep enough to swim, and a region round the
   island keeps a swimmer from leaving it.
 
@@ -96,3 +97,11 @@ ground's price and its reward: a player there sees the whole island and is seen 
   - the lighthouse, white and red with a lantern of glowstone;
   - the mill on the Downs with sails of wool;
   - the chapel's broken walls of mossy stone brick.
+
+## How the plan changed
+
+| Review | What it said | What changed |
+|---|---|---|
+| first | an islet with a bridge to it, so players spawn there too; otherwise build | the Skerry off the Downs' south shore with two spawns, and a bridge to it over the sea; built |
+| building | the harbourmaster's house stood a step below the lower terrace, and its roof could be walked onto | taken out; crates in its place |
+| building | the Cove was a strip three blocks wide, and its path and the sea cave both started inland of it | the Cove widened to its polygon; the path and the sea cave start on the sand |

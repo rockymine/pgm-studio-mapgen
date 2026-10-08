@@ -1,0 +1,105 @@
+<map proto="1.5.0">
+<name>Gullhaven</name>
+<version>0.1.0</version>
+<objective>Kill the most players in 8 minutes. One hit kills; every kill pays an arrow.</objective>
+<gamemode>ffa</gamemode>
+<gamemode>rage</gamemode>
+<authors>
+    <author>Claude (freeform generator)</author>
+</authors>
+<players min="2" max="16" colors="true"/>
+<rage/>
+<score>
+    <kills>1</kills>
+</score>
+<time>8m</time>
+<kits>
+    <!-- a sharpness sword and a power bow: under rage both kill in one hit; one arrow to start -->
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" name="Gutting Knife" lore="One Hit Kill" material="iron sword">
+            <enchantment>sharpness</enchantment>
+        </item>
+        <item slot="1" unbreakable="true" name="Longbow" lore="One Hit Kill" material="bow">
+            <enchantment>power</enchantment>
+        </item>
+        <item slot="2" material="arrow"/>
+        <chestplate unbreakable="true" locked="true" team-color="true" material="leather chestplate"/>
+        <effect duration="2s" amplifier="255">damage resistance</effect>
+        <game-mode>adventure</game-mode>
+    </kit>
+</kits>
+<spawns>
+    <default>
+        <region yaw="135"><point>0.5,62,0.5</point></region>
+    </default>
+    <!-- PGM puts a respawning player at the point farthest from the other players -->
+    <spawn kit="spawn-kit" spread="true" safe="true">
+        <regions>
+            <point yaw="-90">-43.5,42,-29.5</point>
+            <point yaw="0">-29.5,41,-35.5</point>
+            <point yaw="90">-17.5,41,-43.5</point>
+            <point yaw="180">-33.5,41,-15.5</point>
+            <point yaw="0">-6.5,25,-36.5</point>
+            <point yaw="180">-7.5,25,-43.5</point>
+            <point yaw="0">8.5,37,-45.5</point>
+            <point yaw="90">30.5,37,-37.5</point>
+            <point yaw="0">20.5,33,-25.5</point>
+            <point yaw="90">46.5,33,-25.5</point>
+            <point yaw="0">-0.5,33,-16.5</point>
+            <point yaw="180">40.5,29,-7.5</point>
+            <point yaw="0">16.5,29,-7.5</point>
+            <point yaw="90">4.5,29,4.5</point>
+            <point yaw="0">30.5,25,12.5</point>
+            <point yaw="180">16.5,23,16.5</point>
+            <point yaw="180">26.5,23,31.5</point>
+            <point yaw="0">9.5,23,33.5</point>
+            <point yaw="0">-5.5,30,10.5</point>
+            <point yaw="0">-19.5,30,20.5</point>
+            <point yaw="90">-11.5,31,30.5</point>
+            <point yaw="0">-29.5,29,12.5</point>
+            <point yaw="180">-3.5,30,36.5</point>
+            <point yaw="-90">-51.5,20,2.5</point>
+            <point yaw="-90">-49.5,21,16.5</point>
+            <point yaw="0">-21.5,26,59.5</point>
+            <point yaw="90">-12.5,26,58.5</point>
+            <point yaw="0">-33.5,22,-25.5</point>
+            <point yaw="180">-19.5,22,-3.5</point>
+        </regions>
+    </spawn>
+</spawns>
+<respawn delay="2s" auto="true"/>
+<regions>
+    <!-- the sea round the island is for swimming in, not for swimming away -->
+    <negative id="outside">
+        <cuboid min="-54,0,-48" max="54,256,67"/>
+    </negative>
+    <apply enter="never" region="outside" message="The sea is too rough past here."/>
+    <apply block="never" use="never"/>
+</regions>
+<kill-rewards>
+    <kill-reward>
+        <item material="arrow"/>
+    </kill-reward>
+</kill-rewards>
+<toolrepair>
+    <tool>iron sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>arrow</item>
+    <item>iron sword</item>
+    <item>bow</item>
+    <item>leather chestplate</item>
+</itemremove>
+<disabledamage>
+    <damage>fall</damage>
+</disabledamage>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+<world>
+    <timeset>5000</timeset>
+    <timelock>on</timelock>
+</world>
+</map>

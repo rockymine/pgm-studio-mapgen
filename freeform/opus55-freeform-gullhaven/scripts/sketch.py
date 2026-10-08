@@ -89,7 +89,7 @@ def overlay(d, oy):
     labels = [(-46, -46, "THE HEADLAND 40"), (-12, -50, "RAVINE 24"), (6, -49, "upper terrace 36"),
               (4, -29, "middle terrace 32"), (6, -11, "lower terrace 28"), (20, 9, "THE QUAY 22"),
               (-30, 30, "THE DOWNS 26-30"), (-56, 8, "COVE"), (21, 40, "basin"), (-36, -24, "grotto"),
-              (-28, -40, "chapel"), (-50, -42, "lighthouse"), (-34, 22, "mill"), (-12, 25, "stones")]
+              (-28, -40, "chapel"), (-50, -42, "lighthouse"), (-34, 22, "mill"), (-12, 25, "stones"), (-30, 54, "THE SKERRY 25")]
     for x, z, t in labels:
         a, b = px(x, z, oy)
         d.text((a, b), t, fill=(0, 0, 0))

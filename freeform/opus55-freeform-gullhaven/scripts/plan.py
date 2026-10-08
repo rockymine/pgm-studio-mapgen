@@ -15,6 +15,7 @@ The island, north at the top:
     the Downs      the south-west: rolling grass at 26 to 30, a ring of standing stones, a mill, a sinkhole
     the Cove       the west: a beach at 19 to 21 under the Downs' edge, with the sea cave's mouth
     the Caves      under the Headland and the Downs: a grotto at 21 and four ways into it
+    the Skerry     a rocky islet off the Downs' south shore at 25, reached by a bridge over the sea
 
 The plan is a height raster with a kind for every column, an upper raster for the bridge, and lists of what
 a raster cannot hold: the caves, the ramps, the houses and the cover. The checker walks it, the sketch draws
@@ -28,7 +29,7 @@ from geometry import inside, polyline, signed_distance
 from noise import fbm
 
 X_MIN, X_MAX = -56, 55
-Z_MIN, Z_MAX = -50, 49
+Z_MIN, Z_MAX = -50, 68
 NX, NZ = X_MAX - X_MIN + 1, Z_MAX - Z_MIN + 1
 SEA = 18                    # the sea's surface; its floor at 13
 KINDS = {"sea": 0, "grass": 1, "beach": 2, "rock": 3, "street": 4, "quay": 5, "ramp": 6, "ravine": 7,
@@ -58,6 +59,7 @@ TOWN = [  # three terraces, high to low, each a polygon
     (28, [(-4, -12), (51, -12), (48, 8), (2, 8)]),
 ]
 QUAY = [(8, 8), (48, 8), (49, 18), (40, 18), (20, 20), (19, 36), (8, 36)]
+SKERRY = [(-27, 52), (-14, 50), (-8, 56), (-11, 64), (-22, 66), (-30, 60)]   # the islet off the Downs
 BASIN = [(20, 19), (42, 17), (47, 50), (18, 50)]
 PIERS = [(26, 27, 19, 34), (35, 36, 18, 30)]           # x0, x1, z0, z1 at the quay's height
 
@@ -81,10 +83,13 @@ def build():
     # the Downs: everything on the island not otherwise claimed, rolling between 26 and 30
     downs = np.rint(28 + 2.2 * n1).astype(int)
     R.set(land, downs, "grass")
+    # the Skerry: a rocky islet off the Downs' south shore, at 24 to 26
+    sk = signed_distance(XS, ZS, SKERRY) + 1.2 * n2 < 0
+    R.set(sk, np.rint(25 + 1.0 * n1).astype(int), "grass")
+    land = land | sk
     # the Cove: a beach rising from the sea to the Downs' foot
-    cove = inside(XS, ZS, COVE) & ~(signed_distance(XS, ZS, ISLAND) + 2.2 * n2 < -6)
-    dcove = np.clip(-signed_distance(XS, ZS, COVE), 0, 99)
-    R.set(cove, np.clip(19 + (dcove // 4), 19, 21).astype(int), "beach")
+    cove = inside(XS, ZS, COVE) & land
+    R.set(cove, np.clip(19 + (XS + 56) // 5, 19, 21).astype(int), "beach")
     # the Headland: a plateau at 40, cliffs on every side
     head = inside(XS, ZS, HEADLAND) & land
     R.set(head, np.rint(40 + 0.8 * n2).astype(int), "grass")
@@ -107,12 +112,15 @@ def build():
     for ramp in RAMPS:
         lay_ramp(R, ramp)
     R.set(~land & ~rv & (R.K != KINDS["beach"]), SEA, "sea")
-    # the bridge over the Ravine, sloping one in three from the Headland's lip to the upper terrace
-    d, along = polyline(XS, ZS, BRIDGE["pts"])
-    L = sum(math.dist(a, b) for a, b in zip(BRIDGE["pts"], BRIDGE["pts"][1:]))
-    deck = np.rint(BRIDGE["h0"] + (BRIDGE["h1"] - BRIDGE["h0"]) * along / L).astype(int)
-    m = (d <= BRIDGE["half"]) & (R.K == KINDS["ravine"]) | (d <= BRIDGE["half"]) & (R.K == KINDS["stream"])
-    R.U[m] = deck[m]
+    # the bridges: over the Ravine from the Headland's lip to the upper terrace, and over the sea from the
+    # Downs' south shore to the Skerry; each deck slopes no more than one in three
+    for br in BRIDGES:
+        d, along = polyline(XS, ZS, br["pts"])
+        L = sum(math.dist(a, b) for a, b in zip(br["pts"], br["pts"][1:]))
+        deck = np.rint(br["h0"] + (br["h1"] - br["h0"]) * along / L).astype(int)
+        m = (d <= br["half"]) & np.isin(R.K, [KINDS[k] for k in br["over"]])
+        R.U[m] = deck[m]
+    R.G = R.H.copy()                                           # the ground, before anything stands on it
     # what stands on the ground: houses, landmarks, cover, trees
     for hs in HOUSES:
         for x, z in house_cells(hs):
@@ -144,7 +152,7 @@ RAMPS = [
     dict(key="town-stair-3", pts=[(-1, -14), (-1, -9)], half=1.0, h0=32, h1=28),
     dict(key="quay-road", pts=[(30, 6), (30, 14)], half=2.0, h0=28, h1=22),
     dict(key="quay-steps", pts=[(9, 6), (9, 12)], half=1.0, h0=28, h1=22),
-    dict(key="cove-path", pts=[(-40, 8), (-31, 9)], half=1.5, h0=20, h1=28),
+    dict(key="cove-path", pts=[(-43, 8), (-34, 9)], half=1.5, h0=21, h1=28),
     dict(key="downs-quay", pts=[(8, 30), (1, 30)], half=1.5, h0=22, h1=28),
 ]
 
@@ -158,12 +166,13 @@ def lay_ramp(R, ramp):
     R.K[m] = KINDS["ramp"]
 
 
-BRIDGE = dict(pts=[(-14, -34), (-2, -33)], half=1.0, h0=40, h1=36)
+BRIDGES = [dict(key="ravine-bridge", pts=[(-14, -34), (-2, -33)], half=1.0, h0=40, h1=36, over=("ravine", "stream")),
+           dict(key="skerry-bridge", pts=[(-13, 43), (-15, 52)], half=1.0, h0=28, h1=25, over=("sea",))]
 
 # ---- the caves: (x, z, floor) polylines three wide and three high, and the grotto they meet in -----------
 GROTTO = dict(box=(-38, -30, -28, -20), floor=21, ceil=27)
 TUNNELS = [
-    dict(key="sea-cave", a=(-44, -6), b=(-34, -24), pts=[(-44, -6, 20), (-40, -14, 21), (-34, -22, 21)]),
+    dict(key="sea-cave", a=(-46, -6), b=(-34, -24), pts=[(-46, -6, 21), (-42, -8, 21), (-40, -14, 21), (-34, -22, 21)]),
     dict(key="sinkhole", a=(-20, 6), b=(-34, -24), pts=[(-20, 6, 27), (-20, -2, 21), (-28, -14, 21), (-32, -22, 21)]),
     dict(key="ravine-door", a=(-11, -24), b=(-34, -24), pts=[(-11, -24, 24), (-16, -24, 23), (-24, -24, 22), (-30, -24, 21)]),
     dict(key="crypt", a=(-24, -32), b=(-34, -24), pts=[(-24, -32, 40), (-24, -32, 22), (-29, -28, 21)], ladder=True),
@@ -191,7 +200,6 @@ HOUSES = [  # cx, cz, heading, L, W, storeys, style: closed, no way in
     # the harbour
     dict(cx=44, cz=13, heading=90, L=7, W=5, storeys=1, style="stone"),     # the fish shed
     dict(cx=14, cz=28, heading=90, L=9, W=6, storeys=1, style="stone"),     # the net loft
-    dict(cx=12, cz=14, heading=0, L=7, W=5, storeys=1, style="town"),       # the harbourmaster's
 ]
 
 
@@ -226,23 +234,25 @@ COVER = ([(x, z, 3) for x, z in STONES] +                                       
                                  (-14, 30), (-22, 34), (-36, 4), (-2, 12), (2, 24), (-26, 14),   # rocks on the Downs
                                  (16, -38), (18, -38), (38, -38), (20, -16), (40, -14),          # crates and carts in town
                                  (18, -4), (26, 2), (2, -8),
-                                 (18, 12), (19, 12), (24, 14), (38, 14), (12, 22), (12, 23),     # crates on the quay
-                                 (-50, 6), (-48, 14), (-46, -6))])                               # driftwood on the Cove
+                                 (18, 12), (19, 12), (24, 14), (12, 13), (13, 13), (12, 16), (38, 14), (12, 22), (12, 23),     # crates on the quay
+                                 (-50, 6), (-48, 14), (-46, -6),                                 # driftwood on the Cove
+                                 (-18, 56), (-19, 56), (-26, 57), (-16, 62))])                  # the Skerry's rocks
 # hedgerows on the Downs and a dry-stone wall across the Headland: lines of cover two high, with gaps
 HEDGES = [[(-34, 0), (-26, 0)], [(-22, 0), (-14, 2)], [(-6, 22), (-6, 30)], [(-26, 16), (-26, 24)],
           [(-40, 30), (-34, 34)], [(4, 18), (4, 24)]]
 WALLS = [[(-48, -24), (-40, -24)], [(-36, -24), (-30, -22)], [(-20, -46), (-20, -40)], [(-16, -26), (-14, -20)]]
 COPSE = [(-16, 6), (-13, 9), (-17, 11), (-11, 13), (-14, 16), (-19, 15), (-9, 6)]
-TREES = COPSE + [(-48, -18), (-42, -15), (-30, -17), (-20, -19), (-50, -28), (-34, -44), (-20, -42), (-48, -30), (-16, 14), (-28, 4), (-38, 18), (-20, 26), (-10, 36), (4, 34),
+TREES = COPSE + [(-24, 62), (-11, 55), (-48, -18), (-42, -15), (-30, -17), (-20, -19), (-50, -28), (-34, -44), (-20, -42), (-48, -30), (-16, 14), (-28, 4), (-38, 18), (-20, 26), (-10, 36), (4, 34),
          (0, 2), (-34, 32), (14, -46), (46, -40), (46, -6), (-2, -20)]
 # the spawn points: spread over every part of the island; PGM picks the one farthest from the players
 SPAWNS = [  # x, z, and what the player faces (yaw)
     (-44, -30, -90), (-30, -36, 0), (-18, -44, 90), (-34, -16, 180),       # the Headland
-    (-9, -34, 0), (-8, -44, 180),                                          # the Ravine
+    (-7, -37, 0), (-8, -44, 180),                                          # the Ravine
     (8, -46, 0), (30, -38, 90), (20, -26, 0), (46, -26, 90), (-1, -17, 0), (40, -8, 180), (16, -8, 0), (4, 4, 90),  # the Town
     (30, 12, 0), (16, 16, 180), (26, 31, 180), (9, 33, 0),                # the Harbour
     (-6, 10, 0), (-20, 20, 0), (-12, 30, 90), (-30, 12, 0), (-4, 36, 180),  # the Downs
     (-52, 2, -90), (-50, 16, -90),                                         # the Cove
+    (-22, 59, 0), (-13, 58, 90),                                           # the Skerry
 ]
 CAVE_SPAWNS = [(-34, -26, 0, 21), (-20, -4, 180, 21)]                      # in the grotto and the sinkhole tunnel
 

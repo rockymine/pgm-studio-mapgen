@@ -55,6 +55,8 @@ def graph():
                 dh = H[p, q] - H[i, j]
                 if dh <= 1:
                     add((i, j), (p, q), 1.0 if dh <= 0 else 1.2, "walk" if dh >= -3 else "drop")
+    for i in range(P.NX):
+        for j in range(P.NZ):
             if U[i, j] >= 0:                                   # the bridge: its own layer over the Ravine
                 for di, dj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
                     p, q = i + di, j + dj
