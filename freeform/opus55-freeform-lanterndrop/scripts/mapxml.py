@@ -65,14 +65,18 @@ def main():
     a('<rules><rule>A drop of nineteen kills unless it ends in water: a cistern, the paddies, the harbour or your bucket.</rule>'
       '<rule>Touch a hill to take it; it scores for you until someone else touches it, even after you die.</rule>'
       '<rule>The slipway in the harbour takes you back to the bell court.</rule></rules>')
+    a('<include id="void-death"/>')
     a('<players min="1" max="40" colors="true"/>')
     a('<kits>')
     a('    <kit id="players">')
     a('        <clear/>')
     for slot in range(3):
         a(f'        <item slot="{slot}" locked="true" name="`b`lWater Drop" material="water bucket"/>')
-    a('        <effect duration="3s" amplifier="5">resistance</effect>')
-    a('        <effect duration="oo" amplifier="-2">health boost</effect>')
+    # the kit, the water filter and the void are Water Drop: Limbo II's, copied: boots of Protection V soften a
+    # landing the bucket's water reached a tick late, and a player in the void has one heart
+    a('        <boots color="7fcc19" locked="true" unbreakable="true" enchantment="protection environmental:5" material="leather boots"/>')
+    a('        <effect duration="2s" amplifier="5">resistance</effect>')
+    a('        <effect amplifier="-2">health boost</effect>')
     a('        <game-mode>survival</game-mode>')
     a('    </kit>')
     a('</kits>')
@@ -82,9 +86,9 @@ def main():
     a(f'    <default yaw="0"><region><cuboid min="{cx0 + 3},{cy + 1},{cz0 + 7}" max="{cx1 - 2},{cy + 1},{cz1 - 2}"/></region></default>')
     a('</spawns>')
     a('<filters>')
-    a('    <any id="water"><material>water</material><material>stationary water</material></any>')
-    # a bucket places a source, data 0; water spreading is a placement too, of data 1 to 8, and is refused
-    a('    <any id="water-source"><material>water:0</material><material>stationary water:0</material></any>')
+    # a player's bucket may place and take water; the world's own spreading, a placement by no player, may not
+    a('    <all id="water"><any><material>water</material><material>stationary water</material></any>'
+      '<not><cause>world</cause></not></all>')
     for hid, name, pts, box in hill_boxes():
         a(f'    <not id="holding-{hid}"><objective>{hid}</objective></not>')
     a('</filters>')
@@ -102,7 +106,7 @@ def main():
         a(f'    <cuboid id="{hid}-box" min="{bx0},{by0},{bz0}" max="{bx1},{by1},{bz1}"/>')
     a('    <apply region="built-water" block-break="never" block-place="never" message="This water belongs to the pass."/>')
     a('    <apply region="bell-court" block-place="never"/>')
-    a('    <apply block-place="water-source" block-break="water" block-physics="never"/>')
+    a('    <apply block-place="water" block-break="water" block-physics="never"/>')
     a('</regions>')
     a('<damage><deny><region id="bell-court"/></deny></damage>')
     a('<score/>')
@@ -116,14 +120,16 @@ def main():
     a('    <portal region="slipway" destination="court-floor" yaw="@0"/>')
     # a box under every landing, from the last group's far edge to this one's, five under its top: a player who
     # misses the landing falls into it and is put under the world, where the void kills within a few ticks. A
-    # landing, even in a cistern three deep, stays above it; the drop onward leaves past the group's far edge
-    a('    <portal y="-70"><region><union>')
+    # landing, even in a cistern three deep, stays above it; the drop onward leaves past the group's far edge.
+    # A portal's y is relative unless it starts with @: this one puts the player at -150, where void-death's
+    # one heart and the void end them
+    a('    <portal y="@-150" sound="false"><region><union>')
     for x0, y0, z0, x1, y1, z1 in kill_boxes():
         a(f'        <cuboid min="{x0},{y0},{z0}" max="{x1},{y1},{z1}"/>')
     a('    </union></region></portal>')
     a('    <portal y="-64"><region><below y="-5"/></region></portal>')
     a('</portals>')
-    a('<itemremove><item>bucket</item><item>water bucket</item></itemremove>')
+    a('<itemremove><item>bucket</item><item>water bucket</item><item>leather boots</item></itemremove>')
     a('<hunger><depletion>off</depletion></hunger>')
     a('</map>')
     print("\n".join(o))

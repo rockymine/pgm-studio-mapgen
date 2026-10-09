@@ -72,8 +72,8 @@ the bell court was moved back out of reach of anyone knocked off the court's bac
 **`map.xml` is written by `scripts/mapxml.py`.** It follows Limbo II's structure and PGM's parser.
 
 - **Players:** free for all, up to forty, each in their own colour.
-- **Kit:** three locked water buckets, sixteen health (`health boost -2`), three seconds of resistance, survival so
-  water can be placed.
+- **Kit:** Limbo II's, copied: three locked water buckets, boots of Protection V, sixteen health
+  (`health boost -2`), two seconds of resistance, survival so water can be placed.
 - **Hills:** fourteen control points, `capture-time="0.1s"`, `neutral-state="false"`, each with a player filter so a
   holder does not retake their own hill. One point a second each, three for the barge.
 - **Water:** players place and pick up water anywhere but the bell court, and it never flows. The board's own
@@ -124,3 +124,20 @@ a sprint jump of nine to ten over a drop of twenty, should be tried by hand.
 **A miss now kills at once.** Under every group of landings lies a box the course's width, from the last
 group's far edge to this one's, up to five under its top. A player who falls into it is put under the world, where
 the void kills within a few ticks. A landing, even in a cistern three deep, stays above its box.
+
+## After the second playtest
+
+**The bucket, the water filter and the void are now Limbo II's, copied rather than reasoned out.** The playtest
+found buckets that placed water and still let the fall hurt, and a kill drop that did not drop far enough.
+
+**The kill drop moved a player seventy blocks, not under the world.** PGM reads a portal's `y` as an offset unless
+it starts with `@`, so `y="-70"` put a player who missed a landing at 200 back in the air at 130. The boxes under the
+landings now send to `y="@-150"`, and the map includes `void-death`, which gives a player below five one heart.
+
+**Water is filtered by who places it, not by its data.** The filter is Limbo II's: water placed or taken by anything
+but the world, with physics off. Why the earlier data-0 filter let a fall hurt was not reproduced here, since
+no server ran; the copy removes the difference instead.
+
+**The kit carries Limbo II's boots of Protection V.** They are what makes a landing survivable when the water
+arrives a tick late, which a bucket emptied just above the ground often does. Its resistance is two seconds, as there.
+
