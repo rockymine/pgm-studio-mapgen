@@ -103,19 +103,19 @@
         <apply enter="only-yellow" region="yellow-spawn" message="You may not enter the enemy spawn!"/>
         <apply block="never" region="yellow-spawn" message="You may not build in a spawn!"/>
         <block id="orange-red-monument">32,13,-36</block>
-        <cuboid min="87,19,2" max="93,24,8" id="orange-room"/>
+        <cuboid min="86,19,1" max="94,24,9" id="orange-room"/>
         <apply enter="not-blue" region="orange-room" message="You may not enter your own wool room!"/>
         <point id="orange-wool-spawn">89.5,20,5.5</point>
         <block id="pink-red-monument">35,13,-36</block>
-        <cuboid min="-8,19,87" max="-2,24,93" id="pink-room"/>
+        <cuboid min="-9,19,86" max="-1,24,94" id="pink-room"/>
         <apply enter="not-green" region="pink-room" message="You may not enter your own wool room!"/>
         <point id="pink-wool-spawn">-5.5,20,89.5</point>
         <block id="purple-red-monument">38,13,-36</block>
-        <cuboid min="-93,19,-8" max="-87,24,-2" id="purple-room"/>
+        <cuboid min="-94,19,-9" max="-86,24,-1" id="purple-room"/>
         <apply enter="not-yellow" region="purple-room" message="You may not enter your own wool room!"/>
         <point id="purple-wool-spawn">-89.5,20,-5.5</point>
         <block id="yellow-blue-monument">35,13,32</block>
-        <cuboid min="2,19,-93" max="8,24,-87" id="yellow-room"/>
+        <cuboid min="1,19,-94" max="9,24,-86" id="yellow-room"/>
         <apply enter="not-red" region="yellow-room" message="You may not enter your own wool room!"/>
         <point id="yellow-wool-spawn">5.5,20,-89.5</point>
         <block id="pink-blue-monument">35,13,35</block>

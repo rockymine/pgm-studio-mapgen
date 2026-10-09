@@ -18,14 +18,16 @@ A cell is one of a handful of pieces, its y the floor block:
     stair     one level up, three blocks in five, toward `rises`, from a floor at y: a stone-brick slab and a stone-brick
               block in turn, half a block a row
     gap       void a player builds over: block 36 at y 0, and a cobweb mid-way along each edge it shares with void
-    water     a gap with water at its foot, kerbed in bedrock where it meets void or a dry gap; the water marks it
+    water     a gap with water at its foot, no kerb and no cobwebs: the water marks it, and PGM holds it still
     void      nothing
 
 Every column of ground is four courses of stone over bedrock to y 3, an obsidian sheet at y 1 and 2, block 36 at
 y 0. Its edge over anything two or more lower is the five-course cap: an upside-down spruce stair, brick, a dark-oak
 slab, an upside-down dark-oak stair, black clay; every other cell along a face is the birch-stair panel, five wide,
-framed in black clay that carries the band up round it. A piece is framed: the rim on its edge, a band of spruce planks inside it, then its
-field.
+framed in black clay that carries the band up round it. A piece's outline is one block: the rim where it falls
+away, spruce planks where it meets a wall or a stair; inside it, at once, its field or its bed.
+
+house() raises a wool room as Brittlebush I does: storeys of whole cells, each smaller than the one under it.
 """
 from dataclasses import dataclass
 
@@ -331,15 +333,15 @@ def build(w, cells, only=None, rng=None, dye=14):
             if any(T.get((x + dx, z + dz), -1) < h - 1 for dx, dz in DIRS.values()):
                 continue                                                   # the rim, laid with the cap
             dd = depth(x, z)
-            if dd <= 1:
-                w.set(x, h, z, *SPRUCE_PLANKS)
+            if dd == 0:                                                    # the outline against a wall or a stair:
+                w.set(x, h, z, *SPRUCE_PLANKS)                             # one block, as the rim is elsewhere
             elif c.kind == "keep":
-                w.set(x, h, z, *((B.STAINED_CLAY, dye) if dd == 2 else (B.SANDSTONE, 2)))
+                w.set(x, h, z, *((B.STAINED_CLAY, dye) if dd == 1 else (B.SANDSTONE, 2)))
             else:
                 field.append((x, z))
         if field:
             sand(w, field, c.y, rng)
-    # the inlay's beds, filling a piece's inside up to the plank band: one bed for a piece that is a rectangle of
+    # the inlay's beds, filling a piece's inside up to its outline: one bed for a piece that is a rectangle of
     # cells; a piece of any other shape keeps its sand
     if any(t == "inlay" for t in theme.values()):
         used = set()
@@ -356,7 +358,7 @@ def build(w, cells, only=None, rng=None, dye=14):
             block = comp
             used |= set(block)
             inner = [(x, z) for bx, bz in block for x in range(bx * CELL, bx * CELL + CELL)
-                     for z in range(bz * CELL, bz * CELL + CELL) if depth(x, z) >= 2]
+                     for z in range(bz * CELL, bz * CELL + CELL) if depth(x, z) >= 1]
             xs, zs = [p[0] for p in inner], [p[1] for p in inner]
             if inner and max(xs) - min(xs) >= 5 and max(zs) - min(zs) >= 5:
                 bed(w, min(xs), min(zs), max(xs), max(zs), c.y, rng)
@@ -502,6 +504,117 @@ def tower(w, box, base_y, tiers, dye, door=None, crown=(B.GOLD_BLOCK, 0)):
             else:
                 w.set(x, y, z, *crown)
     return y, (cx, cz)
+
+
+def house(w, layers, floor, dye, door=None):
+    """A building as Brittlebush I raises its wool rooms: storeys of whole cells, five blocks each, every storey
+    over part of the one under it, as a block of two cells by two, an L of three over it, and one cell on top.
+
+    layers is a list of storeys from the bottom, each a list of cells (cx, cz); door is (cell, side), three wide
+    and three high in that cell's middle on the first storey, cobwebs one block inside it. A storey's wall is the
+    ground's edge again, read bottom up: black clay, an upside-down dark-oak stair, a dark-oak stair, brick; and
+    every other cell along a face the birch panel framed in black clay, `dye` tucked under the eave over it. Its
+    plate overhangs by one, in eaves of planks and upside-down spruce stairs and slab; where the next storey does
+    not stand on it, its roof is a terrace of sand in a ring of spruce stairs, on a ceiling of sandstone lit by sea
+    lanterns. A one-cell top storey holds a beacon
+    on gold, shining through glass of `dye`. The first storey's floor is oak planks; the storeys over it are
+    hollow."""
+    for k, layer in enumerate(layers):
+        base, top = floor + 5 * k, floor + 5 * k + 5
+        above = set(layers[k + 1]) if k + 1 < len(layers) else set()
+        cols = {(cx * CELL + i, cz * CELL + j) for cx, cz in layer for i in range(CELL) for j in range(CELL)}
+        roof = {(x, z) for x, z in cols if (x // CELL, z // CELL) not in above}
+
+        def outside(x, z, region=cols):
+            return [d for d, (dx, dz) in DIRS.items() if (x + dx, z + dz) not in region]
+
+        def diagonal_out(x, z, region=cols):
+            return any((x + dx, z + dz) not in region for dx in (-1, 1) for dz in (-1, 1))
+
+        # the walls, and the hollow inside them
+        for x, z in cols:
+            outs = outside(x, z)
+            if not outs and not diagonal_out(x, z):
+                for y in range(base + 1, top):
+                    w.set(x, y, z, B.AIR)
+                if k == 0:
+                    w.set(x, base, z, B.PLANKS, 0)
+                continue
+            if len(outs) != 1:                                          # a corner, outer or inner
+                for y in range(base + 1, top):
+                    w.set(x, y, z, *BLACK_CLAY)
+                continue
+            d = outs[0]
+            inward = OPP[d]
+            along, pos = ((z // CELL), z % CELL) if d in "ew" else ((x // CELL), x % CELL)
+            panel = along % 2 == 0
+            for y in range(base + 1, top):
+                v = top - y
+                if panel and pos in (0, 4):
+                    w.set(x, y, z, *BLACK_CLAY)
+                elif v == 1:
+                    w.set(x, y, z, B.BRICK)
+                elif panel:
+                    w.set(x, y, z, B.BIRCH_STAIRS, stair(inward, upside_down=(v == 4)))
+                elif v == 4:
+                    w.set(x, y, z, *BLACK_CLAY)
+                else:
+                    w.set(x, y, z, B.DARK_OAK_STAIRS, stair(inward, upside_down=(v == 3)))
+            if panel and pos not in (0, 4):                             # the wool's colour under the eave
+                dx, dz = DIRS[d]
+                if w.id(x + dx, top - 1, z + dz) == B.AIR:
+                    w.set(x + dx, top - 1, z + dz, B.WOOL, dye)
+            if k == 0 and door and door[1] == d and (x // CELL, z // CELL) == tuple(door[0]) and pos in (1, 2, 3):
+                dx, dz = DIRS[d]
+                for y in range(base + 1, base + 4):
+                    w.set(x, y, z, B.AIR)
+                    w.set(x - dx, y, z - dz, B.COBWEB)
+        # the plate: the next storey's floor, or a terrace of sand in a ring of spruce stairs
+        for x, z in cols:
+            if (x, z) not in roof:
+                w.set(x, top, z, *SPRUCE_PLANKS)
+                continue
+            outs = outside(x, z, roof)
+            if len(outs) > 1 or (not outs and diagonal_out(x, z, roof)):
+                w.set(x, top, z, *SPRUCE_PLANKS)
+            elif outs:
+                w.set(x, top, z, B.SPRUCE_STAIRS, stair(outs[0]))
+            else:
+                w.set(x, top, z, B.SAND)
+                inner = not outside(x + 1, z, roof) and not outside(x - 1, z, roof) and \
+                    not outside(x, z + 1, roof) and not outside(x, z - 1, roof)
+                w.set(x, top - 1, z, *((B.SEA_LANTERN, 0) if inner else (B.SANDSTONE, 2)))  # the ceiling under it
+        # the eaves, one out all round
+        ring = {(x + dx, z + dz) for x, z in cols for dx in (-1, 0, 1) for dz in (-1, 0, 1)} - cols
+        for x, z in ring:
+            if w.id(x, top, z) != B.AIR:
+                continue
+            ins = [d for d, (dx, dz) in DIRS.items() if (x + dx, z + dz) in cols]
+            if len(ins) != 1:
+                w.set(x, top, z, *SPRUCE_PLANKS)
+                continue
+            pos = z % CELL if ins[0] in "ew" else x % CELL
+            end = ("n" if pos < 2 else "s") if ins[0] in "ew" else ("w" if pos < 2 else "e")
+            if pos in (0, 4):
+                w.set(x, top, z, *SPRUCE_PLANKS)
+            elif pos == 2:
+                w.set(x, top, z, B.WOOD_SLAB, 1 | 8)
+            else:
+                w.set(x, top, z, B.SPRUCE_STAIRS, stair(end, upside_down=True))
+    # the beacon in a one-cell top storey
+    last = layers[-1]
+    if len(last) == 1:
+        cx, cz = last[0]
+        mx, mz = cx * CELL + 2, cz * CELL + 2
+        base, top = floor + 5 * (len(layers) - 1), floor + 5 * len(layers)
+        for x in range(mx - 1, mx + 2):
+            for z in range(mz - 1, mz + 2):
+                w.set(x, base + 1, z, B.WOOL, 15)
+                w.set(x, base + 2, z, B.WOOL, 15)
+                w.set(x, base + 3, z, B.GOLD_BLOCK)
+                w.set(x, base + 4, z, B.SANDSTONE, 2)
+        w.set(mx, base + 4, mz, B.BEACON)
+        w.set(mx, top, mz, B.STAINED_GLASS, dye)
 
 
 HEART = [".XX.XX.",

@@ -49,7 +49,15 @@ def extent(cs):
 
 
 SPAWN_AT, SPAWN_BOX, SPAWN_REC = SP.placement(PLAN, "spawns", LIFT)[0]
-WOOL_AT, WOOL_BOX, _ = SP.placement(PLAN, "wools", LIFT)[0]
+WOOL_AT, _, WOOL_REC = SP.placement(PLAN, "wools", LIFT)[0]
+# the wool's house takes its whole piece, two cells by two, as Brittlebush I's do: the first storey all four cells,
+# the second an L lacking the front cell toward the centre, where the door is, and one cell on top behind it
+_wx, _wz, _ww, _wh = next(p for p in PLAN["pieces"] if p["id"] == WOOL_REC["piece"])["rect"]
+WOOL_BOX = (_wx * BR.CELL, _wz * BR.CELL, (_wx + _ww) * BR.CELL - 1, (_wz + _wh) * BR.CELL - 1)
+WOOL_LAYERS = [[(_wx, _wz), (_wx + 1, _wz), (_wx, _wz + 1), (_wx + 1, _wz + 1)],
+               [(_wx, _wz), (_wx + 1, _wz), (_wx + 1, _wz + 1)],
+               [(_wx, _wz)]]
+WOOL_DOOR = ((_wx, _wz + 1), "s")
 SPAWN_DOOR = SP.facing(SPAWN_REC)          # the side the spawn house opens on: west, toward the lane
 SPAWN_Y = SPAWN_AT[1]                       # the keep's floor
 WOOL_Y = WOOL_AT[1]                         # the wool room's floor

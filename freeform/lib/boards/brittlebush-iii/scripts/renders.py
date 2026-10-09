@@ -1,5 +1,5 @@
 """Brittlebush III's renders: the board from two corners, red's part, its spawn, its wool's tower, the three
-under-sections, and the built top-down with the plan's objectives over it.
+under-sections, the wool's house close, and the built top-down with the plan's objectives over it.
 
     python3 renders.py <build-dir> <board-dir>
 """
@@ -30,6 +30,8 @@ iso("35-iso-the-middle-se.png", 8, "se", (-25, -25, 24, 24), 4)
 iso("36-iso-middle-island-under-se.png", 14, "se", (-16, -24, 4, -6), 0)
 iso("37-iso-tunnel-se.png", 14, "se", (-18, -44, 2, -26), 0)
 iso("38-iso-approach-under-se.png", 14, "se", (-18, -64, 2, -46), 0)
+iso("39-iso-wool-house-se.png", 12, "se", (-3, -95, 12, -83), 12)
+iso("39-iso-wool-house-sw.png", 12, "sw", (-3, -95, 12, -83), 12)
 
 S = Sheet("Brittlebush III - as built")
 m = S.map(lo, lo, hi, hi, scale=3, title="FROM ABOVE",

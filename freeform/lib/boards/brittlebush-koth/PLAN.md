@@ -35,8 +35,8 @@ along the board's edge; in I they mark the cells with water at the foot of the v
 | Water | void with water at its foot, which marks it without cobwebs |
 
 **A piece's finish follows from its shape.** A piece that is a rectangle two cells or more each way gets a bed of
-grass filling it inside its plank band, ringed twice in sandstone stairs, one ring rising inward and one outward,
-with a birch where the grass is four or more wide. Any other piece is laid in sand mixed with upside-down
+grass filling it inside its one-block outline, ringed twice in sandstone stairs, one ring rising inward and one
+outward, with a birch where the grass is four or more wide. Any other piece is laid in sand mixed with upside-down
 sandstone stairs, and cacti and dead bushes stand only on its pure sand.
 
 **Faces alternate their finish cell by cell along a piece's edge.** One cell takes the plain cornice of spruce,

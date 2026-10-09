@@ -878,7 +878,7 @@ class Brittle(unittest.TestCase):
         self.assertEqual(w.id(-20, 13, -20), B.SPRUCE_STAIRS)            # the rim on the piece's corner
         self.assertEqual(w.get(-20, 9, -16), (B.STAINED_CLAY, 15))       # the black band at the foot of the cap
         self.assertEqual(w.get(-20, 12, -20), (B.STAINED_CLAY, 15))      # a panel's side, black all the way down
-        self.assertEqual(w.id(-18, 13, -18), B.SANDSTONE_STAIRS)         # the bed's outer ring
+        self.assertEqual(w.id(-19, 13, -18), B.SANDSTONE_STAIRS)         # the bed's outer ring, inside the rim
         self.assertEqual(w.id(-13, 14, -13), B.LOG)                      # its birch, at its middle
         self.assertEqual(w.id(-5, 0, -15), 36)                           # building allowed over the board
 
@@ -906,3 +906,17 @@ class Brittle(unittest.TestCase):
                 "zones": [{"id": "water", "rect": [-1, -3, 1, 1]}, {"id": "zone", "rect": [-3, -1, 2, 1]}]}
         u = SP.unit(plan, lift=6)
         self.assertEqual((u[(-1, -3)].kind, u[(-3, -1)].kind, u[(-3, -3)].y), ("water", "gap", 15))
+
+    def test_a_house_stacks_whole_cells(self):
+        from pgmvox import brittle as BR
+        w = World(-5, -5, 20, 20, sy=48)
+        BR.house(w, [[(0, 0), (1, 0), (0, 1), (1, 1)], [(0, 0), (1, 0), (1, 1)], [(0, 0)]], 10, 4,
+                 door=((0, 1), "s"))
+        self.assertEqual(audit.footing(w), [])
+        self.assertEqual([w.id(0, y, 7) for y in (11, 12, 13, 14, 15)],                # a plain face, the terrace over it
+                         [B.STAINED_CLAY, B.DARK_OAK_STAIRS, B.DARK_OAK_STAIRS, B.BRICK, B.SPRUCE_STAIRS])
+        self.assertEqual(w.get(-1, 14, 2), (B.WOOL, 4))                              # the wool's colour under an eave
+        self.assertEqual(w.id(2, 15, 7), B.SAND)                                     # the terrace the L leaves
+        self.assertEqual((w.id(7, 20, 7), w.id(7, 25, 7)), (B.SAND, B.AIR))         # the L's own terrace, nothing over it
+        self.assertEqual((w.id(2, 24, 2), w.get(2, 25, 2)), (B.BEACON, (B.STAINED_GLASS, 4)))
+        self.assertEqual((w.id(2, 11, 9), w.id(2, 11, 8)), (B.AIR, B.COBWEB))        # the door, cobwebs inside

@@ -10,8 +10,9 @@ monuments and the wools.
                     and pillars under them, the water zones' water, the bare zones' cobwebs toward the void
     the spawn       a house of black clay over the spawn's footprint, two storeys, its door toward the lane, the
                     team's band under its plates; a stack of the team's wool floating high over it
-    the wool        a tower of three storeys over the wool's footprint, its door onto the ground in front, the wool's
-                    colour in its bands, and the wool's heart floating over it
+    the wool        a house of three storeys of whole cells over the wool's piece (pgmvox.brittle.house): two by
+                    two, an L, one cell; its door onto the ground in front, the wool on a square of its colour, a
+                    beacon on top shining through glass of the wool's colour
 """
 import random
 import sys
@@ -20,7 +21,7 @@ import numpy as np
 
 import plan as P
 from pgmvox import B, World
-from pgmvox.brittle import CELL, build, heart, tower
+from pgmvox.brittle import CELL, build, house, tower
 from pgmvox.orient import turn_world
 
 cells, team = P.cells()
@@ -38,9 +39,15 @@ x, _, z = P.SPAWN_AT
 for y in range(P.SPAWN_Y + 20, P.SPAWN_Y + 23):
     w.set(x, y, z, B.WOOL, P.DYES[0])
 wx0, wz0, wx1, wz1 = P.WOOL_BOX
-top, (hx, hz) = tower(w, P.WOOL_BOX, P.WOOL_Y, [(6, 0), (5, 1), (4, 2)], P.KEEP_DYES[0],
-                      door=("s", (wx0 + 3, wx1 - 3)))
-heart(w, hx, top + 8, hz, P.KEEP_DYES[0], facing="s", hang=top + 1)
+for x in range(wx0, wx1 + 1):                                     # the bed and its birch off the wool's piece
+    for z in range(wz0, wz1 + 1):
+        for y in range(P.WOOL_Y + 1, P.WOOL_Y + 20):
+            w.set(x, y, z, B.AIR)
+house(w, P.WOOL_LAYERS, P.WOOL_Y, P.KEEP_DYES[0], door=P.WOOL_DOOR)
+fx, _, fz = P.WOOL_AT
+for x in range(fx - 1, fx + 2):                                   # the wool stands on a square of its colour
+    for z in range(fz - 1, fz + 2):
+        w.set(x, P.WOOL_Y, z, B.WOOL, P.KEEP_DYES[0])
 for mx, mz in P.MONUMENTS:                                        # room over the monuments' slots
     for y in range(P.SPAWN_Y + 1, P.SPAWN_Y + 5):
         w.set(mx, y, mz, B.AIR)

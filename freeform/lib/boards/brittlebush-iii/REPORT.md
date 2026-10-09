@@ -54,9 +54,24 @@ carries a line of black clay under the deck and bedrock below it.
 **The spawn is a house of two storeys over the spawn's footprint, its door toward the lane.** A stack of the
 team's wool floats high over it.
 
-**The wool's room is a tower of three storeys over the wool's footprint, its door onto the ground in front.** The
-wool's colour runs in its bands, and the wool's heart floats over it. The four wools are yellow, orange, pink and
-purple, Brittlebush II's colours.
+**The wool's house takes its whole piece, ten blocks square, as Brittlebush I's do.** Its storeys are whole cells,
+five blocks each: two cells by two, then an L of three, then one cell on top. The L leaves open the front cell
+toward the centre, where the door is, and the top cell stands behind it.
+
+**Each storey's wall is the ground's edge again.** Read bottom up it is black clay, an upside-down dark-oak stair, a
+dark-oak stair and brick. Every other cell along a face carries the birch panel framed in black clay, with the
+wool's colour under the eave over it.
+
+**Each plate overhangs by one in eaves of planks, upside-down spruce stairs and a slab.** A plate no storey
+stands on is a terrace of sand in a ring of spruce stairs, on a ceiling of sandstone lit by a sea lantern.
+
+**The wool stands on a square of its own colour inside a door three wide, cobwebs just within it.** A beacon on
+gold in the top cell shines through glass of the wool's colour. The four wools are yellow, orange, pink and
+purple, Brittlebush II's colours. The plan's footprint for the wool was eight blocks square; the house takes the
+whole piece instead.
+
+**A piece's outline is one block, as in the original.** Where it falls away it is the rim; where it meets a wall or
+a stair it is a line of spruce planks. The bed or the sand starts on the next block in.
 
 ## Read back from the world
 
@@ -70,8 +85,8 @@ purple, Brittlebush II's colours.
 | Water at the zones' floor against the void, held by PGM | 240 |
 | Board without block 36, block 36 off the board | 0, 0 |
 | Places reached on foot from a spawn | 783 |
-| Spawn to its own wool room's door, building | 54 |
-| Spawn to the other three wools, building | 110, 136 and 144 |
+| Spawn to its own wool room's door, building | 53 |
+| Spawn to the other three wools, building | 109, 133 and 142 |
 
 **Every piece of the plan is its own island, so the wools are reached by building.** The building walk stands in
 for blocks placed with water over the zones and four blocks over the board.
@@ -98,3 +113,4 @@ author's names now tell water from bare zones.
 - `05`: the built world from above with the objectives.
 - `30`–`35`: the board from two corners, red's part, its spawn, its wool's tower, and the middle.
 - `36`–`38`: the three under-sections: the middle island, the tunnel, and the island before the wool.
+- `39`: the wool's house close, from the south-east and the south-west.
