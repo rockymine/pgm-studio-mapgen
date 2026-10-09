@@ -188,7 +188,7 @@ def spring(w):
                 for o in ((-1, 0) if axis == "x" else (-1, 0, 1)):
                     cx, cz = (x + o, z) if axis == "x" else (x, z + o)
                     w.set(cx, fl, cz, B.STONEBRICK, 0)
-                    top = 14 if rr else fl + 2
+                    top = 14 if rr else fl + 3          # three of air where a stair meets it, as at the trench feet
                     for y in range(fl + 1, top + 1):
                         w.set(cx, y, cz, B.AIR)
                     if rr:
@@ -201,6 +201,7 @@ def spring(w):
     br_w = mirror_x(br_e)
     both_turns(w, down, "x", 1, "+z", height=3)
     both_turns(w, run, "x", 1)
+    both_turns(w, run[:2], "x", 1, height=3)                           # three of air off the foot of the steps
     both_turns(w, fork, "z", 1)
     both_turns(w, br_e, "x", 1)
     both_turns(w, br_w, "x", 1)

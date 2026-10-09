@@ -111,3 +111,16 @@ meet. A tunnel's glass no longer fills air another tunnel carved.
 
 **The trench feet are three high.** A player stepping up onto the first stair still stands partly in the
 corridor's last column, a block higher, so two of air there stopped them.
+
+## After the second playtest
+
+**The way down to the golden apples could not be walked: two stairs ran into a ceiling two blocks high.** A player on
+a stair's lower half stands half a block up, and stepping off it their head is already over the next column, under
+that column's ceiling. The stairwells into the Spring met a passage two high, and so did the steps out of it north.
+
+**Both now have three blocks of air where a stair meets the flat.** That is the stairwells' passages into the room,
+and the first two blocks of the tunnel north off the foot of its steps, in both halves. It is the rule the trench
+feet already followed.
+
+**The walk could not have caught it.** It counts a place passable with two blocks of air over its floor and does
+not test a body standing across two columns, so its numbers are the same before and after.
