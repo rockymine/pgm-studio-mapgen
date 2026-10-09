@@ -24,7 +24,7 @@
         <leggings color="1D2A5C" material="leather leggings"/><boots color="111111" material="leather boots"/>
         <item slot="0" unbreakable="true" enchantment="ARROW_DAMAGE:3;ARROW_KNOCKBACK:1;ARROW_INFINITE" material="bow"/>
         <item slot="28" material="arrow"/>
-        <effect duration="oo" amplifier="1">speed</effect>
+        <effect duration="oo" amplifier="2">speed</effect>
     </kit>
     <kit id="heal"><health>20</health></kit>
 </kits>

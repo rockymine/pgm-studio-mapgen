@@ -40,7 +40,7 @@ def main():
     a('        <leggings color="1D2A5C" material="leather leggings"/><boots color="111111" material="leather boots"/>')
     a('        <item slot="0" unbreakable="true" enchantment="ARROW_DAMAGE:3;ARROW_KNOCKBACK:1;ARROW_INFINITE" material="bow"/>')
     a('        <item slot="28" material="arrow"/>')
-    a('        <effect duration="oo" amplifier="1">speed</effect>')
+    a('        <effect duration="oo" amplifier="2">speed</effect>')
     a('    </kit>')
     a('    <kit id="heal"><health>20</health></kit>')
     a('</kits>')

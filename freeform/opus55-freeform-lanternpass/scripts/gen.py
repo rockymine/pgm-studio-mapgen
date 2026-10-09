@@ -199,6 +199,12 @@ def boathouse(w):
                     blk = (B.PANE, 0)
                 w.set(x, y, z, *blk)
     roof(w, x0, x1, z0, z1, 28, along_x=False)
+    half = (x1 - x0) / 2.0                                         # the gables, walled up to the roof
+    for x in range(x0, x1 + 1):
+        top = 28 + int(max(0, half + 1 - abs(x - (x0 + x1) / 2.0)) * 0.5)
+        for z in (z0, z1):
+            for y in range(28, top):
+                w.set(x, y, z, *(DARK_LOG if (x - x0) % 4 == 0 else WHITE_CLAY))
     for x in range(P.SPAWN_GATE[0], P.SPAWN_GATE[1] + 1):
         for y in range(21, 25):
             w.set(x, y, 4, B.SPRUCE_FENCE)
@@ -281,6 +287,29 @@ def harbour(w):
     for z in range(5, 61):
         if z % 3 == 0:
             w.set(11, 21, z, B.COBBLE_WALL)
+    pool_ladders(w)
+
+
+LADDER_FACING = {(0, 1): 2, (0, -1): 3, (1, 0): 4, (-1, 0): 5}     # the block it hangs on -> ladder data
+
+
+def pool_ladders(w):
+    """A ladder out of the harbour every few blocks along every edge of its water, onto whatever stands at 20:
+    a runner who falls in climbs out instead of treading water under the walkways."""
+    lx0, lx1 = P.LANE
+    n = 0
+    for x in range(lx0, lx1 + 1):
+        for z in range(5, 61):
+            if w.id(x, 19, z) != B.WATER or (x + z) % 3:
+                continue
+            for (dx, dz), d in LADDER_FACING.items():
+                bank = [w.id(x + dx, y, z + dz) for y in (18, 19, 20, 21)]
+                if all(b not in (B.AIR, B.WATER) for b in bank[:3]) and bank[3] == B.AIR and w.id(x, 21, z) == B.AIR:
+                    for y in (18, 19, 20):
+                        w.set(x, y, z, B.LADDER, d)
+                    n += 1
+                    break
+    print(f"pool ladders: {n}")
 
 
 def crates(w, x0, x1, z0, z1, g, t):
@@ -521,11 +550,11 @@ def walkways(w):
             if hh == prev + 1:                                       # a step up the walkway: stairs
                 for x in range(x0, x1 + 1):
                     if x != outer:
-                        w.set(x, hh, z, B.STONEBRICK_STAIRS, 3)
+                        w.set(x, hh, z, B.STONEBRICK_STAIRS, 2)       # rising to +z
             elif hh == prev - 1:
                 for x in range(x0, x1 + 1):
                     if x != outer:
-                        w.set(x, prev, z - 1, B.STONEBRICK_STAIRS, 2)
+                        w.set(x, prev, z - 1, B.STONEBRICK_STAIRS, 3)   # rising to -z
             if z % 16 == 4:
                 lantern_hang(w, outer, hh + 4, z, drop=0)
         for z in (P.Z_MIN + 2, P.Z_MAX - 2):                         # the walkways' ends, walled

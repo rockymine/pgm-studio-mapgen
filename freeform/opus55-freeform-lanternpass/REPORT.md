@@ -35,9 +35,9 @@ pillars rise from the void's floor at y 2, and a runner who misses one falls pas
 sprint jumps over gaps of up to three (`renders/walks.txt`).
 
 - **The warm-up:** before the boathouse's gate opens, no runner leaves the boathouse.
-- **The run:** gate open, the boathouse to the bell is 455 blocks, against the plan's 440.
-- **The gorge:** each crossing works on its own. With only the rope bridge it is 451 to the bell, with only the
-  pillars 467, and with only the arch 463.
+- **The run:** gate open, the boathouse to the bell is 430 blocks, against the plan's 440.
+- **The gorge:** each crossing works on its own. With only the rope bridge it is 431 to the bell, with only the
+  pillars 446, and with only the arch 443.
 - **The sides:** no place on a walkway is reachable by a runner, and no place on the lane by a shooter.
 - **The walkways:** shooters walk each of them from the spawn to the temple, 371 blocks.
 
@@ -51,8 +51,8 @@ Water, rails and fences are counted as see-through.
 |---|---|---|
 | 1 the harbour | 65% | 72% |
 | 2 the market | 32% | 41% |
-| 3 the terraces | 78% | 58% |
-| 4 the bamboo | 17% | 20% |
+| 3 the terraces | 78% | 59% |
+| 4 the bamboo | 18% | 22% |
 | 5 the gorge | 73% | 69% |
 | 6 the stairs | 63% | 72% |
 | 7 the temple | 84% | 85% |
@@ -120,3 +120,24 @@ Whether a runner with Speed I clears them in practice was not tested.
 
 **The shooters' spawn would not load: PGM cannot draw a random point inside a union.** It was one region holding a
 union of the two ledges. It is now two regions in the one spawn, and PGM draws from one of them at random.
+
+## After the second playtest
+
+**The walkways' steps faced backwards, and now rise the way the walkway climbs.** A step up toward the temple was
+laid with its tall half toward the boathouse, so every rise read as a lip. The data of the two cases were swapped.
+
+**The shooters had Speed I, not the Speed II this report claimed.** PGM counts a kit effect's amplifier from one, so
+`amplifier="1"` was the first level. The shooters' kit now says `amplifier="2"`; the runners' stays at Speed I.
+
+**A runner who fell into the harbour could not climb out.** The water lies two deep under edges at 20, one above its
+surface. There are now 52 ladders, one every third block along every edge of the water where the bank is solid
+down to the floor and open above, hung on the bank.
+
+**The boathouse's gables were open under the roof.** Its walls stopped at 27 and the roof rose to 33 across the
+ridge, leaving a triangle open at each end. Both are walled now in white clay, with a dark post every fourth block.
+
+**The bamboo was thinned by a third, from a stalk on 42% of the grove's ground to 29%.** It read as a maze, gave
+runners more cover than a section should, and let a shooter camp its far end. The places a runner reaches in it rose
+from 805 to 994; its sight barely moved, 17% to 18%, because the crown overhead does most of the hiding. The run is
+now 430 blocks to the bell.
+
