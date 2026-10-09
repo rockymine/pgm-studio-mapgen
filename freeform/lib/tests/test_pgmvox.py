@@ -12,6 +12,7 @@ import unittest
 import xml.dom.minidom
 
 import numpy as np
+from scipy import ndimage
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
@@ -186,15 +187,54 @@ class Landforms(unittest.TestCase):
         self.X, self.Z = np.meshgrid(np.arange(-60, 60), np.arange(-60, 60), indexing="ij")
         self.H = 40 + 12 * noise.fbm(self.X.shape, 30, 3, seed=3) - 0.05 * self.Z
 
-    def test_a_river_never_climbs_and_only_cuts(self):
+    def test_a_river_never_climbs_and_only_cuts_but_its_banks(self):
         X, Z, H = self.X, self.Z, self.H
         path = [(-50, -55), (0, 0), (40, 55)]
         H2, river = LF.watercourse(H, X, Z, path, width=5, depth=2, lowest=20)
-        self.assertTrue((H2 <= H + 1e-9).all())
+        beside = ndimage.binary_dilation(river.mask, np.ones((3, 3))) & ~river.mask
+        self.assertTrue((H2[~beside] <= H[~beside] + 1e-9).all())          # a bank may rise to hold the water
         s, bed, _ = LF._sample(H2, X, Z, path)
         self.assertTrue((np.diff(bed) <= 1e-9).all())
         self.assertGreaterEqual(bed.min(), 20)
         self.assertTrue(river.mask.any())
+
+    def water_world(self, H, *waters):
+        w = World(-60, -60, 120, 120, sy=96)
+        terrain.lay(w, np.round(H).astype(int))
+        for wat in waters:
+            for i, k in np.argwhere(wat.mask):
+                for y in range(int(round(H[i, k])) + 1, int(wat.surface[i, k]) + 1):
+                    w.ids[i, y, k] = B.WATER
+        return w
+
+    def test_a_river_into_a_lake_leaves_no_water_against_air(self):
+        X, Z, H = self.X, self.Z, self.H
+        H1, lake = LF.lake(H, X, Z, (30, 40), 12, 30, depth=4, seed=1)
+        H2, river = LF.watercourse(H1, X, Z, [(-50, -50), (0, 0), (30, 40)], width=5, depth=3, water=2,
+                                   lowest=28, into=lake)
+        self.assertTrue(river.falls)
+        self.assertEqual(audit.loose_water(self.water_world(H2, lake, river)), [])
+
+    def test_a_sea_ends_against_a_rim_at_the_world_edge(self):
+        X, Z, H = self.X, self.Z, self.H
+        H2, sea = LF.coast(H - 15, X, Z, 30, shelf=10)
+        self.assertEqual(audit.loose_water(self.water_world(H2, sea)), [])
+        H3, sea3 = LF.coast(H - 15, X, Z, 30, shelf=10, rim=0)
+        self.assertTrue(any(r[3] == "edge" for r in audit.loose_water(self.water_world(H3, sea3))))
+
+    def test_loose_water_allows_a_fall_and_a_waterfall_only(self):
+        w = World(0, 0, 8, 3, sy=12)
+        w.ids[:, :4, :] = B.STONE
+        w.ids[1:7, 4, 1] = B.WATER                      # a water block standing on stone in open air
+        self.assertTrue(audit.loose_water(w))
+        w.ids[:, 4, :] = B.STONE
+        w.ids[3, 5, 1] = B.WATER                        # a step: air beside it, lower water under that air
+        w.ids[4, 4, 1] = B.WATER
+        w.ids[2, 5, 1] = B.STONE
+        w.ids[3, 5, 0] = w.ids[3, 5, 2] = B.STONE
+        self.assertEqual([r for r in audit.loose_water(w) if r[:3] == (3, 5, 1)], [])
+        w.set(6, 8, 1, B.WATER_FLOW, 8)                 # falling water over the void is a waterfall
+        self.assertEqual([r for r in audit.loose_water(w) if r[:3] == (6, 8, 1)], [])
 
     def test_a_spire_leaves_the_rest_alone(self):
         X, Z, H = self.X, self.Z, self.H

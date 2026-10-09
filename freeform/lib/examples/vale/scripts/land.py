@@ -56,4 +56,5 @@ def ground():
     path = R.smooth(R.simplify(foot, 1.0), 1)
     H, _ = L.grade(H, X, Z, path, width=2, max_grade=0.9, shoulder=2, water=wet, keep=laid)   # a step a block
     road = dict(roads=roads, footpath=path)
+    H = L.hold(H, river, sea)                                   # the roads graded to the bridges cut some banks
     return X, Z, np.round(H).astype(int), river, sea, road

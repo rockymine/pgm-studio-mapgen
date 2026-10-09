@@ -16,6 +16,7 @@ compose in any order without one undoing another, and the board decides the orde
 from dataclasses import dataclass
 
 import numpy as np
+from scipy import ndimage
 from scipy.ndimage import distance_transform_edt
 
 from . import noise
@@ -59,12 +60,15 @@ def _downhill(level):
     return np.minimum.accumulate(level)
 
 
-def watercourse(H, X, Z, pts, width=6, depth=2, water=1, bank=4, fall_min=2, reach_min=10, lowest=None):
+def watercourse(H, X, Z, pts, width=6, depth=2, water=1, bank=4, fall_min=2, reach_min=10, lowest=None, into=None):
     """A river along a path, flowing from its first point to its last: a bed that never climbs, held level in
     reaches and stepping down in falls where the ground drops `fall_min` or more, and only once a reach has run
     `reach_min` blocks. The channel is `width` wide with its floor `depth` under the ground it follows, banks easing
-    back to the ground over `bank` blocks, and `water` blocks of water in it. `lowest` holds the bed no lower than
-    that (the floor under the sea it runs to). Only cuts. Returns (H, Water)."""
+    back to the ground over `bank` blocks from the water's surface, and `water` blocks of water in it. `lowest` holds
+    the bed no lower than that: a river running into a sea or a lake takes lowest = its surface - water, so its last
+    reach arrives at that level. It only cuts, except the ring of cells beside the water, which is raised to the
+    surface where the ground there is lower, so no water stands over its bank. `into` is the Water it runs into (a
+    lake, a sea), whose cells get no bank. Returns (H, Water)."""
     H = np.asarray(H, float)
     s, g, xz = _sample(H, X, Z, pts)
     want = _downhill(g - depth)
@@ -80,13 +84,52 @@ def watercourse(H, X, Z, pts, width=6, depth=2, water=1, bank=4, fall_min=2, rea
         since += (s[j] - s[j - 1]) if j else 0.0
     bed = np.floor(bed)
     d, along = polyline(X, Z, pts)
-    b = np.interp(along, s, bed)
+    b = np.floor(np.interp(along, s, bed))
     half = width / 2
-    t = smoothstep(half, half + bank, d)
-    cut = np.where(d <= half, b, b + t * (H - b))
-    Hn = np.where(d <= half + bank, np.minimum(H, cut), H)
+    surf = b + water
     mask = d <= half
-    return Hn, Water(mask, np.where(mask, b + water, -1), falls)
+    t = smoothstep(half, half + bank, d)
+    cut = np.where(mask, b, surf + t * (H - surf))                  # banks rise from the water's surface
+    Hn = np.where(d <= half + bank, np.minimum(H, cut), H)
+    held = ndimage.maximum_filter(np.where(mask, surf, -np.inf), size=3)
+    lip = ~mask & np.isfinite(held)                                 # every cell beside water is at least as high
+    if into is not None:
+        lip &= ~into.mask
+    Hn = np.where(lip, np.maximum(Hn, held), Hn)                    # as the highest water next to it
+    return Hn, Water(mask, np.where(mask, surf, -1), falls)
+
+
+def lake(H, X, Z, centre, r, level, depth=3, shore=3, rz=None, jag=0.2, seed=0):
+    """A lake: an outline r across (rz the other way) about centre, broken by `jag`, holding water to `level`. Its
+    bed lies `depth` under the level in the middle and rises to a block under it at the edge; the ground within
+    `shore` blocks outside is held at the level or above, rising back to the ground, so no water stands against air.
+    Returns (H, Water)."""
+    H = np.asarray(H, float)
+    cx, cz = centre
+    rz = r if rz is None else rz
+    e = np.hypot((X - cx) / r, (Z - cz) / rz) * (1 + jag * noise.fbm(X.shape, 6, 3, seed=seed))
+    mask = e <= 1
+    bed = np.floor(level - 1 - (depth - 1) * np.clip(1 - e, 0, 1) ** 0.6)
+    Hn = np.where(mask, np.minimum(H, bed), H)
+    d = ndimage.distance_transform_edt(~mask)
+    t = smoothstep(0, shore, d)
+    rim = ~mask & (d <= shore)
+    Hn = np.where(rim, np.maximum(H, level) * (1 - t) + H * t, Hn)   # the shore eases from the level to the ground
+    Hn = np.where(rim & (d <= 1.5), np.maximum(Hn, level), Hn)      # and the cells beside the water hold it
+    return Hn, Water(mask, np.where(mask, float(level), -1), [])
+
+
+def hold(H, *waters):
+    """Raise every dry cell beside water to that water's surface, so nothing laid after a river or a lake (a road
+    graded down to a bridge, a path) leaves water standing over its bank. Call it last, with every Water."""
+    H = np.asarray(H, float)
+    wet = np.zeros(H.shape, bool)
+    level = np.full(H.shape, -np.inf)
+    for wat in waters:
+        wet |= wat.mask
+        level = np.maximum(level, np.where(wat.mask, wat.surface, -np.inf))
+    near = ndimage.maximum_filter(level, size=3)
+    return np.where(~wet & np.isfinite(near), np.maximum(H, near), H)
 
 
 def canyon(H, X, Z, pts, width=20, depth=12, floor=0.35, wall=2.5, ledges=0, downhill=False, lowest=None):
@@ -242,11 +285,13 @@ def _pin(p, s, end, value, max_grade):
     return p
 
 
-def coast(H, X, Z, sea, outline=None, shelf=10, depth=6, slope=0.35):
+def coast(H, X, Z, sea, outline=None, shelf=10, depth=6, slope=0.35, rim=1):
     """Land meeting the sea at an outline (a polygon), or at the world's edge when none is given: inland the
     ground eases down to the sea over `shelf` blocks, so the shore is a beach and not a cliff, and nothing inside
     the outline lies under the sea; seaward the floor falls `slope` blocks a block to `depth` under the surface
-    at `sea`. Cuts, and lifts low land inside the outline to a block over the sea. Returns (H, Water)."""
+    at `sea`. Cuts, and lifts low land inside the outline to a block over the sea. Where the sea reaches the world's
+    edge, its outermost `rim` cells are ground flush with the surface, so the sea ends against a block and not
+    against the open side of the world (0 leaves it open). Returns (H, Water)."""
     H = np.asarray(H, float)
     if outline is not None:
         sd = signed_distance(X, Z, outline)                         # negative inland
@@ -257,6 +302,10 @@ def coast(H, X, Z, sea, outline=None, shelf=10, depth=6, slope=0.35):
     land = sea + 1 + (H - sea - 1) * smoothstep(0, 1, inland)
     floor = sea - np.minimum(depth, 1 + slope * np.maximum(sd, 0))
     Hn = np.where(sd < 0, np.maximum(np.minimum(H, land), sea + 1), np.minimum(H, floor))
+    if rim:
+        border = np.zeros(Hn.shape, bool)
+        border[:rim], border[-rim:], border[:, :rim], border[:, -rim:] = True, True, True, True
+        Hn = np.where(border & (Hn < sea), sea, Hn)
     mask = Hn < sea
     return Hn, Water(mask, np.where(mask, sea, -1))
 

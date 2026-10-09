@@ -30,9 +30,9 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `under` | caves and mines carved into a built world: `tunnel` (a level-floored passage), `chamber`, `carve`, `dress_cave` (floors, stalactites, ore), `gallery_line` and `gallery` (timbered, railed, stepped), `shaft` |
 | `trees` | hand-built trees planted whole: `library` (the studio's copied trees), `load` (a board's own cut), `kinds`, `plant` (turned, refused whole), `scatter` (a wood with its crowns apart) |
 | `forms` | scenery built block by block where a heightfield cannot say it: `tower` (rings tapering up a stack, ledges every few courses, bulging faces, beds in courses, a crown and vines), `skirt` (karst faces under a floating floor's rim), `root_vines` |
-| `landform` | heightfield operations: `watercourse` (reaches and falls), `canyon` and washes, `spire`, `butte`, `scarp`, `terraces`, `stage`, `grade` (a route held to a grade, bridging water, keeping earlier roads), `coast`, `blend` |
+| `landform` | heightfield operations: `watercourse` (reaches and falls), `canyon` and washes, `spire`, `butte`, `scarp`, `terraces`, `stage`, `grade` (a route held to a grade, bridging water, keeping earlier roads), `lake`, `coast`, `hold`, `blend` |
 | `walk` | the voxel walk over built blocks with `MoveRules`; `no_stand_above`, `catchers`, `unreached`, `nearest`, `gap_cleared` |
-| `audit` | `footing`: blocks that would fall, or have nothing to hang on |
+| `audit` | `footing`: blocks that would fall, or have nothing to hang on; `loose_water`: water standing against air |
 | `render` | `iso`, `elevation`, `cutaway` along any polyline, x-ray, `trim`, all in the studio's colours |
 | `plot` | the bounded canvas a contributor builds a plot into, and `check_alone` with its verdict |
 | `mapxml` | `Doc` and `E`, an element builder with the pieces every writer repeated |
@@ -174,6 +174,18 @@ the board's own numbers, and each only cuts or only lifts unless it says otherwi
 **A watercourse never climbs.** Its bed holds level in reaches and steps down in falls, which is how a river leaves
 a canyon and drops to the sea. `lowest` keeps a bed off the sea floor. A path that starts out at sea once held a
 canyon and its river fifteen blocks under the water all the way inland.
+
+**Water stands only against something that holds it.** A river's banks rise from its surface, and every cell beside
+its water is at least as high as that water, so it never stands over its banks. A demonstration river once stood a
+block above them for its whole length. Air beside water is right only at a fall inside the stream.
+
+**A river ends in water at its own level.** It runs into a `lake` or a sea with `lowest` at that surface less its
+depth and `into` naming that water, so no bank is raised across its mouth. A `coast` that reaches the world's edge
+ends in a rim flush with the sea, never in a wall of water against the open side.
+
+**`hold` runs last, and `audit.loose_water` proves it.** Roads graded down to a bridge cut three of the Vale's
+river banks below the water; `hold` raises every dry cell beside water to its surface. `loose_water` lists every
+water block with air beside it that is not a fall or a waterfall laid on purpose.
 
 **A terrain board is checked before it is built.** `Raster.from_heights` reads the shaped heights as a plan, with
 water and steep ground as their own kinds, and the walk graph runs over it. The Vale's plan check walks from the
