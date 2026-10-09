@@ -1,4 +1,9 @@
-"""Ocotillo: a capture-the-wool board for four teams in the Brittlebush style, laid out as a blueprint of cells.
+"""Ocotillo: a king-of-the-hill board for four teams in the Brittlebush style, laid out as a blueprint of cells.
+
+Five hills: the dais in the middle, and one on each border, on the island between two neighbouring spawns. Each
+team spawns in its keep with sixteen leaves to bridge with, and takes a leaf and a golden apple for every kill;
+golden apples also grow on the four inner islands, reached by bridging, and arrows on the four landings by the
+middle.
 
 Every piece is made of cells five blocks a side, and a cell is one of a handful of pieces:
 
@@ -7,7 +12,7 @@ Every piece is made of cells five blocks a side, and a cell is one of a handful 
               slab and a stone-brick block in turn; every change of level is one of these
     stacked   a deck one level over an underfloor: the underfloor is covered ground a player walks under the deck
     keep      a team's spawn, flat at the top level
-    tower     a team's wool room, a tower of narrow storeys on its yard
+    tower     a team's landmark, a tower of narrow storeys on its yard with the team's heart over it
     gap       void a player may build over, marked by cobwebs on the floor of the void
     water     void with water at its foot, marked by cobwebs too
     void      nothing
@@ -23,7 +28,8 @@ north-west, from the corner (a 0, b 0) to the middle (a 12, b 12): only the cell
 
     plan()          the raster: every block's floor and kind, the underfloors as the base and decks as storey 1
     cells()         the blueprint itself: {(cx, cz): (kind, level, rises, team)}
-    objectives()    the four teams, their spawns and the four wools, each captured by the other three
+    objectives()    the four teams, their spawns and the five hills
+    APPLES, ARROWS  where the golden apples and the arrows grow
 """
 import os
 import sys
@@ -31,7 +37,7 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 import numpy as np  # noqa: E402
 
-from pgmvox.objectives import Box, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402
+from pgmvox.objectives import Box, Hill, Objectives, Observer, Spawn, Teams  # noqa: E402
 from pgmvox.plan import Raster  # noqa: E402
 
 BOARD = "ocotillo"
@@ -48,22 +54,21 @@ MAX_BUILD = 40
 QUADRANT = [
     # a: 0   1   2   3   4   5   6   7   8   9   10  11  12
     "K5 K5 K5 .. f4 f4 f4 .. f3 f3 f3 ww f2",          # b 0  the keep; the orchard; the terrace; an island
-    "   K5 K5 s< f4 f4 f4 s< f3 f3 f3 ww f2",          # b 1  two cells of stair down out of the keep, and on
-    "      K5 s< f4 f4 f4 s< f3 f3 f3 ww f2",          # b 2
+    "   K5 K5 s< f4 f4 f4 s< f3 f3 f3 s< f2",          # b 1  two cells of stair down out of the keep, and on, to
+    "      K5 s< f4 f4 f4 s< f3 f3 f3 s< f2",          # b 2  the island and its hill between red and blue
     "         .. s^ s^ .. .. .. .. .. .. ..",          # b 3  down from the orchard into the tower's yard
-    "            f3 f3 f3 s< k3 k3 k3 ww f2",          # b 4  the yard; down into the arbour's covered walk
+    "            f3 f3 f3 s< k3 k3 k3 ww f2",          # b 4  the yard; the arbour; an inner island, its apples
     "               f3 f3 s< k3 k3 k3 ww f2",          # b 5  the arbour: a deck at 13 over a walk at 10
     "                  T3 T3 k3 k3 k3 ww f2",          # b 6  the tower
     "                     T3 .. s^ s^ .. ..",          # b 7  up from the inner court onto the arbour's deck
     "                        f2 f2 f2 .. ..",          # b 8  the inner court
-    "                           f2 f2 s< f1",          # b 9  down to a landing on the border
+    "                           f2 f2 s< f1",          # b 9  down to a landing on the border, its arrows
     "                              f2 s< f1",          # b 10
     "                                 ~~ sv",          # b 11 up from the landing onto the dais
-    "                                    f2",          # b 12 the dais, a quarter of it
+    "                                    f2",          # b 12 the dais, a quarter of it: the middle hill
 ]
 TEAMS = [("red-team", "Red", "red"), ("blue-team", "Blue", "blue"), ("green-team", "Green", "green"),
          ("yellow-team", "Yellow", "yellow")]
-WOOLS = {"red-team": "pink", "blue-team": "light_blue", "green-team": "lime", "yellow-team": "orange"}
 NAMES = {"keep": "the Keep", "tower": "the Tower"}
 FLIP = {"<": "^", "^": "<", ">": "v", "v": ">"}            # across the diagonal (a, b) -> (b, a)
 TURN = {"^": ">", ">": "v", "v": "<", "<": "^"}            # a quarter turn clockwise: north becomes east
@@ -193,7 +198,7 @@ def spawn_cell(team_index):
 
 
 def tower_cells(team_index):
-    """A team's tower, as its four cells."""
+    """A team's tower, its landmark, as its four cells."""
     out = []
     for a, b in ((6, 6), (7, 6), (6, 7), (7, 7)):
         c = (a - N, b - N)
@@ -232,23 +237,42 @@ def tower_box(team_index):
     return _box(tower_cells(team_index))
 
 
+def _turned_box(box, k):
+    """A box (x0, z0, x1, z1) in blocks, turned k quarters clockwise about the middle."""
+    x0, z0, x1, z1 = box
+    for _ in range(k):
+        x0, z0, x1, z1 = -1 - z1, x0, -1 - z0, x1
+    return x0, z0, x1, z1
+
+
+def _turned_point(x, z, k):
+    for _ in range(k):
+        x, z = -1 - z, x
+    return x, z
+
+
+# the hills, square pads on the floor at 10: the dais, and the island between red's and blue's spawns turned to
+# the other three borders; the order of the border hills follows the teams (north, east, south, west)
+HILL_Y = LEVEL[2]
+CENTRE_HILL = (-5, -5, 4, 4)
+BORDER_HILL = (-5, -63, 4, -54)
+HILLS = [("centre", "the Dais", CENTRE_HILL, 2)] + \
+        [(f"{side}", f"the {side.title()} Island", _turned_box(BORDER_HILL, k), 1)
+         for k, side in enumerate(("north", "east", "south", "west"))]
+# what grows where: golden apples on the inner islands, arrows on the landings, each between two neighbours
+APPLES = [_turned_point(-0.5, -38, k) for k in range(4)]
+ARROWS = [_turned_point(-0.5, -15.5, k) for k in range(4)]
+
+
 def objectives():
-    """Four teams; each spawns in its keep and keeps its own wool in its tower, which the other three capture."""
+    """Four teams, each spawning in its keep and facing the middle; the five hills, the dais worth two."""
     O = Objectives(Teams(*[t + (10,) for t in TEAMS]))
     for i, (team, *_) in enumerate(TEAMS):
         x, z = spawn_cell(i)
         box = keep_box(i)
         O.add(Spawn(team, (x, LEVEL[5] + 1, z), yaw=[315, 45, 135, 225][i], kit="spawn-kit",
                     area=Box(box[0], 0, box[1], box[2], 127, box[3]), protect=True), mirror=False)
-    for i, (keeper, *_) in enumerate(TEAMS):
-        x0, z0, x1, z1 = tower_box(i)
-        cx, cz = (x0 + x1) // 2, (z0 + z1) // 2
-        for j, (taker, *_) in enumerate(TEAMS):
-            if taker == keeper:
-                continue
-            sx, sz = spawn_cell(j)
-            O.add(Wool(taker, WOOLS[keeper], slot=(sx + [-3, 0, 3][(j - i) % 4 - 1], LEVEL[5] + 1, sz + 3),
-                       found=(cx, LEVEL[3] + 1, cz), room=Box(x0, LEVEL[3] + 1, z0, x1, LEVEL[3] + 6, z1)),
-                  mirror=False)
+    for hid, name, (x0, z0, x1, z1), points in HILLS:
+        O.add(Hill(hid, name, Box(x0, HILL_Y, z0, x1, HILL_Y, z1), points=points, capture_time="5s"), mirror=False)
     O.add(Observer((0, 40, 0)), mirror=False)
     return O

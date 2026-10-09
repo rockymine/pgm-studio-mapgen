@@ -1,8 +1,9 @@
 # Ocotillo — the layout
 
-**Ocotillo is a capture-the-wool board for four teams, one wool each, laid out as a blueprint of five-block
-cells in the Brittlebush style.** Each team keeps its own wool in a tower beside its spawn and must capture the
-other three. This is the layout only, for review. The sketch is `renders/00-plan-sketch.png`, the checker's table
+**Ocotillo is a king-of-the-hill board for four teams with five hills, laid out as a blueprint of five-block
+cells in the Brittlebush style.** It began as a capture-the-wool layout; the review found every wool too easy to
+reach, with no real middle and gaps too small to make bridging matter, and turned it to capture points. This is
+the layout and the map.xml, for review. The sketch is `renders/00-plan-sketch.png`, the checker's table
 is `renders/plan-check.txt`, and both are drawn from `scripts/plan.py`.
 
 ## What Brittlebush was read for this time
@@ -31,7 +32,7 @@ along the board's edge; in I they mark the cells with water at the foot of the v
 | Stair | one cell climbing one level, three blocks in five, slab and block in turn |
 | Stacked | a deck one level over an underfloor: covered ground under a deck |
 | Keep | a team's spawn, three cells by three at 19 |
-| Tower | a team's wool room, two cells by two, a tower of narrow storeys on its yard |
+| Tower | a team's landmark, two cells by two, a tower of narrow storeys on its yard, its heart over it |
 | Gap | void a player builds over, cobwebs on the floor of the void under it |
 | Water | void with water at its foot, marked by cobwebs too |
 
@@ -44,14 +45,33 @@ two-by-two court has one and a narrow bed none.
 brick, dark oak and black clay; the next takes the birch-stair panel. The stair details give a wall depth without
 insetting it.
 
+## The game
+
+**Five hills: the Dais in the middle, worth two points a second, and an island on each border, worth one.** A
+border hill lies on the island between two neighbouring spawns, so it is the same walk for both teams beside it.
+That is the corpus's own shape: four-team boards carry one point per team and a centre, five in all, and most put
+the ring on the diagonals between neighbouring spawns. Each hill is a square pad ten blocks a side, captured in
+five seconds.
+
+**Every player spawns with sixteen leaves to bridge with, and every kill pays a leaf and a golden apple.** The
+kit is a stone sword, a bow with sixteen arrows, an iron pickaxe, the leaves, steak and team-coloured leather.
+
+**Golden apples grow on the four inner islands, and arrows on the four landings.** An inner island lies between
+two neighbours beside their Arbours, across a cell of gap, so the apples are bridged to with the kit's leaves. A
+landing lies on the way to the Dais, so the arrows are picked up on the way in. An apple drops every thirty
+seconds, one at a time; four arrows every ten seconds, up to eight.
+
+**The first team to 400 points wins, within fifteen minutes.** Building is allowed only over the board and its
+gaps, up to y 40.
+
 ## The arrangement
 
 **The board is four quadrants, one a team, each its neighbour turned a quarter about the middle.** Red holds the
 north-west, blue the north-east, green the south-east and yellow the south-west. The board is 26 cells a side,
 130 blocks.
 
-**Each quadrant is its own mirror across its diagonal.** A team's two neighbours meet it in the same way, so no
-team has a near and a far neighbour.
+**Each quadrant is its own mirror across its diagonal.** A team's two neighbours meet it in the same way, so its
+two border hills are the same walk.
 
 **From each team's corner to the middle, the levels step down one at a time.**
 
@@ -60,37 +80,36 @@ team has a near and a far neighbour.
 | 5 | 19 | the Keep, the spawn, in the corner |
 | 4 | 16 | the two Orchards on the wings |
 | 3 | 13 | the yard and the Tower; the two terraces; the two Arbours' decks |
-| 2 | 10 | the islands on the borders; the Arbours' covered walks; the inner court; the dais |
+| 2 | 10 | the border hills; the inner islands; the Arbours' covered walks; the inner court; the Dais |
 | 1 | 7 | the landings on the borders by the middle |
 
 **Every piece is at least two cells deep, and every stair two cells wide.** A stair is ten blocks across and five
 long. A cell on a border pairs with the neighbour's cell beside it, so a one-cell island or stair on the border is
 two cells, ten blocks, once the two quadrants meet.
 
-**The neighbours meet across gaps, and everyone meets at the dais.** On each wing a team's terrace faces an island
-on the border across one cell of gap, and the neighbour's terrace faces it from the other side. Beside each Arbour
-a second island faces the covered walk across a gap. By the middle, a landing at 7 is shared by two neighbours,
-with a stair up from it to each team's inner court and one onto the dais. The dais is ten blocks square at 10, one
-cell from each quadrant.
+**Every hill is reached on foot; the apples are reached by bridging.** A terrace steps down to its border hill by
+a stair two cells wide, and the neighbour's terrace does the same from the other side. Beside each Arbour an inner
+island faces the covered walk across a cell of gap. By the middle, a landing at 7 is shared by two neighbours,
+with a stair up from it to each team's inner court and one onto the Dais.
 
 ## The places, in red's quadrant
 
-- **The Keep** (19): the spawn, three cells by three, with the three monuments for the other teams' wools.
-  Two stairs, each two cells wide, lead down out of it, one onto each wing.
+- **The Keep** (19): the spawn, three cells by three. Two stairs, each two cells wide, lead down out of it, one
+  onto each wing.
 - **The Orchards** (16): three by three on each wing.
 - **The terraces** (13): three by three, down a stair from each Orchard toward the border.
-- **The outer islands** (10): one cell wide and three long on each border, two wide with the neighbour's, between
-  the two teams' terraces across a cell of gap on each side.
+- **The border hills** (10): the islands on the borders, one cell wide and three long, two wide with the
+  neighbour's, down a stair from each team's terrace. The hill's pad is the middle ten blocks.
 - **The yard** (13): three by three less the Tower's corner, down a stair from each Orchard.
-- **The Tower** (13): the wool room, two cells by two on the diagonal, its doors onto the yard. The wool's heart
-  floats over it.
+- **The Tower** (13): the team's landmark, two cells by two on the diagonal, its heart over it in the team's colour.
 - **The Arbours** (13 over 10): stacked pieces three by three either side of the Tower. A stair runs down from the
   yard into each covered walk, and one up from the inner court onto each deck.
-- **The inner islands** (10): beside each Arbour on the border, across a cell of gap from its covered walk.
+- **The inner islands** (10): beside each Arbour on the border, across a cell of gap: the golden apples.
 - **The inner court** (10): three by three by the middle, with a stair up onto each Arbour's deck and one down to
   each landing.
-- **The landings** (7): one cell wide on each border by the middle, two with the neighbour's.
-- **The dais** (10): its quarter of the ten-block square in the middle, a stair up onto it from each landing.
+- **The landings** (7): one cell wide on each border by the middle, two with the neighbour's: the arrows.
+- **The Dais** (10): the middle hill, ten blocks square, a quarter of it in each quadrant, a stair up onto it from
+  each landing.
 
 ## The numbers
 
@@ -98,30 +117,31 @@ cell from each quadrant.
 
 | Measure | Value | Target |
 |---|---|---|
-| Spawn to its own wool room | 38.9 | short, under 40 |
-| Spawn to a neighbour's wool room | 97.3, 12 of it built across a border gap | 46 to 143 |
-| Spawn to the opposite team's wool room | 129.7, walked through the middle | 46 to 143 |
-| Spawn to the dais | 82.6, walked | |
-| Stairs that do not climb one level | 0 | 0 |
-| Stairs narrower than two cells | 0 | 0 |
+| Spawn to the Dais, on foot | 82.6 | |
+| Spawn to the two border hills beside it, on foot | 53.0 and 53.0 | the same |
+| Spawn to the two border hills beyond, on foot | 149.4 and 149.4 | |
+| A border hill's distance from the middle, over a spawn's | 0.71 | 0.52 to 0.99 |
+| Spawn to the nearest golden apples | 63.5, 6.4 of it bridged | |
+| Spawn to the nearest arrows, on foot | 74.7 | |
+| Stairs that do not climb one level, or narrower than two cells | 0, 0 | 0 |
 | The longest straight run at one level | 3 cells, 15 blocks | 3 cells |
-| Flat cells by theme | 0 sand, 280 inlay | |
 | Floors not reached from a spawn | 0 | 0 |
 
-**A neighbour is the closer target, and only by building.** A team reaches either neighbour's wool by building
-across a border gap, ten blocks, or walks round by the middle. The opposite team's wool is walked, but only
-through the dais, where all four teams cross.
+**A team's two border hills are its own to contest, and the far two belong to the others.** At 53 a team reaches
+the hills either side of it well before the Dais at 83, and the far border hills at 149 are not worth the walk
+while the Dais is held. So the game is four fights on the borders and one in the middle.
 
-**No piece is one cell wide now, so no piece is sand by the shape rule.** Sand still lies inside the inlay, as
-the field round each kerbed bed, as it does in Brittlebush. If whole pieces of sand are wanted, the outer islands
-are the place: they stand between two teams and are the most exposed ground on the board.
+**The studio reads the map.xml as valid.** Its own parser finds the four teams and spawns, the five hills, the
+kit and the eight spawners, and its validity check raises nothing.
+
+**No piece is one cell wide, so no piece is sand by the shape rule.** Sand still lies inside the inlay, as the
+field round each kerbed bed, as it does in Brittlebush. If whole pieces of sand are wanted, the border hills are
+the place: they are the most exposed ground on the board.
 
 ## What the build will need from the library
 
 - **A quarter-turn symmetry.** pgmvox mirrors and half-turns a board; four teams need its world, its objectives
   and its sketch turned a quarter at a time.
-- **Room protection for more than two teams.** A wool room keeps out every team but the attackers, and the
-  library works that out for two teams only.
 - **The Brittlebush pieces as library pieces.** The edge, the frame and fields, the stair cell, the stacked cell
   and the tower are in the study's `style.py`. A blueprint board wants them keyed to a cell.
 
@@ -136,3 +156,15 @@ are the place: they stand between two teams and are the most exposed ground on t
   posts became islands two wide with the neighbour's, the yard became three by three round the Tower, and the
   lookouts went.
 - **The Tower moved one cell inward,** onto the yard's corner. The yard meets it on two sides and the Arbours' decks on the other two.
+
+## What changed after the second review
+
+**The board became king of the hill.** Capture the wool did not work on it: every wool was easy to reach, there
+was no real middle, and the gaps were too small to make bridging matter.
+
+- **Five hills:** the Dais, and the island between each pair of neighbouring spawns.
+- **Each terrace steps down to its border hill** by a stair two cells wide, where a gap stood before, so every
+  hill is reached on foot.
+- **The towers keep no wool.** They stay as each team's landmark, with its heart over it.
+- **The kit carries sixteen leaves, a kill pays a leaf and a golden apple,** and golden apples and arrows grow on
+  the inner islands and the landings.
