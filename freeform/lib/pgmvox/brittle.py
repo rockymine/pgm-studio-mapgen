@@ -8,14 +8,17 @@ and II, read block by block off those maps (boards/brittle-study/STYLE.md).
 
 A cell is one of a handful of pieces, its y the floor block:
 
-    flat      level ground; a flat piece one cell wide is sand, one with two cells by two in it is inlay
+    flat      level ground; a flat piece that is a rectangle two cells or more each way is grass in its double ring
+              of sandstone stairs, with a birch if wide enough; any other piece, one cell wide or not a rectangle,
+              is sand
     keep      a spawn's floor: smooth sandstone, a ring of the team's clay
     tower     the ground under a tower, laid like flat ground; tower() builds the tower on it
-    stacked   a deck at y over an underfloor at y - 3, on dark-oak posts at the deck's corners
+    stacked   a piece with a deck at y; a cell of it with under=True is open beneath, a lower floor DECK under
+              the deck, the deck's edge capped without black clay, a dark-oak pillar mid-way along a long open side
     stair     one level up, three blocks in five, toward `rises`, from a floor at y: a stone-brick slab and a stone-brick
               block in turn, half a block a row
-    gap       void a player builds over: block 36 at y 0 and a cobweb on the floor of the void
-    water     a gap with water at its foot, kerbed in bedrock where it meets open void or a dry gap, a cobweb over it
+    gap       void a player builds over: block 36 at y 0, and a cobweb mid-way along each edge it shares with void
+    water     a gap with water at its foot, kerbed in bedrock where it meets void or a dry gap; the water marks it
     void      nothing
 
 Every column of ground is four courses of stone over bedrock to y 3, an obsidian sheet at y 1 and 2, block 36 at
@@ -41,6 +44,7 @@ DARK_OAK_SLAB = (B.WOOD_SLAB, 5)
 BLACK_CLAY = (B.STAINED_CLAY, 15)
 SB_SLAB = (B.SLAB, 5)
 LAND = ("flat", "keep", "tower", "stacked", "stair")
+DECK = 8                                 # a stacked piece's lower floor lies this far under its deck
 
 
 @dataclass(frozen=True)
@@ -49,6 +53,7 @@ class Cell:
     y: int = None
     rises: str = None
     name: str = None
+    under: bool = False                  # a stacked cell open under its deck, its lower floor DECK down
 
 
 def turn_cells(cells, k=1):
@@ -56,7 +61,8 @@ def turn_cells(cells, k=1):
     turned with it."""
     out = cells
     for _ in range(k):
-        out = {(-1 - cz, cx): (Cell(c.kind, c.y, CW[c.rises], c.name) if c.rises else c) for (cx, cz), c in out.items()}
+        out = {(-1 - cz, cx): (Cell(c.kind, c.y, CW[c.rises], c.name, c.under) if c.rises else c)
+               for (cx, cz), c in out.items()}
     return out
 
 
@@ -85,8 +91,8 @@ def heights(cells):
                     r = _row(c.rises, i, k)
                     h = c.y + 1 + min(r, 3) // 2 + (1 if r == 4 else 0)
                     G[(x, z)] = T[(x, z)] = h
-                elif c.kind == "stacked":
-                    G[(x, z)], T[(x, z)] = c.y - 3, c.y
+                elif c.kind == "stacked" and c.under:
+                    G[(x, z)], T[(x, z)] = c.y - DECK, c.y
                 else:
                     G[(x, z)] = T[(x, z)] = c.y
     return G, T
@@ -98,9 +104,10 @@ def _row(rises, i, k):
 
 
 def pieces(cells):
-    """The pieces: flat cells (flat, keep, tower) joined to their neighbours of the same kind and height, as
+    """The pieces: flat cells (flat, keep, tower, a stacked piece's deck) joined to their neighbours of the same kind
+    and height, as
     {cell: piece number}, and each piece's theme, 'inlay' if it holds two cells by two, else 'sand'."""
-    flat = {c for c, v in cells.items() if v.kind in ("flat", "keep", "tower")}
+    flat = {c for c, v in cells.items() if v.kind in ("flat", "keep", "tower", "stacked")}
     label, theme, n = {}, {}, 0
     for c in sorted(flat):
         if c in label:
@@ -129,9 +136,13 @@ def cap(w, x, z, h, inward, panel=None):
     stairs, and its two outer columns (panel "side") are black clay all the way down. So the black clay is one
     unbroken band along the board's edge, at the foot of the plain cells, rising round each panel and over it."""
     w.set(x, h, z, B.SPRUCE_STAIRS, stair(inward, upside_down=True))
-    if h - 4 < 3:
+    if h - 4 < 3 and panel != "deck":
         raise ValueError(f"a cap at {h} reaches under y 3, into the obsidian and the build marker: raise the floor")
-    if panel == "side":
+    if panel == "deck":                                     # a deck's edge over open air: no black clay
+        w.set(x, h - 1, z, B.BRICK)
+        w.set(x, h - 2, z, *DARK_OAK_SLAB)
+        w.set(x, h - 3, z, B.DARK_OAK_STAIRS, stair(inward, upside_down=True))
+    elif panel == "side":
         for y in range(h - 4, h):
             w.set(x, y, z, *BLACK_CLAY)
     elif panel == "inner":
@@ -268,21 +279,27 @@ def build(w, cells, only=None, rng=None, dye=14):
         if c.kind in ("gap", "water"):
             for x, z in cols:
                 w.set(x, 0, z, 36)
-            if c.kind == "water":
+            if c.kind == "water":                                          # water marks itself: no cobwebs
                 for x, z in cols:
                     shore = any(cells.get(cell_of(x + dx, z + dz), Cell("void")).kind in ("void", "gap")
                                 and cell_of(x + dx, z + dz) != (cx, cz) for dx, dz in DIRS.values())
                     w.set(x, 1, z, *((B.BEDROCK, 0) if shore else (B.WATER, 0)))
-                w.set(x0 + 2, 2, z0 + 2, B.COBWEB)
-            else:
-                w.set(x0 + 2, 1, z0 + 2, B.COBWEB)
+            else:                                                          # a cobweb mid-edge where it meets void
+                for d, (dx, dz) in DIRS.items():
+                    if cells.get((cx + dx, cz + dz), Cell("void")).kind == "void":
+                        ex = x0 + (CELL - 1 if dx > 0 else 0 if dx < 0 else 2)
+                        ez = z0 + (CELL - 1 if dz > 0 else 0 if dz < 0 else 2)
+                        w.set(ex, 1, ez, B.COBWEB)
             continue
         if c.kind not in LAND:
             continue
+        if c.kind == "stacked" and c.under:
+            _under(w, c, x0, z0, cells, G, T, rng)
         for x, z in cols:
-            h = g(x, z)
-            ground(w, x, z, h, fill=(B.STONEBRICK, 0) if c.kind == "stair" else (B.STONE, 0))
-            out = [d for d, (dx, dz) in DIRS.items() if g(x + dx, z + dz) < h - 1]
+            h = T[(x, z)]
+            if not (c.kind == "stacked" and c.under):
+                ground(w, x, z, h, fill=(B.STONEBRICK, 0) if c.kind == "stair" else (B.STONE, 0))
+            out = [d for d, (dx, dz) in DIRS.items() if T.get((x + dx, z + dz), -1) < h - 1]
             if c.kind == "stair":
                 side = [d for d in out if d not in (c.rises, OPP[c.rises])]
                 if side:                                                   # its side: the ground's own edge,
@@ -294,6 +311,13 @@ def build(w, cells, only=None, rng=None, dye=14):
                 if r == 4:                                                 # the last half step, a slab on a block
                     w.set(x, h - 1, z, B.STONEBRICK)
                 continue
+            if c.kind == "stacked" and c.under:
+                if out:                                                    # a deck's edge: the cap, no black clay
+                    cap(w, x, z, h, OPP[out[0]], panel="deck")
+                continue
+            if c.kind == "stacked" and any(cells.get(cell_of(x + dx, z + dz), Cell("void")).under
+                                           for dx, dz in DIRS.values()):
+                w.set(x, h - 4, z, *BLACK_CLAY)                            # the line under the deck, on its wall
             if out:
                 along = (z // CELL) if out[0] in ("e", "w") else (x // CELL)
                 pos = (z - z0) if out[0] in ("e", "w") else (x - x0)
@@ -301,15 +325,12 @@ def build(w, cells, only=None, rng=None, dye=14):
                     panel=None if along % 2 else "inner" if 1 <= pos <= 3 else "side")
         if c.kind == "stair":
             continue
-        if c.kind == "stacked":
-            _stacked(w, c, x0, z0, cells, T)
-            continue
         # the frame and the field of a flat piece
         n = label[(cx, cz)]
         field = []
         for x, z in cols:
-            h = g(x, z)
-            if any(g(x + dx, z + dz) < h - 1 for dx, dz in DIRS.values()):
+            h = T[(x, z)]
+            if any(T.get((x + dx, z + dz), -1) < h - 1 for dx, dz in DIRS.values()):
                 continue                                                   # the rim, laid with the cap
             dd = depth(x, z)
             if dd <= 1:
@@ -321,48 +342,92 @@ def build(w, cells, only=None, rng=None, dye=14):
         if field:
             sand(w, field, c.y, rng)
     # the inlay's beds, filling a piece's inside up to the plank band: one bed for a piece that is a rectangle of
-    # cells, else one to each two cells by two of it
+    # cells; a piece of any other shape keeps its sand
     if any(t == "inlay" for t in theme.values()):
         used = set()
         for (cx, cz) in sorted(only):
             c = cells[(cx, cz)]
-            if c.kind != "flat" or theme[label[(cx, cz)]] != "inlay" or (cx, cz) in used:
+            if c.kind not in ("flat", "stacked") or theme[label[(cx, cz)]] != "inlay" or (cx, cz) in used:
                 continue
             n = label[(cx, cz)]
             comp = [p for p, v in label.items() if v == n]
             xs, zs = [p[0] for p in comp], [p[1] for p in comp]
             rect = len(comp) == (max(xs) - min(xs) + 1) * (max(zs) - min(zs) + 1)
-            if rect and all(p in only and cells[p].kind == "flat" for p in comp):
-                block = comp
-            else:
-                block = [(cx, cz), (cx + 1, cz), (cx, cz + 1), (cx + 1, cz + 1)]
-                if not all(b in label and label[b] == n and b not in used and b in only and cells[b].kind == "flat"
-                           for b in block):
-                    continue
+            if not (rect and all(p in only and cells[p].kind in ("flat", "stacked") for p in comp)):
+                continue                                                    # not a rectangle: sand only
+            block = comp
             used |= set(block)
             inner = [(x, z) for bx, bz in block for x in range(bx * CELL, bx * CELL + CELL)
                      for z in range(bz * CELL, bz * CELL + CELL) if depth(x, z) >= 2]
             xs, zs = [p[0] for p in inner], [p[1] for p in inner]
             if inner and max(xs) - min(xs) >= 5 and max(zs) - min(zs) >= 5:
                 bed(w, min(xs), min(zs), max(xs), max(zs), c.y, rng)
+    for p in sorted(only):                                                 # the under-sections' pillars, last
+        c = cells[p]
+        if c.kind == "stacked" and c.under:
+            _pillars(w, c, p[0] * CELL, p[1] * CELL, cells)
 
 
-def _stacked(w, c, x0, z0, cells, T):
-    """A deck at c.y over the underfloor at c.y - 3: spruce planks, the rim where the deck stands over lower
-    ground, dark-oak posts at the cell's corners under it; the underfloor floored in spruce planks."""
-    u = c.y - 3
+def _under(w, c, x0, z0, cells, G, T, rng):
+    """A stacked cell open under its deck, as Brittlebush I builds one: the deck four courses thick (its surface
+    laid with the piece, stone under it); four blocks of air; a lower floor DECK under the deck, framed and laid in
+    sand like any ground, planks along the island's wall at its back. Its pillars are _pillars', laid once every
+    under cell is."""
+    lower = c.y - DECK
+    sandy = []
     for i in range(CELL):
         for k in range(CELL):
             x, z = x0 + i, z0 + k
-            w.set(x, u, z, *SPRUCE_PLANKS)
-            out = [d for d, (dx, dz) in DIRS.items() if T.get((x + dx, z + dz), -1) < c.y]
+            for y in range(c.y - 3, c.y):
+                w.set(x, y, z, B.STONE)
+            for y in range(lower + 1, c.y - 3):
+                w.set(x, y, z, B.AIR)
+            ground(w, x, z, lower)
+            out = [d for d, (dx, dz) in DIRS.items() if G.get((x + dx, z + dz), -1) < lower - 1]
             if out:
-                w.set(x, c.y, z, B.SPRUCE_STAIRS, stair(OPP[out[0]], upside_down=True))
+                cap(w, x, z, lower, OPP[out[0]])
+            elif any(G.get((x + dx, z + dz), -1) > lower for dx, dz in DIRS.values()):
+                w.set(x, lower, z, *SPRUCE_PLANKS)                   # along the island's wall at its back
             else:
-                w.set(x, c.y, z, *SPRUCE_PLANKS)
-    for i, k in ((0, 0), (0, CELL - 1), (CELL - 1, 0), (CELL - 1, CELL - 1)):
-        for y in range(u + 1, c.y):
-            w.set(x0 + i, y, z0 + k, B.LOG2, 1)
+                sandy.append((x, z))
+    sand(w, sandy, lower, rng)
+
+
+def _pillars(w, c, x0, z0, cells):
+    """Where an under cell's open side runs two cells or more, a pillar two wide at the run's middle: dark-oak
+    planks, a dark-oak stair and an upside-down one in turn, from under the deck down into the lower floor's edge.
+    Laid after every under cell, since the middle of an even run is a cell's edge."""
+    lower = c.y - DECK
+    # the pillars: on each open side whose run of open cells is two or more, once, at the run's middle
+    cx, cz = x0 // CELL, z0 // CELL
+
+    def open_side(p, dx, dz):
+        nb = cells.get((p[0] + dx, p[1] + dz))
+        return not (nb and nb.kind in ("stacked", "flat", "keep", "tower", "stair") and nb.y is not None
+                    and nb.y >= c.y - DECK + 2)
+    for d, (dx, dz) in DIRS.items():
+        if not open_side((cx, cz), dx, dz):
+            continue
+        ax, az = abs(dz), abs(dx)                                  # along the side
+        run = [(cx, cz)]
+        for sgn in (1, -1):
+            p = (cx + ax * sgn, cz + az * sgn)
+            while cells.get(p) and cells[p].kind == "stacked" and cells[p].under and open_side(p, dx, dz):
+                run.append(p)
+                p = (p[0] + ax * sgn, p[1] + az * sgn)
+        first = min(run, key=lambda q: q[0] * ax + q[1] * az)
+        if len(run) < 2 or first != (cx, cz):
+            continue
+        mid = (first[0] * ax + first[1] * az) * CELL + len(run) * CELL // 2
+        ex = x0 + CELL - 1 if dx > 0 else x0 if dx < 0 else None
+        ez = z0 + CELL - 1 if dz > 0 else z0 if dz < 0 else None
+        for a in (mid - 1, mid):
+            px, pz = (ex, a) if ex is not None else (a, ez)
+            for n, y in enumerate(range(c.y - 4, lower - 2, -1)):
+                if n % 3 == 0:
+                    w.set(px, y, pz, B.PLANKS, 5)
+                else:
+                    w.set(px, y, pz, B.DARK_OAK_STAIRS, stair(OPP[d], upside_down=(n % 3 == 2)))
 
 
 # ---- buildings -------------------------------------------------------------------------------------------

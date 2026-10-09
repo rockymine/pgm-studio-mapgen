@@ -26,7 +26,8 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `facade` | face patterns (`band`, `courses`, `flutes`, `panels`, `slits`, `checker`, `windows`, `glyph_row`, `word`) set back or flush on an `extrude`d mass, `coffer`, `top_course`; floor fields (`border`, `medallion`, `corners`, `diamonds`, `steps`, `star`, `cross`, `tiles`) composed by `first_of` and laid by `carpet` |
 | `terrain` | `slope_deg` as the studio reads it; `lay` (ground painted by slope, a snow line); `Strata`, `bed_offset` and `beds` (rock beds that tilt and fold); `mountain_ring`; `underside` and `root_depth` (cones, flutes, spires); `cloud_deck` |
 | `route` | `find` (a least-cost route over the ground, held to a grade, switchbacks and all), `network` (places joined by roads that share their trunk), `simplify`, `smooth`, `footprint`, `pave` (surface and bridges), `steps` |
-| `brittle` | the Brittlebush style from a blueprint of five-block cells: flat, keep, stair, stacked, gap and water cells; the five-course cap with its birch panels, frames, sand fields and double-ringed beds, `tower`, `heart` |
+| `brittle` | the Brittlebush style from a blueprint of five-block cells: flat, keep, stair, stacked, gap and water cells; the five-course cap with its birch panels, frames, sand fields and double-ringed beds; hollows and tunnels under a deck with their dark-oak pillars; `tower`, `heart` |
+| `studioplan` | a plan drawn in the studio's planner (version 2) read as a `brittle` blueprint: pieces, stairs, decks, water and bare zones, placements |
 | `props` | small built things placed on a floor, facing a way: `stall` and `stalls` (a market row), `lamp`; chests drawn as rows of letters (`laid`), with a defence chest and a wool room's gear |
 | `under` | caves and mines carved into a built world: `tunnel` (a level-floored passage), `chamber`, `carve`, `dress_cave` (floors, stalactites, ore), `gallery_line` and `gallery` (timbered, railed, stepped), `shaft` |
 | `trees` | hand-built trees planted whole: `library` (the studio's copied trees), `load` (a board's own cut), `kinds`, `plant` (turned, refused whole), `scatter` (a wood with its crowns apart) |
@@ -157,7 +158,7 @@ the team keeping it, and its room, its entry rule and its spawner are written on
 ## The Brittlebush style
 
 **`pgmvox.brittle` builds a blueprint of five-block cells in the look of Brittlebush.** A cell is flat ground, a
-keep, a stair one level up in half steps of slab and block, a stacked deck over an underfloor, a gap or water.
+keep, a stair one level up in half steps of slab and block, a stacked deck, a gap or water.
 `build(w, cells, only=...)` lays the cells in `only`, reading each against the whole blueprint, so an edge is
 right where one team's part meets another's.
 
@@ -165,10 +166,25 @@ right where one team's part meets another's.
 black clay runs unbroken along the edge, at the foot of the plain cells and up round each panel. A stair's sides
 carry the same cap, stepping down with its rows.
 
-**A piece is framed, then filled by its shape.** A piece one cell wide is a sand field, sand mixed with upside-down
-sandstone stairs, cacti and dead bushes on the pure sand alone. A piece with two cells by two in it is filled with
-grass inside two rings of sandstone stairs, the outer rising inward and the inner outward, with a birch when the
-grass is wide enough.
+**A piece is framed, then filled by its shape.** A piece one cell wide, or not a rectangle, is a sand field: sand mixed
+with upside-down sandstone stairs, cacti and dead bushes on the pure sand alone. A rectangle two cells or more each
+way is grass inside two rings of sandstone stairs, the outer rising inward and the inner outward, with a birch when
+the grass is wide enough.
+
+**Water marks itself; a gap is marked by cobwebs.** A water cell lays water at the foot of the void and no
+cobweb. A gap cell lays a cobweb at the middle of each edge it shares with the open void, so the cobwebs trace a
+build zone's outline where it faces the void.
+
+**A stacked cell with `under=True` is hollow under its deck, as Brittlebush I's island beside the middle is.**
+The deck's edge over the hollow is the cap without its black band, and its lower floor lies `DECK`, eight blocks,
+under it. Where a hollow's open side runs two cells or more, a dark-oak pillar two wide stands at its middle,
+laid once every hollow is cut. One cell of hollow along a side is an under-section; a line of them through a piece
+is a tunnel.
+
+**`pgmvox.studioplan` reads a plan drawn in the studio's planner into such a blueprint.** `unit(plan, lift,
+under)` gives one team's part, which `brittle.fan` turns into the four. A piece named `stair…` is a stair cell and
+one named `double…` a deck, with the cells in `under` hollow. A zone named `water…` is water and any other zone a
+gap. `placement(plan, "spawns")` gives each placement's spot and footprint in blocks.
 
 ## Storeys and solids
 

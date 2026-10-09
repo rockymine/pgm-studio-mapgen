@@ -881,3 +881,24 @@ class Brittle(unittest.TestCase):
         self.assertEqual(w.id(-18, 13, -18), B.SANDSTONE_STAIRS)         # the bed's outer ring
         self.assertEqual(w.id(-13, 14, -13), B.LOG)                      # its birch, at its middle
         self.assertEqual(w.id(-5, 0, -15), 36)                           # building allowed over the board
+
+    def test_an_under_section_is_hollow_with_its_pillar(self):
+        from pgmvox import brittle as BR
+        unit = {(a, b): BR.Cell("stacked", 16, under=(b == -3)) for a in (-4, -3) for b in (-4, -3)}
+        cells, team = BR.fan(unit)
+        w = World(-30, -30, 60, 60, sy=32)
+        BR.build(w, cells, only=[c for c in cells if team[c] == 0])
+        self.assertEqual(audit.footing(w), [])
+        self.assertEqual([w.id(-18, y, -11) for y in (16, 15, 14, 13)],             # the deck's edge, no black band
+                         [B.SPRUCE_STAIRS, B.BRICK, B.WOOD_SLAB, B.DARK_OAK_STAIRS])
+        self.assertEqual([w.id(-18, y, -13) for y in range(10, 13)], [B.AIR] * 3)   # open under the deck
+        self.assertEqual(w.get(-18, 12, -16), (B.STAINED_CLAY, 15))                 # black on the wall behind
+        self.assertEqual(w.get(-18, 8, -15), BR.SPRUCE_PLANKS)                      # planks along that wall
+        self.assertEqual({w.get(x, 12, -11) for x in (-16, -15)}, {(B.PLANKS, 5)})   # the pillar, two wide
+
+    def test_a_studio_plan_tells_water_from_bare_zones(self):
+        from pgmvox import studioplan as SP
+        plan = {"globals": {"cell": 5, "surface": 9}, "pieces": [{"id": "a", "rect": [-3, -3, 2, 2]}],
+                "zones": [{"id": "water", "rect": [-1, -3, 1, 1]}, {"id": "zone", "rect": [-3, -1, 2, 1]}]}
+        u = SP.unit(plan, lift=6)
+        self.assertEqual((u[(-1, -3)].kind, u[(-3, -1)].kind, u[(-3, -3)].y), ("water", "gap", 15))

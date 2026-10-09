@@ -11,8 +11,8 @@ Every piece is made of cells five blocks a side, and a cell is one of a handful 
     stair     a ramp one cell long that climbs one level, three blocks in five, in half steps of a stone-brick
               slab and a stone-brick block in turn; every change of level is one of these
     keep      a team's spawn, flat at the top level
-    gap       void a player may build over, marked by cobwebs on the floor of the void
-    water     void with water at its foot, marked by cobwebs too
+    gap       void a player may build over, cobwebs on the floor of the void where it meets the open void
+    water     void with water at its foot, which marks it: no cobwebs
     void      nothing
 
 No flat piece runs more than three cells, fifteen blocks, before a stair or a gap. A piece one cell wide is laid
@@ -47,7 +47,7 @@ LEVEL = {0: 7, 1: 10, 2: 13, 3: 16, 4: 19, 5: 22}  # a level's floor block
 MAX_BUILD = 44
 
 # red's quadrant, the cells on or above its diagonal, row b from the outer edge, a from the diagonal to the middle.
-# fN flat at level N; kN a deck at N over an underfloor at N-1; KN the keep; TN the tower's yard floor;
+# fN flat at level N; KN the keep;
 # s< s> s^ sv a stair rising west, east, north (toward b 0) or south; ww a gap; ~~ water; .. void
 QUADRANT = [
     # a: 0   1   2   3   4   5   6   7   8   9   10  11  12
