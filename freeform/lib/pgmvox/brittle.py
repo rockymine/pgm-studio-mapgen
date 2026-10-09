@@ -34,6 +34,7 @@ from dataclasses import dataclass, replace
 import numpy as np
 from scipy import ndimage
 
+from . import grammar as G
 from .blocks import B
 from .orient import stair
 
@@ -131,34 +132,6 @@ def pieces(cells):
 
 
 # ---- the pieces of the look ------------------------------------------------------------------------------
-def cap(w, x, z, h, inward, panel=None):
-    """A ground edge, top down: an upside-down spruce stair, its full side inward; brick; a dark-oak slab; an
-    upside-down dark-oak stair; black clay. Every other cell along a face is a panel the cell's five wide: its
-    middle three (panel "inner") swap the brick, the slab and the dark-oak stair for black clay over three birch
-    stairs, and its two outer columns (panel "side") are black clay all the way down. So the black clay is one
-    unbroken band along the board's edge, at the foot of the plain cells, rising round each panel and over it."""
-    w.set(x, h, z, B.SPRUCE_STAIRS, stair(inward, upside_down=True))
-    if h - 4 < 3 and panel != "deck":
-        raise ValueError(f"a cap at {h} reaches under y 3, into the obsidian and the build marker: raise the floor")
-    if panel == "deck":                                     # a deck's edge over open air: no black clay
-        w.set(x, h - 1, z, B.BRICK)
-        w.set(x, h - 2, z, *DARK_OAK_SLAB)
-        w.set(x, h - 3, z, B.DARK_OAK_STAIRS, stair(inward, upside_down=True))
-    elif panel == "side":
-        for y in range(h - 4, h):
-            w.set(x, y, z, *BLACK_CLAY)
-    elif panel == "inner":
-        w.set(x, h - 1, z, *BLACK_CLAY)
-        w.set(x, h - 2, z, B.BIRCH_STAIRS, stair(inward))
-        w.set(x, h - 3, z, B.BIRCH_STAIRS, stair(inward))
-        w.set(x, h - 4, z, B.BIRCH_STAIRS, stair(inward, upside_down=True))
-    else:
-        w.set(x, h - 1, z, B.BRICK)
-        w.set(x, h - 2, z, *DARK_OAK_SLAB)
-        w.set(x, h - 3, z, B.DARK_OAK_STAIRS, stair(inward, upside_down=True))
-        w.set(x, h - 4, z, *BLACK_CLAY)
-
-
 def ground(w, x, z, h, fill=(B.STONE, 0)):
     """Under a floor at h: four courses of stone, bedrock to y 3, obsidian at y 1 and 2, block 36 at y 0."""
     for y in range(max(3, h - 4), h):
@@ -240,42 +213,106 @@ def sand(w, cells_xz, y, rng, stairs=0.25):
                     w.set(x, yy, z, B.CACTUS)
 
 
+# ---- the style: Brittlebush's blocks for the grammar's rules -------------------------------------------------
+def _rim(inward):
+    return B.SPRUCE_STAIRS, stair(inward, upside_down=True)
+
+
+def _dark_oak_under(inward):
+    return B.DARK_OAK_STAIRS, stair(inward, upside_down=True)
+
+
+def _birch(inward):
+    return B.BIRCH_STAIRS, stair(inward)
+
+
+def _birch_under(inward):
+    return B.BIRCH_STAIRS, stair(inward, upside_down=True)
+
+
+# the edge, top down: the rim, brick, a dark-oak slab, an upside-down dark-oak stair, black clay; every other cell
+# along a face the birch panel, its two outer columns black clay all the way down, over five of air or more
+EDGE = G.Face([_rim, (B.BRICK, 0), DARK_OAK_SLAB, _dark_oak_under, BLACK_CLAY],
+              G.Accent(CELL, frame=[_rim] + [BLACK_CLAY] * 4, inner=[_rim, BLACK_CLAY, _birch, _birch, _birch_under],
+                       every=2, phase=0, min_air=5))
+DECK_EDGE = G.Face([_rim, (B.BRICK, 0), DARK_OAK_SLAB, _dark_oak_under], floor=0)   # over open air: no band
+
+
+def _sand(w, lot, rng):
+    sand(w, lot.cols, lot.y, rng)
+    return True
+
+
+def _bed(trees):
+    def fill(w, lot, rng):
+        sx, sz = lot.size
+        if not lot.is_rect or min(sx, sz) < 6:
+            return False
+        x0, z0, x1, z1 = lot.box
+        bed(w, x0, z0, x1, z1, lot.y, rng, trees=trees)
+        return True
+    return fill
+
+
+def _keep(w, lot, rng):
+    for x, z in lot.cols:
+        w.set(x, lot.y, z, *((B.STAINED_CLAY, lot.params["dye"]) if lot.ground.depth(x, z) == 1 else (B.SANDSTONE, 2)))
+    return True
+
+
+STYLE = G.Style(
+    "brittlebush",
+    body=lambda w, x, z, h: ground(w, x, z, h),
+    faces={"edge": EDGE, "deck": DECK_EDGE},
+    seam=SPRUCE_PLANKS,
+    fills={"bed": _bed(True), "grass": _bed(False), "sand": _sand, "keep": _keep},
+    choose=lambda sec, lot: ["keep"] if "keep" in sec.tags else ["bed", "sand"],
+    params={"dye": 14})
+
+
+def cap(w, x, z, h, inward, panel=None):
+    """A ground edge, top down: an upside-down spruce stair, its full side inward; brick; a dark-oak slab; an
+    upside-down dark-oak stair; black clay (EDGE). Panel "inner" and "side" are the birch panel's middle and its
+    frame; "deck" is the edge over open air, without the black band."""
+    if panel == "deck":
+        DECK_EDGE.lay(w, x, z, h, inward, accents=False)
+    elif panel in ("inner", "side"):
+        EDGE.lay(w, x, z, h, inward, along=0, pos=2 if panel == "inner" else 0, air=99)
+    else:
+        EDGE.lay(w, x, z, h, inward, accents=False)
+
+
 # ---- the build -------------------------------------------------------------------------------------------
-def build(w, cells, only=None, rng=None, dye=14, fill=None):
+def sections(cells, fill=None):
+    """The blueprint's pieces as the grammar's sections, one a piece, its cells' boxes; a keep tagged "keep", and
+    `fill` (a piece's cells, cells) -> its fill's name, or None for the style's choice."""
+    label, _ = pieces(cells)
+    out = []
+    for n in sorted(set(label.values())):
+        comp = sorted(p for p, v in label.items() if v == n)
+        c0 = cells[comp[0]]
+        out.append(G.Section(tuple((cx * CELL, cz * CELL, cx * CELL + CELL - 1, cz * CELL + CELL - 1)
+                                   for cx, cz in comp), c0.y, c0.section or f"piece-{n}",
+                             fill=fill(comp, cells) if fill else None,
+                             tags=frozenset({"keep"} if c0.kind == "keep" else ())))
+    return out
+
+
+def build(w, cells, only=None, rng=None, dye=14, fill=None, style=STYLE):
     """Every block of the cells in `only` (default all), each read against the whole blueprint, so a face on the
-    edge of one team's part is right where it meets another's. `dye` colours the keep's ring. fill(piece's cells,
-    cells) may choose a rectangle's fill: "bed" (grass and its birch, the default), "grass" (no tree) or "sand"."""
+    edge of one team's part is right where it meets another's: the pieces through the grammar in `style` (their
+    ground, edges, outlines and fills), and the rest by hand: zones, stairs, hollows under decks and their pillars.
+    `dye` colours the keep's ring. fill(piece's cells, cells) may choose a piece's fill: "bed" (grass and its
+    birch, the default for a rectangle), "grass" (no tree) or "sand"; a fill that cannot be laid falls back."""
     import random
     rng = rng or random.Random(0)
     only = set(cells) if only is None else set(only)
-    G, T = heights(cells)
-    label, theme = pieces(cells)
-
-    def g(x, z):
-        return G.get((x, z), -1)
+    Gr, T = heights(cells)
 
     def cell_of(x, z):
         return (x // CELL, z // CELL)
 
-    # where each column of a flat piece lies in its piece: blocks in from the piece's edge
-    piece_mask, piece_d = {}, {}
-    for n in set(label.values()):
-        cs = [c for c, v in label.items() if v == n]
-        xs = [c[0] for c in cs]
-        zs = [c[1] for c in cs]
-        bx0, bz0 = min(xs) * CELL - 1, min(zs) * CELL - 1
-        m = np.zeros(((max(xs) - min(xs) + 1) * CELL + 2, (max(zs) - min(zs) + 1) * CELL + 2), bool)
-        for cx, cz in cs:
-            m[cx * CELL - bx0:(cx + 1) * CELL - bx0, cz * CELL - bz0:(cz + 1) * CELL - bz0] = True
-        d = ndimage.distance_transform_cdt(m, metric="chessboard") - 1
-        piece_mask[n], piece_d[n] = (bx0, bz0), d
-
-    def depth(x, z):
-        n = label[cell_of(x, z)]
-        bx0, bz0 = piece_mask[n]
-        return int(piece_d[n][x - bx0, z - bz0])
-
-    for (cx, cz) in sorted(only):
+    for (cx, cz) in sorted(only):                                          # the zones, the hollows, the stairs
         c = cells[(cx, cz)]
         x0, z0 = cx * CELL, cz * CELL
         cols = [(x0 + i, z0 + k) for i in range(CELL) for k in range(CELL)]
@@ -291,83 +328,39 @@ def build(w, cells, only=None, rng=None, dye=14, fill=None):
                         ex = x0 + (CELL - 1 if dx > 0 else 0 if dx < 0 else 2)
                         ez = z0 + (CELL - 1 if dz > 0 else 0 if dz < 0 else 2)
                         w.set(ex, 1, ez, B.COBWEB)
-            continue
-        if c.kind not in LAND:
-            continue
-        if c.kind == "stacked" and c.under:
-            _under(w, c, x0, z0, cells, G, T, rng)
-        for x, z in cols:
-            h = T[(x, z)]
-            if not (c.kind == "stacked" and c.under):
-                ground(w, x, z, h, fill=(B.STONEBRICK, 0) if c.kind == "stair" else (B.STONE, 0))
-            out = [d for d, (dx, dz) in DIRS.items() if T.get((x + dx, z + dz), -1) < h - 1]
-            if c.kind == "stair":
+        elif c.kind == "stacked" and c.under:
+            _under(w, c, x0, z0, cells, Gr, T, rng)
+        elif c.kind == "stair":
+            for x, z in cols:
+                h = T[(x, z)]
+                ground(w, x, z, h, fill=(B.STONEBRICK, 0))
+                out = [d for d, (dx, dz) in DIRS.items() if T.get((x + dx, z + dz), -1) < h - 1]
                 side = [d for d in out if d not in (c.rises, OPP[c.rises])]
                 if side:                                                   # its side: the ground's own edge,
-                    cap(w, x, z, h, OPP[side[0]])                          # stepping down with the rows
+                    EDGE.lay(w, x, z, h, OPP[side[0]], accents=False)      # stepping down with the rows
                     continue
                 r = _row(c.rises, x - x0, z - z0)
-                top = SB_SLAB if r % 2 == 0 else (B.STONEBRICK, 0)
-                w.set(x, h, z, *top)
+                w.set(x, h, z, *(SB_SLAB if r % 2 == 0 else (B.STONEBRICK, 0)))
                 if r == 4:                                                 # the last half step, a slab on a block
                     w.set(x, h - 1, z, B.STONEBRICK)
-                continue
-            if c.kind == "stacked" and c.under:
-                if out:                                                    # a deck's edge: the cap, no black clay
-                    cap(w, x, z, h, OPP[out[0]], panel="deck")
-                continue
-            if c.kind == "stacked" and any(cells.get(cell_of(x + dx, z + dz), Cell("void")).under
-                                           for dx, dz in DIRS.values()):
-                w.set(x, h - 4, z, *BLACK_CLAY)                            # the line under the deck, on its wall
-            if out:
-                along = (z // CELL) if out[0] in ("e", "w") else (x // CELL)
-                pos = (z - z0) if out[0] in ("e", "w") else (x - x0)
-                dx, dz = DIRS[out[0]]
-                open_face = T.get((x + dx, z + dz), -1) <= h - 5               # room for the whole panel
-                cap(w, x, z, h, OPP[out[0]],
-                    panel=None if along % 2 or not open_face else "inner" if 1 <= pos <= 3 else "side")
-        if c.kind == "stair":
+    # the pieces, in the grammar: a section a piece
+    secs = sections(cells, fill)
+    stairs = {xz: h for xz, h in T.items() if cells[cell_of(*xz)].kind == "stair"}
+    gr = G.Ground(secs, tops=stairs)
+    hollow = {(x, z) for (cx, cz) in only if cells[(cx, cz)].kind == "stacked" and cells[(cx, cz)].under
+              for x in range(cx * CELL, cx * CELL + CELL) for z in range(cz * CELL, cz * CELL + CELL)}
+    mine = [n for n, s in enumerate(secs) if any(cell_of(*b[:2]) in only for b in s.boxes)]
+    G.lay(w, gr, style, only=mine, rng=rng, params={"dye": dye}, bodiless=hollow,
+          where=lambda x, z: cell_of(x, z) in only, face_of=lambda x, z: "deck" if (x, z) in hollow else "edge")
+    for (cx, cz) in sorted(only):                                          # black under a deck, on its wall
+        c = cells[(cx, cz)]
+        if c.kind != "stacked" or c.under:
             continue
-        # the frame and the field of a flat piece
-        n = label[(cx, cz)]
-        field = []
-        for x, z in cols:
-            h = T[(x, z)]
-            if any(T.get((x + dx, z + dz), -1) < h - 1 for dx, dz in DIRS.values()):
-                continue                                                   # the rim, laid with the cap
-            dd = depth(x, z)
-            if dd == 0:                                                    # the outline against a wall or a stair:
-                w.set(x, h, z, *SPRUCE_PLANKS)                             # one block, as the rim is elsewhere
-            elif c.kind == "keep":
-                w.set(x, h, z, *((B.STAINED_CLAY, dye) if dd == 1 else (B.SANDSTONE, 2)))
-            else:
-                field.append((x, z))
-        if field:
-            sand(w, field, c.y, rng)
-    # the inlay's beds, filling a piece's inside up to its outline: one bed for a piece that is a rectangle of
-    # cells; a piece of any other shape keeps its sand
-    if any(t == "inlay" for t in theme.values()):
-        used = set()
-        for (cx, cz) in sorted(only):
-            c = cells[(cx, cz)]
-            if c.kind not in ("flat", "stacked") or theme[label[(cx, cz)]] != "inlay" or (cx, cz) in used:
-                continue
-            n = label[(cx, cz)]
-            comp = [p for p, v in label.items() if v == n]
-            xs, zs = [p[0] for p in comp], [p[1] for p in comp]
-            rect = len(comp) == (max(xs) - min(xs) + 1) * (max(zs) - min(zs) + 1)
-            if not (rect and all(p in only and cells[p].kind in ("flat", "stacked") for p in comp)):
-                continue                                                    # not a rectangle: sand only
-            block = comp
-            used |= set(block)
-            how = (fill(comp, cells) if fill else None) or "bed"
-            if how == "sand":
-                continue
-            inner = [(x, z) for bx, bz in block for x in range(bx * CELL, bx * CELL + CELL)
-                     for z in range(bz * CELL, bz * CELL + CELL) if depth(x, z) >= 1]
-            xs, zs = [p[0] for p in inner], [p[1] for p in inner]
-            if inner and max(xs) - min(xs) >= 5 and max(zs) - min(zs) >= 5:
-                bed(w, min(xs), min(zs), max(xs), max(zs), c.y, rng, trees=(how == "bed"))
+        for i in range(CELL):
+            for k in range(CELL):
+                x, z = cx * CELL + i, cz * CELL + k
+                if any(cells.get(cell_of(x + dx, z + dz), Cell("void")).under for dx, dz in DIRS.values()):
+                    w.set(x, T[(x, z)] - 4, z, *BLACK_CLAY)
     for p in sorted(only):                                                 # the under-sections' pillars, last
         c = cells[p]
         if c.kind == "stacked" and c.under:

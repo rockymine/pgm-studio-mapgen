@@ -935,3 +935,36 @@ class Brittle(unittest.TestCase):
         self.assertIn(B.LOG, {w.id(x, 17, z) for x in range(-20, -10) for z in range(-20, -10)})    # a bed's birch
         self.assertEqual([w.id(-11, y, -18) for y in (16, 15, 14)],                  # over three: brick and dark oak
                          [B.SPRUCE_STAIRS, B.BRICK, B.WOOD_SLAB])
+
+
+class Grammar(unittest.TestCase):
+    def test_split_and_tile_cut_a_box_into_rectangles(self):
+        from pgmvox import grammar as G
+        secs = G.split((0, 0, 9, 6), 2, 2, y=10)
+        self.assertEqual([s.boxes[0] for s in secs], [(0, 0, 4, 3), (0, 4, 4, 6), (5, 0, 9, 3), (5, 4, 9, 6)])
+        self.assertEqual(len(G.tile((0, 0, 19, 9), 5, y=10)), 8)
+
+    def test_a_style_lays_faces_seams_and_fills_by_rule(self):
+        from pgmvox import grammar as G
+        courses = [(B.STONEBRICK, 0), (B.BRICK, 0), (B.STONE, 0)]
+        face = G.Face(courses, G.Accent(4, frame=[(B.STONEBRICK, 0)] * 3, inner=[(B.STONEBRICK, 0), (B.GLASS, 0),
+                                                                                 (B.GLASS, 0)], every=2, min_air=3))
+        laid = []
+
+        def checker(w, lot, rng):
+            for x, z in lot.cols:
+                w.set(x, lot.y, z, B.WOOL, (x + z) % 2)
+            laid.append(lot.section.name)
+            return True
+        style = G.Style("test", body=lambda w, x, z, h: [w.set(x, y, z, B.STONE) for y in range(h)],
+                        faces={"edge": face}, seam=(B.PLANKS, 0), fills={"checker": checker},
+                        choose=lambda sec, lot: ["checker"])
+        secs = G.split((0, 0, 7, 3), 2, 1, y=10, name="a") + [G.Section(((0, 4, 7, 7),), 7, "low")]
+        g = G.Ground(secs)
+        w = World(-2, -2, 12, 12, sy=16)
+        G.lay(w, g, style)
+        self.assertEqual(g.depth(3, 1), 0)                                   # the seam between two sections
+        self.assertEqual(w.get(3, 10, 1), (B.PLANKS, 0))
+        self.assertEqual(w.id(1, 9, 3), B.GLASS)                             # an accent bay over a drop of three
+        self.assertEqual(w.id(5, 6, 7), B.BRICK)                             # the next bay along is plain
+        self.assertEqual(sorted(laid), ["a-0-0", "a-1-0", "low"])
