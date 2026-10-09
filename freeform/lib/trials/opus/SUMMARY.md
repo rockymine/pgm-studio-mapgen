@@ -1,5 +1,10 @@
 # Five trial boards on pgmvox — summary
 
+**The worlds were written afterwards.** Every board was built with the write step skipped, so only its map.xml
+reached the branch. Each world was then regenerated with the same library, pgmvox 0.10.0, and written through the
+studio's Anvil writer. Its walk read back identical to the one committed here, so it is the world these renders
+show.
+
 **Five boards were planned, checked, sketched, built, read back and written up on pgmvox 0.10.0, one for each mode
 asked.** Each folder holds the port layout (`scripts/plan.py`, `plan_check.py`, `sketch.py`, `gen.py`,
 `mapxml.py`, `walk.py`, `renders.py`), its renders and a `REPORT.md` with its friction log. `common.py` holds what

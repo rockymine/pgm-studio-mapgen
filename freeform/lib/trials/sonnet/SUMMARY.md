@@ -1,5 +1,10 @@
 # Sonnet trial: five boards
 
+**The worlds were written afterwards.** Every board was built with the write step skipped, so only its map.xml
+reached the branch. Each world was then regenerated with the same library, pgmvox 0.10.0, and written through the
+studio's Anvil writer. Its walk read back identical to the one committed here, so it is the world these renders
+show.
+
 This file was written by the coordinating session from the trial agent's final message. The agent's tools refused
 it the writing of its own reports, so what follows is its account, lightly edited into tables and lists. It has no
 per-board REPORT.md; the notes under each board below are what it gave instead.
