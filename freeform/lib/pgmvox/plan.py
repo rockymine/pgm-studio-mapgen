@@ -21,12 +21,18 @@ from .orient import OPS, NAMES, turn_xz, vec
 
 
 class Symmetry:
-    """How a board's two halves relate: "half" (a half turn), "mirror_x" or "mirror_z", about an axis; the
-    default axis (-0.5, -0.5) lies between blocks -1 and 0, so (x, z) -> (-1 - x, -1 - z) under a half turn."""
+    """How a board's parts relate: "half" (a half turn), "mirror_x" or "mirror_z" for two teams, "cw" (a quarter
+    turn clockwise, (x, z) -> (-1 - z, x) about the default axis) for four; the studio's names "rot_180" and
+    "rot_90" are taken for "half" and "cw". The default axis (-0.5, -0.5) lies between blocks -1 and 0, so
+    (x, z) -> (-1 - x, -1 - z) under a half turn. `order` is how many images a part has, itself included."""
+
+    NAMES = {"rot_180": "half", "rot_90": "cw"}
 
     def __init__(self, op="half", axis=(-0.5, -0.5)):
-        assert op in ("half", "mirror_x", "mirror_z")
+        op = self.NAMES.get(op, op)
+        assert op in ("half", "mirror_x", "mirror_z", "cw"), op
         self.op, self.axis = op, axis
+        self.order = 4 if op == "cw" else 2
 
     def point(self, x, z):
         """The image of a point. A block (whole numbers) lands on a block; a point between blocks, such as a label

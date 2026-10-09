@@ -116,6 +116,14 @@ class Teams:
             return team
         return ids[1 - ids.index(team)]
 
+    def next(self, team, k=1):
+        """The team k after this one in the order given, round again past the last: the team a quarter turn
+        carries a part to. For two teams it is the other."""
+        ids = [t[0] for t in self.teams]
+        if team is None or team not in ids:
+            return team
+        return ids[(ids.index(team) + k) % len(ids)]
+
     def short(self, team):
         return team[:-5] if team and team.endswith("-team") else team
 
@@ -129,13 +137,16 @@ class Teams:
 # ---- the objectives ---------------------------------------------------------------------------------------
 class Objective:
     def image(self, sym, teams):
-        """This objective for the other team, through the symmetry."""
+        """This objective for the next team, through the symmetry: the other team of two, or under a quarter turn
+        the team after it in the order the teams were given."""
         new = self.turned(sym)
         team = getattr(self, "team", None)
-        other = teams.other(team)
+        other = teams.next(team)
         changes = {}
         if team is not None:
             changes["team"] = other
+        if getattr(self, "keeper", None):
+            changes["keeper"] = teams.next(self.keeper)
         if "id" in {f.name for f in fields(self)} and self.id and team and teams.short(team) in self.id:
             changes["id"] = self.id.replace(teams.short(team), teams.short(other))
         return replace(new, **changes) if changes else new
@@ -319,11 +330,15 @@ class Wool(Objective):
     spawn_at: tuple = None
     delay: str = "1.5s"
     protect_room: bool = True
+    keeper: str = None                   # the team keeping it: the other team of two; name it for more than two
 
     def turned(self, sym):
         return replace(self, slot=turn_point(self.slot, sym), found=turn_point(self.found, sym) if self.found else None,
                        room=self.room.image(sym) if self.room else None,
                        spawn_at=turn_point(self.spawn_at, sym) if self.spawn_at else None)
+
+    def keeper_of(self, teams):
+        return self.keeper or teams.other(self.team)
 
     @property
     def id(self):
@@ -344,8 +359,8 @@ class Wool(Objective):
         doc.child("wools", craftable=False).append(
             E("wool", team=self.team, color=self.color.replace("_", " "), monument=mid,
               location=f"{loc[0] + 0.5},{loc[1]},{loc[2] + 0.5}"))
-        if self.room:
-            keeper = teams.other(self.team)
+        if self.room and f"{self.color}-room" not in doc.ids():   # a wool three teams capture has one room
+            keeper = self.keeper_of(teams)
             rid = doc.region(f"{self.color}-room", self.room.cuboid())
             doc.apply(enter=f"not-{teams.short(keeper)}", region=rid, message="You may not enter your own wool room!")
             if self.spawner and self.found:
@@ -388,7 +403,8 @@ def wool_rooms(doc, teams, wools, materials=WOOLROOM_MATERIALS):
                                        E("all", E("cause", text="player"),
                                          E("any", E("material", text="water"), E("material", text="stationary water")))))
     for keeper, _, _ in teams.teams:
-        rooms = [o for o in wools if o.room and o.protect_room and teams.other(o.team) == keeper]
+        rooms = [o for o in wools if o.room and o.protect_room and o.keeper_of(teams) == keeper]
+        rooms = list({o.color: o for o in rooms}.values())
         if not rooms:
             continue
         t = teams.short(keeper)
@@ -543,15 +559,21 @@ class Objectives:
         self.items = []
 
     def add(self, obj, mirror=True, **image):
-        """Add an objective and, if it is a team's and the board is symmetric, its image for the other team;
-        `image` overrides fields of the image (a wool's colour, a name)."""
+        """Add an objective and, if it is a team's and the board is symmetric, its images for the other teams: one
+        for a half turn or a mirror, three for a quarter turn, each the last carried on. `image` overrides fields
+        of every image (a wool's colour, a name); a list or tuple value gives each image its own, in order."""
         self.items.append(obj)
         if mirror and self.symmetry is not None and getattr(obj, "team", None) is not None:
-            img = obj.image(self.symmetry, self.teams)
-            if image:
-                img = replace(img, **image)
-            if img is not obj:
-                self.items.append(img)
+            prev = obj
+            for k in range(getattr(self.symmetry, "order", 2) - 1):
+                img = prev.image(self.symmetry, self.teams)
+                if image:
+                    img = replace(img, **{f: (v[k] if isinstance(v, (list, tuple)) and not isinstance(v, str)
+                                              and f not in ("slot", "found", "at", "spawn_at") else v)
+                                          for f, v in image.items()})
+                if img is not prev:
+                    self.items.append(img)
+                prev = img
         return obj
 
     def of(self, kind):

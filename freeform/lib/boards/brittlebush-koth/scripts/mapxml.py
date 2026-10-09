@@ -1,4 +1,4 @@
-"""Write Ocotillo's map.xml: four teams, their spawns and the five hills from the plan's objectives; the kit, with
+"""Write Brittlebush KotH's map.xml: four teams, their spawns and the five hills from the plan's objectives; the kit, with
 sixteen leaves to bridge with; a leaf and a golden apple for every kill; the golden apples on the inner islands and
 the arrows on the landings; building only over the board; the score and the time.
 """
@@ -6,7 +6,7 @@ import plan as P
 from pgmvox.mapxml import Doc, E, item
 
 O = P.objectives()
-d = Doc("Ocotillo", "1.0.0", "Hold the hills: the Dais in the middle, and the islands between the spawns.", "koth")
+d = Doc("Brittlebush KotH", "1.0.0", "Hold the hills: the Dais in the middle, and the islands between the spawns.", "koth")
 d.add(E("authors", E("author", text="Claude (freeform generator, pgmvox)")))
 O.write(d)                                    # teams, spawns, the hills (the Dais worth two), the observers' point
 
@@ -37,7 +37,7 @@ def spawner(rid, x, z, y, material, amount, delay, most):
 
 spawners = [spawner(f"apples-{k}", x, z, P.LEVEL[2] + 1, "golden apple", 1, "30s", 1)
             for k, (x, z) in enumerate(P.APPLES)]
-spawners += [spawner(f"arrows-{k}", x, z, P.LEVEL[1] + 1, "arrow", 4, "10s", 8)
+spawners += [spawner(f"arrows-{k}", x, z, P.LEVEL[0] + 1, "arrow", 4, "10s", 8)
              for k, (x, z) in enumerate(P.ARROWS)]
 d.add(E("spawners", *spawners))
 d.child("score").append(E("limit", text=400))

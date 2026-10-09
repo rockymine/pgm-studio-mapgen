@@ -26,6 +26,7 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `facade` | face patterns (`band`, `courses`, `flutes`, `panels`, `slits`, `checker`, `windows`, `glyph_row`, `word`) set back or flush on an `extrude`d mass, `coffer`, `top_course`; floor fields (`border`, `medallion`, `corners`, `diamonds`, `steps`, `star`, `cross`, `tiles`) composed by `first_of` and laid by `carpet` |
 | `terrain` | `slope_deg` as the studio reads it; `lay` (ground painted by slope, a snow line); `Strata`, `bed_offset` and `beds` (rock beds that tilt and fold); `mountain_ring`; `underside` and `root_depth` (cones, flutes, spires); `cloud_deck` |
 | `route` | `find` (a least-cost route over the ground, held to a grade, switchbacks and all), `network` (places joined by roads that share their trunk), `simplify`, `smooth`, `footprint`, `pave` (surface and bridges), `steps` |
+| `brittle` | the Brittlebush style from a blueprint of five-block cells: flat, keep, stair, stacked, gap and water cells; the five-course cap with its birch panels, frames, sand fields and double-ringed beds, `tower`, `heart` |
 | `props` | small built things placed on a floor, facing a way: `stall` and `stalls` (a market row), `lamp`; chests drawn as rows of letters (`laid`), with a defence chest and a wool room's gear |
 | `under` | caves and mines carved into a built world: `tunnel` (a level-floored passage), `chamber`, `carve`, `dress_cave` (floors, stalactites, ore), `gallery_line` and `gallery` (timbered, railed, stepped), `shaft` |
 | `trees` | hand-built trees planted whole: `library` (the studio's copied trees), `load` (a board's own cut), `kinds`, `plant` (turned, refused whole), `scatter` (a wood with its crowns apart) |
@@ -142,6 +143,32 @@ enchantments, written into the world as the chest's own tag.
 
 **The capture rebuild proves the set.** With its local walk and rules replaced by these, its plan check and its
 walks read the same to the last digit, and the studio reads its map.xml as valid.
+
+## Four teams
+
+**A board for four teams is drawn once and turned a quarter three times.** `Symmetry("rot_90")` (or "cw") turns
+(x, z) to (-1 - z, x), the studio's own rotation, and `orient.turn_world(w, "cw", keep)` copies a part of a square
+world onto its next image with every block's data turned. `Objectives.add` fans an objective to all four teams,
+each image the last carried on, and `Teams.next` names the team it lands on.
+
+**A wool has a keeper when more than two teams play.** Three teams capture each wool, so `Wool(keeper=...)` names
+the team keeping it, and its room, its entry rule and its spawner are written once however many teams capture it.
+
+## The Brittlebush style
+
+**`pgmvox.brittle` builds a blueprint of five-block cells in the look of Brittlebush.** A cell is flat ground, a
+keep, a stair one level up in half steps of slab and block, a stacked deck over an underfloor, a gap or water.
+`build(w, cells, only=...)` lays the cells in `only`, reading each against the whole blueprint, so an edge is
+right where one team's part meets another's.
+
+**Every edge carries the five-course cap, and every other cell along it a birch panel framed in black clay.** The
+black clay runs unbroken along the edge, at the foot of the plain cells and up round each panel. A stair's sides
+carry the same cap, stepping down with its rows.
+
+**A piece is framed, then filled by its shape.** A piece one cell wide is a sand field, sand mixed with upside-down
+sandstone stairs, cacti and dead bushes on the pure sand alone. A piece with two cells by two in it is filled with
+grass inside two rings of sandstone stairs, the outer rising inward and the inner outward, with a birch when the
+grass is wide enough.
 
 ## Storeys and solids
 

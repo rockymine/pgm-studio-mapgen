@@ -1,0 +1,170 @@
+<map proto="1.5.0">
+    <name>Brittlebush KotH</name>
+    <version>1.0.0</version>
+    <objective>Hold the hills: the Dais in the middle, and the islands between the spawns.</objective>
+    <gamemode>koth</gamemode>
+    <authors>
+        <author>Claude (freeform generator, pgmvox)</author>
+    </authors>
+    <teams>
+        <team id="red-team" color="red" max="10">Red</team>
+        <team id="blue-team" color="blue" max="10">Blue</team>
+        <team id="green-team" color="green" max="10">Green</team>
+        <team id="yellow-team" color="yellow" max="10">Yellow</team>
+    </teams>
+    <filters>
+        <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
+        <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
+        <team id="only-green">green-team</team>
+        <not id="not-green">
+            <team>green-team</team>
+        </not>
+        <team id="only-yellow">yellow-team</team>
+        <not id="not-yellow">
+            <team>yellow-team</team>
+        </not>
+        <not id="not-void">
+            <void/>
+        </not>
+    </filters>
+    <spawns>
+        <spawn team="red-team" kit="spawn-kit" yaw="315">
+            <region>
+                <point>-57.5,23,-57.5</point>
+            </region>
+        </spawn>
+        <spawn team="blue-team" kit="spawn-kit" yaw="45">
+            <region>
+                <point>57.5,23,-57.5</point>
+            </region>
+        </spawn>
+        <spawn team="green-team" kit="spawn-kit" yaw="135">
+            <region>
+                <point>57.5,23,57.5</point>
+            </region>
+        </spawn>
+        <spawn team="yellow-team" kit="spawn-kit" yaw="225">
+            <region>
+                <point>-57.5,23,57.5</point>
+            </region>
+        </spawn>
+        <default yaw="0">
+            <region>
+                <point>0.5,40,0.5</point>
+            </region>
+        </default>
+    </spawns>
+    <regions>
+        <cuboid min="-65,0,-65" max="-50,128,-50" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="50,0,-65" max="65,128,-50" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="50,0,50" max="65,128,65" id="green-spawn"/>
+        <apply enter="only-green" region="green-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="green-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-65,0,50" max="-50,128,65" id="yellow-spawn"/>
+        <apply enter="only-yellow" region="yellow-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="yellow-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-5,10,-5" max="5,15,5" id="centre-capture"/>
+        <cuboid min="-5,10,-5" max="5,11,5" id="centre-pad"/>
+        <cuboid min="-5,13,-63" max="5,18,-53" id="north-capture"/>
+        <cuboid min="-5,13,-63" max="5,14,-53" id="north-pad"/>
+        <cuboid min="53,13,-5" max="63,18,5" id="east-capture"/>
+        <cuboid min="53,13,-5" max="63,14,5" id="east-pad"/>
+        <cuboid min="-5,13,53" max="5,18,63" id="south-capture"/>
+        <cuboid min="-5,13,53" max="5,14,63" id="south-pad"/>
+        <cuboid min="-63,13,-5" max="-53,18,5" id="west-capture"/>
+        <cuboid min="-63,13,-5" max="-53,14,5" id="west-pad"/>
+        <apply block-place="not-void" message="You may not build in the void!"/>
+        <cuboid min="-1.0,14,-38.5" max="1.0,16,-36.5" id="apples-0"/>
+        <cuboid min="-4.5,14,-42" max="4.5,18,-33" id="apples-0-near"/>
+        <cuboid min="36.5,14,-1.0" max="38.5,16,1.0" id="apples-1"/>
+        <cuboid min="33,14,-4.5" max="42,18,4.5" id="apples-1-near"/>
+        <cuboid min="-1.0,14,36.5" max="1.0,16,38.5" id="apples-2"/>
+        <cuboid min="-4.5,14,33" max="4.5,18,42" id="apples-2-near"/>
+        <cuboid min="-38.5,14,-1.0" max="-36.5,16,1.0" id="apples-3"/>
+        <cuboid min="-42,14,-4.5" max="-33,18,4.5" id="apples-3-near"/>
+        <cuboid min="-1.0,8,-16.0" max="1.0,10,-14.0" id="arrows-0"/>
+        <cuboid min="-4.5,8,-19.5" max="4.5,12,-10.5" id="arrows-0-near"/>
+        <cuboid min="14.0,8,-1.0" max="16.0,10,1.0" id="arrows-1"/>
+        <cuboid min="10.5,8,-4.5" max="19.5,12,4.5" id="arrows-1-near"/>
+        <cuboid min="-1.0,8,14.0" max="1.0,10,16.0" id="arrows-2"/>
+        <cuboid min="-4.5,8,10.5" max="4.5,12,19.5" id="arrows-2-near"/>
+        <cuboid min="-16.0,8,-1.0" max="-14.0,10,1.0" id="arrows-3"/>
+        <cuboid min="-19.5,8,-4.5" max="-10.5,12,4.5" id="arrows-3-near"/>
+    </regions>
+    <king>
+        <hills required="false" neutral-state="true" incremental="true" show-progress="true" time-multiplier="0" permanent="false">
+            <hill id="centre" name="the Dais" capture-region="centre-capture" progress-display-region="centre-pad" owner-display-region="centre-pad" capture-time="5s" points="2"/>
+            <hill id="north" name="the North Island" capture-region="north-capture" progress-display-region="north-pad" owner-display-region="north-pad" capture-time="5s" points="1"/>
+            <hill id="east" name="the East Island" capture-region="east-capture" progress-display-region="east-pad" owner-display-region="east-pad" capture-time="5s" points="1"/>
+            <hill id="south" name="the South Island" capture-region="south-capture" progress-display-region="south-pad" owner-display-region="south-pad" capture-time="5s" points="1"/>
+            <hill id="west" name="the West Island" capture-region="west-capture" progress-display-region="west-pad" owner-display-region="west-pad" capture-time="5s" points="1"/>
+        </hills>
+    </king>
+    <score>
+        <limit>400</limit>
+    </score>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="stone sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true"/>
+            <item slot="2" material="iron pickaxe" unbreakable="true"/>
+            <item slot="3" material="leaves" amount="16"/>
+            <item slot="4" material="cooked beef" amount="8"/>
+            <item slot="8" material="arrow" amount="16"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true"/>
+            <leggings material="leather leggings" unbreakable="true" team-color="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <itemkeep>
+        <item>stone sword</item>
+        <item>bow</item>
+        <item>iron pickaxe</item>
+    </itemkeep>
+    <kill-rewards>
+        <kill-reward>
+            <item material="leaves" amount="1"/>
+            <item material="golden apple"/>
+        </kill-reward>
+    </kill-rewards>
+    <spawners>
+        <spawner spawn-region="apples-0" player-region="apples-0-near" delay="30s" max-entities="1">
+            <item material="golden apple" amount="1"/>
+        </spawner>
+        <spawner spawn-region="apples-1" player-region="apples-1-near" delay="30s" max-entities="1">
+            <item material="golden apple" amount="1"/>
+        </spawner>
+        <spawner spawn-region="apples-2" player-region="apples-2-near" delay="30s" max-entities="1">
+            <item material="golden apple" amount="1"/>
+        </spawner>
+        <spawner spawn-region="apples-3" player-region="apples-3-near" delay="30s" max-entities="1">
+            <item material="golden apple" amount="1"/>
+        </spawner>
+        <spawner spawn-region="arrows-0" player-region="arrows-0-near" delay="10s" max-entities="8">
+            <item material="arrow" amount="4"/>
+        </spawner>
+        <spawner spawn-region="arrows-1" player-region="arrows-1-near" delay="10s" max-entities="8">
+            <item material="arrow" amount="4"/>
+        </spawner>
+        <spawner spawn-region="arrows-2" player-region="arrows-2-near" delay="10s" max-entities="8">
+            <item material="arrow" amount="4"/>
+        </spawner>
+        <spawner spawn-region="arrows-3" player-region="arrows-3-near" delay="10s" max-entities="8">
+            <item material="arrow" amount="4"/>
+        </spawner>
+    </spawners>
+    <time>15m</time>
+    <maxbuildheight>44</maxbuildheight>
+</map>
+

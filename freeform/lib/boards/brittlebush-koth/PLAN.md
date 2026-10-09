@@ -1,6 +1,6 @@
-# Ocotillo — the layout
+# Brittlebush KotH — the layout
 
-**Ocotillo is a king-of-the-hill board for four teams with five hills, laid out as a blueprint of five-block
+**Brittlebush KotH is a king-of-the-hill board for four teams with five hills, laid out as a blueprint of five-block
 cells in the Brittlebush style.** It began as a capture-the-wool layout; the review found every wool too easy to
 reach, with no real middle and gaps too small to make bridging matter, and turned it to capture points. This is
 the layout and the map.xml, for review. The sketch is `renders/00-plan-sketch.png`, the checker's table

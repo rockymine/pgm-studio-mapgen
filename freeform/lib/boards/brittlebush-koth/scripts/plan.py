@@ -1,4 +1,4 @@
-"""Ocotillo: a king-of-the-hill board for four teams in the Brittlebush style, laid out as a blueprint of cells.
+"""Brittlebush KotH: a king-of-the-hill board for four teams in the Brittlebush style, laid out as a blueprint of cells.
 
 Five hills: the dais in the middle, and one on each border, on the island between two neighbouring spawns. Each
 team spawns in its keep with sixteen leaves to bridge with, and takes a leaf and a golden apple for every kill;
@@ -7,12 +7,10 @@ middle.
 
 Every piece is made of cells five blocks a side, and a cell is one of a handful of pieces:
 
-    flat      level ground at one of five levels, three blocks apart (7, 10, 13, 16, 19)
+    flat      level ground at one of six levels, three blocks apart (7, 10, 13, 16, 19, 22)
     stair     a ramp one cell long that climbs one level, three blocks in five, in half steps of a stone-brick
               slab and a stone-brick block in turn; every change of level is one of these
-    stacked   a deck one level over an underfloor: the underfloor is covered ground a player walks under the deck
     keep      a team's spawn, flat at the top level
-    tower     a team's landmark, a tower of narrow storeys on its yard with the team's heart over it
     gap       void a player may build over, marked by cobwebs on the floor of the void
     water     void with water at its foot, marked by cobwebs too
     void      nothing
@@ -40,32 +38,32 @@ import numpy as np  # noqa: E402
 from pgmvox.objectives import Box, Hill, Objectives, Observer, Spawn, Teams  # noqa: E402
 from pgmvox.plan import Raster  # noqa: E402
 
-BOARD = "ocotillo"
+BOARD = "brittlebush-koth"
 CELL = 5
 N = 13                                     # cells from a quadrant's outer corner to the middle
 X_MIN, X_MAX = -N * CELL, N * CELL - 1     # -65 .. 64
 Z_MIN, Z_MAX = X_MIN, X_MAX
-LEVEL = {1: 7, 2: 10, 3: 13, 4: 16, 5: 19}  # a level's floor block
-MAX_BUILD = 40
+LEVEL = {0: 7, 1: 10, 2: 13, 3: 16, 4: 19, 5: 22}  # a level's floor block
+MAX_BUILD = 44
 
 # red's quadrant, the cells on or above its diagonal, row b from the outer edge, a from the diagonal to the middle.
 # fN flat at level N; kN a deck at N over an underfloor at N-1; KN the keep; TN the tower's yard floor;
 # s< s> s^ sv a stair rising west, east, north (toward b 0) or south; ww a gap; ~~ water; .. void
 QUADRANT = [
     # a: 0   1   2   3   4   5   6   7   8   9   10  11  12
-    "K5 K5 K5 .. f4 f4 f4 .. f3 f3 f3 ww f2",          # b 0  the keep; the orchard; the terrace; an island
+    "K5 K5 K5 .. f4 f4 f4 .. f3 f3 f3 ww f2",          # b 0  the keep; the orchard; the terrace; a border hill
     "   K5 K5 s< f4 f4 f4 s< f3 f3 f3 s< f2",          # b 1  two cells of stair down out of the keep, and on, to
     "      K5 s< f4 f4 f4 s< f3 f3 f3 s< f2",          # b 2  the island and its hill between red and blue
-    "         .. s^ s^ .. .. .. .. .. .. ..",          # b 3  down from the orchard into the tower's yard
-    "            f3 f3 f3 s< k3 k3 k3 ww f2",          # b 4  the yard; the arbour; an inner island, its apples
-    "               f3 f3 s< k3 k3 k3 ww f2",          # b 5  the arbour: a deck at 13 over a walk at 10
-    "                  T3 T3 k3 k3 k3 ww f2",          # b 6  the tower
-    "                     T3 .. s^ s^ .. ..",          # b 7  up from the inner court onto the arbour's deck
-    "                        f2 f2 f2 .. ..",          # b 8  the inner court
-    "                           f2 f2 s< f1",          # b 9  down to a landing on the border, its arrows
-    "                              f2 s< f1",          # b 10
+    "         .. s^ s^ .. .. .. .. .. .. ..",          # b 3  down from the orchard into the yard
+    "            f3 f3 f3 s< f2 f2 f2 ww f2",          # b 4  the yard; down to the arbour; an inner island, apples
+    "               f3 f3 s< f2 f2 f2 ww f2",          # b 5
+    "                  ~~ ~~ f2 f2 f2 ww f2",          # b 6  the pond between the yard and the arbours
+    "                     ~~ .. s^ s^ .. ..",          # b 7  up from the inner court onto the arbour
+    "                        f1 f1 f1 .. ..",          # b 8  the inner court
+    "                           f1 f1 s< f0",          # b 9  down to a landing on the border, its arrows
+    "                              f1 s< f0",          # b 10
     "                                 ~~ sv",          # b 11 up from the landing onto the dais
-    "                                    f2",          # b 12 the dais, a quarter of it: the middle hill
+    "                                    f1",          # b 12 the dais, a quarter of it: the middle hill
 ]
 TEAMS = [("red-team", "Red", "red"), ("blue-team", "Blue", "blue"), ("green-team", "Green", "green"),
          ("yellow-team", "Yellow", "yellow")]
@@ -251,13 +249,13 @@ def _turned_point(x, z, k):
     return x, z
 
 
-# the hills, square pads on the floor at 10: the dais, and the island between red's and blue's spawns turned to
+# the hills, square pads on the floor: the dais at 7, and the island at 10 between red's and blue's spawns turned to
 # the other three borders; the order of the border hills follows the teams (north, east, south, west)
-HILL_Y = LEVEL[2]
+HILL_Y = LEVEL[2]                          # the border hills' floor; the Dais stands at LEVEL[1]
 CENTRE_HILL = (-5, -5, 4, 4)
 BORDER_HILL = (-5, -63, 4, -54)
-HILLS = [("centre", "the Dais", CENTRE_HILL, 2)] + \
-        [(f"{side}", f"the {side.title()} Island", _turned_box(BORDER_HILL, k), 1)
+HILLS = [("centre", "the Dais", CENTRE_HILL, 2, LEVEL[1])] + \
+        [(f"{side}", f"the {side.title()} Island", _turned_box(BORDER_HILL, k), 1, HILL_Y)
          for k, side in enumerate(("north", "east", "south", "west"))]
 # what grows where: golden apples on the inner islands, arrows on the landings, each between two neighbours
 APPLES = [_turned_point(-0.5, -38, k) for k in range(4)]
@@ -272,7 +270,7 @@ def objectives():
         box = keep_box(i)
         O.add(Spawn(team, (x, LEVEL[5] + 1, z), yaw=[315, 45, 135, 225][i], kit="spawn-kit",
                     area=Box(box[0], 0, box[1], box[2], 127, box[3]), protect=True), mirror=False)
-    for hid, name, (x0, z0, x1, z1), points in HILLS:
-        O.add(Hill(hid, name, Box(x0, HILL_Y, z0, x1, HILL_Y, z1), points=points, capture_time="5s"), mirror=False)
+    for hid, name, (x0, z0, x1, z1), points, y in HILLS:
+        O.add(Hill(hid, name, Box(x0, y, z0, x1, y, z1), points=points, capture_time="5s"), mirror=False)
     O.add(Observer((0, 40, 0)), mirror=False)
     return O

@@ -1,5 +1,5 @@
 <map proto="1.5.0">
-    <name>Ocotillo</name>
+    <name>Brittlebush KotH</name>
     <version>1.0.0</version>
     <objective>Hold the hills: the Dais in the middle, and the islands between the spawns.</objective>
     <gamemode>koth</gamemode>
@@ -36,22 +36,22 @@
     <spawns>
         <spawn team="red-team" kit="spawn-kit" yaw="315">
             <region>
-                <point>-57.5,20,-57.5</point>
+                <point>-57.5,23,-57.5</point>
             </region>
         </spawn>
         <spawn team="blue-team" kit="spawn-kit" yaw="45">
             <region>
-                <point>57.5,20,-57.5</point>
+                <point>57.5,23,-57.5</point>
             </region>
         </spawn>
         <spawn team="green-team" kit="spawn-kit" yaw="135">
             <region>
-                <point>57.5,20,57.5</point>
+                <point>57.5,23,57.5</point>
             </region>
         </spawn>
         <spawn team="yellow-team" kit="spawn-kit" yaw="225">
             <region>
-                <point>-57.5,20,57.5</point>
+                <point>-57.5,23,57.5</point>
             </region>
         </spawn>
         <default yaw="0">
@@ -75,23 +75,23 @@
         <apply block="never" region="yellow-spawn" message="You may not build in a spawn!"/>
         <cuboid min="-5,10,-5" max="5,15,5" id="centre-capture"/>
         <cuboid min="-5,10,-5" max="5,11,5" id="centre-pad"/>
-        <cuboid min="-5,10,-63" max="5,15,-53" id="north-capture"/>
-        <cuboid min="-5,10,-63" max="5,11,-53" id="north-pad"/>
-        <cuboid min="53,10,-5" max="63,15,5" id="east-capture"/>
-        <cuboid min="53,10,-5" max="63,11,5" id="east-pad"/>
-        <cuboid min="-5,10,53" max="5,15,63" id="south-capture"/>
-        <cuboid min="-5,10,53" max="5,11,63" id="south-pad"/>
-        <cuboid min="-63,10,-5" max="-53,15,5" id="west-capture"/>
-        <cuboid min="-63,10,-5" max="-53,11,5" id="west-pad"/>
+        <cuboid min="-5,13,-63" max="5,18,-53" id="north-capture"/>
+        <cuboid min="-5,13,-63" max="5,14,-53" id="north-pad"/>
+        <cuboid min="53,13,-5" max="63,18,5" id="east-capture"/>
+        <cuboid min="53,13,-5" max="63,14,5" id="east-pad"/>
+        <cuboid min="-5,13,53" max="5,18,63" id="south-capture"/>
+        <cuboid min="-5,13,53" max="5,14,63" id="south-pad"/>
+        <cuboid min="-63,13,-5" max="-53,18,5" id="west-capture"/>
+        <cuboid min="-63,13,-5" max="-53,14,5" id="west-pad"/>
         <apply block-place="not-void" message="You may not build in the void!"/>
-        <cuboid min="-1.0,11,-38.5" max="1.0,13,-36.5" id="apples-0"/>
-        <cuboid min="-4.5,11,-42" max="4.5,15,-33" id="apples-0-near"/>
-        <cuboid min="36.5,11,-1.0" max="38.5,13,1.0" id="apples-1"/>
-        <cuboid min="33,11,-4.5" max="42,15,4.5" id="apples-1-near"/>
-        <cuboid min="-1.0,11,36.5" max="1.0,13,38.5" id="apples-2"/>
-        <cuboid min="-4.5,11,33" max="4.5,15,42" id="apples-2-near"/>
-        <cuboid min="-38.5,11,-1.0" max="-36.5,13,1.0" id="apples-3"/>
-        <cuboid min="-42,11,-4.5" max="-33,15,4.5" id="apples-3-near"/>
+        <cuboid min="-1.0,14,-38.5" max="1.0,16,-36.5" id="apples-0"/>
+        <cuboid min="-4.5,14,-42" max="4.5,18,-33" id="apples-0-near"/>
+        <cuboid min="36.5,14,-1.0" max="38.5,16,1.0" id="apples-1"/>
+        <cuboid min="33,14,-4.5" max="42,18,4.5" id="apples-1-near"/>
+        <cuboid min="-1.0,14,36.5" max="1.0,16,38.5" id="apples-2"/>
+        <cuboid min="-4.5,14,33" max="4.5,18,42" id="apples-2-near"/>
+        <cuboid min="-38.5,14,-1.0" max="-36.5,16,1.0" id="apples-3"/>
+        <cuboid min="-42,14,-4.5" max="-33,18,4.5" id="apples-3-near"/>
         <cuboid min="-1.0,8,-16.0" max="1.0,10,-14.0" id="arrows-0"/>
         <cuboid min="-4.5,8,-19.5" max="4.5,12,-10.5" id="arrows-0-near"/>
         <cuboid min="14.0,8,-1.0" max="16.0,10,1.0" id="arrows-1"/>
@@ -165,6 +165,6 @@
         </spawner>
     </spawners>
     <time>15m</time>
-    <maxbuildheight>40</maxbuildheight>
+    <maxbuildheight>44</maxbuildheight>
 </map>
 

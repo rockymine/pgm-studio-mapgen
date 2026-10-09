@@ -1,4 +1,4 @@
-"""Check Ocotillo's blueprint against its own rules, then measure the walks to its hills.
+"""Check Brittlebush KotH's blueprint against its own rules, then measure the walks to its hills.
 
 The rules: every stair climbs one level from the cell on its low side to the cell on its high side; no flat piece
 runs more than three cells, fifteen blocks, at one level; a piece one cell wide is sand and one with two cells by
@@ -102,7 +102,7 @@ def reach(E, D, prev, cells):
     return round(cost, 1), round(by.get("bridge", 0.0), 1), path
 
 
-hills = {hid: pad(box) for hid, _, box, _ in P.HILLS}
+hills = {hid: pad(box) for hid, _, box, _, _ in P.HILLS}
 order = ["north", "east", "south", "west"]
 rows, paths, fair = [], {}, []
 for team in range(4):

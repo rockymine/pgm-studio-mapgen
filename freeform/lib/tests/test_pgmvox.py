@@ -836,3 +836,48 @@ class Plots(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class QuarterTurns(unittest.TestCase):
+    def test_a_world_turns_a_quarter(self):
+        w = World(-4, -4, 8, 8, sy=4)
+        w.set(-3, 1, -2, B.STONEBRICK_STAIRS, orient.stair("n"))
+        keep = np.zeros((8, 8), bool)
+        keep[:4, :4] = True                                               # the north-west quarter
+        orient.turn_world(w, "cw", keep)
+        self.assertEqual(w.get(1, 1, -3), (B.STONEBRICK_STAIRS, orient.stair("e")))   # north turns to east
+
+    def test_four_teams_fan_from_one(self):
+        teams = O.Teams(("red-team", "Red", "red"), ("blue-team", "Blue", "blue"), ("green-team", "Green", "green"),
+                        ("yellow-team", "Yellow", "yellow"))
+        objs = O.Objectives(teams, Symmetry("rot_90"))
+        objs.add(O.Spawn("red-team", (-58, 20, -58), yaw=315))
+        objs.add(O.Wool("red-team", "lime", slot=(-60, 20, -55), found=(5, 19, -90), keeper="green-team",
+                        room=O.Box(1, 19, -94, 8, 24, -87)), color=["orange", "pink", "light_blue"])
+        spawns = objs.of(O.Spawn)
+        self.assertEqual([s.at for s in spawns], [(-58, 20, -58), (57, 20, -58), (57, 20, 57), (-58, 20, 57)])
+        self.assertEqual([s.yaw for s in spawns], [315, 45, 135, 225])
+        self.assertEqual([(o.team, o.keeper, o.color) for o in objs.of(O.Wool)][1],
+                         ("blue-team", "yellow-team", "orange"))
+        d = Doc("t", "1.0.0", "x", "ctw")
+        objs.write(d)                                                     # four rooms, each written once
+        rooms = [ln for ln in d.tostring().splitlines() if "<cuboid" in ln and 'id="lime-room"' in ln]
+        self.assertEqual(len(rooms), 1)
+
+
+class Brittle(unittest.TestCase):
+    def test_a_blueprint_builds_in_the_style(self):
+        from pgmvox import brittle as BR
+        unit = {(a, b): BR.Cell("flat", 13) for a in range(-4, -1) for b in range(-4, -1)}
+        unit[(-1, -3)] = BR.Cell("stair", 10, rises="w")
+        unit[(-1, -2)] = BR.Cell("stair", 10, rises="w")
+        cells, team = BR.fan(unit)
+        w = World(-30, -30, 60, 60, sy=32)
+        BR.build(w, cells, only=[c for c in cells if team[c] == 0])
+        self.assertEqual(audit.footing(w), [])
+        self.assertEqual(w.id(-20, 13, -20), B.SPRUCE_STAIRS)            # the rim on the piece's corner
+        self.assertEqual(w.get(-20, 9, -16), (B.STAINED_CLAY, 15))       # the black band at the foot of the cap
+        self.assertEqual(w.get(-20, 12, -20), (B.STAINED_CLAY, 15))      # a panel's side, black all the way down
+        self.assertEqual(w.id(-18, 13, -18), B.SANDSTONE_STAIRS)         # the bed's outer ring
+        self.assertEqual(w.id(-13, 14, -13), B.LOG)                      # its birch, at its middle
+        self.assertEqual(w.id(-5, 0, -15), 36)                           # building allowed over the board

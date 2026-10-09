@@ -223,11 +223,11 @@ def turn_xz(x, z, op, axis=(-0.5, -0.5)):
 
 def turn_world(w, op, keep, axis=(-0.5, -0.5), recolour=None, banners=None):
     """Copy the part of the world where keep(x, z) is True onto its image under the operation, turning every
-    block's data with it. Only mirrors and the half turn are supported on a whole world, so the image stays
-    inside the volume; recolour maps (id, data) -> (id, data) on the image, for a team's colours. A banner's
+    block's data with it: a mirror, the half turn, or a quarter turn ("cw", "ccw") on a square world centred on
+    the axis, so the image stays inside the volume (a block whose image falls outside is left out); recolour maps (id, data) -> (id, data) on the image, for a team's colours. A banner's
     colours live in its tile, not its data, so `banners` maps a banner colour (the banner's own numbering, 0 black
     to 15 white) to another on the image, base and patterns alike."""
-    assert op in ("half", "mirror_x", "mirror_z"), "a whole world turns by half or by a mirror"
+    assert op in ("half", "mirror_x", "mirror_z", "cw", "ccw"), op
     t = data_table(op)
     ids, dat = w.ids, w.dat
     xs = np.arange(w.x0, w.x0 + w.sx)
