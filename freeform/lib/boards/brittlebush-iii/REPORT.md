@@ -23,17 +23,19 @@ one. A piece named `stair…` is a stair cell climbing from its lower neighbour 
 `double…` is a deck.
 
 **A zone where no piece lies is a build zone, and its name says which kind.** A zone named `water…` lays water at
-the foot of the void and carries no cobwebs. Any other zone is bare, with cobwebs on its outline where it faces
-the open void.
+the foot of the void, with no cobwebs and no kerb: PGM holds the water still. Any other zone is bare, with cobwebs
+on its outline where it faces the open void.
 
-**The plan's heights are raised six blocks.** A deck's lower floor lies eight under it, and its cornice must clear
-the floor of the world.
+**The plan's heights are its own.** The lowest decks stand at 9, so their lower floors, eight under them, lie at 1
+and run straight into the floor of the world. An earlier build raised every height six blocks to keep a full
+cornice under those floors, and the board towered over its void.
 
 ## The under-sections
 
 **A double-layered piece is hollow under part of its deck, as Brittlebush I's island beside the middle is.** The
-deck's edge over the hollow is the cornice without its black band. Four blocks of air stand under the deck, and a
-lower floor eight down is laid like any ground, with planks along the wall at its back.
+deck's edge over the hollow is the cornice without its black band. Four blocks of air stand under the deck. The
+lower floor eight down has no full cornice: its edge is the rim, brick and black clay, as many as fit over y 0,
+with sand in its middle and planks along the wall at its back.
 
 **Where the hollow's open side runs two cells, a dark-oak pillar two wide stands at its middle.** Planks, a stair
 and an upside-down stair repeat from under the deck down into the lower floor's edge. The wall behind the hollow
@@ -64,7 +66,8 @@ purple, Brittlebush II's colours.
 |---|---|
 | Objectives with a problem | 0 |
 | Blocks without footing | 0 |
-| Water standing against air | 0 |
+| Water standing against air, the zones' floor aside | 0 |
+| Water at the zones' floor against the void, held by PGM | 240 |
 | Board without block 36, block 36 off the board | 0, 0 |
 | Places reached on foot from a spawn | 783 |
 | Spawn to its own wool room's door, building | 54 |

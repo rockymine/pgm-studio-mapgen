@@ -28,7 +28,9 @@ out += [f"   {p}" for p in problems]
 foot = audit.footing(w)
 out.append(f"footing problems (audit.footing): {len(foot)}")
 out += [f"   {f}" for f in foot[:10]]
-out.append(f"water standing against air (audit.loose_water): {len(audit.loose_water(w))}")
+loose = audit.loose_water(w)                    # the zones' water at y 1 meets the void unkerbed: PGM holds it still
+out.append(f"water standing against air (audit.loose_water), the zones' floor aside: "
+           f"{sum(1 for p in loose if p[1] != 1)}; at the zones' floor, held by PGM: {sum(1 for p in loose if p[1] == 1)}")
 board = np.zeros((w.sx, w.sz), bool)
 water = np.zeros((w.sx, w.sz), bool)
 for (cx, cz), c in cells.items():

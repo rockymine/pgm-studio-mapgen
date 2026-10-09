@@ -24,8 +24,9 @@ out += [f"   {p}" for p in problems]
 foot = audit.footing(w)
 out.append(f"footing problems (audit.footing): {len(foot)}")
 out += [f"   {f}" for f in foot[:10]]
-loose = audit.loose_water(w)
-out.append(f"water standing against air (audit.loose_water): {len(loose)}")
+loose = audit.loose_water(w)                    # the ponds' water at y 1 meets the void unkerbed: PGM holds it still
+out.append(f"water standing against air (audit.loose_water), the ponds' floor aside: "
+           f"{sum(1 for p in loose if p[1] != 1)}; at the ponds' floor, held by PGM: {sum(1 for p in loose if p[1] == 1)}")
 R = P.plan()
 land = ~np.isin(R.K, [R.kinds["void"]])
 marked = w.ids[:, 0, :] == 36

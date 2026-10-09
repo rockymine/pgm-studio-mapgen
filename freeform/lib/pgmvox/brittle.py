@@ -279,11 +279,9 @@ def build(w, cells, only=None, rng=None, dye=14):
         if c.kind in ("gap", "water"):
             for x, z in cols:
                 w.set(x, 0, z, 36)
-            if c.kind == "water":                                          # water marks itself: no cobwebs
+            if c.kind == "water":                  # water marks itself: no cobwebs, no kerb; PGM holds it still
                 for x, z in cols:
-                    shore = any(cells.get(cell_of(x + dx, z + dz), Cell("void")).kind in ("void", "gap")
-                                and cell_of(x + dx, z + dz) != (cx, cz) for dx, dz in DIRS.values())
-                    w.set(x, 1, z, *((B.BEDROCK, 0) if shore else (B.WATER, 0)))
+                    w.set(x, 1, z, B.WATER)
             else:                                                          # a cobweb mid-edge where it meets void
                 for d, (dx, dz) in DIRS.items():
                     if cells.get((cx + dx, cz + dz), Cell("void")).kind == "void":
@@ -370,10 +368,14 @@ def build(w, cells, only=None, rng=None, dye=14):
 
 def _under(w, c, x0, z0, cells, G, T, rng):
     """A stacked cell open under its deck, as Brittlebush I builds one: the deck four courses thick (its surface
-    laid with the piece, stone under it); four blocks of air; a lower floor DECK under the deck, framed and laid in
-    sand like any ground, planks along the island's wall at its back. Its pillars are _pillars', laid once every
-    under cell is."""
+    laid with the piece, stone under it); four blocks of air; a lower floor DECK under the deck that runs into the
+    floor of the world without the full cap. Its edge is the rim, brick and black clay; its middle is sand on sand;
+    along the island's wall at its back lie planks on brick; bedrock under all of it to y 1, block 36 at y 0. A
+    lower floor low in the world keeps as many of those courses as fit over y 0, down to its top alone at y 1. Its
+    pillars are _pillars', laid once every under cell is."""
     lower = c.y - DECK
+    if lower < 1:
+        raise ValueError(f"a deck at {c.y} puts its lower floor on the build marker at y 0: raise the floor")
     sandy = []
     for i in range(CELL):
         for k in range(CELL):
@@ -382,13 +384,23 @@ def _under(w, c, x0, z0, cells, G, T, rng):
                 w.set(x, y, z, B.STONE)
             for y in range(lower + 1, c.y - 3):
                 w.set(x, y, z, B.AIR)
-            ground(w, x, z, lower)
+            for y in range(1, lower - 1):
+                w.set(x, y, z, B.BEDROCK)
+            w.set(x, 0, z, 36)
             out = [d for d, (dx, dz) in DIRS.items() if G.get((x + dx, z + dz), -1) < lower - 1]
-            if out:
-                cap(w, x, z, lower, OPP[out[0]])
+            if out:                                                  # the short cap, into the floor
+                w.set(x, lower, z, B.SPRUCE_STAIRS, stair(OPP[out[0]], upside_down=True))
+                if lower - 1 >= 1:
+                    w.set(x, lower - 1, z, B.BRICK)
+                if lower - 2 >= 1:
+                    w.set(x, lower - 2, z, *BLACK_CLAY)
             elif any(G.get((x + dx, z + dz), -1) > lower for dx, dz in DIRS.values()):
                 w.set(x, lower, z, *SPRUCE_PLANKS)                   # along the island's wall at its back
+                if lower - 1 >= 1:
+                    w.set(x, lower - 1, z, B.BRICK)
             else:
+                if lower - 1 >= 1:
+                    w.set(x, lower - 1, z, B.SAND)
                 sandy.append((x, z))
     sand(w, sandy, lower, rng)
 
@@ -423,7 +435,7 @@ def _pillars(w, c, x0, z0, cells):
         ez = z0 + CELL - 1 if dz > 0 else z0 if dz < 0 else None
         for a in (mid - 1, mid):
             px, pz = (ex, a) if ex is not None else (a, ez)
-            for n, y in enumerate(range(c.y - 4, lower - 2, -1)):
+            for n, y in enumerate(range(c.y - 4, max(lower - 2, 0), -1)):
                 if n % 3 == 0:
                     w.set(px, y, pz, B.PLANKS, 5)
                 else:

@@ -27,9 +27,9 @@ iso("32-iso-red-part-se.png", 6, "se", (-20, lo, 42, -10))
 iso("33-iso-red-spawn-se.png", 12, "se", (18, -62, 42, -28), 8)
 iso("34-iso-red-wool-sw.png", 10, "sw", (-14, lo, 22, -70), 8)
 iso("35-iso-the-middle-se.png", 8, "se", (-25, -25, 24, 24), 4)
-iso("36-iso-middle-island-under-se.png", 14, "se", (-16, -24, 4, -6), 4)
-iso("37-iso-tunnel-se.png", 14, "se", (-18, -44, 2, -26), 4)
-iso("38-iso-approach-under-se.png", 14, "se", (-18, -64, 2, -46), 4)
+iso("36-iso-middle-island-under-se.png", 14, "se", (-16, -24, 4, -6), 0)
+iso("37-iso-tunnel-se.png", 14, "se", (-18, -44, 2, -26), 0)
+iso("38-iso-approach-under-se.png", 14, "se", (-18, -64, 2, -46), 0)
 
 S = Sheet("Brittlebush III - as built")
 m = S.map(lo, lo, hi, hi, scale=3, title="FROM ABOVE",

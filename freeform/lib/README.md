@@ -171,15 +171,17 @@ with upside-down sandstone stairs, cacti and dead bushes on the pure sand alone.
 way is grass inside two rings of sandstone stairs, the outer rising inward and the inner outward, with a birch when
 the grass is wide enough.
 
-**Water marks itself; a gap is marked by cobwebs.** A water cell lays water at the foot of the void and no
-cobweb. A gap cell lays a cobweb at the middle of each edge it shares with the open void, so the cobwebs trace a
-build zone's outline where it faces the void.
+**Water marks itself; a gap is marked by cobwebs.** A water cell lays water at the foot of the void, with no cobweb
+and no kerb, since PGM holds the water still. A gap cell lays a cobweb at the middle of each edge it shares with the
+open void, so the cobwebs trace a build zone's outline where it faces the void.
 
 **A stacked cell with `under=True` is hollow under its deck, as Brittlebush I's island beside the middle is.**
 The deck's edge over the hollow is the cap without its black band, and its lower floor lies `DECK`, eight blocks,
-under it. Where a hollow's open side runs two cells or more, a dark-oak pillar two wide stands at its middle,
-laid once every hollow is cut. One cell of hollow along a side is an under-section; a line of them through a piece
-is a tunnel.
+under it. One cell of hollow along a side is an under-section; a line of them through a piece is a tunnel.
+
+**A hollow's lower floor runs into the floor of the world.** It has no full cap: its edge is the rim, brick and
+black clay, as many as fit over y 0, so it can lie as low as y 1. Where a hollow's open side runs two cells or
+more, a dark-oak pillar two wide stands at its middle, laid once every hollow is cut.
 
 **`pgmvox.studioplan` reads a plan drawn in the studio's planner into such a blueprint.** `unit(plan, lift,
 under)` gives one team's part, which `brittle.fan` turns into the four. A piece named `stair…` is a stair cell and

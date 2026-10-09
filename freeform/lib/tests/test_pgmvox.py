@@ -894,7 +894,11 @@ class Brittle(unittest.TestCase):
         self.assertEqual([w.id(-18, y, -13) for y in range(10, 13)], [B.AIR] * 3)   # open under the deck
         self.assertEqual(w.get(-18, 12, -16), (B.STAINED_CLAY, 15))                 # black on the wall behind
         self.assertEqual(w.get(-18, 8, -15), BR.SPRUCE_PLANKS)                      # planks along that wall
+        with self.assertRaises(ValueError):                                         # a lower floor at y 0
+            BR.build(World(-30, -30, 60, 60, sy=32), {(0, 0): BR.Cell("stacked", 8, under=True)})
         self.assertEqual({w.get(x, 12, -11) for x in (-16, -15)}, {(B.PLANKS, 5)})   # the pillar, two wide
+        self.assertEqual([w.id(-18, y, -11) for y in (8, 7, 6, 5, 0)],                # the short cap into the floor
+                         [B.SPRUCE_STAIRS, B.BRICK, B.STAINED_CLAY, B.BEDROCK, 36])
 
     def test_a_studio_plan_tells_water_from_bare_zones(self):
         from pgmvox import studioplan as SP

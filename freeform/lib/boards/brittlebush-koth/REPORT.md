@@ -38,7 +38,8 @@ over a mark of chiseled sandstone.
 |---|---|
 | Objectives with a problem | 0 |
 | Blocks without footing | 0 |
-| Water standing against air | 0 |
+| Water standing against air, the ponds' floor aside | 0 |
+| Water at the ponds' floor against the void, held by PGM | 36 |
 | Board without block 36, block 36 under plain void | 0, 0 |
 | Spawn to the Dais, on foot | 71 |
 | Spawn to the two border hills beside it, on foot | 53 and 53 |

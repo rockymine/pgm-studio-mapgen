@@ -4,8 +4,8 @@ planner (plan.json, saved from the map untitled-plan-8, "Brittebush III"), built
 The plan is one team's part, turned a quarter three times (rot_90). pgmvox.studioplan reads it as the author drew
 it: a later piece lies over an earlier one, a piece named stair... is a stair cell, and a piece named double... is a
 deck, open beneath it where UNDER says. Where no piece lies, a zone named water... is water ground and any other
-zone a bare build zone, cobwebs on its outline toward the void. Heights are the plan's, six higher (LIFT), so a
-deck's lower floor keeps its cap off the floor of the world.
+zone a bare build zone, cobwebs on its outline toward the void. Heights are the plan's own (LIFT 0): the lowest decks
+stand at 9, and their lower floors run into the floor of the world at 1.
 
     cells()         the whole board: ({cell: Cell}, {cell: the team whose part it is})
     objectives()    four teams; each keeps one wool in its room and captures the other three
@@ -22,7 +22,7 @@ from pgmvox.plan import Symmetry  # noqa: E402
 BOARD = "brittlebush-iii"
 HERE = os.path.dirname(os.path.abspath(__file__))
 PLAN = SP.load(os.path.join(HERE, "..", "plan.json"))
-LIFT = 6                                    # a deck's lower floor, eight under it, keeps its cap off the floor
+LIFT = 0                                    # the plan's own heights: the lowest decks at 9, their lower floors at 1
 # the cells open under the double-layered pieces' decks, Brittlebush I's under-sections: the middle island hollow
 # one cell deep along its side toward the centre; a tunnel through the middle of the two-by-three island, open to
 # the water at both ends; the wool's approach island hollow along its side toward the lane
