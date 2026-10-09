@@ -95,11 +95,19 @@ fill recipes waiting to be written as such.
 hollow under a deck, a zone's kind, a piece raised a level. With those drawn in the studio, a board script would be
 the style and nothing else.
 
+## What was done
+
+1. `pgmvox.grammar` holds the rules: sections as boxes in blocks, the ground they make, faces of courses with their
+   accent bays, styles, and `lay`. Brittlebush is `brittle.STYLE`, and both Brittlebush boards rebuild block for
+   block the same outside their random sand and plants.
+2. `pgmvox.clay` is the Claywork style. The earlier board's floors are its fills, its dressed faces its face recipe
+   with the bays centred on each section, its flights a stepped section, and its arrows a motif. The board is now
+   cut into sections about nine blocks a side, and its walks read back as they did.
+
 ## What to do next
 
-1. Gather the blocks in `pgmvox.brittle` into a `Style` dataclass, with Brittlebush as its first value, and keep
-   every board's output the same block for block.
-2. Write the earlier board's floors as fill recipes, and its dressed faces as a face recipe, and build one board in
-   each style from one blueprint to prove the split.
-3. Read section splits, fills and hollow cells from the studio plan, so `SPLIT`, `FILL` and `UNDER` leave the
-   board scripts.
+1. Read section splits, fills and hollow cells from the studio plan, so `SPLIT`, `FILL` and `UNDER` leave the
+   board scripts, and a board script is its style and nothing else.
+2. Speak one plan in both styles, to show the split holds in both directions.
+3. Give a style a natural member: a section whose fill is terrain, hanging rock or a grown slope, beside the
+   structural ones, for boards that mix the two.

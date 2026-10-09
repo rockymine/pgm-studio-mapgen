@@ -21,31 +21,42 @@ The whole board is rebuilt with `python3 -m pgmvox.run boards/claywork --build <
 every piece and every build zone, and the map.xml lets a block be placed only over a column that is not void. The
 build height is 44.
 
-**The ground on a face over the void is dressed stone.** Under a cornice of stone brick, panels six wide and five
-high are sunk one block between pilasters two wide. Each panel's back is the team's stained clay with a diamond
-of chiseled quartz. A plinth of polished andesite runs under them, and the bays are centred on each run of face.
+**The land is spoken in the grammar: `pgmvox.grammar` gives the rules, `pgmvox.clay` the blocks.** Every piece is
+cut into sections about nine blocks a side, and the cut is the same on both wings. Each section is outlined: stone
+brick where the ground falls, a line of polished andesite where it meets the next section. Each section is laid in
+its own fill.
+
+**A piece's sections alternate between two fills, as the cells of a checker do, so no two neighbours match.**
+
+| Piece | Sections | Fills, in turn |
+|---|---|---|
+| The Forecourt | seven by two | paving in bands, squares |
+| The Clay Court | seven by three, round the well | a checker of three-by-three paces, an inlay of rings |
+| The Aprons | two by two | squares, an inlay |
+| The Rostrum | four by one | paving |
+| The Arcades | three by one | an inlay, squares |
+| The Walks' flat run | one by three | squares, paving |
+| The Gatehouse | three by two | an inlay, squares |
+| A Statue Terrace, a Kiln | one | an inlay; squares |
+
+**The face's bays answer the sections over them.** Under a cornice of stone brick, a panel six wide and five high is
+sunk one block between two chiseled pilasters, the team's clay at its back with a diamond of quartz. There is one
+bay to each section's side, centred on it, so the Forecourt's front shows seven bays for its seven sections. A face
+too shallow for a whole panel keeps its plain courses.
 
 **The bedrock under the ground is layered so it never shows as one slab.** Two blocks of bedrock lie under the
 ground, then a stripe of the team's stained clay set flush, then bedrock patterned with obsidian and black wool
 to the floor. The mirror recolours every piece of team colour from red to blue on blue's half.
 
-**Only the two broad floors are a checker: the Clay Court and the Forecourt.** Each is laid in three-by-three
-paces of stone and clay. A stone-brick border runs along every edge over the void, so an edge is seen before it is
-reached.
+**A flight of steps is a section of its own, stepped.** A smooth stone lip lies behind each rise and the rest is
+stone brick. A runner of clay goes up the middle third, in the team's clay where it meets each rise, and a
+stone-brick stair at each tread's back edge is its nosing. Its sides are its outline, and its faces over the void
+keep the plain courses, since their top changes every tread.
 
-**Every other piece is laid in squares inside a rim.** A rim of stone runs round the piece, then a band of double
-slab. Inside them lie rows of squares four a side, a ring of polished diorite round a middle of clay, set in stone
-grout. As many whole squares fit as leave equal margins, so a piece reads the same from either side, and a wing
-mirrors the other wing.
-
-**A flight of steps is laid tread by tread.** A smooth stone lip lies behind each rise, the rest is stone brick,
-and a runner of clay runs up the middle third. A stone-brick stair stands at each tread's back edge as its nosing.
-
-**Arrows of the team's wool are set into the floor along every way forward, each placed by the floor's pattern.**
-On the Court and the Forecourt a chevron stands on a disc ten across, a ring of stone brick filled with polished
-diorite. On a floor laid in squares, an arrow fills one square: a head and a shaft on diorite. It lies in the
-square on the lane's middle, and on an Apron in the middle square of its three by three. They are wool and not
-clay because wool is the truer blue.
+**An arrow is a motif laid into the section it points out of.** The section is laid as a plate of polished diorite
+framed in stone brick, and the arrow's head and shaft fill it one block in, in the team's wool. Wool is used
+because it is the truer blue. The arrows stand where they stood: up both flights, toward the band, down the Spawn
+Steps, out of the Court and the Arcades, up the Walks.
 
 **Arches of stone brick span both flights of the Grand Steps, each Arcade, and each Walk twice.** Each arch has
 a beam and upside-down stair corners, and its legs are what narrow a Walk from twelve to ten.
@@ -103,7 +114,7 @@ end climbs the Walk's face.
 | Iron blocks, and of them inside a spawn's area | 108, 108 |
 | Spawn to its own monuments, on foot | 14 and 15 |
 | Spawn to an enemy Kiln, on foot | not reached: the band and the wall are built over |
-| Spawn to an enemy Kiln, building | 214, both Kilns, both teams |
+| Spawn to an enemy Kiln, building | 215, both Kilns, both teams |
 | Court into the well's pool | 9, a drop of six into water |
 | On through the Undercroft and up the ladder onto the West Walk | 76 |
 | Out of the well without a ladder | no |

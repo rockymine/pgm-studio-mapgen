@@ -941,7 +941,7 @@ class Grammar(unittest.TestCase):
     def test_split_and_tile_cut_a_box_into_rectangles(self):
         from pgmvox import grammar as G
         secs = G.split((0, 0, 9, 6), 2, 2, y=10)
-        self.assertEqual([s.boxes[0] for s in secs], [(0, 0, 4, 3), (0, 4, 4, 6), (5, 0, 9, 3), (5, 4, 9, 6)])
+        self.assertEqual([s.boxes[0] for s in secs], [(0, 0, 4, 2), (0, 3, 4, 6), (5, 0, 9, 2), (5, 3, 9, 6)])
         self.assertEqual(len(G.tile((0, 0, 19, 9), 5, y=10)), 8)
 
     def test_a_style_lays_faces_seams_and_fills_by_rule(self):
@@ -968,3 +968,16 @@ class Grammar(unittest.TestCase):
         self.assertEqual(w.id(1, 9, 3), B.GLASS)                             # an accent bay over a drop of three
         self.assertEqual(w.id(5, 6, 7), B.BRICK)                             # the next bay along is plain
         self.assertEqual(sorted(laid), ["a-0-0", "a-1-0", "low"])
+
+    def test_the_claywork_style_inlays_its_bays_and_lays_its_arrows(self):
+        from pgmvox import clay
+        from pgmvox import grammar as G
+        secs = [G.Section(((0, 0, 8, 8),), 20, "front-0-0", "plate", motifs=(("arrow", (("d", "n"),)),)),
+                G.Section(((9, 0, 17, 8),), 20, "front-1-0", "inlay")]
+        w = World(-2, -2, 22, 12, sy=32)
+        G.lay(w, G.Ground(secs), clay.style(dye=14))
+        self.assertEqual(w.get(4, 20, 2), (B.WOOL, 14))                           # the arrow's tip, one in
+        self.assertEqual((w.get(4, 20, 1), w.get(3, 20, 2)), (clay.BRICK, clay.DIORITE))   # its frame, its plate
+        self.assertEqual(w.get(9, 20, 4), clay.ANDESITE)                          # the seam between sections
+        self.assertEqual((w.id(4, 15, 8), w.get(4, 15, 7), w.get(4, 17, 7)), (B.AIR, (B.QUARTZ, 1), (B.STAINED_CLAY, 14)))
+        self.assertEqual(w.id(0, 0, 0), 36)

@@ -3,28 +3,23 @@ red's stained clay recoloured blue), then the objectives stamped for both teams.
 
     python3 gen.py <build-dir>
 
-Every column of land is laid the same way, from the top down:
+The land is spoken in the grammar (pgmvox.grammar) in the Claywork style (pgmvox.clay): every piece cut into
+sections about nine blocks a side, both wings alike, outlined and laid each in its own fill, its neighbours in
+another; a face's inlaid bays centred on the sections over it; the flights of steps their own stepped sections; the
+arrows laid into the sections they point out of. Under it all, twelve of ground, the team's band and the lattice on
+the faces, bedrock to y 1, and block 36 under every column of land and every build zone.
 
-    the surface     one block, painted by the piece it belongs to: a checker of three-by-three paces in clay, stone
-                    and double stone slab, each level its own pair, a stone-brick border on every edge
-    the ground      eleven more blocks: stone, with andesite and gravel through it; on a face over the void,
-                    dressed stone: a cornice, sunk panels of the team's stained clay with a quartz diamond between
-                    stone-brick pilasters, and a plinth of polished andesite
-    the base        two of bedrock, then a band of the team's stained clay on the faces, then bedrock to y 1,
-                    broken on the faces by a lattice of obsidian and black wool
-    y 0             block 36 under every column of land and every build zone: building is allowed only over it
-
-Then what stands on the ground: the broad steps' stair nosings, the arrows in the team's wool, the arches, the
-parapets, the bedrock walls (bedrock to the floor of the world) with their defence chests, the Kilns with their roofs,
-chimneys and gear, the Gatehouse's walls, its iron and its spawn carpet, the statues; and what is cut into it: the
-Undercroft, its well and pool, the balconies and the ladders.
+Then what stands on the ground: the arches, the parapets, the bedrock walls (bedrock to the floor of the world) with
+their defence chests, the Kilns with their roofs, chimneys and gear, the Gatehouse's walls, its iron and its spawn
+carpet, the statues; and what is cut into it: the Undercroft, its well and pool, the balconies and the ladders.
 """
 import sys
 
 import numpy as np
 
 import plan as P
-from pgmvox import B, World, rng
+from pgmvox import B, World, clay, rng
+from pgmvox import grammar as Gm
 from pgmvox.props import DEFENCE, ROOM_GEAR, laid
 from pgmvox.objectives import Wool
 from pgmvox.orient import ladder, stair, turn_world
@@ -37,13 +32,8 @@ VOID = R.kinds["void"]
 X, Z = w.grid()
 RED = 14                                        # red stained clay; the mirror recolours it blue (11)
 
-# the surface pairs, level by level: (a, b) for the checker's two paces
-CLAY, STONE, DSLAB, SMOOTH = (B.CLAY, 0), (B.STONE, 0), (B.DSLAB, 0), (B.DSLAB, 8)
-BRICK, ANDESITE, DIORITE = (B.STONEBRICK, 0), (B.STONE, 6), (B.STONE, 4)
-PAIRS = {"front": (CLAY, STONE), "apron": (CLAY, STONE), "steps": (BRICK, BRICK),
-         "hub": (STONE, CLAY), "wing": (STONE, CLAY), "rostrum": (DSLAB, STONE), "walk": (DSLAB, STONE),
-         "neck": (BRICK, BRICK), "spawn": (DSLAB, CLAY), "terrace": (DSLAB, CLAY), "kiln": (SMOOTH, CLAY),
-         "under": (BRICK, (B.STONEBRICK, 2)), "stone": (ANDESITE, ANDESITE)}
+CLAY, STONE, DSLAB, SMOOTH = clay.CLAY, clay.STONE, clay.DSLAB, clay.SMOOTH
+BRICK, ANDESITE, DIORITE = clay.BRICK, clay.ANDESITE, clay.DIORITE
 
 
 def red(x, z):
@@ -59,288 +49,125 @@ def surface(x, z):
 
 
 land = R.piece != VOID
-near_void = np.zeros(land.shape, bool)                        # land beside void: the faces and the borders
+near_void = np.zeros(land.shape, bool)                        # land beside void: the faces and the band
 for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
     sh = np.roll(np.roll(~land, dx, 0), dz, 1)
     near_void |= land & sh
 near_void[0, :] |= land[0, :]
 near_void[-1, :] |= land[-1, :]
 
-
-# Where each piece's floor is laid out from: its box on red's west side (a piece across the middle keeps its whole
-# box), and its rule. A cell east of the middle is read at its mirror image, so the two wings match.
-REGIONS = [(key, box, rule) for key, _, box, rule in P.PIECES if key != "walk"] + \
-          [("walk", box, rule) for box, rule in P.WALK_FLOORS]
-CHECKER = ("hub", "front")                        # the two broad floors keep the checker
-TILE = 4                                          # a square four a side, one of grout between squares
-
-
-def region(x, z):
-    xf = x if x < 0 else P.mx(x)
-    for key, (x0, z0, x1, z1), rule in REGIONS:
-        if x0 <= xf <= x1 and z0 <= z <= z1:
-            return xf, key, (x0, z0, x1, z1), rule
-    return xf, None, None, None
-
-
-def squares(n):
-    """One axis of the squares across a span of n: 'm' margin, 'g' grout, 'r' a square's ring, 'c' its middle;
-    as many whole squares as fit with the margins equal, so the row reads the same from either end."""
-    k = max(0, (n + 1) // (TILE + 1))
-    while k > 0 and (n - (k * (TILE + 1) - 1)) % 2:
-        k -= 1
-    used = k * (TILE + 1) - 1 if k else 0
-    left = (n - used) // 2
-    out = ["m"] * n
-    for t in range(k):
-        for j in range(TILE):
-            out[left + t * (TILE + 1) + j] = "r" if j in (0, TILE - 1) else "c"
-        if t < k - 1:
-            out[left + t * (TILE + 1) + TILE] = "g"
-    return out
-
-
-def paint(x, z, h, kind):
-    """The top block of a column. On a piece's edge over the void, stone brick. The Court and the Forecourt are a
-    checker in three-by-three paces. A flight of steps is laid tread by tread: a smooth lip behind each rise, stone
-    brick, and a runner of clay up its middle. Every other piece has a rim of stone, a band of double slab inside it,
-    and rows of squares: a ring of polished diorite round a middle of clay, set in stone grout."""
-    i, k = R.ix(x), R.iz(z)
-    if near_void[i, k] and kind not in ("stone", "under"):
-        return BRICK
-    if kind in ("stone", "under") or kind in CHECKER:
-        a, b = PAIRS.get(kind, (STONE, STONE))
-        return a if ((x // 3) + (z // 3)) % 2 == 0 else b
-    xf, key, box, rule = region(x, z)
-    if box is None:
-        return STONE
-    x0, z0, x1, z1 = box
-    if isinstance(rule, tuple):                                  # a flight of steps
-        _, edge, lo, hi, _ = rule
-        r = abs(z - edge) % P.TREAD
-        width = x1 - x0 + 1
-        across = abs((xf if x1 < 0 else x) - (x0 + x1) / 2)
-        if r == 0:
-            return SMOOTH
-        return CLAY if across < width / 6 else BRICK
-    d = min(xf - x0, x1 - xf, z - z0, z1 - z) if x1 < 0 else min(x - x0, x1 - x, z - z0, z1 - z)
-    if d == 0:
-        return STONE
-    if d == 1:
-        return DSLAB
-    ax = squares(x1 - x0 - 3)[(xf if x1 < 0 else x) - x0 - 2]
-    az = squares(z1 - z0 - 3)[z - z0 - 2]
-    if "m" in (ax, az):
-        return DSLAB
-    if "g" in (ax, az):
-        return STONE
-    if "r" in (ax, az):
-        return DIORITE
-    return CLAY
-
-
-def inside(x, z):
-    return P.X_MIN <= x <= P.X_MAX and P.Z_MIN <= z <= P.Z_MAX
-
-
-def is_land(x, z):
-    return inside(x, z) and land[R.ix(x), R.iz(z)]
-
-
-def normal(x, z):
-    """The one side of a face cell that looks onto the void, or None at a corner or inside the land."""
-    out = [(dx, dz) for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)) if not is_land(x + dx, z + dz)]
-    return out[0] if len(out) == 1 else None
-
-
-PANEL, PILASTER = 6, 2                                            # a face's bay: a sunk panel, then a pilaster
-BAY = PANEL + PILASTER
-
-
-def bay(x, z, h, n):
-    """Where a face cell falls in its run of face at one height: 'pilaster', 'panel' with the panel's column
-    (0..PANEL-1), or 'ashlar' in a run too short for a bay or past the last one. The bays are centred on the run."""
-    ax, az = -n[1], n[0]                                          # along the face
-    i0, i1 = 0, 0
-    while True:
-        a, b = x - ax * (i0 + 1), z - az * (i0 + 1)
-        if normal(a, b) != n or surface(a, b)[0] != h or U.kind(a, b) != "none":
-            break
-        i0 += 1
-    while True:
-        a, b = x + ax * (i1 + 1), z + az * (i1 + 1)
-        if normal(a, b) != n or surface(a, b)[0] != h or U.kind(a, b) != "none":
-            break
-        i1 += 1
-    length, pos = i0 + i1 + 1, i0
-    bays = (length - PILASTER) // BAY
-    if bays < 1:
-        return "ashlar", 0
-    q = pos - (length - (bays * BAY + PILASTER)) // 2
-    if q < 0 or q >= bays * BAY + PILASTER:
-        return "ashlar", 0
-    if q % BAY < PILASTER:
-        return "pilaster", 0
-    return "panel", q % BAY - PILASTER
-
-
-DIAMOND = {(a, b) for a in range(PANEL) for b in range(5) if abs(a - (PANEL - 1) / 2) + abs(b - 2) <= 1.5}
-
-
-def dress(x, z, h):
-    """A face over the void, under the surface: a cornice, a frame, a panel sunk one block between pilasters with
-    the team's clay and a quartz diamond at its back, and a plinth; the lattice and the stripe below are the base's."""
-    n = normal(x, z)
-    if n is None or U.kind(x, z) != "none" or not is_land(x - n[0], z - n[1]):
-        kind = "pilaster"
-    else:
-        kind, col = bay(x, z, h, n)
-    for y in range(h - P.GROUND + 1, h):
-        d = h - y                                                  # 1 the cornice .. 11 the plinth's foot
-        if d >= 9:
-            w.set(x, y, z, *ANDESITE)
-        elif kind == "pilaster":
-            w.set(x, y, z, B.STONEBRICK, 3 if d in (2, 8) else 0)
-        elif kind == "panel" and 3 <= d <= 7:
-            w.set(x, y, z, B.AIR)
-            back = (B.QUARTZ, 1) if (col, d - 3) in DIAMOND else (B.STAINED_CLAY, RED)
-            w.set(x - n[0], y, z - n[1], *back)
-        else:
-            w.set(x, y, z, B.STONEBRICK, 2 if r.random() < 0.08 else 0)
-
-
-def column(x, z):
-    """Surface, ground, base and the block-36 marker for one column of land."""
-    i, k = R.ix(x), R.iz(z)
-    h, kind = surface(x, z)
-    w.set(x, h, z, *paint(x, z, h, kind))
-    for y in range(h - P.GROUND + 1, h):
-        c = r.random()
-        w.set(x, y, z, *((B.STONE, 5) if c < 0.12 else (B.GRAVEL, 0) if c < 0.15 else STONE))
-    base = h - P.GROUND                                           # the top of the base: two of bedrock, the stripe
-    for y in range(1, base + 1):
-        w.set(x, y, z, B.BEDROCK)
-    stripe = base - 2
-    if near_void[i, k] and stripe >= 1:
-        w.set(x, stripe, z, B.STAINED_CLAY, RED)                  # the team's band, flush with the face
-        for y in range(1, stripe):                                # the lattice on the faces below the stripe
-            u = x + z
-            if (u + y) % 8 == 0:
-                w.set(x, y, z, B.OBSIDIAN)
-            elif (u - y) % 8 == 0:
-                w.set(x, y, z, B.WOOL, 15)
-    w.set(x, 0, z, 36)
-
-
-# 1. the land of red's half, and block 36 under the build zones
+# 1. the land of red's half in the grammar (pgmvox.grammar, spoken in pgmvox.clay): every piece cut into sections
+# about nine blocks a side, both wings alike, each outlined and laid in its own fill; the flights of steps their
+# own sections, stepped; the arrows laid into the section each points out of. A face's bays are centred on the
+# sections over it, so the inlaid panels answer the floor's cut.
+STYLE = clay.style(dye=RED, rng=r, faced=lambda x, z: bool(near_void[R.ix(x), R.iz(z)]))
+CUT = {"front": (7, 2), "apron": (2, 2), "rostrum": (4, 1), "hub": (7, 3), "spawn": (3, 2), "terrace": (1, 1),
+       "wing": (3, 1), "kiln": (1, 1)}
+# a piece's sections alternate between two fills, like the cells of a checker, so neighbours never match
+FILLS = {"front": ("paving", "squares"), "apron": ("squares", "inlay"), "rostrum": ("paving", "paving"),
+         "hub": ("checker", "inlay"), "spawn": ("inlay", "squares"), "terrace": ("inlay", "inlay"),
+         "wing": ("inlay", "squares"), "kiln": ("squares", "squares"), "walk": ("squares", "paving")}
+ARROWS = [(-27, -58.5, "w"),                     # the Court, out toward the Arcade
+          (-23.5, -24, "n"),                     # the Forecourt to the Grand Steps' flight
+          (-0.5, -22, "s"),                      # the Forecourt, toward the band
+          (-1, -85, "s"),                        # the Gatehouse's front, down the Spawn Steps
+          (-41, -58, "w"),                       # the Arcade, out to the Walk
+          (-66, -44, "n"), (-66, -58, "n"),      # up the Walk to the wall and the Kiln
+          (-62, -22, "n")]                       # the Apron, toward the Walk
+TOP = {}
 for i, k in np.argwhere(land):
     x, z = int(X[i, k]), int(Z[i, k])
     if red(x, z):
-        column(x, z)
-for i, k in np.argwhere(near_void):
-    x, z = int(X[i, k]), int(Z[i, k])
-    h, kind = surface(x, z)
-    if red(x, z) and kind not in ("stone",):
-        dress(x, z, h)
+        TOP[(x, z)] = surface(x, z)
+
+
+def runs(cols):
+    """A set of columns as boxes, a run along z in each column x."""
+    out = []
+    for x in sorted({c[0] for c in cols}):
+        zs = sorted(z for a, z in cols if a == x)
+        start = zs[0]
+        for p, q in zip(zs, zs[1:] + [None]):
+            if q != p + 1:
+                out.append((x, start, x, p))
+                start = q
+    return tuple(out)
+
+
+def mirrored(box):
+    x0, z0, x1, z1 = box
+    return P.mx(x1), z0, P.mx(x0), z1
+
+
+SECS = []
+
+
+def add(cols, y, name, fill=None, tags=(), tops=()):
+    motifs = []
+    for ax, az, d in ARROWS:
+        for px, dd in ((int(np.floor(ax)), d), (P.mx(int(np.floor(ax))), {"w": "e", "e": "w"}.get(d, d))):
+            if (px, int(np.floor(az))) in cols and not any(m[1] == (("d", dd),) for m in motifs):
+                motifs.append(("arrow", (("d", dd),)))
+                fill = "plate"
+    SECS.append(Gm.Section(runs(cols), y, name, fill, frozenset(tags), tuple(motifs[:1]), tuple(tops)))
+
+
+def flat_piece(key, box, h, nx, nz, fills):
+    copies = [(box, False)] if box[0] <= -1 <= box[2] - 1 else [(box, False), (mirrored(box), True)]
+    for b, mir in copies:
+        xs, zs = Gm._cuts(b[0], b[2], nx), Gm._cuts(b[1], b[3], nz)
+        for i, (a0, a1) in enumerate(xs):
+            for j, (c0, c1) in enumerate(zs):
+                cols = {(x, z) for x in range(a0, a1 + 1) for z in range(c0, c1 + 1) if TOP.get((x, z)) == (h, key)}
+                if cols:
+                    ii = nx - 1 - i if mir else i
+                    add(cols, h, f"{key}-{ii}-{j}", fills[(ii + j) % 2])
+
+
+def flight(key, box, rise):
+    copies = [box] if box[0] <= -1 <= box[2] - 1 else [box, mirrored(box)]
+    for b in copies:
+        cols = {(x, z) for x in range(b[0], b[2] + 1) for z in range(b[1], b[3] + 1)
+                if (x, z) in TOP and TOP[(x, z)][1] == key}
+        tops = [((x, z), TOP[(x, z)][0]) for x, z in sorted(cols)]
+        add(cols, min(h for _, h in tops), f"{key}-flight", "flight", tags=(f"rise-{rise}",), tops=tops)
+
+
+for key, _, box, rule in P.PIECES:
+    if key == "walk":
+        for sub, rr in P.WALK_FLOORS:
+            if isinstance(rr, tuple):
+                flight("walk", sub, rr[4])
+            else:
+                flat_piece("walk", sub, rr, 1, 3, FILLS["walk"])
+    elif isinstance(rule, tuple):
+        flight(key, box, rule[4])
+    else:
+        flat_piece(key, box, rule, *CUT[key], FILLS[key])
+for b, h in P.STONES:                                           # the stepping stones, plain
+    for bb in (b, mirrored(b)):
+        add({(x, z) for x in range(bb[0], bb[2] + 1) for z in range(bb[1], bb[3] + 1)}, h, "stone", "flat")
+covered = {c for sec in SECS for c in sec.columns()}
+left = {c for c in TOP if c not in covered}
+for c in sorted(left):                                           # the well's floor and the landing: a checker
+    if c in left:
+        comp, todo = set(), [c]
+        while todo:
+            p = todo.pop()
+            if p in comp or p not in left or TOP[p] != TOP[c]:
+                continue
+            comp.add(p)
+            todo += [(p[0] + 1, p[1]), (p[0] - 1, p[1]), (p[0], p[1] + 1), (p[0], p[1] - 1)]
+        left -= comp
+        add(comp, TOP[c][0], f"{TOP[c][1]}-rest", "checker")
+GROUND = Gm.Ground(SECS)
+FLIGHTS = {n for n, s in enumerate(SECS) if s.fill == "flight"}
+Gm.lay(w, GROUND, STYLE, rng=r, face_of=lambda x, z: "flank" if GROUND.owner[(x, z)] in FLIGHTS else "edge")
 zones = P.band_mask(R)
 for i, k in np.argwhere(zones):
     if red(int(X[i, k]), int(Z[i, k])):
         w.ids[i, 0, k] = 36
 
-# 2. the broad steps' nosings: a stone-brick stair on the lower tread's last row before each rise
-for i, k in np.argwhere(land):
-    x, z = int(X[i, k]), int(Z[i, k])
-    if not red(x, z) or R.kind(x, z) not in ("steps", "neck", "walk"):
-        continue
-    h = int(R.floor[i, k])
-    for dx, dz, d in ((0, -1, "n"), (0, 1, "s")):
-        a, b = x + dx, z + dz
-        if R.inside(a, b) and R.kind(a, b) in ("steps", "neck", "walk", "hub", "spawn", "kiln", "front", "apron") \
-                and int(R.floor[R.ix(a), R.iz(b)]) == h + 1:
-            w.set(x, h + 1, z, B.STONEBRICK_STAIRS, stair(d))
-
-# 3. arrows set into the surface in the team's wool (a truer blue than blue clay), pointing the way forward. On the
-# two checkered floors, a chevron on a disc: a ring of stone brick ten across filled with polished diorite. On a
-# floor laid in squares, an arrow fills one square: a head and a shaft four by four on diorite, in the square on
-# the lane's middle (on an Apron, the middle square of its three by three)
-
-
-def arrow(cx, cz, d):
-    """A chevron three deep, centred across on cx or cz (a half when the lane is an even number wide: six wide,
-    else five), its point at cz or cx."""
-    dx, dz = {"n": (0, -1), "s": (0, 1), "e": (1, 0), "w": (-1, 0)}[d]
-    across = cx if dx == 0 else cz
-    half = 0.5 if across != int(across) else 0.0
-    offsets = [s + half for s in range(-3 if half else -2, 3)]
-    for s in offsets:
-        for t in (0, 1):
-            back = t - int(abs(s))
-            if dx == 0:                                          # across + s is whole: both are halves or neither
-                ax, az = round(cx + s), round(cz + dz * back)
-            else:
-                ax, az = round(cx + dx * back), round(cz + s)
-            if not is_land(ax, az):
-                continue
-            h, kind = surface(ax, az)
-            if kind not in ("steps", "neck"):
-                w.set(ax, h, az, B.WOOL, RED)
-
-
-def disc(cx, cz, d, radius=5.0):
-    """The disc under a chevron, centred on the chevron's own middle."""
-    dx, dz = {"n": (0, -1), "s": (0, 1), "e": (1, 0), "w": (-1, 0)}[d]
-    ox, oz = cx - dx * 0.5, cz - dz * 0.5
-    for x in range(int(np.floor(ox - radius)), int(np.ceil(ox + radius)) + 1):
-        for z in range(int(np.floor(oz - radius)), int(np.ceil(oz + radius)) + 1):
-            r_ = float(np.hypot(x - ox, z - oz))
-            if r_ > radius or not is_land(x, z):
-                continue
-            h, kind = surface(x, z)
-            if kind in CHECKER:
-                w.set(x, h, z, *(BRICK if r_ > radius - 1 else DIORITE))
-
-
-GLYPH = [".XX.",                                     # pointing north: a head two rows, a shaft two
-         "XXXX",
-         ".XX.",
-         ".XX."]
-
-
-def snap(lo, n, p):
-    """The first block of the square, along one axis of a span of n from lo, whose middle is nearest p."""
-    lab = squares(n)
-    starts = [j for j in range(n) if lab[j] == "r" and (j == 0 or lab[j - 1] not in "rc")]
-    return lo + min(starts, key=lambda j: abs(lo + j + (TILE - 1) / 2 - p))
-
-
-def square_arrow(x, z, d):
-    """An arrow filling the square nearest (x, z) on the piece there, read on red's west side or the middle."""
-    _, key, (x0, z0, x1, z1), _ = region(x, z)
-    sx, sz = snap(x0 + 2, x1 - x0 - 3, x), snap(z0 + 2, z1 - z0 - 3, z)
-    for j, row in enumerate(GLYPH):
-        for i, c in enumerate(row):
-            ax, az = {"n": (sx + i, sz + j), "s": (sx + i, sz + TILE - 1 - j),
-                      "w": (sx + j, sz + i), "e": (sx + TILE - 1 - j, sz + i)}[d]
-            for bx in {ax, P.mx(ax)}:
-                h, _ = surface(bx, az)
-                w.set(bx, h, az, *((B.WOOL, RED) if c == "X" else DIORITE))
-
-
-ON_CHECKER = [(-27, -58.5, "w"),                 # the Court, out toward the Arcade
-              (-23.5, -24, "n"),                 # the Forecourt to the Grand Steps' flight
-              (-0.5, -22, "s")]                  # the Forecourt, toward the band
-for cx, cz, d in ON_CHECKER:
-    for x, dd in ((cx, d), (P.mx(cx), {"w": "e", "e": "w"}.get(d, d))):
-        disc(x, cz, dd)
-        arrow(x, cz, dd)
-        if P.mx(cx) == cx:
-            break
-ON_SQUARES = [(-1, -85, "s"),                    # the Gatehouse's front, down the Spawn Steps
-              (-41, -58, "w"),                   # the Arcade, out to the Walk
-              (-66, -44, "n"), (-66, -58, "n"),  # up the Walk to the wall and the Kiln
-              (-62, -22, "n")]                   # the Apron's middle square, toward the Walk
-for x, z, d in ON_SQUARES:
-    square_arrow(x, z, d)
 
 # 4. the arches: stone-brick legs on the way's edges, a beam two high, upside-down stairs under its ends
 for name, axis, (a, b), at in P.ARCHES:
@@ -591,7 +418,7 @@ for i, k in np.argwhere(R.mask("under")):
     for y in range(P.UNDER + 1 + P.UNDER_CLEAR, P.HUB):              # the roof: no gravel over the passage
         if w.get(x, y, z)[0] == B.GRAVEL:
             w.set(x, y, z, *STONE)
-    w.set(x, P.UNDER, z, *paint(x, z, P.UNDER, "under"))
+    w.set(x, P.UNDER, z, *(BRICK if ((x // 3) + (z // 3)) % 2 == 0 else (B.STONEBRICK, 2)))
     if U.kind(x, z) != "none" and x % 6 == 0:                     # a light in the passage's back wall
         w.set(x, P.UNDER + 2, P.PASSAGE[3] + 1, B.GLOWSTONE)
 hx0, hz0, hx1, hz1 = P.HOLE

@@ -27,6 +27,7 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `terrain` | `slope_deg` as the studio reads it; `lay` (ground painted by slope, a snow line); `Strata`, `bed_offset` and `beds` (rock beds that tilt and fold); `mountain_ring`; `underside` and `root_depth` (cones, flutes, spires); `cloud_deck` |
 | `route` | `find` (a least-cost route over the ground, held to a grade, switchbacks and all), `network` (places joined by roads that share their trunk), `simplify`, `smooth`, `footprint`, `pave` (surface and bridges), `steps` |
 | `grammar` | the rules of a structural board, apart from its blocks: `Section` (boxes at one height), `split` and `tile` (a box cut into sections), `Ground` (every column's top, section and depth), `Face` and `Accent` (courses by drop, a bay every so many), `Style` (body, faces, seam, fills, motifs), `lay` |
+| `clay` | the Claywork style for the grammar: stone and clay, the team's colour inlaid; faces with a sunk panel and its quartz diamond in a bay centred on each section; fills checker, squares, paving, inlay, plate and flight; the arrow motif |
 | `brittle` | the Brittlebush style from a blueprint of five-block cells: flat, keep, stair, stacked, gap and water cells; the five-course cap with its birch panels, a one-block outline, sand fields and double-ringed beds; hollows and tunnels under a deck with their dark-oak pillars; `house`, storeys of whole cells; `tower`, `heart` |
 | `studioplan` | a plan drawn in the studio's planner (version 2) read as a `brittle` blueprint: pieces, stairs, decks, water and bare zones, placements |
 | `props` | small built things placed on a floor, facing a way: `stall` and `stalls` (a market row), `lamp`; chests drawn as rows of letters (`laid`), with a defence chest and a wool room's gear |
@@ -170,6 +171,11 @@ a piece. `Ground(sections, tops)` reads every column's top, its section and its 
 **A face is courses top down from the rim, with an accent bay every so many along it.** An `Accent` names its
 module, its period and phase, its frame and middle courses, and the air it needs beside it. A face over a shallower
 drop keeps its plain courses, so an accent is never cut off.
+
+**A face's course may be sunk, and its bays may follow the sections.** `Sunk(block)` sets a course back a block, an
+inset with `block` behind it. An accent's middle may change with its place in the bay, and `align="section"`
+centres whole bays on each section's side instead of counting them from the world's origin. A section's `tops` give
+it a stepped top, so a flight of steps is a section too.
 
 **A style's fills are recipes that may decline.** `Style.choose(section, lot)` names the fills to try in order; a
 fill that needs a rectangle, or room, declines and the next is tried. A section may name its own fill, and carry

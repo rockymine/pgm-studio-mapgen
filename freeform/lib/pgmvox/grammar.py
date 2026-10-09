@@ -47,6 +47,7 @@ class Section:
     fill: str = None
     tags: frozenset = frozenset()
     motifs: tuple = ()
+    tops: tuple = ()                    # ((x, z), top) for a section whose top is not y: a flight of steps
 
     @property
     def box(self):
@@ -67,14 +68,22 @@ class Section:
 
 
 def _cuts(lo, hi, n):
-    """Cut lo..hi into n runs as near equal as can be, the longer ones first: [(a, b), ...] inclusive."""
-    size = hi - lo + 1
-    q, r = divmod(size, n)
+    """Cut lo..hi into n runs as near equal as can be, the longer ones placed in pairs from both ends inward (and an
+    odd one in the middle), so the cut reads the same from either end where the blocks allow: [(a, b), ...]."""
+    q, r = divmod(hi - lo + 1, n)
+    sizes = [q] * n
+    i = 0
+    while r >= 2 and i < n - 1 - i:
+        sizes[i] += 1
+        sizes[n - 1 - i] += 1
+        r -= 2
+        i += 1
+    if r:
+        sizes[n // 2] += 1
     out, a = [], lo
-    for i in range(n):
-        b = a + q + (1 if i < r else 0) - 1
-        out.append((a, b))
-        a = b + 1
+    for size in sizes:
+        out.append((a, a + size - 1))
+        a += size
     return out
 
 
@@ -104,8 +113,9 @@ class Ground:
         self.T = dict(tops or {})
         self.owner = {}
         for n, s in enumerate(self.sections):
+            own = dict(s.tops)
             for c in s.columns():
-                self.T[c] = s.y
+                self.T[c] = own.get(c, s.y)
                 self.owner[c] = n
         self._depth = {}
         for n, s in enumerate(self.sections):
@@ -141,17 +151,26 @@ def spec(s, inward):
     return s(inward) if callable(s) else s
 
 
+@dataclass(frozen=True)
+class Sunk:
+    """A course set back one block: air at the face, `back` (a course) behind it, an inset."""
+    back: object
+
+
 @dataclass
 class Accent:
     """A bay laid instead of the plain courses every `every` bays of `module` along a face, starting at bay `phase`:
-    its two end columns are `frame`, its middle `inner`, each top down from the rim. It is laid only where `min_air`
-    blocks of air lie beside, so a shallow face never shows half of one."""
+    its two end columns are `frame`, its middle `inner` (or inner(pos), pos 1 .. module - 2), each top down from the
+    rim. It is laid only where `min_air` blocks of air lie beside, so a shallow face never shows half of one.
+    `align` "grid" counts bays from the world's origin, as cells do; "section" centres as many whole bays as fit on
+    the section's side, so the bays answer the sections of the floor above them."""
     module: int
     frame: list
-    inner: list
+    inner: object
     every: int = 2
     phase: int = 0
     min_air: int = 5
+    align: str = "grid"
 
 
 @dataclass
@@ -167,14 +186,27 @@ class Face:
         a = self.accent
         stack = self.courses
         if accents and a and along is not None and along % a.every == a.phase and air >= a.min_air:
-            stack = a.frame if pos in (0, a.module - 1) else a.inner
+            stack = a.frame if pos in (0, a.module - 1) else a.inner(pos) if callable(a.inner) else a.inner
+        ix, iz = DIRS[inward]
         for i, s in enumerate(stack):
-            w.set(x, h - i, z, *spec(s, inward))
+            if isinstance(s, Sunk):
+                w.set(x, h - i, z, B.AIR)
+                w.set(x + ix, h - i, z + iz, *spec(s.back, inward))
+            else:
+                w.set(x, h - i, z, *spec(s, inward))
 
-    def bay(self, x, z, side):
-        """Which bay of the face a column stands in, and where in it: (along, pos)."""
-        m = self.accent.module if self.accent else 1
+    def bay(self, x, z, side, box=None):
+        """Which bay of the face a column stands in, and where in it: (along, pos); along None off every bay."""
+        a = self.accent
+        m = a.module if a else 1
         c = z if side in ("e", "w") else x
+        if a and a.align == "section" and box is not None:
+            lo, hi = (box[1], box[3]) if side in ("e", "w") else (box[0], box[2])
+            n = (hi - lo + 1) // m
+            start = lo + (hi - lo + 1 - n * m) // 2
+            if n < 1 or not start <= c < start + n * m:
+                return None, None
+            return (c - start) // m, (c - start) % m
         return c // m, c % m
 
 
@@ -257,7 +289,7 @@ def lay(w, ground, style, only=None, rng=None, face_of=None, params=None, where=
             if falls and name:
                 side, drop = falls[0]
                 face = style.faces[name]
-                along, pos = face.bay(x, z, side)
+                along, pos = face.bay(x, z, side, sec.box)
                 face.lay(w, x, z, h, OPP[side], along, pos, air=drop)
             elif not falls and ground.depth(x, z) == 0:
                 w.set(x, h, z, *style.seam)
