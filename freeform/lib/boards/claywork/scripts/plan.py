@@ -99,6 +99,7 @@ STONES = [((-45, -50, -44, -48), 22), ((-45, -45, -44, -43), 21), ((-45, -40, -4
 # ladders at the Walks
 UNDER = HUB - 6
 UNDER_CLEAR = 3
+CANOPY = 7                                 # the well's roof: its beam seven over the Court, on a stilt at each corner
 PASSAGE = (-60, -64, -7, -62)              # three wide, from the Arcade's far end to the well, under the floors
 LADDER = (-60, -65)                        # the landing past the Arcade's north edge; a ladder up the Walk's face
 

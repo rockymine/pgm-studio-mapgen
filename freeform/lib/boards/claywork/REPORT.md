@@ -41,11 +41,11 @@ mirrors the other wing.
 **A flight of steps is laid tread by tread.** A smooth stone lip lies behind each rise, the rest is stone brick,
 and a runner of clay runs up the middle third. A stone-brick stair stands at each tread's back edge as its nosing.
 
-**Arrows of the team's wool are set into the floor along every way forward, each centred on its lane.** They run
-from the Gatehouse's front edge, between its monuments, down the Spawn Steps, across the Court and along each
-Arcade, and up each Walk to its Kiln. A
-lane an even number of blocks wide has its middle between two blocks, so its arrow is six wide, and five elsewhere.
-They are wool and not clay because blue stained clay is nearly purple.
+**Arrows of the team's wool are set into the floor along every way forward, each placed by the floor's pattern.**
+On the Court and the Forecourt a chevron stands on a disc ten across, a ring of stone brick filled with polished
+diorite. On a floor laid in squares, an arrow fills one square: a head and a shaft on diorite. It lies in the
+square on the lane's middle, and on an Apron in the middle square of its three by three. They are wool and not
+clay because wool is the truer blue.
 
 **Arches of stone brick span both flights of the Grand Steps, each Arcade, and each Walk twice.** Each arch has
 a beam and upside-down stair corners, and its legs are what narrow a Walk from twelve to ten.
@@ -78,6 +78,10 @@ regrows as a renewable.
 **The statues are figures twelve blocks tall.** Each stands on a plinth with sea lanterns at its corners and the
 team's clay on its top. The figure is quartz, with the team's clay at its belt and its crest. One stands on each
 Statue Terrace and one on the Rostrum.
+
+**A brick roof on four stilts stands over the well.** The stilts are stone brick at the pit's corners, joined by
+a beam of slabs seven over the Court with sea lanterns over the stilts. The roof is hipped like a Kiln's. It is open
+on every side, so the drop into the well is as it was.
 
 **The Undercroft is carved three high under the Court and the Arcades, with a roof three thick, and reached by the
 well.** Its floor is at 17, six under the Court, and the well's whole floor is a pool to land in. A ladder at each

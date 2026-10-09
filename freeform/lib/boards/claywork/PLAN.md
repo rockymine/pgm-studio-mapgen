@@ -165,3 +165,6 @@ corners and grow back after they are mined. The spawn point stands on a carpet i
 
 **The bedrock walls now run down to the floor of the world, so nothing tunnels under them.** Each carries two
 defence chests set into the face the Kiln's side looks at.
+
+**The well has a roof.** A hipped brick roof on four stilts at the pit's corners stands over it, open on every
+side, so the drop is unchanged.

@@ -259,11 +259,15 @@ for i, k in np.argwhere(land):
                 and int(R.floor[R.ix(a), R.iz(b)]) == h + 1:
             w.set(x, h + 1, z, B.STONEBRICK_STAIRS, stair(d))
 
-# 3. arrows set into the surface in the team's wool (a truer blue than blue clay), pointing the way forward: a chevron three deep, centred on its
-# lane (a lane an even number wide has its centre between two blocks, and the chevron is six wide there, else five)
+# 3. arrows set into the surface in the team's wool (a truer blue than blue clay), pointing the way forward. On the
+# two checkered floors, a chevron on a disc: a ring of stone brick ten across filled with polished diorite. On a
+# floor laid in squares, an arrow fills one square: a head and a shaft four by four on diorite, in the square on
+# the lane's middle (on an Apron, the middle square of its three by three)
 
 
 def arrow(cx, cz, d):
+    """A chevron three deep, centred across on cx or cz (a half when the lane is an even number wide: six wide,
+    else five), its point at cz or cx."""
     dx, dz = {"n": (0, -1), "s": (0, 1), "e": (1, 0), "w": (-1, 0)}[d]
     across = cx if dx == 0 else cz
     half = 0.5 if across != int(across) else 0.0
@@ -282,16 +286,61 @@ def arrow(cx, cz, d):
                 w.set(ax, h, az, B.WOOL, RED)
 
 
-ARROWS = [(-0.5, -84, "s"),                      # the Gatehouse's front, down the Spawn Steps
-          (-27, -58.5, "w"), (-41, -58.5, "w"),  # the Court and the Arcade, out to the Walk
-          (-66.5, -44, "n"), (-66.5, -57, "n"),  # up the Walk to the wall and the Kiln
-          (-23.5, -24, "n"),                     # the Forecourt to the Grand Steps' flight
-          (-66.5, -22, "n"),                     # the Apron, into the Walk
-          (-0.5, -22, "s")]                      # the Forecourt, toward the band
-for cx, cz, d in ARROWS:
-    arrow(cx, cz, d)
-    if P.mx(cx) != cx:
-        arrow(P.mx(cx), cz, {"w": "e", "e": "w"}.get(d, d))
+def disc(cx, cz, d, radius=5.0):
+    """The disc under a chevron, centred on the chevron's own middle."""
+    dx, dz = {"n": (0, -1), "s": (0, 1), "e": (1, 0), "w": (-1, 0)}[d]
+    ox, oz = cx - dx * 0.5, cz - dz * 0.5
+    for x in range(int(np.floor(ox - radius)), int(np.ceil(ox + radius)) + 1):
+        for z in range(int(np.floor(oz - radius)), int(np.ceil(oz + radius)) + 1):
+            r_ = float(np.hypot(x - ox, z - oz))
+            if r_ > radius or not is_land(x, z):
+                continue
+            h, kind = surface(x, z)
+            if kind in CHECKER:
+                w.set(x, h, z, *(BRICK if r_ > radius - 1 else DIORITE))
+
+
+GLYPH = [".XX.",                                     # pointing north: a head two rows, a shaft two
+         "XXXX",
+         ".XX.",
+         ".XX."]
+
+
+def snap(lo, n, p):
+    """The first block of the square, along one axis of a span of n from lo, whose middle is nearest p."""
+    lab = squares(n)
+    starts = [j for j in range(n) if lab[j] == "r" and (j == 0 or lab[j - 1] not in "rc")]
+    return lo + min(starts, key=lambda j: abs(lo + j + (TILE - 1) / 2 - p))
+
+
+def square_arrow(x, z, d):
+    """An arrow filling the square nearest (x, z) on the piece there, read on red's west side or the middle."""
+    _, key, (x0, z0, x1, z1), _ = region(x, z)
+    sx, sz = snap(x0 + 2, x1 - x0 - 3, x), snap(z0 + 2, z1 - z0 - 3, z)
+    for j, row in enumerate(GLYPH):
+        for i, c in enumerate(row):
+            ax, az = {"n": (sx + i, sz + j), "s": (sx + i, sz + TILE - 1 - j),
+                      "w": (sx + j, sz + i), "e": (sx + TILE - 1 - j, sz + i)}[d]
+            for bx in {ax, P.mx(ax)}:
+                h, _ = surface(bx, az)
+                w.set(bx, h, az, *((B.WOOL, RED) if c == "X" else DIORITE))
+
+
+ON_CHECKER = [(-27, -58.5, "w"),                 # the Court, out toward the Arcade
+              (-23.5, -24, "n"),                 # the Forecourt to the Grand Steps' flight
+              (-0.5, -22, "s")]                  # the Forecourt, toward the band
+for cx, cz, d in ON_CHECKER:
+    for x, dd in ((cx, d), (P.mx(cx), {"w": "e", "e": "w"}.get(d, d))):
+        disc(x, cz, dd)
+        arrow(x, cz, dd)
+        if P.mx(cx) == cx:
+            break
+ON_SQUARES = [(-1, -85, "s"),                    # the Gatehouse's front, down the Spawn Steps
+              (-41, -58, "w"),                   # the Arcade, out to the Walk
+              (-66, -44, "n"), (-66, -58, "n"),  # up the Walk to the wall and the Kiln
+              (-62, -22, "n")]                   # the Apron's middle square, toward the Walk
+for x, z, d in ON_SQUARES:
+    square_arrow(x, z, d)
 
 # 4. the arches: stone-brick legs on the way's edges, a beam two high, upside-down stairs under its ends
 for name, axis, (a, b), at in P.ARCHES:
@@ -342,6 +391,27 @@ for x0, x1 in ((P.WALL["x0"], P.WALL["x1"]), (P.mx(P.WALL["x1"]), P.mx(P.WALL["x
 # at its top; inside, the wool on a dais, lamps in the pilasters, and two chests of gear against the back wall
 
 
+def hipped(x0, z0, x1, z1, y0, stairs=B.BRICK_STAIRS):
+    """A hipped roof over x0..x1, z0..z1: a ring of stairs a course from y0, each one in from the last, rising
+    to a ridge of stairs back to back."""
+    k = 0
+    while x0 + k <= x1 - k and z0 + k <= z1 - k:
+        y = y0 + k
+        a0, a1, b0, b1 = x0 + k, x1 - k, z0 + k, z1 - k
+        for x in range(a0, a1 + 1):
+            for z in range(b0, b1 + 1):
+                edge = [d for d, on in (("e", x == a0), ("w", x == a1), ("s", z == b0), ("n", z == b1)) if on]
+                if not edge:
+                    continue
+                if a1 - a0 <= 1:
+                    w.set(x, y, z, stairs, stair("e" if x == a0 else "w"))
+                elif b1 - b0 <= 1:
+                    w.set(x, y, z, stairs, stair("s" if z == b0 else "n"))
+                else:
+                    w.set(x, y, z, stairs, stair(edge[0]))
+        k += 1
+
+
 def kiln(x0, z0, x1, z1, d0, d1):
     top = P.WOOL + P.ROOM_H                                          # the cornice course
     for x in range(x0, x1 + 1):
@@ -382,23 +452,7 @@ def kiln(x0, z0, x1, z1, d0, d1):
                 w.set(x, top, z, B.GLOWSTONE)
             else:
                 w.set(x, top, z, B.AIR)
-    # the hipped roof: a ring of brick stairs a course, each one in from the last, rising to a ridge
-    k = 0
-    while x0 + k <= x1 - k and z0 + k <= z1 - k:
-        y = top + 1 + k
-        a0, a1, b0, b1 = x0 + k, x1 - k, z0 + k, z1 - k
-        for x in range(a0, a1 + 1):
-            for z in range(b0, b1 + 1):
-                edge = [d for d, on in (("e", x == a0), ("w", x == a1), ("s", z == b0), ("n", z == b1)) if on]
-                if not edge:
-                    continue
-                if a1 - a0 <= 1:                                     # the ridge: two stairs back to back
-                    w.set(x, y, z, B.BRICK_STAIRS, stair("e" if x == a0 else "w"))
-                elif b1 - b0 <= 1:
-                    w.set(x, y, z, B.BRICK_STAIRS, stair("s" if z == b0 else "n"))
-                else:
-                    w.set(x, y, z, B.BRICK_STAIRS, stair(edge[0]))
-        k += 1
+    hipped(x0, z0, x1, z1, top + 1)
     # the chimney, at the back, four by four and hollow, its top a ring of stone brick over embers
     cx = (x0 + x1) // 2
     for x in range(cx - 1, cx + 3):
@@ -509,6 +563,22 @@ for x, z in ((-11, -75),):
     statue(x, x, z, P.SPAWN)
     statue(P.mx(x), P.mx(x), z, P.SPAWN)
 statue(-1, 0, -35, P.HUB)
+
+# 9b. the well's canopy: a brick roof on four stilts of stone brick at the pit's corners, a beam of slabs between
+# them, sea lanterns over the stilts; open on every side, so the drop and the Court's sight lines stay as they were
+hx0, hz0, hx1, hz1 = P.HOLE
+cx0, cz0, cx1, cz1 = hx0 - 1, hz0 - 1, hx1 + 1, hz1 + 1
+beam = P.HUB + P.CANOPY
+for x in (cx0, cx1):
+    for z in (cz0, cz1):
+        for y in range(P.HUB + 1, beam):
+            w.set(x, y, z, B.STONEBRICK, 3 if y == beam - 1 else 0)
+for x in range(cx0, cx1 + 1):
+    for z in range(cz0, cz1 + 1):
+        if x in (cx0, cx1) or z in (cz0, cz1):
+            corner = x in (cx0, cx1) and z in (cz0, cz1)
+            w.set(x, beam, z, *((B.SEA_LANTERN, 0) if corner else (B.SLAB, 5 | 8)))
+hipped(cx0, cz0, cx1, cz1, beam + 1)
 
 # 10. the Undercroft: the passage carved three high under the Court and the Arcades, a roof three thick over it, lit;
 # the well's floor a pool to land in; the ladders up the Walks' faces
