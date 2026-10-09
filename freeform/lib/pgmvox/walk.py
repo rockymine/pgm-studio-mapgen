@@ -124,7 +124,8 @@ def walk(ids, starts, x0, z0, rules=None):
                 if st[nx, ny, nz] or (rules.climb and climb[nx, ny, nz]):
                     push((nx, ny, nz), d)                        # a ladder or a vine catches a fall
                     break
-        for dx, dz in jumps:                                     # a running jump over a gap, at most one up
+        for dx, dz in jumps:                                     # a running jump over a gap, at most one up and
+                                                                 # as far down as a drop may go
             nx, nz = x + dx, z + dz
             if not (0 <= nx < sx and 0 <= nz < sz) or y + 3 >= sy:
                 continue
@@ -134,9 +135,12 @@ def walk(ids, starts, x0, z0, rules=None):
                 continue                                         # not a gap: the ground runs on
             if not all(passable[a, y + 1, b] and passable[a, y + 2, b] for a, b in line):
                 continue
-            for ny in (y + 1, y):
-                if st[nx, ny, nz]:
+            low = max(1, y - (rules.max_drop if rules.max_drop is not None else 3))
+            for ny in range(y + 1, low - 1, -1):                 # one up, level, or lower: a jump down a step
+                if st[nx, ny, nz]:                               # carries as far as a level one or further
                     push((nx, ny, nz), d + max(abs(dx), abs(dz)) - 1)
+                    break
+                if ny <= y and not passable[nx, ny + 1, nz]:
                     break
         if rules.climb:
             for dy in (1, -1):                                   # ladders, vines and water lift a player

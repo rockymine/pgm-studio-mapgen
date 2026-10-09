@@ -350,6 +350,10 @@ blocks costs exactly that many moves and a mirrored board walks the same from ei
 queue had given one board 81 and 83. A wooden door or fence gate opens, an iron door does not, and a ladder or
 vine catches a player falling past it.
 
+**A running jump lands one up, level, or lower.** Across a gap it takes the first floor it meets, down to the
+move rules' greatest drop, so a line of stones stepping down is crossed both ways. It had landed only one up or
+level, and a line of stones read as one way.
+
 **`python3 check.py` is the one command that says nothing is broken.** It runs the tests and the prose gate, then
 rebuilds every example and compares what each reads back (its plan check, generator and walk numbers, and how many
 of each block it built) with `check/snapshot.json`. A change that moves a number fails with a diff until it is

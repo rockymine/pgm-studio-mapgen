@@ -136,6 +136,14 @@ class Walk(unittest.TestCase):
         d = walk.walk(w.ids, [(0, 4, 0)], w.x0, w.z0, walk.MoveRules(jumps=False))
         self.assertEqual(d[1 - w.x0, 5, 0 - w.z0], -1)
 
+    def test_jump_lands_lower(self):
+        """A running jump across a gap of two lands on a pillar one lower, as well as level or one up."""
+        w = World(-5, -5, 11, 11, sy=20)
+        w.fill(-5, 1, -1, -2, 10, 1, B.STONE)                     # the take-off, its top at 10
+        w.fill(1, 1, -1, 4, 9, 1, B.STONE)                        # the landing, its top at 9, two blocks away
+        d = walk.walk(w.ids, [(-3, 11, 0)], w.x0, w.z0, walk.MoveRules(max_drop=4))
+        self.assertIsNotNone(walk.nearest(d, w.x0, w.z0, 3, 10, 0, 0))
+
     def test_no_stand_above(self):
         w = self.w
         w.set(3, 10, 3, B.STONE)
