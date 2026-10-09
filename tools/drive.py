@@ -61,13 +61,16 @@ What each key states:
   shapePropsByHeight {"11": {"relief_scope": "exclude"}, ...}   fields merged onto a compiled shape
   shapePropsById  {"s3": {...}}
   editShapes      {"garth-14": [{"after": 1, "x": 92, "z": -70}, {"index": 4, "x": 80, "z": -60},
-                  {"remove": 7}]}  the outline reshaped one point at a time, in order, before any bend.
-                  `after` inserts a point on that edge (at its midpoint when no x/z is stated), `index`
-                  moves the point there, `remove` drops it; every other point of the outline stays exactly
-                  where it was drawn, and each op is stated against the ring as the ops before it left it.
-                  An op naming none or more than one of the three refuses the whole source (`SR4`)
+                  {"remove": 7}, {"pulls": {"0": [[0.5, 2]]}}]}  every outline carrying the id -- a
+                  shape's vertices, an area mark's or push's ring, a stroke's, fluid's or flora's points --
+                  reshaped one point at a time, in order, before any bend. `after` inserts a point on that
+                  edge (at its midpoint when no x/z is stated), `index` moves the point there, `remove`
+                  drops it, `pulls` moves points a fraction along an edge in or out; every other point stays
+                  exactly where it was drawn, and each op is stated against the ring as the ops before it
+                  left it. An op naming none or more than one of the four refuses the whole source (`SR4`);
+                  a pull on a stroke or a fluid channel, which is a line, is a complaint
   bendShapes      {"bahnhof-30": {"tension": 0.22, "wander": 3, "step": 10, "seed": 5, "side": "out"}}
-                  the compiled outline drawn as a coast, after every point edit. The outline's own vertices
+                  every ring carrying the id drawn as a coast, after every point edit. The outline's own vertices
                   never move; `tension` is the Bezier handle's length as a fraction of its edge (0.22 where
                   absent); `side` is "out" (the default -- the slight bloat that reads as land), "in" (keeps
                   the plan's footprint) or "both"
