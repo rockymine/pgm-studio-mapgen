@@ -29,12 +29,20 @@ of chiseled quartz. A plinth of polished andesite runs under them, and the bays 
 ground, then a stripe of the team's stained clay set flush, then bedrock patterned with obsidian and black wool
 to the floor. The mirror recolours every piece of team colour from red to blue on blue's half.
 
-**The floor is a three-by-three checker, and each level has its own pair.** The front is clay and stone, the hub
-stone and clay, the Rostrum and the Walks double slab and stone, the spawn double slab and clay, the Kilns smooth
-slab and clay. A stone-brick border runs along every edge over the void, so an edge is seen before it is reached.
+**Only the two broad floors are a checker: the Clay Court and the Forecourt.** Each is laid in three-by-three
+paces of stone and clay. A stone-brick border runs along every edge over the void, so an edge is seen before it is
+reached.
+
+**Every other piece is laid in squares inside a rim.** A rim of stone runs round the piece, then a band of double
+slab. Inside them lie rows of squares four a side, a ring of polished diorite round a middle of clay, set in stone
+grout. As many whole squares fit as leave equal margins, so a piece reads the same from either side, and a wing
+mirrors the other wing.
+
+**A flight of steps is laid tread by tread.** A smooth stone lip lies behind each rise, the rest is stone brick,
+and a runner of clay runs up the middle third. A stone-brick stair stands at each tread's back edge as its nosing.
 
 **Arrows of the team's wool are set into the floor along every way forward, each centred on its lane.** They run
-from the Gatehouse down the Spawn Steps, across the Court and along each Arcade, and up each Walk to its Kiln. A
+from the Gatehouse's front edge, between its monuments, down the Spawn Steps, across the Court and along each Arcade, and up each Walk to its Kiln. A
 lane an even number of blocks wide has its middle between two blocks, so its arrow is six wide, and five elsewhere.
 They are wool and not clay because blue stained clay is nearly purple.
 
@@ -138,7 +146,7 @@ statues. Blue's panels and friezes are blue stained clay, which reads as a dark 
 |---|---|---|
 | A grounded board with layered faces | Easy: every column gets ground, bedrock, a stripe and a pattern from one function | A face treatment on a piece: the depth of ground, the stripe, and the pattern below |
 | Building only over the board | Easy: block 36 at y 0 and a `not void` filter | Build zones drawn on the plan, and the block and filter written from them |
-| A checker that tells the levels apart | Easy: a pair of blocks for each kind of piece | A surface pattern per piece, chosen with the theme |
+| Floors that tell the pieces apart | Moderate: a checker for the two broad floors, squares in a rim centred on each piece's box, treads for the steps | A surface pattern per piece, laid out from the piece's own outline and chosen with the theme |
 | Arrows and arches | Moderate: each is placed by hand along its way, centred on a lane that may be an even number wide, and the arches must leave the narrowest at ten | Way-marking pieces that follow a route on the plan and centre themselves on it |
 | Dressed faces | Moderate: each face cell finds its run along the face at one height, and the bays are centred on it | A face treatment that lays out bays on a piece's edge, with the team's colour in it |
 | Chests laid out as patterns | Easy once the library could write enchantments: rows of letters and a legend | A chest editor that shows the 27 slots as a grid |

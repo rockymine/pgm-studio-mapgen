@@ -39,7 +39,7 @@ RED = 14                                        # red stained clay; the mirror r
 
 # the surface pairs, level by level: (a, b) for the checker's two paces
 CLAY, STONE, DSLAB, SMOOTH = (B.CLAY, 0), (B.STONE, 0), (B.DSLAB, 0), (B.DSLAB, 8)
-BRICK, ANDESITE = (B.STONEBRICK, 0), (B.STONE, 6)
+BRICK, ANDESITE, DIORITE = (B.STONEBRICK, 0), (B.STONE, 6), (B.STONE, 4)
 PAIRS = {"front": (CLAY, STONE), "apron": (CLAY, STONE), "steps": (BRICK, BRICK),
          "hub": (STONE, CLAY), "wing": (STONE, CLAY), "rostrum": (DSLAB, STONE), "walk": (DSLAB, STONE),
          "neck": (BRICK, BRICK), "spawn": (DSLAB, CLAY), "terrace": (DSLAB, CLAY), "kiln": (SMOOTH, CLAY),
@@ -67,13 +67,76 @@ near_void[0, :] |= land[0, :]
 near_void[-1, :] |= land[-1, :]
 
 
+# Where each piece's floor is laid out from: its box on red's west side (a piece across the middle keeps its whole
+# box), and its rule. A cell east of the middle is read at its mirror image, so the two wings match.
+REGIONS = [(key, box, rule) for key, _, box, rule in P.PIECES if key != "walk"] + \
+          [("walk", box, rule) for box, rule in P.WALK_FLOORS]
+CHECKER = ("hub", "front")                        # the two broad floors keep the checker
+TILE = 4                                          # a square four a side, one of grout between squares
+
+
+def region(x, z):
+    xf = x if x < 0 else P.mx(x)
+    for key, (x0, z0, x1, z1), rule in REGIONS:
+        if x0 <= xf <= x1 and z0 <= z <= z1:
+            return xf, key, (x0, z0, x1, z1), rule
+    return xf, None, None, None
+
+
+def squares(n):
+    """One axis of the squares across a span of n: 'm' margin, 'g' grout, 'r' a square's ring, 'c' its middle;
+    as many whole squares as fit with the margins equal, so the row reads the same from either end."""
+    k = max(0, (n + 1) // (TILE + 1))
+    while k > 0 and (n - (k * (TILE + 1) - 1)) % 2:
+        k -= 1
+    used = k * (TILE + 1) - 1 if k else 0
+    left = (n - used) // 2
+    out = ["m"] * n
+    for t in range(k):
+        for j in range(TILE):
+            out[left + t * (TILE + 1) + j] = "r" if j in (0, TILE - 1) else "c"
+        if t < k - 1:
+            out[left + t * (TILE + 1) + TILE] = "g"
+    return out
+
+
 def paint(x, z, h, kind):
-    """The top block of a column: the level's checker in three-by-three paces, stone brick on a piece's edge."""
+    """The top block of a column. On a piece's edge over the void, stone brick. The Court and the Forecourt are a
+    checker in three-by-three paces. A flight of steps is laid tread by tread: a smooth lip behind each rise, stone
+    brick, and a runner of clay up its middle. Every other piece has a rim of stone, a band of double slab inside it,
+    and rows of squares: a ring of polished diorite round a middle of clay, set in stone grout."""
     i, k = R.ix(x), R.iz(z)
     if near_void[i, k] and kind not in ("stone", "under"):
         return BRICK
-    a, b = PAIRS.get(kind, (STONE, STONE))
-    return a if ((x // 3) + (z // 3)) % 2 == 0 else b
+    if kind in ("stone", "under") or kind in CHECKER:
+        a, b = PAIRS.get(kind, (STONE, STONE))
+        return a if ((x // 3) + (z // 3)) % 2 == 0 else b
+    xf, key, box, rule = region(x, z)
+    if box is None:
+        return STONE
+    x0, z0, x1, z1 = box
+    if isinstance(rule, tuple):                                  # a flight of steps
+        _, edge, lo, hi, _ = rule
+        r = abs(z - edge) % P.TREAD
+        width = x1 - x0 + 1
+        across = abs((xf if x1 < 0 else x) - (x0 + x1) / 2)
+        if r == 0:
+            return SMOOTH
+        return CLAY if across < width / 6 else BRICK
+    d = min(xf - x0, x1 - xf, z - z0, z1 - z) if x1 < 0 else min(x - x0, x1 - x, z - z0, z1 - z)
+    if d == 0:
+        return STONE
+    if d == 1:
+        return DSLAB
+    ax = squares(x1 - x0 - 3)[(xf if x1 < 0 else x) - x0 - 2]
+    az = squares(z1 - z0 - 3)[z - z0 - 2]
+    if "m" in (ax, az):
+        return DSLAB
+    if "g" in (ax, az):
+        return STONE
+    if "r" in (ax, az):
+        return DIORITE
+    return CLAY
 
 
 def inside(x, z):
@@ -219,7 +282,7 @@ def arrow(cx, cz, d):
                 w.set(ax, h, az, B.WOOL, RED)
 
 
-ARROWS = [(-0.5, -87, "s"),                      # the Gatehouse, down the Spawn Steps
+ARROWS = [(-0.5, -84, "s"),                      # the Gatehouse's front, down the Spawn Steps
           (-27, -58.5, "w"), (-41, -58.5, "w"),  # the Court and the Arcade, out to the Walk
           (-66.5, -44, "n"), (-66.5, -57, "n"),  # up the Walk to the wall and the Kiln
           (-23.5, -24, "n"),                     # the Forecourt to the Grand Steps' flight
