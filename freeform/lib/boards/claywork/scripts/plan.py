@@ -1,0 +1,178 @@
+"""Claywork: a standard capture-the-wool board, grounded, two wools a team.
+
+Every piece stands on the world's floor: its surface, twelve blocks of ground under it, then bedrock down to y 1.
+The void between pieces runs to the bottom of the world, so a fall between them is a death. The board is mirrored
+north and south across z = -0.5, red holding the north (z < 0); within each half the west and the east wing are
+mirror images across x = -0.5, so the two wools of a team are walked the same.
+
+The levels step up from the front to the back in broad steps, each one block up and three blocks deep:
+
+    the front       the Forecourt and the two Aprons at 20, on the band
+    the hub         the Clay Court at 23, up the Grand Steps; a well in its middle
+    the spawn       the Gatehouse at 27, up the Spawn Steps; the monuments on its front edge
+    the wings       the Arcades at 23, from the Court out to the Walks
+    the walks       the West and East Walks: up from each Apron (20 to 23), along to the Kilns (23 to 26)
+    the wools       the West and East Kilns at 26, in the back corners, each behind a bedrock wall across its Walk
+
+    plan()          the raster (both halves), every piece a kind
+    objectives()    teams, spawns, the four wools
+"""
+import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
+import numpy as np  # noqa: E402
+
+from pgmvox.objectives import Box, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402
+from pgmvox.plan import Raster, Symmetry  # noqa: E402
+
+BOARD = "claywork"
+X_MIN, X_MAX = -72, 71
+Z_MIN, Z_MAX = -104, 103
+SYM = Symmetry("mirror_z")                 # (x, z) -> (x, -1 - z): blue's half is red's seen in a mirror
+
+FRONT, HUB, WOOL, SPAWN = 20, 23, 26, 27   # the four levels, floor blocks (a player stands one above)
+GROUND = 12                                # blocks of ground under every surface; bedrock below
+TREAD = 3                                  # a broad step: one block up, three deep
+MAX_BUILD = 44                             # the sky layer: seventeen over the spawn
+ROOM_H = 6                                 # a Kiln's walls, floor to roof
+
+
+def red_half(x, z):
+    return z < 0
+
+
+def mx(x):
+    """The west-east mirror inside a half: x -> -1 - x."""
+    return -1 - x
+
+
+# ---- the pieces, red's west side: (key, name, (x0, z0, x1, z1) inclusive, floor or a stepped rule) ----------
+# A floor given as ("steps", z_low_edge, h_low, h_high, rising) climbs one block every TREAD rows away from its
+# low edge, from h_low (the first row) to h_high (the rest).
+PIECES = [
+    ("front", "the Forecourt", (-28, -30, 27, -13), FRONT),
+    ("apron", "the West Apron", (-72, -30, -53, -13), FRONT),
+    ("steps", "the Grand Steps", (-12, -39, 11, -31), ("steps", -31, FRONT + 1, HUB, "n")),
+    ("hub", "the Clay Court", (-32, -68, 31, -40), HUB),
+    ("neck", "the Spawn Steps", (-6, -80, 5, -69), ("steps", -69, HUB + 1, SPAWN, "n")),
+    ("spawn", "the Gatehouse", (-16, -100, 15, -81), SPAWN),
+    ("wing", "the West Arcade", (-60, -64, -33, -53), HUB),
+    ("walk", "the West Walk", (-72, -81, -61, -31), None),     # its floor is WALK_FLOORS
+    ("kiln", "the West Kiln", (-72, -98, -59, -82), WOOL),
+]
+WALK_FLOORS = [((-72, -39, -61, -31), ("steps", -31, FRONT + 1, HUB, "n")),
+               ((-72, -72, -61, -40), HUB),
+               ((-72, -81, -61, -73), ("steps", -73, HUB + 1, WOOL, "n"))]
+HOLE = (-7, -62, 6, -51)                   # the Court's well: 14 by 12 of void in the middle of the hub
+PIECE = {p[0]: p for p in PIECES}
+
+# the bedrock wall across each Walk, 2 thick and 3 high, just before the Walk climbs to its Kiln
+WALL = dict(x0=-72, x1=-61, z0=-72, z1=-71, height=3)
+# the Kiln: walls ROOM_H high and a roof, the door 8 wide in its south face onto the Walk
+KILN = (-72, -98, -59, -82)
+KILN_DOOR = (-70, -63)
+# arches: a span over a way, legs one block wide on its edges, clear to ARCH_CLEAR over the floor
+ARCH_CLEAR = 5
+ARCHES = [("the Steps arch", "x", (-12, 11), -35), ("the Walk's first arch", "x", (-72, -61), -48),
+          ("the Walk's second arch", "x", (-72, -61), -62), ("the Arcade arch", "z", (-64, -53), -46)]
+
+# the band: void a player may build over, between the two Forecourts
+BAND = (-72, -12, 71, 11)
+
+SPAWN_AT = (0, SPAWN + 1, -92)
+MONUMENTS = [(-8, -83), (7, -83)]          # red's two, on the Gatehouse's front edge, west and east
+OBSERVER_AT = (0, 50, 0)
+
+COLOURS = {"void": (34, 38, 52), "front": (214, 204, 180), "apron": (214, 204, 180), "steps": (196, 186, 160),
+           "hub": (180, 190, 200), "wing": (170, 180, 192), "walk": (200, 190, 170), "neck": (196, 186, 160),
+           "spawn": (232, 226, 210), "kiln": (245, 245, 245), "kilnwall": (150, 110, 90),
+           "barrier": (20, 20, 20), "arch": (120, 120, 130)}
+KINDS = ["void", "front", "apron", "steps", "hub", "wing", "walk", "neck", "spawn", "kiln", "kilnwall",
+         "barrier", "arch"]
+WALK_KINDS = {"front", "apron", "steps", "hub", "wing", "walk", "neck", "spawn", "kiln"}
+PLACES = [("THE GATEHOUSE", (0, -97)), ("the Clay Court", (-20, -46)),
+          ("the well", (0, -56)), ("the Grand Steps", (0, -35)), ("the Forecourt", (0, -22)),
+          ("the West Apron", (-62, -22)), ("the West Walk", (-66, -55)), ("the West Arcade", (-46, -66)),
+          ("WEST KILN", (-66, -101)), ("EAST KILN", (65, -101)), ("the band", (0, 0))]
+
+
+def _floor(R, box, rule, kind, mirror_x=True):
+    """Lay a rectangle at one floor, or as broad steps, on red's side and (mirror_x) its west-east image; the
+    raster's own symmetry carries both onto blue's half."""
+    x0, z0, x1, z1 = box
+    boxes = [(x0, z0, x1, z1)]
+    if mirror_x and not (x0 <= -1 and x1 >= 0):
+        boxes.append((mx(x1), z0, mx(x0), z1))
+    for a0, b0, a1, b1 in boxes:
+        for x in range(a0, a1 + 1):
+            for z in range(b0, b1 + 1):
+                if isinstance(rule, tuple):
+                    _, edge, lo, hi, _ = rule
+                    h = min(hi, lo + abs(z - edge) // TREAD)
+                else:
+                    h = rule
+                R.cell(x, z, h, kind)
+
+
+def plan():
+    """The raster, both halves. R.floor and R.piece keep each column's ground before the walls are drawn over it."""
+    R = Raster((X_MIN, X_MAX), (Z_MIN, Z_MAX), KINDS, base_h=0, base_kind="void", symmetry=SYM)
+    for key, _, box, rule in PIECES:
+        if key == "walk":
+            for sub, r in WALK_FLOORS:
+                _floor(R, sub, r, key)
+        else:
+            _floor(R, box, rule, key)
+    x0, z0, x1, z1 = HOLE
+    R.rect(x0, x1, z0, z1, 0, "void")
+    R.floor, R.piece = R.H.copy(), R.K.copy()
+    # the Kilns' walls, all round but the door; a wall column stands to the roof
+    for sign in (1, -1):
+        kx0, kz0, kx1, kz1 = KILN
+        dx0, dx1 = KILN_DOOR
+        if sign < 0:
+            kx0, kx1, dx0, dx1 = mx(kx1), mx(kx0), mx(dx1), mx(dx0)
+        for x in range(kx0, kx1 + 1):
+            for z in range(kz0, kz1 + 1):
+                ring = x in (kx0, kx1) or z in (kz0, kz1)
+                if ring and not (z == kz1 and dx0 <= x <= dx1):
+                    R.cell(x, z, WOOL + ROOM_H, "kilnwall")
+    # the bedrock walls across the Walks, crossed only by building over them
+    for sign in (1, -1):
+        a, b = (WALL["x0"], WALL["x1"]) if sign > 0 else (mx(WALL["x1"]), mx(WALL["x0"]))
+        for x in range(a, b + 1):
+            for z in range(WALL["z0"], WALL["z1"] + 1):
+                R.cell(x, z, R.floor[R.ix(x), R.iz(z)] + WALL["height"], "barrier")
+    # the arches' legs: one block at each edge of the way they span (a block a player walks round)
+    R.arch_legs = []
+    for _, axis, (a, b), at in ARCHES:
+        for e in (a, b):
+            cells = [(e, at)] if axis == "x" else [(at, e)]
+            for x, z in cells + [(mx(c[0]), c[1]) for c in cells]:
+                R.cell(x, z, R.floor[R.ix(x), R.iz(z)] + ARCH_CLEAR + 2, "arch")
+                R.arch_legs.append((x, z))
+    return R
+
+
+def band_mask(R):
+    x0, z0, x1, z1 = BAND
+    return (R.X >= x0) & (R.X <= x1) & (R.Z >= z0) & (R.Z <= z1) & R.mask("void")
+
+
+def objectives():
+    """Teams, spawns and the four wools, drawn once for red's Kilns: a Wool's team is the team that captures it,
+    so red's yellow and lime are blue's to take; their images are red's orange and light blue in blue's Kilns."""
+    O = Objectives(Teams(("red-team", "Red", "red", 16), ("blue-team", "Blue", "blue", 16)), SYM)
+    O.add(Spawn("red-team", SPAWN_AT, yaw=0, kit="spawn-kit", area=Box(-16, 0, -100, 15, 127, -81),
+                protect=True))
+    O.add(Observer(OBSERVER_AT, yaw=90), mirror=False)
+    west = Box(KILN[0], WOOL + 1, KILN[1], KILN[2], WOOL + ROOM_H - 1, KILN[3])
+    east = Box(mx(KILN[2]), WOOL + 1, KILN[1], mx(KILN[0]), WOOL + ROOM_H - 1, KILN[3])
+    (wx, wz), (ex, ez) = MONUMENTS
+    blue_w, blue_e = SYM.point(wx, wz), SYM.point(ex, ez)
+    O.add(Wool("blue-team", "yellow", slot=(blue_w[0], SPAWN + 1, blue_w[1]), found=(-66, WOOL + 1, -93), room=west,
+               spawn_at=(-66, WOOL + 2, -90)), color="orange")
+    O.add(Wool("blue-team", "lime", slot=(blue_e[0], SPAWN + 1, blue_e[1]), found=(65, WOOL + 1, -93), room=east,
+               spawn_at=(65, WOOL + 2, -90)), color="light_blue")
+    return O
