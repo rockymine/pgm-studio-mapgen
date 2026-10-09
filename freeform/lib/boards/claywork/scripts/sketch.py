@@ -32,7 +32,7 @@ S = Sheet("Claywork - a standard capture-the-wool board, the layout for review")
 m = S.map(R.x_min, R.z_min, R.x_max, R.z_max, scale=4, title="THE BOARD",
           legend="number on each piece: its floor (y); every piece stands on bedrock, 12 of ground under its "
                  "surface; yellow dots: the band, built over; S spawns; W monuments; squares: the wools; "
-                 "black bars: bedrock walls; grey: arch legs; brown: the Undercroft at 19, under the Court and Arcades "
+                 "black bars: bedrock walls; grey: arch legs; small grey blocks: stepping stones; brown: the Undercroft at 19, under the Court and Arcades "
                  "and in the well; blue's half (south) paler")
 m.raster(R, P.COLOURS, image_half=blue_half)
 m.zone(P.band_mask(R), colour=(230, 200, 60), step=4)
@@ -49,6 +49,7 @@ m.callout(22, -35, "a flight at each end of the Forecourt, the Rostrum between",
 m.callout(-45, -63, "balcony under the Arcade, open to the north; ladder up at its end", dx=6, dz=-34)
 m.callout(3, -73, "Spawn Steps between the terraces", dx=40, dz=14)
 m.callout(-40, -22, "build zones between Forecourt and Apron", dx=8, dz=24)
+m.callout(-44, -41, "stepping stones 22, 21, 20, 19, gaps of 2", dx=30, dz=4)
 m.callout(-66, -77, "the Walk climbs 23 to 26 into the Kiln", dx=28, dz=-28)
 
 # 2. the routes onto red's west wool

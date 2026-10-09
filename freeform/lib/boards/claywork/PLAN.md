@@ -38,7 +38,8 @@ to the other's, so nothing is built out in front of an Apron and the board's edg
 Forecourt and each Apron lies a build zone the front's full depth, so the front line is joined only by building:
 less land, and more risk, on the way to a Walk.
 
-**The Undercroft is a second layer under the hub.** A player drops four into the well onto its floor at 19. A
+**The Undercroft is a second layer under the hub.** A player drops four into the well onto its floor at 19, and
+the well is a way down only: nothing climbs out of it but the ladders at the Walks. A
 passage three wide runs from the well under the Court and out under each Arcade as a balcony, open on the side
 facing the spawn, to a ladder up onto the Walk short of the wall. It is a quiet way from one wool to the other.
 
@@ -83,6 +84,10 @@ The Statue Terraces brought it from 90 against 58: a defender drops off a terrac
   parapet on each side over the steps.
 - **The Forecourt** (20): the middle of the front, 56 by 18, on the band.
 - **The flank zones**: 24 by 18 of void between the Forecourt and each Apron, built over.
+- **The stepping stones**: four in the void in front of each Arcade, two wide and three deep, at 22, 21, 20 and
+  19, following the Walk down toward the front. Every gap is two, the most a running jump one block up clears, so
+  they are crossed both ways. The last stands two short of the flank zone, a jump from a block placed at its edge:
+  mostly an attacker's way back.
 - **The West and East Aprons** (20): the front's flanks, 20 by 18, each the foot of a Walk, with no band before
   them.
 - **The West and East Arcades** (23): from the Court to the Walks, 28 by 12, an arch across each.
@@ -143,3 +148,9 @@ and the Court only, two blocks high, never on a Walk or an Arcade.
 - **The Grand Steps moved out to the Forecourt's ends,** and the Rostrum took the middle where the flights were.
 - **The well became the way into the Undercroft,** a second layer under the Court and the Arcades: a rotation
   from one wool to the other that is hidden but not sealed, open toward the spawn under each Arcade.
+
+## What changed after the third review
+
+**The third layout is kept as `renders/00-plan-sketch-v3.png`.** The well stays a way down only. Four stepping
+stones now cross the void in front of each Arcade, stepping down toward the flank zone, every gap two so a
+running jump clears it upward.

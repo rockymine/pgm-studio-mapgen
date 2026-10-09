@@ -87,7 +87,15 @@ ARCHES = [("the Grand Steps' arch", "x", (-28, -19), -35), ("the Walk's first ar
 BAND = (-52, -12, 51, 11)
 FLANK = (-52, -30, -29, -13)
 
-# the Undercroft: a floor UNDER under the Court and the Arcades; the well is its pit, open to the sky
+# the stepping stones: four in the void between each Arcade and the flank zone in front of it, two wide and a
+# tread deep, stepping down a level a stone (22, 21, 20, 19) toward the front as the Walk beside them does. Every
+# gap is two, the most a running jump one block up clears, so they are crossed both ways: an attacker's way back,
+# from a block placed at the zone's edge, two short of the last stone.
+STONES = [((-45, -50, -44, -48), 22), ((-45, -45, -44, -43), 21), ((-45, -40, -44, -38), 20),
+          ((-45, -35, -44, -33), 19)]
+
+# the Undercroft: a floor UNDER under the Court and the Arcades; the well is its pit, open to the sky, a way down
+# only: nothing climbs out of it but the ladders at the Walks
 UNDER = HUB - 4
 PASSAGE = (-60, -64, -7, -62)              # three wide, from the Arcade's far end to the well, under the floors
 LADDER = (-60, -65)                        # the landing past the Arcade's north edge; a ladder up the Walk's face
@@ -96,14 +104,14 @@ SPAWN_AT = (0, SPAWN + 1, -92)
 MONUMENTS = [(-8, -83), (7, -83)]          # red's two, on the Gatehouse's front edge, west and east
 OBSERVER_AT = (0, 50, 0)
 
-COLOURS = {"void": (34, 38, 52), "front": (214, 204, 180), "apron": (214, 204, 180), "rostrum": (226, 220, 202), "under": (120, 92, 70),
+COLOURS = {"void": (34, 38, 52), "front": (214, 204, 180), "apron": (214, 204, 180), "rostrum": (226, 220, 202), "under": (120, 92, 70), "stone": (150, 150, 160),
            "terrace": (226, 220, 202), "parapet": (150, 110, 90), "steps": (196, 186, 160),
            "hub": (180, 190, 200), "wing": (170, 180, 192), "walk": (200, 190, 170), "neck": (196, 186, 160),
            "spawn": (232, 226, 210), "kiln": (245, 245, 245), "kilnwall": (150, 110, 90),
            "barrier": (20, 20, 20), "arch": (120, 120, 130)}
-KINDS = ["void", "front", "rostrum", "apron", "terrace", "parapet", "under", "steps", "hub", "wing", "walk", "neck", "spawn", "kiln", "kilnwall",
+KINDS = ["void", "front", "rostrum", "apron", "terrace", "parapet", "under", "stone", "steps", "hub", "wing", "walk", "neck", "spawn", "kiln", "kilnwall",
          "barrier", "arch"]
-WALK_KINDS = {"front", "rostrum", "under", "terrace", "apron", "steps", "hub", "wing", "walk", "neck", "spawn", "kiln"}
+WALK_KINDS = {"front", "rostrum", "under", "stone", "terrace", "apron", "steps", "hub", "wing", "walk", "neck", "spawn", "kiln"}
 PLACES = [("THE GATEHOUSE", (0, -97)), ("statue", (-11, -75)), ("statue", (10, -75)), ("the Clay Court", (-20, -46)),
           ("the well", (0, -56)), ("the Rostrum", (0, -35)), ("the Forecourt", (0, -22)), ("build", (-40, -22)),
           ("the West Apron", (-62, -22)), ("the West Walk", (-66, -55)), ("the West Arcade", (-46, -66)),
@@ -150,6 +158,8 @@ def plan():
     _floor(R, (LADDER[0], LADDER[1], LADDER[0], LADDER[1]), UNDER, "under")
     x0, z0, x1, z1 = HOLE
     R.rect(x0, x1, z0, z1, UNDER, "under")
+    for box, h in STONES:
+        _floor(R, box, h, "stone")
     R.floor, R.piece = R.H.copy(), R.K.copy()
     # the Kilns' walls, all round but the door; a wall column stands to the roof
     for sign in (1, -1):

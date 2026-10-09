@@ -149,7 +149,21 @@ def measure():
     # running jumps between pieces that do not touch
     J = G.jumps(R, P.WALK_KINDS, wall_kinds=("kilnwall", "arch", "barrier", "parapet"))
     lab, _ = ndimage.label(R.piece != R.kinds["void"])
-    apart = sum(1 for a, b, g in J if lab[R.ix(a[0]), R.iz(a[1])] != lab[R.ix(b[0]), R.iz(b[1])])
+    stone = R.mask("stone")
+    on_stone = lambda c: stone[R.ix(c[0]), R.iz(c[1])]
+    apart = sum(1 for a, b, g in J if lab[R.ix(a[0]), R.iz(a[1])] != lab[R.ix(b[0]), R.iz(b[1])]
+                and not (on_stone(a) or on_stone(b)))
+    # the stepping stones, walked with running jumps: down from the Arcade to the zone, and back up
+    Ej = G.graph(R, P.WALK_KINDS, wall_kinds=("kilnwall", "arch", "parapet"),
+                 rules=G.PlanRules(jumps=True, diagonals=True), bridge=P.band_mask(R), extra=P.ladders())
+    sx = P.STONES[0][0][0]
+    arcade_edge, last = (sx, P.PIECE["wing"][2][3]), (sx, P.STONES[-1][0][3])
+    only_stones = {a: [e for e in v if (on_stone(e[0]) or e[0] in (arcade_edge, last))]
+                   for a, v in Ej.items() if a in (arcade_edge, last) or (len(a) == 2 and on_stone(a))}
+    down = G.dijkstra(only_stones, [arcade_edge])[0].get(last)
+    up = G.dijkstra(only_stones, [last])[0].get(arcade_edge)
+    to_zone = P.FLANK[1] - P.STONES[-1][0][3] - 1
+    stone_jumps = sorted({g for a, b, g in J if on_stone(a) or on_stone(b)})
     land_red = int((land & (R.Z < 0)).sum())
 
     def fmt(d, b=0.0):
@@ -187,7 +201,11 @@ def measure():
          abs(s_w - blue_w) < 0.01),
         (f"{s_e:.1f} / {blue_e:.1f}", "red and blue, spawn to their own East Kiln", "equal",
          abs(s_e - blue_e) < 0.01),
-        (f"{apart}", "running jumps between pieces that do not touch", "none", apart == 0),
+        (f"{apart}", "running jumps between pieces that do not touch, the stones aside", "none", apart == 0),
+        (f"{'yes' if down else 'no'} / {'yes' if up else 'no'}", "the stepping stones, down from the Arcade / back up",
+         "both, by running jumps", bool(down and up)),
+        (f"{to_zone}", "the last stone to the flank zone's edge", "2: a jump from a block placed there",
+         to_zone <= 2),
         (f"{land_red}", "land on red's half, in blocks", "", None),
     ]
     paths = dict(spawn_west=s_w_path, spawn_east=s_e_path, band_west=b_w_path, undercroft=under_path)
