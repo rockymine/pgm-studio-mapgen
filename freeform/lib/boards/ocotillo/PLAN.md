@@ -58,33 +58,38 @@ team has a near and a far neighbour.
 | Level | Floor | Pieces, in red's quadrant |
 |---|---|---|
 | 5 | 19 | the Keep, the spawn, in the corner |
-| 4 | 16 | the two Orchards on the wings; the two Lookouts |
-| 3 | 13 | the Tower and its yard; the two Arbours' decks; the sand walks |
-| 2 | 10 | the posts on the borders; the Arbours' covered walks; the inner court; the dais |
+| 4 | 16 | the two Orchards on the wings |
+| 3 | 13 | the yard and the Tower; the two terraces; the two Arbours' decks |
+| 2 | 10 | the islands on the borders; the Arbours' covered walks; the inner court; the dais |
 | 1 | 7 | the landings on the borders by the middle |
 
-**The neighbours meet across gaps, and everyone meets at the dais.** Along each border, a team's post faces its
-neighbour's across two cells of gap, and its lookout faces the other lookout across two more. By the middle, a
-landing at 7 is shared by two neighbours, with a stair up from it to each team's inner court and one onto the
-dais. The dais is ten blocks square at 10, one cell from each quadrant.
+**Every piece is at least two cells deep, and every stair two cells wide.** A stair is ten blocks across and five
+long. A cell on a border pairs with the neighbour's cell beside it, so a one-cell island or stair on the border is
+two cells, ten blocks, once the two quadrants meet.
+
+**The neighbours meet across gaps, and everyone meets at the dais.** On each wing a team's terrace faces an island
+on the border across one cell of gap, and the neighbour's terrace faces it from the other side. Beside each Arbour
+a second island faces the covered walk across a gap. By the middle, a landing at 7 is shared by two neighbours,
+with a stair up from it to each team's inner court and one onto the dais. The dais is ten blocks square at 10, one
+cell from each quadrant.
 
 ## The places, in red's quadrant
 
 - **The Keep** (19): the spawn, three cells by three, with the three monuments for the other teams' wools.
-  Two stairs lead down out of it, one onto each wing.
-- **The Orchards** (16): three by three on each wing, inlay with two trees.
-- **The sand walks** (13): one cell wide and two long, down a stair from each Orchard toward the border.
-- **The posts** (10): one cell wide and three long on each border, facing the neighbour's post across a gap.
-- **The yard** (13): an L of sand round two sides of the Tower, down a stair from each Orchard.
-- **The Tower** (13): the wool room, two cells by two on the diagonal, its door onto the yard. The wool's heart
+  Two stairs, each two cells wide, lead down out of it, one onto each wing.
+- **The Orchards** (16): three by three on each wing.
+- **The terraces** (13): three by three, down a stair from each Orchard toward the border.
+- **The outer islands** (10): one cell wide and three long on each border, two wide with the neighbour's, between
+  the two teams' terraces across a cell of gap on each side.
+- **The yard** (13): three by three less the Tower's corner, down a stair from each Orchard.
+- **The Tower** (13): the wool room, two cells by two on the diagonal, its doors onto the yard. The wool's heart
   floats over it.
-- **The Arbours** (13 over 10): stacked pieces three by three either side of the Tower, their decks level with
-  the yard and their covered walks open onto the inner court. Two cells of gap lie between each Arbour and the
-  sand walk beyond it.
-- **The Lookouts** (16): one cell, up a stair from each Arbour's deck, facing the neighbour's across a gap.
-- **The inner court** (10): an L of inlay by the middle, with a stair up onto each Arbour's deck and an entry
-  into each covered walk.
-- **The landings** (7): one cell each, on the borders by the middle, shared with the neighbour.
+- **The Arbours** (13 over 10): stacked pieces three by three either side of the Tower. A stair runs down from the
+  yard into each covered walk, and one up from the inner court onto each deck.
+- **The inner islands** (10): beside each Arbour on the border, across a cell of gap from its covered walk.
+- **The inner court** (10): three by three by the middle, with a stair up onto each Arbour's deck and one down to
+  each landing.
+- **The landings** (7): one cell wide on each border by the middle, two with the neighbour's.
 - **The dais** (10): its quarter of the ten-block square in the middle, a stair up onto it from each landing.
 
 ## The numbers
@@ -93,21 +98,23 @@ dais. The dais is ten blocks square at 10, one cell from each quadrant.
 
 | Measure | Value | Target |
 |---|---|---|
-| Spawn to its own wool room | 34.7 | short, under 40 |
-| Spawn to a neighbour's wool room | 99.7, 11 of it built across a border gap | 46 to 143 |
-| Spawn to the opposite team's wool room | 142.5, walked through the middle | 46 to 143 |
-| Spawn to the dais | 86.7, walked | |
+| Spawn to its own wool room | 38.9 | short, under 40 |
+| Spawn to a neighbour's wool room | 97.3, 12 of it built across a border gap | 46 to 143 |
+| Spawn to the opposite team's wool room | 129.7, walked through the middle | 46 to 143 |
+| Spawn to the dais | 82.6, walked | |
 | Stairs that do not climb one level | 0 | 0 |
+| Stairs narrower than two cells | 0 | 0 |
 | The longest straight run at one level | 3 cells, 15 blocks | 3 cells |
-| Flat cells by theme | 76 sand, 112 inlay | |
+| Flat cells by theme | 0 sand, 280 inlay | |
 | Floors not reached from a spawn | 0 | 0 |
 
 **A neighbour is the closer target, and only by building.** A team reaches either neighbour's wool by building
 across a border gap, ten blocks, or walks round by the middle. The opposite team's wool is walked, but only
 through the dais, where all four teams cross.
 
-**The opposite team's wool is at the top of the corpus's range.** If the board plays long, the first change is
-to bring the towers one cell nearer the middle.
+**No piece is one cell wide now, so no piece is sand by the shape rule.** Sand still lies inside the inlay, as
+the field round each kerbed bed, as it does in Brittlebush. If whole pieces of sand are wanted, the outer islands
+are the place: they stand between two teams and are the most exposed ground on the board.
 
 ## What the build will need from the library
 
@@ -117,3 +124,15 @@ to bring the towers one cell nearer the middle.
   library works that out for two teams only.
 - **The Brittlebush pieces as library pieces.** The edge, the frame and fields, the stair cell, the stacked cell
   and the tower are in the study's `style.py`. A blueprint board wants them keyed to a cell.
+
+## What changed after the first review
+
+**The first layout had too many pieces one cell wide or one cell deep.** It is kept as
+`renders/00-plan-sketch-v1.png`.
+
+- **Every stair is two cells wide.** The keep's two exits, the stairs off the Orchards, into the covered walks,
+  onto the decks and to the landings are all ten blocks across.
+- **The narrow pieces were widened or folded into others.** The sand walk became a terrace three by three, the
+  posts became islands two wide with the neighbour's, the yard became three by three round the Tower, and the
+  lookouts went.
+- **The Tower moved one cell inward,** onto the yard's corner. The yard meets it on two sides and the Arbours' decks on the other two.

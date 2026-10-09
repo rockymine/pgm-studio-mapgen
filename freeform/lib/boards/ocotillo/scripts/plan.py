@@ -47,17 +47,17 @@ MAX_BUILD = 40
 # s< s> s^ sv a stair rising west, east, north (toward b 0) or south; ww a gap; ~~ water; .. void
 QUADRANT = [
     # a: 0   1   2   3   4   5   6   7   8   9   10  11  12
-    "K5 K5 K5 .. f4 f4 f4 .. .. .. .. f2 ww",          # b 0  the keep; the orchard; a post on the border
-    "   K5 K5 s< f4 f4 f4 s< f3 f3 s< f2 ww",          # b 1  down the wing: orchard, the sand walk, the post
-    "      K5 .. f4 f4 f4 .. ww ww .. f2 ww",          # b 2  a gap from the walk to the arbour
-    "         .. .. s^ .. .. ww ww .. .. ..",          # b 3  down from the orchard into the tower's yard
-    "            f3 f3 f3 k3 k3 k3 .. .. ..",          # b 4  the yard; the arbour, a deck over a covered walk
-    "               T3 T3 k3 k3 k3 s> f4 ww",          # b 5  the tower; up from the arbour to the lookout
-    "                  T3 k3 k3 k3 .. .. ..",          # b 6
-    "                     .. f2 s^ .. .. ..",          # b 7  into the covered walk; up onto the deck
-    "                        f2 f2 .. .. ..",          # b 8  the inner court
-    "                           f2 f2 .. ..",          # b 9
-    "                              f2 s< f1",          # b 10 down to a landing on the border
+    "K5 K5 K5 .. f4 f4 f4 .. f3 f3 f3 ww f2",          # b 0  the keep; the orchard; the terrace; an island
+    "   K5 K5 s< f4 f4 f4 s< f3 f3 f3 ww f2",          # b 1  two cells of stair down out of the keep, and on
+    "      K5 s< f4 f4 f4 s< f3 f3 f3 ww f2",          # b 2
+    "         .. s^ s^ .. .. .. .. .. .. ..",          # b 3  down from the orchard into the tower's yard
+    "            f3 f3 f3 s< k3 k3 k3 ww f2",          # b 4  the yard; down into the arbour's covered walk
+    "               f3 f3 s< k3 k3 k3 ww f2",          # b 5  the arbour: a deck at 13 over a walk at 10
+    "                  T3 T3 k3 k3 k3 ww f2",          # b 6  the tower
+    "                     T3 .. s^ s^ .. ..",          # b 7  up from the inner court onto the arbour's deck
+    "                        f2 f2 f2 .. ..",          # b 8  the inner court
+    "                           f2 f2 s< f1",          # b 9  down to a landing on the border
+    "                              f2 s< f1",          # b 10
     "                                 ~~ sv",          # b 11 up from the landing onto the dais
     "                                    f2",          # b 12 the dais, a quarter of it
 ]
@@ -103,12 +103,13 @@ def cells():
         for team, *_ in TEAMS:
             out[c] = (kind, level, d, team)
             c, d = turn_cell(*c, d)
-    # a stair climbs from the level of the cell on its low side
+    # a stair climbs one level to the cell on its high side, from the cell on its low side (a stacked cell's
+    # underfloor, when the stair runs down under its deck)
     for c, (kind, level, d, team) in list(out.items()):
         if kind == "stair":
             dx, dz = STEP[d]
-            low = out.get((c[0] - dx, c[1] - dz))
-            out[c] = (kind, low[1] if low and low[1] else None, d, team)
+            high = out.get((c[0] + dx, c[1] + dz))
+            out[c] = (kind, high[1] - 1 if high and high[1] else None, d, team)
     return out
 
 
@@ -194,7 +195,7 @@ def spawn_cell(team_index):
 def tower_cells(team_index):
     """A team's tower, as its four cells."""
     out = []
-    for a, b in ((5, 5), (6, 5), (5, 6), (6, 6)):
+    for a, b in ((6, 6), (7, 6), (6, 7), (7, 7)):
         c = (a - N, b - N)
         for _ in range(team_index):
             c, _ = turn_cell(*c)

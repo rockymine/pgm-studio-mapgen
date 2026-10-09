@@ -79,13 +79,14 @@ q.raster(R, P.COLOURS)
 q.zone(R.mask("gap"), colour=(200, 190, 170), step=3)
 cell_marks(q, only_red=True)
 for name, (a, b), dx, dz in [("the Keep: spawn, 3x3 at 19", (1, 2), 0, 22), ("the Orchard, 16", (5, 0), 0, -4),
-                             ("the sand walk", (8.5, 1), 0, -12), ("the post", (11, 0), -2, -6),
-                             ("the yard", (5, 4), 20, -12), ("the Tower: the wool", (5.5, 6), -4, 18),
-                             ("the Arbour: deck 13 over a covered walk at 10", (8, 6), 30, 16),
-                             ("the lookout, 16", (11, 5), -2, 16), ("the inner court, 10", (9, 9), -30, 10),
-                             ("a landing at 7, shared with blue", (12, 10), -36, -16),
+                             ("the terrace, 13", (9, 0), 0, -4), ("an island at 10, shared with blue", (12, 1), -30, 30),
+                             ("the yard, 13", (4.5, 4.5), 0, -22), ("the Tower: the wool", (6.5, 6.5), -14, 20),
+                             ("the Arbour: deck 13 over a covered walk at 10", (9, 4), -34, -20),
+                             ("an island at 10 by the covered walk", (12, 6), -24, 26),
+                             ("the inner court, 10", (9, 8.5), -30, -4),
+                             ("a landing at 7, shared with blue", (12, 9.5), -36, -16),
                              ("the dais, 10x10 at 10, a quarter of it", (12, 12), -40, -6),
-                             ("gaps: built over", (8.5, 2.5), 26, 8)]:
+                             ("gaps: built over", (11, 2), -20, 22)]:
     x, z = quad(a, b)
     q.callout(x, z, name, dx=dx, dz=dz, size=11)
 
@@ -108,8 +109,8 @@ S.add(q)
 COL = dict(P.COLOURS)
 pts = [(P.X_MIN, P.Z_MIN), (0, 0)]
 c = SectionPanel(0, 92, 0, 32, scale=7, title="ALONG RED'S DIAGONAL",
-                 legend="the keep 19, the yard and the tower 13, the arbour's deck 13 over its walk at 10, the inner "
-                        "court 10, the dais 10; the levels 3 apart; nothing under a floor but bedrock")
+                 legend="the keep 19, the yard 13, the tower 13, the inner court 10, the dais 10; the levels 3 apart; "
+                        "nothing under a floor but bedrock")
 c.along(R, pts, COL, depth=8)
 c.level(P.MAX_BUILD, f"build to y {P.MAX_BUILD}")
 S.add(c)

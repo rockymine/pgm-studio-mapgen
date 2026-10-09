@@ -25,33 +25,37 @@ C = R.cells
 T = R.themes
 
 
-def level_of(c):
+def levels_of(c):
+    """The floors a cell offers: its level, and a stacked cell's underfloor one under it."""
     k, lv, d, _ = C.get(c, ("void", None, None, None))
-    if k == "stair":
-        return None
-    return lv if k in ("flat", "keep", "tower", "stacked") else None
+    if k in ("flat", "keep", "tower"):
+        return {lv}
+    return {lv, lv - 1} if k == "stacked" else set()
 
 
 # ---- the rules ---------------------------------------------------------------------------------------------
-bad_stairs = []
+bad_stairs, narrow_stairs = [], []
 for c, (k, lv, d, _) in C.items():
     if k != "stair":
         continue
     dx, dz = P.STEP[d]
-    lo, hi = level_of((c[0] - dx, c[1] - dz)), level_of((c[0] + dx, c[1] + dz))
-    if lo is None or hi is None or hi != lo + 1:
-        bad_stairs.append((c, lo, hi))
+    if lv not in levels_of((c[0] - dx, c[1] - dz)) or lv + 1 not in levels_of((c[0] + dx, c[1] + dz)):
+        bad_stairs.append((c, d, lv))
+    side = [(c[0] + dz, c[1] + dx), (c[0] - dz, c[1] - dx)]                # the cells beside it, across the rise
+    if not any(C.get(s, ("",))[0] == "stair" and C[s][2] == d and C[s][1] == lv for s in side):
+        narrow_stairs.append(c)
 
 
 def runs():
-    """The longest straight run, in cells, of flat ground at one level (keep and tower floors included)."""
+    """The longest straight run, in cells, of flat ground at one level (the keep included; the tower is a
+    building, not ground)."""
     longest, where = 0, None
     for (cx, cz), (k, lv, _, _) in C.items():
-        if k not in ("flat", "keep", "tower"):
+        if k not in ("flat", "keep"):
             continue
         for dx, dz in ((1, 0), (0, 1)):
             n = 1
-            while C.get((cx + dx * n, cz + dz * n), ("",))[0] in ("flat", "keep", "tower") and \
+            while C.get((cx + dx * n, cz + dz * n), ("",))[0] in ("flat", "keep") and \
                     C[(cx + dx * n, cz + dz * n)][1] == lv:
                 n += 1
             if n > longest:
@@ -62,6 +66,7 @@ def runs():
 longest, longest_at = runs()
 flat_cells = {c for c, v in C.items() if v[0] == "flat"}
 sand = sum(1 for c in flat_cells if T[c] == "sand")
+narrow = [c for c in flat_cells if T[c] == "sand"]
 inlay = sum(1 for c in flat_cells if T[c] == "inlay")
 
 gap = R.mask("gap")
@@ -118,6 +123,7 @@ rows.append((f"{len(bad_stairs)}", "stairs that do not climb one level from low 
              not bad_stairs))
 rows.append((f"{longest} cells, {longest * P.CELL} blocks", "the longest straight run at one level",
              "3 cells, 15 blocks", longest <= 3))
+rows.append((f"{len(narrow_stairs)}", "stairs narrower than two cells", "0", not narrow_stairs))
 rows.append((f"{sand} sand, {inlay} inlay", "flat cells by theme (one cell wide: sand)", "", True))
 rows.append((f"{unreached}", "floors not reached from red's spawn, walking and building", "0", unreached == 0))
 
@@ -126,6 +132,8 @@ for v, what, target, ok in rows:
     print(f"{what:<62} {v:<{w}}  {target:<38} {'ok' if ok else 'NO'}")
 if bad_stairs:
     print("bad stairs:", bad_stairs[:8])
+if narrow_stairs:
+    print("narrow stairs:", narrow_stairs[:8])
 if longest > 3:
     print("longest run starts at cell", longest_at)
 with open(os.path.join(HERE, "..", "renders", "plan-check.json"), "w") as f:
