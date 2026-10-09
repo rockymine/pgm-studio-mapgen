@@ -920,3 +920,18 @@ class Brittle(unittest.TestCase):
         self.assertEqual((w.id(7, 20, 7), w.id(7, 25, 7)), (B.SAND, B.AIR))         # the L's own terrace, nothing over it
         self.assertEqual((w.id(2, 24, 2), w.get(2, 25, 2)), (B.BEACON, (B.STAINED_GLASS, 4)))
         self.assertEqual((w.id(2, 11, 9), w.id(2, 11, 8)), (B.AIR, B.COBWEB))        # the door, cobwebs inside
+
+    def test_sections_outline_each_other_and_panels_need_a_full_drop(self):
+        from pgmvox import brittle as BR
+        unit = {(a, b): BR.Cell("flat", 16, section="a" if b < -2 else "b") for a in (-4, -3) for b in (-4, -3, -2, -1)}
+        unit[(-2, -4)] = BR.Cell("flat", 13)                                      # three under: no room for a panel
+        cells, team = BR.fan(unit)
+        w = World(-30, -30, 60, 60, sy=32)
+        BR.build(w, cells, only=[c for c in cells if team[c] == 0],
+                 fill=lambda piece, cs: "grass" if cs[piece[0]].section == "b" else None)
+        self.assertEqual(audit.footing(w), [])
+        self.assertEqual({w.get(-17, 16, z) for z in (-11, -10)}, {BR.SPRUCE_PLANKS})  # two sections meet in planks
+        self.assertNotIn(B.LOG, {w.id(x, 17, z) for x in range(-20, -10) for z in range(-10, 0)})   # grass, no tree
+        self.assertIn(B.LOG, {w.id(x, 17, z) for x in range(-20, -10) for z in range(-20, -10)})    # a bed's birch
+        self.assertEqual([w.id(-11, y, -18) for y in (16, 15, 14)],                  # over three: brick and dark oak
+                         [B.SPRUCE_STAIRS, B.BRICK, B.WOOD_SLAB])

@@ -7,7 +7,8 @@
 
 The planner is read as the author used it, overlaps and all:
 
-    a piece      flat ground at its surface, or the plan's; a later piece lies over an earlier one
+    a piece      flat ground at its surface, or the plan's; a later piece lies over an earlier one; each piece is
+                 its own section, so two pieces at one height meet in a line of planks, each its own outline
     spawn        the keep; wool-room: flat ground the wool's room stands on
     stair...     a piece whose id begins "stair" is a stair cell, climbing from the lower of its two neighbours across
                  it to the higher, one level of three; its own surface is not read
@@ -51,11 +52,11 @@ def unit(plan, lift=0, under=()):
             if pid.startswith("stair"):
                 stairs.append(c)
             elif pid.startswith("double"):
-                out[c] = Cell("stacked", y, name=pid, under=c in under)
+                out[c] = Cell("stacked", y, name=pid, under=c in under, section=pid)
             elif p.get("role") == "spawn":
-                out[c] = Cell("keep", y, name=pid)
+                out[c] = Cell("keep", y, name=pid, section=pid)
             else:
-                out[c] = Cell("flat", y, name=pid)
+                out[c] = Cell("flat", y, name=pid, section=pid)
     for z in plan.get("zones", []):
         for c in _cells(z["rect"]):
             if c not in out and c not in stairs:

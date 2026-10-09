@@ -29,6 +29,9 @@ It is two cells by two over the spawn, then an L of the three outer cells, then 
 beacon under the team's glass. Its walls are the ground's edge read bottom up, with the team's colour under the
 eaves. Its two doors open from the spawn's cell onto the rest of the Keep and its two stairs.
 
+**Birches stand only on the back levels, 16 and up.** The beds toward the middle, the Arbours and the inner court,
+are grass alone, so the middle of the board is open.
+
 **Each hill is a pad of white clay ten blocks square, cleared of the beds and trees over it.** Each spawner stands
 over a mark of chiseled sandstone.
 

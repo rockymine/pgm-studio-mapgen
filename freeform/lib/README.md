@@ -164,13 +164,19 @@ right where one team's part meets another's.
 
 **Every edge carries the five-course cap, and every other cell along it a birch panel framed in black clay.** The
 black clay runs unbroken along the edge, at the foot of the plain cells and up round each panel. A stair's sides
-carry the same cap, stepping down with its rows.
+carry the same cap, stepping down with its rows. A panel stands only where five blocks of air lie beside it; over a
+shallower drop the face keeps the plain courses.
+
+**A piece is cells of one height and one section.** A cell's `section` names it; cells without one join whatever of
+their height they touch. Two sections at one height meet in a double line of planks, each its own outline, so a
+board is cut into rectangles without a change of height.
 
 **A piece is outlined, then filled by its shape.** Its outline is one block: the rim where it falls away, spruce
-planks where it meets a wall or a stair. A piece one cell wide, or not a rectangle, is a sand field: sand mixed with
-upside-down sandstone stairs, cacti and dead bushes on the pure sand alone. A rectangle two cells or more each way
-is grass inside two rings of sandstone stairs, the outer rising inward and the inner outward, with a birch when the
-grass is wide enough.
+planks where it meets a wall, a stair or another section. A piece one cell wide, or not a rectangle, is a sand
+field: sand mixed with upside-down sandstone stairs, cacti and dead bushes on the pure sand alone. A rectangle two
+cells or more each way is grass inside two rings of sandstone stairs, the outer rising inward and the inner outward,
+with a birch when the grass is wide enough. `build(..., fill=)` may choose a rectangle's fill instead: a bed and its
+birch, grass alone, or sand.
 
 **Water marks itself; a gap is marked by cobwebs.** A water cell lays water at the foot of the void, with no cobweb
 and no kerb, since PGM holds the water still. A gap cell lays a cobweb at the middle of each edge it shares with the

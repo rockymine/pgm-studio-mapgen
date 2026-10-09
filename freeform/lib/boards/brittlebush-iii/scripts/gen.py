@@ -32,7 +32,7 @@ rng = random.Random(f"{P.BOARD}/ground")
 red = [c for c, t in team.items() if t == 0]
 
 # 1. red's part: the ground, the spawn's house and mark, the wool's house
-build(w, cells, only=red, rng=rng, dye=P.DYES[0])
+build(w, cells, only=red, rng=rng, dye=P.DYES[0], fill=P.fill)
 sx0, sz0, sx1, sz1 = P.SPAWN_PIECE
 for x in range(sx0, sx1 + 1):
     for z in range(sz0, sz1 + 1):

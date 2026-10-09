@@ -46,7 +46,8 @@ rng = random.Random(f"{P.BOARD}/ground")
 red = [c for c, t in team_of.items() if t == 0]
 
 # 1. red's quadrant: the ground, the keep's marks and its house
-build(w, cells, only=red, rng=rng, dye=DYES[0])
+build(w, cells, only=red, rng=rng, dye=DYES[0],                # birches on the back levels, open grass
+      fill=lambda piece, cs: "grass" if cs[piece[0]].y < P.LEVEL[3] else None)  # toward the middle
 kx0, kz0, kx1, kz1 = P.keep_box(0)
 for x in range(kx0, kx1 + 1):                                  # the team's wool along the keep's two inner edges
     w.set(x, P.LEVEL[5], kz1, B.WOOL, DYES[0])

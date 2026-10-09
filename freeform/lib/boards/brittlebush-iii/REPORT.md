@@ -26,9 +26,28 @@ one. A piece named `stair…` is a stair cell climbing from its lower neighbour 
 the foot of the void, with no cobwebs and no kerb: PGM holds the water still. Any other zone is bare, with cobwebs
 on its outline where it faces the open void.
 
-**The plan's heights are its own.** The lowest decks stand at 9, so their lower floors, eight under them, lie at 1
-and run straight into the floor of the world. An earlier build raised every height six blocks to keep a full
-cornice under those floors, and the board towered over its void.
+**The plan's heights are its own, but for two double-layered pieces raised a level.** The middle islands and the
+island with the tunnel were drawn at 9, which put their lower floors at 1, a single course over the void. `RAISE`
+in `plan.py` lifts them to 12, beside the island before the wool, so every lower floor lies at 4 on three courses.
+An earlier build raised the whole board six blocks instead, and it towered over its void.
+
+## The sections
+
+**Every surface is a rectangle with its own outline, as Brittlebush I cuts its plazas.** Each piece of the plan is
+a section, and two sections at one height meet in a double line of planks, one from each. Where the plan's pieces
+overlap into an L, `SPLIT` in `plan.py` cuts them further.
+
+| Where | Sections |
+|---|---|
+| The long piece beside the spawn, two cells by six | three squares two by two; the one by the spawn's door is grass |
+| The piece the back stair cuts into | a bar of two along the stair's head, and one cell beside the stair |
+| The piece the middle stair cuts into | the one cell beside the stair |
+| The long piece under the wool, six by two | two halves, three by two |
+| The wool's piece and the bar in front of it | each its own, so the house stands on its own outline |
+
+**A section's fill is chosen by `FILL` where the shape rule would not choose.** The square at the head of the middle
+stair faces the build zones, so it is grass without a tree, as is the square by the spawn's door. The square of the
+monuments keeps its sand.
 
 ## The under-sections
 
@@ -78,6 +97,9 @@ whole piece instead.
 **A piece's outline is one block, as in the original.** Where it falls away it is the rim; where it meets a wall or
 a stair it is a line of spruce planks. The bed or the sand starts on the next block in.
 
+**A birch panel stands only on a face with five blocks of air beside it.** Over a drop of three, as from the bar in
+front of the wool down onto the piece under it, the face keeps the plain courses of brick and dark oak.
+
 ## Read back from the world
 
 **Every check comes out clean and every team's numbers are the same.** These are from `renders/walks.txt`.
@@ -89,9 +111,9 @@ a stair it is a line of spruce planks. The bed or the sand starts on the next bl
 | Water standing against air, the zones' floor aside | 0 |
 | Water at the zones' floor against the void, held by PGM | 240 |
 | Board without block 36, block 36 off the board | 0, 0 |
-| Places reached on foot from a spawn | 767 |
-| Spawn to its own wool room's door, building | 55 |
-| Spawn to the other three wools, building | 111, 136 and 144 |
+| Places reached on foot from a spawn | 764 |
+| Spawn to its own wool room's door, building | 49 |
+| Spawn to the other three wools, building | 110, 135 and 143 |
 
 **Every piece of the plan is its own island, so the wools are reached by building.** The building walk stands in
 for blocks placed with water over the zones and four blocks over the board.

@@ -12,6 +12,7 @@ stand at 9, and their lower floors run into the floor of the world at 1.
 """
 import os
 import sys
+from dataclasses import replace
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import brittle as BR  # noqa: E402
@@ -36,9 +37,36 @@ KEEP_DYES = [4, 1, 6, 10]
 MAX_BUILD = 40
 
 
+# the two lowest double-layered pieces stand a level higher than drawn, with the island before the wool, so their
+# lower floors lie four blocks up on three courses, not on the floor of the world
+RAISE = {"double-layered": 3, "double-layered-3": 3}
+# the plan's pieces are its sections, each with its own outline; these are cut further, so every section is a
+# rectangle: the long piece beside the spawn in three squares, the one by the spawn's door grass; the piece the back
+# stair cuts into a bar along its head and one cell beside it; the long piece under the wool in two halves
+SPLIT = {**{(x, z): "piece-2a" for x in (4, 5) for z in (-12, -11)},
+         **{(x, z): "piece-2b" for x in (4, 5) for z in (-10, -9)},
+         **{(x, z): "piece-2c" for x in (4, 5) for z in (-8, -7)},
+         (2, -11): "piece-5b",
+         **{(x, z): "piece-8a" for x in (-2, -1, 0) for z in (-16, -15)},
+         **{(x, z): "piece-8b" for x in (1, 2, 3) for z in (-16, -15)}}
+# how a rectangle is filled where the shape rule would not choose: grass without a tree on the front, toward the
+# build zones, and by the spawn's door; sand where the monuments stand
+FILL = {"piece-3": "grass", "piece-2b": "grass", "piece-9": "sand"}
+
+
+def unit():
+    u = SP.unit(PLAN, lift=LIFT, under=UNDER)
+    u = {c: replace(v, y=v.y + RAISE[v.name]) if v.name in RAISE else v for c, v in u.items()}
+    return {c: replace(v, section=SPLIT[c]) if c in SPLIT else v for c, v in u.items()}
+
+
+def fill(piece, cells):
+    """pgmvox.brittle.build's choice of fill, by section."""
+    return FILL.get(cells[piece[0]].section)
+
+
 def cells():
-    unit = SP.unit(PLAN, lift=LIFT, under=UNDER)
-    return BR.fan(unit)
+    return BR.fan(unit())
 
 
 def extent(cs):

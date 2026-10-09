@@ -29,7 +29,7 @@ away, spruce planks where it meets a wall or a stair; inside it, at once, its fi
 
 house() raises a wool room as Brittlebush I does: storeys of whole cells, each smaller than the one under it.
 """
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 import numpy as np
 from scipy import ndimage
@@ -56,6 +56,7 @@ class Cell:
     rises: str = None
     name: str = None
     under: bool = False                  # a stacked cell open under its deck, its lower floor DECK down
+    section: str = None                  # the section it belongs to: a piece is cells of one height and one section
 
 
 def turn_cells(cells, k=1):
@@ -63,8 +64,7 @@ def turn_cells(cells, k=1):
     turned with it."""
     out = cells
     for _ in range(k):
-        out = {(-1 - cz, cx): (Cell(c.kind, c.y, CW[c.rises], c.name, c.under) if c.rises else c)
-               for (cx, cz), c in out.items()}
+        out = {(-1 - cz, cx): (replace(c, rises=CW[c.rises]) if c.rises else c) for (cx, cz), c in out.items()}
     return out
 
 
@@ -106,8 +106,8 @@ def _row(rises, i, k):
 
 
 def pieces(cells):
-    """The pieces: flat cells (flat, keep, tower, a stacked piece's deck) joined to their neighbours of the same kind
-    and height, as
+    """The pieces: flat cells (flat, keep, tower, a stacked piece's deck) joined to their neighbours of the same kind,
+    height and section, so a board cut into sections gets each its own outline, as
     {cell: piece number}, and each piece's theme, 'inlay' if it holds two cells by two, else 'sand'."""
     flat = {c for c, v in cells.items() if v.kind in ("flat", "keep", "tower", "stacked")}
     label, theme, n = {}, {}, 0
@@ -117,7 +117,7 @@ def pieces(cells):
         comp, todo = set(), [c]
         while todo:
             p = todo.pop()
-            if p in comp or p not in flat or cells[p].y != cells[c].y or \
+            if p in comp or p not in flat or cells[p].y != cells[c].y or cells[p].section != cells[c].section or \
                     (cells[p].kind == "keep") != (cells[c].kind == "keep"):
                 continue
             comp.add(p)
@@ -241,9 +241,10 @@ def sand(w, cells_xz, y, rng, stairs=0.25):
 
 
 # ---- the build -------------------------------------------------------------------------------------------
-def build(w, cells, only=None, rng=None, dye=14):
+def build(w, cells, only=None, rng=None, dye=14, fill=None):
     """Every block of the cells in `only` (default all), each read against the whole blueprint, so a face on the
-    edge of one team's part is right where it meets another's. `dye` colours the keep's ring."""
+    edge of one team's part is right where it meets another's. `dye` colours the keep's ring. fill(piece's cells,
+    cells) may choose a rectangle's fill: "bed" (grass and its birch, the default), "grass" (no tree) or "sand"."""
     import random
     rng = rng or random.Random(0)
     only = set(cells) if only is None else set(only)
@@ -321,8 +322,10 @@ def build(w, cells, only=None, rng=None, dye=14):
             if out:
                 along = (z // CELL) if out[0] in ("e", "w") else (x // CELL)
                 pos = (z - z0) if out[0] in ("e", "w") else (x - x0)
+                dx, dz = DIRS[out[0]]
+                open_face = T.get((x + dx, z + dz), -1) <= h - 5               # room for the whole panel
                 cap(w, x, z, h, OPP[out[0]],
-                    panel=None if along % 2 else "inner" if 1 <= pos <= 3 else "side")
+                    panel=None if along % 2 or not open_face else "inner" if 1 <= pos <= 3 else "side")
         if c.kind == "stair":
             continue
         # the frame and the field of a flat piece
@@ -357,11 +360,14 @@ def build(w, cells, only=None, rng=None, dye=14):
                 continue                                                    # not a rectangle: sand only
             block = comp
             used |= set(block)
+            how = (fill(comp, cells) if fill else None) or "bed"
+            if how == "sand":
+                continue
             inner = [(x, z) for bx, bz in block for x in range(bx * CELL, bx * CELL + CELL)
                      for z in range(bz * CELL, bz * CELL + CELL) if depth(x, z) >= 1]
             xs, zs = [p[0] for p in inner], [p[1] for p in inner]
             if inner and max(xs) - min(xs) >= 5 and max(zs) - min(zs) >= 5:
-                bed(w, min(xs), min(zs), max(xs), max(zs), c.y, rng)
+                bed(w, min(xs), min(zs), max(xs), max(zs), c.y, rng, trees=(how == "bed"))
     for p in sorted(only):                                                 # the under-sections' pillars, last
         c = cells[p]
         if c.kind == "stacked" and c.under:
