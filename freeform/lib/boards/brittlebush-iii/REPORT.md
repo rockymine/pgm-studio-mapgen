@@ -51,8 +51,13 @@ carries a line of black clay under the deck and bedrock below it.
 
 ## The buildings
 
-**The spawn is a house of two storeys over the spawn's footprint, its door toward the lane.** A stack of the
-team's wool floats high over it.
+**The spawn's house is stacked of whole cells over its whole piece too, but otherwise than the wool's.** Its first
+storey takes all four cells, the second the two back cells away from the lane, and one cell sits on top at the
+north end. Its doors open west onto the lane and south toward the monuments, without cobwebs. Inside lies the
+keep's own floor, ringed in the team's clay.
+
+**The team's colour runs under its eaves and in the glass over its beacon.** A stack of the team's wool floats
+high over it. From the spawn point the three monuments are 12, 9 and 10 blocks on foot.
 
 **The wool's house takes its whole piece, ten blocks square, as Brittlebush I's do.** Its storeys are whole cells,
 five blocks each: two cells by two, then an L of three, then one cell on top. The L leaves open the front cell
@@ -84,9 +89,9 @@ a stair it is a line of spruce planks. The bed or the sand starts on the next bl
 | Water standing against air, the zones' floor aside | 0 |
 | Water at the zones' floor against the void, held by PGM | 240 |
 | Board without block 36, block 36 off the board | 0, 0 |
-| Places reached on foot from a spawn | 783 |
-| Spawn to its own wool room's door, building | 53 |
-| Spawn to the other three wools, building | 109, 133 and 142 |
+| Places reached on foot from a spawn | 767 |
+| Spawn to its own wool room's door, building | 55 |
+| Spawn to the other three wools, building | 111, 136 and 144 |
 
 **Every piece of the plan is its own island, so the wools are reached by building.** The building walk stands in
 for blocks placed with water over the zones and four blocks over the board.

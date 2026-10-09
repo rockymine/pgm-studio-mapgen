@@ -1,5 +1,5 @@
 """Generate Brittlebush III from its studio plan: red's part block for block in the Brittlebush style
-(pgmvox.brittle), its spawn house and its wool's tower with the wool's heart over it, then turned a quarter three
+(pgmvox.brittle), its spawn's house and its wool's house, each stacked of whole cells, then turned a quarter three
 times for blue, green and yellow, each turn moving the team's colours and the wool's colours on a team; then the
 monuments and the wools.
 
@@ -8,8 +8,9 @@ monuments and the wools.
     the ground      every cell of the plan as pgmvox.brittle lays it: the cap on every edge and stair side, the
                     birch panels, frames, sand and grass, the stairs of slab and block, the decks and the hollows
                     and pillars under them, the water zones' water, the bare zones' cobwebs toward the void
-    the spawn       a house of black clay over the spawn's footprint, two storeys, its door toward the lane, the
-                    team's band under its plates; a stack of the team's wool floating high over it
+    the spawn       a house of three storeys of whole cells over the spawn's piece: two by two, the two back
+                    cells, one cell; doors onto the lane and toward the monuments, the keep's floor inside, a beacon
+                    under the team's glass on top, and a stack of the team's wool floating high over it
     the wool        a house of three storeys of whole cells over the wool's piece (pgmvox.brittle.house): two by
                     two, an L, one cell; its door onto the ground in front, the wool on a square of its colour, a
                     beacon on top shining through glass of the wool's colour
@@ -21,7 +22,7 @@ import numpy as np
 
 import plan as P
 from pgmvox import B, World
-from pgmvox.brittle import CELL, build, house, tower
+from pgmvox.brittle import CELL, build, house
 from pgmvox.orient import turn_world
 
 cells, team = P.cells()
@@ -30,13 +31,16 @@ w = World(lo, lo, hi - lo + 1, hi - lo + 1, sy=64)
 rng = random.Random(f"{P.BOARD}/ground")
 red = [c for c, t in team.items() if t == 0]
 
-# 1. red's part: the ground, the spawn's house and mark, the wool's tower and heart
+# 1. red's part: the ground, the spawn's house and mark, the wool's house
 build(w, cells, only=red, rng=rng, dye=P.DYES[0])
-sx0, sz0, sx1, sz1 = P.SPAWN_BOX
-tower(w, P.SPAWN_BOX, P.SPAWN_Y, [(6, 0), (4, 1)], P.DYES[0],
-      door=(P.SPAWN_DOOR, (sz0 + 2, sz1 - 2) if P.SPAWN_DOOR in "ew" else (sx0 + 2, sx1 - 2)))
+sx0, sz0, sx1, sz1 = P.SPAWN_PIECE
+for x in range(sx0, sx1 + 1):
+    for z in range(sz0, sz1 + 1):
+        for y in range(P.SPAWN_Y + 1, P.SPAWN_Y + 20):
+            w.set(x, y, z, B.AIR)
+house(w, P.SPAWN_LAYERS, P.SPAWN_Y, P.DYES[0], door=P.SPAWN_DOORS, cobwebs=False, floor_block=None)
 x, _, z = P.SPAWN_AT
-for y in range(P.SPAWN_Y + 20, P.SPAWN_Y + 23):
+for y in range(P.SPAWN_Y + 22, P.SPAWN_Y + 25):
     w.set(x, y, z, B.WOOL, P.DYES[0])
 wx0, wz0, wx1, wz1 = P.WOOL_BOX
 for x in range(wx0, wx1 + 1):                                     # the bed and its birch off the wool's piece

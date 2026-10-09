@@ -506,19 +506,22 @@ def tower(w, box, base_y, tiers, dye, door=None, crown=(B.GOLD_BLOCK, 0)):
     return y, (cx, cz)
 
 
-def house(w, layers, floor, dye, door=None):
+def house(w, layers, floor, dye, door=None, cobwebs=True, floor_block=(B.PLANKS, 0)):
     """A building as Brittlebush I raises its wool rooms: storeys of whole cells, five blocks each, every storey
     over part of the one under it, as a block of two cells by two, an L of three over it, and one cell on top.
 
-    layers is a list of storeys from the bottom, each a list of cells (cx, cz); door is (cell, side), three wide
-    and three high in that cell's middle on the first storey, cobwebs one block inside it. A storey's wall is the
+    layers is a list of storeys from the bottom, each a list of cells (cx, cz); door is (cell, side) or a list of
+    them, each three wide and three high in that cell's middle on the first storey, with cobwebs one block inside it
+    unless `cobwebs` is False, as a spawn's house wants. floor_block is the first storey's floor, or None to keep
+    the ground's own, as a keep's ring of the team's clay. A storey's wall is the
     ground's edge again, read bottom up: black clay, an upside-down dark-oak stair, a dark-oak stair, brick; and
     every other cell along a face the birch panel framed in black clay, `dye` tucked under the eave over it. Its
     plate overhangs by one, in eaves of planks and upside-down spruce stairs and slab; where the next storey does
     not stand on it, its roof is a terrace of sand in a ring of spruce stairs, on a ceiling of sandstone lit by sea
     lanterns. A one-cell top storey holds a beacon
-    on gold, shining through glass of `dye`. The first storey's floor is oak planks; the storeys over it are
-    hollow."""
+    on gold, shining through glass of `dye`. The storeys over the first are hollow."""
+    doors = [] if door is None else [door] if isinstance(door[1], str) else list(door)
+    doors = {(tuple(c), d) for c, d in doors}
     for k, layer in enumerate(layers):
         base, top = floor + 5 * k, floor + 5 * k + 5
         above = set(layers[k + 1]) if k + 1 < len(layers) else set()
@@ -537,8 +540,8 @@ def house(w, layers, floor, dye, door=None):
             if not outs and not diagonal_out(x, z):
                 for y in range(base + 1, top):
                     w.set(x, y, z, B.AIR)
-                if k == 0:
-                    w.set(x, base, z, B.PLANKS, 0)
+                if k == 0 and floor_block:
+                    w.set(x, base, z, *floor_block)
                 continue
             if len(outs) != 1:                                          # a corner, outer or inner
                 for y in range(base + 1, top):
@@ -564,11 +567,12 @@ def house(w, layers, floor, dye, door=None):
                 dx, dz = DIRS[d]
                 if w.id(x + dx, top - 1, z + dz) == B.AIR:
                     w.set(x + dx, top - 1, z + dz, B.WOOL, dye)
-            if k == 0 and door and door[1] == d and (x // CELL, z // CELL) == tuple(door[0]) and pos in (1, 2, 3):
+            if k == 0 and ((x // CELL, z // CELL), d) in doors and pos in (1, 2, 3):
                 dx, dz = DIRS[d]
                 for y in range(base + 1, base + 4):
                     w.set(x, y, z, B.AIR)
-                    w.set(x - dx, y, z - dz, B.COBWEB)
+                    if cobwebs:
+                        w.set(x - dx, y, z - dz, B.COBWEB)
         # the plate: the next storey's floor, or a terrace of sand in a ring of spruce stairs
         for x, z in cols:
             if (x, z) not in roof:

@@ -59,6 +59,15 @@ WOOL_LAYERS = [[(_wx, _wz), (_wx + 1, _wz), (_wx, _wz + 1), (_wx + 1, _wz + 1)],
                [(_wx, _wz)]]
 WOOL_DOOR = ((_wx, _wz + 1), "s")
 SPAWN_DOOR = SP.facing(SPAWN_REC)          # the side the spawn house opens on: west, toward the lane
+# the spawn's house takes its whole piece too, stacked otherwise than the wool's: the first storey all four cells,
+# the second a bar of the two back cells, away from the lane, and one cell on top at the bar's north end. Its doors
+# open west onto the lane and south toward the monuments.
+_sx, _sz, _sw, _sh = next(p for p in PLAN["pieces"] if p["id"] == SPAWN_REC["piece"])["rect"]
+SPAWN_LAYERS = [[(_sx, _sz), (_sx + 1, _sz), (_sx, _sz + 1), (_sx + 1, _sz + 1)],
+                [(_sx + 1, _sz), (_sx + 1, _sz + 1)],
+                [(_sx + 1, _sz)]]
+SPAWN_DOORS = [((_sx, _sz), SPAWN_DOOR), ((_sx + 1, _sz + 1), "s")]
+SPAWN_PIECE = (_sx * BR.CELL, _sz * BR.CELL, (_sx + _sw) * BR.CELL - 1, (_sz + _sh) * BR.CELL - 1)
 SPAWN_Y = SPAWN_AT[1]                       # the keep's floor
 WOOL_Y = WOOL_AT[1]                         # the wool room's floor
 # red's three monuments, on the ground south of its keep (piece-9), a slot for each wool it takes
