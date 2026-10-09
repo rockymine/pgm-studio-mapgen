@@ -1,0 +1,135 @@
+<map proto="1.5.0">
+    <name>Sandreach</name>
+    <version>1.0.0</version>
+    <objective>Capture the other team's wool!</objective>
+    <gamemode>ctw</gamemode>
+    <authors>
+        <author>rockymine</author>
+        <author>Claude (freeform generator, pgmvox)</author>
+    </authors>
+    <teams>
+        <team id="red-team" color="red" max="12">Red</team>
+        <team id="blue-team" color="blue" max="12">Blue</team>
+    </teams>
+    <filters>
+        <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
+        <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
+        <any id="woolroom-materials">
+            <material>wood</material>
+            <material>stained clay</material>
+            <material>web</material>
+            <all>
+                <cause>player</cause>
+                <any>
+                    <material>water</material>
+                    <material>stationary water</material>
+                </any>
+            </all>
+        </any>
+        <all id="reds-woolrooms-filter">
+            <filter id="not-red"/>
+            <filter id="woolroom-materials"/>
+        </all>
+        <all id="blues-woolrooms-filter">
+            <filter id="not-blue"/>
+            <filter id="woolroom-materials"/>
+        </all>
+        <not id="not-void">
+            <void/>
+        </not>
+    </filters>
+    <spawns>
+        <spawn team="red-team" kit="spawn-kit" yaw="0">
+            <region>
+                <point>0.5,19,-65.5</point>
+            </region>
+        </spawn>
+        <spawn team="blue-team" kit="spawn-kit" yaw="180">
+            <region>
+                <point>-0.5,19,65.5</point>
+            </region>
+        </spawn>
+        <default yaw="90">
+            <region>
+                <point>0.5,50,0.5</point>
+            </region>
+        </default>
+    </spawns>
+    <regions>
+        <cuboid min="-5,0,-70" max="5,128,-60" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-5,0,60" max="5,128,70" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <block id="yellow-blue-monument">-1,19,49</block>
+        <cuboid min="-54,22,-74" max="-46,26,-66" id="yellow-room"/>
+        <apply enter="not-red" region="yellow-room" message="You may not enter your own wool room!"/>
+        <point id="yellow-wool-spawn">-49.5,23,-70.5</point>
+        <block id="orange-red-monument">0,19,-50</block>
+        <cuboid min="46,22,66" max="54,26,74" id="orange-room"/>
+        <apply enter="not-blue" region="orange-room" message="You may not enter your own wool room!"/>
+        <point id="orange-wool-spawn">49.5,23,70.5</point>
+        <union id="reds-woolrooms">
+            <region id="yellow-room"/>
+        </union>
+        <apply block="reds-woolrooms-filter" region="reds-woolrooms" message="You may not edit the wool room!"/>
+        <union id="blues-woolrooms">
+            <region id="orange-room"/>
+        </union>
+        <apply block="blues-woolrooms-filter" region="blues-woolrooms" message="You may not edit the wool room!"/>
+        <apply block-place="not-void" message="You may not build in the void!"/>
+    </regions>
+    <wools craftable="false">
+        <wool team="blue-team" color="yellow" monument="yellow-blue-monument" location="-49.5,22,-70.5"/>
+        <wool team="red-team" color="orange" monument="orange-red-monument" location="49.5,22,70.5"/>
+    </wools>
+    <spawners>
+        <spawner spawn-region="yellow-wool-spawn" player-region="yellow-room" delay="1.5s">
+            <item material="wool" damage="4"/>
+        </spawner>
+        <spawner spawn-region="orange-wool-spawn" player-region="orange-room" delay="1.5s">
+            <item material="wool" damage="1"/>
+        </spawner>
+    </spawners>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="stone sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="iron pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="stained clay" amount="48" team-color="true"/>
+            <item slot="6" material="golden apple"/>
+            <item slot="7" material="cooked beef" amount="16"/>
+            <item slot="8" material="shears" unbreakable="true"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true"/>
+            <leggings material="leather leggings" unbreakable="true" team-color="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <itemkeep>
+        <item>stone sword</item>
+        <item>bow</item>
+        <item>iron pickaxe</item>
+        <item>iron axe</item>
+        <item>shears</item>
+    </itemkeep>
+    <kill-rewards>
+        <kill-reward>
+            <item material="golden apple"/>
+        </kill-reward>
+    </kill-rewards>
+    <maxbuildheight>40</maxbuildheight>
+</map>
+

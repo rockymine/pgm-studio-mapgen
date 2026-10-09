@@ -298,16 +298,19 @@ def sections(cells, fill=None):
     return out
 
 
-def build(w, cells, only=None, rng=None, dye=14, fill=None, style=STYLE):
+def build(w, cells, only=None, rng=None, dye=14, fill=None, style=STYLE, grown=None):
     """Every block of the cells in `only` (default all), each read against the whole blueprint, so a face on the
     edge of one team's part is right where it meets another's: the pieces through the grammar in `style` (their
     ground, edges, outlines and fills), and the rest by hand: zones, stairs, hollows under decks and their pillars.
     `dye` colours the keep's ring. fill(piece's cells, cells) may choose a piece's fill: "bed" (grass and its
-    birch, the default for a rectangle), "grass" (no tree) or "sand"; a fill that cannot be laid falls back."""
+    birch, the default for a rectangle), "grass" (no tree) or "sand"; a fill that cannot be laid falls back.
+    `grown` gives the tops of land that is no cell, {(x, z): top}: grown ground beside the made, laid by the board,
+    so a made face over it is as deep as the drop to it and a made edge level with it is a seam."""
     import random
     rng = rng or random.Random(0)
     only = set(cells) if only is None else set(only)
     Gr, T = heights(cells)
+    T = {**(grown or {}), **T}
 
     def cell_of(x, z):
         return (x // CELL, z // CELL)
@@ -345,7 +348,9 @@ def build(w, cells, only=None, rng=None, dye=14, fill=None, style=STYLE):
                     w.set(x, h - 1, z, B.STONEBRICK)
     # the pieces, in the grammar: a section a piece
     secs = sections(cells, fill)
-    stairs = {xz: h for xz, h in T.items() if cells[cell_of(*xz)].kind == "stair"}
+    stairs = {xz: h for xz, h in T.items() if cell_of(*xz) in cells and cells[cell_of(*xz)].kind == "stair"}
+    stairs.update({xz: h for xz, h in (grown or {}).items()
+                   if cells.get(cell_of(*xz), Cell("void")).kind not in LAND})            # grown, where no land is
     gr = G.Ground(secs, tops=stairs)
     hollow = {(x, z) for (cx, cz) in only if cells[(cx, cz)].kind == "stacked" and cells[(cx, cz)].under
               for x in range(cx * CELL, cx * CELL + CELL) for z in range(cz * CELL, cz * CELL + CELL)}

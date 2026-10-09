@@ -103,11 +103,18 @@ the style and nothing else.
 2. `pgmvox.clay` is the Claywork style. The earlier board's floors are its fills, its dressed faces its face recipe
    with the bays centred on each section, its flights a stepped section, and its arrows a motif. The board is now
    cut into sections about nine blocks a side, and its walks read back as they did.
+3. Grown ground stands beside the made on one board. `brittle.build(grown=...)` takes the tops of terrain that is
+   no cell, so every made face is as deep as the drop to the meadow under it and a made edge level with it is a
+   seam. Sandreach is built so: a made spine, a grown meadow and a floating island, meeting at dressed faces and at
+   a stair set into a notch of the made, never at a graded slope.
+4. An accent bay is laid whole or not at all, so an inlay is never buried behind a lower piece or squeezed into a
+   short run by a corner.
 
 ## What to do next
 
 1. Read section splits, fills and hollow cells from the studio plan, so `SPLIT`, `FILL` and `UNDER` leave the
    board scripts, and a board script is its style and nothing else.
 2. Speak one plan in both styles, to show the split holds in both directions.
-3. Give a style a natural member: a section whose fill is terrain, hanging rock or a grown slope, beside the
-   structural ones, for boards that mix the two.
+3. Give grown ground its own rules in the grammar's terms, so a meadow's soil, its slope bands, its underside and
+   where its trees stand are a style's answers as the made ground's are, and a board names them instead of
+   writing them.

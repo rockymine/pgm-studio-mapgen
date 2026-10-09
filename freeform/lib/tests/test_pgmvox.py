@@ -981,3 +981,15 @@ class Grammar(unittest.TestCase):
         self.assertEqual(w.get(9, 20, 4), clay.ANDESITE)                          # the seam between sections
         self.assertEqual((w.id(4, 15, 8), w.get(4, 15, 7), w.get(4, 17, 7)), (B.AIR, (B.QUARTZ, 1), (B.STAINED_CLAY, 14)))
         self.assertEqual(w.id(0, 0, 0), 36)
+
+    def test_made_ground_reads_the_grown_ground_beside_it(self):
+        from pgmvox import brittle as BR
+        unit = {(a, b): BR.Cell("flat", 16, section="a") for a in (-4, -3) for b in (-4, -3)}
+        cells, team = BR.fan(unit)
+        grown = {(x, z): 13 for x in range(-10, -5) for z in range(-20, -12)}     # a meadow three under its east
+        grown.update({(x, z): 16 for x in range(-10, -5) for z in range(-12, -10)})  # and one level with it
+        w = World(-30, -30, 60, 60, sy=32)
+        BR.build(w, cells, only=[c for c in cells if team[c] == 0], grown=grown)
+        self.assertEqual([w.id(-11, y, -18) for y in (16, 15, 14)],                  # a face as deep as the drop,
+                         [B.SPRUCE_STAIRS, B.BRICK, B.WOOD_SLAB])                     # no panel
+        self.assertEqual(w.get(-11, 16, -12), BR.SPRUCE_PLANKS)                      # level with it: a seam
