@@ -28,6 +28,7 @@ iso("33-iso-gatehouse-and-court-se.png", 7, "se", (-36, -102, 35, -38), 10)
 iso("34-iso-west-kiln-and-walk-se.png", 7, "se", (-72, -100, -40, -28), 10)
 iso("35-iso-front-and-steps-sw.png", 6, "sw", (-72, -42, 71, 12), 6)
 iso("36-iso-arcade-and-stones-se.png", 7, "se", (-64, -66, -24, -26), 6)
+iso("37-iso-apron-and-walk-floors-se.png", 10, "se", (-72, -75, -40, -13), 15)
 iso("40-xray-undercroft.png", 5, "se", (-72, -70, 71, -48), 15, P.HUB, xray=True)
 
 render.cutaway(w, os.path.join(out, "10-section-west-walk-x-66.png"), [(-65.5, -103), (-65.5, 0)], 0, 46, 5,

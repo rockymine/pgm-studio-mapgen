@@ -42,7 +42,8 @@ mirrors the other wing.
 and a runner of clay runs up the middle third. A stone-brick stair stands at each tread's back edge as its nosing.
 
 **Arrows of the team's wool are set into the floor along every way forward, each centred on its lane.** They run
-from the Gatehouse's front edge, between its monuments, down the Spawn Steps, across the Court and along each Arcade, and up each Walk to its Kiln. A
+from the Gatehouse's front edge, between its monuments, down the Spawn Steps, across the Court and along each
+Arcade, and up each Walk to its Kiln. A
 lane an even number of blocks wide has its middle between two blocks, so its arrow is six wide, and five elsewhere.
 They are wool and not clay because blue stained clay is nearly purple.
 
@@ -136,7 +137,7 @@ statues. Blue's panels and friezes are blue stained clay, which reads as a dark 
 - `05`: the built world from above with the plan's names.
 - `10`–`12`: sections along the West Walk, through the Rostrum, and along the Undercroft.
 - `30`–`36`: isometric views of the board, red's half, the Gatehouse and Court, a Kiln and its Walk, the front,
-  and the Arcade with its stepping stones.
+  the Arcade with its stepping stones, and an Apron and its Walk close up for the floors.
 - `40`: the Undercroft in x-ray.
 - `50`: the Forecourt's face as seen from the band.
 
