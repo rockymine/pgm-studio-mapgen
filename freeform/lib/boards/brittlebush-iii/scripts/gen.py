@@ -13,7 +13,7 @@ monuments and the wools.
                     under the team's glass on top, and a stack of the team's wool floating high over it
     the wool        a house of three storeys of whole cells over the wool's piece (pgmvox.brittle.house): two by
                     two, an L, one cell; its door onto the ground in front, the wool on a square of its colour, a
-                    beacon on top shining through glass of the wool's colour
+                    beacon on top shining through glass of the wool's colour; a line of redstone along its front
 """
 import random
 import sys
@@ -52,6 +52,9 @@ fx, _, fz = P.WOOL_AT
 for x in range(fx - 1, fx + 2):                                   # the wool stands on a square of its colour
     for z in range(fz - 1, fz + 2):
         w.set(x, P.WOOL_Y, z, B.WOOL, P.KEEP_DYES[0])
+wx0, wz0, wx1, wz1 = P.WOOL_BOX                                   # a line of redstone along the house's front,
+for x in range(wx0, wx1 + 1):                                     # one out from its door, a torch at each end,
+    w.set(x, P.WOOL_Y + 1, wz1 + 1, *((B.REDSTONE_TORCH, 5) if x in (wx0, wx1) else (B.REDSTONE_WIRE, 15)))
 for mx, mz in P.MONUMENTS:                                        # room over the monuments' slots
     for y in range(P.SPAWN_Y + 1, P.SPAWN_Y + 5):
         w.set(mx, y, mz, B.AIR)
