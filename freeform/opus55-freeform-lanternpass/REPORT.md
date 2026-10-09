@@ -115,3 +115,8 @@ Whether a runner with Speed I clears them in practice was not tested.
 | Scenery that never saves a faller | Easy: peaks and cloud kept six blocks clear of anything a runner can leave | A no-catch margin under and around a lane |
 | Shooters who swap sides | Easy: a portal on each walkway's outer row, offset to the other | Paired walkways with a swap row, the portal written into the XML |
 | Validation of a runner map | Not attempted | Blitz, portals and control points in the studio's round-trip |
+
+## After the playtest
+
+**The shooters' spawn would not load: PGM cannot draw a random point inside a union.** It was one region holding a
+union of the two ledges. It is now two regions in the one spawn, and PGM draws from one of them at random.

@@ -18,10 +18,11 @@
 </kits>
 <spawns>
     <spawn kit="players" yaw="0"><region><cuboid min="-5,241,7" max="6,241,14"/></region></spawn>
-    <default yaw="0"><region><point>0.5,252,-6.5</point></region></default>
+    <default yaw="0"><region><cuboid min="-5,241,7" max="6,241,14"/></region></default>
 </spawns>
 <filters>
     <any id="water"><material>water</material><material>stationary water</material></any>
+    <any id="water-source"><material>water:0</material><material>stationary water:0</material></any>
     <not id="holding-hill-1"><objective>hill-1</objective></not>
     <not id="holding-hill-2"><objective>hill-2</objective></not>
     <not id="holding-hill-3"><objective>hill-3</objective></not>
@@ -64,7 +65,7 @@
     <cuboid id="hill-14-box" min="-2,28,287" max="3,34,292"/>
     <apply region="built-water" block-break="never" block-place="never" message="This water belongs to the pass."/>
     <apply region="bell-court" block-place="never"/>
-    <apply block-place="water" block-break="water" block-physics="never"/>
+    <apply block-place="water-source" block-break="water" block-physics="never"/>
 </regions>
 <damage><deny><region id="bell-court"/></deny></damage>
 <score/>
@@ -87,6 +88,27 @@
 <time>5m</time>
 <portals sound="true">
     <portal region="slipway" destination="court-floor" yaw="@0"/>
+    <portal y="-70"><region><union>
+        <cuboid min="-40,0,-10" max="40,235,16"/>
+        <cuboid min="-40,0,17" max="40,228,30"/>
+        <cuboid min="-40,0,31" max="40,213,44"/>
+        <cuboid min="-40,0,45" max="40,193,65"/>
+        <cuboid min="-40,0,66" max="40,185,83"/>
+        <cuboid min="-40,0,84" max="40,173,97"/>
+        <cuboid min="-40,0,98" max="40,163,114"/>
+        <cuboid min="-40,0,115" max="40,155,144"/>
+        <cuboid min="-40,0,145" max="40,150,150"/>
+        <cuboid min="-40,0,151" max="40,148,155"/>
+        <cuboid min="-40,0,156" max="40,146,160"/>
+        <cuboid min="-40,0,161" max="40,126,180"/>
+        <cuboid min="-40,0,181" max="40,110,199"/>
+        <cuboid min="-40,0,200" max="40,98,215"/>
+        <cuboid min="-40,0,216" max="40,89,227"/>
+        <cuboid min="-40,0,228" max="40,75,248"/>
+        <cuboid min="-40,0,249" max="40,61,256"/>
+        <cuboid min="-40,0,257" max="40,45,274"/>
+        <cuboid min="-40,0,275" max="40,19,316"/>
+    </union></region></portal>
     <portal y="-64"><region><below y="-5"/></region></portal>
 </portals>
 <itemremove><item>bucket</item><item>water bucket</item></itemremove>

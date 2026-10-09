@@ -48,9 +48,11 @@ def main():
     a('    <default><region yaw="0"><point>0.5,70,-20.5</point></region></default>')
     a(f'    <spawn team="runners" kit="runner-kit"><region yaw="0"><cuboid min="{lx0 + 4},21,-8" max="{lx1 - 3},21,3"/></region></spawn>')
     hw = int(G.HW[P.iz(-6)]) + 1
-    a(f'    <spawn team="shooters" kit="shooter-kit"><region yaw="0"><union>'
-      f'<cuboid min="{L[0] + 1},{hw},-8" max="{L[1] + 1},{hw},-4"/><cuboid min="{Rw[0]},{hw},-8" max="{Rw[1]},{hw},-4"/>'
-      f'</union></region></spawn>')
+    # two ledges, two point providers: PGM draws a spawn from one of a spawn's regions at random, and cannot draw a
+    # random point inside a union
+    a(f'    <spawn team="shooters" kit="shooter-kit">'
+      f'<region yaw="0"><cuboid min="{L[0] + 1},{hw},-8" max="{L[1] + 1},{hw},-4"/></region>'
+      f'<region yaw="0"><cuboid min="{Rw[0]},{hw},-8" max="{Rw[1]},{hw},-4"/></region></spawn>')
     a('</spawns>')
     a('<filters>')
     a('    <team id="only-runners">runners</team>')

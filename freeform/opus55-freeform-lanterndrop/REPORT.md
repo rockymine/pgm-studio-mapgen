@@ -112,3 +112,15 @@ a sprint jump of nine to ten over a drop of twenty, should be tried by hand.
 | Fourteen hills held through death | Easy: Limbo II's control points, a box over each landing, the border in clay that takes the holder's colour | Hill pieces that write their own control points |
 | A spin-off of an existing board | Easy: the parent's materials, pieces and scenery carried over | A style read from a board, applied to another's layout |
 | Validation of a water drop map | Not attempted | Control points and portals in the studio's round-trip |
+
+## After the playtest
+
+**Observers now come in on the bell court, where the players spawn.** Their default point stood eleven above it.
+
+**Water no longer spreads.** Spreading water is a placement in PGM, filtered by `block-place`, not by
+`block-physics`. The apply allowed any water, so every step of a flow passed. It now allows a source alone,
+`water:0`, which is what a bucket places, and refuses the flowing water of data 1 to 8.
+
+**A miss now kills at once.** Under every group of landings lies a box the course's width, from the last
+group's far edge to this one's, up to five under its top. A player who falls into it is put under the world, where
+the void kills within a few ticks. A landing, even in a cistern three deep, stays above its box.

@@ -105,10 +105,14 @@ def trims(w):
 
 
 # ---- carving -----------------------------------------------------------------------------------------------
+CARVED = set()                                   # every block of air a tunnel has carved: no glass wall fills it
+
+
 def carve(w, cells, axis, half, height=2):
     """A tunnel through the rock: for each (x, z, floor) a slice `2*half+1` wide across `axis` (the axis the
     slice spans), `height` of air over a stone brick floor. Where the slice lies under the lava, its roof is
-    glass with the lava standing on it, and its sides are glass against the lava."""
+    glass with the lava standing on it, and its sides are glass against the lava, but never across another
+    tunnel's air, so where two runs meet the way stays open."""
     for x, z, f in cells:
         for o in range(-half, half + 1):
             cx, cz = (x + o, z) if axis == "x" else (x, z + o)
@@ -116,6 +120,7 @@ def carve(w, cells, axis, half, height=2):
             w.set(cx, f, cz, B.STONEBRICK, 0)
             for y in range(f + 1, f + 1 + height):
                 w.set(cx, y, cz, B.AIR)
+                CARVED.add((cx, y, cz))
             if under_lava:
                 w.set(cx, f + 1 + height, cz, *GLASS)
                 for y in range(f + 2 + height, P.LAVA_Y + 1):
@@ -124,7 +129,8 @@ def carve(w, cells, axis, half, height=2):
             cx, cz = (x + o, z) if axis == "x" else (x, z + o)
             if R.K[P.ix(cx), P.iz(cz)] == K["lava"]:
                 for y in range(f, f + 2 + height):
-                    w.set(cx, y, cz, *GLASS)
+                    if (cx, y, cz) not in CARVED:
+                        w.set(cx, y, cz, *GLASS)
 
 
 def stairs_on(w, cells, axis, half, rises):
@@ -199,9 +205,10 @@ def spring(w):
     both_turns(w, br_e, "x", 1)
     both_turns(w, br_w, "x", 1)
     # the trenches' feet: the corridor under the Ledge at the tunnel's floor, three wide, meeting the raster's
-    # stairs at x 8 (and -9)
+    # stairs at x 8 (and -9); three of air, as a player stepping up onto the first stair still stands partly in
+    # the corridor's last column with his head a block higher
     for cs in ([(x, -22, TF) for x in (5, 6, 7)], [(x, -22, TF) for x in (-8, -7, -6)]):
-        both_turns(w, cs, "z", 1)
+        both_turns(w, cs, "z", 1, height=3)
 
 
 def spawn_tunnels(w):

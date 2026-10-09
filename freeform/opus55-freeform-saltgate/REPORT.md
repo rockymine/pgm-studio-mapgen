@@ -121,3 +121,9 @@ stores fall the banner is not. In every case the walk finds no way, not a long o
 | Three different ways into the first objective | Easy: a passage, two ladders, a culvert, side by side | Approach pieces — gate, ladder, culvert — that measure themselves against each other |
 | Ships, palms and smoke that read as themselves | Moderate: a hull drawn as an outline carried down to a keel, a palm as two turned crosses drooping, smoke as a swelling plume bent by a wind | Prop pieces with a shape rule — hull, palm, plume — rather than boxes |
 | Validation of an attack/defend map | Not attempted here; the XML follows PGM's source and Bardo's | Attack/defend in the studio's round-trip, the gates and stages read back against the world |
+
+## After the playtest
+
+**The banner can no longer be lost.** It was a block attackers broke and carried, and once thrown away or dropped
+into the void, it was gone. A block-drops rule on it now drops a banner and puts the block straight back, and an
+apply lets that replacement in ahead of the board's ban on placing.

@@ -31,7 +31,7 @@
 <spawns>
     <default><region yaw="0"><point>0.5,70,-20.5</point></region></default>
     <spawn team="runners" kit="runner-kit"><region yaw="0"><cuboid min="-8,21,-8" max="8,21,3"/></region></spawn>
-    <spawn team="shooters" kit="shooter-kit"><region yaw="0"><union><cuboid min="-30,31,-8" max="-26,31,-4"/><cuboid min="26,31,-8" max="30,31,-4"/></union></region></spawn>
+    <spawn team="shooters" kit="shooter-kit"><region yaw="0"><cuboid min="-30,31,-8" max="-26,31,-4"/></region><region yaw="0"><cuboid min="26,31,-8" max="30,31,-4"/></region></spawn>
 </spawns>
 <filters>
     <team id="only-runners">runners</team>

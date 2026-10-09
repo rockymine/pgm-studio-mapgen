@@ -116,6 +116,10 @@
     <apply enter="only-attackers" region="flagship" message="You may not board the enemy's flagship!"/>
     <block id="banner-slot">0,23,-23</block>
     <apply block-place="always" region="banner-slot"/>
+    <!-- the banner on its pedestal in the keep: breaking it drops a banner and the block comes back (block-drops
+         below), so it is never gone however many are carried off and lost; its replacement must be let in -->
+    <block id="banner-block">0,35,54</block>
+    <apply block-place="always" region="banner-block"/>
     <apply block-break="breakable" block-place="never" message="The town's stones will not move."/>
 </regions>
 <actions>
@@ -147,6 +151,12 @@
         <region><cuboid min="18,31,15" max="19,33,16"/></region>
     </destroyable>
 </destroyables>
+<block-drops>
+    <rule region="banner-block">
+        <drops><item material="wool" damage="10"/></drops>
+        <replacement>wool:10</replacement>
+    </rule>
+</block-drops>
 <wools craftable="false">
     <wool id="banner" team="attackers" color="purple" location="0.5,35,54.5" monument="banner-slot"/>
 </wools>

@@ -102,3 +102,12 @@ now crosses the lava onto the Middle, the corner's answer to the diagonal steps 
 | Each team's half readable at a glance | Easy: a team colour picked by which side of the centre line a block is on | A team-colour slot in a theme, painted by side of the symmetry axis |
 | Hill regions and wool rings that match the hill | Easy by hand from the plan's boxes | Hill pieces that write their capture, progress and captured regions with the hill |
 | Validation of a KOTH map | Not attempted here; the XML follows PGM's source and Mush's | KOTH support in the studio's round-trip, so a hill's regions are read back against the world |
+
+## After the playtest
+
+**The north tunnel under the lava was walled shut by glass, and is open again.** The fork's run east and west
+lines its sides with glass where it lies under the lava, and that glass filled the north tunnel where the two
+meet. A tunnel's glass no longer fills air another tunnel carved.
+
+**The trench feet are three high.** A player stepping up onto the first stair still stands partly in the
+corridor's last column, a block higher, so two of air there stopped them.

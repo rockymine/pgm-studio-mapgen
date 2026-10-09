@@ -22,6 +22,25 @@ def hill_boxes():
     return out
 
 
+def kill_boxes():
+    """Under each group of pieces: the course's width, from the previous group's far edge (the court's own near
+    edge for the first) to this group's far edge, from the world's floor to five under the group's top; the
+    harbour's under its floor."""
+    groups = {}
+    for p in P.pieces():
+        groups.setdefault(p[0], []).append(p)
+    out, z_from = [], None
+    for i in sorted(groups):
+        g = groups[i]
+        z0, z1, y = min(p[5] for p in g), max(p[6] for p in g), g[0][7]
+        top = y - 5
+        if g[0][8].get("harbour"):
+            z1, top = P.HARBOUR["z"][1], min(top, P.HARBOUR["y"] - 8)
+        out.append((-40, 0, (z0 - 10) if z_from is None else z_from, 40, top, z1))
+        z_from = z1 + 1
+    return out
+
+
 def built_water():
     out = []
     for p in P.pieces():
@@ -59,10 +78,13 @@ def main():
     a('</kits>')
     a('<spawns>')
     a(f'    <spawn kit="players" yaw="0"><region><cuboid min="{cx0 + 3},{cy + 1},{cz0 + 7}" max="{cx1 - 2},{cy + 1},{cz1 - 2}"/></region></spawn>')
-    a(f'    <default yaw="0"><region><point>0.5,{cy + 12},{cz0 - 6}.5</point></region></default>')
+    # observers come in where the players do, on the bell court
+    a(f'    <default yaw="0"><region><cuboid min="{cx0 + 3},{cy + 1},{cz0 + 7}" max="{cx1 - 2},{cy + 1},{cz1 - 2}"/></region></default>')
     a('</spawns>')
     a('<filters>')
     a('    <any id="water"><material>water</material><material>stationary water</material></any>')
+    # a bucket places a source, data 0; water spreading is a placement too, of data 1 to 8, and is refused
+    a('    <any id="water-source"><material>water:0</material><material>stationary water:0</material></any>')
     for hid, name, pts, box in hill_boxes():
         a(f'    <not id="holding-{hid}"><objective>{hid}</objective></not>')
     a('</filters>')
@@ -80,7 +102,7 @@ def main():
         a(f'    <cuboid id="{hid}-box" min="{bx0},{by0},{bz0}" max="{bx1},{by1},{bz1}"/>')
     a('    <apply region="built-water" block-break="never" block-place="never" message="This water belongs to the pass."/>')
     a('    <apply region="bell-court" block-place="never"/>')
-    a('    <apply block-place="water" block-break="water" block-physics="never"/>')
+    a('    <apply block-place="water-source" block-break="water" block-physics="never"/>')
     a('</regions>')
     a('<damage><deny><region id="bell-court"/></deny></damage>')
     a('<score/>')
@@ -92,6 +114,13 @@ def main():
     a(f'<time>{P.TIME}</time>')
     a('<portals sound="true">')
     a('    <portal region="slipway" destination="court-floor" yaw="@0"/>')
+    # a box under every landing, from the last group's far edge to this one's, five under its top: a player who
+    # misses the landing falls into it and is put under the world, where the void kills within a few ticks. A
+    # landing, even in a cistern three deep, stays above it; the drop onward leaves past the group's far edge
+    a('    <portal y="-70"><region><union>')
+    for x0, y0, z0, x1, y1, z1 in kill_boxes():
+        a(f'        <cuboid min="{x0},{y0},{z0}" max="{x1},{y1},{z1}"/>')
+    a('    </union></region></portal>')
     a('    <portal y="-64"><region><below y="-5"/></region></portal>')
     a('</portals>')
     a('<itemremove><item>bucket</item><item>water bucket</item></itemremove>')
