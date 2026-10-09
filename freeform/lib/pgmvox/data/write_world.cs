@@ -5,7 +5,7 @@
 // <build-dir> holds what gen.py wrote:
 //   volume.bin  "RWV1", int32 x0 y0 z0 sx sy sz, then uint16 ids[sx*sy*sz] and uint8 data[sx*sy*sz]
 //               indexed ((x*sy)+y)*sz+z, then uint8 biomes[sx*sz] indexed x*sz+z
-//   tiles.json  [{ "kind": "Chest", x, y, z, items: [{slot, id, count, damage}] },
+//   tiles.json  [{ "kind": "Chest", x, y, z, items: [{slot, id, count, damage, ench?: [[id, level], ..]}] },
 //                { "kind": "Sign", x, y, z, lines: ["..", ..] },
 //                { "kind": "Banner", x, y, z, base: <dye 0..15>, patterns: [{pattern, color}] }]
 //   level.json  { name, spawn: [x, y, z] }
@@ -58,13 +58,23 @@ foreach (var t in tiles)
     {
         var list = new NbtList("Items", NbtTagType.Compound);
         foreach (var it in t["items"]!.AsArray())
-            list.Add(new NbtCompound
+        {
+            var item = new NbtCompound
             {
                 new NbtByte("Slot", (byte)(int)it!["slot"]!),
                 new NbtString("id", (string)it["id"]!),
                 new NbtByte("Count", (byte)(int)it["count"]!),
                 new NbtShort("Damage", (short)(int)(it["damage"] ?? 0)),
-            });
+            };
+            if (it["ench"] is JsonArray ench)
+            {
+                var list2 = new NbtList("ench", NbtTagType.Compound);
+                foreach (var e in ench)
+                    list2.Add(new NbtCompound { new NbtShort("id", (short)(int)e![0]!), new NbtShort("lvl", (short)(int)e[1]!) });
+                item.Add(new NbtCompound("tag") { list2 });
+            }
+            list.Add(item);
+        }
         tag.Add(list);
     }
     else if (kind == "Sign")

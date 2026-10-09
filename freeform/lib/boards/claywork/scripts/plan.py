@@ -9,7 +9,7 @@ The levels step up from the front to the back in broad steps, each one block up 
 
     the front       the Forecourt and the two Aprons at 20, build zones between them; the band before the middle
     the hub         the Clay Court at 23, up the two flights of the Grand Steps either side of the Rostrum
-    the Undercroft  under the Court and the Arcades at 19: the well drops into it, a passage three wide runs out
+    the Undercroft  under the Court and the Arcades at 17: the well drops into it, a passage three wide runs out
                     under each Arcade as a balcony open toward the spawn, and a ladder climbs to each Walk
     the spawn       the Gatehouse at 27 and its two Statue Terraces out to the Court, the Spawn Steps cut between
     the wings       the Arcades at 23, from the Court out to the Walks
@@ -94,13 +94,18 @@ FLANK = (-52, -30, -29, -13)
 STONES = [((-45, -50, -44, -48), 22), ((-45, -45, -44, -43), 21), ((-45, -40, -44, -38), 20),
           ((-45, -35, -44, -33), 19)]
 
-# the Undercroft: a floor UNDER under the Court and the Arcades; the well is its pit, open to the sky, a way down
-# only: nothing climbs out of it but the ladders at the Walks
-UNDER = HUB - 4
+# the Undercroft: a floor UNDER under the Court and the Arcades, three high with a roof three thick over it; the well
+# is its pit, open to the sky, a way down only, a pool at its foot to land in: nothing climbs out of it but the
+# ladders at the Walks
+UNDER = HUB - 6
+UNDER_CLEAR = 3
 PASSAGE = (-60, -64, -7, -62)              # three wide, from the Arcade's far end to the well, under the floors
 LADDER = (-60, -65)                        # the landing past the Arcade's north edge; a ladder up the Walk's face
 
 SPAWN_AT = (0, SPAWN + 1, -92)
+# the Gatehouse's iron: a cube three a side in each back corner, two clear of its walls, mined and grown back
+IRON_SPAN = 3
+IRON = [(-13, -97)]                        # the west cube's low corner; the east is its mirror
 MONUMENTS = [(-8, -83), (7, -83)]          # red's two, on the Gatehouse's front edge, west and east
 OBSERVER_AT = (0, 50, 0)
 
@@ -146,7 +151,7 @@ def plan():
         else:
             _floor(R, box, rule, key)
     # the Undercroft: the passage under the Court and the Arcade, its landing, and the well over it. The floors
-    # above stay as the first storey, four over the passage: a player walks the Court over the passage's head
+    # above stay as the first storey, six over the passage: a player walks the Court over the passage's roof
     up = R.storey(1)
     px0, pz0, px1, pz1 = PASSAGE
     for x in range(px0, px1 + 1):
@@ -226,7 +231,7 @@ def objectives():
     so red's yellow and lime are blue's to take; their images are red's orange and light blue in blue's Kilns."""
     O = Objectives(Teams(("red-team", "Red", "red", 16), ("blue-team", "Blue", "blue", 16)), SYM)
     O.add(Spawn("red-team", SPAWN_AT, yaw=0, kit="spawn-kit", area=Box(-16, 0, -100, 15, 127, -81),
-                protect=True))
+                protect=("iron block",)))
     O.add(Observer(OBSERVER_AT, yaw=90), mirror=False)
     west = Box(KILN[0], WOOL + 1, KILN[1], KILN[2], WOOL + ROOM_H - 1, KILN[3])
     east = Box(mx(KILN[2]), WOOL + 1, KILN[1], mx(KILN[0]), WOOL + ROOM_H - 1, KILN[3])

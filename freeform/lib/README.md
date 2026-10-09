@@ -26,7 +26,7 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `facade` | face patterns (`band`, `courses`, `flutes`, `panels`, `slits`, `checker`, `windows`, `glyph_row`, `word`) set back or flush on an `extrude`d mass, `coffer`, `top_course`; floor fields (`border`, `medallion`, `corners`, `diamonds`, `steps`, `star`, `cross`, `tiles`) composed by `first_of` and laid by `carpet` |
 | `terrain` | `slope_deg` as the studio reads it; `lay` (ground painted by slope, a snow line); `Strata`, `bed_offset` and `beds` (rock beds that tilt and fold); `mountain_ring`; `underside` and `root_depth` (cones, flutes, spires); `cloud_deck` |
 | `route` | `find` (a least-cost route over the ground, held to a grade, switchbacks and all), `network` (places joined by roads that share their trunk), `simplify`, `smooth`, `footprint`, `pave` (surface and bridges), `steps` |
-| `props` | small built things placed on a floor, facing a way: `stall` and `stalls` (a market row), `lamp` |
+| `props` | small built things placed on a floor, facing a way: `stall` and `stalls` (a market row), `lamp`; chests drawn as rows of letters (`laid`), with a defence chest and a wool room's gear |
 | `under` | caves and mines carved into a built world: `tunnel` (a level-floored passage), `chamber`, `carve`, `dress_cave` (floors, stalactites, ore), `gallery_line` and `gallery` (timbered, railed, stepped), `shaft` |
 | `trees` | hand-built trees planted whole: `library` (the studio's copied trees), `load` (a board's own cut), `kinds`, `plant` (turned, refused whole), `scatter` (a wood with its crowns apart) |
 | `forms` | scenery built block by block where a heightfield cannot say it: `tower` (rings tapering up a stack, ledges every few courses, bulging faces, beds in courses, a crown and vines), `skirt` (karst faces under a floating floor's rim), `root_vines` |
@@ -134,6 +134,11 @@ it and grow back, and `mapxml` writes kits and a kill height by instant damage.
 
 **The voxel walk builds too.** `MoveRules(build=(mask, (lo, hi)))` lets a player stand in a build zone's air as
 on a placed block, and `kill_y` counts nothing below the kill height as a place.
+
+**A chest is drawn as three rows of nine letters and a legend.** `props.laid` turns them into the chest's items and
+refuses a row that is not filled the same from either end, so heavy stacks balance and tools sit in the middle.
+`props.DEFENCE` is a defence chest for a team's wall and `props.ROOM_GEAR` a wool room's gear. An item may carry
+enchantments, written into the world as the chest's own tag.
 
 **The capture rebuild proves the set.** With its local walk and rules replaced by these, its plan check and its
 walks read the same to the last digit, and the studio reads its map.xml as valid.

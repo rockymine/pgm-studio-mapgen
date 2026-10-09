@@ -19,6 +19,13 @@
         <not id="not-blue">
             <team>blue-team</team>
         </not>
+        <any id="spawn-minable">
+            <material>iron block</material>
+        </any>
+        <all id="spawn-minable-regrowth">
+            <filter id="spawn-minable"/>
+            <cause>world</cause>
+        </all>
         <any id="woolroom-materials">
             <material>wood</material>
             <material>stained clay</material>
@@ -63,10 +70,10 @@
     <regions>
         <cuboid min="-16,0,-100" max="16,128,-80" id="red-spawn"/>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
-        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <apply block-place="spawn-minable-regrowth" block-break="spawn-minable" region="red-spawn" message="You may not edit the spawn!"/>
         <cuboid min="-16,0,80" max="16,128,100" id="blue-spawn"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
-        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <apply block-place="spawn-minable-regrowth" block-break="spawn-minable" region="blue-spawn" message="You may not edit the spawn!"/>
         <block id="yellow-blue-monument">-8,28,82</block>
         <cuboid min="-72,27,-98" max="-58,32,-81" id="yellow-room"/>
         <apply enter="not-red" region="yellow-room" message="You may not enter your own wool room!"/>
@@ -95,6 +102,10 @@
         <apply block="blues-woolrooms-filter" region="blues-woolrooms" message="You may not edit the wool room!"/>
         <apply block-place="not-void" message="You may not build in the void!"/>
     </regions>
+    <renewables>
+        <renewable region="red-spawn" renew-filter="spawn-minable"/>
+        <renewable region="blue-spawn" renew-filter="spawn-minable"/>
+    </renewables>
     <wools craftable="false">
         <wool team="blue-team" color="yellow" monument="yellow-blue-monument" location="-65.5,27,-92.5"/>
         <wool team="red-team" color="orange" monument="orange-red-monument" location="-65.5,27,92.5"/>

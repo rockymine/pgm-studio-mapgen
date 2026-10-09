@@ -107,10 +107,18 @@ class World:
 
     # --- tile entities ---------------------------------------------------------------------------------
     def chest(self, x, y, z, items, facing=2):
-        """items: [(slot, 'minecraft:id', count, damage)]. facing 2 north 3 south 4 west 5 east."""
+        """items: [(slot, 'minecraft:id', count, damage)], or with a fifth element of enchantments as
+        [(enchantment id, level)], e.g. (13, 'minecraft:iron_pickaxe', 1, 0, [(32, 2)]) for Efficiency II.
+        facing 2 north 3 south 4 west 5 east."""
         self.set(x, y, z, B.CHEST, facing)
-        self.tiles.append({"kind": "Chest", "x": x, "y": y, "z": z,
-                           "items": [{"slot": s, "id": i, "count": c, "damage": d} for s, i, c, d in items]})
+        out = []
+        for it in items:
+            s, i, c, d = it[:4]
+            e = {"slot": s, "id": i, "count": c, "damage": d}
+            if len(it) > 4 and it[4]:
+                e["ench"] = [[int(a), int(b)] for a, b in it[4]]
+            out.append(e)
+        self.tiles.append({"kind": "Chest", "x": x, "y": y, "z": z, "items": out})
 
     def sign(self, x, y, z, lines, wall_facing=None, rot=0):
         if wall_facing is None:

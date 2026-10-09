@@ -3,6 +3,7 @@
     stall(w, x, y, z, "e", awning=14)          # a market stall on a floor at y, its counter toward the east
     stalls(w, cells, y, "e")                   # a row of them along an edge, a pace apart, colours in turn
     lamp(w, x, y, z)                           # a lamp post on a floor at y
+    w.chest(x, y, z, laid(DEFENCE), facing=2)  # a chest laid out as a pattern, here a defence chest
 
 A prop is placed on a floor: y is the floor block, and it stands from y + 1. Each returns the cells it stands on,
 so a board can claim them and keep a route or a scatter off them.
@@ -61,3 +62,45 @@ def lamp(w, x, y, z, height=3, post=(B.FENCE, 0), light=(B.GLOWSTONE, 0), cap=(B
         w.set(x, y + height + 2, z, *cap)
     return [(x, z)]
 
+
+
+# A chest is laid out as a picture: three rows of nine slots, one letter a slot, a legend saying what each letter
+# holds. A row is filled the same from either end, so the heavy stacks balance across the chest, the rare things sit in
+# the middle, and the tools are centred rather than left at the end of a run of planks.
+DEFENCE = (["PSCERECSP",
+            "PSEKRKESP",
+            "PSCERECSP"],
+           {"P": ("minecraft:planks", 64, 5), "S": ("minecraft:planks", 32, 1), "C": ("minecraft:crafting_table", 16, 0),
+            "E": ("minecraft:end_stone", 16, 0), "R": ("minecraft:redstone_block", 16, 0),
+            "K": ("minecraft:iron_pickaxe", 1, 0, [(32, 2)])})
+"""A defence chest for a team's line: dark-oak planks at the ends, spruce inside them, crafting tables and end
+stone toward the middle, a column of redstone blocks down the centre, and two Efficiency II iron pickaxes either
+side of it."""
+
+ROOM_GEAR = (["A...H...A",
+              "W.FCGLF.W",
+              "A...B...A"],
+             {"A": ("minecraft:arrow", 16, 0), "W": ("minecraft:planks", 32, 0), "F": ("minecraft:cooked_beef", 8, 0),
+              "H": ("minecraft:iron_helmet", 1, 0), "C": ("minecraft:iron_chestplate", 1, 0),
+              "G": ("minecraft:golden_apple", 2, 0), "L": ("minecraft:iron_leggings", 1, 0),
+              "B": ("minecraft:iron_boots", 1, 0)})
+"""The gear in a wool room: a set of iron armour down the middle around two golden apples, food either side, and
+arrows and planks at the four ends."""
+
+
+def laid(layout, symmetric=True):
+    """The items of a chest drawn as rows of letters: (rows, legend) -> [(slot, id, count, damage[, ench])]. '.' is
+    an empty slot. symmetric asks that every row be filled the same from either end; a pair such as a chestplate and
+    leggings may mirror each other."""
+    rows, legend = layout
+    items = []
+    for r, row in enumerate(rows):
+        if len(row) != 9:
+            raise ValueError(f"a chest row is nine slots: {row!r}")
+        filled = [c != "." for c in row]
+        if symmetric and filled != filled[::-1]:
+            raise ValueError(f"row {r} is not filled the same from either end: {row!r}")
+        for col, c in enumerate(row):
+            if c != ".":
+                items.append((r * 9 + col,) + tuple(legend[c]))
+    return items

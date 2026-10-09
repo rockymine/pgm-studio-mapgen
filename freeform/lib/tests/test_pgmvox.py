@@ -800,6 +800,18 @@ class Props(unittest.TestCase):
         self.assertGreater(len(cells), 9)
         self.assertEqual(w.id(6, 6, 3), B.WOOD_SLAB)                      # the counter on the east side
 
+    def test_a_chest_laid_out_as_a_pattern(self):
+        items = props.laid(props.DEFENCE)
+        self.assertEqual(len(items), 27)
+        picks = [it for it in items if it[1] == "minecraft:iron_pickaxe"]
+        self.assertEqual([it[0] for it in picks], [12, 14])               # either side of the middle slot
+        self.assertEqual(picks[0][4], [(32, 2)])                          # Efficiency II
+        with self.assertRaises(ValueError):
+            props.laid((["P........", "", ""], {"P": ("minecraft:planks", 1, 0)}))
+        w = World(0, 0, 4, 4, sy=8)
+        w.chest(1, 1, 1, items)
+        self.assertEqual(w.tiles[-1]["items"][12]["ench"], [[32, 2]])
+
 
 class Plots(unittest.TestCase):
     @unittest.skipUnless(os.path.isdir(CURIO), "Curio Square's plots are not here")

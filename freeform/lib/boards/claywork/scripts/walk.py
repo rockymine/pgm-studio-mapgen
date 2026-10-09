@@ -41,6 +41,23 @@ land = R.piece != R.kinds["void"]
 marked = (w.ids[:, 0, :] == 36)
 out.append(f"columns of land or build zone without block 36 at y 0: {int(((land | P.band_mask(R)) & ~marked).sum())}")
 out.append(f"block 36 under void that is no build zone: {int((marked & ~land & ~P.band_mask(R)).sum())}")
+wall = R.mask("barrier")
+holes = 0
+for i, k in np.argwhere(wall):
+    top = int(R.floor[i, k]) + P.WALL["height"]
+    col = w.ids[i, 1:top + 1, k]
+    holes += int(np.sum(~np.isin(col, [B.BEDROCK, B.CHEST, B.AIR]))) + int(col[0] != B.BEDROCK)
+out.append(f"blocks of a wall's columns, y 1 to its top, that are not bedrock (a chest and its lid aside): {holes}")
+cid = np.argwhere(w.ids == B.CHEST)
+at_wall = sum(1 for i, y, k in cid if wall[i, k])
+in_kiln = sum(1 for i, y, k in cid if R.piece[i, k] == R.kinds["kiln"])
+out.append(f"defence chests set into the walls: {at_wall}; chests of gear in the Kilns: {in_kiln}")
+iron = np.argwhere(w.ids == B.IRON_BLOCK)
+inside = 0
+for o in O.of(Spawn):
+    a = o.area
+    inside += sum(1 for i, y, k in iron if a.x0 <= i + w.x0 <= a.x1 and a.z0 <= k + w.z0 <= a.z1)
+out.append(f"iron blocks: {len(iron)}, of them inside a spawn's area (mined there, and grown back): {inside}")
 
 # the building stand-in
 wb = World(w.x0, w.z0, w.sx, w.sz, w.sy)
@@ -75,15 +92,15 @@ for team, at in spawns.items():
             v = walk.nearest(db, w.x0, w.z0, *o.found, r=2)
             out.append(f"  building, to the enemy's {o.color} Kiln: {v if v is not None else 'NOT REACHED'}")
 
-# the Undercroft and the stepping stones, on red's west side
-sgn = -1
-d = walk.walk(w.ids, [(0, P.HUB + 1, -45)], w.x0, w.z0, rules)
+# the Undercroft and the stepping stones, on red's west side; the drop into the well lands in its pool
+well = walk.MoveRules(max_drop=P.HUB - P.UNDER)
+d = walk.walk(w.ids, [(0, P.HUB + 1, -45)], w.x0, w.z0, well)
 v = walk.nearest(d, w.x0, w.z0, 0, P.UNDER + 1, -56, r=2)
-out.append(f"from the Court into the well's floor (a drop): {v if v is not None else 'NOT REACHED'}")
+out.append(f"from the Court into the well's pool (a drop of {P.HUB - P.UNDER}): {v if v is not None else 'NOT REACHED'}")
 lx, lz = P.LADDER
 v = walk.nearest(d, w.x0, w.z0, lx - 1, P.HUB + 1, lz, r=1)
 out.append(f"  and on, by the Undercroft and the ladder, onto the West Walk: {v if v is not None else 'NOT REACHED'}")
-d = walk.walk(w.ids, [(0, P.UNDER + 1, -56)], w.x0, w.z0, rules)
+d = walk.walk(w.ids, [(0, P.UNDER + 1, -56)], w.x0, w.z0, well)
 v = walk.nearest(d, w.x0, w.z0, 0, P.HUB + 1, -45, r=1)
 out.append(f"from the well's floor back up into the Court, without the ladders: "
            f"{'reached (it should not be)' if v is not None and v < 20 else 'only round by a ladder' if v else 'no'}")

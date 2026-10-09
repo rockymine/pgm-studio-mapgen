@@ -23,7 +23,7 @@ floors anywhere is more than one block.
 | Level | Floor | Pieces |
 |---|---|---|
 | The front | 20 | the Forecourt, the West and East Aprons, build zones between them |
-| The Undercroft | 19 | the well, a passage under the Court, a balcony under each Arcade |
+| The Undercroft | 17 | the well, a passage under the Court, a balcony under each Arcade |
 | The hub | 23 | the Clay Court, the Arcades, the Walks' long stretch |
 | The wools | 26 | the West and East Kilns |
 | The spawn | 27 | the Gatehouse and its two Statue Terraces |
@@ -38,7 +38,7 @@ to the other's, so nothing is built out in front of an Apron and the board's edg
 Forecourt and each Apron lies a build zone the front's full depth, so the front line is joined only by building:
 less land, and more risk, on the way to a Walk.
 
-**The Undercroft is a second layer under the hub.** A player drops four into the well onto its floor at 19, and
+**The Undercroft is a second layer under the hub.** A player drops six into the well's pool at 17, and
 the well is a way down only: nothing climbs out of it but the ladders at the Walks. A
 passage three wide runs from the well under the Court and out under each Arcade as a balcony, open on the side
 facing the spawn, to a ladder up onto the Walk short of the wall. It is a quiet way from one wool to the other.
@@ -55,7 +55,7 @@ facing the spawn, to a ladder up onto the Walk short of the wall. It is a quiet 
 | Band to a Kiln, the attacker's shortest | 75, 7 of it built | at least 59 |
 | Spawn to the two Kilns | 97 and 96 | ratio at most 1.25 |
 | Walk to Walk, through the Undercroft / the shortest way | 129 / 123 | a way round under the Court |
-| The drop into the well | 4 | at most 4 |
+| The drop into the well | 6, into water | at most 6, into water |
 | Band cells in front of an Apron | 0 | none |
 | Rises between neighbouring floors | 1, 3 and 4 | 1 a step, 3 or more a wall, never 2 |
 | Kiln to Kiln | 131 | 46 to 143 |
@@ -75,9 +75,9 @@ The Statue Terraces brought it from 90 against 58: a defender drops off a terrac
   a statue on each. Their front stands four over the Court, and a parapet two high runs along their edge over the
   steps.
 - **The Spawn Steps** (23 to 27): twelve wide, four broad steps cut down between the terraces into the Court.
-- **The Clay Court** (23): the hub, 64 by 29, with **the well** in its middle, a pit 14 by 12 down to 19.
-- **The Undercroft** (19): the well's floor, a passage three wide under the Court, and a balcony under each
-  Arcade open toward the spawn, ending at a ladder up the Walk's face.
+- **The Clay Court** (23): the hub, 64 by 29, with **the well** in its middle, a pit 14 by 12 down to a pool at 17.
+- **The Undercroft** (17): the well's pool, a passage three wide and three high under the Court with a roof three
+  thick over it, and a balcony under each Arcade open toward the spawn, ending at a ladder up the Walk's face.
 - **The Grand Steps** (20 to 23): two flights at the Forecourt's two ends, each ten wide with three broad steps
   and an arch over it. Two ways up spread the traffic between the front and the Court.
 - **The Rostrum** (23): the Court carried out between the flights, 36 by 9, for a statue or a feature, a
@@ -154,3 +154,14 @@ and the Court only, two blocks high, never on a Walk or an Arcade.
 **The third layout is kept as `renders/00-plan-sketch-v3.png`.** The well stays a way down only. Four stepping
 stones now cross the void in front of each Arcade, stepping down toward the flank zone, every gap two so a
 running jump clears it upward.
+
+## What changed after the build was reviewed
+
+**The Undercroft moved down two, so its roof is three blocks thick.** The well is now a drop of six, and its whole
+floor is a pool to land in.
+
+**The Gatehouse kept its open court and gained its iron.** Two cubes of iron, three a side, stand in its back
+corners and grow back after they are mined. The spawn point stands on a carpet in the team's colour.
+
+**The bedrock walls now run down to the floor of the world, so nothing tunnels under them.** Each carries two
+defence chests set into the face the Kiln's side looks at.
