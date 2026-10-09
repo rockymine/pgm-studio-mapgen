@@ -1,0 +1,89 @@
+<map proto="1.5.0">
+    <name>Redwash Mesa</name>
+    <version>1.0.0</version>
+    <objective>Destroy both of the enemy's monuments: one out on their table, one in the plaza of their canyon town.</objective>
+    <gamemode>dtm</gamemode>
+    <authors>
+        <author>Claude (pgmvox trial)</author>
+    </authors>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="iron pickaxe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="stained clay" amount="48" team-color="true"/>
+            <item slot="6" material="golden apple"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <teams>
+        <team id="red-team" color="red" max="20">Red</team>
+        <team id="blue-team" color="blue" max="20">Blue</team>
+    </teams>
+    <filters>
+        <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
+        <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
+        <not id="not-void">
+            <void/>
+        </not>
+    </filters>
+    <spawns>
+        <spawn team="red-team" kit="spawn-kit" yaw="-90">
+            <region>
+                <point>-80.5,53,11.5</point>
+            </region>
+        </spawn>
+        <spawn team="blue-team" kit="spawn-kit" yaw="90">
+            <region>
+                <point>80.5,53,11.5</point>
+            </region>
+        </spawn>
+        <default yaw="90">
+            <region>
+                <point>0.5,90,0.5</point>
+            </region>
+        </default>
+    </spawns>
+    <regions>
+        <cuboid min="-88,53,5" max="-71,59,15" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="71,53,5" max="88,59,15" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-56,64,-24" max="-55,66,-23" id="red-table-region"/>
+        <cuboid min="55,64,-24" max="56,66,-23" id="blue-table-region"/>
+        <cuboid min="-47,43,28" max="-46,45,29" id="red-wash-region"/>
+        <cuboid min="46,43,28" max="47,45,29" id="blue-wash-region"/>
+        <negative id="not-build-area">
+            <rectangle min="-22,-64" max="23,64"/>
+        </negative>
+        <apply block-place="not-void" region="not-build-area" message="You may only build over the void in the seam!"/>
+    </regions>
+    <destroyables>
+        <destroyable id="red-table" name="Table Monument" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-table-region"/>
+        <destroyable id="blue-table" name="Table Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-table-region"/>
+        <destroyable id="red-wash" name="Wash Monument" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-wash-region"/>
+        <destroyable id="blue-wash" name="Wash Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-wash-region"/>
+    </destroyables>
+    <maxbuildheight>82</maxbuildheight>
+</map>
+
