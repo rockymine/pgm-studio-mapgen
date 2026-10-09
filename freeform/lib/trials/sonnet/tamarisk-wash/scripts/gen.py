@@ -201,9 +201,10 @@ def serai(w, L):
         w.set(sx + k, top + 1, z0 + t - 1, B.AIR)
     # a trough and hay for cover in the yard
     cx, cz = (x0 + x1) // 2, (z0 + z1) // 2
-    for dx in (-1, 0, 1):
-        w.set(cx + dx, P.PLATEAU + 1, cz, B.SANDSTONE, 2)
-        w.set(cx + dx, P.PLATEAU + 1, cz + 1, B.WATER, 0)
+    for dx in (-2, -1, 0, 1, 2):                               # a sandstone trough all round its water
+        for dz in (0, 1, 2):
+            inside = abs(dx) <= 1 and dz == 1
+            w.set(cx + dx, P.PLATEAU + 1, cz + dz, *((B.WATER, 0) if inside else (B.SANDSTONE, 2)))
     for dx, dz in ((-6, -2), (-5, -2), (6, 2), (5, 2), (-3, 3), (4, -3)):
         w.set(cx + dx, P.PLATEAU + 1, cz + dz, B.HAY, 0)
         if (dx + dz) % 2:

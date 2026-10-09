@@ -11,6 +11,7 @@ streets of smooth sandstone, and the cover the plan lists.
 """
 import sys
 import time
+import zlib
 
 import numpy as np
 
@@ -109,7 +110,7 @@ def blocks(w, R, r):
     fn = lambda x, y, z: WHITE if (y - P.TOWN) % 5 != 4 else BLUE                    # noqa: E731
     for key, (x0, z0, x1, z1) in P.BLOCKS:
         cells = {(x, z) for x in range(x0, x1 + 1) for z in range(z0, z1 + 1)}
-        top = {"A1": 74, "A2": 74}.get(key, 73 + (hash(key) % 4))
+        top = {"A1": 74, "A2": 74}.get(key, 73 + (zlib.crc32(key.encode()) % 4))   # a stable hash: hash() changes every run
         F.extrude(w, cells, P.TOWN, top, base=fn, faces_=[F.windows(3, 1, 2, (B.STAINED_PANE, 3)),
                                                          F.windows(3, 3, 3, (B.STAINED_PANE, 3)),
                                                          F.band(top - P.TOWN - 1, top - P.TOWN - 1, CYAN, inset=False)],
@@ -207,9 +208,10 @@ def cover(w, R, r):
                 for z in range(z0, z1 + 1):
                     if r.random() < 0.6:
                         w.set(x, top, z, B.FLOWER, int(r.integers(4, 8)))
-        if c["kind"] == "fountain":
-            w.set((x0 + x1) // 2, g + 2, (z0 + z1) // 2, B.WATER, 0)
-            w.set((x0 + x1) // 2 + 1, g + 2, (z0 + z1) // 2, B.WATER, 0)
+        if c["kind"] == "fountain":                                # water in a basin sunk into the block,
+            for x in range(x0 + 1, x1):                            # held by its rim on every side
+                for z in range(z0 + 1, z1):
+                    w.set(x, g + c["h"], z, B.WATER, 0)
         if c["kind"] == "stall":
             for x in range(x0, x1 + 1):
                 for z in range(z0, z1 + 1):

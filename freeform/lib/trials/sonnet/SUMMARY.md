@@ -75,3 +75,22 @@ king-of-the-hill board, and gap thresholds elsewhere.
 10. `plan_opaque` needs roofs as a dictionary.
 11. There are no shared tower, brazier or lamp props.
 12. `render.iso` draws from only two corners.
+
+## Fixes after review
+
+**Water stood against air on two boards, and both now hold it.** The check is `audit.loose_water` from pgmvox
+0.10.2, run on the built worlds; it allows a fall in a stream and the world's edge, nothing else.
+
+- tamarisk-wash: the roads graded to the oasis cut its rim below the pond, leaving 40 water blocks a block over
+  their bank. Every dry cell beside the pond is now held at the pond's level. The yard trough had a wall on one
+  side only and now has a sandstone rim all round.
+- whitecliff-cistern: each fountain was two water blocks set on top of a block. The water now sits in a basin
+  sunk into the fountain's top, held by its rim, so the fountain keeps its plan height.
+
+**whitecliff-cistern did not build the same twice.** Its house roofs took their height from Python's `hash()` of
+the house's name, which changes every run, so two builds of one commit differed by 5,730 blocks. A stable checksum
+replaces it, and two builds now match block for block.
+
+**The walks barely moved.** Every spawn-to-objective walk on whitecliff-cistern is unchanged, with two more places
+reached. On tamarisk-wash the enemy's walk to the Obelisk fell from 171 to 169 for both teams, and the oasis rim
+moved a few trees (13 palms, 10 tamarisk, 44 cacti).

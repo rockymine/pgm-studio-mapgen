@@ -215,6 +215,11 @@ def land():
         H = np.where(water > 0, H, np.round(Hn).astype(int))
         L.routes.append(dict(rt, line=pts, profile=prof_))
         laid |= shapes.polyline(Xf, Zf, pts)[0] <= rt["width"] / 2
+    # the roads graded to the oasis cut its rim below the pond: hold every dry cell beside it at the pond's level,
+    # so no water stands a block over its bank with air beside it
+    from scipy import ndimage
+    rim = ndimage.binary_dilation(water > 0, np.ones((3, 3), bool)) & (water == 0)
+    H = np.where(rim, np.maximum(H, POND_Y), H)
     H = np.where(Xf < 0, H, mir(H))
     L.water = np.where(Xf < 0, water, mir(water))
     L.X, L.Z, L.H = X, Z, H
