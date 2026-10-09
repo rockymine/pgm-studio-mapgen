@@ -169,8 +169,9 @@ into near-equal rectangles and `tile(box, module)` into squares of a module. A b
 a piece. `Ground(sections, tops)` reads every column's top, its section and its depth in it, the outline at 0.
 
 **A face is courses top down from the rim, with an accent bay every so many along it.** An `Accent` names its
-module, its period and phase, its frame and middle courses, and the air it needs beside it. A face over a shallower
-drop keeps its plain courses, so an accent is never cut off.
+module, its period and phase, its frame and middle courses, and the air it needs beside it. A bay is laid whole or
+not at all: every column of it, and `margin` more either side, must be face at one height with that air before it,
+so an accent is never buried, cut by a corner or squeezed into a short run.
 
 **A face's course may be sunk, and its bays may follow the sections.** `Sunk(block)` sets a course back a block, an
 inset with `block` behind it. An accent's middle may change with its place in the bay, and `align="section"`

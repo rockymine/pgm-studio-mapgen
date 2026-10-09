@@ -41,8 +41,10 @@ its own fill.
 
 **The face's bays answer the sections over them.** Under a cornice of stone brick, a panel six wide and five high is
 sunk one block between two chiseled pilasters, the team's clay at its back with a diamond of quartz. There is one
-bay to each section's side, centred on it, so the Forecourt's front shows seven bays for its seven sections. A face
-too shallow for a whole panel keeps its plain courses.
+bay to each section's side, centred on it, so the Forecourt's front shows seven bays for its seven sections. A bay is laid
+whole or not at all: all eight columns, the panel and a pilaster either side, must be face at one height with the
+panel's depth of air before them. So the short runs at the Court's corners by the stepping stones, and wherever a
+lower piece stands before a face, keep their plain stone.
 
 **The bedrock under the ground is layered so it never shows as one slab.** Two blocks of bedrock lie under the
 ground, then a stripe of the team's stained clay set flush, then bedrock patterned with obsidian and black wool

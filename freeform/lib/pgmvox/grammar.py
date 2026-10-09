@@ -161,9 +161,10 @@ class Sunk:
 class Accent:
     """A bay laid instead of the plain courses every `every` bays of `module` along a face, starting at bay `phase`:
     its two end columns are `frame`, its middle `inner` (or inner(pos), pos 1 .. module - 2), each top down from the
-    rim. It is laid only where `min_air` blocks of air lie beside, so a shallow face never shows half of one.
-    `align` "grid" counts bays from the world's origin, as cells do; "section" centres as many whole bays as fit on
-    the section's side, so the bays answer the sections of the floor above them."""
+    rim. A bay is laid whole or not at all: every column of it, and `margin` more on either side, must be face at
+    the same height with `min_air` blocks of air before it, so no bay is buried behind a lower piece, cut by a
+    corner or squeezed into a run too short for it. `align` "grid" counts bays from the world's origin, as cells do;
+    "section" centres as many whole bays as fit on the section's side, so the bays answer the floor above them."""
     module: int
     frame: list
     inner: object
@@ -171,6 +172,7 @@ class Accent:
     phase: int = 0
     min_air: int = 5
     align: str = "grid"
+    margin: int = 0
 
 
 @dataclass
@@ -194,6 +196,17 @@ class Face:
                 w.set(x + ix, h - i, z + iz, *spec(s.back, inward))
             else:
                 w.set(x, h - i, z, *spec(s, inward))
+
+    def open(self, ground, x, z, side, pos, h):
+        """Whether the whole bay a face column stands in, with its margin, has air enough before it."""
+        a = self.accent
+        dx, dz = DIRS[side]
+        c0 = (z if side in ("e", "w") else x) - pos
+        for c in range(c0 - a.margin, c0 + a.module + a.margin):
+            px, pz = (x, c) if side in ("e", "w") else (c, z)
+            if ground.top(px, pz) != h or ground.top(px + dx, pz + dz) > h - a.min_air:
+                return False
+        return True
 
     def bay(self, x, z, side, box=None):
         """Which bay of the face a column stands in, and where in it: (along, pos); along None off every bay."""
@@ -276,7 +289,7 @@ def lay(w, ground, style, only=None, rng=None, face_of=None, params=None, where=
     rng = rng or random.Random(0)
     params = {**style.params, **(params or {})}
     todo = range(len(ground.sections)) if only is None else only
-    laid = {}
+    laid, bays = {}, {}
     for n in todo:
         sec = ground.sections[n]
         cols = [c for c in sec.columns() if where is None or where(*c)]
@@ -290,6 +303,12 @@ def lay(w, ground, style, only=None, rng=None, face_of=None, params=None, where=
                 side, drop = falls[0]
                 face = style.faces[name]
                 along, pos = face.bay(x, z, side, sec.box)
+                if along is not None and face.accent:
+                    key = (n, side, along, x if side in ("e", "w") else z, h)
+                    if key not in bays:
+                        bays[key] = face.open(ground, x, z, side, pos, h)
+                    if not bays[key]:
+                        along = None
                 face.lay(w, x, z, h, OPP[side], along, pos, air=drop)
             elif not falls and ground.depth(x, z) == 0:
                 w.set(x, h, z, *style.seam)

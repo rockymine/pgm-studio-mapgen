@@ -76,6 +76,8 @@ def style(dye=14, rng=None, faced=None):
         return [BRICK, BRICK, BRICK] + [G.Sunk((B.QUARTZ, 1) if (col, d) in DIAMOND else team) for d in range(5)] + \
             [BRICK] + [ANDESITE] * 3
 
+    # a bay is laid whole or not at all: its panel six wide and a pilaster of plain stone either side, eight
+    # columns of face at one height, every one with the panel's depth of air before it
     face = G.Face(plain, G.Accent(PANEL + 2, frame=pilaster, inner=panel, every=1, min_air=9, align="section"),
                   floor=1)
     flank = G.Face(plain, floor=1)
