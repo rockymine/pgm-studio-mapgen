@@ -26,6 +26,8 @@ iso("32-iso-red-quadrant-se.png", 7, "se", (P.X_MIN, P.Z_MIN, -1, -1))
 iso("33-iso-keep-and-house-se.png", 12, "se", (-65, -65, -45, -45), 12)
 iso("34-iso-the-dais-se.png", 9, "se", (-22, -22, 21, 21), 2)
 iso("35-iso-an-edge-nw.png", 12, "nw", (-46, -65, -24, -50))
+for corner in ("se", "sw", "nw", "ne"):                     # the whole board, close enough to read
+    iso(f"40-iso-full-{corner}.png", 6, corner)
 render.cutaway(w, os.path.join(out, "10-section-red-diagonal.png"), [(-65, -65), (0, 0)], 0, 50, 6,
                title="along red's diagonal, from the keep to the Dais")
 

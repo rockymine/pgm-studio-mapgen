@@ -30,7 +30,7 @@ along the board's edge; in I they mark the cells with water at the foot of the v
 |---|---|
 | Flat | level ground at one of six levels: 7, 10, 13, 16, 19, 22 |
 | Stair | one cell climbing one level, three blocks in five, slab and block in turn |
-| Keep | a team's spawn, three cells by three at 22, a house of two storeys over it |
+| Keep | a team's spawn, three cells by three at 22, a house stacked of whole cells in its corner |
 | Gap | void a player builds over, cobwebs on the floor of the void where it meets the open void |
 | Water | void with water at its foot, which marks it without cobwebs |
 
@@ -94,9 +94,9 @@ from it to each team's inner court and one onto the Dais.
 
 ## The places, in red's quadrant
 
-- **The Keep** (22): the spawn, three cells by three, under a house of two storeys of black clay with a band of
-  the team's clay under each plate. Its two doors open onto the two stairs, each two cells wide, that lead down
-  out of it, one onto each wing.
+- **The Keep** (22): the spawn, three cells by three. A house stacks in its outer corner, two by two over the
+  spawn, an L of three, one cell on top. Its two doors open onto the rest of the Keep and the two stairs, each two
+  cells wide, that lead down out of it, one onto each wing.
 - **The Orchards** (19): three by three on each wing.
 - **The terraces** (16): three by three, down a stair from each Orchard toward the border.
 - **The border hills** (13): the islands on the borders, one cell wide and three long, two wide with the
@@ -174,7 +174,7 @@ was no real middle, and the gaps were too small to make bridging matter.
 and a king-of-the-hill board wants no covered ground.
 
 - **The Tower's cells became the pond,** and the Arbours flat ground at 13.
-- **The Keep carries a house** of two storeys, its doors onto the two stairs out of it.
+- **The Keep carries a house** stacked of whole cells, its doors toward the two stairs out of it.
 - **Every level rose three blocks,** so the cornice under the lowest landing clears the floor of the world.
 - **The finish follows the original more closely:** the five-wide framed panel, the cornice on the stairs' sides,
   the double ring of sandstone stairs round every bed, and the cobwebs off the water.

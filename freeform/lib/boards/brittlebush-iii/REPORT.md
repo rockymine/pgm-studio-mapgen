@@ -119,3 +119,4 @@ author's names now tell water from bare zones.
 - `30`–`35`: the board from two corners, red's part, its spawn, its wool's tower, and the middle.
 - `36`–`38`: the three under-sections: the middle island, the tunnel, and the island before the wool.
 - `39`: the wool's house close, from the south-east and the south-west.
+- `40`: the whole board from each of its four corners.

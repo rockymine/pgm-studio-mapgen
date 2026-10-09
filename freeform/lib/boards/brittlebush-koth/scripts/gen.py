@@ -9,8 +9,9 @@ clay, wool and glass; then the five hills' pads, the spawners' marks and the obj
                     cobwebs, the water
     the keep        smooth sandstone ringed in the team's clay; a line of the team's wool along its front edges; a
                     stack of the team's wool floating high over the spawn, as Brittlebush marks a spawn
-    the house       over the keep: two storeys of black clay, the team's band under each plate, its doors onto the
-                    two stairs out of the keep, a crown of sandstone round gold on its roof
+    the house       in the keep's outer corner, stacked of whole cells (pgmvox.brittle.house): two by two over the
+                    spawn, an L of three, the corner cell on top with a beacon under the team's glass; its doors
+                    open from the spawn's cell onto the keep's yard
     the hills       a pad of white clay ten blocks square on each, cleared of the beds and trees over it
     the spawners    a mark of chiseled sandstone under each: golden apples on the inner islands, arrows on the landings
 """
@@ -21,7 +22,7 @@ import numpy as np
 
 import plan as P
 from pgmvox import B, World
-from pgmvox.brittle import CELL, Cell, build, tower
+from pgmvox.brittle import CELL, Cell, build, house
 from pgmvox.orient import turn_world
 
 DYES = [14, 11, 13, 4]                                         # red, blue, green, yellow
@@ -54,10 +55,17 @@ for z in range(kz0, kz1 + 1):
 sx, sz = P.spawn_cell(0)
 for y in range(P.LEVEL[5] + 22, P.LEVEL[5] + 25):              # the stack floating over the spawn
     w.set(sx, y, sz, B.WOOL, DYES[0])
-# the keep's house: two storeys of black clay over the spawn, its doors onto the two stairs out of the keep, a
-# crown of sandstone round gold on its roof
-house_top, _ = tower(w, (kx0, kz0, kx1, kz1), P.LEVEL[5], [(6, 0), (5, 3)], DYES[0],
-                     door=[("e", (kz0 + 6, kz1 - 1)), ("s", (kx0 + 6, kx1 - 1))])
+# the keep's house, stacked of whole cells in the keep's outer corner, two by two over the spawn: an L of the
+# three outer cells over it, and the corner cell on top with a beacon under the team's glass; its doors open from
+# the spawn's cell east and south onto the keep's yard and its two stairs
+c0 = -P.N
+HOUSE = [[(c0, c0), (c0 + 1, c0), (c0, c0 + 1), (c0 + 1, c0 + 1)], [(c0, c0), (c0 + 1, c0), (c0, c0 + 1)], [(c0, c0)]]
+for x in range(c0 * CELL, (c0 + 2) * CELL):
+    for z in range(c0 * CELL, (c0 + 2) * CELL):
+        for y in range(P.LEVEL[5] + 1, P.LEVEL[5] + 20):
+            w.set(x, y, z, B.AIR)
+house(w, HOUSE, P.LEVEL[5], DYES[0], door=[((c0 + 1, c0 + 1), "e"), ((c0 + 1, c0 + 1), "s")], cobwebs=False,
+      floor_block=None)
 
 # 2. the other three: each the last turned a quarter clockwise, its colours moved on a team
 X, Z = w.grid()

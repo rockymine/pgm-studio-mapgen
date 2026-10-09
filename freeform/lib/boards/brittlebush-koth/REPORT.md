@@ -24,8 +24,10 @@ spawners' marks and the objectives are laid over the whole board after the turns
 **Every cell stands on stone over bedrock to y 3, obsidian under it, and block 36 at y 0.** A cell's edge carries
 the cornice where its neighbour lies lower, and every other cell along a face carries the birch panel instead.
 
-**The Keep carries a house of two storeys.** Black clay walls, a band of the team's clay under each plate, a crown
-of sandstone round a gold block on the roof, and two doors onto the two stairs out of the Keep.
+**The Keep carries a house stacked of whole cells in its outer corner, as Brittlebush I builds its wool rooms.**
+It is two cells by two over the spawn, then an L of the three outer cells, then the corner cell on top with a
+beacon under the team's glass. Its walls are the ground's edge read bottom up, with the team's colour under the
+eaves. Its two doors open from the spawn's cell onto the rest of the Keep and its two stairs.
 
 **Each hill is a pad of white clay ten blocks square, cleared of the beds and trees over it.** Each spawner stands
 over a mark of chiseled sandstone.
@@ -73,3 +75,4 @@ upside-down sandstone stairs, and cacti stand only on pure sand.
 - `05`: the built world from above with the hills and spawners.
 - `10`: a section along red's diagonal.
 - `30`–`35`: the board from two corners, red's quadrant, the Keep and its house, the Dais, and an edge.
+- `40`: the whole board from each of its four corners.

@@ -32,6 +32,8 @@ iso("37-iso-tunnel-se.png", 14, "se", (-18, -44, 2, -26), 0)
 iso("38-iso-approach-under-se.png", 14, "se", (-18, -64, 2, -46), 0)
 iso("39-iso-wool-house-se.png", 12, "se", (-3, -95, 12, -83), 12)
 iso("39-iso-wool-house-sw.png", 12, "sw", (-3, -95, 12, -83), 12)
+for corner in ("se", "sw", "nw", "ne"):                     # the whole board, close enough to read
+    iso(f"40-iso-full-{corner}.png", 5, corner)
 
 S = Sheet("Brittlebush III - as built")
 m = S.map(lo, lo, hi, hi, scale=3, title="FROM ABOVE",
