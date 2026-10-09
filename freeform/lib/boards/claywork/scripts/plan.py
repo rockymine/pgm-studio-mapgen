@@ -7,8 +7,10 @@ mirror images across x = -0.5, so the two wools of a team are walked the same.
 
 The levels step up from the front to the back in broad steps, each one block up and three blocks deep:
 
-    the front       the Forecourt, the two Parades and the two Aprons at 20, one line; the band before the middle
-    the hub         the Clay Court at 23, up the two flights of the Grand Steps; a well in its middle
+    the front       the Forecourt and the two Aprons at 20, build zones between them; the band before the middle
+    the hub         the Clay Court at 23, up the two flights of the Grand Steps either side of the Rostrum
+    the Undercroft  under the Court and the Arcades at 19: the well drops into it, a passage three wide runs out
+                    under each Arcade as a balcony open toward the spawn, and a ladder climbs to each Walk
     the spawn       the Gatehouse at 27 and its two Statue Terraces out to the Court, the Spawn Steps cut between
     the wings       the Arcades at 23, from the Court out to the Walks
     the walks       the West and East Walks: up from each Apron (20 to 23), along to the Kilns (23 to 26)
@@ -52,9 +54,9 @@ def mx(x):
 # low edge, from h_low (the first row) to h_high (the rest).
 PIECES = [
     ("front", "the Forecourt", (-28, -30, 27, -13), FRONT),
-    ("parade", "the West Parade", (-52, -24, -29, -13), FRONT),
     ("apron", "the West Apron", (-72, -30, -53, -13), FRONT),
-    ("steps", "the Grand Steps, west flight", (-20, -39, -11, -31), ("steps", -31, FRONT + 1, HUB, "n")),
+    ("steps", "the Grand Steps, west flight", (-28, -39, -19, -31), ("steps", -31, FRONT + 1, HUB, "n")),
+    ("rostrum", "the Rostrum", (-18, -39, 17, -31), HUB),
     ("hub", "the Clay Court", (-32, -68, 31, -40), HUB),
     ("neck", "the Spawn Steps", (-6, -80, 5, -69), ("steps", -69, HUB + 1, SPAWN, "n")),
     ("spawn", "the Gatehouse", (-16, -100, 15, -81), SPAWN),
@@ -76,27 +78,34 @@ KILN = (-72, -98, -59, -82)
 KILN_DOOR = (-70, -63)
 # arches: a span over a way, legs one block wide on its edges, clear to ARCH_CLEAR over the floor
 ARCH_CLEAR = 5
-ARCHES = [("the Grand Steps' arch", "x", (-20, -11), -35), ("the Walk's first arch", "x", (-72, -61), -48),
+ARCHES = [("the Grand Steps' arch", "x", (-28, -19), -35), ("the Walk's first arch", "x", (-72, -61), -48),
           ("the Walk's second arch", "x", (-72, -61), -62), ("the Arcade arch", "z", (-64, -53), -46)]
 
 # the band: void a player may build over, between the two front lines, from one Apron's inner edge to the other's;
-# nothing is built out in front of an Apron, so the board's edge is no crossing
+# nothing is built out in front of an Apron, so the board's edge is no crossing. The flanks are build zones too,
+# between the Forecourt and each Apron, the front's full depth, so the front line is joined only by building.
 BAND = (-52, -12, 51, 11)
+FLANK = (-52, -30, -29, -13)
+
+# the Undercroft: a floor UNDER under the Court and the Arcades; the well is its pit, open to the sky
+UNDER = HUB - 4
+PASSAGE = (-60, -64, -7, -62)              # three wide, from the Arcade's far end to the well, under the floors
+LADDER = (-60, -65)                        # the landing past the Arcade's north edge; a ladder up the Walk's face
 
 SPAWN_AT = (0, SPAWN + 1, -92)
 MONUMENTS = [(-8, -83), (7, -83)]          # red's two, on the Gatehouse's front edge, west and east
 OBSERVER_AT = (0, 50, 0)
 
-COLOURS = {"void": (34, 38, 52), "front": (214, 204, 180), "apron": (214, 204, 180), "parade": (205, 196, 172),
+COLOURS = {"void": (34, 38, 52), "front": (214, 204, 180), "apron": (214, 204, 180), "rostrum": (226, 220, 202), "under": (120, 92, 70),
            "terrace": (226, 220, 202), "parapet": (150, 110, 90), "steps": (196, 186, 160),
            "hub": (180, 190, 200), "wing": (170, 180, 192), "walk": (200, 190, 170), "neck": (196, 186, 160),
            "spawn": (232, 226, 210), "kiln": (245, 245, 245), "kilnwall": (150, 110, 90),
            "barrier": (20, 20, 20), "arch": (120, 120, 130)}
-KINDS = ["void", "front", "parade", "apron", "terrace", "parapet", "steps", "hub", "wing", "walk", "neck", "spawn", "kiln", "kilnwall",
+KINDS = ["void", "front", "rostrum", "apron", "terrace", "parapet", "under", "steps", "hub", "wing", "walk", "neck", "spawn", "kiln", "kilnwall",
          "barrier", "arch"]
-WALK_KINDS = {"front", "parade", "terrace", "apron", "steps", "hub", "wing", "walk", "neck", "spawn", "kiln"}
+WALK_KINDS = {"front", "rostrum", "under", "terrace", "apron", "steps", "hub", "wing", "walk", "neck", "spawn", "kiln"}
 PLACES = [("THE GATEHOUSE", (0, -97)), ("statue", (-11, -75)), ("statue", (10, -75)), ("the Clay Court", (-20, -46)),
-          ("the well", (0, -56)), ("the Grand Steps", (0, -35)), ("the Forecourt", (0, -22)), ("the West Parade", (-40, -18)),
+          ("the well", (0, -56)), ("the Rostrum", (0, -35)), ("the Forecourt", (0, -22)), ("build", (-40, -22)),
           ("the West Apron", (-62, -22)), ("the West Walk", (-66, -55)), ("the West Arcade", (-46, -66)),
           ("WEST KILN", (-66, -101)), ("EAST KILN", (65, -101)), ("the band", (0, 0))]
 
@@ -128,8 +137,19 @@ def plan():
                 _floor(R, sub, r, key)
         else:
             _floor(R, box, rule, key)
+    # the Undercroft: the passage under the Court and the Arcade, its landing, and the well over it. The floors
+    # above stay as the first storey, four over the passage: a player walks the Court over the passage's head
+    up = R.storey(1)
+    px0, pz0, px1, pz1 = PASSAGE
+    for x in range(px0, px1 + 1):
+        for z in range(pz0, pz1 + 1):
+            for a in (x, mx(x)):
+                if R.kind(a, z) != "void":
+                    up.cell(a, z, int(R.h(a, z)), R.kind(a, z))
+    _floor(R, PASSAGE, UNDER, "under")
+    _floor(R, (LADDER[0], LADDER[1], LADDER[0], LADDER[1]), UNDER, "under")
     x0, z0, x1, z1 = HOLE
-    R.rect(x0, x1, z0, z1, 0, "void")
+    R.rect(x0, x1, z0, z1, UNDER, "under")
     R.floor, R.piece = R.H.copy(), R.K.copy()
     # the Kilns' walls, all round but the door; a wall column stands to the roof
     for sign in (1, -1):
@@ -148,6 +168,11 @@ def plan():
     for x in (x1, mx(x1)):
         for z in range(z0, z1 + 1):
             R.cell(x, z, SPAWN + 2, "parapet")
+    # a parapet along each side of the Rostrum over the Grand Steps, for the same reason
+    rx0, rz0, rx1, rz1 = PIECE["rostrum"][2]
+    for x in (rx0, rx1):
+        for z in range(rz0, rz1 + 1):
+            R.cell(x, z, HUB + 2, "parapet")
     # the bedrock walls across the Walks, crossed only by building over them
     for sign in (1, -1):
         a, b = (WALL["x0"], WALL["x1"]) if sign > 0 else (mx(WALL["x1"]), mx(WALL["x0"]))
@@ -166,8 +191,24 @@ def plan():
 
 
 def band_mask(R):
-    x0, z0, x1, z1 = BAND
-    return (R.X >= x0) & (R.X <= x1) & (R.Z >= z0) & (R.Z <= z1) & R.mask("void")
+    """The build zones: the band, and the flanks between the Forecourt and the Aprons, on both halves."""
+    m = np.zeros(R.H.shape, bool)
+    for x0, z0, x1, z1 in (BAND, FLANK, (mx(FLANK[2]), FLANK[1], mx(FLANK[0]), FLANK[3])):
+        for a0, b0, a1, b1 in ((x0, z0, x1, z1), (x0, -1 - z1, x1, -1 - z0)):
+            m |= (R.X >= a0) & (R.X <= a1) & (R.Z >= b0) & (R.Z <= b1)
+    return m & R.mask("void")
+
+
+def ladders():
+    """The ladders out of the Undercroft, as plan-walk edges: (landing, the Walk beside it, cost, tag), both
+    halves and both sides. A ladder is climbed and descended."""
+    out = []
+    lx, lz = LADDER
+    for x in (lx, mx(lx)):
+        wx = x - 1 if x < 0 else x + 1
+        for z in (lz, -1 - lz):
+            out += [((x, z), (wx, z), HUB - UNDER + 1, "ladder"), ((wx, z), (x, z), HUB - UNDER + 1, "ladder")]
+    return out
 
 
 def objectives():

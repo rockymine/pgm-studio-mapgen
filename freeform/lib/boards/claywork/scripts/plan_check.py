@@ -29,7 +29,7 @@ def graph(R, wall=True, band=True):
     if wall:
         cross |= R.mask("barrier")
     return G.graph(R, P.WALK_KINDS, wall_kinds=("kilnwall", "arch", "parapet"),
-                   rules=G.PlanRules(jumps=False, diagonals=True), bridge=cross)
+                   rules=G.PlanRules(jumps=False, diagonals=True), bridge=cross, extra=P.ladders())
 
 
 def cells(R, kind, half="red", side=None):
@@ -75,12 +75,12 @@ def measure():
     sp = (P.SPAWN_AT[0], P.SPAWN_AT[2])
     D, prev = G.dijkstra(E, [sp])
     Dw, prevw = G.dijkstra(Ew, [sp])
-    edge = [(x, -13) for x in range(P.BAND[0], P.BAND[2] + 1) if R.kind(x, -13) != "void"]
+    edge = [(x, P.BAND[1]) for x in range(P.BAND[0], P.BAND[2] + 1)]          # the band's red edge, built over
     Db, prevb = G.dijkstra(E, edge)
     Dbw, prevbw = G.dijkstra(Ew, edge)
     kw, ke = cells(R, "kiln", side="west"), cells(R, "kiln", side="east")
 
-    s_band = min(D.get((x, -13), math.inf) for x, _ in edge)
+    s_band = min(D.get(c, math.inf) for c in edge)
     s_w, _, s_w_path = reach(D, prev, E, kw)
     s_e, _, s_e_path = reach(D, prev, E, ke)
     sw_w = reach(Dw, prevw, Ew, kw)[0]
@@ -131,8 +131,21 @@ def measure():
     bm = P.band_mask(R)
     ax0, _, ax1, _ = P.PIECE["apron"][2]
     before_apron = int(bm[R.ix(ax0):R.ix(ax1) + 1, R.iz(-12)].sum())
-    sx0 = P.PIECE["steps"][2][2] + 1
-    hole_w = P.mx(sx0) - sx0 + 1
+    # the Undercroft: from the west Walk to the east Walk underground, against the way over the Court
+    lw, le = (P.LADDER[0] - 1, P.LADDER[1]), (P.mx(P.LADDER[0]) + 1, P.LADDER[1])
+    Eu = {a: [e for e in v if e[2] != "bridge"] for a, v in E.items()}
+    under_cells = set(cells(R, "under"))
+
+    def only(Eg, allowed):
+        return {a: [e for e in v if e[0] in allowed] for a, v in Eg.items() if a in allowed}
+    land_u = {c for c in Eu if isinstance(c, tuple) and len(c) == 2 and c in under_cells} | {lw, le}
+    Eo = only(Eu, land_u)
+    Du, prevu = G.dijkstra(Eo, [lw])
+    rot_under = Du.get(le)
+    under_path = G.measure(Du, prevu, Eo, [le])[2]
+    Dc, _ = G.dijkstra(Eu, [lw])
+    rot_any = Dc.get(le)
+    well_drop = P.HUB - P.UNDER
     # running jumps between pieces that do not touch
     J = G.jumps(R, P.WALK_KINDS, wall_kinds=("kilnwall", "arch", "barrier", "parapet"))
     lab, _ = ndimage.label(R.piece != R.kinds["void"])
@@ -162,8 +175,12 @@ def measure():
          "at most 20; open", wx1 - wx0 + 1 <= 20 and ends_open),
         (f"{cut}", "the Walk's narrowest, arch legs included", "WL: 10 (2 cells)", cut == 10),
         (f"{before_apron}", "band cells in front of an Apron", "none: the edge is no crossing", before_apron == 0),
-        (f"{hole_w} by 9", "the hole between the Grand Steps' two flights", "two ways up, 10 wide each", True),
-        ("14 by 12", "the Court's well", "at least 12", True),
+        ("2 x 10 wide", "the Grand Steps: a flight at each end of the Forecourt", "two ways up", True),
+        (f"{rot_under:.0f}" if rot_under else "not reached", "west Walk to east Walk, through the Undercroft",
+         "a way round under the Court", rot_under is not None),
+        (f"{rot_any:.0f}", "west Walk to east Walk, the shortest way", "", None),
+        (f"{well_drop}", "the drop into the well, onto the Undercroft", "at most 4: no harm worth a detour",
+         well_drop <= 4),
         (", ".join(str(r) for r in sorted(rises) if r), "rises between neighbouring floors",
          "1 a step, 3 or more a wall, never 2", not twos),
         (f"{s_w:.1f} / {blue_w:.1f}", "red and blue, spawn to their own West Kiln", "equal",
@@ -173,7 +190,7 @@ def measure():
         (f"{apart}", "running jumps between pieces that do not touch", "none", apart == 0),
         (f"{land_red}", "land on red's half, in blocks", "", None),
     ]
-    paths = dict(spawn_west=s_w_path, spawn_east=s_e_path, band_west=b_w_path)
+    paths = dict(spawn_west=s_w_path, spawn_east=s_e_path, band_west=b_w_path, undercroft=under_path)
     return rows, paths, R
 
 

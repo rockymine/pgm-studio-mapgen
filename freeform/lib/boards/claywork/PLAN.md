@@ -22,19 +22,25 @@ floors anywhere is more than one block.
 
 | Level | Floor | Pieces |
 |---|---|---|
-| The front | 20 | the Forecourt, the West and East Parades, the West and East Aprons: one line |
+| The front | 20 | the Forecourt, the West and East Aprons, build zones between them |
+| The Undercroft | 19 | the well, a passage under the Court, a balcony under each Arcade |
 | The hub | 23 | the Clay Court, the Arcades, the Walks' long stretch |
 | The wools | 26 | the West and East Kilns |
 | The spawn | 27 | the Gatehouse and its two Statue Terraces |
 
-**The routes meet at the wall.** An attacker crosses the band onto the Forecourt or a Parade, goes along the
-front line to an Apron and climbs the Walk to the Kiln. A defender comes down the Spawn Steps, or drops four off
+**The routes meet at the wall.** An attacker crosses the band onto the Forecourt, or builds across a flank zone
+onto an Apron, and climbs the Walk to the Kiln. A defender comes down the Spawn Steps, or drops four off
 a Statue Terrace, into the Court and out along an Arcade onto the Walk. Both pass the bedrock wall across the Walk
 before it climbs into the Kiln.
 
-**The band stops at the Aprons.** It runs from one Apron's inner edge to the other's, so nothing is built out in
-front of an Apron and the board's edge is no crossing. An attacker comes in toward the middle and walks the front
-line out to a Walk, where the defence can meet them.
+**The band stops at the Aprons, and the flanks are built over too.** The band runs from one Apron's inner edge
+to the other's, so nothing is built out in front of an Apron and the board's edge is no crossing. Between the
+Forecourt and each Apron lies a build zone the front's full depth, so the front line is joined only by building:
+less land, and more risk, on the way to a Walk.
+
+**The Undercroft is a second layer under the hub.** A player drops four into the well onto its floor at 19. A
+passage three wide runs from the well under the Court and out under each Arcade as a balcony, open on the side
+facing the spawn, to a ladder up onto the Walk short of the wall. It is a quiet way from one wool to the other.
 
 ## The numbers
 
@@ -43,19 +49,21 @@ line out to a Walk, where the defence can meet them.
 | Measure | Value | Target |
 |---|---|---|
 | The band, front to front | 24 | 20 to 30 |
-| Spawn to the band | 84 | at least 55 |
+| Spawn to the band | 83 | at least 55 |
 | Spawn to its own monuments | 12 | under 15 |
-| Band to a Kiln, the attacker's shortest | 74 | at least 59 |
-| Spawn to the two Kilns | 97 and 97 | ratio at most 1.25 |
+| Band to a Kiln, the attacker's shortest | 75, 7 of it built | at least 59 |
+| Spawn to the two Kilns | 97 and 96 | ratio at most 1.25 |
+| Walk to Walk, through the Undercroft / the shortest way | 129 / 123 | a way round under the Court |
+| The drop into the well | 4 | at most 4 |
 | Band cells in front of an Apron | 0 | none |
-| Rises between neighbouring floors | 1 and 4 | 1 a step, 3 or more a wall, never 2 |
+| Rises between neighbouring floors | 1, 3 and 4 | 1 a step, 3 or more a wall, never 2 |
 | Kiln to Kiln | 131 | 46 to 143 |
 | The Walk's narrowest, arch legs included | 10 | 10, the corpus's usual funnel |
 | A Kiln's faces on the void | 3 | at least 2 |
 | Void from a Kiln to the Gatehouse, Arcade and Court | 42, 17, 29 | at least 16 |
 | The wall across the Walk | 12 wide, ends on the void | at most 20, no way round |
 
-**A defender reaches the wall line later than an attacker, 84 against 62.** The recorded matches put the ratio at
+**A defender reaches the wall line later than an attacker, 84 against 63.** The recorded matches put the ratio at
 a median of 1.0 and a mean of 1.75, with the defender farther on 44 percent of objectives, so this is ordinary.
 The Statue Terraces brought it from 90 against 58: a defender drops off a terrace's front into the Court.
 
@@ -66,11 +74,15 @@ The Statue Terraces brought it from 90 against 58: a defender drops off a terrac
   a statue on each. Their front stands four over the Court, and a parapet two high runs along their edge over the
   steps.
 - **The Spawn Steps** (23 to 27): twelve wide, four broad steps cut down between the terraces into the Court.
-- **The Clay Court** (23): the hub, 64 by 29, with **the well** in its middle, 14 by 12 of void.
-- **The Grand Steps** (20 to 23): two flights, each ten wide with three broad steps and an arch over it, either
-  side of a hole 20 by 9. Two ways up spread the traffic between the front and the Court.
+- **The Clay Court** (23): the hub, 64 by 29, with **the well** in its middle, a pit 14 by 12 down to 19.
+- **The Undercroft** (19): the well's floor, a passage three wide under the Court, and a balcony under each
+  Arcade open toward the spawn, ending at a ladder up the Walk's face.
+- **The Grand Steps** (20 to 23): two flights at the Forecourt's two ends, each ten wide with three broad steps
+  and an arch over it. Two ways up spread the traffic between the front and the Court.
+- **The Rostrum** (23): the Court carried out between the flights, 36 by 9, for a statue or a feature, a
+  parapet on each side over the steps.
 - **The Forecourt** (20): the middle of the front, 56 by 18, on the band.
-- **The West and East Parades** (20): 24 by 12, joining the Forecourt to each Apron along the band.
+- **The flank zones**: 24 by 18 of void between the Forecourt and each Apron, built over.
 - **The West and East Aprons** (20): the front's flanks, 20 by 18, each the foot of a Walk, with no band before
   them.
 - **The West and East Arcades** (23): from the Court to the Walks, 28 by 12, an arch across each.
@@ -121,3 +133,13 @@ and the Court only, two blocks high, never on a Walk or an Arcade.
 - **The Gatehouse was carried out to the Court as two Statue Terraces.** The Spawn Steps are now cut down between
   them, with room for a statue on each. A parapet along each edge keeps a terrace from standing two over the
   stair's middle, a ledge that would look climbable.
+
+## What changed after the second review
+
+**The second layout is kept as `renders/00-plan-sketch-v2.png`.** Three more changes came from the review.
+
+- **The Parades became build zones,** the front's full depth, meeting the Forecourt and the Aprons edge to edge.
+  There was too much land and not enough risk on the way to a Walk.
+- **The Grand Steps moved out to the Forecourt's ends,** and the Rostrum took the middle where the flights were.
+- **The well became the way into the Undercroft,** a second layer under the Court and the Arcades: a rotation
+  from one wool to the other that is hidden but not sealed, open toward the spawn under each Arcade.
