@@ -1,0 +1,88 @@
+<map proto="1.5.0">
+    <name>Overgrowth</name>
+    <version>0.1.0</version>
+    <objective>Kill the other team: seventy-five points, or the higher score at forty minutes.</objective>
+    <gamemode>tdm</gamemode>
+    <authors>
+        <author>Claude (freeform generator, on pgmvox)</author>
+    </authors>
+    <teams>
+        <team id="red-team" color="red" max="16">Red</team>
+        <team id="blue-team" color="blue" max="16">Blue</team>
+    </teams>
+    <filters>
+        <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
+        <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
+    </filters>
+    <spawns>
+        <spawn team="red-team" kit="spawn-kit" yaw="270">
+            <region>
+                <point>-55.5,67,0.5</point>
+            </region>
+        </spawn>
+        <spawn team="blue-team" kit="spawn-kit" yaw="90">
+            <region>
+                <point>55.5,67,0.5</point>
+            </region>
+        </spawn>
+        <default yaw="90">
+            <region>
+                <point>0.5,100,0.5</point>
+            </region>
+        </default>
+    </spawns>
+    <regions>
+        <cuboid min="-63,0,-10" max="-47,128,10" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="47,0,-10" max="63,128,10" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+    </regions>
+    <score>
+        <limit>75</limit>
+        <kills>1</kills>
+        <deaths>0</deaths>
+    </score>
+    <time result="score">40m</time>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="iron pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64" damage="3"/>
+            <item slot="5" material="stained clay" amount="32" team-color="true"/>
+            <item slot="6" material="golden apple" amount="4"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <kill-rewards>
+        <kill-reward>
+            <item material="golden apple"/>
+        </kill-reward>
+    </kill-rewards>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>iron pickaxe</item>
+        <item>iron axe</item>
+        <item>water bucket</item>
+    </itemkeep>
+    <maxbuildheight>110</maxbuildheight>
+</map>
+
