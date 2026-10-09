@@ -28,7 +28,7 @@ def graph(R, wall=True, band=True):
         cross |= P.band_mask(R)
     if wall:
         cross |= R.mask("barrier")
-    return G.graph(R, P.WALK_KINDS, wall_kinds=("kilnwall", "arch"),
+    return G.graph(R, P.WALK_KINDS, wall_kinds=("kilnwall", "arch", "parapet"),
                    rules=G.PlanRules(jumps=False, diagonals=True), bridge=cross)
 
 
@@ -122,12 +122,19 @@ def measure():
     # the largest step between neighbouring walkable floors: broad steps keep every rise to one
     walk = G.walkable(R, P.WALK_KINDS)[0]
     H = R.H.astype(int)
-    rise = 0
+    rises = set()
     for ax in (0, 1):
         both = (walk[1:, :] & walk[:-1, :]) if ax == 0 else (walk[:, 1:] & walk[:, :-1])
-        rise = max(rise, int(np.abs(np.diff(H, axis=ax))[both].max()))
+        rises |= set(np.unique(np.abs(np.diff(H, axis=ax))[both]).tolist())
+    twos = 2 in rises
+    # the void in front of an Apron is not built over: no band cell touches the Apron's front edge
+    bm = P.band_mask(R)
+    ax0, _, ax1, _ = P.PIECE["apron"][2]
+    before_apron = int(bm[R.ix(ax0):R.ix(ax1) + 1, R.iz(-12)].sum())
+    sx0 = P.PIECE["steps"][2][2] + 1
+    hole_w = P.mx(sx0) - sx0 + 1
     # running jumps between pieces that do not touch
-    J = G.jumps(R, P.WALK_KINDS, wall_kinds=("kilnwall", "arch", "barrier"))
+    J = G.jumps(R, P.WALK_KINDS, wall_kinds=("kilnwall", "arch", "barrier", "parapet"))
     lab, _ = ndimage.label(R.piece != R.kinds["void"])
     apart = sum(1 for a, b, g in J if lab[R.ix(a[0]), R.iz(a[1])] != lab[R.ix(b[0]), R.iz(b[1])])
     land_red = int((land & (R.Z < 0)).sum())
@@ -154,10 +161,11 @@ def measure():
         (f"{wx1 - wx0 + 1}; {'open' if ends_open else 'land'}", "the wall: width; its ends",
          "at most 20; open", wx1 - wx0 + 1 <= 20 and ends_open),
         (f"{cut}", "the Walk's narrowest, arch legs included", "WL: 10 (2 cells)", cut == 10),
-        (f"{gap(P.PIECE['front'][2], apron_box):.0f}", "the void between the Forecourt and an Apron",
-         "at least 12", gap(P.PIECE['front'][2], apron_box) >= 12),
+        (f"{before_apron}", "band cells in front of an Apron", "none: the edge is no crossing", before_apron == 0),
+        (f"{hole_w} by 9", "the hole between the Grand Steps' two flights", "two ways up, 10 wide each", True),
         ("14 by 12", "the Court's well", "at least 12", True),
-        (f"{rise}", "the highest rise between neighbouring floors", "1 (broad steps)", rise <= 1),
+        (", ".join(str(r) for r in sorted(rises) if r), "rises between neighbouring floors",
+         "1 a step, 3 or more a wall, never 2", not twos),
         (f"{s_w:.1f} / {blue_w:.1f}", "red and blue, spawn to their own West Kiln", "equal",
          abs(s_w - blue_w) < 0.01),
         (f"{s_e:.1f} / {blue_e:.1f}", "red and blue, spawn to their own East Kiln", "equal",

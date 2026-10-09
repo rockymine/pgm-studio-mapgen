@@ -22,14 +22,19 @@ floors anywhere is more than one block.
 
 | Level | Floor | Pieces |
 |---|---|---|
-| The front | 20 | the Forecourt, the West and East Aprons |
+| The front | 20 | the Forecourt, the West and East Parades, the West and East Aprons: one line |
 | The hub | 23 | the Clay Court, the Arcades, the Walks' long stretch |
 | The wools | 26 | the West and East Kilns |
-| The spawn | 27 | the Gatehouse |
+| The spawn | 27 | the Gatehouse and its two Statue Terraces |
 
-**The routes are three and they meet at the wall.** An attacker lands on an Apron from the band and climbs the
-Walk straight to the Kiln. A defender comes down the Spawn Steps into the Court and out along an Arcade onto the
-Walk. Both pass the bedrock wall across the Walk before it climbs into the Kiln.
+**The routes meet at the wall.** An attacker crosses the band onto the Forecourt or a Parade, goes along the
+front line to an Apron and climbs the Walk to the Kiln. A defender comes down the Spawn Steps, or drops four off
+a Statue Terrace, into the Court and out along an Arcade onto the Walk. Both pass the bedrock wall across the Walk
+before it climbs into the Kiln.
+
+**The band stops at the Aprons.** It runs from one Apron's inner edge to the other's, so nothing is built out in
+front of an Apron and the board's edge is no crossing. An attacker comes in toward the middle and walks the front
+line out to a Walk, where the defence can meet them.
 
 ## The numbers
 
@@ -38,34 +43,42 @@ Walk. Both pass the bedrock wall across the Walk before it climbs into the Kiln.
 | Measure | Value | Target |
 |---|---|---|
 | The band, front to front | 24 | 20 to 30 |
-| Spawn to the band | 82 | at least 55 |
+| Spawn to the band | 84 | at least 55 |
 | Spawn to its own monuments | 12 | under 15 |
-| Band to a Kiln, the attacker's shortest | 70 | at least 59 |
-| Spawn to the two Kilns | 103 and 102 | ratio at most 1.25 |
+| Band to a Kiln, the attacker's shortest | 74 | at least 59 |
+| Spawn to the two Kilns | 97 and 97 | ratio at most 1.25 |
+| Band cells in front of an Apron | 0 | none |
+| Rises between neighbouring floors | 1 and 4 | 1 a step, 3 or more a wall, never 2 |
 | Kiln to Kiln | 131 | 46 to 143 |
 | The Walk's narrowest, arch legs included | 10 | 10, the corpus's usual funnel |
 | A Kiln's faces on the void | 3 | at least 2 |
 | Void from a Kiln to the Gatehouse, Arcade and Court | 42, 17, 29 | at least 16 |
 | The wall across the Walk | 12 wide, ends on the void | at most 20, no way round |
 
-**A defender reaches the wall line later than an attacker, 90 against 58.** The recorded matches put the ratio at
+**A defender reaches the wall line later than an attacker, 84 against 62.** The recorded matches put the ratio at
 a median of 1.0 and a mean of 1.75, with the defender farther on 44 percent of objectives, so this is ordinary.
-Moving the Arcades north toward the wall, or a second Spawn Steps toward each wing, would bring it nearer 1.
+The Statue Terraces brought it from 90 against 58: a defender drops off a terrace's front into the Court.
 
 ## The places
 
-- **The Gatehouse** (27): the spawn, 32 by 20, its two monuments on the front edge above the Spawn Steps.
-- **The Spawn Steps** (23 to 27): twelve wide, four broad steps down into the Court.
+- **The Gatehouse** (27): the spawn, 32 by 20, its two monuments at the head of the Spawn Steps.
+- **The Statue Terraces** (27): the Gatehouse carried out to the Court either side of the Spawn Steps, 10 by 12,
+  a statue on each. Their front stands four over the Court, and a parapet two high runs along their edge over the
+  steps.
+- **The Spawn Steps** (23 to 27): twelve wide, four broad steps cut down between the terraces into the Court.
 - **The Clay Court** (23): the hub, 64 by 29, with **the well** in its middle, 14 by 12 of void.
-- **The Grand Steps** (20 to 23): twenty-four wide, three broad steps down to the Forecourt, an arch over them.
+- **The Grand Steps** (20 to 23): two flights, each ten wide with three broad steps and an arch over it, either
+  side of a hole 20 by 9. Two ways up spread the traffic between the front and the Court.
 - **The Forecourt** (20): the middle of the front, 56 by 18, on the band.
-- **The West and East Aprons** (20): the front's flanks, 20 by 18, each the foot of a Walk.
+- **The West and East Parades** (20): 24 by 12, joining the Forecourt to each Apron along the band.
+- **The West and East Aprons** (20): the front's flanks, 20 by 18, each the foot of a Walk, with no band before
+  them.
 - **The West and East Arcades** (23): from the Court to the Walks, 28 by 12, an arch across each.
 - **The West and East Walks** (20 to 26): twelve wide along the board's edge, two arches across each, the
   bedrock wall where they climb to the Kiln.
 - **The West and East Kilns** (26): the wool rooms, 14 by 17, walled and roofed six high, the door eight wide.
   Red's hold yellow and lime; blue's hold orange and light blue.
-- **The band**: twenty-four blocks of void between the Forecourts, built over.
+- **The band**: twenty-four blocks of void between the two front lines, 104 wide, built over.
 
 ## The look, decided now
 
@@ -75,7 +88,7 @@ has its own mix, so a player reads their height from the floor. The steps are st
 **Arrows are set into the surface pointing the way forward.** They are laid in stone in the clay, from the
 Gatehouse to the Grand Steps, from the Court along each Arcade, and up each Walk to its Kiln.
 
-**Arches span the Grand Steps, each Arcade and each Walk twice.** They are stone brick, five clear of the floor,
+**Arches span each flight of the Grand Steps, each Arcade and each Walk twice.** They are stone brick, five clear of the floor,
 with legs a block wide on the way's edges. The legs are what narrow a Walk from twelve to ten.
 
 **The faces of every piece are layered, so tall bedrock does not show as one slab.** Under the twelve blocks of
@@ -95,3 +108,16 @@ door frames.
 
 **Cover is the one thing that changes play, so its places are fixed before the build.** It goes on the Forecourt
 and the Court only, two blocks high, never on a Walk or an Arcade.
+
+## What changed after the first review
+
+**The first layout is kept as `renders/00-plan-sketch-v1.png`.** Three changes came from the review.
+
+- **The band was narrowed to stop at the Aprons, and the front line joined up.** The Parades join the Forecourt to
+  each Apron. Players can no longer cross along the board's edge, so they come in toward the middle and the flanks
+  can be held.
+- **The Grand Steps became two flights with a hole between.** Two ways up spread the traffic between the front and
+  the Court.
+- **The Gatehouse was carried out to the Court as two Statue Terraces.** The Spawn Steps are now cut down between
+  them, with room for a statue on each. A parapet along each edge keeps a terrace from standing two over the
+  stair's middle, a ledge that would look climbable.

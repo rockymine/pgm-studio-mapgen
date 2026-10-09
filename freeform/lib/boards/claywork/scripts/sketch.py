@@ -19,7 +19,7 @@ with open(os.path.join(HERE, "..", "renders", "plan-check.json")) as f:
     check = json.load(f)
 paths = {k: [tuple(c) for c in v] for k, v in check["paths"].items()}
 blue_half = (lambda x, z: z >= 0)
-PIECE_KINDS = ["front", "apron", "steps", "hub", "wing", "walk", "neck", "spawn", "kiln"]
+PIECE_KINDS = ["front", "parade", "apron", "terrace", "steps", "hub", "wing", "walk", "neck", "spawn", "kiln"]
 
 
 def wool_colour(name):
@@ -44,8 +44,9 @@ for o in O.of(Wool):
     m.rect(x - 1, z - 1, x + 1, z + 1, fill=wool_colour(o.color), outline=(20, 20, 20), width=2)
 m.objectives(O.markers())
 m.callout(-66, -71, "bedrock wall across the Walk, 12 wide, 3 high", dx=-10, dz=44)
-m.callout(0, -35, "the Grand Steps: 20 to 23, three steps 3 deep, an arch over them", dx=60, dz=12)
-m.callout(3, -73, "the Spawn Steps: 23 to 27", dx=34, dz=10)
+m.callout(15, -35, "two flights, 20 to 23, a hole between", dx=20, dz=20)
+m.callout(3, -73, "Spawn Steps between the terraces", dx=40, dz=14)
+m.callout(-52, -2, "the band stops at the Aprons: nothing is built along the edge", dx=6, dz=30)
 m.callout(-66, -77, "the Walk climbs 23 to 26 into the Kiln", dx=28, dz=-28)
 
 # 2. the routes onto red's west wool
@@ -82,13 +83,13 @@ a.level(P.MAX_BUILD, f"build to y {P.MAX_BUILD}")
 a.callout(-71, 27, "the wall", dx=10, dy=-14)
 a.callout(-90, 33, "the West Kiln", dx=10, dy=-10)
 
-b = SectionPanel(-104, 0, 0, 40, scale=5, title="ALONG THE MIDDLE",
-                 legend="along z at x 0: Forecourt 20, Grand Steps, the Court and its well, Spawn Steps, "
-                        "the Gatehouse at 27")
-bedrock(b, "z", 0, -104, 0)
-b.raster(R, "z", 0, COL, depth=P.GROUND)
+b = SectionPanel(-104, 0, 0, 40, scale=5, title="UP THE EAST FLIGHT",
+                 legend="along z at x 14: Forecourt 20, the east flight of the Grand Steps, the Court, "
+                        "a Statue Terrace at 27, the Gatehouse")
+bedrock(b, "z", 14, -104, 0)
+b.raster(R, "z", 14, COL, depth=P.GROUND)
 b.level(P.MAX_BUILD, f"build to y {P.MAX_BUILD}")
-b.callout(-56, 23, "the well", dx=10, dy=-14)
+b.callout(-72, 27, "the Statue Terrace, 4 over the Court", dx=10, dy=-14)
 
 c = SectionPanel(P.X_MIN, P.X_MAX, 0, 40, scale=4, title="ACROSS THE COURT AND THE ARCADES",
                  legend="along x at z -58: Walk, Arcade, Court with its well, Arcade, Walk, all at 23")
