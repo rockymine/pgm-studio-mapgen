@@ -285,13 +285,12 @@ def _pin(p, s, end, value, max_grade):
     return p
 
 
-def coast(H, X, Z, sea, outline=None, shelf=10, depth=6, slope=0.35, rim=1):
+def coast(H, X, Z, sea, outline=None, shelf=10, depth=6, slope=0.35):
     """Land meeting the sea at an outline (a polygon), or at the world's edge when none is given: inland the
     ground eases down to the sea over `shelf` blocks, so the shore is a beach and not a cliff, and nothing inside
     the outline lies under the sea; seaward the floor falls `slope` blocks a block to `depth` under the surface
-    at `sea`. Cuts, and lifts low land inside the outline to a block over the sea. Where the sea reaches the world's
-    edge, its outermost `rim` cells are ground flush with the surface, so the sea ends against a block and not
-    against the open side of the world (0 leaves it open). Returns (H, Water)."""
+    at `sea`. Cuts, and lifts low land inside the outline to a block over the sea. The sea runs on to the world's
+    edge, where it meets the void. Returns (H, Water)."""
     H = np.asarray(H, float)
     if outline is not None:
         sd = signed_distance(X, Z, outline)                         # negative inland
@@ -302,10 +301,6 @@ def coast(H, X, Z, sea, outline=None, shelf=10, depth=6, slope=0.35, rim=1):
     land = sea + 1 + (H - sea - 1) * smoothstep(0, 1, inland)
     floor = sea - np.minimum(depth, 1 + slope * np.maximum(sd, 0))
     Hn = np.where(sd < 0, np.maximum(np.minimum(H, land), sea + 1), np.minimum(H, floor))
-    if rim:
-        border = np.zeros(Hn.shape, bool)
-        border[:rim], border[-rim:], border[:, :rim], border[:, -rim:] = True, True, True, True
-        Hn = np.where(border & (Hn < sea), sea, Hn)
     mask = Hn < sea
     return Hn, Water(mask, np.where(mask, sea, -1))
 

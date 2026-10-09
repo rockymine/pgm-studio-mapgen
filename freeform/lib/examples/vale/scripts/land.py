@@ -42,7 +42,8 @@ def ground():
     H = L.terraces(H, hill, step=3)                                                         # cut into steps
     H, sea = L.coast(H, X, Z, SEA, outline=OUTLINE, shelf=24, depth=8)                      # the sea first
     H = L.canyon(H, X, Z, CANYON, width=22, depth=16, floor=0.3, wall=3, ledges=3, downhill=True, lowest=SEA + 2)
-    H, river = L.watercourse(H, X, Z, RIVER, width=6, depth=2, bank=4, fall_min=2, reach_min=12, lowest=SEA - 2)
+    H, river = L.watercourse(H, X, Z, RIVER, width=6, depth=2, bank=4, fall_min=2, reach_min=12, lowest=SEA - 1,
+                             into=sea)                  # it meets the sea at the sea's own level, with no bank in it
     wet = river.mask | sea.mask
     branches, _ = R.network(H, X, Z, PLACES, max_grade=1 / 7, water=wet, bridge=8)
     roads, laid = [], np.zeros(H.shape, bool)

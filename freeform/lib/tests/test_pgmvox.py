@@ -215,12 +215,14 @@ class Landforms(unittest.TestCase):
         self.assertTrue(river.falls)
         self.assertEqual(audit.loose_water(self.water_world(H2, lake, river)), [])
 
-    def test_a_sea_ends_against_a_rim_at_the_world_edge(self):
+    def test_a_river_meets_the_sea_at_its_level_with_no_bank_in_it(self):
         X, Z, H = self.X, self.Z, self.H
-        H2, sea = LF.coast(H - 15, X, Z, 30, shelf=10)
-        self.assertEqual(audit.loose_water(self.water_world(H2, sea)), [])
-        H3, sea3 = LF.coast(H - 15, X, Z, 30, shelf=10, rim=0)
-        self.assertTrue(any(r[3] == "edge" for r in audit.loose_water(self.water_world(H3, sea3))))
+        H1, sea = LF.coast(H - 12, X, Z, 30, shelf=10)                       # the sea runs on to the world's edge
+        H2, river = LF.watercourse(H1, X, Z, [(0, -40), (0, 0), (0, 59)], width=5, depth=2, lowest=29, into=sea)
+        self.assertTrue((H2[sea.mask] <= H1[sea.mask] + 1e-9).all())        # nothing raised inside the sea
+        mouth = river.mask & sea.mask
+        self.assertTrue((river.surface[mouth] == 30).all())
+        self.assertEqual(audit.loose_water(self.water_world(H2, sea, river)), [])
 
     def test_loose_water_allows_a_fall_and_a_waterfall_only(self):
         w = World(0, 0, 8, 3, sy=12)

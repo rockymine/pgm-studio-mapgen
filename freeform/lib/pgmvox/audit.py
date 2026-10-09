@@ -8,9 +8,9 @@ block their data names, and pop off when it is air or something they cannot hang
 A board runs this over its whole world before writing it; the plot kit ran it over each plot.
 
 **Water stands only against something that holds it.** A water block with air beside it pours out when the world
-loads. That is right at a fall inside a stream, where the air beside it lies over lower water, and wrong anywhere
-else: a river whose surface stands over its banks, or one that ends in a column at a coast or the world's edge.
-`loose_water` finds the second kind.
+loads. That is right at a fall inside a stream, where the air beside it lies over lower water, and at the world's
+edge, where a sea runs on into the void. It is wrong anywhere else: water a block over its bank with air between it
+and the next solid block, as no water stands. `loose_water` finds that kind.
 """
 import numpy as np
 
@@ -69,8 +69,8 @@ def footing(w, box=None):
 
 def loose_water(w, drop=8):
     """Every water block with air beside it that does not lie over lower water within `drop` blocks (a fall in
-    the stream is allowed), or that faces the edge of the world. Falling water (flowing water with the falling bit,
-    a waterfall laid on purpose) is a fall and is not counted. why is "air" or "edge"."""
+    the stream is allowed). The world's edge is the void and is not counted, and neither is falling water (flowing
+    water with the falling bit, a waterfall laid on purpose). why is "air"."""
     ids = w.ids
     water = np.isin(ids, [B.WATER, B.WATER_FLOW]) & ~((ids == B.WATER_FLOW) & ((w.dat & 8) > 0))
     air = ids == B.AIR
@@ -83,17 +83,10 @@ def loose_water(w, drop=8):
     for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
         nb_air = np.zeros_like(water)
         nb_ok = np.zeros_like(water)
-        edge = np.zeros_like(water)
         xs = slice(max(0, -dx), sx - max(0, dx)); xd = slice(max(0, dx), sx - max(0, -dx))
         zs = slice(max(0, -dz), sz - max(0, dz)); zd = slice(max(0, dz), sz - max(0, -dz))
         nb_air[xs, :, zs] = air[xd, :, zd]
         nb_ok[xs, :, zs] = below[xd, :, zd] > 0
-        if dx == 1: edge[-1] = True
-        if dx == -1: edge[0] = True
-        if dz == 1: edge[:, :, -1] = True
-        if dz == -1: edge[:, :, 0] = True
         for i, yy, k in np.argwhere(water & nb_air & ~nb_ok):
             out.append((int(i) + w.x0, int(yy), int(k) + w.z0, "air"))
-        for i, yy, k in np.argwhere(water & edge):
-            out.append((int(i) + w.x0, int(yy), int(k) + w.z0, "edge"))
     return sorted(set(out))

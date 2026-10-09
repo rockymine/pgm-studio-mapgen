@@ -29,7 +29,7 @@ for name, pts, (s, level) in road["roads"]:                 # laid after the wat
                           level=lambda v, s=s, level=level: np.interp(v, s, level), seed=len(name)))
 R.pave(w, H, X, Z, road["footpath"], width=2, surface=((B.DIRT, 1), (B.GRAVEL, 0)), weights=(0.7, 0.3), seed=9)
 stairs = R.steps(w, H, X, Z, road["footpath"], width=2)
-beach = (H <= SEA + 2) & (H >= SEA) & ~sea.mask                 # the sea's rim at the world edge too
+beach = (H <= SEA + 2) & (H > SEA) & ~sea.mask
 for i, k in np.argwhere(beach):
     w.set(int(X[i, k]), int(H[i, k]), int(Z[i, k]), B.SAND)
 

@@ -180,12 +180,15 @@ its water is at least as high as that water, so it never stands over its banks. 
 block above them for its whole length. Air beside water is right only at a fall inside the stream.
 
 **A river ends in water at its own level.** It runs into a `lake` or a sea with `lowest` at that surface less its
-depth and `into` naming that water, so no bank is raised across its mouth. A `coast` that reaches the world's edge
-ends in a rim flush with the sea, never in a wall of water against the open side.
+depth and `into` naming that water, so no bank is raised inside it. A river that met the sea a block low once left
+a line of sand under the water across its mouth.
+
+**The world's edge is the void, and water may run to it.** A sea that reaches the edge of the board meets open air
+there by design, so neither `coast` nor `loose_water` puts a rim or a fault at the edge.
 
 **`hold` runs last, and `audit.loose_water` proves it.** Roads graded down to a bridge cut three of the Vale's
 river banks below the water; `hold` raises every dry cell beside water to its surface. `loose_water` lists every
-water block with air beside it that is not a fall or a waterfall laid on purpose.
+water block with air beside it that is not a fall, a waterfall laid on purpose or the world's edge.
 
 **A terrain board is checked before it is built.** `Raster.from_heights` reads the shaped heights as a plan, with
 water and steep ground as their own kinds, and the walk graph runs over it. The Vale's plan check walks from the
