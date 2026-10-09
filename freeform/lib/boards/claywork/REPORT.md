@@ -141,7 +141,7 @@ statues. Blue's panels and friezes are blue stained clay, which reads as a dark 
 - `05`: the built world from above with the plan's names.
 - `10`–`12`: sections along the West Walk, through the Rostrum, and along the Undercroft.
 - `30`–`36`: isometric views of the board, red's half, the Gatehouse and Court, a Kiln and its Walk, the front,
-  the Arcade with its stepping stones, and an Apron and its Walk close up for the floors.
+  the Arcade with its stepping stones, an Apron and its Walk close up for the floors, and the Court and Forecourt with the well's roof.
 - `40`: the Undercroft in x-ray.
 - `50`: the Forecourt's face as seen from the band.
 
