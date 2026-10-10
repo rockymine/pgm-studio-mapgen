@@ -213,3 +213,62 @@ def arch(w, cells, t, deck, thick, rock, into=None, clear=0, ground=None):
         tops[(x, z)] = y
     return tops
 
+
+
+SOFT = (B.AIR, B.WATER, B.WATER_FLOW, B.TALLGRASS, B.FLOWER, B.DEADBUSH, B.DIRT, B.GRASS, B.STONE, B.SAND, B.GRAVEL,
+        B.CLAY, B.STAINED_CLAY, B.HARDENED_CLAY)
+
+
+def box_cells(at, size, yaw=0.0, tilt=0.0):
+    """The blocks of a box turned `yaw` degrees about the vertical and tilted `tilt` degrees about its own long
+    axis, centred at `at` (x, y, z): every block whose centre lies inside it, with its place in the box's own frame,
+    (x, y, z, u, ly, lz), u along its width, ly up its height, lz along its depth, each from the box's middle."""
+    import math
+    cx, cy, cz = at
+    w_, h_, d_ = size
+    a, t = math.radians(yaw), math.radians(tilt)
+    cyw, syw, ct, st = math.cos(a), math.sin(a), math.cos(t), math.sin(t)
+    R = int(math.ceil(math.sqrt(w_ * w_ + h_ * h_ + d_ * d_) / 2)) + 1
+    g = np.arange(-R, R + 1)
+    DX, DY, DZ = np.meshgrid(g, g, g, indexing="ij")
+    fx, fy, fz = math.floor(cx), math.floor(cy), math.floor(cz)
+    px, py, pz = fx + DX + 0.5 - cx, fy + DY + 0.5 - cy, fz + DZ + 0.5 - cz
+    u = px * cyw + pz * syw
+    v = -px * syw + pz * cyw
+    ly = py * ct + v * st
+    lz = -py * st + v * ct
+    inside = (np.abs(u) <= w_ / 2) & (np.abs(ly) <= h_ / 2) & (np.abs(lz) <= d_ / 2)
+    return [(int(fx + DX[i]), int(fy + DY[i]), int(fz + DZ[i]), float(u[i]), float(ly[i]), float(lz[i]))
+            for i in zip(*np.nonzero(inside))]
+
+
+def placed_box(w, x, z, size, H, yaw=0.0, tilt=0.0, sink=0.3, on="lowest", paint=None, hole=None, over=SOFT):
+    """A monolith, a slab or a ring set into the ground the way Stratum set its fragments: a box of `size`
+    (width, height, depth) turned `yaw` and tilted `tilt`, its bottom `sink` of its upright height under the ground
+    `on` its footprint (`lowest`, `centre` or a y). `paint(u, ly, lz, size)` gives each block from its place in the
+    box's frame (a block for all, by default stone), `hole` (wall thickness) hollows it into a frame through its
+    depth, and only blocks in `over` are written, so trees and earlier boxes stand. Returns the blocks laid."""
+    import math
+    w_, h_, d_ = size
+    up = abs(h_ * math.cos(math.radians(tilt))) + abs(d_ * math.sin(math.radians(tilt)))
+    x0, z0 = int(w.x0), int(w.z0)
+    i, k = int(x) - x0, int(z) - z0
+    if on == "lowest":
+        r = int(math.ceil(max(w_, d_) / 2))
+        foot = H[max(i - r, 0):i + r + 1, max(k - r, 0):k + r + 1]
+        base = float(foot[foot >= 0].min()) if (foot >= 0).any() else float(H[i, k])
+    elif on == "centre":
+        base = float(H[i, k])
+    else:
+        base = float(on)
+    cy = base + 1 + up / 2 - sink * up
+    paint = paint or (lambda u, ly, lz, s: (B.STONE, 0))
+    n = 0
+    for bx, by, bz, u, ly, lz in box_cells((x + 0.5, cy, z + 0.5), size, yaw, tilt):
+        if hole is not None and abs(u) < w_ / 2 - hole and abs(ly) < h_ / 2 - hole:
+            continue
+        if not (1 <= by < w.ids.shape[1]) or w.id(bx, by, bz) not in over:
+            continue
+        w.set(bx, by, bz, *paint(u, ly, lz, size))
+        n += 1
+    return n

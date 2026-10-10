@@ -24,6 +24,8 @@ side. `first_of` composes them, and `carpet` lays one.
 """
 from dataclasses import dataclass
 
+import numpy as np
+
 from .blocks import B
 
 CONCRETE = (B.STONE, 0)
@@ -321,6 +323,17 @@ def tiles(size, a, b):
 def cross(width, block):
     """Two bands crossing at the middle, the garden carpet's water."""
     return lambda c: block if abs(c.u) < width or abs(c.v) < width else None
+
+
+def rings(width, blocks, r_max=None, square=False):
+    """Concentric rings from the rectangle's middle, `width` blocks each, through `blocks` in turn (None leaves a
+    ring to the next field); round by default, square (Chebyshev) with `square`, out to `r_max` if given."""
+    def f(c):
+        r = max(abs(c.u), abs(c.v)) if square else float(np.hypot(c.u, c.v))
+        if r_max is not None and r > r_max:
+            return None
+        return blocks[int(r // width) % len(blocks)]
+    return f
 
 
 def first_of(*fields, default=None):

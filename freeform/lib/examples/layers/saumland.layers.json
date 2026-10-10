@@ -1,0 +1,90 @@
+{
+  "document": "layers",
+  "version": "draft-3",
+  "board": {"name": "Saumland", "x": [-60, 59], "z": [-60, 59], "floor": 10, "height": 72, "seed": 7},
+  "made": {
+    "style": "brittle", "dye": 14,
+    "cells": [
+      {"rect": [-11, -6, -11, -8], "kind": "flat", "y": 22, "section": "yard", "fill": "grass"},
+      {"rect": [-11, -10, -11, -10], "kind": "keep", "y": 22, "section": "keep"},
+      {"rect": [-11, -7, -7, -6], "kind": "flat", "y": 22, "section": "forecourt", "fill": "sand"},
+      {"rect": [-5, -5, -10, -10], "kind": "stair", "y": 19, "rises": "w", "section": "stair"},
+      {"rect": [-12, 11, -3, -1], "kind": "gap"}
+    ],
+    "houses": [
+      {"id": "wollhaus", "layers": [[[-8, -11], [-7, -11], [-8, -10], [-7, -10]], [[-8, -11], [-7, -11]]], "floor": 22,
+       "dye": 14, "door": [[-8, -10], "s"], "note": "the wool room: two storeys of whole cells"}
+    ]
+  },
+  "fields": {
+    "small": {"fbm": {"cell": 12, "octaves": 3, "seed": 11}},
+    "big": {"fbm": {"cell": 30, "octaves": 3, "seed": 12}},
+    "patch": {"fbm": {"cell": 5, "octaves": 2, "seed": 61}},
+    "wl": {"line": {"along": "z", "cell": 14, "seed": 22, "amp": 3, "base": 3, "clip": [0, 6]}},
+    "el": {"line": {"along": "z", "cell": 14, "seed": 23, "amp": 3, "base": 3, "clip": [0, 6]}},
+    "nl": {"line": {"along": "x", "cell": 14, "seed": 24, "amp": 3, "base": 2, "clip": [0, 5]}},
+    "sl": {"line": {"along": "x", "cell": 14, "seed": 25, "amp": 3, "base": 2, "clip": [0, 5]}},
+    "rim": {"spread": ["made_top", 8]},
+    "near_made": {"near": "made"}
+  },
+  "ground": [
+    {"id": "umriss", "op": "outline", "box": [-60, -58, 59, -17], "insets": {"west": "wl", "east": "el", "north": "nl", "south": "sl"},
+     "note": "red's grown land: a box with wandering edges, the made cells taken out of it"},
+    {"id": "grundhoehe", "op": "base", "height": 17,
+     "terms": [{"ramp": {"along": "x", "from": -20, "to": 50, "rise": 5}}, {"ramp": {"along": "z", "from": -20, "to": -55, "rise": 3}},
+               {"noise": {"field": "small", "rise": 0.8}}, {"noise": {"field": "big", "rise": 1.6}}],
+     "note": "17, rising east and north, noise in two sizes"},
+    {"id": "huegel", "op": "mound", "mode": "lift", "rise": 9, "join": 1.6, "soft": 0.3,
+     "areas": [{"ellipse": {"at": [10, -48], "rx": 12, "rz": 8}}, {"ellipse": {"at": [26, -44], "rx": 10, "rz": 8, "angle": 25}, "rise": 7}],
+     "note": "two hills melted into one ridge"},
+    {"id": "erdfall", "op": "crater", "floor": 10, "flat": 2, "slope": 1, "melt": 4, "areas": [{"circle": {"at": [40, -28], "r": 8}}],
+     "note": "a bowl, its rim melting into the meadow"},
+    {"id": "unter-dem-rand", "op": "set", "height": {"min": ["H", {"sub": ["rim", 3]}]}, "where": {"lt": ["near_made", 8]},
+     "note": "the meadow held three under the made rims, so every made edge is a face"},
+    {"id": "treppenfuss", "op": "level", "mode": "set", "top": 19, "inner": 1.0, "outer": 2.2,
+     "areas": [{"rect": [-20, -50, -16, -46]}], "note": "the stair's foot level at 19, eased into the meadow"},
+    {"id": "weg", "op": "path", "line": [[-18, -48], [-6, -42], [6, -36], [20, -33], [32, -37]], "width": 3, "max_grade": 0.5,
+     "note": "from the stair's foot across the meadow to the monoliths"}
+  ],
+  "paint": [
+    {"block": "GRAVEL", "area": {"circle": {"at": [40, -28], "r": 8}}, "noise": {"field": "patch", "lo": -0.1}},
+    {"block": ["DIRT", 1], "slope": [33, 40], "noise": {"field": "patch", "lo": 0.3}},
+    {"block": ["STONE", 5], "slope": [40, 55], "noise": {"field": "patch", "lo": -0.2, "hi": 0.2}},
+    {"block": "COBBLE", "slope": [55, null]}
+  ],
+  "lay": {"underside": {"taper": [4, 0.8], "rough": 3, "seed": 9}},
+  "volume": [
+    {"id": "monolith-1", "op": "box", "at": [30, -40], "size": [4, 18, 3], "yaw": 20, "tilt": 8, "sink": 0.3,
+     "paint": {"bands": {"along": "ly", "width": 2, "blocks": ["QUARTZ", "STONEBRICK"]}}, "note": "a monolith, leaning"},
+    {"id": "monolith-2", "op": "box", "at": [44, -45], "size": [6, 12, 4], "yaw": -35, "tilt": 18, "sink": 0.35,
+     "paint": {"block": "STONEBRICK", "cap": "QUARTZ"}},
+    {"id": "liegender-obelisk", "op": "box", "at": [22, -26], "size": [4, 20, 4], "yaw": 60, "tilt": 74, "sink": 0.35,
+     "paint": {"bands": {"along": "ly", "width": 3, "blocks": ["QUARTZ", ["STONE", 6]]}}, "note": "a fallen obelisk, half in the ground"},
+    {"id": "ring", "op": "box", "at": [40, -28], "size": [13, 13, 2], "yaw": 15, "tilt": 0, "sink": 0.2, "hole": 2,
+     "paint": {"block": "QUARTZ"}, "note": "a ring standing in the bowl"}
+  ],
+  "structures": [
+    {"id": "turm", "op": "mass", "rect": [-33, -53, -29, -48], "on": "lowest", "height": 16, "base": "QUARTZ",
+     "faces": [{"band": {"t0": 0, "t1": 1, "block": "STONEBRICK"}}, {"flutes": {"period": 3, "width": 1, "t0": 3, "t1": 13, "block": ["STONE", 6]}},
+               {"windows": {"period": 4, "t0": 14, "t1": 14}}],
+     "top": "cornice", "note": "a fluted tower on the yard, a cornice on top"},
+    {"id": "ringplatz", "op": "carpet", "rect": [-48, -42, -38, -38], "y": 22,
+     "fields": [{"border": {"width": 1, "block": "STONEBRICK"}}, {"rings": {"width": 2, "blocks": ["QUARTZ", ["STONE", 6]]}}],
+     "note": "the forecourt's floor: rings inside a border"}
+  ],
+  "build": [
+    {"id": "weg-belag", "op": "surface", "near": "weg", "blocks": [["STONE", 0], "COBBLE"], "weights": [2, 1], "steps": "half",
+     "slab": ["SLAB", 0], "note": "half steps where it climbs the ridge"},
+    {"id": "hecke", "op": "wall", "near": "weg", "offset": 3, "height": 1, "blocks": [["LEAVES", 4]], "gap": [12, 2],
+     "note": "a hedge beside the way"}
+  ],
+  "dress": [
+    {"id": "wald", "op": "trees", "area": {"ellipse": {"at": [48, -50], "rx": 12, "rz": 8}}, "kinds": {"oak": 2, "birch": 1},
+     "tries": 120, "seed": 4, "note": "a wood in the north-east corner"}
+  ],
+  "symmetry": [
+    {"id": "blau", "op": "half", "keep": {"lt": ["z", 0]},
+     "recolour": [[["WOOL", 14], ["WOOL", 11]], [["STAINED_CLAY", 14], ["STAINED_CLAY", 11]]],
+     "note": "blue's half: red's turned about the middle, its colours changed"}
+  ]
+}

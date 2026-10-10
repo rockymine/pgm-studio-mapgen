@@ -196,6 +196,13 @@ def expr(spec, c):
         xs, zs = np.array([p[0] for p in pts]), np.array([p[1] for p in pts])
         order = np.argsort(xs)
         return np.interp(c.X.astype(float), xs[order], zs[order])
+    if op == "dilate":
+        return ndimage.binary_dilation(np.asarray(E(a[0]), bool), iterations=int(a[1]))
+    if op == "near":
+        return ndimage.distance_transform_edt(~np.asarray(E(a), bool))
+    if op == "spread":
+        n = int(a[1])
+        return ndimage.grey_dilation(E(a[0]), size=(2 * n + 1, 2 * n + 1))
     if op == "hypot":
         return np.hypot(E(a[0]), E(a[1]))
     if op == "line_distance":
@@ -380,6 +387,67 @@ def _paint_layer(P, X, Z, fields, lines, H):
                    values=values)
 
 
+def made_cells(made):
+    """The blueprint of a `made` stage as brittle cells, {(cx, cz): Cell}: each entry a rectangle of cells
+    [cx0, cx1, cz0, cz1] of one kind at one floor y, its section, its stair's rise and whether a deck is open under."""
+    from . import brittle as BR
+    cells = {}
+    for e in made.get("cells", []):
+        cx0, cx1, cz0, cz1 = e["rect"]
+        for cx in range(cx0, cx1 + 1):
+            for cz in range(cz0, cz1 + 1):
+                cells[(cx, cz)] = BR.Cell(e["kind"], e.get("y"), rises=e.get("rises"), name=e.get("name"),
+                                          under=e.get("under", False), section=e.get("section"))
+    return cells
+
+
+def made_mask(cells, X, Z):
+    """(mask, top): the columns of made land and their tops (-1 off it), as the grammar will lay them."""
+    from . import brittle as BR
+    _, T = BR.heights(cells)
+    x0, z0 = int(X[0, 0]), int(Z[0, 0])
+    top = np.full(X.shape, -1.0)
+    for (x, z), t in T.items():
+        if 0 <= x - x0 < X.shape[0] and 0 <= z - z0 < X.shape[1]:
+            top[x - x0, z - z0] = t
+    return top >= 0, top
+
+
+def _paint_spec(spec):
+    """A block-painting rule for a placed box, from data: {"block"}, or {"bands": {"along": "ly", "width": 2,
+    "blocks": [...]}}, with an optional "cap" block on its top course."""
+    if "bands" in spec:
+        b = spec["bands"]
+        blocks = [block(x) for x in b["blocks"]]
+        axis = {"u": 0, "ly": 1, "lz": 2}[b.get("along", "ly")]
+        base = lambda u, ly, lz, s: blocks[int(((u, ly, lz)[axis] + s[axis] / 2) // b.get("width", 2)) % len(blocks)]   # noqa: E731
+    else:
+        one = block(spec.get("block", "STONE"))
+        base = lambda u, ly, lz, s: one                                              # noqa: E731
+    if "cap" not in spec:
+        return base
+    cap = block(spec["cap"])
+    return lambda u, ly, lz, s: cap if ly > s[1] / 2 - 1 else base(u, ly, lz, s)
+
+
+BLOCK_KEYS = ("block", "a", "b", "recess", "light", "course")
+
+
+def _pattern(spec):
+    """A facade face pattern or floor field from data: {"flutes": {"period": 4, ...}} -> facade.flutes(...),
+    its block arguments given as block names; "blocks" is a list of them."""
+    from . import facade as FA
+    (name, a), = spec.items()
+    kw = {k: (block(v) if k in BLOCK_KEYS else [block(b) if b is not None else None for b in v] if k == "blocks"
+              else v) for k, v in a.items()}
+    return getattr(FA, name)(**kw)
+
+
+def _footprint(L, X, Z):
+    x0, z0, x1, z1 = L["rect"]
+    return [(x, z) for x in range(x0, x1 + 1) for z in range(z0, z1 + 1)]
+
+
 def ground(doc, X=None, Z=None):
     """The fields and ground stages alone: (ctx, steps). The board's grid is its x and z range unless given."""
     bd = doc["board"]
@@ -389,6 +457,9 @@ def ground(doc, X=None, Z=None):
     c = Ctx(X, Z, np.full(X.shape, float(bd.get("floor", 40))), {}, {}, np.ones(X.shape, bool),
             np.zeros(X.shape, int))
     c.laid = np.zeros(X.shape, bool)
+    if "made" in doc:
+        c.cells = made_cells(doc["made"])
+        c.fields["made"], c.fields["made_top"] = made_mask(c.cells, X, Z)
     for k, v in doc.get("fields", {}).items():
         c.fields[k] = expr(v, c) if isinstance(v, dict) and next(iter(v)) not in ("fbm", "ridged", "line") \
             or isinstance(v, dict) and v.get("fbm", {}).get("along") else _field(v, X.shape, c.fields)
@@ -442,7 +513,9 @@ def build(doc):
     w = World(x0, z0, x1 - x0 + 1, z1 - z0 + 1, sy=bd.get("height", 128))
     X, Z = w.grid()
     c, steps = ground(doc, X, Z)
-    fields, lines, land, H, water = c.fields, c.lines, c.land, c.H, c.water
+    fields, lines, H, water = c.fields, c.lines, c.H, c.water
+    made = fields.get("made", np.zeros(X.shape, bool))
+    land = c.land & ~made
     out = Built(w, H, land, water, X, Z, steps=steps, lines=lines)
     Hi = np.round(H).astype(int)
     Hi = np.where(water > 0, np.minimum(Hi, water - 1), Hi)
@@ -463,6 +536,57 @@ def build(doc):
         out.steps.append(Step("water", "water", "fill_water", (water > 0) & land, Hi.copy()))
     rng = np.random.default_rng(bd.get("seed", 0))
     built_on = np.zeros(X.shape, bool)
+    if "made" in doc:
+        import random
+        from . import brittle as BR
+        md = doc["made"]
+        fills = {e["section"]: e["fill"] for e in md.get("cells", []) if e.get("section") and e.get("fill")}
+        fill = (lambda piece, cs: fills.get(cs[piece[0]].section)) if fills else None
+        grown = {(int(X[i, k]), int(Z[i, k])): int(Hi[i, k]) for i, k in np.argwhere(land)}
+        BR.build(w, c.cells, rng=random.Random(bd.get("seed", 0)), dye=md.get("dye", 14), fill=fill, grown=grown)
+        out.steps.append(Step("made", "made", "grammar", made.copy(), Hi.copy(),
+                              f"{len(c.cells)} cells in the {md.get('style', 'brittle')} grammar"))
+        for n, hs in enumerate(md.get("houses", [])):
+            BR.house(w, [[tuple(cc) for cc in layer] for layer in hs["layers"]], hs["floor"], hs.get("dye", 14),
+                     door=(tuple(hs["door"][0]), hs["door"][1]) if "door" in hs else None)
+            m = np.zeros(X.shape, bool)
+            for cx, cz in hs["layers"][0]:
+                m[(X // BR.CELL == cx) & (Z // BR.CELL == cz)] = True
+            built_on |= m
+            out.steps.append(Step(hs.get("id", f"house-{n}"), "made", "house", m, Hi.copy(), hs.get("note", "")))
+    Hall = np.where(made, fields.get("made_top", Hi), Hi).astype(int) if "made" in doc else Hi
+    from . import forms as FO, facade as FA
+    for L in doc.get("volume", []):
+        laid = np.zeros(X.shape, bool)
+        if L["op"] == "box":
+            before = w.ids.copy()
+            FO.placed_box(w, L["at"][0], L["at"][1], tuple(L["size"]), Hall, yaw=L.get("yaw", 0.0),
+                          tilt=L.get("tilt", 0.0), sink=L.get("sink", 0.3), on=L.get("on", "lowest"),
+                          paint=_paint_spec(L.get("paint", {})), hole=L.get("hole"))
+            laid = (w.ids != before).any(axis=1)
+        built_on |= laid
+        out.steps.append(Step(L["id"], "volume", L["op"], laid, Hi.copy(), L.get("note", "")))
+    for L in doc.get("structures", []):
+        laid = np.zeros(X.shape, bool)
+        cells = _footprint(L, X, Z)
+        under = [int(Hall[x - x0, z - z0]) for x, z in cells]
+        if L["op"] == "mass":
+            y0 = L["y0"] if isinstance(L.get("y0"), int) else (max(under) if L.get("on") == "highest" else min(under)) \
+                + 1 + L.get("offset", 0)
+            if L.get("pour", True):                                     # down to the ground under every column
+                for (x, z), g in zip(cells, under):
+                    for y in range(max(g + 1, 1), y0):
+                        w.set(x, y, z, *block(L.get("base", "STONE")))
+            FA.extrude(w, cells, y0, y0 + L["height"] - 1, base=block(L.get("base", "STONE")),
+                       faces_=[_pattern(p) for p in L.get("faces", [])], top=L.get("top"), bottom=L.get("bottom"))
+        elif L["op"] == "carpet":
+            y = L["y"] if "y" in L else max(under)
+            x0r, z0r, x1r, z1r = L["rect"]
+            FA.carpet(w, x0r, z0r, x1r, z1r, y, FA.first_of(*[_pattern(p) for p in L["fields"]]))
+        for x, z in cells:
+            laid[x - x0, z - z0] = True
+        built_on |= laid
+        out.steps.append(Step(L["id"], "structures", L["op"], laid, Hi.copy(), L.get("note", "")))
     for L in doc.get("build", []):
         laid = np.zeros(X.shape, bool)
         if L["op"] == "surface":
@@ -507,6 +631,13 @@ def build(doc):
             for x, z, _ in planted:
                 laid[x - x0, z - z0] = True
         out.steps.append(Step(L["id"], "dress", L["op"], laid, Hi.copy(), L.get("note", "")))
+    for L in doc.get("symmetry", []):
+        from .orient import turn_world
+        cx = Ctx(X, Z, Hi.astype(float), fields, lines, land, water)
+        keep = np.asarray(expr(L["keep"], cx), bool)
+        recolour = {block(a): block(b) for a, b in L.get("recolour", [])}
+        turn_world(w, L["op"], keep, recolour=recolour or None)
+        out.steps.append(Step(L["id"], "symmetry", L["op"], ~keep, Hi.copy(), L.get("note", "")))
     out.H, out.land, out.water = Hi, land, water
     return out
 

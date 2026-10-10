@@ -1,6 +1,6 @@
 # pgmvox operations and their parameters
 
-Generated from the library's function signatures (pgmvox 0.23.0) for the recipe design in `../STUDIO-2-DESIGN.md`: every operation a recipe step could name, with each parameter a model would send and its default. The grid arguments (`w`, `H`, `X`, `Z`, `rng`) are the recipe's state, not parameters.
+Generated from the library's function signatures (pgmvox 0.24.0) for the recipe design in `../STUDIO-2-DESIGN.md`: every operation a recipe step could name, with each parameter a model would send and its default. The grid arguments (`w`, `H`, `X`, `Z`, `rng`) are the recipe's state, not parameters.
 
 | op | parameters (defaults) |
 |---|---|
@@ -33,6 +33,8 @@ Generated from the library's function signatures (pgmvox 0.23.0) for the recipe 
 | `route.steps` | pts, block=67, width=1 |
 | `route.simplify` | pts, tolerance=1.5 |
 | `route.smooth` | pts, rounds=2 |
+| `route.halfstep_levels` | pts, profile, width, within=None |
+| `route.halfsteps` | band, level, surface, slab, fill, fill_depth=3, clear=4, fill_over=(0, 12, 13, 31) |
 | `under.tunnel` | pts, ground=None, cover=3, keep=None, lift=0.45 |
 | `under.chamber` | cx, floor_y, cz, rx, h, rz=None, ground=None, cover=3, keep=None |
 | `under.carve` | cells, floor=None, ground=None, cover=3, keep=None |
@@ -48,6 +50,7 @@ Generated from the library's function signatures (pgmvox 0.23.0) for the recipe 
 | `build.stairs` | x, z, rises, y0, n, block, width=1, under=None |
 | `build.ladder` | x, z, y0, y1, on_wall |
 | `build.parapet` | cells, y, block, crenel=None, rhythm=None |
+| `build.line_wall` | pts, height=2, width=1, crown='follow', run=6, max_grade=1.0, blocks=((4, 0),), weights=None, cap=None, crenel=None, gap=None, closed=False, sink=0, keep=None |
 | `trees.plant` | x, z, tree, turn=0, allowed=None, through={0, 161, 37, 38, 106, 175, 18, 31}, gives_way={1, 2, 3, 4, 13} |
 | `trees.scatter` | zone, by_kind, weights, spacing=0.85, tries=4000, planted=None, ok=None, allowed=None |
 | `props.stall` | x, y, z, facing='e', awning=14, stripe=0, post=(85, 0), goods=None, chest=True |
@@ -84,6 +87,10 @@ Generated from the library's function signatures (pgmvox 0.23.0) for the recipe 
 | `landform.ridge` | coord, foot, reach, crest, rough=0.0, spurs=(), terrace=None |
 | `landform.spire_sites` | box, n, r=(1.6, 3.4), rise=(8, 22), needles=0.7, spacing=2.5, keep_clear=(), seed=0, tries=400 |
 | `landform.spire_field` | sites, needle=1.3, hoodoo=5.0 |
+| `landform.smooth_max` | a, b, k |
+| `landform.smooth_min` | a, b, k |
+| `landform.join` | rises, p=0, cut=False |
+| `landform.soften` | shaped, e, band=0.3333333333333333 |
 | `terrain.Paint` | block, slope=None, where=None, values=() |
 | `terrain.fill_water` | level, bed, mask=None |
 | `terrain.island_bottom` | top, land, sheer, taper=(4, 0.9), sheer_taper=(26, 1.2), rough=0.0, floor=0.0 |
@@ -91,6 +98,7 @@ Generated from the library's function signatures (pgmvox 0.23.0) for the recipe 
 | `terrain.waterfall` | level, at, toward='east', lip_from=None, to=None, to_y=8 |
 | `forms.arch` | cells, t, deck, thick, rock, into=None, clear=0, ground=None |
 | `forms.masonry_tower` | x0, z0, x1, z1, y0, height, wall=((98, 0), (98, 0), (98, 2)), corner=(98, 3), floor=(5, 5), slit=(101, 0), door=197, door_side='s', crown=(98, 0), crenel=(139, 0), light=(89, 0), ladder_on='n' |
+| `forms.placed_box` | x, z, size, yaw=0.0, tilt=0.0, sink=0.3, on='lowest', paint=None, hole=None, over=(0, 9, 8, 31, 38, 32, 3, 2, 1, 12, 13, 82, 159, 172) |
 | `props.crop_field` | box, y, crops, rows=9, ditch=4, tilt=0.0, ripe=(0.15, (4, 8)), fence='w', gate=None |
 | `props.scarecrow` | x, z, facing='n' |
 | `props.lamps` | path, every=12, post=(113, 0), light=(89, 0), height=2, side=3.0, start=6 |
@@ -99,4 +107,4 @@ Generated from the library's function signatures (pgmvox 0.23.0) for the recipe 
 | `trees.dead_tree` | x, y, z, h, log=162, kind=1 |
 | `under.bore` | at, r, y0, y1, seed=0, r_noise=0.0, fill=(0, 0), lip=None |
 
-603 parameters over the operations listed
+651 parameters over the operations listed

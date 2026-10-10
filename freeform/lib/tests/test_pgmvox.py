@@ -644,6 +644,32 @@ class Forms(unittest.TestCase):
         self.assertTrue((cols[:, 20:28] != 0).any())                        # but ledges below it
 
 
+class PlacedBoxes(unittest.TestCase):
+    def test_a_box_is_sunk_by_its_share_and_keeps_what_is_not_soft(self):
+        w = World(-20, -20, 41, 41, sy=60)
+        X, Z = w.grid()
+        H = np.full(X.shape, 30)
+        w.ids[:, 1:31, :] = B.STONE
+        w.set(0, 31, 4, B.LOG, 0)                                       # a trunk in its way stands
+        forms.placed_box(w, 0, 0, (4, 10, 4), H, sink=0.3, paint=lambda u, ly, lz, s: (B.QUARTZ, 0))
+        ys = np.nonzero((w.ids == B.QUARTZ).any(axis=(0, 2)))[0]
+        self.assertEqual((int(ys.min()), int(ys.max())), (28, 37))     # three of its ten under the ground at 30
+        self.assertEqual(w.id(0, 31, 4), B.LOG)
+
+    def test_a_tilted_frame_has_its_hole(self):
+        cells = forms.box_cells((0.5, 20.5, 0.5), (9, 9, 1), yaw=0, tilt=0)
+        self.assertTrue(any(abs(u) < 1 and abs(ly) < 1 for _, _, _, u, ly, _ in cells))
+        w = World(-10, -10, 21, 21, sy=40)
+        n = forms.placed_box(w, 0, 0, (9, 9, 1), np.full((21, 21), 10), sink=0, hole=2)
+        self.assertEqual(w.id(0, 15, 0), B.AIR)                         # the middle of the ring is open
+        self.assertGreater(n, 40)
+
+    def test_rings_are_concentric_bands(self):
+        w = World(0, 0, 15, 15, sy=4)
+        F.carpet(w, 0, 0, 14, 14, 1, F.rings(2, [(B.WOOL, 0), (B.WOOL, 15)]))
+        self.assertEqual("".join("#" if w.dat[i, 1, 7] == 15 else "." for i in range(15)), "##..##...##..##")
+
+
 class LineWalls(unittest.TestCase):
     def setUp(self):
         self.w = World(0, 0, 40, 12, sy=60)
@@ -709,6 +735,20 @@ class LayerDocument(unittest.TestCase):
         plain, _ = document._ground_layer(hard, flat, X, Z, {}, {}, self.built.land)
         self.assertTrue((melted >= plain - 1e-9).all())
         self.assertGreater(float((melted - plain).max()), 1.0)       # the saddle between them
+
+    def test_made_and_grown_on_one_board(self):
+        from pgmvox import document
+        with open(os.path.join(os.path.dirname(HERE), "examples", "layers", "saumland.layers.json")) as f:
+            doc = json.load(f)
+        b = document.build(doc)
+        made = b.steps[[s.id for s in b.steps].index("made")].changed
+        self.assertFalse((made & b.land).any())                          # the grown land keeps out of the made
+        w = b.world
+        self.assertGreater(int((w.ids == B.QUARTZ).sum()), 300)          # tower, monoliths, ring
+        red = (w.ids == B.WOOL) & (w.dat == 14)
+        blue = (w.ids == B.WOOL) & (w.dat == 11)
+        self.assertEqual(int(red[:, :, :60].sum()), int(blue[:, :, 60:].sum()))   # the half turn, recoloured
+        self.assertEqual([s.stage for s in b.steps][-1], "symmetry")
 
     def test_the_riftwater_ports_ground_is_a_layer_document(self):
         from pgmvox import document

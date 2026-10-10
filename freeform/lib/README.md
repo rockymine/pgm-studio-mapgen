@@ -34,14 +34,14 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `props` | small built things placed on a floor, facing a way: `stall` and `stalls` (a market row), `lamp` and `lamps` (posts beside a route, sides in turn), `brazier`, `rubble` (a heap that hangs over nothing); `crop_field` (farmland in strips, a ditch in each, a fence and gate) and `scarecrow`; chests drawn as rows of letters (`laid`), with a defence chest and a wool room's gear |
 | `under` | caves and mines carved into a built world: `tunnel` (a level-floored passage), `chamber`, `carve`, `dress_cave` (floors, stalactites, ore), `gallery_line` and `gallery` (timbered, railed, stepped), `shaft`, `bore` (a round hole through the rock, a core's leak) |
 | `trees` | hand-built trees planted whole: `library` (the studio's copied trees), `load` (a board's own cut), `kinds`, `plant` (turned, refused whole), `scatter` (a wood with its crowns apart), `dead_tree` (a bare trunk and arms, no leaves) |
-| `forms` | scenery built block by block where a heightfield cannot say it: `tower` (rings tapering up a stack, ledges every few courses, bulging faces, beds in courses, a crown and vines), `skirt` (karst faces under a floating floor's rim), `root_vines`, `arch` (a natural arch: a deck and the rock under it, thin at the crown, thick at the ends, the ground under it kept), `masonry_tower` (hollow, floored every five courses, a ladder through the hatches, slits, a door, a crenellated crown) |
+| `forms` | scenery built block by block where a heightfield cannot say it: `tower` (rings tapering up a stack, ledges every few courses, bulging faces, beds in courses, a crown and vines), `skirt` (karst faces under a floating floor's rim), `root_vines`, `arch` (a natural arch: a deck and the rock under it, thin at the crown, thick at the ends, the ground under it kept), `masonry_tower` (hollow, floored every five courses, a ladder through the hatches, slits, a door, a crenellated crown); `placed_box` and `box_cells` (a box turned and tilted, sunk by a share of its height into the ground, painted in its own frame, hollowed into a ring) |
 | `landform` | heightfield operations: `watercourse` (reaches and falls), `canyon` and washes, `spire_sites` and `spire_field` (needles and hoodoos drawn apart and off the paths), `ridge` (from a wandering foot to a crest, rough, with spurs, terraced; only lifts), `mound` (a heap over a distance field) and `crater` (a bowl in one-block steps), `level` (level ground inside a distance, eased back to the ground, lift, cut or set), `profile` (a cross-section by distance from a line: a floor and `Step`s of cliff and flat, ragged by `jag`, with a talus; `mode` set, lift or cut), `spire` and `butte` (round, or elliptical and turned with `rz` and `angle`), `scarp`, `terraces`, `stage`, `grade` (a route held to a grade, bridging water, keeping earlier roads), `lake`, `coast`, `hold`, `blend`; `smooth_max`, `smooth_min`, `join` and `soften` (forms melting into the ground and each other) |
 | `walk` | the voxel walk over built blocks with `MoveRules`; `no_stand_above`, `catchers`, `unreached`, `nearest`, `gap_cleared` |
 | `audit` | `footing`: blocks that would fall, or have nothing to hang on; `loose_water`: water standing against air |
 | `render` | `iso`, `elevation`, `cutaway` along any polyline, x-ray, `trim`, all in the studio's colours |
 | `plot` | the bounded canvas a contributor builds a plot into, and `check_alone` with its verdict |
 | `mapxml` | `Doc` and `E`, an element builder with the pieces every writer repeated |
-| `document` | a board stated as a layer document (JSON) and built in order, every layer kept as a `Step` with the columns it changed: `build`, `area_distance` |
+| `document` | a board stated as a layer document (JSON) and built in stages, every layer kept as a `Step` with the columns it changed: `build`, `ground` (the fields and ground alone), `expr` (any number as a field), `area_distance`; the made stage in the Brittlebush grammar, placed boxes, masses with face patterns, floor fields and the symmetry |
 | `run` | the build pipeline: `python3 -m pgmvox.run <board-dir>` |
 
 ## The block table comes from the studio
@@ -472,18 +472,20 @@ because the plan held the walls and not the roof. It was moved two blocks in.
 ## The layer document
 
 **A board can be stated as data instead of code.** `document.build` reads a JSON document of ordered layers and
-builds it in fixed stages: named noise fields, ground, paint, lay, water, build and dress. `examples/layers/island.layers.json`
-is a whole board stated that way, a floating island with a river, a ridge, a sinkhole, a square, three paths, a
-hedge, a curtain wall, a fence and a wood. It builds in under a second.
+builds it in fixed stages: named fields, the made blueprint, ground, paint, lay, water, the made ground through the
+grammar, volume, structures, build, dress and symmetry. Every layer is kept as a `Step` with the columns it
+changed, so a stepper over a board needs no instrumenting.
 
 **A layer is one operation, its numbers and the areas it works in.** An area is a circle, an ellipse, a polygon, a
 rectangle, a line with a width or the whole board, and `rough` bends any of them. The operation reads one distance
-from it, 0 at the centre or deepest point and 1 on the rim, so any area carries any operation. An area may state
-its own `rise`, and the areas of one layer melt together by the layer's `join`.
+from it, 0 at the centre or deepest point and 1 on the rim, so any area carries any operation. Any number may be
+an expression over the grid, the heights so far and the named fields, and the landforms are expressions too.
 
-**Every layer is kept as it ran.** `build` returns each layer as a `Step` with the heights after it and the
-columns it changed, so a stepper over a board needs no instrumenting. The format and what it does not hold yet
-are in `analysis/freeform-vs-studio/LAYER-DOCUMENT.md`.
+**Three documents show what it holds.** `examples/layers/island.layers.json` is a grown island with a river, paths,
+a hedge and walls. `ports/riftwater/riftwater.ground.layers.json` is the Riftwater port's ground in 38 layers, held
+equal to `plan.land()` by a test. `examples/layers/saumland.layers.json` puts a yard in Brittlebush's grammar beside
+grown ground held under its rims, with monoliths sunk into the meadow, a fluted tower, a ringed forecourt and the
+half turn. The format is written out in `analysis/freeform-vs-studio/LAYER-DOCUMENT.md`.
 
 ## Starting a board
 

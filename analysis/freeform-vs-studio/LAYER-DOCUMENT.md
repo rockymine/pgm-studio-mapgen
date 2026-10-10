@@ -1,10 +1,11 @@
-# The layer document, draft 2
+# The layer document, draft 3
 
 A board stated as data: ordered layers, each one operation over the areas it is drawn in, built in fixed stages
 and kept as it ran. This is the shape the sketch tool's document takes in Studio 2.0. `pgmvox.document` builds
 it, `freeform/lib/examples/layers/island.layers.json` is a whole board written in it, and
 `freeform/lib/ports/riftwater/riftwater.ground.layers.json` is the Riftwater port's ground, 38 layers that build its
-heights and water bit for bit.
+heights and water bit for bit, and `freeform/lib/examples/layers/saumland.layers.json` puts made and grown
+ground on one board.
 
 ## What it is for
 
@@ -19,18 +20,23 @@ build.
 
 ## The stages
 
-**A document builds in seven stages, always in this order.** A layer belongs to one stage, and within a stage the
-layers run as listed.
+**A document builds in twelve stages, always in this order.** A layer belongs to one stage, and within a stage
+the layers run as listed.
 
 | Stage | Key | What it does |
 |---|---|---|
-| fields | `fields` | named noise, read by name from any layer |
-| ground | `ground` | the heights: outline, base, landforms, rivers, graded paths |
-| paint | `paint` | the top block of each column: the first paint layer that applies wins |
-| lay | `lay` | columns laid to the heights, rock in beds, soil by slope, the paint on top, the underside |
+| made blueprint | `made.cells` | the made ground's cells, read first, so the ground may refer to them as `made` and `made_top` |
+| fields | `fields` | named fields, read by name from any layer |
+| ground | `ground` | the heights of the grown ground: outline, base, landforms, rivers, graded paths |
+| paint | `paint` | the top block of each grown column: the first paint layer that applies wins |
+| lay | `lay` | grown columns laid to the heights, rock in beds, soil by slope, the paint on top, the underside |
 | water | `water` | the water each river holds, its bed painted by its own stack |
+| made | `made` | the made cells through the grammar, faces as deep as the drop to the grown beside them; its houses |
+| volume | `volume` | bodies set into the ground: a box turned and tilted, sunk, painted in its own frame, hollowed |
+| structures | `structures` | masses with patterned faces, floors laid as fields |
 | build | `build` | what stands on the finished ground: a path's surface and steps, walls, hedges, fences |
-| dress | `dress` | trees and scattered things, kept `clear` blocks (3 unless stated) off everything the build stage laid |
+| dress | `dress` | trees and scattered things, kept `clear` blocks (3 unless stated) off everything built |
+| symmetry | `symmetry` | the drawn part copied onto its image, recoloured for the other team |
 
 ## Areas
 
@@ -142,14 +148,54 @@ ground stage; the `surface` layer lays its blocks and steps once the ground is l
 slabs held to half a block between neighbours, the way Tamarisk Wash lays its ghats; stairs put a stair on every
 one-block rise.
 
-## What draft 2 does not hold
+## Made ground
+
+**Made ground is a blueprint of five-block cells, and the grammar lays it.** A cell entry is a rectangle of cells,
+`[cx0, cx1, cz0, cz1]`, of one `kind` at one floor `y`: flat, keep, stair (with `rises`), stacked (with `under`),
+gap, water or void. Its `section` names the piece it belongs to and its `fill` how a rectangle is filled (bed,
+grass, sand). `style` names the grammar's style, Brittlebush's today, and `dye` the keep's colour.
+
+**The grown ground keeps out of the made and is read by it.** The made cells are taken out of the grown land
+before anything is laid, and the grammar reads the grown tops beside it as its neighbours, so a made edge over the
+meadow is a face as deep as the drop and an edge level with it is a seam. The ground stage sees the blueprint as
+`made` (a mask) and `made_top`, so a layer can hold the meadow three blocks under every rim:
+
+```json
+{"id": "unter-dem-rand", "op": "set", "height": {"min": ["H", {"sub": ["rim", 3]}]}, "where": {"lt": ["near_made", 8]}}
+```
+
+with `rim` and `near_made` the fields `{"spread": ["made_top", 8]}` and `{"near": "made"}`. A house stacks whole
+cells by storey: `{"layers": [[[cx, cz], ...], ...], "floor": 22, "dye": 14, "door": [[cx, cz], "s"]}`.
+
+## Volume, structures and symmetry
+
+**A volume layer sets a body into the ground the way Stratum set its fragments.** `box` takes `at`, `size` (width,
+height, depth), `yaw`, `tilt`, `sink` (the share of its upright height under the ground), `on` (`lowest` under its
+footprint, `centre` or a y), `hole` (a frame's wall, for a ring or a gate) and `paint`: a `block`, or `bands`
+along one of its own axes, with a `cap`. It writes only over ground, water and plants, so trees and earlier bodies
+stand.
+
+**A structure is a mass with patterned faces, or a floor laid as a field.** `mass` pours a footprint from the
+ground to `height` and patterns its faces with pgmvox's face patterns, each stated as `{"flutes": {"period": 3,
+...}}`: band, courses, flutes, panels, slits, checker, windows, glyph rows and words, first match wins. `top` is a
+cornice or a parapet and `bottom` a coffer. `carpet` lays floor fields over a rectangle at a course: border,
+medallion, corners, diamonds, stripes, tiles, cross, star and `rings`, concentric bands round or square.
+
+**Symmetry is the last stage, so every stage before it draws one team's part.** `half`, `mirror_x`, `mirror_z`,
+`cw` or `ccw` copies what `keep` holds onto its image, turning every block's data with it, and `recolour` maps a
+team's blocks to the other's.
+
+## What draft 3 does not hold
 
 **Riftwater's ground is data; its world is not yet.** The heights and water are the 38 layers named above, held
 equal to `plan.land()` by a test. Its paint, buildings, caves and dressing are still the port's code.
 
-**Three stages have no layers yet.** Volume (caves, arches, bores, slabs at their own height), buildings (houses on
-their sites) and pieces (objectives, spawns) are pgmvox calls a board makes after `document.build`. Symmetry is not
-in the document either: the island is built whole.
+**The grammar takes cells, not sections.** Claywork builds its sections from a raster and its own piece list, and
+a document would need a `sections` entry beside `cells` for it, with the clay style. The fills and faces are the
+style's code; a document names them and does not state them.
+
+**Objectives, caves and the map's XML are not layers yet.** Spawns, wools, monuments and hills, the tunnels and
+chambers of `pgmvox.under`, and `map.xml` are calls a board makes after `document.build`.
 
 **`melt` works on the crater alone.** A level top or a butte with a surface of its own would melt the same way
 through `smooth_max`, and the operation list grows one row at a time from the shapes pgmvox already carries.
