@@ -14,7 +14,6 @@ import time
 import numpy as np
 from scipy import ndimage
 
-import kit
 import plan as P
 from pgmvox import B, World, rng
 from pgmvox import build as BLD
@@ -184,8 +183,8 @@ def monuments_lawn(w, r):
             for dz in range(-2, 3):
                 if max(abs(dx), abs(dz)) == 2:
                     w.set(sx + dx, 75, sz + dz, B.STONEBRICK, 3 if (dx + dz) % 2 else 0)
-        kit.brazier(w, sx - 3, 75, sz - 3, post=(B.SPRUCE_FENCE, 0), base=(B.COBBLE_WALL, 0))
-        kit.brazier(w, sx + 3, 75, sz - 3, post=(B.SPRUCE_FENCE, 0), base=(B.COBBLE_WALL, 0))
+        props.brazier(w, sx - 3, 75, sz - 3, post=(B.SPRUCE_FENCE, 0), base=(B.COBBLE_WALL, 0))
+        props.brazier(w, sx + 3, 75, sz - 3, post=(B.SPRUCE_FENCE, 0), base=(B.COBBLE_WALL, 0))
 
 
 def strand(w, R, r):
@@ -200,7 +199,7 @@ def strand(w, R, r):
     for x, z in ((-36, -60), (-12, -60), (12, -60), (36, -60), (-36, -46), (-24, -46), (24, -46), (36, -46)):
         props.lamp(w, x, 72, z, height=2, post=(B.SPRUCE_FENCE, 0), light=(B.SEA_LANTERN, 0), cap=None)
     for x, z in ((-20, -50), (22, -57), (-6, -46), (8, -60)):
-        kit.rubble(w, x, 72, z, r, r=1.5, blocks=((B.COBBLE, 0), (B.STONE, 5), (B.SNOW, 0)))
+        props.rubble(w, x, 72, z, r, r=1.5, blocks=((B.COBBLE, 0), (B.STONE, 5), (B.SNOW, 0)))
     # cover on the breakwater: small crates (2 x 2 x 2) and larger walls (6 x 1 x 3)
     for x in (-26, -8, 10, 26):
         for dx in (0, 1):

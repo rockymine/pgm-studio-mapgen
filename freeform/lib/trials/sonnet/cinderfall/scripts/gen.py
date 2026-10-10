@@ -13,9 +13,9 @@ import time
 
 import numpy as np
 
-import kit
 import plan as P
 from pgmvox import B, World, rng
+from pgmvox import props, shapes, trees
 from pgmvox import build as BLD
 from pgmvox import forms, route
 from pgmvox import terrain as T
@@ -261,13 +261,13 @@ def bridge(w, L):
             while yy > 2 and w.id(px, yy, pz) in (B.AIR, B.LAVA, B.LAVA_FLOW):
                 w.set(px, yy, pz, B.OBSIDIAN, 0)
                 yy -= 1
-    kit.brazier(w, x0 + 1, y, z0 - 1)
-    kit.brazier(w, x0 + 1, y, z1 + 1)
+    props.brazier(w, x0 + 1, y, z0 - 1)
+    props.brazier(w, x0 + 1, y, z1 + 1)
 
 
 def beacon(w, L):
     x0, z0, x1, z1 = P.BEACON
-    kit.tower(w, x0, z0, x1, z1, P.BEACON_Y, 12, rng=rng(P.BOARD, "beacon"), door_side="s", ladder_on="n")
+    forms.masonry_tower(w, x0, z0, x1, z1, P.BEACON_Y, 12, rng=rng(P.BOARD, "beacon"), door_side="s", ladder_on="n")
 
 
 def plinth(w, L):
@@ -304,12 +304,12 @@ def wood(w, L):
     road = ndimage.binary_dilation(road, iterations=2)
     cx, cz = P.CORE_AT
     ok = red & ~road & (np.hypot(X - cx, Z - cz) > 12) & (L.slope < 30)
-    pts = kit.scatter_points(ok, 70, 3.6, r, X, Z)
+    pts = shapes.scatter_points(ok, 70, 3.6, r, X, Z)
     for x, z in pts:
         y = int(L.H[x - w.x0, z - w.z0])
-        kit.dead_tree(w, x, y, z, r, int(r.integers(5, 10)))
+        trees.dead_tree(w, x, y, z, r, int(r.integers(5, 10)))
     n = 0
-    for x, z in kit.scatter_points(ok, 60, 2.5, r, X, Z, taken=pts):
+    for x, z in shapes.scatter_points(ok, 60, 2.5, r, X, Z, taken=pts):
         y = int(L.H[x - w.x0, z - w.z0])
         if r.random() < 0.6:
             w.set(x, y + 1, z, B.DEADBUSH, 0)
@@ -340,10 +340,10 @@ def dressing(w, L):
         hmask[x - w.x0, z - w.z0] = True
     hmask = ndimage.binary_dilation(hmask, iterations=3)
     free = (X < 0) & L.land & ~near_road & ~hmask & ~L.lava & ~L.wood & (np.hypot(X - cx, Z - cz) > 12) & (L.slope < 35)
-    for x, z in kit.scatter_points(free, 40, 5, r, X, Z):
+    for x, z in shapes.scatter_points(free, 40, 5, r, X, Z):
         y = int(L.H[x - w.x0, z - w.z0])
-        kit.rubble(w, x, y, z, r, r=float(r.uniform(1.2, 2.4)))
-    for x, z in kit.scatter_points(free, 80, 3, r, X, Z):
+        props.rubble(w, x, y, z, r, r=float(r.uniform(1.2, 2.4)), supported=False)
+    for x, z in shapes.scatter_points(free, 80, 3, r, X, Z):
         y = int(L.H[x - w.x0, z - w.z0])
         if w.id(x, y + 1, z) == B.AIR:
             w.set(x, y + 1, z, B.DEADBUSH, 0)
@@ -351,7 +351,7 @@ def dressing(w, L):
     for rt in L.routes:
         if rt["kind"] == "road":
             H = np.where(L.land, L.H, 0)
-            kit.lamps(w, [tuple(p) for p in rt["line"]], H, X, Z, every=14, side=3.2)
+            props.lamps(w, [tuple(p) for p in rt["line"]], H, X, Z, every=14, side=3.2)
     # the foundry yard: an anvil, furnaces, a crucible and a stack of iron by the smelter
     sm = P.houses()["smelter"]
     x1 = max(c[0] for c in sm["cells"]) + 2
@@ -371,7 +371,7 @@ def dressing(w, L):
     # the hold's yard: a lamp at each step of its terrace
     for dz in (7, 17):
         yy = P.at(L, -65, dz)
-        kit.brazier(w, -65, yy, dz)
+        props.brazier(w, -65, yy, dz)
 
 
 def hold_interior(w, L):

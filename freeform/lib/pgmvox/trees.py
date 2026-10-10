@@ -150,3 +150,25 @@ def scatter(w, zone, by_kind, weights, rng, spacing=0.85, tries=4000, planted=No
             planted.append((x, z, c))
             n += 1
     return n
+
+
+def dead_tree(w, x, y, z, rng, h, log=B.LOG2, kind=1):
+    """A bare tree on the floor at y: a trunk h high, three to five arms leaning out of its upper half, each ending
+    in a stub. No leaves. An arm fills only air and low plants."""
+    import math
+    for k in range(1, h + 1):
+        w.set(x, y + k, z, log, kind)
+    n = int(rng.integers(3, 6))
+    for _ in range(n):
+        a = rng.uniform(0, 2 * math.pi)
+        dx, dz = round(math.cos(a)), round(math.sin(a))
+        if (dx, dz) == (0, 0):
+            dx = 1
+        y0 = y + int(rng.integers(max(2, h // 2), h))
+        reach = int(rng.integers(2, 4))
+        for s in range(1, reach + 1):
+            bx, bz, by = x + dx * s, z + dz * s, y0 + (s // 2)
+            if w.id(bx, by, bz) in (B.AIR, B.TALLGRASS, B.DEADBUSH):
+                w.set(bx, by, bz, log, (kind | (4 if abs(dx) >= abs(dz) else 8)) if s < reach else kind)
+        if rng.random() < 0.5:
+            w.set(x + dx * reach, y0 + reach // 2 + 1, z + dz * reach, log, kind)

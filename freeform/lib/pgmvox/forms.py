@@ -128,3 +128,55 @@ def root_vines(w, land, floor, bottom, rng, chance=0.05, under=9, length=(3, 10)
                     w.set(x + dx, y, z + dz, B.VINE, bit)
                     n += 1
     return n
+
+
+def masonry_tower(w, x0, z0, x1, z1, y0, height, wall=((B.STONEBRICK, 0), (B.STONEBRICK, 0), (B.STONEBRICK, 2)),
+                  corner=(B.STONEBRICK, 3), floor=(B.PLANKS, 5), slit=(B.IRON_BARS, 0), door=B.DARK_OAK_DOOR,
+                  door_side="s", crown=(B.STONEBRICK, 0), crenel=(B.COBBLE_WALL, 0), light=(B.GLOWSTONE, 0), rng=None,
+                  ladder_on="n"):
+    """A hollow masonry tower over (x0, z0)-(x1, z1) on the floor at y0: walls from y0 + 1 to y0 + height on a
+    three-course footing, a floor every five courses, a ladder up the inside of the `ladder_on` wall through a hatch
+    in each floor, iron-barred slits on every face, a door at the foot on `door_side`, a crenellated crown with a
+    light in it. Returns the ladder's cell."""
+    from .orient import door as door_data, ladder as ladder_data
+    rng = rng or np.random.default_rng(1)
+    for x in range(x0, x1 + 1):
+        for z in range(z0, z1 + 1):
+            edge = x in (x0, x1) or z in (z0, z1)
+            at_corner = x in (x0, x1) and z in (z0, z1)
+            for y in range(y0 - 3, y0 + 1):
+                w.set(x, y, z, B.STONEBRICK, 0)
+            for y in range(y0 + 1, y0 + height + 1):
+                if at_corner:
+                    w.set(x, y, z, *corner)
+                elif edge:
+                    t = y - y0
+                    if t % 5 in (3, 4) and ((x - x0 + z - z0) % 3 == 1) and t > 2:
+                        w.set(x, y, z, *slit)
+                    else:
+                        w.set(x, y, z, *wall[int(rng.integers(len(wall)))])
+                else:
+                    w.set(x, y, z, B.AIR)
+            if not edge:
+                w.set(x, y0, z, *floor)
+                for t in range(5, height, 5):
+                    w.set(x, y0 + t, z, *floor)
+                w.set(x, y0 + height, z, *floor)
+    lx, lz = (x0 + x1) // 2, (z0 + z1) // 2
+    px, pz = {"n": (lx, z0 + 1), "s": (lx, z1 - 1), "w": (x0 + 1, lz), "e": (x1 - 1, lz)}[ladder_on]
+    for y in range(y0 + 1, y0 + height + 1):
+        w.set(px, y, pz, B.LADDER, ladder_data(ladder_on))
+    for t in range(5, height + 1, 5):
+        w.set(px, y0 + t, pz, B.LADDER, ladder_data(ladder_on))
+    dx_, dz_ = {"n": (lx, z0), "s": (lx, z1), "w": (x0, lz), "e": (x1, lz)}[door_side]
+    w.set(dx_, y0 + 1, dz_, door, door_data(door_side))
+    w.set(dx_, y0 + 2, dz_, door, door_data(door_side, upper=True))
+    for x in range(x0, x1 + 1):
+        for z in range(z0, z1 + 1):
+            if x in (x0, x1) or z in (z0, z1):
+                w.set(x, y0 + height + 1, z, *crown)
+                if (x + z) % 2 == 0:
+                    w.set(x, y0 + height + 2, z, *crenel)
+    w.set(lx, y0 + height + 1, lz, B.NETHER_FENCE, 0)
+    w.set(lx, y0 + height + 2, lz, *light)
+    return (px, pz)

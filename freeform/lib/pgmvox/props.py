@@ -3,6 +3,9 @@
     stall(w, x, y, z, "e", awning=14)          # a market stall on a floor at y, its counter toward the east
     stalls(w, cells, y, "e")                   # a row of them along an edge, a pace apart, colours in turn
     lamp(w, x, y, z)                           # a lamp post on a floor at y
+    lamps(w, path, H, X, Z, every=12)          # lamp posts beside a route, sides in turn
+    brazier(w, x, y, z)                        # a post on a stone footing with a light on top
+    rubble(w, x, y, z, rng)                    # a low heap of loose stone
     w.chest(x, y, z, laid(DEFENCE), facing=2)  # a chest laid out as a pattern, here a defence chest
     wool_chests(w, (x0, z0, x1, z1), y, "s")   # the studio's wool-room loot, two chests in each inner corner
     defence_chests(w, [(x, z) ...], y, "s")    # the studio's defence chests set into a wall's face, lids opened
@@ -10,6 +13,8 @@
 A prop is placed on a floor: y is the floor block, and it stands from y + 1. Each returns the cells it stands on,
 so a board can claim them and keep a route or a scatter off them.
 """
+import math
+
 from .blocks import B
 from .orient import NAMES, vec
 
@@ -157,3 +162,52 @@ def laid(layout, symmetric=True):
             if c != ".":
                 items.append((r * 9 + col,) + tuple(legend[c]))
     return items
+
+
+def brazier(w, x, y, z, post=(B.NETHER_FENCE, 0), light=(B.GLOWSTONE, 0), height=2, base=(B.COBBLE_WALL, 0)):
+    """A post on a stone footing, a light on top, standing on the floor at y."""
+    w.set(x, y + 1, z, *base)
+    for k in range(2, height + 1):
+        w.set(x, y + k, z, *post)
+    w.set(x, y + height + 1, z, *light)
+
+
+def rubble(w, x, y, z, rng, r=1.6, blocks=((B.STONE, 5), (B.COBBLE, 0), (B.STONE, 0), (B.GRAVEL, 0)),
+           supported=True):
+    """A heap of loose stone r across on the floor at y, its blocks drawn from rng. It fills only air and low
+    plants, and with `supported` only where the block below is ground, so no stone hangs over air or water."""
+    loose = (B.AIR, B.TALLGRASS, B.DEADBUSH)
+    R = int(math.ceil(r))
+    for dx in range(-R, R + 1):
+        for dz in range(-R, R + 1):
+            d = math.hypot(dx, dz) + rng.uniform(-0.4, 0.4)
+            if d <= r:
+                top = int(round((r - d) * 0.9)) + (1 if rng.random() < 0.5 else 0)
+                for k in range(1, max(1, top) + 1):
+                    if w.id(x + dx, y + k, z + dz) in loose and \
+                            (not supported or w.id(x + dx, y + k - 1, z + dz) not in loose + (B.WATER,)):
+                        w.set(x + dx, y + k, z + dz, *blocks[int(rng.integers(len(blocks)))])
+
+
+def lamps(w, path, H, X, Z, every=12, post=(B.NETHER_FENCE, 0), light=(B.GLOWSTONE, 0), height=2, side=3.0, start=6):
+    """Lamp posts beside a route every `every` blocks from `start`, `side` blocks off it, on alternate sides, each on
+    the ground H gives under it (where H is above 0). Returns the posts' cells."""
+    from .shapes import length, point_at
+    total = length(path)
+    s, n = start, 0
+    out = []
+    while s < total:
+        (px, pz), (hx, hz) = point_at(path, s)
+        nx, nz = -hz, hx
+        sg = 1 if n % 2 == 0 else -1
+        x, z = int(round(px + sg * side * nx)), int(round(pz + sg * side * nz))
+        i, k = x - int(X[0, 0]), z - int(Z[0, 0])
+        if 0 <= i < H.shape[0] and 0 <= k < H.shape[1] and H[i, k] > 0:
+            y = int(H[i, k])
+            for t in range(1, height + 1):
+                w.set(x, y + t, z, *post)
+            w.set(x, y + height + 1, z, *light)
+            out.append((x, z))
+        s += every
+        n += 1
+    return out

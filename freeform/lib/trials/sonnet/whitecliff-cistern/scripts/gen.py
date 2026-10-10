@@ -15,7 +15,6 @@ import zlib
 
 import numpy as np
 
-import kit
 import plan as P
 from pgmvox import B, World, rng
 from pgmvox import facade as F
@@ -296,7 +295,7 @@ def quay(w, R, r):
                 for y in range(P.QUAY + 1, P.QUAY + 8):
                     w.set(x, y, z, B.AIR)
     for x, z in ((-56, -7), (-56, 6), (-49, -7), (-49, 6)):
-        kit.brazier(w, x, P.QUAY, z, post=(B.SPRUCE_FENCE, 0), light=(B.SEA_LANTERN, 0), base=(B.COBBLE_WALL, 0))
+        props.brazier(w, x, P.QUAY, z, post=(B.SPRUCE_FENCE, 0), light=(B.SEA_LANTERN, 0), base=(B.COBBLE_WALL, 0))
     w.chest(-57, P.QUAY + 1, -1, [(0, "minecraft:golden_apple", 4, 0), (1, "minecraft:cooked_beef", 32, 0)], 5)
     w.chest(-57, P.QUAY + 1, 0, [(0, "minecraft:arrow", 32, 0), (1, "minecraft:golden_apple", 4, 0)], 5)
 

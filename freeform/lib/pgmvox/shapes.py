@@ -168,3 +168,22 @@ def edge_depth(mask, metric="taxicab"):
     """For every cell of a mask, how many steps it lies inside its edge (0 on the edge, -1 outside): the
     measure an underside, a parapet inset or a terrace is cut by."""
     return np.where(mask, distance_in(mask, metric) - 1, -1)
+
+
+def scatter_points(mask, n, min_d, rng, X, Z, taken=()):
+    """Up to n points (x, z) over the cells of a mask, in an order drawn from rng, none nearer than min_d to another
+    or to a point of `taken`."""
+    import math
+    cells = np.argwhere(mask)
+    order = rng.permutation(len(cells))
+    pts = list(taken)
+    out = []
+    for j in order:
+        i, k = cells[j]
+        p = (int(X[i, k]), int(Z[i, k]))
+        if all(math.hypot(p[0] - q[0], p[1] - q[1]) >= min_d for q in pts):
+            pts.append(p)
+            out.append(p)
+            if len(out) >= n:
+                break
+    return out

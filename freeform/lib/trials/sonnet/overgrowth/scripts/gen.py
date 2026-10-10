@@ -14,9 +14,9 @@ import time
 import numpy as np
 from scipy import ndimage
 
-import kit
 import plan as P
 from pgmvox import B, World, rng
+from pgmvox import forms, props
 from pgmvox import facade as F
 from pgmvox import trees
 from pgmvox import terrain as T
@@ -198,7 +198,7 @@ def courts(w, R, L, r):
         F.border(1, (B.STAINED_CLAY, 9)), F.medallion(0.0, 0.2, (B.STAINED_CLAY, 4)), F.tiles(2, (B.STONEBRICK, 0), (B.STONEBRICK, 1)),
         default=(B.STONEBRICK, 1)))
     for x, z in ((cx0 + 2, cz0 + 2), (cx0 + 2, cz1 - 2), (cx1 - 3, cz0 + 2), (cx1 - 3, cz1 - 2)):
-        kit.brazier(w, x, P.COURT_Y, z, post=(B.JUNGLE_FENCE, 0), light=(B.GLOWSTONE, 0), base=(B.COBBLE_WALL, 1))
+        props.brazier(w, x, P.COURT_Y, z, post=(B.JUNGLE_FENCE, 0), light=(B.GLOWSTONE, 0), base=(B.COBBLE_WALL, 1))
     # the flights down from the gates: the plan's stair cells over red's court side
     for i, k in np.argwhere(R.mask("stair") & (R.X < -40)):
         x, z, y = int(R.X[i, k]), int(R.Z[i, k]), int(R.H[i, k])
@@ -215,7 +215,7 @@ def courts(w, R, L, r):
 def towers(w, R, L, r):
     for (x0, z0, x1, z1) in P.TOWERS:
         south = z0 > 0
-        kit.tower(w, x0, z0, x1, z1, P.TOWER_Y, P.TOWER_TOP - P.TOWER_Y,
+        forms.masonry_tower(w, x0, z0, x1, z1, P.TOWER_Y, P.TOWER_TOP - P.TOWER_Y,
                   wall=(MOSS, MOSS, BRICK, CRACK), corner=CHISEL, floor=(B.PLANKS, 3), slit=(B.IRON_BARS, 0),
                   door=B.JUNGLE_DOOR, door_side="n" if south else "s", crown=BRICK, crenel=(B.COBBLE_WALL, 1),
                   light=(B.SEA_LANTERN, 0), rng=r, ladder_on="s")

@@ -15,9 +15,9 @@ import numpy as np
 from scipy import ndimage
 
 import desert as DS
-import kit
 import plan as P
 from pgmvox import B, World, rng
+from pgmvox import forms
 from pgmvox import build as BLD
 from pgmvox import facade as F
 from pgmvox import props, route, shapes
@@ -221,7 +221,7 @@ def houses(w, L):
 
 def minaret(w, L):
     x0, z0, x1, z1 = P.houses()["minaret"]["spec"]["rect"]
-    kit.tower(w, x0, z0, x1, z1, P.PLATEAU, 14, wall=((B.SANDSTONE, 2), (B.SANDSTONE, 2), (B.SANDSTONE, 0)),
+    forms.masonry_tower(w, x0, z0, x1, z1, P.PLATEAU, 14, wall=((B.SANDSTONE, 2), (B.SANDSTONE, 2), (B.SANDSTONE, 0)),
               corner=(B.SANDSTONE, 1), floor=(B.PLANKS, 4), slit=(B.STAINED_PANE, 3), door=B.ACACIA_DOOR,
               door_side="n", crown=(B.SANDSTONE, 1), crenel=(B.SANDSTONE, 2), light=(B.SEA_LANTERN, 0),
               rng=rng(P.BOARD, "minaret"), ladder_on="s")
@@ -362,7 +362,7 @@ def aqueduct(w, L):
                 w.set(x, P.DECK_Y + 1, z, B.COBBLE_WALL, 0)
     for _ in range(14):
         x, z = int(r.integers(-14, -3)), int(r.integers(-4, 4))
-        kit.rubble(w, x, ground(x, z), z, r, r=1.8, blocks=((B.SANDSTONE, 0), (B.SANDSTONE, 2), (B.SAND, 0)))
+        props.rubble(w, x, ground(x, z), z, r, r=1.8, blocks=((B.SANDSTONE, 0), (B.SANDSTONE, 2), (B.SAND, 0)))
 
 
 def underground(w, L):
@@ -438,10 +438,10 @@ def plants(w, L):
     hm = ndimage.binary_dilation(hm, iterations=3)
     red = X < 0
     grove = L.grove & red & ~road & ~hm & (L.water == 0) & (L.slope < 25)
-    palms = kit.scatter_points(grove, 40, 3.8, r, X, Z)
+    palms = shapes.scatter_points(grove, 40, 3.8, r, X, Z)
     for x, z in palms:
         DS.palm(w, x, int(L.H[x - w.x0, z - w.z0]), z, r)
-    shrubs = kit.scatter_points(grove, 40, 2.6, r, X, Z, taken=palms)
+    shrubs = shapes.scatter_points(grove, 40, 2.6, r, X, Z, taken=palms)
     for x, z in shrubs:
         DS.tamarisk(w, x, int(L.H[x - w.x0, z - w.z0]), z, r)
     # reeds and lilies at the pond
@@ -456,23 +456,23 @@ def plants(w, L):
     free = red & ~road & ~hm & ~L.grove & (L.slope < 22) & (L.water == 0) & (L.H > P.PLATEAU - 3) & (L.H < P.PLATEAU + 7)
     free &= (np.hypot(X - P.OBELISK_AT[0], Z - P.OBELISK_AT[1]) > 12) & (np.hypot(X - P.STONE_AT[0], Z - P.STONE_AT[1]) > 12)
     rim = free & (np.abs(X + 0.5) < 30) & (np.abs(X + 0.5) > 22)
-    for x, z in kit.scatter_points(rim, 12, 7, r, X, Z):
+    for x, z in shapes.scatter_points(rim, 12, 7, r, X, Z):
         DS.tamarisk(w, x, int(L.H[x - w.x0, z - w.z0]), z, r)
     n = 0
-    for x, z in kit.scatter_points(free, 60, 6, r, X, Z):
+    for x, z in shapes.scatter_points(free, 60, 6, r, X, Z):
         if DS.cactus(w, x, int(L.H[x - w.x0, z - w.z0]), z, r):
             n += 1
-    for x, z in kit.scatter_points(free, 24, 8, r, X, Z):
-        kit.rubble(w, x, int(L.H[x - w.x0, z - w.z0]), z, r, r=float(r.uniform(1.2, 2.2)),
+    for x, z in shapes.scatter_points(free, 24, 8, r, X, Z):
+        props.rubble(w, x, int(L.H[x - w.x0, z - w.z0]), z, r, r=float(r.uniform(1.2, 2.2)),
                    blocks=((B.SANDSTONE, 0), (B.STAINED_CLAY, 1), (B.HARDENED_CLAY, 0), (B.SAND, 1)))
-    for x, z in kit.scatter_points(free, 80, 3, r, X, Z):
+    for x, z in shapes.scatter_points(free, 80, 3, r, X, Z):
         y = int(L.H[x - w.x0, z - w.z0])
         if w.id(x, y + 1, z) == B.AIR:
             w.set(x, y + 1, z, B.DEADBUSH, 0)
     # the wash's floor: boulders and dry shrubs
     wash = red & L.wash & (L.H <= P.WASH_FLOOR + 3) & ~road
-    for x, z in kit.scatter_points(wash, 20, 9, r, X, Z):
-        kit.rubble(w, x, int(L.H[x - w.x0, z - w.z0]), z, r, r=float(r.uniform(1.5, 2.6)),
+    for x, z in shapes.scatter_points(wash, 20, 9, r, X, Z):
+        props.rubble(w, x, int(L.H[x - w.x0, z - w.z0]), z, r, r=float(r.uniform(1.5, 2.6)),
                    blocks=((B.SANDSTONE, 0), (B.STONE, 5), (B.COBBLE, 0), (B.HARDENED_CLAY, 0)))
     # the camp at the north ghat's head: two tents and a fire pit of netherrack-free stones
     for tx, tz, along, col in ((-33, -14, "x", 3), (-30, -19, "z", 0)):
@@ -485,7 +485,7 @@ def lamps(w, L):
     H = np.where(L.land if hasattr(L, "land") else True, L.H, 0)
     for rt in L.routes:
         if rt["kind"] == "road":
-            kit.lamps(w, [tuple(p) for p in rt["line"]], H, X, Z, every=13, side=3.2, post=(B.ACACIA_FENCE, 0),
+            props.lamps(w, [tuple(p) for p in rt["line"]], H, X, Z, every=13, side=3.2, post=(B.ACACIA_FENCE, 0),
                       light=(B.SEA_LANTERN, 0))
 
 

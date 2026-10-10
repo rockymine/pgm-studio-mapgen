@@ -863,6 +863,39 @@ class Trees(unittest.TestCase):
 
 
 class Props(unittest.TestCase):
+    def test_scattered_points_keep_apart_and_off_the_taken(self):
+        X, Z = np.meshgrid(np.arange(40), np.arange(40), indexing="ij")
+        pts = shapes.scatter_points(np.ones((40, 40), bool), 30, 5.0, np.random.default_rng(2), X, Z, taken=[(20, 20)])
+        every = pts + [(20, 20)]
+        self.assertTrue(len(pts) > 10)
+        self.assertTrue(all(math.hypot(a[0] - b[0], a[1] - b[1]) >= 5.0 for i, a in enumerate(every) for b in every[i + 1:]))
+
+    def test_rubble_hangs_over_nothing_unless_told(self):
+        for supported in (True, False):
+            w = World(0, 0, 12, 12, sy=12)
+            w.fill(0, 0, 0, 11, 2, 11, B.STONE)
+            w.fill(6, 2, 0, 11, 2, 11, B.AIR)                       # half the floor is a step down
+            props.rubble(w, 6, 2, 6, np.random.default_rng(1), r=2.6, supported=supported)
+            hanging = [(x, y, z) for x in range(12) for z in range(12) for y in range(3, 12)
+                       if w.id(x, y, z) != B.AIR and w.id(x, y - 1, z) == B.AIR]
+            self.assertEqual(hanging == [], supported)
+
+    def test_a_masonry_tower_is_climbed_inside_and_entered_at_its_foot(self):
+        w = World(0, 0, 9, 9, sy=40)
+        px, pz = forms.masonry_tower(w, 1, 1, 7, 7, 10, 14, ladder_on="n", door_side="s")
+        self.assertEqual((px, pz), (4, 2))
+        self.assertTrue(all(w.id(4, y, 2) == B.LADDER for y in range(11, 25)))
+        self.assertEqual((w.id(4, 11, 7), w.id(4, 12, 7)), (B.DARK_OAK_DOOR, B.DARK_OAK_DOOR))
+        self.assertEqual(w.id(4, 26, 4), B.GLOWSTONE)
+
+    def test_lamps_stand_beside_the_route_on_alternate_sides(self):
+        w = World(0, 0, 60, 20, sy=20)
+        X, Z = w.grid()
+        H = np.full((60, 20), 5)
+        posts = props.lamps(w, [(0, 10), (59, 10)], H, X, Z, every=10, side=3)
+        self.assertEqual([z for _, z in posts], [13, 7, 13, 7, 13, 7][:len(posts)])
+        self.assertTrue(all(w.id(x, 8, z) == B.GLOWSTONE for x, z in posts))
+
     def test_a_row_of_stalls_faces_one_way(self):
         w = World(0, 0, 30, 30, sy=20)
         w.ids[:, :6, :] = B.STONE
