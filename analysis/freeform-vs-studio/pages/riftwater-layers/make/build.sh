@@ -8,4 +8,5 @@ python3 worldsteps.py "$PWD/out/world.pkl"
 python3 frames.py
 python3 overlay.py
 python3 forms.py
+python3 soft.py
 python3 page.py

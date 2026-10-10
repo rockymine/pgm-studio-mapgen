@@ -2,7 +2,7 @@
 
 `../index.html` is the Riftwater port shown as a stack of layers: the outline, sixteen ground steps and twelve world
 steps, each with the columns it changed; every shape the port's code names, drawn by the kind of geometry it is
-written as; a hill and a crater over four kinds of area; the sinkhole and the spoil heap as records.
+written as; a hill and a crater over four kinds of area and with a soft edge; the sinkhole and the spoil heap as records.
 
 `./build.sh` rebuilds it from the port in about ten seconds. `heights.py` runs the port's `land()` with a snapshot
 after each step and asserts the ground is the port's own. `worldsteps.py` runs `gen.py`'s steps one at a time and
