@@ -21,7 +21,7 @@ from scipy import ndimage
 
 from . import noise
 from .noise import smoothstep
-from .shapes import distance_in, polyline, signed_distance
+from .shapes import distance_in, nearest_on, polyline, signed_distance
 
 
 MODES = ("set", "lift", "cut")
@@ -406,4 +406,36 @@ def ridge(H, coord, foot, width, crest, rough=0.0, spurs=(), terrace=None):
         step, riser, above = terrace
         lifted = terraces(lifted, t > above, step=step, riser=riser)
     return np.where(lifted > H, lifted, H)
+
+
+def spire_sites(box, n, r=(1.6, 3.4), rise=(8, 22), needles=0.7, spacing=2.5, keep_clear=(), seed=0, tries=400):
+    """Up to n spire sites (x, z, r, rise, kind) drawn in `box` (x0, z0, x1, z1) from seed: a radius and a rise
+    drawn from their ranges, a share `needles` of them needles and the rest hoodoos, no two closer than their radii
+    and `spacing`, none within its radius and the margin of a path in `keep_clear` [(path, margin)]."""
+    rng = np.random.default_rng(seed)
+    x0, z0, x1, z1 = box
+    sites = []
+    for _ in range(tries):
+        x, z = rng.uniform(x0, x1), rng.uniform(z0, z1)
+        radius = rng.uniform(*r)
+        if any(np.hypot(x - a, z - b) < radius + c + spacing for a, b, c, _, _ in sites):
+            continue
+        if any(nearest_on(path, x, z)[0] < radius + margin for path, margin in keep_clear):
+            continue
+        sites.append((x, z, radius, rng.uniform(*rise), "needle" if rng.random() < needles else "hoodoo"))
+        if len(sites) >= n:
+            break
+    return sites
+
+
+def spire_field(H, X, Z, sites, needle=1.3, hoodoo=5.0):
+    """Spires standing on the ground at each site (x, z, r, rise, kind): rising `rise` over the ground at the
+    site's column as 1 - (d / r) ** p, p `needle` for a pointed one and `hoodoo` for a capped one. Only lifts."""
+    H = np.asarray(H, float)
+    for x, z, radius, rise, kind in sites:
+        d = np.hypot(X - x, Z - z)
+        prof = np.clip(1 - (d / radius) ** (needle if kind == "needle" else hoodoo), 0, 1)
+        base = H[int(x - X[0, 0]), int(z - Z[0, 0])]
+        H = np.where(prof > 0.02, np.maximum(H, base + rise * prof), H)
+    return H
 

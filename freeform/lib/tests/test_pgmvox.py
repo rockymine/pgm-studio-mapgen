@@ -425,6 +425,23 @@ class Landforms(unittest.TestCase):
         spur = LF.ridge(H, X, foot, 15, 50.0, spurs=[(np.abs(Z), np.full(X.shape, 70.0), (10, 2))])
         self.assertTrue((spur[(np.abs(Z) < 2) & (X > 0)] >= 70).all())       # the arm holds its top out east
 
+    def test_spire_sites_keep_apart_and_off_the_path_and_stand_on_the_ground(self):
+        path = [(-30, 0), (30, 0)]
+        sites = LF.spire_sites((-40, -30, 40, 30), 20, spacing=2.5, keep_clear=[(path, 3)], seed=5)
+        self.assertTrue(0 < len(sites) <= 20)
+        for i, (x, z, r, rise, kind) in enumerate(sites):
+            self.assertTrue(-40 <= x <= 40 and 1.6 <= r <= 3.4 and 8 <= rise <= 22 and kind in ("needle", "hoodoo"))
+            self.assertGreaterEqual(shapes.nearest_on(path, x, z)[0], r + 3)
+            for a, b, c, _, _ in sites[i + 1:]:
+                self.assertGreaterEqual(math.hypot(x - a, z - b), r + c + 2.5)
+        self.assertEqual(sites, LF.spire_sites((-40, -30, 40, 30), 20, spacing=2.5, keep_clear=[(path, 3)], seed=5))
+        X, Z = self.X.astype(float), self.Z.astype(float)
+        H = np.full(X.shape, 40.0)
+        field = LF.spire_field(H, X, Z, [(10.0, 10.0, 3.0, 12.0, "needle"), (-20.0, 5.0, 3.0, 9.0, "hoodoo")])
+        self.assertEqual((field[70, 70], field[40, 65]), (52.0, 49.0))
+        self.assertGreater(field[42, 65] - 40, 0.8 * 9)                    # a hoodoo is capped: most of its height 2 out
+        self.assertLess(field[72, 70] - 40, 0.6 * 12)                      # a needle is pointed: well down 2 out
+
     def water_world(self, H, *waters):
         w = World(-60, -60, 120, 120, sy=96)
         top = np.round(H).astype(int)
@@ -1037,6 +1054,18 @@ class Underground(unittest.TestCase):
         d = walk.walk(w.ids, [line[3]], w.x0, w.z0)
         self.assertIsNotNone(walk.nearest(d, 0, 0, *line[-1]))
         self.assertIsNotNone(walk.nearest(d, 0, 0, 5, 41, 5, r=2))         # into the well and up its ladder
+
+
+class Bore(unittest.TestCase):
+    def test_a_bore_is_open_from_top_to_bottom_within_its_radius(self):
+        from pgmvox import under as U
+        w = World(-10, -10, 20, 20, sy=50)
+        w.ids[:, :40, :] = B.STONE
+        opened = U.bore(w, (0.0, 0.0), 3.2, 0, 39, seed=1, r_noise=0.25, lip=(40, (B.STAINED_CLAY, 12)))
+        self.assertTrue(all(math.hypot(x, z) < 3.2 + 1.0 for x, z in opened))
+        self.assertTrue(all((x, z) in opened for x in range(-3, 4) for z in range(-3, 4) if math.hypot(x, z) <= 2.2))
+        self.assertTrue(all((w.ids[x + 10, 0:40, z + 10] == B.AIR).all() for x, z in opened))   # it leaks to y 0
+        self.assertTrue(any(w.id(x, 40, z) == B.STAINED_CLAY for x in range(-5, 6) for z in range(-5, 6)))
 
 
 class Trees(unittest.TestCase):

@@ -26,6 +26,7 @@ import numpy as np
 from . import solid as S
 from .blocks import B, PASSABLE
 from .orient import ladder as ladder_data, stair as stair_data, torch as torch_data, vec
+from .shapes import nearest_on
 
 WATERS = (B.WATER, B.WATER_FLOW)
 
@@ -62,28 +63,16 @@ def carve(w, cells, floor=None, ground=None, cover=3, keep=None):
     return n
 
 
-def _arc(pts, x, z):
-    """The arc length along a waypoint list's plan of the point nearest (x, z)."""
-    best, acc = (1e9, 0.0), 0.0
-    for a, b in zip(pts, pts[1:]):
-        L = math.hypot(b[0] - a[0], b[2] - a[2]) or 1e-9
-        t = max(0.0, min(1.0, ((x - a[0]) * (b[0] - a[0]) + (z - a[2]) * (b[2] - a[2])) / L ** 2))
-        d = math.hypot(x - (a[0] + t * (b[0] - a[0])), z - (a[2] + t * (b[2] - a[2])))
-        if d < best[0]:
-            best = (d, acc + t * L)
-        acc += L
-    return best[1]
-
-
 def tunnel(w, pts, ground=None, cover=3, keep=None, lift=0.45):
     """A cave passage through waypoints (x, floor_y, z, radius): a tube whose axis runs `lift` of the radius over
     the floor, carved only at or over the floor interpolated along the passage. Returns the blocks carved and the
     floor function, for whatever is laid on it next."""
     arc = np.concatenate([[0], np.cumsum([math.hypot(b[0] - a[0], b[2] - a[2]) for a, b in zip(pts, pts[1:])])])
     tube = S.tube([(x + 0.5, fy + lift * r, z + 0.5) for x, fy, z, r in pts], [p[3] for p in pts])
+    plan = [(p[0], p[2]) for p in pts]
 
     def floor(x, z):
-        return int(round(np.interp(_arc(pts, x, z), arc, [p[1] for p in pts])))
+        return int(round(np.interp(nearest_on(plan, x, z)[1], arc, [p[1] for p in pts])))
     return carve(w, tube.cells(), floor, ground, cover, keep), floor
 
 
@@ -244,3 +233,23 @@ def shaft(w, x, z, bottom, top, wall=(B.PLANKS, 1), post=(B.LOG, 1), ladder_on="
                 line(ox, oz, wall)
         w.set(x + dx_, y, z + dz_, B.LADDER, ladder_data(ladder_on))
     w.set(x + dx_, bottom - 1, z + dz_, *wall)
+
+
+def bore(w, at, r, y0, y1, seed=0, r_noise=0.0, fill=(B.AIR, 0), lip=None):
+    """A round hole straight through rock: every column within r of `at` (x, z), the radius jittered by `r_noise`
+    blocks drawn from seed, emptied (or filled with `fill`) from y0 to y1, so lava let out above falls through it.
+    `lip` (y, block) rings it at y. Returns the columns it opened."""
+    rng = np.random.default_rng(seed)
+    cx, cz = at
+    opened = []
+    for x in range(int(cx - r - 1), int(cx + r + 2)):
+        for z in range(int(cz - r - 1), int(cz + r + 2)):
+            d = math.hypot(x - cx, z - cz)
+            if d < r + r_noise * rng.standard_normal():
+                for y in range(y0, y1 + 1):
+                    w.set(x, y, z, *fill)
+                opened.append((x, z))
+            elif lip is not None and d < r + 1.5:
+                w.set(x, lip[0], z, *lip[1])
+    return opened
+
