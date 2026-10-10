@@ -52,3 +52,8 @@ The capture-the-wool boards came out a lot worse, as expected: their layouts are
 that makes no sense, and it is hard to correct. The pgmvox one is still middling, but its rooms are clearly
 separated. A composed layout would help both, but that is not the point of the experiment. The destroy boards are
 the closer comparison, and the pgmvox one won the author over.
+
+## Added afterwards
+
+**Abbeymoor, pgmvox, point 7.** An obsidian monument is at most three blocks. A 3 × 3 × 3 obsidian cube is 27 blocks
+of obsidian and effectively unbreakable in a match; the studio caps obsidian at three blocks (DC3) for this reason.

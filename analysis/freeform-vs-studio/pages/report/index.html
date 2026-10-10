@@ -131,6 +131,7 @@ footer{margin-top:72px;padding-top:16px;border-top:1px solid var(--rule);font-fa
   <a href="#playtest">The playtest notes, sorted</a>
   <a href="#boards">Every board</a>
   <a href="#studio2">Studio 2.0</a>
+  <a href="#crosscheck">A second analysis</a>
   <a href="#method">Method and limits</a>
 </nav>
 
@@ -244,6 +245,7 @@ footer{margin-top:72px;padding-top:16px;border-top:1px solid var(--rule);font-fa
   <figure class="fig"><img src="img/exp-am-studio-crypt.webp" alt="The studio Abbeymoor crypt, eye view with real textures" width="900" height="504" loading="lazy"><figcaption><span class="tag s">studio</span> the crypt hall, built from subtract cuts and lids, in the studio's eye view</figcaption></figure>
   <figure class="fig"><img src="img/exp-am-pgmvox-xray.webp" alt="The pgmvox Abbeymoor crypt and passage, x-ray" width="520" height="296" loading="lazy"><figcaption><span class="tag v">pgmvox</span> the crypt, the Night Stair and the passage to the barn cellar, x-rayed</figcaption></figure>
 </div>
+<p><strong>One fault slipped through that the studio refuses:</strong> pgmvox's Abbeymoor monuments are 3 × 3 × 3 obsidian cubes, 27 blocks each, effectively unbreakable in a match. The studio caps an obsidian monument at three blocks (<code>DC3</code>). It goes back to the builder with your review.</p>
 <p><strong>Each builder hit the other tool's strength as a wall.</strong> The studio builder could not build a crypt, ladders, ruins or standing stones except as boxes of blocks, had one wool-room shell per map, and could not fit a defence wall into the plan's wall rules. The pgmvox builder had to write its crypt, defence wall, build-zone outline and objective-visibility check itself, and worked round the house window and door defects. Each is missing the other's half, which is the case for merging them rather than choosing.</p>
 </div>
 
@@ -381,7 +383,8 @@ footer{margin-top:72px;padding-top:16px;border-top:1px solid var(--rule);font-fa
 <h2 id="observations">Your observations, checked</h2>
 <h3>Windows against the door</h3>
 <p><strong>Confirmed, and it is half of all houses.</strong> pgmvox's window rule, <code>build.windows()</code> (<code>build.py:345</code>), looks only at how far along the wall a block is; the door is chosen and written after the walls (<code>build.py:442–450</code>) and nothing clears its neighbours. Over 960 sampled houses, 49% had a pane or bar beside the door. Riftwater's own <code>house.py</code> has the same gap (windows at lines 171–184, the door at 195–196). The studio already has the rule: <code>HouseWindows</code> drops “any seat that would meet a doorway, or the block of wall either side of it”. The fix is to choose the door first and pass its run into the window test.</p>
-<p><strong>On Riftwater itself, 36 of the 58 doors (62%) have a glass pane directly beside them in the same wall</strong>, 18 on each side. The door's facing was read from its data, and the check counts a pane on either side of the doorway, along the wall, at either of its two heights. Red's 18 are below; blue's are their mirror images at <code>x' = −1 − x</code>.</p>
+<p class="callout" style="margin:12px 0"><strong>Fixed since:</strong> pgmvox 0.20.0 on the freeform branch keeps a block of wall either side of every door (<code>c7f16729</code>), and the rebuilt Riftwater has 0 doors with a pane beside them. The count below is the board as it was.</p>
+<p><strong>On Riftwater as first built, 36 of the 58 doors (62%) had a glass pane directly beside them in the same wall</strong>, 18 on each side. The door's facing was read from its data, and the check counts a pane on either side of the doorway, along the wall, at either of its two heights. Red's 18 are below; blue's are their mirror images at <code>x' = −1 − x</code>.</p>
 <details><summary>The 18 doors on red's side, with a pane beside them</summary>
 <div class="tbl" style="margin:10px 0 0"><table><thead><tr><th class="n">x</th><th class="n">y</th><th class="n">z</th><th>door faces</th></tr></thead><tbody>
 <tr><td class="n">−94</td><td class="n">60</td><td class="n">−7</td><td>east</td></tr>
@@ -534,6 +537,10 @@ footer{margin-top:72px;padding-top:16px;border-top:1px solid var(--rule);font-fa
   <li><strong>The operations ported into the studio</strong>, family by family, in the order the boards used them: field and landform, paint and beds, carves (TS140), houses with a heading, the grammar, routes.</li>
   <li><strong>One plan</strong>, with polygons, storeys and the grammar's per-piece fields, whose numbers-with-targets become rules.</li>
 </ol>
+
+<h2 id="crosscheck">A second analysis, cross-checked</h2>
+<p>The freeform branch's own session had a Sonnet agent write <code>freeform/QUALITY-LEAP.md</code> on the same question. It lists the same mechanisms (per-block control, paint by slope and tilted beds, undersides, angled frames with the studio's roofs, the grammar, props, the plan-sketch-walk loop) and ranks the floating objective marker first among what to adopt. Three things it states more sharply than this report: the studio's painter "rewrites the surface, no new geometry, only materials", so every studio look is a finish over a shape already decided; <code>WX12</code> holds a room inside its plan piece, which is part of why the studio's wool rooms sat where the plan's rectangles were; and a freeform board enforces only the rules its checker remembers to re-measure.</p>
+<p>Two of its claims do not hold. It asks for a slope axis in the studio's themes, which exists (TP24), and the studio's strata are ahead (TP26). And it says gameplay "barely changed": the XML is valid, but nine of your thirty playtest faults are ones the studio catches, and the experiment's pgmvox Abbeymoor added a tenth, a 27-block obsidian cube where <code>DC3</code> allows three. Its "nothing here is controlled" was true when written; the experiment now moves weight off the tool and onto what was spent on it. The full cross-check is <code>analysis/freeform-vs-studio/QUALITY-LEAP-CROSSCHECK.md</code>.</p>
 
 <h2 id="method">Method and limits</h2>
 <ul>
