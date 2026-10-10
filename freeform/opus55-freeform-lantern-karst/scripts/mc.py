@@ -184,10 +184,16 @@ class World:
         return -1
 
     def chest(self, x, y, z, items, facing=2):
-        """items: [(slot, 'minecraft:id', count, damage)]. facing 2 north 3 south 4 west 5 east."""
+        """items: [(slot, 'minecraft:id', count, damage[, [(enchantment, level)]])]. facing 2 north 3 south 4 west
+        5 east."""
         self.set(x, y, z, B.CHEST, facing)
-        self.tiles.append({"kind": "Chest", "x": x, "y": y, "z": z,
-                           "items": [{"slot": s, "id": i, "count": c, "damage": d} for s, i, c, d in items]})
+        out = []
+        for it in items:
+            e = {"slot": it[0], "id": it[1], "count": it[2], "damage": it[3]}
+            if len(it) > 4 and it[4]:
+                e["ench"] = [[int(a), int(b)] for a, b in it[4]]
+            out.append(e)
+        self.tiles.append({"kind": "Chest", "x": x, "y": y, "z": z, "items": out})
 
     def sign(self, x, y, z, lines, wall_facing=None, rot=0):
         if wall_facing is None:

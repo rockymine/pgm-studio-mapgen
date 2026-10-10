@@ -107,3 +107,17 @@ holds the plan's own distances, unchanged from `PLAN.md`.
 | Two wool colours a team on a half-turned board | Fiddly: the turn copies red's lime and yellow, which are recoloured to magenta and orange after | Per-team recolouring of turned wool, banners and monument pedestals |
 | The paint the author's ruling asks for | Moderate: built floor and paths as cells of three, patches capped at about 7% | The ruling as defaults: a built-floor set, a path set and a patch cap a board starts from |
 | Scenery karst towers out in the void | Easy: placed by rejection sampling at least 16 off anything playable | A scenery layer the gameplay checks ignore and the build-area marker never covers |
+
+## After the playtest
+
+**The bedrock wall now carries the studio's defence chests on its front face, the one the road comes up to.** It
+had none; the only chests past it were the Store's, which a player had to get over the wall to find. Two chests
+are set into the wall's road side at the lane's thirds, at the height a player on the road stands, each with the
+block over it opened so its lid lifts. The bedrock behind each is untouched, so the wall still stands whole.
+
+**The Store's chests carry the studio's wool-room loot, not a set of iron.** Each inner corner has two chests,
+the lower with planks, Speed potions and golden apples, the upper with diamond leggings, Power bows and planks. That
+is the loadout the studio's wool-room stamper gives, now in the library as `props.wool_chests`.
+
+**The walks read back as before.** The chests stand in the Store's corners and in the wall, off every way a
+player walks, and every distance in `renders/walks.txt` is unchanged.

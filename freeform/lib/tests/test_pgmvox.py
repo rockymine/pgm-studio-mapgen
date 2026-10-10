@@ -850,6 +850,19 @@ class WoolChests(unittest.TestCase):
         self.assertEqual(w.get(2, 5, 3), (B.CHEST, 3))
         self.assertEqual(w.get(2, 5, 9), (B.CHEST, 2))
 
+    def test_defence_chest_is_the_studios(self):
+        items = props.studio_defence()
+        self.assertEqual(len(items), 27)
+        self.assertEqual(sorted(i[0] for i in items), list(range(27)))
+        self.assertEqual(sum(1 for i in items if i[1] == "minecraft:planks" and i[3] == 5), 12)
+        w = World(0, 0, 8, 8, sy=8)
+        for y in range(1, 5):
+            w.set(3, y, 3, B.BEDROCK)
+        props.defence_chests(w, [(3, 3)], 2, "s")
+        self.assertEqual(w.get(3, 2, 3), (B.CHEST, 3))
+        self.assertEqual(w.id(3, 3, 3), B.AIR)
+        self.assertEqual(w.id(3, 4, 3), B.BEDROCK)
+
 
 if __name__ == "__main__":
     unittest.main()

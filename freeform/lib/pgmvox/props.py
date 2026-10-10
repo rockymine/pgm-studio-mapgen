@@ -5,6 +5,7 @@
     lamp(w, x, y, z)                           # a lamp post on a floor at y
     w.chest(x, y, z, laid(DEFENCE), facing=2)  # a chest laid out as a pattern, here a defence chest
     wool_chests(w, (x0, z0, x1, z1), y, "s")   # the studio's wool-room loot, two chests in each inner corner
+    defence_chests(w, [(x, z) ...], y, "s")    # the studio's defence chests set into a wall's face, lids opened
 
 A prop is placed on a floor: y is the floor block, and it stands from y + 1. Each returns the cells it stands on,
 so a board can claim them and keep a route or a scatter off them.
@@ -116,6 +117,28 @@ def wool_chests(w, box, floor, door="s"):
         w.chest(x, floor + 1, z, laid(WOOL_CHEST_LOW), facing=facing)
         w.chest(x, floor + 2, z, laid(WOOL_CHEST_HIGH), facing=facing)
     return corners
+
+
+def studio_defence():
+    """The studio's defence chest (its DefenseChest stamper), slot by slot: dark-oak planks in twelve half stacks,
+    spruce in seven, crafting tables in four, a half stack each of end stone and redstone blocks, and two
+    Efficiency II iron pickaxes; 27 slots, a full chest."""
+    stacks = [("minecraft:planks", 5)] * 12 + [("minecraft:planks", 1)] * 7 + [("minecraft:crafting_table", 0)] * 4 + \
+        [("minecraft:end_stone", 0), ("minecraft:redstone_block", 0)]
+    items = [(k, i, 32, d) for k, (i, d) in enumerate(stacks)]
+    items += [(25, "minecraft:iron_pickaxe", 1, 0, [(32, 2)]), (26, "minecraft:iron_pickaxe", 1, 0, [(32, 2)])]
+    return items
+
+
+def defence_chests(w, cells, y, facing="s"):
+    """The studio's defence chests set into a wall: a chest at each (x, z) of the wall's face at y, the player's
+    standing height on the approach, opening toward `facing` ("n", "s", "e", "w"), and the block over it carved to
+    air so its lid opens. The column behind each chest is left as it was, so the wall still stands whole."""
+    data = {"n": 2, "s": 3, "w": 4, "e": 5}[facing]
+    for x, z in cells:
+        w.chest(x, y, z, studio_defence(), facing=data)
+        w.set(x, y + 1, z, B.AIR)
+    return list(cells)
 
 
 def laid(layout, symmetric=True):

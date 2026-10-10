@@ -6,12 +6,18 @@ Pavilions are spruce and dark oak: dark oak log posts, white panels (white stain
 (prismarine), dark oak stair roofs that turn up at the corners. Lanterns are glowstone. Red and blue appear only
 on the teams' banners of wool; no lacquer red.
 """
+import os
+import sys
+
 import numpy as np
 
 import geometry as G
 import plan as P
 import terrain as T
 from mc import B
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "lib"))
+from pgmvox import props  # noqa: E402
 
 DARK_LOG = (B.LOG2, 1)
 SPRUCE_LOG = (B.LOG, 1)
@@ -470,11 +476,7 @@ def store(w, F):
     for dx in (-1, 0, 1):
         w.set(wx + dx, y + 1, wz - 1, *JADE)
     w.set(wx, y + 1, wz, B.WOOL, 4)                          # yellow; blue's recoloured
-    gear = [(0, "minecraft:iron_chestplate", 1, 0), (1, "minecraft:iron_leggings", 1, 0),
-            (2, "minecraft:iron_boots", 1, 0), (3, "minecraft:iron_helmet", 1, 0),
-            (4, "minecraft:golden_apple", 2, 0), (5, "minecraft:arrow", 32, 0)]
-    w.chest(x0 + 1, y + 1, (z0 + z1) // 2 + 1, gear, facing=5)
-    w.chest(x1 - 1, y + 1, (z0 + z1) // 2 + 1, gear, facing=4)
+    props.wool_chests(w, (x0 + 1, z0 + 1, x1 - 1, z1 - 1), y, door="s")   # the studio's wool-room loot
     entrance_line(w, [(x, z1) for x in range(51, 63)], y)
 
 
@@ -523,6 +525,12 @@ def store_wall(w, F):
             for yy in range(base + 1, base + 4):
                 w.set(x, yy, z, B.BEDROCK)
             w.set(x, base + 4, z, B.COBWEB)
+    # the studio's defence chests, set into the wall's front face, the one the road comes up to: two for a lane
+    # wider than ten, at its thirds, at the height a player on the road stands
+    n = wl["x1"] - wl["x0"] + 1
+    cells = [(wl["x0"] + (k + 1) * n // 3, wl["z"]) for k in range(2)]
+    for x, z in cells:
+        props.defence_chests(w, [(x, z)], floor_y(F, x, z + 1) + 1, "s")
 
 
 def lanes(w, F, rng):
