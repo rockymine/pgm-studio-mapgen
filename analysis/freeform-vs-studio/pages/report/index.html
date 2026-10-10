@@ -250,6 +250,33 @@ footer{margin-top:72px;padding-top:16px;border-top:1px solid var(--rule);font-fa
 </div>
 
 
+<h3 id="revision">One round of your review, on both tools</h3>
+<p>Your review of the four boards went back to each builder for one revision round, with every point answered or argued (<code>experiment/REVIEW-1.md</code>, plus the obsidian cube as a seventh point for pgmvox's Abbeymoor). Both builders finished in minutes: 3 to 8 per board.</p>
+<div class="tbl"><table>
+<thead><tr><th>Board</th><th>What your review changed</th><th>What got in the way</th></tr></thead>
+<tbody>
+<tr><td><span class="s">Slatefold</span>, studio</td><td>Three full-width tiers; both wool rooms moved back onto the middle terrace behind the yard that holds the front; the high bench removed; the unfilled stone disc found to be a pit whose shape flattened its own hollow, now a lake (water 80 → 1,214 blocks).</td><td>No lane: scarps are scrambles, so a ramp does not force a path, and the rooms' distances can be read only afterwards.</td></tr>
+<tr><td><span class="v">Slatefold</span>, pgmvox</td><td>The Kiln's clay-walled house as the board's style in five colourways; spawn houses clustered round a bending lane; defence walls ending on their own rock; dirt lanes, six grass hills, 14 spruces (leaves 654 → 2,074); a creek between two ponds; the line you read as a fence was cart rails (100 → 26); trees kept off roofs. The tower room was kept, with a reason: at the front it would break the wool rotation rules (WL7, WL10e).</td><td>A library defect: <code>trees.plant</code> seats a tree on whatever its trunk column's top is, a roof included.</td></tr>
+<tr><td><span class="s">Abbeymoor</span>, studio</td><td>The spawn longhouse made the abbey's grange: a walled garth with a gate, a paved forecourt, cottages, plots and a pond. Every outline and terrace made irregular, the bog a basin with hummocks, shelves on the abbey hill.</td><td>No unit for a place: the grange is a room style, cottages, a made-layer wall, paint shapes, strokes, a pond and relief marks, each placed by hand and each refused by a different rule (DR-KEEP alone cost three stores). No fence prop. No read that says "clunky".</td></tr>
+<tr><td><span class="v">Abbeymoor</span>, pgmvox</td><td>A noise-warped bog with a fen channel, 15 peat patches and three tarns; a hamlet on each flank; clay walls; dirt paths; 31 trees in 12 copses (leaves 396 → 9,798) and 58 boulders; both monuments a 3-block obsidian pillar (obsidian 108 → 12 blocks), now visible from 43% and 29% of the ground 25–60 blocks off.</td><td>Nothing in the review; the window/door defect still worked round locally.</td></tr>
+</tbody></table></div>
+<div class="pair">
+  <figure class="fig"><img src="img/rv-sf-studio-v1.webp" alt="Studio Slatefold before" width="760" height="531" loading="lazy"><figcaption><span class="tag s">studio</span> Slatefold, before</figcaption></figure>
+  <figure class="fig"><img src="img/rv-sf-studio-v2.webp" alt="Studio Slatefold after" width="760" height="390" loading="lazy"><figcaption><span class="tag s">studio</span> after: three tiers, rooms behind the front, the lake</figcaption></figure>
+  <figure class="fig"><img src="img/rv-sf-pgmvox-v1.webp" alt="pgmvox Slatefold before" width="644" height="450" loading="lazy"><figcaption><span class="tag v">pgmvox</span> Slatefold, before</figcaption></figure>
+  <figure class="fig"><img src="img/rv-sf-pgmvox-v2.webp" alt="pgmvox Slatefold after" width="644" height="426" loading="lazy"><figcaption><span class="tag v">pgmvox</span> after: green front, creek, spruces, clustered houses</figcaption></figure>
+  <figure class="fig"><img src="img/rv-am-studio-v1.webp" alt="Studio Abbeymoor before" width="760" height="369" loading="lazy"><figcaption><span class="tag s">studio</span> Abbeymoor, before</figcaption></figure>
+  <figure class="fig"><img src="img/rv-am-studio-v2.webp" alt="Studio Abbeymoor after" width="760" height="371" loading="lazy"><figcaption><span class="tag s">studio</span> after: irregular outlines, the grange at the spawn</figcaption></figure>
+  <figure class="fig"><img src="img/rv-am-pgmvox-v1.webp" alt="pgmvox Abbeymoor before" width="760" height="408" loading="lazy"><figcaption><span class="tag v">pgmvox</span> Abbeymoor, before</figcaption></figure>
+  <figure class="fig"><img src="img/rv-am-pgmvox-v2.webp" alt="pgmvox Abbeymoor after" width="760" height="408" loading="lazy"><figcaption><span class="tag v">pgmvox</span> after: the warped bog, copses, flank hamlets</figcaption></figure>
+</div>
+<div class="trio">
+  <figure class="fig"><img src="img/rv-sf-studio-lake.webp" alt="The studio Slatefold quarry lake, eye view" width="760" height="426" loading="lazy"><figcaption><span class="tag s">studio</span> the quarry lake that was a stone disc</figcaption></figure>
+  <figure class="fig"><img src="img/rv-am-studio-grange.webp" alt="The studio Abbeymoor grange, eye view" width="760" height="426" loading="lazy"><figcaption><span class="tag s">studio</span> the grange under the abbey</figcaption></figure>
+  <figure class="fig"><img src="img/rv-am-pgmvox-hamlet.webp" alt="The pgmvox Abbeymoor flank hamlet" width="504" height="362" loading="lazy"><figcaption><span class="tag v">pgmvox</span> Fenside, the new flank hamlet</figcaption></figure>
+</div>
+<p><strong>Your review moved both tools, and it moved pgmvox further.</strong> Every point was answered on both sides. The studio builder's changes were mostly arrangement (where the rooms stand, what the spawn belongs to, the shape of the ground), and its friction was a missing unit for a place: a grange is eight kinds of thing placed one by one under eight rules. The pgmvox builder's changes added things, a creek, hills, a hamlet, copses, a warped bog, because adding a thing is a few lines of code. That is the first round's finding seen again under review: one round of your eye closes much of the gap on both tools, and the open substrate is what lets that eye ask for anything.</p>
+
 <h2 id="bb3">One plan, two builders: Brittlebush III</h2>
 <p>Brittlebush III was drawn in the studio's planner (<code>untitled-plan-8</code> on pgmstudio.de, stage <em>plan</em>), and pgmvox's <code>studioplan</code> reads that plan document as a Brittlebush blueprint. It is the one case where both tools start from the identical input. The studio side below is the studio's own <code>PlanCompiler</code> and <code>WorldBuilder</code> run on the plan with no theme, room style or dressing, so it is the floor of what the studio would make rather than an authored board.</p>
 <div class="pair">

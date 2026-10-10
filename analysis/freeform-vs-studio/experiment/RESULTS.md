@@ -57,3 +57,24 @@ placement and sight (26–27% visible from the attackers' ground), not by a mark
 standing stones except as boxes, and had one wool-room shell per map. The pgmvox builder had to write its crypt,
 defence wall, build-zone marking and objective-visibility check itself, and worked round the house window and door
 defects. Each tool is missing the other's half.
+
+## One round of the author's review
+
+The author reviewed all four boards (`REVIEW-1.md`) and each builder revised its own two, answering every point.
+Both finished in minutes, 3 to 8 per board.
+
+**The studio's changes were mostly arrangement.** Slatefold's wool rooms moved behind the front onto a middle
+terrace and the stone disc, a pit whose shape had flattened its own hollow, became a lake (water 80 → 1,214 blocks).
+Abbeymoor's spawn became the abbey's grange and its outlines irregular. Its friction was a missing unit for a place:
+the grange is a room style, cottages, a made-layer wall, paint shapes, strokes, a pond and relief marks, each placed by
+hand and refused by a different rule (DR-KEEP alone cost three stores).
+
+**pgmvox's changes added things.** Slatefold got clay-walled houses in five colourways, a creek between two ponds, six
+grass hills and fourteen spruces (leaves 654 → 2,074), and its cart rails cut from 100 to 26 (the line the author
+read as a fence). Abbeymoor got a noise-warped bog with a fen channel, peat patches and tarns, a hamlet on each flank,
+31 trees in copses (leaves 396 → 9,798), 58 boulders, and three-block monuments (obsidian 108 → 12). The one point
+pgmvox kept was argued with numbers: the tower wool room at the front would break WL7 and WL10e.
+
+**One round of review closed much of the gap on both tools, and moved pgmvox further**, because on an open substrate
+adding what the reviewer asks for is a few lines of code. That is the first round's finding seen again: the leap is
+the substrate *and* an eye that asks for things.
