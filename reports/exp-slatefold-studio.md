@@ -168,3 +168,50 @@ Stores: **20** (`GET /map/exp-slatefold-studio/changes`), every one a whole-sour
 * `maps/exp-slatefold-studio/`: `region/`, `level.dat`, `map.xml`, `map.png`.
 * `renders/`: isometric from all four corners, top-down combined and ground, heightmap, surface, traversability, the
   x-ray, and eye views of both wool rooms of each team, the spawn, the crossing, the pit and the build-zone posts.
+
+---
+
+# Revision 1 (author's review, `analysis/freeform-vs-studio/experiment/REVIEW-1.md`)
+
+Stores 21 to 25 on the same slug; v1 renders kept in `specs/exp-slatefold-studio/renders-v1/`, v2 in `renders/`.
+v1 spec is the board as reviewed; `build-spec.py` is now v2. No composed generator layout is used: the planner's own
+pieces, the relief marks and the dressing props, as before.
+
+## Times (`date`, UTC, 2026-10-10)
+
+| Phase | Start | End |
+|---|---|---|
+| Reading the review, copying `renders/` to `renders-v1/`, reading my own spec | 02:00 | 02:02 |
+| Spec rewritten (rooms, tiers, ramps, quarry), stores 21 to 25 with their read-backs | 02:02 | 02:05 |
+| Renders, chest columns, report | 02:05 | 02:08 |
+
+## The review, point by point
+
+| # | The review said | What changed, with coordinates |
+|---|---|---|
+| 1 | Reads a little more coherent than the pgmvox board: more things in it | Nothing to change. Kept: made things, houses, roads and patches; one cottage and the stack moved with the rooms |
+| 2 | Wool rooms are on a hill and at the front line; they stand at the end of their lane, behind the front | **Both rooms are now on the mid terrace (y22), one tier behind the quarry yard that holds the front, at the two ends of it.** Kiln room x -48..-28, z -80..-60 (wool at (-38,-70)); winding room x 32..48, z -80..-56 (wool at (40,-68)); the south team's by rot_180. The high bench (y40) and the switchback track are removed: the east side now has the same three tiers as the west (upper y30 at z -112..-88, mid y22 at z -80..-56, yard y14 at z -46..-16). The old kiln stood at z -48..-28 on the yard, 12 blocks from the void; the nearest room is now 44 blocks back. Each room has its own approach by ramp from the yard (x -4 and x 26, z -44..-60) and from the spawn terrace (x -16 and x 26, z -78..-94). Attacker and defender walks from `plan/flow`: 187 and 38 to the winding wool (ratio 0.20), 188 and 43 to the kiln wool (0.23), where v1 had 0.13 to the winding wool |
+| 3 | A flat stone disc at the front line; if it was a lake, it was never filled | **It was a quarry pit that never filled.** The `quarry-floor` shape sank the ground flat, which cancelled the relief hollow under it. The shape is now paint only and the hollow (a 28 by 14 blob centred (-3,-31), floor y8, bank 4) is filled by a `fluid` basin, `quarry-lake`, level y11, polygon the hollow grown by its bank: water x -16..9 at z -31, 3 to 4 deep, with no `DR-DRY` complaint. The road round it is moved to x 20 (`road-lip-pit`); `eye-quarry-lake.png`, `iso-south-west.png` |
+
+Things that moved because of 2 and 3, so nothing stands where a room now is: the kiln stack to (-26..-23,-59..-56),
+the two bottle kilns to (-24,-69) and (-9,-68), the minehead stays at (-2..10,-71..-65), the headframe to x 40..46,
+z -110..-104, the cottages to (22..30,-110..-104) and (-43..-35,-42..-36), the birch to (40,-93).
+
+## Reads after the revision
+
+Export gate OPEN; mirror check clean for spawn, wool, room and build; 42 props placed, two `DR-PASS`
+complaints (the two cottages, both placed); ground 16156 columns walked, 2362 scrambled (12.8%), **0 barrier**, worst
+step 7 on the walk from spawn to the kiln wool (the spawn hall's own wall); 7.1% of the ground on no journey. The wool chests are still the studio's own, four to a room:
+kiln room (-44,-76), (-44,-65), (-33,-76), (-33,-65), two chests each; winding room (36,-72), (36,-65), (43,-72),
+(43,-65), two each. Plan lints that remain: `EL1` six times (the tiers differ by 8 where plan pieces touch; the ramps are
+relief marks), `SP2`, `G8`, `LN5`, `FR6`.
+
+## What the studio could not do in this round
+
+* The review's picture of a wool room "at the end of its lane" is a place on a path, and **the studio has no lane**: a lane
+  is whatever the walk model finds across scarps, which are scrambles, so a ramp does not force a path. The rooms are
+  placed by distance and tier, and the ratio is read, not set.
+* `GET plan/inspect` returns no goal distances for a wool board (`goalDistances` is empty); the walk figures are the
+  flow report's.
+* The kiln and the winding house are still one wool shell (a map binds one); only the footprint and the made things
+  differ.

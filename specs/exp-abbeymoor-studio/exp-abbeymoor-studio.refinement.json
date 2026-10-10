@@ -936,6 +936,294 @@
     }
    }
   },
+  "plot": {
+   "rimEdges": "void",
+   "rim": {
+    "material": {
+     "kind": "cell",
+     "seed": 28,
+     "cellSize": 3,
+     "jitter": 60,
+     "warp": 3,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ],
+     "rise": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "seed": 36,
+             "cellSize": 3,
+             "jitter": 30,
+             "warp": 1,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 60,
+               "data": 7
+              },
+              {
+               "kind": "solid",
+               "id": 60,
+               "data": 7
+              },
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 1
+              },
+              {
+               "kind": "solid",
+               "id": 60,
+               "data": 7
+              }
+             ],
+             "rise": 0
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 33
+       },
+       {
+        "material": {
+         "kind": "cell",
+         "seed": 21,
+         "cellSize": 4,
+         "jitter": 70,
+         "warp": 4,
+         "palette": [
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 5
+          },
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 4,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 5
+          },
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 6
+          }
+         ],
+         "rise": 0
+        },
+        "thickness": 55
+       }
+      ]
+     }
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "height",
+    "from": -10,
+    "follow": 100,
+    "reach": 16,
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "layered",
+    "axis": "height",
+    "from": -10,
+    "follow": 100,
+    "reach": 16,
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      }
+     ]
+    }
+   }
+  },
   "heath": {
    "rimEdges": "void",
    "rim": {
@@ -1264,24 +1552,148 @@
      "h": 38
     },
     {
+     "id": "knoll-e",
+     "kind": "area",
+     "ring": [
+      [
+       56,
+       -97
+      ],
+      [
+       54,
+       -94
+      ],
+      [
+       50,
+       -93
+      ],
+      [
+       46,
+       -94
+      ],
+      [
+       42,
+       -96
+      ],
+      [
+       42,
+       -98
+      ],
+      [
+       46,
+       -100
+      ],
+      [
+       50,
+       -101
+      ],
+      [
+       54,
+       -100
+      ]
+     ],
+     "h": 41,
+     "bevel": 6
+    },
+    {
+     "id": "pond",
+     "kind": "area",
+     "ring": [
+      [
+       44,
+       -107
+      ],
+      [
+       42,
+       -105
+      ],
+      [
+       39,
+       -105
+      ],
+      [
+       37,
+       -106
+      ],
+      [
+       36,
+       -108
+      ],
+      [
+       37,
+       -110
+      ],
+      [
+       39,
+       -111
+      ],
+      [
+       42,
+       -111
+      ],
+      [
+       44,
+       -109
+      ]
+     ],
+     "h": 33,
+     "bevel": 4
+    },
+    {
      "id": "platform",
      "kind": "area",
      "ring": [
       [
-       -42,
-       -96
+       -44,
+       -92
+      ],
+      [
+       -38,
+       -97
+      ],
+      [
+       -26,
+       -98
+      ],
+      [
+       -14,
+       -97
       ],
       [
        -6,
-       -96
+       -94
+      ],
+      [
+       -3,
+       -86
+      ],
+      [
+       -4,
+       -76
       ],
       [
        -6,
+       -68
+      ],
+      [
+       -14,
+       -65
+      ],
+      [
+       -28,
+       -64
+      ],
+      [
+       -38,
        -66
       ],
       [
-       -42,
-       -66
+       -43,
+       -72
+      ],
+      [
+       -45,
+       -82
       ]
      ],
      "h": 46
@@ -1291,12 +1703,28 @@
      "kind": "scarp",
      "points": [
       [
-       -4,
-       -96
+       -6,
+       -98
+      ],
+      [
+       -2,
+       -92
       ],
       [
        -4,
-       -66
+       -85
+      ],
+      [
+       -4,
+       -76
+      ],
+      [
+       -7,
+       -70
+      ],
+      [
+       -4,
+       -64
       ]
      ],
      "high": 46,
@@ -1310,19 +1738,55 @@
      "ring": [
       [
        -2,
-       -90
+       -88
+      ],
+      [
+       10,
+       -91
+      ],
+      [
+       26,
+       -92
+      ],
+      [
+       42,
+       -91
+      ],
+      [
+       53,
+       -88
       ],
       [
        56,
-       -90
+       -82
       ],
       [
        56,
+       -64
+      ],
+      [
+       54,
+       -58
+      ],
+      [
+       44,
        -56
+      ],
+      [
+       30,
+       -57
+      ],
+      [
+       16,
+       -55
+      ],
+      [
+       4,
+       -57
       ],
       [
        -2,
-       -56
+       -58
       ]
      ],
      "h": 34
@@ -1334,6 +1798,22 @@
       [
        56,
        -53
+      ],
+      [
+       42,
+       -54
+      ],
+      [
+       28,
+       -52
+      ],
+      [
+       14,
+       -54
+      ],
+      [
+       2,
+       -52
       ],
       [
        -2,
@@ -1354,12 +1834,40 @@
        -49
       ],
       [
+       10,
+       -50
+      ],
+      [
+       24,
+       -48
+      ],
+      [
+       40,
+       -50
+      ],
+      [
        56,
        -49
       ],
       [
        56,
        -41
+      ],
+      [
+       44,
+       -40
+      ],
+      [
+       30,
+       -42
+      ],
+      [
+       16,
+       -40
+      ],
+      [
+       4,
+       -42
       ],
       [
        -2,
@@ -1375,6 +1883,22 @@
       [
        56,
        -38
+      ],
+      [
+       42,
+       -39
+      ],
+      [
+       28,
+       -37
+      ],
+      [
+       14,
+       -39
+      ],
+      [
+       2,
+       -37
       ],
       [
        -2,
@@ -1395,12 +1919,40 @@
        -34
       ],
       [
+       12,
+       -35
+      ],
+      [
+       26,
+       -33
+      ],
+      [
+       40,
+       -35
+      ],
+      [
        56,
        -34
       ],
       [
        56,
        -28
+      ],
+      [
+       42,
+       -27
+      ],
+      [
+       28,
+       -29
+      ],
+      [
+       14,
+       -27
+      ],
+      [
+       0,
+       -29
       ],
       [
        -2,
@@ -1415,11 +1967,47 @@
      "ring": [
       [
        -56,
-       -30
+       -22
+      ],
+      [
+       -46,
+       -29
+      ],
+      [
+       -34,
+       -26
+      ],
+      [
+       -24,
+       -32
+      ],
+      [
+       -10,
+       -26
+      ],
+      [
+       2,
+       -33
+      ],
+      [
+       14,
+       -27
+      ],
+      [
+       26,
+       -31
+      ],
+      [
+       38,
+       -26
+      ],
+      [
+       48,
+       -29
       ],
       [
        56,
-       -30
+       -22
       ],
       [
        56,
@@ -1431,6 +2019,282 @@
       ]
      ],
      "h": 20
+    },
+    {
+     "id": "rise-w",
+     "kind": "area",
+     "ring": [
+      [
+       -47,
+       -9
+      ],
+      [
+       -48,
+       -3
+      ],
+      [
+       -51,
+       1
+      ],
+      [
+       -55,
+       1
+      ],
+      [
+       -58,
+       -3
+      ],
+      [
+       -59,
+       -9
+      ],
+      [
+       -58,
+       -15
+      ],
+      [
+       -55,
+       -19
+      ],
+      [
+       -51,
+       -19
+      ],
+      [
+       -48,
+       -15
+      ]
+     ],
+     "h": 26,
+     "bevel": 5
+    },
+    {
+     "id": "rise-e",
+     "kind": "area",
+     "ring": [
+      [
+       59,
+       -7
+      ],
+      [
+       57,
+       -3
+      ],
+      [
+       53,
+       -1
+      ],
+      [
+       50,
+       -3
+      ],
+      [
+       47,
+       -7
+      ],
+      [
+       47,
+       -13
+      ],
+      [
+       49,
+       -17
+      ],
+      [
+       53,
+       -19
+      ],
+      [
+       56,
+       -17
+      ],
+      [
+       59,
+       -13
+      ]
+     ],
+     "h": 25,
+     "bevel": 5
+    },
+    {
+     "id": "hummock-1",
+     "kind": "area",
+     "ring": [
+      [
+       1,
+       -22
+      ],
+      [
+       0,
+       -20
+      ],
+      [
+       -3,
+       -19
+      ],
+      [
+       -6,
+       -19
+      ],
+      [
+       -9,
+       -21
+      ],
+      [
+       -9,
+       -23
+      ],
+      [
+       -7,
+       -25
+      ],
+      [
+       -3,
+       -25
+      ],
+      [
+       0,
+       -24
+      ]
+     ],
+     "h": 22,
+     "bevel": 4
+    },
+    {
+     "id": "hummock-2",
+     "kind": "area",
+     "ring": [
+      [
+       48,
+       -17
+      ],
+      [
+       46,
+       -15
+      ],
+      [
+       42,
+       -15
+      ],
+      [
+       40,
+       -16
+      ],
+      [
+       39,
+       -18
+      ],
+      [
+       41,
+       -20
+      ],
+      [
+       44,
+       -21
+      ],
+      [
+       47,
+       -20
+      ],
+      [
+       49,
+       -19
+      ]
+     ],
+     "h": 22,
+     "bevel": 4
+    },
+    {
+     "id": "shelf-w",
+     "kind": "area",
+     "ring": [
+      [
+       -31,
+       -46
+      ],
+      [
+       -34,
+       -44
+      ],
+      [
+       -39,
+       -43
+      ],
+      [
+       -43,
+       -44
+      ],
+      [
+       -46,
+       -47
+      ],
+      [
+       -45,
+       -50
+      ],
+      [
+       -42,
+       -52
+      ],
+      [
+       -37,
+       -53
+      ],
+      [
+       -33,
+       -52
+      ],
+      [
+       -30,
+       -49
+      ]
+     ],
+     "h": 36,
+     "bevel": 6
+    },
+    {
+     "id": "shelf-sw",
+     "kind": "area",
+     "ring": [
+      [
+       -43,
+       -36
+      ],
+      [
+       -44,
+       -33
+      ],
+      [
+       -48,
+       -32
+      ],
+      [
+       -52,
+       -33
+      ],
+      [
+       -55,
+       -35
+      ],
+      [
+       -55,
+       -37
+      ],
+      [
+       -52,
+       -39
+      ],
+      [
+       -48,
+       -40
+      ],
+      [
+       -44,
+       -39
+      ]
+     ],
+     "h": 28,
+     "bevel": 5
     },
     {
      "id": "ramp-orchard",
@@ -1555,8 +2419,8 @@
    ],
    "pushes": [],
    "grain": {
-    "amplitude": 0.8,
-    "scale": 6,
+    "amplitude": 1.2,
+    "scale": 8,
     "seed": 5
    }
   }
@@ -2470,6 +3334,62 @@
    "theme": "heath"
   },
   {
+   "id": "plot-1",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     -55,
+     -112
+    ],
+    [
+     -48,
+     -112
+    ],
+    [
+     -48,
+     -104
+    ],
+    [
+     -55,
+     -104
+    ]
+   ],
+   "floor": 0,
+   "layer": "ground",
+   "group": "team",
+   "base_height": 1,
+   "theme": "plot"
+  },
+  {
+   "id": "plot-2",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     -55,
+     -102
+    ],
+    [
+     -48,
+     -102
+    ],
+    [
+     -48,
+     -94
+    ],
+    [
+     -55,
+     -94
+    ]
+   ],
+   "floor": 0,
+   "layer": "ground",
+   "group": "team",
+   "base_height": 1,
+   "theme": "plot"
+  },
+  {
    "id": "worn-square",
    "type": "polygon",
    "operation": "add",
@@ -2528,6 +3448,296 @@
   }
  ],
  "addLayers": [
+  {
+   "id": "yard-walls",
+   "name": "yard-walls",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "grange",
+   "shapes": [
+    {
+     "id": "yard-w",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -100,
+     "max_x": -23,
+     "max_z": -90,
+     "floor": 0,
+     "base_height": 2,
+     "material": {
+      "kind": "cell",
+      "seed": 37,
+      "cellSize": 3,
+      "jitter": 60,
+      "warp": 3,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 48,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       }
+      ],
+      "rise": 2
+     }
+    },
+    {
+     "id": "yard-e",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 21,
+     "min_z": -100,
+     "max_x": 22,
+     "max_z": -90,
+     "floor": 0,
+     "base_height": 2,
+     "material": {
+      "kind": "cell",
+      "seed": 37,
+      "cellSize": 3,
+      "jitter": 60,
+      "warp": 3,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 48,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       }
+      ],
+      "rise": 2
+     }
+    },
+    {
+     "id": "yard-s-w",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -91,
+     "max_x": -5,
+     "max_z": -90,
+     "floor": 0,
+     "base_height": 2,
+     "material": {
+      "kind": "cell",
+      "seed": 37,
+      "cellSize": 3,
+      "jitter": 60,
+      "warp": 3,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 48,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       }
+      ],
+      "rise": 2
+     }
+    },
+    {
+     "id": "yard-s-e",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 5,
+     "min_z": -91,
+     "max_x": 22,
+     "max_z": -90,
+     "floor": 0,
+     "base_height": 2,
+     "material": {
+      "kind": "cell",
+      "seed": 37,
+      "cellSize": 3,
+      "jitter": 60,
+      "warp": 3,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 48,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       }
+      ],
+      "rise": 2
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "yard-walls",
+     "name": "yard-walls",
+     "mirrors": true,
+     "shapeIds": [
+      "yard-w",
+      "yard-e",
+      "yard-s-w",
+      "yard-s-e"
+     ]
+    }
+   ],
+   "seat": "ground"
+  },
+  {
+   "id": "gate-posts",
+   "name": "gate-posts",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "grange",
+   "shapes": [
+    {
+     "id": "gate-w",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -5,
+     "min_z": -91,
+     "max_x": -3,
+     "max_z": -89,
+     "floor": 0,
+     "base_height": 4,
+     "material": {
+      "kind": "cell",
+      "seed": 37,
+      "cellSize": 3,
+      "jitter": 60,
+      "warp": 3,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 48,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       }
+      ],
+      "rise": 2
+     }
+    },
+    {
+     "id": "gate-e",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 3,
+     "min_z": -91,
+     "max_x": 5,
+     "max_z": -89,
+     "floor": 0,
+     "base_height": 4,
+     "material": {
+      "kind": "cell",
+      "seed": 37,
+      "cellSize": 3,
+      "jitter": 60,
+      "warp": 3,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 48,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       }
+      ],
+      "rise": 2
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "gate-posts",
+     "name": "gate-posts",
+     "mirrors": true,
+     "shapeIds": [
+      "gate-w",
+      "gate-e"
+     ]
+    }
+   ],
+   "seat": "ground"
+  },
   {
    "id": "crypt-floor",
    "name": "crypt-floor",
@@ -8799,6 +10009,98 @@
     ]
    },
    {
+    "id": "grange-barn",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "posZ",
+    "style": "cot-b",
+    "wings": [
+     {
+      "corners": [
+       [
+        -45,
+        -113
+       ],
+       [
+        -38,
+        -106
+       ]
+      ],
+      "spec": {}
+     }
+    ]
+   },
+   {
+    "id": "grange-cot",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "posZ",
+    "style": "cot-a",
+    "wings": [
+     {
+      "corners": [
+       [
+        23,
+        -113
+       ],
+       [
+        29,
+        -107
+       ]
+      ],
+      "spec": {}
+     }
+    ]
+   },
+   {
+    "id": "forecourt",
+    "kind": "stroke",
+    "layer": "ground",
+    "seed": 3,
+    "points": [
+     [
+      -4,
+      -99
+     ],
+     [
+      4,
+      -99
+     ]
+    ],
+    "radius": 5,
+    "style": "solid",
+    "pave": {
+     "kind": "cell",
+     "seed": 26,
+     "cellSize": 3,
+     "jitter": 40,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "claimsGround": true,
+    "wander": 0.3,
+    "wanderLength": 14
+   },
+   {
     "id": "o1",
     "kind": "tree",
     "layer": "ground",
@@ -8871,15 +10173,6 @@
     "style": "yew"
    },
    {
-    "id": "y2",
-    "kind": "tree",
-    "layer": "ground",
-    "seed": 7,
-    "x": -22,
-    "z": -94,
-    "style": "yew"
-   },
-   {
     "id": "tor-1",
     "kind": "boulder",
     "layer": "ground",
@@ -8893,8 +10186,8 @@
     "kind": "boulder",
     "layer": "ground",
     "seed": 9,
-    "x": 48,
-    "z": -108,
+    "x": 50,
+    "z": -113,
     "style": "tor"
    },
    {
@@ -8902,8 +10195,8 @@
     "kind": "boulder",
     "layer": "ground",
     "seed": 9,
-    "x": -46,
-    "z": -104,
+    "x": -50,
+    "z": -98,
     "style": "rock"
    },
    {
@@ -9052,6 +10345,106 @@
      [
       15,
       -17
+     ]
+    ],
+    "radius": 2,
+    "depth": 2,
+    "fluid": "water",
+    "shore": 1
+   },
+   {
+    "id": "pond-n",
+    "kind": "fluid",
+    "layer": "ground",
+    "seed": 12,
+    "shape": "basin",
+    "level": 36,
+    "points": [
+     [
+      48,
+      -106
+     ],
+     [
+      44,
+      -102
+     ],
+     [
+      38,
+      -101
+     ],
+     [
+      34,
+      -104
+     ],
+     [
+      32,
+      -108
+     ],
+     [
+      34,
+      -112
+     ],
+     [
+      38,
+      -115
+     ],
+     [
+      44,
+      -114
+     ],
+     [
+      48,
+      -110
+     ]
+    ],
+    "radius": 2,
+    "depth": 2,
+    "fluid": "water",
+    "shore": 1
+   },
+   {
+    "id": "pond-s",
+    "kind": "fluid",
+    "layer": "ground",
+    "seed": 12,
+    "shape": "basin",
+    "level": 36,
+    "points": [
+     [
+      -48,
+      106
+     ],
+     [
+      -44,
+      102
+     ],
+     [
+      -38,
+      101
+     ],
+     [
+      -34,
+      104
+     ],
+     [
+      -32,
+      108
+     ],
+     [
+      -34,
+      112
+     ],
+     [
+      -38,
+      115
+     ],
+     [
+      -44,
+      114
+     ],
+     [
+      -48,
+      110
      ]
     ],
     "radius": 2,

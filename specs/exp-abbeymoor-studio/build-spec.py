@@ -119,6 +119,9 @@ themes = {
     "peat": theme(slope_stack(
         (depth_stack((noise(33, 3, [PODZOL, PODZOL, COARSE, S(3, 0), PODZOL]), 1), (DIRT, 2)), 35),
         (ROCK, 55))),
+    "plot": theme(slope_stack(
+        (depth_stack((cell(36, 3, [S(60, 7), S(60, 7), COARSE, S(60, 7)], jitter=30, warp=1), 1), (DIRT, 2)), 33),
+        (ROCK, 55))),
     "heath": theme(slope_stack(
         (depth_stack((noise(34, 3, [PODZOL, GRASS, COARSE, GRASS, PODZOL, GRASS]), 1), (DIRT, 2)), 33),
         (ROCK, 55))),
@@ -130,16 +133,44 @@ def rect_ring(x0, z0, x1, z1):
     return [[x0, z0], [x1, z0], [x1, z1], [x0, z1]]
 
 
+def blob_ring(cx, cz, rx, rz, n=10, turn=0.0):
+    return [[round(cx + rx * math.cos(2 * math.pi * k / n + turn)), round(cz + rz * math.sin(2 * math.pi * k / n + turn))]
+            for k in range(n)]
+
+
+PLATFORM = [[-44, -92], [-38, -97], [-26, -98], [-14, -97], [-6, -94], [-3, -86], [-4, -76], [-6, -68], [-14, -65],
+            [-28, -64], [-38, -66], [-43, -72], [-45, -82]]
+VILLAGE = [[-2, -88], [10, -91], [26, -92], [42, -91], [53, -88], [56, -82], [56, -64], [54, -58], [44, -56], [30, -57],
+           [16, -55], [4, -57], [-2, -58]]
+ORCH1_RING = [[-2, -49], [10, -50], [24, -48], [40, -50], [56, -49], [56, -41], [44, -40], [30, -42], [16, -40], [4, -42], [-2, -41]]
+ORCH2_RING = [[-2, -34], [12, -35], [26, -33], [40, -35], [56, -34], [56, -28], [42, -27], [28, -29], [14, -27], [0, -29], [-2, -28]]
+BOG_RING = [[-56, -22], [-46, -29], [-34, -26], [-24, -32], [-10, -26], [2, -33], [14, -27], [26, -31], [38, -26], [48, -29], [56, -22], [56, 0], [-56, 0]]
+POND = blob_ring(40, -108, 4, 3, 9, 0.3)
+
 team_marks = [
     {"id": "moor-n", "kind": "area", "ring": rect_ring(-56, -120, 56, -96), "h": MOOR},
-    {"id": "platform", "kind": "area", "ring": rect_ring(-42, -96, -6, -66), "h": PLAT},
-    {"id": "cliff-e", "kind": "scarp", "points": [[-4, -96], [-4, -66]], "high": PLAT, "low": TERR, "face": 3, "band": 2},
-    {"id": "village", "kind": "area", "ring": rect_ring(-2, -90, 56, -56), "h": TERR},
-    {"id": "s-orch1", "kind": "scarp", "points": [[56, -53], [-2, -53]], "high": TERR, "low": ORCH1, "face": 5, "band": 2},
-    {"id": "orch1", "kind": "area", "ring": rect_ring(-2, -49, 56, -41), "h": ORCH1},
-    {"id": "s-orch2", "kind": "scarp", "points": [[56, -38], [-2, -38]], "high": ORCH1, "low": ORCH2, "face": 5, "band": 2},
-    {"id": "orch2", "kind": "area", "ring": rect_ring(-2, -34, 56, -28), "h": ORCH2},
-    {"id": "bog-edge", "kind": "area", "ring": rect_ring(-56, -30, 56, 0), "h": BOG},
+    # the moor rolls: a knoll in the north-east corner, the pond's hollow beside the grange
+    {"id": "knoll-e", "kind": "area", "ring": blob_ring(49, -97, 7, 4, 9), "h": 41, "bevel": 6},
+    {"id": "pond", "kind": "area", "ring": POND, "h": 33, "bevel": 4},
+    {"id": "platform", "kind": "area", "ring": PLATFORM, "h": PLAT},
+    {"id": "cliff-e", "kind": "scarp", "points": [[-6, -98], [-2, -92], [-4, -85], [-4, -76], [-7, -70], [-4, -64]],
+     "high": PLAT, "low": TERR, "face": 3, "band": 2},
+    {"id": "village", "kind": "area", "ring": VILLAGE, "h": TERR},
+    {"id": "s-orch1", "kind": "scarp", "points": [[56, -53], [42, -54], [28, -52], [14, -54], [2, -52], [-2, -53]],
+     "high": TERR, "low": ORCH1, "face": 5, "band": 2},
+    {"id": "orch1", "kind": "area", "ring": ORCH1_RING, "h": ORCH1},
+    {"id": "s-orch2", "kind": "scarp", "points": [[56, -38], [42, -39], [28, -37], [14, -39], [2, -37], [-2, -38]],
+     "high": ORCH1, "low": ORCH2, "face": 5, "band": 2},
+    {"id": "orch2", "kind": "area", "ring": ORCH2_RING, "h": ORCH2},
+    {"id": "bog-edge", "kind": "area", "ring": BOG_RING, "h": BOG},
+    # the bog is a basin: its two ends climb to the moor, and two hummocks stand in it
+    {"id": "rise-w", "kind": "area", "ring": blob_ring(-53, -9, 6, 10, 10), "h": 26, "bevel": 5},
+    {"id": "rise-e", "kind": "area", "ring": blob_ring(53, -10, 6, 9, 10, 0.3), "h": 25, "bevel": 5},
+    {"id": "hummock-1", "kind": "area", "ring": blob_ring(-4, -22, 5, 3, 9), "h": 22, "bevel": 4},
+    {"id": "hummock-2", "kind": "area", "ring": blob_ring(44, -18, 5, 3, 9, 0.5), "h": 22, "bevel": 4},
+    # shelves on the abbey hill's south flank, so the flank is not one plane
+    {"id": "shelf-w", "kind": "area", "ring": blob_ring(-38, -48, 8, 5, 10, 0.4), "h": 36, "bevel": 6},
+    {"id": "shelf-sw", "kind": "area", "ring": blob_ring(-49, -36, 6, 4, 9), "h": 28, "bevel": 5},
     # the road from the bog up the orchard terraces to the village
     {"id": "ramp-orchard", "kind": "line", "r": 4, "tread": 2, "points": [[8, -26], [8, -38], [8, -50], [8, -58]],
      "h": [ORCH2, ORCH2, ORCH1, TERR]},
@@ -164,7 +195,7 @@ neutral_marks = [
 ]
 relief = {
     "team": {"base": MOOR, "reach": 60, "marks": team_marks + neutral_marks, "pushes": [],
-             "grain": {"amplitude": 0.8, "scale": 6, "seed": 5}},
+             "grain": {"amplitude": 1.2, "scale": 8, "seed": 5}},
 }
 
 
@@ -231,6 +262,9 @@ shapes += [
     poly("heath-2", blob(36, -36, 9, 5, 11, 0.8), base_height=1, height_mode="sink", theme="heath"),
     poly("heath-3", blob(-26, -48, 8, 5, 10, 0.5), base_height=1, height_mode="sink", theme="heath"),
     poly("heath-4", blob(20, -104, 9, 5, 11, 0.1), base_height=1, height_mode="sink", theme="heath"),
+    # two plots of tilled ground beside the grange barn
+    poly("plot-1", rectpoly(-55, -112, -48, -104), base_height=1, theme="plot"),
+    poly("plot-2", rectpoly(-55, -102, -48, -94), base_height=1, theme="plot"),
     poly("worn-square", blob(36, -66, 8, 5, 11, 0.3), base_height=1, height_mode="sink", theme="moor"),
 ]
 
@@ -309,7 +343,13 @@ for i in range(7):
 for i, (sx, sz) in enumerate([(2, -20), (6, -14), (-3, -12), (9, -8), (1, -4)]):
     stones.append(box(f"way-{i}", sx, sz, sx + 1, sz + 1, 0, 3 + i % 3, S(1, 5)))
 
+GARTH = cell(37, 3, [COBBLE, MOSSY, STONE, COBBLE], jitter=60, warp=3, rise=2)
+yard_walls = [box("yard-w", -24, -100, -23, -90, 0, 2, GARTH), box("yard-e", 21, -100, 22, -90, 0, 2, GARTH),
+              box("yard-s-w", -24, -91, -5, -90, 0, 2, GARTH), box("yard-s-e", 5, -91, 22, -90, 0, 2, GARTH)]
+gate_posts = [box("gate-w", -5, -91, -3, -89, 0, 4, GARTH), box("gate-e", 3, -91, 5, -89, 0, 4, GARTH)]
 layers = [
+    made_layer("yard-walls", "grange", 0, yard_walls, seat="ground"),
+    made_layer("gate-posts", "grange", 0, gate_posts, seat="ground"),
     made_layer("crypt-floor", "crypt", 0, crypt_floor, mirrors=True),
     made_layer("crypt-pillars", "crypt", 12, pillars),
     made_layer("crypt-lamps", "crypt", 18, lamps),
@@ -371,16 +411,23 @@ props = [
     house("farm-1", "longhouse", 12, -79, 24, -72, "posZ"),
     house("cot-1", "cot-a", 29, -79, 35, -73, "negZ"),
     house("cot-2", "cot-b", 40, -79, 46, -73, "negZ"),
+    # the abbey's grange round the spawn longhouse: a barn, a cottage, a walled yard, a forecourt, a pond
+    house("grange-barn", "cot-b", -45, -113, -38, -106, "posZ"),
+    house("grange-cot", "cot-a", 23, -113, 29, -107, "posZ"),
+    stroke("forecourt", [[-4, -99], [4, -99]], 5, 0.3, HARD_PATH),
     # the orchard: rows on the two terraces and on the village's south edge
     tree("o1", "oak", 2, -41), tree("o2", "oak-b", 14, -45), tree("o3", "oak", 24, -45), tree("o5", "oak", 44, -45), tree("o6", "oak-b", 53, -45),
     tree("o7", "oak", 20, -31), tree("o9", "oak", 47, -35),
     # yews in the abbey's garth, a tor on the moor
-    tree("y1", "yew", -34, -94), tree("y2", "yew", -22, -94),
-    boulder("tor-1", "tor", -50, -50), boulder("tor-2", "tor", 48, -108), boulder("r1", "rock", -46, -104), boulder("r2", "rock", 40, -28),
+    tree("y1", "yew", -34, -94),
+    boulder("tor-1", "tor", -50, -50), boulder("tor-2", "tor", 50, -113), boulder("r1", "rock", -50, -98), boulder("r2", "rock", 40, -28),
     *[{"id": f"pool-{name}-water", "kind": "fluid", "layer": "ground", "seed": seed, "shape": "basin", "level": 18,
        "points": grown(ring, 4), "radius": 2, "depth": 2, "fluid": "water", "shore": 1}
       for name, seed, ring in (("a", 6, POOL_A), ("b", 6, [[-x, -z] for x, z in POOL_A]),
                                ("c", 8, POOL_C), ("d", 8, [[-x, -z] for x, z in POOL_C]))],
+    *[{"id": f"pond-{name}", "kind": "fluid", "layer": "ground", "seed": 12, "shape": "basin", "level": 36,
+       "points": grown(ring, 4), "radius": 2, "depth": 2, "fluid": "water", "shore": 1}
+      for name, ring in (("n", POND), ("s", [[-x, -z] for x, z in POND]))],
     {"id": "cover", "kind": "flora", "layer": "ground", "seed": 11,
      "points": [[-56, -120], [56, -120], [56, -24], [-56, -24]],
      "spec": {"coverage": 0.2, "scale": 9, "octaves": 2, "fernShare": 0.3, "flowerShare": 0.18, "flowerScale": 7, "tallShare": 0.03}},

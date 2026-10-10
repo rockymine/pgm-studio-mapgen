@@ -155,3 +155,46 @@ The files: `specs/exp-abbeymoor-studio/` holds `build-spec.py`, the plan, refine
 `provenance.json`, `exp-abbeymoor-studio.png` and `renders/` (isometric from four corners, x-ray from two, top-down,
 heightmap, surface, traversability and eleven eye views); `maps/exp-abbeymoor-studio/` holds `region/`, `level.dat`,
 `map.xml` and `map.png`.
+
+---
+
+# Revision 1 (author's review, `analysis/freeform-vs-studio/experiment/REVIEW-1.md`)
+
+Stores 15 to 19 on the same slug; v1 renders are kept in `specs/exp-abbeymoor-studio/renders-v1/`, v2 in `renders/`.
+The crypt, the monuments and the village row are untouched, so the v1 columns and the monument coordinates stand.
+
+## Times (`date`, UTC, 2026-10-10)
+
+| Phase | Start | End |
+|---|---|---|
+| Reading the review, the v1 heightmap and the spawn's surroundings | 02:06 | 02:08 |
+| Grange and terrain written, stores 15 to 18 (declines cleared one at a time) | 02:08 | 02:10 |
+| Bog as a basin, store 19, final world | 02:10 | 02:11 |
+| Renders, reads, report | 02:11 | 02:14 |
+
+## The review, point by point
+
+| # | The review said | What changed, with coordinates |
+|---|---|---|
+| 1 | Reads like a place; the layered ruin works, the houses help | Kept as it was: the ruin (37 boxes at x -40..-12, z -96..-72), the village row (x 12..46, z -79..-72) and the crypt |
+| 2 | The spawn building is somewhere and nowhere: it does not belong to a place | **The spawn longhouse (x -16..12, z -120..-100) is now the grange of the abbey.** A walled yard stands in front of its door, a garth wall two high (x -24..22, z -100..-90, material cobblestone, mossy cobblestone and stone, gate posts four high at x -5..-3 and 3..5 leaving a 6-wide gate at x -3..3), with a paved forecourt (x -4..4, z -99) and the two roads (`road-spawn`, `road-village`) leaving through the gate. A cottage stands on each side: (23..29, -113..-107) and (-45..-38, -113..-106), two plots of tilled ground (farmland) at x -55..-48, z -112..-94, and a pond at (40,-108) with its hollow, level y36, beside a knoll at (49,-97) with a tor at (50,-113). The south team's grange is the same turned 180 degrees (the pond is written twice, since the fold does not turn fluid props). Seen in `eye-grange-from-east.png`, `eye-grange-from-west.png`, `eye-grange-yard.png`, `iso-north-east.png`. The gate keeps the spawn's exit open (lesson 6): the yard is open to the road and the doorway is 4 wide |
+| 3 | The terrain is a little clunky | Read as: every edge was a rectangle and every terrace ran the full width in a straight band (`renders-v1/heightmap.png`). **The relief marks are now irregular outlines and the bands are broken up:** the abbey crown is a 13-point polygon with a wobbling east cliff (`platform`, `cliff-e`, still x -4 where the corridor passes at z -83..-77); the village terrace is a 13-point outline (x -2..56, z -92..-55) with its east edge kept at x 56 for the passage rule; the two orchard terraces have wavy scarps (z -54..-51 and z -39..-37) and wavy flats; the bog is a basin (`bog-edge` polygon, z -33..-22 on its north rim) whose two ends climb to the moor (`rise-w` at (-53,-9) y26, `rise-e` at (53,-10) y25) with two hummocks at (-4,-22) and (44,-18); two shelves break the abbey hill's south flank, at (-38,-48) y36 and (-49,-36) y28; a knoll at (49,-97) y41; and the grain is stronger (amplitude 1.2 at scale 8 where it was 0.8 at 6) |
+
+## Reads after the revision
+
+Export gate OPEN; 60 props placed, two `DR-PASS` complaints (the two grange cottages, both placed); ground 24888 columns
+walked, 1120 scrambled (4.4%), 822 barrier (3.1%, of which the yard walls and the ruin's gable are a share); 22.1% of the
+ground on no journey (23.4% in v1). The crypt is unchanged and still open at both shafts: column (-36,-82) is open from y12
+to the sky and column (24,-61) likewise; the x-ray reads 30 roofed voids and none sealed. The monuments stand where they
+did, (-24,-69) y49..51 and (30,-62) y38..40, with walk ratios 3.96 and 3.0.
+
+## What the studio could not do in this round
+
+* A place is a set of things that belong together, and the studio has no unit for it: the grange is a house room style, two
+  library cottages, a made-layer wall, two paint shapes, two strokes, a pond and two relief marks, each placed by hand and
+  each refused or complained about on its own by a different rule (`DR-KEEP` kept the cottage out of the longhouse's side
+  door cells, which run about 16 blocks out; that cost three stores).
+* The spawn room is one shell per map: its look could not be changed to suit the grange; the surroundings had to carry it.
+* There is no fence prop; the yard wall is a made layer of boxes.
+* "Clunky" has no read. The slopes and heightmap say what is steep, not what is rectangular; I judged it from the
+  heightmap contours.

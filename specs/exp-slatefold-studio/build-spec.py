@@ -2,9 +2,9 @@
 """Slatefold — a capture-the-wool board for two teams of twelve: a slate-quarrying hamlet on two terraced
 hillsides that face each other across the void. Written for the experiment (exp-slatefold-studio).
 
-Unit = team 0 on the north (z < 0); rot_180 fans the south hillside. Terraces from the void back:
-  yard 14 (quarry floor, kiln)  ->  mid 22 (cottages)  ->  upper 30 (spawn)   on the west and centre,
-  and a grown east hillside climbing by a switchback track to the bench at 38 (winding house).
+Unit = team 0 on the north (z < 0); rot_180 fans the south hillside. Terraces from the void back, across the
+whole width: yard 14 (a flooded quarry at the front)  ->  mid 22 (the two wool rooms at its two ends, a minehead
+between)  ->  upper 30 (spawn, hall, cottages, the headframe).
 """
 import json, os
 
@@ -23,16 +23,14 @@ YARD, MID, UPPER, BENCH, SLOPE = 14, 22, 30, 40, 26
 
 ROOMS = {
     "spawn":   ("spawn",     (-16, -112, 12, -92), UPPER),
-    "kiln":    ("wool-room", (-48, -48, -28, -28), YARD),
-    "winding": ("wool-room", (28, -112, 48, -84), BENCH),
+    "kiln":    ("wool-room", (-48, -80, -28, -60), MID),
+    "winding": ("wool-room", (32, -80, 48, -56), MID),
 }
 
 
 def surface_at(x, z):
     """The height the plan states for the ground at a cell: the tier it belongs to."""
-    if x < 16:
-        return UPPER if z < -88 else MID if z < -52 else YARD
-    return BENCH if z < -88 else SLOPE if z < -48 else YARD
+    return UPPER if z < -88 else MID if z < -52 else YARD
 
 
 def tile(bounds, holes):
@@ -78,7 +76,7 @@ plan = {
                     "footprint": [7, 1, 20, 15]}],
         "iron": [{"id": "iron-1", "piece": "spawn", "at": [1.5, 4.5]}],
         "wools": [{"id": "wool-kiln", "piece": "kiln", "at": [10, 10], "footprint": [3, 3, 14, 14]},
-                  {"id": "wool-winding", "piece": "winding", "at": [10, 19], "footprint": [5, 14, 10, 10]}],
+                  {"id": "wool-winding", "piece": "winding", "at": [8, 12], "footprint": [3, 7, 10, 10]}],
     },
 }
 
@@ -164,28 +162,40 @@ def rect_ring(x0, z0, x1, z1):
     return [[x0, z0], [x1, z0], [x1, z1], [x0, z1]]
 
 
+def blob(cx, cz, rx, rz, n=10, turn=0.0):
+    import math
+    return [[round(cx + rx * math.cos(2 * math.pi * k / n + turn), 1),
+             round(cz + rz * math.sin(2 * math.pi * k / n + turn), 1)] for k in range(n)]
+
+
+def grown(ring, by):
+    import math
+    cx = sum(p[0] for p in ring) / len(ring)
+    cz = sum(p[1] for p in ring) / len(ring)
+    return [[round(x + (x - cx) / math.hypot(x - cx, z - cz) * by), round(z + (z - cz) / math.hypot(x - cx, z - cz) * by)]
+            for x, z in ring]
+
+
+PIT = blob(-3, -31, 14, 7, 14, 0.2)
+
+
 marks = [
     {"id": "yard", "kind": "area", "ring": rect_ring(-48, -46, 48, -16), "h": YARD},
-    {"id": "pit", "kind": "area", "ring": rect_ring(-14, -38, 8, -24), "h": 8, "bevel": 5},
-    {"id": "upper", "kind": "area", "ring": rect_ring(-48, -112, 16, -88), "h": UPPER},
-    {"id": "s-upper-mid", "kind": "scarp", "points": [[16, -84], [-48, -84]], "high": UPPER, "low": MID,
+    # the flooded quarry: a hollow with its bank, the water standing in it (a fluid prop of the same outline grown by the bank)
+    {"id": "pit", "kind": "area", "ring": PIT, "h": 8, "bevel": 4},
+    {"id": "upper", "kind": "area", "ring": rect_ring(-48, -112, 48, -88), "h": UPPER},
+    {"id": "s-upper-mid", "kind": "scarp", "points": [[48, -84], [-48, -84]], "high": UPPER, "low": MID,
      "face": 4, "band": 4},
-    {"id": "mid", "kind": "area", "ring": rect_ring(-48, -80, 16, -56), "h": MID},
-    {"id": "s-mid-yard", "kind": "scarp", "points": [[16, -52], [-48, -52]], "high": MID, "low": YARD,
+    {"id": "mid", "kind": "area", "ring": rect_ring(-48, -80, 48, -56), "h": MID},
+    {"id": "s-mid-yard", "kind": "scarp", "points": [[48, -52], [-48, -52]], "high": MID, "low": YARD,
      "face": 4, "band": 4},
-    {"id": "bench", "kind": "area", "ring": rect_ring(16, -112, 48, -88), "h": BENCH},
-    # the cart ramps that cross the banks
+    # the cart ramps that cross the banks: one pair in the middle, one pair to the winding house's end
     {"id": "ramp-yard-mid", "kind": "line", "r": 4, "tread": 2, "points": [[-4, -44], [-4, -60]], "h": [YARD, MID]},
-    {"id": "ramp-mid-upper-w", "kind": "line", "r": 4, "tread": 2, "points": [[-27, -78], [-27, -94]],
+    {"id": "ramp-yard-mid-e", "kind": "line", "r": 4, "tread": 2, "points": [[26, -44], [26, -60]], "h": [YARD, MID]},
+    {"id": "ramp-mid-upper-w", "kind": "line", "r": 4, "tread": 2, "points": [[-16, -78], [-16, -94]],
      "h": [MID, UPPER]},
-    {"id": "ramp-mid-upper-e", "kind": "line", "r": 4, "tread": 2, "points": [[6, -78], [6, -94]],
+    {"id": "ramp-mid-upper-e", "kind": "line", "r": 4, "tread": 2, "points": [[26, -78], [26, -94]],
      "h": [MID, UPPER]},
-    {"id": "s-upper-bench", "kind": "scarp", "points": [[16, -86], [16, -112]], "high": BENCH, "low": UPPER,
-     "face": 4, "band": 2},
-    # the switchback up the east hillside to the bench
-    {"id": "track", "kind": "line", "r": 4, "tread": 2,
-     "points": [[44, -52], [22, -52], [22, -66], [44, -66], [44, -80], [22, -80], [22, -88]],
-     "h": [14, 19, 19, 29, 29, 38, 40]},
 ]
 relief = {"team": {"base": YARD, "reach": 30, "marks": marks, "pushes": []}}
 
@@ -196,18 +206,12 @@ def poly(sid, pts, **fields):
             "group": "team", **fields}
 
 
-def blob(cx, cz, rx, rz, n=10, turn=0.0):
-    import math
-    return [[round(cx + rx * math.cos(2 * math.pi * k / n + turn), 1),
-             round(cz + rz * math.sin(2 * math.pi * k / n + turn), 1)] for k in range(n)]
-
-
 def rectpoly(x0, z0, x1, z1):
     return [[x0, z0], [x1, z0], [x1, z1], [x0, z1]]
 
 
 shapes = [
-    poly("quarry-floor", blob(-3, -31, 20, 12, 14), base_height=1, height_mode="sink", theme="quarry"),
+    poly("quarry-floor", blob(-3, -31, 22, 12, 14), base_height=1, theme="quarry"),
     poly("tip-1", blob(-26, -22, 6, 5, 9, 0.3), base_height=5, height_mode="raise", skirt=4, theme="spoil"),
     poly("tip-2", blob(20, -42, 7, 5, 9, 0.9), base_height=6, height_mode="raise", skirt=4, theme="spoil"),
     poly("tip-3", blob(38, -44, 5, 4, 8, 0.1), base_height=4, height_mode="raise", skirt=3, theme="spoil"),
@@ -246,7 +250,7 @@ def ring(sid, x0, z0, x1, z1, material, floor=0):
             box(f"{sid}-e", x1 - 1, z0 + 1, x1, z1 - 1, floor, 1, material)]
 
 
-HX, HZ = 34, -110  # the headframe's north-west corner
+HX, HZ = 40, -110  # the headframe's north-west corner
 posts = [box(f"hf-post-{i}", HX + dx, HZ + dz, HX + dx + 2, HZ + dz + 2, 0, 13, LOG)
          for i, (dx, dz) in enumerate([(0, 0), (4, 0), (0, 4), (4, 4)])]
 layers = [
@@ -254,14 +258,14 @@ layers = [
     made_layer("hf-low", "headframe", 6, ring("hf-low", HX, HZ, HX + 6, HZ + 6, PLANK)),
     made_layer("hf-top", "headframe", 13, ring("hf-top", HX, HZ, HX + 6, HZ + 6, PLANK)),
     made_layer("hf-sheave", "headframe", 14, [box("hf-sheave", HX + 2, HZ + 2, HX + 4, HZ + 4, 0, 2, SBRICK)]),
-    made_layer("stack", "kiln-stack", 0, [box("stack-shaft", -48, -40, -45, -37, 0, 16, BRICK)]),
+    made_layer("stack", "kiln-stack", 0, [box("stack-shaft", -26, -59, -23, -56, 0, 16, BRICK)]),
 ]
 def disc(sid, cx, cz, r, floor, height, material):
     return {"id": sid, "type": "circle", "operation": "add", "center_x": cx, "center_z": cz, "radius": r,
             "floor": floor, "base_height": height, "material": material}
 
 
-for k, (cx, cz) in enumerate([(-43, -22), (-35, -21)]):
+for k, (cx, cz) in enumerate([(-24, -69), (-9, -68)]):
     layers += [made_layer(f"bottle-{k}-a", f"bottle-{k}", 0, [disc(f"bottle-{k}-a", cx, cz, 3.5, 0, 5, BRICK)]),
                made_layer(f"bottle-{k}-b", f"bottle-{k}", 5, [disc(f"bottle-{k}-b", cx, cz, 3, 0, 4, BRICK)]),
                made_layer(f"bottle-{k}-c", f"bottle-{k}", 9, [disc(f"bottle-{k}-c", cx, cz, 2, 0, 3, SBRICK)])]
@@ -310,24 +314,26 @@ def boulder(pid, style, x, z):
 
 props = [
     # the cart road and the lanes (circulation before scenery)
-    stroke("road-lip-pit", [[0, -13], [0, -21], [13, -26], [13, -36], [8, -44], [-4, -46], [-4, -60]], 2),
-    stroke("road-kiln", [[-4, -45], [-16, -42], [-27, -40]], 2),
-    stroke("lane-mid", [[-44, -62], [-4, -62], [14, -62], [22, -66]], 2),
-    stroke("road-upper", [[-27, -62], [-27, -80], [-27, -94], [-14, -92]], 2),
-    stroke("road-upper-e", [[6, -62], [6, -80], [6, -92]], 2),
-    stroke("road-tarn", [[-27, -94], [-33, -97], [-40, -101]], 2),
-    stroke("road-track", [[44, -52], [22, -52], [22, -66], [44, -66], [44, -80], [22, -80], [22, -88], [26, -96]], 2, 0.5),
-    # a hamlet on the mid terrace
-    house("cot-1", "cottage", -39, -71, -31, -65),
-    house("cot-2", "cottage-b", -22, -71, -12, -65),
-    house("mine", "minehead", -8, -71, 4, -65),
+    stroke("road-lip-pit", [[0, -13], [0, -21], [20, -24], [20, -38], [8, -47], [-4, -47], [-4, -60]], 2),
+    stroke("road-yard-e", [[20, -38], [24, -42], [26, -44], [26, -60]], 2),
+    stroke("lane-mid", [[-30, -62], [-4, -62], [10, -62], [26, -62], [34, -62]], 2),
+    stroke("road-upper", [[-16, -62], [-16, -80], [-16, -94], [-14, -98]], 2),
+    stroke("road-upper-e", [[26, -62], [26, -80], [26, -94], [30, -98]], 2),
+    stroke("road-tarn", [[-16, -94], [-24, -98], [-33, -97], [-40, -101]], 2),
+    stroke("road-headframe", [[30, -98], [40, -100], [44, -104]], 2, 0.5),
+    # the minehead on the mid terrace between the wool rooms; the cottages on the upper terrace beside the spawn
+    house("mine", "minehead", -2, -71, 10, -65),
+    house("cot-1", "cottage", 22, -110, 30, -104),
+    house("cot-2", "cottage-b", -43, -42, -35, -36),
     house("shed-1", "barn", 26, -34, 38, -26),
     house("hall", "barn", -47, -111, -37, -103),
     # trees: two species, a few, to the outside
-    tree("t3", "birch", 20, -108),
+    tree("t3", "birch", 40, -93),
     tree("t4", "spruce", 46, -34), tree("t5", "birch", 42, -22), tree("t6", "spruce-b", -45, -90),
     # rock
     boulder("b1", "rock", -40, -93), boulder("b3", "rock", -22, -49),
+    {"id": "quarry-lake", "kind": "fluid", "layer": "ground", "seed": 5, "shape": "basin", "level": 11,
+     "points": grown(PIT, 4), "radius": 2, "depth": 3, "fluid": "water", "shore": 1},
     {"id": "tarn", "kind": "fluid", "layer": "ground", "seed": 4, "shape": "pool", "points": blob(-36, -94, 4, 3, 10),
      "radius": 2, "depth": 3, "fluid": "water", "shore": 2},
     

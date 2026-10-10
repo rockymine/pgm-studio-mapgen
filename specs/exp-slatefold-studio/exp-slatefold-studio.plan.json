@@ -26,22 +26,22 @@
    "role": "wool-room",
    "rect": [
     -12,
-    -12,
+    -20,
     5,
     5
    ],
-   "surface": 14
+   "surface": 22
   },
   {
    "id": "winding",
    "role": "wool-room",
    "rect": [
-    7,
-    -28,
-    5,
-    7
+    8,
+    -20,
+    4,
+    6
    ],
-   "surface": 40
+   "surface": 22
   },
   {
    "id": "ground-1",
@@ -60,24 +60,13 @@
    "rect": [
     3,
     -28,
-    1,
+    9,
     6
    ],
    "surface": 30
   },
   {
    "id": "ground-3",
-   "role": "piece",
-   "rect": [
-    4,
-    -28,
-    3,
-    6
-   ],
-   "surface": 40
-  },
-  {
-   "id": "ground-4",
    "role": "piece",
    "rect": [
     -4,
@@ -88,13 +77,24 @@
    "surface": 30
   },
   {
-   "id": "ground-5",
+   "id": "ground-4",
    "role": "piece",
    "rect": [
     -12,
     -22,
-    16,
-    9
+    24,
+    2
+   ],
+   "surface": 22
+  },
+  {
+   "id": "ground-5",
+   "role": "piece",
+   "rect": [
+    -7,
+    -20,
+    15,
+    7
    ],
    "surface": 22
   },
@@ -102,23 +102,23 @@
    "id": "ground-6",
    "role": "piece",
    "rect": [
-    4,
-    -22,
-    3,
-    10
+    -12,
+    -15,
+    5,
+    2
    ],
-   "surface": 26
+   "surface": 22
   },
   {
    "id": "ground-7",
    "role": "piece",
    "rect": [
-    7,
-    -21,
-    5,
-    9
+    8,
+    -14,
+    4,
+    1
    ],
-   "surface": 26
+   "surface": 22
   },
   {
    "id": "ground-8",
@@ -126,30 +126,8 @@
    "rect": [
     -12,
     -13,
-    16,
-    1
-   ],
-   "surface": 14
-  },
-  {
-   "id": "ground-9",
-   "role": "piece",
-   "rect": [
-    -7,
-    -12,
-    19,
-    8
-   ],
-   "surface": 14
-  },
-  {
-   "id": "ground-10",
-   "role": "piece",
-   "rect": [
-    -12,
-    -7,
-    5,
-    3
+    24,
+    9
    ],
    "surface": 14
   }
@@ -212,12 +190,12 @@
     "id": "wool-winding",
     "piece": "winding",
     "at": [
-     10,
-     19
+     8,
+     12
     ],
     "footprint": [
-     5,
-     14,
+     3,
+     7,
      10,
      10
     ]

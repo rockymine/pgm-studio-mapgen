@@ -1464,24 +1464,64 @@
      "kind": "area",
      "ring": [
       [
-       -14,
-       -38
+       10.7,
+       -29.6
       ],
       [
-       8,
-       -38
+       8.2,
+       -26.8
       ],
       [
-       8,
-       -24
+       3.4,
+       -24.8
       ],
       [
-       -14,
-       -24
+       -2.7,
+       -24.0
+      ],
+      [
+       -8.8,
+       -24.6
+      ],
+      [
+       -13.7,
+       -26.5
+      ],
+      [
+       -16.6,
+       -29.3
+      ],
+      [
+       -16.7,
+       -32.4
+      ],
+      [
+       -14.2,
+       -35.2
+      ],
+      [
+       -9.4,
+       -37.2
+      ],
+      [
+       -3.3,
+       -38.0
+      ],
+      [
+       2.8,
+       -37.4
+      ],
+      [
+       7.7,
+       -35.5
+      ],
+      [
+       10.6,
+       -32.7
       ]
      ],
      "h": 8,
-     "bevel": 5
+     "bevel": 4
     },
     {
      "id": "upper",
@@ -1492,11 +1532,11 @@
        -112
       ],
       [
-       16,
+       48,
        -112
       ],
       [
-       16,
+       48,
        -88
       ],
       [
@@ -1511,7 +1551,7 @@
      "kind": "scarp",
      "points": [
       [
-       16,
+       48,
        -84
       ],
       [
@@ -1533,11 +1573,11 @@
        -80
       ],
       [
-       16,
+       48,
        -80
       ],
       [
-       16,
+       48,
        -56
       ],
       [
@@ -1552,7 +1592,7 @@
      "kind": "scarp",
      "points": [
       [
-       16,
+       48,
        -52
       ],
       [
@@ -1564,29 +1604,6 @@
      "low": 14,
      "face": 4,
      "band": 4
-    },
-    {
-     "id": "bench",
-     "kind": "area",
-     "ring": [
-      [
-       16,
-       -112
-      ],
-      [
-       48,
-       -112
-      ],
-      [
-       48,
-       -88
-      ],
-      [
-       16,
-       -88
-      ]
-     ],
-     "h": 40
     },
     {
      "id": "ramp-yard-mid",
@@ -1609,17 +1626,37 @@
      ]
     },
     {
+     "id": "ramp-yard-mid-e",
+     "kind": "line",
+     "r": 4,
+     "tread": 2,
+     "points": [
+      [
+       26,
+       -44
+      ],
+      [
+       26,
+       -60
+      ]
+     ],
+     "h": [
+      14,
+      22
+     ]
+    },
+    {
      "id": "ramp-mid-upper-w",
      "kind": "line",
      "r": 4,
      "tread": 2,
      "points": [
       [
-       -27,
+       -16,
        -78
       ],
       [
-       -27,
+       -16,
        -94
       ]
      ],
@@ -1635,80 +1672,17 @@
      "tread": 2,
      "points": [
       [
-       6,
+       26,
        -78
       ],
       [
-       6,
+       26,
        -94
       ]
      ],
      "h": [
       22,
       30
-     ]
-    },
-    {
-     "id": "s-upper-bench",
-     "kind": "scarp",
-     "points": [
-      [
-       16,
-       -86
-      ],
-      [
-       16,
-       -112
-      ]
-     ],
-     "high": 40,
-     "low": 30,
-     "face": 4,
-     "band": 2
-    },
-    {
-     "id": "track",
-     "kind": "line",
-     "r": 4,
-     "tread": 2,
-     "points": [
-      [
-       44,
-       -52
-      ],
-      [
-       22,
-       -52
-      ],
-      [
-       22,
-       -66
-      ],
-      [
-       44,
-       -66
-      ],
-      [
-       44,
-       -80
-      ],
-      [
-       22,
-       -80
-      ],
-      [
-       22,
-       -88
-      ]
-     ],
-     "h": [
-      14,
-      19,
-      19,
-      29,
-      29,
-      38,
-      40
      ]
     }
    ],
@@ -1722,59 +1696,59 @@
    "operation": "add",
    "vertices": [
     [
-     17.0,
+     19.0,
      -31.0
     ],
     [
-     15.0,
+     16.8,
      -25.8
     ],
     [
-     9.5,
+     10.7,
      -21.6
     ],
     [
-     1.5,
+     1.9,
      -19.3
     ],
     [
-     -7.5,
+     -7.9,
      -19.3
     ],
     [
-     -15.5,
+     -16.7,
      -21.6
     ],
     [
-     -21.0,
+     -22.8,
      -25.8
     ],
     [
-     -23.0,
+     -25.0,
      -31.0
     ],
     [
-     -21.0,
+     -22.8,
      -36.2
     ],
     [
-     -15.5,
+     -16.7,
      -40.4
     ],
     [
-     -7.5,
+     -7.9,
      -42.7
     ],
     [
-     1.5,
+     1.9,
      -42.7
     ],
     [
-     9.5,
+     10.7,
      -40.4
     ],
     [
-     15.0,
+     16.8,
      -36.2
     ]
    ],
@@ -1782,7 +1756,6 @@
    "layer": "ground",
    "group": "team",
    "base_height": 1,
-   "height_mode": "sink",
    "theme": "quarry"
   },
   {
@@ -2124,9 +2097,9 @@
      "id": "hf-post-0",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 34,
+     "min_x": 40,
      "min_z": -110,
-     "max_x": 36,
+     "max_x": 42,
      "max_z": -108,
      "floor": 0,
      "base_height": 13,
@@ -2140,9 +2113,9 @@
      "id": "hf-post-1",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 38,
+     "min_x": 44,
      "min_z": -110,
-     "max_x": 40,
+     "max_x": 46,
      "max_z": -108,
      "floor": 0,
      "base_height": 13,
@@ -2156,9 +2129,9 @@
      "id": "hf-post-2",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 34,
+     "min_x": 40,
      "min_z": -106,
-     "max_x": 36,
+     "max_x": 42,
      "max_z": -104,
      "floor": 0,
      "base_height": 13,
@@ -2172,9 +2145,9 @@
      "id": "hf-post-3",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 38,
+     "min_x": 44,
      "min_z": -106,
-     "max_x": 40,
+     "max_x": 46,
      "max_z": -104,
      "floor": 0,
      "base_height": 13,
@@ -2211,9 +2184,9 @@
      "id": "hf-low-n",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 34,
+     "min_x": 40,
      "min_z": -110,
-     "max_x": 40,
+     "max_x": 46,
      "max_z": -109,
      "floor": 0,
      "base_height": 1,
@@ -2227,9 +2200,9 @@
      "id": "hf-low-s",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 34,
+     "min_x": 40,
      "min_z": -105,
-     "max_x": 40,
+     "max_x": 46,
      "max_z": -104,
      "floor": 0,
      "base_height": 1,
@@ -2243,9 +2216,9 @@
      "id": "hf-low-w",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 34,
+     "min_x": 40,
      "min_z": -109,
-     "max_x": 35,
+     "max_x": 41,
      "max_z": -105,
      "floor": 0,
      "base_height": 1,
@@ -2259,9 +2232,9 @@
      "id": "hf-low-e",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 39,
+     "min_x": 45,
      "min_z": -109,
-     "max_x": 40,
+     "max_x": 46,
      "max_z": -105,
      "floor": 0,
      "base_height": 1,
@@ -2298,9 +2271,9 @@
      "id": "hf-top-n",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 34,
+     "min_x": 40,
      "min_z": -110,
-     "max_x": 40,
+     "max_x": 46,
      "max_z": -109,
      "floor": 0,
      "base_height": 1,
@@ -2314,9 +2287,9 @@
      "id": "hf-top-s",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 34,
+     "min_x": 40,
      "min_z": -105,
-     "max_x": 40,
+     "max_x": 46,
      "max_z": -104,
      "floor": 0,
      "base_height": 1,
@@ -2330,9 +2303,9 @@
      "id": "hf-top-w",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 34,
+     "min_x": 40,
      "min_z": -109,
-     "max_x": 35,
+     "max_x": 41,
      "max_z": -105,
      "floor": 0,
      "base_height": 1,
@@ -2346,9 +2319,9 @@
      "id": "hf-top-e",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 39,
+     "min_x": 45,
      "min_z": -109,
-     "max_x": 40,
+     "max_x": 46,
      "max_z": -105,
      "floor": 0,
      "base_height": 1,
@@ -2385,9 +2358,9 @@
      "id": "hf-sheave",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 36,
+     "min_x": 42,
      "min_z": -108,
-     "max_x": 38,
+     "max_x": 44,
      "max_z": -106,
      "floor": 0,
      "base_height": 2,
@@ -2421,10 +2394,10 @@
      "id": "stack-shaft",
      "type": "rectangle",
      "operation": "add",
-     "min_x": -48,
-     "min_z": -40,
-     "max_x": -45,
-     "max_z": -37,
+     "min_x": -26,
+     "min_z": -59,
+     "max_x": -23,
+     "max_z": -56,
      "floor": 0,
      "base_height": 16,
      "material": {
@@ -2457,8 +2430,8 @@
      "id": "bottle-0-a",
      "type": "circle",
      "operation": "add",
-     "center_x": -43,
-     "center_z": -22,
+     "center_x": -24,
+     "center_z": -69,
      "radius": 3.5,
      "floor": 0,
      "base_height": 5,
@@ -2492,8 +2465,8 @@
      "id": "bottle-0-b",
      "type": "circle",
      "operation": "add",
-     "center_x": -43,
-     "center_z": -22,
+     "center_x": -24,
+     "center_z": -69,
      "radius": 3,
      "floor": 0,
      "base_height": 4,
@@ -2527,8 +2500,8 @@
      "id": "bottle-0-c",
      "type": "circle",
      "operation": "add",
-     "center_x": -43,
-     "center_z": -22,
+     "center_x": -24,
+     "center_z": -69,
      "radius": 2,
      "floor": 0,
      "base_height": 3,
@@ -2562,8 +2535,8 @@
      "id": "bottle-1-a",
      "type": "circle",
      "operation": "add",
-     "center_x": -35,
-     "center_z": -21,
+     "center_x": -9,
+     "center_z": -68,
      "radius": 3.5,
      "floor": 0,
      "base_height": 5,
@@ -2597,8 +2570,8 @@
      "id": "bottle-1-b",
      "type": "circle",
      "operation": "add",
-     "center_x": -35,
-     "center_z": -21,
+     "center_x": -9,
+     "center_z": -68,
      "radius": 3,
      "floor": 0,
      "base_height": 4,
@@ -2632,8 +2605,8 @@
      "id": "bottle-1-c",
      "type": "circle",
      "operation": "add",
-     "center_x": -35,
-     "center_z": -21,
+     "center_x": -9,
+     "center_z": -68,
      "radius": 2,
      "floor": 0,
      "base_height": 3,
@@ -5355,20 +5328,20 @@
       -21
      ],
      [
-      13,
-      -26
+      20,
+      -24
      ],
      [
-      13,
-      -36
+      20,
+      -38
      ],
      [
       8,
-      -44
+      -47
      ],
      [
       -4,
-      -46
+      -47
      ],
      [
       -4,
@@ -5407,22 +5380,26 @@
     "wanderLength": 14
    },
    {
-    "id": "road-kiln",
+    "id": "road-yard-e",
     "kind": "stroke",
     "layer": "ground",
     "seed": 3,
     "points": [
      [
-      -4,
-      -45
+      20,
+      -38
      ],
      [
-      -16,
+      24,
       -42
      ],
      [
-      -27,
-      -40
+      26,
+      -44
+     ],
+     [
+      26,
+      -60
      ]
     ],
     "radius": 2,
@@ -5463,7 +5440,7 @@
     "seed": 3,
     "points": [
      [
-      -44,
+      -30,
       -62
      ],
      [
@@ -5471,12 +5448,16 @@
       -62
      ],
      [
-      14,
+      10,
       -62
      ],
      [
-      22,
-      -66
+      26,
+      -62
+     ],
+     [
+      34,
+      -62
      ]
     ],
     "radius": 2,
@@ -5517,20 +5498,20 @@
     "seed": 3,
     "points": [
      [
-      -27,
+      -16,
       -62
      ],
      [
-      -27,
+      -16,
       -80
      ],
      [
-      -27,
+      -16,
       -94
      ],
      [
       -14,
-      -92
+      -98
      ]
     ],
     "radius": 2,
@@ -5571,16 +5552,20 @@
     "seed": 3,
     "points": [
      [
-      6,
+      26,
       -62
      ],
      [
-      6,
+      26,
       -80
      ],
      [
-      6,
-      -92
+      26,
+      -94
+     ],
+     [
+      30,
+      -98
      ]
     ],
     "radius": 2,
@@ -5621,8 +5606,12 @@
     "seed": 3,
     "points": [
      [
-      -27,
+      -16,
       -94
+     ],
+     [
+      -24,
+      -98
      ],
      [
       -33,
@@ -5665,42 +5654,22 @@
     "wanderLength": 14
    },
    {
-    "id": "road-track",
+    "id": "road-headframe",
     "kind": "stroke",
     "layer": "ground",
     "seed": 3,
     "points": [
      [
-      44,
-      -52
+      30,
+      -98
      ],
      [
-      22,
-      -52
-     ],
-     [
-      22,
-      -66
+      40,
+      -100
      ],
      [
       44,
-      -66
-     ],
-     [
-      44,
-      -80
-     ],
-     [
-      22,
-      -80
-     ],
-     [
-      22,
-      -88
-     ],
-     [
-      26,
-      -96
+      -104
      ]
     ],
     "radius": 2,
@@ -5735,6 +5704,29 @@
     "wanderLength": 14
    },
    {
+    "id": "mine",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "posZ",
+    "style": "minehead",
+    "wings": [
+     {
+      "corners": [
+       [
+        -2,
+        -71
+       ],
+       [
+        10,
+        -65
+       ]
+      ],
+      "spec": {}
+     }
+    ]
+   },
+   {
     "id": "cot-1",
     "kind": "house",
     "layer": "ground",
@@ -5745,12 +5737,12 @@
      {
       "corners": [
        [
-        -39,
-        -71
+        22,
+        -110
        ],
        [
-        -31,
-        -65
+        30,
+        -104
        ]
       ],
       "spec": {}
@@ -5768,35 +5760,12 @@
      {
       "corners": [
        [
-        -22,
-        -71
+        -43,
+        -42
        ],
        [
-        -12,
-        -65
-       ]
-      ],
-      "spec": {}
-     }
-    ]
-   },
-   {
-    "id": "mine",
-    "kind": "house",
-    "layer": "ground",
-    "seed": 5,
-    "front": "posZ",
-    "style": "minehead",
-    "wings": [
-     {
-      "corners": [
-       [
-        -8,
-        -71
-       ],
-       [
-        4,
-        -65
+        -35,
+        -36
        ]
       ],
       "spec": {}
@@ -5854,8 +5823,8 @@
     "kind": "tree",
     "layer": "ground",
     "seed": 7,
-    "x": 20,
-    "z": -108,
+    "x": 40,
+    "z": -93,
     "style": "birch"
    },
    {
@@ -5902,6 +5871,76 @@
     "x": -22,
     "z": -49,
     "style": "rock"
+   },
+   {
+    "id": "quarry-lake",
+    "kind": "fluid",
+    "layer": "ground",
+    "seed": 5,
+    "shape": "basin",
+    "level": 11,
+    "points": [
+     [
+      15,
+      -29
+     ],
+     [
+      12,
+      -25
+     ],
+     [
+      6,
+      -22
+     ],
+     [
+      -3,
+      -20
+     ],
+     [
+      -11,
+      -22
+     ],
+     [
+      -17,
+      -25
+     ],
+     [
+      -21,
+      -29
+     ],
+     [
+      -21,
+      -33
+     ],
+     [
+      -18,
+      -37
+     ],
+     [
+      -12,
+      -40
+     ],
+     [
+      -3,
+      -42
+     ],
+     [
+      5,
+      -40
+     ],
+     [
+      11,
+      -37
+     ],
+     [
+      15,
+      -33
+     ]
+    ],
+    "radius": 2,
+    "depth": 3,
+    "fluid": "water",
+    "shore": 1
    },
    {
     "id": "tarn",
