@@ -11,6 +11,7 @@ An analysis of the `opus55-freeform-riftwater` branch (pgmvox and the boards bui
 | `PLAN-REVIEW-DESIGN.md` | how an agent's plan becomes a studio document: the plan of places, its targets, the plan note anchors, the verdict, the API and the loop |
 | `pages/studio-2-plan/index.html` | the Studio 2.0 plan of action, in German: the experiments of 10 October (rules off, grain, houses, tunnels), the layer document, play pieces and stamps, the three rule tiers, the order of work and the open decisions |
 | `pages/terrain-layers/index.html` | the terrain layer prototype: an island built from ordered, region-bound layers, editable in the browser |
+| `pgmvox-cleanup/INVENTORY.md` | pgmvox taken stock of: modules, duplication inside it and in the boards, every board run on 0.21.0, the fourteen terrain shapes to add, the cleanup order, and eight shape decisions to settle before the C# port |
 | `boards-as-json/` | Riftwater (its pgmvox port) and Hollow Mesa taken apart by which code writes which blocks, and each written again as one JSON document of ordered layers |
 | `houses/HOUSES.md` | the studio's and pgmvox's house models compared, with pictures and a proposed `HouseStyle` extension |
 | `experiment/RULES-MINIMAL.md` | the two briefs built a third time with the rules relaxed, and the finished boards checked against every rule |
