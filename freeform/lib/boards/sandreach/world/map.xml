@@ -77,8 +77,8 @@
         <cuboid min="46,22,66" max="54,26,74" id="orange-room"/>
         <apply enter="not-blue" region="orange-room" message="You may not enter your own wool room!"/>
         <point id="orange-wool-spawn">49.5,23,70.5</point>
-        <cuboid min="39,22,-65" max="42,25,-62" id="red-emerald-region"/>
-        <cuboid min="-42,22,62" max="-39,25,65" id="blue-emerald-region"/>
+        <cuboid min="39,25,-65" max="42,28,-62" id="red-emerald-region"/>
+        <cuboid min="-42,25,62" max="-39,28,65" id="blue-emerald-region"/>
         <union id="reds-woolrooms">
             <region id="yellow-room"/>
         </union>

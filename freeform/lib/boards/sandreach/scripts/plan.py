@@ -13,7 +13,7 @@ The board is red's half (z < 0) turned a half turn about the middle for blue's (
     cells()         the made blueprint, both halves: ({cell: Cell}, {cell: 0 red, 1 blue})
     meadow(), island()      the grown ground, red's: (mask, heights) over the world's grid
     objectives()    two teams; each keeps one wool in its house and takes the other's to its monument, and
-                    keeps an emerald monument on its meadow that the other team destroys
+                    keeps an emerald monument floating over its meadow that the other team destroys
 """
 import os
 import sys
@@ -24,7 +24,7 @@ import numpy as np  # noqa: E402
 
 from pgmvox import brittle as BR  # noqa: E402
 from pgmvox import B, noise  # noqa: E402
-from pgmvox.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402
+from pgmvox.objectives import FLOAT, Box, Destroyable, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402
 from pgmvox.plan import Symmetry  # noqa: E402
 
 BOARD = "sandreach"
@@ -185,8 +185,8 @@ def objectives():
     O.add(Wool("blue-team", "yellow", slot=(int(bx), MONUMENT[1], int(bz)), found=WOOL_AT, room=room),
           color="orange")
     ex, ez = EMERALD_AT                       # and a monument to destroy on each meadow: a cube of emerald on bedrock
-    O.add(Destroyable("red-emerald", "Red Emerald", "red-team", Box(ex - 1, EMERALD_Y + 1, ez - 1, ex + 1, EMERALD_Y + 3,
-                                                                    ez + 1),
+    lo = EMERALD_Y + 1 + FLOAT                # floating three over its plinth
+    O.add(Destroyable("red-emerald", "Red Emerald", "red-team", Box(ex - 1, lo, ez - 1, ex + 1, lo + 2, ez + 1),
                       material=(B.EMERALD_BLOCK, 0), materials="emerald block", heart=(B.BEDROCK, 0)),
           name="Blue Emerald")
     return O

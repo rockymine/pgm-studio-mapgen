@@ -106,3 +106,6 @@ in the grass. The acacias keep ten blocks from the emerald.
 
 **The wool house carries the studio's wool-room loot.** Two chests stand in each inner corner of its first storey,
 as the studio's wool-room stamper lays them.
+
+**The emeralds float three over their plinths, as every monument should.** Each was a cube standing on the plinth
+at 21; it now hangs from 25 to 27, with three blocks of air under every column. The walks to it are unchanged.

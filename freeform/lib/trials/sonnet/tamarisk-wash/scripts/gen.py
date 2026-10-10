@@ -314,8 +314,8 @@ def table_rock(w, L):
     for dx in range(-2, 3):
         for dz in range(-2, 3):
             if max(abs(dx), abs(dz)) <= 1 or (abs(dx) + abs(dz) <= 2):
-                w.set(ox + dx, top + 1, oz + dz, B.SANDSTONE, 2)
-    w.set(ox, top + 1, oz, B.SANDSTONE, 1)
+                w.set(ox + dx, top, oz + dz, B.SANDSTONE, 2)       # flush with the rock: no pedestal under the obelisk
+    w.set(ox, top, oz, B.SANDSTONE, 1)
     for a in range(6):
         ang = a * np.pi / 3 + 0.3
         px, pz = int(round(ox + 6 * np.cos(ang))), int(round(oz + 6 * np.sin(ang)))

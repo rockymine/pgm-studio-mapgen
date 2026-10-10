@@ -46,9 +46,9 @@ for team, start in (("red", red), ("blue", blue)):
     en_o, en_s = P.SYM.point(*own_o), P.SYM.point(*own_s)
     sg = 1 if team == "red" else -1                              # the offsets mirror with the team
     print(f"{team} spawn at {start}: {int((d >= 0).sum())} places reached")
-    print(f"  to its own Obelisk's dais (the top of Table Rock): {reach(d, own_o[0] + 2 * sg, P.TABLE_TOP + 2, own_o[1], 2)}")
+    print(f"  to its own Obelisk's dais (the top of Table Rock): {reach(d, own_o[0] + 2 * sg, P.TABLE_TOP + 1, own_o[1], 2)}")
     print(f"  to its own Sunstone's carpet: {reach(d, own_s[0] + 2 * sg, P.PLATEAU + 1, own_s[1], 2)}")
-    print(f"  to the enemy's Obelisk's dais: {reach(d, int(en_o[0]) - 2 * sg, P.TABLE_TOP + 2, int(en_o[1]), 2)}")
+    print(f"  to the enemy's Obelisk's dais: {reach(d, int(en_o[0]) - 2 * sg, P.TABLE_TOP + 1, int(en_o[1]), 2)}")
     print(f"  to the enemy's Sunstone's carpet: {reach(d, int(en_s[0]) - 2 * sg, P.PLATEAU + 1, int(en_s[1]), 2)}")
     if team == "red":
         sx0, sz0, sx1, sz1 = P.SERAI

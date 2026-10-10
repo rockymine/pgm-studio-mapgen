@@ -225,3 +225,5 @@ The fix is to skip a ring column whose ground is under 0, or to take a `land` ma
 ## After the second playtest
 
 **Houses keep a block of wall either side of the door.** The library's house builder no longer puts a window against a door, and the board was rebuilt with it. A scan of every door block finds no pane or glass beside any. The walks are unchanged but for their timings.
+
+**The monuments now hang three blocks over the floor.** The playtester's rule is three clear blocks between the floor and an objective's lowest block. The four destroyables were one block over the ground (lowest block 64 over a Table floor of 62, and 43 over the wash floor of 41); they are now at 66 and 45, so the audit reads 3 blocks of air under each and the lowest block at ground plus 4. Nothing stands under them, and spawn to own table and wash monument still reads 56 and 40.

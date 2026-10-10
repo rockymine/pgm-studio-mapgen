@@ -465,7 +465,7 @@ def objectives():
     O.add(Destroyable("red-obelisk", "Red Obelisk", "red-team", Box(ox, TABLE_TOP + 4, oz, ox, TABLE_TOP + 6, oz)),
           name="Blue Obelisk")
     sx, sz = STONE_AT
-    O.add(Destroyable("red-sunstone", "Red Sunstone", "red-team", Box(sx, PLATEAU + 3, sz, sx, PLATEAU + 4, sz),
+    O.add(Destroyable("red-sunstone", "Red Sunstone", "red-team", Box(sx, PLATEAU + 4, sz, sx, PLATEAU + 5, sz),
                       material=(22, 0), materials="lapis block"), name="Blue Sunstone")
     O.add(Observer((0, 100, 0), yaw=90), mirror=False)
     return O

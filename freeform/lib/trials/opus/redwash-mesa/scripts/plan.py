@@ -321,7 +321,7 @@ def objectives():
     L = land()
     for key, ((x, z), name) in MONUMENTS.items():
         g = at(L, x, z)
-        O.add(Destroyable(f"red-{key}", name, "red-team", Box(x, g + 2, z, x, g + 3, z)))
+        O.add(Destroyable(f"red-{key}", name, "red-team", Box(x, g + 4, z, x, g + 5, z)))
     O.add(Observer((0, 90, 0), yaw=90), mirror=False)
     return O
 

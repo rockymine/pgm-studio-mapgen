@@ -49,7 +49,7 @@ def main(build):
     out = []
     cp = P.CONTROL
     cpp = ((cp["box"][0] + cp["box"][1]) // 2, cp["y"] + 1, (cp["box"][2] + cp["box"][3]) // 2)
-    mons = {m["key"]: (m["monument"][0], m["monument"][1], m["monument"][2] - 1) for m in P.MAGAZINES}
+    mons = {m["key"]: (m["monument"][0], m["floor"] + 1, m["monument"][2] - 1) for m in P.MAGAZINES}
     wx, wy, wz = P.WOOL["at"]
     banner = (wx, wy, wz - 1)
     mx, my, mz = P.WOOL["monument"]

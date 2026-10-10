@@ -15,3 +15,5 @@
 ## After the second playtest
 
 **Houses keep a block of wall either side of the door.** The library's house builder no longer puts a window against a door, and the board was rebuilt with it. Window panes within one block of a door fell by 4, and a scan of all 32 door blocks finds none beside any. The walks are unchanged.
+
+**The obelisks and sunstones now hang three blocks over the floor.** The sunstones had two blocks of air under them at 65 over a floor of 62 and now sit at 66. The obelisks stood at 74 over a dais that raised the rock's top to 71, which left two; the dais is now flush with the rock at 70, with its centre block removed, so three blocks of air lie under the obelisk's lowest block at 74. The audit reads 3 under all four, and the walks are unchanged (51 and 49 to the own objectives).

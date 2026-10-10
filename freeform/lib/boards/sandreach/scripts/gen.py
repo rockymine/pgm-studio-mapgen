@@ -107,7 +107,7 @@ for x in range(ex - 3, ex + 4):
         if ring <= 2:
             corner = abs(x - ex) == 2 and abs(z - ez) == 2
             w.set(x, P.EMERALD_Y, z, B.SANDSTONE, 1 if corner else 2)
-            for y in range(P.EMERALD_Y + 1, P.EMERALD_Y + 6):
+            for y in range(P.EMERALD_Y + 1, P.EMERALD_Y + 9):
                 w.set(x, y, z, B.AIR)
 
 # boulders on the grown ground: weathered lumps of sandstone and stone, sat into the grass, off the made faces, the

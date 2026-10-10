@@ -182,9 +182,9 @@ COVER = [  # x0, x1, z0, z1, height over the ground: beached boats and rocks on 
 ]
 MAGAZINES = [
     dict(key="west", name="the West Powder Store", box=(-22, -14, -4, 5), floor=26,
-         doors=[(-19, -17, -4, -4), (-19, -17, 5, 5)], monument=(-18, 27, 0)),
+         doors=[(-19, -17, -4, -4), (-19, -17, 5, 5)], monument=(-18, 30, 0)),
     dict(key="east", name="the East Powder Store", box=(14, 22, 11, 20), floor=30,
-         doors=[(17, 19, 11, 11), (17, 19, 20, 20)], monument=(18, 31, 15)),
+         doors=[(17, 19, 11, 11), (17, 19, 20, 20)], monument=(18, 34, 15)),
 ]
 CONTROL = dict(key="sea-gate", name="the Sea Gate", box=(-6, 5, -26, -21), y=22)
 WOOL = dict(at=(0, 35, 54), colour=10, monument=(0, 23, -23))
