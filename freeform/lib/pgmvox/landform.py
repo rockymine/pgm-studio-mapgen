@@ -17,11 +17,10 @@ from dataclasses import dataclass
 
 import numpy as np
 from scipy import ndimage
-from scipy.ndimage import distance_transform_edt
 
 from . import noise
 from .noise import smoothstep
-from .shapes import polyline, signed_distance
+from .shapes import distance_in, polyline, signed_distance
 
 
 @dataclass
@@ -111,7 +110,7 @@ def lake(H, X, Z, centre, r, level, depth=3, shore=3, rz=None, jag=0.2, seed=0):
     mask = e <= 1
     bed = np.floor(level - 1 - (depth - 1) * np.clip(1 - e, 0, 1) ** 0.6)
     Hn = np.where(mask, np.minimum(H, bed), H)
-    d = ndimage.distance_transform_edt(~mask)
+    d = distance_in(~mask, "euclid")
     t = smoothstep(0, shore, d)
     rim = ~mask & (d <= shore)
     Hn = np.where(rim, np.maximum(H, level) * (1 - t) + H * t, Hn)   # the shore eases from the level to the ground
@@ -292,7 +291,7 @@ def coast(H, X, Z, sea, outline=None, shelf=10, depth=6, slope=0.35):
 def blend(Ha, Hb, mask, width=8):
     """One terrain inside mask and another outside, eased together over `width` blocks inside the mask's edge,
     so a built quarter meets the wild ground without a seam."""
-    inside = distance_transform_edt(mask)
+    inside = distance_in(mask, "euclid")
     t = np.clip(inside / max(width, 1e-6), 0, 1)
     t = t * t * (3 - 2 * t)
     return np.asarray(Ha, float) * (1 - t) + np.asarray(Hb, float) * t

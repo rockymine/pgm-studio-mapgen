@@ -21,7 +21,7 @@ from scipy import ndimage
 
 from . import noise
 from .blocks import B
-from .shapes import edge_depth
+from .shapes import distance_in, edge_depth
 
 SIDES = ((1, 0, 2), (-1, 0, 8), (0, 1, 4), (0, -1, 1))       # (dx, dz, the vine bit that hangs it on the block back)
 
@@ -81,7 +81,7 @@ def skirt(w, land, floor, rock, rng, bulge=None, reach=(0.05, 0.3), moss=0.12, g
     than floor - 2 (so the walked edge and the plan's gaps are untouched), with `moss` of it mossy and grass on
     `grass` of the ledges; on the rim, where the noise is under `undercut`, the face is cut back from floor - 5
     to floor - 3. `keep` is a mask of rim cells never undercut (a wool room's wall, a pillar)."""
-    near = ndimage.distance_transform_edt(~land)
+    near = distance_in(~land, "euclid")
     Hn = ndimage.maximum_filter(np.where(land, floor, -1), size=5)
     b = noise.fbm(land.shape, 5, 2, seed=seed) if bulge is None else bulge
     X, Z = w.grid()

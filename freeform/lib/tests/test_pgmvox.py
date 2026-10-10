@@ -215,6 +215,16 @@ class Shapes(unittest.TestCase):
         self.assertEqual(shapes.nearest_on(bend, 13, 6), (3.0, 16.0))
         self.assertEqual(shapes.nearest_on(bend, -5, 0), (5.0, 0.0))
 
+    def test_depth_inside_a_mask_by_each_metric(self):
+        m = np.zeros((7, 7), bool)
+        m[1:6, 1:6] = True
+        self.assertEqual(shapes.distance_in(m)[3, 3], 3)
+        self.assertEqual(shapes.distance_in(m, "chessboard")[3, 3], 3)
+        self.assertAlmostEqual(float(shapes.distance_in(m, "euclid")[3, 3]), 3.0)
+        self.assertEqual(shapes.distance_in(m)[0, 0], 0)
+        e = shapes.edge_depth(m)
+        self.assertEqual((e[1, 1], e[3, 3], e[0, 0]), (0, 2, -1))
+
     def test_no_public_function_takes_a_rectangle_by_ranges_but_the_two_named(self):
         import inspect
         import pkgutil

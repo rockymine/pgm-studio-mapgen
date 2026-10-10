@@ -155,9 +155,16 @@ def boundary(mask, diagonal=False):
     return mask & out
 
 
-def edge_depth(mask):
+def distance_in(mask, metric="taxicab"):
+    """How far every cell of a mask lies from the nearest cell outside it: 1 on its edge, 0 outside. `taxicab`
+    and `chessboard` count steps, four ways and eight; `euclid` measures the straight line between centres."""
+    from scipy import ndimage
+    if metric == "euclid":
+        return ndimage.distance_transform_edt(mask)
+    return ndimage.distance_transform_cdt(mask, metric=metric)
+
+
+def edge_depth(mask, metric="taxicab"):
     """For every cell of a mask, how many steps it lies inside its edge (0 on the edge, -1 outside): the
     measure an underside, a parapet inset or a terrace is cut by."""
-    from scipy import ndimage
-    inside_ = ndimage.distance_transform_cdt(mask, metric="taxicab")
-    return np.where(mask, inside_ - 1, -1)
+    return np.where(mask, distance_in(mask, metric) - 1, -1)

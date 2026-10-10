@@ -27,9 +27,9 @@ that need one (rings, beds, squares) decline it, and the chooser's next fill is 
 from dataclasses import dataclass, field
 
 import numpy as np
-from scipy import ndimage
 
 from .blocks import B
+from .shapes import edge_depth
 
 DIRS = {"e": (1, 0), "w": (-1, 0), "s": (0, 1), "n": (0, -1)}
 OPP = {"n": "s", "s": "n", "e": "w", "w": "e"}
@@ -123,7 +123,7 @@ class Ground:
             m = np.zeros((x1 - x0 + 3, z1 - z0 + 3), bool)
             for x, z in s.columns():
                 m[x - x0 + 1, z - z0 + 1] = True
-            d = ndimage.distance_transform_cdt(m, metric="chessboard") - 1
+            d = edge_depth(m, "chessboard")
             self._depth[n] = (x0 - 1, z0 - 1, d)
 
     def top(self, x, z):
