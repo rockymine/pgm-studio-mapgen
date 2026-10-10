@@ -37,6 +37,45 @@ def _apply(H, shaped, mode):
     return shaped
 
 
+def smooth_min(a, b, k):
+    """The lower of a and b, the seam between them rounded over k blocks: a crater meeting the hill it is cut into
+    takes a rounded rim instead of a crease. k = 0 is the plain minimum; where a and b lie k or more apart it is
+    the plain minimum too, and where they meet it lies k / 4 under both."""
+    a, b = np.asarray(a, float), np.asarray(b, float)
+    if k <= 0:
+        return np.minimum(a, b)
+    h = np.clip(0.5 + 0.5 * (b - a) / k, 0, 1)
+    return b * (1 - h) + a * h - k * h * (1 - h)
+
+
+def smooth_max(a, b, k):
+    """The higher of a and b, the seam rounded over k blocks: a hill stated on its own base grows out of the ground
+    with a foot instead of standing on it. The mirror of `smooth_min`. Where one of the two is defined only inside
+    an area, give it a value k or more below the other at the area's edge, or the seam's k / 4 shows there as a step."""
+    return -smooth_min(-np.asarray(a, float), -np.asarray(b, float), k)
+
+
+def join(rises, p=0, cut=False):
+    """Several rises over the same ground (each a form's height over it, 0 off the form) as one: `p` = 0 is the
+    plain maximum, and a lower p fills the saddle where two overlap, so the hills of one layer melt into a ridge.
+    Where none rises nothing changes. With `cut` the rises are depths, given negative, and join the same way."""
+    if not rises:
+        raise ValueError("join takes at least one rise")
+    sign = -1.0 if cut else 1.0
+    mags = [np.maximum(sign * np.asarray(r, float), 0) for r in rises]
+    out = np.maximum.reduce(mags) if p <= 0 else sum(m ** p for m in mags) ** (1.0 / p)
+    return sign * out
+
+
+def soften(H, shaped, e, band=1 / 3):
+    """A form's change to the ground eased to nothing over the outer `band` of its area: `e` is the form's distance
+    field, 0 inside and 1 on its rim (a shapes.ellipse_distance, or a polygon's 1 - depth / deepest), and inside
+    1 - band the change holds in full. A hill gets a foot that runs out flat and a crater a rounded lip, whatever
+    the form."""
+    H = np.asarray(H, float)
+    return H + (np.asarray(shaped, float) - H) * smoothstep(1.0, 1.0 - band, np.asarray(e, float))
+
+
 @dataclass
 class Step:
     """One cliff of a cross-section and the ground past it: from `start` to `end` blocks out the ground eases

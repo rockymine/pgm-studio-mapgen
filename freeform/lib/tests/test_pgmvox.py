@@ -326,6 +326,46 @@ class Shapes(unittest.TestCase):
 
 
 class Landforms(unittest.TestCase):
+
+    def test_smooth_min_is_the_min_away_from_the_seam_and_a_quarter_under_it(self):
+        a = np.linspace(0, 20, 41)
+        got = LF.smooth_min(a, 10.0, 4)
+        far = np.abs(a - 10) >= 4
+        np.testing.assert_allclose(got[far], np.minimum(a, 10)[far])
+        self.assertAlmostEqual(float(got[a == 10][0]), 10 - 1.0)
+        self.assertTrue((got <= np.minimum(a, 10) + 1e-9).all())
+        np.testing.assert_allclose(LF.smooth_min(a, 10.0, 0), np.minimum(a, 10))
+
+    def test_smooth_max_mirrors_smooth_min(self):
+        a = np.linspace(0, 20, 41)
+        np.testing.assert_allclose(LF.smooth_max(a, 10.0, 6), -LF.smooth_min(-a, -10.0, 6))
+        self.assertTrue((LF.smooth_max(a, 10.0, 6) >= np.maximum(a, 10) - 1e-9).all())
+
+    def test_join_fills_the_saddle_and_leaves_bare_ground(self):
+        X, Z = np.meshgrid(np.arange(40.0), np.arange(20.0), indexing="ij")
+        flat = np.full(X.shape, 50.0)
+        ra = LF.mound(flat, shapes.ellipse_distance(X, Z, (14, 10), 9, 7), 8) - flat
+        rb = LF.mound(flat, shapes.ellipse_distance(X, Z, (26, 10), 9, 7), 8) - flat
+        hard, melted = LF.join([ra, rb]), LF.join([ra, rb], p=1.6)
+        np.testing.assert_allclose(hard, np.maximum(ra, rb))
+        self.assertGreater(melted[20, 10], hard[20, 10] + 1)          # the saddle between them rises
+        bare = (ra == 0) & (rb == 0)
+        self.assertTrue((melted[bare] == 0).all())
+        np.testing.assert_allclose(LF.join([-ra, -rb], p=1.6, cut=True), -melted)
+
+    def test_soften_holds_inside_and_runs_out_flat_at_the_rim(self):
+        X, Z = np.meshgrid(np.arange(41.0), np.arange(41.0), indexing="ij")
+        ground = np.full(X.shape, 50.0)
+        e = shapes.ellipse_distance(X, Z, (20, 20), 16, 16)
+        hill = LF.mound(ground, e, 9.0)
+        soft = LF.soften(ground, hill, e, band=0.4)
+        inner, outside = e < 0.6, e >= 1
+        np.testing.assert_allclose(soft[inner], hill[inner])
+        np.testing.assert_allclose(soft[outside], ground[outside])
+        row = soft[:, 20]                                        # the last blocks before the rim climb least
+        rim = [i for i in range(21, 41) if e[i, 20] < 1][-1]
+        self.assertLess(row[rim] - 50, hill[rim, 20] - 50)
+        self.assertLess(row[rim] - row[rim + 1], 0.5)
     def setUp(self):
         self.X, self.Z = np.meshgrid(np.arange(-60, 60), np.arange(-60, 60), indexing="ij")
         self.H = 40 + 12 * noise.fbm(self.X.shape, 30, 3, seed=3) - 0.05 * self.Z

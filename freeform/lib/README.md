@@ -35,7 +35,7 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `under` | caves and mines carved into a built world: `tunnel` (a level-floored passage), `chamber`, `carve`, `dress_cave` (floors, stalactites, ore), `gallery_line` and `gallery` (timbered, railed, stepped), `shaft`, `bore` (a round hole through the rock, a core's leak) |
 | `trees` | hand-built trees planted whole: `library` (the studio's copied trees), `load` (a board's own cut), `kinds`, `plant` (turned, refused whole), `scatter` (a wood with its crowns apart), `dead_tree` (a bare trunk and arms, no leaves) |
 | `forms` | scenery built block by block where a heightfield cannot say it: `tower` (rings tapering up a stack, ledges every few courses, bulging faces, beds in courses, a crown and vines), `skirt` (karst faces under a floating floor's rim), `root_vines`, `arch` (a natural arch: a deck and the rock under it, thin at the crown, thick at the ends, the ground under it kept), `masonry_tower` (hollow, floored every five courses, a ladder through the hatches, slits, a door, a crenellated crown) |
-| `landform` | heightfield operations: `watercourse` (reaches and falls), `canyon` and washes, `spire_sites` and `spire_field` (needles and hoodoos drawn apart and off the paths), `ridge` (from a wandering foot to a crest, rough, with spurs, terraced; only lifts), `mound` (a heap over a distance field) and `crater` (a bowl in one-block steps), `level` (level ground inside a distance, eased back to the ground, lift, cut or set), `profile` (a cross-section by distance from a line: a floor and `Step`s of cliff and flat, ragged by `jag`, with a talus; `mode` set, lift or cut), `spire` and `butte` (round, or elliptical and turned with `rz` and `angle`), `scarp`, `terraces`, `stage`, `grade` (a route held to a grade, bridging water, keeping earlier roads), `lake`, `coast`, `hold`, `blend` |
+| `landform` | heightfield operations: `watercourse` (reaches and falls), `canyon` and washes, `spire_sites` and `spire_field` (needles and hoodoos drawn apart and off the paths), `ridge` (from a wandering foot to a crest, rough, with spurs, terraced; only lifts), `mound` (a heap over a distance field) and `crater` (a bowl in one-block steps), `level` (level ground inside a distance, eased back to the ground, lift, cut or set), `profile` (a cross-section by distance from a line: a floor and `Step`s of cliff and flat, ragged by `jag`, with a talus; `mode` set, lift or cut), `spire` and `butte` (round, or elliptical and turned with `rz` and `angle`), `scarp`, `terraces`, `stage`, `grade` (a route held to a grade, bridging water, keeping earlier roads), `lake`, `coast`, `hold`, `blend`; `smooth_max`, `smooth_min`, `join` and `soften` (forms melting into the ground and each other) |
 | `walk` | the voxel walk over built blocks with `MoveRules`; `no_stand_above`, `catchers`, `unreached`, `nearest`, `gap_cleared` |
 | `audit` | `footing`: blocks that would fall, or have nothing to hang on; `loose_water`: water standing against air |
 | `render` | `iso`, `elevation`, `cutaway` along any polyline, x-ray, `trim`, all in the studio's colours |
@@ -287,10 +287,20 @@ built before, byte for byte, so the shape is that board's code with its numbers 
 | a natural arch | `forms.arch` | Tamarisk Wash |
 | a field of needles and hoodoos | `landform.spire_sites`, `spire_field` | Hollow Mesa's spires array, equal |
 | a core's leak through the rock | `under.bore` | the tests |
+| forms melting together, a soft edge | `landform.smooth_max`, `smooth_min`, `join`, `soften` | the tests; the Riftwater layer page |
 
 **`spire_sites` keeps a path clear by its line, not its corners.** Drawn with Hollow Mesa's seed and box, its first
 twelve sites are Hollow Mesa's and it then turns down a site that stood within reach of the path between two of
 the path's points.
+
+**Forms melt into each other where a board asks, and meet hard where it does not.** `smooth_max` and `smooth_min`
+round the seam where a form meets the ground or another form over k blocks, so a hill stated on its own base grows
+out of the ground with a foot and a crater cut into a hill takes a rounded rim.
+
+**Several forms of one layer join, and any form can ease out at its edge.** `join` puts the rises of several
+forms of one layer together, the plain maximum at p 0 and a filled saddle below it. `soften` eases any form's change
+to the ground to nothing over the outer share of its area, which turns a mound's last steep blocks into a foot that
+runs out flat. None of the four is a default: every board built before them builds the same world.
 
 **A shape names its places and says what it does to the ground.** A point is `at`, a polyline `path`, a closed one
 `outline`, an absolute height `top` and a relative one `rise`; an angle is in degrees. A shape that can raise and
