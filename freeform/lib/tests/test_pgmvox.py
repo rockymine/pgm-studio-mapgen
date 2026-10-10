@@ -716,6 +716,10 @@ class LayerDocument(unittest.TestCase):
         self.assertGreater(int((w.ids == B.LEAVES).sum()), 40)          # the hedge (and the trees)
         self.assertGreater(int((w.ids == B.FENCE).sum()), 40)
         self.assertGreater(int((w.ids == B.SLAB).sum()), 5)             # the climb's half steps
+        ln = self.built.lines["aufstieg"]
+        band, lvl, _ = RT.halfstep_levels(X, Z, ln["pts"], ln["profile"], ln["width"], within=self.built.land)
+        for i, k in np.argwhere(band):                                  # nothing stands on the climb
+            self.assertEqual(int(np.nonzero(w.ids[i, :, k])[0].max()), int(lvl[i, k]) // 2 + int(lvl[i, k]) % 2)
 
 
 class Routes(unittest.TestCase):

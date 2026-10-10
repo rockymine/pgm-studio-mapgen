@@ -28,7 +28,7 @@ layers run as listed.
 | lay | `lay` | columns laid to the heights, rock in beds, soil by slope, the paint on top, the underside |
 | water | `water` | the water each river holds, its bed painted by its own stack |
 | build | `build` | what stands on the finished ground: a path's surface and steps, walls, hedges, fences |
-| dress | `dress` | trees and scattered things |
+| dress | `dress` | trees and scattered things, kept `clear` blocks (3 unless stated) off everything the build stage laid |
 
 ## Areas
 

@@ -17,12 +17,13 @@ a surface of its own (a crater, a level top) rounds into the ground. `soft` is t
 which the change eases to nothing.
 
 **The stages run in a fixed order:** `fields` (named noise), `ground` (heights), `paint` (the top, first layer
-that applies wins), `lay`, `water`, `build` (paths' surfaces and steps, walls, hedges, fences), `dress` (trees).
-A layer that names another (`near`) reads the area or line that layer was given.
+that applies wins), `lay`, `water`, `build` (paths' surfaces and steps, walls, hedges, fences), `dress` (trees, kept
+`clear` blocks off everything built). A layer that names another (`near`) reads the area or line that layer was given.
 """
 from dataclasses import dataclass, field as _field
 
 import numpy as np
+from scipy import ndimage
 
 from . import field as F
 from . import landform as LF
@@ -243,6 +244,7 @@ def build(doc):
         T.fill_water(w, Hi, np.where(land, water, 0), bed=bed, mask=land)
         out.steps.append(Step("water", "water", "fill_water", (water > 0) & land, Hi.copy()))
     rng = np.random.default_rng(bd.get("seed", 0))
+    built_on = np.zeros(X.shape, bool)
     for L in doc.get("build", []):
         laid = np.zeros(X.shape, bool)
         if L["op"] == "surface":
@@ -270,13 +272,15 @@ def build(doc):
                             keep=~land, rng=rng)
             for x, z, _, _ in got:
                 laid[x - x0, z - z0] = True
+        built_on |= laid
         out.steps.append(Step(L["id"], "build", L["op"], laid, Hi.copy(), L.get("note", "")))
     for L in doc.get("dress", []):
         laid = np.zeros(X.shape, bool)
         if L["op"] == "trees":
             from . import trees as TR
             e, _ = area_distance(L["area"], X, Z, fields, lines)
-            zone = (e < 1) & land & (water == 0)
+            clear = ndimage.binary_dilation(built_on, iterations=L.get("clear", 3))
+            zone = (e < 1) & land & (water == 0) & ~clear
             kinds = TR.kinds(TR.library())
             weights = {k: v for k, v in L["kinds"].items() if k in kinds}
             planted = []
