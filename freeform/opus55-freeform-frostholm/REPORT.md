@@ -183,3 +183,7 @@ round a headland of rock under it.
 **The map.xml and the walk follow.** The core regions are `-29,57,-59` to `-26,60,-56` for red and `26,57,56` to `29,60,59` for blue, read back as 26 obsidian and one lava block each, and the objective text no longer names the lantern. The walk's probes moved to the ground. The checker reads the map valid with no issues.
 
 **Both cores are reachable, and nearer.** From its own spawn the core reads 30 moves, where it read 69 up the stair, and from the enemy's spawn 205, where it read 235. The core is close to its spawn, so defenders reach it at once, which the playtest asked for by wanting it visible and defensible. The placement audit finds no problem.
+
+## After the fourth playtest
+
+**The cores and the monuments hang three blocks over the floor.** Each core was raised from y 57-59 to 59-61, three blocks of air over the plinth's top at 55, with the pit under it left open: its floor is at 48, eleven under the core's base, against a leak of five. The snow layer round the plinth's edge was dropped so the floor reads a clean 55. Holmstein's monuments went from y 62-63 on a snow-laid crown to 63-64 with the layer under them removed, so three blocks of air lie under them; the walks are unchanged.

@@ -57,10 +57,10 @@
         <point id="observer-spawn">0.5,80,0.5</point>
         <rectangle id="red-spawn" min="-76,-69" max="-51,-58"/>
         <rectangle id="blue-spawn" min="51,58" max="76,69"/>
-        <cuboid id="red-core-region" min="-29,57,-59" max="-26,60,-56"/>
-        <cuboid id="blue-core-region" min="26,57,56" max="29,60,59"/>
-        <cuboid id="red-monument" min="-58,62,-20" max="-57,64,-19"/>
-        <cuboid id="blue-monument" min="57,62,19" max="58,64,20"/>
+        <cuboid id="red-core-region" min="-29,59,-59" max="-26,62,-56"/>
+        <cuboid id="blue-core-region" min="26,59,56" max="29,62,59"/>
+        <cuboid id="red-monument" min="-58,63,-20" max="-57,65,-19"/>
+        <cuboid id="blue-monument" min="57,63,19" max="58,65,20"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>

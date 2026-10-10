@@ -98,7 +98,7 @@ PLACES = [
          why="frames the village; the log piles are a climb onto the ridge", how="Clearing Path from Ironhollow"),
 ]
 
-# The objectives (red's; blue's mirror them). Monument blocks stand 2 over the ground.
+# The objectives (red's; blue's mirror them). Monument blocks hang with 3 blocks of air under them.
 MONUMENTS = {"north": (-66, -44), "south": (-66, 48)}
 SPAWN = (-99, -7)
 

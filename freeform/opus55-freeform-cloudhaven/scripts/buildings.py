@@ -243,11 +243,10 @@ def windmill(w, F):
 
 
 def monument_on(w, F, x, y, z):
-    """Two obsidian on a chiseled pedestal."""
-    w.set(x, y + 1, z, B.STONEBRICK, 3)
-    w.set(x, y + 2, z, B.OBSIDIAN)
-    w.set(x, y + 3, z, B.OBSIDIAN)
-    return (x, y + 2, z)
+    """Two obsidian hanging three blocks of air over the floor y, nothing under them (the playtest rule)."""
+    w.set(x, y + 4, z, B.OBSIDIAN)
+    w.set(x, y + 5, z, B.OBSIDIAN)
+    return (x, y + 4, z)
 
 
 def gazebo(w, F):

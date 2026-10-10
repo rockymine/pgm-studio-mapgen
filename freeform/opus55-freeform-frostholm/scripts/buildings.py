@@ -358,8 +358,8 @@ def beacon(w, F):
 def core_plinth(w, F):
     """Red's core on open ground by the Beacon: a seven-by-seven plinth of stone brick level with the snow, a pit in
     its middle (the well, three wide and seven deep, lined in stone brick), and the core floating over the pit's
-    mouth, its bottom two blocks over the plinth. A player cannot stand under it (one block of air), so the pit stays
-    shut to players; lava let out of the core falls eight blocks onto the pit's floor, against a leak of five."""
+    mouth, its bottom three blocks of air over the plinth (the playtest rule). Lava let out of the core falls ten blocks
+    onto the pit's floor, against a leak of five."""
     cx, cz = P.CORE
     g = P.CORE_GROUND
     claim(F, "the core plinth", (cx - 3, cz - 3, cx + 3, cz + 3))
@@ -369,9 +369,7 @@ def core_plinth(w, F):
             edge = max(abs(x - cx), abs(z - cz))
             if edge > 3:
                 set_ground(w, F, x, z, g, None)               # the ground eased to the plinth's height
-                if w.id(x, g + 1, z) == B.AIR:
-                    w.set(x, g + 1, z, B.SNOW_LAYER, 0)
-                continue
+                continue                                       # bare, no snow layer: the floor round the core is a clean 55
             set_ground(w, F, x, z, g, (B.STONEBRICK, 0 if edge < 3 or (x + z) % 2 else 3))
             for y in range(g - 8, g):
                 w.set(x, y, z, B.STONEBRICK, 0)
@@ -382,7 +380,7 @@ def core_plinth(w, F):
             for y in range(g - P.PIT_DEPTH + 1, g + 1):
                 w.set(x, y, z, B.AIR)
             w.set(x, g - P.PIT_DEPTH, z, B.STONEBRICK, 0)
-    c0 = g + 2
+    c0 = g + 4
     for x in range(cx - 1, cx + 2):                           # the core: obsidian round one lava block
         for z in range(cz - 1, cz + 2):
             for y in range(c0, c0 + 3):
@@ -391,12 +389,13 @@ def core_plinth(w, F):
 
 
 def holmstein(w, F):
-    """The monument on the knoll's crown, two obsidian blocks floating; a ring of standing stones round the
+    """The monument over the knoll's crown, two obsidian blocks hanging three blocks of air over it; a ring of standing stones round the
     knoll's foot, well back from it."""
     mx, mz = P.MONUMENT
     g = H(F, mx, mz)
-    w.set(mx, g + 3, mz, B.OBSIDIAN); w.set(mx, g + 4, mz, B.OBSIDIAN)
-    F.monument = (mx, g + 3, mz)
+    w.set(mx, g + 1, mz, B.AIR)                              # no snow layer under it: the crown's top block is the floor
+    w.set(mx, g + 4, mz, B.OBSIDIAN); w.set(mx, g + 5, mz, B.OBSIDIAN)
+    F.monument = (mx, g + 4, mz)
     claim(F, "monument clearance", (mx - 4, mz - 4, mx + 4, mz + 4))
     for k in range(7):
         a = 2 * np.pi * k / 7 + 0.3

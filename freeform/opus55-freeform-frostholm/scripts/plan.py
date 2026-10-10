@@ -54,7 +54,7 @@ PLACES = [
          what="a stone lighthouse on the headland over Ravnsund; its lantern is lit, and the core stands in the open beside it",
          why="the landmark the core stands by", how="the headland path; its stair; the strait below"),
     dict(key="core", name="The Beacon Core", at=CORE, r=5,
-         what="red's core: obsidian round lava, floating two over a stone brick plinth in the open snow south-west of the lighthouse",
+         what="red's core: obsidian round lava, hanging three blocks over a stone brick plinth in the open snow south-west of the lighthouse",
          why="RED CORE", how="the headland path and the snowfield"),
     dict(key="lake", name="Kaldvatn", at=LAKE, r=10,
          what="a frozen lake in a hollow of the snowfields, ice-fishing huts on it", why="frames the monument; its ice is the open approach",
