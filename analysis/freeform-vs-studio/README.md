@@ -14,6 +14,7 @@ An analysis of the `opus55-freeform-riftwater` branch (pgmvox and the boards bui
 | `LAYER-DOCUMENT.md` | the layer document, draft 1: stages, areas, ground, paint and build layers, as `pgmvox.document` builds them, and what it does not hold yet |
 | `pages/terrain-layers/index.html` | the terrain layer prototype: an island built from ordered, region-bound layers, editable in the browser |
 | `pgmvox-cleanup/INVENTORY.md` | pgmvox taken stock of: modules, duplication inside it and in the boards, every board run on 0.21.0, the fourteen terrain shapes to add, the cleanup order, and eight shape decisions to settle before the C# port |
+| `pgmvox-cleanup/LINE-BUILDS.md` | every wall, hedge, fence, parapet, rail and path step the boards build by hand, with file and line, and what a generic line build and a path-steps option have to cover |
 | `boards-as-json/` | Riftwater (its pgmvox port) and Hollow Mesa taken apart by which code writes which blocks, and each written again as one JSON document of ordered layers |
 | `houses/HOUSES.md` | the studio's and pgmvox's house models compared, with pictures and a proposed `HouseStyle` extension |
 | `experiment/RULES-MINIMAL.md` | the two briefs built a third time with the rules relaxed, and the finished boards checked against every rule |
