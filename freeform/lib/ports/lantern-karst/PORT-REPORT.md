@@ -42,7 +42,7 @@ studio's own reader accepts the map.xml as valid, with no issues.
 | Spawn protection that still lets the iron be mined, renewables | local: `mapxml.py` (`Spawn(protect=False)`) |
 | Kit, void filter, item keep, kill rewards, build height | local: `mapxml.py` with `mapxml.E` |
 | Kill below y 40 | library: `Doc.kill_below`, a portal to y -64, where the original applied an instant-damage kit |
-| The plan check table | library `plangraph` and `sight`; local bridging, diagonals and amounts in `planwalk.py` |
+| The plan check table | library `plangraph` and `sight`; the zones bridged and the amounts read in `plan_check.py` |
 | The plan sketch: board, routes, sections, table | library: `sketch.Sheet`, `MapPanel`, `SectionPanel`, `TablePanel` |
 | Isometric renders 30 to 37, sections 10 to 13 | library: `render.iso`, `render.cutaway`, `render.trim` |
 | Elevations 50 and 52 | library: `render.elevation` |
@@ -335,5 +335,5 @@ the faces; the original hangs them from the lower roots, where they trail below 
 
 **The capture rules are the library's now.** Diagonal steps, bridged build zones and how much of a route was
 built are in `plangraph`; the wool's block, spawner and room protection are in `objectives`; the spawn's iron, the
-kit and the fall are in `objectives` and `mapxml`. The port's `planwalk.py` is a thin wrapper over them and its
+kit and the fall are in `objectives` and `mapxml`. The port's plan check calls them through three helpers and its
 `mapxml.py` lost its rules, with the plan check and walks unchanged to the last digit.

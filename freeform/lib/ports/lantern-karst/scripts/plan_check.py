@@ -14,8 +14,38 @@ import numpy as np
 
 from pgmvox import plangraph as G
 from pgmvox import sight
-from plan import PIECE, SPAWN_AT, ZONES, build, objectives
-from planwalk import cells_of, graph, reach
+from plan import PIECE, SPAWN_AT, WALK, ZONES, build, objectives, zone_mask
+
+
+def graph(R, bridge_keys=("pit", "w-steps", "e-steps"), barrier=True, leave_out=()):
+    """The walk graph with diagonals, the build zones `bridge_keys` (and the barrier) crossed by bridging and the
+    Store's bedrock wall crossed over the top. leave_out: piece keys not walked (the Ledges, reached by a fall)."""
+    walk_kinds = WALK - set(leave_out)
+    cross = zone_mask(R, bridge_keys) if bridge_keys else np.zeros(R.H.shape, bool)
+    if barrier:
+        cross = cross | R.mask("barrier")
+    return G.graph(R, walk_kinds, wall_kinds=("storewall",), rules=G.PlanRules(jumps=False, diagonals=True),
+                   bridge=cross)
+
+
+def reach(D, prev, E, cells):
+    """The cheapest of a set of target cells: (cost, blocks bridged on the way, the path's cells), or
+    (None, 0, [])."""
+    cost, by, path = G.measure(D, prev, E, cells)
+    if not path:
+        return None, 0.0, []
+    return cost, by.get("bridge", 0.0), path
+
+
+def cells_of(R, *kinds, half=None):
+    """The (x, z) cells of some kinds, on red's half (half="red"), blue's, or both."""
+    m = R.mask(*kinds)
+    out = [(int(R.X[i, k]), int(R.Z[i, k])) for i, k in np.argwhere(m)]
+    if half == "red":
+        out = [c for c in out if c[1] < 0]
+    elif half == "blue":
+        out = [c for c in out if c[1] >= 0]
+    return out
 
 
 def gap(a, b):
@@ -132,7 +162,6 @@ def save(rows, paths, path):
         json.dump(dict(rows=rows, paths={k: [list(c) for c in v] for k, v in paths.items()}), f)
 
 
-from plan import WALK  # noqa: E402
 WALK_NO_LEDGES = WALK - {"ledge-w", "ledge-e"}
 
 
