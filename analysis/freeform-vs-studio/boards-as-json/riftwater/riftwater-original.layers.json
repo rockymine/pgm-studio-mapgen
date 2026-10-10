@@ -1,0 +1,5858 @@
+{
+ "layers": 1,
+ "board": "riftwater (standalone original, no pgmvox)",
+ "note": "Faithful transcription of freeform/opus55-freeform-riftwater/scripts into ordered layer operations. Not executable; every parameter was read from the scripts. Group order is the requested one (places, ground, volume, pieces, buildings, dressing, stamps); the script runs ground, volume, buildings (monuments last), dressing, then the mirror, so `pieces.monument-*` carries an `after` hint. `class` A = layer operation, B = library entry + placement, C = made; `new` = no op or template of that name exists in pgmvox or the studio today. Notation: BLOCK:data uses the names in scripts/mc.py (1.8 ids); [a,b] pairs after a block are (block, weight).",
+ "world": {
+  "x0": -120,
+  "z0": -88,
+  "sx": 240,
+  "sz": 176,
+  "sy": 128,
+  "authored_half": "x < 0 (red)",
+  "rift": {
+   "void_x": [
+    -10,
+    9
+   ],
+   "build_zone_x": [
+    -16,
+    16
+   ]
+  }
+ },
+ "library": {
+  "pgmvox": false,
+  "own": [
+   "mc.py (World, B)",
+   "noise.py (fbm, spline, polyline_distance)"
+  ],
+  "trees": "scripts/trees.json: 29 whole trees cut from the studio corpus tree showcase by cut_trees.py"
+ },
+ "randomness": {
+  "shared_streams": [
+   {
+    "module": "underground.py",
+    "seed": 1234,
+    "line": 13,
+    "drawn_by": [
+     "carve_tube x5",
+     "dress_cave",
+     "mouth",
+     "sinkhole",
+     "mine",
+     "cellar"
+    ]
+   },
+   {
+    "module": "buildings.py",
+    "seed": 4242,
+    "line": 12,
+    "drawn_by": [
+     "pave x13",
+     "path_to_door",
+     "spoil_heap"
+    ]
+   },
+   {
+    "module": "dressing.py",
+    "seed": 777,
+    "line": 19,
+    "drawn_by": [
+     "cover",
+     "wheat_field",
+     "jetty_and_boat",
+     "spring",
+     "cutting (sawdust)"
+    ]
+   },
+   {
+    "module": "house.py",
+    "seed": 99,
+    "line": 13,
+    "drawn_by": []
+   }
+  ],
+  "own_seeds": [
+   "terrain.write_land 7",
+   "pillar_hall 8",
+   "stalagmites 9",
+   "old_bridge 17",
+   "cutting 5",
+   "boulders 31",
+   "rift_face 41",
+   "worn 55",
+   "forest 1-4",
+   "noise fields 11-83"
+  ]
+ },
+ "coverage": {
+  "terrain.build_heights": [
+   "outline",
+   "base-north",
+   "base-south",
+   "base-west",
+   "base-noise",
+   "river",
+   "pond",
+   "ridge",
+   "spurs",
+   "ridge-steps",
+   "spawn-shoulder",
+   "flat-square",
+   "flat-green",
+   "knoll"
+  ],
+  "terrain.build_underside": [
+   "underside"
+  ],
+  "terrain.write_land": [
+   "land"
+  ],
+  "terrain.write_falls": [
+   "falls"
+  ],
+  "terrain.paint_biomes": [
+   "biomes"
+  ],
+  "carve_tube[gallery]": [
+   "cave-gallery"
+  ],
+  "carve_tube[south]": [
+   "cave-south"
+  ],
+  "carve_tube[north]": [
+   "cave-north"
+  ],
+  "carve_tube[grotto]": [
+   "cave-grotto"
+  ],
+  "carve_tube[west]": [
+   "cave-west"
+  ],
+  "pillar_hall": [
+   "hall-pillars",
+   "hall-pillars-2",
+   "hall-pillar-stumps"
+  ],
+  "alcoves": [
+   "alcove-1",
+   "alcove-2",
+   "alcove-3",
+   "alcove-4",
+   "alcove-5"
+  ],
+  "carve_ellipsoid[lake chamber]": [
+   "lake-chamber",
+   "lake-chamber-2"
+  ],
+  "dress_cave": [
+   "cave-dress"
+  ],
+  "stalagmites": [
+   "cave-dress"
+  ],
+  "grotto": [
+   "grotto",
+   "grotto-stash"
+  ],
+  "lake": [
+   "lake-pool"
+  ],
+  "mouth": [
+   "cave-mouth"
+  ],
+  "sinkhole": [
+   "sinkhole"
+  ],
+  "mine": [
+   "mine-gallery"
+  ],
+  "shaft": [
+   "mine-shaft"
+  ],
+  "cellar": [
+   "gaol-cellar"
+  ],
+  "square": [
+   "square"
+  ],
+  "town": [
+   "town-hall",
+   "main-n-1",
+   "main-n-shop-chandler",
+   "main-n-3",
+   "main-n-bakery",
+   "main-n-5",
+   "main-s-1",
+   "main-s-shop",
+   "main-s-3",
+   "gaol",
+   "bridge-st-1",
+   "bridge-st-2",
+   "falls-inn",
+   "north-lane-1",
+   "north-lane-2",
+   "north-lane-shop"
+  ],
+  "gaol_stair": [
+   "gaol-ladder"
+  ],
+  "chapel": [
+   "chapel-nave",
+   "chapel-fittings"
+  ],
+  "inn_sign": [
+   "inn-sign"
+  ],
+  "village": [
+   "cottage-1",
+   "tall-house",
+   "tall-house-wing",
+   "cottage-2",
+   "big-house",
+   "big-house-wing",
+   "cottage-3",
+   "engine-house",
+   "smithy",
+   "engine-stack",
+   "smithy-fittings"
+  ],
+  "well": [
+   "well"
+  ],
+  "headframe": [
+   "headframe"
+  ],
+  "spoil_heap": [
+   "spoil-heap"
+  ],
+  "watch_house": [
+   "watch-house",
+   "watch-tower",
+   "watch-house-fittings"
+  ],
+  "hut": [
+   "hut",
+   "hut-fittings"
+  ],
+  "mill": [
+   "mill",
+   "mill-works"
+  ],
+  "footbridge": [
+   "footbridge"
+  ],
+  "stone_bridge": [
+   "stone-bridge"
+  ],
+  "old_bridge": [
+   "old-bridge"
+  ],
+  "pave[*] x13": [
+   "pave-spawn-lane",
+   "pave-spawn-lane-south",
+   "pave-main-street",
+   "pave-bridge-street",
+   "pave-north-lane",
+   "pave-mill-lane",
+   "pave-field-road",
+   "pave-farm-track",
+   "pave-falls-walk",
+   "pave-spring-path",
+   "pave-village-road",
+   "pave-forest-path",
+   "pave-clearing-path"
+  ],
+  "path_to_door": [
+   "doorsteps"
+  ],
+  "monument": [
+   "monument-square",
+   "monument-green"
+  ],
+  "wheat_field": [
+   "wheat-field"
+  ],
+  "barn": [
+   "barn"
+  ],
+  "haystacks": [
+   "haystacks"
+  ],
+  "hay_cart": [
+   "hay-cart"
+  ],
+  "jetty_and_boat": [
+   "jetty-and-boat"
+  ],
+  "spring": [
+   "spring"
+  ],
+  "cutting": [
+   "cutting"
+  ],
+  "stalls": [
+   "stalls"
+  ],
+  "worn x6": [
+   "worn-1",
+   "worn-2",
+   "worn-3",
+   "worn-4",
+   "worn-5",
+   "worn-6"
+  ],
+  "lamps x3": [
+   "lamps-main-street",
+   "lamps-bridge-street",
+   "lamps-north-lane"
+  ],
+  "gardens": [
+   "gardens"
+  ],
+  "benches": [
+   "benches"
+  ],
+  "forest[seed=1..4]": [
+   "woods-north",
+   "woods-ridge",
+   "woods-south",
+   "cutting-ring"
+  ],
+  "plant[knoll oak]": [
+   "knoll-oak"
+  ],
+  "plant[14 hand-placed trees]": [
+   "trees-by-hand"
+  ],
+  "boulders": [
+   "boulders"
+  ],
+  "fallen_logs": [
+   "fallen-logs"
+  ],
+  "hedgerows": [
+   "hedgerow"
+  ],
+  "rift_face": [
+   "rift-face"
+  ],
+  "shop_signs": [
+   "shop-signs"
+  ],
+  "cover": [
+   "ground-cover"
+  ],
+  "mirror.mirror_world": [
+   "mirror"
+  ],
+  "gen.py recolour": [
+   "blue-wool"
+  ],
+  "World.save + write_world.cs": [
+   "writer"
+  ],
+  "scripts/map.xml (hand-written)": [
+   "map",
+   "kit",
+   "spawn-red",
+   "observer",
+   "monument-square",
+   "monument-green",
+   "rules"
+  ]
+ },
+ "measured": {
+  "non_air_blocks": 1007266,
+  "red_half": 503633,
+  "blue_half_by_mirror": 503633,
+  "reproduces_committed_world": "bit-identical ids, data, biomes and tile entities (instrumented run vs world/region)",
+  "share_of_blocks": {
+   "A": 0.96447,
+   "B": 0.03495,
+   "C": 0.00057
+  },
+  "share_of_exposed_blocks": {
+   "A": 0.809,
+   "B": 0.189,
+   "C": 0.002
+  }
+ },
+ "places": [
+  {
+   "op": "place",
+   "key": "spawn",
+   "name": "The Watch House",
+   "at": [
+    -99,
+    -7
+   ],
+   "r": 7,
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "ridge",
+   "name": "The Ridge",
+   "poly": [
+    [
+     -120,
+     -88
+    ],
+    [
+     -100,
+     -88
+    ],
+    [
+     -96,
+     -60
+    ],
+    [
+     -104,
+     -30
+    ],
+    [
+     -103,
+     -18
+    ],
+    [
+     -106,
+     10
+    ],
+    [
+     -100,
+     40
+    ],
+    [
+     -104,
+     87
+    ],
+    [
+     -120,
+     87
+    ]
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "north_wood",
+   "name": "North Wood",
+   "poly": [
+    [
+     -120,
+     -88
+    ],
+    [
+     -74,
+     -88
+    ],
+    [
+     -74,
+     -74
+    ],
+    [
+     -82,
+     -52
+    ],
+    [
+     -90,
+     -30
+    ],
+    [
+     -104,
+     -20
+    ],
+    [
+     -120,
+     -24
+    ]
+   ],
+   "read_by_generator": "terrain.py:311, dressing.py:573"
+  },
+  {
+   "op": "place",
+   "key": "hut",
+   "name": "Woodcutter's Hut",
+   "at": [
+    -104,
+    -64
+   ],
+   "r": 4,
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "square",
+   "name": "Market Square",
+   "at": [
+    -66,
+    -44
+   ],
+   "r": 10,
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "town",
+   "name": "Market Town",
+   "poly": [
+    [
+     -76,
+     -88
+    ],
+    [
+     -12,
+     -88
+    ],
+    [
+     -12,
+     -18
+    ],
+    [
+     -30,
+     -14
+    ],
+    [
+     -52,
+     -14
+    ],
+    [
+     -56,
+     -26
+    ],
+    [
+     -74,
+     -30
+    ]
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "old_bridge",
+   "name": "The Old Bridge",
+   "at": [
+    -10,
+    -44
+   ],
+   "r": 4,
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "chapel",
+   "name": "The Chapel",
+   "at": [
+    -44,
+    -68
+   ],
+   "r": 6,
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "inn",
+   "name": "The Falls Inn",
+   "at": [
+    -30,
+    -22
+   ],
+   "r": 5,
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "cellar",
+   "name": "The Gaol Cellar",
+   "at": [
+    -56,
+    -30
+   ],
+   "r": 4,
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "river",
+   "name": "Red River",
+   "line": [
+    [
+     -74,
+     22
+    ],
+    [
+     -66,
+     17
+    ],
+    [
+     -56,
+     13
+    ],
+    [
+     -46,
+     7
+    ],
+    [
+     -36,
+     3
+    ],
+    [
+     -26,
+     1
+    ],
+    [
+     -17,
+     0
+    ],
+    [
+     -11,
+     0
+    ]
+   ],
+   "read_by_generator": "terrain.py:37"
+  },
+  {
+   "op": "place",
+   "key": "pond",
+   "name": "Mill Pond",
+   "at": [
+    -84,
+    20
+   ],
+   "r": 12,
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "mill",
+   "name": "The Mill",
+   "at": [
+    -62,
+    9
+   ],
+   "r": 5,
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "stone_bridge",
+   "name": "Stone Bridge",
+   "at": [
+    -36,
+    3
+   ],
+   "r": 4,
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "falls",
+   "name": "The Falls",
+   "at": [
+    -12,
+    0
+   ],
+   "r": 5,
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "cave",
+   "name": "Falls Cave",
+   "line": [
+    [
+     -12,
+     0
+    ],
+    [
+     -24,
+     4
+    ],
+    [
+     -38,
+     10
+    ],
+    [
+     -50,
+     20
+    ],
+    [
+     -52,
+     38
+    ]
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "village",
+   "name": "Ironhollow",
+   "poly": [
+    [
+     -100,
+     36
+    ],
+    [
+     -72,
+     36
+    ],
+    [
+     -72,
+     82
+    ],
+    [
+     -100,
+     82
+    ]
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "headframe",
+   "name": "The Headframe",
+   "at": [
+    -84,
+    56
+   ],
+   "r": 4,
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "green",
+   "name": "Winding Green",
+   "at": [
+    -66,
+    48
+   ],
+   "r": 8,
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "mine",
+   "name": "Ironhollow Mine",
+   "line": [
+    [
+     -102,
+     2
+    ],
+    [
+     -98,
+     20
+    ],
+    [
+     -90,
+     40
+    ],
+    [
+     -84,
+     56
+    ],
+    [
+     -72,
+     50
+    ],
+    [
+     -58,
+     38
+    ]
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "fields",
+   "name": "The Fields",
+   "poly": [
+    [
+     -62,
+     26
+    ],
+    [
+     -14,
+     22
+    ],
+    [
+     -12,
+     87
+    ],
+    [
+     -66,
+     87
+    ]
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "sinkhole",
+   "name": "The Sinkhole",
+   "at": [
+    -50,
+    40
+   ],
+   "r": 4,
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "knoll",
+   "name": "Lone Oak Knoll",
+   "at": [
+    -22,
+    74
+   ],
+   "r": 7,
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "key": "clearing",
+   "name": "The Cutting",
+   "at": [
+    -110,
+    68
+   ],
+   "r": 7,
+   "read_by_generator": false
+  },
+  {
+   "op": "route-def",
+   "name": "Spawn Lane",
+   "kind": "lane",
+   "pts": [
+    [
+     -92,
+     -7
+    ],
+    [
+     -84,
+     -7
+    ],
+    [
+     -78,
+     -12
+    ],
+    [
+     -74,
+     -24
+    ],
+    [
+     -72,
+     -36
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Spawn Lane south",
+   "kind": "lane",
+   "pts": [
+    [
+     -78,
+     -12
+    ],
+    [
+     -74,
+     0
+    ],
+    [
+     -71,
+     12
+    ],
+    [
+     -70,
+     22
+    ],
+    [
+     -70,
+     34
+    ],
+    [
+     -68,
+     40
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Main Street",
+   "kind": "street",
+   "pts": [
+    [
+     -56,
+     -44
+    ],
+    [
+     -44,
+     -45
+    ],
+    [
+     -32,
+     -43
+    ],
+    [
+     -20,
+     -44
+    ],
+    [
+     -12,
+     -44
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Bridge Street",
+   "kind": "street",
+   "pts": [
+    [
+     -42,
+     -44
+    ],
+    [
+     -40,
+     -32
+    ],
+    [
+     -36,
+     -20
+    ],
+    [
+     -36,
+     -8
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "North Lane",
+   "kind": "street",
+   "pts": [
+    [
+     -62,
+     -56
+    ],
+    [
+     -52,
+     -62
+    ],
+    [
+     -40,
+     -66
+    ],
+    [
+     -26,
+     -64
+    ],
+    [
+     -16,
+     -70
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Mill Lane",
+   "kind": "lane",
+   "pts": [
+    [
+     -38,
+     -10
+    ],
+    [
+     -48,
+     -4
+    ],
+    [
+     -56,
+     0
+    ],
+    [
+     -62,
+     4
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Field Road",
+   "kind": "lane",
+   "pts": [
+    [
+     -36,
+     12
+    ],
+    [
+     -40,
+     22
+    ],
+    [
+     -46,
+     30
+    ],
+    [
+     -56,
+     40
+    ],
+    [
+     -61,
+     46
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Farm Track",
+   "kind": "lane",
+   "pts": [
+    [
+     -61,
+     52
+    ],
+    [
+     -58,
+     60
+    ],
+    [
+     -56,
+     66
+    ],
+    [
+     -46,
+     79
+    ],
+    [
+     -34,
+     80
+    ],
+    [
+     -24,
+     76
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Falls Walk",
+   "kind": "lane",
+   "pts": [
+    [
+     -34,
+     12
+    ],
+    [
+     -26,
+     11
+    ],
+    [
+     -18,
+     9
+    ],
+    [
+     -14,
+     7
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Spring Path",
+   "kind": "lane",
+   "pts": [
+    [
+     -96,
+     0
+    ],
+    [
+     -100,
+     12
+    ],
+    [
+     -99,
+     28
+    ],
+    [
+     -94,
+     38
+    ],
+    [
+     -88,
+     44
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Village Road",
+   "kind": "lane",
+   "pts": [
+    [
+     -88,
+     44
+    ],
+    [
+     -80,
+     46
+    ],
+    [
+     -72,
+     47
+    ],
+    [
+     -62,
+     48
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Forest Path",
+   "kind": "path",
+   "pts": [
+    [
+     -90,
+     -14
+    ],
+    [
+     -88,
+     -26
+    ],
+    [
+     -94,
+     -40
+    ],
+    [
+     -96,
+     -52
+    ],
+    [
+     -102,
+     -60
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Clearing Path",
+   "kind": "path",
+   "pts": [
+    [
+     -96,
+     66
+    ],
+    [
+     -102,
+     68
+    ],
+    [
+     -108,
+     68
+    ]
+   ]
+  }
+ ],
+ "ground": [
+  {
+   "id": "outline",
+   "op": "landform.outline",
+   "new": true,
+   "class": "A",
+   "params": {
+    "half": "red (x<0); blue is the stamp 'mirror'",
+    "bounds": {
+     "x": [
+      -120,
+      0
+     ],
+     "z": [
+      -88,
+      87
+     ]
+    },
+    "lip": {
+     "x": -11,
+     "wobble": {
+      "amp": 1.2,
+      "clip": [
+       -1,
+       0
+      ],
+      "cell": 10,
+      "octaves": 2,
+      "seed": 21
+     },
+     "bays": {
+      "amp": 4.5,
+      "cell": 22,
+      "octaves": 2,
+      "seed": 25
+     },
+     "hold_straight": [
+      {
+       "z": -45,
+       "width": 16,
+       "power": 4
+      },
+      {
+       "z": 1,
+       "width": 6,
+       "power": 4
+      }
+     ]
+    },
+    "edge_insets": {
+     "west": {
+      "base": 2,
+      "amp": 4,
+      "cell": 16,
+      "seed": 22,
+      "max": 6
+     },
+     "north": {
+      "base": 2,
+      "amp": 5,
+      "cell": 16,
+      "seed": 23,
+      "max": 7
+     },
+     "south": {
+      "base": 2,
+      "amp": 5,
+      "cell": 16,
+      "seed": 24,
+      "max": 7
+     }
+    }
+   },
+   "source": "terrain.py:54-68",
+   "gap": "No existing op makes an island outline whose one edge is a ragged lip with bays held straight at two named z-bands; closest is landform.coast (sea + outline polygon) or the relief 'rim' mark.",
+   "writes": {
+    "mask": "land"
+   }
+  },
+  {
+   "id": "base-north",
+   "op": "field.terms",
+   "new": true,
+   "class": "A",
+   "params": {
+    "mask": "north of the river course (z < river z at x)",
+    "base": 48.5,
+    "terms": [
+     {
+      "kind": "smoothstep-x",
+      "from": -14,
+      "to": -64,
+      "amp": 3.5
+     },
+     {
+      "kind": "smoothstep-x",
+      "from": -74,
+      "to": -96,
+      "amp": 2.0
+     },
+     {
+      "kind": "gauss",
+      "centre": [
+       -44,
+       -78
+      ],
+      "rx": 16,
+      "rz": 11,
+      "amp": 4.5
+     }
+    ]
+   },
+   "source": "terrain.py:76-77",
+   "gap": "The studio's relief marks (point, line, area, scarp) can state the same shape as placed marks; a field.terms op states it as a formula.",
+   "writes": {
+    "H": "north bluff and chapel hill"
+   }
+  },
+  {
+   "id": "base-south",
+   "op": "field.terms",
+   "new": true,
+   "class": "A",
+   "params": {
+    "mask": "south of the river course",
+    "base": 47.2,
+    "terms": [
+     {
+      "kind": "smoothstep-z",
+      "from": 25,
+      "to": 80,
+      "amp": 1.8
+     },
+     {
+      "kind": "smoothstep-x",
+      "from": -64,
+      "to": -98,
+      "amp": 4.5
+     }
+    ]
+   },
+   "source": "terrain.py:79"
+  },
+  {
+   "id": "base-west",
+   "op": "field.terms",
+   "new": true,
+   "class": "A",
+   "params": {
+    "mask": "blend weight smoothstep(x: -70 -> -80) over both sides",
+    "base": 52.5,
+    "terms": [
+     {
+      "kind": "smoothstep-x",
+      "from": -80,
+      "to": -98,
+      "amp": 2.5
+     },
+     {
+      "kind": "smoothstep-z",
+      "from": -10,
+      "to": 30,
+      "amp": -1.5
+     },
+     {
+      "kind": "smoothstep-z",
+      "from": 30,
+      "to": 60,
+      "amp": 1.0
+     }
+    ]
+   },
+   "source": "terrain.py:82-84"
+  },
+  {
+   "id": "base-noise",
+   "op": "field.noise",
+   "class": "A",
+   "params": {
+    "terms": [
+     {
+      "kind": "fbm",
+      "amp": 0.8,
+      "cell": 12,
+      "octaves": 3,
+      "seed": 11
+     },
+     {
+      "kind": "fbm",
+      "amp": 1.2,
+      "cell": 40,
+      "octaves": 3,
+      "seed": 12
+     }
+    ]
+   },
+   "source": "terrain.py:51-85",
+   "gap": "fbm = scipy.ndimage.zoom(order=3) lattices over the red-half grid (120 x 176); the seeds reproduce only in an interpreter that implements this noise."
+  },
+  {
+   "id": "river",
+   "op": "landform.watercourse",
+   "class": "A",
+   "params": {
+    "path": [
+     [
+      -74,
+      22
+     ],
+     [
+      -66,
+      17
+     ],
+     [
+      -56,
+      13
+     ],
+     [
+      -46,
+      7
+     ],
+     [
+      -36,
+      3
+     ],
+     [
+      -26,
+      1
+     ],
+     [
+      -17,
+      0
+     ],
+     [
+      -11,
+      0
+     ]
+    ],
+    "spline_step": 0.5,
+    "reach": {
+     "x_gt": -75
+    },
+    "width": {
+     "base": 3.0,
+     "plus": 0.6,
+     "smoothstep_x": [
+      -60,
+      -15
+     ]
+    },
+    "reaches": [
+     {
+      "x_lt": -66,
+      "level": 48,
+      "name": "pond reach"
+     },
+     {
+      "x_ge": -66,
+      "level": 45,
+      "name": "river reach",
+      "weir_x": -66
+     }
+    ],
+    "bank": {
+     "north": {
+      "rise_over": 7,
+      "offset": 1.0
+     },
+     "south": {
+      "rise_over": 14,
+      "offset": 1.3
+     }
+    },
+    "bed": {
+     "drop": 1,
+     "profile": "parabola",
+     "depth": 2.2
+    },
+    "bed_paint": {
+     "pond_or_x_lt_-74": [
+      [
+       "CLAY:0",
+       0.3
+      ],
+      [
+       "SAND:0",
+       0.3
+      ],
+      [
+       "DIRT:0",
+       0.4
+      ]
+     ],
+     "river": [
+      [
+       "GRAVEL:0",
+       0.55
+      ],
+      [
+       "SAND:0",
+       0.25
+      ],
+      [
+       "STONE:5",
+       0.2
+      ]
+     ]
+    },
+    "sandy_lip": {
+     "d_lt": 5.2,
+     "x_gt": -75,
+     "top_le": 47,
+     "slope_lt": 38,
+     "blocks": [
+      "SAND:0",
+      "GRAVEL:0"
+     ]
+    },
+    "into": "void (see waterfall)"
+   },
+   "source": "terrain.py:87-98",
+   "gap": "Existing landform.watercourse derives levels from fall_min/reach_min; here two reaches have stated levels (pond 48, river 45) and a weir between them, banks differ per side (7 vs 14), and width grows downstream. Needs: per-reach level, per-side bank, width ramp.",
+   "writes": {
+    "water": "river"
+   }
+  },
+  {
+   "id": "pond",
+   "op": "landform.lake",
+   "class": "A",
+   "params": {
+    "centre": [
+     -84,
+     20
+    ],
+    "rx": 12.5,
+    "rz": 9.5,
+    "level": 48,
+    "depth": 3.5,
+    "shore": [
+     1.0,
+     1.5
+    ],
+    "jag": {
+     "amp": 0.12,
+     "cell": 8,
+     "octaves": 2,
+     "seed": 31
+    },
+    "spit": {
+     "path": [
+      [
+       -92,
+       30
+      ],
+      [
+       -86,
+       24
+      ],
+      [
+       -83,
+       21
+      ]
+     ],
+     "half_width": 1.6,
+     "min_y": 49
+    },
+    "outlet": {
+     "centre": [
+      -74,
+      22
+     ],
+     "r": 4,
+     "level": 48,
+     "bed_max": 46
+    }
+   },
+   "source": "terrain.py:100-110",
+   "gap": "lake(centre, r, level, depth, shore, rz, jag, seed) covers the ellipse; the spit (land tongue into the lake) and the outlet disc are not parameters.",
+   "writes": {
+    "water": "pond"
+   }
+  },
+  {
+   "id": "ridge",
+   "op": "landform.ridge",
+   "new": true,
+   "class": "A",
+   "params": {
+    "foot": {
+     "x": -100,
+     "wobble": {
+      "amp": 4,
+      "cell": 24,
+      "octaves": 2,
+      "seed": 40
+     },
+     "fade": 15
+    },
+    "crest": {
+     "base": 73,
+     "wobble": {
+      "amp": 5,
+      "cell": 30,
+      "octaves": 2,
+      "seed": 41
+     },
+     "bump": {
+      "z": -72,
+      "width": 18,
+      "amp": 4
+     }
+    },
+    "texture": {
+     "noise": {
+      "amp": 2.5,
+      "cell": 10,
+      "octaves": 3,
+      "seed": 42
+     },
+     "crag": {
+      "amp": 4,
+      "cell": 7,
+      "octaves": 2,
+      "seed": 43,
+      "ridged_smoothstep": [
+       0.75,
+       0.95
+      ]
+     }
+    },
+    "far_side_fall": {
+     "amp": 7,
+     "smoothstep_x": [
+      -114,
+      -120
+     ]
+    }
+   },
+   "source": "terrain.py:112-121",
+   "gap": "Nearest: landform.scarp (a face along a line) or the relief 'scarp' mark; a ridge whose foot wanders and whose crest carries crag noise is a new landform."
+  },
+  {
+   "id": "spurs",
+   "op": "landform.ridge",
+   "new": true,
+   "class": "A",
+   "params": {
+    "arms": [
+     {
+      "path": [
+       [
+        -114,
+        -68
+       ],
+       [
+        -98,
+        -74
+       ],
+       [
+        -82,
+        -80
+       ]
+      ],
+      "top": 66,
+      "fall_per_block": 0.25,
+      "from_x": -100,
+      "reach": [
+       14,
+       3
+      ]
+     },
+     {
+      "path": [
+       [
+        -114,
+        70
+       ],
+       [
+        -100,
+        76
+       ],
+       [
+        -88,
+        82
+       ]
+      ],
+      "top": 63,
+      "fall_per_block": 0.25,
+      "from_x": -100,
+      "reach": [
+       14,
+       3
+      ]
+     }
+    ]
+   },
+   "source": "terrain.py:115-126"
+  },
+  {
+   "id": "ridge-steps",
+   "op": "landform.terraces",
+   "class": "A",
+   "params": {
+    "mask": "ridge weight t",
+    "step": 3,
+    "strength": 0.55,
+    "blend": [
+     0.3,
+     0.7
+    ],
+    "fade_mask": [
+     0.15,
+     0.5
+    ]
+   },
+   "source": "terrain.py:127-130",
+   "gap": "landform.terraces(mask, step, base, riser) cuts full steps; here the ground is pulled 55% of the way to 3-block steps."
+  },
+  {
+   "id": "spawn-shoulder",
+   "op": "landform.stage",
+   "class": "A",
+   "params": {
+    "centre": [
+     -97,
+     -7
+    ],
+    "rx": 12.0,
+    "rz": 9.5,
+    "jag": {
+     "amp": 0.12,
+     "cell": 6,
+     "octaves": 2,
+     "seed": 44
+    },
+    "rings": [
+     {
+      "radius": 1.0,
+      "y": 59
+     },
+     {
+      "radius": 1.55,
+      "y": "min(ground, 59) blended"
+     }
+    ]
+   },
+   "source": "terrain.py:134-141",
+   "gap": "landform.stage rings are circular and in blocks; this one is elliptical (rx 12, rz 9.5) and in normalised radius."
+  },
+  {
+   "id": "flat-square",
+   "op": "landform.stage",
+   "class": "A",
+   "params": {
+    "centre": [
+     -66,
+     -44
+    ],
+    "rings": [
+     {
+      "radius": 11,
+      "y": 52
+     }
+    ],
+    "blend": 8
+   },
+   "source": "terrain.py:144-147"
+  },
+  {
+   "id": "flat-green",
+   "op": "landform.stage",
+   "class": "A",
+   "params": {
+    "centre": [
+     -66,
+     48
+    ],
+    "rings": [
+     {
+      "radius": 9,
+      "y": 50
+     }
+    ],
+    "blend": 8
+   },
+   "source": "terrain.py:144-147"
+  },
+  {
+   "id": "knoll",
+   "op": "landform.mound",
+   "new": true,
+   "class": "A",
+   "params": {
+    "centre": [
+     -22,
+     74
+    ],
+    "rx": 8.0,
+    "rz": 10.0,
+    "height": 6.5,
+    "profile": "gauss"
+   },
+   "source": "terrain.py:149-151",
+   "gap": "landform.spire/butte approximate it; a gaussian mound with an elliptical footprint is not a parameter set today."
+  },
+  {
+   "id": "underside",
+   "op": "terrain.underside",
+   "class": "A",
+   "params": {
+    "rule": "thickness = min(4 + 0.9*d_outer + 4*n, 26 + 1.2*d_rift + 4*n); bottom = max(ground - thickness, 4 + 3*m)",
+    "d_rift_zone": "x > -14",
+    "n": {
+     "cell": 9,
+     "octaves": 3,
+     "seed": 51
+    },
+    "m": {
+     "cell": 16,
+     "octaves": 2,
+     "seed": 52
+    },
+    "sheer_under_rift": 26,
+    "taper_per_block": 0.9
+   },
+   "source": "terrain.py:175-191",
+   "gap": "underside(mask, top_y, depth=f(d), paint, jitter) has one distance; here two distances (to board edge, to the rift) take a minimum, so the island is sheer for ~26 blocks under the rift lip and tapers elsewhere."
+  },
+  {
+   "id": "land",
+   "op": "terrain.lay",
+   "class": "A",
+   "params": {
+    "seed": 7,
+    "rock": "STONE:0",
+    "from_y": "bottom",
+    "beds": {
+     "block": "STONE:5",
+     "period": 9,
+     "thickness": 3,
+     "follow": "ground",
+     "offset_noise": {
+      "cell": 4,
+      "octaves": 2,
+      "seed": 62,
+      "amp": 3
+     },
+     "mask_noise": {
+      "cell": 5,
+      "octaves": 2,
+      "seed": 61,
+      "gt": -0.2
+     }
+    },
+    "slope": {
+     "window": 2,
+     "ledges": {
+      "flat_neighbours_ge": 3,
+      "slope_lt": 60,
+      "cap": 30
+     }
+    },
+    "bands_by_angle": [
+     {
+      "lt": 38,
+      "soil": {
+       "lt25": 3,
+       "else": 2,
+       "coarse_dirt_p": 0.35
+      },
+      "top": "GRASS:0",
+      "worn_edge": {
+       "gt": 33,
+       "noise_gt": 0.35,
+       "block": "DIRT:1"
+      }
+     },
+     {
+      "lt": 55,
+      "soil": 1,
+      "top": [
+       {
+        "noise_gt": 0.15,
+        "block": "GRASS:0"
+       },
+       {
+        "noise_gt": -0.25,
+        "block": [
+         "STONE:5",
+         "STONE:0"
+        ]
+       },
+       {
+        "else": "DIRT:1"
+       }
+      ]
+     },
+     {
+      "ge": 55,
+      "top": [
+       [
+        "STONE:0",
+        0.45
+       ],
+       [
+        "STONE:5",
+        0.35
+       ],
+       [
+        "COBBLE:0",
+        0.2
+       ]
+      ]
+     }
+    ],
+    "wet_columns": "bed paint from river/pond, then water to level (see river, pond)",
+    "grain": {
+     "patch": {
+      "cell": 5,
+      "octaves": 2,
+      "seed": 61
+     },
+     "patch2": {
+      "cell": 4,
+      "octaves": 2,
+      "seed": 62
+     }
+    }
+   },
+   "source": "terrain.py:203-275",
+   "writes": {
+    "blocks": "925,382 (91.9% of the world)"
+   },
+   "note": "terrain.lay has bands, soil, ledges and beds as parameters; the sand/gravel lip beside the river and the wet-column bed paint ride on the watercourse op."
+  },
+  {
+   "id": "falls",
+   "op": "landform.waterfall",
+   "new": true,
+   "class": "A",
+   "params": {
+    "where": "every z whose last wet column is at x >= -14",
+    "from": "lip + 1",
+    "to_x": -10,
+    "y": [
+     8,
+     "water level"
+    ],
+    "block": "WATER_FLOW:8",
+    "only_into": "air"
+   },
+   "source": "terrain.py:290-306",
+   "gap": "A river that ends over a void edge: columns of flowing water from the river level down to y 8. landform.watercourse has `into` for a sea, not for a void.",
+   "writes": {
+    "blocks": "754 (both halves)"
+   }
+  },
+  {
+   "id": "biomes",
+   "op": "paint.biome",
+   "new": true,
+   "class": "A",
+   "params": {
+    "zones": [
+     {
+      "biome": "forest(4)",
+      "where": "inside place:north_wood OR x < -100"
+     },
+     {
+      "biome": "river(7)",
+      "where": "water columns"
+     },
+     {
+      "biome": "plains(1)",
+      "where": "else"
+     }
+    ]
+   },
+   "source": "terrain.py:309-316",
+   "gap": "One byte per column; the studio paints biomes as their own family (terrain-painting.md 5b) but not from a polygon-or-halfplane rule in a recipe."
+  }
+ ],
+ "volume": [
+  {
+   "id": "cave-gallery",
+   "op": "under.tunnel",
+   "class": "A",
+   "params": {
+    "pts": [
+     [
+      -9,
+      36,
+      2,
+      2.6
+     ],
+     [
+      -14,
+      36,
+      3,
+      3.0
+     ],
+     [
+      -20,
+      35,
+      5,
+      3.4
+     ],
+     [
+      -27,
+      34,
+      8,
+      3.2
+     ],
+     [
+      -34,
+      33,
+      11,
+      3.6
+     ],
+     [
+      -40,
+      32,
+      14,
+      4.0
+     ]
+    ],
+    "cover": 3,
+    "lift": 0.44,
+    "wobble": 0.35,
+    "ground": "ground"
+   },
+   "source": "underground.py:62-77; data 16-29",
+   "gap": "pts are (x, floor_y, z, r) as in under.tunnel; the board's wobble draws from a module-wide generator (default_rng(1234)) shared with later ops.",
+   "note": "mouth in the rift face behind the falls to the lake chamber"
+  },
+  {
+   "id": "cave-south",
+   "op": "under.tunnel",
+   "class": "A",
+   "params": {
+    "pts": [
+     [
+      -40,
+      32,
+      14,
+      3.0
+     ],
+     [
+      -44,
+      33,
+      20,
+      2.8
+     ],
+     [
+      -47,
+      35,
+      27,
+      2.6
+     ],
+     [
+      -49,
+      37,
+      33,
+      2.8
+     ],
+     [
+      -50,
+      39,
+      38,
+      3.0
+     ]
+    ],
+    "cover": 3,
+    "lift": 0.44,
+    "wobble": 0.35,
+    "ground": "ground"
+   },
+   "source": "underground.py:62-77; data 16-29",
+   "gap": "pts are (x, floor_y, z, r) as in under.tunnel; the board's wobble draws from a module-wide generator (default_rng(1234)) shared with later ops.",
+   "note": "up to the sinkhole by the south monument"
+  },
+  {
+   "id": "cave-north",
+   "op": "under.tunnel",
+   "class": "A",
+   "params": {
+    "pts": [
+     [
+      -40,
+      32,
+      14,
+      3.0
+     ],
+     [
+      -43,
+      32,
+      7,
+      2.6
+     ],
+     [
+      -46,
+      33,
+      0,
+      2.6
+     ],
+     [
+      -49,
+      35,
+      -8,
+      2.8
+     ],
+     [
+      -52,
+      37,
+      -15,
+      2.6
+     ],
+     [
+      -53,
+      40,
+      -21,
+      2.5
+     ],
+     [
+      -53,
+      42,
+      -28,
+      2.2
+     ]
+    ],
+    "cover": 3,
+    "lift": 0.44,
+    "wobble": 0.35,
+    "ground": "ground"
+   },
+   "source": "underground.py:62-77; data 16-29",
+   "gap": "pts are (x, floor_y, z, r) as in under.tunnel; the board's wobble draws from a module-wide generator (default_rng(1234)) shared with later ops.",
+   "note": "under the river and up to the gaol cellar"
+  },
+  {
+   "id": "cave-grotto",
+   "op": "under.tunnel",
+   "class": "A",
+   "params": {
+    "pts": [
+     [
+      -46,
+      33,
+      0,
+      2.2
+     ],
+     [
+      -50,
+      33,
+      2,
+      2.0
+     ],
+     [
+      -54,
+      33,
+      4,
+      2.4
+     ],
+     [
+      -58,
+      33,
+      5,
+      2.2
+     ]
+    ],
+    "cover": 3,
+    "lift": 0.44,
+    "wobble": 0.35,
+    "ground": "ground"
+   },
+   "source": "underground.py:62-77; data 16-29",
+   "gap": "pts are (x, floor_y, z, r) as in under.tunnel; the board's wobble draws from a module-wide generator (default_rng(1234)) shared with later ops.",
+   "note": "side passage under the mill"
+  },
+  {
+   "id": "cave-west",
+   "op": "under.tunnel",
+   "class": "A",
+   "params": {
+    "pts": [
+     [
+      -49,
+      37,
+      33,
+      2.4
+     ],
+     [
+      -53,
+      38,
+      35,
+      2.2
+     ],
+     [
+      -57,
+      39,
+      37,
+      2.0
+     ]
+    ],
+    "cover": 3,
+    "lift": 0.44,
+    "wobble": 0.35,
+    "ground": "ground"
+   },
+   "source": "underground.py:62-77; data 16-29",
+   "gap": "pts are (x, floor_y, z, r) as in under.tunnel; the board's wobble draws from a module-wide generator (default_rng(1234)) shared with later ops.",
+   "note": "toward the mine's breakthrough"
+  },
+  {
+   "id": "hall-pillars",
+   "op": "under.chamber",
+   "class": "A",
+   "params": {
+    "cx": -46,
+    "floor_y": 34,
+    "cz": 26,
+    "rx": 7.5,
+    "rz": 7.5,
+    "h": 4.2,
+    "centre_lift": 2.6,
+    "cover": 3
+   },
+   "source": "underground.py:344-348",
+   "note": "the first of two ellipsoids of the pillared hall"
+  },
+  {
+   "id": "hall-pillars-2",
+   "op": "under.chamber",
+   "class": "A",
+   "params": {
+    "cx": -43,
+    "floor_y": 34,
+    "cz": 23,
+    "rx": 5.0,
+    "rz": 5.0,
+    "h": 3.6,
+    "centre_lift": 2.2,
+    "cover": 3
+   },
+   "source": "underground.py:348"
+  },
+  {
+   "id": "hall-pillar-stumps",
+   "op": "under.pillars",
+   "new": true,
+   "class": "A",
+   "params": {
+    "around": [
+     -46,
+     26
+    ],
+    "count": 7,
+    "radius": [
+     2.5,
+     6.0
+    ],
+    "squash_z": 0.9,
+    "wide_p": 0.4,
+    "y": [
+     33,
+     42
+    ],
+    "block": "STONE:5/0 by (y+x)%3",
+    "only_into": "air",
+    "seed": 8
+   },
+   "source": "underground.py:350-358",
+   "gap": "Natural pillars left standing in a chamber: no op places them."
+  },
+  {
+   "id": "alcove-1",
+   "op": "under.chamber",
+   "class": "A",
+   "params": {
+    "cx": -18,
+    "floor_y": 35,
+    "cz": 9,
+    "rx": 2.2,
+    "rz": 2.2,
+    "h": 2.0,
+    "centre_lift": 1.6,
+    "cover": 3
+   },
+   "source": "underground.py:373-376"
+  },
+  {
+   "id": "alcove-2",
+   "op": "under.chamber",
+   "class": "A",
+   "params": {
+    "cx": -26,
+    "floor_y": 34,
+    "cz": 2,
+    "rx": 2.0,
+    "rz": 2.0,
+    "h": 2.0,
+    "centre_lift": 1.6,
+    "cover": 3
+   },
+   "source": "underground.py:373-376"
+  },
+  {
+   "id": "alcove-3",
+   "op": "under.chamber",
+   "class": "A",
+   "params": {
+    "cx": -31,
+    "floor_y": 33,
+    "cz": 15,
+    "rx": 2.4,
+    "rz": 2.4,
+    "h": 2.0,
+    "centre_lift": 1.6,
+    "cover": 3
+   },
+   "source": "underground.py:373-376"
+  },
+  {
+   "id": "alcove-4",
+   "op": "under.chamber",
+   "class": "A",
+   "params": {
+    "cx": -48,
+    "floor_y": 36,
+    "cz": 31,
+    "rx": 2.0,
+    "rz": 2.0,
+    "h": 2.0,
+    "centre_lift": 1.6,
+    "cover": 3
+   },
+   "source": "underground.py:373-376"
+  },
+  {
+   "id": "alcove-5",
+   "op": "under.chamber",
+   "class": "A",
+   "params": {
+    "cx": -50,
+    "floor_y": 35,
+    "cz": -6,
+    "rx": 2.0,
+    "rz": 2.0,
+    "h": 2.0,
+    "centre_lift": 1.6,
+    "cover": 3
+   },
+   "source": "underground.py:373-376"
+  },
+  {
+   "id": "lake-chamber",
+   "op": "under.chamber",
+   "class": "A",
+   "params": {
+    "cx": -40,
+    "floor_y": 30,
+    "cz": 15,
+    "rx": 8.5,
+    "rz": 8.5,
+    "h": 4.8,
+    "centre_lift": 3,
+    "cover": 3
+   },
+   "source": "underground.py:402-404"
+  },
+  {
+   "id": "lake-chamber-2",
+   "op": "under.chamber",
+   "class": "A",
+   "params": {
+    "cx": -43,
+    "floor_y": 31,
+    "cz": 12,
+    "rx": 5.5,
+    "rz": 5.5,
+    "h": 4.0,
+    "centre_lift": 2.5,
+    "cover": 3
+   },
+   "source": "underground.py:405"
+  },
+  {
+   "id": "cave-dress",
+   "op": "under.dress_cave",
+   "class": "A",
+   "params": {
+    "box": [
+     -64,
+     -9,
+     -30,
+     45,
+     26,
+     46
+    ],
+    "cover": 2,
+    "floors": [
+     [
+      "GRAVEL:0",
+      0.45
+     ],
+     [
+      "STONE:5",
+      0.25
+     ],
+     [
+      "CLAY:0",
+      0.1
+     ],
+     [
+      "COBBLE:0",
+      0.2
+     ]
+    ],
+    "mushrooms": 0.015,
+    "stalactites": 0.05,
+    "ores": 260,
+    "ore_blocks": [
+     [
+      "COAL_ORE:0",
+      0.6
+     ],
+     [
+      "IRON_ORE:0",
+      0.4
+     ]
+    ],
+    "stalagmites": {
+     "box": [
+      -64,
+      -11,
+      -30,
+      45,
+      28,
+      44
+     ],
+     "tries": 900,
+     "seed": 9,
+     "only_against_wall": true
+    }
+   },
+   "source": "underground.py:80-112; 379-394",
+   "gap": "Matches under.dress_cave; draws from the shared generator (default_rng(1234))."
+  },
+  {
+   "id": "grotto",
+   "op": "under.chamber",
+   "class": "A",
+   "params": {
+    "cx": -60,
+    "floor_y": 33,
+    "cz": 6,
+    "rx": 3.6,
+    "rz": 3.6,
+    "h": 3.0,
+    "centre_lift": 2.2,
+    "cover": 3
+   },
+   "source": "underground.py:361-364"
+  },
+  {
+   "id": "grotto-stash",
+   "op": "prop.chest",
+   "class": "A",
+   "params": {
+    "at": [
+     -62,
+     33,
+     6
+    ],
+    "facing": 5,
+    "items": [
+     [
+      0,
+      "golden_apple",
+      2
+     ],
+     [
+      1,
+      "arrow",
+      32
+     ],
+     [
+      4,
+      "iron_leggings",
+      1
+     ],
+     [
+      13,
+      "paper",
+      3
+     ]
+    ],
+    "with": [
+     {
+      "WOOD_SLAB:1": [
+       -62,
+       33,
+       7
+      ]
+     },
+     {
+      "PLANKS:1": [
+       -61,
+       33,
+       4
+      ]
+     },
+     {
+      "WOOD_SLAB:1": [
+       -61,
+       34,
+       4
+      ]
+     },
+     {
+      "TORCH:5": [
+       -60,
+       33,
+       8
+      ]
+     }
+    ]
+   },
+   "source": "underground.py:365-370",
+   "gap": "A chest prop exists in the studio; the four loose blocks are a hand-placed stash."
+  },
+  {
+   "id": "lake-pool",
+   "op": "under.pool",
+   "new": true,
+   "class": "A",
+   "params": {
+    "centre": [
+     -40,
+     31,
+     14
+    ],
+    "rx": 5.5,
+    "rz": 4.2,
+    "z_shift": 1,
+    "water": "WATER:0",
+    "depth": {
+     "centre": 2,
+     "rim": 1,
+     "centre_frac": 0.6
+    },
+    "bed": [
+     [
+      "CLAY:0",
+      "d<0.5"
+     ],
+     [
+      "GRAVEL:0",
+      "else"
+     ]
+    ]
+   },
+   "source": "underground.py:115-129",
+   "gap": "A still pool in a cave floor; no op fills an enclosed hollow with water at a stated level."
+  },
+  {
+   "id": "cave-mouth",
+   "op": "made",
+   "class": "C",
+   "params": {
+    "id": "cave-mouth",
+    "source_fn": "underground.mouth",
+    "at": [
+     -11,
+     35,
+     5
+    ],
+    "box": [
+     -11,
+     34,
+     -1,
+     -10,
+     41,
+     9
+    ],
+    "blocks_red_half": 28,
+    "content": "a two-wide stone ledge (STONE:0/5 by (x+z)%3) at y 35 over x -11..-10, z 1..9 (x=-10 only z>=4), second layer y 34 for z>=5, and vines on the rift face at x -11, y 39..41, z -1..5 with p 0.5",
+    "mirror": "x' = -1 - x"
+   },
+   "source": "underground.py:132-146",
+   "note": "Bespoke: the ledge sits in a void column inside the build zone and reads the world to place vines only where a rock face stands behind."
+  },
+  {
+   "id": "sinkhole",
+   "op": "landform.sinkhole",
+   "new": true,
+   "class": "A",
+   "params": {
+    "centre": [
+     -50,
+     40
+    ],
+    "floor": 39,
+    "radius": 6.5,
+    "bowl_from": 2.0,
+    "step_per_block": 1.6,
+    "rubble": [
+     [
+      "GRAVEL:0",
+      0.35
+     ],
+     [
+      "DIRT:1",
+      0.25
+     ],
+     [
+      "STONE:5",
+      0.2
+     ],
+     [
+      "COBBLE:0",
+      0.2
+     ]
+    ],
+    "grass_rim_from": 5.2,
+    "vines": {
+     "ring": [
+      4.2,
+      5.5
+     ],
+     "p": 0.25,
+     "face": "rock or soil on the south side"
+    }
+   },
+   "source": "underground.py:149-180",
+   "gap": "A funnel of one-block steps from the field down to a cave floor; edits the ground field afterwards (L.H[...] = depth_y)."
+  },
+  {
+   "id": "mine-gallery",
+   "op": "under.gallery",
+   "class": "A",
+   "params": {
+    "line": [
+     [
+      -104,
+      59,
+      5
+     ],
+     [
+      -104,
+      57,
+      11
+     ],
+     [
+      -103,
+      53,
+      23
+     ],
+     [
+      -100,
+      50,
+      31
+     ],
+     [
+      -95,
+      47,
+      40
+     ],
+     [
+      -89,
+      45,
+      48
+     ],
+     [
+      -84,
+      45,
+      56
+     ],
+     [
+      -76,
+      44,
+      52
+     ],
+     [
+      -68,
+      42,
+      46
+     ],
+     [
+      -62,
+      40,
+      41
+     ],
+     [
+      -57,
+      39,
+      37
+     ]
+    ],
+    "width": 3,
+    "height": 3,
+    "floor_step_max": 1,
+    "timber": "LOG:1",
+    "fence": "SPRUCE_FENCE:0",
+    "stair": "COBBLE_STAIRS",
+    "every": 4,
+    "rails": true,
+    "torches": 12,
+    "floor": [
+     [
+      "GRAVEL:0",
+      0.3
+     ],
+     [
+      "STONE:0/5",
+      0.7
+     ]
+    ],
+    "ore": {
+     "block": "IRON_ORE:0",
+     "tries_per_two_cells": 3,
+     "reach": 2
+    },
+    "portal": {
+     "at": [
+      -104,
+      59,
+      5
+     ],
+     "frame": "LOG:1 / LOG:5 head",
+     "width": 5,
+     "height": 4
+    },
+    "chest": {
+     "at": [
+      -61,
+      40,
+      42
+     ],
+     "facing": 3,
+     "items": [
+      [
+       0,
+       "iron_ingot",
+       6
+      ],
+      [
+       1,
+       "bread",
+       8
+      ],
+      [
+       4,
+       "torch",
+       16
+      ],
+      [
+       13,
+       "iron_pickaxe",
+       1
+      ]
+     ]
+    }
+   },
+   "source": "underground.py:183-261",
+   "gap": "under.gallery matches the carving, timber sets, rails and ore; the portal frame and chest are extras of this board."
+  },
+  {
+   "id": "mine-shaft",
+   "op": "under.shaft",
+   "class": "A",
+   "params": {
+    "x": -84,
+    "z": 56,
+    "bottom": 45,
+    "top": "ground + 1",
+    "wall": "PLANKS:1",
+    "post": "LOG:1",
+    "ladder_on": "s",
+    "foot": 3,
+    "lining_to": "ground"
+   },
+   "source": "underground.py:265-282"
+  },
+  {
+   "id": "gaol-cellar",
+   "op": "made",
+   "class": "C",
+   "params": {
+    "id": "gaol-cellar",
+    "source_fn": "underground.cellar",
+    "box": [
+     -55,
+     42,
+     -37,
+     -49,
+     48,
+     -31
+    ],
+    "blocks_red_half": 261,
+    "content": "vault x -55..-49, z -37..-31, floor y 43, roof y 48: stone-brick shell (70% plain, 18% cracked, 12% mossy), mixed stone floor, three iron-barred cells with iron doors on the north wall, partition walls, a bunk, a table, a chest (arrow, golden apple, iron chestplate, bone) and two torches; its south wall is broken through into the cave with rubble",
+    "ties": [
+     "gaol_stair ladder at (-50, 43..52, -36)",
+     "breach opens onto the 'north' cave branch near (-53, 42, -28)"
+    ],
+    "mirror": "x' = -1 - x"
+   },
+   "source": "underground.py:285-337",
+   "note": "522 blocks both halves. Parametric in principle (box, cells, breach side) but it is a one-off with hand-placed constants; its breach has to meet a carve from another op."
+  }
+ ],
+ "pieces": [
+  {
+   "id": "map",
+   "op": "map.meta",
+   "class": "A",
+   "params": {
+    "proto": "1.5.0",
+    "name": "Riftwater",
+    "version": "0.1.0",
+    "gamemode": "dtm",
+    "objective": "Destroy both of the enemy's monuments: one in their market square, one on their village green.",
+    "authors": [
+     "Claude (freeform generator)"
+    ],
+    "contributors": [
+     {
+      "name": "rockymine",
+      "contribution": "Built the oak and birch trees (tree showcase)"
+     }
+    ],
+    "teams": [
+     {
+      "id": "red-team",
+      "color": "red",
+      "max": 16,
+      "name": "Red"
+     },
+     {
+      "id": "blue-team",
+      "color": "blue",
+      "max": 16,
+      "name": "Blue"
+     }
+    ],
+    "maxbuildheight": 90
+   },
+   "source": "scripts/map.xml:1-77 (hand-written; build.sh:14 copies it)"
+  },
+  {
+   "id": "kit",
+   "op": "play.kit",
+   "class": "A",
+   "params": {
+    "id": "spawn-kit",
+    "items": [
+     {
+      "slot": 0,
+      "material": "iron sword",
+      "unbreakable": true
+     },
+     {
+      "slot": 1,
+      "material": "bow",
+      "unbreakable": true,
+      "enchant": "infinity 1"
+     },
+     {
+      "slot": 2,
+      "material": "diamond pickaxe",
+      "unbreakable": true
+     },
+     {
+      "slot": 3,
+      "material": "iron axe",
+      "unbreakable": true
+     },
+     {
+      "slot": 4,
+      "material": "wood",
+      "amount": 64
+     },
+     {
+      "slot": 5,
+      "material": "stained clay",
+      "amount": 32,
+      "team_color": true
+     },
+     {
+      "slot": 6,
+      "material": "golden apple",
+      "amount": 1
+     },
+     {
+      "slot": 7,
+      "material": "water bucket"
+     },
+     {
+      "slot": 8,
+      "material": "cooked beef",
+      "amount": 16
+     },
+     {
+      "slot": 28,
+      "material": "arrow"
+     },
+     {
+      "helmet": "leather helmet",
+      "team_color": true
+     },
+     {
+      "chestplate": "iron chestplate"
+     },
+     {
+      "leggings": "chainmail leggings"
+     },
+     {
+      "boots": "leather boots",
+      "team_color": true
+     }
+    ]
+   },
+   "source": "scripts/map.xml:13-32"
+  },
+  {
+   "id": "spawn-red",
+   "op": "play.spawn",
+   "class": "A",
+   "params": {
+    "team": "red-team",
+    "kit": "spawn-kit",
+    "point": [
+     -97.5,
+     60,
+     -6.5
+    ],
+    "yaw": 270,
+    "protect": {
+     "rect": [
+      [
+       -108,
+       -14
+      ],
+      [
+       -84,
+       0
+      ]
+     ],
+     "enter": "only red-team",
+     "block": "never",
+     "message": "You may not enter the enemy's spawn!"
+    }
+   },
+   "source": "scripts/map.xml:33-37,48-52,72-75; the standing place is inside buildings.watch_house (buildings.py:368)",
+   "mirror": "blue-spawn: point [97.5, 60, -6.5] yaw 90, rect [[84, -14], [108, 0]]"
+  },
+  {
+   "id": "observer",
+   "op": "play.spawn",
+   "class": "A",
+   "params": {
+    "default": true,
+    "point": [
+     0.5,
+     80,
+     0.5
+    ],
+    "yaw": 90
+   },
+   "source": "scripts/map.xml:36,50"
+  },
+  {
+   "id": "monument-square",
+   "op": "play.destroyable",
+   "class": "A",
+   "params": {
+    "id": "red-square",
+    "name": "Market Square Monument",
+    "owner": "red-team",
+    "block": "OBSIDIAN:0",
+    "stack": 2,
+    "at": [
+     -66,
+     56,
+     -44
+    ],
+    "above_ground": {
+     "ground_y": 52,
+     "air_under": 3
+    },
+    "region": {
+     "cuboid": [
+      [
+       -66,
+       56,
+       -44
+      ],
+      [
+       -65,
+       58,
+       -43
+      ]
+     ]
+    },
+    "stamps": "two obsidian blocks at y 56,57; nothing beneath"
+   },
+   "source": "buildings.py:116-121,633-637; plan.py:102; map.xml:41,56",
+   "mirror": "blue-square at x 65 (cuboid [[65, 56, -44], [66, 58, -43]])",
+   "note": "y is ground + 4 where ground is read from the finished field (after square/paving). The value 52 is the square's stated level, so the answer is the same before or after the square op; map.xml repeats the number by hand.",
+   "after": "buildings.square"
+  },
+  {
+   "id": "monument-green",
+   "op": "play.destroyable",
+   "class": "A",
+   "params": {
+    "id": "red-green",
+    "name": "Winding Green Monument",
+    "owner": "red-team",
+    "block": "OBSIDIAN:0",
+    "stack": 2,
+    "at": [
+     -66,
+     54,
+     48
+    ],
+    "above_ground": {
+     "ground_y": 50,
+     "air_under": 3
+    },
+    "region": {
+     "cuboid": [
+      [
+       -66,
+       54,
+       48
+      ],
+      [
+       -65,
+       56,
+       49
+      ]
+     ]
+    }
+   },
+   "source": "buildings.py:116-121,633-637; plan.py:102; map.xml:42,57",
+   "mirror": "blue-green at x 65",
+   "after": "buildings.square"
+  },
+  {
+   "id": "rules",
+   "op": "play.regions",
+   "class": "A",
+   "params": {
+    "filters": [
+     {
+      "team": "only-red",
+      "of": "red-team"
+     },
+     {
+      "team": "only-blue",
+      "of": "blue-team"
+     },
+     {
+      "not": "no-void",
+      "of": "void"
+     }
+    ],
+    "build_rift": {
+     "rect": [
+      [
+       -16,
+       -88
+      ],
+      [
+       16,
+       88
+      ]
+     ],
+     "rule": "block unless void: 'You may only bridge over the rift!'"
+    },
+    "spawn_edit": {
+     "union": [
+      "red-spawn",
+      "blue-spawn"
+     ],
+     "block": "never",
+     "message": "You may not edit the spawn!"
+    }
+   },
+   "source": "scripts/map.xml:57-74"
+  }
+ ],
+ "buildings": [
+  {
+   "id": "styles",
+   "op": "library.house-styles",
+   "class": "B",
+   "params": {
+    "town": {
+     "base": "BRICK:0",
+     "infill": "STAINED_CLAY:0",
+     "post": "LOG:1",
+     "laid": "LOG:1",
+     "roof": "DARK_OAK_STAIRS",
+     "ridge": "WOOD_SLAB:5",
+     "gable": "PLANKS:1",
+     "floor": "PLANKS:1",
+     "door": "SPRUCE_DOOR",
+     "chimney": "BRICK:0",
+     "sill": null
+    },
+    "village": {
+     "base": "PLANKS:1",
+     "infill": "PLANKS:1",
+     "post": "LOG:1",
+     "laid": "LOG:1",
+     "roof": "SPRUCE_STAIRS",
+     "ridge": "WOOD_SLAB:1",
+     "gable": "PLANKS:0",
+     "floor": "PLANKS:0",
+     "door": "SPRUCE_DOOR",
+     "chimney": "COBBLE:0",
+     "sill": "COBBLE:0"
+    },
+    "stone": {
+     "base": "STONEBRICK:0",
+     "infill": "STONEBRICK:0",
+     "post": "STONE:6",
+     "laid": null,
+     "roof": "DARK_OAK_STAIRS",
+     "ridge": "WOOD_SLAB:5",
+     "gable": "STONEBRICK:0",
+     "floor": "PLANKS:5",
+     "door": "DARK_OAK_DOOR",
+     "chimney": "STONEBRICK:0",
+     "sill": null
+    }
+   },
+   "source": "house.py:15-25",
+   "gap": "The studio's house JSON (foundation, roof, wall, post, windows, storeys, porch, front, beams, doorway) carries these slots except `chimney`, a furnished interior by `kind`, and the pad levelling (`site`)."
+  },
+  {
+   "id": "house-engine",
+   "op": "place.house-engine",
+   "class": "B",
+   "params": {
+    "site": {
+     "margin": 2,
+     "ease": "linear to the old ground over margin+1",
+     "never_under": "earlier footprints"
+    },
+    "foundations": "stone down to solid under the floor",
+    "storey_height": 4,
+    "windows": {
+     "tall_except_village": true,
+     "period": "2 if span<6 else 3"
+    },
+    "door_clearance": "no pane beside a door",
+    "roof": "gable, overhang 1, ridge along the longer side",
+    "chimney": {
+     "offset": [
+      1,
+      "mid"
+     ]
+    },
+    "ladder_between_storeys": true,
+    "floor_y_default": "median ground under the footprint"
+   },
+   "source": "house.py:30-233",
+   "note": "The behaviour of place.house, shared by the 31 calls below."
+  },
+  {
+   "id": "square",
+   "op": "paint.plaza",
+   "class": "A",
+   "new": true,
+   "params": {
+    "rect": [
+     [
+      -76,
+      -53
+     ],
+     [
+      -57,
+      -35
+     ]
+    ],
+    "y": 52,
+    "corner_radius": 3.2,
+    "mix": [
+     [
+      "STONEBRICK:0"
+     ],
+     [
+      "STONE:6"
+     ],
+     [
+      "STONE:5"
+     ],
+     [
+      "STONE:0"
+     ]
+    ],
+    "pattern": "3x3 cell hash ((x//3)*5 + (z//3)*3 + (x*z)%2) % 4",
+    "cut_and_fill": true
+   },
+   "source": "buildings.py:101-113",
+   "gap": "A level paved area with rounded corners that cuts and fills the ground to y; the route.pave op is a band along a line."
+  },
+  {
+   "id": "town-hall",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -74,
+     -64,
+     -59,
+     -56
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "s",
+    "kind": "hall",
+    "floor_y": 52
+   },
+   "source": "buildings.py:129-149"
+  },
+  {
+   "id": "main-n-1",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -54,
+     -56,
+     -48,
+     -48
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "s",
+    "kind": "house"
+   },
+   "source": "buildings.py:129-149"
+  },
+  {
+   "id": "main-n-shop-chandler",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -46,
+     -55,
+     -41,
+     -48
+    ],
+    "storeys": 3,
+    "style": "town",
+    "door": "s",
+    "kind": "shop"
+   },
+   "source": "buildings.py:129-149"
+  },
+  {
+   "id": "main-n-3",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -36,
+     -56,
+     -29,
+     -48
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "s",
+    "kind": "house"
+   },
+   "source": "buildings.py:129-149"
+  },
+  {
+   "id": "main-n-bakery",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -27,
+     -54,
+     -22,
+     -48
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "s",
+    "kind": "bakery"
+   },
+   "source": "buildings.py:129-149"
+  },
+  {
+   "id": "main-n-5",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -20,
+     -55,
+     -15,
+     -48
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "s",
+    "kind": "house"
+   },
+   "source": "buildings.py:129-149"
+  },
+  {
+   "id": "main-s-1",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -37,
+     -40,
+     -30,
+     -33
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "n",
+    "kind": "house"
+   },
+   "source": "buildings.py:129-149"
+  },
+  {
+   "id": "main-s-shop",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -27,
+     -40,
+     -21,
+     -34
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "n",
+    "kind": "shop"
+   },
+   "source": "buildings.py:129-149"
+  },
+  {
+   "id": "main-s-3",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -18,
+     -40,
+     -14,
+     -35
+    ],
+    "storeys": 1,
+    "style": "town",
+    "door": "n",
+    "kind": "house"
+   },
+   "source": "buildings.py:129-149"
+  },
+  {
+   "id": "gaol",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -56,
+     -38,
+     -48,
+     -30
+    ],
+    "storeys": 2,
+    "style": "stone",
+    "door": "w",
+    "kind": "gaol",
+    "floor_y": 52
+   },
+   "source": "buildings.py:129-149"
+  },
+  {
+   "id": "bridge-st-1",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -49,
+     -26,
+     -43,
+     -19
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "e",
+    "kind": "house"
+   },
+   "source": "buildings.py:129-149"
+  },
+  {
+   "id": "bridge-st-2",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -48,
+     -15,
+     -43,
+     -11
+    ],
+    "storeys": 1,
+    "style": "town",
+    "door": "e",
+    "kind": "house"
+   },
+   "source": "buildings.py:129-149"
+  },
+  {
+   "id": "falls-inn",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -33,
+     -28,
+     -24,
+     -17
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "w",
+    "kind": "inn"
+   },
+   "source": "buildings.py:129-149"
+  },
+  {
+   "id": "north-lane-1",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -34,
+     -78,
+     -28,
+     -70
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "s",
+    "kind": "house"
+   },
+   "source": "buildings.py:129-149"
+  },
+  {
+   "id": "north-lane-2",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -24,
+     -80,
+     -18,
+     -73
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "s",
+    "kind": "house"
+   },
+   "source": "buildings.py:129-149"
+  },
+  {
+   "id": "north-lane-shop",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -69,
+     -80,
+     -61,
+     -72
+    ],
+    "storeys": 1,
+    "style": "town",
+    "door": "s",
+    "kind": "shop"
+   },
+   "source": "buildings.py:129-149"
+  },
+  {
+   "id": "gaol-ladder",
+   "op": "build.ladder",
+   "class": "A",
+   "params": {
+    "x": -50,
+    "z": -36,
+    "y0": 43,
+    "y1": 52,
+    "facing": 2,
+    "wall": "STONEBRICK:0 at z+1",
+    "clear_above": [
+     53,
+     54
+    ]
+   },
+   "source": "buildings.py:153-161",
+   "note": "joins the gaol floor to the cellar's north-east corner"
+  },
+  {
+   "id": "chapel-nave",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -50,
+     -80,
+     -38,
+     -71
+    ],
+    "storeys": 2,
+    "style": "stone",
+    "door": "s",
+    "kind": "chapel",
+    "chimney": false,
+    "along_x": true
+   },
+   "source": "buildings.py:164-168"
+  },
+  {
+   "id": "chapel-fittings",
+   "op": "place.tower",
+   "class": "B",
+   "new": true,
+   "params": {
+    "kind": "masonry-belfry",
+    "footprint": [
+     [
+      -55,
+      -79
+     ],
+     [
+      -51,
+      -73
+     ]
+    ],
+    "floor_y": "nave floor",
+    "height": 20,
+    "shell": "STONEBRICK:0 with STONE:6 corners",
+    "floor": "PLANKS:5",
+    "belfry": {
+     "openings_at": [
+      -4,
+      -3,
+      -2
+     ],
+     "bell_floor": -5,
+     "bell": "FENCE + GOLD_BLOCK"
+    },
+    "ladder_inside": true,
+    "spire": {
+     "steps": 4,
+     "block": "PLANKS:5",
+     "finial": "FENCE x2"
+    },
+    "doors": {
+     "to_nave": [
+      -51,
+      -76
+     ],
+     "to_lane": "south face, DARK_OAK_DOOR"
+    },
+    "nave": {
+     "pews": "SPRUCE_STAIRS rows x -48..-42 step 2, z -77,-76,-74,-73",
+     "altar": "QUARTZ x2 at x -40, z -76..-75, torch",
+     "gallery_opening": [
+      [
+       -48,
+       -78
+      ],
+      [
+       -41,
+       -73
+      ]
+     ],
+     "tall_windows": "PANE at x -47,-44,-41, y +54..+58"
+    }
+   },
+   "source": "buildings.py:164-225"
+  },
+  {
+   "id": "inn-sign",
+   "op": "prop.sign",
+   "class": "A",
+   "new": true,
+   "params": {
+    "at": [
+     -34,
+     "inn floor + 2",
+     -21
+    ],
+    "wall_facing": 4,
+    "lines": [
+     "The Falls Inn",
+     "",
+     "rooms & ale",
+     ""
+    ]
+   },
+   "source": "buildings.py:228-229"
+  },
+  {
+   "id": "cottage-1",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -98,
+     38,
+     -92,
+     44
+    ],
+    "storeys": 1,
+    "style": "village",
+    "door": "e",
+    "kind": "cottage"
+   },
+   "source": "buildings.py:236-261"
+  },
+  {
+   "id": "tall-house",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -99,
+     49,
+     -92,
+     55
+    ],
+    "storeys": 2,
+    "style": "village",
+    "door": "e",
+    "kind": "house"
+   },
+   "source": "buildings.py:236-261"
+  },
+  {
+   "id": "tall-house-wing",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -98,
+     46,
+     -93,
+     48
+    ],
+    "storeys": 1,
+    "style": "village",
+    "door": "e",
+    "kind": "none",
+    "along_x": true,
+    "floor_y": "tall-house.floor",
+    "chimney": false
+   },
+   "source": "buildings.py:236-261"
+  },
+  {
+   "id": "cottage-2",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -97,
+     61,
+     -91,
+     68
+    ],
+    "storeys": 1,
+    "style": "village",
+    "door": "e",
+    "kind": "cottage",
+    "along_x": false
+   },
+   "source": "buildings.py:236-261"
+  },
+  {
+   "id": "big-house",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -90,
+     71,
+     -82,
+     76
+    ],
+    "storeys": 2,
+    "style": "village",
+    "door": "n",
+    "kind": "house"
+   },
+   "source": "buildings.py:236-261"
+  },
+  {
+   "id": "big-house-wing",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -95,
+     72,
+     -91,
+     76
+    ],
+    "storeys": 1,
+    "style": "village",
+    "door": "n",
+    "kind": "none",
+    "along_x": false,
+    "floor_y": "big-house.floor",
+    "chimney": true
+   },
+   "source": "buildings.py:236-261"
+  },
+  {
+   "id": "cottage-3",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -79,
+     69,
+     -74,
+     75
+    ],
+    "storeys": 1,
+    "style": "village",
+    "door": "n",
+    "kind": "cottage",
+    "along_x": false
+   },
+   "source": "buildings.py:236-261"
+  },
+  {
+   "id": "engine-house",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -80,
+     49,
+     -75,
+     55
+    ],
+    "storeys": 1,
+    "style": "stone",
+    "door": "w",
+    "kind": "engine",
+    "chimney": false
+   },
+   "source": "buildings.py:236-261"
+  },
+  {
+   "id": "smithy",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -78,
+     59,
+     -72,
+     64
+    ],
+    "storeys": 1,
+    "style": "village",
+    "door": "w",
+    "kind": "smithy"
+   },
+   "source": "buildings.py:236-261"
+  },
+  {
+   "id": "engine-stack",
+   "op": "place.tower",
+   "class": "B",
+   "new": true,
+   "params": {
+    "kind": "brick-stack",
+    "at": [
+     -74,
+     50
+    ],
+    "base": 2,
+    "floor_y": "engine-house.floor",
+    "height": 18,
+    "corbel": {
+     "outline": "4x4 BRICK ring at the top course",
+     "flue_holes": [
+      [
+       -74,
+       50
+      ],
+      [
+       -73,
+       51
+      ]
+     ]
+    }
+   },
+   "source": "buildings.py:250-260"
+  },
+  {
+   "id": "smithy-fittings",
+   "op": "prop.fittings",
+   "class": "B",
+   "new": true,
+   "params": {
+    "open_wall": {
+     "x": -78,
+     "z": [
+      60,
+      63
+     ]
+    },
+    "anvil": [
+     -75,
+     "floor+1",
+     61
+    ],
+    "furnaces": [
+     [
+      -73,
+      60
+     ],
+     [
+      -73,
+      61
+     ]
+    ],
+    "cauldron": [
+     -73,
+     63
+    ],
+    "chest": [
+     -74,
+     63
+    ]
+   },
+   "source": "buildings.py:262-271"
+  },
+  {
+   "id": "well",
+   "op": "prop.well",
+   "class": "B",
+   "new": true,
+   "params": {
+    "at": [
+     -87,
+     46
+    ],
+    "ring": "COBBLE:0 3x3 with COBBLE_WALL",
+    "shaft_depth": 6,
+    "water": "WATER:0",
+    "roof": {
+     "posts": "SPRUCE_FENCE",
+     "slab": "WOOD_SLAB:1 3x3 at y+3"
+    }
+   },
+   "source": "buildings.py:275-289"
+  },
+  {
+   "id": "headframe",
+   "op": "place.tower",
+   "class": "B",
+   "new": true,
+   "params": {
+    "kind": "timber-headframe",
+    "at": [
+     -84,
+     56
+    ],
+    "ground": "shaft top",
+    "height": 17,
+    "legs": {
+     "offset": 3,
+     "lean_every": 6,
+     "block": "LOG:1"
+    },
+    "braces_at": [
+     5,
+     10,
+     17
+    ],
+    "wheel": {
+     "ring_r": 2.6,
+     "steps": 48,
+     "block": "PLANKS:5",
+     "spokes": "DARK_OAK_FENCE",
+     "axle": "LOG2:9"
+    },
+    "platform": "PLANKS:1 3x3 at top",
+    "ladder": {
+     "post_at": [
+      -85,
+      53
+     ],
+     "on": 3
+    },
+    "ore_track": {
+     "rail": [
+      -80,
+      -76
+     ],
+     "z": 56
+    },
+    "collar": {
+     "planks": "PLANKS:1",
+     "radius_ge": 2
+    }
+   },
+   "source": "buildings.py:292-347"
+  },
+  {
+   "id": "spoil-heap",
+   "op": "landform.mound",
+   "class": "A",
+   "new": true,
+   "params": {
+    "centre": [
+     -101,
+     79
+    ],
+    "rx": 7,
+    "rz": 5.6,
+    "height": 6,
+    "profile": "1-d^1.6",
+    "fill": [
+     [
+      "GRAVEL:0",
+      0.5
+     ],
+     [
+      "COBBLE:0",
+      0.25
+     ],
+     [
+      "STONE:5",
+      0.25
+     ]
+    ]
+   },
+   "source": "buildings.py:350-364",
+   "gap": "A mound built of blocks on top of the ground (heightens the ground field), unlike landform.mound which edits H before painting."
+  },
+  {
+   "id": "watch-house",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -102,
+     -11,
+     -94,
+     -3
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "e",
+    "kind": "spawnhall",
+    "floor_y": 59
+   },
+   "source": "buildings.py:368-370"
+  },
+  {
+   "id": "watch-tower",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -107,
+     -10,
+     -102,
+     -4
+    ],
+    "storeys": 4,
+    "style": "stone",
+    "door": "e",
+    "kind": "none",
+    "floor_y": 59,
+    "chimney": false,
+    "along_x": false
+   },
+   "source": "buildings.py:371-372"
+  },
+  {
+   "id": "watch-house-fittings",
+   "op": "place.fittings",
+   "class": "B",
+   "new": true,
+   "params": {
+    "doorways_to_tower": {
+     "x": -102,
+     "z": -7,
+     "storeys": [
+      0,
+      1
+     ]
+    },
+    "red_wool_banner": {
+     "x": -108,
+     "z": [
+      -10,
+      -8,
+      -6,
+      -4
+     ],
+     "y": [
+      73,
+      74
+     ],
+     "block": "WOOL:14",
+     "recolour_for_blue": "WOOL:11"
+    },
+    "terrace": {
+     "rect": [
+      [
+       -93,
+       -12
+      ],
+      [
+       -86,
+       -2
+      ]
+     ],
+     "y": 59,
+     "paving": "FLOOR mix",
+     "low_wall": "COBBLE_WALL at y 60 on x=-85 (gap z -8..-6), z=-13 and z=-1"
+    },
+    "stairs_down": {
+     "from_x": -84,
+     "to_x": -78,
+     "z": [
+      -8,
+      -7,
+      -6
+     ],
+     "block": "STONEBRICK_STAIRS:1",
+     "fill": "STONE:0"
+    }
+   },
+   "source": "buildings.py:373-403"
+  },
+  {
+   "id": "hut",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -107,
+     -67,
+     -102,
+     -62
+    ],
+    "storeys": 1,
+    "style": "village",
+    "door": "e",
+    "kind": "cottage"
+   },
+   "source": "buildings.py:407-408"
+  },
+  {
+   "id": "hut-fittings",
+   "op": "prop.fittings",
+   "class": "B",
+   "new": true,
+   "params": {
+    "chest": {
+     "at": [
+      -103,
+      "floor+1",
+      -63
+     ],
+     "facing": 2,
+     "items": [
+      [
+       0,
+       "arrow",
+       24
+      ],
+      [
+       1,
+       "cooked_beef",
+       6
+      ],
+      [
+       2,
+       "log",
+       16
+      ],
+      [
+       13,
+       "iron_axe",
+       1
+      ]
+     ]
+    },
+    "chopping_block": [
+     -100,
+     "g+1",
+     -63
+    ],
+    "woodpile": {
+     "x": -101,
+     "z": [
+      -67,
+      -66,
+      -65
+     ],
+     "layers": 2,
+     "block": "LOG:4"
+    }
+   },
+   "source": "buildings.py:409-417"
+  },
+  {
+   "id": "mill",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -67,
+     1,
+     -58,
+     7
+    ],
+    "storeys": 2,
+    "style": "stone",
+    "door": "n",
+    "kind": "mill",
+    "upper_style": "village",
+    "along_x": true
+   },
+   "source": "buildings.py:421-424"
+  },
+  {
+   "id": "mill-works",
+   "op": "place.waterworks",
+   "class": "B",
+   "new": true,
+   "params": {
+    "race": {
+     "x": [
+      -68,
+      -54
+     ],
+     "z": [
+      9,
+      11
+     ],
+     "bed": 41,
+     "water_to": 45,
+     "banks": "STONEBRICK:0 at z 8 and 12 above y 46"
+    },
+    "wheel": {
+     "centre": [
+      -62,
+      46
+     ],
+     "z": 10,
+     "radii": [
+      4.0,
+      4.6
+     ],
+     "steps": 64,
+     "rim": "PLANKS:5",
+     "spokes": 8,
+     "spoke_block": "LOG2:13",
+     "axle": {
+      "z": [
+       8,
+       11
+      ],
+      "block": "LOG2:9"
+     }
+    },
+    "weir": {
+     "x": -67,
+     "across": "river z +/-3 (+/-5 where wet)",
+     "sill_to_y": 48,
+     "spill": "WATER_FLOW:8 at x -66, y 46-47"
+    },
+    "inside": {
+     "millstone": "DSLAB:0 + SLAB:0 at (-60, f+1, 3)",
+     "sacks": "HAY:0 at (-65..-64, f+1, 2)"
+    }
+   },
+   "source": "buildings.py:425-468",
+   "gap": "Reads the river centre (L.zr) and the ground at write time; edits L.H and L.water for the race."
+  },
+  {
+   "id": "footbridge",
+   "op": "place.bridge",
+   "class": "B",
+   "new": true,
+   "params": {
+    "kind": "trestle",
+    "x": [
+     -72,
+     -68
+    ],
+    "z": [
+     12,
+     27
+    ],
+    "deck_y": 50,
+    "ease_down_after_z": 21,
+    "deck": "PLANKS:1",
+    "edge_log": "LOG:9 (x ends)",
+    "rails": "SPRUCE_FENCE",
+    "legs": {
+     "every": 4,
+     "z_mod": 2,
+     "block": "LOG:1",
+     "to": "ground-2"
+    },
+    "torches_at_z": [
+     16,
+     24
+    ]
+   },
+   "source": "buildings.py:472-497"
+  },
+  {
+   "id": "stone-bridge",
+   "op": "place.bridge",
+   "class": "B",
+   "new": true,
+   "params": {
+    "kind": "arch",
+    "x": [
+     -38,
+     -34
+    ],
+    "z": [
+     -10,
+     14
+    ],
+    "arch": {
+     "centre_z": 3,
+     "half": 6.5,
+     "soffit": {
+      "base_y": 45,
+      "rise": 5.2,
+      "profile": "half-ellipse"
+     }
+    },
+    "deck": "ground-derived (median of both banks) + crown 1",
+    "ring": "STONEBRICK:0/2, keystone STONEBRICK:3",
+    "deck_block": "FLOOR mix; stairs STONEBRICK_STAIRS where climbing",
+    "parapet": "STONEBRICK:0 + SLAB:5",
+    "cutwaters": {
+     "z": [
+      -4,
+      10
+     ],
+     "x": [
+      -39,
+      -33
+     ],
+     "up_to": 49
+    },
+    "lamps": "glowstone on fence at the four deck ends"
+   },
+   "source": "buildings.py:500-557"
+  },
+  {
+   "id": "old-bridge",
+   "op": "place.bridge",
+   "class": "B",
+   "new": true,
+   "params": {
+    "kind": "half-arch",
+    "z_centre": -44,
+    "x": [
+     -15,
+     -5
+    ],
+    "face_x": -12,
+    "deck_y": "ground at (-15, -44)",
+    "rise": 9,
+    "break": {
+     "ragged_from_x": -6,
+     "p_end": 0.45,
+     "p_next": 0.2,
+     "p_edge_extra": 0.3,
+     "seed": 17
+    },
+    "parapet": "STONEBRICK:0 + SLAB:5, broken first at the end",
+    "ties": {
+     "x": -4,
+     "z": [
+      -45,
+      -43
+     ],
+     "block": "IRON_BARS",
+     "len": 4
+    },
+    "fallen_voussoir": [
+     -4,
+     "deck-5",
+     -45
+    ],
+    "lamps": {
+     "x": -14,
+     "z": [
+      -47,
+      -41
+     ]
+    }
+   },
+   "source": "buildings.py:560-604",
+   "mirror": "blue's stub is the mirror: 8 blocks of air between the two stubs"
+  },
+  {
+   "id": "pave-spawn-lane",
+   "op": "route.pave",
+   "class": "A",
+   "params": {
+    "route": "Spawn Lane",
+    "width": 3,
+    "surface_mix": [
+     [
+      "DIRT:1",
+      1
+     ],
+     [
+      "DIRT:0",
+      1
+     ],
+     [
+      "GRAVEL:0",
+      1
+     ]
+    ],
+    "smooth_centreline": {
+     "window": 19
+    },
+    "flatten_max": 2,
+    "keep_built": true,
+    "wander": 1.2,
+    "spline_step": 0.5
+   },
+   "source": "buildings.py:48-81,624-627"
+  },
+  {
+   "id": "pave-spawn-lane-south",
+   "op": "route.pave",
+   "class": "A",
+   "params": {
+    "route": "Spawn Lane south",
+    "width": 3,
+    "surface_mix": [
+     [
+      "DIRT:1",
+      1
+     ],
+     [
+      "DIRT:0",
+      1
+     ],
+     [
+      "GRAVEL:0",
+      1
+     ]
+    ],
+    "smooth_centreline": {
+     "window": 19
+    },
+    "flatten_max": 2,
+    "keep_built": true,
+    "wander": 1.2,
+    "spline_step": 0.5
+   },
+   "source": "buildings.py:48-81,624-627"
+  },
+  {
+   "id": "pave-main-street",
+   "op": "route.pave",
+   "class": "A",
+   "params": {
+    "route": "Main Street",
+    "width": 5,
+    "surface_mix": [
+     [
+      "GRAVEL:0",
+      1
+     ],
+     [
+      "STONE:5",
+      1
+     ],
+     [
+      "COBBLE:0",
+      1
+     ]
+    ],
+    "smooth_centreline": {
+     "window": 19
+    },
+    "flatten_max": 2,
+    "keep_built": true,
+    "wander": 0,
+    "spline_step": 0.5
+   },
+   "source": "buildings.py:48-81,624-627"
+  },
+  {
+   "id": "pave-bridge-street",
+   "op": "route.pave",
+   "class": "A",
+   "params": {
+    "route": "Bridge Street",
+    "width": 5,
+    "surface_mix": [
+     [
+      "GRAVEL:0",
+      1
+     ],
+     [
+      "STONE:5",
+      1
+     ],
+     [
+      "COBBLE:0",
+      1
+     ]
+    ],
+    "smooth_centreline": {
+     "window": 19
+    },
+    "flatten_max": 2,
+    "keep_built": true,
+    "wander": 0,
+    "spline_step": 0.5
+   },
+   "source": "buildings.py:48-81,624-627"
+  },
+  {
+   "id": "pave-north-lane",
+   "op": "route.pave",
+   "class": "A",
+   "params": {
+    "route": "North Lane",
+    "width": 5,
+    "surface_mix": [
+     [
+      "GRAVEL:0",
+      1
+     ],
+     [
+      "STONE:5",
+      1
+     ],
+     [
+      "COBBLE:0",
+      1
+     ]
+    ],
+    "smooth_centreline": {
+     "window": 19
+    },
+    "flatten_max": 2,
+    "keep_built": true,
+    "wander": 0,
+    "spline_step": 0.5
+   },
+   "source": "buildings.py:48-81,624-627"
+  },
+  {
+   "id": "pave-mill-lane",
+   "op": "route.pave",
+   "class": "A",
+   "params": {
+    "route": "Mill Lane",
+    "width": 3,
+    "surface_mix": [
+     [
+      "DIRT:1",
+      1
+     ],
+     [
+      "DIRT:0",
+      1
+     ],
+     [
+      "GRAVEL:0",
+      1
+     ]
+    ],
+    "smooth_centreline": {
+     "window": 19
+    },
+    "flatten_max": 2,
+    "keep_built": true,
+    "wander": 1.2,
+    "spline_step": 0.5
+   },
+   "source": "buildings.py:48-81,624-627"
+  },
+  {
+   "id": "pave-field-road",
+   "op": "route.pave",
+   "class": "A",
+   "params": {
+    "route": "Field Road",
+    "width": 3,
+    "surface_mix": [
+     [
+      "DIRT:1",
+      1
+     ],
+     [
+      "DIRT:0",
+      1
+     ],
+     [
+      "GRAVEL:0",
+      1
+     ]
+    ],
+    "smooth_centreline": {
+     "window": 19
+    },
+    "flatten_max": 2,
+    "keep_built": true,
+    "wander": 1.2,
+    "spline_step": 0.5
+   },
+   "source": "buildings.py:48-81,624-627"
+  },
+  {
+   "id": "pave-farm-track",
+   "op": "route.pave",
+   "class": "A",
+   "params": {
+    "route": "Farm Track",
+    "width": 3,
+    "surface_mix": [
+     [
+      "DIRT:1",
+      1
+     ],
+     [
+      "DIRT:0",
+      1
+     ],
+     [
+      "GRAVEL:0",
+      1
+     ]
+    ],
+    "smooth_centreline": {
+     "window": 19
+    },
+    "flatten_max": 2,
+    "keep_built": true,
+    "wander": 1.2,
+    "spline_step": 0.5
+   },
+   "source": "buildings.py:48-81,624-627"
+  },
+  {
+   "id": "pave-falls-walk",
+   "op": "route.pave",
+   "class": "A",
+   "params": {
+    "route": "Falls Walk",
+    "width": 3,
+    "surface_mix": [
+     [
+      "DIRT:1",
+      1
+     ],
+     [
+      "DIRT:0",
+      1
+     ],
+     [
+      "GRAVEL:0",
+      1
+     ]
+    ],
+    "smooth_centreline": {
+     "window": 19
+    },
+    "flatten_max": 2,
+    "keep_built": true,
+    "wander": 1.2,
+    "spline_step": 0.5
+   },
+   "source": "buildings.py:48-81,624-627"
+  },
+  {
+   "id": "pave-spring-path",
+   "op": "route.pave",
+   "class": "A",
+   "params": {
+    "route": "Spring Path",
+    "width": 3,
+    "surface_mix": [
+     [
+      "DIRT:1",
+      1
+     ],
+     [
+      "DIRT:0",
+      1
+     ],
+     [
+      "GRAVEL:0",
+      1
+     ]
+    ],
+    "smooth_centreline": {
+     "window": 19
+    },
+    "flatten_max": 2,
+    "keep_built": true,
+    "wander": 1.2,
+    "spline_step": 0.5
+   },
+   "source": "buildings.py:48-81,624-627"
+  },
+  {
+   "id": "pave-village-road",
+   "op": "route.pave",
+   "class": "A",
+   "params": {
+    "route": "Village Road",
+    "width": 3,
+    "surface_mix": [
+     [
+      "DIRT:1",
+      1
+     ],
+     [
+      "DIRT:0",
+      1
+     ],
+     [
+      "GRAVEL:0",
+      1
+     ]
+    ],
+    "smooth_centreline": {
+     "window": 19
+    },
+    "flatten_max": 2,
+    "keep_built": true,
+    "wander": 1.2,
+    "spline_step": 0.5
+   },
+   "source": "buildings.py:48-81,624-627"
+  },
+  {
+   "id": "pave-forest-path",
+   "op": "route.pave",
+   "class": "A",
+   "params": {
+    "route": "Forest Path",
+    "width": 2,
+    "surface_mix": [
+     [
+      "DIRT:2",
+      1
+     ],
+     [
+      "DIRT:1",
+      1
+     ],
+     [
+      "DIRT:0",
+      1
+     ]
+    ],
+    "smooth_centreline": {
+     "window": 19
+    },
+    "flatten_max": 2,
+    "keep_built": true,
+    "wander": 1.2,
+    "spline_step": 0.5
+   },
+   "source": "buildings.py:48-81,624-627"
+  },
+  {
+   "id": "pave-clearing-path",
+   "op": "route.pave",
+   "class": "A",
+   "params": {
+    "route": "Clearing Path",
+    "width": 2,
+    "surface_mix": [
+     [
+      "DIRT:2",
+      1
+     ],
+     [
+      "DIRT:1",
+      1
+     ],
+     [
+      "DIRT:0",
+      1
+     ]
+    ],
+    "smooth_centreline": {
+     "window": 19
+    },
+    "flatten_max": 2,
+    "keep_built": true,
+    "wander": 1.2,
+    "spline_step": 0.5
+   },
+   "source": "buildings.py:48-81,624-627"
+  },
+  {
+   "id": "doorsteps",
+   "op": "place.house-approach",
+   "class": "B",
+   "new": true,
+   "params": {
+    "for_each": "every house record except kind none/chapel",
+    "run": 5,
+    "width": 3,
+    "mix": "HARD if style town/stone and x0>-80 and z0<0 else SOFT",
+    "stop_at": "existing paving"
+   },
+   "source": "buildings.py:84-97,628-632",
+   "note": "26 calls"
+  }
+ ],
+ "dressing": [
+  {
+   "id": "wheat-field",
+   "op": "landform.field",
+   "new": true,
+   "class": "A",
+   "params": {
+    "rect": [
+     [
+      -50,
+      45
+     ],
+     [
+      -31,
+      69
+     ]
+    ],
+    "plane": {
+     "base": "median ground",
+     "tilt_z": 0.06
+    },
+    "strips": {
+     "width": 9,
+     "crops": [
+      [
+       "WHEAT:7"
+      ],
+      [
+       "WHEAT:7"
+      ],
+      [
+       "WHEAT:6"
+      ],
+      [
+       "CARROTS:7"
+      ],
+      [
+       "WHEAT:7"
+      ],
+      [
+       "POTATOES:7"
+      ]
+     ],
+     "mixed_ripeness": {
+      "block": "WHEAT",
+      "p": 0.15,
+      "age": [
+       4,
+       7
+      ]
+     }
+    },
+    "ditch": {
+     "every": 9,
+     "offset": 4,
+     "water": true
+    },
+    "edge": "GRASS",
+    "base": "FARMLAND:7",
+    "fence": {
+     "x": -50,
+     "block": "FENCE",
+     "gate_at_z": 57,
+     "gate": "FENCE_GATE:1"
+    },
+    "scarecrow": {
+     "at": [
+      -40,
+      "ground+1",
+      54
+     ],
+     "legs": 2,
+     "body": "HAY:0",
+     "arms": "FENCE",
+     "head": "PUMPKIN:3"
+    }
+   },
+   "source": "dressing.py:145-194",
+   "gap": "Farmland and crops are a flora overlay in the studio; the levelled strip layout, ditches and gate are not."
+  },
+  {
+   "id": "barn",
+   "op": "place.house",
+   "class": "B",
+   "params": {
+    "box": [
+     -67,
+     64,
+     -59,
+     73
+    ],
+    "storeys": 2,
+    "style": "village",
+    "door": "e",
+    "kind": "barn",
+    "along_x": false,
+    "chimney": false,
+    "fittings": {
+     "wide_door": {
+      "x": -59,
+      "z": [
+       67,
+       70
+      ],
+      "y": [
+       1,
+       3
+      ]
+     },
+     "hay": "HAY:0 where (x+z)%3==0, x -66..-62, z 65..72"
+    }
+   },
+   "source": "dressing.py:220-232",
+   "note": "a building placed by the dressing pass"
+  },
+  {
+   "id": "haystacks",
+   "op": "prop.haystack",
+   "new": true,
+   "class": "B",
+   "params": {
+    "at": [
+     [
+      -56,
+      76
+     ],
+     [
+      -53,
+      73
+     ]
+    ]
+   },
+   "source": "dressing.py:211-217"
+  },
+  {
+   "id": "hay-cart",
+   "op": "prop.cart",
+   "new": true,
+   "class": "B",
+   "params": {
+    "at": [
+     -45,
+     72
+    ],
+    "slabs": 6,
+    "hay": "HAY:8",
+    "wheels": "LOG2:5 pair",
+    "shafts": "SPRUCE_FENCE"
+   },
+   "source": "dressing.py:197-208"
+  },
+  {
+   "id": "jetty-and-boat",
+   "op": "prop.jetty",
+   "new": true,
+   "class": "B",
+   "params": {
+    "x": [
+     -83,
+     -82
+    ],
+    "z": [
+     16,
+     20
+    ],
+    "y": 49,
+    "legs": "LOG:1 at y 47-48, every 2",
+    "rowboat": {
+     "at": [
+      -79,
+      13
+     ],
+     "y": 48,
+     "hull": "SPRUCE_STAIRS ends, WOOD_SLAB:9 sides",
+     "oars": "SPRUCE_FENCE"
+    },
+    "lilies": {
+     "tries": 60,
+     "box": [
+      [
+       -96,
+       10
+      ],
+      [
+       -71,
+       30
+      ]
+     ],
+     "only": "pond water near shore"
+    },
+    "reeds": {
+     "p": 0.35,
+     "shore_y": 49,
+     "lower_to": 48,
+     "height": [
+      1,
+      2
+     ]
+    }
+   },
+   "source": "dressing.py:236-279"
+  },
+  {
+   "id": "spring",
+   "op": "prop.spring",
+   "new": true,
+   "class": "B",
+   "params": {
+    "source_at": [
+     -99,
+     21
+    ],
+    "channel_to_x": -95,
+    "falls": "WATER_FLOW:8",
+    "mossy_rocks": {
+     "p": 0.4,
+     "block": "MOSSY / COBBLE"
+    }
+   },
+   "source": "dressing.py:282-303"
+  },
+  {
+   "id": "cutting",
+   "op": "prop.clearing",
+   "new": true,
+   "class": "B",
+   "params": {
+    "centre": [
+     -110,
+     68
+    ],
+    "stumps": {
+     "count": 14,
+     "radius": [
+      2,
+      8
+     ],
+     "seed": 5,
+     "block": "LOG:0",
+     "capped_p": 0.3
+    },
+    "log_piles": [
+     [
+      -106,
+      63
+     ],
+     [
+      -113,
+      73
+     ]
+    ],
+    "sawhorse": {
+     "x": [
+      -111,
+      -106
+     ],
+     "z": 70
+    },
+    "sawdust": {
+     "count": 40,
+     "radius": 7,
+     "block": "DIRT:0/1"
+    }
+   },
+   "source": "dressing.py:307-341"
+  },
+  {
+   "id": "stalls",
+   "op": "props.stall",
+   "class": "B",
+   "params": {
+    "line": {
+     "x": -75,
+     "z": [
+      -50,
+      -45,
+      -40
+     ]
+    },
+    "awnings": [
+     14,
+     4,
+     11,
+     13
+    ],
+    "goods": "CHEST + PUMPKIN/MELON",
+    "y": 52
+   },
+   "source": "dressing.py:345-360"
+  },
+  {
+   "id": "worn-1",
+   "op": "paint.patch",
+   "new": true,
+   "class": "A",
+   "params": {
+    "centre": [
+     -87,
+     46
+    ],
+    "r": 3.2,
+    "raggedness": 0.6,
+    "sink": 1,
+    "block": [
+     [
+      "DIRT:1",
+      0.5
+     ],
+     [
+      "DIRT:0",
+      0.5
+     ]
+    ],
+    "seed": "shared stream rng(55)"
+   },
+   "source": "dressing.py:527-543",
+   "gap": "A shallow worn pit: ground lowered one block, dirt and coarse dirt half and half."
+  },
+  {
+   "id": "worn-2",
+   "op": "paint.patch",
+   "new": true,
+   "class": "A",
+   "params": {
+    "centre": [
+     -84,
+     61
+    ],
+    "r": 3.0,
+    "raggedness": 0.6,
+    "sink": 1,
+    "block": [
+     [
+      "DIRT:1",
+      0.5
+     ],
+     [
+      "DIRT:0",
+      0.5
+     ]
+    ],
+    "seed": "shared stream rng(55)"
+   },
+   "source": "dressing.py:527-543",
+   "gap": "A shallow worn pit: ground lowered one block, dirt and coarse dirt half and half."
+  },
+  {
+   "id": "worn-3",
+   "op": "paint.patch",
+   "new": true,
+   "class": "A",
+   "params": {
+    "centre": [
+     -81,
+     61
+    ],
+    "r": 2.5,
+    "raggedness": 0.6,
+    "sink": 1,
+    "block": [
+     [
+      "DIRT:1",
+      0.5
+     ],
+     [
+      "DIRT:0",
+      0.5
+     ]
+    ],
+    "seed": "shared stream rng(55)"
+   },
+   "source": "dressing.py:527-543",
+   "gap": "A shallow worn pit: ground lowered one block, dirt and coarse dirt half and half."
+  },
+  {
+   "id": "worn-4",
+   "op": "paint.patch",
+   "new": true,
+   "class": "A",
+   "params": {
+    "centre": [
+     -100,
+     -64
+    ],
+    "r": 2.2,
+    "raggedness": 0.6,
+    "sink": 1,
+    "block": [
+     [
+      "DIRT:1",
+      0.5
+     ],
+     [
+      "DIRT:0",
+      0.5
+     ]
+    ],
+    "seed": "shared stream rng(55)"
+   },
+   "source": "dressing.py:527-543",
+   "gap": "A shallow worn pit: ground lowered one block, dirt and coarse dirt half and half."
+  },
+  {
+   "id": "worn-5",
+   "op": "paint.patch",
+   "new": true,
+   "class": "A",
+   "params": {
+    "centre": [
+     -56,
+     69
+    ],
+    "r": 2.6,
+    "raggedness": 0.6,
+    "sink": 1,
+    "block": [
+     [
+      "DIRT:1",
+      0.5
+     ],
+     [
+      "DIRT:0",
+      0.5
+     ]
+    ],
+    "seed": "shared stream rng(55)"
+   },
+   "source": "dressing.py:527-543",
+   "gap": "A shallow worn pit: ground lowered one block, dirt and coarse dirt half and half."
+  },
+  {
+   "id": "worn-6",
+   "op": "paint.patch",
+   "new": true,
+   "class": "A",
+   "params": {
+    "centre": [
+     -79,
+     57
+    ],
+    "r": 2.0,
+    "raggedness": 0.6,
+    "sink": 1,
+    "block": [
+     [
+      "DIRT:1",
+      0.5
+     ],
+     [
+      "DIRT:0",
+      0.5
+     ]
+    ],
+    "seed": "shared stream rng(55)"
+   },
+   "source": "dressing.py:527-543",
+   "gap": "A shallow worn pit: ground lowered one block, dirt and coarse dirt half and half."
+  },
+  {
+   "id": "lamps-main-street",
+   "op": "props.lamp",
+   "class": "B",
+   "params": {
+    "along": "Main Street",
+    "every": 10,
+    "offset_z": [
+     3,
+     -3
+    ],
+    "height": 4,
+    "post": "FENCE",
+    "light": "GLOWSTONE",
+    "cap": "WOOD_SLAB:5"
+   },
+   "source": "dressing.py:363-377"
+  },
+  {
+   "id": "lamps-bridge-street",
+   "op": "props.lamp",
+   "class": "B",
+   "params": {
+    "along": "Bridge Street",
+    "every": 10,
+    "offset_z": [
+     3,
+     -3
+    ],
+    "height": 4,
+    "post": "FENCE",
+    "light": "GLOWSTONE",
+    "cap": "WOOD_SLAB:5"
+   },
+   "source": "dressing.py:363-377"
+  },
+  {
+   "id": "lamps-north-lane",
+   "op": "props.lamp",
+   "class": "B",
+   "params": {
+    "along": "North Lane",
+    "every": 10,
+    "offset_z": [
+     3,
+     -3
+    ],
+    "height": 4,
+    "post": "FENCE",
+    "light": "GLOWSTONE",
+    "cap": "WOOD_SLAB:5"
+   },
+   "source": "dressing.py:363-377"
+  },
+  {
+   "id": "gardens",
+   "op": "prop.garden",
+   "new": true,
+   "class": "B",
+   "params": {
+    "behind": "every village house/cottage with x0>=-100 and z0>=30",
+    "size": [
+     4,
+     "house depth"
+    ],
+    "gap_from_house": 2,
+    "fence": "SPRUCE_FENCE",
+    "crops": "CARROTS:7 / POTATOES:7 on FARMLAND:7",
+    "water_source": "centre"
+   },
+   "source": "dressing.py:380-406"
+  },
+  {
+   "id": "benches",
+   "op": "prop.bench",
+   "new": true,
+   "class": "B",
+   "params": {
+    "at": [
+     [
+      -20,
+      12
+     ],
+     [
+      -24,
+      13
+     ]
+    ],
+    "block": "SPRUCE_STAIRS:3"
+   },
+   "source": "dressing.py:409-414"
+  },
+  {
+   "id": "woods-north",
+   "op": "trees.scatter",
+   "class": "A",
+   "params": {
+    "zone": "place:north_wood minus ridge",
+    "by_kind": [
+     "oak",
+     "birch",
+     "tiny-oak"
+    ],
+    "weights": [
+     0.22,
+     0.43,
+     0.35
+    ],
+    "spacing": 0.85,
+    "tries": 4000,
+    "seed": 1,
+    "library": "trees.json (tiny-oak 8, oak 9, big-oak 2, birch 10 variants, cut from rockymine's tree showcase)",
+    "keep": {
+     "edge_ge": 4,
+     "route_ge": 3,
+     "monument_ge": "4 + crown",
+     "built": false
+    },
+    "turn": "random quarter turn"
+   },
+   "source": "dressing.py:83-106; 576"
+  },
+  {
+   "id": "woods-ridge",
+   "op": "trees.scatter",
+   "class": "A",
+   "params": {
+    "zone": "x < -101, except the box x > -110 with -18 < z < 6 (spawn shoulder and adit), minus the south wood",
+    "by_kind": [
+     "birch",
+     "oak",
+     "tiny-oak"
+    ],
+    "weights": [
+     0.45,
+     0.2,
+     0.35
+    ],
+    "spacing": 0.85,
+    "tries": 4000,
+    "seed": 2
+   },
+   "source": "dressing.py:574-577"
+  },
+  {
+   "id": "woods-south",
+   "op": "trees.scatter",
+   "class": "A",
+   "params": {
+    "zone": "x < -98, z > 36, outside the Cutting (r 9)",
+    "by_kind": [
+     "oak",
+     "birch",
+     "tiny-oak"
+    ],
+    "weights": [
+     0.25,
+     0.4,
+     0.35
+    ],
+    "spacing": 0.85,
+    "tries": 4000,
+    "seed": 3
+   },
+   "source": "dressing.py:575-578"
+  },
+  {
+   "id": "cutting-ring",
+   "op": "trees.scatter",
+   "class": "A",
+   "params": {
+    "zone": "ring r 11 +/- 2 round (-110, 68)",
+    "by_kind": [
+     "tiny-oak",
+     "birch"
+    ],
+    "weights": [
+     0.6,
+     0.4
+    ],
+    "spacing": 0.8,
+    "tries": 4000,
+    "seed": 4
+   },
+   "source": "dressing.py:580-581"
+  },
+  {
+   "id": "knoll-oak",
+   "op": "trees.plant",
+   "class": "A",
+   "params": {
+    "at": [
+     -22,
+     74
+    ],
+    "kind": "big-oak",
+    "variant": 1,
+    "turn": 1
+   },
+   "source": "dressing.py:583-584"
+  },
+  {
+   "id": "trees-by-hand",
+   "op": "trees.plant",
+   "class": "A",
+   "params": {
+    "list": [
+     {
+      "at": [
+       -22,
+       -24
+      ],
+      "kind": "tiny-oak",
+      "variant": 2,
+      "turn": 2
+     },
+     {
+      "at": [
+       -36,
+       -84
+      ],
+      "kind": "oak",
+      "variant": 6,
+      "turn": 2
+     },
+     {
+      "at": [
+       -70,
+       4
+      ],
+      "kind": "birch",
+      "variant": 3,
+      "turn": 3
+     },
+     {
+      "at": [
+       -54,
+       2
+      ],
+      "kind": "tiny-oak",
+      "variant": 5,
+      "turn": 1
+     },
+     {
+      "at": [
+       -28,
+       20
+      ],
+      "kind": "birch",
+      "variant": 1,
+      "turn": 1
+     },
+     {
+      "at": [
+       -20,
+       24
+      ],
+      "kind": "birch",
+      "variant": 4,
+      "turn": 0
+     },
+     {
+      "at": [
+       -44,
+       18
+      ],
+      "kind": "birch",
+      "variant": 7,
+      "turn": 3
+     },
+     {
+      "at": [
+       -91,
+       47
+      ],
+      "kind": "tiny-oak",
+      "variant": 0,
+      "turn": 0
+     },
+     {
+      "at": [
+       -68,
+       78
+      ],
+      "kind": "oak",
+      "variant": 8,
+      "turn": 0
+     },
+     {
+      "at": [
+       -90,
+       80
+      ],
+      "kind": "tiny-oak",
+      "variant": 3,
+      "turn": 3
+     },
+     {
+      "at": [
+       -70,
+       -24
+      ],
+      "kind": "tiny-oak",
+      "variant": 6,
+      "turn": 2
+     },
+     {
+      "at": [
+       -80,
+       -36
+      ],
+      "kind": "oak",
+      "variant": 7,
+      "turn": 3
+     },
+     {
+      "at": [
+       -82,
+       30
+      ],
+      "kind": "birch",
+      "variant": 2,
+      "turn": 2
+     },
+     {
+      "at": [
+       -62,
+       -84
+      ],
+      "kind": "birch",
+      "variant": 5,
+      "turn": 1
+     }
+    ],
+    "refuse_if": "within monument reach or on blocked ground"
+   },
+   "source": "dressing.py:587-598",
+   "note": "14 listed; a placement is refused when the ground is blocked, so fewer land."
+  },
+  {
+   "id": "boulders",
+   "op": "prop.boulder",
+   "class": "A",
+   "params": {
+    "sites": [
+     {
+      "at": [
+       -99,
+       -30
+      ],
+      "r": 2
+     },
+     {
+      "at": [
+       -104,
+       -46
+      ],
+      "r": 1
+     },
+     {
+      "at": [
+       -95,
+       -76
+      ],
+      "r": 2
+     },
+     {
+      "at": [
+       -110,
+       30
+      ],
+      "r": 2
+     },
+     {
+      "at": [
+       -103,
+       46
+      ],
+      "r": 1
+     },
+     {
+      "at": [
+       -112,
+       84
+      ],
+      "r": 2
+     },
+     {
+      "at": [
+       -80,
+       -84
+      ],
+      "r": 1
+     },
+     {
+      "at": [
+       -117,
+       -8
+      ],
+      "r": 1
+     },
+     {
+      "at": [
+       -89,
+       -60
+      ],
+      "r": 1
+     },
+     {
+      "at": [
+       -60,
+       -86
+      ],
+      "r": 1
+     }
+    ],
+    "mix": [
+     [
+      "STONE:0",
+      0.45
+     ],
+     [
+      "STONE:5",
+      0.35
+     ],
+     [
+      "COBBLE:0",
+      0.2
+     ]
+    ],
+    "sunk": 1,
+    "seed": 31,
+    "refuse": "water, routes within 2, monuments within 8"
+   },
+   "source": "dressing.py:417-440"
+  },
+  {
+   "id": "fallen-logs",
+   "op": "prop.fallen-log",
+   "new": true,
+   "class": "B",
+   "params": {
+    "sites": [
+     {
+      "at": [
+       -90,
+       -70
+      ],
+      "axis": "x",
+      "len": 6
+     },
+     {
+      "at": [
+       -112,
+       -40
+      ],
+      "axis": "z",
+      "len": 5
+     },
+     {
+      "at": [
+       -106,
+       52
+      ],
+      "axis": "x",
+      "len": 5
+     },
+     {
+      "at": [
+       -116,
+       10
+      ],
+      "axis": "z",
+      "len": 4
+     }
+    ],
+    "stump_beside": true
+   },
+   "source": "dressing.py:443-460",
+   "note": "Runs, and writes no block in the committed build: all four sites fail the ground-slope or cover test."
+  },
+  {
+   "id": "hedgerow",
+   "op": "paint.hedge",
+   "new": true,
+   "class": "A",
+   "params": {
+    "along": "Farm Track",
+    "offset": [
+     2,
+     2
+    ],
+    "block": "LEAVES:4",
+    "gaps_every": 13,
+    "second_layer_every": 3
+   },
+   "source": "dressing.py:463-478"
+  },
+  {
+   "id": "rift-face",
+   "op": "dress.rift-face",
+   "new": true,
+   "class": "A",
+   "params": {
+    "vines": {
+     "p": 0.35,
+     "length": [
+      3,
+      11
+     ],
+     "block": "VINE:2"
+    },
+    "ledges": {
+     "p": 0.04,
+     "depth": [
+      5,
+      13
+     ],
+     "len": 3,
+     "block": "STONE:5",
+     "grass_p": 0.5
+    },
+    "seed": 41
+   },
+   "source": "dressing.py:481-503",
+   "gap": "Vines and grass ledges on the cliff the lip makes; forms.root_vines does the underside."
+  },
+  {
+   "id": "shop-signs",
+   "op": "prop.sign",
+   "new": true,
+   "class": "B",
+   "params": {
+    "for": "each house of kind bakery, shop, hall, gaol, smithy, engine, mill",
+    "text": {
+     "bakery": [
+      "Baker",
+      "",
+      "fresh bread",
+      ""
+     ],
+     "shop": [
+      "Chandler",
+      "",
+      "rope & candles",
+      ""
+     ],
+     "hall": [
+      "Town Hall"
+     ],
+     "gaol": [
+      "The Gaol"
+     ],
+     "smithy": [
+      "Smithy"
+     ],
+     "engine": [
+      "Ironhollow",
+      "Mine Co."
+     ],
+     "mill": [
+      "The Mill"
+     ]
+    },
+    "at": "beside the door, on the outside face, 2 above the floor"
+   },
+   "source": "dressing.py:506-524",
+   "note": "7 signs per half; the inn's sign is the one in buildings."
+  },
+  {
+   "id": "ground-cover",
+   "op": "flora.cover",
+   "class": "A",
+   "params": {
+    "tall_grass": {
+     "p_open": 0.07,
+     "p_wood": 0.3,
+     "density_noise": {
+      "cell": 9,
+      "octaves": 2,
+      "seed": 81
+     },
+     "density_factor": "0.6 + noise, noise in about [-1, 1]"
+    },
+    "ferns_in_wood_p": 0.45,
+    "double_plant_p": 0.06,
+    "flowers": {
+     "drift_noise": {
+      "cell": 14,
+      "octaves": 2,
+      "seed": 82,
+      "gt": 0.6
+     },
+     "p": 0.18,
+     "kinds_noise": {
+      "cell": 30,
+      "octaves": 1,
+      "seed": 83
+     },
+     "kinds": [
+      "DANDELION",
+      "BLUET",
+      "OXEYE",
+      "POPPY"
+     ]
+    },
+    "skip": "monument within 2"
+   },
+   "source": "dressing.py:109-138"
+  }
+ ],
+ "stamps": [
+  {
+   "id": "mirror",
+   "op": "stamp.mirror",
+   "class": "A",
+   "params": {
+    "axis": "x",
+    "about": -0.5,
+    "map": "x' = -1 - x",
+    "from": "x < 0",
+    "to": "x >= 0",
+    "turn_table": [
+     "stairs",
+     "doors",
+     "chest/furnace/ladder/dispenser facing",
+     "torches",
+     "signs & banners",
+     "pumpkins",
+     "beds",
+     "vines",
+     "trapdoors",
+     "fence gates",
+     "rails"
+    ],
+    "also": [
+     "biomes",
+     "tile entities (chests and signs) at x' = -1 - x"
+    ]
+   },
+   "source": "mirror.py:12-67; gen.py:40",
+   "note": "503,633 of the world's 1,007,266 non-air blocks (50.00%) are this copy."
+  },
+  {
+   "id": "blue-wool",
+   "op": "stamp.recolour",
+   "class": "A",
+   "new": true,
+   "params": {
+    "box": [
+     [
+      84,
+      50,
+      -16
+     ],
+     [
+      110,
+      89,
+      2
+     ]
+    ],
+    "from": "WOOL:14",
+    "to": "WOOL:11"
+   },
+   "source": "gen.py:41-46",
+   "note": "8 blocks"
+  },
+  {
+   "id": "writer",
+   "op": "export.world",
+   "class": "A",
+   "params": {
+    "volume": "RWV1",
+    "writer": "write_world.cs",
+    "level": {
+     "name": "Riftwater",
+     "spawn": [
+      0,
+      90,
+      0
+     ]
+    },
+    "sections": "fully sky-lit",
+    "entities": "none"
+   },
+   "source": "gen.py:47-49; write_world.cs"
+  }
+ ]
+}

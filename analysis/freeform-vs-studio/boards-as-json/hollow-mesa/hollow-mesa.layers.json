@@ -1,0 +1,2033 @@
+{
+  "document": "layers",
+  "version": "draft-0",
+  "board": {
+    "name": "Hollow Mesa",
+    "slug": "hollow-mesa",
+    "gamemode": "dtc",
+    "source": "freeform/opus55-freeform-hollow-mesa/scripts",
+    "volume": {"x0": -130, "y0": 0, "z0": -100, "sx": 260, "sy": 128, "sz": 200},
+    "authored_half": "x < 0",
+    "symmetry": "stamps/half-turn",
+    "default_biome": 37,
+    "classes": {
+      "A": "a layer op with parameters",
+      "B": "a library template plus a placement",
+      "C": "made: the script computes the blocks"
+    },
+    "flags": {
+      "new": "no op of that name exists in pgmvox's catalog or the studio",
+      "param_extension": "an existing op that needs the listed parameter",
+      "singleton": "a template this board uses once"
+    }
+  },
+  "library": {
+    "ops": {
+      "landform.scarp": "pgmvox",
+      "landform.canyon": "pgmvox",
+      "landform.butte": "pgmvox",
+      "landform.spire": "pgmvox",
+      "landform.watercourse": "pgmvox",
+      "landform.lake": "pgmvox",
+      "terrain.underside": "pgmvox",
+      "terrain.beds": "pgmvox",
+      "terrain.lay": "pgmvox",
+      "under.chamber": "pgmvox",
+      "under.gallery": "pgmvox",
+      "under.shaft": "pgmvox",
+      "under.tunnel": "pgmvox",
+      "route.pave": "pgmvox",
+      "route.steps": "pgmvox",
+      "build.ladder": "pgmvox",
+      "trees.scatter": "pgmvox",
+      "trees.plant": "pgmvox",
+      "relief.bench": "studio",
+      "boulder": "studio",
+      "chest": "studio",
+      "sign": "studio",
+      "flora": "studio",
+      "core": "studio",
+      "spawn": "studio",
+      "protect": "studio",
+      "team": "studio",
+      "kit": "studio",
+      "meta": "studio",
+      "symmetry.half_turn": "studio",
+      "paint.biome": "studio",
+      "export": "studio",
+      "prop": "studio",
+      "boulder.scatter": "studio",
+      "landform.profile": "new",
+      "landform.spire_field": "new",
+      "mask.island": "new",
+      "fluid.fall": "new",
+      "form.arch": "new",
+      "under.bore": "new",
+      "build.walkway": "new",
+      "route.rails": "new",
+      "stamp.team_dye": "new",
+      "paint.zone": "pgmvox",
+      "under.portal": "pgmvox",
+      "place": "template",
+      "rule": "template",
+      "made": "made"
+    },
+    "templates": {
+      "false_front": {
+        "params": ["box", "front", "storeys", "kind", "walls", "sign", "site"],
+        "fixed": "spruce posts, laid logs every 4, gable roof back from the street, square front 1/2 depth + 3 high, porch 2 deep with a slab roof, furnishing by kind",
+        "uses": 12
+      },
+      "adobe": {
+        "params": ["box", "door", "upper", "storeys", "kind", "variant(bell_gable, pews)"],
+        "fixed": "smooth sandstone walls on a course, flat roof behind a parapet with gaps, vigas, shuttered panes, roof ladder, bed and torch",
+        "uses": 11
+      },
+      "spring_plaza": {
+        "params": ["at", "r", "paving", "pattern", "kerb", "pump", "benches"],
+        "uses": 1,
+        "singleton": true
+      },
+      "water_tower": {
+        "params": ["at", "leg_height", "tank_r", "tank_height", "ladder"],
+        "uses": 1,
+        "singleton": true
+      },
+      "trestle": {
+        "params": ["along", "deck_y", "deck_width", "bent_every", "bracing"],
+        "uses": 1,
+        "singleton": true
+      },
+      "headframe": {
+        "params": ["at", "ground_y", "height", "base_half", "taper_every", "wheel"],
+        "uses": 1,
+        "singleton": true
+      },
+      "walled_compound": {
+        "params": ["box", "floor_y", "wall", "gate", "wall_walk", "tower", "flag", "wagon"],
+        "uses": 1,
+        "singleton": true
+      },
+      "fence_rect": {
+        "params": ["box", "block", "gate"],
+        "uses": 1
+      },
+      "windmill": {
+        "params": ["at", "height"],
+        "uses": 2
+      },
+      "stock_tank": {
+        "params": ["at", "r"],
+        "uses": 2
+      },
+      "fenced_plot": {
+        "params": ["box", "fence", "gate", "crosses"],
+        "uses": 1,
+        "singleton": true
+      },
+      "hitching_rail": {
+        "params": ["for", "dx", "length"],
+        "uses": 1
+      },
+      "wagon": {
+        "params": ["at", "along", "covered"],
+        "uses": 2
+      }
+    },
+    "data": {
+      "trees": "scripts/trees.json: 94 hand-built olive and acacia trees by rockymine, cut by cut_trees.py",
+      "block_state_remap": "scripts/rotate.py:13-37"
+    }
+  },
+  "places": [
+    {"id": "fort", "name": "Fort Ochre", "at": [-108, 4], "r": 9},
+    {"id": "butte", "name": "High Butte", "at": [-124, 0], "r": 8},
+    {"id": "grove", "name": "Olive Grove", "at": [-88, -58], "r": 16},
+    {"id": "needles", "name": "The Needles", "poly": [[-80, -98], [-52, -98], [-54, -64], [-72, -60]]},
+    {"id": "headframe", "name": "Throat Headframe", "at": [-78, -30], "r": 4},
+    {"id": "throat", "name": "The Throat", "at": [-70, -24], "r": 12},
+    {"id": "adit", "name": "Bench Adit", "at": [-49, -34], "r": 3},
+    {"id": "chimney", "name": "The Chimney", "at": [-32, -14], "r": 3},
+    {"id": "bench", "name": "The Bench", "line": [[-39, -90], [-44, -34], [-36, 0], [-29, 26], [-32, 64], [-34, 82]]},
+    {"id": "mule", "name": "Mule Trail", "line": [[-30, -52], [-35, -58], [-40, -66], [-48, -74], [-54, -78]]},
+    {"id": "arch", "name": "Sky Arch", "at": [-22, -1], "r": 4},
+    {"id": "main", "name": "Main Street", "line": [[-16, -94], [-17, -50], [-15, -14], [-7, -5]]},
+    {"id": "spring", "name": "Gilt Spring", "at": [0, 0], "r": 6},
+    {"id": "adobe", "name": "Adobe Quarter", "poly": [[-26, 8], [-2, 8], [-2, 40], [-22, 40]]},
+    {"id": "tipple", "name": "The Tipple", "at": [-21, 26], "r": 4},
+    {"id": "wash", "name": "The Wash", "line": [[-22, 51], [-40, 50], [-60, 53], [-80, 50], [-98, 52]]},
+    {"id": "trestle", "name": "Wash Trestle", "at": [-32, 51], "r": 4},
+    {"id": "drift", "name": "South Drift", "at": [-40, 80], "r": 3},
+    {"id": "rancho", "name": "Rancho", "at": [-104, 74], "r": 10},
+    {"id": "table", "name": "Table Rock", "at": [-80, 86], "r": 8},
+    {"id": "acacias", "name": "Acacia Flat", "at": [-66, 78], "r": 12},
+    {
+      "id": "canyon-centre",
+      "name": "Canyon centreline",
+      "line": [
+        [-0.7, -100],
+        [-2.58, -90],
+        [-3.26, -80],
+        [-3.48, -70],
+        [-4.13, -60],
+        [-5.56, -50],
+        [-7.3, -40],
+        [-8.25, -30],
+        [-7.41, -20],
+        [-4.51, -10],
+        [-0.28, 0],
+        [3.88, 10],
+        [6.59, 20],
+        [7.22, 30],
+        [6.14, 40],
+        [4.39, 50],
+        [3.03, 60],
+        [2.45, 70],
+        [2.23, 80],
+        [1.46, 90],
+        [-0.3, 99]
+      ],
+      "interp": "catmull_rom",
+      "formula": "x(z) = -0.5 + 7.0 sin(a) + 2.5 sin(2.3 a), a = (z + 0.5) 2 pi / 180",
+      "note": "plan.py:canyon_x. Odd about the centre, so the half-turn maps it onto itself and passes through the spring. Sampled every 10 blocks; Catmull-Rom through the samples is within 0.1 block of the formula (measured)."
+    },
+    {
+      "id": "routes",
+      "name": "Eight routes",
+      "routes": [
+        {"name": "Fort Road", "kind": "road", "pts": [[-99, 4], [-88, 0], [-84, -12], [-78, -26]]},
+        {"name": "Rim Path", "kind": "road", "pts": [[-88, 0], [-70, 2], [-54, -1], [-47, -1]]},
+        {"name": "Grove Track", "kind": "track", "pts": [[-86, -6], [-88, -24], [-88, -42]]},
+        {"name": "Needles Path", "kind": "track", "pts": [[-78, -36], [-70, -50], [-62, -64], [-56, -76]]},
+        {"name": "Ranch Road", "kind": "road", "pts": [[-99, 10], [-100, 30], [-102, 46], [-104, 62]]},
+        {"name": "Wash Track", "kind": "track", "pts": [[-102, 52], [-80, 51], [-60, 53], [-40, 50], [-24, 51]]},
+        {
+          "name": "Main Street",
+          "kind": "street",
+          "pts": [[-18, -96], [-19, -70], [-21, -40], [-18, -20], [-12, -8], [-7, -5]]
+        },
+        {
+          "name": "Lower Street",
+          "kind": "street",
+          "pts": [[-7, 5], [-9, 14], [-9, 30], [-12, 44], [-14, 60], [-15, 80], [-15, 97]]
+        }
+      ],
+      "note": "plan.py:ROUTES, paved by the buildings.pave layers below"
+    }
+  ],
+  "ground": [
+    {
+      "id": "canyon-section",
+      "op": "landform.profile",
+      "class": "A",
+      "source": "terrain.py:85-114",
+      "params": {
+        "along": "canyon-centre",
+        "side": "west",
+        "absolute": true,
+        "floor": {
+          "y": 41,
+          "half_width": 26,
+          "edge_noise": {"fbm": true, "cell": 9, "octaves": 3, "seed": 1, "gain": 0.5, "amp": 2.6},
+          "relief": {"fbm": true, "cell": 8, "octaves": 2, "seed": 4, "gain": 0.5, "amp": 0.5},
+          "talus": {
+            "rise": 3.0,
+            "reach": 5,
+            "noise": {"fbm": true, "cell": 5, "octaves": 2, "seed": 6, "gain": 0.5},
+            "mix": 0.4
+          }
+        },
+        "lower_cliff": {"width": 5, "ease": "smoothstep"},
+        "bench": {
+          "y": 57,
+          "width": 10,
+          "width_noise": {"fbm": true, "cell": 11, "octaves": 3, "seed": 2, "gain": 0.5, "amp": 2.0},
+          "relief": 0.4
+        },
+        "upper_cliff": {
+          "width": 5,
+          "ease": "smoothstep",
+          "rim_noise": {"fbm": true, "cell": 14, "octaves": 2, "seed": 3, "gain": 0.5, "amp": 1.5}
+        },
+        "plateau": {
+          "y": 74,
+          "roll": {"fbm": true, "cell": 40, "octaves": 2, "seed": 5, "gain": 0.5, "amp": 1.6},
+          "relief": 0.4,
+          "west_rise": {"amp": 2.5, "from_x": -80, "to_x": -118}
+        },
+        "jag": {"fbm": true, "cell": 3, "octaves": 2, "seed": 7, "gain": 0.5, "amp": 1.2},
+        "note": "the four levels are given as distances west of the centreline, each edge wandering by its own noise"
+      },
+      "new": true,
+      "writes": ["height"],
+      "note": "No pgmvox op takes a cross-section: landform.canyon only cuts, relative to the ground it follows (depth, width, floor, wall, ledges). On the red half this stage moves 598,159 of the ~718,000 height-blocks the heightfield stages move in all (measured, order-dependent)."
+    },
+    {
+      "id": "scarp-west",
+      "op": "landform.scarp",
+      "class": "A",
+      "source": "terrain.py:116-123",
+      "params": {
+        "line": {
+          "x_of_z": "-96 + 4 fbm",
+          "noise": {"fbm": true, "cell": 18, "octaves": 2, "seed": 9, "gain": 0.5, "amp": 4.0},
+          "z_range": [-100, 99]
+        },
+        "rise": 6,
+        "side": "west",
+        "face": 3.0,
+        "only_beyond": "rim",
+        "gaps": [
+          {"z": 0, "half_width": 4, "ramp": 24},
+          {"z": 34, "half_width": 4, "ramp": 24},
+          {"z": -40, "half_width": 4, "ramp": 24}
+        ]
+      },
+      "reads": ["canyon-section"],
+      "param_extension": ["gaps"],
+      "note": "Gullies where Fort Road, Ranch Road and the Grove Track go down. 42,078 height-blocks (red half)."
+    },
+    {
+      "id": "wash",
+      "op": "landform.canyon",
+      "class": "A",
+      "source": "terrain.py:29-36,125-133",
+      "params": {
+        "path": {"z_of_x": "51 + 4 sin(x / 10)", "x_range": [-104, -18]},
+        "half_width": {"from": 7.5, "to": 4.5, "between_x": [-26, -100]},
+        "wall_width": 2.5,
+        "floor": {"from_y": 41, "to_y": 74, "from_x": -24, "to_x": -100, "profile": "linear", "relief": 0.4},
+        "edge_noise": {"fbm": true, "cell": 5, "octaves": 2, "seed": 8, "gain": 0.5, "amp": 0.8},
+        "cuts_only": true
+      },
+      "reads": ["scarp-west"],
+      "param_extension": ["floor ramp: floor_from, floor_to along the path"],
+      "note": "landform.canyon with a floor that climbs 33 blocks over 76 (a grade, not a depth under the ground). 16,612 height-blocks (red half)."
+    },
+    {
+      "id": "high-butte",
+      "op": "landform.butte",
+      "class": "A",
+      "source": "terrain.py:39-46,136",
+      "params": {
+        "centre": [-125, 0],
+        "rx": 9,
+        "rz": 24,
+        "top": 94,
+        "outline_noise": {"fbm": true, "cell": 6, "octaves": 2, "seed": 40, "gain": 0.5, "amp": 0.12},
+        "lower_tier": {"ring": [1.0, 1.25], "top": 88},
+        "seed": 40
+      },
+      "param_extension": ["rx/rz (ellipse)", "lower tier ring"],
+      "note": "Elliptical, 18 over the plateau, one tier six lower round its foot."
+    },
+    {
+      "id": "table-rock",
+      "op": "landform.butte",
+      "class": "A",
+      "source": "terrain.py:39-46,137",
+      "params": {
+        "centre": [-80, 86],
+        "rx": 7,
+        "rz": 6,
+        "top": 86,
+        "outline_noise": {"fbm": true, "cell": 6, "octaves": 2, "seed": 41, "gain": 0.5, "amp": 0.12},
+        "lower_tier": {"ring": [1.0, 1.25], "top": 81},
+        "seed": 41
+      },
+      "param_extension": ["rx/rz (ellipse)", "lower tier ring"]
+    },
+    {
+      "id": "needles",
+      "op": "landform.spire_field",
+      "class": "A",
+      "source": "terrain.py:48-83,138-139",
+      "params": {
+        "zone": {"poly": [[-80, -98], [-52, -98], [-54, -64], [-72, -60]]},
+        "seed": 31,
+        "tries": 400,
+        "max": 26,
+        "r": [1.6, 3.4],
+        "height": [8, 22],
+        "needle_share": 0.7,
+        "spacing": "r_i + r_j + 2.5",
+        "keep_clear": {"pts": [[-56, -64], [-52, -76], [-50, -78]], "margin": "r + 3"},
+        "profiles": {"needle": "1 - (d/r)^1.3", "hoodoo": "1 - (d/r)^5"},
+        "base": "ground at the spire's centre"
+      },
+      "new": true,
+      "note": "The run accepts 13 of 400 tries; the 13 are positions the script computes, so the script may emit 13 landform.spire layers instead and need no new op (measured: 13 + the 7 below = 20 spires)."
+    },
+    {
+      "id": "spire-1",
+      "op": "landform.spire",
+      "class": "A",
+      "source": "terrain.py:78-82",
+      "params": {"centre": [-50, 22], "r": 2.5, "height": 11, "profile": "hoodoo"},
+      "param_extension": ["height above local ground; profile exponent (needle 1.3 / hoodoo 5)"]
+    },
+    {
+      "id": "spire-2",
+      "op": "landform.spire",
+      "class": "A",
+      "source": "terrain.py:78-82",
+      "params": {"centre": [-56, 40], "r": 2.0, "height": 9, "profile": "needle"}
+    },
+    {
+      "id": "spire-3",
+      "op": "landform.spire",
+      "class": "A",
+      "source": "terrain.py:78-82",
+      "params": {"centre": [-48, 66], "r": 2.8, "height": 14, "profile": "hoodoo"}
+    },
+    {
+      "id": "spire-4",
+      "op": "landform.spire",
+      "class": "A",
+      "source": "terrain.py:78-82",
+      "params": {"centre": [-118, -60], "r": 3.0, "height": 12, "profile": "hoodoo"}
+    },
+    {
+      "id": "spire-5",
+      "op": "landform.spire",
+      "class": "A",
+      "source": "terrain.py:78-82",
+      "params": {"centre": [-74, 30], "r": 1.8, "height": 8, "profile": "needle"}
+    },
+    {
+      "id": "spire-6",
+      "op": "landform.spire",
+      "class": "A",
+      "source": "terrain.py:78-82",
+      "params": {"centre": [-112, 46], "r": 2.4, "height": 10, "profile": "hoodoo"}
+    },
+    {
+      "id": "spire-7",
+      "op": "landform.spire",
+      "class": "A",
+      "source": "terrain.py:78-82",
+      "params": {"centre": [-90, 92], "r": 2.2, "height": 9, "profile": "needle"}
+    },
+    {
+      "id": "pad-fort",
+      "op": "relief.bench",
+      "class": "A",
+      "source": "terrain.py:141-146",
+      "params": {"centre": [-108, 4], "r": 14, "y": 75, "blend": 6},
+      "studio": "relief mark Bench with bevel"
+    },
+    {
+      "id": "pad-rancho",
+      "op": "relief.bench",
+      "class": "A",
+      "source": "terrain.py:141-146",
+      "params": {"centre": [-104, 74], "r": 12, "y": "median of the ground inside r", "blend": 6, "resolved_y": 83},
+      "studio": "relief mark Bench with bevel"
+    },
+    {
+      "id": "pad-headframe",
+      "op": "relief.bench",
+      "class": "A",
+      "source": "terrain.py:141-146",
+      "params": {"centre": [-78, -30], "r": 6, "y": "median of the ground inside r", "blend": 6, "resolved_y": 73},
+      "studio": "relief mark Bench with bevel"
+    },
+    {
+      "id": "creek",
+      "op": "landform.watercourse",
+      "class": "A",
+      "source": "terrain.py:148-160",
+      "params": {
+        "path": "canyon-centre",
+        "half_width": 1.7,
+        "water_y": 40,
+        "bed_y": [38, 39],
+        "bank": 3.5,
+        "bank_to_y": 41,
+        "runs_to_edge": true,
+        "bed_mat": [{"id": 13, "data": 0, "w": 0.5}, {"id": 12, "data": 0, "w": 0.3}, {"id": 82, "data": 0, "w": 0.2}]
+      },
+      "note": "The creek leaves the island at both ends."
+    },
+    {
+      "id": "spring-pool",
+      "op": "landform.lake",
+      "class": "A",
+      "source": "terrain.py:148-156",
+      "params": {"centre": [-0.5, -0.5], "r": 5.2, "level": 41, "bed_y": 38}
+    },
+    {
+      "id": "island",
+      "op": "mask.island",
+      "class": "A",
+      "source": "terrain.py:162-172",
+      "params": {
+        "box": {"x": [-130, 129], "z": [-100, 99]},
+        "inset_west": {
+          "base": 2,
+          "amp": 3,
+          "clip": [0, 6],
+          "noise": {"fbm": true, "cell": 16, "octaves": 2, "seed": 60, "gain": 0.5}
+        },
+        "inset_north": {
+          "base": 2,
+          "amp": 4,
+          "clip": [0, 7],
+          "noise": {"fbm": true, "cell": 16, "octaves": 2, "seed": 61, "gain": 0.5}
+        },
+        "inset_south": {
+          "base": 2,
+          "amp": 4,
+          "clip": [0, 7],
+          "noise": {"fbm": true, "cell": 16, "octaves": 2, "seed": 62, "gain": 0.5}
+        },
+        "exempt": "creek",
+        "outside": "void"
+      },
+      "new": true,
+      "note": "The outline is the heightfield's land mask. A script that bakes the inset curves into a polygon could use landform.coast's outline instead."
+    },
+    {
+      "id": "underside",
+      "op": "terrain.underside",
+      "class": "A",
+      "source": "terrain.py:176-184",
+      "params": {
+        "mask": "island",
+        "thickness": {
+          "base": 4,
+          "per_block_from_edge": 1.1,
+          "noise": {"fbm": true, "cell": 9, "octaves": 3, "seed": 70, "gain": 0.5, "amp": 4}
+        },
+        "floor": {"min_y": 5, "noise": {"fbm": true, "cell": 16, "octaves": 2, "seed": 71, "gain": 0.5, "amp": 3}},
+        "distance": "euclidean to the void"
+      },
+      "reads": ["island"],
+      "note": "The mesa's underside; its thickness grows with the distance from the island's edge."
+    },
+    {
+      "id": "strata",
+      "op": "terrain.beds",
+      "class": "A",
+      "source": "terrain.py:187-214,223-262",
+      "params": {
+        "strata": {
+          "choices": [
+            {"mat": {"id": 172, "data": 0}, "w": 0.3, "max": 3},
+            {"mat": {"id": 159, "data": 1}, "w": 0.22, "max": 3},
+            {"mat": {"id": 159, "data": 4}, "w": 0.12, "max": 2},
+            {"mat": {"id": 159, "data": 0}, "w": 0.1, "max": 2},
+            {"mat": {"id": 159, "data": 8}, "w": 0.1, "max": 2},
+            {"mat": {"id": 159, "data": 12}, "w": 0.12, "max": 2},
+            {"mat": {"id": 159, "data": 14}, "w": 0.04, "exactly": 1}
+          ],
+          "length": 140,
+          "seed": 77,
+          "start_y": 28,
+          "below": {"id": 1, "data": 0},
+          "no_repeat": true
+        },
+        "offset": {"noise": {"fbm": true, "cell": 30, "octaves": 2, "seed": 80, "gain": 0.5, "amp": 1.6}, "round": true},
+        "flecks": [
+          {
+            "mat": {"id": 1, "data": 5},
+            "where": "stone, y % 5 < 2, noise > 0.2",
+            "noise": {"fbm": true, "cell": 6, "octaves": 2, "seed": 82, "gain": 0.5}
+          }
+        ],
+        "fills": "every column from the underside to the surface"
+      },
+      "reads": ["underside", "canyon-section"],
+      "note": "This one rule writes 1,742,764 of the board's 1,792,366 blocks (97.2%): every column, bed by bed. Red appears only ever one block thick."
+    },
+    {
+      "id": "paint",
+      "op": "terrain.lay",
+      "class": "A",
+      "source": "terrain.py:223-282",
+      "params": {
+        "show_bed_above_slope_deg": 40,
+        "flat_neighbourhood": {"neighbours_within": 1, "min_flat": 3, "slope_below": 60, "clamp_slope_to": 30},
+        "creek_bank": {
+          "within": 6,
+          "of": "canyon-centre",
+          "on_floor_only": true,
+          "under": {"id": 3, "data": 0},
+          "under_depth": 2,
+          "top": [{"id": 2, "data": 0, "w": 0.8}, {"id": 3, "data": 1, "w": 0.2}]
+        },
+        "patches": {
+          "noise": {"fbm": true, "cell": 5, "octaves": 2, "seed": 81, "gain": 0.5},
+          "bands": [
+            {
+              "quantile": [0, 0.16],
+              "name": "soil",
+              "under": {"id": 3, "data": 0},
+              "top": [{"id": 2, "data": 0, "w": 0.4}, {"id": 3, "data": 1, "w": 0.3}, {"id": 3, "data": 0, "w": 0.3}]
+            },
+            {"quantile": [0.16, 0.27], "name": "ring", "top": [{"id": 172, "data": 0, "w": 1.0}]},
+            {
+              "quantile": [0.27, 1.0],
+              "name": "orange",
+              "under": {"id": 159, "data": 1},
+              "top": [{"id": 12, "data": 1, "w": 0.5}, {"id": 159, "data": 1, "w": 0.35}, {"id": 179, "data": 0, "w": 0.15}]
+            }
+          ]
+        },
+        "water_bed": [{"id": 13, "data": 0, "w": 0.5}, {"id": 12, "data": 0, "w": 0.3}, {"id": 82, "data": 0, "w": 0.2}],
+        "seed": 2024
+      },
+      "reads": ["strata"],
+      "param_extension": ["patches: quantile bands of a noise field"],
+      "note": "terrain.lay covers the angle rule and soil by slope; the quantile-banded patches (soil, the ring of hardened clay round it, orange everywhere else) have no op. A new paint.patches, or a new band axis on lay."
+    },
+    {
+      "id": "falls",
+      "op": "fluid.fall",
+      "class": "A",
+      "source": "terrain.py:285-298",
+      "params": {"from": "creek", "ends": ["north", "south"], "material": {"id": 8, "data": 8}, "y": [8, 40], "where": "air"},
+      "new": true,
+      "note": "Water pours off the island's edge into the void."
+    },
+    {
+      "id": "arch",
+      "op": "form.arch",
+      "class": "A",
+      "source": "terrain.py:301-332",
+      "params": {
+        "z": [-3, 2],
+        "x_range": [-60, -1],
+        "span_centre_x": -0.5,
+        "rim_x": "canyon-centre rim at z=0",
+        "deck_y": "74 + 2 - 2 t^2",
+        "underside_y": "deck - 4 - 18 t^2",
+        "t": "|x + 0.5| / 45.78",
+        "ragged_edge_rows": {"z": [-4, 3], "skip": 0.6, "deck_drop": 1, "underside_rise": 1},
+        "material": "strata (offset 0)",
+        "deck_surface": [{"id": 172, "data": 0, "w": 0.75}, {"id": 159, "data": 1, "w": 0.25}],
+        "keeps_ground_under_it": true,
+        "seed": 2024
+      },
+      "new": true,
+      "reads": ["strata"],
+      "note": "Rim to rim over the spring. Written as a storey of its own: the ground under it stays the ground for every later placement (the defect the audit found)."
+    },
+    {
+      "id": "biomes",
+      "op": "paint.biome",
+      "class": "A",
+      "source": "gen.py:17-24,40-41; terrain.py:335-339",
+      "params": {
+        "default": 37,
+        "zones": [
+          {"biome": 1, "where": "|x - centre| < 8 on the canyon floor"},
+          {"biome": 1, "where": "within r + 4 of", "places": ["grove", "acacias", "rancho"]}
+        ]
+      },
+      "note": "Mesa for the rock, Plains where something grows green."
+    }
+  ],
+  "volume": [
+    {
+      "id": "throat-chamber",
+      "op": "under.chamber",
+      "class": "A",
+      "source": "underground.py:48-52",
+      "params": {"centre": [-70, -24], "floor_y": 47, "rx": 12, "rz": 10, "height": 7.5, "centre_y": 50.5, "cover": 3}
+    },
+    {
+      "id": "throat-chamber-wing",
+      "op": "under.chamber",
+      "class": "A",
+      "source": "underground.py:48-52",
+      "params": {"centre": [-74, -20], "floor_y": 47, "rx": 7, "rz": 6, "height": 5.0, "centre_y": 49.5, "cover": 3}
+    },
+    {
+      "id": "throat-floor",
+      "op": "paint.zone",
+      "class": "A",
+      "source": "underground.py:53-58",
+      "params": {
+        "box": [[-83, -35], [-57, -13]],
+        "at": "floor_y - 1, under open air",
+        "mix": [{"id": 13, "data": 0, "w": 0.35}, {"id": 172, "data": 0, "w": 0.4}, {"id": 3, "data": 1, "w": 0.25}],
+        "seed": 4321
+      },
+      "reads": ["throat-chamber"]
+    },
+    {
+      "id": "throat-hole",
+      "op": "under.bore",
+      "class": "A",
+      "source": "underground.py:59-67",
+      "params": {"centre": [-65, -24], "r": 3.2, "r_noise": 0.25, "y": [0, 47], "fill": "air"},
+      "new": true,
+      "note": "A vertical cylinder from the cavern floor through the island's underside to the void. 'under.shaft' lines and ladders a shaft; this lines nothing."
+    },
+    {
+      "id": "chimney",
+      "op": "under.tunnel",
+      "class": "A",
+      "source": "underground.py:37-45,229-238",
+      "params": {
+        "pts": [
+          [-30, 41, -14],
+          [-36, 41, -13],
+          [-43, 42, -14],
+          [-50, 43, -15],
+          [-57, 45, -15],
+          [-63, 46, -16],
+          [-67, 47, -18]
+        ],
+        "radius": [1.9, 2.1, 2.3, 2.1, 2.2, 2.4, 2.6],
+        "section": {"h_over_r": 0.8, "centre_over_r": 0.44},
+        "open_to_surface_first": 3,
+        "step": 0.4,
+        "mouth_cleft": {"at": [-30, 41, -14], "height": 9, "dx": [0, -2], "keep": "0.85 - 0.06 * dy", "seed": 4321}
+      },
+      "param_extension": ["per-point radius", "mouth_cleft"],
+      "note": "Leaves no blocks (it only cuts air)."
+    },
+    {
+      "id": "adit",
+      "op": "under.gallery",
+      "class": "A",
+      "source": "underground.py:134-184,251-257",
+      "params": {
+        "pts": [[-48, 57, -34], [-52, 56, -34], [-56, 54, -34], [-59, 52, -33], [-61, 50, -33]],
+        "width": 1,
+        "timber": {"id": 162, "data": 1},
+        "sets_every": 4,
+        "torches_every": 8,
+        "rails": true,
+        "floor": [{"id": 13, "data": 0, "w": 0.4}, {"id": 172, "data": 0, "w": 0.6}],
+        "ore": [{"id": 14, "data": 0, "w": 0.5}, {"id": 15, "data": 0, "w": 0.5}],
+        "ore_every": 3,
+        "seed": 4321
+      }
+    },
+    {
+      "id": "adit-portal",
+      "op": "under.portal",
+      "class": "A",
+      "source": "underground.py:187-199",
+      "params": {"at": [-48, 57, -34], "facing": "x", "timber": {"id": 162, "data": 1}},
+      "param_extension": ["gallery.portal"]
+    },
+    {
+      "id": "adit-breakout",
+      "op": "under.chamber",
+      "class": "A",
+      "source": "underground.py:256",
+      "params": {"centre": [-61, -32], "floor_y": 50, "rx": 2.5, "rz": 2.5, "height": 2.0, "centre_y": 51.5}
+    },
+    {
+      "id": "workings",
+      "op": "under.gallery",
+      "class": "A",
+      "source": "underground.py:241-248",
+      "params": {
+        "pts": [[-80, 47, -20], [-86, 47, -14], [-90, 47, -8], [-92, 47, -2]],
+        "width": 1,
+        "timber": {"id": 162, "data": 1},
+        "rails": true,
+        "ore_every": 3,
+        "seed": 4321
+      }
+    },
+    {
+      "id": "workings-join",
+      "op": "under.chamber",
+      "class": "A",
+      "source": "underground.py:248",
+      "params": {"centre": [-79, -21], "floor_y": 47, "rx": 3.0, "rz": 3.0, "height": 2.2, "centre_y": 48.5}
+    },
+    {
+      "id": "catwalk",
+      "op": "build.walkway",
+      "class": "A",
+      "source": "underground.py:93-131",
+      "params": {
+        "path": [
+          [-77, -32],
+          [-76, -32],
+          [-75, -32],
+          [-74, -32],
+          [-73, -32],
+          [-72, -32],
+          [-71, -32],
+          [-70, -32],
+          [-69, -32],
+          [-68, -32],
+          [-67, -32],
+          [-66, -32],
+          [-65, -32],
+          [-64, -32],
+          [-63, -32],
+          [-62, -32],
+          [-61, -32],
+          [-61, -32],
+          [-61, -31],
+          [-61, -30],
+          [-61, -29],
+          [-61, -28],
+          [-61, -27],
+          [-61, -26],
+          [-61, -25],
+          [-61, -24],
+          [-61, -23],
+          [-61, -22],
+          [-61, -21],
+          [-61, -20]
+        ],
+        "y": 50,
+        "width": 2,
+        "deck": {"id": 5, "data": 5},
+        "rail": {"id": 191, "data": 0},
+        "rail_side": "open side",
+        "brackets": {"block": {"id": 162, "data": 1}, "every": 4, "down_to": 47},
+        "clear_above": 3,
+        "stair_down": {"from": [-78, 50, -31], "to_y": 47, "width": 2, "block": 134, "heading": "west"},
+        "lamps": {
+          "at": [[-73, -27], [-66, -19], [-77, -20], [-64, -30]],
+          "hang": "from the roof found by scanning up",
+          "block": [{"id": 191, "data": 0}, {"id": 89, "data": 0}]
+        }
+      },
+      "new": true,
+      "reads": ["throat-chamber"],
+      "note": "The deck is only laid over air; brackets only where air; lamps hang from whatever roof the cavern happens to have, so the op reads the carved volume."
+    },
+    {
+      "id": "shaft",
+      "op": "under.shaft",
+      "class": "A",
+      "source": "underground.py:202-226",
+      "params": {
+        "x": -78,
+        "z": -30,
+        "bottom": 47,
+        "top": "ground + 2",
+        "resolved_top": 75,
+        "interior": [3, 3],
+        "post": {"id": 162, "data": 1},
+        "wall": {"id": 5, "data": 5},
+        "ladder": {"side": "north", "data": 3},
+        "foot_opening": {"east_and_south": 3}
+      },
+      "note": "Cut after the catwalk, because the catwalk's stair crosses it."
+    },
+    {
+      "id": "core-well",
+      "op": "under.bore",
+      "class": "A",
+      "source": "underground.py:81-90",
+      "params": {
+        "x": [-66, -65],
+        "z": [-25, -24],
+        "y": [47, 73],
+        "fill": "air",
+        "lip": {"y": 73, "ring": [[-67, -26], [-64, -23]], "material": {"id": 159, "data": 12}}
+      },
+      "new": true,
+      "reads": ["throat-hole"],
+      "note": "A 2x2 well from the core's foot down into the Throat, ringed at the lip by brown clay. It lies inside the hole's radius, so lava falls clear to the void."
+    },
+    {
+      "id": "south-drift",
+      "op": "under.gallery",
+      "class": "A",
+      "source": "underground.py:260-271",
+      "params": {
+        "pts": [[-39, 57, 80], [-48, 57, 80], [-52, 57, 83]],
+        "width": 1,
+        "timber": {"id": 162, "data": 1},
+        "rails": true,
+        "ore_every": 3,
+        "seed": 4321
+      }
+    },
+    {
+      "id": "south-drift-portal",
+      "op": "under.portal",
+      "class": "A",
+      "source": "underground.py:266",
+      "params": {"at": [-40, 57, 80], "facing": "x"}
+    }
+  ],
+  "pieces": [
+    {
+      "id": "team-red",
+      "op": "team",
+      "class": "A",
+      "source": "map.xml:13",
+      "params": {"id": "red-team", "color": "red", "max": 16, "name": "Red"}
+    },
+    {
+      "id": "team-blue",
+      "op": "team",
+      "class": "A",
+      "source": "map.xml:14",
+      "params": {"id": "blue-team", "color": "blue", "max": 16, "name": "Blue"}
+    },
+    {
+      "id": "kit",
+      "op": "kit",
+      "class": "A",
+      "source": "map.xml:17-34",
+      "params": {
+        "id": "spawn-kit",
+        "items": "iron sword, bow (infinity), diamond pickaxe, iron axe, 64 wood, 32 team stained clay, golden apple, water bucket, 16 cooked beef, arrow; leather helmet/boots team-coloured, iron chestplate, chainmail leggings"
+      }
+    },
+    {
+      "id": "spawn-red",
+      "op": "spawn",
+      "class": "A",
+      "source": "map.xml:38,53,57,65",
+      "params": {
+        "team": "red-team",
+        "kit": "spawn-kit",
+        "point": [-101.5, 76, 6.5],
+        "yaw": 270,
+        "protect": {"rect": [[-113, -8], [-96, 17]], "enter": "only-red", "message": "You may not enter the enemy's spawn!"}
+      },
+      "reads": ["fort"],
+      "note": "The rect is the fort's walls (-113..-97 by -8..16) as a continuous box; both numbers are typed by hand in map.xml."
+    },
+    {
+      "id": "spawn-blue",
+      "op": "spawn",
+      "class": "A",
+      "source": "map.xml:39,54,58,66",
+      "params": {
+        "derive": "half_turn(spawn-red)",
+        "team": "blue-team",
+        "exact_point": [101.5, 76, -6.5],
+        "exact_rect": [[96, -17], [113, 8]],
+        "map_xml_has_rect": [[96, -16], [113, 9]]
+      },
+      "note": "MEASURED: map.xml's blue-spawn is z -16..9; the exact half-turn of red's -8..17 (and the blue fort's walls, built at z -17 and 7) is -17..8. A derived piece would not carry the one-block shift."
+    },
+    {
+      "id": "spawn-observer",
+      "op": "spawn",
+      "class": "A",
+      "source": "map.xml:37,55",
+      "params": {"default": true, "point": [0.5, 95, 0.5], "yaw": 90}
+    },
+    {
+      "id": "core-red",
+      "op": "core",
+      "class": "A",
+      "source": "underground.py:70-90; plan.py:45-46; map.xml:42,59",
+      "params": {
+        "team": "red-team",
+        "name": "The Throat",
+        "leak": 5,
+        "material": "obsidian",
+        "casing": [4, 4, 4],
+        "lava": [2, 2, 2],
+        "capped": true,
+        "at_min": [-67, 79, -26],
+        "float": 5,
+        "over_ground_y": 73,
+        "region": {"cuboid": [[-67, 79, -26], [-63, 83, -22]]}
+      },
+      "studio": "core objective (casing + lava + leak) with float 5",
+      "note": "Obsidian 79..82, lava inside, bottom 5 blocks over ground 73 (74..78 air). By the studio's rule a core leaks at y <= 79 - 5 - 1 = 73, which is the ground the well opens in: lava from the foot falls straight to the void."
+    },
+    {
+      "id": "core-blue",
+      "op": "core",
+      "class": "A",
+      "source": "map.xml:43,60",
+      "params": {"derive": "half_turn(core-red)", "team": "blue-team", "region": {"cuboid": [[63, 79, 22], [67, 83, 26]]}},
+      "note": "Equals the exact half-turn of red's region."
+    },
+    {
+      "id": "rule-no-void",
+      "op": "protect",
+      "class": "A",
+      "source": "map.xml:48-50,68",
+      "params": {
+        "block": "never",
+        "filter": "not(void)",
+        "region": "everywhere",
+        "message": "You may not build over the void, nor plug the Throat!"
+      },
+      "note": "This one rule is what keeps the hole open: the studio's equivalent would be a protection region over the whole board."
+    },
+    {
+      "id": "rule-spawn-noedit",
+      "op": "protect",
+      "class": "A",
+      "source": "map.xml:61-64,67",
+      "params": {"block": "never", "region": ["spawn-red", "spawn-blue"], "message": "You may not edit the spawn!"}
+    },
+    {
+      "id": "rules",
+      "op": "meta",
+      "class": "A",
+      "source": "map.xml:1-11,70",
+      "params": {
+        "gamemode": "dtc",
+        "proto": "1.5.0",
+        "maxbuildheight": 100,
+        "objective": "Leak the enemy's core: it floats over a well through their mesa, by the headframe over the Throat.",
+        "authors": ["Claude (freeform generator)"],
+        "contributors": [{"name": "rockymine", "contribution": "Built the acacia and olive trees (tree showcase)"}],
+        "version": "0.2.0"
+      }
+    }
+  ],
+  "buildings": [
+    {
+      "id": "plaza",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:370-396",
+      "params": {
+        "template": "spring_plaza",
+        "at": [-0.5, -0.5],
+        "r": 12.5,
+        "level_y": 41,
+        "paving": [{"id": 24, "data": 2}, {"id": 24, "data": 0}, {"id": 159, "data": 0}, {"id": 172, "data": 0}],
+        "pattern": "((x//2)*3 + (z//2)*5) % 4",
+        "kerb": {"r": [5.2, 6.3], "block": {"id": 44, "data": 1}, "gaps": "creek"},
+        "pump": {"at": [-9, -4]},
+        "trough": {"at": [-9, -3]},
+        "benches": {"x": -11, "z": [2, 3, 4], "block": 134}
+      },
+      "footprint": [-12, -11, -1, 10],
+      "note": "Two halves of one disc: the half-turn centre is the pool's centre."
+    },
+    {
+      "id": "mainst-hotel-90-wrow",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:102-217,811-827",
+      "params": {
+        "template": "false_front",
+        "box": [-26, -90, -18, -83],
+        "front": "e",
+        "storeys": 2,
+        "kind": "hotel",
+        "walls": {"id": 5, "data": 0},
+        "sign": ["Grand", "Hotel"],
+        "floor_y": 41,
+        "site": {"margin": 1, "ground": {"id": 159, "data": 1}}
+      }
+    },
+    {
+      "id": "mainst-store-81-wrow",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:102-217,811-827",
+      "params": {
+        "template": "false_front",
+        "box": [-26, -81, -18, -75],
+        "front": "e",
+        "storeys": 1,
+        "kind": "store",
+        "walls": {"id": 5, "data": 0},
+        "sign": ["General", "Store"],
+        "floor_y": 41,
+        "site": {"margin": 1, "ground": {"id": 159, "data": 1}}
+      }
+    },
+    {
+      "id": "mainst-house-72-wrow",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:102-217,811-827",
+      "params": {
+        "template": "false_front",
+        "box": [-26, -72, -18, -67],
+        "front": "e",
+        "storeys": 1,
+        "kind": "house",
+        "walls": {"id": 5, "data": 0},
+        "floor_y": 41,
+        "site": {"margin": 1, "ground": {"id": 159, "data": 1}}
+      }
+    },
+    {
+      "id": "mainst-saloon-64-wrow",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:102-217,811-827",
+      "params": {
+        "template": "false_front",
+        "box": [-27, -64, -19, -57],
+        "front": "e",
+        "storeys": 2,
+        "kind": "saloon",
+        "walls": {"id": 5, "data": 0},
+        "sign": ["Saloon"],
+        "floor_y": 41,
+        "site": {"margin": 1, "ground": {"id": 159, "data": 1}}
+      }
+    },
+    {
+      "id": "mainst-assay-54-wrow",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:102-217,811-827",
+      "params": {
+        "template": "false_front",
+        "box": [-28, -54, -20, -48],
+        "front": "e",
+        "storeys": 1,
+        "kind": "assay",
+        "walls": {"id": 5, "data": 0},
+        "sign": ["Assay", "Office"],
+        "floor_y": 41,
+        "site": {"margin": 1, "ground": {"id": 159, "data": 1}}
+      }
+    },
+    {
+      "id": "mainst-store-45-wrow",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:102-217,811-827",
+      "params": {
+        "template": "false_front",
+        "box": [-30, -45, -22, -39],
+        "front": "e",
+        "storeys": 1,
+        "kind": "store",
+        "walls": {"id": 5, "data": 0},
+        "sign": ["Feed &", "Seed"],
+        "floor_y": 41,
+        "site": {"margin": 1, "ground": {"id": 159, "data": 1}}
+      }
+    },
+    {
+      "id": "mainst-bank-36-wrow",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:102-217,811-827",
+      "params": {
+        "template": "false_front",
+        "box": [-31, -36, -23, -28],
+        "front": "e",
+        "storeys": 2,
+        "kind": "bank",
+        "walls": {"id": 5, "data": 0},
+        "sign": ["Bank of", "Gilt"],
+        "floor_y": 41,
+        "site": {"margin": 1, "ground": {"id": 159, "data": 1}}
+      }
+    },
+    {
+      "id": "mainst-house-86-erow",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:102-217,811-827",
+      "params": {
+        "template": "false_front",
+        "box": [-12, -86, -7, -80],
+        "front": "w",
+        "storeys": 1,
+        "kind": "house",
+        "walls": {"id": 5, "data": 0},
+        "floor_y": 41,
+        "site": {"margin": 1, "ground": {"id": 159, "data": 1}}
+      }
+    },
+    {
+      "id": "mainst-store-70-erow",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:102-217,811-827",
+      "params": {
+        "template": "false_front",
+        "box": [-13, -70, -7, -63],
+        "front": "w",
+        "storeys": 1,
+        "kind": "store",
+        "walls": {"id": 5, "data": 0},
+        "sign": ["Barber"],
+        "floor_y": 41,
+        "site": {"margin": 1, "ground": {"id": 159, "data": 1}}
+      }
+    },
+    {
+      "id": "mainst-hotel-58-erow",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:102-217,811-827",
+      "params": {
+        "template": "false_front",
+        "box": [-14, -58, -9, -52],
+        "front": "w",
+        "storeys": 2,
+        "kind": "hotel",
+        "walls": {"id": 5, "data": 0},
+        "sign": ["Rooms"],
+        "floor_y": 41,
+        "site": {"margin": 1, "ground": {"id": 159, "data": 1}}
+      }
+    },
+    {
+      "id": "mainst-store-44-erow",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:102-217,811-827",
+      "params": {
+        "template": "false_front",
+        "box": [-16, -44, -11, -38],
+        "front": "w",
+        "storeys": 1,
+        "kind": "store",
+        "walls": {"id": 5, "data": 0},
+        "sign": ["Sheriff"],
+        "floor_y": 41,
+        "site": {"margin": 1, "ground": {"id": 159, "data": 1}}
+      }
+    },
+    {
+      "id": "adobe-1",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:220-298,829-834",
+      "params": {"template": "adobe", "box": [-19, 12, -13, 18], "door": "e", "storeys": 1, "kind": "house"}
+    },
+    {
+      "id": "adobe-2",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:220-298,829-834",
+      "params": {"template": "adobe", "box": [-7, 18, -2, 24], "door": "w", "storeys": 1, "kind": "house"}
+    },
+    {
+      "id": "adobe-3",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:220-298,829-834",
+      "params": {"template": "adobe", "box": [-19, 33, -13, 39], "door": "e", "storeys": 1, "kind": "house"}
+    },
+    {
+      "id": "adobe-4",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:220-298,829-834",
+      "params": {
+        "template": "adobe",
+        "box": [-6, 30, -1, 37],
+        "door": "w",
+        "upper": [-4, 30, -1, 33],
+        "storeys": 2,
+        "kind": "house"
+      }
+    },
+    {
+      "id": "adobe-5",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:220-298,829-834",
+      "params": {"template": "adobe", "box": [-24, 60, -18, 67], "door": "e", "storeys": 1, "kind": "house"}
+    },
+    {
+      "id": "adobe-6",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:220-298,829-834",
+      "params": {"template": "adobe", "box": [-8, 64, -2, 70], "door": "w", "storeys": 1, "kind": "house"}
+    },
+    {
+      "id": "adobe-7",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:220-298,829-834",
+      "params": {
+        "template": "adobe",
+        "box": [-23, 74, -16, 81],
+        "door": "e",
+        "upper": [-23, 74, -19, 77],
+        "storeys": 2,
+        "kind": "house"
+      }
+    },
+    {
+      "id": "adobe-8",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:220-298,829-834",
+      "params": {"template": "adobe", "box": [-8, 80, -2, 86], "door": "w", "storeys": 1, "kind": "house"}
+    },
+    {
+      "id": "chapel",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:301-320,835",
+      "params": {
+        "template": "adobe",
+        "variant": "chapel",
+        "box": [-10, 42, -2, 49],
+        "door": "e",
+        "bell_gable": {"steps": [3, 3, 2, 2, 1, 1, 0], "base_y": 6, "bell_at": 9, "gold": true},
+        "pews": true,
+        "altar": true
+      },
+      "singleton": true
+    },
+    {
+      "id": "water-tower",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:323-367,836",
+      "params": {
+        "template": "water_tower",
+        "at": [-19, -14],
+        "leg_height": 11,
+        "tank_r": 4.3,
+        "tank_height": 6,
+        "legs": 3,
+        "walkway_r": 5.6,
+        "ladder": "west"
+      },
+      "singleton": true,
+      "note": "Standing on the canyon floor at 41; tower top 52."
+    },
+    {
+      "id": "tipple",
+      "op": "made",
+      "class": "C",
+      "source": "buildings.py:518-597,837",
+      "params": {
+        "id": "tipple",
+        "source": "buildings.py:tipple (518-597)",
+        "at": [-17, 41, 26],
+        "tower_box": [-20, 23, -15, 29],
+        "bbox": [[-23, 40, 23], [-2, 60, 29]],
+        "blocks": 264,
+        "blocks_in_world": 528,
+        "heading": "chute runs east",
+        "contents": "timber tower 41->57 on four corner logs, a switchback of spruce stairs inside with plank landings, a top floor joining the bench, a slab chute dropping 10 blocks east to a plank bin of gold ore, a doorway on the street side"
+      },
+      "note": "Moves and turns as a block volume; its stair rise, chute length and bin are no longer parameters; its bin and chute cannot be edited in a browser as anything but blocks."
+    },
+    {
+      "id": "mule-trail",
+      "op": "route.steps",
+      "class": "A",
+      "source": "buildings.py:599-627,838",
+      "params": {
+        "flights": [
+          {"from_z": -50, "from_y": 41, "to_y": 57, "x_of_z": "canyon_x(z) - 26 - 1.5", "dz": -1},
+          {
+            "from_z": "end of flight 1 - 4",
+            "from_y": 57,
+            "to_y": 74,
+            "x_of_z": "canyon_x(z) - 26 - 5 - 10 - 1.5",
+            "dz": -1
+          }
+        ],
+        "width": 2,
+        "tread": {"id": 179, "data": 0},
+        "stair": 180,
+        "rail": {"block": {"id": 191, "data": 0}, "side": "open"},
+        "clear_above": 4,
+        "back_fill": {"id": 159, "data": 1},
+        "writes_height": true
+      },
+      "param_extension": ["cut into a wall: clear 4 above, back-fill 6 below, write the ground height"],
+      "writes": ["surface"]
+    },
+    {
+      "id": "tram-rails",
+      "op": "route.rails",
+      "class": "A",
+      "source": "buildings.py:427-495",
+      "params": {
+        "along": "bench-line",
+        "from_z": -33,
+        "to_z": 80,
+        "y": 58,
+        "bench_x_of_z": "canyon_x(z) - 26 - 5 - 5",
+        "cells": 114,
+        "first": [-44, 58, -33],
+        "last": [-34, 58, 80],
+        "curves": "from each cell's neighbours",
+        "bed": {"id": 5, "data": 5}
+      },
+      "new": true,
+      "note": "114 rail cells; 4-connected with curve data worked out per cell. Across the Wash the bed is the trestle's deck."
+    },
+    {
+      "id": "trestle",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:498-515",
+      "params": {
+        "template": "trestle",
+        "along": "tram-rails",
+        "where": "wash or ground under bench - 2",
+        "deck_y": 57,
+        "deck_width": 3,
+        "rail": {"id": 191, "data": 0},
+        "bent_every": 4,
+        "legs": {"offsets": [-2, 2], "block": {"id": 162, "data": 1}, "down_to": "ground"},
+        "bracing": {"every": 3, "levels": 3, "block": {"id": 162, "data": 5}},
+        "near": [-32, 51]
+      },
+      "reads": ["tram-rails", "wash"],
+      "note": "Legs run to whatever the ground is under each bent."
+    },
+    {
+      "id": "headframe",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:644-671,840",
+      "params": {
+        "template": "headframe",
+        "at": [-78, -30],
+        "ground_y": 73,
+        "height": 14,
+        "base_half": 3,
+        "taper_every": 6,
+        "wheel": {"r": 2.6, "plane": "xy", "spokes": "fence", "hub": {"id": 162, "data": 1}},
+        "deck": {"half": 3, "from": 2, "block": {"id": 5, "data": 5}}
+      },
+      "singleton": true
+    },
+    {
+      "id": "fort",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:709-783,841",
+      "params": {
+        "template": "walled_compound",
+        "box": [-113, -8, -97, 16],
+        "floor_y": 75,
+        "wall": {
+          "height": 4,
+          "crenel": "(x+z) % 2 == 0 at +5",
+          "block": {"id": 24, "data": 2},
+          "course": {"id": 24, "data": 0}
+        },
+        "paving": [{"id": 24, "data": 2}, {"id": 24, "data": 0}, {"id": 159, "data": 0}, {"id": 172, "data": 0}],
+        "gate": {"side": "east", "z": [2, 6], "height": 3, "lintel": {"id": 17, "data": 9}, "posts": [1, 7]},
+        "wall_walk": {"y": 3, "block": {"id": 126, "data": 9}},
+        "tower": {"origin": [-102, -7], "size": 4, "height": 14, "floor_at": [9, 14], "rail_y": 10, "ladder": "inside"},
+        "flag": {
+          "pole_from": 15,
+          "pole_to": 21,
+          "banner": {"wool": 14, "rows": [19, 20, 21], "len": 3},
+          "team_coloured": true
+        },
+        "wagon": {"at": [-104, 13], "length": 4}
+      },
+      "singleton": true,
+      "note": "Fort Ochre, red's spawn. The flag is red wool; the half-turn copies it and gen.py recolours it blue."
+    },
+    {
+      "id": "fort-quarters",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:744",
+      "params": {
+        "template": "adobe",
+        "box": [-111, -6, -105, 14],
+        "door": "e",
+        "upper": [-111, -6, -107, 1],
+        "storeys": 2,
+        "kind": "quarters"
+      }
+    },
+    {
+      "id": "rancho-house",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:788",
+      "params": {"template": "adobe", "box": [-110, 70, -102, 77], "door": "e", "upper": [-110, 70, -106, 74], "kind": "house"}
+    },
+    {
+      "id": "rancho-barn",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:790",
+      "params": {
+        "template": "false_front",
+        "box": [-110, 82, -103, 89],
+        "front": "e",
+        "storeys": 1,
+        "kind": "barn",
+        "walls": {"id": 5, "data": 5}
+      }
+    },
+    {
+      "id": "rancho-corral",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:793-799",
+      "params": {
+        "template": "fence_rect",
+        "box": [-122, 66, -112, 78],
+        "block": {"id": 85, "data": 0},
+        "gate": {"side": "east", "centre_z": 72, "half": 1}
+      }
+    },
+    {
+      "id": "rancho-windmill",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:800",
+      "params": {"template": "windmill", "at": [-112, 62], "height": 11}
+    },
+    {
+      "id": "rancho-tank",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:801",
+      "params": {"template": "stock_tank", "at": [-112, 57], "r": 2.5}
+    },
+    {
+      "id": "grove-windmill",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:843",
+      "params": {"template": "windmill", "at": [-84, -62], "height": 12}
+    },
+    {
+      "id": "grove-tank",
+      "op": "place",
+      "class": "B",
+      "source": "buildings.py:844",
+      "params": {"template": "stock_tank", "at": [-82, -54], "r": 3.5}
+    },
+    {
+      "id": "ladder-high-butte-1",
+      "op": "build.ladder",
+      "class": "A",
+      "source": "buildings.py:630-641,847-854",
+      "params": {"x": -118, "z": 22, "y0": 83, "y1": 88, "on_wall": "west"},
+      "note": "Found by walking west to the first rock face; the script resolves the numbers."
+    },
+    {
+      "id": "ladder-high-butte-2",
+      "op": "build.ladder",
+      "class": "A",
+      "source": "buildings.py:847-854",
+      "params": {"x": -120, "z": 22, "y0": 89, "y1": 94, "on_wall": "west"}
+    },
+    {
+      "id": "ladder-table-1",
+      "op": "build.ladder",
+      "class": "A",
+      "source": "buildings.py:847-854",
+      "params": {"x": -71, "z": 86, "y0": 74, "y1": 81, "on_wall": "west"}
+    },
+    {
+      "id": "ladder-table-2",
+      "op": "build.ladder",
+      "class": "A",
+      "source": "buildings.py:847-854",
+      "params": {"x": -73, "z": 86, "y0": 82, "y1": 86, "on_wall": "west"}
+    },
+    {
+      "id": "pave-fort-road",
+      "op": "route.pave",
+      "class": "A",
+      "source": "buildings.py:399-424,856-858",
+      "params": {
+        "pts": [[-99, 4], [-88, 0], [-84, -12], [-78, -26]],
+        "width": 3,
+        "surface": [{"id": 3, "data": 1}, {"id": 3, "data": 0}, {"id": 13, "data": 0}],
+        "flatten": 2,
+        "smooth_window": 17,
+        "skip": "building footprints, water, columns with a tall plant above",
+        "seed": 909
+      },
+      "reads": ["all buildings above"],
+      "note": "Paved last: it steps round every footprint the buildings claimed, and levels the ground it lays."
+    },
+    {
+      "id": "pave-rim-path",
+      "op": "route.pave",
+      "class": "A",
+      "source": "buildings.py:399-424,856-858",
+      "params": {
+        "pts": [[-88, 0], [-70, 2], [-54, -1], [-47, -1]],
+        "width": 3,
+        "surface": [{"id": 3, "data": 1}, {"id": 3, "data": 0}, {"id": 13, "data": 0}],
+        "flatten": 2,
+        "smooth_window": 17,
+        "skip": "building footprints, water, columns with a tall plant above",
+        "seed": 909
+      },
+      "reads": ["all buildings above"],
+      "note": "Paved last: it steps round every footprint the buildings claimed, and levels the ground it lays."
+    },
+    {
+      "id": "pave-grove-track",
+      "op": "route.pave",
+      "class": "A",
+      "source": "buildings.py:399-424,856-858",
+      "params": {
+        "pts": [[-86, -6], [-88, -24], [-88, -42]],
+        "width": 2,
+        "surface": [{"id": 3, "data": 1}, {"id": 3, "data": 0}, {"id": 13, "data": 0}],
+        "flatten": 2,
+        "smooth_window": 17,
+        "skip": "building footprints, water, columns with a tall plant above",
+        "seed": 909
+      },
+      "reads": ["all buildings above"],
+      "note": "Paved last: it steps round every footprint the buildings claimed, and levels the ground it lays."
+    },
+    {
+      "id": "pave-needles-path",
+      "op": "route.pave",
+      "class": "A",
+      "source": "buildings.py:399-424,856-858",
+      "params": {
+        "pts": [[-78, -36], [-70, -50], [-62, -64], [-56, -76]],
+        "width": 2,
+        "surface": [{"id": 3, "data": 1}, {"id": 3, "data": 0}, {"id": 13, "data": 0}],
+        "flatten": 2,
+        "smooth_window": 17,
+        "skip": "building footprints, water, columns with a tall plant above",
+        "seed": 909
+      },
+      "reads": ["all buildings above"],
+      "note": "Paved last: it steps round every footprint the buildings claimed, and levels the ground it lays."
+    },
+    {
+      "id": "pave-ranch-road",
+      "op": "route.pave",
+      "class": "A",
+      "source": "buildings.py:399-424,856-858",
+      "params": {
+        "pts": [[-99, 10], [-100, 30], [-102, 46], [-104, 62]],
+        "width": 3,
+        "surface": [{"id": 3, "data": 1}, {"id": 3, "data": 0}, {"id": 13, "data": 0}],
+        "flatten": 2,
+        "smooth_window": 17,
+        "skip": "building footprints, water, columns with a tall plant above",
+        "seed": 909
+      },
+      "reads": ["all buildings above"],
+      "note": "Paved last: it steps round every footprint the buildings claimed, and levels the ground it lays."
+    },
+    {
+      "id": "pave-wash-track",
+      "op": "route.pave",
+      "class": "A",
+      "source": "buildings.py:399-424,856-858",
+      "params": {
+        "pts": [[-102, 52], [-80, 51], [-60, 53], [-40, 50], [-24, 51]],
+        "width": 2,
+        "surface": [{"id": 3, "data": 1}, {"id": 3, "data": 0}, {"id": 13, "data": 0}],
+        "flatten": 2,
+        "smooth_window": 17,
+        "skip": "building footprints, water, columns with a tall plant above",
+        "seed": 909
+      },
+      "reads": ["all buildings above"],
+      "note": "Paved last: it steps round every footprint the buildings claimed, and levels the ground it lays."
+    },
+    {
+      "id": "pave-main-street",
+      "op": "route.pave",
+      "class": "A",
+      "source": "buildings.py:399-424,856-858",
+      "params": {
+        "pts": [[-18, -96], [-19, -70], [-21, -40], [-18, -20], [-12, -8], [-7, -5]],
+        "width": 5,
+        "surface": [{"id": 13, "data": 0}, {"id": 3, "data": 1}, {"id": 172, "data": 0}],
+        "flatten": 2,
+        "smooth_window": 17,
+        "skip": "building footprints, water, columns with a tall plant above",
+        "seed": 909
+      },
+      "reads": ["all buildings above"],
+      "note": "Paved last: it steps round every footprint the buildings claimed, and levels the ground it lays."
+    },
+    {
+      "id": "pave-lower-street",
+      "op": "route.pave",
+      "class": "A",
+      "source": "buildings.py:399-424,856-858",
+      "params": {
+        "pts": [[-7, 5], [-9, 14], [-9, 30], [-12, 44], [-14, 60], [-15, 80], [-15, 97]],
+        "width": 5,
+        "surface": [{"id": 13, "data": 0}, {"id": 3, "data": 1}, {"id": 172, "data": 0}],
+        "flatten": 2,
+        "smooth_window": 17,
+        "skip": "building footprints, water, columns with a tall plant above",
+        "seed": 909
+      },
+      "reads": ["all buildings above"],
+      "note": "Paved last: it steps round every footprint the buildings claimed, and levels the ground it lays."
+    },
+    {
+      "id": "door-wall-rule",
+      "op": "rule",
+      "class": "B",
+      "source": "buildings.py:866-882",
+      "params": {
+        "rule": "a block of wall either side of every door, never a pane",
+        "applies_to": "false_front, adobe, quarters, chapel, barn"
+      },
+      "note": "30 blocks changed by a post-pass; a template with the rule built in needs no pass."
+    }
+  ],
+  "dressing": [
+    {
+      "id": "grove-ground",
+      "op": "paint.zone",
+      "class": "A",
+      "source": "dressing.py:104-116,246",
+      "params": {
+        "centre": [-88, -58],
+        "r": 18,
+        "edge_noise": {"fbm": true, "cell": 5, "octaves": 2, "seed": 101, "gain": 0.5, "amp": 2.5},
+        "over": "sand, orange clay, hardened clay, red sandstone, dirt",
+        "to": [{"id": 2, "data": 0, "w": 0.72}, {"id": 3, "data": 1, "w": 0.28}],
+        "slope_below": 40,
+        "seed": 1717
+      }
+    },
+    {
+      "id": "acacia-ground",
+      "op": "paint.zone",
+      "class": "A",
+      "source": "dressing.py:247",
+      "params": {
+        "centre": [-66, 78],
+        "r": 14,
+        "edge_noise": {"fbm": true, "cell": 5, "octaves": 2, "seed": 102, "gain": 0.5, "amp": 2.5},
+        "to": [{"id": 2, "data": 0, "w": 0.72}, {"id": 3, "data": 1, "w": 0.28}],
+        "slope_below": 40
+      }
+    },
+    {
+      "id": "rancho-ground",
+      "op": "paint.zone",
+      "class": "A",
+      "source": "dressing.py:248",
+      "params": {
+        "centre": [-90, 86],
+        "r": 9,
+        "edge_noise": {"fbm": true, "cell": 5, "octaves": 2, "seed": 103, "gain": 0.5, "amp": 2.5},
+        "to": [{"id": 2, "data": 0, "w": 0.72}, {"id": 3, "data": 1, "w": 0.28}],
+        "slope_below": 40
+      }
+    },
+    {
+      "id": "grove",
+      "op": "trees.scatter",
+      "class": "A",
+      "source": "dressing.py:86-101,249-250",
+      "params": {
+        "zone": {"disc": [-88, -58, 16]},
+        "by_kind": ["olive", "small-olive", "acacia"],
+        "weights": [0.55, 0.3, 0.15],
+        "spacing": 0.8,
+        "tries": 3000,
+        "seed": 1,
+        "turn": "random 0..3",
+        "avoid": "built, paths + margin (5 street, 3.5 road, 3 track), 4 blocks from a brink, water"
+      },
+      "reads": ["all buildings", "all routes"],
+      "tree_set": "trees.json: 94-tree showcase set by rockymine cut by cut_trees.py; kinds olive, small-olive, acacia"
+    },
+    {
+      "id": "acacia-flat",
+      "op": "trees.scatter",
+      "class": "A",
+      "source": "dressing.py:251-252",
+      "params": {
+        "zone": {"disc": [-66, 78, 12]},
+        "by_kind": ["acacia", "olive"],
+        "weights": [0.75, 0.25],
+        "spacing": 0.8,
+        "tries": 3000,
+        "seed": 2
+      },
+      "reads": ["all buildings", "all routes"]
+    },
+    {
+      "id": "orchard-1",
+      "op": "trees.plant",
+      "class": "A",
+      "source": "dressing.py:119-126,253",
+      "params": {"at": [-92, 92], "kind": "small-olive", "variant": 1, "turn": 1},
+      "note": "The orchard is a 2 x 4 grid at step 6 from (-98, 92). The script's blocked mask stopped five of the eight before plant() was asked; plant() refused one more. Two trees stand."
+    },
+    {
+      "id": "orchard-2",
+      "op": "trees.plant",
+      "class": "A",
+      "source": "dressing.py:119-126,253",
+      "params": {"at": [-86, 92], "kind": "small-olive", "variant": 2, "turn": 2}
+    },
+    {
+      "id": "creek-trees",
+      "op": "trees.scatter",
+      "class": "A",
+      "source": "dressing.py:254-256",
+      "params": {
+        "zone": {"band": {"along": "canyon-centre", "from": 3, "to": 8, "on_floor": true}},
+        "by_kind": ["acacia", "olive"],
+        "weights": [0.6, 0.4],
+        "spacing": 0.9,
+        "tries": 1500,
+        "seed": 3
+      },
+      "reads": ["all buildings", "all routes"]
+    },
+    {
+      "id": "lone-tree-92-12",
+      "op": "trees.plant",
+      "class": "A",
+      "source": "dressing.py:259-264",
+      "params": {"at": [-92, 12], "kind": "olive", "variant": 3, "turn": 3}
+    },
+    {
+      "id": "lone-tree-56-8",
+      "op": "trees.plant",
+      "class": "A",
+      "source": "dressing.py:259-264",
+      "params": {"at": [-56, 8], "kind": "acacia", "variant": 2, "turn": 2}
+    },
+    {
+      "id": "lone-tree-46-60",
+      "op": "trees.plant",
+      "class": "A",
+      "source": "dressing.py:259-264",
+      "params": {"at": [-46, -60], "kind": "acacia", "variant": 5, "turn": 1}
+    },
+    {
+      "id": "lone-tree-110-40",
+      "op": "trees.plant",
+      "class": "A",
+      "source": "dressing.py:259-264",
+      "params": {"at": [-110, -40], "kind": "acacia", "variant": 1, "turn": 1}
+    },
+    {
+      "id": "lone-tree-120-40",
+      "op": "trees.plant",
+      "class": "A",
+      "source": "dressing.py:259-264",
+      "params": {"at": [-120, 40], "kind": "olive", "variant": 7, "turn": 3}
+    },
+    {
+      "id": "lone-tree-70-30",
+      "op": "trees.plant",
+      "class": "A",
+      "source": "dressing.py:259-264",
+      "params": {"at": [-70, 30], "kind": "acacia", "variant": 4, "turn": 0}
+    },
+    {
+      "id": "lone-tree-100-80",
+      "op": "trees.plant",
+      "class": "A",
+      "source": "dressing.py:259-264",
+      "params": {"at": [-100, -80], "kind": "olive", "variant": 2, "turn": 2}
+    },
+    {
+      "id": "fallen-rocks",
+      "op": "boulder.scatter",
+      "class": "A",
+      "source": "dressing.py:129-141,266-271",
+      "params": {
+        "zone": {"band": {"above_floor_edge": [-4, 0]}},
+        "count": 14,
+        "r": [1, 2],
+        "seed": 55,
+        "mix": [{"id": 179, "data": 0, "w": 0.5}, {"id": 172, "data": 0, "w": 0.3}, {"id": 159, "data": 12, "w": 0.2}]
+      },
+      "studio": "boulder prop",
+      "note": "14 positions the script computes from a shuffled list of talus cells; it may emit 14 boulder props."
+    },
+    {
+      "id": "rock-118-60",
+      "op": "boulder",
+      "class": "A",
+      "source": "dressing.py:272-274",
+      "params": {
+        "at": [-118, 60],
+        "r": 1,
+        "mix": [{"id": 179, "data": 0, "w": 0.5}, {"id": 172, "data": 0, "w": 0.3}, {"id": 159, "data": 12, "w": 0.2}]
+      },
+      "studio": "boulder prop",
+      "note": "Two of the script's six hand-placed rocks stand; the other four were stopped by its blocked mask."
+    },
+    {
+      "id": "rock-72-8",
+      "op": "boulder",
+      "class": "A",
+      "source": "dressing.py:272-274",
+      "params": {
+        "at": [-72, -8],
+        "r": 1,
+        "mix": [{"id": 179, "data": 0, "w": 0.5}, {"id": 172, "data": 0, "w": 0.3}, {"id": 159, "data": 12, "w": 0.2}]
+      },
+      "studio": "boulder prop"
+    },
+    {
+      "id": "cemetery",
+      "op": "place",
+      "class": "B",
+      "source": "dressing.py:173-188,275",
+      "params": {
+        "template": "fenced_plot",
+        "box": [-22, 44, -15, 50],
+        "fence": {"id": 188, "data": 0},
+        "gate": {"side": "east"},
+        "crosses": {"x": [-20, -18, -16], "z": [46, 48], "height": 2}
+      },
+      "singleton": true
+    },
+    {
+      "id": "hitching-rails",
+      "op": "place",
+      "class": "B",
+      "source": "dressing.py:191-208,276",
+      "params": {
+        "template": "hitching_rail",
+        "for": "every saloon, hotel and store on the west row",
+        "dx": 4,
+        "length": 7,
+        "gap_at_door": true,
+        "block": {"id": 85, "data": 0}
+      }
+    },
+    {
+      "id": "wagon-yard",
+      "op": "place",
+      "class": "B",
+      "source": "dressing.py:211-229,277",
+      "params": {"template": "wagon", "at": [-86, 30], "along": "z", "covered": true}
+    },
+    {
+      "id": "wagon-wash",
+      "op": "place",
+      "class": "B",
+      "source": "dressing.py:279",
+      "params": {"template": "wagon", "at": [-72, 47], "along": "x", "covered": false},
+      "note": "A broken wagon left in the Wash."
+    },
+    {
+      "id": "town-sign",
+      "op": "sign",
+      "class": "A",
+      "source": "dressing.py:232-238,280",
+      "params": {"at": [-17, 44, -95], "lines": ["Welcome to", "GILT", "pop. 212", ""], "post": 2},
+      "studio": "sign"
+    },
+    {
+      "id": "chest-workings",
+      "op": "chest",
+      "class": "A",
+      "source": "underground.py:245",
+      "params": {
+        "at": [-92, 47, -3],
+        "facing": 3,
+        "items": [
+          {"slot": 0, "id": "gold_ingot", "count": 4},
+          {"slot": 1, "id": "golden_apple", "count": 1},
+          {"slot": 2, "id": "arrow", "count": 24},
+          {"slot": 13, "id": "iron_pickaxe", "count": 1}
+        ]
+      },
+      "studio": "chest prop"
+    },
+    {
+      "id": "chest-drift",
+      "op": "chest",
+      "class": "A",
+      "source": "underground.py:268",
+      "params": {
+        "at": [-53, 57, 83],
+        "facing": 5,
+        "items": [
+          {"slot": 0, "id": "gold_ingot", "count": 3},
+          {"slot": 1, "id": "bread", "count": 6},
+          {"slot": 2, "id": "tnt", "count": 2},
+          {"slot": 13, "id": "iron_helmet", "count": 1}
+        ]
+      },
+      "studio": "chest prop"
+    },
+    {
+      "id": "ore-cart",
+      "op": "prop",
+      "class": "A",
+      "source": "underground.py:271",
+      "params": {"block": {"id": 118, "data": 0}, "at": [-49, 57, 82], "note": "a cauldron on the last rail"}
+    },
+    {
+      "id": "scrub",
+      "op": "flora",
+      "class": "A",
+      "source": "dressing.py:144-170,281",
+      "params": {
+        "over": "the whole red half, slope < 40",
+        "grass_on_grass": {
+          "green": 0.28,
+          "else": 0.12,
+          "density_noise": {"fbm": true, "cell": 10, "octaves": 2, "seed": 91, "gain": 0.5},
+          "mix": "0.7 + noise"
+        },
+        "flowers": {"green_only": true, "poppy_or_allium": 0.5, "dandelion": 0.5, "share": 0.03},
+        "dead_bush": {"on": "sand, orange clay, hardened clay", "chance": 0.018, "not_blocked": true},
+        "cactus": {"on": "red sand", "chance": 0.006, "height": [1, 3], "needs": "no solid neighbour"},
+        "seed": 1717
+      },
+      "studio": "flora (ground cover)",
+      "reads": ["paint", "all buildings"],
+      "note": "Last: it reads the blocked mask the buildings and routes left."
+    }
+  ],
+  "stamps": [
+    {
+      "id": "half-turn",
+      "op": "symmetry.half_turn",
+      "class": "A",
+      "source": "rotate.py:1-56",
+      "params": {
+        "about": [-0.5, -0.5],
+        "map": "(x, z) -> (-1 - x, -1 - z)",
+        "from": "x < 0",
+        "to": "x >= 0",
+        "block_state_remap": "stairs, doors, torches, ladders, chests/furnaces/dispensers, signs/banners, pumpkins, trapdoors, vines, rails, repeaters, fence gates, beds",
+        "also": ["biomes", "tile entities (chests, signs)"],
+        "rotation_exact": true
+      },
+      "studio": "symmetry orbit (Geom.Symmetry)",
+      "note": "Data remap table in rotate.py:13-37 is the block-state half of the symmetry; the studio's own orbit fans every prop with the same remap."
+    },
+    {
+      "id": "blue-wool",
+      "op": "stamp.team_dye",
+      "class": "A",
+      "source": "gen.py:54-59",
+      "params": {
+        "region": {"box": [[89, -23], [129, 15]], "y": [60, 109]},
+        "from": {"id": 35, "data": 14},
+        "to": {"id": 35, "data": 11},
+        "blocks": 9
+      },
+      "new": true,
+      "note": "'Blue flies blue': the half-turn copies red's flag; this recolours the nine wool blocks in the blue fort."
+    },
+    {
+      "id": "write",
+      "op": "export",
+      "class": "A",
+      "source": "gen.py:60; build.sh:15-17",
+      "params": {
+        "region_files": "write_world.cs",
+        "level": {"name": "Hollow Mesa", "spawn": [0, 100, 0]},
+        "map_xml": "scripts/map.xml copied by build.sh:17",
+        "volume": {"x0": -130, "y0": 0, "z0": -100, "sx": 260, "sy": 128, "sz": 200}
+      }
+    }
+  ]
+}

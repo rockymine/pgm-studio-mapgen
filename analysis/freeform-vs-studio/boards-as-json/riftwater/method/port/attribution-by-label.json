@@ -1,0 +1,1971 @@
+{
+ "total_nonair": 1002206,
+ "x0": -120,
+ "z0": -88,
+ "shape": [
+  240,
+  128,
+  176
+ ],
+ "labels": [
+  {
+   "L1": 24,
+   "L2func": null,
+   "L2line": 0,
+   "writer": "terrain.lay",
+   "final_total": 908648,
+   "final_red": 454324,
+   "final_blue": 454324,
+   "stats": {
+    "diff_created": 932277,
+    "diff_removed": 0,
+    "diff_replaced": 0
+   },
+   "bbox": [
+    -120,
+    3,
+    -88,
+    -11,
+    83,
+    87
+   ],
+   "top_ids": [
+    [
+     "STONE",
+     396510
+    ],
+    [
+     "DIRT",
+     37966
+    ],
+    [
+     "COBBLE",
+     11289
+    ],
+    [
+     "GRASS",
+     8559
+    ]
+   ]
+  },
+  {
+   "L1": 24,
+   "L2func": "ground.lay_ground",
+   "L2line": 0,
+   "writer": "local",
+   "final_total": 9528,
+   "final_red": 4764,
+   "final_blue": 4764,
+   "stats": {
+    "diff_created": 2344,
+    "diff_removed": 455476,
+    "diff_replaced": 2870
+   },
+   "bbox": [
+    -120,
+    42,
+    -88,
+    -11,
+    82,
+    86
+   ],
+   "top_ids": [
+    [
+     "WATER",
+     2266
+    ],
+    [
+     "STONE",
+     1044
+    ],
+    [
+     "DIRT",
+     617
+    ],
+    [
+     "SAND",
+     269
+    ],
+    [
+     "GRAVEL",
+     240
+    ]
+   ]
+  },
+  {
+   "L1": 25,
+   "L2func": "ground.falls",
+   "L2line": 83,
+   "writer": "local",
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 380
+   }
+  },
+  {
+   "L1": 25,
+   "L2func": "ground.falls",
+   "L2line": 84,
+   "writer": "local",
+   "final_total": 754,
+   "final_red": 377,
+   "final_blue": 377,
+   "stats": {
+    "set_calls": 380
+   },
+   "bbox": [
+    -11,
+    8,
+    -3,
+    -10,
+    45,
+    3
+   ],
+   "top_ids": [
+    [
+     "WATER_FLOW",
+     377
+    ]
+   ]
+  },
+  {
+   "L1": 27,
+   "L2func": "under.build",
+   "L2line": 188,
+   "writer": "under.tunnel",
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 2618,
+    "set_calls": 2591,
+    "set_removed": 2215
+   }
+  },
+  {
+   "L1": 27,
+   "L2func": "under.build",
+   "L2line": 190,
+   "writer": "under.chamber",
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 2977,
+    "set_calls": 2977,
+    "set_removed": 1538
+   }
+  },
+  {
+   "L1": 27,
+   "L2func": "under.build",
+   "L2line": 191,
+   "writer": "local",
+   "final_total": 122,
+   "final_red": 61,
+   "final_blue": 61,
+   "stats": {
+    "reads": 110,
+    "set_calls": 61
+   },
+   "bbox": [
+    -50,
+    33,
+    21,
+    -44,
+    40,
+    31
+   ],
+   "top_ids": [
+    [
+     "STONE",
+     61
+    ]
+   ]
+  },
+  {
+   "L1": 27,
+   "L2func": "under.build",
+   "L2line": 192,
+   "writer": "under.dress_cave",
+   "final_total": 1822,
+   "final_red": 911,
+   "final_blue": 911,
+   "stats": {
+    "reads": 92989,
+    "set_calls": 1002,
+    "set_replaced": 872
+   },
+   "bbox": [
+    -63,
+    25,
+    -29,
+    -11,
+    43,
+    45
+   ],
+   "top_ids": [
+    [
+     "GRAVEL",
+     340
+    ],
+    [
+     "STONE",
+     240
+    ],
+    [
+     "COBBLE",
+     149
+    ],
+    [
+     "CLAY",
+     92
+    ],
+    [
+     "COBBLE_WALL",
+     66
+    ]
+   ]
+  },
+  {
+   "L1": 27,
+   "L2func": "under.build",
+   "L2line": 193,
+   "writer": "local",
+   "final_total": 8,
+   "final_red": 4,
+   "final_blue": 4,
+   "stats": {
+    "set_calls": 4
+   },
+   "bbox": [
+    -62,
+    33,
+    4,
+    -60,
+    33,
+    8
+   ],
+   "top_ids": [
+    [
+     "CHEST",
+     1
+    ],
+    [
+     "WOOD_SLAB",
+     1
+    ],
+    [
+     "PLANKS",
+     1
+    ],
+    [
+     "TORCH",
+     1
+    ]
+   ]
+  },
+  {
+   "L1": 27,
+   "L2func": "under.build",
+   "L2line": 194,
+   "writer": "local",
+   "final_total": 346,
+   "final_red": 173,
+   "final_blue": 173,
+   "stats": {
+    "set_calls": 173,
+    "set_replaced": 173
+   },
+   "bbox": [
+    -45,
+    28,
+    12,
+    -35,
+    30,
+    20
+   ],
+   "top_ids": [
+    [
+     "WATER",
+     102
+    ],
+    [
+     "GRAVEL",
+     54
+    ],
+    [
+     "CLAY",
+     17
+    ]
+   ]
+  },
+  {
+   "L1": 27,
+   "L2func": "under.build",
+   "L2line": 195,
+   "writer": "local",
+   "final_total": 52,
+   "final_red": 26,
+   "final_blue": 26,
+   "stats": {
+    "set_calls": 62,
+    "set_replaced": 3,
+    "reads": 72
+   },
+   "bbox": [
+    -11,
+    34,
+    1,
+    -10,
+    40,
+    9
+   ],
+   "top_ids": [
+    [
+     "STONE",
+     25
+    ],
+    [
+     "VINE",
+     1
+    ]
+   ]
+  },
+  {
+   "L1": 27,
+   "L2func": "under.build",
+   "L2line": 196,
+   "writer": "local",
+   "final_total": 484,
+   "final_red": 242,
+   "final_blue": 242,
+   "stats": {
+    "set_calls": 417,
+    "set_replaced": 417,
+    "reads": 335
+   },
+   "bbox": [
+    -60,
+    38,
+    28,
+    -40,
+    47,
+    48
+   ],
+   "top_ids": [
+    [
+     "GRASS",
+     62
+    ],
+    [
+     "GRAVEL",
+     57
+    ],
+    [
+     "STONE",
+     43
+    ],
+    [
+     "DIRT",
+     42
+    ],
+    [
+     "COBBLE",
+     38
+    ]
+   ]
+  },
+  {
+   "L1": 27,
+   "L2func": "under.build",
+   "L2line": 197,
+   "writer": "under.gallery",
+   "final_total": 1052,
+   "final_red": 526,
+   "final_blue": 526,
+   "stats": {
+    "set_calls": 2920,
+    "set_removed": 1018,
+    "set_replaced": 612,
+    "reads": 333
+   },
+   "bbox": [
+    -106,
+    38,
+    4,
+    -56,
+    60,
+    57
+   ],
+   "top_ids": [
+    [
+     "STONE",
+     201
+    ],
+    [
+     "GRAVEL",
+     113
+    ],
+    [
+     "COBBLE_STAIRS",
+     58
+    ],
+    [
+     "LOG",
+     52
+    ],
+    [
+     "SPRUCE_FENCE",
+     39
+    ]
+   ]
+  },
+  {
+   "L1": 27,
+   "L2func": "under.build",
+   "L2line": 197,
+   "writer": "local",
+   "final_total": 24,
+   "final_red": 12,
+   "final_blue": 12,
+   "stats": {
+    "set_calls": 39,
+    "set_replaced": 5,
+    "set_removed": 12
+   },
+   "bbox": [
+    -106,
+    40,
+    4,
+    -61,
+    62,
+    42
+   ],
+   "top_ids": [
+    [
+     "LOG",
+     11
+    ],
+    [
+     "CHEST",
+     1
+    ]
+   ]
+  },
+  {
+   "L1": 27,
+   "L2func": "under.build",
+   "L2line": 198,
+   "writer": "under.shaft",
+   "final_total": 182,
+   "final_red": 91,
+   "final_blue": 91,
+   "stats": {
+    "set_calls": 182,
+    "set_removed": 52,
+    "reads": 48,
+    "set_replaced": 102
+   },
+   "bbox": [
+    -86,
+    44,
+    54,
+    -82,
+    51,
+    58
+   ],
+   "top_ids": [
+    [
+     "PLANKS",
+     63
+    ],
+    [
+     "LOG",
+     21
+    ],
+    [
+     "LADDER",
+     7
+    ]
+   ]
+  },
+  {
+   "L1": 27,
+   "L2func": "under.build",
+   "L2line": 199,
+   "writer": "local",
+   "final_total": 518,
+   "final_red": 259,
+   "final_blue": 259,
+   "stats": {
+    "set_calls": 511,
+    "set_replaced": 263,
+    "set_removed": 200
+   },
+   "bbox": [
+    -55,
+    41,
+    -37,
+    -46,
+    48,
+    -27
+   ],
+   "top_ids": [
+    [
+     "STONEBRICK",
+     209
+    ],
+    [
+     "IRON_BARS",
+     21
+    ],
+    [
+     "GRAVEL",
+     20
+    ],
+    [
+     "IRON_DOOR",
+     6
+    ],
+    [
+     "TORCH",
+     2
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 442,
+   "writer": "route.pave",
+   "final_total": 2938,
+   "final_red": 1469,
+   "final_blue": 1469,
+   "stats": {
+    "reads": 5055,
+    "set_calls": 6694,
+    "set_replaced": 1664
+   },
+   "bbox": [
+    -109,
+    38,
+    -71,
+    -13,
+    60,
+    82
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     821
+    ],
+    [
+     "GRAVEL",
+     390
+    ],
+    [
+     "STONE",
+     132
+    ],
+    [
+     "COBBLE",
+     88
+    ],
+    [
+     "PLANKS",
+     23
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 442,
+   "writer": "local",
+   "final_total": 42,
+   "final_red": 21,
+   "final_blue": 21,
+   "stats": {
+    "reads": 27,
+    "set_calls": 21,
+    "set_replaced": 18
+   },
+   "bbox": [
+    -71,
+    46,
+    18,
+    -69,
+    49,
+    22
+   ],
+   "top_ids": [
+    [
+     "LOG",
+     21
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 443,
+   "writer": "facade.carpet",
+   "final_total": 724,
+   "final_red": 362,
+   "final_blue": 362,
+   "stats": {
+    "set_calls": 368,
+    "set_replaced": 368
+   },
+   "bbox": [
+    -76,
+    52,
+    -53,
+    -57,
+    52,
+    -35
+   ],
+   "top_ids": [
+    [
+     "STONE",
+     303
+    ],
+    [
+     "STONEBRICK",
+     59
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 443,
+   "writer": "local",
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 1840
+   }
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 444,
+   "writer": "build.site",
+   "final_total": 10956,
+   "final_red": 5478,
+   "final_blue": 5478,
+   "stats": {
+    "set_calls": 48360,
+    "set_replaced": 7284,
+    "set_removed": 866
+   },
+   "bbox": [
+    -109,
+    46,
+    -82,
+    -12,
+    69,
+    78
+   ],
+   "top_ids": [
+    [
+     "STONE",
+     1997
+    ],
+    [
+     "DIRT",
+     1918
+    ],
+    [
+     "GRASS",
+     1563
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 444,
+   "writer": "build.house",
+   "final_total": 22510,
+   "final_red": 11255,
+   "final_blue": 11255,
+   "stats": {
+    "set_calls": 28141,
+    "set_replaced": 1894,
+    "reads": 174,
+    "set_removed": 1
+   },
+   "bbox": [
+    -108,
+    48,
+    -81,
+    -13,
+    72,
+    77
+   ],
+   "top_ids": [
+    [
+     "PLANKS",
+     3022
+    ],
+    [
+     "DARK_OAK_STAIRS",
+     1953
+    ],
+    [
+     "LOG",
+     1783
+    ],
+    [
+     "BRICK",
+     1698
+    ],
+    [
+     "STAINED_CLAY",
+     860
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 444,
+   "writer": "local",
+   "final_total": 10,
+   "final_red": 5,
+   "final_blue": 5,
+   "stats": {
+    "set_calls": 5
+   },
+   "bbox": [
+    -66,
+    52,
+    -71,
+    -23,
+    57,
+    -24
+   ],
+   "top_ids": [
+    [
+     "WALL_SIGN",
+     5
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 445,
+   "writer": "build.site",
+   "final_total": 96,
+   "final_red": 48,
+   "final_blue": 48,
+   "stats": {
+    "set_calls": 818,
+    "set_replaced": 114,
+    "set_removed": 46
+   },
+   "bbox": [
+    -56,
+    53,
+    -80,
+    -50,
+    62,
+    -72
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     24
+    ],
+    [
+     "GRASS",
+     24
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 445,
+   "writer": "local",
+   "final_total": 1162,
+   "final_red": 581,
+   "final_blue": 581,
+   "stats": {
+    "set_calls": 980,
+    "set_replaced": 126,
+    "set_removed": 42
+   },
+   "bbox": [
+    -56,
+    53,
+    -80,
+    -40,
+    81,
+    -72
+   ],
+   "top_ids": [
+    [
+     "STONEBRICK",
+     358
+    ],
+    [
+     "PLANKS",
+     92
+    ],
+    [
+     "STONE",
+     92
+    ],
+    [
+     "SPRUCE_STAIRS",
+     16
+    ],
+    [
+     "LADDER",
+     15
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 446,
+   "writer": "local",
+   "final_total": 922,
+   "final_red": 461,
+   "final_blue": 461,
+   "stats": {
+    "set_calls": 1273,
+    "set_replaced": 130,
+    "set_removed": 48
+   },
+   "bbox": [
+    -108,
+    57,
+    -13,
+    -85,
+    75,
+    -1
+   ],
+   "top_ids": [
+    [
+     "STONEBRICK",
+     296
+    ],
+    [
+     "STONE",
+     76
+    ],
+    [
+     "PLANKS",
+     43
+    ],
+    [
+     "COBBLE_WALL",
+     26
+    ],
+    [
+     "LADDER",
+     12
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 446,
+   "writer": "build.parapet",
+   "final_total": 60,
+   "final_red": 30,
+   "final_blue": 30,
+   "stats": {
+    "set_calls": 30
+   },
+   "bbox": [
+    -107,
+    76,
+    -10,
+    -103,
+    77,
+    -4
+   ],
+   "top_ids": [
+    [
+     "STONEBRICK",
+     20
+    ],
+    [
+     "SLAB",
+     10
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 446,
+   "writer": "facade.carpet",
+   "final_total": 176,
+   "final_red": 88,
+   "final_blue": 88,
+   "stats": {
+    "set_calls": 88,
+    "set_replaced": 88
+   },
+   "bbox": [
+    -93,
+    59,
+    -12,
+    -86,
+    59,
+    -2
+   ],
+   "top_ids": [
+    [
+     "STONE",
+     44
+    ],
+    [
+     "STONEBRICK",
+     44
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 446,
+   "writer": "build.stairs",
+   "final_total": 36,
+   "final_red": 18,
+   "final_blue": 18,
+   "stats": {
+    "set_calls": 18,
+    "set_replaced": 18
+   },
+   "bbox": [
+    -84,
+    57,
+    -8,
+    -82,
+    59,
+    -6
+   ],
+   "top_ids": [
+    [
+     "STONE",
+     9
+    ],
+    [
+     "STONEBRICK_STAIRS",
+     9
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 447,
+   "writer": "local",
+   "final_total": 1146,
+   "final_red": 573,
+   "final_blue": 573,
+   "stats": {
+    "set_calls": 1138,
+    "set_removed": 279,
+    "set_replaced": 382
+   },
+   "bbox": [
+    -68,
+    41,
+    2,
+    -54,
+    59,
+    21
+   ],
+   "top_ids": [
+    [
+     "STONEBRICK",
+     291
+    ],
+    [
+     "WATER",
+     160
+    ],
+    [
+     "PLANKS",
+     48
+    ],
+    [
+     "GRAVEL",
+     42
+    ],
+    [
+     "LOG2",
+     28
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 448,
+   "writer": "local",
+   "final_total": 828,
+   "final_red": 414,
+   "final_blue": 414,
+   "stats": {
+    "set_calls": 1068,
+    "set_replaced": 143,
+    "set_removed": 34
+   },
+   "bbox": [
+    -39,
+    44,
+    -10,
+    -33,
+    54,
+    14
+   ],
+   "top_ids": [
+    [
+     "STONEBRICK",
+     256
+    ],
+    [
+     "STONE",
+     75
+    ],
+    [
+     "SLAB",
+     50
+    ],
+    [
+     "STONEBRICK_STAIRS",
+     25
+    ],
+    [
+     "FENCE",
+     4
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 449,
+   "writer": "local",
+   "final_total": 780,
+   "final_red": 390,
+   "final_blue": 390,
+   "stats": {
+    "reads": 252,
+    "set_calls": 551,
+    "set_replaced": 176
+   },
+   "bbox": [
+    -15,
+    38,
+    -47,
+    -4,
+    52,
+    -41
+   ],
+   "top_ids": [
+    [
+     "STONEBRICK",
+     324
+    ],
+    [
+     "STONE",
+     39
+    ],
+    [
+     "SLAB",
+     15
+    ],
+    [
+     "IRON_BARS",
+     8
+    ],
+    [
+     "FENCE",
+     2
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 450,
+   "writer": "local",
+   "final_total": 412,
+   "final_red": 206,
+   "final_blue": 206,
+   "stats": {
+    "set_calls": 397,
+    "set_replaced": 98,
+    "set_removed": 5
+   },
+   "bbox": [
+    -87,
+    52,
+    53,
+    -81,
+    75,
+    59
+   ],
+   "top_ids": [
+    [
+     "LOG",
+     110
+    ],
+    [
+     "PLANKS",
+     70
+    ],
+    [
+     "LADDER",
+     17
+    ],
+    [
+     "DARK_OAK_FENCE",
+     8
+    ],
+    [
+     "LOG2",
+     1
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 451,
+   "writer": "local",
+   "final_total": 1726,
+   "final_red": 863,
+   "final_blue": 863,
+   "stats": {
+    "set_calls": 916,
+    "set_replaced": 755,
+    "set_removed": 14,
+    "reads": 1633
+   },
+   "bbox": [
+    -107,
+    46,
+    45,
+    -72,
+    69,
+    83
+   ],
+   "top_ids": [
+    [
+     "GRAVEL",
+     352
+    ],
+    [
+     "COBBLE",
+     229
+    ],
+    [
+     "STONE",
+     170
+    ],
+    [
+     "BRICK",
+     82
+    ],
+    [
+     "WOOD_SLAB",
+     9
+    ]
+   ]
+  },
+  {
+   "L1": 29,
+   "L2func": "works.build",
+   "L2line": 452,
+   "writer": "local",
+   "final_total": 30,
+   "final_red": 15,
+   "final_blue": 15,
+   "stats": {
+    "reads": 5,
+    "set_calls": 15
+   },
+   "bbox": [
+    -51,
+    51,
+    -41,
+    -39,
+    55,
+    -19
+   ],
+   "top_ids": [
+    [
+     "FENCE",
+     10
+    ],
+    [
+     "GLOWSTONE",
+     5
+    ]
+   ]
+  },
+  {
+   "L1": 30,
+   "L2func": "under.gaol_ladder",
+   "L2line": 178,
+   "writer": "local",
+   "final_total": 20,
+   "final_red": 10,
+   "final_blue": 10,
+   "stats": {
+    "set_calls": 10,
+    "set_replaced": 6
+   },
+   "bbox": [
+    -50,
+    43,
+    -33,
+    -50,
+    52,
+    -33
+   ],
+   "top_ids": [
+    [
+     "LADDER",
+     10
+    ]
+   ]
+  },
+  {
+   "L1": 30,
+   "L2func": "under.gaol_ladder",
+   "L2line": 179,
+   "writer": "local",
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 10
+   }
+  },
+  {
+   "L1": 30,
+   "L2func": "under.gaol_ladder",
+   "L2line": 182,
+   "writer": "local",
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "set_calls": 2
+   }
+  },
+  {
+   "L1": 35,
+   "L2func": null,
+   "L2line": 0,
+   "writer": "props.stalls",
+   "final_total": 120,
+   "final_red": 60,
+   "final_blue": 60,
+   "stats": {
+    "set_calls": 60
+   },
+   "bbox": [
+    -75,
+    53,
+    -50,
+    -73,
+    55,
+    -38
+   ],
+   "top_ids": [
+    [
+     "WOOL",
+     27
+    ],
+    [
+     "FENCE",
+     24
+    ],
+    [
+     "CHEST",
+     3
+    ],
+    [
+     "WOOD_SLAB",
+     3
+    ],
+    [
+     "PUMPKIN",
+     2
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 44,
+   "writer": "local",
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 18120
+   }
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 57,
+   "writer": "trees.scatter",
+   "final_total": 9404,
+   "final_red": 4702,
+   "final_blue": 4702,
+   "stats": {
+    "reads": 15854,
+    "set_calls": 4715,
+    "set_replaced": 59
+   },
+   "bbox": [
+    -107,
+    52,
+    -88,
+    -69,
+    78,
+    -20
+   ],
+   "top_ids": [
+    [
+     "LEAVES",
+     4143
+    ],
+    [
+     "LOG",
+     501
+    ],
+    [
+     "DIRT",
+     52
+    ],
+    [
+     "WOOD_SLAB",
+     6
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 58,
+   "writer": "trees.scatter",
+   "final_total": 11144,
+   "final_red": 5572,
+   "final_blue": 5572,
+   "stats": {
+    "reads": 17094,
+    "set_calls": 5592,
+    "set_replaced": 25
+   },
+   "bbox": [
+    -120,
+    56,
+    -84,
+    -95,
+    92,
+    81
+   ],
+   "top_ids": [
+    [
+     "LEAVES",
+     4900
+    ],
+    [
+     "LOG",
+     627
+    ],
+    [
+     "WOOD_SLAB",
+     29
+    ],
+    [
+     "DIRT",
+     16
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 59,
+   "writer": "trees.scatter",
+   "final_total": 2476,
+   "final_red": 1238,
+   "final_blue": 1238,
+   "stats": {
+    "reads": 5316,
+    "set_calls": 1238,
+    "set_replaced": 4
+   },
+   "bbox": [
+    -119,
+    55,
+    38,
+    -93,
+    87,
+    86
+   ],
+   "top_ids": [
+    [
+     "LEAVES",
+     1104
+    ],
+    [
+     "LOG",
+     131
+    ],
+    [
+     "DIRT",
+     3
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 60,
+   "writer": "trees.scatter",
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 263
+   }
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 61,
+   "writer": "trees.plant",
+   "final_total": 1520,
+   "final_red": 760,
+   "final_blue": 760,
+   "stats": {
+    "reads": 1396,
+    "set_calls": 760,
+    "set_replaced": 2
+   },
+   "bbox": [
+    -32,
+    54,
+    67,
+    -15,
+    72,
+    83
+   ],
+   "top_ids": [
+    [
+     "LEAVES",
+     629
+    ],
+    [
+     "LOG",
+     129
+    ],
+    [
+     "DIRT",
+     2
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 68,
+   "writer": "trees.plant",
+   "final_total": 3292,
+   "final_red": 1646,
+   "final_blue": 1646,
+   "stats": {
+    "reads": 3306,
+    "set_calls": 1646,
+    "set_replaced": 23
+   },
+   "bbox": [
+    -89,
+    47,
+    -45,
+    -12,
+    66,
+    34
+   ],
+   "top_ids": [
+    [
+     "LEAVES",
+     1457
+    ],
+    [
+     "LOG",
+     161
+    ],
+    [
+     "DIRT",
+     21
+    ],
+    [
+     "WOOD_SLAB",
+     7
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 84,
+   "writer": "local",
+   "final_total": 2076,
+   "final_red": 1038,
+   "final_blue": 1038,
+   "stats": {
+    "set_calls": 1038,
+    "set_replaced": 1022
+   },
+   "bbox": [
+    -50,
+    42,
+    45,
+    -31,
+    48,
+    69
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     1038
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 88,
+   "writer": "local",
+   "final_total": 172,
+   "final_red": 86,
+   "final_blue": 86,
+   "stats": {
+    "set_calls": 86,
+    "set_replaced": 74
+   },
+   "bbox": [
+    -50,
+    47,
+    45,
+    -31,
+    49,
+    69
+   ],
+   "top_ids": [
+    [
+     "GRASS",
+     86
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 82,
+   "writer": "local",
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "set_calls": 1210,
+    "set_removed": 243
+   }
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 93,
+   "writer": "local",
+   "final_total": 50,
+   "final_red": 25,
+   "final_blue": 25,
+   "stats": {
+    "set_calls": 25
+   },
+   "bbox": [
+    -50,
+    48,
+    45,
+    -50,
+    50,
+    69
+   ],
+   "top_ids": [
+    [
+     "FENCE",
+     24
+    ],
+    [
+     "FENCE_GATE",
+     1
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 90,
+   "writer": "local",
+   "final_total": 720,
+   "final_red": 360,
+   "final_blue": 360,
+   "stats": {
+    "set_calls": 360,
+    "set_replaced": 350
+   },
+   "bbox": [
+    -49,
+    47,
+    46,
+    -32,
+    49,
+    68
+   ],
+   "top_ids": [
+    [
+     "FARMLAND",
+     360
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 92,
+   "writer": "local",
+   "final_total": 718,
+   "final_red": 359,
+   "final_blue": 359,
+   "stats": {
+    "set_calls": 360
+   },
+   "bbox": [
+    -49,
+    48,
+    46,
+    -32,
+    50,
+    68
+   ],
+   "top_ids": [
+    [
+     "WHEAT",
+     359
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 86,
+   "writer": "local",
+   "final_total": 108,
+   "final_red": 54,
+   "final_blue": 54,
+   "stats": {
+    "set_calls": 54,
+    "set_replaced": 54
+   },
+   "bbox": [
+    -49,
+    48,
+    49,
+    -32,
+    49,
+    67
+   ],
+   "top_ids": [
+    [
+     "WATER",
+     54
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 97,
+   "writer": "local",
+   "final_total": 8,
+   "final_red": 4,
+   "final_blue": 4,
+   "stats": {
+    "set_calls": 4,
+    "set_replaced": 1
+   },
+   "bbox": [
+    -40,
+    49,
+    54,
+    -40,
+    52,
+    54
+   ],
+   "top_ids": [
+    [
+     "FENCE",
+     2
+    ],
+    [
+     "HAY",
+     1
+    ],
+    [
+     "PUMPKIN",
+     1
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 98,
+   "writer": "local",
+   "final_total": 4,
+   "final_red": 2,
+   "final_blue": 2,
+   "stats": {
+    "set_calls": 2
+   },
+   "bbox": [
+    -40,
+    51,
+    53,
+    -40,
+    51,
+    55
+   ],
+   "top_ids": [
+    [
+     "FENCE",
+     2
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 105,
+   "writer": "local",
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 20
+   }
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 106,
+   "writer": "local",
+   "final_total": 12,
+   "final_red": 6,
+   "final_blue": 6,
+   "stats": {
+    "set_calls": 6
+   },
+   "bbox": [
+    -109,
+    60,
+    63,
+    -104,
+    62,
+    72
+   ],
+   "top_ids": [
+    [
+     "LOG",
+     6
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 112,
+   "writer": "local",
+   "final_total": 140,
+   "final_red": 70,
+   "final_blue": 70,
+   "stats": {
+    "set_calls": 70,
+    "set_replaced": 14
+   },
+   "bbox": [
+    -113,
+    61,
+    64,
+    -102,
+    74,
+    74
+   ],
+   "top_ids": [
+    [
+     "LOG",
+     70
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 123,
+   "writer": "local",
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 905
+   }
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 124,
+   "writer": "local",
+   "final_total": 832,
+   "final_red": 416,
+   "final_blue": 416,
+   "stats": {
+    "set_calls": 416
+   },
+   "bbox": [
+    -15,
+    36,
+    -88,
+    -10,
+    50,
+    85
+   ],
+   "top_ids": [
+    [
+     "VINE",
+     416
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 131,
+   "writer": "local",
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 27037
+   }
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 140,
+   "writer": "local",
+   "final_total": 1086,
+   "final_red": 543,
+   "final_blue": 543,
+   "stats": {
+    "set_calls": 543
+   },
+   "bbox": [
+    -120,
+    47,
+    -88,
+    -11,
+    83,
+    87
+   ],
+   "top_ids": [
+    [
+     "TALLGRASS",
+     543
+    ]
+   ]
+  },
+  {
+   "L1": 37,
+   "L2func": "dress.build",
+   "L2line": 138,
+   "writer": "local",
+   "final_total": 202,
+   "final_red": 101,
+   "final_blue": 101,
+   "stats": {
+    "set_calls": 101
+   },
+   "bbox": [
+    -77,
+    47,
+    -86,
+    -19,
+    56,
+    85
+   ],
+   "top_ids": [
+    [
+     "DANDELION",
+     51
+    ],
+    [
+     "FLOWER",
+     50
+    ]
+   ]
+  },
+  {
+   "L1": 42,
+   "L2func": null,
+   "L2line": 0,
+   "writer": "objectives.stamp",
+   "final_total": 8,
+   "final_red": 4,
+   "final_blue": 4,
+   "stats": {
+    "set_calls": 8
+   },
+   "bbox": [
+    -66,
+    52,
+    -44,
+    -66,
+    55,
+    48
+   ],
+   "top_ids": [
+    [
+     "OBSIDIAN",
+     4
+    ]
+   ]
+  }
+ ],
+ "unowned_nonair": 0
+}

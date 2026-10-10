@@ -1,0 +1,4656 @@
+{
+ "layers": 1,
+ "board": "riftwater (pgmvox port)",
+ "note": "The pgmvox port of Riftwater (freeform/lib/ports/riftwater) written as ordered layer operations. Not executable; every parameter was read from the port's scripts, and the library calls keep their pgmvox names. `lib` names the pgmvox function the port calls today; `local` marks code the port wrote itself; `new` means no pgmvox op or studio concept of that name exists. class A = layer operation, B = library entry + placement, C = made. The group order is the requested one; the script runs ground, volume, buildings, stalls, dressing, mirror, objectives.stamp, so the monument `box` is resolved against the finished ground only in `stamps.objectives`.",
+ "built_with": {
+  "pgmvox": "0.21.0 (the port was last built with 0.10.0; counts are the same: 1,002,206 blocks, 22 tile entities, 5,568 blocks carved)"
+ },
+ "world": {
+  "x0": -120,
+  "z0": -88,
+  "sx": 240,
+  "sz": 176,
+  "sy": 128,
+  "authored_half": "x < 0 (red)",
+  "rift": {
+   "void_x": [
+    -10,
+    9
+   ],
+   "build_zone_x": [
+    -16,
+    16
+   ]
+  }
+ },
+ "randomness": {
+  "streams": [
+   {
+    "module": "ground.py",
+    "name": "riftwater/ground",
+    "drawn_by": [
+     "lay-local-pass"
+    ]
+   },
+   {
+    "module": "under.py",
+    "name": "riftwater/under",
+    "drawn_by": [
+     "cave-dress",
+     "cave-mouth",
+     "sinkhole-rubble",
+     "mine-gallery",
+     "gaol-cellar"
+    ],
+    "shared": true
+   },
+   {
+    "module": "works.py",
+    "name": "riftwater/works",
+    "drawn_by": [
+     "spoil-rubble"
+    ]
+   },
+   {
+    "module": "works.py",
+    "name": "riftwater/house <key>",
+    "drawn_by": [
+     "each place.house"
+    ],
+    "shared": false
+   },
+   {
+    "module": "dress.py",
+    "name": "riftwater/dress",
+    "drawn_by": [
+     "wheat-field",
+     "cutting",
+     "rift-vines",
+     "ground-cover"
+    ],
+    "shared": true
+   }
+  ],
+  "own_seeds": [
+   "tree scatter 1-4",
+   "pillars 8",
+   "old-bridge 17",
+   "noise fields 11-83",
+   "terrain beds 3, 7",
+   "route.pave seed = route index"
+  ],
+  "note": "pgmvox.rng(board, name) gives each named stream its own seed; several ops in one module still share one stream."
+ },
+ "coverage": {
+  "plan.land (heights)": [
+   "outline",
+   "base-north",
+   "base-south",
+   "base-west",
+   "base-noise",
+   "valley",
+   "pond",
+   "ridge",
+   "spurs",
+   "ridge-steps",
+   "spawn-shoulder",
+   "flat-square",
+   "flat-green",
+   "knoll",
+   "river",
+   "pond-outlet-water",
+   "square-floor",
+   "green-floor",
+   "sinkhole-funnel",
+   "spoil-heap",
+   "underside",
+   "grade-spawn-lane",
+   "grade-spawn-lane-south",
+   "grade-main-street",
+   "grade-bridge-street",
+   "grade-north-lane",
+   "grade-mill-lane",
+   "grade-field-road",
+   "grade-farm-track",
+   "grade-falls-walk",
+   "grade-spring-path",
+   "grade-village-road",
+   "grade-forest-path",
+   "grade-clearing-path"
+  ],
+  "ground.lay_ground": [
+   "lay",
+   "lay-local-pass"
+  ],
+  "ground.falls": [
+   "falls"
+  ],
+  "under.build: tunnels": [
+   "cave-gallery",
+   "cave-south",
+   "cave-north",
+   "cave-grotto",
+   "cave-west"
+  ],
+  "under.build: chambers": [
+   "chamber-lake-chamber",
+   "chamber-1",
+   "chamber-pillar-hall",
+   "chamber-3",
+   "chamber-grotto",
+   "chamber-5",
+   "chamber-6",
+   "chamber-7",
+   "chamber-8",
+   "chamber-9"
+  ],
+  "under.pillars": [
+   "pillars"
+  ],
+  "under.dress_cave": [
+   "cave-dress"
+  ],
+  "under.grotto": [
+   "grotto-stash"
+  ],
+  "under.lake": [
+   "lake-pool"
+  ],
+  "under.mouth": [
+   "cave-mouth"
+  ],
+  "under.sinkhole": [
+   "sinkhole-rubble"
+  ],
+  "under.mine": [
+   "mine-gallery",
+   "mine-portal"
+  ],
+  "under.shaft": [
+   "mine-shaft"
+  ],
+  "under.cellar": [
+   "gaol-cellar"
+  ],
+  "under.gaol_ladder": [
+   "gaol-ladder"
+  ],
+  "works.roads": [
+   "roads",
+   "trestle-legs"
+  ],
+  "works.square": [
+   "square-carpet"
+  ],
+  "works.houses": [
+   "sites",
+   "house-hall",
+   "house-h1",
+   "house-shop1",
+   "house-h2",
+   "house-bakery",
+   "house-h3",
+   "house-h4",
+   "house-shop2",
+   "house-h5",
+   "house-gaol",
+   "house-h6",
+   "house-h7",
+   "house-inn",
+   "house-h8",
+   "house-h9",
+   "house-shop3",
+   "house-chapel",
+   "house-watch",
+   "house-hut",
+   "house-mill",
+   "house-c1",
+   "house-tall",
+   "house-wing",
+   "house-c2",
+   "house-big",
+   "house-lean",
+   "house-c3",
+   "house-engine",
+   "house-smithy"
+  ],
+  "works.chapel": [
+   "chapel-belfry"
+  ],
+  "works.watch": [
+   "watch-tower",
+   "watch-terrace",
+   "watch-steps"
+  ],
+  "works.mill": [
+   "mill-works"
+  ],
+  "works.stone_bridge": [
+   "stone-bridge"
+  ],
+  "works.old_bridge": [
+   "old-bridge"
+  ],
+  "works.headframe": [
+   "headframe"
+  ],
+  "works.ironhollow": [
+   "engine-stack",
+   "smithy-fittings",
+   "well",
+   "spoil-rubble"
+  ],
+  "works.lamps": [
+   "lamps"
+  ],
+  "gen.py stalls": [
+   "stalls"
+  ],
+  "dress.build": [
+   "woods-north",
+   "woods-ridge",
+   "woods-south",
+   "cutting-ring",
+   "knoll-oak",
+   "trees-by-hand",
+   "wheat-field",
+   "cutting",
+   "rift-vines",
+   "ground-cover"
+  ],
+  "orient.turn_world": [
+   "mirror"
+  ],
+  "Objectives.stamp": [
+   "objectives"
+  ],
+  "World.save": [
+   "writer"
+  ],
+  "mapxml.py": [
+   "map",
+   "kit",
+   "rules",
+   "spawn-red",
+   "observer",
+   "monument-square",
+   "monument-green"
+  ]
+ },
+ "measured": {
+  "non_air_blocks": 1002206,
+  "red_half": 501103,
+  "blue_half_by_mirror": 501103,
+  "plain_run_equals_instrumented_run": "bit-identical ids, data, biomes and tile entities",
+  "share_of_blocks": {
+   "A": 0.95863,
+   "B": 0.0408,
+   "C": 0.00057
+  },
+  "share_of_exposed_blocks": {
+   "A": 0.8129,
+   "B": 0.1847,
+   "C": 0.0024
+  },
+  "written_through_a_pgmvox_call": 977164,
+  "written_by_port_code": 25042
+ },
+ "places": [
+  {
+   "op": "place",
+   "name": "The Watch House",
+   "at": [
+    -98,
+    -7
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "The Ridge",
+   "at": [
+    -112,
+    20
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "North Wood",
+   "at": [
+    -100,
+    -45
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "Woodcutter's Hut",
+   "at": [
+    -104,
+    -64
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "Market Square",
+   "at": [
+    -66,
+    -44
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "Market Town",
+   "at": [
+    -40,
+    -60
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "The Old Bridge",
+   "at": [
+    -10,
+    -44
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "The Chapel",
+   "at": [
+    -46,
+    -75
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "The Falls Inn",
+   "at": [
+    -28,
+    -22
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "The Gaol",
+   "at": [
+    -52,
+    -34
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "Mill Pond",
+   "at": [
+    -84,
+    20
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "The Mill",
+   "at": [
+    -62,
+    4
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "Stone Bridge",
+   "at": [
+    -36,
+    3
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "The Falls",
+   "at": [
+    -12,
+    0
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "Ironhollow",
+   "at": [
+    -88,
+    66
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "The Headframe",
+   "at": [
+    -84,
+    56
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "Winding Green",
+   "at": [
+    -66,
+    48
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "The Fields",
+   "at": [
+    -40,
+    57
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "The Sinkhole",
+   "at": [
+    -50,
+    40
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "Lone Oak Knoll",
+   "at": [
+    -22,
+    74
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "The Cutting",
+   "at": [
+    -110,
+    68
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "Falls Cave mouth",
+   "at": [
+    -11,
+    4
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "Lake chamber",
+   "at": [
+    -40,
+    14
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "Pillar Hall",
+   "at": [
+    -46,
+    26
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "Smugglers' grotto",
+   "at": [
+    -60,
+    6
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "Gaol cellar",
+   "at": [
+    -52,
+    -34
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "Ironhollow Mine",
+   "at": [
+    -96,
+    30
+   ],
+   "read_by_generator": false
+  },
+  {
+   "op": "place",
+   "name": "North Wood",
+   "poly": [
+    [
+     -120,
+     -88
+    ],
+    [
+     -74,
+     -88
+    ],
+    [
+     -74,
+     -74
+    ],
+    [
+     -82,
+     -52
+    ],
+    [
+     -90,
+     -30
+    ],
+    [
+     -104,
+     -20
+    ],
+    [
+     -120,
+     -24
+    ]
+   ],
+   "read_by_generator": true,
+   "read_at": "plan.py:322 (biome and forest mask), dress.py:254"
+  },
+  {
+   "op": "place",
+   "name": "Red River",
+   "line": [
+    [
+     -74,
+     22
+    ],
+    [
+     -66,
+     17
+    ],
+    [
+     -56,
+     13
+    ],
+    [
+     -46,
+     7
+    ],
+    [
+     -36,
+     3
+    ],
+    [
+     -26,
+     1
+    ],
+    [
+     -17,
+     0
+    ],
+    [
+     -11,
+     0
+    ]
+   ],
+   "read_by_generator": true,
+   "read_at": "plan.py:196"
+  },
+  {
+   "op": "route-def",
+   "name": "Spawn Lane",
+   "kind": "lane",
+   "width": 3,
+   "pts": [
+    [
+     -84,
+     -7
+    ],
+    [
+     -78,
+     -12
+    ],
+    [
+     -74,
+     -24
+    ],
+    [
+     -72,
+     -36
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Spawn Lane south",
+   "kind": "lane",
+   "width": 3,
+   "pts": [
+    [
+     -78,
+     -12
+    ],
+    [
+     -74,
+     0
+    ],
+    [
+     -71,
+     12
+    ],
+    [
+     -70,
+     22
+    ],
+    [
+     -70,
+     34
+    ],
+    [
+     -68,
+     40
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Main Street",
+   "kind": "street",
+   "width": 5,
+   "pts": [
+    [
+     -56,
+     -44
+    ],
+    [
+     -44,
+     -45
+    ],
+    [
+     -32,
+     -43
+    ],
+    [
+     -20,
+     -44
+    ],
+    [
+     -12,
+     -44
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Bridge Street",
+   "kind": "street",
+   "width": 5,
+   "pts": [
+    [
+     -42,
+     -44
+    ],
+    [
+     -40,
+     -32
+    ],
+    [
+     -36,
+     -20
+    ],
+    [
+     -36,
+     -11
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "North Lane",
+   "kind": "lane",
+   "width": 3,
+   "pts": [
+    [
+     -56,
+     -53
+    ],
+    [
+     -56,
+     -59
+    ],
+    [
+     -50,
+     -63
+    ],
+    [
+     -40,
+     -66
+    ],
+    [
+     -26,
+     -64
+    ],
+    [
+     -16,
+     -70
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Mill Lane",
+   "kind": "lane",
+   "width": 3,
+   "pts": [
+    [
+     -38,
+     -10
+    ],
+    [
+     -48,
+     -4
+    ],
+    [
+     -56,
+     -2
+    ],
+    [
+     -62,
+     -2
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Field Road",
+   "kind": "lane",
+   "width": 3,
+   "pts": [
+    [
+     -36,
+     15
+    ],
+    [
+     -40,
+     22
+    ],
+    [
+     -46,
+     30
+    ],
+    [
+     -56,
+     40
+    ],
+    [
+     -61,
+     46
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Farm Track",
+   "kind": "lane",
+   "width": 3,
+   "pts": [
+    [
+     -61,
+     52
+    ],
+    [
+     -58,
+     60
+    ],
+    [
+     -56,
+     66
+    ],
+    [
+     -46,
+     79
+    ],
+    [
+     -34,
+     80
+    ],
+    [
+     -24,
+     76
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Falls Walk",
+   "kind": "lane",
+   "width": 3,
+   "pts": [
+    [
+     -34,
+     12
+    ],
+    [
+     -26,
+     11
+    ],
+    [
+     -18,
+     9
+    ],
+    [
+     -14,
+     7
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Spring Path",
+   "kind": "lane",
+   "width": 3,
+   "pts": [
+    [
+     -96,
+     0
+    ],
+    [
+     -100,
+     12
+    ],
+    [
+     -99,
+     28
+    ],
+    [
+     -93,
+     34
+    ],
+    [
+     -89,
+     38
+    ],
+    [
+     -88,
+     44
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Village Road",
+   "kind": "lane",
+   "width": 3,
+   "pts": [
+    [
+     -88,
+     44
+    ],
+    [
+     -80,
+     46
+    ],
+    [
+     -72,
+     47
+    ],
+    [
+     -62,
+     48
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Forest Path",
+   "kind": "path",
+   "width": 2,
+   "pts": [
+    [
+     -90,
+     -14
+    ],
+    [
+     -88,
+     -26
+    ],
+    [
+     -94,
+     -40
+    ],
+    [
+     -96,
+     -52
+    ],
+    [
+     -100,
+     -60
+    ]
+   ]
+  },
+  {
+   "op": "route-def",
+   "name": "Clearing Path",
+   "kind": "path",
+   "width": 2,
+   "pts": [
+    [
+     -99,
+     64
+    ],
+    [
+     -102,
+     68
+    ],
+    [
+     -108,
+     68
+    ]
+   ]
+  }
+ ],
+ "ground": [
+  {
+   "id": "outline",
+   "op": "landform.outline",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "half": "red (x<0); blue is the stamp 'mirror'",
+    "bounds": {
+     "x": [
+      -120,
+      0
+     ],
+     "z": [
+      -88,
+      87
+     ]
+    },
+    "lip": {
+     "x": -11,
+     "wobble": {
+      "amp": 1.2,
+      "clip": [
+       -1,
+       0
+      ],
+      "cell": 10,
+      "octaves": 2,
+      "seed": 21
+     },
+     "bays": {
+      "amp": 4.5,
+      "cell": 22,
+      "octaves": 2,
+      "seed": 25
+     },
+     "hold_straight": [
+      {
+       "z": -45,
+       "width": 16,
+       "power": 4
+      },
+      {
+       "z": 1,
+       "width": 6,
+       "power": 4
+      }
+     ]
+    },
+    "edge_insets": {
+     "west": {
+      "base": 2,
+      "amp": 4,
+      "cell": 16,
+      "seed": 22,
+      "max": 6
+     },
+     "north": {
+      "base": 2,
+      "amp": 5,
+      "cell": 16,
+      "seed": 23,
+      "max": 7
+     },
+     "south": {
+      "base": 2,
+      "amp": 5,
+      "cell": 16,
+      "seed": 24,
+      "max": 7
+     }
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:167-193",
+   "gap": "Local code (plan._rift_edge) in the port. No pgmvox op makes an island outline with one ragged lip held straight at named bands; nearest is landform.coast or the studio's relief 'rim' mark.",
+   "writes": {
+    "mask": "land"
+   }
+  },
+  {
+   "id": "base-north",
+   "op": "field.terms",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "mask": "north of the river course",
+    "base": 48.5,
+    "terms": [
+     {
+      "kind": "smoothstep-x",
+      "from": -14,
+      "to": -64,
+      "amp": 3.5
+     },
+     {
+      "kind": "smoothstep-x",
+      "from": -74,
+      "to": -96,
+      "amp": 2.0
+     },
+     {
+      "kind": "gauss",
+      "centre": [
+       -44,
+       -78
+      ],
+      "rx": 16,
+      "rz": 11,
+      "amp": 4.5
+     }
+    ]
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:201-202",
+   "gap": "Formula in plan.land(); pgmvox.noise supplies smoothstep and fbm. The studio's relief marks (point, line, area, scarp) state the same shapes as placed marks."
+  },
+  {
+   "id": "base-south",
+   "op": "field.terms",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "mask": "south of the river course",
+    "base": 47.2,
+    "terms": [
+     {
+      "kind": "smoothstep-z",
+      "from": 25,
+      "to": 80,
+      "amp": 1.8
+     },
+     {
+      "kind": "smoothstep-x",
+      "from": -64,
+      "to": -98,
+      "amp": 4.5
+     }
+    ]
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:203"
+  },
+  {
+   "id": "base-west",
+   "op": "field.terms",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "mask": "blend weight smoothstep(x: -70 -> -80)",
+    "base": 52.5,
+    "terms": [
+     {
+      "kind": "smoothstep-x",
+      "from": -80,
+      "to": -98,
+      "amp": 2.5
+     },
+     {
+      "kind": "smoothstep-z",
+      "from": -10,
+      "to": 30,
+      "amp": -1.5
+     },
+     {
+      "kind": "smoothstep-z",
+      "from": 30,
+      "to": 60,
+      "amp": 1.0
+     }
+    ]
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:205-206"
+  },
+  {
+   "id": "base-noise",
+   "op": "field.noise",
+   "class": "A",
+   "lib": "pgmvox.noise.fbm",
+   "params": {
+    "terms": [
+     {
+      "kind": "fbm",
+      "amp": 0.8,
+      "cell": 12,
+      "octaves": 3,
+      "seed": 11
+     },
+     {
+      "kind": "fbm",
+      "amp": 1.2,
+      "cell": 40,
+      "octaves": 3,
+      "seed": 12
+     }
+    ]
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:186,207",
+   "gap": "fbm lattices are sized to the red-half grid (120 x 176): the seeds reproduce only in an interpreter that implements this noise on this grid."
+  },
+  {
+   "id": "valley",
+   "op": "landform.valley",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "course": "place:Red River spline step 0.5",
+    "reach": {
+     "x_gt": -75
+    },
+    "width": {
+     "base": 3.0,
+     "plus": 0.6,
+     "smoothstep_x": [
+      -60,
+      -15
+     ]
+    },
+    "level": {
+     "x_lt": -66,
+     "pond": 48,
+     "else": 45
+    },
+    "bank": {
+     "north": {
+      "rise_over": 7,
+      "offset": 1.0
+     },
+     "south": {
+      "rise_over": 14,
+      "offset": 1.3
+     }
+    },
+    "channel_floor": "level + 1"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:209-218",
+   "gap": "An asymmetric valley shaped before the watercourse op cuts the channel: banks 7 vs 14 blocks, per-reach level. landform.watercourse has a symmetric bank and picks its own levels."
+  },
+  {
+   "id": "pond",
+   "op": "landform.lake",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "centre": [
+     -84,
+     20
+    ],
+    "rx": 12.5,
+    "rz": 9.5,
+    "level": 48,
+    "depth": 3.5,
+    "shore": [
+     1.0,
+     1.5
+    ],
+    "jag": {
+     "amp": 0.12,
+     "cell": 8,
+     "octaves": 2,
+     "seed": 31
+    },
+    "spit": {
+     "path": [
+      [
+       -92,
+       30
+      ],
+      [
+       -86,
+       24
+      ],
+      [
+       -83,
+       21
+      ]
+     ],
+     "half_width": 1.6,
+     "min_y": 49
+    },
+    "outlet": {
+     "centre": [
+      -74,
+      22
+     ],
+     "r": 4,
+     "level": 48,
+     "bed_max": 46
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:220-228,272-276",
+   "gap": "Local in the port; lake() covers the ellipse, the spit and the outlet disc are not parameters.",
+   "writes": {
+    "water": "pond"
+   }
+  },
+  {
+   "id": "ridge",
+   "op": "landform.ridge",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "foot": {
+     "x": -100,
+     "wobble": {
+      "amp": 4,
+      "cell": 24,
+      "octaves": 2,
+      "seed": 40
+     },
+     "fade": 15
+    },
+    "crest": {
+     "base": 73,
+     "wobble": {
+      "amp": 5,
+      "cell": 30,
+      "octaves": 2,
+      "seed": 41
+     },
+     "bump": {
+      "z": -72,
+      "width": 18,
+      "amp": 4
+     }
+    },
+    "texture": {
+     "noise": {
+      "amp": 2.5,
+      "cell": 10,
+      "octaves": 3,
+      "seed": 42
+     },
+     "crag": {
+      "amp": 4,
+      "cell": 7,
+      "octaves": 2,
+      "seed": 43,
+      "ridged_smoothstep": [
+       0.75,
+       0.95
+      ]
+     }
+    },
+    "far_side_fall": {
+     "amp": 7,
+     "smoothstep_x": [
+      -114,
+      -120
+     ]
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:230-238,244",
+   "gap": "landform.scarp is a cliff that jumps to half its height at the line (PORT-REPORT); a ridge whose foot wanders over fifteen blocks is a new landform."
+  },
+  {
+   "id": "spurs",
+   "op": "landform.ridge",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "arms": [
+     {
+      "path": [
+       [
+        -114,
+        -68
+       ],
+       [
+        -98,
+        -74
+       ],
+       [
+        -82,
+        -80
+       ]
+      ],
+      "top": 66,
+      "fall_per_block": 0.25,
+      "from_x": -100,
+      "reach": [
+       14,
+       3
+      ]
+     },
+     {
+      "path": [
+       [
+        -114,
+        70
+       ],
+       [
+        -100,
+        76
+       ],
+       [
+        -88,
+        82
+       ]
+      ],
+      "top": 63,
+      "fall_per_block": 0.25,
+      "from_x": -100,
+      "reach": [
+       14,
+       3
+      ]
+     }
+    ]
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:232-233,239-241"
+  },
+  {
+   "id": "ridge-steps",
+   "op": "landform.terraces",
+   "class": "A",
+   "lib": "pgmvox.landform.terraces",
+   "params": {
+    "mask": "ridge weight t > 0.25",
+    "step": 3,
+    "riser": 0.45
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:242",
+   "note": "the original pulled the ground 55% of the way to steps; terraces() cuts them harder, so the port's ridge shows more bare rock"
+  },
+  {
+   "id": "spawn-shoulder",
+   "op": "landform.stage",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "centre": [
+     -97,
+     -7
+    ],
+    "rx": 12.0,
+    "rz": 9.5,
+    "jag": {
+     "amp": 0.12,
+     "cell": 6,
+     "octaves": 2,
+     "seed": 44
+    },
+    "rings": [
+     {
+      "radius": 1.0,
+      "y": 59
+     },
+     {
+      "radius": 1.55,
+      "y": "min(ground, 59) blended"
+     }
+    ]
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:246-251",
+   "gap": "landform.stage rings are circular and in blocks; this one is elliptical and in normalised radius."
+  },
+  {
+   "id": "flat-square",
+   "op": "landform.blend",
+   "class": "A",
+   "lib": "pgmvox.landform.blend",
+   "params": {
+    "to": 52,
+    "mask": "disc (-66,-44) r 19",
+    "width": 8,
+    "level_radius": 11
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:253-256"
+  },
+  {
+   "id": "flat-green",
+   "op": "landform.blend",
+   "class": "A",
+   "lib": "pgmvox.landform.blend",
+   "params": {
+    "to": 50,
+    "mask": "disc (-66,48) r 17",
+    "width": 8,
+    "level_radius": 9
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:253-256"
+  },
+  {
+   "id": "knoll",
+   "op": "landform.spire",
+   "class": "A",
+   "lib": "pgmvox.landform.spire",
+   "params": {
+    "centre": [
+     -22,
+     74
+    ],
+    "r": 16,
+    "top": "ground + 6.5",
+    "taper": 0.7,
+    "jag": 0.0,
+    "z_stretch": 1.25
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:258-260",
+   "gap": "spire is round; the port stretches z to make the ellipse."
+  },
+  {
+   "id": "river",
+   "op": "landform.watercourse",
+   "class": "A",
+   "lib": "pgmvox.landform.watercourse",
+   "params": {
+    "path": "place:Red River spline, points with x <= -10",
+    "width": 6.6,
+    "depth": 4,
+    "water": 3,
+    "bank": 1,
+    "fall_min": 2,
+    "reach_min": 4
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:262-267",
+   "gap": "Levels are not stated: the port shapes the valley first (op 'valley') so that the watercourse's own levels come out 48 and 45 with the weir at x -66. A levels=[(s, y)] parameter would say it directly.",
+   "writes": {
+    "water": "river",
+    "falls": "river.falls"
+   }
+  },
+  {
+   "id": "pond-outlet-water",
+   "op": "water.surface",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "channel": "river.mask & reach & land",
+    "pond": 48,
+    "outlet": {
+     "centre": [
+      -74,
+      22
+     ],
+     "r": 4,
+     "level": 48
+    },
+    "wet_ground": "min(ground, water - 1)"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:269-277",
+   "note": "bookkeeping of the water grid: surface per column, wet columns' ground is their bed"
+  },
+  {
+   "id": "grade-spawn-lane",
+   "op": "landform.grade",
+   "class": "A",
+   "lib": "pgmvox.landform.grade",
+   "params": {
+    "route": "Spawn Lane",
+    "width": 3,
+    "max_grade": 0.25,
+    "shoulder": 2,
+    "spline_step": 1.0,
+    "water": "water > 0",
+    "keep": "routes graded before this one"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+  },
+  {
+   "id": "grade-spawn-lane-south",
+   "op": "landform.grade",
+   "class": "A",
+   "lib": "pgmvox.landform.grade",
+   "params": {
+    "route": "Spawn Lane south",
+    "width": 3,
+    "max_grade": 0.25,
+    "shoulder": 2,
+    "spline_step": 1.0,
+    "water": "water > 0",
+    "keep": "routes graded before this one"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+  },
+  {
+   "id": "grade-main-street",
+   "op": "landform.grade",
+   "class": "A",
+   "lib": "pgmvox.landform.grade",
+   "params": {
+    "route": "Main Street",
+    "width": 5,
+    "max_grade": 0.25,
+    "shoulder": 2,
+    "spline_step": 1.0,
+    "water": "water > 0",
+    "keep": "routes graded before this one"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+  },
+  {
+   "id": "grade-bridge-street",
+   "op": "landform.grade",
+   "class": "A",
+   "lib": "pgmvox.landform.grade",
+   "params": {
+    "route": "Bridge Street",
+    "width": 5,
+    "max_grade": 0.25,
+    "shoulder": 2,
+    "spline_step": 1.0,
+    "water": "water > 0",
+    "keep": "routes graded before this one"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+  },
+  {
+   "id": "grade-north-lane",
+   "op": "landform.grade",
+   "class": "A",
+   "lib": "pgmvox.landform.grade",
+   "params": {
+    "route": "North Lane",
+    "width": 3,
+    "max_grade": 0.25,
+    "shoulder": 2,
+    "spline_step": 1.0,
+    "water": "water > 0",
+    "keep": "routes graded before this one"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+  },
+  {
+   "id": "grade-mill-lane",
+   "op": "landform.grade",
+   "class": "A",
+   "lib": "pgmvox.landform.grade",
+   "params": {
+    "route": "Mill Lane",
+    "width": 3,
+    "max_grade": 0.25,
+    "shoulder": 2,
+    "spline_step": 1.0,
+    "water": "water > 0",
+    "keep": "routes graded before this one"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+  },
+  {
+   "id": "grade-field-road",
+   "op": "landform.grade",
+   "class": "A",
+   "lib": "pgmvox.landform.grade",
+   "params": {
+    "route": "Field Road",
+    "width": 3,
+    "max_grade": 0.25,
+    "shoulder": 2,
+    "spline_step": 1.0,
+    "water": "water > 0",
+    "keep": "routes graded before this one"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+  },
+  {
+   "id": "grade-farm-track",
+   "op": "landform.grade",
+   "class": "A",
+   "lib": "pgmvox.landform.grade",
+   "params": {
+    "route": "Farm Track",
+    "width": 3,
+    "max_grade": 0.25,
+    "shoulder": 2,
+    "spline_step": 1.0,
+    "water": "water > 0",
+    "keep": "routes graded before this one"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+  },
+  {
+   "id": "grade-falls-walk",
+   "op": "landform.grade",
+   "class": "A",
+   "lib": "pgmvox.landform.grade",
+   "params": {
+    "route": "Falls Walk",
+    "width": 3,
+    "max_grade": 0.25,
+    "shoulder": 2,
+    "spline_step": 1.0,
+    "water": "water > 0",
+    "keep": "routes graded before this one"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+  },
+  {
+   "id": "grade-spring-path",
+   "op": "landform.grade",
+   "class": "A",
+   "lib": "pgmvox.landform.grade",
+   "params": {
+    "route": "Spring Path",
+    "width": 3,
+    "max_grade": 0.25,
+    "shoulder": 2,
+    "spline_step": 1.0,
+    "water": "water > 0",
+    "keep": "routes graded before this one"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+  },
+  {
+   "id": "grade-village-road",
+   "op": "landform.grade",
+   "class": "A",
+   "lib": "pgmvox.landform.grade",
+   "params": {
+    "route": "Village Road",
+    "width": 3,
+    "max_grade": 0.25,
+    "shoulder": 2,
+    "spline_step": 1.0,
+    "water": "water > 0",
+    "keep": "routes graded before this one"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+  },
+  {
+   "id": "grade-forest-path",
+   "op": "landform.grade",
+   "class": "A",
+   "lib": "pgmvox.landform.grade",
+   "params": {
+    "route": "Forest Path",
+    "width": 2,
+    "max_grade": 0.25,
+    "shoulder": 2,
+    "spline_step": 1.0,
+    "water": "water > 0",
+    "keep": "routes graded before this one"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+  },
+  {
+   "id": "grade-clearing-path",
+   "op": "landform.grade",
+   "class": "A",
+   "lib": "pgmvox.landform.grade",
+   "params": {
+    "route": "Clearing Path",
+    "width": 2,
+    "max_grade": 0.25,
+    "shoulder": 2,
+    "spline_step": 1.0,
+    "water": "water > 0",
+    "keep": "routes graded before this one"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+  },
+  {
+   "id": "square-floor",
+   "op": "landform.level",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "rect": [
+     [
+      -76,
+      -53
+     ],
+     [
+      -56,
+      -34
+     ]
+    ],
+    "y": 52,
+    "corner_radius": 3.2
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:291-295"
+  },
+  {
+   "id": "green-floor",
+   "op": "landform.level",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "disc": [
+     -66,
+     48,
+     8.5
+    ],
+    "y": 50,
+    "not_water": true
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:296-297"
+  },
+  {
+   "id": "sinkhole-funnel",
+   "op": "landform.sinkhole",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "centre": [
+     -50,
+     38
+    ],
+    "floor": 38,
+    "radius": 10.5,
+    "bowl_from": 1.5,
+    "step_per_block": 1.0
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:299-304",
+   "gap": "Concentric one-block steps from a cave floor to the field, so a player climbs out. Edits the heightfield; its rubble is a separate volume op."
+  },
+  {
+   "id": "spoil-heap",
+   "op": "landform.mound",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "centre": [
+     -101,
+     79
+    ],
+    "rx": 7,
+    "rz": 5.6,
+    "height": 6,
+    "profile": "1-d^1.6"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:305-309"
+  },
+  {
+   "id": "underside",
+   "op": "terrain.underside",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "rule": "thickness = min(4 + 0.9*d_outer + 4n, 26 + 1.2*d_rift + 4n); bottom = max(ground - thickness, 4 + 3m)",
+    "d_rift_zone": "x > -14",
+    "n": {
+     "cell": 9,
+     "octaves": 3,
+     "seed": 51
+    },
+    "m": {
+     "cell": 16,
+     "octaves": 2,
+     "seed": 52
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:311-317",
+   "gap": "underside(mask, top_y, depth(d)) takes one distance and one top_y; here two distances take a minimum and the top is the per-column ground."
+  },
+  {
+   "id": "lay",
+   "op": "terrain.lay",
+   "class": "A",
+   "lib": "pgmvox.terrain.lay",
+   "params": {
+    "mask": "land",
+    "rock": "Strata([(STONE:0, 3, 6), (STONE:5, 1.4, 3)], length 60, seed 7, start -300)",
+    "bands": {
+     "beds": "follow the ground: offset = the column's height",
+     "flecks": [
+      [
+       "STONE:0",
+       "COBBLE:0",
+       0.04
+      ]
+     ],
+     "seed": 3
+    },
+    "top": {
+     "by_angle": [
+      [
+       38,
+       "GRASS:0"
+      ],
+      [
+       55,
+       "GRASS:0"
+      ],
+      [
+       90,
+       "STONE:0"
+      ]
+     ]
+    },
+    "from_y": 3
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/ground.py:71-74",
+   "writes": {
+    "blocks": "908,648 (90.7% of the world)"
+   }
+  },
+  {
+   "id": "lay-local-pass",
+   "op": "terrain.lay.finish",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "clear_below": "per-column bottom (underside)",
+    "water": {
+     "pond_or_x_lt_-74": [
+      [
+       "CLAY:0",
+       0.3
+      ],
+      [
+       "SAND:0",
+       0.3
+      ],
+      [
+       "DIRT:0",
+       0.4
+      ]
+     ],
+     "river": [
+      [
+       "GRAVEL:0",
+       0.55
+      ],
+      [
+       "SAND:0",
+       0.25
+      ],
+      [
+       "STONE:5",
+       0.2
+      ]
+     ],
+     "fill": "WATER up to the column's water level"
+    },
+    "patches": {
+     "worn_edge": {
+      "slope": [
+       33,
+       38
+      ],
+      "noise_gt": 0.35,
+      "block": "DIRT:1"
+     },
+     "mid_slope": {
+      "slope": [
+       38,
+       55
+      ],
+      "noise_gt_grass": 0.15,
+      "rock": [
+       "STONE:5",
+       "STONE:0"
+      ],
+      "else": "DIRT:1"
+     },
+     "rock_top": {
+      "slope_gt": 55,
+      "mix": [
+       [
+        "STONE:0",
+        0.45
+       ],
+       [
+        "STONE:5",
+        0.35
+       ],
+       [
+        "COBBLE:0",
+        0.2
+       ]
+      ]
+     }
+    },
+    "sandy_lip": {
+     "d_river_lt": 5.2,
+     "x_gt": -75,
+     "top_le": 47,
+     "slope_lt": 38,
+     "blocks": [
+      "SAND:0",
+      "GRAVEL:0"
+     ],
+     "noise": {
+      "cell": 4,
+      "octaves": 2,
+      "seed": 62
+     }
+    },
+    "biomes": {
+     "forest(4)": "place:North Wood or x < -100",
+     "river(7)": "water columns",
+     "plains(1)": "else"
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/ground.py:75-110",
+   "gap": "terrain.lay paints the top by slope only (no position) and lays from one floor y; the port lays from y 3 then clears below the per-column bottom (455,476 blocks cleared in the red half). lay(bottom=array, top(deg, x, z)) would absorb this pass."
+  },
+  {
+   "id": "falls",
+   "op": "landform.waterfall",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "where": "every z whose last wet column is at x >= -14",
+    "from": "lip + 1",
+    "to_x": -10,
+    "y": [
+     8,
+     "water level"
+    ],
+    "block": "WATER_FLOW:8",
+    "only_into": "air"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/ground.py:114-128"
+  }
+ ],
+ "volume": [
+  {
+   "id": "cave-gallery",
+   "op": "under.tunnel",
+   "class": "A",
+   "lib": "pgmvox.under.tunnel",
+   "params": {
+    "pts": [
+     [
+      -9,
+      36,
+      2,
+      2.6
+     ],
+     [
+      -14,
+      36,
+      3,
+      3.0
+     ],
+     [
+      -20,
+      35,
+      5,
+      3.4
+     ],
+     [
+      -27,
+      34,
+      8,
+      3.2
+     ],
+     [
+      -34,
+      33,
+      11,
+      3.6
+     ],
+     [
+      -40,
+      32,
+      14,
+      4.0
+     ]
+    ],
+    "cover": 3,
+    "lift": 0.45,
+    "keep": "x >= -1",
+    "ground": "heightfield"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:33-34,187-188"
+  },
+  {
+   "id": "cave-south",
+   "op": "under.tunnel",
+   "class": "A",
+   "lib": "pgmvox.under.tunnel",
+   "params": {
+    "pts": [
+     [
+      -40,
+      32,
+      14,
+      3.0
+     ],
+     [
+      -44,
+      33,
+      20,
+      2.8
+     ],
+     [
+      -47,
+      35,
+      27,
+      2.6
+     ],
+     [
+      -49,
+      37,
+      33,
+      2.8
+     ],
+     [
+      -50,
+      39,
+      38,
+      3.0
+     ]
+    ],
+    "cover": 3,
+    "lift": 0.45,
+    "keep": "x >= -1",
+    "ground": "heightfield"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:33-34,187-188"
+  },
+  {
+   "id": "cave-north",
+   "op": "under.tunnel",
+   "class": "A",
+   "lib": "pgmvox.under.tunnel",
+   "params": {
+    "pts": [
+     [
+      -40,
+      32,
+      14,
+      3.0
+     ],
+     [
+      -43,
+      32,
+      7,
+      2.6
+     ],
+     [
+      -46,
+      33,
+      0,
+      2.6
+     ],
+     [
+      -49,
+      35,
+      -8,
+      2.8
+     ],
+     [
+      -52,
+      37,
+      -15,
+      2.6
+     ],
+     [
+      -53,
+      40,
+      -21,
+      2.5
+     ],
+     [
+      -53,
+      42,
+      -27,
+      2.2
+     ]
+    ],
+    "cover": 3,
+    "lift": 0.45,
+    "keep": "x >= -1",
+    "ground": "heightfield"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:33-34,187-188"
+  },
+  {
+   "id": "cave-grotto",
+   "op": "under.tunnel",
+   "class": "A",
+   "lib": "pgmvox.under.tunnel",
+   "params": {
+    "pts": [
+     [
+      -46,
+      33,
+      0,
+      2.2
+     ],
+     [
+      -50,
+      33,
+      2,
+      2.0
+     ],
+     [
+      -54,
+      33,
+      4,
+      2.4
+     ],
+     [
+      -58,
+      33,
+      5,
+      2.2
+     ]
+    ],
+    "cover": 3,
+    "lift": 0.45,
+    "keep": "x >= -1",
+    "ground": "heightfield"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:33-34,187-188"
+  },
+  {
+   "id": "cave-west",
+   "op": "under.tunnel",
+   "class": "A",
+   "lib": "pgmvox.under.tunnel",
+   "params": {
+    "pts": [
+     [
+      -49,
+      37,
+      33,
+      2.4
+     ],
+     [
+      -53,
+      38,
+      35,
+      2.2
+     ],
+     [
+      -57,
+      39,
+      37,
+      2.0
+     ]
+    ],
+    "cover": 3,
+    "lift": 0.45,
+    "keep": "x >= -1",
+    "ground": "heightfield"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:33-34,187-188"
+  },
+  {
+   "id": "chamber-lake-chamber",
+   "op": "under.chamber",
+   "class": "A",
+   "lib": "pgmvox.under.chamber",
+   "params": {
+    "cx": -40,
+    "floor_y": 31,
+    "cz": 15,
+    "rx": 8.5,
+    "h": 4.8,
+    "keep": "x >= -1",
+    "cover": 3
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190",
+   "note": "lake chamber"
+  },
+  {
+   "id": "chamber-1",
+   "op": "under.chamber",
+   "class": "A",
+   "lib": "pgmvox.under.chamber",
+   "params": {
+    "cx": -43,
+    "floor_y": 31,
+    "cz": 12,
+    "rx": 5.5,
+    "h": 4.0,
+    "keep": "x >= -1",
+    "cover": 3
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190"
+  },
+  {
+   "id": "chamber-pillar-hall",
+   "op": "under.chamber",
+   "class": "A",
+   "lib": "pgmvox.under.chamber",
+   "params": {
+    "cx": -46,
+    "floor_y": 34,
+    "cz": 26,
+    "rx": 7.5,
+    "h": 4.2,
+    "keep": "x >= -1",
+    "cover": 3
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190",
+   "note": "pillar hall"
+  },
+  {
+   "id": "chamber-3",
+   "op": "under.chamber",
+   "class": "A",
+   "lib": "pgmvox.under.chamber",
+   "params": {
+    "cx": -43,
+    "floor_y": 34,
+    "cz": 23,
+    "rx": 5.0,
+    "h": 3.6,
+    "keep": "x >= -1",
+    "cover": 3
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190"
+  },
+  {
+   "id": "chamber-grotto",
+   "op": "under.chamber",
+   "class": "A",
+   "lib": "pgmvox.under.chamber",
+   "params": {
+    "cx": -60,
+    "floor_y": 33,
+    "cz": 6,
+    "rx": 3.6,
+    "h": 3.0,
+    "keep": "x >= -1",
+    "cover": 3
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190",
+   "note": "grotto"
+  },
+  {
+   "id": "chamber-5",
+   "op": "under.chamber",
+   "class": "A",
+   "lib": "pgmvox.under.chamber",
+   "params": {
+    "cx": -18,
+    "floor_y": 35,
+    "cz": 9,
+    "rx": 2.2,
+    "h": 2.0,
+    "keep": "x >= -1",
+    "cover": 3
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190"
+  },
+  {
+   "id": "chamber-6",
+   "op": "under.chamber",
+   "class": "A",
+   "lib": "pgmvox.under.chamber",
+   "params": {
+    "cx": -26,
+    "floor_y": 34,
+    "cz": 2,
+    "rx": 2.0,
+    "h": 2.0,
+    "keep": "x >= -1",
+    "cover": 3
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190"
+  },
+  {
+   "id": "chamber-7",
+   "op": "under.chamber",
+   "class": "A",
+   "lib": "pgmvox.under.chamber",
+   "params": {
+    "cx": -31,
+    "floor_y": 33,
+    "cz": 15,
+    "rx": 2.4,
+    "h": 2.0,
+    "keep": "x >= -1",
+    "cover": 3
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190"
+  },
+  {
+   "id": "chamber-8",
+   "op": "under.chamber",
+   "class": "A",
+   "lib": "pgmvox.under.chamber",
+   "params": {
+    "cx": -48,
+    "floor_y": 36,
+    "cz": 31,
+    "rx": 2.0,
+    "h": 2.0,
+    "keep": "x >= -1",
+    "cover": 3
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190"
+  },
+  {
+   "id": "chamber-9",
+   "op": "under.chamber",
+   "class": "A",
+   "lib": "pgmvox.under.chamber",
+   "params": {
+    "cx": -50,
+    "floor_y": 35,
+    "cz": -6,
+    "rx": 2.0,
+    "h": 2.0,
+    "keep": "x >= -1",
+    "cover": 3
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190"
+  },
+  {
+   "id": "pillars",
+   "op": "under.pillars",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "around": [
+     -46,
+     26
+    ],
+    "count": 7,
+    "radius": [
+     2.5,
+     6.0
+    ],
+    "squash_z": 0.9,
+    "wide_p": 0.4,
+    "y": [
+     33,
+     42
+    ],
+    "block": "STONE:5/0 by (y+x)%3",
+    "only_into": "air",
+    "seed": 8
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:53-62"
+  },
+  {
+   "id": "cave-dress",
+   "op": "under.dress_cave",
+   "class": "A",
+   "lib": "pgmvox.under.dress_cave",
+   "params": {
+    "box": [
+     -64,
+     -9,
+     -30,
+     45,
+     26,
+     46
+    ],
+    "keep": "x >= -1",
+    "cover": 2
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:192"
+  },
+  {
+   "id": "grotto-stash",
+   "op": "prop.chest",
+   "class": "A",
+   "local": true,
+   "params": {
+    "at": [
+     -62,
+     33,
+     6
+    ],
+    "facing": 5,
+    "items": [
+     [
+      0,
+      "golden_apple",
+      2
+     ],
+     [
+      1,
+      "arrow",
+      32
+     ],
+     [
+      4,
+      "iron_leggings",
+      1
+     ],
+     [
+      13,
+      "paper",
+      3
+     ]
+    ],
+    "with": [
+     {
+      "WOOD_SLAB:1": [
+       -62,
+       33,
+       7
+      ]
+     },
+     {
+      "PLANKS:1": [
+       -61,
+       33,
+       4
+      ]
+     },
+     {
+      "TORCH": [
+       -60,
+       33,
+       8
+      ]
+     }
+    ]
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:65-71",
+   "gap": "chest prop exists; the three loose blocks are hand-placed"
+  },
+  {
+   "id": "lake-pool",
+   "op": "under.pool",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "centre": [
+     -40,
+     31,
+     15
+    ],
+    "rx": 5.5,
+    "rz": 4.2,
+    "z_shift": 1,
+    "water": "WATER:0",
+    "depth": {
+     "centre": 2,
+     "rim": 1,
+     "centre_frac": 0.6
+    },
+    "bed": [
+     [
+      "CLAY:0",
+      "d<0.5"
+     ],
+     [
+      "GRAVEL:0",
+      "else"
+     ]
+    ]
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:41-50"
+  },
+  {
+   "id": "cave-mouth",
+   "op": "made",
+   "class": "C",
+   "local": true,
+   "params": {
+    "id": "cave-mouth",
+    "source_fn": "under.mouth",
+    "box": [
+     -11,
+     34,
+     -1,
+     -10,
+     41,
+     9
+    ],
+    "blocks_red_half": 26,
+    "content": "a two-wide stone ledge (STONE:5/0 by (x+z)%3) at y 35 over x -11..-10, z 1..9 (x=-10 only z>=4), a second layer at y 34 for z>=5, three blocks of air cleared above it, vines hung at x -11, y 39..41, z -1..5 with p 0.5 where rock stands behind",
+    "mirror": "x' = -1 - x"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:74-89",
+   "note": "Bespoke: stands in a void column inside the build zone and reads the world to hang vines only against rock."
+  },
+  {
+   "id": "sinkhole-rubble",
+   "op": "under.rubble",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "area": "the funnel of op sinkhole-funnel",
+    "mix": [
+     [
+      "GRAVEL:0",
+      0.35
+     ],
+     [
+      "DIRT:1",
+      0.25
+     ],
+     [
+      "STONE:5",
+      0.2
+     ],
+     [
+      "COBBLE:0",
+      0.2
+     ]
+    ],
+    "grass_rim": "d > radius - 1.5",
+    "hold_up": "STONE:5 under any step over air"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:92-106"
+  },
+  {
+   "id": "mine-gallery",
+   "op": "under.gallery",
+   "class": "A",
+   "lib": "pgmvox.under.gallery",
+   "params": {
+    "line": "gallery_line(MINE)",
+    "waypoints": [
+     [
+      -104,
+      59,
+      5
+     ],
+     [
+      -104,
+      57,
+      11
+     ],
+     [
+      -103,
+      53,
+      23
+     ],
+     [
+      -100,
+      50,
+      31
+     ],
+     [
+      -95,
+      47,
+      40
+     ],
+     [
+      -89,
+      45,
+      48
+     ],
+     [
+      -84,
+      45,
+      56
+     ],
+     [
+      -76,
+      44,
+      52
+     ],
+     [
+      -68,
+      42,
+      46
+     ],
+     [
+      -62,
+      40,
+      41
+     ],
+     [
+      -57,
+      39,
+      37
+     ]
+    ],
+    "floor": [
+     [
+      "GRAVEL:0",
+      1
+     ],
+     [
+      "STONE:0",
+      1
+     ],
+     [
+      "STONE:5",
+      1
+     ]
+    ],
+    "timber": "on level floor only"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:109-112"
+  },
+  {
+   "id": "mine-portal",
+   "op": "prop.portal",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "at": [
+     -104,
+     59,
+     5
+    ],
+    "frame": "LOG:1 posts, LOG:5 head, 5 wide 4 high at z+(-1)",
+    "clear": "3 wide 3 high, 3 deep",
+    "foreman_chest": {
+     "at": [
+      -61,
+      40,
+      42
+     ],
+     "facing": 3,
+     "items": [
+      [
+       0,
+       "iron_ingot",
+       6
+      ],
+      [
+       1,
+       "bread",
+       8
+      ],
+      [
+       4,
+       "torch",
+       16
+      ],
+      [
+       13,
+       "iron_pickaxe",
+       1
+      ]
+     ]
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:113-124"
+  },
+  {
+   "id": "mine-shaft",
+   "op": "under.shaft",
+   "class": "A",
+   "lib": "pgmvox.under.shaft",
+   "params": {
+    "x": -84,
+    "z": 56,
+    "bottom": 45,
+    "top": "ground",
+    "ladder_on": "s"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:127-132"
+  },
+  {
+   "id": "gaol-cellar",
+   "op": "made",
+   "class": "C",
+   "local": true,
+   "params": {
+    "id": "gaol-cellar",
+    "source_fn": "under.cellar",
+    "box": [
+     -55,
+     42,
+     -37,
+     -49,
+     48,
+     -31
+    ],
+    "blocks_red_half": 259,
+    "content": "vault x -55..-49, z -37..-31, floor y 43, roof y 48: stone-brick shell (70% plain, 18% cracked, 12% mossy), three iron-barred cells with iron doors on the north wall and partition walls, a chest (arrow, golden apple, iron chestplate, bone), two torches; the south wall is broken through into the cave: a ragged breach, a four-deep passage, gravel floor",
+    "ties": [
+     "breach opens onto the cave's 'north' branch",
+     "gaol_ladder at (-50, 43..52, -33)"
+    ],
+    "mirror": "x' = -1 - x"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:135-170"
+  }
+ ],
+ "pieces": [
+  {
+   "id": "map",
+   "op": "map.meta",
+   "class": "A",
+   "lib": "pgmvox.mapxml.Doc",
+   "params": {
+    "name": "Riftwater",
+    "version": "0.2.0",
+    "gamemode": "dtm",
+    "objective": "Destroy both of the enemy's monuments: one in their market square, one on their village green.",
+    "authors": [
+     "Claude (freeform generator, ported onto pgmvox)"
+    ],
+    "contributors": [
+     {
+      "name": "rockymine",
+      "contribution": "Built the oak and birch trees (tree showcase)"
+     }
+    ],
+    "teams": [
+     {
+      "id": "red-team",
+      "name": "Red",
+      "color": "red",
+      "max": 16
+     },
+     {
+      "id": "blue-team",
+      "name": "Blue",
+      "color": "blue",
+      "max": 16
+     }
+    ],
+    "maxbuildheight": 90
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/mapxml.py:5-14,40"
+  },
+  {
+   "id": "kit",
+   "op": "play.kit",
+   "class": "A",
+   "lib": "pgmvox.mapxml.E",
+   "params": {
+    "id": "spawn-kit",
+    "items": [
+     {
+      "slot": 0,
+      "material": "iron sword",
+      "unbreakable": true
+     },
+     {
+      "slot": 1,
+      "material": "bow",
+      "unbreakable": true,
+      "enchant": "infinity 1"
+     },
+     {
+      "slot": 2,
+      "material": "diamond pickaxe",
+      "unbreakable": true
+     },
+     {
+      "slot": 3,
+      "material": "iron axe",
+      "unbreakable": true
+     },
+     {
+      "slot": 4,
+      "material": "wood",
+      "amount": 64
+     },
+     {
+      "slot": 5,
+      "material": "stained clay",
+      "amount": 32,
+      "team_color": true
+     },
+     {
+      "slot": 6,
+      "material": "golden apple",
+      "amount": 1
+     },
+     {
+      "slot": 7,
+      "material": "water bucket"
+     },
+     {
+      "slot": 8,
+      "material": "cooked beef",
+      "amount": 16
+     },
+     {
+      "slot": 28,
+      "material": "arrow"
+     },
+     {
+      "helmet": "leather helmet",
+      "team_color": true
+     },
+     {
+      "chestplate": "iron chestplate"
+     },
+     {
+      "leggings": "chainmail leggings"
+     },
+     {
+      "boots": "leather boots",
+      "team_color": true
+     }
+    ]
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/mapxml.py:15-31",
+   "gap": "No kit helper in pgmvox.mapxml; written with E by hand (PORT-REPORT)."
+  },
+  {
+   "id": "spawn-red",
+   "op": "play.spawn",
+   "class": "A",
+   "lib": "pgmvox.objectives.Spawn",
+   "params": {
+    "team": "red-team",
+    "kit": "spawn-kit",
+    "at": [
+     -98,
+     60,
+     -7
+    ],
+    "yaw": 270,
+    "area": {
+     "box": [
+      -108,
+      0,
+      -14,
+      -85,
+      127,
+      -1
+     ],
+     "enter": "only red-team",
+     "build": "never"
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:42-43,573",
+   "mirror": "blue-team: the same, turned by Symmetry mirror_x"
+  },
+  {
+   "id": "observer",
+   "op": "play.observer",
+   "class": "A",
+   "lib": "pgmvox.objectives.Observer",
+   "params": {
+    "at": [
+     0,
+     80,
+     0
+    ],
+    "yaw": 90,
+    "mirror": false
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:576"
+  },
+  {
+   "id": "monument-square",
+   "op": "play.destroyable",
+   "class": "A",
+   "lib": "pgmvox.objectives.Destroyable",
+   "params": {
+    "id": "red-square",
+    "name": "Market Square Monument",
+    "owner": "red-team",
+    "block": "OBSIDIAN:0",
+    "box": [
+     -66,
+     54,
+     -44,
+     -66,
+     55,
+     -44
+    ],
+    "ground_y": 52,
+    "air_under": 1,
+    "region_written_from": "the same box that is stamped"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:44-45,574-575",
+   "note": "the stamped blocks and the map.xml cuboid come from one Box, so they cannot disagree",
+   "mirror": "blue-square: box turned by Symmetry"
+  },
+  {
+   "id": "monument-green",
+   "op": "play.destroyable",
+   "class": "A",
+   "lib": "pgmvox.objectives.Destroyable",
+   "params": {
+    "id": "red-green",
+    "name": "Winding Green Monument",
+    "owner": "red-team",
+    "block": "OBSIDIAN:0",
+    "box": [
+     -66,
+     52,
+     48,
+     -66,
+     53,
+     48
+    ],
+    "ground_y": 50,
+    "air_under": 1,
+    "region_written_from": "the same box that is stamped"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:44-45,574-575",
+   "note": "the stamped blocks and the map.xml cuboid come from one Box, so they cannot disagree",
+   "mirror": "blue-green: box turned by Symmetry"
+  },
+  {
+   "id": "rules",
+   "op": "play.regions",
+   "class": "A",
+   "lib": "pgmvox.mapxml.E",
+   "params": {
+    "build_rift": {
+     "rect": [
+      [
+       -16,
+       -88
+      ],
+      [
+       16,
+       88
+      ]
+     ],
+     "rule": "block unless void: 'You may only bridge over the rift!'"
+    },
+    "filters": [
+     {
+      "not": "no-void",
+      "of": "void"
+     }
+    ]
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/mapxml.py:32-35"
+  }
+ ],
+ "buildings": [
+  {
+   "id": "styles",
+   "op": "library.house-styles",
+   "class": "B",
+   "lib": "pgmvox.build.House(style=dict)",
+   "params": {
+    "town": {
+     "ground": [
+      "BRICK:0"
+     ],
+     "upper": [
+      "STAINED_CLAY:0"
+     ],
+     "post": "STONE",
+     "gable": "PLANKS:1",
+     "floor": "PLANKS:1",
+     "roof": "PLANKS:5",
+     "stair": "DARK_OAK_STAIRS",
+     "slab": "WOOD_SLAB:5",
+     "door": "SPRUCE_DOOR",
+     "window": "PANE:0",
+     "chimney": "BRICK:0"
+    },
+    "village": {
+     "ground": [
+      "PLANKS:1"
+     ],
+     "upper": [
+      "PLANKS:1"
+     ],
+     "post": "STONE",
+     "gable": "PLANKS:0",
+     "floor": "PLANKS:0",
+     "roof": "PLANKS:1",
+     "stair": "SPRUCE_STAIRS",
+     "slab": "WOOD_SLAB:1",
+     "door": "SPRUCE_DOOR",
+     "window": "PANE:0",
+     "chimney": "COBBLE:0"
+    },
+    "stone": {
+     "ground": [
+      "STONEBRICK:0",
+      "STONEBRICK:0",
+      "STONEBRICK:2"
+     ],
+     "upper": [
+      "STONEBRICK:0"
+     ],
+     "post": null,
+     "gable": "STONEBRICK:0",
+     "floor": "PLANKS:5",
+     "roof": "PLANKS:5",
+     "stair": "DARK_OAK_STAIRS",
+     "slab": "WOOD_SLAB:5",
+     "door": "DARK_OAK_DOOR",
+     "window": "IRON_BARS:0",
+     "chimney": "STONEBRICK:0"
+    },
+    "mill": {
+     "ground": [
+      "STONEBRICK:0",
+      "COBBLE:0"
+     ],
+     "upper": [
+      "PLANKS:1"
+     ],
+     "post": "STONE",
+     "gable": "PLANKS:1",
+     "floor": "PLANKS:1",
+     "roof": "PLANKS:5",
+     "stair": "DARK_OAK_STAIRS",
+     "slab": "WOOD_SLAB:5",
+     "door": "DARK_OAK_DOOR",
+     "window": "PANE:0"
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:338-351",
+   "gap": "The studio's house JSON carries foundation, roof, wall, post, windows, storeys, porch, front, beams, doorway; pgmvox's House style is a dict of material slots. Neither carries a furnished interior; the port has none (the original had one)."
+  },
+  {
+   "id": "sites",
+   "op": "place.house-sites",
+   "class": "B",
+   "lib": "pgmvox.build.site",
+   "params": {
+    "for_each": "every house in 'houses', all pads first",
+    "margin": 2,
+    "fill": "STONE:0",
+    "top": "GRASS:0",
+    "ground_at": "world top"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/works.py:48-52",
+   "note": "all pads before any wall, so a later pad's eased ring cannot cut an earlier wall"
+  },
+  {
+   "id": "house-hall",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -74,
+     -64,
+     -59,
+     -56
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "s",
+    "floor": 52
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-h1",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -54,
+     -56,
+     -48,
+     -48
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "s"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-shop1",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -46,
+     -55,
+     -41,
+     -48
+    ],
+    "storeys": 3,
+    "style": "town",
+    "door": "s",
+    "sign": "Chandler"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-h2",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -36,
+     -56,
+     -29,
+     -48
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "s"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-bakery",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -27,
+     -54,
+     -22,
+     -48
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "s",
+    "sign": "Bakery"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-h3",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -20,
+     -55,
+     -15,
+     -48
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "s"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-h4",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -37,
+     -40,
+     -30,
+     -33
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "n"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-shop2",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -27,
+     -40,
+     -21,
+     -34
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "n",
+    "sign": "Cooper"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-h5",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -18,
+     -40,
+     -14,
+     -35
+    ],
+    "storeys": 1,
+    "style": "town",
+    "door": "n"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-gaol",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -56,
+     -38,
+     -48,
+     -30
+    ],
+    "storeys": 2,
+    "style": "stone",
+    "door": "w",
+    "floor": 52,
+    "inside": true
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-h6",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -49,
+     -26,
+     -43,
+     -19
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "e"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-h7",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -48,
+     -15,
+     -43,
+     -11
+    ],
+    "storeys": 1,
+    "style": "town",
+    "door": "e"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-inn",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -33,
+     -28,
+     -24,
+     -17
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "w",
+    "sign": "The Falls Inn"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-h8",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -34,
+     -78,
+     -28,
+     -70
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "s"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-h9",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -24,
+     -80,
+     -18,
+     -73
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "s"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-shop3",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -69,
+     -80,
+     -61,
+     -72
+    ],
+    "storeys": 1,
+    "style": "town",
+    "door": "s",
+    "sign": "Saddler"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-chapel",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -50,
+     -80,
+     -38,
+     -71
+    ],
+    "storeys": 2,
+    "style": "stone",
+    "door": "s",
+    "chimney": false
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-watch",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -102,
+     -11,
+     -94,
+     -3
+    ],
+    "storeys": 2,
+    "style": "town",
+    "door": "e",
+    "floor": 59,
+    "inside": true
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-hut",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -107,
+     -67,
+     -102,
+     -62
+    ],
+    "storeys": 1,
+    "style": "village",
+    "door": "e"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-mill",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -67,
+     1,
+     -58,
+     7
+    ],
+    "storeys": 2,
+    "style": "mill",
+    "door": "n"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-c1",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -98,
+     38,
+     -92,
+     44
+    ],
+    "storeys": 1,
+    "style": "village",
+    "door": "e"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-tall",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -99,
+     49,
+     -92,
+     55
+    ],
+    "storeys": 2,
+    "style": "village",
+    "door": "e"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-wing",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -98,
+     45,
+     -93,
+     48
+    ],
+    "storeys": 1,
+    "style": "village",
+    "door": "n",
+    "floor_of": "tall",
+    "chimney": false
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-c2",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -97,
+     61,
+     -91,
+     68
+    ],
+    "storeys": 1,
+    "style": "village",
+    "door": "e"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-big",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -90,
+     71,
+     -82,
+     76
+    ],
+    "storeys": 2,
+    "style": "village",
+    "door": "n"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-lean",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -95,
+     72,
+     -91,
+     76
+    ],
+    "storeys": 1,
+    "style": "village",
+    "door": "n",
+    "floor_of": "big"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-c3",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -79,
+     69,
+     -74,
+     75
+    ],
+    "storeys": 1,
+    "style": "village",
+    "door": "n"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-engine",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -80,
+     49,
+     -75,
+     55
+    ],
+    "storeys": 1,
+    "style": "stone",
+    "door": "w",
+    "chimney": false
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "house-smithy",
+   "op": "place.house",
+   "class": "B",
+   "lib": "pgmvox.build.house",
+   "params": {
+    "box": [
+     -78,
+     59,
+     -72,
+     64
+    ],
+    "storeys": 1,
+    "style": "village",
+    "door": "w",
+    "chimney": false
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+  },
+  {
+   "id": "square-carpet",
+   "op": "paint.carpet",
+   "class": "A",
+   "lib": "pgmvox.facade.carpet",
+   "params": {
+    "rect": [
+     [
+      -76,
+      -53
+     ],
+     [
+      -57,
+      -35
+     ]
+    ],
+    "y": 52,
+    "mask": "rounded rectangle (plan.py:291-295)",
+    "pattern": "first_of(border(1, STONEBRICK:0), tiles(3, STONE:6, STONE:5))",
+    "clear_plants_y": [
+     53,
+     57
+    ]
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/works.py:398-407"
+  },
+  {
+   "id": "chapel-belfry",
+   "op": "place.tower",
+   "class": "B",
+   "local": true,
+   "new": true,
+   "params": {
+    "kind": "masonry-belfry",
+    "footprint": [
+     [
+      -55,
+      -79
+     ],
+     [
+      -51,
+      -73
+     ]
+    ],
+    "floor_y": "chapel floor",
+    "height": 20,
+    "pad_margin": 1,
+    "shell": "STONEBRICK:0 with STONE:6 corners",
+    "floor": "PLANKS:5",
+    "belfry_floor": -5,
+    "openings": {
+     "y": [
+      -4,
+      -3,
+      -2
+     ],
+     "width": 3,
+     "sides": "all four"
+    },
+    "ladder": {
+     "at": "NW corner",
+     "facing": "n"
+    },
+    "bell": "FENCE + GOLD_BLOCK",
+    "spire": {
+     "steps": 4,
+     "block": "PLANKS:5",
+     "finial": "FENCE x2"
+    },
+    "doors": {
+     "to_nave": [
+      -51,
+      -76
+     ],
+     "to_lane": "south face, DARK_OAK_DOOR"
+    },
+    "pews": "SPRUCE_STAIRS rows x -48..-42 step 2, z -77,-76,-74,-73",
+    "altar": "QUARTZ x2 at x -40, z -76..-75"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/works.py:68-127",
+   "gap": "works.tower (45 lines) is local in the port; only the battlement is the library's (build.parapet)."
+  },
+  {
+   "id": "watch-tower",
+   "op": "place.tower",
+   "class": "B",
+   "local": true,
+   "new": true,
+   "params": {
+    "kind": "masonry-battlement",
+    "footprint": [
+     [
+      -107,
+      -10
+     ],
+     [
+      -103,
+      -4
+     ]
+    ],
+    "floor_y": 59,
+    "height": 16,
+    "crown": {
+     "floor": "PLANKS:5",
+     "parapet": "STONEBRICK:0 with SLAB:5 crenels"
+    },
+    "doorways_to_house": {
+     "x": -103,
+     "z": -7,
+     "storeys": 1
+    },
+    "wool_banner": {
+     "x": -108,
+     "z": [
+      -10,
+      -8,
+      -6,
+      -4
+     ],
+     "y": [
+      "top-3",
+      "top-2"
+     ],
+     "block": "WOOL:14"
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/works.py:68-110,130-141",
+   "note": "parapet is pgmvox.build.parapet"
+  },
+  {
+   "id": "watch-terrace",
+   "op": "paint.carpet",
+   "class": "B",
+   "lib": "pgmvox.facade.carpet",
+   "params": {
+    "rect": [
+     [
+      -93,
+      -12
+     ],
+     [
+      -86,
+      -2
+     ]
+    ],
+    "y": 59,
+    "pattern": "tiles(1, STONEBRICK:0, STONE:5)",
+    "clear_above": 5,
+    "fill_below": "STONE:0",
+    "low_wall": {
+     "block": "COBBLE_WALL",
+     "x": -85,
+     "z": [
+      -13,
+      -1
+     ],
+     "gap_z": [
+      -8,
+      -7,
+      -6
+     ],
+     "also": "z=-13 and z=-1 for x -93..-86"
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/works.py:142-155",
+   "note": "the wall is local"
+  },
+  {
+   "id": "watch-steps",
+   "op": "build.stairs",
+   "class": "A",
+   "lib": "pgmvox.build.stairs",
+   "params": {
+    "flight": "climbing west from the terrace",
+    "from_x": "-85 + n",
+    "z": -6,
+    "width": 3,
+    "n": "59 - ground at (-78,-7)",
+    "block": "STONEBRICK_STAIRS",
+    "under": "STONE:0"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/works.py:156-165"
+  },
+  {
+   "id": "mill-works",
+   "op": "place.waterworks",
+   "class": "B",
+   "local": true,
+   "new": true,
+   "params": {
+    "race": {
+     "x": [
+      -68,
+      -54
+     ],
+     "z": [
+      9,
+      11
+     ],
+     "bed": 41,
+     "water_to": 45,
+     "banks": "STONEBRICK:0 at z 8 and 12 above y 46"
+    },
+    "wheel": {
+     "centre": [
+      -62,
+      46
+     ],
+     "z": 10,
+     "radii": [
+      4.0,
+      4.6
+     ],
+     "steps": 64,
+     "rim": "PLANKS:5",
+     "spokes": 8,
+     "spoke_block": "LOG2:13",
+     "axle": {
+      "z": [
+       8,
+       11
+      ],
+      "block": "LOG2:9"
+     }
+    },
+    "weir": {
+     "x": -67,
+     "across": "river z +/-3 (+/-5 where wet)",
+     "sill_to_y": 48
+    },
+    "inside": {
+     "millstone": "DSLAB:0 + SLAB:0 at (-60, f+1, 3)",
+     "sacks": "HAY:0 at (-65..-64, f+1, 2)"
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/works.py:169-203",
+   "gap": "Reads the ground (world top) and the river line at write time."
+  },
+  {
+   "id": "stone-bridge",
+   "op": "place.bridge",
+   "class": "B",
+   "local": true,
+   "new": true,
+   "params": {
+    "kind": "arch",
+    "x": [
+     -38,
+     -34
+    ],
+    "z": [
+     -10,
+     14
+    ],
+    "arch": {
+     "centre_z": 3,
+     "half": 6.5,
+     "soffit": {
+      "base_y": 45,
+      "rise": 5.2,
+      "profile": "half-ellipse"
+     }
+    },
+    "deck": "from the median ground of each bank (plan.deck_y), crown a block over the higher",
+    "ring": "STONEBRICK:0/2, keystone STONEBRICK:3",
+    "deck_block": "FLOOR mix; STONEBRICK_STAIRS where climbing",
+    "parapet": "STONEBRICK:0 + SLAB:5",
+    "cutwaters": {
+     "z": [
+      -4,
+      10
+     ],
+     "x": [
+      -39,
+      -33
+     ],
+     "up_to": 49
+    },
+    "lamps": "glowstone on fence at the four deck ends"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/works.py:206-246; plan.py:437-446"
+  },
+  {
+   "id": "old-bridge",
+   "op": "place.bridge",
+   "class": "B",
+   "local": true,
+   "new": true,
+   "params": {
+    "kind": "half-arch",
+    "z_centre": -44,
+    "x": [
+     -15,
+     -5
+    ],
+    "face_x": -12,
+    "deck_y": "ground at (face-3, z)",
+    "rise": 9,
+    "break": {
+     "ragged_from_x": -6,
+     "p_end": 0.45,
+     "p_next": 0.2,
+     "p_edge_extra": 0.3,
+     "seed": 17
+    },
+    "parapet": "STONEBRICK:0 + SLAB:5, broken first at the end",
+    "ties": {
+     "x": -4,
+     "z": [
+      -45,
+      -43
+     ],
+     "block": "IRON_BARS",
+     "len": 4
+    },
+    "lamps": {
+     "x": -14,
+     "z": [
+      -47,
+      -41
+     ]
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/works.py:249-278"
+  },
+  {
+   "id": "headframe",
+   "op": "place.tower",
+   "class": "B",
+   "local": true,
+   "new": true,
+   "params": {
+    "kind": "timber-headframe",
+    "at": [
+     -84,
+     56
+    ],
+    "ground": "shaft top",
+    "height": 17,
+    "legs": {
+     "offset": 3,
+     "lean_every": 6,
+     "block": "LOG:1"
+    },
+    "braces_at": [
+     5,
+     10,
+     17
+    ],
+    "wheel": {
+     "ring_r": 2.6,
+     "steps": 48,
+     "block": "PLANKS:5",
+     "spokes": "DARK_OAK_FENCE",
+     "axle": "LOG2:9"
+    },
+    "platform": "PLANKS:1 3x3 at top",
+    "ladder": {
+     "post_at": [
+      -85,
+      53
+     ],
+     "on": 3
+    },
+    "collar": {
+     "planks": "PLANKS:1",
+     "radius_ge": 2
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/works.py:282-320"
+  },
+  {
+   "id": "engine-stack",
+   "op": "place.tower",
+   "class": "B",
+   "local": true,
+   "new": true,
+   "params": {
+    "kind": "brick-stack",
+    "at": [
+     -74,
+     50
+    ],
+    "base": 2,
+    "floor_y": "engine house floor",
+    "height": 18,
+    "corbel": {
+     "outline": "4x4 BRICK ring at the top course",
+     "flue_holes": [
+      [
+       -74,
+       50
+      ],
+      [
+       -73,
+       51
+      ]
+     ]
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/works.py:325-334"
+  },
+  {
+   "id": "smithy-fittings",
+   "op": "prop.fittings",
+   "class": "B",
+   "local": true,
+   "new": true,
+   "params": {
+    "open_wall": {
+     "x": -78,
+     "z": [
+      60,
+      63
+     ]
+    },
+    "anvil": [
+     -75,
+     "floor+1",
+     61
+    ],
+    "furnaces": [
+     [
+      -73,
+      60
+     ],
+     [
+      -73,
+      61
+     ]
+    ],
+    "cauldron": [
+     -73,
+     63
+    ]
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/works.py:335-341"
+  },
+  {
+   "id": "well",
+   "op": "prop.well",
+   "class": "B",
+   "local": true,
+   "new": true,
+   "params": {
+    "at": [
+     -87,
+     46
+    ],
+    "ring": "COBBLE:0 3x3 with COBBLE_WALL",
+    "shaft_depth": 6,
+    "water": "WATER:0",
+    "roof": {
+     "posts": "SPRUCE_FENCE at (-1,-1),(1,1)",
+     "slab": "WOOD_SLAB:1 3x3 at y+3"
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/works.py:342-356"
+  },
+  {
+   "id": "spoil-rubble",
+   "op": "landform.mound.fill",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "area": "op spoil-heap",
+    "mix": [
+     [
+      "GRAVEL:0",
+      0.5,
+      "only if held from below"
+     ],
+     [
+      "COBBLE:0",
+      0.25
+     ],
+     [
+      "STONE:5",
+      0.25
+     ]
+    ],
+    "depth": 6
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/works.py:357-368"
+  },
+  {
+   "id": "roads",
+   "op": "route.pave",
+   "class": "A",
+   "lib": "pgmvox.route.pave",
+   "params": {
+    "for_each": "each route in 'places', in order",
+    "surface": {
+     "street_and_North_Lane": [
+      [
+       "GRAVEL:0"
+      ],
+      [
+       "STONE:5"
+      ],
+      [
+       "COBBLE:0"
+      ]
+     ],
+     "lane": [
+      [
+       "DIRT:1"
+      ],
+      [
+       "DIRT:0"
+      ],
+      [
+       "GRAVEL:0"
+      ]
+     ],
+     "path": [
+      [
+       "DIRT:2"
+      ],
+      [
+       "DIRT:1"
+      ],
+      [
+       "DIRT:0"
+      ]
+     ]
+    },
+    "weights": [
+     0.5,
+     0.3,
+     0.2
+    ],
+    "width": "route.width",
+    "deck": "PLANKS:1",
+    "rail": "SPRUCE_FENCE",
+    "seed": "route index",
+    "level": "max(graded profile, 49)",
+    "water": "L.water > 0",
+    "protect": "house footprints, towers +1, the square, the terrace"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/works.py:372-395",
+   "gap": "route.pave has no mask: the port hands it a world proxy (works.Guarded) that refuses writes to protected columns."
+  },
+  {
+   "id": "trestle-legs",
+   "op": "place.bridge",
+   "class": "B",
+   "local": true,
+   "new": true,
+   "params": {
+    "kind": "trestle",
+    "under": "the plank deck of Spawn Lane south over the pond outlet",
+    "every": 4,
+    "z_mod": 2,
+    "block": "LOG:1",
+    "to": "the bed"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/works.py:389-394"
+  },
+  {
+   "id": "lamps",
+   "op": "props.lamp",
+   "class": "B",
+   "lib": "pgmvox.props.lamp",
+   "params": {
+    "along": "each street route",
+    "every": 10,
+    "offset": 3.5,
+    "post": "FENCE x2",
+    "light": "GLOWSTONE",
+    "skip": "protected columns, x >= -12"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/works.py:410-426",
+   "note": "written locally in the port; props.lamp exists"
+  },
+  {
+   "id": "gaol-ladder",
+   "op": "build.ladder",
+   "class": "A",
+   "lib": "pgmvox.build.ladder",
+   "params": {
+    "x": -50,
+    "z": -33,
+    "y0": 43,
+    "y1": 52,
+    "facing": "e",
+    "wall": "STONEBRICK:0 at x+1",
+    "clear_above": [
+     53,
+     54
+    ]
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/under.py:173-182",
+   "note": "runs after works.build (gen.py:30), because the gaol must exist"
+  }
+ ],
+ "dressing": [
+  {
+   "id": "stalls",
+   "op": "props.stalls",
+   "class": "B",
+   "lib": "pgmvox.props.stalls",
+   "params": {
+    "line": {
+     "x": -75,
+     "z": "square z0+3 .. z1-2, every cell",
+     "y": 52
+    },
+    "facing": "e"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/gen.py:33-36"
+  },
+  {
+   "id": "woods-north",
+   "op": "trees.scatter",
+   "class": "A",
+   "lib": "pgmvox.trees.scatter",
+   "params": {
+    "zone": "North Wood minus ridge, minus blocked",
+    "by_kind": {
+     "oak": 0.22,
+     "birch": 0.43,
+     "tiny-oak": 0.35
+    },
+    "spacing": 0.85,
+    "tries": 4000,
+    "seed": 1,
+    "library": "opus55 trees.json: tiny-oak 8, oak 9, big-oak 2, birch 10 whole trees cut from the studio's tree showcase",
+    "keep": {
+     "edge_ge": 4,
+     "route_ge": 3,
+     "monument_ge": "4 + crown",
+     "natural_ground": true,
+     "only": "x < -1"
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/dress.py:249-257"
+  },
+  {
+   "id": "woods-ridge",
+   "op": "trees.scatter",
+   "class": "A",
+   "lib": "pgmvox.trees.scatter",
+   "params": {
+    "zone": "x < -101 except the box x > -110, -18 < z < 6; minus the south wood",
+    "by_kind": {
+     "birch": 0.45,
+     "oak": 0.2,
+     "tiny-oak": 0.35
+    },
+    "spacing": 0.85,
+    "tries": 4000,
+    "seed": 2
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/dress.py:255,258"
+  },
+  {
+   "id": "woods-south",
+   "op": "trees.scatter",
+   "class": "A",
+   "lib": "pgmvox.trees.scatter",
+   "params": {
+    "zone": "x < -98, z > 36, outside the Cutting (r 9)",
+    "by_kind": {
+     "oak": 0.25,
+     "birch": 0.4,
+     "tiny-oak": 0.35
+    },
+    "spacing": 0.85,
+    "tries": 4000,
+    "seed": 3
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/dress.py:256,259"
+  },
+  {
+   "id": "cutting-ring",
+   "op": "trees.scatter",
+   "class": "A",
+   "lib": "pgmvox.trees.scatter",
+   "params": {
+    "zone": "ring r 11 +/- 2 round (-110, 68)",
+    "by_kind": {
+     "tiny-oak": 0.6,
+     "birch": 0.4
+    },
+    "spacing": 0.8,
+    "tries": 4000,
+    "seed": 4
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/dress.py:260",
+   "note": "plants no tree in the committed build"
+  },
+  {
+   "id": "knoll-oak",
+   "op": "trees.plant",
+   "class": "A",
+   "lib": "pgmvox.trees.plant",
+   "params": {
+    "at": [
+     -22,
+     74
+    ],
+    "kind": "big-oak",
+    "variant": 1,
+    "turn": 1
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/dress.py:261-262"
+  },
+  {
+   "id": "trees-by-hand",
+   "op": "trees.plant",
+   "class": "A",
+   "lib": "pgmvox.trees.plant",
+   "params": {
+    "list": [
+     {
+      "at": [
+       -22,
+       -24
+      ],
+      "kind": "tiny-oak",
+      "variant": 2,
+      "turn": 2
+     },
+     {
+      "at": [
+       -36,
+       -84
+      ],
+      "kind": "oak",
+      "variant": 6,
+      "turn": 2
+     },
+     {
+      "at": [
+       -70,
+       4
+      ],
+      "kind": "birch",
+      "variant": 3,
+      "turn": 3
+     },
+     {
+      "at": [
+       -28,
+       20
+      ],
+      "kind": "birch",
+      "variant": 1,
+      "turn": 1
+     },
+     {
+      "at": [
+       -20,
+       24
+      ],
+      "kind": "birch",
+      "variant": 4,
+      "turn": 0
+     },
+     {
+      "at": [
+       -44,
+       18
+      ],
+      "kind": "birch",
+      "variant": 7,
+      "turn": 3
+     },
+     {
+      "at": [
+       -68,
+       78
+      ],
+      "kind": "oak",
+      "variant": 8,
+      "turn": 0
+     },
+     {
+      "at": [
+       -90,
+       80
+      ],
+      "kind": "tiny-oak",
+      "variant": 3,
+      "turn": 3
+     },
+     {
+      "at": [
+       -80,
+       -36
+      ],
+      "kind": "oak",
+      "variant": 7,
+      "turn": 3
+     },
+     {
+      "at": [
+       -82,
+       30
+      ],
+      "kind": "birch",
+      "variant": 2,
+      "turn": 2
+     }
+    ],
+    "refuse_if": "within monument reach or on blocked ground"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/dress.py:263-269",
+   "note": "10 listed"
+  },
+  {
+   "id": "wheat-field",
+   "op": "landform.field",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "rect": [
+     [
+      -50,
+      45
+     ],
+     [
+      -31,
+      69
+     ]
+    ],
+    "plane": {
+     "base": "median ground",
+     "tilt_z": 0.06
+    },
+    "strips": {
+     "width": 9,
+     "crops": [
+      "WHEAT:7",
+      "WHEAT:7",
+      "WHEAT:6",
+      "CARROTS:7",
+      "WHEAT:7",
+      "POTATOES:7"
+     ],
+     "mixed_ripeness": {
+      "block": "WHEAT",
+      "p": 0.15,
+      "age": [
+       4,
+       7
+      ]
+     }
+    },
+    "ditch": {
+     "every": 9,
+     "offset": 4,
+     "water": true
+    },
+    "edge": "GRASS",
+    "base": "FARMLAND:7",
+    "fence": {
+     "x": -50,
+     "block": "FENCE",
+     "gate_at_z": 57,
+     "gate": "FENCE_GATE:1"
+    },
+    "scarecrow": {
+     "at": [
+      -40,
+      "ground+1",
+      54
+     ],
+     "legs": 2,
+     "body": "HAY:0",
+     "arms": "FENCE",
+     "head": "PUMPKIN:3"
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/dress.py:271-298"
+  },
+  {
+   "id": "cutting",
+   "op": "prop.clearing",
+   "class": "B",
+   "local": true,
+   "new": true,
+   "params": {
+    "centre": [
+     -110,
+     68
+    ],
+    "stumps": {
+     "tries": 14,
+     "radius": [
+      0,
+      7
+     ],
+     "block": "LOG:0/1"
+    },
+    "log_piles": [
+     [
+      -106,
+      64
+     ],
+     [
+      -113,
+      72
+     ]
+    ]
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/dress.py:300-312",
+   "note": "no sawhorse or sledge in the port"
+  },
+  {
+   "id": "rift-vines",
+   "op": "dress.rift-face",
+   "class": "A",
+   "local": true,
+   "new": true,
+   "params": {
+    "vines": {
+     "p": 0.35,
+     "length": [
+      3,
+      11
+     ],
+     "block": "VINE:2"
+    }
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/dress.py:314-324"
+  },
+  {
+   "id": "ground-cover",
+   "op": "flora.cover",
+   "class": "A",
+   "local": true,
+   "params": {
+    "tall_grass": {
+     "p_open": 0.07,
+     "p_wood": 0.3,
+     "density_noise": {
+      "cell": 9,
+      "octaves": 2,
+      "seed": 81
+     },
+     "density_factor": "0.6 + noise"
+    },
+    "ferns_in_wood_p": 0.45,
+    "flowers": {
+     "drift_noise": {
+      "cell": 14,
+      "octaves": 2,
+      "seed": 82,
+      "gt": 0.6
+     },
+     "p": 0.18,
+     "kinds_noise": {
+      "cell": 30,
+      "octaves": 1,
+      "seed": 83
+     },
+     "kinds": [
+      "DANDELION",
+      "BLUET",
+      "OXEYE",
+      "POPPY"
+     ]
+    },
+    "skip": "monument within 2"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/dress.py:326-340",
+   "note": "the studio's flora overlay is this concept; written locally in the port"
+  }
+ ],
+ "stamps": [
+  {
+   "id": "mirror",
+   "op": "stamp.mirror",
+   "class": "A",
+   "lib": "pgmvox.orient.turn_world",
+   "params": {
+    "axis": "x",
+    "about": -0.5,
+    "map": "x' = -1 - x",
+    "keep": "x < 0",
+    "recolour": [
+     [
+      "WOOL:14",
+      "WOOL:11"
+     ]
+    ],
+    "also": [
+     "biomes",
+     "tile entities (chests and signs)"
+    ]
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/gen.py:39-40",
+   "note": "501,103 of the world's 1,002,206 non-air blocks (50.0%) are this copy; the recolour is one parameter"
+  },
+  {
+   "id": "objectives",
+   "op": "stamp.objectives",
+   "class": "A",
+   "lib": "pgmvox.objectives.Objectives.stamp",
+   "params": {
+    "objectives": "pieces group",
+    "symmetry": "mirror_x",
+    "blocks": "2 obsidian per monument"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/gen.py:41-42"
+  },
+  {
+   "id": "writer",
+   "op": "export.world",
+   "class": "A",
+   "lib": "pgmvox.world.World.save",
+   "params": {
+    "volume": "RWV1",
+    "writer": "pgmvox.world.write",
+    "level": {
+     "name": "Riftwater",
+     "spawn": [
+      0,
+      90,
+      0
+     ]
+    },
+    "sections": "fully sky-lit",
+    "entities": "none"
+   },
+   "source": "freeform/lib/ports/riftwater/scripts/gen.py:43"
+  }
+ ]
+}
