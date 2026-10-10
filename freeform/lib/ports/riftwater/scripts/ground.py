@@ -3,14 +3,14 @@ and the pond, the falls into the rift, the island's underside, the biomes.
 
 pgmvox.terrain.lay lays the columns with the rock in beds (Strata, beds), paints the top by slope and place
 (Paint layers: patches of andesite and coarse dirt on a mid slope, a sandy lip by the river) and leaves nothing
-under each column's own underside; fill_water lays the beds and the water. The falls are done here.
+under each column's own underside; fill_water lays the beds and the water, and waterfall the falls.
 """
 import numpy as np
 
 import plan as P
 from pgmvox import B, rng
 from pgmvox.noise import fbm
-from pgmvox.terrain import Paint, Strata, beds, by_angle, fill_water, lay
+from pgmvox.terrain import Paint, Strata, beds, by_angle, fill_water, lay, waterfall
 
 
 def world_grid(w, a, fill=0):
@@ -63,16 +63,4 @@ def lay_ground(w, L):
 
 def falls(w, L):
     """The river spills over the lip: falling water down the rift face into the void."""
-    for k in range(L.H.shape[1]):
-        wet = np.nonzero(L.water[:, k] > 0)[0]
-        if len(wet) == 0:
-            continue
-        i = wet.max()
-        x, z = P.X_MIN + i, P.Z_MIN + k
-        if x < -14:
-            continue
-        lvl = int(L.water[i, k])
-        for xx in range(x + 1, -9):
-            for y in range(8, lvl + 1):
-                if w.id(xx, y, z) == 0:
-                    w.set(xx, y, z, B.WATER_FLOW, 8)
+    waterfall(w, L.water, (P.X_MIN, P.Z_MIN), toward="east", lip_from=-14, to=-10, to_y=8)

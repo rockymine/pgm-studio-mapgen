@@ -291,6 +291,34 @@ def island_bottom(top, land, sheer, taper=(4, 0.9), sheer_taper=(26, 1.2), rough
     return np.maximum(top - thick, floor).round().astype(int)
 
 
+def waterfall(w, level, at, toward="east", lip_from=None, to=None, to_y=8):
+    """Water falling off a board's edge: in every row of `level` (a grid of water surfaces, 0 where dry, its first
+    column at world `at` (x, z)), the wet column furthest `toward` is the lip, and the water falls from its level
+    down to `to_y` in each column past it up to `to` (a world coordinate along the way it falls), into air only,
+    as flowing water (data 8). A lip short of `lip_from` does not fall. Returns the blocks of water laid."""
+    sign = 1 if toward in ("east", "south") else -1
+    along_x = toward in ("east", "west")
+    grid = np.asarray(level) if along_x else np.asarray(level).T
+    first, across0 = (at[0], at[1]) if along_x else (at[1], at[0])
+    laid = 0
+    for k in range(grid.shape[1]):
+        wet = np.nonzero(grid[:, k] > 0)[0]
+        if len(wet) == 0:
+            continue
+        i = wet.max() if sign > 0 else wet.min()
+        lip = first + i
+        if lip_from is not None and sign * (lip - lip_from) < 0:
+            continue
+        top = int(grid[i, k])
+        for a in range(lip + sign, to + sign, sign):
+            for y in range(to_y, top + 1):
+                x, z = (a, across0 + k) if along_x else (across0 + k, a)
+                if w.id(x, y, z) == 0:
+                    w.set(x, y, z, B.WATER_FLOW, 8)
+                    laid += 1
+    return laid
+
+
 def root_depth(mask, cone=3.2, power=0.85, rough=0.35, flutes=0.0, flute_cell=5, spires=0.0, spire_cell=18,
                cap=None, seed=0):
     """How far a floating island's underside hangs under each column: a cone deeper inland (cone * edge

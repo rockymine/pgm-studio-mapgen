@@ -468,6 +468,20 @@ class Landforms(unittest.TestCase):
         w.set(6, 8, 1, B.WATER_FLOW, 8)                 # falling water over the void is a waterfall
         self.assertEqual([r for r in audit.loose_water(w) if r[:3] == (6, 8, 1)], [])
 
+    def test_a_waterfall_falls_from_the_lip_into_air_only(self):
+        w = World(0, 0, 14, 5, sy=24)
+        w.ids[:8, :12, :] = B.STONE                                         # an island to x 7, the void past it
+        level = np.zeros((8, 5), int)
+        level[2:8, 2] = 13                                                  # a stream to the lip in row z 2
+        w.ids[2:8, 12, 2], w.ids[2:8, 13, 2] = B.GRAVEL, B.WATER
+        w.ids[10, 6, 2] = B.STONE                                           # a ledge the fall must not overwrite
+        laid = terrain.waterfall(w, level, (0, 0), toward="east", to=11, to_y=4)
+        self.assertEqual(laid, 4 * 10 - 1)
+        self.assertEqual((w.id(10, 6, 2), w.id(8, 4, 2), w.id(8, 13, 2), w.id(12, 8, 2)),
+                         (B.STONE, B.WATER_FLOW, B.WATER_FLOW, 0))
+        self.assertEqual([r for r in audit.loose_water(w) if r[0] >= 8], [])
+        self.assertEqual(terrain.waterfall(World(0, 0, 14, 5, sy=24), level, (0, 0), lip_from=9, to=11), 0)
+
     def test_a_spire_leaves_the_rest_alone(self):
         X, Z, H = self.X, self.Z, self.H
         H2 = LF.spire(H, X, Z, (0, 0), r=6, top=90, jag=0)
