@@ -163,6 +163,14 @@ def objectives():
     return O
 
 
+def pad_ring(pad, at):
+    """The pad's cells `at` blocks in from its edge, as boxes (four, one block thick) for a region: the progress ring."""
+    x0, y, z0, x1, _, z1 = pad.x0, pad.y0, pad.z0, pad.x1, pad.y1, pad.z1
+    a = at
+    return [Box(x0 + a, y, z0 + a, x1 - a, y, z0 + a), Box(x0 + a, y, z1 - a, x1 - a, y, z1 - a),
+            Box(x0 + a, y, z0 + a + 1, x0 + a, y, z1 - a - 1), Box(x1 - a, y, z0 + a + 1, x1 - a, y, z1 - a - 1)]
+
+
 def pad_cells(name):
     for o in objectives().items:
         if getattr(o, "id", None) == name:

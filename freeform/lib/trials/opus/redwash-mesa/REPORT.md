@@ -207,3 +207,17 @@ The fix is to skip a ring column whose ground is under 0, or to take a `land` ma
 | A shaft walked by the plan | 8 lines | `plangraph.ladder(R, (x, z), from_storey, to_storey)` giving both edges and their images |
 | A site that stays on the land | found by the read-back | `build.site(..., land=mask)` |
 | The read-back to measure the goal rules in the plan's units | not solved | a walk in octile blocks, or GO rules stated in moves |
+
+## After the playtest
+
+**The kit now carries a diamond pickaxe, because every monument here is obsidian.** The four destroyables are one obsidian block each, and an iron pickaxe cannot break obsidian. `common.kit` took a `pick` argument that defaults to the iron pickaxe, so the other boards' kits are unchanged, and this board passes `diamond pickaxe` for slot 2, still efficiency I and unbreakable. The written map.xml reads valid with no issues.
+
+**Five houses now stand on the mesa tops.** Three are on the Table (its west edge, its north-east and its east side) and two on the Bench, five blocks square, built by the town's own adobe house and style; one on the Table has two storeys. Each stands on ground level to within a block, 13 to 18 blocks off every trail, 29 or more off a monument and far from the spawn, so no lane, approach or spawn moved. The plan's raster draws them as house cells in both halves.
+
+**The shaft's trouble was the floor and the stairs of the Silver Drift, not the props themselves.** The library's gallery carve opens each cell's neighbours before it lays the floor, so 11 of the drift's 25 cells (29 floor blocks) had no floor, and a player dropped a block and jumped out again at each rise. Nine of its 27 dark oak stairs faced west where the drift runs north, because a diagonal step picked the wrong axis. Four fence blocks in the timber sets narrowed three blocks of passage to one.
+
+**The drift is mended in `gen.py` and straightened in the plan.** Floor is laid under every cell, every stair climbs north, the fences are taken out (the posts and the caps stay), and the pockets the carve spilled into the walls are filled. The plan's waypoints now climb straight and take the jog to the shaft on the level at the top, so no stair has to turn. The shaft's own wall behind its ladder is made good where the carve had opened it, which the footing audit caught.
+
+**Read back, the drift is smooth.** Floor is missing under 4 blocks of 25 rows, all inside the shaft's own three-by-three well, against 29 blocks before. All 27 stairs climb north, no fence is left in the passage, and along each of three lanes no surface step is over half a block. Footing problems are 0 and objectives with a problem 0.
+
+**The walk numbers stay close.** Spawn to its own table monument reads 56 (54 for this board built before the changes on the current library) and to its own wash monument 40 (40); the enemy's by bridging 154 and 129 (155 and 129). The drift's own run reads longer, 27 against 23 to the gallery's end and 70 against 63 to the table monument, because the walk counts four-way moves and the straightened line takes its jog at the top as moves, where the old diagonal rises were crossed by the walk's jumps. The committed 0.10 figures were 56, 48, 155 and 129.

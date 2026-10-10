@@ -152,8 +152,36 @@ props.stalls(w, [(x, 25) for x in range(-66, -57)], P.at(L, -62, 25), "s", every
 line = P.mine_line()
 U.gallery(w, line, rng(P.BOARD, "drift"), timber=(B.LOG2, 1), fence=(B.DARK_OAK_FENCE, 0), stair=B.DARK_OAK_STAIRS,
           torches=7, ore=(B.GOLD_ORE, 0))
+
+# U.gallery carves each cell's three-by-three-by-three before it floors, so a cell one up from the last has lost the
+# floor under it, and a rise's stair faced whichever axis the diagonal step favoured. The drift is mended here so a
+# run down it is level or on a stair: floor under every cell, every stair climbing the way the line goes, the
+# timber sets' fences (they narrowed three blocks to one) and the pockets the carve spilled into the walls taken out.
+DRIFT_FLOOR = ((B.GRAVEL, 0), (B.STONE, 0), (B.STONE, 5))
+r_drift = rng(P.BOARD, "drift floor")
+sx_, sy_, sz_ = line[-1]                                       # the shaft's five by five, lined after this: its
+for i, (x, y, z) in enumerate(line):                           # fences are its walls' footing, so they stay
+    rises = i + 1 < len(line) and line[i + 1][1] > y
+    in_shaft = abs(z - sz_) <= 2
+    for dx in (-1, 0, 1):
+        if w.id(x + dx, y - 1, z) in (B.AIR, B.DARK_OAK_STAIRS):
+            w.set(x + dx, y - 1, z, *DRIFT_FLOOR[int(r_drift.integers(len(DRIFT_FLOOR)))])
+        if w.id(x + dx, y, z) == B.DARK_OAK_STAIRS or (w.id(x + dx, y, z) == B.DARK_OAK_FENCE and not in_shaft):
+            w.set(x + dx, y, z, B.AIR)
+        if w.id(x + dx, y + 1, z) == B.DARK_OAK_FENCE and not in_shaft:
+            w.set(x + dx, y + 1, z, B.AIR)
+        if rises:
+            w.set(x + dx, y, z, B.DARK_OAK_STAIRS, 3)           # rising north, the way the line runs
+    if 6 <= i < len(line) - 4:
+        for dx in (-3, -2, 2, 3):
+            for dy in range(-1, 3):
+                if w.id(x + dx, y + dy, z) == B.AIR:
+                    w.set(x + dx, y + dy, z, B.STONE)
 ex, ey, ez = line[-1]
 U.shaft(w, ex, ez, ey - 1, P.TABLE, wall=(B.PLANKS, 5), post=(B.LOG2, 1), ladder_on="s")
+for y in range(ey - 1, P.TABLE + 1):                           # the shaft leaves its foot open where the drift's carve
+    if w.id(ex, y, ez + 2) in (B.AIR, B.DARK_OAK_FENCE):       # reached it: the wall behind the ladder is made good
+        w.set(ex, y, ez + 2, B.PLANKS, 5)
 for dx in (-2, 2):                                             # the hoist: two posts, a beam, a slab roof
     for dz in (-2, 2):
         for y in range(P.TABLE + 1, P.TABLE + 5):

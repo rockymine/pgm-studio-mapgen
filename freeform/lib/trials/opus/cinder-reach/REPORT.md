@@ -223,3 +223,25 @@ refuse any block over a column with no ground.
 | A core that is known to leak | 6 lines in the read-back | `Core(vent=...)` stamping the vent, and `check` measuring the open drop against `leak` |
 | One number for "the walk" | not solved | the goal rules stated against one walk, and the library's two walks agreeing on diagonals |
 | Paths and floors laid in cells | 10 lines | `route.pave(pattern="cell", size=3)` and a `facade.cells` field |
+
+## After the playtest
+
+**The kit now carries a diamond pickaxe, because the core's casing is obsidian.** An iron pickaxe cannot break it. `common.kit` took a `pick` argument that defaults to the iron pickaxe, so the other boards are unchanged, and this board passes `diamond pickaxe` for slot 2.
+
+**The core is raised three blocks, and the obsidian hull under it is gone.** The casing now spans y 55 to 59, written into `red-core-region` as 55 to 60, so it hangs four blocks over the bowl's top. The vent, a five-by-five well seven deep with an obsidian floor and a ring of obsidian walls, is no longer carved: the bowl is ordinary ground down to the platform. The only obsidian left in the cone is the core's own shell.
+
+**A stone brick platform sits under the core in a shallow pit.** A five-by-five pit three deep holds a platform of stone brick, polished andesite and cracked brick at y 47, with a short flight of stone brick stairs up its north row. Lava falls eight blocks onto it against a leak of five, so the core still leaks. The bowl's floor beside the casing is 51, so a player can now walk under the casing, which the walk reads back.
+
+**The crag was raised with the core, so the plan's rule for it still holds.** With the casing's top at 59 the crag stood five over it and none of its top cells saw the casing, where the plan wants 4 to 12 and over 5%. The crag's top is now 67, eight over the casing's top as before, and 6% of its top cells see it. The plan check reports no row missing.
+
+**There are nine more lava pools in the ash, eleven to a half.** Each is two to four blocks in radius with an uneven edge, sunk two blocks deep with obsidian under it and a rim of obsidian, coal block, cobble and black clay at ground level. Sites are flat ash at least 7 blocks off every road and path, 9 off a building, 6 off the pond, 8 off the sinkhole, 6 off the tube and 24 off the core, so none is on a way a team walks.
+
+**The ash is coloured in patches, not noise.** Three blob masks cut from smooth noise, 11 to 17 blocks across, lay six-sided dark oak logs (log data 13), soul sand and coarse dirt with gravel flecks. On the red half the logs cover 6.1% of the top blocks in 9 patches, the largest 314 blocks, soul sand 4.1% in 19 patches and coarse dirt 6.8%, with its largest patch 107 blocks. Roads and paths are paved over them as before.
+
+**Seven dead trees stand on the ash in each half.** Each is a bare trunk of dark oak or spruce six to ten blocks high with three or four limbs of lying logs that turn up at their ends, a twig, and roots lying out at its foot, with no leaves. Three of the seven stand within twelve blocks of a pool and the rest are spread across the flats, at least 14 blocks apart and clear of the paths.
+
+**The island's rock is banded, patched, ore-flecked and hung with stalactites.** Beds three blocks thick dip across the island in stone, andesite, polished andesite and cobble, with a seam of coarse dirt or mossy cobble now and then. Patches of cobble, mossy cobble, andesite, coarse dirt and gravel come from three-dimensional noise, and gravel is laid only over solid rock, with a sweep after the tube's carve for any left over air. The exposed rock faces read back 21% stone, 24% andesite, 9% polished, 19% cobble, 9% mossy, 10% coarse dirt and 2.5% gravel, where they were 53%, 23%, 15%, 5%, none, 0.4% and 0.1%.
+
+**Ore and hanging bits break up the faces and the underside.** The 306 ore faces read 147 coal, 90 iron, 34 gold, 24 redstone, 8 lapis and 3 diamond, in specks of one to three blocks, where there were 5. Stalactites of 4 to 10 blocks with mossy tips hang under the island's rim and 356 vines trail down its faces on the red half, and blue's half is its turn.
+
+**The walks hold.** Spawn to its own core reads 40, to the enemy's core by bridging 131, into the enemy's tube 111 and onto its crag 142, the same as this board built before the change on the current library (the committed 0.10 figures were 52, 139, 118 and 158). The first block under the casing is 8 down against a leak of 5. Objectives with a problem 0, footing problems 0 (a first build had 22 gravel blocks over the tube's air, now swept), map.xml valid with no issues.

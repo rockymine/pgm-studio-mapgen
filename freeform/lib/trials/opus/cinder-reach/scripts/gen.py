@@ -3,8 +3,11 @@ objectives are stamped for both teams from their objects.
 
 The look, decided in PLAN.md's last section and made here:
     ground   an ash field: grey stained clay with black clay in five-block patches, grass inset only where water or
-             the hamlet makes it (biome savanna, so its grass sits yellow-green beside the ash)
-    rock     stone and andesite in beds following the surface, cobble a quarter, black clay as thin beds
+             the hamlet makes it (biome savanna, so its grass sits yellow-green beside the ash); over it patches ten
+             to thirty blocks across of six-sided dark oak logs, soul sand and coarse dirt, lava pools sunk and
+             rimmed, and dead trees
+    rock     stone and andesite in beds following the surface, cobble a quarter, black clay as thin beds; the island's
+             stone is banded with andesite, cobble, mossy cobble, coarse dirt, gravel and ore, and hangs stalactites
     built    warm: brick ground storeys, spruce upper and dark oak roofs; granite and brick roads and terrace
     accent   lava in the ember pools and the core, glowstone in the lamps, the teams' banners
 
@@ -15,6 +18,7 @@ import sys
 import time
 
 import numpy as np
+from scipy import ndimage
 
 import plan as P
 import common as C
@@ -23,8 +27,9 @@ from pgmvox import build as BLD
 from pgmvox import trees as T
 from pgmvox import under as U
 from pgmvox import route, props
+from pgmvox import forms
 from pgmvox.noise import fbm
-from pgmvox.orient import ladder as ladder_data, turn_world
+from pgmvox.orient import ladder as ladder_data, stair as stair_data, turn_world
 from pgmvox.shapes import edge_depth
 from pgmvox.terrain import Strata, beds, by_angle, lay
 
@@ -69,6 +74,19 @@ pond_d = np.hypot((X - P.POND[0][0]) / P.POND[1], (Z - P.POND[0][1]) / P.POND[2]
 hamlet = np.hypot((X + 73) / 13.0, (Z - 4) / 15.0) < 1.0
 meadow = grid(L.wood, False) | (np.hypot((X + 26) / 16.0, (Z - 36) / 5.0) < 1.0)    # the wood floor, the shore under the Spine
 r_ = rng(P.BOARD, "ground")
+
+
+def blobs(seed, cell, cover):
+    """Blob-shaped patches `cell` blocks across, covering about `cover` of the land: the high end of smooth noise."""
+    f = fbm((w.sx, w.sz), cell, 2, seed=seed)
+    return f > np.quantile(f[land], 1 - cover)
+
+
+# the ash's colour comes in patches: six-sided dark oak logs, soul sand, coarse dirt. The first claim wins a cell.
+PATCH = np.zeros((w.sx, w.sz), int)
+for code, (seed, cell, cover) in {3: (71, 11, 0.12), 2: (72, 14, 0.11), 1: (73, 17, 0.12)}.items():
+    PATCH[blobs(seed, cell, cover)] = code
+LOGS6, SOUL, COARSE = (B.LOG2, 13), (B.SOUL_SAND, 0), (B.DIRT, 1)
 for i, k in np.argwhere(land):
     x, z, top = int(X[i, k]), int(Z[i, k]), int(H[i, k])
     w.ids[i, :max(0, bottom[i, k]), k] = 0
@@ -89,22 +107,128 @@ for i, k in np.argwhere(land):
         blk = (B.DIRT, 1) if g2[i, k] > 0.75 else (B.GRASS, 0)   # grass where water, shade or the hamlet keeps it
     else:
         blk = C.set_paint(ASH, g[i, k], 0)
+        pk = PATCH[i, k]
+        if pk == 1:                                             # a fallen-wood patch, coarse dirt showing through
+            blk = LOGS6 if g2[i, k] < 0.75 else COARSE
+        elif pk == 2:                                           # soul sand, coarse dirt at its fringe
+            blk = SOUL if g2[i, k] < 0.8 else COARSE
+        elif pk == 3:                                           # a coarse dirt patch with gravel flecks
+            blk = COARSE if g2[i, k] < 0.5 else (B.GRAVEL, 0)
     w.set(x, top, z, *blk)
 w.biome[:, :] = SAVANNA
 print(f"ground {time.time() - t0:.1f}s")
 
-# ---- the cone: its vent under the casing, lava's catch ----------------------------------------------------------
+# ---- the island's stone: beds, patches, ore, and stalactites under it ------------------------------------------------
+# lay() left plain stone and andesite beds, so the faces and the underside read as grey. Over the red half (blue's is
+# its turn) the body is re-laid: beds three thick that dip across the island, each of one of five stones; patches of
+# cobble (a third of it mossy), andesite, coarse dirt and gravel from smooth 3D noise; ore on the exposed faces.
+hx = -w.x0
+Y3 = np.arange(w.sy)[None, :, None]
+body = ((w.ids[:hx] == B.STONE) | (w.ids[:hx] == B.COBBLE))
+tilt = 6 * fbm((hx, w.sz), 28, 2, seed=81)
+bed = np.floor((Y3 + tilt[:, None, :]) / 3.0).astype(np.int64)
+pickbed = ((bed * 73856093) ^ (bed * 19349663 >> 4)) % 100
+thin = ((Y3 + (tilt[:, None, :] * 1.5).astype(np.int64)) % 13 == 0)                 # a one-block bed now and then
+n_a = fbm((hx, w.sy, w.sz), 8, 3, seed=82)
+n_b = fbm((hx, w.sy, w.sz), 6, 3, seed=83)
+n_c = fbm((hx, w.sy, w.sz), 10, 2, seed=84)
+new_id = np.full(body.shape, B.STONE, dtype=w.ids.dtype)
+new_dat = np.zeros(body.shape, dtype=w.dat.dtype)
+
+
+def put(mask, bid, d=0):
+    new_id[mask] = bid
+    new_dat[mask] = d
+
+
+put(pickbed >= 30, B.STONE, 5)                                                       # andesite beds
+put(pickbed >= 52, B.STONE, 0)
+put(pickbed >= 66, B.COBBLE, 0)
+put(pickbed >= 80, B.STONE, 6)                                                       # polished andesite
+put(pickbed >= 92, B.STONE, 0)
+put(thin & (pickbed % 3 == 0), B.DIRT, 1)                                            # a coarse dirt seam
+put(thin & (pickbed % 3 == 1), B.MOSSY, 0)
+put(n_a > 0.30, B.COBBLE, 0)                                                         # cobble patches
+put((n_a > 0.42) & (n_c > 0.0), B.MOSSY, 0)                                          # mossy where they are thickest
+put(n_b < -0.30, B.STONE, 5)                                                         # andesite patches
+put(n_c > 0.46, B.DIRT, 1)                                                           # coarse dirt patches
+below_solid = np.zeros(body.shape, bool)
+below_solid[:, 1:, :] = w.ids[:hx, :-1, :] != 0
+gravel = (n_c < -0.5) & below_solid                                                 # gravel only over something solid
+put(gravel, B.GRAVEL, 0)
+sel = body
+w.ids[:hx][sel] = new_id[sel]
+w.dat[:hx][sel] = new_dat[sel]
+# ore on faces that see air, a speck of one to three blocks
+air_ = (w.ids == 0)
+seen = np.zeros(w.ids.shape, bool)
+for ax in range(3):
+    for sh_ in (1, -1):
+        seen |= np.roll(air_, sh_, axis=ax)
+seen = seen[:hx] & body & (w.ids[:hx] != B.GRAVEL)
+ro = rng(P.BOARD, "ore")
+spot = seen & (ro.random(seen.shape) < 0.014)
+kind = ro.random(seen.shape)
+for lo_, hi_, (oid, od) in ((0, .5, (B.COAL_ORE, 0)), (.5, .78, (B.IRON_ORE, 0)), (.78, .88, (B.GOLD_ORE, 0)),
+                            (.88, .95, (B.REDSTONE_ORE, 0)), (.95, .99, (B.LAPIS_ORE, 0)), (.99, 1.01, (B.DIAMOND_ORE, 0))):
+    m = spot & (kind >= lo_) & (kind < hi_)
+    m |= np.roll(m, 1, axis=0) & body & (ro.random(m.shape) < 0.5)                  # a neighbour or two
+    m |= np.roll(m, 1, axis=2) & body & (ro.random(m.shape) < 0.35)
+    w.ids[:hx][m & body] = oid
+    w.dat[:hx][m & body] = od
+bottoms = np.where((w.ids != 0).any(axis=1), (w.ids != 0).argmax(axis=1), -1)         # each column's lowest solid y
+rim_d = edge_depth(land)
+rs = rng(P.BOARD, "stalactites")
+n_st = 0
+STAL = [(B.STONE, 0), (B.STONE, 5), (B.COBBLE, 0), (B.STONE, 5), (B.MOSSY, 0)]
+for i, k in rs.permutation(np.argwhere(land[:hx] & (rim_d[:hx] <= 16) & (rim_d[:hx] >= 0))):
+    if rs.random() > 0.045:
+        continue
+    cx_, cz_ = int(X[i, k]), int(Z[i, k])
+    ln = int(rs.integers(4, 11))
+    rad = 1.0 + ln / 4.5
+    for di in range(-3, 4):
+        for dk in range(-3, 4):
+            d_ = math.hypot(di, dk)
+            ii, kk = i + di, k + dk
+            if d_ >= rad or not (0 <= ii < hx and 0 <= kk < w.sz) or not land[ii, kk]:
+                continue
+            lo = int(bottoms[ii, kk])
+            n = int(round(ln * (1 - d_ / rad)))
+            for j in range(1, n + 1):
+                if lo - j < 1 or w.ids[ii, lo - j, kk] != 0:
+                    break
+                tip = j == n and rs.random() < 0.5                      # a mossy tip on half of them
+                w.ids[ii, lo - j, kk], w.dat[ii, lo - j, kk] = STAL[-1] if tip else STAL[int(rs.integers(len(STAL) - 1))]
+            n_st += 1
+bottoms = np.where((w.ids != 0).any(axis=1), (w.ids != 0).argmax(axis=1), -1)
+red_land = land & (X < 0)
+n_vine = forms.root_vines(w, red_land, H, bottoms, rng(P.BOARD, "vines"), chance=0.07, under=6, length=(3, 8))
+print(f"island stone {time.time() - t0:.1f}s: {int((w.ids[:hx] == B.COBBLE).sum())} cobble, "
+      f"{int(((w.ids[:hx] == B.COAL_ORE) | (w.ids[:hx] == B.IRON_ORE)).sum())} coal and iron, {n_st} stalactite columns, "
+      f"{n_vine} vines")
+
+# ---- the platform under the casing: a pit in the bowl's floor, a stone brick floor three down, rock under it ----------
+# The casing hangs four over the bowl's top. Under it the bowl is ordinary ground to the platform (no obsidian hull); a
+# five-by-five pit three deep holds the platform, so lava falls onto it and leaks, and a stair on the north row climbs out.
 cx, cz = P.CORE
+top_pit = P.BOWL_Y
+PLAT = [(B.STONEBRICK, 0), (B.STONEBRICK, 0), (B.STONE, 6), (B.STONEBRICK, 2)]
 for x in range(cx - 2, cx + 3):
     for z in range(cz - 2, cz + 3):
-        for y in range(P.VENT_BOTTOM + 1, P.BOWL_Y + 1):
+        for y in range(P.VENT_BOTTOM + 1, top_pit + 1):
             w.set(x, y, z, B.AIR)
-        w.set(x, P.VENT_BOTTOM, z, B.OBSIDIAN)
-for x in range(cx - 3, cx + 4):                                 # the vent's lip and walls in obsidian
-    for z in range(cz - 3, cz + 4):
-        if max(abs(x - cx), abs(z - cz)) == 3:
-            for y in range(P.VENT_BOTTOM, P.BOWL_Y + 1):
-                w.set(x, y, z, B.OBSIDIAN)
+        edge = max(abs(x - cx), abs(z - cz)) == 2
+        w.set(x, P.VENT_BOTTOM, z, *((B.STONEBRICK, 0) if edge else C.cell_pick(x, z, PLAT, 1, 4)))
+for j, x in enumerate((cx, cx - 1, cx - 2)):
+    z = cz - 2
+    y = P.VENT_BOTTOM + 1 + j
+    for yy in range(P.VENT_BOTTOM + 1, y):
+        w.set(x, yy, z, B.STONEBRICK, 0)
+    if j < 2:
+        w.set(x, y, z, B.STONEBRICK_STAIRS, stair_data("w"))    # the stair rises westward
+    else:
+        w.set(x, y, z, *C.cell_pick(x, z, CINDER, 2, 3))        # the last cell is the bowl's floor again
 
 # ---- the tube and the sinkhole ---------------------------------------------------------------------------------
 carved, floor = U.tunnel(w, P.TUBE, ground=H, cover=3)
@@ -119,6 +243,13 @@ for (x, z), y in P.tube_cells().items():                        # the tube opens
         for yy in range(y + 1, y + 4):
             w.set(x, yy, z, B.AIR)
         w.set(x, y, z, *C.cell_pick(x, z, CINDER, 2, 7))
+# the carve cut under gravel the island's beds had laid over solid rock: a roof of it would fall, so it becomes andesite
+for _ in range(6):
+    loose = (w.ids[:, 1:, :] == B.GRAVEL) & (w.ids[:, :-1, :] == 0)
+    if not loose.any():
+        break
+    w.ids[:, 1:, :][loose] = B.STONE
+    w.dat[:, 1:, :][loose] = 5
 print(f"tube {time.time() - t0:.1f}s: {carved} carved")
 
 # ---- the roads and paths, the terrace ---------------------------------------------------------------------------
@@ -248,6 +379,115 @@ for (px, pz), pr in P.POOLS:
                 w.set(x, gy_ - 1, z, B.OBSIDIAN)
                 w.set(x, gy_ - 2, z, B.OBSIDIAN)
 
+
+# ---- more ember pools in the ash, and dead trees ---------------------------------------------------------------------
+# Sites are the ash's flat ground kept off every road and path (seven blocks), off the buildings, the pond, the sinkhole,
+# the tube, the cone round the core and the island's edge, so a pool or a trunk is never on a way a team walks.
+near = lambda m: ndimage.distance_transform_edt(~m)                                  # noqa: E731
+lane = np.zeros((w.sx, w.sz), bool)
+for r in L.routes:
+    lane |= np.asarray(route.footprint(X, Z, r["line"], r["width"]), bool)
+tube_m = np.zeros((w.sx, w.sz), bool)
+for (tx_, tz_), _ in P.tube_cells().items():
+    if w.x0 <= tx_ < w.x0 + w.sx:
+        tube_m[tx_ - w.x0, tz_ - w.z0] = True
+level = (ndimage.maximum_filter(np.where(land, H, 0), size=9) - ndimage.minimum_filter(np.where(land, H, 999), size=9)) <= 3
+site = (land & (X < -6) & (deg < 24) & level & (edge_depth(land) >= 7) & (near(lane) >= 7) & (near(keep) >= 9)
+        & (near(grid(L.pond, False)) >= 6) & (near(grid(L.sink, False)) >= 8) & (near(tube_m) >= 6)
+        & (np.hypot(X - cx, Z - cz) >= 24) & ~grid(L.wood, False) & (near(grid(L.wood, False)) >= 3))
+rp = rng(P.BOARD, "pools")
+RIM = [(B.OBSIDIAN, 0), (B.OBSIDIAN, 0), (B.COAL_BLOCK, 0), (B.COBBLE, 0), (B.STAINED_CLAY, 15)]
+wob = fbm((w.sx, w.sz), 5, 2, seed=91)
+taken = [(px, pz, pr + 4) for (px, pz), pr in P.POOLS]
+more = []
+for i, k in rp.permutation(np.argwhere(site)):
+    x, z = int(X[i, k]), int(Z[i, k])
+    r_pool = float(rp.uniform(2.3, 4.3))
+    if any(math.hypot(x - a_, z - b_) < c_ + r_pool + 3 for a_, b_, c_ in taken):
+        continue
+    if site[max(0, i - 5):i + 6, max(0, k - 5):k + 6].mean() < 0.8:      # room for the pool and its rim
+        continue
+    taken.append((x, z, r_pool))
+    more.append(((x, z), r_pool))
+    if len(more) == 9:
+        break
+n_lava = 0
+for (px, pz), pr in more:                                                           # sunk in the ash, rimmed, uneven
+    for x in range(int(px - pr - 3), int(px + pr + 4)):
+        for z in range(int(pz - pr - 3), int(pz + pr + 4)):
+            i, k = x - w.x0, z - w.z0
+            gy_ = hwall(x, z)
+            if gy_ < 0 or not land[i, k]:
+                continue
+            d = math.hypot(x - px, z - pz) / (1 + 0.28 * wob[i, k])
+            if d < pr:
+                for y in range(gy_ - 1, gy_ + 3):
+                    w.set(x, y, z, B.AIR)
+                w.set(x, gy_ - 1, z, B.LAVA)
+                w.set(x, gy_ - 2, z, B.LAVA)
+                w.set(x, gy_ - 3, z, B.OBSIDIAN)
+                n_lava += 1
+            elif d < pr + 1.3:
+                w.set(x, gy_, z, *RIM[int(rp.integers(len(RIM)))])
+                w.set(x, gy_ - 1, z, B.OBSIDIAN)
+                w.set(x, gy_ - 2, z, B.OBSIDIAN)
+POOLED = P.POOLS + more
+
+
+def dead_tree(x, z, r):
+    """A bare trunk of dark oak or spruce with four or five limbs, each a run of lying logs that ends upturned; no
+    leaves. Seated on the ground at (x, z); refuses itself if anything but air stands in a limb's way."""
+    gy_ = w.top(x, z)
+    dark = r.random() < 0.6
+    trunk = (B.LOG2, 1) if dark else (B.LOG, 1)
+    lying = lambda d, ax: (trunk[0], trunk[1] | (4 if ax == "x" else 8))             # noqa: E731
+    h_ = int(r.integers(6, 11))
+    for y in range(gy_ + 1, gy_ + h_ + 1):
+        w.set(x, y, z, *trunk)
+    for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):                                # roots lying out from the foot
+        if r.random() < 0.45 and w.id(x + dx, gy_ + 1, z + dz) == B.AIR and w.id(x + dx, gy_, z + dz) != B.AIR:
+            w.set(x + dx, gy_ + 1, z + dz, *lying(None, "x" if dx else "z"))
+    dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+    r.shuffle(dirs)
+    for n_, (dx, dz) in enumerate(dirs[:int(r.integers(3, 5))] + [dirs[0]]):
+        y = gy_ + int(h_ * r.uniform(0.45, 0.85)) + n_ % 2
+        run = int(r.integers(2, 4))
+        for s_ in range(1, run + 1):
+            bx, bz = x + dx * s_, z + dz * s_
+            if w.id(bx, y, bz) == B.AIR:
+                w.set(bx, y, bz, *lying(None, "x" if dx else "z"))
+        ex, ez = x + dx * run, z + dz * run
+        for up in range(1, int(r.integers(2, 4))):                                    # the limb turns up at its end
+            if w.id(ex, y + up, ez) == B.AIR:
+                w.set(ex, y + up, ez, *trunk)
+        if run == 3 and r.random() < 0.6:                                             # a twig off the limb
+            tx_, tz_ = x + dx * 2 + dz, z + dz * 2 + dx
+            if w.id(tx_, y, tz_) == B.AIR:
+                w.set(tx_, y, tz_, *lying(None, "z" if dx else "x"))
+    return h_
+
+
+rd = rng(P.BOARD, "dead trees")
+near_pool = np.zeros((w.sx, w.sz), bool)
+for (px, pz), pr in POOLED:
+    near_pool |= np.hypot(X - px, Z - pz) < pr + 12
+pool_m = np.zeros((w.sx, w.sz), bool)
+for (px, pz), pr in POOLED:
+    pool_m |= np.hypot(X - px, Z - pz) < pr + 3
+tree_site = site & (near(pool_m) >= 4) & (X < -10)
+dead = []
+for want_pool, count in ((True, 3), (False, 7)):
+    for i, k in rd.permutation(np.argwhere(tree_site & (near_pool if want_pool else ~near_pool))):
+        x, z = int(X[i, k]), int(Z[i, k])
+        if any(math.hypot(x - a_, z - b_) < 14 for a_, b_ in dead):
+            continue
+        dead_tree(x, z, rd)
+        dead.append((x, z))
+        if len(dead) >= count:
+            break
+print(f"pools and dead trees {time.time() - t0:.1f}s: {len(more)} new pools ({n_lava} lava columns), {len(dead)} dead trees")
+print("  pools", [(p_[0], p_[1], round(r_, 1)) for p_, r_ in more])
+print("  dead trees", dead)
 
 # ---- the Scorch Wood: acacia with a few olive, kept off the paths and the sinkhole's brink -----------------------
 lib = T.kinds(T.library())

@@ -1,7 +1,7 @@
 <map proto="1.5.0">
     <name>Cinder Reach</name>
     <version>1.0.0</version>
-    <objective>Leak the enemy's core: it hangs over the vent of the cinder cone in front of their lodge.</objective>
+    <objective>Leak the enemy's core: it hangs over a stone platform in the bowl of the cinder cone in front of their lodge.</objective>
     <gamemode>dtc</gamemode>
     <authors>
         <author>Claude (pgmvox trial)</author>
@@ -12,7 +12,7 @@
             <item slot="1" material="bow" unbreakable="true">
                 <enchantment level="1">infinity</enchantment>
             </item>
-            <item slot="2" material="iron pickaxe" unbreakable="true">
+            <item slot="2" material="diamond pickaxe" unbreakable="true">
                 <enchantment level="1">efficiency</enchantment>
             </item>
             <item slot="3" material="iron axe" unbreakable="true"/>
@@ -69,8 +69,8 @@
         <cuboid min="77,58,-2" max="90,64,13" id="blue-spawn"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
         <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
-        <cuboid min="-53,52,22" max="-48,57,27" id="red-core-region"/>
-        <cuboid min="48,52,-27" max="53,57,-22" id="blue-core-region"/>
+        <cuboid min="-53,55,22" max="-48,60,27" id="red-core-region"/>
+        <cuboid min="48,55,-27" max="53,60,-22" id="blue-core-region"/>
         <negative id="not-build-area">
             <rectangle min="-24,-72" max="25,72"/>
         </negative>

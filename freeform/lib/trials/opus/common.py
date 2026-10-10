@@ -138,12 +138,13 @@ def grain(shape, seed, cell=3):
 
 
 # ---- map.xml -----------------------------------------------------------------------------------------------
-def kit(d, wood=64, extra=()):
+def kit(d, wood=64, extra=(), pick="iron pickaxe"):
     """The kit every board here gives: sword, bow, pickaxe, axe, wood, the team's clay, a golden apple, water,
-    food, arrows, leather in team colour with iron chest."""
+    food, arrows, leather in team colour with iron chest. A board whose goal is obsidian passes
+    pick="diamond pickaxe", the only pickaxe that breaks it."""
     return d.kit("spawn-kit",
                  item("iron sword", 0, unbreakable=True), item("bow", 1, enchant=[("infinity", 1)], unbreakable=True),
-                 item("iron pickaxe", 2, enchant=[("efficiency", 1)], unbreakable=True),
+                 item(pick, 2, enchant=[("efficiency", 1)], unbreakable=True),
                  item("iron axe", 3, unbreakable=True), item("wood", 4, wood),
                  item("stained clay", 5, 48, team_color=True), item("golden apple", 6), item("water bucket", 7),
                  item("cooked beef", 8, 16), item("arrow", 28), *extra,
