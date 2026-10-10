@@ -15,7 +15,10 @@ The world folder is the one `maps/INDEX.md` names for the board when the library
 or `<name>_pgmvox` where another board already holds that name.
 Outside that repository a board's world is `<board>/world`.
 
-    python3 -m pgmvox.run <board-dir> [--build <build-dir>] [--from STEP] [--only STEP] [--skip STEP ...]
+With `--out <dir>` nothing is written into the board or the repository: the renders go to `<dir>/renders`, the map.xml
+to `<dir>/map.xml` and the world to `<dir>/world`. That is how `check.py` rebuilds a board to compare it.
+
+    python3 -m pgmvox.run <board-dir> [--build <build-dir>] [--out <dir>] [--from STEP] [--only STEP] [--skip STEP ...]
 
 Run from freeform/lib (or with it on PYTHONPATH). A board's scripts find the library on their own sys.path.
 """
@@ -54,10 +57,11 @@ def world_folder(board, map_xml):
 STEPS = ["plan_check", "sketch", "gen", "write", "mapxml", "renders", "walk"]
 
 
-def run(board, build=None, start=None, only=None, skip=()):
+def run(board, build=None, start=None, only=None, skip=(), out=None):
     board = os.path.abspath(board)
+    home = os.path.abspath(out) if out else board
     scripts = os.path.join(board, "scripts")
-    renders = os.path.join(board, "renders")
+    renders = os.path.join(home, "renders")
     os.makedirs(renders, exist_ok=True)
     slug = os.path.basename(board.rstrip("/"))
     build = build or f"/tmp/{slug}-build"
@@ -85,6 +89,8 @@ def run(board, build=None, start=None, only=None, skip=()):
     found = []
 
     def world():
+        if not found and out:
+            found.append(os.path.join(home, "world"))
         if not found:
             stated = os.path.join(scripts, "map.xml")
             found.append(world_folder(board, lambda: py("mapxml") if os.path.isfile(os.path.join(scripts, "mapxml.py"))
@@ -107,12 +113,13 @@ def run(board, build=None, start=None, only=None, skip=()):
         elif step == "mapxml":
             xml = py("mapxml")
             if xml is not None:
-                for p in (os.path.join(scripts, "map.xml"), os.path.join(world(), "map.xml")):
+                stated = os.path.join(home, "map.xml") if out else os.path.join(scripts, "map.xml")
+                for p in (stated, os.path.join(world(), "map.xml")):
                     os.makedirs(os.path.dirname(p), exist_ok=True)
                     with open(p, "w") as f:
                         f.write(xml)
         elif step == "renders":
-            py("renders", build, board)
+            py("renders", build, home)
         elif step == "walk":
             out = py("walk", build, out=os.path.join(renders, "walks.txt"))
             if out:
@@ -127,11 +134,12 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("board")
     ap.add_argument("--build")
+    ap.add_argument("--out")
     ap.add_argument("--from", dest="start", choices=STEPS)
     ap.add_argument("--only", choices=STEPS)
     ap.add_argument("--skip", choices=STEPS, action="append", default=[])
     a = ap.parse_args()
-    for line in run(a.board, a.build, a.start, a.only, a.skip):
+    for line in run(a.board, a.build, a.start, a.only, a.skip, a.out):
         print(line)
 
 

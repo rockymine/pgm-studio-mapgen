@@ -1,17 +1,26 @@
-"""Check that nothing is broken: the tests, every example rebuilt and read back against a snapshot, the docs
-through the prose gate, and, where the studio is checked out, the library held to the studio's own answers.
+"""Check that nothing is broken: the tests, every example rebuilt and read back against a snapshot, every board
+rebuilt and hashed against the recorded worlds, the docs through the prose gate, and, where the studio is checked
+out, the library held to the studio's own answers.
 
-    python3 check.py                # tests, examples against the snapshot, prose
+    python3 check.py                # tests, examples against the snapshot, boards against their hashes, prose
     python3 check.py --studio       # and the studio: re-export blocks, roofs and slopes, read every map.xml
-    python3 check.py --update       # accept the examples as they now are (after looking at what changed)
+    python3 check.py --update       # accept the examples and boards as they now are (after looking at what changed)
     python3 check.py --quick        # tests and prose only
+    python3 check.py --boards       # tests, prose and the board hashes, without the examples' read-backs
 
 What an example is held to is what it reads back, not how it looks: the numbers its plan check, generator and
 walk print, and a fingerprint of the built world (how many of each block). A change that moves a number or a
 block count fails until it is looked at and accepted with --update; the diff says which.
+
+What a board is held to is the world its generator builds, byte for byte: every folder under `boards/`,
+`examples/`, `ports/` and `trials/` with a `scripts/gen.py` is built into a scratch folder and the sha256 of its
+`volume.bin`, `tiles.json` and `level.json` compared with `check/boards.json`. A change meant to leave behaviour
+alone moves none of them; a board that moves names the files that did. Nothing is written into a board's folder.
 """
 import argparse
+import concurrent.futures
 import difflib
+import hashlib
 import json
 import os
 import re
@@ -25,6 +34,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
 sys.path.insert(0, HERE)
 SNAPSHOT = os.path.join(HERE, "check", "snapshot.json")
+HASHES = os.path.join(HERE, "check", "boards.json")
+BUILT = ["volume.bin", "tiles.json", "level.json"]                 # what a board's gen.py saves
 # each example and the steps it runs; "write" needs the studio's toolchain and is never needed to compare
 EXAMPLES = {
     "islets": ["plan_check", "sketch", "gen", "mapxml", "renders", "walk"],
@@ -67,6 +78,7 @@ def example(name, tmp):
     from pgmvox.run import run
     board = os.path.join(HERE, "examples", name)
     build = os.path.join(tmp, name)
+    home = os.path.join(tmp, name + "-out")
     steps = EXAMPLES[name]
     out = {}
     try:
@@ -74,12 +86,12 @@ def example(name, tmp):
         import io
         with contextlib.redirect_stdout(io.StringIO()):
             for st in steps:
-                run(board, build, only=st)
+                run(board, build, only=st, out=home)
     except Exception as e:                                       # noqa: BLE001
         say(False, f"{name}: builds", str(e)[-2000:])
         return None
     for st in steps:
-        p = os.path.join(board, "renders", READS.get(st, ""))
+        p = os.path.join(home, "renders", READS.get(st, ""))
         if st in READS and os.path.exists(p):
             out[READS[st]] = numbers(open(p).read())
     if "gen" in steps:
@@ -104,6 +116,63 @@ def compare(name, got, want):
         else:
             diffs += ["    " + d for d in difflib.unified_diff(a or [], b or [], key, key, lineterm="", n=0)][2:]
     say(not diffs, f"{name}: reads back as the snapshot", "\n".join(diffs[:40]))
+
+
+def boards():
+    """Every folder with a generator, relative to the library: the boards the hashes hold."""
+    found = []
+    for top, dirs, _ in os.walk(HERE):
+        dirs[:] = sorted(d for d in dirs if not d.startswith((".", "__")) and d != "pgmvox")
+        if os.path.isfile(os.path.join(top, "scripts", "gen.py")):
+            found.append(os.path.relpath(top, HERE))
+            dirs[:] = []
+    return found
+
+
+def board_hashes(board, tmp):
+    """Build `board` into a scratch folder and hash what its generator saved."""
+    build = os.path.join(tmp, "boards", board.replace(os.sep, "--"))
+    scripts = os.path.join(HERE, board, "scripts")
+    env = dict(os.environ, PYTHONPATH=os.pathsep.join([HERE, os.environ.get("PYTHONPATH", "")]))
+    r = subprocess.run([sys.executable, os.path.join(scripts, "gen.py"), build], cwd=scripts, env=env,
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        return None, r.stderr[-2000:]
+    found = {}
+    for name in BUILT:
+        path = os.path.join(build, name)
+        if os.path.isfile(path):
+            found[name] = hashlib.sha256(open(path, "rb").read()).hexdigest()
+    shutil.rmtree(build, ignore_errors=True)
+    return found, ""
+
+
+def hold_boards(tmp, update, only):
+    want = json.load(open(HASHES)) if os.path.exists(HASHES) else {}
+    names = [b for b in boards() if not only or b in only]
+    workers = max(1, min(4, os.cpu_count() or 1))
+    with concurrent.futures.ThreadPoolExecutor(workers) as pool:
+        got = dict(zip(names, pool.map(lambda b: board_hashes(b, tmp), names)))
+    for name in names:
+        hashes, error = got[name]
+        if hashes is None:
+            say(False, f"{name}: builds", error)
+            continue
+        if update:
+            want[name] = hashes
+            print(f"  saved {name}")
+            continue
+        if name not in want:
+            say(False, f"{name}: no hashes yet", "run with --update to record them")
+            continue
+        moved = [f for f in sorted(set(hashes) | set(want[name])) if hashes.get(f) != want[name].get(f)]
+        say(not moved, f"{name}: builds the recorded world", "    moved: " + ", ".join(moved))
+    if update:
+        for gone in sorted(set(want) - set(boards())):
+            del want[gone]
+        os.makedirs(os.path.dirname(HASHES), exist_ok=True)
+        json.dump(want, open(HASHES, "w"), indent=1, sort_keys=True)
+        open(HASHES, "a").write("\n")
 
 
 def prose():
@@ -152,7 +221,8 @@ def main():
     ap.add_argument("--studio", action="store_true")
     ap.add_argument("--update", action="store_true")
     ap.add_argument("--quick", action="store_true")
-    ap.add_argument("example", nargs="*", help="only these examples")
+    ap.add_argument("--boards", action="store_true")
+    ap.add_argument("example", nargs="*", help="only these examples, or these boards (a path under the library)")
     a = ap.parse_args()
     print("tests")
     tests()
@@ -160,9 +230,9 @@ def main():
     prose()
     snap = json.load(open(SNAPSHOT)) if os.path.exists(SNAPSHOT) else {}
     with tempfile.TemporaryDirectory() as tmp:
-        if not a.quick:
+        if not a.quick and not a.boards:
             print("examples")
-            for name in a.example or EXAMPLES:
+            for name in [e for e in a.example if e in EXAMPLES] or ([] if a.example else EXAMPLES):
                 got = example(name, tmp)
                 if got is None:
                     continue
@@ -174,6 +244,9 @@ def main():
             if a.update:
                 os.makedirs(os.path.dirname(SNAPSHOT), exist_ok=True)
                 json.dump(snap, open(SNAPSHOT, "w"), indent=1, sort_keys=True)
+        if not a.quick:
+            print("boards")
+            hold_boards(tmp, a.update, [b.rstrip(os.sep) for b in a.example])
         if a.studio:
             print("studio")
             studio(tmp)

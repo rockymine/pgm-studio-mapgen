@@ -458,6 +458,12 @@ rebuilds every example and compares what each reads back (its plan check, genera
 of each block it built) with `check/snapshot.json`. A change that moves a number fails with a diff until it is
 looked at and accepted with `--update`. `--studio` also re-exports the studio's tables and reads every map.xml.
 
+**Every board is held to the world it builds, byte for byte.** `check.py` runs the generator of every folder with a
+`scripts/gen.py` (22 of them, about 40 seconds on four cores) into a scratch folder and compares the sha256 of its
+`volume.bin`, `tiles.json` and `level.json` with `check/boards.json`. A tidy that is meant to change no behaviour
+moves none of them, and `--boards` runs only this half. Nothing is written into a board's folder: a rebuild goes
+through `pgmvox.run --out`, which sends the renders, the map.xml and the world to a folder of its own.
+
 ```
 cd freeform/lib && python3 -m unittest discover -s tests -v
 ```

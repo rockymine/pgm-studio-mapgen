@@ -163,8 +163,9 @@ move it into `pgmvox` with a test, the way every module here arrived. Do not cha
 board run; write it locally and say in the report what the library should take.
 
 **`python3 check.py` before any change to the library is committed.** It runs the tests, rebuilds every example
-and compares what each reads back with the snapshot; `--studio` also holds the exported tables to the studio.
-A changed number fails until it is looked at and accepted with `--update`.
+and compares what each reads back with the snapshot, and rebuilds every board and compares its world's hashes;
+`--studio` also holds the exported tables to the studio. A changed number or a moved hash fails until it is
+looked at and accepted with `--update`.
 
 ## The report
 
