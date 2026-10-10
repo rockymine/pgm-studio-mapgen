@@ -54,15 +54,13 @@ bands = Strata([(HC, 0.32, 4), (ORANGE, 0.2, 3), ((B.STAINED_CLAY, 4), 0.12, 2),
                 ((B.STAINED_CLAY, 12), 0.14, 2), ((B.STAINED_CLAY, 14), 0.06, 1), ((B.STAINED_CLAY, 8), 0.06, 1)],
                length=100, seed=9, start=0)
 deg = lay(w, H, land, top=by_angle([(90, ORANGE)]), under=RSS, bands=beds(bands, None, seed=2), from_y=4,
-          soil=((30, 2), (40, 1)))
+          soil=((30, 2), (40, 1)), bottom=bottom)
 g = C.grain((w.sx, w.sz), 91)
 g2 = C.grain((w.sx, w.sz), 92)
 wash = grid(L.wash, False)
 plaza = grid(L.plaza, False)
 for i, k in np.argwhere(land):
     x, z, top = int(X[i, k]), int(Z[i, k]), int(H[i, k])
-    w.ids[i, :max(0, bottom[i, k]), k] = 0
-    w.dat[i, :max(0, bottom[i, k]), k] = 0
     if water[i, k] > 0:
         w.set(x, top, z, *(RSAND if g[i, k] > 0 else (B.CLAY, 0)))
         w.set(x, top - 1, z, *RSS)

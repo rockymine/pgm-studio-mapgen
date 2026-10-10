@@ -53,9 +53,6 @@ def lay_ground(w, L):
         a = int(deg[i, k])
         c, pv = cell[i, k], patch[i, k]
         if L.water[i, k] > 0:
-            w.ids[i, top, k], w.dat[i, top, k] = (B.CLAY, 0) if c < 0.5 else (B.SAND, 0)
-            w.ids[i, top + 1:int(L.water[i, k]) + 1, k] = B.WATER
-            w.dat[i, top + 1:int(L.water[i, k]) + 1, k] = 0
             continue
         if L.wash[i, k] and top <= P.WASH_FLOOR + 4:
             blk = (B.GRAVEL, 0) if c < 0.3 else (B.DIRT, 1) if c < 0.55 else (B.STAINED_CLAY, 12) if pv > 0.1 else (B.SAND, 0)
@@ -76,6 +73,7 @@ def lay_ground(w, L):
             w.ids[i, top, k], w.dat[i, top, k] = (B.GRASS, 0) if c < 0.8 else (B.DIRT, 2)
             if rng(P.BOARD, "grass%d" % (i * 400 + k)).random() < 0.22 and w.id(w.x0 + i, top + 1, w.z0 + k) == B.AIR:
                 w.set(w.x0 + i, top + 1, w.z0 + k, B.TALLGRASS, 1)
+    T.fill_water(w, H, L.water, mask=red, bed=[T.Paint((B.CLAY, 0), values=[(cell, None, 0.5)]), T.Paint((B.SAND, 0))])
     w.biome[:, :] = 2
     w.biome[L.grove] = 1
     return deg

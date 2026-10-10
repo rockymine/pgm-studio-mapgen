@@ -67,7 +67,7 @@ rock = Strata([((B.STONE, 0), 0.45, 4), ((B.STONE, 5), 0.3, 3), ((B.STAINED_CLAY
                ((B.STONE, 6), 0.15, 2)], length=80, seed=5, start=-120)
 deg = lay(w, H, land, top=by_angle([(90, (B.STAINED_CLAY, 7))]), under=(B.STAINED_CLAY, 7),
           bands=beds(rock, H, flecks=[((B.STONE, 0), (B.COBBLE, 0), 0.06)], seed=4), from_y=3,
-          soil=((30, 2), (42, 1)))
+          soil=((30, 2), (42, 1)), bottom=bottom)
 g = C.grain((w.sx, w.sz), 61)
 g2 = C.grain((w.sx, w.sz), 62)
 pond_d = np.hypot((X - P.POND[0][0]) / P.POND[1], (Z - P.POND[0][1]) / P.POND[2])
@@ -89,8 +89,6 @@ for code, (seed, cell, cover) in {3: (71, 11, 0.12), 2: (72, 14, 0.11), 1: (73, 
 LOGS6, SOUL, COARSE = (B.LOG2, 13), (B.SOUL_SAND, 0), (B.DIRT, 1)
 for i, k in np.argwhere(land):
     x, z, top = int(X[i, k]), int(Z[i, k]), int(H[i, k])
-    w.ids[i, :max(0, bottom[i, k]), k] = 0
-    w.dat[i, :max(0, bottom[i, k]), k] = 0
     if water[i, k] > 0:
         w.set(x, top, z, *((B.GRAVEL, 0) if g[i, k] > 0 else (B.CLAY, 0)))
         for y in range(top + 1, water[i, k] + 1):

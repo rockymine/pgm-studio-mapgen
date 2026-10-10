@@ -49,24 +49,20 @@ def lay_ground(w, L):
     mask = np.ones(H.shape, bool)
     rock = T.Strata([((B.STONE, 0), 3, 4), ((B.STONE, 5), 1.5, 3), ((B.MOSSY, 0), 1.2, 2), ((B.DIRT, 0), 0.8, 2),
                      ((B.GRAVEL, 0), 0.5, 1)], length=120, seed=17, start=0)
-    deg = T.lay(w, H, mask, top=T.by_angle([(30, (B.GRASS, 0)), (50, (B.DIRT, 1)), (90, (B.MOSSY, 0))]),
-                bands=T.beds(rock, T.bed_offset(H.shape, fold=2, cell=20, seed=3), seed=2), from_y=1, soil=((30, 3), (45, 2), (60, 1)))
     r = rng(P.BOARD, "ground")
     patch, cell = fbm(H.shape, 7, 2, seed=61), r.random(H.shape)
+    court_rim = (L.dz > 29) & (L.dz < 34)
+    deg = T.lay(w, H, mask, top=T.by_angle([(30, (B.GRASS, 0)), (50, (B.DIRT, 1)), (90, (B.MOSSY, 0))]),
+                bands=T.beds(rock, T.bed_offset(H.shape, fold=2, cell=20, seed=3), seed=2), from_y=1,
+                soil=((30, 3), (45, 2), (60, 1)), paint=[
+                    T.Paint((B.MOSSY, 0), slope=(10, None), where=court_rim, values=[(cell, None, 0.5)]),
+                    T.Paint((B.DIRT, 1), slope=(10, None), where=court_rim),
+                    T.Paint((B.DIRT, 1), slope=(None, 30), values=[(cell, None, 0.04)]),
+                    T.Paint((B.DIRT, 2), slope=(None, 30), values=[(patch, 0.3, None), (cell, None, 0.6)]),
+                    T.Paint((B.GRASS, 0), slope=(None, 30))])
     w.ids[:, 0, :] = B.BEDROCK
-    for i, k in np.argwhere(mask):
-        top = int(H[i, k])
-        a = int(deg[i, k])
-        c, pv = cell[i, k], patch[i, k]
-        if L.water[i, k]:
-            w.ids[i, top, k], w.dat[i, top, k] = (B.GRAVEL, 0) if c < 0.5 else (B.CLAY, 0)
-            w.ids[i, top + 1:P.STREAM_Y + 2, k] = B.WATER
-            w.dat[i, top + 1:P.STREAM_Y + 2, k] = 0
-            continue
-        if a <= 30:
-            w.ids[i, top, k], w.dat[i, top, k] = ((B.DIRT, 2) if pv > 0.3 and c < 0.6 else (B.GRASS, 0)) if c > 0.04 else (B.DIRT, 1)
-        if L.dz[i, k] > 29 and L.dz[i, k] < 34 and a > 10:
-            w.ids[i, top, k], w.dat[i, top, k] = (B.MOSSY, 0) if c < 0.5 else (B.DIRT, 1)
+    T.fill_water(w, H, np.where(L.water, P.STREAM_Y + 1, 0), bed=[
+        T.Paint((B.GRAVEL, 0), values=[(cell, None, 0.5)]), T.Paint((B.CLAY, 0))])
     w.biome[:, :] = 21
     return deg
 

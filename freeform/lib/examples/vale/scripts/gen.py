@@ -16,13 +16,8 @@ offset = T.bed_offset(H.shape, dip=(0.04, -0.02), fold=3, seed=5)
 top = T.by_angle([(30, (B.GRASS, 0)), (42, (B.DIRT, 1)), (55, (B.STONE, 5)), (90, (B.STONE, 0))])
 deg = T.lay(w, H, top=top, bands=T.beds(beds, offset, flecks=[((B.STONE, 0), (B.COBBLE, 0), 0.04)], seed=6),
             snow_above=92)
-for water in (sea, river):
-    for i, k in np.argwhere(water.mask):
-        x, z = int(X[i, k]), int(Z[i, k])
-        for y in range(int(H[i, k]) + 1, int(water.surface[i, k]) + 1):
-            w.set(x, y, z, B.WATER)
-        if water is sea or H[i, k] <= SEA:
-            w.set(x, int(H[i, k]), z, B.SAND)
+level = np.maximum(np.where(sea.mask, sea.surface, 0), np.where(river.mask, river.surface, 0))
+T.fill_water(w, H, level, bed=[T.Paint((B.SAND, 0), where=sea.mask | (H <= SEA))])
 bridges = 0
 for name, pts, (s, level) in road["roads"]:                 # laid after the water, so a deck spans it
     bridges += len(R.pave(w, H, X, Z, pts, width=4, water=river.mask | sea.mask,

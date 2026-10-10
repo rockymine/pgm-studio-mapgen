@@ -69,7 +69,7 @@ def lay_ground(w, L):
     bands = T.beds(rock, offset, flecks=[((B.STONE, 5), (B.COBBLE, 0), 0.05), ((B.STONE, 0), (B.GRAVEL, 0), 0.02)],
                    seed=3)
     deg = T.lay(w, H, red, top=T.by_angle([(22, (B.STAINED_CLAY, 7)), (45, (B.STONE, 5)), (90, (B.STONE, 0))]),
-                bands=bands, under=(B.STAINED_CLAY, 7), from_y=3, soil=((20, 2), (30, 1)))
+                bands=bands, under=(B.STAINED_CLAY, 7), from_y=3, soil=((20, 2), (30, 1)), bottom=L.bottom)
     r = rng(P.BOARD, "ground")
     sh = (w.sx, w.sz)
     patch, cell = fbm(sh, 7, 2, seed=61), r.random(sh)
@@ -77,8 +77,6 @@ def lay_ground(w, L):
     rav = L.rav
     for i, k in np.argwhere(red):
         top = int(H[i, k])
-        w.ids[i, :max(0, int(L.bottom[i, k])), k] = 0
-        w.dat[i, :max(0, int(L.bottom[i, k])), k] = 0
         if L.lava[i, k] or L.pit[i, k]:
             continue
         a = int(deg[i, k])
