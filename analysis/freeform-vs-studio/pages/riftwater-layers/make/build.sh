@@ -9,4 +9,6 @@ python3 frames.py
 python3 overlay.py
 python3 forms.py
 python3 soft.py
+python3 melt.py
+python3 paint.py
 python3 page.py
