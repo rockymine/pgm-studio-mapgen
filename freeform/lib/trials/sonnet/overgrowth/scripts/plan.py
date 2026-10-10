@@ -97,15 +97,6 @@ for _x in (-60, -50, -40, -22, -12):
         COVER.append(dict(kind="crate", rect=(_x, _z, _x + 1, _z + 1), h=2))
 
 
-
-def sym(a):
-    return 0.5 * (a + a[::-1, :])
-
-
-def mir(a):
-    return a[::-1, :]
-
-
 def profile(dz):
     """The valley's height by distance from the long axis (z = -0.5): the valley, the bank, the stream's bed, the
     terrace's wall and the terrace. dz is |z + 0.5|."""
@@ -120,7 +111,7 @@ def land():
     X, Z = np.meshgrid(xs, zs, indexing="ij")
     Xf, Zf = X.astype(float), Z.astype(float)
     sh = X.shape
-    n1, n2 = sym(fbm(sh, 10, 3, seed=11)), sym(fbm(sh, 30, 3, seed=12))
+    n1, n2 = SYM.field(fbm(sh, 10, 3, seed=11)), SYM.field(fbm(sh, 30, 3, seed=12))
     dz = np.abs(Zf + 0.5)
     h = profile(dz) + np.where(dz < 23.5, 0.7 * n1, 0) + np.where(dz > 37.5, 0.9 * n1 + 0.6 * n2, 0)
     # the ziggurat's tiers, the spawn courts
@@ -134,12 +125,12 @@ def land():
     e = np.maximum(np.abs(Xf + 0.5) / 64.0, np.abs(Zf + 0.5) / 48.0)
     h = h + 10 * smoothstep(0.93, 1.0, e)
     H = np.round(h).astype(int)
-    H = np.where(Xf < 0, H, mir(H))
+    H = np.where(Xf < 0, H, SYM.image(H))
     water = (H <= STREAM_Y + 1) & (dz > 28) & (dz < 34)
     L.X, L.Z, L.H, L.Xf, L.Zf = X, Z, H, Xf, Zf
     L.water = water
     L.slope = slope_deg(H)
-    L.court = np.where(Xf < 0, court, mir(court))
+    L.court = np.where(Xf < 0, court, SYM.image(court))
     L.dz = dz
     return L
 

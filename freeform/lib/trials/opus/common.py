@@ -3,7 +3,6 @@
 Each piece is a library candidate; the boards' reports and SUMMARY.md say which and why. A board's scripts import
 this module after `plan.py` has put `freeform/lib` and this folder on the path.
 
-    full(red, op)            a half-board array completed by its image (half turn or a mirror)
     image_box(sym, x0, z0, x1, z1)   a rectangle's image under a Symmetry, as corners again
     gaps(R, axis, ...)       the void a team bridges across a seam, at each row
     via(E, starts, waypoint, targets)  the cheapest walk that passes a waypoint: an approach measured by its way
@@ -31,18 +30,6 @@ from pgmvox.noise import fbm  # noqa: E402
 
 
 # ---- symmetry ----------------------------------------------------------------------------------------------
-def full(red, op):
-    """A red-half array (red is the low half along the turned axis: x < 0 for "half" and "mirror_x", z < 0 for
-    "mirror_z") completed by its image about the default axis between blocks -1 and 0."""
-    if op == "mirror_x":
-        return np.concatenate([red, red[::-1]], axis=0)
-    if op == "mirror_z":
-        return np.concatenate([red, red[:, ::-1]], axis=1)
-    if op == "half":
-        return np.concatenate([red, red[::-1, ::-1]], axis=0)
-    raise ValueError(op)
-
-
 def image_box(sym, x0, z0, x1, z1):
     """A rectangle of whole blocks carried through a Symmetry: (x0, z0, x1, z1) sorted."""
     a, b = sym.point(x0, z0), sym.point(x1, z1)

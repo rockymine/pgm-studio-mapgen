@@ -163,6 +163,30 @@ class Audit(unittest.TestCase):
 
 
 class Plan(unittest.TestCase):
+    def test_a_fields_image_is_every_column_at_its_image_point(self):
+        xs = np.arange(-4, 4)
+        X, Z = np.meshgrid(xs, xs, indexing="ij")
+        a = np.random.default_rng(3).random(X.shape)
+        for op in ("half", "mirror_x", "mirror_z", "cw"):
+            S = Symmetry(op)
+            image = S.image(a)
+            for i, k in [(0, 0), (1, 5), (7, 2), (3, 3)]:
+                x, z = S.point(int(X[i, k]), int(Z[i, k]))
+                self.assertEqual(image[x + 4, z + 4], a[i, k], op)
+            sym = S.field(a)
+            self.assertTrue(np.allclose(sym, S.image(sym)), op)
+
+    def test_a_field_completed_from_a_half_is_symmetric(self):
+        half = np.random.default_rng(4).random((4, 8))
+        for op in ("half", "mirror_x"):
+            S = Symmetry(op)
+            whole = S.whole(half)
+            self.assertTrue(np.array_equal(whole, S.image(whole)), op)
+            self.assertTrue(np.array_equal(whole[:4], half), op)
+            keep = np.zeros((8, 8), bool)
+            keep[:4] = True
+            self.assertTrue(np.array_equal(S.field(np.vstack([half, np.zeros((4, 8))]), keep=keep), whole), op)
+
     def raster(self):
         R = Raster((-20, 19), (-10, 9), ["wall", "floor", "stair", "gap"], base_h=6, base_kind="gap",
                    symmetry=Symmetry("half"))

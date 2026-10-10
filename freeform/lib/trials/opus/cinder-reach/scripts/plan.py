@@ -321,8 +321,8 @@ def build():
         for z in range(cz - 2, cz + 3):
             K[x - X_MIN, z - Z_MIN] = R.kinds["house"]
             H[x - X_MIN, z - Z_MIN] = CORE_Y + 4
-    R.H[:] = common.full(H, "half")
-    R.K[:] = common.full(K, "half")
+    R.H[:] = SYM.whole(H)
+    R.K[:] = SYM.whole(K)
     # storey 1: the lava tube from the fissure face to the sinkhole's floor
     U = R.storey(1)
     for (x, z), y in tube_cells().items():

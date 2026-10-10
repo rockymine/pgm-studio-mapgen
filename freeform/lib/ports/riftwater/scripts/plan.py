@@ -329,11 +329,6 @@ def at(L, x, z):
     return int(L.H[x - X_MIN, z - Z_MIN])
 
 
-def full(a):
-    """A red-half array as the whole board's: blue's columns are red's mirrored, x' = -1 - x."""
-    return np.concatenate([a, a[::-1]], axis=0)
-
-
 # ---- the buildings ----------------------------------------------------------------------------------------
 STYLES = {
     # the town: brick ground storey, spruce posts with white clay infill above, a dark oak roof
@@ -477,8 +472,8 @@ def build():
     for ddx in (-1, 0, 1):
         for ddz in (-1, 0, 1):
             K[sx + ddx - X_MIN, sz + ddz - Z_MIN] = R.kinds["shaft"]
-    R.H[:] = full(H)
-    R.K[:] = full(K)
+    R.H[:] = SYM.whole(H)
+    R.K[:] = SYM.whole(K)
     # the steps from the terrace down to Spawn Lane: a flight climbing west, drawn for both halves
     g = at(L, -78, -7)
     n = 59 - g

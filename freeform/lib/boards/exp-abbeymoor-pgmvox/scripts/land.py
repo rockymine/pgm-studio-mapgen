@@ -11,9 +11,11 @@ half is drawn and blue's is its image. Every landform takes this board's numbers
 import numpy as np
 
 from pgmvox import landform as L, noise
+from pgmvox.plan import Symmetry
 from pgmvox.noise import smoothstep
 
 X0, Z0 = -100, -132
+SYM = Symmetry("half")                  # the half turn about the board's middle: blue's half is red's image
 NX, NZ = 200, 264
 MOOR = 66
 PLATEAU = 80
@@ -41,8 +43,7 @@ def sym(f):
 
 
 def symnoise(shape, cell, octaves, seed):
-    a = noise.fbm(shape, cell, octaves, seed=seed)
-    return (a + a[::-1, ::-1]) / 2
+    return SYM.field(noise.fbm(shape, cell, octaves, seed=seed))
 
 
 def bog_field(X, Z):
@@ -113,8 +114,8 @@ def ground():
     waters.append(beck)
     H = L.hold(H, *waters)
     red = Z < 0                                                  # red's half is drawn; blue's is its image under the half turn
-    H = np.where(red, H, H[::-1, ::-1])
-    waters = [L.Water(np.where(red, w_.mask, w_.mask[::-1, ::-1]), np.where(red, w_.surface, w_.surface[::-1, ::-1]), w_.falls or [])
+    H = SYM.field(H, keep=red)
+    waters = [L.Water(SYM.field(w_.mask, keep=red), SYM.field(w_.surface, keep=red), w_.falls or [])
               for w_ in waters]
     H = np.where(land, np.round(H), 0).astype(int)
     wet = np.zeros(H.shape, bool)

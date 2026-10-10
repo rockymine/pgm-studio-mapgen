@@ -279,8 +279,8 @@ def build():
         dx, dz = b["door"]
         K[dx - X_MIN, dz - Z_MIN] = R.kinds["door"]
         H[dx - X_MIN, dz - Z_MIN] = b["floor"]
-    R.H[:] = common.full(H, "mirror_x")
-    R.K[:] = common.full(K, "mirror_x")
+    R.H[:] = SYM.whole(H)
+    R.K[:] = SYM.whole(K)
     # the stairs cut into the cliffs, drawn for both halves
     for (fx, fz), rises, n in (LADDER, HEAD, BENCH_STAIR):
         if (fx, fz) == HEAD[0]:                                  # the head stair climbs north from the floor

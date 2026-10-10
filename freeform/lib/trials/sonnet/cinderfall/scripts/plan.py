@@ -134,15 +134,6 @@ STYLES = {
 }
 
 
-def sym(a):
-    """A field made symmetric under the half turn, so a red-only feature never leaves a seam at the middle."""
-    return 0.5 * (a + a[::-1, ::-1])
-
-
-def rot(a):
-    return a[::-1, ::-1]
-
-
 def ravine_axes(Xf, Zf):
     """The ravine's frame: (signed distance across its centre line, half width at the rim, z). The centre line is an odd
     function of z and the half width an even one, so the whole is its own image under the half turn."""
@@ -165,13 +156,13 @@ def land():
     X, Z = np.meshgrid(xs, zs, indexing="ij")
     Xf, Zf = X.astype(float), Z.astype(float)
     sh = X.shape
-    n1, n2 = sym(fbm(sh, 14, 3, seed=11)), sym(fbm(sh, 40, 3, seed=12))
+    n1, n2 = SYM.field(fbm(sh, 14, 3, seed=11)), SYM.field(fbm(sh, 40, 3, seed=12))
     r = np.hypot(Xf + 0.5, Zf + 0.5)
     th = np.arctan2(Zf + 0.5, Xf + 0.5)
     mouth = np.exp(-(np.sin(th) / 0.42) ** 2)                      # the caldera is open to the east and the west
 
     # the outline: an ellipse with a ragged edge; the island floats
-    e = np.hypot(Xf / 91.0, Zf / 53.0) + 0.07 * sym(fbm(sh, 12, 3, seed=21))
+    e = np.hypot(Xf / 91.0, Zf / 53.0) + 0.07 * SYM.field(fbm(sh, 12, 3, seed=21))
     land_m = e < 1.0
 
     # the plain, and the caldera profile by radius: floor, shore, inner wall, rim, outer skirt
@@ -233,12 +224,12 @@ def land():
     # the underside is read off the ground as it stood before the ravine, so the island keeps its shape; the ravine's
     # floor is held three over it
     red = X < 0
-    hp = np.where(red, h, rot(h))
-    land_p = np.where(red, land_m, rot(land_m))
+    hp = np.where(red, h, SYM.image(h))
+    land_p = np.where(red, land_m, SYM.image(land_m))
     d_edge = ndimage.distance_transform_edt(land_p)
-    nn = sym(fbm(sh, 9, 3, seed=51))
+    nn = SYM.field(fbm(sh, 9, 3, seed=51))
     thick = 5 + 1.15 * d_edge + 5 * nn
-    bottom0 = np.maximum(np.round(hp) - thick, 14 + 3 * sym(fbm(sh, 16, 2, seed=52))).round().astype(int)
+    bottom0 = np.maximum(np.round(hp) - thick, 14 + 3 * SYM.field(fbm(sh, 16, 2, seed=52))).round().astype(int)
 
     # the lava pit under the core: a round well in the plinth, lava to three under its rim
     dpit = np.hypot(Xf - CORE_AT[0], Zf - CORE_AT[1])
@@ -283,25 +274,25 @@ def land():
 
     # red's drawn and blue's its half turn
     red = X < 0
-    H = np.where(red, H, rot(H))
-    L.lava = np.where(red, L.lava, rot(L.lava))
-    L.pit = np.where(red, L.pit, rot(L.pit))
-    land_f = np.where(red, land_m, rot(land_m))
-    L.plinth = np.where(red, L.plinth, rot(L.plinth))
-    L.ridge = np.where(red, L.ridge, rot(L.ridge))
-    L.foundry = np.where(red, L.foundry, rot(L.foundry))
-    L.funnels = [np.where(red, m, rot(m)) for m in L.funnels]
+    H = np.where(red, H, SYM.image(H))
+    L.lava = np.where(red, L.lava, SYM.image(L.lava))
+    L.pit = np.where(red, L.pit, SYM.image(L.pit))
+    land_f = np.where(red, land_m, SYM.image(land_m))
+    L.plinth = np.where(red, L.plinth, SYM.image(L.plinth))
+    L.ridge = np.where(red, L.ridge, SYM.image(L.ridge))
+    L.foundry = np.where(red, L.foundry, SYM.image(L.foundry))
+    L.funnels = [np.where(red, m, SYM.image(m)) for m in L.funnels]
     L.land = land_f
     L.road_on = {}
     for rt in L.routes:
         on = (shapes.polyline(Xf, Zf, rt["line"])[0] <= rt["width"] / 2) & land_f
-        L.road_on[rt["name"]] = np.where(red, on, rot(on))
+        L.road_on[rt["name"]] = np.where(red, on, SYM.image(on))
 
     # the underside: thick and ragged, cone-shaped, never lower than 14, as the ground stood before the ravine
     L.X, L.Z, L.H = X, Z, np.where(land_f, H, -1)
     L.bottom = np.where(land_f, bottom0, 0)
     wood = shapes.inside(Xf, Zf, NORTH_WOOD) & (L.rav["c"] > L.rav["hw"] + 2)
-    L.wood = (wood | rot(wood)) & land_f
+    L.wood = (wood | SYM.image(wood)) & land_f
     L.slope = slope_deg(L.H, land_f)
     L.Xf, L.Zf = Xf, Zf
     return L
@@ -413,8 +404,8 @@ def build():
     for sx, sz, sr, top, _ in STACKS:
         m = (L.X < 0) & (np.hypot(L.Xf - sx, L.Zf - sz) <= 0.7 * sr)
         Kr[m], Hr[m] = k_["stack"], top
-    K = np.where(red, Kr, rot(Kr))
-    H = np.where(red, Hr, rot(Hr))
+    K = np.where(red, Kr, SYM.image(Kr))
+    H = np.where(red, Hr, SYM.image(Hr))
     R.H[:] = H
     R.K[:] = K
     U = R.storey(1)

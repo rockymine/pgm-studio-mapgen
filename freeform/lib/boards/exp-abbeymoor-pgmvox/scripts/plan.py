@@ -30,13 +30,13 @@ from pgmvox import shapes  # noqa: E402
 from pgmvox import terrain as T  # noqa: E402
 from pgmvox.build import Frame, House  # noqa: E402
 from pgmvox.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.plan import Raster, Symmetry  # noqa: E402
+from pgmvox.plan import Raster  # noqa: E402
 from pgmvox.blocks import B  # noqa: E402
 
 BOARD = "abbeymoor"
 X_MIN, X_MAX = land.X0, land.X0 + land.NX - 1
 Z_MIN, Z_MAX = land.Z0, land.Z0 + land.NZ - 1
-SYM = Symmetry("half")
+SYM = land.SYM
 KILL_Y = 8
 MAX_BUILD = 120
 BIOME = 6                                   # swampland: a dark water, an olive grass, a podzol it meets

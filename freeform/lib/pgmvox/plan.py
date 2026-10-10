@@ -47,6 +47,44 @@ class Symmetry:
         dx, dz = vec(d)
         return NAMES[vec(OPS[self.op](dx, dz))]
 
+    def image(self, a):
+        """The image of a field over a board grid whose middle is the axis, indexed (x, z): where every column's
+        value goes under the symmetry. A quarter turn needs a square grid."""
+        a = np.asarray(a)
+        if self.op == "half":
+            return a[::-1, ::-1]
+        if self.op == "mirror_x":
+            return a[::-1, :]
+        if self.op == "mirror_z":
+            return a[:, ::-1]
+        assert a.shape[0] == a.shape[1], "a quarter turn of a field needs a square grid"
+        return a[:, ::-1].T
+
+    def field(self, a, keep=None):
+        """A field made symmetric: the mean of it and its images, or, on a two-team board with `keep` (a mask of
+        the columns drawn, such as red's half), those columns as they are and every other one from the image."""
+        if keep is not None:
+            assert self.order == 2, "a quarter-turn board keeps a quarter, not a half"
+            return np.where(keep, a, self.image(a))
+        if self.order == 2:
+            return 0.5 * (a + self.image(a))
+        total, turned = np.array(a, float), np.asarray(a)
+        for _ in range(self.order - 1):
+            turned = self.image(turned)
+            total = total + turned
+        return total / self.order
+
+    def whole(self, half):
+        """A two-team board's field from the half drawn (the low x half for "half" and "mirror_x", the low z half
+        for "mirror_z"), its image laid beside it."""
+        if self.op == "half":
+            return np.concatenate([half, half[::-1, ::-1]], axis=0)
+        if self.op == "mirror_x":
+            return np.concatenate([half, half[::-1]], axis=0)
+        if self.op == "mirror_z":
+            return np.concatenate([half, half[:, ::-1]], axis=1)
+        raise ValueError("a quarter-turn board is not drawn as a half")
+
 
 class Raster:
     def __init__(self, xs, zs, kinds, base_h=0, base_kind=None, symmetry=None):

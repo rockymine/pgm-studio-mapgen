@@ -126,15 +126,6 @@ STYLES = {
 }
 
 
-def sym(a):
-    """A field made symmetric under the mirror, so a red-only feature leaves no seam down the wash."""
-    return 0.5 * (a + a[::-1, :])
-
-
-def mir(a):
-    return a[::-1, :]
-
-
 @lru_cache(maxsize=1)
 def land():
     """The whole board's heights H (floor block y), the water, the rim; red drawn and the whole mirrored."""
@@ -143,13 +134,13 @@ def land():
     X, Z = np.meshgrid(xs, zs, indexing="ij")
     Xf, Zf = X.astype(float), Z.astype(float)
     sh = X.shape
-    n1, n2 = sym(fbm(sh, 12, 3, seed=11)), sym(fbm(sh, 36, 3, seed=12))
-    dune = sym(fbm(sh, 22, 2, seed=13))
+    n1, n2 = SYM.field(fbm(sh, 12, 3, seed=11)), SYM.field(fbm(sh, 36, 3, seed=12))
+    dune = SYM.field(fbm(sh, 22, 2, seed=13))
     d = np.abs(Xf + 0.5)                                             # distance from the wash's axis
 
     # the plateau: dunes, a rise toward the back, a gentler fall to the wash
     base = PLATEAU + 1.5 * n1 + 2.0 * n2 + 1.2 * dune + 4 * smoothstep(-60, -94, Xf) * (Xf < 0)
-    h = np.where(Xf < 0, base, mir(base))
+    h = np.where(Xf < 0, base, SYM.image(base))
 
     # Table Rock (a mesa, its steps cut later), the Stepped Rock, two small buttes for cover
     h = LF.butte(h, Xf, Zf, TABLE, r=TABLE_R, top=TABLE_TOP, cliff=2.2, talus=7, talus_height=0.3, jag=0.1, seed=3)
@@ -161,7 +152,7 @@ def land():
     # the aqueduct's anchor and the oasis rim
     anchor = (Xf >= ARCADE[0] - 4) & (Xf <= ARCADE[0] + 3) & (Zf >= ARCADE[1] - 3) & (Zf <= ARCADE[3] + 3)
     h = LF.blend(h, np.full(sh, float(PLATEAU)), anchor, width=3)
-    h = np.where(Xf < 0, h, mir(h))                                  # red drawn, mirrored again after the buttes
+    h = np.where(Xf < 0, h, SYM.image(h))                                  # red drawn, mirrored again after the buttes
 
     # the Souk's square and the spawn terrace
     sq = (Xf >= SQUARE[0]) & (Xf <= SQUARE[2]) & (Zf >= SQUARE[1]) & (Zf <= SQUARE[3])
@@ -189,19 +180,19 @@ def land():
 
     # the wash: a floor, a wall of cliff, ledges; cut under the plateau, closed again by the rim
     prof = np.interp(d, [0, 9, 10.5, 13, 16, 19, 22, 25], [WASH_FLOOR, WASH_FLOOR, 49, 53, 57, 60.5, 62.5, 63.5])
-    prof = prof + 0.9 * n1 * (d < 9) + 1.5 * sym(fbm(sh, 5, 2, seed=15)) * ((d > 9) & (d < 22))
+    prof = prof + 0.9 * n1 * (d < 9) + 1.5 * SYM.field(fbm(sh, 5, 2, seed=15)) * ((d > 9) & (d < 22))
     h = np.where(d < 25, np.minimum(h, prof), h)
 
     # the rim: the basin's walls rise toward the board's edge
     e = np.maximum(np.abs(Xf + 0.5) / 100.0, np.abs(Zf + 0.5) / 64.0)
     rim = 26 * smoothstep(0.80, 1.0, e) ** 1.3 + 8 * ridged(sh, 18, 3, seed=16) * smoothstep(0.84, 1.0, e)
-    rim = sym(rim)
+    rim = SYM.field(rim)
     L.rim = e > 0.86
     h = h + rim
 
     # the oasis ground cover keeps its own height; the roads are graded in later
     H = np.round(h).astype(int)
-    H = np.where(Xf < 0, H, mir(H))
+    H = np.where(Xf < 0, H, SYM.image(H))
     water = np.zeros(sh, int)
     water[L.pond & (Xf < 0)] = POND_Y
     H = np.where(water > 0, np.minimum(H, POND_Y - 1), H)
@@ -222,22 +213,22 @@ def land():
     from scipy import ndimage
     rim = ndimage.binary_dilation(water > 0, np.ones((3, 3), bool)) & (water == 0)
     H = np.where(rim, np.maximum(H, POND_Y), H)
-    H = np.where(Xf < 0, H, mir(H))
-    L.water = np.where(Xf < 0, water, mir(water))
+    H = np.where(Xf < 0, H, SYM.image(H))
+    L.water = np.where(Xf < 0, water, SYM.image(water))
     L.X, L.Z, L.H = X, Z, H
     L.Xf, L.Zf = Xf, Zf
     L.road_on = {}
     for rt in L.routes:
         on = shapes.polyline(Xf, Zf, rt["line"])[0] <= rt["width"] / 2
-        L.road_on[rt["name"]] = np.where(Xf < 0, on, mir(on))
+        L.road_on[rt["name"]] = np.where(Xf < 0, on, SYM.image(on))
     L.slope = slope_deg(H)
     grove = shapes.inside(Xf, Zf, GROVE) | (np.hypot(Xf - ox, Zf - oz) < 14)
-    L.grove = np.where(Xf < 0, grove, mir(grove)) & (L.water == 0)
-    L.square = np.where(Xf < 0, sq, mir(sq))
+    L.grove = np.where(Xf < 0, grove, SYM.image(grove)) & (L.water == 0)
+    L.square = np.where(Xf < 0, sq, SYM.image(sq))
     L.wash = (d < 9.5)
     L.mesa = np.where(Xf < 0, (np.hypot(Xf - TABLE[0], Zf - TABLE[1]) < TABLE_R + 0.5) |
                       (np.hypot(Xf - ZIGG[0], Zf - ZIGG[1]) < 2.8), False)
-    L.mesa = np.where(Xf < 0, L.mesa, mir(L.mesa))
+    L.mesa = np.where(Xf < 0, L.mesa, SYM.image(L.mesa))
     return L
 
 
@@ -391,8 +382,8 @@ def build():
                 i, k = x + dx - X_MIN, z + dz - Z_MIN
                 if Hr[i, k] - (y - 1) <= 3:
                     Hr[i, k], Kr[i, k] = y - 1, k_["mine"]
-    K = np.where(red, Kr, mir(Kr))
-    H = np.where(red, Hr, mir(Hr))
+    K = np.where(red, Kr, SYM.image(Kr))
+    H = np.where(red, Hr, SYM.image(Hr))
     R.H[:] = H
     R.K[:] = K
     # a flight up the mesa's south face, one block a cell
