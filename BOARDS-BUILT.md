@@ -832,7 +832,7 @@ here so `tools/boards-check.py` can tell them from a board nobody wrote up.
 
 ## Not yet written up
 
-A board lands in `maps/` and `specs/` the moment it is driven, and its entry above is written by the
+A board lands in `specs/` and its world in `maps/<mode>/<name>/` the moment it is driven, and its entry above is written by the
 run that built it (`AUTHORING-BRIEF.md` §6). These predate that rule and have no entry yet.
 
 **The list is the debt, carried in the open rather than discovered again later.** A slug leaves it by

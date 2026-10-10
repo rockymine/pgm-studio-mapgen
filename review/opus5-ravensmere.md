@@ -1,6 +1,6 @@
 # Ravensmere — a mere with an island in it, and a range behind the spawn
 
-`maps/opus5-ravensmere` · `specs/opus5-ravensmere` · **152 × 302 blocks**, one open landmass ·
+`maps/dtcm/ravensmere` · `specs/opus5-ravensmere` · **152 × 302 blocks**, one open landmass ·
 destroy, one destroyable a team · `rot_180` · 24 players · **single layer**
 
 The brief, in the author's own order: rolling hills, ravines, a central lake with an island in the

@@ -176,7 +176,7 @@ props. These are the things this board added.
   wrote `trees.json`. `build.sh` regenerates `world/` and `renders/` from nothing.
 - The world is 260 × 200 blocks: 1,794,462 blocks in 232 chunks, 94 trees, 24 tile entities (chests and
   signs).
-- `world/map.xml`: DTC, teams, spawns, a kit, two cores with `leak="5"`, spawn protection, and `no-void`
+- `maps/dtcm/hollow_mesa/map.xml`: DTC, teams, spawns, a kit, two cores with `leak="5"`, spawn protection, and `no-void`
   over the whole board. The trees are credited to rockymine, who built them.
 
 ## After the playtest

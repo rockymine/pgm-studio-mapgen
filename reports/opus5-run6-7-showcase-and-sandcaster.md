@@ -138,7 +138,7 @@ forest — in one board; the surface painted with a brush rather than one patter
 far as it goes while keeping walkable ground; and an **uncanny** underground that surfaces. Two destroyables
 a team, one of them down there.
 
-It is `maps/opus5-sandcaster`, and `review/opus5-sandcaster.md` is what it became.
+It is `maps/dtcm/sandcaster`, and `review/opus5-sandcaster.md` is what it became.
 
 ## What I took from another agent's branch rather than rediscovering
 

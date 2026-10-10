@@ -18,7 +18,7 @@ than the usual obsidian pillar.** How the two stand relative to each other and t
 decide, and the next two sections say how.
 
 Slug `whitstone-weald`, map name **Whitstone Weald**, credited to Opus 5.5. `specs/whitstone-weald/build-spec.py`
-writes the plan and the finish; `maps/whitstone-weald/` is the world.
+writes the plan and the finish; `maps/dtcm/whitstone_weald/` is the world.
 
 ## How the board was sized
 

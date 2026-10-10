@@ -21,7 +21,7 @@ twenty-four because a front presents a single face on about two in three — the
 their row at the same shallower depth.
 
     python3 specs/crossing-suite/build-suite.py       # writes specs/opus5-<slug>/ for each board
-    tools/drive.py specs/opus5-stannerford "Stannerford" --out maps/opus5-stannerford
+    tools/drive.py specs/opus5-stannerford "Stannerford"
 
 The plans come **straight off the composer with nothing adapted**, and the finish is the same document on
 every one of them, so what differs between the boards is the composer's own output and nothing else.

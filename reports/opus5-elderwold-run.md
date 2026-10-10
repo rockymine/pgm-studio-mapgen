@@ -8,7 +8,7 @@ rectangles. One endstone destroyable a side. A dense oak wood, a path, a river, 
 plateaus and depressions that step down. One theme for the whole surface, with the **path tool used as a
 texturing brush** to give the board dedicated ground without a second theme.
 
-The board is `maps/opus5-elderwold`, the documents are `specs/opus5-elderwold/`, and
+The board is `maps/dtcm/elderwold`, the documents are `specs/opus5-elderwold/`, and
 `review/opus5-elderwold.md` is what it measures.
 
 ## What worked first time

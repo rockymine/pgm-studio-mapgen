@@ -15,7 +15,7 @@ every drop, and has beds of podzol cut into its deck with flowers and a birch gr
 *What I got wrong* is about why; what stands now is the author's eleven rectangles with their ids, their
 arrangement and their tiers, shaped by four authored ramps rather than by relief.
 
-The board is `maps/opus5-quatrefoil`, the documents are `specs/opus5-quatrefoil/`, and what it is and how
+The board is `maps/ctw/quatrefoil`, the documents are `specs/opus5-quatrefoil/`, and what it is and how
 it is meant to play is `review/opus5-quatrefoil.md`.
 
 ## What I got wrong

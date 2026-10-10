@@ -6,10 +6,11 @@ and `map.xml` — so it can be pulled straight onto a machine with Minecraft and
 rebuilding anything.
 
 ```
-maps/<slug>/region/*.mca              the world
-maps/<slug>/level.dat
-maps/<slug>/map.xml                   what a PGM server loads
-maps/<slug>/map.png                   the picture a server lists the map by
+maps/<mode>/<name>/region/*.mca              the world
+maps/<mode>/<name>/level.dat
+maps/<mode>/<name>/map.xml                   what a PGM server loads
+maps/<mode>/<name>/map.png                   the picture a server lists the map by
+maps/INDEX.md                         which board builds each world, and where its spec or scripts are
 specs/<slug>/                         the documents that were authored — build-spec.py, plan, refinement, layout, intent
 specs/<slug>/<slug>.png               the board from its long side, the one picture a board keeps
 specs/<slug>/provenance.json          what each pass placed, and which prop placed it
@@ -21,10 +22,15 @@ sculpture/                            structures built out of the layer system �
 tools/                                the driver that posts those documents to the API, the loop beside it, and the world tools
 ```
 
-**`maps/<slug>/` is what a server is handed and nothing else** — the three things a match reads, and the
+**`maps/<mode>/<name>/` is what a server is handed and nothing else** — the three things a match reads, and the
 picture its map list shows. Everything that exists to be *looked at* rather than loaded lives beside the
 documents in `specs/<slug>/`: the board's picture, and the provenance sidecar that says which pass claimed
 which column. Uploading a map folder to a game server therefore carries no metadata with it.
+
+**The layout is the one `OvercastCommunity/CommunityMaps` uses**: a game-mode folder (`ctw` for capture the wool
+alone, `dtcm` for monuments and cores, `mixed` for everything else) and in it one folder per map, named for the map,
+so a folder copies straight into a server's map repository. `maps/INDEX.md` names the board each world belongs to:
+a studio slug, whose documents are `specs/<slug>/`, or a freeform board folder.
 
 A map's `specs/` are the whole of what was authored; the world is derived from them and is committed as
 the artifact rather than as a source. Rebuilding one needs a running pgm-studio API and a migrated
@@ -32,18 +38,18 @@ database.
 
 ## The boards the cards add up to
 
-`maps/opus5-whinnymoor` is the board built out of the techniques one at a time, and
+`maps/ctw/whinnymoor` is the board built out of the techniques one at a time, and
 `review/opus5-whinnymoor.md` says which of them each part came from.
 
-`maps/opus5-sandcaster` is the destroy board built on top of that: 110 × 400, three land regions on one hue
+`maps/dtcm/sandcaster` (board `opus5-sandcaster`) is the destroy board built on top of that: 110 × 400, three land regions on one hue
 axis, a chasm down the middle and a tiled service corridor under the reef — two sketch layers, forty-two
-brush strokes and two monuments, one of them twenty blocks underground. `maps/opus5-sandcaster-ii` is the
+brush strokes and two monuments, one of them twenty blocks underground. `maps/dtcm/sandcaster_ii` (board `opus5-sandcaster-ii`) is the
 same brief on one open landmass: a mountain range drawn with pushes round a dale 32 blocks wide, no chasm
 anywhere, and the workings moved under the middle of it.
 
-`maps/opus5-ravensmere` is the single-layer one: a mere with a group in the middle of it, a beach thirty
+`maps/dtcm/ravensmere` (board `opus5-ravensmere`) is the single-layer one: a mere with a group in the middle of it, a beach thirty
 blocks deep round that, rolling downs cut by three crevasses, a wood, a brick-and-granite path with cottages
-off it, and a range standing behind each spawn. `maps/opus5-thornfell` is the same technique on a capture
+off it, and a range standing behind each spawn. `maps/ctw/thornfell` (board `opus5-thornfell`) is the same technique on a capture
 board: void down the middle, two wool rooms hung off the back of each half on spurs a raider walks out along,
 and a range behind every one of them.
 
@@ -72,7 +78,7 @@ The sketch tool's layers were built to stack storeys, and they hold rather more 
 arbitrary height field, so a dome is eleven circles on one layer and a thirty-block statue is eight layers
 of rectangles. [SCULPTING-WITH-LAYERS.md](SCULPTING-WITH-LAYERS.md) is the account — the six facts that decide
 how far it goes, the four limits, and what could become a tool. `sculpture/` holds the two galleries it was
-written from and `maps/opus5-automaton` is a played board furnished with them.
+written from and `maps/dtcm/automaton` is a played board furnished with them.
 
 `techniques/sculpture-with-layers` is the worked card beside it, and it is the **ladder** rather than a
 catalogue: one shape, a polyline, four layers, rings for a field that will not nest, and a solid put through
@@ -146,7 +152,7 @@ and the map does not load. Across ~350 corpus maps every `<gamemode>` holds exac
 several repeat the element (`cacti_the_wool` carries six). `tallow-kilnrow`, `ashfall-scar` and `basalt-reach`
 now repeat the element and parse.
 
-**Three folders under `maps/` are fixtures rather than boards.** `biome-test`, `biome-test-pattern` and
+**Three worlds under `maps/` are fixtures rather than boards.** The boards `biome-test`, `biome-test-pattern` and
 `biome-test-wide` are three worlds built to look at what the biome field does to grass, leaf and water
 tint — the same minimal DTM board painted three ways. They carry no `specs/`, no `review/` and no report,
 they are in no run, and they are the reason the map tables below do not add up to the folder count. They
@@ -182,7 +188,7 @@ questions no plan view can over a world on disk:
   something dropped — so its absence means everything authored stood.
 
   The record is written into the exported world's `region/` and the driver moves it out, so a CLI read-back
-  pointed straight at `maps/<slug>/region` falls back to the material estimate and says so on its scale line.
+  pointed straight at `maps/<mode>/<name>/region` falls back to the material estimate and says so on its scale line.
   Copy the sidecar back beside the `.mca` files for the run that needs it.
 
 - **`--section`** and **`--column`** are the only reads that keep Y. A riser, a ramp's step heights, a

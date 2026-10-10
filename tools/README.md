@@ -6,7 +6,7 @@
 sends are the ones the script writes now.
 
 ```bash
-python3 tools/drive.py specs/<slug> "<Map Name>" --out <worlddir> [--slug <slug>] [--note "<what this pass is>"]
+python3 tools/drive.py specs/<slug> "<Map Name>" [--slug <slug>] [--note "<what this pass is>"]
                        [--after <change>] [--discard <change>,...] [--dry]
 ```
 
@@ -312,13 +312,13 @@ they were written to produce.
 | `probe.py` | whether the ground varies down a column or each column is one material — the run lengths of one stone through the body, the earth's uniformity, a face as characters, and the floating columns bucketed by what stands at their top |
 
 ```bash
-python3 tools/world-diff.py maps/<slug>/region maps/<author>-<slug>/region \
+python3 tools/world-diff.py maps/<mode>/<name>/region maps/<mode>/<name>_by_hand/region \
         --provenance specs/<slug>/provenance.json --json specs/<author>-<slug>/diff.json
-python3 tools/trees.py match corpus/tree-showcase/region maps/<author>-<slug>/region --against maps/<slug>/region
-python3 tools/lift.py maps/<author>-<slug>/region statue --box -61 31 -75 -29 72 -38 \
-        --against maps/<slug>/region --ground-below 36 --out specs/<new>/models --cost
-python3 tools/probe.py maps/<new>/region --floating
-python3 tools/trees.py verify maps/<new>/region
+python3 tools/trees.py match corpus/tree-showcase/region maps/<mode>/<name>_by_hand/region --against maps/<mode>/<name>/region
+python3 tools/lift.py maps/<mode>/<name>_by_hand/region statue --box -61 31 -75 -29 72 -38 \
+        --against maps/<mode>/<name>/region --ground-below 36 --out specs/<new>/models --cost
+python3 tools/probe.py maps/<mode>/<new-name>/region --floating
+python3 tools/trees.py verify maps/<mode>/<new-name>/region
 ```
 
 Three things they agree on, so they cannot drift apart: what a tree is (wood, leaves, the plants a crown
@@ -335,7 +335,7 @@ cloud or a balloon far more often than a hole, and `probe.py --floating` says wh
 top, where a count alone said "hole".
 
 Each reads a million-block world in seconds and holds it in memory as a dict; a diff of two boards takes
-about a minute. They take a world's `region/` directory, which is what `maps/<slug>/` and a spec's
+about a minute. They take a world's `region/` directory, which is what `maps/<mode>/<name>/` and a spec's
 `--out` hold.
 
 ## `column-probe.cs` and `build.cs` · `world-build.cs`

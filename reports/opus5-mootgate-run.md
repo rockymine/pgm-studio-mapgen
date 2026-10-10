@@ -12,7 +12,7 @@ Announced before authoring: **Capture the Wool, two teams, `rot_180`, 80 × 180 
 Each team's wool sits in the moot hall at the back of its own town; the enemy must cross 28 blocks of
 void, come through one of three gates, cross the market square and the Moot Green, and break in.
 
-What shipped: `maps/opus5-mootgate/`, `specs/opus5-mootgate/`, `review/opus5-mootgate.md`.
+What shipped: `maps/ctw/mootgate/`, `specs/opus5-mootgate/`, `review/opus5-mootgate.md`.
 18 house props a side over five house styles, plus two stamped rooms over two more; 26 authored
 terrain shapes; three themes; four routes; 16 trees, 7 boulders, 1 pool and 2 flora overlays a side.
 

@@ -2,7 +2,7 @@
 
 Two boards, and the difference between them is the whole point. `SCULPTING-WITH-LAYERS.md` at the repository
 root is the account; this is the pair of pictures it was written from. Both are exported worlds a server
-loads — `maps/form-gallery` and `maps/sculpture-gallery` — so either can be walked round rather than looked
+loads — `maps/mixed/form_gallery` and `maps/mixed/sculpture_gallery` — so either can be walked round rather than looked
 at. Each declares one visitor team and a pad at the south edge, because `EX2` refuses to export a map no
 player can enter, and states no objective at all.
 
@@ -111,12 +111,12 @@ models/renders/
 ```
 
 Both are stored whole through `PUT /api/map/{slug}/source` — a layout and a minimal intent, no plan, since
-a gallery board is played for nothing. `maps/opus5-automaton` is the same props on a board that *is* played
+a gallery board is played for nothing. `maps/dtcm/automaton` is the same props on a board that *is* played
 for something.
 
 Rebuild and re-export either against a running studio:
 
 ```bash
-python3 tools/sculpt/gallery_forms.py     sculpture/forms  maps/form-gallery
-python3 tools/sculpt/gallery_sculpture.py sculpture/models maps/sculpture-gallery
+python3 tools/sculpt/gallery_forms.py     sculpture/forms  maps/mixed/form_gallery
+python3 tools/sculpt/gallery_sculpture.py sculpture/models maps/mixed/sculpture_gallery
 ```

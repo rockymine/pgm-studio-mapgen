@@ -241,7 +241,7 @@ into a lane.
 
 | Slug | World | Spec | Review | Isometric |
 |---|---|---|---|---|
-| `opus5-crossdyke` | `maps/opus5-crossdyke/` | `specs/opus5-crossdyke/` | `review/opus5-crossdyke.md` | `specs/opus5-crossdyke/renders/world-iso.png` |
-| `opus5-burrowgate` | `maps/opus5-burrowgate/` | `specs/opus5-burrowgate/` | `review/opus5-burrowgate.md` | `specs/opus5-burrowgate/renders/world-iso.png` |
-| `opus5-eaveswick` | `maps/opus5-eaveswick/` | `specs/opus5-eaveswick/` | `review/opus5-eaveswick.md` | `specs/opus5-eaveswick/renders/world-iso.png` |
-| `opus5-drystone-ring` | `maps/opus5-drystone-ring/` | `specs/opus5-drystone-ring/` | `review/opus5-drystone-ring.md` | `specs/opus5-drystone-ring/renders/world-iso.png` |
+| `opus5-crossdyke` | `maps/ctw/crossdyke/` | `specs/opus5-crossdyke/` | `review/opus5-crossdyke.md` | `specs/opus5-crossdyke/renders/world-iso.png` |
+| `opus5-burrowgate` | `maps/ctw/burrowgate/` | `specs/opus5-burrowgate/` | `review/opus5-burrowgate.md` | `specs/opus5-burrowgate/renders/world-iso.png` |
+| `opus5-eaveswick` | `maps/ctw/eaveswick/` | `specs/opus5-eaveswick/` | `review/opus5-eaveswick.md` | `specs/opus5-eaveswick/renders/world-iso.png` |
+| `opus5-drystone-ring` | `maps/ctw/drystone_ring/` | `specs/opus5-drystone-ring/` | `review/opus5-drystone-ring.md` | `specs/opus5-drystone-ring/renders/world-iso.png` |

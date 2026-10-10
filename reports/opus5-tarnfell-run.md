@@ -14,7 +14,7 @@ instruction that shaped the terrain more than any other — *the relief nodes go
 island itself, so the highest peaks and rolling hills are visible from the side of the map, rather
 than the terrain dropping to the side and wasting the space.* No second layers.
 
-What I built: `maps/opus5-tarnfell`, documents in `specs/opus5-tarnfell/`, the account in
+What I built: `maps/dtcm/tarnfell`, documents in `specs/opus5-tarnfell/`, the account in
 `review/opus5-tarnfell.md`. 176 × 348, one landmass of 33,942 cells, y6 to y80, thirty-three relief
 marks, twenty-eight strokes, 100 prop documents, zero declines, export gate open.
 

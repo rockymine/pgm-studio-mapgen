@@ -3,11 +3,13 @@
 
     tools/boards-check.py [--fix-report]
 
-A board lands in `maps/` and `specs/` the moment it is driven, and its entry in the log is written by hand
-because the column that matters — what the board turned out to be — is not derivable from a folder. That is
-exactly the shape of thing that goes unwritten, so this counts.
+A board lands in `specs/` and its world in `maps/<mode>/<name>/` the moment it is driven, and its entry in the log
+is written by hand because the column that matters — what the board turned out to be — is not derivable from a
+folder. That is exactly the shape of thing that goes unwritten, so this counts.
 
-Every folder under `maps/`, `specs/` and `specs/archive/` has to be accounted for in one of three ways:
+Every world folder under `maps/` has to have its row in `maps/INDEX.md`, and every row a folder. Every board the
+index names by slug, and every folder under `specs/` and `specs/archive/`, has to be accounted for in one of three
+ways:
 
   written up      named in the log or in `README.md`
   not a board     named under `## Not boards` — a probe suite, a test world, a generated library map
@@ -18,6 +20,9 @@ list and written up as well — a list nobody prunes is a list nobody reads.
 """
 import os, re, sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import worlds  # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOG = os.path.join(ROOT, "BOARDS-BUILT.md")
 # The log is where a board is written up; the README describes the few boards it is the index of.
@@ -26,10 +31,20 @@ NOT_BOARDS = "## Not boards"
 NOT_YET = "## Not yet written up"
 
 
+def world_faults():
+    """World folders the index does not name, and index rows with no folder."""
+    on_disk = {f"{mode}/{name}" for mode in sorted(os.listdir(worlds.WORLDS))
+               if os.path.isdir(os.path.join(worlds.WORLDS, mode))
+               for name in os.listdir(os.path.join(worlds.WORLDS, mode))
+               if os.path.isdir(os.path.join(worlds.WORLDS, mode, name))}
+    indexed = {world for world, _, _ in worlds.rows()}
+    return sorted(on_disk - indexed), sorted(indexed - on_disk)
+
+
 def folders():
-    """Every folder that is a board or claims to be, as {slug: where it lives}."""
-    found = {}
-    for where, path in (("world", "maps"), ("spec", "specs"), ("archived spec", "specs/archive")):
+    """Every board, as {slug: where it lives}: the boards the index names by slug, and the spec folders."""
+    found = {board: "world" for _, board, _ in worlds.rows() if "/" not in board}
+    for where, path in (("spec", "specs"), ("archived spec", "specs/archive")):
         directory = os.path.join(ROOT, path)
         if not os.path.isdir(directory):
             continue
@@ -70,6 +85,12 @@ def main():
     gone = sorted((not_boards | not_yet) - set(on_disk))
     both = sorted(not_yet & named_in_body)
 
+    stray, missing = world_faults()
+    for world in stray:
+        print(f"  no row      maps/{world:33s} (a world folder maps/INDEX.md does not name)")
+    for world in missing:
+        print(f"  no folder   maps/{world:33s} (named in maps/INDEX.md, not on disk)")
+
     for slug in unlisted:
         print(f"  unlisted    {slug:38s} ({on_disk[slug]})")
     for slug in gone:
@@ -80,7 +101,7 @@ def main():
     written = len(named_in_body)
     print(f"\n{written} written up · {len(not_yet)} not yet · {len(not_boards)} not boards · "
           f"{len(on_disk)} folders on disk")
-    faults = len(unlisted) + len(gone) + len(both)
+    faults = len(unlisted) + len(gone) + len(both) + len(stray) + len(missing)
     if faults:
         print(f"{faults} unaccounted for")
         if not fix_report:

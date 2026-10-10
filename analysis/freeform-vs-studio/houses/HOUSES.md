@@ -66,7 +66,7 @@ The table states what each side can do today. "Board code" means the capability 
 | seam / eave | spruce log (eave), roof on top | spruce log x2 (see above), then storey 2 |
 | roof | stone-brick **stairs** | nether brick **cubes** |
 
-The columns come from `/tmp` scratch reads of the built worlds (`col.py`); the pgmvox side is `freeform/lib/boards/exp-slatefold-pgmvox` rebuilt, the studio side `maps/exp-slatefold-studio`.
+The columns come from `/tmp` scratch reads of the built worlds (`col.py`); the pgmvox side is `freeform/lib/boards/exp-slatefold-pgmvox` rebuilt, the studio side `maps/ctw/slatefold_studio`.
 
 ## 3. The singled-out structures
 

@@ -102,7 +102,7 @@ same geometry, so repairing them would have been transcription. The compiled lay
 its depression at `(−25, 75)` r18 d8 → a `point` mark `h: 32`, its hill at `(25, 75)` r16 h10 → `h: 50`,
 the rise at `(0, 100)` → `h: 44`, the flat at `(0, 45)` → `h: 40`, and `noise{scale: 0.04, amp: 2.5}` →
 `grain{amplitude: 2.5, scale: 25}` (the stated scale is a frequency; the model's is a feature size in
-blocks, and 1/0.04 = 25). `maps/sandscar/renders/03-heightmap.png` is that relief solved: a hollow and a
+blocks, and 1/0.04 = 25). `maps/dtcm/sandscar/renders/03-heightmap.png` is that relief solved: a hollow and a
 hill either side of the plateau, one under each monument, exactly where the document's own notes say
 they belong.
 
@@ -235,7 +235,7 @@ With both halves in place the buildings are on the maps:
 | `sandscar` | 2 houses, plus the bound `desert-hall` over each spawn pad |
 | `sandscar-complex` | 6 houses, plus the bound spawn shell |
 
-`maps/grok-ridge/renders/13-section-spawn-hall.png` is the one that settles it: a section down `z = 107`
+`maps/ctw/grok_ridge/renders/13-section-spawn-hall.png` is the one that settles it: a section down `z = 107`
 showing the hall standing on the crest — andesite walls, spruce corner posts, glazed panes, a roof with the
 overhang his style asks for.
 

@@ -7,7 +7,7 @@ A regular capture-the-wool map — the kind the studio's own generator makes —
 not mine: `specs/opus5-rimegarth/composed.plan.json` is `GET /api/compose?players=10&seed=26` pinned
 verbatim, and everything else is authored on top of it.
 
-`maps/opus5-rimegarth`, 100 × 210, one landmass of 2,900 cells stepping y9 to y15 plus a pond on its
+`maps/ctw/rimegarth`, 100 × 210, one landmass of 2,900 cells stepping y9 to y15 plus a pond on its
 own slab, zero declines, export gate open, `review/opus5-rimegarth.md`.
 
 ## Browsing is a real agent workflow, and this is what it costs

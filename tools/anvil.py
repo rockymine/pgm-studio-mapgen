@@ -2,7 +2,7 @@
 alone, which is what lets every world tool here run from a checkout with nothing installed.
 
     from anvil import World
-    world = World("maps/<slug>/region")
+    world = World("maps/<mode>/<name>/region")
     world.get(x, y, z)          -> (id, data)
     world.blocks()              -> every non-air block as (x, y, z, id, data)
     world.columns()             -> {(x, z): [(y, id, data), ...]} sorted by y, non-air only, cached

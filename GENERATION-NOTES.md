@@ -1865,7 +1865,7 @@ print(Counter(o['kind'] for o in p['owners']))
 ```
 
 The export writes it into the world's own `region/`; the driver moves it beside the documents, because
-`maps/<slug>/` is what a game server is handed. A CLI read-back pointed at that region directory finds no
+`maps/<mode>/<name>/` is what a game server is handed. A CLI read-back pointed at that region directory finds no
 record and falls back to the material estimate, stating which reading it used on its scale line.
 
 A claim is the walk that stamped it, so a structure is recorded at exactly the cells it fills. A wall read

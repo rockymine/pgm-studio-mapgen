@@ -111,7 +111,8 @@ Run it over a brief or a skill before the commit that changes one.
 the two versions word for word and names anything that disappeared, so splitting a paragraph cannot
 quietly drop the clause it was splitting off.
 
-**`tools/boards-check.py` is the other gate.** Every folder under `maps/` and `specs/` is either written up
-in `BOARDS-BUILT.md`, named there as not a board, or named there as a debt — and anything else fails. A
+**`tools/boards-check.py` is the other gate.** Every world under `maps/<mode>/<name>/` has its row in
+`maps/INDEX.md`, and every board that index names and every folder under `specs/` is either written up in
+`BOARDS-BUILT.md`, named there as not a board, or named there as a debt — and anything else fails. A
 board's entry is written by the run that built it, because what a board turned out to be is not derivable
 from a folder.

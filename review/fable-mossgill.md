@@ -44,7 +44,7 @@ rectangles are, and what the two ramp marks in the relief exist to grade.
 
 ## What the build says
 
-The drive is `python3 tools/drive.py specs/fable-mossgill "Mossgill" --out maps/fable-mossgill`, and it goes
+The drive is `python3 tools/drive.py specs/fable-mossgill "Mossgill" --out maps/dtcm/mossgill`, and it goes
 through in one pass. The plan tier scores the board 0.50 and calls it valid, refusing nothing hard: `GO3` reads
 the goals 78 apart against its 85 and `GO4` the goal 33 from its spawn against its 40, both the arithmetic
 above, and `EL1` and `SP8` name the flat seams (brow–apron 2, apron–bank 6, crag–brow 5, crag–apron 7) that

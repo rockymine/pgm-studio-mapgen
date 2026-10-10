@@ -8,7 +8,7 @@ and did nothing but post JSON I had authored to documented endpoints and read ba
 exception, noted below, is a single throwaway diagnostic console app used to get an exact exception
 type out of a library call, which never touched a live map and is not part of the deliverable.
 
-- `maps/sonnet-holdfast/`, `maps/sonnet-briarlock/`, `maps/sonnet-cinderreach/` — world, `map.xml`,
+- `maps/ctw/sonnet_holdfast/`, `maps/ctw/sonnet_briarlock/`, `maps/ctw/sonnet_cinderreach/` — world, `map.xml`,
   renders at every stage.
 - `specs/sonnet-holdfast/`, `specs/sonnet-briarlock/`, `specs/sonnet-cinderreach/` — the plan, the full
   posted layout (shapes, relief, themes, dressing) and the intent for each.

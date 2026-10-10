@@ -7,7 +7,7 @@ Millrace revamp taught is in the finish: the six-stone body as a volume of cells
 courses of earth as a volume, the author's copied trees, granite roads, ferns on the grass, four biomes.
 
     python3 specs/fable-mossgill/build.py
-    python3 tools/drive.py specs/fable-mossgill "Mossgill" --out maps/fable-mossgill
+    python3 tools/drive.py specs/fable-mossgill "Mossgill"
 """
 import sys
 import json, math, os

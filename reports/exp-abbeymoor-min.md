@@ -1,6 +1,6 @@
 # exp-abbeymoor-min — Abbeymoor on a studio running `Rules:Mode=minimal`
 
-Sonnet 5.5, 2026-10-10, against `http://localhost:7895/api`. The board is `maps/exp-abbeymoor-min/`, its spec
+Sonnet 5.5, 2026-10-10, against `http://localhost:7895/api`. The board is `maps/dtcm/abbeymoor_minimal_rules/`, its spec
 `specs/exp-abbeymoor-min/` (`build-spec.py` writes the plan and the refinement; the driver stored them), its
 renders `specs/exp-abbeymoor-min/renders/`. Brief 2 of `analysis/freeform-vs-studio/experiment/BRIEFS.md`.
 Nothing under `specs/exp-abbeymoor-studio`, its report or its renders was opened.
@@ -135,7 +135,7 @@ words.
    a gap (`eye-market-cross-approach-causeway.png`); the green's east side is open. Neither is underground or on a
    tower. The crypt lane passes under the Abbey Stone and does not carry it.
 2. **Made of what the mode needs. Met.** Obsidian `pillar-3` (three blocks, `DC3` quiet) and a gold `cube-3`; the
-   kit's `diamond pickaxe` breaks both (`maps/exp-abbeymoor-min/map.xml` slot 2).
+   kit's `diamond pickaxe` breaks both (`maps/dtcm/abbeymoor_minimal_rules/map.xml` slot 2).
 3. **A wool room holds the standard loot.** Not applicable: a destroy board has no wool room. The studio puts one
    defence chest a course over the ground under each goal, which the render of the nave shows.
 4. **Vegetation leaves the floor visible. Met.** Trees: a 3 × 3 orchard lattice 8 apart off the village street,

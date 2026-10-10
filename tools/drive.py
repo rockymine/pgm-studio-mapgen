@@ -2,7 +2,7 @@
 """Drive a board's spec through the pgm-studio API to an exported world, and say what the pipeline said on
 the way.
 
-    tools/drive.py <specdir> "<Map Name>" --out <worlddir> [--slug <slug>]
+    tools/drive.py <specdir> "<Map Name>" [--slug <slug>] [--world <name>] [--out <worlddir>] [--no-world]
                    [--note "<what this pass is>"] [--after <change>] [--discard <change>,...] [--dry]
 
 **A run starts with the board's own script.** Where `<specdir>` holds a `build-spec.py`, it is run first and
@@ -142,15 +142,20 @@ the census, the claims, the seats and the void scan — each beside the route th
 prints the numbers and the short readings, and writes the whole report to `out/reports/<slug>.txt`.
 
 **One picture a board is kept, beside its documents.** `<base>.png` is the board seen from its long side
-through the studio's own eye, in the game's block sprites; the export's `map.png` lands in `--out` with the
-world. Every other picture stays in the studio, drawn again from the board as it stands — the report names
+through the studio's own eye, in the game's block sprites; the export's `map.png` lands in the world folder. Every other picture stays in the studio, drawn again from the board as it stands — the report names
 each one by its route — so a board's old `renders/` folder is cleared when it is driven.
 
-`--out` is what a server is handed: `region/`, `level.dat`, `map.xml` and `map.png`. The provenance sidecar
-lands beside the documents instead.
+**The world lands in `maps/<mode>/<name>/`**, the folder `maps/INDEX.md` names for the slug: `region/`,
+`level.dat`, `map.xml` and `map.png`, which is what a server is handed. A slug the index does not name yet is added
+under its map's name and game mode (`tools/worlds.py`); `--world <name>` names the folder where that name is
+another board's. `--out` writes somewhere else instead, and `--no-world` writes no world. The provenance sidecar
+lands beside the documents.
 """
 import json, re, sys, io, time, zipfile, urllib.request, urllib.error, urllib.parse, os, shutil, subprocess
 import studio_token
+import worlds
+
+SPECDIR = None
 
 # Where the studio answers is a fact about the machine, not about this repository, and it has been a
 # different port on every environment the boards here were built on. So it is DISCOVERED rather than
@@ -442,11 +447,33 @@ def clear_renders(specdir):
         print("    renders/ cleared — the studio draws every picture on request (GET /map/{slug}/report names them)")
 
 
+def home(slug, zip_bytes, chosen):
+    """The world folder for `slug`: the one maps/INDEX.md names, else a new row under the exported map's name and
+    game mode (or `chosen`, where that name is taken)."""
+    known = worlds.of(slug)
+    if known is not None:
+        return known
+    archive = zipfile.ZipFile(io.BytesIO(zip_bytes))
+    xml = next((archive.read(entry).decode("utf-8", "replace") for entry in archive.namelist()
+                if entry.endswith("map.xml")), "")
+    place = worlds.place(xml)
+    if place is None:
+        raise SystemExit(f"the export of {slug} states no map name; pass --world <name> or --out <dir>")
+    if chosen:
+        place = f"{place.split('/')[0]}/{worlds.snake(chosen)}"
+    source = os.path.relpath(SPECDIR, worlds.ROOT) if SPECDIR else ""
+    worlds.register(place, slug, source)
+    print(f"    maps/INDEX.md: {slug} -> maps/{place}")
+    return os.path.join(worlds.WORLDS, place)
+
+
 def main():
     def option(flag):
         return sys.argv[sys.argv.index(flag) + 1] if flag in sys.argv else None
 
     specdir, name = sys.argv[1], sys.argv[2]
+    global SPECDIR
+    SPECDIR = os.path.abspath(specdir)
     out = option("--out")
     note = option("--note")
     after = int(option("--after")) if option("--after") else None
@@ -530,9 +557,11 @@ def main():
 
     read_back(slug)
 
-    if out:
+    if "--no-world" not in sys.argv:
         print("== the world")
         _, zip_bytes = call("GET", f"/map/{slug}/export", raw=True)
+        if not out:
+            out = home(slug, zip_bytes, option("--world"))
         if os.path.isdir(out):
             shutil.rmtree(out)          # never export over a region dir that was not cleared
         os.makedirs(out)

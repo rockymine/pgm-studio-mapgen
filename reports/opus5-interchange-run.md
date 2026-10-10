@@ -20,7 +20,7 @@ back on itself, a lawn visible through glass and unreachable from the corridor t
 the same kiosk standing in every room. 124 × 248, four storeys, ten obsidian monuments of one or two
 blocks.
 
-The board is `maps/opus5-interchange`, the documents `specs/opus5-interchange/`, the account of what
+The board is `maps/dtcm/interchange`, the documents `specs/opus5-interchange/`, the account of what
 it is and how it plays `review/opus5-interchange.md`.
 
 ## The one prediction that did not come true

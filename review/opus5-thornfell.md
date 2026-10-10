@@ -1,6 +1,6 @@
 # Thornfell — a capture board with void down the middle and a wool on each spur
 
-`maps/opus5-thornfell` · `specs/opus5-thornfell` · **192 × 294 blocks** · capture, **two wools a team** ·
+`maps/ctw/thornfell` · `specs/opus5-thornfell` · **192 × 294 blocks** · capture, **two wools a team** ·
 `rot_180` · 24 players · single layer
 
 Ravensmere's technique on the other kind of board. Where a destroy map wants one open landmass, a capture

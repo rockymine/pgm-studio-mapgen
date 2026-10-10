@@ -11,7 +11,7 @@ I intended to author a simple destroy PGM map named "Hollow Crown" with:
 
 **Goal**: Test the pgm-studio authoring pipeline end-to-end using only the API and provided documentation, with no external tool capabilities. Document every moment where the documentation was unclear or I had to guess.
 
-**Result**: Successfully authored, compiled, and exported the map. The world exists at `/home/user/pgm-studio-mapgen/maps/haiku-r5-hollow-crown/` with a valid `map.xml`.
+**Result**: Successfully authored, compiled, and exported the map. The world exists at `/home/user/pgm-studio-mapgen/maps/dtcm/hollow_crown/` with a valid `map.xml`.
 
 ---
 
@@ -220,7 +220,7 @@ Since there was no gameplay oracle available, I made the following decisions:
 
 ## Summary
 
-**Map status**: ✓ Exported, with valid map.xml, at `/home/user/pgm-studio-mapgen/maps/haiku-r5-hollow-crown/`
+**Map status**: ✓ Exported, with valid map.xml, at `/home/user/pgm-studio-mapgen/maps/dtcm/hollow_crown/`
 
 **Three biggest documentation/API barriers**:
 1. **Wall interface requirements** — unclear what makes pieces connected; had to remove walls to progress

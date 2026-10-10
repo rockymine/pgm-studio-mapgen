@@ -8,7 +8,7 @@ The point of the run was not the map: it was to find out whether those rules can
 following them produces a board worth having. The identity, written before any shape: *a grass down falling
 from each spawn to a peat working, with each team's monument on a cobbled fold above it.*
 
-`maps/opus5-brackenfold`, 68 × 212, two landmasses of 5,297 cells joined by one build zone, zero declines,
+`maps/dtcm/brackenfold`, 68 × 212, two landmasses of 5,297 cells joined by one build zone, zero declines,
 export gate open, `review/opus5-brackenfold.md`.
 
 ## What the rules cost, one at a time

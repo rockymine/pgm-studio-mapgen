@@ -7,7 +7,7 @@ base terrain come first and the features on top, or the other way round? The ans
 forced rather than chosen, by three facts measured on a probe board before a line of the map was
 written.
 
-`maps/opus5-corbel-scar`, `specs/opus5-corbel-scar/`. Six relief marks, no authored shapes, two
+`maps/dtcm/corbel_scar`, `specs/opus5-corbel-scar/`. Six relief marks, no authored shapes, two
 pieces a side.
 
 ## The three facts, measured

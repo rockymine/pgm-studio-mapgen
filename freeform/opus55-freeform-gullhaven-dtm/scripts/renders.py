@@ -12,7 +12,10 @@ sys.path.insert(0, os.path.join(HERE, "..", "..", "opus55-freeform-gullhaven", "
 import render_iso  # noqa: E402
 
 build, root, rt = sys.argv[1], sys.argv[2], sys.argv[3]
-region = os.path.join(root, "world", "region")
+sys.path.insert(0, os.path.join(root, "..", "..", "tools"))
+import worlds  # noqa: E402
+world = worlds.of(root)
+region = os.path.join(world, "region")
 out = os.path.join(root, "renders")
 os.makedirs(out, exist_ok=True)
 

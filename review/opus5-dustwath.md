@@ -18,7 +18,7 @@ things changed after the author read it, and each is below where it belongs.
 
 ## Rebuilt rather than re-authored
 
-The world under `maps/opus5-dustwath/` was lost to a re-export that wrote over a region directory it
+The world under `maps/dtcm/dustwath/` was lost to a re-export that wrote over a region directory it
 never cleared (`B102`). The spec — plan, layout, intent, finish, provenance — survived intact, so the
 rebuild is a re-drive of the committed documents into a fresh empty directory and nothing else. One
 thing did move: the stored intent had `style: "cube-3"` on the destroyable where the plan says

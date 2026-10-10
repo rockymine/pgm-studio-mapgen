@@ -27,7 +27,7 @@ team holds an abbey hill above a village, with a peat bog between them.** It is 
 - **GO3 is 201 and 190 against a target of 85–150, a miss the builder accepted:** the brief's 200–260 size and GO1
   cannot both be met.
 - Voxel sight to the cubes from the attackers' ground: 27% (A) and 26% (B).
-- The studio's reader (`read_mapxml.cs`) reads `world/map.xml` as valid.
+- The studio's reader (`read_mapxml.cs`) reads `maps/dtcm/abbeymoor_pgmvox/map.xml` as valid.
 
 ## Times
 

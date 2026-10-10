@@ -12,7 +12,7 @@ ground no journey passed, and reaches seventy blocks east to carry the plinth â€
 end of a walk rather than beside the spawn.
 
     python3 specs/opus5-coinfall/build-spec.py
-    tools/drive.py specs/opus5-coinfall "Coinfall" --out maps/opus5-coinfall --renders specs/opus5-coinfall/renders
+    tools/drive.py specs/opus5-coinfall "Coinfall" --renders specs/opus5-coinfall/renders
 """
 import json
 import os

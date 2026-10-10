@@ -2,7 +2,7 @@
 
 ## What I set out to build
 
-**A destroy board for two teams on a tropical atoll, where a resort and the wild cays around it meet along authored edges.** The map is `sonnet55-halcyon-cays`, named **Halcyon Cays**, stored on pgmstudio.de and exported to `maps/sonnet55-halcyon-cays/`. Every document is stated through `from studio_kit import kit` in `specs/sonnet55-halcyon-cays/build-spec.py`.
+**A destroy board for two teams on a tropical atoll, where a resort and the wild cays around it meet along authored edges.** The map is `sonnet55-halcyon-cays`, named **Halcyon Cays**, stored on pgmstudio.de and exported to `maps/dtcm/halcyon_cays/`. Every document is stated through `from studio_kit import kit` in `specs/sonnet55-halcyon-cays/build-spec.py`.
 
 **The identity sentence, written before the first request.** *A holiday resort on a string of cays in a turquoise lagoon: a white hotel with a pool courtyard on one shore, thatched bungalows on a palm cay, towering rock stacks standing out of the water, and a thatched bar on the sandbar in the middle where the two resorts' routes meet.*
 
@@ -162,4 +162,4 @@
 
 ## Where the board is
 
-`specs/sonnet55-halcyon-cays/` holds `build-spec.py`, the plan and refinement it writes, the layout and intent the studio stored, `provenance.json` and the board's picture. `maps/sonnet55-halcyon-cays/` holds `region/`, `level.dat`, `map.xml` and `map.png`. The map is stored with 25 changes.
+`specs/sonnet55-halcyon-cays/` holds `build-spec.py`, the plan and refinement it writes, the layout and intent the studio stored, `provenance.json` and the board's picture. `maps/dtcm/halcyon_cays/` holds `region/`, `level.dat`, `map.xml` and `map.png`. The map is stored with 25 changes.

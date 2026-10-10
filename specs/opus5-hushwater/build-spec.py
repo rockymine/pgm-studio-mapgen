@@ -13,7 +13,7 @@ spur, a bing is cut off the team's own ground and bridged back, and the flat cro
 is given a spoil bank to fight over.
 
     PGM_STUDIO_API=... python3 specs/opus5-hushwater/build-spec.py
-    tools/drive.py specs/opus5-hushwater "Hushwater" --out maps/opus5-hushwater
+    tools/drive.py specs/opus5-hushwater "Hushwater"
 """
 import json, os, urllib.request
 

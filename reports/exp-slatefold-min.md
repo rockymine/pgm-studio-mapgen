@@ -2,7 +2,7 @@
 
 Built by Sonnet 5.5 from the experiment brief (Brief 1) through `http://localhost:7895/api`; spec in
 `specs/exp-slatefold-min/` (`build-spec.py` writes the plan and the refinement), world in
-`maps/exp-slatefold-min/`, renders in `specs/exp-slatefold-min/renders/`. The reading was `ORDER-OF-WORK.md`,
+`maps/ctw/slatefold_minimal_rules/`, renders in `specs/exp-slatefold-min/renders/`. The reading was `ORDER-OF-WORK.md`,
 `WHAT-A-BOARD-IS-MADE-OF.md`, `approaches.md`, `match-flow.md` §4/§6/§10, `AUTHORING-BRIEF.md` and the `pgm-board`
 skill. The earlier builder's spec, report and renders were not opened; `BOARDS-BUILT.md` was opened once, at the end,
 to copy the entry format, and its row for the earlier board was read then, after this board's design was fixed.

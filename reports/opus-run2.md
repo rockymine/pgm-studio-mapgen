@@ -140,7 +140,7 @@ entry* — would close it.
 
 **Reported.** `GET /plans/{id}/png` for Tallow Mirefast draws five pieces, the ditch buffer, the legend
 and both spawns, and **nothing at `(0, −50)`** where the wardstone stands
-(`maps/tallow-mirefast/renders/01-plan.png`). The same for both goals on Tallow Kilnrow.
+(`maps/dtcm/tallow_mirefast/renders/01-plan.png`). The same for both goals on Tallow Kilnrow.
 
 **Checked.** `plan.md` §Coordinates says the canvas *"does not yet offer a way to draw this"* for a
 destroyable or core with an empty `piece`; the raster renders the same scene the canvas does, so it
@@ -257,7 +257,7 @@ are ten blocks apart. The landform is authored once, in the layout, where it bel
 | a malformed dressing document discarded every prop silently | Not hit: every prop parsed on the first attempt across 104 props and three boards, with `kind` written wherever it fell in the object and enums in camelCase, both of which `DressingJson.Options`' `AllowOutOfOrderMetadataProperties` and camelCase converter now accept |
 
 **A build zone reads as pink and a water lane as hatched blue, and they are unmistakable.**
-`maps/tallow-weirgate/renders/01-plan.png` carries both, with the key baked in. The old failure — reading
+`maps/ctw/tallow_weirgate/renders/01-plan.png` carries both, with the key baked in. The old failure — reading
 a blue build zone as water — cannot happen the same way.
 
 **`voidEnforcement` with no build area at all.** One field on the compiled intent produced
@@ -344,14 +344,14 @@ twenty-two. Nothing measured that; the top-down looked pinched.
 
 | # | Finding | Where to check it | Verdict |
 |---|---|---|---|
-| 1 | A sketch-built map's `waterLanes` are dropped between the intent and the XML | `specs/tallow-weirgate/…intent.json` has two rects; `maps/tallow-weirgate/map.xml` has no `water-lanes` region and no include. `SketchWorldBuilder.cs:238–252` omits `WaterLanes` from its resolved copy; `MapExportComposer.cs:80` re-projects from it | **missing** |
-| 2 | `--surface` paints most of a stained-clay board magenta | `maps/tallow-kilnrow/renders/04-surface.png` against `04-material.png`; `TerrainPalette.cs:59–75` names `159:1,3,5,9,11,12,13,15` only | **missing** (the reading); my "the paint failed" claim was **mistaken** |
+| 1 | A sketch-built map's `waterLanes` are dropped between the intent and the XML | `specs/tallow-weirgate/…intent.json` has two rects; `maps/ctw/tallow_weirgate/map.xml` has no `water-lanes` region and no include. `SketchWorldBuilder.cs:238–252` omits `WaterLanes` from its resolved copy; `MapExportComposer.cs:80` re-projects from it | **missing** |
+| 2 | `--surface` paints most of a stained-clay board magenta | `maps/dtcm/tallow_kilnrow/renders/04-surface.png` against `04-material.png`; `TerrainPalette.cs:59–75` names `159:1,3,5,9,11,12,13,15` only | **missing** (the reading); my "the paint failed" claim was **mistaken** |
 | 3 | `branchAngle` is radians, clamped to `[0.2, 1.5]`, and `sketch.md` gives no unit | `PlacedProp.cs:148–151`; `sketch.md:463`. Reproduce with `"branchAngle": 40` and `--topdown --layer foliage --dressing` | **mistaken** (mine), doc gap |
 | 4 | `build.voidEnforcement` has no plan-level surface and is unmentioned in `plan.md`/`capabilities.md` | `MapIntent.cs:178`, `BuildGenerator.cs:44`, `new-map-authoring.md` §5b, `configure.md:224`. Works: `tallow-mirefast/map.xml:76,81` | **mistaken** (mine), legibility |
-| 5 | An absolutely-placed goal does not appear in `GET /plans/{id}/png` | `maps/tallow-mirefast/renders/01-plan.png` — nothing at `(0, −50)`; `maps/tallow-kilnrow/renders/01-plan.png` — nothing at `(±35, −55)` | **unreachable** |
+| 5 | An absolutely-placed goal does not appear in `GET /plans/{id}/png` | `maps/dtcm/tallow_mirefast/renders/01-plan.png` — nothing at `(0, −50)`; `maps/dtcm/tallow_kilnrow/renders/01-plan.png` — nothing at `(±35, −55)` | **unreachable** |
 | 6 | A wool-room piece is bedrock from y0, so a theme on it paints nothing | `(-60, -30)` on `tallow-weirgate`: bedrock y0..11, bricks y12, wool y13 | not a gap; undocumented consequence |
 | 7 | `wool-ringed-hole` (WL8) is a **hard** evaluator term over the motif `rules.md` calls the two-approaches device | `ClosureTerms.cs:5–9` against `rules.md` §"Function is read from the hole's ring"; the same plan compiles 200 | doc/term tension |
-| 8 | Hay bale (170) and packed ice (174) read as "unnamed material" in `--surface` | `maps/tallow-mirefast/renders/09-surface.png` — the steading roofs and the crag cap | same family as #2 |
+| 8 | Hay bale (170) and packed ice (174) read as "unnamed material" in `--surface` | `maps/dtcm/tallow_mirefast/renders/09-surface.png` — the steading roofs and the crag cap | same family as #2 |
 | 9 | A destroyable's own column is unpainted stone under its bedrock plate | `(35, -55)` on `tallow-kilnrow`: stone y1..20, bedrock y21, end stone y27..30 | correct by design (paint runs after stamps) |
 | 10 | `sink` reads the **median** ground under the whole footprint, so a pit straddling two tiers is shallower than asked | `tallow-kilnrow` pot: `base_height 4` over a footprint straddling 15 and 11 gives a floor at 9–10. `renders/11-section-pot.png` | documented; only visible in section |
 

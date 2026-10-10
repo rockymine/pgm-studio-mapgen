@@ -9,7 +9,7 @@ place rather than painted. The sentence, written before the first shape:
 > where the made ground at the top is flat and stated to be flat and everything below it is raw ground at
 > an angle.**
 
-The board is `specs/opus5-hushwater/`, the world `maps/opus5-hushwater/`, the review
+The board is `specs/opus5-hushwater/`, the world `maps/ctw/hushwater/`, the review
 `review/opus5-hushwater.md`. The decision journal is `specs/opus5-hushwater/decisions.md` and the
 composer's own numbers against the built board's are `specs/opus5-hushwater/composed-vs-adapted.md`.
 

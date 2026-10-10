@@ -158,9 +158,9 @@ The previous run's notes about rendering after each phase were heeded. Renders s
 
 ## Deliverables
 
-- `/maps/haiku-canonical-destroy-3/` — canonical destroy board, exported
-- `/maps/haiku-ctw-rush-2/` — CTW board, exported
-- `/maps/haiku-dtm-tower/` — DTM board with dual objectives, exported
+- `/maps/ctw/haiku_canonical_destroy/` — canonical destroy board, exported
+- `/maps/ctw/haiku_ctw_rush/` — CTW board, exported
+- `/maps/ctw/haiku_dtm_tower/` — DTM board with dual objectives, exported
 - `/specs/haiku-canonical-destroy-3/`, `/specs/haiku-ctw-rush-2/`, `/specs/haiku-dtm-tower/` — authoring JSON (plan, theme, room, spawn, dressing)
 - `/review/haiku-canonical-destroy-3.md`, `/review/haiku-ctw-rush-2.md`, `/review/haiku-dtm-tower.md` — per-map review
 

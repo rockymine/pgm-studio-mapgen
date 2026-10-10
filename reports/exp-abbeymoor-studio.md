@@ -3,7 +3,7 @@
 Builder: Sonnet 5.5, driving the local studio at `http://localhost:7894/api` (signed in as the local admin; the deployed
 studio was not touched). Experiment pair: this board and `freeform/lib/boards/exp-abbeymoor-pgmvox`, same brief, same
 lessons. Spec: `specs/exp-abbeymoor-studio/build-spec.py` (writes the plan and the refinement; `tools/drive.py` stores
-them). World: `maps/exp-abbeymoor-studio/`. Renders: `specs/exp-abbeymoor-studio/renders/`.
+them). World: `maps/dtcm/abbeymoor_studio/`. Renders: `specs/exp-abbeymoor-studio/renders/`.
 
 ## What I set out to build
 
@@ -153,7 +153,7 @@ comes. Those were stated and checked by eye, not measured.
 
 The files: `specs/exp-abbeymoor-studio/` holds `build-spec.py`, the plan, refinement, layout and intent JSON,
 `provenance.json`, `exp-abbeymoor-studio.png` and `renders/` (isometric from four corners, x-ray from two, top-down,
-heightmap, surface, traversability and eleven eye views); `maps/exp-abbeymoor-studio/` holds `region/`, `level.dat`,
+heightmap, surface, traversability and eleven eye views); `maps/dtcm/abbeymoor_studio/` holds `region/`, `level.dat`,
 `map.xml` and `map.png`.
 
 ---

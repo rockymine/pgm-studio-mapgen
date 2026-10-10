@@ -337,7 +337,7 @@ specs/opus5-peatgarth/   build-spec.py · plan · finish · layout · intent · 
 specs/opus5-basaltmere/  build-spec.py · trees.json · plan · finish · layout · intent · renders/
 specs/opus5-mirkholt/    build-spec.py · trees.json · plan · finish · layout · intent · renders/
 specs/opus5-slakemoss/   build-spec.py · trees.json · plan · finish · layout · intent · renders/
-maps/opus5-peatgarth/    maps/opus5-basaltmere/    maps/opus5-mirkholt/    maps/opus5-slakemoss/
+maps/dtcm/peatgarth/    maps/mixed/basaltmere/    maps/ctw/mirkholt/    maps/dtcm/slakemoss/
 review/opus5-peatgarth.md · opus5-basaltmere.md · opus5-mirkholt.md · opus5-slakemoss.md
 ```
 

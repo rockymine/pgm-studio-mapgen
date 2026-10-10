@@ -9,7 +9,7 @@ every one of them. What differs between the six boards is therefore the composer
 nothing else, which is the point: the look is held fixed so the layout can be read.
 
     python3 specs/band-suite/build-suite.py          # writes specs/opus5-<slug>/ for each board
-    tools/drive.py specs/opus5-quernstone "Quernstone" --out maps/opus5-quernstone
+    tools/drive.py specs/opus5-quernstone "Quernstone"
 
 The ground is finished by its **angle** rather than its height: one `layered` material on the
 `slope` axis, so the same stack finishes the flat, the shoulder and the face of a hill. Relief is

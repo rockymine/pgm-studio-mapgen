@@ -40,7 +40,7 @@ branches.
 | studio `opus55b-russetford` (Opus 5.5) | yes, `S/russet/maps/opus55b-russetford/region` | final = third pass, committed 22:31 |
 | studio `sonnet55b-rustwater` (Sonnet 5.5) | yes, `S/rust/maps/sonnet55b-rustwater/region` | round two, committed 21:53 |
 | studio `haiku55b-rowanford` (Haiku 5.5) | yes, `S/rowan/maps/haiku55b-rowanford/region` | only build, committed 20:37 |
-| freeform `opus55-freeform-riftwater` | yes, `freeform/opus55-freeform-riftwater/world/region` | |
+| freeform `opus55-freeform-riftwater` | yes, `maps/dtcm/riftwater/region` | |
 | pgmvox port `lib/ports/riftwater` | **no region files** (`--skip write`); only `world/map.xml`. Numbers below are the port's own report (1,001,926 blocks, 110 trees, 16 tile entities) | |
 
 ### World metrics (measured)

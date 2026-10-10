@@ -11,7 +11,7 @@ reach**. A river inside the labyrinth. Terrain smooth, not many hills but some e
 sorts over the walls on a third layer. Walls of an ordinary stone with a pattern in it, and — the
 correction on the last board of this kind — not too many colours.
 
-What I built: `maps/opus5-overwall`, documents in `specs/opus5-overwall/`, the account in
+What I built: `maps/mixed/overwall`, documents in `specs/opus5-overwall/`, the account in
 `review/opus5-overwall.md`. 184 × 264, three slabs, two islands, 40 open cells all reachable,
 55 props, zero declines, export gate open, `GO1` 3.52.
 

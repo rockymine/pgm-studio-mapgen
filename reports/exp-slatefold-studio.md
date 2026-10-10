@@ -3,7 +3,7 @@
 Builder: Sonnet 5.5, driving the local studio at `http://localhost:7894/api` (signed in as the local admin; the deployed
 studio was not touched). Experiment pair: this board and `freeform/lib/boards/exp-slatefold-pgmvox`, same brief, same
 lessons. Spec: `specs/exp-slatefold-studio/build-spec.py` (writes the plan and the refinement; `tools/drive.py` stores
-them). World: `maps/exp-slatefold-studio/`. Renders: `specs/exp-slatefold-studio/renders/`.
+them). World: `maps/ctw/slatefold_studio/`. Renders: `specs/exp-slatefold-studio/renders/`.
 
 ## What I set out to build
 
@@ -165,7 +165,7 @@ Stores: **20** (`GET /map/exp-slatefold-studio/changes`), every one a whole-sour
 
 * `specs/exp-slatefold-studio/`: `build-spec.py`, `exp-slatefold-studio.plan.json`, `…refinement.json`, the stored `…layout.json`
   and `…intent.json`, `provenance.json`, `exp-slatefold-studio.png` (the board from its long side), `renders/`.
-* `maps/exp-slatefold-studio/`: `region/`, `level.dat`, `map.xml`, `map.png`.
+* `maps/ctw/slatefold_studio/`: `region/`, `level.dat`, `map.xml`, `map.png`.
 * `renders/`: isometric from all four corners, top-down combined and ground, heightmap, surface, traversability, the
   x-ray, and eye views of both wool rooms of each team, the spawn, the crossing, the pit and the build-zone posts.
 

@@ -12,7 +12,7 @@ so both objectives stand on the line and a raid on either has to be climbed or d
 be fought.
 
 80 × 224 blocks, `rot_180` about the origin, base surface 30, build ceiling 69, ground y0..y48.
-`maps/opus5-tiefkreuz` · `specs/opus5-tiefkreuz` · `reports/opus5-tiefkreuz-run.md`.
+`maps/dtcm/tiefkreuz` · `specs/opus5-tiefkreuz` · `reports/opus5-tiefkreuz-run.md`.
 
 ## The stack, in world Y
 

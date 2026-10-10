@@ -49,7 +49,7 @@ whether asymmetry between a team's *own* two objectives reads as design or as an
 ## The water lane is authored and does not reach the map
 
 `specs/tallow-weirgate/tallow-weirgate.intent.json` carries
-`waterLanes.rects = [{45,-20,70,-10}, {-70,10,-45,20}]`. The exported `maps/tallow-weirgate/map.xml`
+`waterLanes.rects = [{45,-20,70,-10}, {-70,10,-45,20}]`. The exported `maps/ctw/tallow_weirgate/map.xml`
 carries **no `water-lanes` region and no `<include id="water-lanes"/>`**. The cause is in
 `SketchWorldBuilder`, which builds its resolved intent with a field-by-field `new MapIntent { … }` that
 copies eleven fields and omits `WaterLanes`; the export then re-projects from that resolved copy, and

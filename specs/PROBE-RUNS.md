@@ -21,7 +21,7 @@ Which arm took which index was shuffled so a slug carries no hint of its arm.
 
 Each `specs/<slug>/` holds the three documents the board is described by, the `provenance.json` the export
 wrote, `score.json` — every finding the texture scorer reads out of that board's registry — and the two
-isometric renders. Each `maps/<slug>/` is the world it exported to.
+isometric renders. Each `maps/<mode>/<name>/` is the world it exported to.
 
 ## What the ten boards showed
 

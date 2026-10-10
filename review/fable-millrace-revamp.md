@@ -1,11 +1,11 @@
 # Millrace, revamped by hand and restated in the studio — the measured diff, and every gap
 
-`maps/rockymine-ruediger-millrace` is `maps/opus5-millrace` after five hours of WorldEdit and Arceon by the
+`maps/dtcm/millrace_by_hand` is `maps/dtcm/millrace` after five hours of WorldEdit and Arceon by the
 author and Ruediger_LP, and it is the first board in this repository that a person finished rather than the
 studio. `review/rockymine-ruediger-millrace.md` is their own account with the commands. This is the other
 half: the two worlds read block by block against each other and against the original's provenance sidecar,
 what each command turned out to have done, which of it the studio can already state, and what it cannot.
-`maps/fable-millrace-revamp` is the restatement — the same layout, driven again with the author's palette,
+`maps/dtcm/millrace_revamp` is the restatement — the same layout, driven again with the author's palette,
 their trees and their builds — and the last section is what that build says about the gaps.
 
 **The one number that makes the diff readable: 29,954 of 35,610 columns keep their surface height exactly.**
@@ -20,7 +20,7 @@ later, against the committed world.
 
 | | blocks |
 |---|---|
-| committed `maps/opus5-millrace` | 1,060,630 |
+| committed `maps/dtcm/millrace` | 1,060,630 |
 | rebuilt from its documents | 1,062,420 |
 | cells that differ | **4,020 (0.4%)** |
 
@@ -212,7 +212,7 @@ absolute Y is what would make a lifted body cheap.
 fifteen ground shapes, drops the diorite statue and the lighter, appends the six made things, states 49 props
 over 27 recipes — sixteen copied trees, three boulders, two crofts — and patches the intent: 28 a side, the
 observer at `(0, 70, 0)`, the protections and the iron, four authors. `python3 tools/drive.py
-specs/fable-millrace-revamp "Millrace" --out maps/fable-millrace-revamp` builds it.
+specs/fable-millrace-revamp "Millrace" --out maps/dtcm/millrace_revamp` builds it.
 
 **What the build says.** The plan is stored under the current form; the layout stores at 200 with the two
 complaints the original's rebuild carries (`SK10` the holm bridge driven into the wold's swell over 890
@@ -222,7 +222,7 @@ against the original's 20.1%, the five dead patches the same five — the two we
 the final drive, and the fourteen `SK18` complaints are the beacon frames, every one of them a false reading
 forty courses over the goal (`TS79`).
 
-Read back off `maps/fable-millrace-revamp/region`: every standalone copied tree is its showcase body block
+Read back off `maps/dtcm/millrace_revamp/region`: every standalone copied tree is its showcase body block
 for block (fourteen exact of the thirty-eight bodies, the rest merged into groves or clipped by a slope by a
 block or two), every leaf carries the no-decay bit and none the check bit, the tug, the balloon and the beacon
 frames stand at the coordinates they were cut from, the red statue is red and the blue one blue, and the

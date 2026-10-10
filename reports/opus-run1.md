@@ -265,13 +265,13 @@ interior. I did not tune anything to make that number look good.
 
 | # | Finding | Where to check it | Verdict |
 |---|---|---|---|
-| 1 | `<gamemode>ctw</gamemode>` + "Capture the enemies' wools!" on a destroy map | `maps/quillon-foundry/map.xml` lines 4–5, beside `<cores>` and `<destroyables>` | missing from the system |
+| 1 | `<gamemode>ctw</gamemode>` + "Capture the enemies' wools!" on a destroy map | `maps/ctw/quillon_foundry/map.xml` lines 4–5, beside `<cores>` and `<destroyables>` | missing from the system |
 | 2 | No build area ⇒ no `block=no-void` rule at all ⇒ every void is bridgeable | `BuildGenerator.cs:35`; reproduce by compiling a plan with `zones: []` | missing (and it inverts `approaches.md`'s claim) |
 | 3 | A path's band claims ground; a building touching it is dropped, both orbit images, silently | `Decorator.cs:124` and `:325`; `h2`/`h3`/`h6` at `z −82..−77` against a street band reaching `z −77` | missing (no reading reports it) |
 | 4 | `kind` must be a prop's first JSON key; the documented example is `id`-first | `docs/tools/sketch.md` §Dressing example → `GET /map/{slug}/export` 500 | doc + serializer |
-| 5 | `capabilities.md` says the kit is not paired to the goal material; it is | `DestroyKitPairing.RequiredPickaxe`; `maps/quillon-foundry/map.xml:17` = diamond pickaxe, `maps/quillon-barrow/map.xml:17` = iron | stale doc — **my wrong claim, retracted** |
+| 5 | `capabilities.md` says the kit is not paired to the goal material; it is | `DestroyKitPairing.RequiredPickaxe`; `maps/ctw/quillon_foundry/map.xml:17` = diamond pickaxe, `maps/ctw/quillon_barrow/map.xml:17` = iron | stale doc — **my wrong claim, retracted** |
 | 6 | A 5×5 bedrock plate is buried one course under every destroyable | `(−2..2, 10, −52..−48)` in `quillon-barrow`; `StructureStamper.PlatformSize`, called at `SketchWorldBuilder.cs:267` | undocumented outside `rules.md`; correct and useful |
-| 7 | An absolutely-placed goal does not appear in `GET /plans/{id}/png` | `maps/quillon-barrow/renders/01-plan.png` — nothing at `(0, −50)` | out of reach (canvas parity) |
+| 7 | An absolutely-placed goal does not appear in `GET /plans/{id}/png` | `maps/ctw/quillon_barrow/renders/01-plan.png` — nothing at `(0, −50)` | out of reach (canvas parity) |
 | 8 | Excluded tiers leave the relief field entirely | `quillon-saltworks` readback: 3 169 cells for an ~11 000-cell island | mechanism documented, consequence not |
 | 9 | Terrain painted in a built-looking block reads orange in `--topdown` | the whole salt pan and both village terraces | known limit, correctly warned about in the brief |
 | 10 | Water props fragment the traversability component count | `quillon-barrow`: 8 components with two pools, 0 isolated | known; the isolated count is the one to read |

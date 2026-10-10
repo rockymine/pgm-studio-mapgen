@@ -17,10 +17,10 @@ this is what happens after a person has touched one. The tools are in `tools/` a
 The whole read rests on one property: the studio rebuilds its own board the same way twice. Only then is a
 difference between the studio's world and the person's a statement about the person's work.
 
-- The board is a spec in `specs/<slug>/` driven to `maps/<slug>/`, with `specs/<slug>/provenance.json`
+- The board is a spec in `specs/<slug>/` driven to `maps/<mode>/<name>/`, with `specs/<slug>/provenance.json`
   beside it. The sidecar records which pass claimed each column (ground, structure, made thing, prop) and
   which prop; it is what the diff keys on. Commit all of it before the world is handed over.
-- The person edits **a copy** of `maps/<slug>/` and commits it as `maps/<author>-<slug>/` — `region/`,
+- The person edits **a copy** of `maps/<mode>/<name>/` and commits it as `maps/<mode>/<name>_by_hand/` — `region/`,
   `level.dat`, `map.xml`, nothing else — with their own account of the work as
   `review/<author>-<slug>.md`, carrying **every command in the order it was run**. The command list is the
   half of the read a diff cannot recover: a diff says what the blocks became, and the list says what was
@@ -33,7 +33,7 @@ difference between the studio's world and the person's a statement about the per
 
 ```bash
 python3 tools/drive.py specs/<slug> "<Name>" --out /tmp/rebuild
-python3 tools/world-diff.py maps/<slug>/region /tmp/rebuild/region --things 20
+python3 tools/world-diff.py maps/<mode>/<name>/region /tmp/rebuild/region --things 20
 ```
 
 The drift this reports is what the studio itself moves between two builds. On `opus5-millrace` it was **0.4%**
@@ -49,7 +49,7 @@ rebuild rather than the committed world.
 ## 3. The diff: two worlds, one provenance
 
 ```bash
-python3 tools/world-diff.py maps/<slug>/region maps/<author>-<slug>/region \
+python3 tools/world-diff.py maps/<mode>/<name>/region maps/<mode>/<name>_by_hand/region \
         --provenance specs/<slug>/provenance.json --json specs/<new-slug>/diff.json
 ```
 
@@ -104,7 +104,7 @@ courses deep with a tall rise so its mix shows across the ground. `probe.py` is 
 
 ```bash
 python3 tools/trees.py catalogue corpus/<trees>/region
-python3 tools/trees.py match corpus/<trees>/region maps/<author>-<slug>/region --against maps/<slug>/region
+python3 tools/trees.py match corpus/<trees>/region maps/<mode>/<name>_by_hand/region --against maps/<mode>/<name>/region
 ```
 
 `match` finds, for every tree body the person's world has and the studio's lacks, which catalogue tree it is
@@ -128,8 +128,8 @@ which `match` ignores.
 ## 6. The builds
 
 ```bash
-python3 tools/lift.py maps/<author>-<slug>/region <name> --box x0 y0 z0 x1 y1 z1 \
-        --against maps/<slug>/region [--ground-below <y>] --out specs/<new-slug>/models --cost --plan
+python3 tools/lift.py maps/<mode>/<name>_by_hand/region <name> --box x0 y0 z0 x1 y1 z1 \
+        --against maps/<mode>/<name>/region [--ground-below <y>] --out specs/<new-slug>/models --cost --plan
 ```
 
 Take the box from the diff's things table. `--against` keeps what the person added; `--ground-below` drops the
@@ -175,12 +175,12 @@ Millrace builds taught, and the list is short enough to check:
 ## 8. The loop, the drive, and the reads that check it
 
 ```bash
-python3 tools/drive.py specs/<new-slug> "<Name>" --out maps/<new-slug>     # once, so the intent is stored
+python3 tools/drive.py specs/<new-slug> "<Name>"     # once, so the intent is stored
 python3 tools/loop.py specs/<new-slug> --candidates <propId> x,z x,z x,z    # twenty seconds a pass
 python3 tools/loop.py specs/<new-slug> --profile x=30,z=-30..30 --column 0,0
-python3 tools/drive.py specs/<new-slug> "<Name>" --out maps/<new-slug>     # the real drive
-python3 tools/probe.py maps/<new-slug>/region --floating
-python3 tools/trees.py verify maps/<new-slug>/region
+python3 tools/drive.py specs/<new-slug> "<Name>"     # the real drive
+python3 tools/probe.py maps/<mode>/<new-name>/region --floating
+python3 tools/trees.py verify maps/<mode>/<new-name>/region
 ```
 
 Drive once so the map exists, then iterate through `loop.py`: it posts the compiled, patched layout to the

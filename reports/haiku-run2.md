@@ -184,8 +184,8 @@ From reading code and docs:
 ## Deliverables
 
 Maps and specs:
-- `/maps/haiku-r2-canonical-8/` — full world export (regions, level.dat, map.xml)
-- `/maps/haiku-r2-ctw-mid/` — full world export
+- `/maps/ctw/haiku_r2_canonical/` — full world export (regions, level.dat, map.xml)
+- `/maps/ctw/haiku_r2_ctw_mid/` — full world export
 - `/specs/haiku-r2-canonical-8/plan.json`  
 - `/specs/haiku-r2-ctw-mid/plan.json`
 

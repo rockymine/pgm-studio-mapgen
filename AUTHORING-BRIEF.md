@@ -340,8 +340,11 @@ to do can be read beside what you built.
 
 Into `/home/user/pgm-studio-mapgen`, on the branch this session was given:
 
-- **`maps/<slug>/`** — `region/`, `level.dat`, `map.xml` and `map.png`, and nothing else. That folder is what a
-  game server is handed, so anything that exists to be looked at rather than loaded stays out of it.
+- **`maps/<mode>/<name>/`** — `region/`, `level.dat`, `map.xml` and `map.png`, and nothing else. That folder is what a
+  game server is handed, so anything that exists to be looked at rather than loaded stays out of it. `tools/drive.py`
+  writes it and adds the board's row to `maps/INDEX.md`: the mode folder is `ctw`, `dtcm` or `mixed` and the name is
+  the map's, as in `OvercastCommunity/CommunityMaps`. Where that name is another board's, `--world <name>` gives this
+  one its own.
 - **`specs/<slug>/`** — every document you authored: `build-spec.py`, and the plan and the refinement it
   writes. The world is derived from them. Beside them, `<slug>.png`, the board from its long side that the
   driver keeps, and `provenance.json`, which the driver moves here out of the exported `region/`. Every

@@ -1,12 +1,12 @@
 """Millrace, revamped in the studio — the author's re-theming of opus5-millrace restated as documents.
 
-The world at maps/rockymine-ruediger-millrace was made by hand over the studio's build of opus5-millrace,
+The world at maps/dtcm/millrace_by_hand was made by hand over the studio's build of opus5-millrace,
 with WorldEdit and Arceon. review/fable-millrace-revamp.md is the measured account of what changed; this is
 that account written back as the three documents the studio builds from, over the original's own layout so
 the terrain, the water, the walls and the boulders stay where the author kept them.
 
     python3 specs/fable-millrace-revamp/build.py
-    python3 tools/drive.py specs/fable-millrace-revamp "Millrace" --out maps/fable-millrace-revamp
+    python3 tools/drive.py specs/fable-millrace-revamp "Millrace"
 """
 import json, os, sys
 from collections import Counter, defaultdict

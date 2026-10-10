@@ -3,12 +3,17 @@
     plan_check.py  > renders/plan-check.txt      (if the board has one)
     sketch.py        renders/00-plan-sketch.png
     gen.py           <build-dir>                 (saves volume.bin, tiles.json, level.json)
-    write            world/region, world/level.dat, through the studio's Anvil writer
-    mapxml.py      > scripts/map.xml and world/map.xml
+    write            region/ and level.dat in the board's world folder, through the studio's Anvil writer
+    mapxml.py      > scripts/map.xml and the world folder's map.xml
     renders.py       <build-dir> <board-dir>      (if the board has one)
     walk.py        > renders/walks.txt            (if the board has one)
 
 and writes renders/build-info.txt with the library version, so a board records what it was built with.
+
+The world folder is the one `maps/INDEX.md` names for the board when the library runs inside pgm-studio-mapgen
+(`maps/<mode>/<name>/`, see `tools/worlds.py`); a board the index does not name yet is added under its map's name,
+or `<name>_pgmvox` where another board already holds that name.
+Outside that repository a board's world is `<board>/world`.
 
     python3 -m pgmvox.run <board-dir> [--build <build-dir>] [--from STEP] [--only STEP] [--skip STEP ...]
 
@@ -22,6 +27,29 @@ import sys
 
 from . import VERSION
 from .world import studio_root, write
+
+REPOSITORY_TOOLS = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "tools"))
+
+
+def world_folder(board, map_xml):
+    """Where `board`'s world is written: the folder the repository's maps index names for it, a new row there under
+    the map's own name where it names none (`<name>_pgmvox` where another board holds that name), and
+    `<board>/world` where the library runs outside the repository."""
+    if not os.path.isfile(os.path.join(REPOSITORY_TOOLS, "worlds.py")):
+        return os.path.join(board, "world")
+    sys.path.insert(0, REPOSITORY_TOOLS)
+    import worlds
+    if (known := worlds.of(board)) is not None:
+        return known
+    xml = map_xml()
+    place = worlds.place(xml) if xml else None
+    if place is None:
+        return os.path.join(board, "world")
+    key = os.path.relpath(board, worlds.ROOT)
+    if any(held == place for held, _, _ in worlds.rows()):
+        place += "_pgmvox"
+    worlds.register(place, key, key)
+    return os.path.join(worlds.WORLDS, place)
 
 STEPS = ["plan_check", "sketch", "gen", "write", "mapxml", "renders", "walk"]
 
@@ -54,6 +82,15 @@ def run(board, build=None, start=None, only=None, skip=()):
                 f.write(r.stdout)
         log.append(f"{name}: ok")
         return r.stdout
+    found = []
+
+    def world():
+        if not found:
+            stated = os.path.join(scripts, "map.xml")
+            found.append(world_folder(board, lambda: py("mapxml") if os.path.isfile(os.path.join(scripts, "mapxml.py"))
+                                      else (open(stated).read() if os.path.isfile(stated) else None)))
+        return found[0]
+
     for step in steps:
         if step == "plan_check":
             py("plan_check", out=os.path.join(renders, "plan-check.txt"))
@@ -65,12 +102,12 @@ def run(board, build=None, start=None, only=None, skip=()):
             with open(os.path.join(renders, "gen.txt"), "w") as f:
                 f.write(out)
         elif step == "write":
-            print(write(build, os.path.join(board, "world")))
+            print(write(build, world()))
             log.append("write: ok")
         elif step == "mapxml":
             xml = py("mapxml")
             if xml is not None:
-                for p in (os.path.join(scripts, "map.xml"), os.path.join(board, "world", "map.xml")):
+                for p in (os.path.join(scripts, "map.xml"), os.path.join(world(), "map.xml")):
                     os.makedirs(os.path.dirname(p), exist_ok=True)
                     with open(p, "w") as f:
                         f.write(xml)

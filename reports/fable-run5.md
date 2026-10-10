@@ -12,7 +12,7 @@ mid in place of a void hole. West flank a beech hanger (cover), east flank a cha
 (0, ±90), destroyable at (∓8, ±53), core at (±25, ±55); two routes: the frontal ramps over the
 saddle, and the flank pair (hanger west, scarp east).
 
-Built as `specs/fable-r5-whitebarrow/` (plan + finish), world in `maps/fable-r5-whitebarrow/`
+Built as `specs/fable-r5-whitebarrow/` (plan + finish), world in `maps/dtcm/whitebarrow_down/`
 (final API slug `whitebarrow-down-6`), review in `review/fable-r5-whitebarrow.md`. **It
 exported**: 200 at every step of the final run, nothing declined, all 37 props landed (verified
 against `region/provenance.json`), 18 structures standing, both goals in GO1's band at 3.0,

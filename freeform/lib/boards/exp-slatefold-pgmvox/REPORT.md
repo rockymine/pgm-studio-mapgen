@@ -26,7 +26,7 @@ the studio half is `exp-slatefold-studio`. Red is drawn and blue is its `mirror_
   except 152/155 on one small platform.
 - By the building walk the Kiln is reached in 224 moves and the Winding House in 257. No wool room is reached on
   foot or by any jump.
-- The studio's reader (`read_mapxml.cs`) reads `world/map.xml` as valid.
+- The studio's reader (`read_mapxml.cs`) reads `maps/ctw/slatefold_pgmvox/map.xml` as valid.
 
 ## Times
 

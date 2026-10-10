@@ -10,7 +10,7 @@ intent's own `meta`.
 driver takes a drawn spec as it takes a compiled one — it skips `/plan/compile` where a `layout` and an
 `intent` are already on disk and drives those instead:
 
-    python3 tools/drive.py specs/<slug> "<Map Name>" --out <worlddir>
+    python3 tools/drive.py specs/<slug> "<Map Name>"
 
 That one call is the ascii grid, the flow read, `sketch/relief/read` (the only place `RL2` is heard), the
 dressing declines, the preflight, the coverage read, the world export and **23 renders** into

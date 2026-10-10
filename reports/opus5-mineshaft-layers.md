@@ -7,7 +7,7 @@ layers actually does; this board is the minimum geometry that answers it — a g
 meadow, an adit climbing out of its east end — built so that every claim on the studio's layer track
 can be measured against one file instead of a paragraph.
 
-`maps/opus5-mineshaft`, `specs/opus5-mineshaft/`.
+`maps/ctw/mineshaft`, `specs/opus5-mineshaft/`.
 
 ## What it is
 
