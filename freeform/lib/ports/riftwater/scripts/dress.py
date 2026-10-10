@@ -16,8 +16,7 @@ from pgmvox import shapes
 from pgmvox import trees as T
 from pgmvox.noise import fbm
 
-TREES_JSON = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "..",
-                          "opus55-freeform-riftwater", "scripts", "trees.json")
+TREES_JSON = os.path.join(os.path.dirname(os.path.abspath(__file__)), "trees.json")
 NATURAL = {B.GRASS, B.DIRT}
 
 

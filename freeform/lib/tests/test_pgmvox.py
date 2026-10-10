@@ -29,7 +29,7 @@ from pgmvox.mapxml import Doc, E, duration, point  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
 from pgmvox.sketch import TEAM, SectionPanel, Sheet  # noqa: E402
 
-CURIO = os.path.join(HERE, "..", "..", "opus55-freeform-curio", "plots")
+FIXTURES = os.path.join(HERE, "fixtures")
 
 
 class Blocks(unittest.TestCase):
@@ -814,9 +814,8 @@ class Props(unittest.TestCase):
 
 
 class Plots(unittest.TestCase):
-    @unittest.skipUnless(os.path.isdir(CURIO), "Curio Square's plots are not here")
     def test_a_curio_plot_passes(self):
-        m = plot.load(os.path.join(CURIO, "opus", "bandstand.py"))
+        m = plot.load(os.path.join(FIXTURES, "bandstand.py"))
         r = plot.check_alone(m)
         self.assertEqual(plot.verdict(r), [])
         self.assertEqual(r["top"], 11)
