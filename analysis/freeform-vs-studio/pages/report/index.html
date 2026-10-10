@@ -381,6 +381,29 @@ footer{margin-top:72px;padding-top:16px;border-top:1px solid var(--rule);font-fa
 <h2 id="observations">Your observations, checked</h2>
 <h3>Windows against the door</h3>
 <p><strong>Confirmed, and it is half of all houses.</strong> pgmvox's window rule, <code>build.windows()</code> (<code>build.py:345</code>), looks only at how far along the wall a block is; the door is chosen and written after the walls (<code>build.py:442–450</code>) and nothing clears its neighbours. Over 960 sampled houses, 49% had a pane or bar beside the door. Riftwater's own <code>house.py</code> has the same gap (windows at lines 171–184, the door at 195–196). The studio already has the rule: <code>HouseWindows</code> drops “any seat that would meet a doorway, or the block of wall either side of it”. The fix is to choose the door first and pass its run into the window test.</p>
+<p><strong>On Riftwater itself, 36 of the 58 doors (62%) have a glass pane directly beside them in the same wall</strong>, 18 on each side. The door's facing was read from its data, and the check counts a pane on either side of the doorway, along the wall, at either of its two heights. Red's 18 are below; blue's are their mirror images at <code>x' = −1 − x</code>.</p>
+<details><summary>The 18 doors on red's side, with a pane beside them</summary>
+<div class="tbl" style="margin:10px 0 0"><table><thead><tr><th class="n">x</th><th class="n">y</th><th class="n">z</th><th>door faces</th></tr></thead><tbody>
+<tr><td class="n">−94</td><td class="n">60</td><td class="n">−7</td><td>east</td></tr>
+<tr><td class="n">−92</td><td class="n">54</td><td class="n">41</td><td>east</td></tr>
+<tr><td class="n">−92</td><td class="n">54</td><td class="n">52</td><td>east</td></tr>
+<tr><td class="n">−91</td><td class="n">55</td><td class="n">64</td><td>east</td></tr>
+<tr><td class="n">−86</td><td class="n">57</td><td class="n">71</td><td>north</td></tr>
+<tr><td class="n">−80</td><td class="n">52</td><td class="n">52</td><td>west</td></tr>
+<tr><td class="n">−67</td><td class="n">53</td><td class="n">−56</td><td>south</td></tr>
+<tr><td class="n">−65</td><td class="n">55</td><td class="n">−72</td><td>south</td></tr>
+<tr><td class="n">−63</td><td class="n">52</td><td class="n">1</td><td>north</td></tr>
+<tr><td class="n">−56</td><td class="n">53</td><td class="n">−34</td><td>west</td></tr>
+<tr><td class="n">−51</td><td class="n">53</td><td class="n">−48</td><td>south</td></tr>
+<tr><td class="n">−44</td><td class="n">56</td><td class="n">−71</td><td>south</td></tr>
+<tr><td class="n">−43</td><td class="n">52</td><td class="n">−23</td><td>east</td></tr>
+<tr><td class="n">−34</td><td class="n">51</td><td class="n">−40</td><td>north</td></tr>
+<tr><td class="n">−33</td><td class="n">51</td><td class="n">−48</td><td>south</td></tr>
+<tr><td class="n">−31</td><td class="n">53</td><td class="n">−70</td><td>south</td></tr>
+<tr><td class="n">−24</td><td class="n">50</td><td class="n">−40</td><td>north</td></tr>
+<tr><td class="n">−21</td><td class="n">51</td><td class="n">−73</td><td>south</td></tr>
+</tbody></table></div>
+</details>
 <p>A second defect turned up beside it: at headings of 30°, 45°, 60° and 135°, about half of doors have a wall block directly in front of or behind them, because the facing is rounded to a cardinal and nothing checks the cell outside.</p>
 <h3>Objectives that are hard to find</h3>
 <p><strong>Confirmed: pgmvox has no marker and no visibility check.</strong> Every <code>sight</code> call in the library measures how much of a spawn a goal or hill can see, never whether an attacker can see the goal. The underground and tower-top goals (Hollow Mesa's Throat, Hollowcrown's Hall of Echoes and Eyrie, Frostholm's lantern, Stratum's tower) were possible because nothing forbade them. The studio forbids them by construction: goals float over the highest ground (OB17, OB31) and every goal gets a floating wool marker 25 blocks over mean ground, out of build reach.</p>
