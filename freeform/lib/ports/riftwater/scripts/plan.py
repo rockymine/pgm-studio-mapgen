@@ -28,6 +28,7 @@ from pgmvox import shapes  # noqa: E402
 from pgmvox import under as under_lib  # noqa: E402
 from pgmvox.build import Frame, House  # noqa: E402
 from pgmvox.noise import fbm, spline, smoothstep  # noqa: E402
+from pgmvox import noise  # noqa: E402
 from pgmvox.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
 from pgmvox.terrain import slope_deg  # noqa: E402
@@ -188,9 +189,9 @@ def land():
     # the outline: the rift's ragged lip and the board's inset edges
     edge = _rift_edge(sh[1])
     land = X <= edge[None, :]
-    land &= X >= X_MIN + (2 + 4 * fbm((sh[1],), 16, 2, seed=22)).clip(0, 6)[None, :]
-    land &= Z >= Z_MIN + (2 + 5 * fbm((sh[0],), 16, 2, seed=23)).clip(0, 7)[:, None]
-    land &= Z <= Z_MAX - (2 + 5 * fbm((sh[0],), 16, 2, seed=24)).clip(0, 7)[:, None]
+    land &= X >= X_MIN + noise.line(sh, "z", 16, seed=22, amp=4, base=2, clip=(0, 6))
+    land &= Z >= Z_MIN + noise.line(sh, "x", 16, seed=23, amp=5, base=2, clip=(0, 7))
+    land &= Z <= Z_MAX - noise.line(sh, "x", 16, seed=24, amp=5, base=2, clip=(0, 7))
 
     # the open ground: the town climbs from the rift to the square; fields rise to the south and the ridge
     course = spline(RIVER, 0.5)
@@ -228,10 +229,10 @@ def land():
     pond_bed = POND_LEVEL - 1 - 3.5 * (1 - pr.clip(0, 1) ** 2)
 
     # the ridge: its foot wanders, its crest is ridged noise, two spurs reach east; cut into 3-block terraces
-    foot = -100 + 4 * fbm((sh[1],), 24, 2, seed=40)[None, :]
+    foot = noise.line(sh, "z", 24, seed=40, amp=4, base=-100)
     spur_n, _ = shapes.polyline(Xf, Zf, [(-114, -68), (-98, -74), (-82, -80)])
     spur_s, _ = shapes.polyline(Xf, Zf, [(-114, 70), (-100, 76), (-88, 82)])
-    crest = 73 + 5 * fbm((sh[1],), 30, 2, seed=41)[None, :] + 4 * np.exp(-((Zf + 72) / 18) ** 2)
+    crest = noise.line(sh, "z", 30, seed=41, amp=5, base=73) + 4 * np.exp(-((Zf + 72) / 18) ** 2)
     t = smoothstep(foot, foot - 15, Xf)
     ridge_n = fbm(sh, 10, 3, seed=42)
     crag = 1 - np.abs(fbm(sh, 7, 2, seed=43))

@@ -30,6 +30,7 @@ from pgmvox import shapes  # noqa: E402
 from pgmvox import under as UL  # noqa: E402
 from pgmvox.build import Frame, House  # noqa: E402
 from pgmvox.noise import fbm, smoothstep, spline  # noqa: E402
+from pgmvox import noise  # noqa: E402
 from pgmvox.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
 from pgmvox.terrain import slope_deg  # noqa: E402
@@ -126,7 +127,7 @@ def land():
         land &= shapes.signed_distance(Xf, Zf, corner) > 2 * fbm(sh, 8, 2, seed=len(corner) + 88)   # far corners
 
     # the Table and the Bench: 62 north, 52 south of a banded cliff that runs east-west under the Chimney
-    bench_line = 41 + 3 * fbm((sh[0],), 16, 2, seed=85)[:, None]
+    bench_line = noise.line(sh, "x", 16, seed=85, amp=3, base=41)
     t = smoothstep(bench_line - 1.5, bench_line + 1.5, Zf)
     ground = TABLE + 0.6 * n1 + (BENCH - TABLE) * t
     ground = np.where(t > 0.5, BENCH + 0.5 * n1 + 0.4 * n2, ground)

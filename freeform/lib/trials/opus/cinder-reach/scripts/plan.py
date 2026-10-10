@@ -29,6 +29,7 @@ from pgmvox import landform as LF  # noqa: E402
 from pgmvox import shapes  # noqa: E402
 from pgmvox.build import Frame, House  # noqa: E402
 from pgmvox.noise import fbm, ridged, smoothstep, spline  # noqa: E402
+from pgmvox import noise  # noqa: E402
 from pgmvox.objectives import Box, Core, Objectives, Observer, Spawn, Teams  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
 from pgmvox.terrain import slope_deg  # noqa: E402
@@ -132,7 +133,7 @@ def land():
         h = np.where(np.hypot(Xf - kx_, Zf - kz_) < 2.5, np.round(base + rise - 1), h)   # a flat crown
 
     # the Caldera Wall at the back: a ridged crest 70-78 over twelve blocks, cut into 3-block terraces
-    foot = -93 + 3 * fbm((sh[1],), 20, 2, seed=30)[None, :]
+    foot = noise.line(sh, "z", 20, seed=30, amp=3, base=-93)
     t = smoothstep(foot, foot - 11, Xf)
     crest = 70 + 6 * ridged(sh, 18, 3, seed=31) + 3 * np.exp(-((Zf + 40) / 20) ** 2)
     wall = h + (crest - h) * t

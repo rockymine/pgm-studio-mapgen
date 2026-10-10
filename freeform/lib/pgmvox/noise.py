@@ -2,6 +2,7 @@
 
     fbm(shape, cell, octaves, seed)   rolling noise in about [-1, 1], features `cell` blocks across
     ridged(shape, cell, octaves, seed) crests: 1 - |fbm|, sharp where the noise crosses zero, in [0, 1]
+    line(shape, along, cell, ...)     a wandering offset that varies along one axis of a grid and not the other
     smoothstep(e0, e1, x)             a smooth 0..1 ramp between two edges
     spline(pts, step)                 a Catmull-Rom curve through points
 """
@@ -29,6 +30,17 @@ def fbm(shape, cell, octaves=4, seed=0, gain=0.5):
         norm += amp
         amp *= gain
     return total / norm
+
+
+def line(shape, along, cell, octaves=2, seed=0, amp=1.0, base=0.0, clip=None):
+    """A wandering line over a grid of `shape` (x, z): base + amp * fbm drawn along the `along` axis ("x" or "z")
+    and the same across the other, shaped to broadcast against the grid. `clip` (lo, hi) bounds it. A foot, an
+    edge or an inset that wanders by `amp` about `base`."""
+    n = shape[1] if along == "z" else shape[0]
+    f = fbm((n,), cell, octaves, seed=seed)
+    f = f[None, :] if along == "z" else f[:, None]
+    out = base + amp * f
+    return out if clip is None else out.clip(*clip)
 
 
 def ridged(shape, cell, octaves=4, seed=0, gain=0.5, sharpness=1.0):

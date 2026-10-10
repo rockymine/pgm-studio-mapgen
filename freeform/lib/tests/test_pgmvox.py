@@ -249,6 +249,16 @@ class Shapes(unittest.TestCase):
         e = shapes.edge_depth(m)
         self.assertEqual((e[1, 1], e[3, 3], e[0, 0]), (0, 2, -1))
 
+    def test_a_line_wanders_along_one_axis_only(self):
+        from pgmvox.noise import fbm, line
+        f = line((30, 50), "z", 12, seed=7, amp=4, base=-10)
+        self.assertEqual(f.shape, (1, 50))
+        self.assertTrue(np.array_equal(f[0], -10 + 4 * fbm((50,), 12, 2, seed=7)))
+        self.assertEqual(line((30, 50), "x", 12, seed=7).shape, (30, 1))
+        clipped = line((30, 50), "z", 12, seed=7, amp=40, clip=(-1, 2))
+        self.assertTrue(clipped.min() >= -1 and clipped.max() <= 2)
+        self.assertTrue(np.array_equal(f, line((30, 50), "z", 12, seed=7, amp=4, base=-10)))
+
     def test_smoothstep_rises_falls_and_steps(self):
         from pgmvox.noise import smoothstep
         self.assertEqual((float(smoothstep(0, 10, -1)), float(smoothstep(0, 10, 5)), float(smoothstep(0, 10, 11))),
