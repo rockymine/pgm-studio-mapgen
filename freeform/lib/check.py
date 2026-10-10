@@ -204,8 +204,7 @@ def studio(tmp):
     same = r.returncode == 0 and json.load(open(os.path.join(tmp, "roofs.json"))) == \
         json.load(gzip.open(os.path.join(data, "roofs.json.gz"), "rt"))
     say(same, "studio: roofs.json.gz is the studio's RoofField", r.stderr[-1500:] or "the export differs")
-    from pgmvox.terrain import _slope_cases
-    _slope_cases(os.path.join(tmp, "cases.json"))
+    subprocess.run([sys.executable, os.path.join(data, "slope_cases.py"), os.path.join(tmp, "cases.json")], check=True)
     r = dotnet("export_slopes.cs", os.path.join(tmp, "cases.json"), os.path.join(tmp, "slopes.json"))
     same = r.returncode == 0 and json.load(open(os.path.join(tmp, "slopes.json"))) == \
         json.load(gzip.open(os.path.join(data, "slopes.json.gz"), "rt"))

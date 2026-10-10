@@ -92,11 +92,6 @@ def walk_cells(pts):
     return out
 
 
-def centroid(poly):
-    xs = [p[0] for p in poly]; zs = [p[1] for p in poly]
-    return sum(xs) / len(xs), sum(zs) / len(zs)
-
-
 def disc(X, Z, cx, cz, r):
     return np.hypot(X - cx, Z - cz) <= r
 

@@ -73,10 +73,6 @@ def band(t0, t1, block, inset=True):
     return lambda s, run, t, h, n: (("inset" if inset else "accent"), block) if t0 <= t <= t1 else None
 
 
-def band_from_top(d0, d1, block, inset=True):
-    return lambda s, run, t, h, n: (("inset" if inset else "accent"), block) if d0 <= h - t <= d1 else None
-
-
 def courses(every, block, offset=0):
     """A flush course of another block every so many, as poured concrete shows its pours."""
     return lambda s, run, t, h, n: ("accent", block) if (t + offset) % every == 0 and 0 < t < h else None
@@ -307,15 +303,6 @@ def steps(width, blocks):
     def f(c):
         band = (c.x - c.x0) // width
         return blocks[band % len(blocks)]
-    return f
-
-
-def stepped_line(width, period, block):
-    """The kilim's zigzag: a line stepping across every other band."""
-    def f(c):
-        band = (c.x - c.x0) // width
-        st = abs(((c.z - c.z0) % period) - period // 2)
-        return block if band % 2 and (c.x - c.x0) % width == st % width else None
     return f
 
 

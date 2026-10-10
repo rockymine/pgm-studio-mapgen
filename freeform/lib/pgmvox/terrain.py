@@ -67,23 +67,6 @@ def slope_deg(H, mask=None, window=SLOPE_WINDOW):
     return np.where(m, deg, 0)
 
 
-def _slope_cases(path, seed=5):
-    """Write the test grounds data/export_slopes.cs reads: ramps, a staircase, a cliff, noise, and holes."""
-    import json
-    rng = np.random.default_rng(seed)
-    X, Z = np.meshgrid(np.arange(24), np.arange(20), indexing="ij")
-    grounds = [X // 1, X // 2, X // 3, (X + Z) // 2, np.where(X > 11, 40, 34), 30 + 6 * noise.fbm((24, 20), 6, 3, seed=1),
-               30 + 18 * noise.fbm((24, 20), 4, 3, seed=2), rng.integers(20, 40, (24, 20))]
-    cases = []
-    for k, g in enumerate(grounds):
-        g = np.asarray(g).astype(int)
-        hole = (np.hypot(X - 12, Z - 10) < 4) if k % 2 else (X + 2 * Z) % 11 == 0
-        for m in (np.ones(g.shape, bool), ~hole):
-            cases.append([[int(g[i, j]) if m[i, j] else None for j in range(g.shape[1])] for i in range(g.shape[0])])
-    with open(path, "w") as f:
-        json.dump(cases, f)
-
-
 def by_angle(stops):
     """A paint rule from slope stops: [(max_degrees, (id, data)), ...] in rising order; the last answers
     everything steeper."""

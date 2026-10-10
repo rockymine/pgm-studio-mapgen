@@ -1,7 +1,7 @@
 // Export the studio's SurfaceGradient answers over test grounds, so pgmvox.terrain.slope_deg is tested against the
 // studio's own reading of slope, cell for cell.
 //
-//   python3 -c "from pgmvox.terrain import _slope_cases; _slope_cases('cases.json')"
+//   python3 slope_cases.py cases.json
 //   dotnet run export_slopes.cs -- cases.json slopes.json && gzip -9 -f slopes.json
 //
 // Each case is a grid of tops with null where the ground is not (off the footprint); each answer is the degrees

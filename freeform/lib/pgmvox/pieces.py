@@ -39,18 +39,6 @@ def box(x0, x1, z0, z1):
     return {(x, z) for x in range(x0, x1 + 1) for z in range(z0, z1 + 1)}
 
 
-def disc(cx, cz, r):
-    """The cells whose centres lie within r of (cx, cz) (block-centre convention: block x's centre is x + 0.5)."""
-    R = int(math.ceil(r)) + 1
-    return {(x, z) for x in range(int(cx) - R, int(cx) + R + 1) for z in range(int(cz) - R, int(cz) + R + 1)
-            if math.hypot(x + 0.5 - cx, z + 0.5 - cz) <= r}
-
-
-def polygon(pts):
-    from .facade import poly_cells
-    return poly_cells(pts)
-
-
 @dataclass
 class Piece:
     name: str
