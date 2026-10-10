@@ -39,5 +39,7 @@ being made on `opus55-freeform-riftwater` by another session.
 
 Praise: Riftwater "essentially perfect", Gullhaven pair cute, Curio "what I always wanted", Stratum's aesthetic, Penstock great looking, Sandreach a fun mix.
 
-Counts by class (items): mode correctness 6, discoverability 4, vegetation density 5, micro-geometry/joins 8, scale 4, composition/richness 3, enhancement 1.
-Studio would have prevented: YES 9 (mode correctness 5 of 6, discoverability 4 of 4... plus filters), partly 5, no or n/a 16.
+Counts by kind (30 items): mode correctness 7, discoverability 4, stairs, ladders and joins 7, vegetation density 5,
+scale 4, composition 3 (Hoarfrost's spawn fences and Copperline's filter count as mode correctness; Frostholm's
+trees and core are two items). The studio would have caught 9, partly caught 4, and not caught or could not have
+built 17.
