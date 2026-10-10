@@ -28,7 +28,7 @@ def main(build):
     x0, z0, ids, dat = render_iso.load(build)
     out = []
     y = P.FLOOR_Y
-    R = 52
+    R = P.REACH
     bad_floor, bad_void, crates = [], [], 0
     for x in range(-R, R + 1):
         for z in range(-R, R + 1):

@@ -36,18 +36,18 @@
 <spawns>
     <spawn kit="stick" spread="true" safe="true">
         <regions>
-            <point yaw="-86">8.5,65,0.5</point>
-            <point yaw="-57">7.5,65,4.5</point>
-            <point yaw="-29">4.5,65,7.5</point>
-            <point yaw="2">-0.5,65,8.5</point>
-            <point yaw="28">-3.5,65,7.5</point>
-            <point yaw="60">-7.5,65,4.5</point>
-            <point yaw="88">-8.5,65,0.5</point>
-            <point yaw="118">-7.5,65,-3.5</point>
-            <point yaw="147">-4.5,65,-7.5</point>
-            <point yaw="176">-0.5,65,-8.5</point>
-            <point yaw="-155">3.5,65,-7.5</point>
-            <point yaw="-124">7.5,65,-4.5</point>
+            <point yaw="-86">10.5,65,0.5</point>
+            <point yaw="-57">8.5,65,5.5</point>
+            <point yaw="-29">5.5,65,9.5</point>
+            <point yaw="2">-0.5,65,10.5</point>
+            <point yaw="28">-4.5,65,9.5</point>
+            <point yaw="60">-9.5,65,5.5</point>
+            <point yaw="88">-10.5,65,0.5</point>
+            <point yaw="118">-9.5,65,-4.5</point>
+            <point yaw="147">-5.5,65,-8.5</point>
+            <point yaw="176">-0.5,65,-10.5</point>
+            <point yaw="-155">4.5,65,-9.5</point>
+            <point yaw="-124">8.5,65,-5.5</point>
         </regions>
     </spawn>
     <default yaw="0" pitch="40"><region><point>0.5,89,-40.5</point></region></default>

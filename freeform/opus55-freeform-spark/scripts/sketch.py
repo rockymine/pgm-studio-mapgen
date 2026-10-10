@@ -18,7 +18,7 @@ from PIL import Image, ImageDraw
 import plan as P
 
 S = 5
-R = 50
+R = P.REACH
 CLAY = (217, 119, 87)                                            # the Claude terracotta
 RIM = (175, 88, 58)
 CRATE = (240, 238, 230)

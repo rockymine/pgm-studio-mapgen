@@ -21,7 +21,7 @@ from mc import World, B
 
 X0, X1, Z0, Z1 = -200, 199, -200, 199
 SY = 200
-CLEAR = 48 + 72                                                  # no scenery above the kill height inside this radius
+CLEAR = P.REACH - 4 + 72                                       # no scenery above the kill height inside this radius
 rng = random.Random(41)
 
 TERRACOTTA = (B.WOOL, 1)                                         # the floor: the logo's terracotta
@@ -33,7 +33,7 @@ CLOUD = [(B.WOOL, 0), (B.SNOW, 0), (B.QUARTZ, 0)]
 
 def edge_dist():
     """For every cell of the spark, how far it lies inside its edge: a breadth-first walk in from the rim."""
-    R = 52
+    R = P.REACH
     d = {}
     frontier = []
     for x in range(-R, R + 1):

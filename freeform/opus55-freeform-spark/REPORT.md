@@ -92,3 +92,17 @@ so in play the hub is probably safer than the sketch shows.
 | Nowhere to land after a long hit | Easy once the reach was known: a clear ring of 120 blocks, checked on the built blocks | A no-stand check against a reach, not a fixed distance |
 | Mountains that look like mountains | Moderate: cones first, then a ridged wall, then separate massifs smoothed into slopes | A ridged-noise mountain range with a clear inner radius |
 | Validation of a knockback match | Not attempted | Kits on time filters and void portals in the studio's round-trip |
+
+## After the playtest
+
+**The spark is a quarter larger in every length, so its floor is half again what it was.** `plan.py` scales the
+hub, the rays, the eye and the spawn ring by `SCALE = 1.25`; the crates keep their size and move out with it. The
+floor went from 2748 blocks to 4326, the hub from 467 to 739, and tip to tip from 96 to 120 across.
+
+**Every radius that was a typed number now comes from the plan.** The generator, the walk, the check and the
+sketch each drew the floor inside a fixed 50 or 52 blocks, which would have cut the longer rays short. They now
+use `REACH`, the longest ray and four, and the scenery's clear ring follows it out to 132.
+
+**A hit carries a player off a little less of the floor.** A plain hit at knockback one can kill from 92% of the
+floor against 97% before, and from 39% in its weakest direction against 48%. At knockback ten it is still all of
+the floor, and the nearest scenery is still 96 blocks past the furthest tip.

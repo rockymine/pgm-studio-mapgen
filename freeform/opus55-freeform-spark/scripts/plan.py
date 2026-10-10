@@ -38,6 +38,16 @@ CRATES = [  # x0, x1, z0, z1, height: blocks of cream stone to brace against
 ]
 SPAWN_R = 8.5                                                    # players spawn round the hub, facing out
 
+# the spark drawn above is scaled by SCALE in every length: 1.25 gives it half again the floor
+SCALE = 1.25
+HUB_R *= SCALE
+RAYS = [(a, length * SCALE, w0 * SCALE, w1 * SCALE) for a, length, w0, w1 in RAYS]
+HOLES = [(cx * SCALE, cz * SCALE, rx * SCALE, rz * SCALE) for cx, cz, rx, rz in HOLES]
+CRATES = [(round(x0 * SCALE), round(x0 * SCALE) + (x1 - x0), round(z0 * SCALE), round(z0 * SCALE) + (z1 - z0), h)
+          for x0, x1, z0, z1, h in CRATES]                       # each block moved out, its size kept
+SPAWN_R *= SCALE
+REACH = int(max(r[1] for r in RAYS)) + 4                       # every floor column lies within this of the centre
+
 
 def in_ellipse(x, z, cx, cz, rx, rz, ang=0.0):
     dx, dz = x - cx, z - cz

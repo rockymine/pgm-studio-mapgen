@@ -16,7 +16,7 @@ import math
 
 import plan as P
 
-R = 50
+R = P.REACH
 
 
 def floor_cells():
