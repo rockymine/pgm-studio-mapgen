@@ -69,6 +69,10 @@ def spaces(w):
         if f["key"].startswith("exit"):
             _, _, z0, z1 = f["box"]
             carve(w, -56, -56, z0, z1, 25, 28)
+    for f in P.FLIGHTS:                                       # the niches before the walk's flights
+        if f["key"].startswith("walk"):
+            _, _, z0, z1 = f["box"]
+            carve(w, P.NICHE[0], P.NICHE[1], z0, z1, 21, 23)
     # the score boxes' alcoves, behind the gallery's back wall
     for b in P.BOXES:
         z0, z1 = b["z"]
