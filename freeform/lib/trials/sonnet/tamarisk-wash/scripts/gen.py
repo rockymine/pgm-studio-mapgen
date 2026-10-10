@@ -99,57 +99,13 @@ GHAT_BLOCKS = ((B.SANDSTONE, 0), (B.SANDSTONE, 2))
 GHAT_SLAB = (B.SLAB, 1)                        # a sandstone slab, lower half
 
 
-def _relax(m, band, up):
-    """The nearest 1-Lipschitz field over the band's 4-neighbour graph on the high side of m (up: raised to
-    neighbour - 1, so no cell sits more than a half block under the next) or on its low side (lowered to
-    neighbour + 1), in half-block units."""
-    m = m.copy()
-    while True:
-        old = m.copy()
-        for ax, sh in ((0, 1), (0, -1), (1, 1), (1, -1)):
-            n = np.roll(m, sh, axis=ax)
-            nb = np.roll(band, sh, axis=ax)
-            ok = band & nb
-            m = np.where(ok, np.maximum(m, n - 1) if up else np.minimum(m, n + 1), m)
-        if (m == old).all():
-            return m
-
-
-def _steps_from(seed, band):
-    """4-neighbour steps through the band from the seed cells."""
-    d = np.where(seed, 0.0, np.inf)
-    while True:
-        old = d.copy()
-        for ax, sh in ((0, 1), (0, -1), (1, 1), (1, -1)):
-            n = np.roll(d, sh, axis=ax) + 1
-            ok = band & np.roll(band, sh, axis=ax)
-            d = np.where(ok, np.minimum(d, n), d)
-        if (d == old).all():
-            return d
-
-
 def ghat_levels(L, rt, X, Z, earlier):
-    """The ghat's surface in half blocks over its band: the graded profile held to a rise of at most one half block
-    between neighbouring cells, its two ends held at the ground they meet. Returns (band, level) with level = 2 x
-    the floor block's height, odd where a slab sits over the block."""
-    d, along = shapes.polyline(X, Z, rt["line"])
-    s, p = rt["profile"]
-    band = (d <= rt["width"] / 2) & (X < 0) & ~earlier
-    mt = 2 * np.interp(along, s, p)
-    low, up = _relax(mt, band, True), _relax(mt, band, False)
-    mid = (low + up) / 2
-    top = band & (along < 1.5)
-    bot = band & (along > s[-1] - 1.5)
-    lo_pin = 2 * p[0] - _steps_from(top, band)
-    hi_pin = 2 * p[-1] + _steps_from(bot, band)
-    lvl = np.where(band, np.clip(mid, lo_pin, np.maximum(lo_pin, hi_pin)), 0)
-    return band, np.rint(lvl).astype(int), bool((hi_pin[band] >= lo_pin[band]).all())
+    """The ghat's surface in half blocks over its band (red's half, past the ghats laid before it)."""
+    return route.halfstep_levels(X, Z, rt["line"], rt["profile"], rt["width"], within=(X < 0) & ~earlier)
 
 
 def ghats(w, L):
-    """The ghats rebuilt from full blocks and slabs: no stairs, so no stair to face the wrong way across a diagonal
-    run, and no step over a half block. Each cell of the band takes the level `ghat_levels` gives it, with the
-    block under it filled and four blocks of air over it."""
+    """The ghats rebuilt from full blocks and slabs, never a step over half a block."""
     X, Z = w.grid()
     earlier = np.zeros(X.shape, bool)
     r = rng(P.BOARD, "ghats")
@@ -158,19 +114,7 @@ def ghats(w, L):
         if rt["name"] in GHATS:
             band, lvl, ok = ghat_levels(L, rt, X, Z, earlier)
             out[rt["name"]] = ok
-            for i, k in np.argwhere(band):
-                x, z, m = int(X[i, k]), int(Z[i, k]), int(lvl[i, k])
-                y, old = m // 2, int(L.H[i, k])
-                for yy in range(min(y, old) - 3, y):
-                    if w.id(x, yy, z) in (B.AIR, B.SAND, B.GRAVEL, B.TALLGRASS):
-                        w.set(x, yy, z, B.SANDSTONE, 0)
-                w.set(x, y, z, *GHAT_BLOCKS[int(r.integers(len(GHAT_BLOCKS)))])
-                above = y + 1
-                if m % 2:
-                    w.set(x, y + 1, z, *GHAT_SLAB)
-                    above = y + 2
-                for yy in range(above, max(y, old) + 5):
-                    w.set(x, yy, z, B.AIR)
+            route.halfsteps(w, L.H, X, Z, band, lvl, GHAT_BLOCKS, GHAT_SLAB, r, fill=(B.SANDSTONE, 0))
         earlier |= shapes.polyline(X, Z, rt["line"])[0] <= rt["width"] / 2
     return out
 

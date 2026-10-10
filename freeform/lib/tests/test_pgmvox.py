@@ -645,6 +645,29 @@ class Forms(unittest.TestCase):
 
 
 class Routes(unittest.TestCase):
+
+    def test_half_steps_never_rise_more_than_half_a_block_and_hold_their_ends(self):
+        w = World(0, 0, 40, 12, sy=40)
+        X, Z = w.grid()
+        H = np.where(X < 20, 30.0, 18.0) + 0 * Z                      # a twelve-block wall at x 20
+        pts = [(4, 6), (36, 6)]
+        H2, (s, level) = LF.grade(H, X.astype(float), Z.astype(float), pts, width=4, max_grade=0.6)
+        band, lvl, joined = RT.halfstep_levels(X, Z, pts, (s, level), width=4)
+        self.assertTrue(joined)
+        cells = {tuple(c): int(lvl[tuple(c)]) for c in np.argwhere(band)}
+        step = max(abs(v - cells[(i + a, k + b)]) for (i, k), v in cells.items() for a, b in ((1, 0), (0, 1))
+                   if (i + a, k + b) in cells)
+        self.assertLessEqual(step, 1)                                   # one half block
+        self.assertEqual(cells[(4, 6)] // 2, 30)
+        self.assertEqual(cells[(36, 6)] // 2, 18)
+        r = np.random.default_rng(0)
+        RT.halfsteps(w, H, X, Z, band, lvl, [(B.SANDSTONE, 0)], (B.SLAB, 1), r, fill=(B.SANDSTONE, 0))
+        odd = [c for c, v in cells.items() if v % 2]
+        self.assertTrue(odd)
+        i, k = odd[0]
+        self.assertEqual(w.id(int(X[i, k]), cells[(i, k)] // 2 + 1, int(Z[i, k])), B.SLAB)
+        self.assertFalse(any(w.id(int(X[i, k]), y, int(Z[i, k])) in (B.SANDSTONE_STAIRS, B.COBBLE_STAIRS)
+                             for i, k in cells for y in range(40)))
     def slope(self):
         X, Z = np.meshgrid(np.arange(0, 60), np.arange(0, 60), indexing="ij")
         return X, Z, (0.5 * Z).astype(float)                                # 1 in 2, straight up the z axis

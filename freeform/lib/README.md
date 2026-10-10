@@ -26,7 +26,7 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `build` | `Frame`, a building's own axes at any heading; `RoofField`, the studio's six roof forms block for block, and `lay_roof`; `house` and its `window_rhythm`; `parapet`, `site`, `stairs`, `ladder`, `Claims` |
 | `facade` | face patterns (`band`, `courses`, `flutes`, `panels`, `slits`, `checker`, `windows`, `glyph_row`, `word`) set back or flush on an `extrude`d mass, `coffer`, `top_course`; floor fields (`border`, `medallion`, `corners`, `diamonds`, `kilim_steps`, `star`, `cross`, `tiles`) composed by `first_of` and laid by `carpet` |
 | `terrain` | `slope_deg` as the studio reads it; `lay` (ground painted by slope, a snow line; `Paint` layers that choose the top by slope and place, first match first; a `bottom` per column); `fill_water` (a bed and water up to each column's level); `Strata`, `bed_offset` and `beds` (rock beds that tilt and fold); `mountain_ring`; `underside` and `root_depth` (cones, flutes, spires); `slab` (floating floors at their own heights: rock, root, a bedrock course, a weathered rim); `waterfall` (water falling from each row's lip into the void, into air only); `island_bottom` (where the rock ends: a taper from the void, sheer beside a rift, for `lay(bottom=)`); `cloud_deck` |
-| `route` | `find` (a least-cost route over the ground, held to a grade, switchbacks and all), `network` (places joined by roads that share their trunk), `simplify`, `smooth`, `footprint`, `pave` (surface and bridges), `steps` |
+| `route` | `find` (a least-cost route over the ground, held to a grade, switchbacks and all), `network` (places joined by roads that share their trunk), `simplify`, `smooth`, `footprint`, `pave` (surface and bridges), `steps` (a stair on every one-block rise), `halfstep_levels` and `halfsteps` (a steep way in blocks and slabs, no step over half a block) |
 | `grammar` | the rules of a structural board, apart from its blocks: `Section` (boxes at one height), `split` and `tile` (a box cut into sections), `Ground` (every column's top, section and depth), `Face` and `Accent` (courses by drop, a bay every so many), `Style` (body, faces, seam, fills, motifs), `lay` |
 | `clay` | the Claywork style for the grammar: stone and clay, the team's colour inlaid; faces with a sunk panel and its quartz diamond in a bay centred on each section; fills checker, squares, paving, inlay, plate and flight; the arrow motif |
 | `brittle` | the Brittlebush style from a blueprint of five-block cells: flat, keep, stair, stacked, gap and water cells; the five-course cap with its birch panels, a one-block outline, sand fields and double-ringed beds; hollows and tunnels under a deck with their dark-oak pillars; grown ground beside the made (`build(grown=)`); `house`, storeys of whole cells; `tower`, `heart` |
@@ -394,6 +394,14 @@ where a step costs a third of what it would. Water costs a bridge's price a bloc
 where `pave` lays a bridge deck. It leaves earlier roads alone and pins its ends to their ground, so a branch
 meets its road at that road's level. A footpath is graded too, at a block a block, and `steps` puts a stair on
 every rise.
+
+**A steep way is laid in half blocks instead of stairs.** `halfstep_levels` gives every cell of a route's band a
+level in half blocks that follows its graded profile and never differs from a neighbour's by more than half a block,
+its ends held at the ground they meet. `halfsteps` lays it as blocks with a slab on the odd levels.
+
+**A slab has no facing, which is why the half steps beat stairs on a slanting run.** A stair faces one
+way, so on a run that crosses the slope at an angle half its treads face wrong, and a slab has no facing. Tamarisk
+Wash's two ghats are laid this way, 116 and 122 cells down a sixteen-block wall with no step over half a block.
 
 **The Vale's read-back found both of those the hard way.** Walked from the harbour with no jumps, the uplands,
 the canyon rim and the spire were cut off. A later branch had re-graded the junction two blocks over the road it

@@ -6,6 +6,8 @@
     ...lay the terrain...
     pave(w, H, X, Z, pts, width=4, water=river.mask)       # the surface, and a bridge over each span
     steps(w, H, X, Z, pts)                                 # a footpath's stairs where it climbs a block at once
+    band, lvl, joined = halfstep_levels(X, Z, pts, (s, level), width=4)   # a steep way in half blocks instead
+    halfsteps(w, H, X, Z, band, lvl, [(B.SANDSTONE, 0)], (B.SLAB, 1), rng, fill=(B.SANDSTONE, 0))
 
     roads = network(H, X, Z, {"harbour": (...), "village": (...), "pass": (...)}, max_grade=1 / 7)
 
@@ -276,3 +278,74 @@ def steps(w, H, X, Z, pts, block=B.COBBLE_STAIRS, width=1):
             w.set(x, at[2], z, block, stair_data(up))
             n += 1
     return n
+
+
+def _relax(m, band, up):
+    """The nearest field over the band's 4-neighbour graph that rises at most 1 between neighbours, on the high
+    side of m (up: raised to neighbour - 1) or on its low side (lowered to neighbour + 1)."""
+    m = m.copy()
+    while True:
+        old = m.copy()
+        for ax, sh in ((0, 1), (0, -1), (1, 1), (1, -1)):
+            n = np.roll(m, sh, axis=ax)
+            nb = np.roll(band, sh, axis=ax)
+            ok = band & nb
+            m = np.where(ok, np.maximum(m, n - 1) if up else np.minimum(m, n + 1), m)
+        if (m == old).all():
+            return m
+
+
+def _steps_from(seed, band):
+    """4-neighbour steps through the band from the seed cells."""
+    d = np.where(seed, 0.0, np.inf)
+    while True:
+        old = d.copy()
+        for ax, sh in ((0, 1), (0, -1), (1, 1), (1, -1)):
+            n = np.roll(d, sh, axis=ax) + 1
+            ok = band & np.roll(band, sh, axis=ax)
+            d = np.where(ok, np.minimum(d, n), d)
+        if (d == old).all():
+            return d
+
+
+def halfstep_levels(X, Z, pts, profile, width, within=None):
+    """A steep route's surface in half blocks: the cells within width / 2 of the line (and in `within`), each given
+    a level in half blocks (2 x the floor block's y, odd where a slab lies on it) that follows the graded `profile`
+    (s, level), a landform.grade result) and never differs from a 4-neighbour's by more than one half block, its
+    two ends held at the ground they meet. Returns (band, level, joined); joined is False where the band is too
+    short for its fall at half a block a step, and the ends then win over the climb."""
+    d, along = polyline(X, Z, pts)
+    s, p = profile
+    band = d <= width / 2
+    if within is not None:
+        band = band & within
+    mt = 2 * np.interp(along, s, p)
+    low, up = _relax(mt, band, True), _relax(mt, band, False)
+    mid = (low + up) / 2
+    top = band & (along < 1.5)
+    bot = band & (along > s[-1] - 1.5)
+    lo_pin = 2 * p[0] - _steps_from(top, band)
+    hi_pin = 2 * p[-1] + _steps_from(bot, band)
+    lvl = np.where(band, np.clip(mid, lo_pin, np.maximum(lo_pin, hi_pin)), 0)
+    return band, np.rint(lvl).astype(int), bool((hi_pin[band] >= lo_pin[band]).all())
+
+
+def halfsteps(w, H, X, Z, band, level, surface, slab, rng, fill, fill_depth=3, clear=4,
+              fill_over=(B.AIR, B.SAND, B.GRAVEL, B.TALLGRASS)):
+    """Lay a route in half blocks from `halfstep_levels`: each cell of the band a block of `surface` (drawn by
+    `rng`) at its level, a `slab` over it where the level is odd, the `fill_depth` blocks under it that are
+    `fill_over` filled with `fill`, and air `clear` blocks over the higher of the new floor and the old ground.
+    No stair is laid, so no stair faces the wrong way across a diagonal run and no step is over half a block."""
+    for i, k in np.argwhere(band):
+        x, z, m = int(X[i, k]), int(Z[i, k]), int(level[i, k])
+        y, old = m // 2, int(H[i, k])
+        for yy in range(min(y, old) - fill_depth, y):
+            if w.id(x, yy, z) in fill_over:
+                w.set(x, yy, z, *fill)
+        w.set(x, y, z, *surface[int(rng.integers(len(surface)))])
+        above = y + 1
+        if m % 2:
+            w.set(x, y + 1, z, *slab)
+            above = y + 2
+        for yy in range(above, max(y, old) + clear + 1):
+            w.set(x, yy, z, B.AIR)
