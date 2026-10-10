@@ -211,3 +211,47 @@ def lamps(w, path, H, X, Z, every=12, post=(B.NETHER_FENCE, 0), light=(B.GLOWSTO
         s += every
         n += 1
     return out
+
+
+def crop_field(w, box, y, crops, rng, rows=9, ditch=4, tilt=0.0, ripe=(0.15, (4, 8)), fence="w", gate=None):
+    """A field over `box` (x0, z0, x1, z1) laid on a plane at y, tilting `tilt` blocks a block along z: farmland
+    in strips `rows` rows deep taking `crops` in turn, a water ditch in row `ditch` of every strip, a grass edge,
+    the ground cleared over it and filled with dirt under it. Of the wheat, a share `ripe[0]` drawn from rng is at
+    an age in `ripe[1]` instead. A fence runs along the `fence` side ("w" or "e") with a gate in row `gate` (the
+    middle where None)."""
+    x0, z0, x1, z1 = box
+    gate = (z0 + z1) // 2 if gate is None else gate
+    fx = x0 if fence == "w" else x1
+    for z in range(z0, z1 + 1):
+        crop = crops[((z - z0) // rows) % len(crops)]
+        wet = ditch is not None and (z - z0) % rows == ditch
+        yz = y + int(round((z - (z0 + z1) / 2) * tilt))
+        for x in range(x0, x1 + 1):
+            g = w.top(x, z)
+            for yy in range(yz + 1, g + 3):
+                w.set(x, yy, z, B.AIR)
+            for yy in range(min(g, yz) - 2, yz):
+                w.set(x, yy, z, B.DIRT)
+            if wet and x0 < x < x1:
+                w.set(x, yz, z, B.WATER)
+            elif x in (x0, x1) or z in (z0, z1):
+                w.set(x, yz, z, B.GRASS)
+            else:
+                w.set(x, yz, z, B.FARMLAND, 7)
+                c = crop if not (crop[0] == B.WHEAT and rng.random() < ripe[0]) else \
+                    (B.WHEAT, int(rng.integers(*ripe[1])))
+                w.set(x, yz + 1, z, *c)
+        w.set(fx, yz + 1, z, *((B.FENCE_GATE, 1) if z == gate else (B.FENCE, 0)))
+
+
+def scarecrow(w, x, z, facing="n"):
+    """A scarecrow on the ground at (x, z): two fence posts, a hay body with fence arms across `facing`, a pumpkin
+    head."""
+    from .orient import vec
+    y = w.top(x, z)
+    for yy, blk in ((1, (B.FENCE, 0)), (2, (B.FENCE, 0)), (3, (B.HAY, 0)), (4, (B.PUMPKIN, 3))):
+        w.set(x, y + yy, z, *blk)
+    fx, fz = vec(facing)
+    w.set(x - fz, y + 3, z + fx, B.FENCE)
+    w.set(x + fz, y + 3, z - fx, B.FENCE)
+

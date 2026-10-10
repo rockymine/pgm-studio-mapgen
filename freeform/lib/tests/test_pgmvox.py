@@ -1072,6 +1072,19 @@ class Trees(unittest.TestCase):
 
 
 class Props(unittest.TestCase):
+    def test_every_farmland_block_is_watered_and_the_fence_has_a_gate(self):
+        w = World(0, 0, 16, 30, sy=20)
+        w.ids[:, :9, :] = B.STONE
+        w.ids[:, 9, :] = B.GRASS
+        crops = [(B.WHEAT, 7), (B.CARROTS, 7)]
+        props.crop_field(w, (1, 1, 14, 28), 9, crops, np.random.default_rng(5), rows=9, ditch=4)
+        farm = [(x, z) for x in range(16) for z in range(30) if w.id(x, 9, z) == B.FARMLAND]
+        water = [(x, z) for x in range(16) for z in range(30) if w.id(x, 9, z) == B.WATER]
+        self.assertTrue(farm and water)
+        self.assertTrue(all(any(max(abs(x - a), abs(z - b)) <= 4 for a, b in water) for x, z in farm))   # 1.8 hydration
+        self.assertTrue(all(w.id(x, 10, z) in (B.WHEAT, B.CARROTS) for x, z in farm))
+        self.assertEqual([z for z in range(30) if w.id(1, 10, z) == B.FENCE_GATE], [14])
+
     def test_scattered_points_keep_apart_and_off_the_taken(self):
         X, Z = np.meshgrid(np.arange(40), np.arange(40), indexing="ij")
         pts = shapes.scatter_points(np.ones((40, 40), bool), 30, 5.0, np.random.default_rng(2), X, Z, taken=[(20, 20)])

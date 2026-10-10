@@ -12,7 +12,7 @@ from scipy import ndimage
 
 import plan as P
 from pgmvox import B, rng
-from pgmvox import shapes
+from pgmvox import props, shapes
 from pgmvox import trees as T
 from pgmvox.noise import fbm
 
@@ -71,30 +71,8 @@ def build(w, L):
     x0, z0, x1, z1 = P.FIELD
     base = int(np.median(L.H[x0 - P.X_MIN:x1 - P.X_MIN + 1, z0 - P.Z_MIN:z1 - P.Z_MIN + 1]))
     crops = [(B.WHEAT, 7), (B.WHEAT, 7), (B.WHEAT, 6), (B.CARROTS, 7), (B.WHEAT, 7), (B.POTATOES, 7)]
-    for z in range(z0, z1 + 1):
-        crop = crops[((z - z0) // 9) % len(crops)]
-        ditch = (z - z0) % 9 == 4
-        y = base + int(round((z - (z0 + z1) / 2) * 0.06))
-        for x in range(x0, x1 + 1):
-            g = w.top(x, z)
-            for yy in range(y + 1, g + 3):
-                w.set(x, yy, z, B.AIR)
-            for yy in range(min(g, y) - 2, y):
-                w.set(x, yy, z, B.DIRT)
-            if ditch and x0 < x < x1:
-                w.set(x, y, z, B.WATER)
-            elif x in (x0, x1) or z in (z0, z1):
-                w.set(x, y, z, B.GRASS)
-            else:
-                w.set(x, y, z, B.FARMLAND, 7)
-                c = crop if not (crop[0] == B.WHEAT and r.random() < 0.15) else (B.WHEAT, int(r.integers(4, 8)))
-                w.set(x, y + 1, z, *c)
-        w.set(x0, y + 1, z, *((B.FENCE_GATE, 1) if z == (z0 + z1) // 2 else (B.FENCE, 0)))
-    sx, sz = (x0 + x1) // 2 + 1, (z0 + z1) // 2 - 3               # the scarecrow, facing the rift
-    y = w.top(sx, sz)
-    for yy, blk in ((1, (B.FENCE, 0)), (2, (B.FENCE, 0)), (3, (B.HAY, 0)), (4, (B.PUMPKIN, 3))):
-        w.set(sx, y + yy, sz, *blk)
-    w.set(sx, y + 3, sz - 1, B.FENCE); w.set(sx, y + 3, sz + 1, B.FENCE)
+    props.crop_field(w, (x0, z0, x1, z1), base, crops, r, rows=9, ditch=4, tilt=0.06, fence="w")
+    props.scarecrow(w, (x0 + x1) // 2 + 1, (z0 + z1) // 2 - 3, facing="e")     # facing the rift
 
     # the Cutting: stumps and two log piles
     for _ in range(14):
