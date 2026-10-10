@@ -1,0 +1,5900 @@
+{
+ "themes": {
+  "moor": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "cell",
+    "seed": 3,
+    "cellSize": 3,
+    "jitter": 1,
+    "warp": 1,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     }
+    ],
+    "rise": 2
+   },
+   "fill": {
+    "kind": "cell",
+    "seed": 9,
+    "cellSize": 4,
+    "jitter": 1,
+    "warp": 1,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     }
+    ],
+    "rise": 2
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 34,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "noise",
+             "seed": 11,
+             "scale": 3,
+             "octaves": 2,
+             "stops": [
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 2
+              },
+              {
+               "kind": "solid",
+               "id": 2,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 2,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 2,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 2,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 1
+              }
+             ]
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 1
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 16,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "seed": 5,
+             "cellSize": 2,
+             "jitter": 1,
+             "warp": 1,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 1
+              }
+             ],
+             "rise": 0
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 40,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "seed": 3,
+             "cellSize": 3,
+             "jitter": 1,
+             "warp": 1,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 5
+              },
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 4,
+               "data": 0
+              }
+             ],
+             "rise": 0
+            },
+            "thickness": 3
+           }
+          ]
+         }
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "bog": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "cell",
+    "seed": 3,
+    "cellSize": 3,
+    "jitter": 1,
+    "warp": 1,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     }
+    ],
+    "rise": 2
+   },
+   "fill": {
+    "kind": "cell",
+    "seed": 9,
+    "cellSize": 4,
+    "jitter": 1,
+    "warp": 1,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     }
+    ],
+    "rise": 2
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 36,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "noise",
+             "seed": 21,
+             "scale": 3,
+             "octaves": 2,
+             "stops": [
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 1
+              },
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 2
+              },
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 2
+              },
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 1
+              }
+             ]
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 14,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "seed": 5,
+             "cellSize": 2,
+             "jitter": 1,
+             "warp": 1,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 1
+              }
+             ],
+             "rise": 0
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 40,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "seed": 3,
+             "cellSize": 3,
+             "jitter": 1,
+             "warp": 1,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 5
+              },
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 4,
+               "data": 0
+              }
+             ],
+             "rise": 0
+            },
+            "thickness": 3
+           }
+          ]
+         }
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "ruin": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "cell",
+    "seed": 33,
+    "cellSize": 2,
+    "jitter": 1,
+    "warp": 1,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     {
+      "kind": "solid",
+      "id": 98,
+      "data": 1
+     },
+     {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    ],
+    "rise": 2
+   },
+   "fill": {
+    "kind": "cell",
+    "seed": 35,
+    "cellSize": 3,
+    "jitter": 1,
+    "warp": 1,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    ],
+    "rise": 2
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "cell",
+     "seed": 31,
+     "cellSize": 3,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    }
+   }
+  }
+ },
+ "mapTheme": "moor",
+ "themeById": {
+  "bog-22": "moor",
+  "bog-18": "bog"
+ },
+ "shapePropsById": {
+  "bog-22": {
+   "vertices": [
+    [
+     -136,
+     -40
+    ],
+    [
+     -124,
+     -50
+    ],
+    [
+     -104,
+     -51
+    ],
+    [
+     -84,
+     -48
+    ],
+    [
+     -62,
+     -50
+    ],
+    [
+     -46,
+     -48
+    ],
+    [
+     -36,
+     -46
+    ],
+    [
+     -36,
+     46
+    ],
+    [
+     -48,
+     50
+    ],
+    [
+     -68,
+     49
+    ],
+    [
+     -90,
+     51
+    ],
+    [
+     -110,
+     49
+    ],
+    [
+     -126,
+     48
+    ],
+    [
+     -138,
+     38
+    ],
+    [
+     -142,
+     26
+    ],
+    [
+     -143,
+     8
+    ],
+    [
+     -142,
+     -10
+    ],
+    [
+     -141,
+     -26
+    ]
+   ]
+  },
+  "bog-18": {
+   "vertices": [
+    [
+     -36,
+     -46
+    ],
+    [
+     -18,
+     -42
+    ],
+    [
+     0,
+     -37
+    ],
+    [
+     18,
+     -40
+    ],
+    [
+     36,
+     -46
+    ],
+    [
+     36,
+     46
+    ],
+    [
+     18,
+     42
+    ],
+    [
+     0,
+     37
+    ],
+    [
+     -18,
+     40
+    ],
+    [
+     -36,
+     46
+    ]
+   ]
+  }
+ },
+ "bendShapes": {
+  "bog-22": {
+   "tension": 0.22,
+   "wander": 3,
+   "step": 10,
+   "seed": 5,
+   "side": "out"
+  },
+  "bog-18": {
+   "tension": 0.22,
+   "wander": 2,
+   "step": 12,
+   "seed": 9,
+   "side": "out"
+  }
+ },
+ "biome": {
+  "kind": "solid",
+  "id": 6
+ },
+ "relief": {
+  "team": {
+   "base": 22,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "bog-floor",
+     "kind": "area",
+     "h": 18,
+     "bevel": 0,
+     "ring": [
+      [
+       28.9,
+       0.0
+      ],
+      [
+       28.2,
+       7.0
+      ],
+      [
+       26.3,
+       13.5
+      ],
+      [
+       23.4,
+       19.0
+      ],
+      [
+       20.0,
+       23.6
+      ],
+      [
+       16.3,
+       27.3
+      ],
+      [
+       12.6,
+       30.6
+      ],
+      [
+       8.7,
+       33.5
+      ],
+      [
+       4.5,
+       36.1
+      ],
+      [
+       0.0,
+       38.0
+      ],
+      [
+       -4.9,
+       38.7
+      ],
+      [
+       -9.8,
+       37.9
+      ],
+      [
+       -14.4,
+       35.2
+      ],
+      [
+       -18.4,
+       30.9
+      ],
+      [
+       -21.4,
+       25.3
+      ],
+      [
+       -23.4,
+       19.0
+      ],
+      [
+       -24.5,
+       12.5
+      ],
+      [
+       -25.0,
+       6.2
+      ],
+      [
+       -25.1,
+       0.0
+      ],
+      [
+       -25.0,
+       -6.2
+      ],
+      [
+       -24.5,
+       -12.5
+      ],
+      [
+       -23.4,
+       -19.0
+      ],
+      [
+       -21.4,
+       -25.3
+      ],
+      [
+       -18.4,
+       -30.9
+      ],
+      [
+       -14.4,
+       -35.2
+      ],
+      [
+       -9.8,
+       -37.9
+      ],
+      [
+       -4.9,
+       -38.7
+      ],
+      [
+       -0.0,
+       -38.0
+      ],
+      [
+       4.5,
+       -36.1
+      ],
+      [
+       8.7,
+       -33.5
+      ],
+      [
+       12.6,
+       -30.6
+      ],
+      [
+       16.3,
+       -27.3
+      ],
+      [
+       20.0,
+       -23.6
+      ],
+      [
+       23.4,
+       -19.0
+      ],
+      [
+       26.3,
+       -13.5
+      ],
+      [
+       28.2,
+       -7.0
+      ]
+     ]
+    },
+    {
+     "id": "spawn-pad",
+     "kind": "area",
+     "h": 22,
+     "bevel": 0,
+     "ring": [
+      [
+       -128,
+       -12
+      ],
+      [
+       -100,
+       -12
+      ],
+      [
+       -100,
+       20
+      ],
+      [
+       -128,
+       20
+      ]
+     ]
+    },
+    {
+     "id": "village-hollow",
+     "kind": "area",
+     "h": 20,
+     "bevel": 4,
+     "ring": [
+      [
+       -41.1,
+       26.0
+      ],
+      [
+       -41.9,
+       29.0
+      ],
+      [
+       -43.8,
+       31.6
+      ],
+      [
+       -46.4,
+       33.6
+      ],
+      [
+       -48.8,
+       35.3
+      ],
+      [
+       -50.9,
+       37.1
+      ],
+      [
+       -53.0,
+       39.2
+      ],
+      [
+       -55.4,
+       41.3
+      ],
+      [
+       -58.4,
+       43.0
+      ],
+      [
+       -62.0,
+       43.6
+      ],
+      [
+       -65.6,
+       43.0
+      ],
+      [
+       -68.6,
+       41.3
+      ],
+      [
+       -71.0,
+       39.2
+      ],
+      [
+       -73.1,
+       37.1
+      ],
+      [
+       -75.2,
+       35.3
+      ],
+      [
+       -77.6,
+       33.6
+      ],
+      [
+       -80.2,
+       31.6
+      ],
+      [
+       -82.1,
+       29.0
+      ],
+      [
+       -82.9,
+       26.0
+      ],
+      [
+       -82.1,
+       23.0
+      ],
+      [
+       -80.2,
+       20.4
+      ],
+      [
+       -77.6,
+       18.4
+      ],
+      [
+       -75.2,
+       16.7
+      ],
+      [
+       -73.1,
+       14.9
+      ],
+      [
+       -71.0,
+       12.8
+      ],
+      [
+       -68.6,
+       10.7
+      ],
+      [
+       -65.6,
+       9.0
+      ],
+      [
+       -62.0,
+       8.4
+      ],
+      [
+       -58.4,
+       9.0
+      ],
+      [
+       -55.4,
+       10.7
+      ],
+      [
+       -53.0,
+       12.8
+      ],
+      [
+       -50.9,
+       14.9
+      ],
+      [
+       -48.8,
+       16.7
+      ],
+      [
+       -46.4,
+       18.4
+      ],
+      [
+       -43.8,
+       20.4
+      ],
+      [
+       -41.9,
+       23.0
+      ]
+     ]
+    },
+    {
+     "id": "causeway-village",
+     "kind": "line",
+     "points": [
+      [
+       -46,
+       34
+      ],
+      [
+       -36,
+       26
+      ],
+      [
+       -26,
+       16
+      ],
+      [
+       -14,
+       8
+      ],
+      [
+       -4,
+       2
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     "h": 20,
+     "r": 4,
+     "tread": 2
+    },
+    {
+     "id": "causeway-abbey",
+     "kind": "line",
+     "points": [
+      [
+       -54,
+       -28
+      ],
+      [
+       -46,
+       -20
+      ],
+      [
+       -38,
+       -14
+      ],
+      [
+       -24,
+       -8
+      ],
+      [
+       -12,
+       -3
+      ],
+      [
+       0,
+       0
+      ]
+     ],
+     "h": 20,
+     "r": 4,
+     "tread": 2
+    },
+    {
+     "id": "hummock-a",
+     "kind": "area",
+     "h": 20,
+     "bevel": 2,
+     "ring": [
+      [
+       -8.0,
+       -28.0
+      ],
+      [
+       -8.2,
+       -27.0
+      ],
+      [
+       -8.9,
+       -26.2
+      ],
+      [
+       -9.9,
+       -25.5
+      ],
+      [
+       -11.0,
+       -25.0
+      ],
+      [
+       -12.1,
+       -24.7
+      ],
+      [
+       -13.0,
+       -24.3
+      ],
+      [
+       -13.9,
+       -23.9
+      ],
+      [
+       -14.9,
+       -23.4
+      ],
+      [
+       -16.0,
+       -23.0
+      ],
+      [
+       -17.3,
+       -22.7
+      ],
+      [
+       -18.7,
+       -22.7
+      ],
+      [
+       -20.0,
+       -23.0
+      ],
+      [
+       -21.1,
+       -23.7
+      ],
+      [
+       -21.8,
+       -24.5
+      ],
+      [
+       -22.1,
+       -25.5
+      ],
+      [
+       -22.1,
+       -26.4
+      ],
+      [
+       -22.0,
+       -27.2
+      ],
+      [
+       -21.9,
+       -28.0
+      ],
+      [
+       -22.0,
+       -28.8
+      ],
+      [
+       -22.1,
+       -29.6
+      ],
+      [
+       -22.1,
+       -30.5
+      ],
+      [
+       -21.8,
+       -31.5
+      ],
+      [
+       -21.1,
+       -32.3
+      ],
+      [
+       -20.0,
+       -33.0
+      ],
+      [
+       -18.7,
+       -33.3
+      ],
+      [
+       -17.3,
+       -33.3
+      ],
+      [
+       -16.0,
+       -33.0
+      ],
+      [
+       -14.9,
+       -32.6
+      ],
+      [
+       -13.9,
+       -32.1
+      ],
+      [
+       -13.0,
+       -31.7
+      ],
+      [
+       -12.1,
+       -31.3
+      ],
+      [
+       -11.0,
+       -31.0
+      ],
+      [
+       -9.9,
+       -30.5
+      ],
+      [
+       -8.9,
+       -29.8
+      ],
+      [
+       -8.2,
+       -29.0
+      ]
+     ]
+    },
+    {
+     "id": "hummock-b",
+     "kind": "area",
+     "h": 20,
+     "bevel": 2,
+     "ring": [
+      [
+       -7.5,
+       26.0
+      ],
+      [
+       -8.0,
+       26.9
+      ],
+      [
+       -8.7,
+       27.6
+      ],
+      [
+       -9.5,
+       28.2
+      ],
+      [
+       -10.1,
+       28.7
+      ],
+      [
+       -10.7,
+       29.3
+      ],
+      [
+       -11.2,
+       30.0
+      ],
+      [
+       -12.0,
+       30.7
+      ],
+      [
+       -12.9,
+       31.3
+      ],
+      [
+       -14.0,
+       31.6
+      ],
+      [
+       -15.2,
+       31.7
+      ],
+      [
+       -16.3,
+       31.3
+      ],
+      [
+       -17.2,
+       30.7
+      ],
+      [
+       -17.9,
+       29.9
+      ],
+      [
+       -18.3,
+       29.0
+      ],
+      [
+       -18.5,
+       28.2
+      ],
+      [
+       -18.8,
+       27.5
+      ],
+      [
+       -19.1,
+       26.8
+      ],
+      [
+       -19.5,
+       26.0
+      ],
+      [
+       -19.9,
+       25.1
+      ],
+      [
+       -20.0,
+       24.2
+      ],
+      [
+       -19.9,
+       23.2
+      ],
+      [
+       -19.3,
+       22.3
+      ],
+      [
+       -18.4,
+       21.7
+      ],
+      [
+       -17.2,
+       21.3
+      ],
+      [
+       -16.1,
+       21.3
+      ],
+      [
+       -15.0,
+       21.4
+      ],
+      [
+       -14.0,
+       21.6
+      ],
+      [
+       -13.1,
+       21.8
+      ],
+      [
+       -12.2,
+       21.9
+      ],
+      [
+       -11.2,
+       22.0
+      ],
+      [
+       -10.2,
+       22.2
+      ],
+      [
+       -9.1,
+       22.6
+      ],
+      [
+       -8.1,
+       23.2
+      ],
+      [
+       -7.5,
+       24.0
+      ],
+      [
+       -7.3,
+       25.0
+      ]
+     ]
+    },
+    {
+     "id": "hummock-c",
+     "kind": "area",
+     "h": 20,
+     "bevel": 1,
+     "ring": [
+      [
+       -1.8,
+       -16.0
+      ],
+      [
+       -2.1,
+       -15.5
+      ],
+      [
+       -2.4,
+       -15.0
+      ],
+      [
+       -2.6,
+       -14.5
+      ],
+      [
+       -2.9,
+       -13.9
+      ],
+      [
+       -3.1,
+       -13.4
+      ],
+      [
+       -3.6,
+       -12.8
+      ],
+      [
+       -4.3,
+       -12.3
+      ],
+      [
+       -5.1,
+       -12.0
+      ],
+      [
+       -6.0,
+       -12.0
+      ],
+      [
+       -6.8,
+       -12.3
+      ],
+      [
+       -7.6,
+       -12.7
+      ],
+      [
+       -8.1,
+       -13.2
+      ],
+      [
+       -8.5,
+       -13.6
+      ],
+      [
+       -8.9,
+       -14.1
+      ],
+      [
+       -9.4,
+       -14.5
+      ],
+      [
+       -9.9,
+       -14.9
+      ],
+      [
+       -10.4,
+       -15.4
+      ],
+      [
+       -10.8,
+       -16.0
+      ],
+      [
+       -11.0,
+       -16.7
+      ],
+      [
+       -10.9,
+       -17.4
+      ],
+      [
+       -10.4,
+       -18.0
+      ],
+      [
+       -9.7,
+       -18.4
+      ],
+      [
+       -8.9,
+       -18.7
+      ],
+      [
+       -8.1,
+       -18.8
+      ],
+      [
+       -7.4,
+       -18.9
+      ],
+      [
+       -6.7,
+       -18.9
+      ],
+      [
+       -6.0,
+       -19.0
+      ],
+      [
+       -5.3,
+       -19.1
+      ],
+      [
+       -4.5,
+       -19.2
+      ],
+      [
+       -3.6,
+       -19.2
+      ],
+      [
+       -2.8,
+       -19.0
+      ],
+      [
+       -2.0,
+       -18.6
+      ],
+      [
+       -1.6,
+       -18.0
+      ],
+      [
+       -1.4,
+       -17.3
+      ],
+      [
+       -1.5,
+       -16.6
+      ]
+     ]
+    }
+   ],
+   "pushes": [
+    {
+     "id": "abbey-hill",
+     "ring": [
+      [
+       -66.6,
+       -28.0
+      ],
+      [
+       -67.4,
+       -25.7
+      ],
+      [
+       -69.5,
+       -23.8
+      ],
+      [
+       -72.0,
+       -22.5
+      ],
+      [
+       -74.2,
+       -21.4
+      ],
+      [
+       -75.8,
+       -20.2
+      ],
+      [
+       -77.1,
+       -18.4
+      ],
+      [
+       -78.7,
+       -16.4
+      ],
+      [
+       -81.1,
+       -14.7
+      ],
+      [
+       -84.0,
+       -14.1
+      ],
+      [
+       -86.9,
+       -14.7
+      ],
+      [
+       -89.3,
+       -16.4
+      ],
+      [
+       -90.9,
+       -18.4
+      ],
+      [
+       -92.2,
+       -20.2
+      ],
+      [
+       -93.8,
+       -21.4
+      ],
+      [
+       -96.0,
+       -22.5
+      ],
+      [
+       -98.5,
+       -23.8
+      ],
+      [
+       -100.6,
+       -25.7
+      ],
+      [
+       -101.4,
+       -28.0
+      ],
+      [
+       -100.6,
+       -30.3
+      ],
+      [
+       -98.5,
+       -32.2
+      ],
+      [
+       -96.0,
+       -33.5
+      ],
+      [
+       -93.8,
+       -34.6
+      ],
+      [
+       -92.2,
+       -35.8
+      ],
+      [
+       -90.9,
+       -37.6
+      ],
+      [
+       -89.3,
+       -39.6
+      ],
+      [
+       -86.9,
+       -41.3
+      ],
+      [
+       -84.0,
+       -41.9
+      ],
+      [
+       -81.1,
+       -41.3
+      ],
+      [
+       -78.7,
+       -39.6
+      ],
+      [
+       -77.1,
+       -37.6
+      ],
+      [
+       -75.8,
+       -35.8
+      ],
+      [
+       -74.2,
+       -34.6
+      ],
+      [
+       -72.0,
+       -33.5
+      ],
+      [
+       -69.5,
+       -32.2
+      ],
+      [
+       -67.4,
+       -30.3
+      ]
+     ],
+     "amount": 13,
+     "falloff": 26,
+     "crown": 4,
+     "roughness": 1,
+     "seed": 4
+    },
+    {
+     "id": "spawn-ridge",
+     "ring": [
+      [
+       -124.8,
+       2.0
+      ],
+      [
+       -125.1,
+       4.0
+      ],
+      [
+       -125.9,
+       5.7
+      ],
+      [
+       -127.1,
+       7.0
+      ],
+      [
+       -128.3,
+       7.9
+      ],
+      [
+       -129.5,
+       8.7
+      ],
+      [
+       -130.6,
+       9.4
+      ],
+      [
+       -131.6,
+       10.2
+      ],
+      [
+       -132.7,
+       11.1
+      ],
+      [
+       -134.0,
+       12.0
+      ],
+      [
+       -135.5,
+       12.6
+      ],
+      [
+       -137.1,
+       12.6
+      ],
+      [
+       -138.6,
+       12.0
+      ],
+      [
+       -139.8,
+       10.7
+      ],
+      [
+       -140.6,
+       8.9
+      ],
+      [
+       -140.9,
+       7.0
+      ],
+      [
+       -141.0,
+       5.2
+      ],
+      [
+       -140.9,
+       3.5
+      ],
+      [
+       -140.8,
+       2.0
+      ],
+      [
+       -140.9,
+       0.5
+      ],
+      [
+       -141.0,
+       -1.2
+      ],
+      [
+       -140.9,
+       -3.0
+      ],
+      [
+       -140.6,
+       -4.9
+      ],
+      [
+       -139.8,
+       -6.7
+      ],
+      [
+       -138.6,
+       -8.0
+      ],
+      [
+       -137.1,
+       -8.6
+      ],
+      [
+       -135.5,
+       -8.6
+      ],
+      [
+       -134.0,
+       -8.0
+      ],
+      [
+       -132.7,
+       -7.1
+      ],
+      [
+       -131.6,
+       -6.2
+      ],
+      [
+       -130.6,
+       -5.4
+      ],
+      [
+       -129.5,
+       -4.7
+      ],
+      [
+       -128.3,
+       -3.9
+      ],
+      [
+       -127.1,
+       -3.0
+      ],
+      [
+       -125.9,
+       -1.7
+      ],
+      [
+       -125.1,
+       0.0
+      ]
+     ],
+     "amount": 7,
+     "falloff": 12,
+     "crown": 3,
+     "roughness": 1,
+     "seed": 6
+    },
+    {
+     "id": "tor",
+     "ring": [
+      [
+       -42.8,
+       -44.0
+      ],
+      [
+       -43.1,
+       -43.0
+      ],
+      [
+       -43.8,
+       -42.1
+      ],
+      [
+       -44.8,
+       -41.5
+      ],
+      [
+       -45.9,
+       -41.1
+      ],
+      [
+       -46.8,
+       -40.8
+      ],
+      [
+       -47.6,
+       -40.5
+      ],
+      [
+       -48.3,
+       -40.1
+      ],
+      [
+       -49.1,
+       -39.6
+      ],
+      [
+       -50.0,
+       -39.0
+      ],
+      [
+       -51.1,
+       -38.6
+      ],
+      [
+       -52.4,
+       -38.5
+      ],
+      [
+       -53.6,
+       -38.8
+      ],
+      [
+       -54.5,
+       -39.5
+      ],
+      [
+       -55.1,
+       -40.5
+      ],
+      [
+       -55.2,
+       -41.5
+      ],
+      [
+       -55.1,
+       -42.5
+      ],
+      [
+       -54.9,
+       -43.3
+      ],
+      [
+       -54.8,
+       -44.0
+      ],
+      [
+       -54.9,
+       -44.7
+      ],
+      [
+       -55.1,
+       -45.5
+      ],
+      [
+       -55.2,
+       -46.5
+      ],
+      [
+       -55.1,
+       -47.5
+      ],
+      [
+       -54.5,
+       -48.5
+      ],
+      [
+       -53.6,
+       -49.2
+      ],
+      [
+       -52.4,
+       -49.5
+      ],
+      [
+       -51.1,
+       -49.4
+      ],
+      [
+       -50.0,
+       -49.0
+      ],
+      [
+       -49.1,
+       -48.4
+      ],
+      [
+       -48.3,
+       -47.9
+      ],
+      [
+       -47.6,
+       -47.5
+      ],
+      [
+       -46.8,
+       -47.2
+      ],
+      [
+       -45.9,
+       -46.9
+      ],
+      [
+       -44.8,
+       -46.5
+      ],
+      [
+       -43.8,
+       -45.9
+      ],
+      [
+       -43.1,
+       -45.0
+      ]
+     ],
+     "amount": 9,
+     "falloff": 12,
+     "crown": 4,
+     "roughness": 1,
+     "seed": 8
+    },
+    {
+     "id": "swell-south",
+     "ring": [
+      [
+       -98.0,
+       40.0
+      ],
+      [
+       -98.4,
+       41.6
+      ],
+      [
+       -99.7,
+       43.0
+      ],
+      [
+       -101.3,
+       44.0
+      ],
+      [
+       -103.1,
+       44.6
+      ],
+      [
+       -104.7,
+       45.1
+      ],
+      [
+       -106.0,
+       45.5
+      ],
+      [
+       -107.2,
+       46.2
+      ],
+      [
+       -108.4,
+       47.1
+      ],
+      [
+       -110.0,
+       48.0
+      ],
+      [
+       -111.9,
+       48.7
+      ],
+      [
+       -114.0,
+       48.8
+      ],
+      [
+       -116.0,
+       48.3
+      ],
+      [
+       -117.5,
+       47.2
+      ],
+      [
+       -118.4,
+       45.7
+      ],
+      [
+       -118.7,
+       44.0
+      ],
+      [
+       -118.5,
+       42.5
+      ],
+      [
+       -118.1,
+       41.1
+      ],
+      [
+       -118.0,
+       40.0
+      ],
+      [
+       -118.1,
+       38.9
+      ],
+      [
+       -118.5,
+       37.5
+      ],
+      [
+       -118.7,
+       36.0
+      ],
+      [
+       -118.4,
+       34.3
+      ],
+      [
+       -117.5,
+       32.8
+      ],
+      [
+       -116.0,
+       31.7
+      ],
+      [
+       -114.0,
+       31.2
+      ],
+      [
+       -111.9,
+       31.3
+      ],
+      [
+       -110.0,
+       32.0
+      ],
+      [
+       -108.4,
+       32.9
+      ],
+      [
+       -107.2,
+       33.8
+      ],
+      [
+       -106.0,
+       34.5
+      ],
+      [
+       -104.7,
+       34.9
+      ],
+      [
+       -103.1,
+       35.4
+      ],
+      [
+       -101.3,
+       36.0
+      ],
+      [
+       -99.7,
+       37.0
+      ],
+      [
+       -98.4,
+       38.4
+      ]
+     ],
+     "amount": 3,
+     "falloff": 16,
+     "crown": 0,
+     "roughness": 0,
+     "seed": 12
+    },
+    {
+     "id": "swell-north",
+     "ring": [
+      [
+       -106.0,
+       -42.0
+      ],
+      [
+       -106.4,
+       -40.4
+      ],
+      [
+       -107.7,
+       -39.0
+      ],
+      [
+       -109.3,
+       -38.0
+      ],
+      [
+       -111.1,
+       -37.4
+      ],
+      [
+       -112.7,
+       -36.9
+      ],
+      [
+       -114.0,
+       -36.5
+      ],
+      [
+       -115.2,
+       -35.8
+      ],
+      [
+       -116.4,
+       -34.9
+      ],
+      [
+       -118.0,
+       -34.0
+      ],
+      [
+       -119.9,
+       -33.3
+      ],
+      [
+       -122.0,
+       -33.2
+      ],
+      [
+       -124.0,
+       -33.7
+      ],
+      [
+       -125.5,
+       -34.8
+      ],
+      [
+       -126.4,
+       -36.3
+      ],
+      [
+       -126.7,
+       -38.0
+      ],
+      [
+       -126.5,
+       -39.5
+      ],
+      [
+       -126.1,
+       -40.9
+      ],
+      [
+       -126.0,
+       -42.0
+      ],
+      [
+       -126.1,
+       -43.1
+      ],
+      [
+       -126.5,
+       -44.5
+      ],
+      [
+       -126.7,
+       -46.0
+      ],
+      [
+       -126.4,
+       -47.7
+      ],
+      [
+       -125.5,
+       -49.2
+      ],
+      [
+       -124.0,
+       -50.3
+      ],
+      [
+       -122.0,
+       -50.8
+      ],
+      [
+       -119.9,
+       -50.7
+      ],
+      [
+       -118.0,
+       -50.0
+      ],
+      [
+       -116.4,
+       -49.1
+      ],
+      [
+       -115.2,
+       -48.2
+      ],
+      [
+       -114.0,
+       -47.5
+      ],
+      [
+       -112.7,
+       -47.1
+      ],
+      [
+       -111.1,
+       -46.6
+      ],
+      [
+       -109.3,
+       -46.0
+      ],
+      [
+       -107.7,
+       -45.0
+      ],
+      [
+       -106.4,
+       -43.6
+      ]
+     ],
+     "amount": 3,
+     "falloff": 16,
+     "crown": 0,
+     "roughness": 0,
+     "seed": 13
+    }
+   ],
+   "grain": {
+    "amplitude": 1.2,
+    "scale": 9,
+    "seed": 17
+   }
+  }
+ },
+ "addLayers": [
+  {
+   "id": "crypt",
+   "name": "Crypt",
+   "base_y": 0,
+   "below": true,
+   "shapes": [
+    {
+     "id": "crypt-floor",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 27,
+     "theme": "ruin",
+     "min_x": -98,
+     "min_z": -35,
+     "max_x": -82,
+     "max_z": -24
+    },
+    {
+     "id": "lane-floor",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 27,
+     "theme": "ruin",
+     "min_x": -82,
+     "min_z": -30,
+     "max_x": -54,
+     "max_z": -27
+    },
+    {
+     "id": "crypt-pillar-0",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 32,
+     "theme": "ruin",
+     "min_x": -94,
+     "min_z": -32,
+     "max_x": -93,
+     "max_z": -31
+    },
+    {
+     "id": "crypt-pillar-1",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 32,
+     "theme": "ruin",
+     "min_x": -94,
+     "min_z": -27,
+     "max_x": -93,
+     "max_z": -26
+    },
+    {
+     "id": "crypt-pillar-2",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 32,
+     "theme": "ruin",
+     "min_x": -88,
+     "min_z": -32,
+     "max_x": -87,
+     "max_z": -31
+    },
+    {
+     "id": "crypt-pillar-3",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 32,
+     "theme": "ruin",
+     "min_x": -88,
+     "min_z": -27,
+     "max_x": -87,
+     "max_z": -26
+    },
+    {
+     "id": "tomb-0",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 28,
+     "theme": "ruin",
+     "min_x": -97,
+     "min_z": -34,
+     "max_x": -93,
+     "max_z": -33
+    },
+    {
+     "id": "tomb-1",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 28,
+     "theme": "ruin",
+     "min_x": -97,
+     "min_z": -25,
+     "max_x": -93,
+     "max_z": -24
+    },
+    {
+     "id": "step-1",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 28,
+     "theme": "ruin",
+     "min_x": -82,
+     "min_z": -35,
+     "max_x": -80,
+     "max_z": -32
+    },
+    {
+     "id": "step-2",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 29,
+     "theme": "ruin",
+     "min_x": -80,
+     "min_z": -35,
+     "max_x": -78,
+     "max_z": -32
+    },
+    {
+     "id": "step-3",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 30,
+     "theme": "ruin",
+     "min_x": -78,
+     "min_z": -35,
+     "max_x": -76,
+     "max_z": -32
+    },
+    {
+     "id": "step-4",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 31,
+     "theme": "ruin",
+     "min_x": -76,
+     "min_z": -35,
+     "max_x": -74,
+     "max_z": -32
+    },
+    {
+     "id": "step-5",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 32,
+     "theme": "ruin",
+     "min_x": -74,
+     "min_z": -35,
+     "max_x": -72,
+     "max_z": -32
+    },
+    {
+     "id": "step-6",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 33,
+     "theme": "ruin",
+     "min_x": -72,
+     "min_z": -35,
+     "max_x": -70,
+     "max_z": -32
+    },
+    {
+     "id": "step-7",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 34,
+     "theme": "ruin",
+     "min_x": -70,
+     "min_z": -35,
+     "max_x": -68,
+     "max_z": -32
+    },
+    {
+     "id": "step-8",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 35,
+     "theme": "ruin",
+     "min_x": -68,
+     "min_z": -35,
+     "max_x": -66,
+     "max_z": -32
+    },
+    {
+     "id": "step-9",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 36,
+     "theme": "ruin",
+     "min_x": -66,
+     "min_z": -35,
+     "max_x": -64,
+     "max_z": -32
+    }
+   ],
+   "groups": [
+    {
+     "id": "crypt",
+     "name": "crypt",
+     "mirrors": true,
+     "shapeIds": [
+      "crypt-floor",
+      "lane-floor",
+      "crypt-pillar-0",
+      "crypt-pillar-1",
+      "crypt-pillar-2",
+      "crypt-pillar-3",
+      "tomb-0",
+      "tomb-1",
+      "step-1",
+      "step-2",
+      "step-3",
+      "step-4",
+      "step-5",
+      "step-6",
+      "step-7",
+      "step-8",
+      "step-9"
+     ]
+    }
+   ]
+  }
+ ],
+ "addShapes": [
+  {
+   "id": "nave-floor-w",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 35,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -104,
+   "min_z": -36,
+   "max_x": -82,
+   "max_z": -22,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "nave-floor-e",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 35,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -82,
+   "min_z": -32,
+   "max_x": -68,
+   "max_z": -22,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "nave-floor-nstrip",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 35,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -82,
+   "min_z": -36,
+   "max_x": -68,
+   "max_z": -35,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "nave-n-nw1",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 38,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -104,
+   "min_z": -38,
+   "max_x": -94,
+   "max_z": -36,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "nave-n-nw2",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 40,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -90,
+   "min_z": -38,
+   "max_x": -80,
+   "max_z": -36,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "nave-n-nw3",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 37,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -76,
+   "min_z": -38,
+   "max_x": -66,
+   "max_z": -36,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "nave-s-sw1",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 39,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -100,
+   "min_z": -22,
+   "max_x": -94,
+   "max_z": -20,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "nave-s-sw2",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 37,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -92,
+   "min_z": -22,
+   "max_x": -84,
+   "max_z": -20,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "nave-s-sw3",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 40,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -80,
+   "min_z": -22,
+   "max_x": -70,
+   "max_z": -20,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "gable-w",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 42,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -106,
+   "min_z": -38,
+   "max_x": -104,
+   "max_z": -20,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "tower-stump",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 45,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -106,
+   "min_z": -26,
+   "max_x": -100,
+   "max_z": -20,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "pier-n0",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 32,
+   "base_height": 5,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -96,
+   "min_z": -33,
+   "max_x": -95,
+   "max_z": -32,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "pier-s0",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 32,
+   "base_height": 8,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -96,
+   "min_z": -26,
+   "max_x": -95,
+   "max_z": -25,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "pier-n1",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 32,
+   "base_height": 7,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -90,
+   "min_z": -33,
+   "max_x": -89,
+   "max_z": -32,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "pier-s1",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 32,
+   "base_height": 6,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -90,
+   "min_z": -26,
+   "max_x": -89,
+   "max_z": -25,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "pier-n2",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 32,
+   "base_height": 5,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -84,
+   "min_z": -33,
+   "max_x": -83,
+   "max_z": -32,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "pier-s2",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 32,
+   "base_height": 8,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -84,
+   "min_z": -26,
+   "max_x": -83,
+   "max_z": -25,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "crypt-roof",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 32,
+   "base_height": 3,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -98,
+   "min_z": -35,
+   "max_x": -82,
+   "max_z": -24,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "lane-roof",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 32,
+   "base_height": 3,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -82,
+   "min_z": -30,
+   "max_x": -68,
+   "max_z": -27,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "stair-well",
+   "type": "rectangle",
+   "operation": "subtract",
+   "floor": 0,
+   "min_x": -82,
+   "min_z": -35,
+   "max_x": -64,
+   "max_z": -32,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "lane-cut",
+   "type": "rectangle",
+   "operation": "subtract",
+   "floor": 0,
+   "min_x": -68,
+   "min_z": -30,
+   "max_x": -54,
+   "max_z": -27,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "stone-0",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 28,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": 13,
+   "min_z": 5,
+   "max_x": 15,
+   "max_z": 7,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "stone-1",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 30,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": 4,
+   "min_z": 13,
+   "max_x": 6,
+   "max_z": 15,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "stone-2",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 27,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -7,
+   "min_z": 13,
+   "max_x": -5,
+   "max_z": 15,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "stone-3",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 29,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -15,
+   "min_z": 4,
+   "max_x": -13,
+   "max_z": 6,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "gatestone-a",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 27,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -49,
+   "min_z": 30,
+   "max_x": -47,
+   "max_z": 32,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "gatestone-b",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 28,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -45,
+   "min_z": 36,
+   "max_x": -43,
+   "max_z": 38,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "fold-n",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 26,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -126,
+   "min_z": -38,
+   "max_x": -114,
+   "max_z": -37,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "fold-s",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 26,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -126,
+   "min_z": -30,
+   "max_x": -118,
+   "max_z": -29,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "fold-w",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 26,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -126,
+   "min_z": -38,
+   "max_x": -125,
+   "max_z": -29,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "fold-e",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 26,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -114,
+   "min_z": -38,
+   "max_x": -113,
+   "max_z": -33,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "peat-1",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 26,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "bog",
+   "min_x": -46,
+   "min_z": -46,
+   "max_x": -40,
+   "max_z": -44,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "peat-2",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 26,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "bog",
+   "min_x": -46,
+   "min_z": -43,
+   "max_x": -40,
+   "max_z": -41,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "peat-3",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 26,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "bog",
+   "min_x": -39,
+   "min_z": -46,
+   "max_x": -35,
+   "max_z": -44,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  },
+  {
+   "id": "well-rim",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 22,
+   "height_mode": "level",
+   "skirt": 0,
+   "theme": "ruin",
+   "min_x": -63,
+   "min_z": 22,
+   "max_x": -59,
+   "max_z": 24,
+   "keepClear": true,
+   "layer": "ground",
+   "group": "team"
+  }
+ ],
+ "roomStyles": {
+  "spawn": {
+   "library": "spruce-roofed-stone-longhouse"
+  }
+ },
+ "dressing": {
+  "styles": {
+   "orchard-oak": {
+    "kind": "tree",
+    "form": "copied",
+    "body": [
+     [
+      -1,
+      0,
+      0,
+      5,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      5,
+      1
+     ],
+     [
+      -1,
+      0,
+      1,
+      5,
+      1
+     ],
+     [
+      3,
+      1,
+      -1,
+      18,
+      12
+     ],
+     [
+      0,
+      1,
+      0,
+      17,
+      12
+     ],
+     [
+      1,
+      2,
+      -3,
+      18,
+      12
+     ],
+     [
+      3,
+      2,
+      -3,
+      18,
+      12
+     ],
+     [
+      0,
+      2,
+      -1,
+      17,
+      12
+     ],
+     [
+      1,
+      2,
+      -1,
+      17,
+      12
+     ],
+     [
+      4,
+      2,
+      -1,
+      18,
+      12
+     ],
+     [
+      0,
+      2,
+      0,
+      17,
+      12
+     ],
+     [
+      2,
+      2,
+      0,
+      18,
+      12
+     ],
+     [
+      5,
+      2,
+      0,
+      18,
+      12
+     ],
+     [
+      4,
+      2,
+      1,
+      18,
+      12
+     ],
+     [
+      1,
+      3,
+      -4,
+      18,
+      12
+     ],
+     [
+      2,
+      3,
+      -4,
+      18,
+      4
+     ],
+     [
+      -1,
+      3,
+      -3,
+      18,
+      12
+     ],
+     [
+      1,
+      3,
+      -3,
+      18,
+      12
+     ],
+     [
+      0,
+      3,
+      -2,
+      18,
+      12
+     ],
+     [
+      3,
+      3,
+      -2,
+      18,
+      12
+     ],
+     [
+      5,
+      3,
+      -2,
+      18,
+      12
+     ],
+     [
+      -2,
+      3,
+      -1,
+      18,
+      12
+     ],
+     [
+      1,
+      3,
+      -1,
+      17,
+      12
+     ],
+     [
+      5,
+      3,
+      -1,
+      18,
+      12
+     ],
+     [
+      -1,
+      3,
+      0,
+      18,
+      12
+     ],
+     [
+      4,
+      3,
+      0,
+      18,
+      12
+     ],
+     [
+      1,
+      3,
+      1,
+      18,
+      12
+     ],
+     [
+      3,
+      3,
+      1,
+      18,
+      12
+     ],
+     [
+      4,
+      3,
+      2,
+      18,
+      12
+     ],
+     [
+      2,
+      3,
+      3,
+      18,
+      12
+     ],
+     [
+      -2,
+      4,
+      -4,
+      18,
+      12
+     ],
+     [
+      0,
+      4,
+      -4,
+      18,
+      12
+     ],
+     [
+      -3,
+      4,
+      -3,
+      18,
+      12
+     ],
+     [
+      2,
+      4,
+      -3,
+      18,
+      12
+     ],
+     [
+      4,
+      4,
+      -3,
+      18,
+      12
+     ],
+     [
+      -2,
+      4,
+      -2,
+      18,
+      12
+     ],
+     [
+      3,
+      4,
+      -2,
+      18,
+      12
+     ],
+     [
+      -1,
+      4,
+      -1,
+      18,
+      12
+     ],
+     [
+      1,
+      4,
+      -1,
+      17,
+      12
+     ],
+     [
+      2,
+      4,
+      -1,
+      17,
+      12
+     ],
+     [
+      3,
+      4,
+      -1,
+      17,
+      12
+     ],
+     [
+      4,
+      4,
+      -1,
+      18,
+      12
+     ],
+     [
+      -2,
+      4,
+      0,
+      18,
+      12
+     ],
+     [
+      0,
+      4,
+      0,
+      18,
+      12
+     ],
+     [
+      2,
+      4,
+      0,
+      18,
+      12
+     ],
+     [
+      5,
+      4,
+      0,
+      18,
+      12
+     ],
+     [
+      -1,
+      4,
+      1,
+      18,
+      12
+     ],
+     [
+      0,
+      4,
+      2,
+      18,
+      12
+     ],
+     [
+      2,
+      4,
+      2,
+      18,
+      12
+     ],
+     [
+      4,
+      4,
+      2,
+      18,
+      12
+     ],
+     [
+      3,
+      4,
+      3,
+      18,
+      12
+     ],
+     [
+      -1,
+      5,
+      -5,
+      18,
+      12
+     ],
+     [
+      -1,
+      5,
+      -4,
+      18,
+      12
+     ],
+     [
+      0,
+      5,
+      -4,
+      18,
+      12
+     ],
+     [
+      -1,
+      5,
+      -3,
+      18,
+      12
+     ],
+     [
+      0,
+      5,
+      -3,
+      17,
+      12
+     ],
+     [
+      1,
+      5,
+      -3,
+      18,
+      12
+     ],
+     [
+      -3,
+      5,
+      -2,
+      18,
+      12
+     ],
+     [
+      -1,
+      5,
+      -2,
+      17,
+      12
+     ],
+     [
+      0,
+      5,
+      -2,
+      17,
+      12
+     ],
+     [
+      2,
+      5,
+      -2,
+      18,
+      12
+     ],
+     [
+      4,
+      5,
+      -2,
+      18,
+      12
+     ],
+     [
+      -2,
+      5,
+      -1,
+      18,
+      12
+     ],
+     [
+      3,
+      5,
+      -1,
+      18,
+      12
+     ],
+     [
+      -1,
+      5,
+      0,
+      18,
+      12
+     ],
+     [
+      1,
+      5,
+      0,
+      17,
+      12
+     ],
+     [
+      0,
+      5,
+      1,
+      18,
+      12
+     ],
+     [
+      1,
+      5,
+      1,
+      18,
+      12
+     ],
+     [
+      4,
+      5,
+      1,
+      18,
+      12
+     ],
+     [
+      -1,
+      5,
+      2,
+      18,
+      12
+     ],
+     [
+      1,
+      5,
+      2,
+      18,
+      4
+     ],
+     [
+      3,
+      5,
+      2,
+      18,
+      12
+     ],
+     [
+      -2,
+      6,
+      -4,
+      18,
+      12
+     ],
+     [
+      1,
+      6,
+      -4,
+      18,
+      12
+     ],
+     [
+      -2,
+      6,
+      -3,
+      18,
+      12
+     ],
+     [
+      -1,
+      6,
+      -2,
+      18,
+      12
+     ],
+     [
+      0,
+      6,
+      -2,
+      18,
+      12
+     ],
+     [
+      -1,
+      6,
+      -1,
+      18,
+      4
+     ],
+     [
+      0,
+      6,
+      -1,
+      18,
+      12
+     ],
+     [
+      2,
+      6,
+      -1,
+      18,
+      12
+     ],
+     [
+      -2,
+      6,
+      0,
+      18,
+      12
+     ],
+     [
+      3,
+      6,
+      0,
+      18,
+      12
+     ],
+     [
+      1,
+      6,
+      1,
+      18,
+      12
+     ],
+     [
+      2,
+      6,
+      1,
+      18,
+      12
+     ],
+     [
+      0,
+      7,
+      -3,
+      18,
+      12
+     ],
+     [
+      1,
+      7,
+      -3,
+      18,
+      12
+     ],
+     [
+      0,
+      7,
+      -2,
+      18,
+      12
+     ],
+     [
+      1,
+      7,
+      -1,
+      18,
+      12
+     ],
+     [
+      0,
+      7,
+      0,
+      18,
+      12
+     ]
+    ],
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 8
+   },
+   "hawthorn": {
+    "kind": "tree",
+    "form": "copied",
+    "body": [
+     [
+      0,
+      0,
+      0,
+      162,
+      13
+     ],
+     [
+      1,
+      0,
+      0,
+      162,
+      13
+     ],
+     [
+      0,
+      0,
+      1,
+      162,
+      13
+     ],
+     [
+      1,
+      0,
+      1,
+      162,
+      13
+     ],
+     [
+      2,
+      0,
+      1,
+      162,
+      13
+     ],
+     [
+      5,
+      1,
+      -1,
+      161,
+      13
+     ],
+     [
+      1,
+      1,
+      0,
+      162,
+      13
+     ],
+     [
+      0,
+      1,
+      1,
+      162,
+      13
+     ],
+     [
+      1,
+      1,
+      1,
+      162,
+      13
+     ],
+     [
+      6,
+      1,
+      2,
+      161,
+      13
+     ],
+     [
+      5,
+      2,
+      -2,
+      161,
+      13
+     ],
+     [
+      4,
+      2,
+      -1,
+      126,
+      13
+     ],
+     [
+      6,
+      2,
+      -1,
+      161,
+      13
+     ],
+     [
+      4,
+      2,
+      0,
+      126,
+      5
+     ],
+     [
+      7,
+      2,
+      0,
+      161,
+      13
+     ],
+     [
+      0,
+      2,
+      1,
+      162,
+      13
+     ],
+     [
+      1,
+      2,
+      1,
+      162,
+      13
+     ],
+     [
+      2,
+      2,
+      1,
+      162,
+      13
+     ],
+     [
+      3,
+      2,
+      1,
+      162,
+      13
+     ],
+     [
+      4,
+      2,
+      1,
+      5,
+      5
+     ],
+     [
+      5,
+      2,
+      1,
+      126,
+      13
+     ],
+     [
+      6,
+      2,
+      1,
+      161,
+      13
+     ],
+     [
+      4,
+      2,
+      2,
+      161,
+      5
+     ],
+     [
+      5,
+      2,
+      2,
+      161,
+      13
+     ],
+     [
+      -1,
+      3,
+      -2,
+      161,
+      13
+     ],
+     [
+      1,
+      3,
+      -2,
+      161,
+      13
+     ],
+     [
+      4,
+      3,
+      -2,
+      161,
+      13
+     ],
+     [
+      6,
+      3,
+      -2,
+      161,
+      13
+     ],
+     [
+      5,
+      3,
+      -1,
+      161,
+      13
+     ],
+     [
+      5,
+      3,
+      0,
+      161,
+      13
+     ],
+     [
+      6,
+      3,
+      0,
+      161,
+      13
+     ],
+     [
+      1,
+      3,
+      1,
+      162,
+      13
+     ],
+     [
+      7,
+      3,
+      1,
+      161,
+      13
+     ],
+     [
+      1,
+      3,
+      2,
+      162,
+      13
+     ],
+     [
+      3,
+      3,
+      2,
+      161,
+      13
+     ],
+     [
+      4,
+      3,
+      2,
+      161,
+      13
+     ],
+     [
+      5,
+      3,
+      2,
+      161,
+      13
+     ],
+     [
+      6,
+      3,
+      2,
+      161,
+      13
+     ],
+     [
+      1,
+      3,
+      3,
+      162,
+      13
+     ],
+     [
+      3,
+      3,
+      3,
+      161,
+      13
+     ],
+     [
+      5,
+      3,
+      3,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      -3,
+      161,
+      13
+     ],
+     [
+      0,
+      4,
+      -2,
+      161,
+      13
+     ],
+     [
+      2,
+      4,
+      -2,
+      161,
+      13
+     ],
+     [
+      -1,
+      4,
+      -1,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      -1,
+      161,
+      13
+     ],
+     [
+      6,
+      4,
+      -1,
+      161,
+      13
+     ],
+     [
+      -1,
+      4,
+      0,
+      161,
+      13
+     ],
+     [
+      4,
+      4,
+      0,
+      161,
+      5
+     ],
+     [
+      5,
+      4,
+      0,
+      161,
+      13
+     ],
+     [
+      1,
+      4,
+      1,
+      162,
+      13
+     ],
+     [
+      4,
+      4,
+      1,
+      161,
+      5
+     ],
+     [
+      5,
+      4,
+      1,
+      161,
+      13
+     ],
+     [
+      4,
+      4,
+      2,
+      161,
+      13
+     ],
+     [
+      6,
+      4,
+      2,
+      161,
+      5
+     ],
+     [
+      3,
+      4,
+      3,
+      161,
+      13
+     ],
+     [
+      0,
+      5,
+      -3,
+      161,
+      13
+     ],
+     [
+      -1,
+      5,
+      -2,
+      161,
+      13
+     ],
+     [
+      1,
+      5,
+      -2,
+      161,
+      13
+     ],
+     [
+      -2,
+      5,
+      -1,
+      161,
+      5
+     ],
+     [
+      -1,
+      5,
+      -1,
+      161,
+      13
+     ],
+     [
+      0,
+      5,
+      -1,
+      161,
+      13
+     ],
+     [
+      1,
+      5,
+      -1,
+      161,
+      13
+     ],
+     [
+      0,
+      5,
+      0,
+      161,
+      13
+     ],
+     [
+      1,
+      5,
+      0,
+      126,
+      5
+     ],
+     [
+      2,
+      5,
+      0,
+      161,
+      13
+     ],
+     [
+      4,
+      5,
+      0,
+      161,
+      5
+     ],
+     [
+      -1,
+      5,
+      1,
+      161,
+      13
+     ],
+     [
+      1,
+      5,
+      1,
+      162,
+      13
+     ],
+     [
+      5,
+      5,
+      1,
+      161,
+      5
+     ],
+     [
+      2,
+      5,
+      2,
+      161,
+      13
+     ],
+     [
+      -1,
+      5,
+      3,
+      161,
+      13
+     ],
+     [
+      0,
+      6,
+      -1,
+      161,
+      5
+     ],
+     [
+      2,
+      6,
+      -1,
+      161,
+      13
+     ],
+     [
+      1,
+      6,
+      0,
+      161,
+      13
+     ],
+     [
+      -2,
+      6,
+      1,
+      161,
+      13
+     ],
+     [
+      0,
+      6,
+      1,
+      161,
+      13
+     ],
+     [
+      1,
+      6,
+      1,
+      161,
+      13
+     ],
+     [
+      2,
+      6,
+      1,
+      161,
+      5
+     ],
+     [
+      -1,
+      6,
+      2,
+      161,
+      13
+     ],
+     [
+      1,
+      6,
+      2,
+      161,
+      13
+     ],
+     [
+      0,
+      6,
+      3,
+      161,
+      13
+     ],
+     [
+      1,
+      7,
+      1,
+      161,
+      13
+     ],
+     [
+      0,
+      7,
+      2,
+      161,
+      13
+     ]
+    ],
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 8
+   },
+   "outcrop": {
+    "kind": "boulder",
+    "form": "round",
+    "size": 3,
+    "mossy": false,
+    "rock": {
+     "kind": "cell",
+     "seed": 3,
+     "cellSize": 3,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    }
+   },
+   "cottage": {
+    "library": "spruce-roofed-white-clay-cottage",
+    "kind": "house"
+   }
+  },
+  "props": [
+   {
+    "id": "spawn-street",
+    "kind": "stroke",
+    "layer": "ground",
+    "seed": 7,
+    "points": [
+     [
+      -103,
+      4
+     ],
+     [
+      -94,
+      12
+     ],
+     [
+      -86,
+      18
+     ],
+     [
+      -78,
+      19
+     ],
+     [
+      -70,
+      20
+     ],
+     [
+      -64,
+      25
+     ],
+     [
+      -60,
+      28
+     ]
+    ],
+    "radius": 2,
+    "style": "solid",
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 41,
+     "cellSize": 3,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      }
+     ],
+     "rise": 0
+    },
+    "wander": 2,
+    "wanderLength": 14
+   },
+   {
+    "id": "fold-path",
+    "kind": "stroke",
+    "layer": "ground",
+    "seed": 7,
+    "points": [
+     [
+      -110,
+      -9
+     ],
+     [
+      -112,
+      -18
+     ],
+     [
+      -114,
+      -28
+     ]
+    ],
+    "radius": 1.5,
+    "style": "solid",
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 41,
+     "cellSize": 3,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      }
+     ],
+     "rise": 0
+    },
+    "wander": 2,
+    "wanderLength": 14
+   },
+   {
+    "id": "hill-path",
+    "kind": "stroke",
+    "layer": "ground",
+    "seed": 7,
+    "points": [
+     [
+      -62,
+      22
+     ],
+     [
+      -61,
+      12
+     ],
+     [
+      -62,
+      0
+     ],
+     [
+      -66,
+      -10
+     ],
+     [
+      -68,
+      -18
+     ],
+     [
+      -66,
+      -26
+     ]
+    ],
+    "radius": 1.5,
+    "style": "solid",
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 41,
+     "cellSize": 3,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      }
+     ],
+     "rise": 0
+    },
+    "wander": 2,
+    "wanderLength": 14
+   },
+   {
+    "id": "tor-path",
+    "kind": "stroke",
+    "layer": "ground",
+    "seed": 7,
+    "points": [
+     [
+      -66,
+      -32
+     ],
+     [
+      -60,
+      -38
+     ],
+     [
+      -54,
+      -42
+     ]
+    ],
+    "radius": 1.5,
+    "style": "solid",
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 41,
+     "cellSize": 3,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      }
+     ],
+     "rise": 0
+    },
+    "wander": 2,
+    "wanderLength": 14
+   },
+   {
+    "id": "peat-path",
+    "kind": "stroke",
+    "layer": "ground",
+    "seed": 7,
+    "points": [
+     [
+      -52,
+      -42
+     ],
+     [
+      -46,
+      -38
+     ],
+     [
+      -44,
+      -32
+     ]
+    ],
+    "radius": 1.5,
+    "style": "solid",
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 41,
+     "cellSize": 3,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      }
+     ],
+     "rise": 0
+    },
+    "wander": 2,
+    "wanderLength": 14
+   },
+   {
+    "id": "causeway-village",
+    "kind": "stroke",
+    "layer": "ground",
+    "seed": 7,
+    "points": [
+     [
+      -46,
+      34
+     ],
+     [
+      -36,
+      26
+     ],
+     [
+      -26,
+      16
+     ],
+     [
+      -14,
+      8
+     ],
+     [
+      -4,
+      2
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "radius": 2,
+    "style": "solid",
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 43,
+     "cellSize": 3,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "wander": 1,
+    "wanderLength": 14
+   },
+   {
+    "id": "causeway-abbey",
+    "kind": "stroke",
+    "layer": "ground",
+    "seed": 7,
+    "points": [
+     [
+      -54,
+      -28
+     ],
+     [
+      -46,
+      -20
+     ],
+     [
+      -38,
+      -14
+     ],
+     [
+      -24,
+      -8
+     ],
+     [
+      -12,
+      -3
+     ],
+     [
+      0,
+      0
+     ]
+    ],
+    "radius": 2,
+    "style": "solid",
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 43,
+     "cellSize": 3,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "wander": 1,
+    "wanderLength": 14
+   },
+   {
+    "id": "cott-1",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "posX",
+    "style": "cottage",
+    "wings": [
+     {
+      "corners": [
+       [
+        -80,
+        22
+       ],
+       [
+        -72,
+        28
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ"
+      }
+     }
+    ]
+   },
+   {
+    "id": "cott-2",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "posZ",
+    "style": "cottage",
+    "wings": [
+     {
+      "corners": [
+       [
+        -74,
+        8
+       ],
+       [
+        -66,
+        13
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     }
+    ]
+   },
+   {
+    "id": "cott-3",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "posZ",
+    "style": "cottage",
+    "wings": [
+     {
+      "corners": [
+       [
+        -50,
+        10
+       ],
+       [
+        -42,
+        15
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     }
+    ]
+   },
+   {
+    "id": "cott-4",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negZ",
+    "style": "cottage",
+    "wings": [
+     {
+      "corners": [
+       [
+        -74,
+        38
+       ],
+       [
+        -66,
+        43
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     }
+    ]
+   },
+   {
+    "id": "cott-5",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negX",
+    "style": "cottage",
+    "wings": [
+     {
+      "corners": [
+       [
+        -54,
+        32
+       ],
+       [
+        -49,
+        36
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ"
+      }
+     }
+    ]
+   },
+   {
+    "id": "cott-6",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "posX",
+    "style": "cottage",
+    "wings": [
+     {
+      "corners": [
+       [
+        -46,
+        -36
+       ],
+       [
+        -38,
+        -31
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ"
+      }
+     }
+    ]
+   },
+   {
+    "id": "orchard-w-0-0",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 754,
+    "x": -98,
+    "z": 32,
+    "style": "orchard-oak"
+   },
+   {
+    "id": "orchard-w-0-1",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 712,
+    "x": -92,
+    "z": 32,
+    "style": "orchard-oak"
+   },
+   {
+    "id": "orchard-w-0-2",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 670,
+    "x": -86,
+    "z": 32,
+    "style": "orchard-oak"
+   },
+   {
+    "id": "orchard-w-1-0",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 748,
+    "x": -98,
+    "z": 38,
+    "style": "orchard-oak"
+   },
+   {
+    "id": "orchard-w-1-1",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 706,
+    "x": -92,
+    "z": 38,
+    "style": "orchard-oak"
+   },
+   {
+    "id": "orchard-w-1-2",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 664,
+    "x": -86,
+    "z": 38,
+    "style": "orchard-oak"
+   },
+   {
+    "id": "orchard-w-2-0",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 742,
+    "x": -98,
+    "z": 44,
+    "style": "orchard-oak"
+   },
+   {
+    "id": "orchard-w-2-1",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 700,
+    "x": -92,
+    "z": 44,
+    "style": "orchard-oak"
+   },
+   {
+    "id": "orchard-w-2-2",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 658,
+    "x": -86,
+    "z": 44,
+    "style": "orchard-oak"
+   },
+   {
+    "id": "orchard-w-3-0",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 736,
+    "x": -98,
+    "z": 50,
+    "style": "orchard-oak"
+   },
+   {
+    "id": "orchard-w-3-1",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 694,
+    "x": -92,
+    "z": 50,
+    "style": "orchard-oak"
+   },
+   {
+    "id": "orchard-w-3-2",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 652,
+    "x": -86,
+    "z": 50,
+    "style": "orchard-oak"
+   },
+   {
+    "id": "orchard-s-0",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 487,
+    "x": -62,
+    "z": 47,
+    "style": "orchard-oak"
+   },
+   {
+    "id": "orchard-s-1",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 445,
+    "x": -56,
+    "z": 47,
+    "style": "orchard-oak"
+   },
+   {
+    "id": "orchard-s-2",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 403,
+    "x": -50,
+    "z": 47,
+    "style": "orchard-oak"
+   },
+   {
+    "id": "haw-a",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 240,
+    "x": -16,
+    "z": -28,
+    "style": "hawthorn"
+   },
+   {
+    "id": "haw-b",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 172,
+    "x": -14,
+    "z": 26,
+    "style": "hawthorn"
+   },
+   {
+    "id": "haw-spawn-1",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 1063,
+    "x": -137,
+    "z": -4,
+    "style": "hawthorn"
+   },
+   {
+    "id": "haw-spawn-2",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 1038,
+    "x": -136,
+    "z": 14,
+    "style": "hawthorn"
+   },
+   {
+    "id": "haw-fold",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 966,
+    "x": -120,
+    "z": -26,
+    "style": "hawthorn"
+   },
+   {
+    "id": "rock-tor-1",
+    "kind": "boulder",
+    "layer": "ground",
+    "seed": 404,
+    "x": -52,
+    "z": -48,
+    "style": "outcrop"
+   },
+   {
+    "id": "rock-tor-2",
+    "kind": "boulder",
+    "layer": "ground",
+    "seed": 384,
+    "x": -47,
+    "z": -43,
+    "style": "outcrop"
+   },
+   {
+    "id": "rock-abbey-1",
+    "kind": "boulder",
+    "layer": "ground",
+    "seed": 426,
+    "x": -62,
+    "z": -40,
+    "style": "outcrop"
+   },
+   {
+    "id": "rock-abbey-2",
+    "kind": "boulder",
+    "layer": "ground",
+    "seed": 598,
+    "x": -118,
+    "z": -44,
+    "style": "outcrop"
+   },
+   {
+    "id": "rock-ridge",
+    "kind": "boulder",
+    "layer": "ground",
+    "seed": 566,
+    "x": -130,
+    "z": 24,
+    "style": "outcrop"
+   },
+   {
+    "id": "rock-south",
+    "kind": "boulder",
+    "layer": "ground",
+    "seed": 465,
+    "x": -104,
+    "z": 47,
+    "style": "outcrop"
+   },
+   {
+    "id": "tarn-north",
+    "kind": "fluid",
+    "shape": "pool",
+    "layer": "ground",
+    "points": [
+     [
+      -4.4,
+      -18.0
+     ],
+     [
+      -4.8,
+      -17.0
+     ],
+     [
+      -5.7,
+      -16.1
+     ],
+     [
+      -7.1,
+      -15.5
+     ],
+     [
+      -8.5,
+      -15.1
+     ],
+     [
+      -9.7,
+      -14.8
+     ],
+     [
+      -10.8,
+      -14.5
+     ],
+     [
+      -11.7,
+      -14.1
+     ],
+     [
+      -12.7,
+      -13.6
+     ],
+     [
+      -14.0,
+      -13.0
+     ],
+     [
+      -15.5,
+      -12.6
+     ],
+     [
+      -17.2,
+      -12.5
+     ],
+     [
+      -18.8,
+      -12.8
+     ],
+     [
+      -20.0,
+      -13.5
+     ],
+     [
+      -20.7,
+      -14.5
+     ],
+     [
+      -20.9,
+      -15.5
+     ],
+     [
+      -20.8,
+      -16.5
+     ],
+     [
+      -20.5,
+      -17.3
+     ],
+     [
+      -20.4,
+      -18.0
+     ],
+     [
+      -20.5,
+      -18.7
+     ],
+     [
+      -20.8,
+      -19.5
+     ],
+     [
+      -20.9,
+      -20.5
+     ],
+     [
+      -20.7,
+      -21.5
+     ],
+     [
+      -20.0,
+      -22.5
+     ],
+     [
+      -18.8,
+      -23.2
+     ],
+     [
+      -17.2,
+      -23.5
+     ],
+     [
+      -15.5,
+      -23.4
+     ],
+     [
+      -14.0,
+      -23.0
+     ],
+     [
+      -12.7,
+      -22.4
+     ],
+     [
+      -11.7,
+      -21.9
+     ],
+     [
+      -10.8,
+      -21.5
+     ],
+     [
+      -9.7,
+      -21.2
+     ],
+     [
+      -8.5,
+      -20.9
+     ],
+     [
+      -7.1,
+      -20.5
+     ],
+     [
+      -5.7,
+      -19.9
+     ],
+     [
+      -4.8,
+      -19.0
+     ]
+    ],
+    "radius": 2,
+    "depth": 2,
+    "form": "natural",
+    "edge": 1.5,
+    "shore": 1,
+    "shoreWander": true,
+    "seed": 3,
+    "level": 17,
+    "bank": {
+     "kind": "cell",
+     "seed": 51,
+     "cellSize": 3,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 2
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    }
+   },
+   {
+    "id": "tarn-south",
+    "kind": "fluid",
+    "shape": "pool",
+    "layer": "ground",
+    "points": [
+     [
+      -12.2,
+      28.0
+     ],
+     [
+      -13.0,
+      28.9
+     ],
+     [
+      -14.0,
+      29.6
+     ],
+     [
+      -15.0,
+      30.1
+     ],
+     [
+      -15.7,
+      30.6
+     ],
+     [
+      -16.3,
+      31.1
+     ],
+     [
+      -16.9,
+      31.9
+     ],
+     [
+      -17.6,
+      32.7
+     ],
+     [
+      -18.7,
+      33.4
+     ],
+     [
+      -20.0,
+      33.8
+     ],
+     [
+      -21.5,
+      33.9
+     ],
+     [
+      -22.8,
+      33.5
+     ],
+     [
+      -23.9,
+      32.8
+     ],
+     [
+      -24.5,
+      31.9
+     ],
+     [
+      -24.9,
+      30.9
+     ],
+     [
+      -25.0,
+      30.1
+     ],
+     [
+      -25.3,
+      29.4
+     ],
+     [
+      -25.7,
+      28.7
+     ],
+     [
+      -26.2,
+      28.0
+     ],
+     [
+      -26.8,
+      27.1
+     ],
+     [
+      -27.2,
+      26.1
+     ],
+     [
+      -27.1,
+      25.1
+     ],
+     [
+      -26.4,
+      24.1
+     ],
+     [
+      -25.3,
+      23.5
+     ],
+     [
+      -23.9,
+      23.2
+     ],
+     [
+      -22.4,
+      23.3
+     ],
+     [
+      -21.1,
+      23.5
+     ],
+     [
+      -20.0,
+      23.8
+     ],
+     [
+      -19.0,
+      24.1
+     ],
+     [
+      -18.0,
+      24.1
+     ],
+     [
+      -16.9,
+      24.1
+     ],
+     [
+      -15.5,
+      24.2
+     ],
+     [
+      -14.1,
+      24.5
+     ],
+     [
+      -12.9,
+      25.1
+     ],
+     [
+      -12.1,
+      25.9
+     ],
+     [
+      -11.9,
+      27.0
+     ]
+    ],
+    "radius": 2,
+    "depth": 2,
+    "form": "natural",
+    "edge": 1.5,
+    "shore": 1,
+    "shoreWander": true,
+    "seed": 3,
+    "level": 17,
+    "bank": {
+     "kind": "cell",
+     "seed": 51,
+     "cellSize": 3,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 2
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    }
+   },
+   {
+    "id": "tarn-mid",
+    "kind": "fluid",
+    "shape": "pool",
+    "layer": "ground",
+    "points": [
+     [
+      -1.4,
+      20.0
+     ],
+     [
+      -1.9,
+      20.6
+     ],
+     [
+      -2.2,
+      21.1
+     ],
+     [
+      -2.5,
+      21.6
+     ],
+     [
+      -2.6,
+      22.3
+     ],
+     [
+      -2.8,
+      23.0
+     ],
+     [
+      -3.3,
+      23.8
+     ],
+     [
+      -4.0,
+      24.4
+     ],
+     [
+      -5.0,
+      24.7
+     ],
+     [
+      -6.0,
+      24.7
+     ],
+     [
+      -7.0,
+      24.4
+     ],
+     [
+      -7.7,
+      23.8
+     ],
+     [
+      -8.3,
+      23.2
+     ],
+     [
+      -8.7,
+      22.6
+     ],
+     [
+      -9.1,
+      22.1
+     ],
+     [
+      -9.5,
+      21.6
+     ],
+     [
+      -10.2,
+      21.2
+     ],
+     [
+      -10.8,
+      20.7
+     ],
+     [
+      -11.4,
+      20.0
+     ],
+     [
+      -11.7,
+      19.2
+     ],
+     [
+      -11.6,
+      18.4
+     ],
+     [
+      -11.1,
+      17.6
+     ],
+     [
+      -10.3,
+      17.1
+     ],
+     [
+      -9.3,
+      16.9
+     ],
+     [
+      -8.3,
+      16.8
+     ],
+     [
+      -7.4,
+      16.9
+     ],
+     [
+      -6.7,
+      16.8
+     ],
+     [
+      -6.0,
+      16.7
+     ],
+     [
+      -5.2,
+      16.5
+     ],
+     [
+      -4.3,
+      16.3
+     ],
+     [
+      -3.3,
+      16.2
+     ],
+     [
+      -2.3,
+      16.4
+     ],
+     [
+      -1.4,
+      16.9
+     ],
+     [
+      -0.9,
+      17.6
+     ],
+     [
+      -0.8,
+      18.5
+     ],
+     [
+      -1.0,
+      19.3
+     ]
+    ],
+    "radius": 2,
+    "depth": 2,
+    "form": "natural",
+    "edge": 1.5,
+    "shore": 1,
+    "shoreWander": true,
+    "seed": 3,
+    "level": 17,
+    "bank": {
+     "kind": "cell",
+     "seed": 51,
+     "cellSize": 3,
+     "jitter": 1,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 2
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    }
+   },
+   {
+    "id": "heather",
+    "kind": "flora",
+    "layer": "ground",
+    "seed": 77,
+    "points": [
+     [
+      -140,
+      -50
+     ],
+     [
+      140,
+      -50
+     ],
+     [
+      140,
+      50
+     ],
+     [
+      -140,
+      50
+     ]
+    ],
+    "spec": {
+     "coverage": 0.28,
+     "scale": 6,
+     "octaves": 3,
+     "fernShare": 0.35,
+     "flowerShare": 0.3,
+     "flowerScale": 12,
+     "tallShare": 0.02,
+     "mushroomShare": 0.3
+    }
+   }
+  ]
+ },
+ "authors": [
+  "Claude Sonnet 5.5"
+ ],
+ "created": "2026-10-10"
+}

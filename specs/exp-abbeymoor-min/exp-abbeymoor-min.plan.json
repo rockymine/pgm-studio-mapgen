@@ -1,0 +1,116 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Abbeymoor"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 22
+ },
+ "pieces": [
+  {
+   "id": "moor-n",
+   "role": "piece",
+   "rect": [
+    -35,
+    -13,
+    26,
+    11
+   ]
+  },
+  {
+   "id": "moor-s",
+   "role": "piece",
+   "rect": [
+    -35,
+    4,
+    26,
+    9
+   ]
+  },
+  {
+   "id": "moor-w",
+   "role": "piece",
+   "rect": [
+    -35,
+    -2,
+    4,
+    6
+   ]
+  },
+  {
+   "id": "moor-m",
+   "role": "piece",
+   "rect": [
+    -26,
+    -2,
+    17,
+    6
+   ]
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -31,
+    -2,
+    5,
+    6
+   ]
+  },
+  {
+   "id": "bog",
+   "role": "piece",
+   "rect": [
+    -9,
+    -13,
+    18,
+    26
+   ],
+   "surface": 18
+  }
+ ],
+ "zones": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "red-spawn",
+    "piece": "spawn",
+    "at": [
+     10,
+     12
+    ],
+    "facing": "right"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "abbey-stone",
+    "piece": "",
+    "at": [
+     -74,
+     -30
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Abbey Stone"
+   },
+   {
+    "id": "market-cross",
+    "piece": "",
+    "at": [
+     -60,
+     28
+    ],
+    "style": "cube-3",
+    "materials": "gold block",
+    "float": 4,
+    "name": "Market Cross"
+   }
+  ]
+ },
+ "walls": []
+}
