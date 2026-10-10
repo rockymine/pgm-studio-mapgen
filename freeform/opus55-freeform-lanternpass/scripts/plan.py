@@ -189,7 +189,7 @@ def build():
         for x in range(lx0, lx1 + 1):
             if (x, z) in path:
                 R.rect(x, x, z, z, 32, "stone")
-            elif rng.random() < 0.29:
+            elif rng.random() < 0.145:
                 R.solid(x, x, z, z, 9, "bamboo")
             if LEAVES[ix(x), iz(z)] > -0.15:                    # the grove's crown, closed over most of it
                 R.canopy(x, x, z, z, 40)

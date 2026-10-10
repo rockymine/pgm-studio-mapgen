@@ -35,9 +35,9 @@ pillars rise from the void's floor at y 2, and a runner who misses one falls pas
 sprint jumps over gaps of up to three (`renders/walks.txt`).
 
 - **The warm-up:** before the boathouse's gate opens, no runner leaves the boathouse.
-- **The run:** gate open, the boathouse to the bell is 430 blocks, against the plan's 440.
-- **The gorge:** each crossing works on its own. With only the rope bridge it is 431 to the bell, with only the
-  pillars 446, and with only the arch 443.
+- **The run:** gate open, the boathouse to the bell is 426 blocks, against the plan's 440.
+- **The gorge:** each crossing works on its own. With only the rope bridge it is 427 to the bell, with only the
+  pillars 445, and with only the arch 439.
 - **The sides:** no place on a walkway is reachable by a runner, and no place on the lane by a shooter.
 - **The walkways:** shooters walk each of them from the spawn to the temple, 371 blocks.
 
@@ -51,8 +51,8 @@ Water, rails and fences are counted as see-through.
 |---|---|---|
 | 1 the harbour | 65% | 72% |
 | 2 the market | 32% | 41% |
-| 3 the terraces | 78% | 59% |
-| 4 the bamboo | 18% | 22% |
+| 3 the terraces | 80% | 59% |
+| 4 the bamboo | 28% | 32% |
 | 5 the gorge | 73% | 69% |
 | 6 the stairs | 63% | 72% |
 | 7 the temple | 84% | 85% |
@@ -140,4 +140,13 @@ ridge, leaving a triangle open at each end. Both are walled now in white clay, w
 runners more cover than a section should, and let a shooter camp its far end. The places a runner reaches in it rose
 from 805 to 994; its sight barely moved, 17% to 18%, because the crown overhead does most of the hiding. The run is
 now 430 blocks to the bell.
+
+## After the third playtest
+
+**The pool's ladders are one rung each, at 20, over the water.** Ladders of this version cannot stand in water, so
+the two rungs under the surface are gone. A swimmer at the surface reaches the rung against the bank and climbs out;
+there are still 52 of them.
+
+**The bamboo was halved again, to a stalk on 14.5% of the grove's ground.** The places a runner reaches in it rose
+from 994 to 1157, and the share of them a shooter sees from 18% to 28%. The run to the bell is 426 blocks.
 

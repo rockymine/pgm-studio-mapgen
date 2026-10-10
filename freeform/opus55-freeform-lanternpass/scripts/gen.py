@@ -295,7 +295,7 @@ LADDER_FACING = {(0, 1): 2, (0, -1): 3, (1, 0): 4, (-1, 0): 5}     # the block i
 
 def pool_ladders(w):
     """A ladder out of the harbour every few blocks along every edge of its water, onto whatever stands at 20:
-    a runner who falls in climbs out instead of treading water under the walkways."""
+    one rung at 20 against the bank, over the water, which a swimmer at the surface reaches and climbs."""
     lx0, lx1 = P.LANE
     n = 0
     for x in range(lx0, lx1 + 1):
@@ -305,8 +305,7 @@ def pool_ladders(w):
             for (dx, dz), d in LADDER_FACING.items():
                 bank = [w.id(x + dx, y, z + dz) for y in (18, 19, 20, 21)]
                 if all(b not in (B.AIR, B.WATER) for b in bank[:3]) and bank[3] == B.AIR and w.id(x, 21, z) == B.AIR:
-                    for y in (18, 19, 20):
-                        w.set(x, y, z, B.LADDER, d)
+                    w.set(x, 20, z, B.LADDER, d)             # the top rung only, over the water: no waterlogging
                     n += 1
                     break
     print(f"pool ladders: {n}")
