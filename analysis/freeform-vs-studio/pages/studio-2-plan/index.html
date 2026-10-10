@@ -1,0 +1,316 @@
+<meta charset="utf-8">
+<title>Studio 2.0 Fahrplan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a single reading column with a sticky table of contents beside it on wide screens; figures break wider. */
+:root {
+  --bg: #f2f4f1;
+  --paper: #ffffff;
+  --ink: #1c2420;
+  --muted: #59665f;
+  --line: #d4dbd6;
+  --accent: #2f6b4f;
+  --accent-soft: #e0ede5;
+  --hard: #9b2f2f;
+  --soft: #8a6512;
+  --measure: #275f8f;
+  --chip: #f4f7f5;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121815; --paper: #19211d; --ink: #e2eae5; --muted: #9aa8a1; --line: #2d3934;
+  --accent: #7cc3a0; --accent-soft: #213a2e; --hard: #e08a8a; --soft: #e2b562; --measure: #8ec0ea; --chip: #1f2924; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121815; --paper: #19211d; --ink: #e2eae5; --muted: #9aa8a1; --line: #2d3934;
+  --accent: #7cc3a0; --accent-soft: #213a2e; --hard: #e08a8a; --soft: #e2b562; --measure: #8ec0ea; --chip: #1f2924; color-scheme: dark }
+[hidden] { display: none !important; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16.5px; line-height: 1.55; }
+.page { max-width: 1180px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 64px; display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 36px; }
+@media (max-width: 920px) { .page { grid-template-columns: minmax(0, 1fr); } nav.toc { display: none; } }
+nav.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 20px); align-self: start; font-size: 14px; }
+nav.toc ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+nav.toc a { color: var(--muted); text-decoration: none; }
+nav.toc a:hover { color: var(--accent); }
+main { min-width: 0; }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 4.4vw, 44px); line-height: 1.08; margin: 0 0 12px; letter-spacing: -0.015em; text-wrap: balance; }
+h2 { font-family: var(--display); font-weight: 800; font-size: 25px; margin: 52px 0 12px; letter-spacing: -0.01em; text-wrap: balance; scroll-margin-top: 20px; }
+h3 { font-family: var(--display); font-weight: 600; font-size: 18px; margin: 28px 0 8px; text-wrap: balance; }
+p, li { max-width: 68ch; }
+p { margin: 0 0 12px; }
+.lead { font-size: 19px; color: var(--muted); max-width: 62ch; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+a { color: var(--accent); }
+code, .mono { font-family: var(--mono); font-size: 0.86em; }
+code { background: var(--chip); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
+.summary { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; margin: 22px 0 0; }
+.summary ol { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+figure { margin: 18px 0 20px; }
+figure img { display: block; width: 100%; max-width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--line); background: var(--chip); }
+figcaption { font-size: 14px; color: var(--muted); margin-top: 6px; max-width: 80ch; }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.tablewrap { overflow-x: auto; margin: 12px 0 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+th { font-family: var(--display); font-weight: 600; font-size: 13px; letter-spacing: .02em; background: var(--chip); }
+tr:last-child td { border-bottom: 0; }
+td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+pre { font-family: var(--mono); font-size: 12.5px; line-height: 1.45; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; overflow-x: auto; margin: 10px 0 16px; }
+.stack { display: grid; gap: 8px; margin: 16px 0 20px; }
+.grp { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 12px; align-items: start; background: var(--paper); border: 1px solid var(--line); border-radius: 9px; padding: 10px 14px; }
+@media (max-width: 560px) { .grp { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+.grp b { font-family: var(--display); font-weight: 600; }
+.grp .k { font-family: var(--mono); font-size: 12px; color: var(--muted); display: block; }
+.grp p { margin: 0; font-size: 15px; }
+.tier { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 14px 0; }
+.tier div { background: var(--paper); border: 1px solid var(--line); border-radius: 9px; padding: 12px 14px; border-top: 4px solid var(--c); }
+.tier h4 { margin: 0 0 6px; font-family: var(--display); font-size: 16px; color: var(--c); }
+.tier p { font-size: 14.5px; margin: 0; }
+.phase { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+.phase .n { font-family: var(--display); font-weight: 800; font-size: 26px; color: var(--accent); line-height: 1; }
+.phase h4 { margin: 0 0 4px; font-family: var(--display); font-size: 17px; }
+.phase p { margin: 0 0 4px; font-size: 15px; }
+.phase .feel { color: var(--muted); font-size: 14px; }
+.q { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; }
+.q ol { margin: 0; padding-left: 20px; display: grid; gap: 10px; }
+.callout { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; margin: 12px 0 16px; color: var(--ink); }
+svg text { font-family: var(--body); }
+.svgwrap { overflow-x: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 10px; }
+.links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.links a { font-size: 14px; border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 4px 12px; text-decoration: none; }
+.links a:hover { border-color: var(--accent); }
+</style>
+
+<div class="page">
+<nav class="toc" aria-label="Inhalt">
+  <ol>
+    <li><a href="#kurz">Kurz</a></li>
+    <li><a href="#regeln-aus">Regeln aus: der Versuch</a></li>
+    <li><a href="#noise">Noise: der Versuch</a></li>
+    <li><a href="#haeuser">Häuser: der Vergleich</a></li>
+    <li><a href="#tunnel">Schichten oder 3D</a></li>
+    <li><a href="#aufbau">Aufbau von 2.0</a></li>
+    <li><a href="#grammatik">Grammatik</a></li>
+    <li><a href="#spielteile">Spielteile und XML</a></li>
+    <li><a href="#stempel">Stempel, konkret</a></li>
+    <li><a href="#gelaende">Das alte Gelände</a></li>
+    <li><a href="#stufen">Regeln in drei Stufen</a></li>
+    <li><a href="#sprache">C# oder Python</a></li>
+    <li><a href="#reihenfolge">Reihenfolge</a></li>
+    <li><a href="#fragen">Fragen an dich</a></li>
+  </ol>
+</nav>
+
+<main>
+  <div class="eyebrow">pgm-studio · Zweig claude/freeform-riftwater-analysis-lmdkga · 10. Oktober 2026</div>
+  <h1>Studio 2.0 Fahrplan</h1>
+  <p class="lead">Was die Versuche von heute zeigen, wie Studio 2.0 aufgebaut sein kann, und welche Entscheidungen bei dir liegen. Am laufenden Studio ändert sich dadurch nichts. Alles entsteht auf einem eigenen Zweig und kommt erst nach einer Beta auf pgmstudio.de.</p>
+
+  <section class="summary" id="kurz" aria-label="Kurzfassung">
+    <ol>
+      <li><b>Gelände wird eine Liste von Ebenen mit Bereichen:</b> Hügel hier, Schlucht dort, Tafelberg, See, Fluss. Der heutige Höhen-Löser bleibt als eine Ebene unter vielen. Du kannst das im <a href="https://claude.ai/artifact/6VjMK9o26ex268P8XhJRpw">Ebenen-Prototyp</a> selbst ausprobieren.</li>
+      <li><b>Tunnel, Höhlen und Unterseiten sind echte 3D-Ebenen.</b> Sie laufen nach dem Gelände im Blockraster. Der Trick mit Ausschnitt und Deckel fällt weg.</li>
+      <li><b>Der Plan bleibt, aber als Werkzeug für Spielteile.</b> Ein Spielteil ist Form, XML und Stempel zugleich und lässt sich frei auf die Karte setzen. Die XML entsteht immer aus dem Intent, nichts davon geht verloren.</li>
+      <li><b>Häuser: Der Großteil ist Daten.</b> Gebraucht werden Lehmfarben und Treppendächer in der Bibliothek, dazu drei neue Felder und eine Drehung. Die Stockwerke sind nicht die Ursache.</li>
+      <li><b>Die Regeln waren nicht die Bremse.</b> Ein Board aus dem Versuch ohne Regeln ging unverändert durch das Studio mit allen Regeln. Blockiert hat nur das Spaltenmodell (SK13, eine Gruft). Ohne Spielregeln rutschten die Wollräume wieder an die Front. Regeln teilen sich darum in drei Stufen: hart, Hinweis, Messwert.</li>
+    </ol>
+  </section>
+
+  <h2 id="regeln-aus">Regeln aus: der Versuch</h2>
+  <p><b>Die Regeln waren nicht der Grund, warum die Studio-Boards schlicht aussahen.</b> Zwei Sonnet-Agenten haben dieselben zwei Briefings wie in der ersten Runde gebaut (Slatefold, Abbeymoor), auf einem zweiten lokalen Studio mit <code>Rules:Mode=minimal</code>: Nur Vertrag, Physik, Ziele und baubare Geometrie bleiben hart. Danach habe ich beide fertigen Boards unverändert als Trockenlauf gegen das Studio mit allen Regeln geschickt.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Board</th><th>Trockenlauf mit allen Regeln</th><th>Was abgelehnt worden wäre</th><th>Hinweise, die es ohnehin gibt</th><th>Bauzeit</th></tr></thead>
+    <tbody>
+      <tr><td>Slatefold (CTW)</td><td class="num">200, angenommen</td><td>nichts</td><td>22× EL1, WL10, WL11, WL18, FR6, FR9, G8, LN5, SK27, 2× DR-TONE</td><td class="num">≈ 26 min</td></tr>
+      <tr><td>Abbeymoor (DTM)</td><td class="num">422, abgelehnt</td><td>11× SK13: die Treppe und der Gang in die Gruft</td><td>3× EL1, GO1, GO2, GO3, LN5, ST9</td><td class="num">≈ 25 min</td></tr>
+    </tbody>
+  </table></div>
+  <p><b>Die Lauf- und Layoutregeln sind beim Bauen über die Schnittstelle heute schon nur Hinweise.</b> Slatefold ging mit allen Regeln unverändert durch. Der Agent hatte geglaubt, die vollen Regeln hätten seine Wollräume zurückgezogen. Das stimmt nicht: WL10, WL18 und FR9 kommen dort als Hinweis, nicht als Ablehnung.</p>
+  <p><b>Was wirklich blockiert, ist strukturell.</b> Die einzige Ablehnung war SK13: Boden, der in einen Ausschnitt zurückgelegt wird. Das ist genau das Spaltenmodell aus dem Abschnitt <a href="#tunnel">Schichten oder 3D</a>. Der Agent wollte eine Treppe und einen Gang unter die Abtei bauen. Daneben lässt die Ausstattung still Dinge fallen: ein Cottage neben dem Marktkreuz (OB19), Felsen neben Wegen (DR-ROAD, DR-KEEP), ein Cottage über einem Weg (DR-CROSS). Mehrere davon hat der Agent ohnehin verschoben.</p>
+  <p><b>Ohne Spielregeln wandern die Ziele an die falsche Stelle.</b> In Slatefold stehen beide Wollräume an der Frontlinie, 8 Blöcke Weg bis zur Kreuzung. Genau das hattest du in der ersten Runde als falsch markiert. Diese Regeln gehören also nicht weg, sondern sichtbar ins Prüfblatt, und zwar bevor gebaut wird.</p>
+  <figure><img src="img/slatefold-rules.jpg" alt="Slatefold links mit allen Regeln aus der ersten Runde, rechts mit minimalen Regeln: breiter, mehr gleiche Häuser in Reihen, Wollräume an der Kante." loading="lazy"><figcaption>Slatefold. Rechts ist das Board breiter und voller, aber mit denselben Häusern in Reihen, und die Wollräume stehen vorne an der Kante.</figcaption></figure>
+  <figure><img src="img/abbeymoor-rules.jpg" alt="Abbeymoor links mit allen Regeln, rechts mit minimalen Regeln: eine sanduhrförmige Insel mit Moor, Dämmen über das Moor, Steinkreis und Dörfern." loading="lazy"><figcaption>Abbeymoor. Rechts wirkt das Board mehr wie ein Ort: Moor mit zwei Dämmen, Steinkreis, Dörfer. Das kommt aber aus den Entscheidungen des Agenten, nicht aus gelockerten Regeln. Nur die Gruft hängt an SK13.</figcaption></figure>
+  <p><b>Zwei Nebenbefunde</b> aus den Berichten, noch nicht von mir nachgeprüft: <code>follow: 100</code> auf einer Gesteinsschicht antwortete mit 200 ohne Hinweis und malte nur Stein. Eine Formänderung, deren Umriss sich selbst kreuzt, wurde einmal gespeichert. RQ1 lehnt im minimalen Modus weiter ab, das habe ich geprüft.</p>
+  <p>Berichte: <code>reports/exp-slatefold-min.md</code>, <code>reports/exp-abbeymoor-min.md</code>. Zusammenfassung: <code>analysis/freeform-vs-studio/experiment/RULES-MINIMAL.md</code>.</p>
+
+
+  <h2 id="noise">Noise: der Versuch</h2>
+  <p><b>Auf einer Karte, die mit Höhenmarken gebaut ist, ändert der Grain-Wert fast nichts.</b> Ich habe Abbeymoor (Studio) dreimal neu gebaut: unverändert, dann mit größeren Hügeln (Größe 24) und mit großen, kräftigen Hügeln (Stärke 5, Größe 48). Von den 26.904 Landspalten bewegten sich im stärksten Fall 5.008 (19 %), und keine um mehr als 4 Blöcke. Der Anteil benachbarter Spalten mit 2 oder mehr Blöcken Höhenunterschied stieg von 5,3 % auf 5,9 %.</p>
+  <p><b>Der Grund steht im Löser:</b> Grain verändert nie eine Spalte, die eine Höhenmarke festlegt (<code>ReliefSolver</code>: „grain never overrides a statement“). Auf diesem Board bewegten sich nur 19 % der Spalten überhaupt; der Rest liegt unter Flächenmarken oder bewegte sich um weniger als einen halben Block. Das treppige Aussehen kommt von den flachen Marken-Flächen und den gestuften Hängen dazwischen, auf die der Anstrich Stein legt. Der Hebel ist also nicht ein anderer Standardwert, sondern Rauschen als eigene Ebene mit eigenem Bereich, die keine Marke überschreibt.</p>
+  <figure>
+    <img src="img/grain-flank.jpg" alt="Vier gleiche Ansichten des Abtei-Hangs mit vier Grain-Einstellungen; die Unterschiede sind klein." loading="lazy">
+    <figcaption>Der Südhang des Abteihügels, gleiche Kamera, vier Grain-Einstellungen. Die Stufen sind in allen vier gleich, weil sie aus den Marken kommen.</figcaption>
+  </figure>
+  <figure>
+    <img src="img/grain-overview.jpg" alt="Vier Übersichten von Abbeymoor, fast identisch." loading="lazy">
+    <figcaption>Das ganze Board aus derselben Höhe. Die stärkste Einstellung (unten rechts) macht die Hänge welliger, ändert aber nicht den Charakter.</figcaption>
+  </figure>
+
+  <h2 id="haeuser">Häuser: der Vergleich</h2>
+  <p><b>Die Stockwerke sind nicht die Ursache.</b> Das Studio hat sogar das reichere Modell: Es kennt pro Stockwerk Höhe, Wand, Pfosten, Fenster, Decke und Balken, dazu Flügel und eine Leiter zwischen den Stockwerken. Beide bauen ein Stockwerk gleich: drei Lagen Wand, eine liegende Holzlage, darin der Boden, oben das Dach. Ein Sonnet-Agent hat beide Seiten mit demselben Renderer gezeichnet.</p>
+  <div class="pair">
+    <figure><img src="img/houses-pgmvox.jpg" alt="Elf pgmvox-Häuser in Isometrie: Lehmwände in warmen Farben, Treppendächer, Kamine, ein rot-weiß gestreifter Leuchtturm." loading="lazy"><figcaption>pgmvox, unter anderem die Cottages von Abbeymoor, die Riftwater-Häuser und der Hoarfrost-Leuchtturm.</figcaption></figure>
+    <figure><img src="img/houses-studio.jpg" alt="Neun Studio-Häuser in Isometrie: graue Steinwände unter Holzdächern aus ganzen Blöcken." loading="lazy"><figcaption>Studio, gelesen aus den gebauten Karten und der Bibliothek.</figcaption></figure>
+  </div>
+  <p><b>Vier Dinge machen den Unterschied</b>, nach geschätzter Wirkung:</p>
+  <ol>
+    <li><b>Steinwände statt Lehm.</b> 10 der 57 Häuser in der Bibliothek sind ganz aus Stein. Keines hat gelben, orangen oder braunen Lehm, also die Farben, die pgmvox nutzt. Das ist reine Datenarbeit.</li>
+    <li><b>Dächer aus ganzen Blöcken.</b> Keines der 57 Bibliothekshäuser setzt <code>roof.stair</code>, obwohl der Stamper Treppendächer kann. Auch das sind nur Daten.</li>
+    <li><b>Fachwerk, Kamin, Holztür.</b> pgmvox setzt im Obergeschoss alle vier Blöcke einen Pfosten, auf jedes Haus einen Kamin und eine Fichten- oder Eichentür. Dem Studio fehlen alle drei.</li>
+    <li><b>Jede Drehung.</b> Ein pgmvox-Haus kann um 12° gedreht stehen. Im Studio stehen alle Häuser achsparallel und darum in einer Reihe.</li>
+  </ol>
+  <p><b>Der Hoarfrost-Turm läuft nicht über das Hausmodell.</b> Er ist von Hand geschriebener Code im Board (<code>gen.py</code>, Zeilen 219–282): Lehm in Streifen zu je vier Lagen, Eisengitter-Schlitze, alle fünf Lagen ein Boden mit Leiterluke, ein verglaster Laternenraum und eine Galerie außen. Das Studio könnte ihn großteils ausdrücken. Es fehlen die Holztür, die Galerie außerhalb des Grundrisses, die Laternensäule und Luken auf gewählten Böden. Die Wollhäuser der Grammatik-Boards sind ebenfalls ein eigener Weg (<code>brittle.house</code>), mit zurückgesetzten Stockwerken und Traufen.</p>
+  <p><b>Dem pgmvox-Modell fehlt, was das Studio hat:</b> Flügel (also auch das Zwerchhaus mit Giebel im Giebel), Stil pro Stockwerk, Fensterformen, Vorbauten, Balken, eine Leiter zwischen den Stockwerken, Prüfung und Namen.</p>
+  <p><b>Ins JSON des Studios passt das als Erweiterung von <code>HouseStyle</code>,</b> nicht als zweites Format:</p>
+  <pre>"storeys": [{ …,
+  "bays":  { "period": 4, "post": {…}, "walls": "long" },   // neu: Fachwerkpfosten
+  "head":  { "kind": "laidLog", … },                       // neu: Holzlage auf jedem Stockwerk
+  "jetty": { "reach": 1 }, "setback": 1, "eave": 1         // neu: Vorkragen, Rücksprung, Traufe
+}],
+"chimney": { "body": {…}, "cap": {…}, "at": "rear", "above": 2 },   // neu
+"doorway": { "door": "spruceDoor" }                       // neuer Wert, nicht für Wollräume
+// und am platzierten Haus: "heading": 12                 // neu: Drehung in Grad</pre>
+  <p>Der volle Bericht mit 22 Bildern, Zeilennummern und einem vollständigen Beispielhaus liegt in <code>analysis/freeform-vs-studio/houses/HOUSES.md</code>.</p>
+
+  <h2 id="tunnel">Schichten oder 3D: wie pgmvox einen Tunnel baut</h2>
+  <p><b>pgmvox hat von Anfang an ein echtes 3D-Raster, und jede Operation schreibt Blöcke hinein.</b> Zuerst füllt das Gelände jede Spalte bis zu ihrer Höhe mit Fels, Erde und Gras. Danach setzt ein Tunnel einfach Luft in die Zellen eines Schlauchs entlang einer Linie. Er hält dabei mindestens <code>cover</code> Blöcke Abstand zur Oberfläche und schneidet nie in Wasser. Weil der Fels schon da ist, muss nichts drumherum gebaut werden. Spätere Operationen überschreiben frühere. Hinzufügen heißt Füllen (auch mit Körpern wie Kugel, Zylinder oder Differenz), Löschen heißt Luft setzen.</p>
+  <p><b>Das Studio speichert den Boden spaltenweise:</b> Pro Ebene hat jede Spalte genau einen Abschnitt von Boden bis Oberkante. Ein Ausschnitt (subtract) entfernt immer die ganze Spalte, er hat keine Höhe. Für einen Tunnel braucht man darum einen Ausschnitt und darüber einen Deckel (override-add ab der Tunneldecke), dazu eigene Ebenen für Boden und Leitern. Die Gruft der Studio-Abbeymoor brauchte 8 Ausschnitte, 7 Deckel und 4 gebaute Ebenen. Die pgmvox-Gruft ist eine Liste von Zellen, die ausgehöhlt werden (<code>crypt.py</code>, 158 Zeilen mit Halle, Treppe, Gang und Ausbau).</p>
+  <div class="svgwrap">
+    <svg viewBox="0 0 860 250" width="100%" role="img" aria-label="Links: Studio-Spalten mit Ausschnitt und Deckel. Rechts: pgmvox-Raster mit ausgehöhltem Tunnel.">
+      <style>
+        .t1 { fill: var(--ink); font-size: 15px; font-weight: 600; }
+        .t2 { fill: var(--muted); font-size: 12.5px; }
+        .rock { fill: #8a7a62; } .grass { fill: #6f9a4e; } .air { fill: var(--chip); } .lid { fill: #b58c4a; } .cut { fill: none; stroke: var(--hard); stroke-width: 2; stroke-dasharray: 5 4; }
+        .grid { stroke: rgba(0,0,0,.18); stroke-width: 1; }
+      </style>
+      <text x="16" y="24" class="t1">Studio heute: Spalten</text>
+      <text x="16" y="42" class="t2">1 Ausschnitt nimmt die ganze Spalte, 2 der Deckel legt die Decke wieder auf</text>
+      <g transform="translate(16,56)">
+        <!-- 16 columns, 12 tall, cell 22 -->
+        <rect x="0" y="0" width="352" height="176" class="air"/>
+        <rect x="0" y="22" width="352" height="154" class="rock"/>
+        <rect x="0" y="22" width="352" height="8" class="grass"/>
+        <rect x="132" y="22" width="88" height="154" class="air"/>
+        <rect x="132" y="22" width="88" height="66" class="lid"/>
+        <rect x="132" y="22" width="88" height="8" class="grass"/>
+        <rect x="132" y="88" width="88" height="44" class="air"/>
+        <rect x="132" y="132" width="88" height="44" class="rock"/>
+        <rect x="131" y="21" width="90" height="156" class="cut"/>
+        <text x="226" y="70" class="t2">2 Deckel</text>
+        <text x="226" y="112" class="t2">Tunnel</text>
+        <text x="226" y="160" class="t2">3 Boden als</text>
+        <text x="226" y="174" class="t2">eigene Ebene</text>
+        <text x="132" y="14" class="t2" style="fill: var(--hard)">1 Ausschnitt (ganze Spalte)</text>
+      </g>
+      <text x="452" y="24" class="t1">pgmvox: ein 3D-Raster</text>
+      <text x="452" y="42" class="t2">Fels liegt schon da, der Tunnel setzt nur Luft, mindestens 3 unter der Oberfläche</text>
+      <g transform="translate(452,56)">
+        <rect x="0" y="0" width="390" height="176" class="air"/>
+        <path d="M0 26 L60 22 L120 30 L190 20 L260 28 L330 24 L390 30 L390 176 L0 176 Z" class="rock"/>
+        <path d="M0 26 L60 22 L120 30 L190 20 L260 28 L330 24 L390 30 L390 36 L330 30 L260 34 L190 26 L120 36 L60 28 L0 32 Z" class="grass"/>
+        <path d="M30 120 C 90 96, 150 92, 210 104 S 330 126, 370 108 L370 140 C 330 156, 270 140, 210 136 S 90 128, 30 150 Z" fill="var(--chip)"/>
+        <g class="grid">
+          <line x1="0" y1="44" x2="390" y2="44"/><line x1="0" y1="66" x2="390" y2="66"/><line x1="0" y1="88" x2="390" y2="88"/><line x1="0" y1="110" x2="390" y2="110"/><line x1="0" y1="132" x2="390" y2="132"/><line x1="0" y1="154" x2="390" y2="154"/>
+        </g>
+        <text x="150" y="124" class="t2">carve.tunnel (Linie, Radius, cover 3)</text>
+      </g>
+    </svg>
+  </div>
+  <p><b>In 2.0 bleibt das Spaltenmodell für das Gelände, weil es schnell ist, im Browser läuft und sauber spiegelt.</b> Danach kommt eine zweite Gruppe von Ebenen, die direkt im Blockraster arbeitet: Tunnel, Kammer, Schacht, Füllkörper und die Unterseite einer Schwebeinsel. Das Blockraster (<code>VoxelWorld</code>) gibt es im Studio schon. Ein Tunnel wird damit eine einzige Ebene: <code>{"op": "carve.tunnel", "points": [[x,y,z], …], "radius": 2, "cover": 3}</code>.</p>
+
+  <h2 id="aufbau">Aufbau von Studio 2.0: ein Dokument aus Ebenen</h2>
+  <p><b>Eine Karte ist eine geordnete Liste von Ebenen, und jede Ebene ist eine Operation mit Art, Bereich und Werten.</b> Die Reihenfolge ist die Bedeutung. Was später kommt, wirkt auf das Frühere. Jede Ebene lässt sich ein- und ausschalten, verschieben und im Browser über ihren Bereich bearbeiten. Ein Agent schreibt genau dieselbe Liste als JSON. Jeder Schritt wird zwischengespeichert, solange sich seine Werte und alles davor nicht ändern. Darum zeigt das Studio jeden Zwischenstand sofort, und ein Diff zeigt geänderte Werte und geänderte Wirkung.</p>
+  <div class="stack" role="list">
+    <div class="grp" role="listitem"><div><b>Orte</b><span class="k">optional, zuerst</span></div><p>Der Plan der Orte: Name, Zweck, Zugang, Wege, Zielwerte. Er baut nichts, aber alles darunter kann sich auf seine Orte beziehen (<a href="https://claude.ai/artifact/Rc4s73Z41xvAeUo1yMPRww">Prüfblatt-Prototyp</a>).</p></div>
+    <div class="grp" role="listitem"><div><b>Gelände</b><span class="k">2,5D, Spalten</span></div><p>Insel-Umriss, Hügel im Bereich, Schlucht entlang Linie, Tafelberg, Terrassen, See, Fluss, Höhenmarken (der heutige Löser), Glätten, Anstrich nach Neigung und Schichten im Fels (TP24/TP26 bleiben).</p></div>
+    <div class="grp" role="listitem"><div><b>Raum</b><span class="k">3D, Blockraster</span></div><p>Tunnel, Kammer, Schacht, Füllkörper (Kugel, Zylinder, Differenz), Unterseite von Schwebeinseln, Überhänge.</p></div>
+    <div class="grp" role="listitem"><div><b>Spielteile</b><span class="k">schreiben den Intent</span></div><p>Spawn, Wollraum, Monument, Core, Punkt, Bauzone, Schutzzone, Wand. Jedes ist Form, XML und Stempel.</p></div>
+    <div class="grp" role="listitem"><div><b>Bauten</b><span class="k">Bibliothek + Grammatik</span></div><p>Häuser aus Hausstilen mit Drehung, Bauten aus Grammatik-Regeln, Siedlungen als Gruppe.</p></div>
+    <div class="grp" role="listitem"><div><b>Ausstattung</b><span class="k">wie heute</span></div><p>Bäume, Felsen, Wege, Bodenbewuchs, Kisten, Requisiten.</p></div>
+    <div class="grp" role="listitem"><div><b>Stempel</b><span class="k">automatisch, zuletzt</span></div><p>Aus den Spielteilen abgeleitet: Ziel-Markierung, Bauzonen-Rand, Verteidigungswand, Beute, Prüfung der Schwebehöhe. Pro Spielteil abschaltbar.</p></div>
+  </div>
+  <p><b>Der Agent bekommt damit die Freiheit von pgmvox, ohne die Werkzeuge des Studios zu verlieren.</b> Er beginnt mit Orten und Gelände statt mit Rechtecken, setzt die Spielteile dorthin, wo die Landschaft sie haben will, und alles bleibt im Browser sichtbar und änderbar.</p>
+
+  <h2 id="grammatik">Grammatik als eigene Ebenen-Familie</h2>
+  <p><b>Eine Grammatik-Regel zerlegt eine Form in Teile und gibt jedem Teil Material und Muster.</b> Das Anmalen eines Rechtecks im Studio ist die einfachste Regel: eine Form, ein Material. pgmvox (<code>grammar.py</code>, <code>brittle.py</code>) geht weiter: Abschnitte, Umrisse, Flächen mit betonten Feldern, eingelassene Muster und Symbole. Sandreach zeigt, dass Grammatik und natürliche Landform zusammengehen. Die Insel ist Landform, die Bauten darauf sind Grammatik.</p>
+  <p><b>In 2.0 ist Grammatik eine Ebene, die auf jede Form wirkt:</b> einen Baukörper, eine Wand, eine Felswand oder einen Wollraum. Die Regeln selbst sind Daten in der Bibliothek, genau wie Hausstile, und damit im Browser bearbeitbar und für Agenten schreibbar. Der Schritt-für-Schritt-Gang durch Claywork und Brittlebush III liegt im <a href="https://claude.ai/artifact/Lj5Y9gBDHvAW5913jvLCC2">Rezept-Inspektor</a>.</p>
+
+  <h2 id="spielteile">Spielteile und XML</h2>
+  <p><b>Der eigentliche Wert des Plans ist nicht das Rechteck, sondern dass ein Teil seine XML mitbringt.</b> Ein Rechteck mit der Rolle <code>wool-room</code> wird heute zu Raumregion, Wolle, Monument, Schutzfilter und Stempeln. In 2.0 bleibt genau das, aber das Teil darf jede Form haben und überall stehen:</p>
+  <pre>{ "op": "piece.woolRoom", "id": "red-wool", "team": "blue-team", "color": "red",
+  "shape": { "polygon": [[-48,-80], [-28,-80], [-28,-60], [-48,-60]] },
+  "wool": [-38, 21, -70], "stamps": { "loot": true, "marker": true } }</pre>
+  <p>Daraus schreibt der Intent die XML, wie heute. Dies ist ein Ausschnitt aus der Slatefold-Karte des Studios:</p>
+  <pre>&lt;wool team="blue-team" color="red" location="-38,21,-70" monument="red-blue-monument"/&gt;
+&lt;rectangle id="red-wool" min="-48,-80" max="-28,-60"/&gt;
+&lt;union id="reds-woolrooms"&gt;&lt;region id="red-wool"/&gt;&lt;region id="orange-wool"/&gt;&lt;/union&gt;
+&lt;all id="reds-woolrooms-filter"&gt;&lt;filter id="not-red"/&gt;&lt;filter id="woolrooms-filter"/&gt;&lt;/all&gt;</pre>
+  <p class="callout"><b>Die XML bleibt die Quelle der Wahrheit.</b> Jedes Spielteil schreibt in den Intent, der Intent schreibt die XML, und Configure zeigt und ändert dieselben Teile. Der Rechteck-Plan und der Generator bleiben als ein Weg, viele Spielteile und das erste Gelände auf einmal zu erzeugen. Sie sind aber nicht mehr der einzige Einstieg.</p>
+
+  <h2 id="stempel">Stempel, konkret</h2>
+  <p><b>Ein Stempel ist eine kleine Struktur, die das Studio aus einem Spielteil ableitet und am Ende in die Welt setzt.</b> Er ist keine eigene Zeichnung. In 2.0 bilden die Stempel die letzte Gruppe von Ebenen, und jeder lässt sich pro Spielteil abschalten.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Stempel</th><th>Was er setzt</th><th>Aus welchem Teil</th><th>Studio heute</th><th>pgmvox</th></tr></thead>
+    <tbody>
+      <tr><td>Ziel-Markierung</td><td>schwebender Marker über dem Ziel</td><td>Wolle, Monument, Core</td><td>GoalMarkerStamper</td><td>fehlt</td></tr>
+      <tr><td>Bauzonen-Rand</td><td>Redstone-Umriss an der Kante der Bauzone</td><td>Bauzone</td><td>BuildMarkerStamper</td><td>von Hand</td></tr>
+      <tr><td>Verteidigungswand</td><td>Bedrock-Wand mit Truhen in der Front</td><td>Wand vor dem Wollraum</td><td>StructureStamper</td><td>defence_chests (0.19)</td></tr>
+      <tr><td>Wollraum-Beute</td><td>Truhen mit Wolle und Blöcken</td><td>Wollraum</td><td>WoolChests</td><td>wool_chests</td></tr>
+      <tr><td>Spitzhacke zum Material</td><td>Kit-Eintrag in der XML</td><td>Monument</td><td>DestroyKitPairing</td><td>von Hand</td></tr>
+      <tr><td>Schwebehöhe</td><td>mindestens 3 Luft unter Monument und Core, von unten mit ein paar Blöcken erreichbar</td><td>Monument, Core</td><td>schwebt 4 bzw. 6</td><td>float_problems (0.21)</td></tr>
+    </tbody>
+  </table></div>
+  <p><b>Damit war gemeint, „Karten ins Studio bringen“.</b> Eine Welt, die anderswo gebaut wurde (mit pgmvox oder von Hand), wird hochgeladen, und ihre map.xml wird in den Intent gelesen. Den Parser dafür gibt es schon. Configure zeigt die Regionen zum Nachziehen. Beim Export laufen die Stempel über die hochgeladenen Blöcke, und die Prüfung läuft wie bei jeder Karte. Das ist der heutige Upload-Weg plus die Stempel-Gruppe, keine neue Werkzeugkette.</p>
+
+  <h2 id="gelaende">Das alte Gelände entfernen?</h2>
+  <p><b>Nicht entfernen, sondern zurückstufen.</b> Der Löser mit Höhenmarken wird eine Ebene unter vielen, statt der einzige Weg zu Gelände zu sein. Vier Gründe:</p>
+  <ul>
+    <li><b>Exakte Höhen braucht das Spiel:</b> Spawn-Boden, Wollraum, Monument-Sockel. Marken liefern sie, Rauschen nicht.</li>
+    <li><b>Gespeicherte Karten dürfen nichts verlieren.</b> Eine Migration übersetzt Formen und Relief jeder bestehenden Skizze in Ebenen. Das geht ohne Verlust, weil die alten Operationen als Ebenenarten weiterleben.</li>
+    <li><b>Symmetrie:</b> Der Löser faltet das Feld, damit beide Teams dieselbe Stufe haben. Jede neue Ebene muss das auch: Man baut die rote Hälfte, die blaue ist ihr Abbild.</li>
+    <li><b>Was wegfällt,</b> sind die Pflicht, alles über Marken zu sagen, und die Regeln, die nur Marken prüfen (RL1–RL6).</li>
+  </ul>
+  <p><b>Der Nutzer behält die Kontrolle über das Zufällige,</b> weil jedes Rauschen eine Ebene mit Bereich, Größe, Stärke und Zufallszahl ist. Die Schlucht folgt einer gezeichneten Linie, die Hügel bleiben in ihrem Bereich, und der weiche Rand blendet sie aus. Das kannst du im <a href="https://claude.ai/artifact/6VjMK9o26ex268P8XhJRpw">Ebenen-Prototyp</a> ausprobieren: Punkte ziehen, Ebenen umsortieren, „Was diese Ebene ändert“ anschauen.</p>
+
+  <h2 id="stufen">Regeln in drei Stufen</h2>
+  <div class="tier">
+    <div style="--c: var(--hard)"><h4>Hart</h4><p>Hält die Arbeit an. Gemeint ist das, ohne das eine Karte nicht lädt oder nicht gebaut werden kann: gültige XML und Spielteile, kein Haus im Haus, kein Baum im Haus, ein sinnvolles Ziel, Schwebehöhe und Erreichbarkeit.</p></div>
+    <div style="--c: var(--soft)"><h4>Hinweis</h4><p>Wird am Ding gezeigt und im Browser markiert, hält aber nichts an. Dazu gehören Abstände von Bäumen und Häusern, Weg unter dem Haus, Hang unter dem Haus, Überlappungen in der Skizze und Stilregeln.</p></div>
+    <div style="--c: var(--measure)"><h4>Messwert</h4><p>Eine Zahl gegen ein Ziel im Prüfblatt, und du entscheidest. Das betrifft Laufwege, Abstände, Lückenbreiten, Frontlinien und Spuren (GO, WL, CT, LN, FR, MD).</p></div>
+  </div>
+  <p>Der Schalter aus dem Versuch (<code>Rules:Mode=minimal</code>) ist genau die erste Stufe allein. Er liegt jetzt auf dem Zweig, und das Standardverhalten ist unverändert. SK13 verschwindet in 2.0 nicht durch Lockern, sondern weil Tunnel und Gruft 3D-Ebenen werden. Die stillen Ablehnungen der Ausstattung werden Hinweise, die im Browser am Ding markiert sind.</p>
+
+  <h2 id="sprache">C# oder Python</h2>
+  <p><b>Meine Empfehlung: die pgmvox-Operationen nach C# portieren, eine nach der anderen.</b> Das Studio hat in C# schon das Blockraster, den Weltschreiber, die Stempel, die Regeln und die XML. Die Geländeebenen gehören in <code>PgmStudio.Geom</code>, und das läuft auch im Browser (WebAssembly). Die Vorschau im Browser ist dann derselbe Code wie der Bau, ohne eine zweite Kopie in JavaScript.</p>
+  <p><b>pgmvox bleibt das Labor.</b> Agenten probieren neue Operationen in Python aus. Eine Operation wird portiert, wenn sie sich bewährt hat, und ein Test vergleicht beide Ergebnisse Spalte für Spalte. Dass das geht, hat der Rezept-Versuch gezeigt: 2.438 Bytes Rezept reproduzieren 40.000 von 40.000 Spalten. Die Alternative ist ein Python-Dienst neben dem Studio. Der ist schneller da, bedeutet aber zwei Umsetzungen jeder Operation und einen zweiten Prozess auf dem 4-GB-Server.</p>
+
+  <h2 id="reihenfolge">Reihenfolge, langsam und ohne dass das Studio leidet</h2>
+  <p>Jede Phase ist für sich auslieferbar. Vor jedem Schritt auf pgmstudio.de laufen eine Migrationsprobe über alle gespeicherten Karten und die Browser-Tests.</p>
+  <div class="phase"><div class="n">0</div><div><h4>Im laufenden Studio, ohne neue Begriffe</h4><p>Bibliothek: Häuser in Lehmfarben, <code>roof.stair</code> auf allen Zeilen. Prüfung der Schwebehöhe auf der fertig gebauten Welt.</p><p class="feel">Was du merkst: schönere Häuser, sonst nichts.</p></div></div>
+  <div class="phase"><div class="n">1</div><div><h4>Ebenen-Dokument und Geländeebenen (Zweig, Beta)</h4><p>Das Dokument, die 2,5D-Ebenen in Geom, ein Tab „Ebenen“ im Skizzenmodus wie im Prototyp, die Migration der bestehenden Skizzen. Eine Beta-Instanz mit einer Kopie der Datenbank.</p><p class="feel">Was du merkst: In der Beta ist Gelände aus Bereichen baubar. Das Live-Studio bleibt unverändert.</p></div></div>
+  <div class="phase"><div class="n">2</div><div><h4>3D-Ebenen</h4><p>Tunnel, Kammer, Schacht, Füllkörper, Unterseiten von Schwebeinseln.</p><p class="feel">Was du merkst: Grüfte und Minen ohne den Deckel-Trick.</p></div></div>
+  <div class="phase"><div class="n">3</div><div><h4>Spielteile und Stempel</h4><p>Spielteile frei platzierbar, der Plan erzeugt Spielteile, Stempel als Gruppe, Import fremder Welten mit Stempeln.</p><p class="feel">Was du merkst: Wollräume und Monumente stehen dort, wo die Landschaft sie will. pgmvox-Karten bekommen Marker und Bauzonen-Rand.</p></div></div>
+  <div class="phase"><div class="n">4</div><div><h4>Häuser und Grammatik</h4><p>Die neuen Hausfelder, die Drehung, Grammatik als Ebenen-Familie mit Regeln in der Bibliothek.</p><p class="feel">Was du merkst: Siedlungen, die nicht in einer Reihe stehen, und Bauten wie in Sandreach.</p></div></div>
+  <div class="phase"><div class="n">5</div><div><h4>Plan der Orte und Prüfblatt</h4><p>Der Planungsschritt der Agenten als Dokument, mit Notizen an Orten und Freigabe vor dem Bau.</p><p class="feel">Was du merkst: Du gibst Rückmeldung, bevor gebaut wird.</p></div></div>
+
+  <h2 id="fragen">Fragen an dich</h2>
+  <div class="q"><ol>
+    <li><b>C# portieren oder Python-Dienst?</b> Ich empfehle C#, mit pgmvox als Labor.</li>
+    <li><b>Soll das Ebenen-Dokument die Skizze ersetzen</b> (mit Migration), oder in der Beta zunächst neben ihr stehen?</li>
+    <li><b>Welche Regeln sind hart, welche Hinweis, welche Messwert?</b> Mein Vorschlag steht oben. Der Versuch ohne Regeln zeigt, wo er zu streng oder zu locker ist.</li>
+    <li><b>Wo soll die Beta laufen?</b> Zum Beispiel als zweite Instanz auf pgmstudio.de mit einer Kopie der Datenbank.</li>
+    <li><b>Womit anfangen:</b> mit den Geländeebenen (Phase 1) oder mit Spielteilen und Stempeln (Phase 3)? Ich würde mit dem Gelände beginnen, weil dort der größte Unterschied liegt.</li>
+    <li><b>Phase 0 jetzt im Live-Studio:</b> Darf ich die Bibliothek um Lehmfarben und Treppendächer ergänzen?</li>
+  </ol></div>
+
+  <div class="links">
+    <a href="https://claude.ai/artifact/6VjMK9o26ex268P8XhJRpw">Ebenen-Prototyp</a>
+    <a href="https://claude.ai/artifact/Rc4s73Z41xvAeUo1yMPRww">Prüfblatt-Prototyp</a>
+    <a href="https://claude.ai/artifact/Lj5Y9gBDHvAW5913jvLCC2">Rezept-Inspektor</a>
+    <a href="https://claude.ai/artifact/LUW51aGd6Ad8hwCGihKYRi">Bericht Freeform gegen Studio</a>
+  </div>
+</main>
+</div>

@@ -1,0 +1,90 @@
+== the spec, written by its script
+  studio at http://localhost:7894/api
+== the board, before a map row exists
+  POST  /plan/evaluate                                 200
+    score 3.3166598765711117  valid True
+    [complaint] G8       the layout's ground fills 76.72 percent of the rectangle around it, more than 54 percent
+    [complaint] LN5      the layout has 14.33 percent of its ground off every route between waypoints, more than 12 percent
+    [complaint] FR6      the front line from cell (-12, 4) to cell (12, 4) is 24 cells wide, more than 16 cells
+    [complaint] WL10     wool 'wool-kiln' has a walking distance of 8 blocks to the crossing, less than 22 blocks   @ kiln-room, tower-room
+    [complaint] WL18     wool 'wool-kiln' has a walking distance of 8 blocks to the crossing, less than 25 blocks   @ kiln-room, tower-room
+    [complaint] EL1      pieces 'quarry-main' and 'spoil-shelf' differ by 3 blocks in height where they share an edge, more than 1 block   @ quarry-main, spoil-shelf
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-20, 26) at 11 to (-12, 26) at 8 to `relief.team.marks`
+            {"id":"ramp-spoil-shelf-quarry-main","kind":"line","width":6,"points":[[-20,26],[-12,26]],"h":[11,8]}
+    [complaint] EL1      pieces 'quarry-main' and 'hamlet-a' differ by 4 blocks in height where they share an edge, more than 1 block   @ quarry-main, hamlet-a
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-4, 41) at 12 to (-4, 31) at 8 to `relief.team.marks`
+            {"id":"ramp-hamlet-a-quarry-main","kind":"line","width":6,"points":[[-4,41],[-4,31]],"h":[12,8]}
+    [complaint] EL1      pieces 'quarry-main' and 'hamlet-b' differ by 4 blocks in height where they share an edge, more than 1 block   @ quarry-main, hamlet-b
+      edit  layout.relief.team.marks  add: add a line mark six wide from (30, 41) at 12 to (30, 31) at 8 to `relief.team.marks`
+            {"id":"ramp-hamlet-b-quarry-main","kind":"line","width":6,"points":[[30,41],[30,31]],"h":[12,8]}
+    [complaint] EL1      pieces 'quarry-east' and 'hamlet-b' differ by 4 blocks in height where they share an edge, more than 1 block   @ quarry-east, hamlet-b
+      edit  layout.relief.team.marks  add: add a line mark six wide from (42, 41) at 12 to (42, 31) at 8 to `relief.team.marks`
+            {"id":"ramp-hamlet-b-quarry-east","kind":"line","width":6,"points":[[42,41],[42,31]],"h":[12,8]}
+    [complaint] EL1      pieces 'spoil-shelf' and 'bench' differ by 5 blocks in height where they share an edge, more than 1 block   @ spoil-shelf, bench
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-38, 32) at 16 to (-26, 32) at 11 to `relief.team.marks`
+            {"id":"ramp-bench-spoil-shelf","kind":"line","width":6,"points":[[-38,32],[-26,32]],"h":[16,11]}
+    [complaint] EL1      pieces 'bench' and 'hamlet-a' differ by 4 blocks in height where they share an edge, more than 1 block   @ bench, hamlet-a
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-37, 44) at 16 to (-27, 44) at 12 to `relief.team.marks`
+            {"id":"ramp-bench-hamlet-a","kind":"line","width":6,"points":[[-37,44],[-27,44]],"h":[16,12]}
+    [complaint] EL1      pieces 'bench' and 'hamlet-row' differ by 4 blocks in height where they share an edge, more than 1 block   @ bench, hamlet-row
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-37, 60) at 16 to (-27, 60) at 12 to `relief.team.marks`
+            {"id":"ramp-bench-hamlet-row","kind":"line","width":6,"points":[[-37,60],[-27,60]],"h":[16,12]}
+    [complaint] EL1      pieces 'bench' and 'scree-gully' differ by 4 blocks in height where they share an edge, more than 1 block   @ bench, scree-gully
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-37, 88) at 16 to (-27, 88) at 12 to `relief.team.marks`
+            {"id":"ramp-bench-scree-gully","kind":"line","width":6,"points":[[-37,88],[-27,88]],"h":[16,12]}
+    [complaint] EL1      pieces 'cart-0' and 'hamlet-a' differ by 3 blocks in height where they share an edge, more than 1 block   @ cart-0, hamlet-a
+      edit  layout.relief.team.marks  add: add a line mark six wide from (4, 38) at 12 to (12, 38) at 9 to `relief.team.marks`
+            {"id":"ramp-hamlet-a-cart-0","kind":"line","width":6,"points":[[4,38],[12,38]],"h":[12,9]}
+    [complaint] EL1      pieces 'cart-0' and 'hamlet-b' differ by 3 blocks in height where they share an edge, more than 1 block   @ cart-0, hamlet-b
+      edit  layout.relief.team.marks  add: add a line mark six wide from (28, 38) at 12 to (20, 38) at 9 to `relief.team.marks`
+            {"id":"ramp-hamlet-b-cart-0","kind":"line","width":6,"points":[[28,38],[20,38]],"h":[12,9]}
+    [complaint] EL1      pieces 'cart-1' and 'hamlet-a' differ by 2 blocks in height where they share an edge, more than 1 block   @ cart-1, hamlet-a
+      edit  layout.relief.team.marks  add: add a line mark six wide from (5, 42) at 12 to (11, 42) at 10 to `relief.team.marks`
+            {"id":"ramp-hamlet-a-cart-1","kind":"line","width":6,"points":[[5,42],[11,42]],"h":[12,10]}
+    [complaint] EL1      pieces 'cart-1' and 'hamlet-b' differ by 2 blocks in height where they share an edge, more than 1 block   @ cart-1, hamlet-b
+      edit  layout.relief.team.marks  add: add a line mark six wide from (27, 42) at 12 to (21, 42) at 10 to `relief.team.marks`
+            {"id":"ramp-hamlet-b-cart-1","kind":"line","width":6,"points":[[27,42],[21,42]],"h":[12,10]}
+    [complaint] EL1      pieces 'hamlet-row' and 'bench-stair-1' differ by 2 blocks in height where they share an edge, more than 1 block   @ hamlet-row, bench-stair-1
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-22, 71) at 14 to (-22, 65) at 12 to `relief.team.marks`
+            {"id":"ramp-bench-stair-1-hamlet-row","kind":"line","width":6,"points":[[-22,71],[-22,65]],"h":[14,12]}
+    [complaint] EL1      pieces 'hamlet-row' and 'bench-stair-2' differ by 3 blocks in height where they share an edge, more than 1 block   @ hamlet-row, bench-stair-2
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-26, 72) at 15 to (-26, 64) at 12 to `relief.team.marks`
+            {"id":"ramp-bench-stair-2-hamlet-row","kind":"line","width":6,"points":[[-26,72],[-26,64]],"h":[15,12]}
+    [complaint] EL1      pieces 'hamlet-row' and 'bench-landing' differ by 4 blocks in height where they share an edge, more than 1 block   @ hamlet-row, bench-landing
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-30, 73) at 16 to (-30, 63) at 12 to `relief.team.marks`
+            {"id":"ramp-bench-landing-hamlet-row","kind":"line","width":6,"points":[[-30,73],[-30,63]],"h":[16,12]}
+    [complaint] EL1      pieces 'scree-gully' and 'bench-stair-1' differ by 2 blocks in height where they share an edge, more than 1 block   @ scree-gully, bench-stair-1
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-22, 77) at 14 to (-22, 83) at 12 to `relief.team.marks`
+            {"id":"ramp-bench-stair-1-scree-gully","kind":"line","width":6,"points":[[-22,77],[-22,83]],"h":[14,12]}
+    [complaint] EL1      pieces 'scree-gully' and 'bench-stair-2' differ by 3 blocks in height where they share an edge, more than 1 block   @ scree-gully, bench-stair-2
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-26, 76) at 15 to (-26, 84) at 12 to `relief.team.marks`
+            {"id":"ramp-bench-stair-2-scree-gully","kind":"line","width":6,"points":[[-26,76],[-26,84]],"h":[15,12]}
+    [complaint] EL1      pieces 'scree-gully' and 'bench-landing' differ by 4 blocks in height where they share an edge, more than 1 block   @ scree-gully, bench-landing
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-30, 75) at 16 to (-30, 85) at 12 to `relief.team.marks`
+            {"id":"ramp-bench-landing-scree-gully","kind":"line","width":6,"points":[[-30,75],[-30,85]],"h":[16,12]}
+    [complaint] EL1      pieces 'scree-gully' and 'spawn-stair-1' differ by 2 blocks in height where they share an edge, more than 1 block   @ scree-gully, spawn-stair-1
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-9, 86) at 14 to (-15, 86) at 12 to `relief.team.marks`
+            {"id":"ramp-spawn-stair-1-scree-gully","kind":"line","width":6,"points":[[-9,86],[-15,86]],"h":[14,12]}
+    [complaint] EL1      pieces 'scree-gully' and 'spawn-stair-2' differ by 3 blocks in height where they share an edge, more than 1 block   @ scree-gully, spawn-stair-2
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-8, 90) at 15 to (-16, 90) at 12 to `relief.team.marks`
+            {"id":"ramp-spawn-stair-2-scree-gully","kind":"line","width":6,"points":[[-8,90],[-16,90]],"h":[15,12]}
+    [complaint] EL1      pieces 'scree-gully' and 'terrace-w' differ by 4 blocks in height where they share an edge, more than 1 block   @ scree-gully, terrace-w
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-22, 101) at 16 to (-22, 91) at 12 to `relief.team.marks`
+            {"id":"ramp-terrace-w-scree-gully","kind":"line","width":6,"points":[[-22,101],[-22,91]],"h":[16,12]}
+    [complaint] EL1      pieces 'scree-gully' and 'terrace-front' differ by 4 blocks in height where they share an edge, more than 1 block   @ scree-gully, terrace-front
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-7, 94) at 16 to (-17, 94) at 12 to `relief.team.marks`
+            {"id":"ramp-terrace-front-scree-gully","kind":"line","width":6,"points":[[-7,94],[-17,94]],"h":[16,12]}
+    [complaint] WL11     room piece 'tower-room' of a wool climbs 5 blocks to piece 'spoil-shelf' where they share an edge, more than 1 block   @ spoil-shelf, tower-room
+    [complaint] FR9      piece 'kiln-room' has 12 blocks of front line along its -z side, less than 15 blocks   @ kiln-room
+  POST  /plan/inspect                                  200
+  GET   /rules/terms                                   200
+  GET   /rules?rule=CT12                               200
+    group gap: {"piecesA": ["bench", "bench-landing", "bench-stair-0"], "piecesB": ["bench", "bench-landing", "bench-stair-0"], "roleA": "team", "roleB": "team", "blocks": 32}   (CT12: CT12)
+    frontline run: {"team": 0, "widthBlocks": 96, "profile": "straight", "x1": -48, "z1": 16, "x2": 48, "z2": 16}
+    frontline run: {"team": 1, "widthBlocks": 96, "profile": "straight", "x1": -48, "z1": -16, "x2": 48, "z2": -16}
+== what the run would change
+  PUT   /map/exp-slatefold-min-fullcheck/source?dry=true 200   ! 3 DR-TONE SK27
+    [complaint] DR-TONE  boulder 'rock-shelf' at (-28, 34) is cut from cobble and grey stone, and the ground it stands on is cobble and grey stone, with every tone family of the boulder   @ dressing.props
+    [complaint] DR-TONE  boulder 'rock-brink' at (26, 33) is cut from cobble and grey stone, and the ground it stands on is cobble and grey stone, with every tone family of the boulder   @ dressing.props
+    [complaint] SK27     island 'bench' on layer 'ground' has 13 plateaus from surface 8 to 16 with 3 different paints, more than 1   @ layers[0].layout.shapes
+    a new map: 37 member(s) of its plan, layout and intent stated for the first time
