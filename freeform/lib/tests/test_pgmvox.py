@@ -922,7 +922,7 @@ class HouseDoor(unittest.TestCase):
     def test_no_window_beside_the_door(self):
         for L in (5, 6, 7, 8, 9, 10, 11):
             w = World(-20, -20, 40, 40, sy=80)
-            d = BLD.house(w, BLD.House(0, 0, 0, L=L, W=6, floor=64, windows=BLD.windows(period=2)))
+            d = BLD.house(w, BLD.House(0, 0, 0, L=L, W=6, floor=64, windows=BLD.window_rhythm(period=2)))
             x, z = d["door"][0], d["door"][1]
             for dx in (-1, 0, 1):
                 for dz in (-1, 0, 1):

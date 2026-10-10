@@ -342,7 +342,7 @@ STYLES = {
 }
 
 
-def windows(period=3, rows=((2,), (2, 3)), margin=1.5):
+def window_rhythm(period=3, rows=((2,), (2, 3)), margin=1.5):
     """The window rhythm every board used: one in every `period` blocks along a wall, clear of its ends, on the
     given courses of the ground storey and of the upper ones. A function (run, span, t, storey) -> bool."""
     def f(run, span, t, storey):
@@ -371,7 +371,7 @@ class House:
     roof: str = "gable"
     pitch: int = 1
     overhang: int = 1
-    windows: object = _field(default_factory=windows)
+    windows: object = _field(default_factory=window_rhythm)
 
 
 def house(w, h, ground_at=None, rng=None):

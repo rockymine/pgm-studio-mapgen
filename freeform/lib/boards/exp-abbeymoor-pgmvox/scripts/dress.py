@@ -136,7 +136,7 @@ def water(w, stats):
 
 # ---- houses ------------------------------------------------------------------------------------------------------
 def clear_windows(L, margin=2.6):
-    base = BLD.windows()
+    base = BLD.window_rhythm()
 
     def f(run, span, t, storey):
         if span == L and abs(run - span / 2) < margin:

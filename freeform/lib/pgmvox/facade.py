@@ -296,7 +296,7 @@ def diamonds(period, r, block, along="z"):
     return f
 
 
-def steps(width, blocks):
+def kilim_steps(width, blocks):
     """Kilim bands across the rectangle, stepped: bands `width` wide in turn through `blocks`."""
     def f(c):
         band = (c.x - c.x0) // width

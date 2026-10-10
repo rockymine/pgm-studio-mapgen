@@ -99,7 +99,7 @@ def noise_ok(field, i, k, thr):
 def clear_windows(L, base=None, margin=2.6):
     """The library's window rhythm with the middle of the long wall left blank: the door is there (build.house puts it
     on the cell nearest the middle), and a window beside it is a foot-hole in the door's frame."""
-    base = base or BLD.windows()
+    base = base or BLD.window_rhythm()
 
     def f(run, span, t, storey):
         if span == L and abs(run - span / 2) < margin:
