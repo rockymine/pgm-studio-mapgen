@@ -1,17 +1,16 @@
 """The grown ground of the red half: rock in beds that follow the surface, soil, the paint by slope, the river
 and the pond, the falls into the rift, the island's underside, the biomes.
 
-pgmvox.terrain.lay lays the columns and paints the top by slope (by_angle) with the rock in beds (Strata, beds).
-What it cannot do is done here: a top that varies by place as well as slope (patches of andesite and coarse dirt
-on a mid slope, a sandy lip by the river), a per-column underside (lay and underside both take one floor height),
-the water, and the falls.
+pgmvox.terrain.lay lays the columns with the rock in beds (Strata, beds), paints the top by slope and place
+(Paint layers: patches of andesite and coarse dirt on a mid slope, a sandy lip by the river) and leaves nothing
+under each column's own underside; fill_water lays the beds and the water. The falls are done here.
 """
 import numpy as np
 
 import plan as P
 from pgmvox import B, rng
 from pgmvox.noise import fbm
-from pgmvox.terrain import Strata, beds, by_angle, lay
+from pgmvox.terrain import Paint, Strata, beds, by_angle, fill_water, lay
 
 
 def world_grid(w, a, fill=0):
@@ -25,41 +24,36 @@ def lay_ground(w, L):
     H = world_grid(w, L.H, -1)
     mask = world_grid(w, L.land, False)
     rock = Strata([((B.STONE, 0), 3, 6), ((B.STONE, 5), 1.4, 3)], length=60, seed=7, start=-300)
-    # beds follow the ground: a column's beds are counted down from its own surface (offset = its height)
-    deg = lay(w, H, mask, top=by_angle([(38, (B.GRASS, 0)), (55, (B.GRASS, 0)), (90, (B.STONE, 0))]),
-              bands=beds(rock, H, flecks=[((B.STONE, 0), (B.COBBLE, 0), 0.04)], seed=3), from_y=3)
     r = rng(P.BOARD, "ground")
     sh = (w.sx, w.sz)
     patch, patch2, cell = fbm(sh, 5, 2, seed=61), fbm(sh, 4, 2, seed=62), r.random(sh)
-    bottom = world_grid(w, L.bottom, 0)
     water = world_grid(w, L.water, 0)
-    d_river = world_grid(w, L.d_river, 99.0)
-    for i, k in np.argwhere(mask):
-        top = int(H[i, k])
-        w.ids[i, :max(0, bottom[i, k]), k] = 0                  # the underside: nothing under the column's bottom
-        w.dat[i, :max(0, bottom[i, k]), k] = 0
-        a = deg[i, k]
-        x = w.x0 + i
-        if water[i, k] > 0:
-            c = cell[i, k]
-            still = x < -74 or water[i, k] == P.POND_LEVEL
-            blk = ((B.CLAY, 0) if c < 0.3 else (B.SAND, 0) if c < 0.6 else (B.DIRT, 0)) if still else \
-                  ((B.GRAVEL, 0) if c < 0.55 else (B.SAND, 0) if c < 0.8 else (B.STONE, 5))
-            w.ids[i, top, k], w.dat[i, top, k] = blk
-            w.ids[i, top + 1:water[i, k] + 1, k] = B.WATER
-            w.dat[i, top + 1:water[i, k] + 1, k] = 0
-            continue
-        if 33 < a <= 38 and patch[i, k] > 0.35:                 # worn edge where the ground turns steep
-            w.ids[i, top, k], w.dat[i, top, k] = B.DIRT, 1
-        elif 38 < a <= 55:                                      # a mid slope: grass, rock or coarse dirt in patches
-            pv = patch[i, k]
-            if pv <= 0.15:
-                w.ids[i, top, k], w.dat[i, top, k] = (B.STONE, 5 if cell[i, k] < 0.5 else 0) if pv > -0.25 else (B.DIRT, 1)
-        elif a > 55:
-            c = cell[i, k]
-            w.ids[i, top, k], w.dat[i, top, k] = (B.STONE, 0) if c < 0.45 else (B.STONE, 5) if c < 0.8 else (B.COBBLE, 0)
-        if d_river[i, k] < 5.2 and x > -75 and top <= P.RIVER_LEVEL + 2 and a < 38:
-            w.ids[i, top, k], w.dat[i, top, k] = (B.SAND, 0) if patch2[i, k] > -0.1 else (B.GRAVEL, 0)
+    X = w.x0 + np.arange(w.sx)[:, None] + np.zeros(sh, int)
+    lip = (world_grid(w, L.d_river, 99.0) < 5.2) & (X > -75) & (H <= P.RIVER_LEVEL + 2)
+    paint = [
+        Paint((B.SAND, 0), slope=(None, 37), where=lip, values=[(patch2, -0.1, None)]),   # a sandy lip by the river
+        Paint((B.GRAVEL, 0), slope=(None, 37), where=lip),
+        Paint((B.DIRT, 1), slope=(33, 38), values=[(patch, 0.35, None)]),     # worn edge where the ground turns steep
+        Paint((B.STONE, 5), slope=(38, 55), values=[(patch, -0.25, 0.15), (cell, None, 0.5)]),   # mid-slope patches
+        Paint((B.STONE, 0), slope=(38, 55), values=[(patch, -0.25, 0.15)]),
+        Paint((B.DIRT, 1), slope=(38, 55), values=[(patch, None, -0.25)]),
+        Paint((B.STONE, 0), slope=(55, None), values=[(cell, None, 0.45)]),   # cliffs: stone, andesite, cobble
+        Paint((B.STONE, 5), slope=(55, None), values=[(cell, None, 0.8)]),
+        Paint((B.COBBLE, 0), slope=(55, None)),
+    ]
+    # beds follow the ground: a column's beds are counted down from its own surface (offset = its height)
+    deg = lay(w, H, mask, top=by_angle([(38, (B.GRASS, 0)), (55, (B.GRASS, 0)), (90, (B.STONE, 0))]),
+              bands=beds(rock, H, flecks=[((B.STONE, 0), (B.COBBLE, 0), 0.04)], seed=3), from_y=3,
+              paint=paint, bottom=world_grid(w, L.bottom, 0))
+    still = (X < -74) | (water == P.POND_LEVEL)
+    fill_water(w, H, water, mask=mask, bed=[
+        Paint((B.CLAY, 0), where=still, values=[(cell, None, 0.3)]),         # the pond and the mill race: clay, sand, dirt
+        Paint((B.SAND, 0), where=still, values=[(cell, None, 0.6)]),
+        Paint((B.DIRT, 0), where=still),
+        Paint((B.GRAVEL, 0), values=[(cell, None, 0.55)]),                   # the river: gravel, sand, andesite
+        Paint((B.SAND, 0), values=[(cell, None, 0.8)]),
+        Paint((B.STONE, 5)),
+    ])
     # biomes: forest on the woods, river in the channel, plains elsewhere
     w.biome[:, :] = 1
     w.biome[world_grid(w, L.forest, False)] = 4

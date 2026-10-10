@@ -4,12 +4,16 @@ undersides of floating ground, and a sea of cloud. The landforms that shape the 
     deg = slope_deg(H)                            # each column's slope, as the studio's SurfaceGradient reads it
     beds = beds(Strata(...), bed_offset(H.shape, dip=(0.04, 0), fold=3))
     lay(w, H, mask, top=by_angle([...]), bands=beds)   # columns up to H, painted by slope, rock in beds
+    lay(..., paint=[Paint(...), ...], bottom=B)   # a top chosen by slope and place; nothing under each column's B
+    fill_water(w, H, level, bed=[Paint(...)])     # a bed under every wet column and water up to its level
     H = mountain_ring(X, Z, clear=120, ...)       # a ring of separate massifs rising outside a clear radius
     underside(w, mask, top_y, root_depth(mask, flutes=4, spires=12))
     cloud_deck(w, y, mask, seed)                  # a deck of cloud with billows and breaks
 
 The numbers that give a board its look stay in the board's plan; nothing here is a recipe.
 """
+from dataclasses import dataclass
+
 import numpy as np
 from scipy.ndimage import gaussian_filter
 
@@ -65,6 +69,38 @@ def slope_deg(H, mask=None, window=SLOPE_WINDOW):
     rise = np.hypot(along_x, along_z) / (8.0 * step)
     deg = np.minimum(89, np.round(np.degrees(np.arctan(rise)))).astype(int)
     return np.where(m, deg, 0)
+
+
+def _within(v, span):
+    lo, hi = span
+    return (lo is None or v > lo) and (hi is None or v <= hi)
+
+
+@dataclass
+class Paint:
+    """One layer of a ground's top: the block it lays and where. It applies to a column whose slope lies in `slope`
+    (lo, hi] degrees, which the mask `where` (over the world grid) holds, and where every (array, lo, hi) of
+    `values` has lo < value <= hi; None leaves a side open. `lay` and `fill_water` take a list of layers, and the
+    first that applies wins, so a board states its exceptions before its rules."""
+    block: tuple
+    slope: tuple = None
+    where: object = None
+    values: tuple = ()
+
+    def applies(self, i, k, deg=None):
+        if self.slope is not None and (deg is None or not _within(deg, self.slope)):
+            return False
+        if self.where is not None and not self.where[i, k]:
+            return False
+        return all(_within(a[i, k], (lo, hi)) for a, lo, hi in self.values)
+
+
+def first_paint(paint, i, k, deg=None):
+    """The block of the first layer that applies to column (i, k), or None."""
+    for layer in paint:
+        if layer.applies(i, k, deg):
+            return layer.block
+    return None
 
 
 def by_angle(stops):
@@ -176,7 +212,7 @@ def soil_depth(deg, soil=SOIL):
 
 
 def lay(w, H, mask=None, top=None, under=(B.DIRT, 0), rock=(B.STONE, 0), dirt_depth=None, snow_above=None,
-        snow=(B.SNOW, 0), bands=None, from_y=1, soil=SOIL, ledges=True):
+        snow=(B.SNOW, 0), bands=None, from_y=1, soil=SOIL, ledges=True, paint=None, bottom=None):
     """Columns of ground up to H (world heights): rock, then soil of `under`, then the top block, which
     `top(deg, h)` chooses by slope (default grass); above snow_above the top is snow with a layer over it.
     bands(i, k, ys) may paint the rock instead.
@@ -184,7 +220,11 @@ def lay(w, H, mask=None, top=None, under=(B.DIRT, 0), rock=(B.STONE, 0), dirt_de
     The soil's depth follows the slope (`soil`): three blocks on gentle ground, less on steeper, none on a cliff,
     so a cliff face is rock and a terrace's riser is not a band of dirt. With `ledges`, a cell level with its
     neighbours reads as gentle however steep its hill (ledge_angle). `dirt_depth` gives one depth everywhere
-    instead. Returns the slope the paint read."""
+    instead.
+
+    `paint` (a list of `Paint`) chooses the top by place as well as slope: the first layer that applies replaces
+    what `top` chose. `bottom` (a world-grid array, or one height) is each column's underside: nothing is left
+    below it. Returns the slope the paint read."""
     deg = slope_deg(H, mask)
     if ledges:
         deg = ledge_angle(H, deg, mask)
@@ -208,13 +248,35 @@ def lay(w, H, mask=None, top=None, under=(B.DIRT, 0), rock=(B.STONE, 0), dirt_de
             w.ids[i, max(from_y, h - dd):h, k] = under[0]
             w.dat[i, max(from_y, h - dd):h, k] = under[1]
             bid, d = top(deg[i, k], h) if top else ((B.GRASS, 0) if dd > 0 else rock)
+            if paint:
+                bid, d = first_paint(paint, i, k, deg[i, k]) or (bid, d)
             if snow_above is not None and h > snow_above:
                 bid, d = snow
                 if h + 1 < w.sy:
                     w.ids[i, h + 1, k], w.dat[i, h + 1, k] = B.SNOW_LAYER, 1
             w.ids[i, h, k], w.dat[i, h, k] = bid, d
+            if bottom is not None:
+                b = max(0, int(bottom if np.isscalar(bottom) else bottom[i, k]))
+                w.ids[i, :b, k] = 0
+                w.dat[i, :b, k] = 0
     return deg
 
+
+def fill_water(w, H, level, bed, mask=None):
+    """Water in every column whose `level` (a world-grid array of water surfaces, 0 or less where dry) is set: the
+    column's top block becomes its bed, `bed` a block or a list of `Paint` (read without a slope), and water fills
+    from the block above it up to the level. Returns how many columns are wet."""
+    wet = np.asarray(level) > 0
+    if mask is not None:
+        wet &= mask
+    for i, k in np.argwhere(wet):
+        top = int(H[i, k])
+        blk = first_paint(bed, i, k) if isinstance(bed, list) else bed
+        if blk is not None:
+            w.ids[i, top, k], w.dat[i, top, k] = blk
+        w.ids[i, top + 1:int(level[i, k]) + 1, k] = B.WATER
+        w.dat[i, top + 1:int(level[i, k]) + 1, k] = 0
+    return int(wet.sum())
 
 def root_depth(mask, cone=3.2, power=0.85, rough=0.35, flutes=0.0, flute_cell=5, spires=0.0, spire_cell=18,
                cap=None, seed=0):

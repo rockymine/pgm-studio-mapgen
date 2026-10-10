@@ -304,11 +304,14 @@ class Landforms(unittest.TestCase):
 
     def water_world(self, H, *waters):
         w = World(-60, -60, 120, 120, sy=96)
-        terrain.lay(w, np.round(H).astype(int))
+        top = np.round(H).astype(int)
+        terrain.lay(w, top)
+        level = np.zeros(H.shape)
         for wat in waters:
-            for i, k in np.argwhere(wat.mask):
-                for y in range(int(round(H[i, k])) + 1, int(wat.surface[i, k]) + 1):
-                    w.ids[i, y, k] = B.WATER
+            level = np.maximum(level, np.where(wat.mask, wat.surface, 0))
+        terrain.fill_water(w, top, level, bed=(B.GRAVEL, 0))
+        self.assertTrue(all(w.id(int(x), int(top[i, k]), int(z)) == B.GRAVEL
+                            for (i, k), x, z in zip(np.argwhere(level > 0), self.X[level > 0], self.Z[level > 0])))
         return w
 
     def test_a_river_into_a_lake_leaves_no_water_against_air(self):
@@ -743,6 +746,30 @@ class Objectives(unittest.TestCase):
 
 
 class Terrain(unittest.TestCase):
+    def test_paint_layers_choose_the_top_by_slope_and_place_first_match_first(self):
+        w = World(0, 0, 20, 4, sy=80)
+        H = np.tile((np.arange(20) * np.where(np.arange(20) < 10, 0, 3))[:, None] + 10, (1, 4))
+        east = np.zeros((20, 4), bool)
+        east[15:] = True
+        deg = terrain.lay(w, H, top=lambda d, h: (B.GRASS, 0), ledges=False, paint=[
+            terrain.Paint((B.SAND, 0), slope=(30, None), where=east),
+            terrain.Paint((B.STONE, 0), slope=(30, None)),
+            terrain.Paint((B.CLAY, 0), values=[(np.full((20, 4), 0.9), 0.5, None)], where=~east)])
+        for i in range(20):
+            top = w.id(i, int(H[i, 1]), 1)
+            want = (B.SAND if i >= 15 else B.STONE) if deg[i, 1] > 30 else (B.CLAY if i < 15 else B.GRASS)
+            self.assertEqual(top, want, i)
+
+    def test_nothing_is_left_under_a_columns_bottom(self):
+        H = np.full((6, 6), 30)
+        bottom = np.arange(36).reshape(6, 6) % 9 + 5
+        w = World(0, 0, 6, 6, sy=40)
+        terrain.lay(w, H, from_y=1, bottom=bottom)
+        for i in range(6):
+            for k in range(6):
+                self.assertTrue((w.ids[i, :bottom[i, k], k] == 0).all())
+                self.assertTrue((w.ids[i, bottom[i, k]:31, k] != 0).all())
+
     def test_slope_is_the_studios(self):
         """Every cell of sixteen grounds at windows 1 to 3, answered by the studio's SurfaceGradient."""
         with gzip.open(os.path.join(os.path.dirname(HERE), "pgmvox", "data", "slopes.json.gz"), "rt") as f:
