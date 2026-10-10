@@ -196,3 +196,7 @@ Adit's mouth the core is 77 blocks by the cavern and the shaft, and 108 from the
 
 **No trees grow in the Wash any more.** It is the way up from the canyon to the high lands, and its acacias and
 olives made a maze of it. The hoist over the Throat's hole is gone too, since the well comes down where it hung.
+
+**A house keeps a block of wall either side of its door, never a window.** The storefronts, adobes and houses
+each lay their windows by their own rhythm and cut the door in after, so a pane could stand against its frame:
+30 such panes before. Each is now the wall block under it, and none is left; the walks are unchanged.

@@ -195,6 +195,10 @@ def house(w, L, x0, z0, x1, z1, storeys=2, style="town", door="s", kind="house",
     w.set(dx_, floor_y + 1, dz_, st["door"], DOOR_FACING[door])
     w.set(dx_, floor_y + 2, dz_, st["door"], 8)
     w.set(dx_, floor_y + 3, dz_, *st["laid"]) if st["laid"] else None
+    for ax, az in ((dx_ - 1, dz_), (dx_ + 1, dz_), (dx_, dz_ - 1), (dx_, dz_ + 1)):   # a block of wall either side
+        for y in range(floor_y + 1, floor_y + 4):                                       # of the door, no window
+            if w.id(ax, y, az) == B.PANE:
+                w.set(ax, y, az, *st["base"])
     ox, oz = dx_ + out[0], dz_ + out[1]
     for y in range(floor_y + 1, floor_y + 3):
         if w.id(ox, y, oz) not in (B.AIR,):
