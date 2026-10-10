@@ -252,8 +252,7 @@ def land():
         h = LF.blend(h, np.full(sh, float(lvl)), np.hypot(Xf - mx, Zf - mz) < r + 8, width=8)
 
     # Lone Oak Knoll: a round rise by the rift
-    h = LF.spire(h, Xf, 74 + (Zf - 74) / 1.25, (-22, 74), r=16, top=float(h[-22 - X_MIN, 74 - Z_MIN]) + 6.5,
-                 taper=0.7, jag=0.0)
+    h = LF.spire(h, Xf, Zf, (-22, 74), r=16, rz=20, top=float(h[-22 - X_MIN, 74 - Z_MIN]) + 6.5, taper=0.7, jag=0.0)
 
     # the river channel: the valley floor is level + 1 along the line, so four down is a bed three under the
     # water; the weir is where the bed falls three
@@ -294,15 +293,14 @@ def land():
 
     # the sinkhole: concentric one-block steps from the cave's floor to the field
     (sx_, sz_), floor, rad = SINKHOLE
-    d = np.hypot(Xf - sx_, Zf - sz_)
-    funnel = np.round(floor + np.maximum(0, d - 1.5)).astype(int)        # a block a block: climbable
-    L.sinkhole = (d <= rad) & (funnel < Hi)
-    Hi = np.where(L.sinkhole, funnel, Hi)
+    funnel = np.round(LF.crater(Hi, np.hypot(Xf - sx_, Zf - sz_), floor, rad, flat=1.5)).astype(int)   # climbable
+    L.sinkhole = funnel < Hi
+    Hi = funnel
     # the spoil heap behind Ironhollow
     (px_, pz_), pr_, ph_ = SPOIL
-    dd = np.hypot((Xf - px_) / pr_, (Zf - pz_) / (pr_ * 0.8))
+    dd = shapes.ellipse_distance(Xf, Zf, (px_, pz_), pr_, pr_ * 0.8)
     L.spoil = (dd < 1) & land
-    Hi = np.where(L.spoil, Hi + np.round(ph_ * (1 - dd.clip(0, 1) ** 1.6)).astype(int), Hi)
+    Hi = np.where(L.spoil, np.round(LF.mound(Hi, dd, ph_, power=1.6)).astype(int), Hi)
 
     # the underside: sheer under the rift for about thirty blocks, tapering everywhere else
     bottom = island_bottom(Hi, land, X > -14, taper=(4, 0.9), sheer_taper=(26, 1.2), rough=4 * fbm(sh, 9, 3, seed=51),

@@ -391,6 +391,29 @@ class Landforms(unittest.TestCase):
         self.assertAlmostEqual(float(e[60, 80]), 1.0)                       # turned: 20 along z, 5 along x
         self.assertAlmostEqual(float(e[65, 60]), 1.0)
 
+    def test_a_mound_peaks_at_its_rise_and_a_crater_is_walked_out_of(self):
+        X, Z, H = self.X.astype(float), self.Z.astype(float), np.full(self.X.shape, 40.0)
+        e = shapes.ellipse_distance(X, Z, (5, 5), 10, 6)
+        heap = LF.mound(H, e, 7)
+        self.assertEqual(heap[65, 65], 47.0)
+        self.assertTrue((heap[e >= 1] == 40).all() and (heap >= H).all())
+        d = np.hypot(X + 20, Z - 10)
+        bowl = LF.crater(H, d, 30, 12, flat=1.5)
+        self.assertEqual(bowl[40, 70], 30)
+        self.assertTrue((bowl[d > 12] == 40).all() and (bowl <= 40).all())
+        inside = d <= 12
+        steps = np.abs(np.diff(bowl, axis=0))[inside[1:] & inside[:-1]].max()
+        self.assertLessEqual(steps, 1 + 1e-9)                             # one block a block: climbable
+
+    def test_an_elliptical_spire_is_a_round_one_stretched(self):
+        X, Z = self.X.astype(float), self.Z.astype(float)
+        H = np.full(X.shape, 30.0)
+        oval = LF.spire(H, X, Z, (0, 0), r=8, rz=16, top=50, jag=0.0)
+        round_ = LF.spire(H, X, Z / 2, (0, 0), r=8, top=50, jag=0.0)
+        self.assertTrue(np.allclose(oval, round_))
+        self.assertGreater(oval[60, 72], 30)                               # 12 out along z: still on its foot
+        self.assertEqual(oval[72, 60], 30)                                 # 12 out along x: past it
+
     def water_world(self, H, *waters):
         w = World(-60, -60, 120, 120, sy=96)
         top = np.round(H).astype(int)

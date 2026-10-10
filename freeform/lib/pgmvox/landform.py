@@ -179,28 +179,39 @@ def canyon(H, X, Z, pts, width=20, depth=12, floor=0.35, wall=2.5, ledges=0, dow
     return np.where(d <= half, np.minimum(H, target), H)
 
 
-def _radial(X, Z, centre, jag=0.0, cell=6, seed=0):
-    d = np.hypot(X - centre[0], Z - centre[1])
+def _radial(X, Z, centre, jag=0.0, cell=6, seed=0, stretch=None, angle=0.0):
+    """Distance from `centre` in blocks of the x radius: with `stretch` (z radius over x radius) and `angle`
+    (degrees from east toward south) an ellipse's, otherwise a circle's; `jag` roughens it."""
+    if stretch is None and not angle:
+        d = np.hypot(X - centre[0], Z - centre[1])
+    else:
+        dx, dz = X - centre[0], Z - centre[1]
+        if angle:
+            a = np.radians(angle)
+            dx, dz = dx * np.cos(a) + dz * np.sin(a), -dx * np.sin(a) + dz * np.cos(a)
+        d = np.hypot(dx, dz / (stretch or 1.0))
     if jag:
         d = d * (1 + jag * noise.fbm(X.shape, cell, 3, seed=seed))
     return d
 
 
-def spire(H, X, Z, centre, r, top, taper=1.6, jag=0.15, seed=0):
+def spire(H, X, Z, centre, r, top, taper=1.6, jag=0.15, seed=0, rz=None, angle=0.0):
     """A spire: rising from the ground at radius r to `top` at its centre, its sides falling as
-    (1 - d / r) ** (1 / taper), so a higher taper is a needle and a lower one a cone. Only lifts."""
+    (1 - d / r) ** (1 / taper), so a higher taper is a needle and a lower one a cone. With `rz` its foot is an
+    ellipse, r across x and rz across z, turned `angle` degrees. Only lifts."""
     H = np.asarray(H, float)
-    d = _radial(X, Z, centre, jag, 4, seed)
+    d = _radial(X, Z, centre, jag, 4, seed, None if rz is None else rz / r, angle)
     base = float(H[np.unravel_index(np.argmin(np.hypot(X - centre[0], Z - centre[1])), H.shape)])
     rise = (top - base) * np.clip(1 - d / r, 0, 1) ** (1 / taper)
     return np.where(d < r, np.maximum(H, base + rise), H)              # nothing outside its own radius
 
 
-def butte(H, X, Z, centre, r, top, cliff=1.5, talus=6, talus_height=0.3, jag=0.12, seed=0):
+def butte(H, X, Z, centre, r, top, cliff=1.5, talus=6, talus_height=0.3, jag=0.12, seed=0, rz=None, angle=0.0):
     """A butte or a mesa: a flat top at `top` out to radius r, a cliff `cliff` blocks wide, and a talus apron
-    `talus` blocks wide from `talus_height` of the way up the cliff down to the ground. Only lifts."""
+    `talus` blocks wide from `talus_height` of the way up the cliff down to the ground. With `rz` its top is an
+    ellipse, r across x and rz across z, turned `angle` degrees. Only lifts."""
     H = np.asarray(H, float)
-    d = _radial(X, Z, centre, jag, 8, seed)
+    d = _radial(X, Z, centre, jag, 8, seed, None if rz is None else rz / r, angle)
     foot = H + (top - H) * talus_height
     shape = np.where(d <= r, top,
                      np.where(d <= r + cliff, foot + (top - foot) * (1 - (d - r) / cliff),
@@ -361,4 +372,20 @@ def level(H, e, y="median", inner=1.0, outer=1.5, mode="set"):
     k = smoothstep(inner, outer, e)
     skirt = _apply(H, y * (1 - k) + H * k, mode)
     return np.where(e < inner, y, np.where(e < outer, skirt, H))
+
+
+def mound(H, e, rise, power=1.6, mode="lift"):
+    """A heap on the ground: `rise` blocks at the centre of the distance field `e` (0 there, 1 on the rim; a
+    shapes.ellipse_distance, noise added for a ragged foot), falling as 1 - e ** power to nothing at the rim. A
+    negative rise with mode cut is a hollow."""
+    H = np.asarray(H, float)
+    return np.where(e < 1, _apply(H, H + rise * (1 - np.clip(e, 0, 1) ** power), mode), H)
+
+
+def crater(H, e, floor, r, flat=0.0, slope=1.0):
+    """A bowl cut into the ground out to `r` of the distance field `e` (blocks from its centre): its floor at
+    `floor` out to `flat`, then climbing `slope` blocks a block, so at one it is a flight a player walks out of.
+    Only cuts."""
+    H = np.asarray(H, float)
+    return np.where(e <= r, np.minimum(H, floor + slope * np.maximum(0, e - flat)), H)
 
