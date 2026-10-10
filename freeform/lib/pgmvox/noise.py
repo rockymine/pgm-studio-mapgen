@@ -37,7 +37,13 @@ def ridged(shape, cell, octaves=4, seed=0, gain=0.5, sharpness=1.0):
 
 
 def smoothstep(e0, e1, x):
-    t = np.clip((x - e0) / (e1 - e0), 0, 1)
+    """0 at e0, 1 at e1, eased between. Edges given high to low make a falling ramp (smoothstep(-14, -64, x) is 1
+    below -64 and 0 above -14); equal edges make a step, 0 below the edge and 1 from it on."""
+    span = np.subtract(e1, e0)
+    if np.any(span == 0):
+        t = np.where(span == 0, np.greater_equal(x, e0) * 1.0, np.clip((x - e0) / np.where(span == 0, 1, span), 0, 1))
+    else:
+        t = np.clip((x - e0) / span, 0, 1)
     return t * t * (3 - 2 * t)
 
 

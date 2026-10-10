@@ -34,6 +34,13 @@ def rng(board, name):
     return np.random.default_rng(seed(board, name))
 
 
+def _highest(ids, ignore):
+    """The y of the highest block not in `ignore` in every column of an (x, y, z) block array, or -1."""
+    keep = ~np.isin(ids, sorted(ignore))
+    top = ids.shape[1] - 1 - np.argmax(keep[:, ::-1, :], axis=1)
+    return np.where(keep.any(axis=1), top, -1)
+
+
 class World:
     """A box of the world: x in [x0, x0+sx), y in [0, sy), z in [z0, z0+sz)."""
 
@@ -93,17 +100,12 @@ class World:
         """The y of the highest ground block in a column, or -1."""
         if not (0 <= x - self.x0 < self.sx and 0 <= z - self.z0 < self.sz):
             return -1
-        col = self.ids[x - self.x0, :, z - self.z0]
-        keep = ~np.isin(col, sorted(ignore))
-        nz = np.nonzero(keep)[0]
-        return int(nz[-1]) if len(nz) else -1
+        i, k = x - self.x0, z - self.z0
+        return int(_highest(self.ids[i:i + 1, :, k:k + 1], ignore)[0, 0])
 
     def heightmap(self, ignore=NOT_GROUND):
         """The top() of every column, shaped (sx, sz)."""
-        keep = ~np.isin(self.ids, sorted(ignore))
-        any_ = keep.any(axis=1)
-        top = self.sy - 1 - np.argmax(keep[:, ::-1, :], axis=1)
-        return np.where(any_, top, -1)
+        return _highest(self.ids, ignore)
 
     # --- tile entities ---------------------------------------------------------------------------------
     def chest(self, x, y, z, items, facing=2):

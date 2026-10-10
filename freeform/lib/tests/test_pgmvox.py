@@ -225,6 +225,13 @@ class Shapes(unittest.TestCase):
         e = shapes.edge_depth(m)
         self.assertEqual((e[1, 1], e[3, 3], e[0, 0]), (0, 2, -1))
 
+    def test_smoothstep_rises_falls_and_steps(self):
+        from pgmvox.noise import smoothstep
+        self.assertEqual((float(smoothstep(0, 10, -1)), float(smoothstep(0, 10, 5)), float(smoothstep(0, 10, 11))),
+                         (0.0, 0.5, 1.0))
+        self.assertEqual((float(smoothstep(-14, -64, -70)), float(smoothstep(-14, -64, 0))), (1.0, 0.0))
+        self.assertEqual(smoothstep(3, 3, np.array([2, 3, 4])).tolist(), [0.0, 1.0, 1.0])
+
     def test_no_public_function_takes_a_rectangle_by_ranges_but_the_two_named(self):
         import inspect
         import pkgutil
@@ -745,6 +752,15 @@ class Terrain(unittest.TestCase):
 
 
 class WorldAndOutput(unittest.TestCase):
+    def test_a_columns_top_is_the_heightmaps(self):
+        w = World(0, 0, 3, 3, sy=10)
+        w.set(0, 4, 0, B.STONE)
+        w.set(1, 2, 1, B.STONE)
+        w.set(1, 6, 1, B.LEAVES)
+        H = w.heightmap()
+        self.assertEqual([w.top(x, z) for x in range(3) for z in range(3)], H.ravel().tolist())
+        self.assertEqual((w.top(0, 0), w.top(1, 1), w.top(2, 2), w.top(9, 9)), (4, 2, -1, -1))
+
     def test_save_and_load(self):
         w = World(-2, -2, 4, 4, sy=6)
         w.set(0, 1, 0, B.WOOL, 14)
