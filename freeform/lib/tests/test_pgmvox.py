@@ -1117,6 +1117,18 @@ class Props(unittest.TestCase):
                        if w.id(x, y, z) != B.AIR and w.id(x, y - 1, z) == B.AIR]
             self.assertEqual(hanging == [], supported)
 
+    def test_an_arch_is_thin_at_its_crown_thick_at_its_ends_and_leaves_the_ground(self):
+        w = World(0, 0, 41, 3, sy=60)
+        w.ids[:, :20, :] = B.STONE                                          # the ground under the span, at 19
+        cells = [(x, 1) for x in range(41)]
+        t = {(x, 1): abs(x - 20) / 20 for x in range(41)}
+        tops = forms.arch(w, cells, t, deck=(50, 46, 2), thick=(3, 30, 2), rock=lambda x, y, z, k: (B.SANDSTONE, k % 2),
+                          ground=lambda x, z: 19, clear=2)
+        self.assertEqual((tops[(20, 1)], tops[(0, 1)]), (50, 46))
+        self.assertEqual([y for y in range(60) if w.id(20, y, 1) == B.SANDSTONE], list(range(47, 51)))    # 3 under the crown
+        self.assertEqual(min(y for y in range(20, 60) if w.id(0, y, 1) == B.SANDSTONE), 20)               # down to the ground
+        self.assertTrue((w.ids[:, :20, :] == B.STONE).all())
+
     def test_a_masonry_tower_is_climbed_inside_and_entered_at_its_foot(self):
         w = World(0, 0, 9, 9, sy=40)
         px, pz = forms.masonry_tower(w, 1, 1, 7, 7, 10, 14, ladder_on="n", door_side="s")

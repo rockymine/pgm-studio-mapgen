@@ -23,7 +23,7 @@ from pgmvox import facade as F
 from pgmvox import props, route, shapes
 from pgmvox import terrain as T
 from pgmvox import under as U
-from pgmvox.noise import fbm
+from pgmvox.noise import fbm, spline
 from pgmvox.orient import door as door_data, stair as stair_data, turn_world
 
 SY = 128
@@ -325,26 +325,17 @@ def table_rock(w, L):
 def arch(w, L):
     """The natural arch: a three-wide deck from the stepped rock to Table Rock's top over a hollow of rock."""
     cells = P.arch_cells()
-    line = shapes.spline if False else None
-    from pgmvox.noise import spline
-    pts = spline(P.ARCH, 0.5)
-    X, Z = w.grid()
-    arr = np.array(pts)
-    total = float(np.sum(np.hypot(*np.diff(arr, axis=0).T)))
+    arr = np.array(spline(P.ARCH, 0.5))
     r = rng(P.BOARD, "arch")
-    for x, z in cells:
-        d = np.hypot(arr[:, 0] - x, arr[:, 1] - z)
-        j = int(np.argmin(d))
-        s = j / max(1, len(arr) - 1)
-        thick = 1 + int(round(5 * abs(2 * s - 1) ** 2))
-        y = P.ZIGG_TOP
-        w.set(x, y, z, B.SANDSTONE, 2)
-        for k in range(1, thick + 1):
-            if w.id(x, y - k, z) in (B.AIR, B.SAND, B.TALLGRASS):
-                w.set(x, y - k, z, *((B.RED_SANDSTONE, 0) if r.random() < 0.7 else (B.SANDSTONE, 0)))
-        for yy in range(y + 1, y + 5):
-            if w.id(x, yy, z) not in (B.AIR,):
-                w.set(x, yy, z, B.AIR)
+    span = {(x, z): abs(2 * (int(np.argmin(np.hypot(arr[:, 0] - x, arr[:, 1] - z))) / max(1, len(arr) - 1)) - 1)
+            for x, z in cells}                                    # 0 at the crown, 1 at either end
+
+    def rock(x, y, z, k):
+        if k == 0:
+            return (B.SANDSTONE, 2)
+        return (B.RED_SANDSTONE, 0) if r.random() < 0.7 else (B.SANDSTONE, 0)
+    forms.arch(w, cells, span, deck=lambda s: P.ZIGG_TOP, thick=lambda s: 1 + int(round(5 * s ** 2)), rock=rock,
+               into=(B.AIR, B.SAND, B.TALLGRASS), clear=4)
 
 
 def aqueduct(w, L):

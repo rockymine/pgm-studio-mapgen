@@ -180,3 +180,36 @@ def masonry_tower(w, x0, z0, x1, z1, y0, height, wall=((B.STONEBRICK, 0), (B.STO
     w.set(lx, y0 + height + 1, lz, B.NETHER_FENCE, 0)
     w.set(lx, y0 + height + 2, lz, *light)
     return (px, pz)
+
+
+def _along_span(curve, t):
+    if callable(curve):
+        return curve(t)
+    crown, end, power = curve
+    return int(round(crown + (end - crown) * t ** power))
+
+
+def arch(w, cells, t, deck, thick, rock, into=None, clear=0, ground=None):
+    """A natural arch over `cells` (x, z): `t[(x, z)]` is where a cell lies along the span, 0 at the crown and 1
+    at the ends. Its deck stands at deck(t) and rock hangs thick(t) blocks under it; each is (crown, end, power),
+    crown + (end - crown) * t ** power rounded, or a function of t. rock(x, y, z, k) is the block k under the deck
+    (0 is the deck itself). The deck is always laid; the rock under it fills only blocks in `into` (any, where
+    None), never at or below ground(x, z) where that is given, so the ground under the arch stays the ground.
+    `clear` blocks over the deck are emptied. Returns the deck's height at each cell."""
+    tops = {}
+    for x, z in cells:
+        s = t[(x, z)]
+        y = _along_span(deck, s)
+        floor = -1 if ground is None else ground(x, z)
+        w.set(x, y, z, *rock(x, y, z, 0))
+        for k in range(1, _along_span(thick, s) + 1):
+            if y - k <= floor:
+                break
+            if into is None or w.id(x, y - k, z) in into:
+                w.set(x, y - k, z, *rock(x, y - k, z, k))
+        for yy in range(y + 1, y + 1 + clear):
+            if w.id(x, yy, z) != B.AIR:
+                w.set(x, yy, z, B.AIR)
+        tops[(x, z)] = y
+    return tops
+
