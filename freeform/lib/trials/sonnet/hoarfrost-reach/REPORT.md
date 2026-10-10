@@ -11,3 +11,7 @@
 **The walks.** The hall was reached on foot in 155 and is now 135, and the build-over walks to the enemy's rooms went from 267 and 268 to 249 and 248. The keepers' own walks with the gap built went from 150 and 155 to 132 and 135. The plan's ratio of the two rooms stayed in target at 1.06, and the studio's reader takes the map.xml as valid with no issues.
 
 **Part of the shift in the walks is the library.** The world was first built with pgmvox 0.10.0 and this build runs 0.18.0, so a few blocks of any walk may be the library's and not the edit's.
+
+## After the second playtest
+
+**Houses keep a block of wall either side of the door.** The library's house builder no longer puts a window against a door, and the board was rebuilt with it. Window panes within one block of a door fell by 6, and a scan of all 16 door blocks finds none beside any. The walks are unchanged.

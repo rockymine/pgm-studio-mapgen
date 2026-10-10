@@ -221,3 +221,7 @@ The fix is to skip a ring column whose ground is under 0, or to take a `land` ma
 **Read back, the drift is smooth.** Floor is missing under 4 blocks of 25 rows, all inside the shaft's own three-by-three well, against 29 blocks before. All 27 stairs climb north, no fence is left in the passage, and along each of three lanes no surface step is over half a block. Footing problems are 0 and objectives with a problem 0.
 
 **The walk numbers stay close.** Spawn to its own table monument reads 56 (54 for this board built before the changes on the current library) and to its own wash monument 40 (40); the enemy's by bridging 154 and 129 (155 and 129). The drift's own run reads longer, 27 against 23 to the gallery's end and 70 against 63 to the table monument, because the walk counts four-way moves and the straightened line takes its jog at the top as moves, where the old diagonal rises were crossed by the walk's jumps. The committed 0.10 figures were 56, 48, 155 and 129.
+
+## After the second playtest
+
+**Houses keep a block of wall either side of the door.** The library's house builder no longer puts a window against a door, and the board was rebuilt with it. A scan of every door block finds no pane or glass beside any. The walks are unchanged but for their timings.

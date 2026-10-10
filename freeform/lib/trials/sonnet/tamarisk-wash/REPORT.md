@@ -11,3 +11,7 @@
 **The qanat's mouth moved north so the south ghat is whole.** It opened at z 30, under the middle of the south ghat. It now opens at z 23 and runs under the ghat's upper part with three or more blocks of rock over it, and a clearing at its mouth keeps the wash's boulders off it. Mouth to cistern is 60 moves where it was 55, mouth to the well's foot 70 against 67, inside the target of 75.
 
 **The rest of the walks stand.** Spawn to the monuments is 51 and 49 on foot as before, and to the enemy's 169 and 176. The studio's reader takes the map.xml as valid with no issues.
+
+## After the second playtest
+
+**Houses keep a block of wall either side of the door.** The library's house builder no longer puts a window against a door, and the board was rebuilt with it. Window panes within one block of a door fell by 4, and a scan of all 32 door blocks finds none beside any. The walks are unchanged.

@@ -15,3 +15,7 @@
 **The rock has colour.** Cliff beds are black, red, orange, brown, yellow and white clay with hardened clay, andesite, granite and coarse dirt among them, tilted and folded as the mesa boards' are, and the shore is netherrack, granite, red clay and obsidian. The ground is painted in three zones, an ash grey, a red and a brown, each mixing five or six blocks, so the grey keeps to its own third of the flats.
 
 **Other changes and what the check says.** Ridge Back and the Wood Track were bent east to keep off the ravine's west rim, and the wood is cut where the ravine passes through it. Plan check keeps its targets but for the old basin row, now the ravine's depth, and the way above, whose waypoint moved with the road. The board's walk now reads lava as lethal, which the library's walk does not, so its reached-land figure is 85% where the first build's was 96%; the studio's reader finds no issues in the map.xml.
+
+## After the second playtest
+
+**Houses keep a block of wall either side of the door.** The library's house builder no longer puts a window against a door, and the board was rebuilt with it. Window panes within one block of a door fell by 8 across the four houses with doors, and a scan of all 32 door blocks finds none beside any. The walks are unchanged.

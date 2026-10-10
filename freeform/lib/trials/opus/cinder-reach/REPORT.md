@@ -245,3 +245,7 @@ refuse any block over a column with no ground.
 **Ore and hanging bits break up the faces and the underside.** The 306 ore faces read 147 coal, 90 iron, 34 gold, 24 redstone, 8 lapis and 3 diamond, in specks of one to three blocks, where there were 5. Stalactites of 4 to 10 blocks with mossy tips hang under the island's rim and 356 vines trail down its faces on the red half, and blue's half is its turn.
 
 **The walks hold.** Spawn to its own core reads 40, to the enemy's core by bridging 131, into the enemy's tube 111 and onto its crag 142, the same as this board built before the change on the current library (the committed 0.10 figures were 52, 139, 118 and 158). The first block under the casing is 8 down against a leak of 5. Objectives with a problem 0, footing problems 0 (a first build had 22 gravel blocks over the tube's air, now swept), map.xml valid with no issues.
+
+## After the second playtest
+
+**Houses keep a block of wall either side of the door.** The library's house builder no longer puts a window against a door, and the board was rebuilt with it. A scan of every door block finds no pane or glass beside any. The walks are unchanged but for their timings.
