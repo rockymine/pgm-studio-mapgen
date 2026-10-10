@@ -1,0 +1,265 @@
+<title>Riftwater in Ebenen</title>
+<style>
+:root{--bg:#f5f2ec;--fg:#26221d;--mute:#6c6258;--line:#dcd3c6;--card:#fffdf8;--accent:#b4436c;--sel:#efe6d8;--lib:#2f6b4f;--own:#9a5b16;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1916;--fg:#ece5da;--mute:#a59a8d;--line:#3a342d;--card:#24211d;--accent:#e07aa0;--sel:#322c25;--lib:#7cc4a0;--own:#e0a35e;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1b1916;--fg:#ece5da;--mute:#a59a8d;--line:#3a342d;--card:#24211d;--accent:#e07aa0;--sel:#322c25;--lib:#7cc4a0;--own:#e0a35e;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:28px 64px;display:grid;gap:32px} main>*{min-width:0}
+h1{font-size:1.75rem;margin:0;text-wrap:balance} h2{font-size:1.25rem;margin:0 0 10px;text-wrap:balance} p{margin:0 0 10px;max-width:70ch}
+.mute{color:var(--mute)} code{font:13px ui-monospace,SFMono-Regular,Menlo,monospace}
+.wrap{overflow-x:auto} table{border-collapse:collapse;font-size:14px;min-width:640px} th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
+thead th{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--mute)} tbody th{font-weight:600;white-space:nowrap}
+.viewer{display:grid;grid-template-columns:280px 1fr;gap:20px;align-items:start}
+.steps{display:grid;gap:2px;max-height:78vh;overflow:auto;padding-right:4px}
+.steps h3{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin:12px 0 4px} .steps h3:first-child{margin-top:0}
+.steps button{all:unset;cursor:pointer;display:grid;grid-template-columns:2.2em 1fr;gap:6px;padding:6px 8px;border-radius:6px;font-size:14px;line-height:1.3}
+.steps button:hover{background:var(--sel)} .steps button[aria-current="true"]{background:var(--sel);box-shadow:inset 3px 0 0 var(--accent)}
+.steps .n{color:var(--mute);font-variant-numeric:tabular-nums} .steps .own{color:var(--own)}
+.stage{display:grid;gap:12px;min-width:0}
+.stage .pic{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px;display:flex;justify-content:center}
+.stage img{image-rendering:pixelated;max-width:100%;height:auto;max-height:70vh}
+.meta{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline}
+.meta h3{margin:0;font-size:1.15rem} .badge{font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
+.badge.lib{color:var(--lib)} .badge.own{color:var(--own)} .badge.mix{color:var(--accent)}
+.nav{display:flex;gap:8px;align-items:center} .nav button{font:inherit;padding:6px 14px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer}
+.nav span{color:var(--mute);font-size:13px;font-variant-numeric:tabular-nums}
+.legend{font-size:13px;color:var(--mute)} .legend b{color:var(--accent)}
+.mapbox{position:relative;display:inline-block;line-height:0;max-width:100%;touch-action:pinch-zoom}
+.mapbox img{display:block;cursor:crosshair}
+.labels{position:absolute;inset:0;pointer-events:none;line-height:1.2}
+.labels span{position:absolute;transform:translate(-50%,-50%);font-size:11px;font-weight:600;color:#1d1a16;background:rgba(255,253,248,.82);padding:1px 4px;border-radius:3px;white-space:nowrap}
+.tools{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:13px;color:var(--mute)}
+.tools label{display:flex;gap:6px;align-items:center;cursor:pointer}
+#readout{font:13px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--fg);font-variant-numeric:tabular-nums;min-width:22ch}
+.scale{display:grid;gap:4px;font-size:12px;color:var(--mute)} .scale .bar{display:flex;height:12px;border-radius:3px;overflow:hidden;max-width:520px}
+.scale .bar i{flex:1} .scale .ticks{display:flex;justify-content:space-between;max-width:520px;font-variant-numeric:tabular-nums}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.term{display:grid;gap:4px;font-size:12.5px;align-content:start} .term img{width:100%;image-rendering:pixelated;border-radius:4px}
+.term b{font-size:13px} .term .g{color:var(--mute)} .term.hit{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
+.shape{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 20px;padding-block:14px;border-top:1px solid var(--line)}
+.shape h3{grid-column:1/-1;margin:0;font-size:1.1rem} .shape figure{margin:0;display:grid;gap:4px;font-size:12.5px;color:var(--mute)}
+.shape .pair{display:flex;gap:8px} .shape .pair img{width:50%;image-rendering:pixelated;border-radius:4px;min-width:0}
+pre{margin:0;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:10px 12px;overflow-x:auto;font:12.5px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace}
+svg.prof{width:100%;height:auto;background:var(--card);border:1px solid var(--line);border-radius:6px}
+svg.prof text{fill:var(--mute);font:10px system-ui,sans-serif} svg.prof .grid{stroke:var(--line)} svg.prof .before{stroke:var(--mute);stroke-dasharray:3 3;fill:none} svg.prof .after{stroke:var(--accent);fill:none;stroke-width:2}
+.kinds{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 20px;margin-top:8px} .kinds div{font-size:14px} .kinds b{display:block}
+.overlay{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+.overlay img{image-rendering:pixelated;max-height:none}
+ol.shapes-key{margin:0;padding-left:26px;display:grid;gap:6px;font-size:14px} ol.shapes-key b{margin-right:6px}
+ol.shapes-key li::marker{font-weight:700} ol.shapes-key .ell::marker{color:#d6336c} ol.shapes-key .line::marker{color:#1e6ec8}
+ol.shapes-key .poly::marker{color:#de7814} ol.shapes-key .noise::marker{color:#8a4cc2} ol.shapes-key .band::marker{color:var(--mute)}
+.forms{display:grid;grid-template-columns:auto repeat(4,minmax(0,1fr));gap:8px 10px;align-items:center;margin-bottom:12px}
+.forms .h{font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--mute)} .forms img{width:100%;image-rendering:pixelated;border-radius:4px}
+.forms .r{font-weight:600;font-size:14px;writing-mode:vertical-rl;transform:rotate(180deg)}
+ul.unused{columns:2;column-gap:28px;padding-left:18px;margin:0} ul.unused li{break-inside:avoid;margin-bottom:6px}
+@media (max-width:640px){table{min-width:0}thead{display:none}table,tbody,tr,td{display:block}tr{padding:8px 0;border-bottom:1px solid var(--line)}td{border:0;padding:2px 0}td:nth-child(2){color:var(--mute)}}
+@media (max-width:820px){.overlay{grid-template-columns:1fr}.shape{grid-template-columns:1fr}.viewer{grid-template-columns:1fr}.steps{max-height:none;order:2}.mapbox{position:relative;display:inline-block;line-height:0;max-width:100%;touch-action:pinch-zoom}
+.mapbox img{display:block;cursor:crosshair}
+.labels{position:absolute;inset:0;pointer-events:none;line-height:1.2}
+.labels span{position:absolute;transform:translate(-50%,-50%);font-size:11px;font-weight:600;color:#1d1a16;background:rgba(255,253,248,.82);padding:1px 4px;border-radius:3px;white-space:nowrap}
+.tools{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:13px;color:var(--mute)}
+.tools label{display:flex;gap:6px;align-items:center;cursor:pointer}
+#readout{font:13px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--fg);font-variant-numeric:tabular-nums;min-width:22ch}
+.scale{display:grid;gap:4px;font-size:12px;color:var(--mute)} .scale .bar{display:flex;height:12px;border-radius:3px;overflow:hidden;max-width:520px}
+.scale .bar i{flex:1} .scale .ticks{display:flex;justify-content:space-between;max-width:520px;font-variant-numeric:tabular-nums}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.term{display:grid;gap:4px;font-size:12.5px;align-content:start} .term img{width:100%;image-rendering:pixelated;border-radius:4px}
+.term b{font-size:13px} .term .g{color:var(--mute)} .term.hit{outline:2px solid var(--accent);outline-offset:4px;border-radius:4px}
+.shape{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 20px;padding-block:14px;border-top:1px solid var(--line)}
+.shape h3{grid-column:1/-1;margin:0;font-size:1.1rem} .shape figure{margin:0;display:grid;gap:4px;font-size:12.5px;color:var(--mute)}
+.shape .pair{display:flex;gap:8px} .shape .pair img{width:50%;image-rendering:pixelated;border-radius:4px;min-width:0}
+pre{margin:0;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:10px 12px;overflow-x:auto;font:12.5px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace}
+svg.prof{width:100%;height:auto;background:var(--card);border:1px solid var(--line);border-radius:6px}
+svg.prof text{fill:var(--mute);font:10px system-ui,sans-serif} svg.prof .grid{stroke:var(--line)} svg.prof .before{stroke:var(--mute);stroke-dasharray:3 3;fill:none} svg.prof .after{stroke:var(--accent);fill:none;stroke-width:2}
+.kinds{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 20px;margin-top:8px} .kinds div{font-size:14px} .kinds b{display:block}
+ul.unused{columns:1}}
+</style>
+<main>
+<header><h1>Riftwater in Ebenen</h1>
+<p class="mute">Der Riftwater-Port in pgmvox, Schritt für Schritt so aufgezeichnet, wie sein Code ihn baut. Jeder Schritt ist eine Ebene, wie sie im Ebenendokument stünde. Der aufgezeichnete Lauf baut dieselbe Welt wie das Board, Byte für Byte.</p>
+<p class="mute">Für die Aufzeichnung lief der Code des Boards mit einem Haltepunkt nach jedem Schritt, der den Zwischenstand festhält. Im Ebenendokument fällt das von selbst ab: Jede Ebene hat ihr eigenes Ergebnis, also kann das Studio jeden Zwischenstand zeigen.</p></header>
+
+<section><h2>Aus der Skizze wird ein Ebenendokument</h2>
+<p>Ein Vorschlag, gebaut ist davon im Studio noch nichts. Die Zeichenwerkzeuge bleiben, aber was man zeichnet, ist nicht mehr selbst Gelände: Es ist der Bereich oder die Linie einer Ebene. Die Ebene sagt, was dort passiert, und die Reihenfolge der Ebenen ist die Reihenfolge, in der gebaut wird.</p>
+<div class="wrap"><table><thead><tr><th>Heute im Skizzenwerkzeug</th><th>Was es tut</th><th>Im Ebenendokument</th></tr></thead><tbody>%ROWS%</tbody></table></div>
+</section>
+
+<section><h2>Riftwater, Ebene für Ebene</h2>
+<p class="legend">Draufsicht auf die rote Hälfte, Westen links, die Kluft rechts. <b>Rosa umrandet</b> ist, was dieser Schritt verändert hat. Grün markiert: aus der Bibliothek. Orange: noch eigener Code des Boards. Pfeiltasten blättern.</p>
+<p class="legend">Das Licht kommt von links oben (Nordwesten), wie auf einer Landkarte: Was sich zum Betrachter hin wölbt, ist hell auf der linken oberen Seite. Eine Höhenlinie liegt alle 2 Blöcke, eine kräftige alle 10. Mit der Maus (oder dem Finger) über dem Bild steht die Höhe jeder Spalte unter dem Bild.</p>
+<div class="viewer">
+<nav class="steps" id="steps" aria-label="Schritte"></nav>
+<div class="stage">
+<div class="nav"><button id="prev" type="button">← Zurück</button><button id="next" type="button">Weiter →</button><span id="pos"></span></div>
+<div class="meta"><h3 id="title"></h3><span class="badge" id="kind"></span></div>
+<div><code id="fn"></code></div>
+<p id="text"></p>
+<p class="mute" id="changed"></p>
+<div class="pic"><div class="mapbox"><img id="img" alt=""><div class="labels" id="labels" hidden></div></div></div>
+<div class="tools"><label><input type="checkbox" id="showPlaces"> Orte zeigen</label><span id="readout">Zeiger aufs Bild</span></div>
+<div class="scale" id="scale"></div>
+<div id="extra"></div>
+</div></div>
+</section>
+
+<section><h2>Was der Agent tatsächlich geschrieben hat</h2>
+<p>Jede Form im Code von Riftwater, gezeichnet als das, was dort steht. Rosa: Kreis oder Ellipse, also Mittelpunkt und Radien. Blau: Linie aus Punkten, als Spline geglättet, mit Breite. Orange: Polygon oder Rechteck aus Eckpunkten. Lila: Rauschlinie, eine Zahl pro Reihe und keine Punkte. Grau: Band entlang einer Achse. Darunter liegt das fertige Gelände.</p>
+<div class="overlay"><div class="pic"><img src="%OVERLAY%" alt="Formen des Riftwater-Codes über dem Gelände"></div>
+<ol class="shapes-key">
+<li class="ell"><b>Kapellenhügel</b> Ellipse um (−44, −78), 16 × 11, +4,5. Weich auslaufend, ohne Rand; gezeichnet ist ein Radius.</li>
+<li class="ell"><b>Mühlteich</b> Ellipse um (−84, 20), 12,5 × 9,5. Der Abstand bekommt Rauschen dazu, deshalb ist der Teich verbeult und nicht rund.</li>
+<li class="ell"><b>Spawn-Schulter</b> Ellipse um (−97, −7), 12 × 9,5, ebenfalls mit Rauschen am Rand, oben eben auf 59.</li>
+<li class="ell"><b>Marktplatz-Ebene</b> Kreis r 11 um das Monument, plus 8 Blöcke Übergang.</li>
+<li class="ell"><b>Anger</b> Kreis r 9 um das Monument (plus 8 Übergang) und die Scheibe r 8,5. Daneben der kleine Kreis r 4: der Abfluss des Teichs.</li>
+<li class="ell"><b>Lone Oak Knoll</b> Ellipse um (−22, 74), 16 × 20, vom Inselrand abgeschnitten.</li>
+<li class="ell"><b>Erdfall</b> Kreis um (−50, 38), r 10,5.</li>
+<li class="ell"><b>Abraumhalde</b> Ellipse um (−101, 79), 7 × 5,6.</li>
+<li class="line"><b>Fluss</b> 8 Punkte, als Spline geglättet, 6,6 breit. Er teilt auch das Gelände in Nord und Süd.</li>
+<li class="line"><b>Wege</b> 13 Linien aus je 3 bis 6 Punkten, gesplint, 2, 3 oder 5 breit.</li>
+<li class="line"><b>Landzunge</b> 3 Punkte, 3,2 breit.</li>
+<li class="line"><b>Sporne des Grats</b> je 3 Punkte, einer im Norden, einer im Süden.</li>
+<li class="poly"><b>Marktplatz</b> Rechteck aus 4 Punkten, Ecken auf 3,2 gerundet.</li>
+<li class="poly"><b>Nordwald</b> Polygon aus 7 Punkten. Formt kein Gelände, nur wo Bäume stehen.</li>
+<li class="poly"><b>Weizenfeld</b> Rechteck (x0, z0, x1, z1).</li>
+<li class="noise"><b>Fuß des Grats</b> Rauschlinie: ein x-Wert pro z-Reihe, um −100 ± 4. Keine Punkte.</li>
+<li class="noise"><b>Inselrand</b> vier Rauschlinien, eine Einrückung pro Reihe oder Spalte. Die Ostkante zur Kluft ist Rauschen plus Buchten, in drei z-Bereichen gerade gehalten (Stadt, Alte Brücke, Fälle).</li>
+<li class="band"><b>Abfall am Westrand</b> Band von x −114 bis −120.</li>
+</ol></div>
+<p class="mute">Nicht eingezeichnet: die Rampen und das Rauschen der Grundhöhe (ganzes Board, kein Bereich), die 29 Häuser (Rechtecke), die Höhlengänge (Punkte mit Höhe und Radius je Punkt, also Linien in 3D) und die Hallen (Ellipsoide).</p>
+</section>
+
+<section><h2>Hügel und Krater aus jedem Bereich</h2>
+<p>Dieselben zwei Formen aus pgmvox, <code>mound</code> und <code>crater</code>, über vier Arten von Bereich. Die Form selbst bleibt gleich, nur der Abstand, den sie liest, kommt jedes Mal aus einem anderen Bereich. Rosa ist, wo die Form wirkt; orange sind die Eckpunkte des Lassos. Eine Höhenlinie pro Block, eine kräftige alle 5.</p>
+<div class="forms" id="forms"></div>
+<p>Eine Ellipse wird verbeult, indem sie an verschobenen Koordinaten gemessen wird (das Feld darunter wird verzerrt), ihr Rand Lappen bekommt und feines Rauschen dazukommt. Sie behält Mittelpunkt und Radien, und ein Regler „Verbeulung“ von 0 bis 1 reicht. Ein Polygon wird vom Rand nach innen gemessen: Ein Hügel ist dort am höchsten, wo das Polygon am breitesten ist, und schmale Arme bleiben niedrig. Der Kamm folgt der Mittellinie der Form, und dasselbe gilt umgekehrt für den Kraterboden.</p>
+<p>Für einen Agenten ist die verbeulte Ellipse der leichte Weg: vier Zahlen und ein Regler. Das Polygon ist der Weg für den, der zeichnet. Im Datensatz unterscheiden sich beide nur im <code>area</code>-Teil.</p>
+</section>
+
+<section><h2>Wie Erdfall und Halde zu Daten werden</h2>
+<p>Keine der beiden Formen ist gezeichnet. Der Erdfall ist ein Mittelpunkt mit Radius, die Halde eine Ellipse, und der Rest sind Zahlen. Das Rosa zeigt den Bereich, links vorher, rechts nachher, eine Höhenlinie pro Block. Darunter der Querschnitt entlang x durch die Mitte und der Datensatz, wie er im Ebenendokument stünde (ein Vorschlag, das Format gibt es noch nicht).</p>
+<div id="shapes"></div>
+<p style="margin-top:14px">Eine Form liest nicht, wie ihr Bereich gezeichnet wurde. Sie liest nur einen Abstand: wie weit jede Spalte von der Mitte, vom Rand oder von einer Linie entfernt ist. Deshalb kann jede Zeichenart jede Form tragen. Derselbe Erdfall mit dem Lasso gezeichnet wäre nur ein anderer Bereich:</p>
+<pre id="lasso"></pre>
+<div class="kinds">
+<div><b>Kreis und Ellipse</b>Mittelpunkt, Radien, Drehung. Abstand von der Mitte. Erdfall, Halde, Schulter, Kuppe.</div>
+<div><b>Polygon, Rechteck, Lasso</b>Eckpunkte. Abstand vom Rand nach innen. Ein Hügel oder Krater in beliebiger Form, eine ebene Fläche.</div>
+<div><b>Polylinie</b>Punkte und eine Breite. Abstand von der Linie. Fluss, Weg, Grat, Talquerschnitt.</div>
+<div><b>Ganzes Board</b>Kein Bereich. Grundhöhe, Rampen, Rauschen.</div>
+</div>
+</section>
+
+<section><h2>Was Riftwater nicht braucht</h2>
+<p>Diese Formen hat die Bibliothek, Riftwater nutzt sie nicht. Im Ebenendokument wären sie weitere Ebenenarten in derselben Liste.</p>
+<ul class="unused">%UNUSED%</ul>
+</section>
+</main>
+<script>
+const S = %DATA%;
+const E = %EXTRA%;
+const fmt = v => String(v).replace("-", "−").replace(".", ",");
+const decoded = {};
+function heights(s) { if (!s.h) return null; if (!decoded[s.id]) { const b = atob(s.h); const a = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) a[i] = b.charCodeAt(i); decoded[s.id] = a; } return decoded[s.id]; }
+const TERM_NAMES = { Ramp: a => `Rampe entlang ${a.along} von ${fmt(a.frm)} bis ${fmt(a.to)}, ${a.rise > 0 ? "+" : ""}${fmt(a.rise)}`,
+  Gauss: a => `Hügel bei (${fmt(a.at[0])}, ${fmt(a.at[1])}), ${fmt(a.r)} × ${fmt(a.rz)} Blöcke, +${fmt(a.rise)}`,
+  Noise: a => `Rauschen × ${fmt(a.rise)}` };
+function termsHtml() {
+  const wrap = document.createElement("div");
+  const p = document.createElement("p"); p.className = "mute"; p.textContent = "Die Terme einzeln: jeder zeigt nur, was er beiträgt (dunkler = mehr, eine Linie pro Block; Blau senkt). Grundhöhen: Norden 48,5, Süden 47,2, Westen 52,5. Rosa umrandet ist der Hügel unter der Kapelle.";
+  const g = document.createElement("div"); g.className = "terms";
+  E.terms.forEach(t => {
+    const d = document.createElement("div"); d.className = "term" + (t.kind === "Gauss" ? " hit" : "");
+    const im = document.createElement("img"); im.src = t.img; im.alt = t.kind;
+    const b = document.createElement("b"); b.textContent = TERM_NAMES[t.kind](t.args);
+    const gr = document.createElement("span"); gr.className = "g"; gr.textContent = t.group + " · " + fmt(t.lo) + " bis " + fmt(t.hi);
+    d.append(im, b, gr); g.append(d);
+  });
+  wrap.append(p, g); return wrap;
+}
+function scaleHtml(s) {
+  const sc = document.getElementById("scale"); sc.replaceChildren();
+  const heightStep = !s.id.startsWith("w-") && s.id !== "outline" && s.id !== "underside";
+  if (!heightStep) { sc.hidden = true; return; } sc.hidden = false;
+  const bar = document.createElement("div"); bar.className = "bar";
+  E.legend.forEach(([y, r, g, b]) => { const i = document.createElement("i"); i.style.background = `rgb(${r},${g},${b})`; i.title = "y " + y; bar.append(i); });
+  const ticks = document.createElement("div"); ticks.className = "ticks";
+  [36, 44, 52, 60, 68, 76, 82].forEach(y => { const t = document.createElement("span"); t.textContent = y; ticks.append(t); });
+  const cap = document.createElement("span"); cap.textContent = "Höhe y: dunkelgrün tief, gelb um 54, braun am Hang, hell oben am Grat";
+  sc.append(bar, ticks, cap);
+}
+function placeLabels(s) {
+  const L = document.getElementById("labels"); L.replaceChildren();
+  E.places.forEach(([n, x, z]) => { const sp = document.createElement("span"); sp.textContent = n;
+    sp.style.left = ((x - E.X_MIN + 0.5) / s.w * 100) + "%"; sp.style.top = ((z - E.Z_MIN + 0.5) / E.nz * 100) + "%"; L.append(sp); });
+}
+function pointAt(ev) {
+  const s = S[cur], img = document.getElementById("img"), r = img.getBoundingClientRect();
+  const i = Math.floor((ev.clientX - r.left) / r.width * s.w), k = Math.floor((ev.clientY - r.top) / r.height * E.nz);
+  const out = document.getElementById("readout");
+  if (i < 0 || k < 0 || i >= s.w || k >= E.nz) { out.textContent = "Zeiger aufs Bild"; return; }
+  const H = heights(s); const v = H ? H[k * s.w + i] : 0;
+  out.textContent = `x ${fmt(E.X_MIN + i)} · z ${fmt(E.Z_MIN + k)} · ` + (v ? `${s.unit} ${v}` : "keine Insel");
+}
+document.getElementById("img").addEventListener("pointermove", pointAt);
+document.getElementById("img").addEventListener("pointerdown", pointAt);
+document.getElementById("showPlaces").onchange = e => { document.getElementById("labels").hidden = !e.target.checked; };
+function profileSvg(prof, x0) {
+  const W = 360, H = 150, pad = 26, ys = prof.flat(), lo = Math.min(...ys) - 1, hi = Math.max(...ys) + 1;
+  const X = i => pad + i / (prof.length - 1) * (W - pad - 8), Y = v => H - 18 - (v - lo) / (hi - lo) * (H - 30);
+  const step = (j) => prof.map((p, i) => `${i ? "H" : "M"}${X(i).toFixed(1)} ${i ? "" : Y(p[j]).toFixed(1)}`.trim() + (i ? ` V${Y(p[j]).toFixed(1)}` : "")).join(" ");
+  let g = "";
+  for (let v = Math.ceil(lo); v <= hi; v += 2) g += `<line class="grid" x1="${pad}" x2="${W - 8}" y1="${Y(v)}" y2="${Y(v)}"/><text x="2" y="${Y(v) + 3}">${v}</text>`;
+  g += `<text x="${pad}" y="${H - 4}">x ${fmt(x0)}</text><text x="${W - 8}" y="${H - 4}" text-anchor="end">x ${fmt(x0 + prof.length - 1)}</text>`;
+  return `<svg class="prof" viewBox="0 0 ${W} ${H}" role="img" aria-label="Querschnitt">${g}<path class="before" d="${step(0)}"/><path class="after" d="${step(1)}"/></svg>`;
+}
+const RECORDS = {
+  sinkhole: { title: "Erdfall", json: {id: "erdfall", op: "crater", area: {circle: {at: [-50, 38], r: 10.5}}, floor: 38, flat: 1.5, slope: 1},
+    note: "Vorher gestrichelt, nachher rosa: Boden auf 38, fünf Blöcke breit. Genau auf dieser Achse steigt die Wand in Stufen von zwei Blöcken, weil das Runden halbe Werte zur geraden Zahl schiebt; daneben sind die Stufen einen Block hoch, und dort geht man hinaus." },
+  spoil: { title: "Abraumhalde", json: {id: "abraumhalde", op: "mound", area: {ellipse: {at: [-101, 79], rx: 7, rz: 5.6}}, rise: 6, power: 1.6, mode: "lift"},
+    note: "Vorher gestrichelt, nachher rosa: sechs Blöcke in der Mitte, zum Rand flacher. Ein höherer power-Wert macht die Kuppe breiter und den Fuß steiler." } };
+function shapesHtml() {
+  const host = document.getElementById("shapes");
+  ["sinkhole", "spoil"].forEach(k => {
+    const d = E.shapes[k], r = RECORDS[k], sec = document.createElement("div"); sec.className = "shape";
+    sec.innerHTML = `<h3>${r.title}</h3><figure><div class="pair"><img alt="vorher" src="${d.before}"><img alt="nachher" src="${d.after}"></div><figcaption>vorher · nachher, Bereich rosa</figcaption></figure>
+      <figure>${profileSvg(d.profile, d.x0)}<figcaption>Querschnitt bei z ${fmt(d.z)}. ${r.note}</figcaption></figure>
+      <pre style="grid-column:1/-1"></pre>`;
+    sec.querySelector("pre").textContent = JSON.stringify(r.json, null, 2).replace(/\[\n\s+(-?[\d.]+),\n\s+(-?[\d.]+)\n\s+\]/g, "[$1, $2]");
+    host.append(sec);
+  });
+  document.getElementById("lasso").textContent = '{\n  "id": "erdfall",\n  "op": "crater",\n  "area": { "polygon": [[-58, 31], [-45, 28], [-39, 38], [-46, 48], [-58, 45]] },\n  "floor": 38, "flat": 1.5, "slope": 1\n}';
+}
+shapesHtml();
+(() => { const g = document.getElementById("forms"); const F = E.forms;
+  const cols = [...new Set(F.map(t => t.col))], rows = [...new Set(F.map(t => t.row))];
+  g.append(document.createElement("span"));
+  cols.forEach(c => { const h = document.createElement("span"); h.className = "h"; h.textContent = c; g.append(h); });
+  rows.forEach(r => { const l = document.createElement("span"); l.className = "r"; l.textContent = r; g.append(l);
+    F.filter(t => t.row === r).forEach(t => { const im = document.createElement("img"); im.src = t.img; im.alt = r + ", " + t.col; g.append(im); }); });
+})();
+const list = document.getElementById("steps"); let cur = 0, group = null;
+S.forEach((s, i) => {
+  if (s.group !== group) { group = s.group; const h = document.createElement("h3"); h.textContent = group; list.append(h); }
+  const b = document.createElement("button"); b.type = "button";
+  const n = document.createElement("span"); n.className = "n"; n.textContent = String(i + 1).padStart(2, "0");
+  const t = document.createElement("span"); t.textContent = s.title; if (s.kind === "eigener Code") t.className = "own";
+  b.append(n, t); b.onclick = () => show(i); s.btn = b; list.append(b);
+});
+function show(i) {
+  cur = Math.max(0, Math.min(S.length - 1, i)); const s = S[cur];
+  S.forEach(x => x.btn.setAttribute("aria-current", x === s ? "true" : "false"));
+  document.getElementById("title").textContent = s.title;
+  const k = document.getElementById("kind"); k.textContent = s.kind;
+  k.className = "badge " + (s.kind === "Bibliothek" ? "lib" : s.kind === "eigener Code" ? "own" : "mix");
+  document.getElementById("fn").textContent = s.fn;
+  document.getElementById("text").textContent = s.text;
+  document.getElementById("changed").textContent = s.changed.toLocaleString("de-DE") + " Spalten betroffen";
+  const img = document.getElementById("img"); img.src = s.img; img.alt = s.title;
+  placeLabels(s); scaleHtml(s); document.getElementById("readout").textContent = "Zeiger aufs Bild";
+  const ex = document.getElementById("extra"); ex.replaceChildren(); if (s.id === "base") ex.append(termsHtml());
+  document.getElementById("pos").textContent = (cur + 1) + " / " + S.length;
+}
+document.getElementById("prev").onclick = () => show(cur - 1);
+document.getElementById("next").onclick = () => show(cur + 1);
+addEventListener("keydown", e => { if (e.key === "ArrowRight") show(cur + 1); if (e.key === "ArrowLeft") show(cur - 1); });
+show(0);
+</script>
