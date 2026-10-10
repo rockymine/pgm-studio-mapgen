@@ -103,10 +103,10 @@ def run(board, build=None, start=None, only=None, skip=(), out=None):
         elif step == "sketch":
             py("sketch", os.path.join(renders, "00-plan-sketch.png"))
         elif step == "gen":
-            out = py("gen", build) or ""
-            print(out, end="")
+            said = py("gen", build) or ""
+            print(said, end="")
             with open(os.path.join(renders, "gen.txt"), "w") as f:
-                f.write(out)
+                f.write(said)
         elif step == "write":
             print(write(build, world()))
             log.append("write: ok")
@@ -121,9 +121,9 @@ def run(board, build=None, start=None, only=None, skip=(), out=None):
         elif step == "renders":
             py("renders", build, home)
         elif step == "walk":
-            out = py("walk", build, out=os.path.join(renders, "walks.txt"))
-            if out:
-                print(out, end="")
+            said = py("walk", build, out=os.path.join(renders, "walks.txt"))
+            if said:
+                print(said, end="")
     with open(os.path.join(renders, "build-info.txt"), "w") as f:
         f.write(f"pgmvox {VERSION}\nbuilt {datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='seconds')}\n"
                 f"studio {studio_root()}\n" + "\n".join(log) + "\n")

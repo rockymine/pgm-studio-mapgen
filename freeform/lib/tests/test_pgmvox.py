@@ -993,6 +993,18 @@ class Terrain(unittest.TestCase):
 
 
 class WorldAndOutput(unittest.TestCase):
+    def test_a_run_writes_the_map_xml_where_the_board_keeps_it_after_its_generator_speaks(self):
+        import tempfile
+        from pgmvox.run import run
+        with tempfile.TemporaryDirectory() as tmp:
+            scripts = os.path.join(tmp, "board", "scripts")
+            os.makedirs(scripts)
+            open(os.path.join(scripts, "gen.py"), "w").write("print('built')\n")
+            open(os.path.join(scripts, "mapxml.py"), "w").write("print('<map/>')\n")
+            run(os.path.join(tmp, "board"), os.path.join(tmp, "build"), start="gen", skip=("write", "renders", "walk"))
+            self.assertTrue(os.path.isfile(os.path.join(scripts, "map.xml")))
+            self.assertFalse(os.path.exists(os.path.join(tmp, "board", "map.xml")))
+
     def test_a_columns_top_is_the_heightmaps(self):
         w = World(0, 0, 3, 3, sy=10)
         w.set(0, 4, 0, B.STONE)
