@@ -834,6 +834,23 @@ class Plots(unittest.TestCase):
         self.assertTrue(any("outside" in e for e in r["errors"]))
 
 
+class WoolChests(unittest.TestCase):
+    def test_studio_loot_in_each_corner(self):
+        w = World(0, 0, 12, 12, sy=16)
+        corners = props.wool_chests(w, (2, 3, 8, 9), 4, door="s")
+        self.assertEqual(len(corners), 4)
+        self.assertEqual(len(w.tiles), 8)
+        low = [t for t in w.tiles if t["y"] == 5]
+        high = [t for t in w.tiles if t["y"] == 6]
+        self.assertTrue(all(len(t["items"]) == 27 for t in w.tiles))
+        self.assertEqual({i["id"] for i in low[0]["items"]},
+                         {"minecraft:planks", "minecraft:potion", "minecraft:golden_apple"})
+        bow = [i for i in high[0]["items"] if i["id"] == "minecraft:bow"][0]
+        self.assertEqual(bow["ench"], [[48, 1], [51, 1]])
+        self.assertEqual(w.get(2, 5, 3), (B.CHEST, 3))
+        self.assertEqual(w.get(2, 5, 9), (B.CHEST, 2))
+
+
 if __name__ == "__main__":
     unittest.main()
 

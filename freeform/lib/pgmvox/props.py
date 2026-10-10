@@ -4,6 +4,7 @@
     stalls(w, cells, y, "e")                   # a row of them along an edge, a pace apart, colours in turn
     lamp(w, x, y, z)                           # a lamp post on a floor at y
     w.chest(x, y, z, laid(DEFENCE), facing=2)  # a chest laid out as a pattern, here a defence chest
+    wool_chests(w, (x0, z0, x1, z1), y, "s")   # the studio's wool-room loot, two chests in each inner corner
 
 A prop is placed on a floor: y is the floor block, and it stands from y + 1. Each returns the cells it stands on,
 so a board can claim them and keep a route or a scatter off them.
@@ -86,6 +87,35 @@ ROOM_GEAR = (["A...H...A",
               "B": ("minecraft:iron_boots", 1, 0)})
 """The gear in a wool room: a set of iron armour down the middle around two golden apples, food either side, and
 arrows and planks at the four ends."""
+
+
+SPEED_POTION = 8194                            # 1.8 Potion of Swiftness, Speed I for 3:00
+WOOL_CHEST_LOW = (["PPPPPPPPP", "SSSSSSSSS", "GGGGGGGGG"],
+                  {"P": ("minecraft:planks", 16, 0), "S": ("minecraft:potion", 1, SPEED_POTION),
+                   "G": ("minecraft:golden_apple", 16, 0)})
+WOOL_CHEST_HIGH = (["LLLLLLLLL", "BBBBBBBBB", "PPPPPPPPP"],
+                   {"L": ("minecraft:diamond_leggings", 1, 0), "B": ("minecraft:bow", 1, 0, [(48, 1), (51, 1)]),
+                    "P": ("minecraft:planks", 16, 0)})
+"""The studio's wool-room loot (its WoolChests stamper), for the attackers who reach the room: the lower chest a row
+each of planks, Speed potions and golden apples by sixteen; the upper a row each of diamond leggings, Power I
+Infinity bows and planks."""
+
+
+def wool_chests(w, box, floor, door="s"):
+    """The studio's wool-room loot: two chests stacked in each inner corner of the room whose inside is
+    box = (x0, z0, x1, z1), on the floor at `floor`. Every chest opens along the axis of the room's door wall
+    `door` ("n", "s", "e" or "w"), away from the corner's wall on that axis, so none fronts a wall. Returns the
+    corners."""
+    x0, z0, x1, z1 = box
+    corners = [(x0, z0), (x1, z0), (x0, z1), (x1, z1)]
+    for x, z in corners:
+        if door in "ns":
+            facing = 3 if z == z0 else 2           # opens south off the north wall, north off the south
+        else:
+            facing = 5 if x == x0 else 4           # opens east off the west wall, west off the east
+        w.chest(x, floor + 1, z, laid(WOOL_CHEST_LOW), facing=facing)
+        w.chest(x, floor + 2, z, laid(WOOL_CHEST_HIGH), facing=facing)
+    return corners
 
 
 def laid(layout, symmetric=True):
