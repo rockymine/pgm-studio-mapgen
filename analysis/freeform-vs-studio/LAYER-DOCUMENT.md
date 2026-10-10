@@ -1,8 +1,10 @@
-# The layer document, draft 1
+# The layer document, draft 2
 
 A board stated as data: ordered layers, each one operation over the areas it is drawn in, built in fixed stages
 and kept as it ran. This is the shape the sketch tool's document takes in Studio 2.0. `pgmvox.document` builds
-it, and `freeform/lib/examples/layers/island.layers.json` is a whole board written in it.
+it, `freeform/lib/examples/layers/island.layers.json` is a whole board written in it, and
+`freeform/lib/ports/riftwater/riftwater.ground.layers.json` is the Riftwater port's ground, 38 layers that build its
+heights and water bit for bit.
 
 ## What it is for
 
@@ -82,6 +84,30 @@ and the second states its own `rise`:
            {"ellipse": {"at": [-18, 20], "rx": 12, "rz": 9, "angle": 30}, "rise": 9}]}
 ```
 
+## Numbers can be fields
+
+**Any number a layer takes may be an expression instead.** A number is itself; `x`, `z`, `H` (the heights so far),
+`W` (the water so far) and `land` are the grid; any other name is a field from `fields`, which may be expressions
+themselves and are evaluated in order. A one-key object is an operation over its arguments:
+
+| Kind | Operations |
+|---|---|
+| arithmetic | `add`, `sub`, `mul`, `div`, `neg`, `abs`, `min`, `max`, `pow`, `exp`, `round`, `floor`, `clip`, `hypot` |
+| shaping | `smoothstep`, `mix`, `where`, `full` |
+| masks | `lt`, `le`, `gt`, `ge`, `and`, `or`, `not`, `inside`, `polygon` |
+| sources | `fbm`, `ridged`, `line` (noise; `fbm` with `along` is one-dimensional), `distance`, `blocks`, `line_distance`, `ellipse`, `line_z` (a line's z at each x), `at` (the heights at a point), `terms` |
+| landforms | `profile`, `ridge`, `level`, `blend`, `spire`, `crater`, `mound`: the pgmvox call over `H`, returning heights |
+
+**A `set` layer writes an expression into the heights, where a mask holds.** Together with `round` (whole blocks
+from here on), `water` (a water surface where a mask holds), `watercourse` and `grade` (a route held to a grade,
+keeping every route graded before it and leaving water alone), it is how a board's own formulas become data. The
+Riftwater port's base is one `set` layer: two term sets split at the river's line, a third mixed in toward the
+west.
+
+**A landform as an expression keeps the board exact; a named layer keeps it readable.** `mound`, `crater` and
+`level` as layers take areas, `join`, `melt` and `soft`; as expressions they take the distance and numbers the
+board's code passed. The studio shows the first kind as a form and the second as a formula, and both are layers.
+
 ## Paint
 
 **Painting is a stack, and for each column the first layer that applies wins.** A paint layer is a block and its
@@ -116,12 +142,10 @@ ground stage; the `surface` layer lays its blocks and steps once the ground is l
 slabs held to half a block between neighbours, the way Tamarisk Wash lays its ghats; stairs put a stair on every
 one-block rise.
 
-## What draft 1 does not hold
+## What draft 2 does not hold
 
-**Riftwater is not yet a layer document.** Its ground splits north from south along the river's line and mixes
-two term sets by a weight, and five of its steps are still its own code: the mill pond, the westfall, the pond
-bed, the square's exact level and most of its dressing. A `mix` layer and a `lake` operation would carry the first
-four.
+**Riftwater's ground is data; its world is not yet.** The heights and water are the 38 layers named above, held
+equal to `plan.land()` by a test. Its paint, buildings, caves and dressing are still the port's code.
 
 **Three stages have no layers yet.** Volume (caves, arches, bores, slabs at their own height), buildings (houses on
 their sites) and pieces (objectives, spawns) are pgmvox calls a board makes after `document.build`. Symmetry is not

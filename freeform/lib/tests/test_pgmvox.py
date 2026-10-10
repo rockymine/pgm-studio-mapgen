@@ -710,6 +710,21 @@ class LayerDocument(unittest.TestCase):
         self.assertTrue((melted >= plain - 1e-9).all())
         self.assertGreater(float((melted - plain).max()), 1.0)       # the saddle between them
 
+    def test_the_riftwater_ports_ground_is_a_layer_document(self):
+        from pgmvox import document
+        scripts = os.path.join(os.path.dirname(HERE), "ports", "riftwater", "scripts")
+        sys.path.insert(0, scripts)
+        try:
+            import plan as RP
+            L = RP.land()
+        finally:
+            sys.path.remove(scripts)
+        with open(os.path.join(os.path.dirname(scripts), "riftwater.ground.layers.json")) as f:
+            c, steps = document.ground(json.load(f))
+        np.testing.assert_array_equal(c.land, L.land)
+        np.testing.assert_array_equal(np.where(c.land, c.H, -1).astype(int), L.H)
+        np.testing.assert_array_equal(np.where(c.land, c.water, 0), L.water)
+
     def test_the_built_world_has_water_walls_and_half_steps(self):
         w, X, Z = self.built.world, self.built.X, self.built.Z
         self.assertTrue((self.built.water > 0).any())

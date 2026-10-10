@@ -87,11 +87,189 @@ def _field(spec, shape, fields):
     raise ValueError(f"unknown field {kind}")
 
 
-def area_distance(area, X, Z, fields, lines):
+@dataclass
+class Ctx:
+    """What an expression reads: the grid, the heights so far, the named fields, the lines and areas laid."""
+    X: np.ndarray
+    Z: np.ndarray
+    H: np.ndarray
+    fields: dict
+    lines: dict
+    land: np.ndarray = None
+    water: np.ndarray = None
+
+
+def expr(spec, c):
+    """A number or a field, stated as data. A number is itself; "x", "z", "H" are the grid and the heights so far;
+    any other name is a named field. A one-key object is an operation over its arguments:
+
+    arithmetic  add, sub, mul, div, neg, abs, min, max, pow, exp, round, floor, clip [a, lo, hi]
+    shaping     smoothstep [e0, e1, a], mix [a, b, w] (field.mix), where [mask, a, b]
+    masks       lt, le, gt, ge [a, b], and, or, not, inside (an area: distance under 1)
+    sources     fbm, ridged, line (noise; "along": "z" or "x" makes fbm one-dimensional along that axis),
+                distance (an area's 0-to-1 distance), blocks (in blocks), terms {height, terms}, at [x, z] (the
+                heights at a point), line_z {pts, spline, along: "x"} (a line's z at each x)
+    """
+    if isinstance(spec, bool):
+        return spec
+    if isinstance(spec, (int, float)):
+        return float(spec)
+    if isinstance(spec, str):
+        named = {"x": c.X.astype(float), "z": c.Z.astype(float), "H": c.H, "W": c.water, "land": c.land}
+        if spec in named:
+            return named[spec]
+        return c.fields[spec] if spec in c.fields else _missing(spec)
+    (op, a), = spec.items()
+    E = lambda v: expr(v, c)                                              # noqa: E731
+    if op in ("fbm", "ridged", "line"):
+        if op == "fbm" and a.get("along"):
+            n = c.Z.shape[1] if a["along"] == "z" else c.X.shape[0]
+            f = noise.fbm((n,), a["cell"], a.get("octaves", 3), seed=a.get("seed", 0))
+            return np.broadcast_to(f[None, :] if a["along"] == "z" else f[:, None], c.X.shape)
+        return _field({op: a}, c.X.shape, c.fields)
+    if op == "add":
+        out = E(a[0])
+        for v in a[1:]:
+            out = out + E(v)
+        return out
+    if op == "mul":
+        out = E(a[0])
+        for v in a[1:]:
+            out = out * E(v)
+        return out
+    if op == "sub":
+        return E(a[0]) - E(a[1])
+    if op == "div":
+        return E(a[0]) / E(a[1])
+    if op == "neg":
+        return -E(a)
+    if op == "abs":
+        return np.abs(E(a))
+    if op == "min":
+        return np.minimum.reduce([np.broadcast_to(E(v), c.X.shape) for v in a]) if len(a) > 2 else np.minimum(E(a[0]), E(a[1]))
+    if op == "max":
+        return np.maximum.reduce([np.broadcast_to(E(v), c.X.shape) for v in a]) if len(a) > 2 else np.maximum(E(a[0]), E(a[1]))
+    if op == "pow":
+        return E(a[0]) ** E(a[1])
+    if op == "exp":
+        return np.exp(E(a))
+    if op == "round":
+        return np.round(E(a))
+    if op == "floor":
+        return np.floor(E(a))
+    if op == "clip":
+        return np.clip(E(a[0]), E(a[1]) if a[1] is not None else None, E(a[2]) if a[2] is not None else None)
+    if op == "smoothstep":
+        return noise.smoothstep(E(a[0]), E(a[1]), E(a[2]))
+    if op == "mix":
+        return F.mix(E(a[0]), E(a[1]), E(a[2]))
+    if op == "where":
+        return np.where(E(a[0]), E(a[1]), E(a[2]))
+    if op in ("lt", "le", "gt", "ge"):
+        return {"lt": np.less, "le": np.less_equal, "gt": np.greater, "ge": np.greater_equal}[op](E(a[0]), E(a[1]))
+    if op == "and":
+        out = E(a[0])
+        for v in a[1:]:
+            out = out & E(v)
+        return out
+    if op == "or":
+        out = E(a[0])
+        for v in a[1:]:
+            out = out | E(v)
+        return out
+    if op == "not":
+        return ~E(a)
+    if op == "inside":
+        return area_distance(a, c.X, c.Z, c.fields, c.lines, c)[0] < 1
+    if op == "distance":
+        return area_distance(a, c.X, c.Z, c.fields, c.lines, c)[0]
+    if op == "blocks":
+        e, scale = area_distance(a, c.X, c.Z, c.fields, c.lines, c)
+        return e * scale
+    if op == "terms":
+        return F.terms(c.X.astype(float), c.Z.astype(float), E(a["height"]), *_terms(a.get("terms", []), c))
+    if op == "at":
+        x, z = a
+        return float(c.H[int(x) - int(c.X[0, 0]), int(z) - int(c.Z[0, 0])])
+    if op == "line_z":
+        pts = _line_pts(a, c)
+        xs, zs = np.array([p[0] for p in pts]), np.array([p[1] for p in pts])
+        order = np.argsort(xs)
+        return np.interp(c.X.astype(float), xs[order], zs[order])
+    if op == "hypot":
+        return np.hypot(E(a[0]), E(a[1]))
+    if op == "line_distance":
+        return shapes.polyline(c.X.astype(float), c.Z.astype(float), _line_pts(a, c))[0]
+    if op == "ellipse":
+        return shapes.ellipse_distance(c.X.astype(float), c.Z.astype(float), tuple(a["at"]), a["rx"], a["rz"],
+                                       angle=a.get("angle", 0.0))
+    if op == "polygon":
+        return shapes.inside(c.X.astype(float), c.Z.astype(float), [tuple(p) for p in a])
+    if op == "full":
+        return np.full(c.X.shape, float(E(a)))
+    # the library's landforms, read with this layer's heights: each returns heights
+    if op == "profile":
+        steps = [LF.Step(E(st["start"]), E(st["end"]), st["top"] if st["top"] == "ground" else E(st["top"]))
+                 for st in a["steps"]]
+        return LF.profile(c.H, E(a["d"]), E(a["floor"]), steps, mode=a.get("mode", "set"))
+    if op == "ridge":
+        spurs = [(E(sp["d"]), E(sp["top"]), tuple(sp["reach"])) for sp in a.get("spurs", [])]
+        return LF.ridge(c.H, E(a.get("coord", "x")), E(a["foot"]), a["reach"], E(a["crest"]),
+                        rough=E(a.get("rough", 0.0)), spurs=spurs,
+                        terrace=tuple(a["terrace"]) if "terrace" in a else None)
+    if op == "level":
+        return LF.level(c.H, E(a["e"]), a.get("top", "median") if a.get("top") == "median" else E(a["top"]),
+                        inner=a.get("inner", 1.0), outer=a.get("outer", 1.5), mode=a.get("mode", "set"))
+    if op == "blend":
+        return LF.blend(c.H, E(a["to"]), E(a["mask"]), width=a.get("width", 8))
+    if op == "spire":
+        return LF.spire(c.H, c.X.astype(float), c.Z.astype(float), tuple(a["at"]), r=a["r"], top=E(a["top"]),
+                        taper=a.get("taper", 1.6), jag=a.get("jag", 0.15), seed=a.get("seed", 0), rz=a.get("rz"),
+                        angle=a.get("angle", 0.0))
+    if op == "crater":
+        return LF.crater(c.H, E(a["e"]), a["floor"], a["r"], flat=a.get("flat", 0.0), slope=a.get("slope", 1.0))
+    if op == "mound":
+        return LF.mound(c.H, E(a["e"]), a["rise"], power=a.get("power", 1.6), mode=a.get("mode", "lift"))
+    raise ValueError(f"unknown expression {op}")
+
+
+def _missing(name):
+    raise KeyError(f"no field named {name}")
+
+
+def _terms(terms, c):
+    parts = []
+    for t in terms:
+        (kind, a), = t.items()
+        if kind == "ramp":
+            parts.append(F.Ramp(a["along"], a["from"], a["to"], a["rise"]))
+        elif kind == "gauss":
+            parts.append(F.Gauss(tuple(a["at"]), a["r"], a["rise"], rz=a.get("rz"), angle=a.get("angle", 0.0)))
+        elif kind == "tilt":
+            parts.append(F.Tilt(a["dx"], a["dz"], tuple(a.get("at", (0, 0)))))
+        elif kind == "noise":
+            parts.append(F.Noise(expr(a["field"], c), a["rise"]))
+    return parts
+
+
+def _line_pts(a, c):
+    """A line's points: its own `pts`, splined at `spline` blocks unless it is false, kept to x_max if stated,
+    or another layer's line by `near`."""
+    if "near" in a:
+        return c.lines[a["near"]]["pts"]
+    pts = [tuple(p) for p in a["pts"]]
+    if a.get("spline", 1.0):
+        pts = noise.spline(pts, a.get("spline", 1.0))
+    if "x_max" in a:
+        pts = [p for p in pts if p[0] <= a["x_max"]]
+    return pts
+
+
+def area_distance(area, X, Z, fields, lines, c=None):
     """(e, scale): 0 at the area's centre or deepest point, 1 on its rim, over 1 outside; `scale` is how many
     blocks one unit of e spans, for an operation that measures in blocks."""
     Xf, Zf = X.astype(float), Z.astype(float)
-    (kind, a), = ((k, v) for k, v in area.items() if k not in ("rough", "rise", "depth", "top"))
+    (kind, a), = ((k, v) for k, v in area.items() if k not in ("rough", "rise", "depth", "top", "plus"))
     if kind == "board":
         e, scale = np.zeros(X.shape), 1.0
     elif kind == "circle":
@@ -106,8 +284,7 @@ def area_distance(area, X, Z, fields, lines):
         scale = float(max(depth.max(), 1.0))
         e = np.where(inside, 1 - depth / scale, 1 + shapes.edge_distance(Xf, Zf, [tuple(p) for p in poly]) / scale)
     elif kind == "line":
-        pts = lines[a["near"]]["pts"] if "near" in a else noise.spline([tuple(p) for p in a["pts"]], 1.0) \
-            if a.get("spline", True) else [tuple(p) for p in a["pts"]]
+        pts = lines[a["near"]]["pts"] if "near" in a else _line_pts(a, None)
         d, _ = shapes.polyline(Xf, Zf, pts)
         half = a.get("width", lines[a["near"]]["width"] if "near" in a else 2) / 2
         e, scale = d / half, float(half)
@@ -116,6 +293,8 @@ def area_distance(area, X, Z, fields, lines):
     if "rough" in area:
         r = area["rough"]
         e = e + r.get("amp", 0.12) * noise.fbm(X.shape, r.get("cell", 6), 2, seed=r.get("seed", 0))
+    if "plus" in area:
+        e = e + expr(area["plus"], c or Ctx(X, Z, None, fields, lines))
     return e, scale
 
 
@@ -201,31 +380,70 @@ def _paint_layer(P, X, Z, fields, lines, H):
                    values=values)
 
 
+def ground(doc, X=None, Z=None):
+    """The fields and ground stages alone: (ctx, steps). The board's grid is its x and z range unless given."""
+    bd = doc["board"]
+    if X is None:
+        (x0, x1), (z0, z1) = bd["x"], bd["z"]
+        X, Z = np.meshgrid(np.arange(x0, x1 + 1), np.arange(z0, z1 + 1), indexing="ij")
+    c = Ctx(X, Z, np.full(X.shape, float(bd.get("floor", 40))), {}, {}, np.ones(X.shape, bool),
+            np.zeros(X.shape, int))
+    c.laid = np.zeros(X.shape, bool)
+    for k, v in doc.get("fields", {}).items():
+        c.fields[k] = expr(v, c) if isinstance(v, dict) and next(iter(v)) not in ("fbm", "ridged", "line") \
+            or isinstance(v, dict) and v.get("fbm", {}).get("along") else _field(v, X.shape, c.fields)
+    steps = []
+    for L in doc.get("ground", []):
+        before, wet_before = c.H.copy(), c.water.copy()
+        op = L["op"]
+        if op == "outline":
+            ins = {k: (expr(v, c) if isinstance(v, (dict, str)) else v) for k, v in L.get("insets", {}).items()}
+            c.land = shapes.island(X, Z, tuple(L["box"]), **ins)
+            steps.append(Step(L["id"], "ground", "outline", c.land.copy(), c.H.copy(), L.get("note", "")))
+            continue
+        if op == "set":
+            value = expr(L["height"], c)
+            c.H = np.where(expr(L["where"], c), value, c.H) if "where" in L else np.asarray(value, float) + 0 * c.H
+        elif op == "round":
+            c.H = np.round(c.H)
+        elif op == "water":
+            c.water = np.where(expr(L["where"], c), np.asarray(expr(L["level"], c)).astype(int), c.water)
+        elif op == "watercourse":
+            pts = _line_pts(L["line"], c)
+            c.lines[L["id"]] = dict(pts=pts, width=L.get("width", 6))
+            c.H, river = LF.watercourse(c.H.copy(), c.X.astype(float), c.Z.astype(float), pts,
+                                        width=L.get("width", 6), depth=L.get("depth", 2), water=L.get("water", 1),
+                                        bank=L.get("bank", 4), fall_min=L.get("fall_min", 2),
+                                        reach_min=L.get("reach_min", 10))
+            c.fields[L["id"] + ".surface"] = river.surface
+            c.fields[L["id"] + ".mask"] = river.mask
+        elif op == "grade":
+            pts = _line_pts(L["line"], c)
+            wet = c.water > 0
+            Hn, prof = LF.grade(c.H.astype(float), c.X.astype(float), c.Z.astype(float), pts,
+                                width=L.get("width", 3), max_grade=L.get("max_grade", 0.25),
+                                shoulder=L.get("shoulder", 2), water=wet, keep=c.laid)
+            c.H = np.where(wet, c.H, np.round(Hn))
+            c.lines[L["id"]] = dict(pts=pts, width=L.get("width", 3), profile=prof)
+            c.laid |= shapes.polyline(c.X.astype(float), c.Z.astype(float), pts)[0] <= L.get("width", 3) / 2
+        else:
+            c.H, wet = _ground_layer(L, c.H, X, Z, c.fields, c.lines, c.land)
+            if wet is not None:
+                c.water = np.where(wet > 0, wet, c.water)
+        changed = ((np.abs(c.H - before) > 0.5) | (c.water != wet_before)) & c.land
+        steps.append(Step(L["id"], "ground", op, changed, c.H.copy(), L.get("note", "")))
+    return c, steps
+
+
 def build(doc):
     """Build a layer document: every stage in order, every layer recorded as a Step."""
     bd = doc["board"]
     (x0, x1), (z0, z1) = bd["x"], bd["z"]
     w = World(x0, z0, x1 - x0 + 1, z1 - z0 + 1, sy=bd.get("height", 128))
     X, Z = w.grid()
-    fields = {k: _field(v, X.shape, {}) for k, v in doc.get("fields", {}).items()}
-    lines = {}
-    land = np.ones(X.shape, bool)
-    H = np.full(X.shape, float(bd.get("floor", 40)))
-    water = np.zeros(X.shape, int)
-    out = Built(w, H, land, water, X, Z, lines=lines)
-    for L in doc.get("ground", []):
-        before = H.copy()
-        if L["op"] == "outline":
-            ins = {k: (_field(v, X.shape, fields) if isinstance(v, (dict, str)) else v)
-                   for k, v in L.get("insets", {}).items()}
-            land = shapes.island(X, Z, tuple(L["box"]), **ins)
-            out.steps.append(Step(L["id"], "ground", "outline", land.copy(), H.copy(), L.get("note", "")))
-            continue
-        H, wet = _ground_layer(L, H, X, Z, fields, lines, land)
-        if wet is not None:
-            water = np.where(wet > 0, wet, water)
-        out.steps.append(Step(L["id"], "ground", L["op"], (np.abs(H - before) > 0.5) & land, H.copy(),
-                              L.get("note", "")))
+    c, steps = ground(doc, X, Z)
+    fields, lines, land, H, water = c.fields, c.lines, c.land, c.H, c.water
+    out = Built(w, H, land, water, X, Z, steps=steps, lines=lines)
     Hi = np.round(H).astype(int)
     Hi = np.where(water > 0, np.minimum(Hi, water - 1), Hi)
     paint = [_paint_layer(P, X, Z, fields, lines, Hi) for P in doc.get("paint", [])]
