@@ -214,6 +214,33 @@ class Plan(unittest.TestCase):
         self.assertTrue(sight.line_clear(sight.eye(-2, 13, 0), sight.target(15, 11, 0), op))
 
 
+class Field(unittest.TestCase):
+    def setUp(self):
+        self.X, self.Z = np.meshgrid(np.arange(-50, 50, dtype=float), np.arange(-40, 40, dtype=float), indexing="ij")
+
+    def test_landmarks_are_exact(self):
+        from pgmvox import field as F
+        X, Z = self.X, self.Z
+        ramp = F.terms(X, Z, 10, F.Ramp("x", -20, 20, 6))
+        self.assertTrue((ramp[X <= -20] == 10).all() and (ramp[X >= 20] == 16).all())
+        falling = F.terms(X, Z, 0, F.Ramp("z", 30, -30, 4))
+        self.assertTrue((falling[Z <= -30] == 4).all() and (falling[Z >= 30] == 0).all())
+        mound = F.terms(X, Z, 0, F.Gauss((10, -5), 8, 5, rz=4))
+        self.assertEqual(mound[60, 35], 5.0)
+        self.assertEqual(np.unravel_index(mound.argmax(), mound.shape), (60, 35))
+        turned = F.Gauss((0, 0), 12, 1, rz=3, angle=90).value(X, Z)
+        self.assertGreater(turned[50, 40 + 9], turned[50 + 9, 40])        # turned a right angle: long along z
+
+    def test_terms_add_and_mix_weighs(self):
+        from pgmvox import field as F
+        X, Z = self.X, self.Z
+        a, b = F.Ramp("x", -10, 10, 3), F.Tilt(0.1, -0.2)
+        self.assertTrue(np.allclose(F.terms(X, Z, 2, a, b), F.terms(X, Z, 2, a) + F.terms(X, Z, 0, b)))
+        w = np.clip((X + 50) / 99, 0, 1)
+        m = F.mix(np.full(X.shape, 1.0), np.full(X.shape, 5.0), w)
+        self.assertEqual((m[0, 0], m[-1, 0]), (1.0, 5.0))
+
+
 class Shapes(unittest.TestCase):
     def test_a_rectangle_is_taken_by_its_corners_in_either_order(self):
         cells = shapes.rect_cells(3, 9, 1, 7)

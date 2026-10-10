@@ -29,6 +29,7 @@ from pgmvox import under as under_lib  # noqa: E402
 from pgmvox.build import Frame, House  # noqa: E402
 from pgmvox.noise import fbm, spline, smoothstep  # noqa: E402
 from pgmvox import noise  # noqa: E402
+from pgmvox import field as F  # noqa: E402
 from pgmvox.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
 from pgmvox.terrain import slope_deg  # noqa: E402
@@ -198,13 +199,12 @@ def land():
     order = np.argsort(cx_)
     zr = np.interp(Xf, cx_[order], cz_[order])
     north = Z < zr
-    h_n = 48.5 + 3.5 * smoothstep(-14, -64, Xf) + 2.0 * smoothstep(-74, -96, Xf)
-    h_n = h_n + 4.5 * np.exp(-(((Xf + 44) / 16.0) ** 2 + ((Zf + 78) / 11.0) ** 2))
-    h_s = 47.2 + 1.8 * smoothstep(25, 80, Zf) + 4.5 * smoothstep(-64, -98, Xf)
-    h = np.where(north, h_n, h_s)
-    west = smoothstep(-70, -80, Xf)
-    h_w = 52.5 + 2.5 * smoothstep(-80, -98, Xf) - 1.5 * smoothstep(-10, 30, Zf) + 1.0 * smoothstep(30, 60, Zf)
-    h = h * (1 - west) + h_w * west + 0.8 * n_small + 1.2 * n_big
+    h_n = F.terms(Xf, Zf, 48.5, F.Ramp("x", -14, -64, 3.5), F.Ramp("x", -74, -96, 2.0),
+                  F.Gauss((-44, -78), 16.0, 4.5, rz=11.0))
+    h_s = F.terms(Xf, Zf, 47.2, F.Ramp("z", 25, 80, 1.8), F.Ramp("x", -64, -98, 4.5))
+    h_w = F.terms(Xf, Zf, 52.5, F.Ramp("x", -80, -98, 2.5), F.Ramp("z", -10, 30, -1.5), F.Ramp("z", 30, 60, 1.0))
+    h = F.mix(np.where(north, h_n, h_s), h_w, smoothstep(-70, -80, Xf))
+    h = F.terms(Xf, Zf, h, F.Noise(n_small, 0.8), F.Noise(n_big, 1.2))
 
     # the river valley: a bluff on the town side, a gentle bank on the field side, the valley floor a block
     # over each reach's water; then pgmvox's watercourse cuts the channel and finds the weir as a fall

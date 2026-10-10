@@ -30,6 +30,7 @@ from pgmvox import shapes  # noqa: E402
 from pgmvox.build import Frame, House  # noqa: E402
 from pgmvox.noise import fbm, ridged, smoothstep, spline  # noqa: E402
 from pgmvox import noise  # noqa: E402
+from pgmvox import field as F  # noqa: E402
 from pgmvox.objectives import Box, Core, Objectives, Observer, Spawn, Teams  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
 from pgmvox.terrain import slope_deg  # noqa: E402
@@ -117,7 +118,7 @@ def land():
                                 2 * fbm(sh, 8, 2, seed=26))])     # the far north-west: nobody's either
 
     # the ash shelf: 51 by the fissure, rising gently west to the hamlet's 53-54
-    h = 51 + 3.2 * nb + 0.6 * ns + 2.5 * smoothstep(-58, -86, Xf)
+    h = F.terms(Xf, Zf, 51, F.Noise(nb, 3.2), F.Noise(ns, 0.6), F.Ramp("x", -58, -86, 2.5))
     h = np.where(np.hypot(Xf - CORE[0], Zf - CORE[1]) < 20, 51 + 0.6 * ns, h)    # the cone sits on even ground
 
     # the cinder knolls on the north flats: the staging ground's cover, the Cairn on the tallest

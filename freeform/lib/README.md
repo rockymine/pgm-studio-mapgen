@@ -12,6 +12,7 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `blocks` | `B`, the 1.8 ids by name; the block classes (`PASSABLE`, `CLIMBABLE`, `NOT_GROUND`, `SIGHT_CLEAR`, `GRAVITY`, `FORBIDDEN_IN_PLAY`); names and colours per id and data |
 | `orient` | the data for a block facing a way (`stair`, `ladder`, `torch`, `door`, `log_axis`, `yaw`, `rotation16`); turn tables for `cw`, `ccw`, `half`, `mirror_x`, `mirror_z`; `turn_world` about a named axis |
 | `world` | `World` (set, fill, column, top, heightmap, chests, signs, banners, save, load); `write` to region files through the studio's Anvil writer; `seed` and `rng` for named random streams |
+| `field` | heightfields stated as `terms`: a base plus `Ramp`, `Gauss` (elliptical, turned, any power), `Tilt` and `Noise`, summed in order; `mix` of two fields by a weight |
 | `noise` | `fbm`, `ridged`, `line` (a wandering offset along one axis of a grid: a foot, an edge, an inset), `ragged` (the same in whole blocks, an edge bitten in), `smoothstep`, `spline` |
 | `shapes` | polygons, polylines (distance, arc length and side; `nearest_on` for one point), discs, rings, ellipses, tapered strokes, `boundary`; the cell sets `rect_cells` (by corners) and `poly_cells`; `scatter_points` (points over a mask kept apart); `island` (a board's land from a box, an inset per side and cut corners); `distance_in` and `edge_depth`, by taxicab, chessboard or euclid |
 | `move` | the 1.8 tick model: `fly`, `fall`, `fall_damage`, `jump_reach`, `knockback`, `solve_launch` |
