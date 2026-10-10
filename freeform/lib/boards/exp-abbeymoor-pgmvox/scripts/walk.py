@@ -83,14 +83,29 @@ for o in dest:
         continue
     b = o.box
     cx, cz = (b.x0 + b.x1) // 2, (b.z0 + b.z1) // 2
-    tgt = sight.target(cx, b.y1 + 1, cz)
+    faces = []                                                  # every face of the pillar that has air in front of it: a point 0.05 out of its centre
+    for x in range(b.x0, b.x1 + 1):
+        for y in range(b.y0, b.y1 + 1):
+            for z in range(b.z0, b.z1 + 1):
+                for n in ((1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1)):
+                    nx, ny, nz = x + n[0], y + n[1], z + n[2]
+                    if b.x0 <= nx <= b.x1 and b.y0 <= ny <= b.y1 and b.z0 <= nz <= b.z1:
+                        continue
+                    faces.append(((x + .5 + .55 * n[0], y + .5 + .55 * n[1], z + .5 + .55 * n[2]), n,
+                                  (x + .5 + .5 * n[0], y + .5 + .5 * n[1], z + .5 + .5 * n[2])))
     eyes = []
     for i, k in np.argwhere(R.mask("ground", "road", "green", "orchard", "peat", "boardwalk", "steep") & (Z > -127)):
         x, z = int(X[i, k]), int(Z[i, k])
         if 25 <= np.hypot(x - cx, z - cz) <= 60 and (x + z) % 5 == 0:
             eyes.append(sight.eye(x, int(R.H[i, k]) + 1, z))
-    seen = sight.visibility([tgt], eyes, opaque)[0]
-    out.append(f"{o.id}: seen from {100 * seen:.0f}% of {len(eyes)} ground cells 25 to 60 blocks off (voxel sight, trees and walls count)")
+
+    def sees(eye):
+        for aim, n, ctr in faces:
+            if (eye[0] - ctr[0]) * n[0] + (eye[1] - ctr[1]) * n[1] + (eye[2] - ctr[2]) * n[2] > 0 and sight.line_clear(eye, aim, opaque):
+                return True
+        return False
+    seen = sum(1 for e in eyes if sees(e)) / max(1, len(eyes))
+    out.append(f"{o.id}: seen from {100 * seen:.0f}% of {len(eyes)} ground cells 25 to 60 blocks off (voxel sight to any face of the {b.y1 - b.y0 + 1}-block pillar, trees and walls count)")
 ids = w.ids.copy()
 ids[np.isin(ids, sorted(K.DOORS))] = 0                         # doors open: pgmvox.walk's PASSABLE has none
 rules = walk.MoveRules(max_drop=3, jumps=False)

@@ -69,6 +69,54 @@ crown = np.isin(w.ids, (B.LEAVES, B.LEAVES2)).any(axis=1)
 over = crown & R.mask("stair", "landing")
 cells = [(int(i) + w.x0, int(kk) + w.z0) for i, kk in np.argwhere(over)]
 out.append(f"tree crowns over a flight or a landing: {len(cells)} columns {cells[:6] if cells else ''}")
+
+# revision 1 read-backs ------------------------------------------------------------------------------------------
+# (a) the longest straight run of fence anywhere (a fence is a spruce fence or a cobble wall, x or z)
+FENCE_IDS = sorted(K.FENCES | {B.COBBLE_WALL})
+fence = np.isin(w.ids, FENCE_IDS)
+longest = (0, None)
+for axis in (0, 2):
+    for y in range(w.sy):
+        plane = fence[:, y, :] if axis == 0 else fence[:, y, :].T
+        for a, row in enumerate(plane):
+            run = 0
+            for b, v in enumerate(row):
+                run = run + 1 if v else 0
+                if run > longest[0]:
+                    longest = (run, (int(a + (w.x0 if axis == 0 else w.z0)), y, int(b + (w.z0 if axis == 0 else w.x0)), "x" if axis == 0 else "z"))
+out.append(f"longest straight run of fence or wall-post blocks: {longest[0]} ending at {longest[1]}")
+# (b) wool-room, monument and every other objective: the nearest boulder-like thing (an oven, a heap, an iron outcrop, a stack of slate)
+objs = [("magenta monument", -15, -86), ("yellow monument", 15, -86), ("kiln wool", 60, -68), ("kiln door", 54, -68),
+        ("winding wool", -76, -91), ("winding door", -71, -91)]
+boulders = [("oven", 49, -76), ("oven", 49, -58)] + [("heap", x, z) for x, z, *_ in P.HEAPS] + [("iron", -20, -103), ("iron", 18, -103)] + \
+           [("slate stack", x, z) for x, z in ((14, -30), (-12, -22), (8, -22), (-18, -31), (35, -76), (53, -57), (41, -75))]
+for name, x, z in objs:
+    d, b = min((((x - bx) ** 2 + (z - bz) ** 2) ** 0.5, kind) for kind, bx, bz in boulders if bz < 0 and (z < 0))
+    out.append(f"nearest boulder-like object to the {name} ({x}, {z}): {b} {d:.1f} blocks")
+# (c) a tree block over any house: a leaf or log within the roofs' cells above the eave
+roofs = np.isin(w.ids, (B.STONEBRICK_STAIRS,))
+trunk = np.isin(w.ids, (B.LOG, B.LOG2))
+out.append("leaf blocks resting directly on a stone-brick stair (a tree on a roof): " +
+           str(int((np.isin(w.ids[:, 1:, :], (B.LEAVES, B.LEAVES2)) & roofs[:, :-1, :]).sum())))
+# (d) the bedrock wall's depth: the lowest bedrock block in each wall column above the kill height
+for name, (x0, x1, z0, z1) in (("gantry wall", (28, 29, -60, -55)), ("path wall", (-60, -59, -85, -79))):
+    lows = []
+    for x in range(x0, x1 + 1):
+        for z in range(z0, z1 + 1):
+            col = np.flatnonzero(w.ids[x - w.x0, :, z - w.z0] == B.BEDROCK)
+            lows.append(int(col.min()))
+    out.append(f"{name}: bedrock from y {min(lows)} to {max(lows)} at the foot, top {P.WALL_G['height'] and ''}")
+# (e) the green share of the top surface per terrace: grass over all the red half's walkable top blocks
+tops = {}
+for kind in ("spawn", "row", "yard", "front", "bench", "quarry"):
+    m = R.mask(kind) | (R.piece == R.kinds[kind]) if hasattr(R, "piece") else R.mask(kind)
+    cells = [(i, kk) for i, kk in np.argwhere(m & ((np.arange(R.nz)[None, :] + R.z_min) < 0))]
+    g = 0
+    for i, kk in cells:
+        y = w.top(i + w.x0, kk + w.z0)
+        g += w.ids[i, y, kk] in (B.GRASS,)
+    out.append(f"top blocks that are grass, {kind}: {g} of {len(cells)}")
+
 ids = w.ids.copy()
 ids[np.isin(ids, sorted(K.DOORS))] = 0                         # doors open: pgmvox.walk's PASSABLE has none
 wb = World(w.x0, w.z0, w.sx, w.sz, w.sy)

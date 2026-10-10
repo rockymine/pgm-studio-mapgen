@@ -54,10 +54,10 @@
         <cuboid min="-25,0,99" max="24,141,130" id="blue-spawn"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
         <apply block-place="spawn-minable-regrowth" block-break="spawn-minable" region="blue-spawn" message="You may not edit the spawn!"/>
-        <cuboid min="-41,86,-73" max="-38,89,-70" id="red-abbey-region"/>
-        <cuboid min="38,86,70" max="41,89,73" id="blue-abbey-region"/>
-        <cuboid min="29,69,-71" max="32,72,-68" id="red-village-region"/>
-        <cuboid min="-32,69,68" max="-29,72,71" id="blue-village-region"/>
+        <cuboid min="-40,89,-72" max="-39,92,-71" id="red-abbey-region"/>
+        <cuboid min="39,89,71" max="40,92,72" id="blue-abbey-region"/>
+        <cuboid min="30,69,-70" max="31,72,-69" id="red-village-region"/>
+        <cuboid min="-31,69,69" max="-30,72,70" id="blue-village-region"/>
         <below y="8" id="the-fall"/>
         <apply kit="fall-kill" region="the-fall"/>
         <apply block-place="not-void" message="You may not build in the void!"/>
@@ -67,10 +67,10 @@
         <renewable region="blue-spawn" renew-filter="spawn-minable"/>
     </renewables>
     <destroyables>
-        <destroyable id="red-abbey" name="Red Abbey Monument" owner="red-team" materials="obsidian" completion="50%" mode-changes="true" region="red-abbey-region"/>
-        <destroyable id="blue-abbey" name="Blue Abbey Monument" owner="blue-team" materials="obsidian" completion="50%" mode-changes="true" region="blue-abbey-region"/>
-        <destroyable id="red-village" name="Red Village Monument" owner="red-team" materials="obsidian" completion="50%" mode-changes="true" region="red-village-region"/>
-        <destroyable id="blue-village" name="Blue Village Monument" owner="blue-team" materials="obsidian" completion="50%" mode-changes="true" region="blue-village-region"/>
+        <destroyable id="red-abbey" name="Red Abbey Monument" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-abbey-region"/>
+        <destroyable id="blue-abbey" name="Blue Abbey Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-abbey-region"/>
+        <destroyable id="red-village" name="Red Village Monument" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-village-region"/>
+        <destroyable id="blue-village" name="Blue Village Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-village-region"/>
     </destroyables>
     <kits>
         <kit id="spawn-kit">

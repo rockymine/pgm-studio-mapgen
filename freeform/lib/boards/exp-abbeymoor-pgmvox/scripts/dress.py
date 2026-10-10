@@ -8,6 +8,7 @@ A house's windows keep two blocks clear of its door.
 import numpy as np
 
 import crypt
+import land
 import plan as P
 from pgmvox import B, noise, props, trees
 from pgmvox import build as BLD
@@ -22,13 +23,28 @@ def cellpick(x, z, choices, size=3, salt=0):
 
 
 FLAGS = [(B.STONEBRICK, 0), (B.STONE, 6), (B.STONE, 5), (B.STONEBRICK, 2)]
-ROAD = [(B.GRAVEL, 0), (B.DIRT, 1), (B.STONE, 5)]
+ROAD = [(B.DIRT, 1), (B.DIRT, 1), (B.DIRT, 1), (B.DIRT, 0), (B.GRAVEL, 0)]       # a trodden track: coarse dirt, plain dirt, a little gravel
 
 # heather, podzol and worn ground are shapes: (cx, cz, rx, rz, what), red's half (z < 0) and drawn once; the image comes with the turn
 PATCHES = [(-12, -100, 9, 6, "heather"), (-60, -110, 10, 7, "heather"), (-68, -80, 8, 10, "heather"), (-20, -52, 12, 5, "heather"),
            (70, -100, 8, 8, "heather"), (80, -60, 8, 12, "heather"), (-80, -40, 8, 8, "heather"), (50, -26, 10, 6, "heather"),
            (-74, -60, 5, 4, "podzol"), (46, -102, 6, 4, "podzol"), (-52, -100, 6, 4, "podzol"), (60, -76, 6, 5, "podzol"),
            (18, -108, 4, 4, "dirt"), (-34, -100, 4, 3, "dirt"), (74, -30, 6, 4, "dirt"), (-86, -20, 6, 5, "podzol")]
+
+
+# the bog's outliers: peat ground in irregular shapes round the moor and through the middle, (cx, cz, rx, rz, tilt); drawn once, red's half
+PEAT = [(-60, -20, 9, 5, 0.5), (-46, -8, 7, 4, -0.4), (-84, -26, 6, 4, 0.2), (-30, -48, 8, 4, 0.0), (-12, -36, 5, 3, 0.7), (14, -22, 7, 3, -0.3),
+        (40, -16, 8, 4, 0.4), (62, -8, 6, 4, -0.5), (82, -14, 5, 5, 0.0), (28, -40, 5, 3, 0.3), (-70, -50, 6, 4, 0.6), (-26, -64, 4, 3, 0.0),
+        (74, -48, 6, 3, -0.2), (-90, -70, 4, 5, 0.0), (52, -34, 4, 3, 0.5)]
+
+
+def in_peat(x, z, wobble):
+    for cx, cz, rx, rz, tilt in PEAT:
+        u, v = x - cx, z - cz
+        a, b = u * np.cos(tilt) + v * np.sin(tilt), -u * np.sin(tilt) + v * np.cos(tilt)
+        if (a / rx) ** 2 + (b / rz) ** 2 <= 1 + 0.5 * wobble:
+            return True
+    return False
 
 
 def patch_of(x, z):
@@ -46,7 +62,8 @@ def surface(w, R, deg, r, stats):
     names = {i: k for k, i in R.kinds.items()}
     grain = noise.fbm((w.sx, w.sz), 5, 2, seed=44)
     wetness = noise.fbm((w.sx, w.sz), 9, 2, seed=45)
-    bogish = np.hypot((X + 0.5) / 52, (Z + 0.5) / 31) < 0.78
+    main, lobe = land.bog_field(X, Z)
+    bogish = (main < 0.78) | (lobe < 0.7)
     n = dict(heather=0, flags=0, bog=0, road=0)
     for i, k in np.argwhere(P.LAND & (Z < 0)):
         x, z, h = int(X[i, k]), int(Z[i, k]), int(P.H[i, k])
@@ -74,6 +91,11 @@ def surface(w, R, deg, r, stats):
         elif bogish[i, k] and h <= P.BOG + 3:
             c = grain[i, k]
             top = (B.DIRT, 1) if c < 0.15 else (B.DIRT, 2) if c < 0.55 else (B.DIRT, 0)
+            soil = (B.DIRT, 1)
+            n["bog"] += 1
+        elif in_peat(x, z, wetness[i, k]) and h <= P.BOG + 8:
+            c = grain[i, k]
+            top = (B.DIRT, 1) if c < 0.1 else (B.DIRT, 2) if c < 0.5 else (B.DIRT, 0)
             soil = (B.DIRT, 1)
             n["bog"] += 1
         else:
@@ -123,18 +145,34 @@ def clear_windows(L, margin=2.6):
     return f
 
 
-STYLE_WASH = dict(ground=[(B.STONE, 0), (B.COBBLE, 0), (B.STONE, 5)], upper=[(B.STAINED_CLAY, 0)], post=1, gable=(B.PLANKS, 1),
-                  floor=(B.PLANKS, 1), roof=(B.PLANKS, 5), stair=B.DARK_OAK_STAIRS, slab=(B.WOOD_SLAB, 5), door=B.SPRUCE_DOOR,
-                  window=(B.PANE, 0), chimney=(B.COBBLE, 0))
-STYLE_STONE = dict(ground=[(B.STONEBRICK, 0), (B.COBBLE, 0), (B.STONE, 5)], upper=[(B.STONE, 5)], post=None, gable=(B.COBBLE, 0),
-                   floor=(B.STONEBRICK, 0), roof=(B.COBBLE, 0), stair=B.COBBLE_STAIRS, slab=(B.SLAB, 3), door=B.DARK_OAK_DOOR,
-                   window=(B.IRON_BARS, 0), chimney=(B.COBBLE, 0))
+def clay_style(walls, roof=(B.PLANKS, 5), stair=B.DARK_OAK_STAIRS, slab=(B.WOOD_SLAB, 5), door=B.SPRUCE_DOOR, window=(B.PANE, 0), post=1):
+    """Clay or brick walls in a spruce frame, a stone course at the foot (see rebase)."""
+    return dict(ground=walls, upper=walls, post=post, gable=walls[0], floor=(B.PLANKS, 1), roof=roof, stair=stair, slab=slab, door=door,
+                window=window, chimney=(B.COBBLE, 0))
+
+
+LIME_WASH = [(B.STAINED_CLAY, 0), (B.STAINED_CLAY, 0), (B.STAINED_CLAY, 8)]
+OCHRE = [(B.STAINED_CLAY, 4), (B.STAINED_CLAY, 4), (B.STAINED_CLAY, 1)]
+BRICK_RED = [(B.BRICK, 0), (B.BRICK, 0), (B.BRICK, 0), (B.STAINED_CLAY, 14)]
+TERRACOTTA = [(B.HARDENED_CLAY, 0), (B.HARDENED_CLAY, 0), (B.STAINED_CLAY, 1)]
+UMBER = [(B.STAINED_CLAY, 12), (B.STAINED_CLAY, 12), (B.HARDENED_CLAY, 0)]
+SLATE_ROOF = dict(roof=(B.STONEBRICK, 0), stair=B.STONEBRICK_STAIRS, slab=(B.SLAB, 5))
 STYLE_TIMBER = dict(ground=[(B.PLANKS, 1)], upper=[(B.PLANKS, 1)], post=1, gable=(B.PLANKS, 1), floor=(B.PLANKS, 1), roof=(B.PLANKS, 5),
                     stair=B.DARK_OAK_STAIRS, slab=(B.WOOD_SLAB, 5), door=B.SPRUCE_DOOR, window=(B.PANE, 0))
-STYLE_INN = dict(ground=[(B.COBBLE, 0), (B.STONE, 5)], upper=[(B.STAINED_CLAY, 0)], post=1, gable=(B.PLANKS, 1), floor=(B.PLANKS, 1),
-                 roof=(B.BRICK, 0), stair=B.BRICK_STAIRS, slab=(B.SLAB, 4), door=B.DARK_OAK_DOOR, window=(B.PANE, 0), chimney=(B.BRICK, 0))
-STYLES = {"farmhouse": (STYLE_WASH, 1, 4), "farm-barn": (STYLE_TIMBER, 1, 5), "c1": (STYLE_WASH, 1, 4), "c2": (STYLE_WASH, 1, 4),
-          "c3": (STYLE_STONE, 1, 4), "c4": (STYLE_WASH, 1, 4), "inn": (STYLE_INN, 2, 4), "tithe": (STYLE_STONE, 1, 7)}
+STYLES = {"farmhouse": (clay_style(LIME_WASH), 1, 4), "farm-barn": (STYLE_TIMBER, 1, 5), "c1": (clay_style(OCHRE), 1, 4),
+          "c2": (clay_style(BRICK_RED), 1, 4), "c3": (clay_style(TERRACOTTA, **SLATE_ROOF), 1, 4), "c4": (clay_style(LIME_WASH), 1, 4),
+          "inn": (clay_style(UMBER, roof=(B.BRICK, 0), stair=B.BRICK_STAIRS, slab=(B.SLAB, 4), door=B.DARK_OAK_DOOR), 2, 4),
+          "tithe": (clay_style(OCHRE, door=B.DARK_OAK_DOOR, **SLATE_ROOF), 1, 7),
+          "f1": (clay_style(TERRACOTTA), 1, 4), "f2": (clay_style(LIME_WASH), 1, 4), "f3": (clay_style(UMBER, **SLATE_ROOF), 1, 4)}
+FOOT = [(B.COBBLE, 0), (B.STONE, 5), (B.STONEBRICK, 0)]
+WALL_BLOCKS = {B.BRICK, B.STAINED_CLAY, B.HARDENED_CLAY}
+
+
+def rebase(w, res, floor, r):
+    """A stone course at the foot of a clay or brick house: the first course of wall, but for the door and the windows."""
+    for x, z in res["footprint"]:
+        if w.id(x, floor + 1, z) in WALL_BLOCKS:
+            w.set(x, floor + 1, z, *FOOT[int(r.integers(len(FOOT)))])
 
 
 def houses(w, r, stats):
@@ -144,9 +182,11 @@ def houses(w, r, stats):
         key_, cx, cz, heading, L, W, door, name = hs["spec"]
         style, storeys, storey = STYLES[key]
         h = BLD.House(cx=cx, cz=cz, heading=heading, L=L, W=W, floor=hs["floor"], storeys=storeys, storey=storey, style=style, door=door,
-                      roof="gable", pitch=2 if key == "tithe" else 1, overhang=1, chimney=key in ("c1", "c2", "c3", "c4", "inn", "farmhouse"),
+                      roof="gable", pitch=2 if key == "tithe" else 1, overhang=1, chimney=key in ("c1", "c2", "c3", "c4", "inn", "farmhouse", "f1", "f3"),
                       windows=clear_windows(L))
         res = BLD.house(w, h, ground, r)
+        if style is not STYLE_TIMBER:
+            rebase(w, res, hs["floor"], r)
         if (res["door"][0], res["door"][1]) != hs["door"]:
             raise RuntimeError(f"{key}: the library put the door at {res['door'][:2]}, the plan says {hs['door']}")
         out[key] = res
@@ -357,24 +397,90 @@ def orchards(w, R, r, stats):
     stats["orchard trees"] = n
 
 
+def boulder(w, sx, sz, r):
+    y = P.g(sx, sz)
+    s = int(r.integers(2, 4))
+    for dx in range(s):
+        for dz in range(s):
+            hgt = max(1, s - 1 - (abs(dx - 1) + abs(dz - 1)) // 2)
+            for dy in range(1, hgt + 1):
+                w.set(sx + dx, y + dy, sz + dz, *((B.STONE, 0) if r.random() < 0.5 else (B.STONE, 5)))
+
+
 def boulders(w, R, r, stats):
-    """Boulders on the moor: stone and andesite lumps two to three wide, one to three high, on the hill's skirts and the moor's heather,
-    never on a road, the green, the bog or within six of a cube."""
+    """Boulders and rock: the original spots, then forty more drawn from the moor's ground, ten or more apart, on the hill's skirts, the
+    heather and the bog's edge: never on a road, the green, water, within eight of a monument or four of a house, and never in a lane."""
+    from scipy import ndimage
     n = 0
     spots = [(-66, -96), (-70, -60), (-58, -40), (-86, -88), (-24, -96), (-10, -120), (52, -100), (62, -90), (78, -76), (74, -40),
              (60, -34), (-72, -20), (-46, -28), (-30, -100), (-8, -64), (4, -58), (40, -100), (70, -110), (-84, -110), (86, -18)]
+    houses = np.zeros(P.H.shape, bool)
+    for hs in P.houses().values():
+        for x, z in hs["cells"]:
+            houses[x - P.X_MIN, z - P.Z_MIN] = True
+    near_house = ndimage.binary_dilation(houses, iterations=4)
+    near_road = ndimage.binary_dilation(R.mask("road", "boardwalk", "green"), iterations=2)
+    X, Z = w.grid()
+    ok = P.LAND & (Z < -3) & R.mask("ground") & ~near_house & ~near_road & ~P.WET & (P.H > P.BOG)
+    for cx, cz in (P.A_CENTRE, P.B_CENTRE):
+        ok &= np.hypot(X - cx, Z - cz) > 10
+    cand = np.argwhere(ok)
+    r.shuffle(cand)
+    for i, k in cand:
+        if len(spots) >= 20 + 40:
+            break
+        x, z = int(X[i, k]), int(Z[i, k])
+        if all((x - sx) ** 2 + (z - sz) ** 2 >= 100 for sx, sz in spots):
+            spots.append((x, z))
     for sx, sz in spots:
-        if not R.inside(sx, sz) or R.kind(sx, sz) in ("water", "road", "green", "wall", "void"):
+        if not R.inside(sx, sz) or R.kind(sx, sz) in ("water", "road", "green", "wall", "void", "room", "door"):
             continue
-        y = P.g(sx, sz)
-        s = int(r.integers(2, 4))
-        for dx in range(s):
-            for dz in range(s):
-                hgt = max(1, s - 1 - (abs(dx - 1) + abs(dz - 1)) // 2)
-                for dy in range(1, hgt + 1):
-                    w.set(sx + dx, y + dy, sz + dz, *((B.STONE, 0) if r.random() < 0.5 else (B.STONE, 5)))
+        boulder(w, sx, sz, r)
         n += 1
     stats["boulders"] = n
+
+
+def moor_trees(w, R, r, stats):
+    """Copses on the moor: twenty clumps of small oaks, birches, olives and spruces, each within eight of a centre drawn from the open
+    ground, never on a road, the green, the bog, the hill or within eight of a monument; their crowns never reach a road (four clear)."""
+    from scipy import ndimage
+    lib = trees.library()
+    by = trees.kinds(lib)
+    by = {k: [t for t in v if t.crown <= 6] for k, v in by.items() if k in ("tiny-oak", "birch", "small-olive", "tiny-spruce")}
+    by = {k: v for k, v in by.items() if v}
+    weights = {k: {"tiny-oak": 4, "birch": 2, "small-olive": 2, "tiny-spruce": 1}[k] for k in by}
+    X, Z = w.grid()
+    deg = T_slope()
+    near_road = ndimage.binary_dilation(R.mask("road", "boardwalk", "green", "door", "peat"), iterations=7)
+    near_house = np.zeros(P.H.shape, bool)
+    for hs in P.houses().values():
+        for x, z in hs["cells"]:
+            near_house[x - P.X_MIN, z - P.Z_MIN] = True
+    near_house = ndimage.binary_dilation(near_house, iterations=5)
+    base = P.LAND & (Z < -3) & R.mask("ground") & ~near_road & ~near_house & ~ndimage.binary_dilation(P.WET, iterations=3) & (P.H > P.BOG + 1) & (deg < 25)
+    for cx, cz in (P.A_CENTRE, P.B_CENTRE):
+        base &= np.hypot(X - cx, Z - cz) > 12
+    base &= np.hypot(X - P.A_CENTRE[0], Z - P.A_CENTRE[1]) > 38                       # not on the hill
+    cand = np.argwhere(base)
+    r.shuffle(cand)
+    centres = []
+    for i, k in cand:
+        c = (int(X[i, k]), int(Z[i, k]))
+        if all((c[0] - a) ** 2 + (c[1] - b) ** 2 >= 18 ** 2 for a, b in centres):
+            centres.append(c)
+        if len(centres) >= 22:
+            break
+    planted = []
+    n = 0
+    ok = lambda x, z, t: w.id(x, P.g(x, z), z) in (B.GRASS, B.MYCELIUM) and not near_road[x - P.X_MIN, z - P.Z_MIN]        # noqa: E731
+    for cx, cz in centres:
+        zone = base & (np.hypot(X - cx, Z - cz) <= 8)
+        n += trees.scatter(w, zone, by, weights, r, spacing=1.0, tries=60, planted=planted, ok=ok)
+    stats["moor trees"] = n
+
+
+def T_slope():
+    return T.slope_deg(P.H, P.LAND)
 
 
 def cover(w, R, r, stats):
@@ -445,6 +551,7 @@ def everything(w, R, deg, O, stats):
     fold_and_fields(w, r)
     well(w)
     orchards(w, R, r, stats)
+    moor_trees(w, R, r, stats)
     boulders(w, R, r, stats)
     cover(w, R, r, stats)
     rim(w, r, stats)

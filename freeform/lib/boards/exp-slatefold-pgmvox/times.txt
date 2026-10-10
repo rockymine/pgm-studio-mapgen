@@ -5,3 +5,7 @@ plan_check ok 01:04:41
 gen v1 + walk 01:13:35
 pipeline run start 01:18:53
 pipeline ok, PLAN.md written 01:20:30
+
+revision 1
+review read, renders copied to renders-v1, Slatefold revision starts 02:04:17
+Slatefold r1: edits+build+read-backs done 02:08:47

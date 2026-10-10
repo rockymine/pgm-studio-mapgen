@@ -55,16 +55,16 @@ SPAWN_AT = (0, g(0, -112) + 1, -112)
 OBSERVER_AT = (0, 100, 0)
 SPAWN_AREA = Box(-24, 0, -130, 24, 140, -100)
 
-# ---- the monuments: a three-block cube of obsidian, two blocks of air over the ground -------------------------------
+# ---- the monuments: a pillar of three obsidian blocks, floating over the ground ---------------------------------------
 A_CENTRE = (-40, -72)                       # Monument A, at the abbey's crossing
 B_CENTRE = (30, -70)                        # Monument B, on the village green
-FLOAT = 3                                   # the cube's lowest course is this far over the floor (a dais under A adds DAIS)
-DAIS = 3                                    # Monument A stands over a stepped dais three high, so it clears the nave's walls
+FLOAT = 4                                   # the pillar's lowest block is this far over the floor (a dais under A adds DAIS)
+DAIS = 3                                    # Monument A stands over a stepped dais three high and floats three higher still, so it clears the nave's walls
 
 
 def monument_box(cx, cz):
-    y = g(cx, cz) + FLOAT + (DAIS if (cx, cz) == A_CENTRE else 0)
-    return Box(cx - 1, y, cz - 1, cx + 1, y + 2, cz + 1)
+    y = g(cx, cz) + (FLOAT + DAIS + 3 if (cx, cz) == A_CENTRE else FLOAT)
+    return Box(cx, y, cz, cx, y + 2, cz)
 
 
 # ---- the abbey: the nave's walls (inclusive), its doors, the tower stump, the stair slot, the crypt ---------------
@@ -104,9 +104,13 @@ HOUSES = [
     ("c4", 12, -76, 0, 8, 6, 1, "Brook Cottage"),
     ("inn", 33, -52, 0, 12, 8, -1, "the Moorcock"),
     ("tithe", 15, -60, 0, 18, 10, 1, "the Tithe Barn"),
+    # the flank hamlet, west of the bog: Fenside (its image, east of the bog, is blue's)
+    ("f1", -74, -22, 0, 8, 6, 1, "Fenside Cottage"),
+    ("f2", -63, -12, 90, 8, 6, 1, "Gorse Cottage"),
+    ("f3", -75, -11, 0, 10, 7, 1, "the Peat Store"),
 ]
 FOLD = (-22, -112, 7)                        # the sheepfold: a ring of drystone, x, z, radius
-ORCHARDS = [("north orchard", (2, -104, 16, -90)), ("south orchard", (40, -60, 56, -44))]
+ORCHARDS = [("north orchard", (2, -104, 16, -90)), ("south orchard", (40, -60, 56, -44)), ("flank orchard", (-86, -36, -72, -28))]
 CUTTINGS = [(-44, -42, -18, -40), (-44, -37, -18, -35), (-44, -32, -18, -30)]     # peat trenches, x0, z0, x1, z1
 STONES_R = 12                                # the ring of standing stones about the bog's middle
 GATE = (-30, -52)                            # a ruined gatehouse on the Monks' Way, at the hill's foot
@@ -116,6 +120,7 @@ ROADS = {
     "Hill Track": [(-4, -108), (-18, -102), (-28, -92), (-36, -84), (-44, -79)],
     "Monks' Way": [(21, -70), (8, -68), (-8, -70), (-20, -72), (-28, -72)],
     "Peat Track": [(33, -47), (26, -40), (14, -34), (0, -31)],
+    "Fen Lane": [(-17, -31), (-30, -27), (-44, -25), (-56, -22), (-66, -17)],
 }
 BOARDWALK = [(-1, -31), (-1, -1)]            # two wide, x -1 and 0 once turned
 
@@ -125,7 +130,8 @@ PLACES = [("HALL FARM (spawn)", (0, -118)), ("sheepfold", (-22, -112)), ("the Hi
           ("Thorn Cottage", (16, -86)), ("the Green", (30, -70)), ("Monument B", (30, -70)), ("Brook Cottage", (12, -76)),
           ("the Tithe Barn", (17, -60)), ("the Moorcock", (33, -52)), ("Orchard Cottage", (47, -70)),
           ("south orchard", (52, -52)), ("the Peat Cuttings", (-31, -36)), ("the Peat Track", (14, -35)),
-          ("the Standing Stones", (0, -13)), ("the Bog", (-22, -14)), ("the Beck", (60, -50)), ("the boardwalk", (-1, -16))]
+          ("the Standing Stones", (0, -13)), ("the Bog", (-22, -14)), ("the Beck", (60, -50)), ("the boardwalk", (-1, -16)),
+          ("FENSIDE", (-68, -17)), ("Fen Lane", (-48, -25)), ("the Peat Store", (-75, -11))]
 
 KINDS = ["void", "ground", "steep", "water", "road", "wall", "room", "door", "nave", "ruin", "green", "hole", "stair", "crypt",
          "passage", "boardwalk", "peat", "orchard"]
@@ -190,7 +196,7 @@ def build():
             x, z = int(X[i, k]), int(Z[i, k])
             R.cell(x, z, int(R.H[i, k]) if h is None else h, kind, both)
     for name, pts in ROADS.items():
-        paint(R.mask("ground", "steep", "water") & ~R.mask("water") & (shapes.polyline(X, Z, pts)[0] <= 1.6), "road")
+        paint(R.mask("ground", "steep", "water") & ~R.mask("water") & (shapes.polyline(X, Z, pts)[0] <= 2.1), "road")
     paint(shapes.polyline(X, Z, BOARDWALK)[0] <= 0.9, "boardwalk")
     for x0, z0, x1, z1 in CUTTINGS:
         paint((X >= x0) & (X <= x1) & (Z >= z0) & (Z <= z1), "peat")
@@ -263,8 +269,8 @@ def objectives():
     O = Objectives(Teams(("red-team", "Red", "red", 16), ("blue-team", "Blue", "blue", 16)), SYM)
     O.add(Spawn("red-team", SPAWN_AT, yaw=0, kit="spawn-kit", area=SPAWN_AREA, protect=("iron ore",)))
     O.add(Observer(OBSERVER_AT, yaw=90), mirror=False)
-    O.add(Destroyable("red-abbey", "Red Abbey Monument", "red-team", monument_box(*A_CENTRE), (B.OBSIDIAN, 0), "obsidian", "50%"),
+    O.add(Destroyable("red-abbey", "Red Abbey Monument", "red-team", monument_box(*A_CENTRE), (B.OBSIDIAN, 0), "obsidian", "100%"),
           name="Blue Abbey Monument")
-    O.add(Destroyable("red-village", "Red Village Monument", "red-team", monument_box(*B_CENTRE), (B.OBSIDIAN, 0), "obsidian", "50%"),
+    O.add(Destroyable("red-village", "Red Village Monument", "red-team", monument_box(*B_CENTRE), (B.OBSIDIAN, 0), "obsidian", "100%"),
           name="Blue Village Monument")
     return O

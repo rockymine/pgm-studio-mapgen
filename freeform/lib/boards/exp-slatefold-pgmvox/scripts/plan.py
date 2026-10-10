@@ -104,8 +104,10 @@ FLIGHTS = [
 # the spoil heaps: (centre x, centre z, radius, height above the floor): cones a player climbs a block at a time
 HEAPS = [(-30, -55, 6, 5, "yard"), (-12, -53, 5, 4, "yard"), (46, -75, 3, 3, "quarry"), (-28, -101, 5, 4, "spawn")]
 # knolls of turf: grass-topped swells of two or three blocks on the lawns, off every lane
-KNOLLS = [(-33, -98, 4, 2), (26, -99, 4, 2), (-47, -20, 5, 3), (36, -24, 5, 3), (-46, -40, 4, 2), (37, -40, 4, 2),
-          (-76, -83, 5, 3), (-74, -97, 4, 2)]
+KNOLLS = [(-33, -98, 4, 2), (26, -99, 4, 2), (-76, -83, 5, 3), (-74, -97, 4, 2),
+          # the Dressing Floor's meadow: grass hills of four and five blocks on the flanks and two low swells in the middle,
+          # the lane (x -6..6), the sheds and the slate stacks left clear
+          (-46, -27, 9, 5), (34, -27, 9, 5), (-22, -24, 6, 3), (21, -23, 6, 3), (-40, -42, 4, 2), (30, -43, 4, 2)]
 
 # build zones: void a player may build over, red's half (the image is drawn by the mirror)
 ZONES = [("band", "the band", (-60, -13, 60, -1)), ("bay-w", "the West Bay", (-72, -40, -53, -14)),
