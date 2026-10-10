@@ -1,0 +1,221 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "reflected": false,
+   "team": "red",
+   "point": {
+    "x": -2,
+    "y": 38,
+    "z": -112
+   },
+   "protection": [
+    {
+     "minX": -16,
+     "minZ": -120,
+     "maxX": 12,
+     "maxZ": -100
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z",
+    "-x"
+   ],
+   "footprint": {
+    "minX": -12,
+    "minZ": -119,
+    "maxX": 8,
+    "maxZ": -104
+   },
+   "iron": [
+    {
+     "x": -14.5,
+     "y": 38,
+     "z": -115.5
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "reflected": false,
+   "team": "blue",
+   "point": {
+    "x": 2,
+    "y": 38,
+    "z": 112
+   },
+   "protection": [
+    {
+     "minX": -12,
+     "minZ": 100,
+     "maxX": 16,
+     "maxZ": 120
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z",
+    "+x"
+   ],
+   "footprint": {
+    "minX": -8,
+    "minZ": 104,
+    "maxX": 12,
+    "maxZ": 119
+   },
+   "iron": [
+    {
+     "x": 14.5,
+     "y": 38,
+     "z": 115.5
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 53,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": []
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "abbey-monument",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Abbey Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -24,
+    "y": 38,
+    "z": -69
+   },
+   "float": 3,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "village-monument",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Village Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 30,
+    "y": 38,
+    "z": -62
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "abbey-monument",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Abbey Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 23,
+    "y": 38,
+    "z": 68
+   },
+   "float": 3,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "village-monument",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Village Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -31,
+    "y": 38,
+    "z": 61
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Abbeymoor",
+  "created": "2026-10-10",
+  "authors": [
+   {
+    "name": "Sonnet 5.5",
+    "contribution": "Plan, ground, crypt, paint, dressing"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

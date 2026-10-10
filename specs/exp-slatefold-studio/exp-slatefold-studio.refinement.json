@@ -1,0 +1,5994 @@
+{
+ "created": "2026-10-10",
+ "authors": [
+  {
+   "name": "Sonnet 5.5",
+   "contribution": "Plan, ground, paint, dressing"
+  }
+ ],
+ "themes": {
+  "hill": {
+   "rimEdges": "void",
+   "rim": {
+    "material": {
+     "kind": "cell",
+     "seed": 14,
+     "cellSize": 3,
+     "jitter": 60,
+     "warp": 3,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ],
+     "rise": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 2,
+             "data": 0
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 32
+       },
+       {
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "seed": 13,
+             "cellSize": 3,
+             "jitter": 60,
+             "warp": 3,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 1
+              },
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 1
+              }
+             ],
+             "rise": 0
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 8
+       },
+       {
+        "material": {
+         "kind": "cell",
+         "seed": 11,
+         "cellSize": 4,
+         "jitter": 70,
+         "warp": 4,
+         "palette": [
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 5
+          },
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 6
+          },
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 4,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 5
+          }
+         ],
+         "rise": 0
+        },
+        "thickness": 50
+       }
+      ]
+     }
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "height",
+    "from": -10,
+    "follow": 100,
+    "reach": 16,
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "layered",
+    "axis": "height",
+    "from": -10,
+    "follow": 100,
+    "reach": 16,
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   }
+  },
+  "quarry": {
+   "rimEdges": "void",
+   "rim": {
+    "material": {
+     "kind": "cell",
+     "seed": 14,
+     "cellSize": 3,
+     "jitter": 60,
+     "warp": 3,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ],
+     "rise": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "cell",
+     "seed": 12,
+     "cellSize": 3,
+     "jitter": 60,
+     "warp": 3,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      },
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "depth": 2,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "height",
+    "from": -10,
+    "follow": 100,
+    "reach": 16,
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "layered",
+    "axis": "height",
+    "from": -10,
+    "follow": 100,
+    "reach": 16,
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   }
+  },
+  "spoil": {
+   "rimEdges": "void",
+   "rim": {
+    "material": {
+     "kind": "cell",
+     "seed": 14,
+     "cellSize": 3,
+     "jitter": 60,
+     "warp": 3,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ],
+     "rise": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "cell",
+     "seed": 16,
+     "cellSize": 3,
+     "jitter": 80,
+     "warp": 3,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "height",
+    "from": -10,
+    "follow": 100,
+    "reach": 16,
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "layered",
+    "axis": "height",
+    "from": -10,
+    "follow": 100,
+    "reach": 16,
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   }
+  },
+  "moss": {
+   "rimEdges": "void",
+   "rim": {
+    "material": {
+     "kind": "cell",
+     "seed": 14,
+     "cellSize": 3,
+     "jitter": 60,
+     "warp": 3,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ],
+     "rise": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "noise",
+             "seed": 18,
+             "scale": 3,
+             "octaves": 2,
+             "stops": [
+              {
+               "kind": "solid",
+               "id": 48,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 2,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 2,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 48,
+               "data": 0
+              }
+             ],
+             "rise": 0
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 32
+       },
+       {
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "seed": 13,
+             "cellSize": 3,
+             "jitter": 60,
+             "warp": 3,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 1
+              },
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 1
+              }
+             ],
+             "rise": 0
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 8
+       },
+       {
+        "material": {
+         "kind": "cell",
+         "seed": 11,
+         "cellSize": 4,
+         "jitter": 70,
+         "warp": 4,
+         "palette": [
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 5
+          },
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 6
+          },
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 4,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 5
+          }
+         ],
+         "rise": 0
+        },
+        "thickness": 50
+       }
+      ]
+     }
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "height",
+    "from": -10,
+    "follow": 100,
+    "reach": 16,
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "layered",
+    "axis": "height",
+    "from": -10,
+    "follow": 100,
+    "reach": 16,
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   }
+  }
+ },
+ "mapTheme": "hill",
+ "relief": {
+  "team": {
+   "base": 14,
+   "reach": 30,
+   "marks": [
+    {
+     "id": "yard",
+     "kind": "area",
+     "ring": [
+      [
+       -48,
+       -46
+      ],
+      [
+       48,
+       -46
+      ],
+      [
+       48,
+       -16
+      ],
+      [
+       -48,
+       -16
+      ]
+     ],
+     "h": 14
+    },
+    {
+     "id": "pit",
+     "kind": "area",
+     "ring": [
+      [
+       -14,
+       -38
+      ],
+      [
+       8,
+       -38
+      ],
+      [
+       8,
+       -24
+      ],
+      [
+       -14,
+       -24
+      ]
+     ],
+     "h": 8,
+     "bevel": 5
+    },
+    {
+     "id": "upper",
+     "kind": "area",
+     "ring": [
+      [
+       -48,
+       -112
+      ],
+      [
+       16,
+       -112
+      ],
+      [
+       16,
+       -88
+      ],
+      [
+       -48,
+       -88
+      ]
+     ],
+     "h": 30
+    },
+    {
+     "id": "s-upper-mid",
+     "kind": "scarp",
+     "points": [
+      [
+       16,
+       -84
+      ],
+      [
+       -48,
+       -84
+      ]
+     ],
+     "high": 30,
+     "low": 22,
+     "face": 4,
+     "band": 4
+    },
+    {
+     "id": "mid",
+     "kind": "area",
+     "ring": [
+      [
+       -48,
+       -80
+      ],
+      [
+       16,
+       -80
+      ],
+      [
+       16,
+       -56
+      ],
+      [
+       -48,
+       -56
+      ]
+     ],
+     "h": 22
+    },
+    {
+     "id": "s-mid-yard",
+     "kind": "scarp",
+     "points": [
+      [
+       16,
+       -52
+      ],
+      [
+       -48,
+       -52
+      ]
+     ],
+     "high": 22,
+     "low": 14,
+     "face": 4,
+     "band": 4
+    },
+    {
+     "id": "bench",
+     "kind": "area",
+     "ring": [
+      [
+       16,
+       -112
+      ],
+      [
+       48,
+       -112
+      ],
+      [
+       48,
+       -88
+      ],
+      [
+       16,
+       -88
+      ]
+     ],
+     "h": 40
+    },
+    {
+     "id": "ramp-yard-mid",
+     "kind": "line",
+     "r": 4,
+     "tread": 2,
+     "points": [
+      [
+       -4,
+       -44
+      ],
+      [
+       -4,
+       -60
+      ]
+     ],
+     "h": [
+      14,
+      22
+     ]
+    },
+    {
+     "id": "ramp-mid-upper-w",
+     "kind": "line",
+     "r": 4,
+     "tread": 2,
+     "points": [
+      [
+       -27,
+       -78
+      ],
+      [
+       -27,
+       -94
+      ]
+     ],
+     "h": [
+      22,
+      30
+     ]
+    },
+    {
+     "id": "ramp-mid-upper-e",
+     "kind": "line",
+     "r": 4,
+     "tread": 2,
+     "points": [
+      [
+       6,
+       -78
+      ],
+      [
+       6,
+       -94
+      ]
+     ],
+     "h": [
+      22,
+      30
+     ]
+    },
+    {
+     "id": "s-upper-bench",
+     "kind": "scarp",
+     "points": [
+      [
+       16,
+       -86
+      ],
+      [
+       16,
+       -112
+      ]
+     ],
+     "high": 40,
+     "low": 30,
+     "face": 4,
+     "band": 2
+    },
+    {
+     "id": "track",
+     "kind": "line",
+     "r": 4,
+     "tread": 2,
+     "points": [
+      [
+       44,
+       -52
+      ],
+      [
+       22,
+       -52
+      ],
+      [
+       22,
+       -66
+      ],
+      [
+       44,
+       -66
+      ],
+      [
+       44,
+       -80
+      ],
+      [
+       22,
+       -80
+      ],
+      [
+       22,
+       -88
+      ]
+     ],
+     "h": [
+      14,
+      19,
+      19,
+      29,
+      29,
+      38,
+      40
+     ]
+    }
+   ],
+   "pushes": []
+  }
+ },
+ "addShapes": [
+  {
+   "id": "quarry-floor",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     17.0,
+     -31.0
+    ],
+    [
+     15.0,
+     -25.8
+    ],
+    [
+     9.5,
+     -21.6
+    ],
+    [
+     1.5,
+     -19.3
+    ],
+    [
+     -7.5,
+     -19.3
+    ],
+    [
+     -15.5,
+     -21.6
+    ],
+    [
+     -21.0,
+     -25.8
+    ],
+    [
+     -23.0,
+     -31.0
+    ],
+    [
+     -21.0,
+     -36.2
+    ],
+    [
+     -15.5,
+     -40.4
+    ],
+    [
+     -7.5,
+     -42.7
+    ],
+    [
+     1.5,
+     -42.7
+    ],
+    [
+     9.5,
+     -40.4
+    ],
+    [
+     15.0,
+     -36.2
+    ]
+   ],
+   "floor": 0,
+   "layer": "ground",
+   "group": "team",
+   "base_height": 1,
+   "height_mode": "sink",
+   "theme": "quarry"
+  },
+  {
+   "id": "tip-1",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     -20.3,
+     -20.5
+    ],
+    [
+     -22.7,
+     -17.8
+    ],
+    [
+     -26.8,
+     -17.0
+    ],
+    [
+     -30.4,
+     -18.6
+    ],
+    [
+     -32.0,
+     -21.8
+    ],
+    [
+     -30.8,
+     -25.0
+    ],
+    [
+     -27.3,
+     -26.9
+    ],
+    [
+     -23.3,
+     -26.4
+    ],
+    [
+     -20.5,
+     -23.9
+    ]
+   ],
+   "floor": 0,
+   "layer": "ground",
+   "group": "team",
+   "base_height": 5,
+   "height_mode": "raise",
+   "skirt": 4,
+   "theme": "spoil"
+  },
+  {
+   "id": "tip-2",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     24.4,
+     -38.1
+    ],
+    [
+     19.8,
+     -37.0
+    ],
+    [
+     15.4,
+     -38.3
+    ],
+    [
+     13.1,
+     -41.3
+    ],
+    [
+     14.0,
+     -44.6
+    ],
+    [
+     17.8,
+     -46.7
+    ],
+    [
+     22.6,
+     -46.6
+    ],
+    [
+     26.2,
+     -44.4
+    ],
+    [
+     26.9,
+     -41.0
+    ]
+   ],
+   "floor": 0,
+   "layer": "ground",
+   "group": "team",
+   "base_height": 6,
+   "height_mode": "raise",
+   "skirt": 4,
+   "theme": "spoil"
+  },
+  {
+   "id": "tip-3",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     43.0,
+     -43.6
+    ],
+    [
+     41.2,
+     -40.9
+    ],
+    [
+     37.5,
+     -40.0
+    ],
+    [
+     34.1,
+     -41.5
+    ],
+    [
+     33.0,
+     -44.4
+    ],
+    [
+     34.8,
+     -47.1
+    ],
+    [
+     38.5,
+     -48.0
+    ],
+    [
+     41.9,
+     -46.5
+    ]
+   ],
+   "floor": 0,
+   "layer": "ground",
+   "group": "team",
+   "base_height": 4,
+   "height_mode": "raise",
+   "skirt": 3,
+   "theme": "spoil"
+  },
+  {
+   "id": "pier",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     -4,
+     -17
+    ],
+    [
+     4,
+     -17
+    ],
+    [
+     4,
+     -11
+    ],
+    [
+     -4,
+     -11
+    ]
+   ],
+   "floor": 0,
+   "layer": "ground",
+   "group": "team",
+   "base_height": 14,
+   "theme": "quarry"
+  },
+  {
+   "id": "moss-upper",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     -43.1,
+     -87.4
+    ],
+    [
+     -44.1,
+     -85.7
+    ],
+    [
+     -46.1,
+     -85.0
+    ],
+    [
+     -48.0,
+     -85.8
+    ],
+    [
+     -49.0,
+     -87.6
+    ],
+    [
+     -48.6,
+     -89.6
+    ],
+    [
+     -47.0,
+     -90.8
+    ],
+    [
+     -44.9,
+     -90.8
+    ],
+    [
+     -43.4,
+     -89.4
+    ]
+   ],
+   "floor": 0,
+   "layer": "ground",
+   "group": "team",
+   "base_height": 1,
+   "height_mode": "sink",
+   "theme": "moss"
+  },
+  {
+   "id": "moss-bench",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     27.3,
+     -92.6
+    ],
+    [
+     24.2,
+     -90.3
+    ],
+    [
+     20.1,
+     -90.3
+    ],
+    [
+     16.9,
+     -92.4
+    ],
+    [
+     16.1,
+     -95.8
+    ],
+    [
+     18.0,
+     -98.8
+    ],
+    [
+     21.9,
+     -100.0
+    ],
+    [
+     25.7,
+     -98.9
+    ],
+    [
+     27.9,
+     -96.0
+    ]
+   ],
+   "floor": 0,
+   "layer": "ground",
+   "group": "team",
+   "base_height": 1,
+   "height_mode": "sink",
+   "theme": "moss"
+  },
+  {
+   "id": "moss-mid",
+   "type": "polygon",
+   "operation": "add",
+   "vertices": [
+    [
+     -14.6,
+     -64.4
+    ],
+    [
+     -17.9,
+     -62.6
+    ],
+    [
+     -22.7,
+     -62.0
+    ],
+    [
+     -27.2,
+     -63.0
+    ],
+    [
+     -29.8,
+     -65.1
+    ],
+    [
+     -29.4,
+     -67.6
+    ],
+    [
+     -26.1,
+     -69.4
+    ],
+    [
+     -21.3,
+     -70.0
+    ],
+    [
+     -16.8,
+     -69.0
+    ],
+    [
+     -14.2,
+     -66.9
+    ]
+   ],
+   "floor": 0,
+   "layer": "ground",
+   "group": "team",
+   "base_height": 1,
+   "height_mode": "sink",
+   "theme": "moss"
+  }
+ ],
+ "addLayers": [
+  {
+   "id": "hf-posts",
+   "name": "hf-posts",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "headframe",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "hf-post-0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 34,
+     "min_z": -110,
+     "max_x": 36,
+     "max_z": -108,
+     "floor": 0,
+     "base_height": 13,
+     "material": {
+      "kind": "solid",
+      "id": 162,
+      "data": 1
+     }
+    },
+    {
+     "id": "hf-post-1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 38,
+     "min_z": -110,
+     "max_x": 40,
+     "max_z": -108,
+     "floor": 0,
+     "base_height": 13,
+     "material": {
+      "kind": "solid",
+      "id": 162,
+      "data": 1
+     }
+    },
+    {
+     "id": "hf-post-2",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 34,
+     "min_z": -106,
+     "max_x": 36,
+     "max_z": -104,
+     "floor": 0,
+     "base_height": 13,
+     "material": {
+      "kind": "solid",
+      "id": 162,
+      "data": 1
+     }
+    },
+    {
+     "id": "hf-post-3",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 38,
+     "min_z": -106,
+     "max_x": 40,
+     "max_z": -104,
+     "floor": 0,
+     "base_height": 13,
+     "material": {
+      "kind": "solid",
+      "id": 162,
+      "data": 1
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "hf-posts",
+     "name": "hf-posts",
+     "mirrors": true,
+     "shapeIds": [
+      "hf-post-0",
+      "hf-post-1",
+      "hf-post-2",
+      "hf-post-3"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hf-low",
+   "name": "hf-low",
+   "base_y": 6,
+   "kind": "made",
+   "part_of": "headframe",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "hf-low-n",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 34,
+     "min_z": -110,
+     "max_x": 40,
+     "max_z": -109,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 5,
+      "data": 5
+     }
+    },
+    {
+     "id": "hf-low-s",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 34,
+     "min_z": -105,
+     "max_x": 40,
+     "max_z": -104,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 5,
+      "data": 5
+     }
+    },
+    {
+     "id": "hf-low-w",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 34,
+     "min_z": -109,
+     "max_x": 35,
+     "max_z": -105,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 5,
+      "data": 5
+     }
+    },
+    {
+     "id": "hf-low-e",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 39,
+     "min_z": -109,
+     "max_x": 40,
+     "max_z": -105,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 5,
+      "data": 5
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "hf-low",
+     "name": "hf-low",
+     "mirrors": true,
+     "shapeIds": [
+      "hf-low-n",
+      "hf-low-s",
+      "hf-low-w",
+      "hf-low-e"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hf-top",
+   "name": "hf-top",
+   "base_y": 13,
+   "kind": "made",
+   "part_of": "headframe",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "hf-top-n",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 34,
+     "min_z": -110,
+     "max_x": 40,
+     "max_z": -109,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 5,
+      "data": 5
+     }
+    },
+    {
+     "id": "hf-top-s",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 34,
+     "min_z": -105,
+     "max_x": 40,
+     "max_z": -104,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 5,
+      "data": 5
+     }
+    },
+    {
+     "id": "hf-top-w",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 34,
+     "min_z": -109,
+     "max_x": 35,
+     "max_z": -105,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 5,
+      "data": 5
+     }
+    },
+    {
+     "id": "hf-top-e",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 39,
+     "min_z": -109,
+     "max_x": 40,
+     "max_z": -105,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 5,
+      "data": 5
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "hf-top",
+     "name": "hf-top",
+     "mirrors": true,
+     "shapeIds": [
+      "hf-top-n",
+      "hf-top-s",
+      "hf-top-w",
+      "hf-top-e"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hf-sheave",
+   "name": "hf-sheave",
+   "base_y": 14,
+   "kind": "made",
+   "part_of": "headframe",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "hf-sheave",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 36,
+     "min_z": -108,
+     "max_x": 38,
+     "max_z": -106,
+     "floor": 0,
+     "base_height": 2,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "hf-sheave",
+     "name": "hf-sheave",
+     "mirrors": true,
+     "shapeIds": [
+      "hf-sheave"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "stack",
+   "name": "stack",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "kiln-stack",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "stack-shaft",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -48,
+     "min_z": -40,
+     "max_x": -45,
+     "max_z": -37,
+     "floor": 0,
+     "base_height": 16,
+     "material": {
+      "kind": "solid",
+      "id": 45,
+      "data": 0
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "stack",
+     "name": "stack",
+     "mirrors": true,
+     "shapeIds": [
+      "stack-shaft"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bottle-0-a",
+   "name": "bottle-0-a",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "bottle-0",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "bottle-0-a",
+     "type": "circle",
+     "operation": "add",
+     "center_x": -43,
+     "center_z": -22,
+     "radius": 3.5,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 45,
+      "data": 0
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "bottle-0-a",
+     "name": "bottle-0-a",
+     "mirrors": true,
+     "shapeIds": [
+      "bottle-0-a"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bottle-0-b",
+   "name": "bottle-0-b",
+   "base_y": 5,
+   "kind": "made",
+   "part_of": "bottle-0",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "bottle-0-b",
+     "type": "circle",
+     "operation": "add",
+     "center_x": -43,
+     "center_z": -22,
+     "radius": 3,
+     "floor": 0,
+     "base_height": 4,
+     "material": {
+      "kind": "solid",
+      "id": 45,
+      "data": 0
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "bottle-0-b",
+     "name": "bottle-0-b",
+     "mirrors": true,
+     "shapeIds": [
+      "bottle-0-b"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bottle-0-c",
+   "name": "bottle-0-c",
+   "base_y": 9,
+   "kind": "made",
+   "part_of": "bottle-0",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "bottle-0-c",
+     "type": "circle",
+     "operation": "add",
+     "center_x": -43,
+     "center_z": -22,
+     "radius": 2,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "bottle-0-c",
+     "name": "bottle-0-c",
+     "mirrors": true,
+     "shapeIds": [
+      "bottle-0-c"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bottle-1-a",
+   "name": "bottle-1-a",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "bottle-1",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "bottle-1-a",
+     "type": "circle",
+     "operation": "add",
+     "center_x": -35,
+     "center_z": -21,
+     "radius": 3.5,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 45,
+      "data": 0
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "bottle-1-a",
+     "name": "bottle-1-a",
+     "mirrors": true,
+     "shapeIds": [
+      "bottle-1-a"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bottle-1-b",
+   "name": "bottle-1-b",
+   "base_y": 5,
+   "kind": "made",
+   "part_of": "bottle-1",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "bottle-1-b",
+     "type": "circle",
+     "operation": "add",
+     "center_x": -35,
+     "center_z": -21,
+     "radius": 3,
+     "floor": 0,
+     "base_height": 4,
+     "material": {
+      "kind": "solid",
+      "id": 45,
+      "data": 0
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "bottle-1-b",
+     "name": "bottle-1-b",
+     "mirrors": true,
+     "shapeIds": [
+      "bottle-1-b"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "bottle-1-c",
+   "name": "bottle-1-c",
+   "base_y": 9,
+   "kind": "made",
+   "part_of": "bottle-1",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "bottle-1-c",
+     "type": "circle",
+     "operation": "add",
+     "center_x": -35,
+     "center_z": -21,
+     "radius": 2,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "bottle-1-c",
+     "name": "bottle-1-c",
+     "mirrors": true,
+     "shapeIds": [
+      "bottle-1-c"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lip-post-0",
+   "name": "lip-post-0",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "lip-0",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "lip-0-post",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -42,
+     "min_z": -19,
+     "max_x": -40,
+     "max_z": -17,
+     "floor": 0,
+     "base_height": 7,
+     "material": {
+      "kind": "solid",
+      "id": 162,
+      "data": 1
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "lip-post-0",
+     "name": "lip-post-0",
+     "mirrors": true,
+     "shapeIds": [
+      "lip-0-post"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lip-lamp-0",
+   "name": "lip-lamp-0",
+   "base_y": 7,
+   "kind": "made",
+   "part_of": "lip-0",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "lip-0-lamp",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -42,
+     "min_z": -19,
+     "max_x": -40,
+     "max_z": -17,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 89,
+      "data": 0
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "lip-lamp-0",
+     "name": "lip-lamp-0",
+     "mirrors": true,
+     "shapeIds": [
+      "lip-0-lamp"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lip-post-1",
+   "name": "lip-post-1",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "lip-1",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "lip-1-post",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 40,
+     "min_z": -19,
+     "max_x": 42,
+     "max_z": -17,
+     "floor": 0,
+     "base_height": 7,
+     "material": {
+      "kind": "solid",
+      "id": 162,
+      "data": 1
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "lip-post-1",
+     "name": "lip-post-1",
+     "mirrors": true,
+     "shapeIds": [
+      "lip-1-post"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lip-lamp-1",
+   "name": "lip-lamp-1",
+   "base_y": 7,
+   "kind": "made",
+   "part_of": "lip-1",
+   "seat": "ground",
+   "shapes": [
+    {
+     "id": "lip-1-lamp",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 40,
+     "min_z": -19,
+     "max_x": 42,
+     "max_z": -17,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 89,
+      "data": 0
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "lip-lamp-1",
+     "name": "lip-lamp-1",
+     "mirrors": true,
+     "shapeIds": [
+      "lip-1-lamp"
+     ]
+    }
+   ]
+  }
+ ],
+ "biome": {
+  "kind": "solid",
+  "biome": 3
+ },
+ "roomStyles": {
+  "wool": {
+   "library": "brick-townhouse"
+  },
+  "spawn": {
+   "library": "spruce-roofed-stone-longhouse"
+  }
+ },
+ "dressing": {
+  "styles": {
+   "spruce": {
+    "kind": "tree",
+    "form": "copied",
+    "body": [
+     [
+      0,
+      0,
+      0,
+      162,
+      12
+     ],
+     [
+      -1,
+      1,
+      -3,
+      18,
+      14
+     ],
+     [
+      3,
+      1,
+      -1,
+      18,
+      14
+     ],
+     [
+      0,
+      1,
+      0,
+      162,
+      12
+     ],
+     [
+      -3,
+      1,
+      1,
+      18,
+      14
+     ],
+     [
+      -1,
+      1,
+      2,
+      18,
+      14
+     ],
+     [
+      1,
+      1,
+      3,
+      18,
+      14
+     ],
+     [
+      0,
+      2,
+      -3,
+      18,
+      14
+     ],
+     [
+      -1,
+      2,
+      -2,
+      18,
+      14
+     ],
+     [
+      0,
+      2,
+      -2,
+      18,
+      14
+     ],
+     [
+      -2,
+      2,
+      -1,
+      18,
+      14
+     ],
+     [
+      2,
+      2,
+      -1,
+      18,
+      14
+     ],
+     [
+      -3,
+      2,
+      0,
+      18,
+      14
+     ],
+     [
+      -2,
+      2,
+      0,
+      18,
+      14
+     ],
+     [
+      -1,
+      2,
+      0,
+      18,
+      14
+     ],
+     [
+      0,
+      2,
+      0,
+      162,
+      12
+     ],
+     [
+      2,
+      2,
+      0,
+      18,
+      14
+     ],
+     [
+      3,
+      2,
+      0,
+      18,
+      14
+     ],
+     [
+      4,
+      2,
+      0,
+      18,
+      14
+     ],
+     [
+      -2,
+      2,
+      1,
+      18,
+      14
+     ],
+     [
+      0,
+      2,
+      1,
+      18,
+      14
+     ],
+     [
+      0,
+      2,
+      2,
+      18,
+      14
+     ],
+     [
+      1,
+      2,
+      2,
+      18,
+      14
+     ],
+     [
+      0,
+      2,
+      3,
+      18,
+      14
+     ],
+     [
+      1,
+      3,
+      -2,
+      18,
+      14
+     ],
+     [
+      0,
+      3,
+      -1,
+      18,
+      14
+     ],
+     [
+      0,
+      3,
+      0,
+      162,
+      12
+     ],
+     [
+      3,
+      3,
+      1,
+      18,
+      14
+     ],
+     [
+      -1,
+      4,
+      -1,
+      18,
+      14
+     ],
+     [
+      0,
+      4,
+      0,
+      162,
+      12
+     ],
+     [
+      -2,
+      4,
+      1,
+      18,
+      14
+     ],
+     [
+      0,
+      4,
+      1,
+      18,
+      14
+     ],
+     [
+      1,
+      4,
+      1,
+      18,
+      14
+     ],
+     [
+      2,
+      4,
+      1,
+      18,
+      14
+     ],
+     [
+      0,
+      4,
+      2,
+      18,
+      14
+     ],
+     [
+      1,
+      4,
+      2,
+      18,
+      14
+     ],
+     [
+      0,
+      5,
+      -2,
+      18,
+      14
+     ],
+     [
+      0,
+      5,
+      -1,
+      18,
+      14
+     ],
+     [
+      -2,
+      5,
+      0,
+      18,
+      14
+     ],
+     [
+      -1,
+      5,
+      0,
+      18,
+      14
+     ],
+     [
+      0,
+      5,
+      0,
+      162,
+      12
+     ],
+     [
+      -1,
+      5,
+      1,
+      18,
+      14
+     ],
+     [
+      1,
+      6,
+      -1,
+      18,
+      14
+     ],
+     [
+      2,
+      6,
+      -1,
+      18,
+      14
+     ],
+     [
+      0,
+      6,
+      0,
+      162,
+      12
+     ],
+     [
+      1,
+      6,
+      0,
+      18,
+      14
+     ],
+     [
+      -1,
+      7,
+      -1,
+      18,
+      14
+     ],
+     [
+      0,
+      7,
+      0,
+      162,
+      12
+     ],
+     [
+      0,
+      7,
+      1,
+      18,
+      14
+     ],
+     [
+      1,
+      7,
+      1,
+      18,
+      14
+     ],
+     [
+      0,
+      7,
+      2,
+      18,
+      14
+     ],
+     [
+      1,
+      8,
+      -1,
+      18,
+      14
+     ],
+     [
+      -1,
+      8,
+      0,
+      18,
+      14
+     ],
+     [
+      0,
+      8,
+      0,
+      162,
+      12
+     ],
+     [
+      0,
+      9,
+      -1,
+      18,
+      14
+     ],
+     [
+      0,
+      9,
+      0,
+      162,
+      12
+     ],
+     [
+      1,
+      9,
+      0,
+      18,
+      14
+     ],
+     [
+      0,
+      10,
+      1,
+      18,
+      14
+     ],
+     [
+      0,
+      11,
+      0,
+      18,
+      14
+     ]
+    ],
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 12
+   },
+   "spruce-b": {
+    "kind": "tree",
+    "form": "copied",
+    "body": [
+     [
+      0,
+      0,
+      0,
+      162,
+      12
+     ],
+     [
+      1,
+      0,
+      0,
+      162,
+      12
+     ],
+     [
+      2,
+      0,
+      0,
+      162,
+      12
+     ],
+     [
+      0,
+      1,
+      0,
+      162,
+      12
+     ],
+     [
+      1,
+      1,
+      0,
+      162,
+      12
+     ],
+     [
+      -2,
+      2,
+      -1,
+      18,
+      14
+     ],
+     [
+      1,
+      2,
+      0,
+      162,
+      12
+     ],
+     [
+      1,
+      3,
+      -4,
+      18,
+      14
+     ],
+     [
+      1,
+      3,
+      -3,
+      18,
+      14
+     ],
+     [
+      -2,
+      3,
+      -2,
+      18,
+      14
+     ],
+     [
+      -1,
+      3,
+      -2,
+      18,
+      14
+     ],
+     [
+      -1,
+      3,
+      -1,
+      18,
+      14
+     ],
+     [
+      1,
+      3,
+      0,
+      162,
+      12
+     ],
+     [
+      -2,
+      3,
+      2,
+      18,
+      14
+     ],
+     [
+      3,
+      3,
+      2,
+      18,
+      14
+     ],
+     [
+      -1,
+      3,
+      3,
+      18,
+      14
+     ],
+     [
+      2,
+      3,
+      3,
+      18,
+      14
+     ],
+     [
+      0,
+      4,
+      -3,
+      18,
+      14
+     ],
+     [
+      0,
+      4,
+      -2,
+      18,
+      14
+     ],
+     [
+      0,
+      4,
+      -1,
+      18,
+      14
+     ],
+     [
+      1,
+      4,
+      -1,
+      18,
+      14
+     ],
+     [
+      3,
+      4,
+      -1,
+      18,
+      14
+     ],
+     [
+      1,
+      4,
+      0,
+      162,
+      12
+     ],
+     [
+      4,
+      4,
+      0,
+      18,
+      14
+     ],
+     [
+      -1,
+      4,
+      1,
+      18,
+      14
+     ],
+     [
+      0,
+      4,
+      1,
+      18,
+      14
+     ],
+     [
+      -1,
+      4,
+      2,
+      18,
+      14
+     ],
+     [
+      2,
+      4,
+      2,
+      18,
+      14
+     ],
+     [
+      4,
+      5,
+      -2,
+      18,
+      14
+     ],
+     [
+      2,
+      5,
+      -1,
+      18,
+      14
+     ],
+     [
+      4,
+      5,
+      -1,
+      18,
+      14
+     ],
+     [
+      5,
+      5,
+      -1,
+      18,
+      14
+     ],
+     [
+      1,
+      5,
+      0,
+      162,
+      12
+     ],
+     [
+      2,
+      5,
+      0,
+      18,
+      14
+     ],
+     [
+      3,
+      5,
+      0,
+      18,
+      14
+     ],
+     [
+      2,
+      5,
+      1,
+      18,
+      14
+     ],
+     [
+      -1,
+      6,
+      -2,
+      18,
+      14
+     ],
+     [
+      1,
+      6,
+      0,
+      162,
+      12
+     ],
+     [
+      1,
+      6,
+      3,
+      18,
+      14
+     ],
+     [
+      3,
+      7,
+      -3,
+      18,
+      14
+     ],
+     [
+      -2,
+      7,
+      -2,
+      18,
+      14
+     ],
+     [
+      2,
+      7,
+      -2,
+      18,
+      14
+     ],
+     [
+      -1,
+      7,
+      -1,
+      18,
+      14
+     ],
+     [
+      0,
+      7,
+      -1,
+      18,
+      14
+     ],
+     [
+      2,
+      7,
+      -1,
+      18,
+      14
+     ],
+     [
+      3,
+      7,
+      -1,
+      18,
+      14
+     ],
+     [
+      1,
+      7,
+      0,
+      162,
+      12
+     ],
+     [
+      1,
+      7,
+      1,
+      18,
+      14
+     ],
+     [
+      1,
+      7,
+      2,
+      18,
+      14
+     ],
+     [
+      2,
+      7,
+      2,
+      18,
+      14
+     ],
+     [
+      3,
+      8,
+      -2,
+      18,
+      14
+     ],
+     [
+      0,
+      8,
+      -1,
+      18,
+      14
+     ],
+     [
+      -1,
+      8,
+      0,
+      18,
+      14
+     ],
+     [
+      0,
+      8,
+      0,
+      18,
+      14
+     ],
+     [
+      1,
+      8,
+      0,
+      162,
+      12
+     ],
+     [
+      2,
+      8,
+      0,
+      18,
+      14
+     ],
+     [
+      1,
+      9,
+      0,
+      162,
+      12
+     ],
+     [
+      0,
+      9,
+      2,
+      18,
+      14
+     ],
+     [
+      2,
+      10,
+      -2,
+      18,
+      14
+     ],
+     [
+      1,
+      10,
+      -1,
+      18,
+      14
+     ],
+     [
+      2,
+      10,
+      -1,
+      18,
+      14
+     ],
+     [
+      1,
+      10,
+      0,
+      162,
+      12
+     ],
+     [
+      0,
+      10,
+      1,
+      18,
+      14
+     ],
+     [
+      1,
+      10,
+      1,
+      18,
+      14
+     ],
+     [
+      -1,
+      10,
+      2,
+      18,
+      14
+     ],
+     [
+      1,
+      11,
+      0,
+      162,
+      12
+     ],
+     [
+      2,
+      11,
+      0,
+      18,
+      14
+     ],
+     [
+      1,
+      12,
+      -1,
+      18,
+      14
+     ],
+     [
+      0,
+      12,
+      0,
+      18,
+      14
+     ],
+     [
+      1,
+      12,
+      0,
+      18,
+      14
+     ],
+     [
+      0,
+      13,
+      -1,
+      18,
+      14
+     ],
+     [
+      1,
+      13,
+      0,
+      18,
+      14
+     ],
+     [
+      1,
+      13,
+      1,
+      18,
+      14
+     ],
+     [
+      1,
+      14,
+      0,
+      18,
+      14
+     ]
+    ],
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 15
+   },
+   "birch": {
+    "kind": "tree",
+    "form": "copied",
+    "body": [
+     [
+      1,
+      0,
+      -1,
+      17,
+      14
+     ],
+     [
+      0,
+      0,
+      0,
+      17,
+      14
+     ],
+     [
+      1,
+      0,
+      0,
+      17,
+      14
+     ],
+     [
+      0,
+      0,
+      1,
+      17,
+      14
+     ],
+     [
+      0,
+      1,
+      0,
+      17,
+      14
+     ],
+     [
+      1,
+      1,
+      0,
+      17,
+      14
+     ],
+     [
+      1,
+      1,
+      4,
+      18,
+      14
+     ],
+     [
+      1,
+      2,
+      0,
+      17,
+      14
+     ],
+     [
+      1,
+      2,
+      1,
+      17,
+      14
+     ],
+     [
+      2,
+      2,
+      3,
+      18,
+      14
+     ],
+     [
+      -1,
+      2,
+      4,
+      18,
+      14
+     ],
+     [
+      1,
+      2,
+      4,
+      18,
+      14
+     ],
+     [
+      3,
+      2,
+      4,
+      18,
+      14
+     ],
+     [
+      2,
+      3,
+      -1,
+      18,
+      14
+     ],
+     [
+      -3,
+      3,
+      1,
+      18,
+      14
+     ],
+     [
+      -1,
+      3,
+      1,
+      18,
+      6
+     ],
+     [
+      1,
+      3,
+      1,
+      17,
+      14
+     ],
+     [
+      2,
+      3,
+      2,
+      18,
+      14
+     ],
+     [
+      0,
+      3,
+      3,
+      18,
+      14
+     ],
+     [
+      -1,
+      3,
+      4,
+      18,
+      14
+     ],
+     [
+      3,
+      3,
+      4,
+      18,
+      14
+     ],
+     [
+      2,
+      3,
+      5,
+      18,
+      14
+     ],
+     [
+      1,
+      3,
+      6,
+      18,
+      14
+     ],
+     [
+      -1,
+      4,
+      -2,
+      18,
+      14
+     ],
+     [
+      1,
+      4,
+      -2,
+      18,
+      6
+     ],
+     [
+      2,
+      4,
+      -2,
+      18,
+      6
+     ],
+     [
+      2,
+      4,
+      -1,
+      18,
+      14
+     ],
+     [
+      -3,
+      4,
+      0,
+      18,
+      14
+     ],
+     [
+      -1,
+      4,
+      0,
+      18,
+      6
+     ],
+     [
+      3,
+      4,
+      0,
+      18,
+      14
+     ],
+     [
+      -1,
+      4,
+      1,
+      18,
+      14
+     ],
+     [
+      1,
+      4,
+      1,
+      17,
+      14
+     ],
+     [
+      2,
+      4,
+      1,
+      18,
+      14
+     ],
+     [
+      -4,
+      4,
+      2,
+      18,
+      14
+     ],
+     [
+      0,
+      4,
+      2,
+      18,
+      14
+     ],
+     [
+      1,
+      4,
+      2,
+      17,
+      14
+     ],
+     [
+      -2,
+      4,
+      3,
+      18,
+      14
+     ],
+     [
+      0,
+      4,
+      3,
+      18,
+      14
+     ],
+     [
+      1,
+      4,
+      3,
+      17,
+      14
+     ],
+     [
+      3,
+      4,
+      3,
+      18,
+      14
+     ],
+     [
+      -1,
+      4,
+      4,
+      18,
+      14
+     ],
+     [
+      1,
+      4,
+      4,
+      18,
+      14
+     ],
+     [
+      0,
+      4,
+      5,
+      18,
+      14
+     ],
+     [
+      2,
+      4,
+      5,
+      18,
+      14
+     ],
+     [
+      0,
+      4,
+      6,
+      18,
+      14
+     ],
+     [
+      1,
+      4,
+      6,
+      18,
+      14
+     ],
+     [
+      3,
+      4,
+      6,
+      18,
+      14
+     ],
+     [
+      2,
+      4,
+      7,
+      18,
+      6
+     ],
+     [
+      -1,
+      5,
+      -2,
+      18,
+      14
+     ],
+     [
+      1,
+      5,
+      -2,
+      18,
+      14
+     ],
+     [
+      -2,
+      5,
+      -1,
+      18,
+      14
+     ],
+     [
+      0,
+      5,
+      -1,
+      18,
+      14
+     ],
+     [
+      2,
+      5,
+      -1,
+      18,
+      14
+     ],
+     [
+      3,
+      5,
+      -1,
+      18,
+      14
+     ],
+     [
+      -1,
+      5,
+      0,
+      18,
+      14
+     ],
+     [
+      -3,
+      5,
+      1,
+      18,
+      14
+     ],
+     [
+      1,
+      5,
+      1,
+      17,
+      14
+     ],
+     [
+      2,
+      5,
+      1,
+      18,
+      14
+     ],
+     [
+      4,
+      5,
+      1,
+      18,
+      14
+     ],
+     [
+      -4,
+      5,
+      2,
+      18,
+      14
+     ],
+     [
+      -3,
+      5,
+      2,
+      18,
+      14
+     ],
+     [
+      1,
+      5,
+      2,
+      18,
+      14
+     ],
+     [
+      -1,
+      5,
+      3,
+      18,
+      14
+     ],
+     [
+      1,
+      5,
+      3,
+      18,
+      14
+     ],
+     [
+      3,
+      5,
+      3,
+      18,
+      14
+     ],
+     [
+      -2,
+      5,
+      4,
+      18,
+      14
+     ],
+     [
+      0,
+      5,
+      4,
+      18,
+      14
+     ],
+     [
+      1,
+      5,
+      4,
+      17,
+      14
+     ],
+     [
+      3,
+      5,
+      4,
+      18,
+      14
+     ],
+     [
+      4,
+      5,
+      4,
+      18,
+      14
+     ],
+     [
+      2,
+      5,
+      5,
+      18,
+      14
+     ],
+     [
+      3,
+      5,
+      5,
+      18,
+      14
+     ],
+     [
+      -1,
+      5,
+      6,
+      18,
+      14
+     ],
+     [
+      1,
+      5,
+      6,
+      18,
+      14
+     ],
+     [
+      1,
+      5,
+      7,
+      18,
+      14
+     ],
+     [
+      2,
+      5,
+      7,
+      18,
+      14
+     ],
+     [
+      0,
+      6,
+      -3,
+      18,
+      14
+     ],
+     [
+      -1,
+      6,
+      -2,
+      18,
+      14
+     ],
+     [
+      2,
+      6,
+      -2,
+      18,
+      6
+     ],
+     [
+      3,
+      6,
+      -2,
+      18,
+      14
+     ],
+     [
+      -3,
+      6,
+      -1,
+      18,
+      14
+     ],
+     [
+      1,
+      6,
+      -1,
+      18,
+      14
+     ],
+     [
+      2,
+      6,
+      -1,
+      18,
+      14
+     ],
+     [
+      -2,
+      6,
+      0,
+      18,
+      14
+     ],
+     [
+      -1,
+      6,
+      0,
+      18,
+      14
+     ],
+     [
+      1,
+      6,
+      0,
+      18,
+      14
+     ],
+     [
+      3,
+      6,
+      0,
+      18,
+      14
+     ],
+     [
+      -1,
+      6,
+      1,
+      18,
+      14
+     ],
+     [
+      0,
+      6,
+      1,
+      17,
+      14
+     ],
+     [
+      1,
+      6,
+      1,
+      17,
+      14
+     ],
+     [
+      2,
+      6,
+      1,
+      18,
+      14
+     ],
+     [
+      3,
+      6,
+      1,
+      18,
+      14
+     ],
+     [
+      4,
+      6,
+      1,
+      18,
+      14
+     ],
+     [
+      -3,
+      6,
+      2,
+      18,
+      14
+     ],
+     [
+      -1,
+      6,
+      2,
+      18,
+      6
+     ],
+     [
+      2,
+      6,
+      2,
+      18,
+      14
+     ],
+     [
+      3,
+      6,
+      2,
+      18,
+      6
+     ],
+     [
+      -2,
+      6,
+      3,
+      18,
+      14
+     ],
+     [
+      0,
+      6,
+      3,
+      18,
+      14
+     ],
+     [
+      1,
+      6,
+      3,
+      18,
+      14
+     ],
+     [
+      2,
+      6,
+      3,
+      18,
+      14
+     ],
+     [
+      4,
+      6,
+      3,
+      18,
+      14
+     ],
+     [
+      -3,
+      6,
+      4,
+      18,
+      14
+     ],
+     [
+      -1,
+      6,
+      4,
+      18,
+      14
+     ],
+     [
+      1,
+      6,
+      4,
+      17,
+      14
+     ],
+     [
+      4,
+      6,
+      4,
+      18,
+      14
+     ],
+     [
+      -1,
+      6,
+      5,
+      18,
+      14
+     ],
+     [
+      0,
+      6,
+      5,
+      18,
+      14
+     ],
+     [
+      1,
+      6,
+      5,
+      17,
+      14
+     ],
+     [
+      2,
+      6,
+      5,
+      18,
+      14
+     ],
+     [
+      0,
+      6,
+      6,
+      18,
+      14
+     ],
+     [
+      1,
+      6,
+      6,
+      18,
+      14
+     ],
+     [
+      3,
+      6,
+      6,
+      18,
+      14
+     ],
+     [
+      0,
+      6,
+      7,
+      18,
+      6
+     ],
+     [
+      -1,
+      7,
+      -3,
+      18,
+      6
+     ],
+     [
+      0,
+      7,
+      -3,
+      18,
+      14
+     ],
+     [
+      -1,
+      7,
+      -2,
+      18,
+      14
+     ],
+     [
+      1,
+      7,
+      -2,
+      18,
+      14
+     ],
+     [
+      3,
+      7,
+      -2,
+      18,
+      6
+     ],
+     [
+      -2,
+      7,
+      -1,
+      18,
+      14
+     ],
+     [
+      0,
+      7,
+      -1,
+      18,
+      14
+     ],
+     [
+      3,
+      7,
+      -1,
+      18,
+      14
+     ],
+     [
+      -4,
+      7,
+      0,
+      18,
+      14
+     ],
+     [
+      -1,
+      7,
+      0,
+      18,
+      14
+     ],
+     [
+      1,
+      7,
+      0,
+      18,
+      14
+     ],
+     [
+      2,
+      7,
+      0,
+      18,
+      6
+     ],
+     [
+      3,
+      7,
+      0,
+      18,
+      14
+     ],
+     [
+      4,
+      7,
+      0,
+      18,
+      14
+     ],
+     [
+      -4,
+      7,
+      1,
+      18,
+      14
+     ],
+     [
+      -3,
+      7,
+      1,
+      18,
+      14
+     ],
+     [
+      -2,
+      7,
+      1,
+      17,
+      14
+     ],
+     [
+      -1,
+      7,
+      1,
+      17,
+      14
+     ],
+     [
+      1,
+      7,
+      1,
+      17,
+      14
+     ],
+     [
+      -3,
+      7,
+      2,
+      18,
+      6
+     ],
+     [
+      -1,
+      7,
+      2,
+      18,
+      6
+     ],
+     [
+      3,
+      7,
+      2,
+      18,
+      6
+     ],
+     [
+      -3,
+      7,
+      3,
+      18,
+      14
+     ],
+     [
+      -2,
+      7,
+      3,
+      18,
+      14
+     ],
+     [
+      -1,
+      7,
+      3,
+      18,
+      6
+     ],
+     [
+      2,
+      7,
+      3,
+      18,
+      14
+     ],
+     [
+      4,
+      7,
+      3,
+      18,
+      14
+     ],
+     [
+      0,
+      7,
+      4,
+      18,
+      14
+     ],
+     [
+      1,
+      7,
+      4,
+      18,
+      14
+     ],
+     [
+      2,
+      7,
+      4,
+      18,
+      14
+     ],
+     [
+      3,
+      7,
+      4,
+      18,
+      14
+     ],
+     [
+      1,
+      7,
+      5,
+      18,
+      14
+     ],
+     [
+      0,
+      7,
+      6,
+      18,
+      14
+     ],
+     [
+      2,
+      7,
+      6,
+      18,
+      14
+     ],
+     [
+      1,
+      8,
+      -3,
+      18,
+      14
+     ],
+     [
+      -2,
+      8,
+      -2,
+      18,
+      14
+     ],
+     [
+      -1,
+      8,
+      -2,
+      18,
+      6
+     ],
+     [
+      1,
+      8,
+      -2,
+      18,
+      14
+     ],
+     [
+      2,
+      8,
+      -2,
+      18,
+      14
+     ],
+     [
+      -2,
+      8,
+      -1,
+      18,
+      14
+     ],
+     [
+      0,
+      8,
+      -1,
+      18,
+      14
+     ],
+     [
+      2,
+      8,
+      -1,
+      18,
+      14
+     ],
+     [
+      4,
+      8,
+      0,
+      18,
+      14
+     ],
+     [
+      -3,
+      8,
+      1,
+      18,
+      14
+     ],
+     [
+      -2,
+      8,
+      1,
+      18,
+      14
+     ],
+     [
+      1,
+      8,
+      1,
+      17,
+      14
+     ],
+     [
+      3,
+      8,
+      1,
+      18,
+      14
+     ],
+     [
+      -2,
+      8,
+      2,
+      18,
+      14
+     ],
+     [
+      2,
+      8,
+      2,
+      18,
+      14
+     ],
+     [
+      -2,
+      8,
+      3,
+      18,
+      14
+     ],
+     [
+      0,
+      8,
+      3,
+      18,
+      14
+     ],
+     [
+      1,
+      8,
+      3,
+      18,
+      14
+     ],
+     [
+      3,
+      8,
+      3,
+      18,
+      14
+     ],
+     [
+      -1,
+      8,
+      4,
+      18,
+      14
+     ],
+     [
+      1,
+      8,
+      4,
+      18,
+      14
+     ],
+     [
+      0,
+      8,
+      5,
+      18,
+      14
+     ],
+     [
+      2,
+      8,
+      5,
+      18,
+      14
+     ],
+     [
+      3,
+      8,
+      5,
+      18,
+      14
+     ],
+     [
+      0,
+      9,
+      -3,
+      18,
+      14
+     ],
+     [
+      1,
+      9,
+      -3,
+      18,
+      14
+     ],
+     [
+      -1,
+      9,
+      -2,
+      18,
+      6
+     ],
+     [
+      1,
+      9,
+      -2,
+      18,
+      14
+     ],
+     [
+      3,
+      9,
+      -2,
+      18,
+      14
+     ],
+     [
+      -1,
+      9,
+      -1,
+      18,
+      14
+     ],
+     [
+      0,
+      9,
+      -1,
+      18,
+      14
+     ],
+     [
+      1,
+      9,
+      -1,
+      18,
+      14
+     ],
+     [
+      -1,
+      9,
+      0,
+      18,
+      14
+     ],
+     [
+      0,
+      9,
+      0,
+      18,
+      6
+     ],
+     [
+      1,
+      9,
+      0,
+      17,
+      14
+     ],
+     [
+      2,
+      9,
+      0,
+      18,
+      14
+     ],
+     [
+      3,
+      9,
+      0,
+      18,
+      14
+     ],
+     [
+      -2,
+      9,
+      1,
+      18,
+      14
+     ],
+     [
+      -1,
+      9,
+      1,
+      18,
+      14
+     ],
+     [
+      0,
+      9,
+      1,
+      18,
+      14
+     ],
+     [
+      -1,
+      9,
+      2,
+      18,
+      14
+     ],
+     [
+      2,
+      9,
+      2,
+      18,
+      14
+     ],
+     [
+      -3,
+      9,
+      3,
+      18,
+      14
+     ],
+     [
+      -2,
+      9,
+      3,
+      18,
+      14
+     ],
+     [
+      0,
+      9,
+      3,
+      18,
+      14
+     ],
+     [
+      2,
+      9,
+      3,
+      18,
+      14
+     ],
+     [
+      -1,
+      10,
+      -2,
+      18,
+      6
+     ],
+     [
+      2,
+      10,
+      -2,
+      18,
+      6
+     ],
+     [
+      2,
+      10,
+      -1,
+      18,
+      14
+     ],
+     [
+      3,
+      10,
+      -1,
+      18,
+      6
+     ],
+     [
+      -1,
+      10,
+      0,
+      18,
+      14
+     ],
+     [
+      1,
+      10,
+      0,
+      17,
+      14
+     ],
+     [
+      1,
+      10,
+      1,
+      18,
+      6
+     ],
+     [
+      2,
+      10,
+      1,
+      18,
+      6
+     ],
+     [
+      0,
+      10,
+      2,
+      18,
+      14
+     ],
+     [
+      1,
+      10,
+      2,
+      18,
+      14
+     ],
+     [
+      1,
+      11,
+      -2,
+      18,
+      6
+     ],
+     [
+      -1,
+      11,
+      -1,
+      18,
+      6
+     ],
+     [
+      0,
+      11,
+      -1,
+      18,
+      6
+     ],
+     [
+      1,
+      11,
+      -1,
+      18,
+      14
+     ],
+     [
+      1,
+      11,
+      0,
+      18,
+      14
+     ],
+     [
+      2,
+      11,
+      0,
+      18,
+      14
+     ]
+    ],
+    "builder": "rockymine",
+    "species": "oak",
+    "height": 12
+   },
+   "rock": {
+    "kind": "boulder",
+    "form": "angular",
+    "size": 4,
+    "rock": {
+     "kind": "cell",
+     "seed": 53,
+     "cellSize": 4,
+     "jitter": 2,
+     "warp": 3,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "mossy": false
+   },
+   "outcrop": {
+    "kind": "boulder",
+    "form": "outcrop",
+    "size": 5,
+    "rock": {
+     "kind": "cell",
+     "seed": 54,
+     "cellSize": 4,
+     "jitter": 2,
+     "warp": 3,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "mossy": false
+   },
+   "cottage": {
+    "library": "dark-oak-roofed-stone-cottage",
+    "kind": "house"
+   },
+   "cottage-b": {
+    "library": "spruce-roofed-stone-cottage",
+    "kind": "house"
+   },
+   "rubble": {
+    "library": "rubble-and-spruce-house",
+    "kind": "house"
+   },
+   "minehead": {
+    "library": "stone-timber-minehead",
+    "kind": "house"
+   },
+   "barn": {
+    "library": "stone-and-spruce-barn",
+    "kind": "house"
+   },
+   "longhouse": {
+    "library": "spruce-roofed-stone-longhouse",
+    "kind": "house"
+   }
+  },
+  "props": [
+   {
+    "id": "road-lip-pit",
+    "kind": "stroke",
+    "layer": "ground",
+    "seed": 3,
+    "points": [
+     [
+      0,
+      -13
+     ],
+     [
+      0,
+      -21
+     ],
+     [
+      13,
+      -26
+     ],
+     [
+      13,
+      -36
+     ],
+     [
+      8,
+      -44
+     ],
+     [
+      -4,
+      -46
+     ],
+     [
+      -4,
+      -60
+     ]
+    ],
+    "radius": 2,
+    "style": "solid",
+    "pave": {
+     "kind": "cell",
+     "seed": 17,
+     "cellSize": 3,
+     "jitter": 40,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "claimsGround": true,
+    "wander": 1.5,
+    "wanderLength": 14
+   },
+   {
+    "id": "road-kiln",
+    "kind": "stroke",
+    "layer": "ground",
+    "seed": 3,
+    "points": [
+     [
+      -4,
+      -45
+     ],
+     [
+      -16,
+      -42
+     ],
+     [
+      -27,
+      -40
+     ]
+    ],
+    "radius": 2,
+    "style": "solid",
+    "pave": {
+     "kind": "cell",
+     "seed": 17,
+     "cellSize": 3,
+     "jitter": 40,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "claimsGround": true,
+    "wander": 1.5,
+    "wanderLength": 14
+   },
+   {
+    "id": "lane-mid",
+    "kind": "stroke",
+    "layer": "ground",
+    "seed": 3,
+    "points": [
+     [
+      -44,
+      -62
+     ],
+     [
+      -4,
+      -62
+     ],
+     [
+      14,
+      -62
+     ],
+     [
+      22,
+      -66
+     ]
+    ],
+    "radius": 2,
+    "style": "solid",
+    "pave": {
+     "kind": "cell",
+     "seed": 17,
+     "cellSize": 3,
+     "jitter": 40,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "claimsGround": true,
+    "wander": 1.5,
+    "wanderLength": 14
+   },
+   {
+    "id": "road-upper",
+    "kind": "stroke",
+    "layer": "ground",
+    "seed": 3,
+    "points": [
+     [
+      -27,
+      -62
+     ],
+     [
+      -27,
+      -80
+     ],
+     [
+      -27,
+      -94
+     ],
+     [
+      -14,
+      -92
+     ]
+    ],
+    "radius": 2,
+    "style": "solid",
+    "pave": {
+     "kind": "cell",
+     "seed": 17,
+     "cellSize": 3,
+     "jitter": 40,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "claimsGround": true,
+    "wander": 1.5,
+    "wanderLength": 14
+   },
+   {
+    "id": "road-upper-e",
+    "kind": "stroke",
+    "layer": "ground",
+    "seed": 3,
+    "points": [
+     [
+      6,
+      -62
+     ],
+     [
+      6,
+      -80
+     ],
+     [
+      6,
+      -92
+     ]
+    ],
+    "radius": 2,
+    "style": "solid",
+    "pave": {
+     "kind": "cell",
+     "seed": 17,
+     "cellSize": 3,
+     "jitter": 40,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "claimsGround": true,
+    "wander": 1.5,
+    "wanderLength": 14
+   },
+   {
+    "id": "road-tarn",
+    "kind": "stroke",
+    "layer": "ground",
+    "seed": 3,
+    "points": [
+     [
+      -27,
+      -94
+     ],
+     [
+      -33,
+      -97
+     ],
+     [
+      -40,
+      -101
+     ]
+    ],
+    "radius": 2,
+    "style": "solid",
+    "pave": {
+     "kind": "cell",
+     "seed": 17,
+     "cellSize": 3,
+     "jitter": 40,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "claimsGround": true,
+    "wander": 1.5,
+    "wanderLength": 14
+   },
+   {
+    "id": "road-track",
+    "kind": "stroke",
+    "layer": "ground",
+    "seed": 3,
+    "points": [
+     [
+      44,
+      -52
+     ],
+     [
+      22,
+      -52
+     ],
+     [
+      22,
+      -66
+     ],
+     [
+      44,
+      -66
+     ],
+     [
+      44,
+      -80
+     ],
+     [
+      22,
+      -80
+     ],
+     [
+      22,
+      -88
+     ],
+     [
+      26,
+      -96
+     ]
+    ],
+    "radius": 2,
+    "style": "solid",
+    "pave": {
+     "kind": "cell",
+     "seed": 17,
+     "cellSize": 3,
+     "jitter": 40,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "claimsGround": true,
+    "wander": 0.5,
+    "wanderLength": 14
+   },
+   {
+    "id": "cot-1",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "posZ",
+    "style": "cottage",
+    "wings": [
+     {
+      "corners": [
+       [
+        -39,
+        -71
+       ],
+       [
+        -31,
+        -65
+       ]
+      ],
+      "spec": {}
+     }
+    ]
+   },
+   {
+    "id": "cot-2",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "posZ",
+    "style": "cottage-b",
+    "wings": [
+     {
+      "corners": [
+       [
+        -22,
+        -71
+       ],
+       [
+        -12,
+        -65
+       ]
+      ],
+      "spec": {}
+     }
+    ]
+   },
+   {
+    "id": "mine",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "posZ",
+    "style": "minehead",
+    "wings": [
+     {
+      "corners": [
+       [
+        -8,
+        -71
+       ],
+       [
+        4,
+        -65
+       ]
+      ],
+      "spec": {}
+     }
+    ]
+   },
+   {
+    "id": "shed-1",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "posZ",
+    "style": "barn",
+    "wings": [
+     {
+      "corners": [
+       [
+        26,
+        -34
+       ],
+       [
+        38,
+        -26
+       ]
+      ],
+      "spec": {}
+     }
+    ]
+   },
+   {
+    "id": "hall",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "posZ",
+    "style": "barn",
+    "wings": [
+     {
+      "corners": [
+       [
+        -47,
+        -111
+       ],
+       [
+        -37,
+        -103
+       ]
+      ],
+      "spec": {}
+     }
+    ]
+   },
+   {
+    "id": "t3",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 7,
+    "x": 20,
+    "z": -108,
+    "style": "birch"
+   },
+   {
+    "id": "t4",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 7,
+    "x": 46,
+    "z": -34,
+    "style": "spruce"
+   },
+   {
+    "id": "t5",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 7,
+    "x": 42,
+    "z": -22,
+    "style": "birch"
+   },
+   {
+    "id": "t6",
+    "kind": "tree",
+    "layer": "ground",
+    "seed": 7,
+    "x": -45,
+    "z": -90,
+    "style": "spruce-b"
+   },
+   {
+    "id": "b1",
+    "kind": "boulder",
+    "layer": "ground",
+    "seed": 9,
+    "x": -40,
+    "z": -93,
+    "style": "rock"
+   },
+   {
+    "id": "b3",
+    "kind": "boulder",
+    "layer": "ground",
+    "seed": 9,
+    "x": -22,
+    "z": -49,
+    "style": "rock"
+   },
+   {
+    "id": "tarn",
+    "kind": "fluid",
+    "layer": "ground",
+    "seed": 4,
+    "shape": "pool",
+    "points": [
+     [
+      -32.0,
+      -94.0
+     ],
+     [
+      -32.8,
+      -92.2
+     ],
+     [
+      -34.8,
+      -91.1
+     ],
+     [
+      -37.2,
+      -91.1
+     ],
+     [
+      -39.2,
+      -92.2
+     ],
+     [
+      -40.0,
+      -94.0
+     ],
+     [
+      -39.2,
+      -95.8
+     ],
+     [
+      -37.2,
+      -96.9
+     ],
+     [
+      -34.8,
+      -96.9
+     ],
+     [
+      -32.8,
+      -95.8
+     ]
+    ],
+    "radius": 2,
+    "depth": 3,
+    "fluid": "water",
+    "shore": 2
+   },
+   {
+    "id": "cover",
+    "kind": "flora",
+    "layer": "ground",
+    "seed": 11,
+    "points": [
+     [
+      -48,
+      -112
+     ],
+     [
+      48,
+      -112
+     ],
+     [
+      48,
+      -16
+     ],
+     [
+      -48,
+      -16
+     ]
+    ],
+    "spec": {
+     "coverage": 0.22,
+     "scale": 9,
+     "octaves": 2,
+     "fernShare": 0.2,
+     "flowerShare": 0.12,
+     "flowerScale": 6,
+     "tallShare": 0.04
+    }
+   }
+  ]
+ }
+}

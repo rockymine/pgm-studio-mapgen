@@ -1,0 +1,125 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Abbeymoor"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 38
+ },
+ "pieces": [
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -4,
+    -30,
+    7,
+    5
+   ],
+   "surface": 38
+  },
+  {
+   "id": "moor-1",
+   "role": "piece",
+   "rect": [
+    -14,
+    -30,
+    10,
+    5
+   ],
+   "surface": 38
+  },
+  {
+   "id": "moor-2",
+   "role": "piece",
+   "rect": [
+    3,
+    -30,
+    11,
+    5
+   ],
+   "surface": 38
+  },
+  {
+   "id": "moor-3",
+   "role": "piece",
+   "rect": [
+    -14,
+    -25,
+    28,
+    19
+   ],
+   "surface": 38
+  },
+  {
+   "id": "bog",
+   "role": "piece",
+   "rect": [
+    -14,
+    -6,
+    28,
+    6
+   ],
+   "surface": 20
+  }
+ ],
+ "zones": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     14,
+     8
+    ],
+    "facing": "back",
+    "footprint": [
+     4,
+     1,
+     20,
+     15
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "spawn",
+    "at": [
+     1.5,
+     4.5
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "abbey-monument",
+    "piece": "",
+    "at": [
+     -24,
+     -69
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 3,
+    "name": "Abbey Monument"
+   },
+   {
+    "id": "village-monument",
+    "piece": "",
+    "at": [
+     30,
+     -62
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Village Monument"
+   }
+  ]
+ }
+}
