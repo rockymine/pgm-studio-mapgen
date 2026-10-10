@@ -1,0 +1,592 @@
+<meta charset="utf-8">
+<title>The Freeform Leap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a long-form report on a cool "render sky" ground; a sticky contents rail on wide screens; studio = blue, pgmvox = orange throughout. */
+:root{
+  --bg:#eef2f6; --paper:#fbfcfd; --ink:#16202b; --ink-2:#46525f; --ink-3:#6b7682;
+  --rule:#d5dde5; --sky:#cddcea; --studio:#2a78d6; --vox:#eb6834; --vox-ink:#b5481c; --studio-ink:#1d5fae;
+  --good:#1f8a4c; --warn:#b77900; --bad:#c53b3a; --chip:#e3e9ef;
+  --f-display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Literata", Georgia, "Times New Roman", serif;
+  --f-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --step-0:1rem; --step-1:1.2rem; --step-2:1.5rem; --step-3:2.1rem; --step-4:3rem;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11161c; --paper:#171e26; --ink:#e7edf3; --ink-2:#b4bfca; --ink-3:#8b97a3; --rule:#2c3640; --sky:#1e2a36;
+  --studio:#3987e5; --vox:#d95926; --vox-ink:#f08a5c; --studio-ink:#7fb2ee; --good:#4cc07f; --warn:#e0a83a; --bad:#ec7473; --chip:#232d38; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11161c; --paper:#171e26; --ink:#e7edf3; --ink-2:#b4bfca; --ink-3:#8b97a3; --rule:#2c3640; --sky:#1e2a36;
+  --studio:#3987e5; --vox:#d95926; --vox-ink:#f08a5c; --studio-ink:#7fb2ee; --good:#4cc07f; --warn:#e0a83a; --bad:#ec7473; --chip:#232d38; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:var(--step-0);line-height:1.62;margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:20px;padding-block:28px 80px;display:grid;grid-template-columns:220px minmax(0,1fr);gap:48px}
+@media (max-width:980px){.wrap{grid-template-columns:minmax(0,1fr);gap:0;padding-inline:16px}.toc{display:none}}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);align-self:start;font-family:var(--f-display);font-size:.88rem;max-height:calc(100vh - 40px);overflow:auto}
+.toc a{display:block;color:var(--ink-2);text-decoration:none;padding:5px 0 5px 12px;border-left:2px solid var(--rule)}
+.toc a:hover,.toc a:focus-visible{color:var(--ink);border-left-color:var(--vox)}
+.toc .lbl{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px 12px}
+main{min-width:0}
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2.2rem,5vw,var(--step-4));font-weight:700;letter-spacing:-.01em}
+h2{font-size:var(--step-3);font-weight:700;margin-top:72px;padding-top:18px;border-top:1px solid var(--rule)}
+h3{font-size:var(--step-2);font-weight:700;margin-top:40px}
+h4{font-size:var(--step-1);font-weight:700;margin-top:28px}
+p,li{max-width:68ch}
+p{margin:14px 0}
+a{color:var(--studio-ink)}
+code,.mono{font-family:var(--f-mono);font-size:.86em}
+code{background:var(--chip);padding:1px 5px;border-radius:4px;overflow-wrap:anywhere}
+.eyebrow{font-family:var(--f-display);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.lede{font-size:1.18rem;color:var(--ink-2);max-width:62ch}
+.meta{font-family:var(--f-mono);font-size:.8rem;color:var(--ink-3);margin-top:16px}
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:end;margin-top:8px}
+@media (max-width:760px){.hero{grid-template-columns:minmax(0,1fr)}}
+.hero figure{margin:0;background:var(--sky);border-radius:6px;padding:10px}
+.hero img{display:block;width:100%;height:auto}
+.tag{display:inline-block;font-family:var(--f-display);font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:3px;vertical-align:.1em}
+.tag.s{background:color-mix(in srgb,var(--studio) 16%,transparent);color:var(--studio-ink)}
+.tag.v{background:color-mix(in srgb,var(--vox) 18%,transparent);color:var(--vox-ink)}
+.causes{list-style:none;padding:0;margin:20px 0;counter-reset:c;display:grid;gap:14px;max-width:none}
+.causes li{max-width:none;display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding:14px 16px;background:var(--paper);border:1px solid var(--rule);border-radius:6px}
+.causes li::before{counter-increment:c;content:counter(c);font-family:var(--f-display);font-weight:700;font-size:1.7rem;color:var(--vox);line-height:1}
+.causes b{font-family:var(--f-display);font-size:1.08rem}
+.causes p{margin:6px 0 0}
+.fig{margin:22px 0;background:var(--sky);border-radius:6px;padding:12px}
+.fig img{display:block;max-width:100%;height:auto;margin:0 auto}
+.fig figcaption{font-size:.88rem;color:var(--ink-2);margin-top:8px;font-family:var(--f-display)}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:22px 0}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0}
+@media (max-width:760px){.pair,.trio{grid-template-columns:minmax(0,1fr)}}
+.pair .fig,.trio .fig{margin:0;display:flex;flex-direction:column;justify-content:space-between}
+.tbl{overflow-x:auto;margin:20px 0;border:1px solid var(--rule);border-radius:6px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;font-family:var(--f-display)}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:700;background:var(--paper);position:sticky;top:0}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--f-mono);font-size:.84rem;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td .s{color:var(--studio-ink)} td .v{color:var(--vox-ink)}
+.grp td{background:var(--chip);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.mark{font-family:var(--f-mono);font-weight:600;white-space:nowrap}
+.yes{color:var(--good)} .part{color:var(--warn)} .no{color:var(--bad)}
+.callout{border-left:3px solid var(--vox);background:var(--paper);padding:12px 16px;margin:20px 0;border-radius:0 6px 6px 0}
+.callout.s{border-left-color:var(--studio)}
+.callout p{margin:6px 0}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:18px 0;font-family:var(--f-display);font-size:.88rem}
+.flow span{background:var(--paper);border:1px solid var(--rule);padding:6px 10px;border-radius:4px}
+.flow span.k{border-color:var(--vox);color:var(--vox-ink);font-weight:700}
+.flow i{color:var(--ink-3);font-style:normal}
+.timeline{list-style:none;padding:0;margin:18px 0;max-width:none}
+.timeline li{display:grid;grid-template-columns:132px minmax(0,1fr);gap:14px;padding:9px 0;border-bottom:1px dashed var(--rule);max-width:none}
+.timeline .t{font-family:var(--f-mono);font-size:.8rem;color:var(--ink-3);padding-top:3px}
+@media (max-width:560px){.timeline li{grid-template-columns:minmax(0,1fr);gap:2px}}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin:20px 0}
+.gallery .fig{margin:0}
+.chart{background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:16px;margin:22px 0;position:relative}
+.chart h4{margin:0 0 4px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--f-display);font-size:.82rem;color:var(--ink-2);margin:6px 0 12px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.bars{display:grid;gap:8px}
+.bar{display:grid;grid-template-columns:170px minmax(0,1fr) 34px;gap:10px;align-items:center;font-family:var(--f-display);font-size:.86rem}
+@media (max-width:560px){.bar{grid-template-columns:110px minmax(0,1fr) 28px}}
+.track{display:flex;gap:2px;height:22px}
+.track div{height:100%;border-radius:2px}
+.track div:first-child{border-radius:4px 2px 2px 4px}
+.track div:last-child{border-radius:2px 4px 4px 2px}
+.track div:only-child{border-radius:4px}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);font-family:var(--f-display);font-size:.8rem;padding:6px 9px;border-radius:4px;max-width:280px;z-index:5}
+.c-yes{background:var(--studio)} .c-part{background:color-mix(in srgb,var(--studio) 45%,var(--paper))} .c-no{background:color-mix(in srgb,var(--ink-3) 40%,var(--paper));}
+.pend{border:1px dashed var(--vox);border-radius:6px;padding:14px 16px;color:var(--ink-2);background:var(--paper)}
+details{background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:10px 14px;margin:14px 0}
+summary{cursor:pointer;font-family:var(--f-display);font-weight:700}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:24px 0}
+@media (max-width:760px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi{background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:12px 14px}
+.kpi b{display:block;font-family:var(--f-display);font-size:1.9rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi span{font-family:var(--f-display);font-size:.82rem;color:var(--ink-2)}
+footer{margin-top:72px;padding-top:16px;border-top:1px solid var(--rule);font-family:var(--f-display);font-size:.84rem;color:var(--ink-3)}
+:focus-visible{outline:2px solid var(--vox);outline-offset:2px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<div class="wrap">
+<nav class="toc" aria-label="Contents">
+  <p class="lbl">Contents</p>
+  <a href="#answer">The short answer</a>
+  <a href="#days">What happened, 7–10 Oct</a>
+  <a href="#same">Side by side</a>
+  <a href="#experiment">The experiment</a>
+  <a href="#bb3">One plan, two builders</a>
+  <a href="#made">How a pgmvox map is made</a>
+  <a href="#terrain">The terrain, walked backwards</a>
+  <a href="#marks">Marks against landforms</a>
+  <a href="#noise">Why the noise rolls</a>
+  <a href="#strata">Strata that follow the land</a>
+  <a href="#renders">One renderer</a>
+  <a href="#grammar">The grammar, step by step</a>
+  <a href="#houses">Why the houses look good</a>
+  <a href="#matrix">Feature by feature</a>
+  <a href="#observations">Your observations, checked</a>
+  <a href="#playtest">The playtest notes, sorted</a>
+  <a href="#boards">Every board</a>
+  <a href="#studio2">Studio 2.0</a>
+  <a href="#method">Method and limits</a>
+</nav>
+
+<main>
+<p class="eyebrow">pgm-studio-mapgen · branch opus55-freeform-riftwater · 142 commits · 7–10 October 2026</p>
+<h1>The Freeform Leap</h1>
+<div class="hero">
+  <div>
+    <p class="lede">In three days one agent session built 37 PGM boards in Python without the studio's authoring pipeline, and distilled what they shared into a library, <code>pgmvox</code>. This report takes the branch apart: what was built, how a board is made, what the studio does that pgmvox does not, what pgmvox does that the studio cannot, and what of each a studio 2.0 has to keep.</p>
+    <p class="meta">Sources: the branch's code, plans and reports · three Sonnet helper reports (committed beside this one) · the author's playtest notes of 10 Oct · a controlled experiment, one brief built both ways</p>
+  </div>
+  <figure><img src="img/riftwater-iso.webp" alt="Isometric render of Riftwater: a green river valley split by a void rift, market towns, a mill and twin waterfalls" width="818" height="493"><figcaption class="fig figcaption" style="padding:0;background:none;margin:6px 0 0">Riftwater, the first freeform board</figcaption></figure>
+</div>
+
+<div class="kpis">
+  <div class="kpi"><b>37</b><span>boards on the branch: 20 bespoke, 17 on the library</span></div>
+  <div class="kpi"><b>13</b><span>game modes, against the studio's 4</span></div>
+  <div class="kpi"><b>7,737</b><span>lines of pgmvox (0.18), in 32 modules</span></div>
+  <div class="kpi"><b>9–29</b><span>minutes per board once the library existed</span></div>
+</div>
+
+<h2 id="answer">The short answer</h2>
+<p>No single change made the leap. Seven things did, and they compound. The controlled experiment adds the eighth, which keeps the rest honest: <a href="#experiment">with the model, brief, lessons and twenty minutes held equal, the studio and pgmvox made boards of comparable quality</a>. The leap needed the open substrate <em>and</em> Opus's hours, your review rounds and bespoke code on top of it. The first is the one the others depend on: <strong>pgmvox has no vocabulary between the author and the block.</strong> The studio's document model is a closed set of words (rectangles on a plan grid, seven prop kinds, axis-aligned houses, a heightfield per layer), so anything outside that set cannot be built at all. In pgmvox a missing thing costs 5 to 60 lines of code. Every other cause is how the agent spent that freedom well.</p>
+<ol class="causes">
+  <li><div><b>An open substrate.</b><p>A <code>World</code> is two numpy arrays. A mill wheel, a broken bridge over the void, a cave behind a waterfall, a house at 38°, a karst tower of stacked rings or a ship's hull is just more blocks. Riftwater has 71 block ids and 50 structures of 100+ blocks; the studio's best board on a similar brief has 37 and 31.</p></div></li>
+  <li><div><b>Places before relief.</b><p>Your ruling “A board is a small world” (committed 21:34 on 7 Oct, one hour before Riftwater began) made every plan a list of places, each with a reason and a way in. The studio runs got the same ruling and improved, but could only build the part of their places the vocabulary had words for.</p></div></li>
+  <li><div><b>The plan is code, checked and drawn.</b><p>A per-block raster with storeys, every number printed beside its target, and one annotated sheet with true-scale sections. Lantern Karst went through five plan rounds in 43 minutes before a block was placed.</p></div></li>
+  <li><div><b>The agent looks at each place up close.</b><p>The studio already lets an agent see: isometrics, x-rays, sections, and eye views with the real block textures aimed at any named thing. What pgmvox adds is framing. Its isometric takes a box, so every place in the plan gets its own picture at four or five pixels a block; its sections follow any line; one run draws the whole set. A studio isometric is always the whole board, so a house is a few pixels.</p></div></li>
+  <li><div><b>It accumulated.</b><p>The 20 bespoke boards were 1,300–4,100 lines each; after an assessment measured 15,800 lines of copies, the library took them over, and the next boards were 350–1,600 lines and 9–29 minutes. Every report ends with a “what I wanted, how hard, what the studio would need” table, and the library grew from those rows.</p></div></li>
+  <li><div><b>Style as a grammar.</b><p>Brittlebush and Claywork are rules over sections and faces (courses read down from a rim, an accent bay laid whole or not at all, fills that decline), with the blocks in a separate <code>Style</code>. That is a layer above the studio's rim/wall/surface/fill buckets, not a replacement for them.</p></div></li>
+  <li><div><b>Movement read as 1.8 plays it.</b><p>A voxel walk that opens doors, climbs ladders, swims and jumps; a tick model for falls, fall damage, knockback and jump pads; sight lines. These made the arcade boards possible, and they caught faults before anything was built.</p></div></li>
+</ol>
+<div class="callout s">
+  <p><strong>What it gave up</strong> is exactly what the studio stamps and gates: floating goal markers, build-zone outlines, the defence wall with its chests, the wool room and its loot, a kit paired to the goal's material, a map.xml codec and a 266-rule catalogue. Of the 30 items in your playtest notes, 9 are faults the studio would have prevented by itself, and most of the rest are faults that only exist because pgmvox can build stairs, ladders, joins and forests at all.</p>
+</div>
+
+<h2 id="days">What happened, 7–10 October</h2>
+<p>Everything is one session: 142 commits, 136 of them from a single session id. Commit times are bunched (Riftwater's ten commits fall within 33 minutes), so they show order, not effort.</p>
+<ul class="timeline">
+  <li><span class="t">7 Oct 20:26</span><span>Russetford, Rustwater Vale and Rowan Ford are built in the studio from one brief (an autumn river valley, DTM, 16 a side) by Opus, Sonnet and Haiku.</span></li>
+  <li><span class="t">7 Oct 21:34</span><span>Your ruling lands in <code>WHAT-A-BOARD-IS-MADE-OF.md</code>: a board is a small world, places each with a reason, things that belong together together, relief layered.</span></li>
+  <li><span class="t">7 Oct 22:37</span><span><strong>Riftwater</strong>, the first freeform board: plan, sketch and a bridge to the studio's Anvil writer, then terrain, cave, mine, town, mill, bridges, dressing. Built with no studio pipeline.</span></li>
+  <li><span class="t">8 Oct 06:15–18:20</span><span>Nineteen more bespoke boards, each a different idea: Hollow Mesa, Frostholm, Cloudhaven, Hollowcrown (houses at any angle), Stratum (patterned brutalist faces), Lantern Karst, Penstock, Calcite, Riad, Gullhaven, Saltgate (attack/defend), Copperline (payload), Lantern Pass, Sunwell, Lantern Drop, Loomfall, Spark, Curio Square (48 hide-and-seek plots by three models).</span></li>
+  <li><span class="t">8 Oct 18:54</span><span><code>SHARED-LIBRARY-ASSESSMENT.md</code>: 15,800 of about 50,000 lines are copies, nine colour tables, a walk whose headroom check could never fire.</span></li>
+  <li><span class="t">8 Oct 19:09–22:16</span><span><strong>pgmvox 0.1 → 0.10</strong> in three hours: blocks, orient, world, plan, walk, sight, sketch, render; build and facade; Course; objectives and storeys; landforms and strata; routes; forms; capture boards; under and trees. Riftwater and Lantern Karst are ported onto it.</span></li>
+  <li><span class="t">8 Oct 22:00–9 Oct</span><span><strong>Ten trial boards</strong>, five by Opus and five by Sonnet, one per mode, each 9–29 minutes on the library.</span></li>
+  <li><span class="t">9 Oct 11:57–19:21</span><span><strong>Claywork</strong> (CTW, four layout reviews), then the <strong>Brittlebush</strong> study and its grammar: Brittlebush KotH, Brittlebush III built from a plan drawn in the studio's planner, pgmvox 0.11 → 0.17, Sandreach.</span></li>
+  <li><span class="t">9–10 Oct</span><span>Playtest fixes (Lantern Pass, Lantern Drop, Calcite, Saltgate, Copperline), 0.18 <code>wool_chests</code> and 0.19 <code>defence_chests</code>, the studio's loot copied into the library.</span></li>
+</ul>
+
+<h2 id="same">Side by side</h2>
+<p>The obvious comparison turned out to be a weaker one than it looked. Riftwater was built the same evening as the three studio boards and is also a 16-a-side river valley for DTM, but it was <strong>not</strong> built to their brief: it is green rather than autumn, has two monuments a team rather than one, and splits the halves with a 20-block void rift rather than a river. It also had the “small world” ruling, which the first studio builds did not. So the table below compares like with nearly-like, and the <a href="#experiment">experiment</a> is the controlled version.</p>
+<div class="tbl"><table>
+<thead><tr><th>Measured from the region files</th><th class="n"><span class="v">Riftwater</span><br>pgmvox (bespoke)</th><th class="n"><span class="s">Russetford</span><br>studio · Opus</th><th class="n"><span class="s">Rustwater</span><br>studio · Sonnet</th><th class="n"><span class="s">Rowan Ford</span><br>studio · Haiku</th></tr></thead>
+<tbody>
+<tr><td>Footprint (x × z)</td><td class="n">240 × 176</td><td class="n">144 × 202</td><td class="n">108 × 242</td><td class="n">168 × 92</td></tr>
+<tr><td>Height span used</td><td class="n">2–94</td><td class="n">0–60</td><td class="n">0–56</td><td class="n">0–37</td></tr>
+<tr><td>Non-air blocks</td><td class="n">1,007,258</td><td class="n">769,633</td><td class="n">330,695</td><td class="n">140,462</td></tr>
+<tr><td>Distinct block ids / id+data pairs</td><td class="n">71 / 153</td><td class="n">37 / 75</td><td class="n">30 / 64</td><td class="n">24 / 68</td></tr>
+<tr><td>Distinct top-surface kinds</td><td class="n">83</td><td class="n">51</td><td class="n">41</td><td class="n">15</td></tr>
+<tr><td>Built structures of 100+ blocks</td><td class="n">50</td><td class="n">31</td><td class="n">16</td><td class="n">10</td></tr>
+<tr><td>Air under built roofs (interiors)</td><td class="n">33,178</td><td class="n">8,938</td><td class="n">7,227</td><td class="n">6,314</td></tr>
+<tr><td>Air under natural rock (caves)</td><td class="n">9,806</td><td class="n">2,987</td><td class="n">1,056</td><td class="n">0</td></tr>
+<tr><td>Beds / torches / ladders</td><td class="n">76 / 244 / 284</td><td class="n">0 / 0 / 10</td><td class="n">0 / 0 / 10</td><td class="n">0 / 0 / 16</td></tr>
+<tr><td>Tile entities</td><td class="n">16, all authored</td><td class="n">10–12, all stamped</td><td class="n">12</td><td class="n">10</td></tr>
+<tr><td>Floating goal markers</td><td class="n">none</td><td class="n">yes</td><td class="n">yes</td><td class="n">yes</td></tr>
+<tr><td>map.xml</td><td class="n">77 lines</td><td class="n">149–173 lines, modes, kits, rewards</td><td class="n">yes</td><td class="n">yes</td></tr>
+<tr><td>Author code</td><td class="n">3,379 py + 86 C#</td><td class="n">426-line spec</td><td class="n">319</td><td class="n">118</td></tr>
+</tbody></table></div>
+<p>Rendered in the same flat isometric renderer (pgmvox's), the gap is smaller than the studio's textured pictures make it look. Russetford is a composed valley with a river, a bridge, an orchard and a castle ruin. What separates it from Riftwater is density and depth: twice the structures, a town that reads as a town, a sculpted underside, a cave system, interiors with beds and chests.</p>
+<div class="pair">
+  <figure class="fig"><img src="img/riftwater-iso.webp" alt="Riftwater isometric" width="818" height="493" loading="lazy"><figcaption><span class="tag v">pgmvox</span> Riftwater, 240 × 176</figcaption></figure>
+  <figure class="fig"><img src="img/russetford-iso.webp" alt="Russetford isometric in the same renderer" width="668" height="420" loading="lazy"><figcaption><span class="tag s">studio</span> Russetford, same renderer</figcaption></figure>
+  <figure class="fig"><img src="img/rustwater-iso.webp" alt="Rustwater Vale isometric" width="544" height="360" loading="lazy"><figcaption><span class="tag s">studio</span> Rustwater Vale (Sonnet)</figcaption></figure>
+  <figure class="fig"><img src="img/rowanford-iso.webp" alt="Rowan Ford isometric" width="512" height="303" loading="lazy"><figcaption><span class="tag s">studio</span> Rowan Ford (Haiku)</figcaption></figure>
+</div>
+<div class="pair">
+  <figure class="fig"><img src="img/riftwater-xray.webp" alt="X-ray of Riftwater's caves: a lake chamber, branches, a mine gallery" width="540" height="218" loading="lazy"><figcaption><span class="tag v">pgmvox</span> Riftwater's underground, x-rayed: cave, lake chamber, pillar hall, mine</figcaption></figure>
+  <figure class="fig"><img src="img/riftwater-town.webp" alt="Riftwater's market town" width="740" height="667" loading="lazy"><figcaption><span class="tag v">pgmvox</span> the market town climbing from the rift</figcaption></figure>
+</div>
+
+<h2 id="experiment">The experiment: one brief, built both ways</h2>
+<div id="experiment-body">
+<p>Two briefs, <strong>Slatefold</strong> (capture the wool: a slate hamlet on two terraced hillsides across the void) and <strong>Abbeymoor</strong> (destroy the monument: abbey hills, a village, a bog, a crypt with a way up near a monument), each built once through a local studio and once with pgmvox. All four builds were by Sonnet, from the same reading list, the same twelve playtest lessons and no author review. The briefs and the full comparison are in <code>analysis/freeform-vs-studio/experiment/</code>.</p>
+<div class="callout">
+  <p><strong>With the model, the brief, the lessons and about twenty minutes held equal, the two tools made boards of comparable quality.</strong> Neither pair shows the gap Riftwater against Russetford suggested, and each builder met almost every lesson. So the leap on the branch took the open substrate <em>and</em> what was spent on it: Opus, hours per board, rounds of your review, and bespoke code (Riftwater is 3,379 lines; these are 1,332 and 1,507). pgmvox raises the ceiling of what a board can be far more than it raises the floor of what a short run makes.</p>
+</div>
+<div class="pair">
+  <figure class="fig"><img src="img/exp-sf-studio.webp" alt="Slatefold built through the studio" width="672" height="435" loading="lazy"><figcaption><span class="tag s">studio</span> Slatefold: hillsides, kilns, quarry pits; markers over the wool rooms, the build zone outlined</figcaption></figure>
+  <figure class="fig"><img src="img/exp-sf-pgmvox.webp" alt="Slatefold built with pgmvox" width="676" height="482" loading="lazy"><figcaption><span class="tag v">pgmvox</span> Slatefold: seven terrace floors and a high bench, bedrock defence walls with chests, a headframe</figcaption></figure>
+  <figure class="fig"><img src="img/exp-am-studio.webp" alt="Abbeymoor built through the studio" width="736" height="460" loading="lazy"><figcaption><span class="tag s">studio</span> Abbeymoor: two abbey hills with ruins, the bog, markers over both monuments</figcaption></figure>
+  <figure class="fig"><img src="img/exp-am-pgmvox.webp" alt="Abbeymoor built with pgmvox" width="900" height="498" loading="lazy"><figcaption><span class="tag v">pgmvox</span> Abbeymoor: flatter, with heather, a beck, peat cuttings and a boardwalk</figcaption></figure>
+</div>
+<p class="note" style="margin-top:-8px">All four in pgmvox's flat-colour renderer.</p>
+<div class="tbl"><table>
+<thead><tr><th>Measured from the worlds</th><th class="n"><span class="s">Slatefold</span> studio</th><th class="n"><span class="v">Slatefold</span> pgmvox</th><th class="n"><span class="s">Abbeymoor</span> studio</th><th class="n"><span class="v">Abbeymoor</span> pgmvox</th></tr></thead>
+<tbody>
+<tr><td>Height span used</td><td class="n">0–62</td><td class="n">0–109</td><td class="n">0–60</td><td class="n">0–92</td></tr>
+<tr><td>Distinct block ids / id+data pairs</td><td class="n">33 / 78</td><td class="n">39 / 75</td><td class="n">26 / 52</td><td class="n">40 / 73</td></tr>
+<tr><td>Distinct top-surface kinds</td><td class="n">36</td><td class="n">47</td><td class="n">35</td><td class="n">49</td></tr>
+<tr><td>Spread of surface height (std)</td><td class="n">10.4</td><td class="n">29.3</td><td class="n">9.5</td><td class="n">4.2</td></tr>
+<tr><td>Chests</td><td class="n">32</td><td class="n">40</td><td class="n">4</td><td class="n">0</td></tr>
+<tr><td>Floating goal markers</td><td class="n">yes</td><td class="n">no</td><td class="n">yes</td><td class="n">no</td></tr>
+<tr><td>Build-zone outline</td><td class="n">stamped</td><td class="n">by hand</td><td class="n">n/a</td><td class="n">n/a</td></tr>
+<tr><td>Defence wall with chests</td><td class="n">no</td><td class="n">yes</td><td class="n">n/a</td><td class="n">n/a</td></tr>
+<tr><td>Crypt and passage</td><td class="n">n/a</td><td class="n">n/a</td><td class="n">8 cuts, 7 lids</td><td class="n">carved hall, stair, 60-block passage</td></tr>
+<tr><td>Authoring code</td><td class="n">355-line spec, 20 stores</td><td class="n">1,332 lines</td><td class="n">404-line spec, 14 stores</td><td class="n">1,507 lines</td></tr>
+<tr><td>Time to the finished build</td><td class="n">≈23 min</td><td class="n">≈25 min (50 with repairs)</td><td class="n">≈20 min</td><td class="n">≈21 min</td></tr>
+</tbody></table></div>
+<div class="pair">
+  <figure class="fig"><img src="img/exp-am-studio-crypt.webp" alt="The studio Abbeymoor crypt, eye view with real textures" width="900" height="504" loading="lazy"><figcaption><span class="tag s">studio</span> the crypt hall, built from subtract cuts and lids, in the studio's eye view</figcaption></figure>
+  <figure class="fig"><img src="img/exp-am-pgmvox-xray.webp" alt="The pgmvox Abbeymoor crypt and passage, x-ray" width="520" height="296" loading="lazy"><figcaption><span class="tag v">pgmvox</span> the crypt, the Night Stair and the passage to the barn cellar, x-rayed</figcaption></figure>
+</div>
+<p><strong>Each builder hit the other tool's strength as a wall.</strong> The studio builder could not build a crypt, ladders, ruins or standing stones except as boxes of blocks, had one wool-room shell per map, and could not fit a defence wall into the plan's wall rules. The pgmvox builder had to write its crypt, defence wall, build-zone outline and objective-visibility check itself, and worked round the house window and door defects. Each is missing the other's half, which is the case for merging them rather than choosing.</p>
+</div>
+
+
+<h2 id="bb3">One plan, two builders: Brittlebush III</h2>
+<p>Brittlebush III was drawn in the studio's planner (<code>untitled-plan-8</code> on pgmstudio.de, stage <em>plan</em>), and pgmvox's <code>studioplan</code> reads that plan document as a Brittlebush blueprint. It is the one case where both tools start from the identical input. The studio side below is the studio's own <code>PlanCompiler</code> and <code>WorldBuilder</code> run on the plan with no theme, room style or dressing, so it is the floor of what the studio would make rather than an authored board.</p>
+<div class="pair">
+  <figure class="fig"><img src="img/bb3-studio-iso.webp" alt="The studio's unauthored build of the Brittlebush III plan: grey blocks, red build outlines, floating markers" width="420" height="284" loading="lazy"><figcaption><span class="tag s">studio</span> the plan compiled and stamped: 10 block ids, but every build zone outlined in redstone and a marker over each wool room</figcaption></figure>
+  <figure class="fig"><img src="img/bb3-pgmvox-iso.webp" alt="pgmvox's Brittlebush III: stacked cells with birch panels, sand fields, grass beds, wool houses" width="1055" height="680" loading="lazy"><figcaption><span class="tag v">pgmvox</span> the same plan through the Brittlebush grammar: 31 ids, hollow decks, wool houses with beacons</figcaption></figure>
+</div>
+<p>The pair is the whole report in one picture. The studio's floor already carries the gameplay furniture (outlines, markers, wool rooms, 48 stamped tile entities); pgmvox carries the look and the play of the original map, and gives meaning to names the studio ignores (a piece called <code>stair…</code> or <code>double…</code>, a zone called <code>water…</code>). Neither is the finished map. The finished map is both.</p>
+
+<h2 id="made">How a pgmvox map is made</h2>
+<p>The order is fixed in <code>pgmvox/run.py</code>, and the agent guide says where a board goes right or wrong: “every expensive failure here was a plan failure.”</p>
+<div class="flow" role="list">
+  <span class="k" role="listitem">plan.py + PLAN.md</span><i>→</i><span role="listitem">plan check</span><i>→</i><span role="listitem">sketch sheet</span><i>→</i><span class="k" role="listitem">author review</span><i>→</i><span role="listitem">gen.py</span><i>→</i><span role="listitem">write (studio's Anvil writer)</span><i>→</i><span role="listitem">map.xml</span><i>→</i><span role="listitem">renders</span><i>→</i><span role="listitem">read-back walk</span><i>→</i><span class="k" role="listitem">REPORT.md</span>
+</div>
+<h3>The plan states five things</h3>
+<p>An identity sentence; the arrangement; the numbers, each with a target (“lanes 12 to 16 wide”, “the walk from a goal to the enemy spawn three to four times the walk to its own”); the places, each with what it is, why a player goes there and how they get there; and the look, decided now (biome, three tone families, which material plays which role). The plan is a <code>Raster</code> holding every column's floor height and kind, with the symmetry applied inside the plan so the checker measures both halves, and with <code>storey(n)</code> rasters for caves, roofs and decks. The generator, the sketch, map.xml and the read-back all import the same <code>plan.py</code>, so they cannot disagree.</p>
+<h3>The sketch is reviewed before anything is built</h3>
+<p>One sheet: the board from above with floor heights written on every piece, places named, team markers mirrored; the routes arrowed with their jumps; true-scale sections across every height change and unrolled along the routes that matter; and the check table, every measurement against its target with misses in red. “A red row is resolved or explained before the build.”</p>
+<figure class="fig"><img src="img/claywork-sketch.webp" alt="Claywork's plan sketch: board from above with heights, routes, sections and the check table" width="957" height="1100" loading="lazy"><figcaption>Claywork's sketch sheet, the fourth layout revision: what the author reviewed before a block existed</figcaption></figure>
+<h3>The build adds only the look</h3>
+<p>“The generator reads the plan; it decides nothing the plan states.” Terrain, landforms, routes, buildings, facades and solids are free to use or to write fresh, because a board that wants a shape the library lacks writes it locally, and the second board to need it moves it into the library with a test. The read-back then walks the built blocks from each spawn (doors, ladders, swimming, jumps), asks every objective to check itself, looks for footing that would fall and water standing against air, and draws the plan's names over the built world.</p>
+<h3>Why this beats a zone plan</h3>
+<p>The studio's plan is rectangles on a 5-block grid, fanned through the symmetry, with no stack, no paint and no dressing; its walk is eight-connected places with a scramble and a free drop, and no ladders, jumps or pads. The freeform plan is per block and per storey, carries a capture-aware walk that prices bridging, and prints arrivals per team, jump gaps and sight lines. A plan that can state a cave can be reviewed for its cave.</p>
+
+<h2 id="terrain">The terrain, walked backwards</h2>
+<p>The library's terrain example, the Vale, is fifteen operations on one heightfield. Replayed one at a time, each step's output kept, it shows how pgmvox thinks about ground: start from noise, then apply named landforms in an order the board chooses. Each landform only cuts or only lifts, so they compose without one undoing another. The <a href="https://claude.ai/artifact/Lj5Y9gBDHvAW5913jvLCC2">Recipe Inspector</a> lets you step through these with what each one changed highlighted, cut sections anywhere, and play with the noise.</p>
+<figure class="fig"><img src="img/terrain-sheet.webp" alt="Fifteen steps of the Vale's terrain, from a flat plane to the finished ground" width="1000" height="660" loading="lazy"><figcaption>The Vale, step by step. 0–3 are one <code>field.noise</code>: a constant, rolling fbm noise (cell 48, ±14), ridges (cell 24, +6) and a tilt toward the sea. Then a scarp, a butte, a spire, a round hill and its terraces, the coast, a canyon through the scarp, a river in reaches and falls, roads found to a grade, a switchback footpath, and <code>hold</code>, which raises every bank to its water.</figcaption></figure>
+<h3>The noise is the least of it</h3>
+<p><code>noise.fbm(cell, octaves, gain)</code> is a random lattice every <code>cell</code> blocks, smoothly interpolated, plus the same at half the cell and half the strength, octave by octave. <code>ridged</code> is one minus its absolute value, which puts crests where the noise crosses zero. That is the whole of the randomness, and it only makes the canvas. Everything a player reads as a place comes after it, from operations that each know what they are making:</p>
+<ul>
+  <li><strong><code>watercourse</code></strong> samples the ground along a path and takes the running minimum, so the bed never climbs. It holds the water level in reaches and steps down in falls only where the ground drops two or more and a reach has run twelve blocks, then raises every bank cell to the water so no water stands against air.</li>
+  <li><strong><code>canyon</code></strong> cuts a floor of a fraction of the width, with walls rising as distance to a power (3 is near-cliff), cut in ledges, with a floor that may never climb along the path.</li>
+  <li><strong><code>butte</code> and <code>spire</code></strong> are one family: a cliffed stack with a talus apron, blunt or jagged by <code>taper</code> and <code>jag</code>.</li>
+  <li><strong><code>route.find</code></strong> searches 48 headings over the ground with costs for grade, turning, climbing and bridging. The turn cost is what makes a path switch back: without it, 71 zig-zags; with it, 5 legs.</li>
+</ul>
+<h3>Then the paint reads the angle</h3>
+<p><code>terrain.lay</code> reads every column's slope with the studio's own gradient (a test holds them equal on 21,972 cells). It chooses the top block by angle (grass to 30°, coarse dirt to 42°, andesite to 55°, stone past it), puts soil three deep on gentle ground and none on a cliff, and fills the rock with <code>Strata</code>: weighted beds of stone, andesite, clay and terracotta that dip and fold under a noise offset. A cliff is rock to its face, and its beds show.</p>
+<figure class="fig"><img src="img/vale-section.webp" alt="A section through the Vale showing tilted rock beds under thin soil" width="618" height="298" loading="lazy"><figcaption>A section along x = 10: the scarp and the butte in beds, soil only where the ground is gentle.</figcaption></figure>
+
+<h2 id="marks">Marks against landforms</h2>
+<p>The studio's relief works the other way round. A mark is a constraint (this disc is at 40; this line runs from 40 down to 30), and a relaxation solves the smoothest surface that honours every mark at once. Its extremes can only sit where a mark put one, so nothing appears that nobody asked for. That is a real virtue, and it is also why marks feel hard to control: what one mark does depends on the reach, the rim and every other mark, and it shows only after the whole field is solved. Below is the studio's own <code>ReliefSolver</code>, called directly.</p>
+<figure class="fig"><img src="img/relief-sheet.webp" alt="Six studio relief solves: point marks at three reaches, a rim, a push, and the Vale's statements as marks" width="900" height="640" loading="lazy"><figcaption>One point mark at reach 0 lifts the whole square; at reach 15 it is a small round hill, at 45 a broad one bent by the edge; with a rim it fills the shape. A push takes a drawn ring and crowns its spine. Last, the Vale's statements written as marks: a scarp, three points, two lines and grain.</figcaption></figure>
+<figure class="fig"><img src="img/compare-vale.webp" alt="pgmvox's Vale beside the same statements solved as studio marks" width="740" height="390" loading="lazy"><figcaption>The same intent both ways. The marks get the arrangement right (the scarp, the peaks, the valley). They cannot get the character: a point makes a round cone where the butte is a flat-topped stack with cliff sides and talus, and the line marks make low ground where the canyon is walls in ledges.</figcaption></figure>
+<p><strong>The two are not rivals.</strong> The studio's pushes are already operations applied after the solve, so pgmvox's landforms are more operations of that kind. A board can start with marks where the author wants exact heights, then add a canyon, a river that knows it is water, and beds that show on the cliffs. The solver stays; the vocabulary after it grows.</p>
+
+<h2 id="noise">Why the noise rolls</h2>
+<p>You asked why the studio's noise feels grainy the moment it is turned up, while pgmvox's sections roll and leave flat ground for houses and paths. Both are the same kind of noise: random values on a lattice, interpolated between, summed in octaves that halve in size and strength each time. pgmvox interpolates with a cubic spline; the studio's <code>PatternNoise</code> blends neighbours with a smoothstep. To find what actually differs, I ported the studio's noise exactly and ran each with the other's settings.</p>
+<figure class="fig"><img src="img/noise-sheet.webp" alt="Five noise fields with a section under each, comparing studio and pgmvox noise at each other's settings" width="1300" height="520" loading="lazy"><figcaption>Each panel is 200 × 200 blocks, rounded to whole blocks as the world is, with a 100-block section underneath. "Flat steps" is the share of neighbouring columns at the same height; "flat patches" is ground in level areas of 25 cells or more.</figcaption></figure>
+<p><strong>The settings, not the algorithm, make the grain.</strong> The studio's noise at pgmvox's settings (panel 3) is as walkable as pgmvox's own (80% flat steps against 81%, 56% of the ground in large flat patches against 60%). pgmvox's noise at the studio's grain settings (panel 4) is as grainy as the studio's. Two numbers decide it:</p>
+<ul>
+  <li><strong>The finest octave.</strong> The relief grain's default scale is 9 with three octaves, and integer halving makes the cells 9, 4 and 2 blocks. The last octave changes every two blocks, which is the size of a block step, so after rounding it scatters one-block steps everywhere. The Vale's finest octave is 6 blocks across at a fifteenth of the weight.</li>
+  <li><strong>Amplitude over feature size.</strong> A slope is roughly π × amplitude ÷ feature size. The Vale is ±14 over 48 (a ratio of 0.29). Grain 4 at scale 9 is 0.44; grain 14 at scale 9 is 1.56, and then 23% of all neighbouring steps are two blocks or more: a wall every few blocks. Keeping the ratio under about 0.3, and the finest octave above about five blocks, is what keeps ground walkable.</li>
+</ul>
+<p><strong>The interpolation does matter a little.</strong> A smoothstep has zero slope at every lattice point, so at large scales the contours run straight along the grid; the studio panel at scale 48 shows square-cornered terraces where the pgmvox panel is round. A cubic spline, or gradient noise such as Perlin or simplex, removes it.</p>
+<p><strong>And noise is not where the flat places come from.</strong> pgmvox uses noise only as the canvas. The flat ground a house stands on comes from operations that flatten: a terrace step, a butte's top, a road graded into the hill, <code>hold</code> at a bank, and a house's own site eased into the slope. A recipe is a chain of such operations over noise. Game terrain is usually built this way: Minecraft's own world generation, since 1.18, is a graph of noise fields and operators written as JSON ("density functions"), and tools such as World Machine and Gaea are node editors over the same idea. The Hytale editor you mentioned is the same family. A linear recipe is the simplest such graph, and nodes can come later if a board ever needs one operation's output in two places.</p>
+
+<h2 id="strata">Strata that follow the land</h2>
+<p><strong>Here the studio is ahead.</strong> Its height band stack can follow the ground (TP26): the bands' datum rises by a share of the surface averaged over <code>reach</code> cells either side, so the beds carry the land's broad tilt while a hill cuts through them. pgmvox has two settings and neither is that. Its beds are level with a dip and a fold, which ignores the land; or their offset is the surface itself, which wraps every bump in a thin rind.</p>
+<figure class="fig"><img src="img/strata-sheet.webp" alt="Four ways to lay rock beds under the same section of the Vale" width="1210" height="564" loading="lazy"><figcaption>The same Vale section and the same six beds, laid four ways. Top: pgmvox's two options. Bottom: the studio's rule, at follow 100 and reach 16 (its default), and at follow 60 and reach 32. The bottom row is what strata in a hillside look like.</figcaption></figure>
+<p>Bringing it over is one line in pgmvox: the bed offset becomes <code>follow × (the ground averaged over ±reach)</code>, which is exactly the studio's definition. It is a good example of the merge running both ways.</p>
+
+<h2 id="renders">One renderer</h2>
+<p>You're right that seeing the board is not new. The studio has drawn whole-board isometrics and x-rays, top-downs, axis sections, transects and walks for a long time, and its eye view is the best render either side has: Mojang's own textures, a camera that can <code>look</code> at any named thing, and a text twin saying what it saw. That is how your feedback on the studio boards was given. The difference is narrower, and it is framing:</p>
+<div class="tbl"><table>
+<thead><tr><th>Render</th><th>Studio</th><th>pgmvox</th></tr></thead>
+<tbody>
+<tr><td>Isometric</td><td>the whole board from a corner; a house is a few pixels</td><td>any box at any scale, so one picture per place at 4–5 px a block</td></tr>
+<tr><td>Section</td><td>along an axis (picture), or through points (text)</td><td>along any polyline, unrolled at true scale, as a picture</td></tr>
+<tr><td>Elevation</td><td>none</td><td>a box seen straight on from one side: a facade, a cliff face</td></tr>
+<tr><td>X-ray</td><td>whole board, with a text list of every roofed void</td><td>whole board or a box</td></tr>
+<tr><td>Eye</td><td>real textures, aimed by name, one at a time</td><td>none</td></tr>
+<tr><td>Plan over the built world</td><td>the sketch and the plan as numbers and ASCII</td><td>the plan's names, routes and markers drawn on the built top-down</td></tr>
+</tbody></table></div>
+<p><strong>If there can be only one, make it the framed isometric, with the real textures when it is close.</strong> It shows a place's bulk, roofs, footing, materials and neighbours in one picture, an x-ray mode covers the underground, and framing it is free because the plan already names every place and its extent. The eye view stays as the finish check it is good at. What can go: the whole-board isometric (a framed view of the whole board is the same call) and the axis-only section (a polyline section covers it).</p>
+
+<h2 id="grammar">The grammar, step by step</h2>
+<p>A grammar board is a list of sections: boxes at one height. The grammar reads every column's depth in from its section's edge, then visits each section once, in a fixed order: body under every column; a face where the ground beside falls two or more, its courses read down from the rim; an accent bay every so many along a face, laid whole or not at all; a seam where two sections meet at one height; a fill over the interior, chosen by the section's shape; motifs on top. The blocks all live in a <code>Style</code>, so the same plan can be built in Brittlebush or in Claywork. Below, each picture adds one rule to the one before it.</p>
+<figure class="fig"><img src="img/bb-sheet.webp" alt="Brittlebush III built rule by rule: body, depth, faces, accents, seams, fills, hollows, houses" width="1085" height="1100" loading="lazy"><figcaption>Brittlebush III, one crop, eight stages. Body; the depth read (orange is the outline); the five-course cap; birch panels framed in black clay every other cell; plank seams; beds with a birch where the section is a rectangle six across, sand otherwise; then stairs, hollows and water, which are plain code, and the wool house of whole cells.</figcaption></figure>
+<div class="pair">
+  <figure class="fig"><img src="img/bb-decisions.webp" alt="Map of which fill each section got and which accent bays were refused" width="671" height="800" loading="lazy"><figcaption>The decisions nobody sees today: six sections declined <code>bed</code> (under six across) and became sand; 4 of 38 accent bays were refused for want of air.</figcaption></figure>
+  <figure class="fig"><img src="img/cw-sheet.webp" alt="Claywork built rule by rule" width="1100" height="884" loading="lazy"><figcaption>Claywork, the same grammar in another style: sunk panels with a quartz diamond centred on each side (65 of 99 bays laid), squares, inlay, plate and paving fills, arrows.</figcaption></figure>
+</div>
+<p><strong>This is the plan road you found with Brittlebush III.</strong> The studio's planner already draws everything the grammar reads (pieces, heights, roles, zones); a brittle cell is five blocks, which is the studio's grid. What it cannot say yet is held in board tables: which cells are hollow, which deck is raised, where a rectangle splits into two sections, which fill a section must take, where the arrows go. Those are a handful of fields on a piece, and with them a bound style turns a drawn plan into a finished board in one step.</p>
+
+<h2 id="houses">Why the houses look good</h2>
+<div class="pair">
+  <figure class="fig"><img src="img/riftwater-houses.webp" alt="Riftwater's market town houses close up" width="420" height="577" loading="lazy"><figcaption><span class="tag v">pgmvox</span> Riftwater's market town</figcaption></figure>
+  <figure class="fig"><img src="img/russetford-houses.webp" alt="Russetford's houses close up in the same renderer" width="420" height="376" loading="lazy"><figcaption><span class="tag s">studio</span> Russetford, same renderer and scale</figcaption></figure>
+</div>
+<p><strong>The difference is where the taste lives.</strong> A studio house style is 77 to 258 values (a median of 146): every band of every storey's wall, the posts, beams, gable windows, doorway head, plate and surface are data, and any combination of them is legal. An agent filling those in has to rediscover good proportions every time, and the bad combinations look bad. A pgmvox style is ten material slots: ground wall, upper wall, frame wood, gable, floor, roof, stair, slab, door, window. The articulation is code and always runs: a post at every corner and every four blocks along an upper storey, a laid log at each storey's head turned along its wall, jettied joists, the gable filled to the roof's underside, the attic cleared, a chimney from the floor to two above the crown with a cap. Any choice of materials gets a well-built house.</p>
+<p>Three other things help. The studio's doorway is a closed set (air, cobweb, glass) because one rule serves wool rooms and houses alike, so a house can never have a real door; pgmvox's houses do. <code>Frame</code> puts a house at any heading with the studio's own six roof forms. And there is no footing: pgmvox fills every column under the plate down to the ground and eases the ground round the footprint over two blocks, so a house sits on a slope as if it were built there. The studio's footing was a one-block ring around the plate, now off by default and complained of (HS7).</p>
+<p>The cost is in the other direction. pgmvox houses are one rectangle a storey, with no wings or porches, and they have no window/door rule (49% of sampled houses have a pane beside the door). The studio has both. The meeting point is an <strong>archetype</strong> as a library row: the framing rules of a kind of house, with the studio's styles mapped onto archetypes as their materials.</p>
+
+<h2 id="matrix">Feature by feature</h2>
+<p>Marks read: <span class="mark yes">●</span> does it, <span class="mark part">◐</span> partly, <span class="mark no">○</span> cannot.</p>
+<div class="tbl"><table>
+<thead><tr><th style="min-width:150px">Capability</th><th style="min-width:250px"><span class="s">Studio</span></th><th style="min-width:250px"><span class="v">pgmvox</span></th></tr></thead>
+<tbody>
+<tr class="grp"><td colspan="3">Planning and review</td></tr>
+<tr><td>Plan unit</td><td><span class="mark part">◐</span> rectangles on a 5-block cell grid, roles piece/spawn/wool-room/buffer, zones, placements</td><td><span class="mark yes">●</span> per-block raster, polygons, storeys, <code>Course</code> for boards played in order</td></tr>
+<tr><td>Plan checks</td><td><span class="mark yes">●</span> 58 calibrated layout rules (GO, SP, WL, LN, CT…), refusals with proposed edits</td><td><span class="mark part">◐</span> numbers with targets, measured by hand per board (about 120 lines), octile walk, jumps, sight, arrivals</td></tr>
+<tr><td>Review surface</td><td><span class="mark yes">●</span> web UI, review notes with pictures, history, diff, restore</td><td><span class="mark part">◐</span> one annotated sketch sheet per revision, reviewed in chat</td></tr>
+<tr class="grp"><td colspan="3">Terrain and water</td></tr>
+<tr><td>Relief</td><td><span class="mark part">◐</span> marks (point, line with tread and batter, area, rim, scarp) solved by relaxation; no noise heightfield</td><td><span class="mark yes">●</span> numpy heightfield ops: noise, ridged, watercourse, canyon, butte, scarp, spire, terraces, coast, grade</td></tr>
+<tr><td>Floating islands</td><td><span class="mark part">◐</span> a flat underside per shape, or stacked layers</td><td><span class="mark yes">●</span> per-column undersides: cones, flutes, spires; karst skirts; root vines</td></tr>
+<tr><td>Underground</td><td><span class="mark part">◐</span> a roofed void by subtract plus a lid, or a second layer; no tunnels (TS140)</td><td><span class="mark yes">●</span> tunnels with level floors, chambers, timbered galleries, shafts, cave dressing; storeys walked</td></tr>
+<tr><td>Ground paint</td><td><span class="mark yes">●</span> 14 material kinds, band stacks on depth, inward, height and slope; biome fields</td><td><span class="mark part">◐</span> soil by slope (the studio's own gradient), rock beds that dip and fold; patches written per board</td></tr>
+<tr><td>Water</td><td><span class="mark part">◐</span> channel, pool and basin props, water lanes; does not read the relief</td><td><span class="mark yes">●</span> rivers with a level per reach, weirs and falls, falls into the void, lakes, a loose-water audit</td></tr>
+<tr class="grp"><td colspan="3">Structures</td></tr>
+<tr><td>Houses</td><td><span class="mark yes">●</span> 57 styles, six roofs, wings, porches, ladders, stilts, window/door rule; axis-aligned only</td><td><span class="mark part">◐</span> any heading with the studio's six roofs (tested cell for cell), jetties; one rectangle a storey; <strong>no window/door rule</strong></td></tr>
+<tr><td>Facades</td><td><span class="mark part">◐</span> wall materials as paint</td><td><span class="mark yes">●</span> insets, glyph words, flutes, panels, slits, coffers; floor fields</td></tr>
+<tr><td>Style</td><td><span class="mark part">◐</span> theme buckets: rim, wall, surface, fill, bedrock</td><td><span class="mark yes">●</span> a grammar over sections and faces (Brittlebush, Claywork), one plan spoken in several styles</td></tr>
+<tr><td>Props</td><td><span class="mark part">◐</span> seven kinds: stroke, fluid, flora, house, tree, boulder, chest</td><td><span class="mark yes">●</span> anything; in the library stalls, lamps, chests drawn as letters; per board mills, bridges, ships, headframes, carts</td></tr>
+<tr><td>Roads</td><td><span class="mark part">◐</span> a relief line plus a stroke, dragged by hand</td><td><span class="mark yes">●</span> routes found over the ground to a grade, switchbacks, shared trunks, paving, bridges</td></tr>
+<tr class="grp"><td colspan="3">Objectives and stamps</td></tr>
+<tr><td>Modes</td><td><span class="mark part">◐</span> CTW, DTM, DTC, control points</td><td><span class="mark yes">●</span> those plus flags, payload, attack/defend stages, score boxes, FFA, water drop, wool run, knockback, hide and seek</td></tr>
+<tr><td>Goal markers</td><td><span class="mark yes">●</span> a wool cube or asterisk over every goal, above the build ceiling</td><td><span class="mark no">○</span> none; a glass cap on a wool monument; board-local beacons</td></tr>
+<tr><td>Build-zone outline</td><td><span class="mark yes">●</span> redstone two blocks out on every void-facing edge (ST5)</td><td><span class="mark part">◐</span> copied by hand on 2 boards; cobwebs in the Brittlebush grammar</td></tr>
+<tr><td>Defence wall and chests</td><td><span class="mark yes">●</span> bedrock wall, chests in the approach face, chests at every goal</td><td><span class="mark part">◐</span> <code>props.DEFENCE</code>, <code>defence_chests</code> (0.19); used by Claywork and Lantern Karst</td></tr>
+<tr><td>Wool room</td><td><span class="mark yes">●</span> shell, standard loot in four corners, entrance line, glass doors</td><td><span class="mark part">◐</span> <code>wool_chests</code> (0.18), used by no board yet</td></tr>
+<tr><td>Kit</td><td><span class="mark yes">●</span> standard kit, pickaxe paired to the goal material</td><td><span class="mark part">◐</span> written per board</td></tr>
+<tr><td>map.xml</td><td><span class="mark yes">●</span> codec, parser, validator, standards (modes, rewards, itemkeep)</td><td><span class="mark part">◐</span> a 201-line builder; checked through the studio's parser where the studio reads the mode</td></tr>
+<tr class="grp"><td colspan="3">Reading the world</td></tr>
+<tr><td>Walk</td><td><span class="mark part">◐</span> eight-connected, scramble, free drop 3, priced bridging; no ladders, jumps or pads</td><td><span class="mark yes">●</span> voxel walk with doors, ladders, swimming, jumps, standing in build zones, kill height</td></tr>
+<tr><td>Physics and sight</td><td><span class="mark no">○</span> none</td><td><span class="mark yes">●</span> 1.8 tick model: falls, damage, knockback, pad launch; sight lines</td></tr>
+<tr><td>Renders</td><td><span class="mark yes">●</span> eye views with the real textures aimed at any named thing, with a text twin; whole-board isometric and x-ray; axis sections; transects; stored maps only</td><td><span class="mark yes">●</span> isometric cropped to any box, so one picture per place; elevations; cutaways along any line; x-ray; the plan's names over the built world; flat colours, offline, in seconds</td></tr>
+<tr class="grp"><td colspan="3">Running it</td></tr>
+<tr><td>Who can use it</td><td><span class="mark yes">●</span> a deployed multi-user web app with sign-in, a database and history</td><td><span class="mark no">○</span> files in git, one agent at a time</td></tr>
+<tr><td>Regression net</td><td><span class="mark yes">●</span> about 4,100 tests, e2e, corpus goldens over 350 maps</td><td><span class="mark part">◐</span> 90 tests and a snapshot gate over the examples</td></tr>
+</tbody></table></div>
+
+<h2 id="observations">Your observations, checked</h2>
+<h3>Windows against the door</h3>
+<p><strong>Confirmed, and it is half of all houses.</strong> pgmvox's window rule, <code>build.windows()</code> (<code>build.py:345</code>), looks only at how far along the wall a block is; the door is chosen and written after the walls (<code>build.py:442–450</code>) and nothing clears its neighbours. Over 960 sampled houses, 49% had a pane or bar beside the door. Riftwater's own <code>house.py</code> has the same gap (windows at lines 171–184, the door at 195–196). The studio already has the rule: <code>HouseWindows</code> drops “any seat that would meet a doorway, or the block of wall either side of it”. The fix is to choose the door first and pass its run into the window test.</p>
+<p>A second defect turned up beside it: at headings of 30°, 45°, 60° and 135°, about half of doors have a wall block directly in front of or behind them, because the facing is rounded to a cardinal and nothing checks the cell outside.</p>
+<h3>Objectives that are hard to find</h3>
+<p><strong>Confirmed: pgmvox has no marker and no visibility check.</strong> Every <code>sight</code> call in the library measures how much of a spawn a goal or hill can see, never whether an attacker can see the goal. The underground and tower-top goals (Hollow Mesa's Throat, Hollowcrown's Hall of Echoes and Eyrie, Frostholm's lantern, Stratum's tower) were possible because nothing forbade them. The studio forbids them by construction: goals float over the highest ground (OB17, OB31) and every goal gets a floating wool marker 25 blocks over mean ground, out of build reach.</p>
+<h3>Build zones without markings</h3>
+<p><strong>Confirmed for most CTW boards.</strong> The build zone is written into the world as block 36 under every buildable column, which is precise, but only the two Lantern Karst boards reproduce the studio's redstone outline (518 and 522 blocks). Brittlebush III and Sandreach have a cobweb at the middle of each void-facing gap edge. Brassmoor, Claywork and Hoarfrost Reach have no visible edge at all.</p>
+<div class="tbl"><table>
+<thead><tr><th>CTW board</th><th>Block 36 under zones</th><th>Visible edge</th><th>Defence wall</th><th>Wool-room loot</th></tr></thead>
+<tbody>
+<tr><td>Lantern Karst (and port)</td><td class="yes">yes</td><td class="yes">redstone, the studio's ST5</td><td>bedrock + cobweb; chests faced the wrong way until 10 Oct</td><td>iron pieces; studio loot from 0.19</td></tr>
+<tr><td>Claywork</td><td class="yes">yes</td><td class="no">none</td><td>bedrock to the floor of the world, <code>DEFENCE</code> chests</td><td><code>ROOM_GEAR</code></td></tr>
+<tr><td>Brassmoor Works</td><td class="yes">yes</td><td class="no">none</td><td>three bedrock and a web</td><td>one chest, chestplate and arrows</td></tr>
+<tr><td>Hoarfrost Reach</td><td class="yes">yes</td><td class="no">none</td><td>none</td><td>apples, beef, arrows</td></tr>
+<tr><td>Brittlebush III, Sandreach</td><td class="yes">yes</td><td class="part">a cobweb mid-edge</td><td>none</td><td>none</td></tr>
+</tbody></table></div>
+<h3>The stamps you traded away</h3>
+<p>The bedrock wall with its defence chests, the defence chest at every goal, the wool room's gear, the floating markers and the outline are all one subsystem in the studio (<code>StructureStamper</code>, <code>DefenseChest</code>, <code>GoalMarkerStamper</code>, <code>BuildMarkerStamper</code>, the wool-room stamp), and none of it runs on a freeform world. pgmvox has been copying them one at a time (<code>wool_chests</code> on 10 Oct at 00:30, <code>defence_chests</code> at 00:46). Copying is the slow road: these are deterministic stamps over objectives the freeform plan already states as objects, so they could run over a pgmvox world unchanged.</p>
+<h3>Build-region fidelity</h3>
+<p>Two different things got looser. The <em>zone</em> itself is exact (a per-column mask equal to the plan's), but it is written only as block 36 plus a void filter and <code>maxbuildheight</code>, so nothing outside the board's own read-back checks that the mask matches the plan. And the studio's richer build intent (rectangle unions with holes, over-void areas, the outline, the EZ checks) has no counterpart.</p>
+<h3>Angled houses and the tower wool</h3>
+<p>Houses at any angle come from <code>build.Frame</code>: every block asks where its centre falls in the building's own axes, walls are closed against eight neighbours so a 45° wall has no gaps, and the roof is the studio's <code>RoofField</code> ported and tested cell for cell against 300 studio roofs, laid in cubes and slabs where stairs cannot face the slope. Hollowcrown uses sixteen headings on one half. Hoarfrost Reach's lighthouse is board-local: a striped 9×9 shaft, slits, a ladder with a hatch every five courses and the wool room at y 94 under a glass lantern.</p>
+<div class="trio">
+  <figure class="fig"><img src="img/hollowcrown-angles.webp" alt="Hollowcrown houses at three angles with roofs following" width="462" height="788" loading="lazy"><figcaption>Hollowcrown: three headings, roofs following</figcaption></figure>
+  <figure class="fig"><img src="img/hoarfrost-iso.webp" alt="Hoarfrost Reach with its two lighthouse wool towers" width="618" height="376" loading="lazy"><figcaption>Hoarfrost Reach: the lighthouse wools on their own islets</figcaption></figure>
+  <figure class="fig"><img src="img/claywork-court.webp" alt="Claywork court with inlaid panels and floor fields" width="763" height="556" loading="lazy"><figcaption>Claywork: sunk panels, floor fields, team inlay</figcaption></figure>
+</div>
+
+<h2 id="playtest">The playtest notes, sorted</h2>
+<p>Your notes of 10 October name 30 faults across 20 boards. Sorted by kind, they divide cleanly into what the studio already prevents and what is new.</p>
+<div class="chart" id="fbchart">
+  <h4>Faults by kind, and whether the studio would have caught them</h4>
+  <div class="legend"><span><i class="c-yes"></i>caught by a studio stamp or gate</span><span><i class="c-part"></i>partly</span><span><i class="c-no"></i>not caught, or the studio cannot build it</span></div>
+  <div class="bars" id="fbbars"></div>
+</div>
+<p><strong>Mode correctness and discoverability are the studio's home ground.</strong> The obsidian monument with no diamond pickaxe (Redwash) is <code>DestroyKitPairing</code>; the hills with nothing to change colour (Tidewell) are OB29; the wall's chests facing away and the thin wool loot (Lantern Karst) are the defence-wall and wool-room stamps; the hidden cores and tower-top monuments are prevented by construction and by the markers.</p>
+<p><strong>The new faults come with the new freedom.</strong> Stairs attached on one side only, ladders standing in water, a well that misses its tunnel, two stairways colliding, a turned-stair ramp that breaks, props on a run that make you stutter: the studio cannot make any of these because it cannot place a free stair, ladder or shaft. The same goes for vegetation: the studio's trees are clicked one at a time, while pgmvox scatters forests, and five boards came out too dense to fight in. Studio 2.0 needs gates for this vocabulary, not only the vocabulary.</p>
+<details><summary>All 30 items</summary>
+<div class="tbl" style="margin:10px 0 0"><table><thead><tr><th>Board</th><th>Fault</th><th>Kind</th><th>Studio</th></tr></thead><tbody id="fbrows"></tbody></table></div>
+</details>
+<p>Your praise lands on the same axis. Riftwater (“essentially perfect”), the Gullhavens, Curio Square, Stratum and Penstock are the boards where the freedom was spent on places and the play was kept simple.</p>
+
+<h2 id="boards">Every board</h2>
+<div class="gallery">
+  <figure class="fig"><img src="img/lanternkarst-iso.webp" alt="Lantern Karst" loading="lazy" width="942" height="579"><figcaption>Lantern Karst · CTW · karst towers, bedrock courses, redstone outline</figcaption></figure>
+  <figure class="fig"><img src="img/stratum-iso.webp" alt="Stratum" loading="lazy" width="688" height="521"><figcaption>Stratum · DTM/DTC · patterned brutalist masses over painted land</figcaption></figure>
+  <figure class="fig"><img src="img/saltgate-iso.webp" alt="Saltgate" loading="lazy" width="696" height="405"><figcaption>Saltgate · attack/defend · three staged gates, ships with curved hulls</figcaption></figure>
+  <figure class="fig"><img src="img/sandreach-iso.webp" alt="Sandreach" loading="lazy" width="1100" height="628"><figcaption>Sandreach · CTW · the Brittlebush grammar beside grown ground</figcaption></figure>
+  <figure class="fig"><img src="img/cinderfall-iso.webp" alt="Cinderfall" loading="lazy" width="420" height="294"><figcaption>Cinderfall · DTC · the floating volcanic island and its underside</figcaption></figure>
+  <figure class="fig"><img src="img/bb3-woolhouse.webp" alt="Brittlebush III wool house" loading="lazy" width="288" height="408"><figcaption>Brittlebush III · a wool house stacked of whole cells</figcaption></figure>
+</div>
+<details><summary>The census: 37 boards</summary>
+<div class="tbl" style="margin:10px 0 0"><table>
+<thead><tr><th>Board</th><th>Mode</th><th>Built on</th><th class="n">Board lines</th><th>Signature</th></tr></thead>
+<tbody>
+<tr><td>Riftwater</td><td>DTM ×2</td><td>bespoke</td><td class="n">3,379</td><td>rift with twin falls, cave behind the water, mine, market town, mill wheel</td></tr>
+<tr><td>Hollow Mesa</td><td>DTC</td><td>bespoke</td><td class="n">3,242</td><td>banded mesas, natural arch, tram trestle, core in a cavern</td></tr>
+<tr><td>Frostholm</td><td>DTM+DTC</td><td>bespoke</td><td class="n">2,499</td><td>winter coast, half-frozen straits, lighthouse core</td></tr>
+<tr><td>Cloudhaven</td><td>DTM</td><td>bespoke</td><td class="n">2,046</td><td>eleven islands a side at many heights, balloons, airships</td></tr>
+<tr><td>Hollowcrown</td><td>DTM ×2</td><td>bespoke</td><td class="n">3,126</td><td>houses at any angle, the Wend, a cavern city with a lake</td></tr>
+<tr><td>Stratum</td><td>DTM+DTC</td><td>bespoke</td><td class="n">2,418</td><td>inset, glyph, flute and coffer faces; glass cloud sea</td></tr>
+<tr><td>Lantern Karst</td><td>CTW</td><td>bespoke</td><td class="n">2,853</td><td>26 floating karst pieces, block-36 zones with the ST5 outline</td></tr>
+<tr><td>Penstock</td><td>TDM + score boxes</td><td>bespoke</td><td class="n">1,530</td><td>a station carved from one block, galleries and shafts</td></tr>
+<tr><td>Calcite</td><td>KOTH</td><td>bespoke</td><td class="n">4,073</td><td>terraced quarry, glass tunnels under lava, pads tuned in 1.8 physics</td></tr>
+<tr><td>Riad</td><td>King of the Flag</td><td>bespoke</td><td class="n">3,240</td><td>water garden, caged water columns, banner flag</td></tr>
+<tr><td>Gullhaven, Gullhaven DTM</td><td>FFA rage, DTM</td><td>bespoke</td><td class="n">2,961 / 341</td><td>a fishing island, then the island twice</td></tr>
+<tr><td>Saltgate</td><td>attack/defend</td><td>bespoke</td><td class="n">2,866</td><td>a harbour citadel in three stages</td></tr>
+<tr><td>Copperline</td><td>payload</td><td>bespoke</td><td class="n">2,832</td><td>a mining railway traced as PGM traces it</td></tr>
+<tr><td>Lantern Pass</td><td>runners and shooters</td><td>bespoke</td><td class="n">2,232</td><td>a festival road between two walkways, sight read per cell</td></tr>
+<tr><td>Sunwell, Lantern Drop</td><td>water drop</td><td>bespoke</td><td class="n">2,286 / 1,707</td><td>a fall model for every drop; Sunwell set aside</td></tr>
+<tr><td>Loomfall</td><td>wool run</td><td>bespoke</td><td class="n">1,329</td><td>five flying carpets over a desert city</td></tr>
+<tr><td>Spark</td><td>knockback</td><td>bespoke</td><td class="n">1,715</td><td>the Claude spark in terracotta over a cloud sea</td></tr>
+<tr><td>Curio Square</td><td>hide and seek</td><td>bespoke</td><td class="n">1,645</td><td>48 plots by Opus, Sonnet and Haiku</td></tr>
+<tr><td>Riftwater port, Lantern Karst port</td><td>DTM, CTW</td><td>pgmvox</td><td class="n">1,885 / 1,381</td><td>the same boards on the library</td></tr>
+<tr><td>Cinder Reach, Redwash Mesa, Brassmoor Works, Vinewatch Ruins, Tidewell Canals</td><td>DTC, DTM, CTW, TDM, KOTH</td><td>pgmvox (Opus trials)</td><td class="n">688–1,058</td><td>9–29 minutes each</td></tr>
+<tr><td>Cinderfall, Tamarisk Wash, Hoarfrost Reach, Overgrowth, Whitecliff Cistern</td><td>DTC, DTM, CTW, TDM, KOTH</td><td>pgmvox (Sonnet trials)</td><td class="n">1,133–1,593</td><td>the same five modes by Sonnet</td></tr>
+<tr><td>Claywork</td><td>CTW</td><td>pgmvox grammar</td><td class="n">1,229</td><td>four layout reviews, defence chests, the Undercroft</td></tr>
+<tr><td>Brittle study, Brittlebush KotH, Brittlebush III, Sandreach</td><td>study, KOTH ×4, CTW ×4, CTW</td><td>pgmvox grammar</td><td class="n">364–824</td><td>Brittlebush's look as rules</td></tr>
+</tbody></table></div>
+</details>
+
+<h2 id="studio2">Studio 2.0</h2>
+<p>The goal is one tool, and the hard part is the one you named: the studio lets a person see what an agent did at every level, change it and diff it, while a pgmvox board is a program whose middle is invisible. Everything that made the boards good (landforms in a chosen order, the grammar, angled frames, props with a reason) lives in exactly that invisible middle. So the question is how to make the middle a document without losing what it can say. The full argument is <code>analysis/freeform-vs-studio/STUDIO-2-DESIGN.md</code>; the <a href="https://claude.ai/artifact/Lj5Y9gBDHvAW5913jvLCC2">Recipe Inspector</a> shows what a person would see.</p>
+<h3>Four ways to hold a pgmvox board</h3>
+<div class="tbl"><table>
+<thead><tr><th></th><th>A · upload the world</th><th>B · store the code</th><th>C · a recipe</th><th>D · a recipe with made things</th></tr></thead>
+<tbody>
+<tr><td>A person sees how the ground was made</td><td class="no">no</td><td class="part">as code</td><td class="yes">step by step</td><td class="yes">step by step</td></tr>
+<tr><td>A person can edit one landform</td><td class="no">no</td><td class="no">no</td><td class="yes">yes</td><td class="yes">yes</td></tr>
+<tr><td>A diff says what changed</td><td>voxels</td><td>code</td><td>operations</td><td>operations</td></tr>
+<tr><td>Bespoke things (a mill wheel, a ship)</td><td class="yes">yes</td><td class="yes">yes</td><td class="no">no</td><td class="yes">yes, as objects</td></tr>
+<tr><td>Arbitrary code on the shared server</td><td class="yes">no</td><td class="no">yes</td><td class="yes">no</td><td class="yes">no</td></tr>
+<tr><td>Stamps, gates, intent, reads</td><td class="yes">yes</td><td class="part">if wired</td><td class="yes">yes</td><td class="yes">yes</td></tr>
+<tr><td>Cost to build</td><td>days</td><td>weeks</td><td>months</td><td>months</td></tr>
+</tbody></table></div>
+<p><strong>D is the destination and A is the first step.</strong> A recipe is an ordered list of operations, each with an id and its parameters, run deterministically over a shared state (the heightfield, named masks like <code>sea</code> and <code>roads</code>, the block volume), with every step's output kept. A <em>made thing</em> is the escape hatch: a block volume the agent generated locally, uploaded with its source for provenance, placed and turned as an object. A made thing the second board needs becomes a library operation, which is the rule pgmvox already lives by.</p>
+<h3>It works on a real board</h3>
+<div class="kpis">
+  <div class="kpi"><b>2,438</b><span>bytes of JSON for the Vale's whole terrain, 12 steps</span></div>
+  <div class="kpi"><b>40,000 / 40,000</b><span>columns identical to the library's own run</span></div>
+  <div class="kpi"><b>&lt; 40 ms</b><span>per landform step; routes about 10 s, so steps are cached</span></div>
+  <div class="kpi"><b>61 · 403</b><span>operations and parameters a model would speak</span></div>
+</div>
+<p>A seventy-line interpreter maps each operation name onto one pgmvox call. A second version of the recipe moved the butte and widened the canyon: two steps' parameters changed, and six steps' <em>effect</em> changed, because the roads re-routed over 3,261 columns nobody touched. A diff has to show both layers, and the second is the one to warn about. For scale, Russetford's stored layout is 378 KB and its refinement 357 KB, generated by a 426-line script: a recipe states a landform where a layout states its result.</p>
+<h3>How the pieces fit</h3>
+<ul>
+  <li><strong>The studio's relief solver is one operation</strong> in the recipe (<code>field.solve</code>), and pgmvox's landforms come after it, as its pushes do now.</li>
+  <li><strong>The planner stays the front door.</strong> A drawn plan compiles into the recipe's first steps, and with a grammar style bound, its pieces become sections in one step (<code>grammar.from_plan</code>, which is <code>studioplan</code> today).</li>
+  <li><strong>Upload and configure survives untouched.</strong> An imported world is a recipe of one step, a made thing covering the board, and Configure works over it as it does now.</li>
+  <li><strong>Styles stay library rows.</strong> Grammar styles and house archetypes are data like themes; the rules that make them look right (a bay laid whole or not at all, the framing of a house) stay code.</li>
+  <li><strong>The stamps and gates run last, over everything.</strong> Markers, outlines, wool rooms, defence walls, kit pairing and the export gate stop depending on how the ground was made.</li>
+</ul>
+<h3>What the model sends</h3>
+<div class="tbl"><table>
+<thead><tr><th>Call</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>PUT /map/{slug}/source?dry=true</code></td><td>the plan, the recipe and the intent in one call, as today's headless road; answers per-step summaries and findings, stores nothing on a dry run</td></tr>
+<tr><td><code>POST /map/{slug}/recipe/steps/{id}/preview</code></td><td>one step with other parameters, stored nowhere: the agent's equivalent of dragging a slider</td></tr>
+<tr><td><code>PUT /map/{slug}/recipe/steps/{id}</code></td><td>keeps an edit; re-runs from that step</td></tr>
+<tr><td><code>GET /map/{slug}/recipe/steps/{id}/render</code> · <code>/delta</code></td><td>the state after a step as a picture, and what the step changed as a mask and counts</td></tr>
+<tr><td><code>GET /map/{slug}/recipe/diff?from=&amp;to=</code></td><td>edited steps with parameter diffs, and steps whose effect changed</td></tr>
+<tr><td><code>POST /map/{slug}/made</code></td><td>a made thing: a block volume, an anchor, a footprint, the source that generated it</td></tr>
+<tr><td>the existing reads with <code>?step=</code></td><td><code>slopes</code>, <code>incline</code>, <code>walk</code>, <code>column</code>, <code>transect</code> after any step, not only on the finished world</td></tr>
+</tbody></table></div>
+<p>The model's loop is <code>ORDER-OF-WORK</code>'s: places on the outline with numbers and targets; terrain steps, read <code>slopes</code> and <code>walk</code>, adjust; carves, read the x-ray; made ground; the intent, then stamps and gates. A person opens the inspector, scrubs the steps, changes a parameter or leaves a note on a step, and the next agent run receives each hand edit as an <code>SR1</code> naming the step and the parameter, as it does today.</p>
+<h3>The order of work</h3>
+<ol>
+  <li><strong>Stamps over a made world, now.</strong> Import a pgmvox world with its intent and run <code>WorldBuilder</code>'s stamps and the export gate over it. Fix pgmvox's two house defects. Add the playtest's gates to its read-back: a goal visible from where attackers arrive, stairs attached, no ladder in water, joins that open, a tree-cover ceiling per mode.</li>
+  <li><strong>The recipe as a stored document</strong>, with made things and step reads, holding steps pgmvox computed. The studio shows and diffs a recipe before it can run one.</li>
+  <li><strong>The operations ported into the studio</strong>, family by family, in the order the boards used them: field and landform, paint and beds, carves (TS140), houses with a heading, the grammar, routes.</li>
+  <li><strong>One plan</strong>, with polygons, storeys and the grammar's per-piece fields, whose numbers-with-targets become rules.</li>
+</ol>
+
+<h2 id="method">Method and limits</h2>
+<ul>
+  <li><strong>Sources.</strong> Three Sonnet helper reports (pgmvox anatomy and census; studio inventory; same-brief comparison), each checked against the code before use and committed under <code>analysis/freeform-vs-studio/agent-reports/</code>. I viewed the renders of all 42 board render sets myself.</li>
+  <li><strong>Not played.</strong> Nothing on the new library boards has been opened in PGM. The playtest rounds on older boards found over ten faults the read-back could not see.</li>
+  <li><strong>Plan and built walks disagree.</strong> pgmvox's plan walk is octile and its built walk four-way; goal ratios drift 15–40% between them, and every trial board hit it.</li>
+  <li><strong>Rendering is a confound.</strong> The studio's textured pictures and pgmvox's flat ones are not comparable; where the report compares looks, both are drawn in pgmvox's renderer.</li>
+  <li><strong>The brief is a confound.</strong> Riftwater was not built to the studio boards' brief, and it had a ruling they did not. The experiment holds brief, ruling, lessons and model fixed.</li>
+  <li><strong>Counts are heuristics.</strong> “Built” counts treat cobblestone as built; tree counts are approximate; enclosed-air classes are geometric guesses.</li>
+</ul>
+
+<footer>Written 10 October 2026 from branch <code>opus55-freeform-riftwater</code> at <code>b970fcb2</code>. Analysis committed on <code>claude/freeform-riftwater-analysis-lmdkga</code>.</footer>
+</main>
+</div>
+
+<script>
+(function(){
+  const rows=[
+ ["Lantern Pass","Ladders in water (1.8 cannot waterlog)","Stairs, ladders, joins","no"],
+ ["Lantern Pass","Bamboo still too dense","Vegetation density","no"],
+ ["Redwash Mesa","Obsidian monument, no diamond pickaxe","Mode correctness","yes"],
+ ["Redwash Mesa","Top of the mesa empty","Composition","no"],
+ ["Redwash Mesa","Dark-oak props in the shaft make you stutter","Stairs, ladders, joins","no"],
+ ["Brassmoor Works","No bedrock under the platforms; too thin","Mode correctness","part"],
+ ["Hoarfrost Reach","Fences inside the spawn","Mode correctness","part"],
+ ["Hoarfrost Reach","Quartz stair attached at its front only","Stairs, ladders, joins","no"],
+ ["Hoarfrost Reach","Very tall stair to the ice wool room","Stairs, ladders, joins","part"],
+ ["Overgrowth","Far too many trees for TDM","Vegetation density","no"],
+ ["Tidewell Canals","Hills have nothing that changes colour","Mode correctness","yes"],
+ ["Hollow Mesa","Trees in the narrow canyon","Vegetation density","part"],
+ ["Hollow Mesa","Core fully underground","Discoverability","yes"],
+ ["Cloudhaven","Too many trees per island","Vegetation density","no"],
+ ["Hollowcrown","Monument on a tower; monument hidden in the city","Discoverability","yes"],
+ ["Copperline","A team boxed in at spawn","Mode correctness","yes"],
+ ["Spark","Logo area too small","Scale","no"],
+ ["Cinder Reach","Ash uniform, few lava pools, bare stone, low core","Composition","no"],
+ ["Tamarisk Wash","Well shaft misses its tunnel","Stairs, ladders, joins","no"],
+ ["Tamarisk Wash","Diagonal stair/slab ramp broken","Stairs, ladders, joins","no"],
+ ["Frostholm","Trees too dense","Vegetation density","no"],
+ ["Frostholm","Core in the lighthouse","Discoverability","yes"],
+ ["Stratum","Monument hidden in a tower (kept for now)","Discoverability","yes"],
+ ["Lantern Karst","Defence wall's chests face away","Mode correctness","yes"],
+ ["Lantern Karst","Wool-room chests too poor","Mode correctness","yes"],
+ ["Penstock","Stairways collide; a stair with no room to step on","Stairs, ladders, joins","no"],
+ ["Calcite","Outer walls too thick","Scale","no"],
+ ["Loomfall","Carpets about 50% too large","Scale","no"],
+ ["Curio Square","Terrain outside too large","Scale","no"],
+ ["Cinderfall","Too grey; the lake wants to be a lava ravine","Composition","no"]];
+  const label={yes:"caught",part:"partly",no:"not caught"};
+  const kinds=["Mode correctness","Discoverability","Stairs, ladders, joins","Vegetation density","Scale","Composition"];
+  const bars=document.getElementById("fbbars"), chart=document.getElementById("fbchart");
+  const max=Math.max(...kinds.map(k=>rows.filter(r=>r[2]===k).length));
+  const tip=document.createElement("div"); tip.className="tip"; tip.hidden=true; chart.appendChild(tip);
+  kinds.forEach(k=>{
+    const its=rows.filter(r=>r[2]===k);
+    const row=document.createElement("div"); row.className="bar";
+    const name=document.createElement("span"); name.textContent=k;
+    const track=document.createElement("div"); track.className="track"; track.style.width=(its.length/max*100)+"%";
+    ["yes","part","no"].forEach(s=>{
+      const n=its.filter(r=>r[3]===s).length; if(!n) return;
+      const seg=document.createElement("div"); seg.className="c-"+s; seg.style.flex=n; seg.tabIndex=0;
+      const txt=`${k}: ${n} ${label[s]}\n`+its.filter(r=>r[3]===s).map(r=>`· ${r[0]}: ${r[1]}`).join("\n");
+      seg.setAttribute("aria-label",txt);
+      const show=e=>{tip.hidden=false; tip.style.whiteSpace="pre-line"; tip.textContent=txt;
+        const cr=chart.getBoundingClientRect(), r=seg.getBoundingClientRect();
+        tip.style.left=Math.min(r.left-cr.left, cr.width-290)+"px"; tip.style.top=(r.bottom-cr.top+6)+"px";};
+      seg.addEventListener("mouseenter",show); seg.addEventListener("focus",show);
+      seg.addEventListener("mouseleave",()=>tip.hidden=true); seg.addEventListener("blur",()=>tip.hidden=true);
+      track.appendChild(seg);
+    });
+    const cnt=document.createElement("span"); cnt.className="mono"; cnt.textContent=its.length; cnt.style.textAlign="right";
+    row.append(name,track,cnt); bars.appendChild(row);
+  });
+  const tb=document.getElementById("fbrows");
+  rows.forEach(r=>{const tr=document.createElement("tr");
+    r.forEach((c,i)=>{const td=document.createElement("td"); if(i===3){td.textContent=label[c]; td.className=c==="yes"?"yes":c==="part"?"part":"no";} else td.textContent=c; tr.appendChild(td);});
+    tb.appendChild(tr);});
+})();
+</script>
