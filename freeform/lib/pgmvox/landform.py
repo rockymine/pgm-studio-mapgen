@@ -234,8 +234,8 @@ def scarp(H, X, Z, pts, height, side=1, cliff=2, talus=5, talus_height=0.3, reac
 
 def terraces(H, mask, step=4, base=None, riser=1.0):
     """Ground cut into terraces `step` blocks apart inside mask: each column held to the terrace under it, so a
-    slope becomes a flight of level stages with risers between. riser < 1 keeps that much of the slope on each
-    terrace instead (0 is level, 1 the slope as it was). Only cuts."""
+    slope becomes a flight of level stages with risers between. riser < 1 keeps some of the slope on each
+    terrace instead: 1 is level, 0 the slope as it was. Only cuts."""
     H = np.asarray(H, float)
     b = np.min(H[mask]) if base is None else base
     q = b + np.floor((H - b) / step) * step
@@ -388,4 +388,22 @@ def crater(H, e, floor, r, flat=0.0, slope=1.0):
     Only cuts."""
     H = np.asarray(H, float)
     return np.where(e <= r, np.minimum(H, floor + slope * np.maximum(0, e - flat)), H)
+
+
+def ridge(H, coord, foot, width, crest, rough=0.0, spurs=(), terrace=None):
+    """A ridge along a board's back: from its `foot` (a line along the other axis, noise.line) it climbs over
+    `width` blocks toward lower `coord` (X or Z; a negative width climbs toward higher) to `crest` (a height or a
+    field), with `rough` (a field) added in proportion as it climbs. Each spur (d, top, (far, near)) is an arm
+    reaching out from it: `top` (a field) where d, the distance from the spur's line, is under `near`, eased to
+    the ground by `far`. `terrace` (step, riser, above) cuts the slope into terraces where it has climbed more
+    than `above` of the way. Only lifts."""
+    H = np.asarray(H, float)
+    t = smoothstep(foot, foot - width, coord)
+    lifted = H + (crest - H).clip(0) * t + t * rough
+    for d, top, (far, near) in spurs:
+        lifted = np.maximum(lifted, H + (top - H).clip(0) * smoothstep(far, near, d))
+    if terrace is not None:
+        step, riser, above = terrace
+        lifted = terraces(lifted, t > above, step=step, riser=riser)
+    return np.where(lifted > H, lifted, H)
 

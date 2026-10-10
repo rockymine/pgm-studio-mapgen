@@ -231,15 +231,11 @@ def land():
     spur_n, _ = shapes.polyline(Xf, Zf, [(-114, -68), (-98, -74), (-82, -80)])
     spur_s, _ = shapes.polyline(Xf, Zf, [(-114, 70), (-100, 76), (-88, 82)])
     crest = noise.line(sh, "z", 30, seed=41, amp=5, base=73) + 4 * np.exp(-((Zf + 72) / 18) ** 2)
-    t = smoothstep(foot, foot - 15, Xf)
     ridge_n = fbm(sh, 10, 3, seed=42)
     crag = 1 - np.abs(fbm(sh, 7, 2, seed=43))
-    ridge = h + (crest - h).clip(0) * t + t * (2.5 * ridge_n + 4 * smoothstep(0.75, 0.95, crag))
-    for d, top in ((spur_n, 66), (spur_s, 63)):
-        arm = top - 0.25 * np.abs(Xf + 100) + 2 * ridge_n
-        ridge = np.maximum(ridge, h + (arm - h).clip(0) * smoothstep(14, 3, d))
-    ridge = LF.terraces(ridge, t > 0.25, step=3, riser=0.45)
-    h = np.where(ridge > h, ridge, h)
+    spurs = [(d, top - 0.25 * np.abs(Xf + 100) + 2 * ridge_n, (14, 3)) for d, top in ((spur_n, 66), (spur_s, 63))]
+    h = LF.ridge(h, Xf, foot, 15, crest, rough=2.5 * ridge_n + 4 * smoothstep(0.75, 0.95, crag), spurs=spurs,
+                 terrace=(3, 0.45, 0.25))
     h -= 7 * smoothstep(-114, -120, Xf)
 
     # the spawn shoulder: an oval spur at the ridge's foot, its top levelled at 59 for the watch house

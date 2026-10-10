@@ -414,6 +414,17 @@ class Landforms(unittest.TestCase):
         self.assertGreater(oval[60, 72], 30)                               # 12 out along z: still on its foot
         self.assertEqual(oval[72, 60], 30)                                 # 12 out along x: past it
 
+    def test_a_ridge_climbs_from_its_foot_lifts_only_and_is_terraced(self):
+        X, Z, H = self.X.astype(float), self.Z.astype(float), self.H
+        foot = noise.line(X.shape, "z", 20, seed=4, amp=4, base=-20)
+        r = LF.ridge(H, X, foot, 15, 80.0, terrace=(3, 1.0, 0.25))
+        east = X >= foot + 0 * X
+        self.assertTrue((r >= H).all() and (r[east] == H[east]).all())      # only lifts; nothing past its foot
+        cut = (noise.smoothstep(foot, foot - 15, X) > 0.25) & (r > H)
+        self.assertTrue(cut.any() and np.allclose((r[cut] - r[cut].min()) % 3, 0))   # three-block terraces
+        spur = LF.ridge(H, X, foot, 15, 50.0, spurs=[(np.abs(Z), np.full(X.shape, 70.0), (10, 2))])
+        self.assertTrue((spur[(np.abs(Z) < 2) & (X > 0)] >= 70).all())       # the arm holds its top out east
+
     def water_world(self, H, *waters):
         w = World(-60, -60, 120, 120, sy=96)
         top = np.round(H).astype(int)

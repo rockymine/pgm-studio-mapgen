@@ -128,11 +128,8 @@ def land():
 
     # the Caldera Wall at the back: a ridged crest 70-78 over twelve blocks, cut into 3-block terraces
     foot = noise.line(sh, "z", 20, seed=30, amp=3, base=-93)
-    t = smoothstep(foot, foot - 11, Xf)
     crest = 70 + 6 * ridged(sh, 18, 3, seed=31) + 3 * np.exp(-((Zf + 40) / 20) ** 2)
-    wall = h + (crest - h) * t
-    wall = LF.terraces(wall, t > 0.2, step=3, riser=0.5)
-    h = np.where(t > 0, np.maximum(h, wall), h)
+    h = LF.ridge(h, Xf, foot, 11, crest, terrace=(3, 0.5, 0.2))
 
     # the lodge terrace: an oval shelf at the wall's foot, levelled at 57 and eased into the shelf
     tz = np.hypot((Xf + 85) / 11.0, (Zf + 7) / 11.0) + 0.1 * fbm(sh, 6, 2, seed=32)
