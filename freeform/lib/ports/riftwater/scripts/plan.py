@@ -243,11 +243,8 @@ def land():
     h -= 7 * smoothstep(-114, -120, Xf)
 
     # the spawn shoulder: an oval spur at the ridge's foot, its top levelled at 59 for the watch house
-    sd = np.hypot((Xf + 97) / 12.0, (Zf + 7) / 9.5) + 0.12 * fbm(sh, 6, 2, seed=44)
-    k = smoothstep(1.0, 1.55, sd)
-    shoulder = 59 * (1 - k) + np.minimum(h, 59) * k
-    h = np.where(sd < 1.55, np.maximum(np.where(sd < 1.0, 59, h), shoulder), h)
-    h = np.where(sd < 1.0, 59, h)
+    sd = shapes.ellipse_distance(Xf, Zf, (-97, -7), 12.0, 9.5) + 0.12 * fbm(sh, 6, 2, seed=44)
+    h = LF.level(h, sd, 59, inner=1.0, outer=1.55, mode="lift")
 
     # the square and the green: level where the monuments stand, eased into the ground over eight blocks
     for (mx, mz), lvl, _ in MONUMENTS.values():

@@ -127,6 +127,17 @@ def ring(X, Z, cx, cz, r0, r1):
     return (d >= r0) & (d <= r1)
 
 
+def ellipse_distance(X, Z, at, rx, rz=None, angle=0.0):
+    """How far out every column lies in radii of an ellipse at `at`: 1 on its rim, its x radius `rx` turned
+    `angle` degrees from east toward south."""
+    rz = rx if rz is None else rz
+    dx, dz = X - at[0], Z - at[1]
+    if angle:
+        a = np.radians(angle)
+        dx, dz = dx * np.cos(a) + dz * np.sin(a), -dx * np.sin(a) + dz * np.cos(a)
+    return np.hypot(dx / rx, dz / rz)
+
+
 def ellipse(X, Z, cx, cz, rx, rz, angle=0.0):
     """An ellipse, its x radius turned `angle` radians from east toward south."""
     dx, dz = X - cx, Z - cz

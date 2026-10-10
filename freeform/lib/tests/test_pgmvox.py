@@ -376,6 +376,21 @@ class Landforms(unittest.TestCase):
                         floor_ground=floor, jag=jag)
         self.assertTrue(np.array_equal(op, h))
 
+    def test_level_ground_is_level_inside_and_left_alone_outside(self):
+        X, Z, H = self.X.astype(float), self.Z.astype(float), self.H
+        dd = np.hypot(X - 10, Z + 5)
+        flat = LF.level(H, dd, 50, inner=8, outer=14)
+        self.assertTrue((flat[dd < 8] == 50).all() and (flat[dd >= 14] == H[dd >= 14]).all())
+        k = noise.smoothstep(8, 14, dd)                                     # Hollow Mesa's pads, as written there
+        self.assertTrue(np.array_equal(flat, np.where(dd < 14, 50 * (1 - k) + H * k, H)))
+        lifted = LF.level(H, dd, 50, inner=8, outer=14, mode="lift")
+        self.assertTrue((lifted >= np.where(dd < 8, -np.inf, H)).all())
+        median = LF.level(H, dd, "median", inner=8, outer=14)
+        self.assertEqual(median[70, 55], float(np.median(H[dd < 8])))            # at the centre, (10, -5)
+        e = shapes.ellipse_distance(X, Z, (0, 0), 20, 5, angle=90)
+        self.assertAlmostEqual(float(e[60, 80]), 1.0)                       # turned: 20 along z, 5 along x
+        self.assertAlmostEqual(float(e[65, 60]), 1.0)
+
     def water_world(self, H, *waters):
         w = World(-60, -60, 120, 120, sy=96)
         top = np.round(H).astype(int)

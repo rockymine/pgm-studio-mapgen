@@ -348,3 +348,17 @@ def profile(H, d, floor, steps, floor_ground=None, jag=0.0, talus=None, mode="se
         h = np.where(d >= step.end + jag, top if step.ground is None else level(step.ground), h)
         before = top
     return _apply(H, h, mode)
+
+
+def level(H, e, y="median", inner=1.0, outer=1.5, mode="set"):
+    """Level ground: `y` (a height, or "median" for the median ground inside) where the distance field `e` is under
+    `inner`, eased back to the ground (y * (1 - k) + H * k, k a smoothstep) out to `outer`. `e` is any distance, in
+    blocks from a point or a path, or 1 on an ellipse's rim (shapes.ellipse_distance), plus noise for a ragged edge;
+    `inner` and `outer` are in its units. `mode` lift only raises the skirt, cut only lowers it; inside it is y."""
+    H = np.asarray(H, float)
+    if isinstance(y, str) and y == "median":
+        y = float(np.median(H[e < inner]))
+    k = smoothstep(inner, outer, e)
+    skirt = _apply(H, y * (1 - k) + H * k, mode)
+    return np.where(e < inner, y, np.where(e < outer, skirt, H))
+
