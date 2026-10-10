@@ -22,7 +22,6 @@ sys.path.insert(0, os.path.normpath(os.path.join(HERE, "..", "..", "..", "..")))
 sys.path.insert(0, os.path.normpath(os.path.join(HERE, "..", "..")))               # trials/opus (common)
 
 import numpy as np  # noqa: E402
-from scipy import ndimage  # noqa: E402
 
 import common  # noqa: E402,F401
 from pgmvox import landform as LF  # noqa: E402
@@ -33,7 +32,7 @@ from pgmvox import noise  # noqa: E402
 from pgmvox import field as F  # noqa: E402
 from pgmvox.objectives import Box, Core, Objectives, Observer, Spawn, Teams  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
-from pgmvox.terrain import slope_deg  # noqa: E402
+from pgmvox.terrain import island_bottom, slope_deg  # noqa: E402
 
 BOARD = "cinder-reach"
 X_MIN, X_MAX = -104, 103
@@ -200,12 +199,8 @@ def land():
     Hi[L.terrace] = TERRACE_Y
 
     # the underside: sheer under the fissure, tapering elsewhere
-    void = ~land
-    d_out = ndimage.distance_transform_edt(~(void & (X < -30)))
-    d_rift = ndimage.distance_transform_edt(~(void & (X >= -30)))
-    n = fbm(sh, 9, 3, seed=51)
-    thick = np.minimum(5 + 0.9 * d_out + 4 * n, 30 + 1.0 * d_rift + 4 * n)
-    bottom = np.maximum(Hi - thick, 6 + 3 * fbm(sh, 16, 2, seed=52)).round().astype(int)
+    bottom = island_bottom(Hi, land, X >= -30, taper=(5, 0.9), sheer_taper=(30, 1.0), rough=4 * fbm(sh, 9, 3, seed=51),
+                           floor=6 + 3 * fbm(sh, 16, 2, seed=52))
 
     L.X, L.Z, L.land = X, Z, land
     L.H = np.where(land, Hi, -1)

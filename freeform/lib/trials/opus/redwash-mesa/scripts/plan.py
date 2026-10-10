@@ -22,7 +22,6 @@ sys.path.insert(0, os.path.normpath(os.path.join(HERE, "..", "..", "..", "..")))
 sys.path.insert(0, os.path.normpath(os.path.join(HERE, "..", "..")))               # trials/opus (common)
 
 import numpy as np  # noqa: E402
-from scipy import ndimage  # noqa: E402
 
 import common  # noqa: E402
 from pgmvox import landform as LF  # noqa: E402
@@ -33,7 +32,7 @@ from pgmvox.noise import fbm, smoothstep, spline  # noqa: E402
 from pgmvox import noise  # noqa: E402
 from pgmvox.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
-from pgmvox.terrain import slope_deg  # noqa: E402
+from pgmvox.terrain import island_bottom, slope_deg  # noqa: E402
 
 BOARD = "redwash-mesa"
 X_MIN, X_MAX = -96, 95
@@ -185,12 +184,8 @@ def land():
         laid |= shapes.polyline(Xf, Zf, pts)[0] <= wd / 2
 
     # the underside: sheer under the seam, tapering elsewhere
-    void = ~land
-    d_out = ndimage.distance_transform_edt(~(void & (X < -30)))
-    d_seam = ndimage.distance_transform_edt(~(void & (X >= -30)))
-    nn = fbm(sh, 9, 3, seed=86)
-    thick = np.minimum(6 + 0.9 * d_out + 4 * nn, 34 + 1.0 * d_seam + 4 * nn)
-    bottom = np.maximum(Hi - thick, 8 + 3 * fbm(sh, 16, 2, seed=87)).round().astype(int)
+    bottom = island_bottom(Hi, land, X >= -30, taper=(6, 0.9), sheer_taper=(34, 1.0), rough=4 * fbm(sh, 9, 3, seed=86),
+                           floor=8 + 3 * fbm(sh, 16, 2, seed=87))
 
     L.X, L.Z, L.land = X, Z, land
     L.H = np.where(land, Hi, -1)

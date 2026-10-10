@@ -19,7 +19,7 @@ from scipy.ndimage import gaussian_filter
 
 from . import noise
 from .blocks import B
-from .shapes import edge_depth
+from .shapes import distance_in, edge_depth
 
 
 def mountain_ring(X, Z, clear, rise=45.0, base=45.0, relief=45.0, crest=80.0, seed=21, cell=40, ridge_cell=20,
@@ -277,6 +277,19 @@ def fill_water(w, H, level, bed, mask=None):
         w.ids[i, top + 1:int(level[i, k]) + 1, k] = B.WATER
         w.dat[i, top + 1:int(level[i, k]) + 1, k] = 0
     return int(wet.sum())
+
+def island_bottom(top, land, sheer, taper=(4, 0.9), sheer_taper=(26, 1.2), rough=0.0, floor=0.0):
+    """Where a floating island's rock ends under each column, for lay(bottom=): `top` (each column's ground) less a
+    thickness that grows with the straight distance from the void, `taper` (blocks at the edge, blocks per block
+    in), except beside the void that `sheer` marks (a mask, the rift's side), where it starts at `sheer_taper`'s
+    first number and the underside drops sheer. `rough` (a field) is added to both thicknesses and `floor` (a
+    height or a field) is as low as the rock goes."""
+    void = ~np.asarray(land, bool)
+    d_out = distance_in(~(void & ~sheer), "euclid")
+    d_sheer = distance_in(~(void & sheer), "euclid")
+    thick = np.minimum(taper[0] + taper[1] * d_out + rough, sheer_taper[0] + sheer_taper[1] * d_sheer + rough)
+    return np.maximum(top - thick, floor).round().astype(int)
+
 
 def root_depth(mask, cone=3.2, power=0.85, rough=0.35, flutes=0.0, flute_cell=5, spires=0.0, spire_cell=18,
                cap=None, seed=0):

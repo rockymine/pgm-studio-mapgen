@@ -834,6 +834,17 @@ class Terrain(unittest.TestCase):
             want = (B.SAND if i >= 15 else B.STONE) if deg[i, 1] > 30 else (B.CLAY if i < 15 else B.GRASS)
             self.assertEqual(top, want, i)
 
+    def test_an_island_hangs_sheer_under_its_rift_and_tapers_elsewhere(self):
+        X, Z = np.meshgrid(np.arange(-60, 0), np.arange(-30, 30), indexing="ij")
+        land = (X >= -50) & (X <= -11) & (Z >= -29)
+        top = np.full(X.shape, 60)
+        bottom = terrain.island_bottom(top, land, X > -11, taper=(4, 0.9), sheer_taper=(26, 1.2), floor=5)
+        self.assertEqual(bottom[49, 30], round(60 - (26 + 1.2)))            # at the rift's lip: 26 deep already
+        self.assertEqual(bottom[10, 30], round(60 - (4 + 0.9)))             # at the far edge: the taper's start
+        self.assertTrue((bottom[land] >= 5).all())
+        inward = bottom[(X >= -50) & (X <= -32) & (Z == 0)]
+        self.assertTrue((np.diff(inward) <= 0).all())                      # deeper the further from the void
+
     def test_nothing_is_left_under_a_columns_bottom(self):
         H = np.full((6, 6), 30)
         bottom = np.arange(36).reshape(6, 6) % 9 + 5

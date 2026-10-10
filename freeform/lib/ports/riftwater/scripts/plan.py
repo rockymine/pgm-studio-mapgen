@@ -20,7 +20,6 @@ import sys
 from functools import lru_cache
 
 import numpy as np
-from scipy import ndimage
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import landform as LF  # noqa: E402
@@ -32,7 +31,7 @@ from pgmvox import noise  # noqa: E402
 from pgmvox import field as F  # noqa: E402
 from pgmvox.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
 from pgmvox.plan import Raster, Symmetry  # noqa: E402
-from pgmvox.terrain import slope_deg  # noqa: E402
+from pgmvox.terrain import island_bottom, slope_deg  # noqa: E402
 
 BOARD = "riftwater"
 X_MIN, X_MAX = -120, 119
@@ -309,12 +308,8 @@ def land():
     Hi = np.where(L.spoil, Hi + np.round(ph_ * (1 - dd.clip(0, 1) ** 1.6)).astype(int), Hi)
 
     # the underside: sheer under the rift for about thirty blocks, tapering everywhere else
-    void = ~land
-    d_outer = ndimage.distance_transform_edt(~(void & ~(X > -14)))
-    d_rift = ndimage.distance_transform_edt(~(void & (X > -14)))
-    n = fbm(sh, 9, 3, seed=51)
-    thick = np.minimum(4 + 0.9 * d_outer + 4 * n, 26 + 1.2 * d_rift + 4 * n)
-    bottom = np.maximum(Hi - thick, 4 + 3 * fbm(sh, 16, 2, seed=52)).round().astype(int)
+    bottom = island_bottom(Hi, land, X > -14, taper=(4, 0.9), sheer_taper=(26, 1.2), rough=4 * fbm(sh, 9, 3, seed=51),
+                           floor=4 + 3 * fbm(sh, 16, 2, seed=52))
 
     L.X, L.Z, L.H, L.water, L.land, L.north, L.bottom = X, Z, np.where(land, Hi, -1), np.where(land, water, 0), \
         land, north, np.where(land, bottom, 0)
