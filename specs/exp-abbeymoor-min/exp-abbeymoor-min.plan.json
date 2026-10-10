@@ -31,16 +31,6 @@
    ]
   },
   {
-   "id": "moor-w",
-   "role": "piece",
-   "rect": [
-    -35,
-    -2,
-    4,
-    6
-   ]
-  },
-  {
    "id": "moor-m",
    "role": "piece",
    "rect": [
@@ -82,7 +72,13 @@
      10,
      12
     ],
-    "facing": "right"
+    "facing": "right",
+    "footprint": [
+     1,
+     1,
+     18,
+     22
+    ]
    }
   ],
   "destroyables": [

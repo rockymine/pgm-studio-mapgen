@@ -30,14 +30,13 @@ plan = {
     "pieces": [
         piece("moor-n", -35, -13, 26, 11),
         piece("moor-s", -35, 4, 26, 9),
-        piece("moor-w", -35, -2, 4, 6),
         piece("moor-m", -26, -2, 17, 6),
         piece("spawn", -31, -2, 5, 6, role="spawn"),
         piece("bog", -9, -13, 18, 26, surface=18),
     ],
     "zones": [],
     "placements": {
-        "spawns": [{"id": "red-spawn", "piece": "spawn", "at": [10, 12], "facing": "right"}],
+        "spawns": [{"id": "red-spawn", "piece": "spawn", "at": [10, 12], "facing": "right", "footprint": [1, 1, 18, 22]}],
         "destroyables": [
             {"id": "abbey-stone", "piece": "", "at": list(ABBEY_STONE), "style": "pillar-3",
              "materials": "obsidian", "float": 4, "name": "Abbey Stone"},
@@ -60,17 +59,24 @@ GRASS, DIRT, COARSE, PODZOL = S(2), S(3), S(3, 1), S(3, 2)
 BRICK, MOSSBRICK, CRACKBRICK = S(98), S(98, 1), S(98, 2)
 GRAVEL, PLANKS_SPRUCE = S(13), S(5, 1)
 
+# strata follow the ground: stone with andesite bands and a thin cobble accent, laid so a cliff reads as beds
+STRATA = {"kind": "layered", "axis": "height", "from": 0, "follow": 100, "reach": 16, "stack": {"ending": "repeat", "bands": [
+    {"material": cell(3, [STONE, STONE, ANDESITE], seed=61, rise=1), "thickness": 4},
+    {"material": cell(3, [ANDESITE, POLISHED, ANDESITE, STONE], seed=62, rise=1), "thickness": 2},
+    {"material": cell(3, [STONE, GRANITE, STONE, ANDESITE], seed=63, rise=1), "thickness": 3},
+    {"material": cell(2, [COBBLE, ANDESITE, COBBLE, STONE], seed=64, rise=1), "thickness": 1},
+    {"material": cell(3, [ANDESITE, STONE, ANDESITE], seed=65, rise=1), "thickness": 3}]}}
 # a rock is a set: stone and andesite with cobblestone as the accent (at most a third)
 ROCK = cell(3, [STONE, ANDESITE, STONE, COBBLE], seed=3)
 SOIL = depth((cell(2, [DIRT, COARSE], seed=5), 1), (DIRT, 2))   # a worn dirt, half and half
 
-def moor_theme(grass_to=34, dirt_to=50):
-    turf = noise(3, [PODZOL, GRASS, GRASS, GRASS, GRASS, COARSE], seed=11)
+def moor_theme(grass_to=40, dirt_to=55, flat=None):
+    turf = flat or noise(3, [PODZOL, GRASS, GRASS, GRASS, GRASS, COARSE], seed=11)
     return {
         "bedrock": {"relative": False, "value": 1},
         "rimEdges": "void", "rim": {"enabled": False, "depth": 1, "material": STONE},
         "wallEnabled": True, "wallOnTerrainFaces": True,
-        "wall": cell(3, [STONE, ANDESITE, STONE, COBBLE], seed=3, rise=2), "fill": cell(4, [STONE, ANDESITE, COBBLE, STONE], seed=9, rise=2),
+        "wall": STRATA, "fill": STRATA,
         "surface": {"enabled": True, "depth": 3, "material": {
             "kind": "layered", "axis": "slope", "stack": {"ending": "repeat", "bands": [
                 {"thickness": grass_to, "material": depth((turf, 1), (COARSE, 1), (DIRT, 1))},
@@ -84,7 +90,7 @@ def bog_theme():
         "bedrock": {"relative": False, "value": 1},
         "rimEdges": "void", "rim": {"enabled": False, "depth": 1, "material": STONE},
         "wallEnabled": True, "wallOnTerrainFaces": True,
-        "wall": cell(3, [STONE, ANDESITE, STONE, COBBLE], seed=3, rise=2), "fill": cell(4, [STONE, ANDESITE, COBBLE, STONE], seed=9, rise=2),
+        "wall": STRATA, "fill": STRATA,
         "surface": {"enabled": True, "depth": 3, "material": {
             "kind": "layered", "axis": "slope", "stack": {"ending": "repeat", "bands": [
                 {"thickness": 36, "material": depth((peat, 1), (COARSE, 2))},
@@ -92,6 +98,7 @@ def bog_theme():
                 {"thickness": 40, "material": depth((ROCK, 3))}]}}},
     }
 
+HEATH_FLAT = noise(3, [COARSE, PODZOL, GRASS, GRASS, PODZOL, COARSE], seed=13)
 RUIN_SET = cell(3, [BRICK, POLISHED, ANDESITE, BRICK], seed=31)
 def ruin_theme():
     ruin_wall = cell(2, [BRICK, BRICK, ANDESITE, MOSSBRICK, BRICK], seed=33, rise=2)
@@ -133,7 +140,7 @@ marks = [
     line("causeway-village", CAUSEWAY_VILLAGE, 20, r=4, tread=2),
     line("causeway-abbey", CAUSEWAY_ABBEY, 20, r=4, tread=2),
     area("hummock-a", 20, lobed(-16, -28, 7, 5, lobes=3, depth=0.15), bevel=2),
-    area("hummock-b", 20, lobed(-14, 26, 6, 5, lobes=3, depth=0.15, phase=1), bevel=2),
+    area("hummock-b", 20, lobed(-8, 30, 6, 5, lobes=3, depth=0.15, phase=1), bevel=2),
     area("hummock-c", 20, lobed(-6, -16, 4.5, 3.5, lobes=3, depth=0.15, phase=2), bevel=1),
 ]
 pushes = [
@@ -177,9 +184,9 @@ SOFFIT = 32            # the crypt's ceiling course; the roof over it is SOFFIT.
 FLOOR_TOP = 27         # crypt layer slab thickness: floor course is y26
 shapes = []
 # the nave floor is level ground at the plateau height, cut around the stair well and the lane roof
-shapes += [block("nave-floor-w", -104, -36, -82, -22, CREST),
-           block("nave-floor-e", -82, -32, -68, -22, CREST),
-           block("nave-floor-nstrip", -82, -36, -68, -35, CREST)]
+shapes += [block("nave-floor-w", -104, -36, -82, -22, CREST, theme="moor", keep=False),
+           block("nave-floor-e", -82, -32, -68, -22, CREST, theme="moor", keep=False),
+           block("nave-floor-nstrip", -82, -36, -68, -35, CREST, theme="moor", keep=False)]
 # walls: ragged courses along the nave, a tower stump at the south-west, the west gable
 for sid, x0, x1, top in [("nw1", -104, -94, 3), ("nw2", -90, -80, 5), ("nw3", -76, -66, 2)]:
     shapes.append(block("nave-n-" + sid, x0, -38, x1, -36, CREST + top))
@@ -194,7 +201,7 @@ for i, px in enumerate([-96, -90, -84]):    # piers stand over the crypt roof, s
 shapes += [block("crypt-roof", -98, -35, -82, -24, CREST, floor=SOFFIT),
            block("lane-roof", -82, -30, -68, -27, CREST, floor=SOFFIT),
            subtract("stair-well", -82, -35, -64, -32),
-           subtract("lane-cut", -68, -30, -54, -27)]
+           subtract("lane-cut", -68, -30, -50, -27)]
 
 # the standing stones of the bog: eight in a ring of radius 15, four authored and four fanned
 for i, (ang, top) in enumerate(zip([25, 70, 115, 160], [28, 30, 27, 29])):
@@ -209,12 +216,23 @@ for sid, x0, z0, x1, z1 in [("peat-1", -46, -46, -40, -44), ("peat-2", -46, -43,
     shapes.append(block(sid, x0, z0, x1, z1, 26, theme="bog", keep=True))
 shapes += [block("well-rim", -63, 22, -59, 24, 22, keep=True)]
 
+# patches of rough heath: shapes carrying their own theme, drawn at the island's own raw height
+def patch(pid, cx, cz, rx, rz, theme="heath", lobes=4, phase=0.0):
+    return {"id": pid, "type": "polygon", "operation": "add", "floor": 0, "base_height": 22, "theme": theme,
+            "vertices": lobed(cx, cz, rx, rz, lobes=lobes, depth=0.22, points=18, phase=phase)}
+patches = [patch("heath-north", -108, -26, 15, 10), patch("heath-ridge", -131, 18, 9, 11, phase=1),
+           patch("heath-south", -102, 36, 13, 8, phase=2), patch("heath-tor", -64, -50, 8, 3, lobes=3)]
+
 # the crypt storey: floor slab, pillars, tombs, the lane floor and the nine steps up the stair well
 crypt = [
     {"id": "crypt-floor", "type": "rectangle", "operation": "add", "floor": 0, "base_height": FLOOR_TOP,
      "theme": "ruin", "min_x": -98, "min_z": -35, "max_x": -82, "max_z": -24},
     {"id": "lane-floor", "type": "rectangle", "operation": "add", "floor": 0, "base_height": FLOOR_TOP,
      "theme": "ruin", "min_x": -82, "min_z": -30, "max_x": -54, "max_z": -27},
+    {"id": "lane-apron-1", "type": "rectangle", "operation": "add", "floor": 0, "base_height": FLOOR_TOP - 1,
+     "theme": "ruin", "min_x": -54, "min_z": -30, "max_x": -52, "max_z": -27},
+    {"id": "lane-apron-2", "type": "rectangle", "operation": "add", "floor": 0, "base_height": FLOOR_TOP - 2,
+     "theme": "ruin", "min_x": -52, "min_z": -30, "max_x": -50, "max_z": -27},
 ]
 for i, (px, pz) in enumerate([(-94, -32), (-94, -27), (-88, -32), (-88, -27)]):
     crypt.append({"id": f"crypt-pillar-{i}", "type": "rectangle", "operation": "add", "floor": 0,
@@ -222,9 +240,17 @@ for i, (px, pz) in enumerate([(-94, -32), (-94, -27), (-88, -32), (-88, -27)]):
 for i, (tx, tz) in enumerate([(-97, -34), (-97, -25)]):
     crypt.append({"id": f"tomb-{i}", "type": "rectangle", "operation": "add", "floor": 0, "base_height": FLOOR_TOP + 1,
                   "theme": "ruin", "min_x": tx, "min_z": tz, "max_x": tx + 4, "max_z": tz + 1})
-for k in range(1, 10):
+# lamps: a glowstone column at each end wall of the chamber, since a shape can carry one material and the light with it
+for i, (lx, lz) in enumerate([(-98, -35), (-98, -25), (-91, -35), (-91, -25)]):
+    crypt.append({"id": f"lamp-{i}", "type": "rectangle", "operation": "add", "floor": 0, "base_height": FLOOR_TOP + 2,
+                  "material": {"kind": "solid", "id": 89, "data": 0}, "min_x": lx, "min_z": lz, "max_x": lx + 1, "max_z": lz + 1})
+# eight rises in two flights of four with a landing between: a step is two blocks long, the landing is four
+cursor = -82
+for k in range(1, 9):
+    run = 4 if k == 4 else 2
     crypt.append({"id": f"step-{k}", "type": "rectangle", "operation": "add", "floor": 0, "base_height": FLOOR_TOP + k,
-                  "theme": "ruin", "min_x": -82 + 2 * (k - 1), "min_z": -35, "max_x": -80 + 2 * (k - 1), "max_z": -32})
+                  "theme": "ruin", "min_x": cursor, "min_z": -35, "max_x": cursor + run, "max_z": -32})
+    cursor += run
 crypt_layer = {"id": "crypt", "name": "Crypt", "base_y": 0, "below": True, "shapes": crypt,
                "groups": [{"id": "crypt", "name": "crypt", "mirrors": True, "shapeIds": [c["id"] for c in crypt]}]}
 
@@ -270,23 +296,22 @@ props += [
     house("cott-6", -46, -36, -38, -31, "posX", "alongZ"),
 ]
 # the orchard: a lattice of small oaks west and south of the cottages
-for r, z in enumerate([32, 38, 44, 50]):
-    for c, x in enumerate([-98, -92, -86]):
+for r, z in enumerate([32, 40, 47]):
+    for c, x in enumerate([-100, -92, -84]):
         props.append(tree(f"orchard-w-{r}-{c}", x, z, "orchard-oak"))
-for c, x in enumerate([-62, -56, -50]):
+for c, x in enumerate([-62, -54]):
     props.append(tree(f"orchard-s-{c}", x, 47, "orchard-oak"))
-props += [tree("haw-a", -16, -28, "hawthorn"), tree("haw-b", -14, 26, "hawthorn"),
-          tree("haw-spawn-1", -137, -4, "hawthorn"), tree("haw-spawn-2", -136, 14, "hawthorn"),
-          tree("haw-fold", -120, -26, "hawthorn")]
-props += [boulder("rock-tor-1", -52, -48), boulder("rock-tor-2", -47, -43),
-          boulder("rock-abbey-1", -62, -40), boulder("rock-abbey-2", -118, -44),
-          boulder("rock-ridge", -130, 24), boulder("rock-south", -104, 47)]
+props += [tree("haw-a", -16, -28, "hawthorn"), tree("haw-b", -8, 30, "hawthorn"),
+          tree("haw-spawn-1", -137, -4, "hawthorn"), tree("haw-spawn-2", -136, 14, "hawthorn")]
+props += [boulder("rock-tor-1", -54, -45), boulder("rock-tor-2", -45, -41),
+          boulder("rock-abbey-1", -64, -44), boulder("rock-abbey-2", -118, -44),
+          boulder("rock-ridge", -130, 24), boulder("rock-south", -108, 45)]
 def pool(pid, ring):
     return {"id": pid, "kind": "fluid", "shape": "pool", "layer": "ground", "points": ring, "radius": 2,
             "depth": 2, "form": "natural", "edge": 1.5, "shore": 1, "shoreWander": True, "seed": 3, "level": 17,
             "bank": cell(3, [COARSE, PODZOL, DIRT], seed=51)}
 props += [pool("tarn-north", lobed(-14, -18, 8, 5, lobes=3, depth=0.2)),
-          pool("tarn-south", lobed(-20, 28, 7, 5, lobes=3, depth=0.2, phase=1)),
+          pool("tarn-south", lobed(-24, 33, 6, 4, lobes=3, depth=0.2, phase=1)),
           pool("tarn-mid", lobed(-6, 20, 5, 4, lobes=3, depth=0.2, phase=2))]
 props.append({"id": "heather", "kind": "flora", "layer": "ground", "seed": 77,
               "points": [[-140, -50], [140, -50], [140, 50], [-140, 50]],
@@ -294,7 +319,7 @@ props.append({"id": "heather", "kind": "flora", "layer": "ground", "seed": 77,
                        "flowerScale": 12, "tallShare": 0.02, "mushroomShare": 0.3}})
 
 refinement = {
-    "themes": {"moor": moor_theme(), "bog": bog_theme(), "ruin": ruin_theme()},
+    "themes": {"moor": moor_theme(), "heath": moor_theme(flat=HEATH_FLAT), "bog": bog_theme(), "ruin": ruin_theme()},
     "mapTheme": "moor",
     "themeById": {"bog-22": "moor", "bog-18": "bog"},
     "shapePropsById": {"bog-22": {"vertices": MOOR_RING}, "bog-18": {"vertices": BOG_RING}},
@@ -303,7 +328,7 @@ refinement = {
     "biome": {"kind": "solid", "id": 6},
     "relief": relief,
     "addLayers": [crypt_layer],
-    "addShapes": [dict(s, layer="ground", group="team") for s in shapes],
+    "addShapes": [dict(s, layer="ground", group="team") for s in shapes + patches],
     "roomStyles": {"spawn": {"library": "spruce-roofed-stone-longhouse"}},
     "dressing": {"styles": STYLES, "props": props},
     "authors": ["Claude Sonnet 5.5"],

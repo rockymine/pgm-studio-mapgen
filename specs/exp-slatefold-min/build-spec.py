@@ -75,8 +75,8 @@ def over(top, under=DIRT, depth=1):
     return layered("depth", (top, depth), (under, 2), ending="handOver")
 
 # one rock under the whole board: beds that follow the ground, on the fill, the wall and the steepest slope band
-STRATA = layered("height", (STONE, 3), (ANDESITE, 1), (POLISHED, 1), (STONE, 2), (ANDESITE, 2), (POLISHED, 1),
-                 **{"from": 0, "follow": 100, "reach": 16})
+STRATA = layered("height", (STONE, 3), (ANDESITE, 1), (COBBLE, 1), (STONE, 2), (POLISHED, 1), (ANDESITE, 2), (STONE, 1),
+                 **{"from": 0})
 
 def theme(surface, rim=ANDESITE):
     return {"bedrock": {"relative": False, "value": 1}, "fill": STRATA, "rimEdges": "void",
@@ -97,8 +97,8 @@ QUARRY = theme(layered("slope", (over(noise(21, 2, [COBBLE, ANDESITE, STONE, STO
 # a flight is laid, and is the same stone the whole way up
 STEPS = theme(cell(31, 3, [STONEBRICK, POLISHED, ANDESITE, STONE]), rim=STONEBRICK)
 
-STEP_IDS = ["bench-9", "bench-10", "bench-11", "bench-13", "bench-13-2", "bench-14", "bench-14-2", "bench-15", "bench-15-2"]
-THEME_BY_ID = {"bench-8": "quarry", "bench-11-2": "quarry", "bench-12": "hillside", "bench-16": "hillside"}
+STEP_IDS = ["bench-9", "bench-10", "bench-11-2", "bench-13", "bench-13-2", "bench-14", "bench-14-2", "bench-15", "bench-15-2"]
+THEME_BY_ID = {"bench-8": "quarry", "bench-11": "quarry", "bench-12": "hillside", "bench-16": "hillside"}
 THEME_BY_ID.update({i: "steps" for i in STEP_IDS})
 ALL_IDS = list(THEME_BY_ID)
 
@@ -157,9 +157,11 @@ DRESSING = {
         road("cart-foot", 9002, [[16, 35], [17, 31], [22, 29], [30, 27], [35, 24]]),
         road("east-lane", 9003, [[16, 57], [24, 60], [34, 60], [42, 58]]),
         road("bench-approach", 9004, [[3, 72], [-6, 70], [-12, 72], [-15, 74]]),
-        road("bench-path", 9005, [[-26, 106], [-35, 102], [-38, 92], [-37, 80], [-38, 66], [-37, 52], [-38, 40], [-39, 30]]),
+        road("bench-path", 9005, [[-14, 104], [-24, 104], [-31, 101], [-36, 94], [-37, 80], [-38, 66], [-37, 52], [-38, 40], [-39, 30]]),
         road("green", 9006, [[-4, 58], [8, 58]], radius=5, wander=0, pave=YARD_SET, style="worn"),
-        # the hamlet: one style, four plots
+        road("cart-yard", 9007, [[12, 62], [20, 62]], radius=4, wander=0, pave=YARD_SET, style="worn"),
+        road("lane-yard", 9008, [[30, 56], [38, 56]], radius=3, wander=0, pave=YARD_SET, style="worn"),
+        # the hamlet: one style, five plots
         house("cottage-west", 9101, -28, 56, -18, 64, "posZ"),
         house("cottage-store", 9102, -10, 44, 2, 52, "posX"),
         house("cottage-east", 9103, 22, 66, 32, 74, "negZ"),
@@ -170,8 +172,8 @@ DRESSING = {
         rock("rock-brink", 9203, 26, 33, "slate-2"), rock("rock-bench", 9204, -46, 86, "slate-3"),
         tree("spruce-bench-a", 9301, -45, 60, "spruce-8"), tree("spruce-bench-b", 9302, -45, 46, "spruce-8"),
         tree("spruce-hamlet-w", 9303, -30, 42, "spruce-8"), tree("spruce-hamlet-e", 9304, 41, 75, "spruce-8"),
-        tree("spruce-terrace-w", 9305, -23, 112, "spruce-8"), tree("spruce-terrace-e", 9306, 29, 106, "spruce-8"),
-        tree("oak-terrace", 9307, 30, 102, "oak-6"), tree("oak-hamlet", 9308, 40, 68, "oak-6"),
+        tree("spruce-terrace-e", 9306, 17, 105, "spruce-8"),
+        tree("oak-terrace", 9307, 21, 100, "oak-6"), tree("oak-hamlet", 9308, 40, 68, "oak-6"),
         {"id": "ground-cover", "kind": "flora", "seed": 9401,
          "points": [[-48, 16], [48, 16], [48, 116], [-48, 116]],
          "spec": {"coverage": 0.28, "scale": 6, "octaves": 3, "fernShare": 0.3, "flowerShare": 0.08,
@@ -197,6 +199,18 @@ refinement = {
     "roomStyles": {"wool": KILN_HOUSE, "spawn": COTTAGE},
     "dressing": DRESSING,
 }
+
+def made_layer(layer_id, floor, height, material, rects):
+    shapes = [{"id": f"{layer_id}-{n}", "type": "rectangle", "operation": "add", "floor": floor, "base_height": height,
+               "material": material, "min_x": x0, "max_x": x1, "min_z": z0, "max_z": z1}
+              for n, (x0, z0, x1, z1) in enumerate(rects)]
+    return {"id": layer_id, "name": layer_id, "base_y": 0, "kind": "made", "part_of": "crossing-piers", "shapes": shapes,
+            "groups": [{"id": layer_id, "name": "crossing piers", "mirrors": True, "shapeIds": [s["id"] for s in shapes]}]}
+
+# where the bridge starts: a stone pier runs out from each quarry floor into the void on the centre line, bedrock under it
+PIERS = [(-4, 9, 4, 16)]
+refinement["addLayers"] = [made_layer("pier-stone", QUARRY_Y - 4, 4, dict(cell(61, 3, [STONEBRICK, POLISHED, ANDESITE, STONE]), rise=2), PIERS),
+                           made_layer("pier-bedrock", QUARRY_Y - 5, 1, solid(7), PIERS)]
 
 def main():
     json.dump(plan, open(os.path.join(HERE, f"{SLUG}.plan.json"), "w"), indent=1)

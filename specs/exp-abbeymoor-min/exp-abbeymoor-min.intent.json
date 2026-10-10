@@ -38,9 +38,14 @@
    "yaw": 270,
    "doors": [
     "+x",
-    "-x"
+    "-z"
    ],
-   "footprint": null,
+   "footprint": {
+    "minX": -123,
+    "minZ": -7,
+    "maxX": -105,
+    "maxZ": 15
+   },
    "iron": []
   },
   {
@@ -68,9 +73,14 @@
    "yaw": 90,
    "doors": [
     "-x",
-    "+x"
+    "+z"
    ],
-   "footprint": null,
+   "footprint": {
+    "minX": 105,
+    "minZ": -15,
+    "maxX": 123,
+    "maxZ": 7
+   },
    "iron": []
   }
  ],
