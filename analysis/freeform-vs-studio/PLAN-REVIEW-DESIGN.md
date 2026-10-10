@@ -167,15 +167,26 @@ caller stores everything in one call.
 
 ## 6. The model's loop
 
-1. The agent writes the design (identity, places, routes, targets, sections, look) and stores it. No plan or
-   sketch need exist yet.
-2. The studio measures what it can and draws the sheet.
+1. The agent writes the design (identity, places, routes, targets, sections, look) together with the ground it
+   stands on: a sketch layout with its relief, or a box plan with its surfaces. Nothing is voxelized yet.
+2. The studio measures the targets on that ground and draws the sheet over it.
 3. The author reads the sheet, writes notes on places, routes and rows, and sets `changes` or `approved`.
-4. The agent reads the notes through the hand-off, answers each one, revises the design with a `because`, and
-   stores the next version.
-5. On `approved`, the agent builds: the box plan or the sketch, then the world. Each place is bound as its
-   pieces and shapes are drawn.
+4. The agent reads the notes through the hand-off, answers each one, revises the design and the ground with a
+   `because`, and stores the next version.
+5. On `approved`, the agent builds the world: the finish, the houses, the dressing. Each place is bound to the
+   pieces and shapes that realise it.
 6. The targets are re-measured on the built world, and the in-game notes arrive tagged with their places.
+
+**The plan is reviewed over its real ground, because that is what made the freeform plan worth reading.** In
+pgmvox the order is `land.py` (the whole heightfield, block-exact and final), then `plan.py` (kinds painted over
+those same heights, the crypt as a second storey), then the sketch (a picture of that raster), then `gen.py`
+(the voxels), shown side by side in `pages/plan-review/abbeymoor-stages.png`. On Abbeymoor the built world's ground stands at exactly `land.py`'s height on 99.8% of the
+45,698 land columns; the other 96 are cut lower, for water and the peat. Only the voxels came after the
+review, never the relief.
+
+**The studio already has that split.** A sketch layout is `land.py` plus `plan.py`: it rasterizes to heights
+without building a world. What the studio lacks is the names, reasons and targets beside it, and a sheet that
+draws them over it before the build.
 
 **Every route into a map keeps working.** A box plan drawn by hand needs no design. A generated board can get
 one written over it. An uploaded world can be given a design afterwards, to review the map as it is played: the
