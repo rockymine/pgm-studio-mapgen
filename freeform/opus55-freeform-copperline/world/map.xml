@@ -10,8 +10,8 @@
     <team id="defenders" color="blue" max="12">Defenders</team>
 </teams>
 <broadcasts>
-    <alert after="2s" filter="attackers">Push the ore cart up the line to the mine. The shed opens in 20s.</alert>
-    <alert after="2s" filter="defenders">Stop the ore cart before it reaches the mine. Stand by it to hold it still.</alert>
+    <alert after="2s" filter="only-attackers">Push the ore cart up the line to the mine. The shed opens in 20s.</alert>
+    <alert after="2s" filter="only-defenders">Stop the ore cart before it reaches the mine. Stand by it to hold it still.</alert>
 </broadcasts>
 <kits>
     <kit id="spawn-kit">
@@ -43,6 +43,8 @@
     </spawns>
 </spawns>
 <filters>
+    <team id="only-attackers">attackers</team>
+    <team id="only-defenders">defenders</team>
     <after id="warmup-over" duration="20s"><match-started/></after>
     <not id="first-leg"><completed>checkpoint-a</completed></not>
     <all id="second-leg"><completed id="a-done">checkpoint-a</completed><not><completed>checkpoint-b</completed></not></all>
@@ -57,7 +59,7 @@
     <trigger scope="match" filter="a-done"><action><fill region="gate-a" material="air"/></action></trigger>
     <trigger scope="match" filter="b-done"><action><fill region="gate-b" material="air"/></action></trigger>
 </actions>
-<payloads permanent="true" radius="3.5" capture-filter="attackers" capture-time="60s" decay-rate="0.1" recovery-rate="0.5" contested-rate="0" time-multiplier="0.1">
+<payloads permanent="true" radius="3.5" capture-filter="only-attackers" capture-time="60s" decay-rate="0.1" recovery-rate="0.5" contested-rate="0" time-multiplier="0.1">
     <payload id="checkpoint-a" name="Main Street" location="8,25,66" display-filter="first-leg"/>
     <payload id="checkpoint-b" name="the Gorge" location="-12,27,12" player-filter="a-done" display-filter="second-leg"/>
     <payload id="checkpoint-c" name="the Mine Head" location="16,29,-26" player-filter="b-done" display-filter="third-leg"/>
@@ -83,12 +85,12 @@
         <cuboid min="-4,0,-71" max="9,oo,-58"/>
     </union>
     <apply block="never" use="never"/>
-    <apply enter="attackers" region="defenders-rooms" message="You may not enter the defenders' spawn!"/>
-    <apply enter="defenders" region="attackers-rooms" message="You may not enter the attackers' spawn!"/>
+    <apply enter="only-defenders" region="defenders-rooms" message="You may not enter the defenders' spawn!"/>
+    <apply enter="only-attackers" region="attackers-rooms" message="You may not enter the attackers' spawn!"/>
 </regions>
 <itemremove><item>leather helmet</item><item>leather chestplate</item><item>chainmail leggings</item><item>iron boots</item></itemremove>
 <itemkeep><item>stone sword</item><item>bow</item></itemkeep>
 <kill-rewards><kill-reward><item amount="4" material="arrow"/></kill-reward></kill-rewards>
-<respawns><respawn delay="5s" filter="attackers"/><respawn delay="7s" filter="defenders"/></respawns>
+<respawns><respawn delay="5s" filter="only-attackers"/><respawn delay="7s" filter="only-defenders"/></respawns>
 <hunger><depletion>off</depletion></hunger>
 </map>

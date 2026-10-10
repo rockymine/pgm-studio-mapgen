@@ -147,3 +147,18 @@ rails smoothly was not seen.
 | A slag heap that belongs where it is | Moderate: a fan backed against the mountain, its flat foot given to the mountain along a noisy line, spoil poured over the mountain's foot | Terrain pieces that blend into their neighbours rather than stopping at their outline |
 | Mining that reads as mining | Moderate: a headframe, a timbered drift, a carved hall, an old adit with its tramway | Prop pieces for a headframe, a drift and a portal |
 | Validation of a payload map | Not attempted; the module is an experiment in PGM | Payload in the studio's round-trip: the track traced from the world and checked against the XML |
+
+## After the playtest
+
+**The spawn rooms' entry rule was the wrong way round, and is the likeliest reason a team was boxed in.** Each
+room's `enter` filter named the other team, so the attackers' rooms let in only defenders and the defenders' rooms
+only attackers. A player spawning is moved into the room from outside it, and that move was refused to the room's
+own team. Each team's rooms now let in that team alone.
+
+**Every team filter is now a named `team` filter rather than a bare team id.** The broadcasts, the payload's
+capture filter, the respawn delays and the entry rules use `only-attackers` and `only-defenders`, as the other
+boards here do.
+
+**The engine shed's door is still barred for the first twenty seconds, by design.** The attackers' first room
+opens when the warm-up ends, and a broadcast says so two seconds in. If the report was of those twenty seconds, the
+fix is to shorten or drop the warm-up in `plan.py`.

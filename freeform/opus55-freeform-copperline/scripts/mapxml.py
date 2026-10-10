@@ -37,8 +37,8 @@ def main():
     a('    <team id="defenders" color="blue" max="12">Defenders</team>')
     a('</teams>')
     a('<broadcasts>')
-    a(f'    <alert after="2s" filter="attackers">Push the ore cart up the line to the mine. The shed opens in {P.WARMUP}.</alert>')
-    a('    <alert after="2s" filter="defenders">Stop the ore cart before it reaches the mine. Stand by it to hold it still.</alert>')
+    a(f'    <alert after="2s" filter="only-attackers">Push the ore cart up the line to the mine. The shed opens in {P.WARMUP}.</alert>')
+    a('    <alert after="2s" filter="only-defenders">Stop the ore cart before it reaches the mine. Stand by it to hold it still.</alert>')
     a('</broadcasts>')
     a('<kits>')
     a('    <kit id="spawn-kit">')
@@ -67,6 +67,8 @@ def main():
     a('</spawns>')
     ids = [leg["id"] for leg in P.LEGS]
     a('<filters>')
+    a('    <team id="only-attackers">attackers</team>')
+    a('    <team id="only-defenders">defenders</team>')
     a(f'    <after id="warmup-over" duration="{P.WARMUP}"><match-started/></after>')
     a(f'    <not id="first-leg"><completed>{ids[0]}</completed></not>')
     a(f'    <all id="second-leg"><completed id="a-done">{ids[0]}</completed><not><completed>{ids[1]}</completed></not></all>')
@@ -81,7 +83,7 @@ def main():
         a(f'    <trigger scope="match" filter="{filt}"><action><fill region="gate-{stage.lower()}" material="air"/></action></trigger>')
     a('</actions>')
     radius = P.RADIUS
-    a(f'<payloads permanent="true" radius="{radius}" capture-filter="attackers" capture-time="{P.CAPTURE}" decay-rate="0.1" '
+    a(f'<payloads permanent="true" radius="{radius}" capture-filter="only-attackers" capture-time="{P.CAPTURE}" decay-rate="0.1" '
       f'recovery-rate="0.5" contested-rate="0" time-multiplier="0.1">')
     for n, leg in enumerate(P.LEGS):
         x, z, hh = leg["pts"][0]
@@ -101,14 +103,15 @@ def main():
             a(f'        <cuboid min="{x0},0,{z0}" max="{x1 + 1},oo,{z1 + 1}"/>')
         a('    </union>')
     a('    <apply block="never" use="never"/>')
-    a('    <apply enter="attackers" region="defenders-rooms" message="You may not enter the defenders\' spawn!"/>')
-    a('    <apply enter="defenders" region="attackers-rooms" message="You may not enter the attackers\' spawn!"/>')
+    # a team's rooms let in that team alone: the filter names who may enter, not who is kept out
+    a('    <apply enter="only-defenders" region="defenders-rooms" message="You may not enter the defenders\' spawn!"/>')
+    a('    <apply enter="only-attackers" region="attackers-rooms" message="You may not enter the attackers\' spawn!"/>')
     a('</regions>')
     a('<itemremove><item>leather helmet</item><item>leather chestplate</item><item>chainmail leggings</item>'
       '<item>iron boots</item></itemremove>')
     a('<itemkeep><item>stone sword</item><item>bow</item></itemkeep>')
     a('<kill-rewards><kill-reward><item amount="4" material="arrow"/></kill-reward></kill-rewards>')
-    a('<respawns><respawn delay="5s" filter="attackers"/><respawn delay="7s" filter="defenders"/></respawns>')
+    a('<respawns><respawn delay="5s" filter="only-attackers"/><respawn delay="7s" filter="only-defenders"/></respawns>')
     a('<hunger><depletion>off</depletion></hunger>')
     a('</map>')
     print("\n".join(o))
