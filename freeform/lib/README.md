@@ -13,7 +13,7 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `orient` | the data for a block facing a way (`stair`, `ladder`, `torch`, `door`, `log_axis`, `yaw`, `rotation16`); turn tables for `cw`, `ccw`, `half`, `mirror_x`, `mirror_z`; `turn_world` about a named axis |
 | `world` | `World` (set, fill, column, top, heightmap, chests, signs, banners, save, load); `write` to region files through the studio's Anvil writer; `seed` and `rng` for named random streams |
 | `noise` | `fbm`, `ridged`, `smoothstep`, `spline` |
-| `shapes` | polygons, polylines, discs, rings, ellipses, tapered strokes, `boundary`, `edge_depth` |
+| `shapes` | polygons, polylines (distance, arc length and side; `nearest_on` for one point), discs, rings, ellipses, tapered strokes, `boundary`; the cell sets `rect_cells` (by corners) and `poly_cells`; `distance_in` and `edge_depth`, by taxicab, chessboard or euclid |
 | `move` | the 1.8 tick model: `fly`, `fall`, `fall_damage`, `jump_reach`, `knockback`, `solve_launch` |
 | `plan` | `Raster`, the plan as every column's floor and kind, with `Symmetry` drawn in the plan; `rect`, `poly`, `where`, `flight`; `storey(n)`, an upper storey drawn the same way; `from_heights`, a plan read off shaped terrain |
 | `objectives` | spawns, the observer point, hills, flags, wools and monuments, destroyables, cores, score boxes and portals: each stamps its blocks, writes its regions and XML, carries itself to the other team, and checks the built world |
@@ -148,8 +148,8 @@ refuses a row that is not filled the same from either end, so heavy stacks balan
 `props.DEFENCE` is a defence chest for a team's wall and `props.ROOM_GEAR` a wool room's gear. An item may carry
 enchantments, written into the world as the chest's own tag.
 
-**The capture rebuild proves the set.** With its local walk and rules replaced by these, its plan check and its
-walks read the same to the last digit, and the studio reads its map.xml as valid.
+**The capture rebuild proves the set.** With its local walk and rules replaced by these, its plan check reads the
+same to the last digit, and the studio reads its map.xml as valid.
 
 ## Four teams
 

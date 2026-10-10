@@ -27,8 +27,9 @@ Seen from above: terrain 68.8% (all A), dressing 14.2%, canyon town 13.7% (B 7.6
 3.2% (B), underground 0.2%. C is one structure, the tipple (264 blocks a half); counting every single-use structure
 as C gives 0.37% of the world.
 
-The 130 layers: 47 existing pgmvox ops as they stand (judged from signatures, not run), 9 existing with one more
-parameter, 25 studio concepts, 10 layers of 9 new ops, 38 template placements (13 templates), 1 made.
+The 130 layers: 42 existing pgmvox ops as they stand (judged from signatures, not run), 8 existing with one more
+parameter, 25 studio concepts, 16 layers of 11 new ops, 38 template placements (13 templates), 1 made.
+`paint.zone` and `under.portal` are among the new ops: pgmvox 0.21.0 has neither.
 
 ## Would the agent lose freedom?
 
