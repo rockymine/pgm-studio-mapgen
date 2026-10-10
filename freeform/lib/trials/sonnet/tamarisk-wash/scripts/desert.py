@@ -134,3 +134,17 @@ def broken_pillar(w, x, y, z, rng, h=None):
     for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
         if rng.random() < 0.4 and w.id(x + dx, y + 1, z + dz) == B.AIR:
             w.set(x + dx, y + 1, z + dz, B.SANDSTONE, 2)
+
+
+def open_well_foot(w, x, z, top_y, bottom_y, side="e", high=3):
+    """Open the well's foot into the cistern: the ring's wall on the cistern's side is cut away across the shaft's
+    width, `high` blocks up from the floor, so a player walks out level and has headroom over the sill. Then lay a
+    catwalk of smooth sandstone from the doorway to the ladder across the shaft's mouth, so the ladder's top has
+    somewhere to step off (the shaft's mouth is otherwise a hole to the floor)."""
+    ddx, ddz = {"e": (2, 0), "w": (-2, 0), "n": (0, -2), "s": (0, 2)}[side]
+    for off in (-1, 0, 1):
+        px, pz = (x + ddx, z + off) if ddx else (x + off, z + ddz)
+        for y in range(bottom_y, bottom_y + high):
+            w.set(px, y, pz, B.AIR)
+    for dx in range(-1, 2):                                       # the catwalk: the doorway's row, over the shaft
+        w.set(x + dx, top_y, z, B.SANDSTONE, 2)

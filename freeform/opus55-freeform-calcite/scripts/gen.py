@@ -313,6 +313,24 @@ def rails(w):
                 w.set(a, 14, b, B.IRON_BARS)
 
 
+WALL_THICK = 2
+
+
+def thin_walls(w):
+    """The quarry wall two blocks thick: every column of wall further than WALL_THICK from the quarry's open ground
+    and from every tunnel carved in the rock is taken away to the void, so the board is the quarry and its rim, not
+    a square block of stone round it."""
+    from scipy import ndimage
+    open_ground = R.K != K["wall"]
+    for x, _y, z in CARVED:
+        open_ground[P.ix(x), P.iz(z)] = True
+    n = 2 * WALL_THICK + 1
+    keep = ndimage.binary_dilation(open_ground, structure=np.ones((n, n), bool))
+    for i, k in np.argwhere(~keep):
+        w.ids[i + P.X_MIN - w.x0, :, k + P.Z_MIN - w.z0] = 0
+        w.dat[i + P.X_MIN - w.x0, :, k + P.Z_MIN - w.z0] = 0
+
+
 def make():
     w = World(P.X_MIN, P.Z_MIN, P.NX, P.NZ, sy=64)
     columns(w)
@@ -326,6 +344,7 @@ def make():
     pillars(w)
     derricks(w)
     rails(w)
+    thin_walls(w)
     w.biome[:, :] = 1
     return w
 

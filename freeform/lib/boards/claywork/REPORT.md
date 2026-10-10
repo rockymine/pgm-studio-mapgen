@@ -172,3 +172,12 @@ statues. Blue's panels and friezes are blue stained clay, which reads as a dark 
 | A second layer under the hub | Moderate: a storey in the raster for the plan's walk, then carved and walked on the blocks | Storeys on the plan, carved from the piece above them |
 | Stepping stones that cross both ways | Hard: the plan's walk passed them, and the voxel walk could not land a jump lower until the library was fixed | Jump checks on the plan that use the same rules as the built world's walk |
 | A defence wall nobody walks round or under | Easy: bedrock from the world's floor across the Walk, its ends on the void, chests in its face | The wall as a seam piece, with its effect on both teams' walks shown on the plan |
+
+## After the playtest
+
+**The Kilns carry the studio's wool-room loot, and the walls its defence chests.** Each Kiln's two chests of iron
+became two chests in each of its four inner corners, with the planks, Speed potions, golden apples, diamond
+leggings and Power bows the studio's wool-room stamper gives. The chests set into the bedrock walls keep their
+places and now hold the studio's defence loadout: dark-oak and spruce planks, crafting tables, end stone, redstone
+and two Efficiency II pickaxes. The walk counts 32 chests in the Kilns where it counted 8, and every distance is
+unchanged.

@@ -58,7 +58,9 @@ GATES = ((-47, 31, 3), (-27, 31, 3))      # the two gates: x, z centre, width
 ARCADE = (-26, -2, -5, 1)                 # the aqueduct's red half: x0, z0, x1, z1
 DECK_Y = 63
 
-QANAT = [(-7, 47, 30, 2.6), (-20, 47, 29, 2.6), (-31, 48, 29, 2.8), (-42, 50, 30, 2.8), (-52, 52, 29, 2.8),
+# the mouth opens in the wash at z 23 and runs under the south ghat at x -20..-15 with three or more blocks of rock over it; at z 30
+# it had cut the ghat's lower third in two
+QANAT = [(-7, 47, 23, 2.6), (-20, 47, 24, 2.6), (-31, 48, 29, 2.8), (-42, 50, 30, 2.8), (-52, 52, 29, 2.8),
          (-60, 52, 28, 2.6), (-64, 52, 28, 2.6)]
 MINE = [(-74, 63, -34), (-70, 63, -34), (-64, 66, -34), (-64, 66, -28), (-63, 66, -28)]
 MINE_SHAFT = (-63, -28)                   # the ladder up to Table Rock's top
@@ -463,7 +465,7 @@ def objectives():
     O.add(Destroyable("red-obelisk", "Red Obelisk", "red-team", Box(ox, TABLE_TOP + 4, oz, ox, TABLE_TOP + 6, oz)),
           name="Blue Obelisk")
     sx, sz = STONE_AT
-    O.add(Destroyable("red-sunstone", "Red Sunstone", "red-team", Box(sx, PLATEAU + 3, sz, sx, PLATEAU + 4, sz),
+    O.add(Destroyable("red-sunstone", "Red Sunstone", "red-team", Box(sx, PLATEAU + 4, sz, sx, PLATEAU + 5, sz),
                       material=(22, 0), materials="lapis block"), name="Blue Sunstone")
     O.add(Observer((0, 100, 0), yaw=90), mirror=False)
     return O

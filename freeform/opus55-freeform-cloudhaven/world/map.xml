@@ -55,10 +55,10 @@
         <point id="observer-spawn">0.5,100,0.5</point>
         <rectangle id="red-spawn" min="-117,-7" max="-102,8"/>
         <rectangle id="blue-spawn" min="102,-8" max="117,7"/>
-        <cuboid id="red-lantern-monument" min="-72,81,-60" max="-71,83,-59"/>
-        <cuboid id="red-gardens-monument" min="-71,61,59" max="-70,63,60"/>
-        <cuboid id="blue-lantern-monument" min="71,81,59" max="72,83,60"/>
-        <cuboid id="blue-gardens-monument" min="70,61,-60" max="71,63,-59"/>
+        <cuboid id="red-lantern-monument" min="-72,83,-60" max="-71,85,-59"/>
+        <cuboid id="red-gardens-monument" min="-71,63,59" max="-70,65,60"/>
+        <cuboid id="blue-lantern-monument" min="71,83,59" max="72,85,60"/>
+        <cuboid id="blue-gardens-monument" min="70,63,-60" max="71,65,-59"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>

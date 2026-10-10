@@ -56,7 +56,8 @@ JUNIPERS = [(-74, -56), (-36, -56), (-34, -40), (-60, -36), (-76, -42)]   # oliv
 LADDER = ((-69, 7), "n", 10)    # the stair cut up the cliff from the ledge to the Table: foot cell, rises, steps
 HEAD = ((-76, 15), "n", 9)      # the stair from the ledge down to the canyon floor: top-foot cell, rises, steps
 BENCH_STAIR = ((-38, 32), "s", 11)   # the stair from the town up onto the Bench
-MINE = [(-38, 42, 22), (-38, 42, 16), (-39, 46, 10), (-41, 51, 4), (-43, 51, -2)]   # floor (lowest air) along it
+MINE = [(-38, 42, 22), (-38, 42, 16), (-38, 46, 10), (-38, 51, 4), (-43, 51, -2)]   # floor (lowest air) along it: straight
+                                # up the rises (a stair climbs one way), the jog to the shaft on the level at the top
 SHAFT = (-43, -4)               # the shaft from the gallery's end up onto the Table
 
 PLACES = [("Cliff House", (-80, 2)), ("The Table", (-66, -14)), ("Table Monument", (-56, -30)),
@@ -80,6 +81,13 @@ HOUSES = [
     ("adobe2", (-48, 19, -43, 23), 2, "s"),
     ("adobe3", (-64, 29, -59, 33), 1, "e"),
     ("adobe4", (-50, 33, -45, 37), 2, "n"),
+    # the mesa tops: a homestead on the Table's west edge, two on its east side, two on the Bench; each stands on flat
+    # ground (a block either way), five or more blocks off every trail and thirty off a monument
+    ("mesa1", (-88, -16, -84, -12), 1, "e"),
+    ("mesa2", (-24, -44, -20, -40), 2, "s"),
+    ("mesa3", (-22, 2, -18, 6), 1, "w"),
+    ("bench1", (-82, 44, -78, 48), 1, "e"),
+    ("bench2", (-66, 44, -62, 48), 1, "s"),
 ]
 
 KINDS = ["void", "table", "shelf", "wash", "rock", "water", "trail", "plaza", "house", "door", "stair", "mine"]
@@ -313,7 +321,7 @@ def objectives():
     L = land()
     for key, ((x, z), name) in MONUMENTS.items():
         g = at(L, x, z)
-        O.add(Destroyable(f"red-{key}", name, "red-team", Box(x, g + 2, z, x, g + 3, z)))
+        O.add(Destroyable(f"red-{key}", name, "red-team", Box(x, g + 4, z, x, g + 5, z)))
     O.add(Observer((0, 90, 0), yaw=90), mirror=False)
     return O
 

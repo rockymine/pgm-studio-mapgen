@@ -171,3 +171,19 @@ round a headland of rock under it.
 - The writer writes no entities and lights everything fully, so there are no item frames, armour stands or
   boats; the boats the plan drew up on Sealers' Point were not built.
 - Not checked in game.
+
+## After the playtest
+
+**The board has about half the trees.** The playtest called it overgrown again. `dressing.py` now tries 11% of its candidate spots, where it tried them all, and red's half went from 79 trees to 40, with blue's half its turn. The core's plinth and the Beacon's headland stay clear of crowns.
+
+**The core stands on the ground, in the open, south-west of the lighthouse.** In the lantern it was out of reach and could not be defended. It now floats over a seven-by-seven stone brick plinth level with the snow at (-28, -58), and blue's is its half turn at (27, 57). The casing is obsidian round one lava block, 3 by 3 by 3 from y 57 to 59, two blocks over the plinth, and the lantern holds a glowstone block instead.
+
+**It still leaks.** A three-wide pit lined in stone brick lies under the core, seven deep, with its floor at y 48, so lava falls eight blocks onto it against a leak of five. A player cannot stand under the casing, since one block of air is not room to stand, so the pit stays shut to players as the lantern's well was. The casing's lowest course is within reach from the plinth, and the kit carries a diamond pickaxe.
+
+**The map.xml and the walk follow.** The core regions are `-29,57,-59` to `-26,60,-56` for red and `26,57,56` to `29,60,59` for blue, read back as 26 obsidian and one lava block each, and the objective text no longer names the lantern. The walk's probes moved to the ground. The checker reads the map valid with no issues.
+
+**Both cores are reachable, and nearer.** From its own spawn the core reads 30 moves, where it read 69 up the stair, and from the enemy's spawn 205, where it read 235. The core is close to its spawn, so defenders reach it at once, which the playtest asked for by wanting it visible and defensible. The placement audit finds no problem.
+
+## After the fourth playtest
+
+**The cores and the monuments hang three blocks over the floor.** Each core was raised from y 57-59 to 59-61, three blocks of air over the plinth's top at 55, with the pit under it left open: its floor is at 48, eleven under the core's base, against a leak of five. The snow layer round the plinth's edge was dropped so the floor reads a clean 55. Holmstein's monuments went from y 62-63 on a snow-laid crown to 63-64 with the layer under them removed, so three blocks of air lie under them; the walks are unchanged.

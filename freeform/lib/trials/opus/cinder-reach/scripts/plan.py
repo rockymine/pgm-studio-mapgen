@@ -45,16 +45,16 @@ SPAWN = (-84, 58, -6)           # feet on the lodge terrace, floor 57
 TERRACE = (-90, -13, -78, 1)    # x0, z0, x1, z1: the paved terrace, floor 57
 TERRACE_Y = 57
 CORE = (-51, 24)                # the core's centre column; its box is 5 x 5 x 5
-CORE_Y = 52                     # the casing's lowest course: two over the bowl floor, over a vent
+CORE_Y = 55                     # the casing's lowest course: four over the bowl's top, over a stone platform
 BOWL_Y = 50                     # the bowl's floor
-VENT_BOTTOM = 43                # the vent under the casing: lava falls into it and leaks past 5
+VENT_BOTTOM = 47                # the platform under the casing, three below the bowl's top: lava falls onto it
 RIM_Y = 56                      # the cone's crest
 LEAK = 5
 
 # ---- the places (red's), each a reason to go there ------------------------------------------------------------
 POND = ((-23, 27), 6.5, 5.0, 50)          # centre, rx, rz, water surface: Steam Pond, in front of the core
 SPINE = [(-10, 46), (-26, 45), (-40, 46), (-50, 47)]   # the ridge's crest line, rising west
-SPINE_TOP = 64                            # its crag at the west end, over the cone
+SPINE_TOP = 67                            # its crag at the west end, over the cone: eight over the casing's top (59)
 SINK = ((-36, 6), 7.5, 43)                # the sinkhole in the wood: centre, radius, floor block
 TUBE = [(-8, 46, 4, 2.6), (-14, 45, 4, 2.8), (-22, 44, 5, 3.0), (-30, 44, 6, 2.8), (-35, 44, 6, 2.4)]
 CAIRN = (-30, -38)                        # the ruined watch tower on the north flats, on the tallest knoll

@@ -67,7 +67,7 @@ WALLS = {  # the bedrock line across each lane: x0, x1 (two thick), the lane's z
 }
 ROOMS = {  # the room's walls round the deck, its doors: (side, from, to) along the face
     "boiler": dict(box=(-79, -90, -64, -73), height=11, doors=[("e", -82, -77), ("s", -68, -66)], wool="boiler"),
-    "tower": dict(box=(60, -88, 75, -71), height=9, doors=[("w", -80, -76), ("s", 61, 63)], wool="tower"),
+    "tower": dict(box=(60, -88, 75, -71), height=9, doors=[("w", -80, -76), ("s", 62, 64)], wool="tower"),
 }
 MONUMENT_Y = 71
 SPAWN_AT = (0, 71, -95)

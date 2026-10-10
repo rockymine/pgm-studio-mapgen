@@ -107,6 +107,10 @@ names the ground it claims, writes its own regions and XML into a `mapxml.Doc`, 
 **Each one checks what makes it playable.** A spawn checks there is room to stand. A monument checks its slot is
 air over something to place on. A core checks there is lava in it.
 
+**A destroyable and a core float three blocks over the floor, never stand on it.** The author's rule is plain: an
+objective standing on the ground reads as part of it. Each checks that every column of it has `FLOAT` (three)
+blocks of air under it; a core over a pit for its leak has more, and passes.
+
 **The XML is the studio's shape, and the studio reads it.** Control points carry the long attribute names and the
 defaults the studio's generator chose from the corpus. Destroyables and cores name a `{id}-region`, and a wool's
 monument is a named block. `data/read_mapxml.cs` runs the studio's own parser and validity check over a written

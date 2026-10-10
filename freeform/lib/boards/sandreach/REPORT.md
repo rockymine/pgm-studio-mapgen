@@ -89,3 +89,23 @@ acacia on the grown ground and the birch in the made beds.
 - `33`: where the yard meets the meadow, the stair in its notch.
 - `34`: the island and the landing.
 - `35`: the wool's house.
+
+## After the playtest
+
+**Sandreach is now capture the wool and destroy the monument at once, with both modes in its map.xml.** Each
+team keeps an emerald monument on its meadow: a cube of emerald three a side with bedrock at its heart, on a plinth
+of smooth sandstone. The meadow is levelled to 21 round it and eased back to the hillside over five blocks.
+
+**A team walks to its own emerald in 46 and builds to the other's in 133, the same for both.** Players crossing
+the meadow pass it anyway; it gives the ground they run over something to fight for. The other wool is still 143
+by building, against 144 before, and the board is still the same for both teams.
+
+**The meadow carries more than grass.** Nine boulders of sandstone, stone and cobble sit into it a dozen blocks
+apart, off the made faces, the stair's foot and the emerald's ground; dead bushes grow on the coarse dirt and a few
+in the grass. The acacias keep ten blocks from the emerald.
+
+**The wool house carries the studio's wool-room loot.** Two chests stand in each inner corner of its first storey,
+as the studio's wool-room stamper lays them.
+
+**The emeralds float three over their plinths, as every monument should.** Each was a cube standing on the plinth
+at 21; it now hangs from 25 to 27, with three blocks of air under every column. The walks to it are unchanged.

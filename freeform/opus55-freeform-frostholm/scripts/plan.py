@@ -37,7 +37,10 @@ def wander(u, key):
 
 # ---- objectives ---------------------------------------------------------------------------------------
 SPAWN = (-64, -64)
-BEACON = (-17, -67)        # the lighthouse on Ravnsodde, the headland over Ravnsund; the core in its lantern
+BEACON = (-17, -67)        # the lighthouse on Ravnsodde, the headland over Ravnsund; its lantern is lit, empty
+CORE = (-28, -58)          # the core: on open ground south-west of the lighthouse, on a plinth over a pit
+CORE_GROUND = 55           # the plinth's top course
+PIT_DEPTH = 7              # the pit under the core: its floor is this far under the plinth
 MONUMENT = (-58, -20)      # on Holmstein, the rock knoll on Kaldvatn's shore
 LAKE = (-70, -26)
 
@@ -48,8 +51,11 @@ PLACES = [
     dict(key="crags", name="Ulvefjell", at=(-80, -80), r=10,
          what="sea crags in the corner, snow on their ledges", why="the back wall of the spawn", how="not climbed without blocks"),
     dict(key="beacon", name="The Beacon", at=BEACON, r=6,
-         what="a stone lighthouse on the headland over Ravnsund; the core burns in its lantern",
-         why="RED CORE", how="the headland path; its stair; the strait below"),
+         what="a stone lighthouse on the headland over Ravnsund; its lantern is lit, and the core stands in the open beside it",
+         why="the landmark the core stands by", how="the headland path; its stair; the strait below"),
+    dict(key="core", name="The Beacon Core", at=CORE, r=5,
+         what="red's core: obsidian round lava, hanging three blocks over a stone brick plinth in the open snow south-west of the lighthouse",
+         why="RED CORE", how="the headland path and the snowfield"),
     dict(key="lake", name="Kaldvatn", at=LAKE, r=10,
          what="a frozen lake in a hollow of the snowfields, ice-fishing huts on it", why="frames the monument; its ice is the open approach",
          how="the lake path"),

@@ -80,3 +80,11 @@ before it is cleared. A pulse twice as fast, or a falling-blocks region, would m
 | Nowhere to wait out the match | Moderate: the lanterns had to move once the checker counted what a long jump could reach | A no-stand check: nothing reachable above the kill height but the floors |
 | Patterns that read as rugs | Moderate: a pattern function per carpet, borders, medallions, diamonds, bands, gardens, a star | Pattern fills for flat pieces |
 | Validation of a wool run | Not attempted | Block drops and falling blocks in the studio's round-trip |
+
+## After the playtest
+
+**Every carpet is now 0.7 of its old length and width, which is 49% of its area.** The playtest called them far too large. I scaled each dimension rather than only the area, so each carpet keeps its proportions and its place on the axis, and every height and gap between carpets is unchanged. The sizes went from 40 by 28, 22 by 52, 52 by 22, 36 by 48 and 46 by 46 to 28 by 20, 16 by 36, 36 by 16, 26 by 34 and 32 by 32.
+
+**The moth holes keep their size and move with the scaling.** Each hole sits at its old place times 0.7, still symmetric about the board's axis, so the garden carpet's five holes still lie over the great carpet and the great carpet's four over nothing. Total wool read back is 3,564 blocks, where it was 7,196, and the spawn, the lanterns and the city beneath follow the plan.
+
+**The plan check still passes, and a carpet lasts half as long.** No carpet cell is off its pattern, white, or held up from below, and every fall lands where the plan says. The sultan's carpet lasts 4 seconds with twenty players, where it lasted 8, and the great carpet 7 against 15. A fall off the runner is out 6% of the time against 8%, and the kilim's 11% against 12%. map.xml reads valid with no issues.

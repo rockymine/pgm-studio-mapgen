@@ -189,3 +189,15 @@ print(len(runs), sum(1 for y in range(8) for x in range(10) for z in range(10) i
 | Joins measured | not done | `plan.joins(R)` listing each pair of touching pieces with the width they share |
 | A walk to a waypoint that avoids its goal | not done | `dijkstra(edges, starts, avoid=cells)` |
 | The build markers | 1 line | `objectives.BuildArea(mask)` stamping block 36 and writing the void filter together |
+
+## After the playtest
+
+**Every platform is now four blocks of stone brick under its floor with a bedrock layer under that.** Floors stay at their plan heights, and the slab went from two blocks (the floor and one brick) to four, with bedrock as the bottom course. The girders and iron bars hang from the bedrock instead of the slab, and the piers run up to it. A player cannot dig a deck away, since survival cannot break bedrock.
+
+**Read back from the built world, all 8,154 deck columns and 108 stair cells carry it.** Each deck column holds four solid blocks from its floor down and bedrock under them, on both halves; the 60 columns where the plan's floor reads 66 are the Quays' head stairs at 65, which carry their stair, three brick and bedrock. The Crane Island, laid after the turn, has floor 66, three brick and bedrock at 62, and its tower's legs now stop under it. Objectives with a problem 0, footing problems 0.
+
+**The wool rooms' chests are the studio's wool-room loot.** `props.wool_chests` is called once per room, before the half turn, with the inside box and the floor (68 for the Boiler House, 66 for the Water Tower), so each room has two stacked chests in each inner corner and the turn gives blue's rooms the same. That is 32 chests of 27 stacks each across the four rooms, where there were two small gear chests. Every chest faces along the axis of its room's door wall, and the turned chests read the opposite way round.
+
+**Nothing the chests stand in front of is in their way.** The boilers along the Boiler House's back wall moved one block east (x -76 to -69) and the Water Tower's pumps two (x 63 to 66), so no corner chest faces a machine. The tower's south door moved from x 61-63 to 62-64, so its corner chest is not on the doorway's first cell. The wool, its spawner point and every door cell are clear of a chest.
+
+**The walks are unchanged.** Spawn to its own monuments reads 9 and 8, and building across the band to the enemy's wools 217 and 212, the same as this board built before the change on the current library (the committed 0.10 figures were 232 and 227). The door move changed one plan-check row, the lane over the wall to the tower room, from 92 with 32 bridged to 95 with 3 bridged, and every row still passes. The written map.xml reads valid with no issues.

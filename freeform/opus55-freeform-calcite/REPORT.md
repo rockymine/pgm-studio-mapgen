@@ -124,3 +124,13 @@ feet already followed.
 
 **The walk could not have caught it.** It counts a place passable with two blocks of air over its floor and does
 not test a body standing across two columns, so its numbers are the same before and after.
+
+## After the third playtest
+
+**The quarry wall is two blocks thick, so the board is the quarry and its rim, not a square of stone round it.**
+Every column of wall more than two from the quarry's open ground, and from every tunnel cut in the rock, is now
+void: 4970 of the board's 11520 columns. They held nothing but stone, clay and bedrock, so no building or tunnel
+lost a block, and the wall still stands two thick behind each spawn tunnel and passage.
+
+**The walks are unchanged.** Building is refused everywhere on this board, so the void outside the wall gives no one
+a new way round.

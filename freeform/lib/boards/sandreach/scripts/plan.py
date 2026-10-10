@@ -12,7 +12,8 @@ The board is red's half (z < 0) turned a half turn about the middle for blue's (
 
     cells()         the made blueprint, both halves: ({cell: Cell}, {cell: 0 red, 1 blue})
     meadow(), island()      the grown ground, red's: (mask, heights) over the world's grid
-    objectives()    two teams; each keeps one wool in its house and takes the other's to its monument
+    objectives()    two teams; each keeps one wool in its house and takes the other's to its monument, and
+                    keeps an emerald monument floating over its meadow that the other team destroys
 """
 import os
 import sys
@@ -22,8 +23,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 import numpy as np  # noqa: E402
 
 from pgmvox import brittle as BR  # noqa: E402
-from pgmvox import noise  # noqa: E402
-from pgmvox.objectives import Box, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402
+from pgmvox import B, noise  # noqa: E402
+from pgmvox.objectives import FLOAT, Box, Destroyable, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402
 from pgmvox.plan import Symmetry  # noqa: E402
 
 BOARD = "sandreach"
@@ -126,6 +127,7 @@ def made_mask(X, Z, cs, pad=0):
 
 
 STAIR_FOOT = (20, 24, -60, -56)            # the meadow stair's foot: x0, x1, z0, z1, laid level at LANE
+EMERALD_AT, EMERALD_Y = (40, -64), 21      # red's emerald monument: its middle column, and the ground under it
 
 
 def meadow(X, Z, cs):
@@ -143,6 +145,9 @@ def meadow(X, Z, cs):
     fx0, fx1, fz0, fz1 = STAIR_FOOT                                 # the stair's foot, level, and round it a
     d = np.maximum(np.maximum(fx0 - X, X - fx1), np.maximum(fz0 - Z, Z - fz1))   # gentle run out to the hill
     H = np.where(d <= 0, LANE, np.where(d < 6, LANE + (H - LANE) * d / 6.0, H))
+    mx, mz = EMERALD_AT                                             # the emerald's ground, level, eased out to the hill
+    d = np.maximum(np.abs(X - mx), np.abs(Z - mz))
+    H = np.where(d <= 3, EMERALD_Y, np.where(d < 8, EMERALD_Y + (H - EMERALD_Y) * (d - 3) / 5.0, H))
     return m, np.round(H).astype(int)
 
 
@@ -179,4 +184,9 @@ def objectives():
     bx, bz = SYM.point(MONUMENT[0], MONUMENT[2])
     O.add(Wool("blue-team", "yellow", slot=(int(bx), MONUMENT[1], int(bz)), found=WOOL_AT, room=room),
           color="orange")
+    ex, ez = EMERALD_AT                       # and a monument to destroy on each meadow: a cube of emerald on bedrock
+    lo = EMERALD_Y + 1 + FLOAT                # floating three over its plinth
+    O.add(Destroyable("red-emerald", "Red Emerald", "red-team", Box(ex - 1, lo, ez - 1, ex + 1, lo + 2, ez + 1),
+                      material=(B.EMERALD_BLOCK, 0), materials="emerald block", heart=(B.BEDROCK, 0)),
+          name="Blue Emerald")
     return O

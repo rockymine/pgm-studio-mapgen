@@ -73,7 +73,7 @@ b.raster(R, "z", 0, KC, depth=4)
 b.level(P.KILL_Y, f"kill below y {P.KILL_Y}")
 S.row(a, b)
 c = SectionPanel(-80, -44, 40, 108, scale=8, title="UP THE GLACIER STAIR, x 62",
-                 legend="north to south: the Ice Hall at 92, the landing, twenty stairs down to the shelf at 72")
+                 legend="north to south: the Ice Hall at 76, the landing, the bridge, four steps down to the shelf at 72")
 c.raster(R, "z", 62, KC, depth=4)
 S.add(c)
 S.table([tuple(row) for row in check["rows"]], width=m.img.width,

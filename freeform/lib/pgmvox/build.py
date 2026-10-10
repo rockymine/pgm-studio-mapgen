@@ -449,6 +449,13 @@ def house(w, h, ground_at=None, rng=None):
         w.set(x, f + 1, z, st["door"], door_data(facing))
         w.set(x, f + 2, z, st["door"], door_data(facing, upper=True))
         door_at = (x, z, NAMES[facing])                          # the way it faces, as a letter
+        wall_cells = {(int(X[i, k]), int(Z[i, k])) for i, k in zip(*np.nonzero(base_wall))}
+        for nx in (x - 1, x, x + 1):                             # a block of wall either side of the door, never a
+            for nz in (z - 1, z, z + 1):                         # window against its frame
+                if (nx, nz) != (x, z) and (nx, nz) in wall_cells:
+                    for y in range(f + 1, f + sh):
+                        if w.get(nx, y, nz) == tuple(st["window"]):
+                            w.set(nx, y, nz, *pick(st["ground"]))
     # the roof
     mt, wt, Lt, Wt = storeys[-1]
     top_cells = {(int(X[i, k]), int(Z[i, k])) for i, k in zip(*np.nonzero(mt))}

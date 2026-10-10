@@ -40,7 +40,8 @@ m.poly([(cx + 7.5 * math.cos(t / 20 * 2 * math.pi), cz + 7.5 * math.sin(t / 20 *
 m.callout(-58, -2, "blowhole: the tube's mouth", dx=-30, dz=30)
 m.callout(-22, 17, "the Cinder Pit: the tube's other mouth", dx=30, dz=34)
 m.callout(-48, -33, "the ridge face: 16 sheer over the plinth's apron", dx=40, dz=-6)
-m.callout(0, 0, "lava lake, surface 47", dx=0, dz=30)
+m.callout(-4, -24, "the ravine: lava at 47, rim 58 to 70", dx=-30, dz=-10)
+m.callout(-8, -1, "the Slag Bridge on its keystone", dx=14, dz=-26)
 
 # the five ways onto red's core, from blue's spawn
 r = S.map(R.x_min, R.z_min, 0, R.z_max, scale=7, title="THE FIVE WAYS ONTO RED'S CORE",
@@ -57,8 +58,8 @@ for name, (x, z) in P.PLACES:
         r.place(x, z, name, size=10)
 
 # sections, true scale
-a = SectionPanel(-90, 90, 0, 90, scale=5, title="ALONG THE AXIS, z -1", legend="west to east through the caldera: "
-                 "the hold, the road, the rim, the lake; the kill height under the island's root")
+a = SectionPanel(-90, 90, 0, 90, scale=5, title="ALONG THE AXIS, z -1", legend="west to east through the ravine: "
+                 "the hold, the road, the bridge on its keystone; the kill height under the island's root")
 a.raster(R, "x", -1, KC, depth=None)
 a.level(P.KILL_Y, f"kill below y {P.KILL_Y}")
 a.level(P.LAVA_Y, "lava 47", colour=(230, 110, 30), dash=True)

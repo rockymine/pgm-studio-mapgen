@@ -50,13 +50,31 @@
         <cuboid min="-4,40,-54" max="4,41,-46" id="north-market-pad"/>
         <cuboid min="-4,40,46" max="4,45,54" id="south-market-capture"/>
         <cuboid min="-4,40,46" max="4,41,54" id="south-market-pad"/>
+        <union id="campo-progress">
+            <cuboid min="-3,40,-3" max="3,41,-2"/>
+            <cuboid min="-3,40,2" max="3,41,3"/>
+            <cuboid min="-3,40,-2" max="-2,41,2"/>
+            <cuboid min="2,40,-2" max="3,41,2"/>
+        </union>
+        <union id="north-market-progress">
+            <cuboid min="-3,40,-53" max="3,41,-52"/>
+            <cuboid min="-3,40,-48" max="3,41,-47"/>
+            <cuboid min="-3,40,-52" max="-2,41,-48"/>
+            <cuboid min="2,40,-52" max="3,41,-48"/>
+        </union>
+        <union id="south-market-progress">
+            <cuboid min="-3,40,47" max="3,41,48"/>
+            <cuboid min="-3,40,52" max="3,41,53"/>
+            <cuboid min="-3,40,48" max="-2,41,52"/>
+            <cuboid min="2,40,48" max="3,41,52"/>
+        </union>
         <apply block="never" message="The quarter is not yours to build on!"/>
     </regions>
     <king>
         <hills required="false" neutral-state="true" incremental="true" show-progress="true" time-multiplier="0" permanent="false">
-            <hill id="campo" name="the Campo" capture-region="campo-capture" progress-display-region="campo-pad" owner-display-region="campo-pad" capture-time="10s" points="2"/>
-            <hill id="north-market" name="the North Fish Market" capture-region="north-market-capture" progress-display-region="north-market-pad" owner-display-region="north-market-pad" capture-time="10s" points="1"/>
-            <hill id="south-market" name="the South Fish Market" capture-region="south-market-capture" progress-display-region="south-market-pad" owner-display-region="south-market-pad" capture-time="10s" points="1"/>
+            <hill id="campo" name="the Campo" capture-region="campo-capture" progress-display-region="campo-progress" owner-display-region="campo-pad" capture-time="10s" points="2"/>
+            <hill id="north-market" name="the North Fish Market" capture-region="north-market-capture" progress-display-region="north-market-progress" owner-display-region="north-market-pad" capture-time="10s" points="1"/>
+            <hill id="south-market" name="the South Fish Market" capture-region="south-market-capture" progress-display-region="south-market-progress" owner-display-region="south-market-pad" capture-time="10s" points="1"/>
         </hills>
     </king>
     <score>

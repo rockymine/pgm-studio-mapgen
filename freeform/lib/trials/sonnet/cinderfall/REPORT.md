@@ -1,0 +1,21 @@
+# Cinderfall
+
+## After the playtest
+
+**The lava lake is a ravine across the island between the teams.** It runs along z through the middle, its centre line drifting three blocks east to the south and west to the north, so the whole is its own image under the half turn. Its rim to rim width is 18 at the neck and 43 where it swells at z 26 and -27, which is 2.5 of the old lake's 17. The caldera's basin was levelled to the plain so every wall is cut from 58 or from the rim's crest at 66, and the plan check reads 17 from the plain to the lava bed.
+
+**The walls are steep and the floor has a shore.** A face is 3.5 blocks across and rises as the 1.6 power of that, so it is nearly sheer at the lip. At its foot a shore of varying width, up to about 7 blocks, lies level with the lava's top block, and the lava keeps a fifth of the floor at the neck. The island's underside is read off the ground as it stood before the cut and is unchanged. The ravine's floor is held three over it, so it runs out into a dry gully short of the island's far edges.
+
+**Stacks stand in the lava and on the shore, and two of them make a crossing.** Eleven rock stacks on red's half and as many on blue's are built with `forms.tower`, rings tapering up from the bed with a ledge every seven courses, in the cliff's colours, their caps from 61 to 72. A chain of six stacks across each bulge has caps about three blocks apart, which a running jump clears but a walk on foot does not: both chains read as reached with jumps of up to 3 in 28 and 27 moves, and as not reached without.
+
+**The crossings and the way down.** The Slag Bridge is a four-wide deck of nether brick between obsidian edges at the plain's level, on obsidian piers, in two spans meeting on a stack in mid-channel; on foot the far head is 25 moves from the near. Two cut stairs of grade 0.6 reach the shore, from the plain at the north end and from the foundry's side in the south, in 23 and 27 moves. With the bridge taken out the walk to the enemy's plinth is 245 against 141, round the ravine's dry ends, so the ravine does split the board.
+
+**A pit of lava lies under each core.** A well 3.4 blocks in radius is sunk in the plinth under the core, with its floor at 38 and the lava's top at 55, three under the plinth, and a lining of obsidian round it. The core's casing floats 7 over the plinth as before, so a player now builds up over lava to reach it. Spawn to the plinth's edge stays 39, and the enemy's plinth by the bridge is 141 where its centre was 134.
+
+**The rock has colour.** Cliff beds are black, red, orange, brown, yellow and white clay with hardened clay, andesite, granite and coarse dirt among them, tilted and folded as the mesa boards' are, and the shore is netherrack, granite, red clay and obsidian. The ground is painted in three zones, an ash grey, a red and a brown, each mixing five or six blocks, so the grey keeps to its own third of the flats.
+
+**Other changes and what the check says.** Ridge Back and the Wood Track were bent east to keep off the ravine's west rim, and the wood is cut where the ravine passes through it. Plan check keeps its targets but for the old basin row, now the ravine's depth, and the way above, whose waypoint moved with the road. The board's walk now reads lava as lethal, which the library's walk does not, so its reached-land figure is 85% where the first build's was 96%; the studio's reader finds no issues in the map.xml.
+
+## After the second playtest
+
+**Houses keep a block of wall either side of the door.** The library's house builder no longer puts a window against a door, and the board was rebuilt with it. Window panes within one block of a door fell by 8 across the four houses with doors, and a scan of all 32 door blocks finds none beside any. The walks are unchanged.

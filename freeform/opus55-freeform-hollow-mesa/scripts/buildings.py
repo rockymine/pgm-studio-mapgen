@@ -856,4 +856,27 @@ def build(w, L):
     for r in P.ROUTES:
         mats = {"street": HARD, "road": TRACK, "track": TRACK}[r["kind"]]
         pave(w, L, r["pts"], {"street": 5, "road": 3, "track": 2}[r["kind"]], mats)
+    wall_beside_doors(w)
     L.records = RECORDS
+
+
+DOORS = (B.SPRUCE_DOOR, B.DARK_OAK_DOOR, 64, 193, 194, 195, 196, 197)
+
+
+def wall_beside_doors(w):
+    """A block of wall either side of every door, never a window: the storefronts, adobes and houses lay their
+    windows by their own rhythm and the door is cut in after, so a pane could stand against its frame. Each such
+    pane takes the wall block under it, or over it where that is glass too."""
+    ii, yy, kk = np.nonzero(np.isin(w.ids, list(set(DOORS))))
+    n = 0
+    for i, y, k in zip(ii, yy, kk):
+        for di, dk in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            a, b = i + di, k + dk
+            if not (0 <= a < w.ids.shape[0] and 0 <= b < w.ids.shape[2]) or w.ids[a, y, b] != B.PANE:
+                continue
+            for src in (y - 1, y - 2, y + 1, y + 2):
+                if w.ids[a, src, b] not in (B.PANE, B.AIR) and w.ids[a, src, b] not in DOORS:
+                    w.ids[a, y, b], w.dat[a, y, b] = w.ids[a, src, b], w.dat[a, src, b]
+                    n += 1
+                    break
+    print(f"  panes beside a door walled up: {n}")

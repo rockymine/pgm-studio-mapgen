@@ -23,7 +23,7 @@ import sketch
 from mc import World, B
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-X0, X1, Z0, Z1 = -180, 179, -180, 179
+X0, X1, Z0, Z1 = -140, 139, -140, 139                           # was -180..179: the outside is 22% narrower a side
 SY = 200
 Y = P.STREET_Y                                                   # a player on the street stands at y 64
 G = Y - 1                                                        # the paving
@@ -38,7 +38,7 @@ def ground(w):
     sx, sz = X1 - X0 + 1, Z1 - Z0 + 1
     xs, zs = np.meshgrid(np.arange(X0, X1 + 1), np.arange(Z0, Z1 + 1), indexing="ij")
     r = np.maximum(np.abs(xs), np.abs(zs)) * 0.6 + np.hypot(xs, zs) * 0.4
-    t = np.clip((r - 105) / 55.0, 0, 1)
+    t = np.clip((r - 105) / 37.0, 0, 1)                            # the mountains rise over 37 blocks, not 55
     ring = t * t * (3 - 2 * t)
     big = noise.fbm((sx, sz), 46, 3, seed=31)
     mass = np.clip((noise.fbm((sx, sz), 40, 2, seed=34) + 0.35) * 1.3, 0, 1) ** 1.3

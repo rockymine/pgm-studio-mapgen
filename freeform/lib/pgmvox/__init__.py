@@ -9,7 +9,7 @@ Import it by path from a board's scripts:
 
 A board records the version it was built with (pgmvox.VERSION) in its build log, since the library moves.
 """
-VERSION = "0.19.0"
+VERSION = "0.21.0"
 
 from .blocks import B, DYE  # noqa: E402,F401
 from .world import World, rng, seed  # noqa: E402,F401

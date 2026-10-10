@@ -127,3 +127,5 @@ stores fall the banner is not. In every case the walk finds no way, not a long o
 **The banner can no longer be lost.** It was a block attackers broke and carried, and once thrown away or dropped
 into the void, it was gone. A block-drops rule on it now drops a banner and puts the block straight back, and an
 apply lets that replacement in ahead of the board's ban on placing.
+
+**The powder stores' obsidian now hangs three blocks over its room's floor.** It stood on the floor course at 27 in the west store and 31 in the east, with no air under it. It is now at 30 and 34, three over the floors at 26 and 30, with the chiseled plinth and slabs flush in the floor course and the glowstone moved up to the roof's underside. Both map.xml regions moved with it, the roofs already leave room, and the walks to the stores read the same.

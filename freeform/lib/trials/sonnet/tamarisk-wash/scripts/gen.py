@@ -93,8 +93,88 @@ def roads(w, L):
             wts = (0.4, 0.3, 0.2, 0.1)
         route.pave(w, np.where(L.water > 0, 0, H), X, Z, [tuple(p) for p in rt["line"]], width=rt["width"], surface=surf,
                    weights=wts, clear=3, seed=len(rt["name"]), keep=(X >= 0) | (L.water > 0))
-        if rt["grade"] > 0.4:
-            route.steps(w, H, X, Z, [tuple(p) for p in rt["line"]], block=B.SANDSTONE_STAIRS, width=min(rt["width"], 3))
+        # a grade over 0.4 is a ghat down the wash's wall: it is rebuilt in half blocks by `ghats`, not stepped by stairs
+
+
+GHATS = ("North Ghat", "South Ghat")
+GHAT_BLOCKS = ((B.SANDSTONE, 0), (B.SANDSTONE, 2))
+GHAT_SLAB = (B.SLAB, 1)                        # a sandstone slab, lower half
+
+
+def _relax(m, band, up):
+    """The nearest 1-Lipschitz field over the band's 4-neighbour graph on the high side of m (up: raised to
+    neighbour - 1, so no cell sits more than a half block under the next) or on its low side (lowered to
+    neighbour + 1), in half-block units."""
+    m = m.copy()
+    while True:
+        old = m.copy()
+        for ax, sh in ((0, 1), (0, -1), (1, 1), (1, -1)):
+            n = np.roll(m, sh, axis=ax)
+            nb = np.roll(band, sh, axis=ax)
+            ok = band & nb
+            m = np.where(ok, np.maximum(m, n - 1) if up else np.minimum(m, n + 1), m)
+        if (m == old).all():
+            return m
+
+
+def _steps_from(seed, band):
+    """4-neighbour steps through the band from the seed cells."""
+    d = np.where(seed, 0.0, np.inf)
+    while True:
+        old = d.copy()
+        for ax, sh in ((0, 1), (0, -1), (1, 1), (1, -1)):
+            n = np.roll(d, sh, axis=ax) + 1
+            ok = band & np.roll(band, sh, axis=ax)
+            d = np.where(ok, np.minimum(d, n), d)
+        if (d == old).all():
+            return d
+
+
+def ghat_levels(L, rt, X, Z, earlier):
+    """The ghat's surface in half blocks over its band: the graded profile held to a rise of at most one half block
+    between neighbouring cells, its two ends held at the ground they meet. Returns (band, level) with level = 2 x
+    the floor block's height, odd where a slab sits over the block."""
+    d, along = shapes.polyline(X, Z, rt["line"])
+    s, p = rt["profile"]
+    band = (d <= rt["width"] / 2) & (X < 0) & ~earlier
+    mt = 2 * np.interp(along, s, p)
+    low, up = _relax(mt, band, True), _relax(mt, band, False)
+    mid = (low + up) / 2
+    top = band & (along < 1.5)
+    bot = band & (along > s[-1] - 1.5)
+    lo_pin = 2 * p[0] - _steps_from(top, band)
+    hi_pin = 2 * p[-1] + _steps_from(bot, band)
+    lvl = np.where(band, np.clip(mid, lo_pin, np.maximum(lo_pin, hi_pin)), 0)
+    return band, np.rint(lvl).astype(int), bool((hi_pin[band] >= lo_pin[band]).all())
+
+
+def ghats(w, L):
+    """The ghats rebuilt from full blocks and slabs: no stairs, so no stair to face the wrong way across a diagonal
+    run, and no step over a half block. Each cell of the band takes the level `ghat_levels` gives it, with the
+    block under it filled and four blocks of air over it."""
+    X, Z = w.grid()
+    earlier = np.zeros(X.shape, bool)
+    r = rng(P.BOARD, "ghats")
+    out = {}
+    for rt in L.routes:
+        if rt["name"] in GHATS:
+            band, lvl, ok = ghat_levels(L, rt, X, Z, earlier)
+            out[rt["name"]] = ok
+            for i, k in np.argwhere(band):
+                x, z, m = int(X[i, k]), int(Z[i, k]), int(lvl[i, k])
+                y, old = m // 2, int(L.H[i, k])
+                for yy in range(min(y, old) - 3, y):
+                    if w.id(x, yy, z) in (B.AIR, B.SAND, B.GRAVEL, B.TALLGRASS):
+                        w.set(x, yy, z, B.SANDSTONE, 0)
+                w.set(x, y, z, *GHAT_BLOCKS[int(r.integers(len(GHAT_BLOCKS)))])
+                above = y + 1
+                if m % 2:
+                    w.set(x, y + 1, z, *GHAT_SLAB)
+                    above = y + 2
+                for yy in range(above, max(y, old) + 5):
+                    w.set(x, yy, z, B.AIR)
+        earlier |= shapes.polyline(X, Z, rt["line"])[0] <= rt["width"] / 2
+    return out
 
 
 def houses(w, L):
@@ -234,8 +314,8 @@ def table_rock(w, L):
     for dx in range(-2, 3):
         for dz in range(-2, 3):
             if max(abs(dx), abs(dz)) <= 1 or (abs(dx) + abs(dz) <= 2):
-                w.set(ox + dx, top + 1, oz + dz, B.SANDSTONE, 2)
-    w.set(ox, top + 1, oz, B.SANDSTONE, 1)
+                w.set(ox + dx, top, oz + dz, B.SANDSTONE, 2)       # flush with the rock: no pedestal under the obelisk
+    w.set(ox, top, oz, B.SANDSTONE, 1)
     for a in range(6):
         ang = a * np.pi / 3 + 0.3
         px, pz = int(round(ox + 6 * np.cos(ang))), int(round(oz + 6 * np.sin(ang)))
@@ -306,7 +386,7 @@ def underground(w, L):
             for dz in range(-1, 2):
                 if w.id(x + dx, fy, z + dz) == B.AIR and w.id(x + dx, fy - 1, z + dz) != B.AIR:
                     w.set(x + dx, fy - 1, z + dz, *((B.SANDSTONE, 2) if r.random() < 0.7 else (B.SANDSTONE, 0)))
-    U.dress_cave(w, (-66, -4, 24, 34, 44, 60), r, ground=None, keep=keep,
+    U.dress_cave(w, (-66, -4, 14, 34, 44, 60), r, ground=None, keep=keep,
                  floors=((B.SANDSTONE, 2), (B.SANDSTONE, 0), (B.GRAVEL, 0)), weights=(0.4, 0.4, 0.2), mushrooms=0.0,
                  stalactites=0.02, ores=60, stalagmites=60, ore_blocks=((B.GOLD_ORE, 0.3), (B.LAPIS_ORE, 0.7)))
     # lights in the roof
@@ -318,12 +398,25 @@ def underground(w, L):
     # the well house over the cistern's shaft
     wx, wz = P.WELL
     DS.well_house(w, wx, wz, P.PLATEAU, cy, r, door_side="e")
+    DS.open_well_foot(w, wx, wz, P.PLATEAU, cy)
     # the old mine
     line = U.gallery_line(P.MINE)
     U.gallery(w, line, r, timber=(B.LOG2, 0), fence=(B.ACACIA_FENCE, 0), stair=B.SANDSTONE_STAIRS, every=4,
               rails=True, torches=10, floor=((B.SANDSTONE, 0), (B.STAINED_CLAY, 12), (B.HARDENED_CLAY, 0)), ore=None)
     sx, sz = P.MINE_SHAFT
     U.shaft(w, sx, sz, P.MINE[-1][1], P.TABLE_TOP, wall=(B.PLANKS, 4), post=(B.LOG2, 0), ladder_on="s")
+
+
+def clear_mouth(w):
+    """Keep the qanat's mouth open: a box of wash floor in front of it with its boulders and shrubs taken away, so the
+    way in from the wash is never a rock the scatter dropped there."""
+    mx, fy, mz, rad = P.QANAT[0]
+    for x in range(mx - 1, mx + 6):
+        for z in range(mz - 3, mz + 4):
+            if x < 0:
+                for y in range(fy, fy + 6):
+                    if w.id(x, y, z) not in (B.WATER, B.WATER_FLOW):
+                        w.set(x, y, z, B.AIR)
 
 
 def plants(w, L):
@@ -402,6 +495,7 @@ def make():
     t0 = time.time()
     lay_ground(w, L)
     roads(w, L)
+    ghats(w, L)
     houses(w, L)
     minaret(w, L)
     souk(w, L)
@@ -411,6 +505,7 @@ def make():
     aqueduct(w, L)
     underground(w, L)
     n_palm, n_shrub, n_cactus = plants(w, L)
+    clear_mouth(w)
     lamps(w, L)
     turn_world(w, "mirror_x", red_cols(w), recolour={(B.CARPET, 14): (B.CARPET, 11)})
     P.objectives().stamp(w)

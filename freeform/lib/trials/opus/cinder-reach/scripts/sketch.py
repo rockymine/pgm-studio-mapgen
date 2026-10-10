@@ -40,7 +40,7 @@ for key, b in P.houses().items():
     m.rect(min(xs), min(zs), max(xs), max(zs), outline=(255, 240, 220), both=True)
 m.objectives(O.markers())
 cx, cz = P.CORE
-m.callout(cx + 2, cz - 2, f"core over a vent: casing {P.CORE_Y}-{P.CORE_Y + 4}, bowl {P.BOWL_Y}, rim {P.RIM_Y}",
+m.callout(cx + 2, cz - 2, f"core over a platform: casing {P.CORE_Y}-{P.CORE_Y + 4}, bowl {P.BOWL_Y}, rim {P.RIM_Y}",
           dx=-60, dz=-70)
 m.callout(*P.SPINE[-1], f"the crag, {P.SPINE_TOP}: 8 over the casing", dx=-40, dz=40)
 x, _, z, _ = P.TUBE[0]
@@ -72,7 +72,7 @@ a = SectionPanel(-104, 30, 38, 76, scale=4, title="ACROSS THE CORE",
                  legend="along x at z 24, true scale: the wall, the hamlet, the bowl and the casing, the pond, the fissure")
 a.raster(R, "x", 24, P.COLOURS)
 a.band(cx - 2, cx + 3, P.CORE_Y, P.CORE_Y + 5, fill=(40, 20, 20), text="core")
-a.band(cx - 2, cx + 3, P.VENT_BOTTOM, P.BOWL_Y + 1, fill=(20, 20, 24), text="vent")
+a.band(cx - 2, cx + 3, P.VENT_BOTTOM, P.BOWL_Y + 1, fill=(20, 20, 24), text="platform pit")
 a.level(P.CORE_Y - P.LEAK, f"leaks below {P.CORE_Y - P.LEAK}", (220, 110, 20), dash=True)
 a.callout(cx + 9, P.RIM_Y + 1, "rim 56: a drop of 6 in", dx=20, dy=-20)
 a.callout(-23, 51, "Steam Pond, 50", dx=10, dy=-24)

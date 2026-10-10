@@ -181,3 +181,17 @@ walk (a swimmer climbs out only at the steps).
 | The axis built once | ordering in gen | `turn_world(..., keep=...)` that leaves the axis's own pieces alone, or a `mirror=False` stamp list |
 | The longest line from a pad | not measured | `sight.longest_line(R, cells, opaque)` |
 | Entries into a region | 12 lines | `plangraph.entries(R, region, walk_kinds)` |
+
+## After the playtest
+
+**A hill needs wool or stained clay under it for PGM to recolour, and the pads had neither.** PGM's default visual-materials filter takes wool, carpet, stained clay, stained glass and its panes, banners and ink sacks, and nothing else. The pads were an Istrian stone border over a quartz and andesite checker, so a hill could be captured and never change colour.
+
+**Each pad is now a stone border, a ring of white stained clay, a ring of white wool and a quartz heart.** The eight-by-eight pad reads back as 28 Istrian stone, 20 white stained clay, 12 white wool and 4 quartz on all three hills. The clay ring is where the capture's progress shows, and the wool ring inside it shows the owner. The pad stays level with the Campo, so the capture region and the walk to each pad are unchanged.
+
+**The map.xml names the ring as the progress display.** The library's hill wrote one pad region as both the progress and the owner display, and PGM takes the progress blocks out of the owner display, so the owner would have shown nothing. `mapxml.py` now defines `campo-progress`, `north-market-progress` and `south-market-progress`, each a union of four one-block-thick cuboids over the clay ring, and points each hill's `progress-display-region` at it. The owner display stays the pad, which leaves the wool ring.
+
+**The studio reads it as valid, and the walks do not move.** The checker reports the map valid with no issues and three control points. Spawn to each pad reads 76, 103 and 104 for red and 76, 104 and 103 for blue, the same as before the change, and the gallery 86.
+
+## After the second playtest
+
+**Houses keep a block of wall either side of the door.** The library's house builder no longer puts a window against a door, and the board was rebuilt with it. A scan of every door block finds no pane or glass beside any. The walks are unchanged but for their timings.

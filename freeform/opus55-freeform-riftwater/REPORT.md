@@ -168,3 +168,14 @@ have to offer to let an author build it without writing a generator.
   over void, and spawn protection. The trees are credited to rockymine, who built them.
 - Requirements: python3 with numpy, scipy and pillow; dotnet 10; the studio repository at
   `/home/user/pgm-studio` with `tools/PgmStudio.RoundTrip` built.
+
+## After the playtest
+
+**A house keeps a block of wall either side of its door, never a window.** The windows were laid by their own
+rhythm along each wall and the door was cut in after, so a pane could stand against the door's frame. Any pane in
+the wall beside a door is now the wall's own block again: 34 panes beside the town's 57 doors before, none after.
+The walks read back unchanged.
+
+## After the fourth playtest
+
+**The monuments hang three blocks over the floor.** Each of the four destroyables was two obsidian blocks with one block of air under them; they now start four over the floor, so three blocks of air lie between the ground and the lowest block, with nothing beneath. The square's monuments went from y 54-55 to 56-57 and the green's from 52-53 to 54-55, in both halves, and the map.xml regions moved with them. The walks to the monuments are unchanged and the audit reads 3 under all four.

@@ -322,7 +322,7 @@ def houses(w):
 
 
 def magazines(w):
-    """The powder stores: brick, low and vaulted, iron-barred windows, a monument of obsidian on a stone plinth in
+    """The powder stores: brick, low and vaulted, iron-barred windows, a monument of obsidian hung three blocks over a stone plinth in
     the middle of the hall, and iron bars across both doors until the Sea Gate falls."""
     for m in P.MAGAZINES:
         x0, x1, z0, z1 = m["box"]
@@ -348,12 +348,12 @@ def magazines(w):
                         w.set(x, y, z, B.IRON_BARS)
                     w.set(x, f + 4, z, *CHISELED)
         mx, my, mz = m["monument"]
-        w.set(mx, my - 1, mz, *CHISELED)
-        w.set(mx, my, mz, B.OBSIDIAN)
+        w.set(mx, f, mz, *CHISELED)                       # the plinth is the floor's own course: nothing stands under
+        w.set(mx, my, mz, B.OBSIDIAN)                     # the monument, which hangs three blocks over it (my = f + 4)
         w.set(mx, my + 1, mz, B.OBSIDIAN)
         for dx, dz in N4:
-            w.set(mx + dx, my - 1, mz + dz, B.SLAB, 5)
-        w.set(mx, f + 5, mz, B.GLOWSTONE)
+            w.set(mx + dx, f, mz + dz, B.SLAB, 5)
+        w.set(mx, f + 6, mz, B.GLOWSTONE)
 
 
 def citadel(w):

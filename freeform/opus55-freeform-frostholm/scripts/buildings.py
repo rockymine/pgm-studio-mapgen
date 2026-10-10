@@ -338,13 +338,10 @@ def beacon(w, F):
     for (dx, dz) in ((3, 0), (-3, 0)):
         for y in (top + 1, top + 2):
             w.set(cx + dx, y, cz + dz, B.AIR)
-    # the core: obsidian round lava, its bottom over the well's mouth
+    # the lantern holds a light now, not the core (the playtest: a core in the tower's top is out of reach and cannot
+    # be defended); the core stands on the ground, see core_plinth
     c0 = top + 1
-    for x in range(cx - 1, cx + 2):
-        for z in range(cz - 1, cz + 2):
-            for y in range(c0, c0 + 3):
-                inner = (x, z, y) == (cx, cz, c0 + 1)
-                w.set(x, y, z, B.LAVA if inner else B.OBSIDIAN)
+    w.set(cx, c0, cz, B.GLOWSTONE)
     w.set(cx, top, cz, B.AIR)                     # the well's mouth, under the core
     # the hatch comes up inside the glass: open the panes over it and beside it into a doorway
     for x, z in ((hx, hz), (hx + 1, hz), (hx - 1, hz), (hx, hz + 1), (hx, hz - 1)):
@@ -355,17 +352,50 @@ def beacon(w, F):
     for y in (g + 1, g + 2):
         w.set(cx - 4, y, cz, B.AIR); w.set(cx - 3, y, cz, B.AIR)
     w.set(cx - 4, g + 1, cz, B.SPRUCE_DOOR, 2); w.set(cx - 4, g + 2, cz, B.SPRUCE_DOOR, 8)
-    F.core = dict(x0=cx - 1, x1=cx + 1, y0=c0, y1=c0 + 2, z0=cz - 1, z1=cz + 1)
     F.beacon_top = top
 
 
+def core_plinth(w, F):
+    """Red's core on open ground by the Beacon: a seven-by-seven plinth of stone brick level with the snow, a pit in
+    its middle (the well, three wide and seven deep, lined in stone brick), and the core floating over the pit's
+    mouth, its bottom three blocks of air over the plinth (the playtest rule). Lava let out of the core falls ten blocks
+    onto the pit's floor, against a leak of five."""
+    cx, cz = P.CORE
+    g = P.CORE_GROUND
+    claim(F, "the core plinth", (cx - 3, cz - 3, cx + 3, cz + 3))
+    F.footprints.append((cx - 4, cz - 4, cx + 4, cz + 4))
+    for x in range(cx - 4, cx + 5):
+        for z in range(cz - 4, cz + 5):
+            edge = max(abs(x - cx), abs(z - cz))
+            if edge > 3:
+                set_ground(w, F, x, z, g, None)               # the ground eased to the plinth's height
+                continue                                       # bare, no snow layer: the floor round the core is a clean 55
+            set_ground(w, F, x, z, g, (B.STONEBRICK, 0 if edge < 3 or (x + z) % 2 else 3))
+            for y in range(g - 8, g):
+                w.set(x, y, z, B.STONEBRICK, 0)
+            for y in range(g + 1, g + 7):
+                w.set(x, y, z, B.AIR)
+    for x in range(cx - 1, cx + 2):                           # the pit: air down to its stone brick floor
+        for z in range(cz - 1, cz + 2):
+            for y in range(g - P.PIT_DEPTH + 1, g + 1):
+                w.set(x, y, z, B.AIR)
+            w.set(x, g - P.PIT_DEPTH, z, B.STONEBRICK, 0)
+    c0 = g + 4
+    for x in range(cx - 1, cx + 2):                           # the core: obsidian round one lava block
+        for z in range(cz - 1, cz + 2):
+            for y in range(c0, c0 + 3):
+                w.set(x, y, z, B.LAVA if (x, z, y) == (cx, cz, c0 + 1) else B.OBSIDIAN)
+    F.core = dict(x0=cx - 1, x1=cx + 1, y0=c0, y1=c0 + 2, z0=cz - 1, z1=cz + 1)
+
+
 def holmstein(w, F):
-    """The monument on the knoll's crown, two obsidian blocks floating; a ring of standing stones round the
+    """The monument over the knoll's crown, two obsidian blocks hanging three blocks of air over it; a ring of standing stones round the
     knoll's foot, well back from it."""
     mx, mz = P.MONUMENT
     g = H(F, mx, mz)
-    w.set(mx, g + 3, mz, B.OBSIDIAN); w.set(mx, g + 4, mz, B.OBSIDIAN)
-    F.monument = (mx, g + 3, mz)
+    w.set(mx, g + 1, mz, B.AIR)                              # no snow layer under it: the crown's top block is the floor
+    w.set(mx, g + 4, mz, B.OBSIDIAN); w.set(mx, g + 5, mz, B.OBSIDIAN)
+    F.monument = (mx, g + 4, mz)
     claim(F, "monument clearance", (mx - 4, mz - 4, mx + 4, mz + 4))
     for k in range(7):
         a = 2 * np.pi * k / 7 + 0.3
@@ -660,6 +690,7 @@ def build(w, F):
             for k in (1, 2):
                 w.set(fx, y, fz + k, B.WOOL, 14)
     beacon(w, F)
+    core_plinth(w, F)
     holmstein(w, F)
     lx, lz = P.LAKE
     ice_hut(w, F, lx - 5, lz - 4)

@@ -604,8 +604,8 @@ class Objectives(unittest.TestCase):
         o.add(O.Spawn("red-team", (-20, 11, 0), yaw=-90, area=O.Box(-21, 11, -1, -19, 13, 1)))
         o.add(O.Hill("mid", "the Middle", O.Box(-2, 10, -2, 1, 10, 1)), mirror=False)
         o.add(O.Wool("blue-team", "lime", slot=(-15, 12, 6)), color="pink")
-        o.add(O.Destroyable("red-dtm", "Red's", "red-team", O.Box(-16, 11, -8, -15, 12, -7)))
-        o.add(O.Core("red-core", "Red's Core", "red-team", O.Box(-12, 11, 4, -10, 13, 6)))
+        o.add(O.Destroyable("red-dtm", "Red's", "red-team", O.Box(-16, 14, -8, -15, 15, -7)))      # three over
+        o.add(O.Core("red-core", "Red's Core", "red-team", O.Box(-12, 14, 4, -10, 16, 6)))        # the floor
         return o
 
     def world(self, o):
@@ -832,6 +832,46 @@ class Plots(unittest.TestCase):
         r = plot.check_alone(Bad)
         self.assertTrue(any("forbidden" in e for e in r["errors"]))
         self.assertTrue(any("outside" in e for e in r["errors"]))
+
+
+class DestroyableHeart(unittest.TestCase):
+    def test_heart_at_the_middle(self):
+        d = O.Destroyable("m", "M", "red-team", O.Box(2, 5, 2, 4, 7, 4), material=(B.EMERALD_BLOCK, 0),
+                          materials="emerald block", heart=(B.BEDROCK, 0))
+        w = World(0, 0, 8, 8, sy=10)
+        d.stamp(w)
+        self.assertEqual(w.id(3, 6, 3), B.BEDROCK)
+        self.assertEqual(w.id(2, 5, 2), B.EMERALD_BLOCK)
+        self.assertEqual(d.check(w), [])
+
+    def test_two_gamemodes(self):
+        self.assertEqual(Doc("x", "1", "o", ["ctw", "dtm"]).tostring().count("<gamemode>"), 2)
+
+
+class HouseDoor(unittest.TestCase):
+    def test_no_window_beside_the_door(self):
+        for L in (5, 6, 7, 8, 9, 10, 11):
+            w = World(-20, -20, 40, 40, sy=80)
+            d = BLD.house(w, BLD.House(0, 0, 0, L=L, W=6, floor=64, windows=BLD.windows(period=2)))
+            x, z = d["door"][0], d["door"][1]
+            for dx in (-1, 0, 1):
+                for dz in (-1, 0, 1):
+                    for y in range(65, 68):
+                        self.assertNotEqual(w.id(x + dx, y, z + dz), B.PANE, (L, dx, dz, y))
+
+
+class FloatRule(unittest.TestCase):
+    def test_on_the_floor_is_a_problem(self):
+        w = World(0, 0, 8, 8, sy=16)
+        w.fill(0, 0, 0, 7, 3, 7, B.STONE)
+        on = O.Destroyable("m", "M", "red-team", O.Box(2, 4, 2, 3, 5, 3))
+        on.stamp(w)
+        self.assertTrue(any("float" in p for p in on.check(w)))
+        w2 = World(0, 0, 8, 8, sy=16)
+        w2.fill(0, 0, 0, 7, 3, 7, B.STONE)
+        up = O.Destroyable("m", "M", "red-team", O.Box(2, 7, 2, 3, 8, 3))
+        up.stamp(w2)
+        self.assertEqual(up.check(w2), [])
 
 
 class WoolChests(unittest.TestCase):

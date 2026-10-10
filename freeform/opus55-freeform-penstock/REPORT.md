@@ -68,3 +68,16 @@ source for shops, shopkeepers, spawners, score boxes and portals, and Facility's
 | No block interaction but leaves | Easy: one apply rule and a kill reward | A building-rule option per board: none, a material list, or everything |
 | Holes into the void as a risk | Easy: shafts cut to y 0, a fall-kill below 8 | A hole piece with its rail sides chosen and the kill height written |
 | Validation of a TDM map | Not possible here: the studio refuses the gamemode | TDM and scorebox support in the parser, so the round-trip can read the XML |
+
+## After the playtest
+
+**The hall's flights up to the catwalks stand clear of the penstocks' stairs now.** Each flight's foot was on
+the same columns as the stair coming up out of the penstock, so the two climbed through each other in the middle
+of the hall. The flights and their landings moved six blocks west; two blocks of floor now lie between the
+flight's foot and the penstock's opening.
+
+**The gallery's flights up to the Control Walk have room before their first step.** Each began against the
+gallery's back wall, so a player coming from the spawn could only step onto it from the side. A niche two blocks
+deep is cut into the wall before each, three high, so the first step is walked up to head on.
+
+**The walks read back as before.**

@@ -52,14 +52,18 @@ FLIGHTS = [
     # gallery up to the Control Walk, rising east
     dict(key="walk-n", box=(-55, -49, -20, -17), axis="x", step=+1, y0=21, y1=26),
     dict(key="walk-s", box=(-55, -49, 16, 19), axis="x", step=+1, y0=21, y1=26),
-    # hall floor up to the catwalks, rising west, landing beside the catwalk
-    dict(key="cat-n", box=(-16, -10, -30, -27), axis="x", step=-1, y0=21, y1=26),
-    dict(key="cat-s", box=(-16, -10, 26, 29), axis="x", step=-1, y0=21, y1=26),
+    # hall floor up to the catwalks, rising west, landing beside the catwalk; set west of the penstocks' stairs up
+    # into the hall (x -13..-8), so the two flights do not stand on each other
+    dict(key="cat-n", box=(-22, -16, -30, -27), axis="x", step=-1, y0=21, y1=26),
+    dict(key="cat-s", box=(-22, -16, 26, 29), axis="x", step=-1, y0=21, y1=26),
     # the spawn's two exits, down from 24 to the gallery
     dict(key="exit-n", box=(-55, -53, -9, -6), axis="x", step=-1, y0=21, y1=23),
     dict(key="exit-s", box=(-55, -53, 5, 8), axis="x", step=-1, y0=21, y1=23),
 ]
-LANDINGS = [dict(box=(-19, -17, -30, -27), y=27), dict(box=(-19, -17, 26, 29), y=27)]
+LANDINGS = [dict(box=(-25, -23, -30, -27), y=27), dict(box=(-25, -23, 26, 29), y=27)]
+# the gallery's flights up to the Control Walk start at its back wall: a niche two deep cut into the wall before
+# each, so a player walks up to the first step head on rather than stepping onto it from the side
+NICHE = (-58, -56)
 
 # ---- the penstocks: tunnels under the hall floor --------------------------------------------------------------
 TUNNELS = [dict(key=f"penstock-{i}", z=(z0, z1)) for i, (_, _, z0, z1) in enumerate(both_z(0, 0, -28, -24))]

@@ -38,7 +38,7 @@ def main(build, out):
         for pts in (r["pts"], [P.rot(x, z) for x, z in r["pts"]]):
             d.line([px(*q) for q in pts], fill=(120, 70, 30), width=2)
     for f, colr in ((lambda x, z: (x, z), (230, 40, 40)), (P.rot, (50, 90, 240))):
-        x, z = f(*P.BEACON)
+        x, z = f(*P.CORE)
         d.rectangle([px(x - 2, z - 2), px(x + 2, z + 2)], fill=(0, 0, 0), outline=colr, width=3)
         x, z = f(*P.MONUMENT)
         d.polygon([px(x, z - 3), px(x + 3, z), px(x, z + 3), px(x - 3, z)], fill=(20, 0, 30), outline=colr)
@@ -51,7 +51,7 @@ def main(build, out):
         d.text((tx, tz), p["name"], fill=(255, 255, 255))
     d.rectangle([0, 0, 470, 32], fill=(18, 18, 26))
     d.text((8, 8), "Frostholm - red (north-west) is named; blue (south-east) is its half-turn.", fill=(255, 255, 255))
-    d.text((8, 20), "Square: the Beacon's core. Diamond: Holmstein's monument. Disc: spawn. Brown: paths.", fill=(255, 255, 255))
+    d.text((8, 20), "Square: the core by the Beacon. Diamond: Holmstein's monument. Disc: spawn. Brown: paths.", fill=(255, 255, 255))
     im.save(out)
 
 

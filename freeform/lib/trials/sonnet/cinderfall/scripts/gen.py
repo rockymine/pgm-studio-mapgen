@@ -17,7 +17,7 @@ import kit
 import plan as P
 from pgmvox import B, World, rng
 from pgmvox import build as BLD
-from pgmvox import route
+from pgmvox import forms, route
 from pgmvox import terrain as T
 from pgmvox import under as U
 from pgmvox.noise import fbm
@@ -32,49 +32,84 @@ def red_cols(w):
     return X < 0
 
 
+# The rock is bedded like a mesa's: bands of burnt clay, orange, brown, red, yellow and white between the black, with
+# andesite, granite and coarse dirt among them, so a cliff reads as strata and not as a grey wall.
+BEDS = ((B.STAINED_CLAY, 15), 1.5, 3), ((B.STAINED_CLAY, 14), 1.2, 2), ((B.STAINED_CLAY, 1), 1.2, 2), \
+    ((B.STAINED_CLAY, 12), 1.5, 3), ((B.HARDENED_CLAY, 0), 1.0, 2), ((B.STONE, 5), 1.5, 3), ((B.STONE, 1), 1.0, 2), \
+    ((B.STAINED_CLAY, 4), 0.5, 1), ((B.STAINED_CLAY, 0), 0.4, 1), ((B.STAINED_CLAY, 7), 0.9, 2), ((B.DIRT, 1), 0.5, 1), \
+    ((B.COAL_BLOCK, 0), 0.4, 1)
+SHORE = ((B.NETHERRACK, 0), (B.STONE, 1), (B.STAINED_CLAY, 14), (B.OBSIDIAN, 0), (B.STAINED_CLAY, 15))
+
+
+def pick(c, table):
+    """A block from (weight, block) rows by a uniform draw c."""
+    t = 0.0
+    for wt, blk in table:
+        t += wt
+        if c < t:
+            return blk
+    return table[-1][1]
+
+
+GROUND_ASH = ((0.50, (B.STAINED_CLAY, 7)), (0.18, (B.STAINED_CLAY, 15)), (0.10, (B.GRAVEL, 0)), (0.10, (B.STONE, 5)),
+              (0.12, (B.STAINED_CLAY, 8)))
+GROUND_RED = ((0.38, (B.STAINED_CLAY, 14)), (0.22, (B.STAINED_CLAY, 1)), (0.14, (B.HARDENED_CLAY, 0)),
+              (0.10, (B.NETHERRACK, 0)), (0.10, (B.STONE, 1)), (0.06, (B.SAND, 1)))
+GROUND_BROWN = ((0.36, (B.STAINED_CLAY, 12)), (0.24, (B.DIRT, 1)), (0.14, (B.STONE, 1)), (0.10, (B.STONE, 5)),
+                (0.10, (B.STAINED_CLAY, 4)), (0.06, (B.STAINED_CLAY, 1)))
+
+
 def lay_ground(w, L):
     """Rock, soil and the painted top over red's land; the underside cleared below each column's bottom."""
     X, Z = w.grid()
     H = L.H.copy()
     red = red_cols(w) & L.land
-    rock = T.Strata([((B.STONE, 5), 3, 5), ((B.STONE, 0), 1.6, 3), ((B.STAINED_CLAY, 15), 1.6, 2),
-                     ((B.STAINED_CLAY, 7), 2, 3), ((B.COAL_BLOCK, 0), 0.5, 1), ((B.STAINED_CLAY, 14), 0.25, 1)],
-                    length=90, seed=5, start=-300)
+    rock = T.Strata(list(BEDS), length=70, seed=5, start=-300)
+    offset = T.bed_offset((w.sx, w.sz), dip=(0.02, 0.05), fold=2.2, cell=26, seed=8)
+    bands = T.beds(rock, offset, flecks=[((B.STONE, 5), (B.COBBLE, 0), 0.05), ((B.STONE, 0), (B.GRAVEL, 0), 0.02)],
+                   seed=3)
     deg = T.lay(w, H, red, top=T.by_angle([(22, (B.STAINED_CLAY, 7)), (45, (B.STONE, 5)), (90, (B.STONE, 0))]),
-                bands=T.beds(rock, H, flecks=[((B.STONE, 5), (B.COBBLE, 0), 0.05), ((B.STONE, 0), (B.GRAVEL, 0), 0.02)],
-                             seed=3),
-                under=(B.STAINED_CLAY, 7), from_y=3, soil=((20, 2), (30, 1)))
+                bands=bands, under=(B.STAINED_CLAY, 7), from_y=3, soil=((20, 2), (30, 1)))
     r = rng(P.BOARD, "ground")
     sh = (w.sx, w.sz)
     patch, cell = fbm(sh, 7, 2, seed=61), r.random(sh)
-    rr = np.hypot(X + 0.5, Z + 0.5)
+    zone = fbm(sh, 22, 2, seed=77)
+    rav = L.rav
     for i, k in np.argwhere(red):
         top = int(H[i, k])
         w.ids[i, :max(0, int(L.bottom[i, k])), k] = 0
         w.dat[i, :max(0, int(L.bottom[i, k])), k] = 0
-        if L.lava[i, k]:
+        if L.lava[i, k] or L.pit[i, k]:
             continue
         a = int(deg[i, k])
-        c, pv = cell[i, k], patch[i, k]
-        d = rr[i, k]
+        c, pv, zn = cell[i, k], patch[i, k], zone[i, k]
+        shore = rav["c1"][i, k] - 0.5 <= rav["c"][i, k] < rav["c2"][i, k] + 0.5 and L.land[i, k]
+        if shore:
+            w.ids[i, top, k], w.dat[i, top, k] = pick(c, tuple((1 / len(SHORE), b) for b in SHORE))
+            continue
+        if a > 45:
+            w.ids[i, top, k], w.dat[i, top, k] = bands(i, k, [top])[0]    # the beds show on the faces, to the lip
+            continue
         if a <= 22:
             if pv > 0.25:
-                blk = (B.STAINED_CLAY, 15) if c < 0.88 else (B.STAINED_CLAY, 7)          # burnt ground
+                blk = (B.STAINED_CLAY, 15) if c < 0.7 else (B.STAINED_CLAY, 12) if c < 0.9 else (B.NETHERRACK, 0)
+            elif zn > 0.15:
+                blk = pick(c, GROUND_RED)
+            elif zn < -0.15:
+                blk = pick(c, GROUND_BROWN)
             elif pv < -0.25:
-                blk = (B.STONE, 5) if c < 0.88 else (B.GRAVEL, 0)
+                blk = (B.STONE, 5) if c < 0.5 else (B.STONE, 1) if c < 0.8 else (B.DIRT, 1)
             else:
-                blk = (B.STAINED_CLAY, 7) if c < 0.86 else (B.GRAVEL, 0) if c < 0.95 else (B.STAINED_CLAY, 8)
-            w.ids[i, top, k], w.dat[i, top, k] = blk
-        elif a <= 45:
-            blk = (B.STONE, 5) if c < 0.5 else (B.COBBLE, 0) if c < 0.75 else (B.STAINED_CLAY, 15) if pv > 0.2 else (B.STONE, 0)
+                blk = pick(c, GROUND_ASH)
             w.ids[i, top, k], w.dat[i, top, k] = blk
         else:
-            blk = (B.STONE, 0) if c < 0.4 else (B.STONE, 5) if c < 0.7 else (B.STAINED_CLAY, 15) if c < 0.85 else (B.COBBLE, 0)
+            if c < 0.55:
+                w.ids[i, top, k], w.dat[i, top, k] = bands(i, k, [top])[0]   # a bed shows through the slope
+                continue
+            blk = (B.STONE, 5) if c < 0.7 else (B.STONE, 1) if c < 0.8 else (B.COBBLE, 0) if c < 0.9 else (B.STAINED_CLAY, 14)
             w.ids[i, top, k], w.dat[i, top, k] = blk
-        # round the lake: obsidian and netherrack on the shore, cracks that glow, ash beyond it
-        if 8.6 < d <= 11.5 and a <= 45:
-            w.ids[i, top, k], w.dat[i, top, k] = (B.OBSIDIAN, 0) if c < 0.45 else (B.NETHERRACK, 0)
-        elif 11.5 < d <= 24 and a <= 40 and pv > 0.4:
+        # cracks that glow, where the ground is burnt
+        if 14 < np.hypot(X[i, k] + 0.5, Z[i, k] + 0.5) <= 30 and a <= 40 and pv > 0.4:
             w.ids[i, top, k], w.dat[i, top, k] = (B.NETHERRACK, 0)
             if c < 0.05:
                 w.ids[i, top, k], w.dat[i, top, k] = (B.GLOWSTONE, 0)
@@ -83,20 +118,24 @@ def lay_ground(w, L):
 
 
 def lava_lake(w, L):
-    """The lake: lava from its bed to the surface, an obsidian bed, a glowing floor."""
-    red = red_cols(w) & L.land & L.lava
-    for i, k in np.argwhere(red):
-        top = int(L.H[i, k])
-        w.ids[i, top, k], w.dat[i, top, k] = B.OBSIDIAN, 0
-        w.ids[i, top + 1:P.LAVA_Y + 1, k] = B.LAVA
-        w.dat[i, top + 1:P.LAVA_Y + 1, k] = 0
-    # the east half of the lake is blue's image of the west half: the lake straddles the seam, so draw it whole
+    """The ravine's lava, bed to surface over an obsidian floor, and the pit under the core, lined in obsidian."""
     X, Z = w.grid()
-    for i, k in np.argwhere(L.lava & (X >= 0) & L.land):
+    for i, k in np.argwhere(L.lava & L.land):
         top = int(L.H[i, k])
         w.ids[i, top, k], w.dat[i, top, k] = B.OBSIDIAN, 0
         w.ids[i, top + 1:P.LAVA_Y + 1, k] = B.LAVA
         w.dat[i, top + 1:P.LAVA_Y + 1, k] = 0
+    cx, cz = P.CORE_AT
+    for i, k in np.argwhere(L.pit & (X < 0)):
+        w.ids[i, P.PIT_BED, k], w.dat[i, P.PIT_BED, k] = B.OBSIDIAN, 0
+        w.ids[i, P.PIT_BED + 1:P.PIT_LAVA_Y + 1, k] = B.LAVA
+        w.dat[i, P.PIT_BED + 1:P.PIT_LAVA_Y + 1, k] = 0
+    for x in range(cx - 6, cx + 7):                                      # the pit's lining: a ring of obsidian, solid to the rim
+        for z in range(cz - 6, cz + 7):
+            d = np.hypot(x - cx, z - cz)
+            if P.PIT_R < d <= P.PIT_R + 1.3:
+                for y in range(P.PIT_BED, P.PLINTH_Y):
+                    w.set(x, y, z, B.OBSIDIAN, 0)
 
 
 def tube(w, L):
@@ -180,6 +219,52 @@ def houses(w, L):
     return out
 
 
+def stack_rock(y, b):
+    """The beds of a stack, by height: the same colours the cliffs wear, tilted a little by the bulge."""
+    seq = ((B.STAINED_CLAY, 15), (B.STAINED_CLAY, 14), (B.STAINED_CLAY, 1), (B.STAINED_CLAY, 12), (B.HARDENED_CLAY, 0),
+           (B.STONE, 5), (B.STAINED_CLAY, 4), (B.STAINED_CLAY, 12), (B.STONE, 1), (B.STAINED_CLAY, 7))
+    return seq[(y + int(3 * b)) // 3 % len(seq)]
+
+
+def stacks(w, L):
+    """Rock stacks standing in the ravine and on its shore, and the keystone in mid-channel: rings tapering up from
+    the bed with a ledge every seven courses, the beds running round them, a cap of andesite to stand on."""
+    r = rng(P.BOARD, "stacks")
+    through = (B.AIR, B.LAVA, B.LAVA_FLOW)
+    n = 0
+    items = [(x, z, rad, top) for x, z, rad, top, _ in P.STACKS] + [(-1, -1, 4.6, P.BRIDGE_Y)]
+    for j, (x, z, rad, top) in enumerate(items):
+        ground = int(L.H[x - w.x0, z - w.z0])
+        n += forms.tower(w, x, z, ground - 2, top, rad, stack_rock, r, taper=(1.15, 0.72), ledge_every=7, ledge=0.7,
+                         bulge=1.0, cell=4, seed=90 + j, through=through, crown=(B.STONE, 5), crown_r=0.8, vines=0)
+    return n
+
+
+def bridge(w, L):
+    """The Slag Bridge: a four-wide deck of nether brick between obsidian edges from the rim pad to the keystone, level
+    with the plain, on two obsidian piers; a brazier at the head. Red's span only: the half turn lays blue's."""
+    y = P.BRIDGE_Y
+    x0, x1 = P.BRIDGE_X[0], -1
+    z0, z1 = P.BRIDGE_Z
+    for x in range(x0, x1 + 1):
+        for z in range(z0, z1 + 1):
+            edge = z in (z0, z1)
+            for yy in range(y + 1, y + 5):
+                if w.id(x, yy, z) != B.AIR:
+                    w.set(x, yy, z, B.AIR)
+            w.set(x, y, z, *((B.OBSIDIAN, 0) if edge else (B.NETHER_BRICK, 0)))
+            if w.id(x, y - 1, z) == B.AIR or w.id(x, y - 1, z) == B.LAVA:
+                w.set(x, y - 1, z, *((B.OBSIDIAN, 0) if edge else (B.STONEBRICK, 0)))
+    for px in (x0 + 4, x0 + 8):
+        for pz in (z0 + 1, z0 + 2):
+            yy = y - 2
+            while yy > 2 and w.id(px, yy, pz) in (B.AIR, B.LAVA, B.LAVA_FLOW):
+                w.set(px, yy, pz, B.OBSIDIAN, 0)
+                yy -= 1
+    kit.brazier(w, x0 + 1, y, z0 - 1)
+    kit.brazier(w, x0 + 1, y, z1 + 1)
+
+
 def beacon(w, L):
     x0, z0, x1, z1 = P.BEACON
     kit.tower(w, x0, z0, x1, z1, P.BEACON_Y, 12, rng=rng(P.BOARD, "beacon"), door_side="s", ladder_on="n")
@@ -198,6 +283,10 @@ def plinth(w, L):
                 else (B.STONE, 6)
             if abs(x - cx) <= 1 and abs(abs(z - cz) - 6) <= 0 or abs(z - cz) <= 1 and abs(abs(x - cx) - 6) <= 0:
                 blk = (B.GLOWSTONE, 0)
+            if d <= P.PIT_R:                                   # the pit: lava to three under the rim, air over it
+                for y in range(P.PIT_LAVA_Y + 1, P.PLINTH_Y + 4):
+                    w.set(x, y, z, B.AIR)
+                continue
             w.set(x, P.PLINTH_Y, z, *blk)
             for y in range(P.PLINTH_Y + 1, P.PLINTH_Y + 4):
                 w.set(x, y, z, B.AIR)
@@ -307,9 +396,11 @@ def make():
     t0 = time.time()
     lay_ground(w, L)
     lava_lake(w, L)
+    n_stacks = stacks(w, L)
     n_tube = tube(w, L)
     clear_pits(w, L)
     roads(w, L)
+    bridge(w, L)
     houses(w, L)
     beacon(w, L)
     plinth(w, L)

@@ -145,10 +145,10 @@
 </control-points>
 <destroyables>
     <destroyable id="west-store" name="West Powder Store" owner="defenders" materials="obsidian" completion="100%">
-        <region><cuboid min="-18,27,0" max="-17,29,1"/></region>
+        <region><cuboid min="-18,30,0" max="-17,32,1"/></region>
     </destroyable>
     <destroyable id="east-store" name="East Powder Store" owner="defenders" materials="obsidian" completion="100%">
-        <region><cuboid min="18,31,15" max="19,33,16"/></region>
+        <region><cuboid min="18,34,15" max="19,36,16"/></region>
     </destroyable>
 </destroyables>
 <block-drops>

@@ -49,8 +49,8 @@
         <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
         <cuboid min="-58,74,-28" max="-57,77,-27" id="red-obelisk-region"/>
         <cuboid min="57,74,-28" max="58,77,-27" id="blue-obelisk-region"/>
-        <cuboid min="-63,65,21" max="-62,67,22" id="red-sunstone-region"/>
-        <cuboid min="62,65,21" max="63,67,22" id="blue-sunstone-region"/>
+        <cuboid min="-63,66,21" max="-62,68,22" id="red-sunstone-region"/>
+        <cuboid min="62,66,21" max="63,68,22" id="blue-sunstone-region"/>
         <below y="6" id="the-fall"/>
         <apply kit="fall-kill" region="the-fall"/>
         <apply block-place="not-void" message="You may not build in the void!"/>

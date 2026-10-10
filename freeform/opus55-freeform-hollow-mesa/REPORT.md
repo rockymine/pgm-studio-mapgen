@@ -178,3 +178,25 @@ props. These are the things this board added.
   signs).
 - `world/map.xml`: DTC, teams, spawns, a kit, two cores with `leak="5"`, spawn protection, and `no-void`
   over the whole board. The trees are credited to rockymine, who built them.
+
+## After the playtest
+
+**The core floats five over the plateau, a dozen blocks east of the headframe, where the fort's road sees it.** It
+was in the Throat, out of sight under the mesa, and a new player could not find it. Its shell of obsidian and lava
+now hangs from 79 to 82 over ground at 73.
+
+**A well two blocks wide drops from under the core through the mesa into the Throat and on to the void.** Lava let
+out of the core's foot falls down it, which is the leak; a ring of dark clay marks the lip. The well lies inside
+the Throat's hole, so the board's rule against building over the void keeps it from being plugged.
+
+**The shaft is now the way up to the core from below, and it climbs.** The catwalk's stair had been laid through the
+shaft after it was cut, and broke its ladder, so nothing could climb it. The shaft is cut last now. From the Bench
+Adit's mouth the core is 77 blocks by the cavern and the shaft, and 108 from the Chimney's; from the spawn it is
+55, against 85 to the old core.
+
+**No trees grow in the Wash any more.** It is the way up from the canyon to the high lands, and its acacias and
+olives made a maze of it. The hoist over the Throat's hole is gone too, since the well comes down where it hung.
+
+**A house keeps a block of wall either side of its door, never a window.** The storefronts, adobes and houses
+each lay their windows by their own rhythm and cut the door in after, so a pane could stand against its frame:
+30 such panes before. Each is now the wall block under it, and none is left; the walks are unchanged.

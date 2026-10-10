@@ -34,7 +34,16 @@ X_MIN, X_MAX = -90, 89
 Z_MIN, Z_MAX = -60, 59
 SYM = Symmetry("half")
 PLAIN = 58                               # the ash plain
-LAVA_Y = 47                              # the lake's surface (the top lava block)
+LAVA_Y = 47                              # the ravine's lava surface (the top lava block)
+COAST_Y = 47                             # the ravine's shore: its floor block, level with the lava's top block
+BRIDGE_Y = 58                            # the Slag Bridge's floor block, level with the plain
+RAV_DRIFT = 3.0                          # the ravine's centre line drifts this far east to the south and west to the north
+RAV_WALL = 3.5                           # blocks across the face, from the shore to the rim
+RAV_NECK = 9.0                           # half width at the neck, as wide as the old lake (17)
+RAV_BULGE = (12.5, 26.0, 9.0)            # extra half width where it swells: how much, at what |z|, how spread
+KEYSTONE = (-1, -1)                      # the stack in mid-channel the bridge's two spans meet on (its own image)
+PIT_R = 3.4                              # the lava pit under the core
+PIT_BED, PIT_LAVA_Y = 38, 55             # its floor block and its lava's top block, three under the plinth's 58
 KILL_Y = 10
 MAX_BUILD = 100
 
@@ -57,34 +66,47 @@ RIDGE_LINE = [(-80, -33), (-64, -31), (-46, -31), (-28, -34)]
 BEACON = (-50, -44, -46, -40)            # the beacon tower on the ridge: x0, z0, x1, z1
 
 KINDS = ["void", "ground", "steep", "lava", "road", "track", "wood", "plinth", "yard", "house", "inside", "door",
-         "ridge", "pit", "stair", "tunnel"]
+         "ridge", "pit", "stair", "tunnel", "bridge", "stack"]
 COLOURS = {"void": (24, 22, 28), "ground": (118, 116, 118), "steep": (86, 82, 84), "lava": (236, 100, 30),
            "road": (150, 140, 128), "track": (130, 112, 96), "wood": (60, 70, 60), "plinth": (70, 62, 66),
            "yard": (170, 150, 120), "house": (130, 60, 44), "inside": (214, 170, 120), "door": (240, 210, 150),
-           "ridge": (100, 98, 108), "pit": (60, 52, 56), "stair": (170, 170, 170), "tunnel": (116, 80, 110)}
+           "ridge": (100, 98, 108), "pit": (60, 52, 56), "stair": (170, 170, 170), "tunnel": (116, 80, 110), "bridge": (190, 170, 150), "stack": (150, 110, 90)}
 WALK = {"ground", "steep", "road", "track", "wood", "plinth", "yard", "inside", "door", "ridge", "pit", "stair",
-        "tunnel"}
+        "tunnel", "bridge", "stack"}
 
 PLACES = [("The Ember Hold", (-74, 12)), ("Slag Road", (-62, 6)), ("The Core Plinth", (-52, -16)),
           ("Slag Ridge", (-62, -38)), ("The Beacon", (-52, -44)), ("Charred Wood", (-33, -16)),
           ("Foundry Row", (-50, 15)), ("The Blowhole", (-60, -3)), ("The Cinder Pit", (-22, 24)),
-          ("The Caldera", (-3, 8)), ("Lava Lake", (-1, -22))]
+          ("The Slag Bridge", (-8, -1)), ("The Ravine", (-4, -24))]
 
 NORTH_WOOD = [(-42, -29), (-22, -31), (-13, -17), (-24, -3), (-37, -9)]
 FOUNDRY = [(-62, 6), (-28, 6), (-28, 32), (-62, 32)]
+# The hop chain is drawn once, across the north bulge, west shore to east shore: A B C on red's side and D E F on blue's,
+# every gap between the caps about three blocks. The south bulge's chain is its image run the other way. Red's half holds
+# A B C and the images of D E F; the half turn gives the rest. (x, z, radius, top, where): lava-standing or shore-standing.
+CHAIN = [(-16, -29, 3.0, 61, "shore"), (-10, -31, 2.6, 62, "lava"), (-5, -27, 2.2, 63, "lava"), (1, -27, 2.2, 63, "lava"),
+         (7, -29, 2.6, 63, "lava"), (13, -31, 2.8, 62, "shore")]
+NEEDLES = [(-10, -19, 2.4, 70, "lava"), (-6, -40, 2.4, 72, "lava"), (-10, -36, 2.6, 64, "shore"), (-9, 37, 2.4, 68, "lava"),
+           (-5, 14, 2.0, 66, "lava")]
+STACKS = sorted([s for s in CHAIN if s[0] < 0] + [(-1 - x, -1 - z, r, t, wh) for x, z, r, t, wh in CHAIN if x >= 0]
+                + NEEDLES)
+KEY_R = 3.4                                # the keystone: a stack in mid-channel, its top level with the bridge
+BRIDGE_X, BRIDGE_Z = (-12, 11), (-2, 1)    # the Slag Bridge's deck, rim pad to rim pad, four wide
 ROUTES = [
     dict(name="Slag Road", kind="road", width=5, grade=0.3,
          pts=[(-64, 10), (-60, 3), (-50, -1), (-40, -4), (-30, -4), (-22, -2), (-14, -1)]),
     dict(name="Spawn Lane", kind="road", width=4, grade=0.3, pts=[(-64, 14), (-62, 20), (-50, 21), (-40, 19)]),
     dict(name="Row Lane", kind="track", width=3, grade=0.3, pts=[(-46, -1), (-46, 8), (-46, 19)]),
     dict(name="Core Path", kind="track", width=3, grade=0.3, pts=[(-48, -1), (-48, -4)]),
-    dict(name="Wood Track", kind="track", width=3, grade=0.3, pts=[(-40, -6), (-32, -14), (-23, -22), (-16, -28)]),
+    dict(name="Wood Track", kind="track", width=3, grade=0.3, pts=[(-40, -6), (-32, -14), (-27, -20)]),
     dict(name="Pit Track", kind="track", width=3, grade=0.3, pts=[(-40, 19), (-34, 19), (-30, 19)]),
     dict(name="Ridge Stair", kind="road", width=4, grade=0.6, pts=[(-64, 4), (-64, -8), (-62, -22), (-59, -34),
                                                                   (-55, -39)]),
-    dict(name="Ridge Back", kind="road", width=4, grade=0.6, pts=[(-30, -3), (-23, -14), (-23, -26), (-30, -37),
+    dict(name="Ridge Back", kind="road", width=4, grade=0.6, pts=[(-30, -3), (-29, -14), (-31, -26), (-34, -37),
                                                                  (-40, -40)]),
     dict(name="Ridge Walk", kind="track", width=3, grade=0.6, pts=[(-55, -39), (-48, -37), (-40, -39)]),
+    dict(name="North Shore Stair", kind="road", width=3, grade=0.6, pts=[(-30, -45), (-22, -46), (-13, -45), (-5, -44)]),
+    dict(name="South Shore Stair", kind="road", width=3, grade=0.6, pts=[(-38, 36), (-30, 34), (-22, 33), (-12, 31)]),
 ]
 
 # ---- buildings: footprint with walls, storeys, which side the door is on ----------------------------------
@@ -121,6 +143,20 @@ def rot(a):
     return a[::-1, ::-1]
 
 
+def ravine_axes(Xf, Zf):
+    """The ravine's frame: (signed distance across its centre line, half width at the rim, z). The centre line is an odd
+    function of z and the half width an even one, so the whole is its own image under the half turn."""
+    u, v = Xf + 0.5, Zf + 0.5
+    a = RAV_DRIFT * np.sin(np.pi * v / 38.0)
+    hw = RAV_NECK + RAV_BULGE[0] * np.exp(-((np.abs(v) - RAV_BULGE[1]) / RAV_BULGE[2]) ** 2)
+    return u - a, hw, v
+
+
+def coast_width(v):
+    """How wide the shore is on the west side at z = v; the east side's is this at -v, so the half turn holds."""
+    return np.maximum(0.0, 3.2 + 3.6 * np.sin(v / 4.7 + 0.9))
+
+
 @lru_cache(maxsize=1)
 def land():
     """The whole board's heights H (floor block y), the lava, the outline, the underside, the routes graded in."""
@@ -139,11 +175,11 @@ def land():
     land_m = e < 1.0
 
     # the plain, and the caldera profile by radius: floor, shore, inner wall, rim, outer skirt
-    prof = np.interp(r, [0, 7, 9.5, 12, 17, 22, 27, 31, 36, 42], [43, 43, 47.5, 49, 50.5, 58, 67, 62, 58.5, 58])
+    prof = np.interp(r, [0, 17, 22, 27, 31, 36, 42], [58, 58, 58, 67, 62, 58.5, 58])     # no basin: the ravine is the low ground
     base = PLAIN + 2.4 * n1 + 3.0 * n2
     cald = np.where(r > 17, PLAIN + (prof - PLAIN) * (1 - 0.8 * mouth * smoothstep(15, 23, r)), prof)
     blendk = smoothstep(40, 46, r)
-    h = np.where(r < 12, prof, base * blendk + (cald + n1 * 1.5 * smoothstep(20, 30, r)) * (1 - blendk))
+    h = np.where(r < 12, PLAIN + 1.2 * n1, base * blendk + (cald + n1 * 1.5 * smoothstep(20, 30, r)) * (1 - blendk))
 
     # the back of red's island: slag hills behind the spawn, the shoulder levelled for the hold
     back = smoothstep(-66, -88, Xf) * (10 + 4 * n2)
@@ -194,10 +230,43 @@ def land():
         h = np.where(m, funnel, h)
         L.funnels.append(m)
 
-    # the lava lake and its bed
-    lava = r < 8.6
-    h = np.where(lava, 44 - (r < 4) * 1.0, h)
+    # the underside is read off the ground as it stood before the ravine, so the island keeps its shape; the ravine's
+    # floor is held three over it
+    red = X < 0
+    hp = np.where(red, h, rot(h))
+    land_p = np.where(red, land_m, rot(land_m))
+    d_edge = ndimage.distance_transform_edt(land_p)
+    nn = sym(fbm(sh, 9, 3, seed=51))
+    thick = 5 + 1.15 * d_edge + 5 * nn
+    bottom0 = np.maximum(np.round(hp) - thick, 14 + 3 * sym(fbm(sh, 16, 2, seed=52))).round().astype(int)
 
+    # the lava pit under the core: a round well in the plinth, lava to three under its rim
+    dpit = np.hypot(Xf - CORE_AT[0], Zf - CORE_AT[1])
+    L.pit = dpit <= PIT_R
+    h = np.where(L.pit, PIT_BED, h)
+
+    # the ravine: across the island between the teams along z, swelling to two and a half lake widths where it
+    # bulges. Across it: lava on a bowl-shaped bed, a shore of varying width, a steep face to the rim
+    off, hw, v = ravine_axes(Xf, Zf)
+    c = np.abs(off)
+    cw = np.where(off < 0, coast_width(v), coast_width(-v))
+    c2 = hw - RAV_WALL
+    c1 = c2 - np.minimum(cw, 0.4 * c2)            # lava keeps at least a fifth of the floor, however wide the shore
+    shore_noise = fbm(sh, 5, 2, seed=63)
+    floor_min = bottom0 + 3
+    bed = np.maximum(np.round(41 + 5 * (c / np.maximum(c1, 1.0)) ** 2), floor_min)
+    coast = np.maximum(COAST_Y + (shore_noise > 0.25), floor_min)
+    t_wall = np.clip((c - c2) / RAV_WALL, 0, 1)
+    face = coast + (h - coast) * t_wall ** 1.6
+    carved = np.where(c < c1, bed, np.where(c < c2, coast, np.where(c < hw, np.minimum(h, face), h)))
+    h = np.where(land_m & (c < hw), carved, h)
+    lava = (c < c1) & (bed < LAVA_Y) & land_m
+    L.rav = dict(off=off, hw=hw, c=c, c1=c1, c2=c2)
+    # the bridgeheads' pads: level with the plain, a little wider than the deck, so the span meets ground
+    padw = (np.abs(v) <= 8) & (c >= hw - 0.5) & (c <= hw + 9)
+    h = np.where(land_m, LF.blend(h, np.full(sh, float(BRIDGE_Y)), padw, width=3), h)
+    pad = (np.abs(v) <= 3.5) & (c >= hw - 0.5) & (c <= hw + 6)
+    h = np.where(pad & land_m, BRIDGE_Y, h)
     H = np.round(h).astype(int)
     L.lava = lava & land_m
 
@@ -216,6 +285,7 @@ def land():
     red = X < 0
     H = np.where(red, H, rot(H))
     L.lava = np.where(red, L.lava, rot(L.lava))
+    L.pit = np.where(red, L.pit, rot(L.pit))
     land_f = np.where(red, land_m, rot(land_m))
     L.plinth = np.where(red, L.plinth, rot(L.plinth))
     L.ridge = np.where(red, L.ridge, rot(L.ridge))
@@ -227,14 +297,10 @@ def land():
         on = (shapes.polyline(Xf, Zf, rt["line"])[0] <= rt["width"] / 2) & land_f
         L.road_on[rt["name"]] = np.where(red, on, rot(on))
 
-    # the underside: thick and ragged, cone-shaped, never lower than 14
-    d_edge = ndimage.distance_transform_edt(land_f)
-    nn = sym(fbm(sh, 9, 3, seed=51))
-    thick = 5 + 1.15 * d_edge + 5 * nn
-    bottom = np.maximum(H - thick, 14 + 3 * sym(fbm(sh, 16, 2, seed=52))).round().astype(int)
+    # the underside: thick and ragged, cone-shaped, never lower than 14, as the ground stood before the ravine
     L.X, L.Z, L.H = X, Z, np.where(land_f, H, -1)
-    L.bottom = np.where(land_f, bottom, 0)
-    wood = shapes.inside(Xf, Zf, NORTH_WOOD)
+    L.bottom = np.where(land_f, bottom0, 0)
+    wood = shapes.inside(Xf, Zf, NORTH_WOOD) & (L.rav["c"] > L.rav["hw"] + 2)
     L.wood = (wood | rot(wood)) & land_f
     L.slope = slope_deg(L.H, land_f)
     L.Xf, L.Zf = Xf, Zf
@@ -333,7 +399,7 @@ def build():
     K[L.plinth] = k_["plinth"]
     for m in L.funnels:
         K[m] = k_["pit"]
-    K[L.lava] = k_["lava"]
+    K[L.lava | L.pit] = k_["lava"]
     H = np.where(L.land, L.H, 0)
     ty = (L.X >= -67) & (L.X <= -64) & (L.Z >= 8) & (L.Z <= 16) & (L.X < 0)
     K[ty] = k_["yard"]
@@ -351,6 +417,14 @@ def build():
                 Kr[x - X_MIN, z - Z_MIN] = k_["house"]
         dx, dz = b["door"]
         Kr[dx - X_MIN, dz - Z_MIN] = k_["door"]
+    for x in range(BRIDGE_X[0], 0):                                    # the Slag Bridge's red span, to the keystone
+        for z in range(BRIDGE_Z[0], BRIDGE_Z[1] + 1):
+            Kr[x - X_MIN, z - Z_MIN], Hr[x - X_MIN, z - Z_MIN] = k_["bridge"], BRIDGE_Y
+    key = (L.X < 0) & (np.hypot(L.Xf + 0.5, L.Zf + 0.5) <= KEY_R)
+    Kr[key], Hr[key] = k_["stack"], BRIDGE_Y
+    for sx, sz, sr, top, _ in STACKS:
+        m = (L.X < 0) & (np.hypot(L.Xf - sx, L.Zf - sz) <= 0.7 * sr)
+        Kr[m], Hr[m] = k_["stack"], top
     K = np.where(red, Kr, rot(Kr))
     H = np.where(red, Hr, rot(Hr))
     R.H[:] = H

@@ -117,3 +117,11 @@ that a plot belongs to its builder kept them as they are.
 | Rooms that hide | Hard for every builder: straight doors, thin round walls and diagonal gaps leak; drop-in rooms and turned passages work | A hiding-room check per plot that names the line of sight in |
 | Plots that vanish on a clock | Moderate: four shuffled orders, one drawn at random, each a set of fills | A timed region-clear in the studio's map.xml, with a random order |
 | Builders reviewing their own work | Haiku did it of its own accord and said which plots still did not read | A per-plot render sheet in the studio's read-back |
+
+## After the playtest
+
+**The outside terrain is 22% narrower on each side.** The generated world ran from -180 to 179 on both axes and now runs from -140 to 139, and the mountains rise over 37 blocks from a radius of 105, where they rose over 55. The walled square, the 48 plots, the market town round it and the church are untouched, since the town's rings stop at 90 blocks.
+
+**The map.xml needed no change.** The `outside` region that keeps players in is the square's own box, from -51 to 52, not the world's extent, so it is the same before and after. The checker reads the map valid with no issues.
+
+**Everything read back is the same.** All 48 plots are placed and pass the kit alone and identical in the square, the streets are clear, every plot's highest place is reached from the hiders' spawn, no plot has anything above its region, and the cage is glass all round and empty inside.

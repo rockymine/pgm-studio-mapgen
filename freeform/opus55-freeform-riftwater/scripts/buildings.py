@@ -114,8 +114,8 @@ def square(w, L):
 
 
 def monument(w, L, x, z, ground):
-    """The destroyable: two obsidian blocks stacked, floating two over the ground, as PGM monuments do."""
-    base = ground + 2
+    """The destroyable: two obsidian blocks stacked, hanging three blocks of air over the ground (the playtest rule), nothing under it."""
+    base = ground + 4
     w.set(x, base, z, MONUMENT_BLOCK)
     w.set(x, base + 1, z, MONUMENT_BLOCK)
     return (x, base, z)

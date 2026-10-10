@@ -185,7 +185,10 @@ turn_world(w, "half", X < 0, banners={1: 4})
 for o in P.objectives().items:
     if hasattr(o, "pad"):
         b = o.pad
-        field = F.first_of(F.border(1, ISTRIAN), F.tiles(2, (B.QUARTZ, 0), (B.STONE, 2)))
+        # a hill's pad must hold what PGM recolours (wool, stained clay): a ring of white stained clay for the capture's
+        # progress, a ring of white wool inside it for the owner, the Istrian border outside and quartz at the heart
+        field = F.first_of(F.border(1, ISTRIAN), F.border(1, (B.STAINED_CLAY, 0), at=1),
+                           F.border(1, (B.WOOL, 0), at=2), lambda c: (B.QUARTZ, 0))
         F.carpet(w, b.x0, b.z0, b.x1, b.z1, S, field)
 w.biome[:, :] = 0
 O = P.objectives()
