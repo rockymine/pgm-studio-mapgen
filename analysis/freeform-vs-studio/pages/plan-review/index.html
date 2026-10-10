@@ -1,0 +1,225 @@
+<meta charset="utf-8">
+<title>Plan Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a review tool — the plan map centre-left, the selected thing and its notes right; places, numbers and notes as tabs. */
+:root{
+  --bg:#eef2f6; --panel:#fbfcfd; --ink:#16202b; --ink-2:#46525f; --ink-3:#6b7682; --rule:#d5dde5; --code:#eef1f4;
+  --accent:#eb6834; --accent-ink:#b5481c; --red:#d0402f; --blue:#2f6fd0; --good:#1f8a4c; --bad:#c53b3a; --warn:#b77900; --sel:#fde6dc; --map:#1b222c;
+  --f-ui:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif; --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#11161c;--panel:#171e26;--ink:#e7edf3;--ink-2:#b4bfca;--ink-3:#8b97a3;--rule:#2c3640;--code:#1d252e;--accent:#d95926;--accent-ink:#f08a5c;--red:#ec6b5c;--blue:#6aa0ee;--good:#4cc07f;--bad:#ec7473;--warn:#e0a83a;--sel:#3a2419;--map:#0d1117;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#11161c;--panel:#171e26;--ink:#e7edf3;--ink-2:#b4bfca;--ink-3:#8b97a3;--rule:#2c3640;--code:#1d252e;--accent:#d95926;--accent-ink:#f08a5c;--red:#ec6b5c;--blue:#6aa0ee;--good:#4cc07f;--bad:#ec7473;--warn:#e0a83a;--sel:#3a2419;--map:#0d1117;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:14px;line-height:1.5}
+.page{max-width:1400px;margin:0 auto;padding-inline:16px;padding-block:16px 40px}
+header{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;justify-content:space-between}
+h1{font-size:1.5rem;margin:0}
+h2{font-size:1rem;margin:0 0 6px}
+.sub{color:var(--ink-2);margin:4px 0 0;max-width:90ch}
+.bar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:.86rem;color:var(--ink-2)}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.seg button{font:inherit;border:0;background:var(--panel);color:var(--ink-2);padding:5px 10px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.bar label{display:inline-flex;gap:5px;align-items:center;cursor:pointer}
+.grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:14px;margin-top:12px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:12px;min-width:0}
+.mapwrap{position:relative;background:var(--map);border-radius:6px;overflow:hidden}
+canvas#map{display:block;width:100%;height:auto;cursor:pointer;image-rendering:pixelated}
+.hint{font-size:.8rem;color:var(--ink-3)}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--rule);margin-bottom:10px;flex-wrap:wrap}
+.tabs button{font:inherit;font-weight:700;background:none;border:0;border-bottom:3px solid transparent;color:var(--ink-2);padding:6px 10px;cursor:pointer}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.list{display:grid;gap:6px;max-height:430px;overflow:auto}
+.item{border:1px solid var(--rule);border-radius:6px;padding:8px 10px;cursor:pointer;background:var(--panel)}
+.item:hover{border-color:var(--accent)}
+.item[aria-current="true"]{background:var(--sel);border-color:var(--accent)}
+.item b{font-weight:700}
+.item .k{font-family:var(--f-mono);font-size:.74rem;color:var(--accent-ink)}
+.item p{margin:4px 0 0;color:var(--ink-2);font-size:.86rem}
+.badge{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:3px;padding:1px 6px;margin-left:6px;vertical-align:1px}
+.b-new{background:color-mix(in srgb,var(--good) 18%,transparent);color:var(--good)}
+.b-miss{background:color-mix(in srgb,var(--bad) 18%,transparent);color:var(--bad)}
+.b-ok{background:color-mix(in srgb,var(--good) 15%,transparent);color:var(--good)}
+.b-ref{background:var(--code);color:var(--ink-3)}
+.b-n{background:color-mix(in srgb,var(--accent) 18%,transparent);color:var(--accent-ink)}
+table{border-collapse:collapse;width:100%;font-size:.84rem}
+td,th{padding:6px 8px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3)}
+td.v{font-family:var(--f-mono);font-size:.8rem;white-space:nowrap}
+tr.sel td{background:var(--sel)}
+tr[data-num]{cursor:pointer}
+.focus{border-top:1px solid var(--rule);margin-top:12px;padding-top:10px}
+.focus .where{font-family:var(--f-mono);font-size:.78rem;color:var(--ink-3)}
+textarea{width:100%;min-height:70px;font:inherit;padding:8px;border:1px solid var(--rule);border-radius:6px;background:var(--bg);color:var(--ink);resize:vertical}
+.btn{font:inherit;font-weight:700;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:6px;padding:6px 12px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent-ink)}
+.btn:disabled{opacity:.5;cursor:default}
+.note{border-left:3px solid var(--accent);padding:6px 10px;margin:6px 0;background:var(--bg);border-radius:0 6px 6px 0}
+.note.agent{border-left-color:var(--blue)}
+.note.resolved{opacity:.6}
+.note .meta{font-size:.74rem;color:var(--ink-3);font-family:var(--f-mono)}
+.note p{margin:3px 0 0;white-space:pre-wrap}
+.verdict{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}
+canvas#sec{display:block;width:100%;height:auto;margin-top:8px;border-radius:4px}
+.empty{color:var(--ink-3);font-size:.86rem;padding:8px 0}
+.status{font-size:.8rem;color:var(--ink-3);margin-top:6px}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+
+<div class="page">
+<header>
+  <div>
+    <h1>Plan Review · Abbeymoor</h1>
+    <p class="sub">A prototype of how an agent's plan could reach the studio for review before anything is built: the places with their reasons, the routes, the numbers against their targets, and the sections, laid over the land. Click anything on the map or in the lists to read it and leave a note on it. Notes are stored for the agent to read. The data is the real pgmvox Abbeymoor plan, at the version it was first reviewed in and after.</p>
+  </div>
+  <div class="bar">
+    <span>Version</span>
+    <span class="seg" role="group" aria-label="Plan version"><button id="v1" aria-pressed="false">v1</button><button id="v2" aria-pressed="true">v2</button></span>
+    <label><input type="checkbox" id="diff"> show what changed</label>
+  </div>
+</header>
+
+<div class="grid">
+  <div class="panel">
+    <div class="bar" style="margin-bottom:8px">
+      <label><input type="checkbox" id="lPlaces" checked> places</label>
+      <label><input type="checkbox" id="lRoads" checked> roads</label>
+      <label><input type="checkbox" id="lWalks" checked> attackers' walks</label>
+      <label><input type="checkbox" id="lUnder"> under the ground</label>
+      <label><input type="checkbox" id="lSecs" checked> sections</label>
+      <label><input type="checkbox" id="lNotes" checked> notes</label>
+    </div>
+    <div class="mapwrap"><canvas id="map" width="800" height="1056" aria-label="The plan of Abbeymoor"></canvas></div>
+    <p class="hint">Red holds the north; blue's half is red's image under the half turn. Click empty ground to pin a note to that spot.</p>
+  </div>
+  <div class="panel">
+    <div class="tabs" role="tablist">
+      <button role="tab" id="tPlaces" aria-selected="true">Places</button>
+      <button role="tab" id="tNums" aria-selected="false">Numbers</button>
+      <button role="tab" id="tNotes" aria-selected="false">Notes <span class="badge b-n" id="noteCount">0</span></button>
+    </div>
+    <div id="pPlaces" class="list"></div>
+    <div id="pNums" hidden><table id="nums"></table><p class="hint">Measured on the plan by the agent's checker before building, each against its target. In the studio the studio would measure them.</p></div>
+    <div id="pNotes" hidden><div id="allNotes" class="list"></div></div>
+    <div class="focus" id="focus">
+      <h2 id="fTitle">Nothing selected</h2>
+      <div class="where" id="fWhere"></div>
+      <div id="fBody" class="sub"></div>
+      <canvas id="sec" width="900" height="200" hidden aria-label="Section"></canvas>
+      <div id="fNotes"></div>
+      <label for="noteText" class="hint">Your note on this</label>
+      <textarea id="noteText" placeholder="What should change, or what is right"></textarea>
+      <div class="verdict">
+        <button class="btn" id="noteSave" disabled>Leave note</button>
+        <span class="status" id="noteStatus"></span>
+      </div>
+    </div>
+    <div class="focus">
+      <h2>The plan as a whole</h2>
+      <div class="verdict">
+        <button class="btn ghost" id="approve">Approve this version</button>
+        <button class="btn ghost" id="changes">Ask for changes</button>
+        <span class="status" id="verdictStatus"></span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+const S=4; // map pixels per block
+const INFO={
+ "HALL FARM (spawn)":{kind:"spawn",what:"The spawn in a hollow: a farmhouse and a hay barn behind it, the sheepfold west, the ridge rising 12 behind.",why:"Every round starts here; the spawn stands in its own land with the ridge at its back.",reach:"The Drove Road to the green, the Hill Track to the abbey."},
+ "ABBEY HILL":{kind:"hill",what:"A plateau at 80 with slopes of 38°, the ruined nave on top.",why:"Monument A stands in the open nave; the hill is what attackers climb to reach it.",reach:"The Hill Track to the north door, the Monks' Way up the east gap, the Night Stair from below."},
+ "Monument A":{kind:"objective",what:"Three obsidian blocks over a stepped dais in the open nave, y 88–90.",why:"Red's first monument. Walls round it are 2–5 high so it shows over them.",reach:"Around (over the moor), above (the east gap), below (the crypt), through the north door."},
+ "the Crypt":{kind:"underground",what:"A vaulted hall under the nave at floor 70, x −52…−43, z −76…−68.",why:"The way to Monument A from below.",reach:"The Night Stair up to the chancel; the passage south to the village."},
+ "the Night Stair":{kind:"stair",what:"Eleven cells in three flights of at most four, from the crypt up into the chancel.",why:"Joins the crypt to the monument's floor.",reach:"From the crypt."},
+ "the Gatehouse":{kind:"landmark",what:"A ruined arch on the way up to the hill.",why:"A landmark and a place to hold on the Monks' Way.",reach:"On the Monks' Way at the hill's foot."},
+ "the Green":{kind:"green",what:"The village green with Monument B on it, houses six or more back.",why:"The second monument's ground: fought across, room by room.",reach:"The Drove Road, the Peat Track, the cellar stair."},
+ "Monument B":{kind:"objective",what:"Three obsidian blocks on the green, y 70–72, in the open.",why:"Red's second monument.",reach:"Across the green, along the Peat Track, up the Tithe Barn's cellar stair (8 from it)."},
+ "the Tithe Barn":{kind:"building",what:"The village's barn; its cellar stair comes up from the crypt passage.",why:"Where the way from below arrives, 8 from Monument B.",reach:"The green; the passage under the valley."},
+ "the Moorcock":{kind:"building",what:"The village inn.",why:"Cover on the green's south side; the Peat Track starts here.",reach:"The green."},
+ "the Bog":{kind:"wetland",what:"A basin 4 under the moor across the middle, pools held at 61; in v2 its outline is warped by noise with a fen channel through it.",why:"The middle both teams cross; slow and open.",reach:"The boardwalk down the axis; the Peat Track; Fen Lane."},
+ "the Standing Stones":{kind:"landmark",what:"Twelve stones about the bog's middle.",why:"The one landmark in the open middle, and cover.",reach:"The boardwalk."},
+ "the Peat Cuttings":{kind:"workings",what:"Trenches with stacked peat on the bog's north shore.",why:"Broken ground at the edge of the middle.",reach:"From the bog and the Monks' Way."},
+ "the Beck":{kind:"water",what:"A stream with a reach and a fall into a pool at the bog's edge.",why:"Frames the village's east side.",reach:"Along the village."},
+ "FENSIDE":{kind:"hamlet",what:"New in v2: two cottages, the Peat Store, a flank orchard and a tarn, on the west flank of the middle.",why:"Your review: something was missing beside the middle.",reach:"Fen Lane from the bog."},
+ "Fen Lane":{kind:"road",what:"New in v2: from the bog to Fenside.",why:"A place nobody reaches wants a path.",reach:""},
+ "the Peat Store":{kind:"building",what:"New in v2: Fenside's store.",why:"Part of the hamlet.",reach:"Fen Lane."},
+};
+const SECTIONS=[{id:"sec-hill",name:"Across the abbey hill, z −72",a:[-100,-72],b:[40,-72]},{id:"sec-axis",name:"Down the axis, x −42",a:[-42,-132],b:[-42,40]}];
+const state={v:"v2",diff:false,data:{},img:{},sel:null,notes:[],db:null,user:null,uid:null,pending:null};
+const cv=document.getElementById("map"),ctx=cv.getContext("2d");
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function loadImg(src){return new Promise(r=>{const i=new Image();i.onload=()=>r(i);i.onerror=()=>r(null);i.src=src})}
+function heights(img){const c=document.createElement("canvas");c.width=img.width;c.height=img.height;const x=c.getContext("2d");x.drawImage(img,0,0);const d=x.getImageData(0,0,img.width,img.height).data;const a=new Uint8Array(img.width*img.height);for(let i=0;i<a.length;i++)a[i]=d[i*4];return {a,w:img.width,h:img.height}}
+async function load(v){if(state.data[v])return;const [j,b,u,h]=await Promise.all([fetch(`data/plan-${v}.json`).then(r=>r.json()),loadImg(`data/base-${v}.png`),loadImg(`data/under-${v}.png`),loadImg(`data/h-${v}.png`)]);state.data[v]=j;state.img[v]={base:b,under:u,h:h?heights(h):null}}
+const D=()=>state.data[state.v];
+const px=x=>(x-D().x0)*S+S/2, pz=z=>(z-D().z0)*S+S/2;
+function placeKey(p){return "place:"+p.name}
+function changed(){const a=state.data.v1,b=state.data.v2;if(!a||!b)return new Set();const na=new Set(a.places.map(p=>p.name));const s=new Set(b.places.filter(p=>!na.has(p.name)).map(p=>p.name));for(const r of Object.keys(b.roads))if(!a.roads[r])s.add("road:"+r);return s}
+function draw(){const d=D();if(!d)return;cv.width=d.nx*S;cv.height=d.nz*S;ctx.imageSmoothingEnabled=false;ctx.fillStyle=css("--map");ctx.fillRect(0,0,cv.width,cv.height);
+ const I=state.img[state.v];if(I.base)ctx.drawImage(I.base,0,0,cv.width,cv.height);
+ if(document.getElementById("lUnder").checked&&I.under){ctx.globalAlpha=.95;ctx.drawImage(I.under,0,0,cv.width,cv.height);ctx.globalAlpha=1}
+ const ch=state.diff?changed():new Set();
+ if(document.getElementById("lRoads").checked){for(const [name,pts] of Object.entries(d.roads)){const isNew=ch.has("road:"+name);const sel=state.sel&&state.sel.key==="road:"+name;ctx.lineWidth=sel?7:4;ctx.strokeStyle=isNew?"#3fbf6f":sel?css("--accent"):"rgba(255,240,200,.9)";ctx.setLineDash(isNew?[]:[]);ctx.beginPath();pts.forEach(([x,z],i)=>i?ctx.lineTo(px(x),pz(z)):ctx.moveTo(px(x),pz(z)));ctx.stroke()}}
+ if(document.getElementById("lWalks").checked){for(const [k,path] of Object.entries(d.paths)){ctx.strokeStyle="rgba(47,111,208,.95)";ctx.lineWidth=3;ctx.setLineDash([8,6]);ctx.beginPath();path.forEach(([x,z],i)=>i?ctx.lineTo(px(x),pz(z)):ctx.moveTo(px(x),pz(z)));ctx.stroke();ctx.setLineDash([]);const [ex,ez]=path[path.length-1];ctx.fillStyle="#2f6fd0";ctx.beginPath();ctx.arc(px(ex),pz(ez),6,0,7);ctx.fill()}}
+ if(document.getElementById("lSecs").checked){for(const s of SECTIONS){const sel=state.sel&&state.sel.key==="section:"+s.id;ctx.strokeStyle=sel?css("--accent"):"rgba(255,255,255,.75)";ctx.lineWidth=sel?4:2;ctx.setLineDash([3,5]);ctx.beginPath();ctx.moveTo(px(s.a[0]),pz(s.a[1]));ctx.lineTo(px(s.b[0]),pz(s.b[1]));ctx.stroke();ctx.setLineDash([]);ctx.fillStyle="rgba(255,255,255,.9)";ctx.font="bold 18px "+css("--f-ui");ctx.fillText("§",px(s.a[0])+4,pz(s.a[1])-4)}}
+ for(const m of d.markers){ctx.fillStyle=m.team==="red-team"?"#d0402f":"#2f6fd0";ctx.strokeStyle="#fff";ctx.lineWidth=2;ctx.beginPath();if(m.kind==="M"){ctx.rect(px(m.x)-8,pz(m.z)-8,16,16)}else{ctx.arc(px(m.x),pz(m.z),9,0,7)}ctx.fill();ctx.stroke();ctx.fillStyle="#fff";ctx.font="bold 12px "+css("--f-ui");ctx.textAlign="center";ctx.fillText(m.kind,px(m.x),pz(m.z)+4);ctx.textAlign="left"}
+ if(document.getElementById("lPlaces").checked){ctx.font="600 15px "+css("--f-ui");const boxes=[];const order=[...d.places].sort((a,b)=>{const s=q=>(state.sel&&state.sel.key===placeKey(q)?3:0)+(ch.has(q.name)?2:0)+(INFO[q.name]?1:0);return s(b)-s(a)});
+ for(const p of order){const sel=state.sel&&state.sel.key===placeKey(p);const isNew=ch.has(p.name);const x=px(p.x),y=pz(p.z);ctx.fillStyle=isNew?"#3fbf6f":sel?css("--accent"):"#fff";ctx.beginPath();ctx.arc(x,y,sel?7:5,0,7);ctx.fill();
+  const w=ctx.measureText(p.name).width;let placed=null;for(const [ox,oy] of [[8,5],[8,-9],[8,19],[-w-8,5],[-w-8,-9],[-w-8,19]]){const b=[x+ox-2,y+oy-14,x+ox+w+2,y+oy+4];if(!boxes.some(c=>b[0]<c[2]&&b[2]>c[0]&&b[1]<c[3]&&b[3]>c[1])){placed=[x+ox,y+oy,b];break}}
+  if(!placed)continue;boxes.push(placed[2]);ctx.lineWidth=4;ctx.strokeStyle="rgba(10,14,20,.85)";ctx.strokeText(p.name,placed[0],placed[1]);ctx.fillStyle=isNew?"#7ff0a8":sel?"#ffd2bf":"#fff";ctx.fillText(p.name,placed[0],placed[1])}}
+ if(document.getElementById("lNotes").checked){for(const n of state.notes){if(n.version&&n.version!==state.v)continue;const t=n.target||{};if(t.x==null)continue;const x=px(t.x),y=pz(t.z);ctx.fillStyle=n.from==="agent"?"#2f6fd0":(n.status==="resolved"?"#888":"#eb6834");ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x-7,y-16);ctx.lineTo(x+7,y-16);ctx.closePath();ctx.fill();ctx.beginPath();ctx.arc(x,y-18,8,0,7);ctx.fill();ctx.fillStyle="#fff";ctx.font="bold 11px "+css("--f-ui");ctx.textAlign="center";ctx.fillText("✎",x,y-14);ctx.textAlign="left"}}
+ if(state.pending){ctx.strokeStyle=css("--accent");ctx.lineWidth=3;ctx.beginPath();ctx.arc(px(state.pending.x),pz(state.pending.z),10,0,7);ctx.stroke()}
+}
+function distSeg(x,z,a,b){const dx=b[0]-a[0],dz=b[1]-a[1];const t=Math.max(0,Math.min(1,((x-a[0])*dx+(z-a[1])*dz)/(dx*dx+dz*dz||1)));return Math.hypot(x-(a[0]+t*dx),z-(a[1]+t*dz))}
+cv.addEventListener("click",e=>{const r=cv.getBoundingClientRect();const x=Math.round((e.clientX-r.left)/r.width*cv.width/S+D().x0-.5),z=Math.round((e.clientY-r.top)/r.height*cv.height/S+D().z0-.5);const d=D();let best=null,bd=1e9;
+ if(document.getElementById("lPlaces").checked)for(const p of d.places){const dd=Math.hypot(p.x-x,p.z-z);if(dd<bd&&dd<6){bd=dd;best={key:placeKey(p),kind:"place",id:p.name,x:p.x,z:p.z}}}
+ if(!best&&document.getElementById("lRoads").checked)for(const [name,pts] of Object.entries(d.roads)){for(let i=1;i<pts.length;i++){const dd=distSeg(x,z,pts[i-1],pts[i]);if(dd<bd&&dd<3){bd=dd;best={key:"road:"+name,kind:"road",id:name,x,z}}}}
+ if(!best&&document.getElementById("lSecs").checked)for(const s of SECTIONS){const dd=distSeg(x,z,s.a,s.b);if(dd<bd&&dd<3){bd=dd;best={key:"section:"+s.id,kind:"section",id:s.id,x,z}}}
+ if(!best)best={key:`point:${x},${z}`,kind:"point",id:`${x},${z}`,x,z};
+ select(best)});
+function select(t){state.sel=t;state.pending=t.kind==="point"?{x:t.x,z:t.z}:null;renderFocus();renderLists();draw()}
+function sectionProfile(s){const H=state.img[state.v].h;const sc=document.getElementById("sec");if(!H){sc.hidden=true;return}sc.hidden=false;const c=sc.getContext("2d"),w=sc.width,h=sc.height;c.fillStyle=css("--panel");c.fillRect(0,0,w,h);const n=Math.round(Math.hypot(s.b[0]-s.a[0],s.b[1]-s.a[1]));const ys=[];for(let i=0;i<=n;i++){const x=Math.round(s.a[0]+(s.b[0]-s.a[0])*i/n)-D().x0,z=Math.round(s.a[1]+(s.b[1]-s.a[1])*i/n)-D().z0;ys.push(x>=0&&z>=0&&x<H.w&&z<H.h?H.a[z*H.w+x]:0)}
+ const lo=40,hi=100,Y=v=>h-14-(h-24)*(v-lo)/(hi-lo),X=i=>30+(w-36)*i/n;c.strokeStyle=css("--rule");c.fillStyle=css("--ink-3");c.font="11px "+css("--f-mono");for(let y=50;y<=90;y+=10){c.beginPath();c.moveTo(30,Y(y));c.lineTo(w-6,Y(y));c.stroke();c.fillText(y,4,Y(y)+4)}
+ c.fillStyle="rgba(150,140,110,.6)";c.beginPath();c.moveTo(X(0),h-14);ys.forEach((v,i)=>c.lineTo(X(i),v?Y(v):h-14));c.lineTo(X(n),h-14);c.closePath();c.fill();c.strokeStyle=css("--accent");c.lineWidth=2;c.beginPath();ys.forEach((v,i)=>{const yy=v?Y(v):h-14;i?c.lineTo(X(i),yy):c.moveTo(X(i),yy)});c.stroke()}
+function notesFor(key){return state.notes.filter(n=>n.target&&n.target.key===key)}
+function noteHtml(n){const who=n.from==="agent"?"agent":"you";return `<div class="note ${n.from==="agent"?"agent":""} ${n.status==="resolved"?"resolved":""}"><div class="meta">${who} · ${n.version||""} · ${new Date(n.at).toLocaleString()} ${n.status==="resolved"?"· resolved":""}</div><p></p></div>`}
+function fillNotes(el,list){el.innerHTML=list.map(noteHtml).join("");[...el.querySelectorAll(".note p")].forEach((p,i)=>p.textContent=list[i].text)}
+function renderFocus(){const t=state.sel;const title=document.getElementById("fTitle"),where=document.getElementById("fWhere"),body=document.getElementById("fBody"),sec=document.getElementById("sec");sec.hidden=true;
+ if(!t){title.textContent="Nothing selected";where.textContent="";body.textContent="Click a place, a road, a section line, a number, or any spot on the map.";document.getElementById("noteSave").disabled=true;fillNotes(document.getElementById("fNotes"),[]);return}
+ document.getElementById("noteSave").disabled=!state.db;
+ if(t.kind==="place"){const i=INFO[t.id]||{};title.textContent=t.id;where.textContent=`${i.kind||"place"} · x ${t.x}, z ${t.z}`;body.innerHTML="";const add=(k,v)=>{if(!v)return;const p=document.createElement("p");p.style.margin="4px 0";const b=document.createElement("b");b.textContent=k+" ";p.append(b,document.createTextNode(v));body.append(p)};add("What it is.",i.what||"Named in the plan; the plan's table says no more about it.");add("Why a player goes there.",i.why);add("How they get there.",i.reach)}
+ else if(t.kind==="road"){title.textContent=t.id;where.textContent="road";body.textContent=(INFO[t.id]||{}).what||"A road in the plan, graded into the ground and paved in dirt."}
+ else if(t.kind==="section"){const s=SECTIONS.find(s=>s.id===t.id);title.textContent=s.name;where.textContent="section, true scale, west/north at left";body.textContent="The plan's heights along the line; the build follows them.";sectionProfile(s)}
+ else if(t.kind==="number"){const r=D().rows[t.id];title.textContent=r[1];where.textContent="number · target: "+r[2];body.textContent="Measured on the plan: "+r[0]+(r[3]===false?". This misses its target.":r[3]?". It meets its target.":".")}
+ else {title.textContent="A spot on the map";where.textContent=`x ${t.x}, z ${t.z}`;body.textContent="A note here is pinned to these coordinates."}
+ fillNotes(document.getElementById("fNotes"),notesFor(t.key))}
+function renderLists(){const d=D();const ch=state.diff?changed():new Set();const pl=document.getElementById("pPlaces");pl.innerHTML="";
+ const order=[...d.places].sort((a,b)=>(INFO[b.name]?1:0)-(INFO[a.name]?1:0));
+ for(const p of order){const i=INFO[p.name]||{};const el=document.createElement("div");el.className="item";el.tabIndex=0;el.setAttribute("aria-current",state.sel&&state.sel.key===placeKey(p)?"true":"false");const n=notesFor(placeKey(p)).length;el.innerHTML=`<b></b>${ch.has(p.name)?'<span class="badge b-new">new in v2</span>':""}${n?`<span class="badge b-n">${n} note${n>1?"s":""}</span>`:""}<div class="k"></div><p></p>`;el.querySelector("b").textContent=p.name;el.querySelector(".k").textContent=(i.kind||"place")+` · ${p.x}, ${p.z}`;el.querySelector("p").textContent=i.why||"";const go=()=>select({key:placeKey(p),kind:"place",id:p.name,x:p.x,z:p.z});el.addEventListener("click",go);el.addEventListener("keydown",e=>{if(e.key==="Enter")go()});pl.append(el)}
+ const tb=document.getElementById("nums");tb.innerHTML="<tr><th>Measured</th><th>Value</th><th>Target</th><th></th></tr>";d.rows.forEach((r,idx)=>{const tr=document.createElement("tr");tr.dataset.num=idx;if(state.sel&&state.sel.key==="number:"+idx)tr.className="sel";const n=notesFor("number:"+idx).length;tr.innerHTML=`<td></td><td class="v"></td><td></td><td>${r[3]===false?'<span class="badge b-miss">miss</span>':r[3]?'<span class="badge b-ok">ok</span>':'<span class="badge b-ref">ref</span>'}${n?`<span class="badge b-n">${n}</span>`:""}</td>`;tr.children[0].textContent=r[1];tr.children[1].textContent=r[0];tr.children[2].textContent=r[2];tr.addEventListener("click",()=>select({key:"number:"+idx,kind:"number",id:String(idx),x:null,z:null}));tb.append(tr)});
+ const all=document.getElementById("allNotes");const list=[...state.notes].sort((a,b)=>(b.at||"").localeCompare(a.at||""));document.getElementById("noteCount").textContent=list.length;all.innerHTML=list.length?"":'<p class="empty">No notes yet. Select something and leave the first one; the agent reads them before its next revision.</p>';list.forEach(n=>{const el=document.createElement("div");el.className="item";const t=n.target||{};el.innerHTML=`<div class="k"></div><p></p>`;el.querySelector(".k").textContent=`${n.from==="agent"?"agent":"you"} on ${t.label||t.key} · ${n.version}`;el.querySelector("p").textContent=n.text;el.addEventListener("click",()=>{if(t.key)select({key:t.key,kind:t.kind,id:t.id,x:t.x,z:t.z})});all.append(el)})}
+function label(t){if(!t)return"";if(t.kind==="place"||t.kind==="road")return t.id;if(t.kind==="section")return SECTIONS.find(s=>s.id===t.id).name;if(t.kind==="number")return D().rows[t.id][1];return`x ${t.x}, z ${t.z}`}
+document.getElementById("noteText").addEventListener("input",()=>{document.getElementById("noteSave").disabled=!state.db||!state.sel||!document.getElementById("noteText").value.trim()});
+document.getElementById("noteSave").addEventListener("click",async()=>{const text=document.getElementById("noteText").value.trim();if(!text||!state.sel||!state.db)return;const t=state.sel;const st=document.getElementById("noteStatus");st.textContent="Saving…";try{await state.db.collection("notes").add({text,from:"author",author:state.uid||null,status:"open",version:state.v,at:new Date().toISOString(),target:{key:t.key,kind:t.kind,id:t.id,x:t.x,z:t.z,label:label(t)}});document.getElementById("noteText").value="";st.textContent="Saved. The agent reads it before its next revision."}catch(e){st.textContent=e&&e.code==="invalid_argument"?"You can read notes here but not leave them.":"Could not save the note."}});
+async function verdict(kind){const st=document.getElementById("verdictStatus");if(!state.db){st.textContent="Saving needs the studio's store.";return}try{await state.db.doc("verdicts/"+state.v).set({verdict:kind,author:state.uid||null,at:new Date().toISOString()});st.textContent=kind==="approved"?`${state.v} approved: the agent may build it.`:`Changes asked on ${state.v}: the agent revises the plan before building.`}catch(e){st.textContent="Could not save."}}
+document.getElementById("approve").addEventListener("click",()=>verdict("approved"));document.getElementById("changes").addEventListener("click",()=>verdict("changes"));
+async function setVersion(v){await load(v);state.v=v;document.getElementById("v1").setAttribute("aria-pressed",v==="v1");document.getElementById("v2").setAttribute("aria-pressed",v==="v2");if(state.sel&&state.sel.kind==="number")state.sel=null;renderLists();renderFocus();draw()}
+document.getElementById("v1").addEventListener("click",()=>setVersion("v1"));document.getElementById("v2").addEventListener("click",()=>setVersion("v2"));
+document.getElementById("diff").addEventListener("change",async e=>{await load("v1");await load("v2");state.diff=e.target.checked;renderLists();draw()});
+["lPlaces","lRoads","lWalks","lUnder","lSecs","lNotes"].forEach(id=>document.getElementById(id).addEventListener("change",draw));
+const tabs=[["tPlaces","pPlaces"],["tNums","pNums"],["tNotes","pNotes"]];tabs.forEach(([t,p])=>document.getElementById(t).addEventListener("click",()=>tabs.forEach(([t2,p2])=>{document.getElementById(t2).setAttribute("aria-selected",t2===t);document.getElementById(p2).hidden=p2!==p})));
+(async()=>{await setVersion("v2");load("v1");
+ try{const [db,user]=await Promise.all([window.claude?.use?.("db"),window.claude?.use?.("user")]);state.db=db||null;state.user=user||null;if(user){try{state.uid=await user.id()}catch(e){}}
+  if(db){db.collection("notes").onSnapshot(s=>{state.notes=s.docs.map(d=>({id:d.id,...d.data()}));renderLists();renderFocus();draw()},()=>{});db.doc("verdicts/v2").onSnapshot(s=>{if(s.exists){const v=s.data();document.getElementById("verdictStatus").textContent=v.verdict==="approved"?"v2 is approved.":"Changes were asked on v2."}},()=>{})}
+  else document.getElementById("noteStatus").textContent="Notes are read-only here: this view has no store."}catch(e){}
+ renderFocus()})();
+})();
+</script>
