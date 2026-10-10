@@ -361,17 +361,17 @@ def profile(H, d, floor, steps, floor_ground=None, jag=0.0, talus=None, mode="se
     return _apply(H, h, mode)
 
 
-def level(H, e, y="median", inner=1.0, outer=1.5, mode="set"):
-    """Level ground: `y` (a height, or "median" for the median ground inside) where the distance field `e` is under
-    `inner`, eased back to the ground (y * (1 - k) + H * k, k a smoothstep) out to `outer`. `e` is any distance, in
+def level(H, e, top="median", inner=1.0, outer=1.5, mode="set"):
+    """Level ground: `top` (a height, or "median" for the median ground inside) where the distance field `e` is
+    under `inner`, eased back to the ground (top * (1 - k) + H * k, k a smoothstep) out to `outer`. `e` is any distance, in
     blocks from a point or a path, or 1 on an ellipse's rim (shapes.ellipse_distance), plus noise for a ragged edge;
-    `inner` and `outer` are in its units. `mode` lift only raises the skirt, cut only lowers it; inside it is y."""
+    `inner` and `outer` are in its units. `mode` lift only raises the skirt, cut only lowers it; inside it is top."""
     H = np.asarray(H, float)
-    if isinstance(y, str) and y == "median":
-        y = float(np.median(H[e < inner]))
+    if isinstance(top, str) and top == "median":
+        top = float(np.median(H[e < inner]))
     k = smoothstep(inner, outer, e)
-    skirt = _apply(H, y * (1 - k) + H * k, mode)
-    return np.where(e < inner, y, np.where(e < outer, skirt, H))
+    skirt = _apply(H, top * (1 - k) + H * k, mode)
+    return np.where(e < inner, top, np.where(e < outer, skirt, H))
 
 
 def mound(H, e, rise, power=1.6, mode="lift"):
@@ -390,15 +390,15 @@ def crater(H, e, floor, r, flat=0.0, slope=1.0):
     return np.where(e <= r, np.minimum(H, floor + slope * np.maximum(0, e - flat)), H)
 
 
-def ridge(H, coord, foot, width, crest, rough=0.0, spurs=(), terrace=None):
+def ridge(H, coord, foot, reach, crest, rough=0.0, spurs=(), terrace=None):
     """A ridge along a board's back: from its `foot` (a line along the other axis, noise.line) it climbs over
-    `width` blocks toward lower `coord` (X or Z; a negative width climbs toward higher) to `crest` (a height or a
+    `reach` blocks toward lower `coord` (X or Z; a negative reach climbs toward higher) to `crest` (a height or a
     field), with `rough` (a field) added in proportion as it climbs. Each spur (d, top, (far, near)) is an arm
     reaching out from it: `top` (a field) where d, the distance from the spur's line, is under `near`, eased to
     the ground by `far`. `terrace` (step, riser, above) cuts the slope into terraces where it has climbed more
     than `above` of the way. Only lifts."""
     H = np.asarray(H, float)
-    t = smoothstep(foot, foot - width, coord)
+    t = smoothstep(foot, foot - reach, coord)
     lifted = H + (crest - H).clip(0) * t + t * rough
     for d, top, (far, near) in spurs:
         lifted = np.maximum(lifted, H + (top - H).clip(0) * smoothstep(far, near, d))

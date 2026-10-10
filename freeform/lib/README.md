@@ -265,6 +265,37 @@ for a bed that is only ever a block. `bed_offset` tilts and folds them across th
 buttes and scarps. It grades routes, meets the sea at an outline, and blends one terrain into another. Each takes
 the board's own numbers, and each only cuts or only lifts unless it says otherwise, so the board decides the order.
 
+**A board's ground is a stack of named shapes, and each was written from a board that carried it.** The table
+names each shape, the call that makes it and the board it was proven on. Every board named builds the world it
+built before, byte for byte, so the shape is that board's code with its numbers passed in.
+
+| shape | call | proven on |
+|---|---|---|
+| a wandering foot, edge or inset | `noise.line`, `noise.ragged` | the Riftwater port, Cinder Reach, Redwash Mesa |
+| a symmetric field | `Symmetry.image`, `field`, `whole` | Cinderfall, Overgrowth, Tamarisk Wash, Abbeymoor, two opus trials |
+| a top by slope and place, a bottom per column, wet beds | `lay(paint=, bottom=)`, `Paint`, `fill_water` | the Riftwater port, Overgrowth, Vale, Tamarisk Wash, Cinderfall, Redwash, Cinder Reach |
+| a floating board's outline | `shapes.island` | the Riftwater port, Cinder Reach, Redwash Mesa |
+| a height stated as terms | `field.terms`, `Ramp`, `Gauss`, `Tilt`, `Noise`, `mix` | the Riftwater port, Cinder Reach |
+| a canyon's cross-section | `landform.profile`, `Step` | the Riftwater port's valley; Hollow Mesa's canyon array, equal |
+| an underside sheer under the rift | `terrain.island_bottom` | the Riftwater port, Cinder Reach, Redwash Mesa |
+| level ground | `landform.level`, `shapes.ellipse_distance` | the Riftwater port's shoulder; Hollow Mesa's pads, equal |
+| heaps, bowls, oval spires and buttes | `landform.mound`, `crater`, `spire(rz=, angle=)`, `butte(rz=, angle=)` | the Riftwater port |
+| a back ridge | `landform.ridge` | the Riftwater port, Cinder Reach |
+| a waterfall off the edge | `terrain.waterfall` | the Riftwater port |
+| a field with ditches | `props.crop_field`, `scarecrow` | the Riftwater port |
+| floating floors at their own heights | `terrain.slab` | Slatefold, Lantern Karst, Hoarfrost Reach |
+| a natural arch | `forms.arch` | Tamarisk Wash |
+| a field of needles and hoodoos | `landform.spire_sites`, `spire_field` | Hollow Mesa's spires array, equal |
+| a core's leak through the rock | `under.bore` | the tests |
+
+**`spire_sites` keeps a path clear by its line, not its corners.** Drawn with Hollow Mesa's seed and box, its first
+twelve sites are Hollow Mesa's and it then turns down a site that stood within reach of the path between two of
+the path's points.
+
+**A shape names its places and says what it does to the ground.** A point is `at`, a polyline `path`, a closed one
+`outline`, an absolute height `top` and a relative one `rise`; an angle is in degrees. A shape that can raise and
+lower takes `mode`, set, lift or cut, and a shape that draws at random takes a `seed`, or the board's own fields and generator.
+
 **A watercourse never climbs.** Its bed holds level in reaches and steps down in falls, which is how a river leaves
 a canyon and drops to the sea. `lowest` keeps a bed off the sea floor. A path that starts out at sea once held a
 canyon and its river fifteen blocks under the water all the way inland.

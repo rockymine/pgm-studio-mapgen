@@ -1,6 +1,6 @@
 # pgmvox operations and their parameters
 
-Generated from the library's function signatures (pgmvox 0.21.0) for the recipe design in `../STUDIO-2-DESIGN.md`: every operation a recipe step could name, with each parameter a model would send and its default. The grid arguments (`w`, `H`, `X`, `Z`, `rng`) are the recipe's state, not parameters.
+Generated from the library's function signatures (pgmvox 0.23.0) for the recipe design in `../STUDIO-2-DESIGN.md`: every operation a recipe step could name, with each parameter a model would send and its default. The grid arguments (`w`, `H`, `X`, `Z`, `rng`) are the recipe's state, not parameters.
 
 | op | parameters (defaults) |
 |---|---|
@@ -8,15 +8,15 @@ Generated from the library's function signatures (pgmvox 0.21.0) for the recipe 
 | `landform.lake` | centre, r, level, depth=3, shore=3, rz=None, jag=0.2, seed=0 |
 | `landform.hold` | *waters |
 | `landform.canyon` | pts, width=20, depth=12, floor=0.35, wall=2.5, ledges=0, downhill=False, lowest=None |
-| `landform.spire` | centre, r, top, taper=1.6, jag=0.15, seed=0 |
-| `landform.butte` | centre, r, top, cliff=1.5, talus=6, talus_height=0.3, jag=0.12, seed=0 |
+| `landform.spire` | centre, r, top, taper=1.6, jag=0.15, seed=0, rz=None, angle=0.0 |
+| `landform.butte` | centre, r, top, cliff=1.5, talus=6, talus_height=0.3, jag=0.12, seed=0, rz=None, angle=0.0 |
 | `landform.scarp` | pts, height, side=1, cliff=2, talus=5, talus_height=0.3, reach=None |
 | `landform.terraces` | mask, step=4, base=None, riser=1.0 |
 | `landform.stage` | centre, rings, jag=0.0, seed=0 |
 | `landform.grade` | pts, width=5, max_grade=0.25, shoulder=4, water=None, keep=None |
 | `landform.coast` | sea, outline=None, shelf=10, depth=6, slope=0.35 |
 | `landform.blend` | Ha, Hb, mask, width=8 |
-| `terrain.lay` | mask=None, top=None, under=(3, 0), rock=(1, 0), dirt_depth=None, snow_above=None, snow=(80, 0), bands=None, from_y=1, soil=((25, 3), (38, 2), (55, 1)), ledges=True |
+| `terrain.lay` | mask=None, top=None, under=(3, 0), rock=(1, 0), dirt_depth=None, snow_above=None, snow=(80, 0), bands=None, from_y=1, soil=((25, 3), (38, 2), (55, 1)), ledges=True, paint=None, bottom=None |
 | `terrain.Strata` | choices, length=160, seed=0, start=0, below=(1, 0) |
 | `terrain.bed_offset` | shape, dip=(0.0, 0.0), fold=0.0, cell=24, seed=0 |
 | `terrain.beds` | strata, offset=None, flecks=(), seed=0 |
@@ -65,5 +65,38 @@ Generated from the library's function signatures (pgmvox 0.21.0) for the recipe 
 | `brittle.build` | cells, only=None, dye=14, fill=None, style=Style(…), grown=None |
 | `brittle.house` | layers, floor, dye, door=None, cobwebs=True, floor_block=(5, 0) |
 | `brittle.tower` | box, base_y, tiers, dye, door=None, crown=(41, 0) |
+| `noise.line` | shape, along, cell, octaves=2, seed=0, amp=1.0, base=0.0, clip=None |
+| `noise.ragged` | shape, along, cell, amp, seed=0 |
+| `shapes.island` | box, west=0, east=0, north=0, south=0, cuts=() |
+| `shapes.ellipse_distance` | at, rx, rz=None, angle=0.0 |
+| `shapes.scatter_points` | mask, n, min_d, taken=() |
+| `field.terms` | base, *parts |
+| `field.Ramp` | along, frm, to, rise |
+| `field.Gauss` | at, r, rise, rz=None, power=2, angle=0.0 |
+| `field.Tilt` | dx, dz, at=(0, 0) |
+| `field.Noise` | field, rise |
+| `field.mix` | a, b, weight |
+| `landform.profile` | d, floor, steps, floor_ground=None, jag=0.0, talus=None, mode='set' |
+| `landform.Step` | start, end, top, ground=None |
+| `landform.level` | e, top='median', inner=1.0, outer=1.5, mode='set' |
+| `landform.mound` | e, rise, power=1.6, mode='lift' |
+| `landform.crater` | e, floor, r, flat=0.0, slope=1.0 |
+| `landform.ridge` | coord, foot, reach, crest, rough=0.0, spurs=(), terrace=None |
+| `landform.spire_sites` | box, n, r=(1.6, 3.4), rise=(8, 22), needles=0.7, spacing=2.5, keep_clear=(), seed=0, tries=400 |
+| `landform.spire_field` | sites, needle=1.3, hoodoo=5.0 |
+| `terrain.Paint` | block, slope=None, where=None, values=() |
+| `terrain.fill_water` | level, bed, mask=None |
+| `terrain.island_bottom` | top, land, sheer, taper=(4, 0.9), sheer_taper=(26, 1.2), rough=0.0, floor=0.0 |
+| `terrain.slab` | floor, land, bands, root, plate=5, foundation=3, paint=None, rim=None, **lay_args |
+| `terrain.waterfall` | level, at, toward='east', lip_from=None, to=None, to_y=8 |
+| `forms.arch` | cells, t, deck, thick, rock, into=None, clear=0, ground=None |
+| `forms.masonry_tower` | x0, z0, x1, z1, y0, height, wall=((98, 0), (98, 0), (98, 2)), corner=(98, 3), floor=(5, 5), slit=(101, 0), door=197, door_side='s', crown=(98, 0), crenel=(139, 0), light=(89, 0), ladder_on='n' |
+| `props.crop_field` | box, y, crops, rows=9, ditch=4, tilt=0.0, ripe=(0.15, (4, 8)), fence='w', gate=None |
+| `props.scarecrow` | x, z, facing='n' |
+| `props.lamps` | path, every=12, post=(113, 0), light=(89, 0), height=2, side=3.0, start=6 |
+| `props.brazier` | x, y, z, post=(113, 0), light=(89, 0), height=2, base=(139, 0) |
+| `props.rubble` | x, y, z, r=1.6, blocks=((1, 5), (4, 0), (1, 0), (13, 0)), supported=True |
+| `trees.dead_tree` | x, y, z, h, log=162, kind=1 |
+| `under.bore` | at, r, y0, y1, seed=0, r_noise=0.0, fill=(0, 0), lip=None |
 
-407 parameters over the operations listed
+603 parameters over the operations listed
