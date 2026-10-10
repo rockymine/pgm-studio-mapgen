@@ -425,7 +425,7 @@ python3 -m pgmvox.run examples/islets --only sketch
 ```
 
 **The world lands in the repository's `maps/<mode>/<name>/`**, the folder `maps/INDEX.md` names for the board
-(`examples/islets` writes `maps/mixed/islets`). A board the index does not name yet is added under its map's name and
+(`examples/islets` writes `maps/koth/islets`). A board the index does not name yet is added under its map's name and
 game mode on its first `write`, or under `<name>_pgmvox` where another board holds that name (`ports/riftwater` writes
 `maps/dtcm/riftwater_pgmvox`), so its world can be copied out to a server as it stands. Run outside the repository,
 the library writes `<board>/world` instead.

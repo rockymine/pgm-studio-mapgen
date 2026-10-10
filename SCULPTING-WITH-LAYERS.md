@@ -3,7 +3,7 @@
 The sketch tool's layer system was built to stack storeys. This is the record of what happens when it is
 asked for something else — a robot, a dragon, a starship, a Rubik's cube, a walker, a ring station, a car, a
 statue — and of the facts that decide how far it goes. Everything here was measured against a running studio; the three boards are
-in `maps/mixed/form_gallery`, `maps/mixed/sculpture_gallery` and `maps/dtcm/automaton`, the documents beside them in
+in `maps/other/form_gallery`, `maps/other/sculpture_gallery` and `maps/dtcm/automaton`, the documents beside them in
 `sculpture/`, and the tools that produced them in `tools/sculpt/` and `tools/render/`.
 
 **The short answer is that it goes further than the documentation suggests, and the ceiling is not where it
@@ -297,8 +297,8 @@ readable at the same time.
 ## 7. Running it
 
 ```bash
-python3 tools/sculpt/gallery_forms.py     /tmp/forms     maps/mixed/form_gallery        # nine parametric forms
-python3 tools/sculpt/gallery_sculpture.py /tmp/sculpture maps/mixed/sculpture_gallery   # seven compiled models
+python3 tools/sculpt/gallery_forms.py     /tmp/forms     maps/other/form_gallery        # nine parametric forms
+python3 tools/sculpt/gallery_sculpture.py /tmp/sculpture maps/other/sculpture_gallery   # seven compiled models
 python3 tools/sculpt/make_board.py        specs/archive/opus5-automaton
 python3 tools/drive.py specs/archive/opus5-automaton "Automaton" --out /tmp/automaton
 ```

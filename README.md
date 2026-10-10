@@ -27,10 +27,15 @@ picture its map list shows. Everything that exists to be *looked at* rather than
 documents in `specs/<slug>/`: the board's picture, and the provenance sidecar that says which pass claimed
 which column. Uploading a map folder to a game server therefore carries no metadata with it.
 
-**The layout is the one `OvercastCommunity/CommunityMaps` uses**: a game-mode folder (`ctw` for capture the wool
-alone, `dtcm` for monuments and cores, `mixed` for everything else) and in it one folder per map, named for the map,
-so a folder copies straight into a server's map repository. `maps/INDEX.md` names the board each world belongs to:
+**The layout is the one `OvercastCommunity/CommunityMaps` uses**: a game-mode folder and in it one folder per map,
+named for the map, so a mode folder copies straight into a server's map repository already sorted. `maps/INDEX.md` names the board each world belongs to:
 a studio slug, whose documents are `specs/<slug>/`, or a freeform board folder.
+
+**A map's folder is chosen by what it holds, the way CommunityMaps files it.** Wool makes `ctw`, monuments and cores
+`dtcm`, hills `koth`, flags `ctf` or `kotf`, and two of those at once `mixed`; a map with no objective goes by its
+`<gamemode>` tag to `tdm`, `ffa`, `scorebox` and the like, and `arcade` and `blitz` tags win outright. A tag that
+names an objective the map does not hold is overruled by the map. `tools/worlds.py` holds the rule, and over the
+two corpora it files ctw 360 of 366 maps, dtcm 310 of 315 and koth 105 of 105 where the curators did.
 
 A map's `specs/` are the whole of what was authored; the world is derived from them and is committed as
 the artifact rather than as a source. Rebuilding one needs a running pgm-studio API and a migrated

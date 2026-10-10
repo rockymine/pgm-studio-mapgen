@@ -2,7 +2,7 @@
 
 Two boards, and the difference between them is the whole point. `SCULPTING-WITH-LAYERS.md` at the repository
 root is the account; this is the pair of pictures it was written from. Both are exported worlds a server
-loads — `maps/mixed/form_gallery` and `maps/mixed/sculpture_gallery` — so either can be walked round rather than looked
+loads — `maps/other/form_gallery` and `maps/other/sculpture_gallery` — so either can be walked round rather than looked
 at. Each declares one visitor team and a pad at the south edge, because `EX2` refuses to export a map no
 player can enter, and states no objective at all.
 
@@ -117,6 +117,6 @@ for something.
 Rebuild and re-export either against a running studio:
 
 ```bash
-python3 tools/sculpt/gallery_forms.py     sculpture/forms  maps/mixed/form_gallery
-python3 tools/sculpt/gallery_sculpture.py sculpture/models maps/mixed/sculpture_gallery
+python3 tools/sculpt/gallery_forms.py     sculpture/forms  maps/other/form_gallery
+python3 tools/sculpt/gallery_sculpture.py sculpture/models maps/other/sculpture_gallery
 ```

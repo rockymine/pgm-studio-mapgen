@@ -5,9 +5,10 @@
     tools/worlds.py place <map.xml>     the folder a new world would take, from its name and game modes
 
 Every world in this repository is one folder holding `map.xml`, `level.dat` and `region/` (and `map.png` where the
-studio draws one), under the game-mode folder `OvercastCommunity/CommunityMaps` uses: `ctw` for capture the wool alone, `dtcm` for
-monuments and cores, `mixed` for everything else. The folder is the map's name in lower case with underscores, so
-it can be copied out to a server as it stands. `maps/INDEX.md` says which board builds each one; a board finds its
+studio draws one), under the game-mode folder `OvercastCommunity/CommunityMaps` files it in (`bucket` says which:
+`ctw`, `dtcm`, `koth`, `kotf`, `ctf`, `tdm`, `ffa`, `blitz`, `arcade`, `mixed` for two objective modes at once, and the
+rest of `MODES`). The folder is the map's name in lower case with underscores, so it can be copied out to a server as
+it stands. `maps/INDEX.md` says which board builds each one; a board finds its
 world there, and a board building its first world adds its row.
 """
 import os
@@ -20,7 +21,8 @@ INDEX = os.path.join(WORLDS, "INDEX.md")
 HEADER = """# Maps
 
 Every world built in this repository: one folder per world holding `map.xml`, `level.dat` and `region/`, under the
-game-mode folder `OvercastCommunity/CommunityMaps` uses (`ctw`, `dtcm`, `mixed`), named for the map. Copy a folder out and a server
+game-mode folder `OvercastCommunity/CommunityMaps` files it in (`ctw`, `dtcm`, `koth`, `tdm`, `arcade`, `mixed` and the
+rest), named for the map. Copy a folder out and a server
 loads it. **Board** is the studio slug or the freeform board folder that builds the world, and **source** is where
 its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/boards-check.py` gates it.
 
@@ -34,21 +36,46 @@ def snake(name):
     return re.sub(r"[^a-z0-9]+", "_", name.lower()).strip("_")
 
 
+MODES = ("ctw", "dtcm", "ctf", "kotf", "koth", "tdm", "ffa", "blitz", "scorebox", "arcade", "touchdown", "bridge",
+         "5cp", "mixed", "other")
+MODIFIERS = {"rage", "ad"}                                  # a tag that changes how a mode plays, not which mode
+TAGGED = {"ctw": "ctw", "dtm": "dtcm", "dtc": "dtcm", "ctf": "ctf", "kotf": "kotf", "koth": "koth"}
+NEEDS = {"ctw": r"<wools", "dtcm": r"<destroyables|<cores", "ctf": r"<flags", "kotf": r"<flags",
+         "koth": r"<hills|<control-points"}
+
+
 def bucket(map_xml):
-    """The corpus's game-mode folder for a map.xml's text: `ctw`, `dtcm` or `mixed`."""
-    modes = set(re.findall(r"<gamemode>\s*([^<\s]+)\s*</gamemode>", map_xml))
-    if not modes:
-        if "<wools" in map_xml:
-            modes.add("ctw")
-        if "<destroyables" in map_xml:
-            modes.add("dtm")
-        if "<cores" in map_xml:
-            modes.add("dtc")
-    if modes == {"ctw"}:
-        return "ctw"
-    if modes and modes <= {"dtm", "dtc"}:
-        return "dtcm"
-    return "mixed"
+    """The game-mode folder `OvercastCommunity/CommunityMaps` would file a map.xml under.
+
+    `arcade` and `blitz` are the author's word and win. Otherwise the objective modes decide: those the
+    `<gamemode>` tags name and the map holds the objective of, or, where no tag holds, those its objectives
+    show (wool `ctw`, monuments and cores `dtcm`, hills `koth`, flags `ctf` with a score and `kotf` without),
+    or, where it holds no objective at all, those its tags name. Two objective modes make `mixed`. A map with none is filed by its tag (`tdm`, `ffa`, `scorebox` and the
+    rest), then by what it scores, and `other` where nothing says."""
+    tags = {t.lower() for t in re.findall(r"<gamemode>\s*([^<\s]+)\s*</gamemode>", map_xml)} - MODIFIERS
+    if "arcade" in tags:
+        return "arcade"
+    if tags & {"blitz", "br"}:
+        return "blitz"
+    claimed = {TAGGED[t] for t in tags if t in TAGGED and re.search(NEEDS[TAGGED[t]], map_xml)}
+    shown = {m for m in ("ctw", "dtcm", "koth") if re.search(NEEDS[m], map_xml)}
+    if re.search(NEEDS["ctf"], map_xml):
+        shown.add("ctf" if "<score" in map_xml else "kotf")
+    objective = claimed or shown or {TAGGED[t] for t in tags if t in TAGGED}
+    if len(objective) > 1:
+        return "mixed"
+    if objective:
+        return objective.pop()
+    for mode in ("tdm", "scorebox", "ffa", "touchdown", "bridge", "5cp"):
+        if mode in tags:
+            return mode
+    if tags:
+        return "other"
+    if "<blitz" in map_xml:
+        return "blitz"
+    if "<players" in map_xml:
+        return "ffa"
+    return "tdm" if "<score" in map_xml else "other"
 
 
 def rows():
