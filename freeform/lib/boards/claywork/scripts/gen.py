@@ -20,7 +20,7 @@ import numpy as np
 import plan as P
 from pgmvox import B, World, clay, rng
 from pgmvox import grammar as Gm
-from pgmvox.props import DEFENCE, ROOM_GEAR, laid
+from pgmvox import props
 from pgmvox.objectives import Wool
 from pgmvox.orient import ladder, stair, turn_world
 
@@ -210,8 +210,7 @@ for x0, x1 in ((P.WALL["x0"], P.WALL["x1"]), (P.mx(P.WALL["x1"]), P.mx(P.WALL["x
     stand = int(R.floor[R.ix(x0), R.iz(face - 1)]) + 1               # where a defender stands before it
     for n in (1, 2):
         cx = x0 + n * lane // 3
-        w.chest(cx, stand, face, laid(DEFENCE), facing=2)
-        w.set(cx, stand + 1, face, B.AIR)                            # room for the lid; the column behind is bedrock
+        props.defence_chests(w, [(cx, face)], stand, "n")            # the lid opened; the column behind is bedrock
 
 # 7. the Kilns: a brick hall on a stone-brick plinth, pilasters every four with windows of iron between them on the
 # faces over the void, a frieze of the team's clay, a cornice, a hipped roof of brick stairs, a chimney with embers
@@ -292,9 +291,8 @@ def kiln(x0, z0, x1, z1, d0, d1):
                     w.set(x, y, z, B.GLOWSTONE)
                 else:
                     w.set(x, y, z, B.AIR)
-    # the gear: two chests against the back wall, either side of the middle
-    for x in (cx - 3, cx + 4):
-        w.chest(x, P.WOOL + 1, z0 + 1, laid(ROOM_GEAR), facing=3)
+    # the gear: the studio's wool-room loot, two chests in each inner corner
+    props.wool_chests(w, (x0 + 1, z0 + 1, x1 - 1, z1 - 1), P.WOOL, "s")
 
 
 x0, z0, x1, z1 = P.KILN

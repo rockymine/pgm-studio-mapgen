@@ -17,7 +17,7 @@ import sys
 import numpy as np
 
 import plan as P
-from pgmvox import B, World, terrain, trees
+from pgmvox import B, World, props, terrain, trees
 from pgmvox.brittle import CELL, build, house
 from pgmvox.orient import turn_world
 from pgmvox.shapes import edge_depth
@@ -47,6 +47,7 @@ for x in range(wx0, wx1 + 1):
 cx, cz = wx0 // CELL, wz0 // CELL
 house(w, [[(cx, cz), (cx + 1, cz), (cx, cz + 1), (cx + 1, cz + 1)], [(cx, cz), (cx + 1, cz), (cx, cz + 1)],
           [(cx + 1, cz)]], P.WOOL, 4, door=((cx + 1, cz + 1), "s"))         # red keeps the yellow wool
+props.wool_chests(w, (cx * CELL + 1, cz * CELL + 1, (cx + 2) * CELL - 2, (cz + 2) * CELL - 2), P.WOOL, "s")
 fx, _, fz = P.WOOL_AT
 for x in range(fx - 1, fx + 2):
     for z in range(fz - 1, fz + 2):
@@ -93,6 +94,55 @@ for i, k in np.argwhere(GROWN):
             w.set(int(X[i, k]), h + 1, int(Z[i, k]), B.TALLGRASS, 1)
         elif c < 0.07:
             w.set(int(X[i, k]), h + 1, int(Z[i, k]), B.FLOWER, 2)
+        elif c < 0.08:
+            w.set(int(X[i, k]), h + 1, int(Z[i, k]), B.DEADBUSH)
+    elif top == (B.DIRT, 1) and ed[i, k] >= 2 and rng.random() < 0.05:     # dry scrub on the coarse ground
+        w.set(int(X[i, k]), h + 1, int(Z[i, k]), B.DEADBUSH)
+
+# the emerald's plinth: smooth sandstone five by five under and round it, chiselled at the corners, clear over
+ex, ez = P.EMERALD_AT
+for x in range(ex - 3, ex + 4):
+    for z in range(ez - 3, ez + 4):
+        ring = max(abs(x - ex), abs(z - ez))
+        if ring <= 2:
+            corner = abs(x - ex) == 2 and abs(z - ez) == 2
+            w.set(x, P.EMERALD_Y, z, B.SANDSTONE, 1 if corner else 2)
+            for y in range(P.EMERALD_Y + 1, P.EMERALD_Y + 6):
+                w.set(x, y, z, B.AIR)
+
+# boulders on the grown ground: weathered lumps of sandstone and stone, sat into the grass, off the made faces, the
+# stair's foot and the emerald's ground, a dozen blocks apart
+def boulder(x, z, r):
+    g = int(H[x - P.X_MIN, z - P.Z_MIN])
+    for dx in range(-2, 3):
+        for dz in range(-2, 3):
+            for dy in range(0, 3):
+                if dx * dx + dz * dz + (dy * 1.6) ** 2 <= r * r + rng.random() * 1.2:
+                    if not GROWN[x + dx - P.X_MIN, z + dz - P.Z_MIN]:
+                        continue
+                    gg = int(H[x + dx - P.X_MIN, z + dz - P.Z_MIN])
+                    c = rng.random()
+                    blk = (B.SANDSTONE, 0) if c < 0.45 else (B.STONE, 0) if c < 0.7 else (B.COBBLE, 0) if c < 0.85 \
+                        else (B.MOSSY, 0)
+                    w.set(x + dx, gg + dy, z + dz, *blk)
+    return g
+
+
+far = edge_depth(~made) > 6
+spots = [(int(X[i, k]), int(Z[i, k])) for i, k in np.argwhere(GROWN & far & (ed >= 4)) if deg[i, k] < 25]
+rng.shuffle(spots)
+placed = []
+for x, z in spots:
+    if len(placed) >= 9:
+        break
+    if max(abs(x - ex), abs(z - ez)) < 9 or any(abs(x - a) + abs(z - b) < 14 for a, b in placed):
+        continue
+    fx0, fx1, fz0, fz1 = P.STAIR_FOOT
+    if fx0 - 6 <= x <= fx1 + 6 and fz0 - 6 <= z <= fz1 + 6:
+        continue
+    boulder(x, z, 1.4 + rng.random() * 1.2)
+    placed.append((x, z))
+print(f"boulders: {len(placed)}")
 
 # acacias to the outside of each grown piece: a handful, on gentle grass well in from the void, away from the made
 # faces, off the meadow's southern brink and the island's sides that face the landing and the middle
@@ -107,7 +157,8 @@ for name, mask, ok in (("meadow", m1, lambda x, z: z < -40), ("island", m2, lamb
     for x, z in sites:
         if len(planted) >= TREES[name]:
             break
-        if any(abs(x - a) + abs(z - b) < 16 for a, b in planted):
+        if any(abs(x - a) + abs(z - b) < 16 for a, b in planted) or max(abs(x - ex), abs(z - ez)) < 10 or \
+                any(abs(x - a) + abs(z - b) < 6 for a, b in placed):
             continue
         t = lib["acacia"][rng.randrange(len(lib["acacia"]))]
         if trees.plant(w, x, z, t, turn=rng.randrange(4)):

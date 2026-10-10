@@ -5,7 +5,7 @@ import plan as P
 from pgmvox.mapxml import Doc, E, item
 
 O = P.objectives()
-d = Doc("Sandreach", "1.0.0", "Capture the other team's wool!", "ctw")
+d = Doc("Sandreach", "1.1.0", "Capture the other team's wool and destroy its emerald!", ["ctw", "dtm"])
 d.add(E("authors", E("author", text="rockymine"), E("author", text="Claude (freeform generator, pgmvox)")))
 O.write(d)
 d.kit("spawn-kit",

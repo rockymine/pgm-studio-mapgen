@@ -415,7 +415,9 @@ def wool_rooms(doc, teams, wools, materials=WOOLROOM_MATERIALS):
 
 @dataclass
 class Destroyable(Objective):
-    """A monument to break (DTM): a box of its material, owned by the team defending it."""
+    """A monument to break (DTM): a box of its material, owned by the team defending it. `heart` is a block for the
+    box's middle that is not its material, as bedrock at the centre of a three-cube, so the monument cannot be
+    tunnelled through its core."""
     id: str
     name: str
     team: str
@@ -423,13 +425,20 @@ class Destroyable(Objective):
     material: tuple = (B.OBSIDIAN, 0)
     materials: str = "obsidian"
     completion: str = "100%"
+    heart: tuple = None
 
     def turned(self, sym):
         return replace(self, box=self.box.image(sym))
 
+    def middle(self):
+        b = self.box
+        return ((b.x0 + b.x1) // 2, (b.y0 + b.y1) // 2, (b.z0 + b.z1) // 2)
+
     def stamp(self, w):
         for x, y, z in self.box.blocks():
             w.set(x, y, z, *self.material)
+        if self.heart:
+            w.set(*self.middle(), *self.heart)
 
     def write(self, doc, teams):
         rid = doc.region(f"{self.id}-region", self.box.cuboid())
@@ -438,7 +447,8 @@ class Destroyable(Objective):
                                            region=rid))
 
     def check(self, w):
-        wrong = [p for p in self.box.blocks() if w.get(*p)[0] != self.material[0]]
+        wrong = [p for p in self.box.blocks() if w.get(*p)[0] != self.material[0]
+                 and not (self.heart and p == self.middle() and w.get(*p)[0] == self.heart[0])]
         return [f"destroyable {self.id}: {len(wrong)} blocks of its box are not its material"] if wrong else []
 
     def cells(self):

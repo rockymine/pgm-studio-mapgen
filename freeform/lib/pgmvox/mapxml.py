@@ -93,8 +93,8 @@ class Doc:
         self.root.append(E("name", text=name))
         self.root.append(E("version", text=version))
         self.root.append(E("objective", text=objective))
-        if gamemode:
-            self.root.append(E("gamemode", text=gamemode))
+        for mode in ([gamemode] if isinstance(gamemode, str) else gamemode or []):
+            self.root.append(E("gamemode", text=mode))           # one tag each: a board may mix modes
 
     def add(self, el):
         self.root.append(el)

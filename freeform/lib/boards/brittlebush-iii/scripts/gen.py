@@ -21,7 +21,7 @@ import sys
 import numpy as np
 
 import plan as P
-from pgmvox import B, World
+from pgmvox import B, World, props
 from pgmvox.brittle import CELL, build, house
 from pgmvox.orient import turn_world
 
@@ -48,6 +48,10 @@ for x in range(wx0, wx1 + 1):                                     # the bed and 
         for y in range(P.WOOL_Y + 1, P.WOOL_Y + 20):
             w.set(x, y, z, B.AIR)
 house(w, P.WOOL_LAYERS, P.WOOL_Y, P.KEEP_DYES[0], door=P.WOOL_DOOR)
+_cx = [c[0] for c in P.WOOL_LAYERS[0]]
+_cz = [c[1] for c in P.WOOL_LAYERS[0]]
+props.wool_chests(w, (min(_cx) * CELL + 1, min(_cz) * CELL + 1, (max(_cx) + 1) * CELL - 2, (max(_cz) + 1) * CELL - 2),
+                  P.WOOL_Y, P.WOOL_DOOR[1])                       # the studio's wool-room loot in its four corners
 fx, _, fz = P.WOOL_AT
 for x in range(fx - 1, fx + 2):                                   # the wool stands on a square of its colour
     for z in range(fz - 1, fz + 2):

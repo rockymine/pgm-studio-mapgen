@@ -142,3 +142,10 @@ author's names now tell water from bare zones.
 - `36`–`38`: the three under-sections: the middle island, the tunnel, and the island before the wool.
 - `39`: the wool's house close, from the south-east and the south-west.
 - `40`: the whole board from each of its four corners.
+
+## After the playtest
+
+**Each wool house now carries the studio's wool-room loot.** Two chests stand in each inner corner of the house's
+first storey: the lower with planks, Speed potions and golden apples, the upper with diamond leggings, Power bows
+and planks, as the studio's wool-room stamper lays them. The four houses take 32 chests between them, and every walk
+reads back as before.

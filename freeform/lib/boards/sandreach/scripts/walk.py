@@ -66,10 +66,15 @@ for k, sp in enumerate(O.of(Spawn)):
     other = sym[1 - k]((P.WOOL_AT[0], P.WOOL_AT[2]))
     enemy = walk.nearest(db, w.x0, w.z0, other[0], P.WOOL + 1, other[1], r=2)
     enemy_foot = walk.nearest(d, w.x0, w.z0, other[0], P.WOOL + 1, other[1], r=2)
-    row = (int((d >= 0).sum()), own, monument, meadow, enemy, enemy_foot)
+    em = sym[k]((P.EMERALD_AT[0], P.EMERALD_AT[1] + 2))            # the plinth's south edge, turned for blue
+    oem = sym[1 - k]((P.EMERALD_AT[0], P.EMERALD_AT[1] + 2))
+    own_em = walk.nearest(d, w.x0, w.z0, em[0], P.EMERALD_Y + 1, em[1], r=1)
+    other_em = walk.nearest(db, w.x0, w.z0, oem[0], P.EMERALD_Y + 1, oem[1], r=2)
+    row = (int((d >= 0).sum()), own, monument, meadow, enemy, enemy_foot, own_em, other_em)
     rows.append(row)
     out.append(f"from {sp.team}'s spawn: {row[0]} places on foot; on foot to its own wool's door {own}, to its "
                f"monument {monument}, down the stair onto its meadow {meadow}; to the other wool on foot "
-               f"{enemy_foot if enemy_foot is not None else 'NOT REACHED'}, building {enemy}")
+               f"{enemy_foot if enemy_foot is not None else 'NOT REACHED'}, building {enemy}; to its own emerald on foot "
+               f"{own_em}, to the other's emerald building {other_em}")
 out.append(f"both teams the same: {'yes' if rows[0] == rows[1] else 'NO'}")
 print("\n".join(out))

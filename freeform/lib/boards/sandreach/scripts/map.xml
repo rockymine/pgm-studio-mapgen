@@ -1,8 +1,9 @@
 <map proto="1.5.0">
     <name>Sandreach</name>
-    <version>1.0.0</version>
-    <objective>Capture the other team's wool!</objective>
+    <version>1.1.0</version>
+    <objective>Capture the other team's wool and destroy its emerald!</objective>
     <gamemode>ctw</gamemode>
+    <gamemode>dtm</gamemode>
     <authors>
         <author>rockymine</author>
         <author>Claude (freeform generator, pgmvox)</author>
@@ -76,6 +77,8 @@
         <cuboid min="46,22,66" max="54,26,74" id="orange-room"/>
         <apply enter="not-blue" region="orange-room" message="You may not enter your own wool room!"/>
         <point id="orange-wool-spawn">49.5,23,70.5</point>
+        <cuboid min="39,22,-65" max="42,25,-62" id="red-emerald-region"/>
+        <cuboid min="-42,22,62" max="-39,25,65" id="blue-emerald-region"/>
         <union id="reds-woolrooms">
             <region id="yellow-room"/>
         </union>
@@ -98,6 +101,10 @@
             <item material="wool" damage="1"/>
         </spawner>
     </spawners>
+    <destroyables>
+        <destroyable id="red-emerald" name="Red Emerald" owner="red-team" materials="emerald block" completion="100%" mode-changes="true" region="red-emerald-region"/>
+        <destroyable id="blue-emerald" name="Blue Emerald" owner="blue-team" materials="emerald block" completion="100%" mode-changes="true" region="blue-emerald-region"/>
+    </destroyables>
     <kits>
         <kit id="spawn-kit">
             <item slot="0" material="stone sword" unbreakable="true"/>

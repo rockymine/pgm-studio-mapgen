@@ -834,6 +834,20 @@ class Plots(unittest.TestCase):
         self.assertTrue(any("outside" in e for e in r["errors"]))
 
 
+class DestroyableHeart(unittest.TestCase):
+    def test_heart_at_the_middle(self):
+        d = O.Destroyable("m", "M", "red-team", O.Box(2, 5, 2, 4, 7, 4), material=(B.EMERALD_BLOCK, 0),
+                          materials="emerald block", heart=(B.BEDROCK, 0))
+        w = World(0, 0, 8, 8, sy=10)
+        d.stamp(w)
+        self.assertEqual(w.id(3, 6, 3), B.BEDROCK)
+        self.assertEqual(w.id(2, 5, 2), B.EMERALD_BLOCK)
+        self.assertEqual(d.check(w), [])
+
+    def test_two_gamemodes(self):
+        self.assertEqual(Doc("x", "1", "o", ["ctw", "dtm"]).tostring().count("<gamemode>"), 2)
+
+
 class WoolChests(unittest.TestCase):
     def test_studio_loot_in_each_corner(self):
         w = World(0, 0, 12, 12, sy=16)
