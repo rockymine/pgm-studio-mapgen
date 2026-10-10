@@ -212,9 +212,9 @@ def land():
     in_reach = Xf > -75
     w = 3.0 + 0.6 * smoothstep(-60, -15, Xf)
     level = np.where(Xf < WEIR_X, POND_LEVEL, RIVER_LEVEL)
-    rise_n, rise_s = smoothstep(w, w + 7, d_r), smoothstep(w, w + 14, d_r)
-    bank = np.where(north, level + 1 + (h - level - 1) * rise_n, level + 1.3 + (h - level - 1.3) * rise_s)
-    h = np.where(in_reach, np.minimum(h, bank), h)
+    bluff = LF.profile(h, d_r, level + 1, [LF.Step(w, w + 7, "ground")], mode="cut")
+    bank = LF.profile(h, d_r, level + 1.3, [LF.Step(w, w + 14, "ground")], mode="cut")
+    h = np.where(in_reach, np.where(north, bluff, bank), h)
     h = np.where(in_reach & (d_r <= w), level + 1, h)
 
     # the mill pond, with a spit from its south-west shore

@@ -7,6 +7,7 @@
     H = butte(H, X, Z, (30, -40), r=10, top=72)
     H, road = grade(H, X, Z, [(-80, 50), (0, 30), (80, 60)], width=5, max_grade=0.2)
     H, sea = coast(H, X, Z, sea=30, outline=[...])
+    H = profile(H, d, floor=41, steps=[Step(26, 34, 57), Step(46, 63, 74)], jag=jag)   # a canyon's cross-section
 
 Every function takes the heights H (floats or ints, the y of each column's top) over the world's X and Z and returns
 new heights, and where a landform holds water, a description of it. Nothing here is a recipe: the numbers that give
@@ -21,6 +22,31 @@ from scipy import ndimage
 from . import noise
 from .noise import smoothstep
 from .shapes import distance_in, polyline, signed_distance
+
+
+MODES = ("set", "lift", "cut")
+
+
+def _apply(H, shaped, mode):
+    """What an op that shapes ground does to it: replaces it (`set`), only raises it (`lift`), only lowers it (`cut`)."""
+    assert mode in MODES, mode
+    if mode == "lift":
+        return np.maximum(H, shaped)
+    if mode == "cut":
+        return np.minimum(H, shaped)
+    return shaped
+
+
+@dataclass
+class Step:
+    """One cliff of a cross-section and the ground past it: from `start` to `end` blocks out the ground eases
+    (smoothstep) from the level before it to `top`, and from `end` on it is `ground`, `top` where none is given.
+    `top` is the cliff's nominal height; `ground` (a field, or "ground" for the ground the cross-section is laid
+    on) is what the flat past it is, noise and all."""
+    start: object
+    end: object
+    top: object
+    ground: object = None
 
 
 @dataclass
@@ -295,3 +321,30 @@ def blend(Ha, Hb, mask, width=8):
     t = np.clip(inside / max(width, 1e-6), 0, 1)
     t = t * t * (3 - 2 * t)
     return np.asarray(Ha, float) * (1 - t) + np.asarray(Hb, float) * t
+
+
+def profile(H, d, floor, steps, floor_ground=None, jag=0.0, talus=None, mode="set"):
+    """A cross-section set by distance from a line: `d` is how far out each column lies (shapes.polyline gives it
+    from a path, `x - f(z)` from a straight one). Out to the first step the ground is `floor_ground` (a field; the
+    floor's nominal height `floor` where none is given); each `Step` then eases from the nominal level before it to
+    its `top` and holds its ground past its end, so floor, lower cliff, bench, upper cliff and plateau are a floor
+    and two steps. The first cliff rises out of the floor and never cuts it (or, falling, never lifts it), so a
+    talus against its foot stays; `talus` (rise, reach) lifts the floor by up to `rise` over the last `reach`
+    blocks before it. `jag` (a number or a field) is added to every start and end, so cliffs are ragged and not
+    ruled. A level of "ground" is the ground the cross-section is laid on. `mode` is set, lift or cut."""
+    H = np.asarray(H, float)
+    level = lambda v: H if isinstance(v, str) and v == "ground" else v          # noqa: E731
+    h = np.zeros(np.shape(d)) + (floor if floor_ground is None else level(floor_ground))
+    if talus is not None and steps:
+        rise, reach = talus
+        h = h + rise * smoothstep(steps[0].start - reach, steps[0].start, d)
+    before = level(floor)
+    for n, step in enumerate(steps):
+        top = level(step.top)
+        cliff = before + (top - before) * smoothstep(step.start + jag, step.end + jag, d)
+        if n == 0:
+            cliff = np.where(top >= before, np.maximum(h, cliff), np.minimum(h, cliff))
+        h = np.where(d >= step.start + jag, cliff, h)
+        h = np.where(d >= step.end + jag, top if step.ground is None else level(step.ground), h)
+        before = top
+    return _apply(H, h, mode)

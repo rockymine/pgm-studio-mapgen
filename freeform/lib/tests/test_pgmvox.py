@@ -341,6 +341,41 @@ class Landforms(unittest.TestCase):
         self.assertGreaterEqual(bed.min(), 20)
         self.assertTrue(river.mask.any())
 
+    def test_a_profile_holds_its_levels_and_its_mode(self):
+        X, Z = self.X.astype(float), self.Z.astype(float)
+        d = np.abs(X)
+        steps = [LF.Step(20, 28, 57), LF.Step(38, 55, 74)]
+        h = LF.profile(np.zeros(X.shape), d, 41, steps)
+        self.assertTrue((h[d < 20] == 41).all() and (h[(d >= 28) & (d < 38)] == 57).all() and (h[d >= 55] == 74).all())
+        row = h[:, 60]
+        self.assertTrue((np.diff(row[60:]) >= 0).all())                          # it climbs outward, never back
+        talus = LF.profile(np.zeros(X.shape), d, 41, steps, talus=(3, 5))
+        self.assertTrue((talus[(d >= 15) & (d < 20)] > 41).any() and (talus >= h).all())
+        low = np.full(X.shape, 50.0)
+        self.assertTrue((LF.profile(low, d, 41, steps, mode="lift") >= low).all())
+        self.assertTrue((LF.profile(low, d, 41, steps, mode="cut") <= low).all())
+        bank = LF.profile(self.H, d, 30, [LF.Step(5, 12, "ground")], mode="cut")
+        self.assertTrue((bank[d >= 12] == self.H[d >= 12]).all())
+
+    def test_a_profile_is_the_hollow_mesa_canyon_it_was_written_from(self):
+        X = self.X.astype(float)
+        d = 5.0 - X
+        line = lambda seed: noise.fbm((120,), 9, 2, seed=seed)[None, :]          # noqa: E731
+        fe = 12 + 2.6 * line(1)
+        b0, small, jag = fe + 4, noise.fbm(X.shape, 8, 2, seed=4), 1.2 * noise.fbm(X.shape, 3, 2, seed=7)
+        b1 = b0 + 9 + 2.0 * line(2)
+        rim = b1 + 6 + 1.5 * line(3)
+        floor = 41 + 0.5 * small + 3.0 * noise.smoothstep(fe - 5, fe, d)
+        bench, plateau = 57 + 0.4 * small, 74 + 1.6 * noise.fbm(X.shape, 40, 2, seed=5)
+        h = floor                                                                 # the board's own formula
+        h = np.where(d >= fe + jag, np.maximum(h, 41 + 16 * noise.smoothstep(fe + jag, b0 + jag, d)), h)
+        h = np.where(d >= b0 + jag, bench, h)
+        h = np.where(d >= b1 + jag, 57 + 17 * noise.smoothstep(b1 + jag, rim + jag, d), h)
+        h = np.where(d >= rim + jag, plateau, h)
+        op = LF.profile(np.zeros(X.shape), d, 41, [LF.Step(fe, b0, 57, bench), LF.Step(b1, rim, 74, plateau)],
+                        floor_ground=floor, jag=jag)
+        self.assertTrue(np.array_equal(op, h))
+
     def water_world(self, H, *waters):
         w = World(-60, -60, 120, 120, sy=96)
         top = np.round(H).astype(int)
