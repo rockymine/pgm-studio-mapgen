@@ -35,7 +35,7 @@ render.cutaway(w, os.path.join(out, "10-section-causeways-z-55.png"), [(-88, -54
 render.cutaway(w, os.path.join(out, "11-section-axis-x0.png"), [(0.5, -100), (0.5, 99)], 36, 112, 3,
                title="along z at x 0: skald to skald, through the strand, the breakwater and the band")
 render.cutaway(w, os.path.join(out, "12-section-glacier-stair-x62.png"), [(62.5, -92), (62.5, -42)], 60, 112, 8,
-               title="along z at x 62: the Ice Hall, the landing and the Glacier Stair down to the shelf")
+               title="along z at x 62: the Ice Hall, the landing, the bridge and four steps down to the shelf")
 render.cutaway(w, os.path.join(out, "13-section-lighthouse-x-78.png"), [(-78.5, -70), (-78.5, -42)], 60, 112, 10,
                title="along z at x -78: the lighthouse with its floors, ladder and glazed room")
 render.elevation(w.ids, w.dat, w.x0, w.z0, os.path.join(out, "50-elev-lighthouse-from-the-causeway.png"),

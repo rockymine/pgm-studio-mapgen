@@ -37,6 +37,9 @@ def world_arrays(w, R):
     """The plan raster as world-shaped arrays: floor, land, kind."""
     floor = R.H.copy()
     land = ~R.mask("void")
+    gb = R.mask("gbridge")                           # the glacier bridge is a deck laid by hand over the shelf
+    land[gb] = P.piece_mask(R, "icefall")[gb]
+    floor[gb] = P.PIECE["icefall"][4]
     return floor, land
 
 
@@ -119,12 +122,28 @@ def flights(w, R, r):
         for yy in range(y + 1, y + 5):
             w.set(x, yy, z, B.AIR)
         w.set(x, y - 1, z, *((B.PACKED_ICE, 0) if glacier else (B.STONEBRICK, 0)))
-    # rails along the stair's sides
+    glacier_bridge(w)
+
+
+def glacier_bridge(w):
+    """The Glacier Bridge: a quartz deck at the hall's floor from the top of the four steps to the landing, seven
+    clear across between low walls, on packed-ice piers every six blocks over the shelf. The steps carry on
+    from the plan's flight; the span over the 3 blocks of void is the deck alone."""
     g = P.GLACIER
-    for k in range(92 - g["h0"] + 1):
-        z, y = g["z_from"] - k, g["h0"] + k
-        for x in (g["x0"] - 1, g["x1"] + 1):
-            w.set(x, y + 1, z, B.COBBLE_WALL, 0)
+    shelf = P.PIECE["icefall"][4]
+    for z in range(-51, -67, -1):
+        for x in range(g["x0"], g["x1"] + 1):
+            edge = x in (g["x0"], g["x1"])
+            w.set(x, P.HALL_Y, z, *((B.QUARTZ, 1) if edge else (B.QUARTZ, 0)))
+            w.set(x, P.HALL_Y - 1, z, B.AIR)
+            for y in range(P.HALL_Y + 1, P.HALL_Y + 5):
+                w.set(x, y, z, B.AIR)
+        for x in (g["x0"], g["x1"]):
+            w.set(x, P.HALL_Y + 1, z, B.COBBLE_WALL, 0)
+        if (z + 51) % 6 == 0 and z >= -62:
+            for x in (g["x0"], g["x1"]):
+                for y in range(shelf + 1, P.HALL_Y):
+                    w.set(x, y, z, B.PACKED_ICE, 0)
 
 
 def houses(w, R, r):
@@ -140,15 +159,13 @@ def houses(w, R, r):
 
 
 def skald_interior(w, b, res):
-    """The hall: two long tables, a hearth at each end, lanterns, a carpet down the middle."""
+    """The hall: a bench along the north wall, a hearth at each end, lanterns. The floor between the doorway and the
+    spawn is left clear: the long fenced tables the first build set across it made every spawn walk round them."""
     x0, z0, x1, z1 = b["spec"]["rect"]
     f = b["floor"]
     cz = (z0 + z1) // 2
-    for x in range(x0 + 3, x1 - 2):
-        w.set(x, f, cz, B.CARPET, 14) if False else None
-        for dz in (-3, 3):
-            w.set(x, f + 1, cz + dz, B.SPRUCE_FENCE, 0)
-            w.set(x, f + 2, cz + dz, B.WOOD_SLAB, 1)
+    for x in range(x0 + 4, x1 - 3):
+        w.set(x, f + 1, z0 + 1, B.WOOD_SLAB, 1)                  # a bench of half slabs, stepped over, not walked round
     for x, z in ((x0 + 1, cz), (x1 - 1, cz)):
         for dy in range(1, 4):
             w.set(x, f + dy, z, B.COBBLE, 0)
@@ -262,13 +279,14 @@ def lighthouse(w, R, r):
     # the wool's pedestal in the room
     wx, wy, wz = (x0 + x1) // 2, top + 1, (z0 + z1) // 2
     w.set(wx, top, wz, B.QUARTZ, 1)
+    props.wool_chests(w, (x0 + 1, z0 + 1, x1 - 1, z1 - 1), top, "e")     # the corners: clear of the ladder, wool and door
 
 
 def ice_hall(w, R, r):
     """The Ice Hall: packed-ice walls with blue glass bands, a floor of tiled blue and white clay, sea lanterns in
     a packed-ice ceiling, a doorway on the south toward the landing."""
     x0, z0, x1, z1 = P.HALL_BOX
-    f = 92
+    f = P.HALL_Y
     for x in range(x0, x1 + 1):
         for z in range(z0, z1 + 1):
             edge = x in (x0, x1) or z in (z0, z1)
@@ -284,6 +302,7 @@ def ice_hall(w, R, r):
     for ddx in (-1, 0, 1):
         for y in (f + 1, f + 2, f + 3):
             w.set(dx + ddx, y, z1, B.AIR)
+    props.wool_chests(w, (x0 + 1, z0 + 1, x1 - 1, z1 - 1), f, "s")        # the corners: clear of the wool and the doorway
     # pillars of ice, two on each side, for cover inside
     for px, pz in ((x0 + 4, z0 + 4), (x1 - 4, z0 + 4), (x0 + 4, z1 - 4), (x1 - 4, z1 - 4)):
         for y in range(f + 1, f + 8):

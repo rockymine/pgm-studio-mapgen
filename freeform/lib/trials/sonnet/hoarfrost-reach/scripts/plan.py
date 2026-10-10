@@ -1,7 +1,7 @@
 """Hoarfrost Reach: a capture-the-wool board of ice-capped headlands standing out of a frozen sea. Each team starts
 on a timber-hall headland at its back, comes down to a strand with a frozen pond in it, and has two wool rooms to
 defend and two to take: the Lighthouse, a tower on its own stack at the strand's west end behind a twelve-block
-gap, and the Ice Hall at the top of a nine-wide glacier stair at the east end. Between the two teams lies a band
+gap, and the Ice Hall at the far end of a nine-wide glacier stair of four steps and a bridge at the east end. Between the two teams lies a band
 the teams build across, with two floes in it for stepping stones.
 
 Red holds the north (z < 0). Blue is red's mirror across the band, z' = -1 - z: pgmvox's Symmetry("mirror_z").
@@ -38,6 +38,9 @@ OBSERVER_AT = (0, 100, 0)
 MONUMENT_Y = 76                  # the slots, on the skald's floor 75
 
 
+HALL_Y = 76                      # the Ice Hall's floor and its landing, four over the Icefall shelf's 72
+
+
 def red_half(x, z):
     return z < 0
 
@@ -64,12 +67,13 @@ PIECES = [
     ("lighthouse", "the Lighthouse stack", "lighthouse", P((-87, -61), (-79, -66), (-70, -62), (-68, -55), (-71, -47),
                                                           (-79, -44), (-87, -49)), 72),
     ("icefall", "the Icefall shelf", "icefall", P((50, -63), (74, -63), (75, -54), (74, -45), (50, -45)), 72),
-    ("glacier", "the Glacier landing", "glacier", (58, -77, 66, -67), 92),
-    ("hall", "the Ice Hall", "hall", (54, -90, 70, -78), 92),
+    ("glacier", "the Glacier landing", "glacier", (58, -77, 66, -67), HALL_Y),
+    ("hall", "the Ice Hall", "hall", (54, -90, 70, -78), HALL_Y),
+    ("gbridge", "the Glacier Bridge", "bridge", (58, -66, 66, -51), HALL_Y),
 ]
 PIECE = {p[0]: p for p in PIECES}
 HOLE = (0, -53, 6.5)                 # the strand's frozen pond: centre x, z, radius (void)
-GLACIER = dict(x0=58, x1=66, z_from=-47, z_to=-66, h0=73)        # the stair: a flight climbing north, 9 wide
+GLACIER = dict(x0=58, x1=66, z_from=-47, z_to=-50, h0=73)        # the stair: four steps climbing north, 9 wide; the bridge z -51..-66 carries on at HALL_Y
 FLIGHTS = [((-12, -63), "n", (-2, 2), 73, 3), ((12, -63), "n", (-2, 2), 73, 3)]   # the skald's two stairs to the strand
 HALL_SKALD = (-12, -89, 11, -79)     # the skald's hall, walls included: x0, z0, x1, z1
 HOUSES = [
@@ -176,7 +180,7 @@ def build():
     for start, rises, width, h0, n in FLIGHTS:
         R.flight(start, rises, width, h0, n)
     g = GLACIER
-    R.flight((g["x0"] + 4, g["z_from"]), "n", width=(-4, 4), h0=g["h0"], n=92 - g["h0"] + 1)
+    R.flight((g["x0"] + 4, g["z_from"]), "n", width=(-4, 4), h0=g["h0"], n=HALL_Y - g["h0"] + 1)
     # the skald hall: walls round an interior at the headland's floor, a doorway on the south (the strand's side)
     for key, b in houses().items():
         x0_, z0_, x1_, z1_ = b["spec"]["rect"]
@@ -200,7 +204,7 @@ def build():
 
 
 def stair_top():
-    return 92
+    return HALL_Y
 
 
 def zone_mask(R, keys=None):
@@ -231,10 +235,10 @@ def objectives():
     O.add(Spawn("red-team", SPAWN_AT, yaw=0, kit="spawn-kit", area=Box(-34, 0, -98, 34, 127, -64), protect=True))
     O.add(Observer(OBSERVER_AT, yaw=90), mirror=False)
     lh = Box(TOWER[0] + 1, ROOM_Y, TOWER[1] + 1, TOWER[2] - 1, ROOM_Y + 6, TOWER[3] - 1)
-    hall = Box(HALL_BOX[0] + 1, 92, HALL_BOX[1] + 1, HALL_BOX[2] - 1, 98, HALL_BOX[3] - 1)
+    hall = Box(HALL_BOX[0] + 1, HALL_Y, HALL_BOX[1] + 1, HALL_BOX[2] - 1, HALL_Y + 6, HALL_BOX[3] - 1)
     # blue's monuments are the images of red's two slots: (-16, -80) and (16, -80) on the skald's front lawn
     O.add(Wool("blue-team", "cyan", slot=(-16, MONUMENT_Y, 79), found=(-78, ROOM_Y + 1, -55), room=lh,
                spawn_at=(-78, ROOM_Y + 2, -57)), color="purple")
-    O.add(Wool("blue-team", "orange", slot=(16, MONUMENT_Y, 79), found=(62, 93, -84), room=hall,
-               spawn_at=(62, 94, -82)), color="yellow")
+    O.add(Wool("blue-team", "orange", slot=(16, MONUMENT_Y, 79), found=(62, HALL_Y + 1, -84), room=hall,
+               spawn_at=(62, HALL_Y + 2, -82)), color="yellow")
     return O

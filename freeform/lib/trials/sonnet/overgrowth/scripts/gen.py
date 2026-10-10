@@ -282,6 +282,9 @@ def vines(w, L, r):
     return n
 
 
+WOOD_PER_HALF = 7                  # the first build planted 26 a half; the playtest asked for a quarter
+
+
 def jungle(w, R, L, r):
     """Jungle trees, willows on the stream, bushes, ferns and flowers: kept off every lane and the plan's footprints."""
     lib = trees.library()
@@ -303,13 +306,17 @@ def jungle(w, R, L, r):
                 lane[x - w.x0, z - w.z0] = True
     lane = ndimage.binary_dilation(lane, iterations=2)
     ok &= ~lane
+    # a team deathmatch is fought on open ground: the wood is kept to the fringe, the terraces behind the gorges and
+    # the back of each court, and thinned to a quarter of the first build's 26 a half
+    fringe = (np.abs(Z) >= 28) | (X <= -54)
+    ok_wood = ok & fringe
     kinds = [by["jungle"], by["dense-oak"], by["tiny-oak"], by["willow"]]
-    cells = np.argwhere(ok)
+    cells = np.argwhere(ok_wood)
     near_water = ndimage.binary_dilation(L.water, iterations=6)
     order = r.permutation(len(cells))
     placed = []
     for j in order:
-        if len(placed) >= 160:
+        if len(placed) >= WOOD_PER_HALF:
             break
         i, k = cells[j]
         x, z = int(X[i, k]), int(Z[i, k])
@@ -321,7 +328,7 @@ def jungle(w, R, L, r):
         if trees.plant(w, x, z, t, turn=int(r.integers(4))):
             placed.append((x, z, t))
     n = 0
-    free = ok & (w.ids[np.arange(w.sx)[:, None], np.minimum(L.H + 1, SY - 1), np.arange(w.sz)[None, :]] == 0)
+    free = ok_wood & (w.ids[np.arange(w.sx)[:, None], np.minimum(L.H + 1, SY - 1), np.arange(w.sz)[None, :]] == 0)
     for i, k in np.argwhere(free):
         c = r.random()
         y = int(L.H[i, k])

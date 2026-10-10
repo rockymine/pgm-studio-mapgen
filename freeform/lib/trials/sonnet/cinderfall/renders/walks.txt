@@ -1,18 +1,30 @@
 objectives with a problem (Objectives.check): 0
 footing problems (audit.footing): 0
-red spawn at (-74, 64, 12): 14572 places reached
+red spawn at (-74, 64, 12): 13066 places reached
   to its own core's plinth, its edge: 39
-  to the plinth's centre: 46
-  to the enemy's plinth's centre: 134
+  to the pit's rim (the plinth's centre is lava): 42
+  to the enemy's plinth, its edge: 141
   to the beacon's door: 75
   to the beacon's top (by its ladder): 92
-  land columns reached: 14302 of 14944 (96%; the rest: the lava, sheer faces, and the tube's ceiling)
-blue spawn at (73, 64, -13): 14572 places reached
+  land columns reached: 12754 of 14944 (85%; the rest: the lava, sheer faces, and the tube's ceiling)
+blue spawn at (73, 64, -13): 13066 places reached
   to its own core's plinth, its edge: 39
-  to the plinth's centre: 46
-  to the enemy's plinth's centre: 134
-  land columns reached: 14302 of 14944 (96%; the rest: the lava, sheer faces, and the tube's ceiling)
+  to the pit's rim (the plinth's centre is lava): 42
+  to the enemy's plinth, its edge: 141
+  land columns reached: 12754 of 14944 (85%; the rest: the lava, sheer faces, and the tube's ceiling)
 from the Cinder Pit's floor (-22, 55, 17):
   to the blowhole's floor: 63
   out of the blowhole onto the plain: 70
   to red's plinth through the tube: 54
+from the bridgehead (-13, 59, -1) on foot:
+  across the Slag Bridge to the far head (13, 59, -1): 25
+  onto the keystone's top (0, 59, 0): 12
+the north hop chain, running jumps of up to 3, from the west shore stack (-16, 62, -29):
+  to the east shore stack (13, 63, -31): 28
+  the same on foot, no jumps: not reached
+the south hop chain, running jumps of up to 3, from the west shore stack (-14, 63, 30):
+  to the east shore stack (15, 62, 28): 27
+  the same on foot, no jumps: not reached
+the north shore stair, from (-30, 63, -45) down to the shore (-5, 48, -45): 23
+the south shore stair, from (-38, 59, 36) down to the shore (-12, 48, 31): 27
+red spawn to the enemy's plinth, its edge, with the bridge taken out (round the ravine's ends): 245

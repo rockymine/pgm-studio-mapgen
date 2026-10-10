@@ -52,7 +52,7 @@ def P_mask(R, key):
 
 
 # pairs of pieces joined by a flight of stairs or a bridge piece: their gap is the join, not a jump
-JOINED = {("skald", "strand"), ("icefall", "glacier"), ("strand", "front"), ("strand", "leg-w"), ("strand", "leg-e")}
+JOINED = {("skald", "strand"), ("icefall", "glacier"), ("icefall", "gbridge"), ("gbridge", "glacier"), ("strand", "front"), ("strand", "leg-w"), ("strand", "leg-e")}
 
 
 def measure():

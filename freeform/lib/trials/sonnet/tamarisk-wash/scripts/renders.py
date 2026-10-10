@@ -45,8 +45,7 @@ render.cutaway(w, os.path.join(out, "10-section-z-28-table-rock.png"), [(-100, -
                title="along x at z -28: the plateau, Table Rock, the north ghats, the wash, and the mirror")
 render.cutaway(w, os.path.join(out, "11-section-z24-souk-serai.png"), [(-100, 24.5), (99, 24.5)], 30, 100, 3,
                title="along x at z 24: the souk, the caravanserai, the south ghats, the wash")
-render.cutaway(w, os.path.join(out, "12-section-qanat.png"), [(-6.5, 30.5), (-20.5, 29.5), (-31.5, 29.5), (-42.5, 30.5),
-                                                              (-52.5, 29.5), (-66.5, 28.5)], 40, 66, 6,
+render.cutaway(w, os.path.join(out, "12-section-qanat.png"), [(q[0] + 0.5, q[2] + 0.5) for q in P.QANAT[:-1]] + [(-66.5, 28.5)], 40, 66, 6,
                title="the qanat, from the wash to the cistern under the souk")
 render.elevation(w.ids, w.dat, w.x0, w.z0, os.path.join(out, "50-elev-wash-wall-from-the-floor.png"),
                  (-30, -40, -6, 40), 40, 70, look="west", scale=6)

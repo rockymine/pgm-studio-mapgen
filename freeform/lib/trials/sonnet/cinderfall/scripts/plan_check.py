@@ -75,7 +75,7 @@ def measure():
     pit = tuple(int(v) for v in P.PIT[0])
     ways = {
         "around (the open ash)": ([(-36, -4)], "road"),
-        "above (the Slag Ridge)": ([(-30, -37), (-48, -37), (cx, -33)], "ridge"),
+        "above (the Slag Ridge)": ([(-34, -37), (-48, -37), (cx, -33)], "ridge"),
         "below (the vent tube)": ([pit, (P.VENT[0][0], P.VENT[0][2], 1), (P.VENT[-1][0], P.VENT[-1][2], 1)], "tube"),
         "through (the Foundry Row)": ([(-46, 15), (-46, 4)], "row"),
         "unseen (the Charred Wood)": ([(-30, -24)], "wood"),
@@ -132,7 +132,9 @@ def measure():
         on_road += sum(1 for x, z in b["cells"] if roadm[x - P.X_MIN, z - P.Z_MIN])
     beacon = (-48, -37)
     to_beacon = Dr.get(beacon)
-    caldera = dict(rim=int(L.H[(L.X == -1) & (L.Z == -28)].max()), floor=int(L.H[(L.X == -12) & (L.Z == -1)].max()))
+    rav = L.rav
+    wide = float((2 * rav["hw"][L.land]).max())
+    caldera = dict(rim=P.BRIDGE_Y, floor=int(L.H[L.lava].min()), wide=wide, lake=17.2)
     return dict(R=R, own=own, enemy=enemy, off=off, ways=out, seen=seen, clear=clear, tube=tube_len, grades=grades,
                 ledge_gap=ledge_gap, ledge_drop=ledge_drop, to_beacon=to_beacon, caldera=caldera, near=near, on_road=on_road)
 
@@ -166,8 +168,10 @@ def rows(m):
               "at most 70", m["to_beacon"] is not None and m["to_beacon"] <= 70))
     g = max(m["grades"].values())
     r.append((f"{g:.2f}", "steepest graded road, blocks up per block", "at most 0.6", g <= 0.61))
-    r.append((f"{m['caldera']['rim'] - m['caldera']['floor']}", "the caldera, the north rim over the basin floor",
-              "6-20", 6 <= m["caldera"]["rim"] - m["caldera"]["floor"] <= 20))
+    r.append((f"{m['caldera']['rim'] - m['caldera']['floor']}", "the ravine, the plain over its lava bed",
+              "10-20", 10 <= m["caldera"]["rim"] - m["caldera"]["floor"] <= 20))
+    r.append((f"{m['caldera']['wide']:.0f} = {m['caldera']['wide'] / m['caldera']['lake']:.1f} lakes", "the ravine at its widest, rim to rim",
+              "up to 2.5 of the old lake's 17", m["caldera"]["wide"] <= 2.5 * m["caldera"]["lake"] + 1))
     r.append((m["on_road"], "building cells standing on a road or track", "0", m["on_road"] == 0))
     return r
 
