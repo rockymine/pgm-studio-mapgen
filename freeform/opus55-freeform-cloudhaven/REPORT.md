@@ -178,3 +178,11 @@ buildings, and bridge steps over one block. Its last run reads `no placement pro
   are no boats, item frames or armour stands. The water in the falls is written falling and will settle when
   a block next to it changes.
 - Not checked in game.
+
+## After the playtest
+
+**The islands carry less than half the trees they did.** The playtest found the board overgrown and hard to navigate, with the floor hidden. `dressing.py` now keeps 5% of the rim candidates and 1.5% of the inner ones, where it kept every one the spacing allowed, so the rim still has its willows and the middle opens up. Red's half went from 36 trees to 16, which is 44%, and blue's half is its turn.
+
+**Per island, the counts read back from the generator.** Cloudstep 3 to 2, Fernrock 2 to 1, the Gardens 4 to 1, Highmoor 8 to 4, Lantern Isle 4 to 1, North Reach 3 to 2, Port Aerie 6 to 2, Sentinel Rock 1 to 0, South Reach 3 to 2 and Windmill Isle 2 to 1. The existing exclusions are unchanged: no tree on a bridge or ship, by a building or within five blocks of a monument, and the audit finds no placement problem.
+
+**The walks barely move.** Standable cells reached from the spawn rose from 12,290 to 12,616 as the crowns came out. Walks to the enemy's monuments read 294 and 300 (296 and 302), and the Concord's deck 97 (99). The written map.xml reads valid with no issues.

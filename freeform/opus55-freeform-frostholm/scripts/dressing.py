@@ -64,8 +64,12 @@ def blocked(w, F):
     m |= np.hypot(F.X - mx, F.Z - mz) < 14            # Holmstein stays open: cover keeps its distance
     bx, bz = P.BEACON
     m |= np.hypot(F.X - bx, F.Z - bz) < 11
+    m |= np.hypot(F.X - P.CORE[0], F.Z - P.CORE[1]) < 9      # the core stands in the open: no crown over its plinth
     m |= F.angle > 40
     return m
+
+
+KEEP = 0.11                      # the share of candidate spots tried: 79 trees on red's half before the playtest
 
 
 def wood(w, F, zone, kinds, weights, spacing, tries, seed):
@@ -75,6 +79,8 @@ def wood(w, F, zone, kinds, weights, spacing, tries, seed):
     n = 0
     for ix, iz in pts[:tries]:
         x, z = F.x0 + ix, F.z0 + iz
+        if rng.random() > KEEP:
+            continue
         kind = rng.choice(kinds, p=weights)
         t = TREES[kind][rng.integers(len(TREES[kind]))]
         c = t["crown"] * 0.45

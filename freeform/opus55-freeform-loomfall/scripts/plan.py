@@ -14,7 +14,7 @@ carpet, what a player falling from it lands on.
 
     y is the height of a carpet's single sheet of wool
 """
-CARPETS = [  # name, x0, x1, z0, z1, y, holes [(x0, x1, z0, z1)]
+_FULL = [  # the carpets as first drawn: name, x0, x1, z0, z1, y, holes [(x0, x1, z0, z1)]
     ("the sultan's carpet", -20, 19, -14, 13, 196, []),
     ("the runner", -11, 10, -26, 25, 182, []),
     ("the kilim", -26, 25, -11, 10, 166, []),
@@ -23,6 +23,22 @@ CARPETS = [  # name, x0, x1, z0, z1, y, holes [(x0, x1, z0, z1)]
     ("the great carpet", -23, 22, -23, 22, 128, [(-20, -18, -20, -18), (17, 19, -20, -18), (-20, -18, 17, 19),
                                                  (17, 19, 17, 19)]),
 ]
+SCALE = 0.7                                    # after the playtest each carpet is 0.7 of its length and width: half the area
+
+
+def _scaled(c):
+    name, x0, x1, z0, z1, y, holes = c
+    cx, cz = (x0 + x1) / 2, (z0 + z1) / 2
+    wx, wz = max(2, 2 * round((x1 - x0 + 1) * SCALE / 2)), max(2, 2 * round((z1 - z0 + 1) * SCALE / 2))
+    nx0, nz0 = round(cx * SCALE - (wx - 1) / 2), round(cz * SCALE - (wz - 1) / 2)
+    nh = []
+    for a, b, c0, d in holes:                                      # a hole keeps its size, at its scaled place
+        hx, hz = round((a + b) / 2 * SCALE - (b - a) / 2), round((c0 + d) / 2 * SCALE - (d - c0) / 2)
+        nh.append((hx, hx + b - a, hz, hz + d - c0))
+    return (name, nx0, nx0 + wx - 1, nz0, nz0 + wz - 1, y, nh)
+
+
+CARPETS = [_scaled(c) for c in _FULL]
 KILL_Y = 116                                   # below this a player is out
 SPAWN = dict(x=(-8, 7), z=(-6, 5))
 RUN = 7.0                                      # cells a running player tramples a second

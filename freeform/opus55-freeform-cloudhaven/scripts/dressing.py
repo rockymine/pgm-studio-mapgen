@@ -13,6 +13,9 @@ TREES = json.load(open(os.path.join(HERE, "trees.json")))
 SOFT = (B.AIR, B.TALLGRASS, B.FLOWER, B.DANDELION, B.VINE)
 
 
+KEEP_RIM, KEEP_INNER = 0.05, 0.015      # the share of candidates kept: 36 trees on red's half before the playtest, 16 now
+
+
 def plant(w, F, x, z, tree, turn):
     g = int(F.H[x - F.x0, z - F.z0])
     if w.id(x, g, z) != B.GRASS or w.id(x, g + 1, z) not in SOFT:
@@ -58,9 +61,12 @@ def build(w, F):
     pts = np.argwhere(ok)
     rng.shuffle(pts)
     n = 0
+    per = {}
     for ix, iz in pts:
         x, z = F.x0 + ix, F.z0 + iz
         rim = inward[ix, iz] < 3.5
+        if rng.random() > (KEEP_RIM if rim else KEEP_INNER):
+            continue                        # thinned after the playtest: the floor shows, the edges keep their trees
         kind = "willow" if rim else ("dense-oak" if rng.random() < 0.6 else "small-dense-oak")
         if F.key[ix, iz] == "gardens" and rng.random() < 0.7:
             kind = "willow"
@@ -73,4 +79,5 @@ def build(w, F):
         if plant(w, F, x, z, t, int(rng.integers(4))):
             F.trees.append((x, z, c))
             n += 1
-    print(f"  planted {n} trees")
+            per[F.key[ix, iz]] = per.get(F.key[ix, iz], 0) + 1
+    print(f"  planted {n} trees; per island {dict(sorted(per.items()))}")

@@ -3,7 +3,7 @@
     <version>0.1.0</version>
     <gamemode>dtm</gamemode>
     <gamemode>dtc</gamemode>
-    <objective>Leak the core burning in the enemy's lighthouse lantern, and break the monument on their lake knoll.</objective>
+    <objective>Leak the core standing by the enemy's lighthouse, and break the monument on their lake knoll.</objective>
     <authors>
         <author>Claude (freeform generator)</author>
     </authors>
@@ -57,8 +57,8 @@
         <point id="observer-spawn">0.5,80,0.5</point>
         <rectangle id="red-spawn" min="-76,-69" max="-51,-58"/>
         <rectangle id="blue-spawn" min="51,58" max="76,69"/>
-        <cuboid id="red-core-region" min="-18,75,-68" max="-15,78,-65"/>
-        <cuboid id="blue-core-region" min="15,75,65" max="18,78,68"/>
+        <cuboid id="red-core-region" min="-29,57,-59" max="-26,60,-56"/>
+        <cuboid id="blue-core-region" min="26,57,56" max="29,60,59"/>
         <cuboid id="red-monument" min="-58,62,-20" max="-57,64,-19"/>
         <cuboid id="blue-monument" min="57,62,19" max="58,64,20"/>
         <union id="spawns">

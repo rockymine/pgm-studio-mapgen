@@ -93,7 +93,7 @@ def main(build):
     # a dry walk: no swimming, so the straits are crossed only by the bridge, the ice and Tingholm's ford
     dry_st = standable(passable, np.zeros_like(water), solid) | (ladder & passable)
     spawns = {"red": (-60, 57, -64), "blue": (59, 57, 63)}
-    goals = {"red core (the Beacon's lantern)": (-17, 75, -67), "blue core": (16, 75, 66),
+    goals = {"red core (on the ground by the Beacon)": (-28, 56, -58), "blue core": (27, 56, 57),
              "red monument (Holmstein)": (-58, 60, -20), "blue monument": (57, 60, 19)}
     places = {"the Old Bridge": (-38, 50, -26), "the whaler's deck": (-25, 51, -42), "Skarvik green": (-16, 54, -14),
               "Tingholm": (0, 55, 0), "Kraakodde": (38, 53, -60), "Sealers' Point": (-60, 55, 38)}

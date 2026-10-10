@@ -48,7 +48,7 @@ def main(out):
         d.text(px(x - 8, z + 2), p["name"], fill=(0, 0, 0))
     for f, col in ((lambda x, z: (x, z), (220, 40, 40)), (P.rot, (40, 80, 230))):
         x, z = f(P.SPAWN[0], P.SPAWN[2]); d.ellipse([px(x - 4, z - 4), px(x + 4, z + 4)], fill=col)
-        x, z = f(*P.BEACON); d.rectangle([px(x - 2, z - 2), px(x + 2, z + 2)], fill=(20, 20, 20), outline=col, width=3)
+        x, z = f(*P.CORE); d.rectangle([px(x - 2, z - 2), px(x + 2, z + 2)], fill=(20, 20, 20), outline=col, width=3)
         x, z = f(*P.MONUMENT); d.rectangle([px(x - 1, z - 1), px(x + 1, z + 1)], fill=(20, 20, 20), outline=col, width=3)
     im.save(out)
 
