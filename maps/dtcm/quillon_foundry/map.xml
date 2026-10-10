@@ -1,8 +1,9 @@
 <map proto="1.5.0">
     <name>Quillon Foundry</name>
     <version>1.0.0</version>
-    <gamemode>ctw</gamemode>
-    <objective>Capture the enemies' wools!</objective>
+    <gamemode>dtm</gamemode>
+    <gamemode>dtc</gamemode>
+    <objective>Destroy the enemy's monument and leak the enemy's core!</objective>
     <include id="gapple-kill-reward"/>
     <teams>
         <team id="red-team" color="red" max="12">Red</team>
