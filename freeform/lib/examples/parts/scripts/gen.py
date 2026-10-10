@@ -12,6 +12,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 from pgmvox import B, World  # noqa: E402
 from pgmvox import build as BLD  # noqa: E402
 from pgmvox import facade as F  # noqa: E402
+from pgmvox.shapes import rect_cells  # noqa: E402
 
 FLOOR = 10
 w = World(-12, -12, 112, 92, sy=48)
@@ -29,9 +30,9 @@ for k, form in enumerate(BLD.FORMS):
                            chimney=False))
 
 # row 3: a patterned mass held up on four piers, coffered underneath
-mass = F.rect_cells(0, 50, 25, 61)
+mass = rect_cells(0, 50, 25, 61)
 for x, z in ((2, 52), (22, 52), (2, 58), (22, 58)):
-    F.extrude(w, F.rect_cells(x, z, x + 1, z + 1), FLOOR + 1, FLOOR + 6, base=F.DARK)
+    F.extrude(w, rect_cells(x, z, x + 1, z + 1), FLOOR + 1, FLOOR + 6, base=F.DARK)
 F.extrude(w, mass, FLOOR + 7, FLOOR + 26, base=F.concrete(5), faces_=[
     F.word(14, "PARTS", F.DARK),
     F.glyph_row(7, ["eye", "key", "sun", "gate"], F.DARK),

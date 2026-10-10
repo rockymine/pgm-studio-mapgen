@@ -92,6 +92,21 @@ def walk_cells(pts):
     return out
 
 
+def rect_cells(x0, z0, x1, z1):
+    """The cells of a rectangle by its corners, (x0, z0) to (x1, z1) inclusive, in either order: the order every
+    function here takes. `Raster.rect` and `pieces.box` take ranges, (x0, x1, z0, z1)."""
+    return {(x, z) for x in range(min(x0, x1), max(x0, x1) + 1) for z in range(min(z0, z1), max(z0, z1) + 1)}
+
+
+def poly_cells(poly):
+    """The cells whose centres lie inside a polygon, as a set."""
+    xs, zs = [p[0] for p in poly], [p[1] for p in poly]
+    x0, x1, z0, z1 = int(np.floor(min(xs))) - 1, int(np.ceil(max(xs))) + 1, int(np.floor(min(zs))) - 1, int(np.ceil(max(zs))) + 1
+    X, Z = np.meshgrid(np.arange(x0, x1 + 1), np.arange(z0, z1 + 1), indexing="ij")
+    m = inside(X + 0.0, Z + 0.0, poly)
+    return {(int(x), int(z)) for x, z in zip(X[m], Z[m])}
+
+
 def disc(X, Z, cx, cz, r):
     return np.hypot(X - cx, Z - cz) <= r
 

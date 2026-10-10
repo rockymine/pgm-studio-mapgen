@@ -17,7 +17,7 @@ from scipy import ndimage
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 
-from pgmvox import B, World, audit, blocks, move, orient, plangraph, plot, render, sight, terrain, walk  # noqa: E402
+from pgmvox import B, World, audit, blocks, move, orient, plangraph, plot, render, shapes, sight, terrain, walk  # noqa: E402
 from pgmvox import build as BLD  # noqa: E402
 from pgmvox import facade as F  # noqa: E402
 from pgmvox import pieces as P  # noqa: E402
@@ -188,6 +188,38 @@ class Plan(unittest.TestCase):
         op = sight.plan_opaque(R)
         self.assertFalse(sight.line_clear(sight.eye(-15, 11, 0), sight.target(15, 11, 0), op))
         self.assertTrue(sight.line_clear(sight.eye(-2, 13, 0), sight.target(15, 11, 0), op))
+
+
+class Shapes(unittest.TestCase):
+    def test_a_rectangle_is_taken_by_its_corners_in_either_order(self):
+        cells = shapes.rect_cells(3, 9, 1, 7)
+        self.assertEqual(cells, shapes.rect_cells(1, 7, 3, 9))
+        self.assertEqual(len(cells), 3 * 3)
+        self.assertEqual(min(cells), (1, 7))
+        self.assertEqual(max(cells), (3, 9))
+
+    def test_a_polygons_cells_are_the_centres_inside_it(self):
+        self.assertEqual(shapes.poly_cells([(0, 0), (4, 0), (4, 3), (0, 3)]),
+                         {(x, z) for x in range(4) for z in range(3)})
+
+    def test_no_public_function_takes_a_rectangle_by_ranges_but_the_two_named(self):
+        import inspect
+        import pkgutil
+        import pgmvox
+        ranges = []
+        for info in pkgutil.iter_modules(pgmvox.__path__):
+            module = __import__(f"pgmvox.{info.name}", fromlist=["_"])
+            found = [(f"{info.name}.{n}", f) for n, f in vars(module).items()
+                     if inspect.isfunction(f) and f.__module__ == module.__name__ and not n.startswith("_")]
+            for n, cls in vars(module).items():
+                if inspect.isclass(cls) and cls.__module__ == module.__name__:
+                    found += [(f"{info.name}.{n}.{m}", f) for m, f in vars(cls).items()
+                              if inspect.isfunction(f) and not m.startswith("_")]
+            for name, f in found:
+                params = [p for p in inspect.signature(f).parameters if p != "self"]
+                if params[:4] == ["x0", "x1", "z0", "z1"]:
+                    ranges.append(name)
+        self.assertEqual(sorted(ranges), ["pieces.box", "plan.Raster.rect"])
 
 
 class Landforms(unittest.TestCase):
@@ -485,7 +517,7 @@ class Houses(unittest.TestCase):
 class Facades(unittest.TestCase):
     def test_a_word_reads_left_to_right_from_outside(self):
         w = World(-2, -2, 30, 10, sy=12)
-        F.extrude(w, F.rect_cells(0, 0, 20, 5), 0, 8, faces_=[F.word(2, "LT", F.DARK)])
+        F.extrude(w, shapes.rect_cells(0, 0, 20, 5), 0, 8, faces_=[F.word(2, "LT", F.DARK)])
         south = ["".join("#" if w.id(x, y, 5) == B.AIR else "." for x in range(0, 21)) for y in range(6, 1, -1)]
         north = ["".join("#" if w.id(x, y, 0) == B.AIR else "." for x in range(20, -1, -1)) for y in range(6, 1, -1)]
         self.assertEqual(south[0].strip("."), "#...###")
@@ -494,7 +526,7 @@ class Facades(unittest.TestCase):
 
     def test_corners_stay_flush(self):
         w = World(-2, -2, 12, 12, sy=8)
-        F.extrude(w, F.rect_cells(0, 0, 5, 5), 0, 5, faces_=[F.band(0, 5, F.DARK)])
+        F.extrude(w, shapes.rect_cells(0, 0, 5, 5), 0, 5, faces_=[F.band(0, 5, F.DARK)])
         self.assertEqual(w.get(0, 2, 0), F.CONCRETE)
         self.assertEqual(w.id(2, 2, 0), B.AIR)
 

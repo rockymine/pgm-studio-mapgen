@@ -24,8 +24,6 @@ side. `first_of` composes them, and `carpet` lays one.
 """
 from dataclasses import dataclass
 
-import numpy as np
-
 from .blocks import B
 
 CONCRETE = (B.STONE, 0)
@@ -348,16 +346,3 @@ def carpet(w, x0, z0, x1, z1, y, field):
                 w.set(x, y, z, *b)
                 count[b] = count.get(b, 0) + 1
     return count
-
-
-def rect_cells(x0, z0, x1, z1):
-    return {(x, z) for x in range(min(x0, x1), max(x0, x1) + 1) for z in range(min(z0, z1), max(z0, z1) + 1)}
-
-
-def poly_cells(poly):
-    from .shapes import inside
-    xs, zs = [p[0] for p in poly], [p[1] for p in poly]
-    x0, x1, z0, z1 = int(np.floor(min(xs))) - 1, int(np.ceil(max(xs))) + 1, int(np.floor(min(zs))) - 1, int(np.ceil(max(zs))) + 1
-    X, Z = np.meshgrid(np.arange(x0, x1 + 1), np.arange(z0, z1 + 1), indexing="ij")
-    m = inside(X + 0.0, Z + 0.0, poly)
-    return {(int(x), int(z)) for x, z in zip(X[m], Z[m])}

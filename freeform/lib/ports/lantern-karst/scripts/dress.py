@@ -15,6 +15,7 @@ from pgmvox import B, noise
 from pgmvox import build as BLD
 from pgmvox import facade as F
 from pgmvox import route
+from pgmvox.shapes import rect_cells
 from pgmvox.orient import stair as stair_data
 
 DARK_LOG = (B.LOG2, 1)
@@ -179,7 +180,7 @@ def panel_walls(w, box, y0, y1, open_sides=(), windows=True, post_every=4):
     precedence. A pattern is not told which way its face looks, so the face numbers are read from
     facade.faces first."""
     x0, z0, x1, z1 = box
-    cells = F.rect_cells(x0, z0, x1, z1)
+    cells = rect_cells(x0, z0, x1, z1)
     runs, _ = F.faces(cells)
     side = {n: {(1, 0): "e", (-1, 0): "w", (0, 1): "s", (0, -1): "n"}[normal] for n, (normal, _) in enumerate(runs)}
     pats = [

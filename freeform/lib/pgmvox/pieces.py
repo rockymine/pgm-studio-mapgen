@@ -34,7 +34,8 @@ WIDTH = 0.6                                       # a player's width, counted as
 
 
 def box(x0, x1, z0, z1):
-    """The cells of a rectangle, inclusive."""
+    """The cells of a rectangle by its ranges, x0..x1 and z0..z1 inclusive (the order `Raster.rect` takes;
+    `shapes.rect_cells` takes corners)."""
     x0, x1 = sorted((x0, x1)); z0, z1 = sorted((z0, z1))
     return {(x, z) for x in range(x0, x1 + 1) for z in range(z0, z1 + 1)}
 
