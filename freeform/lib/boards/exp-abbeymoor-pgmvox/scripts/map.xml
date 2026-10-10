@@ -54,10 +54,10 @@
         <cuboid min="-25,0,99" max="24,141,130" id="blue-spawn"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
         <apply block-place="spawn-minable-regrowth" block-break="spawn-minable" region="blue-spawn" message="You may not edit the spawn!"/>
-        <cuboid min="-40,89,-72" max="-39,92,-71" id="red-abbey-region"/>
-        <cuboid min="39,89,71" max="40,92,72" id="blue-abbey-region"/>
-        <cuboid min="30,69,-70" max="31,72,-69" id="red-village-region"/>
-        <cuboid min="-31,69,69" max="-30,72,70" id="blue-village-region"/>
+        <cuboid min="-40,88,-72" max="-39,91,-71" id="red-abbey-region"/>
+        <cuboid min="39,88,71" max="40,91,72" id="blue-abbey-region"/>
+        <cuboid min="30,70,-70" max="31,73,-69" id="red-village-region"/>
+        <cuboid min="-31,70,69" max="-30,73,70" id="blue-village-region"/>
         <below y="8" id="the-fall"/>
         <apply kit="fall-kill" region="the-fall"/>
         <apply block-place="not-void" message="You may not build in the void!"/>

@@ -66,3 +66,21 @@ About 21 minutes.
 | 10 | Player scale | yes: cube 3, nave 26 × 13, houses about 8 × 6 |
 | 11 | Ground varies in patches | yes: heather, podzol and dirt patches, rim ledges, 91 vines |
 | 12 | A build zone shows | n/a: a not-void rule only |
+
+## Revision 1
+
+From the author's review (`analysis/freeform-vs-studio/experiment/REVIEW-1.md`), set down from the builder's account.
+02:09–02:16 UTC, about 7 minutes; a run takes 29 seconds. The first renders are in `renders-v1/`.
+
+| # | Review point | What changed |
+|---|---|---|
+| 1 | Reads like a place; keep the ruin intact | Kept. |
+| 2 | The bog too oval; patches round the map | `land.bog_field`: a noise-warped outline with a fen channel wandering east and west through the middle, the paint following the same field; 15 irregular peat patches, densest across the middle; three tarns at (-58,-30), (-84,-8), (-6,-48). |
+| 3 | Something missing beside the middle | Fenside, a hamlet at (-68,-17) (image at (67,16)): Fenside Cottage (-74,-22), Gorse Cottage (-63,-12), the Peat Store (-75,-11), a flank orchard, a tarn, and Fen Lane to the bog at (-17,-31). Not a hill. |
+| 4 | Stone houses; clay walls | Clay walls over a stone base course on every house but the timber Hay Barn (lime-wash, ochre, brick, terracotta, umber). |
+| 5 | Paths in dirt | Coarse dirt, dirt and a little gravel, no stone, 2.1 either side of the line (was 1.6). |
+| 6 | More trees and rocks | 31 moor trees in 12 copses (was 5 orchard trees) and 58 boulders (was 20); still no trunk on a road, green, cutting, nave or water, and no canopy over a road. |
+| 7 | A 27-block obsidian cube | Both monuments are a pillar of three obsidian blocks: A at (-40, 88..90, -72) four over its dais, B at (30, 70..72, -70) three over the green (blue's at (39, 88..90, 71) and (-31, 70..72, 70)); regions 1 × 3 × 1, the diamond pickaxe still in the kit. Voxel sight to any face of the pillar from ground 25–60 away: 43% (A), 29% (B). |
+
+Read-backs: the studio reader reads it valid; footing 0; loose water 0; 0 windows beside doors; the crypt joined (spawn to
+nave 69, crypt 90, cellar foot 84); GO1 3.36 and 3.78; GO3 still the accepted miss (201 and 190).

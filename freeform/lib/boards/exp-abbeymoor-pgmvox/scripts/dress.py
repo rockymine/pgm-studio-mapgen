@@ -441,7 +441,7 @@ def boulders(w, R, r, stats):
 
 
 def moor_trees(w, R, r, stats):
-    """Copses on the moor: twenty clumps of small oaks, birches, olives and spruces, each within eight of a centre drawn from the open
+    """Copses on the moor: twelve clumps of small oaks, birches, olives and spruces, each within eight of a centre drawn from the open
     ground, never on a road, the green, the bog, the hill or within eight of a monument; their crowns never reach a road (four clear)."""
     from scipy import ndimage
     lib = trees.library()
@@ -468,14 +468,14 @@ def moor_trees(w, R, r, stats):
         c = (int(X[i, k]), int(Z[i, k]))
         if all((c[0] - a) ** 2 + (c[1] - b) ** 2 >= 18 ** 2 for a, b in centres):
             centres.append(c)
-        if len(centres) >= 22:
+        if len(centres) >= 12:
             break
     planted = []
     n = 0
     ok = lambda x, z, t: w.id(x, P.g(x, z), z) in (B.GRASS, B.MYCELIUM) and not near_road[x - P.X_MIN, z - P.Z_MIN]        # noqa: E731
     for cx, cz in centres:
         zone = base & (np.hypot(X - cx, Z - cz) <= 8)
-        n += trees.scatter(w, zone, by, weights, r, spacing=1.0, tries=60, planted=planted, ok=ok)
+        n += trees.scatter(w, zone, by, weights, r, spacing=1.5, tries=40, planted=planted, ok=ok)
     stats["moor trees"] = n
 
 

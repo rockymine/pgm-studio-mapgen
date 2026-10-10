@@ -59,11 +59,11 @@ SPAWN_AREA = Box(-24, 0, -130, 24, 140, -100)
 A_CENTRE = (-40, -72)                       # Monument A, at the abbey's crossing
 B_CENTRE = (30, -70)                        # Monument B, on the village green
 FLOAT = 4                                   # the pillar's lowest block is this far over the floor (a dais under A adds DAIS)
-DAIS = 3                                    # Monument A stands over a stepped dais three high and floats three higher still, so it clears the nave's walls
+DAIS = 3                                    # Monument A stands over a stepped dais three high and floats one block higher still, so it clears the nave's walls
 
 
 def monument_box(cx, cz):
-    y = g(cx, cz) + (FLOAT + DAIS + 3 if (cx, cz) == A_CENTRE else FLOAT)
+    y = g(cx, cz) + (FLOAT + DAIS + 1 if (cx, cz) == A_CENTRE else FLOAT)
     return Box(cx, y, cz, cx, y + 2, cz)
 
 

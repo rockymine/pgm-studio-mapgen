@@ -3,17 +3,17 @@ footing problems (audit.footing): 0
 water against air (audit.loose_water): 0
 doors: 22; windows beside a door: 0 
 ladders in the world: 0
-tree trunks on a road, green, boardwalk, cutting, the nave or water: {'water': 20}
+tree trunks on a road, green, boardwalk, cutting, the nave or water: 0
 canopy over a road (crowns overhanging; the floor stays visible and walkable): 0 columns
 blocks within four of a cube, over the ground (plants aside): {'red-abbey': 0, 'blue-abbey': 0, 'red-village': 0, 'blue-village': 0}
-red-abbey: seen from 40% of 1680 ground cells 25 to 60 blocks off (voxel sight to any face of the 3-block pillar, trees and walls count)
-red-village: seen from 22% of 1717 ground cells 25 to 60 blocks off (voxel sight to any face of the 3-block pillar, trees and walls count)
-from red's spawn (0, 69, -112): 48352 places reached on foot
+red-abbey: seen from 43% of 1680 ground cells 25 to 60 blocks off (voxel sight to any face of the 3-block pillar, trees and walls count)
+red-village: seen from 29% of 1717 ground cells 25 to 60 blocks off (voxel sight to any face of the 3-block pillar, trees and walls count)
+from red's spawn (0, 69, -112): 48788 places reached on foot
   on foot to its own red-abbey: 77
   on foot to the enemy's blue-abbey: 218
   on foot to its own red-village: 66
   on foot to the enemy's blue-village: 206
-from blue's spawn (-1, 69, 111): 48352 places reached on foot
+from blue's spawn (-1, 69, 111): 48788 places reached on foot
   on foot to the enemy's red-abbey: 219
   on foot to its own blue-abbey: 76
   on foot to the enemy's red-village: 206
@@ -28,8 +28,8 @@ from blue's spawn (-1, 69, 111): 48352 places reached on foot
   red's spawn to the Tithe Barn's floor above the cellar: 81
   from the cellar stair's foot to the crypt's middle: 69
   from the cellar stair's foot to the nave's floor: 81
-places reached with every running jump and any drop: 61628 (on foot 48352)
-red's ground: 18648 cells, 107 not reached on foot
+places reached with every running jump and any drop: 52608 (on foot 48788)
+red's ground: 18648 cells, 83 not reached on foot
 red's road: 940 cells, 1 not reached on foot
 red's green: 252 cells, 0 not reached on foot
 red's orchard: 589 cells, 0 not reached on foot

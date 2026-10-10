@@ -71,3 +71,23 @@ About 25 minutes to the first complete build and about 50 with repairs. The boar
 | 10 | Player scale | yes |
 | 11 | Ground varies in patches | yes: slate flags and moss in patches |
 | 12 | A build zone shows | yes: block 36 and the 340-block redstone outline |
+
+## Revision 1
+
+From the author's review (`analysis/freeform-vs-studio/experiment/REVIEW-1.md`), set down from the builder's account.
+02:01–02:09 UTC, about 8 minutes; the pipeline runs in 20 seconds. The first renders are in `renders-v1/`.
+
+| # | Review point | What changed |
+|---|---|---|
+| 1 | Stone roofs and infill; make the clay-walled house the default | The Kiln's brick walls under a stone roof became the board's house (`clay_style`, a stone foot course by `rebase`), in red brick (cottage A), ochre (cottage B, the weighbridge), lime-wash (cottage D, the chapel), terracotta (the office) and umber (the winding house). |
+| 2 | Spawn houses in one line | A cluster: the chapel (-41,-75), cottage A (-17,-77) set north, two-storey B (-9,-69) set south, D (12,-69) turned to face the lane, which bends round them. |
+| 3 | Bedrock wall down to the bottom of the world | Each wall now fills from the foot of its own column's rock (gantry wall y 49–54, path wall y 65–71); nothing hangs below the island. |
+| 4 | Too much stone; a green, hillier front | Lanes are coarse dirt and gravel. Stone stays on the quarry island, the pit, the cart yard and the retaining faces. Six grass hills on the dressing floor (5 high at (-46,-27) and (34,-27), 3 high at (-22,-24) and (21,-23), and two swells); 14 spruces; slate stacks from 12 to 4. Grass is 52% of the spawn terrace's top, 38% of the row, 63% of the front. The retaining faces stay dressed stone. |
+| 5 | Water at the front | A creek across the dressing floor from a spring pond at (-35,-35) through seven bends to a pond at (26,-34), three wide, with planks where the lane crosses (x -3..3); mirrored on blue's half. Loose water 0. |
+| 6 | A long fence | It was 52 cart-track rails along the yard at z -58; now a 12-rail stub (x -14..-3) and 7 at the pit. The longest straight fence is the chapel landing's 13-block safety rail. |
+| 7 | A pine on a roof | The tree at (-76,-97) stood on the winding house's eave, and a second at (-66,-97) inside the headframe. Trees now refuse spots within three of a house, headframe or kiln and any spot whose ground is not grass. The library defect (`trees.plant` takes the trunk column's top as ground) is worked round locally. |
+| 8 | The tower room at the front line? | Kept on the high bench. The front line to each room is 88 and 100 moves against WL10e's floor of 59, and the rooms are 138 apart against WL7's 46–143; at the front it would be about 20–30 moves from the band (estimated) and the rotation would fall under WL7. Its headframe is seen from the spawn terrace. |
+| 9 | A boulder by an objective | The beehive ovens stood about 8 from the Kiln door; now 9.4 or more. The iron cubes became flat outcrops at (-21,-104) and (17,-104). The read-back lists the nearest boulder-like thing to each objective. |
+
+Read-backs unchanged: the studio reader reads it valid; the enemy rooms are reached by building in 218 and 257 moves,
+not on foot or by a jump; 40 chests; 0 windows beside doors; footing 0; bedrock six under every platform.

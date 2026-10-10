@@ -19,11 +19,11 @@ Red holds the north, blue is red's image under the half turn, (x, z) -> (-1 - x,
 |---|---|---|
 | **Hall Farm** (spawn) | (0, -112), floor 68 | The spawn in a hollow, a farmhouse and a hay barn behind it (north), the sheepfold west, the ridge rising 12 behind: the spawn stands in the land at its back |
 | **Abbey Hill** | (-42, -72), plateau 80 | A hill of 38 degree slopes with the ruined nave on its top. The Hill Track (north door) and the Monks' Way (east gap) climb it |
-| **Monument A** | (-40, -72), cube y 86 to 88 | Over a stepped dais in the open nave; both approaches arrive at it; walls round it are low (2 to 5) so it shows over them |
+| **Monument A** | (-40, -72), pillar y 88 to 90 | Three obsidian blocks over a stepped dais in the open nave; both approaches arrive at it; walls round it are low (2 to 5) so it shows over them |
 | **The Crypt** | x -52..-43, z -76..-68, floor 70 | A vaulted hall under the nave; **the Night Stair** (11 cells, three flights of at most four) comes up in the chancel; its south door leads to the passage |
 | **The passage** | z -61, x -48 to 10, floor 59 at lowest | 60 blocks under the hill and the valley, lit and timbered; it comes up by **the Tithe Barn's cellar stair** (7 up) in the village, 8 from Monument B |
 | **The Village** (Thorncombe) | x 6..52, z -90..-48, floor 66 | Four cottages (headings 0, 0, 12, 90), the Moorcock inn, the Tithe Barn, a north and a south orchard, the green |
-| **Monument B** | (30, -70), cube y 69 to 71 | On the green, in the open, the houses back six or more |
+| **Monument B** | (30, -70), pillar y 70 to 72 | Three obsidian blocks on the green, in the open, the houses back six or more |
 | **The Bog** | across z -31..30 | A basin 4 under the moor; seven pools held at level 61; the Standing Stones (twelve about the middle); a boardwalk two wide down the axis; the peat cuttings (trenches with stacked peat) on its north shore |
 | **The Beck** | x 50..72, z -108..-30 | A stream with a reach and a fall into a pool at the bog's edge, along the village's east |
 | **Roads** | | The Drove Road (spawn to the green), the Hill Track (spawn to the abbey's north door), the Monks' Way (green to the abbey's east gap), the Peat Track (inn to the boardwalk) |
@@ -89,3 +89,20 @@ Read against the first sketch and the first plan check. What it found, and what 
 ## 7. Versions
 
 `plan.py` v1; the check's first run is the review above.
+
+## 8. Revision 1: the author's first review
+
+Source: `analysis/freeform-vs-studio/experiment/REVIEW-1.md`, "Abbeymoor, pgmvox", and the added point 7. The v1 renders are in `renders-v1/`.
+The pipeline (`python3 -m pgmvox.run boards/exp-abbeymoor-pgmvox --build <dir>`) passes: the studio reader reads the map valid, footing 0, loose water 0,
+0 windows beside doors, 0 ladders, the crypt joined (spawn to nave 69, to crypt 90, to cellar foot 84), GO1 ratios 3.36 and 3.78 (GO3 still the accepted miss).
+
+| # | Review point | What changed |
+|---|---|---|
+| 2 | The muddy area is too oval; add smaller patches round the map, especially through the middle | `land.bog_field`: the basin's outline is an ellipse pushed in and out by noise, joined by a fen channel that wanders east and west through the middle on a sine centreline (`dress.surface` paints from the same field, so paint and basin agree). Fifteen irregular peat patches (`dress.PEAT`, tilted ellipses with a wobbling edge) lie across the moor, the densest on the middle band, and three small tarns (-58, -30), (-84, -8), (-6, -48) held at 63. The standing stones, the pools and the boardwalk are unchanged |
+| 3 | Something is missing beside the middle | Fenside, a hamlet on the flank at (-68, -17) (its half-turn image at (67, 16) is blue's): Fenside Cottage (-74, -22), Gorse Cottage (-63, -12, turned 90), the Peat Store (-75, -11), a flank orchard (-86..-72, -36..-28), a tarn, and Fen Lane joining it to the bog's north shore at (-17, -31). Not a hill: the author was unsure one fits |
+| 4 | Stone houses: clay for the walls, stone for the base course | `dress.clay_style` and `dress.rebase`: every house but the timber Hay Barn has clay or brick walls in a spruce frame and a stone course at the foot. Lime-wash (farmhouse, Brook Cottage, Gorse Cottage), ochre (Thorn Cottage, the Tithe Barn), brick (Mill Cottage), terracotta (Orchard Cottage, Fenside Cottage), umber (the Moorcock, the Peat Store). Roofs stay dark oak, brick for the inn and stone-brick for the Tithe Barn, Orchard Cottage and the Peat Store |
+| 5 | Paths more pronounced, in dirt; stone for where rock shows | Roads are coarse dirt, plain dirt and a little gravel (no stone), painted 2.1 blocks either side of the line instead of 1.6. Stone remains on the nave's floor, the Hill Track and Monks' Way steps and the cliffs |
+| 6 | More trees and some rocks | `dress.moor_trees`: twelve copses of small oaks, birches, olives and spruces, 31 trees (v1: the orchards' five), none within seven of a road, a green or a cutting, three of water, five of a house or twelve of a monument, none on the hill. `dress.boulders`: 58 boulders and rocks (v1: 20), ten or more apart, never on a road, a green, water, within ten of a monument or four of a house. The read-back still counts 0 trunks on a road, a green, a cutting, the nave or water and 0 columns of canopy over a road |
+| 7 | An obsidian monument is at most three blocks | Both monuments are a pillar of three obsidian blocks, `plan.monument_box` one cell wide: A at (-40, 88..90, -72) over the dais (81..83) with the nave's five clear round it, B at (30, 70..72, -70) on the green (blue's: (39, 88..90, 71) and (-31, 70..72, 70)). The regions in `map.xml` are 1 by 3 by 1, the completion is 100% (the studio's default: with three blocks, 50% was two of three), the diamond pickaxe stays in the kit. The sight check now aims at any face of the pillar with air in front of it: voxel sight from 43% (A) and 29% (B) of the ground cells 25 to 60 off (the plan check says 51% and 43%); A floats four above its dais top, B three over the green |
+
+Not done: nothing in points 2 to 7 was left. The library's house window rhythm still ignores the door, which `dress.clear_windows` works round as before.
