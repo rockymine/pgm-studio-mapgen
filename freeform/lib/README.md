@@ -23,7 +23,7 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `plangraph` | the walk over a plan and its storeys: `graph`, `jumps`, `dijkstra`, `route`, `path`, `arrivals` per team, `pad_edges` |
 | `sight` | `line_clear`, `visibility`, `hidden`, with an opaque test for a plan or a built world |
 | `sketch` | the annotated sheet: map panels (a plan raster or a built top-down) with heights, places, markers, routes, jumps, zones and callouts; true-scale and unrolled sections; the checker's numbers against their targets |
-| `build` | `Frame`, a building's own axes at any heading; `RoofField`, the studio's six roof forms block for block, and `lay_roof`; `house` and its `window_rhythm`; `parapet`, `site`, `stairs`, `ladder`, `Claims` |
+| `build` | `Frame`, a building's own axes at any heading; `RoofField`, the studio's six roof forms block for block, and `lay_roof`; `house` and its `window_rhythm`; `parapet`, `line_wall` (a wall, hedge or fence along a line: crown follow, level or grade; cap, crenels, gaps), `site`, `stairs`, `ladder`, `Claims` |
 | `facade` | face patterns (`band`, `courses`, `flutes`, `panels`, `slits`, `checker`, `windows`, `glyph_row`, `word`) set back or flush on an `extrude`d mass, `coffer`, `top_course`; floor fields (`border`, `medallion`, `corners`, `diamonds`, `kilim_steps`, `star`, `cross`, `tiles`) composed by `first_of` and laid by `carpet` |
 | `terrain` | `slope_deg` as the studio reads it; `lay` (ground painted by slope, a snow line; `Paint` layers that choose the top by slope and place, first match first; a `bottom` per column); `fill_water` (a bed and water up to each column's level); `Strata`, `bed_offset` and `beds` (rock beds that tilt and fold); `mountain_ring`; `underside` and `root_depth` (cones, flutes, spires); `slab` (floating floors at their own heights: rock, root, a bedrock course, a weathered rim); `waterfall` (water falling from each row's lip into the void, into air only); `island_bottom` (where the rock ends: a taper from the void, sheer beside a rift, for `lay(bottom=)`); `cloud_deck` |
 | `route` | `find` (a least-cost route over the ground, held to a grade, switchbacks and all), `network` (places joined by roads that share their trunk), `simplify`, `smooth`, `footprint`, `pave` (surface and bridges), `steps` (a stair on every one-block rise), `halfstep_levels` and `halfsteps` (a steep way in blocks and slabs, no step over half a block) |
@@ -454,6 +454,12 @@ side. An inset sets the face back a block, so a band or a glyph is a recess and 
 
 **A floor field is a function of where a cell falls in its rectangle.** The five carpets of the woven board were
 one chain of conditions; they are now borders, medallions, diamonds and stars that `first_of` composes.
+
+**A wall, a hedge and a fence are one build with different materials.** `line_wall` fills every cell of a line
+from the ground to its crown, at width 1 along the four-connected cells and wider over a band. The crown is
+`follow` (a fixed height over each cell, so it climbs the hillside), `level` (flat over runs, stepped like a
+curtain wall) or `grade` (over the ground held to a grade). A cap course, a crenel on every other cell, a gap
+every so many blocks and a few blocks sunk into the ground are each one argument.
 
 **`examples/parts/` lays every piece on one yard:** the four house styles at 0, 20, 45 and 90 degrees, the six
 roof forms, a mass on piers with a word, glyphs, flutes and a coffered underside, and three carpets. Islets uses

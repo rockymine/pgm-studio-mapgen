@@ -564,3 +564,69 @@ class Claims:
                     if both:
                         out.append((layer, a, b, len(both)))
         return out
+
+
+CROWNS = ("follow", "level", "grade")
+
+
+def line_wall(w, H, X, Z, pts, height=2, width=1, crown="follow", run=6, max_grade=1.0, blocks=((B.COBBLE, 0),),
+              weights=None, cap=None, crenel=None, gap=None, closed=False, sink=0, keep=None, rng=None):
+    """A wall, a hedge or a fence along a line over the ground: one generic build, the materials are the board's.
+
+    Every cell of the line (four-connected at width 1, the band within width / 2 of it wider) is filled from the
+    ground up to the crown with `blocks` (drawn by `weights` with `rng`, the first block without one), `sink`
+    blocks of it set into the ground under it. `crown` says how the top runs: `follow` holds it `height` over the
+    ground at every cell, so it climbs the hillside; `level` holds it flat over runs of `run` blocks at `height`
+    over the highest ground of the run, a stepped crown; `grade` holds it `height` over the ground smoothed to
+    `max_grade` blocks a block. `cap` is the top course's block, `crenel` one more block on every other cell of
+    the crown, and `gap` (every, length) leaves `length` blocks open every `every` blocks along it for a gate or a
+    break in a hedge. Cells in `keep` are left alone. Returns the cells laid, each (x, z, ground, top)."""
+    from .shapes import polyline, walk_cells
+    assert crown in CROWNS, crown
+    pts = [tuple(p) for p in pts] + ([tuple(pts[0])] if closed else [])
+    x0, z0 = int(X[0, 0]), int(Z[0, 0])
+    if width <= 1:
+        cells = walk_cells([(int(round(x)), int(round(z))) for x, z in pts])
+        along, s = [], 0.0
+        for j, c in enumerate(cells):
+            s += 0 if j == 0 else math.hypot(c[0] - cells[j - 1][0], c[1] - cells[j - 1][1])
+            along.append(s)
+    else:
+        d, sa = polyline(X.astype(float), Z.astype(float), pts)        # a point names its cell, as at width 1
+        idx = np.argwhere(d <= width / 2)
+        order = np.argsort(sa[tuple(idx.T)], kind="stable")
+        cells = [(int(X[tuple(idx[o])]), int(Z[tuple(idx[o])])) for o in order]
+        along = [float(sa[tuple(idx[o])]) for o in order]
+    inside = [(x, z) for x, z in cells if 0 <= x - x0 < H.shape[0] and 0 <= z - z0 < H.shape[1]
+              and (keep is None or not keep[x - x0, z - z0])]
+    s_of = dict(zip(cells, along))
+    ground = np.array([int(H[x - x0, z - z0]) for x, z in inside], float)
+    s = np.array([s_of[c] for c in inside])
+    if crown == "follow":
+        top = ground + height
+    elif crown == "level":
+        seg = np.floor(s / max(run, 1)).astype(int)
+        top = np.array([ground[seg == g].max() for g in seg]) + height
+    else:
+        order = np.argsort(s, kind="stable")
+        prof = ground[order].copy()
+        for _ in range(2):
+            for j in range(1, len(prof)):
+                prof[j] = max(prof[j], prof[j - 1] - max_grade * (s[order][j] - s[order][j - 1]))
+            for j in range(len(prof) - 2, -1, -1):
+                prof[j] = max(prof[j], prof[j + 1] - max_grade * (s[order][j + 1] - s[order][j]))
+        top = np.empty_like(prof)
+        top[order] = np.ceil(prof)
+        top = top + height
+    p = None if weights is None else np.array(weights, float) / sum(weights)
+    laid = []
+    for (x, z), g, t, sv in zip(inside, ground.astype(int), top.astype(int), s):
+        if gap is not None and sv > gap[1] and (sv % gap[0]) < gap[1]:
+            continue
+        for y in range(g + 1 - sink, t + 1):
+            b = blocks[0] if p is None or rng is None else blocks[int(rng.choice(len(blocks), p=p))]
+            w.set(x, y, z, *(cap if (cap is not None and y == t) else b))
+        if crenel is not None and int(round(sv)) % 2 == 0:
+            w.set(x, t + 1, z, *crenel)
+        laid.append((x, z, int(g), int(t)))
+    return laid

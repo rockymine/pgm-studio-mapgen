@@ -644,6 +644,46 @@ class Forms(unittest.TestCase):
         self.assertTrue((cols[:, 20:28] != 0).any())                        # but ledges below it
 
 
+class LineWalls(unittest.TestCase):
+    def setUp(self):
+        self.w = World(0, 0, 40, 12, sy=60)
+        self.X, self.Z = self.w.grid()
+        self.H = (10 + self.X // 3).astype(float)                    # a hillside climbing a block every three
+
+    def test_follow_holds_the_height_over_every_cell(self):
+        laid = BLD.line_wall(self.w, self.H, self.X, self.Z, [(1, 5), (38, 5)], height=2, blocks=[(B.LEAVES, 4)])
+        self.assertEqual(len(laid), 38)
+        self.assertTrue(all(t - g == 2 for _, _, g, t in laid))
+        x, z, g, t = laid[10]
+        self.assertEqual([self.w.id(x, y, z) for y in range(g + 1, t + 2)], [B.LEAVES, B.LEAVES, B.AIR])
+
+    def test_level_crown_is_flat_over_each_run_and_never_under_its_height(self):
+        laid = BLD.line_wall(self.w, self.H, self.X, self.Z, [(0, 5), (35, 5)], height=3, crown="level", run=6)
+        for start in range(0, 36, 6):
+            tops = {t for x, _, _, t in laid if start <= x < start + 6}
+            self.assertEqual(len(tops), 1)
+        self.assertTrue(all(t - g >= 3 for _, _, g, t in laid))
+
+    def test_grade_crown_climbs_no_faster_than_asked(self):
+        H = np.where(self.X < 20, 10.0, 20.0)                         # a ten-block step in the ground
+        laid = BLD.line_wall(self.w, H, self.X, self.Z, [(1, 5), (38, 5)], height=2, crown="grade", max_grade=0.5)
+        tops = [t for _, _, _, t in sorted(laid)]
+        self.assertLessEqual(max(abs(a - b) for a, b in zip(tops, tops[1:])), 1)
+        self.assertTrue(all(t - g >= 2 for _, _, g, t in laid))
+
+    def test_gaps_crenels_cap_and_width(self):
+        laid = BLD.line_wall(self.w, self.H, self.X, self.Z, [(1, 5), (38, 5)], height=3, gap=(10, 2),
+                             cap=(B.STONEBRICK, 0), crenel=(B.STONEBRICK, 2))
+        xs = {x for x, *_ in laid}
+        self.assertTrue({11, 12}.isdisjoint(xs) and {21, 22}.isdisjoint(xs))
+        x, z, g, t = laid[0]
+        self.assertEqual(self.w.id(x, t, z), B.STONEBRICK)
+        merlons = [self.w.id(x, t + 1, z) == B.STONEBRICK for x, z, g, t in laid]
+        self.assertTrue(any(merlons) and not all(merlons))
+        wide = BLD.line_wall(World(0, 0, 40, 12, sy=60), self.H, self.X, self.Z, [(1, 5), (38, 5)], width=3)
+        self.assertEqual(len({z for _, z, _, _ in wide}), 3)
+
+
 class Routes(unittest.TestCase):
 
     def test_half_steps_never_rise_more_than_half_a_block_and_hold_their_ends(self):
