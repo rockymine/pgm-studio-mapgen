@@ -111,11 +111,12 @@ def cell_pick(x, z, blocks, size=3, seed=0):
     return blocks[(h + (x if jitter else 0)) % len(blocks)]
 
 
-def set_paint(stops, field, v):
-    """A noise stop list: equal bands of the field's value, so the middle stops make the main ground and the
-    end stops the patches inside it (`[patch, main, main, patch2]`). field is about -1..1."""
+def set_paint(stops, field, v=0.0):
+    """The block of a noise stop list at one column: the range -0.8..0.8 of the column's noise value `field` cut
+    into equal bands, one per stop, low values the first stop; `v` shifts the value. A stop named twice takes two
+    bands, so `[patch, main, main, patch2]` makes the middle the main ground."""
     n = len(stops)
-    k = int(np.clip((v + 0.8) / 1.6 * n, 0, n - 1))
+    k = int(np.clip((field + v + 0.8) / 1.6 * n, 0, n - 1))
     return stops[k]
 
 
