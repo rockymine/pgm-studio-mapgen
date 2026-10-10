@@ -18,7 +18,7 @@ Region files were not written (`--skip write`); `world/map.xml` is the only file
 |---|---|---|
 | Board 240 × 176, mirrored across the rift (`x' = -1 - x`) | library | `plan.Symmetry("mirror_x")`, `orient.turn_world` |
 | Teams of 16, spawns, observer point, spawn protection | library | `objectives.Spawn`, `Observer`, `Teams` |
-| Four monuments, two obsidian blocks floating two over the ground | library | `objectives.Destroyable`, mirrored by `Objectives.add` |
+| Four monuments, two obsidian blocks with three blocks of air under them | library | `objectives.Destroyable`, mirrored by `Objectives.add` |
 | Blue's wool on the watch tower | library | `turn_world(recolour=...)` |
 | Kit, rift build zone, void filter, max build height | library + local XML | `mapxml.Doc`, `E` (no kit or rectangle helper) |
 | Rift lip: ragged, bays, held straight at the town, Old Bridge, falls | local | `plan._rift_edge` |
@@ -110,11 +110,12 @@ From `renders/walks.txt` and `renders/plan-check.txt`. The built walk opens door
 | Cave mouth → up the shaft onto the headframe's collar | not measured | — | 135 |
 | Air to bridge: Old Bridge / falls / south fields | 8 / 20 / 20 | 8 / 20 / 22 | as planned |
 
-- `Objectives.check`: no problems (both spawns stand, all four monuments are obsidian, no shared ground).
+- `Objectives.check`: no problems (both spawns stand, all four monuments are obsidian and float three over the
+  floor, no shared ground).
 - `audit.footing`: 0 problems (12 gravel blocks over air on the spoil heap were found and fixed).
 - The studio's reader (`data/read_mapxml.cs`) reads `scripts/map.xml` as valid: 2 teams, 2 spawns, 4
   destroyables, 1 kit, 5 apply rules, no issues.
-- 1,001,926 blocks (original 1,007,258), 110 trees (106), 16 tile entities (16).
+- 1,002,206 blocks (original 1,007,258), 110 trees (106), 22 tile entities (16).
 
 ### Line counts
 

@@ -70,10 +70,10 @@
         <cuboid min="84,0,-14" max="108,128,0" id="blue-spawn"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
         <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
-        <cuboid min="-66,54,-44" max="-65,56,-43" id="red-square-region"/>
-        <cuboid min="65,54,-44" max="66,56,-43" id="blue-square-region"/>
-        <cuboid min="-66,52,48" max="-65,54,49" id="red-green-region"/>
-        <cuboid min="65,52,48" max="66,54,49" id="blue-green-region"/>
+        <cuboid min="-66,56,-44" max="-65,58,-43" id="red-square-region"/>
+        <cuboid min="65,56,-44" max="66,58,-43" id="blue-square-region"/>
+        <cuboid min="-66,54,48" max="-65,56,49" id="red-green-region"/>
+        <cuboid min="65,54,48" max="66,56,49" id="blue-green-region"/>
         <negative id="not-build-area">
             <rectangle min="-16,-88" max="16,88"/>
         </negative>

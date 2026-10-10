@@ -559,6 +559,6 @@ def objectives():
     O = Objectives(Teams(("red-team", "Red", "red", 16), ("blue-team", "Blue", "blue", 16)), SYM)
     O.add(Spawn("red-team", SPAWN, yaw=270, kit="spawn-kit", area=SPAWN_AREA))
     for key, ((x, z), g, name) in MONUMENTS.items():
-        O.add(Destroyable(f"red-{key}", name, "red-team", Box(x, g + 2, z, x, g + 3, z)))
+        O.add(Destroyable(f"red-{key}", name, "red-team", Box(x, g + 4, z, x, g + 5, z)))
     O.add(Observer((0, 80, 0), yaw=90), mirror=False)
     return O

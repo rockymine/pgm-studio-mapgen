@@ -105,8 +105,8 @@ walked through the bedrock wall; the port's plan has the wall in it, so its "wal
 | `Objectives.check` problems | 0 | — |
 | wools missing from their rooms | 0 | — |
 | `audit.footing` problems | 522, all the redstone outline at y 1 over air | — |
-| places reached on foot from a spawn | 7,452 | 7,599 |
-| spawn to its own monuments, on foot | 17 and 18 | 13 |
+| places reached on foot from a spawn | 7,460 | 7,599 |
+| spawn to its own monuments, on foot | 15 and 15 | 13 |
 | on foot into the enemy's rooms, or its own | not reached, as designed | not reached |
 | building, to the enemy's Pillar room and Store room | 257 and 262 moves, both teams | not measured |
 | columns off the islands standable over the kill height | 3,407: tower crowns and skirts | — |
