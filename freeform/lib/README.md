@@ -41,6 +41,7 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `render` | `iso`, `elevation`, `cutaway` along any polyline, x-ray, `trim`, all in the studio's colours |
 | `plot` | the bounded canvas a contributor builds a plot into, and `check_alone` with its verdict |
 | `mapxml` | `Doc` and `E`, an element builder with the pieces every writer repeated |
+| `document` | a board stated as a layer document (JSON) and built in order, every layer kept as a `Step` with the columns it changed: `build`, `area_distance` |
 | `run` | the build pipeline: `python3 -m pgmvox.run <board-dir>` |
 
 ## The block table comes from the studio
@@ -467,6 +468,22 @@ them too: a house on each island at 20 degrees, its footprint in the plan.
 
 **Islets' read-back caught the first such house.** Its eave hung a block past the island's edge, over the void,
 because the plan held the walls and not the roof. It was moved two blocks in.
+
+## The layer document
+
+**A board can be stated as data instead of code.** `document.build` reads a JSON document of ordered layers and
+builds it in fixed stages: named noise fields, ground, paint, lay, water, build and dress. `examples/layers/island.layers.json`
+is a whole board stated that way, a floating island with a river, a ridge, a sinkhole, a square, three paths, a
+hedge, a curtain wall, a fence and a wood. It builds in under a second.
+
+**A layer is one operation, its numbers and the areas it works in.** An area is a circle, an ellipse, a polygon, a
+rectangle, a line with a width or the whole board, and `rough` bends any of them. The operation reads one distance
+from it, 0 at the centre or deepest point and 1 on the rim, so any area carries any operation. An area may state
+its own `rise`, and the areas of one layer melt together by the layer's `join`.
+
+**Every layer is kept as it ran.** `build` returns each layer as a `Step` with the heights after it and the
+columns it changed, so a stepper over a board needs no instrumenting. The format and what it does not hold yet
+are in `analysis/freeform-vs-studio/LAYER-DOCUMENT.md`.
 
 ## Starting a board
 

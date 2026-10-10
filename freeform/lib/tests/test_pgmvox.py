@@ -684,6 +684,40 @@ class LineWalls(unittest.TestCase):
         self.assertEqual(len({z for _, z, _, _ in wide}), 3)
 
 
+class LayerDocument(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        from pgmvox import document
+        with open(os.path.join(os.path.dirname(HERE), "examples", "layers", "island.layers.json")) as f:
+            cls.doc = json.load(f)
+        cls.built = document.build(cls.doc)
+
+    def test_every_layer_is_a_step_in_document_order(self):
+        ids = [s.id for s in self.built.steps]
+        want = [L["id"] for L in self.doc["ground"]] + ["lay", "water"] + [L["id"] for L in self.doc["build"]] \
+            + [L["id"] for L in self.doc["dress"]]
+        self.assertEqual(ids, want)
+        self.assertTrue(all(s.changed.any() for s in self.built.steps))
+
+    def test_the_areas_of_one_layer_melt(self):
+        from pgmvox import document
+        hills = next(L for L in self.doc["ground"] if L["id"] == "zwillingshuegel")
+        hard = dict(hills, join=0)
+        X, Z = self.built.X, self.built.Z
+        flat = np.full(X.shape, 50.0)
+        melted, _ = document._ground_layer(hills, flat, X, Z, {}, {}, self.built.land)
+        plain, _ = document._ground_layer(hard, flat, X, Z, {}, {}, self.built.land)
+        self.assertTrue((melted >= plain - 1e-9).all())
+        self.assertGreater(float((melted - plain).max()), 1.0)       # the saddle between them
+
+    def test_the_built_world_has_water_walls_and_half_steps(self):
+        w, X, Z = self.built.world, self.built.X, self.built.Z
+        self.assertTrue((self.built.water > 0).any())
+        self.assertGreater(int((w.ids == B.LEAVES).sum()), 40)          # the hedge (and the trees)
+        self.assertGreater(int((w.ids == B.FENCE).sum()), 40)
+        self.assertGreater(int((w.ids == B.SLAB).sum()), 5)             # the climb's half steps
+
+
 class Routes(unittest.TestCase):
 
     def test_half_steps_never_rise_more_than_half_a_block_and_hold_their_ends(self):
