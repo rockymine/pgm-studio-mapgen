@@ -46,19 +46,30 @@ def signed_distance(X, Z, poly):
     return np.where(inside(X, Z, poly), -d, d)
 
 
-def polyline(X, Z, pts):
-    """Distance to a polyline and the arc length along it of the nearest point."""
-    best = np.full(X.shape, np.inf)
-    along = np.zeros(X.shape)
+def polyline(X, Z, pts, side=False):
+    """Distance to a polyline and the arc length along it of the nearest point; with `side`, also which side of it
+    each point lies, +1 to the right walking along it (x east, z south) and -1 to the left."""
+    best = np.full(np.shape(X), np.inf)
+    along = np.zeros(np.shape(X))
+    right = np.ones(np.shape(X))
     s0 = 0.0
     for i in range(len(pts) - 1):
+        (ax, az), (bx, bz) = pts[i], pts[i + 1]
         d, t = seg_distance(X, Z, pts[i], pts[i + 1])
-        L = float(np.hypot(pts[i + 1][0] - pts[i][0], pts[i + 1][1] - pts[i][1]))
+        L = float(np.hypot(bx - ax, bz - az))
         m = d < best
         best = np.where(m, d, best)
         along = np.where(m, s0 + t * L, along)
+        if side:
+            right = np.where(m, np.where((bx - ax) * (Z - az) - (bz - az) * (X - ax) >= 0, 1.0, -1.0), right)
         s0 += L
-    return best, along
+    return (best, along, right) if side else (best, along)
+
+
+def nearest_on(pts, x, z):
+    """The distance from (x, z) to a polyline and the arc length along it of the nearest point."""
+    d, s = polyline(np.array(float(x)), np.array(float(z)), pts)
+    return float(d), float(s)
 
 
 def length(pts):

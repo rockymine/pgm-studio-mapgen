@@ -312,7 +312,7 @@ def _tube_cells(pts, shrink=0.6):
     arc = np.concatenate([[0], np.cumsum([math.hypot(b[0] - a[0], b[2] - a[2]) for a, b in zip(pts, pts[1:])])])
     best = {}
     for x, z in line:
-        s = _arc_of(pts, x, z)
+        s = shapes.nearest_on([(p[0], p[2]) for p in pts], x, z)[1]
         fy = float(np.interp(s, arc, [p[1] for p in pts]))
         rr = float(np.interp(s, arc, [p[3] for p in pts])) * shrink
         for dx in range(-3, 4):
@@ -322,18 +322,6 @@ def _tube_cells(pts, shrink=0.6):
                 if d <= max(1.0, rr) and d < best.get(c, (9e9,))[0]:
                     best[c] = (d, int(round(fy)) - 1)
     return {c: y for c, (_, y) in best.items()}
-
-
-def _arc_of(pts, x, z):
-    best, acc = (1e9, 0.0), 0.0
-    for a, b in zip(pts, pts[1:]):
-        L_ = math.hypot(b[0] - a[0], b[2] - a[2]) or 1e-9
-        t = max(0.0, min(1.0, ((x - a[0]) * (b[0] - a[0]) + (z - a[2]) * (b[2] - a[2])) / L_ ** 2))
-        d = math.hypot(x - (a[0] + t * (b[0] - a[0])), z - (a[2] + t * (b[2] - a[2])))
-        if d < best[0]:
-            best = (d, acc + t * L_)
-        acc += L_
-    return best[1]
 
 
 def arch_cells():

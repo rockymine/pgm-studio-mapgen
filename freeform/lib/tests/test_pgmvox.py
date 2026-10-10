@@ -202,6 +202,19 @@ class Shapes(unittest.TestCase):
         self.assertEqual(shapes.poly_cells([(0, 0), (4, 0), (4, 3), (0, 3)]),
                          {(x, z) for x in range(4) for z in range(3)})
 
+    def test_a_polyline_says_which_side_of_it_a_point_lies(self):
+        X, Z = np.meshgrid(np.arange(-3, 4), np.arange(-3, 4), indexing="ij")
+        d, along, side = shapes.polyline(X, Z, [(-3, 0), (3, 0)], side=True)
+        self.assertTrue((side[Z > 0] == 1).all())                 # walking east, south is the right hand
+        self.assertTrue((side[Z < 0] == -1).all())
+        self.assertTrue(np.array_equal((d, along), shapes.polyline(X, Z, [(-3, 0), (3, 0)])))
+
+    def test_the_nearest_point_on_a_polyline_is_measured_along_it(self):
+        bend = [(0, 0), (10, 0), (10, 10)]
+        self.assertEqual(shapes.nearest_on(bend, 4, -2), (2.0, 4.0))
+        self.assertEqual(shapes.nearest_on(bend, 13, 6), (3.0, 16.0))
+        self.assertEqual(shapes.nearest_on(bend, -5, 0), (5.0, 0.0))
+
     def test_no_public_function_takes_a_rectangle_by_ranges_but_the_two_named(self):
         import inspect
         import pkgutil

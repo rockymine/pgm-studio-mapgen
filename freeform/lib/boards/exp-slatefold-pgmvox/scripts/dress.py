@@ -7,7 +7,7 @@ its door (the library's rhythm does not), and a house's door is read from the li
 import numpy as np
 
 import plan as P
-from pgmvox import B, noise, props, trees
+from pgmvox import B, noise, props, shapes, trees
 from pgmvox import build as BLD
 from pgmvox.orient import door as door_data, stair as stair_data, ladder as ladder_data
 
@@ -418,12 +418,7 @@ def river(w, R, floor, stats):
     F = P.FRONT_H
     pts = [(-34, -35), (-26, -34), (-18, -37), (-9, -35), (0, -34), (9, -36), (17, -35), (25, -34)]
     X, Z = w.grid()
-    seg = list(zip(pts, pts[1:]))
-    d = np.full(X.shape, 99.0)
-    for (ax, az), (bx, bz) in seg:
-        vx, vz = bx - ax, bz - az
-        t = np.clip(((X - ax) * vx + (Z - az) * vz) / (vx * vx + vz * vz), 0, 1)
-        d = np.minimum(d, np.hypot(X - (ax + t * vx), Z - (az + t * vz)))
+    d, _ = shapes.polyline(X, Z, pts)
     pond = lambda cx, cz, rx, rz: ((X - cx) / rx) ** 2 + ((Z - cz) / rz) ** 2 <= 1          # noqa: E731
     wet = (d <= 1.6) | pond(-35, -35, 4.5, 3.5) | pond(26, -34, 4.5, 3.5)
     front = (R.piece == R.kinds["front"]) & (R.base == F) & (Z < 0)

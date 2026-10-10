@@ -183,28 +183,12 @@ def butte(H, X, Z, centre, r, top, cliff=1.5, talus=6, talus_height=0.3, jag=0.1
     return np.maximum(H, shape)
 
 
-def _side(X, Z, pts):
-    """Which side of a path each column lies: +1 to the right walking along it (x east, z south), -1 left."""
-    best = np.full(X.shape, np.inf)
-    side = np.ones(X.shape)
-    for a, b in zip(pts, pts[1:]):
-        dx, dz = b[0] - a[0], b[1] - a[1]
-        L2 = dx * dx + dz * dz or 1e-9
-        t = np.clip(((X - a[0]) * dx + (Z - a[1]) * dz) / L2, 0, 1)
-        d = np.hypot(X - (a[0] + t * dx), Z - (a[1] + t * dz))
-        cross = dx * (Z - a[1]) - dz * (X - a[0])
-        m = d < best
-        best = np.where(m, d, best)
-        side = np.where(m, np.where(cross >= 0, 1.0, -1.0), side)
-    return side, best
-
-
 def scarp(H, X, Z, pts, height, side=1, cliff=2, talus=5, talus_height=0.3, reach=None):
     """A scarp: the ground on `side` of a path (+1 right walking along it, -1 left) lifted `height`, a cliff
     `cliff` blocks wide on the line and a talus apron below it; `reach` (blocks) lets the lift fade far back from
     the line, so the scarp is a step in the land rather than a wall round the world. Only lifts."""
     H = np.asarray(H, float)
-    sd, d = _side(X, Z, pts)
+    d, _, sd = polyline(X, Z, pts, side=True)
     on = sd == side
     lift = height * (1.0 if reach is None else np.clip(1 - (d - cliff) / reach, 0, 1))
     up = np.where(on, np.where(d <= cliff, lift * (0.5 + 0.5 * d / cliff), lift), 0.0)
