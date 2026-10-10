@@ -291,6 +291,28 @@ def island_bottom(top, land, sheer, taper=(4, 0.9), sheer_taper=(26, 1.2), rough
     return np.maximum(top - thick, floor).round().astype(int)
 
 
+def slab(w, floor, land, bands, root, rng, plate=5, foundation=3, paint=None, rim=None, **lay_args):
+    """Floating floors, each at its own height: for every height in `floor` (a world-grid array) over `land`, its
+    columns laid from `plate` blocks under it (lay, rock in `bands`, `lay_args` passed on) and its root hung under
+    that (underside, `root` the depths, `paint(k, x, z, h)` the blocks k under the plate of a floor at h); then a
+    bedrock course `foundation` under every floor away from the rim, and on the rim, with `rim` (block, chance),
+    that block now and then in the plate's faces. Draws from rng in that order."""
+    for h in np.unique(floor[land]):
+        m = land & (floor == h)
+        lay(w, np.where(m, h, 0), mask=m, bands=bands, from_y=int(h) - plate, **lay_args)
+        underside(w, m, int(h) - plate, depth=root, rng=rng, jitter=1,
+                  paint=None if paint is None else (lambda k, x, z, h=int(h): paint(k, x, z, h)))
+    ed = edge_depth(land)
+    for i, k in np.argwhere(land):
+        x, z, h = w.x0 + int(i), w.z0 + int(k), int(floor[i, k])
+        if ed[i, k] > 0:
+            w.set(x, h - foundation, z, B.BEDROCK)
+        elif rim is not None:
+            for y in range(h - plate, h - 1):
+                if rng.random() < rim[1]:
+                    w.set(x, y, z, *rim[0])
+
+
 def waterfall(w, level, at, toward="east", lip_from=None, to=None, to_y=8):
     """Water falling off a board's edge: in every row of `level` (a grid of water surfaces, 0 where dry, its first
     column at world `at` (x, z)), the wet column furthest `toward` is the lip, and the water falls from its level

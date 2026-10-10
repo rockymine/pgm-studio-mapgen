@@ -38,25 +38,13 @@ def strata():
 def islands(w, g, beds, offset, r):
     """The rock of every island on red's half: lay per floor height, the bedrock course, the root."""
     land = g.land
-    ed = edge_depth(land)
     fill = T.beds(beds, offset, flecks=[((B.STONE, 0), (B.COBBLE, 0), 0.06), ((B.STONE, 5), (B.GRAVEL, 0), 0.02)],
                   seed=6)
     root = T.root_depth(land, cone=3.2, power=0.85, rough=0.35, flutes=4.5, spires=9, seed=11)
     root = np.minimum(root, np.maximum(g.floor - FOUNDATION - ROOT_FLOOR, 1))
-    for h in np.unique(g.floor[land]):
-        m = land & (g.floor == h)
-        T.lay(w, np.where(m, h, 0), mask=m, dirt_depth=1, bands=fill, from_y=int(h) - 5)
-        T.underside(w, m, int(h) - 5, depth=root, rng=r, jitter=1,
-                    paint=lambda k, x, z, h=int(h): beds(h - 5 - k - int(offset[x - w.x0, z - w.z0])))
-    X, Z = w.grid()
-    for i, k in np.argwhere(land):                               # the course, and moss on the rim's faces
-        x, z, h = int(X[i, k]), int(Z[i, k]), int(g.floor[i, k])
-        if ed[i, k] > 0:
-            w.set(x, h - FOUNDATION, z, B.BEDROCK)
-        else:
-            for y in range(h - 5, h - 1):
-                if r.random() < 0.18:
-                    w.set(x, y, z, B.MOSSY)
+    T.slab(w, g.floor, land, fill, root, r, plate=5, foundation=FOUNDATION, dirt_depth=1,
+           paint=lambda k, x, z, h: beds(h - 5 - k - int(offset[x - w.x0, z - w.z0])),
+           rim=((B.MOSSY, 0), 0.18))                              # the course, and moss on the rim's faces
 
 
 def skirt(w, g, beds, r):

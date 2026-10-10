@@ -908,6 +908,21 @@ class Terrain(unittest.TestCase):
         inward = bottom[(X >= -50) & (X <= -32) & (Z == 0)]
         self.assertTrue((np.diff(inward) <= 0).all())                      # deeper the further from the void
 
+    def test_slabs_float_each_at_its_own_height_on_a_bedrock_course(self):
+        w = World(0, 0, 20, 10, sy=60)
+        land = np.zeros((20, 10), bool)
+        land[1:9, 1:9] = land[11:19, 1:9] = True
+        floor = np.where(np.arange(20)[:, None] < 10, 40, 46) + 0 * land
+        rock = terrain.Strata([((B.STONE, 0), 1, 3), ((B.STONE, 5), 1, 2)], seed=1)
+        root = terrain.root_depth(land, cone=1.0, seed=2)
+        terrain.slab(w, floor, land, terrain.beds(rock), root, np.random.default_rng(3), plate=5, foundation=3,
+                     rim=((B.MOSSY, 0), 1.0), dirt_depth=1)
+        self.assertEqual((w.id(4, 40, 4), w.id(14, 46, 4)), (B.GRASS, B.GRASS))
+        self.assertEqual((w.id(4, 37, 4), w.id(14, 43, 4)), (B.BEDROCK, B.BEDROCK))       # inside: the course
+        self.assertEqual(w.id(1, 37, 4), B.MOSSY)                                          # the rim: weathered
+        self.assertTrue((w.ids[9:11, :, :] == 0).all())                                    # the gap between stays air
+        self.assertTrue(all(w.top(x, z) <= 46 for x in range(20) for z in range(10)))
+
     def test_nothing_is_left_under_a_columns_bottom(self):
         H = np.full((6, 6), 30)
         bottom = np.arange(36).reshape(6, 6) % 9 + 5

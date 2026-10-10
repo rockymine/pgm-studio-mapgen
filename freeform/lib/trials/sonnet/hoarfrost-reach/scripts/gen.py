@@ -21,7 +21,6 @@ from pgmvox import facade as F
 from pgmvox import noise, props, trees
 from pgmvox import terrain as T
 from pgmvox.orient import door as door_data, stair as stair_data, turn_world
-from pgmvox.shapes import edge_depth
 
 SY = 128
 ROOT_FLOOR = 52
@@ -51,31 +50,18 @@ def islands(w, R, beds, offset, r):
     floor, land = world_arrays(w, R)
     red = red_cols(w)
     land_r = land & red
-    ed = edge_depth(land_r)
     root = T.root_depth(land_r, cone=3.4, power=0.85, rough=0.4, flutes=3.5, spires=14, seed=11)
     cap = np.maximum(floor - P.FOUNDATION - ROOT_FLOOR, 1)
     root = np.minimum(root, cap)
     fill = T.beds(beds, offset, flecks=[((B.STONE, 0), (B.COBBLE, 0), 0.05), ((B.PACKED_ICE, 0), (B.ICE, 0), 0.06)], seed=6)
 
-    def paint(k, x, z):
+    def paint(k, x, z, h):
         c = r.random()
         if k <= 2:
             return (B.STONE, 5) if c < 0.5 else (B.STONE, 0)
         return (B.PACKED_ICE, 0) if c < 0.62 else (B.ICE, 0) if c < 0.78 else (B.SNOW, 0) if c < 0.92 else (B.STONE, 5)
-    for h in np.unique(floor[land_r]):
-        m = land_r & (floor == h)
-        T.lay(w, np.where(m, h, 0), mask=m, top=lambda deg, hh: (B.SNOW, 0), under=(B.SNOW, 0), dirt_depth=1,
-              bands=fill, from_y=int(h) - 5)
-        T.underside(w, m, int(h) - 5, depth=root, rng=r, jitter=1, paint=paint)
-    X, Z = w.grid()
-    for i, k in np.argwhere(land_r):                           # the course, and frost on the rim's faces
-        x, z, h = int(X[i, k]), int(Z[i, k]), int(floor[i, k])
-        if ed[i, k] > 0:
-            w.set(x, h - P.FOUNDATION, z, B.BEDROCK)
-        else:
-            for y in range(h - 5, h - 1):
-                if r.random() < 0.15:
-                    w.set(x, y, z, B.PACKED_ICE)
+    T.slab(w, floor, land_r, fill, root, r, plate=5, foundation=P.FOUNDATION, paint=paint,
+           rim=((B.PACKED_ICE, 0), 0.15), top=lambda deg, hh: (B.SNOW, 0), under=(B.SNOW, 0), dirt_depth=1)
     return land_r, floor
 
 

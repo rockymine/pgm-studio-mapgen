@@ -20,7 +20,6 @@ from pgmvox import B, World, noise, rng
 from pgmvox import terrain as T
 from pgmvox import forms
 from pgmvox.orient import stair as stair_data, turn_world
-from pgmvox.shapes import edge_depth
 
 SY = 128
 ROOT_FLOOR = 40
@@ -50,25 +49,16 @@ def islands(w, R, beds, offset, r):
     floor, kind, land = floors(R, w)
     red = red_cols(w)
     land_r = land & red
-    ed = edge_depth(land_r)
     root = T.root_depth(land_r, cone=3.0, power=0.85, rough=0.4, flutes=3.0, spires=10, seed=11)
     cap = np.maximum(floor - P.FOUNDATION - ROOT_FLOOR, 1)
     root = np.minimum(root, cap)
     fill = T.beds(beds, offset, flecks=[((B.STONE, 0), (B.COBBLE, 0), 0.05), ((B.STONE, 5), (B.STONE, 6), 0.05)], seed=6)
 
-    def paint(k, x, z):
+    def paint(k, x, z, h):
         c = r.random()
         return (B.STONE, 5) if c < 0.45 else (B.STONE, 0) if c < 0.8 else (B.COBBLE, 0) if c < 0.93 else (B.STONE, 6)
-    for h in np.unique(floor[land_r]):
-        m = land_r & (floor == h)
-        T.lay(w, np.where(m, h, 0), mask=m, top=lambda deg, hh: (B.STONE, 0), under=(B.DIRT, 0), dirt_depth=0,
-              bands=fill, from_y=int(h) - PLATE)
-        T.underside(w, m, int(h) - PLATE, depth=root, rng=r, jitter=1, paint=paint)
-    X, Z = w.grid()
-    for i, k in np.argwhere(land_r):                           # the bedrock course, and the rim's weathered faces
-        x, z, h = int(X[i, k]), int(Z[i, k]), int(floor[i, k])
-        if ed[i, k] > 0:
-            w.set(x, h - P.FOUNDATION, z, B.BEDROCK)
+    T.slab(w, floor, land_r, fill, root, r, plate=PLATE, foundation=P.FOUNDATION, paint=paint,
+           top=lambda deg, hh: (B.STONE, 0), under=(B.DIRT, 0), dirt_depth=0)
     forms.skirt(w, land_r, floor, lambda y: fill(0, 0, [y])[0] if False else (B.STONE, 5 if y % 3 else 0), rng(P.BOARD, "skirt"),
                 moss=0.10, grass=0.25)
     return land_r, floor, kind
