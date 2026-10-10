@@ -239,6 +239,18 @@ class Shapes(unittest.TestCase):
         self.assertEqual(shapes.nearest_on(bend, 13, 6), (3.0, 16.0))
         self.assertEqual(shapes.nearest_on(bend, -5, 0), (5.0, 0.0))
 
+    def test_an_island_keeps_to_its_box_its_insets_and_its_cuts(self):
+        from pgmvox.noise import ragged
+        X, Z = np.meshgrid(np.arange(-40, 0), np.arange(-30, 30), indexing="ij")
+        west = 2 + ragged(X.shape, "z", 12, 5, seed=1)
+        corner = [(-40, 20), (-25, 20), (-25, 29), (-40, 29)]
+        land = shapes.island(X, Z, (-40, -30, -1, 29), west=west, east=4, north=3, cuts=[(corner, 1.0)])
+        self.assertTrue((X[land] <= -5).all() and (Z[land] >= -27).all())
+        self.assertTrue((west >= 2).all() and (west <= 7).all())
+        self.assertTrue(all(X[:, k][land[:, k]].min() == -40 + west[0, k] for k in range(3, 48)))   # rows clear of the cut corner
+        self.assertFalse(land[(X < -26) & (Z > 21)].any())
+        self.assertEqual(ndimage.label(land)[1], 1)
+
     def test_depth_inside_a_mask_by_each_metric(self):
         m = np.zeros((7, 7), bool)
         m[1:6, 1:6] = True

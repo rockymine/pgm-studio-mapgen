@@ -98,10 +98,6 @@ class Land:
     """The red half's grids, [i, k] with x = X_MIN + i (x < 0 only) and z = Z_MIN + k."""
 
 
-def _ragged(n, cell, amp, seed):
-    return np.round(amp * (0.5 + 0.5 * fbm((n,), cell, 2, seed=seed))).astype(int)
-
-
 @lru_cache(maxsize=1)
 def land():
     L = Land()
@@ -112,15 +108,13 @@ def land():
     nb, ns = fbm(sh, 36, 3, seed=11), fbm(sh, 10, 2, seed=12)
 
     # the outline: the fissure's lip ragged with bays; the island's other edges inset; the far corners cut
-    lip = -8 - _ragged(sh[1], 9, 7, 21)
-    land = X <= lip[None, :]
-    land &= X >= X_MIN + 2 + _ragged(sh[1], 14, 5, 22)[None, :]
-    land &= Z >= Z_MIN + 3 + _ragged(sh[0], 16, 6, 23)[:, None]
-    land &= Z <= Z_MAX - 3 - _ragged(sh[0], 16, 6, 24)[:, None]
-    sw = shapes.signed_distance(Xf, Zf, [(-104, 58), (-70, 58), (-58, 72), (-104, 72)])   # nobody's corner
-    land &= sw > 2 * fbm(sh, 8, 2, seed=25)
-    nw = shapes.signed_distance(Xf, Zf, [(-104, -72), (-50, -72), (-62, -56), (-80, -48), (-104, -44)])
-    land &= nw > 2 * fbm(sh, 8, 2, seed=26)                     # the far north-west: nobody's either
+    lip = -8 - noise.ragged(sh, "z", 9, 7, seed=21)
+    land = shapes.island(X, Z, (X_MIN, Z_MIN, -1, Z_MAX), east=-1 - lip,
+                         west=2 + noise.ragged(sh, "z", 14, 5, seed=22),
+                         north=3 + noise.ragged(sh, "x", 16, 6, seed=23), south=3 + noise.ragged(sh, "x", 16, 6, seed=24),
+                         cuts=[([(-104, 58), (-70, 58), (-58, 72), (-104, 72)], 2 * fbm(sh, 8, 2, seed=25)),   # nobody's corner
+                               ([(-104, -72), (-50, -72), (-62, -56), (-80, -48), (-104, -44)],
+                                2 * fbm(sh, 8, 2, seed=26))])     # the far north-west: nobody's either
 
     # the ash shelf: 51 by the fissure, rising gently west to the hamlet's 53-54
     h = 51 + 3.2 * nb + 0.6 * ns + 2.5 * smoothstep(-58, -86, Xf)

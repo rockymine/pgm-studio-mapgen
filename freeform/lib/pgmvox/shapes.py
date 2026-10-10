@@ -187,3 +187,16 @@ def scatter_points(mask, n, min_d, rng, X, Z, taken=()):
             if len(out) >= n:
                 break
     return out
+
+
+def island(X, Z, box, west=0, east=0, north=0, south=0, cuts=()):
+    """The land of a board inside `box` (x0, z0, x1, z1), inclusive: each side drawn in by its inset (a number, or
+    an array that varies along the side, as `noise.line` and `noise.ragged` make), and each cut (outline, margin)
+    taking off what lies within `margin` (a number or a field) of a polygon's inside, so a corner goes with a
+    ragged edge."""
+    x0, z0, x1, z1 = box
+    land = (X >= x0 + west) & (X <= x1 - east) & (Z >= z0 + north) & (Z <= z1 - south)
+    for outline, margin in cuts:
+        land &= signed_distance(X, Z, outline) > margin
+    return land
+

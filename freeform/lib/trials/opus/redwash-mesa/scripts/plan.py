@@ -102,10 +102,6 @@ class Land:
     """The red half's grids, [i, k] with x = X_MIN + i (x < 0) and z = Z_MIN + k."""
 
 
-def _ragged(n, cell, amp, seed):
-    return np.round(amp * (0.5 + 0.5 * fbm((n,), cell, 2, seed=seed))).astype(int)
-
-
 @lru_cache(maxsize=1)
 def land():
     L = Land()
@@ -116,15 +112,14 @@ def land():
     n1, n2 = fbm(sh, 24, 3, seed=71), fbm(sh, 8, 2, seed=72)
 
     # the outline: the seam's lip ragged, held straight where the canyon meets it (the Gate); the edges inset
-    lip = -9 - _ragged(sh[1], 10, 6, 81)
+    lip = -9 - noise.ragged(sh, "z", 10, 6, seed=81)
     zz = np.arange(Z_MIN, Z_MAX + 1)
     lip = np.where(np.abs(zz - 27) < 10, -10, lip)
-    land = X <= lip[None, :]
-    land &= X >= X_MIN + 2 + _ragged(sh[1], 14, 5, 82)[None, :]
-    land &= Z >= Z_MIN + 2 + _ragged(sh[0], 14, 5, 83)[:, None]
-    land &= Z <= Z_MAX - 2 - _ragged(sh[0], 14, 5, 84)[:, None]
-    for corner in ([(-96, -64), (-70, -64), (-84, -46), (-96, -40)], [(-96, 63), (-76, 63), (-88, 48), (-96, 44)]):
-        land &= shapes.signed_distance(Xf, Zf, corner) > 2 * fbm(sh, 8, 2, seed=len(corner) + 88)   # far corners
+    corners = ([(-96, -64), (-70, -64), (-84, -46), (-96, -40)], [(-96, 63), (-76, 63), (-88, 48), (-96, 44)])
+    land = shapes.island(X, Z, (X_MIN, Z_MIN, -1, Z_MAX), east=-1 - lip,
+                         west=2 + noise.ragged(sh, "z", 14, 5, seed=82),
+                         north=2 + noise.ragged(sh, "x", 14, 5, seed=83), south=2 + noise.ragged(sh, "x", 14, 5, seed=84),
+                         cuts=[(c, 2 * fbm(sh, 8, 2, seed=len(c) + 88)) for c in corners])   # far corners
 
     # the Table and the Bench: 62 north, 52 south of a banded cliff that runs east-west under the Chimney
     bench_line = noise.line(sh, "x", 16, seed=85, amp=3, base=41)

@@ -187,11 +187,10 @@ def land():
     n_small, n_big = fbm(sh, 12, 3, seed=11), fbm(sh, 40, 3, seed=12)
 
     # the outline: the rift's ragged lip and the board's inset edges
-    edge = _rift_edge(sh[1])
-    land = X <= edge[None, :]
-    land &= X >= X_MIN + noise.line(sh, "z", 16, seed=22, amp=4, base=2, clip=(0, 6))
-    land &= Z >= Z_MIN + noise.line(sh, "x", 16, seed=23, amp=5, base=2, clip=(0, 7))
-    land &= Z <= Z_MAX - noise.line(sh, "x", 16, seed=24, amp=5, base=2, clip=(0, 7))
+    land = shapes.island(X, Z, (X_MIN, Z_MIN, -1, Z_MAX), east=-1 - _rift_edge(sh[1])[None, :],
+                         west=noise.line(sh, "z", 16, seed=22, amp=4, base=2, clip=(0, 6)),
+                         north=noise.line(sh, "x", 16, seed=23, amp=5, base=2, clip=(0, 7)),
+                         south=noise.line(sh, "x", 16, seed=24, amp=5, base=2, clip=(0, 7)))
 
     # the open ground: the town climbs from the rift to the square; fields rise to the south and the ridge
     course = spline(RIVER, 0.5)

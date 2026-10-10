@@ -3,6 +3,7 @@
     fbm(shape, cell, octaves, seed)   rolling noise in about [-1, 1], features `cell` blocks across
     ridged(shape, cell, octaves, seed) crests: 1 - |fbm|, sharp where the noise crosses zero, in [0, 1]
     line(shape, along, cell, ...)     a wandering offset that varies along one axis of a grid and not the other
+    ragged(shape, along, cell, amp)   the same in whole blocks from 0 to amp: an edge bitten in by up to amp
     smoothstep(e0, e1, x)             a smooth 0..1 ramp between two edges
     spline(pts, step)                 a Catmull-Rom curve through points
 """
@@ -41,6 +42,12 @@ def line(shape, along, cell, octaves=2, seed=0, amp=1.0, base=0.0, clip=None):
     f = f[None, :] if along == "z" else f[:, None]
     out = base + amp * f
     return out if clip is None else out.clip(*clip)
+
+
+def ragged(shape, along, cell, amp, seed=0):
+    """Whole blocks from 0 to `amp`, wandering along the `along` axis of a grid of `shape` and shaped like `line`:
+    how far a ragged edge is bitten in at each row."""
+    return np.round(amp * (0.5 + 0.5 * line(shape, along, cell, seed=seed))).astype(int)
 
 
 def ridged(shape, cell, octaves=4, seed=0, gain=0.5, sharpness=1.0):
