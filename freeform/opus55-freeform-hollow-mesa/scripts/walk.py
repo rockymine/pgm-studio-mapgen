@@ -91,7 +91,7 @@ def main(build):
     passable, water, ladder, solid = grid(ids)
     st = standable(passable, water, solid) | (ladder & passable)
     spawns = {"red": (-101, 76, 6), "blue": (100, 76, -7)}
-    cores = {"red core": (-74, 47, -24), "blue core": (73, 47, 23)}
+    cores = {"red core": (-65, 74, -21), "blue core": (64, 74, 20)}          # the plateau beside each, at the well's lip
     places = {"shaft head": (-78, 74, -27), "Bench Adit mouth": (-47, 57, -34), "Chimney mouth": (-30, 41, -14),
               "Sky Arch crown": (-1, 76, 0), "Gilt Spring": (-9, 41, -2), "Mule Trail top": (-54, 74, -80),
               "bench by the tipple": (-28, 57, 26), "South Drift": (-44, 57, 80), "Wash head": (-100, 74, 52),

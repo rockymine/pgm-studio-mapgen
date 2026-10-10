@@ -68,15 +68,26 @@ def cavern(w, L):
 
 
 def core(w, L):
-    """The core: an obsidian shell with lava inside, on a two-block stub of rock at the hole's lip."""
+    """The core: an obsidian shell with lava inside, floating five over the plateau a dozen east of the shaft's
+    head, where it is seen from the fort's road. Under it a well two wide drops through the mesa into the Throat
+    and on through its hole to the void, so lava let out of the core's foot falls clear: the leak. A ring of the
+    Throat's dark clay marks the well's lip; the shaft is still the way up to it from the cavern."""
     c = P.CORE
     for x in range(c["x0"], c["x1"] + 1):
         for z in range(c["z0"], c["z1"] + 1):
-            for y in range(FLOOR, c["y0"]):
-                w.set(x, y, z, *((B.HARDENED_CLAY, 0) if y == FLOOR else (B.STAINED_CLAY, 12)))
             for y in range(c["y0"], c["y1"] + 1):
                 inner = c["x0"] < x < c["x1"] and c["z0"] < z < c["z1"] and c["y0"] < y < c["y1"]
                 w.set(x, y, z, B.LAVA if inner else B.OBSIDIAN)
+    g = int(L.H[c["x0"] + 1 - L.x0, c["z0"] + 1 - L.z0])
+    for x in range(c["x0"] + 1, c["x1"]):
+        for z in range(c["z0"] + 1, c["z1"]):
+            for y in range(FLOOR, g + 1):
+                w.set(x, y, z, B.AIR)
+    for x in range(c["x0"], c["x1"] + 1):
+        for z in range(c["z0"], c["z1"] + 1):
+            if not (c["x0"] < x < c["x1"] and c["z0"] < z < c["z1"]):
+                w.set(x, g, z, B.STAINED_CLAY, 12)
+    L.core_ground = g
 
 
 def catwalk(w, L):
@@ -111,15 +122,7 @@ def catwalk(w, L):
             for yy in range(y - i, y - i + 3):
                 if w.id(sx - i, yy, sz + dz) not in (B.AIR,):
                     w.set(sx - i, yy, sz + dz, B.AIR)
-    # the hoist: two posts either side of the hole, a beam across, a chain of fence into the dark
-    top = FLOOR + 8
-    for px in (int(tx - tr - 1), int(tx + tr + 1)):
-        for yy in range(FLOOR, top):
-            w.set(px, yy, tz, B.LOG2, 1)
-    for px in range(int(tx - tr - 1), int(tx + tr + 2)):
-        w.set(px, top, tz, B.LOG2, 1 | 4)
-    for yy in range(FLOOR - 6, top):
-        w.set(int(tx), yy, tz, B.DARK_OAK_FENCE)
+    # no hoist over the hole any more: the core's well comes down through the roof there, and lava falls clear
     # lamps: glowstone hung from the roof on fence
     for (lx, lz) in ((cx - 3, cz - 3), (cx + 4, cz + 5), (cx - 7, cz + 4), (cx + 6, cz - 6)):
         roof = next((yy for yy in range(FLOOR + 3, FLOOR + 14) if w.id(lx, yy, lz) != B.AIR), None)
@@ -273,8 +276,8 @@ def build(w, L):
     cavern(w, L)
     chimney(w, L)
     L.adit_path = adit(w, L)
-    shaft(w, L)
     workings(w, L)
     catwalk(w, L)
+    shaft(w, L)                     # after the catwalk, whose stair ran through it: the ladder climbs whole
     core(w, L)
     south_drift(w, L)

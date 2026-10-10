@@ -42,7 +42,9 @@ def bench_x(z):
 
 
 # ---- the objective ----------------------------------------------------------------------------------
-CORE = dict(x0=-73, x1=-70, y0=49, y1=52, z0=-26, z1=-23)   # obsidian shell, lava inside
+CORE = dict(x0=-67, x1=-64, y0=79, y1=82, z0=-26, z1=-23)   # obsidian shell, lava inside, floating five over the
+#                                                             plateau at 73, over a well down through the mesa
+#                                                             into the Throat; the shaft's head is a dozen west
 CAVERN = (-70, -24)       # the Throat's centre
 THROAT = (-65, -24, 3.2)  # the hole in the cavern floor to the void, east of the core
 SPAWN = (-108, 75, 4)     # in the fort's courtyard

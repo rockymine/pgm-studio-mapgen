@@ -1,8 +1,8 @@
 <map proto="1.5.0">
     <name>Hollow Mesa</name>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <gamemode>dtc</gamemode>
-    <objective>Leak the enemy's core: it hangs over a hole through their mesa, in the cavern they call the Throat.</objective>
+    <objective>Leak the enemy's core: it floats over a well through their mesa, by the headframe over the Throat.</objective>
     <authors>
         <author>Claude (freeform generator)</author>
     </authors>
@@ -56,8 +56,8 @@
         <everywhere id="everywhere"/>
         <rectangle id="red-spawn" min="-113,-8" max="-96,17"/>
         <rectangle id="blue-spawn" min="96,-16" max="113,9"/>
-        <cuboid id="red-core-region" min="-73,49,-26" max="-69,53,-22"/>
-        <cuboid id="blue-core-region" min="69,49,22" max="73,53,26"/>
+        <cuboid id="red-core-region" min="-67,79,-26" max="-63,83,-22"/>
+        <cuboid id="blue-core-region" min="63,79,22" max="67,83,26"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>

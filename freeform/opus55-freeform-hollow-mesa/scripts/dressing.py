@@ -254,8 +254,7 @@ def build(w, L):
     # along the creek where nothing is built: the trees the spring waters
     creek_banks = (np.abs(L.X - L.cx) > 3) & (np.abs(L.X - L.cx) < 8) & (L.d < L.floor_edge)
     n += wood(w, L, creek_banks, ["acacia", "olive"], [0.6, 0.4], 0.9, 1500, 3)
-    # in the Wash, where water runs after rain
-    n += wood(w, L, L.wash_mask & (L.X < -45), ["acacia", "small-olive"], [0.6, 0.4], 1.1, 600, 4)
+    # none in the Wash: it is the way up from the canyon to the high lands, and trees there made it a maze
     # a few alone on the mesa: one by the fort's gate, one on the rim over the arch, two on the bench
     for (x, z, kind, i) in ((-92, 12, "olive", 3), (-56, 8, "acacia", 2), (-46, -60, "acacia", 5),
                             (-110, -40, "acacia", 1), (-120, 40, "olive", 7), (-70, 30, "acacia", 4),
