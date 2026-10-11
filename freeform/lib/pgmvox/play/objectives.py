@@ -51,9 +51,10 @@ class Box:
         object.__setattr__(self, "y0", c); object.__setattr__(self, "y1", d)
         object.__setattr__(self, "z0", e); object.__setattr__(self, "z1", f)
 
-    def cuboid(self):
+    def cuboid(self, **attrs):
         """The PGM cuboid, max exclusive."""
-        return E("cuboid", min=f"{self.x0},{self.y0},{self.z0}", max=f"{self.x1 + 1},{self.y1 + 1},{self.z1 + 1}")
+        return E("cuboid", min=f"{self.x0},{self.y0},{self.z0}", max=f"{self.x1 + 1},{self.y1 + 1},{self.z1 + 1}",
+                 **attrs)
 
     def blocks(self):
         return [(x, y, z) for x in range(self.x0, self.x1 + 1) for y in range(self.y0, self.y1 + 1)
@@ -182,13 +183,17 @@ class Spawn(Objective):
     kit: str = None
     area: Box = None
     protect: object = True
+    filter: str = None                   # who may spawn here now: a filter's id
+    spread: Box = None                   # a box spawned anywhere in, in place of the one block
 
     def turned(self, sym):
         return replace(self, at=turn_point(self.at, sym), yaw=turn_yaw(self.yaw, sym),
-                       area=self.area.image(sym) if self.area else None)
+                       area=self.area.image(sym) if self.area else None,
+                       spread=self.spread.image(sym) if self.spread else None)
 
     def write(self, doc, teams):
-        doc.child("spawns").append(E("spawn", E("region", centre_el(self.at)), team=self.team, kit=self.kit,
+        where = self.spread.cuboid() if self.spread else centre_el(self.at)
+        doc.child("spawns").append(E("spawn", E("region", where), team=self.team, kit=self.kit, filter=self.filter,
                                      yaw=self.yaw))
         if self.area:
             rid = doc.region(f"{teams.short(self.team)}-spawn", self.area.cuboid())
@@ -223,9 +228,11 @@ class Observer(Objective):
     """Where observers and the dead appear: <default> in <spawns>."""
     at: tuple
     yaw: int = 0
+    spread: Box = None
 
     def write(self, doc, teams):
-        doc.child("spawns").append(E("default", E("region", centre_el(self.at)), yaw=self.yaw))
+        where = self.spread.cuboid() if self.spread else centre_el(self.at)
+        doc.child("spawns").append(E("default", E("region", where), yaw=self.yaw))
 
 
 @dataclass
@@ -283,7 +290,10 @@ class Hill(Objective):
 
 @dataclass
 class Flag(Objective):
-    """A flag and its posts (CTF, King of the Flag): each post a block the flag stands in, named, with a yaw."""
+    """A flag and its posts (CTF, King of the Flag): each post a block the flag stands in, named, with a yaw (None for
+    none); the first is where it starts. `pickup_kit` and `drop_kit` are kits given to its carrier as they take and
+    lose it. `hold_respawn` keeps a team's dead waiting while one of their own carries it; `compass` points every
+    player at the carrier."""
     id: str
     name: str
     color: str
@@ -293,15 +303,35 @@ class Flag(Objective):
     respawn_time: str = "15s"
     return_time: str = "0s"
     team: str = None
+    pickup_kit: str = None
+    drop_kit: str = None
+    proximity: str = None                # flag-proximity-metric
+    show_respawn: bool = None            # show-respawn-on-pickup
+    hold_respawn: bool = False
+    compass: bool = False
 
     def turned(self, sym):
         return replace(self, posts=[(n, turn_point(p, sym), turn_yaw(y, sym)) for n, p, y in self.posts])
+
+    def carrier(self):
+        """The id of the filter that holds for whoever carries this flag."""
+        return f"{self.id}-carrier"
 
     def write(self, doc, teams):
         posts = E("post", *[E("post", text=f"{p[0] + 0.5},{p[1]},{p[2] + 0.5}", name=n, yaw=y)
                             for n, p, y in self.posts], return_time=self.return_time, respawn_time=self.respawn_time)
         doc.child("flags").append(E("flag", posts, id=self.id, name=self.name, color=self.color,
-                                    shared=self.shared, points_rate=self.points_rate, owner=self.team))
+                                    shared=self.shared, points_rate=self.points_rate, owner=self.team,
+                                    pickup_kit=self.pickup_kit, drop_kit=self.drop_kit,
+                                    flag_proximity_metric=self.proximity, show_respawn_on_pickup=self.show_respawn))
+        carrying = E("carrying-flag", text=self.id, id=self.carrier())
+        if self.hold_respawn:
+            doc.filter(f"{self.id}-free", E("any", carrying, E("not", E("same-team", E("filter", id=self.carrier())))))
+        else:
+            doc.filter(self.carrier(), carrying)
+        if self.compass:
+            doc.add(E("compass", E("player", filter=self.carrier(), show_player=True, name=f"{self.name} Carrier"),
+                      show_distance=True))
         doc.child("score")
 
     def check(self, w):
@@ -560,24 +590,34 @@ class ScoreBox(Objective):
 
 @dataclass
 class Portal(Objective):
-    """A portal from a box to a block a player lands standing in, facing yaw, for those `filter` lets through."""
+    """A portal from a box to a block a player lands standing in, facing yaw, for those `filter` lets through; or, with
+    `to_box`, to anywhere in that box."""
     id: str
     box: Box
-    to: tuple
+    to: tuple = None
     yaw: int = None
     filter: str = None
     team: str = None
+    to_box: Box = None
 
     def turned(self, sym):
-        return replace(self, box=self.box.image(sym), to=turn_point(self.to, sym), yaw=turn_yaw(self.yaw, sym))
+        return replace(self, box=self.box.image(sym), to=turn_point(self.to, sym) if self.to else None,
+                       yaw=turn_yaw(self.yaw, sym), to_box=self.to_box.image(sym) if self.to_box else None)
 
     def write(self, doc, teams):
         rid = doc.region(self.id, self.box.cuboid())
+        yaw = None if self.yaw is None else f"@{self.yaw}"
+        if self.to_box:
+            dest = doc.region(f"{self.id}-to", self.to_box.cuboid())
+            doc.child("portals").append(E("portal", region=rid, destination=dest, yaw=yaw, filter=self.filter))
+            return
         x, y, z = self.to
         doc.child("portals").append(E("portal", region=rid, x=f"@{x + 0.5}", y=f"@{y}", z=f"@{z + 0.5}",
-                                      yaw=None if self.yaw is None else f"@{self.yaw}", filter=self.filter))
+                                      yaw=yaw, filter=self.filter))
 
     def check(self, w):
+        if self.to_box:
+            return []
         return [] if _stands(w, self.to) else [f"portal {self.id}: lands at {self.to} with nowhere to stand"]
 
     def cells(self):
@@ -586,6 +626,35 @@ class Portal(Objective):
     def marker(self):
         x, z = self.box.centre()
         return (int(x), int(z), "P")
+
+
+@dataclass
+class TouchPoint(Objective):
+    """A control point taken by touching it (arcade): whoever steps into `box` takes it at once and it scores for them,
+    `points` a second, until someone else touches it, alive or not."""
+    id: str
+    name: str
+    box: Box
+    points: int = 1
+    team: str = None
+
+    def turned(self, sym):
+        return replace(self, box=self.box.image(sym))
+
+    def write(self, doc, teams):
+        rid = doc.region(f"{self.id}-box", self.box.cuboid())
+        held = doc.filter(f"holding-{self.id}", E("not", E("objective", text=self.id)))
+        doc.child("control-points", required=False, neutral_state=False, capture_time="0.1s", capture_rule="lead",
+                  show=False).append(E("control-point", id=self.id, name=self.name, points=self.points, capture=rid,
+                                       captured=rid, player_filter=held))
+        doc.child("score")
+
+    def cells(self):
+        return self.box.cells()
+
+    def marker(self):
+        x, z = self.box.centre()
+        return (int(x), int(z), "T")
 
 
 # ---- the set ----------------------------------------------------------------------------------------------

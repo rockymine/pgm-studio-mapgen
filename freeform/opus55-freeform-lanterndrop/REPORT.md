@@ -69,7 +69,8 @@ the bell court was moved back out of reach of anyone knocked off the court's bac
 
 ## The match
 
-**`map.xml` is written by `scripts/mapxml.py`.** It follows Limbo II's structure and PGM's parser.
+**`map.xml` is written by `scripts/mapxml.py` through pgmvox's `play` parts.** It follows Limbo II's structure
+and PGM's parser.
 
 - **Players:** free for all, up to forty, each in their own colour.
 - **Kit:** Limbo II's, copied: three locked water buckets, boots of Protection V, sixteen health

@@ -37,9 +37,10 @@ canopies, the parapets, the arches and the trees.
 so the generator writes a standing banner at the Cistern as a tile entity: purple, with a white border and
 roundel. The same writer hangs each team's banners under its spawn canopy.
 
-**`map.xml` carries the whole gamemode itself.** It writes out PublicMaps' conquest and kotf includes in full:
-the kit, the carrier's kit and the drop kit, the `has-flag` spawn filter, the spectating respawn, the compass
-on the carrier, a score limit of 200, and the three posts. The enemy may not enter a spawn terrace, and there is
+**`map.xml` carries the whole gamemode itself.** It holds PublicMaps' conquest and kotf includes in full: the
+kit, the carrier's kit and the drop kit, the spawn filter that holds a team's dead while one of their own carries
+the flag, the spectating respawn, the compass on the carrier, a score limit of 200, and the three posts.
+`scripts/mapxml.py` writes it from the plan's posts and spawns through pgmvox's `play` parts. The enemy may not enter a spawn terrace, and there is
 no block interaction.
 
 ## The paint

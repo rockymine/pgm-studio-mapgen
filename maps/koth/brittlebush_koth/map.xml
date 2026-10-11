@@ -148,16 +148,16 @@
     </score>
     <spawners>
         <spawner spawn-region="apples-0" player-region="apples-0-near" delay="30s" max-entities="1">
-            <item material="golden apple" amount="1"/>
+            <item material="golden apple"/>
         </spawner>
         <spawner spawn-region="apples-1" player-region="apples-1-near" delay="30s" max-entities="1">
-            <item material="golden apple" amount="1"/>
+            <item material="golden apple"/>
         </spawner>
         <spawner spawn-region="apples-2" player-region="apples-2-near" delay="30s" max-entities="1">
-            <item material="golden apple" amount="1"/>
+            <item material="golden apple"/>
         </spawner>
         <spawner spawn-region="apples-3" player-region="apples-3-near" delay="30s" max-entities="1">
-            <item material="golden apple" amount="1"/>
+            <item material="golden apple"/>
         </spawner>
         <spawner spawn-region="arrows-0" player-region="arrows-0-near" delay="10s" max-entities="8">
             <item material="arrow" amount="4"/>

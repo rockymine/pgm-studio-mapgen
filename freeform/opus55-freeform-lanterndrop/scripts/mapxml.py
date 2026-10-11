@@ -1,10 +1,25 @@
 """Write Lantern Drop's map.xml from the plan and the generator: the hills' boxes, the bell court, the slipway, the
-board's own water that nobody may scoop up, and the void that kills, all from the plan's own numbers.
+board's own water that nobody may scoop up, and the void that kills, all from the plan's own numbers. Every box
+here is (x0, y0, z0, x1, y1, z1) with an exclusive max, as a PGM cuboid reads it.
 
     python3 mapxml.py > map.xml
 """
+import os
+import sys
+
 import gen as G
 import plan as P
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "lib"))
+
+from pgmvox.play.objectives import Box, Objectives, Observer, Portal, Spawn, TouchPoint  # noqa: E402
+from pgmvox.play.rules import Build, Effect, Item, KillHeight, Kit, Map, Match, Zone  # noqa: E402
+
+
+def box(b):
+    """An exclusive-max box as the library's inclusive one."""
+    x0, y0, z0, x1, y1, z1 = b
+    return Box(x0, y0, z0, x1 - 1, max(y1 - 1, y0), z1 - 1)
 
 
 def hill_boxes():
@@ -53,86 +68,39 @@ def built_water():
 
 
 def main():
-    o = []
-    a = o.append
     court = [p for p in P.pieces() if p[8].get("spawn")][0]
     cx0, cx1, cz0, cz1, cy = court[3], court[4], court[5], court[6], court[7]
-    a('<map proto="1.5.0">')
-    a('<name>Lantern Drop</name>')
-    a('<version>1.0.0</version>')
-    a('<objective>Drop down the broken pass and hold the most hills when the clock runs out.</objective>')
-    a('<gamemode>arcade</gamemode>')
-    a('<rules><rule>A drop of nineteen kills unless it ends in water: a cistern, the paddies, the harbour or your bucket.</rule>'
-      '<rule>Touch a hill to take it; it scores for you until someone else touches it, even after you die.</rule>'
-      '<rule>The slipway in the harbour takes you back to the bell court.</rule></rules>')
-    a('<include id="void-death"/>')
-    a('<players min="1" max="40" colors="true"/>')
-    a('<kits>')
-    a('    <kit id="players">')
-    a('        <clear/>')
-    for slot in range(3):
-        a(f'        <item slot="{slot}" locked="true" name="`b`lWater Drop" material="water bucket"/>')
-    # the kit, the water filter and the void are Water Drop: Limbo II's, copied: boots of Protection V soften a
-    # landing the bucket's water reached a tick late, and a player in the void has one heart
-    a('        <boots color="7fcc19" locked="true" unbreakable="true" enchantment="protection environmental:5" material="leather boots"/>')
-    a('        <effect duration="2s" amplifier="5">resistance</effect>')
-    a('        <effect amplifier="-2">health boost</effect>')
-    a('        <game-mode>survival</game-mode>')
-    a('    </kit>')
-    a('</kits>')
-    a('<spawns>')
-    a(f'    <spawn kit="players" yaw="0"><region><cuboid min="{cx0 + 3},{cy + 1},{cz0 + 7}" max="{cx1 - 2},{cy + 1},{cz1 - 2}"/></region></spawn>')
-    # observers come in where the players do, on the bell court
-    a(f'    <default yaw="0"><region><cuboid min="{cx0 + 3},{cy + 1},{cz0 + 7}" max="{cx1 - 2},{cy + 1},{cz1 - 2}"/></region></default>')
-    a('</spawns>')
-    a('<filters>')
-    # a player's bucket may place and take water; the world's own spreading, a placement by no player, may not
-    a('    <all id="water"><any><material>water</material><material>stationary water</material></any>'
-      '<not><cause>world</cause></not></all>')
-    for hid, name, pts, box in hill_boxes():
-        a(f'    <not id="holding-{hid}"><objective>{hid}</objective></not>')
-    a('</filters>')
-    a('<regions>')
-    a(f'    <cuboid id="bell-court" min="{cx0 - 2},{cy - 4},{cz0 - 4}" max="{cx1 + 3},{cy + 12},{cz1 + 2}"/>')
-    a(f'    <cuboid id="court-floor" min="{cx0 + 3},{cy + 1},{cz0 + 7}" max="{cx1 - 2},{cy + 1},{cz1 - 2}"/>')
-    a('    <union id="built-water">')
-    for x0, y0, z0, x1, y1, z1 in built_water():
-        a(f'        <cuboid min="{x0},{y0},{z0}" max="{x1},{y1},{z1}"/>')
-    a('    </union>')
-    s = P.SLIPWAY
-    hy = P.HARBOUR["y"]
-    a(f'    <cuboid id="slipway" min="{s["x"][0]},{hy - 3},{s["z"][0]}" max="{s["x"][1] + 1},{hy + 4},{s["z"][1] + 2}"/>')
-    for hid, name, pts, (bx0, by0, bz0, bx1, by1, bz1) in hill_boxes():
-        a(f'    <cuboid id="{hid}-box" min="{bx0},{by0},{bz0}" max="{bx1},{by1},{bz1}"/>')
-    a('    <apply region="built-water" block-break="never" block-place="never" message="This water belongs to the pass."/>')
-    a('    <apply region="bell-court" block-place="never"/>')
-    a('    <apply block-place="water" block-break="water" block-physics="never"/>')
-    a('</regions>')
-    a('<damage><deny><region id="bell-court"/></deny></damage>')
-    a('<score/>')
-    a('<control-points required="false" neutral-state="false" capture-time="0.1s" capture-rule="lead" show="false">')
-    for hid, name, pts, box in hill_boxes():
-        a(f'    <control-point id="{hid}" name="{name}" points="{pts}" capture="{hid}-box" captured="{hid}-box" '
-          f'player-filter="holding-{hid}"/>')
-    a('</control-points>')
-    a(f'<time>{P.TIME}</time>')
-    a('<portals sound="true">')
-    a('    <portal region="slipway" destination="court-floor" yaw="@0"/>')
-    # a box under every landing, from the last group's far edge to this one's, five under its top: a player who
-    # misses the landing falls into it and is put under the world, where the void kills within a few ticks. A
-    # landing, even in a cistern three deep, stays above it; the drop onward leaves past the group's far edge.
-    # A portal's y is relative unless it starts with @: this one puts the player at -150, where void-death's
-    # one heart and the void end them
-    a('    <portal y="@-150" sound="false"><region><union>')
-    for x0, y0, z0, x1, y1, z1 in kill_boxes():
-        a(f'        <cuboid min="{x0},{y0},{z0}" max="{x1},{y1},{z1}"/>')
-    a('    </union></region></portal>')
-    a('    <portal y="-64"><region><below y="-5"/></region></portal>')
-    a('</portals>')
-    a('<itemremove><item>bucket</item><item>water bucket</item><item>leather boots</item></itemremove>')
-    a('<hunger><depletion>off</depletion></hunger>')
-    a('</map>')
-    print("\n".join(o))
+    floor = box((cx0 + 3, cy + 1, cz0 + 7, cx1 - 2, cy + 1, cz1 - 2))     # where players and observers come in
+    s, hy = P.SLIPWAY, P.HARBOUR["y"]
+    O = Objectives()
+    O.add(Spawn(None, (cx0 + 3, cy + 1, cz0 + 7), kit="players", spread=floor))
+    O.add(Observer((cx0 + 3, cy + 1, cz0 + 7), spread=floor))
+    O.add(Zone("bell-court", [box((cx0 - 2, cy - 4, cz0 - 4, cx1 + 3, cy + 12, cz1 + 2))], place=False, damage=False))
+    O.add(Zone("built-water", [box(b) for b in built_water()], place=False, break_=False,
+               message="This water belongs to the pass."))
+    O.add(Portal("slipway", box((s["x"][0], hy - 3, s["z"][0], s["x"][1] + 1, hy + 4, s["z"][1] + 2)), yaw=0,
+                 to_box=floor))                                             # the harbour back to the bell court
+    for hid, name, pts, b in hill_boxes():
+        O.add(TouchPoint(hid, name, box(b), points=pts))
+    minutes = int(P.TIME.rstrip("m"))
+    # the kit, the water rule and the void are Water Drop: Limbo II's: boots of Protection V soften a landing the
+    # bucket's water reached a tick late, and a player in the void has one heart
+    kit = Kit(*[Item("water bucket", slot, locked=True, name="`b`lWater Drop") for slot in range(3)],
+              Item("leather boots", color="7fcc19", locked=True, unbreakable=True,
+                   enchant=[("protection environmental", 5)], wear="boots"),
+              id="players", clear=True, effects=[Effect("resistance", "2s", 5), Effect("health boost", amplifier=-2)],
+              game_mode="survival", remove=["bucket"])
+    M = Map("Lantern Drop", "1.0.0", "Drop down the broken pass and hold the most hills when the clock runs out.",
+            "arcade", includes=["void-death"], players=(1, 40),
+            rules=["A drop of nineteen kills unless it ends in water: a cistern, the paddies, the harbour or your "
+                   "bucket.", "Touch a hill to take it; it scores for you until someone else touches it, even after "
+                   "you die.", "The slipway in the harbour takes you back to the bell court."],
+            objectives=O, kit=kit,
+            build=Build(only=("water", "stationary water"), physics=False),   # a bucket's water, never the world's
+            # a box under every landing: a player who misses it falls in and is put under the world
+            kill=[KillHeight(boxes=[box(b) for b in kill_boxes()], to=-150), KillHeight(-5, "portal")],
+            match=Match(time=minutes * 60))
+    print(M.xml())
 
 
 if __name__ == "__main__":

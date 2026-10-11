@@ -48,7 +48,7 @@ def world_folder(board, map_xml):
     place = worlds.place(xml) if xml else None
     if place is None:
         return os.path.join(board, "world")
-    key = os.path.relpath(board, worlds.ROOT)
+    key = os.path.relpath(os.path.abspath(board), worlds.ROOT)
     if any(held == place for held, _, _ in worlds.rows()):
         place += "_pgmvox"
     worlds.register(place, key, key)

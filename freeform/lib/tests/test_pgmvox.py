@@ -1394,6 +1394,44 @@ class WorldAndOutput(unittest.TestCase):
         self.assertEqual(duration(90), "1m30s")
 
 
+    def test_the_arcade_and_flag_parts(self):
+        from pgmvox.play.objectives import Box, Flag, Objectives, Portal, Spawn, Teams, TouchPoint
+        from pgmvox.play.rules import (Build, Effect, ForEveryone, Item, JumpPad, KillHeight, Kit, Map, Match,
+                                       Respawn, Zone)
+        O = Objectives(Teams(("red-team", "Red", "red"), ("blue-team", "Blue", "blue")))
+        flag = Flag("flag", "Flag", "purple", [("a", (0, 20, 0), None)], hold_respawn=True, compass=True)
+        O.add(flag)
+        O.add(Spawn("red-team", (0, 20, -9), filter="flag-free"), mirror=False)
+        O.add(TouchPoint("hill-1", "Hill", Box(0, 20, 0, 2, 22, 2)))
+        O.add(Zone("court", [Box(-5, 18, -5, 5, 30, 5)], place=False, damage=False))
+        O.add(Portal("way", Box(9, 20, 9, 9, 21, 9), yaw=0, to_box=Box(0, 20, 0, 1, 20, 1)))
+        O.add(JumpPad("pad-a", Box(4, 20, 4, 5, 21, 5), (0, 1, 1), safe=True))
+        O.add(JumpPad("pad-b", Box(6, 20, 6, 7, 21, 7), (0, 1, -1), safe=True))
+        kit = Kit(Item("stone sword", 0, unbreakable=True), Item("leather boots", wear="boots"), clear=True,
+                  effects=[Effect("resistance", "3s", 5)], reward=[Item("arrow", amount=6)])
+        M = Map("T", "1", "t", "kotf", includes=[], objectives=O, kit=kit,
+                kits=[Kit(id="carry", force=True, max_health=8,
+                          actions=[ForEveryone("all(alive)", Kit(effects=[Effect("regeneration", "4s", 3)]))])],
+                build=Build(only=("water",), physics=False), kill=[KillHeight(boxes=[Box(-9, 0, -9, 9, 10, 9)], to=-150)],
+                match=Match(score=200, respawn=Respawn(auto=True), time_of_day=6000))
+        x = xml.dom.minidom.parseString(M.xml())
+        ids = {e.getAttribute("id"): e for e in x.getElementsByTagName("*") if e.getAttribute("id")}
+        self.assertEqual(ids["flag-free"].getElementsByTagName("carrying-flag")[0].getAttribute("id"), "flag-carrier")
+        self.assertEqual(x.getElementsByTagName("compass")[0].getElementsByTagName("player")[0].getAttribute("filter"),
+                         "flag-carrier")
+        self.assertIn("banner", [e.firstChild.data for e in x.getElementsByTagName("itemremove")[0].childNodes
+                                 if e.nodeType == e.ELEMENT_NODE])                     # a flag's banner never kept
+        self.assertEqual([e.getAttribute("id") for e in ids["jump-pads"].childNodes if e.nodeType == e.ELEMENT_NODE],
+                         ["pad-a", "pad-b"])                                      # both pads named in one union
+        self.assertEqual(len(x.getElementsByTagName("variables")), 1)              # the shared machinery once
+        cp = x.getElementsByTagName("control-point")[0]
+        self.assertEqual((cp.getAttribute("capture"), cp.getAttribute("player-filter")), ("hill-1-box", "holding-hill-1"))
+        self.assertEqual(x.getElementsByTagName("portal")[0].getAttribute("destination"), "way-to")
+        self.assertEqual(x.getElementsByTagName("include").length, 0)
+        self.assertEqual(x.getElementsByTagName("max-health")[0].firstChild.data, "8")
+        self.assertEqual(x.getElementsByTagName("timeset")[0].firstChild.data, "6000")
+
+
 class Underground(unittest.TestCase):
     def rock(self):
         w = World(0, 0, 60, 30, sy=64)

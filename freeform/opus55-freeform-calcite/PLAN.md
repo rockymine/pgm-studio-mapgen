@@ -123,6 +123,9 @@ lava, and a player on the causeway sees them below it.
 
 ## What `map.xml` says
 
+`scripts/mapxml.py` writes it from the plan's hills, pads, spawners and spawn through pgmvox's `play` parts, blue's
+half the plan's turned.
+
 - `<king>`: three hills with a 5-second capture, a neutral start and no decay. The Middle pays 2 a second and
   the side hills 1. First to 600, or the most points at 15 minutes.
 - **Spawners:** golden apples in the Spring, one at a time, every 30 seconds; arrows in the Ledge's north-east
