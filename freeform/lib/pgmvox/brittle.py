@@ -17,8 +17,8 @@ A cell is one of a handful of pieces, its y the floor block:
               the deck, the deck's edge capped without black clay, a dark-oak pillar mid-way along a long open side
     stair     one level up, three blocks in five, toward `rises`, from a floor at y: a stone-brick slab and a stone-brick
               block in turn, half a block a row
-    gap       void a player builds over: block 36 at y 0, and round the whole zone a ring of cobwebs at y 1, two
-              blocks outside it, wherever that column is open void
+    gap       void a player builds over: block 36 at y 0, and its outline in cobwebs at y 1 as the studio marks a
+              build region: two blocks out from every edge facing the void, a block clear of the land
     water     a gap with water at its foot, no kerb and no cobwebs: the water marks it, and PGM holds it still
     void      nothing
 
@@ -36,6 +36,7 @@ import numpy as np
 from scipy import ndimage
 
 from . import grammar as G
+from .objectives import build_marker
 from .blocks import B
 from .orient import stair
 
@@ -370,18 +371,11 @@ def build(w, cells, only=None, rng=None, dye=14, fill=None, style=STYLE, grown=N
             _pillars(w, c, p[0] * CELL, p[1] * CELL, cells)
     every = {(cx * CELL + i, cz * CELL + k) for (cx, cz), c in cells.items() if c.kind == "gap"
              for i in range(CELL) for k in range(CELL)}
-    for x, z in zone_ring(every, zone):                                    # cobwebs round the build zones
-        if (x, z) not in T and w.id(x, 1, z) == B.AIR:
+    near = {(x + dx, z + dz) for x, z in zone for dx in range(-2, 3) for dz in range(-2, 3)}
+    for x, z in build_marker(every, T):                                    # the build region's outline
+        if (x, z) in near and w.id(x, 1, z) == B.AIR:
             w.set(x, 1, z, B.COBWEB)
 
-
-def zone_ring(zone, near=None, out=2):
-    """The columns `out` blocks outside a build zone (a set of columns), a closed ring round it, corners and all;
-    with `near`, only the part of it within `out` of those columns (one team's share of a zone the teams share)."""
-    def within(cols, r):
-        return {(x + dx, z + dz) for x, z in cols for dx in range(-r, r + 1) for dz in range(-r, r + 1)}
-    ring = within(zone, out) - within(zone, out - 1)
-    return sorted(ring if near is None else ring & within(near, out))
 
 
 def _under(w, c, x0, z0, cells, G, T, rng):

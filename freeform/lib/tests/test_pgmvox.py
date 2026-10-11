@@ -670,6 +670,99 @@ class PlacedBoxes(unittest.TestCase):
         self.assertEqual("".join("#" if w.dat[i, 1, 7] == 15 else "." for i in range(15)), "##..##...##..##")
 
 
+class BuildMarker(unittest.TestCase):
+    """The studio's BuildMarkerStamperTests, case for case: pgmvox outlines a build region as the studio does."""
+
+    @staticmethod
+    def rects(*rs):
+        return {(x, z) for x0, z0, x1, z1 in rs for x in range(x0, x1) for z in range(z0, z1)}
+
+    @staticmethod
+    def column(cells, x):
+        return sorted(z for cx, z in cells if cx == x)
+
+    @staticmethod
+    def row(cells, z):
+        return sorted(x for x, cz in cells if cz == z)
+
+    @staticmethod
+    def within(cells, x0, z0, x1, z1):
+        return {c for c in cells if x0 <= c[0] <= x1 and z0 <= c[1] <= z1}
+
+    @staticmethod
+    def ring(x0, z0, x1, z1):
+        return {(x, z) for x in range(x0, x1 + 1) for z in (z0, z1)} | {(x, z) for x in (x0, x1) for z in range(z0, z1 + 1)}
+
+    def test_bridging_two_terrain_pieces_marks_the_two_free_sides(self):
+        cells = O.build_marker(self.rects((0, 0, 8, 8)), self.rects((0, -8, 8, 0), (0, 8, 8, 16)))
+        self.assertEqual(self.column(cells, -2), list(range(0, 8)))
+        self.assertEqual(self.column(cells, 9), list(range(0, 8)))
+        self.assertEqual(len(cells), 16)
+
+    def test_free_on_every_side_is_ringed(self):
+        cells = O.build_marker(self.rects((0, 0, 8, 8)), set())
+        for line in (self.column(cells, -2), self.column(cells, 9), self.row(cells, -2), self.row(cells, 9)):
+            self.assertEqual(line, list(range(-2, 10)))
+        self.assertEqual(len(cells), 44)
+
+    def test_two_free_edges_meeting_turn_into_one_l(self):
+        cells = O.build_marker(self.rects((0, 0, 12, 8)), self.rects((4, -8, 12, 0), (0, 8, 12, 16)))
+        self.assertEqual(self.column(cells, -2), list(range(-2, 8)))
+        self.assertEqual(self.row(cells, -2), [-2, -1, 0, 1, 2])
+        self.assertEqual(self.column(cells, 13), list(range(0, 8)))
+
+    def test_a_line_pulls_back_from_overhanging_terrain(self):
+        cells = O.build_marker(self.rects((0, 0, 12, 8)), self.rects((0, -8, 16, 0), (0, 8, 16, 16)))
+        self.assertEqual(self.column(cells, -2), list(range(0, 8)))
+        self.assertEqual(self.column(cells, 13), list(range(1, 7)))
+
+    def test_docked_on_every_side_is_not_marked(self):
+        terrain = self.rects((-8, -8, 16, 0), (-8, 8, 16, 16), (-8, 0, 0, 8), (8, 0, 16, 8))
+        self.assertEqual(O.build_marker(self.rects((0, 0, 8, 8)), terrain), [])
+
+    def test_a_hole_is_cut_out_before_the_outline_is_traced(self):
+        cells = O.build_marker(self.rects((0, 0, 20, 20)), set(), holes=self.rects((6, 6, 14, 14)))
+        self.assertEqual(self.row(cells, 8), [-2, 7, 12, 21])
+
+    def test_regions_round_a_void_pocket_each_mark_one_side(self):
+        areas = self.rects((8, 0, 16, 8), (0, 8, 8, 16), (16, 8, 24, 16), (8, 16, 16, 24))
+        terrain = self.rects((0, 0, 8, 8), (16, 0, 24, 8), (0, 16, 8, 24), (16, 16, 24, 24))
+        cells = O.build_marker(areas, terrain)
+        self.assertEqual(self.column(cells, -2), list(range(8, 16)))
+        self.assertEqual(self.within(cells, 8, 8, 15, 15), self.ring(9, 9, 14, 14))
+
+    def test_terrain_beside_a_line_shortens_it_and_past_its_corner_does_not(self):
+        cells = O.build_marker(self.rects((8, 0, 24, 8), (8, 16, 24, 24)), self.rects((0, 0, 8, 24), (24, 0, 32, 24)))
+        self.assertEqual(self.row(cells, -2), list(range(8, 24)))
+        self.assertEqual(self.row(cells, 9), list(range(9, 23)))
+
+    def test_regions_sharing_a_border_are_outlined_as_one(self):
+        cells = O.build_marker(self.rects((0, 0, 8, 24), (8, 0, 16, 8), (16, 0, 24, 24), (8, 16, 16, 24)), set())
+        self.assertEqual(self.column(cells, -2), list(range(-2, 26)))
+        self.assertEqual(self.within(cells, 8, 8, 15, 15), self.ring(9, 9, 14, 14))
+        self.assertEqual(self.row(cells, 11), [-2, 9, 14, 25])
+
+    def test_regions_touching_at_a_corner_are_one_unbroken_staircase(self):
+        cells = O.build_marker(self.rects((0, 0, 8, 8), (8, 8, 16, 16)), set())
+        marker = set(cells)
+        steps = ((1, 0), (-1, 0), (0, 1), (0, -1))
+        for x, z in cells:
+            self.assertEqual(sum((x + dx, z + dz) in marker for dx, dz in steps), 2)
+        seen, todo = {cells[0]}, [cells[0]]
+        while todo:
+            x, z = todo.pop()
+            for dx, dz in steps:
+                if (x + dx, z + dz) in marker and (x + dx, z + dz) not in seen:
+                    seen.add((x + dx, z + dz))
+                    todo.append((x + dx, z + dz))
+        self.assertEqual(len(seen), len(cells))
+
+    def test_a_symmetric_pair_is_marked_symmetrically(self):
+        marker = set(O.build_marker(self.rects((10, 10, 18, 18), (-18, -18, -10, -10)), set()))
+        self.assertTrue(marker)
+        self.assertTrue(all((-1 - x, -1 - z) in marker for x, z in marker))
+
+
 class LineWalls(unittest.TestCase):
     def setUp(self):
         self.w = World(0, 0, 40, 12, sy=60)
@@ -1580,17 +1673,17 @@ class Brittle(unittest.TestCase):
         self.assertEqual((w.id(2, 24, 2), w.get(2, 25, 2)), (B.BEACON, (B.STAINED_GLASS, 4)))
         self.assertEqual((w.id(2, 11, 9), w.id(2, 11, 8)), (B.AIR, B.COBWEB))        # the door, cobwebs inside
 
-    def test_a_build_zone_is_ringed_by_cobwebs_two_blocks_out(self):
+    def test_a_build_zone_is_outlined_as_the_studio_marks_it(self):
         from pgmvox import brittle as BR
         w = World(-20, -20, 40, 40, sy=40)
         cells = {(0, 0): BR.Cell("gap"), (1, 0): BR.Cell("gap"), (-1, 0): BR.Cell("flat", 10, section="land")}
         BR.build(w, cells)
         webs = {(x, z) for x in range(-20, 20) for z in range(-20, 20) if w.id(x, 1, z) == B.COBWEB}
-        zone = {(x, z) for x in range(0, 10) for z in range(0, 5)}
-        self.assertTrue(webs.isdisjoint(zone))
-        self.assertTrue({(5, -2), (5, 6), (11, 2), (11, -2), (11, 6)} <= webs)       # sides and corners
-        self.assertFalse(any(-5 <= x <= -1 and 0 <= z <= 4 for x, z in webs))       # not on the land
-        self.assertIn((-2, -2), webs)                                                # but over the void beside it
+        self.assertEqual(sorted(webs, key=lambda c: (c[1], c[0])),
+                         O.build_marker({(x, z) for x in range(10) for z in range(5)},
+                                        {(x, z) for x in range(-5, 0) for z in range(5)}))
+        self.assertNotIn((-2, -2), webs)                                # a block clear of the land diagonally
+        self.assertIn((11, 2), webs)
         self.assertEqual(w.id(3, 0, 2), 36)
 
     def test_sections_outline_each_other_and_panels_need_a_full_drop(self):

@@ -213,9 +213,9 @@ with a birch when the grass is wide enough. `build(..., fill=)` may choose a rec
 birch, grass alone, or sand.
 
 **Water marks itself; a gap is marked by cobwebs.** A water cell lays water at the foot of the void, with no cobweb
-and no kerb, since PGM holds the water still. A gap cell lays block 36 at y 0, and the whole build zone gets a ring
-of cobwebs at y 1, two blocks outside it, corners and all, wherever that column is open void. A zone two teams share
-is ringed once round its outside, each team laying its own share.
+and no kerb, since PGM holds the water still. A gap cell lays block 36 at y 0, and the build zone is outlined in
+cobwebs at y 1 the way the studio marks a build region (`objectives.build_marker`, rule ST5): two blocks out from every
+edge facing the void, a block clear of the zone and of all land, a corner turned where two free edges meet.
 
 **A stacked cell with `under=True` is hollow under its deck, as Brittlebush I's island beside the middle is.**
 The deck's edge over the hollow is the cap without its black band, and its lower floor lies `DECK`, eight blocks,

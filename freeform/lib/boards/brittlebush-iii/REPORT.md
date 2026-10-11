@@ -23,8 +23,8 @@ one. A piece named `stair…` is a stair cell climbing from its lower neighbour 
 `double…` is a deck.
 
 **A zone where no piece lies is a build zone, and its name says which kind.** A zone named `water…` lays water at
-the foot of the void, with no cobwebs and no kerb: PGM holds the water still. Any other zone is bare, ringed by cobwebs
-at y 1 two blocks outside it where it faces the open void.
+the foot of the void, with no cobwebs and no kerb: PGM holds the water still. Any other zone is bare, outlined in cobwebs
+at y 1 two blocks out from its edges onto the void, a block clear of the land.
 
 **The plan's heights are its own, but for two double-layered pieces raised a level.** The middle islands and the
 island with the tunnel were drawn at 9, which put their lower floors at 1, a single course over the void. `RAISE`

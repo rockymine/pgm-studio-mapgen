@@ -650,3 +650,45 @@ class Objectives:
                 out.append((*one, getattr(o, "team", None)))
         return out
 
+
+
+# ---- the build region's outline in the world -----------------------------------------------------------------
+MARKER_CLEARANCE = 1                     # air kept between the marker and both the build region and the terrain
+MARKER_OFFSET = MARKER_CLEARANCE + 1     # how far out from a build edge the marker sits
+MARKER_Y = 1
+_SIDES = ((-1, 0), (1, 0), (0, -1), (0, 1))
+_CORNERS = ((0, 2), (0, 3), (1, 2), (1, 3))
+
+
+def build_marker(build, terrain, holes=()):
+    """The columns of the build region's outline, the studio's `BuildMarkerStamper.MarkerCells` (rule ST5): a
+    line two blocks out from every edge of the region that faces the void, one air block clear of the region and
+    of the terrain. An edge docked against terrain carries no line, terrain beside a line pulls it back, and where
+    two void-facing edges meet at a convex corner the two lines turn into each other, so a region hanging free is
+    ringed. `build` and `holes` are sets of columns, `terrain` the terrain's footprint (columns with any ground at
+    any height). Ordered by z, then x."""
+    build = set(build) - set(holes)
+    terrain = set(terrain)
+    if not build:
+        return []
+
+    def step(c, side, n):
+        return (c[0] + side[0] * n, c[1] + side[1] * n)
+
+    marker = set()
+    for cell in build:
+        free = [step(cell, s, 1) not in build and step(cell, s, 1) not in terrain for s in _SIDES]
+        for s, f in zip(_SIDES, free):
+            if f:
+                marker.add(step(cell, s, MARKER_OFFSET))
+        for a, b in _CORNERS:
+            if free[a] and free[b]:
+                for n in range(1, MARKER_OFFSET + 1):
+                    marker.add(step(step(cell, _SIDES[a], n), _SIDES[b], MARKER_OFFSET))
+                    marker.add(step(step(cell, _SIDES[a], MARKER_OFFSET), _SIDES[b], n))
+
+    def crowds(c, occupied):
+        return any((c[0] + dx, c[1] + dz) in occupied for dx in range(-MARKER_CLEARANCE, MARKER_CLEARANCE + 1)
+                   for dz in range(-MARKER_CLEARANCE, MARKER_CLEARANCE + 1))
+
+    return sorted((c for c in marker if not crowds(c, build) and not crowds(c, terrain)), key=lambda c: (c[1], c[0]))
