@@ -1747,6 +1747,19 @@ class Grammar(unittest.TestCase):
         self.assertEqual((w.id(4, 15, 8), w.get(4, 15, 7), w.get(4, 17, 7)), (B.AIR, (B.QUARTZ, 1), (B.STAINED_CLAY, 14)))
         self.assertEqual(w.id(0, 0, 0), 36)
 
+    def test_a_sunk_course_keeps_its_back_on_every_side(self):
+        from pgmvox import clay
+        from pgmvox import grammar as G
+        w = World(-2, -2, 14, 14, sy=32)
+        G.lay(w, G.Ground([G.Section(((0, 0, 8, 8),), 20, "a", "plate")]), clay.style(dye=14))
+
+        def back(x, z):
+            return [w.get(x, y, z) for y in range(14, 18)]
+        for u in range(2, 6):                                    # the north face's back against the south's,
+            self.assertEqual(back(u, 1), back(u, 7))             # the west's against the east's
+            self.assertEqual(back(1, u), back(7, u))
+        self.assertIn((B.QUARTZ, 1), back(4, 1))
+
     def test_made_ground_reads_the_grown_ground_beside_it(self):
         from pgmvox import brittle as BR
         unit = {(a, b): BR.Cell("flat", 16, section="a") for a in (-4, -3) for b in (-4, -3)}

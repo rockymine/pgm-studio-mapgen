@@ -182,7 +182,9 @@ class Face:
     accent: Accent = None
     floor: int = 3
 
-    def lay(self, w, x, z, h, inward, along=None, pos=None, air=0, accents=True):
+    def lay(self, w, x, z, h, inward, along=None, pos=None, air=0, accents=True, backs=None):
+        """Lay the courses at (x, z). A sunk course's back lands in the inward column; `backs`, when given, collects
+        each as (x, y, z, block) so a body laid there afterwards can be laid under it again."""
         if h - len(self.courses) + 1 < self.floor:
             raise ValueError(f"a face at {h} reaches under y {self.floor}: raise the floor")
         a = self.accent
@@ -193,7 +195,10 @@ class Face:
         for i, s in enumerate(stack):
             if isinstance(s, Sunk):
                 w.set(x, h - i, z, B.AIR)
-                w.set(x + ix, h - i, z + iz, *spec(s.back, inward))
+                back = spec(s.back, inward)
+                w.set(x + ix, h - i, z + iz, *back)
+                if backs is not None:
+                    backs.append((x + ix, h - i, z + iz, back))
             else:
                 w.set(x, h - i, z, *spec(s, inward))
 
@@ -281,7 +286,8 @@ class Style:
 def lay(w, ground, style, only=None, rng=None, face_of=None, params=None, where=None, bodiless=()):
     """Lay the sections of `ground` numbered in `only` (default all) in `style`: the body under every column, a face
     where the ground falls two or more (the rim its top course), the seam on the rest of the outline, then each
-    section's fill and motifs. face_of(x, z) may name another of the style's faces for a column, or None to leave
+    section's fill and motifs. A sunk course's back stands in the column inside its face and outlasts that
+    column's body, unless that column is a face itself. face_of(x, z) may name another of the style's faces for a column, or None to leave
     its face alone; where(x, z) limits the columns touched (one team's part of a section that crosses into
     another's: its fill then sees no rectangle); `bodiless` columns get no body (a hollow under a deck). Returns
     {section number: the fill laid}."""
@@ -293,6 +299,7 @@ def lay(w, ground, style, only=None, rng=None, face_of=None, params=None, where=
     for n in todo:
         sec = ground.sections[n]
         cols = [c for c in sec.columns() if where is None or where(*c)]
+        backs, faced = [], set()
         for x, z in cols:
             h = ground.top(x, z)
             if (x, z) not in bodiless:
@@ -309,9 +316,13 @@ def lay(w, ground, style, only=None, rng=None, face_of=None, params=None, where=
                         bays[key] = face.open(ground, x, z, side, pos, h)
                     if not bays[key]:
                         along = None
-                face.lay(w, x, z, h, OPP[side], along, pos, air=drop)
+                face.lay(w, x, z, h, OPP[side], along, pos, air=drop, backs=backs)
+                faced.add((x, z))
             elif not falls and ground.depth(x, z) == 0:
                 w.set(x, h, z, *style.seam)
+        for x, y, z, back in backs:
+            if (x, z) not in faced:
+                w.set(x, y, z, *back)
         inner = set(cols)
         lot = Lot(sec, n, [c for c in ground.inside(n) if c in inner], sec.y, ground, params)
         if lot.cols:
