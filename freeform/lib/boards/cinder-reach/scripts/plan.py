@@ -24,15 +24,15 @@ sys.path.insert(0, os.path.normpath(os.path.join(HERE, "..", "..")))            
 import numpy as np  # noqa: E402
 
 import common  # noqa: E402,F401
-from pgmvox import landform as LF  # noqa: E402
-from pgmvox import shapes  # noqa: E402
-from pgmvox.build import Frame, House  # noqa: E402
-from pgmvox.noise import fbm, ridged, smoothstep, spline  # noqa: E402
-from pgmvox import noise  # noqa: E402
-from pgmvox import field as F  # noqa: E402
-from pgmvox.objectives import Box, Core, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.plan import Raster, Symmetry  # noqa: E402
-from pgmvox.terrain import island_bottom, slope_deg  # noqa: E402
+from pgmvox.ground import landform as LF  # noqa: E402
+from pgmvox.geom import shapes  # noqa: E402
+from pgmvox.built.build import Frame, House  # noqa: E402
+from pgmvox.geom.noise import fbm, ridged, smoothstep, spline  # noqa: E402
+from pgmvox.geom import noise  # noqa: E402
+from pgmvox.ground import field as F  # noqa: E402
+from pgmvox.play.objectives import Box, Core, Objectives, Observer, Spawn, Teams  # noqa: E402
+from pgmvox.plan.raster import Raster, Symmetry  # noqa: E402
+from pgmvox.surface.terrain import island_bottom, slope_deg  # noqa: E402
 
 BOARD = "cinder-reach"
 X_MIN, X_MAX = -104, 103
@@ -235,7 +235,7 @@ def spec(rect, door):
 
 
 def door_cell(s):
-    """Where pgmvox.build.house will put a spec's door (the library decides it only while building)."""
+    """Where pgmvox.built.build.house will put a spec's door (the library decides it only while building)."""
     fr = Frame(s["cx"], s["cz"], s["heading"])
     m, X, Z, U, V = fr.mask(s["L"], s["W"])
     wall = shapes.boundary(m, diagonal=True)

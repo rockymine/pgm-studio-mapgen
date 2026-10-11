@@ -4,7 +4,7 @@ the kit; the fall past the board's rim; building anywhere but over the void, no 
     python3 mapxml.py > map.xml
 """
 import plan as P
-from pgmvox.mapxml import Doc, E, item
+from pgmvox.play.mapxml import Doc, E, item
 
 d = Doc("Tamarisk Wash", "0.1.0", "Destroy both of the enemy's monuments: the Obelisk on Table Rock and the "
         "Sunstone in the Souk.", "dtm")

@@ -2,7 +2,7 @@
 
     python3 gen.py <build-dir>
 
-    the made        every cell of the blueprint in Brittlebush's grammar (pgmvox.brittle on pgmvox.grammar), read
+    the made        every cell of the blueprint in Brittlebush's grammar (pgmvox.grammar.brittle on pgmvox.grammar.rules), read
                     against the grown ground beside it: a face is as deep as the drop to the meadow under it, and
                     a made edge level with grown ground is a seam; the spawn's and the wool's houses stacked of
                     whole cells, the wool on a square of its colour, the redstone line before its door
@@ -17,10 +17,13 @@ import sys
 import numpy as np
 
 import plan as P
-from pgmvox import B, World, props, terrain, trees
-from pgmvox.brittle import CELL, build, house
-from pgmvox.orient import turn_world
-from pgmvox.shapes import edge_depth
+from pgmvox import B, World
+from pgmvox.built import props
+from pgmvox.surface import terrain
+from pgmvox.scenery import trees
+from pgmvox.grammar.brittle import CELL, build, house
+from pgmvox.core.orient import turn_world
+from pgmvox.geom.shapes import edge_depth
 
 cells, team = P.cells()
 X, Z = P.grid()

@@ -1,4 +1,4 @@
-// Export the studio's SurfaceGradient answers over test grounds, so pgmvox.terrain.slope_deg is tested against the
+// Export the studio's SurfaceGradient answers over test grounds, so pgmvox.surface.terrain.slope_deg is tested against the
 // studio's own reading of slope, cell for cell.
 //
 //   python3 slope_cases.py cases.json

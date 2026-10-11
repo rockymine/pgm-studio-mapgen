@@ -25,8 +25,8 @@ sys.path.insert(0, os.path.normpath(os.path.join(HERE, "..", "..", "..")))   # f
 sys.path.insert(0, os.path.normpath(os.path.join(HERE, "..", "..")))               # boards (common)
 
 import common  # noqa: E402,F401
-from pgmvox.objectives import Box, Hill, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.plan import Raster, Symmetry  # noqa: E402
+from pgmvox.play.objectives import Box, Hill, Objectives, Observer, Spawn, Teams  # noqa: E402
+from pgmvox.plan.raster import Raster, Symmetry  # noqa: E402
 
 BOARD = "tidewell-canals"
 X_MIN, X_MAX = -80, 79

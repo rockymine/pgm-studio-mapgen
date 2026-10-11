@@ -6,7 +6,7 @@ column; item keeping, kill rewards and the build height.
 """
 import plan as P
 import common as C
-from pgmvox.mapxml import Doc, E
+from pgmvox.play.mapxml import Doc, E
 
 O = P.objectives()
 d = Doc("Brassmoor Works", "1.0.0", "Capture the enemy's two wools: one from their Boiler House, one from under "

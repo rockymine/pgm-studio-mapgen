@@ -5,7 +5,7 @@ objectives; the kit; the fissure as the only place to build over the void; a bui
 """
 import plan as P
 import common as C
-from pgmvox.mapxml import Doc, E
+from pgmvox.play.mapxml import Doc, E
 
 d = Doc("Cinder Reach", "1.0.0", "Leak the enemy's core: it hangs over a stone platform in the bowl of the cinder cone in front of their "
         "lodge.", "dtc")

@@ -22,7 +22,7 @@ Region files were not written (`--skip write`); `world/map.xml` is the only file
 | Blue's wool on the watch tower | library | `turn_world(recolour=...)` |
 | Kit, rift build zone, void filter, max build height | library + local XML | `mapxml.Doc`, `E` (no kit or rectangle helper) |
 | Rift lip: ragged, bays, held straight at the town, Old Bridge, falls | local | `plan._rift_edge` |
-| Town climbing 49 → 52, chapel hill, field slope, ridge, spurs | local + library | noise and smoothstep from `pgmvox.noise`, `landform.terraces` for the ridge steps |
+| Town climbing 49 → 52, chapel hill, field slope, ridge, spurs | local + library | noise and smoothstep from `pgmvox.geom.noise`, `landform.terraces` for the ridge steps |
 | Square and green levelled into the ground | library | `landform.blend` |
 | Lone Oak Knoll | library | `landform.spire` (with an ellipse by stretching z) |
 | River valley: bluff on the town side, gentle field bank | local | asymmetric bank formula in `plan.land` |
@@ -45,13 +45,13 @@ Region files were not written (`--skip write`); `world/map.xml` is the only file
 | Stone Bridge: hump-backed, arched, keystoned, stair-stepped | local | `works.stone_bridge` |
 | The Old Bridge's broken stub and iron ties | local | `works.old_bridge` |
 | The mill, its race, wheel and weir | local | `works.mill` |
-| Headframe with winding wheel, shaft and ladder | local + library | `works.headframe`; the shaft is `pgmvox.under.shaft` |
+| Headframe with winding wheel, shaft and ladder | local + library | `works.headframe`; the shaft is `pgmvox.volume.under.shaft` |
 | Engine house stack, smithy, well, spoil heap | local | `works.ironhollow` |
-| Falls Cave: gallery, branches, lake chamber, pillar hall, grotto, alcoves | library + local | `pgmvox.under.tunnel` and `chamber`; pillar hall and grotto local |
-| Cave mouth ledge, vines, dressing, stalagmites, ores, lake | library + local | `pgmvox.under.dress_cave`; `under.mouth` and `under.lake` local |
+| Falls Cave: gallery, branches, lake chamber, pillar hall, grotto, alcoves | library + local | `pgmvox.volume.under.tunnel` and `chamber`; pillar hall and grotto local |
+| Cave mouth ledge, vines, dressing, stalagmites, ores, lake | library + local | `pgmvox.volume.under.dress_cave`; `under.mouth` and `under.lake` local |
 | The sinkhole | local | funnel in the plan's heights, rubble in `under.sinkhole` |
-| Ironhollow Mine: galleries, sets, rails, stairs, adit, chests | library + local | `pgmvox.under.gallery_line` and `gallery`; adit portal and chest local |
-| Trees from the tree showcase, crown spacing, the Cutting's ring, the knoll oak | library | `pgmvox.trees.load`, `plant`, `scatter` (reads the original's `trees.json`) |
+| Ironhollow Mine: galleries, sets, rails, stairs, adit, chests | library + local | `pgmvox.volume.under.gallery_line` and `gallery`; adit portal and chest local |
+| Trees from the tree showcase, crown spacing, the Cutting's ring, the knoll oak | library | `pgmvox.scenery.trees.load`, `plant`, `scatter` (reads the original's `trees.json`) |
 | Wheat field, ditches, fence and gate, scarecrow | local | `dress.build` |
 | Grass, ferns, flower drifts; vines down the rift face | local | `dress.build` |
 | The Cutting's stumps and log piles | local, reduced | stumps and two piles; no sawhorse or sledge |
@@ -60,7 +60,7 @@ Region files were not written (`--skip write`); `world/map.xml` is the only file
 | Plan sketch, annotated top-down, iso, x-ray, cutaways, elevation | library | `sketch`, `render` |
 | Read-back walks, objectives, footing | library | `walk`, `Objectives.check`, `audit.footing` |
 | Barn, haystacks, hay cart, jetty and rowboat, spring off the ridge | not ported | — |
-| Market stalls on the square's west edge | library | `pgmvox.props.stalls` |
+| Market stalls on the square's west edge | library | `pgmvox.built.props.stalls` |
 | Village gardens, benches, boulders, fallen logs, hedgerows | not ported | — |
 | Worn ground patches, furnishing inside every house, door paths | not ported | — |
 | Chapel's tall windows, the wing and lean-to roofs crossing their main ridges | not ported | the library's house is one rectangle |
@@ -201,7 +201,8 @@ is the exact mirror. A minimal reproduction, a floor with mirrored holes:
 
 ```python
 import numpy as np
-from pgmvox import World, walk, B
+from pgmvox import World, B
+from pgmvox.read import walk
 rs = np.random.default_rng(1)
 w = World(-10, -10, 20, 20, sy=6)
 w.fill(-10, 1, -10, 9, 1, 9, B.STONE)
@@ -222,7 +223,8 @@ fall, and the fall loop stops only on a standing cell, so it passes every ladder
 `max_drop`. Climbing up works. Reproduction:
 
 ```python
-from pgmvox import World, walk, B
+from pgmvox import World, B
+from pgmvox.read import walk
 w = World(-3, -3, 6, 6, sy=12)
 w.fill(-3, 0, -3, 2, 0, 2, B.STONE); w.fill(-3, 8, -3, 2, 8, 2, B.STONE)
 for y in range(1, 9):
@@ -291,8 +293,8 @@ monuments.
 
 ## After review: the board's pieces moved into the library
 
-**The cave, the mine, the shaft and the trees now come from the library.** `pgmvox.under` holds the tunnel,
-chamber, cave finish, gallery and shaft this port had written locally, and `pgmvox.trees` plants the original's
+**The cave, the mine, the shaft and the trees now come from the library.** `pgmvox.volume.under` holds the tunnel,
+chamber, cave finish, gallery and shaft this port had written locally, and `pgmvox.scenery.trees` plants the original's
 cut trees. What stays local is where they go and the pieces only this board has.
 
 **The walks did not move.** Every number in `renders/walks.txt` is the one the local code gave, and the carve

@@ -10,15 +10,17 @@ import time
 import numpy as np
 
 import plan as P
-from pgmvox import World, audit, walk
-from pgmvox import blocks as K
+from pgmvox import World
+from pgmvox.read import audit
+from pgmvox.read import walk
+from pgmvox.core import blocks as K
 
 t0 = time.time()
 w = World.load(sys.argv[1])
 # pgmvox's PASSABLE has no doors in it, so its walk stops at every door: walk a copy with the doors open
 ids = w.ids.copy()
 ids[np.isin(ids, sorted(K.DOORS))] = 0
-# jumps off: pgmvox.walk is a breadth-first search, and a jump costs more than one move, so with jumps on the
+# jumps off: pgmvox.read.walk is a breadth-first search, and a jump costs more than one move, so with jumps on the
 # distances depend on the queue's order (red and blue come out different on a mirrored board)
 rules = walk.MoveRules(max_drop=3, jumps=False)
 

@@ -9,7 +9,7 @@ H is the y of the floor block; a player stands at H + 1.
     land()        heights, water and the underside's rim for the whole board, red drawn and mirrored
     build()       the plan Raster: kinds and floors; storey 1 holds the aqueduct, the arch, the roof of the
                   caravanserai, the qanat and the mine
-    houses()      every building as a pgmvox.build.House with its footprint and door
+    houses()      every building as a pgmvox.built.build.House with its footprint and door
     objectives()  teams, spawns and the monuments, drawn once for red
 """
 import math
@@ -20,14 +20,14 @@ from functools import lru_cache
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 import numpy as np  # noqa: E402
 
-from pgmvox import landform as LF  # noqa: E402
-from pgmvox import shapes  # noqa: E402
-from pgmvox import under as under_lib  # noqa: E402
-from pgmvox.build import Frame, House  # noqa: E402
-from pgmvox.noise import fbm, ridged, smoothstep, spline  # noqa: E402
-from pgmvox.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.plan import Raster, Symmetry  # noqa: E402
-from pgmvox.terrain import slope_deg  # noqa: E402
+from pgmvox.ground import landform as LF  # noqa: E402
+from pgmvox.geom import shapes  # noqa: E402
+from pgmvox.volume import under as under_lib  # noqa: E402
+from pgmvox.built.build import Frame, House  # noqa: E402
+from pgmvox.geom.noise import fbm, ridged, smoothstep, spline  # noqa: E402
+from pgmvox.play.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
+from pgmvox.plan.raster import Raster, Symmetry  # noqa: E402
+from pgmvox.surface.terrain import slope_deg  # noqa: E402
 
 BOARD = "tamarisk-wash"
 X_MIN, X_MAX = -100, 99
@@ -411,7 +411,7 @@ def build():
         for z in range(cz_ - 4, cz_ + 5):
             if math.hypot(x - cx_, z - cz_) <= 4.2:
                 U.cell(x, z, cy_ - 1, "qanat")
-    from pgmvox.under import gallery_line
+    from pgmvox.volume.under import gallery_line
     for x, y, z in gallery_line(MINE):
         for dx in (-1, 0, 1):
             for dz in (-1, 0, 1):

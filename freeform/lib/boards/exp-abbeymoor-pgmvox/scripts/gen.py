@@ -15,11 +15,12 @@ import numpy as np
 import crypt
 import dress
 import plan as P
-from pgmvox import B, World, noise, rng
-from pgmvox import forms
-from pgmvox import terrain as T
-from pgmvox.orient import turn_world
-from pgmvox.shapes import edge_depth
+from pgmvox import B, World, rng
+from pgmvox.geom import noise
+from pgmvox.scenery import forms
+from pgmvox.surface import terrain as T
+from pgmvox.core.orient import turn_world
+from pgmvox.geom.shapes import edge_depth
 
 SY = 128
 

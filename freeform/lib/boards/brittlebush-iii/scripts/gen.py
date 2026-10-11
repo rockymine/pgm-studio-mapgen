@@ -1,17 +1,17 @@
 """Generate Brittlebush III from its studio plan: red's part block for block in the Brittlebush style
-(pgmvox.brittle), its spawn's house and its wool's house, each stacked of whole cells, then turned a quarter three
+(pgmvox.grammar.brittle), its spawn's house and its wool's house, each stacked of whole cells, then turned a quarter three
 times for blue, green and yellow, each turn moving the team's colours and the wool's colours on a team; then the
 monuments and the wools.
 
     python3 gen.py <build-dir>
 
-    the ground      every cell of the plan as pgmvox.brittle lays it: the cap on every edge and stair side, the
+    the ground      every cell of the plan as pgmvox.grammar.brittle lays it: the cap on every edge and stair side, the
                     birch panels, frames, sand and grass, the stairs of slab and block, the decks and the hollows
                     and pillars under them, the water zones' water, the bare zones' cobwebs toward the void
     the spawn       a house of three storeys of whole cells over the spawn's piece: two by two, the two back
                     cells, one cell; doors onto the lane and toward the monuments, the keep's floor inside, a beacon
                     under the team's glass on top, and a stack of the team's wool floating high over it
-    the wool        a house of three storeys of whole cells over the wool's piece (pgmvox.brittle.house): two by
+    the wool        a house of three storeys of whole cells over the wool's piece (pgmvox.grammar.brittle.house): two by
                     two, an L, one cell; its door onto the ground in front, the wool on a square of its colour, a
                     beacon on top shining through glass of the wool's colour; a line of redstone along its front
 """
@@ -21,9 +21,10 @@ import sys
 import numpy as np
 
 import plan as P
-from pgmvox import B, World, props
-from pgmvox.brittle import CELL, build, house
-from pgmvox.orient import turn_world
+from pgmvox import B, World
+from pgmvox.built import props
+from pgmvox.grammar.brittle import CELL, build, house
+from pgmvox.core.orient import turn_world
 
 cells, team = P.cells()
 lo, hi = P.extent(cells)

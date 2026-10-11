@@ -8,7 +8,7 @@ plan is `plan.json`, saved from the studio's map `untitled-plan-8`. This is what
 
 - `plan.json`: the studio's plan, version 2, as the author drew it.
 - `scripts/plan.py`: the plan read into cells, the placements, and the objectives.
-- `scripts/gen.py`: the world, red's part laid by `pgmvox.brittle` and turned a quarter three times.
+- `scripts/gen.py`: the world, red's part laid by `pgmvox.grammar.brittle` and turned a quarter three times.
 - `scripts/mapxml.py`: the map.xml, written to `scripts/map.xml` and into `world/`.
 - `scripts/walk.py`: the built world read back, written to `renders/walks.txt`.
 - `scripts/renders.py`: the pictures.
@@ -18,7 +18,7 @@ The whole board is rebuilt with `python3 -m pgmvox.run boards/brittlebush-iii --
 
 ## How the plan is read
 
-**`pgmvox.studioplan` reads the planner's pieces as the author used them.** A later piece lies over an earlier
+**`pgmvox.grammar.studioplan` reads the planner's pieces as the author used them.** A later piece lies over an earlier
 one. A piece named `stair…` is a stair cell climbing from its lower neighbour to its higher, and a piece named
 `double…` is a deck.
 
@@ -121,7 +121,7 @@ for blocks placed with water over the zones and four blocks over the board.
 ## What the build found
 
 **The library could not read a studio plan, nor turn a board a quarter.** The quarter turns came in pgmvox
-0.11.0, and `pgmvox.studioplan` with the hollows under a deck in 0.12.0, each with tests.
+0.11.0, and `pgmvox.grammar.studioplan` with the hollows under a deck in 0.12.0, each with tests.
 
 **A pillar on an even run stands across two cells, so it is laid after every hollow is cut.** Laid with its own
 cell, the second cell's hollow cut away its second column.

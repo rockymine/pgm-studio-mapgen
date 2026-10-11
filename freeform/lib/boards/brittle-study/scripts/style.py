@@ -11,7 +11,7 @@ written as functions a board can call. STYLE.md beside this folder says what eac
     heart(w, cx, y, z, dye)              the wool's heart in pixel art, outlined in black wool
 """
 from pgmvox import B
-from pgmvox.orient import stair
+from pgmvox.core.orient import stair
 
 DARK_OAK_SLAB = (B.WOOD_SLAB, 5)
 SPRUCE_PLANKS = (B.PLANKS, 1)

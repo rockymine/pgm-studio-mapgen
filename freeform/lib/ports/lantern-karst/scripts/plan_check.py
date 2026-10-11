@@ -12,8 +12,8 @@ import plan  # noqa: F401  (puts the library on the path)
 
 import numpy as np
 
-from pgmvox import plangraph as G
-from pgmvox import sight
+from pgmvox.plan import graph as G
+from pgmvox.read import sight
 from plan import PIECE, SPAWN_AT, WALK, ZONES, build, objectives, zone_mask
 
 

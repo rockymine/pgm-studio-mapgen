@@ -183,7 +183,7 @@ blocks of a monument, and the town's nearest house is five from the wash monumen
 
 ```python
 from pgmvox import World, B
-from pgmvox import build as BLD
+from pgmvox.built import build as BLD
 w = World(0, 0, 12, 12, sy=20)
 w.fill(0, 1, 0, 5, 8, 11, B.STONE)            # ground only for x <= 5; x >= 6 is void
 cells = {(x, z) for x in range(3, 6) for z in range(4, 8)}

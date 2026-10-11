@@ -7,7 +7,7 @@ The library has no deathmatch objective, so the score element is written here wi
     python3 mapxml.py > map.xml
 """
 import plan as P
-from pgmvox.mapxml import Doc, E, item
+from pgmvox.play.mapxml import Doc, E, item
 
 d = Doc("Overgrowth", "0.1.0", "Kill the other team: seventy-five points, or the higher score at forty minutes.", "tdm")
 d.add(E("authors", E("author", text="Claude (freeform generator, on pgmvox)")))

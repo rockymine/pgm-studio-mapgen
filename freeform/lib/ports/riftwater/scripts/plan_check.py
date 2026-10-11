@@ -9,9 +9,9 @@ import math
 import numpy as np
 
 import plan as P
-from pgmvox import plangraph as G
-from pgmvox import shapes
-from pgmvox.build import Claims
+from pgmvox.plan import graph as G
+from pgmvox.geom import shapes
+from pgmvox.built.build import Claims
 
 RED_SPAWN = (P.SPAWN[0], P.SPAWN[2])
 BLUE_SPAWN = P.SYM.point(*RED_SPAWN)

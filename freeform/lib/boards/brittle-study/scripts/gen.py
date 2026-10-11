@@ -16,7 +16,7 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import B, World, rng  # noqa: E402
-from pgmvox.orient import stair  # noqa: E402
+from pgmvox.core.orient import stair  # noqa: E402
 
 import style as S  # noqa: E402
 

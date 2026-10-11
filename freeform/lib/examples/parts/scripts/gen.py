@@ -10,9 +10,9 @@ import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import B, World  # noqa: E402
-from pgmvox import build as BLD  # noqa: E402
-from pgmvox import facade as F  # noqa: E402
-from pgmvox.shapes import rect_cells  # noqa: E402
+from pgmvox.built import build as BLD  # noqa: E402
+from pgmvox.built import facade as F  # noqa: E402
+from pgmvox.geom.shapes import rect_cells  # noqa: E402
 
 FLOOR = 10
 w = World(-12, -12, 112, 92, sy=48)

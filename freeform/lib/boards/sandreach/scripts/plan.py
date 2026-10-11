@@ -22,10 +22,11 @@ from dataclasses import replace
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 import numpy as np  # noqa: E402
 
-from pgmvox import brittle as BR  # noqa: E402
-from pgmvox import B, noise  # noqa: E402
-from pgmvox.objectives import FLOAT, Box, Destroyable, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402
-from pgmvox.plan import Symmetry  # noqa: E402
+from pgmvox.grammar import brittle as BR  # noqa: E402
+from pgmvox import B  # noqa: E402
+from pgmvox.geom import noise
+from pgmvox.play.objectives import FLOAT, Box, Destroyable, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402
+from pgmvox.plan.raster import Symmetry  # noqa: E402
 
 BOARD = "sandreach"
 SYM = Symmetry("rot_180")

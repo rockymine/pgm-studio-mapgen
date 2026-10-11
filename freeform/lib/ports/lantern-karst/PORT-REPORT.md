@@ -326,12 +326,12 @@ written straight into code, and so were the port's. A plan for them would have n
 
 **The towers were not a simplification; they were the board's look.** The author singled out the original towers
 as structural and the port's heightfield spires as plain terrain. The original recipe is a stack of rings with a
-ledge every nine courses, faces bulging between them and beds in courses. It is now `pgmvox.forms.tower`, and the
+ledge every nine courses, faces bulging between them and beds in courses. It is now `pgmvox.scenery.forms.tower`, and the
 port's towers are built with it.
 
 **The vines hang from the root tips again.** The port hung its vines just under the floor, where they hid against
 the faces; the original hangs them from the lower roots, where they trail below the islands. That is now
-`pgmvox.forms.root_vines`, and the karst faces under the rims are `pgmvox.forms.skirt`.
+`pgmvox.scenery.forms.root_vines`, and the karst faces under the rims are `pgmvox.scenery.forms.skirt`.
 
 **The capture rules are the library's now.** Diagonal steps, bridged build zones and how much of a route was
 built are in `plangraph`; the wool's block, spawner and room protection are in `objectives`; the spawn's iron, the

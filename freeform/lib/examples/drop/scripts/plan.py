@@ -8,8 +8,8 @@ import os
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
-from pgmvox.pieces import Course, box  # noqa: E402
-from pgmvox.plan import Symmetry  # noqa: E402
+from pgmvox.plan.pieces import Course, box  # noqa: E402
+from pgmvox.plan.raster import Symmetry  # noqa: E402
 
 KILL_Y = 10
 HEALTH = 20

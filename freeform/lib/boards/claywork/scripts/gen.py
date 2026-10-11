@@ -1,9 +1,9 @@
-"""Generate Claywork from the plan: red's half block for block, then blue's as its mirror (pgmvox.orient.turn_world,
+"""Generate Claywork from the plan: red's half block for block, then blue's as its mirror (pgmvox.core.orient.turn_world,
 red's stained clay recoloured blue), then the objectives stamped for both teams.
 
     python3 gen.py <build-dir>
 
-The land is spoken in the grammar (pgmvox.grammar) in the Claywork style (pgmvox.clay): every piece cut into
+The land is spoken in the grammar (pgmvox.grammar.rules) in the Claywork style (pgmvox.grammar.clay): every piece cut into
 sections about nine blocks a side, both wings alike, outlined and laid each in its own fill, its neighbours in
 another; a face's inlaid bays centred on the sections over it; the flights of steps their own stepped sections; the
 arrows laid into the sections they point out of. Under it all, twelve of ground, the team's band and the lattice on
@@ -18,11 +18,12 @@ import sys
 import numpy as np
 
 import plan as P
-from pgmvox import B, World, clay, rng
-from pgmvox import grammar as Gm
-from pgmvox import props
-from pgmvox.objectives import Wool
-from pgmvox.orient import ladder, stair, turn_world
+from pgmvox import B, World, rng
+from pgmvox.grammar import clay
+from pgmvox.grammar import rules as Gm
+from pgmvox.built import props
+from pgmvox.play.objectives import Wool
+from pgmvox.core.orient import ladder, stair, turn_world
 
 R = P.plan()
 U = R.storeys[1]
@@ -56,7 +57,7 @@ for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
 near_void[0, :] |= land[0, :]
 near_void[-1, :] |= land[-1, :]
 
-# 1. the land of red's half in the grammar (pgmvox.grammar, spoken in pgmvox.clay): every piece cut into sections
+# 1. the land of red's half in the grammar (pgmvox.grammar.rules, spoken in pgmvox.grammar.clay): every piece cut into sections
 # about nine blocks a side, both wings alike, each outlined and laid in its own fill; the flights of steps their
 # own sections, stepped; the arrows laid into the section each points out of. A face's bays are centred on the
 # sections over it, so the inlaid panels answer the floor's cut.

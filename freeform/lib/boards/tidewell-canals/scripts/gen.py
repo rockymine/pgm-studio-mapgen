@@ -20,10 +20,10 @@ import numpy as np
 import plan as P
 import common as C
 from pgmvox import B, World, rng
-from pgmvox import build as BLD
-from pgmvox import facade as F
-from pgmvox import props
-from pgmvox.orient import stair as stair_data, turn_world
+from pgmvox.built import build as BLD
+from pgmvox.built import facade as F
+from pgmvox.built import props
+from pgmvox.core.orient import stair as stair_data, turn_world
 
 t0 = time.time()
 R = P.build()

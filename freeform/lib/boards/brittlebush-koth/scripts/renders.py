@@ -7,8 +7,9 @@ import os
 import sys
 
 import plan as P
-from pgmvox import World, render
-from pgmvox.sketch import TEAM, Sheet
+from pgmvox import World
+from pgmvox.read import render
+from pgmvox.read.sketch import TEAM, Sheet
 
 w = World.load(sys.argv[1])
 out = os.path.join(sys.argv[2], "renders")

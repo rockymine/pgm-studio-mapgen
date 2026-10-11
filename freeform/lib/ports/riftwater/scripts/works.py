@@ -2,8 +2,8 @@
 mill with its wheel and weir, the stone bridge, the Old Bridge's broken stub, the headframe, the engine stack,
 the smithy, the well, the streets and lanes with the outlet footbridge.
 
-The houses are pgmvox.build.house on pgmvox.build.site; the square is a pgmvox.facade carpet; the terrace steps
-are pgmvox.build.stairs; the watch tower's battlement is pgmvox.build.parapet; the roads are pgmvox.route.pave
+The houses are pgmvox.built.build.house on pgmvox.built.build.site; the square is a pgmvox.built.facade carpet; the terrace steps
+are pgmvox.built.build.stairs; the watch tower's battlement is pgmvox.built.build.parapet; the roads are pgmvox.routes.route.pave
 over the plan's graded lines (through a guard, since pave has no mask of what it must not touch). The towers,
 the bridges, the mill, the headframe and the stack are local: the library has no prop for any of them.
 """
@@ -13,10 +13,10 @@ import numpy as np
 
 import plan as P
 from pgmvox import B, rng
-from pgmvox import build as BLD
-from pgmvox import facade as F
-from pgmvox import route
-from pgmvox.orient import DIRS, door as door_data, ladder as ladder_data, stair, torch
+from pgmvox.built import build as BLD
+from pgmvox.built import facade as F
+from pgmvox.routes import route
+from pgmvox.core.orient import DIRS, door as door_data, ladder as ladder_data, stair, torch
 
 R_ = rng(P.BOARD, "works")
 HARD = ((B.GRAVEL, 0), (B.STONE, 5), (B.COBBLE, 0))

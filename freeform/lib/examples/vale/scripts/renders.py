@@ -3,8 +3,9 @@ import os
 import sys
 
 from land import BUTTE, CANYON, ISLAND, PLACES, RIVER, SPIRE, TERRACES
-from pgmvox import World, render
-from pgmvox.sketch import Sheet
+from pgmvox import World
+from pgmvox.read import render
+from pgmvox.read.sketch import Sheet
 
 build, root = sys.argv[1], sys.argv[2]
 w = World.load(build)

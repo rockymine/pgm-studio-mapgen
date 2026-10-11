@@ -22,8 +22,8 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 import numpy as np  # noqa: E402
 
-from pgmvox.objectives import Box, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402
-from pgmvox.plan import Raster, Symmetry  # noqa: E402
+from pgmvox.play.objectives import Box, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402
+from pgmvox.plan.raster import Raster, Symmetry  # noqa: E402
 
 X_MIN, X_MAX = -112, 111
 Z_MIN, Z_MAX = -128, 127
@@ -175,7 +175,7 @@ def build():
 
 def zone_mask(R, keys=None):
     """The build zones over the raster (both halves), less the land in them: where a bridge may be built."""
-    from pgmvox.shapes import inside
+    from pgmvox.geom.shapes import inside
     m = np.zeros(R.H.shape, bool)
     for key, _, (x0, z0, x1, z1) in ZONES:
         if keys is None or key in keys:

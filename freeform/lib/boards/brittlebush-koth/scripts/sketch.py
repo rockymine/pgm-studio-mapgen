@@ -7,7 +7,7 @@ import os
 import sys
 
 import plan as P
-from pgmvox.sketch import TEAM, MapPanel, SectionPanel, Sheet
+from pgmvox.read.sketch import TEAM, MapPanel, SectionPanel, Sheet
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 R = P.plan()

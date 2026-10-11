@@ -28,8 +28,8 @@ from functools import lru_cache
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 import numpy as np  # noqa: E402
 
-from pgmvox.objectives import Box, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402
-from pgmvox.plan import Raster, Symmetry  # noqa: E402
+from pgmvox.play.objectives import Box, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402
+from pgmvox.plan.raster import Raster, Symmetry  # noqa: E402
 
 BOARD = "slatefold"
 X_MIN, X_MAX = -88, 79
@@ -137,7 +137,7 @@ def grown(poly):
 
 def piece_cells(R, g):
     """The mask of a piece given as a rectangle (x0, z0, x1, z1) or a polygon of corner cells."""
-    from pgmvox import shapes
+    from pgmvox.geom import shapes
     if isinstance(g, tuple):
         x0, z0, x1, z1 = g
         return (R.X >= x0) & (R.X <= x1) & (R.Z >= z0) & (R.Z <= z1)

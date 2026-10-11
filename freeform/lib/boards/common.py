@@ -24,9 +24,9 @@ for p in (LIB, HERE):
 import numpy as np  # noqa: E402
 
 from pgmvox import B  # noqa: E402
-from pgmvox import plangraph as G  # noqa: E402
-from pgmvox.mapxml import E, item  # noqa: E402
-from pgmvox.noise import fbm  # noqa: E402
+from pgmvox.plan import graph as G  # noqa: E402
+from pgmvox.play.mapxml import E, item  # noqa: E402
+from pgmvox.geom.noise import fbm  # noqa: E402
 
 
 # ---- symmetry ----------------------------------------------------------------------------------------------

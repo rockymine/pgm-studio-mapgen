@@ -3,7 +3,7 @@ footing, ground over the kill height off the decks, and from each spawn on foot 
 
     on foot     the world as built: the spawn's own monuments, and that neither its own rooms nor the enemy's
                 are reached (its own are walled off by rule, the enemy's by the band and the bedrock lines)
-    building    pgmvox.walk with MoveRules(build=...): a player may stand in the air of a build zone or over a
+    building    pgmvox.read.walk with MoveRules(build=...): a player may stand in the air of a build zone or over a
                 bedrock line, between the kill height and the build height
 
     python3 walk.py <build-dir>
@@ -14,8 +14,10 @@ import time
 import numpy as np
 
 import plan as P
-from pgmvox import B, World, audit, walk
-from pgmvox.objectives import DYES, Spawn, Wool
+from pgmvox import B, World
+from pgmvox.read import audit
+from pgmvox.read import walk
+from pgmvox.play.objectives import DYES, Spawn, Wool
 
 t0 = time.time()
 w = World.load(sys.argv[1])

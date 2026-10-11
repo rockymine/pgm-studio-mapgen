@@ -10,9 +10,10 @@ half is drawn and blue's is its image. Every landform takes this board's numbers
 """
 import numpy as np
 
-from pgmvox import landform as L, noise
-from pgmvox.plan import Symmetry
-from pgmvox.noise import smoothstep
+from pgmvox.ground import landform as L
+from pgmvox.geom import noise
+from pgmvox.plan.raster import Symmetry
+from pgmvox.geom.noise import smoothstep
 
 X0, Z0 = -100, -132
 SYM = Symmetry("half")                  # the half turn about the board's middle: blue's half is red's image

@@ -3,7 +3,7 @@
 **Brittlebush is not a palette but a grammar: a handful of rules applied to a grid of cells.** Every block the
 library lays for it follows from three things: the cell's height and kind, the section it belongs to, and how
 much air lies beside each face. This note lists the rules as they were found in the original, where each lives in
-`pgmvox.brittle` now, and how the same machinery could carry other patterns.
+`pgmvox.grammar.brittle` now, and how the same machinery could carry other patterns.
 
 ## Three units
 
@@ -54,7 +54,7 @@ since PGM holds it still. A bare zone is outlined in cobwebs at y 1 as the studi
 
 ## Where the rules live now
 
-| Rule | In `pgmvox.brittle` | Fixed in code |
+| Rule | In `pgmvox.grammar.brittle` | Fixed in code |
 |---|---|---|
 | Sections | `pieces()`, `Cell.section` | the double plank line between sections |
 | Outline | `build()`, depth 0 of a piece | rim and plank materials |
@@ -97,10 +97,10 @@ the style and nothing else.
 
 ## What was done
 
-1. `pgmvox.grammar` holds the rules: sections as boxes in blocks, the ground they make, faces of courses with their
+1. `pgmvox.grammar.rules` holds the rules: sections as boxes in blocks, the ground they make, faces of courses with their
    accent bays, styles, and `lay`. Brittlebush is `brittle.STYLE`, and both Brittlebush boards rebuild block for
    block the same outside their random sand and plants.
-2. `pgmvox.clay` is the Claywork style. The earlier board's floors are its fills, its dressed faces its face recipe
+2. `pgmvox.grammar.clay` is the Claywork style. The earlier board's floors are its fills, its dressed faces its face recipe
    with the bays centred on each section, its flights a stepped section, and its arrows a motif. The board is now
    cut into sections about nine blocks a side, and its walks read back as they did.
 3. Grown ground stands beside the made on one board. `brittle.build(grown=...)` takes the tops of terrain that is

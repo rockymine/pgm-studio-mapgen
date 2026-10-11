@@ -4,7 +4,8 @@
 """
 import sys
 
-from pgmvox import World, audit
+from pgmvox import World
+from pgmvox.read import audit
 
 w = World.load(sys.argv[1])
 foot = audit.footing(w)

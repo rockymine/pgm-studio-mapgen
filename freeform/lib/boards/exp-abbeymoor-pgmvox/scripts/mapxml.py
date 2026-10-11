@@ -4,7 +4,7 @@ kit (a diamond pickaxe, which breaks obsidian), the fall, the void filter, item 
     python3 mapxml.py > map.xml
 """
 import plan as P
-from pgmvox.mapxml import Doc, E, item
+from pgmvox.play.mapxml import Doc, E, item
 
 d = Doc("Abbeymoor", "1.0.0", "Destroy the enemy's two monuments: the one over the abbey and the one on the village green.", "dtm")
 d.add(E("authors", E("author", text="Claude Sonnet 5.5 (freeform generator, on pgmvox)")))

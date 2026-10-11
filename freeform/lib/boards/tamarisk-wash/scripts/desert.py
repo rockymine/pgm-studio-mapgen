@@ -5,7 +5,7 @@ import math
 
 import plan  # noqa: F401  (puts the library on the path)
 from pgmvox import B
-from pgmvox.orient import door as door_data, ladder as ladder_data
+from pgmvox.core.orient import door as door_data, ladder as ladder_data
 
 
 def palm(w, x, y, z, rng, h=None):

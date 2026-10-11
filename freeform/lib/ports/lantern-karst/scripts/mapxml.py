@@ -4,7 +4,7 @@ and the fall from mapxml; the void filter, item keeping, kill rewards and the bu
 """
 import plan  # noqa: F401  (puts the library on the path)
 from plan import KILL_Y, MAX_BUILD, objectives
-from pgmvox.mapxml import Doc, E, item
+from pgmvox.play.mapxml import Doc, E, item
 
 O = objectives()
 d = Doc("Lantern Karst", "0.2.0", "Capture the enemy's two wools: the Pillar Shrine's and the Tea Store's.", "ctw")

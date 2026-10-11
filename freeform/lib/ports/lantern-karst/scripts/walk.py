@@ -3,7 +3,7 @@ each team reaches its own monuments on foot and the enemy's wool rooms by buildi
 
     python3 walk.py <build-dir>
 
-Two walks from each spawn, pgmvox.walk's voxel walk, a drop of at most three:
+Two walks from each spawn, pgmvox.read.walk's voxel walk, a drop of at most three:
 
     on foot     the world as built, no block placed: the own monuments, and how far the board goes before a
                 build zone or the bedrock wall stops it
@@ -17,8 +17,10 @@ import numpy as np
 
 import plan  # noqa: F401  (puts the library on the path)
 from plan import KILL_Y, MAX_BUILD, WALL, build, objectives, zone_mask
-from pgmvox import B, World, audit, walk
-from pgmvox.objectives import DYES, Spawn, Wool
+from pgmvox import B, World
+from pgmvox.read import audit
+from pgmvox.read import walk
+from pgmvox.play.objectives import DYES, Spawn, Wool
 
 w = World.load(sys.argv[1])
 R, _, _ = build()

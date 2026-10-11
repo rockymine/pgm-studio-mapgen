@@ -1,4 +1,4 @@
-// Export the studio's RoofField answers over a set of cases, so pgmvox.build's roof is tested against the
+// Export the studio's RoofField answers over a set of cases, so pgmvox.built.build's roof is tested against the
 // studio's own formulas block for block rather than against a copy of them.
 //
 //   dotnet run export_roofs.cs -- roofs.json && gzip -9 -f roofs.json

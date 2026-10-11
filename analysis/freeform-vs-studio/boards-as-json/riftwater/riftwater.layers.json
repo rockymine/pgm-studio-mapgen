@@ -1083,7 +1083,7 @@
     ]
    },
    "source": "freeform/lib/ports/riftwater/scripts/plan.py:201-202",
-   "gap": "Formula in plan.land(); pgmvox.noise supplies smoothstep and fbm. The studio's relief marks (point, line, area, scarp) state the same shapes as placed marks."
+   "gap": "Formula in plan.land(); pgmvox.geom.noise supplies smoothstep and fbm. The studio's relief marks (point, line, area, scarp) state the same shapes as placed marks."
   },
   {
    "id": "base-south",
@@ -1147,7 +1147,7 @@
    "id": "base-noise",
    "op": "field.noise",
    "class": "A",
-   "lib": "pgmvox.noise.fbm",
+   "lib": "pgmvox.geom.noise.fbm",
    "params": {
     "terms": [
      {
@@ -1389,7 +1389,7 @@
    "id": "ridge-steps",
    "op": "landform.terraces",
    "class": "A",
-   "lib": "pgmvox.landform.terraces",
+   "lib": "pgmvox.ground.landform.terraces",
    "params": {
     "mask": "ridge weight t > 0.25",
     "step": 3,
@@ -1435,7 +1435,7 @@
    "id": "flat-square",
    "op": "landform.blend",
    "class": "A",
-   "lib": "pgmvox.landform.blend",
+   "lib": "pgmvox.ground.landform.blend",
    "params": {
     "to": 52,
     "mask": "disc (-66,-44) r 19",
@@ -1448,7 +1448,7 @@
    "id": "flat-green",
    "op": "landform.blend",
    "class": "A",
-   "lib": "pgmvox.landform.blend",
+   "lib": "pgmvox.ground.landform.blend",
    "params": {
     "to": 50,
     "mask": "disc (-66,48) r 17",
@@ -1461,7 +1461,7 @@
    "id": "knoll",
    "op": "landform.spire",
    "class": "A",
-   "lib": "pgmvox.landform.spire",
+   "lib": "pgmvox.ground.landform.spire",
    "params": {
     "centre": [
      -22,
@@ -1480,7 +1480,7 @@
    "id": "river",
    "op": "landform.watercourse",
    "class": "A",
-   "lib": "pgmvox.landform.watercourse",
+   "lib": "pgmvox.ground.landform.watercourse",
    "params": {
     "path": "place:Red River spline, points with x <= -10",
     "width": 6.6,
@@ -1523,7 +1523,7 @@
    "id": "grade-spawn-lane",
    "op": "landform.grade",
    "class": "A",
-   "lib": "pgmvox.landform.grade",
+   "lib": "pgmvox.ground.landform.grade",
    "params": {
     "route": "Spawn Lane",
     "width": 3,
@@ -1539,7 +1539,7 @@
    "id": "grade-spawn-lane-south",
    "op": "landform.grade",
    "class": "A",
-   "lib": "pgmvox.landform.grade",
+   "lib": "pgmvox.ground.landform.grade",
    "params": {
     "route": "Spawn Lane south",
     "width": 3,
@@ -1555,7 +1555,7 @@
    "id": "grade-main-street",
    "op": "landform.grade",
    "class": "A",
-   "lib": "pgmvox.landform.grade",
+   "lib": "pgmvox.ground.landform.grade",
    "params": {
     "route": "Main Street",
     "width": 5,
@@ -1571,7 +1571,7 @@
    "id": "grade-bridge-street",
    "op": "landform.grade",
    "class": "A",
-   "lib": "pgmvox.landform.grade",
+   "lib": "pgmvox.ground.landform.grade",
    "params": {
     "route": "Bridge Street",
     "width": 5,
@@ -1587,7 +1587,7 @@
    "id": "grade-north-lane",
    "op": "landform.grade",
    "class": "A",
-   "lib": "pgmvox.landform.grade",
+   "lib": "pgmvox.ground.landform.grade",
    "params": {
     "route": "North Lane",
     "width": 3,
@@ -1603,7 +1603,7 @@
    "id": "grade-mill-lane",
    "op": "landform.grade",
    "class": "A",
-   "lib": "pgmvox.landform.grade",
+   "lib": "pgmvox.ground.landform.grade",
    "params": {
     "route": "Mill Lane",
     "width": 3,
@@ -1619,7 +1619,7 @@
    "id": "grade-field-road",
    "op": "landform.grade",
    "class": "A",
-   "lib": "pgmvox.landform.grade",
+   "lib": "pgmvox.ground.landform.grade",
    "params": {
     "route": "Field Road",
     "width": 3,
@@ -1635,7 +1635,7 @@
    "id": "grade-farm-track",
    "op": "landform.grade",
    "class": "A",
-   "lib": "pgmvox.landform.grade",
+   "lib": "pgmvox.ground.landform.grade",
    "params": {
     "route": "Farm Track",
     "width": 3,
@@ -1651,7 +1651,7 @@
    "id": "grade-falls-walk",
    "op": "landform.grade",
    "class": "A",
-   "lib": "pgmvox.landform.grade",
+   "lib": "pgmvox.ground.landform.grade",
    "params": {
     "route": "Falls Walk",
     "width": 3,
@@ -1667,7 +1667,7 @@
    "id": "grade-spring-path",
    "op": "landform.grade",
    "class": "A",
-   "lib": "pgmvox.landform.grade",
+   "lib": "pgmvox.ground.landform.grade",
    "params": {
     "route": "Spring Path",
     "width": 3,
@@ -1683,7 +1683,7 @@
    "id": "grade-village-road",
    "op": "landform.grade",
    "class": "A",
-   "lib": "pgmvox.landform.grade",
+   "lib": "pgmvox.ground.landform.grade",
    "params": {
     "route": "Village Road",
     "width": 3,
@@ -1699,7 +1699,7 @@
    "id": "grade-forest-path",
    "op": "landform.grade",
    "class": "A",
-   "lib": "pgmvox.landform.grade",
+   "lib": "pgmvox.ground.landform.grade",
    "params": {
     "route": "Forest Path",
     "width": 2,
@@ -1715,7 +1715,7 @@
    "id": "grade-clearing-path",
    "op": "landform.grade",
    "class": "A",
-   "lib": "pgmvox.landform.grade",
+   "lib": "pgmvox.ground.landform.grade",
    "params": {
     "route": "Clearing Path",
     "width": 2,
@@ -1830,7 +1830,7 @@
    "id": "lay",
    "op": "terrain.lay",
    "class": "A",
-   "lib": "pgmvox.terrain.lay",
+   "lib": "pgmvox.surface.terrain.lay",
    "params": {
     "mask": "land",
     "rock": "Strata([(STONE:0, 3, 6), (STONE:5, 1.4, 3)], length 60, seed 7, start -300)",
@@ -1995,7 +1995,7 @@
    "id": "cave-gallery",
    "op": "under.tunnel",
    "class": "A",
-   "lib": "pgmvox.under.tunnel",
+   "lib": "pgmvox.volume.under.tunnel",
    "params": {
     "pts": [
      [
@@ -2046,7 +2046,7 @@
    "id": "cave-south",
    "op": "under.tunnel",
    "class": "A",
-   "lib": "pgmvox.under.tunnel",
+   "lib": "pgmvox.volume.under.tunnel",
    "params": {
     "pts": [
      [
@@ -2091,7 +2091,7 @@
    "id": "cave-north",
    "op": "under.tunnel",
    "class": "A",
-   "lib": "pgmvox.under.tunnel",
+   "lib": "pgmvox.volume.under.tunnel",
    "params": {
     "pts": [
      [
@@ -2148,7 +2148,7 @@
    "id": "cave-grotto",
    "op": "under.tunnel",
    "class": "A",
-   "lib": "pgmvox.under.tunnel",
+   "lib": "pgmvox.volume.under.tunnel",
    "params": {
     "pts": [
      [
@@ -2187,7 +2187,7 @@
    "id": "cave-west",
    "op": "under.tunnel",
    "class": "A",
-   "lib": "pgmvox.under.tunnel",
+   "lib": "pgmvox.volume.under.tunnel",
    "params": {
     "pts": [
      [
@@ -2220,7 +2220,7 @@
    "id": "chamber-lake-chamber",
    "op": "under.chamber",
    "class": "A",
-   "lib": "pgmvox.under.chamber",
+   "lib": "pgmvox.volume.under.chamber",
    "params": {
     "cx": -40,
     "floor_y": 31,
@@ -2237,7 +2237,7 @@
    "id": "chamber-1",
    "op": "under.chamber",
    "class": "A",
-   "lib": "pgmvox.under.chamber",
+   "lib": "pgmvox.volume.under.chamber",
    "params": {
     "cx": -43,
     "floor_y": 31,
@@ -2253,7 +2253,7 @@
    "id": "chamber-pillar-hall",
    "op": "under.chamber",
    "class": "A",
-   "lib": "pgmvox.under.chamber",
+   "lib": "pgmvox.volume.under.chamber",
    "params": {
     "cx": -46,
     "floor_y": 34,
@@ -2270,7 +2270,7 @@
    "id": "chamber-3",
    "op": "under.chamber",
    "class": "A",
-   "lib": "pgmvox.under.chamber",
+   "lib": "pgmvox.volume.under.chamber",
    "params": {
     "cx": -43,
     "floor_y": 34,
@@ -2286,7 +2286,7 @@
    "id": "chamber-grotto",
    "op": "under.chamber",
    "class": "A",
-   "lib": "pgmvox.under.chamber",
+   "lib": "pgmvox.volume.under.chamber",
    "params": {
     "cx": -60,
     "floor_y": 33,
@@ -2303,7 +2303,7 @@
    "id": "chamber-5",
    "op": "under.chamber",
    "class": "A",
-   "lib": "pgmvox.under.chamber",
+   "lib": "pgmvox.volume.under.chamber",
    "params": {
     "cx": -18,
     "floor_y": 35,
@@ -2319,7 +2319,7 @@
    "id": "chamber-6",
    "op": "under.chamber",
    "class": "A",
-   "lib": "pgmvox.under.chamber",
+   "lib": "pgmvox.volume.under.chamber",
    "params": {
     "cx": -26,
     "floor_y": 34,
@@ -2335,7 +2335,7 @@
    "id": "chamber-7",
    "op": "under.chamber",
    "class": "A",
-   "lib": "pgmvox.under.chamber",
+   "lib": "pgmvox.volume.under.chamber",
    "params": {
     "cx": -31,
     "floor_y": 33,
@@ -2351,7 +2351,7 @@
    "id": "chamber-8",
    "op": "under.chamber",
    "class": "A",
-   "lib": "pgmvox.under.chamber",
+   "lib": "pgmvox.volume.under.chamber",
    "params": {
     "cx": -48,
     "floor_y": 36,
@@ -2367,7 +2367,7 @@
    "id": "chamber-9",
    "op": "under.chamber",
    "class": "A",
-   "lib": "pgmvox.under.chamber",
+   "lib": "pgmvox.volume.under.chamber",
    "params": {
     "cx": -50,
     "floor_y": 35,
@@ -2411,7 +2411,7 @@
    "id": "cave-dress",
    "op": "under.dress_cave",
    "class": "A",
-   "lib": "pgmvox.under.dress_cave",
+   "lib": "pgmvox.volume.under.dress_cave",
    "params": {
     "box": [
      -64,
@@ -2579,7 +2579,7 @@
    "id": "mine-gallery",
    "op": "under.gallery",
    "class": "A",
-   "lib": "pgmvox.under.gallery",
+   "lib": "pgmvox.volume.under.gallery",
    "params": {
     "line": "gallery_line(MINE)",
     "waypoints": [
@@ -2708,7 +2708,7 @@
    "id": "mine-shaft",
    "op": "under.shaft",
    "class": "A",
-   "lib": "pgmvox.under.shaft",
+   "lib": "pgmvox.volume.under.shaft",
    "params": {
     "x": -84,
     "z": 56,
@@ -2750,7 +2750,7 @@
    "id": "map",
    "op": "map.meta",
    "class": "A",
-   "lib": "pgmvox.mapxml.Doc",
+   "lib": "pgmvox.play.mapxml.Doc",
    "params": {
     "name": "Riftwater",
     "version": "0.2.0",
@@ -2787,7 +2787,7 @@
    "id": "kit",
    "op": "play.kit",
    "class": "A",
-   "lib": "pgmvox.mapxml.E",
+   "lib": "pgmvox.play.mapxml.E",
    "params": {
     "id": "spawn-kit",
     "items": [
@@ -2858,13 +2858,13 @@
     ]
    },
    "source": "freeform/lib/ports/riftwater/scripts/mapxml.py:15-31",
-   "gap": "No kit helper in pgmvox.mapxml; written with E by hand (PORT-REPORT)."
+   "gap": "No kit helper in pgmvox.play.mapxml; written with E by hand (PORT-REPORT)."
   },
   {
    "id": "spawn-red",
    "op": "play.spawn",
    "class": "A",
-   "lib": "pgmvox.objectives.Spawn",
+   "lib": "pgmvox.play.objectives.Spawn",
    "params": {
     "team": "red-team",
     "kit": "spawn-kit",
@@ -2894,7 +2894,7 @@
    "id": "observer",
    "op": "play.observer",
    "class": "A",
-   "lib": "pgmvox.objectives.Observer",
+   "lib": "pgmvox.play.objectives.Observer",
    "params": {
     "at": [
      0,
@@ -2910,7 +2910,7 @@
    "id": "monument-square",
    "op": "play.destroyable",
    "class": "A",
-   "lib": "pgmvox.objectives.Destroyable",
+   "lib": "pgmvox.play.objectives.Destroyable",
    "params": {
     "id": "red-square",
     "name": "Market Square Monument",
@@ -2936,7 +2936,7 @@
    "id": "monument-green",
    "op": "play.destroyable",
    "class": "A",
-   "lib": "pgmvox.objectives.Destroyable",
+   "lib": "pgmvox.play.objectives.Destroyable",
    "params": {
     "id": "red-green",
     "name": "Winding Green Monument",
@@ -2962,7 +2962,7 @@
    "id": "rules",
    "op": "play.regions",
    "class": "A",
-   "lib": "pgmvox.mapxml.E",
+   "lib": "pgmvox.play.mapxml.E",
    "params": {
     "build_rift": {
      "rect": [
@@ -2992,7 +2992,7 @@
    "id": "styles",
    "op": "library.house-styles",
    "class": "B",
-   "lib": "pgmvox.build.House(style=dict)",
+   "lib": "pgmvox.built.build.House(style=dict)",
    "params": {
     "town": {
      "ground": [
@@ -3072,7 +3072,7 @@
    "id": "sites",
    "op": "place.house-sites",
    "class": "B",
-   "lib": "pgmvox.build.site",
+   "lib": "pgmvox.built.build.site",
    "params": {
     "for_each": "every house in 'houses', all pads first",
     "margin": 2,
@@ -3087,7 +3087,7 @@
    "id": "house-hall",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -74,
@@ -3106,7 +3106,7 @@
    "id": "house-h1",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -54,
@@ -3124,7 +3124,7 @@
    "id": "house-shop1",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -46,
@@ -3143,7 +3143,7 @@
    "id": "house-h2",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -36,
@@ -3161,7 +3161,7 @@
    "id": "house-bakery",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -27,
@@ -3180,7 +3180,7 @@
    "id": "house-h3",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -20,
@@ -3198,7 +3198,7 @@
    "id": "house-h4",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -37,
@@ -3216,7 +3216,7 @@
    "id": "house-shop2",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -27,
@@ -3235,7 +3235,7 @@
    "id": "house-h5",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -18,
@@ -3253,7 +3253,7 @@
    "id": "house-gaol",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -56,
@@ -3273,7 +3273,7 @@
    "id": "house-h6",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -49,
@@ -3291,7 +3291,7 @@
    "id": "house-h7",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -48,
@@ -3309,7 +3309,7 @@
    "id": "house-inn",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -33,
@@ -3328,7 +3328,7 @@
    "id": "house-h8",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -34,
@@ -3346,7 +3346,7 @@
    "id": "house-h9",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -24,
@@ -3364,7 +3364,7 @@
    "id": "house-shop3",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -69,
@@ -3383,7 +3383,7 @@
    "id": "house-chapel",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -50,
@@ -3402,7 +3402,7 @@
    "id": "house-watch",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -102,
@@ -3422,7 +3422,7 @@
    "id": "house-hut",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -107,
@@ -3440,7 +3440,7 @@
    "id": "house-mill",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -67,
@@ -3458,7 +3458,7 @@
    "id": "house-c1",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -98,
@@ -3476,7 +3476,7 @@
    "id": "house-tall",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -99,
@@ -3494,7 +3494,7 @@
    "id": "house-wing",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -98,
@@ -3514,7 +3514,7 @@
    "id": "house-c2",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -97,
@@ -3532,7 +3532,7 @@
    "id": "house-big",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -90,
@@ -3550,7 +3550,7 @@
    "id": "house-lean",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -95,
@@ -3569,7 +3569,7 @@
    "id": "house-c3",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -79,
@@ -3587,7 +3587,7 @@
    "id": "house-engine",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -80,
@@ -3606,7 +3606,7 @@
    "id": "house-smithy",
    "op": "place.house",
    "class": "B",
-   "lib": "pgmvox.build.house",
+   "lib": "pgmvox.built.build.house",
    "params": {
     "box": [
      -78,
@@ -3625,7 +3625,7 @@
    "id": "square-carpet",
    "op": "paint.carpet",
    "class": "A",
-   "lib": "pgmvox.facade.carpet",
+   "lib": "pgmvox.built.facade.carpet",
    "params": {
     "rect": [
      [
@@ -3748,13 +3748,13 @@
     }
    },
    "source": "freeform/lib/ports/riftwater/scripts/works.py:68-110,130-141",
-   "note": "parapet is pgmvox.build.parapet"
+   "note": "parapet is pgmvox.built.build.parapet"
   },
   {
    "id": "watch-terrace",
    "op": "paint.carpet",
    "class": "B",
-   "lib": "pgmvox.facade.carpet",
+   "lib": "pgmvox.built.facade.carpet",
    "params": {
     "rect": [
      [
@@ -3792,7 +3792,7 @@
    "id": "watch-steps",
    "op": "build.stairs",
    "class": "A",
-   "lib": "pgmvox.build.stairs",
+   "lib": "pgmvox.built.build.stairs",
    "params": {
     "flight": "climbing west from the terrace",
     "from_x": "-85 + n",
@@ -4111,7 +4111,7 @@
    "id": "roads",
    "op": "route.pave",
    "class": "A",
-   "lib": "pgmvox.route.pave",
+   "lib": "pgmvox.routes.route.pave",
    "params": {
     "for_each": "each route in 'places', in order",
     "surface": {
@@ -4185,7 +4185,7 @@
    "id": "lamps",
    "op": "props.lamp",
    "class": "B",
-   "lib": "pgmvox.props.lamp",
+   "lib": "pgmvox.built.props.lamp",
    "params": {
     "along": "each street route",
     "every": 10,
@@ -4201,7 +4201,7 @@
    "id": "gaol-ladder",
    "op": "build.ladder",
    "class": "A",
-   "lib": "pgmvox.build.ladder",
+   "lib": "pgmvox.built.build.ladder",
    "params": {
     "x": -50,
     "z": -33,
@@ -4223,7 +4223,7 @@
    "id": "stalls",
    "op": "props.stalls",
    "class": "B",
-   "lib": "pgmvox.props.stalls",
+   "lib": "pgmvox.built.props.stalls",
    "params": {
     "line": {
      "x": -75,
@@ -4238,7 +4238,7 @@
    "id": "woods-north",
    "op": "trees.scatter",
    "class": "A",
-   "lib": "pgmvox.trees.scatter",
+   "lib": "pgmvox.scenery.trees.scatter",
    "params": {
     "zone": "North Wood minus ridge, minus blocked",
     "by_kind": {
@@ -4264,7 +4264,7 @@
    "id": "woods-ridge",
    "op": "trees.scatter",
    "class": "A",
-   "lib": "pgmvox.trees.scatter",
+   "lib": "pgmvox.scenery.trees.scatter",
    "params": {
     "zone": "x < -101 except the box x > -110, -18 < z < 6; minus the south wood",
     "by_kind": {
@@ -4282,7 +4282,7 @@
    "id": "woods-south",
    "op": "trees.scatter",
    "class": "A",
-   "lib": "pgmvox.trees.scatter",
+   "lib": "pgmvox.scenery.trees.scatter",
    "params": {
     "zone": "x < -98, z > 36, outside the Cutting (r 9)",
     "by_kind": {
@@ -4300,7 +4300,7 @@
    "id": "cutting-ring",
    "op": "trees.scatter",
    "class": "A",
-   "lib": "pgmvox.trees.scatter",
+   "lib": "pgmvox.scenery.trees.scatter",
    "params": {
     "zone": "ring r 11 +/- 2 round (-110, 68)",
     "by_kind": {
@@ -4318,7 +4318,7 @@
    "id": "knoll-oak",
    "op": "trees.plant",
    "class": "A",
-   "lib": "pgmvox.trees.plant",
+   "lib": "pgmvox.scenery.trees.plant",
    "params": {
     "at": [
      -22,
@@ -4334,7 +4334,7 @@
    "id": "trees-by-hand",
    "op": "trees.plant",
    "class": "A",
-   "lib": "pgmvox.trees.plant",
+   "lib": "pgmvox.scenery.trees.plant",
    "params": {
     "list": [
      {
@@ -4599,7 +4599,7 @@
    "id": "mirror",
    "op": "stamp.mirror",
    "class": "A",
-   "lib": "pgmvox.orient.turn_world",
+   "lib": "pgmvox.core.orient.turn_world",
    "params": {
     "axis": "x",
     "about": -0.5,
@@ -4623,7 +4623,7 @@
    "id": "objectives",
    "op": "stamp.objectives",
    "class": "A",
-   "lib": "pgmvox.objectives.Objectives.stamp",
+   "lib": "pgmvox.play.objectives.Objectives.stamp",
    "params": {
     "objectives": "pieces group",
     "symmetry": "mirror_x",
@@ -4635,10 +4635,10 @@
    "id": "writer",
    "op": "export.world",
    "class": "A",
-   "lib": "pgmvox.world.World.save",
+   "lib": "pgmvox.core.world.World.save",
    "params": {
     "volume": "RWV1",
-    "writer": "pgmvox.world.write",
+    "writer": "pgmvox.core.world.write",
     "level": {
      "name": "Riftwater",
      "spawn": [

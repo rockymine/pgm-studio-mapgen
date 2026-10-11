@@ -9,8 +9,9 @@ import sys
 
 import plan  # noqa: F401  (puts the library on the path)
 from plan import KILL_Y, PLACES, ZONES, build, objectives
-from pgmvox import World, render
-from pgmvox.sketch import Sheet
+from pgmvox import World
+from pgmvox.read import render
+from pgmvox.read.sketch import Sheet
 
 build_dir, root = sys.argv[1], sys.argv[2]
 w = World.load(build_dir)

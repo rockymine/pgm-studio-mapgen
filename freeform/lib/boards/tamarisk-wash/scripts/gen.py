@@ -17,14 +17,16 @@ from scipy import ndimage
 import desert as DS
 import plan as P
 from pgmvox import B, World, rng
-from pgmvox import forms
-from pgmvox import build as BLD
-from pgmvox import facade as F
-from pgmvox import props, route, shapes
-from pgmvox import terrain as T
-from pgmvox import under as U
-from pgmvox.noise import fbm, spline
-from pgmvox.orient import door as door_data, stair as stair_data, turn_world
+from pgmvox.scenery import forms
+from pgmvox.built import build as BLD
+from pgmvox.built import facade as F
+from pgmvox.built import props
+from pgmvox.routes import route
+from pgmvox.geom import shapes
+from pgmvox.surface import terrain as T
+from pgmvox.volume import under as U
+from pgmvox.geom.noise import fbm, spline
+from pgmvox.core.orient import door as door_data, stair as stair_data, turn_world
 
 SY = 128
 

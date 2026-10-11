@@ -12,8 +12,10 @@ import sys
 import numpy as np
 
 import plan as P
-from pgmvox import World, audit, walk
-from pgmvox import blocks as K
+from pgmvox import World
+from pgmvox.read import audit
+from pgmvox.read import walk
+from pgmvox.core import blocks as K
 
 w = World.load(sys.argv[1])
 ids = w.ids.copy()

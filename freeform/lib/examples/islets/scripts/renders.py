@@ -2,7 +2,8 @@
 import os
 import sys
 
-from pgmvox import World, render
+from pgmvox import World
+from pgmvox.read import render
 
 build, root = sys.argv[1], sys.argv[2]
 w = World.load(build)
@@ -15,7 +16,7 @@ for n in ("30-iso-the-board.png", "31-iso-the-islands.png"):
 
 # the plan's names and markers over what was built, to show it landed where the plan said
 from plan import build as plan, objectives  # noqa: E402
-from pgmvox.sketch import Sheet  # noqa: E402
+from pgmvox.read.sketch import Sheet  # noqa: E402
 
 R = plan()
 S = Sheet("Islets - as built")

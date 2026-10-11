@@ -1,15 +1,15 @@
 """Generate Brittlebush KotH from its blueprint: red's quadrant block for block in the Brittlebush style
-(pgmvox.brittle), then turned a quarter three times for blue, green and yellow, each turn recolouring the team's
+(pgmvox.grammar.brittle), then turned a quarter three times for blue, green and yellow, each turn recolouring the team's
 clay, wool and glass; then the five hills' pads, the spawners' marks and the objectives over the whole board.
 
     python3 gen.py <build-dir>
 
-    the ground      every cell of the blueprint as pgmvox.brittle lays it: the cap on every edge, every other
+    the ground      every cell of the blueprint as pgmvox.grammar.brittle lays it: the cap on every edge, every other
                     cell's panel, frames and fields, the stairs of slab and block, the decks on their posts, the gaps'
                     cobwebs, the water
     the keep        smooth sandstone ringed in the team's clay; a line of the team's wool along its front edges; a
                     stack of the team's wool floating high over the spawn, as Brittlebush marks a spawn
-    the house       in the keep's outer corner, stacked of whole cells (pgmvox.brittle.house): two by two over the
+    the house       in the keep's outer corner, stacked of whole cells (pgmvox.grammar.brittle.house): two by two over the
                     spawn, an L of three, the corner cell on top with a beacon under the team's glass; its doors
                     open from the spawn's cell onto the keep's yard
     the hills       a pad of white clay ten blocks square on each, cleared of the beds and trees over it
@@ -22,8 +22,8 @@ import numpy as np
 
 import plan as P
 from pgmvox import B, World
-from pgmvox.brittle import CELL, Cell, build, house
-from pgmvox.orient import turn_world
+from pgmvox.grammar.brittle import CELL, Cell, build, house
+from pgmvox.core.orient import turn_world
 
 DYES = [14, 11, 13, 4]                                         # red, blue, green, yellow
 RISES = {"<": "w", ">": "e", "^": "n", "v": "s"}

@@ -7,9 +7,13 @@ its door (the library's rhythm does not), and a house's door is read from the li
 import numpy as np
 
 import plan as P
-from pgmvox import B, noise, props, shapes, trees
-from pgmvox import build as BLD
-from pgmvox.orient import door as door_data, stair as stair_data, ladder as ladder_data
+from pgmvox import B
+from pgmvox.geom import noise
+from pgmvox.built import props
+from pgmvox.geom import shapes
+from pgmvox.scenery import trees
+from pgmvox.built import build as BLD
+from pgmvox.core.orient import door as door_data, stair as stair_data, ladder as ladder_data
 
 SLATE = [(B.STONE, 6), (B.STONE, 5), (B.STONE, 0)]               # polished andesite, andesite, stone: slate flags
 QSET = [(B.STONE, 0), (B.STONE, 5), (B.COBBLE, 0), (B.STONE, 6)]
@@ -519,7 +523,7 @@ def marks(w, R, stats):
 
 def mist(w, R, stats):
     """A mist of grey glass far under the kill height, so the void reads as a drop and not as nothing."""
-    from pgmvox import terrain as T
+    from pgmvox.surface import terrain as T
     before = int((w.ids == B.STAINED_GLASS).sum())
     from scipy import ndimage
     zone = ndimage.binary_dilation(P.zone_mask(R), iterations=4)                # no mist over the zones: the outline shows

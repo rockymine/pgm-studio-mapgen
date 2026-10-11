@@ -3,7 +3,7 @@ stands against air, and each team's walks come out as the plan's did.
 
     python3 walk.py <build-dir>
 
-Two walks from each spawn, pgmvox.walk's voxel walk with running jumps:
+Two walks from each spawn, pgmvox.read.walk's voxel walk with running jumps:
 
     on foot     the world as built: its own monuments, the Walks and the wall, and that nothing reaches an enemy
                 Kiln without building
@@ -16,8 +16,10 @@ import sys
 import numpy as np
 
 import plan as P
-from pgmvox import B, World, audit, walk
-from pgmvox.objectives import DYES, Spawn, Wool
+from pgmvox import B, World
+from pgmvox.read import audit
+from pgmvox.read import walk
+from pgmvox.play.objectives import DYES, Spawn, Wool
 
 w = World.load(sys.argv[1])
 R = P.plan()

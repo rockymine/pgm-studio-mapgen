@@ -6,8 +6,8 @@ import math
 import sys
 
 from plan import COLOURS, GROUND, HILL, KILL_Y, WALK, build, objectives
-from pgmvox import plangraph as G
-from pgmvox.sketch import TEAM, SectionPanel, Sheet
+from pgmvox.plan import graph as G
+from pgmvox.read.sketch import TEAM, SectionPanel, Sheet
 
 R = build()
 E = G.graph(R, WALK)

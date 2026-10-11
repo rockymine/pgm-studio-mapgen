@@ -5,7 +5,9 @@ import sys
 import numpy as np
 
 from land import ISLAND, SEA, ground
-from pgmvox import B, World, route as R, terrain as T
+from pgmvox import B, World
+from pgmvox.routes import route as R
+from pgmvox.surface import terrain as T
 
 X, Z, H, river, sea, road = ground()
 w = World(-100, -100, 200, 200, sy=128)

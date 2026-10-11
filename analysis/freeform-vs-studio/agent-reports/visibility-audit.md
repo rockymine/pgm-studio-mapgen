@@ -17,7 +17,7 @@
   in the front half-plane: `(cell - objective) . axis >= 0` or past halfway between spawns (axis = owner spawn to attacker spawn).
   Columns: `v30` (<=30), `v60` (<=60, the headline), `vfar` (60 to 120), `v60all` (<=60, all directions, reached), `v60standable` (front, not reached-filtered).
   At most 3000 cells sampled per band (seed 20261010); the sampled count and cell count are in the JSON (`out/<slug>.json`). **[added]** A share over 3000 sampled cells carries about +-1.8 points of sampling error (95%); a band with fewer than 3000 cells is exact.
-- Walk: `pgmvox.walk.walk`, MoveRules(max_drop=6, running jumps gap<=3, doors, ladders, kill_y from a `<below>` region else none), from the
+- Walk: `pgmvox.read.walk.walk`, MoveRules(max_drop=6, running jumps gap<=3, doors, ladders, kill_y from a `<below>` region else none), from the
   spawn point's nearest standing cell. If the objective is not reached on foot and the map allows building over void, a second walk
   with `rules.build` = pure-void columns (inside the map's build rectangle where the map restricts it: riftwater x -16..16 z -88..88,
   cinder-reach x -24..24 z -72..72, redwash-mesa x -22..22 z -64..64 **[added]** exp-slatefold-studio x -40..40 z -16..16; everywhere where the map has no void rule; nowhere for

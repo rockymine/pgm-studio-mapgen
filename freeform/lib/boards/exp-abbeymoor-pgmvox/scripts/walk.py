@@ -4,7 +4,7 @@ Night Stair, along the passage, up the cellar stair into the Tithe Barn, and bac
 
     python3 walk.py <build-dir>
 
-The walk is pgmvox.walk's voxel walk over the built blocks (doors opened, a drop of at most three, no running jump), plus one with every
+The walk is pgmvox.read.walk's voxel walk over the built blocks (doors opened, a drop of at most three, no running jump), plus one with every
 running jump and any drop: no monument is reached that the plain walk does not reach.
 """
 import sys
@@ -12,9 +12,11 @@ import sys
 import numpy as np
 
 import plan as P
-from pgmvox import B, World, audit, walk
-from pgmvox import blocks as K
-from pgmvox.objectives import Destroyable, Spawn
+from pgmvox import B, World
+from pgmvox.read import audit
+from pgmvox.read import walk
+from pgmvox.core import blocks as K
+from pgmvox.play.objectives import Destroyable, Spawn
 
 w = World.load(sys.argv[1])
 R = P.build()
@@ -76,7 +78,7 @@ for o in dest:
     clear[o.id] = n
 out.append(f"blocks within four of a cube, over the ground (plants aside): {clear}")
 # found without a map: the share of the ground 25 to 60 off from which a player sees the cube's top course, through the built blocks
-from pgmvox import sight
+from pgmvox.read import sight
 opaque = sight.voxel_opaque(w)
 for o in dest:
     if o.team != "red-team":
@@ -107,7 +109,7 @@ for o in dest:
     seen = sum(1 for e in eyes if sees(e)) / max(1, len(eyes))
     out.append(f"{o.id}: seen from {100 * seen:.0f}% of {len(eyes)} ground cells 25 to 60 blocks off (voxel sight to any face of the {b.y1 - b.y0 + 1}-block pillar, trees and walls count)")
 ids = w.ids.copy()
-ids[np.isin(ids, sorted(K.DOORS))] = 0                         # doors open: pgmvox.walk's PASSABLE has none
+ids[np.isin(ids, sorted(K.DOORS))] = 0                         # doors open: pgmvox.read.walk's PASSABLE has none
 rules = walk.MoveRules(max_drop=3, jumps=False)
 jump_rules = walk.MoveRules(max_drop=None, jumps=True, max_gap=3)
 for team, at in spawns.items():

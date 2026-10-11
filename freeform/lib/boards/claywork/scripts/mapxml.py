@@ -4,7 +4,7 @@ filter, item keeping, kill rewards and the build height are written here. The vo
 """
 import plan  # noqa: F401  (puts the library on the path)
 from plan import MAX_BUILD, objectives
-from pgmvox.mapxml import Doc, E, item
+from pgmvox.play.mapxml import Doc, E, item
 
 O = objectives()
 d = Doc("Claywork", "1.0.0", "Capture the enemy's two wools from the Kilns in their back corners.", "ctw")

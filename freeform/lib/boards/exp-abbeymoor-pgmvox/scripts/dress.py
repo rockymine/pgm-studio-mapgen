@@ -10,11 +10,14 @@ import numpy as np
 import crypt
 import land
 import plan as P
-from pgmvox import B, noise, props, trees
-from pgmvox import build as BLD
-from pgmvox import terrain as T
-from pgmvox.orient import door as door_data, stair as stair_data
-from pgmvox.shapes import polyline
+from pgmvox import B
+from pgmvox.geom import noise
+from pgmvox.built import props
+from pgmvox.scenery import trees
+from pgmvox.built import build as BLD
+from pgmvox.surface import terrain as T
+from pgmvox.core.orient import door as door_data, stair as stair_data
+from pgmvox.geom.shapes import polyline
 
 
 def cellpick(x, z, choices, size=3, salt=0):
@@ -328,7 +331,7 @@ def peat_cuttings(w, r):
 
 def walls_along(w, pts, gaps=(), block=(B.COBBLE_WALL, 0), moss=0.2, r=None):
     """A drystone wall one block thick along a polyline, a gap where `gaps` says (a gate)."""
-    from pgmvox.shapes import walk_cells
+    from pgmvox.geom.shapes import walk_cells
     cells = walk_cells([(int(round(x)), int(round(z))) for x, z in pts])
     for x, z in cells:
         if any(abs(x - gx) <= 1 and abs(z - gz) <= 1 for gx, gz in gaps) or not P.LAND[x - P.X_MIN, z - P.Z_MIN] or P.WET[x - P.X_MIN, z - P.Z_MIN]:
@@ -508,7 +511,7 @@ def cover(w, R, r, stats):
 def rim(w, r, stats):
     """The island's rim: vines hung on the cliff's faces, a few, so the bare rock carries something; the skirt's ledges are forms.skirt's."""
     X, Z = w.grid()
-    from pgmvox.shapes import edge_depth
+    from pgmvox.geom.shapes import edge_depth
     ed = edge_depth(P.LAND)
     n = 0
     for i, k in np.argwhere(P.LAND & (ed == 0) & (Z < 0)):
@@ -563,7 +566,7 @@ def everything(w, R, deg, O, stats):
 
 def steps_on_slopes(w):
     """The Hill Track's and the Monks' Way's climbs take a stair wherever the ground rises a block (route.steps)."""
-    from pgmvox import route as RT
+    from pgmvox.routes import route as RT
     for name in ("Hill Track", "Monks' Way"):
         RT.steps(w, P.H, P.X, P.Z, P.ROADS[name], block=B.COBBLE_STAIRS, width=2)
 

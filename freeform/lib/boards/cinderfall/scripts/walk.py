@@ -4,15 +4,17 @@ is reached, every objective checked, every block's footing.
 
     python3 walk.py <build-dir>
 
-The walk opens doors (pgmvox.walk's PASSABLE has none), takes a drop of at most three and no running jumps.
+The walk opens doors (pgmvox.read.walk's PASSABLE has none), takes a drop of at most three and no running jumps.
 """
 import sys
 
 import numpy as np
 
 import plan as P
-from pgmvox import World, audit, walk
-from pgmvox import blocks as K
+from pgmvox import World
+from pgmvox.read import audit
+from pgmvox.read import walk
+from pgmvox.core import blocks as K
 
 w = World.load(sys.argv[1])
 ids = w.ids.copy()

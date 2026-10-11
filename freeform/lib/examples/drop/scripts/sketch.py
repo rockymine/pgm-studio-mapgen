@@ -6,7 +6,7 @@ course unrolled as a true-scale section, and the audit against its targets.
 import sys
 
 from plan import COLOURS, HEALTH, KILL_Y, build
-from pgmvox.sketch import TEAM, MapPanel, SectionPanel, Sheet
+from pgmvox.read.sketch import TEAM, MapPanel, SectionPanel, Sheet
 
 HOW = {"walk": (90, 90, 90), "step off": (40, 150, 60), "run off": (220, 140, 30), "sprint jump": (200, 40, 40)}
 C = build()

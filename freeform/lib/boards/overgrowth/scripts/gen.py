@@ -16,12 +16,13 @@ from scipy import ndimage
 
 import plan as P
 from pgmvox import B, World, rng
-from pgmvox import forms, props
-from pgmvox import facade as F
-from pgmvox import trees
-from pgmvox import terrain as T
-from pgmvox.noise import fbm
-from pgmvox.orient import stair as stair_data, turn_world
+from pgmvox.scenery import forms
+from pgmvox.built import props
+from pgmvox.built import facade as F
+from pgmvox.scenery import trees
+from pgmvox.surface import terrain as T
+from pgmvox.geom.noise import fbm
+from pgmvox.core.orient import stair as stair_data, turn_world
 
 SY = 128
 MOSS = (B.STONEBRICK, 1)

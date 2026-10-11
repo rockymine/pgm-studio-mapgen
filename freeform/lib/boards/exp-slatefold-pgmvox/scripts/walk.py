@@ -3,7 +3,7 @@ reaches its own monuments on foot and the enemy's rooms by building (and not oth
 
     python3 walk.py <build-dir>
 
-Two walks from each spawn, pgmvox.walk's voxel walk (doors opened, a drop of at most three, no running jump), plus one with
+Two walks from each spawn, pgmvox.read.walk's voxel walk (doors opened, a drop of at most three, no running jump), plus one with
 every running jump on and nothing built:
 
     on foot     the world as built: the own monuments, every place of the board, and the rooms (not reached: the walls)
@@ -16,9 +16,11 @@ import sys
 import numpy as np
 
 import plan as P
-from pgmvox import B, World, audit, walk
-from pgmvox import blocks as K
-from pgmvox.objectives import DYES, Spawn, Wool
+from pgmvox import B, World
+from pgmvox.read import audit
+from pgmvox.read import walk
+from pgmvox.core import blocks as K
+from pgmvox.play.objectives import DYES, Spawn, Wool
 
 w = World.load(sys.argv[1])
 R = P.build()
@@ -57,7 +59,7 @@ out.append(f"ladders in the world: {ladders}")
 chest_at = sorted((t["x"], t["y"], t["z"]) for t in chests if t["z"] < 0)
 out.append(f"red's chests: {len(chest_at)}: " + ", ".join(map(str, chest_at)))
 # every platform: the share of its non-rim columns with a bedrock course six under the floor, and the root under it
-from pgmvox.shapes import edge_depth
+from pgmvox.geom.shapes import edge_depth
 land = ~R.mask("void")
 ed = edge_depth(land & (np.arange(R.nz)[None, :] + R.z_min < 0))
 for kind in ("spawn", "row", "yard", "front", "quarry", "landing", "bench"):
@@ -118,7 +120,7 @@ for kind in ("spawn", "row", "yard", "front", "bench", "quarry"):
     out.append(f"top blocks that are grass, {kind}: {g} of {len(cells)}")
 
 ids = w.ids.copy()
-ids[np.isin(ids, sorted(K.DOORS))] = 0                         # doors open: pgmvox.walk's PASSABLE has none
+ids[np.isin(ids, sorted(K.DOORS))] = 0                         # doors open: pgmvox.read.walk's PASSABLE has none
 wb = World(w.x0, w.z0, w.sx, w.sz, w.sy)
 wb.ids, wb.dat = ids.copy(), w.dat.copy()
 zm = P.zone_mask(R)

@@ -9,7 +9,7 @@ import numpy as np
 
 import plan as P
 from pgmvox import B
-from pgmvox.orient import stair as stair_data, torch as torch_data
+from pgmvox.core.orient import stair as stair_data, torch as torch_data
 
 BRICK_MIX = [(B.STONEBRICK, 0), (B.STONEBRICK, 0), (B.STONEBRICK, 2), (B.STONE, 6)]
 

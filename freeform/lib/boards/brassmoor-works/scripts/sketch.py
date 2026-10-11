@@ -8,9 +8,9 @@ import os
 import sys
 
 import plan as P
-from pgmvox import blocks as K
-from pgmvox.objectives import DYES, Wool
-from pgmvox.sketch import TEAM, SectionPanel, Sheet
+from pgmvox.core import blocks as K
+from pgmvox.play.objectives import DYES, Wool
+from pgmvox.read.sketch import TEAM, SectionPanel, Sheet
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 with open(os.path.join(HERE, "..", "renders", "plan-check.json")) as f:

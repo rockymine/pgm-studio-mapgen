@@ -2,7 +2,7 @@
 captures it, with its room, its entry rule and its spawner written once; the kit; building only over the board.
 """
 import plan as P
-from pgmvox.mapxml import Doc, E, item
+from pgmvox.play.mapxml import Doc, E, item
 
 O = P.objectives()
 d = Doc("Brittlebush III", "1.0.0", "Capture the other three teams' wools!", "ctw")

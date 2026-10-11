@@ -26,12 +26,12 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 import numpy as np  # noqa: E402
 
 import land  # noqa: E402
-from pgmvox import shapes  # noqa: E402
-from pgmvox import terrain as T  # noqa: E402
-from pgmvox.build import Frame, House  # noqa: E402
-from pgmvox.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.plan import Raster  # noqa: E402
-from pgmvox.blocks import B  # noqa: E402
+from pgmvox.geom import shapes  # noqa: E402
+from pgmvox.surface import terrain as T  # noqa: E402
+from pgmvox.built.build import Frame, House  # noqa: E402
+from pgmvox.play.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
+from pgmvox.plan.raster import Raster  # noqa: E402
+from pgmvox.core.blocks import B  # noqa: E402
 
 BOARD = "abbeymoor"
 X_MIN, X_MAX = land.X0, land.X0 + land.NX - 1

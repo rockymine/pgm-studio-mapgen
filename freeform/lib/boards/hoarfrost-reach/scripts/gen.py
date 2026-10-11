@@ -16,11 +16,13 @@ from scipy import ndimage
 
 import plan as P
 from pgmvox import B, World, rng
-from pgmvox import build as BLD
-from pgmvox import facade as F
-from pgmvox import noise, props, trees
-from pgmvox import terrain as T
-from pgmvox.orient import door as door_data, stair as stair_data, turn_world
+from pgmvox.built import build as BLD
+from pgmvox.built import facade as F
+from pgmvox.geom import noise
+from pgmvox.built import props
+from pgmvox.scenery import trees
+from pgmvox.surface import terrain as T
+from pgmvox.core.orient import door as door_data, stair as stair_data, turn_world
 
 SY = 128
 ROOT_FLOOR = 52

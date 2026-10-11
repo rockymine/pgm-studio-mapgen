@@ -14,8 +14,8 @@ import numpy as np
 from scipy import ndimage
 
 import plan as P
-from pgmvox import plangraph as G
-from pgmvox import sight
+from pgmvox.plan import graph as G
+from pgmvox.read import sight
 
 RED_SPAWN = (P.SPAWN_AT[0], P.SPAWN_AT[2])
 BLUE_SPAWN = tuple(int(v) for v in P.SYM.point(*RED_SPAWN))
@@ -104,7 +104,7 @@ def measure():
                 gaps[(a, b)] = g
     near = sorted(gaps.items(), key=lambda kv: kv[1])[:6]
     # running jumps: two pieces that do not touch, a gap a sprint jump clears from the higher to the lower (or up one)
-    from pgmvox import move
+    from pgmvox.core import move
     jumpable = []
     for (a, b), g in gaps.items():
         ha, hb = P.PIECE[a][4], P.PIECE[b][4]

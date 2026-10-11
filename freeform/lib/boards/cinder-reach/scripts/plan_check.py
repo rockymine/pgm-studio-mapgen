@@ -13,8 +13,8 @@ import numpy as np
 
 import plan as P
 import common as C
-from pgmvox import plangraph as G
-from pgmvox import sight
+from pgmvox.plan import graph as G
+from pgmvox.read import sight
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 

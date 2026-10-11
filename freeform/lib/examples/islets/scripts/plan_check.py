@@ -1,6 +1,6 @@
 """Check Islets' plan: each team's walk to the hill (the same for both, or the board is unfair), and every jump."""
 from plan import WALK, build
-from pgmvox import plangraph as G
+from pgmvox.plan import graph as G
 
 R = build()
 E = G.graph(R, WALK)

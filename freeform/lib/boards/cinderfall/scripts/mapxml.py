@@ -4,7 +4,7 @@ objectives; the kit; the fall below the island; building only over the island, a
     python3 mapxml.py > map.xml
 """
 import plan as P
-from pgmvox.mapxml import Doc, E, item
+from pgmvox.play.mapxml import Doc, E, item
 
 d = Doc("Cinderfall", "0.1.0", "Break the enemy's core: lava must leak out of it.", "dtc")
 d.add(E("authors", E("author", text="Claude (freeform generator, on pgmvox)")))

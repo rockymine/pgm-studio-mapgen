@@ -1,9 +1,9 @@
 """Check the Vale's shaped ground before a block is written: from the harbour, every place reached on foot with no
 jump and no drop past three, over the heights the landforms and the graded roads leave."""
 from land import FOOTPATH, PLACES, ground
-from pgmvox import plangraph as G
-from pgmvox.plan import Raster
-from pgmvox.plangraph import PlanRules
+from pgmvox.plan import graph as G
+from pgmvox.plan.raster import Raster
+from pgmvox.plan.graph import PlanRules
 
 X, Z, H, river, sea, road = ground()
 R = Raster.from_heights(H, int(X[0, 0]), int(Z[0, 0]), water=river.mask | sea.mask)

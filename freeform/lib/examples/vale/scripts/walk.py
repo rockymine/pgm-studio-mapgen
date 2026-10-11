@@ -5,7 +5,8 @@ import sys
 import numpy as np
 
 from land import FOOTPATH, PLACES
-from pgmvox import World, walk
+from pgmvox import World
+from pgmvox.read import walk
 
 w = World.load(sys.argv[1])
 hx, hz = PLACES["harbour"]

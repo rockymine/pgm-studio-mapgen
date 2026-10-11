@@ -3,7 +3,7 @@ team reaches its own monuments and rooms on foot, and the enemy's rooms by build
 
     python3 walk.py <build-dir>
 
-Two walks from each spawn, pgmvox.walk's voxel walk, a drop of at most three (doors opened, no running jump):
+Two walks from each spawn, pgmvox.read.walk's voxel walk, a drop of at most three (doors opened, no running jump):
 
     on foot     the world as built: the own monuments and rooms, and how far the board goes before a build zone
     building    the same world with every build zone's void, from the kill height to the build height, filled with
@@ -14,9 +14,11 @@ import sys
 import numpy as np
 
 import plan as P
-from pgmvox import B, World, audit, walk
-from pgmvox import blocks as K
-from pgmvox.objectives import DYES, Spawn, Wool
+from pgmvox import B, World
+from pgmvox.read import audit
+from pgmvox.read import walk
+from pgmvox.core import blocks as K
+from pgmvox.play.objectives import DYES, Spawn, Wool
 
 w = World.load(sys.argv[1])
 R = P.build()
@@ -34,7 +36,7 @@ out.append(f"footing problems (audit.footing): {len(foot)}")
 out += [f"   {f}" for f in foot[:10]]
 
 ids = w.ids.copy()
-ids[np.isin(ids, sorted(K.DOORS))] = 0                         # doors open: pgmvox.walk's PASSABLE has none
+ids[np.isin(ids, sorted(K.DOORS))] = 0                         # doors open: pgmvox.read.walk's PASSABLE has none
 wb = World(w.x0, w.z0, w.sx, w.sz, w.sy)
 wb.ids, wb.dat = ids.copy(), w.dat.copy()
 zm = P.zone_mask(R)

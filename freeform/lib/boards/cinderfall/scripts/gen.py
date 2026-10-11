@@ -15,13 +15,16 @@ import numpy as np
 
 import plan as P
 from pgmvox import B, World, rng
-from pgmvox import props, shapes, trees
-from pgmvox import build as BLD
-from pgmvox import forms, route
-from pgmvox import terrain as T
-from pgmvox import under as U
-from pgmvox.noise import fbm
-from pgmvox.orient import turn_world
+from pgmvox.built import props
+from pgmvox.geom import shapes
+from pgmvox.scenery import trees
+from pgmvox.built import build as BLD
+from pgmvox.scenery import forms
+from pgmvox.routes import route
+from pgmvox.surface import terrain as T
+from pgmvox.volume import under as U
+from pgmvox.geom.noise import fbm
+from pgmvox.core.orient import turn_world
 
 SY = 128
 PALETTE_ASH = ((B.STAINED_CLAY, 7), (B.GRAVEL, 0), (B.STAINED_CLAY, 8), (B.STONE, 5))

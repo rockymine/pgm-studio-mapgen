@@ -16,10 +16,11 @@ from scipy import ndimage
 
 import plan as P
 import dress
-from pgmvox import B, World, noise, rng
-from pgmvox import terrain as T
-from pgmvox import forms
-from pgmvox.orient import stair as stair_data, turn_world
+from pgmvox import B, World, rng
+from pgmvox.geom import noise
+from pgmvox.surface import terrain as T
+from pgmvox.scenery import forms
+from pgmvox.core.orient import stair as stair_data, turn_world
 
 SY = 128
 ROOT_FLOOR = 40

@@ -21,7 +21,7 @@ The whole board is rebuilt with `python3 -m pgmvox.run boards/claywork --build <
 every piece and every build zone, and the map.xml lets a block be placed only over a column that is not void. The
 build height is 44.
 
-**The land is spoken in the grammar: `pgmvox.grammar` gives the rules, `pgmvox.clay` the blocks.** Every piece is
+**The land is spoken in the grammar: `pgmvox.grammar.rules` gives the rules, `pgmvox.grammar.clay` the blocks.** Every piece is
 cut into sections about nine blocks a side, and the cut is the same on both wings. Each section is outlined: stone
 brick where the ground falls, a line of polished andesite where it meets the next section. Each section is laid in
 its own fill.

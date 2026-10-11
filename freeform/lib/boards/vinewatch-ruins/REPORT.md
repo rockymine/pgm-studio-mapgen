@@ -153,8 +153,8 @@ two-high grass. The accent is the lid's gold, the cistern's glowstone and the ba
 message is silence.** A tunnel two under a floor simply is not walked; nothing reports the cells lost:
 
 ```python
-from pgmvox.plan import Raster
-from pgmvox import plangraph as G
+from pgmvox.plan.raster import Raster
+from pgmvox.plan import graph as G
 R = Raster((0, 9), (0, 9), ["floor", "tunnel"]); R.H[:] = 36
 U = R.storey(1); U.box(0, 4, 9, 5, 34, "tunnel")
 print(int(G.walkable(R, {"floor", "tunnel"})[1].sum()))      # 0 of 20

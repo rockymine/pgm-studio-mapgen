@@ -17,7 +17,7 @@ import plan as P  # noqa: F401  (puts the library on the path)
 
 import numpy as np
 
-from pgmvox import plangraph as G
+from pgmvox.plan import graph as G
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 R = P.plan()

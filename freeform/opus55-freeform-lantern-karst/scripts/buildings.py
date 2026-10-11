@@ -17,7 +17,7 @@ import terrain as T
 from mc import B
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "lib"))
-from pgmvox import props  # noqa: E402
+from pgmvox.built import props  # noqa: E402
 
 DARK_LOG = (B.LOG2, 1)
 SPRUCE_LOG = (B.LOG, 1)

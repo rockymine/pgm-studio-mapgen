@@ -17,11 +17,12 @@ import numpy as np
 
 import plan as P
 from pgmvox import B, World, rng
-from pgmvox import facade as F
-from pgmvox import props, trees
-from pgmvox import terrain as T
-from pgmvox.noise import fbm
-from pgmvox.orient import stair as stair_data, turn_world
+from pgmvox.built import facade as F
+from pgmvox.built import props
+from pgmvox.scenery import trees
+from pgmvox.surface import terrain as T
+from pgmvox.geom.noise import fbm
+from pgmvox.core.orient import stair as stair_data, turn_world
 
 SY = 128
 WHITE = (B.STAINED_CLAY, 0)
@@ -55,7 +56,7 @@ def rock(w, R):
                        ((B.SANDSTONE, 2), 1.5, 2), ((B.STAINED_CLAY, 8), 0.5, 1)], seed=19, start=0)
     bed = T.beds(strata, T.bed_offset((w.sx, w.sz), dip=(0.0, 0.02), fold=2, cell=16, seed=2), seed=4)
     ed = np.zeros(plate.shape, int)
-    from pgmvox.shapes import edge_depth
+    from pgmvox.geom.shapes import edge_depth
     ed = edge_depth(plate)
     root = np.maximum(np.round(6 + 0.35 * ed), 1).astype(int)
     r = rng(P.BOARD, "rock")
@@ -355,7 +356,7 @@ def lamps(w, R):
 
 def rim(w, plate, R):
     """A low parapet and a fence round the plate's edge."""
-    from pgmvox.shapes import boundary
+    from pgmvox.geom.shapes import boundary
     X, Z = w.grid()
     for i, k in np.argwhere(boundary(plate)):
         x, z = int(X[i, k]), int(Z[i, k])

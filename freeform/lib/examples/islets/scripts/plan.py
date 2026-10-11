@@ -8,9 +8,9 @@ import os
 import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
-from pgmvox.build import Frame  # noqa: E402
-from pgmvox.objectives import Box, Hill, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.plan import Raster, Symmetry  # noqa: E402
+from pgmvox.built.build import Frame  # noqa: E402
+from pgmvox.play.objectives import Box, Hill, Objectives, Observer, Spawn, Teams  # noqa: E402
+from pgmvox.plan.raster import Raster, Symmetry  # noqa: E402
 
 KILL_Y = 20
 GROUND = 30

@@ -63,7 +63,7 @@ def tests():
 
 def fingerprint(build):
     from pgmvox import World
-    from pgmvox.blocks import name
+    from pgmvox.core.blocks import name
     w = World.load(build)
     c = Counter(w.ids.ravel().tolist())
     return {f"{name(i, 0)} ({i})": n for i, n in sorted(c.items()) if i}

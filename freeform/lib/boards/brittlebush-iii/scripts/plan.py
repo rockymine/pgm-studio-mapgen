@@ -1,7 +1,7 @@
 """Brittlebush III: capture the wool for four teams, one wool each, from the plan its author drew in the studio's
 planner (plan.json, saved from the map untitled-plan-8, "Brittebush III"), built in the Brittlebush style.
 
-The plan is one team's part, turned a quarter three times (rot_90). pgmvox.studioplan reads it as the author drew
+The plan is one team's part, turned a quarter three times (rot_90). pgmvox.grammar.studioplan reads it as the author drew
 it: a later piece lies over an earlier one, a piece named stair... is a stair cell, and a piece named double... is a
 deck, open beneath it where UNDER says. Where no piece lies, a zone named water... is water ground and any other
 zone a bare build zone, cobwebs on its outline toward the void. Heights are the plan's own (LIFT 0): the lowest decks
@@ -15,10 +15,10 @@ import sys
 from dataclasses import replace
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
-from pgmvox import brittle as BR  # noqa: E402
-from pgmvox import studioplan as SP  # noqa: E402
-from pgmvox.objectives import Box, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402
-from pgmvox.plan import Symmetry  # noqa: E402
+from pgmvox.grammar import brittle as BR  # noqa: E402
+from pgmvox.grammar import studioplan as SP  # noqa: E402
+from pgmvox.play.objectives import Box, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402
+from pgmvox.plan.raster import Symmetry  # noqa: E402
 
 BOARD = "brittlebush-iii"
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -61,7 +61,7 @@ def unit():
 
 
 def fill(piece, cells):
-    """pgmvox.brittle.build's choice of fill, by section."""
+    """pgmvox.grammar.brittle.build's choice of fill, by section."""
     return FILL.get(cells[piece[0]].section)
 
 

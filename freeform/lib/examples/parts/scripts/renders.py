@@ -2,7 +2,8 @@
 import os
 import sys
 
-from pgmvox import World, render
+from pgmvox import World
+from pgmvox.read import render
 
 build, root = sys.argv[1], sys.argv[2]
 w = World.load(build)

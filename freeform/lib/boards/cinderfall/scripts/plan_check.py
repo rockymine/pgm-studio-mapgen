@@ -11,8 +11,9 @@ import os
 import numpy as np
 
 import plan as P
-from pgmvox import plangraph as G
-from pgmvox import shapes, sight
+from pgmvox.plan import graph as G
+from pgmvox.geom import shapes
+from pgmvox.read import sight
 
 RED_SPAWN = (P.SPAWN[0], P.SPAWN[2])
 BLUE_SPAWN = tuple(int(v) for v in P.SYM.point(*RED_SPAWN))

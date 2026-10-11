@@ -29,7 +29,7 @@ import subprocess
 import sys
 
 from . import VERSION
-from .world import studio_root, write
+from pgmvox.core.world import studio_root, write
 
 REPOSITORY_TOOLS = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "tools"))
 

@@ -4,15 +4,17 @@ every objective checked, every block's footing.
 
     python3 walk.py <build-dir>
 
-The walk opens doors (pgmvox.walk's PASSABLE has none), takes a drop of at most three and no running jump.
+The walk opens doors (pgmvox.read.walk's PASSABLE has none), takes a drop of at most three and no running jump.
 """
 import sys
 
 import numpy as np
 
 import plan as P
-from pgmvox import World, audit, walk
-from pgmvox import blocks as K
+from pgmvox import World
+from pgmvox.read import audit
+from pgmvox.read import walk
+from pgmvox.core import blocks as K
 
 w = World.load(sys.argv[1])
 ids = w.ids.copy()
@@ -88,7 +90,7 @@ print(f"  the opening in the ring: {sum(1 for dz in (-1, 0, 1) for y in range(cy
 
 # the ghats: stairs counted, and every step between neighbouring cells of the band in half blocks (a slab counts a half)
 import gen as G  # noqa: E402
-from pgmvox import shapes  # noqa: E402
+from pgmvox.geom import shapes  # noqa: E402
 
 X_, Z_ = w.grid()
 earlier = np.zeros(X_.shape, bool)

@@ -1,5 +1,5 @@
 """Generate Riftwater from the plan: the red half's ground, underground, buildings and dressing, then blue's half
-as its mirror image (pgmvox.orient.turn_world, with red's wool recoloured blue), then the objectives stamped
+as its mirror image (pgmvox.core.orient.turn_world, with red's wool recoloured blue), then the objectives stamped
 for both teams.
 
     python3 gen.py <build-dir>
@@ -15,8 +15,8 @@ import plan as P
 import under
 import works
 from pgmvox import B, World
-from pgmvox import props
-from pgmvox.orient import turn_world
+from pgmvox.built import props
+from pgmvox.core.orient import turn_world
 
 t0 = time.time()
 L = P.land()

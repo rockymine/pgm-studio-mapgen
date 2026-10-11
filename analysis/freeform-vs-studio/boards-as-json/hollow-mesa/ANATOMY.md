@@ -6,7 +6,7 @@ Board: `freeform/opus55-freeform-hollow-mesa/` (a DTC board: two banded mesas ac
 
 **No.** Its imports are `mc` (World, block ids), `noise`, `plan`, `terrain`, `underground`, `buildings`, `dressing`, `rotate` and numpy/scipy (`gen.py:6-14`, `terrain.py:8-11`, `underground.py:6-10`, `buildings.py:9-13`, `dressing.py:8-15`). `grep -rn pgmvox` over the board folder finds nothing. `house.py` (288 lines) is imported by no file in the pipeline.
 
-pgmvox was distilled from boards like this one: `lib/pgmvox/noise.py` carries the same `lattice`, `fbm`, `smoothstep` and `spline` as `scripts/noise.py` (diffed: only `ridged` was added and `polyline_distance` moved out), and `lib/pgmvox/world.py` has the same `World` API (`set`, `get`, `id`, `fill`, `top`, `chest`, `sign`, `save`) as `scripts/mc.py:134-208`. So a noise seed in this board means the same field in pgmvox.
+pgmvox was distilled from boards like this one: `lib/pgmvox/geom/noise.py` carries the same `lattice`, `fbm`, `smoothstep` and `spline` as `scripts/noise.py` (diffed: only `ridged` was added and `polyline_distance` moved out), and `lib/pgmvox/core/world.py` has the same `World` API (`set`, `get`, `id`, `fill`, `top`, `chest`, `sign`, `save`) as `scripts/mc.py:134-208`. So a noise seed in this board means the same field in pgmvox.
 
 ## How it was measured
 

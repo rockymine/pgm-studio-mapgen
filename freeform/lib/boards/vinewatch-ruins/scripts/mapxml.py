@@ -5,7 +5,7 @@ scores a point, fifty win, ten minutes; no building at all.
 """
 import plan as P
 import common as C
-from pgmvox.mapxml import Doc, E
+from pgmvox.play.mapxml import Doc, E
 
 d = Doc("Vinewatch Ruins", "1.0.0", "Kill the enemy: the first team to fifty kills, or the most in ten minutes, wins.",
         "tdm")

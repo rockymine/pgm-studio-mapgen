@@ -5,7 +5,9 @@ import sys
 import numpy as np
 
 from plan import KILL_Y, build, objectives
-from pgmvox import World, audit, walk
+from pgmvox import World
+from pgmvox.read import audit
+from pgmvox.read import walk
 
 R = build()
 w = World.load(sys.argv[1])

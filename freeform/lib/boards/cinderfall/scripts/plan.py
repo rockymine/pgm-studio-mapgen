@@ -9,7 +9,7 @@ All heights follow the library: H is the y of the floor block, a player stands a
 
     land()        heights, lava, outline and underside over the whole board, red drawn and turned
     build()       the plan Raster: kinds and floors, storey 1 the vent tunnel
-    houses()      every building as a pgmvox.build.House with its footprint and door
+    houses()      every building as a pgmvox.built.build.House with its footprint and door
     objectives()  teams, spawns and cores, drawn once for red
 """
 import math
@@ -21,13 +21,13 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 import numpy as np  # noqa: E402
 from scipy import ndimage  # noqa: E402
 
-from pgmvox import landform as LF  # noqa: E402
-from pgmvox import shapes  # noqa: E402
-from pgmvox.build import Frame, House  # noqa: E402
-from pgmvox.noise import fbm, smoothstep, spline  # noqa: E402
-from pgmvox.objectives import Box, Core, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.plan import Raster, Symmetry  # noqa: E402
-from pgmvox.terrain import slope_deg  # noqa: E402
+from pgmvox.ground import landform as LF  # noqa: E402
+from pgmvox.geom import shapes  # noqa: E402
+from pgmvox.built.build import Frame, House  # noqa: E402
+from pgmvox.geom.noise import fbm, smoothstep, spline  # noqa: E402
+from pgmvox.play.objectives import Box, Core, Objectives, Observer, Spawn, Teams  # noqa: E402
+from pgmvox.plan.raster import Raster, Symmetry  # noqa: E402
+from pgmvox.surface.terrain import slope_deg  # noqa: E402
 
 BOARD = "cinderfall"
 X_MIN, X_MAX = -90, 89

@@ -11,12 +11,13 @@ import numpy as np
 
 import plan  # noqa: F401  (puts the library on the path)
 
-from pgmvox import B, noise
-from pgmvox import build as BLD
-from pgmvox import facade as F
-from pgmvox import route
-from pgmvox.shapes import rect_cells
-from pgmvox.orient import stair as stair_data
+from pgmvox import B
+from pgmvox.geom import noise
+from pgmvox.built import build as BLD
+from pgmvox.built import facade as F
+from pgmvox.routes import route
+from pgmvox.geom.shapes import rect_cells
+from pgmvox.core.orient import stair as stair_data
 
 DARK_LOG = (B.LOG2, 1)
 SPRUCE_LOG = (B.LOG, 1)
@@ -444,7 +445,7 @@ def lanes(w, g, rng):
 
 def ferns(w, g, rng):
     """Ferns and grass on about 6% of the grass, never within two of a rim a bridger leaves from."""
-    from pgmvox.shapes import edge_depth
+    from pgmvox.geom.shapes import edge_depth
     ed = edge_depth(g.land)
     X, Z = w.grid()
     n = 0

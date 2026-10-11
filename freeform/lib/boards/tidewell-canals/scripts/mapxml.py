@@ -5,8 +5,8 @@ each fish market one), a score limit and a time limit, the kit; no building, the
 """
 import plan as P
 import common as C
-from pgmvox.mapxml import Doc, E
-from pgmvox.objectives import Hill
+from pgmvox.play.mapxml import Doc, E
+from pgmvox.play.objectives import Hill
 
 d = Doc("Tidewell Canals", "1.0.0", "Hold the markets: the Campo is worth two points a second, each fish market one.",
         "koth")

@@ -192,9 +192,10 @@ plan walks octile; `walk.walk` counts four-way moves. On this board the same own
 GO1 is 3.34 in one and 2.67 in the other. A reproduction on an open floor:
 
 ```python
-from pgmvox import World, walk, B
-from pgmvox.plan import Raster
-from pgmvox import plangraph as G
+from pgmvox import World, B
+from pgmvox.read import walk
+from pgmvox.plan.raster import Raster
+from pgmvox.plan import graph as G
 w = World(0, 0, 30, 30, sy=8); w.fill(0, 1, 0, 29, 1, 29, B.STONE)
 print(walk.walk(w.ids, [(0, 2, 0)], 0, 0)[20, 2, 20])                 # 40
 R = Raster((0, 29), (0, 29), ["floor"]); R.H[:] = 1

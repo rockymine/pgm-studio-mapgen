@@ -23,15 +23,16 @@ from scipy import ndimage
 import plan as P
 import common as C
 from pgmvox import B, World, rng
-from pgmvox import build as BLD
-from pgmvox import trees as T
-from pgmvox import under as U
-from pgmvox import route, props
-from pgmvox import forms
-from pgmvox.noise import fbm
-from pgmvox.orient import ladder as ladder_data, stair as stair_data, turn_world
-from pgmvox.shapes import edge_depth
-from pgmvox.terrain import Strata, beds, by_angle, lay
+from pgmvox.built import build as BLD
+from pgmvox.scenery import trees as T
+from pgmvox.volume import under as U
+from pgmvox.routes import route
+from pgmvox.built import props
+from pgmvox.scenery import forms
+from pgmvox.geom.noise import fbm
+from pgmvox.core.orient import ladder as ladder_data, stair as stair_data, turn_world
+from pgmvox.geom.shapes import edge_depth
+from pgmvox.surface.terrain import Strata, beds, by_angle, lay
 
 t0 = time.time()
 L = P.land()

@@ -399,7 +399,7 @@ Imports (pgmvox): `blocks`, `grammar`, `objectives`, `orient`. Subject today: Th
 
 ### `clay.py` — 204 lines
 
-Imports (pgmvox): `blocks`, `grammar`, `orient`. Subject today: The Claywork style for pgmvox.grammar: grey stone and white clay, the team's colour inlaid. A board on bedrock,.
+Imports (pgmvox): `blocks`, `grammar`, `orient`. Subject today: The Claywork style for pgmvox.grammar.rules: grey stone and white clay, the team's colour inlaid. A board on bedrock,.
 
 | symbol | line | what | ext | t | flag |
 |---|---:|---|---:|---:|---|
@@ -408,7 +408,7 @@ Imports (pgmvox): `blocks`, `grammar`, `orient`. Subject today: The Claywork sty
 
 ### `studioplan.py` — 108 lines
 
-Imports (pgmvox): `brittle`. Subject today: Read a plan drawn in the studio's planner (plan version 2) as a pgmvox.brittle blueprint of cells.
+Imports (pgmvox): `brittle`. Subject today: Read a plan drawn in the studio's planner (plan version 2) as a pgmvox.grammar.brittle blueprint of cells.
 
 | symbol | line | what | ext | t | flag |
 |---|---:|---|---:|---:|---|
@@ -952,7 +952,7 @@ Notes on the split: the shared private helpers get an explicit home. `landform._
 
 There are 155 files outside `lib/pgmvox` and `lib/tests` that touch the library (the 22 hashed folders — 7 boards, 3 examples, 2 ports, 10 trials — plus `examples/drop`, `boards/common.py`, `check.py` and `opus55-freeform-lantern-karst`). Today they hold 688 imported names in about 435 import statements and 4,332 references. **2,151 of those references are `B`, `World`, `rng` through `from pgmvox import ...` and need no edit as long as `__init__.py` keeps its re-exports of `B`, `DYE`, `World`, `rng`, `seed`** (that is the package's public face, not a compatibility path; `B` alone is 1,996 sites in 23 boards).
 
-Per move, the real edit is the import statement: a `from pgmvox.terrain import lay` line becomes `from pgmvox.surface.lay import lay`. Call sites change only where the module is split and the caller reaches it by alias (`T.lay`, `LF.mound`, `F.border` become `L.lay`, `RS.mound`, `FL.border`), counted below as "alias-qualified call sites". A name imported directly never changes at the call site. Splitting one module into several turns one import statement into up to as many statements; a caller of `terrain` that uses lay, Paint and Strata gets three lines.
+Per move, the real edit is the import statement: a `from pgmvox.surface.terrain import lay` line becomes `from pgmvox.surface.lay import lay`. Call sites change only where the module is split and the caller reaches it by alias (`T.lay`, `LF.mound`, `F.border` become `L.lay`, `RS.mound`, `FL.border`), counted below as "alias-qualified call sites". A name imported directly never changes at the call site. Splitting one module into several turns one import statement into up to as many statements; a caller of `terrain` that uses lay, Paint and Strata gets three lines.
 
 ### 5.2 Per new module
 

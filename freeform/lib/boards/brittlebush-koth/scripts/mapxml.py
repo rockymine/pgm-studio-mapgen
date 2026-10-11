@@ -3,7 +3,7 @@ sixteen leaves to bridge with; a leaf and a golden apple for every kill; the gol
 the arrows on the landings; building only over the board; the score and the time.
 """
 import plan as P
-from pgmvox.mapxml import Doc, E, item
+from pgmvox.play.mapxml import Doc, E, item
 
 O = P.objectives()
 d = Doc("Brittlebush KotH", "1.0.0", "Hold the hills: the Dais in the middle, and the islands between the spawns.", "koth")

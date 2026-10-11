@@ -22,8 +22,8 @@ sys.path.insert(0, os.path.normpath(os.path.join(HERE, "..", "..")))            
 import numpy as np  # noqa: E402
 
 import common  # noqa: E402,F401
-from pgmvox.objectives import Box, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.plan import Raster, Symmetry  # noqa: E402
+from pgmvox.play.objectives import Box, Objectives, Observer, Spawn, Teams  # noqa: E402
+from pgmvox.plan.raster import Raster, Symmetry  # noqa: E402
 
 BOARD = "vinewatch-ruins"
 X_MIN, X_MAX = -48, 47

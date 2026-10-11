@@ -2,7 +2,7 @@
 grotto and alcoves; Ironhollow Mine from the adit by the spawn to the shaft and the breakthrough; the gaol
 cellar whose south wall has fallen into the cave; the sinkhole's rubble.
 
-The passages, chambers, cave finish, galleries and shaft are pgmvox.under's; what is local is where they go
+The passages, chambers, cave finish, galleries and shaft are pgmvox.volume.under's; what is local is where they go
 (plan.py) and the pieces only this board has: the lake, the pillar hall, the grotto, the falls mouth, the
 sinkhole's rubble, the adit portal and the gaol cellar.
 """
@@ -12,8 +12,8 @@ import numpy as np
 
 import plan as P
 from pgmvox import B, rng
-from pgmvox import under as U
-from pgmvox.orient import ladder, torch
+from pgmvox.volume import under as U
+from pgmvox.core.orient import ladder, torch
 
 R_ = rng(P.BOARD, "under")
 
@@ -107,7 +107,7 @@ def sinkhole(w, L):
 
 
 def mine(w, L):
-    """The galleries (pgmvox.under.gallery: three wide, timber sets on the level, rails, stairs on the rises,
+    """The galleries (pgmvox.volume.under.gallery: three wide, timber sets on the level, rails, stairs on the rises,
     iron in the walls), a timber portal at the adit and the foreman's chest at the breakthrough."""
     U.gallery(w, P.mine_line(), R_, floor=((B.GRAVEL, 0), (B.STONE, 0), (B.STONE, 5)))
     ax, ay, az = P.MINE[0]

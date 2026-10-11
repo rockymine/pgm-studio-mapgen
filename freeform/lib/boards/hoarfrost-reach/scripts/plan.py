@@ -18,11 +18,11 @@ from functools import lru_cache
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 import numpy as np  # noqa: E402
 
-from pgmvox import shapes  # noqa: E402
-from pgmvox.build import Frame, House  # noqa: E402
-from pgmvox.objectives import Box, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402
-from pgmvox.plan import Raster, Symmetry  # noqa: E402
-from pgmvox.shapes import inside as poly_inside  # noqa: E402
+from pgmvox.geom import shapes  # noqa: E402
+from pgmvox.built.build import Frame, House  # noqa: E402
+from pgmvox.play.objectives import Box, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402
+from pgmvox.plan.raster import Raster, Symmetry  # noqa: E402
+from pgmvox.geom.shapes import inside as poly_inside  # noqa: E402
 
 BOARD = "hoarfrost-reach"
 X_MIN, X_MAX = -88, 87

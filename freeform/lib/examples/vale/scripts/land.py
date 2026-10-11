@@ -13,7 +13,9 @@ import sys
 import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
-from pgmvox import landform as L, noise, route as R  # noqa: E402
+from pgmvox.ground import landform as L  # noqa: E402
+from pgmvox.geom import noise
+from pgmvox.routes import route as R
 
 X0, Z0, N = -100, -100, 200
 SEA = 30

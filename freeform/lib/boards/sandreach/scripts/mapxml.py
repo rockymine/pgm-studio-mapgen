@@ -2,7 +2,7 @@
 kit; building only over the board and its zones.
 """
 import plan as P
-from pgmvox.mapxml import Doc, E, item
+from pgmvox.play.mapxml import Doc, E, item
 
 O = P.objectives()
 d = Doc("Sandreach", "1.1.0", "Capture the other team's wool and destroy its emerald!", ["ctw", "dtm"])

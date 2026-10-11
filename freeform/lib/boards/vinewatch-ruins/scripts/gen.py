@@ -17,9 +17,9 @@ import numpy as np
 import plan as P
 import common as C
 from pgmvox import B, World, rng
-from pgmvox import trees as T
-from pgmvox.noise import fbm
-from pgmvox.orient import stair as stair_data, turn_world
+from pgmvox.scenery import trees as T
+from pgmvox.geom.noise import fbm
+from pgmvox.core.orient import stair as stair_data, turn_world
 
 t0 = time.time()
 R = P.build()

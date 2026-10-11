@@ -10,7 +10,7 @@ after its plan changed: the knoll at (-22, 74), the gaol on the square's corner,
     land()        the red half's heightfield, water, outline and underside: what gen.py lays and the plan walks
     build()       the plan Raster over the whole board: kinds and floors, storey 1 the underground, storey 2 decks
     objectives()  teams, spawns, the four monuments and the observer point, drawn once for red
-    houses()      every building as a pgmvox.build.House plus its footprint and door, read by plan and gen alike
+    houses()      every building as a pgmvox.built.build.House plus its footprint and door, read by plan and gen alike
 
 Heights follow the library: H is the y of the floor block and a player stands at H + 1.
 """
@@ -22,16 +22,16 @@ from functools import lru_cache
 import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
-from pgmvox import landform as LF  # noqa: E402
-from pgmvox import shapes  # noqa: E402
-from pgmvox import under as under_lib  # noqa: E402
-from pgmvox.build import Frame, House  # noqa: E402
-from pgmvox.noise import fbm, spline, smoothstep  # noqa: E402
-from pgmvox import noise  # noqa: E402
-from pgmvox import field as F  # noqa: E402
-from pgmvox.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.plan import Raster, Symmetry  # noqa: E402
-from pgmvox.terrain import island_bottom, slope_deg  # noqa: E402
+from pgmvox.ground import landform as LF  # noqa: E402
+from pgmvox.geom import shapes  # noqa: E402
+from pgmvox.volume import under as under_lib  # noqa: E402
+from pgmvox.built.build import Frame, House  # noqa: E402
+from pgmvox.geom.noise import fbm, spline, smoothstep  # noqa: E402
+from pgmvox.geom import noise  # noqa: E402
+from pgmvox.ground import field as F  # noqa: E402
+from pgmvox.play.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
+from pgmvox.plan.raster import Raster, Symmetry  # noqa: E402
+from pgmvox.surface.terrain import island_bottom, slope_deg  # noqa: E402
 
 BOARD = "riftwater"
 X_MIN, X_MAX = -120, 119
@@ -345,7 +345,7 @@ def spec(h):
 
 
 def door_cell(s):
-    """Where pgmvox.build.house will put the door of a spec: the wall cell on the door side nearest the middle.
+    """Where pgmvox.built.build.house will put the door of a spec: the wall cell on the door side nearest the middle.
     The library does not say until it has built the house, so the plan works it out the same way."""
     fr = Frame(s["cx"], s["cz"], s["heading"])
     m, X, Z, U, V = fr.mask(s["L"], s["W"])

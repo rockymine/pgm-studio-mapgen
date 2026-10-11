@@ -5,7 +5,7 @@ kill rewards and the build height are written here.
     python3 mapxml.py > map.xml
 """
 import plan as P
-from pgmvox.mapxml import Doc, E, item
+from pgmvox.play.mapxml import Doc, E, item
 
 d = Doc("Slatefold", "1.0.0", "Capture the enemy's two wools: the Kiln's and the Winding House's.", "ctw")
 d.add(E("authors", E("author", text="Claude Sonnet 5.5 (freeform generator, on pgmvox)")))

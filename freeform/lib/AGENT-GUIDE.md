@@ -60,7 +60,7 @@ saying what changed and why. A reviewer reads the change, not only the result.
 ### What each mode's plan must carry
 
 **Every mode's plan carries the objectives as objects.** Spawns, hills, flags, wools, monuments, cores, score
-boxes and portals are `pgmvox.objectives`, made once in `plan.py` and mirrored by the plan's symmetry. Their
+boxes and portals are `pgmvox.play.objectives`, made once in `plan.py` and mirrored by the plan's symmetry. Their
 markers in the sketch, their XML and their read-back come from the same objects.
 
 | Mode | The plan must state, measured |
@@ -99,7 +99,7 @@ a decision nobody can review.
 ## The sketch
 
 **The sketch is the plan drawn so it can be reviewed, before anything is built.** It is not a picture of the
-board. It draws what the plan states, annotated, with the checker's numbers on the same sheet. `pgmvox.sketch`
+board. It draws what the plan states, annotated, with the checker's numbers on the same sheet. `pgmvox.read.sketch`
 holds the format; `examples/islets/scripts/sketch.py` and `examples/drop/scripts/sketch.py` are worked sheets.
 
 **A sketch carries as much detail as its plan, and no more.** Draw every piece, place, objective, route and

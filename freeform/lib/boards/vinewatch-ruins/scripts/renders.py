@@ -8,8 +8,9 @@ import os
 import sys
 
 import plan as P
-from pgmvox import World, render
-from pgmvox.sketch import Sheet
+from pgmvox import World
+from pgmvox.read import render
+from pgmvox.read.sketch import Sheet
 
 build_dir, root = sys.argv[1], sys.argv[2]
 w = World.load(build_dir)

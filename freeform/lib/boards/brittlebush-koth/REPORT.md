@@ -7,7 +7,7 @@ in `PLAN.md`, which went through three reviews. This is what the build made of i
 ## What is in the folder
 
 - `scripts/plan.py`, `plan_check.py`, `sketch.py`: the blueprint, its checks and its sketch.
-- `scripts/gen.py`: the world, red's quadrant laid by `pgmvox.brittle` and turned a quarter three times.
+- `scripts/gen.py`: the world, red's quadrant laid by `pgmvox.grammar.brittle` and turned a quarter three times.
 - `scripts/mapxml.py`: the map.xml, written to `scripts/map.xml` and into `world/`.
 - `scripts/walk.py`: the built world read back, written to `renders/walks.txt`.
 - `scripts/renders.py`: the pictures.
@@ -62,7 +62,7 @@ worth the walk while the Dais is held.
 and objectives fanned four ways are in pgmvox 0.11.0, with tests.
 
 **A cornice reached the floor of the world under the lowest landing.** Every level rose three blocks, and
-`pgmvox.brittle.cap` now refuses a cornice that would reach under y 3.
+`pgmvox.grammar.brittle.cap` now refuses a cornice that would reach under y 3.
 
 **The original's finish took three reviews to match.** The panel is five wide and framed in black clay down both
 sides, the stairs' sides carry the cornice, a bed is ringed twice in sandstone stairs, sand is mixed with

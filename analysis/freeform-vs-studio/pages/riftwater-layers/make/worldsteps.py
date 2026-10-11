@@ -5,9 +5,11 @@ B = os.path.join(ROOT, "freeform/lib/ports/riftwater/scripts")
 sys.path.insert(0, B); sys.path.insert(0, os.path.join(ROOT, "freeform/lib"))
 os.chdir(B)
 import dress, ground, plan as P, under, works
-from pgmvox import B as BL, World, props, terrain
-from pgmvox.blocks import COLOURS
-from pgmvox.orient import turn_world
+from pgmvox import B as BL, World
+from pgmvox.built import props
+from pgmvox.surface import terrain
+from pgmvox.core.blocks import COLOURS
+from pgmvox.core.orient import turn_world
 SNAPS, prev = [], {}
 def top_colours(w):
     solid = w.ids != 0

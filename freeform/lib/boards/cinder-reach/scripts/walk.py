@@ -10,7 +10,9 @@ import time
 import numpy as np
 
 import plan as P
-from pgmvox import B, World, audit, walk
+from pgmvox import B, World
+from pgmvox.read import audit
+from pgmvox.read import walk
 
 t0 = time.time()
 w = World.load(sys.argv[1])

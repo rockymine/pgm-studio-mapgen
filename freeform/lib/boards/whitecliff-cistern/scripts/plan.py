@@ -23,8 +23,8 @@ from functools import lru_cache
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 import numpy as np  # noqa: E402
 
-from pgmvox.objectives import Box, Hill, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.plan import Raster, Symmetry  # noqa: E402
+from pgmvox.play.objectives import Box, Hill, Objectives, Observer, Spawn, Teams  # noqa: E402
+from pgmvox.plan.raster import Raster, Symmetry  # noqa: E402
 
 BOARD = "whitecliff-cistern"
 X_MIN, X_MAX = -60, 59

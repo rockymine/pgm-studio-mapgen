@@ -141,7 +141,7 @@ the place: they are the most exposed ground on the board.
 - **A quarter-turn symmetry.** pgmvox mirrored and half-turned a board; four teams needed its world, its
   objectives and its sketch turned a quarter at a time. That is `Symmetry("rot_90")` and `turn_world(w, "cw")`.
 - **The Brittlebush pieces as library pieces.** The edge, the panels, the beds and sand, and the stair cell are
-  `pgmvox.brittle`, keyed to a cell.
+  `pgmvox.grammar.brittle`, keyed to a cell.
 
 ## What changed after the first review
 

@@ -4,7 +4,7 @@ plan's objectives; the original board's kit; the rift as the only place to build
     python3 mapxml.py > map.xml
 """
 import plan as P
-from pgmvox.mapxml import Doc, E
+from pgmvox.play.mapxml import Doc, E
 
 d = Doc("Riftwater", "0.2.0", "Destroy both of the enemy's monuments: one in their market square, one on their "
         "village green.", "dtm")

@@ -5,7 +5,7 @@ by the higher score, the kit, the fall past the stack, building only over the st
     python3 mapxml.py > map.xml
 """
 import plan as P
-from pgmvox.mapxml import Doc, E, item
+from pgmvox.play.mapxml import Doc, E, item
 
 d = Doc("Whitecliff Cistern", "0.1.0", "Hold the hills: the Cistern pays two a second, the Garden and the Boatyard one.", "koth")
 d.add(E("authors", E("author", text="Claude (freeform generator, on pgmvox)")))

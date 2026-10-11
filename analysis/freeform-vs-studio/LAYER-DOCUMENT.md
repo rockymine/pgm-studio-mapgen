@@ -1,7 +1,7 @@
 # The layer document, draft 3
 
 A board stated as data: ordered layers, each one operation over the areas it is drawn in, built in fixed stages
-and kept as it ran. This is the shape the sketch tool's document takes in Studio 2.0. `pgmvox.document` builds
+and kept as it ran. This is the shape the sketch tool's document takes in Studio 2.0. `pgmvox.document.layers` builds
 it, `freeform/lib/examples/layers/island.layers.json` is a whole board written in it, and
 `freeform/lib/ports/riftwater/riftwater.ground.layers.json` is the Riftwater port's ground, 38 layers that build its
 heights and water bit for bit, and `freeform/lib/examples/layers/saumland.layers.json` puts made and grown
@@ -233,7 +233,7 @@ a document would need a `sections` entry beside `cells` for it, with the clay st
 style's code; a document names them and does not state them.
 
 **Objectives, caves and the map's XML are not layers yet.** Spawns, wools, monuments and hills, the tunnels and
-chambers of `pgmvox.under`, and `map.xml` are calls a board makes after `document.build`.
+chambers of `pgmvox.volume.under`, and `map.xml` are calls a board makes after `document.build`.
 
 **`melt` works on the crater alone.** A level top or a butte with a surface of its own would melt the same way
 through `smooth_max`, and the operation list grows one row at a time from the shapes pgmvox already carries.

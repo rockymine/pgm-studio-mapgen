@@ -14,7 +14,7 @@ An analysis of the `opus55-freeform-riftwater` branch (pgmvox and the boards bui
 | `pages/night-layers/index.html` | the night of 10 to 11 October, in German: melting, half steps, line builds, the layer document and the island built from it layer by layer, the inventory, what is open |
 | `pages/night-made-grown/index.html` | the second night, in German: Saumland (made and grown ground, sunk bodies, patterned masses, symmetry) layer by layer, what Stratum, Brittlebush III, Claywork and Sandreach build themselves, and Riftwater's ground as data |
 | `pages/wandbild/index.html` | in German: the Claywork sunk-panel fix with every changed wall by coordinates, the bedrock lattice, one board in five wall dressings through the faces layer, and the pgmvox structure proposal |
-| `LAYER-DOCUMENT.md` | the layer document, draft 1: stages, areas, ground, paint and build layers, as `pgmvox.document` builds them, and what it does not hold yet |
+| `LAYER-DOCUMENT.md` | the layer document, draft 1: stages, areas, ground, paint and build layers, as `pgmvox.document.layers` builds them, and what it does not hold yet |
 | `pages/terrain-layers/index.html` | the terrain layer prototype: an island built from ordered, region-bound layers, editable in the browser |
 | `pgmvox-cleanup/INVENTORY.md` | pgmvox taken stock of: modules, duplication inside it and in the boards, every board run on 0.21.0, the fourteen terrain shapes to add, the cleanup order, and eight shape decisions to settle before the C# port |
 | `pgmvox-cleanup/LINE-BUILDS.md` | every wall, hedge, fence, parapet, rail and path step the boards build by hand, with file and line, and what a generic line build and a path-steps option have to cover |

@@ -18,11 +18,13 @@ import plan  # noqa: F401  (puts the library on the path)
 import dress as D
 from plan import (FOUNDATION, KILL_Y, MAX_BUILD, MIST_Y, OBSERVER_AT, WALL, X_MAX, X_MIN, Z_MAX, Z_MIN, build,
                   objectives, zone_mask)
-from pgmvox import B, World, forms, noise, rng
-from pgmvox import terrain as T
-from pgmvox.objectives import Wool
-from pgmvox.orient import turn_world
-from pgmvox.shapes import edge_depth
+from pgmvox import B, World, rng
+from pgmvox.scenery import forms
+from pgmvox.geom import noise
+from pgmvox.surface import terrain as T
+from pgmvox.play.objectives import Wool
+from pgmvox.core.orient import turn_world
+from pgmvox.geom.shapes import edge_depth
 
 BOARD = "lantern-karst"
 ROOT_FLOOR = 26                          # the deepest a root hangs, inside the mist

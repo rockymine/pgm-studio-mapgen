@@ -5,8 +5,8 @@ from PIL import Image, ImageDraw, ImageFont
 D = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "freeform/lib/ports/riftwater/scripts")); sys.path.insert(0, os.path.join(ROOT, "freeform/lib"))
 import plan as P
-from pgmvox import noise
-from pgmvox.noise import spline
+from pgmvox.geom import noise
+from pgmvox.geom.noise import spline
 h = pickle.load(open(f"{OUT}/stack.pkl", "rb")); land = h["land"]
 S = 5; X0, Z0 = P.X_MIN, P.Z_MIN
 base = np.array(Image.open(f"{OUT}/img/spoil.png").convert("L").convert("RGB")).astype(float)

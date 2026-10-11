@@ -9,7 +9,7 @@ import numpy as np
 
 import plan as P
 import plan_check as C
-from pgmvox.sketch import TEAM, SectionPanel, Sheet
+from pgmvox.read.sketch import TEAM, SectionPanel, Sheet
 
 m = C.measure()
 R = m["R"]

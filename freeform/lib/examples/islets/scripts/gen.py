@@ -5,9 +5,10 @@ import sys
 import numpy as np
 
 from plan import GROUND, HOUSE, KILL_Y, build
-from pgmvox import B, World, rng, terrain
-from pgmvox import build as BLD
-from pgmvox import facade as F
+from pgmvox import B, World, rng
+from pgmvox.surface import terrain
+from pgmvox.built import build as BLD
+from pgmvox.built import facade as F
 
 R = build()
 w = World(-110, -110, 220, 220, sy=120)

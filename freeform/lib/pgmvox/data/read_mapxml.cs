@@ -1,5 +1,5 @@
 // Read a map.xml with the studio's own parser and say what it found: every objective by kind, the regions, and
-// the validity check the studio runs before an export. pgmvox.objectives writes map.xml; this is how a board
+// the validity check the studio runs before an export. pgmvox.play.objectives writes map.xml; this is how a board
 // knows the studio reads the same map from it.
 //
 //   dotnet run read_mapxml.cs -- <map.xml> [<map.xml> ...]

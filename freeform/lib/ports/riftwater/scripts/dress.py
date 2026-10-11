@@ -3,7 +3,7 @@ the wheat field with its ditches and scarecrow, the Cutting's stumps and log pil
 grass and flowers.
 
 The trees are the original board's cut from the tree showcase (its trees.json, read, not copied), planted and
-spaced by pgmvox.trees. The field, the Cutting and the ground cover are local.
+spaced by pgmvox.scenery.trees. The field, the Cutting and the ground cover are local.
 """
 import os
 
@@ -12,9 +12,10 @@ from scipy import ndimage
 
 import plan as P
 from pgmvox import B, rng
-from pgmvox import props, shapes
-from pgmvox import trees as T
-from pgmvox.noise import fbm
+from pgmvox.built import props
+from pgmvox.geom import shapes
+from pgmvox.scenery import trees as T
+from pgmvox.geom.noise import fbm
 
 TREES_JSON = os.path.join(os.path.dirname(os.path.abspath(__file__)), "trees.json")
 NATURAL = {B.GRASS, B.DIRT}

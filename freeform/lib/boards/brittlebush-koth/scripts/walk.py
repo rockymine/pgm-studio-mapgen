@@ -4,7 +4,7 @@ said, the same for every team.
 
     python3 walk.py <build-dir>
 
-The voxel walk (pgmvox.walk, running jumps, a drop of six at most) walks the blocks; for the golden apples it may
+The voxel walk (pgmvox.read.walk, running jumps, a drop of six at most) walks the blocks; for the golden apples it may
 also build, the board's gaps standing in for blocks placed, filled with water a player swims through.
 """
 import sys
@@ -12,8 +12,10 @@ import sys
 import numpy as np
 
 import plan as P
-from pgmvox import B, World, audit, walk
-from pgmvox.objectives import Spawn
+from pgmvox import B, World
+from pgmvox.read import audit
+from pgmvox.read import walk
+from pgmvox.play.objectives import Spawn
 
 w = World.load(sys.argv[1])
 O = P.objectives()

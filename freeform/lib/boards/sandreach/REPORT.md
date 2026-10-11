@@ -9,7 +9,7 @@ is red's turned a half about the middle.
 
 - `scripts/plan.py`: the made blueprint in cells and sections, the grown ground's shapes and heights, the
   objectives.
-- `scripts/gen.py`: the world: the made through `pgmvox.brittle`, the grown by hand on `pgmvox.terrain`.
+- `scripts/gen.py`: the world: the made through `pgmvox.grammar.brittle`, the grown by hand on `pgmvox.surface.terrain`.
 - `scripts/mapxml.py`, `scripts/walk.py`, `scripts/renders.py`: the map.xml, the read-back, the pictures.
 - `world/`: the Minecraft world, ready for PGM.
 

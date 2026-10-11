@@ -2,15 +2,15 @@
 
 # How pgmvox's style grammar turns a plan into a board, step by step
 
-Two boards, built cumulatively and rendered after every rule with `pgmvox.render.iso` (same corner `se`, same crop,
+Two boards, built cumulatively and rendered after every rule with `pgmvox.read.render.iso` (same corner `se`, same crop,
 same scale and the same pixel frame for every stage of one crop, so the PNGs flip through). All paths are relative
 to this folder (`.../scratchpad/grammar-steps/`), images in `img/`. Code is pgmvox 0.19.0 at
 `/home/user/pgm-studio-mapgen/freeform/lib/pgmvox`, line numbers from that checkout; "gen" is the board's
 `scripts/gen.py`. Nothing in the repository was edited.
 
 **How the stages were produced.** `staged.py` is a line-for-line copy of `grammar.lay` (`grammar.py:281`) with one
-switch per rule (`body faces accents seam fill motifs`) and a log of every decision; it replaces `pgmvox.grammar.lay`
-at run time (`staged.install()`), so the board scripts and `pgmvox.brittle.build` call it unchanged. `cw_build.py`
+switch per rule (`body faces accents seam fill motifs`) and a log of every decision; it replaces `pgmvox.grammar.rules.lay`
+at run time (`staged.install()`), so the board scripts and `pgmvox.grammar.brittle.build` call it unchanged. `cw_build.py`
 and `bb_build.py` run text-edited copies of the two `gen.py` files up to a stage. **Check:** the final stage of each
 equals the committed board block for block in count (Claywork 364,698; Brittlebush III 107,727). Stage 2 (depth) is
 a debug paint, not a code step. Stage 7 for Brittlebush has no motifs, so it is skipped.
@@ -34,12 +34,12 @@ column's top, owner and **depth** (chessboard distance in from its section's edg
 order: **body** under the column, a **face** where the ground beside falls two or more, otherwise the **seam** on a
 depth-0 column; after the columns, the section's **fill** over its depth >= 1 columns and its **motifs**. The blocks
 are all in a `Style` (`:259`): `body`, `faces`, `seam`, `fills`, `choose`, `motifs`, `params`. Claywork is
-`pgmvox/clay.py` (`style()`, `:61`); Brittlebush is `pgmvox/brittle.py` (`STYLE`, `:263`). What a plan is not
+`pgmvox/grammar/clay.py` (`style()`, `:61`); Brittlebush is `pgmvox/grammar/brittle.py` (`STYLE`, `:263`). What a plan is not
 asked to say: any block.
 
 ---------------------------------------------------------------------------------------------------------------
 
-# A. Claywork (`boards/claywork`, style `pgmvox/clay.py`)
+# A. Claywork (`boards/claywork`, style `pgmvox/grammar/clay.py`)
 
 ### Stage 0 - the input: the plan raster
 `img/cw-00-plan.png` (red's half; blue is the mirror in z). `plan.py` draws a `Raster` of kinds and floors
@@ -149,7 +149,7 @@ blue; `objectives().stamp(w)`.
 
 ---------------------------------------------------------------------------------------------------------------
 
-# B. Brittlebush III (`boards/brittlebush-iii`, style `pgmvox/brittle.py`, plan `studioplan.py`)
+# B. Brittlebush III (`boards/brittlebush-iii`, style `pgmvox/grammar/brittle.py`, plan `studioplan.py`)
 
 ### Stage 0 - the input: the studio plan
 `img/bb-00a-studio-plan.png` (`plan.json`, identical after JSON normalising to the deployed `untitled-plan-8`): 17 pieces (rect in

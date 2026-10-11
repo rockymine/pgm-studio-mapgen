@@ -7,9 +7,9 @@ import os
 import sys
 
 from plan import (KILL_Y, MIST_Y, PIECE, PLACES, SPAWN_AT, WALL, KIND_COLOURS, build, objectives, zone_mask)
-from pgmvox.objectives import DYES, Wool
-from pgmvox.sketch import TEAM, SectionPanel, Sheet
-from pgmvox import blocks as K
+from pgmvox.play.objectives import DYES, Wool
+from pgmvox.read.sketch import TEAM, SectionPanel, Sheet
+from pgmvox.core import blocks as K
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 R, flights, walls = build()

@@ -10,7 +10,7 @@ import sys
 import numpy as np
 
 import plan as P
-from pgmvox.sketch import TEAM, SectionPanel, Sheet
+from pgmvox.read.sketch import TEAM, SectionPanel, Sheet
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 with open(os.path.join(HERE, "..", "renders", "plan-check.json")) as f:

@@ -18,7 +18,7 @@
 
 ## What the freeform generators did differently
 
-**They controlled every block, so detail could be chosen where it mattered.** `pgmvox.World` is a voxel array written through the studio's own Anvil writer, so nothing the studio could place is out of reach. Every board's `gen.py` lays its own ground, houses, props and objectives, and the objectives (`pgmvox.objectives`) still write the studio's XML shapes. The studio validates the result with `read_mapxml.cs`.
+**They controlled every block, so detail could be chosen where it mattered.** `pgmvox.World` is a voxel array written through the studio's own Anvil writer, so nothing the studio could place is out of reach. Every board's `gen.py` lays its own ground, houses, props and objectives, and the objectives (`pgmvox.play.objectives`) still write the studio's XML shapes. The studio validates the result with `read_mapxml.cs`.
 
 **Ground was painted by slope and by bed, not by shape.** `terrain.slope_deg` reads the grade as the studio's `SurfaceGradient` does, and `lay` chooses soil depth and top block per column from it, so a cliff is rock to its face and a meadow is grass. `Strata` and `beds` tilt and fold rock beds so a wall shows layers dipping across it. The studio's buckets are chosen by edge and drop; the project's own `CLAUDE.md` names the failure of painting by plan piece or height band as "the look every report here has complained about".
 
@@ -26,15 +26,15 @@
 
 **Houses were rasterised at any heading with the studio's own roofs.** `build.Frame` places a building's axes at any angle, and `RoofField` ports the studio's six roof forms, held to the studio by a test of 34,500 questions. At 0 or 90 degrees the roof is the studio's exactly; turned, it is laid in cubes and slabs. That accounts for "houses at different angles with the roofs properly following".
 
-**A grammar made a style out of a few rules.** `GRAMMAR.md` states Brittlebush as cells of five blocks, sections cut into rectangles, a one-block outline whose material says what lies beyond, and a face read as courses down from its edge with an accent bay. `pgmvox.grammar` and `clay` implement it apart from any blocks. This is the "geometric grammar" the playtester describes, and the studio theme has no counterpart.
+**A grammar made a style out of a few rules.** `GRAMMAR.md` states Brittlebush as cells of five blocks, sections cut into rectangles, a one-block outline whose material says what lies beyond, and a face read as courses down from its edge with an accent bay. `pgmvox.grammar.rules` and `clay` implement it apart from any blocks. This is the "geometric grammar" the playtester describes, and the studio theme has no counterpart.
 
 **Props and patterns were authored as small objects.** `props.stalls` lays a market row with awnings, `props.lamp` a post and lantern, and `facade` supplies inset bands, courses, windows, glyph rows and floor fields. The playtester liked the market stands; they exist because a prop is a few lines of code, where the studio has no prop seam beyond its stampers.
 
 ## The plan, sketch and walk loop
 
-**The freeform boards were planned in a form that could be checked before building.** `pgmvox.plan.Raster` holds the plan with its symmetry drawn in, `sketch` draws it true to scale with its numbers on the sheet, and `plangraph` walks it. Every board's `plan_check.py` measured goal rules against targets before a block was written. The trial reports show the loop catching things: four wrong joins in the first plan of one board.
+**The freeform boards were planned in a form that could be checked before building.** `pgmvox.plan.raster.Raster` holds the plan with its symmetry drawn in, `sketch` draws it true to scale with its numbers on the sheet, and `plangraph` walks it. Every board's `plan_check.py` measured goal rules against targets before a block was written. The trial reports show the loop catching things: four wrong joins in the first plan of one board.
 
-**The built world was then read back.** Each `walk.py` loads the saved blocks and walks them under the 1.8 movement rules in `pgmvox.move` and `walk`, then runs the footing audit, the void audit and the objective checks. One report found two library bugs only through the count of standable columns over the void. A picture answers whether something came out; the number answers whether it is right, as `CLAUDE.md` says.
+**The built world was then read back.** Each `walk.py` loads the saved blocks and walks them under the 1.8 movement rules in `pgmvox.core.move` and `walk`, then runs the footing audit, the void audit and the objective checks. One report found two library bugs only through the count of standable columns over the void. A picture answers whether something came out; the number answers whether it is right, as `CLAUDE.md` says.
 
 **The plan and sketch phases are probably what the playtester felt as "places".** The plan names each place and gives it a reason, as `WHAT-A-BOARD-IS-MADE-OF.md` demands, and the sketch makes the author review it before building. The studio has a sketch tool too (`docs/tools/sketch.md`), so the difference is less the existence of a phase than that here it was measured and drawn at true scale. This attribution is plausible, not shown.
 
@@ -54,7 +54,7 @@
 
 ## What was lost relative to the studio
 
-**The stampers' gameplay fixtures were lost first and have since been ported.** The defence chest and the wool-room gear were studio stampers (`DefenseChest.cs`, `WoolChests.cs`). `pgmvox.props` now has `defence_chests` and `wool_chests`, and the playtest batch applied the wool chests to the capture boards. The bedrock wall with its defence chest is the same case, with `props.DEFENCE` in the library.
+**The stampers' gameplay fixtures were lost first and have since been ported.** The defence chest and the wool-room gear were studio stampers (`DefenseChest.cs`, `WoolChests.cs`). `pgmvox.built.props` now has `defence_chests` and `wool_chests`, and the playtest batch applied the wool chests to the capture boards. The bedrock wall with its defence chest is the same case, with `props.DEFENCE` in the library.
 
 **Build-region fidelity was lost, and the evidence is in the writers.** The studio writes a zone as a rectangle with no-build holes and marks it. The capture boards write block 36 under every buildable column plus a `not-void` filter, or one negative rectangle, as `brassmoor-works/scripts/mapxml.py` and `common.build_only_over` do. That is coarser than the studio's zones, and a few boards hand-draw the marker line.
 
@@ -68,9 +68,9 @@
 
 **These are ranked by how much play or quality each decides, then by how little it costs.** The first three close gaps the playtester named and land in the library; the rest carry the freeform gain into the studio. Each says where it lands.
 
-1. **Objective sky markers for every pgmvox objective.** Call the existing `GoalMarkerStamper` logic from `pgmvox.objectives` (`Wool`, `Destroyable`, `Core`, `Hill`) so each objective stamps its marker as it stamps its blocks. It lands in `freeform/lib/pgmvox/objectives.py` and reuses `PgmStudio.Minecraft/Stamping/GoalMarkerStamper.cs`.
-2. **Build-zone marking and zone fidelity.** Add a `mapxml`/`world` helper that writes the zone rectangles with holes and the y 1 redstone outline, the library's version of `BuildMarkerStamper`. It lands in `pgmvox.mapxml` and `pgmvox.objectives` (`Objectives.write`), so no board hand-draws it.
-3. **The defence chest and bedrock wall as one stamp.** `props.defence_chests` exists; pair it with the bedrock wall the capture boards write by hand. It lands in `pgmvox.props` with a plan piece in `plan`.
+1. **Objective sky markers for every pgmvox objective.** Call the existing `GoalMarkerStamper` logic from `pgmvox.play.objectives` (`Wool`, `Destroyable`, `Core`, `Hill`) so each objective stamps its marker as it stamps its blocks. It lands in `freeform/lib/pgmvox/play/objectives.py` and reuses `PgmStudio.Minecraft/Stamping/GoalMarkerStamper.cs`.
+2. **Build-zone marking and zone fidelity.** Add a `mapxml`/`world` helper that writes the zone rectangles with holes and the y 1 redstone outline, the library's version of `BuildMarkerStamper`. It lands in `pgmvox.play.mapxml` and `pgmvox.play.objectives` (`Objectives.write`), so no board hand-draws it.
+3. **The defence chest and bedrock wall as one stamp.** `props.defence_chests` exists; pair it with the bedrock wall the capture boards write by hand. It lands in `pgmvox.built.props` with a plan piece in `plan`.
 4. **Slope-banded finish in the theme system.** Add a `slope` axis and bed tilt to `TerrainTheme`, ported from `terrain.lay`, `Strata` and `beds`. It lands in `PgmStudio.Minecraft/TerrainPainter`, and `CLAUDE.md` already names the `slope` band axis.
 5. **Floating-island undersides.** Port `terrain.underside` and `forms.skirt` into the world builder's void-edge pass. It lands in `PgmStudio.Minecraft/Stamping/TerrainBuilder.cs` or the relief solver's output stage.
 6. **Houses at any heading.** Let `BuildingPlan` carry a heading, using `build.Frame` and the `RoofField` port that the library already tests against the studio. It lands in `StructureStamper.cs` and the roof field.

@@ -168,7 +168,7 @@ that avoids a set of cells, so the fix was in the plan, not the measure.
 
 ```python
 from pgmvox import World, B
-from pgmvox import facade as F
+from pgmvox.built import facade as F
 w = World(0, 0, 10, 10, sy=8)
 ring = {(x, z) for x in range(1, 8) for z in range(1, 8) if x in (1, 7) or z in (1, 7)}
 runs = F.extrude(w, ring, 1, 5, base=(B.BRICK, 0), faces_=[lambda s, r, t, H, n: ("accent", (B.STONE, 0))])

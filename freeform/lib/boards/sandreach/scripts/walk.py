@@ -13,9 +13,11 @@ import sys
 import numpy as np
 
 import plan as P
-from pgmvox import B, World, audit, walk
-from pgmvox.brittle import CELL
-from pgmvox.objectives import Spawn
+from pgmvox import B, World
+from pgmvox.read import audit
+from pgmvox.read import walk
+from pgmvox.grammar.brittle import CELL
+from pgmvox.play.objectives import Spawn
 
 w = World.load(sys.argv[1])
 O = P.objectives()

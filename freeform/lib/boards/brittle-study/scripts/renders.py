@@ -5,7 +5,8 @@
 import os
 import sys
 
-from pgmvox import World, render
+from pgmvox import World
+from pgmvox.read import render
 
 w = World.load(sys.argv[1])
 out = os.path.join(sys.argv[2], "renders")

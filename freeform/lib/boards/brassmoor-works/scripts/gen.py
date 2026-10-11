@@ -19,11 +19,12 @@ import numpy as np
 
 import plan as P
 import common as C
-from pgmvox import B, World, props, rng
+from pgmvox import B, World, rng
+from pgmvox.built import props
 
-from pgmvox import terrain as T
-from pgmvox.objectives import Wool
-from pgmvox.orient import ladder as ladder_data, stair as stair_data, turn_world
+from pgmvox.surface import terrain as T
+from pgmvox.play.objectives import Wool
+from pgmvox.core.orient import ladder as ladder_data, stair as stair_data, turn_world
 
 t0 = time.time()
 R = P.build()

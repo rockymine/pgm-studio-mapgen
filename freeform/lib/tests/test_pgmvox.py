@@ -17,17 +17,33 @@ from scipy import ndimage
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 
-from pgmvox import B, World, audit, blocks, move, orient, plangraph, plot, render, shapes, sight, terrain, walk  # noqa: E402
-from pgmvox import build as BLD  # noqa: E402
-from pgmvox import facade as F  # noqa: E402
-from pgmvox import pieces as P  # noqa: E402
-from pgmvox import objectives as O  # noqa: E402
-from pgmvox import solid as SOL  # noqa: E402
-from pgmvox import forms, landform as LF, noise, route as RT  # noqa: E402
-from pgmvox import props, trees as TR, under as U  # noqa: E402
-from pgmvox.mapxml import Doc, E, duration, point  # noqa: E402
-from pgmvox.plan import Raster, Symmetry  # noqa: E402
-from pgmvox.sketch import TEAM, SectionPanel, Sheet  # noqa: E402
+from pgmvox import B, World  # noqa: E402
+from pgmvox.read import audit
+from pgmvox.core import blocks
+from pgmvox.core import move
+from pgmvox.core import orient
+from pgmvox.plan import graph as plangraph
+from pgmvox.read import plot
+from pgmvox.read import render
+from pgmvox.geom import shapes
+from pgmvox.read import sight
+from pgmvox.surface import terrain
+from pgmvox.read import walk
+from pgmvox.built import build as BLD  # noqa: E402
+from pgmvox.built import facade as F  # noqa: E402
+from pgmvox.plan import pieces as P  # noqa: E402
+from pgmvox.play import objectives as O  # noqa: E402
+from pgmvox.volume import solid as SOL  # noqa: E402
+from pgmvox.scenery import forms  # noqa: E402
+from pgmvox.ground import landform as LF
+from pgmvox.geom import noise
+from pgmvox.routes import route as RT
+from pgmvox.built import props  # noqa: E402
+from pgmvox.scenery import trees as TR
+from pgmvox.volume import under as U
+from pgmvox.play.mapxml import Doc, E, duration, point  # noqa: E402
+from pgmvox.plan.raster import Raster, Symmetry  # noqa: E402
+from pgmvox.read.sketch import TEAM, SectionPanel, Sheet  # noqa: E402
 
 FIXTURES = os.path.join(HERE, "fixtures")
 
@@ -219,7 +235,7 @@ class Field(unittest.TestCase):
         self.X, self.Z = np.meshgrid(np.arange(-50, 50, dtype=float), np.arange(-40, 40, dtype=float), indexing="ij")
 
     def test_landmarks_are_exact(self):
-        from pgmvox import field as F
+        from pgmvox.ground import field as F
         X, Z = self.X, self.Z
         ramp = F.terms(X, Z, 10, F.Ramp("x", -20, 20, 6))
         self.assertTrue((ramp[X <= -20] == 10).all() and (ramp[X >= 20] == 16).all())
@@ -232,7 +248,7 @@ class Field(unittest.TestCase):
         self.assertGreater(turned[50, 40 + 9], turned[50 + 9, 40])        # turned a right angle: long along z
 
     def test_terms_add_and_mix_weighs(self):
-        from pgmvox import field as F
+        from pgmvox.ground import field as F
         X, Z = self.X, self.Z
         a, b = F.Ramp("x", -10, 10, 3), F.Tilt(0.1, -0.2)
         self.assertTrue(np.allclose(F.terms(X, Z, 2, a, b), F.terms(X, Z, 2, a) + F.terms(X, Z, 0, b)))
@@ -267,7 +283,7 @@ class Shapes(unittest.TestCase):
         self.assertEqual(shapes.nearest_on(bend, -5, 0), (5.0, 0.0))
 
     def test_an_island_keeps_to_its_box_its_insets_and_its_cuts(self):
-        from pgmvox.noise import ragged
+        from pgmvox.geom.noise import ragged
         X, Z = np.meshgrid(np.arange(-40, 0), np.arange(-30, 30), indexing="ij")
         west = 2 + ragged(X.shape, "z", 12, 5, seed=1)
         corner = [(-40, 20), (-25, 20), (-25, 29), (-40, 29)]
@@ -289,7 +305,7 @@ class Shapes(unittest.TestCase):
         self.assertEqual((e[1, 1], e[3, 3], e[0, 0]), (0, 2, -1))
 
     def test_a_line_wanders_along_one_axis_only(self):
-        from pgmvox.noise import fbm, line
+        from pgmvox.geom.noise import fbm, line
         f = line((30, 50), "z", 12, seed=7, amp=4, base=-10)
         self.assertEqual(f.shape, (1, 50))
         self.assertTrue(np.array_equal(f[0], -10 + 4 * fbm((50,), 12, 2, seed=7)))
@@ -299,7 +315,7 @@ class Shapes(unittest.TestCase):
         self.assertTrue(np.array_equal(f, line((30, 50), "z", 12, seed=7, amp=4, base=-10)))
 
     def test_smoothstep_rises_falls_and_steps(self):
-        from pgmvox.noise import smoothstep
+        from pgmvox.geom.noise import smoothstep
         self.assertEqual((float(smoothstep(0, 10, -1)), float(smoothstep(0, 10, 5)), float(smoothstep(0, 10, 11))),
                          (0.0, 0.5, 1.0))
         self.assertEqual((float(smoothstep(-14, -64, -70)), float(smoothstep(-14, -64, 0))), (1.0, 0.0))
@@ -310,19 +326,20 @@ class Shapes(unittest.TestCase):
         import pkgutil
         import pgmvox
         ranges = []
-        for info in pkgutil.iter_modules(pgmvox.__path__):
-            module = __import__(f"pgmvox.{info.name}", fromlist=["_"])
-            found = [(f"{info.name}.{n}", f) for n, f in vars(module).items()
+        for info in pkgutil.walk_packages(pgmvox.__path__, "pgmvox."):
+            module = __import__(info.name, fromlist=["_"])
+            short = info.name.rsplit(".", 1)[-1]
+            found = [(f"{short}.{n}", f) for n, f in vars(module).items()
                      if inspect.isfunction(f) and f.__module__ == module.__name__ and not n.startswith("_")]
             for n, cls in vars(module).items():
                 if inspect.isclass(cls) and cls.__module__ == module.__name__:
-                    found += [(f"{info.name}.{n}.{m}", f) for m, f in vars(cls).items()
+                    found += [(f"{short}.{n}.{m}", f) for m, f in vars(cls).items()
                               if inspect.isfunction(f) and not m.startswith("_")]
             for name, f in found:
                 params = [p for p in inspect.signature(f).parameters if p != "self"]
                 if params[:4] == ["x0", "x1", "z0", "z1"]:
                     ranges.append(name)
-        self.assertEqual(sorted(ranges), ["pieces.box", "plan.Raster.rect"])
+        self.assertEqual(sorted(ranges), ["pieces.box", "raster.Raster.rect"])
 
 
 class Landforms(unittest.TestCase):
@@ -608,7 +625,7 @@ class Capture(unittest.TestCase):
         self.assertEqual(d[8 - w.x0, 6, 0 - w.z0], -1)
 
     def test_a_kit(self):
-        from pgmvox.mapxml import item
+        from pgmvox.play.mapxml import item
         d = Doc("T", "1", "t")
         d.kit("k", item("bow", 1, enchant=[("infinity", 1)], unbreakable=True), item("leather boots", tag="boots"))
         d.kill_below(40, how="kit")
@@ -636,7 +653,7 @@ class Forms(unittest.TestCase):
         land = np.zeros((20, 20), bool)
         land[5:15, 5:15] = True
         floor = np.where(land, 30, 0)
-        T = __import__("pgmvox.terrain", fromlist=["lay"])
+        T = __import__("pgmvox.surface.terrain", fromlist=["lay"])
         T.lay(w, floor, mask=land, from_y=20)
         forms.skirt(w, land, floor, lambda y: (B.STONE, 0), np.random.default_rng(2), bulge=np.ones((20, 20)))
         cols = w.ids.transpose(0, 2, 1)[~land]                              # every column off the floor, by y
@@ -806,7 +823,7 @@ class LineWalls(unittest.TestCase):
 class LayerDocument(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        from pgmvox import document
+        from pgmvox.document import layers as document
         with open(os.path.join(os.path.dirname(HERE), "examples", "layers", "island.layers.json")) as f:
             cls.doc = json.load(f)
         cls.built = document.build(cls.doc)
@@ -819,7 +836,7 @@ class LayerDocument(unittest.TestCase):
         self.assertTrue(all(s.changed.any() for s in self.built.steps))
 
     def test_the_areas_of_one_layer_melt(self):
-        from pgmvox import document
+        from pgmvox.document import layers as document
         hills = next(L for L in self.doc["ground"] if L["id"] == "zwillingshuegel")
         hard = dict(hills, join=0)
         X, Z = self.built.X, self.built.Z
@@ -830,7 +847,7 @@ class LayerDocument(unittest.TestCase):
         self.assertGreater(float((melted - plain).max()), 1.0)       # the saddle between them
 
     def test_one_board_takes_its_walls_from_a_faces_layer(self):
-        from pgmvox import document
+        from pgmvox.document import layers as document
         folder = os.path.join(os.path.dirname(HERE), "examples", "layers", "wandbild")
         built = {}
         for name in ("kahl", "outback", "claywork", "schichten", "brittle"):
@@ -851,12 +868,12 @@ class LayerDocument(unittest.TestCase):
         self.assertEqual([back.get(-20, y, 29) for y in (22, 21)], [(B.WOOD_SLAB, 9), (B.WOOD_SLAB, 1)])
         self.assertEqual(back.get(-20, 22, 28), (B.STAINED_CLAY, 14))                   # the team's clay behind
         self.assertEqual(back.get(-40, 22, 29), (B.PLANKS, 1))                           # a frame at the corner,
-        from pgmvox.orient import stair
+        from pgmvox.core.orient import stair
         self.assertEqual(back.get(-37, 22, 29), (B.SPRUCE_STAIRS, stair("w", upside_down=True)))  # a stair rising
         self.assertEqual(back.get(36, 21, 29), (B.SPRUCE_STAIRS, stair("e")))                      # to either end
 
     def test_made_and_grown_on_one_board(self):
-        from pgmvox import document
+        from pgmvox.document import layers as document
         with open(os.path.join(os.path.dirname(HERE), "examples", "layers", "saumland.layers.json")) as f:
             doc = json.load(f)
         b = document.build(doc)
@@ -870,7 +887,7 @@ class LayerDocument(unittest.TestCase):
         self.assertEqual([s.stage for s in b.steps][-1], "symmetry")
 
     def test_the_riftwater_ports_ground_is_a_layer_document(self):
-        from pgmvox import document
+        from pgmvox.document import layers as document
         scripts = os.path.join(os.path.dirname(HERE), "ports", "riftwater", "scripts")
         sys.path.insert(0, scripts)
         try:
@@ -1385,7 +1402,7 @@ class Underground(unittest.TestCase):
 
 class Bore(unittest.TestCase):
     def test_a_bore_is_open_from_top_to_bottom_within_its_radius(self):
-        from pgmvox import under as U
+        from pgmvox.volume import under as U
         w = World(-10, -10, 20, 20, sy=50)
         w.ids[:, :40, :] = B.STONE
         opened = U.bore(w, (0.0, 0.0), 3.2, 0, 39, seed=1, r_noise=0.25, lip=(40, (B.STAINED_CLAY, 12)))
@@ -1645,7 +1662,7 @@ class QuarterTurns(unittest.TestCase):
 
 class Brittle(unittest.TestCase):
     def test_a_blueprint_builds_in_the_style(self):
-        from pgmvox import brittle as BR
+        from pgmvox.grammar import brittle as BR
         unit = {(a, b): BR.Cell("flat", 13) for a in range(-4, -1) for b in range(-4, -1)}
         unit[(-1, -3)] = BR.Cell("stair", 10, rises="w")
         unit[(-1, -2)] = BR.Cell("stair", 10, rises="w")
@@ -1661,7 +1678,7 @@ class Brittle(unittest.TestCase):
         self.assertEqual(w.id(-5, 0, -15), 36)                           # building allowed over the board
 
     def test_an_under_section_is_hollow_with_its_pillar(self):
-        from pgmvox import brittle as BR
+        from pgmvox.grammar import brittle as BR
         unit = {(a, b): BR.Cell("stacked", 16, under=(b == -3)) for a in (-4, -3) for b in (-4, -3)}
         cells, team = BR.fan(unit)
         w = World(-30, -30, 60, 60, sy=32)
@@ -1679,14 +1696,14 @@ class Brittle(unittest.TestCase):
                          [B.SPRUCE_STAIRS, B.BRICK, B.STAINED_CLAY, B.BEDROCK, 36])
 
     def test_a_studio_plan_tells_water_from_bare_zones(self):
-        from pgmvox import studioplan as SP
+        from pgmvox.grammar import studioplan as SP
         plan = {"globals": {"cell": 5, "surface": 9}, "pieces": [{"id": "a", "rect": [-3, -3, 2, 2]}],
                 "zones": [{"id": "water", "rect": [-1, -3, 1, 1]}, {"id": "zone", "rect": [-3, -1, 2, 1]}]}
         u = SP.unit(plan, lift=6)
         self.assertEqual((u[(-1, -3)].kind, u[(-3, -1)].kind, u[(-3, -3)].y), ("water", "gap", 15))
 
     def test_a_house_stacks_whole_cells(self):
-        from pgmvox import brittle as BR
+        from pgmvox.grammar import brittle as BR
         w = World(-5, -5, 20, 20, sy=48)
         BR.house(w, [[(0, 0), (1, 0), (0, 1), (1, 1)], [(0, 0), (1, 0), (1, 1)], [(0, 0)]], 10, 4,
                  door=((0, 1), "s"))
@@ -1700,7 +1717,7 @@ class Brittle(unittest.TestCase):
         self.assertEqual((w.id(2, 11, 9), w.id(2, 11, 8)), (B.AIR, B.COBWEB))        # the door, cobwebs inside
 
     def test_a_build_zone_is_outlined_as_the_studio_marks_it(self):
-        from pgmvox import brittle as BR
+        from pgmvox.grammar import brittle as BR
         w = World(-20, -20, 40, 40, sy=40)
         cells = {(0, 0): BR.Cell("gap"), (1, 0): BR.Cell("gap"), (-1, 0): BR.Cell("flat", 10, section="land")}
         BR.build(w, cells)
@@ -1713,7 +1730,7 @@ class Brittle(unittest.TestCase):
         self.assertEqual(w.id(3, 0, 2), 36)
 
     def test_sections_outline_each_other_and_panels_need_a_full_drop(self):
-        from pgmvox import brittle as BR
+        from pgmvox.grammar import brittle as BR
         unit = {(a, b): BR.Cell("flat", 16, section="a" if b < -2 else "b") for a in (-4, -3) for b in (-4, -3, -2, -1)}
         unit[(-2, -4)] = BR.Cell("flat", 13)                                      # three under: no room for a panel
         cells, team = BR.fan(unit)
@@ -1730,13 +1747,13 @@ class Brittle(unittest.TestCase):
 
 class Grammar(unittest.TestCase):
     def test_split_and_tile_cut_a_box_into_rectangles(self):
-        from pgmvox import grammar as G
+        from pgmvox.grammar import rules as G
         secs = G.split((0, 0, 9, 6), 2, 2, y=10)
         self.assertEqual([s.boxes[0] for s in secs], [(0, 0, 4, 2), (0, 3, 4, 6), (5, 0, 9, 2), (5, 3, 9, 6)])
         self.assertEqual(len(G.tile((0, 0, 19, 9), 5, y=10)), 8)
 
     def test_a_style_lays_faces_seams_and_fills_by_rule(self):
-        from pgmvox import grammar as G
+        from pgmvox.grammar import rules as G
         courses = [(B.STONEBRICK, 0), (B.BRICK, 0), (B.STONE, 0)]
         face = G.Face(courses, G.Accent(4, frame=[(B.STONEBRICK, 0)] * 3, inner=[(B.STONEBRICK, 0), (B.GLASS, 0),
                                                                                  (B.GLASS, 0)], every=2, min_air=3))
@@ -1761,8 +1778,8 @@ class Grammar(unittest.TestCase):
         self.assertEqual(sorted(laid), ["a-0-0", "a-1-0", "low"])
 
     def test_the_claywork_style_inlays_its_bays_and_lays_its_arrows(self):
-        from pgmvox import clay
-        from pgmvox import grammar as G
+        from pgmvox.grammar import clay
+        from pgmvox.grammar import rules as G
         secs = [G.Section(((0, 0, 8, 8),), 20, "front-0-0", "plate", motifs=(("arrow", (("d", "n"),)),)),
                 G.Section(((9, 0, 17, 8),), 20, "front-1-0", "inlay")]
         w = World(-2, -2, 22, 12, sy=32)
@@ -1774,8 +1791,8 @@ class Grammar(unittest.TestCase):
         self.assertEqual(w.id(0, 0, 0), 36)
 
     def test_a_sunk_course_keeps_its_back_on_every_side(self):
-        from pgmvox import clay
-        from pgmvox import grammar as G
+        from pgmvox.grammar import clay
+        from pgmvox.grammar import rules as G
         w = World(-2, -2, 14, 14, sy=32)
         G.lay(w, G.Ground([G.Section(((0, 0, 8, 8),), 20, "a", "plate")]), clay.style(dye=14))
 
@@ -1787,8 +1804,8 @@ class Grammar(unittest.TestCase):
         self.assertIn((B.QUARTZ, 1), back(4, 1))
 
     def test_a_face_dresses_ground_that_has_no_sections(self):
-        from pgmvox import grammar as G
-        from pgmvox.orient import stair
+        from pgmvox.grammar import rules as G
+        from pgmvox.core.orient import stair
         tops = {(x, z): (10 if x < 4 else 6) for x in range(8) for z in range(8)}       # a step of four, void round
         w = World(-3, -3, 14, 14, sy=16)
         for (x, z), h in tops.items():
@@ -1808,7 +1825,7 @@ class Grammar(unittest.TestCase):
         self.assertEqual(w.id(0, 2, 2), B.OBSIDIAN)                          # (0 + 2 + 2) % 4: the lattice
 
     def test_made_ground_reads_the_grown_ground_beside_it(self):
-        from pgmvox import brittle as BR
+        from pgmvox.grammar import brittle as BR
         unit = {(a, b): BR.Cell("flat", 16, section="a") for a in (-4, -3) for b in (-4, -3)}
         cells, team = BR.fan(unit)
         grown = {(x, z): 13 for x in range(-10, -5) for z in range(-20, -12)}     # a meadow three under its east
