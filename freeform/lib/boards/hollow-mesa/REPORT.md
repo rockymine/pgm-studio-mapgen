@@ -18,9 +18,9 @@ world and draws every render in about half a minute.
 (49–52) stands on a two-block stub of clay on the Throat's floor (47), one block from the lip of a hole that
 goes through the island. A breach on the hole's side leaks at once: the lava steps onto one block of floor
 and falls. A breach on any other side pours lava onto the cavern floor, where it pools four blocks short of a
-leak and spreads toward the hole. The `no-void` rule covers the whole board, so the hole cannot be plugged.
+leak and spreads toward the hole.
 
-**The ground is marked at y 0, and the two holes are left void.** The mesa floats from y 27, so without a mark PGM read every column as void and refused every block. `gen.py` lays block 36 under 49,062 columns of ground and keeps the 35 columns of each Throat's hole and well open, centred on (-65, -24) and (64, 23).
+**The ground is marked at y 0, under the cores and their holes too.** The mesa floats from y 27, so without a mark PGM read every column as void and refused every block, the cores' obsidian included. `gen.py` lays block 36 under all 49,132 columns that hold a block, the 16 under each core and the hole beneath it among them.
 
 **The canyon takes the place of a void gap.** The teams' ground is joined only through the canyon: forty
 blocks of town between two walls thirty-three high, crossed on the floor, along the bench halfway up the
@@ -159,7 +159,7 @@ props. These are the things this board added.
 
 | Wanted | How it was built here | Effort | What a studio feature would have to do |
 |---|---|---|---|
-| **A core over the void, with a designed leak** | A cavern; a cylinder cut from the cavern floor to y 0; the core on a stub one block from the lip; `no-void` everywhere so it can't be plugged (`underground.py`) | Low | Let a core's casing stand next to void, and *show* the leak: where lava from each face would go and whether it reaches `leak`. The studio's "a core needs ground all round" check would become a report of how fast each face leaks. |
+| **A core over the void, with a designed leak** | A cavern; a cylinder cut from the cavern floor to y 0; the core on a stub one block from the lip; the hole marked as ground, so it is built in like any other (`underground.py`) | Low | Let a core's casing stand next to void, and *show* the leak: where lava from each face would go and whether it reaches `leak`. The studio's "a core needs ground all round" check would become a report of how fast each face leaks. |
 | **A canyon with a bench** — two cliffs, a ledge between, a wandering centreline | A cross-section as distance from a centreline: floor, lower cliff, bench, upper cliff, plateau, each line wandering by its own noise (`terrain.py`) | Low | A *canyon* landform: a centreline stroke and a cross-section profile (heights and widths of each step), with jitter per wall. |
 | **A side canyon that climbs to the mesa top** | A second centreline cut with a floor that ramps 41 → 74 | Low | A *wash* stroke: a cut whose floor is a grade from one height to another, its walls joining whatever it cuts through. |
 | **Clay strata** — horizontal beds, one-block red bands, stone below | A bed table by height, offset by a slow noise so beds undulate | Low | The studio's `layered` stack does this; what was missing was a mesa preset with the one-block-red rule. |
@@ -188,8 +188,12 @@ was in the Throat, out of sight under the mesa, and a new player could not find 
 now hangs from 79 to 82 over ground at 73.
 
 **A well two blocks wide drops from under the core through the mesa into the Throat and on to the void.** Lava let
-out of the core's foot falls down it, which is the leak; a ring of dark clay marks the lip. The well lies inside
-the Throat's hole, so the board's rule against building over the void keeps it from being plugged.
+out of the core's foot falls down it, which is the leak; a ring of dark clay marks the lip. A defender may build in
+the well and an attacker break back through, as anywhere on the board.
+
+**A core leaks six blocks under its floor.** Each core spans y 79 to 82 with `leak="5"`, so it leaks once lava stands
+at y 73 or lower: the well reaches that at once, and lava let out sideways lands on the plateau at 74, one course
+short.
 
 **The shaft is now the way up to the core from below, and it climbs.** The catwalk's stair had been laid through the
 shaft after it was cut, and broke its ladder, so nothing could climb it. The shaft is cut last now. From the Bench

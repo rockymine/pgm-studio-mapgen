@@ -263,15 +263,14 @@ class Build:
 MARK = 36                                # block 36 at y 0: PGM removes it on load and remembers the column as ground
 
 
-def mark_ground(w, void=None):
-    """Lay the mark PGM's void filter reads under every column of ground, so a player may build over it: block 36 at
-    y 0 wherever the column holds a block that is neither air nor liquid, less the columns `void` (a boolean mask over
-    x, z) keeps open, such as a hole a core leaks through. A board floating clear of y 0 has no ground PGM can see
-    without it, and its void rule refuses every block. Returns the number of columns marked."""
+def mark_ground(w):
+    """Lay the mark PGM's void filter reads under every column holding a block that is neither air nor liquid, so a
+    player may place and break blocks there: block 36 at y 0. A column with only a core or a monument in it is marked
+    too, with the air under it, since its blocks must be broken and the hole under it built in. A board floating clear
+    of y 0 has no ground PGM can see without it, and its void rule refuses every block. Returns the number of columns
+    marked."""
     body = w.ids[:, 1:, :]
     ground = ((body != 0) & ~np.isin(body, list(LIQUID))).any(axis=1)
-    if void is not None:
-        ground &= ~void
     w.ids[:, 0, :][ground] = MARK
     w.dat[:, 0, :][ground] = 0
     return int(ground.sum())

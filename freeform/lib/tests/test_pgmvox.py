@@ -1378,18 +1378,16 @@ class WorldAndOutput(unittest.TestCase):
             render.iso(w.ids, w.dat, w.x0, w.z0, p, 2)
             self.assertTrue(os.path.getsize(p) > 0)
 
-    def test_the_ground_is_marked_at_y0_and_a_hole_kept_void(self):
+    def test_the_ground_is_marked_at_y0_and_under_a_floating_core(self):
         from pgmvox.play.rules import MARK, mark_ground
         w = World(0, 0, 8, 8, sy=40)
         w.ids[1:7, 25:30, 1:7] = B.STONE                     # an island floating clear of y 0
         w.ids[0, 20:22, 0] = B.WATER                         # a fall off its edge
         w.ids[3, 25:30, 3] = B.AIR                           # a hole through it, with the core over it
         w.ids[3, 35, 3] = B.OBSIDIAN
-        hole = np.zeros((8, 8), bool)
-        hole[3, 3] = True
-        self.assertEqual(mark_ground(w, void=hole), 35)
-        self.assertEqual(w.ids[1, 0, 1], MARK)
-        self.assertEqual((w.ids[3, 0, 3], w.ids[0, 0, 0], w.ids[7, 0, 7]), (0, 0, 0))   # the hole, the fall, the sky
+        self.assertEqual(mark_ground(w), 36)
+        self.assertEqual((w.ids[1, 0, 1], w.ids[3, 0, 3]), (MARK, MARK))          # the core's column is ground
+        self.assertEqual((w.ids[0, 0, 0], w.ids[7, 0, 7]), (0, 0))                # the fall and the sky are not
 
     def test_a_map_is_written_from_its_parts(self):
         from pgmvox.play.objectives import Box, Objectives
@@ -1700,6 +1698,9 @@ class DestroyableHeart(unittest.TestCase):
         d.stamp(w)
         self.assertEqual(w.id(3, 6, 3), B.BEDROCK)
         self.assertEqual(w.id(2, 5, 2), B.EMERALD_BLOCK)
+        self.assertTrue(any("nothing at y 0" in p for p in d.check(w)))      # over the void it cannot be broken
+        from pgmvox.play.rules import mark_ground
+        mark_ground(w)
         self.assertEqual(d.check(w), [])
 
     def test_two_gamemodes(self):

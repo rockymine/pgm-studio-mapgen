@@ -29,19 +29,6 @@ def green_mask(L):
     return g
 
 
-def throats(w):
-    """The columns of each Throat's hole and the core's well over it, open from y 1 to the cavern floor: they stay
-    void, so nobody can plug the hole a core leaks into."""
-    import underground
-    tx, tz, tr = P.THROAT
-    X = np.arange(w.x0, w.x0 + w.sx)[:, None]
-    Z = np.arange(w.z0, w.z0 + w.sz)[None, :]
-    near = np.zeros((w.sx, w.sz), bool)
-    for cx, cz in ((tx, tz), (-1 - tx, -1 - tz)):
-        near |= np.hypot(X - cx, Z - cz) <= tr + 2
-    return near & (w.ids[:, 1:underground.FLOOR + 1, :] == 0).all(axis=1)
-
-
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("build")
@@ -75,7 +62,7 @@ def main():
     sub = w.ids[sx0 - w.x0:sx1 - w.x0 + 1, 60:110, sz0 - w.z0:sz1 - w.z0 + 1]
     dsub = w.dat[sx0 - w.x0:sx1 - w.x0 + 1, 60:110, sz0 - w.z0:sz1 - w.z0 + 1]
     dsub[(sub == B.WOOL) & (dsub == 14)] = 11
-    print(f"ground marked under {mark_ground(w, void=throats(w))} columns")
+    print(f"ground marked under {mark_ground(w)} columns")
     w.save(a.build, "Hollow Mesa", (0, 100, 0))
     np.save(f"{a.build}/heights_red.npy", L.H)
     print(f"saved {time.time() - t0:.1f}s")

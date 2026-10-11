@@ -171,9 +171,17 @@ gone with them. A board floating over blocks of its own would otherwise catch ev
 they would pile up there for the whole match.
 
 **A floating board marks its ground at y 0.** PGM's void filter reads the block at y 0 of a column live, and a block
-36 there is removed on load but remembered, so the column counts as ground. `mark_ground(w, void=...)` lays it under
-every column holding a block that is neither air nor liquid, less the columns a hole must keep open. A board whose
+36 there is removed on load but remembered, so the column counts as ground. `mark_ground(w)` lays it under
+every column holding a block that is neither air nor liquid, a floating core's or monument's with the air under it. A board whose
 land floats clear of y 0 without it refuses every block its players try to place.
+
+**A core, a monument and a wool's slot check their columns are ground.** Over a column with nothing at y 0 the
+void rule refuses breaking and placing, so the objective could never be completed; `check(w)` names the first
+such column (`ground_problems`).
+
+**A core, a monument and a wool's slot check their columns are ground.** Over a column with nothing at y 0 the
+void rule refuses breaking and placing, so the objective could never be completed; `check(w)` names the first
+such column (`ground_problems`).
 
 **The kits players spawn with are the main kit, every kit a spawn names, and their parents.** A team's kit given
 with a shared one (`Kit(..., parents=[base])`) adds its pick and its arrows to what is kept and repaired, and a kit

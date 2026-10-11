@@ -463,7 +463,7 @@ class Wool(Objective):
             bad.append(f"wool {self.color}: nothing under the slot to place on")
         if self.found and w.get(*self.found) != (B.WOOL, DYES[self.color]):
             bad.append(f"wool {self.color}: no wool at {self.found}")
-        return bad
+        return bad + ground_problems("wool", self.color, [(x, z)], w)
 
     def cells(self):
         return {(self.slot[0], self.slot[2])}
@@ -498,6 +498,16 @@ def wool_rooms(doc, teams, wools, materials=WOOLROOM_MATERIALS):
 
 
 FLOAT = 3                                # a monument or core hangs this many blocks of air over the floor under it
+
+
+def ground_problems(kind, oid, columns, w):
+    """The author's rule: under a core, a monument or a wool's slot the column is ground, a block at y 0 however much
+    air lies between, or PGM's void rule refuses breaking and placing there and the objective cannot be completed."""
+    bare = sorted((x, z) for x, z in columns if w.id(x, 0, z) == B.AIR)
+    if not bare:
+        return []
+    return [f"{kind} {oid}: {len(bare)} of its columns have nothing at y 0, first {bare[0]}: the void rule refuses "
+            f"breaking and placing there (mark_ground)"]
 
 
 def float_problems(kind, oid, box, w, least=FLOAT):
@@ -556,7 +566,8 @@ class Destroyable(Objective):
         wrong = [p for p in self.box.blocks() if w.get(*p)[0] != self.material[0]
                  and not (self.heart and p == self.middle() and w.get(*p)[0] == self.heart[0])]
         bad = [f"destroyable {self.id}: {len(wrong)} blocks of its box are not its material"] if wrong else []
-        return float_problems("destroyable", self.id, self.box, w) + bad
+        return float_problems("destroyable", self.id, self.box, w) + ground_problems("destroyable", self.id,
+                                                                                   self.box.cells(), w) + bad
 
     def cells(self):
         return self.box.cells()
@@ -594,7 +605,8 @@ class Core(Objective):
         if min(b.x1 - b.x0, b.y1 - b.y0, b.z1 - b.z0) < 2:
             return [f"core {self.id}: too small to hold lava inside a shell"]
         lava = [p for p in b.blocks() if w.id(*p) in (B.LAVA, B.LAVA_FLOW)]
-        return float_problems("core", self.id, b, w) + ([] if lava else [f"core {self.id}: no lava inside"])
+        return (float_problems("core", self.id, b, w) + ground_problems("core", self.id, b.cells(), w) +
+                ([] if lava else [f"core {self.id}: no lava inside"]))
 
     def cells(self):
         return self.box.cells()
