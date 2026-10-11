@@ -72,7 +72,7 @@ The columns come from `/tmp` scratch reads of the built worlds (`col.py`); the p
 
 ### Hoarfrost Reach: the Lighthouse (tower wool room)
 
-**It is hand-written board code, not pgmvox's house model.** `gen.lighthouse()` (`freeform/lib/trials/sonnet/hoarfrost-reach/scripts/gen.py:219-282`) loops over a 9 by 9 box (`plan.py:84`) and sets blocks directly. Only the Skald's Hall and the two sheds go through `BLD.house` (`gen.py:149-158`; `plan.py:138-150`).
+**It is hand-written board code, not pgmvox's house model.** `gen.lighthouse()` (`freeform/lib/boards/hoarfrost-reach/scripts/gen.py:219-282`) loops over a 9 by 9 box (`plan.py:84`) and sets blocks directly. Only the Skald's Hall and the two sheds go through `BLD.house` (`gen.py:149-158`; `plan.py:138-150`).
 
 **How it is made, in order.**
 

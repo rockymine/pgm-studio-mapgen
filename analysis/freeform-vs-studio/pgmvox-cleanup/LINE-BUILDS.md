@@ -14,28 +14,28 @@ Shorthand: "plan raster" = the board's `R.K` / `R.H` / `R.stair` cell arrays; "g
 
 | function | call site | what it is used for | arguments worth noting |
 |---|---|---|---|
-| `build.parapet` (build.py:492) | lib/trials/sonnet/cinderfall/scripts/gen.py:206 (in `houses`) | roof-edge parapet of foundry/hold footprint | y = eave+1; STONEBRICK or NETHER_BRICK; `crenel=COBBLE_WALL` for "hold", default rhythm `(x+z)%2==0` |
-| `build.parapet` | lib/trials/sonnet/tamarisk-wash/scripts/gen.py:133 (in `houses`) | roof-edge parapet of adobe/kasbah | y = eave+1; SANDSTONE data 2; `crenel=(SANDSTONE,1)` for kasbah only |
-| `build.parapet` | lib/trials/sonnet/hoarfrost-reach/scripts/gen.py:201 (in `strand`) | a fence rail along a breakwater, abusing parapet with two 73-cell straight lines | fixed y 71, SPRUCE_FENCE, no crenel; both lines are 1 thick so `edge_cells` returns all of them |
+| `build.parapet` (build.py:492) | lib/boards/cinderfall/scripts/gen.py:206 (in `houses`) | roof-edge parapet of foundry/hold footprint | y = eave+1; STONEBRICK or NETHER_BRICK; `crenel=COBBLE_WALL` for "hold", default rhythm `(x+z)%2==0` |
+| `build.parapet` | lib/boards/tamarisk-wash/scripts/gen.py:133 (in `houses`) | roof-edge parapet of adobe/kasbah | y = eave+1; SANDSTONE data 2; `crenel=(SANDSTONE,1)` for kasbah only |
+| `build.parapet` | lib/boards/hoarfrost-reach/scripts/gen.py:201 (in `strand`) | a fence rail along a breakwater, abusing parapet with two 73-cell straight lines | fixed y 71, SPRUCE_FENCE, no crenel; both lines are 1 thick so `edge_cells` returns all of them |
 | `build.parapet` | lib/ports/riftwater/scripts/works.py:107 (in `tower`) | battlement on a masonry tower roof | cells pre-filtered with `BLD.edge_cells`; STONEBRICK + `crenel=(SLAB,5)` |
-| `build.edge_cells` (build.py:486) | lib/trials/opus/redwash-mesa/scripts/gen.py:131, :136; lib/ports/riftwater/scripts/works.py:107 | edge of a footprint (vigas, window frames; tower battlement) | not a line build |
+| `build.edge_cells` (build.py:486) | lib/boards/redwash-mesa/scripts/gen.py:131, :136; lib/ports/riftwater/scripts/works.py:107 | edge of a footprint (vigas, window frames; tower battlement) | not a line build |
 | `route.pave` (route.py:230) | lib/examples/vale/scripts/gen.py:23 (bridges over `river.mask|sea.mask`), :25 (footpath, width 2) | roads | `water=` makes a plank deck with `rail=B.FENCE` each side |
-| `route.pave` | lib/trials/sonnet/cinderfall/scripts/gen.py:173 | roads | `keep=lava|X>=0` |
-| `route.pave` | lib/trials/sonnet/tamarisk-wash/scripts/gen.py:92 (in `roads`) | roads; steep ghats are skipped here and rebuilt by `halfsteps` | water masked out of H, `keep=(X>=0)|water` |
-| `route.pave` | lib/trials/opus/cinder-reach/scripts/gen.py:262 | roads | module level |
-| `route.pave` | lib/trials/opus/redwash-mesa/scripts/gen.py:118 | trails | module level |
+| `route.pave` | lib/boards/cinderfall/scripts/gen.py:173 | roads | `keep=lava|X>=0` |
+| `route.pave` | lib/boards/tamarisk-wash/scripts/gen.py:92 (in `roads`) | roads; steep ghats are skipped here and rebuilt by `halfsteps` | water masked out of H, `keep=(X>=0)|water` |
+| `route.pave` | lib/boards/cinder-reach/scripts/gen.py:262 | roads | module level |
+| `route.pave` | lib/boards/redwash-mesa/scripts/gen.py:118 | trails | module level |
 | `route.pave` | lib/ports/riftwater/scripts/works.py:385 (in `roads`) | every route; over the pond outlet a plank deck with `rail=(SPRUCE_FENCE,0)`, graded `level=` lambda, trestle legs added by the board after (works.py:389-394) | uses `Guarded` world wrapper to protect built columns |
 | `route.pave` | lib/ports/lantern-karst/scripts/dress.py:107 | paths, `clear=0`, `wander(pts)` | |
 | `route.steps` (route.py:261) | lib/examples/vale/scripts/gen.py:26 | footpath steps, width 2 | |
 | `route.steps` | lib/boards/exp-abbeymoor-pgmvox/scripts/dress.py:568 (in `steps_on_slopes`) | Hill Track and Monks' Way, width 2 | |
-| `route.steps` | lib/trials/sonnet/cinderfall/scripts/gen.py:176 | only when `kind == "road"` and `grade > 0.4`, width `min(width,3)` | |
-| `route.halfstep_levels` / `route.halfsteps` | lib/trials/sonnet/tamarisk-wash/scripts/gen.py:104, :117; test lib/tests/test_pgmvox.py:695, :704 | the two ghats in half blocks (slab on odd level), no stair blocks | `GHAT_BLOCKS` = 2 sandstone data, `GHAT_SLAB=(SLAB,1)`, fill sandstone |
+| `route.steps` | lib/boards/cinderfall/scripts/gen.py:176 | only when `kind == "road"` and `grade > 0.4`, width `min(width,3)` | |
+| `route.halfstep_levels` / `route.halfsteps` | lib/boards/tamarisk-wash/scripts/gen.py:104, :117; test lib/tests/test_pgmvox.py:695, :704 | the two ghats in half blocks (slab on odd level), no stair blocks | `GHAT_BLOCKS` = 2 sandstone data, `GHAT_SLAB=(SLAB,1)`, fill sandstone |
 | `props.crop_field` fence (props.py:216, fence at the end of the z loop) | lib/ports/riftwater/scripts/dress.py:74 | `fence="w"`, gate in the middle row (default) | fence y follows the field's tilted plane (`yz+1`); one side only; gate = FENCE_GATE |
-| `build.stairs` (build.py:529) | lib/trials/opus/redwash-mesa/scripts/gen.py:103; lib/ports/riftwater/scripts/works.py:160 | straight flight, width 3, `under=` fill | |
-| `forms.masonry_tower` crown `crenel=` (forms.py:133) | lib/trials/sonnet/overgrowth/scripts/gen.py:214 (COBBLE_WALL data 1); lib/trials/sonnet/tamarisk-wash/scripts/gen.py:166 (SANDSTONE 2); lib/trials/sonnet/cinderfall/scripts/gen.py:268 (default) | tower crown crenel | |
-| facade `top="parapet"` / `"parapet-slotted"` (`Fa.build` / `F.extrude`, facade.py `top_course`) | opus55-freeform-stratum/scripts/buildings.py:195, :266, :355, :404, :452; lib/trials/sonnet/whitecliff-cistern/scripts/gen.py:116; lib/trials/sonnet/tamarisk-wash/scripts/gen.py:198 (serai); lib/examples/parts/scripts/gen.py:41 | parapet on a polygon mass; slotted = every third cell open | |
-| `under.gallery` (under.py:157) | lib/trials/sonnet/tamarisk-wash/scripts/gen.py:337; lib/trials/opus/redwash-mesa/scripts/gen.py:151; lib/ports/riftwater/scripts/under.py:112 | tunnel with a stair at every rise, fence rail posts | the 3D path-stairs case underground |
-| `props.lamps` | lib/trials/sonnet/tamarisk-wash/scripts/gen.py:421 | posts every 13 cells at side 3.2 along a route | a "posts along a line" cousin |
+| `build.stairs` (build.py:529) | lib/boards/redwash-mesa/scripts/gen.py:103; lib/ports/riftwater/scripts/works.py:160 | straight flight, width 3, `under=` fill | |
+| `forms.masonry_tower` crown `crenel=` (forms.py:133) | lib/boards/overgrowth/scripts/gen.py:214 (COBBLE_WALL data 1); lib/boards/tamarisk-wash/scripts/gen.py:166 (SANDSTONE 2); lib/boards/cinderfall/scripts/gen.py:268 (default) | tower crown crenel | |
+| facade `top="parapet"` / `"parapet-slotted"` (`Fa.build` / `F.extrude`, facade.py `top_course`) | opus55-freeform-stratum/scripts/buildings.py:195, :266, :355, :404, :452; lib/boards/whitecliff-cistern/scripts/gen.py:116; lib/boards/tamarisk-wash/scripts/gen.py:198 (serai); lib/examples/parts/scripts/gen.py:41 | parapet on a polygon mass; slotted = every third cell open | |
+| `under.gallery` (under.py:157) | lib/boards/tamarisk-wash/scripts/gen.py:337; lib/boards/redwash-mesa/scripts/gen.py:151; lib/ports/riftwater/scripts/under.py:112 | tunnel with a stair at every rise, fence rail posts | the 3D path-stairs case underground |
+| `props.lamps` | lib/boards/tamarisk-wash/scripts/gen.py:421 | posts every 13 cells at side 3.2 along a route | a "posts along a line" cousin |
 | `forms.skirt` | lib/boards/exp-slatefold-pgmvox/scripts/gen.py:62; lib/boards/exp-abbeymoor-pgmvox/scripts/gen.py:58 | rock skirt under an island edge | not a line build; listed only because the task named it |
 
 No board outside `lib/pgmvox` calls `build.parapet` with a polyline; every use passes a cell set.
@@ -104,25 +104,25 @@ No board outside `lib/pgmvox` calls `build.parapet` with a polyline; every use p
 | loomfall | opus55-freeform-loomfall/scripts/gen.py:66 (:78-79) | `house` | parapet | `g+hgt+1` | rectangle edge | SMOOTH | 1 | crenel `(x+z)%2==0` | |
 | brittle-study | lib/boards/brittle-study/scripts/style.py:50 (called gen.py:115-118) | `kerbed_bed` | kerb | fixed y | rectangle ring (box) | SANDSTONE_STAIRS facing inward on edges, SANDSTONE at corners | 1 | none | stair facing = toward the box centre (:61) |
 | brittle-study | lib/boards/brittle-study/scripts/style.py:22 (called gen.py:104) | `face` | other: platform edge trim | per column, 5 courses down | raster edge columns | upside-down SPRUCE_STAIRS, BRICK, DARK_OAK_SLAB, ... | 5 down | | stair facing `S.OPP[out]` |
-| hoarfrost-reach | lib/trials/sonnet/hoarfrost-reach/scripts/gen.py:68 (:83-91) | `surface` | railing | plan floor | raster: deck cells with a non-land neighbour | SPRUCE_FENCE | 1 | | `break` after first |
-| hoarfrost-reach | lib/trials/sonnet/hoarfrost-reach/scripts/gen.py:113 (:126-127) | `glacier_bridge` | railing | fixed HALL_Y+1 | straight z -51..-66, x0 and x1 | COBBLE_WALL | 1 | | |
-| overgrowth | lib/trials/sonnet/overgrowth/scripts/gen.py:169 (:181-189) | `courts` | wall (court wall) + crenel | fixed COURT_Y | rectangle ring | `stonework(r)` mix | 6 high + slab on `(x+z)%2` | gate cell set `gate_cells` | |
-| overgrowth | lib/trials/sonnet/overgrowth/scripts/gen.py:241 | `perimeter` | wall (board edge) | per-column `L.H-2 .. +6` | raster board-edge ring, 2 thick | `stonework` mix; COBBLE_WALL data 1 at top | 9 | none | crenel `(i+k)%2==0` |
-| overgrowth | lib/trials/sonnet/overgrowth/scripts/gen.py:220 | `bridges` | railing | plan H | raster: bridge cells with a non-bridge x neighbour | JUNGLE_FENCE; second block where `z%6==0` | 1-2 | | |
-| whitecliff-cistern | lib/trials/sonnet/whitecliff-cistern/scripts/gen.py:281 (:284-296) | `quay` | wall | fixed QUAY | rectangle ring | WHITE / BLUE every third course; SLAB 7 | 6 high + slab | gate cells (plan kind "gate") | |
-| whitecliff-cistern | lib/trials/sonnet/whitecliff-cistern/scripts/gen.py:303 (:306-315) | `garden_and_dock` | wall | fixed GARDEN | rectangle ring | same as quay | 6 | gate cells | |
-| whitecliff-cistern | lib/trials/sonnet/whitecliff-cistern/scripts/gen.py:356 | `rim` | parapet/rail | plan `R.h` | `shapes.boundary(plate)` | SLAB 7; IRON_BARS where `(x+z)%3==0` | 1-2 | | |
-| whitecliff-cistern | lib/trials/sonnet/whitecliff-cistern/scripts/gen.py:139 (:152-156) | `court` | parapet | fixed TOWN | edge ring of the court | SLAB 7 | 1 | open on kind != "ring" | |
-| whitecliff-cistern | lib/trials/sonnet/whitecliff-cistern/scripts/gen.py:168 (:172-203) | `cover` | hedge/barricade/low wall | plan rect heights | plan rectangles | hedge LEAVES data 7; barricade PLANKS + SPRUCE_FENCE top; lowwall STONE | per-plan height | | rectangles, not lines |
-| whitecliff-cistern | lib/trials/sonnet/whitecliff-cistern/scripts/gen.py:106 (:121-131) | `blocks` | railing | fixed 74 | straight lines x=-36 and x=-32, z -3..2 | SPRUCE_FENCE | 1 | ends open | |
-| tamarisk-wash | lib/trials/sonnet/tamarisk-wash/scripts/gen.py:285 (:292-295) | `aqueduct` | parapet | fixed DECK_Y+1 | two straight edge lines z0, z1 | COBBLE_WALL | 1 | every second x only (`x%2==0`), none near the ragged end | |
-| tamarisk-wash | lib/trials/sonnet/tamarisk-wash/scripts/gen.py:190 (:197-198, :221-223) | `serai` | parapet (library `F.extrude top="parapet-slotted"`) + hand gap | roof of the ring | ring cells of the serai | SANDSTONE data 1 | 1 | 4 cells cleared by hand where the stair meets the roof (:222-223) | the only place a library parapet is opened by a board |
-| cinder-reach | lib/trials/opus/cinder-reach/scripts/gen.py:268-275 (module level) | (none) | railing/parapet | fixed TERRACE_Y+1 | rectangle edge on 3 sides (z0, z1, x0) | BRICK; FENCE where `(x+z)%4 == 0` | 1 | | alternating blocks |
-| cinder-reach | lib/trials/opus/cinder-reach/scripts/gen.py:313-320 | (none) | fence | `hwall(x,z)+1` per column | edge of a 4x5 plot | DARK_OAK_FENCE | 1 | none | |
-| redwash-mesa | lib/trials/opus/redwash-mesa/scripts/gen.py:104-108 | (none) | railing | `y0+kk` per step | beside the stairs, x = fx+-2 | SANDSTONE data 2 | 1 | only where the cut is open | stair-side wall |
-| brassmoor-works | lib/trials/opus/brassmoor-works/scripts/gen.py:200-203 | (none) | wall | fixed 67 | rectangle ring around the pit, only on kind "yard" | COBBLE_WALL | 1 | | |
-| tidewell-canals | lib/trials/opus/tidewell-canals/scripts/gen.py:86-91 | (none) | kerb (coping) | fixed S | raster: street/campo cells with a canal / lagoon neighbour | ISTRIAN = (STONE,4) | 0 (replaces the surface course) | | |
-| tidewell-canals | lib/trials/opus/tidewell-canals/scripts/gen.py:150-158 | (none) | railing | fixed GALLERY+1 | straight x range along the front edge | SPRUCE_FENCE | 1 | | |
+| hoarfrost-reach | lib/boards/hoarfrost-reach/scripts/gen.py:68 (:83-91) | `surface` | railing | plan floor | raster: deck cells with a non-land neighbour | SPRUCE_FENCE | 1 | | `break` after first |
+| hoarfrost-reach | lib/boards/hoarfrost-reach/scripts/gen.py:113 (:126-127) | `glacier_bridge` | railing | fixed HALL_Y+1 | straight z -51..-66, x0 and x1 | COBBLE_WALL | 1 | | |
+| overgrowth | lib/boards/overgrowth/scripts/gen.py:169 (:181-189) | `courts` | wall (court wall) + crenel | fixed COURT_Y | rectangle ring | `stonework(r)` mix | 6 high + slab on `(x+z)%2` | gate cell set `gate_cells` | |
+| overgrowth | lib/boards/overgrowth/scripts/gen.py:241 | `perimeter` | wall (board edge) | per-column `L.H-2 .. +6` | raster board-edge ring, 2 thick | `stonework` mix; COBBLE_WALL data 1 at top | 9 | none | crenel `(i+k)%2==0` |
+| overgrowth | lib/boards/overgrowth/scripts/gen.py:220 | `bridges` | railing | plan H | raster: bridge cells with a non-bridge x neighbour | JUNGLE_FENCE; second block where `z%6==0` | 1-2 | | |
+| whitecliff-cistern | lib/boards/whitecliff-cistern/scripts/gen.py:281 (:284-296) | `quay` | wall | fixed QUAY | rectangle ring | WHITE / BLUE every third course; SLAB 7 | 6 high + slab | gate cells (plan kind "gate") | |
+| whitecliff-cistern | lib/boards/whitecliff-cistern/scripts/gen.py:303 (:306-315) | `garden_and_dock` | wall | fixed GARDEN | rectangle ring | same as quay | 6 | gate cells | |
+| whitecliff-cistern | lib/boards/whitecliff-cistern/scripts/gen.py:356 | `rim` | parapet/rail | plan `R.h` | `shapes.boundary(plate)` | SLAB 7; IRON_BARS where `(x+z)%3==0` | 1-2 | | |
+| whitecliff-cistern | lib/boards/whitecliff-cistern/scripts/gen.py:139 (:152-156) | `court` | parapet | fixed TOWN | edge ring of the court | SLAB 7 | 1 | open on kind != "ring" | |
+| whitecliff-cistern | lib/boards/whitecliff-cistern/scripts/gen.py:168 (:172-203) | `cover` | hedge/barricade/low wall | plan rect heights | plan rectangles | hedge LEAVES data 7; barricade PLANKS + SPRUCE_FENCE top; lowwall STONE | per-plan height | | rectangles, not lines |
+| whitecliff-cistern | lib/boards/whitecliff-cistern/scripts/gen.py:106 (:121-131) | `blocks` | railing | fixed 74 | straight lines x=-36 and x=-32, z -3..2 | SPRUCE_FENCE | 1 | ends open | |
+| tamarisk-wash | lib/boards/tamarisk-wash/scripts/gen.py:285 (:292-295) | `aqueduct` | parapet | fixed DECK_Y+1 | two straight edge lines z0, z1 | COBBLE_WALL | 1 | every second x only (`x%2==0`), none near the ragged end | |
+| tamarisk-wash | lib/boards/tamarisk-wash/scripts/gen.py:190 (:197-198, :221-223) | `serai` | parapet (library `F.extrude top="parapet-slotted"`) + hand gap | roof of the ring | ring cells of the serai | SANDSTONE data 1 | 1 | 4 cells cleared by hand where the stair meets the roof (:222-223) | the only place a library parapet is opened by a board |
+| cinder-reach | lib/boards/cinder-reach/scripts/gen.py:268-275 (module level) | (none) | railing/parapet | fixed TERRACE_Y+1 | rectangle edge on 3 sides (z0, z1, x0) | BRICK; FENCE where `(x+z)%4 == 0` | 1 | | alternating blocks |
+| cinder-reach | lib/boards/cinder-reach/scripts/gen.py:313-320 | (none) | fence | `hwall(x,z)+1` per column | edge of a 4x5 plot | DARK_OAK_FENCE | 1 | none | |
+| redwash-mesa | lib/boards/redwash-mesa/scripts/gen.py:104-108 | (none) | railing | `y0+kk` per step | beside the stairs, x = fx+-2 | SANDSTONE data 2 | 1 | only where the cut is open | stair-side wall |
+| brassmoor-works | lib/boards/brassmoor-works/scripts/gen.py:200-203 | (none) | wall | fixed 67 | rectangle ring around the pit, only on kind "yard" | COBBLE_WALL | 1 | | |
+| tidewell-canals | lib/boards/tidewell-canals/scripts/gen.py:86-91 | (none) | kerb (coping) | fixed S | raster: street/campo cells with a canal / lagoon neighbour | ISTRIAN = (STONE,4) | 0 (replaces the surface course) | | |
+| tidewell-canals | lib/boards/tidewell-canals/scripts/gen.py:150-158 | (none) | railing | fixed GALLERY+1 | straight x range along the front edge | SPRUCE_FENCE | 1 | | |
 
 ### 2b. Prepared-line walls (bedrock + cobweb capture lines), the same recurring structure
 
@@ -132,7 +132,7 @@ No board outside `lib/pgmvox` calls `build.parapet` with a polyline; every use p
 | exp-slatefold-pgmvox | lib/boards/exp-slatefold-pgmvox/scripts/dress.py:270 (`bedrock_walls`) | | column's rock foot to plan top | raster "barrier" | BEDROCK | | |
 | lantern-karst (opus55) | opus55-freeform-lantern-karst/scripts/buildings.py:518 (`store_wall`) | | `floor_y(F,x,z)` per column | rectangle x0..x1, z and z-1 | BEDROCK x3, COBWEB at +4 | 4 | |
 | lantern-karst (port) | lib/ports/lantern-karst/scripts/dress.py:407 (`store_wall`) | | `g.at(x,z)` per column | box | BEDROCK `height` courses + COBWEB | `height`+1 | |
-| brassmoor-works | lib/trials/opus/brassmoor-works/scripts/gen.py:162-168 | (module) | plan floor of the piece | boxes `P.WALLS` | BEDROCK x3 + COBWEB | 4 | |
+| brassmoor-works | lib/boards/brassmoor-works/scripts/gen.py:162-168 | (module) | plan floor of the piece | boxes `P.WALLS` | BEDROCK x3 + COBWEB | 4 | |
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -156,22 +156,22 @@ No board outside `lib/pgmvox` calls `build.parapet` with a polyline; every use p
 | hollow-mesa | opus55-freeform-hollow-mesa/scripts/buildings.py:518 (:546-560) | `tipple` | switchback flight | | inside a tower, back and forth | SPRUCE_STAIRS data 0 / 1 | 2 | | |
 | stratum | opus55-freeform-stratum/scripts/buildings.py:62 | `wound_stair` | path steps on a ring | y rises 1 per non-corner cell | ring path of a rectangle shaft | `mat=(DSLAB,8)`, STONEBRICK_STAIRS via `stair_dir(next-cur)` on non-corners | 1 | | corners are landings; air cleared 3 above; the "path" is a closed ring |
 | stratum | opus55-freeform-stratum/scripts/buildings.py:164 | `skyway` | graded path surface (no steps) | linear y0..y1 | polyline beam 5 wide | | 5 | | the deck's height is the continuous `along/L`, rounded |
-| tamarisk-wash | lib/trials/sonnet/tamarisk-wash/scripts/gen.py:102-120 (ghats) | `ghat_levels`, `ghats` | path slabs (half block steps) | graded profile `rt["profile"]` relaxed to <= 1 half block between 4-neighbours | route band `d <= width/2`, minus earlier ghats | SANDSTONE data 0/2 random + SLAB data 1 on odd levels, fill SANDSTONE | route width | | no stair blocks, so no diagonal facing problem. The library route.halfsteps (route.py:333) now holds the loop |
+| tamarisk-wash | lib/boards/tamarisk-wash/scripts/gen.py:102-120 (ghats) | `ghat_levels`, `ghats` | path slabs (half block steps) | graded profile `rt["profile"]` relaxed to <= 1 half block between 4-neighbours | route band `d <= width/2`, minus earlier ghats | SANDSTONE data 0/2 random + SLAB data 1 on odd levels, fill SANDSTONE | route width | | no stair blocks, so no diagonal facing problem. The library route.halfsteps (route.py:333) now holds the loop |
 | lantern-karst | opus55-freeform-lantern-karst/scripts/terrain.py:160 (`joins`); port lib/ports/lantern-karst/scripts/dress.py:118 | `joins` | steps between raster pieces: 1 block = SLAB 5; 2 blocks = two STONEBRICK_STAIRS (y+1 and next cell y+2); more = wall | | runs of cells along each join, grouped `along` | STONEBRICK_STAIRS data by direction `(1,0):0,(-1,0):1,(0,1):2,(0,-1):3` | run, but max 10 stairs per run longer than 14 (middle only) | | opus55: handles d==1, 2 only; port: plan stair cells + slab on low side of 1-block steps |
 | exp-abbeymoor | lib/boards/exp-abbeymoor-pgmvox/scripts/crypt.py:63, :90 | `night_stair`, `passage` | tunnel steps | floor per x | x runs, 3 wide | STONEBRICK_STAIRS `stair_data("e"/"w")` at floor changes | 3 | | stair where `y != prev` |
-| tidewell-canals | lib/trials/opus/tidewell-canals/scripts/gen.py:76-84 | (module) | stairs onto a bridge | raster H | cells where a neighbour is h+1 and kind bridge | STONEBRICK_STAIRS facing the neighbour | 1 | | |
+| tidewell-canals | lib/boards/tidewell-canals/scripts/gen.py:76-84 | (module) | stairs onto a bridge | raster H | cells where a neighbour is h+1 and kind bridge | STONEBRICK_STAIRS facing the neighbour | 1 | | |
 
 ### 3b. Flights laid on the plan's stair cells (one stair block per cell, facing read from `R.stair`)
 
 | board | file:line | function | materials | notes |
 |---|---|---|---|---|
 | exp-slatefold-pgmvox | lib/boards/exp-slatefold-pgmvox/scripts/gen.py:88 | `flights` | STONEBRICK_STAIRS over a 6-deep mass, air 4 above | side wall rail (see 2a) |
-| hoarfrost-reach | lib/trials/sonnet/hoarfrost-reach/scripts/gen.py:94 | `flights` | QUARTZ_STAIRS / STONEBRICK_STAIRS over ice/brick | |
-| overgrowth | lib/trials/sonnet/overgrowth/scripts/gen.py:160-166 (tiers); :199-205 (courts) | `tiers`, `courts` | STONEBRICK_STAIRS over BRICK / MOSS | |
-| whitecliff-cistern | lib/trials/sonnet/whitecliff-cistern/scripts/gen.py:226 | `stairs` | SANDSTONE_STAIRS over PALE | two storeys |
-| brassmoor-works | lib/trials/opus/brassmoor-works/scripts/gen.py:77-82 | (module) | STONEBRICK_STAIRS, deck fill below, bedrock at the bottom | |
-| tidewell-canals | lib/trials/opus/tidewell-canals/scripts/gen.py:63-66 | (module) | STONEBRICK_STAIRS, always data "e" | |
-| vinewatch-ruins | lib/trials/opus/vinewatch-ruins/scripts/gen.py:107-108, :163-164, :199-204 | (module) | QUARTZ_STAIRS / STONEBRICK_STAIRS | three flights |
+| hoarfrost-reach | lib/boards/hoarfrost-reach/scripts/gen.py:94 | `flights` | QUARTZ_STAIRS / STONEBRICK_STAIRS over ice/brick | |
+| overgrowth | lib/boards/overgrowth/scripts/gen.py:160-166 (tiers); :199-205 (courts) | `tiers`, `courts` | STONEBRICK_STAIRS over BRICK / MOSS | |
+| whitecliff-cistern | lib/boards/whitecliff-cistern/scripts/gen.py:226 | `stairs` | SANDSTONE_STAIRS over PALE | two storeys |
+| brassmoor-works | lib/boards/brassmoor-works/scripts/gen.py:77-82 | (module) | STONEBRICK_STAIRS, deck fill below, bedrock at the bottom | |
+| tidewell-canals | lib/boards/tidewell-canals/scripts/gen.py:63-66 | (module) | STONEBRICK_STAIRS, always data "e" | |
+| vinewatch-ruins | lib/boards/vinewatch-ruins/scripts/gen.py:107-108, :163-164, :199-204 | (module) | QUARTZ_STAIRS / STONEBRICK_STAIRS | three flights |
 | calcite | opus55-freeform-calcite/scripts/gen.py:86-87 (`columns`), :136 (`stairs_on`), gen_v3.py:116 (`stair_run`) | | QSTAIRS | `stairs_on` takes cells + axis + half width |
 | riad | opus55-freeform-riad/scripts/gen.py:183-184 (`columns`) | | SANDSTONE_STAIRS | |
 | lanternpass | opus55-freeform-lanternpass/scripts/gen.py:117-119 (`columns`) | | STONEBRICK_STAIRS / OAK_STAIRS / COBBLE_STAIRS by height | |
@@ -179,8 +179,8 @@ No board outside `lib/pgmvox` calls `build.parapet` with a polyline; every use p
 | copperline | opus55-freeform-copperline/scripts/gen.py:238 (`columns`) | | COBBLE_STAIRS | |
 | penstock | opus55-freeform-penstock/scripts/gen.py:89 (`flights`), :109 (`tunnels`) | | SB_STAIRS over CONCRETE | rows of full width |
 | lantern-karst port | lib/ports/lantern-karst/scripts/dress.py:121-123 | `joins` | STONEBRICK_STAIRS | |
-| tamarisk-wash | lib/trials/sonnet/tamarisk-wash/scripts/gen.py:212-220 (serai), :246-254 (`table_rock`) | | SANDSTONE_STAIRS data `e` / `n` over SANDSTONE 2 | |
-| redwash-mesa | lib/trials/opus/redwash-mesa/scripts/gen.py:88-107 | (module) | `BLD.stairs` + side wall | library call |
+| tamarisk-wash | lib/boards/tamarisk-wash/scripts/gen.py:212-220 (serai), :246-254 (`table_rock`) | | SANDSTONE_STAIRS data `e` / `n` over SANDSTONE 2 | |
+| redwash-mesa | lib/boards/redwash-mesa/scripts/gen.py:88-107 | (module) | `BLD.stairs` + side wall | library call |
 
 ---------------------------------------------------------------------------------------------------------------------------------------------
 

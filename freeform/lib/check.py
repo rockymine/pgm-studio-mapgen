@@ -13,7 +13,7 @@ walk print, and a fingerprint of the built world (how many of each block). A cha
 block count fails until it is looked at and accepted with --update; the diff says which.
 
 What a board is held to is the world its generator builds, byte for byte: every folder under `boards/`,
-`examples/`, `ports/` and `trials/` with a `scripts/gen.py` is built into a scratch folder and the sha256 of its
+`examples/` and `ports/` with a `scripts/gen.py` is built into a scratch folder and the sha256 of its
 `volume.bin`, `tiles.json` and `level.json` compared with `check/boards.json`. A change meant to leave behaviour
 alone moves none of them; a board that moves names the files that did. Nothing is written into a board's folder.
 """
