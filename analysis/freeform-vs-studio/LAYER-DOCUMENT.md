@@ -3,7 +3,7 @@
 A board stated as data: ordered layers, each one operation over the areas it is drawn in, built in fixed stages
 and kept as it ran. This is the shape the sketch tool's document takes in Studio 2.0. `pgmvox.document.layers` builds
 it, `freeform/lib/examples/layers/island.layers.json` is a whole board written in it, and
-`freeform/lib/ports/riftwater/riftwater.ground.layers.json` is the Riftwater port's ground, 38 layers that build its
+`freeform/lib/boards/riftwater-pgmvox/riftwater.ground.layers.json` is the Riftwater port's ground, 38 layers that build its
 heights and water bit for bit, and `freeform/lib/examples/layers/saumland.layers.json` puts made and grown
 ground on one board.
 

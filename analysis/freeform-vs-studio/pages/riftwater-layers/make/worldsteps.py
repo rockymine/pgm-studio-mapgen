@@ -1,7 +1,7 @@
 """Run the Riftwater port's gen.py steps in-process, snapshotting the world after each."""
 import os; D = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(D, "out"); ROOT = os.path.abspath(os.path.join(D, *[".."] * 5))
 import sys, os, pickle, numpy as np
-B = os.path.join(ROOT, "freeform/lib/ports/riftwater/scripts")
+B = os.path.join(ROOT, "freeform/lib/boards/riftwater-pgmvox/scripts")
 sys.path.insert(0, B); sys.path.insert(0, os.path.join(ROOT, "freeform/lib"))
 os.chdir(B)
 import dress, ground, plan as P, under, works
@@ -66,7 +66,7 @@ X, _ = w.grid()
 turn_world(w, "mirror_x", X < 0, recolour={(BL.WOOL, 14): (BL.WOOL, 11)}); snap("mirror", w)
 O = P.objectives(); O.stamp(w); snap("objectives", w)
 import hashlib, json
-want = json.load(open(os.path.join(ROOT, "freeform/lib/check/boards.json")))["ports/riftwater"]["volume.bin"]
+want = json.load(open(os.path.join(ROOT, "freeform/lib/check/boards.json")))["boards/riftwater-pgmvox"]["volume.bin"]
 w.save(os.path.join(OUT, "build"), "Riftwater", (0, 90, 0))
 got = hashlib.sha256(open(os.path.join(OUT, "build", "volume.bin"), "rb").read()).hexdigest()
 print("same world as the recorded hash:", got == want)

@@ -1,6 +1,6 @@
 # Riftwater, the standalone original: anatomy and attribution
 
-Subject: `freeform/opus55-freeform-riftwater/` (scripts about 3,400 lines). This is the comparison board; the primary subject is the pgmvox port, in `ANATOMY.md`. Line references are to `freeform/opus55-freeform-riftwater/scripts/`. Its layers document is `riftwater-original.layers.json`.
+Subject: `freeform/lib/boards/riftwater/` (scripts about 3,400 lines). This is the comparison board; the primary subject is the pgmvox port, in `ANATOMY.md`. Line references are to `freeform/lib/boards/riftwater/scripts/`. Its layers document is `riftwater-original.layers.json`.
 
 ## 0. Reproduction and method
 

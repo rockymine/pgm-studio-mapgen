@@ -1,7 +1,7 @@
 """Run the Riftwater port's land() verbatim with a snapshot after each step; save the stack."""
 import os; D = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(D, "out"); ROOT = os.path.abspath(os.path.join(D, *[".."] * 5))
 import sys, os, inspect, textwrap, pickle, numpy as np
-B = os.path.join(ROOT, "freeform/lib/ports/riftwater/scripts")
+B = os.path.join(ROOT, "freeform/lib/boards/riftwater-pgmvox/scripts")
 sys.path.insert(0, B); sys.path.insert(0, os.path.join(ROOT, "freeform/lib"))
 os.chdir(B)
 import plan as P

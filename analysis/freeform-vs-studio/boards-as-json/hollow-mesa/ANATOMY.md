@@ -1,6 +1,6 @@
 # Hollow Mesa: how the script builds the board
 
-Board: `freeform/opus55-freeform-hollow-mesa/` (a DTC board: two banded mesas across a canyon, the town of Gilt in the canyon round a spring, a Wash climbing to the plateau, each core floating over a well and a hole through its mesa). Everything below was read from `scripts/` and measured by running a scratch copy; nothing in the board was edited.
+Board: `freeform/lib/boards/hollow-mesa/` (a DTC board: two banded mesas across a canyon, the town of Gilt in the canyon round a spring, a Wash climbing to the plateau, each core floating over a well and a hole through its mesa). Everything below was read from `scripts/` and measured by running a scratch copy; nothing in the board was edited.
 
 ## Does the board use pgmvox?
 

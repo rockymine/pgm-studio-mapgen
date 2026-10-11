@@ -1,6 +1,6 @@
 # Shared library assessment: the twenty freeform generators
 
-What the twenty `opus55-freeform-*` folders share, how the copies have drifted, and what a shared library and
+What the twenty opus55 boards (now `lib/boards/<name>`) share, how the copies have drifted, and what a shared library and
 the studio should take from them. Every claim here was read off the code. File references are
 `<board>/scripts/<file>:<function>`, with the `opus55-freeform-` prefix dropped.
 
@@ -97,7 +97,7 @@ cloudhaven, frostholm, hollowcrown, lantern-karst, calcite and gullhaven-dtm, ge
 mask. But it dropped those three rail ids and the iron trapdoor. A powered rail or an iron trapdoor on any of
 those boards comes out wrong on blue's half.
 
-**`cutaway.py` in saltgate is a cross-board import.** It puts `../../opus55-freeform-gullhaven/scripts` on
+**`cutaway.py` in saltgate is a cross-board import.** It puts `../../gullhaven/scripts` on
 `sys.path`, a line copied from gullhaven-dtm, which does the same in `compose.py`, `renders.py` and
 `walk.py`. Saltgate's cutaway therefore draws with gullhaven's `render_iso` colour table, not its own.
 `hollowcrown/cut_trees.py` likewise reads `trees.json` out of riftwater and frostholm.
@@ -573,7 +573,7 @@ what each run did. A library adopted by the next board costs nothing. Retrofitti
 output (§6.2) and spends effort where nobody is building.
 
 **Keep the cross-board imports in mind if anything is moved.** saltgate's cutaway and all of
-gullhaven-dtm resolve modules from `opus55-freeform-gullhaven/scripts`, and hollowcrown reads two other
+gullhaven-dtm resolve modules from `lib/boards/gullhaven/scripts`, and hollowcrown reads two other
 boards' `trees.json`. Moving or renaming gullhaven breaks two other boards.
 
 ### 6.5 The repository's own rule

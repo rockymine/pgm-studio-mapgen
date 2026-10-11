@@ -1,7 +1,7 @@
 {
  "layers": 1,
  "board": "riftwater (standalone original, no pgmvox)",
- "note": "Faithful transcription of freeform/opus55-freeform-riftwater/scripts into ordered layer operations. Not executable; every parameter was read from the scripts. Group order is the requested one (places, ground, volume, pieces, buildings, dressing, stamps); the script runs ground, volume, buildings (monuments last), dressing, then the mirror, so `pieces.monument-*` carries an `after` hint. `class` A = layer operation, B = library entry + placement, C = made; `new` = no op or template of that name exists in pgmvox or the studio today. Notation: BLOCK:data uses the names in scripts/mc.py (1.8 ids); [a,b] pairs after a block are (block, weight).",
+ "note": "Faithful transcription of freeform/lib/boards/riftwater/scripts into ordered layer operations. Not executable; every parameter was read from the scripts. Group order is the requested one (places, ground, volume, pieces, buildings, dressing, stamps); the script runs ground, volume, buildings (monuments last), dressing, then the mirror, so `pieces.monument-*` carries an `after` hint. `class` A = layer operation, B = library entry + placement, C = made; `new` = no op or template of that name exists in pgmvox or the studio today. Notation: BLOCK:data uses the names in scripts/mc.py (1.8 ids); [a,b] pairs after a block are (block, weight).",
  "world": {
   "x0": -120,
   "z0": -88,

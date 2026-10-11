@@ -8,11 +8,11 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 
 | World | Board | Source |
 |---|---|---|
-| `arcade/curio_square` | `freeform/opus55-freeform-curio` | `freeform/opus55-freeform-curio` |
-| `arcade/lantern_drop` | `freeform/opus55-freeform-lanterndrop` | `freeform/opus55-freeform-lanterndrop` |
-| `arcade/lantern_pass` | `freeform/opus55-freeform-lanternpass` | `freeform/opus55-freeform-lanternpass` |
-| `arcade/loomfall` | `freeform/opus55-freeform-loomfall` | `freeform/opus55-freeform-loomfall` |
-| `blitz/spark` | `freeform/opus55-freeform-spark` | `freeform/opus55-freeform-spark` |
+| `arcade/curio_square` | `freeform/lib/boards/curio` | `freeform/lib/boards/curio` |
+| `arcade/lantern_drop` | `freeform/lib/boards/lanterndrop` | `freeform/lib/boards/lanterndrop` |
+| `arcade/lantern_pass` | `freeform/lib/boards/lanternpass` | `freeform/lib/boards/lanternpass` |
+| `arcade/loomfall` | `freeform/lib/boards/loomfall` | `freeform/lib/boards/loomfall` |
+| `blitz/spark` | `freeform/lib/boards/spark` | `freeform/lib/boards/spark` |
 | `ctw/brassmoor_works` | `freeform/lib/boards/brassmoor-works` | `freeform/lib/boards/brassmoor-works` |
 | `ctw/brittlebush_iii` | `freeform/lib/boards/brittlebush-iii` | `freeform/lib/boards/brittlebush-iii` |
 | `ctw/burrowgate` | `opus5-burrowgate` | `specs/opus5-burrowgate` |
@@ -47,7 +47,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `ctw/hushwater` | `opus5-hushwater` | `specs/opus5-hushwater` |
 | `ctw/kettleshulme` | `opus5-kettleshulme` | `specs/opus5-kettleshulme` |
 | `ctw/kiln_row` | `opus5-kiln-row` | `specs/archive/opus5-kiln-row` |
-| `ctw/lantern_karst` | `freeform/opus55-freeform-lantern-karst` | `freeform/opus55-freeform-lantern-karst` |
+| `ctw/lantern_karst` | `freeform/lib/boards/lantern-karst` | `freeform/lib/boards/lantern-karst` |
 | `ctw/lingbeck` | `opus5-lingbeck` | `specs/archive/opus5-lingbeck` |
 | `ctw/lodestar_yard` | `opus5-lodestar` | `specs/archive/opus5-lodestar` |
 | `ctw/longstrand` | `opus5-longstrand` | `specs/opus5-longstrand` |
@@ -136,7 +136,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `dtcm/cinderfall` | `freeform/lib/boards/cinderfall` | `freeform/lib/boards/cinderfall` |
 | `dtcm/cinderhowe` | `opus55-cinderhowe` | `specs/opus55-cinderhowe` |
 | `dtcm/cinderreach` | `cinderreach` | — |
-| `dtcm/cloudhaven` | `freeform/opus55-freeform-cloudhaven` | `freeform/opus55-freeform-cloudhaven` |
+| `dtcm/cloudhaven` | `freeform/lib/boards/cloudhaven` | `freeform/lib/boards/cloudhaven` |
 | `dtcm/corbel_scar` | `opus5-corbel-scar` | `specs/archive/opus5-corbel-scar` |
 | `dtcm/corvid_hollow` | `corvid-hollow` | `specs/archive/corvid-hollow` |
 | `dtcm/cutwater` | `sonnet-cutwater` | `specs/archive/sonnet-cutwater` |
@@ -148,7 +148,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `dtcm/fellgrave_hollow` | `sonnet5-fellgrave-hollow` | `specs/archive/sonnet5-fellgrave-hollow` |
 | `dtcm/fellmoor_common` | `sonnet-fellmoor` | `specs/archive/sonnet-fellmoor` |
 | `dtcm/firnline` | `firnline` | `specs/archive/firnline` |
-| `dtcm/frostholm` | `freeform/opus55-freeform-frostholm` | `freeform/opus55-freeform-frostholm` |
+| `dtcm/frostholm` | `freeform/lib/boards/frostholm` | `freeform/lib/boards/frostholm` |
 | `dtcm/gantry_quarter_works` | `sonnet-gantry` | `specs/archive/sonnet-gantry` |
 | `dtcm/geometry_showcase` | `geometry-showcase` | `specs/archive/geometry-showcase` |
 | `dtcm/glacial` | `hk1_glacial` | — |
@@ -156,7 +156,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `dtcm/goldbank_quarry` | `opus5-goldbank-quarry` | `specs/archive/opus5-goldbank-quarry` |
 | `dtcm/goldhollow` | `goldhollow` | — |
 | `dtcm/grykefell` | `opus5-grykefell` | `specs/opus5-grykefell` |
-| `dtcm/gullhaven_dtm` | `freeform/opus55-freeform-gullhaven-dtm` | `freeform/opus55-freeform-gullhaven-dtm` |
+| `dtcm/gullhaven_dtm` | `freeform/lib/boards/gullhaven-dtm` | `freeform/lib/boards/gullhaven-dtm` |
 | `dtcm/gypsum_reach` | `opus55-gypsum-reach` | `specs/opus55-gypsum-reach` |
 | `dtcm/haiku_canonical_destroy` | `haiku-canonical-destroy-3` | `specs/archive/haiku-canonical-destroy-3` |
 | `dtcm/haiku_dtm_tower` | `haiku-dtm-tower` | `specs/archive/haiku-dtm-tower` |
@@ -164,8 +164,8 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `dtcm/hoarstone` | `opus5-hoarstone` | `specs/archive/opus5-hoarstone` |
 | `dtcm/hollin_tarn` | `fable-hollin-tarn` | `specs/fable-hollin-tarn` |
 | `dtcm/hollow_crown` | `haiku-r5-hollow-crown` | `specs/archive/haiku-r5-hollow-crown` |
-| `dtcm/hollow_mesa` | `freeform/opus55-freeform-hollow-mesa` | `freeform/opus55-freeform-hollow-mesa` |
-| `dtcm/hollowcrown` | `freeform/opus55-freeform-hollowcrown` | `freeform/opus55-freeform-hollowcrown` |
+| `dtcm/hollow_mesa` | `freeform/lib/boards/hollow-mesa` | `freeform/lib/boards/hollow-mesa` |
+| `dtcm/hollowcrown` | `freeform/lib/boards/hollowcrown` | `freeform/lib/boards/hollowcrown` |
 | `dtcm/hollowmere` | `hollowmere` | — |
 | `dtcm/interchange` | `opus5-interchange` | `specs/archive/opus5-interchange` |
 | `dtcm/ironhold` | `ironhold` | — |
@@ -196,7 +196,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `dtcm/ravensmere` | `opus5-ravensmere` | `specs/archive/opus5-ravensmere` |
 | `dtcm/redsand_caravanserai` | `sonnet-caravanserai` | `specs/archive/sonnet-caravanserai` |
 | `dtcm/redwash_mesa` | `freeform/lib/boards/redwash-mesa` | `freeform/lib/boards/redwash-mesa` |
-| `dtcm/riftwater` | `freeform/opus55-freeform-riftwater` | `freeform/opus55-freeform-riftwater` |
+| `dtcm/riftwater` | `freeform/lib/boards/riftwater` | `freeform/lib/boards/riftwater` |
 | `dtcm/ruddle_brink` | `opus5-ruddle-brink` | `specs/archive/opus5-ruddle-brink` |
 | `dtcm/sallowfen` | `opus55-sallowfen` | `specs/opus55-sallowfen` |
 | `dtcm/saltwharf` | `fable-saltwharf` | `specs/fable-saltwharf` |
@@ -215,7 +215,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `dtcm/sonnet_cinderreach` | `sonnet-cinderreach` | `specs/archive/sonnet-cinderreach` |
 | `dtcm/sonnet_holdfast` | `sonnet-holdfast` | `specs/archive/sonnet-holdfast` |
 | `dtcm/spinebreak` | `spinebreak` | — |
-| `dtcm/stratum` | `freeform/opus55-freeform-stratum` | `freeform/opus55-freeform-stratum` |
+| `dtcm/stratum` | `freeform/lib/boards/stratum` | `freeform/lib/boards/stratum` |
 | `dtcm/sunk_chancel` | `haiku-chancel` | `specs/archive/haiku-chancel` |
 | `dtcm/swallet_dale` | `opus5-swallet-dale` | `specs/archive/opus5-swallet-dale` |
 | `dtcm/tallow_kilnrow` | `tallow-kilnrow` | `specs/archive/tallow-kilnrow` |
@@ -236,11 +236,11 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `dtcm/whitegape` | `opus5-whitegape` | `specs/opus5-whitegape` |
 | `dtcm/whitstone_weald` | `whitstone-weald` | `specs/whitstone-weald` |
 | `dtcm/winterfold` | `haiku-winterfold` | `specs/archive/haiku-winterfold` |
-| `ffa/gullhaven` | `freeform/opus55-freeform-gullhaven` | `freeform/opus55-freeform-gullhaven` |
-| `kotf/riad` | `freeform/opus55-freeform-riad` | `freeform/opus55-freeform-riad` |
+| `ffa/gullhaven` | `freeform/lib/boards/gullhaven` | `freeform/lib/boards/gullhaven` |
+| `kotf/riad` | `freeform/lib/boards/riad` | `freeform/lib/boards/riad` |
 | `koth/basaltmere` | `opus5-basaltmere` | `specs/opus5-basaltmere` |
 | `koth/brittlebush_koth` | `freeform/lib/boards/brittlebush-koth` | `freeform/lib/boards/brittlebush-koth` |
-| `koth/calcite` | `freeform/opus55-freeform-calcite` | `freeform/opus55-freeform-calcite` |
+| `koth/calcite` | `freeform/lib/boards/calcite` | `freeform/lib/boards/calcite` |
 | `koth/casemate` | `opus5-casemate` | `specs/archive/opus5-casemate` |
 | `koth/culvergate` | `opus5c-culvergate` | `specs/opus5c-culvergate` |
 | `koth/islets` | `freeform/lib/examples/islets` | `freeform/lib/examples/islets` |
@@ -270,13 +270,13 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `mixed/probe_snowfield` | `paint-snowfield` | `specs/paint-snowfield` |
 | `mixed/probe_snowfield_1` | `probe-snowfield-1` | `specs/archive/probe-snowfield-1` |
 | `mixed/probe_snowfield_2` | `probe-snowfield-2` | `specs/archive/probe-snowfield-2` |
-| `mixed/saltgate` | `freeform/opus55-freeform-saltgate` | `freeform/opus55-freeform-saltgate` |
+| `mixed/saltgate` | `freeform/lib/boards/saltgate` | `freeform/lib/boards/saltgate` |
 | `mixed/sandreach` | `freeform/lib/boards/sandreach` | `freeform/lib/boards/sandreach` |
 | `mixed/tallowfleet` | `opus5-tallowfleet` | `specs/opus5-tallowfleet` |
 | `other/brittle_study` | `freeform/lib/boards/brittle-study` | `freeform/lib/boards/brittle-study` |
-| `other/copperline` | `freeform/opus55-freeform-copperline` | `freeform/opus55-freeform-copperline` |
+| `other/copperline` | `freeform/lib/boards/copperline` | `freeform/lib/boards/copperline` |
 | `other/form_gallery` | `form-gallery` | — |
 | `other/sculpture_gallery` | `sculpture-gallery` | — |
 | `tdm/overgrowth` | `freeform/lib/boards/overgrowth` | `freeform/lib/boards/overgrowth` |
-| `tdm/penstock` | `freeform/opus55-freeform-penstock` | `freeform/opus55-freeform-penstock` |
+| `tdm/penstock` | `freeform/lib/boards/penstock` | `freeform/lib/boards/penstock` |
 | `tdm/vinewatch_ruins` | `freeform/lib/boards/vinewatch-ruins` | `freeform/lib/boards/vinewatch-ruins` |

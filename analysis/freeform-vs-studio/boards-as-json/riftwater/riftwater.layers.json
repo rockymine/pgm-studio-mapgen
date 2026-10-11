@@ -1,7 +1,7 @@
 {
  "layers": 1,
  "board": "riftwater (pgmvox port)",
- "note": "The pgmvox port of Riftwater (freeform/lib/ports/riftwater) written as ordered layer operations. Not executable; every parameter was read from the port's scripts, and the library calls keep their pgmvox names. `lib` names the pgmvox function the port calls today; `local` marks code the port wrote itself; `new` means no pgmvox op or studio concept of that name exists. class A = layer operation, B = library entry + placement, C = made. The group order is the requested one; the script runs ground, volume, buildings, stalls, dressing, mirror, objectives.stamp, so the monument `box` is resolved against the finished ground only in `stamps.objectives`.",
+ "note": "The pgmvox port of Riftwater (freeform/lib/boards/riftwater-pgmvox) written as ordered layer operations. Not executable; every parameter was read from the port's scripts, and the library calls keep their pgmvox names. `lib` names the pgmvox function the port calls today; `local` marks code the port wrote itself; `new` means no pgmvox op or studio concept of that name exists. class A = layer operation, B = library entry + placement, C = made. The group order is the requested one; the script runs ground, volume, buildings, stalls, dressing, mirror, objectives.stamp, so the monument `box` is resolved against the finished ground only in `stamps.objectives`.",
  "built_with": {
   "pgmvox": "0.21.0 (the port was last built with 0.10.0; counts are the same: 1,002,206 blocks, 22 tile entities, 5,568 blocks carved)"
  },
@@ -1042,7 +1042,7 @@
      }
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:167-193",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:167-193",
    "gap": "Local code (plan._rift_edge) in the port. No pgmvox op makes an island outline with one ragged lip held straight at named bands; nearest is landform.coast or the studio's relief 'rim' mark.",
    "writes": {
     "mask": "land"
@@ -1082,7 +1082,7 @@
      }
     ]
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:201-202",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:201-202",
    "gap": "Formula in plan.land(); pgmvox.geom.noise supplies smoothstep and fbm. The studio's relief marks (point, line, area, scarp) state the same shapes as placed marks."
   },
   {
@@ -1109,7 +1109,7 @@
      }
     ]
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:203"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:203"
   },
   {
    "id": "base-west",
@@ -1141,7 +1141,7 @@
      }
     ]
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:205-206"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:205-206"
   },
   {
    "id": "base-noise",
@@ -1166,7 +1166,7 @@
      }
     ]
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:186,207",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:186,207",
    "gap": "fbm lattices are sized to the red-half grid (120 x 176): the seeds reproduce only in an interpreter that implements this noise on this grid."
   },
   {
@@ -1205,7 +1205,7 @@
     },
     "channel_floor": "level + 1"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:209-218",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:209-218",
    "gap": "An asymmetric valley shaped before the watercourse op cuts the channel: banks 7 vs 14 blocks, per-reach level. landform.watercourse has a symmetric bank and picks its own levels."
   },
   {
@@ -1261,7 +1261,7 @@
      "bed_max": 46
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:220-228,272-276",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:220-228,272-276",
    "gap": "Local in the port; lake() covers the ellipse, the spit and the outlet disc are not parameters.",
    "writes": {
     "water": "pond"
@@ -1324,7 +1324,7 @@
      ]
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:230-238,244",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:230-238,244",
    "gap": "landform.scarp is a cliff that jumps to half its height at the line (PORT-REPORT); a ridge whose foot wanders over fifteen blocks is a new landform."
   },
   {
@@ -1383,7 +1383,7 @@
      }
     ]
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:232-233,239-241"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:232-233,239-241"
   },
   {
    "id": "ridge-steps",
@@ -1395,7 +1395,7 @@
     "step": 3,
     "riser": 0.45
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:242",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:242",
    "note": "the original pulled the ground 55% of the way to steps; terraces() cuts them harder, so the port's ridge shows more bare rock"
   },
   {
@@ -1428,7 +1428,7 @@
      }
     ]
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:246-251",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:246-251",
    "gap": "landform.stage rings are circular and in blocks; this one is elliptical and in normalised radius."
   },
   {
@@ -1442,7 +1442,7 @@
     "width": 8,
     "level_radius": 11
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:253-256"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:253-256"
   },
   {
    "id": "flat-green",
@@ -1455,7 +1455,7 @@
     "width": 8,
     "level_radius": 9
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:253-256"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:253-256"
   },
   {
    "id": "knoll",
@@ -1473,7 +1473,7 @@
     "jag": 0.0,
     "z_stretch": 1.25
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:258-260",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:258-260",
    "gap": "spire is round; the port stretches z to make the ellipse."
   },
   {
@@ -1490,7 +1490,7 @@
     "fall_min": 2,
     "reach_min": 4
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:262-267",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:262-267",
    "gap": "Levels are not stated: the port shapes the valley first (op 'valley') so that the watercourse's own levels come out 48 and 45 with the weir at x -66. A levels=[(s, y)] parameter would say it directly.",
    "writes": {
     "water": "river",
@@ -1516,7 +1516,7 @@
     },
     "wet_ground": "min(ground, water - 1)"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:269-277",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:269-277",
    "note": "bookkeeping of the water grid: surface per column, wet columns' ground is their bed"
   },
   {
@@ -1533,7 +1533,7 @@
     "water": "water > 0",
     "keep": "routes graded before this one"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:279-289"
   },
   {
    "id": "grade-spawn-lane-south",
@@ -1549,7 +1549,7 @@
     "water": "water > 0",
     "keep": "routes graded before this one"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:279-289"
   },
   {
    "id": "grade-main-street",
@@ -1565,7 +1565,7 @@
     "water": "water > 0",
     "keep": "routes graded before this one"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:279-289"
   },
   {
    "id": "grade-bridge-street",
@@ -1581,7 +1581,7 @@
     "water": "water > 0",
     "keep": "routes graded before this one"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:279-289"
   },
   {
    "id": "grade-north-lane",
@@ -1597,7 +1597,7 @@
     "water": "water > 0",
     "keep": "routes graded before this one"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:279-289"
   },
   {
    "id": "grade-mill-lane",
@@ -1613,7 +1613,7 @@
     "water": "water > 0",
     "keep": "routes graded before this one"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:279-289"
   },
   {
    "id": "grade-field-road",
@@ -1629,7 +1629,7 @@
     "water": "water > 0",
     "keep": "routes graded before this one"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:279-289"
   },
   {
    "id": "grade-farm-track",
@@ -1645,7 +1645,7 @@
     "water": "water > 0",
     "keep": "routes graded before this one"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:279-289"
   },
   {
    "id": "grade-falls-walk",
@@ -1661,7 +1661,7 @@
     "water": "water > 0",
     "keep": "routes graded before this one"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:279-289"
   },
   {
    "id": "grade-spring-path",
@@ -1677,7 +1677,7 @@
     "water": "water > 0",
     "keep": "routes graded before this one"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:279-289"
   },
   {
    "id": "grade-village-road",
@@ -1693,7 +1693,7 @@
     "water": "water > 0",
     "keep": "routes graded before this one"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:279-289"
   },
   {
    "id": "grade-forest-path",
@@ -1709,7 +1709,7 @@
     "water": "water > 0",
     "keep": "routes graded before this one"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:279-289"
   },
   {
    "id": "grade-clearing-path",
@@ -1725,7 +1725,7 @@
     "water": "water > 0",
     "keep": "routes graded before this one"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:279-289"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:279-289"
   },
   {
    "id": "square-floor",
@@ -1747,7 +1747,7 @@
     "y": 52,
     "corner_radius": 3.2
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:291-295"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:291-295"
   },
   {
    "id": "green-floor",
@@ -1764,7 +1764,7 @@
     "y": 50,
     "not_water": true
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:296-297"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:296-297"
   },
   {
    "id": "sinkhole-funnel",
@@ -1782,7 +1782,7 @@
     "bowl_from": 1.5,
     "step_per_block": 1.0
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:299-304",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:299-304",
    "gap": "Concentric one-block steps from a cave floor to the field, so a player climbs out. Edits the heightfield; its rubble is a separate volume op."
   },
   {
@@ -1801,7 +1801,7 @@
     "height": 6,
     "profile": "1-d^1.6"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:305-309"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:305-309"
   },
   {
    "id": "underside",
@@ -1823,7 +1823,7 @@
      "seed": 52
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:311-317",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:311-317",
    "gap": "underside(mask, top_y, depth(d)) takes one distance and one top_y; here two distances take a minimum and the top is the per-column ground."
   },
   {
@@ -1863,7 +1863,7 @@
     },
     "from_y": 3
    },
-   "source": "freeform/lib/ports/riftwater/scripts/ground.py:71-74",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/ground.py:71-74",
    "writes": {
     "blocks": "908,648 (90.7% of the world)"
    }
@@ -1967,7 +1967,7 @@
      "plains(1)": "else"
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/ground.py:75-110",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/ground.py:75-110",
    "gap": "terrain.lay paints the top by slope only (no position) and lays from one floor y; the port lays from y 3 then clears below the per-column bottom (455,476 blocks cleared in the red half). lay(bottom=array, top(deg, x, z)) would absorb this pass."
   },
   {
@@ -1987,7 +1987,7 @@
     "block": "WATER_FLOW:8",
     "only_into": "air"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/ground.py:114-128"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/ground.py:114-128"
   }
  ],
  "volume": [
@@ -2040,7 +2040,7 @@
     "keep": "x >= -1",
     "ground": "heightfield"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:33-34,187-188"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:33-34,187-188"
   },
   {
    "id": "cave-south",
@@ -2085,7 +2085,7 @@
     "keep": "x >= -1",
     "ground": "heightfield"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:33-34,187-188"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:33-34,187-188"
   },
   {
    "id": "cave-north",
@@ -2142,7 +2142,7 @@
     "keep": "x >= -1",
     "ground": "heightfield"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:33-34,187-188"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:33-34,187-188"
   },
   {
    "id": "cave-grotto",
@@ -2181,7 +2181,7 @@
     "keep": "x >= -1",
     "ground": "heightfield"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:33-34,187-188"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:33-34,187-188"
   },
   {
    "id": "cave-west",
@@ -2214,7 +2214,7 @@
     "keep": "x >= -1",
     "ground": "heightfield"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:33-34,187-188"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:33-34,187-188"
   },
   {
    "id": "chamber-lake-chamber",
@@ -2230,7 +2230,7 @@
     "keep": "x >= -1",
     "cover": 3
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:37-38,189-190",
    "note": "lake chamber"
   },
   {
@@ -2247,7 +2247,7 @@
     "keep": "x >= -1",
     "cover": 3
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:37-38,189-190"
   },
   {
    "id": "chamber-pillar-hall",
@@ -2263,7 +2263,7 @@
     "keep": "x >= -1",
     "cover": 3
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:37-38,189-190",
    "note": "pillar hall"
   },
   {
@@ -2280,7 +2280,7 @@
     "keep": "x >= -1",
     "cover": 3
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:37-38,189-190"
   },
   {
    "id": "chamber-grotto",
@@ -2296,7 +2296,7 @@
     "keep": "x >= -1",
     "cover": 3
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:37-38,189-190",
    "note": "grotto"
   },
   {
@@ -2313,7 +2313,7 @@
     "keep": "x >= -1",
     "cover": 3
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:37-38,189-190"
   },
   {
    "id": "chamber-6",
@@ -2329,7 +2329,7 @@
     "keep": "x >= -1",
     "cover": 3
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:37-38,189-190"
   },
   {
    "id": "chamber-7",
@@ -2345,7 +2345,7 @@
     "keep": "x >= -1",
     "cover": 3
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:37-38,189-190"
   },
   {
    "id": "chamber-8",
@@ -2361,7 +2361,7 @@
     "keep": "x >= -1",
     "cover": 3
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:37-38,189-190"
   },
   {
    "id": "chamber-9",
@@ -2377,7 +2377,7 @@
     "keep": "x >= -1",
     "cover": 3
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:37-38,189-190"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:37-38,189-190"
   },
   {
    "id": "pillars",
@@ -2405,7 +2405,7 @@
     "only_into": "air",
     "seed": 8
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:53-62"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:53-62"
   },
   {
    "id": "cave-dress",
@@ -2424,7 +2424,7 @@
     "keep": "x >= -1",
     "cover": 2
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:192"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:192"
   },
   {
    "id": "grotto-stash",
@@ -2484,7 +2484,7 @@
      }
     ]
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:65-71",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:65-71",
    "gap": "chest prop exists; the three loose blocks are hand-placed"
   },
   {
@@ -2519,7 +2519,7 @@
      ]
     ]
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:41-50"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:41-50"
   },
   {
    "id": "cave-mouth",
@@ -2541,7 +2541,7 @@
     "content": "a two-wide stone ledge (STONE:5/0 by (x+z)%3) at y 35 over x -11..-10, z 1..9 (x=-10 only z>=4), a second layer at y 34 for z>=5, three blocks of air cleared above it, vines hung at x -11, y 39..41, z -1..5 with p 0.5 where rock stands behind",
     "mirror": "x' = -1 - x"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:74-89",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:74-89",
    "note": "Bespoke: stands in a void column inside the build zone and reads the world to hang vines only against rock."
   },
   {
@@ -2573,7 +2573,7 @@
     "grass_rim": "d > radius - 1.5",
     "hold_up": "STONE:5 under any step over air"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:92-106"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:92-106"
   },
   {
    "id": "mine-gallery",
@@ -2655,7 +2655,7 @@
     ],
     "timber": "on level floor only"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:109-112"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:109-112"
   },
   {
    "id": "mine-portal",
@@ -2702,7 +2702,7 @@
      ]
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:113-124"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:113-124"
   },
   {
    "id": "mine-shaft",
@@ -2716,7 +2716,7 @@
     "top": "ground",
     "ladder_on": "s"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:127-132"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:127-132"
   },
   {
    "id": "gaol-cellar",
@@ -2742,7 +2742,7 @@
     ],
     "mirror": "x' = -1 - x"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:135-170"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:135-170"
   }
  ],
  "pieces": [
@@ -2781,7 +2781,7 @@
     ],
     "maxbuildheight": 90
    },
-   "source": "freeform/lib/ports/riftwater/scripts/mapxml.py:5-14,40"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/mapxml.py:5-14,40"
   },
   {
    "id": "kit",
@@ -2857,7 +2857,7 @@
      }
     ]
    },
-   "source": "freeform/lib/ports/riftwater/scripts/mapxml.py:15-31",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/mapxml.py:15-31",
    "gap": "No kit helper in pgmvox.play.mapxml; written with E by hand (PORT-REPORT)."
   },
   {
@@ -2887,7 +2887,7 @@
      "build": "never"
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:42-43,573",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:42-43,573",
    "mirror": "blue-team: the same, turned by Symmetry mirror_x"
   },
   {
@@ -2904,7 +2904,7 @@
     "yaw": 90,
     "mirror": false
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:576"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:576"
   },
   {
    "id": "monument-square",
@@ -2928,7 +2928,7 @@
     "air_under": 1,
     "region_written_from": "the same box that is stamped"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:44-45,574-575",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:44-45,574-575",
    "note": "the stamped blocks and the map.xml cuboid come from one Box, so they cannot disagree",
    "mirror": "blue-square: box turned by Symmetry"
   },
@@ -2954,7 +2954,7 @@
     "air_under": 1,
     "region_written_from": "the same box that is stamped"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:44-45,574-575",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:44-45,574-575",
    "note": "the stamped blocks and the map.xml cuboid come from one Box, so they cannot disagree",
    "mirror": "blue-green: box turned by Symmetry"
   },
@@ -2984,7 +2984,7 @@
      }
     ]
    },
-   "source": "freeform/lib/ports/riftwater/scripts/mapxml.py:32-35"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/mapxml.py:32-35"
   }
  ],
  "buildings": [
@@ -3065,7 +3065,7 @@
      "window": "PANE:0"
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:338-351",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:338-351",
    "gap": "The studio's house JSON carries foundation, roof, wall, post, windows, storeys, porch, front, beams, doorway; pgmvox's House style is a dict of material slots. Neither carries a furnished interior; the port has none (the original had one)."
   },
   {
@@ -3080,7 +3080,7 @@
     "top": "GRASS:0",
     "ground_at": "world top"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/works.py:48-52",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/works.py:48-52",
    "note": "all pads before any wall, so a later pad's eased ring cannot cut an earlier wall"
   },
   {
@@ -3100,7 +3100,7 @@
     "door": "s",
     "floor": 52
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-h1",
@@ -3118,7 +3118,7 @@
     "style": "town",
     "door": "s"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-shop1",
@@ -3137,7 +3137,7 @@
     "door": "s",
     "sign": "Chandler"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-h2",
@@ -3155,7 +3155,7 @@
     "style": "town",
     "door": "s"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-bakery",
@@ -3174,7 +3174,7 @@
     "door": "s",
     "sign": "Bakery"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-h3",
@@ -3192,7 +3192,7 @@
     "style": "town",
     "door": "s"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-h4",
@@ -3210,7 +3210,7 @@
     "style": "town",
     "door": "n"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-shop2",
@@ -3229,7 +3229,7 @@
     "door": "n",
     "sign": "Cooper"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-h5",
@@ -3247,7 +3247,7 @@
     "style": "town",
     "door": "n"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-gaol",
@@ -3267,7 +3267,7 @@
     "floor": 52,
     "inside": true
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-h6",
@@ -3285,7 +3285,7 @@
     "style": "town",
     "door": "e"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-h7",
@@ -3303,7 +3303,7 @@
     "style": "town",
     "door": "e"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-inn",
@@ -3322,7 +3322,7 @@
     "door": "w",
     "sign": "The Falls Inn"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-h8",
@@ -3340,7 +3340,7 @@
     "style": "town",
     "door": "s"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-h9",
@@ -3358,7 +3358,7 @@
     "style": "town",
     "door": "s"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-shop3",
@@ -3377,7 +3377,7 @@
     "door": "s",
     "sign": "Saddler"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-chapel",
@@ -3396,7 +3396,7 @@
     "door": "s",
     "chimney": false
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-watch",
@@ -3416,7 +3416,7 @@
     "floor": 59,
     "inside": true
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-hut",
@@ -3434,7 +3434,7 @@
     "style": "village",
     "door": "e"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-mill",
@@ -3452,7 +3452,7 @@
     "style": "mill",
     "door": "n"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-c1",
@@ -3470,7 +3470,7 @@
     "style": "village",
     "door": "e"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-tall",
@@ -3488,7 +3488,7 @@
     "style": "village",
     "door": "e"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-wing",
@@ -3508,7 +3508,7 @@
     "floor_of": "tall",
     "chimney": false
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-c2",
@@ -3526,7 +3526,7 @@
     "style": "village",
     "door": "e"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-big",
@@ -3544,7 +3544,7 @@
     "style": "village",
     "door": "n"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-lean",
@@ -3563,7 +3563,7 @@
     "door": "n",
     "floor_of": "big"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-c3",
@@ -3581,7 +3581,7 @@
     "style": "village",
     "door": "n"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-engine",
@@ -3600,7 +3600,7 @@
     "door": "w",
     "chimney": false
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "house-smithy",
@@ -3619,7 +3619,7 @@
     "door": "w",
     "chimney": false
    },
-   "source": "freeform/lib/ports/riftwater/scripts/plan.py:82-116,354-395; works.py:54-65"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/plan.py:82-116,354-395; works.py:54-65"
   },
   {
    "id": "square-carpet",
@@ -3645,7 +3645,7 @@
      57
     ]
    },
-   "source": "freeform/lib/ports/riftwater/scripts/works.py:398-407"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/works.py:398-407"
   },
   {
    "id": "chapel-belfry",
@@ -3700,7 +3700,7 @@
     "pews": "SPRUCE_STAIRS rows x -48..-42 step 2, z -77,-76,-74,-73",
     "altar": "QUARTZ x2 at x -40, z -76..-75"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/works.py:68-127",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/works.py:68-127",
    "gap": "works.tower (45 lines) is local in the port; only the battlement is the library's (build.parapet)."
   },
   {
@@ -3747,7 +3747,7 @@
      "block": "WOOL:14"
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/works.py:68-110,130-141",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/works.py:68-110,130-141",
    "note": "parapet is pgmvox.built.build.parapet"
   },
   {
@@ -3785,7 +3785,7 @@
      "also": "z=-13 and z=-1 for x -93..-86"
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/works.py:142-155",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/works.py:142-155",
    "note": "the wall is local"
   },
   {
@@ -3802,7 +3802,7 @@
     "block": "STONEBRICK_STAIRS",
     "under": "STONE:0"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/works.py:156-165"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/works.py:156-165"
   },
   {
    "id": "mill-works",
@@ -3856,7 +3856,7 @@
      "sacks": "HAY:0 at (-65..-64, f+1, 2)"
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/works.py:169-203",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/works.py:169-203",
    "gap": "Reads the ground (world top) and the river line at write time."
   },
   {
@@ -3901,7 +3901,7 @@
     },
     "lamps": "glowstone on fence at the four deck ends"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/works.py:206-246; plan.py:437-446"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/works.py:206-246; plan.py:437-446"
   },
   {
    "id": "old-bridge",
@@ -3944,7 +3944,7 @@
      ]
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/works.py:249-278"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/works.py:249-278"
   },
   {
    "id": "headframe",
@@ -3990,7 +3990,7 @@
      "radius_ge": 2
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/works.py:282-320"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/works.py:282-320"
   },
   {
    "id": "engine-stack",
@@ -4021,7 +4021,7 @@
      ]
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/works.py:325-334"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/works.py:325-334"
   },
   {
    "id": "smithy-fittings",
@@ -4057,7 +4057,7 @@
      63
     ]
    },
-   "source": "freeform/lib/ports/riftwater/scripts/works.py:335-341"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/works.py:335-341"
   },
   {
    "id": "well",
@@ -4078,7 +4078,7 @@
      "slab": "WOOD_SLAB:1 3x3 at y+3"
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/works.py:342-356"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/works.py:342-356"
   },
   {
    "id": "spoil-rubble",
@@ -4105,7 +4105,7 @@
     ],
     "depth": 6
    },
-   "source": "freeform/lib/ports/riftwater/scripts/works.py:357-368"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/works.py:357-368"
   },
   {
    "id": "roads",
@@ -4162,7 +4162,7 @@
     "water": "L.water > 0",
     "protect": "house footprints, towers +1, the square, the terrace"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/works.py:372-395",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/works.py:372-395",
    "gap": "route.pave has no mask: the port hands it a world proxy (works.Guarded) that refuses writes to protected columns."
   },
   {
@@ -4179,7 +4179,7 @@
     "block": "LOG:1",
     "to": "the bed"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/works.py:389-394"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/works.py:389-394"
   },
   {
    "id": "lamps",
@@ -4194,7 +4194,7 @@
     "light": "GLOWSTONE",
     "skip": "protected columns, x >= -12"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/works.py:410-426",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/works.py:410-426",
    "note": "written locally in the port; props.lamp exists"
   },
   {
@@ -4214,7 +4214,7 @@
      54
     ]
    },
-   "source": "freeform/lib/ports/riftwater/scripts/under.py:173-182",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/under.py:173-182",
    "note": "runs after works.build (gen.py:30), because the gaol must exist"
   }
  ],
@@ -4232,7 +4232,7 @@
     },
     "facing": "e"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/gen.py:33-36"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/gen.py:33-36"
   },
   {
    "id": "woods-north",
@@ -4258,7 +4258,7 @@
      "only": "x < -1"
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/dress.py:249-257"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/dress.py:249-257"
   },
   {
    "id": "woods-ridge",
@@ -4276,7 +4276,7 @@
     "tries": 4000,
     "seed": 2
    },
-   "source": "freeform/lib/ports/riftwater/scripts/dress.py:255,258"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/dress.py:255,258"
   },
   {
    "id": "woods-south",
@@ -4294,7 +4294,7 @@
     "tries": 4000,
     "seed": 3
    },
-   "source": "freeform/lib/ports/riftwater/scripts/dress.py:256,259"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/dress.py:256,259"
   },
   {
    "id": "cutting-ring",
@@ -4311,7 +4311,7 @@
     "tries": 4000,
     "seed": 4
    },
-   "source": "freeform/lib/ports/riftwater/scripts/dress.py:260",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/dress.py:260",
    "note": "plants no tree in the committed build"
   },
   {
@@ -4328,7 +4328,7 @@
     "variant": 1,
     "turn": 1
    },
-   "source": "freeform/lib/ports/riftwater/scripts/dress.py:261-262"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/dress.py:261-262"
   },
   {
    "id": "trees-by-hand",
@@ -4430,7 +4430,7 @@
     ],
     "refuse_if": "within monument reach or on blocked ground"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/dress.py:263-269",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/dress.py:263-269",
    "note": "10 listed"
   },
   {
@@ -4498,7 +4498,7 @@
      "head": "PUMPKIN:3"
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/dress.py:271-298"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/dress.py:271-298"
   },
   {
    "id": "cutting",
@@ -4530,7 +4530,7 @@
      ]
     ]
    },
-   "source": "freeform/lib/ports/riftwater/scripts/dress.py:300-312",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/dress.py:300-312",
    "note": "no sawhorse or sledge in the port"
   },
   {
@@ -4549,7 +4549,7 @@
      "block": "VINE:2"
     }
    },
-   "source": "freeform/lib/ports/riftwater/scripts/dress.py:314-324"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/dress.py:314-324"
   },
   {
    "id": "ground-cover",
@@ -4590,7 +4590,7 @@
     },
     "skip": "monument within 2"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/dress.py:326-340",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/dress.py:326-340",
    "note": "the studio's flora overlay is this concept; written locally in the port"
   }
  ],
@@ -4616,7 +4616,7 @@
      "tile entities (chests and signs)"
     ]
    },
-   "source": "freeform/lib/ports/riftwater/scripts/gen.py:39-40",
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/gen.py:39-40",
    "note": "501,103 of the world's 1,002,206 non-air blocks (50.0%) are this copy; the recolour is one parameter"
   },
   {
@@ -4629,7 +4629,7 @@
     "symmetry": "mirror_x",
     "blocks": "2 obsidian per monument"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/gen.py:41-42"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/gen.py:41-42"
   },
   {
    "id": "writer",
@@ -4650,7 +4650,7 @@
     "sections": "fully sky-lit",
     "entities": "none"
    },
-   "source": "freeform/lib/ports/riftwater/scripts/gen.py:43"
+   "source": "freeform/lib/boards/riftwater-pgmvox/scripts/gen.py:43"
   }
  ]
 }

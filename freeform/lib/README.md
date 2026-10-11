@@ -3,7 +3,13 @@
 The twenty freeform boards each carried their own copies of the same helpers, and the copies drifted.
 `freeform/SHARED-LIBRARY-ASSESSMENT.md` measured it: 15,800 of about 50,000 lines were copies, there were nine
 colour tables, a symmetry table that lost its rail fix, and a walk whose headroom check could never fire. pgmvox is
-the one copy. New boards import it; the twenty finished boards are left as they were built.
+the one copy. New boards build with it; the twenty finished boards keep their own generators and write their map.xml
+through it.
+
+**Every board is one folder under `boards/`, and its world one folder under `maps/`.** The twenty finished boards,
+the boards built on the library and the two library rebuilds of finished ones (`riftwater-pgmvox`,
+`lantern-karst-pgmvox`) sit side by side, each with its `scripts/`, `renders/` and notes; `examples/` holds the small
+boards that teach the library. `check.py` builds every folder with a `scripts/gen.py` and holds it to its hash.
 
 ## What is in it
 
@@ -563,7 +569,7 @@ under the courses and a foot, so the walls are a grammar's while the floors stay
 bands by height and Brittlebush's edge.
 
 **Three documents show what it holds.** `examples/layers/island.layers.json` is a grown island with a river, paths,
-a hedge and walls. `ports/riftwater/riftwater.ground.layers.json` is the Riftwater port's ground in 38 layers, held
+a hedge and walls. `boards/riftwater-pgmvox/riftwater.ground.layers.json` is the Riftwater port's ground in 38 layers, held
 equal to `plan.land()` by a test. `examples/layers/saumland.layers.json` puts a yard in Brittlebush's grammar beside
 grown ground held under its rims, with monoliths sunk into the meadow, a fluted tower, a ringed forecourt and the
 half turn. The format is written out in `analysis/freeform-vs-studio/LAYER-DOCUMENT.md`.
@@ -582,7 +588,7 @@ python3 -m pgmvox.run examples/islets --only sketch
 
 **The world lands in the repository's `maps/<mode>/<name>/`**, the folder `maps/INDEX.md` names for the board
 (`examples/islets` writes `maps/koth/islets`). A board the index does not name yet is added under its map's name and
-game mode on its first `write`, or under `<name>_pgmvox` where another board holds that name (`ports/riftwater` writes
+game mode on its first `write`, or under `<name>_pgmvox` where another board holds that name (`boards/riftwater-pgmvox` writes
 `maps/dtcm/riftwater_pgmvox`), so its world can be copied out to a server as it stands. Run outside the repository,
 the library writes `<board>/world` instead.
 

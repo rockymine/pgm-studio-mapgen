@@ -14,7 +14,7 @@ Nothing was written to the deployed studio (two GETs of `untitled-plan-8`, one `
 
 ### Was Riftwater given the same brief? Verdict: no, not verbatim; it is a sibling task, not the same one
 
-There is no brief text anywhere in `freeform/opus55-freeform-riftwater/`. What the files do say:
+There is no brief text anywhere in `freeform/lib/boards/riftwater/`. What the files do say:
 
 | Brief clause (as the studio runs state it) | Riftwater |
 |---|---|
@@ -41,7 +41,7 @@ branches.
 | studio `sonnet55b-rustwater` (Sonnet 5.5) | yes, `S/rust/maps/sonnet55b-rustwater/region` | round two, committed 21:53 |
 | studio `haiku55b-rowanford` (Haiku 5.5) | yes, `S/rowan/maps/haiku55b-rowanford/region` | only build, committed 20:37 |
 | freeform `opus55-freeform-riftwater` | yes, `maps/dtcm/riftwater/region` | |
-| pgmvox port `lib/ports/riftwater` | **no region files** (`--skip write`); only `world/map.xml`. Numbers below are the port's own report (1,001,926 blocks, 110 trees, 16 tile entities) | |
+| pgmvox port `lib/boards/riftwater-pgmvox` | **no region files** (`--skip write`); only `world/map.xml`. Numbers below are the port's own report (1,001,926 blocks, 110 trees, 16 tile entities) | |
 
 ### World metrics (measured)
 
@@ -158,12 +158,12 @@ zone is. (Brittlebush III in Pair 2 does mark it: 76 cobwebs.)
 
 | Board | Most telling |
 |---|---|
-| Riftwater | `/home/user/pgm-studio-mapgen/freeform/opus55-freeform-riftwater/renders/05-topdown-annotated.png` (every place named), `30-iso-board-se.png`, `33-iso-town.png`, `38-iso-rift-falls.png`, `40-xray-underground.png`, `35-iso-river-mill.png`, `00-plan-sketch.png`; 54 renders in all (plan sketch, material/height/objective top-downs, 12 sections, 10 isometrics, 2 x-rays, 5 elevations, `walks.txt`) |
+| Riftwater | `/home/user/pgm-studio-mapgen/freeform/lib/boards/riftwater/renders/05-topdown-annotated.png` (every place named), `30-iso-board-se.png`, `33-iso-town.png`, `38-iso-rift-falls.png`, `40-xray-underground.png`, `35-iso-river-mill.png`, `00-plan-sketch.png`; 54 renders in all (plan sketch, material/height/objective top-downs, 12 sections, 10 isometrics, 2 x-rays, 5 elevations, `walks.txt`) |
 | Russetford | `S/russet/specs/opus55b-russetford/opus55b-russetford.png` (1280x720 studio eye render, textured), `S/russet/maps/opus55b-russetford/map.png` (290x246 thumbnail) |
 | Rustwater | `S/rust/specs/sonnet55b-rustwater/sonnet55b-rustwater.png`, `S/rust/maps/sonnet55b-rustwater/map.png` |
 | Rowan Ford | `S/rowan/specs/haiku55b-rowanford/haiku55b-rowanford.png`, `S/rowan/maps/haiku55b-rowanford/map.png` |
 | like-for-like | I re-rendered all four studio worlds with pgmvox's own iso renderer, so they match Riftwater's `30-iso-board-se.png`: `S/renders/studio-russetford-iso-se.png`, `studio-rustwater-iso-se.png`, `studio-rowanford-iso-se.png` |
-| port | `/home/user/pgm-studio-mapgen/freeform/lib/ports/riftwater/renders/` (13 renders, same names as the original; PORT-REPORT says the two are "hard to tell apart" from above) |
+| port | `/home/user/pgm-studio-mapgen/freeform/lib/boards/riftwater-pgmvox/renders/` (13 renders, same names as the original; PORT-REPORT says the two are "hard to tell apart" from above) |
 
 ### The 8 biggest reasons the freeform board is richer (grounded)
 

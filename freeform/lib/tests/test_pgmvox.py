@@ -902,7 +902,7 @@ class LayerDocument(unittest.TestCase):
 
     def test_the_riftwater_ports_ground_is_a_layer_document(self):
         from pgmvox.document import layers as document
-        scripts = os.path.join(os.path.dirname(HERE), "ports", "riftwater", "scripts")
+        scripts = os.path.join(os.path.dirname(HERE), "boards", "riftwater-pgmvox", "scripts")
         sys.path.insert(0, scripts)
         try:
             import plan as RP

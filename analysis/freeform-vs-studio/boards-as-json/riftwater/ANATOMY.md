@@ -1,6 +1,6 @@
 # Riftwater on pgmvox: how the port is expressed
 
-Subject: `freeform/lib/ports/riftwater/` (scripts, `PORT-REPORT.md`), the form of Riftwater that is written with pgmvox. The standalone original (`freeform/opus55-freeform-riftwater/`) is the comparison, in section 7 and in `ORIGINAL-STANDALONE.md`. Every number below was measured by running the port's own `gen.py`; line references are to the port's files unless a path says otherwise.
+Subject: `freeform/lib/boards/riftwater-pgmvox/` (scripts, `PORT-REPORT.md`), the form of Riftwater that is written with pgmvox. The standalone original (`freeform/lib/boards/riftwater/`) is the comparison, in section 7 and in `ORIGINAL-STANDALONE.md`. Every number below was measured by running the port's own `gen.py`; line references are to the port's files unless a path says otherwise.
 
 ## 0. What was run, and how close the run is to the committed port
 
@@ -154,7 +154,7 @@ The two C steps are the gaol cellar (518 blocks) and the cave-mouth ledge (52). 
 
 ## 7. Comparison with the original standalone board
 
-**The original uses no pgmvox.** `grep pgmvox` over `freeform/opus55-freeform-riftwater/` finds nothing. Its imports are `plan`, `mc` (its own `World` and 1.8 block ids), `mirror`, `noise` (its own fbm, spline, `polyline_distance`), `terrain`, `underground`, `buildings`, `house`, `dressing` and numpy/scipy/PIL. The one outside dependency is the studio's C# Anvil writer, called from `write_world.cs`. pgmvox's `under.tunnel` takes the same `(x, floor_y, z, radius)` waypoints as the original's `CAVE`, and its `gallery`, `shaft` and `dress_cave` correspond to `underground.mine`, `shaft` and `dress_cave`; that is consistent with the library having been distilled from boards like this one, and cannot be proven from the imports.
+**The original uses no pgmvox.** `grep pgmvox` over `freeform/lib/boards/riftwater/` finds nothing. Its imports are `plan`, `mc` (its own `World` and 1.8 block ids), `mirror`, `noise` (its own fbm, spline, `polyline_distance`), `terrain`, `underground`, `buildings`, `house`, `dressing` and numpy/scipy/PIL. The one outside dependency is the studio's C# Anvil writer, called from `write_world.cs`. pgmvox's `under.tunnel` takes the same `(x, floor_y, z, radius)` waypoints as the original's `CAVE`, and its `gallery`, `shaft` and `dress_cave` correspond to `underground.mine`, `shaft` and `dress_cave`; that is consistent with the library having been distilled from boards like this one, and cannot be proven from the imports.
 
 **Blocks: the same families, the writer moved.** Both boards total about 1.0 M non-air blocks, and the sums by feature family reconcile exactly to each total.
 
@@ -210,4 +210,4 @@ The two C steps are the gaol cellar (518 blocks) and the cave-mouth ledge (52). 
 
 ## 8. Reproducing
 
-`cd /tmp/riftwater-anatomy` after copying `freeform/lib/pgmvox`, `freeform/lib/ports/riftwater`, `freeform/opus55-freeform-riftwater/scripts/trees.json` and `tools/` to the same relative places; then `python3 method/port/instrument_port.py <scratch>/freeform/lib/ports/riftwater/scripts <out>`, `rollup_port.py`, `expose_port.py`, `compare_worlds.py`. The scripts keep their `/tmp/riftwater-anatomy` paths; they are scratch tooling and read the repository only.
+`cd /tmp/riftwater-anatomy` after copying `freeform/lib/pgmvox`, `freeform/lib/boards/riftwater-pgmvox`, `freeform/lib/boards/riftwater/scripts/trees.json` and `tools/` to the same relative places; then `python3 method/port/instrument_port.py <scratch>/freeform/lib/boards/riftwater-pgmvox/scripts <out>`, `rollup_port.py`, `expose_port.py`, `compare_worlds.py`. The scripts keep their `/tmp/riftwater-anatomy` paths; they are scratch tooling and read the repository only.

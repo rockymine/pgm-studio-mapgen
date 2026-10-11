@@ -6,7 +6,7 @@ as a script would lose freedom if it had to state the board as layers the studio
 
 | Folder | Board | Subject |
 |---|---|---|
-| `riftwater/` | Riftwater (DTM) | the pgmvox port at `freeform/lib/ports/riftwater` first, the standalone original beside it |
+| `riftwater/` | Riftwater (DTM) | the pgmvox port at `freeform/lib/boards/riftwater-pgmvox` first, the standalone original beside it |
 | `hollow-mesa/` | Hollow Mesa (DTC) | the standalone board; it has no pgmvox port |
 
 Each holds `ANATOMY.md` (the pipeline in run order, with the blocks each step leaves), `FINDINGS.md` (the answer),
