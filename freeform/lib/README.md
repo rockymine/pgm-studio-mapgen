@@ -175,13 +175,10 @@ they would pile up there for the whole match.
 every column holding a block that is neither air nor liquid, a floating core's or monument's with the air under it. A board whose
 land floats clear of y 0 without it refuses every block its players try to place.
 
-**A core, a monument and a wool's slot check their columns are ground.** Over a column with nothing at y 0 the
-void rule refuses breaking and placing, so the objective could never be completed; `check(w)` names the first
-such column (`ground_problems`).
-
-**A core, a monument and a wool's slot check their columns are ground.** Over a column with nothing at y 0 the
-void rule refuses breaking and placing, so the objective could never be completed; `check(w)` names the first
-such column (`ground_problems`).
+**A core and a monument check their columns are ground.** Over a column with nothing at y 0 the void rule refuses
+breaking their block and placing the lava a core lets out, so neither could be completed; `check(w)` names the
+first such column (`ground_problems`). A wool's slot needs no mark: PGM decides a monument last and lets the right
+team's wool in whatever the rules said.
 
 **The kits players spawn with are the main kit, every kit a spawn names, and their parents.** A team's kit given
 with a shared one (`Kit(..., parents=[base])`) adds its pick and its arrows to what is kept and repaired, and a kit

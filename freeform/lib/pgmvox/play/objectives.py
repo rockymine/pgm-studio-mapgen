@@ -463,7 +463,7 @@ class Wool(Objective):
             bad.append(f"wool {self.color}: nothing under the slot to place on")
         if self.found and w.get(*self.found) != (B.WOOL, DYES[self.color]):
             bad.append(f"wool {self.color}: no wool at {self.found}")
-        return bad + ground_problems("wool", self.color, [(x, z)], w)
+        return bad
 
     def cells(self):
         return {(self.slot[0], self.slot[2])}
@@ -501,8 +501,9 @@ FLOAT = 3                                # a monument or core hangs this many bl
 
 
 def ground_problems(kind, oid, columns, w):
-    """The author's rule: under a core, a monument or a wool's slot the column is ground, a block at y 0 however much
-    air lies between, or PGM's void rule refuses breaking and placing there and the objective cannot be completed."""
+    """The author's rule: under a core or a monument the column is ground, a block at y 0 however much air lies
+    between, or PGM's void rule refuses breaking its block and placing the lava it lets out. A wool's slot needs none:
+    PGM decides a monument last and lets the right team's wool in whatever the rules said."""
     bare = sorted((x, z) for x, z in columns if w.id(x, 0, z) == B.AIR)
     if not bare:
         return []
