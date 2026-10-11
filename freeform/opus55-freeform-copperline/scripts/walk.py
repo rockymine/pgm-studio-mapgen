@@ -35,7 +35,7 @@ def rails(ids, dat, x0, z0):
 def world_at(ids, x0, z0, done):
     ids = ids.copy()
     for stage in done:
-        for bx0, by0, bz0, bx1, by1, bz1 in G.GATE_REGIONS[stage]:
+        for bx0, by0, bz0, bx1, by1, bz1 in P.GATE_REGIONS[stage]:
             ids[bx0 - x0:bx1 - x0 + 1, by0:by1 + 1, bz0 - z0:bz1 - z0 + 1] = 0
     return ids
 

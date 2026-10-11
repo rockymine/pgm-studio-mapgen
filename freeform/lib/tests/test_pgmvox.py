@@ -1431,6 +1431,62 @@ class WorldAndOutput(unittest.TestCase):
         self.assertEqual(x.getElementsByTagName("max-health")[0].firstChild.data, "8")
         self.assertEqual(x.getElementsByTagName("timeset")[0].firstChild.data, "6000")
 
+    def test_a_staged_match_written_from_its_logic(self):
+        from pgmvox.play.logic import (After, All, Completed, ControlPoint, Fill, MatchStarted, Message, Named, Not,
+                                       Ref, Trigger)
+        from pgmvox.play.objectives import Box, Objectives, Portal, Spawn, Teams, Wool
+        from pgmvox.play.rules import Blitz, Build, Item, Kit, Map, Match, Respawn, Zone
+        O = Objectives(Teams(("attackers", "Attackers", "red", 16, {"plural": True}),
+                             ("defenders", "Defenders", "blue", 16)))
+        O.add(Spawn("attackers", (0, 20, -30), kit="attacker-kit", filter="stage-1", pitch=10))
+        O.add(Spawn("defenders", kit="base-kit", spread=[Box(0, 20, 30, 2, 20, 32), Box(5, 20, 30, 7, 20, 32)]))
+        O.add(ControlPoint("gate", "the Gate", Box(-3, 20, -3, 3, 25, 3), progress=Box(-3, 20, -3, 3, 20, 3),
+                           capture_filter="only-attackers", initial_owner="defenders", permanent=True))
+        O.add(Wool("attackers", "purple", (0, 20, 0), found=(0, 30, 40), spawner=False, open_slot=True, renew=True))
+        O.add(Zone("shrine", [Box(9, 20, 9, 10, 22, 10)], kit="heal"))
+        O.add(Zone("hall", [Box(-9, 20, 9, -8, 22, 10)], enter="never"))
+        O.add(Portal("swap", Box(20, 0, 0, 20, 255, 9), by=(-40, 0, 0)))
+        base = Kit(Item("iron sword", 0), Item("arrow", 8, 16), id="base-kit", reward=[Item("arrow", amount=4)])
+        M = Map("T", "1", "t", "ad", includes=[], objectives=O, kit=base,
+                kits=[Kit(Item("diamond pickaxe", 4), id="attacker-kit", parents=[base]), Kit(id="heal", health=20)],
+                parts=[Named("gate-taken", Completed("gate")),
+                       Named("stage-1", Not(Ref("gate-taken"))),
+                       Named("open", All(After("20s", MatchStarted()), Ref("gate-taken"))),
+                       Trigger("open", [Fill([Box(0, 20, 5, 2, 22, 5)]), Message("Open!")])],
+                build=Build(breakable=("obsidian", "wool:10"), message="No."),
+                match=Match(time="15m", result="defenders", blitz=Blitz(2, "only-attackers", broadcast=True),
+                            respawn=[Respawn("5s", filter="only-attackers"), Respawn("7s", filter="only-defenders")],
+                            broadcasts=[("tip", 2, "Go!", "only-attackers")]))
+        x = xml.dom.minidom.parseString(M.xml())
+        tags = lambda t: x.getElementsByTagName(t)                                       # noqa: E731
+        ids = {e.getAttribute("id"): e for e in tags("*") if e.getAttribute("id")}
+        self.assertEqual(ids["attacker-kit"].getAttribute("parents"), "base-kit")
+        keep = [e.firstChild.data for e in tags("itemkeep")[0].childNodes if e.nodeType == e.ELEMENT_NODE]
+        self.assertIn("diamond pickaxe", keep)                       # a spawn kit's own item is kept and repaired
+        self.assertIn("diamond pickaxe", [e.firstChild.data for e in tags("tool")])
+        self.assertNotIn("health", keep)
+        self.assertEqual(tags("message")[0].getAttribute("text"), "Open!")       # PGM reads the attribute
+        self.assertEqual(tags("fill")[0].getAttribute("region"), "fill-1")
+        self.assertEqual(tags("trigger")[0].getAttribute("filter"), "open")
+        cp = tags("control-point")[0]
+        self.assertEqual((cp.getAttribute("capture"), cp.getAttribute("progress")), ("gate-capture", "gate-ring"))
+        self.assertEqual(tags("score").length, 0)                    # a control point alone keeps no score
+        always = [a.getAttribute("region") for a in tags("apply") if a.getAttribute("block-place") == "always"]
+        self.assertEqual(always, ["purple-attackers-monument", "purple-wool-block"])
+        self.assertEqual(tags("replacement")[0].firstChild.data, "wool:10")
+        self.assertEqual(ids["breakable"].tagName, "any")
+        self.assertIn("never", [a.getAttribute("enter") for a in tags("apply")])
+        self.assertIn("heal", [a.getAttribute("kit") for a in tags("apply")])
+        self.assertEqual(tags("portal")[0].getAttribute("x"), "-40")
+        self.assertEqual([s.getAttribute("pitch") for s in tags("spawn")], ["10", ""])
+        self.assertEqual(tags("spawn")[1].getElementsByTagName("regions")[0].getElementsByTagName("cuboid").length, 2)
+        self.assertEqual(tags("team")[0].getAttribute("plural"), "true")
+        self.assertEqual([r.getAttribute("filter") for r in tags("respawn")], ["only-attackers", "only-defenders"])
+        self.assertEqual(tags("blitz")[0].getAttribute("filter"), "only-attackers")
+        self.assertEqual(tags("broadcastLives").length, 1)
+        self.assertEqual(tags("tip")[0].getAttribute("filter"), "only-attackers")
+        self.assertEqual(tags("time")[0].firstChild.data, "15m")
+
 
 class Underground(unittest.TestCase):
     def rock(self):

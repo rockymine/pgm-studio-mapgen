@@ -194,5 +194,12 @@ SPAWNS = {
     "attackers": {"1": (-0.5, 25, -60.5, 0), "2": (0.5, 23, -27.5, 0), "3": (0.5, 31, 13.5, 0)},
     "defenders": {"1": (0.5, 27, 0.5, 180), "2": (0.5, 31, 20.5, 180), "3": (-20.5, 35, 50.5, 180)},
 }
+GATE_REGIONS = {
+    # stage -> boxes (x0, y0, z0, x1, y1, z1) inclusive, filled with air when it falls
+    "warmup": [((a + b) // 2 - 1, 25, -55, (a + b) // 2 + 1, 26, -55) for a, b in ((-30, -22), (-6, 5), (21, 29))],
+    "A": [(dx0, MAGAZINES[k]["floor"] + 1, dz0, dx1, MAGAZINES[k]["floor"] + 3, dz1)
+          for k in range(2) for dx0, dx1, dz0, dz1 in MAGAZINES[k]["doors"]],
+    "B": [(-3, 31, 22, 2, 35, 22), (-2, 35, 44, 1, 38, 44), (11, 35, 51, 11, 37, 53)],
+}
 TIME = "15m"
 WARMUP = "20s"

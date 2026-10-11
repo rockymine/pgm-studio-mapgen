@@ -18,7 +18,7 @@ area is given; decoration over the void may still be broken; `never` refuses bui
 from dataclasses import dataclass, field
 
 from pgmvox.play.mapxml import Doc, E, below as below_el, duration, negative, union
-from pgmvox.play.objectives import Core, Destroyable, Flag, Objective, turn_point
+from pgmvox.play.objectives import Core, Destroyable, Flag, Objective, Spawn, turn_point
 
 TOOL_WORDS = {"sword", "bow", "pickaxe", "axe", "spade", "shovel", "shears", "hoe", "rod"}
 CONSUMED = {"arrow", "cooked beef", "cooked chicken", "cooked porkchop", "cooked fish", "bread", "apple",
@@ -45,11 +45,26 @@ class Item:
     name: str = None
     locked: bool = None
     color: str = None                    # leather's dye, as hex
+    effects: tuple = ()                  # a potion's Effects
+    grenade: float = None                # a thrown item that explodes with this power
 
     def element(self):
-        return E(self.wear or "item", *[E("enchantment", text=n, level=lv) for n, lv in self.enchant], slot=self.slot,
-                 material=self.material, amount=self.amount, damage=self.damage, unbreakable=self.unbreakable,
-                 team_color=self.team_color, name=self.name, locked=self.locked, color=self.color)
+        return E(self.wear or "item", *[E("enchantment", text=n, level=lv) for n, lv in self.enchant],
+                 *[e.element() for e in self.effects], slot=self.slot, material=self.material, amount=self.amount,
+                 damage=self.damage, unbreakable=self.unbreakable, team_color=self.team_color, name=self.name,
+                 locked=self.locked, color=self.color, grenade=None if self.grenade is None else True,
+                 grenade_power=self.grenade)
+
+
+@dataclass
+class KillReward:
+    """What a kill pays: `items`, only while the killer's streak is at `streak` kills when given."""
+    items: list
+    streak: int = None
+
+    def element(self):
+        return E("kill-reward", E("filter", E("kill-streak", count=self.streak)) if self.streak else None,
+                 *[i.element() for i in self.items])
 
 
 @dataclass(frozen=True)
@@ -87,70 +102,98 @@ class ForEveryone:
 
 
 class Kit:
-    """A kit: its items and armour, and what else it gives: `clear` the inventory first, `effects`, a `game_mode`,
-    `max_health`, `actions`. The spawn kit also states what follows from it: `reward`, the kill reward when it is not
-    the kit's own blocks, and `remove`, materials dropped on death besides the armour."""
+    """A kit: its items and armour, and what else it gives: `clear` the inventory first (True, or "effects" to clear
+    the potion effects too), `effects`, a `game_mode`, `max_health`, `health`, `food` (saturation and food level
+    filled to it), `knockback_reduction`, `actions`; `parents` are kits given with it. `deduct_items` False gives an
+    item the player already carries again. The kits a map's players spawn with also state what follows from them:
+    `reward`, the kill reward when it is not the kits' own blocks (Items, paid every kill, and KillRewards for a
+    streak), and `remove`, materials dropped on death besides the armour."""
 
-    def __init__(self, *items, id="spawn-kit", clear=None, effects=(), game_mode=None, max_health=None, force=None,
-                 actions=(), reward=None, remove=()):
+    def __init__(self, *items, id="spawn-kit", clear=None, effects=(), game_mode=None, max_health=None, health=None,
+                 food=None, knockback_reduction=None, force=None, deduct_items=None, parents=(), actions=(),
+                 reward=None, remove=()):
         self.items = list(items)
         self.id = id
         self.clear = clear
         self.effects = list(effects)
         self.game_mode = game_mode
         self.max_health = max_health
+        self.health = health
+        self.food = food
+        self.knockback_reduction = knockback_reduction
         self.force = force
+        self.deduct_items = deduct_items
+        self.parents = list(parents)
         self.actions = list(actions)
         self.reward = reward
         self.remove = list(remove)
 
+    def lineage(self):
+        """This kit and every kit it is given with, parents first."""
+        out = []
+        for p in self.parents:
+            out += [k for k in p.lineage() if k not in out]
+        return out + [self]
+
     def loadout(self):
         return [i for i in self.items if not i.wear]
 
-    def stacks(self):
-        return [i for i in self.loadout() if (i.amount or 1) > 1]
-
-    def blocks(self):
-        """The stacked items a player builds with: every stack but food and arrows."""
-        return [i for i in self.stacks() if i.material not in CONSUMED]
-
     def _children(self):
-        return ([E("clear")] if self.clear else []) + [i.element() for i in self.items] + \
-            [e.element() for e in self.effects] + \
+        clear = None
+        if self.clear:
+            clear = E("clear", effects=True) if self.clear == "effects" else E("clear")
+        stats = [("max-health", self.max_health), ("health", self.health), ("saturation", self.food),
+                 ("foodlevel", self.food), ("knockback-reduction", self.knockback_reduction)]
+        return [clear] + [i.element() for i in self.items] + [e.element() for e in self.effects] + \
             ([E("game-mode", text=self.game_mode)] if self.game_mode else []) + \
-            ([E("max-health", text=self.max_health)] if self.max_health is not None else []) + \
-            [a.element() for a in self.actions]
+            [E(tag, text=v) for tag, v in stats if v is not None] + [a.element() for a in self.actions]
+
+    def _attrs(self):
+        return dict(force=self.force, deduct_items=self.deduct_items,
+                    parents=",".join(p.id for p in self.parents) or None)
 
     def inline(self):
         """The kit written where it is given, with no id."""
-        return E("kit", *self._children(), force=self.force)
+        return E("kit", *self._children(), **self._attrs())
 
     def write(self, doc):
-        doc.kit(self.id, *self._children(), force=self.force)
+        doc.kit(self.id, *self._children(), **self._attrs())
 
-    def standards(self, doc, destroyed=()):
-        """Item keep, tool repair, item remove, the placed blocks' drops and the kill reward, read off the kit."""
-        singles = [i.material for i in self.loadout() if (i.amount or 1) <= 1]
-        stacks = list(dict.fromkeys(i.material for i in self.blocks()))
-        keep = list(dict.fromkeys(singles + [i.material for i in self.stacks()]))
-        tools = list(dict.fromkeys(m for m in singles if m.split()[-1] in TOOL_WORDS))
-        remove = list(dict.fromkeys([i.material for i in self.items if i.wear] + self.remove + list(destroyed)))
-        if stacks:
-            doc.add(E("block-drops", E("rule", E("filter", E("material", text=stacks[0]) if len(stacks) == 1 else
-                                                   E("any", [E("material", text=m) for m in stacks])),
-                                       E("drops", E("item", material=stacks[0], chance=0.0)))))
-        for tag, inner, names in (("itemkeep", "item", keep), ("itemremove", "item", remove),
-                                  ("toolrepair", "tool", tools)):
-            if names:
-                doc.add(E(tag, [E(inner, text=m) for m in names]))
-        if self.reward is not None:
-            rewards = [i.element() for i in self.reward]
-        else:
-            once = {(i.material, i.damage, i.team_color): i for i in self.blocks()}.values()
-            rewards = [E("item", material=i.material, damage=i.damage, amount=8 if i.team_color else 16,
-                         team_color=i.team_color or None) for i in once]
-        if rewards:
-            doc.add(E("kill-rewards", E("kill-reward", *rewards)))
+
+def standards(doc, kits, destroyed=()):
+    """Item keep, tool repair, item remove, the placed blocks' drops and the kill reward, read off the kits players
+    spawn with: everything they carry is kept and its tools repaired, armour and `remove` dropped, stacked blocks
+    break into nothing and come back as a kill's reward."""
+    items = [i for k in kits for i in k.items]
+    loadout = [i for i in items if not i.wear]
+    stacked = [i for i in loadout if (i.amount or 1) > 1]
+    blocks = [i for i in stacked if i.material not in CONSUMED]
+    singles = [i.material for i in loadout if (i.amount or 1) <= 1]
+    stacks = list(dict.fromkeys(i.material for i in blocks))
+    keep = list(dict.fromkeys(singles + [i.material for i in stacked]))
+    tools = list(dict.fromkeys(m for m in singles if m.split()[-1] in TOOL_WORDS))
+    remove = list(dict.fromkeys([i.material for i in items if i.wear] + [m for k in kits for m in k.remove] +
+                                list(destroyed)))
+    if stacks:
+        doc.add(E("block-drops", E("rule", E("filter", E("material", text=stacks[0]) if len(stacks) == 1 else
+                                               E("any", [E("material", text=m) for m in stacks])),
+                                   E("drops", E("item", material=stacks[0], chance=0.0)))))
+    for tag, inner, names in (("itemkeep", "item", keep), ("itemremove", "item", remove),
+                              ("toolrepair", "tool", tools)):
+        if names:
+            doc.add(E(tag, [E(inner, text=m) for m in names]))
+    stated = [k.reward for k in kits if k.reward is not None]
+    if stated:
+        rewards = [r if isinstance(r, KillReward) else KillReward([r]) for r in stated[0]]
+        plain = [r for r in rewards if r.streak is None]
+        rewards = ([KillReward([i for r in plain for i in r.items])] if plain else []) + \
+            [r for r in rewards if r.streak is not None]
+    else:
+        once = {(i.material, i.damage, i.team_color): i for i in blocks}.values()
+        rewards = [KillReward([Item(i.material, amount=8 if i.team_color else 16, damage=i.damage,
+                                    team_color=i.team_color or None) for i in once])] if once else []
+    if rewards:
+        doc.add(E("kill-rewards", *[r.element() for r in rewards]))
 
 
 # ---- building -----------------------------------------------------------------------------------------------------
@@ -160,7 +203,8 @@ class Build:
     less `holes`; with no area, only where a column has a block at y 0 (the land, and the build zones marked with
     block 36); `void` False lets a player build anywhere; `never` refuses it everywhere, and `use` False refuses
     using a block too; `only` lets a player place and break those materials and nothing else, and `physics` False
-    holds every block as it is. `max_height` is the build height."""
+    holds every block as it is; `breakable` lets those materials be broken and nothing be placed; `rule` is a filter
+every block placed or broken must pass. `max_height` is the build height."""
     areas: list = field(default_factory=list)
     holes: list = field(default_factory=list)
     max_height: int = None
@@ -169,11 +213,18 @@ class Build:
     use: bool = True
     only: tuple = ()
     physics: bool = True
+    breakable: tuple = ()
+    rule: object = None
     message: str = None
 
     def write(self, doc):
         if self.never:
             doc.apply(block="never", use=None if self.use else "never", message=self.message)
+        elif self.rule is not None:
+            doc.apply(block=_named(doc, "block-rule", self.rule), message=self.message)
+        elif self.breakable:
+            doc.filter("breakable", E("any", [E("material", text=m) for m in self.breakable]))
+            doc.apply(block_break="breakable", block_place="never", message=self.message)
         elif self.only:
             doc.filter("only-these", E("all", E("any", [E("material", text=m) for m in self.only]),
                                        E("not", E("cause", text="world"))))
@@ -196,6 +247,11 @@ class Build:
             doc.add(E("maxbuildheight", text=self.max_height))
 
 
+def _named(doc, id_, f):
+    """A filter's id: a string as it is, a filter object written under <filters> as `id_`."""
+    return f if isinstance(f, str) else doc.filter(id_, f.element())
+
+
 def _rect(r):
     x0, z0, x1, z1 = r
     return E("rectangle", min=f"{x0},{z0}", max=f"{x1 + 1},{z1 + 1}")
@@ -204,17 +260,18 @@ def _rect(r):
 # ---- the match ----------------------------------------------------------------------------------------------------
 @dataclass
 class Match:
-    """How a match ends and what it spares: a time limit and what wins at it, a score limit with points a kill and a
-    death, lives, fall damage, and the broadcasts it makes: ("alert" or "tip", after seconds, text)."""
-    time: int = None
+    """How a match ends and what it spares: a time limit (seconds, or PGM's text) and what wins at it, a score limit
+    with points a kill and a death, a Blitz, fall damage, and the broadcasts it makes: ("alert" or "tip", after
+    seconds or text, text), with the id of a filter saying who hears it as a fourth."""
+    time: object = None
     result: str = None
     score: int = None
     kills: int = None
     deaths: int = None
-    lives: int = None
+    blitz: object = None                 # a Blitz
     fall_damage: bool = True
     broadcasts: list = field(default_factory=list)
-    respawn: object = None               # a Respawn
+    respawn: object = None               # a Respawn, or a list of them each for those its filter lets through
     time_of_day: int = None              # the world's clock held at these ticks
     rage: bool = False                   # every hit kills
 
@@ -228,30 +285,48 @@ class Match:
                     score.append(E(tag, text=v))
         if self.time is not None:
             doc.add(E("time", text=duration(self.time), result=self.result))
-        if self.lives is not None:
-            doc.add(E("blitz", E("lives", text=self.lives)))
+        if self.blitz:
+            self.blitz.write(doc)
         if not self.fall_damage:
             doc.add(E("disabledamage", E("damage", text="fall")))
         if self.broadcasts:
-            doc.add(E("broadcasts", [E(kind, text=text, after=duration(t)) for kind, t, text in self.broadcasts]))
-        if self.respawn:
-            self.respawn.write(doc)
+            doc.add(E("broadcasts", [E(b[0], text=b[2], after=duration(b[1]), filter=b[3] if len(b) > 3 else None)
+                                     for b in self.broadcasts]))
+        if isinstance(self.respawn, (list, tuple)):
+            doc.add(E("respawns", [r.element() for r in self.respawn]))
+        elif self.respawn:
+            doc.add(self.respawn.element())
         if self.time_of_day is not None:
             doc.add(E("world", E("timeset", text=self.time_of_day), E("timelock", text="on")))
 
 
 @dataclass
+class Blitz:
+    """Each player has `lives`, those `filter` lets through (everyone when None); `broadcast` tells the match how
+    many each has left."""
+    lives: int = 1
+    filter: str = None
+    broadcast: bool = None
+
+    def write(self, doc):
+        doc.add(E("blitz", E("lives", text=self.lives),
+                  E("broadcastLives", text="true") if self.broadcast else None, filter=self.filter))
+
+
+@dataclass
 class Respawn:
     """How the dead come back: after `delay`, on their own when `auto`, watching the match while they wait when
-    `spectate`; `message` a translation key shown while they wait."""
+    `spectate`; `message` a translation key shown while they wait; `filter` the id of a filter saying whom this
+    respawn is for, when the match has several."""
     delay: str = "3s"
     auto: bool = None
     spectate: bool = None
     message: str = None
+    filter: str = None
 
-    def write(self, doc):
+    def element(self):
         msg = E("message", text='{"translate":"%s"}' % self.message) if self.message else None
-        doc.add(E("respawn", msg, delay=self.delay, auto=self.auto, spectate=self.spectate))
+        return E("respawn", msg, delay=self.delay, auto=self.auto, spectate=self.spectate, filter=self.filter)
 
 
 @dataclass
@@ -373,8 +448,10 @@ def _safe_landing(doc):
 
 @dataclass
 class Zone(Objective):
-    """A place with rules of its own: nobody may `place` or `break_` blocks in it when those are False, and nobody
-    is hurt there when `damage` is False. `boxes` are one or more Boxes."""
+    """A place with rules of its own: nobody may `place` or `break_` blocks in it when those are False, nobody is hurt
+    there when `damage` is False, only the team `enter` names may come in (nobody at all when it is "never"), and
+    whoever is inside is given `kit`. `boxes` are one or more Boxes; a team's zone turns with the board, its id and
+    the team let in carried to the other side."""
     id: str
     boxes: list
     place: bool = True
@@ -382,14 +459,27 @@ class Zone(Objective):
     damage: bool = True
     message: str = None
     team: str = None
+    enter: str = None                    # the only ones who may come in: a team's id
+    enter_message: str = None
+    kit: str = None
 
     def turned(self, sym):
         from dataclasses import replace
         return replace(self, boxes=[b.image(sym) for b in self.boxes])
 
+    def image(self, sym, teams):
+        from dataclasses import replace
+        img = super().image(sym, teams)
+        return replace(img, enter=teams.next(self.enter)) if self.enter and self.enter != "never" else img
+
     def write(self, doc, teams):
         shape = self.boxes[0].cuboid() if len(self.boxes) == 1 else union(*[b.cuboid() for b in self.boxes])
         rid = doc.region(self.id, shape)
+        if self.enter:
+            who = "never" if self.enter == "never" else f"only-{teams.short(self.enter)}"
+            doc.apply(enter=who, region=rid, message=self.enter_message)
+        if self.kit:
+            doc.apply(region=rid, kit=self.kit)
         if not (self.place and self.break_):
             doc.apply(region=rid, block_place=None if self.place else "never",
                       block_break=None if self.break_ else "never", message=self.message)
@@ -414,11 +504,62 @@ class Bounds(Objective):
         doc.apply(enter="never", block=None if self.build else "never", region=rid, message=self.message)
 
 
+# ---- shops ---------------------------------------------------------------------------------------------------------
+@dataclass
+class Offer:
+    """An item for sale, at `price` of `currency`."""
+    item: Item
+    price: int
+    currency: str
+
+    def element(self):
+        el = self.item.element()
+        el.set("price", str(self.price))
+        el.set("currency", self.currency)
+        return el
+
+
+@dataclass
+class Shop:
+    """A shop: its categories, each (id, icon material, [Offer, ...]), and the shopkeepers who open it."""
+    id: str
+    name: str
+    categories: list
+
+    def write(self, doc):
+        doc.child("shops").append(E("shop", *[E("category", *[o.element() for o in offers], id=cid, material=icon)
+                                              for cid, icon, offers in self.categories], id=self.id, name=self.name))
+
+
+@dataclass
+class Shopkeeper(Objective):
+    """Someone standing at a block who opens `shop`, facing yaw; a team's keeper turns with the board."""
+    shop: str
+    name: str
+    at: tuple
+    yaw: int = 0
+    team: str = None
+
+    def turned(self, sym):
+        from dataclasses import replace
+        from pgmvox.play.objectives import turn_yaw
+        return replace(self, at=turn_point(self.at, sym), yaw=turn_yaw(self.yaw, sym))
+
+    def write(self, doc, teams):
+        x, y, z = self.at
+        doc.child("shopkeepers").append(E("shopkeeper", text=f"{x + 0.5},{y},{z + 0.5}", shop=self.shop,
+                                          name=self.name, yaw=self.yaw))
+
+    def cells(self):
+        return {(self.at[0], self.at[2])}
+
+
 # ---- the whole map --------------------------------------------------------------------------------------------------
 @dataclass
 class Map:
     """Every part of a map.xml: its name and what it is played for, its authors, the objectives and every placed
-    thing, the kit and what follows from it, the build rule, the kill height and the match."""
+    thing, the kits and what follows from those players spawn with, the build rule, the kill height, the match, and
+    `parts` that move with it (play.logic: named filters, triggers, variables, gives, gamerules)."""
     name: str
     version: str
     objective: str
@@ -427,13 +568,24 @@ class Map:
     contributors: list = field(default_factory=list)      # [(name, contribution)]
     objectives: object = None
     kit: Kit = None
-    kits: list = field(default_factory=list)              # the other kits: a flag carrier's, a reset
+    kits: list = field(default_factory=list)              # the other kits: a team's, a flag carrier's, a reset
     build: Build = None
     kill: object = None                                   # a KillHeight, or a list of them
     match: Match = None
     includes: list = field(default_factory=lambda: [KILL_REWARD_INCLUDE])
     rules: list = field(default_factory=list)             # lines shown to a player
     players: tuple = None                                 # (least, most) for a match without teams
+    shops: list = field(default_factory=list)
+    parts: list = field(default_factory=list)
+
+    def spawn_kits(self):
+        """The kits players spawn with, and every kit given with them: the main kit and those a spawn names."""
+        every = {k.id: k for k in ([self.kit] if self.kit else []) + self.kits}
+        named = [s.kit for s in self.objectives.of(Spawn)] if self.objectives else []
+        out = []
+        for k in ([self.kit] if self.kit else []) + [every[n] for n in dict.fromkeys(named) if n in every]:
+            out += [x for x in k.lineage() if x not in out]
+        return out
 
     def doc(self):
         d = Doc(self.name, self.version, self.objective, self.gamemode)
@@ -451,14 +603,17 @@ class Map:
             k.write(d)
         if self.objectives:
             self.objectives.write(d)
+        for shop in self.shops:
+            shop.write(d)
+        for part in self.parts:
+            part.write(d)
         if self.build:
             self.build.write(d)
         for k in (self.kill if isinstance(self.kill, (list, tuple)) else [self.kill] if self.kill else []):
             k.write(d)
         if self.match:
             self.match.write(d)
-        if self.kit:
-            self.kit.standards(d, self._destroyed())
+        standards(d, self.spawn_kits(), self._destroyed())
         d.add(E("hunger", E("depletion", text="off")))
         return d
 

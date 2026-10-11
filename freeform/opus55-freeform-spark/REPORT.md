@@ -13,7 +13,7 @@ wins.
   its checker, and the sketch, as reviewed.
 - `scripts/plan_v1.py`, `plan_check_v1.py`, `sketch_v1.py` and `PLAN_v1.md`: the five floes of the first plan,
   set aside for the spark.
-- `scripts/gen.py`: the generator. `scripts/mapxml.py` writes `map.xml` from the plan.
+- `scripts/gen.py`: the generator. `scripts/mapxml.py` writes `map.xml` from the plan through pgmvox's play parts.
 - `scripts/walk.py`: the built world read back: the floor, nowhere to wait, the spawns, the scenery.
 - `scripts/build.sh`: the whole build from nothing, in about half a minute.
 - `world/`: the region files, `level.dat` and `map.xml`.

@@ -6,7 +6,7 @@ posterns, the courtyard's buildings, the keep with the banner in it, the gates t
     python3 gen.py <build-dir>
 
 Every gate is a block that the match's triggers fill with air when its stage falls: iron bars across a door or a
-passage, a fence across a gangplank. `GATE_REGIONS` lists their boxes for map.xml.
+passage, a fence across a gangplank. The plan's `GATE_REGIONS` lists their boxes.
 """
 import random
 import sys
@@ -576,15 +576,6 @@ def smoke(w):
                         dx, dy, dz = bx + 0.5 - cx, (by + 0.5 - cy) / 0.8, bz + 0.5 - cz
                         if dx * dx + dy * dy + dz * dz <= rad * rad and w.id(bx, by, bz) == B.AIR:
                             w.set(bx, by, bz, 95, 0)
-
-
-GATE_REGIONS = {
-    # stage -> boxes (x0, y0, z0, x1, y1, z1) inclusive, filled with air when it falls
-    "warmup": [((a + b) // 2 - 1, 25, -55, (a + b) // 2 + 1, 26, -55) for a, b in ((-30, -22), (-6, 5), (21, 29))],
-    "A": [(dx0, P.MAGAZINES[k]["floor"] + 1, dz0, dx1, P.MAGAZINES[k]["floor"] + 3, dz1)
-          for k in range(2) for dx0, dx1, dz0, dz1 in P.MAGAZINES[k]["doors"]],
-    "B": [(-3, 31, 22, 2, 35, 22), (-2, 35, 44, 1, 38, 44), (11, 35, 51, 11, 37, 53)],
-}
 
 
 def make():

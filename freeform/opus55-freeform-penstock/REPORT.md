@@ -12,6 +12,10 @@ cuts every room, hall, corridor, tunnel and box out of it as a box of air. Decks
 in, and the shafts are cut through everything to the void. Then the half is mirrored onto blue's and
 recoloured, and `write_world.cs` writes the region files.
 
+**`map.xml` is written by `scripts/mapxml.py` from pgmvox's play parts.** Red's spawn, score boxes,
+quartermaster and zones are stated once and mirrored onto blue's half; the store, the spawners and the kit are
+stated as they are.
+
 **The paint is read off the carving.** Every exposed face of the mass is painted by what it faces: a floor by
 the space it is the floor of, a wall by how high it stands above that space's floor, a ceiling by its place in
 a grid of beams and lights. That is what puts the team's band round every wall of its own spaces and nowhere

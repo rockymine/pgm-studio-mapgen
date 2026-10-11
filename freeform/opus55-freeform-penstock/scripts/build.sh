@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Regenerate Penstock from nothing: generate the volume, write the region files, draw the renders, walk it.
+# Regenerate Penstock from nothing: generate the volume, write the region files and map.xml, draw the renders, walk it.
 #   scripts/build.sh [build-dir]        (python3 with numpy, scipy, pillow; dotnet 10; the studio at
 #                                        /home/user/pgm-studio with tools/PgmStudio.RoundTrip built)
 set -euo pipefail
@@ -14,6 +14,7 @@ mkdir -p "$root/renders"
 python3 gen.py "$build"
 rm -rf "$world/region"
 (cd /tmp && dotnet run "$here/write_world.cs" -- "$build" "$world")
+python3 mapxml.py > "$here/map.xml"
 cp "$here/map.xml" "$world/map.xml"
 python3 levels.py "$build" "$root/renders/00-plan-levels.png"
 python3 renders.py "$build" "$root" "$RT"

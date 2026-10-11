@@ -10,7 +10,7 @@ walkways above it. Ridges and the bell were confirmed in review.
 
 - `scripts/plan.py`, `plan_check.py`, `sketch.py`: the plan raster, the checker of sight and routes, and its
   drawing, as reviewed, with the one fix below.
-- `scripts/gen.py`: the generator. `scripts/mapxml.py` writes `map.xml` from the plan and the generator.
+- `scripts/gen.py`: the generator. `scripts/mapxml.py` writes `map.xml` from the plan through pgmvox's play parts.
 - `scripts/walk.py`: the built world read back: the run walked and sight measured through the real blocks.
 - `scripts/build.sh`: the whole build from nothing, in under a minute.
 - `world/`: the region files, `level.dat` and `map.xml`.

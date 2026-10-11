@@ -8,7 +8,7 @@ hall carved into the mountain; the cover and the dressing.
     python3 gen.py <build-dir>
 
 Every gate is a block the match's triggers fill with air when its stage falls: iron bars across a spawn room's
-door. `GATE_REGIONS` lists their boxes for map.xml.
+door. The plan's `GATE_REGIONS` lists their boxes.
 """
 import math
 import random
@@ -424,11 +424,6 @@ def north_ladder(w):
 
 
 # ---- buildings -----------------------------------------------------------------------------------------
-GATE_REGIONS = {}                                                # stage -> boxes (x0, y0, z0, x1, y1, z1)
-for _b in P.BUILDINGS.values():
-    for _dx0, _dx1, _dz0, _dz1, _st in _b["doors"]:
-        if _st:
-            GATE_REGIONS.setdefault(_st, []).append((_dx0, _b["floor"] + 1, _dz0, _dx1, _b["floor"] + 4, _dz1))
 STYLE = {"engine-shed": (BRICK, DARK_OAK), "station": (BRICK, DARK_OAK), "depot": (SPRUCE, DARK_OAK),
          "office": (SBRICK, DARK_OAK), "bunkhouse": (SPRUCE, DARK_OAK)}
 
@@ -919,7 +914,7 @@ def main(build):
     t0 = time.time()
     w = make()
     w.save(build, "Copperline", (0, 60, 0))
-    print(f"generated and saved {time.time() - t0:.1f}s; gates: {GATE_REGIONS}")
+    print(f"generated and saved {time.time() - t0:.1f}s; gates: {P.GATE_REGIONS}")
 
 
 if __name__ == "__main__":

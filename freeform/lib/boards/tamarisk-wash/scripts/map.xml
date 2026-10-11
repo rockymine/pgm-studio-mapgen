@@ -103,7 +103,7 @@
         <destroyable id="red-sunstone" name="Red Sunstone" owner="red-team" materials="lapis block" completion="100%" mode-changes="true" region="red-sunstone-region"/>
         <destroyable id="blue-sunstone" name="Blue Sunstone" owner="blue-team" materials="lapis block" completion="100%" mode-changes="true" region="blue-sunstone-region"/>
     </destroyables>
-    <maxbuildheight>100</maxbuildheight>
+    <maxbuildheight>104</maxbuildheight>
     <block-drops>
         <rule>
             <filter>
@@ -145,7 +145,7 @@
     </toolrepair>
     <kill-rewards>
         <kill-reward>
-            <item material="wood" damage="4" amount="16"/>
+            <item material="wood" amount="16" damage="4"/>
             <item material="stained clay" amount="8" team-color="true"/>
         </kill-reward>
     </kill-rewards>

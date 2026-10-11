@@ -180,6 +180,11 @@ SPAWNS = {
     "attackers": {"1": (26.5, 25, 63.5, 90), "2": (-27.5, 27, 20.5, -90), "3": (27.5, 29, -30.5, 90)},
     "defenders": {"1": (34.5, 27, 5.5, 180), "2": (42.5, 29, -29.5, 180), "3": (2.5, 37, -65.5, 180)},
 }
+GATE_REGIONS = {}                                                # stage -> boxes (x0, y0, z0, x1, y1, z1)
+for _b in BUILDINGS.values():
+    for _dx0, _dx1, _dz0, _dz1, _st in _b["doors"]:
+        if _st:
+            GATE_REGIONS.setdefault(_st, []).append((_dx0, _b["floor"] + 1, _dz0, _dx1, _b["floor"] + 4, _dz1))
 TIME = "12m"
 WARMUP = "20s"
 CAPTURE = "60s"

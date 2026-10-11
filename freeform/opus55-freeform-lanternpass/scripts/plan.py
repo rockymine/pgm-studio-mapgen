@@ -44,6 +44,7 @@ SECTIONS = [  # key, name, z0, z1
 BELL = dict(box=(-3, 2, 357, 363), y=51)                       # the capture region under the bell
 HEAL = dict(box=(-5, 4, 218, 224))                              # the shrine's floor: health on entering
 SPAWN_GATE = (-3, 2, 4, 4)
+GATE_REGIONS = {"warmup": [(SPAWN_GATE[0], 21, 4, SPAWN_GATE[1], 24, 4)]}
 WARMUP = "10s"
 TIME = "5m"
 

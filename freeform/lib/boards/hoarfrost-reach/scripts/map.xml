@@ -165,7 +165,7 @@
             <item material="wool" damage="4"/>
         </spawner>
     </spawners>
-    <maxbuildheight>100</maxbuildheight>
+    <maxbuildheight>118</maxbuildheight>
     <block-drops>
         <rule>
             <filter>
@@ -207,7 +207,7 @@
     </toolrepair>
     <kill-rewards>
         <kill-reward>
-            <item material="wood" damage="1" amount="16"/>
+            <item material="wood" amount="16" damage="1"/>
             <item material="stained clay" amount="8" team-color="true"/>
         </kill-reward>
     </kill-rewards>

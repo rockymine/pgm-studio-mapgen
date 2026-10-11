@@ -69,7 +69,9 @@ def union(*children, **attrs):
 
 
 def duration(seconds):
-    """PGM's duration text: 90 -> "1m30s"."""
+    """PGM's duration text: 90 -> "1m30s"; a text is PGM's already and kept as it is."""
+    if isinstance(seconds, str):
+        return seconds
     m, s = divmod(int(seconds), 60)
     return (f"{m}m" if m else "") + (f"{s}s" if s or not m else "")
 
@@ -126,8 +128,9 @@ class Doc:
         return el
 
     def teams(self, *teams):
-        """teams: (id, colour, max, display name)."""
-        return self.add(E("teams", [E("team", text=name, id=tid, color=col, max=mx) for tid, col, mx, name in teams]))
+        """teams: (id, colour, max, display name), and a dict of further attributes as a fifth."""
+        return self.add(E("teams", [E("team", text=t[3], id=t[0], color=t[1], max=t[2], **(t[4] if len(t) > 4 else {}))
+                                    for t in teams]))
 
     def kit(self, id_, *items, force=None, **attrs):
         """A kit under <kits>: doc.kit("spawn-kit", *elements)."""

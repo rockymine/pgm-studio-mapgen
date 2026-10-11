@@ -181,7 +181,6 @@ def vines(w):
 
 
 # ---- 0 the boathouse ---------------------------------------------------------------------------------------
-GATE_REGIONS = {"warmup": [(P.SPAWN_GATE[0], 21, 4, P.SPAWN_GATE[1], 24, 4)]}
 
 
 def boathouse(w):

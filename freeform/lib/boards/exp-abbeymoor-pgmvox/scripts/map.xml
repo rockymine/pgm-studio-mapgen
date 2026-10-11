@@ -120,7 +120,7 @@
         <destroyable id="red-village" name="Red Village Monument" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-village-region"/>
         <destroyable id="blue-village" name="Blue Village Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-village-region"/>
     </destroyables>
-    <maxbuildheight>100</maxbuildheight>
+    <maxbuildheight>120</maxbuildheight>
     <block-drops>
         <rule>
             <filter>
@@ -163,7 +163,7 @@
     </toolrepair>
     <kill-rewards>
         <kill-reward>
-            <item material="wood" damage="1" amount="16"/>
+            <item material="wood" amount="16" damage="1"/>
             <item material="stained clay" amount="8" team-color="true"/>
         </kill-reward>
     </kill-rewards>

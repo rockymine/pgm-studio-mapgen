@@ -66,7 +66,7 @@
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
         <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
     </regions>
-    <maxbuildheight>100</maxbuildheight>
+    <maxbuildheight>110</maxbuildheight>
     <score>
         <limit>75</limit>
         <kills>1</kills>
@@ -112,7 +112,7 @@
     </toolrepair>
     <kill-rewards>
         <kill-reward>
-            <item material="wood" damage="3" amount="16"/>
+            <item material="wood" amount="16" damage="3"/>
             <item material="stained clay" amount="8" team-color="true"/>
         </kill-reward>
     </kill-rewards>

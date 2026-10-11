@@ -4,140 +4,85 @@ of four random orders, the hiders winning if any is alive at seven minutes.
 
     python3 mapxml.py > map.xml
 """
+import os
 import random
-from xml.sax.saxutils import escape
+import sys
 
-import plan as P
-import sketch
-from gen import CAGE, Y
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "lib"))
+
+import plan as P  # noqa: E402
+import sketch  # noqa: E402
+from gen import CAGE, Y  # noqa: E402
+from pgmvox.play.logic import (Act, Action, After, All, Any, Area, Cause, Compass, Deny, Fill, Gamerules,  # noqa: E402
+                               Give, Message, Named, Ref, SetVar, Team, Time, Trigger, Variable)
+from pgmvox.play.objectives import Box, Objectives, Observer, Spawn, Teams  # noqa: E402
+from pgmvox.play.rules import Blitz, Bounds, Build, Effect, Item, Kit, Map, Match  # noqa: E402
 
 ORDERS = 4
+POTION = Item("potion", name="`rPotion of Invisibility `7(15s)", effects=[Effect("invisibility", "15s")])
+LOCKED = dict(unbreakable=True, locked=True)
+
+plots = [(f"plot-{i}-{j}", row["name"] if row else "a plot", *P.origin(i, j))
+         for (i, j), (builder, row) in sorted(sketch.layout().items())]
+names = {rid: name for rid, name, _, _ in plots}
+orders = []
+for k in range(ORDERS):
+    ids = [p[0] for p in plots]
+    random.Random(100 + k).shuffle(ids)
+    orders.append(ids)
+
+O = Objectives(Teams(("hiders", "Hiders", "green", 50, {"show_name_tags": False, "plural": True}),
+                     ("seekers", "Seekers", "dark aqua", 3, {"max_overfill": 3, "plural": True})))
+O.add(Spawn("hiders", kit="hider", safe=True, spread=[Box(x0, Y, z0, x1, Y, z1) for x0, z0, x1, z1 in
+                                                     ((-8, -8, 8, -7), (-8, 7, 8, 8), (-8, -6, -7, 6), (7, -6, 8, 6))]))
+O.add(Spawn("seekers", (P.CENTRE_X, CAGE[1] + 1, P.CENTRE_Z), kit="seeker-blind", filter="not(seekers-released)"))
+O.add(Spawn("seekers", (P.CENTRE_X, Y, P.CENTRE_Z + 7), kit="seeker", filter="seekers-released"))
+O.add(Observer((P.CENTRE_X, Y + 30, P.CENTRE_Z + 60), yaw=180, pitch=35))
+O.add(Bounds(Box(-P.HALF, 0, -P.HALF, P.HALF, 255, P.HALF), message="The fair is inside the walls!"))
 
 
-def plot_regions():
-    out = []
-    for (i, j), (builder, row) in sorted(sketch.layout().items()):
-        x0, z0 = P.origin(i, j)
-        out.append((f"plot-{i}-{j}", row["name"] if row else "a plot", x0, z0, builder))
-    return out
+def vanish(k):
+    """The k-th round: one of the four orders, drawn at the start, says which six plots go."""
+    rounds = [Act([a for rid in ids[k * P.PER_ROUND:(k + 1) * P.PER_ROUND]
+                   for a in (Fill(rid), Message(f"`7- {names[rid]}"))], filter=f"order={n}")
+              for n, ids in enumerate(orders)]
+    return Act([Message(f"`6`l{P.PER_ROUND} curiosities have vanished!")] + rounds, id=f"vanish-{k + 1}",
+               scope="match")
 
 
-def main():
-    o = []
-    a = o.append
-    plots = plot_regions()
-    orders = []
-    for k in range(ORDERS):
-        ids = [p[0] for p in plots]
-        random.Random(100 + k).shuffle(ids)
-        orders.append(ids)
-    names = {p[0]: p[1] for p in plots}
-    cx0, cy0, cz0, cx1, cy1, cz1 = CAGE
-    a('<map proto="1.5.0">')
-    a('<name>Curio Square</name>')
-    a('<version>1.0.0</version>')
-    a('<objective>Hide from the seekers until the time runs out!</objective>')
-    a('<gamemode>arcade</gamemode>')
-    a('<rules><rule>Fall damage is disabled.</rule><rule>Hiders\' name tags are hidden.</rule>'
-      '<rule>Every minute six of the fair\'s curiosities vanish.</rule></rules>')
-    a('<teams>')
-    a('    <team id="hiders" color="green" show-name-tags="false" max="50" plural="true">Hiders</team>')
-    a('    <team id="seekers" color="dark aqua" max="3" max-overfill="3" plural="true">Seekers</team>')
-    a('</teams>')
-    a(f'<time result="hiders">{P.TIME}</time>')
-    a('<blitz filter="only-hiders"/>')
-    a('<kits>')
-    a('    <kit id="seeker-blind"><effect>blindness</effect><game-mode>adventure</game-mode></kit>')
-    a('    <kit id="seeker" force="true">')
-    a('        <clear effects="true"/>')
-    a('        <game-mode>adventure</game-mode>')
-    a('        <item slot="0" material="iron sword" unbreakable="true" locked="true"/>')
-    a('        <helmet material="diamond helmet" unbreakable="true" locked="true"/>')
-    a('        <chestplate material="diamond chestplate" unbreakable="true" locked="true"/>')
-    a('        <leggings material="diamond leggings" unbreakable="true" locked="true"/>')
-    a('        <boots material="diamond boots" unbreakable="true" locked="true"/>')
-    a('        <effect>speed</effect>')
-    a('    </kit>')
-    a('    <kit id="hider">')
-    a('        <game-mode>adventure</game-mode>')
-    a('        <item slot="0" material="compass" locked="true"/>')
-    a('        <item material="potion" name="`rPotion of Invisibility `7(15s)"><effect duration="15s">invisibility</effect></item>')
-    a('    </kit>')
-    a('    <kit id="hider-potion" deduct-items="false">')
-    a('        <item material="potion" name="`rPotion of Invisibility `7(15s)"><effect duration="15s">invisibility</effect></item>')
-    a('    </kit>')
-    for r in (1, 3, 5):
-        a(f'    <give kit="hider-potion" filter="potion-{r}"/>')
-    a('    <give kit="seeker" filter="seekers-out"/>')
-    a('</kits>')
-    a('<spawns>')
-    a('    <spawn team="hiders" kit="hider" safe="true">')
-    a('        <regions>')
-    for x0, z0, x1, z1 in ((-8, -8, 8, -7), (-8, 7, 8, 8), (-8, -6, -7, 6), (7, -6, 8, 6)):
-        a(f'            <cuboid min="{x0},{Y},{z0}" max="{x1 + 1},{Y + 1},{z1 + 1}"/>')
-    a('        </regions>')
-    a('    </spawn>')
-    a(f'    <spawn team="seekers" kit="seeker-blind" filter="not(seekers-released)"><region><point>{P.CENTRE_X + 0.5},{cy0 + 1},{P.CENTRE_Z + 0.5}</point></region></spawn>')
-    a(f'    <spawn team="seekers" kit="seeker" filter="seekers-released"><region><point>{P.CENTRE_X + 0.5},{Y},{P.CENTRE_Z + 7.5}</point></region></spawn>')
-    a(f'    <default yaw="180" pitch="35"><region><point>{P.CENTRE_X + 0.5},{Y + 30},{P.CENTRE_Z + 60.5}</point></region></default>')
-    a('</spawns>')
-    a('<filters>')
-    a('    <team id="only-hiders">hiders</team>')
-    a('    <team id="only-seekers">seekers</team>')
-    a(f'    <after id="seekers-released" duration="{P.RELEASE}s" filter="match-started" message="`3`lSeekers`r will be released in {{0}}"/>')
-    a('    <all id="seekers-out"><filter id="seekers-released"/><team>seekers</team></all>')
-    for k, t in enumerate(P.ROUNDS):
-        a(f'    <time id="round-{k + 1}">{t}s</time>')
-    for r in (1, 3, 5):
-        a(f'    <all id="potion-{r}"><time>{P.ROUNDS[r - 1]}s</time><team>hiders</team></all>')
-    a('    <deny id="not-players"><any><cause>player</cause><cause>explosion</cause></any></deny>')
-    a('</filters>')
-    a('<regions>')
-    a(f'    <cuboid id="seeker-cage" min="{cx0},{cy0},{cz0}" max="{cx1 + 1},{cy1 + 1},{cz1 + 1}"/>')
-    for rid, name, x0, z0, builder in plots:
-        a(f'    <cuboid id="{rid}" min="{x0},{Y},{z0}" max="{x0 + P.PLOT},{Y + 24},{z0 + P.PLOT}"/>  <!-- {escape(name)}, {builder} -->')
-    a(f'    <negative id="outside"><cuboid min="{-P.HALF},0,{-P.HALF}" max="{P.HALF + 1},256,{P.HALF + 1}"/></negative>')
-    a('    <apply enter="never" region="outside" message="The fair is inside the walls!"/>')
-    a('    <apply block="not-players"/>')
-    a('</regions>')
-    a('<variables>')
-    a('    <variable id="order" scope="match" default="0"/>')
-    a('</variables>')
-    a('<actions>')
-    a('    <action id="cage-clearer" scope="match"><fill region="seeker-cage" material="air"/></action>')
-    a('    <trigger filter="seekers-released" action="cage-clearer" scope="match"/>')
-    a('    <trigger scope="match" filter="always">')
-    a(f'        <action><set var="order" value="floor(random() * {ORDERS})"/></action>')
-    a('    </trigger>')
-    for k, t in enumerate(P.ROUNDS):
-        a(f'    <trigger scope="match" filter="round-{k + 1}">')
-        a(f'        <action id="vanish-{k + 1}" scope="match">')
-        a(f'            <message text="`6`l{P.PER_ROUND} curiosities have vanished!"/>')
-        for n, ids in enumerate(orders):
-            a(f'            <action filter="order={n}">')
-            for rid in ids[k * P.PER_ROUND:(k + 1) * P.PER_ROUND]:
-                a(f'                <fill region="{rid}" material="air"/>')
-                a(f'                <message text="`7- {escape(names[rid])}"/>')
-            a('            </action>')
-        a('        </action>')
-        a('    </trigger>')
-    a('</actions>')
-    a('<compass show-distance="true"><player filter="only-seekers" name="`3Closest Seeker"/></compass>')
-    a('<broadcasts>')
-    a(f'    <alert after="{P.RELEASE}s">Seekers have been released!</alert>')
-    a(f'    <tip after="{P.RELEASE + 10}s">Every minute, six of the curiosities will vanish!</tip>')
-    for t in P.ROUNDS:
-        a(f'    <alert after="{t - 10}s">Six curiosities vanish in 10 seconds!</alert>')
-    a('    <tip filter="only-hiders" after="5s">Your name tag is hidden from the seekers.</tip>')
-    a('</broadcasts>')
-    a('<disabledamage><damage>fall</damage></disabledamage>')
-    a('<gamerules><doTileDrops>false</doTileDrops></gamerules>')
-    a('<hunger><depletion>off</depletion></hunger>')
-    a('<world><timeset>6000</timeset><timelock>on</timelock></world>')
-    a('<itemremove><item>potion</item><item>glass bottle</item></itemremove>')
-    a('</map>')
-    print("\n".join(o))
+LOGIC = ([Area("seeker-cage", [Box(*CAGE)])] +
+         [Area(rid, [Box(x0, Y, z0, x0 + P.PLOT - 1, Y + 23, z0 + P.PLOT - 1)]) for rid, _, x0, z0 in plots] +
+         [Named("seekers-released", After(f"{P.RELEASE}s", "match-started",
+                                          message="`3`lSeekers`r will be released in {0}")),
+          Named("seekers-out", All(Ref("seekers-released"), Team("seekers")))] +
+         [Named(f"round-{k + 1}", Time(f"{t}s")) for k, t in enumerate(P.ROUNDS)] +
+         [Named(f"potion-{r}", All(Time(f"{P.ROUNDS[r - 1]}s"), Team("hiders"))) for r in (1, 3, 5)] +
+         [Give("hider-potion", f"potion-{r}") for r in (1, 3, 5)] +
+         [Give("seeker", "seekers-out"),
+          Variable("order"),
+          Action("cage-clearer", [Fill("seeker-cage")]),
+          Trigger("seekers-released", "cage-clearer"),
+          Trigger("always", [SetVar("order", f"floor(random() * {ORDERS})")])] +
+         [Trigger(f"round-{k + 1}", vanish(k)) for k in range(len(P.ROUNDS))] +
+         [Compass("only-seekers", name="`3Closest Seeker"), Gamerules({"doTileDrops": False})])
 
-
-if __name__ == "__main__":
-    main()
+M = Map("Curio Square", "1.0.0", "Hide from the seekers until the time runs out!", "arcade", includes=[],
+        rules=["Fall damage is disabled.", "Hiders' name tags are hidden.",
+               "Every minute six of the fair's curiosities vanish."],
+        objectives=O, parts=LOGIC,
+        kits=[Kit(id="seeker-blind", effects=[Effect("blindness")], game_mode="adventure"),
+              Kit(Item("iron sword", 0, **LOCKED), Item("diamond helmet", wear="helmet", **LOCKED),
+                  Item("diamond chestplate", wear="chestplate", **LOCKED),
+                  Item("diamond leggings", wear="leggings", **LOCKED), Item("diamond boots", wear="boots", **LOCKED),
+                  id="seeker", force=True, clear="effects", effects=[Effect("speed")], game_mode="adventure"),
+              Kit(Item("compass", 0, locked=True), POTION, id="hider", game_mode="adventure",
+                  remove=["glass bottle"]),
+              Kit(POTION, id="hider-potion", deduct_items=False)],
+        build=Build(rule=Deny(Any(Cause("player"), Cause("explosion")))),
+        match=Match(time=P.TIME, result="hiders", blitz=Blitz(1, "only-hiders"), fall_damage=False,
+                    time_of_day=6000,
+                    broadcasts=[("alert", P.RELEASE, "Seekers have been released!"),
+                                ("tip", P.RELEASE + 10, "Every minute, six of the curiosities will vanish!")] +
+                               [("alert", t - 10, "Six curiosities vanish in 10 seconds!") for t in P.ROUNDS] +
+                               [("tip", 5, "Your name tag is hidden from the seekers.", "only-hiders")]))
+print(M.xml())

@@ -10,7 +10,7 @@ under them, and the last player still flying wins.
 
 - `scripts/plan.py`, `plan_check.py`, `sketch.py`: the carpets with their holes and patterns, the checker of what
   every fall lands on, and its drawing, as reviewed.
-- `scripts/gen.py`: the generator. `scripts/mapxml.py` writes `map.xml` from the plan.
+- `scripts/gen.py`: the generator. `scripts/mapxml.py` writes `map.xml` from the plan through pgmvox's play parts.
 - `scripts/walk.py`: the built world read back: the wool, the falls, and nowhere to wait.
 - `scripts/build.sh`: the whole build from nothing, in about fifteen seconds.
 - `world/`: the region files, `level.dat` and `map.xml`.

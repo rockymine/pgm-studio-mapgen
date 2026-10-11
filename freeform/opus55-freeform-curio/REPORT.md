@@ -14,7 +14,7 @@ Haiku, each plot a Python module drawn into its own box. Every minute six of the
 - `scripts/plotkit.py`: the canvas every plot draws into and the check every plot passed alone.
 - `scripts/plan.py`, `sketch.py`: the grid, who builds where, and the sketch.
 - `scripts/gen.py`: the square, the plots in their places, the fountain and cage, the wall, the town and the
-  mountains. `scripts/mapxml.py` writes `map.xml`.
+  mountains. `scripts/mapxml.py` writes `map.xml` through pgmvox's play parts.
 - `scripts/walk.py`: the built world read back. `scripts/build.sh` runs the whole build in about half a minute.
 - `world/`: the region files, `level.dat` and `map.xml`.
 - `renders/`: the plan sketch, the studio's top-down and heightmap, the valley, the square from two corners, the

@@ -35,7 +35,7 @@ def walker(ids, x0, z0):
 
 def opened(ids, x0, z0):
     ids = ids.copy()
-    for bx0, by0, bz0, bx1, by1, bz1 in G.GATE_REGIONS["warmup"]:
+    for bx0, by0, bz0, bx1, by1, bz1 in P.GATE_REGIONS["warmup"]:
         ids[bx0 - x0:bx1 - x0 + 1, by0:by1 + 1, bz0 - z0:bz1 - z0 + 1] = 0
     return ids
 

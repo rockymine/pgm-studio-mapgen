@@ -47,9 +47,10 @@ and `seed` come from `pgmvox` itself.
 | `grammar.brittle` | the Brittlebush style from a blueprint of five-block cells: flat, keep, stair, stacked, gap and water cells; the five-course cap with its birch panels, a one-block outline, sand fields and double-ringed beds; hollows and tunnels under a deck with their dark-oak pillars; grown ground beside the made (`build(grown=)`); `house`, storeys of whole cells |
 | `grammar.studioplan` | a plan drawn in the studio's planner (version 2) read as a `brittle` blueprint: pieces, stairs, decks, water and bare zones, placements |
 | **`play`** | What a map is played for: teams, spawns, objectives, and the map.xml they write. |
-| `play.objectives` | spawns (a filter on who spawns, a box spawned anywhere in), the observer point, hills, touch points (an arcade's control points, taken by touching), flags (carrier kits, a compass on the carrier, a team's dead held while one of their own carries it), wools and monuments, destroyables, cores, score boxes and portals (to a block or anywhere in a box): each stamps its blocks, writes its regions and XML, carries itself to the other team, and checks the built world |
+| `play.objectives` | spawns (a filter on who spawns, a box or several spawned anywhere in, points, a pitch), the observer point, hills, touch points (an arcade's control points, taken by touching), flags (carrier kits, a compass on the carrier, a team's dead held while one of their own carries it), wools and monuments (a slot open on a map where nothing is placed, a wool block that comes back when broken), destroyables, cores, score boxes and portals (to a block, anywhere in a box, or moved by an offset): each stamps its blocks, writes its regions and XML, carries itself to the other team, and checks the built world |
 | `play.mapxml` | `Doc` and `E`, the element builder the typed parts write through; a board never calls it |
-| `play.rules` | `Map`, a whole map.xml from its parts: `Kit` of `Item`s and what follows from it as the studio derives it, `Build` (the void rule, build areas and holes, the build height), `KillHeight` (below a height, or inside boxes), `Match` (time, score, kills, lives, fall damage, broadcasts, `Respawn`, the clock held); kits with `Effect`s, a game mode, max health and actions (`EnchantItem`, `ForEveryone`); `Spawner`, `JumpPad` (a safe pad spares its rider the fall) and `Zone` (no placing, breaking or harm in it), placed like objectives |
+| `play.rules` | `Map`, a whole map.xml from its parts: `Kit`s of `Item`s and what follows from those players spawn with as the studio derives it, `Build` (the void rule, build areas and holes, materials only breakable, a filter every block change passes, the build height), `KillHeight` (below a height, or inside boxes), `Match` (time, score, kills, `Blitz`, fall damage, broadcasts to everyone or a team, one `Respawn` or one per team, the clock held); kits with parents, `Effect`s, a game mode, health, food, knockback reduction and actions (`EnchantItem`, `ForEveryone`); `KillReward`s by streak; `Shop`s of `Offer`s; `Spawner`, `JumpPad` (a safe pad spares its rider the fall), `Shopkeeper`, `Bounds` and `Zone` (no placing, breaking or harm in it, closed to all but a team or to everyone, a kit given inside), placed like objectives |
+| `play.logic` | what a match does over its course: filters as values (`Team`, `Completed`, `After`, `Time`, `All`, `Not`, ...) and `Named` ones, `Trigger`s of actions (`Fill`, `Message`, `SetVar`, `KillEntities`, `Act`), named `Action`s, `Area`s, `Variable`s, `Give` (a kit on a condition), `ControlPoint`, `Payload` and `Payloads`, `Gamerules`, `Damage`, `BlockDrop`, `Falling`, `Compass`; each goes into `Map(parts=[...])` |
 | **`plan`** | The plan of a board before it is built: the raster, its walk graph, jump courses. |
 | `plan.raster` | `Raster`, the plan as every column's floor and kind, with `Symmetry` drawn in the plan (and a field's `image`, a field made symmetric with `field`, a half made `whole`); `rect`, `poly`, `where`, `flight`; `storey(n)`, an upper storey drawn the same way; `from_heights`, a plan read off shaped terrain |
 | `plan.graph` | the walk over a plan and its storeys: `graph`, `jumps`, `dijkstra`, `route`, `path`, `arrivals` per team |
@@ -148,10 +149,19 @@ spans `[min, max)`. A point is a block written at its centre, where a player sta
 taken, because a duplicate silently re-points every reference.
 
 **A map is written from its parts, and no board writes an element by hand.** `play.rules.Map` takes the name,
-the authors, the objectives, the `Kit`, the `Build` rule, the `KillHeight` and the `Match`, and writes the whole
-map.xml. The rest follows from the kit as the studio's `MapStandards` derives it: the loadout kept and the armour
-dropped, the tools repaired, the stacked blocks breaking into nothing once placed and given back sixteen (eight of the
-team's) a kill, every material a destroyable or core is removed, hunger off, the golden-apple reward included.
+the authors, the objectives, the kits, the `Build` rule, the `KillHeight`, the `Match` and the `parts` of
+`play.logic`, and writes the whole map.xml. The rest follows from the kits players spawn with as the studio's
+`MapStandards` derives it: the loadout kept and the armour dropped, the tools repaired, the stacked blocks breaking
+into nothing once placed and given back sixteen (eight of the team's) a kill, every material a destroyable or core
+is removed, hunger off, the golden-apple reward included.
+
+**The kits players spawn with are the main kit, every kit a spawn names, and their parents.** A team's kit given
+with a shared one (`Kit(..., parents=[base])`) adds its pick and its arrows to what is kept and repaired, and a kit
+handed out by a `Give` or an applied `Zone` adds nothing.
+
+**What a match does over its course is stated as parts too.** A filter is a value written where it is used, and
+`Named(id, filter)` writes it once for others to name; a `Trigger` runs its actions when a filter comes true, so a
+staged match is `Named` stages, the spawns filtered on them, and a `Fill` of the gates each stage opens.
 
 **A placed thing that is not an objective is placed the same way.** A `Spawner` is a block where items drop while a
 player is near, a `JumpPad` a box that throws whoever steps in, turned with the board; both go into `Objectives` with

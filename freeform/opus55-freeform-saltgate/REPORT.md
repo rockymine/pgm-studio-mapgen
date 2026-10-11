@@ -23,7 +23,7 @@ it, and `gen.py` builds each column to that height, its paving or masonry by kin
 - the cover.
 
 **Every gate is a block the match removes.** A fence across each gangplank, iron bars across the stores' doors,
-the citadel's portcullis and the keep's two doors. `gen.GATE_REGIONS` lists their boxes, and `map.xml` fills
+the citadel's portcullis and the keep's two doors. The plan's `GATE_REGIONS` lists their boxes, and `map.xml` fills
 those same boxes with air when the stage falls.
 
 ## The detail pass
@@ -53,6 +53,8 @@ those same boxes with air when the stage falls.
 or two, and still finds no stage that can be skipped.
 
 ## The match in `map.xml`
+
+**`map.xml` is written by `scripts/mapxml.py` from pgmvox's play parts and the plan.** The attackers' first spawn stands at the plan's point, the middle of the red patch on the flagship's deck at (-1, 25, -61).
 
 | Stage | Goal | When it is done |
 |---|---|---|

@@ -12,7 +12,7 @@ show.
 - `scripts/plan.py`, `plan_check.py`, `sketch.py`: the plan raster, the track's waypoints, the checker and its
   drawing, as reviewed, with the changes below.
 - `scripts/track.py`: PGM's payload `Track`, line for line, over a dict of rails.
-- `scripts/gen.py`: the generator. `scripts/mapxml.py` writes `map.xml` from the plan and the generator.
+- `scripts/gen.py`: the generator. `scripts/mapxml.py` writes `map.xml` from the plan through pgmvox's play parts.
 - `scripts/walk.py`: the built world read back, the rails traced and the legs walked.
 - `scripts/build.sh`: the whole build from nothing, in about fifteen seconds.
 - `world/`: the region files, `level.dat` and `map.xml`.
@@ -99,7 +99,7 @@ the west it runs out into a low cave, barred.
 
 ## The match
 
-**`map.xml` is written by `scripts/mapxml.py`, so its coordinates are the plan's and the generator's.** It
+**`map.xml` is written by `scripts/mapxml.py` from pgmvox's play parts, so its coordinates are the plan's.** It
 follows Bardo's structure and PGM's parser.
 
 - **Payloads:** three, each at its leg's first rail, `capture-filter` the attackers, `permanent`,

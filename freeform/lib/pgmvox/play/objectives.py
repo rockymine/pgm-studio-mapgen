@@ -104,12 +104,14 @@ def _stands(w, p):
 
 # ---- teams ------------------------------------------------------------------------------------------------
 class Teams:
-    """The teams, as (id, name, colour) or (id, name, colour, max players; 8 if not given). Two teams swap
-    under the board's symmetry."""
+    """The teams, as (id, name, colour) or (id, name, colour, max players; 8 if not given), and a dict of PGM's
+    other team attributes as a fifth (max_overfill, plural, show_name_tags). Two teams swap under the board's
+    symmetry."""
 
     def __init__(self, *teams):
         self.teams = [tuple(t[:3]) for t in teams]
         self.max = {t[0]: (t[3] if len(t) > 3 else 8) for t in teams}
+        self.extra = {t[0]: (t[4] if len(t) > 4 else {}) for t in teams}
 
     def other(self, team):
         ids = [t[0] for t in self.teams]
@@ -129,7 +131,7 @@ class Teams:
         return team[:-5] if team and team.endswith("-team") else team
 
     def write(self, doc):
-        doc.teams(*[(tid, colour, self.max[tid], name) for tid, name, colour in self.teams])
+        doc.teams(*[(tid, colour, self.max[tid], name, self.extra[tid]) for tid, name, colour in self.teams])
         for tid, _, _ in self.teams:
             doc.filter(f"only-{self.short(tid)}", E("team", text=tid))
             doc.filter(f"not-{self.short(tid)}", E("not", E("team", text=tid)))
@@ -177,40 +179,50 @@ class Spawn(Objective):
     """A team's spawn: the block their feet stand in, the way they face, a kit, and the area kept to them (a Box, or a
     list of them). protect: True keeps every block of the area as it is; a tuple of material names lets those be
     mined there and grow back (a spawn's iron), everything else kept; False writes no rule. `filter` says who may
-    spawn here now; `spread` is a box spawned anywhere in; `points` are several (x, y, z, yaw) to spawn at, the one
-    farthest from the others when `far`, with `safe` keeping a player off a point where they would die."""
+    spawn here now; `spread` is a box spawned anywhere in, or a list of boxes one is drawn from; `points` are several
+    (x, y, z, yaw) to spawn at, the one farthest from the others when `far`, with `safe` keeping a player off a
+    point where they would die. A spawn with no team is everyone's."""
     team: str
-    at: tuple
+    at: tuple = None
     yaw: int = 0
     kit: str = None
     area: object = None
     protect: object = True
     filter: str = None
-    spread: Box = None
+    spread: object = None
     points: list = None
     far: bool = None
     safe: bool = None
+    pitch: int = None
+
+    def spreads(self):
+        return [] if self.spread is None else list(self.spread) if isinstance(self.spread, (list, tuple)) \
+            else [self.spread]
 
     def boxes(self):
         return [] if self.area is None else list(self.area) if isinstance(self.area, (list, tuple)) else [self.area]
 
     def turned(self, sym):
         area = [b.image(sym) for b in self.boxes()]
-        return replace(self, at=turn_point(self.at, sym), yaw=turn_yaw(self.yaw, sym),
+        spread = [b.image(sym) for b in self.spreads()]
+        return replace(self, at=turn_point(self.at, sym) if self.at else None, yaw=turn_yaw(self.yaw, sym),
                        area=area if isinstance(self.area, (list, tuple)) else area[0] if area else None,
-                       spread=self.spread.image(sym) if self.spread else None,
+                       spread=spread if isinstance(self.spread, (list, tuple)) else spread[0] if spread else None,
                        points=[(*turn_point(p[:3], sym), turn_yaw(p[3], sym)) for p in self.points]
                        if self.points else None)
 
     def write(self, doc, teams):
+        spreads = self.spreads()
+        yaw = self.yaw
         if self.points:
             where = E("regions", *[centre_el(p[:3], yaw=p[3]) for p in self.points])
             yaw = None
+        elif len(spreads) > 1:
+            where = E("regions", *[b.cuboid() for b in spreads])
         else:
-            where = E("region", self.spread.cuboid() if self.spread else centre_el(self.at))
-            yaw = self.yaw
+            where = E("region", spreads[0].cuboid() if spreads else centre_el(self.at))
         doc.child("spawns").append(E("spawn", where, team=self.team, kit=self.kit, filter=self.filter, yaw=yaw,
-                                     spread=self.far, safe=self.safe))
+                                     pitch=self.pitch, spread=self.far, safe=self.safe))
         boxes = self.boxes()
         if boxes:
             shape = boxes[0].cuboid() if len(boxes) == 1 else union(*[b.cuboid() for b in boxes])
@@ -232,13 +244,19 @@ class Spawn(Objective):
                     doc.apply(block="never", region=rid, message="You may not build in a spawn!")
 
     def check(self, w):
+        if self.at is None:
+            return []
         return [] if _stands(w, self.at) else [f"{self.team} spawn at {self.at}: nowhere to stand"]
 
     def cells(self):
-        boxes = self.boxes()
-        return set().union(*[b.cells() for b in boxes]) if boxes else {(self.at[0], self.at[2])}
+        boxes = self.boxes() or self.spreads()
+        if boxes:
+            return set().union(*[b.cells() for b in boxes])
+        return {(self.at[0], self.at[2])} if self.at else {(p[0], p[2]) for p in self.points or ()}
 
     def marker(self):
+        if self.at is None:
+            return [(int(p[0]), int(p[2]), "S") for p in self.points or ()]
         return (self.at[0], self.at[2], "S")
 
 
@@ -248,10 +266,11 @@ class Observer(Objective):
     at: tuple
     yaw: int = 0
     spread: Box = None
+    pitch: int = None
 
     def write(self, doc, teams):
         where = self.spread.cuboid() if self.spread else centre_el(self.at)
-        doc.child("spawns").append(E("default", E("region", where), yaw=self.yaw))
+        doc.child("spawns").append(E("default", E("region", where), yaw=self.yaw, pitch=self.pitch))
 
 
 @dataclass
@@ -373,7 +392,9 @@ class Wool(Objective):
 
     It stamps its monument and its wool; writes the wool, its monument, the room's entry rule, and with `spawner`
     a spawner giving the wool to a player in the room (at spawn_at, default over `found`); and its check looks for
-    the slot and the wool. Objectives.write adds each team's rooms' block protection (protect_room)."""
+    the slot and the wool. Objectives.write adds each team's rooms' block protection (protect_room). On a map where
+    no block may be placed, `open_slot` lets the wool be placed in its slot; `renew` makes the wool at `found` a
+    block that drops a wool and comes back whenever it is broken."""
     team: str
     color: str
     slot: tuple
@@ -384,6 +405,8 @@ class Wool(Objective):
     delay: str = "1.5s"
     protect_room: bool = True
     keeper: str = None                   # the team keeping it: the other team of two; name it for more than two
+    open_slot: bool = False
+    renew: bool = False
 
     def turned(self, sym):
         return replace(self, slot=turn_point(self.slot, sym), found=turn_point(self.found, sym) if self.found else None,
@@ -412,6 +435,14 @@ class Wool(Objective):
         doc.child("wools", craftable=False).append(
             E("wool", team=self.team, color=self.color.replace("_", " "), monument=mid,
               location=f"{loc[0] + 0.5},{loc[1]},{loc[2] + 0.5}"))
+        if self.open_slot:
+            doc.apply(block_place="always", region=mid)
+        if self.renew and self.found:
+            dye = DYES[self.color]
+            bid = doc.region(f"{self.color}-wool-block", E("block", text=",".join(str(v) for v in self.found)))
+            doc.apply(block_place="always", region=bid)
+            doc.child("block-drops").append(E("rule", E("drops", E("item", material="wool", damage=dye)),
+                                              E("replacement", text=f"wool:{dye}"), region=bid))
         if self.room and f"{self.color}-room" not in doc.ids():   # a wool three teams capture has one room
             keeper = self.keeper_of(teams)
             rid = doc.region(f"{self.color}-room", self.room.cuboid())
@@ -610,7 +641,8 @@ class ScoreBox(Objective):
 @dataclass
 class Portal(Objective):
     """A portal from a box to a block a player lands standing in, facing yaw, for those `filter` lets through (a team's
-    portal, by default, for that team alone); or, with `to_box`, to anywhere in that box."""
+    portal, by default, for that team alone); or, with `to_box`, to anywhere in that box; or, with `by` (dx, dy, dz),
+    moved that far from where they stood."""
     id: str
     box: Box
     to: tuple = None
@@ -618,10 +650,15 @@ class Portal(Objective):
     filter: str = None
     team: str = None
     to_box: Box = None
+    by: tuple = None
 
     def turned(self, sym):
+        by = None
+        if self.by:
+            dx, dz = OPS[sym.op](self.by[0], self.by[2])
+            by = (dx, self.by[1], dz)
         return replace(self, box=self.box.image(sym), to=turn_point(self.to, sym) if self.to else None,
-                       yaw=turn_yaw(self.yaw, sym), to_box=self.to_box.image(sym) if self.to_box else None)
+                       yaw=turn_yaw(self.yaw, sym), to_box=self.to_box.image(sym) if self.to_box else None, by=by)
 
     def write(self, doc, teams):
         rid = doc.region(self.id, self.box.cuboid())
@@ -631,12 +668,16 @@ class Portal(Objective):
             dest = doc.region(f"{self.id}-to", self.to_box.cuboid())
             doc.child("portals").append(E("portal", region=rid, destination=dest, yaw=yaw, filter=who))
             return
+        if self.by:
+            dx, dy, dz = self.by
+            doc.child("portals").append(E("portal", region=rid, x=dx, y=dy, z=dz, yaw=yaw, filter=who))
+            return
         x, y, z = self.to
         doc.child("portals").append(E("portal", region=rid, x=f"@{x + 0.5}", y=f"@{y}", z=f"@{z + 0.5}",
                                       yaw=yaw, filter=who))
 
     def check(self, w):
-        if self.to_box:
+        if self.to_box or self.by:
             return []
         return [] if _stands(w, self.to) else [f"portal {self.id}: lands at {self.to} with nowhere to stand"]
 
