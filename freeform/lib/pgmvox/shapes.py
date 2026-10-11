@@ -122,11 +122,6 @@ def disc(X, Z, cx, cz, r):
     return np.hypot(X - cx, Z - cz) <= r
 
 
-def ring(X, Z, cx, cz, r0, r1):
-    d = np.hypot(X - cx, Z - cz)
-    return (d >= r0) & (d <= r1)
-
-
 def ellipse_distance(X, Z, at, rx, rz=None, angle=0.0):
     """How far out every column lies in radii of an ellipse at `at`: 1 on its rim, its x radius `rx` turned
     `angle` degrees from east toward south."""
@@ -136,25 +131,6 @@ def ellipse_distance(X, Z, at, rx, rz=None, angle=0.0):
         a = np.radians(angle)
         dx, dz = dx * np.cos(a) + dz * np.sin(a), -dx * np.sin(a) + dz * np.cos(a)
     return np.hypot(dx / rx, dz / rz)
-
-
-def ellipse(X, Z, cx, cz, rx, rz, angle=0.0):
-    """An ellipse, its x radius turned `angle` radians from east toward south."""
-    dx, dz = X - cx, Z - cz
-    c, s = np.cos(angle), np.sin(angle)
-    u, v = dx * c + dz * s, -dx * s + dz * c
-    return (u / rx) ** 2 + (v / rz) ** 2 <= 1.0
-
-
-def stroke(X, Z, a, b, w0, w1=None, round_end=True):
-    """A tapered stroke from a to b, w0 wide at a and w1 at b, its far end rounded."""
-    w1 = w0 if w1 is None else w1
-    d, t = seg_distance(X, Z, a, b)
-    half = (w0 + (w1 - w0) * t) / 2
-    m = d <= half
-    if round_end:
-        m |= np.hypot(X - b[0], Z - b[1]) <= w1 / 2
-    return m
 
 
 def boundary(mask, diagonal=False):

@@ -114,15 +114,6 @@ def by_angle(stops):
     return paint
 
 
-def banded(choices, period=6, offset=None):
-    """A column fill in horizontal bands: choices is a list of (id, data) repeated every `period` blocks; offset
-    (a (sx, sz) array) tilts and breaks the bands."""
-    def fill(i, k, ys):
-        o = 0 if offset is None else int(offset[i, k])
-        return [choices[((y + o) // period) % len(choices)] for y in ys]
-    return fill
-
-
 class Strata:
     """A sequence of rock beds by height, drawn from weighted choices: each (block, weight, thickest), a bed `thickest`
     blocks at most, 1 for a bed that is only ever one block (the red in a mesa). A weight counts per draw, and no

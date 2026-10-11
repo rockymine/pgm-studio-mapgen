@@ -540,12 +540,6 @@ def stairs(w, x, z, rises, y0, n, block, width=1, under=None):
                     w.set(X, yy, Z, *under)
 
 
-def ladder(w, x, z, y0, y1, on_wall):
-    """A ladder from y0 to y1 on the wall at that side of the column."""
-    for y in range(y0, y1 + 1):
-        w.set(x, y, z, B.LADDER, ladder_data(on_wall))
-
-
 class Claims:
     """What stands where, by layer, so overlaps are listed rather than overwritten unseen."""
 

@@ -219,11 +219,6 @@ def _load():
 TABLE = _load()
 
 
-def info(bid):
-    """The studio's row for an id: name, role, shape flags, names and colours per data, turned data per op."""
-    return TABLE[int(bid)]
-
-
 def name(bid, data=0):
     return TABLE[int(bid)]["names"][int(data) & 15]
 

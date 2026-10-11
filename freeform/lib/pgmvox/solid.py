@@ -55,13 +55,4 @@ def image(solid, symmetry):
     return _mod.mirror_z(_mod.mirror_x(solid, cx), cz)          # a half turn is both mirrors
 
 
-def turned(solid, degrees, cx, cz):
-    """The solid turned about the vertical through (cx, cz), any angle: `rotate_y` under the library's name."""
-    return _mod.rotate_y(solid, degrees, cx, cz)
-
-
-def count(solid):
-    return len(solid.cells())
-
-
 __all__ = [n for n in dir(_mod) if not n.startswith("_")] + ["fill", "image", "turned", "count"]

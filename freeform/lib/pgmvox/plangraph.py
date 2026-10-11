@@ -251,31 +251,3 @@ def arrivals(edges, spawns_by_team, targets):
             out[name][team] = route(D, prev, cells[team] if isinstance(cells, dict) else cells)[0]
     return out
 
-
-def pad_edges(R, pads, solid_kinds, ticks=200):
-    """Edges for launch pads: pads = [(name, [(x, z)...], y, (vx, vy, vz))], y the pad's floor. Each pad cell
-    flies with move.fly over the raster and lands on the first column it comes down onto; a column of a solid
-    kind higher than the flight is a wall it stops against. Returns (extra edges, landings by name)."""
-    solid = R.mask(*solid_kinds)
-    edges, landings = [], {}
-    for name, cells, y, v in pads:
-        cx = sum(c[0] for c in cells) / len(cells) + 0.5
-        cz = sum(c[1] for c in cells) / len(cells) + 0.5
-
-        def land(t, x, yy, z, prev_y):
-            gx, gz = math.floor(x), math.floor(z)
-            if not R.inside(gx, gz):
-                return dict(t=t, hit="off the plan")
-            floor = R.h(gx, gz) + 1
-            i, j = R.ix(gx), R.iz(gz)
-            if solid[i, j] and yy < floor:
-                return dict(t=t, x=x, z=z, cell=(gx, gz), hit="wall")
-            if yy <= floor <= prev_y + 1e-9 and yy < prev_y:
-                return dict(t=t, x=x, z=z, y=floor, cell=(gx, gz), hit=R.kind(gx, gz))
-            return None
-        L, p = fly((cx, y + 1.0, cz), v, land, ticks)
-        landings[name] = dict(L or {}, apex=max(q[2] for q in p))
-        if L and "cell" in L and L["hit"] != "wall":
-            for c in cells:
-                edges.append((tuple(c), L["cell"], L["t"] / 5.0, f"pad {name}"))
-    return edges, landings

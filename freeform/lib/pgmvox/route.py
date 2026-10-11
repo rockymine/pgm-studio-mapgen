@@ -217,15 +217,6 @@ def footprint(X, Z, pts, width):
     return d <= width / 2
 
 
-def grades(H, X, Z, cells):
-    """The grade of every leg of a route over the ground as it stands, end to end: rise over run, unsigned."""
-    out = [0.0]
-    for p, q in zip(cells, cells[1:]):
-        a, b = _index(X, Z, p), _index(X, Z, q)
-        out.append(abs(float(H[b]) - float(H[a])) / math.hypot(q[0] - p[0], q[1] - p[1]))
-    return out
-
-
 # ---- laying a route into the world -----------------------------------------------------------------------
 def pave(w, H, X, Z, pts, width=4, surface=((B.GRAVEL, 0), (B.DIRT, 1), (B.COBBLE, 0)), weights=(0.6, 0.3, 0.1),
          water=None, deck=(B.PLANKS, 1), rail=(B.FENCE, 0), clear=3, seed=0, level=None, keep=None):

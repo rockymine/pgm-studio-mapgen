@@ -164,11 +164,6 @@ def nearest(dist, x0, z0, x, y, z, r=1):
     return best
 
 
-def unreached(dist, x0, z0, cells):
-    """The (x, y, z) feet positions of a list nobody reaches."""
-    return [c for c in cells if nearest(dist, x0, z0, *c, r=0) is None]
-
-
 def no_stand_above(w, y, inside, allowed=None):
     """Columns inside a region (a boolean (sx, sz) mask, or a function (X, Z) -> mask) with anything a player
     could stand on above height y, other than where `allowed` (same shape) is True: the places a knocked or
@@ -181,18 +176,6 @@ def no_stand_above(w, y, inside, allowed=None):
     if allowed is not None:
         bad &= ~(allowed(X, Z) if callable(allowed) else allowed)
     return [(int(X[i, k]), int(Z[i, k])) for i, k in np.argwhere(bad)]
-
-
-def catchers(w, course, margin, y_top, y_kill):
-    """Blocks beside a course that a player falling off its edges could land on: anything solid in the columns
-    within `margin` of the course (but not under it), between the kill height and the course's top. course is a
-    boolean (sx, sz) mask of the columns the course covers; returns [(x, y, z)]."""
-    from scipy import ndimage
-    near = ndimage.binary_dilation(course, iterations=margin) & ~course
-    _, (passable, *_rest) = standing(w.ids)
-    solid = ~passable[:, y_kill + 1:y_top + 1, :]
-    hits = np.argwhere(solid & near[:, None, :])
-    return [(int(i + w.x0), int(y + y_kill + 1), int(k + w.z0)) for i, y, k in hits]
 
 
 def gap_cleared(gap, rise=0):

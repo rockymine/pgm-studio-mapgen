@@ -68,17 +68,6 @@ def torch(on_wall=None):
     return {"w": 1, "e": 2, "n": 3, "s": 4}[NAMES[vec(on_wall)]]
 
 
-def log_axis(along=None, wood=0):
-    """A log lying along x or z ("e"/"w" or "n"/"s"), or upright (None)."""
-    if along is None:
-        return wood
-    return wood | (4 if vec(along)[0] else 8)
-
-
-def slab(kind=0, upper=False):
-    return kind | (8 if upper else 0)
-
-
 def door(facing, upper=False, hinge_right=False, open_=False):
     """A door's two halves: the lower carries the facing (the way it looks when shut), the upper the hinge."""
     if upper:

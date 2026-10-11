@@ -3,8 +3,6 @@ and II, read block by block off those maps (boards/brittle-study/STYLE.md).
 
     cells = {(cx, cz): Cell("flat", 13), (cx + 1, cz): Cell("stair", 10, rises="w"), ...}
     build(w, cells, only=red_cells, rng=r, dye=14)      every block of the cells in `only`, read against all of them
-    tower(w, (x0, z0, x1, z1), 13, [(5, 0), (5, 1), (4, 2)], dye=14, door="s")
-    heart(w, x, y, z, dye, facing="s")
 
 A cell is one of a handful of pieces, its y the floor block:
 
@@ -12,7 +10,7 @@ A cell is one of a handful of pieces, its y the floor block:
               of sandstone stairs, with a birch if wide enough; any other piece, one cell wide or not a rectangle,
               is sand
     keep      a spawn's floor: smooth sandstone, a ring of the team's clay
-    tower     the ground under a tower, laid like flat ground; tower() builds the tower on it
+    tower     the ground under a tower, laid like flat ground
     stacked   a piece with a deck at y; a cell of it with under=True is open beneath, a lower floor DECK under
               the deck, the deck's edge capped without black clay, a dark-oak pillar mid-way along a long open side
     stair     one level up, three blocks in five, toward `rises`, from a floor at y: a stone-brick slab and a stone-brick
@@ -272,18 +270,6 @@ STYLE = G.Style(
     params={"dye": 14})
 
 
-def cap(w, x, z, h, inward, panel=None):
-    """A ground edge, top down: an upside-down spruce stair, its full side inward; brick; a dark-oak slab; an
-    upside-down dark-oak stair; black clay (EDGE). Panel "inner" and "side" are the birch panel's middle and its
-    frame; "deck" is the edge over open air, without the black band."""
-    if panel == "deck":
-        DECK_EDGE.lay(w, x, z, h, inward, accents=False)
-    elif panel in ("inner", "side"):
-        EDGE.lay(w, x, z, h, inward, along=0, pos=2 if panel == "inner" else 0, air=99)
-    else:
-        EDGE.lay(w, x, z, h, inward, accents=False)
-
-
 # ---- the build -------------------------------------------------------------------------------------------
 def sections(cells, fill=None):
     """The blueprint's pieces as the grammar's sections, one a piece, its cells' boxes; a keep tagged "keep", and
@@ -455,67 +441,6 @@ def _pillars(w, c, x0, z0, cells):
 
 
 # ---- buildings -------------------------------------------------------------------------------------------
-def storey(w, plate, base_y, top, dye, door=None, panels=True):
-    """One storey of a tiered tower: walls of black clay one in from its plate (x0, z0, x1, z1), a band of `dye`
-    two under the plate, brick under the plate, birch-stair panels two high every three on a wall five or more
-    high; doors, each (side, (a, b)) or a list of them, three high; the plate at `top` with the ground's own edge
-    and dark-oak brackets."""
-    doors = [door] if door and isinstance(door[0], str) else list(door or [])
-    x0, z0, x1, z1 = plate
-    a0, b0, a1, b1 = x0 + 1, z0 + 1, x1 - 1, z1 - 1
-    for x in range(a0, a1 + 1):
-        for z in range(b0, b1 + 1):
-            if not (x in (a0, a1) or z in (b0, b1)):
-                continue
-            along = z if x in (a0, a1) else x
-            side = "w" if x == a0 else "e" if x == a1 else "n" if z == b0 else "s"
-            corner = x in (a0, a1) and z in (b0, b1)
-            for y in range(base_y + 1, top):
-                v = top - y
-                if any(side == d[0] and d[1][0] <= along <= d[1][1] for d in doors) and y <= base_y + 3 and not corner:
-                    w.set(x, y, z, B.AIR)
-                elif v == 1:
-                    w.set(x, y, z, B.BRICK)
-                elif v == 2:
-                    w.set(x, y, z, B.WOOL, dye)
-                elif panels and not corner and along % 3 == 1 and v in (3, 4) and top - base_y >= 5:
-                    w.set(x, y, z, B.BIRCH_STAIRS, stair(OPP[side], upside_down=(v == 3)))
-                else:
-                    w.set(x, y, z, *BLACK_CLAY)
-    for x in range(x0, x1 + 1):
-        for z in range(z0, z1 + 1):
-            if x in (x0, x1) or z in (z0, z1):
-                inward = "e" if x == x0 else "w" if x == x1 else "s" if z == z0 else "n"
-                w.set(x, top, z, B.SPRUCE_STAIRS, stair(inward, upside_down=True))
-                if not (x in (x0, x1) and z in (z0, z1)):
-                    w.set(x, top - 1, z, B.DARK_OAK_STAIRS, stair(inward, upside_down=True))
-            else:
-                w.set(x, top, z, *SPRUCE_PLANKS)
-
-
-def tower(w, box, base_y, tiers, dye, door=None, crown=(B.GOLD_BLOCK, 0)):
-    """A tiered tower on the ground at base_y over box (x0, z0, x1, z1): tiers [(height, inset), ...] from the
-    bottom, each storey's plate stepped in by its inset from the box; a crown of sandstone stairs round `crown` on
-    the top plate. The first storey's doors are `door`: (side, (a, b)) or a list of them. A spawn's house is the
-    same building with its doors where its stairs lead out. Returns the top plate's y and middle."""
-    x0, z0, x1, z1 = box
-    y = base_y
-    for n, (h, inset) in enumerate(tiers):
-        plate = (x0 + inset, z0 + inset, x1 - inset, z1 - inset)
-        storey(w, plate, y, y + h, dye, door=door if n == 0 else None)
-        y += h
-    px0, pz0, px1, pz1 = plate
-    cx, cz = (px0 + px1) // 2, (pz0 + pz1) // 2
-    for x in range(cx - 1, cx + 2):
-        for z in range(cz - 1, cz + 2):
-            d = "e" if x == cx - 1 else "w" if x == cx + 1 else "s" if z == cz - 1 else "n" if z == cz + 1 else None
-            if d and (x, z) != (cx, cz):
-                w.set(x, y, z, B.SANDSTONE_STAIRS, stair(d))
-            else:
-                w.set(x, y, z, *crown)
-    return y, (cx, cz)
-
-
 def house(w, layers, floor, dye, door=None, cobwebs=True, floor_block=(B.PLANKS, 0)):
     """A building as Brittlebush I raises its wool rooms: storeys of whole cells, five blocks each, every storey
     over part of the one under it, as a block of two cells by two, an L of three over it, and one cell on top.
@@ -638,19 +563,3 @@ HEART = [".XX.XX.",
          "..XXX..",
          "...X..."]
 
-
-def heart(w, x, y, z, dye, facing="s", hang=None):
-    """A heart seven wide and six high in `dye`, outlined and backed in black wool, standing upright over (x, z)
-    with its bottom at y, its face toward `facing`; with hang, a pane of `dye` down to that y."""
-    fx, fz = DIRS[facing]
-    ax, az = -fz, fx                                          # across the heart
-    rows = len(HEART)
-    filled = {(i - 3, rows - 1 - j) for j, row in enumerate(HEART) for i, ch in enumerate(row) if ch == "X"}
-    outline = {(u + du, v + dv) for u, v in filled for du in (-1, 0, 1) for dv in (-1, 0, 1)} - filled
-    for u, v in filled | outline:
-        px, pz = x + ax * u, z + az * u
-        w.set(px, y + v + 1, pz, *((B.WOOL, dye) if (u, v) in filled else (B.WOOL, 15)))
-        w.set(px - fx, y + v + 1, pz - fz, B.WOOL, 15)
-    if hang is not None:
-        for yy in range(hang, y + 1):
-            w.set(x - fx, yy, z - fz, B.STAINED_PANE, dye)
