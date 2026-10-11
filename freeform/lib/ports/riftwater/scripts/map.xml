@@ -3,6 +3,7 @@
     <version>0.2.0</version>
     <objective>Destroy both of the enemy's monuments: one in their market square, one on their village green.</objective>
     <gamemode>dtm</gamemode>
+    <include id="gapple-kill-reward"/>
     <authors>
         <author>Claude (freeform generator, ported onto pgmvox)</author>
     </authors>
@@ -42,9 +43,27 @@
         <not id="not-blue">
             <team>blue-team</team>
         </not>
-        <not id="no-void">
+        <not id="block-place-void-filter">
             <void/>
         </not>
+        <any id="block-break-void-filter">
+            <all>
+                <any>
+                    <material>log</material>
+                    <material>log 2</material>
+                    <material>leaves</material>
+                    <material>leaves 2</material>
+                    <material>long grass</material>
+                    <material>yellow flower</material>
+                    <material>red rose</material>
+                    <material>double plant</material>
+                    <material>water lily</material>
+                    <material>vine</material>
+                </any>
+                <void/>
+            </all>
+            <filter id="block-place-void-filter"/>
+        </any>
     </filters>
     <spawns>
         <spawn team="red-team" kit="spawn-kit" yaw="270">
@@ -77,7 +96,7 @@
         <negative id="not-build-area">
             <rectangle min="-16,-88" max="16,88"/>
         </negative>
-        <apply block="no-void" region="not-build-area" message="You may only bridge over the rift!"/>
+        <apply block-place="block-place-void-filter" block-break="block-break-void-filter" region="not-build-area" message="You may only bridge over the rift!"/>
     </regions>
     <destroyables>
         <destroyable id="red-square" name="Market Square Monument" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-square-region"/>
@@ -86,5 +105,52 @@
         <destroyable id="blue-green" name="Winding Green Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-green-region"/>
     </destroyables>
     <maxbuildheight>90</maxbuildheight>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>stained clay</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>diamond pickaxe</item>
+        <item>iron axe</item>
+        <item>golden apple</item>
+        <item>water bucket</item>
+        <item>arrow</item>
+        <item>wood</item>
+        <item>stained clay</item>
+        <item>cooked beef</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>iron chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+        <item>obsidian</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>diamond pickaxe</tool>
+        <tool>iron axe</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16"/>
+            <item material="stained clay" amount="8" team-color="true"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
 </map>
 

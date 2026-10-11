@@ -48,7 +48,8 @@ and `seed` come from `pgmvox` itself.
 | `grammar.studioplan` | a plan drawn in the studio's planner (version 2) read as a `brittle` blueprint: pieces, stairs, decks, water and bare zones, placements |
 | **`play`** | What a map is played for: teams, spawns, objectives, and the map.xml they write. |
 | `play.objectives` | spawns, the observer point, hills, flags, wools and monuments, destroyables, cores, score boxes and portals: each stamps its blocks, writes its regions and XML, carries itself to the other team, and checks the built world |
-| `play.mapxml` | `Doc` and `E`, an element builder with the pieces every writer repeated |
+| `play.mapxml` | `Doc` and `E`, the element builder the typed parts write through; a board never calls it |
+| `play.rules` | `Map`, a whole map.xml from its parts: `Kit` of `Item`s and what follows from it as the studio derives it, `Build` (the void rule, build areas and holes, the build height), `KillHeight`, `Match` (time, score, kills, lives, fall damage, broadcasts); `Spawner` and `JumpPad`, placed like objectives |
 | **`plan`** | The plan of a board before it is built: the raster, its walk graph, jump courses. |
 | `plan.raster` | `Raster`, the plan as every column's floor and kind, with `Symmetry` drawn in the plan (and a field's `image`, a field made symmetric with `field`, a half made `whole`); `rect`, `poly`, `where`, `flight`; `storey(n)`, an upper storey drawn the same way; `from_heights`, a plan read off shaped terrain |
 | `plan.graph` | the walk over a plan and its storeys: `graph`, `jumps`, `dijkstra`, `route`, `path`, `arrivals` per team |
@@ -145,6 +146,17 @@ missing.
 **Regions follow one convention.** A `Box` is inclusive blocks written with an exclusive max, since a PGM cuboid
 spans `[min, max)`. A point is a block written at its centre, where a player stands. Region ids are refused when
 taken, because a duplicate silently re-points every reference.
+
+**A map is written from its parts, and no board writes an element by hand.** `play.rules.Map` takes the name,
+the authors, the objectives, the `Kit`, the `Build` rule, the `KillHeight` and the `Match`, and writes the whole
+map.xml. The rest follows from the kit as the studio's `MapStandards` derives it: the loadout kept and the armour
+dropped, the tools repaired, the stacked blocks breaking into nothing once placed and given back sixteen (eight of the
+team's) a kill, every material a destroyable or core is removed, hunger off, the golden-apple reward included.
+
+**A placed thing that is not an objective is placed the same way.** A `Spawner` is a block where items drop while a
+player is near, a `JumpPad` a box that throws whoever steps in, turned with the board; both go into `Objectives` with
+a coordinate, as a `Flag`, a `Portal` and a `ScoreBox` do. A portal writes only XML, a jump pad may lay a block under
+itself.
 
 **An objective is drawn once.** `Objectives.add` adds a team's objective and its image for the other team: boxes
 and points turned, yaws turned, team and id swapped, and any field given for the image changed, such as a wool's

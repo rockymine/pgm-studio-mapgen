@@ -26,7 +26,7 @@ import math
 from dataclasses import dataclass, fields, replace
 
 from pgmvox.core.blocks import B, PASSABLE
-from pgmvox.play.mapxml import E, point as point_el
+from pgmvox.play.mapxml import E, point as point_el, union
 from pgmvox.core.orient import OPS
 
 DYES = {"white": 0, "orange": 1, "magenta": 2, "light_blue": 3, "yellow": 4, "lime": 5, "pink": 6, "gray": 7,
@@ -240,9 +240,11 @@ class Hill(Objective):
     capture_time: str = "5s"
     block: tuple = None                  # the pad's block when stamped; None leaves the ground as built
     team: str = None
+    progress: list = None                # boxes showing the capture's progress, when not the pad itself
 
     def turned(self, sym):
-        return replace(self, pad=self.pad.image(sym))
+        return replace(self, pad=self.pad.image(sym), progress=[b.image(sym) for b in self.progress]
+                       if self.progress else None)
 
     def capture_box(self):
         return self.pad.course(self.pad.y0, self.pad.y0 + self.capture_height - 1)
@@ -255,9 +257,11 @@ class Hill(Objective):
     def write(self, doc, teams):
         cap = doc.region(f"{self.id}-capture", self.capture_box().cuboid())
         pad = doc.region(f"{self.id}-pad", self.pad.cuboid())
+        shown = doc.region(f"{self.id}-progress", union(*[b.cuboid() for b in self.progress])) \
+            if self.progress else pad
         hills = doc.child("king", "hills", required=False, neutral_state=True, incremental=True, show_progress=True,
                           time_multiplier=0, permanent=False)
-        hills.append(E("hill", id=self.id, name=self.name, capture_region=cap, progress_display_region=pad,
+        hills.append(E("hill", id=self.id, name=self.name, capture_region=cap, progress_display_region=shown,
                        owner_display_region=pad, capture_time=self.capture_time, points=self.points))
         doc.child("score")
 
@@ -616,15 +620,13 @@ class Objectives:
         for o in self.items:
             o.stamp(w)
 
-    def write(self, doc, limit=None):
-        """Teams and their filters, then every objective's regions and XML; a score limit if given."""
+    def write(self, doc):
+        """Teams and their filters, then every objective's regions and XML."""
         if self.teams.teams:
             self.teams.write(doc)
         for o in self.items:
             o.write(doc, self.teams)
         wool_rooms(doc, self.teams, self.of(Wool))
-        if limit is not None:
-            doc.child("score").append(E("limit", text=limit))
         return doc
 
     def check(self, w):

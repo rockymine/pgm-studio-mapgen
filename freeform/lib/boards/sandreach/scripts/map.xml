@@ -4,10 +4,31 @@
     <objective>Capture the other team's wool and destroy its emerald!</objective>
     <gamemode>ctw</gamemode>
     <gamemode>dtm</gamemode>
+    <include id="gapple-kill-reward"/>
     <authors>
         <author>rockymine</author>
         <author>Claude (freeform generator, pgmvox)</author>
     </authors>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="stone sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="iron pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="stained clay" amount="48" team-color="true"/>
+            <item slot="6" material="golden apple"/>
+            <item slot="7" material="cooked beef" amount="16"/>
+            <item slot="8" material="shears" unbreakable="true"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true"/>
+            <leggings material="leather leggings" unbreakable="true" team-color="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
     <teams>
         <team id="red-team" color="red" max="12">Red</team>
         <team id="blue-team" color="blue" max="12">Blue</team>
@@ -41,9 +62,27 @@
             <filter id="not-blue"/>
             <filter id="woolroom-materials"/>
         </all>
-        <not id="not-void">
+        <not id="block-place-void-filter">
             <void/>
         </not>
+        <any id="block-break-void-filter">
+            <all>
+                <any>
+                    <material>log</material>
+                    <material>log 2</material>
+                    <material>leaves</material>
+                    <material>leaves 2</material>
+                    <material>long grass</material>
+                    <material>yellow flower</material>
+                    <material>red rose</material>
+                    <material>double plant</material>
+                    <material>water lily</material>
+                    <material>vine</material>
+                </any>
+                <void/>
+            </all>
+            <filter id="block-place-void-filter"/>
+        </any>
     </filters>
     <spawns>
         <spawn team="red-team" kit="spawn-kit" yaw="0">
@@ -87,7 +126,7 @@
             <region id="orange-room"/>
         </union>
         <apply block="blues-woolrooms-filter" region="blues-woolrooms" message="You may not edit the wool room!"/>
-        <apply block-place="not-void" message="You may not build in the void!"/>
+        <apply block-place="block-place-void-filter" block-break="block-break-void-filter" message="You may not edit the void!"/>
     </regions>
     <wools craftable="false">
         <wool team="blue-team" color="yellow" monument="yellow-blue-monument" location="-49.5,22,-70.5"/>
@@ -105,38 +144,54 @@
         <destroyable id="red-emerald" name="Red Emerald" owner="red-team" materials="emerald block" completion="100%" mode-changes="true" region="red-emerald-region"/>
         <destroyable id="blue-emerald" name="Blue Emerald" owner="blue-team" materials="emerald block" completion="100%" mode-changes="true" region="blue-emerald-region"/>
     </destroyables>
-    <kits>
-        <kit id="spawn-kit">
-            <item slot="0" material="stone sword" unbreakable="true"/>
-            <item slot="1" material="bow" unbreakable="true">
-                <enchantment level="1">infinity</enchantment>
-            </item>
-            <item slot="2" material="iron pickaxe" unbreakable="true"/>
-            <item slot="3" material="iron axe" unbreakable="true"/>
-            <item slot="4" material="wood" amount="64"/>
-            <item slot="5" material="stained clay" amount="48" team-color="true"/>
-            <item slot="6" material="golden apple"/>
-            <item slot="7" material="cooked beef" amount="16"/>
-            <item slot="8" material="shears" unbreakable="true"/>
-            <item slot="28" material="arrow"/>
-            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
-            <chestplate material="leather chestplate" unbreakable="true" team-color="true"/>
-            <leggings material="leather leggings" unbreakable="true" team-color="true"/>
-            <boots material="leather boots" unbreakable="true" team-color="true"/>
-        </kit>
-    </kits>
+    <maxbuildheight>40</maxbuildheight>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>stained clay</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
     <itemkeep>
         <item>stone sword</item>
         <item>bow</item>
         <item>iron pickaxe</item>
         <item>iron axe</item>
+        <item>golden apple</item>
         <item>shears</item>
+        <item>arrow</item>
+        <item>wood</item>
+        <item>stained clay</item>
+        <item>cooked beef</item>
     </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>leather leggings</item>
+        <item>leather boots</item>
+        <item>emerald block</item>
+    </itemremove>
+    <toolrepair>
+        <tool>stone sword</tool>
+        <tool>bow</tool>
+        <tool>iron pickaxe</tool>
+        <tool>iron axe</tool>
+        <tool>shears</tool>
+    </toolrepair>
     <kill-rewards>
         <kill-reward>
-            <item material="golden apple"/>
+            <item material="wood" amount="16"/>
+            <item material="stained clay" amount="8" team-color="true"/>
         </kill-reward>
     </kill-rewards>
-    <maxbuildheight>40</maxbuildheight>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
 </map>
 

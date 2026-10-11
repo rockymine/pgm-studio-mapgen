@@ -3,9 +3,32 @@
     <version>0.1.0</version>
     <objective>Hold the hills: the Cistern pays two a second, the Garden and the Boatyard one.</objective>
     <gamemode>koth</gamemode>
+    <include id="gapple-kill-reward"/>
     <authors>
         <author>Claude (freeform generator, on pgmvox)</author>
     </authors>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="iron pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64" damage="0"/>
+            <item slot="5" material="stained clay" amount="32" team-color="true"/>
+            <item slot="6" material="golden apple" amount="4"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+        <kit id="fall-kill" force="true">
+            <effect duration="1" amplifier="5">instant damage</effect>
+        </kit>
+    </kits>
     <teams>
         <team id="red-team" color="red" max="16">Red</team>
         <team id="blue-team" color="blue" max="16">Blue</team>
@@ -19,9 +42,27 @@
         <not id="not-blue">
             <team>blue-team</team>
         </not>
-        <not id="not-void">
+        <not id="block-place-void-filter">
             <void/>
         </not>
+        <any id="block-break-void-filter">
+            <all>
+                <any>
+                    <material>log</material>
+                    <material>log 2</material>
+                    <material>leaves</material>
+                    <material>leaves 2</material>
+                    <material>long grass</material>
+                    <material>yellow flower</material>
+                    <material>red rose</material>
+                    <material>double plant</material>
+                    <material>water lily</material>
+                    <material>vine</material>
+                </any>
+                <void/>
+            </all>
+            <filter id="block-place-void-filter"/>
+        </any>
     </filters>
     <spawns>
         <spawn team="red-team" kit="spawn-kit" yaw="270">
@@ -53,9 +94,9 @@
         <cuboid min="-3,72,-45" max="3,73,-39" id="garden-pad"/>
         <cuboid min="-3,66,40" max="3,71,46" id="boatyard-capture"/>
         <cuboid min="-3,66,40" max="3,67,46" id="boatyard-pad"/>
+        <apply block-place="block-place-void-filter" block-break="block-break-void-filter" message="You may not edit the void!"/>
         <below y="30" id="the-fall"/>
         <apply kit="fall-kill" region="the-fall"/>
-        <apply block-place="not-void" message="You may not build in the void!"/>
     </regions>
     <king>
         <hills required="false" neutral-state="true" incremental="true" show-progress="true" time-multiplier="0" permanent="false">
@@ -67,35 +108,52 @@
     <score>
         <limit>300</limit>
     </score>
+    <maxbuildheight>100</maxbuildheight>
     <time result="score">20m</time>
-    <kits>
-        <kit id="spawn-kit">
-            <item slot="0" material="iron sword" unbreakable="true"/>
-            <item slot="1" material="bow" unbreakable="true">
-                <enchantment level="1">infinity</enchantment>
-            </item>
-            <item slot="2" material="iron pickaxe" unbreakable="true"/>
-            <item slot="3" material="iron axe" unbreakable="true"/>
-            <item slot="4" material="wood" amount="64" damage="0"/>
-            <item slot="5" material="stained clay" amount="32" team-color="true"/>
-            <item slot="6" material="golden apple" amount="4"/>
-            <item slot="8" material="cooked beef" amount="16"/>
-            <item slot="28" material="arrow"/>
-            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
-            <chestplate material="iron chestplate" unbreakable="true"/>
-            <leggings material="chainmail leggings" unbreakable="true"/>
-            <boots material="leather boots" unbreakable="true" team-color="true"/>
-        </kit>
-        <kit id="fall-kill" force="true">
-            <effect duration="1" amplifier="5">instant damage</effect>
-        </kit>
-    </kits>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>stained clay</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
     <itemkeep>
         <item>iron sword</item>
         <item>bow</item>
         <item>iron pickaxe</item>
         <item>iron axe</item>
+        <item>arrow</item>
+        <item>wood</item>
+        <item>stained clay</item>
+        <item>golden apple</item>
+        <item>cooked beef</item>
     </itemkeep>
-    <maxbuildheight>112</maxbuildheight>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>iron chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>iron pickaxe</tool>
+        <tool>iron axe</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" damage="0" amount="16"/>
+            <item material="stained clay" amount="8" team-color="true"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
 </map>
 

@@ -3,6 +3,7 @@
     <version>0.2.0</version>
     <objective>Hold the middle hill.</objective>
     <gamemode>koth</gamemode>
+    <include id="gapple-kill-reward"/>
     <teams>
         <team id="red-team" color="red" max="8">Red</team>
         <team id="blue-team" color="blue" max="8">Blue</team>
@@ -63,5 +64,8 @@
     <disabledamage>
         <damage>fall</damage>
     </disabledamage>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
 </map>
 

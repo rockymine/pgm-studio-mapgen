@@ -3,9 +3,32 @@
     <version>1.0.0</version>
     <objective>Hold the markets: the Campo is worth two points a second, each fish market one.</objective>
     <gamemode>koth</gamemode>
+    <include id="gapple-kill-reward"/>
     <authors>
         <author>Claude (pgmvox trial)</author>
     </authors>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="iron pickaxe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="0"/>
+            <item slot="5" material="stained clay" amount="48" team-color="true"/>
+            <item slot="6" material="golden apple"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
     <teams>
         <team id="red-team" color="red" max="16">Red</team>
         <team id="blue-team" color="blue" max="16">Blue</team>
@@ -46,22 +69,22 @@
         <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
         <cuboid min="-4,40,-4" max="4,45,4" id="campo-capture"/>
         <cuboid min="-4,40,-4" max="4,41,4" id="campo-pad"/>
-        <cuboid min="-4,40,-54" max="4,45,-46" id="north-market-capture"/>
-        <cuboid min="-4,40,-54" max="4,41,-46" id="north-market-pad"/>
-        <cuboid min="-4,40,46" max="4,45,54" id="south-market-capture"/>
-        <cuboid min="-4,40,46" max="4,41,54" id="south-market-pad"/>
         <union id="campo-progress">
             <cuboid min="-3,40,-3" max="3,41,-2"/>
             <cuboid min="-3,40,2" max="3,41,3"/>
             <cuboid min="-3,40,-2" max="-2,41,2"/>
             <cuboid min="2,40,-2" max="3,41,2"/>
         </union>
+        <cuboid min="-4,40,-54" max="4,45,-46" id="north-market-capture"/>
+        <cuboid min="-4,40,-54" max="4,41,-46" id="north-market-pad"/>
         <union id="north-market-progress">
             <cuboid min="-3,40,-53" max="3,41,-52"/>
             <cuboid min="-3,40,-48" max="3,41,-47"/>
             <cuboid min="-3,40,-52" max="-2,41,-48"/>
             <cuboid min="2,40,-52" max="3,41,-48"/>
         </union>
+        <cuboid min="-4,40,46" max="4,45,54" id="south-market-capture"/>
+        <cuboid min="-4,40,46" max="4,41,54" id="south-market-pad"/>
         <union id="south-market-progress">
             <cuboid min="-3,40,47" max="3,41,48"/>
             <cuboid min="-3,40,52" max="3,41,53"/>
@@ -80,29 +103,46 @@
     <score>
         <limit>1000</limit>
     </score>
-    <kits>
-        <kit id="spawn-kit">
-            <item slot="0" material="iron sword" unbreakable="true"/>
-            <item slot="1" material="bow" unbreakable="true">
-                <enchantment level="1">infinity</enchantment>
-            </item>
-            <item slot="2" material="iron pickaxe" unbreakable="true">
-                <enchantment level="1">efficiency</enchantment>
-            </item>
-            <item slot="3" material="iron axe" unbreakable="true"/>
-            <item slot="4" material="wood" amount="0"/>
-            <item slot="5" material="stained clay" amount="48" team-color="true"/>
-            <item slot="6" material="golden apple"/>
-            <item slot="7" material="water bucket"/>
-            <item slot="8" material="cooked beef" amount="16"/>
-            <item slot="28" material="arrow"/>
-            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
-            <chestplate material="iron chestplate" unbreakable="true"/>
-            <leggings material="chainmail leggings" unbreakable="true"/>
-            <boots material="leather boots" unbreakable="true" team-color="true"/>
-        </kit>
-    </kits>
     <time>15m</time>
+    <block-drops>
+        <rule>
+            <filter>
+                <material>stained clay</material>
+            </filter>
+            <drops>
+                <item material="stained clay" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>iron pickaxe</item>
+        <item>iron axe</item>
+        <item>wood</item>
+        <item>golden apple</item>
+        <item>water bucket</item>
+        <item>arrow</item>
+        <item>stained clay</item>
+        <item>cooked beef</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>iron chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>iron pickaxe</tool>
+        <tool>iron axe</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="stained clay" amount="8" team-color="true"/>
+        </kill-reward>
+    </kill-rewards>
     <hunger>
         <depletion>off</depletion>
     </hunger>

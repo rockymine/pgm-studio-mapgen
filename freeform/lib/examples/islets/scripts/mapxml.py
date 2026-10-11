@@ -1,10 +1,9 @@
 """Write Islets' map.xml: two teams, their spawns and the hill from the plan's objectives, and a kill height."""
 from plan import KILL_Y, objectives
-from pgmvox.play.mapxml import Doc
+from pgmvox.play.rules import KillHeight, Map, Match
 
-d = Doc("Islets", "0.2.0", "Hold the middle hill.", "koth")
-objectives().write(d, limit=300)
-d.kill_below(KILL_Y)
-d.time(600)
-d.no_fall_damage()
-print(d.tostring())
+M = Map("Islets", "0.2.0", "Hold the middle hill.", "koth",
+        objectives=objectives(),
+        kill=KillHeight(KILL_Y, "portal"),
+        match=Match(score=300, time=600, fall_damage=False))
+print(M.xml())

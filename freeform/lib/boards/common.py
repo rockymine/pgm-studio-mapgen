@@ -8,7 +8,7 @@ after `plan.py` has put `freeform/lib` and this folder on the path.
     via(E, starts, waypoint, targets)  the cheapest walk that passes a waypoint: an approach measured by its way
     set_paint(...)           a ground painted as a set of one tone with inset patches (the look ruling's recipe)
     cell_pick(...)           a built floor or path: even shares of three or four blocks in cells of about three
-    kit(doc)                 the kit every board here gives
+    kit()                    the kit every board here gives, as a typed Kit
     table(rows)              the plan check's rows printed with value, measurement, target and a mark
 """
 import math
@@ -25,7 +25,7 @@ import numpy as np  # noqa: E402
 
 from pgmvox import B  # noqa: E402
 from pgmvox.plan import graph as G  # noqa: E402
-from pgmvox.play.mapxml import E, item  # noqa: E402
+from pgmvox.play.rules import Item, Kit  # noqa: E402
 from pgmvox.geom.noise import fbm  # noqa: E402
 
 
@@ -126,27 +126,19 @@ def grain(shape, seed, cell=3):
 
 
 # ---- map.xml -----------------------------------------------------------------------------------------------
-def kit(d, wood=64, extra=(), pick="iron pickaxe"):
+def kit(wood=64, extra=(), pick="iron pickaxe"):
     """The kit every board here gives: sword, bow, pickaxe, axe, wood, the team's clay, a golden apple, water,
     food, arrows, leather in team colour with iron chest. A board whose goal is obsidian passes
     pick="diamond pickaxe", the only pickaxe that breaks it."""
-    return d.kit("spawn-kit",
-                 item("iron sword", 0, unbreakable=True), item("bow", 1, enchant=[("infinity", 1)], unbreakable=True),
-                 item(pick, 2, enchant=[("efficiency", 1)], unbreakable=True),
-                 item("iron axe", 3, unbreakable=True), item("wood", 4, wood),
-                 item("stained clay", 5, 48, team_color=True), item("golden apple", 6), item("water bucket", 7),
-                 item("cooked beef", 8, 16), item("arrow", 28), *extra,
-                 item("leather helmet", unbreakable=True, team_color=True, tag="helmet"),
-                 item("iron chestplate", unbreakable=True, tag="chestplate"),
-                 item("chainmail leggings", unbreakable=True, tag="leggings"),
-                 item("leather boots", unbreakable=True, team_color=True, tag="boots"))
-
-
-def build_only_over(d, region_el, message):
-    """Blocks may be placed over the void only inside a region: the not-void filter applied outside it."""
-    d.filter("not-void", E("not", E("void")))
-    d.region("not-build-area", E("negative", region_el))
-    d.apply(block_place="not-void", region="not-build-area", message=message)
+    return Kit(Item("iron sword", 0, unbreakable=True), Item("bow", 1, enchant=[("infinity", 1)], unbreakable=True),
+               Item(pick, 2, enchant=[("efficiency", 1)], unbreakable=True),
+               Item("iron axe", 3, unbreakable=True), Item("wood", 4, wood),
+               Item("stained clay", 5, 48, team_color=True), Item("golden apple", 6), Item("water bucket", 7),
+               Item("cooked beef", 8, 16), Item("arrow", 28), *extra,
+               Item("leather helmet", unbreakable=True, team_color=True, wear="helmet"),
+               Item("iron chestplate", unbreakable=True, wear="chestplate"),
+               Item("chainmail leggings", unbreakable=True, wear="leggings"),
+               Item("leather boots", unbreakable=True, team_color=True, wear="boots"))
 
 
 # ---- blocks the boards share ---------------------------------------------------------------------------------

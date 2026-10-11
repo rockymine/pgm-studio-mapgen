@@ -3,9 +3,30 @@
     <version>0.1.0</version>
     <objective>Kill the other team: seventy-five points, or the higher score at forty minutes.</objective>
     <gamemode>tdm</gamemode>
+    <include id="gapple-kill-reward"/>
     <authors>
         <author>Claude (freeform generator, on pgmvox)</author>
     </authors>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="iron pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64" damage="3"/>
+            <item slot="5" material="stained clay" amount="32" team-color="true"/>
+            <item slot="6" material="golden apple" amount="4"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
     <teams>
         <team id="red-team" color="red" max="16">Red</team>
         <team id="blue-team" color="blue" max="16">Blue</team>
@@ -45,44 +66,58 @@
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
         <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
     </regions>
+    <maxbuildheight>100</maxbuildheight>
     <score>
         <limit>75</limit>
         <kills>1</kills>
         <deaths>0</deaths>
     </score>
     <time result="score">40m</time>
-    <kits>
-        <kit id="spawn-kit">
-            <item slot="0" material="iron sword" unbreakable="true"/>
-            <item slot="1" material="bow" unbreakable="true">
-                <enchantment level="1">infinity</enchantment>
-            </item>
-            <item slot="2" material="iron pickaxe" unbreakable="true"/>
-            <item slot="3" material="iron axe" unbreakable="true"/>
-            <item slot="4" material="wood" amount="64" damage="3"/>
-            <item slot="5" material="stained clay" amount="32" team-color="true"/>
-            <item slot="6" material="golden apple" amount="4"/>
-            <item slot="7" material="water bucket"/>
-            <item slot="8" material="cooked beef" amount="16"/>
-            <item slot="28" material="arrow"/>
-            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
-            <chestplate material="iron chestplate" unbreakable="true"/>
-            <leggings material="chainmail leggings" unbreakable="true"/>
-            <boots material="leather boots" unbreakable="true" team-color="true"/>
-        </kit>
-    </kits>
-    <kill-rewards>
-        <kill-reward>
-            <item material="golden apple"/>
-        </kill-reward>
-    </kill-rewards>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>stained clay</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
     <itemkeep>
         <item>iron sword</item>
         <item>bow</item>
         <item>iron pickaxe</item>
         <item>iron axe</item>
         <item>water bucket</item>
+        <item>arrow</item>
+        <item>wood</item>
+        <item>stained clay</item>
+        <item>golden apple</item>
+        <item>cooked beef</item>
     </itemkeep>
-    <maxbuildheight>110</maxbuildheight>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>iron chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>iron pickaxe</tool>
+        <tool>iron axe</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" damage="3" amount="16"/>
+            <item material="stained clay" amount="8" team-color="true"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
 </map>
 

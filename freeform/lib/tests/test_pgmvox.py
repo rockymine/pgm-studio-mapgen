@@ -624,14 +624,23 @@ class Capture(unittest.TestCase):
         d = walk.walk(w.ids, [(0, 21, 0)], w.x0, w.z0, walk.MoveRules(jumps=False, kill_y=10))
         self.assertEqual(d[8 - w.x0, 6, 0 - w.z0], -1)
 
-    def test_a_kit(self):
-        from pgmvox.play.mapxml import item
-        d = Doc("T", "1", "t")
-        d.kit("k", item("bow", 1, enchant=[("infinity", 1)], unbreakable=True), item("leather boots", tag="boots"))
-        d.kill_below(40, how="kit")
-        x = xml.dom.minidom.parseString(d.tostring())
-        self.assertEqual(len(x.getElementsByTagName("kit")), 2)
-        self.assertEqual(x.getElementsByTagName("enchantment")[0].getAttribute("level"), "1")
+    def test_a_kit_and_what_follows_from_it(self):
+        from pgmvox.play.rules import Item, Kit, KillHeight, Map
+        M = Map("T", "1", "t", kit=Kit(Item("iron sword", 0, unbreakable=True), Item("wood", 4, 64),
+                                       Item("stained clay", 5, 32, team_color=True), Item("cooked beef", 8, 16),
+                                       Item("leather boots", team_color=True, wear="boots")), kill=KillHeight(40))
+        x = xml.dom.minidom.parseString(M.xml())
+        text = lambda tag: [e.firstChild.data for e in x.getElementsByTagName(tag)[0].childNodes      # noqa: E731
+                            if e.nodeType == e.ELEMENT_NODE]
+        self.assertEqual(len(x.getElementsByTagName("kit")), 2)                       # the spawn kit and the fall
+        self.assertEqual(text("itemkeep"), ["iron sword", "wood", "stained clay", "cooked beef"])
+        self.assertEqual(text("itemremove"), ["leather boots"])
+        self.assertEqual(text("toolrepair"), ["iron sword"])
+        rewards = [(e.getAttribute("material"), e.getAttribute("amount"))
+                   for e in x.getElementsByTagName("kill-reward")[0].getElementsByTagName("item")]
+        self.assertEqual(rewards, [("wood", "16"), ("stained clay", "8")])          # blocks, not the beef
+        self.assertEqual(x.getElementsByTagName("include")[0].getAttribute("id"), "gapple-kill-reward")
+        self.assertEqual(x.getElementsByTagName("depletion")[0].firstChild.data, "off")
 
 
 class Forms(unittest.TestCase):
@@ -1211,7 +1220,7 @@ class Objectives(unittest.TestCase):
 
     def test_the_xml(self):
         o = self.objectives()
-        d = o.write(Doc("T", "1.0.0", "t"), limit=100)
+        d = o.write(Doc("T", "1.0.0", "t"))
         x = xml.dom.minidom.parseString(d.tostring())
         cub = [c for c in x.getElementsByTagName("cuboid") if c.getAttribute("id") == "mid-capture"][0]
         self.assertEqual((cub.getAttribute("min"), cub.getAttribute("max")), ("-2,10,-2", "2,15,2"))   # max exclusive
@@ -1364,12 +1373,24 @@ class WorldAndOutput(unittest.TestCase):
             render.iso(w.ids, w.dat, w.x0, w.z0, p, 2)
             self.assertTrue(os.path.getsize(p) > 0)
 
-    def test_mapxml(self):
-        d = Doc("T", "1.0.0", "Win", "blitz")
-        d.spawns(E("spawn", E("regions", point(0.5, 65, 0.5, yaw=90))), default=point(0, 90, 0))
-        d.kill_below(40)
-        d.time(90)
-        xml.dom.minidom.parseString(d.tostring())
+    def test_a_map_is_written_from_its_parts(self):
+        from pgmvox.play.objectives import Box, Objectives
+        from pgmvox.play.rules import Build, JumpPad, Map, Match, Spawner
+        from pgmvox.play.objectives import Teams
+        O = Objectives(Teams(("red-team", "Red", "red"), ("blue-team", "Blue", "blue")), Symmetry("half"))
+        O.add(JumpPad("red-pad", Box(2, 20, 0, 3, 21, 1), (0.5, 1.2, 0.0), team="red-team"))
+        O.add(Spawner("apples", (0, 20, 0), [("golden apple", 1)]), mirror=False)
+        M = Map("T", "1.0.0", "Win", "koth", objectives=O, build=Build(areas=[(-2, -2, 1, 1)], max_height=120),
+                match=Match(time=90, score=50))
+        x = xml.dom.minidom.parseString(M.xml())
+        velocities = sorted(a.getAttribute("velocity") for a in x.getElementsByTagName("apply") if a.getAttribute("velocity"))
+        self.assertEqual(velocities, ["-0.5,1.2,-0", "0.5,1.2,0"])                   # turned with the board
+        nb = [e for e in x.getElementsByTagName("negative") if e.getAttribute("id") == "not-build-area"][0]
+        r = nb.getElementsByTagName("rectangle")[0]
+        self.assertEqual((r.getAttribute("min"), r.getAttribute("max")), ("-2,-2", "2,2"))
+        self.assertEqual(x.getElementsByTagName("maxbuildheight")[0].firstChild.data, "100")   # the studio's cap
+        self.assertEqual(x.getElementsByTagName("time")[0].firstChild.data, "1m30s")
+        self.assertEqual(x.getElementsByTagName("spawner")[0].getAttribute("spawn-region"), "apples")
         self.assertEqual(duration(90), "1m30s")
 
 

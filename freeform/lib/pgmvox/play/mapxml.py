@@ -1,17 +1,12 @@
-"""Writing a PGM map.xml: an element builder and the pieces every board's writer repeated.
+"""The element builder the typed parts of a map write through: `play.rules.Map` and `play.objectives` call it, a
+board does not.
 
     d = Doc("Spark", "1.0.0", "Knock the other players off!", "blitz")
-    d.players(2, 64)
-    d.root.append(E("kits", E("kit", E("item", slot=0, material="stick"), id="stick")))
-    d.spawns(E("spawn", E("regions", point(0.5, 65, 0.5, yaw=90)), kit="stick"), default=point(0.5, 90, 0.5))
-    d.kill_below(40)
-    d.time(5 * 60); d.blitz(lives=1); d.no_fall_damage(); d.no_hunger(); d.lock_time(6000)
-    d.write("map.xml")
+    d.region("pad", cuboid((0, 64, 0), (2, 65, 2))); d.apply(region="pad", velocity="0,2,0")
+    print(d.tostring())
 
 E(tag, *children, text=None, **attrs) makes an element; attribute names with a trailing underscore lose it
-(class_=), and underscores in the middle become hyphens (max_overfill= -> max-overfill). The rules of play are
-the board's; this module only spares it the boilerplate. For a mode the studio supports, its intent document
-and codec are the better writer.
+(class_=), and underscores in the middle become hyphens (max_overfill= -> max-overfill).
 """
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
@@ -73,14 +68,6 @@ def union(*children, **attrs):
     return E("union", *children, **attrs)
 
 
-def item(material, slot=None, amount=None, damage=None, enchant=(), unbreakable=None, team_color=None,
-         tag="item"):
-    """A kit's item: item("bow", 1, enchant=[("infinity", 1)], unbreakable=True); tag "helmet", "chestplate",
-    "leggings" or "boots" for armour."""
-    return E(tag, *[E("enchantment", text=n, level=lv) for n, lv in enchant], slot=slot, material=material,
-             amount=amount, damage=damage, unbreakable=unbreakable, team_color=team_color)
-
-
 def duration(seconds):
     """PGM's duration text: 90 -> "1m30s"."""
     m, s = divmod(int(seconds), 60)
@@ -138,58 +125,15 @@ class Doc:
         self.child("regions").append(el)
         return el
 
-    def rules(self, *lines):
-        return self.add(E("rules", [E("rule", text=s) for s in lines]))
-
-    def players(self, lo, hi, colors=True):
-        return self.add(E("players", min=lo, max=hi, colors=colors))
-
     def teams(self, *teams):
         """teams: (id, colour, max, display name)."""
         return self.add(E("teams", [E("team", text=name, id=tid, color=col, max=mx) for tid, col, mx, name in teams]))
 
-    def spawns(self, *spawns, default=None):
-        kids = list(spawns)
-        if default is not None:
-            kids.append(E("default", E("region", default)) if default.tag != "default" else default)
-        return self.add(E("spawns", kids))
-
     def kit(self, id_, *items, force=None, **attrs):
-        """A kit under <kits>: doc.kit("spawn-kit", item("iron sword", 0, unbreakable=True), ...)."""
+        """A kit under <kits>: doc.kit("spawn-kit", *elements)."""
         el = E("kit", *items, id=id_, force=force, **attrs)
         self.child("kits").append(el)
         return el
-
-    def kill_below(self, y, how="portal"):
-        """Anyone below y dies. how="portal" sends them into the void (the arcade boards' way); how="kit" gives
-        them instant damage, as a capture board's fall region does, and keeps them in the world until it lands."""
-        if how == "kit":
-            self.kit("fall-kill", E("effect", text="instant damage", duration=1, amplifier=5), force=True)
-            self.region("the-fall", below(y))
-            return self.apply(kit="fall-kill", region="the-fall")
-        return self.add(E("portals", E("portal", E("region", below(y)), y="@-64", sound=False, observers="never")))
-
-    def time(self, seconds, result=None):
-        return self.add(E("time", text=duration(seconds), result=result))
-
-    def blitz(self, lives=1, filter_=None):
-        return self.add(E("blitz", E("lives", text=lives), filter=filter_))
-
-    def no_fall_damage(self):
-        return self.add(E("disabledamage", E("damage", text="fall")))
-
-    def no_hunger(self):
-        return self.add(E("hunger", E("depletion", text="off")))
-
-    def lock_time(self, ticks=6000):
-        return self.add(E("world", E("timeset", text=ticks), E("timelock", text="on")))
-
-    def broadcasts(self, *items):
-        """items: ("alert" or "tip", after seconds, text)."""
-        return self.add(E("broadcasts", [E(kind, text=text, after=duration(t)) for kind, t, text in items]))
-
-    def itemremove(self, *materials):
-        return self.add(E("itemremove", [E("item", text=m) for m in materials]))
 
     def tostring(self):
         raw = ET.tostring(self.root, encoding="unicode")

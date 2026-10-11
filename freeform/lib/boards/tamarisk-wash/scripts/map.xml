@@ -3,9 +3,33 @@
     <version>0.1.0</version>
     <objective>Destroy both of the enemy's monuments: the Obelisk on Table Rock and the Sunstone in the Souk.</objective>
     <gamemode>dtm</gamemode>
+    <include id="gapple-kill-reward"/>
     <authors>
         <author>Claude (freeform generator, on pgmvox)</author>
     </authors>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64" damage="4"/>
+            <item slot="5" material="stained clay" amount="32" team-color="true"/>
+            <item slot="6" material="golden apple" amount="4"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+        <kit id="fall-kill" force="true">
+            <effect duration="1" amplifier="5">instant damage</effect>
+        </kit>
+    </kits>
     <teams>
         <team id="red-team" color="red" max="16">Red</team>
         <team id="blue-team" color="blue" max="16">Blue</team>
@@ -19,9 +43,27 @@
         <not id="not-blue">
             <team>blue-team</team>
         </not>
-        <not id="not-void">
+        <not id="block-place-void-filter">
             <void/>
         </not>
+        <any id="block-break-void-filter">
+            <all>
+                <any>
+                    <material>log</material>
+                    <material>log 2</material>
+                    <material>leaves</material>
+                    <material>leaves 2</material>
+                    <material>long grass</material>
+                    <material>yellow flower</material>
+                    <material>red rose</material>
+                    <material>double plant</material>
+                    <material>water lily</material>
+                    <material>vine</material>
+                </any>
+                <void/>
+            </all>
+            <filter id="block-place-void-filter"/>
+        </any>
     </filters>
     <spawns>
         <spawn team="red-team" kit="spawn-kit" yaw="270">
@@ -51,9 +93,9 @@
         <cuboid min="57,74,-28" max="58,77,-27" id="blue-obelisk-region"/>
         <cuboid min="-63,66,21" max="-62,68,22" id="red-sunstone-region"/>
         <cuboid min="62,66,21" max="63,68,22" id="blue-sunstone-region"/>
+        <apply block-place="block-place-void-filter" block-break="block-break-void-filter" message="You may not edit the void!"/>
         <below y="6" id="the-fall"/>
         <apply kit="fall-kill" region="the-fall"/>
-        <apply block-place="not-void" message="You may not build in the void!"/>
     </regions>
     <destroyables>
         <destroyable id="red-obelisk" name="Red Obelisk" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-obelisk-region"/>
@@ -61,29 +103,54 @@
         <destroyable id="red-sunstone" name="Red Sunstone" owner="red-team" materials="lapis block" completion="100%" mode-changes="true" region="red-sunstone-region"/>
         <destroyable id="blue-sunstone" name="Blue Sunstone" owner="blue-team" materials="lapis block" completion="100%" mode-changes="true" region="blue-sunstone-region"/>
     </destroyables>
-    <kits>
-        <kit id="spawn-kit">
-            <item slot="0" material="iron sword" unbreakable="true"/>
-            <item slot="1" material="bow" unbreakable="true">
-                <enchantment level="1">infinity</enchantment>
-            </item>
-            <item slot="2" material="diamond pickaxe" unbreakable="true"/>
-            <item slot="3" material="iron axe" unbreakable="true"/>
-            <item slot="4" material="wood" amount="64" damage="4"/>
-            <item slot="5" material="stained clay" amount="32" team-color="true"/>
-            <item slot="6" material="golden apple" amount="4"/>
-            <item slot="7" material="water bucket"/>
-            <item slot="8" material="cooked beef" amount="16"/>
-            <item slot="28" material="arrow"/>
-            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
-            <chestplate material="iron chestplate" unbreakable="true"/>
-            <leggings material="chainmail leggings" unbreakable="true"/>
-            <boots material="leather boots" unbreakable="true" team-color="true"/>
-        </kit>
-        <kit id="fall-kill" force="true">
-            <effect duration="1" amplifier="5">instant damage</effect>
-        </kit>
-    </kits>
-    <maxbuildheight>104</maxbuildheight>
+    <maxbuildheight>100</maxbuildheight>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>stained clay</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>diamond pickaxe</item>
+        <item>iron axe</item>
+        <item>water bucket</item>
+        <item>arrow</item>
+        <item>wood</item>
+        <item>stained clay</item>
+        <item>golden apple</item>
+        <item>cooked beef</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>iron chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+        <item>obsidian</item>
+        <item>lapis block</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>diamond pickaxe</tool>
+        <tool>iron axe</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" damage="4" amount="16"/>
+            <item material="stained clay" amount="8" team-color="true"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
 </map>
 

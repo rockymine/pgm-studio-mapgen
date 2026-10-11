@@ -2,24 +2,21 @@
 captures it, with its room, its entry rule and its spawner written once; the kit; building only over the board.
 """
 import plan as P
-from pgmvox.play.mapxml import Doc, E, item
+from pgmvox.play.rules import Build, Item, Kit, Map
 
 O = P.objectives()
-d = Doc("Brittlebush III", "1.0.0", "Capture the other three teams' wools!", "ctw")
-d.add(E("authors", E("author", text="rockymine"), E("author", text="Claude (freeform generator, pgmvox)")))
-O.write(d)
-d.kit("spawn-kit",
-      item("stone sword", 0, unbreakable=True), item("bow", 1, enchant=[("infinity", 1)], unbreakable=True),
-      item("iron pickaxe", 2, unbreakable=True), item("iron axe", 3, unbreakable=True), item("wood", 4, 64),
-      item("stained clay", 5, 48, team_color=True), item("golden apple", 6), item("cooked beef", 7, 16),
-      item("shears", 8, unbreakable=True), item("arrow", 28),
-      item("leather helmet", unbreakable=True, team_color=True, tag="helmet"),
-      item("leather chestplate", unbreakable=True, team_color=True, tag="chestplate"),
-      item("leather leggings", unbreakable=True, team_color=True, tag="leggings"),
-      item("leather boots", unbreakable=True, team_color=True, tag="boots"))
-d.filter("not-void", E("not", E("void")))
-d.apply(block_place="not-void", message="You may not build in the void!")
-d.add(E("itemkeep", [E("item", text=m) for m in ("stone sword", "bow", "iron pickaxe", "iron axe", "shears")]))
-d.add(E("kill-rewards", E("kill-reward", E("item", material="golden apple"))))
-d.add(E("maxbuildheight", text=P.MAX_BUILD))
-print(d.tostring())
+
+M = Map("Brittlebush III", "1.0.0", "Capture the other three teams' wools!", "ctw",
+        authors=["rockymine", "Claude (freeform generator, pgmvox)"],
+        objectives=O,
+        kit=Kit(
+            Item("stone sword", 0, unbreakable=True), Item("bow", 1, enchant=[("infinity", 1)], unbreakable=True),
+            Item("iron pickaxe", 2, unbreakable=True), Item("iron axe", 3, unbreakable=True), Item("wood", 4, 64),
+            Item("stained clay", 5, 48, team_color=True), Item("golden apple", 6), Item("cooked beef", 7, 16),
+            Item("shears", 8, unbreakable=True), Item("arrow", 28),
+            Item("leather helmet", unbreakable=True, team_color=True, wear="helmet"),
+            Item("leather chestplate", unbreakable=True, team_color=True, wear="chestplate"),
+            Item("leather leggings", unbreakable=True, team_color=True, wear="leggings"),
+            Item("leather boots", unbreakable=True, team_color=True, wear="boots")),
+        build=Build(max_height=P.MAX_BUILD))
+print(M.xml())

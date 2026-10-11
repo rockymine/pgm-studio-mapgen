@@ -5,14 +5,13 @@ objectives; the kit; the fissure as the only place to build over the void; a bui
 """
 import plan as P
 import common as C
-from pgmvox.play.mapxml import Doc, E
+from pgmvox.play.rules import Build, Map
 
-d = Doc("Cinder Reach", "1.0.0", "Leak the enemy's core: it hangs over a stone platform in the bowl of the cinder cone in front of their "
-        "lodge.", "dtc")
-d.add(E("authors", E("author", text="Claude (pgmvox trial)")))
-C.kit(d, pick="diamond pickaxe")
-P.objectives().write(d)
-C.build_only_over(d, E("rectangle", min=f"{-P.RENT},{P.Z_MIN}", max=f"{P.RENT + 1},{P.Z_MAX + 1}"),
-                  "You may only build over the void in the fissure!")
-d.add(E("maxbuildheight", text=P.MAX_BUILD))
-print(d.tostring())
+M = Map("Cinder Reach", "1.0.0", "Leak the enemy's core: it hangs over a stone platform in the bowl of the cinder cone in front of their "
+        "lodge.", "dtc",
+        authors=["Claude (pgmvox trial)"],
+        objectives=P.objectives(),
+        kit=C.kit(pick="diamond pickaxe"),
+        build=Build(areas=[(-P.RENT, P.Z_MIN, P.RENT, P.Z_MAX)], max_height=P.MAX_BUILD,
+                        message="You may only build over the void in the fissure!"))
+print(M.xml())
