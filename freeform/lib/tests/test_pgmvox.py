@@ -847,7 +847,13 @@ class LayerDocument(unittest.TestCase):
         clay = built["claywork"].world
         self.assertEqual(clay.id(-20, 19, 29), B.AIR)                                   # a sunk panel at the rim,
         self.assertIn(clay.id(-20, 19, 28), (B.STAINED_CLAY, B.QUARTZ))                # its back a block in
-        self.assertEqual(built["outback"].world.get(-20, 19, 30), (B.WOOD_SLAB, 9))     # the trim, out a block
+        back = built["outback"].world                                                    # Outback's inset: slabs,
+        self.assertEqual([back.get(-20, y, 29) for y in (22, 21)], [(B.WOOD_SLAB, 9), (B.WOOD_SLAB, 1)])
+        self.assertEqual(back.get(-20, 22, 28), (B.STAINED_CLAY, 14))                   # the team's clay behind
+        self.assertEqual(back.get(-40, 22, 29), (B.PLANKS, 1))                           # a frame at the corner,
+        from pgmvox.orient import stair
+        self.assertEqual(back.get(-37, 22, 29), (B.SPRUCE_STAIRS, stair("w", upside_down=True)))  # a stair rising
+        self.assertEqual(back.get(36, 21, 29), (B.SPRUCE_STAIRS, stair("e")))                      # to either end
 
     def test_made_and_grown_on_one_board(self):
         from pgmvox import document
@@ -1788,7 +1794,7 @@ class Grammar(unittest.TestCase):
         for (x, z), h in tops.items():
             for y in range(1, h + 1):
                 w.set(x, y, z, B.STONE)
-        jut = G.Jut((B.STAINED_CLAY, 14), (B.WOOD_SLAB, 9))
+        jut = G.Course((B.STAINED_CLAY, 14), out=(B.WOOD_SLAB, 9))
         face = G.Face([None, (B.PLANKS, 1), jut, lambda inward: (B.SPRUCE_STAIRS, stair(inward, upside_down=True)),
                        jut])
         got = G.dress(w, tops, face, below=G.lattice(4, (B.OBSIDIAN, 0), None), foot=((B.BEDROCK, 0), 1))

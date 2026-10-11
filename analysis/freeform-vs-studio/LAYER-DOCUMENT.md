@@ -175,22 +175,34 @@ cells by storey: `{"layers": [[[cx, cz], ...], ...], "floor": 22, "dye": 14, "do
 deepest drop; an `area` limits the columns.
 
 **A course is data, and so is the bay.** A course is a block, `null` (keep what the ground laid, so the paint stays
-on the rim), `{"sunk": course}` (air at the face, the course a block in), `{"jut": [course, out]}` (`out` a block outside,
-over air only) or `{"stair": NAME, "upside_down": true}` (turned by the face). `accent` is the grammar's bay:
-`module`, `every`, `min_air`, `frame` and `inner`, a stack or `{"per_pos": [...]}` one stack per inner column.
+on the rim), `{"block", "back", "out"}` (a block with another behind it or outside it over air; `{"block": "AIR",
+"back": ...}` is an inset), `{"stair": NAME, "upside_down": true, "toward": "in" | "out" | "end"}` or `{"mix":
+[[block, weight], ...]}`. `accent` is the grammar's bay: `module`, `every`, `min_air`, `frame` and `inner`, a stack or
+`{"per_pos": [...]}` one stack per inner column.
+
+**A panel frames every straight run of a face as one field.** `panel` takes `ends`, the stacks one, two, three columns
+in from the nearer end of a run, and `middle`, the stack of the rest; a stair `"toward": "end"` rises to that end, and
+a run shorter than `min_run` takes the plain `courses`. That is Outback's wall, a frame of spruce with a two-high
+inset of slabs between stairs and the team's clay behind:
+
+```json
+{"id": "felder", "courses": [P, D, D, D, D, P, ST, ST, ST, ST, P],
+ "panel": {"ends": [[P, P, P, P, P, P, P, P, P, P, P], [P, D, D, D, D, P, ST, ST, ST, ST, P],
+                    [P, D, {"block": {"stair": "SPRUCE_STAIRS", "upside_down": true, "toward": "end"}, "back": RED},
+                     {"block": {"stair": "SPRUCE_STAIRS", "toward": "end"}, "back": RED}, D, P, ST, ST, ST, ST, P]],
+           "middle": [P, D, {"block": ["WOOD_SLAB", 9], "back": RED}, {"block": ["WOOD_SLAB", 1], "back": RED}, D, P,
+                      ST, ST, ST, ST, P], "min_run": 5},
+ "below": {"block": "BEDROCK"}}
+```
+
+with `P` spruce planks, `D` a mix of dirt and coarse dirt, `ST` a mix of stone, cobble and cracked stone brick and
+`RED` the team's clay, written out in full in the example.
 
 **Under the courses the layer lays `below` down to the column's bottom, and `foot` rows of bedrock under that.**
 `below` is a `block`, a `lattice` (`period`, `a`, `b`: Claywork's diagonals) or `bands` (`blocks`, `width`, `y0`: courses
-by height, whatever the rim), each with an `else`; left out, the beds the lay stage put there stay. An Outback-like
-profile is one such layer:
+by height, whatever the rim), each with an `else`; left out, the beds the lay stage put there stay.
 
-```json
-{"id": "profil", "courses": [null, ["PLANKS", 1], "DIRT", "DIRT", {"stair": "SPRUCE_STAIRS", "upside_down": true},
-  {"jut": [["STAINED_CLAY", 14], ["WOOD_SLAB", 9]]}, ["STAINED_CLAY", 14], ["STAINED_CLAY", 14], ["PLANKS", 1]],
- "below": {"block": "STONE"}, "foot": ["BEDROCK", 3]}
-```
-
-`freeform/lib/examples/layers/wandbild/` is one board in five dressings: none, that profile, Claywork's face with
+`freeform/lib/examples/layers/wandbild/` is one board in five dressings: none, Outback's panels, Claywork's face with
 its panels and lattice, bands by height, and Brittlebush's edge.
 
 ## Volume, structures and symmetry

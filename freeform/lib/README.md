@@ -27,7 +27,7 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `facade` | face patterns (`band`, `courses`, `flutes`, `panels`, `slits`, `checker`, `windows`, `glyph_row`, `word`) set back or flush on an `extrude`d mass, `coffer`, `top_course`; floor fields (`border`, `medallion`, `corners`, `diamonds`, `kilim_steps`, `star`, `cross`, `tiles`) composed by `first_of` and laid by `carpet` |
 | `terrain` | `slope_deg` as the studio reads it; `lay` (ground painted by slope, a snow line; `Paint` layers that choose the top by slope and place, first match first; a `bottom` per column); `fill_water` (a bed and water up to each column's level); `Strata`, `bed_offset` and `beds` (rock beds that tilt and fold); `mountain_ring`; `underside` and `root_depth` (cones, flutes, spires); `slab` (floating floors at their own heights: rock, root, a bedrock course, a weathered rim); `waterfall` (water falling from each row's lip into the void, into air only); `island_bottom` (where the rock ends: a taper from the void, sheer beside a rift, for `lay(bottom=)`); `cloud_deck` |
 | `route` | `find` (a least-cost route over the ground, held to a grade, switchbacks and all), `network` (places joined by roads that share their trunk), `simplify`, `smooth`, `footprint`, `pave` (surface and bridges), `steps` (a stair on every one-block rise), `halfstep_levels` and `halfsteps` (a steep way in blocks and slabs, no step over half a block) |
-| `grammar` | the rules of a structural board, apart from its blocks: `Section` (boxes at one height), `split` and `tile` (a box cut into sections), `Ground` (every column's top, section and depth), `Face` and `Accent` (courses by drop, a bay every so many), `Sunk` and `Jut` (a course set in or out), `Style` (body, faces, seam, fills, motifs), `lay`; `dress` (a face on any heights), `lattice` and `bands` (what lies under the courses) |
+| `grammar` | the rules of a structural board, apart from its blocks: `Section` (boxes at one height), `split` and `tile` (a box cut into sections), `Ground` (every column's top, section and depth), `Face` and `Accent` (courses by drop, a bay every so many), `Course` (a course with a block behind or outside it; `Sunk` the inset), `Toward` and `Mix` (a stair rising to its run's end, a block drawn by weight), `Panel` (each straight run framed), `Style` (body, faces, seam, fills, motifs), `lay`; `dress` (a face on any heights), `lattice` and `bands` (what lies under the courses) |
 | `clay` | the Claywork style for the grammar: stone and clay, the team's colour inlaid; faces with a sunk panel and its quartz diamond in a bay centred on each section; fills checker, squares, paving, inlay, plate and flight; the arrow motif |
 | `brittle` | the Brittlebush style from a blueprint of five-block cells: flat, keep, stair, stacked, gap and water cells; the five-course cap with its birch panels, a one-block outline, sand fields and double-ringed beds; hollows and tunnels under a deck with their dark-oak pillars; grown ground beside the made (`build(grown=)`); `house`, storeys of whole cells; `tower`, `heart` |
 | `studioplan` | a plan drawn in the studio's planner (version 2) read as a `brittle` blueprint: pieces, stairs, decks, water and bare zones, placements |
@@ -179,8 +179,9 @@ module, its period and phase, its frame and middle courses, and the air it needs
 not at all: every column of it, and `margin` more either side, must be face at one height with that air before it,
 so an accent is never buried, cut by a corner or squeezed into a short run.
 
-**A face's course may be sunk, and its bays may follow the sections.** `Sunk(block)` sets a course back a block, an
-inset with `block` behind it. An accent's middle may change with its place in the bay, and `align="section"`
+**A face's course may have depth, and its bays may follow the sections.** `Course(block, back, out)` lays `block` in
+the face, `back` a block behind it and `out` a block outside it over air only; `Sunk(block)` is the inset, air with
+`block` behind. An accent's middle may change with its place in the bay, and `align="section"`
 centres whole bays on each section's side instead of counting them from the world's origin. A section's `tops` give
 it a stepped top, so a flight of steps is a section too.
 
@@ -188,8 +189,13 @@ it a stepped top, so a flight of steps is a section too.
 map that stands two or more over a neighbour or over the void, toward its deepest drop, its courses stopping at the
 column's lowest block.
 
-**A dressed face may keep, push out and fill.** A course `None` keeps the ground's own block, so the paint stays on
-the rim. `Jut(course, out)` sets `out` a block outside the face, over air only, for a trim or a hanging stair. Under the courses,
+**A dressed face may keep, frame and fill.** A course `None` keeps the ground's own block, so the paint stays on
+the rim, and `Mix` draws a course by weight. A `Panel` lays every straight run at one height as one framed field:
+`ends[d]` is the stack `d` columns from the nearer end and `middle` the rest, with `Toward` stairs rising to that
+end. That is Outback's wall: spruce at the rim, the middle, the foot and the corners, and an inset of slabs between
+stairs with the team's clay behind.
+
+**What lies under the courses is a function too.** Under the courses,
 `below(x, y, z)` lays each block down to the bottom: `lattice` is Claywork's two diagonals, `bands` courses by height
 whatever the rim, and `foot` puts rows of bedrock at the bottom.
 

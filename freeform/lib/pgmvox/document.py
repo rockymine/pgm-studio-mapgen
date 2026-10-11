@@ -433,39 +433,49 @@ def _paint_spec(spec):
     return lambda u, ly, lz, s: cap if ly > s[1] / 2 - 1 else base(u, ly, lz, s)
 
 
-def course(spec):
-    """A face course from data: a block, null to keep the ground's, {"sunk": course}, {"jut": [course, out]}, or
-    {"stair": NAME, "upside_down": true, "toward": "in" | "out"}, a stair turned by the face's inward side."""
+def _course(spec):
+    """A face course from data: a block, null to keep the ground's, {"block", "back", "out"} (a block with one behind
+    it or one outside it over air: {"block": "AIR", "back": ...} is an inset), {"stair": NAME, "upside_down": true,
+    "toward": "in" | "out" | "end"} (turned by the face, or rising to the nearer end of its run) or {"mix": [[block,
+    weight], ...]}."""
     from . import grammar as G
     from .orient import stair
     if spec is None:
         return None
-    if isinstance(spec, dict) and "sunk" in spec:
-        return G.Sunk(course(spec["sunk"]))
-    if isinstance(spec, dict) and "jut" in spec:
-        return G.Jut(course(spec["jut"][0]), course(spec["jut"][1]))
+    if isinstance(spec, dict) and ("back" in spec or "out" in spec):
+        return G.Course(_course(spec.get("block", "AIR")), back=_course(spec.get("back")), out=_course(spec.get("out")))
+    if isinstance(spec, dict) and "mix" in spec:
+        return G.Mix(tuple((block(b), wt) for b, wt in spec["mix"]))
     if isinstance(spec, dict) and "stair" in spec:
-        bid, down, out = getattr(B, spec["stair"]), spec.get("upside_down", False), spec.get("toward") == "out"
-        return lambda inward: (bid, stair(G.OPP[inward] if out else inward, upside_down=down))
+        bid, down, toward = getattr(B, spec["stair"]), spec.get("upside_down", False), spec.get("toward", "in")
+        if toward == "end":
+            return G.Toward(bid, down)
+        return lambda inward: (bid, stair(G.OPP[inward] if toward == "out" else inward, upside_down=down))
+    if isinstance(spec, dict) and "block" in spec:
+        return block(spec["block"])
     return block(spec)
 
 
 def face(spec):
-    """A grammar Face from a faces layer: its `courses`, and an `accent` bay whose `inner` is a stack, or
-    {"per_pos": [stack, ...]} one per inner column."""
+    """A grammar Face from a faces layer: its `courses`; an `accent` bay whose `inner` is a stack, or {"per_pos":
+    [stack, ...]} one per inner column; or a `panel`, every straight run framed: {"ends": [stack, ...], "middle":
+    stack}."""
     from . import grammar as G
+    stack = lambda st: [_course(c) for c in st]                                          # noqa: E731
     a = spec.get("accent")
     accent = None
     if a:
         inner = a["inner"]
         if isinstance(inner, dict):
-            stacks = [[course(c) for c in st] for st in inner["per_pos"]]
+            stacks = [stack(st) for st in inner["per_pos"]]
             inner_ = lambda pos: stacks[pos - 1]                                        # noqa: E731
         else:
-            inner_ = [course(c) for c in inner]
-        accent = G.Accent(a["module"], frame=[course(c) for c in a["frame"]], inner=inner_, every=a.get("every", 2),
+            inner_ = stack(inner)
+        accent = G.Accent(a["module"], frame=stack(a["frame"]), inner=inner_, every=a.get("every", 2),
                           phase=a.get("phase", 0), min_air=a.get("min_air", 5), align="grid", margin=a.get("margin", 0))
-    return G.Face([course(c) for c in spec.get("courses", [])], accent, floor=0)
+    p = spec.get("panel")
+    panel = G.Panel([stack(st) for st in p["ends"]], stack(p["middle"]), p.get("min_run", 3)) if p else None
+    return G.Face(stack(spec.get("courses", [])), accent, floor=0, panel=panel)
 
 
 def below(spec):
@@ -602,7 +612,8 @@ def build(doc):
             e, _ = area_distance(L["area"], X, Z, fields, lines)
             where = lambda x, z, e=e: e[x - x0, z - z0] < 1                             # noqa: E731
         got = G.dress(w, tops, face(L), min_drop=L.get("min_drop", 2), below=below(L.get("below")),
-                      foot=(block(L["foot"][0]), L["foot"][1]) if "foot" in L else None, where=where)
+                      foot=(block(L["foot"][0]), L["foot"][1]) if "foot" in L else None, where=where,
+                      rng=np.random.default_rng(L.get("seed", bd.get("seed", 0))))
         laid = np.zeros(X.shape, bool)
         for x, z in got:
             laid[x - x0, z - z0] = True

@@ -14,7 +14,7 @@
   "floor": 0,
   "height": 64,
   "seed": 5,
-  "text": "Eine Planke unter dem Gras, zwei Erde, eine Einfassung aus Treppe und Stufe, dann die Teamfarbe, wieder eine Planke, Stein, unten Grundgestein."
+  "text": "Jedes gerade Wandst\u00fcck ein gerahmtes Feld wie auf Outback: Fichtenbretter an Kante, Mitte und Fu\u00df und an den Ecken; darin Erde, eine Nische zwei Bl\u00f6cke hoch aus oberer und unterer Fichtenstufe mit Treppen an den Enden und Teamton dahinter, wieder Erde, dann vier Reihen Steinmix. Darunter Grundgestein."
  },
  "fields": {
   "small": {
@@ -161,69 +161,680 @@
  "lay": {},
  "faces": [
   {
-   "id": "profil",
+   "id": "felder",
    "min_drop": 2,
    "courses": [
-    null,
     [
      "PLANKS",
      1
     ],
-    "DIRT",
-    "DIRT",
     {
-     "stair": "SPRUCE_STAIRS",
-     "upside_down": true
-    },
-    {
-     "jut": [
+     "mix": [
       [
-       "STAINED_CLAY",
-       14
+       [
+        "DIRT",
+        0
+       ],
+       2
       ],
       [
-       "WOOD_SLAB",
-       9
+       [
+        "DIRT",
+        1
+       ],
+       1
+      ]
+     ]
+    },
+    {
+     "mix": [
+      [
+       [
+        "DIRT",
+        0
+       ],
+       2
+      ],
+      [
+       [
+        "DIRT",
+        1
+       ],
+       1
+      ]
+     ]
+    },
+    {
+     "mix": [
+      [
+       [
+        "DIRT",
+        0
+       ],
+       2
+      ],
+      [
+       [
+        "DIRT",
+        1
+       ],
+       1
+      ]
+     ]
+    },
+    {
+     "mix": [
+      [
+       [
+        "DIRT",
+        0
+       ],
+       2
+      ],
+      [
+       [
+        "DIRT",
+        1
+       ],
+       1
       ]
      ]
     },
     [
-     "STAINED_CLAY",
-     14
+     "PLANKS",
+     1
     ],
-    [
-     "STAINED_CLAY",
-     14
-    ],
-    [
-     "STAINED_CLAY",
-     14
-    ],
-    [
-     "STAINED_CLAY",
-     14
-    ],
-    [
-     "STAINED_CLAY",
-     14
-    ],
-    [
-     "STAINED_CLAY",
-     14
-    ],
+    {
+     "mix": [
+      [
+       "STONE",
+       6
+      ],
+      [
+       "COBBLE",
+       3
+      ],
+      [
+       [
+        "STONEBRICK",
+        2
+       ],
+       1
+      ]
+     ]
+    },
+    {
+     "mix": [
+      [
+       "STONE",
+       6
+      ],
+      [
+       "COBBLE",
+       3
+      ],
+      [
+       [
+        "STONEBRICK",
+        2
+       ],
+       1
+      ]
+     ]
+    },
+    {
+     "mix": [
+      [
+       "STONE",
+       6
+      ],
+      [
+       "COBBLE",
+       3
+      ],
+      [
+       [
+        "STONEBRICK",
+        2
+       ],
+       1
+      ]
+     ]
+    },
+    {
+     "mix": [
+      [
+       "STONE",
+       6
+      ],
+      [
+       "COBBLE",
+       3
+      ],
+      [
+       [
+        "STONEBRICK",
+        2
+       ],
+       1
+      ]
+     ]
+    },
     [
      "PLANKS",
      1
     ]
    ],
-   "below": {
-    "block": "STONE"
+   "panel": {
+    "ends": [
+     [
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ]
+     ],
+     [
+      [
+       "PLANKS",
+       1
+      ],
+      {
+       "mix": [
+        [
+         [
+          "DIRT",
+          0
+         ],
+         2
+        ],
+        [
+         [
+          "DIRT",
+          1
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         [
+          "DIRT",
+          0
+         ],
+         2
+        ],
+        [
+         [
+          "DIRT",
+          1
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         [
+          "DIRT",
+          0
+         ],
+         2
+        ],
+        [
+         [
+          "DIRT",
+          1
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         [
+          "DIRT",
+          0
+         ],
+         2
+        ],
+        [
+         [
+          "DIRT",
+          1
+         ],
+         1
+        ]
+       ]
+      },
+      [
+       "PLANKS",
+       1
+      ],
+      {
+       "mix": [
+        [
+         "STONE",
+         6
+        ],
+        [
+         "COBBLE",
+         3
+        ],
+        [
+         [
+          "STONEBRICK",
+          2
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         "STONE",
+         6
+        ],
+        [
+         "COBBLE",
+         3
+        ],
+        [
+         [
+          "STONEBRICK",
+          2
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         "STONE",
+         6
+        ],
+        [
+         "COBBLE",
+         3
+        ],
+        [
+         [
+          "STONEBRICK",
+          2
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         "STONE",
+         6
+        ],
+        [
+         "COBBLE",
+         3
+        ],
+        [
+         [
+          "STONEBRICK",
+          2
+         ],
+         1
+        ]
+       ]
+      },
+      [
+       "PLANKS",
+       1
+      ]
+     ],
+     [
+      [
+       "PLANKS",
+       1
+      ],
+      {
+       "mix": [
+        [
+         [
+          "DIRT",
+          0
+         ],
+         2
+        ],
+        [
+         [
+          "DIRT",
+          1
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "block": {
+        "stair": "SPRUCE_STAIRS",
+        "upside_down": true,
+        "toward": "end"
+       },
+       "back": [
+        "STAINED_CLAY",
+        14
+       ]
+      },
+      {
+       "block": {
+        "stair": "SPRUCE_STAIRS",
+        "toward": "end"
+       },
+       "back": [
+        "STAINED_CLAY",
+        14
+       ]
+      },
+      {
+       "mix": [
+        [
+         [
+          "DIRT",
+          0
+         ],
+         2
+        ],
+        [
+         [
+          "DIRT",
+          1
+         ],
+         1
+        ]
+       ]
+      },
+      [
+       "PLANKS",
+       1
+      ],
+      {
+       "mix": [
+        [
+         "STONE",
+         6
+        ],
+        [
+         "COBBLE",
+         3
+        ],
+        [
+         [
+          "STONEBRICK",
+          2
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         "STONE",
+         6
+        ],
+        [
+         "COBBLE",
+         3
+        ],
+        [
+         [
+          "STONEBRICK",
+          2
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         "STONE",
+         6
+        ],
+        [
+         "COBBLE",
+         3
+        ],
+        [
+         [
+          "STONEBRICK",
+          2
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         "STONE",
+         6
+        ],
+        [
+         "COBBLE",
+         3
+        ],
+        [
+         [
+          "STONEBRICK",
+          2
+         ],
+         1
+        ]
+       ]
+      },
+      [
+       "PLANKS",
+       1
+      ]
+     ]
+    ],
+    "middle": [
+     [
+      "PLANKS",
+      1
+     ],
+     {
+      "mix": [
+       [
+        [
+         "DIRT",
+         0
+        ],
+        2
+       ],
+       [
+        [
+         "DIRT",
+         1
+        ],
+        1
+       ]
+      ]
+     },
+     {
+      "block": [
+       "WOOD_SLAB",
+       9
+      ],
+      "back": [
+       "STAINED_CLAY",
+       14
+      ]
+     },
+     {
+      "block": [
+       "WOOD_SLAB",
+       1
+      ],
+      "back": [
+       "STAINED_CLAY",
+       14
+      ]
+     },
+     {
+      "mix": [
+       [
+        [
+         "DIRT",
+         0
+        ],
+        2
+       ],
+       [
+        [
+         "DIRT",
+         1
+        ],
+        1
+       ]
+      ]
+     },
+     [
+      "PLANKS",
+      1
+     ],
+     {
+      "mix": [
+       [
+        "STONE",
+        6
+       ],
+       [
+        "COBBLE",
+        3
+       ],
+       [
+        [
+         "STONEBRICK",
+         2
+        ],
+        1
+       ]
+      ]
+     },
+     {
+      "mix": [
+       [
+        "STONE",
+        6
+       ],
+       [
+        "COBBLE",
+        3
+       ],
+       [
+        [
+         "STONEBRICK",
+         2
+        ],
+        1
+       ]
+      ]
+     },
+     {
+      "mix": [
+       [
+        "STONE",
+        6
+       ],
+       [
+        "COBBLE",
+        3
+       ],
+       [
+        [
+         "STONEBRICK",
+         2
+        ],
+        1
+       ]
+      ]
+     },
+     {
+      "mix": [
+       [
+        "STONE",
+        6
+       ],
+       [
+        "COBBLE",
+        3
+       ],
+       [
+        [
+         "STONEBRICK",
+         2
+        ],
+        1
+       ]
+      ]
+     },
+     [
+      "PLANKS",
+      1
+     ]
+    ],
+    "min_run": 5
    },
-   "foot": [
-    "BEDROCK",
-    3
-   ],
-   "note": "the course stack under every rim, the same on the cliff and over the void"
+   "below": {
+    "block": "BEDROCK"
+   },
+   "note": "Outback's wall: each straight run framed in spruce, a two-high inset of slabs between stairs, team clay behind"
   }
  ]
 }

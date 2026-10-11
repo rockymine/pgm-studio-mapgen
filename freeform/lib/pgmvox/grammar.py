@@ -146,23 +146,57 @@ class Ground:
 
 
 # ---- faces ---------------------------------------------------------------------------------------------------
-def spec(s, inward):
-    """A course: (id, data), or a function of the face's inward side giving one."""
+@dataclass(frozen=True)
+class Course:
+    """A course with depth: `block` in the face, `back` one block in behind it, `out` one block outside it over air
+    only. Air with a back is an inset, a block with an out a ledge or a hanging stair."""
+    block: object
+    back: object = None
+    out: object = None
+
+
+def Sunk(back):
+    """An inset: air at the face, `back` behind it."""
+    return Course((B.AIR, 0), back=back)
+
+
+@dataclass(frozen=True)
+class Toward:
+    """A stair rising toward the nearer end of its run: the ends of a panel's inset."""
+    block: int
+    upside_down: bool = False
+
+
+@dataclass(frozen=True)
+class Mix:
+    """One of several blocks, drawn by weight: [(block, weight), ...]."""
+    choices: tuple
+
+
+def spec(s, inward, end=None, rng=None):
+    """A course's block: (id, data), a function of the face's inward side, a Toward stair or a Mix."""
+    if isinstance(s, Toward):
+        from .orient import stair
+        return s.block, stair(end or OPP[inward], upside_down=s.upside_down)
+    if isinstance(s, Mix):
+        total = sum(wt for _, wt in s.choices)
+        r = (rng.random() if rng else 0.0) * total
+        for b, wt in s.choices:
+            r -= wt
+            if r < 0:
+                return b
+        return s.choices[-1][0]
     return s(inward) if callable(s) else s
 
 
-@dataclass(frozen=True)
-class Sunk:
-    """A course set back one block: air at the face, `back` (a course) behind it, an inset."""
-    back: object
-
-
-@dataclass(frozen=True)
-class Jut:
-    """A course set out one block: `course` in the face and `out` one block outside it, over air only, so a ledge or
-    a hanging stair stands proud of the face."""
-    course: object
-    out: object
+@dataclass
+class Panel:
+    """A face's every straight run at one height laid as one framed panel: `ends[d]` is the stack d columns in from
+    the nearer end, `middle` the stack of every column further in; a Toward course rises toward that end. A run
+    shorter than `min_run` takes the plain courses."""
+    ends: list
+    middle: list
+    min_run: int = 3
 
 
 @dataclass
@@ -190,15 +224,21 @@ class Face:
     courses: list
     accent: Accent = None
     floor: int = 3
+    panel: Panel = None
 
-    def lay(self, w, x, z, h, inward, along=None, pos=None, air=0, accents=True, backs=None, bottom=None):
+    def lay(self, w, x, z, h, inward, along=None, pos=None, air=0, accents=True, backs=None, bottom=None, stack=None,
+            end=None, rng=None):
         """Lay the courses at (x, z). A sunk course's back lands in the inward column; `backs`, when given, collects
         each as (x, y, z, block) so a body laid there afterwards can be laid under it again. With `bottom` the
-        courses stop above it instead of refusing a face that reaches under the floor."""
+        courses stop above it instead of refusing a face that reaches under the floor. `stack` lays those courses
+        instead of the face's own, `end` is the side a Toward course rises to and `rng` draws a Mix."""
         if bottom is None and h - len(self.courses) + 1 < self.floor:
             raise ValueError(f"a face at {h} reaches under y {self.floor}: raise the floor")
         a = self.accent
-        stack = self.courses
+        if stack is None:
+            stack = self.courses
+        elif a:
+            a = None
         if accents and a and along is not None and along % a.every == a.phase and air >= a.min_air:
             stack = a.frame if pos in (0, a.module - 1) else a.inner(pos) if callable(a.inner) else a.inner
         ix, iz = DIRS[inward]
@@ -207,18 +247,17 @@ class Face:
                 break
             if s is None:                                    # a course left as the ground laid it
                 continue
-            if isinstance(s, Jut):
-                w.set(x, h - i, z, *spec(s.course, inward))
-                if w.id(x - ix, h - i, z - iz) == B.AIR:
-                    w.set(x - ix, h - i, z - iz, *spec(s.out, inward))
-            elif isinstance(s, Sunk):
-                w.set(x, h - i, z, B.AIR)
-                back = spec(s.back, inward)
-                w.set(x + ix, h - i, z + iz, *back)
-                if backs is not None:
-                    backs.append((x + ix, h - i, z + iz, back))
+            if isinstance(s, Course):
+                w.set(x, h - i, z, *spec(s.block, inward, end, rng))
+                if s.back is not None:
+                    back = spec(s.back, inward, end, rng)
+                    w.set(x + ix, h - i, z + iz, *back)
+                    if backs is not None:
+                        backs.append((x + ix, h - i, z + iz, back))
+                if s.out is not None and w.id(x - ix, h - i, z - iz) == B.AIR:
+                    w.set(x - ix, h - i, z - iz, *spec(s.out, inward, end, rng))
             else:
-                w.set(x, h - i, z, *spec(s, inward))
+                w.set(x, h - i, z, *spec(s, inward, end, rng))
 
     def open(self, ground, x, z, side, pos, h):
         """Whether the whole bay a face column stands in, with its margin, has air enough before it."""
@@ -257,43 +296,76 @@ class Relief:
         return self.tops.get((x, z), -1)
 
 
-def dress(w, tops, face, min_drop=2, below=None, foot=None, where=None):
+def dress(w, tops, face, min_drop=2, below=None, foot=None, where=None, rng=None):
     """Lay `face` on every column of `tops` ({(x, z): h}) standing `min_drop` or more over a neighbour or over the
-    void, toward its deepest drop, its courses stopping at the column's lowest solid block. Under the courses
-    below(x, y, z) gives each block down to that bottom, None to keep it; `foot` (block, rows) is the bottom's
-    rows. where(x, z) limits the columns. A sunk course's back is laid after every face, except into a face.
-    Returns {(x, z): side} for the columns dressed."""
+    void, toward its deepest drop, its courses stopping at the column's lowest solid block. A face with a `panel`
+    lays every straight run at one height as one panel. Under the courses below(x, y, z) gives each block down to
+    that bottom, None to keep it; `foot` (block, rows) is the bottom's rows. where(x, z) limits the columns; `rng`
+    draws a Mix. A course's back is laid after every face, except into a face. Returns {(x, z): side}."""
     ground = Relief(tops)
-    dressed, backs, bays = {}, [], {}
+    faces = {}
     for (x, z), h in sorted(tops.items()):
         if where is not None and not where(x, z):
             continue
         drops = [(h - tops[(x + dx, z + dz)] if (x + dx, z + dz) in tops else h + 1, side)
                  for side, (dx, dz) in DIRS.items()]
         drop, side = max(drops, key=lambda d: d[0])
-        if drop < min_drop:
-            continue
+        if drop >= min_drop:
+            faces[(x, z)] = (side, drop, h)
+    place = _runs(faces) if face.panel else {}
+    backs, bays = [], {}
+    for (x, z), (side, drop, h) in faces.items():
         bottom = h
         while bottom > 0 and w.id(x, bottom - 1, z) != B.AIR:
             bottom -= 1
-        along, pos = face.bay(x, z, side)
-        if along is not None and face.accent:
-            key = (side, along, x if side in ("e", "w") else z, h)
-            if key not in bays:
-                bays[key] = face.open(ground, x, z, side, pos, h)
-            if not bays[key]:
-                along = None
-        face.lay(w, x, z, h, OPP[side], along, pos, air=drop, backs=backs, bottom=bottom)
+        stack, end, along, pos = None, None, None, None
+        if (x, z) in place:
+            d, end, n = place[(x, z)]
+            if n >= face.panel.min_run:
+                stack = face.panel.ends[d] if d < len(face.panel.ends) else face.panel.middle
+        else:
+            along, pos = face.bay(x, z, side)
+            if along is not None and face.accent:
+                key = (side, along, x if side in ("e", "w") else z, h)
+                if key not in bays:
+                    bays[key] = face.open(ground, x, z, side, pos, h)
+                if not bays[key]:
+                    along = None
+        face.lay(w, x, z, h, OPP[side], along, pos, air=drop, backs=backs, bottom=bottom, stack=stack, end=end,
+                 rng=rng)
         rows = foot[1] if foot else 0
-        for y in range(bottom, h - len(face.courses) + 1):
+        for y in range(bottom, h - len(stack or face.courses) + 1):
             b = foot[0] if y < bottom + rows else below(x, y, z) if below else None
             if b is not None:
                 w.set(x, y, z, *b)
-        dressed[(x, z)] = side
     for x, y, z, back in backs:
-        if (x, z) not in dressed:
+        if (x, z) not in faces:
             w.set(x, y, z, *back)
-    return dressed
+    return {c: f[0] for c, f in faces.items()}
+
+
+def _runs(faces):
+    """Every face column's place in its straight run (same side, same line, same height, unbroken): {(x, z): (blocks
+    to the nearer end, the side that end lies to, the run's length)}."""
+    lines = {}
+    for (x, z), (side, _, h) in faces.items():
+        across = side in ("e", "w")
+        lines.setdefault((side, x if across else z, h), []).append(z if across else x)
+    out = {}
+    for (side, at, _), cs in lines.items():
+        cs.sort()
+        start = 0
+        for j in range(1, len(cs) + 1):
+            if j == len(cs) or cs[j] != cs[j - 1] + 1:
+                run = cs[start:j]
+                n = len(run)
+                for k, c in enumerate(run):
+                    lo = k <= n - 1 - k
+                    end = ("n" if lo else "s") if side in ("e", "w") else ("w" if lo else "e")
+                    key = (at, c) if side in ("e", "w") else (c, at)
+                    out[key] = (min(k, n - 1 - k), end, n)
+                start = j
+    return out
 
 
 def lattice(period, a, b):
