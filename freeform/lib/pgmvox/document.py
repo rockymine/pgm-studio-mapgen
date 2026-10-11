@@ -16,9 +16,11 @@ the areas of one layer melt into each other, 0 the plain maximum. `melt` is the 
 a surface of its own (a crater, a level top) rounds into the ground. `soft` is the outer share of each area over
 which the change eases to nothing.
 
-**The stages run in a fixed order:** `fields` (named noise), `ground` (heights), `paint` (the top, first layer
-that applies wins), `lay`, `water`, `build` (paths' surfaces and steps, walls, hedges, fences), `dress` (trees, kept
-`clear` blocks off everything built). A layer that names another (`near`) reads the area or line that layer was given.
+**The stages run in the fixed order of `STAGES`:** the made blueprint, `fields` (named fields), `ground` (heights),
+`paint` (the top, first layer that applies wins), `lay`, `water`, `faces` (courses on every drop of the grown
+ground), `made` (the grammar), `volume`, `structures`, `build` (paths' surfaces and steps, walls, hedges, fences),
+`dress` (trees, kept `clear` blocks off everything built) and `symmetry`. A layer that names another (`near`) reads
+the area or line that layer was given.
 """
 from dataclasses import dataclass, field as _field
 
@@ -35,7 +37,8 @@ from .blocks import B
 from .build import line_wall
 from .world import World
 
-STAGES = ("ground", "paint", "lay", "water", "build", "dress")
+STAGES = ("made blueprint", "fields", "ground", "paint", "lay", "water", "faces", "made", "volume", "structures", "build",
+          "dress", "symmetry")
 
 
 @dataclass
@@ -430,6 +433,63 @@ def _paint_spec(spec):
     return lambda u, ly, lz, s: cap if ly > s[1] / 2 - 1 else base(u, ly, lz, s)
 
 
+def course(spec):
+    """A face course from data: a block, null to keep the ground's, {"sunk": course}, {"jut": [course, out]}, or
+    {"stair": NAME, "upside_down": true, "toward": "in" | "out"}, a stair turned by the face's inward side."""
+    from . import grammar as G
+    from .orient import stair
+    if spec is None:
+        return None
+    if isinstance(spec, dict) and "sunk" in spec:
+        return G.Sunk(course(spec["sunk"]))
+    if isinstance(spec, dict) and "jut" in spec:
+        return G.Jut(course(spec["jut"][0]), course(spec["jut"][1]))
+    if isinstance(spec, dict) and "stair" in spec:
+        bid, down, out = getattr(B, spec["stair"]), spec.get("upside_down", False), spec.get("toward") == "out"
+        return lambda inward: (bid, stair(G.OPP[inward] if out else inward, upside_down=down))
+    return block(spec)
+
+
+def face(spec):
+    """A grammar Face from a faces layer: its `courses`, and an `accent` bay whose `inner` is a stack, or
+    {"per_pos": [stack, ...]} one per inner column."""
+    from . import grammar as G
+    a = spec.get("accent")
+    accent = None
+    if a:
+        inner = a["inner"]
+        if isinstance(inner, dict):
+            stacks = [[course(c) for c in st] for st in inner["per_pos"]]
+            inner_ = lambda pos: stacks[pos - 1]                                        # noqa: E731
+        else:
+            inner_ = [course(c) for c in inner]
+        accent = G.Accent(a["module"], frame=[course(c) for c in a["frame"]], inner=inner_, every=a.get("every", 2),
+                          phase=a.get("phase", 0), min_air=a.get("min_air", 5), align="grid", margin=a.get("margin", 0))
+    return G.Face([course(c) for c in spec.get("courses", [])], accent, floor=0)
+
+
+def below(spec):
+    """What a face lays under its courses, from data: {"block"}, {"lattice": {"period", "a", "b"}} or
+    {"bands": {"blocks", "width", "y0"}}, any of them with "else" for where it answers nothing; null keeps the
+    ground's beds."""
+    from . import grammar as G
+    if not spec:
+        return None
+    if "lattice" in spec:
+        a = spec["lattice"]
+        fn = G.lattice(a.get("period", 8), block(a["a"]), block(a["b"]))
+    elif "bands" in spec:
+        a = spec["bands"]
+        fn = G.bands([block(b) for b in a["blocks"]], a.get("width", 1), a.get("y0", 0))
+    else:
+        one = block(spec["block"])
+        fn = lambda x, y, z: one                                                         # noqa: E731
+    if "else" not in spec:
+        return fn
+    other = block(spec["else"])
+    return lambda x, y, z: fn(x, y, z) or other
+
+
 BLOCK_KEYS = ("block", "a", "b", "recess", "light", "course")
 
 
@@ -534,6 +594,19 @@ def build(doc):
         bed = [_paint_layer(P, X, Z, fields, lines, Hi) for P in doc.get("water", {}).get("bed", [])] or (B.GRAVEL, 0)
         T.fill_water(w, Hi, np.where(land, water, 0), bed=bed, mask=land)
         out.steps.append(Step("water", "water", "fill_water", (water > 0) & land, Hi.copy()))
+    tops = {(int(X[i, k]), int(Z[i, k])): int(Hi[i, k]) for i, k in np.argwhere(land)}
+    for L in doc.get("faces", []):
+        from . import grammar as G
+        where = None
+        if "area" in L:
+            e, _ = area_distance(L["area"], X, Z, fields, lines)
+            where = lambda x, z, e=e: e[x - x0, z - z0] < 1                             # noqa: E731
+        got = G.dress(w, tops, face(L), min_drop=L.get("min_drop", 2), below=below(L.get("below")),
+                      foot=(block(L["foot"][0]), L["foot"][1]) if "foot" in L else None, where=where)
+        laid = np.zeros(X.shape, bool)
+        for x, z in got:
+            laid[x - x0, z - z0] = True
+        out.steps.append(Step(L["id"], "faces", "face", laid, Hi.copy(), L.get("note", "")))
     rng = np.random.default_rng(bd.get("seed", 0))
     built_on = np.zeros(X.shape, bool)
     if "made" in doc:

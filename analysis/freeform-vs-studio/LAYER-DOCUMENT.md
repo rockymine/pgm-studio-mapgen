@@ -20,7 +20,7 @@ build.
 
 ## The stages
 
-**A document builds in twelve stages, always in this order.** A layer belongs to one stage, and within a stage
+**A document builds in thirteen stages, always in this order.** A layer belongs to one stage, and within a stage
 the layers run as listed.
 
 | Stage | Key | What it does |
@@ -31,6 +31,7 @@ the layers run as listed.
 | paint | `paint` | the top block of each grown column: the first paint layer that applies wins |
 | lay | `lay` | grown columns laid to the heights, rock in beds, soil by slope, the paint on top, the underside |
 | water | `water` | the water each river holds, its bed painted by its own stack |
+| faces | `faces` | courses on every drop of the grown ground: a grammar's face, what lies under it, its foot |
 | made | `made` | the made cells through the grammar, faces as deep as the drop to the grown beside them; its houses |
 | volume | `volume` | bodies set into the ground: a box turned and tilted, sunk, painted in its own frame, hollowed |
 | structures | `structures` | masses with patterned faces, floors laid as fields |
@@ -166,6 +167,31 @@ meadow is a face as deep as the drop and an edge level with it is a seam. The gr
 
 with `rim` and `near_made` the fields `{"spread": ["made_top", 8]}` and `{"near": "made"}`. A house stacks whole
 cells by storey: `{"layers": [[[cx, cz], ...], ...], "floor": 22, "dye": 14, "door": [[cx, cz], "s"]}`.
+
+## Faces
+
+**A faces layer dresses the walls of the grown ground and leaves its floors to the paint.** Every column standing
+`min_drop` (2) or more over a neighbour or over the void gets the layer's `courses`, top down from its rim, toward its
+deepest drop; an `area` limits the columns.
+
+**A course is data, and so is the bay.** A course is a block, `null` (keep what the ground laid, so the paint stays
+on the rim), `{"sunk": course}` (air at the face, the course a block in), `{"jut": [course, out]}` (`out` a block outside,
+over air only) or `{"stair": NAME, "upside_down": true}` (turned by the face). `accent` is the grammar's bay:
+`module`, `every`, `min_air`, `frame` and `inner`, a stack or `{"per_pos": [...]}` one stack per inner column.
+
+**Under the courses the layer lays `below` down to the column's bottom, and `foot` rows of bedrock under that.**
+`below` is a `block`, a `lattice` (`period`, `a`, `b`: Claywork's diagonals) or `bands` (`blocks`, `width`, `y0`: courses
+by height, whatever the rim), each with an `else`; left out, the beds the lay stage put there stay. An Outback-like
+profile is one such layer:
+
+```json
+{"id": "profil", "courses": [null, ["PLANKS", 1], "DIRT", "DIRT", {"stair": "SPRUCE_STAIRS", "upside_down": true},
+  {"jut": [["STAINED_CLAY", 14], ["WOOD_SLAB", 9]]}, ["STAINED_CLAY", 14], ["STAINED_CLAY", 14], ["PLANKS", 1]],
+ "below": {"block": "STONE"}, "foot": ["BEDROCK", 3]}
+```
+
+`freeform/lib/examples/layers/wandbild/` is one board in five dressings: none, that profile, Claywork's face with
+its panels and lattice, bands by height, and Brittlebush's edge.
 
 ## Volume, structures and symmetry
 

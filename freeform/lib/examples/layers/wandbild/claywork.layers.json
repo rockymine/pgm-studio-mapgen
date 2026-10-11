@@ -1,0 +1,601 @@
+{
+ "document": "layers",
+ "version": "draft-3",
+ "board": {
+  "name": "Wandbild: Grammatik wie Claywork",
+  "x": [
+   -43,
+   42
+  ],
+  "z": [
+   -33,
+   32
+  ],
+  "floor": 0,
+  "height": 64,
+  "seed": 5,
+  "text": "Ziegelkrone, Steinlagen, alle acht Bl\u00f6cke ein versenktes Paneel mit Rautenmuster in Teamfarbe; darunter das Gitter aus Obsidian und schwarzer Wolle im Grundgestein."
+ },
+ "fields": {
+  "small": {
+   "fbm": {
+    "cell": 12,
+    "octaves": 3,
+    "seed": 31
+   }
+  },
+  "patch": {
+   "fbm": {
+    "cell": 5,
+    "octaves": 2,
+    "seed": 32
+   }
+  }
+ },
+ "ground": [
+  {
+   "id": "umriss",
+   "op": "outline",
+   "box": [
+    -40,
+    -30,
+    39,
+    29
+   ],
+   "insets": {
+    "west": 0,
+    "east": 0,
+    "north": 0,
+    "south": 0
+   },
+   "note": "a plateau over the void, its sides straight so a bay has room"
+  },
+  {
+   "id": "grund",
+   "op": "base",
+   "height": 24,
+   "terms": [
+    {
+     "noise": {
+      "field": "small",
+      "rise": 0.6
+     }
+    }
+   ],
+   "note": "24, barely rolling"
+  },
+  {
+   "id": "oberstufe",
+   "op": "level",
+   "mode": "set",
+   "top": 31,
+   "inner": 1.0,
+   "outer": 1.0,
+   "areas": [
+    {
+     "polygon": [
+      [
+       -34,
+       -26
+      ],
+      [
+       6,
+       -26
+      ],
+      [
+       12,
+       -14
+      ],
+      [
+       -2,
+       -6
+      ],
+      [
+       -34,
+       -8
+      ]
+     ]
+    }
+   ],
+   "note": "an upper terrace in the north-west, seven over the meadow: a cliff"
+  },
+  {
+   "id": "senke",
+   "op": "level",
+   "mode": "set",
+   "top": 19,
+   "inner": 1.0,
+   "outer": 1.0,
+   "areas": [
+    {
+     "rect": [
+      10,
+      6,
+      34,
+      26
+     ]
+    }
+   ],
+   "note": "a sunken court in the south-east, five under it"
+  },
+  {
+   "id": "ganz",
+   "op": "round",
+   "note": "whole blocks"
+  }
+ ],
+ "paint": [
+  {
+   "block": "GRAVEL",
+   "area": {
+    "rect": [
+     10,
+     6,
+     34,
+     26
+    ]
+   },
+   "noise": {
+    "field": "patch",
+    "lo": -0.15
+   }
+  },
+  {
+   "block": [
+    "DIRT",
+    2
+   ],
+   "noise": {
+    "field": "patch",
+    "lo": 0.55
+   }
+  },
+  {
+   "block": "COBBLE",
+   "slope": [
+    55,
+    null
+   ]
+  }
+ ],
+ "lay": {},
+ "faces": [
+  {
+   "id": "kante",
+   "min_drop": 2,
+   "courses": [
+    [
+     "DSLAB",
+     0
+    ],
+    "STONE",
+    "STONE",
+    "STONE",
+    "STONE",
+    "STONE",
+    "STONE",
+    "STONE",
+    "STONE",
+    [
+     "STAINED_CLAY",
+     14
+    ],
+    [
+     "STONE",
+     6
+    ],
+    [
+     "STONE",
+     6
+    ]
+   ],
+   "accent": {
+    "module": 8,
+    "every": 1,
+    "min_air": 9,
+    "frame": [
+     [
+      "STONEBRICK",
+      0
+     ],
+     [
+      "STONEBRICK",
+      0
+     ],
+     [
+      "STONEBRICK",
+      0
+     ],
+     [
+      "STONEBRICK",
+      0
+     ],
+     [
+      "STONEBRICK",
+      0
+     ],
+     [
+      "STONEBRICK",
+      0
+     ],
+     [
+      "STONEBRICK",
+      0
+     ],
+     [
+      "STONEBRICK",
+      0
+     ],
+     [
+      "STONEBRICK",
+      0
+     ],
+     [
+      "STONEBRICK",
+      0
+     ],
+     [
+      "STONEBRICK",
+      0
+     ],
+     [
+      "STONEBRICK",
+      0
+     ]
+    ],
+    "inner": {
+     "per_pos": [
+      [
+       [
+        "DSLAB",
+        0
+       ],
+       [
+        "STONEBRICK",
+        0
+       ],
+       [
+        "STONEBRICK",
+        0
+       ],
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       [
+        "STONEBRICK",
+        0
+       ],
+       [
+        "STONE",
+        6
+       ],
+       [
+        "STONE",
+        6
+       ]
+      ],
+      [
+       [
+        "DSLAB",
+        0
+       ],
+       [
+        "STONEBRICK",
+        0
+       ],
+       [
+        "STONEBRICK",
+        0
+       ],
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       {
+        "sunk": [
+         "QUARTZ",
+         1
+        ]
+       },
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       [
+        "STONEBRICK",
+        0
+       ],
+       [
+        "STONE",
+        6
+       ],
+       [
+        "STONE",
+        6
+       ]
+      ],
+      [
+       [
+        "DSLAB",
+        0
+       ],
+       [
+        "STONEBRICK",
+        0
+       ],
+       [
+        "STONEBRICK",
+        0
+       ],
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       {
+        "sunk": [
+         "QUARTZ",
+         1
+        ]
+       },
+       {
+        "sunk": [
+         "QUARTZ",
+         1
+        ]
+       },
+       {
+        "sunk": [
+         "QUARTZ",
+         1
+        ]
+       },
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       [
+        "STONEBRICK",
+        0
+       ],
+       [
+        "STONE",
+        6
+       ],
+       [
+        "STONE",
+        6
+       ]
+      ],
+      [
+       [
+        "DSLAB",
+        0
+       ],
+       [
+        "STONEBRICK",
+        0
+       ],
+       [
+        "STONEBRICK",
+        0
+       ],
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       {
+        "sunk": [
+         "QUARTZ",
+         1
+        ]
+       },
+       {
+        "sunk": [
+         "QUARTZ",
+         1
+        ]
+       },
+       {
+        "sunk": [
+         "QUARTZ",
+         1
+        ]
+       },
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       [
+        "STONEBRICK",
+        0
+       ],
+       [
+        "STONE",
+        6
+       ],
+       [
+        "STONE",
+        6
+       ]
+      ],
+      [
+       [
+        "DSLAB",
+        0
+       ],
+       [
+        "STONEBRICK",
+        0
+       ],
+       [
+        "STONEBRICK",
+        0
+       ],
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       {
+        "sunk": [
+         "QUARTZ",
+         1
+        ]
+       },
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       [
+        "STONEBRICK",
+        0
+       ],
+       [
+        "STONE",
+        6
+       ],
+       [
+        "STONE",
+        6
+       ]
+      ],
+      [
+       [
+        "DSLAB",
+        0
+       ],
+       [
+        "STONEBRICK",
+        0
+       ],
+       [
+        "STONEBRICK",
+        0
+       ],
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       {
+        "sunk": [
+         "STAINED_CLAY",
+         14
+        ]
+       },
+       [
+        "STONEBRICK",
+        0
+       ],
+       [
+        "STONE",
+        6
+       ],
+       [
+        "STONE",
+        6
+       ]
+      ]
+     ]
+    }
+   },
+   "below": {
+    "lattice": {
+     "period": 8,
+     "a": "OBSIDIAN",
+     "b": [
+      "WOOL",
+      15
+     ]
+    },
+    "else": "BEDROCK"
+   },
+   "note": "Claywork's face on ground that has no sections"
+  }
+ ]
+}

@@ -27,7 +27,7 @@ the one copy. New boards import it; the twenty finished boards are left as they 
 | `facade` | face patterns (`band`, `courses`, `flutes`, `panels`, `slits`, `checker`, `windows`, `glyph_row`, `word`) set back or flush on an `extrude`d mass, `coffer`, `top_course`; floor fields (`border`, `medallion`, `corners`, `diamonds`, `kilim_steps`, `star`, `cross`, `tiles`) composed by `first_of` and laid by `carpet` |
 | `terrain` | `slope_deg` as the studio reads it; `lay` (ground painted by slope, a snow line; `Paint` layers that choose the top by slope and place, first match first; a `bottom` per column); `fill_water` (a bed and water up to each column's level); `Strata`, `bed_offset` and `beds` (rock beds that tilt and fold); `mountain_ring`; `underside` and `root_depth` (cones, flutes, spires); `slab` (floating floors at their own heights: rock, root, a bedrock course, a weathered rim); `waterfall` (water falling from each row's lip into the void, into air only); `island_bottom` (where the rock ends: a taper from the void, sheer beside a rift, for `lay(bottom=)`); `cloud_deck` |
 | `route` | `find` (a least-cost route over the ground, held to a grade, switchbacks and all), `network` (places joined by roads that share their trunk), `simplify`, `smooth`, `footprint`, `pave` (surface and bridges), `steps` (a stair on every one-block rise), `halfstep_levels` and `halfsteps` (a steep way in blocks and slabs, no step over half a block) |
-| `grammar` | the rules of a structural board, apart from its blocks: `Section` (boxes at one height), `split` and `tile` (a box cut into sections), `Ground` (every column's top, section and depth), `Face` and `Accent` (courses by drop, a bay every so many), `Style` (body, faces, seam, fills, motifs), `lay` |
+| `grammar` | the rules of a structural board, apart from its blocks: `Section` (boxes at one height), `split` and `tile` (a box cut into sections), `Ground` (every column's top, section and depth), `Face` and `Accent` (courses by drop, a bay every so many), `Sunk` and `Jut` (a course set in or out), `Style` (body, faces, seam, fills, motifs), `lay`; `dress` (a face on any heights), `lattice` and `bands` (what lies under the courses) |
 | `clay` | the Claywork style for the grammar: stone and clay, the team's colour inlaid; faces with a sunk panel and its quartz diamond in a bay centred on each section; fills checker, squares, paving, inlay, plate and flight; the arrow motif |
 | `brittle` | the Brittlebush style from a blueprint of five-block cells: flat, keep, stair, stacked, gap and water cells; the five-course cap with its birch panels, a one-block outline, sand fields and double-ringed beds; hollows and tunnels under a deck with their dark-oak pillars; grown ground beside the made (`build(grown=)`); `house`, storeys of whole cells; `tower`, `heart` |
 | `studioplan` | a plan drawn in the studio's planner (version 2) read as a `brittle` blueprint: pieces, stairs, decks, water and bare zones, placements |
@@ -183,6 +183,19 @@ so an accent is never buried, cut by a corner or squeezed into a short run.
 inset with `block` behind it. An accent's middle may change with its place in the bay, and `align="section"`
 centres whole bays on each section's side instead of counting them from the world's origin. A section's `tops` give
 it a stepped top, so a flight of steps is a section too.
+
+**A face dresses any ground, not only sections.** `dress(w, tops, face)` lays a face on every column of a heights
+map that stands two or more over a neighbour or over the void, toward its deepest drop, its courses stopping at the
+column's lowest block.
+
+**A dressed face may keep, push out and fill.** A course `None` keeps the ground's own block, so the paint stays on
+the rim. `Jut(course, out)` sets `out` a block outside the face, over air only, for a trim or a hanging stair. Under the courses,
+`below(x, y, z)` lays each block down to the bottom: `lattice` is Claywork's two diagonals, `bands` courses by height
+whatever the rim, and `foot` puts rows of bedrock at the bottom.
+
+**A sunk course's back outlasts the body laid after it.** `lay` collects every back as its face is laid and lays it
+again once the section's bodies are down, unless the column inside is a face itself, so a panel comes out the same on
+a face of any side.
 
 **A style's fills are recipes that may decline.** `Style.choose(section, lot)` names the fills to try in order; a
 fill that needs a rectangle, or room, declines and the next is tried. A section may name its own fill, and carry
@@ -473,14 +486,19 @@ because the plan held the walls and not the roof. It was moved two blocks in.
 ## The layer document
 
 **A board can be stated as data instead of code.** `document.build` reads a JSON document of ordered layers and
-builds it in fixed stages: named fields, the made blueprint, ground, paint, lay, water, the made ground through the
-grammar, volume, structures, build, dress and symmetry. Every layer is kept as a `Step` with the columns it
+builds it in fixed stages: the made blueprint, named fields, ground, paint, lay, water, faces, the made ground
+through the grammar, volume, structures, build, dress and symmetry. Every layer is kept as a `Step` with the columns it
 changed, so a stepper over a board needs no instrumenting.
 
 **A layer is one operation, its numbers and the areas it works in.** An area is a circle, an ellipse, a polygon, a
 rectangle, a line with a width or the whole board, and `rough` bends any of them. The operation reads one distance
 from it, 0 at the centre or deepest point and 1 on the rim, so any area carries any operation. Any number may be
 an expression over the grid, the heights so far and the named fields, and the landforms are expressions too.
+
+**A faces layer dresses every drop of the grown ground.** It takes the grammar's courses, an accent bay, what lies
+under the courses and a foot, so the walls are a grammar's while the floors stay the paint stack's.
+`examples/layers/wandbild/` is one board in five such dressings: none, an Outback-like profile, Claywork's face,
+bands by height and Brittlebush's edge.
 
 **Three documents show what it holds.** `examples/layers/island.layers.json` is a grown island with a river, paths,
 a hedge and walls. `ports/riftwater/riftwater.ground.layers.json` is the Riftwater port's ground in 38 layers, held

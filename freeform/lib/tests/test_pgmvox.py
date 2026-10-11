@@ -829,6 +829,26 @@ class LayerDocument(unittest.TestCase):
         self.assertTrue((melted >= plain - 1e-9).all())
         self.assertGreater(float((melted - plain).max()), 1.0)       # the saddle between them
 
+    def test_one_board_takes_its_walls_from_a_faces_layer(self):
+        from pgmvox import document
+        folder = os.path.join(os.path.dirname(HERE), "examples", "layers", "wandbild")
+        built = {}
+        for name in ("kahl", "outback", "claywork", "schichten", "brittle"):
+            with open(os.path.join(folder, name + ".layers.json")) as f:
+                built[name] = document.build(json.load(f))
+        bare = built.pop("kahl")
+        for name, b in built.items():
+            self.assertTrue((b.H == bare.H).all(), name)                     # the ground is the same board
+            top = np.take_along_axis(b.world.ids, b.H[:, None, :].clip(0), 1)[:, 0, :]
+            dressed = next(s for s in b.steps if s.stage == "faces").changed
+            inner = b.land & ~ndimage.binary_dilation(dressed, iterations=2)
+            bare_top = np.take_along_axis(bare.world.ids, bare.H[:, None, :].clip(0), 1)[:, 0, :]
+            self.assertTrue((top[inner] == bare_top[inner]).all(), name)   # and the paint away from every edge
+        clay = built["claywork"].world
+        self.assertEqual(clay.id(-20, 19, 29), B.AIR)                                   # a sunk panel at the rim,
+        self.assertIn(clay.id(-20, 19, 28), (B.STAINED_CLAY, B.QUARTZ))                # its back a block in
+        self.assertEqual(built["outback"].world.get(-20, 19, 30), (B.WOOD_SLAB, 9))     # the trim, out a block
+
     def test_made_and_grown_on_one_board(self):
         from pgmvox import document
         with open(os.path.join(os.path.dirname(HERE), "examples", "layers", "saumland.layers.json")) as f:
@@ -1759,6 +1779,27 @@ class Grammar(unittest.TestCase):
             self.assertEqual(back(u, 1), back(u, 7))             # the west's against the east's
             self.assertEqual(back(1, u), back(7, u))
         self.assertIn((B.QUARTZ, 1), back(4, 1))
+
+    def test_a_face_dresses_ground_that_has_no_sections(self):
+        from pgmvox import grammar as G
+        from pgmvox.orient import stair
+        tops = {(x, z): (10 if x < 4 else 6) for x in range(8) for z in range(8)}       # a step of four, void round
+        w = World(-3, -3, 14, 14, sy=16)
+        for (x, z), h in tops.items():
+            for y in range(1, h + 1):
+                w.set(x, y, z, B.STONE)
+        jut = G.Jut((B.STAINED_CLAY, 14), (B.WOOD_SLAB, 9))
+        face = G.Face([None, (B.PLANKS, 1), jut, lambda inward: (B.SPRUCE_STAIRS, stair(inward, upside_down=True)),
+                       jut])
+        got = G.dress(w, tops, face, below=G.lattice(4, (B.OBSIDIAN, 0), None), foot=((B.BEDROCK, 0), 1))
+        self.assertEqual(got[(3, 2)], "e")                                   # the step's edge faces its drop
+        self.assertNotIn((2, 2), got)
+        self.assertEqual((w.get(3, 10, 2), w.get(3, 9, 2)), ((B.STONE, 0), (B.PLANKS, 1)))   # null keeps the top
+        self.assertEqual((w.get(3, 8, 2), w.get(4, 8, 2)), ((B.STAINED_CLAY, 14), (B.WOOD_SLAB, 9)))  # out over air
+        self.assertEqual((w.get(3, 6, 2), w.get(4, 6, 2)), ((B.STAINED_CLAY, 14), (B.STONE, 0)))  # not into ground
+        self.assertEqual(w.get(3, 7, 2), (B.SPRUCE_STAIRS, stair("w", upside_down=True)))   # turned by the face
+        self.assertEqual(w.id(0, 1, 2), B.BEDROCK)                           # the foot, at the column's bottom
+        self.assertEqual(w.id(0, 2, 2), B.OBSIDIAN)                          # (0 + 2 + 2) % 4: the lattice
 
     def test_made_ground_reads_the_grown_ground_beside_it(self):
         from pgmvox import brittle as BR

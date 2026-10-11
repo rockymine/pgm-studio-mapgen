@@ -29,6 +29,7 @@ PAIRS = {"front": (CLAY, STONE), "apron": (CLAY, STONE), "hub": (STONE, CLAY), "
          "kiln": (SMOOTH, CLAY), "under": (BRICK, (B.STONEBRICK, 2)), "stone": (ANDESITE, ANDESITE)}
 PANEL = 6                                        # a bay: a pilaster, a panel six wide, a pilaster
 DIAMOND = {(a, b) for a in range(PANEL) for b in range(5) if abs(a - (PANEL - 1) / 2) + abs(b - 2) <= 1.5}
+LATTICE = G.lattice(8, (B.OBSIDIAN, 0), (B.WOOL, 15))   # under the team band on a faced column
 
 
 def _key(lot):
@@ -93,11 +94,9 @@ def style(dye=14, rng=None, faced=None):
         if faced and faced(x, z) and stripe >= 1:
             w.set(x, stripe, z, *team)                               # the team's band, flush with the face
             for y in range(1, stripe):                               # the lattice under it
-                u = x + z
-                if (u + y) % 8 == 0:
-                    w.set(x, y, z, B.OBSIDIAN)
-                elif (u - y) % 8 == 0:
-                    w.set(x, y, z, B.WOOL, 15)
+                b = LATTICE(x, y, z)
+                if b:
+                    w.set(x, y, z, *b)
         w.set(x, 0, z, 36)
 
     def checker(w, lot, rng):
