@@ -2,11 +2,12 @@
 kit; building only over the board and its zones.
 """
 import plan as P
-from pgmvox.play.rules import Build, Item, Kit, Map
+from pgmvox.play.rules import Build, Item, Kit, Map, terrain_of
 
 O = P.objectives()
 
 M = Map("Sandreach", "1.1.0", "Capture the other team's wool and destroy its emerald!", ["ctw", "dtm"],
+        terrain=terrain_of(__file__),
         authors=["rockymine", "Claude (freeform generator, pgmvox)"],
         objectives=O,
         kit=Kit(

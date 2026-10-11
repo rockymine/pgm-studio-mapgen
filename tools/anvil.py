@@ -5,6 +5,7 @@ alone, which is what lets every world tool here run from a checkout with nothing
     world = World("maps/<mode>/<name>/region")
     world.get(x, y, z)          -> (id, data)
     world.blocks()              -> every non-air block as (x, y, z, id, data)
+    world.ids()                 -> every block id it holds
     world.columns()             -> {(x, z): [(y, id, data), ...]} sorted by y, non-air only, cached
     world.bounds()              -> (minx, miny, minz, maxx, maxy, maxz) or None
     world.biome(x, z)           -> the biome id, or None
@@ -234,6 +235,18 @@ class World:
                         data_val = (data_byte >> 4) if (index & 1) else (data_byte & 0x0F)
                     yield (base_x | (index & 15), base_y | (index >> 8), base_z | ((index >> 4) & 15),
                            block_id, data_val)
+
+    def ids(self):
+        """Every block id the world holds, air left out."""
+        sections = [sec for level in self._chunks.values() for sec in level.get("Sections") or ()]
+        if any(sec.get("Add") is not None for sec in sections):          # ids over 255: decode them whole
+            return {b[3] for b in self.blocks()}
+        found = set()
+        for sec in sections:
+            if sec.get("Blocks") is not None:
+                found |= set(sec["Blocks"])
+        found.discard(0)
+        return found
 
     def columns(self):
         """`{(x, z): [(y, id, data), ...]}`, each column sorted by y and holding non-air only. Built once."""

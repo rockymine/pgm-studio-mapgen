@@ -628,13 +628,18 @@ class Capture(unittest.TestCase):
         from pgmvox.play.rules import Item, Kit, KillHeight, Map
         M = Map("T", "1", "t", kit=Kit(Item("iron sword", 0, unbreakable=True), Item("wood", 4, 64),
                                        Item("stained clay", 5, 32, team_color=True), Item("cooked beef", 8, 16),
-                                       Item("leather boots", team_color=True, wear="boots")), kill=KillHeight(40))
+                                       Item("leather boots", team_color=True, wear="boots")), kill=KillHeight(40),
+                terrain={1, 18, 13, 31})
         x = xml.dom.minidom.parseString(M.xml())
         text = lambda tag: [e.firstChild.data for e in x.getElementsByTagName(tag)[0].childNodes      # noqa: E731
                             if e.nodeType == e.ELEMENT_NODE]
-        self.assertEqual(len(x.getElementsByTagName("kit")), 2)                       # the spawn kit and the fall
+        self.assertEqual(len(x.getElementsByTagName("kit")), 1)                       # the fall is no kit
+        portal = x.getElementsByTagName("portal")[0]                                  # a fall goes into the void
+        self.assertEqual((portal.getAttribute("y"), portal.getElementsByTagName("below")[0].getAttribute("y")),
+                         ("@-64", "40"))
         self.assertEqual(text("itemkeep"), ["iron sword", "wood", "stained clay", "cooked beef"])
-        self.assertEqual(text("itemremove"), ["leather boots"])
+        self.assertEqual(text("itemremove"), ["leather boots", "flint", "gravel", "sapling", "apple", "seeds",
+                                              "long grass"])                          # the world's own drops
         self.assertEqual(text("toolrepair"), ["iron sword"])
         rewards = [(e.getAttribute("material"), e.getAttribute("amount"))
                    for e in x.getElementsByTagName("kill-reward")[0].getElementsByTagName("item")]
@@ -1372,6 +1377,19 @@ class WorldAndOutput(unittest.TestCase):
             p = os.path.join(d, "a.png")
             render.iso(w.ids, w.dat, w.x0, w.z0, p, 2)
             self.assertTrue(os.path.getsize(p) > 0)
+
+    def test_the_ground_is_marked_at_y0_and_a_hole_kept_void(self):
+        from pgmvox.play.rules import MARK, mark_ground
+        w = World(0, 0, 8, 8, sy=40)
+        w.ids[1:7, 25:30, 1:7] = B.STONE                     # an island floating clear of y 0
+        w.ids[0, 20:22, 0] = B.WATER                         # a fall off its edge
+        w.ids[3, 25:30, 3] = B.AIR                           # a hole through it, with the core over it
+        w.ids[3, 35, 3] = B.OBSIDIAN
+        hole = np.zeros((8, 8), bool)
+        hole[3, 3] = True
+        self.assertEqual(mark_ground(w, void=hole), 35)
+        self.assertEqual(w.ids[1, 0, 1], MARK)
+        self.assertEqual((w.ids[3, 0, 3], w.ids[0, 0, 0], w.ids[7, 0, 7]), (0, 0, 0))   # the hole, the fall, the sky
 
     def test_a_map_is_written_from_its_parts(self):
         from pgmvox.play.objectives import Box, Objectives

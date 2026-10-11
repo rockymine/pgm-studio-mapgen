@@ -1,17 +1,22 @@
 """Generate Hollow Mesa: the land, the underground, the buildings and the dressing on the red half, then turn
-it onto blue and write the volume for write_world.cs.
+it onto blue, mark the ground at y 0 for the void rule, and write the volume for write_world.cs.
 
     python3 gen.py <build-dir> [--stage terrain|under|all]
 """
 import argparse
+import os
+import sys
 import time
 
 import numpy as np
 
-import plan as P
-from mc import World, B
-from rotate import rotate_world
-import terrain
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "lib"))
+
+import plan as P  # noqa: E402
+from mc import World, B  # noqa: E402
+from pgmvox.play.rules import mark_ground  # noqa: E402
+from rotate import rotate_world  # noqa: E402
+import terrain  # noqa: E402
 
 
 def green_mask(L):
@@ -22,6 +27,19 @@ def green_mask(L):
         (x, z), r = p["at"], p["r"]
         g |= np.hypot(L.X - x, L.Z - z) < r + 4
     return g
+
+
+def throats(w):
+    """The columns of each Throat's hole and the core's well over it, open from y 1 to the cavern floor: they stay
+    void, so nobody can plug the hole a core leaks into."""
+    import underground
+    tx, tz, tr = P.THROAT
+    X = np.arange(w.x0, w.x0 + w.sx)[:, None]
+    Z = np.arange(w.z0, w.z0 + w.sz)[None, :]
+    near = np.zeros((w.sx, w.sz), bool)
+    for cx, cz in ((tx, tz), (-1 - tx, -1 - tz)):
+        near |= np.hypot(X - cx, Z - cz) <= tr + 2
+    return near & (w.ids[:, 1:underground.FLOOR + 1, :] == 0).all(axis=1)
 
 
 def main():
@@ -57,6 +75,7 @@ def main():
     sub = w.ids[sx0 - w.x0:sx1 - w.x0 + 1, 60:110, sz0 - w.z0:sz1 - w.z0 + 1]
     dsub = w.dat[sx0 - w.x0:sx1 - w.x0 + 1, 60:110, sz0 - w.z0:sz1 - w.z0 + 1]
     dsub[(sub == B.WOOL) & (dsub == 14)] = 11
+    print(f"ground marked under {mark_ground(w, void=throats(w))} columns")
     w.save(a.build, "Hollow Mesa", (0, 100, 0))
     np.save(f"{a.build}/heights_red.npy", L.H)
     print(f"saved {time.time() - t0:.1f}s")

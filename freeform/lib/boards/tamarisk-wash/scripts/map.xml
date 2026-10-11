@@ -26,9 +26,6 @@
             <leggings material="chainmail leggings" unbreakable="true"/>
             <boots material="leather boots" unbreakable="true" team-color="true"/>
         </kit>
-        <kit id="fall-kill" force="true">
-            <effect duration="1" amplifier="5">instant damage</effect>
-        </kit>
     </kits>
     <teams>
         <team id="red-team" color="red" max="16">Red</team>
@@ -94,8 +91,6 @@
         <cuboid min="-63,66,21" max="-62,68,22" id="red-sunstone-region"/>
         <cuboid min="62,66,21" max="63,68,22" id="blue-sunstone-region"/>
         <apply block-place="block-place-void-filter" block-break="block-break-void-filter" message="You may not edit the void!"/>
-        <below y="6" id="the-fall"/>
-        <apply kit="fall-kill" region="the-fall"/>
     </regions>
     <destroyables>
         <destroyable id="red-obelisk" name="Red Obelisk" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-obelisk-region"/>
@@ -104,6 +99,13 @@
         <destroyable id="blue-sunstone" name="Blue Sunstone" owner="blue-team" materials="lapis block" completion="100%" mode-changes="true" region="blue-sunstone-region"/>
     </destroyables>
     <maxbuildheight>104</maxbuildheight>
+    <portals>
+        <portal y="@-64" sound="false" observers="never">
+            <region>
+                <below y="6"/>
+            </region>
+        </portal>
+    </portals>
     <block-drops>
         <rule>
             <filter>
@@ -136,6 +138,15 @@
         <item>leather boots</item>
         <item>obsidian</item>
         <item>lapis block</item>
+        <item>flint</item>
+        <item>gravel</item>
+        <item>sapling</item>
+        <item>apple</item>
+        <item>seeds</item>
+        <item>long grass</item>
+        <item>cactus</item>
+        <item>sugar cane</item>
+        <item>pumpkin</item>
     </itemremove>
     <toolrepair>
         <tool>iron sword</tool>

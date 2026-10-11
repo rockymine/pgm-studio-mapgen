@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 
 from pgmvox import B  # noqa: E402
 from pgmvox.play.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.play.rules import Bounds, Build, Effect, Item, Kit, Map, Match, Respawn  # noqa: E402
+from pgmvox.play.rules import Bounds, Build, Effect, Item, Kit, Map, Match, Respawn, terrain_of  # noqa: E402
 
 GOLD = dict(material=(B.GOLD_BLOCK, 0), materials="gold block")
 O = Objectives(Teams(("red-team", "Red", "red", 16), ("blue-team", "Blue", "blue", 16)))
@@ -27,7 +27,8 @@ for team, key, name, box in (("red-team", "red-harbour", "Red's Harbour Monument
 O.add(Bounds(Box(-96, 0, -56, 58, 255, 171), "The sea is too rough past here.", build=False))
 
 M = Map("Gullhaven DTM", "0.1.0", "Destroy both of the other team's gold monuments: one floating over the harbour, "
-        "one over the beach.", "dtm", authors=["Claude (freeform generator)"], includes=[],
+        "one over the beach.", "dtm",
+        terrain=terrain_of(__file__), authors=["Claude (freeform generator)"], includes=[],
         objectives=O,
         kit=Kit(Item("iron sword", 0, unbreakable=True), Item("bow", 1, unbreakable=True),
                 Item("iron pickaxe", 2, unbreakable=True), Item("iron axe", 3, unbreakable=True),

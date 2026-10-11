@@ -5,9 +5,10 @@ stated here.
     python3 mapxml.py > map.xml
 """
 import plan as P
-from pgmvox.play.rules import Build, Item, KillHeight, Kit, Map
+from pgmvox.play.rules import Build, Item, KillHeight, Kit, Map, terrain_of
 
 M = Map("Abbeymoor", "1.0.0", "Destroy the enemy's two monuments: the one over the abbey and the one on the village green.", "dtm",
+        terrain=terrain_of(__file__),
         authors=["Claude Sonnet 5.5 (freeform generator, on pgmvox)"],
         objectives=P.objectives(),
         kit=Kit(

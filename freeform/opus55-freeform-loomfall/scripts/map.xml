@@ -15,9 +15,6 @@
             <item slot="0" material="snow ball" amount="5" grenade="true" grenade-power="1"/>
             <game-mode>adventure</game-mode>
         </kit>
-        <kit id="fall-kill" force="true">
-            <effect duration="1" amplifier="5">instant damage</effect>
-        </kit>
     </kits>
     <spawns>
         <spawn kit="flyer" yaw="0" safe="true">
@@ -82,9 +79,14 @@
     </damage>
     <regions>
         <apply block="block-rule"/>
-        <below y="116" id="the-fall"/>
-        <apply kit="fall-kill" region="the-fall"/>
     </regions>
+    <portals>
+        <portal y="@-64" sound="false" observers="never">
+            <region>
+                <below y="116"/>
+            </region>
+        </portal>
+    </portals>
     <time>10m</time>
     <blitz>
         <lives>1</lives>
@@ -101,6 +103,8 @@
     </itemkeep>
     <itemremove>
         <item>wool</item>
+        <item>sapling</item>
+        <item>apple</item>
     </itemremove>
     <hunger>
         <depletion>off</depletion>

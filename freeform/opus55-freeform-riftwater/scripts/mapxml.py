@@ -11,10 +11,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "..", "lib", "ports", "riftwater", "scripts"))
 
 import plan as P  # noqa: E402  (the port's plan, which puts the library on the path)
-from pgmvox.play.rules import Build, Item, Kit, Map  # noqa: E402
+from pgmvox.play.rules import Build, Item, Kit, Map, terrain_of  # noqa: E402
 
 M = Map("Riftwater", "0.1.0", "Destroy both of the enemy's monuments: one in their market square, one on their "
         "village green.", "dtm",
+        terrain=terrain_of(__file__),
         authors=["Claude (freeform generator)"],
         contributors=[("rockymine", "Built the oak and birch trees (tree showcase)")],
         objectives=P.objectives(),

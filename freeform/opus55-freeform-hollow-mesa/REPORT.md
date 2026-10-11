@@ -20,6 +20,8 @@ goes through the island. A breach on the hole's side leaks at once: the lava ste
 and falls. A breach on any other side pours lava onto the cavern floor, where it pools four blocks short of a
 leak and spreads toward the hole. The `no-void` rule covers the whole board, so the hole cannot be plugged.
 
+**The ground is marked at y 0, and the two holes are left void.** The mesa floats from y 27, so without a mark PGM read every column as void and refused every block. `gen.py` lays block 36 under 49,062 columns of ground and keeps the 35 columns of each Throat's hole and well open, centred on (-65, -24) and (64, 23).
+
 **The canyon takes the place of a void gap.** The teams' ground is joined only through the canyon: forty
 blocks of town between two walls thirty-three high, crossed on the floor, along the bench halfway up the
 wall, or over the Sky Arch at rim height.

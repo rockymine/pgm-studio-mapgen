@@ -4,11 +4,12 @@ the fall, building only over a marked column and the build height are stated her
 """
 import plan  # noqa: F401  (puts the library on the path)
 from plan import KILL_Y, MAX_BUILD, objectives
-from pgmvox.play.rules import Build, Item, KillHeight, Kit, Map
+from pgmvox.play.rules import Build, Item, KillHeight, Kit, Map, terrain_of
 
 O = objectives()
 
 M = Map("Lantern Karst", "0.2.0", "Capture the enemy's two wools: the Pillar Shrine's and the Tea Store's.", "ctw",
+        terrain=terrain_of(__file__),
         authors=["Claude (freeform generator, ported onto pgmvox)"],
         objectives=O,
         kit=Kit(

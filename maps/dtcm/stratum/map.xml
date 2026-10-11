@@ -31,9 +31,6 @@
             <leggings material="chainmail leggings" unbreakable="true"/>
             <boots material="leather boots" unbreakable="true" team-color="true"/>
         </kit>
-        <kit id="fall-kill" force="true">
-            <effect duration="1" amplifier="5">instant damage</effect>
-        </kit>
     </kits>
     <teams>
         <team id="red-team" color="red" max="16">Red</team>
@@ -77,8 +74,6 @@
         <cuboid min="54,81,47" max="57,84,50" id="blue-core-region"/>
         <cuboid min="-55,100,-50" max="-54,102,-49" id="red-obelisk-region"/>
         <cuboid min="54,100,-50" max="55,102,-49" id="blue-obelisk-region"/>
-        <below y="58" id="the-fall"/>
-        <apply kit="fall-kill" region="the-fall"/>
     </regions>
     <cores>
         <core id="red-core" name="the Reactor" team="red-team" leak="10" mode-changes="true" region="red-core-region"/>
@@ -89,6 +84,13 @@
         <destroyable id="blue-obelisk" name="the Obelisk" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-obelisk-region"/>
     </destroyables>
     <maxbuildheight>122</maxbuildheight>
+    <portals>
+        <portal y="@-64" sound="false" observers="never">
+            <region>
+                <below y="58"/>
+            </region>
+        </portal>
+    </portals>
     <block-drops>
         <rule>
             <filter>
@@ -120,6 +122,15 @@
         <item>chainmail leggings</item>
         <item>leather boots</item>
         <item>obsidian</item>
+        <item>flint</item>
+        <item>gravel</item>
+        <item>sapling</item>
+        <item>apple</item>
+        <item>seeds</item>
+        <item>long grass</item>
+        <item>yellow flower</item>
+        <item>red rose</item>
+        <item>sugar cane</item>
     </itemremove>
     <toolrepair>
         <tool>iron sword</tool>

@@ -5,7 +5,7 @@ each fish market one), a score limit and a time limit, the kit; no building, the
 """
 import plan as P
 import common as C
-from pgmvox.play.rules import Build, Map, Match
+from pgmvox.play.rules import Build, Map, Match, terrain_of
 from pgmvox.play.objectives import Hill
 
 O = P.objectives()
@@ -13,6 +13,7 @@ for h in O.of(Hill):                               # the progress shows on the p
     h.progress = P.pad_ring(h.pad, 1)
 M = Map("Tidewell Canals", "1.0.0", "Hold the markets: the Campo is worth two points a second, each fish market one.",
         "koth",
+        terrain=terrain_of(__file__),
         authors=["Claude (pgmvox trial)"],
         objectives=O,
         kit=C.kit(wood=0),

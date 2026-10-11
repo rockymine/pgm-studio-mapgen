@@ -11,9 +11,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "..", "lib", "ports", "lantern-karst", "scripts"))
 
 import plan as P  # noqa: E402  (the port's plan, which puts the library on the path)
-from pgmvox.play.rules import Build, Item, KillHeight, Kit, Map  # noqa: E402
+from pgmvox.play.rules import Build, Item, KillHeight, Kit, Map, terrain_of  # noqa: E402
 
 M = Map("Lantern Karst", "0.1.0", "Capture the enemy's two wools: the Pillar Shrine's and the Tea Store's.", "ctw",
+        terrain=terrain_of(__file__),
         authors=["Claude (freeform generator)"],
         objectives=P.objectives(),
         kit=Kit(Item("iron sword", 0, unbreakable=True), Item("bow", 1, enchant=[("infinity", 1)], unbreakable=True),

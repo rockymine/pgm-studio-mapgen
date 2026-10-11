@@ -11,6 +11,8 @@ cd freeform/lib && python3 -m pgmvox.run boards/redwash-mesa --build <scratch>/r
 
 The run takes about 90 seconds, nearly all of it the read-back's voxel walks; generation takes one second.
 
+
+**The ground is marked at y 0 for the void rule.** The land floats clear of y 0, so `gen.py` lays block 36 under its 18,478 columns of ground; without it PGM refused building everywhere outside the build zone.
 ## How it plays
 
 **The land comes in three levels, and so does the seam.** The Table is at 62, across the north and the west. The

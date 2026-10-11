@@ -49,7 +49,7 @@ and `seed` come from `pgmvox` itself.
 | **`play`** | What a map is played for: teams, spawns, objectives, and the map.xml they write. |
 | `play.objectives` | spawns (a filter on who spawns, a box or several spawned anywhere in, points, a pitch), the observer point, hills, touch points (an arcade's control points, taken by touching), flags (carrier kits, a compass on the carrier, a team's dead held while one of their own carries it), wools and monuments (a slot open on a map where nothing is placed, a wool block that comes back when broken), destroyables, cores, score boxes and portals (to a block, anywhere in a box, or moved by an offset): each stamps its blocks, writes its regions and XML, carries itself to the other team, and checks the built world |
 | `play.mapxml` | `Doc` and `E`, the element builder the typed parts write through; a board never calls it |
-| `play.rules` | `Map`, a whole map.xml from its parts: `Kit`s of `Item`s and what follows from those players spawn with as the studio derives it, `Build` (the void rule, build areas and holes, materials only breakable, a filter every block change passes, the build height), `KillHeight` (below a height, or inside boxes), `Match` (time, score, kills, `Blitz`, fall damage, broadcasts to everyone or a team, one `Respawn` or one per team, the clock held); kits with parents, `Effect`s, a game mode, health, food, knockback reduction and actions (`EnchantItem`, `ForEveryone`); `KillReward`s by streak; `Shop`s of `Offer`s; `Spawner`, `JumpPad` (a safe pad spares its rider the fall), `Shopkeeper`, `Bounds` and `Zone` (no placing, breaking or harm in it, closed to all but a team or to everyone, a kit given inside), placed like objectives |
+| `play.rules` | `Map`, a whole map.xml from its parts: `Kit`s of `Item`s and what follows from those players spawn with as the studio derives it, `Build` (the void rule, build areas and holes, materials only breakable, a filter every block change passes, the build height), `mark_ground` (the y 0 marks the void rule reads), `KillHeight` (below a height, or inside boxes, sent into the void), `terrain_of` (the world's block ids, whose drops are removed), `Match` (time, score, kills, `Blitz`, fall damage, broadcasts to everyone or a team, one `Respawn` or one per team, the clock held); kits with parents, `Effect`s, a game mode, health, food, knockback reduction and actions (`EnchantItem`, `ForEveryone`); `KillReward`s by streak; `Shop`s of `Offer`s; `Spawner`, `JumpPad` (a safe pad spares its rider the fall), `Shopkeeper`, `Bounds` and `Zone` (no placing, breaking or harm in it, closed to all but a team or to everyone, a kit given inside), placed like objectives |
 | `play.logic` | what a match does over its course: filters as values (`Team`, `Completed`, `After`, `Time`, `All`, `Not`, ...) and `Named` ones, `Trigger`s of actions (`Fill`, `Message`, `SetVar`, `KillEntities`, `Act`), named `Action`s, `Area`s, `Variable`s, `Give` (a kit on a condition), `ControlPoint`, `Payload` and `Payloads`, `Gamerules`, `Damage`, `BlockDrop`, `Falling`, `Compass`; each goes into `Map(parts=[...])` |
 | **`plan`** | The plan of a board before it is built: the raster, its walk graph, jump courses. |
 | `plan.raster` | `Raster`, the plan as every column's floor and kind, with `Symmetry` drawn in the plan (and a field's `image`, a field made symmetric with `field`, a half made `whole`); `rect`, `poly`, `where`, `flight`; `storey(n)`, an upper storey drawn the same way; `from_heights`, a plan read off shaped terrain |
@@ -155,6 +155,20 @@ the authors, the objectives, the kits, the `Build` rule, the `KillHeight`, the `
 into nothing once placed and given back sixteen (eight of the team's) a kill, every material a destroyable or core
 is removed, hunger off, the golden-apple reward included.
 
+**What the world drops is removed too.** `Map(terrain=terrain_of(__file__))` reads the block ids of the board's
+world, and the saplings, seeds, flint and string those blocks drop are removed as they spawn, as the studio's
+`SurfaceDrops` removes them; a material a kit carries is kept. With every objective's material removed the same way, a
+broken monument or core never becomes a block anyone can put back.
+
+**A fall ends in the void.** `KillHeight` sends whoever drops below it to y -64, where they die and what they carry is
+gone with them. A board floating over blocks of its own would otherwise catch every death's drops out of reach, and
+they would pile up there for the whole match.
+
+**A floating board marks its ground at y 0.** PGM's void filter reads the block at y 0 of a column live, and a block
+36 there is removed on load but remembered, so the column counts as ground. `mark_ground(w, void=...)` lays it under
+every column holding a block that is neither air nor liquid, less the columns a hole must keep open. A board whose
+land floats clear of y 0 without it refuses every block its players try to place.
+
 **The kits players spawn with are the main kit, every kit a spawn names, and their parents.** A team's kit given
 with a shared one (`Kit(..., parents=[base])`) adds its pick and its arrows to what is kept and repaired, and a kit
 handed out by a `Give` or an applied `Zone` adds nothing.
@@ -182,7 +196,7 @@ True)` walks corner to corner, so distances are the octile ones a capture board'
 **A wool is drawn once and carries its room.** `Wool` places its wool in the room and its monument on the other
 side, writes the spawner and the room's entry rule, and checks both blocks. `Objectives.write` keeps each team's
 rooms from the other team's hands but for what an attacker brings in. A `Spawn` may name blocks that are mined in
-it and grow back, and `mapxml` writes kits and a kill height by instant damage.
+it and grow back, and a kill height sends whoever falls below it into the void.
 
 **The voxel walk builds too.** `MoveRules(build=(mask, (lo, hi)))` lets a player stand in a build zone's air as
 on a placed block, and `kill_y` counts nothing below the kill height as a place.

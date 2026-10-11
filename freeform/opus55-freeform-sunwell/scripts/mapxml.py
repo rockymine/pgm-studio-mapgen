@@ -13,7 +13,7 @@ import plan as P
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "lib"))
 
 from pgmvox.play.objectives import Box, Objectives, Observer, Portal, Spawn, TouchPoint  # noqa: E402
-from pgmvox.play.rules import Build, Effect, Item, Kit, Map, Match, Zone  # noqa: E402
+from pgmvox.play.rules import Build, Effect, Item, Kit, Map, Match, Zone, terrain_of  # noqa: E402
 
 
 def box(b):
@@ -78,6 +78,7 @@ def main():
               id="players", clear=True, effects=[Effect("resistance", "3s", 5), Effect("health boost", "oo", -2)],
               game_mode="survival", remove=["bucket"])
     M = Map("Sunwell", "1.0.0", "Drop down the sinkhole and hold the most hills when the clock runs out.", "arcade",
+            terrain=terrain_of(__file__),
             includes=[], players=(1, 40),
             rules=["Every drop kills unless it ends in water: hit a pool, place a bucket, or ride the falls.",
                    "Touch a hill to take it; it scores for you until someone else touches it, even after you die.",

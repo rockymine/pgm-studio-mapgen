@@ -88,4 +88,8 @@
         <apply block="no-void" region="not-build-area" message="You may not edit the void!"/>
     </regions>
     <maxbuildheight>20</maxbuildheight>
+    <itemremove>
+        <item>obsidian</item>
+        <item>sapling</item>
+    </itemremove>
 </map>

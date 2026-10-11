@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 
 from pgmvox.plan.raster import Symmetry  # noqa: E402
 from pgmvox.play.objectives import Box, Core, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.play.rules import Build, Item, KillHeight, Kit, Map  # noqa: E402
+from pgmvox.play.rules import Build, Item, KillHeight, Kit, Map, terrain_of  # noqa: E402
 
 O = Objectives(Teams(("red-team", "Red", "red", 16), ("blue-team", "Blue", "blue", 16)), Symmetry("mirror_x"))
 O.add(Observer((0, 100, 0), yaw=90))
@@ -21,6 +21,7 @@ O.add(Destroyable("red-obelisk", "the Obelisk", "red-team", Box(-55, 100, -50, -
 
 M = Map("Stratum", "0.1.0", "Leak the core hung in the enemy's Reactor, and break the monument on their Obelisk's "
         "balcony.", ["dtm", "dtc"],
+        terrain=terrain_of(__file__),
         authors=["Claude (freeform generator)"],
         contributors=[("rockymine", "Built the oak and birch trees (tree showcase)")],
         objectives=O,

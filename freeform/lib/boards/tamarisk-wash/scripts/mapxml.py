@@ -4,10 +4,11 @@ the kit; the fall past the board's rim; building anywhere but over the void, no 
     python3 mapxml.py > map.xml
 """
 import plan as P
-from pgmvox.play.rules import Build, Item, KillHeight, Kit, Map
+from pgmvox.play.rules import Build, Item, KillHeight, Kit, Map, terrain_of
 
 M = Map("Tamarisk Wash", "0.1.0", "Destroy both of the enemy's monuments: the Obelisk on Table Rock and the "
         "Sunstone in the Souk.", "dtm",
+        terrain=terrain_of(__file__),
         authors=["Claude (freeform generator, on pgmvox)"],
         objectives=P.objectives(),
         kit=Kit(

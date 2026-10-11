@@ -4,10 +4,11 @@ plan's objectives; the original board's kit; the rift as the only place to build
     python3 mapxml.py > map.xml
 """
 import plan as P
-from pgmvox.play.rules import Build, Item, Kit, Map
+from pgmvox.play.rules import Build, Item, Kit, Map, terrain_of
 
 M = Map("Riftwater", "0.2.0", "Destroy both of the enemy's monuments: one in their market square, one on their "
         "village green.", "dtm",
+        terrain=terrain_of(__file__),
         authors=["Claude (freeform generator, ported onto pgmvox)"],
         contributors=[("rockymine", "Built the oak and birch trees (tree showcase)")],
         objectives=P.objectives(),

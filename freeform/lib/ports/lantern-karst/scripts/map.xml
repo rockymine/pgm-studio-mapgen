@@ -32,9 +32,6 @@
             <leggings material="chainmail leggings" unbreakable="true"/>
             <boots material="leather boots" unbreakable="true" team-color="true"/>
         </kit>
-        <kit id="fall-kill" force="true">
-            <effect duration="1" amplifier="5">instant damage</effect>
-        </kit>
     </kits>
     <teams>
         <team id="red-team" color="red" max="16">Red</team>
@@ -149,8 +146,6 @@
         </union>
         <apply block="blues-woolrooms-filter" region="blues-woolrooms" message="You may not edit the wool room!"/>
         <apply block-place="block-place-void-filter" block-break="block-break-void-filter" message="You may not edit the void!"/>
-        <below y="40" id="the-fall"/>
-        <apply kit="fall-kill" region="the-fall"/>
     </regions>
     <renewables>
         <renewable region="red-spawn" renew-filter="spawn-minable"/>
@@ -177,6 +172,13 @@
         </spawner>
     </spawners>
     <maxbuildheight>92</maxbuildheight>
+    <portals>
+        <portal y="@-64" sound="false" observers="never">
+            <region>
+                <below y="40"/>
+            </region>
+        </portal>
+    </portals>
     <block-drops>
         <rule>
             <filter>

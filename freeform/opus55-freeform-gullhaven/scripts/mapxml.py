@@ -10,7 +10,7 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "lib"))
 
 from pgmvox.play.objectives import Box, Objectives, Observer, Spawn  # noqa: E402
-from pgmvox.play.rules import Bounds, Build, Effect, Item, Kit, Map, Match, Respawn  # noqa: E402
+from pgmvox.play.rules import Bounds, Build, Effect, Item, Kit, Map, Match, Respawn, terrain_of  # noqa: E402
 
 POINTS = [(-44, 42, -30, -90), (-30, 41, -36, 0), (-18, 41, -44, 90), (-34, 41, -16, 180), (-7, 25, -37, 0),
           (-8, 25, -44, 180), (8, 37, -46, 0), (30, 37, -38, 90), (20, 33, -26, 0), (46, 33, -26, 90),
@@ -25,7 +25,8 @@ O.add(Spawn(None, POINTS[0][:3], kit="spawn-kit", points=POINTS, far=True, safe=
 O.add(Bounds(Box(-62, 0, -56, 58, 255, 72), "The sea is too rough past here."))   # for swimming in, not away
 
 M = Map("Gullhaven", "0.1.0", "Kill the most players in 8 minutes. One hit kills; every kill pays an arrow.",
-        ["ffa", "rage"], authors=["Claude (freeform generator)"], includes=[], players=(2, 16),
+        ["ffa", "rage"],
+        terrain=terrain_of(__file__), authors=["Claude (freeform generator)"], includes=[], players=(2, 16),
         objectives=O,
         kit=Kit(Item("iron sword", 0, enchant=[("sharpness", 1)], unbreakable=True, name="Gutting Knife"),
                 Item("bow", 1, enchant=[("power", 1)], unbreakable=True, name="Longbow"), Item("arrow", 2),

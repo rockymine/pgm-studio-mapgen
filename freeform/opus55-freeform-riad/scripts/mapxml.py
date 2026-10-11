@@ -12,8 +12,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 
 import plan as P  # noqa: E402
 from pgmvox.play.objectives import Box, Flag, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.play.rules import (Build, Effect, EnchantItem, ForEveryone, Item, Kit, Map, Match,  # noqa: E402
-                               Respawn)
+from pgmvox.play.rules import (Build, Effect, EnchantItem, ForEveryone, Item, Kit, Map, Match, Respawn,  # noqa: E402
+                               terrain_of)
 
 block = lambda p: (math.floor(p[0]), int(p[1]), math.floor(p[2]))       # noqa: E731
 
@@ -29,6 +29,7 @@ flag = Flag("flag", "Flag", "purple", [(p["name"], block(p["at"]), p["yaw"]) for
 O.add(flag)
 
 M = Map("Riad", "0.1.0", "Hold the flag for 200 seconds. While your team holds it, your dead wait.", "kotf",
+        terrain=terrain_of(__file__),
         authors=["Claude (freeform generator)"], includes=[],
         objectives=O,
         kit=Kit(Item("stone sword", 0, unbreakable=True), Item("bow", 1, unbreakable=True),

@@ -17,6 +17,7 @@ import works
 from pgmvox import B, World
 from pgmvox.built import props
 from pgmvox.core.orient import turn_world
+from pgmvox.play.rules import mark_ground
 
 t0 = time.time()
 L = P.land()
@@ -40,5 +41,6 @@ X, _ = w.grid()
 turn_world(w, "mirror_x", X < 0, recolour={(B.WOOL, 14): (B.WOOL, 11)})
 O = P.objectives()
 O.stamp(w)
+mark_ground(w)                                  # the void rule reads the land at y 0
 w.save(sys.argv[1], "Riftwater", (0, 90, 0))
 print(f"saved {time.time() - t0:.1f}s; {int(np.count_nonzero(w.ids))} blocks, {len(w.tiles)} tile entities")

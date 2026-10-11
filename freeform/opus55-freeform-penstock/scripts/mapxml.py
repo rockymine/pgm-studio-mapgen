@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 from pgmvox.plan.raster import Symmetry  # noqa: E402
 from pgmvox.play.objectives import Box, Objectives, Observer, ScoreBox, Spawn, Teams  # noqa: E402
 from pgmvox.play.rules import (Build, Effect, Item, KillHeight, KillReward, Kit, Map, Match, Offer,  # noqa: E402
-                               Respawn, Shop, Shopkeeper, Spawner, Zone)
+                               Respawn, Shop, Shopkeeper, Spawner, Zone, terrain_of)
 
 O = Objectives(Teams(("red", "Red", "red", 16), ("blue", "Blue", "blue", 16)), Symmetry("mirror_x"))
 O.add(Observer((0, 30, 0), yaw=90))
@@ -41,7 +41,7 @@ STORE = Shop("store", "Station Store", [
                                   Offer(Item("leaves", amount=16), 1, "diamond")])])
 
 M = Map("Penstock", "0.1.0", "Be the team with the most points after 10 minutes: a kill is a point, a score box two.",
-        ["tdm", "scorebox"], authors=["Claude (freeform generator)"], includes=[],
+        ["tdm", "scorebox"], terrain=terrain_of(__file__), authors=["Claude (freeform generator)"], includes=[],
         objectives=O, shops=[STORE],
         kit=Kit(Item("stone sword", 0, unbreakable=True), Item("bow", 1, unbreakable=True), Item("golden apple", 2),
                 Item("leaves", 3, 8), Item("arrow", 8, 16),

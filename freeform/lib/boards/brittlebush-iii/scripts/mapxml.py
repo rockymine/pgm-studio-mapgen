@@ -2,11 +2,12 @@
 captures it, with its room, its entry rule and its spawner written once; the kit; building only over the board.
 """
 import plan as P
-from pgmvox.play.rules import Build, Item, Kit, Map
+from pgmvox.play.rules import Build, Item, Kit, Map, terrain_of
 
 O = P.objectives()
 
 M = Map("Brittlebush III", "1.0.0", "Capture the other three teams' wools!", "ctw",
+        terrain=terrain_of(__file__),
         authors=["rockymine", "Claude (freeform generator, pgmvox)"],
         objectives=O,
         kit=Kit(

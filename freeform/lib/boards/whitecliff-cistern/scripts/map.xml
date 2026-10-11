@@ -25,9 +25,6 @@
             <leggings material="chainmail leggings" unbreakable="true"/>
             <boots material="leather boots" unbreakable="true" team-color="true"/>
         </kit>
-        <kit id="fall-kill" force="true">
-            <effect duration="1" amplifier="5">instant damage</effect>
-        </kit>
     </kits>
     <teams>
         <team id="red-team" color="red" max="16">Red</team>
@@ -95,8 +92,6 @@
         <cuboid min="-3,66,40" max="3,71,46" id="boatyard-capture"/>
         <cuboid min="-3,66,40" max="3,67,46" id="boatyard-pad"/>
         <apply block-place="block-place-void-filter" block-break="block-break-void-filter" message="You may not edit the void!"/>
-        <below y="30" id="the-fall"/>
-        <apply kit="fall-kill" region="the-fall"/>
     </regions>
     <king>
         <hills required="false" neutral-state="true" incremental="true" show-progress="true" time-multiplier="0" permanent="false">
@@ -109,6 +104,13 @@
         <limit>300</limit>
     </score>
     <maxbuildheight>112</maxbuildheight>
+    <portals>
+        <portal y="@-64" sound="false" observers="never">
+            <region>
+                <below y="30"/>
+            </region>
+        </portal>
+    </portals>
     <time result="score">20m</time>
     <block-drops>
         <rule>
@@ -139,6 +141,11 @@
         <item>iron chestplate</item>
         <item>chainmail leggings</item>
         <item>leather boots</item>
+        <item>flint</item>
+        <item>gravel</item>
+        <item>sapling</item>
+        <item>apple</item>
+        <item>red rose</item>
     </itemremove>
     <toolrepair>
         <tool>iron sword</tool>

@@ -137,4 +137,10 @@
             <item material="wool" damage="11"/>
         </spawner>
     </spawners>
+    <itemremove>
+        <item>flint</item>
+        <item>gravel</item>
+        <item>sapling</item>
+        <item>apple</item>
+    </itemremove>
 </map>

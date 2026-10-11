@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 
 from pgmvox.plan.raster import Symmetry  # noqa: E402
 from pgmvox.play.objectives import Box, Core, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.play.rules import Build, Item, Kit, Map  # noqa: E402
+from pgmvox.play.rules import Build, Item, Kit, Map, terrain_of  # noqa: E402
 
 O = Objectives(Teams(("red-team", "Red", "red", 16), ("blue-team", "Blue", "blue", 16)), Symmetry("half"))
 O.add(Observer((0, 95, 0), yaw=90))
@@ -20,6 +20,7 @@ O.add(Core("red-core", "The Throat", "red-team", Box(-67, 79, -26, -64, 82, -23)
 
 M = Map("Hollow Mesa", "0.2.0", "Leak the enemy's core: it floats over a well through their mesa, by the headframe "
         "over the Throat.", "dtc",
+        terrain=terrain_of(__file__),
         authors=["Claude (freeform generator)"],
         contributors=[("rockymine", "Built the acacia and olive trees (tree showcase)")],
         objectives=O,

@@ -5,10 +5,11 @@ plan's objectives; the kit; the seam as the only place to build over the void; a
 """
 import plan as P
 import common as C
-from pgmvox.play.rules import Build, Map
+from pgmvox.play.rules import Build, Map, terrain_of
 
 M = Map("Redwash Mesa", "1.0.0", "Destroy both of the enemy's monuments: one out on their table, one in the plaza "
         "of their canyon town.", "dtm",
+        terrain=terrain_of(__file__),
         authors=["Claude (pgmvox trial)"],
         objectives=P.objectives(),
         kit=C.kit(pick="diamond pickaxe"),

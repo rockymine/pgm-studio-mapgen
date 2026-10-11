@@ -5,9 +5,10 @@ off the terraces' bridges hurts; building anywhere up to the build height.
     python3 mapxml.py > map.xml
 """
 import plan as P
-from pgmvox.play.rules import Build, Item, Kit, Map, Match
+from pgmvox.play.rules import Build, Item, Kit, Map, Match, terrain_of
 
 M = Map("Overgrowth", "0.1.0", "Kill the other team: seventy-five points, or the higher score at forty minutes.", "tdm",
+        terrain=terrain_of(__file__),
         authors=["Claude (freeform generator, on pgmvox)"],
         objectives=P.objectives(),
         kit=Kit(

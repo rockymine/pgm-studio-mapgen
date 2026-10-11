@@ -5,9 +5,10 @@ column and the build height are stated here.
     python3 mapxml.py > map.xml
 """
 import plan as P
-from pgmvox.play.rules import Build, Item, KillHeight, Kit, Map
+from pgmvox.play.rules import Build, Item, KillHeight, Kit, Map, terrain_of
 
 M = Map("Slatefold", "1.0.0", "Capture the enemy's two wools: the Kiln's and the Winding House's.", "ctw",
+        terrain=terrain_of(__file__),
         authors=["Claude Sonnet 5.5 (freeform generator, on pgmvox)"],
         objectives=P.objectives(),
         kit=Kit(

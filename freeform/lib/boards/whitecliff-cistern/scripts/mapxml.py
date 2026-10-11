@@ -5,9 +5,10 @@ by the higher score, the kit, the fall past the stack, building only over the st
     python3 mapxml.py > map.xml
 """
 import plan as P
-from pgmvox.play.rules import Build, Item, KillHeight, Kit, Map, Match
+from pgmvox.play.rules import Build, Item, KillHeight, Kit, Map, Match, terrain_of
 
 M = Map("Whitecliff Cistern", "0.1.0", "Hold the hills: the Cistern pays two a second, the Garden and the Boatyard one.", "koth",
+        terrain=terrain_of(__file__),
         authors=["Claude (freeform generator, on pgmvox)"],
         objectives=P.objectives(),
         kit=Kit(

@@ -5,10 +5,11 @@ scores a point, fifty win, ten minutes; no building at all.
 """
 import plan as P
 import common as C
-from pgmvox.play.rules import Build, Map, Match
+from pgmvox.play.rules import Build, Map, Match, terrain_of
 
 M = Map("Vinewatch Ruins", "1.0.0", "Kill the enemy: the first team to fifty kills, or the most in ten minutes, wins.",
         "tdm",
+        terrain=terrain_of(__file__),
         authors=["Claude (pgmvox trial)"],
         objectives=P.objectives(),
         kit=C.kit(wood=0),

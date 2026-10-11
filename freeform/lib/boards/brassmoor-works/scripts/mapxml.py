@@ -6,12 +6,13 @@ column and the build height. What a player keeps, drops and is rewarded with fol
 """
 import plan as P
 import common as C
-from pgmvox.play.rules import Build, KillHeight, Map
+from pgmvox.play.rules import Build, KillHeight, Map, terrain_of
 
 O = P.objectives()
 
 M = Map("Brassmoor Works", "1.0.0", "Capture the enemy's two wools: one from their Boiler House, one from under "
         "their Water Tower.", "ctw",
+        terrain=terrain_of(__file__),
         authors=["Claude (pgmvox trial)"],
         objectives=O,
         kit=C.kit(),

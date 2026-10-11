@@ -9,14 +9,20 @@
 
 **What the studio derives, this derives the same way.** The kit's loadout is kept on death and its armour dropped,
 its tools repaired, its stacked blocks break into nothing once placed and come back as a kill's reward, sixteen of a
-neutral block and eight of a team's; every material a destroyable or a core ever is cannot be picked up; hunger is
-off and the golden-apple kill reward is included (`MapStandards` in the studio).
+neutral block and eight of a team's; every material a destroyable or a core ever is cannot be picked up, nor what the
+world's own blocks drop (saplings, seeds, flint); hunger is off and the golden-apple kill reward is included
+(`MapStandards` in the studio).
 
 **The build rule is the studio's.** Building is refused over the void outside the build areas, or everywhere when no
 area is given; decoration over the void may still be broken; `never` refuses building anywhere.
 """
+import os
+import sys
 from dataclasses import dataclass, field
 
+import numpy as np
+
+from pgmvox.core.blocks import LIQUID
 from pgmvox.play.mapxml import Doc, E, below as below_el, duration, negative, union
 from pgmvox.play.objectives import Core, Destroyable, Flag, Objective, Spawn, turn_point
 
@@ -25,6 +31,10 @@ CONSUMED = {"arrow", "cooked beef", "cooked chicken", "cooked porkchop", "cooked
             "golden apple", "golden carrot", "baked potato", "carrot item", "snow ball", "egg", "ender pearl"}
 KILL_REWARD_INCLUDE = "gapple-kill-reward"
 VOID_MESSAGE = "You may not edit the void!"
+TERRAIN_DROPS = {30: ["string"], 31: ["seeds", "long grass"], 175: ["double plant", "seeds"], 18: ["sapling", "apple"],
+                 161: ["sapling"], 6: ["sapling"], 38: ["red rose"], 37: ["yellow flower"], 13: ["flint", "gravel"],
+                 39: ["brown mushroom"], 40: ["red mushroom"], 73: ["redstone"], 74: ["redstone"], 83: ["sugar cane"],
+                 81: ["cactus"], 103: ["melon", "melon seeds"], 86: ["pumpkin"], 106: ["vine"]}
 OVER_VOID = ("log", "log 2", "leaves", "leaves 2", "long grass", "yellow flower", "red rose", "double plant",
              "water lily", "vine")
 
@@ -160,10 +170,11 @@ class Kit:
         doc.kit(self.id, *self._children(), **self._attrs())
 
 
-def standards(doc, kits, destroyed=()):
+def standards(doc, kits, destroyed=(), terrain=()):
     """Item keep, tool repair, item remove, the placed blocks' drops and the kill reward, read off the kits players
     spawn with: everything they carry is kept and its tools repaired, armour and `remove` dropped, stacked blocks
-    break into nothing and come back as a kill's reward."""
+    break into nothing and come back as a kill's reward. What the `terrain`'s block ids drop is removed too, unless a
+    kit carries it."""
     items = [i for k in kits for i in k.items]
     loadout = [i for i in items if not i.wear]
     stacked = [i for i in loadout if (i.amount or 1) > 1]
@@ -172,8 +183,9 @@ def standards(doc, kits, destroyed=()):
     stacks = list(dict.fromkeys(i.material for i in blocks))
     keep = list(dict.fromkeys(singles + [i.material for i in stacked]))
     tools = list(dict.fromkeys(m for m in singles if m.split()[-1] in TOOL_WORDS))
+    drops = [d for i in sorted(terrain) for d in TERRAIN_DROPS.get(i, ()) if d not in keep]
     remove = list(dict.fromkeys([i.material for i in items if i.wear] + [m for k in kits for m in k.remove] +
-                                list(destroyed)))
+                                list(destroyed) + drops))
     if stacks:
         doc.add(E("block-drops", E("rule", E("filter", E("material", text=stacks[0]) if len(stacks) == 1 else
                                                E("any", [E("material", text=m) for m in stacks])),
@@ -204,7 +216,8 @@ class Build:
     block 36); `void` False lets a player build anywhere; `never` refuses it everywhere, and `use` False refuses
     using a block too; `only` lets a player place and break those materials and nothing else, and `physics` False
     holds every block as it is; `breakable` lets those materials be broken and nothing be placed; `rule` is a filter
-every block placed or broken must pass. `max_height` is the build height."""
+    every block placed or broken must pass. `max_height` is the build height. The world carries the marks the void
+    rule reads: `mark_ground` lays them."""
     areas: list = field(default_factory=list)
     holes: list = field(default_factory=list)
     max_height: int = None
@@ -245,6 +258,39 @@ every block placed or broken must pass. `max_height` is the build height."""
                       message=self.message or VOID_MESSAGE)
         if self.max_height is not None:
             doc.add(E("maxbuildheight", text=self.max_height))
+
+
+MARK = 36                                # block 36 at y 0: PGM removes it on load and remembers the column as ground
+
+
+def mark_ground(w, void=None):
+    """Lay the mark PGM's void filter reads under every column of ground, so a player may build over it: block 36 at
+    y 0 wherever the column holds a block that is neither air nor liquid, less the columns `void` (a boolean mask over
+    x, z) keeps open, such as a hole a core leaks through. A board floating clear of y 0 has no ground PGM can see
+    without it, and its void rule refuses every block. Returns the number of columns marked."""
+    body = w.ids[:, 1:, :]
+    ground = ((body != 0) & ~np.isin(body, list(LIQUID))).any(axis=1)
+    if void is not None:
+        ground &= ~void
+    w.ids[:, 0, :][ground] = MARK
+    w.dat[:, 0, :][ground] = 0
+    return int(ground.sum())
+
+
+def terrain_of(script):
+    """The block ids in the world of the board whose script this is, as `maps/INDEX.md` places it: what
+    `Map(terrain=...)` reads the world's own drops off. Empty where the board has no world yet, or the library runs
+    outside the repository."""
+    from pgmvox.run import REPOSITORY_TOOLS
+    if not os.path.isfile(os.path.join(REPOSITORY_TOOLS, "anvil.py")):
+        return set()
+    sys.path.insert(0, REPOSITORY_TOOLS)
+    import anvil
+    import worlds
+    world = worlds.of(os.path.dirname(os.path.dirname(os.path.abspath(script))))
+    if world is None or not os.path.isdir(os.path.join(world, "region")):
+        return set()
+    return anvil.World(os.path.join(world, "region")).ids()
 
 
 def _named(doc, id_, f):
@@ -331,10 +377,10 @@ class Respawn:
 
 @dataclass
 class KillHeight:
-    """Anyone below y dies: "kit" gives instant damage and keeps them in the world until it lands, "portal" sends
-    them into the void. With `boxes` (each a Box), anyone inside any of them is sent to y `to` instead."""
+    """Anyone below y is sent to y `to`, into the void, where they die and what they carry is gone with them; with
+    `boxes` (each a Box), anyone inside any of them is. A player killed over the blocks under a floating board would
+    drop their items onto them, out of everyone's reach."""
     y: int = None
-    how: str = "kit"
     boxes: list = None
     to: int = -64
 
@@ -342,10 +388,6 @@ class KillHeight:
         if self.boxes:
             doc.child("portals").append(E("portal", E("region", union(*[b.cuboid() for b in self.boxes])),
                                           y=f"@{self.to}", sound=False))
-        elif self.how == "kit":
-            doc.kit("fall-kill", E("effect", text="instant damage", duration=1, amplifier=5), force=True)
-            doc.region("the-fall", below_el(self.y))
-            doc.apply(kit="fall-kill", region="the-fall")
         else:
             doc.child("portals").append(E("portal", E("region", below_el(self.y)), y=f"@{self.to}", sound=False,
                                           observers="never"))
@@ -577,6 +619,7 @@ class Map:
     players: tuple = None                                 # (least, most) for a match without teams
     shops: list = field(default_factory=list)
     parts: list = field(default_factory=list)
+    terrain: set = field(default_factory=set)              # the world's block ids: terrain_of(__file__)
 
     def spawn_kits(self):
         """The kits players spawn with, and every kit given with them: the main kit and those a spawn names."""
@@ -613,7 +656,7 @@ class Map:
             k.write(d)
         if self.match:
             self.match.write(d)
-        standards(d, self.spawn_kits(), self._destroyed())
+        standards(d, self.spawn_kits(), self._destroyed(), self.terrain)
         d.add(E("hunger", E("depletion", text="off")))
         return d
 

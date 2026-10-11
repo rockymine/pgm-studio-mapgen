@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 import plan as P  # noqa: E402
 from pgmvox.play.logic import After, ControlPoint, Fill, MatchStarted, Named, Trigger  # noqa: E402
 from pgmvox.play.objectives import Box, Objectives, Observer, Portal, Spawn, Teams  # noqa: E402
-from pgmvox.play.rules import Blitz, Build, Effect, Item, Kit, Map, Match, Zone  # noqa: E402
+from pgmvox.play.rules import Blitz, Build, Effect, Item, Kit, Map, Match, Zone, terrain_of  # noqa: E402
 
 lx0, lx1 = P.LANE
 bx0, bx1, bz0, bz1 = P.BELL["box"]
@@ -42,7 +42,7 @@ for side, x in (("left", left[0]), ("right", right[1])):          # the outer ro
 
 FED = Kit(id="fed", food=20)
 M = Map("Lantern Pass", "1.0.0", "Runners: reach the temple and hold the bell for two seconds. Shooters: stop every "
-        "runner before the clock runs out.", ["arcade", "blitz"], includes=[],
+        "runner before the clock runs out.", ["arcade", "blitz"], terrain=terrain_of(__file__), includes=[],
         rules=["Fall damage is off. Runners have one life.",
                "Shooters: step on the yellow row to cross to the other walkway."],
         objectives=O,

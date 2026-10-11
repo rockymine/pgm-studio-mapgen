@@ -17,6 +17,7 @@ import numpy as np
 
 import plan as P
 import common as C
+from pgmvox.play.rules import mark_ground
 from pgmvox import B, World, rng
 from pgmvox.built import build as BLD
 from pgmvox.scenery import trees as T
@@ -231,5 +232,6 @@ print(f"houses, drift and growth {time.time() - t0:.1f}s: {n_j} junipers, {n_b} 
 turn_world(w, "mirror_x", X < 0, recolour={(B.WOOL, 14): (B.WOOL, 11)}, banners={1: 4})
 O = P.objectives()
 O.stamp(w)
+mark_ground(w)                                  # the void rule reads the land at y 0
 w.save(sys.argv[1], "Redwash Mesa", (0, 90, 0))
 print(f"saved {time.time() - t0:.1f}s: {int(np.count_nonzero(w.ids))} blocks, {len(w.tiles)} tile entities")

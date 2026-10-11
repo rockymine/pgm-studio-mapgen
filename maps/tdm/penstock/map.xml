@@ -21,9 +21,6 @@
             <boots material="leather boots" unbreakable="true" team-color="true"/>
             <effect duration="4s" amplifier="5">resistance</effect>
         </kit>
-        <kit id="fall-kill" force="true">
-            <effect duration="1" amplifier="5">instant damage</effect>
-        </kit>
     </kits>
     <teams>
         <team id="red" color="red" max="16">Red</team>
@@ -87,8 +84,6 @@
         <cuboid min="-1,21,-43" max="1,22,-42" id="arrows-north"/>
         <cuboid min="-1,21,41" max="1,22,42" id="arrows-south"/>
         <apply block-place="only-these" block-break="only-these" message="Only leaves may be placed and broken!"/>
-        <below y="8" id="the-fall"/>
-        <apply kit="fall-kill" region="the-fall"/>
     </regions>
     <score>
         <box points="2" filter="only-blue">
@@ -132,6 +127,11 @@
         <portal x="@-63.5" y="@25" z="@-0.5" yaw="@270" filter="only-red">
             <region>
                 <cuboid min="57,22,30" max="60,25,36"/>
+            </region>
+        </portal>
+        <portal y="@-64" sound="false" observers="never">
+            <region>
+                <below y="8"/>
             </region>
         </portal>
     </portals>
@@ -195,6 +195,7 @@
         <item>leather chestplate</item>
         <item>chainmail leggings</item>
         <item>leather boots</item>
+        <item>string</item>
     </itemremove>
     <toolrepair>
         <tool>stone sword</tool>

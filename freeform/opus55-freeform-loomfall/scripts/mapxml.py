@@ -12,7 +12,7 @@ import plan as P  # noqa: E402
 from pgmvox.play.logic import (All, BlockDrop, Cause, Damage, Entity, Falling, KillEntities, Material,  # noqa: E402
                                MatchRunning, Named, Not, Pulse, Trigger)
 from pgmvox.play.objectives import Box, Objectives, Observer, Spawn  # noqa: E402
-from pgmvox.play.rules import Blitz, Build, Item, KillHeight, Kit, Map, Match  # noqa: E402
+from pgmvox.play.rules import Blitz, Build, Item, KillHeight, Kit, Map, Match, terrain_of  # noqa: E402
 
 top = P.CARPETS[0][5] + 1
 (sx0, sx1), (sz0, sz1) = P.SPAWN["x"], P.SPAWN["z"]
@@ -22,6 +22,7 @@ O.add(Spawn(None, kit="flyer", spread=Box(sx0, top, sz0, sx1, top, sz1), safe=Tr
 O.add(Observer((0, top + 19, -41), pitch=60))
 
 M = Map("Loomfall", "1.0.0", "Keep running: the carpet falls away under every step. Be the last one flying.", "arcade",
+        terrain=terrain_of(__file__),
         includes=[], players=(2, 40),
         rules=["Wool you step on turns white and falls.", "No fall damage, no fighting: only snowball grenades.",
                "Below the last carpet you are out."],

@@ -4,9 +4,10 @@ objectives; the kit; the fall below the island; building only over the island, a
     python3 mapxml.py > map.xml
 """
 import plan as P
-from pgmvox.play.rules import Build, Item, KillHeight, Kit, Map
+from pgmvox.play.rules import Build, Item, KillHeight, Kit, Map, terrain_of
 
 M = Map("Cinderfall", "0.1.0", "Break the enemy's core: lava must leak out of it.", "dtc",
+        terrain=terrain_of(__file__),
         authors=["Claude (freeform generator, on pgmvox)"],
         objectives=P.objectives(),
         kit=Kit(

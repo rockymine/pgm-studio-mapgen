@@ -5,10 +5,11 @@ objectives; the kit; the fissure as the only place to build over the void; a bui
 """
 import plan as P
 import common as C
-from pgmvox.play.rules import Build, Map
+from pgmvox.play.rules import Build, Map, terrain_of
 
 M = Map("Cinder Reach", "1.0.0", "Leak the enemy's core: it hangs over a stone platform in the bowl of the cinder cone in front of their "
         "lodge.", "dtc",
+        terrain=terrain_of(__file__),
         authors=["Claude (pgmvox trial)"],
         objectives=P.objectives(),
         kit=C.kit(pick="diamond pickaxe"),

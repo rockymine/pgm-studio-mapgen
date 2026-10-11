@@ -16,7 +16,7 @@ from gen import CAGE, Y  # noqa: E402
 from pgmvox.play.logic import (Act, Action, After, All, Any, Area, Cause, Compass, Deny, Fill, Gamerules,  # noqa: E402
                                Give, Message, Named, Ref, SetVar, Team, Time, Trigger, Variable)
 from pgmvox.play.objectives import Box, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.play.rules import Blitz, Bounds, Build, Effect, Item, Kit, Map, Match  # noqa: E402
+from pgmvox.play.rules import Blitz, Bounds, Build, Effect, Item, Kit, Map, Match, terrain_of  # noqa: E402
 
 ORDERS = 4
 POTION = Item("potion", name="`rPotion of Invisibility `7(15s)", effects=[Effect("invisibility", "15s")])
@@ -66,7 +66,8 @@ LOGIC = ([Area("seeker-cage", [Box(*CAGE)])] +
          [Trigger(f"round-{k + 1}", vanish(k)) for k in range(len(P.ROUNDS))] +
          [Compass("only-seekers", name="`3Closest Seeker"), Gamerules({"doTileDrops": False})])
 
-M = Map("Curio Square", "1.0.0", "Hide from the seekers until the time runs out!", "arcade", includes=[],
+M = Map("Curio Square", "1.0.0", "Hide from the seekers until the time runs out!", "arcade",
+        terrain=terrain_of(__file__), includes=[],
         rules=["Fall damage is disabled.", "Hiders' name tags are hidden.",
                "Every minute six of the fair's curiosities vanish."],
         objectives=O, parts=LOGIC,

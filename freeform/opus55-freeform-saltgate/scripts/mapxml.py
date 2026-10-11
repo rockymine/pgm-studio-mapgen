@@ -14,7 +14,7 @@ import plan as P  # noqa: E402
 from pgmvox.play.logic import (After, All, Completed, ControlPoint, Fill, MatchStarted, Message, Named,  # noqa: E402
                                Not, Ref, Trigger)
 from pgmvox.play.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402
-from pgmvox.play.rules import Build, Effect, Item, Kit, Map, Match, Respawn, Zone  # noqa: E402
+from pgmvox.play.rules import Build, Effect, Item, Kit, Map, Match, Respawn, Zone, terrain_of  # noqa: E402
 
 KITS = {"attackers": "attacker-kit", "defenders": "defender-kit"}
 STAGE_FILTER = {"1": "stage-1", "2": "stage-2", "3": "stage-3"}
@@ -69,6 +69,7 @@ DEFENDER = Kit(Item("arrow", 8, 40), id="defender-kit", parents=[BASE])
 
 M = Map("Saltgate", "0.1.0", "Attackers: take the Sea Gate, blow both powder stores, and carry the city's banner down "
         "to the Sea Gate. Defenders: hold out for 15 minutes.", "ad",
+        terrain=terrain_of(__file__),
         authors=["Claude (freeform generator)"], includes=[],
         objectives=O, kit=BASE, kits=[ATTACKER, DEFENDER], parts=LOGIC,
         build=Build(breakable=("obsidian", f"wool:{P.WOOL['colour']}"), message="The town's stones will not move."),

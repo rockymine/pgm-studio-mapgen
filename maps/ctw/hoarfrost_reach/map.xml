@@ -32,9 +32,6 @@
             <leggings material="chainmail leggings" unbreakable="true"/>
             <boots material="leather boots" unbreakable="true" team-color="true"/>
         </kit>
-        <kit id="fall-kill" force="true">
-            <effect duration="1" amplifier="5">instant damage</effect>
-        </kit>
     </kits>
     <teams>
         <team id="red-team" color="red" max="16">Red</team>
@@ -142,8 +139,6 @@
         </union>
         <apply block="blues-woolrooms-filter" region="blues-woolrooms" message="You may not edit the wool room!"/>
         <apply block-place="block-place-void-filter" block-break="block-break-void-filter" message="You may not edit the void!"/>
-        <below y="44" id="the-fall"/>
-        <apply kit="fall-kill" region="the-fall"/>
     </regions>
     <wools craftable="false">
         <wool team="blue-team" color="cyan" monument="cyan-blue-monument" location="-77.5,95,-54.5"/>
@@ -166,6 +161,13 @@
         </spawner>
     </spawners>
     <maxbuildheight>118</maxbuildheight>
+    <portals>
+        <portal y="@-64" sound="false" observers="never">
+            <region>
+                <below y="44"/>
+            </region>
+        </portal>
+    </portals>
     <block-drops>
         <rule>
             <filter>
@@ -197,6 +199,10 @@
         <item>leather chestplate</item>
         <item>chainmail leggings</item>
         <item>leather boots</item>
+        <item>flint</item>
+        <item>gravel</item>
+        <item>sapling</item>
+        <item>apple</item>
     </itemremove>
     <toolrepair>
         <tool>iron sword</tool>

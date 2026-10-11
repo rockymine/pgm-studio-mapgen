@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 
 from pgmvox.plan.raster import Symmetry  # noqa: E402
 from pgmvox.play.objectives import Box, Core, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.play.rules import Build, Item, Kit, Map  # noqa: E402
+from pgmvox.play.rules import Build, Item, Kit, Map, terrain_of  # noqa: E402
 
 O = Objectives(Teams(("red-team", "Red", "red", 16), ("blue-team", "Blue", "blue", 16)), Symmetry("half"))
 O.add(Observer((0, 80, 0), yaw=90))
@@ -20,6 +20,7 @@ O.add(Destroyable("red-holmstein", "Holmstein", "red-team", Box(-58, 63, -20, -5
 
 M = Map("Frostholm", "0.1.0", "Leak the core standing by the enemy's lighthouse, and break the monument on their lake "
         "knoll.", ["dtm", "dtc"],
+        terrain=terrain_of(__file__),
         authors=["Claude (freeform generator)"],
         contributors=[("rockymine", "Built the pine and spruce trees (tree showcase)")],
         objectives=O,

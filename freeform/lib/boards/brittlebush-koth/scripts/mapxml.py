@@ -3,7 +3,7 @@ sixteen leaves to bridge with, from which the kill reward follows; the golden ap
 the arrows on the landings; building only over the board; the score and the time.
 """
 import plan as P
-from pgmvox.play.rules import Build, Item, Kit, Map, Match, Spawner
+from pgmvox.play.rules import Build, Item, Kit, Map, Match, Spawner, terrain_of
 
 O = P.objectives()
 
@@ -13,6 +13,7 @@ for k, (x, z) in enumerate(P.APPLES):                # golden apples on the inne
 for k, (x, z) in enumerate(P.ARROWS):                # arrows on the landings
     O.add(Spawner(f"arrows-{k}", (x, P.LEVEL[0] + 1, z), [("arrow", 4)], delay="10s", max_entities=8), mirror=False)
 M = Map("Brittlebush KotH", "1.0.0", "Hold the hills: the Dais in the middle, and the islands between the spawns.", "koth",
+        terrain=terrain_of(__file__),
         authors=["Claude (freeform generator, pgmvox)"],
         objectives=O,
         kit=Kit(

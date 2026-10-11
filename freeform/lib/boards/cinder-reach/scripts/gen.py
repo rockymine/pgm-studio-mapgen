@@ -22,6 +22,7 @@ from scipy import ndimage
 
 import plan as P
 import common as C
+from pgmvox.play.rules import mark_ground
 from pgmvox import B, World, rng
 from pgmvox.built import build as BLD
 from pgmvox.scenery import trees as T
@@ -510,5 +511,6 @@ turn_world(w, "half", X < 0, recolour={(B.WOOL, 14): (B.WOOL, 11), (B.STAINED_GL
            banners={1: 4})
 O = P.objectives()
 O.stamp(w)
+mark_ground(w)                                  # the void rule reads the land at y 0
 w.save(sys.argv[1], "Cinder Reach", (0, 92, 0))
 print(f"saved {time.time() - t0:.1f}s: {int(np.count_nonzero(w.ids))} blocks, {len(w.tiles)} tile entities")

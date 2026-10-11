@@ -14,6 +14,8 @@ about twenty seconds.
 
 ## What was built, and why
 
+**The ground is marked at y 0 for the void rule.** The valley floats from y 27, so `gen.py` lays block 36 under its 36,650 columns of ground; without it PGM refused building everywhere outside the rift.
+
 **The arrangement is one valley floating in the void, mirrored across a rift twenty blocks wide.** The rift
 is the build zone and the only thing joining the teams, as *One objective, and air between the two sides*
 asks. Mirror symmetry makes the north of the whole board one town split by the rift and the south one stretch

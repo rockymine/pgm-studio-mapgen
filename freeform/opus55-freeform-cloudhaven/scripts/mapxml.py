@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 
 from pgmvox.plan.raster import Symmetry  # noqa: E402
 from pgmvox.play.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.play.rules import Build, Item, Kit, Map  # noqa: E402
+from pgmvox.play.rules import Build, Item, Kit, Map, terrain_of  # noqa: E402
 
 O = Objectives(Teams(("red-team", "Red", "red", 16), ("blue-team", "Blue", "blue", 16)), Symmetry("half"))
 O.add(Observer((0, 100, 0), yaw=90))
@@ -21,6 +21,7 @@ O.add(Destroyable("red-gardens", "Hanging Gardens", "red-team", Box(-71, 63, 59,
 
 M = Map("Cloudhaven", "0.1.0", "Break both of the enemy's monuments: one under the gazebo on Lantern Isle, one in the "
         "sunken garden of the Hanging Gardens.", "dtm",
+        terrain=terrain_of(__file__),
         authors=["Claude (freeform generator)"],
         contributors=[("rockymine", "Built the willow and dense oak trees (tree showcase)")],
         objectives=O,

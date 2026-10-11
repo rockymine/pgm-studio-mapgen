@@ -12,6 +12,8 @@ cd freeform/lib && python3 -m pgmvox.run boards/cinder-reach --build <scratch>/c
 The whole run takes about 100 seconds, and 90 of them are the read-back's four voxel walks. Generation takes two
 seconds.
 
+
+**The ground is marked at y 0 for the void rule.** The land floats clear of y 0, so `gen.py` lays block 36 under its 21,392 columns of ground; without it PGM refused building everywhere outside the build zone.
 ## How it plays
 
 **Each team's shelf is one floating island, and the only way across is the fissure, built over.** The fissure is

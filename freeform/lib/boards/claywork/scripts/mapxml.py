@@ -5,11 +5,12 @@ world is the kill.
 """
 import plan  # noqa: F401  (puts the library on the path)
 from plan import MAX_BUILD, objectives
-from pgmvox.play.rules import Build, Item, Kit, Map
+from pgmvox.play.rules import Build, Item, Kit, Map, terrain_of
 
 O = objectives()
 
 M = Map("Claywork", "1.0.0", "Capture the enemy's two wools from the Kilns in their back corners.", "ctw",
+        terrain=terrain_of(__file__),
         authors=["Claude (freeform generator, pgmvox)"],
         objectives=O,
         kit=Kit(

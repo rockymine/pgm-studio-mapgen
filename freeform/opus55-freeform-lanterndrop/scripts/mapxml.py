@@ -13,7 +13,7 @@ import plan as P
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "lib"))
 
 from pgmvox.play.objectives import Box, Objectives, Observer, Portal, Spawn, TouchPoint  # noqa: E402
-from pgmvox.play.rules import Build, Effect, Item, KillHeight, Kit, Map, Match, Zone  # noqa: E402
+from pgmvox.play.rules import Build, Effect, Item, KillHeight, Kit, Map, Match, Zone, terrain_of  # noqa: E402
 
 
 def box(b):
@@ -91,14 +91,14 @@ def main():
               id="players", clear=True, effects=[Effect("resistance", "2s", 5), Effect("health boost", amplifier=-2)],
               game_mode="survival", remove=["bucket"])
     M = Map("Lantern Drop", "1.0.0", "Drop down the broken pass and hold the most hills when the clock runs out.",
-            "arcade", includes=["void-death"], players=(1, 40),
+            "arcade", terrain=terrain_of(__file__), includes=["void-death"], players=(1, 40),
             rules=["A drop of nineteen kills unless it ends in water: a cistern, the paddies, the harbour or your "
                    "bucket.", "Touch a hill to take it; it scores for you until someone else touches it, even after "
                    "you die.", "The slipway in the harbour takes you back to the bell court."],
             objectives=O, kit=kit,
             build=Build(only=("water", "stationary water"), physics=False),   # a bucket's water, never the world's
             # a box under every landing: a player who misses it falls in and is put under the world
-            kill=[KillHeight(boxes=[box(b) for b in kill_boxes()], to=-150), KillHeight(-5, "portal")],
+            kill=[KillHeight(boxes=[box(b) for b in kill_boxes()], to=-150), KillHeight(-5)],
             match=Match(time=minutes * 60))
     print(M.xml())
 

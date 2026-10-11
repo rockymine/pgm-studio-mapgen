@@ -32,9 +32,6 @@
             <leggings material="chainmail leggings" unbreakable="true"/>
             <boots material="leather boots" unbreakable="true" team-color="true"/>
         </kit>
-        <kit id="fall-kill" force="true">
-            <effect duration="1" amplifier="5">instant damage</effect>
-        </kit>
     </kits>
     <teams>
         <team id="red-team" color="red" max="16">Red</team>
@@ -107,8 +104,6 @@
         <cuboid min="30,70,-70" max="31,73,-69" id="red-village-region"/>
         <cuboid min="-31,70,69" max="-30,73,70" id="blue-village-region"/>
         <apply block-place="block-place-void-filter" block-break="block-break-void-filter" message="You may not edit the void!"/>
-        <below y="8" id="the-fall"/>
-        <apply kit="fall-kill" region="the-fall"/>
     </regions>
     <renewables>
         <renewable region="red-spawn" renew-filter="spawn-minable"/>
@@ -121,6 +116,13 @@
         <destroyable id="blue-village" name="Blue Village Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-village-region"/>
     </destroyables>
     <maxbuildheight>120</maxbuildheight>
+    <portals>
+        <portal y="@-64" sound="false" observers="never">
+            <region>
+                <below y="8"/>
+            </region>
+        </portal>
+    </portals>
     <block-drops>
         <rule>
             <filter>
@@ -153,6 +155,14 @@
         <item>chainmail leggings</item>
         <item>leather boots</item>
         <item>obsidian</item>
+        <item>flint</item>
+        <item>gravel</item>
+        <item>sapling</item>
+        <item>apple</item>
+        <item>seeds</item>
+        <item>long grass</item>
+        <item>red rose</item>
+        <item>vine</item>
     </itemremove>
     <toolrepair>
         <tool>iron sword</tool>
