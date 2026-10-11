@@ -1388,7 +1388,7 @@ class WorldAndOutput(unittest.TestCase):
         nb = [e for e in x.getElementsByTagName("negative") if e.getAttribute("id") == "not-build-area"][0]
         r = nb.getElementsByTagName("rectangle")[0]
         self.assertEqual((r.getAttribute("min"), r.getAttribute("max")), ("-2,-2", "2,2"))
-        self.assertEqual(x.getElementsByTagName("maxbuildheight")[0].firstChild.data, "100")   # the studio's cap
+        self.assertEqual(x.getElementsByTagName("maxbuildheight")[0].firstChild.data, "120")
         self.assertEqual(x.getElementsByTagName("time")[0].firstChild.data, "1m30s")
         self.assertEqual(x.getElementsByTagName("spawner")[0].getAttribute("spawn-region"), "apples")
         self.assertEqual(duration(90), "1m30s")

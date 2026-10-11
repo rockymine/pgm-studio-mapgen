@@ -15,6 +15,7 @@ mkdir -p "$root/renders"
 if [ -f audit.py ]; then python3 audit.py > "$root/renders/audit.txt"; cat "$root/renders/audit.txt"; fi
 python3 gen.py "$build"
 (cd /tmp && dotnet run "$here/write_world.cs" -- "$build" "$world")
+python3 mapxml.py > "$here/map.xml"
 cp "$here/map.xml" "$world/map.xml"
 python3 renders.py "$build" "$root" "$RT"
 if [ -f annotate.py ]; then python3 annotate.py "$build" "$root/renders/05-topdown-annotated.png"; fi

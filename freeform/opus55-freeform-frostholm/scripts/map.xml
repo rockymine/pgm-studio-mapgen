@@ -1,19 +1,16 @@
 <map proto="1.5.0">
     <name>Frostholm</name>
     <version>0.1.0</version>
+    <objective>Leak the core standing by the enemy's lighthouse, and break the monument on their lake knoll.</objective>
     <gamemode>dtm</gamemode>
     <gamemode>dtc</gamemode>
-    <objective>Leak the core standing by the enemy's lighthouse, and break the monument on their lake knoll.</objective>
+    <include id="gapple-kill-reward"/>
     <authors>
         <author>Claude (freeform generator)</author>
     </authors>
     <contributors>
         <contributor contribution="Built the pine and spruce trees (tree showcase)">rockymine</contributor>
     </contributors>
-    <teams>
-        <team id="red-team" color="red" max="16">Red</team>
-        <team id="blue-team" color="blue" max="16">Blue</team>
-    </teams>
     <kits>
         <kit id="spawn-kit">
             <item slot="0" material="iron sword" unbreakable="true"/>
@@ -24,7 +21,7 @@
             <item slot="3" material="iron axe" unbreakable="true"/>
             <item slot="4" material="wood" amount="64"/>
             <item slot="5" material="wool" amount="32" team-color="true"/>
-            <item slot="6" material="golden apple" amount="1"/>
+            <item slot="6" material="golden apple"/>
             <item slot="7" material="water bucket"/>
             <item slot="8" material="cooked beef" amount="16"/>
             <item slot="28" material="arrow"/>
@@ -34,40 +31,104 @@
             <boots material="leather boots" unbreakable="true" team-color="true"/>
         </kit>
     </kits>
-    <spawns>
-        <default yaw="90" region="observer-spawn"/>
-        <spawn team="red-team" kit="spawn-kit" yaw="270" region="red-spawn-point"/>
-        <spawn team="blue-team" kit="spawn-kit" yaw="90" region="blue-spawn-point"/>
-    </spawns>
-    <cores>
-        <core id="red-core" name="The Beacon" team="red-team" leak="5" region="red-core-region"/>
-        <core id="blue-core" name="The Beacon" team="blue-team" leak="5" region="blue-core-region"/>
-    </cores>
-    <destroyables>
-        <destroyable id="red-holmstein" name="Holmstein" owner="red-team" materials="obsidian" region="red-monument"/>
-        <destroyable id="blue-holmstein" name="Holmstein" owner="blue-team" materials="obsidian" region="blue-monument"/>
-    </destroyables>
+    <teams>
+        <team id="red-team" color="red" max="16">Red</team>
+        <team id="blue-team" color="blue" max="16">Blue</team>
+    </teams>
     <filters>
         <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
         <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
     </filters>
+    <spawns>
+        <default yaw="90">
+            <region>
+                <point>0.5,80,0.5</point>
+            </region>
+        </default>
+        <spawn team="red-team" kit="spawn-kit" yaw="270">
+            <region>
+                <point>-59.5,57,-63.5</point>
+            </region>
+        </spawn>
+        <spawn team="blue-team" kit="spawn-kit" yaw="90">
+            <region>
+                <point>59.5,57,63.5</point>
+            </region>
+        </spawn>
+    </spawns>
     <regions>
-        <point id="red-spawn-point">-59.5,57,-63.5</point>
-        <point id="blue-spawn-point">59.5,57,63.5</point>
-        <point id="observer-spawn">0.5,80,0.5</point>
-        <rectangle id="red-spawn" min="-76,-69" max="-51,-58"/>
-        <rectangle id="blue-spawn" min="51,58" max="76,69"/>
-        <cuboid id="red-core-region" min="-29,59,-59" max="-26,62,-56"/>
-        <cuboid id="blue-core-region" min="26,59,56" max="29,62,59"/>
-        <cuboid id="red-monument" min="-58,63,-20" max="-57,65,-19"/>
-        <cuboid id="blue-monument" min="57,63,19" max="58,65,20"/>
-        <union id="spawns">
-            <region id="red-spawn"/>
-            <region id="blue-spawn"/>
-        </union>
-        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
-        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
-        <apply block="never" region="spawns" message="You may not edit the spawn!"/>
+        <cuboid min="-76,0,-69" max="-51,256,-58" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="51,0,58" max="76,256,69" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-29,59,-59" max="-26,62,-56" id="red-core-region"/>
+        <cuboid min="26,59,56" max="29,62,59" id="blue-core-region"/>
+        <cuboid min="-58,63,-20" max="-57,65,-19" id="red-holmstein-region"/>
+        <cuboid min="57,63,19" max="58,65,20" id="blue-holmstein-region"/>
     </regions>
+    <cores>
+        <core id="red-core" name="The Beacon" team="red-team" leak="5" mode-changes="true" region="red-core-region"/>
+        <core id="blue-core" name="The Beacon" team="blue-team" leak="5" mode-changes="true" region="blue-core-region"/>
+    </cores>
+    <destroyables>
+        <destroyable id="red-holmstein" name="Holmstein" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-holmstein-region"/>
+        <destroyable id="blue-holmstein" name="Holmstein" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-holmstein-region"/>
+    </destroyables>
     <maxbuildheight>96</maxbuildheight>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>wool</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>diamond pickaxe</item>
+        <item>iron axe</item>
+        <item>golden apple</item>
+        <item>water bucket</item>
+        <item>arrow</item>
+        <item>wood</item>
+        <item>wool</item>
+        <item>cooked beef</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>iron chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+        <item>obsidian</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>diamond pickaxe</tool>
+        <tool>iron axe</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16"/>
+            <item material="wool" amount="8" team-color="true"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
 </map>
+

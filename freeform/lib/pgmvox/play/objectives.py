@@ -174,29 +174,47 @@ class Objective:
 
 @dataclass
 class Spawn(Objective):
-    """A team's spawn: the block their feet stand in, the way they face, a kit, and the area kept to them.
-    protect: True keeps every block of the area as it is; a tuple of material names lets those be mined there
-    and grow back (a spawn's iron), everything else kept; False writes no rule."""
+    """A team's spawn: the block their feet stand in, the way they face, a kit, and the area kept to them (a Box, or a
+    list of them). protect: True keeps every block of the area as it is; a tuple of material names lets those be
+    mined there and grow back (a spawn's iron), everything else kept; False writes no rule. `filter` says who may
+    spawn here now; `spread` is a box spawned anywhere in; `points` are several (x, y, z, yaw) to spawn at, the one
+    farthest from the others when `far`, with `safe` keeping a player off a point where they would die."""
     team: str
     at: tuple
     yaw: int = 0
     kit: str = None
-    area: Box = None
+    area: object = None
     protect: object = True
-    filter: str = None                   # who may spawn here now: a filter's id
-    spread: Box = None                   # a box spawned anywhere in, in place of the one block
+    filter: str = None
+    spread: Box = None
+    points: list = None
+    far: bool = None
+    safe: bool = None
+
+    def boxes(self):
+        return [] if self.area is None else list(self.area) if isinstance(self.area, (list, tuple)) else [self.area]
 
     def turned(self, sym):
+        area = [b.image(sym) for b in self.boxes()]
         return replace(self, at=turn_point(self.at, sym), yaw=turn_yaw(self.yaw, sym),
-                       area=self.area.image(sym) if self.area else None,
-                       spread=self.spread.image(sym) if self.spread else None)
+                       area=area if isinstance(self.area, (list, tuple)) else area[0] if area else None,
+                       spread=self.spread.image(sym) if self.spread else None,
+                       points=[(*turn_point(p[:3], sym), turn_yaw(p[3], sym)) for p in self.points]
+                       if self.points else None)
 
     def write(self, doc, teams):
-        where = self.spread.cuboid() if self.spread else centre_el(self.at)
-        doc.child("spawns").append(E("spawn", E("region", where), team=self.team, kit=self.kit, filter=self.filter,
-                                     yaw=self.yaw))
-        if self.area:
-            rid = doc.region(f"{teams.short(self.team)}-spawn", self.area.cuboid())
+        if self.points:
+            where = E("regions", *[centre_el(p[:3], yaw=p[3]) for p in self.points])
+            yaw = None
+        else:
+            where = E("region", self.spread.cuboid() if self.spread else centre_el(self.at))
+            yaw = self.yaw
+        doc.child("spawns").append(E("spawn", where, team=self.team, kit=self.kit, filter=self.filter, yaw=yaw,
+                                     spread=self.far, safe=self.safe))
+        boxes = self.boxes()
+        if boxes:
+            shape = boxes[0].cuboid() if len(boxes) == 1 else union(*[b.cuboid() for b in boxes])
+            rid = doc.region(f"{teams.short(self.team)}-spawn", shape)
             if self.protect:
                 others = [t for t, _, _ in teams.teams if t != self.team]
                 if others:
@@ -217,7 +235,8 @@ class Spawn(Objective):
         return [] if _stands(w, self.at) else [f"{self.team} spawn at {self.at}: nowhere to stand"]
 
     def cells(self):
-        return self.area.cells() if self.area else {(self.at[0], self.at[2])}
+        boxes = self.boxes()
+        return set().union(*[b.cells() for b in boxes]) if boxes else {(self.at[0], self.at[2])}
 
     def marker(self):
         return (self.at[0], self.at[2], "S")
@@ -590,8 +609,8 @@ class ScoreBox(Objective):
 
 @dataclass
 class Portal(Objective):
-    """A portal from a box to a block a player lands standing in, facing yaw, for those `filter` lets through; or, with
-    `to_box`, to anywhere in that box."""
+    """A portal from a box to a block a player lands standing in, facing yaw, for those `filter` lets through (a team's
+    portal, by default, for that team alone); or, with `to_box`, to anywhere in that box."""
     id: str
     box: Box
     to: tuple = None
@@ -607,13 +626,14 @@ class Portal(Objective):
     def write(self, doc, teams):
         rid = doc.region(self.id, self.box.cuboid())
         yaw = None if self.yaw is None else f"@{self.yaw}"
+        who = self.filter or (f"only-{teams.short(self.team)}" if self.team else None)
         if self.to_box:
             dest = doc.region(f"{self.id}-to", self.to_box.cuboid())
-            doc.child("portals").append(E("portal", region=rid, destination=dest, yaw=yaw, filter=self.filter))
+            doc.child("portals").append(E("portal", region=rid, destination=dest, yaw=yaw, filter=who))
             return
         x, y, z = self.to
         doc.child("portals").append(E("portal", region=rid, x=f"@{x + 0.5}", y=f"@{y}", z=f"@{z + 0.5}",
-                                      yaw=yaw, filter=self.filter))
+                                      yaw=yaw, filter=who))
 
     def check(self, w):
         if self.to_box:

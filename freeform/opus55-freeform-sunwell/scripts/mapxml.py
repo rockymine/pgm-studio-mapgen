@@ -1,10 +1,25 @@
 """Write Sunwell's map.xml from the plan: every hill's box, the spawn shelf, the spring, the water the board is built
-with (which nobody may scoop up), all from the plan's own numbers.
+with (which nobody may scoop up), all from the plan's own numbers. Every box here is (x0, y0, z0, x1, y1, z1) with
+an exclusive max, as a PGM cuboid reads it.
 
     python3 mapxml.py > map.xml
 """
+import os
+import sys
+
 import gen as G
 import plan as P
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "lib"))
+
+from pgmvox.play.objectives import Box, Objectives, Observer, Portal, Spawn, TouchPoint  # noqa: E402
+from pgmvox.play.rules import Build, Effect, Item, Kit, Map, Match, Zone  # noqa: E402
+
+
+def box(b):
+    """An exclusive-max box as the library's inclusive one."""
+    x0, y0, z0, x1, y1, z1 = b
+    return Box(x0, y0, z0, x1 - 1, max(y1 - 1, y0), z1 - 1)
 
 
 def hill_boxes():
@@ -44,70 +59,33 @@ def built_water():
 
 
 def main():
-    o = []
-    a = o.append
     sx0, sx1 = P.SPAWN["x"]
     sz0, sz1 = P.SPAWN["z"]
     top = P.TOP + 1
-    a('<map proto="1.5.0">')
-    a('<name>Sunwell</name>')
-    a('<version>1.0.0</version>')
-    a('<objective>Drop down the sinkhole and hold the most hills when the clock runs out.</objective>')
-    a('<gamemode>arcade</gamemode>')
-    a('<rules><rule>Every drop kills unless it ends in water: hit a pool, place a bucket, or ride the falls.</rule>'
-      '<rule>Touch a hill to take it; it scores for you until someone else touches it, even after you die.</rule>'
-      '<rule>The spring in the lake takes you back to the top.</rule></rules>')
-    a('<players min="1" max="40" colors="true"/>')
-    a('<kits>')
-    a('    <kit id="players">')
-    a('        <clear/>')
-    for slot in range(3):
-        a(f'        <item slot="{slot}" locked="true" name="`b`lWater Drop" material="water bucket"/>')
-    a('        <effect duration="3s" amplifier="5">resistance</effect>')
-    a('        <effect duration="oo" amplifier="-2">health boost</effect>')
-    a('        <game-mode>survival</game-mode>')
-    a('    </kit>')
-    a('</kits>')
-    a('<spawns>')
-    a(f'    <spawn kit="players" yaw="0"><region><cuboid min="{sx0},{top},{sz0}" max="{sx1 + 1},{top},{sz1 + 1}"/></region></spawn>')
-    a(f'    <default yaw="0"><region><point>0.5,{P.TOP + 12},-14.5</point></region></default>')
-    a('</spawns>')
-    a('<filters>')
-    a('    <any id="water"><material>water</material><material>stationary water</material></any>')
-    for hid, name, pts, box in hill_boxes():
-        a(f'    <not id="holding-{hid}"><objective>{hid}</objective></not>')
-    a('</filters>')
-    a('<regions>')
-    a(f'    <cuboid id="spawn-shelf" min="-32,{P.TOP - P.THICK},-32" max="32,256,32"/>')
-    a(f'    <cuboid id="top-shelf" min="{sx0},{top},{sz0}" max="{sx1 + 1},{top},{sz1 + 1}"/>')
-    a('    <union id="built-water">')
-    for x0, y0, z0, x1, y1, z1 in built_water():
-        a(f'        <cuboid min="{x0},{y0},{z0}" max="{x1},{y1},{z1}"/>')
-    a('    </union>')
+    shelf = box((sx0, top, sz0, sx1 + 1, top, sz1 + 1))                    # where players come in
     x0, x1 = P.SPRING["x"]
     z0, z1 = P.SPRING["z"]
-    a(f'    <cuboid id="spring" min="{x0},{P.LAKE_Y - 2},{z0 + 1}" max="{x1 + 1},{P.LAKE_Y + 4},{z1 + 5}"/>')
-    for hid, name, pts, (bx0, by0, bz0, bx1, by1, bz1) in hill_boxes():
-        a(f'    <cuboid id="{hid}-box" min="{bx0},{by0},{bz0}" max="{bx1},{by1},{bz1}"/>')
-    a('    <apply region="built-water" block-break="never" block-place="never" message="This water belongs to the well."/>')
-    a('    <apply region="spawn-shelf" block-place="never"/>')
-    a('    <apply block-place="water" block-break="water" block-physics="never"/>')
-    a('</regions>')
-    a('<damage><deny><region id="spawn-shelf"/></deny></damage>')
-    a('<score/>')
-    a('<control-points required="false" neutral-state="false" capture-time="0.1s" capture-rule="lead" show="false">')
-    for hid, name, pts, box in hill_boxes():
-        a(f'    <control-point id="{hid}" name="{name}" points="{pts}" capture="{hid}-box" captured="{hid}-box" '
-          f'player-filter="holding-{hid}"/>')
-    a('</control-points>')
-    a(f'<time>{P.TIME}</time>')
-    a('<portals sound="true">')
-    a('    <portal region="spring" destination="top-shelf" yaw="@0"/>')
-    a('</portals>')
-    a('<itemremove><item>bucket</item><item>water bucket</item></itemremove>')
-    a('<hunger><depletion>off</depletion></hunger>')
-    a('</map>')
-    print("\n".join(o))
+    O = Objectives()
+    O.add(Spawn(None, (sx0, top, sz0), kit="players", spread=shelf))
+    O.add(Observer((0, P.TOP + 12, -15)))
+    O.add(Zone("spawn-shelf", [box((-32, P.TOP - P.THICK, -32, 32, 256, 32))], place=False, damage=False))
+    O.add(Zone("built-water", [box(b) for b in built_water()], place=False, break_=False,
+               message="This water belongs to the well."))
+    O.add(Portal("spring", box((x0, P.LAKE_Y - 2, z0 + 1, x1 + 1, P.LAKE_Y + 4, z1 + 5)), yaw=0, to_box=shelf))
+    for hid, name, pts, b in hill_boxes():
+        O.add(TouchPoint(hid, name, box(b), points=pts))
+    kit = Kit(*[Item("water bucket", slot, locked=True, name="`b`lWater Drop") for slot in range(3)],
+              id="players", clear=True, effects=[Effect("resistance", "3s", 5), Effect("health boost", "oo", -2)],
+              game_mode="survival", remove=["bucket"])
+    M = Map("Sunwell", "1.0.0", "Drop down the sinkhole and hold the most hills when the clock runs out.", "arcade",
+            includes=[], players=(1, 40),
+            rules=["Every drop kills unless it ends in water: hit a pool, place a bucket, or ride the falls.",
+                   "Touch a hill to take it; it scores for you until someone else touches it, even after you die.",
+                   "The spring in the lake takes you back to the top."],
+            objectives=O, kit=kit,
+            build=Build(only=("water", "stationary water"), physics=False),
+            match=Match(time=int(P.TIME.rstrip("m")) * 60))
+    print(M.xml())
 
 
 if __name__ == "__main__":

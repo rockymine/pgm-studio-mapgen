@@ -27,7 +27,6 @@ KILL_REWARD_INCLUDE = "gapple-kill-reward"
 VOID_MESSAGE = "You may not edit the void!"
 OVER_VOID = ("log", "log 2", "leaves", "leaves 2", "long grass", "yellow flower", "red rose", "double plant",
              "water lily", "vine")
-MAX_BUILD_HEIGHT = 100
 
 
 # ---- the kit ----------------------------------------------------------------------------------------------------
@@ -161,7 +160,7 @@ class Build:
     less `holes`; with no area, only where a column has a block at y 0 (the land, and the build zones marked with
     block 36); `void` False lets a player build anywhere; `never` refuses it everywhere, and `use` False refuses
     using a block too; `only` lets a player place and break those materials and nothing else, and `physics` False
-    holds every block as it is. `max_height` is the build height, held to the studio's 100."""
+    holds every block as it is. `max_height` is the build height."""
     areas: list = field(default_factory=list)
     holes: list = field(default_factory=list)
     max_height: int = None
@@ -194,7 +193,7 @@ class Build:
             doc.apply(block_place="block-place-void-filter", block_break="block-break-void-filter", region=region,
                       message=self.message or VOID_MESSAGE)
         if self.max_height is not None:
-            doc.add(E("maxbuildheight", text=min(self.max_height, MAX_BUILD_HEIGHT)))
+            doc.add(E("maxbuildheight", text=self.max_height))
 
 
 def _rect(r):
@@ -217,8 +216,11 @@ class Match:
     broadcasts: list = field(default_factory=list)
     respawn: object = None               # a Respawn
     time_of_day: int = None              # the world's clock held at these ticks
+    rage: bool = False                   # every hit kills
 
     def write(self, doc):
+        if self.rage:
+            doc.add(E("rage"))
         if self.score is not None or self.kills is not None:
             score = doc.child("score")
             for tag, v in (("limit", self.score), ("kills", self.kills), ("deaths", self.deaths)):
@@ -396,6 +398,20 @@ class Zone(Objective):
 
     def cells(self):
         return set().union(*[b.cells() for b in self.boxes])
+
+
+@dataclass
+class Bounds(Objective):
+    """The edge of play: nobody may go outside `box`, nor build out there when `build` is False."""
+    box: object
+    message: str = "You may not leave the map!"
+    build: bool = True
+    id: str = "outside"
+    team: str = None
+
+    def write(self, doc, teams):
+        rid = doc.region(self.id, negative(self.box.cuboid()))
+        doc.apply(enter="never", block=None if self.build else "never", region=rid, message=self.message)
 
 
 # ---- the whole map --------------------------------------------------------------------------------------------------

@@ -1,18 +1,15 @@
 <map proto="1.5.0">
     <name>Riftwater</name>
     <version>0.1.0</version>
-    <gamemode>dtm</gamemode>
     <objective>Destroy both of the enemy's monuments: one in their market square, one on their village green.</objective>
+    <gamemode>dtm</gamemode>
+    <include id="gapple-kill-reward"/>
     <authors>
         <author>Claude (freeform generator)</author>
     </authors>
     <contributors>
         <contributor contribution="Built the oak and birch trees (tree showcase)">rockymine</contributor>
     </contributors>
-    <teams>
-        <team id="red-team" color="red" max="16">Red</team>
-        <team id="blue-team" color="blue" max="16">Blue</team>
-    </teams>
     <kits>
         <kit id="spawn-kit">
             <item slot="0" material="iron sword" unbreakable="true"/>
@@ -23,7 +20,7 @@
             <item slot="3" material="iron axe" unbreakable="true"/>
             <item slot="4" material="wood" amount="64"/>
             <item slot="5" material="stained clay" amount="32" team-color="true"/>
-            <item slot="6" material="golden apple" amount="1"/>
+            <item slot="6" material="golden apple"/>
             <item slot="7" material="water bucket"/>
             <item slot="8" material="cooked beef" amount="16"/>
             <item slot="28" material="arrow"/>
@@ -33,45 +30,127 @@
             <boots material="leather boots" unbreakable="true" team-color="true"/>
         </kit>
     </kits>
-    <spawns>
-        <default yaw="90" region="observer-spawn"/>
-        <spawn team="red-team" kit="spawn-kit" yaw="270" region="red-spawn-point"/>
-        <spawn team="blue-team" kit="spawn-kit" yaw="90" region="blue-spawn-point"/>
-    </spawns>
-    <destroyables>
-        <destroyable id="red-square" name="Market Square Monument" owner="red-team" materials="obsidian" region="red-square-monument"/>
-        <destroyable id="red-green" name="Winding Green Monument" owner="red-team" materials="obsidian" region="red-green-monument"/>
-        <destroyable id="blue-square" name="Market Square Monument" owner="blue-team" materials="obsidian" region="blue-square-monument"/>
-        <destroyable id="blue-green" name="Winding Green Monument" owner="blue-team" materials="obsidian" region="blue-green-monument"/>
-    </destroyables>
+    <teams>
+        <team id="red-team" color="red" max="16">Red</team>
+        <team id="blue-team" color="blue" max="16">Blue</team>
+    </teams>
     <filters>
         <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
         <team id="only-blue">blue-team</team>
-        <not id="no-void">
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
+        <not id="block-place-void-filter">
             <void/>
         </not>
+        <any id="block-break-void-filter">
+            <all>
+                <any>
+                    <material>log</material>
+                    <material>log 2</material>
+                    <material>leaves</material>
+                    <material>leaves 2</material>
+                    <material>long grass</material>
+                    <material>yellow flower</material>
+                    <material>red rose</material>
+                    <material>double plant</material>
+                    <material>water lily</material>
+                    <material>vine</material>
+                </any>
+                <void/>
+            </all>
+            <filter id="block-place-void-filter"/>
+        </any>
     </filters>
+    <spawns>
+        <spawn team="red-team" kit="spawn-kit" yaw="270">
+            <region>
+                <point>-97.5,60,-6.5</point>
+            </region>
+        </spawn>
+        <spawn team="blue-team" kit="spawn-kit" yaw="90">
+            <region>
+                <point>97.5,60,-6.5</point>
+            </region>
+        </spawn>
+        <default yaw="90">
+            <region>
+                <point>0.5,80,0.5</point>
+            </region>
+        </default>
+    </spawns>
     <regions>
-        <point id="red-spawn-point">-97.5,60,-6.5</point>
-        <point id="blue-spawn-point">97.5,60,-6.5</point>
-        <point id="observer-spawn">0.5,80,0.5</point>
-        <rectangle id="red-spawn" min="-108,-14" max="-84,0"/>
-        <rectangle id="blue-spawn" min="84,-14" max="108,0"/>
-        <cuboid id="red-square-monument" min="-66,56,-44" max="-65,58,-43"/>
-        <cuboid id="red-green-monument" min="-66,54,48" max="-65,56,49"/>
-        <cuboid id="blue-square-monument" min="65,56,-44" max="66,58,-43"/>
-        <cuboid id="blue-green-monument" min="65,54,48" max="66,56,49"/>
-        <union id="spawns">
-            <region id="red-spawn"/>
-            <region id="blue-spawn"/>
-        </union>
+        <cuboid min="-108,0,-14" max="-84,128,0" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="84,0,-14" max="108,128,0" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-66,56,-44" max="-65,58,-43" id="red-square-region"/>
+        <cuboid min="65,56,-44" max="66,58,-43" id="blue-square-region"/>
+        <cuboid min="-66,54,48" max="-65,56,49" id="red-green-region"/>
+        <cuboid min="65,54,48" max="66,56,49" id="blue-green-region"/>
         <negative id="not-build-area">
-            <rectangle id="the-rift" min="-16,-88" max="16,88"/>
+            <rectangle min="-16,-88" max="16,88"/>
         </negative>
-        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
-        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
-        <apply block="never" region="spawns" message="You may not edit the spawn!"/>
-        <apply block="no-void" region="not-build-area" message="You may only bridge over the rift!"/>
+        <apply block-place="block-place-void-filter" block-break="block-break-void-filter" region="not-build-area" message="You may only bridge over the rift!"/>
     </regions>
+    <destroyables>
+        <destroyable id="red-square" name="Market Square Monument" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-square-region"/>
+        <destroyable id="blue-square" name="Market Square Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-square-region"/>
+        <destroyable id="red-green" name="Winding Green Monument" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-green-region"/>
+        <destroyable id="blue-green" name="Winding Green Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-green-region"/>
+    </destroyables>
     <maxbuildheight>90</maxbuildheight>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>stained clay</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>diamond pickaxe</item>
+        <item>iron axe</item>
+        <item>golden apple</item>
+        <item>water bucket</item>
+        <item>arrow</item>
+        <item>wood</item>
+        <item>stained clay</item>
+        <item>cooked beef</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>iron chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+        <item>obsidian</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>diamond pickaxe</tool>
+        <tool>iron axe</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16"/>
+            <item material="stained clay" amount="8" team-color="true"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
 </map>
+

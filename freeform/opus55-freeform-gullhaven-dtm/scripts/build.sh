@@ -15,6 +15,7 @@ mkdir -p "$root/renders"
 python3 compose.py "$build"
 rm -rf "$world/region"
 (cd /tmp && dotnet run "$here/write_world.cs" -- "$build" "$world")
+python3 mapxml.py > "$here/map.xml"
 cp "$here/map.xml" "$world/map.xml"
 python3 renders.py "$build" "$root" "$RT"
 python3 walk.py "$build" > "$root/renders/walks.txt"; cat "$root/renders/walks.txt"

@@ -12,6 +12,7 @@ RT="dotnet /home/user/pgm-studio/tools/PgmStudio.RoundTrip/bin/Debug/net10.0/Pgm
 cd "$here"
 python3 gen.py "$build"
 dotnet run write_world.cs -- "$build" "$world"
+python3 mapxml.py > "$here/map.xml"
 cp "$here/map.xml" "$world/map.xml"
 python3 renders.py "$build" "$root" "$RT"
 python3 annotate.py "$build" "$root/renders/05-topdown-annotated.png"
