@@ -23,6 +23,7 @@ import numpy as np
 import plan as P
 from pgmvox import B, World, props
 from pgmvox.brittle import CELL, build, house
+from pgmvox.brittle import zone_ring
 from pgmvox.orient import turn_world
 
 cells, team = P.cells()
@@ -69,6 +70,12 @@ for k in range(1, 4):
     for (cx, cz), t in team.items():
         if t == k - 1:
             mask[cx * CELL - w.x0:(cx + 1) * CELL - w.x0, cz * CELL - w.z0:(cz + 1) * CELL - w.z0] = True
+    zone = {(cx * CELL + i, cz * CELL + j) for (cx, cz), t in team.items() if t == k - 1 and cells[(cx, cz)].kind == "gap"
+            for i in range(CELL) for j in range(CELL)}
+    for x, z in zone_ring(zone):                                  # and the cobwebs round its build zones
+        i, j = x - w.x0, z - w.z0
+        if 0 <= i < w.sx and 0 <= j < w.sz and w.ids[i, 1, j] == B.COBWEB and np.count_nonzero(w.ids[i, :, j]) == 1:
+            mask[i, j] = True
     recolour = {}
     for a, b in ((P.DYES[k - 1], P.DYES[k]), (P.KEEP_DYES[k - 1], P.KEEP_DYES[k])):
         for bid in (B.WOOL, B.STAINED_CLAY, B.STAINED_PANE, B.STAINED_GLASS, B.CARPET):

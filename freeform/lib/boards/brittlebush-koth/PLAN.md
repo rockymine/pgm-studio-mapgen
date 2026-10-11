@@ -31,7 +31,7 @@ along the board's edge; in I they mark the cells with water at the foot of the v
 | Flat | level ground at one of six levels: 7, 10, 13, 16, 19, 22 |
 | Stair | one cell climbing one level, three blocks in five, slab and block in turn |
 | Keep | a team's spawn, three cells by three at 22, a house stacked of whole cells in its corner |
-| Gap | void a player builds over, cobwebs on the floor of the void where it meets the open void |
+| Gap | void a player builds over, ringed by cobwebs at y 1 two blocks outside it, over the open void |
 | Water | void with water at its foot, which marks it without cobwebs |
 
 **A piece's finish follows from its shape.** A piece that is a rectangle two cells or more each way gets a bed of

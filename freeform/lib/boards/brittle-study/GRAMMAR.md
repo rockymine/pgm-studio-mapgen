@@ -50,7 +50,7 @@ keeps only the top of the face: rim, brick, black clay. A run of hollow two cell
 two wide at its middle. A hollow along one side is an under-section; a line through a piece is a tunnel.
 
 **Water marks itself and a bare zone is marked by cobwebs.** Water lies at the foot of the void with no kerb,
-since PGM holds it still. A bare zone carries a cobweb at the middle of each edge that faces the open void.
+since PGM holds it still. A bare zone is ringed by cobwebs at y 1, two blocks outside it, wherever that column is open void.
 
 ## Where the rules live now
 
@@ -62,7 +62,7 @@ since PGM holds it still. A bare zone carries a cobweb at the middle of each edg
 | Face | `cap()` and its `panel` | course order, panel geometry, the five-block rule |
 | House | `house()` | wall courses, eave pattern, terrace, beacon |
 | Hollow | `_under()`, `_pillars()` | deck depth, pillar motif |
-| Zones | `build()` | cobweb spacing |
+| Zones | `build()`, `zone_ring()` | the ring two blocks out |
 
 **Every row of that table is a choice of blocks over a rule that would serve any style.** The rules (sections,
 exposure, alternation per cell, storeys of cells, roofs as sections) are the reusable part. The blocks and their

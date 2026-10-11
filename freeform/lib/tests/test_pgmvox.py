@@ -1580,6 +1580,19 @@ class Brittle(unittest.TestCase):
         self.assertEqual((w.id(2, 24, 2), w.get(2, 25, 2)), (B.BEACON, (B.STAINED_GLASS, 4)))
         self.assertEqual((w.id(2, 11, 9), w.id(2, 11, 8)), (B.AIR, B.COBWEB))        # the door, cobwebs inside
 
+    def test_a_build_zone_is_ringed_by_cobwebs_two_blocks_out(self):
+        from pgmvox import brittle as BR
+        w = World(-20, -20, 40, 40, sy=40)
+        cells = {(0, 0): BR.Cell("gap"), (1, 0): BR.Cell("gap"), (-1, 0): BR.Cell("flat", 10, section="land")}
+        BR.build(w, cells)
+        webs = {(x, z) for x in range(-20, 20) for z in range(-20, 20) if w.id(x, 1, z) == B.COBWEB}
+        zone = {(x, z) for x in range(0, 10) for z in range(0, 5)}
+        self.assertTrue(webs.isdisjoint(zone))
+        self.assertTrue({(5, -2), (5, 6), (11, 2), (11, -2), (11, 6)} <= webs)       # sides and corners
+        self.assertFalse(any(-5 <= x <= -1 and 0 <= z <= 4 for x, z in webs))       # not on the land
+        self.assertIn((-2, -2), webs)                                                # but over the void beside it
+        self.assertEqual(w.id(3, 0, 2), 36)
+
     def test_sections_outline_each_other_and_panels_need_a_full_drop(self):
         from pgmvox import brittle as BR
         unit = {(a, b): BR.Cell("flat", 16, section="a" if b < -2 else "b") for a in (-4, -3) for b in (-4, -3, -2, -1)}

@@ -17,7 +17,8 @@ A cell is one of a handful of pieces, its y the floor block:
               the deck, the deck's edge capped without black clay, a dark-oak pillar mid-way along a long open side
     stair     one level up, three blocks in five, toward `rises`, from a floor at y: a stone-brick slab and a stone-brick
               block in turn, half a block a row
-    gap       void a player builds over: block 36 at y 0, and a cobweb mid-way along each edge it shares with void
+    gap       void a player builds over: block 36 at y 0, and round the whole zone a ring of cobwebs at y 1, two
+              blocks outside it, wherever that column is open void
     water     a gap with water at its foot, no kerb and no cobwebs: the water marks it, and PGM holds it still
     void      nothing
 
@@ -315,6 +316,7 @@ def build(w, cells, only=None, rng=None, dye=14, fill=None, style=STYLE, grown=N
     def cell_of(x, z):
         return (x // CELL, z // CELL)
 
+    zone = set()
     for (cx, cz) in sorted(only):                                          # the zones, the hollows, the stairs
         c = cells[(cx, cz)]
         x0, z0 = cx * CELL, cz * CELL
@@ -325,12 +327,8 @@ def build(w, cells, only=None, rng=None, dye=14, fill=None, style=STYLE, grown=N
             if c.kind == "water":                  # water marks itself: no cobwebs, no kerb; PGM holds it still
                 for x, z in cols:
                     w.set(x, 1, z, B.WATER)
-            else:                                                          # a cobweb mid-edge where it meets void
-                for d, (dx, dz) in DIRS.items():
-                    if cells.get((cx + dx, cz + dz), Cell("void")).kind == "void":
-                        ex = x0 + (CELL - 1 if dx > 0 else 0 if dx < 0 else 2)
-                        ez = z0 + (CELL - 1 if dz > 0 else 0 if dz < 0 else 2)
-                        w.set(ex, 1, ez, B.COBWEB)
+            else:
+                zone.update(cols)
         elif c.kind == "stacked" and c.under:
             _under(w, c, x0, z0, cells, Gr, T, rng)
         elif c.kind == "stair":
@@ -370,6 +368,20 @@ def build(w, cells, only=None, rng=None, dye=14, fill=None, style=STYLE, grown=N
         c = cells[p]
         if c.kind == "stacked" and c.under:
             _pillars(w, c, p[0] * CELL, p[1] * CELL, cells)
+    every = {(cx * CELL + i, cz * CELL + k) for (cx, cz), c in cells.items() if c.kind == "gap"
+             for i in range(CELL) for k in range(CELL)}
+    for x, z in zone_ring(every, zone):                                    # cobwebs round the build zones
+        if (x, z) not in T and w.id(x, 1, z) == B.AIR:
+            w.set(x, 1, z, B.COBWEB)
+
+
+def zone_ring(zone, near=None, out=2):
+    """The columns `out` blocks outside a build zone (a set of columns), a closed ring round it, corners and all;
+    with `near`, only the part of it within `out` of those columns (one team's share of a zone the teams share)."""
+    def within(cols, r):
+        return {(x + dx, z + dz) for x, z in cols for dx in range(-r, r + 1) for dz in range(-r, r + 1)}
+    ring = within(zone, out) - within(zone, out - 1)
+    return sorted(ring if near is None else ring & within(near, out))
 
 
 def _under(w, c, x0, z0, cells, G, T, rng):
