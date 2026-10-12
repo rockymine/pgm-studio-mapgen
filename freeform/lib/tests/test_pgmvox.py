@@ -758,6 +758,56 @@ class Forms(unittest.TestCase):
         self.assertTrue((cols[:, 20:28] != 0).any())                        # but ledges below it
 
 
+class Sweep(unittest.TestCase):
+    """A swept land bridge: its sizes are what it was asked for, and its sides carry no teeth."""
+
+    def setUp(self):
+        from pgmvox.scenery import forms
+        self.forms = forms
+        self.w = World(-60, -20, 120, 40, sy=64)
+
+    def sides(self, m):
+        """The outermost z on each side for every (x, y) the solid occupies, and how many are teeth."""
+        idx = np.arange(m.shape[2])[None, None, :]
+        occ = m.any(axis=2)
+        spikes = 0
+        for edge in (np.where(m, idx, 99).min(axis=2), np.where(m, idx, -1).max(axis=2)):
+            e = np.where(occ, edge, np.nan)
+            a, b, c = e[:-2], e[1:-1], e[2:]
+            ok = np.isfinite(a) & np.isfinite(b) & np.isfinite(c)
+            spikes += int((ok & (((b > a) & (b > c)) | ((b < a) & (b < c)))).sum())
+        return occ, spikes
+
+    def test_a_smooth_sweep_is_the_size_it_was_asked_for(self):
+        F = self.forms
+        m = F.sweep(self.w, [(-50, 0), (50, 0)], 30, F.flare(3, 8, 2), 4, F.flare(4, 12, 2))
+        crown = m[60]                                                     # x = 0: the column at the middle
+        ys, zs = np.nonzero(crown)
+        self.assertEqual((zs.min() - 20, zs.max() - 20), (-2, 2))           # under 3 from the path at z 0
+        self.assertEqual((ys.min(), ys.max()), (27, 33))                   # under 4 from the centre at y 30
+        np.testing.assert_array_equal(m[:, :, 1:], m[:, :, :0:-1])        # the same either side of the path
+        end = m[15]                                                       # x = -45, near the end: wider and deeper
+        self.assertGreater(np.ptp(np.nonzero(end)[1]), np.ptp(zs))
+        self.assertLess(np.nonzero(end)[0].min(), ys.min())
+        self.assertFalse(m[:, :, :8].any() or m[:, :, 32:].any())          # nothing beyond its widest reach
+
+    def test_a_swept_bridge_has_no_teeth_where_dropped_rows_have_many(self):
+        F = self.forms
+        rough = F.sweep(self.w, [(-50, 0), (50, 0)], F.flare(40, 32, 2), F.flare(3.5, 7, 3), F.flare(3, 10, 2),
+                        F.flare(3, 22, 2.2), rough=0.28, seed=3)
+        occ, spikes = self.sides(rough)
+        self.assertLess(spikes / occ.sum(), 0.01)
+        rng = np.random.default_rng(0)
+        dropped = np.zeros_like(rough)                                      # the column-by-column way: a box six
+        dropped[10:110, 30:40, 17:23] = True                                # wide, each outer row dropped at random
+        for x in range(10, 110):
+            for z in (17, 22):
+                if rng.random() < 0.6:
+                    dropped[x, :, z] = False
+        occ, spikes = self.sides(dropped)
+        self.assertGreater(spikes / occ.sum(), 0.15)
+
+
 class PlacedBoxes(unittest.TestCase):
     def test_a_box_is_sunk_by_its_share_and_keeps_what_is_not_soft(self):
         w = World(-20, -20, 41, 41, sy=60)

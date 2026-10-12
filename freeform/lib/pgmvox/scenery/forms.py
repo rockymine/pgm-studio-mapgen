@@ -3,6 +3,8 @@
     tower(w, cx, cz, 28, 90, r=5, rock=lambda y, b: beds(y + int(4 * b)), rng=r, tree=pine)
     skirt(w, land, floor, rock=beds, rng=r)        # karst faces under a floating floor's rim
     root_vines(w, land, floor, bottom, rng=r)      # vines hanging from the tips of the roots
+    span = sweep(w, [(-58, 0), (58, 0)], flare(68, 60, 2), flare(3.5, 7, 3), flare(3, 10, 2), flare(3, 22, 2.2),
+                 rough=0.28)                     # a land bridge over a canyon, as a mask over the world
 
 **A tower is a stack of rings, and its rings are what make it read as built.** Each course is a disc whose radius
 tapers from `taper[0]` to `taper[1]` of r up the tower; every `ledge_every` blocks a course juts out `ledge`
@@ -11,6 +13,11 @@ so the faces bulge between the ledges. Rock laid by height shows its beds as cou
 
 A heightfield spire has none of this: one surface, its sides a single slope, no ledge and nothing overhanging.
 The karst towers were drawn this way and a spire in their place read as plain terrain, so the recipe is kept here.
+
+**A swept solid has no teeth.** `sweep` carries a cross-section along a path and states every size in it as a
+smooth function of how far along the span it is, so a side can only bulge across many blocks; roughness comes from
+smooth noise over (along, round the section), never from a choice per column. A box whose edge rows are dropped
+column by column at random steps in and out by one block along its whole length.
 
 **A skirt turns a floating floor's box sides into a cliff,** never touching the walked top: rock bulges out under
 the rim in ledges no higher than two under the floor, is cut back under it where the noise is low, carries moss,
@@ -21,7 +28,7 @@ from scipy import ndimage
 
 from pgmvox.geom import noise
 from pgmvox.core.blocks import B
-from pgmvox.geom.shapes import distance_in, edge_depth
+from pgmvox.geom.shapes import distance_in, edge_depth, polyline
 
 SIDES = ((1, 0, 2), (-1, 0, 8), (0, 1, 4), (0, -1, 1))       # (dx, dz, the vine bit that hangs it on the block back)
 
@@ -187,6 +194,56 @@ def _along_span(curve, t):
         return curve(t)
     crown, end, power = curve
     return int(round(crown + (end - crown) * t ** power))
+
+
+def flare(crown, end, power):
+    """A size along a span: `crown` in the middle, growing to `end` at both ends as |2t - 1| ** power, t from 0 to
+    1. A higher power keeps the middle at the crown's size longer and grows it nearer the ends."""
+    return lambda t: crown + (end - crown) * np.abs(2 * np.asarray(t, float) - 1) ** power
+
+
+def sweep(w, path, centre_y, half_width, above, below, power=3.0, rough=0.0, cell=14, seed=0):
+    """A solid swept along `path` (x, z points), as a boolean mask over the world (w.ids' shape). At each point a
+    cross-section: `half_width` across, rising `above` over `centre_y` and hanging `below` under it, a
+    superellipse of `power` (2 an ellipse, higher squarer: a flatter deck and straighter sides). Each size is a
+    number or a function of t, 0 to 1 along the path (flare). `rough` pushes the surface in and out by smooth
+    noise, features `cell` blocks along and a twelfth of the way round; zero keeps it exact. The path's ends may
+    run into rock: write the mask where the world is air and the bridge grows out of the walls."""
+    size = lambda f, t: np.asarray(f(t) if callable(f) else np.full(np.shape(t), float(f)), float)   # noqa: E731
+    ts = np.linspace(0, 1, 101)
+    reach = float(np.max(size(half_width, ts))) * (1 + rough) + 2
+    xs, zs = [p[0] for p in path], [p[1] for p in path]
+    i0 = max(0, int(np.floor(min(xs) - reach)) - w.x0)
+    i1 = min(w.sx, int(np.ceil(max(xs) + reach)) - w.x0 + 1)
+    k0 = max(0, int(np.floor(min(zs) - reach)) - w.z0)
+    k1 = min(w.sz, int(np.ceil(max(zs) + reach)) - w.z0 + 1)
+    lo = float(np.min(size(centre_y, ts) - size(below, ts) * (1 + rough))) - 2
+    hi = float(np.max(size(centre_y, ts) + size(above, ts) * (1 + rough))) + 2
+    y0, y1 = max(0, int(np.floor(lo))), min(w.sy, int(np.ceil(hi)) + 1)
+    out = np.zeros(w.ids.shape, bool)
+    if i0 >= i1 or k0 >= k1 or y0 >= y1:
+        return out
+    X, Z = np.meshgrid(np.arange(w.x0 + i0, w.x0 + i1, dtype=float), np.arange(w.z0 + k0, w.z0 + k1, dtype=float),
+                       indexing="ij")
+    d, along, side = polyline(X, Z, path, side=True)
+    total = max(float(along.max()), 1e-6)
+    t = np.clip(along / total, 0, 1)
+    cy, hw, up, dn = (size(f, t)[:, None, :] for f in (centre_y, half_width, above, below))
+    ys = np.arange(y0, y1, dtype=float)[None, :, None]                   # integer x, y, z are block centres, as in shapes
+    u = np.where(side > 0, d, -d)[:, None, :] / np.maximum(hw, 1e-6)
+    v = ys - cy
+    v = np.where(v > 0, v / np.maximum(up, 1e-6), v / np.maximum(dn, 1e-6))
+    shape = np.abs(u) ** power + np.abs(v) ** power
+    if rough:
+        n_along, n_round = max(4, int(total / cell) + 4), 12
+        rng = np.random.default_rng(seed)
+        field = ndimage.zoom(rng.uniform(-1, 1, (n_along, n_round)), (4, 4), order=3, mode="grid-wrap")
+        field += 0.5 * ndimage.zoom(rng.uniform(-1, 1, (n_along * 2, n_round * 2)), (2, 2), order=3, mode="grid-wrap")
+        ang = (np.arctan2(v, u) / (2 * np.pi)) % 1
+        coords = [np.broadcast_to(t[:, None, :] * (field.shape[0] - 1), shape.shape), ang * field.shape[1]]
+        shape = shape * (1 - rough * ndimage.map_coordinates(field, coords, order=1, mode="grid-wrap"))
+    out[i0:i1, y0:y1, k0:k1] = shape < 1
+    return out
 
 
 def arch(w, cells, t, deck, thick, rock, into=None, clear=0, ground=None):
