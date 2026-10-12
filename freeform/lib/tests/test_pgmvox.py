@@ -808,6 +808,41 @@ class Sweep(unittest.TestCase):
         self.assertGreater(spikes / occ.sum(), 0.15)
 
 
+class Spike(unittest.TestCase):
+    """A spike: as tall and as wide as asked, ending where it narrows under half a block, joined to its base."""
+
+    def setUp(self):
+        from pgmvox.scenery import forms
+        self.forms = forms
+        self.w = World(-30, -30, 60, 60, sy=80)
+
+    def test_a_straight_spike_is_its_radius_at_the_foot_and_ends_under_half_a_block(self):
+        m = self.forms.spike(self.w, [(0, 10, 0), (0, 50, 0)], (4, 0, 1.0))
+        foot = m[:, 10, :]
+        self.assertEqual(int(foot.sum()), int(np.sum(np.hypot(*np.meshgrid(np.arange(-30, 30), np.arange(-30, 30),
+                                                                          indexing="ij")) < 4)))
+        ys = np.nonzero(m.any(axis=(0, 2)))[0]
+        self.assertEqual(ys.max(), 10 + 35)                                  # 4 * (1 - t) falls under 0.5 at t = 7/8
+        self.assertEqual(ndimage.label(m)[1], 1)
+
+    def test_a_square_spike_is_square_and_a_twist_turns_it(self):
+        F = self.forms
+        sq = F.spike(self.w, [(0, 10, 0), (0, 50, 0)], lambda t: 8 + 0 * t, sides=4)
+        rd = F.spike(self.w, [(0, 10, 0), (0, 50, 0)], lambda t: 8 + 0 * t)
+        self.assertAlmostEqual(sq[:, 30, :].sum() / rd[:, 30, :].sum(), 2 / np.pi, delta=0.06)   # corners on the circle
+        tw = F.spike(self.w, [(0, 10, 0), (0, 50, 0)], lambda t: 8 + 0 * t, sides=4, twist=45)
+        self.assertGreater((tw[:, 49, :] != sq[:, 49, :]).sum(), 20)          # the top is turned off the square
+        np.testing.assert_array_equal(tw[:, 10, :], sq[:, 10, :])            # the foot is not
+
+    def test_a_spike_hangs_as_well_as_stands_and_keeps_only_its_base_joined(self):
+        F = self.forms
+        hang = F.spike(self.w, [(0, 70, 0), (0, 30, 0)], (3, 0, 1.0))
+        ys = np.nonzero(hang.any(axis=(0, 2)))[0]
+        self.assertEqual((ys.min(), ys.max()), (37, 72))                      # 3 (1 - t) under 0.5 at t 5/6; a cap over the base
+        thin = F.spike(self.w, [(0, 10, 0), (0, 60, 0)], (3, 0, 2.5), rough=0.6, seed=4)
+        self.assertEqual(ndimage.label(thin)[1], 1)                           # no block left floating off the tip
+
+
 class PlacedBoxes(unittest.TestCase):
     def test_a_box_is_sunk_by_its_share_and_keeps_what_is_not_soft(self):
         w = World(-20, -20, 41, 41, sy=60)

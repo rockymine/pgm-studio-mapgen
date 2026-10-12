@@ -5,6 +5,7 @@
     root_vines(w, land, floor, bottom, rng=r)      # vines hanging from the tips of the roots
     span = sweep(w, [(-58, 0), (58, 0)], flare(68, 60, 2), flare(3.5, 7, 3), flare(3, 10, 2), flare(3, 22, 2.2),
                  rough=0.28)                     # a land bridge over a canyon, as a mask over the world
+    horn = spike(w, [(0, 10, 0), (0, 40, 0), (8, 60, 6)], (6, 0, 1.2), flutes=(9, 0.3))   # a spike, any axis
 
 **A tower is a stack of rings, and its rings are what make it read as built.** Each course is a disc whose radius
 tapers from `taper[0]` to `taper[1]` of r up the tower; every `ledge_every` blocks a course juts out `ledge`
@@ -19,6 +20,10 @@ smooth function of how far along the span it is, so a side can only bulge across
 smooth noise over (along, round the section), never from a choice per column. A box whose edge rows are dropped
 column by column at random steps in and out by one block along its whole length.
 
+**A spike is a body round any 3-D curve, tapering to a point,** so it stands, leans, curls or hangs: a tower's
+rings only stand, and a heightfield spire can neither lean nor overhang. It ends where it is narrower than half a
+block, and keeps only what is joined to its base, so a fine tip never leaves a pole or a floating block.
+
 **A skirt turns a floating floor's box sides into a cliff,** never touching the walked top: rock bulges out under
 the rim in ledges no higher than two under the floor, is cut back under it where the noise is low, carries moss,
 and grass grows on its ledges.
@@ -28,6 +33,7 @@ from scipy import ndimage
 
 from pgmvox.geom import noise
 from pgmvox.core.blocks import B
+from pgmvox.geom.noise import spline
 from pgmvox.geom.shapes import distance_in, edge_depth, polyline
 
 SIDES = ((1, 0, 2), (-1, 0, 8), (0, 1, 4), (0, -1, 1))       # (dx, dz, the vine bit that hangs it on the block back)
@@ -243,6 +249,78 @@ def sweep(w, path, centre_y, half_width, above, below, power=3.0, rough=0.0, cel
         coords = [np.broadcast_to(t[:, None, :] * (field.shape[0] - 1), shape.shape), ang * field.shape[1]]
         shape = shape * (1 - rough * ndimage.map_coordinates(field, coords, order=1, mode="grid-wrap"))
     out[i0:i1, y0:y1, k0:k1] = shape < 1
+    return out
+
+
+def spike(w, axis, radius, sides=0, flutes=(0, 0.0), twist=0.0, ledges=(0, 0.0), rough=0.0, cell=8, seed=0):
+    """A spike round `axis` (x, y, z points from base to tip, splined through when there are more than two), as a
+    mask over the world. `radius` is a function of t, 0 at the base and 1 at the tip, or (base, tip, power):
+    tip + (base - tip) * (1 - t) ** power, so a power under 1 swells and over 1 needles. `sides` 0 is round, 3 or
+    more a polygon whose corners reach the radius; `flutes` (count, depth) grooves it along its length; `twist` turns the
+    section that many degrees from base to tip; `ledges` (every, out) rings it every so many blocks along it;
+    `rough` moves its surface by smooth noise, features `cell` blocks along it and a twelfth of the way round. It
+    ends where it is under half a block across, and only what is joined to its base is kept."""
+    if not callable(radius):
+        base, tip, p = radius
+        radius = lambda t, b=base, e=tip, q=p: e + (b - e) * (1 - np.asarray(t, float)) ** q   # noqa: E731
+    pts = np.array(spline([tuple(a) for a in axis], 1.0) if len(axis) > 2 else axis, float)
+    seg = pts[1:] - pts[:-1]
+    seg_len = np.linalg.norm(seg, axis=1)
+    keep = seg_len > 1e-6
+    pts = np.vstack([pts[:1], pts[1:][keep]])
+    seg, seg_len = seg[keep], seg_len[keep]
+    cum = np.concatenate([[0], np.cumsum(seg_len)])
+    total = cum[-1]
+    tan = seg / seg_len[:, None]
+    ref = np.array([1.0, 0, 0]) if abs(tan[0, 0]) < 0.9 else np.array([0, 0, 1.0])
+    normals = np.zeros_like(tan)
+    n = ref - tan[0] * (ref @ tan[0])
+    for i, tv in enumerate(tan):                                          # a frame carried along without spinning
+        n = n - tv * (n @ tv)
+        n /= np.linalg.norm(n)
+        normals[i] = n
+    binormals = np.cross(tan, normals)
+    reach = float(np.max(radius(np.linspace(0, 1, 51)))) * (1 + rough) + ledges[1] + 2
+    lo, hi = np.floor(pts.min(0) - reach).astype(int), np.ceil(pts.max(0) + reach).astype(int)
+    i0, i1 = max(lo[0] - w.x0, 0), min(hi[0] - w.x0 + 1, w.sx)
+    j0, j1 = max(lo[1], 0), min(hi[1] + 1, w.sy)
+    k0, k1 = max(lo[2] - w.z0, 0), min(hi[2] - w.z0 + 1, w.sz)
+    out = np.zeros(w.ids.shape, bool)
+    if i0 >= i1 or j0 >= j1 or k0 >= k1:
+        return out
+    gx, gy, gz = np.meshgrid(np.arange(w.x0 + i0, w.x0 + i1), np.arange(j0, j1), np.arange(w.z0 + k0, w.z0 + k1),
+                             indexing="ij")
+    P = np.stack([gx.ravel(), gy.ravel(), gz.ravel()], -1).astype(float)
+    best, s_at, which = np.full(len(P), np.inf), np.zeros(len(P)), np.zeros(len(P), int)
+    for i in range(len(seg)):
+        tt = np.clip(((P - pts[i]) @ seg[i]) / seg_len[i] ** 2, 0, 1)
+        d2 = ((P - pts[i] - tt[:, None] * seg[i]) ** 2).sum(1)
+        nearer = d2 < best
+        best = np.where(nearer, d2, best)
+        s_at = np.where(nearer, cum[i] + tt * seg_len[i], s_at)
+        which = np.where(nearer, i, which)
+    t = s_at / total
+    o = P - (pts[which] + tan[which] * (s_at - cum[which])[:, None])
+    theta = np.arctan2((o * binormals[which]).sum(1), (o * normals[which]).sum(1)) + np.radians(twist) * t
+    r = radius(t)
+    if sides >= 3:
+        k = 2 * np.pi / sides
+        r = r * np.cos(np.pi / sides) / np.cos((theta % k) - k / 2)
+    if flutes[0]:
+        r = r * (1 - flutes[1] * (0.5 + 0.5 * np.cos(flutes[0] * theta)))
+    if ledges[0]:
+        r = r + ledges[1] * ((s_at % ledges[0]) < 1.0)
+    if rough:
+        rng = np.random.default_rng(seed)
+        na, nr = max(4, int(total / cell) + 4), 12
+        field = ndimage.zoom(rng.uniform(-1, 1, (na, nr)), (4, 4), order=3, mode="grid-wrap")
+        field += 0.5 * ndimage.zoom(rng.uniform(-1, 1, (na * 2, nr * 2)), (2, 2), order=3, mode="grid-wrap")
+        r = r * (1 + rough * ndimage.map_coordinates(
+            field, [t * (field.shape[0] - 1), ((theta / (2 * np.pi)) % 1) * field.shape[1]], order=1, mode="grid-wrap"))
+    inside = ((np.sqrt(best) < r) & (r >= 0.5)).reshape(gx.shape)
+    parts, _ = ndimage.label(inside)
+    based = np.unique(parts[inside & (t.reshape(gx.shape) < 0.05)])
+    out[i0:i1, j0:j1, k0:k1] = inside & np.isin(parts, based[based > 0])
     return out
 
 

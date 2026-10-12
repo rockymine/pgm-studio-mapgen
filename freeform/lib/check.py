@@ -43,6 +43,7 @@ EXAMPLES = {
     "parts": ["gen", "renders"],
     "vale": ["plan_check", "gen", "renders", "walk"],
     "bridges": ["gen", "renders"],
+    "spikes": ["gen", "renders"],
 }
 READS = {"plan_check": "plan-check.txt", "gen": "gen.txt", "walk": "walks.txt"}   # what each step reads back
 DOCS = ["README.md", "AGENT-GUIDE.md"]
