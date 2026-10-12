@@ -632,6 +632,28 @@ class Wiggle(unittest.TestCase):
         self.assertTrue((got[(np.abs(X) > 46) | (np.abs(Z) > 46)] == H[(np.abs(X) > 46) | (np.abs(Z) > 46)]).all())
         self.assertGreater((got - H).max(), 1.5)
 
+    def test_shattered_ground_gives_every_column_one_piece_and_its_edge(self):
+        X, Z = self.X, self.Z
+        straight = shapes.shatter(X, Z, 20, seed=2, warp=(0, 0, 60, 12))
+        self.assertEqual(straight.id.shape, X.shape)
+        self.assertTrue((straight.edge >= 0).all())
+        c = straight.centres[straight.id]                                   # straight edges: the nearest centre
+        d_own = np.hypot(X - c[..., 0], Z - c[..., 1])
+        d_all = np.hypot(X[..., None] - straight.centres[:, 0], Z[..., None] - straight.centres[:, 1]).min(-1)
+        np.testing.assert_allclose(d_own, d_all)
+        border = straight.id[:-1] != straight.id[1:]                       # neighbours in two pieces sit by an edge
+        self.assertLess(np.maximum(straight.edge[:-1], straight.edge[1:])[border].max(), 1.0)
+        self.assertGreater(straight.edge.max(), 5)
+
+    def test_a_shatter_is_its_seed_and_bends_with_the_warp(self):
+        X, Z = self.X, self.Z
+        a, b = shapes.shatter(X, Z, 20, seed=2), shapes.shatter(X, Z, 20, seed=2)
+        np.testing.assert_array_equal(a.id, b.id)
+        straight = shapes.shatter(X, Z, 20, seed=2, warp=(0, 0, 60, 12))
+        self.assertGreater((a.id != straight.id).mean(), 0.02)                 # the bend moves the edges
+        sizes = np.bincount(a.id.ravel())
+        self.assertGreater(np.median(sizes[sizes > 0]), 150)                   # pieces about spacing ** 2 in area
+
     def test_lumps_line_up_along_a_given_angle(self):
         X, Z, H = self.X, self.Z, self.H
         got = LF.lumps(H, X, Z, 1, (0, 0, 0.01, 0.01), (10, 10), (5, 5), seed=1, stretch=(0.3, 0.3), angle=0, rough=0)

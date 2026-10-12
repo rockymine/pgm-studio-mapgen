@@ -4,7 +4,12 @@ fields, and the depth of every cell inside a mask.
 A polygon is a list of (x, z) corners in order; a polyline a list of points. Masks are boolean arrays over X, Z
 grids of block centres at integer x, z (World.grid() or numpy.meshgrid with indexing="ij").
 """
+from collections import namedtuple
+
 import numpy as np
+from scipy.spatial import cKDTree
+
+from pgmvox.geom import noise
 
 
 def inside(X, Z, poly):
@@ -120,6 +125,31 @@ def poly_cells(poly):
 
 def disc(X, Z, cx, cz, r):
     return np.hypot(X - cx, Z - cz) <= r
+
+
+Pieces = namedtuple("Pieces", "id edge centres")
+
+
+def shatter(X, Z, spacing, seed=0, jitter=0.8, warp=(6.0, 2.0, 60, 12)):
+    """The grid broken into pieces about `spacing` blocks across: one centre per piece, set on a grid `spacing` apart
+    and moved up to `jitter` of half a spacing, every column given to the nearest centre as measured in a frame
+    bent by noise.warp (`warp` is big, small, big_cell, small_cell; zeros keep the edges straight). Returns
+    Pieces(id, edge, centres): each column's piece, its distance to that piece's edge, and the (x, z) centres.
+    A piece is then lifted, tilted, shrunk (edge > gap) or dropped on its own: plates, seracs, bergs, outcrops."""
+    X, Z = np.asarray(X, float), np.asarray(Z, float)
+    rng = np.random.default_rng(seed)
+    xs = np.arange(X.min() - spacing, X.max() + 2 * spacing, spacing)
+    zs = np.arange(Z.min() - spacing, Z.max() + 2 * spacing, spacing)
+    centres = np.array([(x + rng.uniform(-jitter, jitter) * spacing / 2, z + rng.uniform(-jitter, jitter) * spacing / 2)
+                        for x in xs for z in zs])
+    big, small, big_cell, small_cell = warp
+    Xw, Zw = noise.warp(X, Z, seed=seed + 50, big=big, small=small, big_cell=big_cell, small_cell=small_cell)
+    p = np.stack([Xw.ravel(), Zw.ravel()], -1)
+    dist, near = cKDTree(centres).query(p, k=min(6, len(centres)))
+    own = centres[near[:, :1]]
+    apart = np.linalg.norm(centres[near[:, 1:]] - own, axis=-1)
+    edge = ((dist[:, 1:] ** 2 - dist[:, :1] ** 2) / (2 * np.maximum(apart, 1e-9))).min(1)   # the nearest bisector
+    return Pieces(near[:, 0].reshape(X.shape), edge.reshape(X.shape), centres)
 
 
 def ellipse_distance(X, Z, at, rx, rz=None, angle=0.0):
