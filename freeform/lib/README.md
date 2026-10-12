@@ -65,7 +65,7 @@ and `seed` come from `pgmvox` itself.
 | `read.walk` | the voxel walk over built blocks with `MoveRules`; `no_stand_above`, `nearest`, `gap_cleared` |
 | `read.audit` | `footing`: blocks that would fall, or have nothing to hang on; `loose_water`: water standing against air |
 | `read.sight` | `line_clear`, `visibility`, `hidden`, with an opaque test for a plan or a built world |
-| `read.render` | `iso`, `elevation`, `cutaway` along any polyline, x-ray, `trim`, all in the studio's colours |
+| `read.render` | `iso`, `elevation`, `cutaway` along any polyline, x-ray, `trim`, all in the studio's colours; `textured`, a saved build drawn by the studio's own renderer through `data/render_world.cs` (the 1.8.9 jar in `MINECRAFT_JAR`) |
 | `read.sketch` | the annotated sheet: map panels (a plan raster or a built top-down) with heights, places, markers, routes, jumps, zones and callouts; true-scale and unrolled sections; the checker's numbers against their targets |
 | `read.plot` | the bounded canvas a contributor builds a plot into, and `check_alone` with its verdict |
 | **`document`** | The layer document: a board stated as data and built in stages. |

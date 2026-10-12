@@ -196,3 +196,31 @@ def trim(path, pad=16):
         im.crop((max(0, box[0] - pad), max(0, box[1] - pad), min(im.width, box[2] + pad),
                  min(im.height, box[3] + pad))).save(path)
     return path
+
+
+def textured(build_dir, shots, jar=None):
+    """Pictures of a saved build drawn by the studio's own renderer (EyeScene, the game's sprites), through
+    data/render_world.cs: shots is [{out, box: (x0, y0, z0, x1, y1, z1), yaw, pitch, fov, w, h, breathing}], the eye
+    turned `yaw` degrees from looking south and framed on what stands in the box. The 1.8.9 client jar is `jar`,
+    else MINECRAFT_JAR."""
+    import json
+    import os
+    import subprocess
+    import tempfile
+    from pgmvox.core.world import HERE, studio_root
+    jar = jar or os.environ.get("MINECRAFT_JAR")
+    if not jar or not os.path.isfile(jar):
+        raise RuntimeError("textured renders need the 1.8.9 client jar: pass jar= or set MINECRAFT_JAR")
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+        json.dump([{**s, "out": os.path.abspath(s["out"]), "box": list(s["box"])} for s in shots], f)
+    script = os.path.join(HERE, "data", "render_world.cs")
+    env = dict(os.environ, PGM_STUDIO_ROOT=studio_root())
+    r = subprocess.run(["dotnet", "run", script, "--", os.path.abspath(build_dir), os.path.abspath(jar), f.name],
+                       cwd="/tmp", env=env, capture_output=True, text=True)
+    os.unlink(f.name)
+    if r.returncode != 0:
+        raise RuntimeError(r.stderr[-2000:] or r.stdout[-2000:])
+    for s in shots:
+        if os.path.isfile(s["out"]):
+            trim(s["out"], pad=24)
+    return r.stdout.strip()
