@@ -441,10 +441,10 @@ def cover(w):
 
 
 def kind_under(x, z):
-    """The ground's kind beneath a cover cell: the commonest kind among its neighbours."""
+    """The ground's kind beneath a cover cell: the commonest kind among its neighbours, a tie to the one met first."""
     ks = [kind(x + dx, z + dz) for dx in (-1, 0, 1) for dz in (-1, 0, 1)]
     ks = [k for k in ks if k not in ("cover", "tree", "house", "landmark")]
-    return max(set(ks), key=ks.count) if ks else "grass"
+    return max(ks, key=ks.count) if ks else "grass"
 
 
 def tree(w, x, y, z, sort):
