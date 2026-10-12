@@ -7,7 +7,7 @@ behind grilles.
     the body        stone brick with cracked ones through it, a course of coal under the floor's four, bedrock to y 1,
                     block 36 at y 0
     the edge        nine courses: an upside-down nether-brick stair at the rim, nether brick, coal, stone brick, a
-                    hazard band two courses high of yellow and black clay on the diagonal, stone brick, nether brick
+                    hazard band two courses high of yellow and black clay on the diagonal, sunk a block, stone brick, nether brick
                     at the foot; every other bay of five, two iron columns over a grille of bars lit by glowstone
                     behind it
     the show face   fourteen courses of stone brick, a word sunk in coal, slits of black glass and the hazard band
@@ -39,8 +39,8 @@ def _rim(inward):
 
 
 def hazard(t0, t1, period=4):
-    """A face pattern: yellow and black on the diagonal from course t0 to t1."""
-    return lambda s, run, t, h, n: ("accent", YELLOW if (s + t) % period < period // 2 else BLACK) \
+    """A face pattern: yellow and black on the diagonal from course t0 to t1, sunk a block into the face."""
+    return lambda s, run, t, h, n: ("inset", YELLOW if (s + t) % period < period // 2 else BLACK) \
         if t0 <= t <= t1 else None
 
 
