@@ -226,12 +226,14 @@ class Face:
     over the plain courses under the rim: s counts along the face's straight run from its left end seen from
     outside, t up from its bottom course, h is the rim's t; the first pattern that answers decides a block, an
     "inset" setting the face back a block, an "accent" keeping it flush. An accent bay and a corner keep their
-    courses."""
+    courses. `crest(s, run)` gives a block, or a list of them bottom up, to stand on the rim, or None: a bollard, a
+    merlon, a post."""
     courses: list
     accent: Accent = None
     floor: int = 3
     panel: Panel = None
     pattern: tuple = ()
+    crest: object = None
 
     def lay(self, w, x, z, h, inward, along=None, pos=None, air=0, accents=True, backs=None, bottom=None, stack=None,
             end=None, rng=None):
@@ -404,11 +406,14 @@ def lines(faces):
 
 def pattern(w, face, faces, land):
     """Lay `face.pattern` over plain face columns, {(x, z): (side, h)}: under the rim, down its courses, each run of
-    them a face of its own. An inset needs land behind it: `land(x, z)`."""
+    them a face of its own, and `face.crest` on the rim. An inset needs land behind it: `land(x, z)`."""
     depth = len(face.courses)
     for n, (side, h, run) in enumerate(lines(faces)):
         ix, iz = DIRS[OPP[side]]
         for s, (x, z) in enumerate(run):
+            top = face.crest(s, len(run)) if face.crest else None
+            for k, b in enumerate([top] if isinstance(top, tuple) else top or []):
+                w.set(x, h + 1 + k, z, *b)
             for i in range(1, depth):
                 t = depth - 1 - i
                 act = next((a for a in (p(s, len(run), t, depth - 1, n) for p in face.pattern) if a), None)
@@ -561,7 +566,7 @@ def lay(w, ground, style, only=None, rng=None, face_of=None, params=None, where=
                         along = None
                 bay = face.lay(w, x, z, h, OPP[side], along, pos, air=drop, backs=backs)
                 faced.add((x, z))
-                if face.pattern and not bay and len(falls) == 1:
+                if (face.pattern or face.crest) and not bay and len(falls) == 1:
                     plain.setdefault(name, {})[(x, z)] = (side, h)
             elif not falls and ground.depth(x, z) == 0:
                 w.set(x, h, z, *style.seam)

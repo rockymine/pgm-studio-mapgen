@@ -47,11 +47,13 @@ and `seed` come from `pgmvox` itself.
 | `built.build` | `Frame`, a building's own axes at any heading; `RoofField`, the studio's six roof forms block for block, and `lay_roof`; `house` and its `window_rhythm`; `parapet`, `line_wall` (a wall, hedge or fence along a line: crown follow, level or grade; cap, crenels, gaps), `site`, `stairs`, `ladder`, `Claims` |
 | `built.facade` | face patterns (`band`, `courses`, `flutes`, `panels`, `slits`, `checker`, `windows`, `glyph_row`, `word`) set back or flush on an `extrude`d mass, `coffer`, `top_course`; floor fields (`border`, `medallion`, `corners`, `diamonds`, `kilim_steps`, `star`, `cross`, `tiles`, `stripes`, `diagonal`, `chevrons`, `rings`) composed by `first_of` and laid by `carpet` |
 | `built.props` | small built things placed on a floor, facing a way: `stall` and `stalls` (a market row), `lamp` and `lamps` (posts beside a route, sides in turn), `brazier`, `rubble` (a heap that hangs over nothing); `crop_field` (farmland in strips, a ditch in each, a fence and gate) and `scarecrow`; chests drawn as rows of letters (`laid`), with a defence chest and a wool room's gear |
-| **`grammar`** | The structural board grammar (sections, faces, fills, decks, marks) and its styles: Claywork, Brittlebush, Terra, Marble and Foundry. |
+| **`grammar`** | The structural board grammar (sections, faces, fills, decks, marks) and its styles: Claywork, Brittlebush, Terra, Marble, Foundry, Segment and Drastic. |
 | `grammar.rules` | the rules of a structural board, apart from its blocks: `Section` (boxes at one height), `split` and `tile` (a box cut into sections), `Ground` (every column's top, section and depth), `Face` and `Accent` (courses by drop, a bay every so many), `Course` (a course with a block behind or outside it; `Sunk` the inset), `Toward` and `Mix` (a stair rising to its run's end, a block drawn by weight), `Panel` (each straight run framed), `Style` (body, faces, seam, fills, motifs, deck, pillar), `lay`; a face's `pattern` laid over each straight run (`lines`, `pattern`); a deck section over a floor (`under`) on `pillars`; `dress` (a face on any heights), `lattice` and `bands` (what lies under the courses) |
 | `grammar.marks` | what every style shares: the motifs `arrow`, `word`, `glyph` and `bitmap`, read from the side away from `up`; `field`, a fill from a floor field; `flight`, a fill of stairs between cheeks for a stepped section |
 | `grammar.terra` | the Terra style: red sandstone over the mesa's banded terracotta; niches under arches between pilasters that stand out a block; fills tiles, zigzag, kilim, court and plain |
 | `grammar.marble` | the Marble style: quartz over diorite; engaged columns over panels sunk into prismarine and lit; a fluted show wall with an inlaid word; fills medallion, star, rings, grid and plain |
+| `grammar.segment` | the Segment style, read off CommunityMaps ctw/segment: a deck of slab and clay checker with a brick line down each piece, cyan rims with bollards, faces moulded in cobblestone walls over a band sunk in the wool's colour |
+| `grammar.drastic` | the Drastic style, read off CommunityMaps ctw/drastic_change_ii: quartz faces under a nether-brick rim, a groove in the side's colour, portholes ringed in stairs, meadows in a quartz kerb |
 | `grammar.foundry` | the Foundry style: nether brick, stone brick, iron and coal; hazard bands on the faces, grilles of bars lit from behind; fills hazard, plates, lanes, sector and plain |
 | `grammar.clay` | the Claywork style for the grammar: stone and clay, the team's colour inlaid; faces with a sunk panel and its quartz diamond in a bay centred on each section; fills checker, squares, paving, inlay, plate and flight; the arrow motif |
 | `grammar.brittle` | the Brittlebush style from a blueprint of five-block cells: flat, keep, stair, stacked, gap and water cells; the five-course cap with its birch panels, a one-block outline, sand fields and double-ringed beds; hollows and tunnels under a deck with their dark-oak pillars; grown ground beside the made (`build(grown=)`); `house`, storeys of whole cells |
@@ -282,7 +284,8 @@ one as a function, and carry motifs laid over it.
 face patterns, `pattern(s, run, t, h, n)`, the same functions an extruded mass takes: `word`, `glyph_row`, `flutes`,
 `slits`, a band. They are laid last, over every plain face column, each straight run whole whatever sections stand
 over it, so a word on a terrace cut in two still reads across the cut. The rim is never patterned, and an accent bay
-and a corner keep their courses.
+and a corner keep their courses. `Face(crest=...)` stands blocks on the rim by the same reckoning: a bollard, a
+merlon, a post.
 
 **A deck is a section over a floor, and stands on pillars.** A section tagged `under-<y>` is laid on the style's
 `deck(w, x, z, h, y)` instead of its body: a slab of courses over air, the floor at `y` under it. Its faces are the
@@ -340,20 +343,21 @@ under)` gives one team's part, which `brittle.fan` turns into the four. A piece 
 one named `double…` a deck, with the cells in `under` hollow. A zone named `water…` is water and any other zone a
 gap. `placement(plan, "spawns")` gives each placement's spot and footprint in blocks.
 
-## One plan in five styles
+## One plan in seven styles
 
-**`boards/grammar-showcase/` speaks one specimen plan in five styles, side by side, and nothing else changes.** The
+**`boards/grammar-showcase/` speaks one specimen plan in seven styles, side by side, and nothing else changes.** The
 specimen is a terrace at 28 with a show wall to the north, a ledge at 24, a flight of steps between them, a loggia
 (a deck at 28 over a passage at 20, on pillars), a plaza at 20 cut into six sections and a front court at 16 cut
 into four. Brittlebush and Claywork speak it in their own blocks, given a deck and a pillar; Terra, Marble and
-Foundry are new. Its world is `maps/other/grammar_showcase`.
+Foundry are new; Segment and Drastic are read off the two CommunityMaps of those names. Its world is
+`maps/other/grammar_showcase`.
 
 **A style is its blocks and its recipes; the specimen states only which recipe goes where.** Every edge to the void
 is a deep face with the style's bays, the plaza's marked sections are laid in the style's calmest fill so the mark
 reads, and the rest show off the style's other fills. South of the specimens a gallery lays twenty-four floor fields
 and marks, each framed, before a wall carrying the alphabet and every glyph.
 
-**What the five have in common is the grammar, not a block.** Sections, outlines, faces by drop, bays centred on the
+**What the seven have in common is the grammar, not a block.** Sections, outlines, faces by drop, bays centred on the
 sections, decks, pillars and marks are the rules'; a style chooses a rim, a course, a frame, a fill. Brittlebush's
 boards lay their hollows by hand (`brittle._under`, `_pillars`), apart from the grammar's deck.
 
@@ -714,3 +718,7 @@ modules have no such overlap.
 
 **A face pattern is laid by `lay`, not by `dress`.** A face dressed over bare heights keeps its plain courses; its
 straight runs would have to be read the same way before a word or a band could cross them.
+
+**A style read off a map does not carry the map's curves or its built things.** Segment's rounded cut-outs, its
+arrow-tipped piece ends, its cobblestone trusses over the walks and its wells to the level under it, and Drastic's
+rock spires and water channels, are not sections, faces or fills; the grammar speaks their ground and their faces.

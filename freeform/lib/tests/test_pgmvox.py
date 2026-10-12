@@ -1989,6 +1989,16 @@ class Grammar(unittest.TestCase):
         self.assertEqual(w.get(29, 15, 0), (B.STONEBRICK, 0))   # a corner keeps its courses
         self.assertEqual(w.get(28, 15, 0), (B.WOOL, 1))
 
+    def test_a_crest_stands_on_the_rim_of_a_plain_face(self):
+        from pgmvox.grammar import rules as G
+        face = G.Face([(B.STONEBRICK, 0)] * 6, floor=1,
+                      crest=lambda s, run: [(B.COBBLE_WALL, 0), (B.SLAB, 7)] if s % 6 < 3 else None)
+        w = World(-2, -2, 16, 10, sy=32)
+        G.lay(w, G.Ground([G.Section(((0, 0, 11, 5),), 20, "a")]), self._plain(faces={"edge": face}))
+        self.assertEqual([w.get(x, 21, 0) for x in (10, 7, 4)], [(B.COBBLE_WALL, 0), (B.AIR, 0), (B.COBBLE_WALL, 0)])
+        self.assertEqual(w.get(10, 22, 0), (B.SLAB, 7))
+        self.assertEqual(w.id(11, 21, 0), B.AIR)                  # not on a corner
+
     def test_a_deck_stands_on_pillars_over_its_floor(self):
         from pgmvox.grammar import rules as G
 

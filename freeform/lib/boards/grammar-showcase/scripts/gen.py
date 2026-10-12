@@ -6,7 +6,8 @@ floor fields every style shares. No objectives and no match: it is a swatch book
     the specimen    a terrace at 28 with a show wall to the north, a ledge at 24, a flight of steps up to the terrace,
                     a loggia (a deck at 28 over a passage at 20, pillars under its open edges), a plaza at 20 cut into
                     six sections, a front court at 16 cut into four; every edge to the void a deep face
-    the styles      Brittlebush and Claywork as their boards speak them, and Terra, Marble and Foundry, west to east;
+    the styles      Brittlebush and Claywork as their boards speak them, Terra, Marble and Foundry, and Segment and
+                    Drastic as read off the two CommunityMaps of those names, west to east;
                     each specimen's sections carry its own fills, an arrow up the flight, the team's word and a glyph
     the gallery     south of them, a floor of twenty-four sections, each a floor field or a mark in a frame, before a
                     wall that carries the alphabet, the digits and every glyph
@@ -18,7 +19,7 @@ from dataclasses import replace
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import B, World, rng  # noqa: E402
 from pgmvox.built import facade  # noqa: E402
-from pgmvox.grammar import brittle, clay, foundry, marble, marks, terra  # noqa: E402
+from pgmvox.grammar import brittle, clay, drastic, foundry, marble, marks, segment, terra  # noqa: E402
 from pgmvox.grammar import rules as G  # noqa: E402
 
 BOARD = "grammar-showcase"
@@ -85,10 +86,16 @@ STYLES = [
     ("foundry", foundry.style(dye=RED), {"terrace": ["plates", "lanes"], "ledge": ["lanes"],
                                          "plaza": ["plain", "plain", "hazard", "sector", "plain", "plain"],
                                          "front": ["sector", "plates", "hazard", "sector"]}),
+    ("segment", segment.style(dye=5), {"terrace": ["street", "plaza"], "ledge": ["street"],
+                                       "plaza": ["plaza", "plaza", "cross", "street", "plaza", "plaza"],
+                                       "front": ["street", "cross", "plaza", "street"]}),
+    ("drastic", drastic.style(dye=14), {"terrace": ["meadow"], "ledge": ["meadow"],
+                                        "plaza": ["court", "court", "meadow", "meadow", "court", "court"],
+                                        "front": ["meadow"]}),
 ]
 # the marks in each style's own block: the team's word and a glyph on the plaza, an arrow up toward the flight
 MARK = {"brittlebush": (B.WOOL, RED), "claywork": (B.WOOL, RED), "terra": (B.STAINED_CLAY, 12),
-        "marble": marble.DARK, "foundry": foundry.COAL}
+        "marble": marble.DARK, "foundry": foundry.COAL, "segment": (B.BRICK, 0), "drastic": drastic.NB}
 
 
 def specimen(ox, oz, name, style, fills):
