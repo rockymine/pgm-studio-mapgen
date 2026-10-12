@@ -159,8 +159,7 @@ def tree(w, x, y, z, rng=None, height=5):
 def bed(w, x0, z0, x1, z1, y, rng, trees=True):
     """A bed of grass inside two rings of sandstone stairs, as Brittlebush lays every one: the outer ring rising
     inward, the inner ring rising outward, so the two meet in a ridge; sandstone at the inner ring's corners. In
-    the grass, birch-leaf bushes level with it and tall grass; a birch at its middle when the grass is four or more
-    across."""
+    the grass, tall grass and a few flowers; a birch at its middle when the grass is four or more across."""
     for x in range(x0, x1 + 1):
         for z in range(z0, z1 + 1):
             if x in (x0, x1) or z in (z0, z1):                       # the outer ring, rising inward
@@ -174,14 +173,11 @@ def bed(w, x0, z0, x1, z1, y, rng, trees=True):
                     w.set(x, y, z, B.SANDSTONE_STAIRS, stair(d))
             else:
                 c = rng.random()
-                if c < 0.18:
-                    w.set(x, y, z, B.LEAVES, 2 | 4)
-                else:
-                    w.set(x, y, z, B.GRASS)
-                    if c < 0.40:
-                        w.set(x, y + 1, z, B.TALLGRASS, 1)
-                    elif c < 0.45:
-                        w.set(x, y + 1, z, B.FLOWER, 2)
+                w.set(x, y, z, B.GRASS)
+                if c < 0.40:
+                    w.set(x, y + 1, z, B.TALLGRASS, 1)
+                elif c < 0.45:
+                    w.set(x, y + 1, z, B.FLOWER, 2)
     if trees and min(x1 - x0, z1 - z0) - 4 >= 3:
         tx, tz = (x0 + x1) // 2, (z0 + z1) // 2
         w.set(tx, y, tz, B.GRASS)

@@ -204,7 +204,8 @@ class Panel:
 @dataclass
 class Accent:
     """A bay laid instead of the plain courses every `every` bays of `module` along a face, starting at bay `phase`:
-    its two end columns are `frame`, its middle `inner` (or inner(pos), pos 1 .. module - 2), each top down from the
+    its two end columns are `frame` (or frame(pos), pos 0 or module - 1), its middle `inner` (or inner(pos), pos 1 ..
+    module - 2), each top down from the
     rim. A bay is laid whole or not at all: every column of it, and `margin` more on either side, must be face at
     the same height with `min_air` blocks of air before it, so no bay is buried behind a lower piece, cut by a
     corner or squeezed into a run too short for it. `align` "grid" counts bays from the world's origin, as cells do;
@@ -236,9 +237,11 @@ class Face:
     crest: object = None
 
     def lay(self, w, x, z, h, inward, along=None, pos=None, air=0, accents=True, backs=None, bottom=None, stack=None,
-            end=None, rng=None):
-        """Lay the courses at (x, z). A sunk course's back lands in the inward column; `backs`, when given, collects
-        each as (x, y, z, block) so a body laid there afterwards can be laid under it again. With `bottom` the
+            end=None, rng=None, corner=()):
+        """Lay the courses at (x, z). A sunk course's back lands in the inward column, or at a corner, whose other
+        falling sides are `corner`, in the column inward of both, so an inset turns the corner instead of standing
+        in the next face. `backs`, when given, collects each as (x, y, z, block) and lays none: the caller lays them
+        once the bodies are down, so a body laid there afterwards stays under it. With `bottom` the
         courses stop above it instead of refusing a face that reaches under the floor. `stack` lays those courses
         instead of the face's own, `end` is the side a Toward course rises to and `rng` draws a Mix. Returns
         whether an accent bay's courses were laid."""
@@ -251,8 +254,14 @@ class Face:
             a = None
         bay = bool(accents and a and along is not None and along % a.every == a.phase and air >= a.min_air)
         if bay:
-            stack = a.frame if pos in (0, a.module - 1) else a.inner(pos) if callable(a.inner) else a.inner
+            if pos in (0, a.module - 1):
+                stack = a.frame(pos) if callable(a.frame) else a.frame
+            else:
+                stack = a.inner(pos) if callable(a.inner) else a.inner
         ix, iz = DIRS[inward]
+        bx, bz = x + ix, z + iz
+        for side in corner:
+            bx, bz = bx + DIRS[OPP[side]][0], bz + DIRS[OPP[side]][1]
         for i, s in enumerate(stack):
             if bottom is not None and h - i < bottom:
                 break
@@ -262,9 +271,10 @@ class Face:
                 w.set(x, h - i, z, *spec(s.block, inward, end, rng))
                 if s.back is not None:
                     back = spec(s.back, inward, end, rng)
-                    w.set(x + ix, h - i, z + iz, *back)
                     if backs is not None:
-                        backs.append((x + ix, h - i, z + iz, back))
+                        backs.append((bx, h - i, bz, back))
+                    else:
+                        w.set(bx, h - i, bz, *back)
                 if s.out is not None and w.id(x - ix, h - i, z - iz) == B.AIR:
                     w.set(x - ix, h - i, z - iz, *spec(s.out, inward, end, rng))
             else:
@@ -564,7 +574,8 @@ def lay(w, ground, style, only=None, rng=None, face_of=None, params=None, where=
                         bays[key] = face.open(ground, x, z, side, pos, h)
                     if not bays[key]:
                         along = None
-                bay = face.lay(w, x, z, h, OPP[side], along, pos, air=drop, backs=backs)
+                bay = face.lay(w, x, z, h, OPP[side], along, pos, air=drop, backs=backs,
+                               corner=[d for d, _ in falls[1:] if d not in (side, OPP[side])][:1])
                 faced.add((x, z))
                 if (face.pattern or face.crest) and not bay and len(falls) == 1:
                     plain.setdefault(name, {})[(x, z)] = (side, h)

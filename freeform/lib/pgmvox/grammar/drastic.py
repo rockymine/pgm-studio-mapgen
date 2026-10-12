@@ -4,10 +4,13 @@ streaked with chiseled quartz.
 
     STYLE = drastic.style(dye=14)       # dye: the side's colour, in the groove and the body's foot
 
-    the body        andesite, two courses of the side's clay at its foot, block 36 at y 0
+    the body        andesite, with two courses of the side's clay behind the groove and two behind the foot; block
+                    36 at y 0
     the edge        an upside-down nether-brick stair at the rim, chiseled quartz, a groove sunk into the side's
-                    colour, a quartz slab, quartz, an upside-down quartz stair for a cove, a nether-brick slab; every
-                    third bay of five a porthole: a ring of quartz stairs round three of dark hole
+                    colour, a quartz slab with the clay over it, quartz, an upside-down quartz stair for a cove, a
+                    nether-brick top slab; every third bay of five a porthole: a cross-shaped hole three each way,
+                    dark behind with a cobblestone wall at its heart, stairs closing its diagonals, nether brick at
+                    its sides' head and foot, nether-brick stairs turned out under them
     the outline     nether brick
     the fills       meadow (a quartz kerb; grass streaked on the diagonal with chiseled quartz, birch-leaf bushes,
                     grass and orchids), court (quartz, chiseled at its ring)
@@ -20,9 +23,8 @@ from pgmvox.grammar import marks
 from pgmvox.grammar import rules as G
 
 QZ, CHIS, PILLAR, QZ_SLAB = (B.QUARTZ, 0), (B.QUARTZ, 1), (B.QUARTZ, 2), (B.SLAB, 7)
-NB, NB_SLAB, ANDESITE = (B.NETHER_BRICK, 0), (B.SLAB, 6), (B.STONE, 5)
+NB, NB_TOP, ANDESITE = (B.NETHER_BRICK, 0), (B.SLAB, 14), (B.STONE, 5)
 BAY = 5
-LEFT = {"n": "e", "s": "w", "e": "s", "w": "n"}       # a face's left end, seen from outside, by its inward side
 
 
 def _rim(inward):
@@ -33,11 +35,13 @@ def _cove(inward):
     return B.QUARTZ_STAIRS, stair(inward, upside_down=True)
 
 
-def _toward(end, upside_down):
-    """A quartz stair in the face, solid toward the bay's `end` ("lo" or "hi")."""
+def _stair(block, toward, upside_down):
+    """A stair in the face, rising toward `toward`: "in" (into the land), "lo" or "hi" (the bay's end of lower or
+    higher coordinate along the face)."""
     def f(inward):
         lo = {"n": "w", "s": "w", "e": "n", "w": "n"}[inward]
-        return B.QUARTZ_STAIRS, stair(lo if end == "lo" else G.OPP[lo], upside_down=upside_down)
+        d = {"in": inward, "lo": lo, "hi": G.OPP[lo]}[toward]
+        return block, stair(d, upside_down=upside_down)
     return f
 
 
@@ -46,22 +50,34 @@ def style(dye=14):
     side = (B.STAINED_CLAY, dye)
 
     def body(w, x, z, h):
-        for y in range(3, h):
-            w.set(x, y, z, *ANDESITE)
-        for y in range(1, min(3, h)):
-            w.set(x, y, z, *side)
+        for y in range(1, h):
+            w.set(x, y, z, *(side if h - y in (2, 3, 5, 6) else ANDESITE))
         w.set(x, 0, z, 36)
 
-    hole = G.Sunk(NB)
-    plain = [_rim, CHIS, G.Sunk(side), QZ_SLAB, QZ, _cove, NB_SLAB]
-    frame = [_rim, CHIS, NB, QZ, QZ, NB, NB_SLAB]
+    # top down from the rim: the rim, chiseled quartz, the groove (the side's clay behind it), a quartz slab with the
+    # clay showing over it, quartz, a cove, the foot
+    plain = [_rim, CHIS, G.Sunk(side), G.Course(QZ_SLAB, back=side), QZ, _cove, NB_TOP]
+    hole, gap = G.Sunk(NB), G.Course((B.AIR, 0), back=(B.COBBLE, 0))
+
+    def on(block, back=ANDESITE):
+        return G.Course(block, back=back)
+
+    def frame(pos):
+        """The porthole's sides: nether brick at its head and foot, a stair over quartz over a stair between them, and
+        under it a nether-brick stair turned out toward its own end; andesite behind, where the plain face has clay."""
+        end = "lo" if pos == 0 else "hi"
+        return [_rim, NB, on(_stair(B.QUARTZ_STAIRS, "in", False)), on(QZ), on(_stair(B.QUARTZ_STAIRS, "in", True)),
+                on(NB), on(_stair(B.NETHER_STAIRS, end, True))]
 
     def porthole(pos):
-        """Three wide: stairs at its four corners, quartz at the middle of its top and foot, dark hole inside."""
+        """A hole in the shape of a cross, three each way, on a plate of nether brick three by three with a
+        cobblestone wall at its heart; stairs close its four diagonals, quartz caps its middle top and foot, and the
+        foot under it is open onto cobblestone."""
         if pos == 2:
-            return [_rim, CHIS, QZ, hole, hole, QZ, NB_SLAB]
+            return [_rim, QZ, hole, G.Sunk((B.COBBLE_WALL, 0)), hole, on(QZ), gap]
         end = "lo" if pos == 1 else "hi"
-        return [_rim, CHIS, _toward(end, True), hole, hole, _toward(end, False), NB_SLAB]
+        return [_rim, _stair(B.QUARTZ_STAIRS, "in", False), on(_stair(B.QUARTZ_STAIRS, end, True), NB), hole,
+                on(_stair(B.QUARTZ_STAIRS, end, False), NB), on(_stair(B.QUARTZ_STAIRS, "in", True)), gap]
 
     edge = G.Face(plain, G.Accent(BAY, frame=frame, inner=porthole, every=3, min_air=7), floor=1)
     deck_face = G.Face([_rim, CHIS, NB], floor=1)
