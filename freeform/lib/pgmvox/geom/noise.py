@@ -2,6 +2,7 @@
 
     fbm(shape, cell, octaves, seed)   rolling noise in about [-1, 1], features `cell` blocks across
     ridged(shape, cell, octaves, seed) crests: 1 - |fbm|, sharp where the noise crosses zero, in [0, 1]
+    warp(X, Z, seed, big, small)      X and Z pushed about by two scales of noise: a bent ruler for any distance
     line(shape, along, cell, ...)     a wandering offset that varies along one axis of a grid and not the other
     ragged(shape, along, cell, amp)   the same in whole blocks from 0 to amp: an edge bitten in by up to amp
     smoothstep(e0, e1, x)             a smooth 0..1 ramp between two edges
@@ -53,6 +54,17 @@ def ragged(shape, along, cell, amp, seed=0):
 def ridged(shape, cell, octaves=4, seed=0, gain=0.5, sharpness=1.0):
     """Ridges: 1 - |fbm|, raised to `sharpness`; mountains are crests where it is near 1."""
     return (1.0 - np.abs(fbm(shape, cell, octaves, seed, gain))) ** sharpness
+
+
+def warp(X, Z, seed=0, big=12.0, small=4.0, big_cell=90, small_cell=22):
+    """X and Z pushed sideways by two scales of noise: a slow bend of up to `big` blocks, features `big_cell`
+    across, and a wobble of up to `small`, `small_cell` across. A distance measured in the warped frame (an
+    ellipse_distance, a hypot from a centre) gives an outline that is never a true circle or a ruled line, while
+    the form's own formula stays as written. Returns (Xw, Zw); `big` and `small` of 0 return X and Z."""
+    X, Z = np.asarray(X, float), np.asarray(Z, float)
+    Xw = X + big * fbm(X.shape, big_cell, 3, seed=seed) + small * fbm(X.shape, small_cell, 2, seed=seed + 2)
+    Zw = Z + big * fbm(X.shape, big_cell, 3, seed=seed + 1) + small * fbm(X.shape, small_cell, 2, seed=seed + 3)
+    return Xw, Zw
 
 
 def smoothstep(e0, e1, x):

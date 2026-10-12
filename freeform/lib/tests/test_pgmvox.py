@@ -578,6 +578,67 @@ class Landforms(unittest.TestCase):
         self.assertTrue((T % 4 == 0).all())
 
 
+class Wiggle(unittest.TestCase):
+    """The warp, gullies and lumps: what makes a form stop being a perfect circle."""
+
+    def setUp(self):
+        self.X, self.Z = (a.astype(float) for a in np.meshgrid(np.arange(-80, 80), np.arange(-80, 80), indexing="ij"))
+        self.H = np.full(self.X.shape, 40.0)
+
+    def test_a_warp_of_nothing_is_the_grid_and_a_warp_stays_within_its_reach(self):
+        X, Z = self.X, self.Z
+        Xs, Zs = noise.warp(X, Z, seed=3, big=0, small=0)
+        np.testing.assert_array_equal(Xs, X)
+        np.testing.assert_array_equal(Zs, Z)
+        Xw, Zw = noise.warp(X, Z, seed=3, big=12, small=4)
+        self.assertLessEqual(np.abs(Xw - X).max(), 16 + 1e-9)
+        self.assertGreater(np.abs(Xw - X).max(), 4)                           # it moves something
+        self.assertLess(np.abs(np.diff(Xw - X, axis=0)).max(), 1.0)           # and moves neighbours alike
+        np.testing.assert_array_equal(noise.warp(X, Z, seed=3)[0], noise.warp(X, Z, seed=3)[0])
+
+    def test_a_warped_circle_is_no_longer_round(self):
+        X, Z = self.X, self.Z
+        Xw, Zw = noise.warp(X, Z, seed=5, big=12, small=4)
+        rim = lambda d: np.abs(d - 50) < 0.75                                   # noqa: E731
+        straight, bent = np.hypot(X, Z), np.hypot(Xw, Zw)
+        self.assertLess(np.ptp(straight[rim(straight)]), 1.6)
+        self.assertGreater(np.ptp(np.hypot(X, Z)[rim(bent)]), 8)               # its rim wanders by blocks
+
+    def test_gullies_only_cut_and_only_between_their_radii(self):
+        X, Z, H = self.X, self.Z, self.H
+        g = LF.gullies(H, X, Z, (0, 0), 20, 6, 30, 70, seed=4)
+        d = np.hypot(X, Z)
+        self.assertTrue((g <= H + 1e-9).all())
+        np.testing.assert_allclose(g[(d < 30) | (d > 70)], H[(d < 30) | (d > 70)])
+        self.assertGreater((H - g).max(), 3)
+        self.assertLessEqual((H - g).max(), 6 + 1e-9)
+
+    def test_straight_gullies_are_as_many_spokes_as_asked(self):
+        X, Z, H = self.X, self.Z, self.H
+        g = LF.gullies(H, X, Z, (0, 0), 24, 6, 20, 75, wander=0, seed=4)
+        t = np.linspace(0, 2 * np.pi, 2400, endpoint=False)
+        ring = g[np.round(50 * np.cos(t) + 80).astype(int), np.round(50 * np.sin(t) + 80).astype(int)]
+        cut = ring < 40 - 1
+        self.assertEqual(int(np.sum(cut & ~np.roll(cut, 1))), 24)            # one run of cut ground per groove
+
+    def test_lumps_only_lift_and_only_where_the_mask_lets_them(self):
+        X, Z, H = self.X, self.Z, self.H
+        none = LF.lumps(H, X, Z, 30, (-40, -40, 40, 40), (3, 6), (2, 5), seed=7, mask=np.zeros(H.shape, bool))
+        np.testing.assert_array_equal(none, H)
+        east = X > 10
+        got = LF.lumps(H, X, Z, 30, (-40, -40, 40, 40), (3, 6), (2, 5), seed=7, mask=east, rough=0)
+        self.assertTrue((got >= H).all())
+        self.assertTrue((got[X < 10 - 6] == H[X < 10 - 6]).all())             # no lump's foot reaches the west
+        self.assertTrue((got[(np.abs(X) > 46) | (np.abs(Z) > 46)] == H[(np.abs(X) > 46) | (np.abs(Z) > 46)]).all())
+        self.assertGreater((got - H).max(), 1.5)
+
+    def test_lumps_line_up_along_a_given_angle(self):
+        X, Z, H = self.X, self.Z, self.H
+        got = LF.lumps(H, X, Z, 1, (0, 0, 0.01, 0.01), (10, 10), (5, 5), seed=1, stretch=(0.3, 0.3), angle=0, rough=0)
+        rise = got - H
+        self.assertGreater((rise[:, 80] > 0).sum(), 2 * (rise[80, :] > 0).sum() - 2)   # long along x, short along z
+
+
 class Capture(unittest.TestCase):
     def test_a_wool_places_itself_its_spawner_and_its_room(self):
         o = O.Objectives(O.Teams(("red-team", "Red", "red"), ("blue-team", "Blue", "blue")), Symmetry("half"))

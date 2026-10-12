@@ -8,6 +8,8 @@
     H, road = grade(H, X, Z, [(-80, 50), (0, 30), (80, 60)], width=5, max_grade=0.2)
     H, sea = coast(H, X, Z, sea=30, outline=[...])
     H = profile(H, d, floor=41, steps=[Step(26, 34, 57), Step(46, 63, 74)], jag=jag)   # a canyon's cross-section
+    H = gullies(H, *noise.warp(X, Z, seed=5), (0, 0), 30, 6, 70, 135, seed=8)   # grooves down a cone's flank
+    H = lumps(H, X, Z, 26, (-50, -45, 50, 45), (3, 8), (3, 8), seed=13, mask=ring)  # fallen blocks in a ring
 
 Every function takes the heights H (floats or ints, the y of each column's top) over the world's X and Z and returns
 new heights, and where a landform holds water, a description of it. Nothing here is a recipe: the numbers that give
@@ -21,7 +23,7 @@ from scipy import ndimage
 
 from pgmvox.geom import noise
 from pgmvox.geom.noise import smoothstep
-from pgmvox.geom.shapes import distance_in, nearest_on, polyline, signed_distance
+from pgmvox.geom.shapes import distance_in, ellipse_distance, nearest_on, polyline, signed_distance
 
 
 MODES = ("set", "lift", "cut")
@@ -419,6 +421,48 @@ def mound(H, e, rise, power=1.6, mode="lift"):
     negative rise with mode cut is a hollow."""
     H = np.asarray(H, float)
     return np.where(e < 1, _apply(H, H + rise * (1 - np.clip(e, 0, 1) ** power), mode), H)
+
+
+def gullies(H, X, Z, centre, count, depth, r0, r1, wander=0.9, sharpness=3.0, seed=0):
+    """Gullies down the flanks of a form round `centre`: `count` grooves running outward between r0 and r1 blocks,
+    faded in and out at both ends, each up to `depth` deep and its own depth by noise. `wander` bends them (0 runs
+    them straight out like spokes); a higher `sharpness` makes each groove narrower against the ground between.
+    X and Z may be warped (noise.warp), and the grooves then follow the warped outline. Only cuts."""
+    H = np.asarray(H, float)
+    X, Z = np.asarray(X, float), np.asarray(Z, float)
+    theta = np.arctan2(Z - centre[1], X - centre[0])
+    d = np.hypot(X - centre[0], Z - centre[1])
+    phi = theta * count / (2 * np.pi)
+    if wander:
+        phi = phi + wander * noise.fbm(X.shape, 50, 3, seed=seed)
+    groove = (1 - np.abs(np.sin(np.pi * phi))) ** sharpness
+    each = 0.55 + 0.45 * noise.fbm(X.shape, 25, 2, seed=seed + 1)
+    along = smoothstep(r0, r0 + 0.25 * (r1 - r0), d) * smoothstep(r1, r1 - 0.3 * (r1 - r0), d)
+    return H - depth * groove * np.maximum(each, 0) * along
+
+
+def lumps(H, X, Z, n, box, size, rise, seed=0, mask=None, stretch=(0.5, 1.0), angle=None, rough=0.25, power=1.8):
+    """Up to n lumps strewn over the ground: fallen blocks, rubble, hummocks. Each is a mound on an ellipse drawn at
+    random in `box` (x0, z0, x1, z1), `size` (lo, hi) blocks across its long axis, its short axis a share
+    `stretch` (lo, hi) of that, turned at random (or `angle` ± 25 degrees, so a stream of them lines up), its
+    foot roughened by `rough`, `rise` (lo, hi) blocks high. A lump whose centre falls outside `mask` is skipped,
+    so a box and a mask together say where they may lie. Only lifts."""
+    H = np.asarray(H, float)
+    X, Z = np.asarray(X, float), np.asarray(Z, float)
+    x0, z0 = X[0, 0], Z[0, 0]
+    rng = np.random.default_rng(seed)
+    for k in range(n):
+        x, z = rng.uniform(box[0], box[2]), rng.uniform(box[1], box[3])
+        i, j = int(np.floor(x - x0)), int(np.floor(z - z0))
+        if not (0 <= i < H.shape[0] and 0 <= j < H.shape[1]) or (mask is not None and not mask[i, j]):
+            continue
+        rx = rng.uniform(*size)
+        e = ellipse_distance(X, Z, (x, z), rx, rx * rng.uniform(*stretch),
+                             angle=rng.uniform(0, 180) if angle is None else angle + rng.uniform(-25, 25))
+        if rough:
+            e = e + rough * noise.fbm(X.shape, 4, 2, seed=seed + k)
+        H = mound(H, e, rng.uniform(*rise), power=power)
+    return H
 
 
 def crater(H, e, floor, r, flat=0.0, slope=1.0):
