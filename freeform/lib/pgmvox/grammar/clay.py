@@ -17,6 +17,7 @@ its faces deep and dressed, its floors cut into sections each laid in its own pa
                     (a stepped section: a lip behind each rise, a runner of clay up its middle, a nosing of stairs)
     the motifs      arrow: a head and a shaft in the team's wool on a plate, one in from its frame
 """
+from pgmvox.grammar import marks
 from pgmvox.grammar import rules as G
 from pgmvox.core.blocks import B
 from pgmvox.core.orient import stair
@@ -171,24 +172,8 @@ def style(dye=14, rng=None, faced=None):
                 w.set(x, h + 1, z, B.STONEBRICK_STAIRS, stair(up[0]))      # the nosing, before each rise
         return True
 
-    def arrow(w, lot, rng, d="n"):
-        """A head and a shaft on the lot's plate, one in from its frame, pointing d, in the team's wool: the head
-        rows widen by two from the tip's one (or two) to the plate's width, the shaft a third of it, both centred."""
-        x0, z0, x1, z1 = lot.box
-        x0, z0, x1, z1 = x0 + 1, z0 + 1, x1 - 1, z1 - 1
-        across, length = (x1 - x0 + 1, z1 - z0 + 1) if d in "ns" else (z1 - z0 + 1, x1 - x0 + 1)
-        tip = 1 if across % 2 else 2
-        shaft = across - 2 * (across // 3)
-        head = (across - tip) // 2 + 1                               # rows of the head, the last as wide as the lot
-        cols = set(lot.cols)
-        for i in range(length):                                      # i rows back from the tip
-            width = tip + 2 * i if i < head else shaft
-            a0 = (across - width) // 2
-            for j in range(a0, a0 + width):
-                x, z = {"n": (x0 + j, z0 + i), "s": (x0 + j, z1 - i), "w": (x0 + i, z0 + j),
-                        "e": (x1 - i, z0 + j)}[d]
-                if (x, z) in cols:
-                    w.set(x, lot.y, z, B.WOOL, dye)
+    def arrow(w, lot, rng, d="n", block=None):
+        marks.arrow(w, lot, rng, d, block or (B.WOOL, dye))
 
     return G.Style(
         "claywork",

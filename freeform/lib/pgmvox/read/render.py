@@ -212,7 +212,7 @@ def textured(build_dir, shots, jar=None):
     if not jar or not os.path.isfile(jar):
         raise RuntimeError("textured renders need the 1.8.9 client jar: pass jar= or set MINECRAFT_JAR")
     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
-        json.dump([{**s, "out": os.path.abspath(s["out"]), "box": list(s["box"])} for s in shots], f)
+        json.dump([{**s, "out": os.path.abspath(s["out"]), "box": [int(v) for v in s["box"]]} for s in shots], f)
     script = os.path.join(HERE, "data", "render_world.cs")
     env = dict(os.environ, PGM_STUDIO_ROOT=studio_root())
     r = subprocess.run(["dotnet", "run", script, "--", os.path.abspath(build_dir), os.path.abspath(jar), f.name],

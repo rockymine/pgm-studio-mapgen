@@ -1969,3 +1969,70 @@ class Grammar(unittest.TestCase):
         self.assertEqual([w.id(-11, y, -18) for y in (16, 15, 14)],                  # a face as deep as the drop,
                          [B.SPRUCE_STAIRS, B.BRICK, B.WOOD_SLAB])                     # no panel
         self.assertEqual(w.get(-11, 16, -12), BR.SPRUCE_PLANKS)                      # level with it: a seam
+
+    def _plain(self, **kw):
+        from pgmvox.grammar import rules as G
+        return G.Style("plain", body=lambda w, x, z, h: [w.set(x, y, z, B.STONE) for y in range(1, h)],
+                       faces=kw.pop("faces", {"edge": G.Face([(B.STONEBRICK, 0)] * 6, floor=1)}), seam=(B.PLANKS, 0),
+                       fills={"flat": lambda w, lot, rng: [w.set(x, lot.y, z, B.DSLAB, 8) for x, z in lot.cols]
+                              or True}, choose=lambda sec, lot: ["flat"], **kw)
+
+    def test_a_face_pattern_runs_its_whole_straight_face_across_sections(self):
+        from pgmvox.grammar import rules as G
+        face = G.Face([(B.STONEBRICK, 0)] * 6, floor=1,
+                      pattern=(lambda s, run, t, h, n: ("accent", (B.GLASS, 0)) if (s, run, t) == (20, 28, 4) else None,
+                               lambda s, run, t, h, n: ("accent", (B.WOOL, 1)) if (s, t) == (0, 0) else None))
+        w = World(-2, -2, 34, 12, sy=32)
+        G.lay(w, G.Ground(G.split((0, 0, 29, 5), 2, 1, y=20)), self._plain(faces={"edge": face}))
+        self.assertEqual(w.id(8, 19, 0), B.GLASS)          # one run of 28 between the corners, read from outside:
+        self.assertEqual(w.id(8, 20, 0), B.STONEBRICK)     # s 0 at its east end; the rim is never patterned
+        self.assertEqual(w.get(29, 15, 0), (B.STONEBRICK, 0))   # a corner keeps its courses
+        self.assertEqual(w.get(28, 15, 0), (B.WOOL, 1))
+
+    def test_a_deck_stands_on_pillars_over_its_floor(self):
+        from pgmvox.grammar import rules as G
+
+        def deck(w, x, z, h, floor):
+            for y in range(floor + 1, h - 2):
+                w.set(x, y, z, B.AIR)
+            w.set(x, h - 1, z, B.PLANKS)
+            w.set(x, h - 2, z, B.PLANKS)
+            w.set(x, floor, z, B.SAND)
+
+        def pillar(w, x, z, top, bottom, side):
+            for y in range(bottom, top + 1):
+                w.set(x, y, z, B.LOG)
+        style = self._plain(deck=deck, pillar=pillar, params={"deck_depth": 3, "pillar_every": 6},
+                            faces={"edge": G.Face([(B.STONEBRICK, 0)] * 6, floor=1),
+                                   "deck": G.Face([(B.STONEBRICK, 0)] * 3, floor=1)})
+        secs = [G.Section(((0, 0, 12, 4),), 20, "loggia", tags=frozenset({"under-12"})),
+                G.Section(((0, 5, 12, 9),), 12, "court")]
+        w = World(-2, -2, 18, 14, sy=32)
+        G.lay(w, G.Ground(secs), style)
+        self.assertEqual((w.id(6, 20, 2), w.id(6, 15, 2), w.id(6, 12, 2)), (B.DSLAB, B.AIR, B.SAND))
+        self.assertEqual([w.id(x, 15, 4) for x in (0, 3, 6, 9, 12)], [B.LOG, B.AIR, B.LOG, B.AIR, B.LOG])
+        self.assertEqual((w.id(6, 13, 4), w.id(6, 17, 4), w.id(6, 18, 4)), (B.LOG, B.LOG, B.STONEBRICK))
+
+    def test_a_mark_reads_from_the_side_away_from_up(self):
+        from pgmvox.grammar import marks
+        from pgmvox.grammar import rules as G
+        for up, on, off in (("n", [(1, 1), (1, 5), (3, 5)], [(3, 1)]), ("s", [(3, 5), (1, 1), (3, 1)], [(1, 5)])):
+            sec = G.Section(((0, 0, 4, 6),), 10, "a", motifs=(("word", (("text", "L"), ("block", (B.WOOL, 1)),
+                                                                        ("up", up))),))
+            w = World(-1, -1, 7, 9, sy=16)
+            G.lay(w, G.Ground([sec]), self._plain())
+            self.assertEqual([w.get(x, 10, z) for x, z in on], [(B.WOOL, 1)] * 3, up)
+            self.assertEqual([w.id(x, 10, z) for x, z in off], [B.DSLAB], up)
+
+    def test_a_flight_lays_stairs_between_its_cheeks(self):
+        from pgmvox.grammar import marks
+        from pgmvox.grammar import rules as G
+        from pgmvox.core.orient import stair
+        tops = tuple(((x, z), 20 - z) for x in range(7) for z in range(6))
+        sec = G.Section(((0, 0, 6, 5),), 15, "flight", marks.flight((B.STONE, 0), B.QUARTZ_STAIRS, cheek=(B.QUARTZ, 1)),
+                        tops=tops)
+        w = World(-1, -1, 9, 8, sy=32)
+        G.lay(w, G.Ground([sec]), self._plain())
+        self.assertEqual(w.get(3, 18, 2), (B.STONE, 0))                       # a tread at its own top
+        self.assertEqual(w.get(3, 19, 2), (B.QUARTZ_STAIRS, stair("n")))     # its nosing, rising to the next
+        self.assertEqual((w.get(1, 19, 2), w.get(5, 19, 2)), ((B.QUARTZ, 1), (B.QUARTZ, 1)))   # the cheeks

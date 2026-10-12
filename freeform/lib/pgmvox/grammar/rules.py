@@ -19,7 +19,9 @@ What a Style answers:
     faces       the courses of a face, top down, from the rim at the surface; its accent bay and the air it needs
     seam        the outline where a section meets anything but a drop: another section, a wall, a stair's head
     fills       recipes that lay a section's inside, tried in the order the style's chooser gives
-    motifs      marks laid into a fill afterwards: an arrow, a disc, a team's sign
+    motifs      marks laid into a fill afterwards: an arrow, a word, a glyph (grammar.marks holds the shared ones)
+    deck        what a section tagged "under-<y>" is laid on: a slab of courses over air, its floor at y below
+    pillar      what stands under a deck's open edge, from the deck down to that floor
 
 A section is a set of boxes, usually one: a rectangle. A section that is no rectangle still works, but the fills
 that need one (rings, beds, squares) decline it, and the chooser's next fill is tried.
@@ -39,7 +41,7 @@ OPP = {"n": "s", "s": "n", "e": "w", "w": "e"}
 @dataclass(frozen=True)
 class Section:
     """A piece of surface at one height: boxes (x0, z0, x1, z1) inclusive, in blocks. `fill` names the recipe to
-    lay inside it, or None for the style's choice; `tags` are free words a style's rules may read (front, back,
+    lay inside it, or is one, fill(w, lot, rng), or None for the style's choice; `tags` are free words a style's rules may read (front, back,
     team, lane ...); `motifs` are marks laid over the fill: (name, params)."""
     boxes: tuple
     y: int
@@ -220,18 +222,24 @@ class Accent:
 @dataclass
 class Face:
     """The courses of a face, top down from the rim at the surface; a course None keeps what is there. `floor` is
-    the lowest y a course may reach."""
+    the lowest y a course may reach. `pattern` is a list of facade face patterns, pattern(s, run, t, h, n), laid
+    over the plain courses under the rim: s counts along the face's straight run from its left end seen from
+    outside, t up from its bottom course, h is the rim's t; the first pattern that answers decides a block, an
+    "inset" setting the face back a block, an "accent" keeping it flush. An accent bay and a corner keep their
+    courses."""
     courses: list
     accent: Accent = None
     floor: int = 3
     panel: Panel = None
+    pattern: tuple = ()
 
     def lay(self, w, x, z, h, inward, along=None, pos=None, air=0, accents=True, backs=None, bottom=None, stack=None,
             end=None, rng=None):
         """Lay the courses at (x, z). A sunk course's back lands in the inward column; `backs`, when given, collects
         each as (x, y, z, block) so a body laid there afterwards can be laid under it again. With `bottom` the
         courses stop above it instead of refusing a face that reaches under the floor. `stack` lays those courses
-        instead of the face's own, `end` is the side a Toward course rises to and `rng` draws a Mix."""
+        instead of the face's own, `end` is the side a Toward course rises to and `rng` draws a Mix. Returns
+        whether an accent bay's courses were laid."""
         if bottom is None and h - len(self.courses) + 1 < self.floor:
             raise ValueError(f"a face at {h} reaches under y {self.floor}: raise the floor")
         a = self.accent
@@ -239,7 +247,8 @@ class Face:
             stack = self.courses
         elif a:
             a = None
-        if accents and a and along is not None and along % a.every == a.phase and air >= a.min_air:
+        bay = bool(accents and a and along is not None and along % a.every == a.phase and air >= a.min_air)
+        if bay:
             stack = a.frame if pos in (0, a.module - 1) else a.inner(pos) if callable(a.inner) else a.inner
         ix, iz = DIRS[inward]
         for i, s in enumerate(stack):
@@ -258,6 +267,7 @@ class Face:
                     w.set(x - ix, h - i, z - iz, *spec(s.out, inward, end, rng))
             else:
                 w.set(x, h - i, z, *spec(s, inward, end, rng))
+        return bay
 
     def open(self, ground, x, z, side, pos, h):
         """Whether the whole bay a face column stands in, with its margin, has air enough before it."""
@@ -368,6 +378,50 @@ def _runs(faces):
     return out
 
 
+LEFT = {"s": (1, 0), "n": (-1, 0), "e": (0, -1), "w": (0, 1)}   # a face's left-to-right seen from outside it
+
+
+def lines(faces):
+    """Every straight run of face columns (same side, same line, same height, unbroken), each left to right as seen
+    from outside: [(side, h, [(x, z), ...]), ...], in a fixed order."""
+    by = {}
+    for (x, z), (side, h) in faces.items():
+        by.setdefault((side, x if side in ("e", "w") else z, h), []).append((x, z))
+    out = []
+    for (side, _, h), cs in sorted(by.items()):
+        lx, lz = LEFT[side]
+        cs.sort(key=lambda c: c[0] * lx + c[1] * lz)
+        run = [cs[0]]
+        for c in cs[1:]:
+            if (c[0] * lx + c[1] * lz) - (run[-1][0] * lx + run[-1][1] * lz) == 1:
+                run.append(c)
+            else:
+                out.append((side, h, run))
+                run = [c]
+        out.append((side, h, run))
+    return out
+
+
+def pattern(w, face, faces, land):
+    """Lay `face.pattern` over plain face columns, {(x, z): (side, h)}: under the rim, down its courses, each run of
+    them a face of its own. An inset needs land behind it: `land(x, z)`."""
+    depth = len(face.courses)
+    for n, (side, h, run) in enumerate(lines(faces)):
+        ix, iz = DIRS[OPP[side]]
+        for s, (x, z) in enumerate(run):
+            for i in range(1, depth):
+                t = depth - 1 - i
+                act = next((a for a in (p(s, len(run), t, depth - 1, n) for p in face.pattern) if a), None)
+                if not act:
+                    continue
+                kind, block = act
+                if kind == "accent":
+                    w.set(x, h - i, z, *block)
+                elif kind == "inset" and land(x + ix, z + iz):
+                    w.set(x, h - i, z, B.AIR)
+                    w.set(x + ix, h - i, z + iz, *block)
+
+
 def lattice(period, a, b):
     """Two diagonals through a face, period blocks apart along x + z: `a` where (x + z + y) % period is 0, `b` where
     (x + z - y) % period is 0, None elsewhere."""
@@ -428,13 +482,42 @@ class Style:
     choose: object
     motifs: dict = field(default_factory=dict)
     params: dict = field(default_factory=dict)
+    deck: object = None
+    pillar: object = None
 
     def fill(self, w, lot, rng):
-        names = ([lot.section.fill] if lot.section.fill else []) + list(self.choose(lot.section, lot))
+        own = lot.section.fill
+        if callable(own) and own(w, lot, rng):
+            return getattr(own, "__name__", "own")
+        names = ([own] if isinstance(own, str) else []) + list(self.choose(lot.section, lot))
         for name in names:
             if self.fills[name](w, lot, rng):
                 return name
         return None
+
+
+def under(section):
+    """The floor under a deck section, its y from the tag "under-<y>", or None for a section on its body."""
+    return next((int(t[6:]) for t in section.tags if t.startswith("under-")), None)
+
+
+def pillars(w, ground, n, style, floor, every=6):
+    """The pillars under deck section n: along every straight run of its edge over the floor under it or lower, one
+    at each end and as many between as keep them `every` or fewer apart, spaced evenly, from under the deck's face
+    down to that floor. A style's pillar(w, x, z, top, bottom, side) lays one."""
+    faces = {}
+    for x, z in ground.sections[n].columns():
+        open_ = [d for d, (dx, dz) in DIRS.items() if ground.top(x + dx, z + dz) <= floor]
+        if ground.depth(x, z) == 0 and open_:
+            faces[(x, z)] = (open_[0], ground.top(x, z))
+    deck = style.params.get("deck_depth", 3)
+    for side, h, run in lines(faces):
+        if len(run) < 3:
+            continue
+        k = max(1, -(-(len(run) - 1) // every))
+        for j in range(k + 1):
+            x, z = run[round(j * (len(run) - 1) / k)]
+            style.pillar(w, x, z, h - deck, floor + 1, side)
 
 
 def lay(w, ground, style, only=None, rng=None, face_of=None, params=None, where=None, bodiless=()):
@@ -443,23 +526,29 @@ def lay(w, ground, style, only=None, rng=None, face_of=None, params=None, where=
     section's fill and motifs. A sunk course's back stands in the column inside its face and outlasts that
     column's body, unless that column is a face itself. face_of(x, z) may name another of the style's faces for a column, or None to leave
     its face alone; where(x, z) limits the columns touched (one team's part of a section that crosses into
-    another's: its fill then sees no rectangle); `bodiless` columns get no body (a hollow under a deck). Returns
-    {section number: the fill laid}."""
+    another's: its fill then sees no rectangle); `bodiless` columns get no body (a hollow under a deck). A section tagged "under-<y>" is a deck: its columns are
+    laid on the style's deck(w, x, z, h, y), its faces are the style's "deck" face, and pillars stand under its
+    falling edge (`pillars`). A face with a pattern is patterned last, over its plain columns, each straight run
+    whole whatever sections stand over it. A motif the style does not
+    name is grammar.marks'. Returns {section number: the fill laid}."""
     import random
     rng = rng or random.Random(0)
     params = {**style.params, **(params or {})}
     todo = range(len(ground.sections)) if only is None else only
-    laid, bays = {}, {}
+    laid, bays, plain = {}, {}, {}
     for n in todo:
         sec = ground.sections[n]
         cols = [c for c in sec.columns() if where is None or where(*c)]
+        floor = under(sec)
         backs, faced = [], set()
         for x, z in cols:
             h = ground.top(x, z)
-            if (x, z) not in bodiless:
+            if floor is not None:
+                style.deck(w, x, z, h, floor)
+            elif (x, z) not in bodiless:
                 style.body(w, x, z, h)
             falls = ground.falls(x, z)
-            name = face_of(x, z) if face_of else "edge"
+            name = face_of(x, z) if face_of else "deck" if floor is not None and "deck" in style.faces else "edge"
             if falls and name:
                 side, drop = falls[0]
                 face = style.faces[name]
@@ -470,17 +559,27 @@ def lay(w, ground, style, only=None, rng=None, face_of=None, params=None, where=
                         bays[key] = face.open(ground, x, z, side, pos, h)
                     if not bays[key]:
                         along = None
-                face.lay(w, x, z, h, OPP[side], along, pos, air=drop, backs=backs)
+                bay = face.lay(w, x, z, h, OPP[side], along, pos, air=drop, backs=backs)
                 faced.add((x, z))
+                if face.pattern and not bay and len(falls) == 1:
+                    plain.setdefault(name, {})[(x, z)] = (side, h)
             elif not falls and ground.depth(x, z) == 0:
                 w.set(x, h, z, *style.seam)
         for x, y, z, back in backs:
             if (x, z) not in faced:
                 w.set(x, y, z, *back)
+        if floor is not None and style.pillar:
+            pillars(w, ground, n, style, floor, style.params.get("pillar_every", 6))
         inner = set(cols)
         lot = Lot(sec, n, [c for c in ground.inside(n) if c in inner], sec.y, ground, params)
         if lot.cols:
             laid[n] = style.fill(w, lot, rng)
             for mname, mparams in sec.motifs:
-                style.motifs[mname](w, lot, rng, **dict(mparams))
+                if mname in style.motifs:
+                    style.motifs[mname](w, lot, rng, **dict(mparams))
+                else:
+                    from pgmvox.grammar import marks
+                    marks.MOTIFS[mname](w, lot, rng, **dict(mparams))
+    for name, faces in plain.items():                       # a face's straight run, whatever the sections over it
+        pattern(w, style.faces[name], faces, lambda x, z: ground.top(x, z) >= 0)
     return laid

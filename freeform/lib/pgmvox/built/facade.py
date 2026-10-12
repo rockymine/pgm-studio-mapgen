@@ -315,6 +315,19 @@ def stripes(period, width, block, axis="x"):
     return lambda c: block if ((c.x if axis == "x" else c.z) % period) < width else None
 
 
+def diagonal(period, width, block, sense=1):
+    """Stripes across the rectangle at 45 degrees, `width` of every `period`: a hazard's bands."""
+    return lambda c: block if ((c.x + sense * c.z) % period) < width else None
+
+
+def chevrons(period, width, block, d="n"):
+    """Chevrons pointing d down the rectangle's middle, `width` of every `period` blocks along it."""
+    def f(c):
+        along, off = {"n": (-c.z, c.u), "s": (c.z, c.u), "e": (c.x, c.v), "w": (-c.x, c.v)}[d]
+        return block if (along + abs(off)) % period < width else None
+    return f
+
+
 def tiles(size, a, b):
     """A checker of two blocks, `size` square."""
     return lambda c: a if ((c.x // size) + (c.z // size)) % 2 == 0 else b

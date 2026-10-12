@@ -276,6 +276,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `other/brittle_study` | `freeform/lib/boards/brittle-study` | `freeform/lib/boards/brittle-study` |
 | `other/copperline` | `freeform/lib/boards/copperline` | `freeform/lib/boards/copperline` |
 | `other/form_gallery` | `form-gallery` | — |
+| `other/grammar_showcase` | `freeform/lib/boards/grammar-showcase` | `freeform/lib/boards/grammar-showcase` |
 | `other/sculpture_gallery` | `sculpture-gallery` | — |
 | `tdm/overgrowth` | `freeform/lib/boards/overgrowth` | `freeform/lib/boards/overgrowth` |
 | `tdm/penstock` | `freeform/lib/boards/penstock` | `freeform/lib/boards/penstock` |
