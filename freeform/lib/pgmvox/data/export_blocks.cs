@@ -35,7 +35,8 @@ for (var id = 0; id < BlockVariants.BlockIdCount; id++)
         id,
         name = BlockPalette.Name(id, 0),
         role = BlockRoles.Of(id).ToString().ToLowerInvariant(),
-        stood_through = BlockRoles.StoodThrough(id),
+        // pgmvox opens a door by its own MoveRules.doors, so what is opened stays out of this field.
+        stood_through = BlockRoles.WalkedThrough(id) && !BlockRoles.Openable.Contains(id),
         full_cube = BlockRoles.IsFullCube(id),
         seen_through = BlockRoles.SeenThrough(id),
         stands_on_ground = BlockRoles.StandsOnGround(id),
