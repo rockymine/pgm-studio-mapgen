@@ -1349,7 +1349,7 @@ to be moved apart in plan.
 
 ### A goal states its storey on the plan
 
-`DestroyablePlacement` and `CorePlacement` carry `layer` beside `id · piece · at · style · materials ·
+`DestroyableMarker` and `CoreMarker` carry `layer` beside `id · piece · at · style · materials ·
 float · name`, and the compile carries it onto every orbit image. A goal naming none resolves against
 `SurfaceTop` — the highest layer — so a monument stated for a hall lands on the deck roofing it, with
 nothing declined:
@@ -1486,8 +1486,8 @@ A house is placed by hand rather than scattered, so the gates that filter a prop
 ### A room's building defaults to its piece, and `footprint` separates the two
 
 `WX1` makes the shell the piece rect inset one block on every side where the placement says nothing, so
-a **20 × 20** spawn piece stamps an **18 × 18** house — a hall, not a spawn hut. `WoolPlacement.footprint`
-and `SpawnPlacement.footprint` state it instead, as `[x, z, w, h]` in blocks from the piece's minimum
+a **20 × 20** spawn piece stamps an **18 × 18** house — a hall, not a spawn hut. `WoolMarker.footprint`
+and `SpawnMarker.footprint` state it instead, as `[x, z, w, h]` in blocks from the piece's minimum
 corner; `WX12` refuses one that reaches outside its piece, and `ST9`'s cap reads the rectangle the export
 actually stamps — the stated one, or `WX1`'s default. So a wide protected apron with a small house on it
 *is* expressible, since the piece is still the protection region and the spawn's own ground.
@@ -1730,7 +1730,7 @@ rasterizer built.
 
 ### A goal's `at` is in blocks, and naming no piece is not what loses its ratio
 
-`DestroyablePlacement.at` and `CorePlacement.at` are described as *"an [x, z] offset in half-blocks"*. They are
+`DestroyableMarker.at` and `CoreMarker.at` are described as *"an [x, z] offset in half-blocks"*. They are
 read as **blocks** — from the piece's minimum corner where one is named, and from the symmetry centre where
 none is. Measured against `/plan/inspect`'s `goalDistances`: a goal stating `piece: "fell"` with
 `at: [38, 42]` and the same goal stating no piece with `at: [-22, -62]` both read 49 blocks from their own

@@ -132,8 +132,8 @@ clears it.
 
 ## Limits
 
-**The half-block reading of a plan's `at` is not on this board.** `DestroyablePlacement.at` and
-`CorePlacement.at` belong to a *plan*, and this card drives the sketch and the intent; the finding that they
+**The half-block reading of a plan's `at` is not on this board.** `DestroyableMarker.at` and
+`CoreMarker.at` belong to a *plan*, and this card drives the sketch and the intent; the finding that they
 are read as blocks rather than half-blocks stands in `GENERATION-NOTES.md` where it was measured.
 
 **Nor is a goal under a deck.** `OB17` asks whether a goal stands over void, in a spawn or in a wool room,
