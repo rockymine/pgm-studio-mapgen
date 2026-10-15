@@ -1,7 +1,8 @@
-"""Write Coldbore's map.xml: two teams of twenty, each with a reactor (the core) under its forecourt and an orange
-or cyan wool sealed in the vault beneath it. A reactor's leak opens its vault: the trigger clears the core, the
-well and the bedrock hatch over the vault's pool, and the vault's blast door. The vault's shell is kept from
-being dug through, and no player may place or scoop lava, since a bucket of it near a core would leak it.
+"""Write Coldbore's map.xml: two teams of twenty, each with a reactor (the core) hanging over a pit in a hall inside
+its mountain and an orange or cyan wool sealed in a vault deep in the mountain's other side. A reactor's leak
+opens its vault: the trigger clears the core, the cradle round it and the pit, and the vault's blast door. The
+vault's shell is kept from being dug through, and no player may place or scoop lava, since a bucket of it near a
+core would leak it.
 
     python3 mapxml.py > map.xml
 """
@@ -25,8 +26,8 @@ SHELL = [Box(vault.x0 - 2, vault.feet - 6, vault.z0 - 2, vault.x1 + 2, vault.fee
          Box(vault.x0, vault.feet + vault.h, vault.z0, vault.x1, vault.feet + vault.h + 1, vault.z1)]   # ceiling
 O.add(Zone("red-vault-shell", SHELL, place=False, break_=False, team="red-team",
            message="The vault's shell is blast-proof: leak the reactor above it."))
-SPILL = Box(P.CORE.x0 - 4, P.L1, P.CORE.z0 - 4, P.CORE.x1 + 4, P.CORE.y1 + 1, P.CORE.z1 + 4)
-OPEN = [P.CORE, SPILL, P.WELL, P.HATCH]
+SPILL = Box(P.PIT.x0, P.L1, P.PIT.z0, P.PIT.x1, P.CORE.y1 + 1, P.PIT.z1)   # the cradle and the air round the core
+OPEN = [P.CORE, SPILL, P.PIT]
 
 
 def opened(team, colour, wool):
@@ -38,11 +39,11 @@ def opened(team, colour, wool):
                     Message(f"{name}'s reactor has leaked and its vault stands open: go and get the {wool} wool!")])
 
 
-M = Map("Coldbore", "0.1.0", "Leak the enemy's reactor under its forecourt, then take the wool from the vault the "
-        "leak opens beneath it.", ["ctw", "dtc"],
+M = Map("Coldbore", "0.2.0", "Leak the enemy's reactor in the hall inside its mountain, then take the wool from "
+        "the vault the leak opens across the station.", ["ctw", "dtc"],
         terrain=terrain_of(__file__),
         authors=["Claude (freeform generator)"],
-        contributors=[("rockymine", "The idea: a bunker in a cliff, a fissure, a reactor over its wool")],
+        contributors=[("rockymine", "The idea: a bunker in a cliff, a fissure, a reactor and a vault apart")],
         objectives=O,
         kit=Kit(Item("iron sword", 0, unbreakable=True), Item("bow", 1, unbreakable=True),
                 Item("diamond pickaxe", 2, unbreakable=True), Item("iron axe", 3, unbreakable=True),
@@ -56,7 +57,7 @@ M = Map("Coldbore", "0.1.0", "Leak the enemy's reactor under its forecourt, then
                     rule=Deny(All(Any(Material("lava"), Material("stationary lava")), Cause("player"))),
                     message="Lava may not be placed or taken."),
         kill=KillHeight(P.KILL_Y),
-        rules=["A reactor's leak opens the vault under it: its wool cannot be reached before.",
+        rules=["A reactor's leak opens its vault's blast door: its wool cannot be reached before.",
                "The vault's shell is blast-proof."],
         parts=[opened("red", "red", "orange"), opened("blue", "blue", "cyan")])
 print(M.xml())

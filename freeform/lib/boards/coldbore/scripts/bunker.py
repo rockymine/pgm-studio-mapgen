@@ -1,23 +1,25 @@
-"""Red's station under the cliff: every room, corridor and flight carved and lined, the facade standing out of the
-cliff, the stair core, the drop, the vent ladder, the reactor's well and hatch, the vault and its pool, the
-blast door, the gallery over the fissure and the culvert up to the snow.
+"""Red's station inside the mountain: every room, corridor and ramp carved and lined, the gate's facade in the west
+buttress and the generator house in the east, the reactor hall with its balcony, gantry and ramp, the pit under
+the core, the vault and its blast door, the gallery over the fissure, and the store whose ceiling fell in.
 
-The built family is the station's: stone and stone brick inside, a dark nether-brick front outside, iron for what
-is machinery, yellow-and-black hazard bands at its thresholds; the vault alone is white quartz, a clean room.
+The built family is the station's: stone and stone brick inside, a dark nether-brick front at the gate and a
+pale concrete front at the generator house, iron for what is machinery, yellow-and-black hazard bands at its
+thresholds; the vault alone is white quartz, a clean room.
 """
 import numpy as np
 from scipy import ndimage
 
-import land  # noqa: F401
+import land
 import plan as P
 from pgmvox import B
 from pgmvox.core import orient
-from pgmvox.volume import under
+from pgmvox.geom import noise
 
 FLOOR = [(B.STONEBRICK, 0), (B.STONE, 6), (B.STONE, 5), (B.STONE, 0)]       # a quarter each, in cells of three
 HAZARD = [(B.STAINED_CLAY, 4), (B.STAINED_CLAY, 15)]
 TEAM = (B.STAINED_CLAY, 14)                                                 # red; blue's image recolours it
-BOX = dict(x0=-36, x1=40, y0=24, y1=112, z0=0, z1=99)                      # red's bunker lies inside this
+BOX = dict(x0=-66, x1=48, y0=36, y1=104, z0=0, z1=99)                      # red's station lies inside this
+RUBBLE = [(B.COBBLE, 0), (B.STONE, 5), (B.STONEBRICK, 2), (B.GRAVEL, 0), (B.STONE, 0), (B.STONEBRICK, 0)]
 
 
 def floor_block(x, z):
@@ -31,8 +33,7 @@ def hazard(x, y, z):
 
 def grid():
     b = BOX
-    xs, ys, zs = np.arange(b["x0"], b["x1"] + 1), np.arange(b["y0"], b["y1"] + 1), np.arange(b["z0"], b["z1"] + 1)
-    return xs, ys, zs
+    return np.arange(b["x0"], b["x1"] + 1), np.arange(b["y0"], b["y1"] + 1), np.arange(b["z0"], b["z1"] + 1)
 
 
 def mask_of(boxes):
@@ -45,22 +46,21 @@ def mask_of(boxes):
 
 
 def space_boxes():
-    """Every carved air box of red's station: rooms and corridors, flights, the gallery, the shafts."""
-    out = {}
+    """Every carved air box of red's station: rooms and corridors, the tunnel ramps, the gallery, the gate, the
+    garage door and the pit."""
+    out = []
     for s in P.SPACES:
-        out[s.name] = [(s.x0, s.x1, s.feet, s.feet + s.h - 1, s.z0, s.z1)]
-    for f in P.FLIGHTS:
-        out[f.name] = [(x, x, feet, feet + f.h - 1, z, z) for x, z, feet in f.cells()]
+        out.append((s.x0, s.x1, s.feet, s.feet + s.h - 1, s.z0, s.z1))
+    for r in P.RAMPS:
+        if not r.solid:
+            out += [(x, x, P.ramp_floor(f) + 1, P.ramp_floor(f) + r.h, z, z) for x, z, f in r.cells()]
     g = P.GALLERY
-    out["gallery"] = [(x, x, g["feet"], g["feet"] + g["h"] - 1, z, z) for x, z in P.gallery_cells()]
-    sh = P.SHAFT
-    out["stair core"] = [(sh["x0"] + 1, sh["x1"] - 1, P.L2, P.TOP + 4, sh["z0"] + 1, sh["z1"] - 1)]
-    out["doors"] = [(x, x, feet, feet + 3, z, z) for x, z, feet in P.DOORS]
-    d = P.DROP
-    out["drop shaft"] = [(d["x0"], d["x1"], P.L1 + 9, P.TOP + 2, d["z0"], d["z1"])]
-    lad = P.LADDER
-    out["vent shaft"] = [(lad["x"], lad["x"] + 1, P.L1 + 9, lad["top"], lad["z0"], lad["z1"])]
-    out["gate"] = [(P.GATE["x0"], P.GATE["x1"], P.L0, P.L0 + P.GATE["h"] - 1, P.GATE["z"], P.GATE["z"])]
+    out += [(x, x, g["feet"], g["feet"] + g["h"] - 1, z, z) for x, z in P.gallery_cells()]
+    out.append((P.GATE["x0"], P.GATE["x1"], P.L0, P.L0 + P.GATE["h"] - 1, P.GATE["z"], P.GATE["z"]))
+    ga = P.GARAGE
+    out.append((ga["x0"], ga["x1"], ga["feet"], ga["feet"] + ga["h"] - 1, ga["z"], ga["z"]))
+    p = P.PIT
+    out.append((p.x0, p.x1, p.y0, p.y1, p.z0, p.z1))
     return out
 
 
@@ -73,21 +73,25 @@ def place(w, xs, ys, zs, m, block):
             w.set(x, y, z, *b)
 
 
+def fronts():
+    f, a = P.FACADE, P.ANNEX
+    return [(f["x0"], f["x1"], f["y0"], f["y1"], f["z0"], f["z1"]), (a["x0"], a["x1"], a["y0"], a["y1"], a["z0"], a["z1"])]
+
+
 def carve_and_line(w):
     """Carve every space, then line what rock touches the air: a floor, walls and a ceiling by the space they
     face. Returns the air mask over BOX, for what is laid afterwards."""
     xs, ys, zs = grid()
-    boxes = space_boxes()
-    air = mask_of([b for v in boxes.values() for b in v])
+    air = mask_of(space_boxes())
     struct = ndimage.generate_binary_structure(3, 1)
     b = BOX
     solid = w.ids[b["x0"] - w.x0:b["x1"] - w.x0 + 1, b["y0"]:b["y1"] + 1, b["z0"] - w.z0:b["z1"] - w.z0 + 1] != 0
-    f = P.FACADE
-    front = mask_of([(f["x0"], f["x1"], f["y0"], f["y1"], f["z0"], f["z1"])])
-    shell = ndimage.binary_dilation(air, struct) & ~air & (solid | front)    # only what is rock or the facade
-    # the facade first: a mass of nether brick standing out of the cliff, the rooms cut into it after
-    place(w, xs, ys, zs, front & ~air, facade_block)
-    # walls, floors and ceilings by which way the air lies from them
+    west, east = fronts()
+    wmask, emask = mask_of([west]), mask_of([east])
+    front = wmask | emask
+    shell = ndimage.binary_dilation(air, struct) & ~air & (solid | front)    # only what is rock or a facade
+    place(w, xs, ys, zs, wmask & ~air, facade_block)
+    place(w, xs, ys, zs, emask & ~air, annex_block)
     below_air = np.zeros_like(air); below_air[:, :-1, :] = air[:, 1:, :]       # air over it: a floor
     above_air = np.zeros_like(air); above_air[:, 1:, :] = air[:, :-1, :]       # air under it: a ceiling
     vault = next(s for s in P.SPACES if s.name == "vault")
@@ -95,14 +99,15 @@ def carve_and_line(w):
 
     def line(x, y, z):
         i, j, k = x - xs[0], y - ys[0], z - zs[0]
-        if front[i, j, k] and not air[i, j, k] and y > f["y0"]:
-            return None                                           # the facade keeps its own faces
+        if front[i, j, k] and not below_air[i, j, k] and not above_air[i, j, k]:
+            if not solid[i, j, k] or z == (P.FACADE["z0"] if wmask[i, j, k] else P.ANNEX["z0"]):
+                return None                                       # a facade keeps its own faces
         if vmask[i, j, k]:
             return vault_block(x, y, z, below_air[i, j, k], above_air[i, j, k])
         if below_air[i, j, k]:
             return floor_block(x, z)
         if above_air[i, j, k]:
-            return (B.SEA_LANTERN, 0) if x % 6 == 0 and z % 6 == 0 else (B.DSLAB, 0)
+            return (B.SEA_LANTERN, 0) if x % 5 == 0 and z % 5 == 0 else (B.DSLAB, 0)
         return wall_block(x, y, z)
     place(w, xs, ys, zs, shell, line)
     place(w, xs, ys, zs, air, (B.AIR, 0))
@@ -140,6 +145,25 @@ def facade_block(x, y, z):
     return (B.NETHER_BRICK, 0)
 
 
+def annex_block(x, y, z):
+    """The generator house's front: pale poured concrete in lifts between ribs of quartz, a plinth of polished
+    andesite, a window band of bars, the team's band under a coping of slabs."""
+    a, ga = P.ANNEX, P.GARAGE
+    if y == a["y1"]:
+        return (B.SLAB, 5)
+    if y == a["y1"] - 2:
+        return TEAM
+    if y <= P.L0:
+        return (B.STONE, 6)
+    if z == a["z0"] and (x - a["x0"]) % 5 == 0:
+        return (B.QUARTZ, 2)                                      # ribs between the bays
+    if z == a["z0"] and y in (P.L0 + 7, P.L0 + 8) and not ga["x0"] - 1 <= x <= ga["x1"] + 1:
+        return (B.IRON_BARS, 0)                                   # the window band onto the court
+    if (y - P.L0) % 4 == 3:
+        return (B.STONE, 6)                                       # the lift lines between pours
+    return (B.STAINED_CLAY, 8)
+
+
 def gate(w):
     """The gate's frame: hazard bands round the opening, iron jambs, and slits under the parapet."""
     g, f = P.GATE, P.FACADE
@@ -159,8 +183,8 @@ def gate(w):
 
 
 def wings(w):
-    """Blast walls splaying out from the facade's front corners onto the forecourt, falling from six courses at
-    the facade to three at their ends, and a concrete visor over the gate."""
+    """Blast walls splaying out from the facade's front corners onto the court, falling from six courses at the
+    facade to three at their ends, and a concrete visor over the gate."""
     f, g = P.FACADE, P.GATE
     for side in (-1, 1):
         x0 = f["x0"] if side < 0 else f["x1"]
@@ -177,105 +201,131 @@ def wings(w):
             w.set(x, g["feet"] + g["h"] + 1, z, B.SLAB, 13 if z > g["z"] - 3 else 5)
 
 
-def flights(w):
-    """Stairs on every flight: each step's block faces the way the flight climbs."""
-    for f in P.FLIGHTS:
-        cells = f.cells()
-        up = "n" if f.feet_at(f.z1) < f.feet_at(f.z0) and f.z1 > f.z0 or \
-            f.feet_at(f.z1) > f.feet_at(f.z0) and f.z1 < f.z0 else "s"
-        for x, z, feet in cells:
-            w.set(x, feet - 1, z, B.STONEBRICK_STAIRS, orient.stair(up))
-            w.set(x, feet - 2, z, B.STONEBRICK)
+def garage(w):
+    """The generator house's door: a hazard frame, the shutter jammed a block down from the lintel, and two
+    exhausts climbing the front past the coping."""
+    ga, a = P.GARAGE, P.ANNEX
+    z = ga["z"]
+    for x in range(ga["x0"] - 1, ga["x1"] + 2):
+        for y in range(ga["feet"] - 1, ga["feet"] + ga["h"] + 1):
+            inside = ga["x0"] <= x <= ga["x1"] and ga["feet"] <= y < ga["feet"] + ga["h"]
+            if not inside:
+                w.set(x, y, z, *hazard(x, y, z))
+    for x in range(ga["x0"], ga["x1"] + 1):
+        w.set(x, ga["feet"] + ga["h"] - 1, z, B.IRON_TRAPDOOR, 8 | 1)
+    for x in (a["x0"] + 2, a["x1"] - 2):
+        for y in range(P.L0, a["y1"] + 6):
+            w.set(x, y, a["z0"] - 1, B.COBBLE_WALL)
+        w.set(x, a["y1"] + 6, a["z0"] - 1, B.IRON_BARS)
 
 
-def stair_core(w):
-    """The shaft: a solid core of polished andesite, the stair climbing the ring round it a block a step, lit
-    from the core."""
-    sh = P.SHAFT
-    for x in range(sh["x0"] + 2, sh["x1"] - 1):
-        for z in range(sh["z0"] + 2, sh["z1"] - 1):
-            for y in range(P.L2 - 1, P.TOP + 4):
-                lit = (y - P.L2) % 6 == 3 and (x in (sh["x0"] + 2, sh["x1"] - 2) or z in (sh["z0"] + 2, sh["z1"] - 2))
-                w.set(x, y, z, B.SEA_LANTERN if lit else B.STONE, 0 if lit else 6)
-    steps = P.helix()
-    for (x, z, feet), nxt in zip(steps, steps[1:] + [None]):
-        d = "n"
-        if nxt is not None:
-            dx, dz = nxt[0] - x, nxt[1] - z
-            d = {(1, 0): "e", (-1, 0): "w", (0, 1): "s", (0, -1): "n"}[(dx, dz)]
-        w.set(x, feet - 1, z, B.STONEBRICK_STAIRS, orient.stair(d))
+def ramp_step(f):
+    """A ramp cell's floor block: a full block where the feet stand on a whole block, a slab where on a half."""
+    return (B.STONEBRICK, 0) if f == int(f) else (B.SLAB, 5)
 
 
-def drop(w):
-    """The drop's pool at the foot of the shaft, three deep and flush with the drop room's floor."""
-    d = P.DROP
-    for x in range(d["x0"], d["x1"] + 1):
-        for z in range(d["z0"], d["z1"] + 1):
-            for y in range(d["water_top"] - d["water_depth"] + 1, d["water_top"] + 1):
-                w.set(x, y, z, B.WATER)
-            w.set(x, d["water_top"] - d["water_depth"], z, B.SEA_LANTERN)
+def ramps(w):
+    """The hall's ramp stands as a wedge of stone brick against its west and south walls; the tunnel ramps get
+    their half steps in their carved floors and a lamp in the ceiling every four."""
+    for r in P.RAMPS:
+        for x, z, f in r.cells():
+            top = P.ramp_floor(f)
+            if r.solid:
+                for y in range(P.L1 - 1, top):
+                    w.set(x, y, z, B.STONEBRICK, 0 if (x + y + z) % 7 else 2)
+            w.set(x, top, z, *ramp_step(f))
+            if f != int(f):
+                w.set(x, top - 1, z, B.STONEBRICK)
+            if not r.solid and x % 4 == 0 and z % 4 == 0:
+                w.set(x, top + r.h + 1, z, B.SEA_LANTERN)
+    hall = next(r for r in P.RAMPS if r.solid)
+    leg = hall.legs[0]
+    for z in range(leg.z0, leg.z1 + 1, 3):                       # hazard marks along the open edge of the upper leg
+        f = max(c[2] for c in hall.cells() if c[0] == leg.x1 and c[1] == z)
+        w.set(leg.x1, P.ramp_floor(f), z, *(HAZARD[0] if f == int(f) else (B.SLAB, 5)))
 
 
-def ladder(w):
-    lad = P.LADDER
-    for z in range(lad["z0"], lad["z1"] + 1):
-        for y in range(lad["bottom"], lad["top"] + 1):
-            w.set(lad["wall_x"], y, z, B.STONEBRICK)
-            w.set(lad["x"], y, z, B.LADDER, orient.ladder("w"))
+def decks(w):
+    """The balcony and the gantry: a floor on a beam, on piers to the hall's floor, a rail on the open edges."""
+    for d in P.DECKS:
+        for x, z in d.cells():
+            w.set(x, d.feet - 1, z, *floor_block(x, z))
+            w.set(x, d.feet - 2, z, B.SLAB, 13)
+    bal = next(d for d in P.DECKS if d.name == "balcony")
+    gan = next(d for d in P.DECKS if d.name == "gantry")
+    piers = [(x, bal.z0) for x in range(bal.x0 + 6, bal.x1, 6)] + [(gan.x0, z) for z in range(gan.z0, gan.z1 + 1, 4)]
+    for x, z in piers:
+        for y in range(P.L1, P.L0 - 1):
+            w.set(x, y, z, B.IRON_BLOCK if (y - P.L1) % 5 == 4 else B.STONEBRICK)
+    for x in range(bal.x0, bal.x1 + 1):
+        w.set(x, P.L0 - 2, bal.z0, B.STONEBRICK)                  # the beam along the balcony's lip
+        if -8 <= x < gan.x0:
+            w.set(x, P.L0, bal.z0, B.NETHER_FENCE)
+    for z in range(gan.z0, gan.z1 + 1):
+        w.set(gan.x0, P.L0 - 2, z, B.STONEBRICK)
+        w.set(gan.x0, P.L0, z, B.NETHER_FENCE)
+    for x in range(gan.x0, gan.x1 + 1):
+        w.set(x, P.L0, gan.z0, B.NETHER_FENCE)
 
 
 def reactor(w):
-    """The reactor's hall: the well under the core, its hatch, the hazard ring round the well's mouth, iron
-    columns at its corners, and the cradle the core hangs in from the ceiling."""
-    wl, hatch, c = P.WELL, P.HATCH, P.CORE
-    for x in range(wl.x0, wl.x1 + 1):
-        for z in range(wl.z0, wl.z1 + 1):
-            for y in range(wl.y0, wl.y1 + 1):
-                w.set(x, y, z, B.AIR)
-            w.set(x, hatch.y0, z, B.BEDROCK)
-    for x in range(wl.x0 - 1, wl.x1 + 2):
-        for z in range(wl.z0 - 1, wl.z1 + 2):
-            if not (wl.x0 <= x <= wl.x1 and wl.z0 <= z <= wl.z1):
+    """The reactor's hall: the pit under the core with its ladder and hazard ring, iron columns at the pit's
+    corners, the cradle the core hangs in, coolant lines along the ceiling and consoles on the east wall."""
+    p, c = P.PIT, P.CORE
+    top = P.L1 + P.HALL["h"] - 1
+    for x in range(p.x0 - 1, p.x1 + 2):
+        for z in range(p.z0 - 1, p.z1 + 2):
+            if not (p.x0 <= x <= p.x1 and p.z0 <= z <= p.z1):
                 w.set(x, P.L1 - 1, z, *hazard(x, 0, z))
-    for x, z in ((wl.x0 - 2, wl.z0 - 2), (wl.x1 + 2, wl.z0 - 2), (wl.x0 - 2, wl.z1 + 2), (wl.x1 + 2, wl.z1 + 2)):
-        for y in range(P.L1, P.L1 + P.HALL_H):
+    for x in range(p.x0, p.x1 + 1):
+        for z in range(p.z0, p.z1 + 1):
+            w.set(x, p.y0 - 1, z, B.OBSIDIAN if (x + z) % 3 else B.COAL_BLOCK)
+    lx = (p.x0 + p.x1) // 2
+    for y in range(p.y0, p.y1 + 1):
+        w.set(lx, y, p.z1, B.LADDER, orient.ladder("s"))
+    for x, z in ((p.x0 - 2, p.z0 - 2), (p.x1 + 2, p.z0 - 2), (p.x0 - 2, p.z1 + 2), (p.x1 + 2, p.z1 + 2)):
+        for y in range(P.L1, top + 1):
             w.set(x, y, z, B.IRON_BLOCK if (y - P.L1) % 4 else B.STONEBRICK, 0)
     for x, z in ((c.x0, c.z0), (c.x1, c.z0), (c.x0, c.z1), (c.x1, c.z1)):
-        for y in range(c.y1 + 1, P.L1 + P.HALL_H):
+        for y in range(c.y1 + 1, top + 1):
             w.set(x, y, z, B.IRON_BARS)
-    # coolant lines along the ceiling from the well to the walls
-    for z in range(44, 67, 4):
-        for x in range(-12, 12):
+    for x in range(c.x0, c.x1 + 1):                              # the cradle's yoke over the core
+        for z in (c.z0, c.z1):
+            w.set(x, c.y1 + 1, z, B.IRON_BLOCK if x in (c.x0, c.x1) else B.IRON_BARS)
+    h = P.HALL
+    for z in range(h["z0"] + 2, h["z1"], 4):                     # coolant lines from the core to the walls
+        for x in range(h["x0"], h["x1"] + 1):
             if not (c.x0 - 1 <= x <= c.x1 + 1 and c.z0 - 1 <= z <= c.z1 + 1):
-                w.set(x, P.L1 + P.HALL_H - 1, z, B.COBBLE_WALL)
-    # consoles along the east wall: iron cabinets with lamps over them
-    for z in range(46, 64, 3):
-        w.set(11, P.L1, z, B.IRON_BLOCK)
-        w.set(11, P.L1 + 1, z, B.REDSTONE_LAMP)
+                w.set(x, top, z, B.COBBLE_WALL)
+    for z in range(h["z0"] + 1, 69, 3):                          # consoles along the east wall
+        w.set(h["x1"], P.L1, z, B.IRON_BLOCK)
+        w.set(h["x1"], P.L1 + 1, z, B.REDSTONE_LAMP)
 
 
 def vault(w):
-    """The cooling vault: the pool under the hatch lit from its floor, a quartz rim and rails round it, racks
-    of spent rods along the walls, and the blast door in its east wall."""
-    p = P.POOL
-    for x in range(p["x0"] - 1, p["x1"] + 2):
-        for z in range(p["z0"] - 1, p["z1"] + 2):
-            edge = not (p["x0"] <= x <= p["x1"] and p["z0"] <= z <= p["z1"])
-            for y in range(p["y0"] - 1, p["y1"] + 1):
-                if edge or y == p["y0"] - 1:
-                    w.set(x, y, z, (B.SEA_LANTERN if (not edge and (x + z) % 3 == 0) else B.PRISMARINE), 0)
-                else:
+    """The cooling vault: a sunk pool lit from its floor, racks of spent rods along the walls, a plinth for the
+    wool, and the blast door in the west wall with hazard bands either side of it."""
+    v = next(s for s in P.SPACES if s.name == "vault")
+    px0, px1, pz0, pz1 = v.x0 + 4, v.x0 + 10, v.z0 + 4, v.z0 + 11
+    for x in range(px0 - 1, px1 + 2):
+        for z in range(pz0 - 1, pz1 + 2):
+            if not (px0 <= x <= px1 and pz0 <= z <= pz1):
+                w.set(x, v.feet - 1, z, B.QUARTZ, 2 if (x + z) % 2 else 0)
+                if (x + z) % 4:
+                    w.set(x, v.feet, z, B.IRON_BARS)
+            else:
+                w.set(x, v.feet - 4, z, B.SEA_LANTERN if (x + z) % 3 == 0 else B.PRISMARINE)
+                for y in range(v.feet - 3, v.feet):
                     w.set(x, y, z, B.WATER)
-            if edge:
-                w.set(x, P.L2 - 1, z, B.QUARTZ, 2 if (x + z) % 2 else 0)
-                if (x + z) % 7 and not (x == p["x1"] + 1 and p["z0"] + 3 <= z <= p["z0"] + 6):
-                    w.set(x, P.L2, z, B.IRON_BARS)
-    vault_space = next(s for s in P.SPACES if s.name == "vault")
-    for x in (vault_space.x0, vault_space.x1):
-        for z in range(vault_space.z0 + 2, vault_space.z1 - 1, 3):
-            for y in range(P.L2, P.L2 + 4):
-                w.set(x, y, z, B.QUARTZ, 2)
-            w.set(x, P.L2 + 4, z, B.SEA_LANTERN)
+    for x0 in (v.x0, v.x1):                                      # racks of spent rods along both long walls
+        for z in range(v.z0 + 2, v.z1 - 1, 3):
+            for y in range(v.feet, v.feet + 5):
+                w.set(x0, y, z, B.QUARTZ, 2)
+            w.set(x0, v.feet + 5, z, B.SEA_LANTERN)
+    wx, _, wz = P.WOOL_AT
+    for dx in (-1, 0, 1):
+        for dz in (-1, 0, 1):
+            w.set(wx + dx, v.feet - 1, wz + dz, B.QUARTZ, 1)
     d = P.VAULT_DOOR
     for x in range(d.x0, d.x1 + 1):
         for y in range(d.y0, d.y1 + 1):
@@ -283,94 +333,127 @@ def vault(w):
                 w.set(x, y, z, B.BEDROCK)
     for y in range(d.y0, d.y1 + 2):
         for z in (d.z0 - 1, d.z1 + 1):
+            w.set(d.x0 - 1, y, z, *hazard(0, y, z))
             w.set(d.x1 + 1, y, z, *hazard(0, y, z))
 
 
 def gallery(w):
     """The bore's service gallery on the fissure: a jib over the edge with its cable hanging into the crack,
     broken rails along the lip and pipe racks along the back wall."""
-    cells = P.gallery_cells()
     lips = {}
-    for x, z in cells:
+    for x, z in P.gallery_cells():
         lips[x] = min(z, lips.get(x, z))
     for x, z in lips.items():
         if x % 5 and (x * 7) % 3:
             w.set(x, P.L2, z, B.NETHER_FENCE)
     xs_ = sorted(lips)
+    h = P.GALLERY["h"]
     for x in (xs_[0] - 1, xs_[-1] + 1):                           # a frame round the mouth in the fissure's wall
-        z = lips[xs_[0] if x < 0 else xs_[-1]]
+        z = lips[xs_[0] if x < xs_[0] else xs_[-1]]
         for zz in range(z - 1, z + 2):
-            for y in range(P.L2 - 1, P.L2 + P.HALL_H + 1):
+            for y in range(P.L2 - 1, P.L2 + h + 1):
                 if w.id(x, y, zz) != B.AIR:
                     w.set(x, y, zz, B.NETHER_BRICK)
     for x in range(xs_[0] - 1, xs_[-1] + 2):
         z = lips.get(x, lips[xs_[0]])
         for zz in range(z - 1, z + 2):
-            if w.id(x, P.L2 + P.HALL_H, zz) != B.AIR:
-                w.set(x, P.L2 + P.HALL_H, zz, *hazard(x, 0, zz))
+            if w.id(x, P.L2 + h, zz) != B.AIR:
+                w.set(x, P.L2 + h, zz, *hazard(x, 0, zz))
     jib_x = -6
     z0 = lips[jib_x]
     for z in range(z0 - 6, z0 + 4):
-        w.set(jib_x, P.L2 + P.HALL_H - 2, z, B.IRON_BLOCK)
-    for y in range(P.L2 + 2, P.L2 + P.HALL_H - 2):
+        w.set(jib_x, P.L2 + h - 2, z, B.IRON_BLOCK)
+    for y in range(P.L2 + 2, P.L2 + h - 2):
         w.set(jib_x, y, z0 - 6, B.FENCE)
     for x in range(P.GALLERY["x0"], P.GALLERY["x1"] + 1, 3):
         for y in (P.L2 + 6, P.L2 + 9):
             w.set(x, y, P.GALLERY["z1"], B.IRON_BARS)
 
 
-def culvert(w):
-    """The collapsed culvert from the barracks up to the snow: a cave's tube, its floor rubble and gravel."""
-    under.tunnel(w, P.CULVERT, ground=None, cover=0)
-    for x, y, z, r in P.CULVERT[:2]:
-        for dx in range(-2, 3):
-            for dz in range(-2, 3):
-                if w.id(x + dx, y, z + dz) == B.AIR and w.id(x + dx, y - 1, z + dz) not in (B.AIR,):
-                    w.set(x + dx, y - 1, z + dz, B.GRAVEL)
+def collapsed_store(w, top):
+    """The store under the snowfield whose ceiling fell in: the hole torn ragged to the sky, the mound of rubble
+    and broken slabs under it climbing to within a drop of the hole's lip, snow drifted in on its crown, and
+    the store's crates crushed along its south wall."""
+    s = next(sp for sp in P.SPACES if sp.name == "collapsed store")
+    rh = P.ROOF_HOLE
+    cx, cz = (rh["x0"] + rh["x1"]) / 2, (rh["z0"] + rh["z1"]) / 2
+    ragged = noise.fbm((14, 14), 3, 1, seed=70)
+    for dx in range(-7, 7):
+        for dz in range(-7, 7):
+            x, z = int(cx) + dx, int(cz) + dz
+            if max(abs(x - cx), abs(z - cz)) > 2.6 + 0.9 * ragged[dx + 7, dz + 7]:
+                continue
+            for y in range(s.feet + s.h, int(top[x - land.X0, z - land.Z0]) + 2):
+                w.set(x, y, z, B.AIR)
+    rng = np.random.default_rng(71)
+    peak = land.GROUND - 6
+    for x in range(s.x0, s.x1 + 1):
+        for z in range(s.z0, s.z1 + 1):
+            height = int(round(peak - np.hypot(x - cx, z - cz) - 0.6 * rng.random()))
+            for y in range(s.feet, height + 1):
+                w.set(x, y, z, *RUBBLE[int(rng.integers(len(RUBBLE)))])
+            if height >= s.feet and max(abs(x - cx), abs(z - cz)) < 3.2:
+                w.set(x, height, z, B.SNOW)
+                w.set(x, height + 1, z, B.SNOW_LAYER, int(rng.integers(0, 3)))
+    for x, y, z, axis in ((rh["x0"] - 1, peak - 3, rh["z1"] + 3, "x"), (rh["x1"] + 3, peak - 4, rh["z0"], "z")):
+        for t in range(-2, 3):                                     # slabs of the fallen ceiling lying on the mound
+            X, Z = (x + t, z) if axis == "x" else (x, z + t)
+            w.set(X, y + (t > 0), Z, B.DSLAB)
+    for x in range(s.x0, s.x1 + 1, 3):                            # crates crushed along the south wall
+        if w.id(x, s.feet, s.z0) == B.AIR:
+            w.set(x, s.feet, s.z0, B.PLANKS, 1)
+            if x % 2:
+                w.set(x, s.feet + 1, s.z0, B.LOG, 1)
 
 
 SUPPLY = [(0, "minecraft:arrow", 32, 0), (4, "minecraft:cooked_beef", 8, 0), (8, "minecraft:golden_apple", 1, 0)]
 
 
 def furnish(w):
-    """What each room is for: racks and supply chests in the armoury, bunks in the barracks, pipework and a
-    pump in the turn hall."""
+    """What each room is for: racks and supply chests in the armoury, benches and lockers in the spawn room, iron
+    in the iron room's walls with benches to work it at, generators and their flues in the generator house."""
     arm = next(s for s in P.SPACES if s.name == "armoury")
     for z in range(arm.z0 + 1, arm.z1, 2):                      # weapon racks along the west wall
         for y in range(arm.feet, arm.feet + 3):
             w.set(arm.x0, y, z, B.IRON_BARS)
     w.chest(arm.x0 + 1, arm.feet, arm.z0, SUPPLY, facing=3)
     w.chest(arm.x0 + 3, arm.feet, arm.z0, SUPPLY, facing=3)
-    bar = next(s for s in P.SPACES if s.name == "barracks")
-    for x in range(bar.x0 + 1, bar.x1, 3):                      # bunks along both long walls, head to the wall
-        for z, head, foot in ((bar.z0, bar.z0, bar.z0 + 1), (bar.z1, bar.z1, bar.z1 - 1)):
-            facing = 2 if head == bar.z0 else 0
-            for y in (bar.feet, bar.feet + 3):
-                w.set(x, y, head, B.BED, facing | 8)
-                w.set(x, y, foot, B.BED, facing)
-            for zz in (head, foot):
-                w.set(x, bar.feet + 2, zz, B.WOOD_SLAB, 13)
-    turn = next(s for s in P.SPACES if s.name == "turn hall")
-    for x in range(turn.x0 + 1, turn.x1, 4):                    # pipes down the back wall into a manifold
-        for y in range(turn.feet, turn.feet + turn.h - 1):
-            w.set(x, y, turn.z1, B.COBBLE_WALL)
-    for x in range(turn.x0 + 1, turn.x1):
-        w.set(x, turn.feet + 2, turn.z1, B.IRON_BLOCK)
-    w.set(turn.x0 + 2, turn.feet, turn.z1 - 1, B.CAULDRON)
-    w.set(turn.x1 - 2, turn.feet, turn.z1 - 1, B.CAULDRON)
+    sp = next(s for s in P.SPACES if s.name == "spawn room")
+    for x in range(sp.x0 + 2, sp.x1 - 1, 4):                    # lockers along the north wall, benches before them
+        for y in (sp.feet, sp.feet + 1):
+            w.set(x, y, sp.z1, B.IRON_BLOCK)
+        w.set(x, sp.feet + 2, sp.z1, B.REDSTONE_LAMP)
+        w.set(x, sp.feet, sp.z1 - 2, B.STONEBRICK_STAIRS, orient.stair("n"))
+    for z in range(sp.z0 + 1, sp.z1, 5):
+        w.set(sp.x0, sp.feet + 3, z, *TEAM)
+    for x, y, z in P.IRON:
+        w.set(x, y, z, B.IRON_BLOCK)
+    ir = next(s for s in P.SPACES if s.name == "iron room")
+    for z in (ir.z0 + 3, ir.z1 - 3):
+        w.set(ir.x0 + 3, ir.feet, z, B.CRAFTING)
+    w.set(ir.x0 + 3, ir.feet, (ir.z0 + ir.z1) // 2, B.ANVIL)
+    gh = next(s for s in P.SPACES if s.name == "generator house")
+    for x0 in (gh.x0 + 2, gh.x1 - 5):                           # two generators: iron and furnaces under a flue
+        for x in range(x0, x0 + 4):
+            for z in range(gh.z1 - 3, gh.z1 + 1):
+                w.set(x, gh.feet, z, *((B.IRON_BLOCK, 0) if (x + z) % 2 else (B.FURNACE, 2)))
+                w.set(x, gh.feet + 1, z, B.SLAB, 7)
+        for y in range(gh.feet + 2, gh.feet + gh.h):
+            w.set(x0 + 1, y, gh.z1, B.COBBLE_WALL)
+    for z in range(gh.z0 + 1, gh.z1 - 4, 2):
+        w.set(gh.x1, gh.feet, z, B.PLANKS, 1)
 
 
-def build(w):
+def build(w, top):
     air = carve_and_line(w)
     gate(w)
     wings(w)
-    flights(w)
-    stair_core(w)
-    drop(w)
-    ladder(w)
+    garage(w)
+    ramps(w)
+    decks(w)
     reactor(w)
     vault(w)
     gallery(w)
-    culvert(w)
+    collapsed_store(w, top)
     furnish(w)
     return air

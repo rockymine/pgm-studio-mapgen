@@ -19,25 +19,13 @@ LINKS = P.links()
 RULES = G.PlanRules(jumps=False, max_drop=4)
 
 
-def hatch_links():
-    """The leak opens the hatch: the well's floor drops into the vault's pool. Both halves."""
-    out = []
-    for x, z in [(-1, 55)]:
-        a = P.node(x, z, P.L1 - 1)
-        b = P.node(x, z, P.L2 - 2)
-        out.append((a, b, 6, "hatch"))
-        xa, za = P.SYM.point(x, z)
-        out.append((P.node(xa, za, P.L1 - 1), P.node(xa, za, P.L2 - 2), 6, "hatch"))
-    return out
-
-
 E = G.graph(R, P.WALK, extra=LINKS, rules=RULES)
-E_open = G.graph(R_open, P.WALK, extra=LINKS + hatch_links(), rules=RULES)
+E_open = G.graph(R_open, P.WALK, extra=LINKS, rules=RULES)
 
 O = P.objectives()
-spawn = {"red": [P.node(P.SPAWN_AT[0], P.SPAWN_AT[2], P.TOP - 1)]}
+spawn = {"red": [P.node(P.SPAWN_AT[0], P.SPAWN_AT[2], P.SPAWN_AT[1] - 1)]}
 bx, bz = P.SYM.point(P.SPAWN_AT[0], P.SPAWN_AT[2])
-spawn["blue"] = [P.node(bx, bz, P.TOP - 1)]
+spawn["blue"] = [P.node(bx, bz, P.SPAWN_AT[1] - 1)]
 
 
 def ring(box, feet):
@@ -50,10 +38,10 @@ def image_nodes(nodes):
     return [(*P.SYM.point(n[0], n[1]),) + tuple(n[2:]) for n in nodes]
 
 
-core_red = ring(P.CORE, P.L1)
+core_red = [n for n in ring(P.CORE, P.L1) if not (P.PIT.x0 <= n[0] <= P.PIT.x1 and P.PIT.z0 <= n[1] <= P.PIT.z1)]
 core_blue = image_nodes(core_red)
 wool_red = [P.node(P.WOOL_AT[0] + dx, P.WOOL_AT[2] + dz, P.L2 - 1) for dx in (-1, 0) for dz in (-1, 0)]
-mon_red = [P.node(P.MONUMENT[0] + dx, P.MONUMENT[2] + dz, P.TOP - 1) for dx in (-1, 1) for dz in (-1, 1)]
+mon_red = [P.node(P.MONUMENT[0] + dx, P.MONUMENT[2] + dz, P.MONUMENT[1] - 2) for dx in (-1, 1) for dz in (-1, 1)]
 mon_blue = image_nodes(mon_red)
 
 rows = []
@@ -89,11 +77,12 @@ row("sealed" if not math.isfinite(sealed) else f"{sealed:.0f}", "red's wool befo
 
 # every approach to red's reactor, each walked with the others taken away
 APPROACHES = {
-    "the gate (through)": [P.node(x, 46, P.L0 - 1) for x in range(P.GATE["x0"], P.GATE["x1"] + 1)],
-    "the vent ladder (above)": [P.node(P.LADDER["x"], P.LADDER["z0"], P.L1 - 1)],
+    "the gate (through)": [P.node(x, P.GATE["z"], P.L0 - 1) for x in range(P.GATE["x0"], P.GATE["x1"] + 1)],
+    "the generator house (through)": [P.node(x, P.GARAGE["z"], P.L0 - 1)
+                                      for x in range(P.GARAGE["x0"], P.GARAGE["x1"] + 1)],
+    "the fallen ceiling (above)": [P.node(P.ROOF_HOLE["x0"] + 2, P.ROOF_HOLE["z0"] + 2, P.L1 - 1)],
     "the deep gallery (below)": [P.node(x, z, P.L2 - 1) for x, z in P.gallery_cells() if z == min(
         zz for xx, zz in P.gallery_cells() if xx == x)],
-    "the culvert (around)": [P.node(-31, 56, P.L1 - 1)],
 }
 for name, entry in APPROACHES.items():
     a = G.route(Db, pb, entry)[0]
@@ -115,16 +104,16 @@ def gap(box, x, z):
 
 near = min(max(gap(P.CORE, x, z)) for x, z in lava_cols)
 row(near, "blocks from red's core to the nearest lava under the leak height", "over 15", near > 15)
-row(P.LEAK_Y, "the leak height (the core's lowest block less its leak)", f"the well's floor at {P.WELL.y0} or over",
-    P.WELL.y0 <= P.LEAK_Y)
+row(P.LEAK_Y, "the leak height (the core's lowest block less its leak)", f"the pit's floor at {P.PIT.y0} or over",
+    P.PIT.y0 <= P.LEAK_Y)
 
 # rock over every room: the surface over its ceiling, and the space over it
 top = np.round(H).astype(int)
 worst = []
 for s in P.SPACES:
-    f = P.FACADE
-    under_roof = lambda x, z: f["x0"] <= x <= f["x1"] and f["z0"] <= z <= f["z1"] and s.feet == P.L0
-    cells = [(x, z) for x, z in s.cells() if not under_roof(x, z)]      # the facade's roof covers its own
+    def under_roof(x, z):                                       # a facade's own roof covers what is in it
+        return s.feet == P.L0 and any(f["x0"] <= x <= f["x1"] and f["z0"] <= z <= f["z1"] for f in (P.FACADE, P.ANNEX))
+    cells = [(x, z) for x, z in s.cells() if not under_roof(x, z)]
     if not cells:
         continue
     ceil = s.feet + s.h

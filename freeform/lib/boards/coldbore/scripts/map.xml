@@ -1,11 +1,11 @@
 <map proto="1.5.0">
     <name>Coldbore</name>
-    <version>0.1.0</version>
-    <objective>Leak the enemy's reactor under its forecourt, then take the wool from the vault the leak opens beneath it.</objective>
+    <version>0.2.0</version>
+    <objective>Leak the enemy's reactor in the hall inside its mountain, then take the wool from the vault the leak opens across the station.</objective>
     <gamemode>ctw</gamemode>
     <gamemode>dtc</gamemode>
     <rules>
-        <rule>A reactor's leak opens the vault under it: its wool cannot be reached before.</rule>
+        <rule>A reactor's leak opens its vault's blast door: its wool cannot be reached before.</rule>
         <rule>The vault's shell is blast-proof.</rule>
     </rules>
     <include id="gapple-kill-reward"/>
@@ -13,7 +13,7 @@
         <author>Claude (freeform generator)</author>
     </authors>
     <contributors>
-        <contributor contribution="The idea: a bunker in a cliff, a fissure, a reactor over its wool">rockymine</contributor>
+        <contributor contribution="The idea: a bunker in a cliff, a fissure, a reactor and a vault apart">rockymine</contributor>
     </contributors>
     <kits>
         <kit id="spawn-kit">
@@ -46,6 +46,13 @@
         <not id="not-blue">
             <team>blue-team</team>
         </not>
+        <any id="spawn-minable">
+            <material>iron block</material>
+        </any>
+        <all id="spawn-minable-regrowth">
+            <filter id="spawn-minable"/>
+            <cause>world</cause>
+        </all>
         <any id="woolroom-materials">
             <material>wood</material>
             <material>stained clay</material>
@@ -79,53 +86,53 @@
     <spawns>
         <default yaw="90">
             <region>
-                <point>0.5,112,-0.5</point>
+                <point>0.5,116,-0.5</point>
             </region>
         </default>
-        <spawn team="red-team" kit="spawn-kit" yaw="180">
+        <spawn team="red-team" kit="spawn-kit" yaw="90">
             <region>
-                <point>13.5,104,74.5</point>
+                <point>24.5,72,86.5</point>
             </region>
         </spawn>
-        <spawn team="blue-team" kit="spawn-kit" yaw="0">
+        <spawn team="blue-team" kit="spawn-kit" yaw="270">
             <region>
-                <point>-13.5,104,-74.5</point>
+                <point>-24.5,72,-86.5</point>
             </region>
         </spawn>
     </spawns>
     <regions>
-        <cuboid min="6,104,72" max="21,110,83" id="red-spawn"/>
+        <cuboid min="14,72,76" max="38,81,93" id="red-spawn"/>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
-        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
-        <cuboid min="-21,104,-83" max="-6,110,-72" id="blue-spawn"/>
+        <apply block-place="spawn-minable-regrowth" block-break="spawn-minable" region="red-spawn" message="You may not edit the spawn!"/>
+        <cuboid min="-38,72,-93" max="-14,81,-76" id="blue-spawn"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
-        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
-        <cuboid min="-4,56,52" max="3,63,59" id="red-core-region"/>
-        <cuboid min="-3,56,-59" max="4,63,-52" id="blue-core-region"/>
-        <block id="orange-blue-monument">-10,105,-67</block>
-        <cuboid min="-10,34,46" max="10,48,65" id="orange-room"/>
+        <apply block-place="spawn-minable-regrowth" block-break="spawn-minable" region="blue-spawn" message="You may not edit the spawn!"/>
+        <cuboid min="-4,62,69" max="3,69,76" id="red-core-region"/>
+        <cuboid min="-3,62,-76" max="4,69,-69" id="blue-core-region"/>
+        <block id="orange-blue-monument">-6,73,-84</block>
+        <cuboid min="26,44,70" max="45,58,89" id="orange-room"/>
         <apply enter="not-red" region="orange-room" message="You may not enter your own wool room!"/>
-        <point id="orange-wool-spawn">6.5,35,61.5</point>
-        <block id="cyan-red-monument">9,105,66</block>
-        <cuboid min="-10,34,-65" max="10,48,-46" id="cyan-room"/>
+        <point id="orange-wool-spawn">40.5,45,84.5</point>
+        <block id="cyan-red-monument">5,73,83</block>
+        <cuboid min="-45,44,-89" max="-26,58,-70" id="cyan-room"/>
         <apply enter="not-blue" region="cyan-room" message="You may not enter your own wool room!"/>
-        <point id="cyan-wool-spawn">-6.5,35,-61.5</point>
+        <point id="cyan-wool-spawn">-40.5,45,-84.5</point>
         <union id="red-vault-shell">
-            <cuboid min="-12,28,44" max="12,34,67"/>
-            <cuboid min="-12,34,44" max="-10,50,67"/>
-            <cuboid min="10,34,44" max="12,50,67"/>
-            <cuboid min="-10,34,44" max="10,50,46"/>
-            <cuboid min="-10,34,65" max="10,50,67"/>
-            <cuboid min="-10,48,46" max="10,50,65"/>
+            <cuboid min="24,38,68" max="47,44,91"/>
+            <cuboid min="24,44,68" max="26,60,91"/>
+            <cuboid min="45,44,68" max="47,60,91"/>
+            <cuboid min="26,44,68" max="45,60,70"/>
+            <cuboid min="26,44,89" max="45,60,91"/>
+            <cuboid min="26,58,70" max="45,60,89"/>
         </union>
         <apply region="red-vault-shell" block-place="never" block-break="never" message="The vault's shell is blast-proof: leak the reactor above it."/>
         <union id="blue-vault-shell">
-            <cuboid min="-12,28,-67" max="12,34,-44"/>
-            <cuboid min="10,34,-67" max="12,50,-44"/>
-            <cuboid min="-12,34,-67" max="-10,50,-44"/>
-            <cuboid min="-10,34,-46" max="10,50,-44"/>
-            <cuboid min="-10,34,-67" max="10,50,-65"/>
-            <cuboid min="-10,48,-65" max="10,50,-46"/>
+            <cuboid min="-47,38,-91" max="-24,44,-68"/>
+            <cuboid min="-26,44,-91" max="-24,60,-68"/>
+            <cuboid min="-47,44,-91" max="-45,60,-68"/>
+            <cuboid min="-45,44,-70" max="-26,60,-68"/>
+            <cuboid min="-45,44,-91" max="-26,60,-89"/>
+            <cuboid min="-45,58,-89" max="-26,60,-70"/>
         </union>
         <apply region="blue-vault-shell" block-place="never" block-break="never" message="The vault's shell is blast-proof: leak the reactor above it."/>
         <union id="reds-woolrooms">
@@ -137,28 +144,30 @@
         </union>
         <apply block="blues-woolrooms-filter" region="blues-woolrooms" message="You may not edit the wool room!"/>
         <union id="fill-1">
-            <cuboid min="-4,56,52" max="3,63,59"/>
-            <cuboid min="-8,52,48" max="7,64,63"/>
-            <cuboid min="-5,49,51" max="4,52,60"/>
-            <cuboid min="-5,48,51" max="4,49,60"/>
+            <cuboid min="-4,62,69" max="3,69,76"/>
+            <cuboid min="-5,58,68" max="4,70,77"/>
+            <cuboid min="-5,50,68" max="4,58,77"/>
         </union>
-        <cuboid min="10,34,53" max="12,41,57" id="fill-2"/>
+        <cuboid min="25,44,76" max="26,51,80" id="fill-2"/>
         <union id="fill-3">
-            <cuboid min="-3,56,-59" max="4,63,-52"/>
-            <cuboid min="-7,52,-63" max="8,64,-48"/>
-            <cuboid min="-4,49,-60" max="5,52,-51"/>
-            <cuboid min="-4,48,-60" max="5,49,-51"/>
+            <cuboid min="-3,62,-76" max="4,69,-69"/>
+            <cuboid min="-4,58,-77" max="5,70,-68"/>
+            <cuboid min="-4,50,-77" max="5,58,-68"/>
         </union>
-        <cuboid min="-12,34,-57" max="-10,41,-53" id="fill-4"/>
+        <cuboid min="-26,44,-80" max="-25,51,-76" id="fill-4"/>
         <apply block="block-rule" message="Lava may not be placed or taken."/>
     </regions>
+    <renewables>
+        <renewable region="red-spawn" renew-filter="spawn-minable"/>
+        <renewable region="blue-spawn" renew-filter="spawn-minable"/>
+    </renewables>
     <cores>
         <core id="red-core" name="Reactor" team="red-team" leak="5" mode-changes="true" region="red-core-region"/>
         <core id="blue-core" name="Reactor" team="blue-team" leak="5" mode-changes="true" region="blue-core-region"/>
     </cores>
     <wools craftable="false">
-        <wool team="blue-team" color="orange" monument="orange-blue-monument" location="6.5,34,61.5"/>
-        <wool team="red-team" color="cyan" monument="cyan-red-monument" location="-6.5,34,-61.5"/>
+        <wool team="blue-team" color="orange" monument="orange-blue-monument" location="40.5,44,84.5"/>
+        <wool team="red-team" color="cyan" monument="cyan-red-monument" location="-40.5,44,-84.5"/>
     </wools>
     <spawners>
         <spawner spawn-region="orange-wool-spawn" player-region="orange-room" delay="3s">
@@ -190,7 +199,7 @@
             </action>
         </trigger>
     </actions>
-    <maxbuildheight>112</maxbuildheight>
+    <maxbuildheight>116</maxbuildheight>
     <portals>
         <portal y="@-64" sound="false" observers="never">
             <region>
@@ -231,6 +240,8 @@
         <item>obsidian</item>
         <item>flint</item>
         <item>gravel</item>
+        <item>sapling</item>
+        <item>apple</item>
     </itemremove>
     <toolrepair>
         <tool>iron sword</tool>

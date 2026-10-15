@@ -1,7 +1,7 @@
-"""What stands on red's snowfield: the forecourt paved in front of the gate, the roads from it to the fissure and
-the flanks, the boulders that give the approaches cover, the old road bridge broken off over the fissure, the
-power line's pylons coming down from the station, lamps on the forecourt, the vent hatch's frame, and the bore's
-wrecked derrick on its stump in the middle.
+"""What stands on red's snowfield: the courts paved in front of the gate and the generator house, the roads from
+them to the fissure and the flanks, the boulders that give the approaches cover, the old road bridge broken off
+over the fissure, the power line's pylons coming down the hill, lamps on the courts, the lavafalls down red's wall
+of the fissure, and the bore's wrecked derrick on its stump in the middle.
 """
 import numpy as np
 
@@ -14,9 +14,10 @@ from pgmvox.geom.shapes import polyline
 from pgmvox.scenery.forms import placed_box
 
 ROAD = [(B.GRAVEL, 0), (B.STONE, 5), (B.COBBLE, 0)]           # a third each: hard ground's path
-BOULDERS = [(-9, 25, (4, 3, 3), 20), (13, 21, (3, 3, 4), -15), (-31, 19, (5, 3, 4), 40), (31, 28, (4, 4, 3), 10),
-            (-56, 41, (5, 4, 4), -30), (59, 46, (4, 3, 5), 25), (-23, 43, (3, 3, 3), 5), (25, 47, (3, 2, 4), -40)]
-PYLONS = [(46, 70, False), (44, 42, False), (40, 20, True)]       # x, z, toppled
+BOULDERS = [(-9, 25, (4, 3, 3), 20), (16, 16, (3, 3, 4), -15), (-31, 19, (5, 3, 4), 40), (31, 28, (4, 4, 3), 10),
+            (-67, 40, (5, 4, 4), -30), (59, 46, (4, 3, 5), 25), (-18, 40, (3, 3, 3), 5), (14, 45, (3, 2, 4), -40),
+            (-12, 32, (4, 3, 4), 60)]
+PYLONS = [(58, 70, False), (56, 40, False), (50, 18, True)]       # x, z, toppled
 
 
 def at(top, x, z):
@@ -34,27 +35,23 @@ def cell3(x, z, blocks, size=1):
     return blocks[h % len(blocks)]
 
 
-def forecourt(w):
-    f = land.FORECOURT
-    for x in range(f["x0"], f["x1"] + 1):
-        for z in range(f["z0"], f["z1"] + 1):
-            if P.FACADE["x0"] <= x <= P.FACADE["x1"] and z >= P.FACADE["z0"]:
-                continue
-            if w.id(x, land.GROUND, z) == B.AIR:
-                continue
-            blk = cell3(x, z, [(B.STONEBRICK, 0), (B.STONE, 6), (B.STONE, 5), (B.STONE, 0)], 3)
-            if -7 <= x <= 6 and 39 <= z <= 43:                     # hazard bands before the gate
-                blk = [(B.STAINED_CLAY, 4), (B.STAINED_CLAY, 15)][((x + z) // 2) % 2]
-            w.set(x, land.GROUND, z, *blk)
-            w.set(x, land.GROUND + 1, z, B.AIR)
-    for x in (f["x0"], f["x1"]):                                   # blast walls on the forecourt's front corners
-        for z in range(f["z0"], f["z0"] + 5):
-            for y in (land.GROUND + 1, land.GROUND + 2):
-                w.set(x, y, z, B.STONEBRICK if y == land.GROUND + 1 else B.COBBLE_WALL)
-    for x in (f["x0"] + 2, f["x1"] - 2):                           # lamps, one of them dark
-        for y in range(land.GROUND + 1, land.GROUND + 5):
-            w.set(x, y, f["z0"] + 8, B.NETHER_FENCE)
-        w.set(x, land.GROUND + 5, f["z0"] + 8, B.GLOWSTONE if x > 0 else B.COAL_BLOCK)
+def courts(w):
+    """Both courts paved in cells of three, hazard bands across the gate's mouth and the garage's, lamps on posts
+    at the courts' outer corners, one of them dark."""
+    for f, door in ((P.GATE_COURT, P.GATE), (P.ANNEX_YARD, P.GARAGE)):
+        for x in range(f["x0"], f["x1"] + 1):
+            for z in range(f["z0"], f["z1"] + 1):
+                if w.id(x, land.GROUND, z) == B.AIR or w.id(x, land.GROUND + 1, z) not in (B.AIR, B.SNOW_LAYER):
+                    continue
+                blk = cell3(x, z, [(B.STONEBRICK, 0), (B.STONE, 6), (B.STONE, 5), (B.STONE, 0)], 3)
+                if door["x0"] - 1 <= x <= door["x1"] + 1 and door["z"] - 4 <= z <= door["z"] - 2:
+                    blk = [(B.STAINED_CLAY, 4), (B.STAINED_CLAY, 15)][((x + z) // 2) % 2]
+                w.set(x, land.GROUND, z, *blk)
+                w.set(x, land.GROUND + 1, z, B.AIR)
+        for x in (f["x0"] + 2, f["x1"] - 2):
+            for y in range(land.GROUND + 1, land.GROUND + 5):
+                w.set(x, y, f["z0"] + 1, B.NETHER_FENCE)
+            w.set(x, land.GROUND + 5, f["z0"] + 1, B.GLOWSTONE if x > f["x0"] + 2 else B.COAL_BLOCK)
 
 
 def roads(w, top):
@@ -145,17 +142,6 @@ def pylons(w):
         pylon(w, x, z, column_top(w, x, z), toppled=toppled)
 
 
-def vent_hatch(w):
-    lad = P.LADDER
-    for x in range(lad["x"] - 1, lad["x"] + 3):
-        for z in range(lad["z0"] - 1, lad["z1"] + 2):
-            inside = lad["x"] <= x <= lad["x"] + 1 and lad["z0"] <= z <= lad["z1"]
-            if not inside:
-                w.set(x, land.GROUND, z, B.STAINED_CLAY, 4 if (x + z) % 2 else 15)
-                if z == lad["z1"] + 1 or x == lad["x"] + 2:
-                    w.set(x, land.GROUND + 1, z, B.IRON_BARS)
-
-
 def derrick(w):
     """The bore's derrick, wrecked on its stump in the lava: a lattice leaning off the pillar's top."""
     y0 = land.PILLAR + 1
@@ -173,7 +159,7 @@ def derrick(w):
                 w.set(x, land.PILLAR, z, B.OBSIDIAN if (x + z) % 3 else B.COAL_BLOCK)
 
 
-LAVAFALLS = [-48, -9, 37]                                    # columns x where a lavafall runs down red's wall
+LAVAFALLS = [-68, -54, -42, -31, -22, 22, 30, 41, 52, 64]      # columns x where a lavafall runs down red's wall
 
 
 def lavafalls(w, top):
@@ -197,10 +183,9 @@ def lavafalls(w, top):
 
 
 def build(w, top):
-    forecourt(w)
+    courts(w)
     roads(w, top)
     boulders(w, top)
     bridge_stub(w, top)
-    vent_hatch(w)
     derrick(w)
-    pylons(w)
+    lavafalls(w, top)

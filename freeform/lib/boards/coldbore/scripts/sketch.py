@@ -24,8 +24,8 @@ SURF.H[:] = top
 from pgmvox.surface.terrain import slope_deg  # noqa: E402
 SURF.K[slope_deg(top) > 40] = SURF.kinds["rock"]
 SURF.K[top <= land.LAVA] = SURF.kinds["lava"]
-f = land.FORECOURT
-SURF.rect(f["x0"], f["x1"], f["z0"], f["z1"] - 1, land.GROUND, "forecourt")
+for f in land.COURTS:
+    SURF.rect(f["x0"], f["x1"], f["z0"], f["z1"], land.GROUND, "forecourt", both=True)
 COL = {"snow": (232, 238, 244), "rock": (120, 124, 130), "lava": (226, 104, 30), "forecourt": (170, 160, 150)}
 LEVEL_COL = {"hall": (196, 120, 70), "room": (176, 140, 100), "corridor": (150, 120, 96), "link": (150, 120, 96),
              "vault": (90, 150, 210), "door": (40, 40, 40)}
@@ -44,80 +44,82 @@ m.place(-40, 40, "snowfield", both=True)
 m.place(0, 82, "red's station (plateau)")
 m.place(*P.SYM.point(0, 82), "blue's station")
 m.callout(-1, 0, "the bore's stump in the lava", dx=60, dz=-30)
-m.callout(-44, 30, "the culvert into red's barracks", dx=-10, dz=40)
-m.callout(-17, 45, "vent hatch: ladder to the reactor", dx=-70, dz=-30)
+m.callout(28, 39, "the store's fallen ceiling", dx=40, dz=-30)
+m.callout(-40, 48, "the gate", dx=-40, dz=-30)
+m.callout(34, 50, "the generator house", dx=40, dz=20)
 m.callout(-1, 13, "the broken road bridge", dx=50, dz=26)
 m.callout(-58, 26, "crevasse", dx=10, dz=-40)
 
 panels = []
-for name, feet, extra in [("LEVEL 0 (feet 72): the gate, the hall, the ramp into the mountain", P.L0, None),
-                          ("LEVEL 1 (feet 52): the turn hall, the reactor, the barracks, the drop", P.L1, None),
-                          ("LEVEL 2 (feet 34): the vault, the service corridor, the gallery, the cave", P.L2, None)]:
+for name, feet in [("LEVEL 0 (feet 72): gate, entrance hall, spawn and iron rooms, generator house, balcony", P.L0),
+                   ("LEVEL 1 (feet 58): the reactor hall's floor, the south corridor, the collapsed store", P.L1),
+                   ("LEVEL 2 (feet 44): the gallery, the service corridor, the vault, the cave", P.L2)]:
     p = S.map(-75, -10, 74, 99, scale=4, title=name,
-              legend="red's half; halls orange, rooms tan, corridors brown, the vault blue, doors black; stairs "
-                     "dotted with the feet at their ends")
+              legend="red's half; halls orange, rooms tan, corridors brown, the vault blue; ramps yellow with the "
+                     "feet at their ends; decks grey")
     p.raster(SURF, COL)
     p.dim(0.35)
     for s in P.SPACES:
-        if s.feet == feet:
+        if s.feet == feet or (s.name == "reactor hall" and feet == P.L0):
             p.rect(s.x0, s.z0, s.x1, s.z1, fill=LEVEL_COL[s.kind], outline=(20, 20, 20))
             if (s.x1 - s.x0) * (s.z1 - s.z0) > 30:
                 p.label((s.x0 + s.x1) / 2, (s.z0 + s.z1) / 2, s.name, size=10)
-    for fl in P.FLIGHTS:
-        if min(fl.feet0, fl.feet1) <= feet + 14 and max(fl.feet0, fl.feet1) >= feet - 1:
-            p.rect(fl.x0, min(fl.z0, fl.z1), fl.x1, max(fl.z0, fl.z1), fill=(210, 190, 120), outline=(20, 20, 20))
-            p.label(fl.x1 + 6, fl.z0, str(fl.feet0), size=10)
-            p.label(fl.x1 + 6, fl.z1, str(fl.feet1), size=10)
-    ring = P.helix_ring()
-    p.poly(ring, outline=(240, 220, 120), width=2)
-    for x, z, door_feet in P.DOORS:
-        if door_feet == feet:
-            p.marker(x, z, "D", colour=(30, 30, 30), r=6)
+    for d in P.DECKS:
+        if d.feet == feet:
+            p.rect(d.x0, d.z0, d.x1, d.z1, fill=(150, 150, 150), outline=(20, 20, 20))
+    for r in P.RAMPS:
+        for leg in r.legs:
+            if min(leg.feet0, leg.feet1) <= feet + 1 and max(leg.feet0, leg.feet1) >= feet - 1:
+                p.rect(leg.x0, leg.z0, leg.x1, leg.z1, fill=(210, 190, 120), outline=(20, 20, 20))
+                p.label(leg.x0 - 3, leg.z0 - 2, f"{leg.feet0:g}", size=10)
+                p.label(leg.x1 + 4, leg.z1 + 2, f"{leg.feet1:g}", size=10)
     if feet == P.L1:
+        p.rect(P.PIT.x0, P.PIT.z0, P.PIT.x1, P.PIT.z1, fill=(30, 30, 30), outline=None)
         p.rect(P.CORE.x0, P.CORE.z0, P.CORE.x1, P.CORE.z1, fill=(40, 30, 60), outline=(250, 120, 40), width=2)
-        p.label(-1, 55, "core", colour=(255, 255, 255), size=10)
-        p.marker(P.LADDER["x"], P.LADDER["z0"], "L", colour=(30, 30, 30), r=6)
-        p.rect(P.DROP["x0"], P.DROP["z0"], P.DROP["x1"], P.DROP["z1"], fill=(70, 120, 200), outline=(20, 20, 20))
-        p.line([(x, z) for x, _, z, _ in P.CULVERT], colour=(120, 100, 80), width=6)
+        p.label(-1, 72, "core over its pit", colour=(255, 255, 255), size=10)
+        rh = P.ROOF_HOLE
+        p.rect(rh["x0"], rh["z0"], rh["x1"], rh["z1"], fill=(230, 238, 244), outline=(20, 20, 20))
+    if feet == P.L0:
+        p.marker(P.SPAWN_AT[0], P.SPAWN_AT[2], "S", colour=TEAM["red"], r=7)
+        p.marker(P.MONUMENT[0], P.MONUMENT[2], "M", colour=(40, 160, 200), r=7)
+        for f in (P.FACADE, P.ANNEX):
+            p.rect(f["x0"], f["z0"], f["x1"], f["z0"] + 1, fill=(70, 30, 30), outline=None)
     if feet == P.L2:
         g = P.gallery_cells()
-        p.zone(set(g) and [(x, z) for x, z in g], colour=(196, 120, 70), style="fill") if False else None
         xs = [x for x, z in g]
         p.rect(min(xs), min(z for x, z in g), max(xs), P.GALLERY["z1"], fill=(196, 120, 70), outline=(20, 20, 20))
-        p.label(0, 18, "fissure gallery", size=10)
-        p.rect(P.POOL["x0"], P.POOL["z0"], P.POOL["x1"], P.POOL["z1"], fill=(60, 110, 190), outline=None)
+        p.label(0, 22, "fissure gallery", size=10)
         p.marker(P.WOOL_AT[0], P.WOOL_AT[2], "W", colour=(240, 140, 30), r=7)
         p.rect(P.VAULT_DOOR.x0, P.VAULT_DOOR.z0, P.VAULT_DOOR.x1, P.VAULT_DOOR.z1, fill=(20, 20, 20))
         for passage in P.CAVE:
             p.line([(x, z) for x, _, z, _ in passage], colour=(130, 115, 95), width=7)
         for x, _, z, r in P.LAVA_PONDS:
             p.rect(x - r, z - r, x + r, z + r, fill=(226, 104, 30), outline=None)
-        p.label(-45, 36, "cave, lava ponds", size=10)
+        p.label(-48, 40, "cave, lava ponds", size=10)
     panels.append(p)
 
-# a section down the gate's axis, x = 0, true scale
-sec = SectionPanel(-30, 99, 10, 112, scale=4, title="DOWN THE GATE'S AXIS",
-                   legend="x 0, south (the fissure) at left; rock brown, rooms orange, the vault blue, lava red; "
-                          "the leak height dashed")
+# a section across the reactor hall and down to the gallery, x 0, true scale
+sec = SectionPanel(-30, 99, 10, 116, scale=4, title="DOWN THE STATION'S AXIS",
+                   legend="x 0, south (the fissure) at left; rooms orange, ramps yellow, the core dark; the leak "
+                          "height dashed")
 sec.profile([(z, top[0 - land.X0, z - land.Z0]) for z in range(-30, 100)])
 for s in P.SPACES:
     if s.x0 <= 0 <= s.x1:
-        sec.band(s.z0, s.z1 + 1, s.feet, s.feet + s.h, fill=(90, 150, 210) if s.kind == "vault" else (196, 120, 70),
-                 text=s.name if s.z1 - s.z0 > 8 else None)
-for fl in P.FLIGHTS:
-    if fl.x0 <= 0 <= fl.x1:
-        for x, z, feet in fl.cells():
-            if x == 0:
-                sec.band(z, z + 1, feet, feet + fl.h, fill=(210, 190, 120))
+        sec.band(s.z0, s.z1 + 1, s.feet, s.feet + s.h, fill=(196, 120, 70), text=s.name if s.z1 - s.z0 > 8 else None)
 g = [z for x, z in P.gallery_cells() if x == 0]
 sec.band(min(g), P.GALLERY["z1"] + 1, P.L2, P.L2 + P.GALLERY["h"], fill=(196, 120, 70), text="gallery")
+for r in P.RAMPS:
+    for x, z, f in r.cells():
+        if x == 0:
+            sec.band(z, z + 1, f, f + r.h, fill=(210, 190, 120))
+for d in P.DECKS:
+    if d.x0 <= 0 <= d.x1:
+        sec.band(d.z0, d.z1 + 1, d.feet - 1, d.feet, fill=(120, 120, 120))
+sec.band(P.PIT.z0, P.PIT.z1 + 1, P.PIT.y0, P.PIT.y1 + 1, fill=(30, 30, 30))
 sec.band(P.CORE.z0, P.CORE.z1 + 1, P.CORE.y0, P.CORE.y1 + 1, fill=(40, 30, 60), text="core")
-sec.band(P.HATCH.z0, P.HATCH.z1 + 1, P.HATCH.y0, P.HATCH.y0 + 1, fill=(20, 20, 20))
 sec.level(P.LEAK_Y, f"leak at y {P.LEAK_Y} and under", dash=True)
 sec.level(land.LAVA, "lava", colour=(220, 70, 30))
 S.row(sec)
-
-
 
 S.table(C.rows, width=m.img.width)
 S.save(sys.argv[1])

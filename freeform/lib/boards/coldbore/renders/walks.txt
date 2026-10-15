@@ -1,21 +1,25 @@
-ok         44 moves from red's spawn to its own reactor, the drop taken
-ok         76 the same without any fall over four blocks (the stair)
-ok        118 moves from red's spawn to the gallery's lip
-ok         85 moves from red's spawn to the turn hall
-ok         99 moves from red's spawn to the barracks
-ok         87 moves from red's spawn to the armoury
-ok         56 moves from red's spawn to the forecourt
-ok         79 moves from red's spawn to the culvert's mouth
-ok        143 moves from red's spawn to the cave chamber at x -38
-ok        154 moves from red's spawn to the cave chamber at x -47
-ok        161 moves from red's spawn to the cave chamber at x -56
+ok         57 moves from red's spawn to its own reactor, no fall over four blocks
+ok     4 of 4 cells of the spawn room's door the core's top is in sight from (one corner from the spawn)
+ok         19 moves from red's spawn to the balcony's monument
+ok         99 moves from red's spawn to the gate
+ok         92 moves from red's spawn to the armoury
+ok         61 moves from red's spawn to the generator house
+ok         68 moves from red's spawn to the garage's court
+ok         95 moves from red's spawn to the collapsed store
+ok        137 moves from red's spawn to the gallery's lip
+ok        209 moves from red's spawn to the vault's door
+ok        140 moves from red's spawn to the cave chamber at x -40
+ok        149 moves from red's spawn to the cave chamber at x -48
+ok        158 moves from red's spawn to the cave chamber at x -58
 ok     sealed red's vault from red's spawn before the leak
-ok         44 moves from red's rim (bridged across) to red's reactor, any way
-ok         95   by the gate
-ok         58   by the vent ladder
-ok         84   by the culvert
-ok         39 moves from red's gallery lip (bridged across at depth) to red's reactor
+ok         74 moves from red's rim (bridged across) to red's reactor, any way
+ok        120   by the gate
+ok         87   by the generator house
+ok         71   by the fallen ceiling
+ok         93 moves from red's gallery lip (bridged across at depth) to red's reactor
+         None moves from the store's floor back up the rubble to the snow (a drop in; out takes blocks)
 ok          0 lava blocks within 15 of red's core at or under its leak height
-           34 lava blocks beside air or over it, which run once a block next to them changes
+ok          8 blocks between the core and the pit's floor, the cradle's ladder aside
+           76 lava blocks beside air or over it, which run once a block next to them changes
 ok          0 objectives with a problem
             0 blocks that would fall or hang on nothing

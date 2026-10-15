@@ -2,9 +2,11 @@
 the scorched band along the fissure where the snow has melted off to ash, the fissure's crust and its lava.
 
 Three grounds, each a set of one tone: the snowfield (snow, with packed ice where the wind has scoured it), the
-rock (stone and andesite, cobblestone under a third) on every slope too steep for snow, and the ash (grey stained
-clay with black stained clay patches and gravel inset). The snow meets the ash raggedly, with a speckled band of
-snow lying over ash a few blocks wide.
+rock on every slope too steep for snow, and the ash (grey stained clay with black stained clay patches and gravel
+inset). The snow meets the ash raggedly, with a speckled band of snow lying over ash a few blocks wide.
+
+The rock is laid in strata, beds of stone, andesite, diorite, cobblestone and pale and blue-grey clay a few blocks thick, dipping
+gently east and north, so a cliff reads as bands. In the gullies the runoff has frozen down the face in ice.
 """
 import numpy as np
 
@@ -15,6 +17,7 @@ from pgmvox.surface.terrain import slope_deg
 
 ICE_PLAINS = 12
 SNOW_SLOPE = 35                                # steeper than this holds no snow
+HOT = [B.NETHERRACK, B.GLOWSTONE, B.OBSIDIAN]
 SCORCH = 14.0                                  # the ash band's reach past the fissure's rim, before its ragged edge
 
 
@@ -34,6 +37,10 @@ def lay(w):
     scour = noise.fbm(X.shape, 16, 2, seed=46)                   # where the wind has scoured the snow to ice
     fleck = noise.fbm(X.shape, 2, 1, seed=44)
     bed = noise.fbm(X.shape, 40, 2, seed=45) * 3
+    dip = 0.05 * X + 0.03 * Z + bed
+    bounds, beds = strata()
+    gully = land.gullies(np.arange(land.X0, land.X1 + 1, dtype=float))[(X - land.X0).astype(int)]
+    icefall = (gully > 2.2) & (noise.fbm(X.shape, 3, 1, seed=47) > -0.2)
 
     sy = w.ids.shape[1]
     ys = np.arange(sy)
@@ -42,10 +49,11 @@ def lay(w):
             h = int(top[i, k])
             col_ids = np.zeros(sy, np.uint16)
             col_dat = np.zeros(sy, np.uint8)
-            # the rock in beds: andesite where the bed wave is high, cobblestone flecked through
+            # the rock in strata, dipping gently
             wave = np.sin((ys + bed[i, k]) / 2.6)
-            col_ids[1:h + 1] = B.STONE
-            col_dat[1:h + 1] = np.where(wave[1:h + 1] > 0.45, 5, 0)
+            layer = beds[np.searchsorted(bounds, ys[1:h + 1] + dip[i, k])]
+            col_ids[1:h + 1] = layer[:, 0]
+            col_dat[1:h + 1] = layer[:, 1]
             hot = rim[i, k] < 4 and h < 62                       # the fissure's throat: veins, crust, glow
             if hot:
                 vein = np.sin(ys[1:h + 1] * 0.7 + bed[i, k] * 3 + (i + k) * 0.25) > 0.8
@@ -55,7 +63,7 @@ def lay(w):
                 deep = ys[1:h + 1] < 30
                 col_ids[1:h + 1] = np.where(deep & (wave[1:h + 1] > 0.2), B.NETHERRACK, col_ids[1:h + 1])
                 col_ids[1:h + 1] = np.where(ys[1:h + 1] < 24, B.OBSIDIAN, col_ids[1:h + 1])
-                col_dat[1:h + 1] = np.where(col_ids[1:h + 1] == B.STONE, col_dat[1:h + 1], 0)
+                col_dat[1:h + 1] = np.where(np.isin(col_ids[1:h + 1], HOT), 0, col_dat[1:h + 1])
             g = deg[i, k]
             if h <= land.LAVA:                                     # the lava's floor: obsidian and netherrack
                 col_ids[h] = B.OBSIDIAN if fleck[i, k] > 0 else B.NETHERRACK
@@ -65,8 +73,9 @@ def lay(w):
                 if h < 30:
                     col_ids[h], col_dat[h] = (B.OBSIDIAN, 0) if fleck[i, k] > 0.2 else (B.COBBLE, 0)
             elif g >= SNOW_SLOPE:                                 # rock too steep for snow
-                if fleck[i, k] > 0.35:
-                    col_ids[h], col_dat[h] = B.COBBLE, 0
+                if icefall[i, k] and h > land.GROUND + 3:           # a gully's runoff frozen down the face
+                    col_ids[max(1, h - 3):h + 1] = B.PACKED_ICE
+                    col_dat[max(1, h - 3):h + 1] = 0
             elif scorched[i, k]:                                  # the ash band
                 blk = (B.STAINED_CLAY, 15) if patch[i, k] < -0.32 else (B.GRAVEL, 0) if patch[i, k] > 0.5 \
                     else (B.STAINED_CLAY, 7)
@@ -88,12 +97,25 @@ def lay(w):
     return top, deg, scorched
 
 
+STRATA = [((B.STONE, 0), 0.30), ((B.STONE, 5), 0.26), ((B.STONE, 3), 0.12), ((B.COBBLE, 0), 0.08),
+          ((B.STAINED_CLAY, 9), 0.08), ((B.STAINED_CLAY, 8), 0.08), ((B.STONE, 6), 0.08)]
+
+
+def strata():
+    """The beds, from the bottom of the world up: their upper bounds and each one's block, (id, data)."""
+    rng = np.random.default_rng(48)
+    bounds = np.cumsum(rng.uniform(1.5, 5.0, 80)) - 30
+    p = np.array([s for _, s in STRATA])
+    pick = rng.choice(len(STRATA), len(bounds) + 1, p=p / p.sum())
+    return bounds, np.array([STRATA[j][0] for j in pick], dtype=np.int32)
+
+
 def crevasse_ice(w, top):
     """The flank crevasses' walls in ice: every column within a few blocks of one is packed ice under its snow,
     deep enough that the crack's faces read as glacier ice rather than rock."""
     from pgmvox.geom.shapes import polyline
     X, Z = land.grid()
-    for pts in [[(-71, 19), (-66, 24), (-60, 21), (-55, 26)], [(42, 36), (50, 33), (56, 38), (64, 35)]]:
+    for pts in land.CREVASSES:
         d = polyline(X, Z, pts)[0]
         for i, k in np.argwhere(d < 4.5):
             h = int(top[i, k])

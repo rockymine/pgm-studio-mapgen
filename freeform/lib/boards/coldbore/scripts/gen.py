@@ -1,5 +1,5 @@
 """Generate Coldbore from the plan: red's half laid in order — the ground, the snowfield's dressing, the station
-under the cliff, the cave, the station on the plateau — then turned half round onto blue's, and the objectives
+inside the mountain, the cave, the station on the plateau — then turned half round onto blue's, and the objectives
 stamped on both.
 
     python3 gen.py <build-dir>
@@ -30,18 +30,12 @@ def generate():
     top, deg, scorched = ground.lay(w)
     ground.crevasse_ice(w, top)
     print(f"ground {time.time() - t0:.0f}s", flush=True)
-    surface.forecourt(w)
-    surface.roads(w, top)
-    surface.boulders(w, top)
-    surface.bridge_stub(w, top)
-    surface.derrick(w)
-    surface.lavafalls(w, top)
-    air = bunker.build(w)
+    surface.build(w, top)
+    air = bunker.build(w, top)
     print(f"station {time.time() - t0:.0f}s", flush=True)
     cave.build(w, top, air)
-    surface.vent_hatch(w)
-    surface.pylons(w)
     station.build(w)
+    surface.pylons(w)
     print(f"cave and plateau {time.time() - t0:.0f}s", flush=True)
     loose = (w.ids[:, 1:, :] == B.GRAVEL) & (w.ids[:, :-1, :] == B.AIR)   # gravel over air would fall: andesite
     w.ids[:, 1:, :][loose] = B.STONE

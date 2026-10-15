@@ -25,16 +25,21 @@ def iso(name, **kw):
 iso("10-iso-board-se.png", scale=2, corner="se", ymin=10)
 iso("11-iso-board-nw.png", scale=2, corner="nw", ymin=10)
 iso("20-iso-red-front.png", scale=3, corner="nw", box=(-75, 0, 74, 99), ymin=40)
-iso("21-iso-red-gate.png", scale=6, corner="nw", box=(-30, 28, 30, 70), ymin=64)
-iso("22-xray-red-station.png", scale=4, corner="nw", box=(-40, 0, 45, 99), ymin=24, ymax=112, xray=True)
+iso("21-iso-red-gate.png", scale=6, corner="nw", box=(-64, 28, -18, 66), ymin=64)
+iso("26-iso-red-generator-house.png", scale=6, corner="nw", box=(10, 28, 56, 66), ymin=64)
+iso("22-xray-red-station.png", scale=4, corner="nw", box=(-66, 0, 48, 99), ymin=36, ymax=104, xray=True)
 iso("23-xray-red-cave.png", scale=6, corner="nw", box=(-68, 0, -10, 40), ymin=16, ymax=50, xray=True)
-iso("24-iso-fissure.png", scale=4, corner="ne", box=(-45, -22, 45, 22), ymin=14)
-iso("25-iso-red-plateau.png", scale=6, corner="nw", box=(0, 55, 50, 99), ymin=88)
-render.cutaway(w, os.path.join(out, "30-section-gate-axis.png"), [(0, -40), (0, 99)], ymin=12, ymax=112, scale=4,
-               title="down the gate's axis, x 0: the fissure, the gallery, the stair, the vault under the reactor, "
-                     "the vestibule, the ramp, the turn hall")
-render.cutaway(w, os.path.join(out, "31-section-reactor.png"), [(-36, 55), (30, 55)], ymin=24, ymax=112, scale=4,
-               title="across the reactor, z 55: the barracks, the vent bay, the core over its well and the vault "
-                     "under it, the stair core")
+iso("24-iso-fissure.png", scale=4, corner="ne", box=(-75, -22, 74, 22), ymin=14)
+iso("25-iso-red-plateau.png", scale=5, corner="nw", box=(-24, 56, 56, 99), ymin=92)
+iso("27-iso-red-plateau-west.png", scale=5, corner="nw", box=(-75, 56, -20, 99), ymin=92)
+render.cutaway(w, os.path.join(out, "30-section-hall-axis.png"), [(0, -20), (0, 99)], ymin=12, ymax=120, scale=4,
+               title="down the reactor hall's axis, x 0: the fissure, the gallery, the ramp's corridor, the hall's ramp, "
+                     "the core over its pit, the balcony, the dish on the yard")
+render.cutaway(w, os.path.join(out, "31-section-across-station.png"), [(-66, 81), (48, 81)], ymin=36, ymax=120,
+               scale=4, title="across the station, z 81: the armoury, the entrance hall, the west corridor, the reactor "
+                              "hall and its balcony, the spawn and iron rooms over the vault")
 render.cutaway(w, os.path.join(out, "32-section-cave.png"), [(-66, 20), (-12, 20)], ymin=14, ymax=80, scale=4,
-               title="along the cave, z 20, from the west flank to the gallery")
+               title="along the cave, z 20, from the west flank to the gallery's ramp")
+render.cutaway(w, os.path.join(out, "33-section-store.png"), [(28, 20), (28, 70)], ymin=40, ymax=110, scale=5,
+               title="through the fallen ceiling, x 28: the snowfield, the hole, the rubble under it, the generator "
+                     "house's link")

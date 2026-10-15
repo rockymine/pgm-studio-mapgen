@@ -1,14 +1,15 @@
 """Coldbore — the plan: two drilling stations cut into opposite cliffs on a frozen plain, split by the fissure their
-shared bore tore open. Each station's reactor (the core) burns forward under its forecourt on level 1, and its
-wool lies sealed in the cooling vault on level 2 directly under the reactor until the reactor leaks.
+shared bore tore open. Each station's reactor (the core) burns in a tall hall inside the mountain, and its wool
+lies in a cooling vault deep in the mountain's other side, sealed until the reactor leaks.
 
 Red's half is stated (z >= the fissure's line); blue's is its half turn about (-0.5, -0.5). Heights in a space are
 the feet's y; a raster cell's height is the floor block's, one under the feet.
 
-    level 0   feet 72   the gate, the entrance hall, the armoury; the ramp down into the mountain
-    level 1   feet 52   the turn hall, the return corridor, the reactor hall, the barracks and the vent bay
-    level 2   feet 34   the vault under the reactor, the service corridor, the fissure gallery and the cave
-    the station on the plateau, feet 104: the spawn, the monument, the stair's head and the drop
+    level 0   feet 72   the gate in the west buttress, the entrance hall, the armoury, the spawn and iron rooms,
+                        the generator house in the east buttress, the reactor hall's balcony and gantry
+    level 1   feet 58   the reactor hall's floor, the south corridor, the collapsed store under the snowfield
+    level 2   feet 44   the fissure gallery and the cave west of it, the service corridor, the vault
+Every change of level is a ramp of two legs, about one in two, turning on a level landing between them.
 """
 import os
 import sys
@@ -23,10 +24,10 @@ from pgmvox.play.objectives import Box, Core, Objectives, Observer, Spawn, Teams
 import land  # noqa: E402
 
 SYM = Symmetry("half")
-L0, L1, L2 = 72, 52, 34                        # feet
-TOP = 104                                      # the station's yard, feet
+L0, L1, L2 = 72, 58, 44                        # feet
+TOP = 104                                      # the plateau's yard, feet
 KILL_Y = 8
-BUILD_HEIGHT = 112
+BUILD_HEIGHT = 116
 TUNNEL_H, HALL_H = 7, 14
 
 
@@ -40,7 +41,7 @@ class Space:
     z1: int
     feet: int
     h: int
-    kind: str = "corridor"                     # hall, room, corridor, vault, gallery, link
+    kind: str = "corridor"                     # hall, room, corridor, vault, link, door
 
     def box(self):
         return Box(self.x0, self.feet, self.z0, self.x1, self.feet + self.h - 1, self.z1)
@@ -50,122 +51,138 @@ class Space:
 
 
 @dataclass(frozen=True)
-class Flight:
-    """A straight run of stairs along z, the feet stepping one a cell from `feet0` at z0 to `feet1` at z1."""
+class Leg:
+    """One straight leg of a ramp: a band `x0..x1` by `z0..z1`, the feet falling evenly from `feet0` at its start
+    to `feet1` at its end along `axis` ("x" or "z"), starting at the end named by `start` ("lo" or "hi")."""
+    x0: int
+    x1: int
+    z0: int
+    z1: int
+    axis: str
+    start: str
+    feet0: float
+    feet1: float
+
+    def cells(self):
+        """(x, z, feet) with feet in half blocks."""
+        lo, hi = (self.x0, self.x1) if self.axis == "x" else (self.z0, self.z1)
+        n = hi - lo
+        out = []
+        for x in range(self.x0, self.x1 + 1):
+            for z in range(self.z0, self.z1 + 1):
+                a = x if self.axis == "x" else z
+                t = (a - lo) / n if self.start == "lo" else (hi - a) / n
+                out.append((x, z, round(2 * (self.feet0 + (self.feet1 - self.feet0) * t)) / 2))
+        return out
+
+
+@dataclass(frozen=True)
+class Ramp:
+    """A way between two levels: legs walked in order, each a gentle slope, the second turning off the first.
+    `solid` ramps stand as a wedge against a hall's walls; the others are tunnels cut through the rock."""
+    name: str
+    legs: tuple
+    h: int = TUNNEL_H
+    solid: bool = False
+
+    def cells(self):
+        return [c for leg in self.legs for c in leg.cells()]
+
+
+@dataclass(frozen=True)
+class Deck:
+    """A floor built inside a tall hall: a balcony or a gantry, its top block at the feet less one."""
     name: str
     x0: int
     x1: int
     z0: int
     z1: int
-    feet0: int
-    feet1: int
-    h: int = TUNNEL_H
-
-    def feet_at(self, z):
-        step = 1 if self.z1 > self.z0 else -1
-        return self.feet0 + (self.feet1 - self.feet0) * (z - self.z0) // (self.z1 - self.z0) if self.z1 != self.z0 \
-            else self.feet0
+    feet: int
 
     def cells(self):
-        lo, hi = sorted((self.z0, self.z1))
-        return [(x, z, self.feet_at(z)) for x in range(self.x0, self.x1 + 1) for z in range(lo, hi + 1)]
+        return [(x, z) for x in range(self.x0, self.x1 + 1) for z in range(self.z0, self.z1 + 1)]
 
 
 # --- red's station -------------------------------------------------------------------------------------------
-GATE = dict(x0=-4, x1=3, z=44, feet=L0, h=8)                    # the gate's opening in the facade's front
-FACADE = dict(x0=-13, x1=12, z0=44, z1=62, y0=71, y1=88)        # the concrete front standing out of the cliff
+GATE = dict(x0=-43, x1=-38, z=48, feet=L0, h=8)                 # the gate in the west buttress's facade
+FACADE = dict(x0=-50, x1=-31, z0=48, z1=60, y0=71, y1=88)       # the west facade, the buttress's face
+ANNEX = dict(x0=24, x1=44, z0=50, z1=60, y0=71, y1=84)          # the generator house in the east buttress
+GARAGE = dict(x0=31, x1=36, z=50, feet=L0, h=6)                 # its door onto the yard
+HALL = dict(x0=-12, x1=12, z0=62, z1=84, feet=L1, h=22)         # the reactor hall, floor to above the balcony
 
 SPACES = [
     # level 0
-    Space("vestibule", -5, 4, 45, 58, L0, 9, "hall"),
-    Space("entrance hall", -10, 9, 59, 72, L0, HALL_H, "hall"),
-    Space("armoury", -26, -15, 61, 70, L0, 8, "room"),
-    Space("armoury link", -14, -11, 64, 67, L0, TUNNEL_H),
-    Space("stair link L0", 10, 21, 71, 74, L0, TUNNEL_H, "link"),
+    Space("gate vestibule", -44, -37, 49, 58, L0, 9, "hall"),
+    Space("entrance hall", -48, -30, 59, 84, L0, HALL_H, "hall"),
+    Space("armoury", -62, -51, 64, 74, L0, 8, "room"),
+    Space("armoury door", -50, -49, 68, 71, L0, TUNNEL_H, "link"),
+    Space("west corridor", -29, -13, 80, 83, L0, TUNNEL_H),
+    Space("spawn room", 14, 30, 76, 92, L0, 9, "room"),
+    Space("iron room", 31, 37, 78, 90, L0, 7, "room"),
+    Space("spawn door", 13, 13, 80, 83, L0, TUNNEL_H, "link"),
+    Space("generator house", 25, 43, 51, 60, L0, 9, "hall"),
+    Space("annex corridor", 13, 29, 70, 73, L0, TUNNEL_H),
+    Space("annex link", 26, 29, 61, 69, L0, TUNNEL_H),
+    Space("reactor hall", HALL["x0"], HALL["x1"], HALL["z0"], HALL["z1"], L1, HALL["h"], "hall"),
     # level 1
-    Space("turn hall", -9, 8, 92, 97, L1, HALL_H, "hall"),
-    Space("return corridor", 4, 7, 67, 91, L1, TUNNEL_H),
-    Space("reactor hall", -12, 11, 44, 66, L1, HALL_H, "hall"),
-    Space("stair link L1", 12, 15, 63, 69, L1, TUNNEL_H, "link"),
-    Space("drop link", 8, 20, 71, 74, L1, TUNNEL_H, "link"),
-    Space("drop room", 21, 27, 71, 77, L1, 9, "room"),
-    Space("barracks", -30, -16, 50, 62, L1, 9, "room"),
-    Space("barracks link", -15, -13, 54, 57, L1, TUNNEL_H),
-    Space("vent bay", -17, -13, 40, 45, L1, 9, "room"),
+    Space("south door", 9, 12, 61, 61, L1, TUNNEL_H, "link"),
+    Space("south corridor", 9, 12, 40, 60, L1, TUNNEL_H),
+    Space("store passage", 13, 21, 40, 43, L1, TUNNEL_H),
+    Space("collapsed store", 22, 34, 34, 46, L1, 9, "room"),
     # level 2
-    Space("vault", -10, 9, 46, 64, L2, HALL_H, "vault"),
-    Space("service corridor", 12, 15, 25, 63, L2, TUNNEL_H),
-    Space("vault door passage", 10, 11, 53, 56, L2, TUNNEL_H, "door"),
+    Space("service corridor", 14, 17, 30, 79, L2, TUNNEL_H),
+    Space("vault passage", 18, 24, 76, 79, L2, TUNNEL_H),
+    Space("vault door passage", 25, 25, 76, 79, L2, TUNNEL_H, "door"),
+    Space("vault", 26, 44, 70, 88, L2, HALL_H, "vault"),
+    Space("gallery door", -14, -13, 22, 25, L2, TUNNEL_H, "link"),
 ]
-GALLERY = dict(x0=-14, x1=13, z1=25, feet=L2, h=HALL_H, open_from=5.0)   # open to the fissure where s >= open_from
+GALLERY = dict(x0=-12, x1=13, z1=34, feet=L2, h=HALL_H, open_from=9.5)   # open where the distance across passes
 
-FLIGHTS = [
-    Flight("the ramp into the mountain", -2, 1, 73, 91, L0 - 1, L1 + 1),
-    Flight("the stair to level 2", -2, 1, 43, 26, L1 - 1, L2),
-    Flight("the cutting", 34, 37, 52, 84, L0, TOP),
+DECKS = [
+    Deck("balcony", -12, 12, 80, 84, L0),
+    Deck("gantry", 9, 12, 70, 79, L0),
 ]
-
-# the stair core: a shaft whose stair climbs the 24 cells round a solid core, one block a cell, so every lap is 24
-SHAFT = dict(x0=15, x1=23, z0=62, z1=70)
-HELIX_START = L2
-HELIX_TOP = TOP
-
-
-def helix_ring():
-    """The stair's cells in climbing order, starting beside the service corridor."""
-    ring = [(x, 63) for x in range(16, 23)] + [(22, z) for z in range(64, 70)] + \
-           [(x, 69) for x in range(21, 15, -1)] + [(16, z) for z in range(68, 63, -1)]
-    assert len(ring) == 24
-    return ring
-
-
-def helix():
-    """[(x, z, feet)] for every step of the stair from level 2 to the yard."""
-    ring = helix_ring()
-    return [(*ring[t % 24], HELIX_START + t) for t in range(HELIX_TOP - HELIX_START + 1)]
-
-
-def helix_door(feet):
-    """The stair's cell at a given feet height: where a level's door opens."""
-    return next((x, z) for x, z, f in helix() if f == feet)
-
-
-DROP = dict(x0=23, x1=25, z0=73, z1=75, water_top=L1 - 1, water_depth=3)   # the drop: the yard down into level 1
-DOORS = [(15, 65, TOP), (20, 70, L0), (15, 69, L1), (15, 63, L2)]          # the stair core's doors, through its wall
-LADDER = dict(x=-17, z0=41, z1=42, wall_x=-18, bottom=L1, top=land.GROUND)  # the vent bay's ladder to the forecourt
-CULVERT = [(-31, L1, 56, 2.4), (-36, L1 + 4, 50, 2.6), (-40, L1 + 10, 43, 2.6), (-44, L1 + 16, 36, 2.6),
-           (-46, L0 - 1, 30, 2.4)]                                            # the barracks' collapsed culvert up to the snow
-YARD = dict(x0=4, x1=30, z0=62, z1=84, top=TOP - 1)                          # the station's yard on the plateau
-
-CORE = Box(-4, 56, 52, 2, 62, 58)
-WELL = Box(-5, 49, 51, 3, 51, 59)              # air under the core, its floor the hatch
-HATCH = Box(-5, 48, 51, 3, 48, 59)             # bedrock, the vault's ceiling under the well: opened by the leak
+RAMPS = [
+    Ramp("the hall's ramp", (Leg(-12, -9, 66, 79, "z", "hi", L0, 65.5), Leg(-12, -9, 62, 65, "z", "hi", 65, 65),
+                             Leg(-8, 8, 62, 65, "x", "lo", 64.5, L1 + 0.5)), h=8, solid=True),
+    Ramp("the ramp to the gallery", (Leg(-14, 8, 37, 40, "x", "hi", L1, 51.5), Leg(-18, -15, 37, 40, "z", "hi", 51.5, 51.5),
+                                     Leg(-18, -15, 22, 36, "z", "hi", 51, L2))),
+]
+CORE = Box(-4, 62, 69, 2, 68, 75)
+PIT = Box(-5, 50, 68, 3, 57, 76)               # the sump under the core: air from its floor up to the hall's floor
 LEAK = 5
 LEAK_Y = CORE.y0 - LEAK                        # lava at or under this, within 15 blocks of the core, leaks it
-VAULT_DOOR = Box(10, L2, 53, 11, L2 + 6, 56)   # bedrock, opened by the leak
-POOL = dict(x0=-6, x1=4, z0=50, z1=60, y0=30, y1=33)   # the cooling pool under the hatch, its surface at the floor
-WOOL_AT = (6, L2, 61)
-MONUMENT = (9, TOP + 1, 66)                    # red's monument in its yard, the slot over a pedestal at the feet
-SPAWN_AT = (13, TOP, 74)
-SPAWN_AREA = Box(6, TOP, 72, 20, TOP + 5, 82)
+VAULT_DOOR = Box(25, L2, 76, 25, L2 + 6, 79)   # bedrock, opened by the leak
+ROOF_HOLE = dict(x0=26, x1=30, z0=37, z1=41)   # where the store's ceiling fell in, open to the snowfield
+WOOL_AT = (40, L2, 84)
+MONUMENT = (5, L0 + 1, 83)                     # red's monument on the balcony by the spawn door
+SPAWN_AT = (24, L0, 86)
+SPAWN_AREA = Box(14, L0, 76, 37, L0 + 8, 92)   # the spawn room and the iron room
+IRON = [(x, y, z) for z in (78, 90) for x in range(32, 37, 2) for y in (L0, L0 + 1)] + \
+       [(37, y, z) for z in range(79, 90, 2) for y in (L0, L0 + 1)]                     # iron in the walls, mined and grown back
 
-CAVE = [  # (x, floor, z, radius): the cave off the gallery's west end, chambers and passages under the snowfield
-    [(-15, 34, 18, 2.4), (-22, 33, 19, 2.8), (-30, 31, 16, 3.2), (-38, 30, 20, 3.0), (-46, 28, 17, 3.4)],
-    [(-30, 31, 16, 2.6), (-33, 29, 27, 2.6), (-40, 27, 31, 2.8)],
-    [(-46, 28, 17, 2.8), (-54, 27, 12, 2.6), (-58, 26, 8, 2.4)],
-    [(-46, 28, 17, 2.6), (-55, 29, 24, 2.8), (-61, 31, 30, 2.4)],
+CAVE = [  # (x, floor, z, radius): the cave off the gallery's ramp, chambers and passages under the snowfield
+    [(-19, 44, 24, 2.4), (-26, 43, 21, 2.8), (-33, 41, 18, 3.2), (-40, 40, 22, 3.0), (-48, 38, 19, 3.4)],
+    [(-33, 41, 18, 2.6), (-36, 39, 28, 2.6), (-42, 37, 32, 2.8)],
+    [(-48, 38, 19, 2.8), (-56, 37, 14, 2.6), (-60, 36, 10, 2.4)],
+    [(-48, 38, 19, 2.6), (-56, 39, 26, 2.8), (-62, 41, 31, 2.4)],
 ]
-CHAMBERS = [(-38, 30, 20, 7, 9, 6), (-47, 27, 30, 6, 8, 5), (-56, 26, 10, 5, 7, 5)]   # (x, floor, z, rx, h, rz)
-LAVA_PONDS = [(-40, 30, 22, 3.5), (-46, 27, 31, 3.0), (-57, 26, 11, 2.6), (-24, 33, 20, 1.8)]  # (x, top, z, r)
-CAVE_WINDOWS = [(-46, 28, 14), (-58, 26, 7)]   # where a passage breaks out onto the fissure's wall
+CHAMBERS = [(-40, 40, 22, 7, 9, 6), (-48, 37, 31, 6, 8, 5), (-58, 36, 12, 5, 7, 5)]   # (x, floor, z, rx, h, rz)
+LAVA_PONDS = [(-42, 40, 24, 3.5), (-47, 37, 32, 3.0), (-59, 36, 13, 2.6), (-27, 43, 22, 1.8)]  # (x, top, z, r)
+CAVE_WINDOWS = [(-48, 38, 16), (-60, 36, 9)]   # where a passage breaks out onto the fissure's wall
 
-ROADS = [  # red's roads on the snowfield: the gate to the bridgehead, and the two flanks
-    [(0, 34), (2, 26), (-2, 18), (-1, 13)],
-    [(-14, 36), (-26, 33), (-38, 26), (-47, 20), (-52, 14)],
-    [(14, 36), (26, 31), (36, 26), (44, 20), (50, 14)],
-    [(-38, 26), (-44, 29), (-46, 30)],
+ROADS = [  # red's roads on the snowfield: from the gate and the generator house to the bridgehead and the flanks
+    [(-40, 40), (-34, 30), (-20, 22), (-6, 17), (-1, 13)],
+    [(-40, 40), (-50, 30), (-58, 22), (-62, 15)],
+    [(33, 44), (24, 34), (10, 24), (2, 16), (-1, 13)],
+    [(33, 44), (40, 34), (44, 24)],
 ]
-BRIDGE_STUB = dict(x0=-3, x1=1, length=6)      # the old road bridge, broken off over the fissure
+GATE_COURT = dict(x0=-56, x1=-25, z0=38, z1=47)                # paved in front of the gate
+ANNEX_YARD = dict(x0=22, x1=46, z0=42, z1=49)                  # paved in front of the generator house
+BRIDGE_STUB = dict(x0=-3, x1=1, length=6)
+YARD = dict(x0=-10, x1=24, z0=64, z1=90, top=TOP - 1)          # the plateau's yard: the dish and the buildings
+DISH = dict(x=5, z=78, r=10, y=TOP + 7, tilt=35)
+CUTTING = dict(x0=50, x1=53, z0=50, z1=74, feet0=81, feet1=TOP)    # stairs from the hill up to the plateau
 
 
 def spaces():
@@ -175,10 +192,10 @@ def spaces():
 def objectives():
     """The teams, their spawns, cores, wools and the observer: drawn once for red and turned for blue."""
     O = Objectives(Teams(("red-team", "Red", "red", 20), ("blue-team", "Blue", "blue", 20)), SYM)
-    O.add(Observer((0, 112, -1), yaw=90), mirror=False)
-    O.add(Spawn("red-team", SPAWN_AT, yaw=180, kit="spawn-kit", area=SPAWN_AREA))
+    O.add(Observer((0, 116, -1), yaw=90), mirror=False)
+    O.add(Spawn("red-team", SPAWN_AT, yaw=90, kit="spawn-kit", area=SPAWN_AREA, protect=("iron block",)))
     O.add(Core("red-core", "Reactor", "red-team", CORE, leak=LEAK))
-    blue_slot = (*SYM.point(MONUMENT[0], MONUMENT[2]),)
+    blue_slot = SYM.point(MONUMENT[0], MONUMENT[2])
     vault = next(s for s in SPACES if s.name == "vault").box()
     O.add(Wool("blue-team", "orange", (blue_slot[0], MONUMENT[1], blue_slot[1]), WOOL_AT, vault, delay="3s"),
           color="cyan")
@@ -188,7 +205,7 @@ def objectives():
 # --- the plan raster -----------------------------------------------------------------------------------------
 KINDS = ["rock", "snow", "floor", "stair", "water", "lava"]
 WALK = {"snow", "floor", "stair", "water"}
-BANDS = (44, 68, 92)                           # floor blocks up to 44 on storey 0, to 68 on 1, to 92 on 2, above on 3
+BANDS = (50, 64, 92)                           # floor blocks up to 50 on storey 0, to 64 on 1, to 92 on 2, above on 3
 
 
 def band(h):
@@ -206,43 +223,33 @@ def gallery_cells():
     return out
 
 
+def ramp_floor(feet):
+    """A ramp cell's floor block: the block under the feet, a half step standing on the block under that."""
+    return int(np.ceil(feet)) - 1
+
+
 def floors(opened=False):
     """Every walked floor of red's half: (x, z, floor block y, kind); `opened` once the leak has opened the
     vault's door."""
     out = []
+    hall = next(s for s in SPACES if s.name == "reactor hall")
+    covered = {(x, z) for r in RAMPS if r.solid for x, z, _ in r.cells()}
+    pit = {(x, z) for x in range(PIT.x0, PIT.x1 + 1) for z in range(PIT.z0, PIT.z1 + 1)}
     for s in SPACES:
         if s.kind == "door" and not opened:
             continue
         for x, z in s.cells():
-            pool = POOL["x0"] <= x <= POOL["x1"] and POOL["z0"] <= z <= POOL["z1"] and s.kind == "vault"
-            out.append((x, z, s.feet - 1, "water" if pool else "floor"))
+            if s is hall and ((x, z) in covered or (x, z) in pit):
+                continue
+            out.append((x, z, s.feet - 1, "floor"))
     for x, z in gallery_cells():
         out.append((x, z, L2 - 1, "floor"))
-    for f in FLIGHTS:
-        out += [(x, z, feet - 1, "stair") for x, z, feet in f.cells()]
-    out += [(x, z, feet - 1, "stair") for x, z, feet in helix()]
-    out += [(x, z, YARD["top"], "floor") for x in range(YARD["x0"], YARD["x1"] + 1)
-            for z in range(YARD["z0"], YARD["z1"] + 1)
-            if not (SHAFT["x0"] <= x <= SHAFT["x1"] and SHAFT["z0"] <= z <= SHAFT["z1"])
-            and not (DROP["x0"] <= x <= DROP["x1"] and DROP["z0"] <= z <= DROP["z1"])]
-    out += [(x, z, YARD["top"], "floor") for x in range(30, 38) for z in range(80, 87)]
-    out += culvert_cells()
-    out += [(x, z, feet - 1, "floor") for x, z, feet in DOORS]
+    for d in DECKS:
+        out += [(x, z, d.feet - 1, "floor") for x, z in d.cells()]
+    for r in RAMPS:
+        out += [(x, z, ramp_floor(f), "stair") for x, z, f in r.cells()]
+    out += [(x, z, PIT.y0 - 1, "floor") for x, z in pit]
     return out
-
-
-def culvert_cells():
-    """The culvert's floor cells, its floor rising from the barracks to the snow along its waypoints."""
-    from pgmvox.geom.shapes import polyline
-    pts = [(x, z) for x, _, z, _ in CULVERT]
-    xs = np.arange(-50, -28)
-    zs = np.arange(26, 62)
-    Xg, Zg = np.meshgrid(xs, zs, indexing="ij")
-    d, al = polyline(Xg.astype(float), Zg.astype(float), pts)[:2]
-    arc = np.concatenate([[0], np.cumsum(np.hypot(np.diff([p[0] for p in pts]), np.diff([p[1] for p in pts])))])
-    feet = np.interp(al, arc, [p[1] for p in CULVERT])
-    return [(int(x), int(z), int(round(f)) - 1, "floor") for x, z, f, dd in zip(Xg.ravel(), Zg.ravel(), feet.ravel(),
-                                                                             d.ravel()) if dd < 1.6]
 
 
 def raster(opened=False):
@@ -259,12 +266,12 @@ def raster(opened=False):
             S = stories[band(h)]
             S.H[i, k] = h
             S.K[i, k] = S.kinds["lava" if lava[i, k] else "snow"]
-    # the shaft and the drop are open to the sky, so the plateau over them is not a floor
-    for x in range(SHAFT["x0"], SHAFT["x1"] + 1):
-        for z in range(SHAFT["z0"], SHAFT["z1"] + 1):
-            for x2, z2 in ((x, z), SYM.point(x, z)):
-                i, k = x2 - land.X0, z2 - land.Z0
-                stories[3].K[i, k] = stories[3].kinds["none"]
+    hole = [(x, z) for x in range(ROOF_HOLE["x0"], ROOF_HOLE["x1"] + 1) for z in range(ROOF_HOLE["z0"], ROOF_HOLE["z1"] + 1)]
+    for x, z in hole:                                          # the fallen ceiling: the snow there is gone
+        for x2, z2 in ((x, z), SYM.point(x, z)):
+            i, k = x2 - land.X0, z2 - land.Z0
+            S = stories[band(int(top[i, k]))]
+            S.K[i, k] = S.kinds["none"] if S is not R else S.kinds["rock"]
     for x, z, h, kind in floors(opened):
         for x2, z2 in ((x, z), SYM.point(x, z)):
             S = stories[band(h)]
@@ -274,19 +281,19 @@ def raster(opened=False):
 
 
 def node(x, z, h):
-    return (x, z) if band(h) == 0 else (x, z, band(h))
+    return (int(x), int(z)) if band(h) == 0 else (int(x), int(z), band(h))
 
 
 def links():
     """What the raster cannot say: a bridge built over the fissure at the surface and between the two galleries,
-    the drop from the yard, and the vent bay's ladder. [(a, b, cost, tag)], both halves."""
+    and the climb down the rubble under the store's fallen ceiling. [(a, b, cost, tag)], both halves."""
     H, X, Z = land.heights()
     top = np.round(H).astype(int)
     c, half = land.fissure_line()
     out = []
     for x in range(land.X0, land.X1 + 1):
         i = x - land.X0
-        zr = int(np.ceil(c[i] + half[i]))                    # red's rim, and blue's at the same x across
+        zr = int(np.ceil(c[i] + half[i]))
         zb = int(np.floor(c[i] - half[i]))
         if land.Z0 <= zb < zr <= land.Z1:
             a, b = node(x, zr, top[i, zr - land.Z0]), node(x, zb, top[i, zb - land.Z0])
@@ -300,14 +307,11 @@ def links():
         if zb is not None:
             a, b = node(x, zr, L2 - 1), node(x, zb, L2 - 1)
             out += [(a, b, zr - zb, "deep bridge"), (b, a, zr - zb, "deep bridge")]
-    drop_top = node(DROP["x0"] + 1, DROP["z0"] - 1, TOP - 1)
-    drop_foot = node(DROP["x0"] - 1, DROP["z0"] + 1, L1 - 1)
-    ladder_foot = node(LADDER["x"], LADDER["z0"], L1 - 1)
-    ladder_top = node(LADDER["x"] + 2, LADDER["z0"] - 2, land.GROUND)
-    for a, b, cost, tag in [(drop_top, drop_foot, 4, "drop"),
-                            (ladder_foot, ladder_top, 9, "ladder"), (ladder_top, ladder_foot, 7, "ladder")]:
-        out.append((a, b, cost, tag))
-        ia = (*SYM.point(a[0], a[1]),) + a[2:]
-        ib = (*SYM.point(b[0], b[1]),) + b[2:]
-        out.append((ia, ib, cost, tag))
+    rh = ROOF_HOLE
+    edge = (rh["x0"] - 1, rh["z0"] + 2)
+    surface = node(*edge, top[edge[0] - land.X0, edge[1] - land.Z0])
+    rubble = node(rh["x0"] + 2, rh["z0"] + 2, L1 - 1)
+    for a, b, cost in [(surface, rubble, 10), (rubble, surface, 14)]:
+        out.append((a, b, cost, "rubble"))
+        out.append(((*SYM.point(a[0], a[1]),) + a[2:], (*SYM.point(b[0], b[1]),) + b[2:], cost, "rubble"))
     return out
