@@ -4,9 +4,6 @@
     <gamemode>dtm</gamemode>
     <objective>Destroy the enemy's monuments!</objective>
     <include id="gapple-kill-reward"/>
-    <contributors>
-        <contributor contribution="Built with the PGM Studio authoring API at https://pgmstudio.de">PGM Studio (pgmstudio.de)</contributor>
-    </contributors>
     <teams>
         <team id="red-team" color="red" max="24">Red</team>
         <team id="blue-team" color="blue" max="24">Blue</team>
