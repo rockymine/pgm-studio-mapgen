@@ -35,6 +35,6 @@ isl = np.hypot(X - cx, Z - cz) < r
 T.lay(w, np.where(isl, y, 0), mask=isl, top=top, from_y=y - 2)
 T.underside(w, isl, y - 2, depth=T.root_depth(isl, cone=2.6, flutes=4, spires=12, seed=8),
             paint=lambda k, x, z: beds(y - k - int(offset[x + 100, z + 100])))
-w.save(sys.argv[1], "Vale", (0, 80, 0))
+w.save(sys.argv[1], "Vale", (0, w.top(0, 0) + 1, 0))           # on the ground, not a fall above it
 print(f"generated; slope: {int((deg <= 30).sum())} grass-flat, {int((deg > 55).sum())} cliff columns; "
       f"{len(river.falls)} falls; {len(road['roads'])} roads, {bridges} bridge blocks, {stairs} footpath stairs")

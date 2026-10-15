@@ -554,8 +554,10 @@ the same rule as the walk graph's jumps, so the course and the raster plan agree
 **An image link is the mirror of the link it copies.** The nearest pair of cells can tie, and a tie broken two
 ways gave the two halves different landings; the audit now mirrors the first half's answer.
 
-**`examples/drop/` is a course in the plan phase:** eight steps from 120 down to 30, its audit, and a sketch with
-every link drawn from take-off to landing and the course unrolled as a section. Its audit failed twice before
+**`examples/drop/` is a course:** eight steps from 120 down to 30, its audit, and a sketch with every link drawn
+from take-off to landing and the course unrolled as a section. Its `gen.py` builds each piece as a slab floating
+at its own top and each water piece as a pool three deep, its glass rim stopping a block under the surface so no
+fall reaching the edge clips it. Its audit failed twice before
 the sketch was drawn. A run off the galleries landed on the terrace's rim, a block short of its pool, and a
 sixteen-block drop cost more than half a player's health.
 
@@ -637,6 +639,11 @@ python3 -m pgmvox.run examples/islets --only sketch
 game mode on its first `write`, or under `<name>_pgmvox` where another board holds that name (`boards/riftwater-pgmvox` writes
 `maps/dtcm/riftwater_pgmvox`), so its world can be copied out to a server as it stands. Run outside the repository,
 the library writes `<board>/world` instead.
+
+**Every example that builds a world has one under `maps/`.** `islets` is a King of the Hill board in
+`maps/koth/islets`, with its map.xml. `bridges`, `drop`, `parts`, `spikes` and `vale` are worlds to walk round, in
+`maps/other/<name>/` with a `level.dat` and `region/` and no map.xml. `layers` holds studio documents rather than a
+world.
 
 **The read-back earned its place on the example's first build.** It found 1,053 places to stand over the kill
 height: cloud billows rising through it. The deck now sits far below.

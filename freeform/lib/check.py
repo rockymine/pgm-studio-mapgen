@@ -39,7 +39,7 @@ BUILT = ["volume.bin", "tiles.json", "level.json"]                 # what a boar
 # each example and the steps it runs; "write" needs the studio's toolchain and is never needed to compare
 EXAMPLES = {
     "islets": ["plan_check", "sketch", "gen", "mapxml", "renders", "walk"],
-    "drop": ["plan_check", "sketch"],
+    "drop": ["plan_check", "sketch", "gen"],
     "parts": ["gen", "renders"],
     "vale": ["plan_check", "gen", "renders", "walk"],
     "bridges": ["gen", "renders"],

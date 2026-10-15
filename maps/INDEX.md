@@ -273,11 +273,16 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `mixed/saltgate` | `freeform/lib/boards/saltgate` | `freeform/lib/boards/saltgate` |
 | `mixed/sandreach` | `freeform/lib/boards/sandreach` | `freeform/lib/boards/sandreach` |
 | `mixed/tallowfleet` | `opus5-tallowfleet` | `specs/opus5-tallowfleet` |
+| `other/bridges` | `freeform/lib/examples/bridges` | `freeform/lib/examples/bridges` |
 | `other/brittle_study` | `freeform/lib/boards/brittle-study` | `freeform/lib/boards/brittle-study` |
 | `other/copperline` | `freeform/lib/boards/copperline` | `freeform/lib/boards/copperline` |
+| `other/drop` | `freeform/lib/examples/drop` | `freeform/lib/examples/drop` |
 | `other/form_gallery` | `form-gallery` | — |
 | `other/grammar_showcase` | `freeform/lib/boards/grammar-showcase` | `freeform/lib/boards/grammar-showcase` |
+| `other/parts` | `freeform/lib/examples/parts` | `freeform/lib/examples/parts` |
 | `other/sculpture_gallery` | `sculpture-gallery` | — |
+| `other/spikes` | `freeform/lib/examples/spikes` | `freeform/lib/examples/spikes` |
+| `other/vale` | `freeform/lib/examples/vale` | `freeform/lib/examples/vale` |
 | `tdm/overgrowth` | `freeform/lib/boards/overgrowth` | `freeform/lib/boards/overgrowth` |
 | `tdm/penstock` | `freeform/lib/boards/penstock` | `freeform/lib/boards/penstock` |
 | `tdm/vinewatch_ruins` | `freeform/lib/boards/vinewatch-ruins` | `freeform/lib/boards/vinewatch-ruins` |
