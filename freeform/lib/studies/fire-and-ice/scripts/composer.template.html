@@ -1,0 +1,461 @@
+<title>Fire and Ice Composer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* layout: a working tool; the board fills the left, the forms and their numbers sit in a rail on the right,
+   stacking under the board on a phone */
+:root{
+  --bg:#f3f1ee; --fg:#25221f; --mute:#6d655d; --line:#d9d2c8; --card:#fdfcfa; --code-bg:#ebe6df;
+  --accent:#c2410c; --ice:#2f6f9a; --sel:#fff3e8;
+  --f-display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1a1817; --fg:#ece6de; --mute:#a59b90; --line:#3a3530; --card:#23201e; --code-bg:#2c2825;
+  --accent:#fb8a4c; --ice:#8cc3e6; --sel:#3a2a20; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1a1817; --fg:#ece6de; --mute:#a59b90; --line:#3a3530; --card:#23201e; --code-bg:#2c2825;
+  --accent:#fb8a4c; --ice:#8cc3e6; --sel:#3a2a20; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 var(--f-body)}
+main{max-width:1400px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 48px;display:grid;gap:18px}
+main>*{min-width:0}
+h1{font:600 clamp(2rem,5vw,2.8rem)/1 var(--f-display);margin:0;letter-spacing:.01em}
+h2{font:600 1.25rem/1.1 var(--f-display);margin:0;letter-spacing:.02em}
+p{margin:0;max-width:72ch}
+.mute{color:var(--mute)}
+code{font:.86em var(--f-mono);background:var(--code-bg);padding:1px 5px;border-radius:4px}
+.work{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:18px;align-items:start}
+@media (max-width:900px){.work{grid-template-columns:1fr}}
+.boards{display:grid;gap:14px;min-width:0}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+button,select,input{font:inherit;color:inherit}
+button{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:5px 12px;cursor:pointer}
+button:hover{border-color:var(--mute)}
+button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.stage{position:relative;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:auto}
+.planwrap{position:relative;margin:12px auto}
+#plan,#overlay{position:absolute;left:0;top:0;width:100%;height:100%}
+#plan{image-rendering:pixelated}
+#overlay{touch-action:none}
+#iso{display:block;margin:0 auto;max-width:100%;height:auto}
+.rail{display:grid;gap:14px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px;display:grid;gap:10px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.grid2{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:center}
+.grid2 label{font:500 .78rem var(--f-mono);letter-spacing:.04em;color:var(--mute);text-transform:uppercase}
+input[type=number]{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:3px 6px;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%}
+select{background:var(--bg);border:1px solid var(--line);border-radius:5px;padding:3px 6px}
+.list{display:grid;gap:4px}
+.item{display:grid;grid-template-columns:14px 1fr auto;gap:8px;align-items:center;padding:5px 8px;border-radius:6px;cursor:pointer;border:1px solid transparent}
+.item[aria-selected="true"]{background:var(--sel);border-color:var(--line)}
+.swatch{width:12px;height:12px;border-radius:3px}
+.item small{font:500 .74rem var(--f-mono);color:var(--mute);font-variant-numeric:tabular-nums}
+.stat{font:500 .8rem var(--f-mono);color:var(--mute);font-variant-numeric:tabular-nums}
+.warn{color:var(--accent)}
+textarea{width:100%;min-height:150px;font:12px/1.4 var(--f-mono);background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:8px;box-sizing:border-box}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.85rem}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+#overlay .shape{fill:rgba(255,255,255,.04);stroke-width:1.3;vector-effect:non-scaling-stroke;cursor:move}
+#overlay .shape.sel{stroke-width:2.4;fill:rgba(255,255,255,.12)}
+#overlay .handle{stroke:#fff;stroke-width:1.2;vector-effect:non-scaling-stroke}
+#overlay .label{font:600 9px var(--f-mono);paint-order:stroke;stroke:#000;stroke-width:2.5px;fill:#fff;pointer-events:none}
+#overlay .stem{stroke-width:1;vector-effect:non-scaling-stroke;stroke-dasharray:3 2}
+</style>
+
+<main>
+  <header style="display:grid;gap:8px">
+    <h1>Fire and Ice Composer</h1>
+    <p>Five forms from the studies on one board: the fissure, the low somma, the caldera lake, the maar and the snowfield. Drag a form to move it, the round handle to turn it, the square handle to resize it; the board rebuilds when you let go. In the plan north is to the left and east is down. Every change rebuilds the board with the same arithmetic as <code>compose.py</code>, so what you see here is what gets built. When you like it, copy the layout and send it back.</p>
+  </header>
+
+  <div class="work">
+    <div class="boards">
+      <div class="row" style="justify-content:space-between">
+        <div class="tabs" role="group" aria-label="View">
+          <button id="v-plan" aria-pressed="true">Plan</button>
+          <button id="v-iso" aria-pressed="false">3D</button>
+          <button id="v-iso2" aria-pressed="false">3D, turned round</button>
+        </div>
+        <span class="stat" id="stats"></span>
+      </div>
+      <div class="stage" id="stage-plan">
+        <div class="planwrap" id="planwrap">
+          <canvas id="plan"></canvas>
+          <svg id="overlay"></svg>
+        </div>
+      </div>
+      <div class="stage" id="stage-iso" hidden><canvas id="iso"></canvas></div>
+      <div class="legend" id="legend"></div>
+    </div>
+
+    <div class="rail">
+      <section class="panel">
+        <h2>Board</h2>
+        <div class="grid2">
+          <label for="bw">Width (x)</label><input id="bw" type="number" min="80" max="300" step="5">
+          <label for="bl">Length (z)</label><input id="bl" type="number" min="80" max="300" step="5">
+        </div>
+        <p class="stat" id="sizenote"></p>
+      </section>
+
+      <section class="panel">
+        <h2>Forms</h2>
+        <div class="list" id="list" role="listbox" aria-label="Forms"></div>
+        <div class="row">
+          <select id="addkind" aria-label="Form to add"></select>
+          <button id="add">Add</button>
+          <button id="remove">Remove selected</button>
+        </div>
+      </section>
+
+      <section class="panel" id="props">
+        <h2 id="propname">Selected form</h2>
+        <div class="grid2">
+          <label for="px">x</label><input id="px" type="number" step="1">
+          <label for="pz">z</label><input id="pz" type="number" step="1">
+          <label for="pa">Turn°</label><input id="pa" type="number" step="5">
+          <label for="ps">Size</label><input id="ps" type="number" step="0.05" min="0.2" max="1.5">
+          <label for="pcw">Crop w</label><input id="pcw" type="number" step="10" min="40" max="300">
+          <label for="pcl">Crop l</label><input id="pcl" type="number" step="10" min="40" max="300">
+        </div>
+        <p class="stat">Size shrinks the form and its heights together. The crop is the part of the 300-block study that is laid, so a snowfield can be made longer without changing the size of its rocks.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Layout</h2>
+        <div class="row">
+          <button class="primary" id="copy">Copy layout</button>
+          <button id="reset">Reset to default</button>
+        </div>
+        <textarea id="json" aria-label="Layout JSON" spellcheck="false"></textarea>
+        <p class="stat" id="copied">Paste a layout here to load it.</p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<script>
+const STAMPS = %STAMPS%;
+const DEFAULT = %DEFAULT%;
+const NAN = -32768, N = 300, HALF = 150, BASE = 30, FEATHER = 18;
+const LIQUID = {fissure:"lava", somma_low:"lava", caldera_lake:"water", maar:"water", snowfield:"ice"};
+const NAMES = {fissure:"Fissure", somma_low:"Low somma", caldera_lake:"Caldera lake", maar:"Maar", snowfield:"Snowfield"};
+const HUE = {fissure:"#f97316", somma_low:"#ef4444", caldera_lake:"#3b82f6", maar:"#06b6d4", snowfield:"#e5e7eb"};
+const COL = {rock:[[157,157,151],[71,79,82],[29,29,33]], snow:[249,254,254], water:[63,118,228], lava:[217,100,21], ice:[160,190,240]};
+const S = {};
+let layout, sel = 0, view = "plan", result = null;
+
+async function decode(b64){
+  const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+  const buf = await new Response(new Blob([bin]).stream().pipeThrough(new DecompressionStream("deflate"))).arrayBuffer();
+  const raw = new Int16Array(buf), out = new Float64Array(raw.length);
+  for (let i = 0; i < raw.length; i++) out[i] = raw[i] === NAN ? NaN : raw[i] / 4;
+  return out;
+}
+
+/* ---- the composer, line for line with compose.py ---- */
+function sample(st, iu, iv){
+  const i0 = Math.floor(iu), k0 = Math.floor(iv);
+  if (i0 < 0 || k0 < 0 || i0 >= N - 1 || k0 >= N - 1) return NaN;
+  const fu = iu - i0, fv = iv - k0;
+  const a = st[i0*N+k0], b = st[(i0+1)*N+k0], c = st[i0*N+k0+1], d = st[(i0+1)*N+k0+1];
+  return (a*(1-fu) + b*fu)*(1-fv) + (c*(1-fu) + d*fu)*fv;
+}
+function place(f, W, L){
+  const a = f.angle*Math.PI/180, ca = Math.cos(a), sa = Math.sin(a);
+  const w = new Float64Array(W*L), iu = new Float64Array(W*L), iv = new Float64Array(W*L);
+  for (let i = 0; i < W; i++) for (let k = 0; k < L; k++){
+    const dx = i - f.x, dz = k - f.z, c = i*L+k;
+    const u = (dx*ca + dz*sa)/f.scale, v = (-dx*sa + dz*ca)/f.scale;
+    const edge = Math.min(f.crop[0]/2 - Math.abs(u), f.crop[1]/2 - Math.abs(v));
+    const t = Math.min(1, Math.max(0, edge/FEATHER));
+    w[c] = t*t*(3-2*t); iu[c] = u + HALF; iv[c] = v + HALF;
+  }
+  return {w, iu, iv};
+}
+const rnd = x => Math.floor(x + 0.5);
+function heapPush(h, lv, c){ h.push([lv, c]); let i = h.length-1; while (i > 0){ const p = (i-1)>>1; if (h[p][0] <= lv) break; [h[p], h[i]] = [h[i], h[p]]; i = p; } }
+function heapPop(h){ const top = h[0], last = h.pop(); if (h.length){ h[0] = last; let i = 0; for(;;){ const l = 2*i+1, r = l+1; let m = i; if (l < h.length && h[l][0] < h[m][0]) m = l; if (r < h.length && h[r][0] < h[m][0]) m = r; if (m === i) break; [h[m], h[i]] = [h[i], h[m]]; i = m; } } return top; }
+function fillBasins(top, W, L){
+  const filled = Int32Array.from(top), seen = new Uint8Array(W*L), h = [];
+  for (let i = 0; i < W; i++) for (let k = 0; k < L; k++) if (i === 0 || i === W-1 || k === 0 || k === L-1){ seen[i*L+k] = 1; heapPush(h, top[i*L+k], i*L+k); }
+  while (h.length){
+    const [lv, c] = heapPop(h), i = (c / L) | 0, k = c % L;
+    for (const [a, b] of [[i+1,k],[i-1,k],[i,k+1],[i,k-1]]){
+      if (a < 0 || b < 0 || a >= W || b >= L) continue;
+      const n = a*L+b; if (seen[n]) continue; seen[n] = 1;
+      filled[n] = Math.max(top[n], lv); heapPush(h, filled[n], n);
+    }
+  }
+  return filled;
+}
+function compose(lay){
+  const W = lay.width, L = lay.length, n = W*L;
+  const H = new Float64Array(n);
+  for (let i = 0; i < W; i++) for (let k = 0; k < L; k++) H[i*L+k] = BASE + S.ground[i*N+k];
+  const reach = [], places = [];
+  for (const f of lay.features){
+    const p = place(f, W, L); places.push(p);
+    const r = new Float64Array(n);
+    if (f.kind !== "snowfield"){
+      const st = S[f.kind];
+      for (let c = 0; c < n; c++){
+        if (p.w[c] === 0) continue;
+        let s = sample(st, p.iu[c], p.iv[c]); if (isNaN(s)) s = 0;
+        const lift = p.w[c]*f.scale*s; H[c] += lift; r[c] = Math.abs(lift);
+      }
+    } else for (let c = 0; c < n; c++) r[c] = p.w[c] > 0.5 ? 1e9 : 0;
+    reach.push(r);
+  }
+  const rockF = Float64Array.from(H), iceF = new Float64Array(n).fill(NaN);
+  lay.features.forEach((f, j) => {
+    if (f.kind !== "snowfield") return;
+    const p = places[j];
+    for (let c = 0; c < n; c++){
+      if (p.w[c] === 0) continue;
+      let r = sample(S.snowfield_rock, p.iu[c], p.iv[c]); if (isNaN(r)) r = 0;
+      const i = sample(S.snowfield_ice, p.iu[c], p.iv[c]);
+      rockF[c] += p.w[c]*f.scale*r;
+      if (!isNaN(i) && p.w[c] > 0.2) iceF[c] = H[c] + p.w[c]*f.scale*i;
+    }
+  });
+  const rock = new Int32Array(n), ice = new Int32Array(n), top = new Int32Array(n);
+  for (let c = 0; c < n; c++){
+    rock[c] = rnd(rockF[c]);
+    const v = isNaN(iceF[c]) ? -1 : rnd(iceF[c]);
+    ice[c] = v > rock[c] ? v : -1;
+    top[c] = Math.max(rock[c], ice[c]);
+  }
+  const filled = fillBasins(top, W, L);
+  const owner = new Int32Array(n).fill(-1), best = new Float64Array(n).fill(0.5);
+  reach.forEach((r, j) => { for (let c = 0; c < n; c++) if (r[c] > best[c]){ owner[c] = j; best[c] = r[c]; } });
+  const level = new Int32Array(n).fill(-1), kind = new Array(n).fill("");
+  const lab = new Int32Array(n);
+  let nb = 0;
+  for (let c0 = 0; c0 < n; c0++){
+    if (filled[c0] <= top[c0] || lab[c0]) continue;
+    nb++; const stack = [c0], cells = []; lab[c0] = nb;
+    while (stack.length){
+      const c = stack.pop(); cells.push(c);
+      const i = (c / L) | 0, k = c % L;
+      for (const [a, b] of [[i+1,k],[i-1,k],[i,k+1],[i,k-1]]){
+        if (a < 0 || b < 0 || a >= W || b >= L) continue;
+        const m = a*L+b; if (lab[m] || filled[m] <= top[m]) continue;
+        lab[m] = nb; stack.push(m);
+      }
+    }
+    const votes = new Array(lay.features.length).fill(0);
+    for (const c of cells) if (owner[c] >= 0) votes[owner[c]]++;
+    let j = 0; for (let q = 1; q < votes.length; q++) if (votes[q] > votes[j]) j = q;
+    const kd = votes.length && votes[j] > 0 ? LIQUID[lay.features[j].kind] : "water";
+    for (const c of cells){ level[c] = filled[c]; kind[c] = kd; }
+  }
+  return {W, L, rock, ice, level, kind};
+}
+function slopeTone(rock, W, L){
+  const T = (i, k, di, dk) => { const a = i + di*2, b = k + dk*2; return (a < 0 || b < 0 || a >= W || b >= L) ? rock[i*L+k] : rock[a*L+b]; };
+  const tone = new Uint8Array(W*L);
+  for (let i = 0; i < W; i++) for (let k = 0; k < L; k++){
+    const ax = T(i,k,-1,-1) + 2*T(i,k,-1,0) + T(i,k,-1,1) - T(i,k,1,-1) - 2*T(i,k,1,0) - T(i,k,1,1);
+    const az = T(i,k,-1,-1) + 2*T(i,k,0,-1) + T(i,k,1,-1) - T(i,k,-1,1) - 2*T(i,k,0,1) - T(i,k,1,1);
+    const deg = Math.min(89, Math.round(Math.atan(Math.hypot(ax, az)/16)*180/Math.PI));
+    tone[i*L+k] = deg < 30 ? 0 : deg < 50 ? 1 : 2;
+  }
+  return tone;
+}
+function surface(R){
+  const {W, L, rock, ice, level, kind} = R, n = W*L;
+  const tone = slopeTone(rock, W, L), col = new Array(n), h = new Int32Array(n);
+  for (let c = 0; c < n; c++){
+    if (level[c] >= 0){ col[c] = kind[c] === "ice" ? COL.ice : COL[kind[c]]; h[c] = level[c]; }
+    else if (ice[c] >= 0){ col[c] = COL.snow; h[c] = ice[c]; }
+    else { col[c] = COL.rock[tone[c]]; h[c] = rock[c]; }
+  }
+  return {col, h};
+}
+
+/* ---- drawing ---- */
+const plan = document.getElementById("plan"), ov = document.getElementById("overlay"), wrap = document.getElementById("planwrap");
+let PX = 3;
+function drawPlan(){
+  const {W, L} = result, {col, h} = result.surf;
+  plan.width = L; plan.height = W;              // z runs across, x down: the long side lies along the screen
+  const img = plan.getContext("2d").createImageData(L, W);
+  for (let i = 0; i < W; i++) for (let k = 0; k < L; k++){
+    const c = i*L+k;
+    const hx = h[Math.min(W-1, i+1)*L+k] - h[Math.max(0, i-1)*L+k];
+    const hz = h[i*L+Math.min(L-1, k+1)] - h[i*L+Math.max(0, k-1)];
+    const shade = Math.min(1.35, Math.max(0.55, 1 - 0.09*(hx + hz)));
+    const o = (i*L+k)*4, rgb = col[c];
+    img.data[o] = Math.min(255, rgb[0]*shade); img.data[o+1] = Math.min(255, rgb[1]*shade); img.data[o+2] = Math.min(255, rgb[2]*shade); img.data[o+3] = 255;
+  }
+  plan.getContext("2d").putImageData(img, 0, 0);
+  const avail = document.getElementById("stage-plan").clientWidth - 24;
+  PX = Math.max(1.2, Math.min(4, avail / L));
+  wrap.style.width = (L*PX) + "px"; wrap.style.height = (W*PX) + "px";
+  ov.setAttribute("viewBox", `0 0 ${L} ${W}`);
+}
+function corners(f){
+  const a = f.angle*Math.PI/180, ca = Math.cos(a), sa = Math.sin(a);
+  const hu = f.crop[0]/2*f.scale, hv = f.crop[1]/2*f.scale;
+  return [[-hu,-hv],[hu,-hv],[hu,hv],[-hu,hv]].map(([u, v]) => [f.x + u*ca - v*sa, f.z + u*sa + v*ca]);
+}
+function drawOverlay(){
+  const s = 1/PX;
+  let out = "";
+  layout.features.forEach((f, j) => {
+    const cs = corners(f), pts = cs.map(([x, z]) => `${z},${x}`).join(" ");
+    const hue = HUE[f.kind];
+    const a = f.angle*Math.PI/180, hv = f.crop[1]/2*f.scale, reach = hv + 14*s;
+    const rx = f.x + reach*Math.sin(a), rz = f.z - reach*Math.cos(a);       // the turn handle, off the -v edge
+    const top = [f.x + hv*Math.sin(a), f.z - hv*Math.cos(a)];
+    out += `<g data-j="${j}">
+      <polygon class="shape ${j === sel ? "sel" : ""}" data-act="move" points="${pts}" stroke="${hue}"/>
+      ${j === sel ? `<line class="stem" x1="${top[1]}" y1="${top[0]}" x2="${rz}" y2="${rx}" stroke="${hue}"/>
+      <circle class="handle" data-act="turn" cx="${rz}" cy="${rx}" r="${6*s}" fill="${hue}"/>
+      <rect class="handle" data-act="size" x="${cs[2][1]-5*s}" y="${cs[2][0]-5*s}" width="${10*s}" height="${10*s}" fill="${hue}"/>` : ""}
+      <text class="label" x="${f.z}" y="${f.x}" text-anchor="middle" style="font-size:${11*s}px;stroke-width:${2.5*s}px">${NAMES[f.kind]}</text>
+    </g>`;
+  });
+  ov.innerHTML = out;
+}
+function drawIso(corner){
+  const {W, L} = result, {col, h} = result.surf;
+  const u = 2, cv = document.getElementById("iso");
+  let maxh = 0; for (const v of h) maxh = Math.max(maxh, v);
+  cv.width = (W + L)*u + 20; cv.height = (W + L)*u/2 + maxh*u + 30;
+  const g = cv.getContext("2d");
+  g.fillStyle = getComputedStyle(document.body).getPropertyValue("--card"); g.fillRect(0, 0, cv.width, cv.height);
+  const flip = corner === "nw";
+  const order = [];
+  for (let s = 0; s < W + L - 1; s++) for (let i = Math.max(0, s - L + 1); i <= Math.min(W - 1, s); i++) order.push([i, s - i]);
+  for (const [a, b] of order){
+    const i = flip ? W - 1 - a : a, k = flip ? L - 1 - b : b;
+    const c = i*L+k, rgb = col[c], y0 = h[c];
+    const sx = 10 + (b - a + W - 1)*u, sy = 10 + (a + b)*u/2 + (maxh - y0)*u;
+    const hx = h[Math.min(W-1, i+1)*L+k] - h[Math.max(0, i-1)*L+k], hz = h[i*L+Math.min(L-1, k+1)] - h[i*L+Math.max(0, k-1)];
+    const shade = Math.min(1.3, Math.max(0.6, 1 - 0.07*(flip ? -(hx + hz) : (hx + hz))));
+    g.fillStyle = `rgb(${rgb[0]*0.62|0},${rgb[1]*0.62|0},${rgb[2]*0.62|0})`;
+    g.fillRect(sx, sy + u/2, u*2, (y0 + 2)*u);
+    g.fillStyle = `rgb(${Math.min(255, rgb[0]*shade)|0},${Math.min(255, rgb[1]*shade)|0},${Math.min(255, rgb[2]*shade)|0})`;
+    g.fillRect(sx, sy, u*2, u);
+  }
+}
+function stats(){
+  const {W, L, level, kind, ice} = result;
+  let lava = 0, water = 0, snow = 0;
+  for (let c = 0; c < W*L; c++){ if (level[c] >= 0){ if (kind[c] === "lava") lava++; else water++; } else if (ice[c] >= 0) snow++; }
+  const pct = v => (100*v/(W*L)).toFixed(1) + "%";
+  document.getElementById("stats").textContent = `${W} × ${L} · lava ${pct(lava)} · water ${pct(water)} · snow ${pct(snow)}`;
+  const big = Math.max(W, L), small = Math.min(W, L);
+  document.getElementById("sizenote").innerHTML = (big > 300 || small > 175)
+    ? `<span class="warn">Over the goal: keep it within 175 × 300.</span>` : `Within the goal of 175 × 300.`;
+}
+function drawList(){
+  document.getElementById("list").innerHTML = layout.features.map((f, j) =>
+    `<div class="item" role="option" tabindex="0" data-j="${j}" aria-selected="${j === sel}"><span class="swatch" style="background:${HUE[f.kind]}"></span><span>${NAMES[f.kind]}</span><small>${Math.round(f.x)}, ${Math.round(f.z)} · ${f.angle}° · ×${f.scale}</small></div>`).join("");
+  const f = layout.features[sel];
+  document.getElementById("props").hidden = !f;
+  if (!f) return;
+  document.getElementById("propname").textContent = NAMES[f.kind];
+  const set = (id, v) => { const el = document.getElementById(id); if (document.activeElement !== el) el.value = v; };
+  set("px", Math.round(f.x)); set("pz", Math.round(f.z)); set("pa", f.angle); set("ps", f.scale); set("pcw", f.crop[0]); set("pcl", f.crop[1]);
+  set("bw", layout.width); set("bl", layout.length);
+  document.getElementById("json").value = JSON.stringify(layout, null, 1);
+}
+let pending = false;
+function rebuild(){
+  if (pending) return; pending = true;
+  document.getElementById("stats").textContent = "Building…";
+  requestAnimationFrame(() => setTimeout(() => {
+    pending = false;
+    result = compose(layout); result.surf = surface(result);
+    if (view === "plan") drawPlan(); else drawIso(view === "iso" ? "se" : "nw");
+    drawOverlay(); drawList(); stats(); save();
+  }, 0));
+}
+function save(){ try { localStorage.setItem("fire-ice-layout", JSON.stringify(layout)); } catch (e) {} }
+
+/* ---- interaction ---- */
+function boardPoint(ev){
+  const r = ov.getBoundingClientRect();
+  return {z: (ev.clientX - r.left)/r.width*layout.length, x: (ev.clientY - r.top)/r.height*layout.width};
+}
+let drag = null;
+ov.addEventListener("pointerdown", ev => {
+  const t = ev.target, g = t.closest("g[data-j]"); if (!g) return;
+  const j = +g.dataset.j; sel = j;
+  const f = layout.features[j], p = boardPoint(ev);
+  drag = {act: t.dataset.act || "move", f, p0: p, x0: f.x, z0: f.z, a0: f.angle, s0: f.scale, c0: [...f.crop]};
+  ov.setPointerCapture(ev.pointerId); ev.preventDefault(); rebuild();
+});
+ov.addEventListener("pointermove", ev => {
+  if (!drag) return;
+  const p = boardPoint(ev), f = drag.f;
+  if (drag.act === "move"){ f.x = Math.round(drag.x0 + p.x - drag.p0.x); f.z = Math.round(drag.z0 + p.z - drag.p0.z); }
+  if (drag.act === "turn"){
+    const ang = Math.atan2(p.x - f.x, -(p.z - f.z)) * 180/Math.PI;     // the handle sits on the form's -v side
+    f.angle = Math.round(((ang % 360) + 360) % 360 / 5) * 5;
+  }
+  if (drag.act === "size"){
+    const d0 = Math.hypot(drag.p0.x - f.x, drag.p0.z - f.z), d1 = Math.hypot(p.x - f.x, p.z - f.z);
+    if (f.kind === "snowfield" && !ev.shiftKey){
+      const a = f.angle*Math.PI/180, dx = p.x - f.x, dz = p.z - f.z;
+      const u = (dx*Math.cos(a) + dz*Math.sin(a))/f.scale, v = (-dx*Math.sin(a) + dz*Math.cos(a))/f.scale;
+      f.crop = [Math.max(40, Math.min(300, Math.round(Math.abs(u)*2/10)*10)), Math.max(40, Math.min(300, Math.round(Math.abs(v)*2/10)*10))];
+    } else f.scale = Math.max(0.2, Math.min(1.5, Math.round(drag.s0*d1/Math.max(d0, 1)*20)/20));
+  }
+  drawOverlay(); drawList();                                               // the outline follows; the board rebuilds on release
+});
+ov.addEventListener("pointerup", () => { if (drag){ drag = null; rebuild(); } });
+document.getElementById("list").addEventListener("click", ev => { const it = ev.target.closest("[data-j]"); if (it){ sel = +it.dataset.j; rebuild(); } });
+document.getElementById("list").addEventListener("keydown", ev => { if (ev.key === "Enter"){ const it = ev.target.closest("[data-j]"); if (it){ sel = +it.dataset.j; rebuild(); } } });
+const num = (id, fn) => document.getElementById(id).addEventListener("input", ev => { const v = parseFloat(ev.target.value); if (!isNaN(v)){ fn(v); rebuild(); } });
+num("px", v => layout.features[sel].x = v); num("pz", v => layout.features[sel].z = v);
+num("pa", v => layout.features[sel].angle = v); num("ps", v => layout.features[sel].scale = Math.max(0.2, Math.min(1.5, v)));
+num("pcw", v => layout.features[sel].crop[0] = Math.max(40, Math.min(300, v))); num("pcl", v => layout.features[sel].crop[1] = Math.max(40, Math.min(300, v)));
+num("bw", v => layout.width = Math.max(80, Math.min(300, Math.round(v)))); num("bl", v => layout.length = Math.max(80, Math.min(300, Math.round(v))));
+const addk = document.getElementById("addkind");
+addk.innerHTML = Object.keys(NAMES).map(k => `<option value="${k}">${NAMES[k]}</option>`).join("");
+document.getElementById("add").onclick = () => {
+  const kind = addk.value;
+  layout.features.push({kind, x: Math.round(layout.width/2), z: Math.round(layout.length/2), angle: 0, scale: kind === "snowfield" ? 1 : 0.45, crop: kind === "snowfield" ? [80, 120] : [300, 300]});
+  sel = layout.features.length - 1; rebuild();
+};
+document.getElementById("remove").onclick = () => { if (layout.features.length){ layout.features.splice(sel, 1); sel = Math.max(0, sel - 1); rebuild(); } };
+document.getElementById("reset").onclick = () => { layout = structuredClone(DEFAULT); sel = 0; rebuild(); };
+document.getElementById("copy").onclick = async () => {
+  const text = JSON.stringify(layout);
+  const ta = document.getElementById("json"); ta.value = JSON.stringify(layout, null, 1);
+  try { await navigator.clipboard.writeText(text); document.getElementById("copied").textContent = "Copied. Paste it into the chat."; }
+  catch (e) { ta.select(); document.getElementById("copied").textContent = "Selected. Copy it with Ctrl+C or ⌘C."; }
+};
+document.getElementById("json").addEventListener("change", ev => {
+  try { const l = JSON.parse(ev.target.value); if (l.features && l.width && l.length){ layout = l; sel = 0; rebuild(); document.getElementById("copied").textContent = "Loaded."; } }
+  catch (e) { document.getElementById("copied").textContent = "That is not a layout: it has to be the JSON this page copies."; }
+});
+function setView(v){
+  view = v;
+  for (const [id, name] of [["v-plan","plan"],["v-iso","iso"],["v-iso2","iso2"]]) document.getElementById(id).setAttribute("aria-pressed", v === name);
+  document.getElementById("stage-plan").hidden = v !== "plan"; document.getElementById("stage-iso").hidden = v === "plan";
+  rebuild();
+}
+document.getElementById("v-plan").onclick = () => setView("plan");
+document.getElementById("v-iso").onclick = () => setView("iso");
+document.getElementById("v-iso2").onclick = () => setView("iso2");
+window.addEventListener("resize", () => { if (view === "plan") rebuild(); });
+document.getElementById("legend").innerHTML = [["rock, gentle", COL.rock[0]], ["rock, steep", COL.rock[1]], ["rock, cliff", COL.rock[2]], ["snow", COL.snow], ["water", COL.water], ["lava", COL.lava], ["frozen pond", COL.ice]]
+  .map(([n, c]) => `<span><span class="swatch" style="background:rgb(${c});border:1px solid var(--line)"></span>${n}</span>`).join("");
+
+(async () => {
+  for (const [k, v] of Object.entries(STAMPS)) S[k] = await decode(v);
+  try { const s = JSON.parse(localStorage.getItem("fire-ice-layout")); if (s && s.features) layout = s; } catch (e) {}
+  layout = layout || structuredClone(DEFAULT);
+  rebuild();
+})();
+</script>

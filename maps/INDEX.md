@@ -284,6 +284,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `other/spikes` | `freeform/lib/examples/spikes` | `freeform/lib/examples/spikes` |
 | `other/studies_combinations` | `freeform/lib/studies/combinations` | `freeform/lib/studies/combinations` |
 | `other/studies_dungeons` | `freeform/lib/studies/dungeons` | `freeform/lib/studies/dungeons` |
+| `other/studies_fire_and_ice` | `freeform/lib/studies/fire-and-ice` | `freeform/lib/studies/fire-and-ice` |
 | `other/studies_volcanoes` | `freeform/lib/studies/volcanoes` | `freeform/lib/studies/volcanoes` |
 | `other/studies_water` | `freeform/lib/studies/water` | `freeform/lib/studies/water` |
 | `other/studies_winter` | `freeform/lib/studies/winter` | `freeform/lib/studies/winter` |
