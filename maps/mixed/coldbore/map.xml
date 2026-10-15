@@ -1,0 +1,251 @@
+<map proto="1.5.0">
+    <name>Coldbore</name>
+    <version>0.1.0</version>
+    <objective>Leak the enemy's reactor under its forecourt, then take the wool from the vault the leak opens beneath it.</objective>
+    <gamemode>ctw</gamemode>
+    <gamemode>dtc</gamemode>
+    <rules>
+        <rule>A reactor's leak opens the vault under it: its wool cannot be reached before.</rule>
+        <rule>The vault's shell is blast-proof.</rule>
+    </rules>
+    <include id="gapple-kill-reward"/>
+    <authors>
+        <author>Claude (freeform generator)</author>
+    </authors>
+    <contributors>
+        <contributor contribution="The idea: a bunker in a cliff, a fissure, a reactor over its wool">rockymine</contributor>
+    </contributors>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true"/>
+            <item slot="2" material="diamond pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="stained clay" amount="64" team-color="true"/>
+            <item slot="5" material="wood" amount="48"/>
+            <item slot="6" material="golden apple"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow" amount="48"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <teams>
+        <team id="red-team" color="red" max="20">Red</team>
+        <team id="blue-team" color="blue" max="20">Blue</team>
+    </teams>
+    <filters>
+        <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
+        <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
+        <any id="woolroom-materials">
+            <material>wood</material>
+            <material>stained clay</material>
+            <material>web</material>
+            <all>
+                <cause>player</cause>
+                <any>
+                    <material>water</material>
+                    <material>stationary water</material>
+                </any>
+            </all>
+        </any>
+        <all id="reds-woolrooms-filter">
+            <filter id="not-red"/>
+            <filter id="woolroom-materials"/>
+        </all>
+        <all id="blues-woolrooms-filter">
+            <filter id="not-blue"/>
+            <filter id="woolroom-materials"/>
+        </all>
+        <deny id="block-rule">
+            <all>
+                <any>
+                    <material>lava</material>
+                    <material>stationary lava</material>
+                </any>
+                <cause>player</cause>
+            </all>
+        </deny>
+    </filters>
+    <spawns>
+        <default yaw="90">
+            <region>
+                <point>0.5,112,-0.5</point>
+            </region>
+        </default>
+        <spawn team="red-team" kit="spawn-kit" yaw="180">
+            <region>
+                <point>13.5,104,74.5</point>
+            </region>
+        </spawn>
+        <spawn team="blue-team" kit="spawn-kit" yaw="0">
+            <region>
+                <point>-13.5,104,-74.5</point>
+            </region>
+        </spawn>
+    </spawns>
+    <regions>
+        <cuboid min="6,104,72" max="21,110,83" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-21,104,-83" max="-6,110,-72" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-4,56,52" max="3,63,59" id="red-core-region"/>
+        <cuboid min="-3,56,-59" max="4,63,-52" id="blue-core-region"/>
+        <block id="orange-blue-monument">-10,105,-67</block>
+        <cuboid min="-10,34,46" max="10,48,65" id="orange-room"/>
+        <apply enter="not-red" region="orange-room" message="You may not enter your own wool room!"/>
+        <point id="orange-wool-spawn">6.5,35,61.5</point>
+        <block id="cyan-red-monument">9,105,66</block>
+        <cuboid min="-10,34,-65" max="10,48,-46" id="cyan-room"/>
+        <apply enter="not-blue" region="cyan-room" message="You may not enter your own wool room!"/>
+        <point id="cyan-wool-spawn">-6.5,35,-61.5</point>
+        <union id="red-vault-shell">
+            <cuboid min="-12,28,44" max="12,34,67"/>
+            <cuboid min="-12,34,44" max="-10,50,67"/>
+            <cuboid min="10,34,44" max="12,50,67"/>
+            <cuboid min="-10,34,44" max="10,50,46"/>
+            <cuboid min="-10,34,65" max="10,50,67"/>
+            <cuboid min="-10,48,46" max="10,50,65"/>
+        </union>
+        <apply region="red-vault-shell" block-place="never" block-break="never" message="The vault's shell is blast-proof: leak the reactor above it."/>
+        <union id="blue-vault-shell">
+            <cuboid min="-12,28,-67" max="12,34,-44"/>
+            <cuboid min="10,34,-67" max="12,50,-44"/>
+            <cuboid min="-12,34,-67" max="-10,50,-44"/>
+            <cuboid min="-10,34,-46" max="10,50,-44"/>
+            <cuboid min="-10,34,-67" max="10,50,-65"/>
+            <cuboid min="-10,48,-65" max="10,50,-46"/>
+        </union>
+        <apply region="blue-vault-shell" block-place="never" block-break="never" message="The vault's shell is blast-proof: leak the reactor above it."/>
+        <union id="reds-woolrooms">
+            <region id="orange-room"/>
+        </union>
+        <apply block="reds-woolrooms-filter" region="reds-woolrooms" message="You may not edit the wool room!"/>
+        <union id="blues-woolrooms">
+            <region id="cyan-room"/>
+        </union>
+        <apply block="blues-woolrooms-filter" region="blues-woolrooms" message="You may not edit the wool room!"/>
+        <union id="fill-1">
+            <cuboid min="-4,56,52" max="3,63,59"/>
+            <cuboid min="-8,52,48" max="7,64,63"/>
+            <cuboid min="-5,49,51" max="4,52,60"/>
+            <cuboid min="-5,48,51" max="4,49,60"/>
+        </union>
+        <cuboid min="10,34,53" max="12,41,57" id="fill-2"/>
+        <union id="fill-3">
+            <cuboid min="-3,56,-59" max="4,63,-52"/>
+            <cuboid min="-7,52,-63" max="8,64,-48"/>
+            <cuboid min="-4,49,-60" max="5,52,-51"/>
+            <cuboid min="-4,48,-60" max="5,49,-51"/>
+        </union>
+        <cuboid min="-12,34,-57" max="-10,41,-53" id="fill-4"/>
+        <apply block="block-rule" message="Lava may not be placed or taken."/>
+    </regions>
+    <cores>
+        <core id="red-core" name="Reactor" team="red-team" leak="5" mode-changes="true" region="red-core-region"/>
+        <core id="blue-core" name="Reactor" team="blue-team" leak="5" mode-changes="true" region="blue-core-region"/>
+    </cores>
+    <wools craftable="false">
+        <wool team="blue-team" color="orange" monument="orange-blue-monument" location="6.5,34,61.5"/>
+        <wool team="red-team" color="cyan" monument="cyan-red-monument" location="-6.5,34,-61.5"/>
+    </wools>
+    <spawners>
+        <spawner spawn-region="orange-wool-spawn" player-region="orange-room" delay="3s">
+            <item material="wool" damage="1"/>
+        </spawner>
+        <spawner spawn-region="cyan-wool-spawn" player-region="cyan-room" delay="3s">
+            <item material="wool" damage="9"/>
+        </spawner>
+    </spawners>
+    <actions>
+        <trigger scope="match">
+            <filter>
+                <completed>red-core</completed>
+            </filter>
+            <action>
+                <fill region="fill-1" material="air"/>
+                <fill region="fill-2" material="air"/>
+                <message text="Red's reactor has leaked and its vault stands open: go and get the orange wool!"/>
+            </action>
+        </trigger>
+        <trigger scope="match">
+            <filter>
+                <completed>blue-core</completed>
+            </filter>
+            <action>
+                <fill region="fill-3" material="air"/>
+                <fill region="fill-4" material="air"/>
+                <message text="Blue's reactor has leaked and its vault stands open: go and get the cyan wool!"/>
+            </action>
+        </trigger>
+    </actions>
+    <maxbuildheight>112</maxbuildheight>
+    <portals>
+        <portal y="@-64" sound="false" observers="never">
+            <region>
+                <below y="8"/>
+            </region>
+        </portal>
+    </portals>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>stained clay</material>
+                    <material>wood</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="stained clay" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>diamond pickaxe</item>
+        <item>iron axe</item>
+        <item>golden apple</item>
+        <item>water bucket</item>
+        <item>stained clay</item>
+        <item>wood</item>
+        <item>cooked beef</item>
+        <item>arrow</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>iron chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+        <item>obsidian</item>
+        <item>flint</item>
+        <item>gravel</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>diamond pickaxe</tool>
+        <tool>iron axe</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="stained clay" amount="8" team-color="true"/>
+            <item material="wood" amount="16"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+</map>
+

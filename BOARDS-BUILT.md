@@ -849,3 +849,15 @@ describe boards that were never quite like that.
 `opus5-sallowmere` `opus5-sallyport` `opus5-scarp-mask` `opus5-scarrow-delph` `opus5-skelwith`
 `opus5-slakemoss` `opus5-sparholt` `opus5-stavelbridge` `opus5-thornwaite` `opus5-thrushgate`
 `opus5-thwaite-ghyll` `opus5-whitegape` `opus5-widdop`
+
+### Opus 5.5 — a bunker board to the author's spoken brief (2026-10-15)
+
+One board, built in pgmvox rather than through a studio, because a station of rooms on three levels under the
+ground, a cave and a carved culvert are things only the library can build today. The brief asked for a bunker
+in a cliff, a cold plain with roads to it, a fissure down the middle, three levels, a cave with lava ponds and
+one of the core-and-wool concepts; the concept chosen is the wool beneath the core, the leak taken through a
+well so that it opens the vault.
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `freeform/lib/boards/coldbore` | ctw + dtc | Opus 5.5 | **Two drilling stations in opposite cliffs on a frozen plain, split by the fissure their bore tore open** — each team's reactor hangs over a well in a hall on level 1 under its forecourt, and its wool lies in the quartz cooling vault on level 2 directly beneath, behind a bedrock hatch and blast door the leak opens. The station runs 40 blocks into the mountain on level 0 and turns back under the snowfield, and level 2's gallery opens onto the fissure with a lava cave west of it. Four approaches to each reactor (gate, vent ladder, the galleries bridged at depth, a culvert from the flank) all walk in the read-back. GO4 **49**, GO3 **149**, GO1 **3.04**, nearest lava to a core **31** blocks, the wool sealed until the leak, no objective problem, nothing falling; the studio reads the map.xml as valid. World at `maps/mixed/coldbore` |

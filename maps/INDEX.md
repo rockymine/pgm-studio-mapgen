@@ -252,6 +252,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `koth/whitecliff_cistern` | `freeform/lib/boards/whitecliff-cistern` | `freeform/lib/boards/whitecliff-cistern` |
 | `mixed/aerie` | `opus5-aerie` | `specs/archive/opus5-aerie` |
 | `mixed/alderquay` | `opus5b-alderquay` | `specs/opus5b-alderquay` |
+| `mixed/coldbore` | `freeform/lib/boards/coldbore` | `freeform/lib/boards/coldbore` |
 | `mixed/highgarth_fell` | `sonnet5b-highgarth-fell` | `specs/sonnet5b-highgarth-fell` |
 | `mixed/hollowbank` | `opus5-hollowbank` | `specs/archive/opus5-hollowbank` |
 | `mixed/overwall` | `opus5-overwall` | `specs/archive/opus5-overwall` |
