@@ -108,7 +108,9 @@
     "maxZ": 72
    }
   ],
-  "holes": []
+  "holes": [],
+  "mode": null,
+  "materials": []
  },
  "waterLanes": null,
  "wools": [],
@@ -196,9 +198,18 @@
  ],
  "cores": null,
  "controlPoints": null,
+ "flags": null,
+ "scoreBoxes": null,
+ "zones": null,
  "shops": null,
  "spawners": null,
  "scoreLimit": null,
+ "killPoints": null,
+ "timeLimit": null,
+ "respawn": null,
+ "lives": null,
+ "rage": null,
+ "killHeight": null,
  "modes": null,
  "gamemodes": [
   "dtm"
