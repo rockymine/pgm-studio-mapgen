@@ -1,0 +1,570 @@
+<title>Caldera Lake, Layer by Layer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* layout: one reading column of prose, widened to two columns wherever a map sits beside its explanation;
+   the maps share the Riftwater map style (hypsometric ground, light from the north-west, pink = what changed) */
+:root{
+  --bg:#f5f2ec; --fg:#26221d; --mute:#6c6258; --line:#dcd3c6; --card:#fffdf8; --sel:#efe6d8;
+  --accent:#b4436c; --ink:#2d5f73; --code-bg:#ede6da;
+  --f-display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1b1916; --fg:#ece5da; --mute:#a59a8d; --line:#3a342d; --card:#24211d; --sel:#322c25;
+  --accent:#e07aa0; --ink:#8cc2d6; --code-bg:#2a2622; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1b1916; --fg:#ece5da; --mute:#a59a8d; --line:#3a342d; --card:#24211d; --sel:#322c25;
+  --accent:#e07aa0; --ink:#8cc2d6; --code-bg:#2a2622; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--f-body)}
+main{max-width:1120px;margin:0 auto;padding-inline:16px;padding-block:36px 80px;display:grid;gap:64px}
+main>*{min-width:0}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;letter-spacing:.01em;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.4rem,6vw,3.6rem);line-height:1}
+h2{font-size:2rem;line-height:1.05;margin-bottom:12px}
+h3{font-size:1.3rem;line-height:1.1}
+p{margin:0 0 12px;max-width:66ch}
+.eyebrow{font:500 .8rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.mute{color:var(--mute)}
+code{font:.88em var(--f-mono);background:var(--code-bg);padding:1px 5px;border-radius:4px}
+pre{font:13px/1.55 var(--f-mono);background:var(--code-bg);padding:14px 16px;border-radius:8px;overflow-x:auto;margin:0}
+pre code{background:none;padding:0;font-size:inherit}
+.c{color:var(--mute)}
+section{display:grid;gap:18px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+.two>*{min-width:0}
+@media (max-width:820px){.two{grid-template-columns:1fr}}
+figure{margin:0;display:grid;gap:8px}
+figcaption{font-size:.88rem;color:var(--mute);max-width:60ch}
+.frame{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px;display:flex;justify-content:center}
+.frame img,.frame canvas{max-width:100%;height:auto;image-rendering:pixelated;display:block}
+.frame img.smooth{image-rendering:auto}
+.hero-intro{display:grid;gap:14px}
+.hero-pics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:700px){.hero-pics{grid-template-columns:1fr}}
+.tag{font:500 .78rem var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.tag.on{color:var(--accent)} .tag.off{color:var(--mute)}
+
+/* readouts and controls */
+.readout{font:13px var(--f-mono);color:var(--mute);font-variant-numeric:tabular-nums;min-height:1.3em}
+.ctl{display:grid;gap:10px}
+.ctl label{display:grid;grid-template-columns:9em 1fr 3.5em;gap:10px;align-items:center;font-size:.95rem}
+.ctl output{font:13px var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.toggles{display:grid;gap:6px}
+.toggle{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);cursor:pointer}
+.toggle input{margin-top:4px;width:18px;height:18px;accent-color:var(--accent)}
+.toggle b{font-weight:600}
+.toggle span{display:block;font-size:.88rem;color:var(--mute)}
+.toggle:has(input:not(:checked)){background:transparent}
+.toggle:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px}
+button.small{font:500 .82rem var(--f-mono);padding:6px 12px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer}
+button.small:hover{background:var(--sel)}
+button.small:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* the step viewer */
+.viewer{display:grid;grid-template-columns:250px minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:820px){.viewer{grid-template-columns:1fr}}
+.steps{display:grid;gap:2px}
+.steps button{all:unset;cursor:pointer;display:grid;grid-template-columns:1.8em 1fr;gap:6px;padding:8px 10px;border-radius:6px;font-size:.95rem;line-height:1.3}
+.steps button:hover{background:var(--sel)}
+.steps button:focus-visible{outline:2px solid var(--accent)}
+.steps button[aria-current="true"]{background:var(--sel);box-shadow:inset 3px 0 0 var(--accent)}
+.steps .n{color:var(--mute);font-variant-numeric:tabular-nums;font-family:var(--f-mono);font-size:.85rem;padding-top:1px}
+.stage{display:grid;gap:12px;min-width:0}
+.stage-head{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline}
+.chip{font:500 .78rem var(--f-mono);padding:2px 9px;border-radius:999px;border:1px solid var(--accent);color:var(--accent);font-variant-numeric:tabular-nums}
+.nav{display:flex;gap:8px;align-items:center}
+
+.octaves{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+@media (max-width:700px){.octaves{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.octaves figure{gap:4px} .octaves figcaption{font-size:.8rem}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.legendbar{height:10px;border-radius:3px;max-width:320px}
+.lib{display:grid;gap:0;border-top:1px solid var(--line)}
+.lib div{display:grid;grid-template-columns:minmax(0,15em) minmax(0,1fr);gap:16px;padding:10px 0;border-bottom:1px solid var(--line)}
+.lib div>*{min-width:0}
+@media (max-width:600px){.lib div{grid-template-columns:1fr;gap:2px}}
+.own{color:var(--accent);font:500 .75rem var(--f-mono);letter-spacing:.05em;text-transform:uppercase;margin-left:6px}
+.sec canvas{width:100%;height:auto;image-rendering:auto}
+.overlay{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:start}
+.overlay>*{min-width:0}
+@media (max-width:820px){.overlay{grid-template-columns:1fr}}
+.overlay img{image-rendering:pixelated}
+.shapes-key{margin:0;padding-left:0;list-style:none;counter-reset:k;display:grid;gap:10px;font-size:.92rem}
+.shapes-key li{counter-increment:k;display:grid;grid-template-columns:1.9em 1fr;gap:10px;align-items:start}
+.shapes-key li::before{content:counter(k);display:grid;place-items:center;height:1.6em;border-radius:5px;border:2px solid var(--k);font:600 .78rem var(--f-mono);background:var(--card);color:var(--fg)}
+.shapes-key li{--k:#d6336c}
+.shapes-key li.poly{--k:#de7814} .shapes-key li.band{--k:#464646} .shapes-key li.noise{--k:#783caa}
+.shapes-key b{display:block}
+button.small[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<main>
+<header class="hero-intro">
+  <div class="eyebrow">Volcano study · round 2 · No. 2</div>
+  <h1>Caldera Lake, Layer by Layer</h1>
+  <p>Every picture on this page is drawn from the real heights that build the caldera-lake study: 300 × 300 columns, one number each. The left render has every layer on. The right one is the same recipe with five of its layers switched off. Everything else on the page explains the difference between the two.</p>
+  <div class="hero-pics">
+    <figure><div class="frame"><img class="smooth" id="iso-on" alt="Isometric render of the caldera with every layer on: an irregular rim, a notch, broken cliffs, fallen blocks and an off-centre island cone"></div>
+      <figcaption><span class="tag on">all layers on</span> · the study as built</figcaption></figure>
+    <figure><div class="frame"><img class="smooth" id="iso-off" alt="Isometric render of the same caldera with warp, gullies, notch, wall variation and floor relief off: a perfectly round, smooth, ruled shape"></div>
+      <figcaption><span class="tag off">five layers off</span> · no warp, gullies, notch, wall variation or floor relief</figcaption></figure>
+  </div>
+</header>
+
+<section>
+  <div class="eyebrow">What the ground is</div>
+  <h2>A grid of heights, and arithmetic over it</h2>
+  <p>The terrain is never sculpted block by block. It is one array <code>H</code>: for each column (x, z), the y of its top block. Each operation takes the whole array and returns a new one, so a volcano is a short list of operations applied in order. Only at the very end is every column filled with blocks up to its height.</p>
+  <p>Three ways of combining two shapes do almost all the work. <code>max(H, form)</code> only ever lifts: a hill can grow out of the ground but never dig into it. <code>min(H, form)</code> only ever cuts, so a crater can never build anything up. <code>smooth_max</code> and <code>smooth_min</code> do the same with the seam rounded over <em>k</em> blocks, which is why the cone has a foot instead of standing on the plain like a plinth. Because each operation only lifts or only cuts, they can be stacked in almost any order without undoing each other.</p>
+</section>
+
+<section>
+  <div class="eyebrow">Ingredient one</div>
+  <h2>Noise: random numbers, smoothed and stacked</h2>
+  <div class="two">
+    <div>
+      <p>Anything that looks natural starts as <em>fractal noise</em> (<code>noise.fbm</code>). Throw random numbers onto a coarse lattice, here one every 90 blocks, and interpolate smoothly between them. That gives one slow swell. Then do it again with the lattice half as wide and add it at half the strength, and again, and again. Each octave adds detail at half the size and half the height.</p>
+      <p>The result has large features with smaller ones riding on them, the way real ground does. Every other field on this page is noise like this: the plain's rolling, the wobble of the rim, how wide each cliff is, how ragged its edge is.</p>
+    </div>
+    <div>
+      <div class="octaves" id="octaves"></div>
+      <div class="legendbar" id="div-bar" style="margin-top:10px"></div>
+      <p class="mute" style="font-size:.85rem;margin-top:6px">blue below zero, orange above, white at zero; each tile is the whole 300-block plot</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Ingredient two, and the main answer</div>
+  <h2>The bent ruler</h2>
+  <div class="two">
+    <div>
+      <p>Nearly every shape here is defined by a distance. The cone's height depends on how far a column is from the centre. The caldera wall sits at a set distance from it, and so does the island. Measure those distances with a straight ruler and you get perfect circles: the right-hand render at the top.</p>
+      <p>So the distances are measured with a bent ruler instead. Before measuring, every column's coordinates are pushed sideways by two noise fields: a big slow one up to 12 blocks, which bends the whole outline, and a small fast one up to 4 blocks, which wobbles its edge. Then the same formulas run unchanged. A circle measured this way comes out as a lumpy, pinched, bulging loop, and the cliffs, gullies and island all inherit that shape for free.</p>
+      <p>Try it. With both sliders at zero the cone is a perfect cone. The black rings mark every 10 blocks of distance as the bent ruler measures it.</p>
+      <div class="ctl">
+        <label for="w-big">big bend <input type="range" id="w-big" min="0" max="30" step="1" value="12"><output id="o-big">12</output></label>
+        <label for="w-small">small wobble <input type="range" id="w-small" min="0" max="10" step="0.5" value="4"><output id="o-small">4</output></label>
+      </div>
+      <div class="btnrow"><button class="small" id="w-zero" type="button">straight ruler</button><button class="small" id="w-study" type="button">as in the study</button><button class="small" id="w-wild" type="button">exaggerated</button></div>
+      <pre><code><span class="c"># the whole trick, in four lines</span>
+Xw = X + 12 * fbm(cell=90, seed=210) + 4 * fbm(cell=22, seed=212)
+Zw = Z + 12 * fbm(cell=90, seed=211) + 4 * fbm(cell=22, seed=213)
+d  = hypot(Xw - cx, Zw - cz)            <span class="c"># distance with the bent ruler</span>
+cone = 12 + 108 * (1 - d / 145) ** 1.35  <span class="c"># the same formula as ever</span></code></pre>
+    </div>
+    <figure>
+      <div class="frame"><canvas id="warp-map" width="600" height="600" aria-label="A cone drawn from the warped distance, with distance rings every 10 blocks"></canvas></div>
+      <figcaption>The bare cone, drawn from the warped distance alone. The warp is <code>noise.warp</code> in pgmvox.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">What the code actually wrote</div>
+  <h2>Every shape in the recipe, as written and as measured</h2>
+  <p>Every shape the recipe names, drawn by the kind of geometry it is written as, in the Riftwater page's key: pink for a circle or ellipse (a centre and radii), orange for a rectangle, purple for a line defined by noise, grey for a band. There is no blue, because this recipe has no line of points. The ground under both drawings is the finished caldera.</p>
+  <p><b>As written</b> shows what the numbers in the code say: four clean ellipses, a box and thirty straight spokes. <b>As measured</b> shows the same shapes where the bent ruler actually puts them, and that difference is most of the detail. The ellipses turn into lumpy loops, and the spokes bend once the gully phase gets its noise. The finished ground drifts off the written shapes and sits exactly on the measured ones.</p>
+  <div class="btnrow" role="group" aria-label="Which drawing">
+    <button class="small" id="ov-written" type="button" aria-pressed="false">as written</button>
+    <button class="small" id="ov-measured" type="button" aria-pressed="true">as measured</button>
+  </div>
+  <div class="overlay">
+    <figure><div class="frame"><img id="ov-img" alt="The caldera's shapes drawn over its finished ground"></div></figure>
+    <ol class="shapes-key">
+      <li class="ell"><div><b>Cone foot</b> Ellipse at (0, 0), radius 145, squashed to 0.9 and turned 30°. Where the cone reaches the plain; <code>smooth_max</code> melts it 16 blocks further out.</div></li>
+      <li class="ell"><div><b>Caldera, first cliff</b> Where the wall starts: 42 blocks out on an ellipse squashed to 0.82, plus a 10% wobble of its own. The cliff then rises over 6 to 12 blocks, depending on the width field.</div></li>
+      <li class="ell"><div><b>Caldera, the bench's edge</b> 58 blocks out, where the second cliff starts climbing to the outer slope.</div></li>
+      <li class="ell"><div><b>Island</b> Ellipse at (−18, 14), radius 17, squashed to 0.75 and turned 70°, 26 blocks high.</div></li>
+      <li class="ell"><div><b>Island crater</b> Radius 4 on the same ellipse, 5 blocks deep.</div></li>
+      <li class="poly"><div><b>Slump box</b> Rectangle (−50, −45) to (50, 45): 26 blocks are tried at random inside it. Only those that land between the faint pink rings (30 to 48 out) are kept: <span id="ov-placed"></span> of them, drawn as small ellipses.</div></li>
+      <li class="band"><div><b>Notch wedge</b> A band by angle, 2.3 radians (about 132°, south-west) ± 0.25, between 30 and 80 blocks out. The rim drops up to 14 blocks inside it.</div></li>
+      <li class="noise"><div><b>Gully grooves</b> 30 lines where the groove's phase crosses a whole number, only between 70 and 135 blocks out (the grey rings). Written, the phase is the angle alone and the grooves are spokes. Measured, 0.9 of noise is added and they wander.</div></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Ingredient three</div>
+  <h2>The build, step by step</h2>
+  <p>Eight operations in order. Pink marks the columns each step changed. The section under the map cuts west to east through the centre at true scale, with the previous step drawn as a faint line.</p>
+  <div class="viewer">
+    <nav class="steps" id="steps" aria-label="Build steps"></nav>
+    <div class="stage">
+      <div class="stage-head"><h3 id="st-title"></h3><span class="chip" id="st-count"></span></div>
+      <div class="frame"><canvas id="st-map" width="600" height="600" aria-label="Map of the caldera at the selected step"></canvas></div>
+      <div class="readout" id="st-read">point at the map for a column's height</div>
+      <div class="frame sec"><canvas id="st-sec" width="1200" height="330" aria-label="True-scale west-east section through the centre"></canvas></div>
+      <p id="st-text"></p>
+      <pre><code id="st-code"></code></pre>
+      <div class="nav"><button class="small" id="st-prev" type="button">← previous</button><button class="small" id="st-next" type="button">next →</button><span class="mute" id="st-pos"></span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Toggle the layers</div>
+  <h2>Switch a layer off and see what it was doing</h2>
+  <p>Each switch below removes one layer from the recipe and rebuilds the whole caldera without it. Every combination was built ahead of time, all 32, so what you see is the real terrain that combination makes.</p>
+  <div class="two">
+    <div class="toggles" id="toggles">
+      <label class="toggle" for="t-warp"><input type="checkbox" id="t-warp" checked><div><b>Bent ruler</b><span>the warp: without it every outline is a true circle or ellipse</span></div></label>
+      <label class="toggle" for="t-gully"><input type="checkbox" id="t-gully" checked><div><b>Gullies</b><span>30 grooves down the outer flank, each wandering and of its own depth</span></div></label>
+      <label class="toggle" for="t-notch"><input type="checkbox" id="t-notch" checked><div><b>Rim notch</b><span>a 14-block dip in the rim on one side, where a lake would spill</span></div></label>
+      <label class="toggle" for="t-wall"><input type="checkbox" id="t-wall" checked><div><b>Wall variation</b><span>the wall's radius wobbles, each cliff's width varies from 6 to 12 blocks, its edge is ragged by up to 3</span></div></label>
+      <label class="toggle" for="t-floor"><input type="checkbox" id="t-floor" checked><div><b>Floor relief and slump blocks</b><span>the floor rises and falls 4 blocks, and 26 fallen blocks lie at the foot of the wall</span></div></label>
+      <div class="btnrow"><button class="small" id="t-all" type="button">all on</button><button class="small" id="t-none" type="button">all off</button></div>
+    </div>
+    <figure>
+      <div class="frame"><canvas id="tg-map" width="600" height="600" aria-label="Map of the caldera with the chosen layers"></canvas></div>
+      <div class="readout" id="tg-read">point at the map for a column's height</div>
+      <div class="frame sec"><canvas id="tg-sec" width="1200" height="330" aria-label="Section through the centre with the chosen layers, the full study as a faint line"></canvas></div>
+      <figcaption>Pink marks the columns that differ from the full study. The section's faint line is the full study.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Why the crater wall looks like that</div>
+  <h2>One cross-section, stretched differently everywhere</h2>
+  <div class="two">
+    <div>
+      <p>The wall is a single operation, <code>landform.profile</code>. It describes a cross-section by distance from the centre: the floor at y 30 out to 42 blocks, a cliff up to a bench at y 58, then a second cliff up to the outer slope. Every number in that description is allowed to be a whole field instead of a number, so the cross-section can be different in every column.</p>
+      <p>Four fields feed it. The <em>distance</em> itself is bent, plus a 10% wobble of its own. Each cliff's <em>width</em> runs from 6 blocks (near-sheer) to 12 (a steep slope), changing every 60 blocks or so around the ring. A <em>jag</em> field of up to ±3 blocks shifts where every cliff starts and ends, which gives the bitten, ragged edge. The <em>floor</em> rises and falls 4 blocks. The chart shows the result: the same wall, cut outward from the centre in eight directions.</p>
+      <pre><code>H = profile(H, d=dc, floor=30, floor_ground=floor,
+            steps=[Step(42, 42 + width, 58),
+                   Step(52 + 0.6 * width, 58 + width, "ground")],
+            jag=jag, talus=(6, 9), mode="cut")</code></pre>
+    </div>
+    <figure>
+      <div class="frame sec"><canvas id="radial" width="1000" height="420" aria-label="Eight radial sections from the centre outward, one per direction"></canvas></div>
+      <figcaption id="radial-cap">Sections from the centre outward, true scale, one colour per direction. Where the lines spread apart, the wall is different there.</figcaption>
+    </figure>
+  </div>
+  <div class="fields" id="fields"></div>
+</section>
+
+<section>
+  <div class="eyebrow">The parts list</div>
+  <h2>Which library calls build it</h2>
+  <div class="lib">
+    <div><code>noise.fbm</code><span>the fractal noise under every field</span></div>
+    <div><code>landform.smooth_max / smooth_min</code><span>growing a form out of the ground with a rounded foot; rounding the crater's lip</span></div>
+    <div><code>landform.profile</code><span>the two-stepped caldera wall, from fields</span></div>
+    <div><code>landform.crater</code><span>the island's summit crater</span></div>
+    <div><code>landform.mound</code><span>each slump block</span></div>
+    <div><code>shapes.ellipse_distance</code><span>the slump blocks' footprints</span></div>
+    <div><code>surface.terrain.slope_deg</code><span>the three grey tones of the renders, by slope</span></div>
+    <div><code>noise.warp</code><span>the bent ruler, added to the library from these studies</span></div>
+    <div><code>landform.gullies</code><span>radial grooves with a noisy phase, added from these studies</span></div>
+    <div><code>landform.lumps</code><span>mounds strewn inside a box and a mask, added from these studies</span></div>
+  </div>
+  <p class="mute">The warp, the gullies and the lumps were written for these studies and are now part of pgmvox 0.27.0, with tests. Every line of the recipe is a library call.</p>
+</section>
+
+<section>
+  <div class="eyebrow">The recipe, whole</div>
+  <h2>Twenty lines</h2>
+  <pre><code><span class="c">def caldera_lake(X, Z):</span>
+H = ground(X, 3)                                          <span class="c"># rolling plain: noise 90 and 25 across</span>
+Xw, Zw = warp(X, Z, 210, big=12, small=4)                 <span class="c"># the bent ruler</span>
+d0 = r_at(Xw, Zw, (0, 0), 0.9, 30)                        <span class="c"># distance, as a slightly turned ellipse</span>
+body = 12 + 108 * clip(1 - d0 / 145, 0, 1) ** 1.35 - gullies(Xw, Zw, (0, 0), 30, 6, 70, 135, seed=8)
+H = smooth_max(H, body, 16)                               <span class="c"># the cone, with a 16-block foot</span>
+theta = arctan2(Zw, Xw)
+H -= 14 * exp(-(angle(theta - 2.3) / 0.25) ** 2) * smoothstep(80, 55, d0) * smoothstep(30, 55, d0)   <span class="c"># notch</span>
+dc = r_at(Xw, Zw, (0, 0), 0.82, 30) * (1 + 0.1 * fbm(40, seed=9))
+width = 6 + 6 * (0.5 + 0.5 * fbm(60, seed=11))
+jag = 3 * fbm(9, seed=10)
+floor = 30 + 4 * fbm(30, seed=12)
+H = profile(H, dc, floor=30, floor_ground=floor,
+            steps=[Step(42, 42 + width, 58), Step(52 + 0.6 * width, 58 + width, "ground")],
+            jag=jag, talus=(6, 9), mode="cut")                <span class="c"># the caldera</span>
+H = lumps(H, X, Z, 26, (-50, -45, 50, 45), (3, 8), (3, 8), seed=13, mask=(dc &lt; 48) &amp; (dc &gt; 30))
+ir = r_at(Xw, Zw, (-18, 14), 0.75, 70)
+H = smooth_max(H, where(ir &lt; 17, 30 + 26 * clip(1 - ir / 17, 0, 1) ** 0.95, -inf), 4)   <span class="c"># island</span>
+H = crater_in(H, ir, 5, 4, 1, 1.3, k=2)                   <span class="c"># its crater</span>
+return H</code></pre>
+</section>
+</main>
+
+<script>
+const DATA = %DATA%;
+const OVERLAY = %OVERLAY%;
+const N = DATA.size, SC = DATA.scale, X0 = DATA.x0, Z0 = DATA.z0;
+const HYPSO = [[10,[38,70,72]],[16,[66,112,82]],[21,[104,144,86]],[26,[150,170,92]],[31,[196,186,106]],
+               [38,[206,160,96]],[47,[170,118,78]],[56,[198,170,140]],[66,[240,234,222]]];
+const PINK = [255,64,160];
+
+async function bytes(b64){
+  const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+  const stream = new Blob([bin]).stream().pipeThrough(new DecompressionStream("deflate"));
+  return new Uint8Array(await new Response(stream).arrayBuffer());
+}
+async function heights(b64){ const b = await bytes(b64); const h = new Float32Array(b.length); for (let i = 0; i < b.length; i++) h[i] = b[i] / SC; return h; }
+async function field(b64){ const b = await bytes(b64); const f = new Float32Array(b.length); for (let i = 0; i < b.length; i++) f[i] = b[i] / 255 * 2 - 1; return f; }
+
+function hypso(h){
+  if (h <= HYPSO[0][0]) return HYPSO[0][1];
+  for (let i = 1; i < HYPSO.length; i++){
+    const [y1, c1] = HYPSO[i], [y0, c0] = HYPSO[i-1];
+    if (h <= y1){ const t = (h - y0) / (y1 - y0); return [c0[0]+(c1[0]-c0[0])*t, c0[1]+(c1[1]-c0[1])*t, c0[2]+(c1[2]-c0[2])*t]; }
+  }
+  return HYPSO[HYPSO.length-1][1];
+}
+const at = (H, r, c) => H[Math.max(0, Math.min(N-1, r)) * N + Math.max(0, Math.min(N-1, c))];
+
+/* the map style: hypsometric colour, lit from the north-west, a contour every 2 blocks and a heavy one every 10 */
+function drawMap(canvas, H, opt = {}){
+  const s = canvas.width / N, ctx = canvas.getContext("2d"), img = ctx.createImageData(canvas.width, canvas.height), px = img.data, W = canvas.width;
+  const put = (x, y, rgb, k = 1) => { const o = (y * W + x) * 4; px[o] = rgb[0]*k; px[o+1] = rgb[1]*k; px[o+2] = rgb[2]*k; px[o+3] = 255; };
+  const mul = (x, y, k) => { const o = (y * W + x) * 4; px[o] *= k; px[o+1] *= k; px[o+2] *= k; };
+  const mix = (x, y, rgb, t) => { const o = (y * W + x) * 4; for (let j = 0; j < 3; j++) px[o+j] = px[o+j] * (1 - t) + rgb[j] * t; };
+  for (let r = 0; r < N; r++) for (let c = 0; c < N; c++){
+    const h = H[r*N+c];
+    const gx = (at(H, r, c+1) - at(H, r, c-1)) / 2, gz = (at(H, r+1, c) - at(H, r-1, c)) / 2;
+    const k = Math.max(0.6, Math.min(1.3, 1 + 0.16 * (gx + gz)));
+    const rgb = hypso(h);
+    for (let dy = 0; dy < s; dy++) for (let dx = 0; dx < s; dx++) put(c*s+dx, r*s+dy, rgb, k);
+  }
+  const band = h => Math.floor(h / (opt.step || 2)), big = h => Math.floor(h / 10);
+  for (let r = 0; r < N; r++) for (let c = 0; c < N; c++){
+    const h = H[r*N+c];
+    if (c < N-1){ const h2 = H[r*N+c+1]; if (band(h) !== band(h2)){ const w = big(h) !== big(h2) ? 2 : 1;
+      for (let x = (c+1)*s - w; x < (c+1)*s + (w-1); x++) for (let y = r*s; y < (r+1)*s; y++) mul(x, y, 0.55); } }
+    if (r < N-1){ const h2 = H[(r+1)*N+c]; if (band(h) !== band(h2)){ const w = big(h) !== big(h2) ? 2 : 1;
+      for (let y = (r+1)*s - w; y < (r+1)*s + (w-1); y++) for (let x = c*s; x < (c+1)*s; x++) mul(x, y, 0.55); } }
+  }
+  if (opt.changed){
+    const ch = opt.changed;
+    for (let r = 0; r < N; r++) for (let c = 0; c < N; c++){
+      if (!ch[r*N+c]) continue;
+      const edge = r === 0 || c === 0 || r === N-1 || c === N-1 || !ch[(r-1)*N+c] || !ch[(r+1)*N+c] || !ch[r*N+c-1] || !ch[r*N+c+1];
+      for (let dy = 0; dy < s; dy++) for (let dx = 0; dx < s; dx++){ if (edge) put(c*s+dx, r*s+dy, PINK); else mix(c*s+dx, r*s+dy, PINK, 0.25); }
+    }
+  }
+  if (opt.rings){
+    const R = opt.rings;
+    for (let r = 0; r < N; r++) for (let c = 0; c < N-1; c++){
+      if (Math.floor(R[r*N+c] / 10) !== Math.floor(R[r*N+c+1] / 10)) for (let y = r*s; y < (r+1)*s; y++) put((c+1)*s - 1, y, [20,18,16]);
+      if (r < N-1 && Math.floor(R[r*N+c] / 10) !== Math.floor(R[(r+1)*N+c] / 10)) for (let x = c*s; x < (c+1)*s; x++) put(x, (r+1)*s - 1, [20,18,16]);
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+}
+
+function css(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+
+/* a true-scale section west to east through z 0, the ghost drawn faint */
+function drawSection(canvas, H, ghost){
+  const ctx = canvas.getContext("2d"), W = canvas.width, Hh = canvas.height, s = W / N, row = -Z0, top = 80;
+  const y = h => Hh - 18 - h * s;
+  ctx.clearRect(0, 0, W, Hh);
+  ctx.strokeStyle = css("--line"); ctx.lineWidth = 1; ctx.fillStyle = css("--mute"); ctx.font = "20px " + css("--f-mono");
+  for (let lv = 20; lv <= top; lv += 20){ ctx.beginPath(); ctx.moveTo(0, y(lv)); ctx.lineTo(W, y(lv)); ctx.stroke(); ctx.fillText("y " + lv, 6, y(lv) - 4); }
+  ctx.beginPath(); ctx.moveTo(0, Hh);
+  for (let c = 0; c < N; c++){ const h = H[row*N+c]; ctx.lineTo(c*s, y(h)); ctx.lineTo((c+1)*s, y(h)); }
+  ctx.lineTo(W, Hh); ctx.closePath(); ctx.fillStyle = css("--ink"); ctx.globalAlpha = 0.85; ctx.fill(); ctx.globalAlpha = 1;
+  if (ghost){
+    ctx.beginPath();
+    for (let c = 0; c < N; c++){ const h = ghost[row*N+c]; c ? ctx.lineTo(c*s, y(h)) : ctx.moveTo(0, y(h)); ctx.lineTo((c+1)*s, y(h)); }
+    ctx.strokeStyle = css("--accent"); ctx.lineWidth = 2; ctx.setLineDash([6, 5]); ctx.stroke(); ctx.setLineDash([]);
+  }
+  ctx.fillStyle = css("--mute"); ctx.fillText("west", 6, 22); ctx.fillText("east", W - 52, 22);
+}
+
+function hover(canvas, read, get){
+  const show = e => {
+    const b = canvas.getBoundingClientRect();
+    const c = Math.floor((e.clientX - b.left) / b.width * N), r = Math.floor((e.clientY - b.top) / b.height * N);
+    if (c < 0 || r < 0 || c >= N || r >= N) return;
+    const H = get(); read.textContent = `x ${c + X0}, z ${r + Z0}: ground at y ${Math.round(H[r*N+c])}`;
+  };
+  canvas.addEventListener("pointermove", show);
+  canvas.addEventListener("pointerdown", show);
+}
+
+function rampCanvas(f, lo, hi, stops, size = 300){
+  const cv = document.createElement("canvas"); cv.width = cv.height = size;
+  const ctx = cv.getContext("2d"), img = ctx.createImageData(size, size), s = size / N;
+  for (let r = 0; r < size; r++) for (let c = 0; c < size; c++){
+    const v = f[Math.floor(r / s) * N + Math.floor(c / s)];
+    const t = Math.max(0, Math.min(1, (v - lo) / (hi - lo))) * (stops.length - 1), i = Math.min(stops.length - 2, Math.floor(t)), u = t - i;
+    const o = (r * size + c) * 4;
+    for (let j = 0; j < 3; j++) img.data[o+j] = stops[i][j] + (stops[i+1][j] - stops[i][j]) * u;
+    img.data[o+3] = 255;
+  }
+  ctx.putImageData(img, 0, 0); return cv;
+}
+const DIVERGE = [[40,80,150],[110,150,200],[244,240,232],[214,150,90],[150,70,40]];
+const SEQ = [[244,240,232],[226,170,196],[180,67,108],[90,30,60]];
+
+const STEPS = [
+  ["ground", "The plain", "Rolling ground for the volcano to stand on: 10 blocks, plus 14 of noise that changes every 90 blocks, plus 3 of smaller knolls 25 blocks across. Everything after this lifts or cuts it.",
+   "H = 10 + 14 * (0.5 + 0.5 * fbm(cell=90)) + 3 * fbm(cell=25)"],
+  ["cone", "The cone", "A concave cone 108 blocks high over a 145-block radius, measured with the bent ruler, so its foot is lumpy from the start. smooth_max grows it out of the plain over a 16-block seam, which is why there is no edge where the cone meets the ground.",
+   "d0 = r_at(Xw, Zw, (0, 0), stretch=0.9, angle=30)\nbody = 12 + 108 * clip(1 - d0 / 145, 0, 1) ** 1.35\nH = smooth_max(H, body, k=16)"],
+  ["gullies", "Gullies", "30 grooves run down the flank between 70 and 135 blocks out. Each groove is a narrow peak of a sine wave around the cone. Its phase is pushed about by noise, so the grooves wander instead of running straight, and a second noise gives each its own depth, up to 6 blocks.",
+   "phi = theta * 30 / (2 pi) + 0.9 * fbm(cell=50)\ngroove = (1 - |sin(pi * phi)|) ** 3 * (0.55 + 0.45 * fbm(cell=25))\nbody -= 6 * groove * fade(70, 135)"],
+  ["notch", "The rim's notch", "One side of the rim is dropped by up to 14 blocks: a bell curve around one angle, faded in and out by distance so only the rim dips. On a lake map this is where the water would spill.",
+   "H -= 14 * exp(-((theta - 2.3) / 0.25) ** 2) * smoothstep(80, 55, d0) * smoothstep(30, 55, d0)"],
+  ["caldera", "The caldera", "The whole wall in one cut: a cross-section by distance with two cliffs and a bench between them. Distance, cliff width, edge jag and floor height are all noise fields, so the same cross-section stretches differently in every column. It only cuts.",
+   "H = profile(H, dc, floor=30, floor_ground=floor,\n            steps=[Step(42, 42 + width, 58), Step(52 + 0.6 * width, 58 + width, 'ground')],\n            jag=jag, talus=(6, 9), mode='cut')"],
+  ["slumps", "Slump blocks", "26 tries at a fallen block, each a small mound 3 to 8 blocks wide and 3 to 8 high, turned at random. Any that land outside the ring between 30 and 48 blocks out are skipped, so they only lie at the foot of the wall.",
+   "for each of 26: e = ellipse_distance(..) + 0.25 * fbm(cell=4)\n  H = mound(H, e, rise, power=1.8)    # where 30 < dc < 48"],
+  ["island", "The island", "A young cone 26 blocks high and 17 across, off centre and squashed to an ellipse, grown out of the floor with a 4-block foot. Its distance is measured with the same bent ruler.",
+   "ir = r_at(Xw, Zw, (-18, 14), 0.75, 70)\nH = smooth_max(H, where(ir < 17, 30 + 26 * clip(1 - ir / 17) ** 0.95, -inf), 4)"],
+  ["crater", "The island's crater", "A 4-block crater cut 5 blocks below the island's rim, its lip rounded with smooth_min.",
+   "H = crater_in(H, ir, depth=5, r=4, flat=1, slope=1.3, k=2)"],
+];
+
+(async () => {
+  document.getElementById("iso-on").src = DATA.iso_on;
+  document.getElementById("iso-off").src = DATA.iso_off;
+
+  /* octaves */
+  const oct = await Promise.all(DATA.octaves.map(field));
+  const octBox = document.getElementById("octaves");
+  const names = ["90 blocks · ×1", "45 blocks · ×½", "22 blocks · ×¼", "11 blocks · ×⅛", "the sum"];
+  oct.forEach((f, i) => {
+    const fig = document.createElement("figure"), fr = document.createElement("div"); fr.className = "frame";
+    const lim = i < 4 ? Math.pow(0.5, i) : 1;
+    fr.append(rampCanvas(f.map(v => v * (i < 4 ? 1 : 1)), -1, 1, DIVERGE, 150));
+    const cap = document.createElement("figcaption"); cap.textContent = names[i];
+    fig.append(fr, cap); octBox.append(fig);
+  });
+  document.getElementById("div-bar").style.background = `linear-gradient(90deg, ${DIVERGE.map(c => `rgb(${c})`).join(",")})`;
+
+  /* the bent ruler */
+  const wf = await Promise.all(DATA.warp.map(field));
+  const warpCv = document.getElementById("warp-map");
+  const cosA = Math.cos(30 * Math.PI / 180), sinA = Math.sin(30 * Math.PI / 180);
+  function drawWarp(){
+    const a = +document.getElementById("w-big").value, b = +document.getElementById("w-small").value;
+    document.getElementById("o-big").textContent = a; document.getElementById("o-small").textContent = b;
+    const H = new Float32Array(N*N), D = new Float32Array(N*N);
+    for (let r = 0; r < N; r++) for (let c = 0; c < N; c++){
+      const i = r*N + c, x = c + X0 + a * wf[0][i] + b * wf[2][i], z = r + Z0 + a * wf[1][i] + b * wf[3][i];
+      const dx = x * cosA + z * sinA, dz = -x * sinA + z * cosA, d = Math.hypot(dx, dz / 0.9);
+      D[i] = d; H[i] = 12 + 108 * Math.pow(Math.max(0, 1 - d / 145), 1.35);
+    }
+    drawMap(warpCv, H, { rings: D, step: 4 });
+  }
+  const setW = (a, b) => { document.getElementById("w-big").value = a; document.getElementById("w-small").value = b; drawWarp(); };
+  document.getElementById("w-big").addEventListener("input", drawWarp);
+  document.getElementById("w-small").addEventListener("input", drawWarp);
+  document.getElementById("w-zero").onclick = () => setW(0, 0);
+  document.getElementById("w-study").onclick = () => setW(12, 4);
+  document.getElementById("w-wild").onclick = () => setW(30, 10);
+  drawWarp();
+
+  /* what the code wrote */
+  const ovImg = document.getElementById("ov-img");
+  const setOv = which => {
+    ovImg.src = OVERLAY[which];
+    document.getElementById("ov-written").setAttribute("aria-pressed", which === "written");
+    document.getElementById("ov-measured").setAttribute("aria-pressed", which === "measured");
+  };
+  document.getElementById("ov-written").onclick = () => setOv("written");
+  document.getElementById("ov-measured").onclick = () => setOv("measured");
+  document.getElementById("ov-placed").textContent = OVERLAY.placed;
+  setOv("measured");
+
+  /* the build */
+  const steps = await Promise.all(DATA.steps.map(s => heights(s.h)));
+  const nav = document.getElementById("steps"), stMap = document.getElementById("st-map"), stSec = document.getElementById("st-sec");
+  let cur = 0;
+  STEPS.forEach((st, i) => {
+    const b = document.createElement("button"); b.type = "button";
+    b.innerHTML = `<span class="n">${i + 1}</span><span>${st[1]}</span>`;
+    b.onclick = () => show(i); nav.append(b);
+  });
+  function show(i){
+    cur = i; const H = steps[i], prev = i ? steps[i-1] : null;
+    let changed = null, n = N * N;
+    if (prev){ changed = new Uint8Array(N*N); n = 0; for (let j = 0; j < N*N; j++) if (Math.abs(H[j] - prev[j]) > 0.4){ changed[j] = 1; n++; } }
+    drawMap(stMap, H, { changed });
+    drawSection(stSec, H, prev);
+    document.getElementById("st-title").textContent = STEPS[i][1];
+    document.getElementById("st-count").textContent = (prev ? n.toLocaleString("en") + " columns changed" : "every column");
+    document.getElementById("st-text").textContent = STEPS[i][2];
+    document.getElementById("st-code").textContent = STEPS[i][3];
+    document.getElementById("st-pos").textContent = `step ${i + 1} of ${STEPS.length}`;
+    [...nav.children].forEach((b, j) => b.setAttribute("aria-current", j === i ? "true" : "false"));
+  }
+  document.getElementById("st-prev").onclick = () => show(Math.max(0, cur - 1));
+  document.getElementById("st-next").onclick = () => show(Math.min(STEPS.length - 1, cur + 1));
+  hover(stMap, document.getElementById("st-read"), () => steps[cur]);
+  show(STEPS.length - 1);
+
+  /* the toggles */
+  const keys = ["warp", "gully", "notch", "wall", "floor"], combos = {}, full = steps[steps.length - 1];
+  await Promise.all(Object.entries(DATA.combos).map(async ([k, v]) => { combos[k] = await heights(v); }));
+  const tgMap = document.getElementById("tg-map"), tgSec = document.getElementById("tg-sec");
+  let tgH = full;
+  function drawToggles(){
+    const key = keys.map(k => document.getElementById("t-" + k).checked ? "1" : "0").join("");
+    tgH = combos[key];
+    const changed = new Uint8Array(N*N); let any = false;
+    for (let j = 0; j < N*N; j++) if (Math.abs(tgH[j] - full[j]) > 0.4){ changed[j] = 1; any = true; }
+    drawMap(tgMap, tgH, { changed: any ? changed : null });
+    drawSection(tgSec, tgH, any ? full : null);
+  }
+  keys.forEach(k => document.getElementById("t-" + k).addEventListener("change", drawToggles));
+  document.getElementById("t-all").onclick = () => { keys.forEach(k => document.getElementById("t-" + k).checked = true); drawToggles(); };
+  document.getElementById("t-none").onclick = () => { keys.forEach(k => document.getElementById("t-" + k).checked = false); drawToggles(); };
+  hover(tgMap, document.getElementById("tg-read"), () => tgH);
+  drawToggles();
+
+  /* eight radial sections */
+  const rad = document.getElementById("radial"), rctx = rad.getContext("2d");
+  const DIRS = [["east", 0], ["south-east", 45], ["south", 90], ["south-west", 135], ["west", 180], ["north-west", 225], ["north", 270], ["north-east", 315]];
+  const COLS = ["#c0392b", "#d68910", "#b7950b", "#239b56", "#138d90", "#2e86c1", "#7d3c98", "#b4436c"];
+  function drawRadial(){
+    const W = rad.width, Hh = rad.height, reach = 110, sx = (W - 60) / reach, sy = 5, base = Hh - 30;
+    rctx.clearRect(0, 0, W, Hh);
+    rctx.font = "18px " + css("--f-mono"); rctx.strokeStyle = css("--line"); rctx.fillStyle = css("--mute");
+    for (let lv = 20; lv <= 70; lv += 10){ const yy = base - (lv - 10) * sy; rctx.beginPath(); rctx.moveTo(50, yy); rctx.lineTo(W, yy); rctx.stroke(); rctx.fillText(lv, 6, yy + 6); }
+    for (let t = 0; t <= reach; t += 20){ const xx = 50 + t * sx; rctx.fillText(t, xx - 8, Hh - 6); }
+    DIRS.forEach(([name, deg], k) => {
+      const a = deg * Math.PI / 180; rctx.beginPath();
+      for (let t = 0; t <= reach; t += 0.5){
+        const c = Math.round(-X0 + t * Math.cos(a)), r = Math.round(-Z0 + t * Math.sin(a));
+        const h = full[r * N + c], xx = 50 + t * sx, yy = base - (h - 10) * sy;
+        t ? rctx.lineTo(xx, yy) : rctx.moveTo(xx, yy);
+      }
+      rctx.strokeStyle = COLS[k]; rctx.lineWidth = 2.5; rctx.stroke();
+    });
+    const cap = document.getElementById("radial-cap");
+    cap.innerHTML = "Sections from the centre outward, height against blocks from the centre, vertical scale ×2.5. " +
+      DIRS.map(([n], k) => `<span style="color:${COLS[k]};font-weight:600">${n}</span>`).join(" · ") +
+      ". Where the lines spread apart, the wall is different there.";
+  }
+  drawRadial();
+
+  /* the fields that feed the wall */
+  const FIELDS = [["width", "cliff width", 6, 12, "6 blocks (pale, near-sheer) to 12 (dark, a steep slope)"],
+                  ["jag", "edge jag", -3, 3, "−3 to +3 blocks: where each cliff starts and ends"],
+                  ["floor", "floor height", 26, 34, "y 26 to 34: the caldera floor's own relief"],
+                  ["gullies", "gully depth", 0, 6, "0 to 6 blocks cut from the outer flank"]];
+  const fbox = document.getElementById("fields");
+  for (const [key, title, lo, hi, cap] of FIELDS){
+    const raw = await bytes(DATA.fields[key]); const f = new Float32Array(raw.length);
+    for (let j = 0; j < raw.length; j++) f[j] = lo + raw[j] / 255 * (hi - lo);
+    const fig = document.createElement("figure"), fr = document.createElement("div"); fr.className = "frame";
+    fr.append(key === "jag" ? rampCanvas(f, lo, hi, DIVERGE) : rampCanvas(f, lo, hi, SEQ));
+    const fc = document.createElement("figcaption"); fc.innerHTML = `<b>${title}</b> · ${cap}`;
+    fig.append(fr, fc); fbox.append(fig);
+  }
+
+  const redraw = () => { drawSection(stSec, steps[cur], cur ? steps[cur-1] : null); drawToggles(); drawRadial(); };
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redraw);
+  new MutationObserver(redraw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+})();
+</script>

@@ -11,6 +11,9 @@ the boards built on the library and the two library rebuilds of finished ones (`
 `lantern-karst-pgmvox`) sit side by side, each with its `scripts/`, `renders/` and notes; `examples/` holds the small
 boards that teach the library. `check.py` builds every folder with a `scripts/gen.py` and holds it to its hash.
 
+**`studies/` holds sheets of forms, not boards.** Volcanoes, winter ice, water, their combinations and dungeon
+plans, each with the renders the author judged; `studies/README.md` says what each kept.
+
 ## What is in it
 
 **pgmvox is thirteen packages, each one kind of thing.** `core` is what every other stands on, `geom` and `ground`
