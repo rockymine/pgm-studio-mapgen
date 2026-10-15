@@ -282,6 +282,11 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `other/parts` | `freeform/lib/examples/parts` | `freeform/lib/examples/parts` |
 | `other/sculpture_gallery` | `sculpture-gallery` | — |
 | `other/spikes` | `freeform/lib/examples/spikes` | `freeform/lib/examples/spikes` |
+| `other/studies_combinations` | `freeform/lib/studies/combinations` | `freeform/lib/studies/combinations` |
+| `other/studies_dungeons` | `freeform/lib/studies/dungeons` | `freeform/lib/studies/dungeons` |
+| `other/studies_volcanoes` | `freeform/lib/studies/volcanoes` | `freeform/lib/studies/volcanoes` |
+| `other/studies_water` | `freeform/lib/studies/water` | `freeform/lib/studies/water` |
+| `other/studies_winter` | `freeform/lib/studies/winter` | `freeform/lib/studies/winter` |
 | `other/vale` | `freeform/lib/examples/vale` | `freeform/lib/examples/vale` |
 | `tdm/overgrowth` | `freeform/lib/boards/overgrowth` | `freeform/lib/boards/overgrowth` |
 | `tdm/penstock` | `freeform/lib/boards/penstock` | `freeform/lib/boards/penstock` |

@@ -1,13 +1,20 @@
 # Studies
 
 **A study is a sheet of forms, not a board.** Each folder here renders shapes built from pgmvox to see what a kind
-of ground can look like before a board uses it: no spawns, no objectives, no map.xml. `check.py` does not build
+of ground can look like before a board uses it: no teams, no objectives, no map.xml. `check.py` does not build
 them, because nothing in them is held to a hash.
 
 **Each study keeps its scripts and the renders the author judged.** `scripts/` writes into `renders/`, one round per
 folder where a study went round twice, and every script runs from its own folder:
 
     cd studies/volcanoes/scripts && python3 round2.py [name ...]
+
+**Every study is also a world to walk round.** `worlds.py` builds each form the way its study does and lays a
+subject's forms side by side, 40 blocks apart, six to a row, a round to a band of rows, with a sign at each form. It
+writes five worlds to `maps/other/`: `studies_volcanoes`, `studies_winter`, `studies_combinations`, `studies_water`
+and `studies_dungeons`, each a `level.dat` and `region/` with no map.xml:
+
+    python3 studies/worlds.py [volcanoes winter combinations water dungeons]
 
 **A round is kept even when the next one replaced it.** The first round is what the author's notes in the table
 below were written against, and the second cannot be read without it.
