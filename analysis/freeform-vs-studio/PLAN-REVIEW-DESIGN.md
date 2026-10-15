@@ -40,10 +40,11 @@ only be used once there is a world to look at.
 
 ## 2. The design: a document the levels are measured against
 
-**The plan of places is a fifth document beside the four levels, not a level of its own.** The four levels are
-grains of one map, and each one compiles into the next. A plan of places compiles into nothing. It states what
-the map is *for*, and every level is read against it: the box plan, the sketch and the world are each asked
-whether they still do what the places say.
+**The plan of places is the sketch's annotation layer, and the sketch is the map's one document.** The author
+ruled that the box plan stops being a level (`pgm-studio/docs/pgmvox-port.md`, D8): the play pieces become
+sketch objects that write the intent, and the generator emits a sketch. The places compile into nothing. They
+state what the map is *for*, drawn over the ground with the sketch's own tools on a layer that makes no terrain,
+and the sketch and the world are each asked whether they still do what the places say.
 
 **It is stored per map, as `design_json`, and changed by the same numbered changes as the other documents.**
 That gives it diff and restore for free. Its versions are the map's changes that touched it, each with the
@@ -97,15 +98,16 @@ example.
 }
 ```
 
-**A place's geometry is loose by design, and binds to the levels when they exist.** `at` is a point, a box or a
-ring in blocks, and that is all an agent knows before a plan is drawn. Once a box plan or a sketch exists, a
-place may name what realises it: `"binds": {"pieces": ["plateau"], "shapes": ["sh-12"], "objective":
-"destroyable-1"}`. A bound place is drawn from its pieces and shapes, and an unbound one from its own `at`.
+**A place's geometry is its own, and it links to play rather than to shapes.** `at` is a point, a box, a ring or
+a line in blocks, and it is always drawn from that. A place may name the intent object it holds, as Monument A
+names `destroyable-1` above, so the review can say an objective stands outside its place. It never names the
+shapes that realise it: a shape is stretched and redrawn as the ground is worked, and a link to it is a second
+record of the geometry that goes stale.
 
 **A target is a measurement request, never a number the agent writes.** The agent states *what* to measure and
-*what it should be*. The studio measures it on the best level that exists: the compiled plan's cells, the
-sketch's ground, or the built world. A target's row therefore carries up to three readings, and the review
-sees a number move from plan to build.
+*what it should be*. The studio measures it on the sketch's rasterized ground, which needs no world, and again on
+the built world, so a target's row carries two readings and the review sees a number move from sketch to build.
+Plan cells are never measured: a walk over them is the reading that misled runs before.
 
 **The measures are the studio's own reads, named once.** `walk` and `ratio` are the GO rules' walk; `cover`,
 `climb` and `reach` are the `column`, `walk` and `reach` reads; a `section` is `transect`. `sight` is the one
@@ -134,7 +136,7 @@ they never wrote.
 ## 4. What the sheet shows
 
 **The review sheet is one page: the map, the places on it, and three tabs beside it.** The map is whatever
-exists, drawn underneath: the agent's height raster for a freeform plan, the box plan's cells, the sketch's
+exists, drawn underneath: the agent's height raster for a freeform plan, the sketch's
 shapes or the eye top-down. Over it go the places with their labels, the roads, the attackers' walks, the
 storey below, and the section lines, each a layer the author can toggle.
 
@@ -167,14 +169,13 @@ caller stores everything in one call.
 
 ## 6. The model's loop
 
-1. The agent writes the design (identity, places, routes, targets, sections, look) together with the ground it
-   stands on: a sketch layout with its relief, or a box plan with its surfaces. Nothing is voxelized yet.
+1. The agent writes the design (identity, places, routes, targets, sections, look), then the ground it stands on:
+   the sketch's land shapes and relief in one pass, and its play pieces. Nothing is voxelized yet.
 2. The studio measures the targets on that ground and draws the sheet over it.
 3. The author reads the sheet, writes notes on places, routes and rows, and sets `changes` or `approved`.
 4. The agent reads the notes through the hand-off, answers each one, revises the design and the ground with a
    `because`, and stores the next version.
-5. On `approved`, the agent builds the world: the finish, the houses, the dressing. Each place is bound to the
-   pieces and shapes that realise it.
+5. On `approved`, the agent builds the world: the finish, the houses, the dressing.
 6. The targets are re-measured on the built world, and the in-game notes arrive tagged with their places.
 
 **The plan is reviewed over its real ground, because that is what made the freeform plan worth reading.** In
@@ -188,16 +189,20 @@ review, never the relief.
 without building a world. What the studio lacks is the names, reasons and targets beside it, and a sheet that
 draws them over it before the build.
 
-**Every route into a map keeps working.** A box plan drawn by hand needs no design. A generated board can get
-one written over it. An uploaded world can be given a design afterwards, to review the map as it is played: the
+**Every route into a map keeps a design.** A sketch drawn by hand needs none. A generated board, which arrives as a
+sketch, can get one written over it. An uploaded world can be given a design afterwards, to review the map as it is played: the
 places are drawn on the eye top-down and the targets measured on the scanned ground.
 
 ## 7. Order of work
 
+The order is Phase 1's in `pgm-studio/docs/pgmvox-port.md`, which puts the play pieces in the sketch first; the
+design's own steps within it are these.
+
 1. `design_json`, its `PUT` and `GET`, inside `source`, with diff. No measuring yet.
-2. The sheet in the client as a read-only tab, drawing places, routes and sections over whatever level exists.
+2. The places layer in Sketch, and the sheet as its read-only view, drawing places, routes and sections over the
+   sketch's ground.
 3. The plan note anchors and the verdict.
-4. Targets measured on the compiled plan, then on the built world. `sight` is the new read.
+4. Targets measured on the sketch's ground, then on the built world. `sight` is the new read.
 5. In-game notes tagged with their place.
 6. Recipe steps naming the places they build, so the inspector can show one place's steps
    (`STUDIO-2-DESIGN.md` §5).
