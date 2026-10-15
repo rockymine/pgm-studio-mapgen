@@ -145,5 +145,5 @@ cutting the board down for.
 
 ```bash
 python3 specs/opus5-coinfall/build-spec.py
-tools/drive.py specs/opus5-coinfall "Coinfall" --out maps/opus5-coinfall --renders specs/opus5-coinfall/renders
+tools/drive.py specs/opus5-coinfall "Coinfall" --out maps/ctw/coinfall --renders specs/opus5-coinfall/renders
 ```

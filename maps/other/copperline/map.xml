@@ -1,0 +1,182 @@
+<map proto="1.5.0">
+    <name>Copperline</name>
+    <version>1.0.0</version>
+    <objective>Attackers push the ore cart up the line to the mine in three legs; defenders stop it until the clock runs out.</objective>
+    <gamemode>payload</gamemode>
+    <authors>
+        <author>Claude (freeform generator)</author>
+    </authors>
+    <kits>
+        <kit id="spawn-kit">
+            <clear/>
+            <item slot="0" material="stone sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true"/>
+            <item slot="2" material="golden apple"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="iron boots" unbreakable="true"/>
+            <effect duration="3s" amplifier="255">resistance</effect>
+            <game-mode>adventure</game-mode>
+        </kit>
+        <kit id="attacker-kit" parents="spawn-kit">
+            <item slot="8" material="arrow" amount="20"/>
+        </kit>
+        <kit id="defender-kit" parents="spawn-kit">
+            <item slot="8" material="arrow" amount="16"/>
+        </kit>
+    </kits>
+    <teams>
+        <team id="attackers" color="dark red" max="12">Attackers</team>
+        <team id="defenders" color="blue" max="12">Defenders</team>
+    </teams>
+    <filters>
+        <team id="only-attackers">attackers</team>
+        <not id="not-attackers">
+            <team>attackers</team>
+        </not>
+        <team id="only-defenders">defenders</team>
+        <not id="not-defenders">
+            <team>defenders</team>
+        </not>
+        <after duration="20s" id="warmup-over">
+            <match-started/>
+        </after>
+        <completed id="a-done">checkpoint-a</completed>
+        <completed id="b-done">checkpoint-b</completed>
+        <not id="first-leg">
+            <filter id="a-done"/>
+        </not>
+        <all id="second-leg">
+            <filter id="a-done"/>
+            <not>
+                <filter id="b-done"/>
+            </not>
+        </all>
+        <all id="third-leg">
+            <filter id="a-done"/>
+            <filter id="b-done"/>
+        </all>
+    </filters>
+    <spawns>
+        <default yaw="180">
+            <region>
+                <point>0.5,70,20.5</point>
+            </region>
+        </default>
+        <spawn team="attackers" kit="attacker-kit" filter="first-leg" yaw="90">
+            <region>
+                <cuboid min="20,25,60" max="33,26,63"/>
+            </region>
+        </spawn>
+        <spawn team="attackers" kit="attacker-kit" filter="second-leg" yaw="-90">
+            <region>
+                <cuboid min="-30,27,16" max="-23,28,25"/>
+            </region>
+        </spawn>
+        <spawn team="attackers" kit="attacker-kit" filter="third-leg" yaw="90">
+            <region>
+                <cuboid min="24,29,-32" max="31,30,-27"/>
+            </region>
+        </spawn>
+        <spawn team="defenders" kit="defender-kit" filter="first-leg" yaw="90">
+            <region>
+                <cuboid min="30,27,2" max="39,28,11"/>
+            </region>
+        </spawn>
+        <spawn team="defenders" kit="defender-kit" filter="second-leg" yaw="90">
+            <region>
+                <cuboid min="38,29,-32" max="47,30,-25"/>
+            </region>
+        </spawn>
+        <spawn team="defenders" kit="defender-kit" filter="third-leg" yaw="0">
+            <region>
+                <cuboid min="-2,37,-69" max="7,38,-60"/>
+            </region>
+        </spawn>
+    </spawns>
+    <regions>
+        <union id="attackers-rooms">
+            <cuboid min="18,0,58" max="35,256,69"/>
+            <cuboid min="-32,0,14" max="-21,256,27"/>
+            <cuboid min="22,0,-34" max="33,256,-25"/>
+        </union>
+        <apply enter="only-attackers" region="attackers-rooms" message="You may not enter the attackers' spawn!"/>
+        <union id="defenders-rooms">
+            <cuboid min="28,0,0" max="41,256,13"/>
+            <cuboid min="36,0,-34" max="49,256,-23"/>
+            <cuboid min="-4,0,-71" max="9,256,-58"/>
+        </union>
+        <apply enter="only-defenders" region="defenders-rooms" message="You may not enter the defenders' spawn!"/>
+        <cuboid min="18,25,61" max="19,29,66" id="fill-1"/>
+        <cuboid min="-22,27,18" max="-21,31,23" id="fill-2"/>
+        <cuboid min="22,29,-32" max="23,33,-27" id="fill-3"/>
+        <apply block="never" use="never"/>
+    </regions>
+    <payloads permanent="true" radius="3.5" capture-filter="only-attackers" capture-time="60s" decay-rate="0.1" recovery-rate="0.5" contested-rate="0" time-multiplier="0.1">
+        <payload id="checkpoint-a" name="Main Street" location="8,25,66" display-filter="first-leg"/>
+        <payload id="checkpoint-b" name="the Gorge" location="-12,27,12" player-filter="a-done" display-filter="second-leg"/>
+        <payload id="checkpoint-c" name="the Mine Head" location="16,29,-26" player-filter="b-done" display-filter="third-leg"/>
+    </payloads>
+    <actions>
+        <trigger filter="warmup-over" scope="match">
+            <action>
+                <fill region="fill-1" material="air"/>
+            </action>
+        </trigger>
+        <trigger filter="a-done" scope="match">
+            <action>
+                <fill region="fill-2" material="air"/>
+                <message text="`6The cart is at the station. `fSpawns move up the line."/>
+            </action>
+        </trigger>
+        <trigger filter="b-done" scope="match">
+            <action>
+                <fill region="fill-3" material="air"/>
+                <message text="`6The cart is over the gorge. `fSpawns move up the line."/>
+            </action>
+        </trigger>
+    </actions>
+    <time result="defenders">12m</time>
+    <broadcasts>
+        <alert after="2s" filter="only-attackers">Push the ore cart up the line to the mine. The shed opens in 20s.</alert>
+        <alert after="2s" filter="only-defenders">Stop the ore cart before it reaches the mine. Stand by it to hold it still.</alert>
+    </broadcasts>
+    <respawns>
+        <respawn delay="5s" filter="only-attackers"/>
+        <respawn delay="7s" filter="only-defenders"/>
+    </respawns>
+    <itemkeep>
+        <item>stone sword</item>
+        <item>bow</item>
+        <item>golden apple</item>
+        <item>arrow</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>chainmail leggings</item>
+        <item>iron boots</item>
+        <item>flint</item>
+        <item>gravel</item>
+        <item>sapling</item>
+        <item>apple</item>
+        <item>string</item>
+        <item>seeds</item>
+        <item>long grass</item>
+        <item>red rose</item>
+    </itemremove>
+    <toolrepair>
+        <tool>stone sword</tool>
+        <tool>bow</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="arrow" amount="4"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+</map>
+

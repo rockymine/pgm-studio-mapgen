@@ -15,7 +15,7 @@ with the ground they stood in and its terrain was flat; the brief for this one w
   taken out;
 - a small oak wood and a small birch wood, and paths.
 
-`maps/opus5-cairnmeadow`, `specs/opus5-cairnmeadow/`, `review/opus5-cairnmeadow.md`.
+`maps/dtcm/cairnmeadow`, `specs/opus5-cairnmeadow/`, `review/opus5-cairnmeadow.md`.
 
 ## What worked first time
 

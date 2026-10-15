@@ -1,0 +1,5804 @@
+{
+ "total_nonair": 1007266,
+ "x0": -120,
+ "z0": -88,
+ "shape": [
+  240,
+  128,
+  176
+ ],
+ "labels": [
+  {
+   "l1": "terrain.write_land",
+   "l2": null,
+   "marker": null,
+   "final_total": 925382,
+   "final_red": 462691,
+   "final_blue": 462691,
+   "stats": {
+    "diff_created": 479647,
+    "diff_removed": 0,
+    "diff_replaced": 0
+   },
+   "bbox_red": [
+    -120,
+    2,
+    -88,
+    -11,
+    84,
+    87
+   ],
+   "top_blocks": [
+    [
+     "STONE",
+     0,
+     321145
+    ],
+    [
+     "STONE",
+     5,
+     88753
+    ],
+    [
+     "DIRT",
+     0,
+     25582
+    ],
+    [
+     "DIRT",
+     1,
+     13766
+    ],
+    [
+     "GRASS",
+     0,
+     10257
+    ],
+    [
+     "WATER",
+     0,
+     2259
+    ]
+   ],
+   "top_ids": [
+    [
+     "STONE",
+     409898
+    ],
+    [
+     "DIRT",
+     39368
+    ],
+    [
+     "GRASS",
+     10257
+    ],
+    [
+     "WATER",
+     2259
+    ],
+    [
+     "SAND",
+     291
+    ],
+    [
+     "GRAVEL",
+     260
+    ]
+   ],
+   "exposed": 88026
+  },
+  {
+   "l1": "terrain.write_falls",
+   "l2": null,
+   "marker": null,
+   "final_total": 754,
+   "final_red": 377,
+   "final_blue": 377,
+   "stats": {
+    "reads": 380,
+    "set_calls": 380
+   },
+   "bbox_red": [
+    -11,
+    8,
+    -3,
+    -10,
+    45,
+    3
+   ],
+   "top_blocks": [
+    [
+     "WATER_FLOW",
+     8,
+     377
+    ]
+   ],
+   "top_ids": [
+    [
+     "WATER_FLOW",
+     377
+    ]
+   ],
+   "exposed": 650
+  },
+  {
+   "l1": "underground.build",
+   "l2": "carve_tube[gallery]",
+   "marker": null,
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 10477,
+    "set_calls": 10242,
+    "set_removed": 1010
+   },
+   "exposed": 0
+  },
+  {
+   "l1": "underground.build",
+   "l2": "carve_tube[south]",
+   "marker": null,
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 5104,
+    "set_calls": 5104,
+    "set_removed": 576
+   },
+   "exposed": 0
+  },
+  {
+   "l1": "underground.build",
+   "l2": "carve_tube[north]",
+   "marker": null,
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 6824,
+    "set_calls": 6824,
+    "set_removed": 757
+   },
+   "exposed": 0
+  },
+  {
+   "l1": "underground.build",
+   "l2": "carve_tube[grotto]",
+   "marker": null,
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 1215,
+    "set_calls": 1215,
+    "set_removed": 150
+   },
+   "exposed": 0
+  },
+  {
+   "l1": "underground.build",
+   "l2": "carve_tube[west]",
+   "marker": null,
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 817,
+    "set_calls": 817,
+    "set_removed": 77
+   },
+   "exposed": 0
+  },
+  {
+   "l1": "underground.build",
+   "l2": "pillar_hall",
+   "marker": null,
+   "final_total": 98,
+   "final_red": 49,
+   "final_blue": 49,
+   "stats": {
+    "reads": 1403,
+    "set_calls": 1360,
+    "set_removed": 751
+   },
+   "bbox_red": [
+    -50,
+    34,
+    21,
+    -44,
+    40,
+    31
+   ],
+   "top_blocks": [
+    [
+     "STONE",
+     5,
+     32
+    ],
+    [
+     "STONE",
+     0,
+     17
+    ]
+   ],
+   "top_ids": [
+    [
+     "STONE",
+     49
+    ]
+   ],
+   "exposed": 98
+  },
+  {
+   "l1": "underground.build",
+   "l2": "alcoves",
+   "marker": null,
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 196,
+    "set_calls": 196,
+    "set_removed": 139
+   },
+   "exposed": 0
+  },
+  {
+   "l1": "underground.build",
+   "l2": "carve_ellipsoid[lake chamber]",
+   "marker": null,
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 1948,
+    "set_calls": 1948,
+    "set_removed": 889
+   },
+   "exposed": 0
+  },
+  {
+   "l1": "underground.build",
+   "l2": "dress_cave",
+   "marker": null,
+   "final_total": 1928,
+   "final_red": 964,
+   "final_blue": 964,
+   "stats": {
+    "set_calls": 1023,
+    "set_replaced": 901,
+    "reads": 1271
+   },
+   "bbox_red": [
+    -59,
+    25,
+    -29,
+    -11,
+    44,
+    44
+   ],
+   "top_blocks": [
+    [
+     "GRAVEL",
+     0,
+     370
+    ],
+    [
+     "STONE",
+     5,
+     214
+    ],
+    [
+     "COBBLE",
+     0,
+     176
+    ],
+    [
+     "CLAY",
+     0,
+     78
+    ],
+    [
+     "COBBLE_WALL",
+     0,
+     53
+    ],
+    [
+     "STONE",
+     0,
+     53
+    ]
+   ],
+   "top_ids": [
+    [
+     "GRAVEL",
+     370
+    ],
+    [
+     "STONE",
+     267
+    ],
+    [
+     "COBBLE",
+     176
+    ],
+    [
+     "CLAY",
+     78
+    ],
+    [
+     "COBBLE_WALL",
+     53
+    ],
+    [
+     "BROWN_MUSHROOM",
+     7
+    ]
+   ],
+   "exposed": 1820
+  },
+  {
+   "l1": "underground.build",
+   "l2": "stalagmites",
+   "marker": null,
+   "final_total": 4,
+   "final_red": 2,
+   "final_blue": 2,
+   "stats": {
+    "reads": 1053,
+    "set_calls": 4
+   },
+   "bbox_red": [
+    -47,
+    35,
+    8,
+    -18,
+    37,
+    34
+   ],
+   "top_blocks": [
+    [
+     "STONE",
+     5,
+     2
+    ]
+   ],
+   "top_ids": [
+    [
+     "STONE",
+     2
+    ]
+   ],
+   "exposed": 4
+  },
+  {
+   "l1": "underground.build",
+   "l2": "grotto",
+   "marker": null,
+   "final_total": 10,
+   "final_red": 5,
+   "final_blue": 5,
+   "stats": {
+    "reads": 162,
+    "set_calls": 167,
+    "set_removed": 134,
+    "tiles_chest": 1
+   },
+   "bbox_red": [
+    -62,
+    33,
+    4,
+    -60,
+    34,
+    8
+   ],
+   "top_blocks": [
+    [
+     "WOOD_SLAB",
+     1,
+     2
+    ],
+    [
+     "CHEST",
+     5,
+     1
+    ],
+    [
+     "PLANKS",
+     1,
+     1
+    ],
+    [
+     "TORCH",
+     5,
+     1
+    ]
+   ],
+   "top_ids": [
+    [
+     "WOOD_SLAB",
+     2
+    ],
+    [
+     "CHEST",
+     1
+    ],
+    [
+     "PLANKS",
+     1
+    ],
+    [
+     "TORCH",
+     1
+    ]
+   ],
+   "exposed": 10
+  },
+  {
+   "l1": "underground.build",
+   "l2": "lake",
+   "marker": null,
+   "final_total": 346,
+   "final_red": 173,
+   "final_blue": 173,
+   "stats": {
+    "set_calls": 173,
+    "set_replaced": 39,
+    "reads": 142
+   },
+   "bbox_red": [
+    -45,
+    29,
+    11,
+    -35,
+    31,
+    19
+   ],
+   "top_blocks": [
+    [
+     "WATER",
+     0,
+     102
+    ],
+    [
+     "GRAVEL",
+     0,
+     54
+    ],
+    [
+     "CLAY",
+     0,
+     17
+    ]
+   ],
+   "top_ids": [
+    [
+     "WATER",
+     102
+    ],
+    [
+     "GRAVEL",
+     54
+    ],
+    [
+     "CLAY",
+     17
+    ]
+   ],
+   "exposed": 158
+  },
+  {
+   "l1": "underground.build",
+   "l2": "mouth",
+   "marker": null,
+   "final_total": 56,
+   "final_red": 28,
+   "final_blue": 28,
+   "stats": {
+    "set_calls": 28,
+    "set_replaced": 3,
+    "reads": 27
+   },
+   "bbox_red": [
+    -11,
+    34,
+    1,
+    -10,
+    41,
+    9
+   ],
+   "top_blocks": [
+    [
+     "STONE",
+     0,
+     15
+    ],
+    [
+     "STONE",
+     5,
+     10
+    ],
+    [
+     "VINE",
+     2,
+     3
+    ]
+   ],
+   "top_ids": [
+    [
+     "STONE",
+     25
+    ],
+    [
+     "VINE",
+     3
+    ]
+   ],
+   "exposed": 48
+  },
+  {
+   "l1": "underground.build",
+   "l2": "sinkhole",
+   "marker": null,
+   "final_total": 230,
+   "final_red": 115,
+   "final_blue": 115,
+   "stats": {
+    "set_calls": 1077,
+    "set_removed": 558,
+    "set_replaced": 161,
+    "top_reads": 7,
+    "reads": 7
+   },
+   "bbox_red": [
+    -56,
+    39,
+    34,
+    -44,
+    46,
+    46
+   ],
+   "top_blocks": [
+    [
+     "GRASS",
+     0,
+     33
+    ],
+    [
+     "GRAVEL",
+     0,
+     29
+    ],
+    [
+     "DIRT",
+     1,
+     24
+    ],
+    [
+     "STONE",
+     5,
+     16
+    ],
+    [
+     "COBBLE",
+     0,
+     13
+    ]
+   ],
+   "top_ids": [
+    [
+     "GRASS",
+     33
+    ],
+    [
+     "GRAVEL",
+     29
+    ],
+    [
+     "DIRT",
+     24
+    ],
+    [
+     "STONE",
+     16
+    ],
+    [
+     "COBBLE",
+     13
+    ]
+   ],
+   "exposed": 216
+  },
+  {
+   "l1": "underground.build",
+   "l2": "mine",
+   "marker": null,
+   "final_total": 1250,
+   "final_red": 625,
+   "final_blue": 625,
+   "stats": {
+    "set_calls": 3203,
+    "set_removed": 1043,
+    "set_replaced": 816,
+    "reads": 339,
+    "tiles_chest": 1
+   },
+   "bbox_red": [
+    -106,
+    38,
+    4,
+    -56,
+    62,
+    57
+   ],
+   "top_blocks": [
+    [
+     "STONE",
+     5,
+     118
+    ],
+    [
+     "STONE",
+     0,
+     107
+    ],
+    [
+     "SPRUCE_FENCE",
+     0,
+     69
+    ],
+    [
+     "LOG",
+     1,
+     61
+    ],
+    [
+     "GRAVEL",
+     0,
+     52
+    ],
+    [
+     "GRAVEL",
+     5,
+     42
+    ]
+   ],
+   "top_ids": [
+    [
+     "STONE",
+     225
+    ],
+    [
+     "LOG",
+     122
+    ],
+    [
+     "GRAVEL",
+     94
+    ],
+    [
+     "SPRUCE_FENCE",
+     69
+    ],
+    [
+     "COBBLE_STAIRS",
+     49
+    ],
+    [
+     "RAIL",
+     34
+    ]
+   ],
+   "exposed": 988
+  },
+  {
+   "l1": "underground.build",
+   "l2": "shaft",
+   "marker": null,
+   "final_total": 250,
+   "final_red": 125,
+   "final_blue": 125,
+   "stats": {
+    "set_calls": 223,
+    "set_removed": 52,
+    "set_replaced": 104
+   },
+   "bbox_red": [
+    -86,
+    44,
+    54,
+    -82,
+    53,
+    58
+   ],
+   "top_blocks": [
+    [
+     "PLANKS",
+     1,
+     85
+    ],
+    [
+     "LOG",
+     1,
+     32
+    ],
+    [
+     "LADDER",
+     2,
+     8
+    ]
+   ],
+   "top_ids": [
+    [
+     "PLANKS",
+     85
+    ],
+    [
+     "LOG",
+     32
+    ],
+    [
+     "LADDER",
+     8
+    ]
+   ],
+   "exposed": 190
+  },
+  {
+   "l1": "underground.build",
+   "l2": "cellar",
+   "marker": null,
+   "final_total": 522,
+   "final_red": 261,
+   "final_blue": 261,
+   "stats": {
+    "set_calls": 505,
+    "set_replaced": 277,
+    "set_removed": 173,
+    "tiles_chest": 1
+   },
+   "bbox_red": [
+    -55,
+    42,
+    -37,
+    -46,
+    48,
+    -28
+   ],
+   "top_blocks": [
+    [
+     "STONEBRICK",
+     0,
+     140
+    ],
+    [
+     "STONEBRICK",
+     2,
+     31
+    ],
+    [
+     "STONEBRICK",
+     1,
+     22
+    ],
+    [
+     "IRON_BARS",
+     0,
+     21
+    ],
+    [
+     "GRAVEL",
+     0,
+     15
+    ],
+    [
+     "STONE",
+     5,
+     7
+    ]
+   ],
+   "top_ids": [
+    [
+     "STONEBRICK",
+     193
+    ],
+    [
+     "IRON_BARS",
+     21
+    ],
+    [
+     "STONE",
+     17
+    ],
+    [
+     "GRAVEL",
+     15
+    ],
+    [
+     "IRON_DOOR",
+     6
+    ],
+    [
+     "TORCH",
+     2
+    ]
+   ],
+   "exposed": 274
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "square",
+   "marker": null,
+   "final_total": 694,
+   "final_red": 347,
+   "final_blue": 347,
+   "stats": {
+    "reads": 736,
+    "set_calls": 368,
+    "set_replaced": 368
+   },
+   "bbox_red": [
+    -76,
+    52,
+    -53,
+    -57,
+    52,
+    -35
+   ],
+   "top_blocks": [
+    [
+     "STONE",
+     6,
+     96
+    ],
+    [
+     "STONE",
+     0,
+     85
+    ],
+    [
+     "STONE",
+     5,
+     84
+    ],
+    [
+     "STONEBRICK",
+     0,
+     82
+    ]
+   ],
+   "top_ids": [
+    [
+     "STONE",
+     265
+    ],
+    [
+     "STONEBRICK",
+     82
+    ]
+   ],
+   "exposed": 658
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "town",
+   "marker": "site()",
+   "final_total": 808,
+   "final_red": 404,
+   "final_blue": 404,
+   "stats": {
+    "reads": 2603,
+    "set_calls": 992,
+    "set_removed": 302,
+    "set_replaced": 495
+   },
+   "bbox_red": [
+    -75,
+    48,
+    -81,
+    -16,
+    54,
+    -13
+   ],
+   "top_blocks": [
+    [
+     "GRASS",
+     0,
+     213
+    ],
+    [
+     "DIRT",
+     0,
+     191
+    ]
+   ],
+   "top_ids": [
+    [
+     "GRASS",
+     213
+    ],
+    [
+     "DIRT",
+     191
+    ]
+   ],
+   "exposed": 420
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "town",
+   "marker": "house()",
+   "final_total": 15038,
+   "final_red": 7519,
+   "final_blue": 7519,
+   "stats": {
+    "reads": 1473,
+    "set_calls": 18637,
+    "set_replaced": 1914,
+    "top_reads": 16,
+    "set_removed": 214
+   },
+   "bbox_red": [
+    -75,
+    48,
+    -81,
+    -13,
+    67,
+    -10
+   ],
+   "top_blocks": [
+    [
+     "PLANKS",
+     1,
+     2488
+    ],
+    [
+     "BRICK",
+     0,
+     1104
+    ],
+    [
+     "STAINED_CLAY",
+     0,
+     636
+    ],
+    [
+     "LOG",
+     1,
+     553
+    ],
+    [
+     "DARK_OAK_STAIRS",
+     0,
+     447
+    ],
+    [
+     "DARK_OAK_STAIRS",
+     1,
+     437
+    ]
+   ],
+   "top_ids": [
+    [
+     "PLANKS",
+     2663
+    ],
+    [
+     "DARK_OAK_STAIRS",
+     1498
+    ],
+    [
+     "BRICK",
+     1104
+    ],
+    [
+     "LOG",
+     871
+    ],
+    [
+     "STAINED_CLAY",
+     636
+    ],
+    [
+     "PANE",
+     274
+    ]
+   ],
+   "exposed": 13808
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "town",
+   "marker": "furnish()",
+   "final_total": 614,
+   "final_red": 307,
+   "final_blue": 307,
+   "stats": {
+    "reads": 564,
+    "set_calls": 307
+   },
+   "bbox_red": [
+    -73,
+    49,
+    -79,
+    -15,
+    62,
+    -12
+   ],
+   "top_blocks": [
+    [
+     "CARPET",
+     14,
+     66
+    ],
+    [
+     "TORCH",
+     1,
+     30
+    ],
+    [
+     "TORCH",
+     2,
+     30
+    ],
+    [
+     "PLANKS",
+     5,
+     22
+    ],
+    [
+     "FENCE",
+     0,
+     20
+    ],
+    [
+     "PLATE_WOOD",
+     0,
+     20
+    ]
+   ],
+   "top_ids": [
+    [
+     "CARPET",
+     72
+    ],
+    [
+     "TORCH",
+     60
+    ],
+    [
+     "SPRUCE_STAIRS",
+     44
+    ],
+    [
+     "BED",
+     28
+    ],
+    [
+     "PLANKS",
+     22
+    ],
+    [
+     "FENCE",
+     20
+    ]
+   ],
+   "exposed": 614
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "gaol_stair",
+   "marker": null,
+   "final_total": 38,
+   "final_red": 19,
+   "final_blue": 19,
+   "stats": {
+    "set_calls": 31,
+    "set_removed": 5,
+    "set_replaced": 4
+   },
+   "bbox_red": [
+    -50,
+    43,
+    -36,
+    -50,
+    52,
+    -35
+   ],
+   "top_blocks": [
+    [
+     "LADDER",
+     2,
+     10
+    ],
+    [
+     "STONEBRICK",
+     0,
+     9
+    ]
+   ],
+   "top_ids": [
+    [
+     "LADDER",
+     10
+    ],
+    [
+     "STONEBRICK",
+     9
+    ]
+   ],
+   "exposed": 10
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "chapel",
+   "marker": "site()",
+   "final_total": 304,
+   "final_red": 152,
+   "final_blue": 152,
+   "stats": {
+    "set_calls": 250,
+    "set_replaced": 124,
+    "reads": 341,
+    "set_removed": 31
+   },
+   "bbox_red": [
+    -56,
+    52,
+    -81,
+    -36,
+    55,
+    -69
+   ],
+   "top_blocks": [
+    [
+     "DIRT",
+     0,
+     95
+    ],
+    [
+     "GRASS",
+     0,
+     57
+    ]
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     95
+    ],
+    [
+     "GRASS",
+     57
+    ]
+   ],
+   "exposed": 134
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "chapel",
+   "marker": "house()",
+   "final_total": 1516,
+   "final_red": 758,
+   "final_blue": 758,
+   "stats": {
+    "reads": 164,
+    "set_calls": 2296,
+    "set_replaced": 191,
+    "top_reads": 1,
+    "set_removed": 22
+   },
+   "bbox_red": [
+    -51,
+    55,
+    -81,
+    -37,
+    68,
+    -70
+   ],
+   "top_blocks": [
+    [
+     "STONEBRICK",
+     0,
+     270
+    ],
+    [
+     "PLANKS",
+     5,
+     257
+    ],
+    [
+     "DARK_OAK_STAIRS",
+     3,
+     87
+    ],
+    [
+     "DARK_OAK_STAIRS",
+     2,
+     86
+    ],
+    [
+     "PANE",
+     0,
+     29
+    ],
+    [
+     "STONE",
+     6,
+     24
+    ]
+   ],
+   "top_ids": [
+    [
+     "STONEBRICK",
+     270
+    ],
+    [
+     "PLANKS",
+     257
+    ],
+    [
+     "DARK_OAK_STAIRS",
+     173
+    ],
+    [
+     "PANE",
+     29
+    ],
+    [
+     "STONE",
+     24
+    ],
+    [
+     "LADDER",
+     4
+    ]
+   ],
+   "exposed": 1372
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "chapel",
+   "marker": "furnish()",
+   "final_total": 8,
+   "final_red": 4,
+   "final_blue": 4,
+   "stats": {
+    "reads": 4,
+    "set_calls": 4
+   },
+   "bbox_red": [
+    -49,
+    58,
+    -76,
+    -39,
+    62,
+    -76
+   ],
+   "top_blocks": [
+    [
+     "TORCH",
+     1,
+     2
+    ],
+    [
+     "TORCH",
+     2,
+     2
+    ]
+   ],
+   "top_ids": [
+    [
+     "TORCH",
+     4
+    ]
+   ],
+   "exposed": 8
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "chapel",
+   "marker": null,
+   "final_total": 1084,
+   "final_red": 542,
+   "final_blue": 542,
+   "stats": {
+    "set_calls": 972,
+    "set_removed": 88,
+    "set_replaced": 74
+   },
+   "bbox_red": [
+    -56,
+    55,
+    -80,
+    -40,
+    81,
+    -71
+   ],
+   "top_blocks": [
+    [
+     "STONEBRICK",
+     0,
+     296
+    ],
+    [
+     "PLANKS",
+     5,
+     92
+    ],
+    [
+     "STONE",
+     6,
+     84
+    ],
+    [
+     "PANE",
+     0,
+     30
+    ],
+    [
+     "SPRUCE_STAIRS",
+     0,
+     16
+    ],
+    [
+     "LADDER",
+     3,
+     15
+    ]
+   ],
+   "top_ids": [
+    [
+     "STONEBRICK",
+     296
+    ],
+    [
+     "PLANKS",
+     92
+    ],
+    [
+     "STONE",
+     84
+    ],
+    [
+     "PANE",
+     30
+    ],
+    [
+     "SPRUCE_STAIRS",
+     16
+    ],
+    [
+     "LADDER",
+     15
+    ]
+   ],
+   "exposed": 1040
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "inn_sign",
+   "marker": null,
+   "final_total": 2,
+   "final_red": 1,
+   "final_blue": 1,
+   "stats": {
+    "tiles_sign": 1,
+    "set_calls": 1
+   },
+   "bbox_red": [
+    -34,
+    51,
+    -21,
+    -34,
+    51,
+    -21
+   ],
+   "top_blocks": [
+    [
+     "WALL_SIGN",
+     4,
+     1
+    ]
+   ],
+   "top_ids": [
+    [
+     "WALL_SIGN",
+     1
+    ]
+   ],
+   "exposed": 2
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "village",
+   "marker": "site()",
+   "final_total": 778,
+   "final_red": 389,
+   "final_blue": 389,
+   "stats": {
+    "set_calls": 1150,
+    "set_replaced": 427,
+    "reads": 2342,
+    "set_removed": 499
+   },
+   "bbox_red": [
+    -100,
+    49,
+    37,
+    -70,
+    61,
+    78
+   ],
+   "top_blocks": [
+    [
+     "DIRT",
+     0,
+     195
+    ],
+    [
+     "GRASS",
+     0,
+     182
+    ],
+    [
+     "STONE",
+     0,
+     12
+    ]
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     195
+    ],
+    [
+     "GRASS",
+     182
+    ],
+    [
+     "STONE",
+     12
+    ]
+   ],
+   "exposed": 360
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "village",
+   "marker": "house()",
+   "final_total": 4638,
+   "final_red": 2319,
+   "final_blue": 2319,
+   "stats": {
+    "reads": 562,
+    "set_calls": 5226,
+    "set_replaced": 624,
+    "top_reads": 9,
+    "set_removed": 93
+   },
+   "bbox_red": [
+    -100,
+    51,
+    37,
+    -71,
+    68,
+    77
+   ],
+   "top_blocks": [
+    [
+     "PLANKS",
+     0,
+     746
+    ],
+    [
+     "PLANKS",
+     1,
+     357
+    ],
+    [
+     "COBBLE",
+     0,
+     193
+    ],
+    [
+     "SPRUCE_STAIRS",
+     2,
+     172
+    ],
+    [
+     "SPRUCE_STAIRS",
+     3,
+     160
+    ],
+    [
+     "LOG",
+     1,
+     131
+    ]
+   ],
+   "top_ids": [
+    [
+     "PLANKS",
+     1165
+    ],
+    [
+     "SPRUCE_STAIRS",
+     522
+    ],
+    [
+     "COBBLE",
+     193
+    ],
+    [
+     "LOG",
+     165
+    ],
+    [
+     "STONEBRICK",
+     73
+    ],
+    [
+     "DARK_OAK_STAIRS",
+     69
+    ]
+   ],
+   "exposed": 4084
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "village",
+   "marker": "furnish()",
+   "final_total": 140,
+   "final_red": 70,
+   "final_blue": 70,
+   "stats": {
+    "reads": 119,
+    "set_calls": 70
+   },
+   "bbox_red": [
+    -98,
+    53,
+    39,
+    -73,
+    63,
+    75
+   ],
+   "top_blocks": [
+    [
+     "TORCH",
+     1,
+     11
+    ],
+    [
+     "TORCH",
+     2,
+     11
+    ],
+    [
+     "CARPET",
+     12,
+     9
+    ],
+    [
+     "CRAFTING",
+     0,
+     8
+    ],
+    [
+     "BED",
+     3,
+     5
+    ],
+    [
+     "BED",
+     11,
+     5
+    ]
+   ],
+   "top_ids": [
+    [
+     "TORCH",
+     22
+    ],
+    [
+     "BED",
+     10
+    ],
+    [
+     "CARPET",
+     9
+    ],
+    [
+     "CRAFTING",
+     8
+    ],
+    [
+     "FENCE",
+     5
+    ],
+    [
+     "PLATE_WOOD",
+     5
+    ]
+   ],
+   "exposed": 140
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "village",
+   "marker": null,
+   "final_total": 174,
+   "final_red": 87,
+   "final_blue": 87,
+   "stats": {
+    "set_calls": 103,
+    "set_replaced": 2,
+    "set_removed": 14
+   },
+   "bbox_red": [
+    -75,
+    52,
+    49,
+    -72,
+    69,
+    63
+   ],
+   "top_blocks": [
+    [
+     "BRICK",
+     0,
+     82
+    ],
+    [
+     "FURNACE",
+     4,
+     2
+    ],
+    [
+     "ANVIL",
+     0,
+     1
+    ],
+    [
+     "CHEST",
+     2,
+     1
+    ],
+    [
+     "CAULDRON",
+     3,
+     1
+    ]
+   ],
+   "top_ids": [
+    [
+     "BRICK",
+     82
+    ],
+    [
+     "FURNACE",
+     2
+    ],
+    [
+     "ANVIL",
+     1
+    ],
+    [
+     "CHEST",
+     1
+    ],
+    [
+     "CAULDRON",
+     1
+    ]
+   ],
+   "exposed": 174
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "well",
+   "marker": null,
+   "final_total": 70,
+   "final_red": 35,
+   "final_blue": 35,
+   "stats": {
+    "reads": 18,
+    "set_calls": 36,
+    "set_replaced": 16
+   },
+   "bbox_red": [
+    -88,
+    46,
+    45,
+    -86,
+    55,
+    47
+   ],
+   "top_blocks": [
+    [
+     "WOOD_SLAB",
+     1,
+     9
+    ],
+    [
+     "COBBLE",
+     0,
+     8
+    ],
+    [
+     "COBBLE_WALL",
+     0,
+     8
+    ],
+    [
+     "WATER",
+     0,
+     7
+    ],
+    [
+     "SPRUCE_FENCE",
+     0,
+     3
+    ]
+   ],
+   "top_ids": [
+    [
+     "WOOD_SLAB",
+     9
+    ],
+    [
+     "COBBLE",
+     8
+    ],
+    [
+     "COBBLE_WALL",
+     8
+    ],
+    [
+     "WATER",
+     7
+    ],
+    [
+     "SPRUCE_FENCE",
+     3
+    ]
+   ],
+   "exposed": 48
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "headframe",
+   "marker": null,
+   "final_total": 422,
+   "final_red": 211,
+   "final_blue": 211,
+   "stats": {
+    "reads": 89,
+    "set_calls": 288,
+    "set_replaced": 104,
+    "set_removed": 1
+   },
+   "bbox_red": [
+    -87,
+    51,
+    53,
+    -76,
+    75,
+    59
+   ],
+   "top_blocks": [
+    [
+     "LOG",
+     1,
+     72
+    ],
+    [
+     "PLANKS",
+     1,
+     45
+    ],
+    [
+     "LOG",
+     9,
+     22
+    ],
+    [
+     "PLANKS",
+     5,
+     21
+    ],
+    [
+     "LOG",
+     5,
+     16
+    ],
+    [
+     "LADDER",
+     3,
+     16
+    ]
+   ],
+   "top_ids": [
+    [
+     "LOG",
+     110
+    ],
+    [
+     "PLANKS",
+     66
+    ],
+    [
+     "LADDER",
+     17
+    ],
+    [
+     "DARK_OAK_FENCE",
+     8
+    ],
+    [
+     "RAIL",
+     5
+    ],
+    [
+     "DIRT",
+     4
+    ]
+   ],
+   "exposed": 406
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "spoil_heap",
+   "marker": null,
+   "final_total": 650,
+   "final_red": 325,
+   "final_blue": 325,
+   "stats": {
+    "set_calls": 325,
+    "set_replaced": 1
+   },
+   "bbox_red": [
+    -107,
+    59,
+    74,
+    -95,
+    69,
+    83
+   ],
+   "top_blocks": [
+    [
+     "GRAVEL",
+     0,
+     155
+    ],
+    [
+     "COBBLE",
+     0,
+     92
+    ],
+    [
+     "STONE",
+     5,
+     78
+    ]
+   ],
+   "top_ids": [
+    [
+     "GRAVEL",
+     155
+    ],
+    [
+     "COBBLE",
+     92
+    ],
+    [
+     "STONE",
+     78
+    ]
+   ],
+   "exposed": 316
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "watch_house",
+   "marker": "house()",
+   "final_total": 2096,
+   "final_red": 1048,
+   "final_blue": 1048,
+   "stats": {
+    "reads": 183,
+    "set_calls": 2843,
+    "set_replaced": 242,
+    "top_reads": 2,
+    "set_removed": 110
+   },
+   "bbox_red": [
+    -108,
+    59,
+    -12,
+    -93,
+    78,
+    -2
+   ],
+   "top_blocks": [
+    [
+     "STONEBRICK",
+     0,
+     275
+    ],
+    [
+     "PLANKS",
+     1,
+     196
+    ],
+    [
+     "PLANKS",
+     5,
+     119
+    ],
+    [
+     "BRICK",
+     0,
+     68
+    ],
+    [
+     "DARK_OAK_STAIRS",
+     2,
+     49
+    ],
+    [
+     "STONE",
+     6,
+     48
+    ]
+   ],
+   "top_ids": [
+    [
+     "PLANKS",
+     315
+    ],
+    [
+     "STONEBRICK",
+     275
+    ],
+    [
+     "DARK_OAK_STAIRS",
+     169
+    ],
+    [
+     "BRICK",
+     68
+    ],
+    [
+     "LOG",
+     59
+    ],
+    [
+     "STONE",
+     48
+    ]
+   ],
+   "exposed": 1950
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "watch_house",
+   "marker": "furnish()",
+   "final_total": 24,
+   "final_red": 12,
+   "final_blue": 12,
+   "stats": {
+    "reads": 12,
+    "set_calls": 12
+   },
+   "bbox_red": [
+    -106,
+    62,
+    -7,
+    -95,
+    74,
+    -7
+   ],
+   "top_blocks": [
+    [
+     "TORCH",
+     1,
+     6
+    ],
+    [
+     "TORCH",
+     2,
+     6
+    ]
+   ],
+   "top_ids": [
+    [
+     "TORCH",
+     12
+    ]
+   ],
+   "exposed": 24
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "watch_house",
+   "marker": "site()",
+   "final_total": 38,
+   "final_red": 19,
+   "final_blue": 19,
+   "stats": {
+    "reads": 228,
+    "set_calls": 114,
+    "set_removed": 95,
+    "set_replaced": 19
+   },
+   "bbox_red": [
+    -109,
+    62,
+    -12,
+    -108,
+    69,
+    -2
+   ],
+   "top_blocks": [
+    [
+     "GRASS",
+     0,
+     19
+    ]
+   ],
+   "top_ids": [
+    [
+     "GRASS",
+     19
+    ]
+   ],
+   "exposed": 38
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "watch_house",
+   "marker": null,
+   "final_total": 194,
+   "final_red": 101,
+   "final_blue": 93,
+   "stats": {
+    "set_calls": 124,
+    "set_removed": 4,
+    "reads": 176,
+    "set_replaced": 88
+   },
+   "bbox_red": [
+    -108,
+    59,
+    -13,
+    -85,
+    74,
+    -1
+   ],
+   "top_blocks": [
+    [
+     "COBBLE_WALL",
+     0,
+     24
+    ],
+    [
+     "STONEBRICK",
+     0,
+     22
+    ],
+    [
+     "STONE",
+     6,
+     16
+    ],
+    [
+     "STONE",
+     0,
+     16
+    ],
+    [
+     "STONE",
+     5,
+     15
+    ],
+    [
+     "WOOL",
+     14,
+     8
+    ]
+   ],
+   "top_ids": [
+    [
+     "STONE",
+     47
+    ],
+    [
+     "COBBLE_WALL",
+     24
+    ],
+    [
+     "STONEBRICK",
+     22
+    ],
+    [
+     "WOOL",
+     8
+    ]
+   ],
+   "exposed": 194
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "hut",
+   "marker": "site()",
+   "final_total": 238,
+   "final_red": 119,
+   "final_blue": 119,
+   "stats": {
+    "reads": 511,
+    "set_calls": 291,
+    "set_removed": 111,
+    "set_replaced": 88
+   },
+   "bbox_red": [
+    -109,
+    55,
+    -69,
+    -100,
+    71,
+    -60
+   ],
+   "top_blocks": [
+    [
+     "DIRT",
+     0,
+     44
+    ],
+    [
+     "GRASS",
+     0,
+     43
+    ],
+    [
+     "STONE",
+     0,
+     32
+    ]
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     44
+    ],
+    [
+     "GRASS",
+     43
+    ],
+    [
+     "STONE",
+     32
+    ]
+   ],
+   "exposed": 132
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "hut",
+   "marker": "house()",
+   "final_total": 414,
+   "final_red": 207,
+   "final_blue": 207,
+   "stats": {
+    "reads": 54,
+    "set_calls": 429,
+    "set_replaced": 58,
+    "top_reads": 1,
+    "set_removed": 8
+   },
+   "bbox_red": [
+    -108,
+    64,
+    -68,
+    -101,
+    72,
+    -61
+   ],
+   "top_blocks": [
+    [
+     "PLANKS",
+     0,
+     75
+    ],
+    [
+     "SPRUCE_STAIRS",
+     2,
+     32
+    ],
+    [
+     "SPRUCE_STAIRS",
+     3,
+     31
+    ],
+    [
+     "PLANKS",
+     1,
+     27
+    ],
+    [
+     "COBBLE",
+     0,
+     22
+    ],
+    [
+     "LOG",
+     1,
+     13
+    ]
+   ],
+   "top_ids": [
+    [
+     "PLANKS",
+     102
+    ],
+    [
+     "SPRUCE_STAIRS",
+     63
+    ],
+    [
+     "COBBLE",
+     22
+    ],
+    [
+     "LOG",
+     13
+    ],
+    [
+     "PANE",
+     3
+    ],
+    [
+     "SPRUCE_DOOR",
+     2
+    ]
+   ],
+   "exposed": 350
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "hut",
+   "marker": "furnish()",
+   "final_total": 14,
+   "final_red": 7,
+   "final_blue": 7,
+   "stats": {
+    "reads": 17,
+    "set_calls": 8
+   },
+   "bbox_red": [
+    -106,
+    65,
+    -66,
+    -103,
+    67,
+    -63
+   ],
+   "top_blocks": [
+    [
+     "CRAFTING",
+     0,
+     2
+    ],
+    [
+     "TORCH",
+     1,
+     1
+    ],
+    [
+     "FENCE",
+     0,
+     1
+    ],
+    [
+     "PLATE_WOOD",
+     0,
+     1
+    ],
+    [
+     "SPRUCE_STAIRS",
+     1,
+     1
+    ],
+    [
+     "TORCH",
+     2,
+     1
+    ]
+   ],
+   "top_ids": [
+    [
+     "CRAFTING",
+     2
+    ],
+    [
+     "TORCH",
+     2
+    ],
+    [
+     "FENCE",
+     1
+    ],
+    [
+     "PLATE_WOOD",
+     1
+    ],
+    [
+     "SPRUCE_STAIRS",
+     1
+    ]
+   ],
+   "exposed": 14
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "hut",
+   "marker": null,
+   "final_total": 16,
+   "final_red": 8,
+   "final_blue": 8,
+   "stats": {
+    "tiles_chest": 1,
+    "set_calls": 8,
+    "set_replaced": 7
+   },
+   "bbox_red": [
+    -103,
+    62,
+    -67,
+    -100,
+    65,
+    -63
+   ],
+   "top_blocks": [
+    [
+     "LOG",
+     4,
+     6
+    ],
+    [
+     "CHEST",
+     2,
+     1
+    ],
+    [
+     "LOG",
+     0,
+     1
+    ]
+   ],
+   "top_ids": [
+    [
+     "LOG",
+     7
+    ],
+    [
+     "CHEST",
+     1
+    ]
+   ],
+   "exposed": 6
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "mill",
+   "marker": "site()",
+   "final_total": 64,
+   "final_red": 32,
+   "final_blue": 32,
+   "stats": {
+    "set_calls": 94,
+    "set_replaced": 40,
+    "reads": 40
+   },
+   "bbox_red": [
+    -63,
+    47,
+    4,
+    -56,
+    51,
+    7
+   ],
+   "top_blocks": [
+    [
+     "DIRT",
+     0,
+     24
+    ],
+    [
+     "GRASS",
+     0,
+     7
+    ],
+    [
+     "STONE",
+     0,
+     1
+    ]
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     24
+    ],
+    [
+     "GRASS",
+     7
+    ],
+    [
+     "STONE",
+     1
+    ]
+   ],
+   "exposed": 16
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "mill",
+   "marker": "house()",
+   "final_total": 1026,
+   "final_red": 513,
+   "final_blue": 513,
+   "stats": {
+    "reads": 96,
+    "set_calls": 1262,
+    "set_replaced": 115,
+    "top_reads": 1,
+    "set_removed": 16
+   },
+   "bbox_red": [
+    -68,
+    51,
+    0,
+    -57,
+    64,
+    8
+   ],
+   "top_blocks": [
+    [
+     "STONEBRICK",
+     0,
+     145
+    ],
+    [
+     "PLANKS",
+     5,
+     109
+    ],
+    [
+     "PLANKS",
+     1,
+     66
+    ],
+    [
+     "DARK_OAK_STAIRS",
+     2,
+     48
+    ],
+    [
+     "DARK_OAK_STAIRS",
+     3,
+     47
+    ],
+    [
+     "PLANKS",
+     0,
+     38
+    ]
+   ],
+   "top_ids": [
+    [
+     "PLANKS",
+     213
+    ],
+    [
+     "STONEBRICK",
+     145
+    ],
+    [
+     "DARK_OAK_STAIRS",
+     95
+    ],
+    [
+     "PANE",
+     17
+    ],
+    [
+     "WOOD_SLAB",
+     12
+    ],
+    [
+     "STONE",
+     12
+    ]
+   ],
+   "exposed": 962
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "mill",
+   "marker": "furnish()",
+   "final_total": 8,
+   "final_red": 4,
+   "final_blue": 4,
+   "stats": {
+    "reads": 4,
+    "set_calls": 4
+   },
+   "bbox_red": [
+    -66,
+    54,
+    4,
+    -59,
+    58,
+    4
+   ],
+   "top_blocks": [
+    [
+     "TORCH",
+     1,
+     2
+    ],
+    [
+     "TORCH",
+     2,
+     2
+    ]
+   ],
+   "top_ids": [
+    [
+     "TORCH",
+     4
+    ]
+   ],
+   "exposed": 8
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "mill",
+   "marker": null,
+   "final_total": 946,
+   "final_red": 473,
+   "final_blue": 473,
+   "stats": {
+    "set_calls": 1043,
+    "set_removed": 288,
+    "set_replaced": 369,
+    "reads": 14
+   },
+   "bbox_red": [
+    -68,
+    41,
+    2,
+    -54,
+    53,
+    21
+   ],
+   "top_blocks": [
+    [
+     "STONEBRICK",
+     0,
+     179
+    ],
+    [
+     "WATER",
+     0,
+     159
+    ],
+    [
+     "PLANKS",
+     5,
+     48
+    ],
+    [
+     "GRAVEL",
+     0,
+     42
+    ],
+    [
+     "LOG2",
+     13,
+     24
+    ],
+    [
+     "WATER_FLOW",
+     8,
+     13
+    ]
+   ],
+   "top_ids": [
+    [
+     "STONEBRICK",
+     179
+    ],
+    [
+     "WATER",
+     159
+    ],
+    [
+     "PLANKS",
+     48
+    ],
+    [
+     "GRAVEL",
+     42
+    ],
+    [
+     "LOG2",
+     28
+    ],
+    [
+     "WATER_FLOW",
+     13
+    ]
+   ],
+   "exposed": 352
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "footbridge",
+   "marker": null,
+   "final_total": 306,
+   "final_red": 153,
+   "final_blue": 153,
+   "stats": {
+    "set_calls": 153,
+    "set_replaced": 49,
+    "reads": 144
+   },
+   "bbox_red": [
+    -72,
+    42,
+    12,
+    -68,
+    52,
+    27
+   ],
+   "top_blocks": [
+    [
+     "PLANKS",
+     1,
+     48
+    ],
+    [
+     "LOG",
+     1,
+     37
+    ],
+    [
+     "LOG",
+     9,
+     32
+    ],
+    [
+     "SPRUCE_FENCE",
+     0,
+     32
+    ],
+    [
+     "TORCH",
+     5,
+     4
+    ]
+   ],
+   "top_ids": [
+    [
+     "LOG",
+     69
+    ],
+    [
+     "PLANKS",
+     48
+    ],
+    [
+     "SPRUCE_FENCE",
+     32
+    ],
+    [
+     "TORCH",
+     4
+    ]
+   ],
+   "exposed": 236
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "stone_bridge",
+   "marker": null,
+   "final_total": 804,
+   "final_red": 402,
+   "final_blue": 402,
+   "stats": {
+    "set_calls": 1068,
+    "set_replaced": 143,
+    "set_removed": 38
+   },
+   "bbox_red": [
+    -39,
+    44,
+    -10,
+    -33,
+    54,
+    14
+   ],
+   "top_blocks": [
+    [
+     "STONEBRICK",
+     0,
+     241
+    ],
+    [
+     "SLAB",
+     5,
+     50
+    ],
+    [
+     "STONE",
+     5,
+     22
+    ],
+    [
+     "STONE",
+     0,
+     21
+    ],
+    [
+     "STONE",
+     6,
+     20
+    ],
+    [
+     "STONEBRICK_STAIRS",
+     3,
+     20
+    ]
+   ],
+   "top_ids": [
+    [
+     "STONEBRICK",
+     256
+    ],
+    [
+     "STONE",
+     63
+    ],
+    [
+     "SLAB",
+     50
+    ],
+    [
+     "STONEBRICK_STAIRS",
+     25
+    ],
+    [
+     "FENCE",
+     4
+    ],
+    [
+     "GLOWSTONE",
+     4
+    ]
+   ],
+   "exposed": 532
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "old_bridge",
+   "marker": null,
+   "final_total": 744,
+   "final_red": 372,
+   "final_blue": 372,
+   "stats": {
+    "reads": 252,
+    "set_calls": 573,
+    "set_replaced": 224
+   },
+   "bbox_red": [
+    -15,
+    38,
+    -47,
+    -4,
+    52,
+    -41
+   ],
+   "top_blocks": [
+    [
+     "STONEBRICK",
+     0,
+     274
+    ],
+    [
+     "STONEBRICK",
+     2,
+     50
+    ],
+    [
+     "SLAB",
+     5,
+     15
+    ],
+    [
+     "IRON_BARS",
+     0,
+     8
+    ],
+    [
+     "STONE",
+     0,
+     7
+    ],
+    [
+     "STONE",
+     6,
+     7
+    ]
+   ],
+   "top_ids": [
+    [
+     "STONEBRICK",
+     325
+    ],
+    [
+     "STONE",
+     20
+    ],
+    [
+     "SLAB",
+     15
+    ],
+    [
+     "IRON_BARS",
+     8
+    ],
+    [
+     "FENCE",
+     2
+    ],
+    [
+     "GLOWSTONE",
+     2
+    ]
+   ],
+   "exposed": 336
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "pave[Spawn Lane]",
+   "marker": null,
+   "final_total": 266,
+   "final_red": 133,
+   "final_blue": 133,
+   "stats": {
+    "reads": 528,
+    "set_calls": 145,
+    "set_replaced": 112,
+    "set_removed": 7
+   },
+   "bbox_red": [
+    -93,
+    52,
+    -35,
+    -70,
+    59,
+    -5
+   ],
+   "top_blocks": [
+    [
+     "DIRT",
+     0,
+     61
+    ],
+    [
+     "GRAVEL",
+     0,
+     40
+    ],
+    [
+     "DIRT",
+     1,
+     32
+    ]
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     93
+    ],
+    [
+     "GRAVEL",
+     40
+    ]
+   ],
+   "exposed": 230
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "pave[Spawn Lane south]",
+   "marker": null,
+   "final_total": 250,
+   "final_red": 125,
+   "final_blue": 125,
+   "stats": {
+    "reads": 643,
+    "set_calls": 150,
+    "set_replaced": 121,
+    "set_removed": 25
+   },
+   "bbox_red": [
+    -79,
+    46,
+    -12,
+    -68,
+    53,
+    40
+   ],
+   "top_blocks": [
+    [
+     "DIRT",
+     0,
+     46
+    ],
+    [
+     "DIRT",
+     1,
+     45
+    ],
+    [
+     "GRAVEL",
+     0,
+     34
+    ]
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     91
+    ],
+    [
+     "GRAVEL",
+     34
+    ]
+   ],
+   "exposed": 242
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "pave[Main Street]",
+   "marker": null,
+   "final_total": 488,
+   "final_red": 244,
+   "final_blue": 244,
+   "stats": {
+    "reads": 1001,
+    "set_calls": 260,
+    "set_replaced": 231
+   },
+   "bbox_red": [
+    -58,
+    49,
+    -47,
+    -11,
+    52,
+    -41
+   ],
+   "top_blocks": [
+    [
+     "COBBLE",
+     0,
+     78
+    ],
+    [
+     "GRAVEL",
+     0,
+     71
+    ],
+    [
+     "STONE",
+     5,
+     67
+    ],
+    [
+     "DIRT",
+     0,
+     28
+    ]
+   ],
+   "top_ids": [
+    [
+     "COBBLE",
+     78
+    ],
+    [
+     "GRAVEL",
+     71
+    ],
+    [
+     "STONE",
+     67
+    ],
+    [
+     "DIRT",
+     28
+    ]
+   ],
+   "exposed": 416
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "pave[Bridge Street]",
+   "marker": null,
+   "final_total": 438,
+   "final_red": 219,
+   "final_blue": 219,
+   "stats": {
+    "reads": 904,
+    "set_calls": 232,
+    "set_replaced": 186,
+    "set_removed": 11
+   },
+   "bbox_red": [
+    -44,
+    49,
+    -46,
+    -34,
+    52,
+    -6
+   ],
+   "top_blocks": [
+    [
+     "GRAVEL",
+     0,
+     72
+    ],
+    [
+     "STONE",
+     5,
+     65
+    ],
+    [
+     "COBBLE",
+     0,
+     55
+    ],
+    [
+     "DIRT",
+     0,
+     27
+    ]
+   ],
+   "top_ids": [
+    [
+     "GRAVEL",
+     72
+    ],
+    [
+     "STONE",
+     65
+    ],
+    [
+     "COBBLE",
+     55
+    ],
+    [
+     "DIRT",
+     27
+    ]
+   ],
+   "exposed": 372
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "pave[North Lane]",
+   "marker": null,
+   "final_total": 556,
+   "final_red": 278,
+   "final_blue": 278,
+   "stats": {
+    "reads": 1194,
+    "set_calls": 307,
+    "set_replaced": 250,
+    "set_removed": 27
+   },
+   "bbox_red": [
+    -64,
+    49,
+    -72,
+    -14,
+    52,
+    -54
+   ],
+   "top_blocks": [
+    [
+     "STONE",
+     5,
+     85
+    ],
+    [
+     "GRAVEL",
+     0,
+     82
+    ],
+    [
+     "COBBLE",
+     0,
+     81
+    ],
+    [
+     "DIRT",
+     0,
+     30
+    ]
+   ],
+   "top_ids": [
+    [
+     "STONE",
+     85
+    ],
+    [
+     "GRAVEL",
+     82
+    ],
+    [
+     "COBBLE",
+     81
+    ],
+    [
+     "DIRT",
+     30
+    ]
+   ],
+   "exposed": 494
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "pave[Mill Lane]",
+   "marker": null,
+   "final_total": 136,
+   "final_red": 68,
+   "final_blue": 68,
+   "stats": {
+    "reads": 382,
+    "set_calls": 69,
+    "set_replaced": 68,
+    "set_removed": 1
+   },
+   "bbox_red": [
+    -60,
+    50,
+    -9,
+    -37,
+    51,
+    0
+   ],
+   "top_blocks": [
+    [
+     "GRAVEL",
+     0,
+     29
+    ],
+    [
+     "DIRT",
+     1,
+     21
+    ],
+    [
+     "DIRT",
+     0,
+     18
+    ]
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     39
+    ],
+    [
+     "GRAVEL",
+     29
+    ]
+   ],
+   "exposed": 136
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "pave[Field Road]",
+   "marker": null,
+   "final_total": 294,
+   "final_red": 147,
+   "final_blue": 147,
+   "stats": {
+    "reads": 575,
+    "set_calls": 186,
+    "set_replaced": 108,
+    "set_removed": 37
+   },
+   "bbox_red": [
+    -62,
+    40,
+    14,
+    -35,
+    50,
+    47
+   ],
+   "top_blocks": [
+    [
+     "DIRT",
+     0,
+     62
+    ],
+    [
+     "GRAVEL",
+     0,
+     44
+    ],
+    [
+     "DIRT",
+     1,
+     41
+    ]
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     103
+    ],
+    [
+     "GRAVEL",
+     44
+    ]
+   ],
+   "exposed": 278
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "pave[Farm Track]",
+   "marker": null,
+   "final_total": 336,
+   "final_red": 168,
+   "final_blue": 168,
+   "stats": {
+    "reads": 659,
+    "set_calls": 194,
+    "set_replaced": 163,
+    "set_removed": 24
+   },
+   "bbox_red": [
+    -62,
+    48,
+    52,
+    -24,
+    54,
+    83
+   ],
+   "top_blocks": [
+    [
+     "DIRT",
+     0,
+     65
+    ],
+    [
+     "DIRT",
+     1,
+     57
+    ],
+    [
+     "GRAVEL",
+     0,
+     46
+    ]
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     122
+    ],
+    [
+     "GRAVEL",
+     46
+    ]
+   ],
+   "exposed": 314
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "pave[Falls Walk]",
+   "marker": null,
+   "final_total": 140,
+   "final_red": 70,
+   "final_blue": 70,
+   "stats": {
+    "reads": 274,
+    "set_calls": 71,
+    "set_replaced": 63,
+    "set_removed": 1
+   },
+   "bbox_red": [
+    -35,
+    46,
+    5,
+    -14,
+    48,
+    14
+   ],
+   "top_blocks": [
+    [
+     "GRAVEL",
+     0,
+     30
+    ],
+    [
+     "DIRT",
+     0,
+     21
+    ],
+    [
+     "DIRT",
+     1,
+     19
+    ]
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     40
+    ],
+    [
+     "GRAVEL",
+     30
+    ]
+   ],
+   "exposed": 126
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "pave[Spring Path]",
+   "marker": null,
+   "final_total": 310,
+   "final_red": 155,
+   "final_blue": 155,
+   "stats": {
+    "reads": 644,
+    "set_calls": 174,
+    "set_replaced": 110,
+    "set_removed": 13
+   },
+   "bbox_red": [
+    -102,
+    51,
+    0,
+    -88,
+    59,
+    44
+   ],
+   "top_blocks": [
+    [
+     "DIRT",
+     0,
+     89
+    ],
+    [
+     "DIRT",
+     1,
+     34
+    ],
+    [
+     "GRAVEL",
+     0,
+     32
+    ]
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     123
+    ],
+    [
+     "GRAVEL",
+     32
+    ]
+   ],
+   "exposed": 270
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "pave[Village Road]",
+   "marker": null,
+   "final_total": 166,
+   "final_red": 83,
+   "final_blue": 83,
+   "stats": {
+    "reads": 365,
+    "set_calls": 84,
+    "set_replaced": 77,
+    "set_removed": 1
+   },
+   "bbox_red": [
+    -89,
+    50,
+    44,
+    -62,
+    52,
+    49
+   ],
+   "top_blocks": [
+    [
+     "GRAVEL",
+     0,
+     31
+    ],
+    [
+     "DIRT",
+     0,
+     29
+    ],
+    [
+     "DIRT",
+     1,
+     23
+    ]
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     52
+    ],
+    [
+     "GRAVEL",
+     31
+    ]
+   ],
+   "exposed": 158
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "pave[Forest Path]",
+   "marker": null,
+   "final_total": 254,
+   "final_red": 127,
+   "final_blue": 127,
+   "stats": {
+    "reads": 457,
+    "set_calls": 142,
+    "set_replaced": 105,
+    "set_removed": 15
+   },
+   "bbox_red": [
+    -104,
+    53,
+    -61,
+    -86,
+    61,
+    -12
+   ],
+   "top_blocks": [
+    [
+     "DIRT",
+     0,
+     51
+    ],
+    [
+     "DIRT",
+     2,
+     41
+    ],
+    [
+     "DIRT",
+     1,
+     35
+    ]
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     127
+    ]
+   ],
+   "exposed": 226
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "pave[Clearing Path]",
+   "marker": null,
+   "final_total": 56,
+   "final_red": 28,
+   "final_blue": 28,
+   "stats": {
+    "reads": 112,
+    "set_calls": 48,
+    "set_replaced": 22,
+    "set_removed": 20
+   },
+   "bbox_red": [
+    -108,
+    56,
+    67,
+    -98,
+    61,
+    69
+   ],
+   "top_blocks": [
+    [
+     "DIRT",
+     0,
+     16
+    ],
+    [
+     "DIRT",
+     1,
+     8
+    ],
+    [
+     "DIRT",
+     2,
+     4
+    ]
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     28
+    ]
+   ],
+   "exposed": 48
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "path_to_door",
+   "marker": null,
+   "final_total": 446,
+   "final_red": 223,
+   "final_blue": 223,
+   "stats": {
+    "reads": 881,
+    "set_calls": 261,
+    "set_replaced": 226,
+    "set_removed": 35
+   },
+   "bbox_red": [
+    -100,
+    48,
+    -72,
+    -16,
+    63,
+    69
+   ],
+   "top_blocks": [
+    [
+     "GRAVEL",
+     0,
+     75
+    ],
+    [
+     "DIRT",
+     0,
+     49
+    ],
+    [
+     "DIRT",
+     1,
+     39
+    ],
+    [
+     "STONE",
+     5,
+     34
+    ],
+    [
+     "COBBLE",
+     0,
+     26
+    ]
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     88
+    ],
+    [
+     "GRAVEL",
+     75
+    ],
+    [
+     "STONE",
+     34
+    ],
+    [
+     "COBBLE",
+     26
+    ]
+   ],
+   "exposed": 446
+  },
+  {
+   "l1": "buildings.build",
+   "l2": "monument",
+   "marker": null,
+   "final_total": 8,
+   "final_red": 4,
+   "final_blue": 4,
+   "stats": {
+    "set_calls": 4
+   },
+   "bbox_red": [
+    -66,
+    54,
+    -44,
+    -66,
+    57,
+    48
+   ],
+   "top_blocks": [
+    [
+     "OBSIDIAN",
+     0,
+     4
+    ]
+   ],
+   "top_ids": [
+    [
+     "OBSIDIAN",
+     4
+    ]
+   ],
+   "exposed": 8
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "wheat_field",
+   "marker": null,
+   "final_total": 3814,
+   "final_red": 1907,
+   "final_blue": 1907,
+   "stats": {
+    "set_calls": 3195,
+    "set_replaced": 1555,
+    "set_removed": 247
+   },
+   "bbox_red": [
+    -50,
+    42,
+    45,
+    -31,
+    52,
+    69
+   ],
+   "top_blocks": [
+    [
+     "DIRT",
+     0,
+     1017
+    ],
+    [
+     "FARMLAND",
+     7,
+     360
+    ],
+    [
+     "WHEAT",
+     7,
+     248
+    ],
+    [
+     "GRASS",
+     0,
+     86
+    ],
+    [
+     "WHEAT",
+     6,
+     81
+    ],
+    [
+     "WATER",
+     0,
+     54
+    ]
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     1017
+    ],
+    [
+     "FARMLAND",
+     360
+    ],
+    [
+     "WHEAT",
+     359
+    ],
+    [
+     "GRASS",
+     86
+    ],
+    [
+     "WATER",
+     54
+    ],
+    [
+     "FENCE",
+     28
+    ]
+   ],
+   "exposed": 1038
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "barn",
+   "marker": "site()",
+   "final_total": 46,
+   "final_red": 23,
+   "final_blue": 23,
+   "stats": {
+    "reads": 355,
+    "set_calls": 94,
+    "set_removed": 44,
+    "set_replaced": 47
+   },
+   "bbox_red": [
+    -68,
+    48,
+    63,
+    -58,
+    49,
+    74
+   ],
+   "top_blocks": [
+    [
+     "GRASS",
+     0,
+     20
+    ],
+    [
+     "DIRT",
+     0,
+     3
+    ]
+   ],
+   "top_ids": [
+    [
+     "GRASS",
+     20
+    ],
+    [
+     "DIRT",
+     3
+    ]
+   ],
+   "exposed": 38
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "barn",
+   "marker": "house()",
+   "final_total": 1226,
+   "final_red": 613,
+   "final_blue": 613,
+   "stats": {
+    "reads": 120,
+    "set_calls": 1601,
+    "set_replaced": 130,
+    "top_reads": 1,
+    "set_removed": 16
+   },
+   "bbox_red": [
+    -68,
+    49,
+    63,
+    -58,
+    62,
+    74
+   ],
+   "top_blocks": [
+    [
+     "PLANKS",
+     0,
+     251
+    ],
+    [
+     "PLANKS",
+     1,
+     127
+    ],
+    [
+     "SPRUCE_STAIRS",
+     0,
+     60
+    ],
+    [
+     "SPRUCE_STAIRS",
+     1,
+     60
+    ],
+    [
+     "LOG",
+     1,
+     28
+    ],
+    [
+     "COBBLE",
+     0,
+     26
+    ]
+   ],
+   "top_ids": [
+    [
+     "PLANKS",
+     378
+    ],
+    [
+     "SPRUCE_STAIRS",
+     120
+    ],
+    [
+     "LOG",
+     58
+    ],
+    [
+     "COBBLE",
+     26
+    ],
+    [
+     "PANE",
+     15
+    ],
+    [
+     "WOOD_SLAB",
+     12
+    ]
+   ],
+   "exposed": 1134
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "barn",
+   "marker": "furnish()",
+   "final_total": 8,
+   "final_red": 4,
+   "final_blue": 4,
+   "stats": {
+    "reads": 4,
+    "set_calls": 4
+   },
+   "bbox_red": [
+    -66,
+    52,
+    68,
+    -60,
+    56,
+    68
+   ],
+   "top_blocks": [
+    [
+     "TORCH",
+     1,
+     2
+    ],
+    [
+     "TORCH",
+     2,
+     2
+    ]
+   ],
+   "top_ids": [
+    [
+     "TORCH",
+     4
+    ]
+   ],
+   "exposed": 8
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "barn",
+   "marker": null,
+   "final_total": 28,
+   "final_red": 14,
+   "final_blue": 14,
+   "stats": {
+    "set_calls": 26,
+    "set_removed": 12
+   },
+   "bbox_red": [
+    -66,
+    50,
+    65,
+    -62,
+    50,
+    72
+   ],
+   "top_blocks": [
+    [
+     "HAY",
+     0,
+     14
+    ]
+   ],
+   "top_ids": [
+    [
+     "HAY",
+     14
+    ]
+   ],
+   "exposed": 28
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "haystacks",
+   "marker": null,
+   "final_total": 20,
+   "final_red": 10,
+   "final_blue": 10,
+   "stats": {
+    "set_calls": 10
+   },
+   "bbox_red": [
+    -56,
+    50,
+    73,
+    -52,
+    51,
+    77
+   ],
+   "top_blocks": [
+    [
+     "HAY",
+     4,
+     4
+    ],
+    [
+     "HAY",
+     0,
+     4
+    ],
+    [
+     "HAY",
+     8,
+     2
+    ]
+   ],
+   "top_ids": [
+    [
+     "HAY",
+     10
+    ]
+   ],
+   "exposed": 20
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "hay_cart",
+   "marker": null,
+   "final_total": 42,
+   "final_red": 21,
+   "final_blue": 21,
+   "stats": {
+    "set_calls": 21
+   },
+   "bbox_red": [
+    -46,
+    50,
+    71,
+    -43,
+    53,
+    74
+   ],
+   "top_blocks": [
+    [
+     "WOOD_SLAB",
+     1,
+     8
+    ],
+    [
+     "HAY",
+     8,
+     7
+    ],
+    [
+     "LOG2",
+     5,
+     2
+    ],
+    [
+     "SPRUCE_FENCE",
+     0,
+     2
+    ],
+    [
+     "DARK_OAK_FENCE",
+     0,
+     2
+    ]
+   ],
+   "top_ids": [
+    [
+     "WOOD_SLAB",
+     8
+    ],
+    [
+     "HAY",
+     7
+    ],
+    [
+     "LOG2",
+     2
+    ],
+    [
+     "SPRUCE_FENCE",
+     2
+    ],
+    [
+     "DARK_OAK_FENCE",
+     2
+    ]
+   ],
+   "exposed": 42
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "jetty_and_boat",
+   "marker": null,
+   "final_total": 140,
+   "final_red": 70,
+   "final_blue": 70,
+   "stats": {
+    "set_calls": 76,
+    "set_replaced": 26,
+    "reads": 931,
+    "set_removed": 6
+   },
+   "bbox_red": [
+    -95,
+    47,
+    11,
+    -72,
+    50,
+    29
+   ],
+   "top_blocks": [
+    [
+     "LILY",
+     0,
+     23
+    ],
+    [
+     "REEDS",
+     0,
+     10
+    ],
+    [
+     "PLANKS",
+     1,
+     10
+    ],
+    [
+     "SAND",
+     0,
+     6
+    ],
+    [
+     "LOG",
+     1,
+     6
+    ],
+    [
+     "WOOD_SLAB",
+     9,
+     6
+    ]
+   ],
+   "top_ids": [
+    [
+     "LILY",
+     23
+    ],
+    [
+     "REEDS",
+     10
+    ],
+    [
+     "PLANKS",
+     10
+    ],
+    [
+     "SAND",
+     6
+    ],
+    [
+     "LOG",
+     6
+    ],
+    [
+     "WOOD_SLAB",
+     6
+    ]
+   ],
+   "exposed": 116
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "spring",
+   "marker": null,
+   "final_total": 28,
+   "final_red": 14,
+   "final_blue": 14,
+   "stats": {
+    "set_calls": 18,
+    "set_replaced": 10,
+    "set_removed": 3,
+    "reads": 8
+   },
+   "bbox_red": [
+    -99,
+    48,
+    20,
+    -96,
+    51,
+    22
+   ],
+   "top_blocks": [
+    [
+     "MOSSY",
+     0,
+     6
+    ],
+    [
+     "STONE",
+     5,
+     3
+    ],
+    [
+     "WATER_FLOW",
+     8,
+     2
+    ],
+    [
+     "COBBLE",
+     0,
+     2
+    ],
+    [
+     "WATER",
+     0,
+     1
+    ]
+   ],
+   "top_ids": [
+    [
+     "MOSSY",
+     6
+    ],
+    [
+     "STONE",
+     3
+    ],
+    [
+     "WATER_FLOW",
+     2
+    ],
+    [
+     "COBBLE",
+     2
+    ],
+    [
+     "WATER",
+     1
+    ]
+   ],
+   "exposed": 18
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "cutting",
+   "marker": null,
+   "final_total": 168,
+   "final_red": 84,
+   "final_blue": 84,
+   "stats": {
+    "reads": 78,
+    "set_calls": 84,
+    "set_replaced": 19
+   },
+   "bbox_red": [
+    -117,
+    58,
+    63,
+    -102,
+    75,
+    75
+   ],
+   "top_blocks": [
+    [
+     "LOG",
+     4,
+     46
+    ],
+    [
+     "DIRT",
+     1,
+     12
+    ],
+    [
+     "LOG",
+     6,
+     8
+    ],
+    [
+     "LOG",
+     0,
+     6
+    ],
+    [
+     "DIRT",
+     0,
+     5
+    ],
+    [
+     "WOOD_SLAB",
+     0,
+     4
+    ]
+   ],
+   "top_ids": [
+    [
+     "LOG",
+     61
+    ],
+    [
+     "DIRT",
+     17
+    ],
+    [
+     "WOOD_SLAB",
+     4
+    ],
+    [
+     "SPRUCE_FENCE",
+     2
+    ]
+   ],
+   "exposed": 164
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "stalls",
+   "marker": null,
+   "final_total": 120,
+   "final_red": 60,
+   "final_blue": 60,
+   "stats": {
+    "set_calls": 60
+   },
+   "bbox_red": [
+    -75,
+    53,
+    -50,
+    -73,
+    55,
+    -38
+   ],
+   "top_blocks": [
+    [
+     "FENCE",
+     0,
+     24
+    ],
+    [
+     "WOOL",
+     0,
+     9
+    ],
+    [
+     "WOOL",
+     14,
+     6
+    ],
+    [
+     "WOOL",
+     4,
+     6
+    ],
+    [
+     "WOOL",
+     11,
+     6
+    ],
+    [
+     "CHEST",
+     5,
+     3
+    ]
+   ],
+   "top_ids": [
+    [
+     "WOOL",
+     27
+    ],
+    [
+     "FENCE",
+     24
+    ],
+    [
+     "CHEST",
+     3
+    ],
+    [
+     "WOOD_SLAB",
+     3
+    ],
+    [
+     "MELON",
+     2
+    ],
+    [
+     "PUMPKIN",
+     1
+    ]
+   ],
+   "exposed": 120
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "worn",
+   "marker": null,
+   "final_total": 110,
+   "final_red": 55,
+   "final_blue": 55,
+   "stats": {
+    "reads": 199,
+    "set_calls": 165,
+    "set_removed": 55,
+    "set_replaced": 55
+   },
+   "bbox_red": [
+    -101,
+    48,
+    -64,
+    -56,
+    62,
+    71
+   ],
+   "top_blocks": [
+    [
+     "DIRT",
+     0,
+     35
+    ],
+    [
+     "DIRT",
+     1,
+     20
+    ]
+   ],
+   "top_ids": [
+    [
+     "DIRT",
+     55
+    ]
+   ],
+   "exposed": 110
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "lamps",
+   "marker": null,
+   "final_total": 130,
+   "final_red": 65,
+   "final_blue": 65,
+   "stats": {
+    "reads": 27,
+    "set_calls": 65
+   },
+   "bbox_red": [
+    -58,
+    50,
+    -66,
+    -18,
+    57,
+    -6
+   ],
+   "top_blocks": [
+    [
+     "FENCE",
+     0,
+     39
+    ],
+    [
+     "GLOWSTONE",
+     0,
+     13
+    ],
+    [
+     "WOOD_SLAB",
+     5,
+     13
+    ]
+   ],
+   "top_ids": [
+    [
+     "FENCE",
+     39
+    ],
+    [
+     "GLOWSTONE",
+     13
+    ],
+    [
+     "WOOD_SLAB",
+     13
+    ]
+   ],
+   "exposed": 130
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "gardens",
+   "marker": null,
+   "final_total": 262,
+   "final_red": 131,
+   "final_blue": 131,
+   "stats": {
+    "reads": 93,
+    "set_calls": 134,
+    "set_replaced": 46
+   },
+   "bbox_red": [
+    -103,
+    53,
+    37,
+    -98,
+    56,
+    67
+   ],
+   "top_blocks": [
+    [
+     "FARMLAND",
+     7,
+     43
+    ],
+    [
+     "SPRUCE_FENCE",
+     0,
+     42
+    ],
+    [
+     "CARROTS",
+     7,
+     23
+    ],
+    [
+     "POTATOES",
+     7,
+     20
+    ],
+    [
+     "WATER",
+     0,
+     3
+    ]
+   ],
+   "top_ids": [
+    [
+     "FARMLAND",
+     43
+    ],
+    [
+     "SPRUCE_FENCE",
+     42
+    ],
+    [
+     "CARROTS",
+     23
+    ],
+    [
+     "POTATOES",
+     20
+    ],
+    [
+     "WATER",
+     3
+    ]
+   ],
+   "exposed": 174
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "benches",
+   "marker": null,
+   "final_total": 4,
+   "final_red": 2,
+   "final_blue": 2,
+   "stats": {
+    "reads": 2,
+    "set_calls": 2
+   },
+   "bbox_red": [
+    -24,
+    48,
+    12,
+    -20,
+    48,
+    13
+   ],
+   "top_blocks": [
+    [
+     "SPRUCE_STAIRS",
+     3,
+     2
+    ]
+   ],
+   "top_ids": [
+    [
+     "SPRUCE_STAIRS",
+     2
+    ]
+   ],
+   "exposed": 4
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "forest[seed=1]",
+   "marker": null,
+   "final_total": 10286,
+   "final_red": 5143,
+   "final_blue": 5143,
+   "stats": {
+    "reads": 16077,
+    "set_calls": 5163,
+    "set_replaced": 37
+   },
+   "bbox_red": [
+    -108,
+    53,
+    -88,
+    -69,
+    82,
+    -23
+   ],
+   "top_blocks": [
+    [
+     "LEAVES",
+     14,
+     2827
+    ],
+    [
+     "LEAVES",
+     4,
+     1017
+    ],
+    [
+     "LEAVES",
+     12,
+     395
+    ],
+    [
+     "LOG",
+     14,
+     363
+    ],
+    [
+     "LOG",
+     12,
+     257
+    ],
+    [
+     "LEAVES",
+     6,
+     238
+    ]
+   ],
+   "top_ids": [
+    [
+     "LEAVES",
+     4477
+    ],
+    [
+     "LOG",
+     620
+    ],
+    [
+     "WOOD_SLAB",
+     28
+    ],
+    [
+     "DIRT",
+     18
+    ]
+   ],
+   "exposed": 10130
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "forest[seed=2]",
+   "marker": null,
+   "final_total": 9824,
+   "final_red": 4912,
+   "final_blue": 4912,
+   "stats": {
+    "reads": 19040,
+    "set_calls": 4912,
+    "set_replaced": 19
+   },
+   "bbox_red": [
+    -120,
+    56,
+    -87,
+    -99,
+    94,
+    70
+   ],
+   "top_blocks": [
+    [
+     "LEAVES",
+     14,
+     2903
+    ],
+    [
+     "LEAVES",
+     4,
+     868
+    ],
+    [
+     "LOG",
+     14,
+     343
+    ],
+    [
+     "LEAVES",
+     12,
+     340
+    ],
+    [
+     "LEAVES",
+     6,
+     230
+    ],
+    [
+     "LOG",
+     12,
+     185
+    ]
+   ],
+   "top_ids": [
+    [
+     "LEAVES",
+     4341
+    ],
+    [
+     "LOG",
+     528
+    ],
+    [
+     "WOOD_SLAB",
+     25
+    ],
+    [
+     "DIRT",
+     18
+    ]
+   ],
+   "exposed": 9746
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "forest[seed=3]",
+   "marker": null,
+   "final_total": 4556,
+   "final_red": 2278,
+   "final_blue": 2278,
+   "stats": {
+    "reads": 8703,
+    "set_calls": 2278,
+    "set_replaced": 8
+   },
+   "bbox_red": [
+    -120,
+    55,
+    33,
+    -94,
+    90,
+    86
+   ],
+   "top_blocks": [
+    [
+     "LEAVES",
+     14,
+     1507
+    ],
+    [
+     "LEAVES",
+     4,
+     220
+    ],
+    [
+     "LEAVES",
+     12,
+     152
+    ],
+    [
+     "LOG",
+     14,
+     146
+    ],
+    [
+     "LOG",
+     12,
+     121
+    ],
+    [
+     "LEAVES",
+     6,
+     105
+    ]
+   ],
+   "top_ids": [
+    [
+     "LEAVES",
+     1984
+    ],
+    [
+     "LOG",
+     267
+    ],
+    [
+     "WOOD_SLAB",
+     19
+    ],
+    [
+     "DIRT",
+     8
+    ]
+   ],
+   "exposed": 4518
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "forest[seed=4]",
+   "marker": null,
+   "final_total": 296,
+   "final_red": 148,
+   "final_blue": 148,
+   "stats": {
+    "reads": 1473,
+    "set_calls": 148,
+    "set_replaced": 1
+   },
+   "bbox_red": [
+    -108,
+    56,
+    54,
+    -101,
+    68,
+    62
+   ],
+   "top_blocks": [
+    [
+     "LEAVES",
+     14,
+     107
+    ],
+    [
+     "LEAVES",
+     6,
+     21
+    ],
+    [
+     "LOG",
+     14,
+     19
+    ],
+    [
+     "DIRT",
+     0,
+     1
+    ]
+   ],
+   "top_ids": [
+    [
+     "LEAVES",
+     128
+    ],
+    [
+     "LOG",
+     19
+    ],
+    [
+     "DIRT",
+     1
+    ]
+   ],
+   "exposed": 296
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "plant[knoll oak]",
+   "marker": null,
+   "final_total": 1520,
+   "final_red": 760,
+   "final_blue": 760,
+   "stats": {
+    "reads": 1519,
+    "set_calls": 760,
+    "set_replaced": 1
+   },
+   "bbox_red": [
+    -32,
+    55,
+    67,
+    -15,
+    73,
+    83
+   ],
+   "top_blocks": [
+    [
+     "LEAVES",
+     12,
+     624
+    ],
+    [
+     "LOG",
+     12,
+     130
+    ],
+    [
+     "LEAVES",
+     4,
+     5
+    ],
+    [
+     "DIRT",
+     0,
+     1
+    ]
+   ],
+   "top_ids": [
+    [
+     "LEAVES",
+     629
+    ],
+    [
+     "LOG",
+     130
+    ],
+    [
+     "DIRT",
+     1
+    ]
+   ],
+   "exposed": 1518
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "plant[14 hand-placed trees]",
+   "marker": null,
+   "final_total": 3104,
+   "final_red": 1552,
+   "final_blue": 1552,
+   "stats": {
+    "reads": 3792,
+    "set_calls": 1552,
+    "set_replaced": 5
+   },
+   "bbox_red": [
+    -87,
+    47,
+    -45,
+    -12,
+    67,
+    32
+   ],
+   "top_blocks": [
+    [
+     "LEAVES",
+     14,
+     944
+    ],
+    [
+     "LEAVES",
+     4,
+     201
+    ],
+    [
+     "LEAVES",
+     12,
+     196
+    ],
+    [
+     "LOG",
+     14,
+     88
+    ],
+    [
+     "LOG",
+     12,
+     56
+    ],
+    [
+     "LEAVES",
+     6,
+     55
+    ]
+   ],
+   "top_ids": [
+    [
+     "LEAVES",
+     1396
+    ],
+    [
+     "LOG",
+     144
+    ],
+    [
+     "WOOD_SLAB",
+     7
+    ],
+    [
+     "DIRT",
+     5
+    ]
+   ],
+   "exposed": 3054
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "boulders",
+   "marker": null,
+   "final_total": 336,
+   "final_red": 168,
+   "final_blue": 168,
+   "stats": {
+    "reads": 192,
+    "set_calls": 168,
+    "set_replaced": 125
+   },
+   "bbox_red": [
+    -113,
+    52,
+    -85,
+    -79,
+    74,
+    85
+   ],
+   "top_blocks": [
+    [
+     "STONE",
+     0,
+     74
+    ],
+    [
+     "STONE",
+     5,
+     63
+    ],
+    [
+     "COBBLE",
+     0,
+     31
+    ]
+   ],
+   "top_ids": [
+    [
+     "STONE",
+     137
+    ],
+    [
+     "COBBLE",
+     31
+    ]
+   ],
+   "exposed": 168
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "fallen_logs",
+   "marker": null,
+   "final_total": 0,
+   "final_red": 0,
+   "final_blue": 0,
+   "stats": {
+    "reads": 9
+   },
+   "exposed": 0
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "hedgerows",
+   "marker": null,
+   "final_total": 24,
+   "final_red": 12,
+   "final_blue": 12,
+   "stats": {
+    "reads": 53,
+    "set_calls": 12
+   },
+   "bbox_red": [
+    -31,
+    51,
+    78,
+    -23,
+    56,
+    82
+   ],
+   "top_blocks": [
+    [
+     "LEAVES",
+     4,
+     12
+    ]
+   ],
+   "top_ids": [
+    [
+     "LEAVES",
+     12
+    ]
+   ],
+   "exposed": 24
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "rift_face",
+   "marker": null,
+   "final_total": 730,
+   "final_red": 365,
+   "final_blue": 365,
+   "stats": {
+    "reads": 398,
+    "set_calls": 365
+   },
+   "bbox_red": [
+    -14,
+    36,
+    -87,
+    -10,
+    50,
+    87
+   ],
+   "top_blocks": [
+    [
+     "VINE",
+     2,
+     360
+    ],
+    [
+     "STONE",
+     5,
+     4
+    ],
+    [
+     "TALLGRASS",
+     1,
+     1
+    ]
+   ],
+   "top_ids": [
+    [
+     "VINE",
+     360
+    ],
+    [
+     "STONE",
+     4
+    ],
+    [
+     "TALLGRASS",
+     1
+    ]
+   ],
+   "exposed": 730
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "shop_signs",
+   "marker": null,
+   "final_total": 14,
+   "final_red": 7,
+   "final_blue": 7,
+   "stats": {
+    "reads": 17,
+    "tiles_sign": 7,
+    "set_calls": 7
+   },
+   "bbox_red": [
+    -66,
+    51,
+    -71,
+    -23,
+    56,
+    0
+   ],
+   "top_blocks": [
+    [
+     "WALL_SIGN",
+     3,
+     4
+    ],
+    [
+     "WALL_SIGN",
+     2,
+     2
+    ],
+    [
+     "WALL_SIGN",
+     4,
+     1
+    ]
+   ],
+   "top_ids": [
+    [
+     "WALL_SIGN",
+     7
+    ]
+   ],
+   "exposed": 14
+  },
+  {
+   "l1": "dressing.build",
+   "l2": "cover",
+   "marker": null,
+   "final_total": 1538,
+   "final_red": 769,
+   "final_blue": 769,
+   "stats": {
+    "reads": 28962,
+    "set_calls": 769
+   },
+   "bbox_red": [
+    -120,
+    46,
+    -88,
+    -12,
+    83,
+    87
+   ],
+   "top_blocks": [
+    [
+     "TALLGRASS",
+     1,
+     448
+    ],
+    [
+     "TALLGRASS",
+     2,
+     172
+    ],
+    [
+     "DANDELION",
+     0,
+     50
+    ],
+    [
+     "DOUBLE_PLANT",
+     2,
+     24
+    ],
+    [
+     "DOUBLE_PLANT",
+     10,
+     24
+    ],
+    [
+     "FLOWER",
+     0,
+     24
+    ]
+   ],
+   "top_ids": [
+    [
+     "TALLGRASS",
+     620
+    ],
+    [
+     "FLOWER",
+     51
+    ],
+    [
+     "DANDELION",
+     50
+    ],
+    [
+     "DOUBLE_PLANT",
+     48
+    ]
+   ],
+   "exposed": 1536
+  },
+  {
+   "l1": "gen.py (inline)",
+   "l2": null,
+   "marker": null,
+   "final_total": 8,
+   "final_red": 0,
+   "final_blue": 8,
+   "stats": {
+    "diff_created": 0,
+    "diff_removed": 0,
+    "diff_replaced": 8
+   },
+   "bbox_red": [
+    107,
+    73,
+    -10,
+    107,
+    74,
+    -4
+   ],
+   "top_blocks": [
+    [
+     "WOOL",
+     11,
+     8
+    ]
+   ],
+   "top_ids": [
+    [
+     "WOOL",
+     8
+    ]
+   ],
+   "exposed": 8
+  }
+ ],
+ "calls": {
+  "carve_tube[gallery]": 1,
+  "carve_tube[south]": 1,
+  "carve_tube[north]": 1,
+  "carve_tube[grotto]": 1,
+  "carve_tube[west]": 1,
+  "pillar_hall": 1,
+  "alcoves": 1,
+  "carve_ellipsoid[lake chamber]": 2,
+  "dress_cave": 1,
+  "stalagmites": 1,
+  "grotto": 1,
+  "lake": 1,
+  "mouth": 1,
+  "sinkhole": 1,
+  "mine": 1,
+  "shaft": 1,
+  "cellar": 1,
+  "square": 1,
+  "town": 1,
+  "house():town": 16,
+  "site()": 32,
+  "furnish()": 31,
+  "house():stone": 5,
+  "gaol_stair": 1,
+  "chapel": 1,
+  "inn_sign": 1,
+  "village": 1,
+  "house():village": 10,
+  "well": 1,
+  "headframe": 1,
+  "spoil_heap": 1,
+  "watch_house": 1,
+  "hut": 1,
+  "mill": 1,
+  "footbridge": 1,
+  "stone_bridge": 1,
+  "old_bridge": 1,
+  "pave[Spawn Lane]": 1,
+  "pave[Spawn Lane south]": 1,
+  "pave[Main Street]": 1,
+  "pave[Bridge Street]": 1,
+  "pave[North Lane]": 1,
+  "pave[Mill Lane]": 1,
+  "pave[Field Road]": 1,
+  "pave[Farm Track]": 1,
+  "pave[Falls Walk]": 1,
+  "pave[Spring Path]": 1,
+  "pave[Village Road]": 1,
+  "pave[Forest Path]": 1,
+  "pave[Clearing Path]": 1,
+  "path_to_door": 26,
+  "monument": 2,
+  "wheat_field": 1,
+  "barn": 1,
+  "haystacks": 1,
+  "hay_cart": 1,
+  "jetty_and_boat": 1,
+  "spring": 1,
+  "cutting": 1,
+  "stalls": 1,
+  "worn": 6,
+  "lamps": 3,
+  "gardens": 1,
+  "benches": 1,
+  "forest[seed=1]": 1,
+  "forest[seed=2]": 1,
+  "forest[seed=3]": 1,
+  "forest[seed=4]": 1,
+  "plant[knoll oak]": 1,
+  "plant[14 hand-placed trees]": 12,
+  "boulders": 1,
+  "fallen_logs": 1,
+  "hedgerows": 1,
+  "rift_face": 1,
+  "shop_signs": 1,
+  "cover": 1
+ },
+ "order": [
+  [
+   "terrain.write_land",
+   null,
+   null
+  ],
+  [
+   "terrain.write_falls",
+   null,
+   null
+  ],
+  [
+   "underground.build",
+   "carve_tube[gallery]",
+   null
+  ],
+  [
+   "underground.build",
+   "carve_tube[south]",
+   null
+  ],
+  [
+   "underground.build",
+   "carve_tube[north]",
+   null
+  ],
+  [
+   "underground.build",
+   "carve_tube[grotto]",
+   null
+  ],
+  [
+   "underground.build",
+   "carve_tube[west]",
+   null
+  ],
+  [
+   "underground.build",
+   "pillar_hall",
+   null
+  ],
+  [
+   "underground.build",
+   "alcoves",
+   null
+  ],
+  [
+   "underground.build",
+   "carve_ellipsoid[lake chamber]",
+   null
+  ],
+  [
+   "underground.build",
+   "dress_cave",
+   null
+  ],
+  [
+   "underground.build",
+   "stalagmites",
+   null
+  ],
+  [
+   "underground.build",
+   "grotto",
+   null
+  ],
+  [
+   "underground.build",
+   "lake",
+   null
+  ],
+  [
+   "underground.build",
+   "mouth",
+   null
+  ],
+  [
+   "underground.build",
+   "sinkhole",
+   null
+  ],
+  [
+   "underground.build",
+   "mine",
+   null
+  ],
+  [
+   "underground.build",
+   "shaft",
+   null
+  ],
+  [
+   "underground.build",
+   "cellar",
+   null
+  ],
+  [
+   "buildings.build",
+   "square",
+   null
+  ],
+  [
+   "buildings.build",
+   "town",
+   "site()"
+  ],
+  [
+   "buildings.build",
+   "town",
+   "house()"
+  ],
+  [
+   "buildings.build",
+   "town",
+   "furnish()"
+  ],
+  [
+   "buildings.build",
+   "gaol_stair",
+   null
+  ],
+  [
+   "buildings.build",
+   "chapel",
+   "site()"
+  ],
+  [
+   "buildings.build",
+   "chapel",
+   "house()"
+  ],
+  [
+   "buildings.build",
+   "chapel",
+   "furnish()"
+  ],
+  [
+   "buildings.build",
+   "chapel",
+   null
+  ],
+  [
+   "buildings.build",
+   "inn_sign",
+   null
+  ],
+  [
+   "buildings.build",
+   "village",
+   "site()"
+  ],
+  [
+   "buildings.build",
+   "village",
+   "house()"
+  ],
+  [
+   "buildings.build",
+   "village",
+   "furnish()"
+  ],
+  [
+   "buildings.build",
+   "village",
+   null
+  ],
+  [
+   "buildings.build",
+   "well",
+   null
+  ],
+  [
+   "buildings.build",
+   "headframe",
+   null
+  ],
+  [
+   "buildings.build",
+   "spoil_heap",
+   null
+  ],
+  [
+   "buildings.build",
+   "watch_house",
+   "house()"
+  ],
+  [
+   "buildings.build",
+   "watch_house",
+   "furnish()"
+  ],
+  [
+   "buildings.build",
+   "watch_house",
+   "site()"
+  ],
+  [
+   "buildings.build",
+   "watch_house",
+   null
+  ],
+  [
+   "buildings.build",
+   "hut",
+   "site()"
+  ],
+  [
+   "buildings.build",
+   "hut",
+   "house()"
+  ],
+  [
+   "buildings.build",
+   "hut",
+   "furnish()"
+  ],
+  [
+   "buildings.build",
+   "hut",
+   null
+  ],
+  [
+   "buildings.build",
+   "mill",
+   "site()"
+  ],
+  [
+   "buildings.build",
+   "mill",
+   "house()"
+  ],
+  [
+   "buildings.build",
+   "mill",
+   "furnish()"
+  ],
+  [
+   "buildings.build",
+   "mill",
+   null
+  ],
+  [
+   "buildings.build",
+   "footbridge",
+   null
+  ],
+  [
+   "buildings.build",
+   "stone_bridge",
+   null
+  ],
+  [
+   "buildings.build",
+   "old_bridge",
+   null
+  ],
+  [
+   "buildings.build",
+   "pave[Spawn Lane]",
+   null
+  ],
+  [
+   "buildings.build",
+   "pave[Spawn Lane south]",
+   null
+  ],
+  [
+   "buildings.build",
+   "pave[Main Street]",
+   null
+  ],
+  [
+   "buildings.build",
+   "pave[Bridge Street]",
+   null
+  ],
+  [
+   "buildings.build",
+   "pave[North Lane]",
+   null
+  ],
+  [
+   "buildings.build",
+   "pave[Mill Lane]",
+   null
+  ],
+  [
+   "buildings.build",
+   "pave[Field Road]",
+   null
+  ],
+  [
+   "buildings.build",
+   "pave[Farm Track]",
+   null
+  ],
+  [
+   "buildings.build",
+   "pave[Falls Walk]",
+   null
+  ],
+  [
+   "buildings.build",
+   "pave[Spring Path]",
+   null
+  ],
+  [
+   "buildings.build",
+   "pave[Village Road]",
+   null
+  ],
+  [
+   "buildings.build",
+   "pave[Forest Path]",
+   null
+  ],
+  [
+   "buildings.build",
+   "pave[Clearing Path]",
+   null
+  ],
+  [
+   "buildings.build",
+   "path_to_door",
+   null
+  ],
+  [
+   "buildings.build",
+   "monument",
+   null
+  ],
+  [
+   "dressing.build",
+   "wheat_field",
+   null
+  ],
+  [
+   "dressing.build",
+   "barn",
+   "site()"
+  ],
+  [
+   "dressing.build",
+   "barn",
+   "house()"
+  ],
+  [
+   "dressing.build",
+   "barn",
+   "furnish()"
+  ],
+  [
+   "dressing.build",
+   "barn",
+   null
+  ],
+  [
+   "dressing.build",
+   "haystacks",
+   null
+  ],
+  [
+   "dressing.build",
+   "hay_cart",
+   null
+  ],
+  [
+   "dressing.build",
+   "jetty_and_boat",
+   null
+  ],
+  [
+   "dressing.build",
+   "spring",
+   null
+  ],
+  [
+   "dressing.build",
+   "cutting",
+   null
+  ],
+  [
+   "dressing.build",
+   "stalls",
+   null
+  ],
+  [
+   "dressing.build",
+   "worn",
+   null
+  ],
+  [
+   "dressing.build",
+   "lamps",
+   null
+  ],
+  [
+   "dressing.build",
+   "gardens",
+   null
+  ],
+  [
+   "dressing.build",
+   "benches",
+   null
+  ],
+  [
+   "dressing.build",
+   "forest[seed=1]",
+   null
+  ],
+  [
+   "dressing.build",
+   "forest[seed=2]",
+   null
+  ],
+  [
+   "dressing.build",
+   "forest[seed=3]",
+   null
+  ],
+  [
+   "dressing.build",
+   "forest[seed=4]",
+   null
+  ],
+  [
+   "dressing.build",
+   "plant[knoll oak]",
+   null
+  ],
+  [
+   "dressing.build",
+   "plant[14 hand-placed trees]",
+   null
+  ],
+  [
+   "dressing.build",
+   "boulders",
+   null
+  ],
+  [
+   "dressing.build",
+   "fallen_logs",
+   null
+  ],
+  [
+   "dressing.build",
+   "hedgerows",
+   null
+  ],
+  [
+   "dressing.build",
+   "rift_face",
+   null
+  ],
+  [
+   "dressing.build",
+   "shop_signs",
+   null
+  ],
+  [
+   "dressing.build",
+   "cover",
+   null
+  ],
+  [
+   "gen.py (inline)",
+   null,
+   null
+  ]
+ ]
+}

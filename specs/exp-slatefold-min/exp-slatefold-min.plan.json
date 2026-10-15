@@ -1,0 +1,348 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Slatefold",
+  "notes": "Two terraced slate hillsides facing across the void."
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 13
+ },
+ "pieces": [
+  {
+   "id": "quarry-main",
+   "role": "piece",
+   "rect": [
+    -4,
+    4,
+    13,
+    5
+   ],
+   "surface": 8
+  },
+  {
+   "id": "quarry-east",
+   "role": "piece",
+   "rect": [
+    9,
+    7,
+    3,
+    2
+   ],
+   "surface": 8
+  },
+  {
+   "id": "kiln-room",
+   "role": "wool-room",
+   "rect": [
+    9,
+    4,
+    3,
+    3
+   ],
+   "surface": 8
+  },
+  {
+   "id": "spoil-shelf",
+   "role": "piece",
+   "rect": [
+    -8,
+    4,
+    4,
+    5
+   ],
+   "surface": 11
+  },
+  {
+   "id": "tower-room",
+   "role": "wool-room",
+   "rect": [
+    -12,
+    4,
+    4,
+    3
+   ],
+   "surface": 16
+  },
+  {
+   "id": "bench",
+   "role": "piece",
+   "rect": [
+    -12,
+    7,
+    4,
+    22
+   ],
+   "surface": 16
+  },
+  {
+   "id": "cart-0",
+   "role": "piece",
+   "rect": [
+    2,
+    9,
+    4,
+    1
+   ],
+   "surface": 9
+  },
+  {
+   "id": "cart-1",
+   "role": "piece",
+   "rect": [
+    2,
+    10,
+    4,
+    1
+   ],
+   "surface": 10
+  },
+  {
+   "id": "cart-2",
+   "role": "piece",
+   "rect": [
+    2,
+    11,
+    4,
+    1
+   ],
+   "surface": 11
+  },
+  {
+   "id": "hamlet-a",
+   "role": "piece",
+   "rect": [
+    -8,
+    9,
+    10,
+    4
+   ],
+   "surface": 12
+  },
+  {
+   "id": "hamlet-b",
+   "role": "piece",
+   "rect": [
+    6,
+    9,
+    6,
+    4
+   ],
+   "surface": 12
+  },
+  {
+   "id": "cart-head",
+   "role": "piece",
+   "rect": [
+    2,
+    12,
+    4,
+    1
+   ],
+   "surface": 12
+  },
+  {
+   "id": "hamlet-row",
+   "role": "piece",
+   "rect": [
+    -8,
+    13,
+    20,
+    4
+   ],
+   "surface": 12
+  },
+  {
+   "id": "hamlet-top",
+   "role": "piece",
+   "rect": [
+    -4,
+    17,
+    16,
+    3
+   ],
+   "surface": 12
+  },
+  {
+   "id": "scree-gully",
+   "role": "piece",
+   "rect": [
+    -8,
+    20,
+    5,
+    4
+   ],
+   "surface": 12
+  },
+  {
+   "id": "bench-stair-0",
+   "role": "piece",
+   "rect": [
+    -5,
+    17,
+    1,
+    3
+   ],
+   "surface": 13
+  },
+  {
+   "id": "bench-stair-1",
+   "role": "piece",
+   "rect": [
+    -6,
+    17,
+    1,
+    3
+   ],
+   "surface": 14
+  },
+  {
+   "id": "bench-stair-2",
+   "role": "piece",
+   "rect": [
+    -7,
+    17,
+    1,
+    3
+   ],
+   "surface": 15
+  },
+  {
+   "id": "bench-landing",
+   "role": "piece",
+   "rect": [
+    -8,
+    17,
+    1,
+    3
+   ],
+   "surface": 16
+  },
+  {
+   "id": "spawn-stair-0",
+   "role": "piece",
+   "rect": [
+    -3,
+    20,
+    6,
+    1
+   ],
+   "surface": 13
+  },
+  {
+   "id": "spawn-stair-1",
+   "role": "piece",
+   "rect": [
+    -3,
+    21,
+    6,
+    1
+   ],
+   "surface": 14
+  },
+  {
+   "id": "spawn-stair-2",
+   "role": "piece",
+   "rect": [
+    -3,
+    22,
+    6,
+    1
+   ],
+   "surface": 15
+  },
+  {
+   "id": "terrace-w",
+   "role": "piece",
+   "rect": [
+    -8,
+    24,
+    5,
+    5
+   ],
+   "surface": 16
+  },
+  {
+   "id": "terrace-e",
+   "role": "piece",
+   "rect": [
+    3,
+    24,
+    3,
+    5
+   ],
+   "surface": 16
+  },
+  {
+   "id": "terrace-front",
+   "role": "piece",
+   "rect": [
+    -3,
+    23,
+    6,
+    2
+   ],
+   "surface": 16
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    -3,
+    25,
+    6,
+    4
+   ],
+   "surface": 16
+  }
+ ],
+ "zones": [
+  {
+   "id": "crossing",
+   "rect": [
+    -12,
+    -4,
+    24,
+    8
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     12,
+     8
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-kiln",
+    "piece": "kiln-room",
+    "at": [
+     8,
+     6
+    ]
+   },
+   {
+    "id": "wool-tower",
+    "piece": "tower-room",
+    "at": [
+     8,
+     6
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": []
+}

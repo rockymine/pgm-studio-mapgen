@@ -1,0 +1,23 @@
+{
+  "recipe": 1,
+  "board": "vale",
+  "world": {"x0": -100, "z0": -100, "sx": 200, "sz": 200, "sy": 128},
+  "library": "pgmvox 0.19.0",
+  "steps": [
+    {"id": "base", "op": "field.noise", "params": {"base": 44, "terms": [
+      {"kind": "fbm", "amp": 14, "cell": 48, "octaves": 4, "seed": 3},
+      {"kind": "ridged", "amp": 6, "cell": 24, "octaves": 3, "seed": 4},
+      {"kind": "tilt", "dz": -0.08}]}},
+    {"id": "north-scarp", "op": "landform.scarp", "params": {"line": [[-100, -52], [100, -40]], "rise": 18, "side": -1, "cliff": 3, "talus": 8, "reach": 70}},
+    {"id": "butte", "op": "landform.butte", "params": {"at": [45, -74], "r": 11, "top": 82, "seed": 1}},
+    {"id": "spire", "op": "landform.spire", "params": {"at": [-55, -78], "r": 7, "top": 104, "seed": 2}},
+    {"id": "round-hill", "op": "landform.spire", "params": {"at": [-45, 52], "r": 20, "top": 66, "taper": 0.8, "jag": 0.05, "seed": 3}},
+    {"id": "terraces", "op": "landform.terraces", "params": {"mask": {"disc": [-45, 52, 20]}, "step": 3}},
+    {"id": "sea", "op": "landform.coast", "params": {"sea": 30, "outline": [[-92, -96], [-20, -98], [60, -94], [95, -70], [93, 10], [80, 70], [40, 92], [-30, 90], [-88, 70], [-96, 0]], "shelf": 24, "depth": 8}, "writes": {"water": "sea"}},
+    {"id": "canyon", "op": "landform.canyon", "params": {"path": [[-4, -78], [0, -62], [-8, -42]], "width": 22, "depth": 16, "floor": 0.3, "wall": 3, "ledges": 3, "downhill": true, "lowest": 32}},
+    {"id": "river", "op": "landform.watercourse", "params": {"path": [[-8, -42], [6, -10], [30, 20], [48, 55], [58, 95]], "width": 6, "depth": 2, "bank": 4, "fall_min": 2, "reach_min": 12, "lowest": 29, "into": "sea"}, "writes": {"water": "river"}},
+    {"id": "roads", "op": "route.network", "params": {"places": {"harbour": [60, 80], "west shore": [-80, 30], "village": [-30, 20], "uplands": [55, -55], "canyon rim": [20, -75]}, "max_grade": 0.14285714285714285, "bridge": 8, "grade": {"width": 4, "shoulder": 3}, "water": ["river", "sea"]}, "writes": {"mask": "roads", "routes": "roads"}},
+    {"id": "footpath", "op": "route.find", "params": {"from": [-30, 20], "to": [-50, -70], "max_grade": 0.5, "cell": 2, "turn": 2.0, "simplify": 1.0, "smooth": 1, "grade": {"width": 2, "max_grade": 0.9, "shoulder": 2}, "water": ["river", "sea"], "keep": "roads"}, "writes": {"routes": "footpath"}},
+    {"id": "hold", "op": "landform.hold", "params": {"waters": ["river", "sea"]}}
+  ]
+}

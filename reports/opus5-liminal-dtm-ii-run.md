@@ -46,7 +46,7 @@ today, because its spec no longer reaches that gate: see below.
 Driving `specs/opus5-interchange` unchanged against this build stops at `POST /map/from-documents`
 with **400 `HS3`** — *"roofSlab is stone and the roof it steps in halves is quartz"* — once for
 `roomStyles.spawn.roofSlab` and once for each of five `dressing.props[*].style.roofSlab`. The board
-in `maps/opus5-interchange` therefore cannot be rebuilt from the documents beside it. Nothing in the
+in `maps/dtcm/interchange` therefore cannot be rebuilt from the documents beside it. Nothing in the
 repository says so, and nothing would have found it: no gate re-drives a committed spec.
 
 ### A water channel cuts anything above its water line, on every layer

@@ -129,7 +129,7 @@ without the author, recorded here rather than filed as fact.
 
 ## Where things ended up
 
-`maps/sonnet-r5-fellgate/` — world, `map.xml`, ten renders across the plan/theme/build/export stages.
+`maps/ctw/fellgate_moor/` — world, `map.xml`, ten renders across the plan/theme/build/export stages.
 `specs/sonnet-r5-fellgate/` — the authored plan and finish, plus the two documents `tools/drive.py` wrote
 back (`.layout.json`, `.intent.json`). `review/sonnet-r5-fellgate.md` — the measured record. The final
 `GET /export` is a clean 200 with no `Pgm-Warnings`; `POST /plan/evaluate` on the stored plan still carries

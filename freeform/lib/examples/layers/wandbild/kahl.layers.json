@@ -1,0 +1,162 @@
+{
+ "document": "layers",
+ "version": "draft-3",
+ "board": {
+  "name": "Wandbild: Ohne Wandebene",
+  "x": [
+   -43,
+   42
+  ],
+  "z": [
+   -33,
+   32
+  ],
+  "floor": 0,
+  "height": 64,
+  "seed": 5,
+  "text": "Nur der Boden: gelegt in Gesteinsbetten, oben bemalt."
+ },
+ "fields": {
+  "small": {
+   "fbm": {
+    "cell": 12,
+    "octaves": 3,
+    "seed": 31
+   }
+  },
+  "patch": {
+   "fbm": {
+    "cell": 5,
+    "octaves": 2,
+    "seed": 32
+   }
+  }
+ },
+ "ground": [
+  {
+   "id": "umriss",
+   "op": "outline",
+   "box": [
+    -40,
+    -30,
+    39,
+    29
+   ],
+   "insets": {
+    "west": 0,
+    "east": 0,
+    "north": 0,
+    "south": 0
+   },
+   "note": "a plateau over the void, its sides straight so a bay has room"
+  },
+  {
+   "id": "grund",
+   "op": "base",
+   "height": 24,
+   "terms": [
+    {
+     "noise": {
+      "field": "small",
+      "rise": 0.6
+     }
+    }
+   ],
+   "note": "24, barely rolling"
+  },
+  {
+   "id": "oberstufe",
+   "op": "level",
+   "mode": "set",
+   "top": 31,
+   "inner": 1.0,
+   "outer": 1.0,
+   "areas": [
+    {
+     "polygon": [
+      [
+       -34,
+       -26
+      ],
+      [
+       6,
+       -26
+      ],
+      [
+       12,
+       -14
+      ],
+      [
+       -2,
+       -6
+      ],
+      [
+       -34,
+       -8
+      ]
+     ]
+    }
+   ],
+   "note": "an upper terrace in the north-west, seven over the meadow: a cliff"
+  },
+  {
+   "id": "senke",
+   "op": "level",
+   "mode": "set",
+   "top": 19,
+   "inner": 1.0,
+   "outer": 1.0,
+   "areas": [
+    {
+     "rect": [
+      10,
+      6,
+      34,
+      26
+     ]
+    }
+   ],
+   "note": "a sunken court in the south-east, five under it"
+  },
+  {
+   "id": "ganz",
+   "op": "round",
+   "note": "whole blocks"
+  }
+ ],
+ "paint": [
+  {
+   "block": "GRAVEL",
+   "area": {
+    "rect": [
+     10,
+     6,
+     34,
+     26
+    ]
+   },
+   "noise": {
+    "field": "patch",
+    "lo": -0.15
+   }
+  },
+  {
+   "block": [
+    "DIRT",
+    2
+   ],
+   "noise": {
+    "field": "patch",
+    "lo": 0.55
+   }
+  },
+  {
+   "block": "COBBLE",
+   "slope": [
+    55,
+    null
+   ]
+  }
+ ],
+ "lay": {}
+}

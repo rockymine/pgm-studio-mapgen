@@ -216,9 +216,9 @@ Four maps were authored and exported successfully. All have well-formed `map.xml
 The studio works for plan-level authoring but requires significant documentation and/or examples for detailed sketch-level customization (themes, styles, relief, dressing).
 
 **Maps delivered:**
-- `maps/haiku-chancel/map.xml` ✓
-- `maps/haiku-ladder/map.xml` ✓
-- `maps/haiku-wharf/map.xml` ✓
-- `maps/haiku-winterfold/map.xml` ✓
+- `maps/dtcm/sunk_chancel/map.xml` ✓
+- `maps/dtcm/ochre_ladder/map.xml` ✓
+- `maps/dtcm/kelp_wharf/map.xml` ✓
+- `maps/dtcm/winterfold/map.xml` ✓
 
 All compile, export, and load.

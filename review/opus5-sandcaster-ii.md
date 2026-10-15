@@ -1,6 +1,6 @@
 # Sandcaster II — a range around an open board, and the workings under it
 
-`maps/opus5-sandcaster-ii` · `specs/opus5-sandcaster-ii` · **100 × 400 blocks**, 100 × 200 a side ·
+`maps/dtcm/sandcaster_ii` · `specs/opus5-sandcaster-ii` · **100 × 400 blocks**, 100 × 200 a side ·
 destroy, two destroyables a team · `rot_180` · 24 players
 
 The first Sandcaster answered "tunnels, two destroyables, 100 × 200 a side, organic border, three

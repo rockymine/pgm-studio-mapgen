@@ -1,0 +1,205 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Slatefold"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 22
+ },
+ "pieces": [
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -4,
+    -28,
+    7,
+    5
+   ],
+   "surface": 30
+  },
+  {
+   "id": "kiln",
+   "role": "wool-room",
+   "rect": [
+    -12,
+    -20,
+    5,
+    5
+   ],
+   "surface": 22
+  },
+  {
+   "id": "winding",
+   "role": "wool-room",
+   "rect": [
+    8,
+    -20,
+    4,
+    6
+   ],
+   "surface": 22
+  },
+  {
+   "id": "ground-1",
+   "role": "piece",
+   "rect": [
+    -12,
+    -28,
+    8,
+    6
+   ],
+   "surface": 30
+  },
+  {
+   "id": "ground-2",
+   "role": "piece",
+   "rect": [
+    3,
+    -28,
+    9,
+    6
+   ],
+   "surface": 30
+  },
+  {
+   "id": "ground-3",
+   "role": "piece",
+   "rect": [
+    -4,
+    -23,
+    7,
+    1
+   ],
+   "surface": 30
+  },
+  {
+   "id": "ground-4",
+   "role": "piece",
+   "rect": [
+    -12,
+    -22,
+    24,
+    2
+   ],
+   "surface": 22
+  },
+  {
+   "id": "ground-5",
+   "role": "piece",
+   "rect": [
+    -7,
+    -20,
+    15,
+    7
+   ],
+   "surface": 22
+  },
+  {
+   "id": "ground-6",
+   "role": "piece",
+   "rect": [
+    -12,
+    -15,
+    5,
+    2
+   ],
+   "surface": 22
+  },
+  {
+   "id": "ground-7",
+   "role": "piece",
+   "rect": [
+    8,
+    -14,
+    4,
+    1
+   ],
+   "surface": 22
+  },
+  {
+   "id": "ground-8",
+   "role": "piece",
+   "rect": [
+    -12,
+    -13,
+    24,
+    9
+   ],
+   "surface": 14
+  }
+ ],
+ "zones": [
+  {
+   "id": "strait",
+   "rect": [
+    -10,
+    -4,
+    20,
+    8
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     16,
+     8
+    ],
+    "facing": "back",
+    "footprint": [
+     7,
+     1,
+     20,
+     15
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "spawn",
+    "at": [
+     1.5,
+     4.5
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-kiln",
+    "piece": "kiln",
+    "at": [
+     10,
+     10
+    ],
+    "footprint": [
+     3,
+     3,
+     14,
+     14
+    ]
+   },
+   {
+    "id": "wool-winding",
+    "piece": "winding",
+    "at": [
+     8,
+     12
+    ],
+    "footprint": [
+     3,
+     7,
+     10,
+     10
+    ]
+   }
+  ]
+ }
+}

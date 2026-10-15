@@ -21,7 +21,7 @@ houses on two raised garden blocks, and the S-Bahn running out of a cut-and-cove
 quarter, up a ramp in an open cutting and away over the bridge.**
 
 90 × 200, `rot_180`, cell 5, one destroyable a team at `(∓15, ∓51)`, spawns at `(0, ∓90)`.
-`maps/opus5-lindenkreuz` · `specs/opus5-lindenkreuz` · `review/opus5-lindenkreuz.md`.
+`maps/dtcm/lindenkreuz` · `specs/opus5-lindenkreuz` · `review/opus5-lindenkreuz.md`.
 
 ## Reading a map that already exists
 
@@ -250,7 +250,7 @@ For anyone rebuilding it: `specs/opus5-lindenkreuz/build-spec.py` writes both do
 
 ```bash
 python3 specs/opus5-lindenkreuz/build-spec.py
-python3 tools/drive.py specs/opus5-lindenkreuz "Lindenkreuz" --out maps/opus5-lindenkreuz
+python3 tools/drive.py specs/opus5-lindenkreuz "Lindenkreuz" --out maps/dtcm/lindenkreuz
 ```
 
 The one ordering that is not obvious: **`addLayers` puts the lid after the compiled ground and before

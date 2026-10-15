@@ -293,7 +293,7 @@ Needs the API running (`dotnet run --project src/PgmStudio.Api`) and a migrated 
 ```bash
 dotnet run tools/build.cs -- specs/clayclay_redux.plan.json specs/clayclay_redux.theme.json \
                             specs/clayclay_redux.room.json "ClayClay Redux" out.zip
-dotnet run tools/column-probe.cs -- maps/clayclay_redux/region -54 -24 -50 -24
+dotnet run tools/column-probe.cs -- maps/ctw/clayclay_redux/region -54 -24 -50 -24
 ```
 
 ## Naming

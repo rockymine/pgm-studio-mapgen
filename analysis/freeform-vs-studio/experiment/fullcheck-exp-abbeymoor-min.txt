@@ -1,0 +1,41 @@
+== the spec, written by its script
+  studio at http://localhost:7894/api
+  studio at http://localhost:7894/api
+plan 5 pieces; refinement: 35 ground shapes, 22 crypt shapes, 38 props
+== the board, before a map row exists
+  POST  /plan/evaluate                                 200
+    score 4.881518811607645  valid True
+    [complaint] LN5      the layout has 34.37 percent of its ground off every route between waypoints, more than 12 percent
+    [complaint] GO1      monument 'market-cross' has 2.833 times the walking distance from the nearest enemy spawn that it has from its team's nearest spawn, less than 3 times   @ spawn
+    [complaint] GO2      objectives 'abbey-stone' and 'market-cross' have a walking distance of 67 blocks between them, more than 65 blocks
+    [complaint] GO3      objectives 'abbey-stone' and 'abbey-stone' have a walking distance of 173 blocks between them, more than 150 blocks
+    [complaint] EL1      pieces 'moor-n' and 'bog' differ by 4 blocks in height where they share an edge, more than 1 block   @ moor-n, bog
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-41, -30) at 22 to (-31, -30) at 18 to `relief.team.marks`
+            {"id":"ramp-moor-n-bog","kind":"line","width":6,"points":[[-41,-30],[-31,-30]],"h":[22,18]}
+    [complaint] EL1      pieces 'moor-s' and 'bog' differ by 4 blocks in height where they share an edge, more than 1 block   @ moor-s, bog
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-41, 34) at 22 to (-31, 34) at 18 to `relief.team.marks`
+            {"id":"ramp-moor-s-bog","kind":"line","width":6,"points":[[-41,34],[-31,34]],"h":[22,18]}
+    [complaint] EL1      pieces 'moor-m' and 'bog' differ by 4 blocks in height where they share an edge, more than 1 block   @ moor-m, bog
+      edit  layout.relief.team.marks  add: add a line mark six wide from (-41, 4) at 22 to (-31, 4) at 18 to `relief.team.marks`
+            {"id":"ramp-moor-m-bog","kind":"line","width":6,"points":[[-41,4],[-31,4]],"h":[22,18]}
+    [complaint] ST9      spawn room on piece 'spawn' is 18 by 22 blocks, more than 20 by 20 blocks   @ spawn
+      edit  plan.placements.spawns[red-spawn].footprint  set: set `placements.spawns[red-spawn].footprint` to [1, 2, 18, 20]
+            [1,2,18,20]
+  POST  /plan/inspect                                  200
+  GET   /rules/terms                                   200
+    goal abbey-stone (destroyable): own 55 enemy 198 ratio 3.6   (GO1 wants 3-4, authored)
+    goal market-cross (destroyable): own 66 enemy 187 ratio 2.8333333333333335   (GO1 wants 3-4, authored)
+== what the run would change
+  PUT   /map/exp-abbeymoor-min-fullcheck/source?dry=true 422
+    [refusal  ] SK13     add 'step-1' on layer 'crypt' fills 6 columns from (-82, -35) that subtract 'stair-well' on layer 'ground' takes away   @ step-1, stair-well
+    [refusal  ] SK13     add 'step-2' on layer 'crypt' fills 6 columns from (-80, -35) that subtract 'stair-well' on layer 'ground' takes away   @ step-2, stair-well
+    [refusal  ] SK13     add 'step-3' on layer 'crypt' fills 6 columns from (-78, -35) that subtract 'stair-well' on layer 'ground' takes away   @ step-3, stair-well
+    [refusal  ] SK13     add 'step-4' on layer 'crypt' fills 12 columns from (-76, -35) that subtract 'stair-well' on layer 'ground' takes away   @ step-4, stair-well
+    [refusal  ] SK13     add 'step-5' on layer 'crypt' fills 6 columns from (-72, -35) that subtract 'stair-well' on layer 'ground' takes away   @ step-5, stair-well
+    [refusal  ] SK13     add 'step-6' on layer 'crypt' fills 6 columns from (-70, -35) that subtract 'stair-well' on layer 'ground' takes away   @ step-6, stair-well
+    [refusal  ] SK13     add 'step-7' on layer 'crypt' fills 6 columns from (-68, -35) that subtract 'stair-well' on layer 'ground' takes away   @ step-7, stair-well
+    [refusal  ] SK13     add 'step-8' on layer 'crypt' fills 6 columns from (-66, -35) that subtract 'stair-well' on layer 'ground' takes away   @ step-8, stair-well
+    [refusal  ] SK13     add 'lane-floor' on layer 'crypt' fills 42 columns from (-68, -30) that subtract 'lane-cut' on layer 'ground' takes away   @ lane-floor, lane-cut
+    [refusal  ] SK13     add 'lane-apron-1' on layer 'crypt' fills 6 columns from (-54, -30) that subtract 'lane-cut' on layer 'ground' takes away   @ lane-apron-1, lane-cut
+    [refusal  ] SK13     add 'lane-apron-2' on layer 'crypt' fills 6 columns from (-52, -30) that subtract 'lane-cut' on layer 'ground' takes away   @ lane-apron-2, lane-cut
+    add 'step-1' on layer 'crypt' fills 6 columns from (-82, -35) that subtract 'stair-well' on layer 'ground' takes away; add 'step-2' on layer 'crypt' fills 6 columns from (-80, -35) that subtract 'stair-well' on layer 'ground' takes away; add 'step-3' on layer 'crypt' fills 6 columns from (-78, -35) that subtract 'stair-well' on layer 'ground' takes away; add 'step-4' on layer 'crypt' fills 12 columns from (-76, -35) that subtract 'stair-well' on layer 'ground' takes away; add 'step-5' on layer 'crypt' fills 6 columns from (-72, -35) that subtract 'stair-well' on layer 'ground' takes away; add 'step-6' on layer 'crypt' fills 6 columns from (-70, -35) that subtract 'stair-well' on layer 'ground' takes away; add 'step-7' on layer 'crypt' fills 6 columns from (-68, -35) that subtract 'stair-well' on layer 'ground' takes away; add 'step-8' on layer 'crypt' fills 6 columns from (-66, -35) that subtract 'stair-well' on layer 'ground' takes away; add 'lane-floor' on layer 'crypt' fills 42 columns from (-68, -30) that subtract 'lane-cut' on layer 'ground' takes away; add 'lane-apron-1' on layer 'crypt' fills 6 columns from (-54, -30) that subtract 'lane-cut' on layer 'ground' takes away; add 'lane-apron-2' on layer 'crypt' fills 6 columns from (-52, -30) that subtract 'lane-cut' on layer 'ground' takes away

@@ -1,6 +1,6 @@
 # Automaton — a board whose whole finish is sculpture
 
-`maps/opus5-automaton` · `specs/opus5-automaton` · **110 × 110 blocks** · destroy, one monument a team ·
+`maps/dtcm/automaton` · `specs/opus5-automaton` · **110 × 110 blocks** · destroy, one monument a team ·
 `rot_180` · 12 players · **31 layers**
 
 The board exists to carry the props, so its ground says as little as a board can: one square piece, one spawn

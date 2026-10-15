@@ -1,0 +1,161 @@
+<map proto="1.5.0">
+<name>Riad</name>
+<version>0.1.0</version>
+<objective>Hold the flag for 200 seconds. While your team holds it, your dead wait.</objective>
+<gamemode>kotf</gamemode>
+<authors>
+    <author>Claude (freeform generator)</author>
+</authors>
+<!-- written out in full from PublicMaps' conquest and kotf includes, so the map needs neither -->
+<teams>
+    <team id="red-team" color="red" max="16">Red</team>
+    <team id="blue-team" color="blue" max="16">Blue</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" material="golden apple"/>
+        <item slot="3" material="compass"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="3">projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots"/>
+        <effect duration="7.5s" amplifier="5">resistance</effect>
+        <game-mode>adventure</game-mode>
+    </kit>
+    <!-- the carrier: four hearts, slowed, a moment of absorption -->
+    <kit id="flag-kit" force="true">
+        <action>
+            <enchant-item ignore-metadata="true" enchantment="projectile_protection" level="2">
+                <find material="chainmail leggings"/>
+            </enchant-item>
+        </action>
+        <max-health>8</max-health>
+        <effect duration="3s" amplifier="2">absorption</effect>
+        <effect>slowness</effect>
+    </kit>
+    <!-- on the drop: health back, slowness off, and every living player regenerates -->
+    <kit id="reset-health" force="true">
+        <action>
+            <enchant-item ignore-metadata="true" enchantment="projectile_protection" level="3">
+                <find material="chainmail leggings"/>
+            </enchant-item>
+        </action>
+        <max-health>20</max-health>
+        <effect duration="0s" amplifier="0">slowness</effect>
+        <effect duration="2s" amplifier="10">regeneration</effect>
+        <action>
+            <switch-scope inner="match">
+                <switch-scope inner="player" filter="all(alive,not(flag-carrier))">
+                    <kit>
+                        <effect duration="4s" amplifier="3">regeneration</effect>
+                    </kit>
+                </switch-scope>
+            </switch-scope>
+        </action>
+    </kit>
+</kits>
+<filters>
+    <!-- a team may respawn unless one of its own is carrying the flag -->
+    <any id="has-flag">
+        <carrying-flag id="flag-carrier">flag</carrying-flag>
+        <not>
+            <same-team>
+                <filter id="flag-carrier"/>
+            </same-team>
+        </not>
+    </any>
+    <deny id="deny-flag-carrier">
+        <filter id="flag-carrier"/>
+    </deny>
+    <team id="only-red">red-team</team>
+    <team id="only-blue">blue-team</team>
+</filters>
+<spawns>
+    <default yaw="90">
+        <region><point>0.5,40,0.5</point></region>
+    </default>
+    <spawn team="red-team" kit="spawn-kit" filter="has-flag" yaw="0">
+        <region><point>0.5,33,-54.5</point></region>
+    </spawn>
+    <spawn team="blue-team" kit="spawn-kit" filter="has-flag" yaw="180">
+        <region><point>0.5,33,55.5</point></region>
+    </spawn>
+</spawns>
+<respawn delay="3s" auto="true" spectate="true">
+    <message>
+        {"translate":"death.respawn.confirmed.waiting.flagDropped"}
+    </message>
+</respawn>
+<regions>
+    <!-- the spawn houses: the deck room, the patio under it and its doors -->
+    <cuboid id="red-spawn" min="-9,20,-59" max="10,38,-44"/>
+    <cuboid id="blue-spawn" min="-9,20,45" max="10,38,60"/>
+    <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+    <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+    <!-- the carrier stays in the middle: up to the purple line and no further into either back garden, and
+         off the arcade roofs; the stones that climb to them stand behind the line -->
+    <union id="carrier-out">
+        <cuboid min="-60,0,-70" max="60,64,-32"/>
+        <cuboid min="-60,0,33" max="60,64,70"/>
+        <cuboid min="-13,25,-38" max="-8,64,-17"/>
+        <cuboid min="9,25,-38" max="14,64,-17"/>
+        <cuboid min="-13,25,18" max="-8,64,39"/>
+        <cuboid min="9,25,18" max="14,64,39"/>
+    </union>
+    <apply enter="deny-flag-carrier" region="carrier-out" message="You may not take the flag past the purple line or onto the roofs!"/>
+    <apply block="never" use="never"/>
+</regions>
+<flags>
+    <flag id="flag" name="Flag" color="purple" shared="true" points-rate="1"
+          pickup-kit="flag-kit" drop-kit="reset-health" flag-proximity-metric="none" show-respawn-on-pickup="false">
+        <post return-time="0s" respawn-time="15s">
+            <post name="the Cistern">0.5,25,0.5</post>
+            <post name="the Mirador" yaw="90">-41.5,25,0.5</post>
+            <post name="the Minaret" yaw="-90">30.5,26,0.5</post>
+        </post>
+    </flag>
+</flags>
+<compass show-distance="true">
+    <player filter="flag-carrier" show-player="true" name="Flag Carrier"/>
+</compass>
+<score>
+    <limit>200</limit>
+</score>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+    <tool>compass</tool>
+</toolrepair>
+<itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
+    <item>golden apple</item>
+    <item>arrow</item>
+    <item>compass</item>
+</itemkeep>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
+    <item>banner</item>
+</itemremove>
+<kill-rewards>
+    <kill-reward>
+        <item amount="6" material="arrow"/>
+    </kill-reward>
+</kill-rewards>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+<world>
+    <timeset>6000</timeset>
+    <timelock>on</timelock>
+</world>
+</map>

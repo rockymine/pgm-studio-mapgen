@@ -1,0 +1,734 @@
+# pgmvox — the shared library for freeform boards
+
+The twenty freeform boards each carried their own copies of the same helpers, and the copies drifted.
+`freeform/SHARED-LIBRARY-ASSESSMENT.md` measured it: 15,800 of about 50,000 lines were copies, there were nine
+colour tables, a symmetry table that lost its rail fix, and a walk whose headroom check could never fire. pgmvox is
+the one copy. New boards build with it; the twenty finished boards keep their own generators and write their map.xml
+through it.
+
+**Every board is one folder under `boards/`, and its world one folder under `maps/`.** The twenty finished boards,
+the boards built on the library and the two library rebuilds of finished ones (`riftwater-pgmvox`,
+`lantern-karst-pgmvox`) sit side by side, each with its `scripts/`, `renders/` and notes; `examples/` holds the small
+boards that teach the library. `check.py` builds every folder with a `scripts/gen.py` and holds it to its hash.
+
+**`studies/` holds sheets of forms, not boards.** Volcanoes, winter ice, water, their combinations and dungeon
+plans, each with the renders the author judged; `studies/README.md` says what each kept.
+
+## What is in it
+
+**pgmvox is thirteen packages, each one kind of thing.** `core` is what every other stands on, `geom` and `ground`
+work on arrays and never touch a world, `surface`, `routes`, `scenery`, `volume`, `built` and `grammar` write
+blocks, `play` is what a map is played for and writes its XML, `plan` and `read` are the plan before the build and
+the reads after it, and `document` states a board as data. A module is imported from its package:
+`from pgmvox.surface import terrain as T`, `from pgmvox.play.objectives import Wool`. `B`, `DYE`, `World`, `rng`
+and `seed` come from `pgmvox` itself.
+
+| Module | What it does |
+|---|---|
+| **`core`** | The ground every other package stands on: blocks, which way a block faces and the turns of a board, the world, the 1.8 movement. |
+| `core.blocks` | `B`, the 1.8 ids by name; the block classes (`PASSABLE`, `CLIMBABLE`, `NOT_GROUND`, `SIGHT_CLEAR`, `GRAVITY`, `FORBIDDEN_IN_PLAY`); names and colours per id and data |
+| `core.orient` | the data for a block facing a way (`stair`, `ladder`, `torch`, `door`, `yaw`, `rotation16`); turn tables for `cw`, `ccw`, `half`, `mirror_x`, `mirror_z`; `turn_world` about a named axis |
+| `core.world` | `World` (set, fill, column, top, heightmap, chests, signs, banners, save, load); `write` to region files through the studio's Anvil writer; `seed` and `rng` for named random streams |
+| `core.move` | the 1.8 tick model: `fly`, `fall`, `fall_damage`, `jump_reach`, `knockback`, `solve_launch` |
+| **`geom`** | Shapes and noise over the grid: polygons, polylines, discs, distances and fractal noise; no blocks, no world. |
+| `geom.shapes` | polygons, polylines (distance, arc length and side; `nearest_on` for one point), discs, `boundary`; the cell sets `rect_cells` (by corners) and `poly_cells`; `scatter_points` (points over a mask kept apart); `island` (a board's land from a box, an inset per side and cut corners); `ellipse_distance` (1 on an ellipse's rim, turned in degrees); `shatter` (the grid broken into pieces with bent edges, each column's piece and its distance to the piece's edge: plates, seracs, bergs, outcrops); `distance_in` and `edge_depth`, by taxicab, chessboard or euclid |
+| `geom.noise` | `fbm`, `ridged`, `line` (a wandering offset along one axis of a grid: a foot, an edge, an inset), `ragged` (the same in whole blocks, an edge bitten in), `warp` (X and Z pushed about by a slow bend and a small wobble: any distance measured in them gives an outline that is never a true circle), `smoothstep`, `spline` |
+| **`ground`** | Heights in, heights out: fields, landforms, rivers and lakes, melting forms together. |
+| `ground.field` | heightfields stated as `terms`: a base plus `Ramp`, `Gauss` (elliptical, turned, any power), `Tilt` and `Noise`, summed in order; `mix` of two fields by a weight |
+| `ground.landform` | heightfield operations: `watercourse` (reaches and falls), `canyon` and washes, `spire_sites` and `spire_field` (needles and hoodoos drawn apart and off the paths), `ridge` (from a wandering foot to a crest, rough, with spurs, terraced; only lifts), `mound` (a heap over a distance field) and `crater` (a bowl in one-block steps), `gullies` (grooves down a form's flanks between two radii, wandering, each its own depth) and `lumps` (mounds strewn at random in a box and a mask: fallen blocks, rubble, hummocks lined up along an angle), `level` (level ground inside a distance, eased back to the ground, lift, cut or set), `profile` (a cross-section by distance from a line: a floor and `Step`s of cliff and flat, ragged by `jag`, with a talus; `mode` set, lift or cut), `spire` and `butte` (round, or elliptical and turned with `rz` and `angle`), `scarp`, `terraces`, `stage`, `grade` (a route held to a grade, bridging water, keeping earlier roads), `lake`, `coast`, `hold`, `blend`; `smooth_max`, `smooth_min`, `join` and `soften` (forms melting into the ground and each other) |
+| **`surface`** | Ground into the world: laying a heightfield in rock and soil, painting its top, water, floating undersides. |
+| `surface.terrain` | `slope_deg` as the studio reads it; `lay` (ground painted by slope, a snow line; `Paint` layers that choose the top by slope and place, first match first; a `bottom` per column); `fill_water` (a bed and water up to each column's level); `Strata`, `bed_offset` and `beds` (rock beds that tilt and fold); `mountain_ring`; `underside` and `root_depth` (cones, flutes, spires); `slab` (floating floors at their own heights: rock, root, a bedrock course, a weathered rim); `waterfall` (water falling from each row's lip into the void, into air only); `island_bottom` (where the rock ends: a taper from the void, sheer beside a rift, for `lay(bottom=)`); `cloud_deck` |
+| **`routes`** | Where a road goes and how it is laid: finding, grading, paving, stairs and half steps. |
+| `routes.route` | `find` (a least-cost route over the ground, held to a grade, switchbacks and all), `network` (places joined by roads that share their trunk), `simplify`, `smooth`, `footprint`, `pave` (surface and bridges), `steps` (a stair on every one-block rise), `halfstep_levels` and `halfsteps` (a steep way in blocks and slabs, no step over half a block) |
+| **`scenery`** | Grown and natural things on the ground: trees, rock towers, arches and karst skirts. |
+| `scenery.trees` | hand-built trees planted whole: `library` (the studio's copied trees), `load` (a board's own cut), `kinds`, `plant` (turned, refused whole), `scatter` (a wood with its crowns apart), `dead_tree` (a bare trunk and arms, no leaves) |
+| `scenery.forms` | scenery built block by block where a heightfield cannot say it: `tower` (rings tapering up a stack, ledges every few courses, bulging faces, beds in courses, a crown and vines), `skirt` (karst faces under a floating floor's rim), `root_vines`, `arch` (a natural arch: a deck and the rock under it, thin at the crown, thick at the ends, the ground under it kept), `sweep` and `flare` (a cross-section carried along a path, every size a smooth function of the span, roughened only by smooth noise: a land bridge with no teeth on its sides, as a mask over the world), `spike` (a body round any 3-D curve tapering to a point: standing, leaning, curling or hanging; round, faceted, fluted, ledged or twisted; ending where it is under half a block and kept joined to its base), `masonry_tower` (hollow, floored every five courses, a ladder through the hatches, slits, a door, a crenellated crown); `placed_box` and `box_cells` (a box turned and tilted, sunk by a share of its height into the ground, painted in its own frame, hollowed into a ring) |
+| **`volume`** | Space carved and bodies set in it: caves, tunnels, mines, solids. |
+| `volume.under` | caves and mines carved into a built world: `tunnel` (a level-floored passage), `chamber`, `carve`, `dress_cave` (floors, stalactites, ore), `gallery_line` and `gallery` (timbered, railed, stepped), `shaft`, `bore` (a round hole through the rock, a core's leak) |
+| `volume.solid` | the repository's `tools/sculpt/solid.py` (booleans, turns, revolves, extrusions, tubes), with `fill` into a `World` and `image` through a plan `Symmetry` |
+| **`built`** | Made things: frames, roofs, houses, walls along a line, patterned faces and floors, props. |
+| `built.build` | `Frame`, a building's own axes at any heading; `RoofField`, the studio's six roof forms block for block, and `lay_roof`; `house` and its `window_rhythm`; `parapet`, `line_wall` (a wall, hedge or fence along a line: crown follow, level or grade; cap, crenels, gaps), `site`, `stairs`, `ladder`, `Claims` |
+| `built.facade` | face patterns (`band`, `courses`, `flutes`, `panels`, `slits`, `checker`, `windows`, `glyph_row`, `word`) set back or flush on an `extrude`d mass, `coffer`, `top_course`; floor fields (`border`, `medallion`, `corners`, `diamonds`, `kilim_steps`, `star`, `cross`, `tiles`, `stripes`, `diagonal`, `chevrons`, `rings`) composed by `first_of` and laid by `carpet` |
+| `built.props` | small built things placed on a floor, facing a way: `stall` and `stalls` (a market row), `lamp` and `lamps` (posts beside a route, sides in turn), `brazier`, `rubble` (a heap that hangs over nothing); `crop_field` (farmland in strips, a ditch in each, a fence and gate) and `scarecrow`; chests drawn as rows of letters (`laid`), with a defence chest and a wool room's gear |
+| **`grammar`** | The structural board grammar (sections, faces, fills, decks, marks) and its styles: Claywork, Brittlebush, Terra, Marble, Foundry, Segment and Drastic. |
+| `grammar.rules` | the rules of a structural board, apart from its blocks: `Section` (boxes at one height), `split` and `tile` (a box cut into sections), `Ground` (every column's top, section and depth), `Face` and `Accent` (courses by drop, a bay every so many), `Course` (a course with a block behind or outside it; `Sunk` the inset), `Toward` and `Mix` (a stair rising to its run's end, a block drawn by weight), `Panel` (each straight run framed), `Style` (body, faces, seam, fills, motifs, deck, pillar), `lay`; a face's `pattern` laid over each straight run (`lines`, `pattern`); a deck section over a floor (`under`) on `pillars`; `dress` (a face on any heights), `lattice` and `bands` (what lies under the courses) |
+| `grammar.marks` | what every style shares: the motifs `arrow`, `word`, `glyph` and `bitmap`, read from the side away from `up`; `field`, a fill from a floor field; `flight`, a fill of stairs between cheeks for a stepped section |
+| `grammar.terra` | the Terra style: red sandstone over the mesa's banded terracotta; niches under arches between pilasters that stand out a block; fills tiles, zigzag, kilim, court and plain |
+| `grammar.marble` | the Marble style: quartz over diorite; engaged columns over panels sunk into prismarine and lit; a fluted show wall with an inlaid word; fills medallion, star, rings, grid and plain |
+| `grammar.segment` | the Segment style, read off CommunityMaps ctw/segment: a deck of slab and clay checker with a brick line down each piece, cyan rims with bollards, faces moulded in cobblestone walls over a band sunk in the wool's colour |
+| `grammar.drastic` | the Drastic style, read off CommunityMaps ctw/drastic_change_ii: quartz faces under a nether-brick rim, a groove in the side's colour, portholes ringed in stairs, meadows in a quartz kerb |
+| `grammar.foundry` | the Foundry style: nether brick, stone brick, iron and coal; hazard bands on the faces, grilles of bars lit from behind; fills hazard, plates, lanes, sector and plain |
+| `grammar.clay` | the Claywork style for the grammar: stone and clay, the team's colour inlaid; faces with a sunk panel and its quartz diamond in a bay centred on each section; fills checker, squares, paving, inlay, plate and flight; the arrow motif |
+| `grammar.brittle` | the Brittlebush style from a blueprint of five-block cells: flat, keep, stair, stacked, gap and water cells; the five-course cap with its birch panels, a one-block outline, sand fields and double-ringed beds; hollows and tunnels under a deck with their dark-oak pillars; grown ground beside the made (`build(grown=)`); `house`, storeys of whole cells |
+| `grammar.studioplan` | a plan drawn in the studio's planner (version 2) read as a `brittle` blueprint: pieces, stairs, decks, water and bare zones, placements |
+| **`play`** | What a map is played for: teams, spawns, objectives, and the map.xml they write. |
+| `play.objectives` | spawns (a filter on who spawns, a box or several spawned anywhere in, points, a pitch), the observer point, hills, touch points (an arcade's control points, taken by touching), flags (carrier kits, a compass on the carrier, a team's dead held while one of their own carries it), wools and monuments (a slot open on a map where nothing is placed, a wool block that comes back when broken), destroyables, cores, score boxes and portals (to a block, anywhere in a box, or moved by an offset): each stamps its blocks, writes its regions and XML, carries itself to the other team, and checks the built world |
+| `play.mapxml` | `Doc` and `E`, the element builder the typed parts write through; a board never calls it |
+| `play.rules` | `Map`, a whole map.xml from its parts: `Kit`s of `Item`s and what follows from those players spawn with as the studio derives it, `Build` (the void rule, build areas and holes, materials only breakable, a filter every block change passes, the build height), `mark_ground` (the y 0 marks the void rule reads), `KillHeight` (below a height, or inside boxes, sent into the void), `terrain_of` (the world's block ids, whose drops are removed), `Match` (time, score, kills, `Blitz`, fall damage, broadcasts to everyone or a team, one `Respawn` or one per team, the clock held); kits with parents, `Effect`s, a game mode, health, food, knockback reduction and actions (`EnchantItem`, `ForEveryone`); `KillReward`s by streak; `Shop`s of `Offer`s; `Spawner`, `JumpPad` (a safe pad spares its rider the fall), `Shopkeeper`, `Bounds` and `Zone` (no placing, breaking or harm in it, closed to all but a team or to everyone, a kit given inside), placed like objectives |
+| `play.logic` | what a match does over its course: filters as values (`Team`, `Completed`, `After`, `Time`, `All`, `Not`, ...) and `Named` ones, `Trigger`s of actions (`Fill`, `Message`, `SetVar`, `KillEntities`, `Act`), named `Action`s, `Area`s, `Variable`s, `Give` (a kit on a condition), `ControlPoint`, `Payload` and `Payloads`, `Gamerules`, `Damage`, `BlockDrop`, `Falling`, `Compass`; each goes into `Map(parts=[...])` |
+| **`plan`** | The plan of a board before it is built: the raster, its walk graph, jump courses. |
+| `plan.raster` | `Raster`, the plan as every column's floor and kind, with `Symmetry` drawn in the plan (and a field's `image`, a field made symmetric with `field`, a half made `whole`); `rect`, `poly`, `where`, `flight`; `storey(n)`, an upper storey drawn the same way; `from_heights`, a plan read off shaped terrain |
+| `plan.graph` | the walk over a plan and its storeys: `graph`, `jumps`, `dijkstra`, `route`, `path`, `arrivals` per team |
+| `plan.pieces` | `Course`, the plan of a board played in order (a water drop, a parkour run): pieces by step with their images, the links between steps, and an audit of each link's gap, drop, way across, landing cell and damage; `raster()` turns a course into a `Raster` |
+| **`read`** | Reading a plan or a built world: walks, footing, sight, renders, sketches, plots. |
+| `read.walk` | the voxel walk over built blocks with `MoveRules`; `no_stand_above`, `nearest`, `gap_cleared` |
+| `read.audit` | `footing`: blocks that would fall, or have nothing to hang on; `loose_water`: water standing against air |
+| `read.sight` | `line_clear`, `visibility`, `hidden`, with an opaque test for a plan or a built world |
+| `read.render` | `iso`, `elevation`, `cutaway` along any polyline, x-ray, `trim`, all in the studio's colours; `textured`, a saved build drawn by the studio's own renderer through `data/render_world.cs` (the 1.8.9 jar in `MINECRAFT_JAR`) |
+| `read.sketch` | the annotated sheet: map panels (a plan raster or a built top-down) with heights, places, markers, routes, jumps, zones and callouts; true-scale and unrolled sections; the checker's numbers against their targets |
+| `read.plot` | the bounded canvas a contributor builds a plot into, and `check_alone` with its verdict |
+| **`document`** | The layer document: a board stated as data and built in stages. |
+| `document.layers` | a board stated as a layer document (JSON) and built in stages, every layer kept as a `Step` with the columns it changed: `build`, `ground` (the fields and ground alone), `expr` (any number as a field), `area_distance`; the made stage in the Brittlebush grammar, placed boxes, masses with face patterns, floor fields and the symmetry |
+| `run` | the build pipeline: `python3 -m pgmvox.run <board-dir>` |
+
+## The block table comes from the studio
+
+**`data/blocks.json` is written by `data/export_blocks.cs` from the studio's own palette code.** It holds every
+id's display name, colour per data value, role and shape, and the data each block takes under the five symmetry
+operations, as `BlockGeometry.Turned` turns it. Re-run the export after a studio change:
+
+```
+cd /tmp && dotnet run /path/to/freeform/lib/pgmvox/data/export_blocks.cs -- /path/to/freeform/lib/pgmvox/data/blocks.json
+```
+
+**The studio leaves some families unturned on purpose, and `orient` turns them.** Its turn copies a prop, which
+keeps the way it was drawn; a freeform board turns whole halves. Doors (with the hinge swapped by a mirror),
+trapdoors, rails and powered rails, sign posts and standing banners, wall banners, pumpkins, beds, buttons,
+levers, repeaters, hay and quartz pillars are turned through their own direction encodings. A test turns every id
+and data value there and back under every operation.
+
+## The conventions it settles
+
+**Heights.** In a `Raster`, `H` is the y of the floor block, and a player stands at `H + 1`. In a `World`, y is a
+block's own height. The early boards meant three things by "height"; the library means these two and names them.
+
+**Symmetry.** A `Symmetry` names its operation and its axis. The default axis, (−0.5, −0.5), lies between blocks
+−1 and 0, so a half turn sends (x, z) to (−1 − x, −1 − z); an axis of (0, 0) turns about block 0. The library
+applies symmetry in the plan, so the checker measures both halves.
+
+**Directions.** One vocabulary everywhere: "e", "w", "s", "n", or a (dx, dz) offset; x is east and z is south.
+
+**Random numbers.** No module keeps a generator at module level. A board makes named streams with
+`rng(board, name)` and passes them round, so moving a function does not change what it draws.
+
+**Eye height.** One eye height, 1.62 over the feet, and one aim point, 0.9. Sight lines are sampled at a quarter
+block, so the plot check's out-of-sight counts run a little higher than Curio's own kit, which sampled at half a
+block and let more lines slip between block corners.
+
+## The sketch is a reviewed drawing, not the plan
+
+**A board has three drawings of itself, and the library keeps them apart.** The plan is data: the raster and its
+pieces, with `PLAN.md` saying why. The sketch is the plan drawn and annotated before anything is built, with the
+checker's numbers on the same sheet, and it is what the author reviews. The annotated top-down is the same
+annotation drawn over the built world afterwards, to show the board landed where the plan put it.
+
+**The annotations are what make a sketch readable, so they are the library's, not each board's.** Every panel's
+title carries its legend. Floor heights are written on each piece, places are named with a halo, objectives and
+spawns are team-coloured discs, and routes end in arrows. Between pieces only the shortest jump is drawn, with
+its gap. A detail too small to write on gets a callout with a leader line.
+
+**Symmetry is drawn as well as computed.** Given the plan's `Symmetry`, the image half is washed paler, and
+anything drawn with `both=True` appears in both halves, a red marker turning blue in the image.
+
+**A section is true scale, and it can follow a route.** `SectionPanel.raster` cuts along x or z, `along` unrolls
+the plan under any polyline such as a team's walk, and `level` draws the kill height or a water line across it.
+`Sheet.row` sets sections side by side as 2a and 2b. `TablePanel` lists each measurement with its target and
+marks a miss in red, so the review sees it first.
+
+**`examples/islets/` draws both.** `scripts/sketch.py` writes `renders/00-plan-sketch.png`, and `renders.py`
+writes `05-topdown-annotated.png`, where the plan's island outline is ghosted over the built blocks.
+
+## Objectives
+
+**An objective is one object from the plan to the map.xml.** A `Hill`, a `Wool` or a `Core` stamps its own blocks,
+names the ground it claims, writes its own regions and XML into a `mapxml.Doc`, and reads the built world back.
+
+**Each one checks what makes it playable.** A spawn checks there is room to stand. A monument checks its slot is
+air over something to place on. A core checks there is lava in it.
+
+**A destroyable and a core float three blocks over the floor, never stand on it.** The author's rule is plain: an
+objective standing on the ground reads as part of it. Each checks that every column of it has `FLOAT` (three)
+blocks of air under it; a core over a pit for its leak has more, and passes.
+
+**The XML is the studio's shape, and the studio reads it.** Control points carry the long attribute names and the
+defaults the studio's generator chose from the corpus. Destroyables and cores name a `{id}-region`, and a wool's
+monument is a named block. `data/read_mapxml.cs` runs the studio's own parser and validity check over a written
+map. It reads the library's spawns, hills, wools, destroyables and cores as a valid map, and Islets with them.
+
+**The studio does not read every objective the boards used.** It refuses a map with flags or score boxes, which
+the King of the Flag and Deathmatch boards needed. The library writes them, and the studio is where they are
+missing.
+
+**Regions follow one convention.** A `Box` is inclusive blocks written with an exclusive max, since a PGM cuboid
+spans `[min, max)`. A point is a block written at its centre, where a player stands. Region ids are refused when
+taken, because a duplicate silently re-points every reference.
+
+**A map is written from its parts, and no board writes an element by hand.** `play.rules.Map` takes the name,
+the authors, the objectives, the kits, the `Build` rule, the `KillHeight`, the `Match` and the `parts` of
+`play.logic`, and writes the whole map.xml. The rest follows from the kits players spawn with as the studio's
+`MapStandards` derives it: the loadout kept and the armour dropped, the tools repaired, the stacked blocks breaking
+into nothing once placed and given back sixteen (eight of the team's) a kill, every material a destroyable or core
+is removed, hunger off, the golden-apple reward included.
+
+**What the world drops is removed too.** `Map(terrain=terrain_of(__file__))` reads the block ids of the board's
+world, and the saplings, seeds, flint and string those blocks drop are removed as they spawn, as the studio's
+`SurfaceDrops` removes them; a material a kit carries is kept. With every objective's material removed the same way, a
+broken monument or core never becomes a block anyone can put back.
+
+**A fall ends in the void.** `KillHeight` sends whoever drops below it to y -64, where they die and what they carry is
+gone with them. A board floating over blocks of its own would otherwise catch every death's drops out of reach, and
+they would pile up there for the whole match.
+
+**A floating board marks its ground at y 0.** PGM's void filter reads the block at y 0 of a column live, and a block
+36 there is removed on load but remembered, so the column counts as ground. `mark_ground(w)` lays it under
+every column holding a block that is neither air nor liquid, a floating core's or monument's with the air under it. A board whose
+land floats clear of y 0 without it refuses every block its players try to place.
+
+**A core and a monument check their columns are ground.** Over a column with nothing at y 0 the void rule refuses
+breaking their block and placing the lava a core lets out, so neither could be completed; `check(w)` names the
+first such column (`ground_problems`). A wool's slot needs no mark: PGM decides a monument last and lets the right
+team's wool in whatever the rules said.
+
+**The kits players spawn with are the main kit, every kit a spawn names, and their parents.** A team's kit given
+with a shared one (`Kit(..., parents=[base])`) adds its pick and its arrows to what is kept and repaired, and a kit
+handed out by a `Give` or an applied `Zone` adds nothing.
+
+**What a match does over its course is stated as parts too.** A filter is a value written where it is used, and
+`Named(id, filter)` writes it once for others to name; a `Trigger` runs its actions when a filter comes true, so a
+staged match is `Named` stages, the spawns filtered on them, and a `Fill` of the gates each stage opens.
+
+**A placed thing that is not an objective is placed the same way.** A `Spawner` is a block where items drop while a
+player is near, a `JumpPad` a box that throws whoever steps in, turned with the board; both go into `Objectives` with
+a coordinate, as a `Flag`, a `Portal` and a `ScoreBox` do. A portal writes only XML, a jump pad may lay a block under
+itself.
+
+**An objective is drawn once.** `Objectives.add` adds a team's objective and its image for the other team: boxes
+and points turned, yaws turned, team and id swapped, and any field given for the image changed, such as a wool's
+colour. The sketch draws every marker from the same objects, in its team's colour.
+
+## Capture boards
+
+**A capture board is crossed by building, and the plan walk says how much.** `plangraph.graph(bridge=zones)`
+joins every cell of a build zone to its eight neighbours at any height, tagged as built, and `PlanRules(diagonals=
+True)` walks corner to corner, so distances are the octile ones a capture board's targets are set against.
+`measure` gives a route's cost and how much of it was built: "79, 22 of it bridged".
+
+**A wool is drawn once and carries its room.** `Wool` places its wool in the room and its monument on the other
+side, writes the spawner and the room's entry rule, and checks both blocks. `Objectives.write` keeps each team's
+rooms from the other team's hands but for what an attacker brings in. A `Spawn` may name blocks that are mined in
+it and grow back, and a kill height sends whoever falls below it into the void.
+
+**The voxel walk builds too.** `MoveRules(build=(mask, (lo, hi)))` lets a player stand in a build zone's air as
+on a placed block, and `kill_y` counts nothing below the kill height as a place.
+
+**A chest is drawn as three rows of nine letters and a legend.** `props.laid` turns them into the chest's items and
+refuses a row that is not filled the same from either end, so heavy stacks balance and tools sit in the middle.
+`props.DEFENCE` is a defence chest for a team's wall and `props.ROOM_GEAR` a wool room's gear. An item may carry
+enchantments, written into the world as the chest's own tag.
+
+**The capture rebuild proves the set.** With its local walk and rules replaced by these, its plan check reads the
+same to the last digit, and the studio reads its map.xml as valid.
+
+## Four teams
+
+**A board for four teams is drawn once and turned a quarter three times.** `Symmetry("rot_90")` (or "cw") turns
+(x, z) to (-1 - z, x), the studio's own rotation, and `orient.turn_world(w, "cw", keep)` copies a part of a square
+world onto its next image with every block's data turned. `Objectives.add` fans an objective to all four teams,
+each image the last carried on, and `Teams.next` names the team it lands on.
+
+**A wool has a keeper when more than two teams play.** Three teams capture each wool, so `Wool(keeper=...)` names
+the team keeping it, and its room, its entry rule and its spawner are written once however many teams capture it.
+
+## The grammar
+
+**`pgmvox.grammar.rules` holds the rules of a structural board, and a `Style` holds its blocks.** A board is sections,
+rectangles of surface at one height, each outlined and filled by rule. Every face where the ground falls is
+dressed in courses read down from its rim, as deep as the drop allows. The rules read only the grid; the blocks
+they lay are the style's, so one plan can be spoken in more than one style.
+
+**A section works on boxes in blocks, so cells are only one way to make them.** `split(box, nx, nz)` cuts a box
+into near-equal rectangles and `tile(box, module)` into squares of a module. A blueprint of cells gives a section
+a piece. `Ground(sections, tops)` reads every column's top, its section and its depth in it, the outline at 0.
+
+**A face is courses top down from the rim, with an accent bay every so many along it.** An `Accent` names its
+module, its period and phase, its frame and middle courses, and the air it needs beside it. A bay is laid whole or
+not at all: every column of it, and `margin` more either side, must be face at one height with that air before it,
+so an accent is never buried, cut by a corner or squeezed into a short run.
+
+**A face's course may have depth, and its bays may follow the sections.** `Course(block, back, out)` lays `block` in
+the face, `back` a block behind it and `out` a block outside it over air only; `Sunk(block)` is the inset, air with
+`block` behind. An accent's middle may change with its place in the bay, and `align="section"`
+centres whole bays on each section's side instead of counting them from the world's origin. A section's `tops` give
+it a stepped top, so a flight of steps is a section too.
+
+**A face dresses any ground, not only sections.** `dress(w, tops, face)` lays a face on every column of a heights
+map that stands two or more over a neighbour or over the void, toward its deepest drop, its courses stopping at the
+column's lowest block.
+
+**A dressed face may keep, frame and fill.** A course `None` keeps the ground's own block, so the paint stays on
+the rim, and `Mix` draws a course by weight. A `Panel` lays every straight run at one height as one framed field:
+`ends[d]` is the stack `d` columns from the nearer end and `middle` the rest, with `Toward` stairs rising to that
+end. That is Outback's wall: spruce at the rim, the middle, the foot and the corners, and an inset of slabs between
+stairs with the team's clay behind.
+
+**What lies under the courses is a function too.** Under the courses,
+`below(x, y, z)` lays each block down to the bottom: `lattice` is Claywork's two diagonals, `bands` courses by height
+whatever the rim, and `foot` puts rows of bedrock at the bottom.
+
+**A sunk course's back outlasts the body laid after it.** `lay` collects every back as its face is laid and lays it
+again once the section's bodies are down, unless the column inside is a face itself, so a panel comes out the same on
+a face of any side.
+
+**A style's fills are recipes that may decline.** `Style.choose(section, lot)` names the fills to try in order; a
+fill that needs a rectangle, or room, declines and the next is tried. A section may name its own fill, or be handed
+one as a function, and carry motifs laid over it.
+
+**A face may carry a pattern, and the pattern runs the whole straight face.** `Face(pattern=...)` takes the facade's
+face patterns, `pattern(s, run, t, h, n)`, the same functions an extruded mass takes: `word`, `glyph_row`, `flutes`,
+`slits`, a band. They are laid last, over every plain face column, each straight run whole whatever sections stand
+over it, so a word on a terrace cut in two still reads across the cut. The rim is never patterned, and an accent bay
+and a corner keep their courses. `Face(crest=...)` stands blocks on the rim by the same reckoning: a bollard, a
+merlon, a post.
+
+**A deck is a section over a floor, and stands on pillars.** A section tagged `under-<y>` is laid on the style's
+`deck(w, x, z, h, y)` instead of its body: a slab of courses over air, the floor at `y` under it. Its faces are the
+style's `"deck"` face, and `pillars` stands the style's `pillar` under every straight run of its edge that lies over
+the floor or lower, one at each end and as many between as keep them `pillar_every` apart.
+
+**The marks are every style's.** `grammar.marks` holds the motifs a style does not name for itself: an arrow, a word
+in the three-by-five letters, a glyph, any bitmap. Each is centred in the section's inside and reads from the side
+away from `up`, so a word laid `up="n"` reads standing to the south. `marks.field(f)` makes a fill of any floor
+field, and `marks.flight` a fill of stairs, with cheeks, for a stepped section.
+
+## The Brittlebush style
+
+**`pgmvox.grammar.brittle` builds a blueprint of five-block cells in the look of Brittlebush, through the grammar.** Its
+pieces are the grammar's sections and `brittle.STYLE` its blocks; zones, stairs, hollows and houses are its own. A
+cell is flat ground, a keep, a stair one level up in half steps of slab and block, a stacked deck, a gap or water.
+`build(w, cells, only=...)` lays the cells in `only`, reading each against the whole blueprint, so an edge is right
+where one team's part meets another's.
+
+**Every edge carries the five-course cap, and every other cell along it a birch panel framed in black clay.** The
+black clay runs unbroken along the edge, at the foot of the plain cells and up round each panel. A stair's sides
+carry the same cap, stepping down with its rows. A panel stands only where five blocks of air lie beside it; over a
+shallower drop the face keeps the plain courses.
+
+**A piece is cells of one height and one section.** A cell's `section` names it; cells without one join whatever of
+their height they touch. Two sections at one height meet in a double line of planks, each its own outline, so a
+board is cut into rectangles without a change of height.
+
+**A piece is outlined, then filled by its shape.** Its outline is one block: the rim where it falls away, spruce
+planks where it meets a wall, a stair or another section. A piece one cell wide, or not a rectangle, is a sand
+field: sand mixed with upside-down sandstone stairs, cacti and dead bushes on the pure sand alone. A rectangle two
+cells or more each way is grass inside two rings of sandstone stairs, the outer rising inward and the inner outward,
+with a birch when the grass is wide enough. `build(..., fill=)` may choose a rectangle's fill instead: a bed and its
+birch, grass alone, or sand.
+
+**Water marks itself; a gap is marked by cobwebs.** A water cell lays water at the foot of the void, with no cobweb
+and no kerb, since PGM holds the water still. A gap cell lays block 36 at y 0, and the build zone is outlined in
+cobwebs at y 1 the way the studio marks a build region (`objectives.build_marker`, rule ST5): two blocks out from every
+edge facing the void, a block clear of the zone and of all land, a corner turned where two free edges meet.
+
+**A stacked cell with `under=True` is hollow under its deck, as Brittlebush I's island beside the middle is.**
+The deck's edge over the hollow is the cap without its black band, and its lower floor lies `DECK`, eight blocks,
+under it. One cell of hollow along a side is an under-section; a line of them through a piece is a tunnel.
+
+**A hollow's lower floor runs into the floor of the world.** It has no full cap: its edge is the rim, brick and
+black clay, as many as fit over y 0, so it can lie as low as y 1. Where a hollow's open side runs two cells or
+more, a dark-oak pillar two wide stands at its middle, laid once every hollow is cut.
+
+**`house(w, layers, floor, dye, door)` raises a wool room as Brittlebush I does: storeys of whole cells.** Each
+storey is five blocks, its wall the ground's edge read bottom up, its plate overhanging in eaves. A storey's plate
+that nothing stands on is a terrace of sand, and a one-cell top storey holds a beacon under glass of `dye`.
+
+**`pgmvox.grammar.studioplan` reads a plan drawn in the studio's planner into such a blueprint.** `unit(plan, lift,
+under)` gives one team's part, which `brittle.fan` turns into the four. A piece named `stair…` is a stair cell and
+one named `double…` a deck, with the cells in `under` hollow. A zone named `water…` is water and any other zone a
+gap. `placement(plan, "spawns")` gives each placement's spot and footprint in blocks.
+
+## One plan in seven styles
+
+**`boards/grammar-showcase/` speaks one specimen plan in seven styles, side by side, and nothing else changes.** The
+specimen is a terrace at 28 with a show wall to the north, a ledge at 24, a flight of steps between them, a loggia
+(a deck at 28 over a passage at 20, on pillars), a plaza at 20 cut into six sections and a front court at 16 cut
+into four. Brittlebush and Claywork speak it in their own blocks, given a deck and a pillar; Terra, Marble and
+Foundry are new; Segment and Drastic are read off the two CommunityMaps of those names. Its world is
+`maps/other/grammar_showcase`.
+
+**A style is its blocks and its recipes; the specimen states only which recipe goes where.** Every edge to the void
+is a deep face with the style's bays, the plaza's marked sections are laid in the style's calmest fill so the mark
+reads, and the rest show off the style's other fills. South of the specimens a gallery lays twenty-four floor fields
+and marks, each framed, before a wall carrying the alphabet and every glyph.
+
+**What the seven have in common is the grammar, not a block.** Sections, outlines, faces by drop, bays centred on the
+sections, decks, pillars and marks are the rules'; a style chooses a rim, a course, a frame, a fill. Brittlebush's
+boards lay their hollows by hand (`brittle._under`, `_pillars`), apart from the grammar's deck.
+
+## Storeys and solids
+
+**A plan can have storeys.** `R.storey(1)` is a raster over the same ground, drawn with the same methods, with
+"none" where it has no floor. Ground cells keep their (x, z) names, and a storey's cells are (x, z, n).
+
+**The walk graph joins the storeys.** A player steps onto a roof from a floor one below, walks it, and drops off
+its edge. The ground under a storey is walked only where two blocks of air are left over it.
+
+**Solids are the repository's one solid module.** `pgmvox.volume.solid` loads `tools/sculpt/solid.py` rather than copying
+it, and adds `fill` and `image`. A sculpture is drawn once and its other half is its image under the plan's own
+symmetry, block for block.
+
+## Terrain
+
+**Slope is read as the studio reads it, and a test holds it there.** `slope_deg` is the studio's `SurfaceGradient`:
+Horn's gradient over the tops two cells either side, a missing neighbour level with the cell, whole degrees.
+`data/export_slopes.cs` writes the studio's answers over sixteen grounds at windows one to three, and the test
+wants every cell. The library first read one cell either side, and a gentle grade quantised to blocks came out
+0 and 27 degrees by turns instead of the 14 it is.
+
+**Soil follows the slope, so a cliff is rock to its face.** `lay` lays three blocks of soil on gentle ground, less
+on steeper and none past 55 degrees. A cell exactly level with three of its neighbours reads as a ledge, so grass
+holds on it however steep its hill. With one soil depth everywhere, every riser and cliff showed a band of dirt.
+Counting cells only within a block of their neighbours as ledges turned whole hillsides green.
+
+**Rock is laid in beds.** `Strata` draws a sequence of beds from weighted choices with a thickest for each, one
+for a bed that is only ever a block. `bed_offset` tilts and folds them across the ground, and `beds` hands them to
+`lay`, so a cliff or a canyon wall shows its beds dipping across it.
+
+**A landform is an operation on heights.** `pgmvox.ground.landform` cuts rivers, canyons and terraces and lifts spires,
+buttes and scarps. It grades routes, meets the sea at an outline, and blends one terrain into another. Each takes
+the board's own numbers, and each only cuts or only lifts unless it says otherwise, so the board decides the order.
+
+**A board's ground is a stack of named shapes, and each was written from a board that carried it.** The table
+names each shape, the call that makes it and the board it was proven on. Every board named builds the world it
+built before, byte for byte, so the shape is that board's code with its numbers passed in.
+
+| shape | call | proven on |
+|---|---|---|
+| a wandering foot, edge or inset | `noise.line`, `noise.ragged` | the Riftwater port, Cinder Reach, Redwash Mesa |
+| a symmetric field | `Symmetry.image`, `field`, `whole` | Cinderfall, Overgrowth, Tamarisk Wash, Abbeymoor, two opus trials |
+| a top by slope and place, a bottom per column, wet beds | `lay(paint=, bottom=)`, `Paint`, `fill_water` | the Riftwater port, Overgrowth, Vale, Tamarisk Wash, Cinderfall, Redwash, Cinder Reach |
+| a floating board's outline | `shapes.island` | the Riftwater port, Cinder Reach, Redwash Mesa |
+| a height stated as terms | `field.terms`, `Ramp`, `Gauss`, `Tilt`, `Noise`, `mix` | the Riftwater port, Cinder Reach |
+| a canyon's cross-section | `landform.profile`, `Step` | the Riftwater port's valley; Hollow Mesa's canyon array, equal |
+| an underside sheer under the rift | `terrain.island_bottom` | the Riftwater port, Cinder Reach, Redwash Mesa |
+| level ground | `landform.level`, `shapes.ellipse_distance` | the Riftwater port's shoulder; Hollow Mesa's pads, equal |
+| heaps, bowls, oval spires and buttes | `landform.mound`, `crater`, `spire(rz=, angle=)`, `butte(rz=, angle=)` | the Riftwater port |
+| a back ridge | `landform.ridge` | the Riftwater port, Cinder Reach |
+| a waterfall off the edge | `terrain.waterfall` | the Riftwater port |
+| a field with ditches | `props.crop_field`, `scarecrow` | the Riftwater port |
+| floating floors at their own heights | `terrain.slab` | Slatefold, Lantern Karst, Hoarfrost Reach |
+| a natural arch | `forms.arch` | Tamarisk Wash |
+| a field of needles and hoodoos | `landform.spire_sites`, `spire_field` | Hollow Mesa's spires array, equal |
+| a core's leak through the rock | `under.bore` | the tests |
+| forms melting together, a soft edge | `landform.smooth_max`, `smooth_min`, `join`, `soften` | the tests; the Riftwater layer page |
+
+**`spire_sites` keeps a path clear by its line, not its corners.** Drawn with Hollow Mesa's seed and box, its first
+twelve sites are Hollow Mesa's and it then turns down a site that stood within reach of the path between two of
+the path's points.
+
+**Forms melt into each other where a board asks, and meet hard where it does not.** `smooth_max` and `smooth_min`
+round the seam where a form meets the ground or another form over k blocks, so a hill stated on its own base grows
+out of the ground with a foot and a crater cut into a hill takes a rounded rim.
+
+**Several forms of one layer join, and any form can ease out at its edge.** `join` puts the rises of several
+forms of one layer together, the plain maximum at p 0 and a filled saddle below it. `soften` eases any form's change
+to the ground to nothing over the outer share of its area, which turns a mound's last steep blocks into a foot that
+runs out flat. None of the four is a default: every board built before them builds the same world.
+
+**A shape names its places and says what it does to the ground.** A point is `at`, a polyline `path`, a closed one
+`outline`, an absolute height `top` and a relative one `rise`; an angle is in degrees. A shape that can raise and
+lower takes `mode`, set, lift or cut, and a shape that draws at random takes a `seed`, or the board's own fields and generator.
+
+**A watercourse never climbs.** Its bed holds level in reaches and steps down in falls, which is how a river leaves
+a canyon and drops to the sea. `lowest` keeps a bed off the sea floor. A path that starts out at sea once held a
+canyon and its river fifteen blocks under the water all the way inland.
+
+**Water stands only against something that holds it.** A river's banks rise from its surface, and every cell beside
+its water is at least as high as that water, so it never stands over its banks. A demonstration river once stood a
+block above them for its whole length. Air beside water is right only at a fall inside the stream.
+
+**A river ends in water at its own level.** It runs into a `lake` or a sea with `lowest` at that surface less its
+depth and `into` naming that water, so no bank is raised inside it. A river that met the sea a block low once left
+a line of sand under the water across its mouth.
+
+**The world's edge is the void, and water may run to it.** A sea that reaches the edge of the board meets open air
+there by design, so neither `coast` nor `loose_water` puts a rim or a fault at the edge.
+
+**`hold` runs last, and `audit.loose_water` proves it.** Roads graded down to a bridge cut three of the Vale's
+river banks below the water; `hold` raises every dry cell beside water to its surface. `loose_water` lists every
+water block with air beside it that is not a fall, a waterfall laid on purpose or the world's edge.
+
+**A terrain board is checked before it is built.** `Raster.from_heights` reads the shaped heights as a plan, with
+water and steep ground as their own kinds, and the walk graph runs over it. The Vale's plan check walks from the
+harbour to every place before a block is written. With the junction fault below put back, it reports the
+uplands and the canyon rim unreachable, which the built world's walk had only found after the build.
+
+**`examples/vale/` uses every landform on one stretch of ground.** A coast, a scarp with a butte and a spire, a
+canyon through it into a river with falls, a graded road, a terraced hill and a floating island with a fluted,
+spired underside. Its first build showed a whole board lifted to a flat plateau: a spire raised every column to
+its own base height. A test now holds a spire to its radius.
+
+## Forms
+
+**A tower is a stack of rings, not a heightfield.** The karst towers of a capture board were drawn this way and
+the author singled them out: rings tapering up the stack, a ring of ledges every nine courses, faces bulging
+between them, the rock's beds running round in courses. Rebuilt as a heightfield spire they came out as plain
+terrain, so `forms.tower` keeps the recipe, with the rock, the ledges and the crown as parameters.
+
+**A floating floor's box sides become a cliff with `skirt`.** Rock juts out in ledges under the rim, never higher
+than two under the floor, is cut back where the noise is low, and carries moss and grass. `root_vines` hangs vines
+from the lower roots, where they trail below an island rather than hiding against its faces.
+
+## Underground
+
+**A cave passage is a tube held to a level floor.** `under.tunnel` carves a tube through waypoints and leaves
+solid everything under the floor interpolated along it, so a player walks a cave rather than the inside of a pipe.
+Every carve stays `cover` blocks under the ground it is given and never cuts into water.
+
+**A mine gallery rises a block at a time, and only by stairs.** `gallery_line` holds each step of the floor to one
+block, and `gallery` lays its floor after the whole carve, so every rise keeps room for its stair. A floor laid cell
+by cell had filled the place each stair stood.
+
+**A timber set stands only on the level.** Over a stair its cap takes the headroom a player needs to climb it.
+
+**A shaft leaves its foot open where a passage reaches it.** Its lining is not laid over cells already open in its
+lowest three courses. A test walk found a shaft built after its gallery had walled the gallery's end shut.
+
+## Trees
+
+**The trees come from the studio's own library.** `trees.library()` reads its copied trees, the ones hand-built
+in the tree showcase, and `kinds` groups them by name. A board with its own cut reads it with `trees.load`.
+
+**A tree is planted whole or not at all.** `plant` seats it on the lowest ground under its bottom row, as the
+studio's stamp does, and refuses it entirely if any block would land in anything but air or plants. Ground and
+rock give way to a crown that meets a hillside, and leaves never decay.
+
+**A turn turns the blocks too.** A quarter turn moves every offset and turns each block's data, so a lying
+branch follows the body.
+
+**A wood is scattered with its crowns apart.** `scatter` keeps two trees `spacing` times their crown radii
+apart, so a wood reads as trees rather than one mass of leaves.
+
+## Routes
+
+**A route is found over the ground, not drawn on it.** `route.find` searches nodes a few blocks apart, with 48
+headings out of each. A step costs its length, more for its grade and for the ground it rises and falls over,
+steeply more past the grade allowed, and more for turning. On a slope too steep to climb straight, it runs long
+legs across it joined by hairpins.
+
+**The turn cost is what makes a switchback.** Without it, a route held to 1 in 8 up a 1 in 2 slope came out as 71
+zig-zags a block or two long, since every zig-zag at the limit costs the same. With it, the same climb is five
+legs across the slope.
+
+**A network shares its trunk.** `network` joins places nearest first, each to the nearest road already found,
+where a step costs a third of what it would. Water costs a bridge's price a block, or is refused.
+
+**Grading keeps what is already there.** `landform.grade` runs the level from bank to bank over water, which is
+where `pave` lays a bridge deck. It leaves earlier roads alone and pins its ends to their ground, so a branch
+meets its road at that road's level. A footpath is graded too, at a block a block, and `steps` puts a stair on
+every rise.
+
+**A steep way is laid in half blocks instead of stairs.** `halfstep_levels` gives every cell of a route's band a
+level in half blocks that follows its graded profile and never differs from a neighbour's by more than half a block,
+its ends held at the ground they meet. `halfsteps` lays it as blocks with a slab on the odd levels.
+
+**A slab has no facing, which is why the half steps beat stairs on a slanting run.** A stair faces one
+way, so on a run that crosses the slope at an angle half its treads face wrong, and a slab has no facing. Tamarisk
+Wash's two ghats are laid this way, 116 and 122 cells down a sixteen-block wall with no step over half a block.
+
+**The Vale's read-back found both of those the hard way.** Walked from the harbour with no jumps, the uplands,
+the canyon rim and the spire were cut off. A later branch had re-graded the junction two blocks over the road it
+joined, and the ungraded footpath met two-block rises. Both are fixed in the library, and the walk now reaches
+every place.
+
+**The studio's routes are strokes an author drags.** It paints them and claims their cells against the scatter,
+but does not find them or grade them into the ground. Those are the two halves here.
+
+## Course plans
+
+**A course is a board seen as a sequence.** Each `Course.add` is one step: a piece off the symmetry axis brings
+its image with it, and one whose image overlaps it is the middle. A piece links to every piece of the next step
+on its own side or in the middle.
+
+**The audit judges every link with the tick model.** It finds the nearest take-off and landing cells, names the
+gentlest way across, and follows the fall to the cell it comes down in. So it says whether that cell is water
+and whether it is still on the piece, and water elsewhere on the piece saves nobody. A level gap is judged by
+the same rule as the walk graph's jumps, so the course and the raster plan agree.
+
+**An image link is the mirror of the link it copies.** The nearest pair of cells can tie, and a tie broken two
+ways gave the two halves different landings; the audit now mirrors the first half's answer.
+
+**`examples/drop/` is a course:** eight steps from 120 down to 30, its audit, and a sketch with every link drawn
+from take-off to landing and the course unrolled as a section. Its `gen.py` builds each piece as a slab floating
+at its own top and each water piece as a pool three deep, its glass rim stopping a block under the surface so no
+fall reaching the edge clips it. Its audit failed twice before
+the sketch was drawn. A run off the galleries landed on the terrace's rim, a block short of its pool, and a
+sixteen-block drop cost more than half a player's health.
+
+## Buildings and patterns
+
+**The roof is the studio's, and a test holds it there.** `build.RoofField` is a port of the studio's own
+`RoofField`: gable, flat, hip, gambrel, shed and saltbox, in whole or half courses, with the eave falling to two
+courses under the wall top. `data/export_roofs.cs` runs the studio's class over 300 roofs and writes every cell's
+answer to `data/roofs.json.gz`. The test asks the port the same 34,500 questions and wants the same crown, riser,
+slope and ridge. `lay_roof` lays a field the way the stamper does, in stairs climbing toward the higher neighbour.
+
+**What the library adds to the studio's houses is a heading.** A `Frame` places a building's own axes on the
+board at any angle, and a block belongs to a shape when its centre lies inside it. Walls come from eight
+neighbours, so a 45 degree wall is closed. A roof measured in the frame is the studio's roof turned. At 0 or 90
+degrees it is the studio's exactly; turned, it is laid in cubes and slabs to the half block, because a stair can
+face only four ways.
+
+**One convention settles the half blocks.** An even side wants its centre on a whole block and an odd side on a
+half; `house` snaps an axis-aligned centre that way. A distance in a frame is measured from the wall line's outer
+face, the same test the wall mask uses, so a wall and its roof never disagree by half a block.
+
+**A face pattern is a function of where a block falls on its face**, so one pattern fits a long wall and a short
+one. Faces are walked left to right as seen from outside, and a word in `facade.word` reads correctly on every
+side. An inset sets the face back a block, so a band or a glyph is a recess and not a paint. Corners stay flush.
+
+**A floor field is a function of where a cell falls in its rectangle.** The five carpets of the woven board were
+one chain of conditions; they are now borders, medallions, diamonds and stars that `first_of` composes.
+
+**A wall, a hedge and a fence are one build with different materials.** `line_wall` fills every cell of a line
+from the ground to its crown, at width 1 along the four-connected cells and wider over a band. The crown is
+`follow` (a fixed height over each cell, so it climbs the hillside), `level` (flat over runs, stepped like a
+curtain wall) or `grade` (over the ground held to a grade). A cap course, a crenel on every other cell, a gap
+every so many blocks and a few blocks sunk into the ground are each one argument.
+
+**`examples/parts/` lays every piece on one yard:** the four house styles at 0, 20, 45 and 90 degrees, the six
+roof forms, a mass on piers with a word, glyphs, flutes and a coffered underside, and three carpets. Islets uses
+them too: a house on each island at 20 degrees, its footprint in the plan.
+
+**Islets' read-back caught the first such house.** Its eave hung a block past the island's edge, over the void,
+because the plan held the walls and not the roof. It was moved two blocks in.
+
+## The layer document
+
+**A board can be stated as data instead of code.** `document.build` reads a JSON document of ordered layers and
+builds it in fixed stages: the made blueprint, named fields, ground, paint, lay, water, faces, the made ground
+through the grammar, volume, structures, build, dress and symmetry. Every layer is kept as a `Step` with the columns it
+changed, so a stepper over a board needs no instrumenting.
+
+**A layer is one operation, its numbers and the areas it works in.** An area is a circle, an ellipse, a polygon, a
+rectangle, a line with a width or the whole board, and `rough` bends any of them. The operation reads one distance
+from it, 0 at the centre or deepest point and 1 on the rim, so any area carries any operation. Any number may be
+an expression over the grid, the heights so far and the named fields, and the landforms are expressions too.
+
+**A faces layer dresses every drop of the grown ground.** It takes the grammar's courses, an accent bay, what lies
+under the courses and a foot, so the walls are a grammar's while the floors stay the paint stack's.
+`examples/layers/wandbild/` is one board in five such dressings: none, an Outback-like profile, Claywork's face,
+bands by height and Brittlebush's edge.
+
+**Three documents show what it holds.** `examples/layers/island.layers.json` is a grown island with a river, paths,
+a hedge and walls. `boards/riftwater-pgmvox/riftwater.ground.layers.json` is the Riftwater port's ground in 38 layers, held
+equal to `plan.land()` by a test. `examples/layers/saumland.layers.json` puts a yard in Brittlebush's grammar beside
+grown ground held under its rims, with monoliths sunk into the meadow, a fluted tower, a ringed forecourt and the
+half turn. The format is written out in `analysis/freeform-vs-studio/LAYER-DOCUMENT.md`.
+
+## Starting a board
+
+**`examples/islets/` is a whole board written against the library.** It has a plan raster with its half turn, a
+checker giving both teams' walk to the hill, a sketch, a generator with terrain, undersides and clouds, map.xml,
+renders and a read-back. Copy its `scripts/` to start a board:
+
+```
+cd freeform/lib
+python3 -m pgmvox.run examples/islets            # plan check, sketch, gen, write, map.xml, renders, walk
+python3 -m pgmvox.run examples/islets --only sketch
+```
+
+**The world lands in the repository's `maps/<mode>/<name>/`**, the folder `maps/INDEX.md` names for the board
+(`examples/islets` writes `maps/koth/islets`). A board the index does not name yet is added under its map's name and
+game mode on its first `write`, or under `<name>_pgmvox` where another board holds that name (`boards/riftwater-pgmvox` writes
+`maps/dtcm/riftwater_pgmvox`), so its world can be copied out to a server as it stands. Run outside the repository,
+the library writes `<board>/world` instead.
+
+**Every example that builds a world has one under `maps/`.** `islets` is a King of the Hill board in
+`maps/koth/islets`, with its map.xml. `bridges`, `drop`, `parts`, `spikes` and `vale` are worlds to walk round, in
+`maps/other/<name>/` with a `level.dat` and `region/` and no map.xml. `layers` holds studio documents rather than a
+world.
+
+**The read-back earned its place on the example's first build.** It found 1,053 places to stand over the kill
+height: cloud billows rising through it. The deck now sits far below.
+
+**A board's scripts put the library on their path themselves,** as `examples/islets/scripts/plan.py` does, and
+`run` also sets `PYTHONPATH`. Every build writes `renders/build-info.txt` with the library version it used.
+
+## Building a board with it
+
+**`AGENT-GUIDE.md` is for an agent handed a board to build.** It is about the plan and the sketch: what a plan
+must state and to what detail for each mode, the panels a sketch needs, and what must, should and may come from
+the library.
+
+## Tests
+
+**The walk is exact and opens doors.** It takes places in order of distance, so a jump that crosses several
+blocks costs exactly that many moves and a mirrored board walks the same from either side. A first-in first-out
+queue had given one board 81 and 83. A wooden door or fence gate opens, an iron door does not, and a ladder or
+vine catches a player falling past it.
+
+**A running jump lands one up, level, or lower.** Across a gap it takes the first floor it meets, down to the
+move rules' greatest drop, so a line of stones stepping down is crossed both ways. It had landed only one up or
+level, and a line of stones read as one way.
+
+**`python3 check.py` is the one command that says nothing is broken.** It runs the tests and the prose gate, then
+rebuilds every example and compares what each reads back (its plan check, generator and walk numbers, and how many
+of each block it built) with `check/snapshot.json`. A change that moves a number fails with a diff until it is
+looked at and accepted with `--update`. `--studio` also re-exports the studio's tables and reads every map.xml.
+
+**Every board is held to the world it builds, byte for byte.** `check.py` runs the generator of every folder with a
+`scripts/gen.py` (22 of them, about 40 seconds on four cores) into a scratch folder and compares the sha256 of its
+`volume.bin`, `tiles.json` and `level.json` with `check/boards.json`. A tidy that is meant to change no behaviour
+moves none of them, and `--boards` runs only this half. Nothing is written into a board's folder: a rebuild goes
+through `pgmvox.run --out`, which sends the renders, the map.xml and the world to a folder of its own.
+
+```
+cd freeform/lib && python3 -m unittest discover -s tests -v
+```
+
+**The tests check what each module promises.** They cover the studio-exported table, turns and their round trips,
+the physics numbers the boards measured, the headroom fix, ladders, footing, plan symmetry and fair arrivals,
+sight, slope without wrapping, save and load, rendering, and a sketch sheet with every kind of panel.
+
+**The pieces are tested as built and walked.** The tests check the roof against the studio's own, a house at 45 degrees with no gap in its walls, a word read from both sides, a course
+and its mirrored audit, a roof walked over the ground, solids turned with the plan, objectives mirrored, written
+and read back, a tunnel and a mine walked end to end, a tree planted, turned and refused, map.xml, and a Curio plot
+passing the plot check.
+
+**The studio's reader is run by hand,** since it needs the studio's checkout and the .NET SDK:
+
+```
+cd /tmp && dotnet run /path/to/freeform/lib/pgmvox/data/read_mapxml.cs -- /path/to/map.xml
+```
+
+## What it does not do yet
+
+**The house is simpler than the studio's.** It has one rectangle per storey, so no wings, porches or dormers,
+and its timber frame and window rhythm come from the boards, not from the studio's `HouseStyle`. Only the roof
+is held to the studio's formulas.
+
+**A route finds its way in seconds, not instantly.** A network of four branches over a 200-block board takes
+about twelve seconds in pure Python; a board with many routes will want it faster.
+
+**Jumps are taken on the ground storey only.** A jump from one roof to another is not in the walk graph yet.
+
+**A plan holds a building's walls, not its roof.** A roof's overhang is not in the raster, so the checker cannot
+see an eave over the void; the read-back can.
+
+**A course checks the nearest pair of cells only.** A player can leave a piece anywhere along its edge, and a
+take-off from the far end of a wide piece may miss what the nearest one reaches. The built world's read-back has
+to walk those.
+
+**`write_world.cs` names the studio's path in its project line.** C# cannot read an environment variable there, so
+a checkout elsewhere edits that one line. `world.write` finds the studio by `PGM_STUDIO_ROOT` for everything else.
+
+**The reads of a built world are a stopgap.** The repository's rule allows them for a world that is not a stored
+map. When the studio can read an uploaded region folder, `walk`, `render` and `audit` belong there; the plan-phase
+modules have no such overlap.
+
+**A face pattern is laid by `lay`, not by `dress`.** A face dressed over bare heights keeps its plain courses; its
+straight runs would have to be read the same way before a word or a band could cross them.
+
+**A style read off a map does not carry the map's curves or its built things.** Segment's rounded cut-outs, its
+arrow-tipped piece ends, its cobblestone trusses over the walks and its wells to the level under it, and Drastic's
+rock spires and water channels, are not sections, faces or fills; the grammar speaks their ground and their faces.

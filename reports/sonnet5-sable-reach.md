@@ -15,7 +15,7 @@ styles forked from one recipe, and the two path triads the brief names.
 
 Driven end to end with `tools/drive.py`: `POST /plan/evaluate` → `valid: true`, `POST /map/from-
 documents` → 200, export gate **OPEN**, dressing pass **0 declines** on the final build (41 props
-placed). `maps/sonnet5-sable-reach/`, `specs/sonnet5-sable-reach/` (plan, finish, layout, intent,
+placed). `maps/ctw/sable_reach/`, `specs/sonnet5-sable-reach/` (plan, finish, layout, intent,
 `build-spec.py`, 49 renders), `review/sonnet5-sable-reach.md` and this report are all in place.
 
 ## What I could not say

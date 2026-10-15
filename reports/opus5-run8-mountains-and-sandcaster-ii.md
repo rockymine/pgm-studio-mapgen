@@ -56,7 +56,7 @@ coordinate, so moving a massif moves its paint with it.
 
 ## Sandcaster II
 
-`maps/opus5-sandcaster-ii`, 100 × 400. One landmass — six nested rectangles mirrored, compiled to a single
+`maps/dtcm/sandcaster_ii`, 100 × 400. One landmass — six nested rectangles mirrored, compiled to a single
 shape with a wandering coast, no chasm and no gap link. Two massifs, two spurs and two corries a side, drawn
 as six pushes. Four marks. Three landscapes painted at region scale with the detail strokes read against
 them, because paint scopes to the smallest shape covering a cell. The workings under the middle of it: a

@@ -1,0 +1,619 @@
+<meta charset="utf-8">
+<title>Gelände-Ebenen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a working bench — the board and its section on the left, the layer stack (the recipe) on the right. */
+:root {
+  --bg: #eef1ee;
+  --panel: #ffffff;
+  --ink: #1d2622;
+  --muted: #5b6862;
+  --line: #d3dad5;
+  --accent: #2f6b4f;
+  --accent-soft: #dcebe2;
+  --warn: #9a5b12;
+  --chip: #f3f6f4;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121815; --panel: #1a221e; --ink: #e3ebe6; --muted: #98a69f; --line: #2c3833;
+  --accent: #7cc3a0; --accent-soft: #233a2f; --warn: #e0a55a; --chip: #212b26; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121815; --panel: #1a221e; --ink: #e3ebe6; --muted: #98a69f; --line: #2c3833;
+  --accent: #7cc3a0; --accent-soft: #233a2f; --warn: #e0a55a; --chip: #212b26; color-scheme: dark }
+[hidden] { display: none !important; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.45; }
+.wrap { max-width: 1280px; margin: 0 auto; padding-inline: 16px; padding-block: 20px 40px; }
+header h1 { font-family: var(--display); font-weight: 800; font-size: clamp(22px, 3vw, 30px); margin: 0 0 6px; letter-spacing: -0.01em; text-wrap: balance; }
+header p { margin: 0; max-width: 72ch; color: var(--muted); }
+.grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 400px); gap: 18px; margin-top: 16px; align-items: start; }
+@media (max-width: 900px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px; min-width: 0; }
+.bar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 10px; }
+.bar .lbl { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-right: 4px; }
+button, select { font: inherit; font-size: 13px; color: var(--ink); background: var(--chip); border: 1px solid var(--line); border-radius: 6px; padding: 4px 9px; cursor: pointer; }
+button:hover { border-color: var(--accent); }
+button[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); font-weight: 600; }
+button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.stage { position: relative; width: 100%; aspect-ratio: 1 / 1; max-width: 100%; }
+.stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; border-radius: 6px; touch-action: none; }
+#iso { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 6px; background: var(--chip); }
+#section { width: 100%; height: 170px; display: block; margin-top: 10px; }
+.step { display: flex; align-items: center; gap: 10px; margin-top: 10px; font-size: 13px; color: var(--muted); }
+.step input { flex: 1; min-width: 0; accent-color: var(--accent); }
+.stats { font-family: var(--mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; margin-top: 6px; }
+h2 { font-family: var(--display); font-size: 15px; font-weight: 700; margin: 0 0 8px; letter-spacing: .01em; }
+ol.layers { list-style: none; padding: 0; margin: 0 0 10px; display: grid; gap: 4px; counter-reset: step; }
+ol.layers li { display: grid; grid-template-columns: 22px 26px minmax(0, 1fr) auto; gap: 6px; align-items: center; padding: 6px 6px; border: 1px solid var(--line); border-radius: 7px; background: var(--chip); cursor: pointer; counter-increment: step; }
+ol.layers li.sel { border-color: var(--accent); background: var(--accent-soft); }
+ol.layers li.off .name { text-decoration: line-through; color: var(--muted); }
+ol.layers li .num::before { content: counter(step); font-family: var(--mono); font-size: 12px; color: var(--muted); }
+ol.layers li .eye { padding: 1px 4px; font-size: 12px; }
+ol.layers li .name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+ol.layers li .op { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+ol.layers li .ms { font-family: var(--mono); font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.params { display: grid; gap: 8px; }
+.param { display: grid; grid-template-columns: 120px minmax(0, 1fr) 46px; gap: 8px; align-items: center; font-size: 13px; }
+.param input[type=range] { width: 100%; accent-color: var(--accent); }
+.param output { font-family: var(--mono); font-size: 12px; text-align: right; font-variant-numeric: tabular-nums; }
+.hint { font-size: 13px; color: var(--muted); margin: 6px 0 0; }
+.add { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+pre.json { font-family: var(--mono); font-size: 11.5px; background: var(--chip); border: 1px solid var(--line); border-radius: 7px; padding: 10px; overflow: auto; max-height: 300px; margin: 8px 0 0; }
+details summary { cursor: pointer; font-family: var(--display); font-weight: 700; font-size: 14px; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px; font-size: 12px; color: var(--muted); margin-top: 8px; }
+.legend i { display: inline-block; width: 12px; height: 10px; border-radius: 2px; vertical-align: -1px; margin-right: 4px; }
+.notes { margin-top: 18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.notes p { margin: 4px 0 0; max-width: 65ch; }
+.notes h3 { font-family: var(--display); font-size: 14px; margin: 0; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Gelände-Ebenen</h1>
+    <p>Ein Prototyp für das Gelände im Studio 2.0. Jede Ebene ist eine Operation, die nur in ihrem Bereich wirkt: Hügel hier, eine Schlucht dort, ein Tafelberg, ein See. Die Ebenen laufen von oben nach unten, und die Reihenfolge hat Bedeutung. Ziehe die Punkte auf der Karte, schalte Ebenen aus, verschiebe sie, ändere die Werte. Ein Agent schreibt genau dieselbe Liste als JSON (unten rechts).</p>
+  </header>
+
+  <div class="grid">
+    <section class="card" aria-label="Karte">
+      <div class="bar" role="toolbar" aria-label="Ansicht">
+        <span class="lbl">Ansicht</span>
+        <button id="v-relief" aria-pressed="true">Relief</button>
+        <button id="v-slope" aria-pressed="false">Neigung</button>
+        <button id="v-diff" aria-pressed="false">Was diese Ebene ändert</button>
+        <button id="v-iso" aria-pressed="false">Schräg</button>
+      </div>
+      <div class="stage" id="stage">
+        <canvas id="map" width="576" height="576" aria-label="Draufsicht des Geländes"></canvas>
+        <canvas id="over" width="576" height="576" aria-hidden="true"></canvas>
+      </div>
+      <canvas id="iso" width="960" height="600" hidden aria-label="Schräge Ansicht"></canvas>
+      <div class="legend" id="legend"></div>
+      <div class="step">
+        <label for="upto">Stand nach Schritt</label>
+        <input id="upto" type="range" min="0" max="10" value="10">
+        <output id="upto-out" for="upto">alle</output>
+      </div>
+      <canvas id="section" aria-label="Schnitt A–B"></canvas>
+      <div class="stats" id="stats"></div>
+    </section>
+
+    <aside class="card" aria-label="Ebenen">
+      <h2>Ebenen (das Rezept)</h2>
+      <ol class="layers" id="layers"></ol>
+      <div class="bar">
+        <button id="up" title="Ebene nach oben">↑ früher</button>
+        <button id="down" title="Ebene nach unten">↓ später</button>
+        <button id="del">Löschen</button>
+        <button id="addpt">Punkt hinzufügen</button>
+        <button id="rmpt">Punkt entfernen</button>
+      </div>
+      <h2 id="ptitle">Werte</h2>
+      <div class="params" id="params"></div>
+      <p class="hint" id="phint"></p>
+      <div class="add">
+        <label for="newop" class="lbl" style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;align-self:center">Neue Ebene</label>
+        <select id="newop">
+          <option value="noise">Hügel (Rauschen im Bereich)</option>
+          <option value="canyon">Schlucht entlang Linie</option>
+          <option value="butte">Tafelberg</option>
+          <option value="terraces">Terrassen im Bereich</option>
+          <option value="lake">See</option>
+          <option value="river">Fluss entlang Linie</option>
+          <option value="marks">Höhenmarken (Studio-Löser)</option>
+          <option value="smooth">Glätten im Bereich</option>
+          <option value="outline">Insel-Umriss</option>
+        </select>
+        <button id="add">Hinzufügen</button>
+        <button id="reset">Beispiel neu laden</button>
+      </div>
+      <details style="margin-top:14px">
+        <summary>Das Dokument, das ein Agent schreibt</summary>
+        <pre class="json" id="json"></pre>
+        <button id="copy" style="margin-top:6px">JSON kopieren</button> <span id="copied" class="hint"></span>
+      </details>
+    </aside>
+  </div>
+
+  <div class="notes">
+    <div class="card"><h3>Bereiche statt Zufall</h3><p>Das Rauschen ist nicht die Landschaft. Es ist eine Ebene mit Bereich, Zellgröße und Stärke. Wo eine Schlucht hin soll, zeichnet man ihre Linie. Wo es hügelig sein soll, zeichnet man den Bereich. Der weiche Rand („Übergang“) blendet die Ebene aus, statt eine Kante zu ziehen.</p></div>
+    <div class="card"><h3>Die Reihenfolge ist die Bedeutung</h3><p>Erst der Umriss, dann die großen Formen, dann Wasser, dann Feinheiten. Eine Schlucht vor dem Tafelberg wird von ihm überdeckt, danach schneidet sie hinein. Schiebe die Schlucht nach oben und sieh es selbst.</p></div>
+    <div class="card"><h3>Der Löser bleibt ein Werkzeug</h3><p>„Höhenmarken“ ist der heutige Studio-Ansatz (vereinfacht nachgebaut): feste Höhen an festen Punkten, dazwischen ausgeglichen. In 2.0 ist das eine Ebene unter vielen, nicht der einzige Weg zu Gelände.</p></div>
+    <div class="card"><h3>Was hier fehlt</h3><p>Nur das Höhenfeld ist gezeigt (2,5D). Tunnel, Höhlen und Unterseiten von Schwebeinseln sind 3D-Ebenen, die danach im Voxelraster laufen. Die Unterseite des Umrisses sieht man im Schnitt.</p></div>
+  </div>
+</div>
+
+<script>
+(() => {
+"use strict";
+const N = 192;                       // cells per side, one cell = one block
+const PX = 3;                        // canvas pixels per cell
+const $ = (id) => document.getElementById(id);
+const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
+const smooth = (e0, e1, x) => { const t = clamp((x - e0) / (e1 - e0), 0, 1); return t * t * (3 - 2 * t); };
+const lerp = (a, b, t) => a + (b - a) * t;
+
+// ── noise: value noise with a quintic fade, summed in octaves ────────────────────────────────
+function hash(ix, iz, seed) {
+  let h = (ix * 374761393 + iz * 668265263 + seed * 2147483647) | 0;
+  h = Math.imul(h ^ (h >>> 13), 1274126177);
+  h ^= h >>> 16;
+  return (h >>> 0) / 4294967296;
+}
+const fade = (t) => t * t * t * (t * (t * 6 - 15) + 10);
+function vnoise(x, z, seed) {
+  const ix = Math.floor(x), iz = Math.floor(z), fx = fade(x - ix), fz = fade(z - iz);
+  const a = hash(ix, iz, seed), b = hash(ix + 1, iz, seed), c = hash(ix, iz + 1, seed), d = hash(ix + 1, iz + 1, seed);
+  return lerp(lerp(a, b, fx), lerp(c, d, fx), fz);
+}
+function fbm(x, z, cell, octaves, seed) {
+  let sum = 0, amp = 1, norm = 0, c = cell;
+  for (let o = 0; o < octaves; o++) { sum += amp * vnoise(x / c, z / c, seed + o * 101); norm += amp; amp *= 0.5; c = Math.max(1, c / 2); }
+  return (sum / norm) * 2 - 1;
+}
+
+// ── geometry ─────────────────────────────────────────────────────────────────────────────
+function segDist(px, pz, ax, az, bx, bz) {
+  const dx = bx - ax, dz = bz - az, L = dx * dx + dz * dz;
+  const t = L ? clamp(((px - ax) * dx + (pz - az) * dz) / L, 0, 1) : 0;
+  const qx = ax + t * dx, qz = az + t * dz;
+  return [Math.hypot(px - qx, pz - qz), t];
+}
+function sdPoly(px, pz, pts) {               // positive inside
+  let d = Infinity, inside = false;
+  for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) {
+    const [ax, az] = pts[j], [bx, bz] = pts[i];
+    d = Math.min(d, segDist(px, pz, ax, az, bx, bz)[0]);
+    if ((bz > pz) !== (az > pz) && px < (ax - bx) * (pz - bz) / (az - bz) + bx) inside = !inside;
+  }
+  return inside ? d : -d;
+}
+function lineDist(px, pz, pts) {             // distance and position along a polyline, 0..1
+  let best = Infinity, at = 0, run = 0, total = 0;
+  const lens = [];
+  for (let i = 1; i < pts.length; i++) { const l = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); lens.push(l); total += l; }
+  for (let i = 1; i < pts.length; i++) {
+    const [d, t] = segDist(px, pz, pts[i - 1][0], pts[i - 1][1], pts[i][0], pts[i][1]);
+    if (d < best) { best = d; at = (run + t * lens[i - 1]) / (total || 1); }
+    run += lens[i - 1];
+  }
+  return [best, at];
+}
+
+// ── the operations ───────────────────────────────────────────────────────────────────────
+// Each takes the world so far {H, land, water, under} and changes it. "region" is optional on the ones that
+// take one; "feather" is how many blocks the edge of the region blends over.
+function regionWeight(layer, x, z) {
+  if (!layer.region) return 1;
+  const f = Math.max(0.5, layer.p.feather ?? 8);
+  return smooth(-f, f, sdPoly(x + .5, z + .5, layer.region));
+}
+const OPS = {
+  outline: {
+    label: "Insel-Umriss", geom: "region",
+    params: { base: [20, 100, 1, "Höhe der Fläche"], warp: [0, 20, 0.5, "Rand verbiegen"], warpCell: [6, 60, 1, "Biegung, Größe"], under: [0, 60, 1, "Unterseite, Tiefe"], seed: [1, 99, 1, "Zufallszahl"] },
+    hint: "Legt fest, wo überhaupt Land ist. Außerhalb ist Leere. Die Unterseite der Schwebeinsel sieht man im Schnitt.",
+    apply(L, w) {
+      const p = L.p;
+      for (let z = 0; z < N; z++) for (let x = 0; x < N; x++) {
+        const wx = x + .5 + p.warp * fbm(x, z, p.warpCell, 3, p.seed), wz = z + .5 + p.warp * fbm(x + 77, z - 31, p.warpCell, 3, p.seed + 7);
+        const sd = sdPoly(wx, wz, L.region);
+        const i = z * N + x;
+        if (sd > 0) { w.land[i] = 1; w.H[i] = p.base; w.under[i] = p.base - p.under * smooth(0, 26, sd) * (0.75 + 0.25 * fbm(x, z, 9, 2, p.seed + 3)) - 2; }
+      }
+    },
+  },
+  noise: {
+    label: "Hügel", geom: "region",
+    params: { amp: [0, 20, 0.2, "Stärke (Blöcke)"], cell: [4, 80, 1, "Größe der Hügel"], octaves: [1, 5, 1, "Feinheit (Oktaven)"], feather: [0, 30, 1, "Übergang"], seed: [1, 99, 1, "Zufallszahl"] },
+    hint: "Rollende Hügel bleiben weich, solange die kleinste Oktave mindestens etwa fünf Blöcke groß ist (Größe ÷ 2^(Oktaven−1)). Darunter wird es körnig.",
+    apply(L, w) {
+      const p = L.p;
+      for (let z = 0; z < N; z++) for (let x = 0; x < N; x++) {
+        const i = z * N + x; if (!w.land[i]) continue;
+        const k = regionWeight(L, x, z); if (k <= 0) continue;
+        w.H[i] += k * p.amp * fbm(x, z, p.cell, p.octaves, p.seed);
+      }
+    },
+  },
+  butte: {
+    label: "Tafelberg", geom: "shape",
+    params: { height: [0, 40, 1, "Höhe"], slope: [1, 24, 1, "Hangbreite"], rough: [0, 6, 0.5, "Kante unruhig"], seed: [1, 99, 1, "Zufallszahl"] },
+    hint: "Eine flache Kuppe mit steilem Hang. Der Umriss ist die Kante oben, der Hang liegt außerhalb.",
+    apply(L, w) {
+      const p = L.p;
+      for (let z = 0; z < N; z++) for (let x = 0; x < N; x++) {
+        const i = z * N + x; if (!w.land[i]) continue;
+        const sd = sdPoly(x + .5, z + .5, L.region) + p.rough * fbm(x, z, 7, 2, p.seed);
+        w.H[i] += p.height * smooth(-p.slope, 0, sd);
+      }
+    },
+  },
+  canyon: {
+    label: "Schlucht", geom: "line",
+    params: { width: [2, 30, 1, "Breite der Sohle"], depth: [0, 40, 1, "Tiefe"], wall: [1, 20, 1, "Wand (Breite)"], wander: [0, 6, 0.5, "Sohle unruhig"], seed: [1, 99, 1, "Zufallszahl"] },
+    hint: "Schneidet entlang der Linie. Steht sie nach einem Tafelberg, schneidet sie in ihn hinein.",
+    apply(L, w) {
+      const p = L.p;
+      for (let z = 0; z < N; z++) for (let x = 0; x < N; x++) {
+        const i = z * N + x; if (!w.land[i]) continue;
+        const d = lineDist(x + .5, z + .5, L.line)[0] + p.wander * fbm(x, z, 9, 2, p.seed);
+        const t = 1 - smooth(p.width / 2, p.width / 2 + p.wall, d);
+        if (t > 0) w.H[i] -= p.depth * t;
+      }
+    },
+  },
+  terraces: {
+    label: "Terrassen", geom: "region",
+    params: { step: [1, 10, 1, "Stufenhöhe"], ramp: [0.05, 1, 0.05, "Anteil Hang"], feather: [0, 30, 1, "Übergang"] },
+    hint: "Treppt das Gelände im Bereich ab. Ein kleiner Hanganteil gibt harte Stufen, ein großer weiche Bänder.",
+    apply(L, w) {
+      const p = L.p;
+      for (let z = 0; z < N; z++) for (let x = 0; x < N; x++) {
+        const i = z * N + x; if (!w.land[i]) continue;
+        const k = regionWeight(L, x, z); if (k <= 0) continue;
+        const f = w.H[i] / p.step, j = Math.floor(f), r = f - j;
+        const t = (j + smooth(1 - p.ramp, 1, r)) * p.step;
+        w.H[i] = lerp(w.H[i], t, k);
+      }
+    },
+  },
+  lake: {
+    label: "See", geom: "shape",
+    params: { level: [10, 100, 1, "Wasserspiegel"], depth: [1, 12, 1, "Tiefe"], shore: [1, 12, 1, "Ufer (Breite)"] },
+    hint: "Senkt das Gelände im Umriss unter den Wasserspiegel und füllt es. Das Ufer steigt außen an.",
+    apply(L, w) {
+      const p = L.p;
+      for (let z = 0; z < N; z++) for (let x = 0; x < N; x++) {
+        const i = z * N + x; if (!w.land[i]) continue;
+        const sd = sdPoly(x + .5, z + .5, L.region);
+        if (sd > 0) { w.H[i] = Math.min(w.H[i], p.level - 1 - (p.depth - 1) * smooth(0, p.shore, sd)); w.water[i] = Math.max(w.water[i], p.level); }
+        else if (sd > -p.shore) w.H[i] = Math.min(w.H[i], p.level + (-sd) * 0.9);
+      }
+    },
+  },
+  river: {
+    label: "Fluss", geom: "line",
+    params: { width: [1, 12, 1, "Breite"], depth: [1, 6, 1, "Tiefe"], from: [10, 100, 1, "Spiegel am Anfang"], to: [10, 100, 1, "Spiegel am Ende"], bank: [1, 10, 1, "Böschung"] },
+    hint: "Der Spiegel fällt vom Anfang zum Ende. Das Ufer wird bis zur Böschungsbreite abgesenkt.",
+    apply(L, w) {
+      const p = L.p, half = p.width / 2;
+      for (let z = 0; z < N; z++) for (let x = 0; x < N; x++) {
+        const i = z * N + x; if (!w.land[i]) continue;
+        const [d, at] = lineDist(x + .5, z + .5, L.line);
+        const s = Math.round(lerp(p.from, p.to, at));
+        if (d < half) { w.H[i] = Math.min(w.H[i], s - 1 - (p.depth - 1) * (1 - (d / half) ** 2)); w.water[i] = Math.max(w.water[i], s); }
+        else if (d < half + p.bank) w.H[i] = Math.min(w.H[i], s + (d - half));
+      }
+    },
+  },
+  marks: {
+    label: "Höhenmarken", geom: "points",
+    params: { reach: [6, 80, 1, "Reichweite"] },
+    hint: "Der heutige Studio-Ansatz, vereinfacht: jede Marke hält ihre Höhe (die Zahl am Punkt, ändern mit Mausrad), das Gelände dazwischen wird ausgeglichen.",
+    apply(L, w) {
+      const p = L.p;
+      const offs = L.points.map(([px, pz, h]) => { const i = clamp(Math.round(pz), 0, N - 1) * N + clamp(Math.round(px), 0, N - 1); return [px, pz, h - w.H[i]]; });
+      for (let z = 0; z < N; z++) for (let x = 0; x < N; x++) {
+        const i = z * N + x; if (!w.land[i]) continue;
+        let num = 0, den = 0, reach = 0;
+        for (const [px, pz, off] of offs) {
+          const d = Math.hypot(x + .5 - px, z + .5 - pz);
+          const k = 1 - smooth(0, p.reach, d); if (k <= 0) continue;
+          const wgt = 1 / (d * d + 1);
+          num += wgt * off; den += wgt; reach = Math.max(reach, k);
+        }
+        if (den > 0) w.H[i] += reach * num / den;
+      }
+    },
+  },
+  smooth: {
+    label: "Glätten", geom: "region",
+    params: { radius: [1, 8, 1, "Radius"], passes: [1, 6, 1, "Durchgänge"], feather: [0, 30, 1, "Übergang"] },
+    hint: "Ein weicher Pinsel über den Bereich.",
+    apply(L, w) {
+      const p = L.p; let src = Float32Array.from(w.H);
+      for (let pass = 0; pass < p.passes; pass++) {
+        const dst = new Float32Array(src);
+        for (let z = 0; z < N; z++) for (let x = 0; x < N; x++) {
+          const i = z * N + x; if (!w.land[i]) continue;
+          let s = 0, c = 0;
+          for (let dz = -p.radius; dz <= p.radius; dz++) for (let dx = -p.radius; dx <= p.radius; dx++) {
+            const xx = x + dx, zz = z + dz; if (xx < 0 || zz < 0 || xx >= N || zz >= N) continue;
+            const j = zz * N + xx; if (!w.land[j]) continue; s += src[j]; c++;
+          }
+          dst[i] = s / c;
+        }
+        src = dst;
+      }
+      for (let z = 0; z < N; z++) for (let x = 0; x < N; x++) { const i = z * N + x; if (w.land[i]) w.H[i] = lerp(w.H[i], src[i], regionWeight(L, x, z)); }
+    },
+  },
+};
+
+// ── the example recipe ───────────────────────────────────────────────────────────────────
+function example() {
+  const blob = (cx, cz, rx, rz, n = 11, wob = 0.18, seed = 1) => Array.from({ length: n }, (_, k) => {
+    const a = 2 * Math.PI * k / n, r = 1 + wob * Math.sin(a * 3 + seed);
+    return [Math.round(cx + rx * r * Math.cos(a)), Math.round(cz + rz * r * Math.sin(a))];
+  });
+  return [
+    { id: "insel", op: "outline", name: "Die Insel", on: true, region: blob(96, 96, 80, 84, 13, 0.12, 2), p: { base: 56, warp: 7, warpCell: 26, under: 34, seed: 4 } },
+    { id: "nordhuegel", op: "noise", name: "Hügel im Norden", on: true, region: [[20, 18], [176, 18], [176, 84], [20, 84]], p: { amp: 7, cell: 40, octaves: 3, feather: 16, seed: 11 } },
+    { id: "welle", op: "noise", name: "Leichte Welle überall", on: true, p: { amp: 1.4, cell: 22, octaves: 2, feather: 8, seed: 5 } },
+    { id: "tafelberg", op: "butte", name: "Tafelberg im Westen", on: true, region: blob(54, 120, 20, 16, 9, 0.2, 5), p: { height: 16, slope: 7, rough: 2.5, seed: 8 } },
+    { id: "schlucht", op: "canyon", name: "Schlucht quer durch", on: true, line: [[30, 140], [70, 118], [104, 104], [140, 92], [178, 70]], p: { width: 6, depth: 18, wall: 4, wander: 2, seed: 3 } },
+    { id: "terrassen", op: "terraces", name: "Terrassen am Südhang", on: true, region: [[100, 130], [172, 130], [172, 176], [100, 176]], p: { step: 3, ramp: 0.35, feather: 10 } },
+    { id: "see", op: "lake", name: "See im Süden", on: true, region: blob(126, 150, 15, 11, 10, 0.2, 3), p: { level: 54, depth: 5, shore: 4 } },
+    { id: "fluss", op: "river", name: "Bach zum See", on: true, line: [[150, 40], [156, 70], [150, 104], [134, 138]], p: { width: 3, depth: 2, from: 64, to: 54, bank: 3 } },
+    { id: "marken", op: "marks", name: "Höhenmarken am Spawn", on: true, points: [[96, 30, 66], [80, 40, 64]], p: { reach: 26 } },
+    { id: "glaetten", op: "smooth", name: "Ufer glätten", on: false, region: blob(126, 150, 24, 19, 10, 0.15, 3), p: { radius: 2, passes: 2, feather: 6 } },
+  ];
+}
+function load() { try { const s = localStorage.getItem("gelaende-ebenen"); if (s) return JSON.parse(s); } catch (e) {} return example(); }
+function save() { try { localStorage.setItem("gelaende-ebenen", JSON.stringify(layers)); } catch (e) {} }
+
+let layers = load();
+let sel = 3, view = "relief", upto = layers.length;
+let sectionLine = [[18, 120], [176, 120]];
+let snaps = [], times = [];
+
+// ── run ──────────────────────────────────────────────────────────────────────────────────
+function blank() { return { H: new Float32Array(N * N), land: new Uint8Array(N * N), water: new Float32Array(N * N), under: new Float32Array(N * N) }; }
+function copy(w) { return { H: Float32Array.from(w.H), land: Uint8Array.from(w.land), water: Float32Array.from(w.water), under: Float32Array.from(w.under) }; }
+function run() {
+  let w = blank(); snaps = [copy(w)]; times = [];
+  for (const L of layers) {
+    const t0 = performance.now();
+    if (L.on) OPS[L.op].apply(L, w);
+    times.push(performance.now() - t0);
+    snaps.push(copy(w));
+  }
+}
+
+// ── draw ─────────────────────────────────────────────────────────────────────────────────
+const map = $("map"), mc = map.getContext("2d"), over = $("over"), oc = over.getContext("2d");
+const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+const ramp = [[0, [70, 120, 60]], [0.35, [116, 150, 72]], [0.6, [150, 140, 96]], [0.8, [140, 132, 122]], [1, [214, 214, 210]]];
+function rampColor(t) { for (let k = 1; k < ramp.length; k++) if (t <= ramp[k][0]) { const [a, ca] = ramp[k - 1], [b, cb] = ramp[k]; const u = (t - a) / (b - a); return ca.map((c, j) => c + (cb[j] - c) * u); } return ramp[ramp.length - 1][1]; }
+function slopeAt(H, land, x, z) {
+  const g = (xx, zz) => { xx = clamp(xx, 0, N - 1); zz = clamp(zz, 0, N - 1); const j = zz * N + xx; return land[j] ? H[j] : H[z * N + x]; };
+  const dx = (g(x + 1, z) - g(x - 1, z)) / 2, dz = (g(x, z + 1) - g(x, z - 1)) / 2;
+  return Math.atan(Math.hypot(dx, dz)) * 180 / Math.PI;
+}
+function drawMap() {
+  const w = snaps[upto], prev = snaps[Math.max(0, Math.min(upto, sel))], next = snaps[Math.min(upto, sel + 1)];
+  const img = mc.createImageData(N * PX, N * PX), d = img.data;
+  let lo = Infinity, hi = -Infinity;
+  for (let i = 0; i < N * N; i++) if (w.land[i]) { lo = Math.min(lo, w.H[i]); hi = Math.max(hi, w.H[i]); }
+  if (!isFinite(lo)) { lo = 0; hi = 1; }
+  for (let z = 0; z < N; z++) for (let x = 0; x < N; x++) {
+    const i = z * N + x; let c;
+    if (!w.land[i]) c = [24, 30, 38];
+    else if (view === "slope") {
+      const s = slopeAt(w.H, w.land, x, z);
+      c = s < 15 ? [104, 160, 82] : s < 35 ? [190, 176, 96] : s < 50 ? [176, 118, 74] : [120, 116, 122];
+      if (w.water[i] > w.H[i]) c = [70, 120, 176];
+    } else if (view === "diff") {
+      const dh = next.H[i] - prev.H[i];
+      const t = clamp(Math.abs(dh) / 12, 0, 1);
+      c = dh > 0 ? [lerp(236, 196, t), lerp(236, 92, t), lerp(232, 40, t)] : [lerp(236, 40, t), lerp(236, 104, t), lerp(232, 190, t)];
+      if (next.water[i] > 0 && prev.water[i] === 0) c = [60, 150, 220];
+      if (next.land[i] !== prev.land[i]) c = [40, 160, 90];
+    } else {
+      const sh = clamp(1 + 0.11 * ((w.H[i - 1] ?? w.H[i]) - (w.H[i + 1] ?? w.H[i]) + (w.H[i - N] ?? w.H[i]) - (w.H[i + N] ?? w.H[i])), 0.6, 1.35);
+      c = rampColor((w.H[i] - lo) / (hi - lo || 1)).map((v) => v * sh);
+      if (w.water[i] > w.H[i]) c = [56 + (w.water[i] - w.H[i]) * -4, 110, 178];
+      const step = Math.floor(w.H[i] / 2);
+      if ((x + 1 < N && w.land[i + 1] && Math.floor(w.H[i + 1] / 2) !== step) || (z + 1 < N && w.land[i + N] && Math.floor(w.H[i + N] / 2) !== step)) c = c.map((v) => v * 0.72);
+    }
+    for (let py = 0; py < PX; py++) for (let px = 0; px < PX; px++) {
+      const o = ((z * PX + py) * N * PX + x * PX + px) * 4;
+      d[o] = c[0]; d[o + 1] = c[1]; d[o + 2] = c[2]; d[o + 3] = 255;
+    }
+  }
+  mc.putImageData(img, 0, 0);
+  drawOverlay();
+  drawLegend(lo, hi);
+  const L = layers[sel];
+  $("stats").textContent = `Höhe ${lo.toFixed(0)}–${hi.toFixed(0)} · Land ${(w.land.reduce((a, b) => a + b, 0) / (N * N) * 100).toFixed(0)} % · ${N}×${N} Blöcke · alle Ebenen ${times.reduce((a, b) => a + b, 0).toFixed(0)} ms`;
+  if (view === "iso") drawIso(w, lo, hi);
+}
+function drawLegend(lo, hi) {
+  const el = $("legend");
+  if (view === "slope") el.innerHTML = '<span><i style="background:#68a052"></i>unter 15° Wiese</span><span><i style="background:#beb060"></i>15–35° Hang</span><span><i style="background:#b0764a"></i>35–50° steil</span><span><i style="background:#78747a"></i>über 50° Fels</span>';
+  else if (view === "diff") el.innerHTML = `<span><i style="background:#c45c28"></i>angehoben</span><span><i style="background:#2868be"></i>abgesenkt</span><span><i style="background:#3c96dc"></i>neues Wasser</span><span>Ebene ${sel + 1}: ${escapeHtml(layers[sel]?.name ?? "")}</span>`;
+  else el.innerHTML = `<span><i style="background:rgb(70,120,60)"></i>y ${lo.toFixed(0)}</span><span><i style="background:rgb(150,140,96)"></i>Mitte</span><span><i style="background:rgb(214,214,210)"></i>y ${hi.toFixed(0)}</span><span>Höhenlinien alle 2 Blöcke</span>`;
+}
+function escapeHtml(s) { return String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]); }
+function drawOverlay() {
+  oc.clearRect(0, 0, over.width, over.height);
+  const ink = "rgba(255,255,255,0.92)", dark = "rgba(10,14,12,0.85)";
+  // section line
+  oc.setLineDash([6, 5]); oc.lineWidth = 2; oc.strokeStyle = "rgba(255,230,140,0.95)";
+  oc.beginPath(); oc.moveTo(sectionLine[0][0] * PX, sectionLine[0][1] * PX); oc.lineTo(sectionLine[1][0] * PX, sectionLine[1][1] * PX); oc.stroke(); oc.setLineDash([]);
+  [["A", sectionLine[0]], ["B", sectionLine[1]]].forEach(([t, [x, z]]) => { oc.fillStyle = "rgba(255,230,140,0.95)"; oc.beginPath(); oc.arc(x * PX, z * PX, 8, 0, 7); oc.fill(); oc.fillStyle = "#222"; oc.font = "bold 11px sans-serif"; oc.textAlign = "center"; oc.textBaseline = "middle"; oc.fillText(t, x * PX, z * PX + 1); });
+  const L = layers[sel]; if (!L) return;
+  const g = L.region || L.line || L.points; if (!g) return;
+  oc.lineWidth = 2; oc.strokeStyle = ink; oc.fillStyle = "rgba(255,255,255,0.08)";
+  oc.beginPath();
+  g.forEach(([x, z], k) => k ? oc.lineTo(x * PX, z * PX) : oc.moveTo(x * PX, z * PX));
+  if (L.region) { oc.closePath(); oc.fill(); }
+  if (!L.points) { oc.shadowColor = dark; oc.shadowBlur = 3; oc.stroke(); oc.shadowBlur = 0; }
+  g.forEach(([x, z, h]) => {
+    oc.beginPath(); oc.arc(x * PX, z * PX, L.points ? 7 : 5, 0, 7); oc.fillStyle = "#fff"; oc.fill(); oc.lineWidth = 2; oc.strokeStyle = dark; oc.stroke();
+    if (L.points) { oc.fillStyle = "#fff"; oc.font = "bold 12px sans-serif"; oc.textAlign = "left"; oc.textBaseline = "middle"; oc.shadowColor = dark; oc.shadowBlur = 3; oc.fillText("y " + h, x * PX + 10, z * PX); oc.shadowBlur = 0; }
+  });
+}
+function drawIso(w, lo, hi) {
+  const c = $("iso"), g = c.getContext("2d");
+  g.fillStyle = css("--chip"); g.fillRect(0, 0, c.width, c.height);
+  const sx = 2.45, sy = 1.25, hz = 3.2, ox = c.width / 2, oy = 150;
+  for (let s = 0; s < 2 * N - 1; s++) for (let z = Math.max(0, s - N + 1); z <= Math.min(s, N - 1); z++) {
+    const x = s - z, i = z * N + x; if (!w.land[i]) continue;
+    const top = Math.max(w.H[i], w.water[i]);
+    const u = ox + (x - z) * sx, v = oy + (x + z) * sy - (top - lo) * hz;
+    const base = oy + (x + z) * sy - (w.under[i] - lo) * hz;
+    let col = w.water[i] > w.H[i] ? [70, 120, 180] : rampColor((w.H[i] - lo) / (hi - lo || 1));
+    const sh = clamp(1 + 0.1 * ((w.H[i - 1] ?? w.H[i]) - (w.H[i + N] ?? w.H[i])), 0.65, 1.3);
+    g.fillStyle = `rgb(${col.map((q) => q * 0.55).join(",")})`; g.fillRect(u, v, sx * 2, Math.max(sy * 2, base - v));
+    g.fillStyle = `rgb(${col.map((q) => q * sh).join(",")})`; g.fillRect(u, v, sx * 2, sy * 2 + 1);
+  }
+}
+function drawSection() {
+  const c = $("section"), r = c.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+  c.width = Math.round(r.width * dpr); c.height = Math.round(170 * dpr);
+  const g = c.getContext("2d"); g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const W = r.width, Hh = 170, w = snaps[upto];
+  g.clearRect(0, 0, W, Hh);
+  const [[ax, az], [bx, bz]] = sectionLine, len = Math.hypot(bx - ax, bz - az), n = Math.max(2, Math.round(len));
+  const pts = [];
+  for (let k = 0; k <= n; k++) { const t = k / n, x = Math.round(lerp(ax, bx, t)), z = Math.round(lerp(az, bz, t)); const i = clamp(z, 0, N - 1) * N + clamp(x, 0, N - 1); pts.push({ t, land: w.land[i], h: w.H[i], u: w.under[i], wat: w.water[i] }); }
+  const ys = pts.filter((p) => p.land); if (!ys.length) return;
+  const top = Math.max(...ys.map((p) => Math.max(p.h, p.wat))) + 4, bot = Math.min(...ys.map((p) => p.u)) - 2;
+  const L = 34, Rr = 8, T = 14, B = 22;
+  const X = (t) => L + t * (W - L - Rr), Y = (y) => T + (top - y) / (top - bot) * (Hh - T - B);
+  g.strokeStyle = css("--line"); g.fillStyle = css("--muted"); g.font = "11px " + css("--mono"); g.lineWidth = 1;
+  const stepY = (top - bot) > 60 ? 20 : 10;
+  for (let y = Math.ceil(bot / stepY) * stepY; y <= top; y += stepY) { g.beginPath(); g.moveTo(L, Y(y)); g.lineTo(W - Rr, Y(y)); g.stroke(); g.fillText("y" + y, 2, Y(y) + 4); }
+  for (const p of pts) {
+    if (!p.land) continue;
+    const x0 = X(p.t), x1 = X(p.t + 1 / n) + 0.6;
+    g.fillStyle = "#8a7a62"; g.fillRect(x0, Y(p.h), x1 - x0, Y(p.u) - Y(p.h));
+    g.fillStyle = "#6f9a4e"; g.fillRect(x0, Y(p.h), x1 - x0, 2);
+    if (p.wat > p.h) { g.fillStyle = "rgba(70,130,200,0.85)"; g.fillRect(x0, Y(p.wat), x1 - x0, Y(p.h) - Y(p.wat)); }
+  }
+  g.fillStyle = css("--ink"); g.font = "600 12px " + css("--body");
+  g.fillText("A", L, Hh - 6); g.fillText("B", W - Rr - 8, Hh - 6);
+  g.fillStyle = css("--muted"); g.fillText(`Schnitt A–B, ${len.toFixed(0)} Blöcke, maßstabsgetreu nur in der Länge`, L + 18, Hh - 6);
+}
+
+// ── panel ────────────────────────────────────────────────────────────────────────────────
+function renderLayers() {
+  const ol = $("layers"); ol.innerHTML = "";
+  layers.forEach((L, k) => {
+    const li = document.createElement("li");
+    li.className = (k === sel ? "sel " : "") + (L.on ? "" : "off") + (k >= upto ? " later" : "");
+    li.style.opacity = k >= upto ? 0.5 : 1;
+    li.innerHTML = `<span class="num"></span><button class="eye" aria-label="Ebene ${k + 1} ${L.on ? "ausschalten" : "einschalten"}" aria-pressed="${L.on}">${L.on ? "an" : "aus"}</button><span class="name"></span><span class="ms">${(times[k] ?? 0).toFixed(0)} ms</span>`;
+    li.querySelector(".name").innerHTML = `${escapeHtml(L.name)} <span class="op">${L.op}</span>`;
+    li.onclick = (e) => { if (e.target.closest(".eye")) { L.on = !L.on; changed(); return; } sel = k; refreshPanel(); drawMap(); };
+    ol.appendChild(li);
+  });
+}
+function renderParams() {
+  const L = layers[sel], box = $("params"); box.innerHTML = "";
+  if (!L) return;
+  const def = OPS[L.op];
+  $("ptitle").textContent = `Werte: ${L.name}`;
+  $("phint").textContent = def.hint + (L.op === "noise" ? ` Hier: kleinste Oktave ${(L.p.cell / 2 ** (L.p.octaves - 1)).toFixed(1)} Blöcke.` : "");
+  const nameRow = document.createElement("div"); nameRow.className = "param";
+  nameRow.innerHTML = `<label for="pname">Name</label><input id="pname" type="text" style="grid-column: span 2; font: inherit; padding: 3px 6px; border:1px solid var(--line); border-radius:6px; background: var(--chip); color: var(--ink)">`;
+  box.appendChild(nameRow); const ni = nameRow.querySelector("input"); ni.value = L.name; ni.oninput = () => { L.name = ni.value; renderLayers(); json(); save(); };
+  if (L.op === "noise" || L.op === "terraces" || L.op === "smooth") {
+    const r = document.createElement("div"); r.className = "param";
+    r.innerHTML = `<span>Bereich</span><span style="grid-column: span 2"><button id="regbtn">${L.region ? "Bereich entfernen (überall)" : "Bereich zeichnen"}</button></span>`;
+    box.appendChild(r);
+    r.querySelector("button").onclick = () => { L.region = L.region ? null : [[70, 70], [122, 70], [122, 122], [70, 122]]; changed(); };
+  }
+  for (const [key, [min, max, step, label]] of Object.entries(def.params)) {
+    if (L.p[key] === undefined) continue;
+    const row = document.createElement("div"); row.className = "param";
+    const id = `p-${L.id}-${key}`;
+    row.innerHTML = `<label for="${id}">${label}</label><input id="${id}" type="range" min="${min}" max="${max}" step="${step}"><output for="${id}"></output>`;
+    const inp = row.querySelector("input"), out = row.querySelector("output");
+    inp.value = L.p[key]; out.textContent = L.p[key];
+    inp.oninput = () => { L.p[key] = parseFloat(inp.value); out.textContent = inp.value; changedSoon(); };
+    box.appendChild(row);
+  }
+}
+function json() { $("json").textContent = JSON.stringify({ recipe: 1, size: [N, N], layers: layers.map(({ id, op, name, on, region, line, points, p }) => ({ id, op, name, on, ...(region ? { region } : {}), ...(line ? { line } : {}), ...(points ? { points } : {}), params: p })) }, null, 1); }
+function refreshPanel() { $("upto").max = layers.length; $("upto").value = upto; $("upto-out").textContent = upto === layers.length ? "alle" : String(upto); renderLayers(); renderParams(); json(); }
+let pending = 0;
+function changedSoon() { cancelAnimationFrame(pending); pending = requestAnimationFrame(changed); }
+function changed() { upto = Math.min(upto, layers.length); run(); drawMap(); drawSection(); refreshPanel(); save(); }
+
+// ── interaction ──────────────────────────────────────────────────────────────────────────
+function toGrid(e) { const r = over.getBoundingClientRect(); return [(e.clientX - r.left) / r.width * N, (e.clientY - r.top) / r.height * N]; }
+let drag = null;
+over.addEventListener("pointerdown", (e) => {
+  const [gx, gz] = toGrid(e); const L = layers[sel]; const g = L && (L.region || L.line || L.points);
+  const near = (p) => Math.hypot(p[0] - gx, p[1] - gz) < 4;
+  if (near(sectionLine[0])) drag = { arr: sectionLine, k: 0 };
+  else if (near(sectionLine[1])) drag = { arr: sectionLine, k: 1 };
+  else if (g) { const k = g.findIndex(near); if (k >= 0) drag = { arr: g, k, layer: true }; }
+  if (drag) { over.setPointerCapture(e.pointerId); e.preventDefault(); }
+});
+over.addEventListener("pointermove", (e) => {
+  if (!drag) return; const [gx, gz] = toGrid(e);
+  drag.arr[drag.k][0] = Math.round(clamp(gx, 0, N - 1)); drag.arr[drag.k][1] = Math.round(clamp(gz, 0, N - 1));
+  if (drag.layer) changedSoon(); else { drawOverlay(); drawSection(); }
+});
+over.addEventListener("pointerup", () => { if (drag?.layer) changed(); drag = null; });
+over.addEventListener("wheel", (e) => {
+  const L = layers[sel]; if (!L?.points) return; const [gx, gz] = toGrid(e);
+  const p = L.points.find((q) => Math.hypot(q[0] - gx, q[1] - gz) < 5); if (!p) return;
+  e.preventDefault(); p[2] = clamp(p[2] + (e.deltaY < 0 ? 1 : -1), 10, 120); changedSoon();
+}, { passive: false });
+
+const views = { relief: "v-relief", slope: "v-slope", diff: "v-diff", iso: "v-iso" };
+for (const [v, id] of Object.entries(views)) $(id).onclick = () => {
+  view = v; for (const [w2, id2] of Object.entries(views)) $(id2).setAttribute("aria-pressed", String(w2 === v));
+  $("iso").hidden = v !== "iso"; $("stage").hidden = v === "iso"; drawMap();
+};
+$("upto").oninput = () => { upto = +$("upto").value; $("upto-out").textContent = upto === layers.length ? "alle" : String(upto); drawMap(); drawSection(); renderLayers(); };
+$("up").onclick = () => { if (sel > 0) { [layers[sel - 1], layers[sel]] = [layers[sel], layers[sel - 1]]; sel--; changed(); } };
+$("down").onclick = () => { if (sel < layers.length - 1) { [layers[sel + 1], layers[sel]] = [layers[sel], layers[sel + 1]]; sel++; changed(); } };
+$("del").onclick = () => { if (layers.length > 1) { layers.splice(sel, 1); sel = Math.min(sel, layers.length - 1); upto = layers.length; changed(); } };
+$("addpt").onclick = () => {
+  const L = layers[sel], g = L?.region || L?.line || L?.points; if (!g) return;
+  if (L.points) { g.push([96, 96, 60]); changed(); return; }
+  let best = 0, bl = -1; const m = L.region ? g.length : g.length - 1;
+  for (let k = 0; k < m; k++) { const a = g[k], b = g[(k + 1) % g.length], l = Math.hypot(a[0] - b[0], a[1] - b[1]); if (l > bl) { bl = l; best = k; } }
+  const a = g[best], b = g[(best + 1) % g.length]; g.splice(best + 1, 0, [Math.round((a[0] + b[0]) / 2), Math.round((a[1] + b[1]) / 2)]); changed();
+};
+$("rmpt").onclick = () => { const L = layers[sel], g = L?.region || L?.line || L?.points; const min = L?.region ? 3 : L?.line ? 2 : 1; if (g && g.length > min) { g.pop(); changed(); } };
+$("add").onclick = () => {
+  const op = $("newop").value, def = OPS[op], p = {};
+  for (const [k, [min, max]] of Object.entries(def.params)) p[k] = op === "river" && k === "from" ? 66 : op === "river" && k === "to" ? 56 : op === "lake" && k === "level" ? 56 : op === "outline" && k === "base" ? 56 : Math.round(((min + max) / 2) * 10) / 10;
+  const L = { id: op + "-" + Math.random().toString(36).slice(2, 6), op, name: def.label + " (neu)", on: true, p };
+  if (def.geom === "region" || def.geom === "shape") L.region = [[76, 76], [116, 76], [116, 116], [76, 116]];
+  if (op === "noise" || op === "terraces" || op === "smooth") L.p.feather = 10;
+  if (def.geom === "line") L.line = [[60, 96], [96, 90], [132, 100]];
+  if (def.geom === "points") L.points = [[96, 96, 70]];
+  layers.splice(sel + 1, 0, L); sel++; upto = layers.length; changed();
+};
+$("reset").onclick = () => { layers = example(); sel = 3; upto = layers.length; changed(); };
+$("copy").onclick = () => {
+  const text = $("json").textContent;
+  navigator.clipboard?.writeText(text).then(() => { $("copied").textContent = "Kopiert."; }, () => { const r = document.createRange(); r.selectNodeContents($("json")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); $("copied").textContent = "Markiert: mit Strg+C kopieren."; });
+};
+window.addEventListener("resize", () => drawSection());
+
+run(); drawMap(); drawSection(); refreshPanel();
+})();
+</script>

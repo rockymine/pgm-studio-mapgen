@@ -12,7 +12,7 @@ A second board in Elderwold's language, **smaller**, and abstract where that one
 - **houses taken seriously** — an L, a T and a U, with different storey stacks and different roofs;
 - **one island a team plus three neutral islands in the middle**, all drawn the same way.
 
-`maps/opus5-hoarstone`, `specs/opus5-hoarstone/`, `review/opus5-hoarstone.md`.
+`maps/dtcm/hoarstone`, `specs/opus5-hoarstone/`, `review/opus5-hoarstone.md`.
 
 ## What worked first time
 

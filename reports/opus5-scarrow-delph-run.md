@@ -11,7 +11,7 @@ A worked hillside quarry where the terrain *is* the board, announced before anyt
 > **height** is the defence rather than distance — one goal at the bottom of a pit and one on a bench.
 
 Slug `opus5-scarrow-delph`. 108 × 220 blocks, `rot_180`, cell 2, two destroyables a team, four buildings,
-one lake. `maps/opus5-scarrow-delph`, `specs/opus5-scarrow-delph`, `review/opus5-scarrow-delph.md`.
+one lake. `maps/dtcm/scarrow_delph`, `specs/opus5-scarrow-delph`, `review/opus5-scarrow-delph.md`.
 
 Everything vertical is a relief mark. The plan is **five rectangles**: the moor split into three by the
 spawn piece, one big `works` piece for the whole hillside, and a neutral island for the flooded pit. The

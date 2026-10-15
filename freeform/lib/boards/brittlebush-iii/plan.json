@@ -1,0 +1,307 @@
+{
+  "plan": 2,
+  "meta": {
+    "name": "Brittebush III"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_90",
+    "maxPlayers": 12,
+    "surface": 9
+  },
+  "pieces": [
+    {
+      "id": "double-layered",
+      "role": "piece",
+      "rect": [
+        -3,
+        -8,
+        3,
+        2
+      ]
+    },
+    {
+      "id": "piece-2",
+      "role": "piece",
+      "rect": [
+        4,
+        -12,
+        2,
+        6
+      ],
+      "surface": 12
+    },
+    {
+      "id": "piece-3",
+      "role": "piece",
+      "rect": [
+        2,
+        -7,
+        2,
+        2
+      ],
+      "surface": 12
+    },
+    {
+      "id": "double-layered-3",
+      "role": "piece",
+      "rect": [
+        -2,
+        -4,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "piece-5",
+      "role": "piece",
+      "rect": [
+        2,
+        -12,
+        2,
+        2
+      ],
+      "surface": 12
+    },
+    {
+      "id": "double-layered-2",
+      "role": "piece",
+      "rect": [
+        -3,
+        -12,
+        3,
+        2
+      ],
+      "surface": 12
+    },
+    {
+      "id": "piece-7",
+      "role": "piece",
+      "rect": [
+        -2,
+        -14,
+        2,
+        2
+      ],
+      "surface": 15
+    },
+    {
+      "id": "piece-8",
+      "role": "piece",
+      "rect": [
+        -2,
+        -16,
+        6,
+        2
+      ],
+      "surface": 15
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        6,
+        -10,
+        2,
+        2
+      ],
+      "surface": 12
+    },
+    {
+      "id": "piece-9",
+      "role": "piece",
+      "rect": [
+        6,
+        -8,
+        2,
+        2
+      ],
+      "surface": 12
+    },
+    {
+      "id": "wool",
+      "role": "wool-room",
+      "rect": [
+        0,
+        -19,
+        2,
+        2
+      ],
+      "surface": 18
+    },
+    {
+      "id": "piece-10",
+      "role": "piece",
+      "rect": [
+        0,
+        -17,
+        2,
+        1
+      ],
+      "surface": 18
+    },
+    {
+      "id": "piece-11",
+      "role": "piece",
+      "rect": [
+        3,
+        -10,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "piece-12",
+      "role": "piece",
+      "rect": [
+        2,
+        -8,
+        2,
+        1
+      ],
+      "surface": 12
+    },
+    {
+      "id": "stair",
+      "role": "piece",
+      "rect": [
+        3,
+        -11,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "stair-2",
+      "role": "piece",
+      "rect": [
+        3,
+        -8,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "stair-3",
+      "role": "piece",
+      "rect": [
+        -2,
+        -13,
+        2,
+        1
+      ]
+    }
+  ],
+  "zones": [
+    {
+      "id": "zone",
+      "rect": [
+        -3,
+        -10,
+        3,
+        2
+      ],
+      "holes": []
+    },
+    {
+      "id": "water-3",
+      "rect": [
+        0,
+        -8,
+        2,
+        2
+      ],
+      "holes": []
+    },
+    {
+      "id": "water-2",
+      "rect": [
+        0,
+        -12,
+        3,
+        2
+      ],
+      "holes": []
+    },
+    {
+      "id": "zone-4",
+      "rect": [
+        -2,
+        -6,
+        2,
+        2
+      ],
+      "holes": []
+    },
+    {
+      "id": "zone-5",
+      "rect": [
+        0,
+        -4,
+        4,
+        2
+      ],
+      "holes": []
+    },
+    {
+      "id": "water",
+      "rect": [
+        2,
+        -14,
+        2,
+        2
+      ],
+      "holes": []
+    },
+    {
+      "id": "zone-7",
+      "rect": [
+        2,
+        -5,
+        2,
+        1
+      ],
+      "holes": []
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          5,
+          5
+        ],
+        "facing": "left",
+        "footprint": [
+          2,
+          1,
+          7,
+          8
+        ]
+      }
+    ],
+    "wools": [
+      {
+        "id": "wool-1",
+        "piece": "wool",
+        "at": [
+          5,
+          5
+        ],
+        "footprint": [
+          1,
+          1,
+          8,
+          8
+        ]
+      }
+    ],
+    "iron": [],
+    "destroyables": [],
+    "cores": []
+  },
+  "walls": [],
+  "boxes": []
+}

@@ -1,0 +1,137 @@
+<map proto="1.5.0">
+    <name>Lantern Pass</name>
+    <version>1.0.0</version>
+    <objective>Runners: reach the temple and hold the bell for two seconds. Shooters: stop every runner before the clock runs out.</objective>
+    <gamemode>arcade</gamemode>
+    <gamemode>blitz</gamemode>
+    <rules>
+        <rule>Fall damage is off. Runners have one life.</rule>
+        <rule>Shooters: step on the yellow row to cross to the other walkway.</rule>
+    </rules>
+    <kits>
+        <kit id="fed">
+            <saturation>20</saturation>
+            <foodlevel>20</foodlevel>
+        </kit>
+        <kit id="runner-kit" parents="fed">
+            <clear/>
+            <helmet material="leather helmet" color="E07AAE"/>
+            <chestplate material="leather chestplate" color="E07AAE"/>
+            <leggings material="leather leggings" color="E07AAE"/>
+            <boots material="leather boots" color="FFFFFF"/>
+            <effect duration="oo">speed</effect>
+        </kit>
+        <kit id="shooter-kit" parents="fed">
+            <clear/>
+            <helmet material="leather helmet" color="1D2A5C"/>
+            <chestplate material="leather chestplate" color="1D2A5C"/>
+            <leggings material="leather leggings" color="1D2A5C"/>
+            <boots material="leather boots" color="111111"/>
+            <item slot="0" material="bow" unbreakable="true">
+                <enchantment level="3">power</enchantment>
+                <enchantment level="1">punch</enchantment>
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="28" material="arrow"/>
+            <effect duration="oo" amplifier="2">speed</effect>
+        </kit>
+        <kit id="heal">
+            <health>20</health>
+        </kit>
+    </kits>
+    <teams>
+        <team id="runners" color="light purple" max="25" max-overfill="30" plural="true">Runners</team>
+        <team id="shooters" color="dark blue" max="4" plural="true">Shooters</team>
+    </teams>
+    <filters>
+        <team id="only-runners">runners</team>
+        <not id="not-runners">
+            <team>runners</team>
+        </not>
+        <team id="only-shooters">shooters</team>
+        <not id="not-shooters">
+            <team>shooters</team>
+        </not>
+        <after duration="10s" id="warmup-over">
+            <match-started/>
+        </after>
+    </filters>
+    <spawns>
+        <default yaw="0">
+            <region>
+                <point>0.5,70,-20.5</point>
+            </region>
+        </default>
+        <spawn team="runners" kit="runner-kit" yaw="0">
+            <region>
+                <cuboid min="-8,21,-8" max="8,22,3"/>
+            </region>
+        </spawn>
+        <spawn team="shooters" kit="shooter-kit" yaw="0">
+            <regions>
+                <cuboid min="-30,31,-8" max="-26,32,-4"/>
+                <cuboid min="26,31,-8" max="30,32,-4"/>
+            </regions>
+        </spawn>
+    </spawns>
+    <regions>
+        <cuboid min="-3,51,357" max="3,54,364" id="the-bell-capture"/>
+        <cuboid min="-5,33,218" max="5,36,225" id="shrine"/>
+        <apply region="shrine" kit="heal"/>
+        <cuboid min="-9,20,-9" max="9,28,4" id="boathouse"/>
+        <apply enter="never" region="boathouse" message="You may not go back into the boathouse!"/>
+        <cuboid min="-31,0,-10" max="-30,256,373" id="swap-left"/>
+        <cuboid min="30,0,-10" max="31,256,373" id="swap-right"/>
+        <cuboid min="-3,21,4" max="3,25,5" id="fill-1"/>
+        <apply block="never" use="never"/>
+    </regions>
+    <control-points>
+        <control-point id="the-bell" name="The Bell" capture="the-bell-capture" progress="the-bell-capture" captured="the-bell-capture" capture-filter="only-runners" capture-time="2s"/>
+    </control-points>
+    <portals>
+        <portal region="swap-left" x="58" y="0" z="0"/>
+        <portal region="swap-right" x="-58" y="0" z="0"/>
+    </portals>
+    <actions>
+        <trigger filter="warmup-over" scope="match">
+            <action>
+                <fill region="fill-1" material="air"/>
+            </action>
+        </trigger>
+    </actions>
+    <time result="shooters">5m</time>
+    <blitz filter="only-runners">
+        <lives>1</lives>
+        <broadcastLives>true</broadcastLives>
+    </blitz>
+    <disabledamage>
+        <damage>fall</damage>
+    </disabledamage>
+    <itemkeep>
+        <item>bow</item>
+        <item>arrow</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>leather leggings</item>
+        <item>leather boots</item>
+        <item>flint</item>
+        <item>gravel</item>
+        <item>sapling</item>
+        <item>apple</item>
+        <item>seeds</item>
+        <item>long grass</item>
+        <item>pumpkin</item>
+        <item>melon</item>
+        <item>melon seeds</item>
+        <item>vine</item>
+    </itemremove>
+    <toolrepair>
+        <tool>bow</tool>
+    </toolrepair>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+</map>
+

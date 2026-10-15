@@ -6,7 +6,7 @@ measured, and the four findings the build produced.
 
 ```
 python3 specs/geometry-showcase/build-spec.py          # writes the three documents
-python3 tools/drive.py specs/geometry-showcase "Geometry Showcase" --out maps/geometry-showcase
+python3 tools/drive.py specs/geometry-showcase "Geometry Showcase"
 ```
 
 `geometry.py` beside it is the vocabulary. `grade()` is the one piece of arithmetic the board turns

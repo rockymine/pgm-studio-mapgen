@@ -1,0 +1,115 @@
+<map proto="1.5.0">
+    <name>Gullhaven</name>
+    <version>0.1.0</version>
+    <objective>Kill the most players in 8 minutes. One hit kills; every kill pays an arrow.</objective>
+    <gamemode>ffa</gamemode>
+    <gamemode>rage</gamemode>
+    <players min="2" max="16" colors="true"/>
+    <authors>
+        <author>Claude (freeform generator)</author>
+    </authors>
+    <kits>
+        <kit id="spawn-kit">
+            <clear/>
+            <item slot="0" material="iron sword" unbreakable="true" name="Gutting Knife">
+                <enchantment level="1">sharpness</enchantment>
+            </item>
+            <item slot="1" material="bow" unbreakable="true" name="Longbow">
+                <enchantment level="1">power</enchantment>
+            </item>
+            <item slot="2" material="arrow"/>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true" locked="true"/>
+            <effect duration="2s" amplifier="255">damage resistance</effect>
+            <game-mode>adventure</game-mode>
+        </kit>
+    </kits>
+    <spawns>
+        <default yaw="135">
+            <region>
+                <point>0.5,62,0.5</point>
+            </region>
+        </default>
+        <spawn kit="spawn-kit" spread="true" safe="true">
+            <regions>
+                <point yaw="-90">-43.5,42,-29.5</point>
+                <point yaw="0">-29.5,41,-35.5</point>
+                <point yaw="90">-17.5,41,-43.5</point>
+                <point yaw="180">-33.5,41,-15.5</point>
+                <point yaw="0">-6.5,25,-36.5</point>
+                <point yaw="180">-7.5,25,-43.5</point>
+                <point yaw="0">8.5,37,-45.5</point>
+                <point yaw="90">30.5,37,-37.5</point>
+                <point yaw="0">20.5,33,-25.5</point>
+                <point yaw="90">46.5,33,-25.5</point>
+                <point yaw="0">-0.5,33,-16.5</point>
+                <point yaw="180">40.5,29,-7.5</point>
+                <point yaw="0">16.5,29,-7.5</point>
+                <point yaw="90">4.5,29,4.5</point>
+                <point yaw="0">30.5,25,12.5</point>
+                <point yaw="180">16.5,23,16.5</point>
+                <point yaw="180">26.5,23,31.5</point>
+                <point yaw="0">9.5,23,33.5</point>
+                <point yaw="0">-5.5,30,10.5</point>
+                <point yaw="0">-19.5,30,20.5</point>
+                <point yaw="90">-11.5,31,30.5</point>
+                <point yaw="0">-29.5,29,12.5</point>
+                <point yaw="180">-3.5,30,36.5</point>
+                <point yaw="-90">-51.5,20,2.5</point>
+                <point yaw="-90">-49.5,21,16.5</point>
+                <point yaw="0">-21.5,26,59.5</point>
+                <point yaw="90">-12.5,26,58.5</point>
+                <point yaw="0">-33.5,22,-25.5</point>
+                <point yaw="180">-19.5,22,-3.5</point>
+            </regions>
+        </spawn>
+    </spawns>
+    <regions>
+        <negative id="outside">
+            <cuboid min="-62,0,-56" max="59,256,73"/>
+        </negative>
+        <apply enter="never" region="outside" message="The sea is too rough past here."/>
+        <apply block="never" use="never"/>
+    </regions>
+    <rage/>
+    <score>
+        <kills>1</kills>
+    </score>
+    <time>8m</time>
+    <disabledamage>
+        <damage>fall</damage>
+    </disabledamage>
+    <respawn delay="2s" auto="true"/>
+    <world>
+        <timeset>5000</timeset>
+        <timelock>on</timelock>
+    </world>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>arrow</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather chestplate</item>
+        <item>flint</item>
+        <item>gravel</item>
+        <item>sapling</item>
+        <item>apple</item>
+        <item>seeds</item>
+        <item>long grass</item>
+        <item>yellow flower</item>
+        <item>red rose</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="arrow"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+</map>
+

@@ -1,0 +1,48 @@
+{
+ "orig": {
+  "ground": 231,
+  "other": 25,
+  "underground": 341,
+  "houses": 328,
+  "roads": 73,
+  "pieces": 5,
+  "works": 352,
+  "dressing": 495,
+  "plan data": 104,
+  "glue": 32,
+  "library (mirror)": 53,
+  "library (world)": 174,
+  "library (noise)": 47
+ },
+ "port": {
+  "ground": 190,
+  "houses": 50,
+  "plan-only": 127,
+  "underground": 154,
+  "works": 296,
+  "pieces": 31,
+  "plan data": 139,
+  "roads": 61,
+  "dressing": 131,
+  "glue": 34
+ },
+ "files": {
+  "orig/terrain.py": 239,
+  "orig/underground.py": 333,
+  "orig/house.py": 245,
+  "orig/buildings.py": 521,
+  "orig/dressing.py": 495,
+  "orig/plan.py": 104,
+  "orig/gen.py": 41,
+  "orig/mirror.py": 59,
+  "orig/mc.py": 174,
+  "orig/noise.py": 49,
+  "port/plan.py": 440,
+  "port/ground.py": 65,
+  "port/under.py": 152,
+  "port/works.py": 383,
+  "port/dress.py": 115,
+  "port/gen.py": 34,
+  "port/mapxml.py": 24
+ }
+}

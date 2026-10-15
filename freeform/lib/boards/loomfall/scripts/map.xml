@@ -1,0 +1,113 @@
+<map proto="1.5.0">
+    <name>Loomfall</name>
+    <version>1.0.0</version>
+    <objective>Keep running: the carpet falls away under every step. Be the last one flying.</objective>
+    <gamemode>arcade</gamemode>
+    <rules>
+        <rule>Wool you step on turns white and falls.</rule>
+        <rule>No fall damage, no fighting: only snowball grenades.</rule>
+        <rule>Below the last carpet you are out.</rule>
+    </rules>
+    <players min="2" max="40" colors="true"/>
+    <kits>
+        <kit id="flyer">
+            <clear/>
+            <item slot="0" material="snow ball" amount="5" grenade="true" grenade-power="1"/>
+            <game-mode>adventure</game-mode>
+        </kit>
+    </kits>
+    <spawns>
+        <spawn kit="flyer" yaw="0" safe="true">
+            <region>
+                <cuboid min="-8,197,-6" max="8,198,6"/>
+            </region>
+        </spawn>
+        <default yaw="0" pitch="60">
+            <region>
+                <point>0.5,216,-40.5</point>
+            </region>
+        </default>
+    </spawns>
+    <block-drops>
+        <rule trample="true">
+            <filter>
+                <material>wool</material>
+            </filter>
+            <replacement>wool:0</replacement>
+        </rule>
+    </block-drops>
+    <falling-blocks>
+        <rule delay="10">
+            <filter>
+                <material>wool:0</material>
+            </filter>
+            <sticky>
+                <never/>
+            </sticky>
+        </rule>
+    </falling-blocks>
+    <filters>
+        <match-running id="running"/>
+        <entity id="falling-wool">falling block</entity>
+        <not id="block-rule">
+            <all>
+                <cause>world</cause>
+                <material>wool:0</material>
+            </all>
+        </not>
+    </filters>
+    <actions>
+        <trigger scope="match">
+            <filter>
+                <pulse duration="0.25s" period="0.5s" filter="running"/>
+            </filter>
+            <action>
+                <kill-entities filter="falling-wool"/>
+            </action>
+        </trigger>
+    </actions>
+    <damage>
+        <allow>
+            <cause>void</cause>
+        </allow>
+        <allow>
+            <cause>potion</cause>
+        </allow>
+        <not>
+            <cause>player</cause>
+        </not>
+    </damage>
+    <regions>
+        <apply block="block-rule"/>
+    </regions>
+    <portals>
+        <portal y="@-64" sound="false" observers="never">
+            <region>
+                <below y="116"/>
+            </region>
+        </portal>
+    </portals>
+    <time>10m</time>
+    <blitz>
+        <lives>1</lives>
+    </blitz>
+    <disabledamage>
+        <damage>fall</damage>
+    </disabledamage>
+    <world>
+        <timeset>18000</timeset>
+        <timelock>on</timelock>
+    </world>
+    <itemkeep>
+        <item>snow ball</item>
+    </itemkeep>
+    <itemremove>
+        <item>wool</item>
+        <item>sapling</item>
+        <item>apple</item>
+    </itemremove>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+</map>
+

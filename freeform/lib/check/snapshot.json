@@ -1,0 +1,164 @@
+{
+ "bridges": {
+  "blocks": {
+   "White Wool (35)": 4475336
+  },
+  "gen.txt": [
+   "column arch: 4490 blocks, 22.3 teeth per 100 blocks of side edge",
+   "arch: 4646 blocks, 0.8 teeth per 100 blocks of side edge",
+   "curving: 9216 blocks, 0.3 teeth per 100 blocks of side edge",
+   "window fin: 7973 blocks, 0.2 teeth per 100 blocks of side edge",
+   "broken: 5214 blocks, 0.5 teeth per 100 blocks of side edge",
+   "twin: 9229 blocks, 0.5 teeth per 100 blocks of side edge"
+  ]
+ },
+ "drop": {
+  "blocks": {
+   "Glass (20)": 336,
+   "Grass Block (2)": 70,
+   "Oak Planks (5)": 38,
+   "Stone (1)": 1356,
+   "Stone Bricks (98)": 108,
+   "Water (9)": 984,
+   "White Stained Clay (159)": 298
+  },
+  "gen.txt": [
+   "the start: 324 blocks at y 120",
+   "the ledges: 105 blocks at y 112",
+   "the ledges (image): 105 blocks at y 112",
+   "the roofs: 216 blocks at y 100",
+   "the roofs (image): 216 blocks at y 100",
+   "the beam: 90 blocks at y 95",
+   "the pillars: 12 blocks at y 92",
+   "the pillars (image): 12 blocks at y 92",
+   "the galleries: 231 blocks at y 80",
+   "the galleries (image): 231 blocks at y 80",
+   "the terrace: 978 blocks at y 60",
+   "the barge: 670 blocks at y 30"
+  ],
+  "plan-check.txt": [
+   "the start               the ledges                  3.2     8  run off       0.59     5  lands (-8, 12)",
+   "the start               the ledges (image)          3.2     8  run off       0.59     5  lands (7, 12)",
+   "the ledges              the roofs                   4.0    12  run off       0.55     9  lands (-11, 24)",
+   "the ledges (image)      the roofs (image)           4.0    12  run off       0.55     9  lands (10, 24)",
+   "the roofs               the beam                    4.5     5  sprint jump   1.93     2  lands (0, 38)",
+   "the roofs (image)       the beam                    4.5     5  sprint jump   1.93     2  lands (-1, 38)",
+   "the beam                the pillars                 4.2     3  sprint jump   1.55     0  lands (-6, 55)",
+   "the beam                the pillars (image)         4.2     3  sprint jump   1.55     0  lands (5, 55)",
+   "the pillars             the galleries               4.0    12  run off       0.55     9  lands (-7, 61)",
+   "the pillars (image)     the galleries (image)       4.0    12  run off       0.55     9  lands (6, 61)",
+   "the galleries           the terrace                 5.0    20  run off       1.14     0  lands (-9, 77) in water",
+   "the galleries (image)   the terrace                 5.0    20  run off       1.14     0  lands (8, 77) in water",
+   "the terrace             the barge                   6.0    30  run off       1.73     0  lands (-5, 95) in water",
+   "links that nothing clears: 0",
+   "lethal links: 0",
+   "landings off the piece: 0"
+  ]
+ },
+ "islets": {
+  "blocks": {
+   "Dirt (3)": 22735,
+   "Glass Pane (102)": 8,
+   "Grass Block (2)": 11440,
+   "Oak Log (17)": 60,
+   "Oak Planks (5)": 144,
+   "Oak Wood Slab (126)": 60,
+   "Sandstone (24)": 36,
+   "Snow Block (80)": 23976,
+   "Spruce Door (193)": 4,
+   "Stone (1)": 358486,
+   "Stone Bricks (98)": 32,
+   "White Wool (35)": 65600
+  },
+  "gen.txt": [],
+  "plan-check.txt": [
+   "to the hill: red 22.4, blue 22.4",
+   "jumps the plan allows: 126, the widest 3.0"
+  ],
+  "walks.txt": [
+   "standable over the kill height beside the islands: 0",
+   "footing problems: 0",
+   "objectives with a problem: 0"
+  ]
+ },
+ "parts": {
+  "blocks": {
+   "Bricks (45)": 157,
+   "Cobblestone (4)": 460,
+   "Cobblestone Stairs (67)": 116,
+   "Cobblestone Wall (139)": 2,
+   "Dark Oak Door (197)": 2,
+   "Dark Oak Stairs (164)": 675,
+   "Double Stone Slab (43)": 48,
+   "Glass Pane (102)": 93,
+   "Grass Block (2)": 8501,
+   "Iron Bars (101)": 17,
+   "Oak Door (64)": 2,
+   "Oak Log (17)": 584,
+   "Oak Planks (5)": 1421,
+   "Oak Wood Slab (126)": 157,
+   "Sea Lantern (169)": 5,
+   "Spruce Door (193)": 16,
+   "Stone (1)": 109480,
+   "Stone Bricks (98)": 269,
+   "White Stained Clay (159)": 143,
+   "White Wool (35)": 1023
+  },
+  "gen.txt": []
+ },
+ "spikes": {
+  "blocks": {
+   "White Wool (35)": 465040
+  },
+  "gen.txt": [
+   "needle: 3874 blocks",
+   "leaning horn: 4524 blocks",
+   "crystal cluster: 8022 blocks",
+   "fluted pinnacle: 5948 blocks",
+   "twisted: 3755 blocks",
+   "tusks: 4319 blocks",
+   "stone forest: 6791 blocks",
+   "stalactites: 6829 blocks",
+   "curl: 7395 blocks"
+  ]
+ },
+ "vale": {
+  "blocks": {
+   "Cobblestone (4)": 57937,
+   "Cobblestone Stairs (67)": 68,
+   "Dirt (3)": 87009,
+   "Grass Block (2)": 16021,
+   "Gravel (13)": 1059,
+   "Hardened Clay (172)": 51388,
+   "Oak Fence (85)": 27,
+   "Oak Planks (5)": 51,
+   "Sand (12)": 11162,
+   "Snow Block (80)": 14,
+   "Snow Layer (78)": 14,
+   "Stone (1)": 1472278,
+   "Water (9)": 27466,
+   "White Stained Clay (159)": 13280
+  },
+  "gen.txt": [
+   "generated; slope: 26974 grass-flat, 5667 cliff columns; 1 falls; 4 roads, 52 bridge blocks, 68 footpath stairs"
+  ],
+  "plan-check.txt": [
+   "harbour: 0 blocks of walk from the harbour",
+   "west shore: 431 blocks of walk from the harbour",
+   "village: 471 blocks of walk from the harbour",
+   "uplands: 174 blocks of walk from the harbour",
+   "canyon rim: 228 blocks of walk from the harbour",
+   "the spire's foot: 468 blocks of walk from the harbour",
+   "ground reached: 30251 of 31832 dry columns"
+  ],
+  "walks.txt": [
+   "harbour: reached on foot from the harbour, no jumps, no drop over 3",
+   "west shore: reached on foot from the harbour, no jumps, no drop over 3",
+   "village: reached on foot from the harbour, no jumps, no drop over 3",
+   "uplands: reached on foot from the harbour, no jumps, no drop over 3",
+   "canyon rim: reached on foot from the harbour, no jumps, no drop over 3",
+   "the spire's foot: reached on foot from the harbour, no jumps, no drop over 3",
+   "columns reached: 38478"
+  ]
+ }
+}

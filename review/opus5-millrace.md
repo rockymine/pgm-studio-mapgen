@@ -96,6 +96,6 @@ wants either the second goal (which needs the spawn moved, above) or a smaller b
 
 ## What to look at
 
-`maps/opus5-millrace/` is the world. The reads worth taking are `GET /map/opus5-millrace/column?at=-70,54`
+`maps/dtcm/millrace/` is the world. The reads worth taking are `GET /map/opus5-millrace/column?at=-70,54`
 (the sluice, floor to parapet), `at=-80,68&at=-80,64` (the wharf step into the water), `at=-58,68..56`
 (the yard ramp's courses), and `at=-70,-3` (the sign's letters at `y84..86`).

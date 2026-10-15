@@ -1,0 +1,219 @@
+"""Shapes over the board's grid: polygons, polylines, discs, ellipses and rings as boolean masks and distance
+fields, and the depth of every cell inside a mask.
+
+A polygon is a list of (x, z) corners in order; a polyline a list of points. Masks are boolean arrays over X, Z
+grids of block centres at integer x, z (World.grid() or numpy.meshgrid with indexing="ij").
+"""
+from collections import namedtuple
+
+import numpy as np
+from scipy.spatial import cKDTree
+
+from pgmvox.geom import noise
+
+
+def inside(X, Z, poly):
+    """True where the block (x, z) lies inside the polygon."""
+    X = np.asarray(X, float); Z = np.asarray(Z, float)
+    res = np.zeros(X.shape, bool)
+    n = len(poly)
+    for i in range(n):                          # even-odd rule, one edge at a time over the whole grid
+        (x1, z1), (x2, z2) = poly[i], poly[(i + 1) % n]
+        if z1 == z2:
+            continue
+        crosses = (z1 > Z) != (z2 > Z)
+        xc = x1 + (Z - z1) * (x2 - x1) / (z2 - z1)
+        res ^= crosses & (X < xc)
+    return res
+
+
+def seg_distance(X, Z, a, b):
+    """Distance from every (X, Z) to the segment a-b, and the parameter t of the nearest point on it."""
+    ax, az = a; bx, bz = b
+    dx, dz = bx - ax, bz - az
+    L2 = dx * dx + dz * dz or 1e-9
+    t = np.clip(((X - ax) * dx + (Z - az) * dz) / L2, 0, 1)
+    return np.hypot(X - (ax + t * dx), Z - (az + t * dz)), t
+
+
+def edge_distance(X, Z, poly):
+    """Distance to the polygon's boundary."""
+    best = np.full(X.shape, np.inf)
+    for i in range(len(poly)):
+        d, _ = seg_distance(X, Z, poly[i], poly[(i + 1) % len(poly)])
+        best = np.minimum(best, d)
+    return best
+
+
+def signed_distance(X, Z, poly):
+    """Negative inside, positive outside, in blocks."""
+    d = edge_distance(X, Z, poly)
+    return np.where(inside(X, Z, poly), -d, d)
+
+
+def polyline(X, Z, pts, side=False):
+    """Distance to a polyline and the arc length along it of the nearest point; with `side`, also which side of it
+    each point lies, +1 to the right walking along it (x east, z south) and -1 to the left."""
+    best = np.full(np.shape(X), np.inf)
+    along = np.zeros(np.shape(X))
+    right = np.ones(np.shape(X))
+    s0 = 0.0
+    for i in range(len(pts) - 1):
+        (ax, az), (bx, bz) = pts[i], pts[i + 1]
+        d, t = seg_distance(X, Z, pts[i], pts[i + 1])
+        L = float(np.hypot(bx - ax, bz - az))
+        m = d < best
+        best = np.where(m, d, best)
+        along = np.where(m, s0 + t * L, along)
+        if side:
+            right = np.where(m, np.where((bx - ax) * (Z - az) - (bz - az) * (X - ax) >= 0, 1.0, -1.0), right)
+        s0 += L
+    return (best, along, right) if side else (best, along)
+
+
+def nearest_on(pts, x, z):
+    """The distance from (x, z) to a polyline and the arc length along it of the nearest point."""
+    d, s = polyline(np.array(float(x)), np.array(float(z)), pts)
+    return float(d), float(s)
+
+
+def length(pts):
+    return float(sum(np.hypot(pts[i + 1][0] - pts[i][0], pts[i + 1][1] - pts[i][1]) for i in range(len(pts) - 1)))
+
+
+def point_at(pts, s):
+    """The point and the unit heading at arc length s along a polyline."""
+    for i in range(len(pts) - 1):
+        (ax, az), (bx, bz) = pts[i], pts[i + 1]
+        L = float(np.hypot(bx - ax, bz - az))
+        if s <= L or i == len(pts) - 2:
+            t = min(max(s / L, 0), 1) if L else 0
+            return (ax + t * (bx - ax), az + t * (bz - az)), ((bx - ax) / L, (bz - az) / L)
+        s -= L
+
+
+def walk_cells(pts):
+    """The four-connected cells along a polyline, in order, each once."""
+    out = []
+    for i in range(len(pts) - 1):
+        (ax, az), (bx, bz) = pts[i], pts[i + 1]
+        n = int(max(abs(bx - ax), abs(bz - az)) * 3) + 2
+        for t in np.linspace(0, 1, n):
+            c = (int(round(ax + (bx - ax) * t)), int(round(az + (bz - az) * t)))
+            if out and c == out[-1]:
+                continue
+            if out and abs(c[0] - out[-1][0]) + abs(c[1] - out[-1][1]) == 2:
+                out.append((c[0], out[-1][1]))
+            out.append(c)
+    return out
+
+
+def rect_cells(x0, z0, x1, z1):
+    """The cells of a rectangle by its corners, (x0, z0) to (x1, z1) inclusive, in either order: the order every
+    function here takes. `Raster.rect` and `pieces.box` take ranges, (x0, x1, z0, z1)."""
+    return {(x, z) for x in range(min(x0, x1), max(x0, x1) + 1) for z in range(min(z0, z1), max(z0, z1) + 1)}
+
+
+def poly_cells(poly):
+    """The cells whose centres lie inside a polygon, as a set."""
+    xs, zs = [p[0] for p in poly], [p[1] for p in poly]
+    x0, x1, z0, z1 = int(np.floor(min(xs))) - 1, int(np.ceil(max(xs))) + 1, int(np.floor(min(zs))) - 1, int(np.ceil(max(zs))) + 1
+    X, Z = np.meshgrid(np.arange(x0, x1 + 1), np.arange(z0, z1 + 1), indexing="ij")
+    m = inside(X + 0.0, Z + 0.0, poly)
+    return {(int(x), int(z)) for x, z in zip(X[m], Z[m])}
+
+
+def disc(X, Z, cx, cz, r):
+    return np.hypot(X - cx, Z - cz) <= r
+
+
+Pieces = namedtuple("Pieces", "id edge centres")
+
+
+def shatter(X, Z, spacing, seed=0, jitter=0.8, warp=(6.0, 2.0, 60, 12)):
+    """The grid broken into pieces about `spacing` blocks across: one centre per piece, set on a grid `spacing` apart
+    and moved up to `jitter` of half a spacing, every column given to the nearest centre as measured in a frame
+    bent by noise.warp (`warp` is big, small, big_cell, small_cell; zeros keep the edges straight). Returns
+    Pieces(id, edge, centres): each column's piece, its distance to that piece's edge, and the (x, z) centres.
+    A piece is then lifted, tilted, shrunk (edge > gap) or dropped on its own: plates, seracs, bergs, outcrops."""
+    X, Z = np.asarray(X, float), np.asarray(Z, float)
+    rng = np.random.default_rng(seed)
+    xs = np.arange(X.min() - spacing, X.max() + 2 * spacing, spacing)
+    zs = np.arange(Z.min() - spacing, Z.max() + 2 * spacing, spacing)
+    centres = np.array([(x + rng.uniform(-jitter, jitter) * spacing / 2, z + rng.uniform(-jitter, jitter) * spacing / 2)
+                        for x in xs for z in zs])
+    big, small, big_cell, small_cell = warp
+    Xw, Zw = noise.warp(X, Z, seed=seed + 50, big=big, small=small, big_cell=big_cell, small_cell=small_cell)
+    p = np.stack([Xw.ravel(), Zw.ravel()], -1)
+    dist, near = cKDTree(centres).query(p, k=min(6, len(centres)))
+    own = centres[near[:, :1]]
+    apart = np.linalg.norm(centres[near[:, 1:]] - own, axis=-1)
+    edge = ((dist[:, 1:] ** 2 - dist[:, :1] ** 2) / (2 * np.maximum(apart, 1e-9))).min(1)   # the nearest bisector
+    return Pieces(near[:, 0].reshape(X.shape), edge.reshape(X.shape), centres)
+
+
+def ellipse_distance(X, Z, at, rx, rz=None, angle=0.0):
+    """How far out every column lies in radii of an ellipse at `at`: 1 on its rim, its x radius `rx` turned
+    `angle` degrees from east toward south."""
+    rz = rx if rz is None else rz
+    dx, dz = X - at[0], Z - at[1]
+    if angle:
+        a = np.radians(angle)
+        dx, dz = dx * np.cos(a) + dz * np.sin(a), -dx * np.sin(a) + dz * np.cos(a)
+    return np.hypot(dx / rx, dz / rz)
+
+
+def boundary(mask, diagonal=False):
+    """The cells of a mask with a neighbour outside it (four neighbours, or eight)."""
+    m = np.pad(mask, 1)
+    out = ~m[:-2, 1:-1] | ~m[2:, 1:-1] | ~m[1:-1, :-2] | ~m[1:-1, 2:]
+    if diagonal:
+        out |= ~m[:-2, :-2] | ~m[2:, 2:] | ~m[:-2, 2:] | ~m[2:, :-2]
+    return mask & out
+
+
+def distance_in(mask, metric="taxicab"):
+    """How far every cell of a mask lies from the nearest cell outside it: 1 on its edge, 0 outside. `taxicab`
+    and `chessboard` count steps, four ways and eight; `euclid` measures the straight line between centres."""
+    from scipy import ndimage
+    if metric == "euclid":
+        return ndimage.distance_transform_edt(mask)
+    return ndimage.distance_transform_cdt(mask, metric=metric)
+
+
+def edge_depth(mask, metric="taxicab"):
+    """For every cell of a mask, how many steps it lies inside its edge (0 on the edge, -1 outside): the
+    measure an underside, a parapet inset or a terrace is cut by."""
+    return np.where(mask, distance_in(mask, metric) - 1, -1)
+
+
+def scatter_points(mask, n, min_d, rng, X, Z, taken=()):
+    """Up to n points (x, z) over the cells of a mask, in an order drawn from rng, none nearer than min_d to another
+    or to a point of `taken`."""
+    import math
+    cells = np.argwhere(mask)
+    order = rng.permutation(len(cells))
+    pts = list(taken)
+    out = []
+    for j in order:
+        i, k = cells[j]
+        p = (int(X[i, k]), int(Z[i, k]))
+        if all(math.hypot(p[0] - q[0], p[1] - q[1]) >= min_d for q in pts):
+            pts.append(p)
+            out.append(p)
+            if len(out) >= n:
+                break
+    return out
+
+
+def island(X, Z, box, west=0, east=0, north=0, south=0, cuts=()):
+    """The land of a board inside `box` (x0, z0, x1, z1), inclusive: each side drawn in by its inset (a number, or
+    an array that varies along the side, as `noise.line` and `noise.ragged` make), and each cut (outline, margin)
+    taking off what lies within `margin` (a number or a field) of a polygon's inside, so a corner goes with a
+    ragged edge."""
+    x0, z0, x1, z1 = box
+    land = (X >= x0 + west) & (X <= x1 - east) & (Z >= z0 + north) & (Z <= z1 - south)
+    for outline, margin in cuts:
+        land &= signed_distance(X, Z, outline) > margin
+    return land
+

@@ -14,6 +14,46 @@ five hundred thousand times.
 
 ---
 
+## A board is a small world, planned before it is built
+
+**A board is a small world, and a player has to feel at home in it.** A mountain and a single tree reads as
+somebody who started something and did not finish it. Think of the board as a diorama: a small world built from
+limited assets, each of them made the most of. (The author's ruling, and every paragraph of this section is.)
+
+**One identity sentence is the header, not the board.** It says what the book is called. The board is the
+places in it, each one decided, drawn and built, and an agent that stops at the sentence and a spawn, a shape
+and a monument has delivered a layout, not a map.
+
+**Every place has a reason to be there.** A place may stand far from the objective, but then a player has a
+reason to go to it, or it frames the board. A ridge behind the spawn that runs on toward the monument frames
+it, and is still textured and planted, so whoever climbs it finds something.
+
+**A large area nobody has a reason to enter is cut away.** If it makes no difference whether it is there, it
+should not be. Its land belongs toward the front, where the players actually go; a corner of flat ground at the
+back is not improved by putting a village on it, because nobody will walk to the village either.
+
+**No number can say whether a thing serves a purpose.** The dead share falls when a tree, a path or a house is
+added anywhere on dead ground, and it cannot tell whether that tree belongs there. Only the plan of places can,
+which is why the places are drawn before anything is built on them.
+
+**Things that belong together come together.** A river brings a field of wheat with a scarecrow in it. A path
+into a forest ends at a hut, and the hut holds a chest. A clearing has stumps and log piles where the trees
+were cut. A hole is crossed by a real bridge, not a flat slab, and fenced at its edge; a lake has a boat on it
+and a tongue of land running into it.
+
+**A village is a kind of village.** Decide whether it is a hamlet, a mining village or a market town, and build
+what that one has. Its houses are small enough to stand as a group and are joined by paths. A building is what
+it is called: a store that is a house named `store` tells a player nothing.
+
+**Relief is layered, not one surface.** Reliefs are stacked: a ridge carries its own spurs, ground climbs in
+steps, and hills are textured and planted rather than left as one smooth bump.
+
+**A mining board, as a worked example of what a board is made of.** Most of it is a mountain range, with towers
+along it that are mine shafts and a path meandering through it, and a river running beneath it. A hill has one
+tree on top. An open cut-over area holds stumps and log piles. Houses stand on a path network, some of them
+grouped into a small community, beside a lake with a tongue of land running into it and a railway out to the
+tongue.
+
 ## One objective, and air between the two sides
 
 On a board a hundred blocks or less across, **one** destroyable a team is the answer — two of them close

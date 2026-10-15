@@ -6,7 +6,7 @@ A fixture for the three things the studio's layer track just gained, chosen so e
 picture or readable at a coordinate rather than inferred from a count. `opus5-mineshaft` is the smallest board
 that is genuinely two storeys; this is the smallest board that proves each storey **wears its own finish**.
 
-`maps/opus5-undermarket`, `specs/opus5-undermarket/`. Authored through the studio's own API —
+`maps/ctw/undermarket`, `specs/opus5-undermarket/`. Authored through the studio's own API —
 `POST /api/map/from-documents`, then `GET /api/map/{slug}/export` — not through the library.
 
 ## What it is

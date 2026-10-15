@@ -1,0 +1,232 @@
+<map proto="1.5.0">
+    <name>Penstock</name>
+    <version>0.1.0</version>
+    <objective>Be the team with the most points after 10 minutes: a kill is a point, a score box two.</objective>
+    <gamemode>tdm</gamemode>
+    <gamemode>scorebox</gamemode>
+    <authors>
+        <author>Claude (freeform generator)</author>
+    </authors>
+    <kits>
+        <kit id="base-kit">
+            <clear/>
+            <item slot="0" material="stone sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true"/>
+            <item slot="2" material="golden apple"/>
+            <item slot="3" material="leaves" amount="8"/>
+            <item slot="8" material="arrow" amount="16"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+            <effect duration="4s" amplifier="5">resistance</effect>
+        </kit>
+    </kits>
+    <teams>
+        <team id="red" color="red" max="16">Red</team>
+        <team id="blue" color="blue" max="16">Blue</team>
+    </teams>
+    <filters>
+        <team id="only-red">red</team>
+        <not id="not-red">
+            <team>red</team>
+        </not>
+        <team id="only-blue">blue</team>
+        <not id="not-blue">
+            <team>blue</team>
+        </not>
+        <all id="only-these">
+            <any>
+                <material>leaves</material>
+            </any>
+            <not>
+                <cause>world</cause>
+            </not>
+        </all>
+    </filters>
+    <spawns>
+        <default yaw="90">
+            <region>
+                <point>0.5,30,0.5</point>
+            </region>
+        </default>
+        <spawn team="red" kit="base-kit" yaw="-90">
+            <region>
+                <point>-63.5,25,-0.5</point>
+            </region>
+        </spawn>
+        <spawn team="blue" kit="base-kit" yaw="90">
+            <region>
+                <point>63.5,25,-0.5</point>
+            </region>
+        </spawn>
+    </spawns>
+    <regions>
+        <cuboid min="-69,0,-11" max="-55,256,11" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="55,0,-11" max="69,256,11" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <union id="red-scoreboxes">
+            <cuboid min="-60,22,-36" max="-56,25,-30"/>
+            <cuboid min="-60,22,30" max="-56,25,36"/>
+        </union>
+        <apply enter="only-blue" region="red-scoreboxes" message="You may not enter your own score boxes!"/>
+        <apply region="red-scoreboxes" block-place="never" block-break="never" message="You may not modify the score boxes!"/>
+        <union id="blue-scoreboxes">
+            <cuboid min="56,22,-36" max="60,25,-30"/>
+            <cuboid min="56,22,30" max="60,25,36"/>
+        </union>
+        <apply enter="only-red" region="blue-scoreboxes" message="You may not enter your own score boxes!"/>
+        <apply region="blue-scoreboxes" block-place="never" block-break="never" message="You may not modify the score boxes!"/>
+        <cuboid min="-1,23,-1" max="1,24,1" id="diamond-spot"/>
+        <cuboid min="-1,21,-43" max="1,22,-42" id="arrows-north"/>
+        <cuboid min="-1,21,41" max="1,22,42" id="arrows-south"/>
+        <apply block-place="only-these" block-break="only-these" message="Only leaves may be placed and broken!"/>
+    </regions>
+    <score>
+        <box points="2" filter="only-blue">
+            <region>
+                <cuboid min="-60,22,-36" max="-57,25,-30"/>
+            </region>
+        </box>
+        <box points="2" filter="only-red">
+            <region>
+                <cuboid min="57,22,-36" max="60,25,-30"/>
+            </region>
+        </box>
+        <box points="2" filter="only-blue">
+            <region>
+                <cuboid min="-60,22,30" max="-57,25,36"/>
+            </region>
+        </box>
+        <box points="2" filter="only-red">
+            <region>
+                <cuboid min="57,22,30" max="60,25,36"/>
+            </region>
+        </box>
+        <kills>1</kills>
+    </score>
+    <portals>
+        <portal x="@63.5" y="@25" z="@-0.5" yaw="@90" filter="only-blue">
+            <region>
+                <cuboid min="-60,22,-36" max="-57,25,-30"/>
+            </region>
+        </portal>
+        <portal x="@-63.5" y="@25" z="@-0.5" yaw="@270" filter="only-red">
+            <region>
+                <cuboid min="57,22,-36" max="60,25,-30"/>
+            </region>
+        </portal>
+        <portal x="@63.5" y="@25" z="@-0.5" yaw="@90" filter="only-blue">
+            <region>
+                <cuboid min="-60,22,30" max="-57,25,36"/>
+            </region>
+        </portal>
+        <portal x="@-63.5" y="@25" z="@-0.5" yaw="@270" filter="only-red">
+            <region>
+                <cuboid min="57,22,30" max="60,25,36"/>
+            </region>
+        </portal>
+        <portal y="@-64" sound="false" observers="never">
+            <region>
+                <below y="8"/>
+            </region>
+        </portal>
+    </portals>
+    <shopkeepers>
+        <shopkeeper shop="store" name="Quartermaster" yaw="-90">-67.5,25,-6.5</shopkeeper>
+        <shopkeeper shop="store" name="Quartermaster" yaw="90">67.5,25,-6.5</shopkeeper>
+    </shopkeepers>
+    <spawners>
+        <spawner spawn-region="diamond-spot" delay="25s" max-entities="1">
+            <item material="diamond"/>
+        </spawner>
+        <spawner spawn-region="arrows-north" delay="8s" max-entities="8">
+            <item material="arrow" amount="4"/>
+        </spawner>
+        <spawner spawn-region="arrows-south" delay="8s" max-entities="8">
+            <item material="arrow" amount="4"/>
+        </spawner>
+    </spawners>
+    <shops>
+        <shop id="store" name="Station Store">
+            <category id="weapons" material="iron sword">
+                <item material="iron sword" price="3" currency="diamond"/>
+                <item material="bow" damage="374" price="2" currency="diamond">
+                    <enchantment level="2">power</enchantment>
+                </item>
+                <item material="arrow" amount="16" price="1" currency="diamond"/>
+            </category>
+            <category id="armour" material="iron chestplate">
+                <item material="iron chestplate" price="4" currency="diamond"/>
+                <item material="iron leggings" price="3" currency="diamond"/>
+                <item material="iron helmet" price="2" currency="diamond"/>
+            </category>
+            <category id="supplies" material="golden apple">
+                <item material="golden apple" price="1" currency="diamond"/>
+                <item material="leaves" amount="16" price="1" currency="diamond"/>
+            </category>
+        </shop>
+    </shops>
+    <maxbuildheight>34</maxbuildheight>
+    <time result="score">10m</time>
+    <respawn delay="2s" auto="true"/>
+    <block-drops>
+        <rule>
+            <filter>
+                <material>leaves</material>
+            </filter>
+            <drops>
+                <item material="leaves" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>stone sword</item>
+        <item>bow</item>
+        <item>golden apple</item>
+        <item>leaves</item>
+        <item>arrow</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+        <item>string</item>
+    </itemremove>
+    <toolrepair>
+        <tool>stone sword</tool>
+        <tool>bow</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="arrow" amount="6"/>
+            <item material="leaves" amount="4"/>
+        </kill-reward>
+        <kill-reward>
+            <filter>
+                <kill-streak count="2"/>
+            </filter>
+            <item material="diamond"/>
+        </kill-reward>
+        <kill-reward>
+            <filter>
+                <kill-streak count="4"/>
+            </filter>
+            <item material="diamond" amount="3"/>
+        </kill-reward>
+        <kill-reward>
+            <filter>
+                <kill-streak count="7"/>
+            </filter>
+            <item material="diamond" amount="5"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+</map>
+

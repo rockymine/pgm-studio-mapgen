@@ -1,0 +1,157 @@
+<map proto="1.5.0">
+    <name>Cinder Reach</name>
+    <version>1.0.0</version>
+    <objective>Leak the enemy's core: it hangs over a stone platform in the bowl of the cinder cone in front of their lodge.</objective>
+    <gamemode>dtc</gamemode>
+    <include id="gapple-kill-reward"/>
+    <authors>
+        <author>Claude (pgmvox trial)</author>
+    </authors>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="stained clay" amount="48" team-color="true"/>
+            <item slot="6" material="golden apple"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <teams>
+        <team id="red-team" color="red" max="20">Red</team>
+        <team id="blue-team" color="blue" max="20">Blue</team>
+    </teams>
+    <filters>
+        <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
+        <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
+        <not id="block-place-void-filter">
+            <void/>
+        </not>
+        <any id="block-break-void-filter">
+            <all>
+                <any>
+                    <material>log</material>
+                    <material>log 2</material>
+                    <material>leaves</material>
+                    <material>leaves 2</material>
+                    <material>long grass</material>
+                    <material>yellow flower</material>
+                    <material>red rose</material>
+                    <material>double plant</material>
+                    <material>water lily</material>
+                    <material>vine</material>
+                </any>
+                <void/>
+            </all>
+            <filter id="block-place-void-filter"/>
+        </any>
+    </filters>
+    <spawns>
+        <spawn team="red-team" kit="spawn-kit" yaw="-90">
+            <region>
+                <point>-83.5,58,-5.5</point>
+            </region>
+        </spawn>
+        <spawn team="blue-team" kit="spawn-kit" yaw="90">
+            <region>
+                <point>83.5,58,5.5</point>
+            </region>
+        </spawn>
+        <default yaw="90">
+            <region>
+                <point>0.5,92,0.5</point>
+            </region>
+        </default>
+    </spawns>
+    <regions>
+        <cuboid min="-90,58,-13" max="-77,64,2" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="77,58,-2" max="90,64,13" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-53,55,22" max="-48,60,27" id="red-core-region"/>
+        <cuboid min="48,55,-27" max="53,60,-22" id="blue-core-region"/>
+        <negative id="not-build-area">
+            <rectangle min="-24,-72" max="25,72"/>
+        </negative>
+        <apply block-place="block-place-void-filter" block-break="block-break-void-filter" region="not-build-area" message="You may only build over the void in the fissure!"/>
+    </regions>
+    <cores>
+        <core id="red-core" name="West Core" team="red-team" leak="5" mode-changes="true" region="red-core-region"/>
+        <core id="blue-core" name="East Core" team="blue-team" leak="5" mode-changes="true" region="blue-core-region"/>
+    </cores>
+    <maxbuildheight>80</maxbuildheight>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>stained clay</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>diamond pickaxe</item>
+        <item>iron axe</item>
+        <item>golden apple</item>
+        <item>water bucket</item>
+        <item>arrow</item>
+        <item>wood</item>
+        <item>stained clay</item>
+        <item>cooked beef</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>iron chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+        <item>obsidian</item>
+        <item>flint</item>
+        <item>gravel</item>
+        <item>sapling</item>
+        <item>apple</item>
+        <item>redstone</item>
+        <item>vine</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>diamond pickaxe</tool>
+        <tool>iron axe</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16"/>
+            <item material="stained clay" amount="8" team-color="true"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+</map>
+

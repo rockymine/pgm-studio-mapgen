@@ -123,7 +123,7 @@ peaks decorative, and say so here rather than assuming it plays the way I intend
 
 - `specs/sonnet5-fellgrave-hollow/` — `build-spec.py`, the plan/finish/layout/intent JSON, `renders/`
   (27 images + 16 text reads taken at every stage), `provenance.json`.
-- `maps/sonnet5-fellgrave-hollow/` — `region/`, `level.dat`, `map.xml`. Export gate **OPEN**. The
+- `maps/dtcm/fellgrave_hollow/` — `region/`, `level.dat`, `map.xml`. Export gate **OPEN**. The
   export wrote a `region/dressing-report.json` alongside the `.mca` files that `tools/drive.py` does
   not move out the way it does `provenance.json`; removed by hand to keep the folder to what a server
   is handed.

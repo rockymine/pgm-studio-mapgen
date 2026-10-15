@@ -3,7 +3,7 @@
 
     python3 specs/opus5-tiefkreuz/build-spec.py
     python3 tools/drive.py specs/opus5-tiefkreuz "Tiefkreuz" \
-            --out maps/opus5-tiefkreuz --renders specs/opus5-tiefkreuz/renders
+            --renders specs/opus5-tiefkreuz/renders
 
 Two railways cross at right angles over the same block of city, and the board is played on both of
 them. The deep line runs north–south in cut-and-cover under the street and goes on through a tunnel

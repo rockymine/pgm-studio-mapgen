@@ -6,7 +6,7 @@
 sends are the ones the script writes now.
 
 ```bash
-python3 tools/drive.py specs/<slug> "<Map Name>" --out <worlddir> [--slug <slug>] [--note "<what this pass is>"]
+python3 tools/drive.py specs/<slug> "<Map Name>" [--slug <slug>] [--note "<what this pass is>"]
                        [--after <change>] [--discard <change>,...] [--dry]
 ```
 
@@ -49,8 +49,8 @@ refining it again gives two storeys called `under` and a ring bent twice.
 |---|---|
 | `themeById` · `themeByHeight` | the theme a compiled shape paints with, by its id or by the height it stands at. The id is the reliable one: compile once, read the ids off `POST /plan/compile`, and key on them. Two pieces at one height fuse into one shape and a height key cannot tell them apart. A key naming an id the board does not have is answered `SR2`, with the ids it has |
 | `shapePropsById` · `shapePropsByHeight` | any field merged onto a compiled shape — `relief_scope`, `controls`, `anchor_heights`, `height_mode` |
-| `editShapes` | `{"garth-14": [{"after": 1, "x": 92, "z": -70}, {"index": 4, "x": 80, "z": -60}, {"remove": 7}, {"pulls": {"0": [[0.5, 2]]}}]}` — the outline reshaped one point at a time, in order, before any bend. `after` inserts a point on that edge (at its midpoint where no `x`/`z` is stated), `index` moves that point, `remove` drops it, and `pulls` inserts points along named edges, each at a fraction `t` of its edge and pulled `in` blocks toward the inside, fanned to the edges the symmetry draws again; each op is stated against the ring as the ops before it left it, and `GET …/sketch/shapes/{id}?format=text` names the edges by index. An op stating none or more than one of the four refuses the whole source (`SR4`) |
-| `bendShapes` | `{"dale-9": {"tension": 0.22, "wander": 3, "step": 9, "seed": 5, "side": "out"}}` — the compiled outline drawn as a coast, after every point edit. The compiler emits a staircase of the plan's rectangles, which is the board's shape and not its coast; redrawing the ring by hand states the coast twice, free to disagree with the plan. This resamples the compiled ring along its long edges, pulls each **inserted** point off its edge by a deterministic wander and lays Catmull-Rom handles over the result, `tension` long (0.22 where absent). `side` says which way: `out`, the default, is the slight bloat that reads as land; `in` keeps the plan's footprint, which is what a strait a capture board is measured on wants; `both` wanders across the line. The plan's own vertices never move |
+| `editShapes` | `{"garth-14": [{"after": 1, "x": 92, "z": -70}, {"index": 4, "x": 80, "z": -60}, {"remove": 7}, {"pulls": {"0": [[0.5, 2]]}}]}` — the outline reshaped one point at a time, in order, before any bend. `after` inserts a point on that edge (at its midpoint where no `x`/`z` is stated), `index` moves that point, `remove` drops it, and `pulls` inserts points along named edges, each at a fraction `t` of its edge and pulled `in` blocks toward the inside, fanned to the edges the symmetry draws again; each op is stated against the ring as the ops before it left it, and `GET …/sketch/shapes/{id}?format=text` names the edges by index. An op stating none or more than one of the four refuses the whole source (`SR4`). The id reaches every outline carrying it, as `outlines` does: a shape's vertices, a relief `area` mark's or a push's ring, a stroke's, a fluid's or a flora's points. A stroke and a fluid channel are lines with two ends: they take `after`, `index` and `remove`, keep two points, and a `pulls` on one is a complaint |
+| `bendShapes` | `{"dale-9": {"tension": 0.22, "wander": 3, "step": 9, "seed": 5, "side": "out"}}` — the compiled outline drawn as a coast, after every point edit. The compiler emits a staircase of the plan's rectangles, which is the board's shape and not its coast; redrawing the ring by hand states the coast twice, free to disagree with the plan. This resamples the compiled ring along its long edges, pulls each **inserted** point off its edge by a deterministic wander and lays Catmull-Rom handles over the result, `tension` long (0.22 where absent). `side` says which way: `out`, the default, is the slight bloat that reads as land; `in` keeps the plan's footprint, which is what a strait a capture board is measured on wants; `both` wanders across the line. The plan's own vertices never move. It reaches every ring carrying the id, and a bend on a stroke or a fluid channel is a complaint, since a line has no inside |
 | `addShapes` | authored `SketchShape`s — the subtracts, the erected shapes, the ramps, the path-shape causeways. Each takes an optional `layer` and `group` naming where it lands, the way `POST …/sketch/layers/{layerId}/shapes?group=` does; one naming neither joins the compiled ground's first group. **The group is where a shape's ground is decided** — the symmetry fan and the relief are both read off a group's `shapeIds`, so a shape in the wrong group is built once, where it was drawn, on the wrong terrain |
 | `relief` | `{"<groupId>": {...}}`, or `{"*": {...}}` for every group. A compiled board's groups are `team` and `neutral` |
 | `themes` · `mapTheme` | the theme registry and the map default (the first key unless stated) |
@@ -312,13 +312,13 @@ they were written to produce.
 | `probe.py` | whether the ground varies down a column or each column is one material — the run lengths of one stone through the body, the earth's uniformity, a face as characters, and the floating columns bucketed by what stands at their top |
 
 ```bash
-python3 tools/world-diff.py maps/<slug>/region maps/<author>-<slug>/region \
+python3 tools/world-diff.py maps/<mode>/<name>/region maps/<mode>/<name>_by_hand/region \
         --provenance specs/<slug>/provenance.json --json specs/<author>-<slug>/diff.json
-python3 tools/trees.py match corpus/tree-showcase/region maps/<author>-<slug>/region --against maps/<slug>/region
-python3 tools/lift.py maps/<author>-<slug>/region statue --box -61 31 -75 -29 72 -38 \
-        --against maps/<slug>/region --ground-below 36 --out specs/<new>/models --cost
-python3 tools/probe.py maps/<new>/region --floating
-python3 tools/trees.py verify maps/<new>/region
+python3 tools/trees.py match corpus/tree-showcase/region maps/<mode>/<name>_by_hand/region --against maps/<mode>/<name>/region
+python3 tools/lift.py maps/<mode>/<name>_by_hand/region statue --box -61 31 -75 -29 72 -38 \
+        --against maps/<mode>/<name>/region --ground-below 36 --out specs/<new>/models --cost
+python3 tools/probe.py maps/<mode>/<new-name>/region --floating
+python3 tools/trees.py verify maps/<mode>/<new-name>/region
 ```
 
 Three things they agree on, so they cannot drift apart: what a tree is (wood, leaves, the plants a crown
@@ -335,7 +335,7 @@ cloud or a balloon far more often than a hole, and `probe.py --floating` says wh
 top, where a count alone said "hole".
 
 Each reads a million-block world in seconds and holds it in memory as a dict; a diff of two boards takes
-about a minute. They take a world's `region/` directory, which is what `maps/<slug>/` and a spec's
+about a minute. They take a world's `region/` directory, which is what `maps/<mode>/<name>/` and a spec's
 `--out` hold.
 
 ## `column-probe.cs` and `build.cs` · `world-build.cs`

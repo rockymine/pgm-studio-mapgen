@@ -2,7 +2,7 @@
 
 ## What I set out to build
 
-**A destroy board for two teams, driven end to end through the Python kit on the deployed studio, and a report on how the kit behaved.** The map is `sonnet55-pippin-coomb`, named **Pippin Coomb**, on pgmstudio.de. It was authored in `specs/sonnet55-pippin-coomb/build-spec.py` with every document stated through `from studio_kit import kit`, stored with `tools/drive.py`, and exported to `maps/sonnet55-pippin-coomb/`.
+**A destroy board for two teams, driven end to end through the Python kit on the deployed studio, and a report on how the kit behaved.** The map is `sonnet55-pippin-coomb`, named **Pippin Coomb**, on pgmstudio.de. It was authored in `specs/sonnet55-pippin-coomb/build-spec.py` with every document stated through `from studio_kit import kit`, stored with `tools/drive.py`, and exported to `maps/dtcm/pippin_coomb/`.
 
 **The identity sentence, written before the first request.** *A late-summer cider-orchard valley in chalk downland: two farm hamlets face each other across a dry coomb, each with a cellar under its yard that breaks through into something older, a white horse cut into the down above it, and a bench under the old oak where you sit and watch the other side get ready.*
 
@@ -100,7 +100,7 @@ Refinement() got an unexpected keyword argument 'theems'
 
 **`render/isometric` and `render/xray` answered the questions the numbers could not.** The x-ray at scale 6 showed the cellar yard as a pale slab with the sunk room's floor through it and listed `28 roofed voids – 2 sealed` (the sealed ones are the farmhouse's attic). `render/eye` from inside the cellar showed the chamber's far end open to the sky, which was a real fault: a yard mark with a `bevel` at the board's edge grades away from the pit's wall, so the ground beside the chamber fell to 30. No number said it.
 
-**`map.png` is in the export.** The 290 × 246 picture is the two hamlets across the coomb, 59 KB, and `maps/sonnet55-pippin-coomb/` holds `region/`, `level.dat`, `map.xml` and `map.png` and nothing else.
+**`map.png` is in the export.** The 290 × 246 picture is the two hamlets across the coomb, 59 KB, and `maps/dtcm/pippin_coomb/` holds `region/`, `level.dat`, `map.xml` and `map.png` and nothing else.
 
 **Library names work, and the name-words endpoint taught me which ones.** `GET /api/room-styles/name-words` answered the describing and building words; the library has 58 house rows. I used `brick-roofed-terracotta-and-oak-house` for two plots, `hay-gambrel-barn` for the cider barn and `oak-and-spruce-timbered-house` for the spawn hall. I did not save any style to the library, so `HS19` (the name rule) went untried.
 
@@ -176,7 +176,7 @@ Refinement() got an unexpected keyword argument 'theems'
 
 ## Where the board is
 
-`specs/sonnet55-pippin-coomb/` holds `build-spec.py`, the plan and refinement it writes, the layout and intent the studio stored, `provenance.json` and the board's picture; `maps/sonnet55-pippin-coomb/` holds the world. The map is stored on the deployed studio as `sonnet55-pippin-coomb`, with 37 changes, and `sonnet55-probe`, a scratch map of mine that held the carve, `SR1`, restore and house-style probes, was deleted when the run ended, so the evidence for those is in this report and nowhere else.
+`specs/sonnet55-pippin-coomb/` holds `build-spec.py`, the plan and refinement it writes, the layout and intent the studio stored, `provenance.json` and the board's picture; `maps/dtcm/pippin_coomb/` holds the world. The map is stored on the deployed studio as `sonnet55-pippin-coomb`, with 37 changes, and `sonnet55-probe`, a scratch map of mine that held the carve, `SR1`, restore and house-style probes, was deleted when the run ended, so the evidence for those is in this report and nowhere else.
 
 ## Revision: a layer stack under the turf, and chalk as the deep rock
 
@@ -198,7 +198,7 @@ Refinement() got an unexpected keyword argument 'theems'
 
 **Checked before storing.** `POST /terrain/theme-preview` answered the section, wall and fill views; its sample plateau is too short to reach chalk, so it showed only the dirt-to-granite fade, and the deep beds were read on the stored board.
 
-**The isometric now shows turf over a brown band over a red-brown granite fade, with chalk only in the lower third of each cut face.** No face is blotchy white from top to bottom; the coomb's two cliffs read as earth over rock, the horse is still the one white figure on the hill, and the granite reads redder in the picture than I expected. Store: change 38, 64 props placed and none declined, export gate OPEN, re-exported to `maps/sonnet55-pippin-coomb/`.
+**The isometric now shows turf over a brown band over a red-brown granite fade, with chalk only in the lower third of each cut face.** No face is blotchy white from top to bottom; the coomb's two cliffs read as earth over rock, the horse is still the one white figure on the hill, and the granite reads redder in the picture than I expected. Store: change 38, 64 props placed and none declined, export gate OPEN, re-exported to `maps/dtcm/pippin_coomb/`.
 
 ## Fields
 
@@ -235,7 +235,7 @@ Refinement() got an unexpected keyword argument 'theems'
 
 **The hill is still crossable.** A transect from (31, −70) to (31, −30) walks end to end: the terrace is entered by a two-a-block rise on its north face (three scrambles at z −60…−58), the tower is a barrier as a building should be, and the sails hang 9 blocks over the terrace so the way under them stays open. The transect from (10, −47) to (50, −47) and the diagonal (20, −60) to (40, −40) also walk end to end, the barriers on them being the tower and sail planes only.
 
-**The store, with the mill moved.** Change 57: `16 528 walked · 536 scrambled · 212 barrier`, 98 props placed and none declined, worst step 26 on the enemy route (the coomb, as before), pre-flight passes and the export gate is open, 37.0% dead. The scrambled count rose from 392 to 536: the terrace skirt and a steeper hillside add them, and none are barriers. The isometric reads the mill as a tower with a cross of white sails on each island's rise, and `maps/sonnet55-pippin-coomb` is re-exported at this change.
+**The store, with the mill moved.** Change 57: `16 528 walked · 536 scrambled · 212 barrier`, 98 props placed and none declined, worst step 26 on the enemy route (the coomb, as before), pre-flight passes and the export gate is open, 37.0% dead. The scrambled count rose from 392 to 536: the terrace skirt and a steeper hillside add them, and none are barriers. The isometric reads the mill as a tower with a cross of white sails on each island's rise, and `maps/dtcm/pippin_coomb` is re-exported at this change.
 
 **Earlier mill, superseded.** The mill behind the barn at (31, −92), built as a stamped-house fork (A) and as four stepped rings (B), is gone from the spec and the board; the finding that a stamped house beside a made part raises `SK18` stands, and a made-only building next to a stamped one raises nothing.
 

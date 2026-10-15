@@ -1,0 +1,2216 @@
+"""Tests for pgmvox: what each module promises, checked on small worlds and plans.
+
+    cd freeform/lib && python3 -m unittest discover -s tests -v
+"""
+import gzip
+import math
+import json
+import os
+import sys
+import tempfile
+import unittest
+import xml.dom.minidom
+
+import numpy as np
+from scipy import ndimage
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.dirname(HERE))
+
+from pgmvox import B, World  # noqa: E402
+from pgmvox.read import audit
+from pgmvox.core import blocks
+from pgmvox.core import move
+from pgmvox.core import orient
+from pgmvox.plan import graph as plangraph
+from pgmvox.read import plot
+from pgmvox.read import render
+from pgmvox.geom import shapes
+from pgmvox.read import sight
+from pgmvox.surface import terrain
+from pgmvox.read import walk
+from pgmvox.built import build as BLD  # noqa: E402
+from pgmvox.built import facade as F  # noqa: E402
+from pgmvox.plan import pieces as P  # noqa: E402
+from pgmvox.play import objectives as O  # noqa: E402
+from pgmvox.volume import solid as SOL  # noqa: E402
+from pgmvox.scenery import forms  # noqa: E402
+from pgmvox.ground import landform as LF
+from pgmvox.geom import noise
+from pgmvox.routes import route as RT
+from pgmvox.built import props  # noqa: E402
+from pgmvox.scenery import trees as TR
+from pgmvox.volume import under as U
+from pgmvox.play.mapxml import Doc, E, duration, point  # noqa: E402
+from pgmvox.plan.raster import Raster, Symmetry  # noqa: E402
+from pgmvox.read.sketch import TEAM, SectionPanel, Sheet  # noqa: E402
+
+FIXTURES = os.path.join(HERE, "fixtures")
+
+
+class Blocks(unittest.TestCase):
+    def test_the_table_comes_from_the_studio(self):
+        self.assertEqual(len(blocks.TABLE), 256)
+        self.assertEqual(blocks.name(B.WOOL, 14), "Red Wool")
+
+    def test_classes(self):
+        for bid in (B.AIR, B.TALLGRASS, B.TORCH, B.LADDER, B.WATER, B.CARPET, B.SNOW_LAYER):
+            self.assertIn(bid, blocks.PASSABLE)
+        for bid in (B.STONE, B.FENCE, B.GLASS, B.LEAVES, B.OAK_DOOR):
+            self.assertNotIn(bid, blocks.PASSABLE)
+        self.assertIn(B.GLASS, blocks.SIGHT_CLEAR)
+        self.assertIn(B.FENCE, blocks.SIGHT_CLEAR)
+        self.assertNotIn(B.LEAVES, blocks.SIGHT_CLEAR)
+
+    def test_every_id_has_a_colour(self):
+        self.assertEqual(blocks.COLOURS.shape, (256, 16, 3))
+        self.assertNotEqual(blocks.colour(B.GRASS), (255, 0, 255))
+
+
+class Orient(unittest.TestCase):
+    def test_helpers(self):
+        self.assertEqual(orient.stair("e"), 0)
+        self.assertEqual(orient.stair("n", upside_down=True), 7)
+        self.assertEqual(orient.ladder("s"), 2)                  # on the wall to its south: faces north
+        self.assertEqual(orient.torch("w"), 1)                   # on the wall to its west: points east
+        self.assertEqual(orient.yaw("e"), -90)
+        self.assertEqual(orient.rotation16("n"), 8)
+
+    def test_every_block_turns_back(self):
+        for op, inverse in (("cw", "ccw"), ("half", "half"), ("mirror_x", "mirror_x"), ("mirror_z", "mirror_z")):
+            a, b = orient.data_table(op), orient.data_table(inverse)
+            for bid in range(256):
+                for d in range(16):
+                    self.assertEqual(b[bid, a[bid, d]], d, f"{bid}:{d} under {op} then {inverse}")
+
+    def test_four_quarter_turns_are_none(self):
+        t = orient.data_table("cw")
+        for bid in (B.OAK_STAIRS, B.LADDER, B.TORCH, B.LOG, B.RAIL, B.RAIL_POWERED, B.OAK_DOOR, B.TRAPDOOR,
+                    B.SIGN_POST, B.PUMPKIN, B.HAY, B.QUARTZ, B.VINE):
+            for d in range(16):
+                self.assertEqual(t[bid, t[bid, t[bid, t[bid, d]]]], d, f"{bid}:{d}")
+
+    def test_the_families_the_studio_leaves_alone(self):
+        self.assertEqual(orient.turn_data(B.OAK_DOOR, 1, "half"), 3)       # facing south -> north
+        self.assertEqual(orient.turn_data(B.OAK_DOOR, 9, "mirror_x"), 8)   # a mirror swaps the hinge
+        self.assertEqual(orient.turn_data(B.OAK_DOOR, 9, "half"), 9)       # a turn keeps it
+        self.assertEqual(orient.turn_data(B.RAIL, 6, "half"), 8)
+        self.assertEqual(orient.turn_data(B.RAIL_POWERED, 2 | 8, "cw"), 5 | 8)
+        self.assertEqual(orient.turn_data(B.IRON_TRAPDOOR, 0, "half"), 1)
+        self.assertEqual(orient.turn_data(B.SIGN_POST, 0, "half"), 8)
+
+    def test_turn_world_half(self):
+        w = World(-4, -4, 8, 8, sy=4)
+        w.set(-3, 1, -2, B.OAK_STAIRS, orient.stair("e"))
+        w.set(-2, 1, -1, B.OAK_DOOR, orient.door("s"))
+        orient.turn_world(w, "half", lambda x, z: x < 0)
+        self.assertEqual(w.get(2, 1, 1), (B.OAK_STAIRS, orient.stair("w")))
+        self.assertEqual(w.get(1, 1, 0), (B.OAK_DOOR, orient.door("n")))
+
+
+class Move(unittest.TestCase):
+    def test_knockback_matches_the_boards(self):
+        self.assertAlmostEqual(move.knockback(1), 7.2, places=1)
+        self.assertAlmostEqual(move.knockback(10), 42.9, places=1)
+        self.assertAlmostEqual(move.knockback(1, slip=move.SLIP["ice"]), 9.4, places=1)
+
+    def test_falls(self):
+        t, out = move.fall(22, "run off")
+        self.assertAlmostEqual(out, 7.3, places=1)
+        self.assertEqual(move.fall_damage(3), 0)
+        self.assertEqual(move.fall_damage(22), 19)
+
+    def test_jump_reach(self):
+        self.assertTrue(walk.gap_cleared(3))
+        self.assertFalse(walk.gap_cleared(4))
+
+    def test_solve_launch(self):
+        best = move.solve_launch((0, 10, 0), (20, 0), move.land_at(10))
+        self.assertIsNotNone(best)
+        self.assertLess(abs(best[2]["x"] - 20), 1.0)
+
+
+class Walk(unittest.TestCase):
+    def setUp(self):
+        self.w = World(-5, -5, 11, 11, sy=20)
+        self.w.fill(-5, 0, -5, 5, 3, 5, B.STONE)
+
+    def test_ladder_climb(self):
+        w = self.w
+        w.fill(0, 4, 0, 2, 8, 2, B.STONE)
+        for y in range(4, 9):
+            w.set(-1, y, 1, B.LADDER, orient.ladder("e"))
+        d = walk.walk(w.ids, [(-5, 4, -5)], w.x0, w.z0)
+        self.assertIsNotNone(walk.nearest(d, w.x0, w.z0, 1, 9, 1, 0))
+
+    def test_no_step_up_under_a_ceiling(self):
+        """Generation 1's headroom test could never fire; here a step up with a block over the player is refused."""
+        w = self.w
+        w.set(1, 4, 0, B.STONE)                                  # a one-block step
+        w.fill(-5, 6, -5, 5, 6, 5, B.STONE)                      # a ceiling over everyone's head as they jump
+        w.set(1, 6, 0, B.AIR)                                    # but room to stand on the step itself
+        d = walk.walk(w.ids, [(0, 4, 0)], w.x0, w.z0, walk.MoveRules(jumps=False))
+        self.assertEqual(d[1 - w.x0, 5, 0 - w.z0], -1)
+
+    def test_jump_lands_lower(self):
+        """A running jump across a gap of two lands on a pillar one lower, as well as level or one up."""
+        w = World(-5, -5, 11, 11, sy=20)
+        w.fill(-5, 1, -1, -2, 10, 1, B.STONE)                     # the take-off, its top at 10
+        w.fill(1, 1, -1, 4, 9, 1, B.STONE)                        # the landing, its top at 9, two blocks away
+        d = walk.walk(w.ids, [(-3, 11, 0)], w.x0, w.z0, walk.MoveRules(max_drop=4))
+        self.assertIsNotNone(walk.nearest(d, w.x0, w.z0, 3, 10, 0, 0))
+
+    def test_no_stand_above(self):
+        w = self.w
+        w.set(3, 10, 3, B.STONE)
+        bad = walk.no_stand_above(w, 6, np.ones((w.sx, w.sz), bool))
+        self.assertEqual(bad, [(3, 3)])
+
+
+class Audit(unittest.TestCase):
+    def test_footing(self):
+        w = World(-3, -3, 6, 6, sy=8)
+        w.fill(-3, 0, -3, 2, 0, 2, B.STONE)
+        w.set(0, 3, 0, B.SAND)
+        w.set(1, 1, 1, B.TORCH, orient.torch("w"))
+        w.set(-2, 1, -2, B.TORCH, orient.torch())
+        why = sorted(r[3].split(":")[0] for r in audit.footing(w))
+        self.assertEqual(len(why), 2)
+
+
+class Plan(unittest.TestCase):
+    def test_a_fields_image_is_every_column_at_its_image_point(self):
+        xs = np.arange(-4, 4)
+        X, Z = np.meshgrid(xs, xs, indexing="ij")
+        a = np.random.default_rng(3).random(X.shape)
+        for op in ("half", "mirror_x", "mirror_z", "cw"):
+            S = Symmetry(op)
+            image = S.image(a)
+            for i, k in [(0, 0), (1, 5), (7, 2), (3, 3)]:
+                x, z = S.point(int(X[i, k]), int(Z[i, k]))
+                self.assertEqual(image[x + 4, z + 4], a[i, k], op)
+            sym = S.field(a)
+            self.assertTrue(np.allclose(sym, S.image(sym)), op)
+
+    def test_a_field_completed_from_a_half_is_symmetric(self):
+        half = np.random.default_rng(4).random((4, 8))
+        for op in ("half", "mirror_x"):
+            S = Symmetry(op)
+            whole = S.whole(half)
+            self.assertTrue(np.array_equal(whole, S.image(whole)), op)
+            self.assertTrue(np.array_equal(whole[:4], half), op)
+            keep = np.zeros((8, 8), bool)
+            keep[:4] = True
+            self.assertTrue(np.array_equal(S.field(np.vstack([half, np.zeros((4, 8))]), keep=keep), whole), op)
+
+    def raster(self):
+        R = Raster((-20, 19), (-10, 9), ["wall", "floor", "stair", "gap"], base_h=6, base_kind="gap",
+                   symmetry=Symmetry("half"))
+        R.rect(-18, -10, -5, 4, 10)
+        R.rect(-6, -1, -5, 4, 12)
+        R.flight((-9, 0), "e", width=(-1, 1), h0=11, n=1)
+        return R
+
+    def test_symmetry_is_drawn_in_the_plan(self):
+        R = self.raster()
+        self.assertEqual(R.h(17, -5), 10)
+        self.assertEqual(R.stair[(8, -1)], "w")
+
+    def test_arrivals_are_fair(self):
+        R = self.raster()
+        G = plangraph.graph(R, {"floor", "stair"}, {"wall"})
+        a = plangraph.arrivals(G, {"red": [(-15, 0)], "blue": [(14, -1)]},
+                               {"middle": [(x, z) for x in range(-6, 6) for z in range(-5, 5)]})
+        self.assertEqual(a["middle"]["red"], a["middle"]["blue"])
+
+    def test_sight(self):
+        R = self.raster()
+        op = sight.plan_opaque(R)
+        self.assertFalse(sight.line_clear(sight.eye(-15, 11, 0), sight.target(15, 11, 0), op))
+        self.assertTrue(sight.line_clear(sight.eye(-2, 13, 0), sight.target(15, 11, 0), op))
+
+
+class Field(unittest.TestCase):
+    def setUp(self):
+        self.X, self.Z = np.meshgrid(np.arange(-50, 50, dtype=float), np.arange(-40, 40, dtype=float), indexing="ij")
+
+    def test_landmarks_are_exact(self):
+        from pgmvox.ground import field as F
+        X, Z = self.X, self.Z
+        ramp = F.terms(X, Z, 10, F.Ramp("x", -20, 20, 6))
+        self.assertTrue((ramp[X <= -20] == 10).all() and (ramp[X >= 20] == 16).all())
+        falling = F.terms(X, Z, 0, F.Ramp("z", 30, -30, 4))
+        self.assertTrue((falling[Z <= -30] == 4).all() and (falling[Z >= 30] == 0).all())
+        mound = F.terms(X, Z, 0, F.Gauss((10, -5), 8, 5, rz=4))
+        self.assertEqual(mound[60, 35], 5.0)
+        self.assertEqual(np.unravel_index(mound.argmax(), mound.shape), (60, 35))
+        turned = F.Gauss((0, 0), 12, 1, rz=3, angle=90).value(X, Z)
+        self.assertGreater(turned[50, 40 + 9], turned[50 + 9, 40])        # turned a right angle: long along z
+
+    def test_terms_add_and_mix_weighs(self):
+        from pgmvox.ground import field as F
+        X, Z = self.X, self.Z
+        a, b = F.Ramp("x", -10, 10, 3), F.Tilt(0.1, -0.2)
+        self.assertTrue(np.allclose(F.terms(X, Z, 2, a, b), F.terms(X, Z, 2, a) + F.terms(X, Z, 0, b)))
+        w = np.clip((X + 50) / 99, 0, 1)
+        m = F.mix(np.full(X.shape, 1.0), np.full(X.shape, 5.0), w)
+        self.assertEqual((m[0, 0], m[-1, 0]), (1.0, 5.0))
+
+
+class Shapes(unittest.TestCase):
+    def test_a_rectangle_is_taken_by_its_corners_in_either_order(self):
+        cells = shapes.rect_cells(3, 9, 1, 7)
+        self.assertEqual(cells, shapes.rect_cells(1, 7, 3, 9))
+        self.assertEqual(len(cells), 3 * 3)
+        self.assertEqual(min(cells), (1, 7))
+        self.assertEqual(max(cells), (3, 9))
+
+    def test_a_polygons_cells_are_the_centres_inside_it(self):
+        self.assertEqual(shapes.poly_cells([(0, 0), (4, 0), (4, 3), (0, 3)]),
+                         {(x, z) for x in range(4) for z in range(3)})
+
+    def test_a_polyline_says_which_side_of_it_a_point_lies(self):
+        X, Z = np.meshgrid(np.arange(-3, 4), np.arange(-3, 4), indexing="ij")
+        d, along, side = shapes.polyline(X, Z, [(-3, 0), (3, 0)], side=True)
+        self.assertTrue((side[Z > 0] == 1).all())                 # walking east, south is the right hand
+        self.assertTrue((side[Z < 0] == -1).all())
+        self.assertTrue(np.array_equal((d, along), shapes.polyline(X, Z, [(-3, 0), (3, 0)])))
+
+    def test_the_nearest_point_on_a_polyline_is_measured_along_it(self):
+        bend = [(0, 0), (10, 0), (10, 10)]
+        self.assertEqual(shapes.nearest_on(bend, 4, -2), (2.0, 4.0))
+        self.assertEqual(shapes.nearest_on(bend, 13, 6), (3.0, 16.0))
+        self.assertEqual(shapes.nearest_on(bend, -5, 0), (5.0, 0.0))
+
+    def test_an_island_keeps_to_its_box_its_insets_and_its_cuts(self):
+        from pgmvox.geom.noise import ragged
+        X, Z = np.meshgrid(np.arange(-40, 0), np.arange(-30, 30), indexing="ij")
+        west = 2 + ragged(X.shape, "z", 12, 5, seed=1)
+        corner = [(-40, 20), (-25, 20), (-25, 29), (-40, 29)]
+        land = shapes.island(X, Z, (-40, -30, -1, 29), west=west, east=4, north=3, cuts=[(corner, 1.0)])
+        self.assertTrue((X[land] <= -5).all() and (Z[land] >= -27).all())
+        self.assertTrue((west >= 2).all() and (west <= 7).all())
+        self.assertTrue(all(X[:, k][land[:, k]].min() == -40 + west[0, k] for k in range(3, 48)))   # rows clear of the cut corner
+        self.assertFalse(land[(X < -26) & (Z > 21)].any())
+        self.assertEqual(ndimage.label(land)[1], 1)
+
+    def test_depth_inside_a_mask_by_each_metric(self):
+        m = np.zeros((7, 7), bool)
+        m[1:6, 1:6] = True
+        self.assertEqual(shapes.distance_in(m)[3, 3], 3)
+        self.assertEqual(shapes.distance_in(m, "chessboard")[3, 3], 3)
+        self.assertAlmostEqual(float(shapes.distance_in(m, "euclid")[3, 3]), 3.0)
+        self.assertEqual(shapes.distance_in(m)[0, 0], 0)
+        e = shapes.edge_depth(m)
+        self.assertEqual((e[1, 1], e[3, 3], e[0, 0]), (0, 2, -1))
+
+    def test_a_line_wanders_along_one_axis_only(self):
+        from pgmvox.geom.noise import fbm, line
+        f = line((30, 50), "z", 12, seed=7, amp=4, base=-10)
+        self.assertEqual(f.shape, (1, 50))
+        self.assertTrue(np.array_equal(f[0], -10 + 4 * fbm((50,), 12, 2, seed=7)))
+        self.assertEqual(line((30, 50), "x", 12, seed=7).shape, (30, 1))
+        clipped = line((30, 50), "z", 12, seed=7, amp=40, clip=(-1, 2))
+        self.assertTrue(clipped.min() >= -1 and clipped.max() <= 2)
+        self.assertTrue(np.array_equal(f, line((30, 50), "z", 12, seed=7, amp=4, base=-10)))
+
+    def test_smoothstep_rises_falls_and_steps(self):
+        from pgmvox.geom.noise import smoothstep
+        self.assertEqual((float(smoothstep(0, 10, -1)), float(smoothstep(0, 10, 5)), float(smoothstep(0, 10, 11))),
+                         (0.0, 0.5, 1.0))
+        self.assertEqual((float(smoothstep(-14, -64, -70)), float(smoothstep(-14, -64, 0))), (1.0, 0.0))
+        self.assertEqual(smoothstep(3, 3, np.array([2, 3, 4])).tolist(), [0.0, 1.0, 1.0])
+
+    def test_no_public_function_takes_a_rectangle_by_ranges_but_the_two_named(self):
+        import inspect
+        import pkgutil
+        import pgmvox
+        ranges = []
+        for info in pkgutil.walk_packages(pgmvox.__path__, "pgmvox."):
+            module = __import__(info.name, fromlist=["_"])
+            short = info.name.rsplit(".", 1)[-1]
+            found = [(f"{short}.{n}", f) for n, f in vars(module).items()
+                     if inspect.isfunction(f) and f.__module__ == module.__name__ and not n.startswith("_")]
+            for n, cls in vars(module).items():
+                if inspect.isclass(cls) and cls.__module__ == module.__name__:
+                    found += [(f"{short}.{n}.{m}", f) for m, f in vars(cls).items()
+                              if inspect.isfunction(f) and not m.startswith("_")]
+            for name, f in found:
+                params = [p for p in inspect.signature(f).parameters if p != "self"]
+                if params[:4] == ["x0", "x1", "z0", "z1"]:
+                    ranges.append(name)
+        self.assertEqual(sorted(ranges), ["pieces.box", "raster.Raster.rect"])
+
+
+class Landforms(unittest.TestCase):
+
+    def test_smooth_min_is_the_min_away_from_the_seam_and_a_quarter_under_it(self):
+        a = np.linspace(0, 20, 41)
+        got = LF.smooth_min(a, 10.0, 4)
+        far = np.abs(a - 10) >= 4
+        np.testing.assert_allclose(got[far], np.minimum(a, 10)[far])
+        self.assertAlmostEqual(float(got[a == 10][0]), 10 - 1.0)
+        self.assertTrue((got <= np.minimum(a, 10) + 1e-9).all())
+        np.testing.assert_allclose(LF.smooth_min(a, 10.0, 0), np.minimum(a, 10))
+
+    def test_smooth_max_mirrors_smooth_min(self):
+        a = np.linspace(0, 20, 41)
+        np.testing.assert_allclose(LF.smooth_max(a, 10.0, 6), -LF.smooth_min(-a, -10.0, 6))
+        self.assertTrue((LF.smooth_max(a, 10.0, 6) >= np.maximum(a, 10) - 1e-9).all())
+
+    def test_join_fills_the_saddle_and_leaves_bare_ground(self):
+        X, Z = np.meshgrid(np.arange(40.0), np.arange(20.0), indexing="ij")
+        flat = np.full(X.shape, 50.0)
+        ra = LF.mound(flat, shapes.ellipse_distance(X, Z, (14, 10), 9, 7), 8) - flat
+        rb = LF.mound(flat, shapes.ellipse_distance(X, Z, (26, 10), 9, 7), 8) - flat
+        hard, melted = LF.join([ra, rb]), LF.join([ra, rb], p=1.6)
+        np.testing.assert_allclose(hard, np.maximum(ra, rb))
+        self.assertGreater(melted[20, 10], hard[20, 10] + 1)          # the saddle between them rises
+        bare = (ra == 0) & (rb == 0)
+        self.assertTrue((melted[bare] == 0).all())
+        np.testing.assert_allclose(LF.join([-ra, -rb], p=1.6, cut=True), -melted)
+
+    def test_soften_holds_inside_and_runs_out_flat_at_the_rim(self):
+        X, Z = np.meshgrid(np.arange(41.0), np.arange(41.0), indexing="ij")
+        ground = np.full(X.shape, 50.0)
+        e = shapes.ellipse_distance(X, Z, (20, 20), 16, 16)
+        hill = LF.mound(ground, e, 9.0)
+        soft = LF.soften(ground, hill, e, band=0.4)
+        inner, outside = e < 0.6, e >= 1
+        np.testing.assert_allclose(soft[inner], hill[inner])
+        np.testing.assert_allclose(soft[outside], ground[outside])
+        row = soft[:, 20]                                        # the last blocks before the rim climb least
+        rim = [i for i in range(21, 41) if e[i, 20] < 1][-1]
+        self.assertLess(row[rim] - 50, hill[rim, 20] - 50)
+        self.assertLess(row[rim] - row[rim + 1], 0.5)
+    def setUp(self):
+        self.X, self.Z = np.meshgrid(np.arange(-60, 60), np.arange(-60, 60), indexing="ij")
+        self.H = 40 + 12 * noise.fbm(self.X.shape, 30, 3, seed=3) - 0.05 * self.Z
+
+    def test_a_river_never_climbs_and_only_cuts_but_its_banks(self):
+        X, Z, H = self.X, self.Z, self.H
+        path = [(-50, -55), (0, 0), (40, 55)]
+        H2, river = LF.watercourse(H, X, Z, path, width=5, depth=2, lowest=20)
+        beside = ndimage.binary_dilation(river.mask, np.ones((3, 3))) & ~river.mask
+        self.assertTrue((H2[~beside] <= H[~beside] + 1e-9).all())          # a bank may rise to hold the water
+        s, bed, _ = LF._sample(H2, X, Z, path)
+        self.assertTrue((np.diff(bed) <= 1e-9).all())
+        self.assertGreaterEqual(bed.min(), 20)
+        self.assertTrue(river.mask.any())
+
+    def test_a_profile_holds_its_levels_and_its_mode(self):
+        X, Z = self.X.astype(float), self.Z.astype(float)
+        d = np.abs(X)
+        steps = [LF.Step(20, 28, 57), LF.Step(38, 55, 74)]
+        h = LF.profile(np.zeros(X.shape), d, 41, steps)
+        self.assertTrue((h[d < 20] == 41).all() and (h[(d >= 28) & (d < 38)] == 57).all() and (h[d >= 55] == 74).all())
+        row = h[:, 60]
+        self.assertTrue((np.diff(row[60:]) >= 0).all())                          # it climbs outward, never back
+        talus = LF.profile(np.zeros(X.shape), d, 41, steps, talus=(3, 5))
+        self.assertTrue((talus[(d >= 15) & (d < 20)] > 41).any() and (talus >= h).all())
+        low = np.full(X.shape, 50.0)
+        self.assertTrue((LF.profile(low, d, 41, steps, mode="lift") >= low).all())
+        self.assertTrue((LF.profile(low, d, 41, steps, mode="cut") <= low).all())
+        bank = LF.profile(self.H, d, 30, [LF.Step(5, 12, "ground")], mode="cut")
+        self.assertTrue((bank[d >= 12] == self.H[d >= 12]).all())
+
+    def test_a_profile_is_the_hollow_mesa_canyon_it_was_written_from(self):
+        X = self.X.astype(float)
+        d = 5.0 - X
+        line = lambda seed: noise.fbm((120,), 9, 2, seed=seed)[None, :]          # noqa: E731
+        fe = 12 + 2.6 * line(1)
+        b0, small, jag = fe + 4, noise.fbm(X.shape, 8, 2, seed=4), 1.2 * noise.fbm(X.shape, 3, 2, seed=7)
+        b1 = b0 + 9 + 2.0 * line(2)
+        rim = b1 + 6 + 1.5 * line(3)
+        floor = 41 + 0.5 * small + 3.0 * noise.smoothstep(fe - 5, fe, d)
+        bench, plateau = 57 + 0.4 * small, 74 + 1.6 * noise.fbm(X.shape, 40, 2, seed=5)
+        h = floor                                                                 # the board's own formula
+        h = np.where(d >= fe + jag, np.maximum(h, 41 + 16 * noise.smoothstep(fe + jag, b0 + jag, d)), h)
+        h = np.where(d >= b0 + jag, bench, h)
+        h = np.where(d >= b1 + jag, 57 + 17 * noise.smoothstep(b1 + jag, rim + jag, d), h)
+        h = np.where(d >= rim + jag, plateau, h)
+        op = LF.profile(np.zeros(X.shape), d, 41, [LF.Step(fe, b0, 57, bench), LF.Step(b1, rim, 74, plateau)],
+                        floor_ground=floor, jag=jag)
+        self.assertTrue(np.array_equal(op, h))
+
+    def test_level_ground_is_level_inside_and_left_alone_outside(self):
+        X, Z, H = self.X.astype(float), self.Z.astype(float), self.H
+        dd = np.hypot(X - 10, Z + 5)
+        flat = LF.level(H, dd, 50, inner=8, outer=14)
+        self.assertTrue((flat[dd < 8] == 50).all() and (flat[dd >= 14] == H[dd >= 14]).all())
+        k = noise.smoothstep(8, 14, dd)                                     # Hollow Mesa's pads, as written there
+        self.assertTrue(np.array_equal(flat, np.where(dd < 14, 50 * (1 - k) + H * k, H)))
+        lifted = LF.level(H, dd, 50, inner=8, outer=14, mode="lift")
+        self.assertTrue((lifted >= np.where(dd < 8, -np.inf, H)).all())
+        median = LF.level(H, dd, "median", inner=8, outer=14)
+        self.assertEqual(median[70, 55], float(np.median(H[dd < 8])))            # at the centre, (10, -5)
+        e = shapes.ellipse_distance(X, Z, (0, 0), 20, 5, angle=90)
+        self.assertAlmostEqual(float(e[60, 80]), 1.0)                       # turned: 20 along z, 5 along x
+        self.assertAlmostEqual(float(e[65, 60]), 1.0)
+
+    def test_a_mound_peaks_at_its_rise_and_a_crater_is_walked_out_of(self):
+        X, Z, H = self.X.astype(float), self.Z.astype(float), np.full(self.X.shape, 40.0)
+        e = shapes.ellipse_distance(X, Z, (5, 5), 10, 6)
+        heap = LF.mound(H, e, 7)
+        self.assertEqual(heap[65, 65], 47.0)
+        self.assertTrue((heap[e >= 1] == 40).all() and (heap >= H).all())
+        d = np.hypot(X + 20, Z - 10)
+        bowl = LF.crater(H, d, 30, 12, flat=1.5)
+        self.assertEqual(bowl[40, 70], 30)
+        self.assertTrue((bowl[d > 12] == 40).all() and (bowl <= 40).all())
+        inside = d <= 12
+        steps = np.abs(np.diff(bowl, axis=0))[inside[1:] & inside[:-1]].max()
+        self.assertLessEqual(steps, 1 + 1e-9)                             # one block a block: climbable
+
+    def test_an_elliptical_spire_is_a_round_one_stretched(self):
+        X, Z = self.X.astype(float), self.Z.astype(float)
+        H = np.full(X.shape, 30.0)
+        oval = LF.spire(H, X, Z, (0, 0), r=8, rz=16, top=50, jag=0.0)
+        round_ = LF.spire(H, X, Z / 2, (0, 0), r=8, top=50, jag=0.0)
+        self.assertTrue(np.allclose(oval, round_))
+        self.assertGreater(oval[60, 72], 30)                               # 12 out along z: still on its foot
+        self.assertEqual(oval[72, 60], 30)                                 # 12 out along x: past it
+
+    def test_a_ridge_climbs_from_its_foot_lifts_only_and_is_terraced(self):
+        X, Z, H = self.X.astype(float), self.Z.astype(float), self.H
+        foot = noise.line(X.shape, "z", 20, seed=4, amp=4, base=-20)
+        r = LF.ridge(H, X, foot, 15, 80.0, terrace=(3, 1.0, 0.25))
+        east = X >= foot + 0 * X
+        self.assertTrue((r >= H).all() and (r[east] == H[east]).all())      # only lifts; nothing past its foot
+        cut = (noise.smoothstep(foot, foot - 15, X) > 0.25) & (r > H)
+        self.assertTrue(cut.any() and np.allclose((r[cut] - r[cut].min()) % 3, 0))   # three-block terraces
+        spur = LF.ridge(H, X, foot, 15, 50.0, spurs=[(np.abs(Z), np.full(X.shape, 70.0), (10, 2))])
+        self.assertTrue((spur[(np.abs(Z) < 2) & (X > 0)] >= 70).all())       # the arm holds its top out east
+
+    def test_spire_sites_keep_apart_and_off_the_path_and_stand_on_the_ground(self):
+        path = [(-30, 0), (30, 0)]
+        sites = LF.spire_sites((-40, -30, 40, 30), 20, spacing=2.5, keep_clear=[(path, 3)], seed=5)
+        self.assertTrue(0 < len(sites) <= 20)
+        for i, (x, z, r, rise, kind) in enumerate(sites):
+            self.assertTrue(-40 <= x <= 40 and 1.6 <= r <= 3.4 and 8 <= rise <= 22 and kind in ("needle", "hoodoo"))
+            self.assertGreaterEqual(shapes.nearest_on(path, x, z)[0], r + 3)
+            for a, b, c, _, _ in sites[i + 1:]:
+                self.assertGreaterEqual(math.hypot(x - a, z - b), r + c + 2.5)
+        self.assertEqual(sites, LF.spire_sites((-40, -30, 40, 30), 20, spacing=2.5, keep_clear=[(path, 3)], seed=5))
+        X, Z = self.X.astype(float), self.Z.astype(float)
+        H = np.full(X.shape, 40.0)
+        field = LF.spire_field(H, X, Z, [(10.0, 10.0, 3.0, 12.0, "needle"), (-20.0, 5.0, 3.0, 9.0, "hoodoo")])
+        self.assertEqual((field[70, 70], field[40, 65]), (52.0, 49.0))
+        self.assertGreater(field[42, 65] - 40, 0.8 * 9)                    # a hoodoo is capped: most of its height 2 out
+        self.assertLess(field[72, 70] - 40, 0.6 * 12)                      # a needle is pointed: well down 2 out
+
+    def water_world(self, H, *waters):
+        w = World(-60, -60, 120, 120, sy=96)
+        top = np.round(H).astype(int)
+        terrain.lay(w, top)
+        level = np.zeros(H.shape)
+        for wat in waters:
+            level = np.maximum(level, np.where(wat.mask, wat.surface, 0))
+        terrain.fill_water(w, top, level, bed=(B.GRAVEL, 0))
+        self.assertTrue(all(w.id(int(x), int(top[i, k]), int(z)) == B.GRAVEL
+                            for (i, k), x, z in zip(np.argwhere(level > 0), self.X[level > 0], self.Z[level > 0])))
+        return w
+
+    def test_a_river_into_a_lake_leaves_no_water_against_air(self):
+        X, Z, H = self.X, self.Z, self.H
+        H1, lake = LF.lake(H, X, Z, (30, 40), 12, 30, depth=4, seed=1)
+        H2, river = LF.watercourse(H1, X, Z, [(-50, -50), (0, 0), (30, 40)], width=5, depth=3, water=2,
+                                   lowest=28, into=lake)
+        self.assertTrue(river.falls)
+        self.assertEqual(audit.loose_water(self.water_world(H2, lake, river)), [])
+
+    def test_a_river_meets_the_sea_at_its_level_with_no_bank_in_it(self):
+        X, Z, H = self.X, self.Z, self.H
+        H1, sea = LF.coast(H - 12, X, Z, 30, shelf=10)                       # the sea runs on to the world's edge
+        H2, river = LF.watercourse(H1, X, Z, [(0, -40), (0, 0), (0, 59)], width=5, depth=2, lowest=29, into=sea)
+        self.assertTrue((H2[sea.mask] <= H1[sea.mask] + 1e-9).all())        # nothing raised inside the sea
+        mouth = river.mask & sea.mask
+        self.assertTrue((river.surface[mouth] == 30).all())
+        self.assertEqual(audit.loose_water(self.water_world(H2, sea, river)), [])
+
+    def test_loose_water_allows_a_fall_and_a_waterfall_only(self):
+        w = World(0, 0, 8, 3, sy=12)
+        w.ids[:, :4, :] = B.STONE
+        w.ids[1:7, 4, 1] = B.WATER                      # a water block standing on stone in open air
+        self.assertTrue(audit.loose_water(w))
+        w.ids[:, 4, :] = B.STONE
+        w.ids[3, 5, 1] = B.WATER                        # a step: air beside it, lower water under that air
+        w.ids[4, 4, 1] = B.WATER
+        w.ids[2, 5, 1] = B.STONE
+        w.ids[3, 5, 0] = w.ids[3, 5, 2] = B.STONE
+        self.assertEqual([r for r in audit.loose_water(w) if r[:3] == (3, 5, 1)], [])
+        w.set(6, 8, 1, B.WATER_FLOW, 8)                 # falling water over the void is a waterfall
+        self.assertEqual([r for r in audit.loose_water(w) if r[:3] == (6, 8, 1)], [])
+
+    def test_a_waterfall_falls_from_the_lip_into_air_only(self):
+        w = World(0, 0, 14, 5, sy=24)
+        w.ids[:8, :12, :] = B.STONE                                         # an island to x 7, the void past it
+        level = np.zeros((8, 5), int)
+        level[2:8, 2] = 13                                                  # a stream to the lip in row z 2
+        w.ids[2:8, 12, 2], w.ids[2:8, 13, 2] = B.GRAVEL, B.WATER
+        w.ids[10, 6, 2] = B.STONE                                           # a ledge the fall must not overwrite
+        laid = terrain.waterfall(w, level, (0, 0), toward="east", to=11, to_y=4)
+        self.assertEqual(laid, 4 * 10 - 1)
+        self.assertEqual((w.id(10, 6, 2), w.id(8, 4, 2), w.id(8, 13, 2), w.id(12, 8, 2)),
+                         (B.STONE, B.WATER_FLOW, B.WATER_FLOW, 0))
+        self.assertEqual([r for r in audit.loose_water(w) if r[0] >= 8], [])
+        self.assertEqual(terrain.waterfall(World(0, 0, 14, 5, sy=24), level, (0, 0), lip_from=9, to=11), 0)
+
+    def test_a_spire_leaves_the_rest_alone(self):
+        X, Z, H = self.X, self.Z, self.H
+        H2 = LF.spire(H, X, Z, (0, 0), r=6, top=90, jag=0)
+        far = np.hypot(X, Z) >= 6
+        self.assertTrue((H2[far] == H[far]).all())                         # it once lifted the whole world
+        self.assertEqual(H2.max(), 90)
+        jagged = LF.spire(H, X, Z, (0, 0), r=6, top=90, jag=0.15)
+        self.assertTrue((jagged[np.hypot(X, Z) >= 12] == H[np.hypot(X, Z) >= 12]).all())
+
+    def test_butte_canyon_grade_coast_terraces(self):
+        X, Z, H = self.X, self.Z, self.H
+        self.assertEqual(set(LF.butte(H, X, Z, (10, 10), 6, 80)[np.hypot(X - 10, Z - 10) < 4]), {80})
+        self.assertTrue((LF.canyon(H, X, Z, [(-50, 0), (50, 0)], width=16, depth=8) <= H + 1e-9).all())
+        _, (s, p) = LF.grade(H, X, Z, [(-50, -40), (50, 40)], width=4, max_grade=0.2)
+        self.assertLessEqual(np.max(np.abs(np.diff(p)) / np.diff(s)), 0.2 + 1e-9)
+        outline = [(-40, -40), (40, -40), (40, 40), (-40, 40)]
+        H2, sea = LF.coast(H, X, Z, 45, outline=outline)
+        self.assertFalse((sea.mask & (np.abs(X) < 38) & (np.abs(Z) < 38)).any())
+        T = LF.terraces(H, np.ones(H.shape, bool), step=4, base=0)
+        self.assertTrue((T % 4 == 0).all())
+
+
+class Wiggle(unittest.TestCase):
+    """The warp, gullies and lumps: what makes a form stop being a perfect circle."""
+
+    def setUp(self):
+        self.X, self.Z = (a.astype(float) for a in np.meshgrid(np.arange(-80, 80), np.arange(-80, 80), indexing="ij"))
+        self.H = np.full(self.X.shape, 40.0)
+
+    def test_a_warp_of_nothing_is_the_grid_and_a_warp_stays_within_its_reach(self):
+        X, Z = self.X, self.Z
+        Xs, Zs = noise.warp(X, Z, seed=3, big=0, small=0)
+        np.testing.assert_array_equal(Xs, X)
+        np.testing.assert_array_equal(Zs, Z)
+        Xw, Zw = noise.warp(X, Z, seed=3, big=12, small=4)
+        self.assertLessEqual(np.abs(Xw - X).max(), 16 + 1e-9)
+        self.assertGreater(np.abs(Xw - X).max(), 4)                           # it moves something
+        self.assertLess(np.abs(np.diff(Xw - X, axis=0)).max(), 1.0)           # and moves neighbours alike
+        np.testing.assert_array_equal(noise.warp(X, Z, seed=3)[0], noise.warp(X, Z, seed=3)[0])
+
+    def test_a_warped_circle_is_no_longer_round(self):
+        X, Z = self.X, self.Z
+        Xw, Zw = noise.warp(X, Z, seed=5, big=12, small=4)
+        rim = lambda d: np.abs(d - 50) < 0.75                                   # noqa: E731
+        straight, bent = np.hypot(X, Z), np.hypot(Xw, Zw)
+        self.assertLess(np.ptp(straight[rim(straight)]), 1.6)
+        self.assertGreater(np.ptp(np.hypot(X, Z)[rim(bent)]), 8)               # its rim wanders by blocks
+
+    def test_gullies_only_cut_and_only_between_their_radii(self):
+        X, Z, H = self.X, self.Z, self.H
+        g = LF.gullies(H, X, Z, (0, 0), 20, 6, 30, 70, seed=4)
+        d = np.hypot(X, Z)
+        self.assertTrue((g <= H + 1e-9).all())
+        np.testing.assert_allclose(g[(d < 30) | (d > 70)], H[(d < 30) | (d > 70)])
+        self.assertGreater((H - g).max(), 3)
+        self.assertLessEqual((H - g).max(), 6 + 1e-9)
+
+    def test_straight_gullies_are_as_many_spokes_as_asked(self):
+        X, Z, H = self.X, self.Z, self.H
+        g = LF.gullies(H, X, Z, (0, 0), 24, 6, 20, 75, wander=0, seed=4)
+        t = np.linspace(0, 2 * np.pi, 2400, endpoint=False)
+        ring = g[np.round(50 * np.cos(t) + 80).astype(int), np.round(50 * np.sin(t) + 80).astype(int)]
+        cut = ring < 40 - 1
+        self.assertEqual(int(np.sum(cut & ~np.roll(cut, 1))), 24)            # one run of cut ground per groove
+
+    def test_lumps_only_lift_and_only_where_the_mask_lets_them(self):
+        X, Z, H = self.X, self.Z, self.H
+        none = LF.lumps(H, X, Z, 30, (-40, -40, 40, 40), (3, 6), (2, 5), seed=7, mask=np.zeros(H.shape, bool))
+        np.testing.assert_array_equal(none, H)
+        east = X > 10
+        got = LF.lumps(H, X, Z, 30, (-40, -40, 40, 40), (3, 6), (2, 5), seed=7, mask=east, rough=0)
+        self.assertTrue((got >= H).all())
+        self.assertTrue((got[X < 10 - 6] == H[X < 10 - 6]).all())             # no lump's foot reaches the west
+        self.assertTrue((got[(np.abs(X) > 46) | (np.abs(Z) > 46)] == H[(np.abs(X) > 46) | (np.abs(Z) > 46)]).all())
+        self.assertGreater((got - H).max(), 1.5)
+
+    def test_shattered_ground_gives_every_column_one_piece_and_its_edge(self):
+        X, Z = self.X, self.Z
+        straight = shapes.shatter(X, Z, 20, seed=2, warp=(0, 0, 60, 12))
+        self.assertEqual(straight.id.shape, X.shape)
+        self.assertTrue((straight.edge >= 0).all())
+        c = straight.centres[straight.id]                                   # straight edges: the nearest centre
+        d_own = np.hypot(X - c[..., 0], Z - c[..., 1])
+        d_all = np.hypot(X[..., None] - straight.centres[:, 0], Z[..., None] - straight.centres[:, 1]).min(-1)
+        np.testing.assert_allclose(d_own, d_all)
+        border = straight.id[:-1] != straight.id[1:]                       # neighbours in two pieces sit by an edge
+        self.assertLess(np.maximum(straight.edge[:-1], straight.edge[1:])[border].max(), 1.0)
+        self.assertGreater(straight.edge.max(), 5)
+
+    def test_a_shatter_is_its_seed_and_bends_with_the_warp(self):
+        X, Z = self.X, self.Z
+        a, b = shapes.shatter(X, Z, 20, seed=2), shapes.shatter(X, Z, 20, seed=2)
+        np.testing.assert_array_equal(a.id, b.id)
+        straight = shapes.shatter(X, Z, 20, seed=2, warp=(0, 0, 60, 12))
+        self.assertGreater((a.id != straight.id).mean(), 0.02)                 # the bend moves the edges
+        sizes = np.bincount(a.id.ravel())
+        self.assertGreater(np.median(sizes[sizes > 0]), 150)                   # pieces about spacing ** 2 in area
+
+    def test_lumps_line_up_along_a_given_angle(self):
+        X, Z, H = self.X, self.Z, self.H
+        got = LF.lumps(H, X, Z, 1, (0, 0, 0.01, 0.01), (10, 10), (5, 5), seed=1, stretch=(0.3, 0.3), angle=0, rough=0)
+        rise = got - H
+        self.assertGreater((rise[:, 80] > 0).sum(), 2 * (rise[80, :] > 0).sum() - 2)   # long along x, short along z
+
+
+class Capture(unittest.TestCase):
+    def test_a_wool_places_itself_its_spawner_and_its_room(self):
+        o = O.Objectives(O.Teams(("red-team", "Red", "red"), ("blue-team", "Blue", "blue")), Symmetry("half"))
+        o.add(O.Wool("blue-team", "lime", slot=(3, 11, 6), found=(-8, 11, -6), room=O.Box(-10, 11, -8, -6, 14, -4)),
+              color="magenta")
+        o.add(O.Spawn("red-team", (-2, 11, -10), area=O.Box(-4, 11, -12, 0, 14, -8), protect=("iron block",)))
+        w = World(-12, -12, 24, 24, sy=20)
+        w.fill(-12, 0, -12, 11, 10, 11, B.STONE)
+        o.stamp(w)
+        self.assertEqual(w.get(-8, 11, -6), (B.WOOL, 5))
+        self.assertEqual(o.check(w), [])
+        w.set(-8, 11, -6, B.AIR)
+        self.assertEqual(len(o.check(w)), 1)                                # the wool is missed
+        x = xml.dom.minidom.parseString(o.write(Doc("T", "1", "t")).tostring())
+        self.assertEqual(len(x.getElementsByTagName("spawner")), 2)
+        self.assertEqual({r.getAttribute("id") for r in x.getElementsByTagName("union")},
+                         {"reds-woolrooms", "blues-woolrooms"})
+        self.assertEqual(len(x.getElementsByTagName("renewable")), 2)
+        self.assertEqual([m[2] for m in o.markers()].count("w"), 2)          # each room marked
+
+    def test_a_walk_over_build_zones(self):
+        R = Raster((0, 19), (0, 4), ["void", "floor"], base_h=0, base_kind="void")
+        R.rect(0, 5, 0, 4, 10, "floor", both=False)
+        R.rect(14, 19, 0, 4, 10, "floor", both=False)
+        zone = R.mask("void")
+        E = plangraph.graph(R, {"floor"}, rules=plangraph.PlanRules(jumps=False, diagonals=True), bridge=zone)
+        D, prev = plangraph.dijkstra(E, [(0, 2)])
+        cost, by, _ = plangraph.measure(D, prev, E, [(19, 2)])
+        self.assertAlmostEqual(by["bridge"], 9.0)                           # the gap, built over
+        self.assertLess(cost, 20)
+        Ed = plangraph.graph(R, {"floor"}, rules=plangraph.PlanRules(jumps=False, diagonals=True))
+        Dd, _ = plangraph.dijkstra(Ed, [(0, 0)])
+        self.assertAlmostEqual(Dd[(4, 4)], 4 * math.sqrt(2))                # octile, not four-way
+
+    def test_the_voxel_walk_builds_and_dies(self):
+        w = World(-1, -1, 24, 3, sy=40)
+        w.fill(0, 20, 0, 4, 20, 0, B.STONE)
+        w.fill(15, 20, 0, 19, 20, 0, B.STONE)
+        zone = np.zeros((w.sx, w.sz), bool)
+        zone[6:16, :] = True
+        d = walk.walk(w.ids, [(0, 21, 0)], w.x0, w.z0, walk.MoveRules(jumps=False, build=(zone, (21, 21))))
+        self.assertGreater(d[19 - w.x0, 21, 0 - w.z0], 0)
+        w.fill(0, 5, 0, 19, 5, 0, B.STONE)                                  # a floor below the kill height
+        d = walk.walk(w.ids, [(0, 21, 0)], w.x0, w.z0, walk.MoveRules(jumps=False, kill_y=10))
+        self.assertEqual(d[8 - w.x0, 6, 0 - w.z0], -1)
+
+    def test_a_kit_and_what_follows_from_it(self):
+        from pgmvox.play.rules import Item, Kit, KillHeight, Map
+        M = Map("T", "1", "t", kit=Kit(Item("iron sword", 0, unbreakable=True), Item("wood", 4, 64),
+                                       Item("stained clay", 5, 32, team_color=True), Item("cooked beef", 8, 16),
+                                       Item("leather boots", team_color=True, wear="boots")), kill=KillHeight(40),
+                terrain={1, 18, 13, 31})
+        x = xml.dom.minidom.parseString(M.xml())
+        text = lambda tag: [e.firstChild.data for e in x.getElementsByTagName(tag)[0].childNodes      # noqa: E731
+                            if e.nodeType == e.ELEMENT_NODE]
+        self.assertEqual(len(x.getElementsByTagName("kit")), 1)                       # the fall is no kit
+        portal = x.getElementsByTagName("portal")[0]                                  # a fall goes into the void
+        self.assertEqual((portal.getAttribute("y"), portal.getElementsByTagName("below")[0].getAttribute("y")),
+                         ("@-64", "40"))
+        self.assertEqual(text("itemkeep"), ["iron sword", "wood", "stained clay", "cooked beef"])
+        self.assertEqual(text("itemremove"), ["leather boots", "flint", "gravel", "sapling", "apple", "seeds",
+                                              "long grass"])                          # the world's own drops
+        self.assertEqual(text("toolrepair"), ["iron sword"])
+        rewards = [(e.getAttribute("material"), e.getAttribute("amount"))
+                   for e in x.getElementsByTagName("kill-reward")[0].getElementsByTagName("item")]
+        self.assertEqual(rewards, [("wood", "16"), ("stained clay", "8")])          # blocks, not the beef
+        self.assertEqual(x.getElementsByTagName("include")[0].getAttribute("id"), "gapple-kill-reward")
+        self.assertEqual(x.getElementsByTagName("depletion")[0].firstChild.data, "off")
+
+
+class Forms(unittest.TestCase):
+    def test_a_tower_carries_its_ledge_rings(self):
+        w = World(-16, -16, 32, 32, sy=80)
+        rng = np.random.default_rng(1)
+        n = forms.tower(w, 0, 0, 10, 60, 5, lambda y, b: (B.STONE, 0), rng, bulge=0.0, vines=0)
+        self.assertGreater(n, 0)
+
+        def area(y):
+            return int((w.ids[:, y, :] == B.STONE).sum())
+        self.assertGreater(area(18), area(17))                              # a ledge every nine courses
+        self.assertGreater(area(18), area(19))
+        self.assertGreater(area(11), area(58))                              # tapering up the stack
+        self.assertEqual(w.id(0, 60, 0), B.GRASS)                           # the crown
+
+    def test_a_skirt_never_rises_into_the_floor(self):
+        w = World(-10, -10, 20, 20, sy=40)
+        land = np.zeros((20, 20), bool)
+        land[5:15, 5:15] = True
+        floor = np.where(land, 30, 0)
+        T = __import__("pgmvox.surface.terrain", fromlist=["lay"])
+        T.lay(w, floor, mask=land, from_y=20)
+        forms.skirt(w, land, floor, lambda y: (B.STONE, 0), np.random.default_rng(2), bulge=np.ones((20, 20)))
+        cols = w.ids.transpose(0, 2, 1)[~land]                              # every column off the floor, by y
+        self.assertFalse((cols[:, 29:] != 0).any())                         # nothing at floor - 1 or above
+        self.assertTrue((cols[:, 20:28] != 0).any())                        # but ledges below it
+
+
+class Sweep(unittest.TestCase):
+    """A swept land bridge: its sizes are what it was asked for, and its sides carry no teeth."""
+
+    def setUp(self):
+        from pgmvox.scenery import forms
+        self.forms = forms
+        self.w = World(-60, -20, 120, 40, sy=64)
+
+    def sides(self, m):
+        """The outermost z on each side for every (x, y) the solid occupies, and how many are teeth."""
+        idx = np.arange(m.shape[2])[None, None, :]
+        occ = m.any(axis=2)
+        spikes = 0
+        for edge in (np.where(m, idx, 99).min(axis=2), np.where(m, idx, -1).max(axis=2)):
+            e = np.where(occ, edge, np.nan)
+            a, b, c = e[:-2], e[1:-1], e[2:]
+            ok = np.isfinite(a) & np.isfinite(b) & np.isfinite(c)
+            spikes += int((ok & (((b > a) & (b > c)) | ((b < a) & (b < c)))).sum())
+        return occ, spikes
+
+    def test_a_smooth_sweep_is_the_size_it_was_asked_for(self):
+        F = self.forms
+        m = F.sweep(self.w, [(-50, 0), (50, 0)], 30, F.flare(3, 8, 2), 4, F.flare(4, 12, 2))
+        crown = m[60]                                                     # x = 0: the column at the middle
+        ys, zs = np.nonzero(crown)
+        self.assertEqual((zs.min() - 20, zs.max() - 20), (-2, 2))           # under 3 from the path at z 0
+        self.assertEqual((ys.min(), ys.max()), (27, 33))                   # under 4 from the centre at y 30
+        np.testing.assert_array_equal(m[:, :, 1:], m[:, :, :0:-1])        # the same either side of the path
+        end = m[15]                                                       # x = -45, near the end: wider and deeper
+        self.assertGreater(np.ptp(np.nonzero(end)[1]), np.ptp(zs))
+        self.assertLess(np.nonzero(end)[0].min(), ys.min())
+        self.assertFalse(m[:, :, :8].any() or m[:, :, 32:].any())          # nothing beyond its widest reach
+
+    def test_a_swept_bridge_has_no_teeth_where_dropped_rows_have_many(self):
+        F = self.forms
+        rough = F.sweep(self.w, [(-50, 0), (50, 0)], F.flare(40, 32, 2), F.flare(3.5, 7, 3), F.flare(3, 10, 2),
+                        F.flare(3, 22, 2.2), rough=0.28, seed=3)
+        occ, spikes = self.sides(rough)
+        self.assertLess(spikes / occ.sum(), 0.01)
+        rng = np.random.default_rng(0)
+        dropped = np.zeros_like(rough)                                      # the column-by-column way: a box six
+        dropped[10:110, 30:40, 17:23] = True                                # wide, each outer row dropped at random
+        for x in range(10, 110):
+            for z in (17, 22):
+                if rng.random() < 0.6:
+                    dropped[x, :, z] = False
+        occ, spikes = self.sides(dropped)
+        self.assertGreater(spikes / occ.sum(), 0.15)
+
+
+class Spike(unittest.TestCase):
+    """A spike: as tall and as wide as asked, ending where it narrows under half a block, joined to its base."""
+
+    def setUp(self):
+        from pgmvox.scenery import forms
+        self.forms = forms
+        self.w = World(-30, -30, 60, 60, sy=80)
+
+    def test_a_straight_spike_is_its_radius_at_the_foot_and_ends_under_half_a_block(self):
+        m = self.forms.spike(self.w, [(0, 10, 0), (0, 50, 0)], (4, 0, 1.0))
+        foot = m[:, 10, :]
+        self.assertEqual(int(foot.sum()), int(np.sum(np.hypot(*np.meshgrid(np.arange(-30, 30), np.arange(-30, 30),
+                                                                          indexing="ij")) < 4)))
+        ys = np.nonzero(m.any(axis=(0, 2)))[0]
+        self.assertEqual(ys.max(), 10 + 35)                                  # 4 * (1 - t) falls under 0.5 at t = 7/8
+        self.assertEqual(ndimage.label(m)[1], 1)
+
+    def test_a_square_spike_is_square_and_a_twist_turns_it(self):
+        F = self.forms
+        sq = F.spike(self.w, [(0, 10, 0), (0, 50, 0)], lambda t: 8 + 0 * t, sides=4)
+        rd = F.spike(self.w, [(0, 10, 0), (0, 50, 0)], lambda t: 8 + 0 * t)
+        self.assertAlmostEqual(sq[:, 30, :].sum() / rd[:, 30, :].sum(), 2 / np.pi, delta=0.06)   # corners on the circle
+        tw = F.spike(self.w, [(0, 10, 0), (0, 50, 0)], lambda t: 8 + 0 * t, sides=4, twist=45)
+        self.assertGreater((tw[:, 49, :] != sq[:, 49, :]).sum(), 20)          # the top is turned off the square
+        np.testing.assert_array_equal(tw[:, 10, :], sq[:, 10, :])            # the foot is not
+
+    def test_a_spike_hangs_as_well_as_stands_and_keeps_only_its_base_joined(self):
+        F = self.forms
+        hang = F.spike(self.w, [(0, 70, 0), (0, 30, 0)], (3, 0, 1.0))
+        ys = np.nonzero(hang.any(axis=(0, 2)))[0]
+        self.assertEqual((ys.min(), ys.max()), (37, 72))                      # 3 (1 - t) under 0.5 at t 5/6; a cap over the base
+        thin = F.spike(self.w, [(0, 10, 0), (0, 60, 0)], (3, 0, 2.5), rough=0.6, seed=4)
+        self.assertEqual(ndimage.label(thin)[1], 1)                           # no block left floating off the tip
+
+
+class PlacedBoxes(unittest.TestCase):
+    def test_a_box_is_sunk_by_its_share_and_keeps_what_is_not_soft(self):
+        w = World(-20, -20, 41, 41, sy=60)
+        X, Z = w.grid()
+        H = np.full(X.shape, 30)
+        w.ids[:, 1:31, :] = B.STONE
+        w.set(0, 31, 4, B.LOG, 0)                                       # a trunk in its way stands
+        forms.placed_box(w, 0, 0, (4, 10, 4), H, sink=0.3, paint=lambda u, ly, lz, s: (B.QUARTZ, 0))
+        ys = np.nonzero((w.ids == B.QUARTZ).any(axis=(0, 2)))[0]
+        self.assertEqual((int(ys.min()), int(ys.max())), (28, 37))     # three of its ten under the ground at 30
+        self.assertEqual(w.id(0, 31, 4), B.LOG)
+
+    def test_a_tilted_frame_has_its_hole(self):
+        cells = forms.box_cells((0.5, 20.5, 0.5), (9, 9, 1), yaw=0, tilt=0)
+        self.assertTrue(any(abs(u) < 1 and abs(ly) < 1 for _, _, _, u, ly, _ in cells))
+        w = World(-10, -10, 21, 21, sy=40)
+        n = forms.placed_box(w, 0, 0, (9, 9, 1), np.full((21, 21), 10), sink=0, hole=2)
+        self.assertEqual(w.id(0, 15, 0), B.AIR)                         # the middle of the ring is open
+        self.assertGreater(n, 40)
+
+    def test_rings_are_concentric_bands(self):
+        w = World(0, 0, 15, 15, sy=4)
+        F.carpet(w, 0, 0, 14, 14, 1, F.rings(2, [(B.WOOL, 0), (B.WOOL, 15)]))
+        self.assertEqual("".join("#" if w.dat[i, 1, 7] == 15 else "." for i in range(15)), "##..##...##..##")
+
+
+class BuildMarker(unittest.TestCase):
+    """The studio's BuildMarkerStamperTests, case for case: pgmvox outlines a build region as the studio does."""
+
+    @staticmethod
+    def rects(*rs):
+        return {(x, z) for x0, z0, x1, z1 in rs for x in range(x0, x1) for z in range(z0, z1)}
+
+    @staticmethod
+    def column(cells, x):
+        return sorted(z for cx, z in cells if cx == x)
+
+    @staticmethod
+    def row(cells, z):
+        return sorted(x for x, cz in cells if cz == z)
+
+    @staticmethod
+    def within(cells, x0, z0, x1, z1):
+        return {c for c in cells if x0 <= c[0] <= x1 and z0 <= c[1] <= z1}
+
+    @staticmethod
+    def ring(x0, z0, x1, z1):
+        return {(x, z) for x in range(x0, x1 + 1) for z in (z0, z1)} | {(x, z) for x in (x0, x1) for z in range(z0, z1 + 1)}
+
+    def test_bridging_two_terrain_pieces_marks_the_two_free_sides(self):
+        cells = O.build_marker(self.rects((0, 0, 8, 8)), self.rects((0, -8, 8, 0), (0, 8, 8, 16)))
+        self.assertEqual(self.column(cells, -2), list(range(0, 8)))
+        self.assertEqual(self.column(cells, 9), list(range(0, 8)))
+        self.assertEqual(len(cells), 16)
+
+    def test_free_on_every_side_is_ringed(self):
+        cells = O.build_marker(self.rects((0, 0, 8, 8)), set())
+        for line in (self.column(cells, -2), self.column(cells, 9), self.row(cells, -2), self.row(cells, 9)):
+            self.assertEqual(line, list(range(-2, 10)))
+        self.assertEqual(len(cells), 44)
+
+    def test_two_free_edges_meeting_turn_into_one_l(self):
+        cells = O.build_marker(self.rects((0, 0, 12, 8)), self.rects((4, -8, 12, 0), (0, 8, 12, 16)))
+        self.assertEqual(self.column(cells, -2), list(range(-2, 8)))
+        self.assertEqual(self.row(cells, -2), [-2, -1, 0, 1, 2])
+        self.assertEqual(self.column(cells, 13), list(range(0, 8)))
+
+    def test_a_line_pulls_back_from_overhanging_terrain(self):
+        cells = O.build_marker(self.rects((0, 0, 12, 8)), self.rects((0, -8, 16, 0), (0, 8, 16, 16)))
+        self.assertEqual(self.column(cells, -2), list(range(0, 8)))
+        self.assertEqual(self.column(cells, 13), list(range(1, 7)))
+
+    def test_docked_on_every_side_is_not_marked(self):
+        terrain = self.rects((-8, -8, 16, 0), (-8, 8, 16, 16), (-8, 0, 0, 8), (8, 0, 16, 8))
+        self.assertEqual(O.build_marker(self.rects((0, 0, 8, 8)), terrain), [])
+
+    def test_a_hole_is_cut_out_before_the_outline_is_traced(self):
+        cells = O.build_marker(self.rects((0, 0, 20, 20)), set(), holes=self.rects((6, 6, 14, 14)))
+        self.assertEqual(self.row(cells, 8), [-2, 7, 12, 21])
+
+    def test_regions_round_a_void_pocket_each_mark_one_side(self):
+        areas = self.rects((8, 0, 16, 8), (0, 8, 8, 16), (16, 8, 24, 16), (8, 16, 16, 24))
+        terrain = self.rects((0, 0, 8, 8), (16, 0, 24, 8), (0, 16, 8, 24), (16, 16, 24, 24))
+        cells = O.build_marker(areas, terrain)
+        self.assertEqual(self.column(cells, -2), list(range(8, 16)))
+        self.assertEqual(self.within(cells, 8, 8, 15, 15), self.ring(9, 9, 14, 14))
+
+    def test_terrain_beside_a_line_shortens_it_and_past_its_corner_does_not(self):
+        cells = O.build_marker(self.rects((8, 0, 24, 8), (8, 16, 24, 24)), self.rects((0, 0, 8, 24), (24, 0, 32, 24)))
+        self.assertEqual(self.row(cells, -2), list(range(8, 24)))
+        self.assertEqual(self.row(cells, 9), list(range(9, 23)))
+
+    def test_regions_sharing_a_border_are_outlined_as_one(self):
+        cells = O.build_marker(self.rects((0, 0, 8, 24), (8, 0, 16, 8), (16, 0, 24, 24), (8, 16, 16, 24)), set())
+        self.assertEqual(self.column(cells, -2), list(range(-2, 26)))
+        self.assertEqual(self.within(cells, 8, 8, 15, 15), self.ring(9, 9, 14, 14))
+        self.assertEqual(self.row(cells, 11), [-2, 9, 14, 25])
+
+    def test_regions_touching_at_a_corner_are_one_unbroken_staircase(self):
+        cells = O.build_marker(self.rects((0, 0, 8, 8), (8, 8, 16, 16)), set())
+        marker = set(cells)
+        steps = ((1, 0), (-1, 0), (0, 1), (0, -1))
+        for x, z in cells:
+            self.assertEqual(sum((x + dx, z + dz) in marker for dx, dz in steps), 2)
+        seen, todo = {cells[0]}, [cells[0]]
+        while todo:
+            x, z = todo.pop()
+            for dx, dz in steps:
+                if (x + dx, z + dz) in marker and (x + dx, z + dz) not in seen:
+                    seen.add((x + dx, z + dz))
+                    todo.append((x + dx, z + dz))
+        self.assertEqual(len(seen), len(cells))
+
+    def test_a_symmetric_pair_is_marked_symmetrically(self):
+        marker = set(O.build_marker(self.rects((10, 10, 18, 18), (-18, -18, -10, -10)), set()))
+        self.assertTrue(marker)
+        self.assertTrue(all((-1 - x, -1 - z) in marker for x, z in marker))
+
+
+class LineWalls(unittest.TestCase):
+    def setUp(self):
+        self.w = World(0, 0, 40, 12, sy=60)
+        self.X, self.Z = self.w.grid()
+        self.H = (10 + self.X // 3).astype(float)                    # a hillside climbing a block every three
+
+    def test_follow_holds_the_height_over_every_cell(self):
+        laid = BLD.line_wall(self.w, self.H, self.X, self.Z, [(1, 5), (38, 5)], height=2, blocks=[(B.LEAVES, 4)])
+        self.assertEqual(len(laid), 38)
+        self.assertTrue(all(t - g == 2 for _, _, g, t in laid))
+        x, z, g, t = laid[10]
+        self.assertEqual([self.w.id(x, y, z) for y in range(g + 1, t + 2)], [B.LEAVES, B.LEAVES, B.AIR])
+
+    def test_level_crown_is_flat_over_each_run_and_never_under_its_height(self):
+        laid = BLD.line_wall(self.w, self.H, self.X, self.Z, [(0, 5), (35, 5)], height=3, crown="level", run=6)
+        for start in range(0, 36, 6):
+            tops = {t for x, _, _, t in laid if start <= x < start + 6}
+            self.assertEqual(len(tops), 1)
+        self.assertTrue(all(t - g >= 3 for _, _, g, t in laid))
+
+    def test_grade_crown_climbs_no_faster_than_asked(self):
+        H = np.where(self.X < 20, 10.0, 20.0)                         # a ten-block step in the ground
+        laid = BLD.line_wall(self.w, H, self.X, self.Z, [(1, 5), (38, 5)], height=2, crown="grade", max_grade=0.5)
+        tops = [t for _, _, _, t in sorted(laid)]
+        self.assertLessEqual(max(abs(a - b) for a, b in zip(tops, tops[1:])), 1)
+        self.assertTrue(all(t - g >= 2 for _, _, g, t in laid))
+
+    def test_gaps_crenels_cap_and_width(self):
+        laid = BLD.line_wall(self.w, self.H, self.X, self.Z, [(1, 5), (38, 5)], height=3, gap=(10, 2),
+                             cap=(B.STONEBRICK, 0), crenel=(B.STONEBRICK, 2))
+        xs = {x for x, *_ in laid}
+        self.assertTrue({11, 12}.isdisjoint(xs) and {21, 22}.isdisjoint(xs))
+        x, z, g, t = laid[0]
+        self.assertEqual(self.w.id(x, t, z), B.STONEBRICK)
+        merlons = [self.w.id(x, t + 1, z) == B.STONEBRICK for x, z, g, t in laid]
+        self.assertTrue(any(merlons) and not all(merlons))
+        wide = BLD.line_wall(World(0, 0, 40, 12, sy=60), self.H, self.X, self.Z, [(1, 5), (38, 5)], width=3)
+        self.assertEqual(len({z for _, z, _, _ in wide}), 3)
+
+
+class LayerDocument(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        from pgmvox.document import layers as document
+        with open(os.path.join(os.path.dirname(HERE), "examples", "layers", "island.layers.json")) as f:
+            cls.doc = json.load(f)
+        cls.built = document.build(cls.doc)
+
+    def test_every_layer_is_a_step_in_document_order(self):
+        ids = [s.id for s in self.built.steps]
+        want = [L["id"] for L in self.doc["ground"]] + ["lay", "water"] + [L["id"] for L in self.doc["build"]] \
+            + [L["id"] for L in self.doc["dress"]]
+        self.assertEqual(ids, want)
+        self.assertTrue(all(s.changed.any() for s in self.built.steps))
+
+    def test_the_areas_of_one_layer_melt(self):
+        from pgmvox.document import layers as document
+        hills = next(L for L in self.doc["ground"] if L["id"] == "zwillingshuegel")
+        hard = dict(hills, join=0)
+        X, Z = self.built.X, self.built.Z
+        flat = np.full(X.shape, 50.0)
+        melted, _ = document._ground_layer(hills, flat, X, Z, {}, {}, self.built.land)
+        plain, _ = document._ground_layer(hard, flat, X, Z, {}, {}, self.built.land)
+        self.assertTrue((melted >= plain - 1e-9).all())
+        self.assertGreater(float((melted - plain).max()), 1.0)       # the saddle between them
+
+    def test_one_board_takes_its_walls_from_a_faces_layer(self):
+        from pgmvox.document import layers as document
+        folder = os.path.join(os.path.dirname(HERE), "examples", "layers", "wandbild")
+        built = {}
+        for name in ("kahl", "outback", "claywork", "schichten", "brittle"):
+            with open(os.path.join(folder, name + ".layers.json")) as f:
+                built[name] = document.build(json.load(f))
+        bare = built.pop("kahl")
+        for name, b in built.items():
+            self.assertTrue((b.H == bare.H).all(), name)                     # the ground is the same board
+            top = np.take_along_axis(b.world.ids, b.H[:, None, :].clip(0), 1)[:, 0, :]
+            dressed = next(s for s in b.steps if s.stage == "faces").changed
+            inner = b.land & ~ndimage.binary_dilation(dressed, iterations=2)
+            bare_top = np.take_along_axis(bare.world.ids, bare.H[:, None, :].clip(0), 1)[:, 0, :]
+            self.assertTrue((top[inner] == bare_top[inner]).all(), name)   # and the paint away from every edge
+        clay = built["claywork"].world
+        self.assertEqual(clay.id(-20, 19, 29), B.AIR)                                   # a sunk panel at the rim,
+        self.assertIn(clay.id(-20, 19, 28), (B.STAINED_CLAY, B.QUARTZ))                # its back a block in
+        back = built["outback"].world                                                    # Outback's inset: slabs,
+        self.assertEqual([back.get(-20, y, 29) for y in (22, 21)], [(B.WOOD_SLAB, 9), (B.WOOD_SLAB, 1)])
+        self.assertEqual(back.get(-20, 22, 28), (B.STAINED_CLAY, 14))                   # the team's clay behind
+        self.assertEqual(back.get(-40, 22, 29), (B.PLANKS, 1))                           # a frame at the corner,
+        from pgmvox.core.orient import stair
+        self.assertEqual(back.get(-37, 22, 29), (B.SPRUCE_STAIRS, stair("w", upside_down=True)))  # a stair rising
+        self.assertEqual(back.get(36, 21, 29), (B.SPRUCE_STAIRS, stair("e")))                      # to either end
+
+    def test_made_and_grown_on_one_board(self):
+        from pgmvox.document import layers as document
+        with open(os.path.join(os.path.dirname(HERE), "examples", "layers", "saumland.layers.json")) as f:
+            doc = json.load(f)
+        b = document.build(doc)
+        made = b.steps[[s.id for s in b.steps].index("made")].changed
+        self.assertFalse((made & b.land).any())                          # the grown land keeps out of the made
+        w = b.world
+        self.assertGreater(int((w.ids == B.QUARTZ).sum()), 300)          # tower, monoliths, ring
+        red = (w.ids == B.WOOL) & (w.dat == 14)
+        blue = (w.ids == B.WOOL) & (w.dat == 11)
+        self.assertEqual(int(red[:, :, :60].sum()), int(blue[:, :, 60:].sum()))   # the half turn, recoloured
+        self.assertEqual([s.stage for s in b.steps][-1], "symmetry")
+
+    def test_the_riftwater_ports_ground_is_a_layer_document(self):
+        from pgmvox.document import layers as document
+        scripts = os.path.join(os.path.dirname(HERE), "boards", "riftwater-pgmvox", "scripts")
+        sys.path.insert(0, scripts)
+        try:
+            import plan as RP
+            L = RP.land()
+        finally:
+            sys.path.remove(scripts)
+        with open(os.path.join(os.path.dirname(scripts), "riftwater.ground.layers.json")) as f:
+            c, steps = document.ground(json.load(f))
+        np.testing.assert_array_equal(c.land, L.land)
+        np.testing.assert_array_equal(np.where(c.land, c.H, -1).astype(int), L.H)
+        np.testing.assert_array_equal(np.where(c.land, c.water, 0), L.water)
+
+    def test_the_built_world_has_water_walls_and_half_steps(self):
+        w, X, Z = self.built.world, self.built.X, self.built.Z
+        self.assertTrue((self.built.water > 0).any())
+        self.assertGreater(int((w.ids == B.LEAVES).sum()), 40)          # the hedge (and the trees)
+        self.assertGreater(int((w.ids == B.FENCE).sum()), 40)
+        self.assertGreater(int((w.ids == B.SLAB).sum()), 5)             # the climb's half steps
+        ln = self.built.lines["aufstieg"]
+        band, lvl, _ = RT.halfstep_levels(X, Z, ln["pts"], ln["profile"], ln["width"], within=self.built.land)
+        for i, k in np.argwhere(band):                                  # nothing stands on the climb
+            self.assertEqual(int(np.nonzero(w.ids[i, :, k])[0].max()), int(lvl[i, k]) // 2 + int(lvl[i, k]) % 2)
+
+
+class Routes(unittest.TestCase):
+
+    def test_half_steps_never_rise_more_than_half_a_block_and_hold_their_ends(self):
+        w = World(0, 0, 40, 12, sy=40)
+        X, Z = w.grid()
+        H = np.where(X < 20, 30.0, 18.0) + 0 * Z                      # a twelve-block wall at x 20
+        pts = [(4, 6), (36, 6)]
+        H2, (s, level) = LF.grade(H, X.astype(float), Z.astype(float), pts, width=4, max_grade=0.6)
+        band, lvl, joined = RT.halfstep_levels(X, Z, pts, (s, level), width=4)
+        self.assertTrue(joined)
+        cells = {tuple(c): int(lvl[tuple(c)]) for c in np.argwhere(band)}
+        step = max(abs(v - cells[(i + a, k + b)]) for (i, k), v in cells.items() for a, b in ((1, 0), (0, 1))
+                   if (i + a, k + b) in cells)
+        self.assertLessEqual(step, 1)                                   # one half block
+        self.assertEqual(cells[(4, 6)] // 2, 30)
+        self.assertEqual(cells[(36, 6)] // 2, 18)
+        r = np.random.default_rng(0)
+        RT.halfsteps(w, H, X, Z, band, lvl, [(B.SANDSTONE, 0)], (B.SLAB, 1), r, fill=(B.SANDSTONE, 0))
+        odd = [c for c, v in cells.items() if v % 2]
+        self.assertTrue(odd)
+        i, k = odd[0]
+        self.assertEqual(w.id(int(X[i, k]), cells[(i, k)] // 2 + 1, int(Z[i, k])), B.SLAB)
+        self.assertFalse(any(w.id(int(X[i, k]), y, int(Z[i, k])) in (B.SANDSTONE_STAIRS, B.COBBLE_STAIRS)
+                             for i, k in cells for y in range(40)))
+    def slope(self):
+        X, Z = np.meshgrid(np.arange(0, 60), np.arange(0, 60), indexing="ij")
+        return X, Z, (0.5 * Z).astype(float)                                # 1 in 2, straight up the z axis
+
+    def test_switchbacks_come_out_of_the_cost(self):
+        X, Z, H = self.slope()
+        pts = RT.find(H, X, Z, (30, 2), (30, 56), max_grade=1 / 8)
+        legs = RT.simplify(pts)
+        self.assertGreaterEqual(len(legs) - 1, 3)                           # it turns about at least twice
+        self.assertLessEqual(len(legs) - 1, 9)                              # in long legs, not a zig-zag
+        _, (s, p) = LF.grade(H, X, Z, RT.smooth(legs), width=3, max_grade=1 / 8)
+        self.assertLessEqual(np.max(np.abs(np.diff(p)) / np.diff(s)), 1 / 8 + 1e-9)
+
+    def test_avoid_and_water(self):
+        X, Z = np.meshgrid(np.arange(0, 40), np.arange(0, 40), indexing="ij")
+        H = np.zeros(X.shape)
+        wall = (X == 20) & (Z < 35)
+        pts = RT.find(H, X, Z, (5, 5), (35, 5), avoid=wall)
+        self.assertTrue(all(not wall[int(round(x)), int(round(z))] for x, z in pts))
+        self.assertGreater(max(z for _, z in pts), 30)                      # round the end of the wall
+        river = (X >= 18) & (X <= 22)
+        self.assertIsNone(RT.find(H, X, Z, (5, 5), (35, 5), water=river, bridge=None))
+        self.assertIsNotNone(RT.find(H, X, Z, (5, 5), (35, 5), water=river, bridge=6))
+
+    def test_a_network_shares_its_trunk(self):
+        X, Z = np.meshgrid(np.arange(0, 60), np.arange(0, 60), indexing="ij")
+        H = np.zeros(X.shape)
+        branches, roads = RT.network(H, X, Z, {"a": (5, 30), "b": (55, 25), "c": (55, 35)})
+        separate = sum(len(RT.find(H, X, Z, (5, 30), p)) for p in ((55, 25), (55, 35)))
+        self.assertLess(sum(len(b) for b in branches.values()), separate)
+
+    def test_grade_keeps_water_and_earlier_roads(self):
+        X, Z, H = self.slope()
+        river = (Z >= 28) & (Z <= 30)
+        earlier = (X >= 28) & (X <= 32) & (Z >= 40)
+        H2, _ = LF.grade(H, X, Z, [(30, 2), (30, 56)], width=4, max_grade=0.1, water=river, keep=earlier)
+        self.assertTrue((H2[river] == H[river]).all() and (H2[earlier] == H[earlier]).all())
+        _, (s, p) = LF.grade(H, X, Z, [(30, 2), (30, 56)], width=4, max_grade=0.6)
+        self.assertEqual((round(p[0]), round(p[-1])), (1, 28))                 # the ends hold their ground
+
+
+class Sketch(unittest.TestCase):
+    def test_a_sheet_with_every_panel(self):
+        R = Plan.raster(None)
+        J = plangraph.jumps(R, {"floor", "stair"})
+        S = Sheet("t")
+        m = S.map(R.x_min, R.z_min, R.x_max, R.z_max, scale=4, title="BOARD", legend="a legend")
+        m.raster(R, {"floor": (150, 175, 110), "stair": (170, 160, 130), "wall": (90, 90, 90)})
+        m.heights(R)
+        m.jumps(J, R=R)
+        m.marker(-15, 0, "S", TEAM["red"], both=True)
+        m.route([(-15, 0), (-6, 0), (0, 0)], TEAM["red"], both=True)
+        m.callout(0, 0, "the middle")
+        m.zone([(-6, -5), (0, -5), (0, 0), (-6, 0)], both=True)
+        a = SectionPanel(R.x_min, R.x_max, 0, 20, scale=3, title="ACROSS")
+        a.raster(R, "x", 0)
+        a.level(6, "kill")
+        b = SectionPanel(0, 20, 0, 20, scale=3, title="ALONG")
+        b.along(R, [(-15.5, 0.5), (4.5, 0.5)])
+        S.row(a, b)
+        S.table([("1", "a number", "at most 2", True), ("3", "another", "at most 2", False), "a note"])
+        with tempfile.TemporaryDirectory() as d:
+            p = S.save(os.path.join(d, "s.png"))
+            self.assertTrue(os.path.getsize(p) > 0)
+
+
+class Roofs(unittest.TestCase):
+    def test_the_roof_is_the_studios(self):
+        """Every cell of 300 roofs answered by the studio's own RoofField (data/export_roofs.cs)."""
+        with gzip.open(os.path.join(os.path.dirname(HERE), "pgmvox", "data", "roofs.json.gz"), "rt") as f:
+            cases = json.load(f)
+        for c in cases:
+            r = BLD.RoofField(c["form"], tuple(c["box"]), c["overhang"], 70, c["pitch"], c["front"], c["halves"])
+            self.assertEqual((r.peak, r.trough), (c["peak"], c["trough"]))
+            for x, z, crown, riser, half, up, ridge, verge in c["cells"]:
+                self.assertEqual((r.crown(x, z), r.riser(x, z), r.half(x, z), r.upslope(x, z) or "",
+                                  r.on_ridge(x, z), r.past_verge(x, z)), (crown, riser, half, up, ridge, verge),
+                                 f"{c['form']} {c['box']} at {x},{z}")
+
+    def test_a_framed_roof_square_to_the_board_is_the_studios(self):
+        for form in BLD.FORMS:
+            for L, W, cx, cz in ((10, 6, 3, 2), (9, 5, 0.5, -1.5), (6, 12, 0, 0)):
+                a = BLD.RoofField.framed(form, BLD.Frame(cx, cz, 0), L, W, 1, 70)
+                x0, z0 = round(cx - L / 2), round(cz - W / 2)
+                b = BLD.RoofField(form, (x0, z0, x0 + L - 1, z0 + W - 1), 1, 70)
+                self.assertEqual(sorted(a.cells()), sorted(b.cells()))
+                for x, z in b.cells():
+                    self.assertEqual((a.crown(x, z), a.upslope(x, z)), (b.crown(x, z), b.upslope(x, z)))
+
+    def test_frame_covers_its_length(self):
+        self.assertEqual(len(BLD.Frame(0, 0, 0).cells(8, 6)), 48)
+        self.assertEqual(len(BLD.Frame(0, 0.5, 90).cells(7, 6)), 42)          # u runs along z here
+
+
+class Houses(unittest.TestCase):
+    def test_a_house_at_45_degrees_is_closed(self):
+        """Walls from eight neighbours: nothing outside reaches inside but through the door."""
+        w = World(-16, -16, 32, 32, sy=30)
+        w.fill(-16, 0, -16, 15, 4, 15, B.STONE)
+        r = BLD.house(w, BLD.House(0, 0, 45, L=10, W=7, floor=4, storeys=1, door=1))
+        dx, dz, _ = r["door"]
+        w.set(dx, 5, dz, B.STONE)                                # shut the door for the test
+        w.set(dx, 6, dz, B.STONE)
+        seen, todo = {(-16, -16)}, [(-16, -16)]
+        while todo:
+            x, z = todo.pop()
+            for ex, ez in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                n = (x + ex, z + ez)
+                if -16 <= n[0] < 16 and -16 <= n[1] < 16 and n not in seen and w.id(n[0], 6, n[1]) == B.AIR:
+                    seen.add(n)
+                    todo.append(n)
+        self.assertNotIn((0, 0), seen)
+        self.assertEqual(w.id(0, 6, 0), B.AIR)
+
+    def test_square_house_has_its_door_and_roof(self):
+        w = World(-12, -12, 24, 24, sy=30)
+        r = BLD.house(w, BLD.House(0, 0, 0, L=9, W=6, floor=2, storeys=2))
+        x, z, facing = r["door"]
+        self.assertEqual(facing, "s")
+        self.assertIn(w.id(x, 3, z), blocks.DOORS)
+        self.assertEqual(r["roof"].peak, r["eave"] + 1 + 2)     # a pitch-1 gable over six: two courses up
+
+    def test_claims(self):
+        c = BLD.Claims()
+        c.claim("a", {(0, 0), (1, 0)})
+        c.claim("b", {(1, 0)})
+        c.claim("c", {(1, 0)}, layer="sky")
+        self.assertEqual(c.overlaps(), [("ground", "a", "b", 1)])
+
+
+class Facades(unittest.TestCase):
+    def test_a_word_reads_left_to_right_from_outside(self):
+        w = World(-2, -2, 30, 10, sy=12)
+        F.extrude(w, shapes.rect_cells(0, 0, 20, 5), 0, 8, faces_=[F.word(2, "LT", F.DARK)])
+        south = ["".join("#" if w.id(x, y, 5) == B.AIR else "." for x in range(0, 21)) for y in range(6, 1, -1)]
+        north = ["".join("#" if w.id(x, y, 0) == B.AIR else "." for x in range(20, -1, -1)) for y in range(6, 1, -1)]
+        self.assertEqual(south[0].strip("."), "#...###")
+        self.assertEqual(south, north)                           # the same word, read from its own side
+        self.assertEqual(w.get(7, 6, 4), F.DARK)                 # set back, in the inset block
+
+    def test_corners_stay_flush(self):
+        w = World(-2, -2, 12, 12, sy=8)
+        F.extrude(w, shapes.rect_cells(0, 0, 5, 5), 0, 5, faces_=[F.band(0, 5, F.DARK)])
+        self.assertEqual(w.get(0, 2, 0), F.CONCRETE)
+        self.assertEqual(w.id(2, 2, 0), B.AIR)
+
+    def test_carpet(self):
+        w = World(0, 0, 12, 12, sy=2)
+        n = F.carpet(w, 0, 0, 10, 10, 0, F.first_of(F.border(1, (B.WOOL, 15)), F.star(2, (B.WOOL, 4)),
+                                                    default=(B.WOOL, 11)))
+        self.assertEqual(w.get(0, 0, 5), (B.WOOL, 15))
+        self.assertEqual(w.get(5, 0, 5), (B.WOOL, 4))
+        self.assertEqual(sum(n.values()), 121)
+
+
+class Courses(unittest.TestCase):
+    def course(self, pool=True):
+        C = P.Course(Symmetry("mirror_x"))
+        C.add("start", P.box(-4, 3, 0, 4), 60)
+        C.add("ledge", P.box(-9, -6, 8, 12), 52)
+        C.add("pool", P.box(-6, 5, 16, 24), 30, **({"water": P.box(-6, 5, 16, 24)} if pool else {}))
+        return C
+
+    def test_images_and_the_middle(self):
+        C = self.course()
+        self.assertEqual([p.side for p in C.pieces], ["middle", "main", "image", "middle"])
+        self.assertEqual(min(x for x, _ in C.pieces[2].cells), 5)            # -9..-6 mirrored about -0.5
+        self.assertEqual(len(C.links()), 4)
+
+    def test_the_audit(self):
+        rows = self.course().audit()
+        self.assertTrue(all(r["how"] for r in rows))
+        self.assertEqual(rows[0]["damage"], move.fall_damage(8))
+        self.assertEqual(rows[1]["lands"], (-1 - rows[0]["lands"][0], rows[0]["lands"][1]))   # mirrored exactly
+        self.assertTrue(rows[2]["water"] and rows[2]["damage"] == 0)
+        dry = self.course(pool=False).audit()
+        self.assertEqual(dry[2]["damage"], move.fall_damage(22))
+
+    def test_a_gap_is_judged_as_the_walk_judges_it(self):
+        for g in range(0, 6):
+            how, _ = P.clears(g, 0)
+            self.assertEqual(how is not None, walk.gap_cleared(g), g)
+        self.assertEqual(move.jump_reach(1.3), 0.0)                         # higher than any jump
+
+    def test_a_course_is_a_raster(self):
+        R = self.course().raster()
+        self.assertEqual(R.at(-7, 10), (52, "floor"))
+        self.assertEqual(R.at(6, 10), (52, "floor"))
+        self.assertEqual(R.at(0, 6)[1], "void")
+
+
+class Storeys(unittest.TestCase):
+    def raster(self, roof=14):
+        R = Raster((0, 19), (0, 9), ["floor", "stair", "roof"], base_h=10, base_kind="floor")
+        R.storey(1).rect(10, 15, 2, 7, roof, "roof", both=False)
+        R.flight((6, 4), "e", h0=11, n=3, both=False)
+        R.rect(9, 9, 4, 4, 13, "stair", both=False)
+        return R
+
+    def test_a_roof_is_walked_and_so_is_the_ground_under_it(self):
+        E = plangraph.graph(self.raster(), {"floor", "stair", "roof"})
+        D, _ = plangraph.dijkstra(E, [(0, 4)])
+        self.assertIn((12, 4, 1), D)
+        self.assertIn((12, 4), D)
+        self.assertIn((16, 4), [v for v, _, _ in E[(15, 4, 1)]])          # off the far edge to the ground
+
+    def test_a_low_storey_closes_the_ground_under_it(self):
+        E = plangraph.graph(self.raster(roof=12), {"floor", "stair", "roof"})
+        self.assertNotIn((12, 4), E)
+
+    def test_a_plan_read_off_terrain(self):
+        H = np.zeros((20, 10), int)
+        H[10:, :] = 3                                                       # a three-block step across x = 10
+        water = np.zeros(H.shape, bool)
+        water[2:4, :] = True
+        R = Raster.from_heights(H, -10, 0, water=water)
+        self.assertEqual((R.at(-10, 0), R.at(-7, 5)), ((0, "ground"), (0, "water")))
+        E = plangraph.graph(R, {"ground"}, rules=plangraph.PlanRules(jumps=False))
+        up, _ = plangraph.dijkstra(E, [(-5, 5)])
+        down, _ = plangraph.dijkstra(E, [(5, 5)])
+        self.assertNotIn((5, 5), up)                                        # three up is a wall
+        self.assertIn((-5, 5), down)                                        # three down is a drop
+        self.assertNotIn((-7, 5), down)                                     # water is not walked
+
+    def test_one_storey_is_unchanged(self):
+        R = Plan.raster(None)
+        self.assertEqual(R.storeys, [R])
+        self.assertTrue(R.has().all())
+
+
+class Solids(unittest.TestCase):
+    def test_the_image_is_the_plans_turn(self):
+        v = SOL.revolve([(3, 0), (4, 3), (2, 6)], -5.5, -3.5, 10)
+        for op in ("half", "mirror_x", "mirror_z"):
+            sym = Symmetry(op)
+            want = {(*sym.point(x, z), y) for x, y, z in v.cells()}
+            got = {(x, z, y) for x, y, z in SOL.image(v, sym).cells()}
+            self.assertEqual(got, want, op)
+
+    def test_fill(self):
+        w = World(-8, -8, 16, 16, sy=12)
+        n = SOL.fill(w, SOL.box(0, 1, 2, 3, 0, 1), (B.QUARTZ, 0))
+        self.assertEqual(n, 8)
+        self.assertEqual(w.get(1, 3, 1), (B.QUARTZ, 0))
+
+
+class Objectives(unittest.TestCase):
+    def objectives(self):
+        o = O.Objectives(O.Teams(("red-team", "Red", "red"), ("blue-team", "Blue", "blue")), Symmetry("half"))
+        o.add(O.Spawn("red-team", (-20, 11, 0), yaw=-90, area=O.Box(-21, 11, -1, -19, 13, 1)))
+        o.add(O.Hill("mid", "the Middle", O.Box(-2, 10, -2, 1, 10, 1)), mirror=False)
+        o.add(O.Wool("blue-team", "lime", slot=(-15, 12, 6)), color="pink")
+        o.add(O.Destroyable("red-dtm", "Red's", "red-team", O.Box(-16, 14, -8, -15, 15, -7)))      # three over
+        o.add(O.Core("red-core", "Red's Core", "red-team", O.Box(-12, 14, 4, -10, 16, 6)))        # the floor
+        return o
+
+    def world(self, o):
+        w = World(-24, -12, 48, 24, sy=24)
+        w.fill(-24, 0, -12, 23, 10, 11, B.STONE)
+        o.stamp(w)
+        return w
+
+    def test_the_other_half(self):
+        o = self.objectives()
+        spawns = o.of(O.Spawn)
+        self.assertEqual([s.team for s in spawns], ["red-team", "blue-team"])
+        self.assertEqual(spawns[1].at, (19, 11, -1))
+        self.assertEqual(spawns[1].yaw, 90)
+        self.assertEqual(o.of(O.Destroyable)[1].id, "blue-dtm")
+        self.assertEqual(o.of(O.Wool)[1].color, "pink")
+        self.assertEqual(len(o.of(O.Hill)), 1)
+
+    def test_the_xml(self):
+        o = self.objectives()
+        d = o.write(Doc("T", "1.0.0", "t"))
+        x = xml.dom.minidom.parseString(d.tostring())
+        cub = [c for c in x.getElementsByTagName("cuboid") if c.getAttribute("id") == "mid-capture"][0]
+        self.assertEqual((cub.getAttribute("min"), cub.getAttribute("max")), ("-2,10,-2", "2,15,2"))   # max exclusive
+        hill = x.getElementsByTagName("hill")[0]
+        self.assertEqual(hill.getAttribute("capture-region"), "mid-capture")
+        self.assertEqual(len(x.getElementsByTagName("wool")), 2)
+        self.assertEqual(x.getElementsByTagName("point")[0].firstChild.data, "-19.5,11,0.5")
+        with self.assertRaises(ValueError):
+            d.region("mid-capture", O.Box(0, 0, 0, 1, 1, 1).cuboid())
+
+    def test_stamped_and_read_back(self):
+        o = self.objectives()
+        w = self.world(o)
+        self.assertEqual(o.check(w), [])
+        w.set(-15, 12, 6, B.STONE)                                # the wool slot filled in
+        w.set(-20, 12, 0, B.STONE)                                # a block in the spawn's head
+        self.assertEqual(len(o.check(w)), 2)
+
+
+class Terrain(unittest.TestCase):
+    def test_paint_layers_choose_the_top_by_slope_and_place_first_match_first(self):
+        w = World(0, 0, 20, 4, sy=80)
+        H = np.tile((np.arange(20) * np.where(np.arange(20) < 10, 0, 3))[:, None] + 10, (1, 4))
+        east = np.zeros((20, 4), bool)
+        east[15:] = True
+        deg = terrain.lay(w, H, top=lambda d, h: (B.GRASS, 0), ledges=False, paint=[
+            terrain.Paint((B.SAND, 0), slope=(30, None), where=east),
+            terrain.Paint((B.STONE, 0), slope=(30, None)),
+            terrain.Paint((B.CLAY, 0), values=[(np.full((20, 4), 0.9), 0.5, None)], where=~east)])
+        for i in range(20):
+            top = w.id(i, int(H[i, 1]), 1)
+            want = (B.SAND if i >= 15 else B.STONE) if deg[i, 1] > 30 else (B.CLAY if i < 15 else B.GRASS)
+            self.assertEqual(top, want, i)
+
+    def test_an_island_hangs_sheer_under_its_rift_and_tapers_elsewhere(self):
+        X, Z = np.meshgrid(np.arange(-60, 0), np.arange(-30, 30), indexing="ij")
+        land = (X >= -50) & (X <= -11) & (Z >= -29)
+        top = np.full(X.shape, 60)
+        bottom = terrain.island_bottom(top, land, X > -11, taper=(4, 0.9), sheer_taper=(26, 1.2), floor=5)
+        self.assertEqual(bottom[49, 30], round(60 - (26 + 1.2)))            # at the rift's lip: 26 deep already
+        self.assertEqual(bottom[10, 30], round(60 - (4 + 0.9)))             # at the far edge: the taper's start
+        self.assertTrue((bottom[land] >= 5).all())
+        inward = bottom[(X >= -50) & (X <= -32) & (Z == 0)]
+        self.assertTrue((np.diff(inward) <= 0).all())                      # deeper the further from the void
+
+    def test_slabs_float_each_at_its_own_height_on_a_bedrock_course(self):
+        w = World(0, 0, 20, 10, sy=60)
+        land = np.zeros((20, 10), bool)
+        land[1:9, 1:9] = land[11:19, 1:9] = True
+        floor = np.where(np.arange(20)[:, None] < 10, 40, 46) + 0 * land
+        rock = terrain.Strata([((B.STONE, 0), 1, 3), ((B.STONE, 5), 1, 2)], seed=1)
+        root = terrain.root_depth(land, cone=1.0, seed=2)
+        terrain.slab(w, floor, land, terrain.beds(rock), root, np.random.default_rng(3), plate=5, foundation=3,
+                     rim=((B.MOSSY, 0), 1.0), dirt_depth=1)
+        self.assertEqual((w.id(4, 40, 4), w.id(14, 46, 4)), (B.GRASS, B.GRASS))
+        self.assertEqual((w.id(4, 37, 4), w.id(14, 43, 4)), (B.BEDROCK, B.BEDROCK))       # inside: the course
+        self.assertEqual(w.id(1, 37, 4), B.MOSSY)                                          # the rim: weathered
+        self.assertTrue((w.ids[9:11, :, :] == 0).all())                                    # the gap between stays air
+        self.assertTrue(all(w.top(x, z) <= 46 for x in range(20) for z in range(10)))
+
+    def test_nothing_is_left_under_a_columns_bottom(self):
+        H = np.full((6, 6), 30)
+        bottom = np.arange(36).reshape(6, 6) % 9 + 5
+        w = World(0, 0, 6, 6, sy=40)
+        terrain.lay(w, H, from_y=1, bottom=bottom)
+        for i in range(6):
+            for k in range(6):
+                self.assertTrue((w.ids[i, :bottom[i, k], k] == 0).all())
+                self.assertTrue((w.ids[i, bottom[i, k]:31, k] != 0).all())
+
+    def test_slope_is_the_studios(self):
+        """Every cell of sixteen grounds at windows 1 to 3, answered by the studio's SurfaceGradient."""
+        with gzip.open(os.path.join(os.path.dirname(HERE), "pgmvox", "data", "slopes.json.gz"), "rt") as f:
+            cases = json.load(f)
+        for c in cases:
+            m = np.array([[v is not None for v in r] for r in c["grid"]])
+            H = np.array([[v if v is not None else 0 for v in r] for r in c["grid"]])
+            for window, want in c["degrees"].items():
+                got = terrain.slope_deg(H, m, int(window))
+                self.assertTrue(((got == np.array(want)) | ~m).all(), f"window {window}")
+
+    def test_a_gentle_grade_reads_as_a_grade(self):
+        X = np.arange(30)[:, None] + np.zeros((1, 10), int)
+        self.assertEqual(set(terrain.slope_deg(X // 4)[6:24, 5]), {14})        # not 0 and 27 by turns
+        self.assertEqual(set(terrain.slope_deg(X // 4, window=1)[6:24, 5]), {0, 27})
+
+    def test_strata(self):
+        S = terrain.Strata([((B.STONE, 0), 0.5, 4), ((B.WOOL, 14), 0.2, 1), ((B.STONE, 5), 0.3, 3)], seed=3, start=10)
+        beds = S.thicknesses()
+        self.assertTrue(all(n == 1 for b, n in beds if b == (B.WOOL, 14)))
+        self.assertTrue(all(a[0] != b[0] for a, b in zip(beds, beds[1:])))
+        self.assertEqual(S(5), (B.STONE, 0))
+
+    def test_root_depth(self):
+        m = np.zeros((20, 20), bool)
+        m[4:16, 4:16] = True
+        d = terrain.root_depth(m, flutes=3, spires=8)
+        self.assertTrue((d[~m] == 0).all() and (d[m] >= 1).all())
+        self.assertGreater(d[10, 10], d[4, 10])                             # deeper inland
+
+    def test_slope_does_not_wrap(self):
+        H = np.zeros((10, 10))
+        H[0, :] = 0
+        H[-1, :] = 30                                            # a cliff on the east edge only
+        self.assertEqual(terrain.slope_deg(H)[0, 5], 0.0)
+
+    def test_mountain_ring_keeps_the_middle_clear(self):
+        X, Z = np.meshgrid(np.arange(-100, 100), np.arange(-100, 100), indexing="ij")
+        h = terrain.mountain_ring(X, Z, clear=60)
+        self.assertLess(h[np.hypot(X, Z) < 50].max(), 4)
+
+
+class WorldAndOutput(unittest.TestCase):
+    def test_a_run_writes_the_map_xml_where_the_board_keeps_it_after_its_generator_speaks(self):
+        import tempfile
+        from pgmvox.run import run
+        with tempfile.TemporaryDirectory() as tmp:
+            scripts = os.path.join(tmp, "board", "scripts")
+            os.makedirs(scripts)
+            open(os.path.join(scripts, "gen.py"), "w").write("print('built')\n")
+            open(os.path.join(scripts, "mapxml.py"), "w").write("print('<map/>')\n")
+            run(os.path.join(tmp, "board"), os.path.join(tmp, "build"), start="gen", skip=("write", "renders", "walk"))
+            self.assertTrue(os.path.isfile(os.path.join(scripts, "map.xml")))
+            self.assertFalse(os.path.exists(os.path.join(tmp, "board", "map.xml")))
+
+    def test_a_columns_top_is_the_heightmaps(self):
+        w = World(0, 0, 3, 3, sy=10)
+        w.set(0, 4, 0, B.STONE)
+        w.set(1, 2, 1, B.STONE)
+        w.set(1, 6, 1, B.LEAVES)
+        H = w.heightmap()
+        self.assertEqual([w.top(x, z) for x in range(3) for z in range(3)], H.ravel().tolist())
+        self.assertEqual((w.top(0, 0), w.top(1, 1), w.top(2, 2), w.top(9, 9)), (4, 2, -1, -1))
+
+    def test_save_and_load(self):
+        w = World(-2, -2, 4, 4, sy=6)
+        w.set(0, 1, 0, B.WOOL, 14)
+        w.chest(1, 1, 1, [(0, "minecraft:apple", 1, 0)])
+        with tempfile.TemporaryDirectory() as d:
+            w.save(d, "t", (0, 2, 0))
+            w2 = World.load(d)
+        self.assertEqual(w2.get(0, 1, 0), (B.WOOL, 14))
+        self.assertEqual(len(w2.tiles), 1)
+
+    def test_render(self):
+        w = World(-4, -4, 8, 8, sy=8)
+        w.fill(-4, 0, -4, 3, 2, 3, B.STONE)
+        with tempfile.TemporaryDirectory() as d:
+            p = os.path.join(d, "a.png")
+            render.iso(w.ids, w.dat, w.x0, w.z0, p, 2)
+            self.assertTrue(os.path.getsize(p) > 0)
+
+    def test_the_ground_is_marked_at_y0_and_under_a_floating_core(self):
+        from pgmvox.play.rules import MARK, mark_ground
+        w = World(0, 0, 8, 8, sy=40)
+        w.ids[1:7, 25:30, 1:7] = B.STONE                     # an island floating clear of y 0
+        w.ids[0, 20:22, 0] = B.WATER                         # a fall off its edge
+        w.ids[3, 25:30, 3] = B.AIR                           # a hole through it, with the core over it
+        w.ids[3, 35, 3] = B.OBSIDIAN
+        self.assertEqual(mark_ground(w), 36)
+        self.assertEqual((w.ids[1, 0, 1], w.ids[3, 0, 3]), (MARK, MARK))          # the core's column is ground
+        self.assertEqual((w.ids[0, 0, 0], w.ids[7, 0, 7]), (0, 0))                # the fall and the sky are not
+
+    def test_a_map_is_written_from_its_parts(self):
+        from pgmvox.play.objectives import Box, Objectives
+        from pgmvox.play.rules import Build, JumpPad, Map, Match, Spawner
+        from pgmvox.play.objectives import Teams
+        O = Objectives(Teams(("red-team", "Red", "red"), ("blue-team", "Blue", "blue")), Symmetry("half"))
+        O.add(JumpPad("red-pad", Box(2, 20, 0, 3, 21, 1), (0.5, 1.2, 0.0), team="red-team"))
+        O.add(Spawner("apples", (0, 20, 0), [("golden apple", 1)]), mirror=False)
+        M = Map("T", "1.0.0", "Win", "koth", objectives=O, build=Build(areas=[(-2, -2, 1, 1)], max_height=120),
+                match=Match(time=90, score=50))
+        x = xml.dom.minidom.parseString(M.xml())
+        velocities = sorted(a.getAttribute("velocity") for a in x.getElementsByTagName("apply") if a.getAttribute("velocity"))
+        self.assertEqual(velocities, ["-0.5,1.2,-0", "0.5,1.2,0"])                   # turned with the board
+        nb = [e for e in x.getElementsByTagName("negative") if e.getAttribute("id") == "not-build-area"][0]
+        r = nb.getElementsByTagName("rectangle")[0]
+        self.assertEqual((r.getAttribute("min"), r.getAttribute("max")), ("-2,-2", "2,2"))
+        self.assertEqual(x.getElementsByTagName("maxbuildheight")[0].firstChild.data, "120")
+        self.assertEqual(x.getElementsByTagName("time")[0].firstChild.data, "1m30s")
+        self.assertEqual(x.getElementsByTagName("spawner")[0].getAttribute("spawn-region"), "apples")
+        self.assertEqual(duration(90), "1m30s")
+
+
+    def test_the_arcade_and_flag_parts(self):
+        from pgmvox.play.objectives import Box, Flag, Objectives, Portal, Spawn, Teams, TouchPoint
+        from pgmvox.play.rules import (Build, Effect, ForEveryone, Item, JumpPad, KillHeight, Kit, Map, Match,
+                                       Respawn, Zone)
+        O = Objectives(Teams(("red-team", "Red", "red"), ("blue-team", "Blue", "blue")))
+        flag = Flag("flag", "Flag", "purple", [("a", (0, 20, 0), None)], hold_respawn=True, compass=True)
+        O.add(flag)
+        O.add(Spawn("red-team", (0, 20, -9), filter="flag-free"), mirror=False)
+        O.add(TouchPoint("hill-1", "Hill", Box(0, 20, 0, 2, 22, 2)))
+        O.add(Zone("court", [Box(-5, 18, -5, 5, 30, 5)], place=False, damage=False))
+        O.add(Portal("way", Box(9, 20, 9, 9, 21, 9), yaw=0, to_box=Box(0, 20, 0, 1, 20, 1)))
+        O.add(JumpPad("pad-a", Box(4, 20, 4, 5, 21, 5), (0, 1, 1), safe=True))
+        O.add(JumpPad("pad-b", Box(6, 20, 6, 7, 21, 7), (0, 1, -1), safe=True))
+        kit = Kit(Item("stone sword", 0, unbreakable=True), Item("leather boots", wear="boots"), clear=True,
+                  effects=[Effect("resistance", "3s", 5)], reward=[Item("arrow", amount=6)])
+        M = Map("T", "1", "t", "kotf", includes=[], objectives=O, kit=kit,
+                kits=[Kit(id="carry", force=True, max_health=8,
+                          actions=[ForEveryone("all(alive)", Kit(effects=[Effect("regeneration", "4s", 3)]))])],
+                build=Build(only=("water",), physics=False), kill=[KillHeight(boxes=[Box(-9, 0, -9, 9, 10, 9)], to=-150)],
+                match=Match(score=200, respawn=Respawn(auto=True), time_of_day=6000))
+        x = xml.dom.minidom.parseString(M.xml())
+        ids = {e.getAttribute("id"): e for e in x.getElementsByTagName("*") if e.getAttribute("id")}
+        self.assertEqual(ids["flag-free"].getElementsByTagName("carrying-flag")[0].getAttribute("id"), "flag-carrier")
+        self.assertEqual(x.getElementsByTagName("compass")[0].getElementsByTagName("player")[0].getAttribute("filter"),
+                         "flag-carrier")
+        self.assertIn("banner", [e.firstChild.data for e in x.getElementsByTagName("itemremove")[0].childNodes
+                                 if e.nodeType == e.ELEMENT_NODE])                     # a flag's banner never kept
+        self.assertEqual([e.getAttribute("id") for e in ids["jump-pads"].childNodes if e.nodeType == e.ELEMENT_NODE],
+                         ["pad-a", "pad-b"])                                      # both pads named in one union
+        self.assertEqual(len(x.getElementsByTagName("variables")), 1)              # the shared machinery once
+        cp = x.getElementsByTagName("control-point")[0]
+        self.assertEqual((cp.getAttribute("capture"), cp.getAttribute("player-filter")), ("hill-1-box", "holding-hill-1"))
+        self.assertEqual(x.getElementsByTagName("portal")[0].getAttribute("destination"), "way-to")
+        self.assertEqual(x.getElementsByTagName("include").length, 0)
+        self.assertEqual(x.getElementsByTagName("max-health")[0].firstChild.data, "8")
+        self.assertEqual(x.getElementsByTagName("timeset")[0].firstChild.data, "6000")
+
+    def test_a_staged_match_written_from_its_logic(self):
+        from pgmvox.play.logic import (After, All, Completed, ControlPoint, Fill, MatchStarted, Message, Named, Not,
+                                       Ref, Trigger)
+        from pgmvox.play.objectives import Box, Objectives, Portal, Spawn, Teams, Wool
+        from pgmvox.play.rules import Blitz, Build, Item, Kit, Map, Match, Respawn, Zone
+        O = Objectives(Teams(("attackers", "Attackers", "red", 16, {"plural": True}),
+                             ("defenders", "Defenders", "blue", 16)))
+        O.add(Spawn("attackers", (0, 20, -30), kit="attacker-kit", filter="stage-1", pitch=10))
+        O.add(Spawn("defenders", kit="base-kit", spread=[Box(0, 20, 30, 2, 20, 32), Box(5, 20, 30, 7, 20, 32)]))
+        O.add(ControlPoint("gate", "the Gate", Box(-3, 20, -3, 3, 25, 3), progress=Box(-3, 20, -3, 3, 20, 3),
+                           capture_filter="only-attackers", initial_owner="defenders", permanent=True))
+        O.add(Wool("attackers", "purple", (0, 20, 0), found=(0, 30, 40), spawner=False, open_slot=True, renew=True))
+        O.add(Zone("shrine", [Box(9, 20, 9, 10, 22, 10)], kit="heal"))
+        O.add(Zone("hall", [Box(-9, 20, 9, -8, 22, 10)], enter="never"))
+        O.add(Portal("swap", Box(20, 0, 0, 20, 255, 9), by=(-40, 0, 0)))
+        base = Kit(Item("iron sword", 0), Item("arrow", 8, 16), id="base-kit", reward=[Item("arrow", amount=4)])
+        M = Map("T", "1", "t", "ad", includes=[], objectives=O, kit=base,
+                kits=[Kit(Item("diamond pickaxe", 4), id="attacker-kit", parents=[base]), Kit(id="heal", health=20)],
+                parts=[Named("gate-taken", Completed("gate")),
+                       Named("stage-1", Not(Ref("gate-taken"))),
+                       Named("open", All(After("20s", MatchStarted()), Ref("gate-taken"))),
+                       Trigger("open", [Fill([Box(0, 20, 5, 2, 22, 5)]), Message("Open!")])],
+                build=Build(breakable=("obsidian", "wool:10"), message="No."),
+                match=Match(time="15m", result="defenders", blitz=Blitz(2, "only-attackers", broadcast=True),
+                            respawn=[Respawn("5s", filter="only-attackers"), Respawn("7s", filter="only-defenders")],
+                            broadcasts=[("tip", 2, "Go!", "only-attackers")]))
+        x = xml.dom.minidom.parseString(M.xml())
+        tags = lambda t: x.getElementsByTagName(t)                                       # noqa: E731
+        ids = {e.getAttribute("id"): e for e in tags("*") if e.getAttribute("id")}
+        self.assertEqual(ids["attacker-kit"].getAttribute("parents"), "base-kit")
+        keep = [e.firstChild.data for e in tags("itemkeep")[0].childNodes if e.nodeType == e.ELEMENT_NODE]
+        self.assertIn("diamond pickaxe", keep)                       # a spawn kit's own item is kept and repaired
+        self.assertIn("diamond pickaxe", [e.firstChild.data for e in tags("tool")])
+        self.assertNotIn("health", keep)
+        self.assertEqual(tags("message")[0].getAttribute("text"), "Open!")       # PGM reads the attribute
+        self.assertEqual(tags("fill")[0].getAttribute("region"), "fill-1")
+        self.assertEqual(tags("trigger")[0].getAttribute("filter"), "open")
+        cp = tags("control-point")[0]
+        self.assertEqual((cp.getAttribute("capture"), cp.getAttribute("progress")), ("gate-capture", "gate-ring"))
+        self.assertEqual(tags("score").length, 0)                    # a control point alone keeps no score
+        always = [a.getAttribute("region") for a in tags("apply") if a.getAttribute("block-place") == "always"]
+        self.assertEqual(always, ["purple-attackers-monument", "purple-wool-block"])
+        self.assertEqual(tags("replacement")[0].firstChild.data, "wool:10")
+        self.assertEqual(ids["breakable"].tagName, "any")
+        self.assertIn("never", [a.getAttribute("enter") for a in tags("apply")])
+        self.assertIn("heal", [a.getAttribute("kit") for a in tags("apply")])
+        self.assertEqual(tags("portal")[0].getAttribute("x"), "-40")
+        self.assertEqual([s.getAttribute("pitch") for s in tags("spawn")], ["10", ""])
+        self.assertEqual(tags("spawn")[1].getElementsByTagName("regions")[0].getElementsByTagName("cuboid").length, 2)
+        self.assertEqual(tags("team")[0].getAttribute("plural"), "true")
+        self.assertEqual([r.getAttribute("filter") for r in tags("respawn")], ["only-attackers", "only-defenders"])
+        self.assertEqual(tags("blitz")[0].getAttribute("filter"), "only-attackers")
+        self.assertEqual(tags("broadcastLives").length, 1)
+        self.assertEqual(tags("tip")[0].getAttribute("filter"), "only-attackers")
+        self.assertEqual(tags("time")[0].firstChild.data, "15m")
+
+
+class Underground(unittest.TestCase):
+    def rock(self):
+        w = World(0, 0, 60, 30, sy=64)
+        w.ids[:, :41, :] = B.STONE
+        return w, np.full((60, 30), 40)
+
+    def test_a_tunnel_has_a_level_floor_and_keeps_its_cover(self):
+        w, H = self.rock()
+        n, floor = U.tunnel(w, [(5, 20, 15, 2.5), (30, 22, 15, 3), (50, 24, 10, 2.5)], ground=H)
+        self.assertGreater(n, 500)
+        self.assertEqual(w.id(30, floor(30, 15) - 1, 15), B.STONE)       # nothing carved under the floor
+        self.assertFalse((w.ids[:, 38:41, :] == B.AIR).any())             # nor within three of the surface
+        d = walk.walk(w.ids, [(5, 20, 15)], w.x0, w.z0)
+        self.assertIsNotNone(walk.nearest(d, 0, 0, 50, 24, 10, r=2))
+
+    def test_a_gallery_climbs_by_stairs_and_its_shaft_reaches_the_top(self):
+        w, _ = self.rock()
+        line = U.gallery_line([(5, 10, 5), (40, 14, 5), (40, 14, 25)])
+        self.assertTrue(all(abs(b[1] - a[1]) <= 1 for a, b in zip(line, line[1:])))
+        U.gallery(w, line, np.random.default_rng(2))
+        U.shaft(w, 5, 5, 10, 40)
+        self.assertIn(B.COBBLE_STAIRS, w.ids)
+        d = walk.walk(w.ids, [line[3]], w.x0, w.z0)
+        self.assertIsNotNone(walk.nearest(d, 0, 0, *line[-1]))
+        self.assertIsNotNone(walk.nearest(d, 0, 0, 5, 41, 5, r=2))         # into the well and up its ladder
+
+
+class Bore(unittest.TestCase):
+    def test_a_bore_is_open_from_top_to_bottom_within_its_radius(self):
+        from pgmvox.volume import under as U
+        w = World(-10, -10, 20, 20, sy=50)
+        w.ids[:, :40, :] = B.STONE
+        opened = U.bore(w, (0.0, 0.0), 3.2, 0, 39, seed=1, r_noise=0.25, lip=(40, (B.STAINED_CLAY, 12)))
+        self.assertTrue(all(math.hypot(x, z) < 3.2 + 1.0 for x, z in opened))
+        self.assertTrue(all((x, z) in opened for x in range(-3, 4) for z in range(-3, 4) if math.hypot(x, z) <= 2.2))
+        self.assertTrue(all((w.ids[x + 10, 0:40, z + 10] == B.AIR).all() for x, z in opened))   # it leaks to y 0
+        self.assertTrue(any(w.id(x, 40, z) == B.STAINED_CLAY for x in range(-5, 6) for z in range(-5, 6)))
+
+
+class Trees(unittest.TestCase):
+    def tree(self):
+        logs = [(0, y, 0, B.LOG, 0) for y in range(4)] + [(1, 2, 0, B.LOG, 4)]
+        leaves = [(dx, 4, dz, B.LEAVES, 0) for dx in (-1, 0, 1) for dz in (-1, 0, 1)]
+        return TR._tree("t-1", "t", logs + leaves)
+
+    def ground(self):
+        w = World(0, 0, 30, 30, sy=30)
+        w.ids[:, :11, :] = B.DIRT
+        w.ids[:, 10, :] = B.GRASS
+        return w
+
+    def test_a_tree_is_planted_whole_and_turned(self):
+        w, t = self.ground(), self.tree()
+        self.assertEqual((t.crown, t.height), (1, 5))
+        self.assertTrue(TR.plant(w, 10, 10, t, turn=1))
+        self.assertEqual(w.id(10, 11, 10), B.LOG)
+        self.assertEqual(w.id(10, 10, 10), B.DIRT)                        # no grass under the trunk
+        self.assertEqual(w.get(10, 13, 11), (B.LOG, 8))                   # the branch along x now lies along z
+        self.assertEqual(w.get(10, 15, 10), (B.LEAVES, 4))                # leaves do not decay
+
+    def test_a_tree_is_refused_whole(self):
+        w, t = self.ground(), self.tree()
+        w.set(11, 15, 11, B.PLANKS)
+        before = w.ids.copy()
+        self.assertFalse(TR.plant(w, 10, 10, t))
+        self.assertTrue((w.ids == before).all())
+        self.assertFalse(TR.plant(w, 20, 20, t, allowed=lambda x, z: x < 20))
+
+    def test_a_wood_keeps_its_crowns_apart(self):
+        w, t = self.ground(), self.tree()
+        placed = []
+        n = TR.scatter(w, np.ones((30, 30), bool), {"t": [t]}, {"t": 1}, np.random.default_rng(3), spacing=2,
+                       planted=placed)
+        self.assertEqual(n, len(placed))
+        for i, (ax, az, _) in enumerate(placed):
+            for bx, bz, _ in placed[i + 1:]:
+                self.assertGreaterEqual(math.hypot(ax - bx, az - bz), 2)
+
+    @unittest.skipUnless(os.path.exists(os.path.join(TR.studio_root(), "src", "PgmStudio.Minecraft", "Library",
+                                                     "trees.json")), "the studio is not checked out")
+    def test_the_studio_library_reads(self):
+        by = TR.kinds(TR.library())
+        self.assertIn("birch", by)
+        self.assertTrue(all(t.blocks and t.crown > 0 for t in by["oak"]))
+
+
+class Props(unittest.TestCase):
+    def test_every_farmland_block_is_watered_and_the_fence_has_a_gate(self):
+        w = World(0, 0, 16, 30, sy=20)
+        w.ids[:, :9, :] = B.STONE
+        w.ids[:, 9, :] = B.GRASS
+        crops = [(B.WHEAT, 7), (B.CARROTS, 7)]
+        props.crop_field(w, (1, 1, 14, 28), 9, crops, np.random.default_rng(5), rows=9, ditch=4)
+        farm = [(x, z) for x in range(16) for z in range(30) if w.id(x, 9, z) == B.FARMLAND]
+        water = [(x, z) for x in range(16) for z in range(30) if w.id(x, 9, z) == B.WATER]
+        self.assertTrue(farm and water)
+        self.assertTrue(all(any(max(abs(x - a), abs(z - b)) <= 4 for a, b in water) for x, z in farm))   # 1.8 hydration
+        self.assertTrue(all(w.id(x, 10, z) in (B.WHEAT, B.CARROTS) for x, z in farm))
+        self.assertEqual([z for z in range(30) if w.id(1, 10, z) == B.FENCE_GATE], [14])
+
+    def test_scattered_points_keep_apart_and_off_the_taken(self):
+        X, Z = np.meshgrid(np.arange(40), np.arange(40), indexing="ij")
+        pts = shapes.scatter_points(np.ones((40, 40), bool), 30, 5.0, np.random.default_rng(2), X, Z, taken=[(20, 20)])
+        every = pts + [(20, 20)]
+        self.assertTrue(len(pts) > 10)
+        self.assertTrue(all(math.hypot(a[0] - b[0], a[1] - b[1]) >= 5.0 for i, a in enumerate(every) for b in every[i + 1:]))
+
+    def test_rubble_hangs_over_nothing_unless_told(self):
+        for supported in (True, False):
+            w = World(0, 0, 12, 12, sy=12)
+            w.fill(0, 0, 0, 11, 2, 11, B.STONE)
+            w.fill(6, 2, 0, 11, 2, 11, B.AIR)                       # half the floor is a step down
+            props.rubble(w, 6, 2, 6, np.random.default_rng(1), r=2.6, supported=supported)
+            hanging = [(x, y, z) for x in range(12) for z in range(12) for y in range(3, 12)
+                       if w.id(x, y, z) != B.AIR and w.id(x, y - 1, z) == B.AIR]
+            self.assertEqual(hanging == [], supported)
+
+    def test_an_arch_is_thin_at_its_crown_thick_at_its_ends_and_leaves_the_ground(self):
+        w = World(0, 0, 41, 3, sy=60)
+        w.ids[:, :20, :] = B.STONE                                          # the ground under the span, at 19
+        cells = [(x, 1) for x in range(41)]
+        t = {(x, 1): abs(x - 20) / 20 for x in range(41)}
+        tops = forms.arch(w, cells, t, deck=(50, 46, 2), thick=(3, 30, 2), rock=lambda x, y, z, k: (B.SANDSTONE, k % 2),
+                          ground=lambda x, z: 19, clear=2)
+        self.assertEqual((tops[(20, 1)], tops[(0, 1)]), (50, 46))
+        self.assertEqual([y for y in range(60) if w.id(20, y, 1) == B.SANDSTONE], list(range(47, 51)))    # 3 under the crown
+        self.assertEqual(min(y for y in range(20, 60) if w.id(0, y, 1) == B.SANDSTONE), 20)               # down to the ground
+        self.assertTrue((w.ids[:, :20, :] == B.STONE).all())
+
+    def test_a_masonry_tower_is_climbed_inside_and_entered_at_its_foot(self):
+        w = World(0, 0, 9, 9, sy=40)
+        px, pz = forms.masonry_tower(w, 1, 1, 7, 7, 10, 14, ladder_on="n", door_side="s")
+        self.assertEqual((px, pz), (4, 2))
+        self.assertTrue(all(w.id(4, y, 2) == B.LADDER for y in range(11, 25)))
+        self.assertEqual((w.id(4, 11, 7), w.id(4, 12, 7)), (B.DARK_OAK_DOOR, B.DARK_OAK_DOOR))
+        self.assertEqual(w.id(4, 26, 4), B.GLOWSTONE)
+
+    def test_lamps_stand_beside_the_route_on_alternate_sides(self):
+        w = World(0, 0, 60, 20, sy=20)
+        X, Z = w.grid()
+        H = np.full((60, 20), 5)
+        posts = props.lamps(w, [(0, 10), (59, 10)], H, X, Z, every=10, side=3)
+        self.assertEqual([z for _, z in posts], [13, 7, 13, 7, 13, 7][:len(posts)])
+        self.assertTrue(all(w.id(x, 8, z) == B.GLOWSTONE for x, z in posts))
+
+    def test_a_row_of_stalls_faces_one_way(self):
+        w = World(0, 0, 30, 30, sy=20)
+        w.ids[:, :6, :] = B.STONE
+        cells = props.stalls(w, [(5, z) for z in range(2, 26)], 5, "e")
+        self.assertEqual(len(cells) % 9, 0)
+        self.assertGreater(len(cells), 9)
+        self.assertEqual(w.id(6, 6, 3), B.WOOD_SLAB)                      # the counter on the east side
+
+    def test_a_chest_laid_out_as_a_pattern(self):
+        items = props.laid(props.DEFENCE)
+        self.assertEqual(len(items), 27)
+        picks = [it for it in items if it[1] == "minecraft:iron_pickaxe"]
+        self.assertEqual([it[0] for it in picks], [12, 14])               # either side of the middle slot
+        self.assertEqual(picks[0][4], [(32, 2)])                          # Efficiency II
+        with self.assertRaises(ValueError):
+            props.laid((["P........", "", ""], {"P": ("minecraft:planks", 1, 0)}))
+        w = World(0, 0, 4, 4, sy=8)
+        w.chest(1, 1, 1, items)
+        self.assertEqual(w.tiles[-1]["items"][12]["ench"], [[32, 2]])
+
+
+class Plots(unittest.TestCase):
+    def test_a_curio_plot_passes(self):
+        m = plot.load(os.path.join(FIXTURES, "bandstand.py"))
+        r = plot.check_alone(m)
+        self.assertEqual(plot.verdict(r), [])
+        self.assertEqual(r["top"], 11)
+
+    def test_the_canvas_refuses(self):
+        class Bad:
+            NAME, KIND = "bad", "sculpture"
+
+            @staticmethod
+            def build(c):
+                c.set(2, 0, 2, B.OAK_DOOR)
+                c.set(11, 0, 0, B.STONE)
+        r = plot.check_alone(Bad)
+        self.assertTrue(any("forbidden" in e for e in r["errors"]))
+        self.assertTrue(any("outside" in e for e in r["errors"]))
+
+
+class DestroyableHeart(unittest.TestCase):
+    def test_heart_at_the_middle(self):
+        d = O.Destroyable("m", "M", "red-team", O.Box(2, 5, 2, 4, 7, 4), material=(B.EMERALD_BLOCK, 0),
+                          materials="emerald block", heart=(B.BEDROCK, 0))
+        w = World(0, 0, 8, 8, sy=10)
+        d.stamp(w)
+        self.assertEqual(w.id(3, 6, 3), B.BEDROCK)
+        self.assertEqual(w.id(2, 5, 2), B.EMERALD_BLOCK)
+        self.assertTrue(any("nothing at y 0" in p for p in d.check(w)))      # over the void it cannot be broken
+        from pgmvox.play.rules import mark_ground
+        mark_ground(w)
+        self.assertEqual(d.check(w), [])
+
+    def test_two_gamemodes(self):
+        self.assertEqual(Doc("x", "1", "o", ["ctw", "dtm"]).tostring().count("<gamemode>"), 2)
+
+
+class HouseDoor(unittest.TestCase):
+    def test_no_window_beside_the_door(self):
+        for L in (5, 6, 7, 8, 9, 10, 11):
+            w = World(-20, -20, 40, 40, sy=80)
+            d = BLD.house(w, BLD.House(0, 0, 0, L=L, W=6, floor=64, windows=BLD.window_rhythm(period=2)))
+            x, z = d["door"][0], d["door"][1]
+            for dx in (-1, 0, 1):
+                for dz in (-1, 0, 1):
+                    for y in range(65, 68):
+                        self.assertNotEqual(w.id(x + dx, y, z + dz), B.PANE, (L, dx, dz, y))
+
+
+class FloatRule(unittest.TestCase):
+    def test_on_the_floor_is_a_problem(self):
+        w = World(0, 0, 8, 8, sy=16)
+        w.fill(0, 0, 0, 7, 3, 7, B.STONE)
+        on = O.Destroyable("m", "M", "red-team", O.Box(2, 4, 2, 3, 5, 3))
+        on.stamp(w)
+        self.assertTrue(any("float" in p for p in on.check(w)))
+        w2 = World(0, 0, 8, 8, sy=16)
+        w2.fill(0, 0, 0, 7, 3, 7, B.STONE)
+        up = O.Destroyable("m", "M", "red-team", O.Box(2, 7, 2, 3, 8, 3))
+        up.stamp(w2)
+        self.assertEqual(up.check(w2), [])
+
+
+class WoolChests(unittest.TestCase):
+    def test_studio_loot_in_each_corner(self):
+        w = World(0, 0, 12, 12, sy=16)
+        corners = props.wool_chests(w, (2, 3, 8, 9), 4, door="s")
+        self.assertEqual(len(corners), 4)
+        self.assertEqual(len(w.tiles), 8)
+        low = [t for t in w.tiles if t["y"] == 5]
+        high = [t for t in w.tiles if t["y"] == 6]
+        self.assertTrue(all(len(t["items"]) == 27 for t in w.tiles))
+        self.assertEqual({i["id"] for i in low[0]["items"]},
+                         {"minecraft:planks", "minecraft:potion", "minecraft:golden_apple"})
+        bow = [i for i in high[0]["items"] if i["id"] == "minecraft:bow"][0]
+        self.assertEqual(bow["ench"], [[48, 1], [51, 1]])
+        self.assertEqual(w.get(2, 5, 3), (B.CHEST, 3))
+        self.assertEqual(w.get(2, 5, 9), (B.CHEST, 2))
+
+    def test_defence_chest_is_the_studios(self):
+        items = props.studio_defence()
+        self.assertEqual(len(items), 27)
+        self.assertEqual(sorted(i[0] for i in items), list(range(27)))
+        self.assertEqual(sum(1 for i in items if i[1] == "minecraft:planks" and i[3] == 5), 12)
+        w = World(0, 0, 8, 8, sy=8)
+        for y in range(1, 5):
+            w.set(3, y, 3, B.BEDROCK)
+        props.defence_chests(w, [(3, 3)], 2, "s")
+        self.assertEqual(w.get(3, 2, 3), (B.CHEST, 3))
+        self.assertEqual(w.id(3, 3, 3), B.AIR)
+        self.assertEqual(w.id(3, 4, 3), B.BEDROCK)
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+
+class QuarterTurns(unittest.TestCase):
+    def test_a_world_turns_a_quarter(self):
+        w = World(-4, -4, 8, 8, sy=4)
+        w.set(-3, 1, -2, B.STONEBRICK_STAIRS, orient.stair("n"))
+        keep = np.zeros((8, 8), bool)
+        keep[:4, :4] = True                                               # the north-west quarter
+        orient.turn_world(w, "cw", keep)
+        self.assertEqual(w.get(1, 1, -3), (B.STONEBRICK_STAIRS, orient.stair("e")))   # north turns to east
+
+    def test_four_teams_fan_from_one(self):
+        teams = O.Teams(("red-team", "Red", "red"), ("blue-team", "Blue", "blue"), ("green-team", "Green", "green"),
+                        ("yellow-team", "Yellow", "yellow"))
+        objs = O.Objectives(teams, Symmetry("rot_90"))
+        objs.add(O.Spawn("red-team", (-58, 20, -58), yaw=315))
+        objs.add(O.Wool("red-team", "lime", slot=(-60, 20, -55), found=(5, 19, -90), keeper="green-team",
+                        room=O.Box(1, 19, -94, 8, 24, -87)), color=["orange", "pink", "light_blue"])
+        spawns = objs.of(O.Spawn)
+        self.assertEqual([s.at for s in spawns], [(-58, 20, -58), (57, 20, -58), (57, 20, 57), (-58, 20, 57)])
+        self.assertEqual([s.yaw for s in spawns], [315, 45, 135, 225])
+        self.assertEqual([(o.team, o.keeper, o.color) for o in objs.of(O.Wool)][1],
+                         ("blue-team", "yellow-team", "orange"))
+        d = Doc("t", "1.0.0", "x", "ctw")
+        objs.write(d)                                                     # four rooms, each written once
+        rooms = [ln for ln in d.tostring().splitlines() if "<cuboid" in ln and 'id="lime-room"' in ln]
+        self.assertEqual(len(rooms), 1)
+
+
+class Brittle(unittest.TestCase):
+    def test_a_blueprint_builds_in_the_style(self):
+        from pgmvox.grammar import brittle as BR
+        unit = {(a, b): BR.Cell("flat", 13) for a in range(-4, -1) for b in range(-4, -1)}
+        unit[(-1, -3)] = BR.Cell("stair", 10, rises="w")
+        unit[(-1, -2)] = BR.Cell("stair", 10, rises="w")
+        cells, team = BR.fan(unit)
+        w = World(-30, -30, 60, 60, sy=32)
+        BR.build(w, cells, only=[c for c in cells if team[c] == 0])
+        self.assertEqual(audit.footing(w), [])
+        self.assertEqual(w.id(-20, 13, -20), B.SPRUCE_STAIRS)            # the rim on the piece's corner
+        self.assertEqual(w.get(-20, 9, -16), (B.STAINED_CLAY, 15))       # the black band at the foot of the cap
+        self.assertEqual(w.get(-20, 12, -20), (B.STAINED_CLAY, 15))      # a panel's side, black all the way down
+        self.assertEqual(w.id(-19, 13, -18), B.SANDSTONE_STAIRS)         # the bed's outer ring, inside the rim
+        self.assertEqual(w.id(-13, 14, -13), B.LOG)                      # its birch, at its middle
+        self.assertEqual(w.id(-5, 0, -15), 36)                           # building allowed over the board
+
+    def test_an_under_section_is_hollow_with_its_pillar(self):
+        from pgmvox.grammar import brittle as BR
+        unit = {(a, b): BR.Cell("stacked", 16, under=(b == -3)) for a in (-4, -3) for b in (-4, -3)}
+        cells, team = BR.fan(unit)
+        w = World(-30, -30, 60, 60, sy=32)
+        BR.build(w, cells, only=[c for c in cells if team[c] == 0])
+        self.assertEqual(audit.footing(w), [])
+        self.assertEqual([w.id(-18, y, -11) for y in (16, 15, 14, 13)],             # the deck's edge, no black band
+                         [B.SPRUCE_STAIRS, B.BRICK, B.WOOD_SLAB, B.DARK_OAK_STAIRS])
+        self.assertEqual([w.id(-18, y, -13) for y in range(10, 13)], [B.AIR] * 3)   # open under the deck
+        self.assertEqual(w.get(-18, 12, -16), (B.STAINED_CLAY, 15))                 # black on the wall behind
+        self.assertEqual(w.get(-18, 8, -15), BR.SPRUCE_PLANKS)                      # planks along that wall
+        with self.assertRaises(ValueError):                                         # a lower floor at y 0
+            BR.build(World(-30, -30, 60, 60, sy=32), {(0, 0): BR.Cell("stacked", 8, under=True)})
+        self.assertEqual({w.get(x, 12, -11) for x in (-16, -15)}, {(B.PLANKS, 5)})   # the pillar, two wide
+        self.assertEqual([w.id(-18, y, -11) for y in (8, 7, 6, 5, 0)],                # the short cap into the floor
+                         [B.SPRUCE_STAIRS, B.BRICK, B.STAINED_CLAY, B.BEDROCK, 36])
+
+    def test_a_studio_plan_tells_water_from_bare_zones(self):
+        from pgmvox.grammar import studioplan as SP
+        plan = {"globals": {"cell": 5, "surface": 9}, "pieces": [{"id": "a", "rect": [-3, -3, 2, 2]}],
+                "zones": [{"id": "water", "rect": [-1, -3, 1, 1]}, {"id": "zone", "rect": [-3, -1, 2, 1]}]}
+        u = SP.unit(plan, lift=6)
+        self.assertEqual((u[(-1, -3)].kind, u[(-3, -1)].kind, u[(-3, -3)].y), ("water", "gap", 15))
+
+    def test_a_house_stacks_whole_cells(self):
+        from pgmvox.grammar import brittle as BR
+        w = World(-5, -5, 20, 20, sy=48)
+        BR.house(w, [[(0, 0), (1, 0), (0, 1), (1, 1)], [(0, 0), (1, 0), (1, 1)], [(0, 0)]], 10, 4,
+                 door=((0, 1), "s"))
+        self.assertEqual(audit.footing(w), [])
+        self.assertEqual([w.id(0, y, 7) for y in (11, 12, 13, 14, 15)],                # a plain face, the terrace over it
+                         [B.STAINED_CLAY, B.DARK_OAK_STAIRS, B.DARK_OAK_STAIRS, B.BRICK, B.SPRUCE_STAIRS])
+        self.assertEqual(w.get(-1, 14, 2), (B.WOOL, 4))                              # the wool's colour under an eave
+        self.assertEqual(w.id(2, 15, 7), B.SAND)                                     # the terrace the L leaves
+        self.assertEqual((w.id(7, 20, 7), w.id(7, 25, 7)), (B.SAND, B.AIR))         # the L's own terrace, nothing over it
+        self.assertEqual((w.id(2, 24, 2), w.get(2, 25, 2)), (B.BEACON, (B.STAINED_GLASS, 4)))
+        self.assertEqual((w.id(2, 11, 9), w.id(2, 11, 8)), (B.AIR, B.COBWEB))        # the door, cobwebs inside
+
+    def test_a_build_zone_is_outlined_as_the_studio_marks_it(self):
+        from pgmvox.grammar import brittle as BR
+        w = World(-20, -20, 40, 40, sy=40)
+        cells = {(0, 0): BR.Cell("gap"), (1, 0): BR.Cell("gap"), (-1, 0): BR.Cell("flat", 10, section="land")}
+        BR.build(w, cells)
+        webs = {(x, z) for x in range(-20, 20) for z in range(-20, 20) if w.id(x, 1, z) == B.COBWEB}
+        self.assertEqual(sorted(webs, key=lambda c: (c[1], c[0])),
+                         O.build_marker({(x, z) for x in range(10) for z in range(5)},
+                                        {(x, z) for x in range(-5, 0) for z in range(5)}))
+        self.assertNotIn((-2, -2), webs)                                # a block clear of the land diagonally
+        self.assertIn((11, 2), webs)
+        self.assertEqual(w.id(3, 0, 2), 36)
+
+    def test_sections_outline_each_other_and_panels_need_a_full_drop(self):
+        from pgmvox.grammar import brittle as BR
+        unit = {(a, b): BR.Cell("flat", 16, section="a" if b < -2 else "b") for a in (-4, -3) for b in (-4, -3, -2, -1)}
+        unit[(-2, -4)] = BR.Cell("flat", 13)                                      # three under: no room for a panel
+        cells, team = BR.fan(unit)
+        w = World(-30, -30, 60, 60, sy=32)
+        BR.build(w, cells, only=[c for c in cells if team[c] == 0],
+                 fill=lambda piece, cs: "grass" if cs[piece[0]].section == "b" else None)
+        self.assertEqual(audit.footing(w), [])
+        self.assertEqual({w.get(-17, 16, z) for z in (-11, -10)}, {BR.SPRUCE_PLANKS})  # two sections meet in planks
+        self.assertNotIn(B.LOG, {w.id(x, 17, z) for x in range(-20, -10) for z in range(-10, 0)})   # grass, no tree
+        self.assertIn(B.LOG, {w.id(x, 17, z) for x in range(-20, -10) for z in range(-20, -10)})    # a bed's birch
+        self.assertEqual([w.id(-11, y, -18) for y in (16, 15, 14)],                  # over three: brick and dark oak
+                         [B.SPRUCE_STAIRS, B.BRICK, B.WOOD_SLAB])
+
+
+class Grammar(unittest.TestCase):
+    def test_split_and_tile_cut_a_box_into_rectangles(self):
+        from pgmvox.grammar import rules as G
+        secs = G.split((0, 0, 9, 6), 2, 2, y=10)
+        self.assertEqual([s.boxes[0] for s in secs], [(0, 0, 4, 2), (0, 3, 4, 6), (5, 0, 9, 2), (5, 3, 9, 6)])
+        self.assertEqual(len(G.tile((0, 0, 19, 9), 5, y=10)), 8)
+
+    def test_a_style_lays_faces_seams_and_fills_by_rule(self):
+        from pgmvox.grammar import rules as G
+        courses = [(B.STONEBRICK, 0), (B.BRICK, 0), (B.STONE, 0)]
+        face = G.Face(courses, G.Accent(4, frame=[(B.STONEBRICK, 0)] * 3, inner=[(B.STONEBRICK, 0), (B.GLASS, 0),
+                                                                                 (B.GLASS, 0)], every=2, min_air=3))
+        laid = []
+
+        def checker(w, lot, rng):
+            for x, z in lot.cols:
+                w.set(x, lot.y, z, B.WOOL, (x + z) % 2)
+            laid.append(lot.section.name)
+            return True
+        style = G.Style("test", body=lambda w, x, z, h: [w.set(x, y, z, B.STONE) for y in range(h)],
+                        faces={"edge": face}, seam=(B.PLANKS, 0), fills={"checker": checker},
+                        choose=lambda sec, lot: ["checker"])
+        secs = G.split((0, 0, 7, 3), 2, 1, y=10, name="a") + [G.Section(((0, 4, 7, 7),), 7, "low")]
+        g = G.Ground(secs)
+        w = World(-2, -2, 12, 12, sy=16)
+        G.lay(w, g, style)
+        self.assertEqual(g.depth(3, 1), 0)                                   # the seam between two sections
+        self.assertEqual(w.get(3, 10, 1), (B.PLANKS, 0))
+        self.assertEqual(w.id(1, 9, 3), B.GLASS)                             # an accent bay over a drop of three
+        self.assertEqual(w.id(5, 6, 7), B.BRICK)                             # the next bay along is plain
+        self.assertEqual(sorted(laid), ["a-0-0", "a-1-0", "low"])
+
+    def test_the_claywork_style_inlays_its_bays_and_lays_its_arrows(self):
+        from pgmvox.grammar import clay
+        from pgmvox.grammar import rules as G
+        secs = [G.Section(((0, 0, 8, 8),), 20, "front-0-0", "plate", motifs=(("arrow", (("d", "n"),)),)),
+                G.Section(((9, 0, 17, 8),), 20, "front-1-0", "inlay")]
+        w = World(-2, -2, 22, 12, sy=32)
+        G.lay(w, G.Ground(secs), clay.style(dye=14))
+        self.assertEqual(w.get(4, 20, 2), (B.WOOL, 14))                           # the arrow's tip, one in
+        self.assertEqual((w.get(4, 20, 1), w.get(3, 20, 2)), (clay.BRICK, clay.DIORITE))   # its frame, its plate
+        self.assertEqual(w.get(9, 20, 4), clay.ANDESITE)                          # the seam between sections
+        self.assertEqual((w.id(4, 15, 8), w.get(4, 15, 7), w.get(4, 17, 7)), (B.AIR, (B.QUARTZ, 1), (B.STAINED_CLAY, 14)))
+        self.assertEqual(w.id(0, 0, 0), 36)
+
+    def test_a_sunk_course_keeps_its_back_on_every_side(self):
+        from pgmvox.grammar import clay
+        from pgmvox.grammar import rules as G
+        w = World(-2, -2, 14, 14, sy=32)
+        G.lay(w, G.Ground([G.Section(((0, 0, 8, 8),), 20, "a", "plate")]), clay.style(dye=14))
+
+        def back(x, z):
+            return [w.get(x, y, z) for y in range(14, 18)]
+        for u in range(2, 6):                                    # the north face's back against the south's,
+            self.assertEqual(back(u, 1), back(u, 7))             # the west's against the east's
+            self.assertEqual(back(1, u), back(7, u))
+        self.assertIn((B.QUARTZ, 1), back(4, 1))
+
+    def test_a_face_dresses_ground_that_has_no_sections(self):
+        from pgmvox.grammar import rules as G
+        from pgmvox.core.orient import stair
+        tops = {(x, z): (10 if x < 4 else 6) for x in range(8) for z in range(8)}       # a step of four, void round
+        w = World(-3, -3, 14, 14, sy=16)
+        for (x, z), h in tops.items():
+            for y in range(1, h + 1):
+                w.set(x, y, z, B.STONE)
+        jut = G.Course((B.STAINED_CLAY, 14), out=(B.WOOD_SLAB, 9))
+        face = G.Face([None, (B.PLANKS, 1), jut, lambda inward: (B.SPRUCE_STAIRS, stair(inward, upside_down=True)),
+                       jut])
+        got = G.dress(w, tops, face, below=G.lattice(4, (B.OBSIDIAN, 0), None), foot=((B.BEDROCK, 0), 1))
+        self.assertEqual(got[(3, 2)], "e")                                   # the step's edge faces its drop
+        self.assertNotIn((2, 2), got)
+        self.assertEqual((w.get(3, 10, 2), w.get(3, 9, 2)), ((B.STONE, 0), (B.PLANKS, 1)))   # null keeps the top
+        self.assertEqual((w.get(3, 8, 2), w.get(4, 8, 2)), ((B.STAINED_CLAY, 14), (B.WOOD_SLAB, 9)))  # out over air
+        self.assertEqual((w.get(3, 6, 2), w.get(4, 6, 2)), ((B.STAINED_CLAY, 14), (B.STONE, 0)))  # not into ground
+        self.assertEqual(w.get(3, 7, 2), (B.SPRUCE_STAIRS, stair("w", upside_down=True)))   # turned by the face
+        self.assertEqual(w.id(0, 1, 2), B.BEDROCK)                           # the foot, at the column's bottom
+        self.assertEqual(w.id(0, 2, 2), B.OBSIDIAN)                          # (0 + 2 + 2) % 4: the lattice
+
+    def test_made_ground_reads_the_grown_ground_beside_it(self):
+        from pgmvox.grammar import brittle as BR
+        unit = {(a, b): BR.Cell("flat", 16, section="a") for a in (-4, -3) for b in (-4, -3)}
+        cells, team = BR.fan(unit)
+        grown = {(x, z): 13 for x in range(-10, -5) for z in range(-20, -12)}     # a meadow three under its east
+        grown.update({(x, z): 16 for x in range(-10, -5) for z in range(-12, -10)})  # and one level with it
+        w = World(-30, -30, 60, 60, sy=32)
+        BR.build(w, cells, only=[c for c in cells if team[c] == 0], grown=grown)
+        self.assertEqual([w.id(-11, y, -18) for y in (16, 15, 14)],                  # a face as deep as the drop,
+                         [B.SPRUCE_STAIRS, B.BRICK, B.WOOD_SLAB])                     # no panel
+        self.assertEqual(w.get(-11, 16, -12), BR.SPRUCE_PLANKS)                      # level with it: a seam
+
+    def _plain(self, **kw):
+        from pgmvox.grammar import rules as G
+        return G.Style("plain", body=lambda w, x, z, h: [w.set(x, y, z, B.STONE) for y in range(1, h)],
+                       faces=kw.pop("faces", {"edge": G.Face([(B.STONEBRICK, 0)] * 6, floor=1)}), seam=(B.PLANKS, 0),
+                       fills={"flat": lambda w, lot, rng: [w.set(x, lot.y, z, B.DSLAB, 8) for x, z in lot.cols]
+                              or True}, choose=lambda sec, lot: ["flat"], **kw)
+
+    def test_a_face_pattern_runs_its_whole_straight_face_across_sections(self):
+        from pgmvox.grammar import rules as G
+        face = G.Face([(B.STONEBRICK, 0)] * 6, floor=1,
+                      pattern=(lambda s, run, t, h, n: ("accent", (B.GLASS, 0)) if (s, run, t) == (20, 28, 4) else None,
+                               lambda s, run, t, h, n: ("accent", (B.WOOL, 1)) if (s, t) == (0, 0) else None))
+        w = World(-2, -2, 34, 12, sy=32)
+        G.lay(w, G.Ground(G.split((0, 0, 29, 5), 2, 1, y=20)), self._plain(faces={"edge": face}))
+        self.assertEqual(w.id(8, 19, 0), B.GLASS)          # one run of 28 between the corners, read from outside:
+        self.assertEqual(w.id(8, 20, 0), B.STONEBRICK)     # s 0 at its east end; the rim is never patterned
+        self.assertEqual(w.get(29, 15, 0), (B.STONEBRICK, 0))   # a corner keeps its courses
+        self.assertEqual(w.get(28, 15, 0), (B.WOOL, 1))
+
+    def test_a_crest_stands_on_the_rim_of_a_plain_face(self):
+        from pgmvox.grammar import rules as G
+        face = G.Face([(B.STONEBRICK, 0)] * 6, floor=1,
+                      crest=lambda s, run: [(B.COBBLE_WALL, 0), (B.SLAB, 7)] if s % 6 < 3 else None)
+        w = World(-2, -2, 16, 10, sy=32)
+        G.lay(w, G.Ground([G.Section(((0, 0, 11, 5),), 20, "a")]), self._plain(faces={"edge": face}))
+        self.assertEqual([w.get(x, 21, 0) for x in (10, 7, 4)], [(B.COBBLE_WALL, 0), (B.AIR, 0), (B.COBBLE_WALL, 0)])
+        self.assertEqual(w.get(10, 22, 0), (B.SLAB, 7))
+        self.assertEqual(w.id(11, 21, 0), B.AIR)                  # not on a corner
+
+    def test_a_deck_stands_on_pillars_over_its_floor(self):
+        from pgmvox.grammar import rules as G
+
+        def deck(w, x, z, h, floor):
+            for y in range(floor + 1, h - 2):
+                w.set(x, y, z, B.AIR)
+            w.set(x, h - 1, z, B.PLANKS)
+            w.set(x, h - 2, z, B.PLANKS)
+            w.set(x, floor, z, B.SAND)
+
+        def pillar(w, x, z, top, bottom, side):
+            for y in range(bottom, top + 1):
+                w.set(x, y, z, B.LOG)
+        style = self._plain(deck=deck, pillar=pillar, params={"deck_depth": 3, "pillar_every": 6},
+                            faces={"edge": G.Face([(B.STONEBRICK, 0)] * 6, floor=1),
+                                   "deck": G.Face([(B.STONEBRICK, 0)] * 3, floor=1)})
+        secs = [G.Section(((0, 0, 12, 4),), 20, "loggia", tags=frozenset({"under-12"})),
+                G.Section(((0, 5, 12, 9),), 12, "court")]
+        w = World(-2, -2, 18, 14, sy=32)
+        G.lay(w, G.Ground(secs), style)
+        self.assertEqual((w.id(6, 20, 2), w.id(6, 15, 2), w.id(6, 12, 2)), (B.DSLAB, B.AIR, B.SAND))
+        self.assertEqual([w.id(x, 15, 4) for x in (0, 3, 6, 9, 12)], [B.LOG, B.AIR, B.LOG, B.AIR, B.LOG])
+        self.assertEqual((w.id(6, 13, 4), w.id(6, 17, 4), w.id(6, 18, 4)), (B.LOG, B.LOG, B.STONEBRICK))
+
+    def test_a_mark_reads_from_the_side_away_from_up(self):
+        from pgmvox.grammar import marks
+        from pgmvox.grammar import rules as G
+        for up, on, off in (("n", [(1, 1), (1, 5), (3, 5)], [(3, 1)]), ("s", [(3, 5), (1, 1), (3, 1)], [(1, 5)])):
+            sec = G.Section(((0, 0, 4, 6),), 10, "a", motifs=(("word", (("text", "L"), ("block", (B.WOOL, 1)),
+                                                                        ("up", up))),))
+            w = World(-1, -1, 7, 9, sy=16)
+            G.lay(w, G.Ground([sec]), self._plain())
+            self.assertEqual([w.get(x, 10, z) for x, z in on], [(B.WOOL, 1)] * 3, up)
+            self.assertEqual([w.id(x, 10, z) for x, z in off], [B.DSLAB], up)
+
+    def test_a_flight_lays_stairs_between_its_cheeks(self):
+        from pgmvox.grammar import marks
+        from pgmvox.grammar import rules as G
+        from pgmvox.core.orient import stair
+        tops = tuple(((x, z), 20 - z) for x in range(7) for z in range(6))
+        sec = G.Section(((0, 0, 6, 5),), 15, "flight", marks.flight((B.STONE, 0), B.QUARTZ_STAIRS, cheek=(B.QUARTZ, 1)),
+                        tops=tops)
+        w = World(-1, -1, 9, 8, sy=32)
+        G.lay(w, G.Ground([sec]), self._plain())
+        self.assertEqual(w.get(3, 18, 2), (B.STONE, 0))                       # a tread at its own top
+        self.assertEqual(w.get(3, 19, 2), (B.QUARTZ_STAIRS, stair("n")))     # its nosing, rising to the next
+        self.assertEqual((w.get(1, 19, 2), w.get(5, 19, 2)), ((B.QUARTZ, 1), (B.QUARTZ, 1)))   # the cheeks

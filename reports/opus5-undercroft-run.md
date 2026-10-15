@@ -10,7 +10,7 @@ The fourth board, and the only one whose subject is a feature rather than a look
 - a **DTM** board, and a **simple** one, because the 2-D renders show only the top surface and the
   rest has to be read from the isometric.
 
-`maps/opus5-undercroft`, `specs/opus5-undercroft/`, `review/opus5-undercroft.md`.
+`maps/dtcm/undercroft`, `specs/opus5-undercroft/`, `review/opus5-undercroft.md`.
 
 The board is a two-level destroy map: a ground island a team, a stone **terrace** twenty blocks over
 its middle carrying the monument, a nine-block **hall** under the terrace, and two **bridges** across

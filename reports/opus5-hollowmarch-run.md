@@ -20,7 +20,7 @@ Mid-build the author added two: the lowest ground was at y2, so **raise the terr
 blocks everywhere** rather than let a 9-deep surface be cut down to two; and put **a small pond in
 the middle of the middle island**.
 
-`maps/opus5-hollowmarch`, `specs/opus5-hollowmarch/`, `review/opus5-hollowmarch.md`.
+`maps/ctw/hollowmarch`, `specs/opus5-hollowmarch/`, `review/opus5-hollowmarch.md`.
 
 ## What worked first time
 

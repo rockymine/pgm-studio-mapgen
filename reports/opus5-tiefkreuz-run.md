@@ -23,7 +23,7 @@ before anything was authored:
 > elevated station, an avenue with planted verges, and a grid of tall flat-roofed blocks of which the
 > spawn is one.
 
-That is what was built. `maps/opus5-tiefkreuz` · `specs/opus5-tiefkreuz` · `review/opus5-tiefkreuz.md`.
+That is what was built. `maps/dtcm/tiefkreuz` · `specs/opus5-tiefkreuz` · `review/opus5-tiefkreuz.md`.
 
 ## The three numbers, before and after
 
@@ -276,7 +276,7 @@ routes are the right surface for a canvas and the wrong grain for a board whose 
 ```bash
 python3 specs/opus5-tiefkreuz/build-spec.py
 python3 tools/drive.py specs/opus5-tiefkreuz "Tiefkreuz" \
-        --out maps/opus5-tiefkreuz --renders specs/opus5-tiefkreuz/renders
+        --out maps/dtcm/tiefkreuz --renders specs/opus5-tiefkreuz/renders
 ```
 
 The one ordering that is not obvious: the box is cut into the **compiled ground layer** as override

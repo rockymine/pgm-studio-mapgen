@@ -1,0 +1,840 @@
+{
+ "document": "layers",
+ "version": "draft-3",
+ "board": {
+  "name": "Wandbild: Profil wie Outback",
+  "x": [
+   -43,
+   42
+  ],
+  "z": [
+   -33,
+   32
+  ],
+  "floor": 0,
+  "height": 64,
+  "seed": 5,
+  "text": "Jedes gerade Wandst\u00fcck ein gerahmtes Feld wie auf Outback: Fichtenbretter an Kante, Mitte und Fu\u00df und an den Ecken; darin Erde, eine Nische zwei Bl\u00f6cke hoch aus oberer und unterer Fichtenstufe mit Treppen an den Enden und Teamton dahinter, wieder Erde, dann vier Reihen Steinmix. Darunter Grundgestein."
+ },
+ "fields": {
+  "small": {
+   "fbm": {
+    "cell": 12,
+    "octaves": 3,
+    "seed": 31
+   }
+  },
+  "patch": {
+   "fbm": {
+    "cell": 5,
+    "octaves": 2,
+    "seed": 32
+   }
+  }
+ },
+ "ground": [
+  {
+   "id": "umriss",
+   "op": "outline",
+   "box": [
+    -40,
+    -30,
+    39,
+    29
+   ],
+   "insets": {
+    "west": 0,
+    "east": 0,
+    "north": 0,
+    "south": 0
+   },
+   "note": "a plateau over the void, its sides straight so a bay has room"
+  },
+  {
+   "id": "grund",
+   "op": "base",
+   "height": 24,
+   "terms": [
+    {
+     "noise": {
+      "field": "small",
+      "rise": 0.6
+     }
+    }
+   ],
+   "note": "24, barely rolling"
+  },
+  {
+   "id": "oberstufe",
+   "op": "level",
+   "mode": "set",
+   "top": 31,
+   "inner": 1.0,
+   "outer": 1.0,
+   "areas": [
+    {
+     "polygon": [
+      [
+       -34,
+       -26
+      ],
+      [
+       6,
+       -26
+      ],
+      [
+       12,
+       -14
+      ],
+      [
+       -2,
+       -6
+      ],
+      [
+       -34,
+       -8
+      ]
+     ]
+    }
+   ],
+   "note": "an upper terrace in the north-west, seven over the meadow: a cliff"
+  },
+  {
+   "id": "senke",
+   "op": "level",
+   "mode": "set",
+   "top": 19,
+   "inner": 1.0,
+   "outer": 1.0,
+   "areas": [
+    {
+     "rect": [
+      10,
+      6,
+      34,
+      26
+     ]
+    }
+   ],
+   "note": "a sunken court in the south-east, five under it"
+  },
+  {
+   "id": "ganz",
+   "op": "round",
+   "note": "whole blocks"
+  }
+ ],
+ "paint": [
+  {
+   "block": "GRAVEL",
+   "area": {
+    "rect": [
+     10,
+     6,
+     34,
+     26
+    ]
+   },
+   "noise": {
+    "field": "patch",
+    "lo": -0.15
+   }
+  },
+  {
+   "block": [
+    "DIRT",
+    2
+   ],
+   "noise": {
+    "field": "patch",
+    "lo": 0.55
+   }
+  },
+  {
+   "block": "COBBLE",
+   "slope": [
+    55,
+    null
+   ]
+  }
+ ],
+ "lay": {},
+ "faces": [
+  {
+   "id": "felder",
+   "min_drop": 2,
+   "courses": [
+    [
+     "PLANKS",
+     1
+    ],
+    {
+     "mix": [
+      [
+       [
+        "DIRT",
+        0
+       ],
+       2
+      ],
+      [
+       [
+        "DIRT",
+        1
+       ],
+       1
+      ]
+     ]
+    },
+    {
+     "mix": [
+      [
+       [
+        "DIRT",
+        0
+       ],
+       2
+      ],
+      [
+       [
+        "DIRT",
+        1
+       ],
+       1
+      ]
+     ]
+    },
+    {
+     "mix": [
+      [
+       [
+        "DIRT",
+        0
+       ],
+       2
+      ],
+      [
+       [
+        "DIRT",
+        1
+       ],
+       1
+      ]
+     ]
+    },
+    {
+     "mix": [
+      [
+       [
+        "DIRT",
+        0
+       ],
+       2
+      ],
+      [
+       [
+        "DIRT",
+        1
+       ],
+       1
+      ]
+     ]
+    },
+    [
+     "PLANKS",
+     1
+    ],
+    {
+     "mix": [
+      [
+       "STONE",
+       6
+      ],
+      [
+       "COBBLE",
+       3
+      ],
+      [
+       [
+        "STONEBRICK",
+        2
+       ],
+       1
+      ]
+     ]
+    },
+    {
+     "mix": [
+      [
+       "STONE",
+       6
+      ],
+      [
+       "COBBLE",
+       3
+      ],
+      [
+       [
+        "STONEBRICK",
+        2
+       ],
+       1
+      ]
+     ]
+    },
+    {
+     "mix": [
+      [
+       "STONE",
+       6
+      ],
+      [
+       "COBBLE",
+       3
+      ],
+      [
+       [
+        "STONEBRICK",
+        2
+       ],
+       1
+      ]
+     ]
+    },
+    {
+     "mix": [
+      [
+       "STONE",
+       6
+      ],
+      [
+       "COBBLE",
+       3
+      ],
+      [
+       [
+        "STONEBRICK",
+        2
+       ],
+       1
+      ]
+     ]
+    },
+    [
+     "PLANKS",
+     1
+    ]
+   ],
+   "panel": {
+    "ends": [
+     [
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ],
+      [
+       "PLANKS",
+       1
+      ]
+     ],
+     [
+      [
+       "PLANKS",
+       1
+      ],
+      {
+       "mix": [
+        [
+         [
+          "DIRT",
+          0
+         ],
+         2
+        ],
+        [
+         [
+          "DIRT",
+          1
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         [
+          "DIRT",
+          0
+         ],
+         2
+        ],
+        [
+         [
+          "DIRT",
+          1
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         [
+          "DIRT",
+          0
+         ],
+         2
+        ],
+        [
+         [
+          "DIRT",
+          1
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         [
+          "DIRT",
+          0
+         ],
+         2
+        ],
+        [
+         [
+          "DIRT",
+          1
+         ],
+         1
+        ]
+       ]
+      },
+      [
+       "PLANKS",
+       1
+      ],
+      {
+       "mix": [
+        [
+         "STONE",
+         6
+        ],
+        [
+         "COBBLE",
+         3
+        ],
+        [
+         [
+          "STONEBRICK",
+          2
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         "STONE",
+         6
+        ],
+        [
+         "COBBLE",
+         3
+        ],
+        [
+         [
+          "STONEBRICK",
+          2
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         "STONE",
+         6
+        ],
+        [
+         "COBBLE",
+         3
+        ],
+        [
+         [
+          "STONEBRICK",
+          2
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         "STONE",
+         6
+        ],
+        [
+         "COBBLE",
+         3
+        ],
+        [
+         [
+          "STONEBRICK",
+          2
+         ],
+         1
+        ]
+       ]
+      },
+      [
+       "PLANKS",
+       1
+      ]
+     ],
+     [
+      [
+       "PLANKS",
+       1
+      ],
+      {
+       "mix": [
+        [
+         [
+          "DIRT",
+          0
+         ],
+         2
+        ],
+        [
+         [
+          "DIRT",
+          1
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "block": {
+        "stair": "SPRUCE_STAIRS",
+        "upside_down": true,
+        "toward": "end"
+       },
+       "back": [
+        "STAINED_CLAY",
+        14
+       ]
+      },
+      {
+       "block": {
+        "stair": "SPRUCE_STAIRS",
+        "toward": "end"
+       },
+       "back": [
+        "STAINED_CLAY",
+        14
+       ]
+      },
+      {
+       "mix": [
+        [
+         [
+          "DIRT",
+          0
+         ],
+         2
+        ],
+        [
+         [
+          "DIRT",
+          1
+         ],
+         1
+        ]
+       ]
+      },
+      [
+       "PLANKS",
+       1
+      ],
+      {
+       "mix": [
+        [
+         "STONE",
+         6
+        ],
+        [
+         "COBBLE",
+         3
+        ],
+        [
+         [
+          "STONEBRICK",
+          2
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         "STONE",
+         6
+        ],
+        [
+         "COBBLE",
+         3
+        ],
+        [
+         [
+          "STONEBRICK",
+          2
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         "STONE",
+         6
+        ],
+        [
+         "COBBLE",
+         3
+        ],
+        [
+         [
+          "STONEBRICK",
+          2
+         ],
+         1
+        ]
+       ]
+      },
+      {
+       "mix": [
+        [
+         "STONE",
+         6
+        ],
+        [
+         "COBBLE",
+         3
+        ],
+        [
+         [
+          "STONEBRICK",
+          2
+         ],
+         1
+        ]
+       ]
+      },
+      [
+       "PLANKS",
+       1
+      ]
+     ]
+    ],
+    "middle": [
+     [
+      "PLANKS",
+      1
+     ],
+     {
+      "mix": [
+       [
+        [
+         "DIRT",
+         0
+        ],
+        2
+       ],
+       [
+        [
+         "DIRT",
+         1
+        ],
+        1
+       ]
+      ]
+     },
+     {
+      "block": [
+       "WOOD_SLAB",
+       9
+      ],
+      "back": [
+       "STAINED_CLAY",
+       14
+      ]
+     },
+     {
+      "block": [
+       "WOOD_SLAB",
+       1
+      ],
+      "back": [
+       "STAINED_CLAY",
+       14
+      ]
+     },
+     {
+      "mix": [
+       [
+        [
+         "DIRT",
+         0
+        ],
+        2
+       ],
+       [
+        [
+         "DIRT",
+         1
+        ],
+        1
+       ]
+      ]
+     },
+     [
+      "PLANKS",
+      1
+     ],
+     {
+      "mix": [
+       [
+        "STONE",
+        6
+       ],
+       [
+        "COBBLE",
+        3
+       ],
+       [
+        [
+         "STONEBRICK",
+         2
+        ],
+        1
+       ]
+      ]
+     },
+     {
+      "mix": [
+       [
+        "STONE",
+        6
+       ],
+       [
+        "COBBLE",
+        3
+       ],
+       [
+        [
+         "STONEBRICK",
+         2
+        ],
+        1
+       ]
+      ]
+     },
+     {
+      "mix": [
+       [
+        "STONE",
+        6
+       ],
+       [
+        "COBBLE",
+        3
+       ],
+       [
+        [
+         "STONEBRICK",
+         2
+        ],
+        1
+       ]
+      ]
+     },
+     {
+      "mix": [
+       [
+        "STONE",
+        6
+       ],
+       [
+        "COBBLE",
+        3
+       ],
+       [
+        [
+         "STONEBRICK",
+         2
+        ],
+        1
+       ]
+      ]
+     },
+     [
+      "PLANKS",
+      1
+     ]
+    ],
+    "min_run": 5
+   },
+   "below": {
+    "block": "BEDROCK"
+   },
+   "note": "Outback's wall: each straight run framed in spruce, a two-high inset of slabs between stairs, team clay behind"
+  }
+ ]
+}
