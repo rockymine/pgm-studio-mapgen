@@ -162,13 +162,14 @@ TEAM = (B.STAINED_CLAY, 14)                                     # red; blue's im
 MODULE = ["clay", "clay", "clay", "collar", "quartz", "quartz"]   # a signal tower's six-block repeat, from its foot
 
 
-def signal_tower(w, x, z, modules=4):
+def signal_tower(w, x, z, modules=4, base=None):
     """A signal tower, one block thick: banded in the team's clay and chiseled quartz, a collar of slabs round an
     iron hub every six blocks, buttons, a trapdoor and stub antennas of bars on its faces, and a crown of cobble
-    walls carrying two redstone torches under a whip of bars and fence. It stands on the flattest ground near
-    (x, z), on a plinth of polished andesite under a ring of slabs."""
-    x, z, base = seat(w, x, z, 1)
-    footings(w, [(x + a, z + b) for a in (-1, 0, 1) for b in (-1, 0, 1)], base)
+    walls carrying two redstone torches under a whip of bars and fence. It stands on a plinth of polished andesite
+    under a ring of slabs: on `base` (a roof) when given, else on the flattest ground near (x, z)."""
+    if base is None:
+        x, z, base = seat(w, x, z, 1)
+        footings(w, [(x + a, z + b) for a in (-1, 0, 1) for b in (-1, 0, 1)], base)
     for a in (-1, 0, 1):
         for b in (-1, 0, 1):
             w.set(x + a, base + 1, z + b, *((B.STONE, 6) if a == b == 0 else (B.SLAB, 5)))
@@ -250,10 +251,10 @@ def towers(w):
 
 def dark(x, y, z, top, rib):
     """The station's dark style for a wall whose top block is at `top`: nether brick, a stone-brick rib where `rib`
-    holds, the team's band three under the top, a stone-brick course under the coping, the coping itself in nether
-    brick slabs and fence."""
+    holds, the team's band three under the top, a stone-brick course under the coping, the coping itself nether
+    brick and upside-down nether-brick slabs by turns."""
     if y == top:
-        return (B.NETHER_FENCE, 0) if (x + z) % 2 else (B.SLAB, 6)
+        return (B.NETHER_BRICK, 0) if (x + z) % 2 else (B.SLAB, 14)
     if y == top - 1:
         return (B.STONEBRICK, 0)
     if y == top - 3:

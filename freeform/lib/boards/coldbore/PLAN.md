@@ -129,20 +129,28 @@ toward the fissure.
 **The gullies and the fissure's rim carry their own ground.** In the gullies the runoff has frozen down the face as
 ice, and along the fissure the snow has melted to an ash ground of grey and black clay with gravel.
 
-**Everything the station shows above ground is in one dark style.** The gate's facade and the generator house's
-front are nether brick ribbed in stone brick, with a course of stone brick, the team's band and a parapet of
-nether-brick slabs and fence; the generator house adds a window band of bars and two exhausts. The yard the dish
-stands on, the head house over the spiral stair, the operations block and the vent stacks are built the same way,
-so each stands apart from the grey cliff. Inside, the station is stone and stone brick, and the vault alone is
-white quartz.
+**Everything the station shows above ground is in one dark style.** Its parapets are nether brick and
+upside-down nether-brick slabs by turns, one solid line, and its walls nether brick ribbed in stone brick under a
+course of stone brick and the team's band. The yard the dish stands on, the head house over the spiral stair, the
+operations block and the vent stacks are built this way, so each stands apart from the grey cliff. Inside, the
+station is stone and stone brick, and the vault alone is white quartz.
+
+**Both entrance fronts are brought two blocks out from the cliff, in layers.** A plinth of polished andesite, the
+stone-brick pilasters with chiseled bases and capitals, and the cornice stand two blocks out; the nether-brick
+panels between the pilasters, with the team's band across them, stand one block out. Each door sits in a recess
+two deep between chiseled jambs under a polished-andesite lintel, its hazard frame at the recess's back. The gate
+has slits of bars under its cornice, the generator house a band of windows and two exhausts up its face.
 
 ## What the build adds that the plan does not show
 
-**Scenery that changes no route.** The plateau carries the great dish tilted at the southern sky with a small
-satellite hung over the yard on its axis, two signal towers either side of it, the operations block, two vent
-stacks over the hall, and boulders cut from the cliff's own beds lying in the snow. The snowfield has more
-boulders, two lattice towers on the hill and one blown over, the broken road bridge and the derrick on the
-stump, and ten lavafalls run down red's wall of the fissure, all more than 40 blocks from either core.
+**Scenery that changes no route.** The plateau carries the great dish tilted at the southern sky, its feed held
+on three struts of iron with a light on its tip and a small satellite hung over the yard on its axis, the
+operations block with the signal tower on its roof, the two vent stacks side by side on the yard's east edge, and
+boulders cut from the cliff's own beds lying in the snow.
+
+**The snowfield and the fissure carry the rest.** The snowfield has more boulders, two lattice towers on the hill
+and one blown over, the broken road bridge and the derrick on the stump, and ten lavafalls run down red's
+wall of the fissure, all more than 40 blocks from either core.
 
 **The signal towers follow the author's own on Long Distance.** Each is one block thick: three of the team's clay,
 a collar of slabs round an iron hub, two chiseled quartz, repeated, with buttons, a trapdoor and stub antennas of
@@ -208,6 +216,18 @@ game, not a number to build toward.
 | both entrances should be dark | the generator house's front is the gate's nether brick, stone-brick ribs, band and parapet |
 | the round building was only a pointer to the dish | the observatory is gone |
 | the house and the dish's platform do not fit the bunker | the yard is walled, the head house and the operations block built, in the gate's dark style; the shed and the tanks are gone |
+
+## What changed after the fifth build, and why
+
+**The author asked for solid lines and depth where the station had thin ones and flat ones.**
+
+| The author said | What the plan does now |
+|---|---|
+| the fences in the dish are noise | its struts are iron blocks, each touching the last face to face |
+| the slab-and-fence parapet does not connect | every parapet is nether brick and upside-down nether-brick slabs by turns |
+| snow on the roofs does not look good, and one signal tower is enough | the roofs are bare nether brick, and one tower stands on the operations block |
+| the chimneys are scattered | the two vent stacks stand side by side on the yard's east edge |
+| the entrances want depth | both fronts are brought out in layers, the doors recessed with their hazard frames at the back |
 
 ## The first plan
 

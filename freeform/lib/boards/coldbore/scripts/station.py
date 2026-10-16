@@ -1,6 +1,6 @@
 """Red's station on the plateau: the yard levelled over the reactor hall, the spiral stair up to it from level 0
-and its head house, the great dish tilted at the sky over the fissure and the small satellite it talks to, two
-signal towers either side of it, the operations block and the reactor's vent stacks; every wall of it in the
+and its head house, the great dish tilted at the sky over the fissure and the small satellite it talks to, the
+operations block with the signal tower on its roof, and the reactor's vent stacks side by side; every wall of it in the
 station's dark style, and boulders of the cliff's own beds lying in the snow.
 """
 import numpy as np
@@ -65,7 +65,7 @@ def yard(w):
 
 def dish(w):
     """The great dish: a paraboloid of quartz ribbed in iron, tilted at the southern sky, on a yoke over a
-    pedestal, its feed horn held at the focus on three struts."""
+    pedestal, its feed horn held at the focus on three struts of iron, a light on its tip."""
     d = P.DISH
     t = np.radians(d["tilt"])
     axis = np.array([0.0, np.cos(t), -np.sin(t)])
@@ -97,20 +97,20 @@ def dish(w):
         w.set(bx + dx, by + 1, bz, B.IRON_BLOCK)
     focus = centre + focal * axis
     fx, fy, fz = (int(round(c)) for c in focus)
-    w.set(fx, fy, fz, B.IRON_BLOCK)
-    w.set(fx, fy + 1, fz, B.NETHER_FENCE)                         # the feed's tip and its light
-    w.set(fx, fy + 2, fz, B.REDSTONE_TORCH, 5)
-    for ang in (90, 210, 330):
+    for ang in (90, 210, 330):                                    # three struts, solid and face to face
         a = np.radians(ang)
         rim = centre + r * 0.95 * (np.cos(a) * e1 + np.sin(a) * e2) + (r * r / (4 * focal)) * axis
         for x, y, z in surface.face_line(rim, focus):
             if w.id(x, y, z) == B.AIR:
-                w.set(x, y, z, B.NETHER_FENCE)
+                w.set(x, y, z, B.IRON_BLOCK)
+    w.set(fx, fy, fz, B.IRON_BLOCK)
+    w.set(fx, fy + 1, fz, B.REDSTONE_TORCH, 5)                    # the feed's light
 
 
 def operations(w, x0, z0, x1, z1, height=6):
     """The operations block beside the dish: a low bunker in the station's dark style, slits of bars for windows,
-    a door on its west side, consoles under the north wall, a roof of nether-brick slabs under snow."""
+    a door on its west side, consoles under the north wall, a roof of nether brick inside its parapet, and the
+    signal tower standing on the roof."""
     y0 = P.YARD["top"] + 1
     top = y0 + height
     for x in range(x0, x1 + 1):
@@ -121,8 +121,7 @@ def operations(w, x0, z0, x1, z1, height=6):
                 for y in range(y0, top - 1):
                     w.set(x, y, z, B.AIR)
                 w.set(x, y0 - 1, z, B.STONE, 6)
-                w.set(x, top - 1, z, B.SLAB, 6)
-                w.set(x, top, z, B.SNOW_LAYER, 1)
+                w.set(x, top - 1, z, B.NETHER_BRICK)
                 continue
             for y in range(y0, top + 1):
                 slit = y == y0 + 2 and not corner and (x + z) % 3 == 0
@@ -133,6 +132,7 @@ def operations(w, x0, z0, x1, z1, height=6):
     for x in range(x0 + 2, x1 - 1, 2):
         w.set(x, y0, z1 - 1, B.IRON_BLOCK)
         w.set(x, y0 + 1, z1 - 1, B.REDSTONE_LAMP)
+    surface.signal_tower(w, (x0 + x1) // 2, mz, 3, base=top - 1)
 
 
 def satellite(w):
@@ -193,8 +193,7 @@ def helix(w):
                 else:
                     w.set(x, y, z, B.STONEBRICK, 0 if (x + y + z) % 5 else 2)
             if ring or core:
-                w.set(x, top + 5, z, B.SLAB, 6)
-                w.set(x, top + 6, z, B.SNOW_LAYER, 1)
+                w.set(x, top + 5, z, B.NETHER_BRICK)
             else:                                                 # the head house's walls, in the dark style
                 corner = x in (h["x0"] - 1, h["x1"] + 1) and z in (h["z0"] - 1, h["z1"] + 1)
                 for y in range(top + 1, top + 6):
@@ -236,9 +235,7 @@ def build(w):
     helix(w)
     dish(w)
     operations(w, 14, 84, 23, 90)
-    stack(w, -9, 72, 9)
-    stack(w, 10, 66, 12)
-    surface.signal_tower(w, -8, 76, 4)
-    surface.signal_tower(w, 19, 78, 3)
+    stack(w, 21, 74, 12)                                          # the vent stacks side by side on the yard's east
+    stack(w, 21, 77, 10)
     boulders(w)
     satellite(w)

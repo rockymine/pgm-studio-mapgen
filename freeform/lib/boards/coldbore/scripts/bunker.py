@@ -132,10 +132,15 @@ def vault_block(x, y, z, is_floor, is_ceiling):
     return (B.QUARTZ, 2) if (x + z) % 5 == 0 else (B.QUARTZ, 0)
 
 
+def coping(x, z):
+    """A parapet's top: nether brick and an upside-down nether-brick slab by turns, one solid line."""
+    return (B.NETHER_BRICK, 0) if (x + z) % 2 else (B.SLAB, 14)
+
+
 def facade_block(x, y, z):
     f = P.FACADE
     if y == f["y1"]:
-        return (B.NETHER_FENCE, 0) if (x + z) % 2 else (B.SLAB, 6)    # the parapet
+        return coping(x, z)
     if y == f["y1"] - 1 or y == P.L0 + 9:
         return (B.STONEBRICK, 0)                                  # courses round the mass
     if y == f["y1"] - 3:
@@ -151,7 +156,7 @@ def annex_block(x, y, z):
     brick slabs and fence."""
     a, ga = P.ANNEX, P.GARAGE
     if y == a["y1"]:
-        return (B.NETHER_FENCE, 0) if (x + z) % 2 else (B.SLAB, 6)
+        return coping(x, z)
     if y == a["y1"] - 1 or y == P.L0 + 9:
         return (B.STONEBRICK, 0)
     if y == a["y1"] - 3:
@@ -163,59 +168,89 @@ def annex_block(x, y, z):
     return (B.NETHER_BRICK, 0)
 
 
+def front(w, f, door, slits=(), windows=()):
+    """A front brought two blocks out from the station's face at z0, so it has depth: a plinth of polished andesite,
+    stone-brick pilasters every four with chiseled stone-brick bases and capitals, and a stone-brick cornice under the
+    coping stand two blocks out; the nether-brick panels between the pilasters, with the team's band across them,
+    stand one block out; the door sits in a recess two blocks deep, framed in hazard bands at its back, between
+    chiseled jambs under a lintel of polished andesite. `slits` and `windows` are rows of bars in the panels."""
+    z0, x0, x1, y0, y1 = f["z0"], f["x0"], f["x1"], f["y0"], f["y1"]
+    dx0, dx1, feet, h = door["x0"], door["x1"], door["feet"], door["h"]
+    for x in range(x0, x1 + 1):
+        pilaster = (x - x0) % 4 == 0 or x == x1
+        for y in range(y0, y1 + 1):
+            if y == y1:
+                out, mid = coping(x, z0), coping(x, z0 + 1)
+            elif y == y1 - 1:
+                out, mid = (B.STONEBRICK, 0), (B.STONEBRICK, 0)
+            elif y <= y0 + 2:
+                out, mid = (B.STONE, 6), (B.STONE, 6)
+            elif pilaster:
+                cap = y in (y0 + 3, y1 - 2)
+                out, mid = ((B.STONEBRICK, 3) if cap else (B.STONEBRICK, 0)), (B.NETHER_BRICK, 0)
+            else:
+                band = y == y1 - 3
+                bars = (y in slits and (x - x0) % 4 == 2) or (y in windows and (x - x0) % 4)
+                out = (B.AIR, 0)
+                mid = TEAM if band else (B.IRON_BARS, 0) if bars else (B.NETHER_BRICK, 0)
+            w.set(x, y, z0 - 2, *out)
+            w.set(x, y, z0 - 1, *mid)
+    for x in range(dx0 - 2, dx1 + 3):                            # the recess, its jambs and its lintel
+        for y in range(feet, feet + h + 2):
+            jamb = x in (dx0 - 2, dx1 + 2)
+            lintel = y == feet + h + 1
+            for z in (z0 - 2, z0 - 1):
+                if lintel:
+                    w.set(x, y, z, *((B.STONEBRICK, 3) if jamb else (B.STONE, 6)))
+                elif jamb:
+                    w.set(x, y, z, *((B.STONEBRICK, 3) if y in (feet, feet + h) else (B.STONEBRICK, 0)))
+                else:
+                    w.set(x, y, z, B.AIR)
+        for z in (z0 - 2, z0 - 1):
+            w.set(x, feet - 1, z, B.STONE, 6)
+    for x in range(dx0 - 1, dx1 + 2):                            # the hazard frame at the recess's back
+        for y in range(feet - 1, feet + h + 1):
+            if not (dx0 <= x <= dx1 and feet <= y < feet + h):
+                w.set(x, y, z0, *hazard(x, y, z0))
+
+
 def gate(w):
-    """The gate's frame: hazard bands round the opening, iron jambs, and slits under the parapet."""
+    """The gate: its front brought out with slits under the cornice, and iron jambs inside the door."""
     g, f = P.GATE, P.FACADE
-    z = g["z"]
-    for x in range(g["x0"] - 2, g["x1"] + 3):
-        for y in range(g["feet"] - 1, g["feet"] + g["h"] + 2):
-            inside = g["x0"] <= x <= g["x1"] and g["feet"] <= y < g["feet"] + g["h"]
-            if not inside:
-                w.set(x, y, z, *hazard(x, y, z))
+    front(w, f, g, slits=(P.L0 + 11, P.L0 + 12))
     for x in (g["x0"] - 1, g["x1"] + 1):
         for y in range(g["feet"], g["feet"] + g["h"]):
-            w.set(x, y, z + 1, B.IRON_BLOCK)
-    for x in range(f["x0"] + 2, f["x1"] - 1, 4):
-        if not g["x0"] - 2 <= x <= g["x1"] + 2:
-            for y in (P.L0 + 11, P.L0 + 12):
-                w.set(x, y, z, B.IRON_BARS)
+            w.set(x, y, g["z"] + 1, B.IRON_BLOCK)
 
 
 def wings(w):
-    """Blast walls splaying out from the facade's front corners onto the court, falling from six courses at the
-    facade to three at their ends, and a concrete visor over the gate."""
-    f, g = P.FACADE, P.GATE
+    """Blast walls splaying out from the front's corners onto the court, falling from six courses at the front to
+    three at their ends."""
+    f = P.FACADE
     for side in (-1, 1):
         x0 = f["x0"] if side < 0 else f["x1"]
         for t in range(8):
-            x, z = x0 + side * t, f["z0"] - 1 - t
+            x, z = x0 + side * t, f["z0"] - 3 - t
             height = 6 - t * 3 // 8
             for dx in (0, side):
                 for y in range(land.GROUND + 1, land.GROUND + 1 + height):
                     w.set(x + dx, y, z, *((B.STAINED_CLAY, 4 if (y + t) % 2 else 15) if y == land.GROUND + 1
                                           else (B.NETHER_BRICK, 0)))
-                w.set(x + dx, land.GROUND + 1 + height, z, B.STONEBRICK)
-    for x in range(g["x0"] - 3, g["x1"] + 4):
-        for z in range(g["z"] - 3, g["z"]):
-            w.set(x, g["feet"] + g["h"] + 1, z, B.SLAB, 13 if z > g["z"] - 3 else 5)
+                w.set(x + dx, land.GROUND + 1 + height, z, *coping(x + dx, z))
 
 
 def garage(w):
-    """The generator house's door: a hazard frame, the shutter jammed a block down from the lintel, and two
-    exhausts climbing the front past the coping."""
+    """The generator house's door: its front brought out with a band of windows, the shutter jammed a block down
+    from the lintel, and two exhausts climbing the front past the coping."""
     ga, a = P.GARAGE, P.ANNEX
-    z = ga["z"]
-    for x in range(ga["x0"] - 1, ga["x1"] + 2):
-        for y in range(ga["feet"] - 1, ga["feet"] + ga["h"] + 1):
-            inside = ga["x0"] <= x <= ga["x1"] and ga["feet"] <= y < ga["feet"] + ga["h"]
-            if not inside:
-                w.set(x, y, z, *hazard(x, y, z))
+    front(w, a, ga, windows=(P.L0 + 6, P.L0 + 7))
     for x in range(ga["x0"], ga["x1"] + 1):
-        w.set(x, ga["feet"] + ga["h"] - 1, z, B.IRON_TRAPDOOR, 8 | 1)
+        w.set(x, ga["feet"] + ga["h"] - 1, ga["z"], B.IRON_TRAPDOOR, 8 | 1)
     for x in (a["x0"] + 2, a["x1"] - 2):
-        for y in range(P.L0, a["y1"] + 6):
-            w.set(x, y, a["z0"] - 1, B.NETHER_FENCE)
-        w.set(x, a["y1"] + 6, a["z0"] - 1, B.IRON_BARS)
+        for y in range(P.L0 + 3, a["y1"] + 6):
+            w.set(x, y, a["z0"] - 3, B.NETHER_FENCE if y > a["y1"] else B.COBBLE_WALL)
+        w.set(x, a["y1"] + 6, a["z0"] - 3, B.IRON_BARS)
+        w.set(x, P.L0 + 2, a["z0"] - 3, B.STONE, 6)
 
 
 def ramp_step(f):
