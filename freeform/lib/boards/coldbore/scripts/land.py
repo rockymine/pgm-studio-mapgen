@@ -1,7 +1,8 @@
 """Coldbore's ground as heights, before any world: the snowfield, the hill raised on its east flank, the cliff with
 its two buttresses and its gullies, the mountain each station is cut into, the courts in front of the gate and
 the generator house, the rock breaking through the snow, the crevasse on the west flank and the fissure between
-the two halves.
+the two halves. The board's outline is ragged, bitten in along its three outer sides and chipped away at its
+back corners, and stays whole across the fissure, where its lava meets the world's edge.
 
 Every field is stated for red's half (z >= the fissure's line) and the board is that half and its half turn, so
 blue's ground is red's turned about (-0.5, -0.5). Heights are the top block's y; a player's feet stand one over.
@@ -31,6 +32,8 @@ GULLIES = [(-64, 3.0, 7), (-22, 2.5, 6), (-6, 3.5, 8), (17, 2.5, 6), (55, 3.0, 7
 COURTS = [dict(x0=-56, x1=-25, z0=38, z1=47), dict(x0=22, x1=46, z0=42, z1=49)]   # levelled at GROUND
 OUTCROPS = [(-62, 32, 11), (-50, 22, 7), (-40, 80, 12), (30, 88, 10), (60, 72, 11)]  # x, z, reach: rock through snow
 CREVASSES = [[(-71, 19), (-66, 24), (-60, 21), (-55, 26)]]
+EDGE = 5                                       # the most a side is bitten in
+CORNERS = [(X0, Z1, 13), (X1, Z1, 18)]         # red's back corners chipped away: corner, reach along each side
 
 
 def grid():
@@ -161,6 +164,28 @@ def heights():
     H = red_half(X, Z)
     red = across(X, Z) >= 0
     return np.where(red, H, H[::-1, ::-1]), X, Z
+
+
+def red_inside(X, Z):
+    """Red's outline over the grid: the sides bitten in by up to EDGE blocks, raggedly, the bite easing to nothing
+    across the fissure, and the back corners cut off along a ragged diagonal."""
+    shape = X.shape
+    ease = smoothstep(4, 16, across(X, Z) - fissure_line()[1][(X - X0).astype(int)])
+    west = noise.ragged(shape, "z", 9, EDGE, seed=90) * ease
+    east = noise.ragged(shape, "z", 11, EDGE, seed=91) * ease
+    back = noise.ragged(shape, "x", 10, EDGE, seed=92)
+    inside = (X - X0 >= west) & (X1 - X >= east) & (Z1 - Z >= back)
+    wobble = 3 * noise.fbm(shape, 5, 2, seed=93)
+    for cx, cz, reach in CORNERS:
+        inside &= np.abs(X - cx) + np.abs(Z - cz) + wobble > reach
+    return inside
+
+
+def inside():
+    """The board's outline, both halves: red's and its half turn."""
+    X, Z = grid()
+    m = red_inside(X, Z)
+    return np.where(red_mask(X, Z), m, m[::-1, ::-1])
 
 
 def red_mask(X, Z):

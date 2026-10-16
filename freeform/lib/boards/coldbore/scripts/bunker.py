@@ -344,7 +344,7 @@ def gallery(w):
     for x, z in P.gallery_cells():
         lips[x] = min(z, lips.get(x, z))
     for x, z in lips.items():
-        if x % 5 and (x * 7) % 3:
+        if x % 5 and (x * 7) % 3 and w.id(x, P.L2 - 1, z) != B.AIR:
             w.set(x, P.L2, z, B.NETHER_FENCE)
     xs_ = sorted(lips)
     h = P.GALLERY["h"]
@@ -361,9 +361,9 @@ def gallery(w):
                 w.set(x, P.L2 + h, zz, *hazard(x, 0, zz))
     jib_x = -6
     z0 = lips[jib_x]
-    for z in range(z0 - 6, z0 + 4):
-        w.set(jib_x, P.L2 + h - 2, z, B.IRON_BLOCK)
-    for y in range(P.L2 + 2, P.L2 + h - 2):
+    for z in range(z0 - 6, z0 + 4):                               # the jib, hung from the gallery's ceiling
+        w.set(jib_x, P.L2 + h - 1, z, B.IRON_BLOCK)
+    for y in range(P.L2 + 2, P.L2 + h - 1):
         w.set(jib_x, y, z0 - 6, B.FENCE)
     for x in range(P.GALLERY["x0"], P.GALLERY["x1"] + 1, 3):
         for y in (P.L2 + 6, P.L2 + 9):
@@ -395,10 +395,13 @@ def collapsed_store(w, top):
             if height >= s.feet and max(abs(x - cx), abs(z - cz)) < 3.2:
                 w.set(x, height, z, B.SNOW)
                 w.set(x, height + 1, z, B.SNOW_LAYER, int(rng.integers(0, 3)))
-    for x, y, z, axis in ((rh["x0"] - 1, peak - 3, rh["z1"] + 3, "x"), (rh["x1"] + 3, peak - 4, rh["z0"], "z")):
+    for x, z, axis in ((rh["x0"] - 1, rh["z1"] + 3, "x"), (rh["x1"] + 3, rh["z0"], "z")):
         for t in range(-2, 3):                                     # slabs of the fallen ceiling lying on the mound
             X, Z = (x + t, z) if axis == "x" else (x, z + t)
-            w.set(X, y + (t > 0), Z, B.DSLAB)
+            y = s.feet
+            while w.id(X, y, Z) != B.AIR and y < s.feet + s.h - 1:
+                y += 1
+            w.set(X, y, Z, B.DSLAB)
     for x in range(s.x0, s.x1 + 1, 3):                            # crates crushed along the south wall
         if w.id(x, s.feet, s.z0) == B.AIR:
             w.set(x, s.feet, s.z0, B.PLANKS, 1)
@@ -424,8 +427,8 @@ def furnish(w):
             w.set(x, y, sp.z1, B.IRON_BLOCK)
         w.set(x, sp.feet + 2, sp.z1, B.REDSTONE_LAMP)
         w.set(x, sp.feet, sp.z1 - 2, B.STONEBRICK_STAIRS, orient.stair("n"))
-    for z in range(sp.z0 + 1, sp.z1, 5):
-        w.set(sp.x0, sp.feet + 3, z, *TEAM)
+    for x in range(sp.x0 + 2, sp.x1, 5):                        # the team's colour on the south wall
+        w.set(x, sp.feet + 3, sp.z0 - 1, *TEAM)
     for x, y, z in P.IRON:
         w.set(x, y, z, B.IRON_BLOCK)
     ir = next(s for s in P.SPACES if s.name == "iron room")

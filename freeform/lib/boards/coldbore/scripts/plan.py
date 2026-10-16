@@ -123,6 +123,7 @@ SPACES = [
     Space("generator house", 25, 43, 51, 60, L0, 9, "hall"),
     Space("annex corridor", 13, 29, 70, 73, L0, TUNNEL_H),
     Space("annex link", 26, 29, 61, 69, L0, TUNNEL_H),
+    Space("helix door", 22, 22, 69, 69, L0, 4, "link"),
     Space("reactor hall", HALL["x0"], HALL["x1"], HALL["z0"], HALL["z1"], L1, HALL["h"], "hall"),
     # level 1
     Space("south door", 9, 12, 61, 61, L1, TUNNEL_H, "link"),
@@ -182,7 +183,17 @@ ANNEX_YARD = dict(x0=22, x1=46, z0=42, z1=49)                  # paved in front 
 BRIDGE_STUB = dict(x0=-3, x1=1, length=6)
 YARD = dict(x0=-10, x1=24, z0=64, z1=90, top=TOP - 1)          # the plateau's yard: the dish and the buildings
 DISH = dict(x=5, z=78, r=10, y=TOP + 7, tilt=35)
-CUTTING = dict(x0=50, x1=53, z0=50, z1=74, feet0=81, feet1=TOP)    # stairs from the hill up to the plateau
+HELIX = dict(x0=20, x1=24, z0=64, z1=68)                       # the spiral stair from level 0 up to the yard
+
+
+def helix():
+    """The spiral stair's steps, (x, z, feet): round the ring about its solid core, one block up a step, from the
+    cell at the annex corridor's door on level 0 to the same cell at the yard, two laps above."""
+    h = HELIX
+    ring = [(x, h["z1"]) for x in range(22, h["x0"] - 1, -1)] + [(h["x0"], z) for z in range(h["z1"] - 1, h["z0"] - 1, -1)] + \
+           [(x, h["z0"]) for x in range(h["x0"] + 1, h["x1"] + 1)] + [(h["x1"], z) for z in range(h["z0"] + 1, h["z1"] + 1)] + \
+           [(x, h["z1"]) for x in range(h["x1"] - 1, 22, -1)]
+    return [(*ring[k % len(ring)], L0 + k) for k in range(TOP - L0 + 1)]
 
 
 def spaces():
@@ -203,7 +214,7 @@ def objectives():
 
 
 # --- the plan raster -----------------------------------------------------------------------------------------
-KINDS = ["rock", "snow", "floor", "stair", "water", "lava"]
+KINDS = ["rock", "snow", "floor", "stair", "water", "lava", "void"]
 WALK = {"snow", "floor", "stair", "water"}
 BANDS = (50, 64, 92)                           # floor blocks up to 50 on storey 0, to 64 on 1, to 92 on 2, above on 3
 
@@ -266,6 +277,7 @@ def raster(opened=False):
             S = stories[band(h)]
             S.H[i, k] = h
             S.K[i, k] = S.kinds["lava" if lava[i, k] else "snow"]
+    R.K[~land.inside()] = R.kinds["void"]                    # outside the board's ragged outline
     hole = [(x, z) for x in range(ROOF_HOLE["x0"], ROOF_HOLE["x1"] + 1) for z in range(ROOF_HOLE["z0"], ROOF_HOLE["z1"] + 1)]
     for x, z in hole:                                          # the fallen ceiling: the snow there is gone
         for x2, z2 in ((x, z), SYM.point(x, z)):

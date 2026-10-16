@@ -19,14 +19,15 @@ with redirect_stdout(io.StringIO()):
 
 H, X, Z = land.heights()
 top = np.round(H).astype(int)
-SURF = Raster((land.X0, land.X1), (land.Z0, land.Z1), ["snow", "rock", "lava", "forecourt"], 0, "snow", P.SYM)
+SURF = Raster((land.X0, land.X1), (land.Z0, land.Z1), ["snow", "rock", "lava", "forecourt", "void"], 0, "snow", P.SYM)
 SURF.H[:] = top
 from pgmvox.surface.terrain import slope_deg  # noqa: E402
 SURF.K[slope_deg(top) > 40] = SURF.kinds["rock"]
 SURF.K[top <= land.LAVA] = SURF.kinds["lava"]
 for f in land.COURTS:
     SURF.rect(f["x0"], f["x1"], f["z0"], f["z1"], land.GROUND, "forecourt", both=True)
-COL = {"snow": (232, 238, 244), "rock": (120, 124, 130), "lava": (226, 104, 30), "forecourt": (170, 160, 150)}
+SURF.K[~land.inside()] = SURF.kinds["void"]
+COL = {"snow": (232, 238, 244), "rock": (120, 124, 130), "lava": (226, 104, 30), "forecourt": (170, 160, 150), "void": (40, 44, 56)}
 LEVEL_COL = {"hall": (196, 120, 70), "room": (176, 140, 100), "corridor": (150, 120, 96), "link": (150, 120, 96),
              "vault": (90, 150, 210), "door": (40, 40, 40)}
 

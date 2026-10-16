@@ -79,7 +79,8 @@ places = [("the balcony's monument", (P.MONUMENT[0], P.L0, P.MONUMENT[2] - 1)),
           ("the garage's court", (34, P.L0, 46)),
           ("the collapsed store", (24, P.L1, 44)),
           ("the gallery's lip", (0, P.L2, 30)),
-          ("the vault's door", (23, P.L2, 77))] + \
+          ("the vault's door", (23, P.L2, 77)),
+          ("the yard, up the spiral stair", (P.YARD["x0"] + 10, P.TOP, P.YARD["z1"] - 4))] + \
          [(f"the cave chamber at x {x}", (x + 3, fy, z + 3)) for x, fy, z, *_ in P.CHAMBERS]
 for name, at in places:
     got = reach(d_safe, *at, r=3)

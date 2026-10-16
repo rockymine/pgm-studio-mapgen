@@ -47,7 +47,7 @@ generator house, and six gullies cut back into it between them.
 | the gate's court and the generator house's court | 38 to 49 | 71, paved |
 | the cliff, with the two facades as its buttresses' faces | 48 to 60 | rising to 100 |
 | the east flank, raised into a hill that climbs to the plateau | x 40 to 74 | 71 rising to 88 |
-| the plateau: the yard, the dish, the buildings, the surviving spruces | 60 to 99 | 100 to 108, the yard at 103 |
+| the plateau: the yard, the dish, the buildings, boulders in the snow | 60 to 99 | 100 to 108, the yard at 103 |
 
 **The station fills the mountain from the gate on the west to the vault on the east.** Every room and corridor
 is a box in `plan.py`, every ramp a run of legs, every deck a floor built inside the hall.
@@ -57,6 +57,10 @@ is a box in `plan.py`, every ramp a run of legs, every deck a floor built inside
 | 0 | 72 | the gate's vestibule and the entrance hall (14 high), the armoury, the west corridor, the hall's balcony and gantry, the spawn room and the iron room beside it, the generator house and its corridor |
 | 1 | 58 | the reactor hall's floor (22 high to its ceiling), the south corridor under the snowfield, the store whose ceiling fell in |
 | 2 | 44 | the fissure gallery and the cave west of it, the service corridor, the vault |
+
+**A spiral stair climbs from the generator house's corridor to the yard on the plateau.** It turns two laps round a
+solid core lit every six blocks, a block up a step with four blocks of headroom under the lap above, and comes
+out through a head house on the yard. It is the only way onto the plateau: nothing climbs the cliff outside.
 
 **Corridors are four wide and seven high, halls fourteen or more.** A hall is fought in, so it is twice a
 corridor's height and five or six times its width.
@@ -129,9 +133,9 @@ stone brick, and the vault alone is white quartz.
 
 **Scenery that changes no route.** The plateau carries the great dish tilted at the southern sky, the control
 house, a radome, a shed the winter brought down, two vent stacks over the hall, masts and fuel tanks, and
-clumps of spruce that outlived the ash, with dead ones among them. The cutting climbs from the east hill to the
-plateau. The snowfield has boulders, pylons on the hill, the broken road bridge and the derrick on the stump,
-and ten lavafalls run down red's wall of the fissure, all more than 40 blocks from either core.
+boulders cut from the cliff's own beds lying in the snow. The snowfield has more boulders, pylons on the hill
+standing on footings, the broken road bridge and the derrick on the stump, and ten lavafalls run down red's
+wall of the fissure, all more than 40 blocks from either core.
 
 ## What changed from the first plan, and why
 
@@ -148,7 +152,7 @@ and what the plan now does about it.
 | stairs bridging sixteen blocks | ramps of two legs at one in two, turning on a landing |
 | the rock surfacing through the snow was missing | faceted rock breaks through on the plateau and the west front |
 | the station on top could be more interesting | a dish, a control house, a radome, a fallen shed, stacks and masts |
-| some trees could have survived | four clumps of spruce on the plateau and the hill |
+| some trees could have survived | four clumps of spruce, taken out again after the second build |
 | more lavafalls in the rift | ten on each wall, up from three |
 | the spawn within two corners of sight of the core | the spawn room's door opens onto the hall, one corner from the spawn |
 | an iron room next to spawn | iron blocks in its walls, regrowing, with benches |
@@ -157,6 +161,19 @@ and what the plan now does about it.
 **The drop, the helix stair, the vent ladder and the culvert are gone.** Each was a way between levels or into
 the station that the ramps and the fallen ceiling now make, and a drop of twenty blocks or a ladder twenty high
 is the vertical play the author asked away from.
+
+## What changed after the second build, and why
+
+**The author's reading of the second build took four things out and asked for three.** None of it moves a room or
+a route between the spawns, and the walk bands were left where they fell: they are for the author to judge in
+game, not a number to build toward.
+
+| The author said | What the plan does now |
+|---|---|
+| the spruces do not fit the place | gone; boulders cut from the cliff's own beds lie in the snow where they stood |
+| the stair cut into the hill breaks the landscape and is a long way round | gone; a spiral stair inside the mountain climbs from level 0 to the yard |
+| some of the towers float | the pylons and masts stand on the flattest ground near where they were, each leg on a footing; every lattice is joined face to face, and a sweep of the world finds nothing loose but the monuments' glass |
+| the board's edge should not be a ruled rectangle | its three outer sides are bitten in by up to five blocks, raggedly, and its back corners are chipped away; across the fissure the edge stays whole, so the lava keeps to the world's edge |
 
 ## The first plan
 

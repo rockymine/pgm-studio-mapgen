@@ -17,7 +17,7 @@ ROAD = [(B.GRAVEL, 0), (B.STONE, 5), (B.COBBLE, 0)]           # a third each: ha
 BOULDERS = [(-9, 25, (4, 3, 3), 20), (16, 16, (3, 3, 4), -15), (-31, 19, (5, 3, 4), 40), (31, 28, (4, 4, 3), 10),
             (-67, 40, (5, 4, 4), -30), (59, 46, (4, 3, 5), 25), (-18, 40, (3, 3, 3), 5), (14, 45, (3, 2, 4), -40),
             (-12, 32, (4, 3, 4), 60)]
-PYLONS = [(58, 70, False), (56, 40, False), (50, 18, True)]       # x, z, toppled
+PYLONS = [(58, 70, False), (56, 40, False), (46, 36, True)]       # x, z, toppled
 
 
 def at(top, x, z):
@@ -85,16 +85,59 @@ def roads(w, top):
                 w.set(x, h + 1, z, B.AIR)
 
 
-def boulders(w, top):
-    rng = np.random.default_rng(31)
+def bedded(rng):
+    """A boulder's paint: the cliff's own beds across it, at an offset of their own, with snow lying on its top."""
+    import ground
+    bounds, beds = ground.strata()
+    offset = rng.uniform(20, 80)
 
     def paint(u, ly, lz, size):
-        r = rng.random()
-        if ly > size[1] / 2 - 1.0 and r < 0.6:
+        if ly > size[1] / 2 - 1.0 and rng.random() < 0.6:
             return (B.SNOW, 0)
-        return (B.STONE, 5) if r < 0.35 else (B.COBBLE, 0) if r < 0.5 else (B.STONE, 0)
+        b = beds[np.searchsorted(bounds, ly + offset)]
+        return int(b[0]), int(b[1])
+    return paint
+
+
+def boulders(w, top):
+    rng = np.random.default_rng(31)
     for x, z, size, yaw in BOULDERS:
-        placed_box(w, x, z, size, top, yaw=yaw, tilt=8, sink=0.35, paint=paint)
+        placed_box(w, x, z, size, top, yaw=yaw, tilt=8, sink=0.35, paint=bedded(rng))
+
+
+def seat(w, x, z, half, reach=6):
+    """The flattest place within `reach` of (x, z) for a footprint `half` out from its centre: (x, z, base), base the
+    footprint's highest ground, so whatever stands there stands on it or on footings down to it."""
+    best = None
+    for dx in range(-reach, reach + 1):
+        for dz in range(-reach, reach + 1):
+            tops = [column_top(w, x + dx + a, z + dz + b) for a in (-half, 0, half) for b in (-half, 0, half)]
+            score = (max(tops) - min(tops), abs(dx) + abs(dz))
+            if best is None or score < best[0]:
+                best = (score, x + dx, z + dz, max(tops))
+    return best[1], best[2], best[3]
+
+
+def face_line(a, b):
+    """The cells from a to b, each one sharing a face with the last, so a strut drawn through them holds together."""
+    a, b = np.array(a, float), np.array(b, float)
+    n = int(np.abs(b - a).max() * 2) + 1
+    out = [tuple(int(round(c)) for c in a)]
+    for t in np.linspace(0, 1, n + 1)[1:]:
+        cell = [int(round(c)) for c in a + (b - a) * t]
+        last = list(out[-1])
+        for axis in range(3):
+            if cell[axis] != last[axis]:
+                last[axis] = cell[axis]
+                out.append(tuple(last))
+    return out
+
+
+def footings(w, cells, base):
+    """Stone brick under each cell from its ground up to `base`, so nothing built on `base` hangs over a hollow."""
+    for x, z in cells:
+        for y in range(column_top(w, x, z) + 1, base + 1):
+            w.set(x, y, z, B.STONEBRICK)
 
 
 def bridge_stub(w, top):
@@ -115,31 +158,46 @@ def bridge_stub(w, top):
                 w.set(x, y, rim - length, B.IRON_BARS)
 
 
-def pylon(w, x, z, base, height=15, toppled=False):
-    """A lattice pylon of iron bars and nether fence; toppled, it lies along the snow toward the fissure."""
+def pylon(w, x, z, height=15):
+    """A lattice pylon of nether fence braced with bars, on the flattest ground near (x, z), each leg on a footing."""
+    x, z, base = seat(w, x, z, 2)
+    footings(w, [(x + dx, z + dz) for dx in (-2, 2) for dz in (-2, 2)], base)
     for t in range(height):
         half = max(0, 2 - t // 6)
         for dx in (-half, half):
             for dz in (-half, half):
-                if toppled:
-                    w.set(x + dx, base + 1 + (dz > 0), z - t, B.NETHER_FENCE)
-                else:
+                w.set(x + dx, base + 1 + t, z + dz, B.NETHER_FENCE)
+        if half and max(0, 2 - (t + 1) // 6) < half:           # a deck where the legs step in, so they stand on it
+            for dx in range(-half, half + 1):
+                for dz in range(-half, half + 1):
                     w.set(x + dx, base + 1 + t, z + dz, B.NETHER_FENCE)
-        if t % 4 == 3:
+        elif t % 4 == 3:
             for a in range(-half, half + 1):
-                if toppled:
-                    w.set(x + a, base + 1, z - t, B.IRON_BARS)
-                else:
-                    w.set(x + a, base + 1 + t, z - half, B.IRON_BARS)
-                    w.set(x + a, base + 1 + t, z + half, B.IRON_BARS)
-    if not toppled:
-        for a in range(-4, 5):
-            w.set(x + a, base + height, z, B.NETHER_FENCE)
+                w.set(x + a, base + 1 + t, z - half, B.IRON_BARS)
+                w.set(x + a, base + 1 + t, z + half, B.IRON_BARS)
+    for a in range(-4, 5):
+        w.set(x + a, base + height, z, B.NETHER_FENCE)
+
+
+def toppled_pylon(w, x, z, length=15):
+    """A pylon blown over, lying along the snow toward the fissure, every rung of it on the ground under it, its end
+    broken off where the ground falls away."""
+    start = max(column_top(w, x + a, z) for a in range(-2, 3))
+    for t in range(length):
+        half = max(0, 2 - t // 6)
+        if max(column_top(w, x + a, z - t) for a in range(-2, 3)) < start - 3:
+            break
+        cells = [x - half, x + half] if t % 4 != 3 else range(x - half, x + half + 1)
+        for cx in cells:
+            w.set(cx, column_top(w, cx, z - t) + 1, z - t, B.IRON_BARS if t % 4 == 3 else B.NETHER_FENCE)
 
 
 def pylons(w):
     for x, z, toppled in PYLONS:
-        pylon(w, x, z, column_top(w, x, z), toppled=toppled)
+        if toppled:
+            toppled_pylon(w, x, z)
+        else:
+            pylon(w, x, z)
 
 
 def derrick(w):
@@ -149,6 +207,8 @@ def derrick(w):
         lean = t // 3
         for dx, dz in ((-1, -1), (1, -1), (-1, 1), (1, 1)):
             w.set(-1 + dx + lean, y0 + t, -1 + dz, B.NETHER_FENCE)
+            if t and lean > (t - 1) // 3:                       # each lean joined to the leg under it
+                w.set(-1 + dx + lean, y0 + t - 1, -1 + dz, B.NETHER_FENCE)
         if t % 4 == 2:
             for a in (-1, 0, 1):
                 w.set(-1 + a + lean, y0 + t, -2, B.IRON_BARS)

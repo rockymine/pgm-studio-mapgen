@@ -4,7 +4,8 @@
 across the mountain from the gate in the west buttress to the vault under the spawn room in the east, the
 core and the wool are apart, every change of level is a two-leg ramp, and the cliff, the snowfield and the
 plateau carry what the author asked for: gullies and strata, rock through the snow, a dish and buildings,
-surviving spruces and more lavafalls.
+boulders and more lavafalls. A spiral stair inside the mountain is the one way onto the plateau, and the board's
+outer edge is ragged.
 
 ## What came out
 

@@ -40,6 +40,9 @@ def generate():
     loose = (w.ids[:, 1:, :] == B.GRAVEL) & (w.ids[:, :-1, :] == B.AIR)   # gravel over air would fall: andesite
     w.ids[:, 1:, :][loose] = B.STONE
     w.dat[:, 1:, :][loose] = 5
+    void = np.broadcast_to(~land.inside()[:, None, :], w.ids.shape)       # the board's ragged outline
+    w.ids[void] = B.AIR
+    w.dat[void] = 0
     X, Z = land.grid()
     turn_world(w, "half", land.red_mask(X, Z), recolour=RECOLOUR)
     P.objectives().stamp(w)

@@ -1,16 +1,21 @@
-"""Red's station on the plateau: the yard levelled over the reactor hall, the great dish tilted at the sky over the
-fissure, the control house, the radome, the shed the winter brought down, the reactor's vent stacks, the mast,
-the fuel tanks, the cutting that climbs from the east hill to the plateau, and the spruces that outlived the ash.
+"""Red's station on the plateau: the yard levelled over the reactor hall, the spiral stair up to it from level 0
+and its head house, the great dish tilted at the sky over the fissure, the control house, the radome, the shed
+the winter brought down, the reactor's vent stacks, the masts and the fuel tanks, every one standing on flat
+ground or on footings, and boulders of the cliff's own beds lying in the snow.
 """
 import numpy as np
 
-import land
 import plan as P
 from pgmvox import B
-from pgmvox.scenery import trees
+from pgmvox.core import orient
+from pgmvox.scenery.forms import placed_box
+
+import surface
 
 TEAM = (B.STAINED_CLAY, 14)
-CLUMPS = [(-62, 90, 8, 5), (-30, 93, 6, 3), (42, 92, 7, 4), (64, 62, 6, 3)]   # x, z, reach, trees: what survived
+BOULDERS = [(-62, 90, (6, 4, 5), 20), (-57, 85, (3, 3, 4), -30), (-30, 93, (5, 3, 4), 50), (-48, 95, (4, 3, 3), 10),
+            (42, 92, (5, 4, 6), -15), (47, 87, (3, 2, 3), 35), (64, 62, (4, 3, 5), 60), (60, 67, (3, 3, 3), -45),
+            (-70, 70, (4, 3, 4), 5), (34, 96, (3, 3, 4), 25)]                     # x, z, size, yaw
 PAVING = [(B.STONEBRICK, 0), (B.STONE, 6), (B.STONE, 5), (B.STONE, 0)]
 
 
@@ -75,9 +80,7 @@ def dish(w):
     for ang in (90, 210, 330):
         a = np.radians(ang)
         rim = centre + r * 0.95 * (np.cos(a) * e1 + np.sin(a) * e2) + (r * r / (4 * focal)) * axis
-        for s in np.linspace(0, 1, 24):
-            p = rim + (focus - rim) * s
-            x, y, z = (int(round(c)) for c in p)
+        for x, y, z in surface.face_line(rim, focus):
             if w.id(x, y, z) == B.AIR:
                 w.set(x, y, z, B.NETHER_FENCE)
 
@@ -140,10 +143,9 @@ def fallen_shed(w, x0, z0, x1, z1):
     for x in range(x0, x1 + 1):
         for y in range(y0, y0 + (3 if x < x1 - 2 else 1)):
             w.set(x, y, z0, B.PLANKS, 1)
-    for x in range(x0 + 1, x1 + 1):
+    for x in range(x0 + 1, x1 + 1):                               # the roof: on the west wall, slid to the yard
         for z in range(z0 + 1, z1 + 2):
-            sag = 1 if x - x0 > (x1 - x0) // 2 else 0
-            w.set(x, y0 + 2 - sag - (z > z1 - 2), z, B.WOOD_SLAB, 1)
+            w.set(x, y0 + 3 if x - x0 <= 2 else y0, z, B.WOOD_SLAB, 1)
     for z in range(z0, z1 + 1, 2):
         w.set(x1 + 1, y0, z, B.LOG, 1 | 8)
 
@@ -162,25 +164,30 @@ def stack(w, x, z, height):
 
 
 def mast(w, x, z, height):
-    base = column_top(w, x, z) + 1
-    for y in range(base, base + height):
+    """A lattice mast of bars with fence crosstrees and a lamp, on the flattest ground near (x, z), its foot on a
+    plinth of stone brick."""
+    x, z, base = surface.seat(w, x, z, 0)
+    surface.footings(w, [(x, z)], base)
+    for y in range(base + 1, base + 1 + height):
         w.set(x, y, z, B.IRON_BARS)
         if y % 5 == 0:
             for a in (-1, 1):
                 w.set(x + a, y, z, B.NETHER_FENCE)
                 w.set(x, y, z + a, B.NETHER_FENCE)
-    w.set(x, base + height, z, B.REDSTONE_LAMP)
+    w.set(x, base + 1 + height, z, B.REDSTONE_LAMP)
 
 
 def tank(w, cx, cz, r, height):
-    base = min(column_top(w, cx + dx, cz + dz) for dx in (-r, r) for dz in (-r, r))
-    for x in range(cx - r - 1, cx + r + 2):
-        for z in range(cz - r - 1, cz + r + 2):
-            if np.hypot(x - cx, z - cz) <= r:
-                for y in range(base, base + height):
-                    w.set(x, y, z, B.QUARTZ, 0 if (y - base) % 4 else 1)
-                w.set(x, base + height, z, B.SLAB, 7)
-                w.set(x, base + height + 1, z, B.SNOW_LAYER, 1)
+    """A fuel tank of quartz in hoops, on the flattest ground near (cx, cz), a stone-brick plinth under it where the
+    ground falls away."""
+    cx, cz, base = surface.seat(w, cx, cz, r)
+    cells = [(x, z) for x in range(cx - r, cx + r + 1) for z in range(cz - r, cz + r + 1) if np.hypot(x - cx, z - cz) <= r]
+    surface.footings(w, cells, base)
+    for x, z in cells:
+        for y in range(base + 1, base + 1 + height):
+            w.set(x, y, z, B.QUARTZ, 0 if (y - base) % 4 else 1)
+        w.set(x, base + 1 + height, z, B.SLAB, 7)
+        w.set(x, base + 2 + height, z, B.SNOW_LAYER, 1)
 
 
 def column_top(w, x, z):
@@ -189,72 +196,72 @@ def column_top(w, x, z):
     return int(solid.max()) if len(solid) else 0
 
 
-def cutting(w):
-    """The cutting from the east hill to the plateau: a flight of stone-brick stairs cut down into the rock and
-    built up where the hill falls away, open to the sky, walled either side."""
-    c = P.CUTTING
-    n = c["z1"] - c["z0"]
-    feet = {z: int(round(c["feet0"] + (c["feet1"] - c["feet0"]) * (z - c["z0"]) / n)) for z in range(c["z0"], c["z1"] + 1)}
-    for z in range(c["z0"], c["z1"] + 1):
-        rises = z < c["z1"] and feet[z + 1] > feet[z]
-        for x in range(c["x0"], c["x1"] + 1):
-            for y in range(feet[z] - 6, feet[z] - 1):
-                if w.id(x, y, z) in (B.AIR, B.SNOW_LAYER):
-                    w.set(x, y, z, B.STONE)
-            w.set(x, feet[z] - 1, z, *((B.STONEBRICK_STAIRS, 3) if rises else (B.STONEBRICK, 0)))
-            for y in range(feet[z], w.ids.shape[1]):
-                w.set(x, y, z, B.AIR)
-        for x in (c["x0"] - 1, c["x1"] + 1):
-            hi = max(feet[z] + 1, column_top(w, x, z))
-            for y in range(feet[z] - 1, hi + 1):
-                w.set(x, y, z, B.STONEBRICK, 0 if y % 4 else 2)
-            w.set(x, hi + 1, z, B.NETHER_FENCE)
+def helix(w):
+    """The spiral stair from the annex corridor up to the yard: a shaft lined in stone brick, its solid core lit
+    every six blocks, stairs round the ring a block up a step with the lap above built down to four blocks over
+    each, and a head house on the yard with its door over the stair's last step."""
+    h = P.HELIX
+    top = P.YARD["top"]
+    for x in range(h["x0"] - 1, h["x1"] + 2):
+        for z in range(h["z0"] - 1, h["z1"] + 2):
+            ring = h["x0"] <= x <= h["x1"] and h["z0"] <= z <= h["z1"]
+            core = h["x0"] < x < h["x1"] and h["z0"] < z < h["z1"]
+            for y in range(P.L0, top + 5):
+                if core:
+                    lit = (y - P.L0) % 6 == 3 and y < top
+                    w.set(x, y, z, *((B.SEA_LANTERN, 0) if lit else (B.STONE, 6)))
+                elif ring:
+                    w.set(x, y, z, B.AIR)
+                else:
+                    w.set(x, y, z, B.STONEBRICK, 0 if (x + y + z) % 5 else 2)
+            if ring or not core:
+                w.set(x, top + 5, z, B.DSLAB)
+                w.set(x, top + 6, z, B.SNOW_LAYER, 1)
+    steps = P.helix()
+    lap = len(steps) // 2
+    for k, (x, z, feet) in enumerate(steps):
+        for y in range(max(P.L0, feet - lap + 4), feet - 1):
+            w.set(x, y, z, B.STONEBRICK)
+        if k + 1 < len(steps):
+            nx, nz, _ = steps[k + 1]
+            way = {(1, 0): "e", (-1, 0): "w", (0, 1): "s", (0, -1): "n"}[(nx - x, nz - z)]
+            w.set(x, feet - 1, z, *((B.STONEBRICK, 0) if k == 0 else (B.STONEBRICK_STAIRS, orient.stair(way))))
+        else:
+            w.set(x, feet - 1, z, B.STONEBRICK)
+    x, z, feet = steps[-1]
+    for y in range(feet, feet + 3):                              # the head house's door onto the yard
+        w.set(x, y, z + 1, B.AIR)
+    x, z, feet = steps[0]
+    for y in range(feet, feet + 4):                              # the shaft's door from the annex corridor
+        w.set(x, y, z + 1, B.AIR)
+    for xx in range(h["x0"] - 1, h["x1"] + 2):                    # the team's band over the door
+        w.set(xx, top + 4, h["z1"] + 1, *TEAM)
 
 
-def survivors(w):
-    """Spruces in the plateau's sheltered hollows and on the hill, crowns apart and snow on every crown, with
-    the dead ones standing among them."""
-    lib = trees.kinds(trees.library())
-    kinds = lib["tiny-spruce"] + lib["tall-spruce"][:3]
-    through = trees.PLANTS | {B.SNOW_LAYER}
-    rng = np.random.default_rng(81)
-    for cx, cz, reach, count in CLUMPS:
-        planted = []
-        for _ in range(60):
-            if len(planted) >= count:
-                break
-            x = int(cx + rng.uniform(-reach, reach))
-            z = int(cz + rng.uniform(-reach, reach))
-            if not (land.Z0 + 4 <= z <= land.Z1 - 4 and land.X0 + 4 <= x <= land.X1 - 4):
-                continue
-            t = kinds[int(rng.integers(len(kinds)))]
-            if any(np.hypot(x - px, z - pz) < (t.crown + pc) * 0.45 for px, pz, pc in planted):
-                continue
-            if trees.plant(w, x, z, t, int(rng.integers(4)), through=through):
-                planted.append((x, z, t.crown))
-        for _ in range(2):
-            x, z = int(cx + rng.uniform(-reach, reach)), int(cz + rng.uniform(-reach, reach))
-            trees.dead_tree(w, x, column_top(w, x, z), z, rng, int(rng.integers(5, 9)), log=B.LOG, kind=1)
-        for x in range(cx - reach - 8, cx + reach + 9):
-            for z in range(cz - reach - 8, cz + reach + 9):
-                if not (land.X0 <= x <= land.X1 and land.Z0 <= z <= land.Z1):
-                    continue
-                y = column_top(w, x, z)
-                if w.id(x, y, z) == B.LEAVES and w.id(x, y + 1, z) == B.AIR:
-                    w.set(x, y + 1, z, B.SNOW_LAYER, 0)
+def boulders(w):
+    """Boulders lying in the plateau's snow, cut from the cliff's own beds and capped with snow."""
+    top = np.zeros((w.sx, w.sz), int)
+    for i in range(w.sx):
+        for k in range(w.sz):
+            col = w.ids[i, :, k]
+            solid = np.nonzero((col != 0) & (col != B.SNOW_LAYER))[0]
+            top[i, k] = int(solid.max()) if len(solid) else 0
+    rng = np.random.default_rng(83)
+    for x, z, size, yaw in BOULDERS:
+        placed_box(w, x, z, size, top, yaw=yaw, tilt=10, sink=0.35, paint=surface.bedded(rng))
 
 
 def build(w):
     yard(w)
-    cutting(w)
+    helix(w)
     dish(w)
     control_house(w)
     radome(w, -5, 87, 3)
     fallen_shed(w, 0, 66, 6, 71)
     stack(w, -9, 72, 9)
     stack(w, 10, 66, 12)
-    mast(w, 22, 68, 22)
+    mast(w, 10, 89, 22)
     mast(w, -40, 82, 16)
     tank(w, 34, 80, 3, 6)
     tank(w, 40, 73, 2, 5)
-    survivors(w)
+    boulders(w)
