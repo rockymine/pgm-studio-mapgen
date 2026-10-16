@@ -9,13 +9,14 @@ thresholds; the vault alone is white quartz, a clean room.
 import numpy as np
 from scipy import ndimage
 
+import interior
 import land
 import plan as P
 from pgmvox import B
 from pgmvox.core import orient
 from pgmvox.geom import noise
 
-FLOOR = [(B.STONEBRICK, 0), (B.STONE, 6), (B.STONE, 5), (B.STONE, 0)]       # a quarter each, in cells of three
+FLOOR = [(B.STONEBRICK, 0), (B.STONE, 6), (B.STONE, 5), (B.STONE, 0)]       # a quarter each, in tiles of two
 HAZARD = [(B.STAINED_CLAY, 4), (B.STAINED_CLAY, 15)]
 TEAM = (B.STAINED_CLAY, 14)                                                 # red; blue's image recolours it
 BOX = dict(x0=-66, x1=48, y0=36, y1=104, z0=0, z1=99)                      # red's station lies inside this
@@ -23,7 +24,7 @@ RUBBLE = [(B.COBBLE, 0), (B.STONE, 5), (B.STONEBRICK, 2), (B.GRAVEL, 0), (B.STON
 
 
 def floor_block(x, z):
-    h = (x // 3 * 73856093) ^ (z // 3 * 19349663)
+    h = (x // 2 * 73856093) ^ (z // 2 * 19349663)
     return FLOOR[h % 4]
 
 
@@ -119,8 +120,6 @@ def wall_block(x, y, z):
         return (B.STONEBRICK, 0)                                  # pilasters
     if y in (P.L0, P.L1, P.L2):
         return (B.STONE, 6)                                       # the skirting at the feet
-    if y in (P.L0 + 4, P.L1 + 4, P.L2 + 4) and (x + z) % 6 in (2, 3, 4):
-        return hazard(x, y, z)
     return (B.STONE, 0)
 
 
@@ -337,8 +336,8 @@ def reactor(w):
 
 
 def vault(w):
-    """The cooling vault: a sunk pool lit from its floor, racks of spent rods along the walls, a plinth for the
-    wool, and the blast door in the west wall with hazard bands either side of it."""
+    """The cooling vault: a sunk pool lit from its floor, a plinth for the wool, and the blast door in the west wall
+    with hazard bands either side of it; its walls and ceiling are `interior`'s."""
     v = next(s for s in P.SPACES if s.name == "vault")
     px0, px1, pz0, pz1 = v.x0 + 4, v.x0 + 10, v.z0 + 4, v.z0 + 11
     for x in range(px0 - 1, px1 + 2):
@@ -351,11 +350,6 @@ def vault(w):
                 w.set(x, v.feet - 4, z, B.SEA_LANTERN if (x + z) % 3 == 0 else B.PRISMARINE)
                 for y in range(v.feet - 3, v.feet):
                     w.set(x, y, z, B.WATER)
-    for x0 in (v.x0, v.x1):                                      # racks of spent rods along both long walls
-        for z in range(v.z0 + 2, v.z1 - 1, 3):
-            for y in range(v.feet, v.feet + 5):
-                w.set(x0, y, z, B.QUARTZ, 2)
-            w.set(x0, v.feet + 5, z, B.SEA_LANTERN)
     wx, _, wz = P.WOOL_AT
     for dx in (-1, 0, 1):
         for dz in (-1, 0, 1):
@@ -483,6 +477,7 @@ def furnish(w):
 
 def build(w, top):
     air = carve_and_line(w)
+    interior.build(w)
     gate(w)
     wings(w)
     garage(w)

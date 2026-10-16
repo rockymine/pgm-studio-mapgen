@@ -141,6 +141,25 @@ panels between the pilasters, with the team's band across them, stand one block 
 two deep between chiseled jambs under a polished-andesite lintel, its hazard frame at the recess's back. The gate
 has slits of bars under its cornice, the generator house a band of windows and two exhausts up its face.
 
+## The rooms inside
+
+**Every room is dressed with depth, and each in a style of its own.** A wall has a skirting of polished andesite,
+pilasters with chiseled bases and capitals every four or five blocks, panels set back a block between them, and a
+frieze under the ceiling; a door is framed by jambs and a lintel. From each pilaster a beam of cobblestone wall
+crosses the ceiling, so a room is gridded and a corridor ribbed, and the floors are two-block tiles inside a
+border. The reactor hall keeps its own dressing of cradle, columns, decks and coolant lines.
+
+| Room | Its panels | Its frieze |
+|---|---|---|
+| the entrance hall | nether brick, the fronts' dark brought inside | the team's band, set back |
+| the gate's vestibule | andesite | the team's band, set back |
+| the armoury | spruce planks | a spruce beam |
+| the spawn room | polished andesite on stone-brick faces | the team's band, set back |
+| the iron room | cobblestone, a workshop | cracked stone brick |
+| the generator house | polished andesite, a pipe standing in each | iron |
+| the service corridors | none | the hazard band, set back |
+| the vault | polished diorite between quartz pilasters, a sea lantern in every other | chiseled quartz, with beams of quartz pillar |
+
 ## What the build adds that the plan does not show
 
 **Scenery that changes no route.** The plateau carries the great dish tilted at the southern sky, its feed held
@@ -228,6 +247,12 @@ game, not a number to build toward.
 | snow on the roofs does not look good, and one signal tower is enough | the roofs are bare nether brick, and one tower stands on the operations block |
 | the chimneys are scattered | the two vent stacks stand side by side on the yard's east edge |
 | the entrances want depth | both fronts are brought out in layers, the doors recessed with their hazard frames at the back |
+
+## What changed after the sixth build, and why
+
+**The author found the inside plain beside the outside.** Every room is now dressed as the table under *The rooms
+inside* says, the floors are tiled in twos instead of threes, and the yellow-and-black band that ran round every
+wall is gone, kept only as an inset frieze in the service corridors.
 
 ## The first plan
 
