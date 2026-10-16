@@ -872,3 +872,20 @@ renderer as well as pgmvox's own. Neither saw the other's work.
 |---|---|---|---|
 | `freeform/lib/boards/crucible` | dtc + ctw | Opus 5.5 | **Two foundries dug into facing volcanoes across a lava rift**, 140 by 200. Each core is a crucible hung from a gantry crane over a sunken casting pit whose floor is the leak line, and each wool lies in the cold store two levels down, the one cool room of quartz and prismarine. Four ways to a crucible (around by the haul ramp, below by a lava tube, above along the crane girder, through the furnace hall) and three to the wool. GO4 **53**, GO3 **148**, GO1 **2.79** (missed), nothing falling, the studio parser reads it as valid. World at `maps/mixed/crucible` |
 | `freeform/lib/boards/kilnhold` | dtm + ctf | Sonnet 5.5 | **A geothermal station in a caldera's rim**, 140 by 200: two concrete bunkers on four levels across an ash plain with a lava-lake crater. Two floating monuments a team (one on the roof deck, one over the pump hall's grated pool) and a flag in the turbine hall's shrine, captured at a net in the gate hall; `mapxml.py` writes the nets and the pickup filter the library's Flag objective does not. Spawn to own goals **67** and **65**, enemy over own **3.42** and **3.22**, GO2 and GO3 missed, 220 loose blocks (the trees' arms and some glowstone). World at `maps/mixed/kilnhold` |
+
+### Opus 5.5 and Sonnet 5.5 — six blind entries to a Fire and Ice contest (2026-10-16)
+
+Six agents, three of each model, given one short brief: pgmvox only, Fire and Ice read as winter meeting autumn,
+any of the four objective modes alone or mixed, judged on depth, gameplay, the theme, originality and a footprint
+of about 150 by 200. Each worked in a shallow copy of the repository with this session's bunker boards and studies
+taken out, saw only four named boards for scale, and saw no other contestant's work. All six chose Destroy the
+Core, with or without monuments, and all six split one ground into a winter half and an autumn half.
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `freeform/lib/boards/rimefire` | dtc | Sonnet 5.5 | **The author-facing first place**: one island in two skins along an S-shaped seam with lava under one wall and a frozen stream under the other; a nether-brick furnace ring and a prismarine ice ring round the cores, banded autumn cliffs, two hamlets, towers. Built ratio 2.4 (missed); 1,362 blocks of clay loose in tree crowns. World at `maps/dtcm/rimefire` |
+| `freeform/lib/boards/emberfrost` | dtc | Sonnet 5.5 | An island in three bands, an ice lane, an autumn hamlet and a fire lane with a caldera, two cores a team, a gorge of water and lava with three spans, a cave and a lava tube. Enemy walks 154 and 171 (over); 860 loose clay blocks in crowns. World at `maps/dtcm/emberfrost` |
+| `freeform/lib/boards/rimeglow-rift` | dtc | Sonnet 5.5 | A floating island cut by a dammed lava rift, crossed by a gatehouse causeway, two trestles and a low ledge; banded cliffs with icicles and ember drips. Own 44, enemy 137, ratio 3.1. World at `maps/dtcm/rimeglow_rift` |
+| `freeform/lib/boards/thawline` | dtc + dtm | Opus 5.5 | One valley in one week, frost and ember halves across a lava gorge with a half-ice, half-fire stack in its middle; a core in a kettle and a monument on a green each. Plan bands all met, built own walk 38. World at `maps/dtcm/thawline` |
+| `freeform/lib/boards/hoarfire` | dtc + dtm | Opus 5.5 | Two mirrored islands across a void rift, each half winter to the west and autumn to the east; a packed-ice crystal monument and a core over a charcoal pit. Own 49, ratio 3.0. World at `maps/dtcm/hoarfire` |
+| `freeform/lib/boards/rimeburn` | dtc + dtm | Opus 5.5 | One land in two seasons across a void seam with an island in it; each team a Hearth core and an Icestone monument. Built own walks 38 to 40. World at `maps/dtcm/rimeburn` |

@@ -1,0 +1,170 @@
+<map proto="1.5.0">
+    <name>Emberfrost</name>
+    <version>1.0.0</version>
+    <objective>Fire and ice meet over a gorge. Leak the enemy's Rime Core in the glacier and the Forge Core in the caldera before they leak yours.</objective>
+    <gamemode>dtc</gamemode>
+    <include id="gapple-kill-reward"/>
+    <authors>
+        <author>Claude Sonnet 5.5 (freeform generator, on pgmvox)</author>
+    </authors>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true">
+                <enchantment level="2">efficiency</enchantment>
+            </item>
+            <item slot="3" material="iron axe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="4" material="wood" amount="64" damage="1"/>
+            <item slot="5" material="stained clay" amount="64" team-color="true"/>
+            <item slot="6" material="golden apple"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <item slot="29" material="shears" unbreakable="true"/>
+            <item slot="31" material="wood" amount="64" damage="1"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <teams>
+        <team id="red-team" color="red" max="24">Red</team>
+        <team id="blue-team" color="blue" max="24">Blue</team>
+    </teams>
+    <filters>
+        <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
+        <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
+        <not id="block-place-void-filter">
+            <void/>
+        </not>
+        <any id="block-break-void-filter">
+            <all>
+                <any>
+                    <material>log</material>
+                    <material>log 2</material>
+                    <material>leaves</material>
+                    <material>leaves 2</material>
+                    <material>long grass</material>
+                    <material>yellow flower</material>
+                    <material>red rose</material>
+                    <material>double plant</material>
+                    <material>water lily</material>
+                    <material>vine</material>
+                </any>
+                <void/>
+            </all>
+            <filter id="block-place-void-filter"/>
+        </any>
+    </filters>
+    <spawns>
+        <spawn team="red-team" kit="spawn-kit" yaw="0">
+            <region>
+                <point>0.5,68,-75.5</point>
+            </region>
+        </spawn>
+        <spawn team="blue-team" kit="spawn-kit" yaw="180">
+            <region>
+                <point>0.5,68,75.5</point>
+            </region>
+        </spawn>
+        <default yaw="0">
+            <region>
+                <point>0.5,100,0.5</point>
+            </region>
+        </default>
+    </spawns>
+    <regions>
+        <cuboid min="-16,0,-94" max="17,141,-69" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-16,0,69" max="17,141,94" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-37,76,-52" max="-32,81,-47" id="red-rime-region"/>
+        <cuboid min="-37,76,47" max="-32,81,52" id="blue-rime-region"/>
+        <cuboid min="38,70,-62" max="43,75,-57" id="red-forge-region"/>
+        <cuboid min="38,70,57" max="43,75,62" id="blue-forge-region"/>
+        <apply block-place="block-place-void-filter" block-break="block-break-void-filter" message="You may not edit the void!"/>
+    </regions>
+    <cores>
+        <core id="red-rime" name="Red Rime Core" team="red-team" leak="5" mode-changes="true" region="red-rime-region"/>
+        <core id="blue-rime" name="Blue Rime Core" team="blue-team" leak="5" mode-changes="true" region="blue-rime-region"/>
+        <core id="red-forge" name="Red Forge Core" team="red-team" leak="5" mode-changes="true" region="red-forge-region"/>
+        <core id="blue-forge" name="Blue Forge Core" team="blue-team" leak="5" mode-changes="true" region="blue-forge-region"/>
+    </cores>
+    <maxbuildheight>118</maxbuildheight>
+    <portals>
+        <portal y="@-64" sound="false" observers="never">
+            <region>
+                <below y="4"/>
+            </region>
+        </portal>
+    </portals>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>stained clay</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>diamond pickaxe</item>
+        <item>iron axe</item>
+        <item>golden apple</item>
+        <item>water bucket</item>
+        <item>arrow</item>
+        <item>shears</item>
+        <item>wood</item>
+        <item>stained clay</item>
+        <item>cooked beef</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+        <item>obsidian</item>
+        <item>flint</item>
+        <item>gravel</item>
+        <item>sapling</item>
+        <item>apple</item>
+        <item>pumpkin</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>diamond pickaxe</tool>
+        <tool>iron axe</tool>
+        <tool>shears</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16" damage="1"/>
+            <item material="stained clay" amount="8" team-color="true"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+</map>
+

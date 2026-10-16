@@ -1,0 +1,24 @@
+Rimeburn plan check
+
+        41  Frost Hearth: walk from its own spawn                      GO4 40-90        ok
+       141  Frost Hearth: walk from the enemy spawn (37 bridged)       GO3 85-150       ok
+      3.48  Frost Hearth: enemy walk over own                          GO1 3-4          ok
+        59  Frost Hearth: degrees off the line between the spawns      corpus median 42 ok
+        41  Ember Hearth: walk from its own spawn                      GO4 40-90        ok
+       141  Ember Hearth: walk from the enemy spawn (37 bridged)       GO3 85-150       ok
+      3.48  Ember Hearth: enemy walk over own                          GO1 3-4          ok
+        61  Ember Hearth: degrees off the line between the spawns      corpus median 42 ok
+        40  Frost Icestone: walk from its own spawn                    GO4 40-90        ok
+       147  Frost Icestone: walk from the enemy spawn (47 bridged)     GO3 85-150       ok
+      3.64  Frost Icestone: enemy walk over own                        GO1 3-4          ok
+        60  Frost Icestone: degrees off the line between the spawns    corpus median 42 ok
+        40  Ember Icestone: walk from its own spawn                    GO4 40-90        ok
+       147  Ember Icestone: walk from the enemy spawn (47 bridged)     GO3 85-150       ok
+      3.64  Ember Icestone: enemy walk over own                        GO1 3-4          ok
+        61  Ember Icestone: degrees off the line between the spawns    corpus median 42 ok
+       0.0  Core: Frost's walk less Ember's to their own               0                ok
+       0.0  Destroyable: Frost's walk less Ember's to their own        0                ok
+        23  the narrowest bridge straight across the seam              at least 16      ok
+        11  the narrowest bridge from a land to the Thaw               8 to 16          ok
+      1.7%  ground under y 56 no spawn reaches                         at most 2%       ok
+     18416  columns of land                                            less than 20,000 (void board) ok

@@ -236,6 +236,12 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `dtcm/whitegape` | `opus5-whitegape` | `specs/opus5-whitegape` |
 | `dtcm/whitstone_weald` | `whitstone-weald` | `specs/whitstone-weald` |
 | `dtcm/winterfold` | `haiku-winterfold` | `specs/archive/haiku-winterfold` |
+| `dtcm/thawline` | `freeform/lib/boards/thawline` | `freeform/lib/boards/thawline` |
+| `dtcm/rimeglow_rift` | `freeform/lib/boards/rimeglow-rift` | `freeform/lib/boards/rimeglow-rift` |
+| `dtcm/hoarfire` | `freeform/lib/boards/hoarfire` | `freeform/lib/boards/hoarfire` |
+| `dtcm/rimefire` | `freeform/lib/boards/rimefire` | `freeform/lib/boards/rimefire` |
+| `dtcm/rimeburn` | `freeform/lib/boards/rimeburn` | `freeform/lib/boards/rimeburn` |
+| `dtcm/emberfrost` | `freeform/lib/boards/emberfrost` | `freeform/lib/boards/emberfrost` |
 | `ffa/gullhaven` | `freeform/lib/boards/gullhaven` | `freeform/lib/boards/gullhaven` |
 | `kotf/riad` | `freeform/lib/boards/riad` | `freeform/lib/boards/riad` |
 | `koth/basaltmere` | `opus5-basaltmere` | `specs/opus5-basaltmere` |

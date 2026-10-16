@@ -1,0 +1,168 @@
+<map proto="1.5.0">
+    <name>Rimeglow Rift</name>
+    <version>1.0.0</version>
+    <objective>Break the enemy's core, held over its pit on the far butte.</objective>
+    <gamemode>dtc</gamemode>
+    <rules>
+        <rule>Break the enemy core: it is held over a pit, and the lava must run.</rule>
+        <rule>Three crossings span the rift; the ledges along the lava are a fourth way, on foot.</rule>
+        <rule>The lava is lava. Build over it if you must.</rule>
+    </rules>
+    <include id="gapple-kill-reward"/>
+    <authors>
+        <author>Claude (pgmvox)</author>
+    </authors>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true">
+                <enchantment level="2">efficiency</enchantment>
+            </item>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="stained clay" amount="48" team-color="true"/>
+            <item slot="6" material="golden apple" amount="2"/>
+            <item slot="7" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <teams>
+        <team id="rime-team" color="aqua" max="24">Rime</team>
+        <team id="ember-team" color="gold" max="24">Ember</team>
+    </teams>
+    <filters>
+        <team id="only-rime">rime-team</team>
+        <not id="not-rime">
+            <team>rime-team</team>
+        </not>
+        <team id="only-ember">ember-team</team>
+        <not id="not-ember">
+            <team>ember-team</team>
+        </not>
+        <not id="block-place-void-filter">
+            <void/>
+        </not>
+        <any id="block-break-void-filter">
+            <all>
+                <any>
+                    <material>log</material>
+                    <material>log 2</material>
+                    <material>leaves</material>
+                    <material>leaves 2</material>
+                    <material>long grass</material>
+                    <material>yellow flower</material>
+                    <material>red rose</material>
+                    <material>double plant</material>
+                    <material>water lily</material>
+                    <material>vine</material>
+                </any>
+                <void/>
+            </all>
+            <filter id="block-place-void-filter"/>
+        </any>
+    </filters>
+    <spawns>
+        <spawn team="rime-team" yaw="0">
+            <regions>
+                <cuboid min="1,72,-76" max="9,73,-65"/>
+                <cuboid min="18,72,-76" max="26,73,-65"/>
+            </regions>
+        </spawn>
+        <spawn team="ember-team" yaw="180">
+            <regions>
+                <cuboid min="-9,72,65" max="-1,73,76"/>
+                <cuboid min="-26,72,65" max="-18,73,76"/>
+            </regions>
+        </spawn>
+        <default yaw="0">
+            <region>
+                <point>0.5,92,0.5</point>
+            </region>
+        </default>
+    </spawns>
+    <regions>
+        <cuboid min="-3,71,-92" max="30,86,-62" id="rime-spawn"/>
+        <apply enter="only-rime" region="rime-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="rime-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-30,71,62" max="3,86,92" id="ember-spawn"/>
+        <apply enter="only-ember" region="ember-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="ember-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="45,74,-49" max="48,77,-46" id="rime-core-region"/>
+        <cuboid min="-48,74,46" max="-45,77,49" id="ember-core-region"/>
+        <apply block-place="block-place-void-filter" block-break="block-break-void-filter" message="You may not edit the void!"/>
+    </regions>
+    <cores>
+        <core id="rime-core" name="Rimewatch Core" team="rime-team" leak="6" mode-changes="true" region="rime-core-region"/>
+        <core id="ember-core" name="Rimewatch Core" team="ember-team" leak="6" mode-changes="true" region="ember-core-region"/>
+    </cores>
+    <maxbuildheight>104</maxbuildheight>
+    <portals>
+        <portal y="@-64" sound="false" observers="never">
+            <region>
+                <below y="10"/>
+            </region>
+        </portal>
+    </portals>
+    <time result="objectives">40m</time>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>stained clay</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>diamond pickaxe</item>
+        <item>iron axe</item>
+        <item>arrow</item>
+        <item>wood</item>
+        <item>stained clay</item>
+        <item>golden apple</item>
+        <item>cooked beef</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>iron chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+        <item>obsidian</item>
+        <item>flint</item>
+        <item>gravel</item>
+        <item>sapling</item>
+        <item>apple</item>
+        <item>seeds</item>
+        <item>long grass</item>
+        <item>pumpkin</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>diamond pickaxe</tool>
+        <tool>iron axe</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16"/>
+            <item material="stained clay" amount="8" team-color="true"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+</map>
+

@@ -1,0 +1,162 @@
+<map proto="1.5.0">
+    <name>Rimefire</name>
+    <version>1.0.0</version>
+    <objective>Leak the enemy core: a Furnace in the fire half, a Cold Hearth in the ice.</objective>
+    <gamemode>dtc</gamemode>
+    <include id="gapple-kill-reward"/>
+    <authors>
+        <author>Claude (pgmvox)</author>
+    </authors>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="stone sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="iron pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="stained clay" amount="32" team-color="true"/>
+            <item slot="6" material="golden apple"/>
+            <item slot="7" material="cooked beef" amount="16"/>
+            <item slot="8" material="shears" unbreakable="true"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true"/>
+            <leggings material="leather leggings" unbreakable="true" team-color="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <teams>
+        <team id="fire-team" color="red" max="24">Fire</team>
+        <team id="ice-team" color="aqua" max="24">Ice</team>
+    </teams>
+    <filters>
+        <team id="only-fire">fire-team</team>
+        <not id="not-fire">
+            <team>fire-team</team>
+        </not>
+        <team id="only-ice">ice-team</team>
+        <not id="not-ice">
+            <team>ice-team</team>
+        </not>
+        <not id="block-place-void-filter">
+            <void/>
+        </not>
+        <any id="block-break-void-filter">
+            <all>
+                <any>
+                    <material>log</material>
+                    <material>log 2</material>
+                    <material>leaves</material>
+                    <material>leaves 2</material>
+                    <material>long grass</material>
+                    <material>yellow flower</material>
+                    <material>red rose</material>
+                    <material>double plant</material>
+                    <material>water lily</material>
+                    <material>vine</material>
+                </any>
+                <void/>
+            </all>
+            <filter id="block-place-void-filter"/>
+        </any>
+    </filters>
+    <spawns>
+        <spawn team="fire-team" yaw="0">
+            <region>
+                <point>-13.5,65,-72.5</point>
+            </region>
+        </spawn>
+        <spawn team="ice-team" yaw="180">
+            <region>
+                <point>13.5,65,72.5</point>
+            </region>
+        </spawn>
+        <default yaw="0">
+            <region>
+                <point>0.5,100,-0.5</point>
+            </region>
+        </default>
+    </spawns>
+    <regions>
+        <cuboid min="-29,64,-90" max="2,73,-65" id="fire-spawn"/>
+        <apply enter="only-fire" region="fire-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="fire-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-2,64,65" max="29,73,90" id="ice-spawn"/>
+        <apply enter="only-ice" region="ice-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="ice-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="25,71,-55" max="30,76,-50" id="fire-core-region"/>
+        <cuboid min="-30,71,50" max="-25,76,55" id="ice-core-region"/>
+        <apply block-place="block-place-void-filter" block-break="block-break-void-filter" message="You may not edit the void!"/>
+    </regions>
+    <cores>
+        <core id="fire-core" name="the Furnace" team="fire-team" leak="5" mode-changes="true" region="fire-core-region"/>
+        <core id="ice-core" name="the Cold Hearth" team="ice-team" leak="5" mode-changes="true" region="ice-core-region"/>
+    </cores>
+    <maxbuildheight>112</maxbuildheight>
+    <portals>
+        <portal y="@-64" sound="false" observers="never">
+            <region>
+                <below y="26"/>
+            </region>
+        </portal>
+    </portals>
+    <time>40m</time>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>stained clay</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>stone sword</item>
+        <item>bow</item>
+        <item>iron pickaxe</item>
+        <item>iron axe</item>
+        <item>golden apple</item>
+        <item>shears</item>
+        <item>arrow</item>
+        <item>wood</item>
+        <item>stained clay</item>
+        <item>cooked beef</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>leather leggings</item>
+        <item>leather boots</item>
+        <item>obsidian</item>
+        <item>flint</item>
+        <item>gravel</item>
+        <item>sapling</item>
+        <item>apple</item>
+        <item>seeds</item>
+        <item>long grass</item>
+        <item>pumpkin</item>
+    </itemremove>
+    <toolrepair>
+        <tool>stone sword</tool>
+        <tool>bow</tool>
+        <tool>iron pickaxe</tool>
+        <tool>iron axe</tool>
+        <tool>shears</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16"/>
+            <item material="stained clay" amount="8" team-color="true"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+</map>
+

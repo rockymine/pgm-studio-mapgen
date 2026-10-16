@@ -1,0 +1,206 @@
+<map proto="1.5.0">
+    <name>Rimeburn</name>
+    <version>1.0.0</version>
+    <objective>Break the enemy's Hearth and shatter their Icestone. Frost keeps a fire in the snow, Ember keeps ice in the autumn; each must lose both.</objective>
+    <gamemode>dtcm</gamemode>
+    <rules>
+        <rule>Destroy both of the enemy's objectives: their Hearth (leak its lava) and their Icestone.</rule>
+        <rule>The two lands meet only across the void: bridge the seam, or take the Thaw in its middle.</rule>
+        <rule>The Vent under each front comes up in that side's Hearth Hollow.</rule>
+    </rules>
+    <include id="gapple-kill-reward"/>
+    <authors>
+        <author>Claude Opus 5.5 (freeform, on pgmvox)</author>
+    </authors>
+    <kits>
+        <kit id="frost-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true">
+                <enchantment level="2">efficiency</enchantment>
+            </item>
+            <item slot="3" material="iron axe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="4" material="wood" amount="64" damage="1"/>
+            <item slot="5" material="golden apple" amount="2"/>
+            <item slot="6" material="glass" amount="32"/>
+            <item slot="7" material="cooked beef" amount="16"/>
+            <item slot="8" material="wood" amount="64" damage="1"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+        <kit id="ember-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true">
+                <enchantment level="2">efficiency</enchantment>
+            </item>
+            <item slot="3" material="iron axe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="4" material="wood" amount="64" damage="4"/>
+            <item slot="5" material="golden apple" amount="2"/>
+            <item slot="6" material="glass" amount="32"/>
+            <item slot="7" material="cooked beef" amount="16"/>
+            <item slot="8" material="wood" amount="64" damage="4"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <teams>
+        <team id="ember-team" color="gold" max="24">Ember</team>
+        <team id="frost-team" color="aqua" max="24">Frost</team>
+    </teams>
+    <filters>
+        <team id="only-ember">ember-team</team>
+        <not id="not-ember">
+            <team>ember-team</team>
+        </not>
+        <team id="only-frost">frost-team</team>
+        <not id="not-frost">
+            <team>frost-team</team>
+        </not>
+        <not id="block-place-void-filter">
+            <void/>
+        </not>
+        <any id="block-break-void-filter">
+            <all>
+                <any>
+                    <material>log</material>
+                    <material>log 2</material>
+                    <material>leaves</material>
+                    <material>leaves 2</material>
+                    <material>long grass</material>
+                    <material>yellow flower</material>
+                    <material>red rose</material>
+                    <material>double plant</material>
+                    <material>water lily</material>
+                    <material>vine</material>
+                </any>
+                <void/>
+            </all>
+            <filter id="block-place-void-filter"/>
+        </any>
+    </filters>
+    <spawns>
+        <spawn team="frost-team" kit="frost-kit" yaw="0">
+            <region>
+                <point>3.5,47,-77.5</point>
+            </region>
+        </spawn>
+        <spawn team="ember-team" kit="ember-kit" yaw="180">
+            <region>
+                <point>-3.5,47,77.5</point>
+            </region>
+        </spawn>
+        <default yaw="0">
+            <region>
+                <point>0.5,62,0.5</point>
+            </region>
+        </default>
+    </spawns>
+    <regions>
+        <cuboid min="-2,47,-82" max="9,51,-74" id="frost-spawn"/>
+        <apply enter="only-frost" region="frost-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="frost-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-9,47,74" max="2,51,82" id="ember-spawn"/>
+        <apply enter="only-ember" region="ember-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="ember-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-37,40,-60" max="-32,45,-55" id="frost-hearth-region"/>
+        <cuboid min="32,40,55" max="37,45,60" id="ember-hearth-region"/>
+        <cuboid min="37,50,-57" max="40,53,-54" id="frost-icestone-region"/>
+        <cuboid min="-40,50,54" max="-37,53,57" id="ember-icestone-region"/>
+        <negative id="not-build-area">
+            <rectangle min="-64,-26" max="64,26"/>
+        </negative>
+        <apply block-place="block-place-void-filter" block-break="block-break-void-filter" region="not-build-area" message="You may not edit the void!"/>
+    </regions>
+    <cores>
+        <core id="frost-hearth" name="Frost Hearth" team="frost-team" leak="5" mode-changes="true" region="frost-hearth-region"/>
+        <core id="ember-hearth" name="Ember Hearth" team="ember-team" leak="5" mode-changes="true" region="ember-hearth-region"/>
+    </cores>
+    <destroyables>
+        <destroyable id="frost-icestone" name="Frost Icestone" owner="frost-team" materials="packed ice" completion="100%" mode-changes="true" region="frost-icestone-region"/>
+        <destroyable id="ember-icestone" name="Ember Icestone" owner="ember-team" materials="packed ice" completion="100%" mode-changes="true" region="ember-icestone-region"/>
+    </destroyables>
+    <gamerules>
+        <doFireTick>false</doFireTick>
+    </gamerules>
+    <maxbuildheight>78</maxbuildheight>
+    <portals>
+        <portal y="@-64" sound="false" observers="never">
+            <region>
+                <below y="20"/>
+            </region>
+        </portal>
+    </portals>
+    <time>25m</time>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>glass</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>diamond pickaxe</item>
+        <item>iron axe</item>
+        <item>arrow</item>
+        <item>wood</item>
+        <item>golden apple</item>
+        <item>glass</item>
+        <item>cooked beef</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+        <item>packed ice</item>
+        <item>obsidian</item>
+        <item>flint</item>
+        <item>gravel</item>
+        <item>sapling</item>
+        <item>apple</item>
+        <item>seeds</item>
+        <item>long grass</item>
+        <item>red rose</item>
+        <item>pumpkin</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>diamond pickaxe</tool>
+        <tool>iron axe</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16" damage="1"/>
+            <item material="glass" amount="16"/>
+            <item material="wood" amount="16" damage="4"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+</map>
+

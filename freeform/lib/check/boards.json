@@ -64,6 +64,11 @@
   "tiles.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "volume.bin": "ce36d92a7dc3288a47753eca460bc705eb0481612d83d1844aaf0489ef30f3e7"
  },
+ "boards/emberfrost": {
+  "level.json": "810b563e5539c656772520c414fbd206cf0a42c95fbb7942e6677a5438fa0b9c",
+  "tiles.json": "82ca43f821d4b34428ed6ed3610a5e799e467d88fe4a3bc92723b3f0e64fbf10",
+  "volume.bin": "dcb785fb759a208e48a98a3ecb58164e7ca9c6477227b6408a21063285288e1f"
+ },
  "boards/exp-abbeymoor-pgmvox": {
   "level.json": "6efce005fcead0d4a7b8f862423e8053bfe1100edac025fb332e2ba496fb1beb",
   "tiles.json": "da00f7295d60edecd0ff37a9baef0757e1a442854458163391996b92ccae6dd2",
@@ -88,6 +93,11 @@
   "level.json": "fedb4168e8b6bd0fc236ec625af5608afa86505d747a8a3377cde0cd0f402938",
   "tiles.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
   "volume.bin": "9c2339bfbb8f3be40d23b5d2a74dd3773546953e4477689698ea6d8b24453b84"
+ },
+ "boards/hoarfire": {
+  "level.json": "ac0296e18673116a0e7dbafa81004633ebb8df68e8affc6d7e5bcd18ae2c8649",
+  "tiles.json": "11ce4b314bfc807b2087986a35f5b714eaa84f4e262225fd781fd3b63628a0fe",
+  "volume.bin": "9e1435ed11e3d5ff0b9637b2290b65cfa460db4d7a77c4ea8d491f384a45d6ea"
  },
  "boards/hoarfrost-reach": {
   "level.json": "a9848dbdfa60f58fcc0701d7613ac4a00afe36522709d7077420ccea170ead6f",
@@ -164,6 +174,21 @@
   "tiles.json": "0ab59e7b53317597c59a30b1023c8ccd9675c124925b1a0bab9ffec90abc34ec",
   "volume.bin": "b16aba141b7ff05544248a0c8f1053c4f84aa93074ba28853e7a1a07dec25592"
  },
+ "boards/rimeburn": {
+  "level.json": "9c00a7d7f47e0e0fee8a5da532f889201b87679ae00563b3f9486300726292a3",
+  "tiles.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "volume.bin": "4a139e2731f61405ad28f78b0fcc1dbb520a02cf424e4d26ee2b0eebaf18570a"
+ },
+ "boards/rimefire": {
+  "level.json": "1438fcc5c6a221fe951af1475b582e6b387cc04cce90bca3bbc167be054709f0",
+  "tiles.json": "90067e320619c55c1a5a7d58cc33c3c38ba993f633642ccde33140f0d36c4e1f",
+  "volume.bin": "3a3d9f6eb9ec90adfbb1a9256386aa55d2e90234d22d85662adb1a7c8e861877"
+ },
+ "boards/rimeglow-rift": {
+  "level.json": "f55591ffcdc519804d497209f5e88870607b2ae029445cc0139c29a2a9288d7b",
+  "tiles.json": "7e27eea2ba4ea5cebe64537942592b7f07e38db4f1d05491e971969fecb0ae26",
+  "volume.bin": "22691d866870b643f34eac6532145c5a0cc291cc270126cea5bc21b095ebdb2c"
+ },
  "boards/saltgate": {
   "level.json": "13a2a6bab54c7ca8b249a1d6256d3092a5e61a81d378600f8f5f8a8b0843fc0e",
   "tiles.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
@@ -193,6 +218,11 @@
   "level.json": "5cd4e10df3270e3b821489644139c47d6535639bd2e2e409b21e37cfb26f8d2b",
   "tiles.json": "24eb17b262e97c498df0466a60690e94ed2edf91e68208becb8b924a95d4c57c",
   "volume.bin": "222eaa3d8c172435e9a041d5e7a6905d6257b8ec11db47b1db5be3c703382434"
+ },
+ "boards/thawline": {
+  "level.json": "e25c938ff8048739812b703df4f97d49bb78f702b54796c9fd216d3097a53de1",
+  "tiles.json": "450d32290f597765be50faa77fa3bf154f5fc717329142d4eae503ec1e682381",
+  "volume.bin": "5cde1845c04d05aa3b8a14d943a61f9ccbe96641366b142549585715ac20742f"
  },
  "boards/tidewell-canals": {
   "level.json": "33ca035cc6ea62bd9ea4382875b9f0a67c383aa8376e9cc2d5c4195ca6971cb0",
