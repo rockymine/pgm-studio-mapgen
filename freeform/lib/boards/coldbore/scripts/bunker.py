@@ -2,8 +2,8 @@
 buttress and the generator house in the east, the reactor hall with its balcony, gantry and ramp, the pit under
 the core, the vault and its blast door, the gallery over the fissure, and the store whose ceiling fell in.
 
-The built family is the station's: stone and stone brick inside, a dark nether-brick front at the gate and a
-pale concrete front at the generator house, iron for what is machinery, yellow-and-black hazard bands at its
+The built family is the station's: stone and stone brick inside, a dark nether-brick front at the gate and at
+the generator house alike, iron for what is machinery, yellow-and-black hazard bands at its
 thresholds; the vault alone is white quartz, a clean room.
 """
 import numpy as np
@@ -146,22 +146,21 @@ def facade_block(x, y, z):
 
 
 def annex_block(x, y, z):
-    """The generator house's front: pale poured concrete in lifts between ribs of quartz, a plinth of polished
-    andesite, a window band of bars, the team's band under a coping of slabs."""
+    """The generator house's front, in the gate's dark style: nether brick ribbed in stone brick between its bays, a
+    course of stone brick at the gate's height, a window band of bars, the team's band under a parapet of nether
+    brick slabs and fence."""
     a, ga = P.ANNEX, P.GARAGE
     if y == a["y1"]:
-        return (B.SLAB, 5)
-    if y == a["y1"] - 2:
+        return (B.NETHER_FENCE, 0) if (x + z) % 2 else (B.SLAB, 6)
+    if y == a["y1"] - 1 or y == P.L0 + 9:
+        return (B.STONEBRICK, 0)
+    if y == a["y1"] - 3:
         return TEAM
-    if y <= P.L0:
-        return (B.STONE, 6)
-    if z == a["z0"] and (x - a["x0"]) % 5 == 0:
-        return (B.QUARTZ, 2)                                      # ribs between the bays
-    if z == a["z0"] and y in (P.L0 + 7, P.L0 + 8) and not ga["x0"] - 1 <= x <= ga["x1"] + 1:
+    if z == a["z0"] and y in (P.L0 + 7, P.L0 + 8) and (x - a["x0"]) % 5 and not ga["x0"] - 1 <= x <= ga["x1"] + 1:
         return (B.IRON_BARS, 0)                                   # the window band onto the court
-    if (y - P.L0) % 4 == 3:
-        return (B.STONE, 6)                                       # the lift lines between pours
-    return (B.STAINED_CLAY, 8)
+    if (x - a["x0"]) % 5 == 0 and z == a["z0"]:
+        return (B.STONEBRICK, 0)                                  # ribs between the bays
+    return (B.NETHER_BRICK, 0)
 
 
 def gate(w):
@@ -215,7 +214,7 @@ def garage(w):
         w.set(x, ga["feet"] + ga["h"] - 1, z, B.IRON_TRAPDOOR, 8 | 1)
     for x in (a["x0"] + 2, a["x1"] - 2):
         for y in range(P.L0, a["y1"] + 6):
-            w.set(x, y, a["z0"] - 1, B.COBBLE_WALL)
+            w.set(x, y, a["z0"] - 1, B.NETHER_FENCE)
         w.set(x, a["y1"] + 6, a["z0"] - 1, B.IRON_BARS)
 
 

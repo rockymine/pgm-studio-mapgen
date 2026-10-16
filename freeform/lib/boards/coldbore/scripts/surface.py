@@ -1,6 +1,6 @@
 """What stands on red's snowfield: the courts paved in front of the gate and the generator house, the roads from
 them to the fissure and the flanks, the boulders that give the approaches cover, the old road bridge broken off
-over the fissure, signal towers on the hill and one blown over on the snow, lamps on the courts, the lavafalls down red's wall
+over the fissure, lattice towers on the hill and one blown over on the snow, lamps on the courts, the lavafalls down red's wall
 of the fissure, and the bore's wrecked derrick on its stump in the middle.
 """
 import numpy as np
@@ -17,7 +17,7 @@ ROAD = [(B.GRAVEL, 0), (B.STONE, 5), (B.COBBLE, 0)]           # a third each: ha
 BOULDERS = [(-9, 25, (4, 3, 3), 20), (16, 16, (3, 3, 4), -15), (-31, 19, (5, 3, 4), 40), (31, 28, (4, 4, 3), 10),
             (-67, 40, (5, 4, 4), -30), (59, 46, (4, 3, 5), 25), (-18, 40, (3, 3, 3), 5), (14, 45, (3, 2, 4), -40),
             (-12, 32, (4, 3, 4), 60)]
-TOWERS = [(58, 70, False), (56, 40, False), (46, 36, True)]       # x, z, blown over
+TOWERS = [(58, 70, False), (56, 40, False), (46, 36, True)]       # lattice towers: x, z, blown over
 
 
 def at(top, x, z):
@@ -205,32 +205,62 @@ def signal_tower(w, x, z, modules=4):
     w.set(x, y + 7, z, B.NETHER_FENCE)
 
 
-def fallen_tower(w, x, z, length=18):
-    """A signal tower blown over, lying along the snow toward the fissure, each block of it on the ground under
-    it, its end broken off where the ground falls away."""
-    start = column_top(w, x, z)
-    parts = (MODULE * 4)[:length]
-    for t, part in enumerate(parts):
-        zz = z - t
-        g = column_top(w, x, zz)
-        if g < start - 3:
+def pylon(w, x, z, height=15):
+    """A lattice tower of nether fence braced with bars, on the flattest ground near (x, z), each leg on a footing
+    and each step of its taper on a deck, so every piece of it stands on the one under it."""
+    x, z, base = seat(w, x, z, 2)
+    footings(w, [(x + dx, z + dz) for dx in (-2, 2) for dz in (-2, 2)], base)
+    for t in range(height):
+        half = max(0, 2 - t // 6)
+        for dx in (-half, half):
+            for dz in (-half, half):
+                w.set(x + dx, base + 1 + t, z + dz, B.NETHER_FENCE)
+        if half and max(0, 2 - (t + 1) // 6) < half:
+            for dx in range(-half, half + 1):
+                for dz in range(-half, half + 1):
+                    w.set(x + dx, base + 1 + t, z + dz, B.NETHER_FENCE)
+        elif t % 4 == 3:
+            for a in range(-half, half + 1):
+                w.set(x + a, base + 1 + t, z - half, B.IRON_BARS)
+                w.set(x + a, base + 1 + t, z + half, B.IRON_BARS)
+    for a in range(-4, 5):
+        w.set(x + a, base + height, z, B.NETHER_FENCE)
+
+
+def toppled_pylon(w, x, z, length=15):
+    """A lattice tower blown over, lying along the snow toward the fissure, every rung of it on the ground under it,
+    its end broken off where the ground falls away."""
+    start = max(column_top(w, x + a, z) for a in range(-2, 3))
+    for t in range(length):
+        half = max(0, 2 - t // 6)
+        if max(column_top(w, x + a, z - t) for a in range(-2, 3)) < start - 3:
             break
-        if part == "clay":
-            w.set(x, g + 1, zz, *TEAM)
-        elif part == "collar":
-            w.set(x, g + 1, zz, B.IRON_BLOCK)
-            for a in (-1, 1):
-                w.set(x + a, column_top(w, x + a, zz) + 1, zz, B.SLAB, 5)
-        else:
-            w.set(x, g + 1, zz, B.QUARTZ, 1)
+        cells = [x - half, x + half] if t % 4 != 3 else range(x - half, x + half + 1)
+        for cx in cells:
+            w.set(cx, column_top(w, cx, z - t) + 1, z - t, B.IRON_BARS if t % 4 == 3 else B.NETHER_FENCE)
 
 
 def towers(w):
     for x, z, fallen in TOWERS:
         if fallen:
-            fallen_tower(w, x, z)
+            toppled_pylon(w, x, z)
         else:
-            signal_tower(w, x, z)
+            pylon(w, x, z)
+
+
+def dark(x, y, z, top, rib):
+    """The station's dark style for a wall whose top block is at `top`: nether brick, a stone-brick rib where `rib`
+    holds, the team's band three under the top, a stone-brick course under the coping, the coping itself in nether
+    brick slabs and fence."""
+    if y == top:
+        return (B.NETHER_FENCE, 0) if (x + z) % 2 else (B.SLAB, 6)
+    if y == top - 1:
+        return (B.STONEBRICK, 0)
+    if y == top - 3:
+        return TEAM
+    if rib:
+        return (B.STONEBRICK, 0)
+    return (B.NETHER_BRICK, 0)
 
 
 def derrick(w):

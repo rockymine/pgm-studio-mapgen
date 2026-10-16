@@ -5,9 +5,10 @@ Three grounds, each a set of one tone: the snowfield (snow, with packed ice wher
 rock on every slope too steep for snow, and the ash (grey stained clay with black stained clay patches and gravel
 inset). The snow meets the ash raggedly, with a speckled band of snow lying over ash a few blocks wide.
 
-The rock is laid in strata, beds of stone, andesite, diorite, cobblestone and pale and blue-grey clay a few blocks
-thick, rising to the east, folded, broken by faults up the gullies and arched under the mountain, so a cliff reads
-as beds that tilt, bend and step. In the gullies the runoff has frozen down the face in ice.
+The rock is laid in strata a few blocks thick, of stone, andesite, polished andesite, cobblestone, blue-grey clay,
+white mushroom stem and grey acacia bark, rising to the east, folded, broken by faults up the gullies and arched
+under the mountain, so a cliff reads as beds that tilt, bend and step. In the gullies the runoff has frozen down
+the face in ice.
 """
 import numpy as np
 
@@ -99,8 +100,8 @@ def lay(w):
     return top, deg, scorched
 
 
-STRATA = [((B.STONE, 0), 0.30), ((B.STONE, 5), 0.26), ((B.STONE, 3), 0.12), ((B.COBBLE, 0), 0.08),
-          ((B.STAINED_CLAY, 9), 0.08), ((B.STAINED_CLAY, 8), 0.08), ((B.STONE, 6), 0.08)]
+STRATA = [((B.STONE, 0), 0.32), ((B.STONE, 5), 0.28), ((B.BROWN_CAP, 15), 0.09), ((B.LOG2, 12), 0.09),
+          ((B.COBBLE, 0), 0.06), ((B.STAINED_CLAY, 9), 0.06), ((B.STONE, 6), 0.10)]
 
 
 FAULTS = [((-22, 0), (-17, 99), 6, 2.0), ((17, 0), (21, 99), -5, 1.5), ((55, 0), (51, 99), 4, 0)]
@@ -117,7 +118,7 @@ def bed_lift(H):
 def strata():
     """The beds, from the bottom of the world up: their upper bounds and each one's block, (id, data)."""
     rng = np.random.default_rng(48)
-    bounds = np.cumsum(rng.uniform(1.5, 5.0, 80)) - 30
+    bounds = np.cumsum(rng.uniform(2.0, 6.0, 80)) - 30
     p = np.array([s for _, s in STRATA])
     pick = rng.choice(len(STRATA), len(bounds) + 1, p=p / p.sum())
     return bounds, np.array([STRATA[j][0] for j in pick], dtype=np.int32)
