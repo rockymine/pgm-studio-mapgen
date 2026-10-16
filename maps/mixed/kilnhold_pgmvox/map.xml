@@ -1,0 +1,191 @@
+<map proto="1.5.0">
+    <name>Kilnhold</name>
+    <version>0.1.0</version>
+    <objective>Destroy the monuments of the enemy bunker, and carry its flag back to your own gate hall.</objective>
+    <gamemode>dtm</gamemode>
+    <gamemode>ctf</gamemode>
+    <include id="gapple-kill-reward"/>
+    <authors>
+        <author>Claude Sonnet 5.5 (freeform generator, on pgmvox)</author>
+    </authors>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true"/>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="stained clay" amount="32" team-color="true"/>
+            <item slot="6" material="golden apple" amount="2"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="cooked beef" amount="16"/>
+            <item slot="28" material="arrow"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="iron chestplate" unbreakable="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+        <kit id="carrier" force="true">
+            <effect duration="3s" amplifier="2">absorption</effect>
+        </kit>
+    </kits>
+    <teams>
+        <team id="red-team" color="red" max="16">Red</team>
+        <team id="blue-team" color="blue" max="16">Blue</team>
+    </teams>
+    <filters>
+        <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
+        <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
+        <carrying-flag id="red-flag-carrier">red-flag</carrying-flag>
+        <carrying-flag id="blue-flag-carrier">blue-flag</carrying-flag>
+        <not id="block-place-void-filter">
+            <void/>
+        </not>
+        <any id="block-break-void-filter">
+            <all>
+                <any>
+                    <material>log</material>
+                    <material>log 2</material>
+                    <material>leaves</material>
+                    <material>leaves 2</material>
+                    <material>long grass</material>
+                    <material>yellow flower</material>
+                    <material>red rose</material>
+                    <material>double plant</material>
+                    <material>water lily</material>
+                    <material>vine</material>
+                </any>
+                <void/>
+            </all>
+            <filter id="block-place-void-filter"/>
+        </any>
+    </filters>
+    <spawns>
+        <default yaw="0">
+            <region>
+                <point>0.5,100,0.5</point>
+            </region>
+        </default>
+        <spawn team="red-team" kit="spawn-kit" yaw="0">
+            <region>
+                <point>0.5,66,-82.5</point>
+            </region>
+        </spawn>
+        <spawn team="blue-team" kit="spawn-kit" yaw="180">
+            <region>
+                <point>-0.5,66,82.5</point>
+            </region>
+        </spawn>
+    </spawns>
+    <regions>
+        <cuboid min="-12,66,-94" max="12,75,-79" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-12,66,79" max="12,75,94" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-35,81,-71" max="-32,84,-68" id="red-beacon-region"/>
+        <cuboid min="32,81,68" max="35,84,71" id="blue-beacon-region"/>
+        <cuboid min="-44,61,-68" max="-41,64,-65" id="red-sump-region"/>
+        <cuboid min="41,61,65" max="44,64,68" id="blue-sump-region"/>
+        <cuboid min="-4,66,-66" max="4,69,-57" id="red-net-region"/>
+        <cuboid min="-4,66,57" max="4,69,66" id="blue-net-region"/>
+        <apply block-place="block-place-void-filter" block-break="block-break-void-filter" message="You cannot build there!"/>
+    </regions>
+    <destroyables>
+        <destroyable id="red-beacon" name="Crown Beacon" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-beacon-region"/>
+        <destroyable id="blue-beacon" name="Crown Beacon" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-beacon-region"/>
+        <destroyable id="red-sump" name="Pump Hall Monument" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-sump-region"/>
+        <destroyable id="blue-sump" name="Pump Hall Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-sump-region"/>
+    </destroyables>
+    <flags>
+        <flag id="red-flag" name="Red Flag" color="red" shared="true" owner="red-team" pickup-kit="carrier" show-respawn-on-pickup="false" pickup-filter="not-red">
+            <post return-time="15s" respawn-time="15s">
+                <post name="Turbine Dais" yaw="270">55.5,59,-66.5</post>
+            </post>
+        </flag>
+        <flag id="blue-flag" name="Blue Flag" color="blue" shared="true" owner="blue-team" pickup-kit="carrier" show-respawn-on-pickup="false" pickup-filter="not-blue">
+            <post return-time="15s" respawn-time="15s">
+                <post name="Turbine Dais" yaw="90">-55.5,59,66.5</post>
+            </post>
+        </flag>
+        <net id="red-net" owner="red-team" points="1" flags="blue-flag" region="red-net-region"/>
+        <net id="blue-net" owner="blue-team" points="1" flags="red-flag" region="blue-net-region"/>
+    </flags>
+    <score>
+        <limit>3</limit>
+    </score>
+    <maxbuildheight>96</maxbuildheight>
+    <portals>
+        <portal y="@-64" sound="false" observers="never">
+            <region>
+                <below y="16"/>
+            </region>
+        </portal>
+    </portals>
+    <time result="objectives">40m</time>
+    <respawn delay="3s" auto="true" spectate="true"/>
+    <world>
+        <timeset>12000</timeset>
+        <timelock>on</timelock>
+    </world>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>stained clay</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>diamond pickaxe</item>
+        <item>iron axe</item>
+        <item>water bucket</item>
+        <item>arrow</item>
+        <item>wood</item>
+        <item>stained clay</item>
+        <item>golden apple</item>
+        <item>cooked beef</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>iron chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+        <item>obsidian</item>
+        <item>banner</item>
+        <item>flint</item>
+        <item>gravel</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>diamond pickaxe</tool>
+        <tool>iron axe</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16"/>
+            <item material="stained clay" amount="8" team-color="true"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+</map>
+

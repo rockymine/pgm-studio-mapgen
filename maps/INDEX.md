@@ -256,6 +256,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `mixed/crucible` | `freeform/lib/boards/crucible` | `freeform/lib/boards/crucible` |
 | `mixed/highgarth_fell` | `sonnet5b-highgarth-fell` | `specs/sonnet5b-highgarth-fell` |
 | `mixed/hollowbank` | `opus5-hollowbank` | `specs/archive/opus5-hollowbank` |
+| `mixed/kilnhold_pgmvox` | `freeform/lib/boards/kilnhold` | `freeform/lib/boards/kilnhold` |
 | `mixed/overwall` | `opus5-overwall` | `specs/archive/opus5-overwall` |
 | `mixed/probe_ashfield` | `paint-ashfield` | `specs/paint-ashfield` |
 | `mixed/probe_ashfield_1` | `probe-ashfield-1` | `specs/archive/probe-ashfield-1` |
