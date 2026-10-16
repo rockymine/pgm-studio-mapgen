@@ -1532,6 +1532,14 @@ class WorldAndOutput(unittest.TestCase):
             self.assertTrue(os.path.isfile(os.path.join(scripts, "map.xml")))
             self.assertFalse(os.path.exists(os.path.join(tmp, "board", "map.xml")))
 
+    def test_a_run_refuses_a_folder_that_is_not_a_board(self):
+        import tempfile
+        from pgmvox.run import run
+        with tempfile.TemporaryDirectory() as tmp:
+            with self.assertRaises(SystemExit):
+                run(os.path.join(tmp, "freeform", "lib", "boards", "nothing"), os.path.join(tmp, "build"))
+            self.assertFalse(os.path.exists(os.path.join(tmp, "freeform")))
+
     def test_a_columns_top_is_the_heightmaps(self):
         w = World(0, 0, 3, 3, sy=10)
         w.set(0, 4, 0, B.STONE)

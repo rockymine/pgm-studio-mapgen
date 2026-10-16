@@ -861,3 +861,14 @@ well so that it opens the vault.
 | Folder | Mode | Author | What it is |
 |---|---|---|---|
 | `freeform/lib/boards/coldbore` | ctw + dtc | Opus 5.5 | **Two drilling stations in opposite cliffs on a frozen plain, split by the fissure their bore tore open** — the second build, to the author's reading of the first. Each station spreads through its mountain from a gate in the west buttress to a generator house in the east; the reactor hangs over a pit in a 22-high hall in the middle, in sight from the spawn room's door, and the wool lies in a quartz vault 24 blocks east and two levels down, behind a bedrock door the leak opens. Every change of level is a two-leg ramp turning on a landing; a store's fallen ceiling is a way in from the snowfield. The cliff has gullies and strata, the plateau a dish, buildings and boulders, reached only by a spiral stair inside the mountain; the board's outer edge is ragged. GO4 **63** (57 walked), GO3 **256** and GO1 **4.06** missed because the gates sit on the flanks, nearest lava to a core **40** blocks, the wool sealed until the leak, no objective problem, nothing falling. World at `maps/mixed/coldbore` |
+
+### Opus 5.5 and Sonnet 5.5 — two competitors to Coldbore, built overnight (2026-10-16)
+
+Two boards built by agents given the same rough brief at the same time: a bunker in rock with real rooms, levels
+joined by ramps, a setting of their own choosing and a combination of modes, judged in the studio's textured
+renderer as well as pgmvox's own. Neither saw the other's work.
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `freeform/lib/boards/crucible` | dtc + ctw | Opus 5.5 | **Two foundries dug into facing volcanoes across a lava rift**, 140 by 200. Each core is a crucible hung from a gantry crane over a sunken casting pit whose floor is the leak line, and each wool lies in the cold store two levels down, the one cool room of quartz and prismarine. Four ways to a crucible (around by the haul ramp, below by a lava tube, above along the crane girder, through the furnace hall) and three to the wool. GO4 **53**, GO3 **148**, GO1 **2.79** (missed), nothing falling, the studio parser reads it as valid. World at `maps/mixed/crucible` |
+| `freeform/lib/boards/kilnhold` | dtm + ctf | Sonnet 5.5 | **A geothermal station in a caldera's rim**, 140 by 200: two concrete bunkers on four levels across an ash plain with a lava-lake crater. Two floating monuments a team (one on the roof deck, one over the pump hall's grated pool) and a flag in the turbine hall's shrine, captured at a net in the gate hall; `mapxml.py` writes the nets and the pickup filter the library's Flag objective does not. Spawn to own goals **67** and **65**, enemy over own **3.42** and **3.22**, GO2 and GO3 missed, 220 loose blocks (the trees' arms and some glowstone). World at `maps/mixed/kilnhold` |

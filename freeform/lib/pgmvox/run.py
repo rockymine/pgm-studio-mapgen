@@ -61,6 +61,8 @@ def run(board, build=None, start=None, only=None, skip=(), out=None):
     board = os.path.abspath(board)
     home = os.path.abspath(out) if out else board
     scripts = os.path.join(board, "scripts")
+    if not os.path.isdir(scripts):
+        raise SystemExit(f"{board} has no scripts/ folder: not a board (a path given from the wrong folder?)")
     renders = os.path.join(home, "renders")
     os.makedirs(renders, exist_ok=True)
     slug = os.path.basename(board.rstrip("/"))
