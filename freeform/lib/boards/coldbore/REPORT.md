@@ -61,6 +61,13 @@ so an attacker drops onto it and a defender climbs out only with blocks.
 | a cliff of gullies and strata | gullies as grooves in the cliff line, beds by height with a dip | a cliff along a drawn line with gullies stated on it, and strata as a paint band axis |
 | a fissure as the build zone between the teams | a heightfield profile in ledges, lava under it | a fissure as a landform along a drawn line (`RP132`) |
 
+## What the library took from this board
+
+**`bed_offset` breaks beds at faults and drapes them over the ground.** A board's beds could only dip and fold, and
+at the few blocks every board used they read as level bands down a cliff. A fault is a line with a throw and a
+drag either side, and a drape lifts the beds by a share of the ground's smoothed shape; both default to nothing,
+so no other board moves.
+
 ## The first build
 
 **Kept as it was written, so the two builds can be read side by side.**

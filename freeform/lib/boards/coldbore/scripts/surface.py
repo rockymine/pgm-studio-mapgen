@@ -1,6 +1,6 @@
 """What stands on red's snowfield: the courts paved in front of the gate and the generator house, the roads from
 them to the fissure and the flanks, the boulders that give the approaches cover, the old road bridge broken off
-over the fissure, the power line's pylons coming down the hill, lamps on the courts, the lavafalls down red's wall
+over the fissure, signal towers on the hill and one blown over on the snow, lamps on the courts, the lavafalls down red's wall
 of the fissure, and the bore's wrecked derrick on its stump in the middle.
 """
 import numpy as np
@@ -17,7 +17,7 @@ ROAD = [(B.GRAVEL, 0), (B.STONE, 5), (B.COBBLE, 0)]           # a third each: ha
 BOULDERS = [(-9, 25, (4, 3, 3), 20), (16, 16, (3, 3, 4), -15), (-31, 19, (5, 3, 4), 40), (31, 28, (4, 4, 3), 10),
             (-67, 40, (5, 4, 4), -30), (59, 46, (4, 3, 5), 25), (-18, 40, (3, 3, 3), 5), (14, 45, (3, 2, 4), -40),
             (-12, 32, (4, 3, 4), 60)]
-PYLONS = [(58, 70, False), (56, 40, False), (46, 36, True)]       # x, z, toppled
+TOWERS = [(58, 70, False), (56, 40, False), (46, 36, True)]       # x, z, blown over
 
 
 def at(top, x, z):
@@ -158,46 +158,79 @@ def bridge_stub(w, top):
                 w.set(x, y, rim - length, B.IRON_BARS)
 
 
-def pylon(w, x, z, height=15):
-    """A lattice pylon of nether fence braced with bars, on the flattest ground near (x, z), each leg on a footing."""
-    x, z, base = seat(w, x, z, 2)
-    footings(w, [(x + dx, z + dz) for dx in (-2, 2) for dz in (-2, 2)], base)
-    for t in range(height):
-        half = max(0, 2 - t // 6)
-        for dx in (-half, half):
-            for dz in (-half, half):
-                w.set(x + dx, base + 1 + t, z + dz, B.NETHER_FENCE)
-        if half and max(0, 2 - (t + 1) // 6) < half:           # a deck where the legs step in, so they stand on it
-            for dx in range(-half, half + 1):
-                for dz in range(-half, half + 1):
-                    w.set(x + dx, base + 1 + t, z + dz, B.NETHER_FENCE)
-        elif t % 4 == 3:
-            for a in range(-half, half + 1):
-                w.set(x + a, base + 1 + t, z - half, B.IRON_BARS)
-                w.set(x + a, base + 1 + t, z + half, B.IRON_BARS)
-    for a in range(-4, 5):
-        w.set(x + a, base + height, z, B.NETHER_FENCE)
+TEAM = (B.STAINED_CLAY, 14)                                     # red; blue's image recolours it
+MODULE = ["clay", "clay", "clay", "collar", "quartz", "quartz"]   # a signal tower's six-block repeat, from its foot
 
 
-def toppled_pylon(w, x, z, length=15):
-    """A pylon blown over, lying along the snow toward the fissure, every rung of it on the ground under it, its end
-    broken off where the ground falls away."""
-    start = max(column_top(w, x + a, z) for a in range(-2, 3))
-    for t in range(length):
-        half = max(0, 2 - t // 6)
-        if max(column_top(w, x + a, z - t) for a in range(-2, 3)) < start - 3:
+def signal_tower(w, x, z, modules=4):
+    """A signal tower, one block thick: banded in the team's clay and chiseled quartz, a collar of slabs round an
+    iron hub every six blocks, buttons, a trapdoor and stub antennas of bars on its faces, and a crown of cobble
+    walls carrying two redstone torches under a whip of bars and fence. It stands on the flattest ground near
+    (x, z), on a plinth of polished andesite under a ring of slabs."""
+    x, z, base = seat(w, x, z, 1)
+    footings(w, [(x + a, z + b) for a in (-1, 0, 1) for b in (-1, 0, 1)], base)
+    for a in (-1, 0, 1):
+        for b in (-1, 0, 1):
+            w.set(x + a, base + 1, z + b, *((B.STONE, 6) if a == b == 0 else (B.SLAB, 5)))
+    y = base + 2
+    for m in range(modules):
+        for row, part in enumerate(MODULE):
+            if part == "clay":
+                w.set(x, y, z, *TEAM)
+                if row == 0:
+                    w.set(x - 1, y, z, B.BUTTON_STONE, 2)
+                    w.set(x + 1, y, z, B.BUTTON_STONE, 1)
+                    if m % 2:
+                        for t in (1, 2):
+                            w.set(x, y, z + t, B.IRON_BARS)
+            elif part == "collar":
+                w.set(x, y, z, *((B.DISPENSER, 1) if m == modules - 1 else (B.IRON_BLOCK, 0)))
+                for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    w.set(x + a, y, z + b, B.SLAB, 5 if m % 2 else 0)
+            else:
+                w.set(x, y, z, B.QUARTZ, 1)
+                if row == 4:
+                    w.set(x, y, z + 1, B.IRON_TRAPDOOR, 5)
+            y += 1
+    for t in range(3):
+        w.set(x, y + t, z, B.COBBLE_WALL)
+    w.set(x, y + 2, z + 1, B.COBBLE_WALL)
+    w.set(x, y + 3, z + 1, B.REDSTONE_TORCH, 5)
+    w.set(x, y + 3, z, B.QUARTZ, 1)
+    for t in (4, 5):
+        w.set(x, y + t, z, B.COBBLE_WALL)
+    w.set(x, y + 5, z - 1, B.COBBLE_WALL)
+    w.set(x, y + 6, z - 1, B.REDSTONE_TORCH, 5)
+    w.set(x, y + 6, z, B.IRON_BARS)
+    w.set(x, y + 7, z, B.NETHER_FENCE)
+
+
+def fallen_tower(w, x, z, length=18):
+    """A signal tower blown over, lying along the snow toward the fissure, each block of it on the ground under
+    it, its end broken off where the ground falls away."""
+    start = column_top(w, x, z)
+    parts = (MODULE * 4)[:length]
+    for t, part in enumerate(parts):
+        zz = z - t
+        g = column_top(w, x, zz)
+        if g < start - 3:
             break
-        cells = [x - half, x + half] if t % 4 != 3 else range(x - half, x + half + 1)
-        for cx in cells:
-            w.set(cx, column_top(w, cx, z - t) + 1, z - t, B.IRON_BARS if t % 4 == 3 else B.NETHER_FENCE)
-
-
-def pylons(w):
-    for x, z, toppled in PYLONS:
-        if toppled:
-            toppled_pylon(w, x, z)
+        if part == "clay":
+            w.set(x, g + 1, zz, *TEAM)
+        elif part == "collar":
+            w.set(x, g + 1, zz, B.IRON_BLOCK)
+            for a in (-1, 1):
+                w.set(x + a, column_top(w, x + a, zz) + 1, zz, B.SLAB, 5)
         else:
-            pylon(w, x, z)
+            w.set(x, g + 1, zz, B.QUARTZ, 1)
+
+
+def towers(w):
+    for x, z, fallen in TOWERS:
+        if fallen:
+            fallen_tower(w, x, z)
+        else:
+            signal_tower(w, x, z)
 
 
 def derrick(w):

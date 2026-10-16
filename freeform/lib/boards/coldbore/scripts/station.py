@@ -1,7 +1,8 @@
 """Red's station on the plateau: the yard levelled over the reactor hall, the spiral stair up to it from level 0
-and its head house, the great dish tilted at the sky over the fissure, the control house, the radome, the shed
-the winter brought down, the reactor's vent stacks, the masts and the fuel tanks, every one standing on flat
-ground or on footings, and boulders of the cliff's own beds lying in the snow.
+and its head house, the great dish tilted at the sky over the fissure and the small satellite it talks to, the
+control house, the round observatory, the shed the winter brought down, the reactor's vent stacks, the signal
+towers and the fuel tanks, every one standing on flat ground or on footings, and boulders of the cliff's own beds
+lying in the snow.
 """
 import numpy as np
 
@@ -76,7 +77,10 @@ def dish(w):
     for dx in (-2, 2):
         w.set(bx + dx, by + 1, bz, B.IRON_BLOCK)
     focus = centre + focal * axis
-    w.set(*(int(round(c)) for c in focus), B.IRON_BLOCK)
+    fx, fy, fz = (int(round(c)) for c in focus)
+    w.set(fx, fy, fz, B.IRON_BLOCK)
+    w.set(fx, fy + 1, fz, B.NETHER_FENCE)                         # the feed's tip and its light
+    w.set(fx, fy + 2, fz, B.REDSTONE_TORCH, 5)
     for ang in (90, 210, 330):
         a = np.radians(ang)
         rim = centre + r * 0.95 * (np.cos(a) * e1 + np.sin(a) * e2) + (r * r / (4 * focal)) * axis
@@ -119,18 +123,49 @@ def control_house(w):
         w.set(x, y0 + 1, 89, B.REDSTONE_LAMP)
 
 
-def radome(w, cx, cz, r=4):
-    """A radome: a sphere of white clay on a ring wall, its panels traced in a grid of quartz."""
+def observatory(w, cx, cz, r=3):
+    """A round observatory: a drum of chiseled quartz with cyan panels and a ring of windows, a roof ring of nether
+    brick standing out past it, a dome of cyan clay with a slit down its southern side, and the telescope's barrel
+    reaching out of the slit."""
     y0 = P.YARD["top"] + 1
-    cy = y0 + 2 + r
+    eave = y0 + 4
     for x in range(cx - r - 1, cx + r + 2):
         for z in range(cz - r - 1, cz + r + 2):
-            for y in range(y0, cy + r + 1):
-                d = np.sqrt((x - cx) ** 2 + (y - cy) ** 2 + (z - cz) ** 2)
-                if r - 0.6 <= d <= r + 0.4:
-                    w.set(x, y, z, *((B.QUARTZ, 0) if (x + y + z) % 4 == 0 else (B.STAINED_CLAY, 0)))
-                elif y < cy - r + 2 and np.hypot(x - cx, z - cz) <= r - 1 and np.hypot(x - cx, z - cz) > r - 2:
-                    w.set(x, y, z, B.STONEBRICK)
+            d = np.hypot(x - cx, z - cz)
+            if r - 0.5 <= d <= r + 0.5:
+                for y in range(y0, eave):
+                    door = z == cz + r and x == cx and y < y0 + 2
+                    window = y == y0 + 2 and (x + z) % 2
+                    w.set(x, y, z, *((B.AIR, 0) if door else (B.PANE, 0) if window else
+                                     (B.QUARTZ, 1) if (x + z) % 2 else (B.STAINED_CLAY, 9)))
+            if d <= r + 1.2:
+                w.set(x, eave, z, *((B.NETHER_BRICK, 0) if d > r - 0.5 else (B.STAINED_CLAY, 9)))
+    for x in range(cx - r, cx + r + 1):
+        for z in range(cz - r, cz + r + 1):
+            for y in range(eave + 1, eave + r + 1):
+                d = np.sqrt((x - cx) ** 2 + (y - eave) ** 2 + (z - cz) ** 2)
+                if r - 0.6 <= d <= r + 0.4 and not (x == cx and z <= cz):
+                    w.set(x, y, z, B.STAINED_CLAY, 9)
+    for x, y, z in surface.face_line((cx, eave + 1, cz), (cx, eave + 4, cz - 3)):
+        w.set(x, y, z, B.COBBLE_WALL)
+    w.set(cx, eave + 5, cz - 3, B.IRON_BARS)
+
+
+def satellite(w):
+    """The satellite the dish is talking to, hung over the yard along the dish's axis: a body of iron, a wing of
+    blue panels either side on a boom of bars, and a whip of fence."""
+    d = P.DISH
+    t = np.radians(d["tilt"])
+    x, y, z = (int(round(c)) for c in (d["x"], d["y"] + 16 * np.cos(t), d["z"] - 16 * np.sin(t)))
+    y = min(y, 125)
+    w.set(x, y, z, B.IRON_BLOCK)
+    w.set(x, y, z + 1, B.DISPENSER, 3)
+    for side in (-1, 1):
+        w.set(x + side, y, z, B.IRON_BARS)
+        for k in range(2, 5):
+            for dz in (0, 1):
+                w.set(x + side * k, y, z + dz, B.STAINED_GLASS, 11)
+    w.set(x, y + 1, z, B.NETHER_FENCE)
 
 
 def fallen_shed(w, x0, z0, x1, z1):
@@ -161,20 +196,6 @@ def stack(w, x, z, height):
         for dz in (-1, 0, 1):
             if dx or dz:
                 w.set(x + dx, y0 + height, z + dz, B.COBBLE_WALL)
-
-
-def mast(w, x, z, height):
-    """A lattice mast of bars with fence crosstrees and a lamp, on the flattest ground near (x, z), its foot on a
-    plinth of stone brick."""
-    x, z, base = surface.seat(w, x, z, 0)
-    surface.footings(w, [(x, z)], base)
-    for y in range(base + 1, base + 1 + height):
-        w.set(x, y, z, B.IRON_BARS)
-        if y % 5 == 0:
-            for a in (-1, 1):
-                w.set(x + a, y, z, B.NETHER_FENCE)
-                w.set(x, y, z + a, B.NETHER_FENCE)
-    w.set(x, base + 1 + height, z, B.REDSTONE_LAMP)
 
 
 def tank(w, cx, cz, r, height):
@@ -256,12 +277,13 @@ def build(w):
     helix(w)
     dish(w)
     control_house(w)
-    radome(w, -5, 87, 3)
+    observatory(w, -5, 87, 3)
     fallen_shed(w, 0, 66, 6, 71)
     stack(w, -9, 72, 9)
     stack(w, 10, 66, 12)
-    mast(w, 10, 89, 22)
-    mast(w, -40, 82, 16)
+    surface.signal_tower(w, 10, 92, 4)
+    surface.signal_tower(w, -40, 82, 3)
     tank(w, 34, 80, 3, 6)
     tank(w, 40, 73, 2, 5)
     boulders(w)
+    satellite(w)

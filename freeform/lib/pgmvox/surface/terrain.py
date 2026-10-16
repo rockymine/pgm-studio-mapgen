@@ -148,14 +148,29 @@ class Strata:
         return [tuple(o) for o in out]
 
 
-def bed_offset(shape, dip=(0.0, 0.0), fold=0.0, cell=24, seed=0):
-    """How far the beds are lifted at each column: a planar dip (blocks of lift per block east and south) and folds
-    of `fold` blocks from noise, so the beds tilt and bend across a cliff instead of running dead level."""
+def bed_offset(shape, dip=(0.0, 0.0), fold=0.0, cell=24, seed=0, faults=(), origin=(0, 0), drape=None):
+    """How far the beds are lifted at each column: a planar dip (blocks of lift per block east and south), folds
+    of `fold` blocks from noise, faults and a drape, so the beds tilt, bend and break across a cliff instead of
+    running dead level.
+
+    A fault is ((x0, z0), (x1, z1), throw, drag) in world blocks, `origin` being the grid's first column: the
+    ground on the right hand of someone walking the line from its first point to its second is lifted `throw`
+    blocks (west of a line run south), the step bent over `drag` blocks either side (0 is a clean break). A drape is (H, share, sigma): the beds follow
+    the heights smoothed over `sigma` blocks by `share` of their rise, sagging under a valley and arching under a
+    mountain, so they run parallel to neither the ground nor the horizon."""
     sx, sz = shape
     X, Z = np.meshgrid(np.arange(sx), np.arange(sz), indexing="ij")
     off = dip[0] * X + dip[1] * Z
     if fold:
         off = off + fold * noise.fbm(shape, cell, 3, seed=seed)
+    for (ax, az), (bx, bz), throw, drag in faults:
+        ux, uz = bx - ax, bz - az
+        side = ((X + origin[0] - ax) * uz - (Z + origin[1] - az) * ux) / max(np.hypot(ux, uz), 1e-9)
+        off = off + throw * (np.clip(0.5 - side / (2 * drag), 0, 1) if drag else (side < 0))
+    if drape is not None:
+        H, share, sigma = drape
+        smooth = gaussian_filter(np.asarray(H, float), sigma, mode="nearest")
+        off = off + share * (smooth - smooth.mean())
     return np.round(off).astype(int)
 
 

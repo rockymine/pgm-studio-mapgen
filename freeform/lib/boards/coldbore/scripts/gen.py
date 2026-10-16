@@ -35,7 +35,7 @@ def generate():
     print(f"station {time.time() - t0:.0f}s", flush=True)
     cave.build(w, top, air)
     station.build(w)
-    surface.pylons(w)
+    surface.towers(w)
     print(f"cave and plateau {time.time() - t0:.0f}s", flush=True)
     loose = (w.ids[:, 1:, :] == B.GRAVEL) & (w.ids[:, :-1, :] == B.AIR)   # gravel over air would fall: andesite
     w.ids[:, 1:, :][loose] = B.STONE

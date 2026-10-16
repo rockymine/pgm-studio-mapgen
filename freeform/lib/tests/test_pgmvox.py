@@ -1487,6 +1487,19 @@ class Terrain(unittest.TestCase):
         self.assertTrue(all(a[0] != b[0] for a, b in zip(beds, beds[1:])))
         self.assertEqual(S(5), (B.STONE, 0))
 
+    def test_a_fault_lifts_one_side_and_a_drape_arches_under_a_mountain(self):
+        flat = terrain.bed_offset((20, 10))
+        broken = terrain.bed_offset((20, 10), faults=[((10, 0), (10, 9), 5, 0)], origin=(0, 0))
+        self.assertTrue((flat == 0).all())
+        self.assertEqual(set(broken[:10].ravel()) | set(broken[11:].ravel()), {0, 5})
+        self.assertTrue((broken[15] == 0).all() and (broken[5] == 5).all())            # west of a line run south
+        dragged = terrain.bed_offset((20, 10), faults=[((10, 0), (10, 9), 6, 4)])
+        self.assertTrue((np.diff(dragged[:, 5]) <= 0).all() and dragged[0, 5] == 6 and dragged[-1, 5] == 0)
+        H = np.zeros((40, 40))
+        H[15:25, 15:25] = 30
+        draped = terrain.bed_offset(H.shape, drape=(H, 0.5, 4))
+        self.assertGreater(draped[20, 20], draped[2, 2] + 5)
+
     def test_root_depth(self):
         m = np.zeros((20, 20), bool)
         m[4:16, 4:16] = True

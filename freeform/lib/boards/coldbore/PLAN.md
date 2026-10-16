@@ -120,9 +120,11 @@ fissure's lava is 40 blocks from the nearest core.
 of hazard bands and lava.** The snowfield is snow with packed ice where the wind has scoured it, and rock breaks
 through it in faceted clusters on the plateau and the west front.
 
-**Rock shows wherever the ground is too steep to hold snow,** laid in strata of stone, andesite, diorite, cobblestone and pale and blue-grey clay that dip gently east, and
-in the gullies the runoff has frozen down the face as ice. Along the fissure the snow has melted to an ash
-ground of grey and black clay with gravel.
+**Rock shows wherever the ground is too steep to hold snow, laid in beds that tilt, bend and break.** The beds
+are stone, andesite, diorite, cobblestone and pale and blue-grey clay. They rise a block in ten to the east, fold
+six blocks over thirty, step at three faults that run up the gullies, and arch under the mountain by a third of
+its rise, so they sag toward the fissure. In the gullies the runoff has frozen down the face as ice, and along
+the fissure the snow has melted to an ash ground of grey and black clay with gravel.
 
 **The two fronts are built differently so the cliff reads as two buildings.** The gate's facade is nether brick
 ribbed in stone brick with the team's band under its parapet; the generator house is pale poured concrete in
@@ -131,11 +133,16 @@ stone brick, and the vault alone is white quartz.
 
 ## What the build adds that the plan does not show
 
-**Scenery that changes no route.** The plateau carries the great dish tilted at the southern sky, the control
-house, a radome, a shed the winter brought down, two vent stacks over the hall, masts and fuel tanks, and
-boulders cut from the cliff's own beds lying in the snow. The snowfield has more boulders, pylons on the hill
-standing on footings, the broken road bridge and the derrick on the stump, and ten lavafalls run down red's
-wall of the fissure, all more than 40 blocks from either core.
+**Scenery that changes no route.** The plateau carries the great dish tilted at the southern sky with a small
+satellite hung over the yard on its axis, the control house, a round observatory with a slit dome, a shed the
+winter brought down, two vent stacks over the hall, fuel tanks, and boulders cut from the cliff's own beds lying
+in the snow. The snowfield has more boulders, the broken road bridge and the derrick on the stump, and ten
+lavafalls run down red's wall of the fissure, all more than 40 blocks from either core.
+
+**The signal towers follow the author's own on Long Distance.** Each is one block thick: three of the team's clay,
+a collar of slabs round an iron hub, two chiseled quartz, repeated, with buttons, a trapdoor and stub antennas of
+bars on its faces, and a crown of cobble walls carrying two redstone torches under a whip of bars and fence. Two
+stand on the hill, two on the plateau, and one lies blown over on the snow.
 
 ## What changed from the first plan, and why
 
@@ -174,6 +181,17 @@ game, not a number to build toward.
 | the stair cut into the hill breaks the landscape and is a long way round | gone; a spiral stair inside the mountain climbs from level 0 to the yard |
 | some of the towers float | the pylons and masts stand on the flattest ground near where they were, each leg on a footing; every lattice is joined face to face, and a sweep of the world finds nothing loose but the monuments' glass |
 | the board's edge should not be a ruled rectangle | its three outer sides are bitten in by up to five blocks, raggedly, and its back corners are chipped away; across the fissure the edge stays whole, so the lava keeps to the world's edge |
+
+## What changed after the third build, and why
+
+**The author's reading of the third build asked for detail where the board was plain.**
+
+| The author said | What the plan does now |
+|---|---|
+| the towers want the detail of the signal towers on Long Distance | the pylons and masts are signal towers built on that pattern, in the team's clay |
+| the dish wants the touches of the one on Oumuamua | its feed carries a fence and a redstone torch, and a small satellite hangs over the yard on its axis |
+| the round spawn with its cupola on Oumuamua | the radome is a round observatory: a quartz drum, a nether-brick roof ring, a cyan dome with a slit |
+| the rock is band on band, dull | the beds tilt, fold, break at three faults and arch under the mountain, through a fault and drape added to `bed_offset` |
 
 ## The first plan
 

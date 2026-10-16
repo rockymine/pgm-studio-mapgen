@@ -5,14 +5,16 @@ Three grounds, each a set of one tone: the snowfield (snow, with packed ice wher
 rock on every slope too steep for snow, and the ash (grey stained clay with black stained clay patches and gravel
 inset). The snow meets the ash raggedly, with a speckled band of snow lying over ash a few blocks wide.
 
-The rock is laid in strata, beds of stone, andesite, diorite, cobblestone and pale and blue-grey clay a few blocks thick, dipping
-gently east and north, so a cliff reads as bands. In the gullies the runoff has frozen down the face in ice.
+The rock is laid in strata, beds of stone, andesite, diorite, cobblestone and pale and blue-grey clay a few blocks
+thick, rising to the east, folded, broken by faults up the gullies and arched under the mountain, so a cliff reads
+as beds that tilt, bend and step. In the gullies the runoff has frozen down the face in ice.
 """
 import numpy as np
 
 import land
 from pgmvox import B
 from pgmvox.geom import noise
+from pgmvox.surface import terrain as T
 from pgmvox.surface.terrain import slope_deg
 
 ICE_PLAINS = 12
@@ -37,7 +39,7 @@ def lay(w):
     scour = noise.fbm(X.shape, 16, 2, seed=46)                   # where the wind has scoured the snow to ice
     fleck = noise.fbm(X.shape, 2, 1, seed=44)
     bed = noise.fbm(X.shape, 40, 2, seed=45) * 3
-    dip = 0.05 * X + 0.03 * Z + bed
+    lift = bed_lift(H)
     bounds, beds = strata()
     gully = land.gullies(np.arange(land.X0, land.X1 + 1, dtype=float))[(X - land.X0).astype(int)]
     icefall = (gully > 2.2) & (noise.fbm(X.shape, 3, 1, seed=47) > -0.2)
@@ -49,9 +51,9 @@ def lay(w):
             h = int(top[i, k])
             col_ids = np.zeros(sy, np.uint16)
             col_dat = np.zeros(sy, np.uint8)
-            # the rock in strata, dipping gently
+            # the rock in strata, tilted, folded, broken at the faults and arched under the mountain
             wave = np.sin((ys + bed[i, k]) / 2.6)
-            layer = beds[np.searchsorted(bounds, ys[1:h + 1] + dip[i, k])]
+            layer = beds[np.searchsorted(bounds, ys[1:h + 1] - lift[i, k])]
             col_ids[1:h + 1] = layer[:, 0]
             col_dat[1:h + 1] = layer[:, 1]
             hot = rim[i, k] < 4 and h < 62                       # the fissure's throat: veins, crust, glow
@@ -99,6 +101,17 @@ def lay(w):
 
 STRATA = [((B.STONE, 0), 0.30), ((B.STONE, 5), 0.26), ((B.STONE, 3), 0.12), ((B.COBBLE, 0), 0.08),
           ((B.STAINED_CLAY, 9), 0.08), ((B.STAINED_CLAY, 8), 0.08), ((B.STONE, 6), 0.08)]
+
+
+FAULTS = [((-22, 0), (-17, 99), 6, 2.0), ((17, 0), (21, 99), -5, 1.5), ((55, 0), (51, 99), 4, 0)]
+
+
+def bed_lift(H):
+    """How far the beds are lifted at each column: a dip rising east, folds 30 blocks across, three faults running
+    up the gullies, and a drape a third as high as the ground's broad shape, so the beds arch under the mountain
+    and sag into the fissure."""
+    return T.bed_offset((land.NX, land.NZ), dip=(0.10, 0.04), fold=6, cell=30, seed=49, faults=FAULTS,
+                        origin=(land.X0, land.Z0), drape=(H, 0.35, 10))
 
 
 def strata():
