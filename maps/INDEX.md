@@ -143,6 +143,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `dtcm/deepcut` | `opus5-deepcut` | `specs/archive/opus5-deepcut` |
 | `dtcm/dustwath` | `opus5-dustwath` | `specs/opus5-dustwath` |
 | `dtcm/elderwold` | `opus5-elderwold` | `specs/archive/opus5-elderwold` |
+| `dtcm/emberfrost` | `freeform/lib/boards/emberfrost` | `freeform/lib/boards/emberfrost` |
 | `dtcm/fallowgate` | `opus5-fallowgate` | `specs/opus5-fallowgate` |
 | `dtcm/fallowmere` | `sonnet-fallowmere` | `specs/archive/sonnet-fallowmere` |
 | `dtcm/fellgrave_hollow` | `sonnet5-fellgrave-hollow` | `specs/archive/sonnet5-fellgrave-hollow` |
@@ -161,6 +162,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `dtcm/haiku_canonical_destroy` | `haiku-canonical-destroy-3` | `specs/archive/haiku-canonical-destroy-3` |
 | `dtcm/haiku_dtm_tower` | `haiku-dtm-tower` | `specs/archive/haiku-dtm-tower` |
 | `dtcm/halcyon_cays` | `sonnet55-halcyon-cays` | `specs/sonnet55-halcyon-cays` |
+| `dtcm/hoarfire` | `freeform/lib/boards/hoarfire` | `freeform/lib/boards/hoarfire` |
 | `dtcm/hoarstone` | `opus5-hoarstone` | `specs/archive/opus5-hoarstone` |
 | `dtcm/hollin_tarn` | `fable-hollin-tarn` | `specs/fable-hollin-tarn` |
 | `dtcm/hollow_crown` | `haiku-r5-hollow-crown` | `specs/archive/haiku-r5-hollow-crown` |
@@ -197,6 +199,9 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `dtcm/redsand_caravanserai` | `sonnet-caravanserai` | `specs/archive/sonnet-caravanserai` |
 | `dtcm/redwash_mesa` | `freeform/lib/boards/redwash-mesa` | `freeform/lib/boards/redwash-mesa` |
 | `dtcm/riftwater` | `freeform/lib/boards/riftwater` | `freeform/lib/boards/riftwater` |
+| `dtcm/rimeburn` | `freeform/lib/boards/rimeburn` | `freeform/lib/boards/rimeburn` |
+| `dtcm/rimefire` | `freeform/lib/boards/rimefire` | `freeform/lib/boards/rimefire` |
+| `dtcm/rimeglow_rift` | `freeform/lib/boards/rimeglow-rift` | `freeform/lib/boards/rimeglow-rift` |
 | `dtcm/ruddle_brink` | `opus5-ruddle-brink` | `specs/archive/opus5-ruddle-brink` |
 | `dtcm/sallowfen` | `opus55-sallowfen` | `specs/opus55-sallowfen` |
 | `dtcm/saltwharf` | `fable-saltwharf` | `specs/fable-saltwharf` |
@@ -208,6 +213,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `dtcm/scarrow_delph` | `opus5-scarrow-delph` | `specs/archive/opus5-scarrow-delph` |
 | `dtcm/scoriafell` | `opus5-scoriafell` | `specs/archive/opus5-scoriafell` |
 | `dtcm/siderite_bowl` | `opus5-siderite-bowl` | `specs/archive/opus5-siderite-bowl` |
+| `dtcm/sixes_and_sevens` | `freeform/lib/boards/sixes-and-sevens` | `freeform/lib/boards/sixes-and-sevens` |
 | `dtcm/slakefell` | `opus5b-slakefell` | `specs/opus5b-slakefell` |
 | `dtcm/slakemoss` | `opus5-slakemoss` | `specs/opus5-slakemoss` |
 | `dtcm/slipway` | `opus5-slipway` | `specs/opus5-slipway` |
@@ -224,6 +230,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `dtcm/tamarisk_wash` | `freeform/lib/boards/tamarisk-wash` | `freeform/lib/boards/tamarisk-wash` |
 | `dtcm/tanglecleft` | `sonnet55-tanglecleft` | `specs/sonnet55-tanglecleft` |
 | `dtcm/tarnfell` | `opus5-tarnfell` | `specs/archive/opus5-tarnfell` |
+| `dtcm/thawline` | `freeform/lib/boards/thawline` | `freeform/lib/boards/thawline` |
 | `dtcm/tiefkreuz` | `opus5-tiefkreuz` | `specs/archive/opus5-tiefkreuz` |
 | `dtcm/turbary_cut` | `sonnet5b-turbary-cut` | `specs/sonnet5b-turbary-cut` |
 | `dtcm/twingill` | `opus55-twingill` | `specs/opus55-twingill` |
@@ -236,12 +243,6 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `dtcm/whitegape` | `opus5-whitegape` | `specs/opus5-whitegape` |
 | `dtcm/whitstone_weald` | `whitstone-weald` | `specs/whitstone-weald` |
 | `dtcm/winterfold` | `haiku-winterfold` | `specs/archive/haiku-winterfold` |
-| `dtcm/thawline` | `freeform/lib/boards/thawline` | `freeform/lib/boards/thawline` |
-| `dtcm/rimeglow_rift` | `freeform/lib/boards/rimeglow-rift` | `freeform/lib/boards/rimeglow-rift` |
-| `dtcm/hoarfire` | `freeform/lib/boards/hoarfire` | `freeform/lib/boards/hoarfire` |
-| `dtcm/rimefire` | `freeform/lib/boards/rimefire` | `freeform/lib/boards/rimefire` |
-| `dtcm/rimeburn` | `freeform/lib/boards/rimeburn` | `freeform/lib/boards/rimeburn` |
-| `dtcm/emberfrost` | `freeform/lib/boards/emberfrost` | `freeform/lib/boards/emberfrost` |
 | `ffa/gullhaven` | `freeform/lib/boards/gullhaven` | `freeform/lib/boards/gullhaven` |
 | `kotf/riad` | `freeform/lib/boards/riad` | `freeform/lib/boards/riad` |
 | `koth/basaltmere` | `opus5-basaltmere` | `specs/opus5-basaltmere` |

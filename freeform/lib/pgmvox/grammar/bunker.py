@@ -1,4 +1,4 @@
-"""The segments, floors and faces of the bunker study, stated in segments.py's grammar.
+"""The Bunker style: the author's wall segments, floors and lofted face, stated in `built.segments`' grammar.
 
     ANDESITE_SEG   the author's segment: a cobble L (top fading left to right, right leg fading up into cobble wall)
                    over a polished-andesite L, a stone-brick slab over nether brick, andesite fading up to stone
@@ -9,7 +9,7 @@
                    a bedrock core with a row of cyan clay one under its top
     SLIT_SEG       a bedrock frame round columns of iron bars over gray glass, alternating with bedrock
 """
-from segments import (Peel, Segment, Solid, Fade, Courses, COBBLE, COBBLE_WALL, POL_ANDESITE,
+from pgmvox.built.segments import (Peel, Segment, Solid, Fade, Courses, COBBLE, COBBLE_WALL, POL_ANDESITE,
                       ANDESITE, STONE, NETHER_BRICK, BEDROCK, OBSIDIAN, GRAY_WOOL, LIGHT_GRAY_WOOL, CLAY,
                       CYAN_CLAY, GRAY_GLASS, IRON_BARS, TOP_SLAB, COAL, BLACK_WOOL)
 

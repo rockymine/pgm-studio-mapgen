@@ -274,9 +274,9 @@ def wall(w, cells, base, heights, seg, outside, module=6, tier=8, body=COBBLE, s
          top=None):
     """A wall over plan `cells` (a set of (x, z)), its body `body` from `base` to its height, every face open to
     the outside cut into segments `module` wide and `tier` tall. `heights` is one number or {(x, z): h}; a face
-    splits where its height changes. segment_of(side, i, j, run) may choose a segment for bay i, tier j of a run.
-    `top(w, side, columns, y)` lays what stands on a run's rim. An opening's segments over it are asked for with
-    tier "over"."""
+    splits where its height changes. segment_of(side, i, j, run, over) may choose a segment for bay i, tier j
+    (counted from the wall's foot) of a run, `over` True for the segments standing over an opening.
+    `top(w, side, columns, y)` lays what stands on a run's rim."""
     hof = (lambda c: heights) if isinstance(heights, int) else (lambda c: heights[c])
     for x, z in cells:
         w.column(x, z, base, base + hof((x, z)) - 1, *body)
@@ -317,7 +317,8 @@ def wall(w, cells, base, heights, seg, outside, module=6, tier=8, body=COBBLE, s
                 above = base + h - 1 - o.y1
                 for (t0, t1) in (cuts(above, tier) if above > 0 else []):
                     for i, (a, b) in enumerate(bays):
-                        s = segment_of(side, i, "over", inside) if segment_of else seg
+                        j = (o.y1 + 1 + t0 - base) // tier
+                        s = segment_of(side, i, j, inside, True) if segment_of else seg
                         lay_segment(w, s, inside[a:b + 1], side, o.y1 + 1 + t0, t1 - t0 + 1, back_ok)
                 if o.lay:
                     o.lay(w, inside, side, o.y0, o.y1)
@@ -325,7 +326,7 @@ def wall(w, cells, base, heights, seg, outside, module=6, tier=8, body=COBBLE, s
         for p in pieces:
             for i, (a, b) in enumerate(cuts(len(p), module)):
                 for j, (t0, t1) in enumerate(cuts(h, tier)):
-                    s = segment_of(side, i, j, p) if segment_of else seg
+                    s = segment_of(side, i, j, p, False) if segment_of else seg
                     lay_segment(w, s, p[a:b + 1], side, base + t0, t1 - t0 + 1, back_ok)
         if top:
             top(w, side, run, base + h)
@@ -427,7 +428,7 @@ def _level(strips, y):
 def loft(w, strips, material, thick=3, behind=None, reach=30, marks=()):
     """Ruled walls between pairs of 3-D edges, the way a loft tool spans a plane: `strips` is a chain of
     (bottom, top) points [((x, y, z), (x, y, z)), ...], each pair the edge the next plane starts from, the face
-    looking to the left of the chain's direction. Edges may differ in height, so a wall can fall toward its end.
+    looking (-dz, dx) of the chain's direction (x east, z south). Edges may differ in height, so a wall can fall toward its end.
     At every height the face is where that height cuts the planes; `thick` blocks behind it are wall, painted by
     material.at(u, v, along, key) with u the distance along the face and v the share of the wall's height there,
     and everything further behind, up to `reach` from the face, is behind(x, y, z) where it answers. `marks` are

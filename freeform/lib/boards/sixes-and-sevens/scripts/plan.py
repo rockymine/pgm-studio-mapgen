@@ -1,25 +1,34 @@
-"""Sixes and Sevens — the plan. A frozen wasteland between two bunkers dug into the ice cliffs at either end of a
-long board: bunker 06 in the west for Red, bunker 07 in the east for Blue, each the half turn of the other.
+"""Sixes and Sevens — the plan. A frozen wasteland between two bunkers dug into the mountains at either end of a long
+board: bunker 06 in the west for Red, bunker 07 in the east for Blue, each the half turn of the other. The snowfield
+runs the whole width of the board between them, and goes on over the mountains above the bunkers, where nobody
+plays and the ground is pushed further: deeper drifts, more rock, a tall needle over each bunker.
 
-    floors: 40 the snowfield, the bunker halls and the yard; 47 the high shelf; 34 the cut; the crevasses holes
-    with lava at their foot; the mountain stands round everything at 70 and over
+    floors: 40 the snowfield, the bunker's ground floor and the yard; 48 the bunker's upper floor; 47 the high
+    shelf; 34 the cut; the crevasses holes with lava at their foot; the mountain over 70
 
-Each team defends two monuments: the Reactor, floating in the tall hall behind the bunker's door, and the Pump,
-in the yard cut into the cliff beside the facade. The spawn hall lies deep in the mountain behind both.
+Each team defends two monuments: the Reactor, floating in the tall hall behind the bunker's door, and the Pump, in
+the yard cut into the cliff beside the facade. The spawn hall lies deep in the mountain behind both.
 """
+import math
 import os
 import sys
+
+import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox.play.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402
 from pgmvox.plan.raster import Raster, Symmetry  # noqa: E402
 
-X = (-130, 129)
-Z = (-90, 89)
+SYM = Symmetry("half")
+WORLD = (-150, -110, 300, 220)          # x0, z0, sx, sz
+X = (-140, 139)                         # the play area
+Z = (-100, 99)
 FIELD = 40
+UPPER = 49
+FRONT_H = 32                            # the facade, four segments high
 SHELF = 47
 CUT = 34
-MOUNTAIN = 70
+LAVA = 22                               # the lava's surface at a crevasse's foot
 KINDS = ["field", "path", "mountain", "hall", "dark", "yard", "shelf", "stair", "rock", "crevasse", "cut", "door"]
 COLOURS = {"field": (226, 232, 238), "path": (150, 128, 104), "mountain": (92, 96, 104), "hall": (196, 188, 170),
            "dark": (70, 66, 72), "yard": (206, 210, 200), "shelf": (176, 196, 214), "stair": (160, 170, 190),
@@ -27,81 +36,156 @@ COLOURS = {"field": (226, 232, 238), "path": (150, 128, 104), "mountain": (92, 9
 WALK = {"field", "path", "hall", "dark", "yard", "shelf", "stair", "cut", "door"}
 WALLS = {"mountain", "rock"}
 
-# Red's bunker, x west of the facade; Blue's is its half turn
+# ---- Red's bunker, west of the facade; Blue's is its half turn ------------------------------------------------
 FACADE_X = -46                          # the face column; the field starts a block east of it
 FACADE_Z = (-12, 29)
 DOOR_Z = (0, 17)
-HALL = (-71, -48, -6, 23)               # x0, x1, z0, z1: the tall hall, three segments, the Reactor in it
+HALL = (-71, -48, -6, 23)               # x0, x1, z0, z1: the tall hall, three segments high
 SPAWN_HALL = (-104, -84, 16, 37)
-TUNNEL = (-83, -72, 18, 23)             # spawn hall to the tall hall, 6 wide
-YARD_TUNNEL = (-83, -67, 34, 39)        # spawn hall to the yard, 6 wide
-YARD = (-66, -47, 34, 55)               # cut into the cliff south of the facade, open to the field
+TUNNEL = (-81, -74, 18, 23)             # spawn hall to the tall hall
+YARD_TUNNEL = (-81, -69, 34, 39)        # spawn hall to the yard
+YARD = (-66, -47, 34, 57)               # cut into the cliff south of the facade, open to the field
 DARK = (-108, -91, -14, 3)              # the generator room
-DARK_TUNNEL = (-99, -94, 4, 15)         # dark room to the spawn hall
-SIDE_TUNNEL = (-90, -72, -6, -1)        # dark room to the tall hall's back corner
-VENT = (-54, 6)                         # a shaft from the cliff top into the tall hall, over the Reactor's front
+DARK_TUNNEL = (-99, -94, 6, 13)         # dark room to the spawn hall
+SIDE_TUNNEL = (-88, -74, -6, -1)        # dark room to the tall hall's back corner
+# the upper floor, one segment up: a gallery round the tall hall's back and south side, a corridor over the spawn
+# tunnel to the spawn hall, and a switchback stair down in the spawn hall
+GALLERY = [(-71, -66, -6, 23), (-71, -48, 18, 23)]
+UPPER_CORRIDOR = (-81, -74, 18, 23)
+STAIR_FLIGHTS = [((-87, 16), "w", 4), ((-98, 19), "e", 5)]    # (x, z) of its first tread, the way it climbs, rises;
+STAIR_WIDTH, TREAD = 3, 3                                     # each tread 3 deep, a landing between the flights
+STAIR_TOP = (-86, -84, 16, 21)                                # the upper landing, at 49, into the corridor
 
-SPAWN = (-97, 26)
-REACTOR = (-60, 8)
-PUMP = (-54, 41)
+# where a tunnel passes a room's wall: the carved box, and the face lines it opens in (side, line)
+MOUTHS = [((-83, 18, -82, 23), [("w", -83), ("e", -82)]), ((-73, 18, -72, 23), [("e", -72), ("w", -73)]),
+          ((-83, 34, -82, 39), [("w", -83), ("e", -82)]), ((-68, 34, -67, 39), [("e", -67), ("w", -68)]),
+          ((-99, 4, -94, 5), [("s", 4), ("n", 5)]), ((-99, 14, -94, 15), [("s", 14), ("n", 15)]),
+          ((-90, -6, -89, -1), [("w", -90), ("e", -89)]), ((-73, -6, -72, -1), [("e", -72), ("w", -73)])]
 
-# the crevasse seam between the teams, red's half from the centre southward, with the snow bridge left standing
-SEAM = [(-1, 6), (-6, 14), (-3, 22), (-8, 30)]
-SEAM_ON = [(-8, 43), (-4, 51), (-11, 60), (-7, 68), (-12, 76)]
-SEAM_WIDTH = 5
+SPAWN = (-91, 27)
+REACTOR = (-58, 1)
+PUMP = (-51, 43)
+
+# ---- the mountain: its front, north to south, the field east of it ----------------------------------------------
+FRONT = [(-84, -110), (-74, -90), (-60, -76), (-40, -64), (-27, -51), (-26, -37), (-35, -21), (-46, -14),
+         (-46, 30), (-46, 56), (-34, 58), (-27, 66), (-31, 79), (-48, 88), (-62, 98), (-70, 110)]
+SHELF_POLY = [(-27, 66), (10, 63), (16, 72), (12, 86), (-31, 86)]
+SHELF_RAMP = (17, 66, 22, 71)           # x0, z0, x1, z1: wide steps down at its east end, climbing west
+
+# the lofted walls: chains of (bottom, top) edges, each facing (-dz, dx) of the chain's direction
+LOFTS = {
+    "north spur": [((-46, FIELD, -14), (-50, 66, -18)), ((-36, FIELD, -21), (-40, 62, -24)),
+                   ((-27, FIELD, -37), (-31, 56, -38)), ((-28, FIELD, -51), (-32, 50, -49)),
+                   ((-40, FIELD, -64), (-42, 46, -60))],
+    "south spur": [((-31, FIELD, 79), (-35, 48, 76)), ((-27, FIELD, 66), (-31, 56, 64)),
+                   ((-34, FIELD, 58), (-37, 62, 54)), ((-46, FIELD, 56), (-48, 64, 52))],
+    "shelf": [((10, FIELD, 63), (10, SHELF, 66)), ((-27, FIELD, 66), (-27, SHELF, 69))],
+    "tier": [((-80, 82, 14), (-84, 97, 14)), ((-70, 81, -26), (-74, 96, -26)), ((-74, 80, -62), (-78, 94, -62))],
+}
+BOULDERS = [(-36, -30, 3), (-14, -18, 2), (-33, 28, 3), (-18, 48, 2), (-40, 70, 2), (-22, -70, 3), (-8, -60, 2),
+            (-30, -86, 2), (-12, 92, 2), (-38, 92, 3)]                      # (x, z, radius) on the field
+
+# ---- the field --------------------------------------------------------------------------------------------------
+TEETH = [[(-30, -6), (-22, -9), (-17, -2), (-19, 6), (-26, 4)], [(-24, 12), (-18, 10), (-15, 15), (-21, 18)]]
+CUT_LINE = [(-24, 46), (-34, 52), (-46, 52)]
+PATHS = [[(-45, 8), (-33, 9), (-22, 22), (-9, 21), (-3, 0)],       # door, past the Teeth, to the Spine
+         [(-46, 45), (-30, 40), (-15, 38), (-9, 36)],                  # yard to the snow bridge
+         [(-28, -2), (-20, -24), (-10, -40), (-3, -50)]]               # the Teeth north to the open snow
+PATH_WIDTH = 9
+# the crevasses, red's half: the seam from the centre southward (its half turn runs north), the bridges left standing;
+# and one across the open snow north of the Teeth
+SEAM = [(-1, 6), (-5, 10), (-2, 15), (-7, 21), (-3, 26), (-8, 30)]
+SEAM_ON = [(-8, 43), (-3, 47), (-6, 53), (-12, 57), (-9, 63), (-14, 70), (-9, 77), (-13, 88)]
+OPEN_CRACK = [(-52, -84), (-44, -76), (-37, -83), (-28, -75), (-20, -82), (-12, -76), (-7, -88)]
+OPEN_BRIDGE = (-28, -75)
+CRACK_WIDTH = (2.0, 6.0)
+
+
+def front_x(z):
+    """The mountain front's x at z (the field lies east of it)."""
+    for (x0, z0), (x1, z1) in zip(FRONT, FRONT[1:]):
+        if z0 <= z <= z1:
+            return x0 + (x1 - x0) * (z - z0) / max(1e-9, z1 - z0)
+    return FRONT[0][0] if z < FRONT[0][1] else FRONT[-1][0]
+
+
+def crack(pts, seed, lo=CRACK_WIDTH[0], hi=CRACK_WIDTH[1]):
+    """A crevasse's half widths along its line, wandering between lo and hi, narrowing at both ends: [(x, z, half)]
+    sampled every block."""
+    r = np.random.default_rng(seed)
+    out, acc = [], 0.0
+    total = sum(math.dist(p, q) for p, q in zip(pts, pts[1:]))
+    phase = r.uniform(0, 6.3, 3)
+    for p, q in zip(pts, pts[1:]):
+        n = max(1, int(math.dist(p, q)))
+        for k in range(n):
+            t = k / n
+            x, z = p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t
+            s = acc + math.dist(p, q) * t
+            wob = 0.5 + 0.25 * math.sin(s / 7 + phase[0]) + 0.25 * math.sin(s / 3.1 + phase[1])
+            taper = min(1.0, s / 8, (total - s) / 8)
+            out.append((x, z, (lo + (hi - lo) * wob) / 2 * max(0.35, taper)))
+        acc += math.dist(p, q)
+    return out
+
+
+def crack_mask(Xg, Zg, samples, keep=None):
+    m = np.zeros(Xg.shape, bool)
+    for x, z, half in samples:
+        if keep is not None and math.dist((x, z), keep) < 3:
+            continue
+        m |= (Xg - x) ** 2 + (Zg - z) ** 2 <= half * half
+    return m
+
+
+def cracks():
+    """Every crevasse of red's half, as samples."""
+    return [crack(SEAM, 1), crack(SEAM_ON, 2), crack(OPEN_CRACK, 3)]
 
 
 def _band(R, pts, half, h, kind):
-    """Cells within `half` of a polyline."""
-    import numpy as np
     m = np.zeros_like(R.H, bool)
     for (ax, az), (bx, bz) in zip(pts, pts[1:]):
         dx, dz = bx - ax, bz - az
-        L2 = dx * dx + dz * dz
-        t = np.clip(((R.X - ax) * dx + (R.Z - az) * dz) / L2, 0, 1)
+        t = np.clip(((R.X - ax) * dx + (R.Z - az) * dz) / (dx * dx + dz * dz), 0, 1)
         m |= np.hypot(R.X - (ax + t * dx), R.Z - (az + t * dz)) <= half
     R.where(m, h, kind)
 
 
 def build():
-    R = Raster(X, Z, KINDS, base_h=FIELD, base_kind="field", symmetry=Symmetry("half"))
-    R.rect(X[0], FACADE_X, Z[0], Z[1], MOUNTAIN, "mountain")                      # the cliffs the bunkers are in
-    R.rect(FACADE_X + 1, -1, Z[0], -80, MOUNTAIN, "mountain")                      # the board's north and south rims
-    R.rect(FACADE_X + 1, -1, 80, Z[1], MOUNTAIN, "mountain")
-    R.poly([(-45, -62), (-28, -58), (-24, -40), (-33, -20), (-45, -14)], MOUNTAIN, "mountain")   # the north spur
-    R.poly([(-45, 57), (-30, 58), (-36, 80), (-45, 80)], MOUNTAIN, "mountain")                   # the south spur
+    R = Raster(X, Z, KINDS, base_h=FIELD, base_kind="field", symmetry=SYM)
+    mountain = (R.X <= np.vectorize(front_x)(R.Z)) & (R.X < 0)
+    R.where(mountain, 70, "mountain")
+    R.poly(SHELF_POLY, SHELF, "shelf")
+    x0, z0, x1, z1 = SHELF_RAMP
+    for k, x in enumerate(range(x1, x0 - 1, -1)):
+        R.rect(x, x, z0, z1, FIELD + 1 + k * (SHELF - FIELD - 1) // max(1, x1 - x0), "stair")
 
-    # the high shelf along the south rim, held by a lofted wall on its north edge, a ramp at its east end
-    R.poly([(-32, 62), (8, 61), (14, 70), (14, 79), (-34, 79)], SHELF, "shelf")
-    for k in range(SHELF - FIELD - 1):
-        R.rect(21 - k, 21 - k, 63, 68, FIELD + 1 + k, "stair")
-
-    # the bunker, inside the mountain
-    R.rect(*HALL[:2], *HALL[2:], FIELD, "hall")
-    R.rect(FACADE_X - 1, FACADE_X, *DOOR_Z, FIELD, "door")
-    R.rect(*SPAWN_HALL[:2], *SPAWN_HALL[2:], FIELD, "hall")
-    R.rect(*TUNNEL[:2], *TUNNEL[2:], FIELD, "hall")
-    R.rect(*YARD_TUNNEL[:2], *YARD_TUNNEL[2:], FIELD, "hall")
+    for box in (HALL, SPAWN_HALL, TUNNEL, YARD_TUNNEL, DARK_TUNNEL, SIDE_TUNNEL):
+        R.rect(box[0], box[1], box[2], box[3], FIELD, "hall")
+    for (x0, z0, x1, z1), _ in MOUTHS:
+        R.rect(x0, x1, z0, z1, FIELD, "hall")
     R.rect(*YARD[:2], *YARD[2:], FIELD, "yard")
     R.rect(*DARK[:2], *DARK[2:], FIELD, "dark")
-    R.rect(*DARK_TUNNEL[:2], *DARK_TUNNEL[2:], FIELD, "hall")
-    R.rect(*SIDE_TUNNEL[:2], *SIDE_TUNNEL[2:], FIELD, "hall")
+    R.rect(FACADE_X - 1, FACADE_X, *DOOR_Z, FIELD, "door")
+    U = R.storey(1)
+    for box in GALLERY + [UPPER_CORRIDOR, STAIR_TOP, (-83, -72, 18, 23)]:
+        U.rect(box[0], box[1], box[2], box[3], UPPER, "hall")
 
-    # the field: the Teeth in front of the door, the cut toward the yard, the paths, the seam
-    R.poly([(-30, -6), (-22, -9), (-17, -2), (-19, 6), (-26, 4)], FIELD + 6, "rock")
-    R.poly([(-24, 12), (-18, 10), (-15, 15), (-21, 18)], FIELD + 4, "rock")
-    _band(R, [(-24, 46), (-34, 52), (-46, 52)], 1.5, CUT, "cut")
-    _band(R, [(-44, 9), (-33, 9), (-20, 21), (-8, 22), (-4, 0)], 1.5, FIELD, "path")
-    _band(R, [(-45, 44), (-30, 40), (-14, 38), (-8, 36)], 1.5, FIELD, "path")
-    _band(R, SEAM, SEAM_WIDTH / 2, FIELD - 14, "crevasse")
-    _band(R, SEAM_ON, SEAM_WIDTH / 2, FIELD - 14, "crevasse")
+    for poly, h in zip(TEETH, (FIELD + 6, FIELD + 4)):
+        R.poly(poly, h, "rock")
+    _band(R, CUT_LINE, 1.5, CUT, "cut")
+    for p in PATHS:
+        _band(R, p, PATH_WIDTH / 2, FIELD, "path")
+    for k, samples in enumerate(cracks()):
+        R.where(crack_mask(R.X, R.Z, samples, OPEN_BRIDGE if k == 2 else None), LAVA, "crevasse")
     return R
 
 
 def objectives():
     """The teams, their spawns and their two monuments each: drawn once here, Blue's the half turn of Red's, read
     by map.xml, the sketch and the read-back alike."""
-    O = Objectives(Teams(("red-team", "Red", "red"), ("blue-team", "Blue", "blue")), Symmetry("half"))
+    O = Objectives(Teams(("red-team", "Red", "red", 20), ("blue-team", "Blue", "blue", 20)), SYM)
     sx, sz = SPAWN
     O.add(Spawn("red-team", (sx, FIELD + 1, sz), yaw=-90, area=Box(sx - 4, FIELD + 1, sz - 4, sx + 4, FIELD + 4, sz + 4)))
     rx, rz = REACTOR

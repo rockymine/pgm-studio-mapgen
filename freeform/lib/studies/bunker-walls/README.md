@@ -10,6 +10,10 @@ andesite fading up into stone. Everything behind the face is cobblestone.
 
     cd studies/bunker-walls/scripts && MINECRAFT_JAR=/path/to/1.8.9.jar python3 build.py [swatch corners floors stagger interior facade]
 
+**The grammar and the style are library code.** The grammar is `pgmvox.built.segments` and the author's blocks
+`pgmvox.grammar.bunker`; this study's `build.py` builds its sheets from them, and `boards/sixes-and-sevens` is
+their second user.
+
 ## The grammar
 
 **A segment is a list of peels and a core.** Each peel takes one row or column off one side of what is left, in

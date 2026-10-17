@@ -21,8 +21,8 @@ from pgmvox import B, World                                                   # 
 from pgmvox.built.facade import LETTERS                                       # noqa: E402
 from pgmvox.read import render                                                # noqa: E402
 
-import segments as S                                                          # noqa: E402
-import styles as T                                                            # noqa: E402
+from pgmvox.built import segments as S                                       # noqa: E402
+from pgmvox.grammar import bunker as T                                       # noqa: E402
 
 OUT = os.path.join(HERE, "..", "renders")
 BUILD = os.path.join(tempfile.gettempdir(), "pgmvox-bunker-walls")
@@ -58,7 +58,7 @@ def swatch():
     ground(w)
     cells = {(x, z) for x in range(0, n * 6) for z in (0, 1)}
     S.wall(w, cells, BASE, 16, T.ANDESITE_SEG, lambda x, z: z > 1,
-           segment_of=lambda side, i, j, run: T.SEGMENTS[i] if side == "s" else T.ANDESITE_SEG)
+           segment_of=lambda side, i, j, run, over: T.SEGMENTS[i] if side == "s" else T.ANDESITE_SEG)
     shoot(w, "swatch", [
         {"out": "front", "box": [0, BASE, 0, n * 6 - 1, BASE + 15, 3], "yaw": 180, "pitch": 6, "fov": 30,
          "w": 2200, "h": 900},
@@ -176,9 +176,9 @@ def interior():
                 break
     heights = {c: height(n) for c, n in owner.items()}
 
-    def choose(side, i, j, run):
+    def choose(side, i, j, run, over):
         stack = STACKS.get(owner[run[0]])
-        if stack is None or j == "over":
+        if stack is None or over:
             return T.ANDESITE_SEG
         return stack[j]
 
@@ -287,8 +287,8 @@ def facade():
     cells = {(x, z) for x in range(FACE[0], FACE[1] + 1) for z in (-1, 0)}
     gable = S.crown(rise=3, shape="gable", rows=3)
 
-    def choose(side, i, j, run):
-        if j == "over":
+    def choose(side, i, j, run, over):
+        if over:
             return T.STRIPE_OBSIDIAN_SEG
         return T.STRIPE_GRAY_SEG if j == 2 else T.ANDESITE_SEG
 

@@ -873,6 +873,16 @@ renderer as well as pgmvox's own. Neither saw the other's work.
 | `freeform/lib/boards/crucible` | dtc + ctw | Opus 5.5 | **Two foundries dug into facing volcanoes across a lava rift**, 140 by 200. Each core is a crucible hung from a gantry crane over a sunken casting pit whose floor is the leak line, and each wool lies in the cold store two levels down, the one cool room of quartz and prismarine. Four ways to a crucible (around by the haul ramp, below by a lava tube, above along the crane girder, through the furnace hall) and three to the wool. GO4 **53**, GO3 **148**, GO1 **2.79** (missed), nothing falling, the studio parser reads it as valid. World at `maps/mixed/crucible` |
 | `freeform/lib/boards/kilnhold` | dtm + ctf | Sonnet 5.5 | **A geothermal station in a caldera's rim**, 140 by 200: two concrete bunkers on four levels across an ash plain with a lava-lake crater. Two floating monuments a team (one on the roof deck, one over the pump hall's grated pool) and a flag in the turbine hall's shrine, captured at a net in the gate hall; `mapxml.py` writes the nets and the pickup filter the library's Flag objective does not. Spawn to own goals **67** and **65**, enemy over own **3.42** and **3.22**, GO2 and GO3 missed, 220 loose blocks (the trees' arms and some glowstone). World at `maps/mixed/kilnhold` |
 
+### Opus 5.5 — a bunker board in the author's Bunker style (2026-10-17)
+
+One board, built after a study in which the author taught the wall segments, floors and lofted walls it is made
+of (`freeform/lib/studies/bunker-walls`), with its layout reviewed as a sketch first and drawn without reference to
+any other board.
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `freeform/lib/boards/sixes-and-sevens` | dtm | Opus 5.5 | **Two bunkers dug into the mountains at either end of a frozen wasteland, a cracked snowfield between them with lava in its crevasses**, 280 by 200. Each team's Reactor floats in a tall hall behind an 18-by-16 door, its Pump in a yard cut beside the facade, its spawn hall deep behind; a gallery and a corridor make an upper floor reached by a switchback of 3-deep treads, and the dark segment has one room of its own. Lofted walls numbered 06 and 07 hold the spurs, a shelf and the mountain's upper step; the snowfield goes on over the mountains with two needles of rock. Built own walks **55** and **49**, enemy over own **3.02** and **3.59**, GO2 and GO3 met on the plan, objectives clean. World at `maps/dtcm/sixes_and_sevens` |
+
 ### Opus 5.5 and Sonnet 5.5 — six blind entries to a Fire and Ice contest (2026-10-16)
 
 Six agents, three of each model, given one short brief: pgmvox only, Fire and Ice read as winter meeting autumn,
