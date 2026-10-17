@@ -38,7 +38,7 @@ WALLS = {"mountain", "rock"}
 
 # ---- Red's bunker, west of the facade; Blue's is its half turn ------------------------------------------------
 FACADE_X = -46                          # the face column; the field starts a block east of it
-FACADE_Z = (-12, 29)
+FACADE_Z = (-13, 31)
 DOOR_Z = (0, 17)
 HALL = (-71, -48, -6, 23)               # x0, x1, z0, z1: the tall hall, three segments high
 SPAWN_HALL = (-104, -84, 16, 37)
@@ -74,13 +74,12 @@ SHELF_RAMP = (17, 66, 22, 71)           # x0, z0, x1, z1: wide steps down at its
 
 # the lofted walls: chains of (bottom, top) edges, each facing (-dz, dx) of the chain's direction
 LOFTS = {
-    "north spur": [((-46, FIELD, -14), (-50, 66, -18)), ((-36, FIELD, -21), (-40, 62, -24)),
+    "north spur": [((-46, FIELD, -14), (-50, 72, -18)), ((-36, FIELD, -21), (-40, 64, -24)),
                    ((-27, FIELD, -37), (-31, 56, -38)), ((-28, FIELD, -51), (-32, 50, -49)),
                    ((-40, FIELD, -64), (-42, 46, -60))],
-    "south spur": [((-31, FIELD, 79), (-35, 48, 76)), ((-27, FIELD, 66), (-31, 56, 64)),
-                   ((-34, FIELD, 58), (-37, 62, 54)), ((-46, FIELD, 56), (-48, 64, 52))],
+    "south spur": [((-31, FIELD, 79), (-35, 50, 76)), ((-27, FIELD, 66), (-31, 60, 64)),
+                   ((-34, FIELD, 58), (-38, 68, 54)), ((-46, FIELD, 56), (-50, 72, 52))],
     "shelf": [((10, FIELD, 63), (10, SHELF, 66)), ((-27, FIELD, 66), (-27, SHELF, 69))],
-    "tier": [((-80, 82, 14), (-84, 97, 14)), ((-70, 81, -26), (-74, 96, -26)), ((-74, 80, -62), (-78, 94, -62))],
 }
 BOULDERS = [(-36, -30, 3), (-14, -18, 2), (-33, 28, 3), (-18, 48, 2), (-40, 70, 2), (-22, -70, 3), (-8, -60, 2),
             (-30, -86, 2), (-12, 92, 2), (-38, 92, 3)]                      # (x, z, radius) on the field
@@ -91,6 +90,7 @@ CUT_LINE = [(-24, 46), (-34, 52), (-46, 52)]
 PATHS = [[(-45, 8), (-33, 9), (-22, 22), (-9, 21), (-3, 0)],       # door, past the Teeth, to the Spine
          [(-46, 45), (-30, 40), (-15, 38), (-9, 36)],                  # yard to the snow bridge
          [(-28, -2), (-20, -24), (-10, -40), (-3, -50)]]               # the Teeth north to the open snow
+PATH_OPEN = [False, False, True]        # whether a path's far end runs out into the snow, narrowing as it goes
 PATH_WIDTH = 9
 # the crevasses, red's half: the seam from the centre southward (its half turn runs north), the bridges left standing;
 # and one across the open snow north of the Teeth

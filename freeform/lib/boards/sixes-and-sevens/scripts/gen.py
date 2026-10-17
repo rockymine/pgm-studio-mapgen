@@ -1,4 +1,4 @@
-"""Build Sixes and Sevens: Red's half (the ground, the needles, the bunker, the lofted walls), turned onto Blue's,
+"""Build Sixes and Sevens: Red's half (the ground, the boulders, the bunker, the lofted walls), turned onto Blue's,
 then Blue's lofted walls marked 07, the objectives, and the world saved.
 
     python3 gen.py <build-dir>
@@ -17,7 +17,6 @@ from pgmvox.built import segments as S
 from pgmvox.built.facade import LETTERS
 from pgmvox.core.orient import turn_world
 from pgmvox.grammar import bunker as T
-from pgmvox.scenery.forms import spike
 
 SY = 160
 BAND = ("#" * 120,)
@@ -34,21 +33,9 @@ def lofts(w, digits, image=None):
             edges = [tuple((*image(p[0], p[2])[:1], p[1], image(p[0], p[2])[1]) for p in e) for e in edges]
             edges = [((b[0], b[1], b[2]), (t[0], t[1], t[2])) for b, t in edges]
         marks = [(0, 10, BAND, 1, S.GRAY_WOOL)]
-        if name == "tier":
-            marks = []
         if name == "north spur":
             marks.append((14, 2, number(*digits), 2, S.OBSIDIAN))
         S.loft(w, edges, T.LOFT, thick=3, marks=marks)
-
-
-def needles(w, top):
-    """A tall needle of rock over the bunker, and a lesser one, in the gray wool the study's cliffs are."""
-    for k, ((x, z), rise) in enumerate(land.NEEDLES):
-        y0 = int(top[x - w.x0, z - w.z0]) - 6
-        axis = [(x, y0, z), (x + 2, y0 + rise * 0.5, z - 1), (x + 4, y0 + rise, z + 1)]
-        m = spike(w, axis, (9 if k == 0 else 6, 0.5, 1.1), rough=0.06, seed=80 + k)
-        w.ids[m] = B.WOOL
-        w.dat[m] = 7
 
 
 def boulders(w):
@@ -74,7 +61,6 @@ def build(out):
     rock, snow, teeth = land.heights(X, Z)
     half = X < 0
     top = land.lay(w, rock, snow, teeth, X, Z, half)
-    needles(w, top)
     boulders(w)
     bunker.build(w)
     lofts(w, ("0", "6"))

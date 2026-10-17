@@ -37,7 +37,7 @@ for box in P.GALLERY + [P.UPPER_CORRIDOR]:
 for (x, z), way, n in P.STAIR_FLIGHTS:
     dx = 1 if way == "e" else -1
     m.line([(x, z + 1), (x + dx * 3 * n, z + 1)], colour=(240, 170, 40), width=3, arrow=True, both=True)
-m.callout(P.FACADE_X, 8, "06: the facade, 42 wide, door 18 x 16", dx=40, dz=-70)
+m.callout(P.FACADE_X, 8, "06: the facade, 45 wide, door 18 x 16", dx=40, dz=-70)
 m.callout(-70, 22, "upper floor at 48 (orange): gallery over the Reactor, corridor over the spawn tunnel", dx=-70, dz=60)
 m.callout(-95, 18, "switchback stair, treads 3 deep, two flights of 4", dx=-40, dz=-60)
 m.callout(-24, 52, "the cut: a trench six deep, a way to the Pump from below", dx=10, dz=60)
@@ -47,7 +47,7 @@ m.callout(-28, -76, "a second crack across the open snow, one snow bridge", dx=-
 m.callout(0, -2, "the Spine: rock over the seam, the middle crossing", dx=70, dz=-60)
 m.callout(-29, 67, "lofted walls: the shelf and each spur", dx=-60, dz=30)
 m.callout(20, 68, "wide steps up onto the shelf", dx=40, dz=20)
-m.callout(-90, -60, "over the bunker: the snowfield again, deeper, a needle of rock; out of play", dx=-20, dz=-40)
+m.callout(-90, -60, "over the bunker: the snowfield again, the bunker sunk into it; out of play", dx=-20, dz=-40)
 
 S.table(rows() + [("—", "the mountain above each bunker", "a roof to be decided", None),
                   (len(to_blue_reactor), "cells on Red's walk to Blue's Reactor", "", None)], width=m.img.width)

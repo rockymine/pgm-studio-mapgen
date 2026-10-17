@@ -1,5 +1,5 @@
 """Bunker 06, Red's, in the author's Bunker style: the rooms carved into the mountain and walled in segments, the
-upper floor and its switchback stair, ceilings, floors, the facade with its door and crown, the blast walls, and the
+upper floor and its switchback stair, ceilings, floors, the facade with its door, the blast walls, and the
 yard with its slanted panels. Blue's bunker 07 is the half turn of it.
 
     build(w)
@@ -14,13 +14,13 @@ F = P.FIELD
 ROOMS = {                 # name: (x0, x1, z0, z1), height
     "hall": (P.HALL, 24), "spawn": (P.SPAWN_HALL, 16), "dark": (P.DARK, 24), "tunnel": (P.TUNNEL, 8),
     "yard tunnel": (P.YARD_TUNNEL, 8), "dark tunnel": (P.DARK_TUNNEL, 8), "side tunnel": (P.SIDE_TUNNEL, 8),
-    "yard": (P.YARD, 16),
+    "yard": (P.YARD, P.FRONT_H),
 }
 STACKS = {                # the tiers of a room's walls, foot first
     "hall": [T.GRAY_CYAN_SEG, T.ANDESITE_SEG, T.STRIPE_OBSIDIAN_SEG],
     "spawn": [T.ANDESITE_SEG, T.STRIPE_GRAY_SEG],
     "dark": [T.DARK_SEG, T.GRAY_CYAN_SEG, T.ANDESITE_SEG],
-    "yard": [T.ANDESITE_SEG, T.STRIPE_GRAY_SEG],
+    "yard": [T.ANDESITE_SEG, T.ANDESITE_SEG, T.ANDESITE_SEG, T.STRIPE_GRAY_SEG],
     "facade": [T.ANDESITE_SEG, T.ANDESITE_SEG, T.ANDESITE_SEG, T.STRIPE_GRAY_SEG],
 }
 UPPER_MOUTHS = {(-83, 18, -82, 23): P.FIELD + 16, (-73, 18, -72, 23): P.FIELD + 17}   # a mouth that also carries the corridor
@@ -111,16 +111,16 @@ def gallery(w):
 
 
 def yard_panels(w):
-    """The yard's back wall in panels set out of line: each bay a block further out toward the field than the one
-    north of it, each tier a block back from the one under it."""
+    """The yard's back wall in panels set out of line, as tall as the facade: each bay a block further out toward the
+    field than the one north of it, each tier a block back from the one under it."""
     x0, x1, z0, z1 = P.YARD
-    back = x0 - 2
     for i in range(4):
-        for j in range(2):
+        for j in range(4):
             xf = x0 - 1 + i - j
             za = z0 + 6 * i
             y0 = F + 1 + 8 * j
-            w.fill(back, y0, za, xf, y0 + 7, za + 5, *S.COBBLE)
+            w.fill(xf - 1, y0, za, xf, y0 + 7, za + 5, *S.COBBLE)
+            w.fill(xf + 1, y0, za, x0 - 1, y0 + 7, za + 5, B.AIR)      # nothing stands in front of a stepped-back panel
             S.lay_segment(w, STACKS["yard"][j], [(xf, za + 5 - s) for s in range(6)], "e", y0, 8)
 
 
@@ -186,12 +186,9 @@ def build(w):
         lo, hi = (box[1], box[3]) if faces[0][0] in ("e", "w") else (box[0], box[2])
         for side, line in faces:
             openings.append(S.Opening(side, lo, hi, F + 1, (upper or F + 8), _carver(upper), line=line))
-    crown = S.crown(rise=3, shape="gable", rows=3)
     yard_back = {(x, z) for x, z in cells if owner[(x, z)] == "yard" and x < P.YARD[0]}
     S.wall(w, cells - yard_back, F + 1, heights, T.ANDESITE_SEG, lambda x, z: (x, z) in air or field(x, z),
-           segment_of=choose, openings=openings,
-           top=lambda w, side, run, y: crown(w, side, [c for c in run if P.DOOR_Z[0] <= c[1] <= P.DOOR_Z[1]], y)
-           if side == "e" and run[0][0] == P.FACADE_X else None)
+           segment_of=choose, openings=openings)
     yard_panels(w)
     (mx0, mz0, mx1, mz1), _ = P.MOUTHS[3]                     # the yard tunnel's mouth, through the panels
     w.fill(mx0, F + 1, mz0, P.YARD[0] - 1 + 1, F + 8, mz1, B.AIR)
