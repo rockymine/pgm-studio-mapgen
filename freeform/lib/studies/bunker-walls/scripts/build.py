@@ -1,10 +1,12 @@
 """The bunker study's sheets, each a small world drawn by the studio's textured renderer.
 
-    swatch    the five segments side by side, two tiers, on a straight wall two blocks thick
+    swatch    the six segments side by side, two tiers, on a straight wall two blocks thick
     corners   one footprint with outward and inward corners, so the corner rule shows, a gable crown on its front
-    floors    the four floor segments, eighteen blocks a side each
-    facade    the bunker front: a projecting keep with the door and its crown, two blast walls, two lofted retaining
-              walls holding the mountain, the forecourt paved on the facade's module
+    floors    the three floors, a four-block grid
+    stagger   segments set out of line: on a diagonal, leaning back, and both at once
+    interior  a hall, a room three segments tall and tunnels 6, 12 and 18 wide, walled in segments and floored
+    facade    the bunker front: a flat wall with the door and its crown, two blast walls, one lofted retaining wall
+              along the front and one beside a blast wall, the forecourt paved
 
     MINECRAFT_JAR=/path/to/1.8.9.jar python3 build.py [name ...]      # renders into ../renders
 """
@@ -59,12 +61,10 @@ def swatch():
            segment_of=lambda side, i, j, run: T.SEGMENTS[i] if side == "s" else T.ANDESITE_SEG)
     shoot(w, "swatch", [
         {"out": "front", "box": [0, BASE, 0, n * 6 - 1, BASE + 15, 3], "yaw": 180, "pitch": 6, "fov": 30,
-         "w": 2000, "h": 900},
-        {"out": "angle", "box": [0, BASE, 0, 17, BASE + 15, 3], "yaw": 215, "pitch": 14, "fov": 30,
-         "w": 1600, "h": 1100},
-        {"out": "close", "box": [0, BASE, 0, 5, BASE + 7, 3], "yaw": 200, "pitch": 10, "fov": 30,
-         "w": 1200, "h": 1200},
-        {"out": "dark", "box": [18, BASE, 0, 29, BASE + 15, 3], "yaw": 200, "pitch": 10, "fov": 30,
+         "w": 2200, "h": 900},
+        {"out": "light", "box": [0, BASE, 0, 23, BASE + 7, 3], "yaw": 200, "pitch": 10, "fov": 30,
+         "w": 2000, "h": 1000},
+        {"out": "dark", "box": [24, BASE, 0, 35, BASE + 15, 3], "yaw": 200, "pitch": 10, "fov": 30,
          "w": 1400, "h": 1400},
     ])
 
@@ -109,12 +109,96 @@ def floors():
          "fov": 30, "w": 1200, "h": 900} for k, seg in enumerate(T.FLOORS)])
 
 
+# ---- stagger ----------------------------------------------------------------------------------------------
+def stagger():
+    w = World(-6, -14, 112, 30, 36)
+    ground(w)
+    kinds = [("diagonal", 1, 0), ("lean", 0, -1), ("both", 1, -1)]
+    for k, (_, bay, tier) in enumerate(kinds):
+        S.staggered(w, k * 36, 0, T.ANDESITE_SEG, 4, 3, shift_bay=bay, shift_tier=tier, base=BASE)
+    shoot(w, "stagger", [
+        {"out": name, "box": [k * 36, BASE, -8, k * 36 + 23, BASE + 23, 6], "yaw": 150, "pitch": 14, "fov": 32,
+         "w": 1500, "h": 1300} for k, (name, _, _) in enumerate(kinds)])
+
+
+# ---- interior ---------------------------------------------------------------------------------------------
+SPACES = {                 # x0, z0, x1, z1, height
+    "hall": (0, 0, 23, 23, 16),
+    "east": (26, 6, 49, 17, 8),
+    "room": (52, -6, 75, 29, 24),
+    "south": (6, 26, 11, 49, 8),
+    "north": (52, -32, 69, -9, 8),
+}
+# where a tunnel goes through a wall: the carved box, and the openings on the face each side of it
+MOUTHS = [
+    ((24, 6, 25, 17), [S.Opening("w", 6, 17, BASE, BASE + 7, line=24), S.Opening("e", 6, 17, BASE, BASE + 7, line=25)]),
+    ((50, 6, 51, 17), [S.Opening("e", 6, 17, BASE, BASE + 7, line=51), S.Opening("w", 6, 17, BASE, BASE + 7, line=50)]),
+    ((6, 24, 11, 25), [S.Opening("n", 6, 11, BASE, BASE + 7, line=24), S.Opening("s", 6, 11, BASE, BASE + 7, line=25)]),
+    ((52, -8, 69, -7), [S.Opening("s", 52, 69, BASE, BASE + 7, line=-7),
+                        S.Opening("n", 52, 69, BASE, BASE + 7, line=-8)]),
+]
+
+
+def interior():
+    w = World(-8, -40, 92, 98, 40)
+    w.fill(w.x0, 0, w.z0, w.x0 + w.sx - 1, BASE - 1, w.z0 + w.sz - 1, B.STONE)
+    air = {}
+    for name, (x0, z0, x1, z1, h) in SPACES.items():
+        for x in range(x0, x1 + 1):
+            for z in range(z0, z1 + 1):
+                air[(x, z)] = h
+    near = lambda x, z, r: [air[(x + i, z + j)] for i in range(-r, r + 1) for j in range(-r, r + 1)
+                            if (x + i, z + j) in air]
+    for x in range(w.x0, w.x0 + w.sx):                      # the rock, as high as the spaces beside it
+        for z in range(w.z0, w.z0 + w.sz):
+            hs = near(x, z, 4)
+            if hs and (x, z) not in air:
+                w.column(x, z, BASE, BASE + max(hs) - 1, B.STONE)
+    cells = {(x, z) for x in range(w.x0, w.x0 + w.sx) for z in range(w.z0, w.z0 + w.sz)
+             if (x, z) not in air and near(x, z, 2)}
+    heights = {}
+    for x, z in cells:                                      # a wall is as tall as the nearest space
+        for r in (1, 2):
+            hs = near(x, z, r)
+            if hs:
+                heights[(x, z)] = min(hs) if r == 1 else max(hs)
+                break
+
+    def choose(side, i, j, run):
+        h = heights[run[0]]
+        if h == 8:
+            return T.STRIPE_OBSIDIAN_SEG if i % 3 == 1 else T.ANDESITE_SEG
+        if j == "over":
+            return T.ANDESITE_SEG
+        if h == 16:
+            return [T.ANDESITE_SEG, T.STRIPE_GRAY_SEG][j]
+        return [T.GRAY_CYAN_SEG, T.ANDESITE_SEG, T.DARK_SEG][j]
+
+    S.wall(w, cells, BASE, heights, T.ANDESITE_SEG, lambda x, z: (x, z) in air, segment_of=choose,
+           openings=[o for _, ops in MOUTHS for o in ops])
+    for (x0, z0, x1, z1), _ in MOUTHS:
+        w.fill(x0, BASE, z0, x1, BASE + 7, z1, B.AIR)
+    for name, (x0, z0, x1, z1, h) in SPACES.items():
+        S.floor(w, (x0, z0, x1, z1), BASE - 1, T.mortar((x0, z0)), module=T.FLOOR_MODULE, align=(x0, z0))
+    for (x0, z0, x1, z1), _ in MOUTHS:
+        S.floor(w, (x0, z0, x1, z1), BASE - 1, T.mortar((x0, z0)), module=T.FLOOR_MODULE, align=(x0, z0))
+    shoot(w, "interior", [
+        {"out": "above", "box": [-4, BASE - 1, -36, 79, BASE + 24, 53], "yaw": 200, "pitch": 68, "fov": 36,
+         "w": 2000, "h": 1700},
+        {"out": "room", "box": [52, BASE - 1, -12, 77, BASE + 24, 29], "yaw": 215, "pitch": 26, "fov": 34,
+         "w": 1700, "h": 1500},
+        {"out": "hall", "box": [0, BASE - 1, -2, 30, BASE + 16, 23], "yaw": 205, "pitch": 24, "fov": 34,
+         "w": 1800, "h": 1300},
+        {"out": "tunnel", "box": [20, BASE - 1, 6, 53, BASE + 8, 19], "yaw": 320, "pitch": 26, "fov": 34,
+         "w": 1800, "h": 1100},
+    ])
+
+
 # ---- facade -----------------------------------------------------------------------------------------------
-ZF = 0                     # the main wall's face row
-PROJ = (12, 36)            # the keep's columns, sides included
-PROJ_D = 7                 # how far the keep stands forward of the main wall
-DOOR = (18, 29)
-MAIN_H, KEEP_H = 24, 32
+FACE = (0, 41)             # the front's columns
+DOOR = (18, 35)            # eighteen wide
+DOOR_H = 16
+FRONT_H = 24
 
 
 def door(w, columns, side, y0, y1):
@@ -143,101 +227,103 @@ def door(w, columns, side, y0, y1):
                 w.set(lx + ix, y, lz + iz, *S.NETHER_BRICK)
             else:
                 w.set(lx, y, lz, *S.GRAY_WOOL)
+            w.set(lx + 2 * ix, y, lz + 2 * iz, *S.COBBLE)
 
 
-def blast_wall(w, x0, z0, length, h_hi, h_lo, width=8, layers=(7, 6, 6), band=BASE + 10):
-    """A blast wall in layers from the face outward, each a block in from the one under it on both sides and at its
-    end, painted like the lofted walls: cobble at the foot fading through polished andesite and andesite to stone,
-    a gray-wool line at `band`, the ledge each layer leaves in polished andesite. Its top falls from h_hi at the
+def blast_wall(w, x0, z0, length, h_hi, h_lo, width=4, band=BASE + 10):
+    """A blast wall `width` thick from the face outward, painted like the lofted walls: cobble at the foot fading
+    through polished andesite and andesite to stone, a gray-wool line at `band`. Its top falls from h_hi at the
     face to h_lo at its end in whole blocks."""
-    y = BASE
-    for k, h in enumerate(layers):
-        xa, xb, zb = x0 + k, x0 + width - 1 - k, z0 + length - 1 - k
-        for x in range(xa, xb + 1):
-            for z in range(z0, zb + 1):
-                top = BASE + round(h_hi - (h_hi - h_lo) * (z - z0) / max(1, length - 1))
-                rim = x in (xa, xb) or z == zb
-                for yy in range(y, min(y + h, top)):
-                    v = (yy - BASE) / h_hi
-                    block, _ = T.LOFT.at(v, v, v, (x, yy, z))
-                    w.set(x, yy, z, *(S.GRAY_WOOL if rim and yy == band else block))
-        y += h
-        if k + 1 < len(layers):                     # the ledge this layer leaves
-            for x in range(xa, xb + 1):
-                for z in range(z0, zb + 1):
-                    if (x in (xa, xb) or z == zb) and w.id(x, y - 1, z) != 0:
-                        w.set(x, y - 1, z, *S.POL_ANDESITE)
+    for z in range(z0, z0 + length):
+        top = round(h_hi - (h_hi - h_lo) * (z - z0) / max(1, length - 1))
+        for x in range(x0, x0 + width):
+            rim = x in (x0, x0 + width - 1) or z == z0 + length - 1
+            for y in range(BASE, BASE + top):
+                v = (y - BASE) / (top - 1)
+                block, _ = T.LOFT.at(v, v, v, (x, y, z))
+                w.set(x, y, z, *(S.GRAY_WOOL if rim and y == band else block))
+
+
+def mountain(w, line, floor=BASE):
+    """Ground behind a polyline [(x, z, top), ...] (behind is to the right of its direction), rising from each
+    point's top with the distance behind it, laid only where the air is still empty."""
+    for x in range(w.x0, w.x0 + w.sx):
+        for z in range(w.z0, w.z0 + w.sz):
+            best = None
+            for k, (p, q) in enumerate(zip(line, line[1:])):
+                dx, dz = q[0] - p[0], q[1] - p[1]
+                L = math.hypot(dx, dz)
+                tt = min(1.0, max(0.0, ((x + 0.5 - p[0]) * dx + (z + 0.5 - p[1]) * dz) / (L * L)))
+                cx, cz = p[0] + tt * dx, p[1] + tt * dz
+                d = math.hypot(x + 0.5 - cx, z + 0.5 - cz)
+                sd = ((x + 0.5 - cx) * -dz + (z + 0.5 - cz) * dx) / L
+                if best is None or d < best[0]:
+                    best = (d, sd, p[2] + (q[2] - p[2]) * tt)
+            d, sd, top = best
+            if sd >= 0:
+                continue
+            h = min(w.sy - 2, int(top + 1 + 0.55 * d + noise(x, z, 12) * 7 - 3))
+            for y in range(floor, h + 1):
+                if w.id(x, y, z) == 0:
+                    w.set(x, y, z, *(S.STONE if y < h - 1 else (B.DIRT, 0) if y < h else (B.GRASS, 0)))
 
 
 def facade():
-    w = World(-60, -40, 168, 100, 80)
+    w = World(-56, -36, 132, 96, 72)
     ground(w)
-    zp = ZF + PROJ_D
-    front = lambda x: zp if PROJ[0] <= x <= PROJ[1] else ZF
-    main = {(x, z) for x in range(0, 49) for z in (ZF - 1, ZF)}
-    keep_in = {(x, z) for x in range(PROJ[0], PROJ[1] + 1) for z in range(ZF - 1, zp + 1)}
-    keep = ring(keep_in) - {(x, ZF - 1) for x in range(PROJ[0] + 2, PROJ[1] - 1)}
-    for x, z in keep_in - keep:
-        w.column(x, z, BASE, BASE + KEEP_H - 1, *S.COBBLE)
-    cells = (main - keep_in) | keep
-    heights = {c: (KEEP_H if c in keep_in else MAIN_H) for c in cells}
-    outside = lambda x, z: 0 <= x <= 48 and z > front(x)
+    cells = {(x, z) for x in range(FACE[0], FACE[1] + 1) for z in (-1, 0)}
     gable = S.crown(rise=3, shape="gable", rows=3)
-    S.wall(w, cells, BASE, heights, T.ANDESITE_SEG, outside,
-           segment_of=lambda side, i, j, run: T.DARK_SEG if j == "over" else T.ANDESITE_SEG,
-           openings=[S.Opening("s", DOOR[0], DOOR[1], BASE, BASE + 15, door)],
-           top=lambda w, side, run, y: gable(w, side, run, y) if side == "s" and run[0][1] == zp else None)
 
-    # the forecourt, paved on the keep's module
-    S.floor(w, (2, zp + 1, 46, zp + 29), BASE - 1, T.FLOOR_MORTAR, module=T.FLOOR_MODULE, align=T.FLOOR_AT)
-    blast_wall(w, DOOR[0] - 9, zp + 1, 14, 19, 16)
-    blast_wall(w, DOOR[1] + 2, zp + 1, 14, 19, 16)
+    def choose(side, i, j, run):
+        if j == "over":
+            return T.STRIPE_OBSIDIAN_SEG
+        return T.STRIPE_GRAY_SEG if j == 2 else T.ANDESITE_SEG
 
-    # the lofted retaining walls, each two planes, leaning back five over sixteen
-    top = BASE + 16
-    right = [((49, BASE, ZF + 1), (49, top, ZF + 1 - 5)),
-             ((73, BASE, ZF + 1 + 5), (73, top, ZF + 1)),
-             ((97, BASE, ZF + 1 + 15), (97, top, ZF + 1 + 10))]
-    left = [((48 - p[0], p[1], p[2]), (48 - q[0], q[1], q[2])) for p, q in reversed(right)]
+    S.wall(w, cells, BASE, FRONT_H, T.ANDESITE_SEG, lambda x, z: FACE[0] <= x <= FACE[1] and z > 0,
+           segment_of=choose, openings=[S.Opening("s", DOOR[0], DOOR[1], BASE, BASE + DOOR_H - 1, door)],
+           top=lambda w, side, run, y: gable(w, side, [c for c in run if DOOR[0] <= c[0] <= DOOR[1]], y)
+           if side == "s" else None)
+
+    # the forecourt, its tiles centred on the door
+    S.floor(w, (1, 1, 40, 28), BASE - 1, T.mortar((25, 1)), module=T.FLOOR_MODULE, align=(25, 1))
+    blast_wall(w, DOOR[0] - 5, 1, 14, 19, 16)
+    blast_wall(w, DOOR[1] + 2, 1, 14, 19, 16)
+
+    # the lofted walls: one along the front to the west, one beside the east blast wall running out to the south,
+    # each three edges, leaning back five, falling toward its end
+    west = [((-48, BASE, 16), (-48, BASE + 8, 11)),
+            ((-24, BASE, 6), (-24, BASE + 15, 1)),
+            ((0, BASE, 1), (0, BASE + 20, -4))]
+    east = [((41, BASE, 1), (46, BASE + 21, 1)),
+            ((46, BASE, 25), (51, BASE + 15, 25)),
+            ((56, BASE, 49), (61, BASE + 7, 49))]
     behind = lambda x, y, z: S.STONE if w.id(x, y, z) == 0 else None
     band = ("#" * 90,)
-    marks_r = [(10, 3, [a + "." + b for a, b in zip(LETTERS["0"], LETTERS["7"])], 2, S.OBSIDIAN),
-               (0, 12, band, 1, S.GRAY_WOOL)]
-    marks_l = [(30, 3, [a + "." + b for a, b in zip(LETTERS["0"], LETTERS["6"])], 2, S.OBSIDIAN),
-               (0, 12, band, 1, S.GRAY_WOOL)]
-    S.loft(w, right, T.LOFT, thick=3, behind=behind, reach=14, marks=marks_r)
-    S.loft(w, left, T.LOFT, thick=3, behind=behind, reach=14, marks=marks_l)
+    number = lambda a, b: [p + "." + q for p, q in zip(LETTERS[a], LETTERS[b])]
+    S.loft(w, west, T.LOFT, thick=3, behind=behind, reach=14,
+           marks=[(30, 2, number("0", "6"), 2, S.OBSIDIAN), (0, 12, band, 1, S.GRAY_WOOL)])
+    S.loft(w, east, T.LOFT, thick=3, behind=behind, reach=14,
+           marks=[(8, 2, number("0", "7"), 2, S.OBSIDIAN), (0, 12, band, 1, S.GRAY_WOOL)])
 
-    # the mountain behind, rising from the walls' tops
-    for x in range(w.x0, w.x0 + w.sx):
-        if 0 <= x <= 48:
-            zline, h0 = ZF - 2, BASE + MAIN_H
-        else:
-            k = x - 49 if x > 48 else -1 - x
-            zline = (ZF - 4 + k * 5 / 24) if k <= 24 else (ZF + 1 + (k - 24) * 10 / 24)
-            zline = int(math.floor(zline)) - 2
-            h0 = BASE + 16
-        for z in range(w.z0, zline + 1):
-            dist = zline - z
-            h = int(h0 + 1 + dist * 0.7 + noise(x, z, 12) * 8 - 3)
-            h = min(w.sy - 2, h)
-            col_top = w.top(x, z)
-            for y in range(BASE, h + 1):
-                if w.id(x, y, z) == 0:
-                    w.set(x, y, z, *(S.STONE if y < h - 1 else (B.DIRT, 0) if y < h else (B.GRASS, 0)))
+    line = [(e[1][0], e[1][2], e[1][1]) for e in west] + [(0, -1.5, BASE + FRONT_H), (42, -1.5, BASE + FRONT_H)] + \
+           [(e[1][0], e[1][2], e[1][1]) for e in east]
+    mountain(w, line)
     shoot(w, "facade", [
-        {"out": "wide", "box": [-50, BASE - 1, -30, 98, BASE + 50, zp + 32], "yaw": 195, "pitch": 18, "fov": 40,
-         "w": 2200, "h": 1300},
-        {"out": "keep", "box": [4, BASE - 1, -2, 44, BASE + 44, zp + 18], "yaw": 200, "pitch": 10, "fov": 34,
-         "w": 1800, "h": 1500},
-        {"out": "door", "box": [10, BASE - 1, zp - 4, 38, BASE + 20, zp + 16], "yaw": 215, "pitch": 12, "fov": 34,
+        {"out": "wide", "box": [-52, BASE - 1, -30, 70, BASE + 44, 54], "yaw": 200, "pitch": 22, "fov": 40,
+         "w": 2200, "h": 1400},
+        {"out": "front", "box": [-4, BASE - 1, -4, 48, BASE + 34, 30], "yaw": 190, "pitch": 12, "fov": 34,
+         "w": 1900, "h": 1400},
+        {"out": "door", "box": [8, BASE - 1, -4, 46, BASE + 24, 20], "yaw": 215, "pitch": 14, "fov": 34,
          "w": 1800, "h": 1300},
-        {"out": "loft", "box": [44, BASE - 1, -16, 100, BASE + 20, 20], "yaw": 210, "pitch": 16, "fov": 36,
+        {"out": "east", "box": [30, BASE - 1, -8, 70, BASE + 26, 54], "yaw": 250, "pitch": 18, "fov": 36,
+         "w": 2000, "h": 1300},
+        {"out": "west", "box": [-52, BASE - 1, -16, 6, BASE + 22, 22], "yaw": 195, "pitch": 16, "fov": 36,
          "w": 2000, "h": 1200},
     ])
 
 
-SHEETS = {"swatch": swatch, "corners": corners, "floors": floors, "facade": facade}
+SHEETS = {"swatch": swatch, "corners": corners, "floors": floors, "stagger": stagger, "interior": interior,
+          "facade": facade}
 
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)

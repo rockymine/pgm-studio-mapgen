@@ -2,9 +2,10 @@
 
     ANDESITE_SEG   the author's segment: a cobble L (top fading left to right, right leg fading up into cobble wall)
                    over a polished-andesite L, a stone-brick slab over nether brick, andesite fading up to stone
-    CROSS_SEG      the author's segment with a gray-wool cross in its core
-    DOTS_SEG       the author's segment with two obsidian studs in its core
-    DARK_SEG       the same peels: coal on top, black wool down the right, an obsidian L, the slab over gray wool,
+    STRIPE_*_SEG   the author's segment, its core stone on top, a stripe of obsidian or gray wool, the fade under it
+    GRAY_CYAN_SEG  the author's segment, its core stone on top, a row of cyan clay, gray wool under it
+    DARK_SEG       the same peels: coal on top, black wool down the right, an obsidian L, a nether-brick slab
+                   over gray wool,
                    a bedrock core with a row of cyan clay one under its top
     SLIT_SEG       a bedrock frame round columns of iron bars over gray glass, alternating with bedrock
 """
@@ -23,14 +24,14 @@ L_PEELS = (Peel("top", BLUE), Peel("right", ORANGE), Peel("top", RED), Peel("lef
 
 ANDESITE_SEG = Segment(L_PEELS, core=YELLOW, name="andesite")
 
-CROSS = (".#.", "###", ".#.")
-DOTS = ("#", ".", ".", "#")
-CROSS_SEG = Segment(L_PEELS, core=Bitmap(CROSS, Solid(GRAY_WOOL), YELLOW), name="cross")
-DOTS_SEG = Segment(L_PEELS, core=Bitmap(DOTS, Solid(OBSIDIAN), YELLOW), name="dots")
+# the same peels, the core in rows like the dark segment's: read down from its top, the rest under them
+STRIPE_OBSIDIAN_SEG = Segment(L_PEELS, core=Courses((Solid(STONE), Solid(OBSIDIAN)), YELLOW), name="stripe-obsidian")
+STRIPE_GRAY_SEG = Segment(L_PEELS, core=Courses((Solid(STONE), Solid(GRAY_WOOL)), YELLOW), name="stripe-gray")
+GRAY_CYAN_SEG = Segment(L_PEELS, core=Courses((Solid(STONE), Solid(CYAN_CLAY)), Solid(GRAY_WOOL)), name="gray-cyan")
 
 # the dark family: the author's peels in coal, black wool and obsidian over a bedrock core banded in cyan clay
 DARK_SEG = Segment((Peel("top", Solid(COAL)), Peel("right", Solid(BLACK_WOOL)), Peel("top", Solid(OBSIDIAN)),
-                    Peel("left", Solid(OBSIDIAN)), Peel("top", Solid(TOP_SLAB["stonebrick"], back=GRAY_WOOL))),
+                    Peel("left", Solid(OBSIDIAN)), Peel("top", Solid(TOP_SLAB["nether"], back=GRAY_WOOL))),
                    core=Courses((Solid(BEDROCK), Solid(CYAN_CLAY)), Solid(BEDROCK)), name="dark")
 
 # a bedrock frame, and inside it iron bars over gray glass alternating with bedrock, column by column
@@ -40,15 +41,20 @@ SLIT_SEG = Segment((Peel("top", Solid(BEDROCK)), Peel("left", Solid(BEDROCK)), P
                    overlays=(lambda s, t, w, h: BARS if 0 < s < w - 1 and 0 < t < h - 1 and s % 2 == 1 else None,),
                    name="slit")
 
-SEGMENTS = [ANDESITE_SEG, CROSS_SEG, DOTS_SEG, DARK_SEG, SLIT_SEG]
+SEGMENTS = [ANDESITE_SEG, STRIPE_OBSIDIAN_SEG, STRIPE_GRAY_SEG, GRAY_CYAN_SEG, DARK_SEG, SLIT_SEG]
 
 # floors: a one-block rim on two sides and a three-by-three core, four a side, laid on a grid counted from FLOOR_AT
 FLOOR_MODULE = 4
 FLOOR_AT = (12, 8)
 FLOOR_GRID = Segment((Peel("top", Solid(STONE)), Peel("left", Solid(STONE))),
                      core=Checker(CLAY, LIGHT_GRAY_WOOL), name="floor-grid")
-FLOOR_MORTAR = Segment((Peel("top", Checker(CLAY, LIGHT_GRAY_WOOL)), Peel("left", Checker(CLAY, LIGHT_GRAY_WOOL))),
-                       core=Checker(STONE, ANDESITE, FLOOR_MODULE, FLOOR_AT), name="floor-mortar")
+def mortar(origin):
+    """The mortar floor with its stone and andesite tiles counted from `origin`, a tile's corner."""
+    return Segment((Peel("top", Checker(CLAY, LIGHT_GRAY_WOOL)), Peel("left", Checker(CLAY, LIGHT_GRAY_WOOL))),
+                   core=Checker(STONE, ANDESITE, FLOOR_MODULE, origin), name="floor-mortar")
+
+
+FLOOR_MORTAR = mortar(FLOOR_AT)
 FLOOR_RING = Segment((Peel("top", Checker(CLAY, LIGHT_GRAY_WOOL)), Peel("left", Checker(CLAY, LIGHT_GRAY_WOOL))),
                      core=Bitmap(("...", ".#.", "..."), Solid(STONE), Solid(ANDESITE)), name="floor-ring")
 FLOORS = [FLOOR_GRID, FLOOR_MORTAR, FLOOR_RING]

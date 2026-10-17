@@ -299,13 +299,15 @@ def faces(cells, outside):
 @dataclass
 class Opening:
     """A hole in a face: the columns in xs (or zs on an east or west face) on `side`, rows y0..y1, laid by
-    lay(w, columns, side, y0, y1) instead of segments; the segments round it are cut to the module that is left."""
+    lay(w, columns, side, y0, y1) instead of segments; the segments round it are cut to the module that is left.
+    `line` is the face's z (or x on an east or west face) when more than one face looks that way."""
     side: str
     lo: int
     hi: int
     y0: int
     y1: int
     lay: object = None
+    line: int = None
 
 
 def wall(w, cells, base, heights, seg, outside, module=6, tier=8, body=COBBLE, segment_of=None, openings=(),
@@ -331,7 +333,8 @@ def wall(w, cells, base, heights, seg, outside, module=6, tier=8, body=COBBLE, s
     back_ok = lambda x, z: (x, z) in cells
     for side, run in runs:
         h = hof(run[0])
-        holes = [o for o in openings if o.side == side and any(
+        line = run[0][1] if side in ("n", "s") else run[0][0]
+        holes = [o for o in openings if o.side == side and o.line in (None, line) and any(
             o.lo <= (c[0] if side in ("n", "s") else c[1]) <= o.hi for c in run)]
         pieces = [run]
         for o in holes:
@@ -435,25 +438,49 @@ def floor(w, box, y, seg, module=6, align=None):
 
 
 # ---- lofted planes ---------------------------------------------------------------------------------------------
+def _level(strips, y):
+    """Where the plane y cuts a chain of edges: the polyline [(x, z), ...] and, for each of its points, the bottom
+    edge it lies over (k, f) as an index and a share. A quad whose far edge ends under y is cut along its top."""
+    pts, over = [], []
+    for k, ((b0, t0), (b1, t1)) in enumerate(zip(strips, strips[1:])):
+        def on_edge(b, t):
+            f = (y - b[1]) / max(1e-9, t[1] - b[1])
+            return (b[0] + (t[0] - b[0]) * f, b[2] + (t[2] - b[2]) * f) if 0 <= f <= 1 else None
+        p0, p1 = on_edge(b0, t0), on_edge(b1, t1)
+        if p0 is None and p1 is None:
+            continue
+        if p0 is None or p1 is None:                         # the quad's top crosses y between its edges
+            g = (y - t0[1]) / (t1[1] - t0[1])
+            if not 0 <= g <= 1:
+                continue
+            pt = (t0[0] + (t1[0] - t0[0]) * g, t0[2] + (t1[2] - t0[2]) * g)
+            p0, f0 = (pt, g) if p0 is None else (p0, 0.0)
+            p1, f1 = (pt, g) if p1 is None else (p1, 1.0)
+        else:
+            f0, f1 = 0.0, 1.0
+        if not pts or math.dist(pts[-1], p0) > 1e-6:
+            pts.append(p0)
+            over.append((k, f0))
+        pts.append(p1)
+        over.append((k, f1))
+    return pts, over
+
+
 def loft(w, strips, material, thick=3, behind=None, reach=30, marks=()):
     """Ruled walls between pairs of 3-D edges, the way a loft tool spans a plane: `strips` is a chain of
-    (bottom, top) points [((x, y, z), (x, y, z)), ...], each pair the edge the next plane starts from. At every
-    height the face is the polyline through the chain's points at that height; `thick` blocks behind it are wall,
-    painted on the face by material.at(u, v, along, key) with u the distance along the face and v the height
-    0..1, and everything further behind, up to `reach` from the face, is behind(x, y, z) where it answers. `marks` are
-    (u0, v0, bitmap rows top first, scale, block): inlays on the face. Returns the face columns."""
+    (bottom, top) points [((x, y, z), (x, y, z)), ...], each pair the edge the next plane starts from, the face
+    looking to the left of the chain's direction. Edges may differ in height, so a wall can fall toward its end.
+    At every height the face is where that height cuts the planes; `thick` blocks behind it are wall, painted by
+    material.at(u, v, along, key) with u the distance along the face and v the share of the wall's height there,
+    and everything further behind, up to `reach` from the face, is behind(x, y, z) where it answers. `marks` are
+    (u0, v0, bitmap rows top first, scale, block): inlays on the face, v0 in blocks over the lowest foot. Returns
+    the face blocks."""
     ys = [p[1] for e in strips for p in e]
     ylo, yhi = min(ys), max(ys)
     face_cells = {}
     for y in range(ylo, yhi + 1):
-        pts = []
-        for (b, t) in strips:
-            f = (y - b[1]) / max(1e-9, t[1] - b[1])
-            if f < 0 or f > 1:
-                pts = None
-                break
-            pts.append((b[0] + (t[0] - b[0]) * f, b[2] + (t[2] - b[2]) * f))
-        if not pts:
+        pts, over = _level(strips, y)
+        if len(pts) < 2:
             continue
         acc = [0.0]
         for p, q in zip(pts, pts[1:]):
@@ -466,31 +493,61 @@ def loft(w, strips, material, thick=3, behind=None, reach=30, marks=()):
                 for k, (p, q) in enumerate(zip(pts, pts[1:])):
                     dx, dz = q[0] - p[0], q[1] - p[1]
                     L2 = dx * dx + dz * dz
-                    tt = ((x + 0.5 - p[0]) * dx + (z + 0.5 - p[1]) * dz) / L2
-                    tt = min(1.0, max(0.0, tt))
+                    if L2 < 1e-9:
+                        continue
+                    raw = ((x + 0.5 - p[0]) * dx + (z + 0.5 - p[1]) * dz) / L2
+                    tt = min(1.0, max(0.0, raw))
                     cx, cz = p[0] + tt * dx, p[1] + tt * dz
                     nx, nz = -dz / math.sqrt(L2), dx / math.sqrt(L2)        # the face's outward normal
                     sd = (x + 0.5 - cx) * nx + (z + 0.5 - cz) * nz
                     d = math.hypot(x + 0.5 - cx, z + 0.5 - cz)
+                    beyond = (k == 0 and raw < 0) or (k == len(pts) - 2 and raw > 1)   # past an end: cut square
                     if best is None or d < best[0]:
-                        best = (d, sd, acc[k] + tt * math.sqrt(L2))
-                d, sd, u = best
+                        if beyond:
+                            best = (d, None, 0, 0, 0)
+                            continue
+                        (ka, fa), (kb, fb) = over[k], over[k + 1]
+                        e, f = (ka, fa + (fb - fa) * tt) if ka == kb else (kb, fb * tt)
+                        best = (d, sd, acc[k] + tt * math.sqrt(L2), e, f)
+                if best is None or best[1] is None:
+                    continue
+                d, sd, u, e, f = best
+                top = strips[e][1][1] + (strips[e + 1][1][1] - strips[e][1][1]) * f
+                foot = strips[e][0][1] + (strips[e + 1][0][1] - strips[e][0][1]) * f
                 if -thick <= sd <= 0.0 and d <= thick + 0.5:
-                    v = (y - ylo) / max(1, yhi - ylo)
+                    v = min(1.0, max(0.0, (y - foot) / max(1.0, top - foot)))
                     block, _ = material.at(u, v, v, (x, y, z))
                     w.set(x, y, z, *block)
                     if sd > -1.0:
-                        face_cells[(x, y, z)] = (u, v)
+                        face_cells[(x, y, z)] = u
                 elif sd < -thick and behind is not None and d < reach:
                     b = behind(x, y, z)
                     if b is not None:
                         w.set(x, y, z, *b)
     for (u0, v0, rows, scale, block) in marks:
         H = len(rows) * scale
-        for (x, y, z), (u, v) in face_cells.items():
+        for (x, y, z), u in face_cells.items():
             du = int(math.floor(u - u0))
-            dv = int(math.floor(v * (yhi - ylo) - v0))
+            dv = y - ylo - v0
             if 0 <= du < len(rows[0]) * scale and 0 <= dv < H:
                 if rows[len(rows) - 1 - dv // scale][du // scale] == "#":
                     w.set(x, y, z, *block)
     return face_cells
+
+
+# ---- panels shifted out of line --------------------------------------------------------------------------------
+def staggered(w, x0, z0, seg, bays, tiers, shift_bay=0, shift_tier=0, back=None, base=0, module=6, tier=8,
+              body=COBBLE):
+    """A south face of `bays` by `tiers` segments, each one set out of line with its neighbours: bay i stands
+    i * shift_bay blocks further south (forward) and tier j j * shift_tier further, so 1 per bay runs the wall on
+    a diagonal, -1 per tier leans it back, and both slant it two ways at once. Every panel has the wall's two
+    blocks behind its face, and solid body back to z = `back`. The step each shift leaves shows a panel's end."""
+    zs = [z0 + i * shift_bay + j * shift_tier for i in range(bays) for j in range(tiers)]
+    back = min(zs) - 2 if back is None else back
+    for i in range(bays):
+        for j in range(tiers):
+            zf = z0 + i * shift_bay + j * shift_tier
+            xa = x0 + i * module
+            y0 = base + j * tier
+            w.fill(xa, y0, back, xa + module - 1, y0 + tier - 1, zf, *body)
+            lay_segment(w, seg, [(xa + s, zf) for s in range(module)], "s", y0, tier)
