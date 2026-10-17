@@ -31,6 +31,7 @@ below were written against, and the second cannot be read without it.
 | `dungeons/` | `dungeons.py` → `layouts/`, `deep.py` → `deep/` | six dungeon and bunker plans measured for play, then the same plans given height, finished walls and floors, and cut open | — |
 | `fire-and-ice/` | `stamps.py` → `stamps.npz`, `compose.py` → `renders/` and `maps/other/studies_fire_and_ice`, `page.py` → `composer.html` | the fissure, the low somma, the caldera lake, the maar and the snowfield as stamps on one 160 by 300 board, and a page to arrange them | The author picked these five as the forms worth a real map, all inside 175 by 300. The page repeats `compose.py` in the browser and matches it column for column, so a layout copied from it builds the board it showed. |
 | `bunker-cores/` | none | `bunker-cores.html`: ten ways a core and a wool can depend on each other in a bunker map without TNT, with PGM's leak rule | — |
+| `bunker-walls/` | `build.py` → `renders/` | a wall-and-floor grammar for a bunker: the author's six-by-eight segment of two L frames over a slab-shadowed panel, its dark variants, the corner rule, floors on the wall's module, and a bunker front with a door, blast walls and lofted retaining walls | — |
 
 ## What came out of them
 
