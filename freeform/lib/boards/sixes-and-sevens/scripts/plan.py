@@ -68,18 +68,17 @@ PUMP = (-51, 43)
 
 # ---- the mountain: its front, north to south, the field east of it ----------------------------------------------
 FRONT = [(-84, -110), (-74, -90), (-60, -76), (-40, -64), (-27, -51), (-26, -37), (-35, -21), (-46, -14),
-         (-46, 30), (-46, 56), (-34, 58), (-27, 66), (-31, 79), (-48, 88), (-62, 98), (-70, 110)]
-SHELF_POLY = [(-27, 66), (10, 63), (16, 72), (12, 86), (-31, 86)]
-SHELF_RAMP = (17, 66, 22, 71)           # x0, z0, x1, z1: wide steps down at its east end, climbing west
+         (-46, 30), (-46, 56), (-46, 59), (-32, 62), (-32, 86), (-48, 92), (-62, 98), (-70, 110)]
+SHELF_POLY = [(-31, 64), (-5, 66), (-5, 86), (-31, 86)]        # wholly in Red's half, so the half turn keeps it
+SHELF_RAMP = (-4, -1, 57, 6)            # x0, x1, the first tread's z, treads: 3 deep each, climbing south, at its east end
 
 # the lofted walls: chains of (bottom, top) edges, each facing (-dz, dx) of the chain's direction
 LOFTS = {
     "north spur": [((-46, FIELD, -14), (-50, 72, -18)), ((-36, FIELD, -21), (-40, 64, -24)),
                    ((-27, FIELD, -37), (-31, 56, -38)), ((-28, FIELD, -51), (-32, 50, -49)),
                    ((-40, FIELD, -64), (-42, 46, -60))],
-    "south spur": [((-31, FIELD, 79), (-35, 50, 76)), ((-27, FIELD, 66), (-31, 60, 64)),
-                   ((-34, FIELD, 58), (-38, 68, 54)), ((-46, FIELD, 56), (-50, 72, 52))],
-    "shelf": [((10, FIELD, 63), (10, SHELF, 66)), ((-27, FIELD, 66), (-27, SHELF, 69))],
+    "shelf": [((-5, FIELD, 63), (-5, SHELF, 66)), ((-32, FIELD, 61), (-32, 50, 64)),        # one retaining wall from
+              ((-46, FIELD, 58), (-46, 72, 61))],                                         # the shelf to the yard
 }
 BOULDERS = [(-36, -30, 3), (-14, -18, 2), (-33, 28, 3), (-18, 48, 2), (-40, 70, 2), (-22, -70, 3), (-8, -60, 2),
             (-30, -86, 2), (-12, 92, 2), (-38, 92, 3)]                      # (x, z, radius) on the field
@@ -87,15 +86,17 @@ BOULDERS = [(-36, -30, 3), (-14, -18, 2), (-33, 28, 3), (-18, 48, 2), (-40, 70, 
 # ---- the field --------------------------------------------------------------------------------------------------
 TEETH = [[(-30, -6), (-22, -9), (-17, -2), (-19, 6), (-26, 4)], [(-24, 12), (-18, 10), (-15, 15), (-21, 18)]]
 CUT_LINE = [(-24, 46), (-34, 52), (-46, 52)]
-PATHS = [[(-45, 8), (-33, 9), (-22, 22), (-9, 21), (-3, 0)],       # door, past the Teeth, to the Spine
-         [(-46, 45), (-30, 40), (-15, 38), (-9, 36)],                  # yard to the snow bridge
-         [(-28, -2), (-20, -24), (-10, -40), (-3, -50)]]               # the Teeth north to the open snow
-PATH_OPEN = [False, False, True]        # whether a path's far end runs out into the snow, narrowing as it goes
+# the path network: strokes that meet at shared points, laid as one surface
+PATHS = [[(-45, 8), (-36, 9), (-30, 16), (-24, 22), (-12, 22), (-3, 1)],      # door, south of the Teeth, to the Spine
+         [(-46, 45), (-34, 40), (-20, 37), (-9, 36)],                         # yard to the snow bridge
+         [(-34, 40), (-31, 29), (-30, 16)],                                   # yard up to the door's path
+         [(-36, 9), (-37, -4), (-30, -16), (-18, -28), (-8, -44)]]            # west of the Teeth, north to the snow
+PATH_OPEN = [False, False, False, True]  # whether a stroke's far end runs out into the snow, narrowing as it goes
 PATH_WIDTH = 9
 # the crevasses, red's half: the seam from the centre southward (its half turn runs north), the bridges left standing;
 # and one across the open snow north of the Teeth
 SEAM = [(-1, 6), (-5, 10), (-2, 15), (-7, 21), (-3, 26), (-8, 30)]
-SEAM_ON = [(-8, 43), (-3, 47), (-6, 53), (-12, 57), (-9, 63), (-14, 70), (-9, 77), (-13, 88)]
+SEAM_ON = [(-8, 43), (-3, 47), (-6, 53)]                      # the shelf and its wall stand between the teams south of it
 OPEN_CRACK = [(-52, -84), (-44, -76), (-37, -83), (-28, -75), (-20, -82), (-12, -76), (-7, -88)]
 OPEN_BRIDGE = (-28, -75)
 CRACK_WIDTH = (2.0, 6.0)
@@ -143,6 +144,12 @@ def cracks():
     return [crack(SEAM, 1), crack(SEAM_ON, 2), crack(OPEN_CRACK, 3)]
 
 
+def ramp():
+    """The shelf's steps: [((x0, x1, z0, z1), floor)], treads three deep climbing south to one under the shelf."""
+    x0, x1, z, n = SHELF_RAMP
+    return [((x0, x1, z + 3 * k, z + 3 * k + 2), FIELD + 1 + k) for k in range(n)]
+
+
 def _band(R, pts, half, h, kind):
     m = np.zeros_like(R.H, bool)
     for (ax, az), (bx, bz) in zip(pts, pts[1:]):
@@ -157,9 +164,8 @@ def build():
     mountain = (R.X <= np.vectorize(front_x)(R.Z)) & (R.X < 0)
     R.where(mountain, 70, "mountain")
     R.poly(SHELF_POLY, SHELF, "shelf")
-    x0, z0, x1, z1 = SHELF_RAMP
-    for k, x in enumerate(range(x1, x0 - 1, -1)):
-        R.rect(x, x, z0, z1, FIELD + 1 + k * (SHELF - FIELD - 1) // max(1, x1 - x0), "stair")
+    for (x0, x1, z0, z1), h in ramp():
+        R.rect(x0, x1, z0, z1, h, "stair")
 
     for box in (HALL, SPAWN_HALL, TUNNEL, YARD_TUNNEL, DARK_TUNNEL, SIDE_TUNNEL):
         R.rect(box[0], box[1], box[2], box[3], FIELD, "hall")

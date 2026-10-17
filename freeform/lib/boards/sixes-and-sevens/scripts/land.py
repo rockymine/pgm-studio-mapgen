@@ -21,7 +21,7 @@ SNOW = (B.SNOW, 0)
 PACKED = (B.PACKED_ICE, 0)
 STONE, ANDESITE, POL_ANDESITE, COBBLE = (B.STONE, 0), (B.STONE, 5), (B.STONE, 6), (B.COBBLE, 0)
 GRAVEL = (B.GRAVEL, 0)
-COARSE, DIRT, PLANKS = (B.DIRT, 1), (B.DIRT, 0), (B.PLANKS, 1)
+CLAY, LIGHT_WOOL, PLANKS = (B.CLAY, 0), (B.WOOL, 8), (B.PLANKS, 1)
 ROCK = ((B.WOOL, 0), (B.WOOL, 8), (B.WOOL, 7))          # the winter study's rock: gentle, steep, cliff
 ICE_TOP, ICE_FACE = PACKED, (B.ICE, 0)
 CAP = 2                                                  # the top blocks of the ice drawn as snow
@@ -91,9 +91,10 @@ def crests():
     for edges in P.LOFTS.values():
         out.append(([(t[0], t[2]) for b, t in edges], [t[1] for b, t in edges], [(b[0], b[2]) for b, t in edges],
                     [b[1] for b, t in edges]))
+    out = [c + (name == "north spur",) for c, name in zip(out, P.LOFTS)]
     top = P.FIELD + P.FRONT_H
     out.append(([(P.FACADE_X - 1.5, P.FACADE_Z[1] + 2.5), (P.FACADE_X - 1.5, P.FACADE_Z[0] - 2.5)], [top, top], None,
-                None))
+                None, False))
     return out
 
 
@@ -118,10 +119,6 @@ def heights(X, Z):
     shelf = inside(X, Z, P.SHELF_POLY)
     fsnow = np.where(shelf, P.SHELF + np.clip(fsnow - P.FIELD, -0.6, 0.6), fsnow)
     frock = np.where(shelf, np.minimum(frock + (P.SHELF - P.FIELD), P.SHELF - 1), frock)
-    x0, z0, x1, z1 = P.SHELF_RAMP
-    ramp = (X >= x0) & (X <= x1) & (Z >= z0) & (Z <= z1)
-    step = P.FIELD + 1 + ((x1 - X) // 3) * 1.0
-    fsnow = np.where(ramp, np.minimum(step, P.SHELF), fsnow)
     teeth = np.zeros(X.shape, bool)
     for poly, rise in zip(P.TEETH, (12, 8)):
         m = inside(X, Z, poly)
@@ -130,7 +127,7 @@ def heights(X, Z):
         facet = r.uniform(0.5, 1.0, len(p.centres))[p.id] * rise - 2 * smoothstep(0.7, 0, p.edge)
         frock = np.where(m, np.maximum(frock, P.FIELD + facet), frock)
         teeth |= m
-    for p in P.PATHS:                                             # the paths: level mud, the snow cleared off
+    for p in P.PATHS:                                             # the paths: level, the snow cleared off
         d, _ = polyline(X, Z, p)
         on = d < P.PATH_WIDTH / 2 + 1.5
         fsnow = np.where(on, P.FIELD, fsnow)
@@ -148,9 +145,11 @@ def heights(X, Z):
     # to past the yard, then easing down into the mountain's own slope, falling away at its sides
     crest = P.FIELD + P.FRONT_H
     db = (P.FACADE_X - 1) - X
-    side = np.maximum(0, np.maximum(P.FACADE_Z[0] - Z, Z - (P.YARD[3] + 2)))
-    mass = crest - 1 - 0.8 * side - 0.5 * np.maximum(0, db - 22)
+    side = 2 * np.maximum(0, np.maximum(P.FACADE_Z[0] - Z, Z - (P.YARD[3] + 2)))
+    mass = crest - 1 - side - 0.5 * np.maximum(0, db - 22)
     base = np.where(db > 0, np.maximum(base, mass - 3.5), base)
+    out_of_shelf = ndimage.distance_transform_edt(~inside(X, Z, P.SHELF_POLY))      # the mountain meets the shelf level
+    base = np.maximum(base, np.where(out_of_shelf < 40, P.SHELF - 4.5 + 0.35 * out_of_shelf, 0))
     mrock, msnow = snowfield(X, Z, base - 3.5, 8 * smoothstep(6, 20, inward), 0.04, 1.0, seed=51)
     msnow = np.minimum(msnow, mrock + 3.5)                       # snow lies on the rock, it does not hang off it
     cracks = _cracks_on(X, Z, mountain & (inward > 16), 61, 14)
@@ -160,7 +159,7 @@ def heights(X, Z):
     rock = np.where(mountain, mrock, frock)
     snow = np.where(mountain, msnow, fsnow)
     # behind every crest the ground stays a block under it for three blocks, then rises
-    for line, tops, foot, feet in crests():
+    for line, tops, foot, feet, holds in crests():
         d, share = _behind(X, Z, line, face_right=True)
         top = np.interp(share, np.linspace(0, 1, len(tops)), tops)
         ends = smoothstep(0, 0.15, share) * smoothstep(1, 0.85, share)
@@ -176,7 +175,7 @@ def heights(X, Z):
             near &= fd > 0
         rock = np.where(near, np.minimum(rock, cap - 3.5), rock)
         snow = np.where(near, np.minimum(snow, cap), snow)
-        if foot is not None:                                         # a lofted wall holds its ground up to its crest
+        if holds:                                                    # a spur's wall holds its ground up to its crest
             held = top - 1 + 0.4 * np.maximum(0, d - 3)
             back = near & (d < 30) & mountain
             rock = np.where(back, np.maximum(rock, held - 3), rock)
@@ -188,6 +187,10 @@ def heights(X, Z):
         need = np.where(X < P.FACADE_X - 1, P.FIELD + h + 5 - 1.2 * np.maximum(0, out - 3), 0)
         rock = np.maximum(rock, need - 2)
         snow = np.maximum(snow, need)
+    for (x0, x1, z0, z1), h in P.ramp():                            # the shelf's steps, after the wall's ground
+        m = (X >= x0) & (X <= x1) & (Z >= z0) & (Z <= z1)
+        rock = np.where(m, h - 1, rock)
+        snow = np.where(m, h, snow)
     yx0, yx1, yz0, yz1 = P.YARD
     yard = (X >= yx0) & (X <= yx1 + 1) & (Z >= yz0) & (Z <= yz1)
     dyard = np.hypot(np.maximum(0, np.maximum(yx0 - X, X - yx1)), np.maximum(0, np.maximum(yz0 - Z, Z - yz1)))
@@ -230,20 +233,23 @@ def lay(w, rock, snow, teeth, X, Z, half):
     lean = 34 + 5 * noise.fbm(X.shape, 12, 2, seed=77)            # snow wind-packed to ice on a slope
     glaze = (has & (ideg >= lean) & (ideg < 50))[:, None, :] & body & (ys > sn[:, None, :] - CAP)
     ids = np.where(glaze, ICE_TOP[0], ids)
-    # mud on the paths: each one whole, coarse dirt with broad patches of dirt, a duckboard of spruce planks down its
-    # middle in runs, the edge wandering slowly, an open end narrowing into the snow
+    # the path network, laid as one surface: clay and light-gray wool in broad patches, an unbroken duckboard of
+    # spruce planks down every stroke's middle, the edge wandering slowly, an open end narrowing into the snow
+    near = np.full(X.shape, 1e9)
+    board = np.zeros(X.shape, bool)
     for pts, open_end in zip(P.PATHS, P.PATH_OPEN):
         d, al = polyline(X, Z, pts)
         total = sum(math.dist(a, b) for a, b in zip(pts, pts[1:]))
         half = P.PATH_WIDTH / 2 * (np.clip((total - al) / 14, 0.25, 1) if open_end else 1)
-        mud = (d < half + np.round(0.9 * noise.fbm(X.shape, 14, 2, seed=74))) & (np.abs(top - P.FIELD) <= 1) & ~teeth
-        run = np.interp(al, np.arange(int(total) + 2), noise.fbm((int(total) + 2,), 9, 2, seed=78)) > 0.0
-        board = mud & (d < 1.5) & run & (half > 2.5)
-        block = np.where(noise.fbm(X.shape, 8, 2, seed=76) > 0.2, 1, 0)       # 1 dirt, 0 coarse dirt
-        at = (ys == top[:, None, :])
-        for m, blk in ((mud & ~board & (block == 0), COARSE), (mud & ~board & (block == 1), DIRT), (board, PLANKS)):
-            ids = np.where(m[:, None, :] & at, blk[0], ids)
-            dat = np.where(m[:, None, :] & at, blk[1], dat)
+        near = np.minimum(near, d - half)
+        board |= (d < 1.5) & (half > 2.5)
+    mud = (near < np.round(0.9 * noise.fbm(X.shape, 14, 2, seed=74))) & (np.abs(top - P.FIELD) <= 1) & ~teeth
+    board &= mud
+    wool = noise.fbm(X.shape, 8, 2, seed=76) > 0.0
+    at = ys == top[:, None, :]
+    for m, blk in ((mud & ~board & ~wool, CLAY), (mud & ~board & wool, LIGHT_WOOL), (board, PLANKS)):
+        ids = np.where(m[:, None, :] & at, blk[0], ids)
+        dat = np.where(m[:, None, :] & at, blk[1], dat)
     # the crevasses: a V narrowing to the lava, packed ice in the top of their walls
     crev = np.zeros(X.shape)
     for k, samples in enumerate(P.cracks()):

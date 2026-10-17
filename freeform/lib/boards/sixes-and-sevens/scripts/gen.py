@@ -26,16 +26,23 @@ def number(a, b):
     return [p + "." + q for p, q in zip(LETTERS[a], LETTERS[b])]
 
 
-def lofts(w, digits, image=None):
-    """Every lofted wall of one bunker, the bunker's number on the spurs and the gray-wool line on all of them."""
+def lofts(w):
+    """Red's lofted walls with the gray-wool line, drawn before the half turn so Blue's are their exact copies:
+    {name: (face, lowest foot)}, for the numbers stamped after the turn."""
+    faces = {}
     for name, edges in P.LOFTS.items():
-        if image:
-            edges = [tuple((*image(p[0], p[2])[:1], p[1], image(p[0], p[2])[1]) for p in e) for e in edges]
-            edges = [((b[0], b[1], b[2]), (t[0], t[1], t[2])) for b, t in edges]
-        marks = [(0, 10, BAND, 1, S.GRAY_WOOL)]
-        if name == "north spur":
-            marks.append((14, 2, number(*digits), 2, S.OBSIDIAN))
-        S.loft(w, edges, T.LOFT, thick=3, marks=marks)
+        faces[name] = (S.loft(w, edges, T.LOFT, thick=3, marks=[(0, 10, BAND, 1, S.GRAY_WOOL)]),
+                       min(p[1] for e in edges for p in e))
+    return faces
+
+
+def numbers(w, faces):
+    """Each bunker's number on its north spur: 06 on Red's face, 07 on the image of it."""
+    face, ylo = faces["north spur"]
+    mark = lambda digits: [(14, 2, number(*digits), 2, S.OBSIDIAN)]
+    S.inlay(w, face, mark(("0", "6")), ylo)
+    image = {(int(a), y, int(b)): u for (x, y, z), u in face.items() for a, b in [P.SYM.point(x, z)]}
+    S.inlay(w, image, mark(("0", "7")), ylo)
 
 
 def boulders(w):
@@ -63,9 +70,9 @@ def build(out):
     top = land.lay(w, rock, snow, teeth, X, Z, half)
     boulders(w)
     bunker.build(w)
-    lofts(w, ("0", "6"))
+    faces = lofts(w)
     turn_world(w, "half", half)
-    lofts(w, ("0", "7"), image=P.SYM.point)
+    numbers(w, faces)
     w.fill(x0, 0, z0, x0 + sx - 1, 0, z0 + sz - 1, B.BEDROCK)
     O = P.objectives()
     O.stamp(w)

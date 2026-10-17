@@ -39,6 +39,7 @@ the same. The objectives read back clean.
 - `07` is the seam.
 - `08` is the north spur's lofted wall.
 - `09` to `11` are the tall hall, the spawn hall and the dark room, cut open.
+- `12` is the shelf and its wall.
 
 ## Open decisions
 

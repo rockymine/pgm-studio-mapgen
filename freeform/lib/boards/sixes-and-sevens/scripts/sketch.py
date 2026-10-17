@@ -28,7 +28,7 @@ m.route(to_blue_pump, (230, 110, 110))
 m.objectives(objectives().markers())
 
 for name, (x, z) in {"tall hall": (-60, 12), "spawn hall": (-94, 34), "dark room": (-100, -6), "yard": (-58, 51),
-                     "the Teeth": (-23, -12), "high shelf": (-8, 78), "north spur": (-40, -40),
+                     "the Teeth": (-23, -12), "high shelf": (-18, 78), "north spur": (-40, -40),
                      "the cut": (-30, 56), "the Spine": (0, 0), "open snow": (-18, -64)}.items():
     m.place(x, z, name, both=name != "the Spine")
 U = R.storey(1)
@@ -45,8 +45,8 @@ m.callout(-10, 60, "seam: crevasses to lava, irregular, a build zone over them",
 m.callout(-8, 37, "snow bridge", dx=60, dz=-10)
 m.callout(-28, -76, "a second crack across the open snow, one snow bridge", dx=-30, dz=-30)
 m.callout(0, -2, "the Spine: rock over the seam, the middle crossing", dx=70, dz=-60)
-m.callout(-29, 67, "lofted walls: the shelf and each spur", dx=-60, dz=30)
-m.callout(20, 68, "wide steps up onto the shelf", dx=40, dz=20)
+m.callout(-20, 63, "one lofted wall from the yard to the shelf; another holds the north spur", dx=-60, dz=40)
+m.callout(-2, 66, "steps up onto the shelf, treads 3 deep", dx=60, dz=20)
 m.callout(-90, -60, "over the bunker: the snowfield again, the bunker sunk into it; out of play", dx=-20, dz=-40)
 
 S.table(rows() + [("—", "the mountain above each bunker", "a roof to be decided", None),

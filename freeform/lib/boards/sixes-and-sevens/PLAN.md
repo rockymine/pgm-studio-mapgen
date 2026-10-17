@@ -50,16 +50,16 @@ snow north of the Teeth, with one snow bridge. A build region covers them, so th
 | yard | open to the sky, its back wall in panels set out of line | the Pump | the field; the yard tunnel from the spawn hall; the cut from below; the shelf from above |
 | the Teeth | rock in front of the door | cover and height on the way in | the field |
 | the cut | a trench six deep into the yard | the Pump from below | from the field |
-| high shelf | a plateau at 47 held by a lofted wall, south of Red's yard | the Pump from above | wide steps at its east end |
-| the Spine, the snow bridges | the crossings of the seam | the middle | the mud paths |
+| high shelf | a plateau at 47 south of Red's yard, held by one straight lofted wall that falls from the yard's 32 to the shelf | the Pump from above | steps of 3-deep treads at its east end |
+| the Spine, the snow bridges | the crossings of the seam, which ends north of the shelf | the middle | the path network |
 
 ## The look
 
 **Ground, built and accent.** The ground is the winter study's blocks: rock skinned in light-gray wool, gray wool
 on its steep faces, under a body of packed ice (ice on a steep face) capped with two blocks of snow. The crevasses'
-walls are packed ice, and snow on a slope of about 34 degrees or more is wind-packed to packed ice. Each path is
-one whole strip of coarse dirt with broad patches of dirt and a duckboard of spruce planks down its middle in runs;
-the one that runs out into the open snow narrows as it goes.
+walls are packed ice, and snow on a slope of about 34 degrees or more is wind-packed to packed ice. The paths are
+one network laid as a single surface, clay and light-gray wool in broad patches with an unbroken duckboard of spruce
+planks down each stroke's middle; the stroke that runs out into the open snow narrows as it goes.
 
 **The built family is the author's Bunker style.** It is `pgmvox.grammar.bunker`: the stone segments and their stripe and gray-wool variants. The dark segment is
 used in its own room only. The accents are the lofted walls' gray-wool line and the obsidian number on each north

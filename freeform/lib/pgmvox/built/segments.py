@@ -483,6 +483,14 @@ def loft(w, strips, material, thick=3, behind=None, reach=30, marks=()):
                     b = behind(x, y, z)
                     if b is not None:
                         w.set(x, y, z, *b)
+    inlay(w, face_cells, marks, ylo)
+    return face_cells
+
+
+def inlay(w, face_cells, marks, ylo):
+    """Marks on a lofted face, {(x, y, z): u} as loft returns it: (u0, v0, bitmap rows top first, scale, block), u0
+    along the face and v0 in blocks over `ylo`. A face carried to another place keeps its u, so the same call marks
+    its image."""
     for (u0, v0, rows, scale, block) in marks:
         H = len(rows) * scale
         for (x, y, z), u in face_cells.items():
@@ -491,7 +499,6 @@ def loft(w, strips, material, thick=3, behind=None, reach=30, marks=()):
             if 0 <= du < len(rows[0]) * scale and 0 <= dv < H:
                 if rows[len(rows) - 1 - dv // scale][du // scale] == "#":
                     w.set(x, y, z, *block)
-    return face_cells
 
 
 # ---- panels shifted out of line --------------------------------------------------------------------------------
