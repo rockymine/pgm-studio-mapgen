@@ -41,6 +41,7 @@ OBSIDIAN = (B.OBSIDIAN, 0)
 GRAY_WOOL = (B.WOOL, 7)
 LIGHT_GRAY_WOOL = (B.WOOL, 8)
 BLACK_WOOL = (B.WOOL, 15)
+COAL = (B.COAL_BLOCK, 0)
 CLAY = (B.CLAY, 0)
 CYAN_CLAY = (B.STAINED_CLAY, 9)
 GRAY_GLASS = (B.STAINED_GLASS, 7)
@@ -107,13 +108,14 @@ class Fade:
 
 @dataclass(frozen=True)
 class Checker:
-    """Two blocks alternating cell by cell in the world's grid, `size` a side."""
+    """Two blocks alternating in squares `size` a side, counted from `origin` (x, z)."""
     a: tuple
     b: tuple
     size: int = 1
+    origin: tuple = (0, 0)
 
     def at(self, u, v, along, key, inward=None):
-        x, _, z = key
+        x, z = key[0] - self.origin[0], key[2] - self.origin[1]
         return (self.a if ((x // self.size) + (z // self.size)) % 2 == 0 else self.b), None
 
 
@@ -136,6 +138,14 @@ class Bitmap:
     ink: object
     base: object
     every: int = 0
+
+
+@dataclass(frozen=True)
+class Courses:
+    """A core in rows: `top` are its rows read down from its top, `rest` every row under them, so a taller core
+    stretches at its foot."""
+    top: tuple
+    rest: object
 
 
 def bitmap_cell(bm, s, t, w, h):
@@ -197,6 +207,9 @@ class Segment:
                 m = self.core
                 if isinstance(m, Bitmap):
                     m = m.ink if bitmap_cell(m, s - s0, t - t0, cw, ch) else m.base
+                elif isinstance(m, Courses):
+                    down = t1 - t
+                    m = m.top[down] if down < len(m.top) else m.rest
                 u, v = (s - s0) / max(1, cw - 1), (t - t0) / max(1, ch - 1)
                 out[(s, t)] = (m, u, v, v)
         for overlay in self.overlays:
@@ -205,15 +218,6 @@ class Segment:
                 if m is not None:
                     out[(s, t)] = (m, cell[1], cell[2], cell[3])
         return out
-
-
-def slit(width_at, t_from_top, height, material):
-    """An overlay: a vertical slit `height` tall starting `t_from_top` rows under the top, at the columns
-    width_at(w) gives."""
-    def f(s, t, w, h):
-        top = h - 1 - t_from_top
-        return material if s in width_at(w) and top - height < t <= top else None
-    return f
 
 
 def cuts(n, module, minimum=3):
@@ -368,9 +372,9 @@ def wall(w, cells, base, heights, seg, outside, module=6, tier=8, body=COBBLE, s
 # ---- the crown: a band that follows a stepped roof -----------------------------------------------------------
 def crown(rise=3, step=1, plinth=POL_ANDESITE, nook=Nook(), fill=STONE, under=ANDESITE, roof=BLACK_WOOL,
           shape="gable", body=COBBLE, rows=3):
-    """A top(...) for wall(): plinth, nook, `rows` of fill, then a band two under the roof that steps up `step`
-    every `rise` columns: one way ("lean") or to the middle and down ("gable"). The roof hangs a block past each end
-    of the run."""
+    """A top(...) for wall(): plinth, nook, `rows` of fill set a block back, then a band two under the roof, flush
+    with it, that steps up `step` every `rise` columns: one way ("lean") or to the middle and down ("gable"). The
+    roof hangs a block past each end of the run."""
     def lay(w, side, columns, y):
         n = len(columns)
         inward = OPP[side]
@@ -384,11 +388,13 @@ def crown(rise=3, step=1, plinth=POL_ANDESITE, nook=Nook(), fill=STONE, under=AN
             top = y + 2 + rows + 2 + k * step
             for yy in range(y, top + 1):
                 w.set(x + ix, yy, z + iz, *body)
+                w.set(x + 2 * ix, yy, z + 2 * iz, *body)
             w.set(x, y, z, *plinth)
             face, _ = nook.at(0, 0, 0, (x, y + 1, z), inward)
             w.set(x, y + 1, z, *face)
-            for yy in range(y + 2, top - 1):
-                w.set(x, yy, z, *fill)
+            for yy in range(y + 2, top - 2):              # the fill sits a block back, under the band
+                w.set(x, yy, z, B.AIR)
+                w.set(x + ix, yy, z + iz, *fill)
             w.set(x, top - 1, z, *under)
             w.set(x, top - 2, z, *under)
             w.set(x, top, z, *roof)

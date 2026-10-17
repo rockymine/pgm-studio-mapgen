@@ -52,10 +52,30 @@ segment seams of the face above.
 
 | Sheet | What it shows |
 |---|---|
-| `swatch-*` | the six segments in a row, two tiers: the author's, a gray-wool cross, two obsidian studs, the dark L's, a bedrock-framed dark slot, bedrock and gray wool with two slits of iron bars over gray glass |
-| `corners-*` | one footprint with two outward and two inward corners, three tiers. The crown sits over the front: polished andesite, the stair nook, stone, andesite two under a black-wool roof stepping to the middle |
-| `floors-*` | three floors at the wall's module: a stone L, a light-gray-wool L and a clay core; a stone grid with clay and light-gray wool alternating; a double-slab grid with a smooth-slab plate in each tile |
-| `facade-*` | a keep 24 wide standing 7 forward of a 48-wide main wall (32 and 24 tall), the door, two dark bays over it, the gable crown, two blast walls 4 thick and 14 long falling 19 to 16, the forecourt paved on the keep's module, two lofted retaining walls each side holding the mountain |
+| `swatch-*` | the five segments in a row, two tiers: the author's, a gray-wool cross, two obsidian studs, the dark segment, the slit |
+| `corners-*` | one footprint with two outward and two inward corners, three tiers, and the crown over the front |
+| `floors-*` | three floors on a four-block grid of a rim and a three-by-three core: a stone rim round clay and light-gray wool; a clay and light-gray-wool rim round tiles alternating stone and andesite; the same rim round andesite tiles with a stone centre |
+| `facade-*` | a keep 24 wide standing 7 forward of a 48-wide main wall (32 and 24 tall), the door, two dark bays over it, the gable crown, two layered blast walls, the forecourt in the mortar floor, two lofted retaining walls each side holding the mountain |
+
+**The dark segment is the author's peels in the dark family.** Coal is the top row, black wool the right leg and
+obsidian the inner L. The slab row keeps its stone-brick slab with gray wool behind it. The core is bedrock with a
+row of cyan clay one under its top, through `Courses`, which reads a core's rows down from its top and stretches it
+at its foot.
+
+**The slit is bedrock and iron bars alone.** A bedrock frame holds columns of iron bars over gray glass, alternating
+with bedrock, so there is no field of gray wool round them.
+
+**The mortar floor reads as light concrete joining darker stones.** Its rim is clay and light-gray wool, block by
+block, and its tiles alternate stone and andesite. The tiles are counted from the keep's corner, so the
+forecourt's joints meet the keep's edges and every twelve blocks the wall's segment seams.
+
+**The crown's stone sits a block back.** The plinth and the stair nook stand in the face. The andesite band two
+under the roof stands in the face too, flush with the roof, so the stone between them reads as an inset panel.
+
+**A blast wall is three layers painted like the lofted walls.** It is 8 wide at the foot and 14 long. Each layer is
+a block in from the one under it on both sides and at its end, and the ledge each leaves is polished andesite.
+The face fades from cobble to stone with the loft's noise, and a gray-wool line runs round it ten blocks up. Its top
+falls from 19 at the keep to 16 at its end.
 
 **A lofted wall is two planes spanned the way a loft tool spans them.** Each plane runs 24 along. The first
 plane comes forward 5 at its foot, the second plane comes forward 10 more, and both lean back 5 over 16. At every
@@ -71,21 +91,22 @@ marks are inlaid: a gray-wool line along both planes, and a number in obsidian.
 |---|---|---|
 | a block in the face and one behind it | `grammar.rules.Course(block, back)` | the same idea as `Solid(block, back)` |
 | the upside-down stair facing out | `core.orient.stair(rises, upside_down)` | `Nook` |
-| slits, glyphs and words on a face | `built.facade` patterns, `LETTERS` | `slit`, `Bitmap`, the loft's marks |
+| slits, glyphs and words on a face | `built.facade` patterns, `LETTERS` | overlays, `Bitmap`, `Courses`, the loft's marks |
 | floor fields | `built.facade` floor fields, `carpet` | a floor as a flat segment, aligned to the wall |
 | a face cut into bays | `Accent`: one bay every so many, top down from a rim, refused at corners | segments that tile the whole face, stack in tiers and stretch to fit |
 | nested frames | none | peels |
 | a fade along a strip or up a core, with noise | `Mix` (by weight, with no position) | `Fade` |
 | corners | a corner keeps the plain courses | the left leg wraps an outward corner |
 | a door in a face | none | `Opening`, laid by its own function |
-| a band following a stepped roof | none | `crown` |
+| a band following a stepped roof | none | `crown`, its fill set back |
 | a ruled plane between two edges | `forms.sweep` (a cross-section along a path) | `loft` |
 
 ## Limits, as built
 
-- **The crown and the blast walls show bare ends.** The crown's sides are its stone fill, and the blast walls
-  fall in whole-block steps that a player can climb.
+- **The crown shows bare ends,** its sides being its stone fill.
+- **A blast wall's ledges and falling top are steps a player can climb.**
 - **A leaning loft steps a block back every three or so,** which is what a loft tool does too. Andesite has no
   stair or slab in 1.8, so smoothing those steps would mean mixing in another material.
-- **The light-gray-wool L and the clay core of the first floor are close in tone.** The tile reads by its stone L.
+- **Clay and light-gray wool are close in tone,** so their checker reads as one light joint.
+- **The floors' four-block grid is not the wall's six.** The two meet every twelve blocks.
 - **Nothing here is held to a hash,** like every study; `check.py` does not build it.

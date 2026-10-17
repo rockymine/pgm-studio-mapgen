@@ -1,6 +1,6 @@
 """The bunker study's sheets, each a small world drawn by the studio's textured renderer.
 
-    swatch    the six segments side by side, two tiers, on a straight wall two blocks thick
+    swatch    the five segments side by side, two tiers, on a straight wall two blocks thick
     corners   one footprint with outward and inward corners, so the corner rule shows, a gable crown on its front
     floors    the four floor segments, eighteen blocks a side each
     facade    the bunker front: a projecting keep with the door and its crown, two blast walls, two lofted retaining
@@ -64,6 +64,8 @@ def swatch():
          "w": 1600, "h": 1100},
         {"out": "close", "box": [0, BASE, 0, 5, BASE + 7, 3], "yaw": 200, "pitch": 10, "fov": 30,
          "w": 1200, "h": 1200},
+        {"out": "dark", "box": [18, BASE, 0, 29, BASE + 15, 3], "yaw": 200, "pitch": 10, "fov": 30,
+         "w": 1400, "h": 1400},
     ])
 
 
@@ -87,6 +89,8 @@ def corners():
     shoot(w, "corners", [
         {"out": "se", "box": [-2, BASE, -2, 40, BASE + 40, 30], "yaw": 220, "pitch": 18, "fov": 34,
          "w": 1800, "h": 1300},
+        {"out": "crown", "box": [8, BASE + 18, 18, 28, BASE + 40, 30], "yaw": 240, "pitch": 8, "fov": 30,
+         "w": 1600, "h": 1100},
         {"out": "inner", "box": [22, BASE, 12, 40, BASE + 26, 28], "yaw": 140, "pitch": 12, "fov": 32,
          "w": 1600, "h": 1300},
     ])
@@ -95,13 +99,13 @@ def corners():
 # ---- floors -----------------------------------------------------------------------------------------------
 def floors():
     n = len(T.FLOORS)
-    w = World(-4, -4, n * 22 + 6, 28, 12)
+    w = World(-4, -4, n * 24 + 6, 26, 12)
     ground(w)
     for k, seg in enumerate(T.FLOORS):
-        x0 = k * 22
-        S.floor(w, (x0, 0, x0 + 17, 17), BASE - 1, seg)
+        x0 = k * 24
+        S.floor(w, (x0, 0, x0 + 16, 16), BASE - 1, seg, module=T.FLOOR_MODULE)
     shoot(w, "floors", [
-        {"out": f"{seg.name}", "box": [k * 22, BASE - 1, 0, k * 22 + 17, BASE - 1, 17], "yaw": 200, "pitch": 40,
+        {"out": f"{seg.name}", "box": [k * 24, BASE - 1, 0, k * 24 + 16, BASE - 1, 16], "yaw": 200, "pitch": 40,
          "fov": 30, "w": 1200, "h": 900} for k, seg in enumerate(T.FLOORS)])
 
 
@@ -141,18 +145,28 @@ def door(w, columns, side, y0, y1):
                 w.set(lx, y, lz, *S.GRAY_WOOL)
 
 
-def blast_wall(w, x0, z0, length, h_hi, h_lo, blocked):
-    """A blast wall four thick from the face outward, faced in the author's segment, its top falling from h_hi at
-    the face to h_lo at its end in whole blocks under a polished-andesite coping that follows the fall."""
-    cells = {(x, z) for x in range(x0, x0 + 4) for z in range(z0, z0 + length)}
-    S.wall(w, cells, BASE, h_hi, T.ANDESITE_SEG, lambda x, z: (x, z) not in cells and (x, z) not in blocked)
-    for z in range(z0, z0 + length):
-        top = round(h_hi - (h_hi - h_lo) * (z - z0) / max(1, length - 1))
-        for x in range(x0, x0 + 4):
-            for y in range(BASE + top, BASE + h_hi + 1):
-                w.set(x, y, z, B.AIR)
-            w.set(x, BASE + top - 1, z, *S.POL_ANDESITE)
-    return cells
+def blast_wall(w, x0, z0, length, h_hi, h_lo, width=8, layers=(7, 6, 6), band=BASE + 10):
+    """A blast wall in layers from the face outward, each a block in from the one under it on both sides and at its
+    end, painted like the lofted walls: cobble at the foot fading through polished andesite and andesite to stone,
+    a gray-wool line at `band`, the ledge each layer leaves in polished andesite. Its top falls from h_hi at the
+    face to h_lo at its end in whole blocks."""
+    y = BASE
+    for k, h in enumerate(layers):
+        xa, xb, zb = x0 + k, x0 + width - 1 - k, z0 + length - 1 - k
+        for x in range(xa, xb + 1):
+            for z in range(z0, zb + 1):
+                top = BASE + round(h_hi - (h_hi - h_lo) * (z - z0) / max(1, length - 1))
+                rim = x in (xa, xb) or z == zb
+                for yy in range(y, min(y + h, top)):
+                    v = (yy - BASE) / h_hi
+                    block, _ = T.LOFT.at(v, v, v, (x, yy, z))
+                    w.set(x, yy, z, *(S.GRAY_WOOL if rim and yy == band else block))
+        y += h
+        if k + 1 < len(layers):                     # the ledge this layer leaves
+            for x in range(xa, xb + 1):
+                for z in range(z0, zb + 1):
+                    if (x in (xa, xb) or z == zb) and w.id(x, y - 1, z) != 0:
+                        w.set(x, y - 1, z, *S.POL_ANDESITE)
 
 
 def facade():
@@ -170,15 +184,14 @@ def facade():
     outside = lambda x, z: 0 <= x <= 48 and z > front(x)
     gable = S.crown(rise=3, shape="gable", rows=3)
     S.wall(w, cells, BASE, heights, T.ANDESITE_SEG, outside,
-           segment_of=lambda side, i, j, run: T.OBSIDIAN_SEG if j == "over" else T.ANDESITE_SEG,
+           segment_of=lambda side, i, j, run: T.DARK_SEG if j == "over" else T.ANDESITE_SEG,
            openings=[S.Opening("s", DOOR[0], DOOR[1], BASE, BASE + 15, door)],
            top=lambda w, side, run, y: gable(w, side, run, y) if side == "s" and run[0][1] == zp else None)
 
     # the forecourt, paved on the keep's module
-    S.floor(w, (2, zp + 1, 46, zp + 30), BASE - 1, T.FLOOR_L, align=(PROJ[0], zp + 1))
-    blocked = cells | keep_in
-    b1 = blast_wall(w, DOOR[0] - 5, zp + 1, 14, 19, 16, blocked)
-    blast_wall(w, DOOR[1] + 2, zp + 1, 14, 19, 16, blocked | b1)
+    S.floor(w, (2, zp + 1, 46, zp + 29), BASE - 1, T.FLOOR_MORTAR, module=T.FLOOR_MODULE, align=T.FLOOR_AT)
+    blast_wall(w, DOOR[0] - 9, zp + 1, 14, 19, 16)
+    blast_wall(w, DOOR[1] + 2, zp + 1, 14, 19, 16)
 
     # the lofted retaining walls, each two planes, leaning back five over sixteen
     top = BASE + 16
