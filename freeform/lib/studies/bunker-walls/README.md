@@ -58,10 +58,10 @@ both together slant it two ways. Every step shows the end of a segment's leg.
 |---|---|
 | `swatch-*` | the six segments in a row, two tiers: the author's, an obsidian stripe, a gray-wool stripe, gray wool under cyan clay, the dark segment, the slit |
 | `corners-*` | one footprint with two outward and two inward corners, three tiers, and the crown over the front |
-| `floors-*` | three floors on a four-block grid of a rim and a three-by-three core: a stone rim round clay and light-gray wool; a clay and light-gray-wool rim round tiles alternating stone and andesite; the same rim round andesite tiles with a stone centre |
+| `floors-*` | three floors on a four-block grid, each tile lined on two edges and filled in two pieces: clay and light-gray wool round an andesite L and a stone square; the same lining round an andesite bar and stone; cobblestone and andesite round a cyan-clay L and a gray-wool square |
 | `stagger-*` | four bays by three tiers on a diagonal, leaning back, and both |
-| `interior-*` | a hall 24 square and two segments tall, a room 24 by 36 and three tall, tunnels 6, 12 and 18 wide and one tall, every wall in segments, every floor the mortar floor |
-| `facade-*` | a flat front 42 wide and three tiers tall with the 18-by-16 door, the crown over it, two blast walls, the forecourt, one lofted wall along the front to the west and one beside the east blast wall running out to the south |
+| `interior-*` | a hall 24 square and two segments tall, a room 24 by 36 and three tall, a dark room 18 square and three tall, tunnels 6, 12 and 18 wide and one tall, every wall in segments |
+| `facade-*` | a flat front 42 wide and three tiers tall with the 18-by-16 door, the crown over it, two blast walls, four bays of slanted panels to the west, one lofted wall past them and one beside the east blast wall running out to the south |
 
 **Three light segments take the dark segment's rows.** Their cores are read down from the top through `Courses`.
 Two have stone on top, a stripe of obsidian or of gray wool under it, and the andesite-to-stone fade below. The
@@ -74,27 +74,38 @@ of cyan clay one under its top, and a taller core stretches at its foot.
 **The slit is bedrock and iron bars alone.** A bedrock frame holds columns of iron bars over gray glass, alternating
 with bedrock, so there is no field of gray wool round them.
 
-**The mortar floor reads as light concrete joining darker stones.** Its rim is clay and light-gray wool, block by
-block, and its tiles alternate stone and andesite. In the interior each space counts its tiles from its own
-corner. In the forecourt they are centred on the door.
+**A floor tile is lined on two edges and filled in two pieces.** It is four a side. Its top edge is one block of
+the lining and its left edge the other, so every tile shows an L of two blocks. The three-by-three inside is an L
+and a two-by-two square, or a bar one wide and a two-by-three.
+
+**The floors' blocks follow the room.** The light floors line in clay and light-gray wool
+and fill in andesite and stone; the dark floor lines in cobblestone and andesite and fills in cyan clay and gray
+wool. Each space counts its tiles from its own corner.
 
 **The interior is the facade's grammar turned inward.** The walls are every column within two of a space, the
 outside is the spaces themselves, and each wall is as tall as the space it faces. A tunnel's mouth is an opening
 in the room's face, so the room's segments stand either side of it and over it.
 
-**Each kind of space speaks its own segments.** Tunnels alternate the author's
-segment with the obsidian stripe. The hall puts the gray-wool stripe over the author's segment. The room stacks
-gray wool under cyan, then the author's segment, then the dark segment under its rim. Nothing is roofed.
+**The author's segment is the interior's ground, and the others are used sparingly.** Tunnels are the author's
+segment alone. The hall puts the gray-wool stripe over it. The room stacks gray wool under cyan at its foot, the
+author's segment, and the obsidian stripe under its rim.
 
-**The crown's stone sits a block back.** The plinth and the stair nook stand in the face. The andesite band two
-under the roof stands in the face too, flush with the roof, so the stone between them reads as an inset panel.
+**The dark segment has a room of its own,** at the end of
+the 6-wide tunnel, where it stands at the foot under gray wool and then the author's segment, over the dark floor.
+Nothing is roofed.
+
+**The crown's stone and andesite sit a block back.** The plinth and the stair nook stand in the face, and so does
+the black-wool roof, so the roof is the only overhang: over the inset, and a block past each end.
+
+**West of the front, the panels slant two ways.** Four bays stand each a block further back than the one nearer
+the door, and each tier a block back from the one under it, so the face runs back on a diagonal and leans.
 
 **A blast wall is four wide for its whole height, painted like the lofted walls.** It stands against the flat
 front, 14 long. The face fades from cobble to stone with the loft's noise, and a gray-wool line runs round it ten
 blocks up. Its top falls from 19 at the front to 16 at its end.
 
 **A lofted wall is planes spanned the way a loft tool spans them, and its edges may differ in height.** The west
-wall runs along the front: from the front's corner 24 out and 5 forward, then 24 more and 10 forward, its top
+wall runs along the front past the panels: from their end 24 out and 5 forward, then 24 more and 10 forward, its top
 falling from 20 to 15 to 8. The east wall starts against the east blast wall and runs out to the south: 24 out
 and 5 east, then 24 and 10, falling from 21 to 15 to 7. Both lean back 5.
 
@@ -103,7 +114,11 @@ step.
 
 **The lofted face is painted by its own height and marked.** It fades from cobble through polished andesite and
 andesite to stone over the height of the wall where it stands, so a low end still reaches stone. Two marks are
-inlaid: a gray-wool line, and a number in obsidian. The mountain behind rises from the walls' top edges.
+inlaid: a gray-wool line, and a number in obsidian.
+
+**The ground behind every wall stays a block under its crest.** The walls are three thick. For three blocks behind
+a wall's top edge the ground lies a block below it, so the crest reads as the edge holding the mountain back, and
+only then does the ground rise.
 
 ## What pgmvox already had, and what this adds
 
@@ -111,14 +126,14 @@ inlaid: a gray-wool line, and a number in obsidian. The mountain behind rises fr
 |---|---|---|
 | a block in the face and one behind it | `grammar.rules.Course(block, back)` | the same idea as `Solid(block, back)` |
 | the upside-down stair facing out | `core.orient.stair(rises, upside_down)` | `Nook` |
-| slits, glyphs and words on a face | `built.facade` patterns, `LETTERS` | overlays, `Bitmap`, `Courses`, the loft's marks |
+| slits, glyphs and words on a face | `built.facade` patterns, `LETTERS` | overlays, `Courses`, the loft's marks |
 | floor fields | `built.facade` floor fields, `carpet` | a floor as a flat segment, aligned to the wall |
 | a face cut into bays | `Accent`: one bay every so many, top down from a rim, refused at corners | segments that tile the whole face, stack in tiers and stretch to fit |
 | nested frames | none | peels |
 | a fade along a strip or up a core, with noise | `Mix` (by weight, with no position) | `Fade` |
 | corners | a corner keeps the plain courses | the left leg wraps an outward corner |
 | a door in a face | none | `Opening`, laid by its own function |
-| a band following a stepped roof | none | `crown`, its fill set back |
+| a band following a stepped roof | none | `crown`, inset under its roof |
 | a ruled plane between two edges | `forms.sweep` (a cross-section along a path) | `loft` |
 
 ## Limits, as built
@@ -127,9 +142,10 @@ inlaid: a gray-wool line, and a number in obsidian. The mountain behind rises fr
 - **A blast wall's falling top is steps a player can climb.**
 - **A leaning loft steps a block back every three or so,** which is what a loft tool does too. Andesite has no
   stair or slab in 1.8, so smoothing those steps would mean mixing in another material.
-- **Clay and light-gray wool are close in tone,** so their checker reads as one light joint.
+- **Andesite and stone are close in tone,** so the light floors' inner L reads faintly; clay and light-gray wool
+  likewise.
 - **The floors' four-block grid is not the wall's six.** The two meet every twelve blocks, and a 6- or 18-wide
-  tunnel ends in a part tile.
+  tunnel or the 18-wide dark room ends in a part tile.
 - **A tunnel mouth's reveal is the wall's body,** cobblestone on its inner block.
 - **The interior has no roof;** that is still to be decided.
 - **Nothing here is held to a hash,** like every study; `check.py` does not build it.

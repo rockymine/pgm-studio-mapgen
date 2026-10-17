@@ -9,7 +9,7 @@
                    a bedrock core with a row of cyan clay one under its top
     SLIT_SEG       a bedrock frame round columns of iron bars over gray glass, alternating with bedrock
 """
-from segments import (Peel, Segment, Solid, Fade, Bitmap, Checker, Courses, COBBLE, COBBLE_WALL, POL_ANDESITE,
+from segments import (Peel, Segment, Solid, Fade, Courses, COBBLE, COBBLE_WALL, POL_ANDESITE,
                       ANDESITE, STONE, NETHER_BRICK, BEDROCK, OBSIDIAN, GRAY_WOOL, LIGHT_GRAY_WOOL, CLAY,
                       CYAN_CLAY, GRAY_GLASS, IRON_BARS, TOP_SLAB, COAL, BLACK_WOOL)
 
@@ -43,21 +43,15 @@ SLIT_SEG = Segment((Peel("top", Solid(BEDROCK)), Peel("left", Solid(BEDROCK)), P
 
 SEGMENTS = [ANDESITE_SEG, STRIPE_OBSIDIAN_SEG, STRIPE_GRAY_SEG, GRAY_CYAN_SEG, DARK_SEG, SLIT_SEG]
 
-# floors: a one-block rim on two sides and a three-by-three core, four a side, laid on a grid counted from FLOOR_AT
+# floors: tiles four a side, each lined on two edges and filled in two pieces, both L-shaped where they can be
 FLOOR_MODULE = 4
-FLOOR_AT = (12, 8)
-FLOOR_GRID = Segment((Peel("top", Solid(STONE)), Peel("left", Solid(STONE))),
-                     core=Checker(CLAY, LIGHT_GRAY_WOOL), name="floor-grid")
-def mortar(origin):
-    """The mortar floor with its stone and andesite tiles counted from `origin`, a tile's corner."""
-    return Segment((Peel("top", Checker(CLAY, LIGHT_GRAY_WOOL)), Peel("left", Checker(CLAY, LIGHT_GRAY_WOOL))),
-                   core=Checker(STONE, ANDESITE, FLOOR_MODULE, origin), name="floor-mortar")
-
-
-FLOOR_MORTAR = mortar(FLOOR_AT)
-FLOOR_RING = Segment((Peel("top", Checker(CLAY, LIGHT_GRAY_WOOL)), Peel("left", Checker(CLAY, LIGHT_GRAY_WOOL))),
-                     core=Bitmap(("...", ".#.", "..."), Solid(STONE), Solid(ANDESITE)), name="floor-ring")
-FLOORS = [FLOOR_GRID, FLOOR_MORTAR, FLOOR_RING]
+FLOOR_L = Segment((Peel("top", Solid(CLAY)), Peel("left", Solid(LIGHT_GRAY_WOOL)), Peel("top", Solid(ANDESITE)),
+                   Peel("left", Solid(ANDESITE))), core=Solid(STONE), name="floor-l")
+FLOOR_BAR = Segment((Peel("top", Solid(CLAY)), Peel("left", Solid(LIGHT_GRAY_WOOL)), Peel("right", Solid(ANDESITE))),
+                    core=Solid(STONE), name="floor-bar")
+FLOOR_DARK = Segment((Peel("top", Solid(COBBLE)), Peel("left", Solid(ANDESITE)), Peel("top", Solid(CYAN_CLAY)),
+                      Peel("left", Solid(CYAN_CLAY))), core=Solid(GRAY_WOOL), name="floor-dark")
+FLOORS = [FLOOR_L, FLOOR_BAR, FLOOR_DARK]
 
 # the lofted retaining wall: cobble at the foot, up through polished andesite and andesite to stone
 LOFT = Fade(((COBBLE, 0.0), (POL_ANDESITE, 0.3), (ANDESITE, 0.62), (STONE, 1.0)), axis="v", noise=0.9)

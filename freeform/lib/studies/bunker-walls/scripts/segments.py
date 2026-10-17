@@ -107,19 +107,6 @@ class Fade:
 
 
 @dataclass(frozen=True)
-class Checker:
-    """Two blocks alternating in squares `size` a side, counted from `origin` (x, z)."""
-    a: tuple
-    b: tuple
-    size: int = 1
-    origin: tuple = (0, 0)
-
-    def at(self, u, v, along, key, inward=None):
-        x, z = key[0] - self.origin[0], key[2] - self.origin[1]
-        return (self.a if ((x // self.size) + (z // self.size)) % 2 == 0 else self.b), None
-
-
-@dataclass(frozen=True)
 class Nook:
     """An upside-down stair with its full half at the back: a top slab at the face over a half-block nook that runs
     unbroken along the course."""
@@ -131,36 +118,11 @@ class Nook:
 
 
 @dataclass(frozen=True)
-class Bitmap:
-    """A pattern over another material: rows top first, '#' is `ink`, anything else is `base`, centred on the
-    strip or core and repeated `every` cells along u when given."""
-    rows: tuple
-    ink: object
-    base: object
-    every: int = 0
-
-
-@dataclass(frozen=True)
 class Courses:
     """A core in rows: `top` are its rows read down from its top, `rest` every row under them, so a taller core
     stretches at its foot."""
     top: tuple
     rest: object
-
-
-def bitmap_cell(bm, s, t, w, h):
-    """Whether cell (s, t) of a w by h area falls on the bitmap's ink."""
-    bh, bw = len(bm.rows), len(bm.rows[0])
-    s0, t0 = (w - bw) // 2, (h - bh) // 2
-    if bm.every:
-        s0 = ((w - bw) // 2) % bm.every
-        ss = (s - s0) % bm.every
-    else:
-        ss = s - s0
-    tt = t - t0
-    if 0 <= ss < bw and 0 <= tt < bh:
-        return bm.rows[bh - 1 - tt][ss] == "#"
-    return False
 
 
 # ---- segments -----------------------------------------------------------------------------------------------
@@ -205,9 +167,7 @@ class Segment:
         for s in range(s0, s1 + 1):
             for t in range(t0, t1 + 1):
                 m = self.core
-                if isinstance(m, Bitmap):
-                    m = m.ink if bitmap_cell(m, s - s0, t - t0, cw, ch) else m.base
-                elif isinstance(m, Courses):
+                if isinstance(m, Courses):
                     down = t1 - t
                     m = m.top[down] if down < len(m.top) else m.rest
                 u, v = (s - s0) / max(1, cw - 1), (t - t0) / max(1, ch - 1)
@@ -375,9 +335,9 @@ def wall(w, cells, base, heights, seg, outside, module=6, tier=8, body=COBBLE, s
 # ---- the crown: a band that follows a stepped roof -----------------------------------------------------------
 def crown(rise=3, step=1, plinth=POL_ANDESITE, nook=Nook(), fill=STONE, under=ANDESITE, roof=BLACK_WOOL,
           shape="gable", body=COBBLE, rows=3):
-    """A top(...) for wall(): plinth, nook, `rows` of fill set a block back, then a band two under the roof, flush
-    with it, that steps up `step` every `rise` columns: one way ("lean") or to the middle and down ("gable"). The
-    roof hangs a block past each end of the run."""
+    """A top(...) for wall(): plinth and nook in the face, then `rows` of fill and a band two under the roof, both a
+    block back, under a roof in the face that steps up `step` every `rise` columns: one way ("lean") or to the
+    middle and down ("gable"). The roof is the only overhang: over the inset, and a block past each end."""
     def lay(w, side, columns, y):
         n = len(columns)
         inward = OPP[side]
@@ -395,11 +355,9 @@ def crown(rise=3, step=1, plinth=POL_ANDESITE, nook=Nook(), fill=STONE, under=AN
             w.set(x, y, z, *plinth)
             face, _ = nook.at(0, 0, 0, (x, y + 1, z), inward)
             w.set(x, y + 1, z, *face)
-            for yy in range(y + 2, top - 2):              # the fill sits a block back, under the band
+            for yy in range(y + 2, top):                   # fill and band a block back, under the roof
                 w.set(x, yy, z, B.AIR)
-                w.set(x + ix, yy, z + iz, *fill)
-            w.set(x, top - 1, z, *under)
-            w.set(x, top - 2, z, *under)
+                w.set(x + ix, yy, z + iz, *(under if yy >= top - 2 else fill))
             w.set(x, top, z, *roof)
             w.set(x + ix, top, z + iz, *roof)
         for s, (x, z) in ((-1, columns[0]), (n, columns[-1])):
