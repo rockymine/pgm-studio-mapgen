@@ -42,21 +42,17 @@ def lofts(w, digits, image=None):
 
 
 def needles(w, top):
-    """A tall needle of rock over the bunker, and a lesser one, in strata of stone and andesite."""
+    """A tall needle of rock over the bunker, and a lesser one, in the gray wool the study's cliffs are."""
     for k, ((x, z), rise) in enumerate(land.NEEDLES):
         y0 = int(top[x - w.x0, z - w.z0]) - 6
         axis = [(x, y0, z), (x + 2, y0 + rise * 0.5, z - 1), (x + 4, y0 + rise, z + 1)]
-        m = spike(w, axis, (9 if k == 0 else 6, 0.5, 1.3), sides=7, flutes=(5, 0.6), ledges=(9, 1.0), rough=0.15,
-                  seed=80 + k)
-        ys = np.arange(w.sy)[None, :, None]
-        strata = np.array([B.STONE, B.STONE, B.STONE, B.COBBLE], np.uint16)[(ys // 3) % 4] * np.ones_like(m)
-        dat = np.where((ys // 3) % 4 == 1, 5, 0) * np.ones_like(m)
-        w.ids[m] = strata[m]
-        w.dat[m] = dat[m]
+        m = spike(w, axis, (9 if k == 0 else 6, 0.5, 1.1), rough=0.06, seed=80 + k)
+        w.ids[m] = B.WOOL
+        w.dat[m] = 7
 
 
 def boulders(w):
-    """A few boulders on the field, each a lumpy ball of andesite and cobblestone sunk a third into the snow."""
+    """A few boulders on the field, each a lumpy ball of gray and light-gray wool sunk a third into the snow."""
     r = np.random.default_rng(90)
     for x, z, rad in P.BOULDERS:
         y0 = w.top(x, z)
@@ -65,7 +61,7 @@ def boulders(w):
                 for dy in range(-rad, rad + 1):
                     k = (dx / (rad + 0.5)) ** 2 + (dz / (rad + 0.3)) ** 2 + (dy / (rad * 0.8 + 0.4)) ** 2
                     if k <= 1 + 0.25 * r.uniform(-1, 1):
-                        block = (B.STONE, 5) if r.random() < 0.6 else (B.COBBLE, 0)
+                        block = (B.WOOL, 7) if r.random() < 0.6 else (B.WOOL, 8)
                         w.set(x + dx, y0 + dy + rad // 2, z + dz, *block)
 
 

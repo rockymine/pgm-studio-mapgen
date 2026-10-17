@@ -16,7 +16,8 @@ from them; this board is their second user.
 
 **The ground is the winter study's snowfield, written as one pattern with its strength as a field.** `land.snowfield`
 takes the outcrops' height and the drifts' strength as arrays. The field between the bunkers runs it calm, and calmer
-still near the paths, the front and the Spine. The mountains over the bunkers run it at full strength.
+still near the paths, the front and the Spine. The mountains over the bunkers rise gently over about 60 blocks
+measured in from the front, and carry it in the study's own blocks: wool rock, packed ice and a snow cap.
 
 **The bunker is walled by one call over every room.** The wall cells are every column within two of a room, and
 each is as tall as the room it faces. Tunnels pass through 2-block walls at openings, so a room's segments stand
@@ -25,7 +26,7 @@ either side of a mouth and over it.
 ## The reads
 
 **Every walk the goal rules measure is in its band, on the plan and in the built world.** Built, on foot and
-placing nothing: Reactor 55 from its spawn, enemy over own 3.02; Pump 49, enemy over own 3.59. Blue's numbers are
+placing nothing: Reactor 53 from its spawn, enemy over own 3.09; Pump 49, enemy over own 3.51. Blue's numbers are
 the same. The objectives read back clean.
 
 **The textured renders are in `renders/`.**

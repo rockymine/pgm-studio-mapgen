@@ -26,10 +26,10 @@ snow north of the Teeth, with one snow bridge. A build region covers them, so th
 
 | Measured | Target | Plan | Built |
 |---|---|---|---|
-| Reactor to its spawn | 40 to 90 | 52 | 55 |
+| Reactor to its spawn | 40 to 90 | 52 | 53 |
 | Pump to its spawn | 40 to 90 | 49 | 49 |
-| enemy spawn over own, Reactor | 3 to 4 | 3.19 | 3.02 |
-| enemy spawn over own, Pump | 3 to 4 | 3.60 | 3.59 |
+| enemy spawn over own, Reactor | 3 to 4 | 3.19 | 3.09 |
+| enemy spawn over own, Pump | 3 to 4 | 3.60 | 3.51 |
 | Reactor to Pump | 35 to 65 | 54 | — |
 | a monument to every enemy monument | 85 to 150 | 121 to 144 | — |
 | the door | 18 by 16 | 18 by 16 | 18 by 16 |
@@ -54,13 +54,14 @@ snow north of the Teeth, with one snow bridge. A build region covers them, so th
 
 ## The look
 
-**Ground, built and accent.** The ground is snow over stone, andesite and cobblestone, with packed ice in the
-crevasses' walls and mud of coarse dirt, podzol and gravel on the paths.
+**Ground, built and accent.** The ground is the winter study's blocks: rock skinned in light-gray wool, gray wool
+on its steep faces, under a body of packed ice (ice on a steep face) capped with two blocks of snow. The crevasses'
+walls are packed ice, and the paths are mud of coarse dirt, podzol and gravel.
 
 **The built family is the author's Bunker style.** It is `pgmvox.grammar.bunker`: the stone segments and their stripe and gray-wool variants. The dark segment is
 used in its own room only. The accents are the lofted walls' gray-wool line and the obsidian number on each north
 spur. The biome is ice plains.
 
-**What the build adds that the plan does not show.** The mountain over each bunker carries the snowfield pushed
-further, with deeper drifts, more rock, cracks of ice, a lofted wall on its upper step and two needles of rock.
+**What the build adds that the plan does not show.** The mountain over each bunker rises gently from the field over
+about 60 blocks and carries the snowfield, with deeper drifts, more rock, cracks of ice, a lofted wall on its upper step and two needles of rock.
 Boulders stand on the field away from the paths.
