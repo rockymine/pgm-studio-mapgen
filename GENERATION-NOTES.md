@@ -287,12 +287,12 @@ What the composer answers, what it does not, and what taking one of its boards o
 the compile, the holes, the heights, the build zone, the wall and the planting all measured on it. What is
 here is what the card does not carry: how to browse the composer at all, and the rulings.
 
-### Browsing the composer is a four-call loop over a library, and its census is the vocabulary
+### Browsing the composer is a two-call loop over a library, and its census is the vocabulary
 
 `GET /compose?players=&symmetry=&from=&count=&hub=&front=&wools=` returns a page of the studio's board
 library, best score first: cards carrying the descriptor that names each board, its score, a structural read
-and an SVG. `POST /compose/pin` keeps one and hands back an ordinary `PlanModel`, `GET /plans/{id}/png`
-renders it, and `POST /plan/{id}/author` makes a map row.
+and an SVG. `POST /compose/map` makes a map of one and answers its slug: a sketch with one shape per box and the
+intent it is played by, read back by slug like any map.
 
 **The library is 500 boards per size band and symmetry, composed ahead of time, and nothing is composed on
 request.** A page is a read, the feed ends where the library does (`end`), `matching` counts the filter's
