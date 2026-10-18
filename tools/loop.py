@@ -6,8 +6,8 @@
                           [--column x,z [x,z ...]]
 
 A drive stores, exports and pictures the board; a placement question is answered by two previews that take
-two seconds and store nothing. This reads the spec the way `drive.py` does — a plan and its refinement, which
-the studio compiles and applies in a dry run of `PUT /map/{slug}/source` that stores nothing, or a drawn layout —
+two seconds and store nothing. This reads the spec the way `drive.py` does — a layout and an intent, with the
+refinement the studio applies in a dry run of `PUT /map/{slug}/source` that stores nothing —
 and posts the result to `sketch/relief/read` (the terrain in numbers: range, steps, barriers, crossings)
 and `sketch/dressing` (what every prop did, and every decline with its rule and coordinates). Nothing is
 stored. The map has to have been driven once before, because the dressing preview reads the stored intent
@@ -48,20 +48,14 @@ def values_after(flag):
 
 
 def load(specdir, slug):
-    """The layout the spec states: a refinement applied by the studio onto the plan it compiles, answered by a
-    dry run that stores nothing, or a drawn layout as it is."""
-    base = os.path.basename(specdir.rstrip("/"))
-    with open(f"{specdir}/{base}.plan.json") as handle:
-        plan = json.load(handle)
-    refinement_path = f"{specdir}/{base}.refinement.json"
-    if os.path.exists(refinement_path):
-        with open(refinement_path) as handle:
-            refinement = json.load(handle)
-        _, would = drive.call("PUT", f"/map/{slug}/source?dry=true",
-                              {"name": slug, "plan": plan, "refinement": refinement})
-        return would["layout"]
-    with open(f"{specdir}/{base}.layout.json") as handle:
-        return json.load(handle)
+    """The layout the spec states, with its refinement applied by the studio in a dry run that stores nothing,
+    or the drawn layout as it is where no refinement is stated."""
+    _, layout, intent, refinement = drive.stated(specdir)
+    if refinement is None:
+        return layout
+    _, would = drive.call("PUT", f"/map/{slug}/source?dry=true",
+                          {"name": slug, "layout": layout, "intent": intent, "refinement": refinement})
+    return would["layout"]
 
 
 def decode_columns(payload):

@@ -63,7 +63,7 @@ anything is posted.
 `Pgm-Warnings` response header — `6 RQ3 SK3 SK31` — which is written whenever the complaint channel collected anything, so
 the count and the rule ids are readable without parsing the body.
 
-**Read the body either way**: an endpoint that answers `warnings` as its own field — `/plan/evaluate` is
+**Read the body either way**: an endpoint that answers `warnings` as its own field — `/plan/compile` is
 one — fills the array without the header.
 
 **Read them after every call.** A driver that reads only the status code is throwing away the half of the
@@ -93,18 +93,17 @@ inside of a **house style**, both of which are stored as snapshots.
 
 ## 2. The loop
 
-Drive it with `tools/drive.py`, which `tools/README.md` documents. It takes two authored files —
-`specs/<slug>/<slug>.plan.json` and `<slug>.refinement.json` — and prints every finding at every place one can
-appear, including the ones only visible on a 200.
+Drive it with `tools/drive.py`, which `tools/README.md` documents. It takes the authored files —
+`specs/<slug>/<slug>.layout.json`, `<slug>.intent.json` and, where anything is stated on top of them,
+`<slug>.refinement.json` — and prints every finding at every place one can appear, including the ones only
+visible on a 200.
 
 ```
-POST  /api/plan/evaluate    <plan>       score, valid, the hard/soft terms, the lint table — no map row yet
-POST  /api/plan/inspect     <plan>       goalDistances (GO1), islandGaps (CT12), the wall rects, frontline runs
-PUT   /api/map/{slug}/source             {name, plan, refinement, origin, note} — the whole map, one call:
-                                         the compile, the refinement applied onto it, one change stored
+PUT   /api/map/{slug}/source             {name, layout, intent, refinement, origin, note} — the whole map,
+                                         one call: the refinement applied onto the drawing, one change stored
 GET   /api/map/{slug}/sketch · /intent   the layout and the intent as the studio stored them
-GET   /api/map/{slug}/plan/ascii         the board as a grid, one character per cell (?every=N)
-GET   /api/map/{slug}/plan/flow          what the board asks of the two sides, in prose
+GET   /api/map/{slug}/findings           every rule asked of the drawn ground and the intent's pieces
+GET   /api/map/{slug}/report             the board read back in one request: the three numbers, every reading
 POST  /api/map/{slug}/sketch/relief/read cells, low, high, symmetry error, per group
 POST  /api/map/{slug}/sketch/columns     the DR-* declines
 GET   /api/map/{slug}/preflight          the export's own verdict, before the export
@@ -112,16 +111,19 @@ GET   /api/map/{slug}/coverage           where the ground is lived on, not merel
 GET   /api/map/{slug}/export             the world, into a fresh empty directory
 ```
 
-**One call stores the map, and the slug is stated rather than minted.** `PUT /map/{slug}/source` compiles the
-plan and applies the refinement onto what it compiled to — the themes, the storeys and shapes, the outlines
-reshaped and bent, the relief, the rooms, the dressing, and the intent's authors and date. It then writes the
-plan to re-plan from, rasterizes the drawing into geometry, projects the intent into the map document and
-applies the authors — in that order, which is the order that matters: the projection is what would overwrite
-a name written before it.
+**One call stores the map, and the slug is stated rather than minted.** `PUT /map/{slug}/source` applies the
+refinement onto the layout and the intent — the themes, the storeys and shapes, the outlines reshaped and bent,
+the relief, the rooms, the dressing, and the intent's authors and date. It then rasterizes the drawing into
+geometry, projects the intent into the map document and applies the authors — in that order, which is the
+order that matters: the projection is what would overwrite a name written before it.
 
-**The refinement is keyed on the compile's shape ids.** `POST /api/plan/compile` answers them before anything
-is stored, and a key naming an id the board does not have is answered `SR2` with the ids it does have, which is
-what a re-key is done from.
+**The refinement is keyed on the layout's shape ids.** A key naming an id the board does not have is answered
+`SR2` with the ids it does have, which is what a re-key is done from.
+
+**A plan is imported, never stored.** A board written as cell rectangles is compiled by `POST /api/plan/compile`
+into a layout and an intent, which a source then states; a source stating a `plan` is refused `400` naming
+that route. The frozen plan specs in `specs/` are driven this way by `drive.py`, and no new board is written
+as one.
 
 **A run is one change of the map, and the change says where it came from.** It carries the commit and the spec
 folder the run was built from and `--note`, a sentence saying what the pass is, and the answer lists every edit
@@ -135,13 +137,12 @@ fix it or to show how, and the next run over it is refused `409`, one `SR1` per 
 the refinement would state it and naming the change it came in. Take the edits into `build-spec.py` and drive
 with `--after <change>`, or drop them with `--discard <change>` where the author agreed they go.
 
-Everything read after it is read against the stored map: the grid and the flow off the stored plan, and
+Everything read after it is read against the stored map: the findings off the drawn ground, and
 `sketch/columns` where `DR-KEEP` can see the spawn doors' approaches and the goal rings the intent carries.
 
-**Four reads raise no finding at all, which is exactly why they get skipped.** The grid and the flow read the
-stored plan and cost no build; the relief read-back looks at the ground before it is built; coverage is the
-only read that asks whether any journey *goes* somewhere rather than whether it *can*. All four are worth more
-than the render you would have looked at instead.
+**Two reads raise no finding at all, which is exactly why they get skipped.** The relief read-back looks at
+the ground before it is built; coverage is the only read that asks whether any journey *goes* somewhere rather
+than whether it *can*. Both are worth more than the render you would have looked at instead.
 
 **Look at what you built, through the API.** `GET /api/map/{slug}/render/topdown` and its seven siblings —
 `section`, `heightmap`, `surface`, `traversability`, `structures`, `mirror`, and `column` — answer the built
@@ -241,7 +242,7 @@ measurement plus an invented conclusion is already committed to this repository'
 | The studio (code, docs) | `/home/user/pgm-studio` |
 | The live API | already running, **do not restart it**. `PGM_STUDIO_API` states where; `tools/drive.py` discovers it by `GET /api/health` when nothing does. The deployed studio is signed in by the environment's API credential for pgmstudio.de (`PGM_STUDIO_TOKEN` off the cloud), and which one a chat drives is the author's call (`CLAUDE.md`) |
 | Where your map goes | `/home/user/pgm-studio-mapgen` |
-| The driver | `tools/README.md` · `tools/drive.py` · `tools/board.py` |
+| The driver | `tools/README.md` · `tools/drive.py` |
 | Every board built here, its specs and its review | `maps/` · `specs/` · `review/` |
 
 `dotnet` is at `/usr/bin/dotnet`. MariaDB is running and migrated. Run long `dotnet` calls as background shell
@@ -283,7 +284,7 @@ that would have answered faster.
 | What does a `subtract` do, and what cuts a hole? | `techniques/cutting-a-hole` — the cut, the override add over it, and the `void-N-cut` a compile writes |
 | What does a destroy goal look like, and which words make one? | `techniques/destroy-goals`, or `GET /api/objectives/vocabulary` for the two closed sets alone |
 | What does a `HouseStyle` actually state, and what is it refused for? | `techniques/a-house-style` — twelve pads, one field changed on each |
-| How is a defence wall or an iron cube authored, and where may one stand? | `techniques/walls-and-iron` — both are plan-only, and `PL13` and `WX8` are the two that refuse |
+| How is a defence wall or an iron cube authored, and where may one stand? | `techniques/walls-and-iron` — both are placed in the sketch's Layout step and stored in the intent, and `PL13` and `WX8` are the two that refuse |
 | What does an objective need around it? | `docs/gameplay/approaches.md` — every claim marked `[author]` and settled, so law rather than advice |
 | How does a match actually flow, and what does a player do with the ground? | `docs/gameplay/match-flow.md` — §4, §6, and §10 for a capture board |
 | What is the box model's vocabulary — a hub, a lane, a frontline, a dock? | `docs/generator/model.md` |
@@ -321,17 +322,16 @@ break; read it before pulling a board, and draw a destroy board yourself.
   layer joins the first one in the list.
 - **Every stage is looked at before the next consumes it.** Fifteen boards were once judged from one top-down
   at the end, and every appearance fault in the review was visible in an image nobody rendered. Use the
-  preview endpoints — they answer a theme, a material, a prop or a plan without building a world — and look
+  preview endpoints — they answer a theme, a material or a prop without building a world — and look
   at the picture, then say what you see in it.
 - **An image is a check, not a source of meaning.** A render answers *whether* what you authored came out;
-  the document underneath answers *what it is*. The plan render colours by **role** — blue is a build zone or
-  a water lane, never water.
-- **A picture shows what a board looks like; a grid shows what it is made of.** `GET /api/map/{slug}/plan/ascii`
-  answers the plan as `text/plain`, one character per proxy cell, with a key. A plan is a list of rectangles
-  and most of what goes wrong with one is a **relation between two of them** — a landform wider than the band
-  that reaches it, a wall on the only throat, a room whose door opens onto its own apron. A top-down of the
-  built world cannot show that, because by then they are terrain. `tools/board.py` is the same read off the
-  plan file, before a map row exists.
+  the document underneath answers *what it is*. The sketch's play pieces are coloured by **kind** — blue is a build
+  zone or a water lane, never water.
+- **A picture shows what a board looks like; a finding says what it is made of.** Most of what goes wrong
+  with an arrangement is a **relation between two pieces** — a landform wider than the band that reaches it,
+  a wall on the only throat, a room whose door opens onto its own apron. `GET /api/map/{slug}/findings` asks
+  those of the drawn ground, and a top-down of the built world cannot show them, because by then they are
+  terrain.
 
 ---
 
@@ -347,8 +347,8 @@ Into `/home/user/pgm-studio-mapgen`, on the branch this session was given:
   writes it and adds the board's row to `maps/INDEX.md`: the mode folder is the one `OvercastCommunity/CommunityMaps`
   would file the map in (`ctw`, `dtcm`, `koth`, `tdm`, `mixed` and the rest, by its objectives) and the name is the map's. Where that name is another board's, `--world <name>` gives this
   one its own.
-- **`specs/<slug>/`** — every document you authored: `build-spec.py`, and the plan and the refinement it
-  writes. The world is derived from them. Beside them, `<slug>.png`, the board from its long side that the
+- **`specs/<slug>/`** — every document you authored: `build-spec.py`, and the layout, the intent and the
+  refinement it writes. The world is derived from them. Beside them, `<slug>.png`, the board from its long side that the
   driver keeps, and `provenance.json`, which the driver moves here out of the exported `region/`. Every
   other picture stays in the studio, drawn again from the board as it stands: the report names each one by
   its route, and a review cites a picture by that route.
