@@ -295,9 +295,11 @@ that would have answered faster.
 a CTW board is put together — hub, spawn, wool approaches, frontline, a mid band with a row of stepping
 stones in it — and that arrangement is the thing hard to invent and easy to get wrong.
 
-**What it hands over is a plan and nothing else.** It states no elevation, draws nothing but axis-aligned
-rectangles, places no defence wall and carries no layer, so the ground, the edge that is not straight, the
-second storey and the wall are all still yours to author.
+**What it hands over is a map, made in one call.** `POST /api/compose/map` with a card's descriptor stores a
+sketch with one shape per box — the hub, the front line, each approach and the spawn — the intent it is played
+by, and the boxes as places, and answers the slug. It states no elevation, draws nothing but axis-aligned
+rectangles and carries no layer, so the ground, the edge that is not straight and the second storey are all
+still yours to author.
 
 **Painting a theme onto a composed board and stopping there is what produced fifteen boards that look like
 each other.** `COMPOSER-ADAPTATION-BRIEF.md` is what taking one over costs and what the adaptation must not

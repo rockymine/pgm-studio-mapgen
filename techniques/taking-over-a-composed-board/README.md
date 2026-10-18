@@ -1,9 +1,13 @@
 # Taking over a composed board
 
-**A composed board is JSON, and taking one over is editing it.** `GET /api/compose` answers cards, `POST
-/api/compose/pin` stores one and hands back an ordinary `PlanModel`, and from there nothing is special about
-it. This card is one pinned board edited four ways. Open them in the studio as
-`technique-composed-1-as-pinned` through `-4-taken-over`, or run `build.py`.
+**A composed board is JSON, and taking one over is editing it.** This card is one composed board kept as a
+plan, `pinned.plan.json`, and edited four ways through the plan's own road, which is still how a plan
+compiles. Open them in the studio as `technique-composed-1-as-pinned` through `-4-taken-over`, or run
+`build.py`.
+
+**The studio hands a composed board over as a map now, not as a plan.** `POST /api/compose/map` stores a
+sketch whose every box is a shape of its own, so the one merged outline below is what a plan compiles to and
+not what a composed map arrives as.
 
 **Knowing which document an edit belongs to is most of the skill.** A height on a piece, a piece split, a
 piece removed, a build zone and a wall are all edits to the **plan**. A void ring redrawn, a coast
