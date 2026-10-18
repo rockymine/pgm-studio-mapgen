@@ -291,8 +291,8 @@ here is what the card does not carry: how to browse the composer at all, and the
 
 `GET /compose?players=&symmetry=&from=&count=&hub=&front=&wools=` returns a page of the studio's board
 library, best score first: cards carrying the descriptor that names each board, its score, a structural read
-and an SVG. `POST /compose/map` makes a map of one and answers its slug: a sketch with one shape per box, the
-intent it is played by, and its boxes as places, read back by slug like any map.
+and an SVG. `POST /compose/map` makes a map of one and answers its slug: a sketch with one shape per box and the
+intent it is played by, read back by slug like any map.
 
 **The library is 500 boards per size band and symmetry, composed ahead of time, and nothing is composed on
 request.** A page is a read, the feed ends where the library does (`end`), `matching` counts the filter's

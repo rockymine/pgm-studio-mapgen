@@ -296,8 +296,8 @@ a CTW board is put together — hub, spawn, wool approaches, frontline, a mid ba
 stones in it — and that arrangement is the thing hard to invent and easy to get wrong.
 
 **What it hands over is a map, made in one call.** `POST /api/compose/map` with a card's descriptor stores a
-sketch with one shape per box — the hub, the front line, each approach and the spawn — the intent it is played
-by, and the boxes as places, and answers the slug. It states no elevation, draws nothing but axis-aligned
+sketch with one shape per box — the hub, the front line, each approach and the spawn — and the intent it is
+played by, and answers the slug. It states no elevation, draws nothing but axis-aligned
 rectangles and carries no layer, so the ground, the edge that is not straight and the second storey are all
 still yours to author.
 
