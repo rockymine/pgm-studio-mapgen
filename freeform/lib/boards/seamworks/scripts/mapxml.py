@@ -46,7 +46,7 @@ OBJECTIVES.add(Flag("green-flag", "Green Flag", "green",
                     [(name, (x, YS + d, z), 270) for name, (x, z), d in P.FLAG_POSTS],
                     shared=False, points_rate=0, respawn_time="10s", team="green-team"), name="Purple Flag", color="purple")
 mx, mz = P.MONUMENT
-OBJECTIVES.add(Destroyable("green-monument", "Green Monument", "green-team", Box(mx, YS + 3, mz, mx + 1, YS + 4, mz + 1)),
+OBJECTIVES.add(Destroyable("green-monument", "Green Monument", "green-team", Box(mx, P.monument_y(), mz, mx + 1, P.monument_y() + 1, mz + 1)),
                name="Purple Monument")
 # a net is the capturing team's own spawn, taking the other team's flag: written for each team by hand, because
 # its flag is the other team's and an image would carry the flag id with the wrong team

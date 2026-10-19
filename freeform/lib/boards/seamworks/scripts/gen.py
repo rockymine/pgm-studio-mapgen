@@ -50,8 +50,9 @@ def cells(m):
 board = (X >= 0) & (X < P.W) & (Z >= 0) & (Z < P.H)
 w.ids[:, 0, :] = B.BEDROCK
 for x, z in cells(board):
-    w.column(x, z, 1, YS - 2, B.STONE)
-    w.set(x, YS - 1, z, *CRUST)
+    top = P.ground(x, z) - 1
+    w.column(x, z, 1, top - 1, B.STONE)
+    w.set(x, top, z, *CRUST)
 for x, z in cells(~board):
     w.column(x, z, 0, YS - 1, B.BEDROCK)
     w.column(x, z, YS, YS + 24, B.BARRIER)
@@ -82,11 +83,11 @@ floor = ~np.isnan(depth)
 
 for x, z in cells(floor):
     d = D[x - w.x0, z - w.z0]
-    w.column(x, z, YS + d - 1, YS - 1, B.AIR)
+    w.column(x, z, YS + d - 1, P.ground(x, z) - 1, B.AIR)
     w.set(x, YS + d - 1, z, *FLOOR)
 for rock in P.ROCKS:
     for x, z in cells(mask(rock)):
-        w.set(x, YS - 1, z, *ROCK_TOP)
+        w.set(x, P.ground(x, z) - 1, z, *ROCK_TOP)
 
 
 def feet(x, z):
@@ -102,17 +103,39 @@ for x, z in cells(floor & ramp):
     if 0 <= j < w.sx and 0 <= l < w.sz and floor[j, l] and D[j, l] == D[i, k] + 1:
         w.set(x, feet(x, z), z, B.STONEBRICK_STAIRS, stair((sx, sz)))
 
-# ---- buildings ----------------------------------------------------------------------------------------------------
-for name, poly, d, roof in P.BUILDINGS:
+# ---- buildings: each section its own storeys, a slab every storey with its ladder's hole, windows where the
+# outside is open, a wall wherever a section stands over its neighbour ------------------------------------------------
+DIRS = {"n": (0, -1), "s": (0, 1), "e": (1, 0), "w": (-1, 0)}
+for name, poly, d, sections in P.BUILDINGS:
     m = mask(poly)
-    inner = m.copy()
-    inner[1:, :] &= m[:-1, :]; inner[:-1, :] &= m[1:, :]; inner[:, 1:] &= m[:, :-1]; inner[:, :-1] &= m[:, 1:]
+    storeys = np.zeros(X.shape, int)
+    for (x0, z0, x1, z1), n, _ in sections:
+        storeys[(X >= x0) & (X < x1) & (Z >= z0) & (Z < z1) & m] = n
+    base = YS + d
     for x, z in cells(m):
-        w.column(x, z, YS + d - 1, YS + roof, WALL[0], WALL[1])
-    for x, z in cells(inner):
-        w.column(x, z, YS + d, YS + roof - 1, B.AIR)
-        if (x + z) % 6 == 0 and x % 3 == 0:
-            w.set(x, YS + roof, z, *LIGHT)
+        i, k = x - w.x0, z - w.z0
+        n = storeys[i, k]
+        roof = base + n * P.STOREY
+        w.column(x, z, base - 1, roof, *WALL)
+        rim = [storeys[i + a, k + b] for a, b in DIRS.values()]
+        for level in range(n):
+            floor_y = base + level * P.STOREY
+            if min(rim) == 0 or any(r <= level for r in rim):
+                # an outside wall at this storey: a window two high every fourth cell, where the outside is open air
+                if level > 0 and (x + z) % 4 == 0:
+                    for a, b in DIRS.values():
+                        if storeys[i + a, k + b] <= level and w.id(x + a, floor_y + 1, z + b) == B.AIR \
+                                and w.id(x + a, floor_y + 2, z + b) == B.AIR:
+                            w.column(x, z, floor_y + 1, floor_y + 2, B.AIR)
+                continue
+            w.column(x, z, floor_y, floor_y + P.STOREY - 2, B.AIR)
+            if (x * 3 + z) % 7 == 0:
+                w.set(x, floor_y + P.STOREY - 1, z, *LIGHT)
+    for _, n, ((lx, lz), side) in sections:
+        a, b = DIRS[side]
+        for y in range(base, base + (n - 1) * P.STOREY + 1):
+            w.set(lx, y, lz, B.LADDER, ladder((a, b)))
+        w.column(lx + a, lz + b, base, base + (n - 1) * P.STOREY + 1, *WALL)
 for name, door in P.DOORS:
     d = next(dd for n, pg, dd, _ in P.BUILDINGS if n == name and any(P.pip((c[0] + .5, c[1] + .5), pg) for c in door))
     for x, z in door:
@@ -123,7 +146,8 @@ for a, b, n, (l0, l1), shade in P.panels():
     length = math.hypot(b[0] - a[0], b[1] - a[1])
     inside = (int(math.floor((a[0] + b[0]) / 2 - n[0] * .6)), int(math.floor((a[1] + b[1]) / 2 - n[1] * .6)))
     base = feet(*inside) if floor[inside[0] - w.x0, inside[1] - w.z0] else YS - 10
-    rise = YS + P.LIP - base
+    behind = (int(math.floor((a[0] + b[0]) / 2 + n[0] * 4)), int(math.floor((a[1] + b[1]) / 2 + n[1] * 4)))
+    rise = P.ground(*behind) + P.LIP - base
     clear, solid = set(), set()
     for s in np.arange(0, 1.0001, 0.2 / max(length, 1)):
         bx, bz = a[0] + (b[0] - a[0]) * s, a[1] + (b[1] - a[1]) * s
@@ -136,7 +160,7 @@ for a, b, n, (l0, l1), shade in P.panels():
             for k in np.arange(0, 2.0, 0.4):
                 solid.add((math.floor(bx + n[0] * (back + k)), math.floor(y), math.floor(bz + n[1] * (back + k))))
     for c in clear - solid:
-        if c[1] < YS and not floor[c[0] - w.x0, c[2] - w.z0]:
+        if c[1] < P.ground(c[0], c[2]) and not floor[c[0] - w.x0, c[2] - w.z0]:
             w.set(*c, B.AIR)
     for c in solid:
         w.set(*c, *PANEL[shade])
@@ -191,8 +215,9 @@ def poly_edge_dist(poly):
 for sp in P.SPOILS:
     if sp["scar"]:
         for x, z in cells(mask(sp["scar"]) & ~floor):
-            w.column(x, z, YS - 4, YS - 1, B.AIR)
-            w.set(x, YS - 5, z, *SPOIL)
+            top = P.ground(x, z)
+            w.column(x, z, top - 4, top - 1, B.AIR)
+            w.set(x, top - 5, z, *SPOIL)
     toe = mask(sp["toe"]) & floor
     to_toe = poly_edge_dist(sp["toe"])
     to_crest = np.min([seg_dist(CX, CZ, sp["crest"][i], sp["crest"][i + 1]) for i in range(len(sp["crest"]) - 1)],
@@ -249,26 +274,28 @@ for turned in (False, True):
     sx, sz = (P.W - 1 - P.SHAFT[0], P.H - 1 - P.SHAFT[1]) if turned else P.SHAFT
     wall = (1, 0) if turned else (-1, 0)
     low = YS + round(branch_depth)
-    w.column(sx, sz, low, YS - 1, B.AIR)
-    w.column(sx + wall[0], sz, low - 1, YS - 1, B.STONE)
-    for y in range(low, YS):
+    top = P.ground(sx, sz)
+    w.column(sx, sz, low, top - 1, B.AIR)
+    w.column(sx + wall[0], sz, low - 1, top - 1, B.STONE)
+    for y in range(low, top):
         w.set(sx, y, sz, B.LADDER, ladder(wall))
 
 # ---- ladders up the cut walls: a stone backing up to the crust, a gap in the panels' lip over it --------------------
-DIRS = {"n": (0, -1), "s": (0, 1), "e": (1, 0), "w": (-1, 0)}
 for (x, z), side in P.LADDERS:
     dx, dz = DIRS[side]
     bottom = feet(x, z)
-    w.column(x, z, bottom, YS + 3, B.AIR)
-    w.column(x + dx, z + dz, bottom, YS - 1, B.STONE)
-    for y in range(bottom, YS):
+    top = P.ground(x + dx, z + dz)
+    w.column(x, z, bottom, top + 3, B.AIR)
+    w.column(x + dx, z + dz, bottom, top - 1, B.STONE)
+    for y in range(bottom, top):
         w.set(x, y, z, B.LADDER, ladder((dx, dz)))
     for k in range(1, 7):
         for o in (-1, 0, 1):
             cx, cz = x + dx * k + (o if dx == 0 else 0), z + dz * k + (o if dz == 0 else 0)
-            w.column(cx, cz, YS, YS + 3, B.AIR)
-            if k > 1 and w.id(cx, YS - 1, cz) in (B.AIR,):
-                w.set(cx, YS - 1, cz, *CRUST)
+            here = P.ground(cx, cz)
+            w.column(cx, cz, here, here + 4, B.AIR)
+            if k > 1 and w.id(cx, here - 1, cz) == B.AIR:
+                w.set(cx, here - 1, cz, *CRUST)
 
 # ---- the objectives: the flags' banners at their first posts, the monuments --------------------------------------------
 from mapxml import OBJECTIVES  # noqa: E402
@@ -278,5 +305,5 @@ for team, (x, z), d in ((0, P.FLAG_POSTS[0][1], P.FLAG_POSTS[0][2]),
                         (1, (P.W - 1 - P.FLAG_POSTS[0][1][0], P.H - 1 - P.FLAG_POSTS[0][1][1]), P.FLAG_POSTS[0][2])):
     w.banner(x, YS + d, z, 15 - DYES["green" if team == 0 else "purple"], rot=12 if team == 0 else 4)
 
-w.save(sys.argv[1], "Seamworks", (P.SPAWN_AT[0], YS - 7, P.SPAWN_AT[1]))
+w.save(sys.argv[1], "Seamworks", (P.SPAWN_AT[0], YS - 8, P.SPAWN_AT[1]))
 print("generated", int(floor.sum()), "floor columns")

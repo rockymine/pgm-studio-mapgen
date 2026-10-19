@@ -28,6 +28,26 @@ drawn at random: the passage, the boiler house or the forecourt.
 **A flag is scored in the capturing team's own spawn.** The match ends at the first monument down or the third
 capture; that rule is a placeholder until the author decides it.
 
+## The ground and the buildings
+
+**The crust rises and falls a block or two.** Its height is smooth noise one to three blocks about the surface level,
+made symmetric under the half turn. Cut floors keep their depths from the surface level, so a cut is a block deeper
+under a rise. Panel lips, ladder tops, the shaft and the monument's float follow the crust where they stand.
+
+**A building is two or three storeys, by section.** A storey is five blocks, a slab and four of air, and each section
+has a ladder through its slabs and windows where its wall faces open air. A taller section walls itself off over a
+lower one, whose roof becomes a terrace.
+
+| Building | Sections, in storeys |
+|---|---|
+| hall | the north end three, the wing and the south end two |
+| boiler house | the west body three, the east arm two |
+| winch house | west three, east two |
+| pump house | the slot side three, the east side two |
+
+**A two-storey section in a deep cut ends near the crust.** Ten blocks of storeys from a floor at -10 or deeper put
+its roof at the ground beside it, so it reads as two storeys from the cut and as a flat roof from the surface.
+
 ## The walls
 
 **A panel is a quad leaning back into the earth, solved from its four corners.** Its base is two points on the
@@ -48,7 +68,7 @@ each spawn with the other team's spawn closed, as PGM closes it.
 |---|---|
 | its flag at the passage | 46 |
 | its flag at the boiler house, the forecourt | 83, 82 |
-| its own monument | 111 |
+| its own monument | 117 |
 | the enemy flag at the passage, the boiler house, the forecourt | 308, 303, 279 |
 | the enemy monument | 283 |
 

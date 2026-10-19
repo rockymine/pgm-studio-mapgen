@@ -26,7 +26,7 @@ def closed(box):
 
 home = (P.SPAWN_AT[0], YS - 8, P.SPAWN_AT[1])
 posts = [(name, (x, YS + d, z)) for name, (x, z), d in P.FLAG_POSTS]
-monument = (P.MONUMENT[0], YS, P.MONUMENT[1])
+monument = (P.MONUMENT[0], P.monument_y() - 3, P.MONUMENT[1])
 for team, start, other_box in (("green", home, spawn_box.image(P.SYM)), ("purple", turn(home), spawn_box)):
     d = walk.walk(closed(other_box), [start], w.x0, w.z0)
     mine = (lambda p: p) if team == "green" else turn

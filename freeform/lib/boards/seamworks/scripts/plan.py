@@ -9,17 +9,39 @@ import sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 
+import numpy as np  # noqa: E402
+
+from pgmvox.geom.noise import fbm  # noqa: E402
 from pgmvox.plan.raster import Symmetry  # noqa: E402
 
 W, H = 300, 140
 YS = 48                                  # the surface's walking level; its top block is YS - 1
 SEAM_Y = YS - 20                         # the seam's lava, under every plated strip
-LIP = 2                                  # how far a panel's top stands over the surface
+LIP = 2                                  # how far a panel's top stands over the ground behind it
+CRUST_RISE = (-1, 3)                     # the crust's height about YS, low and high, in whole blocks
 SYM = Symmetry("half", axis=(149.5, 69.5))
 
 
 def R(p):
     return (W - p[0], H - p[1])
+
+
+def _crust():
+    """The crust's height about YS for every column of the board, indexed [x, z]: smooth noise, made symmetric under
+    the half turn and stretched to CRUST_RISE."""
+    f = fbm((W, H), 44, 4, seed=7)
+    f = (f + f[::-1, ::-1]) / 2
+    f = (f - f.min()) / (f.max() - f.min())
+    lo, hi = CRUST_RISE
+    return np.floor(lo + f * (hi - lo + 1)).clip(lo, hi).astype(int)
+
+
+CRUST = _crust()
+
+
+def ground(x, z):
+    """The walking level of the crust at a column: YS plus its noise; YS off the board."""
+    return YS + int(CRUST[x, z]) if 0 <= x < W and 0 <= z < H else YS
 
 
 # ---- the cuts: each edge tagged by what holds it. P panels, R raw rock, B a building's face, T a tunnel mouth,
@@ -83,9 +105,29 @@ HALL = [(6, 20), (30, 20), (30, 26), (40, 26), (40, 42), (30, 42), (30, 66), (16
 BOILER = [(4, 90), (20, 90), (20, 100), (28, 100), (28, 112), (22, 112), (22, 124), (4, 124)]
 WINCH = [(190, 1), (206, 1), (206, 13), (190, 13)]
 PUMP = [(147, 31), (160, 31), (160, 48), (147, 48)]
-_BUILDINGS_HALF = [("hall", HALL, -8, 3), ("boiler house", BOILER, -11, 2), ("winch house", WINCH, -10, 3),
-                   ("pump house", PUMP, -13, 1)]
-BUILDINGS = _BUILDINGS_HALF + [(n, [R(p) for p in pg], d, r) for n, pg, d, r in _BUILDINGS_HALF]
+STOREY = 5                               # a storey's floor slab and four of air
+# each building's floor depth, and its sections: a rectangle (x0, z0, x1, z1) of the cells it covers, its storeys,
+# and the cell of its ladder with the side of the wall it hangs on
+_BUILDINGS_HALF = [
+    ("hall", HALL, -8, [((6, 20, 30, 42), 3, ((28, 21), "n")), ((30, 26, 40, 42), 2, ((38, 27), "n")),
+                        ((6, 42, 30, 66), 2, ((28, 64), "s"))]),
+    ("boiler house", BOILER, -11, [((4, 90, 14, 124), 3, ((5, 91), "w")), ((14, 90, 28, 124), 2, ((26, 101), "e"))]),
+    ("winch house", WINCH, -10, [((190, 1, 198, 13), 3, ((191, 2), "n")), ((198, 1, 206, 13), 2, ((204, 2), "n"))]),
+    ("pump house", PUMP, -13, [((147, 31, 154, 48), 3, ((148, 32), "w")), ((154, 31, 160, 48), 2, ((158, 32), "e"))]),
+]
+
+
+def _turn_section(sec):
+    (x0, z0, x1, z1), n, ((lx, lz), side) = sec
+    return ((W - x1, H - z1, W - x0, H - z0), n, ((W - 1 - lx, H - 1 - lz), turn_dir(side)))
+
+
+def turn_dir(d):
+    return {"n": "s", "s": "n", "e": "w", "w": "e"}[d]
+
+
+BUILDINGS = _BUILDINGS_HALF + [(n, [R(p) for p in pg], d, [_turn_section(sec) for sec in secs])
+                               for n, pg, d, secs in _BUILDINGS_HALF]
 # doors: (building, the wall's cells as (x, z) pairs on the inside of the face), three wide and three high
 _DOORS_HALF = [("hall", [(29, z) for z in range(46, 49)]), ("hall", [(29, z) for z in range(56, 59)]),
                ("hall", [(39, z) for z in range(34, 37)]), ("hall", [(x, 65) for x in range(20, 23)]),
@@ -124,10 +166,6 @@ SHAFT = (44, 119)                                                   # the ladder
 _LADDERS_HALF = [((80, 31), "s"), ((82, 46), "n"), ((40, 108), "s")]
 
 
-def turn_dir(d):
-    return {"n": "s", "s": "n", "e": "w", "w": "e"}[d]
-
-
 LADDERS = _LADDERS_HALF + [((W - 1 - x, H - 1 - z), turn_dir(d)) for (x, z), d in _LADDERS_HALF]
 
 # ---- play ----------------------------------------------------------------------------------------------------------
@@ -136,6 +174,11 @@ SPAWN_BOX = (7, 21, 16, 44)              # the back of the hall: x0, z0, x1, z1;
 SPAWN_AT = (11, 32)
 FLAG_POSTS = [("passage", (22, 71), -8), ("boiler house", (9, 106), -11), ("forecourt", (52, 80), -8)]
 MONUMENT = (109, 38)                      # its two-by-two-by-two box's corner, floating three over the crust
+
+
+def monument_y():
+    """The monument's lowest block: three of air over the highest crust under it."""
+    return max(ground(MONUMENT[0] + i, MONUMENT[1] + k) for i in (0, 1) for k in (0, 1)) + 3
 CAPTURES = 3
 
 
