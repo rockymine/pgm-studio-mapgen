@@ -369,7 +369,7 @@ def stated(specdir):
     layout, intent = document("layout"), document("intent")
     if layout is None or intent is None:
         raise SystemExit(f"{specdir}: needs {base}.layout.json and {base}.intent.json, "
-                         f"or a {base}.plan.json beside its {base}.refinement.json")
+                         f"or {base}.plan.json beside {base}.refinement.json")
     return None, layout, intent, refinement
 
 
