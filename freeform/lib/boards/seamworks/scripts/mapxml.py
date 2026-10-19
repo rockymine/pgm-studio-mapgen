@@ -39,7 +39,7 @@ class Net(Objective):
 x0, z0, x1, z1 = P.SPAWN_BOX
 spawn_box = Box(x0, YS - 8, z0, x1, YS + 1, z1)
 OBJECTIVES = Objectives(Teams(*P.TEAMS), P.SYM)
-OBJECTIVES.add(Observer((150, YS + 16, 70), yaw=0, pitch=60))
+OBJECTIVES.add(Observer((150, YS + 30, 70), yaw=0, pitch=60))
 OBJECTIVES.add(Spawn("green-team", (P.SPAWN_AT[0], YS - 8, P.SPAWN_AT[1]), yaw=270, kit="spawn-kit",
                      area=spawn_box))
 OBJECTIVES.add(Flag("green-flag", "Green Flag", "green",
@@ -66,7 +66,7 @@ M = Map("Seamworks", "0.1.0",
                 Item("leather chestplate", unbreakable=True, team_color=True, wear="chestplate"),
                 Item("chainmail leggings", unbreakable=True, wear="leggings"),
                 Item("iron boots", unbreakable=True, wear="boots"), clear=True),
-        build=Build(max_height=YS + 20),
+        build=Build(max_height=YS + 30),
         match=Match(score=P.CAPTURES, time="20m"))
 
 if __name__ == "__main__":

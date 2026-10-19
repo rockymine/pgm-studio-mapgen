@@ -30,23 +30,28 @@ capture; that rule is a placeholder until the author decides it.
 
 ## The ground and the buildings
 
-**The crust rises and falls a block or two.** Its height is smooth noise one to three blocks about the surface level,
-made symmetric under the half turn. Cut floors keep their depths from the surface level, so a cut is a block deeper
+**The crust rises and falls by up to seven blocks.** Its height is rough noise from two under the surface level to
+five over it, made symmetric under the half turn. Cut floors keep their depths from the surface level, so a cut is a block deeper
 under a rise. Panel lips, ladder tops, the shaft and the monument's float follow the crust where they stand.
 
-**A building is two or three storeys, by section.** A storey is five blocks, a slab and four of air, and each section
-has a ladder through its slabs and windows where its wall faces open air. A taller section walls itself off over a
+**A building shows two or three storeys over the crust, by section.** Under the crust it has as many storeys as its
+cut is deep, every one whose floor lies below the surface level. A storey is five blocks, a slab and four of air,
+and each section has a ladder through all of its slabs and windows where its wall faces open air. A taller section walls itself off over a
 lower one, whose roof becomes a terrace.
 
-| Building | Sections, in storeys |
+| Building | Sections, in storeys over the crust |
 |---|---|
 | hall | the north end three, the wing and the south end two |
 | boiler house | the west body three, the east arm two |
 | winch house | west three, east two |
 | pump house | the slot side three, the east side two |
 
-**A two-storey section in a deep cut ends near the crust.** Ten blocks of storeys from a floor at -10 or deeper put
-its roof at the ground beside it, so it reads as two storeys from the cut and as a flat roof from the surface.
+**The crust between the twin cut and the quarry is panelled on one side only.** The twin cut's wall keeps its
+panels; the quarry's is a rock face set four blocks back, so the crust the monument stands on is eighteen deep, and
+the quarry's ladder climbs the rock.
+
+**One panel has fallen from the link's west wall.** It lies eleven out from the wall, three over the floor at its
+foot and one at its far end, on the spoil that slumped through the gap.
 
 ## The walls
 
@@ -68,7 +73,7 @@ each spawn with the other team's spawn closed, as PGM closes it.
 |---|---|
 | its flag at the passage | 46 |
 | its flag at the boiler house, the forecourt | 83, 82 |
-| its own monument | 117 |
+| its own monument | 112 for green, 116 for purple |
 | the enemy flag at the passage, the boiler house, the forecourt | 308, 303, 279 |
 | the enemy monument | 283 |
 

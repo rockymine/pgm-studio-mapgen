@@ -24,7 +24,7 @@ SPOIL = (B.DIRT, 1)
 WALL = (B.STONEBRICK, 0)
 LIGHT = (B.GLOWSTONE, 0)
 
-w = World(-1, -1, P.W + 2, P.H + 2, sy=YS + 32)
+w = World(-1, -1, P.W + 2, P.H + 2, sy=YS + 40)
 X, Z = w.grid()
 CX, CZ = X + 0.5, Z + 0.5
 
@@ -55,7 +55,7 @@ for x, z in cells(board):
     w.set(x, top, z, *CRUST)
 for x, z in cells(~board):
     w.column(x, z, 0, YS - 1, B.BEDROCK)
-    w.column(x, z, YS, YS + 24, B.BARRIER)
+    w.column(x, z, YS, YS + 34, B.BARRIER)
 
 # ---- floor depths -------------------------------------------------------------------------------------------------
 depth = np.full(X.shape, np.nan)
@@ -110,7 +110,7 @@ for name, poly, d, sections in P.BUILDINGS:
     m = mask(poly)
     storeys = np.zeros(X.shape, int)
     for (x0, z0, x1, z1), n, _ in sections:
-        storeys[(X >= x0) & (X < x1) & (Z >= z0) & (Z < z1) & m] = n
+        storeys[(X >= x0) & (X < x1) & (Z >= z0) & (Z < z1) & m] = n + P.storeys_below(d)
     base = YS + d
     for x, z in cells(m):
         i, k = x - w.x0, z - w.z0
@@ -132,6 +132,7 @@ for name, poly, d, sections in P.BUILDINGS:
             if (x * 3 + z) % 7 == 0:
                 w.set(x, floor_y + P.STOREY - 1, z, *LIGHT)
     for _, n, ((lx, lz), side) in sections:
+        n += P.storeys_below(d)
         a, b = DIRS[side]
         for y in range(base, base + (n - 1) * P.STOREY + 1):
             w.set(lx, y, lz, B.LADDER, ladder((a, b)))
@@ -228,21 +229,23 @@ for sp in P.SPOILS:
         if h > 0:
             w.column(x, z, feet(x, z), feet(x, z) + h - 1, *SPOIL)
 
-for a, b, reach, turn, is_turned in P.FALLEN:
+for a, b, reach, turn, h0, h1, is_turned in P.FALLEN:
     cut = [p for p, _ in (P.CUTS[1] if is_turned else P.CUTS[0])]
     n = P.outward(a, b, cut)
     n = (-n[0], -n[1])
     r = math.radians(turn)
     n = (math.cos(r) * n[0] - math.sin(r) * n[1], math.sin(r) * n[0] + math.cos(r) * n[1])
-    for s in np.arange(0, 1.0001, 0.08):
-        for t in np.arange(0, 1.0001, 0.05):
-            px = a[0] + (b[0] - a[0]) * s + n[0] * reach * t
-            pz = a[1] + (b[1] - a[1]) * s + n[1] * reach * t
-            x, z = math.floor(px), math.floor(pz)
-            if not floor[x - w.x0, z - w.z0]:
-                continue
-            ground = w.top(x, z)
-            w.set(x, ground + 1, z, *PANEL[0])
+    floor_y = feet(math.floor((a[0] + b[0]) / 2 + n[0] * 2), math.floor((a[1] + b[1]) / 2 + n[1] * 2))
+    laid = {}
+    for s in np.arange(0, 1.0001, 0.05):
+        for t in np.arange(0, 1.0001, 0.03):
+            x = math.floor(a[0] + (b[0] - a[0]) * s + n[0] * reach * t)
+            z = math.floor(a[1] + (b[1] - a[1]) * s + n[1] * reach * t)
+            if floor[x - w.x0, z - w.z0]:
+                laid[(x, z)] = round(floor_y + h0 + (h1 - h0) * t)
+    for (x, z), y in laid.items():
+        w.column(x, z, y, y + 6, B.AIR)                  # the spoil it fell on stays under it, never over it
+        w.set(x, y, z, *PANEL[0])
 
 # ---- the drift tunnels: four wide, four high, level along each leg's arc, the shaft's ladder up to the crust ---------
 def bore(path, d0, d1, lights=True):

@@ -18,7 +18,7 @@ W, H = 300, 140
 YS = 48                                  # the surface's walking level; its top block is YS - 1
 SEAM_Y = YS - 20                         # the seam's lava, under every plated strip
 LIP = 2                                  # how far a panel's top stands over the ground behind it
-CRUST_RISE = (-1, 3)                     # the crust's height about YS, low and high, in whole blocks
+CRUST_RISE = (-2, 5)                     # the crust's height about YS, low and high, in whole blocks
 SYM = Symmetry("half", axis=(149.5, 69.5))
 
 
@@ -29,7 +29,7 @@ def R(p):
 def _crust():
     """The crust's height about YS for every column of the board, indexed [x, z]: smooth noise, made symmetric under
     the half turn and stretched to CRUST_RISE."""
-    f = fbm((W, H), 44, 4, seed=7)
+    f = fbm((W, H), 30, 5, seed=7, gain=0.62)
     f = (f + f[::-1, ::-1]) / 2
     f = (f - f.min()) / (f.max() - f.min())
     lo, hi = CRUST_RISE
@@ -48,7 +48,7 @@ def ground(x, z):
 # O open to the next cut, C a panel wall that gave way --------------------------------------------------------------
 GREEN = [((40, 26), 'C'), ((44, 8), 'R'), ((118, 6), 'R'), ((124, 3), 'P'), ((190, 5), 'B'), ((190, 13), 'T'),
          ((190, 21), 'R'), ((187, 29), 'P'), ((147, 28), 'B'), ((147, 48), 'O'), ((138, 48), 'P'), ((138, 28), 'P'),
-         ((100, 28), 'R'), ((100, 32), 'P'), ((56, 32), 'P'), ((60, 46), 'P'), ((100, 46), 'R'), ((104, 50), 'R'),
+         ((100, 28), 'R'), ((100, 32), 'P'), ((56, 32), 'P'), ((60, 50), 'R'),
          ((124, 50), 'R'), ((124, 54), 'O'), ((124, 68), 'R'), ((118, 98), 'R'), ((84, 98), 'P'), ((74, 102), 'T'),
          ((64, 103), 'P'), ((54, 106), 'P'), ((28, 112), 'B'), ((28, 100), 'P'), ((44, 94), 'R'), ((40, 72), 'R'),
          ((30, 66), 'B'), ((30, 42), 'B'), ((40, 42), 'B')]
@@ -106,8 +106,9 @@ BOILER = [(4, 90), (20, 90), (20, 100), (28, 100), (28, 112), (22, 112), (22, 12
 WINCH = [(190, 1), (206, 1), (206, 13), (190, 13)]
 PUMP = [(147, 31), (160, 31), (160, 48), (147, 48)]
 STOREY = 5                               # a storey's floor slab and four of air
-# each building's floor depth, and its sections: a rectangle (x0, z0, x1, z1) of the cells it covers, its storeys,
-# and the cell of its ladder with the side of the wall it hangs on
+# each building's floor depth, and its sections: a rectangle (x0, z0, x1, z1) of the cells it covers, its storeys
+# over the crust, and the cell of its ladder with the side of the wall it hangs on. Under the crust a building has
+# as many storeys as its cut is deep, so a section's storeys are those plus the ones it shows above ground
 _BUILDINGS_HALF = [
     ("hall", HALL, -8, [((6, 20, 30, 42), 3, ((28, 21), "n")), ((30, 26, 40, 42), 2, ((38, 27), "n")),
                         ((6, 42, 30, 66), 2, ((28, 64), "s"))]),
@@ -115,6 +116,11 @@ _BUILDINGS_HALF = [
     ("winch house", WINCH, -10, [((190, 1, 198, 13), 3, ((191, 2), "n")), ((198, 1, 206, 13), 2, ((204, 2), "n"))]),
     ("pump house", PUMP, -13, [((147, 31, 154, 48), 3, ((148, 32), "w")), ((154, 31, 160, 48), 2, ((158, 32), "e"))]),
 ]
+
+
+def storeys_below(depth):
+    """The storeys a building has under the surface level: every one whose floor lies below it."""
+    return math.ceil(-depth / STOREY)
 
 
 def _turn_section(sec):
@@ -137,8 +143,8 @@ DOORS = _DOORS_HALF + [(n, [(W - 1 - x, H - 1 - z) for x, z in cells]) for n, ce
 
 # ---- plated seams: (low end, high end, width, row lengths, missing (row, column)) ----------------------------------
 _STRIPS_HALF = [((142.5, 28.4), (142.5, 48.6), 9, [4.4, 5.2, 4.8, 5.8], {(1, 0), (1, 1), (2, 1)}),
-                ((80.5, 48.6), (70, 99.4), 10.5, [6.6, 7, 6.2, 6.8, 6.4, 6.8, 6, 6.0],
-                 {(2, 1), (3, 0), (3, 1), (4, 0), (4, 1), (5, 0)})]
+                ((80, 52.4), (70, 99.4), 10.5, [7, 6.2, 6.8, 6.4, 6.8, 6, 6.0],
+                 {(1, 1), (2, 0), (2, 1), (3, 0), (3, 1), (4, 0)})]
 STRIPS = _STRIPS_HALF + [(R(a), R(b), w, rows, miss) for a, b, w, rows, miss in _STRIPS_HALF]
 # the sump's plates across the north channel: (x, z, width, depth) boxes, the second and fourth gone
 _SUMP_HALF = [(72, 7, 6, 8), (78, 7, 6, 8), (84, 7, 6, 8), (90, 7, 6, 8), (96, 7, 6, 8)]
@@ -153,17 +159,18 @@ _SPOIL_HALF = [dict(toe=[(40.4, 27.6), (45.5, 29), (51.5, 25.6), (53.6, 19.6), (
                          (189.4, 5.6)], crest=[(150, 5.6), (186, 6)], peak=6, scar=None)]
 SPOILS = _SPOIL_HALF + [dict(toe=[R(p) for p in s["toe"]], crest=[R(p) for p in s["crest"]], peak=s["peak"],
                              scar=[R(p) for p in s["scar"]] if s["scar"] else None) for s in _SPOIL_HALF]
-# the two panels that fell from the link's west wall: their base on the wall line, how far they reach, their turn
-_FALLEN_HALF = [((40.2, 25.2), (41.5, 19.4), 8.6, 14), ((41.7, 18.6), (42.9, 13.4), 7.2, -18)]
-FALLEN = [(a, b, reach, turn, False) for a, b, reach, turn in _FALLEN_HALF] + \
-         [(R(a), R(b), reach, turn, True) for a, b, reach, turn in _FALLEN_HALF]
+# the panel that fell from the link's west wall: its foot on the wall line, how far it lies out, its turn off the
+# wall's normal, and its height over the floor at the wall and at its far end, where it rests nearly flat
+_FALLEN_HALF = [((40.4, 24.2), (42.2, 16.2), 11, 8, 3, 1)]
+FALLEN = [(a, b, reach, turn, h0, h1, False) for a, b, reach, turn, h0, h1 in _FALLEN_HALF] + \
+         [(R(a), R(b), reach, turn, h0, h1, True) for a, b, reach, turn, h0, h1 in _FALLEN_HALF]
 
 # ---- the drift tunnels, the unfinished branch and its shaft --------------------------------------------------------
 TUNNEL = [(69, 103), (71, 113), (88, 120.5), (110, 123)]          # forecourt -8 to the other twin cut -10
 BRANCH = [(71, 113), (60, 116.5), (47, 119)]
 SHAFT = (44, 119)                                                   # the ladder's cell, hung on its west wall
 # ladders onto the crust and up out of the side cut: the ladder's cell and the side its wall is on
-_LADDERS_HALF = [((80, 31), "s"), ((82, 46), "n"), ((40, 108), "s")]
+_LADDERS_HALF = [((80, 31), "s"), ((82, 50), "n"), ((40, 108), "s")]
 
 
 LADDERS = _LADDERS_HALF + [((W - 1 - x, H - 1 - z), turn_dir(d)) for (x, z), d in _LADDERS_HALF]

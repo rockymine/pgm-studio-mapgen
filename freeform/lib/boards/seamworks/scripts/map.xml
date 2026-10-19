@@ -67,7 +67,7 @@
     <spawns>
         <default yaw="0" pitch="60">
             <region>
-                <point>150.5,64,70.5</point>
+                <point>150.5,78,70.5</point>
             </region>
         </default>
         <spawn team="green-team" kit="spawn-kit" yaw="270">
@@ -88,8 +88,8 @@
         <cuboid min="283,40,95" max="293,50,119" id="purple-spawn"/>
         <apply enter="only-purple" region="purple-spawn" message="You may not enter the enemy spawn!"/>
         <apply block="never" region="purple-spawn" message="You may not build in a spawn!"/>
-        <cuboid min="109,52,38" max="111,54,40" id="green-monument-region"/>
-        <cuboid min="189,52,100" max="191,54,102" id="purple-monument-region"/>
+        <cuboid min="109,53,38" max="111,55,40" id="green-monument-region"/>
+        <cuboid min="189,53,100" max="191,55,102" id="purple-monument-region"/>
         <cuboid min="283,40,95" max="293,50,119" id="purple-net-region"/>
         <cuboid min="7,40,21" max="17,50,45" id="green-net-region"/>
         <apply block-place="block-place-void-filter" block-break="block-break-void-filter" message="You may not edit the void!"/>
@@ -119,7 +119,7 @@
         <destroyable id="green-monument" name="Green Monument" owner="green-team" materials="obsidian" completion="100%" mode-changes="true" region="green-monument-region"/>
         <destroyable id="purple-monument" name="Purple Monument" owner="purple-team" materials="obsidian" completion="100%" mode-changes="true" region="purple-monument-region"/>
     </destroyables>
-    <maxbuildheight>68</maxbuildheight>
+    <maxbuildheight>78</maxbuildheight>
     <time>20m</time>
     <block-drops>
         <rule>
