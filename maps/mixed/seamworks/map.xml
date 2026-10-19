@@ -1,0 +1,166 @@
+<map proto="1.5.0">
+    <name>Seamworks</name>
+    <version>0.1.0</version>
+    <objective>Destroy the enemy monument, or carry their flag into your spawn 3 times.</objective>
+    <gamemode>dtm</gamemode>
+    <gamemode>ctf</gamemode>
+    <include id="gapple-kill-reward"/>
+    <authors>
+        <author>Claude (freeform generator)</author>
+    </authors>
+    <kits>
+        <kit id="spawn-kit">
+            <clear/>
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true"/>
+            <item slot="2" material="iron pickaxe" unbreakable="true">
+                <enchantment level="2">efficiency</enchantment>
+            </item>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="golden apple" amount="2"/>
+            <item slot="6" material="wood" amount="64"/>
+            <item slot="9" material="arrow" amount="32"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true"/>
+            <leggings material="chainmail leggings" unbreakable="true"/>
+            <boots material="iron boots" unbreakable="true"/>
+        </kit>
+    </kits>
+    <teams>
+        <team id="green-team" color="dark green" max="8">Green</team>
+        <team id="purple-team" color="dark purple" max="8">Purple</team>
+    </teams>
+    <filters>
+        <team id="only-green">green-team</team>
+        <not id="not-green">
+            <team>green-team</team>
+        </not>
+        <team id="only-purple">purple-team</team>
+        <not id="not-purple">
+            <team>purple-team</team>
+        </not>
+        <carrying-flag id="green-flag-carrier">green-flag</carrying-flag>
+        <carrying-flag id="purple-flag-carrier">purple-flag</carrying-flag>
+        <not id="block-place-void-filter">
+            <void/>
+        </not>
+        <any id="block-break-void-filter">
+            <all>
+                <any>
+                    <material>log</material>
+                    <material>log 2</material>
+                    <material>leaves</material>
+                    <material>leaves 2</material>
+                    <material>long grass</material>
+                    <material>yellow flower</material>
+                    <material>red rose</material>
+                    <material>double plant</material>
+                    <material>water lily</material>
+                    <material>vine</material>
+                </any>
+                <void/>
+            </all>
+            <filter id="block-place-void-filter"/>
+        </any>
+    </filters>
+    <spawns>
+        <default yaw="0" pitch="60">
+            <region>
+                <point>150.5,64,70.5</point>
+            </region>
+        </default>
+        <spawn team="green-team" kit="spawn-kit" yaw="270">
+            <region>
+                <point>11.5,40,32.5</point>
+            </region>
+        </spawn>
+        <spawn team="purple-team" kit="spawn-kit" yaw="90">
+            <region>
+                <point>288.5,40,107.5</point>
+            </region>
+        </spawn>
+    </spawns>
+    <regions>
+        <cuboid min="7,40,21" max="17,50,45" id="green-spawn"/>
+        <apply enter="only-green" region="green-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="green-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="283,40,95" max="293,50,119" id="purple-spawn"/>
+        <apply enter="only-purple" region="purple-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="purple-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="109,51,38" max="111,53,40" id="green-monument-region"/>
+        <cuboid min="189,51,100" max="191,53,102" id="purple-monument-region"/>
+        <cuboid min="283,40,95" max="293,50,119" id="purple-net-region"/>
+        <cuboid min="7,40,21" max="17,50,45" id="green-net-region"/>
+        <apply block-place="block-place-void-filter" block-break="block-break-void-filter" message="You may not edit the void!"/>
+    </regions>
+    <flags>
+        <flag id="green-flag" name="Green Flag" color="green" shared="false" points-rate="0" owner="green-team">
+            <post return-time="0s" respawn-time="10s">
+                <post name="passage" yaw="270">22.5,40,71.5</post>
+                <post name="boiler house" yaw="270">9.5,37,106.5</post>
+                <post name="forecourt" yaw="270">52.5,40,80.5</post>
+            </post>
+        </flag>
+        <flag id="purple-flag" name="Purple Flag" color="purple" shared="false" points-rate="0" owner="purple-team">
+            <post return-time="0s" respawn-time="10s">
+                <post name="passage" yaw="90">277.5,40,68.5</post>
+                <post name="boiler house" yaw="90">290.5,37,33.5</post>
+                <post name="forecourt" yaw="90">247.5,40,59.5</post>
+            </post>
+        </flag>
+        <net id="purple-net" owner="purple-team" flags="green-flag" points="1" region="purple-net-region"/>
+        <net id="green-net" owner="green-team" flags="purple-flag" points="1" region="green-net-region"/>
+    </flags>
+    <score>
+        <limit>3</limit>
+    </score>
+    <destroyables>
+        <destroyable id="green-monument" name="Green Monument" owner="green-team" materials="obsidian" completion="100%" mode-changes="true" region="green-monument-region"/>
+        <destroyable id="purple-monument" name="Purple Monument" owner="purple-team" materials="obsidian" completion="100%" mode-changes="true" region="purple-monument-region"/>
+    </destroyables>
+    <maxbuildheight>68</maxbuildheight>
+    <time>20m</time>
+    <block-drops>
+        <rule>
+            <filter>
+                <material>wood</material>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>iron pickaxe</item>
+        <item>iron axe</item>
+        <item>wood</item>
+        <item>golden apple</item>
+        <item>arrow</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>chainmail leggings</item>
+        <item>iron boots</item>
+        <item>obsidian</item>
+        <item>banner</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>iron pickaxe</tool>
+        <tool>iron axe</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+</map>
+

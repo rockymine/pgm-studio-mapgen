@@ -272,6 +272,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `mixed/probe_snowfield_2` | `probe-snowfield-2` | `specs/archive/probe-snowfield-2` |
 | `mixed/saltgate` | `freeform/lib/boards/saltgate` | `freeform/lib/boards/saltgate` |
 | `mixed/sandreach` | `freeform/lib/boards/sandreach` | `freeform/lib/boards/sandreach` |
+| `mixed/seamworks` | `freeform/lib/boards/seamworks` | `freeform/lib/boards/seamworks` |
 | `mixed/tallowfleet` | `opus5-tallowfleet` | `specs/opus5-tallowfleet` |
 | `other/bridges` | `freeform/lib/examples/bridges` | `freeform/lib/examples/bridges` |
 | `other/brittle_study` | `freeform/lib/boards/brittle-study` | `freeform/lib/boards/brittle-study` |
