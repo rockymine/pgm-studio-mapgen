@@ -16,7 +16,10 @@ out = os.path.join(root, "renders")
 os.makedirs(out, exist_ok=True)
 shots = [("30-iso-the-board.png", 2, "se", None, 0, None),
          ("31-iso-green-back.png", 6, "se", (0, 0, 70, 130), P.YS - 22, P.YS + 6),
-         ("32-iso-green-crust-and-middle.png", 6, "se", (50, 0, 190, 100), P.YS - 22, P.YS + 6)]
+         ("32-iso-green-crust-and-middle.png", 6, "se", (50, 0, 190, 100), P.YS - 22, P.YS + 6),
+         ("33-iso-green-forecourt-market.png", 10, "sw", (26, 60, 70, 115), P.YS - 14, P.YS + 22),
+         ("34-iso-green-hall.png", 10, "se", (0, 14, 48, 70), P.YS - 10, P.YS + 22),
+         ("35-iso-the-plated-slot.png", 10, "sw", (128, 22, 166, 56), P.YS - 22, P.YS + 22)]
 for name, scale, corner, box, ymin, ymax in shots:
     render.iso(w.ids, w.dat, w.x0, w.z0, os.path.join(out, name), scale, corner, box, ymin, ymax)
     render.trim(os.path.join(out, name))

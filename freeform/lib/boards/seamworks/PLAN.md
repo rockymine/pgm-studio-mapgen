@@ -1,13 +1,14 @@
 # Seamworks — plan
 
-**Seamworks is a dig under poisoned air, built first as a gray map.** Trenches eight to thirteen blocks deep are held
-back by steel panels leaned against the cut, rock that would not cut is left standing, and a hot seam runs under
-plated floors. This build exists to test the board's size and walls in game; its materials only tell the parts
-apart.
+**Seamworks is a dig under poisoned air.** Trenches eight to thirteen blocks deep are held back by rusting steel
+panels leaned against the cut, rock that would not cut is left standing, and a hot seam runs under plated floors.
+The town lives in the cuts: works of banded concrete stand in them, a market keeps each forecourt, and the ash
+lies on everything above.
 
-**`scripts/plan.py` is the board.** Every cut, depth, wall, building, seam, spoil heap, ladder, tunnel and objective
-is stated there for team green, and team purple's half is its half turn about the middle. `gen.py`, `mapxml.py`,
-`renders.py` and `walk.py` read it and decide nothing it states.
+**`scripts/plan.py` is the board.** Every cut, depth, wall, building, seam, spoil heap, ladder, tunnel, stall, lamp
+and objective is stated there for team green, and team purple's half is its half turn about the middle. `look.py`
+says what each part is made of. `gen.py`, `mapxml.py`, `renders.py` and `walk.py` read the two and decide nothing
+they state.
 
 ## The arrangement
 
@@ -62,7 +63,22 @@ through its thickness, and the wedge between the wall line and its face is clear
 
 **A wall is cut into panels ten to seventeen long, half a block apart.** Each wall's lean is drawn once and each
 panel varies it by a degree and a half at either end, so a run reads as one wall with uneven tops. Alternate
-panels take two shades of gray clay so the runs can be counted in game.
+panels lean toward different shades of rust so the runs can be counted.
+
+**Where two panels reach the same block, it belongs to the one whose foot is nearer.** Two walls meeting at a corner
+lean into the same wedge of earth, and the rule gives them a mitre along the corner's bisector instead of two
+panels passing through each other. No panel is laid inside a building or past the board's edge.
+
+## The floors and the flights
+
+**A cut floor is worn.** Its top is gravel, stone and andesite a third each in cells of three, and where a noise
+field rises it carries lumps of cobblestone half a block or a block high. No lump stands more than half a block
+over a neighbour, so the floor is walked without a jump, and none lies on a flight, a plated strip, or within two of
+a building, a ladder, a stall, a lamp, a tunnel mouth or a flag post.
+
+**A flight's step edges wander.** The height along a ramp is pushed up or down its slope by a noise of a block and a
+half before it is rounded, so each step's edge bends, and a stair faces whichever neighbour one higher lies most
+nearly uphill.
 
 ## The numbers, as walked
 
@@ -72,16 +88,27 @@ each spawn with the other team's spawn closed, as PGM closes it.
 | From a spawn to | Moves |
 |---|---|
 | its flag at the passage | 46 |
-| its flag at the boiler house, the forecourt | 83, 82 |
-| its own monument | 112 for green, 116 for purple |
-| the enemy flag at the passage, the boiler house, the forecourt | 308, 303, 279 |
-| the enemy monument | 283 |
+| its flag at the boiler house, the forecourt | 83, 73 |
+| its own monument | 110 for green, 114 for purple |
+| the enemy flag at the passage, the boiler house, the forecourt | 298, 297, 267 |
+| the enemy monument | 263 |
 
-## The look, for now
+## The look
 
-**Each material names one part.** Stone is the ground and undug rock, yellow clay the toxic crust, polished
-andesite a cut floor, light and dark gray clay the panels, iron the plates, coarse dirt the spoil, stone brick the
-buildings, lava the seam. The board's rim is bedrock to the surface and barrier above it.
+**Three families and an accent.** The ground is grey: the rock of the cuts is stone and andesite with cobblestone
+under a third, and the ash of the crust is cyan clay, the one neutral grey the clays have, with patches of black
+and of grey clay. What was built is white clay concrete. The steel is rust, brown and hardened clay with streaks
+of orange. The accent is the hazard stripe in yellow and black round every door, with the seam's lava in its
+netherrack.
+
+**A works building is banded by its storeys.** Light grey clay marks each storey's slab on the outside, stands at
+every corner and rings the roof as a parapet. Windows are iron bars, two high, every fourth block where the wall
+faces air. The hall's roof carries skylights, the boiler house a brick chimney over its furnaces and coal, and the
+pump house a small stack.
+
+**The town's dressing is placed, not scattered.** Three stalls stand against the forecourt's rock, out of the flag's
+way, and lamps on nether-brick posts stand against the walls of the routes. The drift tunnels are timbered every
+six blocks with spruce posts and a beam. The board's rim is bedrock to the surface and barrier above it.
 
 ## Open
 

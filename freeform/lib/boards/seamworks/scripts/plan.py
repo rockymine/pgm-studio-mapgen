@@ -247,3 +247,18 @@ def panels():
                 l1 = l0 + rng.uniform(-1.5, 1.5)
                 out.append(((a[0] + ux * s0, a[1] + uz * s0), (a[0] + ux * s1, a[1] + uz * s1), n, (l0, l1), j % 2))
     return out
+
+
+# ---- the dressing: a market against the forecourt's rock, lamps along the walls, the boiler house's furnaces -------
+_STALLS_HALF = [((43, 76), "e"), ((44, 82), "e"), ((45, 88), "e")]
+STALLS = _STALLS_HALF + [((W - 1 - x, H - 1 - z), turn_dir(f)) for (x, z), f in _STALLS_HALF]
+_LAMPS_HALF = [(33, 47), (47, 92), (58, 24), (96, 25), (132, 24), (176, 23), (112, 52), (116, 95), (150, 51)]
+LAMPS = _LAMPS_HALF + [(W - 1 - x, H - 1 - z) for x, z in _LAMPS_HALF]
+_FURNACES_HALF = [(5, z) for z in range(95, 104)]               # along the boiler house's west wall, facing in
+FURNACES = [(c, "e") for c in _FURNACES_HALF] + [((W - 1 - x, H - 1 - z), "w") for x, z in _FURNACES_HALF]
+_COAL_HALF = [(x, z) for x in range(7, 11) for z in range(117, 121)]
+COAL = _COAL_HALF + [(W - 1 - x, H - 1 - z) for x, z in _COAL_HALF]
+# chimneys: the boiler house's over its west body, the pump house's small stack over the slot
+_CHIMNEYS_HALF = [("boiler house", (7, 113, 9, 115), 9), ("pump house", (149, 34, 150, 35), 5)]
+CHIMNEYS = _CHIMNEYS_HALF + [(n, (W - 1 - x1, H - 1 - z1, W - 1 - x0, H - 1 - z0), h)
+                             for n, (x0, z0, x1, z1), h in _CHIMNEYS_HALF]
