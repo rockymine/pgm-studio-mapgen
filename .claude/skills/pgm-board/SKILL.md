@@ -49,10 +49,10 @@ about it."*
 | …and on a **stacked** board? | the same read, with **`from=x,z,y`** — the `y` picks which storey of the column is meant | `x,z` alone, which walks to the column *under* an elevated goal and calls it walked end to end |
 | Is a lower storey still made of what I painted it? | `GET …/column?at=x,z` | the isometric, the census, or the 200 — none of the three sees it |
 | Is the board joined up, per team? | `GET …/preflight` | the export, at 409, after a whole world is built |
-| Is any ground unused — is it ground anybody **goes** to? | `GET …/coverage` (after) — reached / decorated / dead, with the five largest dead patches and their coordinates · `GET …/plan/flow` (before) | nothing — no gate asks this, and `preflight` asks only whether ground can be *reached* |
+| Is any ground unused — is it ground anybody **goes** to? | `GET …/coverage` (after) — reached / decorated / dead, with the five largest dead patches and their coordinates | nothing — no gate asks this, and `preflight` asks only whether ground can be *reached* |
 | What is the board made of, and what borders what? | the report's `themes` (`themes/census?format=text`) | counting your own theme dict |
 | Does the finish **look** right where a player stands — do two blocks merge into one ground or into static? | `GET …/render/eye?look=x,z` — the board from a player's eye in the game's own block textures, framed on a thing the document places (a spawn, a goal, a boulder, a house); `from=x,z` stands the eye by hand; `?format=text` names the camera and what fills the frame | `render/surface`, a theme preview or the isometric, which all draw a block as one colour — two noisy blocks of one colour are calm grey there and static in the game |
-| What is the plan's shape, before a map row exists? | `tools/board.py specs/<slug>/<slug>.plan.json` | a render of a built world |
+| Do the pieces stand in the right relation, before the relief? | `GET …/findings` after a first store with no relief — the walks to every wool (`PL9`, `SP1`), the front lines, the strait and the seams, all asked of the drawn ground | a render of a built world |
 | Is this section of the world what I think? | `GET …/render/section?axis=&at=&from=&to=&format=text` — **`axis` names the direction the cut runs, so `at` is the other coordinate** | a PNG section, which blends renderer gridlines over it |
 | What fields does this pattern take? | `GET /api/terrain/patterns` — fourteen kinds with exact field names | guessing. One run invented **five field names out of five** |
 | What does this word mean? | `GET /api/glossary?term=<word>` | guessing from the code's name for it |
@@ -60,7 +60,7 @@ about it."*
 | Is there a **number** for this, and what is the band? | `GET /api/rules/terms` — every evaluator term with its rule, its band and where the band came from | reading the rule prose, which states the mechanism and not the envelope |
 | What does the house style build? | `POST /room-styles/preview-snapshot?format=png&view=section` (and `plan`; other views 400) | a top-down — every shipped roof fault was visible in a section and invisible from above |
 | What does a whole multi-wing house build? | `POST /terrain/prop-preview` — the prop plus a theme | `preview-snapshot`, which draws a default box |
-| How do I reshape a compiled outline? | `PATCH …/sketch/shapes/{id}/vertices/{index}` moves **one** point; `POST …/vertices {"after": n}` adds one at that edge's midpoint; `DELETE …/vertices/{index}`. A spec states them as `editShapes`, replayed before any bend, and there they also reach a relief `area` mark's or a push's ring and a stroke's, fluid's or flora's points by the same id | a second shape added on top to enlarge it, a subtract to eat into it, or a bend to move one corner |
+| How do I reshape an outline? | `PATCH …/sketch/shapes/{id}/vertices/{index}` moves **one** point; `POST …/vertices {"after": n}` adds one at that edge's midpoint; `DELETE …/vertices/{index}`. A spec states them as `editShapes`, replayed before any bend, and there they also reach a relief `area` mark's or a push's ring and a stroke's, fluid's or flora's points by the same id | a second shape added on top to enlarge it, a subtract to eat into it, or a bend to move one corner |
 | How do I make a whole edge read rougher? | `POST …/sketch/shapes/{id}/bend` with `side: out\|in\|both` (`out` is the default and is the bloat that reads as land) | restating the whole `vertices` array, which is a second copy of the coast |
 | How do I build a facility, a landmark or any made structure that reads as **one thing**? | `techniques/designing-a-structure` — a module, one mass a layer, a façade as a `wallRun` of a `height`-axis stack, a door as a sill plus a lintel on a lintels layer | one shape per window, masses fused on one layer, or an override floored at a door's head — all three store at 200 and are wrong in `column` |
 | How do I get a flowing wall, lane or watercourse? | a `polyline` **shape** — the rasterizer splines its points (centripetal Catmull-Rom, 8 samples a segment) before offsetting the band, so 4 clicked points draw as a curve. `stroke_edge`: `solid` \| `rough` \| `tapered` | a chain of rectangles, or hand-authored `controls` |
@@ -88,9 +88,9 @@ what each did. A hand edit there is the author showing what the board should be,
 refused `409` with the edit written as the refinement would state it (`SR1`). Take it into `build-spec.py` and
 drive with `--after <change>`; drop one with `--discard <change>` only where the author said it goes.
 
-**After `--dry`, before the first build.** Run `tools/board.py` on the plan and read the grid. A plan
-is a list of rectangles and most of what goes wrong with one is a *relation between two of them*;
-no render of a built world can show that, because by then they are terrain.
+**After the first store, before the relief.** Read `GET …/findings` over the bare arrangement. Most of
+what goes wrong with a board is a *relation between two pieces*, and once the relief and the paint are on,
+no render can show it, because by then it is terrain.
 
 **After every drive, before you open a single picture.** The drive prints the three numbers the report opens
 on; say them out loud:
@@ -120,7 +120,7 @@ in the body. `pgm-studio/docs/tools/sketch.md`, *Answering the notes an author l
 
 ## 3. What you may write, and what you may not
 
-**Write a `build-spec.py`.** A spec's plan and refinement are large structured documents with arithmetic in
+**Write a `build-spec.py`.** A spec's layout, intent and refinement are large structured documents with arithmetic in
 them — bay grids, per-course stairs, voxel models, ramp anchors. Generating them from a script *is* the
 authoring work, it is what every run here has done, and it is what makes a board re-buildable. Keep it
 in `specs/<slug>/` beside the documents it writes.
@@ -220,15 +220,9 @@ wanted is six clauses in.
 A gap filed against a surface that has the feature is worse than no gap — it is a capability the
 next run also will not use, and nothing will ever contradict it.
 
-### The plan tier cannot see what you authored downstream, in both directions
+### The findings passing says nothing about whether a shape is in the world
 
-`EL1` and `WL11` walk the plan's pieces **flat**. A five-course seam with a flight cut into it reads to them
-as a five-course seam, and the finding is right about the plan and says nothing about the board. The answer is
-a transect, not a redesign: two boards of a recent run ship with standing `EL1` complaints whose crossings
-measure `worst step 1, 0 barrier, 0 scramble, walked end to end`.
-
-It runs the other way too, and that half is worse: **the plan tier passing says nothing about whether the
-shape is in the world.** A piece the rasterizer discarded for a taller neighbour, a ring a vertex insert
+**A clean findings list is a claim about the drawing, not about the world.** A piece the rasterizer discarded for a taller neighbour, a ring a vertex insert
 folded, a room-style key the snapshot dropped — all three stored at 200 and pre-flighted **OPEN**. What sees
 them is `column` and `transect`. Nothing else does.
 
@@ -243,10 +237,10 @@ and one spawn a side make two journeys, and the flanks are on neither. Moving th
 the centre line and taking ten blocks off the board's width took it to **17.9%** with nothing else changed. A
 board with two objectives a side and a spawn between them reads **0.0%** by construction.
 
-### The plan was cut up so a theme would have somewhere to hang
+### The board was cut up so a theme would have somewhere to hang
 
-A plan states the board's **arrangement** — which ground is where, at what height, next to what. It is not
-the board's shape, and adding pieces to get a shape is the failure. `firnline` is the worked example:
+The ground shapes state the board's **arrangement** — which ground is where, at what height, next to what.
+They are not the board's look, and adding shapes to get a look is the failure. `firnline` is the worked example:
 **13 plan pieces at 6 surface heights**, then `themeByHeight` mapping each height to a theme, so the theme
 partition is the piece partition and the board's look was decided by how it happened to be cut up. It reads
 chopped rather than coherent, and no amount of dressing repairs it.
@@ -254,15 +248,15 @@ chopped rather than coherent, and no amount of dressing repairs it.
 The same board is **one terrain shape plus two platforms**: author the ground the map is played on as one
 shape (or as few as the arrangement genuinely needs), reshape it per vertex until it reads as ground, then
 put the monument shelf and the middle plateau on `addLayers` slabs over it, each with its own `base_y` and
-its own theme. A piece earns its place by stating something the arrangement needs — a height a lane climbs, a
-room a building is seated in, a footprint the symmetry fans. A piece that exists only so a theme can be hung
-on it should have been a shape scope.
+its own theme. A shape earns its place by stating something the arrangement needs — a height a lane climbs,
+the ground a room is seated on, a footprint the symmetry fans. A shape that exists only so a theme can be hung
+on it should have been a scope.
 
 **Construction comes before dressing, and a bad construction cannot be dressed out of.**
 
 ### The ground was finished by its height instead of its angle
 
-A board painted one material per plan piece, or one per height band, comes out a flat sheet from above however
+A board painted one material per shape, or one per height band, comes out a flat sheet from above however
 much relief is under it: the quarry, the graded terrace and the cut banks are all in the picture and none of
 them is visible. Nothing in the geometry tells a 45° hillside from a meadow — such a surface has no exposed
 riser, so the `wall` bucket never sees it and every other band axis paints the two alike.
@@ -374,9 +368,9 @@ clear.
 ## 5. The order a board is built in
 
 ```
-build-spec.py            write the plan and the refinement (drive.py runs it first)
-tools/board.py           the grid — relations between rectangles
-drive.py --dry           evaluate + inspect + what the run would change: score, GO1/GO3/GO4, CT12, the lint table
+build-spec.py            write the layout, the intent and the refinement (drive.py runs it first)
+drive.py --dry           what the run would change, edit by edit, before anything is stored
+drive.py --no-world      the bare arrangement stored, and its findings: GO1/GO3/GO4, PL9, SP1, CT12, FR8
                          ── iterate here; this is where the board's shape is decided ──
 drive.py --out …         the dry run, the store, one report read back, the export, the board's picture
 the three numbers        the report's head, before the pictures it names

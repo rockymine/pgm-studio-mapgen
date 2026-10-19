@@ -45,7 +45,7 @@ islands no hand would draw. Take the land the rule gives, then decide where the 
 
 **A capture board is about a third land, and its arrangement is the hard one to invent.** A hub, a spawn hung
 off it, wool approaches at the ends of their lanes, a frontline and a mid band with stepping stones are easy to
-get wrong, so a capture board may start from a composed plan and be taken over.
+get wrong, so a capture board may start from a composed board (`POST /compose/map`) and be taken over.
 
 **State the land, the spawns, the objectives and the routes before any detail.** Where the islands lie, where
 each spawn and each objective sits, and how a player walks from one to the next. That is the board; everything
@@ -61,37 +61,37 @@ biome byte and nothing else on a board does, so the biome is a palette decision 
 the end — a snowfield on a summer biome has a meadow running through it. The families are which is the
 ground, which is built, which is the accent.
 
-## 2. The plan
+## 2. The arrangement
 
-**The plan states the board's arrangement and nothing else** — which ground is where, at what height, next to
-what. It is not the board's shape. Two shapes it may take: three or four distinct height zones as pieces, or
-one rectangle with every landform authored downstream.
+**The arrangement states the board and nothing else** — which ground is where, at what height, next to what.
+It is drawn as the layout's ground shapes and the intent's play pieces: the spawns, the wool rooms, the goals
+and the build areas. Two forms it may take: three or four distinct height zones as shapes, or one outline with
+every landform authored downstream.
 
-**A piece earns its place by stating something the arrangement needs** — a height a lane climbs, a room a
-building is seated in, a footprint the symmetry fans. A piece that exists so a theme can be hung on it should
-have been a shape scope, and a plan cut up that way produces a board whose look was decided by how it
-happened to be divided.
+**A shape earns its place by stating something the arrangement needs** — a height a lane climbs, the ground a
+room is seated on, a footprint the symmetry fans. A shape that exists so a theme can be hung on it should have
+been a scope, and a board cut up that way is a board whose look was decided by how it happened to be divided.
 
-**A hole is made by arrangement.** Pieces ring a gap and no piece covers it. No relief mark of any kind cuts
-one, and the instrument that cuts ground away is downstream, so a board that needs holes is arranged for them
-here or not at all.
+**A hole is drawn, never solved.** Shapes ring a gap, or a subtract takes the ground away. No relief mark of
+any kind cuts one, so a board that needs holes draws them here or not at all.
 
 **Plan the places once the land's outline stands, and before the relief.** Draw each place on the outline:
 where it is, what it is, why a player goes there or what it frames, and how a player gets there. A place nobody
-reaches wants a path, and a path is itself part of the plan. `WHAT-A-BOARD-IS-MADE-OF.md`, *A board is a small
-world*, is what a place is.
+reaches wants a path, and a path is itself part of the arrangement. `WHAT-A-BOARD-IS-MADE-OF.md`, *A board is a
+small world*, is what a place is.
 
 **Read the places from above and revise them before anything is built.** The top-down view is where an empty
 lake, a flat corner nobody enters or a village with no way in shows. Ask of each area what is there and why;
 cut away what has no answer, and move its land toward the front.
 
-**Read the plan as a grid before posting it.** Most of what goes wrong with a plan is a relation between two
-rectangles — a landform wider than the window that reaches it, a wall on the only throat, a room whose door
-opens onto its own apron — and no render of a built world can show that, because by then they are terrain.
+**Read the arrangement's findings before the relief goes on.** Most of what goes wrong with an arrangement is a
+relation between two pieces — a landform wider than the window that reaches it, a wall on the only throat, a
+room whose door opens onto its own apron. `GET /map/{slug}/findings` asks those of the drawn ground on the first
+store, and once the relief and the paint are on, they read as terrain.
 
 ## 3. The ground
 
-**The relief is decided immediately after the plan and cannot be added later.** A board authored flat is a
+**The relief is decided immediately after the arrangement and cannot be added later.** A board authored flat is a
 board whose variation has to come from shapes for the rest of its life. Budget for the shape of the ground
 here, in the same breath as the arrangement.
 
@@ -104,7 +104,7 @@ do the other's job is the single most expensive mistake available at this stage.
 height leaves the solver nothing to solve, and a board with a mark on every region is a table with bumps on
 it however tall the bumps are. Pin the ground a player stands on and leave the flanks alone.
 
-**Sketch the relief more than one way before settling it.** The same plan under three or four reliefs, driven
+**Sketch the relief more than one way before settling it.** The same arrangement under three or four reliefs, driven
 unpainted and looked at side by side, turns a judgement about ground into a choice between built alternatives,
 and the relief that ships takes what each did well. It is the one decision here that cannot be added later, so
 it is the one worth building more than once.
@@ -138,9 +138,9 @@ see the storey beneath. A placement that means a lower storey names it.
 wrong here, stop and fix the ground.
 
 **Three themes is a map.** A theme is a *place* — the moor, the works, the shore — and a board has two or
-three of them. Giving every piece its own theme is the plan leaking into the paint.
+three of them. Giving every shape its own theme is the arrangement leaking into the paint.
 
-**Finish the ground by its angle, not by its height.** A theme hung on plan pieces or on height bands paints
+**Finish the ground by its angle, not by its height.** A theme hung on shapes or on height bands paints
 a board flat from above however much relief is under it, because nothing in the geometry tells a hillside
 from a meadow unless the band axis is the slope. Read the board's angles before choosing where the bands cut.
 
@@ -188,7 +188,7 @@ compute both before building rather than after.
 Four decisions are not edits:
 
 - **the relief**, because a flat board cannot be given ground afterwards;
-- **the plan's division**, because the paint inherits it;
+- **the arrangement's division**, because the paint inherits it;
 - **the biome**, because every tinted block on the board answers to it;
 - **the board's size**, because the goal bands are arithmetic and a board too small cannot satisfy them.
 
