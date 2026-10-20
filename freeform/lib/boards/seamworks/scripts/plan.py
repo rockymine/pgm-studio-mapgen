@@ -215,7 +215,8 @@ TEAMS = (("red-team", "Red", "red"), ("blue-team", "Blue", "blue"))
 SPAWN_BOX = (7, 21, 16, 44)              # the back of the hall: x0, z0, x1, z1; the rest of the hall is open
 SPAWN_AT = (11, 32)
 FLAG_POSTS = [("passage", (22, 71), -8), ("boiler house", (9, 106), -11), ("forecourt", (52, 80), -8)]
-MONUMENT = (109, 38)                      # its two-by-two-by-two box's corner, floating three over the crust
+MONUMENT = (109, 38)                      # its corner: two by two and MONUMENT_HEIGHT tall, floating three over the crust
+MONUMENT_HEIGHT = 4
 
 
 def monument_y():

@@ -38,9 +38,13 @@ the lanes: two in the forecourt and quarry, one in the middle, one south of the 
 
 ## What is played for
 
-**Destroy the monument and capture the flag.** The monument is two by two by two of end stone, floating three over the crust at
+**Destroy the monument and capture the flag.** The monument is sixteen blocks of end stone, two by two and four high, floating three over the crust at
 (109, 38). The flag starts in the passage between the hall and the boiler house and comes back to one of three posts,
 drawn at random: the passage, the boiler house or the forecourt.
+
+**The monument hangs in a frame.** A nether-brick fence post stands at each of its corners one out on the diagonal,
+each on a polished andesite foot on the crust, and a ring of nether-brick slabs joins them a block over its top. Every
+face and the top of the monument stay open to whoever breaks it.
 
 **A flag is scored in the capturing team's own spawn.** The match ends at the first monument down or the third
 capture; that rule is a placeholder until the author decides it.

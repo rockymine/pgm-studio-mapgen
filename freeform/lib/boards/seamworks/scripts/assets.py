@@ -746,3 +746,19 @@ def flat_roof(w, cells, skylights=False):
         if w.get(x, y, z) in ROOF_TOPS or (skylights and w.id(x, y, z) == B.GLASS):
             out[(x, z)] = y
     return out
+
+
+def monument_frame(w, box, ground, look):
+    """A frame a floating monument hangs in: a post at each corner one out on the diagonal, from its own foot on the
+    ground up past the monument's top, and a ring over it joining the posts with the monument's own top left open.
+    Every face of the monument stays open to whoever breaks it. The look is asked for "foot", "post" and "ring"."""
+    x0, z0, x1, z1, top = box.x0, box.z0, box.x1, box.z1, box.y1
+    for x, z in ((x0 - 1, z0 - 1), (x1 + 1, z0 - 1), (x0 - 1, z1 + 1), (x1 + 1, z1 + 1)):
+        foot = ground(x, z)
+        w.set(x, foot, z, *look.monument_frame("foot"))
+        for y in range(foot + 1, top + 2):
+            w.set(x, y, z, *look.monument_frame("post"))
+    for x in range(x0 - 1, x1 + 2):
+        for z in range(z0 - 1, z1 + 2):
+            if x in (x0 - 1, x1 + 1) or z in (z0 - 1, z1 + 1):
+                w.set(x, top + 2, z, *look.monument_frame("ring"))

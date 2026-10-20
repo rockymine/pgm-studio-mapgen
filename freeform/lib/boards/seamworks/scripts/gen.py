@@ -355,6 +355,11 @@ for falls, holds in (((B.GRAVEL, 0), (B.STONE, 5)), ((B.SAND, 1), (B.RED_SANDSTO
 from mapxml import OBJECTIVES  # noqa: E402
 
 OBJECTIVES.stamp(w)
+from pgmvox.play.objectives import Destroyable  # noqa: E402
+
+for monument in OBJECTIVES.of(Destroyable):
+    A.monument_frame(w, monument.box, lambda x, z: w.top(x, z) + 1 if w.id(x, w.top(x, z) + 1, z) == B.AIR
+                     else w.top(x, z) + 2, LOOK)
 for team, (x, z), d in ((0, P.FLAG_POSTS[0][1], P.FLAG_POSTS[0][2]),
                         (1, (P.W - 1 - P.FLAG_POSTS[0][1][0], P.H - 1 - P.FLAG_POSTS[0][1][1]), P.FLAG_POSTS[0][2])):
     w.banner(x, YS + d, z, 15 - DYES["red" if team == 0 else "blue"], rot=12 if team == 0 else 4)

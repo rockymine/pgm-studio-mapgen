@@ -88,8 +88,8 @@
         <cuboid min="283,14,95" max="293,24,119" id="blue-spawn"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
         <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
-        <cuboid min="109,27,38" max="111,29,40" id="red-monument-region"/>
-        <cuboid min="189,27,100" max="191,29,102" id="blue-monument-region"/>
+        <cuboid min="109,27,38" max="111,31,40" id="red-monument-region"/>
+        <cuboid min="189,27,100" max="191,31,102" id="blue-monument-region"/>
         <cuboid min="149,11,69" max="151,13,71" id="golden-apple"/>
         <cuboid min="145,11,65" max="154,15,74" id="golden-apple-near"/>
         <cuboid min="283,14,95" max="293,24,119" id="blue-net-region"/>

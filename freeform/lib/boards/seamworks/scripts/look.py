@@ -290,6 +290,9 @@ class Look:
                 "cap": (B.SLAB, 0), "footing": (B.STONE, 6), "mast": (B.IRON_BARS, 0), "arm": (B.IRON_BARS, 0),
                 "tip": (B.REDSTONE_BLOCK, 0), "lamp": (B.REDSTONE_TORCH, 5)}[role]
 
+    def monument_frame(self, role):
+        return {"foot": (B.STONE, 6), "post": (B.NETHER_FENCE, 0), "ring": (B.SLAB, 6)}[role]
+
     def rim(self, team):
         return (B.STAINED_CLAY, 14) if team == 0 else (B.STAINED_CLAY, 11)
 
