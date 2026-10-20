@@ -118,6 +118,11 @@ hardened clay and one of orange clay. Under them is the rock, so a cut wall show
 player walks on is stone. The rock nobody could dig, the ribs, the mesa, the pillars and the masses beside the
 middle, is stone to its top.
 
+**Thin beds run through the stone.** Every eight blocks a dark bed of cyan clay, and halfway between two of them a
+pale bed of clay, each a block thick, leaning a little with the crust and broken where a noise field is low. They
+show in the faces of the cuts and the standing rock, never on a top a player walks on, and the stone's own mix of
+stone, andesite and cobblestone is left as it was.
+
 **The crust is badlands with soot sunk into it.** Red sand and red sandstone are the ground, with orange clay in it.
 Large patches, about a third of the crust, are cored with black clay and dark oak planks a block below the crust and
 two in their deepest part, ringed in coarse dirt and podzol. Grey ash, flat clay and a smaller speckle of soot were

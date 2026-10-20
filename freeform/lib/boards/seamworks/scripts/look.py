@@ -226,12 +226,18 @@ class Look:
 LOOK = Look(panels="crossed, weathered by green wool", crust="badlands and soot")
 
 
+BAND_EVERY = 8                            # blocks from one dark bed to the next through the stone
+BAND_WOBBLE = _field(14, 71)
+BAND_GAPS = _field(6, 72)
+
+
 def paint_rock(w, look=LOOK):
-    """Every block of plain stone in the world turned into the rock set, course by course."""
+    """Every block of plain stone in the world turned into the rock set, course by course, with its thin beds."""
     xs = np.arange(w.x0, w.x0 + w.sx) % W
     zs = np.arange(w.z0, w.z0 + w.sz) % H
     XI, ZI = np.meshgrid(xs, zs, indexing="ij")
     a0 = ROCK_A[XI, ZI] * 0.7
+    lean = P.CRUST[XI, ZI] * 0.6
     for y in range(1, w.sy):
         layer = w.ids[:, y, :]
         stone = (layer == B.STONE) & (w.dat[:, y, :] == 0)
@@ -243,3 +249,15 @@ def paint_rock(w, look=LOOK):
         andesite = stone & ~cob & (a0 + grain < 0.42)
         w.ids[:, y, :][cob] = B.COBBLE
         w.dat[:, y, :][andesite] = 5
+        # thin beds through the stone, leaning a little with the crust and broken where the noise is low: a dark bed
+        # of cyan clay and, between those, a pale bed of clay
+        level = y - lean + BAND_WOBBLE[XI, ZI] * 2.2
+        whole = BAND_GAPS[(XI + y * 5) % W, ZI] > 0.3
+        if y + 1 < w.sy:
+            whole &= w.ids[:, y + 1, :] != B.AIR             # a bed shows in a face, never on a rock's top
+        dark = stone & whole & (np.mod(level, BAND_EVERY) < 1)
+        pale = stone & whole & (np.abs(np.mod(level, BAND_EVERY) - BAND_EVERY / 2) < 0.5)
+        w.ids[:, y, :][dark] = B.STAINED_CLAY
+        w.dat[:, y, :][dark] = 9
+        w.ids[:, y, :][pale] = B.CLAY
+        w.dat[:, y, :][pale] = 0
