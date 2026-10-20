@@ -219,6 +219,9 @@ class Look:
     def timber(self, role):
         return (B.SPRUCE_FENCE, 0) if role == "post" else (B.PLANKS, 1)
 
+    def rim(self, team):
+        return (B.STAINED_CLAY, 14) if team == 0 else (B.STAINED_CLAY, 11)
+
     def light(self):
         return (B.GLOWSTONE, 0)
 

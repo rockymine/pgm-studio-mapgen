@@ -6,7 +6,7 @@ The town lives in the cuts: brick works stand in them, a market keeps each forec
 lies in black patches on the orange ground above.
 
 **`scripts/plan.py` is the board.** Every cut, depth, wall, building, seam, spoil heap, ladder, tunnel, stall, lamp
-and objective is stated there for team green, and team purple's half is its half turn about the middle. `look.py`
+and objective is stated there for team red, and team blue's half is its half turn about the middle. `look.py`
 says what each part is made of. `gen.py`, `mapxml.py`, `renders.py` and `walk.py` read the two and decide nothing
 they state.
 
@@ -90,7 +90,7 @@ each spawn with the other team's spawn closed, as PGM closes it.
 |---|---|
 | its flag at the passage | 46 |
 | its flag at the boiler house, the forecourt | 83, 73 |
-| its own monument | 110 for green, 114 for purple |
+| its own monument | 110 for red, 114 for blue |
 | the enemy flag at the passage, the boiler house, the forecourt | 298, 297, 267 |
 | the enemy monument | 263 |
 
@@ -126,6 +126,11 @@ it, so no cut is narrowed to a jump.
 **At a face's foot the rock is hollowed two or three high in places.** Panelled
 walls, and the rock within reach of a ladder, door, stall, lamp, tunnel mouth, flag post or plated seam, are left
 straight.
+
+**A team's colour runs round the foot of every wall on its half.** Where the floor meets a wall, the floor's edge
+course is red clay on red's half and blue clay on blue's, the half split at the board's middle line. It follows the
+floor into the hollows under the rock, and it stops where a side opens into a tunnel or a doorway rather than a
+wall. A plated seam keeps its plates.
 
 **Thin beds run through the stone.** Every eight blocks a dark bed of cyan clay, and halfway between two of them a
 pale bed of clay, each a block thick, leaning a little with the crust and broken where a noise field is low. They

@@ -40,18 +40,18 @@ x0, z0, x1, z1 = P.SPAWN_BOX
 spawn_box = Box(x0, YS - 8, z0, x1, YS + 1, z1)
 OBJECTIVES = Objectives(Teams(*P.TEAMS), P.SYM)
 OBJECTIVES.add(Observer((150, YS + 30, 70), yaw=0, pitch=60))
-OBJECTIVES.add(Spawn("green-team", (P.SPAWN_AT[0], YS - 8, P.SPAWN_AT[1]), yaw=270, kit="spawn-kit",
+OBJECTIVES.add(Spawn("red-team", (P.SPAWN_AT[0], YS - 8, P.SPAWN_AT[1]), yaw=270, kit="spawn-kit",
                      area=spawn_box))
-OBJECTIVES.add(Flag("green-flag", "Green Flag", "green",
+OBJECTIVES.add(Flag("red-flag", "Red Flag", "red",
                     [(name, (x, YS + d, z), 270) for name, (x, z), d in P.FLAG_POSTS],
-                    shared=False, points_rate=0, respawn_time="10s", team="green-team"), name="Purple Flag", color="purple")
+                    shared=False, points_rate=0, respawn_time="10s", team="red-team"), name="Blue Flag", color="blue")
 mx, mz = P.MONUMENT
-OBJECTIVES.add(Destroyable("green-monument", "Green Monument", "green-team", Box(mx, P.monument_y(), mz, mx + 1, P.monument_y() + 1, mz + 1)),
-               name="Purple Monument")
+OBJECTIVES.add(Destroyable("red-monument", "Red Monument", "red-team", Box(mx, P.monument_y(), mz, mx + 1, P.monument_y() + 1, mz + 1)),
+               name="Blue Monument")
 # a net is the capturing team's own spawn, taking the other team's flag: written for each team by hand, because
 # its flag is the other team's and an image would carry the flag id with the wrong team
-OBJECTIVES.add(Net("purple-net", "purple-team", "green-flag", spawn_box.image(P.SYM)), mirror=False)
-OBJECTIVES.add(Net("green-net", "green-team", "purple-flag", spawn_box), mirror=False)
+OBJECTIVES.add(Net("blue-net", "blue-team", "red-flag", spawn_box.image(P.SYM)), mirror=False)
+OBJECTIVES.add(Net("red-net", "red-team", "blue-flag", spawn_box), mirror=False)
 
 M = Map("Seamworks", "0.1.0",
         f"Destroy the enemy monument, or carry their flag into your spawn {P.CAPTURES} times.", ["dtm", "ctf"],

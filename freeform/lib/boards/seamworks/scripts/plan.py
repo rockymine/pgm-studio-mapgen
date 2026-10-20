@@ -1,5 +1,5 @@
 """Seamworks, a gray map: the plan every other script reads. Plan x is world x and plan y is world z; one unit is a
-block. Team green's half is stated here and team purple's is its half turn about the board's middle.
+block. Team red's half is stated here and team blue's is its half turn about the board's middle.
 
 Depths are blocks below the surface: a floor at depth -10 has its walking level ten blocks under the crust's."""
 import math
@@ -46,7 +46,7 @@ def ground(x, z):
 
 # ---- the cuts: each edge tagged by what holds it. P panels, R raw rock, B a building's face, T a tunnel mouth,
 # O open to the next cut, C a panel wall that gave way --------------------------------------------------------------
-GREEN = [((40, 26), 'C'), ((44, 8), 'R'), ((118, 6), 'R'), ((124, 3), 'P'), ((190, 5), 'B'), ((190, 13), 'T'),
+RED = [((40, 26), 'C'), ((44, 8), 'R'), ((118, 6), 'R'), ((124, 3), 'P'), ((190, 5), 'B'), ((190, 13), 'T'),
          ((190, 21), 'R'), ((187, 29), 'P'), ((147, 28), 'B'), ((147, 48), 'O'), ((138, 48), 'P'), ((138, 28), 'P'),
          ((100, 28), 'R'), ((100, 32), 'P'), ((56, 32), 'P'), ((60, 50), 'R'),
          ((124, 50), 'R'), ((124, 54), 'O'), ((124, 68), 'R'), ((118, 98), 'R'), ((84, 98), 'P'), ((74, 102), 'T'),
@@ -63,7 +63,7 @@ def turned(cut):
     return [(R(p), t) for p, t in cut]
 
 
-CUTS = [GREEN, turned(GREEN), MIDDLE, PASSAGE, turned(PASSAGE)]
+CUTS = [RED, turned(RED), MIDDLE, PASSAGE, turned(PASSAGE)]
 
 # ---- undug rock standing in the cuts ------------------------------------------------------------------------------
 RIB1 = [(66, 15), (102, 14), (104, 18), (99, 20.5), (68, 20)]
@@ -179,7 +179,7 @@ _LADDERS_HALF = [((80, 31), "s"), ((82, 50), "n"), ((40, 108), "s")]
 LADDERS = _LADDERS_HALF + [((W - 1 - x, H - 1 - z), turn_dir(d)) for (x, z), d in _LADDERS_HALF]
 
 # ---- play ----------------------------------------------------------------------------------------------------------
-TEAMS = (("green-team", "Green", "dark green"), ("purple-team", "Purple", "dark purple"))
+TEAMS = (("red-team", "Red", "red"), ("blue-team", "Blue", "blue"))
 SPAWN_BOX = (7, 21, 16, 44)              # the back of the hall: x0, z0, x1, z1; the rest of the hall is open
 SPAWN_AT = (11, 32)
 FLAG_POSTS = [("passage", (22, 71), -8), ("boiler house", (9, 106), -11), ("forecourt", (52, 80), -8)]

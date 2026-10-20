@@ -217,6 +217,11 @@ eligible = [(x, z) for x, z in cells(floor & ~ramp) if (x, z) not in near and (x
 worn = A.wear(w, eligible, feet, lambda x, z: 2 if L._at(L.WEAR, x, z) > 0.8 else 1 if L._at(L.WEAR, x, z) > 0.66
               else 0, LOOK)
 
+# ---- the team's rim: the floor's edge against every wall, red on red's half and blue on blue's -----------------------
+floor_y = {c: feet(*c) for c in cells(floor)}
+floor_y.update(hollowed)
+rimmed = A.rim(w, floor_y, lambda x, z: 0 if x < P.W / 2 else 1, LOOK, skip=plated)
+
 # ---- the market and the lamps ----------------------------------------------------------------------------------------
 AWNINGS = [12, 8, 7]                       # brown, light grey and grey wool, white stripes
 for k, ((x, z), facing) in enumerate(P.STALLS):
@@ -236,11 +241,11 @@ from mapxml import OBJECTIVES  # noqa: E402
 OBJECTIVES.stamp(w)
 for team, (x, z), d in ((0, P.FLAG_POSTS[0][1], P.FLAG_POSTS[0][2]),
                         (1, (P.W - 1 - P.FLAG_POSTS[0][1][0], P.H - 1 - P.FLAG_POSTS[0][1][1]), P.FLAG_POSTS[0][2])):
-    w.banner(x, YS + d, z, 15 - DYES["green" if team == 0 else "purple"], rot=12 if team == 0 else 4)
+    w.banner(x, YS + d, z, 15 - DYES["red" if team == 0 else "blue"], rot=12 if team == 0 else 4)
 
 w.save(sys.argv[1], "Seamworks", (P.SPAWN_AT[0], YS - 8, P.SPAWN_AT[1]))
 print("generated", int(floor.sum()), "floor columns,", len(claims), "panel blocks,", worn, "worn,", len(jutted),
-      "jutting over the floor,", len(hollowed), "hollowed at a face's foot")
+      "jutting over the floor,", len(hollowed), "hollowed at a face's foot,", rimmed, "rim blocks")
 print("panels left out where two walls met, by the middle of their foot:")
 for i in dropped:
     a, b = quads[i][0], quads[i][1]

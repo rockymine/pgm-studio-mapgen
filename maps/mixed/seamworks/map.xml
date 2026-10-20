@@ -28,20 +28,20 @@
         </kit>
     </kits>
     <teams>
-        <team id="green-team" color="dark green" max="8">Green</team>
-        <team id="purple-team" color="dark purple" max="8">Purple</team>
+        <team id="red-team" color="red" max="8">Red</team>
+        <team id="blue-team" color="blue" max="8">Blue</team>
     </teams>
     <filters>
-        <team id="only-green">green-team</team>
-        <not id="not-green">
-            <team>green-team</team>
+        <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
         </not>
-        <team id="only-purple">purple-team</team>
-        <not id="not-purple">
-            <team>purple-team</team>
+        <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
         </not>
-        <carrying-flag id="green-flag-carrier">green-flag</carrying-flag>
-        <carrying-flag id="purple-flag-carrier">purple-flag</carrying-flag>
+        <carrying-flag id="red-flag-carrier">red-flag</carrying-flag>
+        <carrying-flag id="blue-flag-carrier">blue-flag</carrying-flag>
         <not id="block-place-void-filter">
             <void/>
         </not>
@@ -70,54 +70,54 @@
                 <point>150.5,78,70.5</point>
             </region>
         </default>
-        <spawn team="green-team" kit="spawn-kit" yaw="270">
+        <spawn team="red-team" kit="spawn-kit" yaw="270">
             <region>
                 <point>11.5,40,32.5</point>
             </region>
         </spawn>
-        <spawn team="purple-team" kit="spawn-kit" yaw="90">
+        <spawn team="blue-team" kit="spawn-kit" yaw="90">
             <region>
                 <point>288.5,40,107.5</point>
             </region>
         </spawn>
     </spawns>
     <regions>
-        <cuboid min="7,40,21" max="17,50,45" id="green-spawn"/>
-        <apply enter="only-green" region="green-spawn" message="You may not enter the enemy spawn!"/>
-        <apply block="never" region="green-spawn" message="You may not build in a spawn!"/>
-        <cuboid min="283,40,95" max="293,50,119" id="purple-spawn"/>
-        <apply enter="only-purple" region="purple-spawn" message="You may not enter the enemy spawn!"/>
-        <apply block="never" region="purple-spawn" message="You may not build in a spawn!"/>
-        <cuboid min="109,53,38" max="111,55,40" id="green-monument-region"/>
-        <cuboid min="189,53,100" max="191,55,102" id="purple-monument-region"/>
-        <cuboid min="283,40,95" max="293,50,119" id="purple-net-region"/>
-        <cuboid min="7,40,21" max="17,50,45" id="green-net-region"/>
+        <cuboid min="7,40,21" max="17,50,45" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="283,40,95" max="293,50,119" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="109,53,38" max="111,55,40" id="red-monument-region"/>
+        <cuboid min="189,53,100" max="191,55,102" id="blue-monument-region"/>
+        <cuboid min="283,40,95" max="293,50,119" id="blue-net-region"/>
+        <cuboid min="7,40,21" max="17,50,45" id="red-net-region"/>
         <apply block-place="block-place-void-filter" block-break="block-break-void-filter" message="You may not edit the void!"/>
     </regions>
     <flags>
-        <flag id="green-flag" name="Green Flag" color="green" shared="false" points-rate="0" owner="green-team">
+        <flag id="red-flag" name="Red Flag" color="red" shared="false" points-rate="0" owner="red-team">
             <post return-time="0s" respawn-time="10s">
                 <post name="passage" yaw="270">22.5,40,71.5</post>
                 <post name="boiler house" yaw="270">9.5,37,106.5</post>
                 <post name="forecourt" yaw="270">52.5,40,80.5</post>
             </post>
         </flag>
-        <flag id="purple-flag" name="Purple Flag" color="purple" shared="false" points-rate="0" owner="purple-team">
+        <flag id="blue-flag" name="Blue Flag" color="blue" shared="false" points-rate="0" owner="blue-team">
             <post return-time="0s" respawn-time="10s">
                 <post name="passage" yaw="90">277.5,40,68.5</post>
                 <post name="boiler house" yaw="90">290.5,37,33.5</post>
                 <post name="forecourt" yaw="90">247.5,40,59.5</post>
             </post>
         </flag>
-        <net id="purple-net" owner="purple-team" flags="green-flag" points="1" region="purple-net-region"/>
-        <net id="green-net" owner="green-team" flags="purple-flag" points="1" region="green-net-region"/>
+        <net id="blue-net" owner="blue-team" flags="red-flag" points="1" region="blue-net-region"/>
+        <net id="red-net" owner="red-team" flags="blue-flag" points="1" region="red-net-region"/>
     </flags>
     <score>
         <limit>3</limit>
     </score>
     <destroyables>
-        <destroyable id="green-monument" name="Green Monument" owner="green-team" materials="obsidian" completion="100%" mode-changes="true" region="green-monument-region"/>
-        <destroyable id="purple-monument" name="Purple Monument" owner="purple-team" materials="obsidian" completion="100%" mode-changes="true" region="purple-monument-region"/>
+        <destroyable id="red-monument" name="Red Monument" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-monument-region"/>
+        <destroyable id="blue-monument" name="Blue Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-monument-region"/>
     </destroyables>
     <maxbuildheight>78</maxbuildheight>
     <time>20m</time>

@@ -440,7 +440,7 @@ def rock_faces(w, floor_cells, feet, keep_out, lean, notch, look, reach=3, open_
         for y in range(h, top + 1):
             w.set(x, y, z, *w.get(s[0], y, s[1]))
         jutted.add((x, z))
-    hollowed = set()
+    hollowed = {}
     for c, (f, (a, b)) in faces.items():
         v = notch(*c)
         if v < 0.62:
@@ -452,5 +452,24 @@ def rock_faces(w, floor_cells, feet, keep_out, lean, notch, look, reach=3, open_
                 continue
             w.column(x, z, f, f + high - 1, B.AIR)
             w.set(x, f - 1, z, *look.cut_floor(x, z))
-            hollowed.add((x, z))
+            hollowed[(x, z)] = f
     return jutted, hollowed
+
+
+def rim(w, floor_y, side_of, look, skip=frozenset()):
+    """A course of the floor set in the team's colour wherever the floor meets a wall: every floor column beside a
+    column that is solid where a player would stand. `floor_y` maps a column to its walking level, `side_of(x, z)`
+    names whose half it is in, and a column in `skip` (a plate, a trench) keeps its own floor. Returns how many."""
+    laid = 0
+    for (x, z), f in floor_y.items():
+        if (x, z) in skip:
+            continue
+        for a, b in DIRS.values():
+            n = (x + a, z + b)
+            if n in floor_y:
+                continue
+            if w.id(n[0], f, n[1]) != B.AIR or w.id(n[0], f + 1, n[1]) != B.AIR:
+                w.set(x, f - 1, z, *look.rim(side_of(x, z)))
+                laid += 1
+                break
+    return laid
