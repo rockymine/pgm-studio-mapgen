@@ -224,7 +224,7 @@ def seam_trench(w, cells, seam_y, look):
     seam_y = max(seam_y, 3)
     open_cells = {(x, z) for x, z, _ in cells}
     for x, z, top in cells:
-        w.column(x, z, seam_y + 1, top, B.AIR)
+        w.column(x, z, seam_y + 1, top - 1, B.AIR)                       # the plates' own course is the strip's
         w.set(x, seam_y, z, B.LAVA)
         w.column(x, z, seam_y - 2, seam_y - 1, *look.seam(x, seam_y - 1, z))
     for x, z, top in cells:
