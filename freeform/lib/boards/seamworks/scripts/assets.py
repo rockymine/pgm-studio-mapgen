@@ -282,18 +282,18 @@ def fallen_panel(w, a, b, n, reach, h0, h1, floor_y, is_floor, look):
 
 # ---- the seam -------------------------------------------------------------------------------------------------------
 def seam_trench(w, cells, seam_y, look):
-    """A trench under plates down to the seam: lava at its foot, its rock scorched near the heat. `cells` is
-    [(x, z, top)] with top the course the plates lie in."""
-    seam_y = max(seam_y, 3)
+    """A trench under plates down to the seam: lava two deep at its foot on bedrock, its rock scorched near the heat.
+    `cells` is [(x, z, top)] with top the course the plates lie in."""
+    seam_y = max(seam_y, 2)
     open_cells = {(x, z) for x, z, _ in cells}
     for x, z, top in cells:
         w.column(x, z, seam_y + 1, top - 1, B.AIR)                       # the plates' own course is the strip's
-        w.set(x, seam_y, z, B.LAVA)
-        w.column(x, z, seam_y - 2, seam_y - 1, *look.seam(x, seam_y - 1, z))
+        w.column(x, z, seam_y - 1, seam_y, B.LAVA)
+        w.column(x, z, 0, seam_y - 2, B.BEDROCK)
     for x, z, top in cells:
         for a, b in DIRS.values():
             if (x + a, z + b) not in open_cells:
-                for y in range(seam_y, min(seam_y + 4, top)):
+                for y in range(seam_y - 1, min(seam_y + 4, top)):
                     if w.id(x + a, y, z + b) != B.AIR:
                         w.set(x + a, y, z + b, *look.seam(x + a, y, z + b))
 

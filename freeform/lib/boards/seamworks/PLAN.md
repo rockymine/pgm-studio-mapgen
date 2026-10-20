@@ -38,7 +38,7 @@ the lanes: two in the forecourt and quarry, one in the middle, one south of the 
 
 ## What is played for
 
-**Destroy the monument and capture the flag.** The monument is two by two by two, floating three over the crust at
+**Destroy the monument and capture the flag.** The monument is two by two by two of end stone, floating three over the crust at
 (109, 38). The flag starts in the passage between the hall and the boiler house and comes back to one of three posts,
 drawn at random: the passage, the boiler house or the forecourt.
 
@@ -46,6 +46,10 @@ drawn at random: the passage, the boiler house or the forecourt.
 capture; that rule is a placeholder until the author decides it.
 
 ## The ground and the buildings
+
+**The board is no deeper than it needs.** The surface level is y 22, so the deepest floor, the middle's at -13,
+stands on nine courses of stone over the bedrock, and the seam's lava lies two deep on the bedrock under every plated
+strip.
 
 **The crust rises and falls by up to seven blocks.** Its height is rough noise from two under the surface level to
 five over it, made symmetric under the half turn. Cut floors keep their depths from the surface level, so a cut is a block deeper
@@ -167,8 +171,10 @@ course is red clay on red's half and blue clay on blue's, the half split at the 
 floor into the hollows under the rock, and it stops where a side opens into a tunnel or a doorway rather than a
 wall. A plated seam keeps its plates.
 
-**Thin beds run through the stone.** Every eight blocks a dark bed of cyan clay, and halfway between two of them a
-pale bed of clay, each a block thick, leaning a little with the crust and broken where a noise field is low. They
+**Beds run through the stone.** Every ten blocks a dark bed of cyan clay, and halfway between two of them a pale
+bed of clay, each two blocks thick, leaning a little with the crust and broken where a noise field is low. Each
+bed's edge courses are dithered into the stone, the pale bed's through light grey clay, so a bed fades rather than
+stops. They
 show in the faces of the cuts and the standing rock, never on a top a player walks on, and the stone's own mix of
 stone, andesite and cobblestone is left as it was.
 

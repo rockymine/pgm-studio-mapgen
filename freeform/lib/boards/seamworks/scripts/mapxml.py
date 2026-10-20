@@ -11,6 +11,7 @@ from dataclasses import dataclass, replace
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 
 import plan as P  # noqa: E402
+from pgmvox import B  # noqa: E402
 from pgmvox.play.mapxml import E  # noqa: E402
 from pgmvox.play.objectives import Box, Destroyable, Flag, Objective, Objectives, Observer, Spawn, Teams  # noqa: E402
 from pgmvox.play.rules import Build, Item, Kit, Map, Match, Spawner, terrain_of  # noqa: E402
@@ -46,7 +47,8 @@ OBJECTIVES.add(Flag("red-flag", "Red Flag", "red",
                     [(name, (x, YS + d, z), 270) for name, (x, z), d in P.FLAG_POSTS],
                     shared=False, points_rate=0, respawn_time="10s", team="red-team"), name="Blue Flag", color="blue")
 mx, mz = P.MONUMENT
-OBJECTIVES.add(Destroyable("red-monument", "Red Monument", "red-team", Box(mx, P.monument_y(), mz, mx + 1, P.monument_y() + 1, mz + 1)),
+OBJECTIVES.add(Destroyable("red-monument", "Red Monument", "red-team", Box(mx, P.monument_y(), mz, mx + 1, P.monument_y() + 1, mz + 1),
+                           material=(B.END_STONE, 0), materials="end stone"),
                name="Blue Monument")
 # a net is the capturing team's own spawn, taking the other team's flag: written for each team by hand, because
 # its flag is the other team's and an image would carry the flag id with the wrong team

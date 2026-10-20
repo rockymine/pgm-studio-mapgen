@@ -67,48 +67,48 @@
     <spawns>
         <default yaw="0" pitch="60">
             <region>
-                <point>150.5,78,70.5</point>
+                <point>150.5,52,70.5</point>
             </region>
         </default>
         <spawn team="red-team" kit="spawn-kit" yaw="270">
             <region>
-                <point>11.5,40,32.5</point>
+                <point>11.5,14,32.5</point>
             </region>
         </spawn>
         <spawn team="blue-team" kit="spawn-kit" yaw="90">
             <region>
-                <point>288.5,40,107.5</point>
+                <point>288.5,14,107.5</point>
             </region>
         </spawn>
     </spawns>
     <regions>
-        <cuboid min="7,40,21" max="17,50,45" id="red-spawn"/>
+        <cuboid min="7,14,21" max="17,24,45" id="red-spawn"/>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
         <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
-        <cuboid min="283,40,95" max="293,50,119" id="blue-spawn"/>
+        <cuboid min="283,14,95" max="293,24,119" id="blue-spawn"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
         <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
-        <cuboid min="109,53,38" max="111,55,40" id="red-monument-region"/>
-        <cuboid min="189,53,100" max="191,55,102" id="blue-monument-region"/>
-        <cuboid min="149,37,69" max="151,39,71" id="golden-apple"/>
-        <cuboid min="145,37,65" max="154,41,74" id="golden-apple-near"/>
-        <cuboid min="283,40,95" max="293,50,119" id="blue-net-region"/>
-        <cuboid min="7,40,21" max="17,50,45" id="red-net-region"/>
+        <cuboid min="109,27,38" max="111,29,40" id="red-monument-region"/>
+        <cuboid min="189,27,100" max="191,29,102" id="blue-monument-region"/>
+        <cuboid min="149,11,69" max="151,13,71" id="golden-apple"/>
+        <cuboid min="145,11,65" max="154,15,74" id="golden-apple-near"/>
+        <cuboid min="283,14,95" max="293,24,119" id="blue-net-region"/>
+        <cuboid min="7,14,21" max="17,24,45" id="red-net-region"/>
         <apply block-place="block-place-void-filter" block-break="block-break-void-filter" message="You may not edit the void!"/>
     </regions>
     <flags>
         <flag id="red-flag" name="Red Flag" color="red" shared="false" points-rate="0" owner="red-team">
             <post return-time="0s" respawn-time="10s">
-                <post name="passage" yaw="270">22.5,40,71.5</post>
-                <post name="boiler house" yaw="270">9.5,37,106.5</post>
-                <post name="forecourt" yaw="270">52.5,40,80.5</post>
+                <post name="passage" yaw="270">22.5,14,71.5</post>
+                <post name="boiler house" yaw="270">9.5,11,106.5</post>
+                <post name="forecourt" yaw="270">52.5,14,80.5</post>
             </post>
         </flag>
         <flag id="blue-flag" name="Blue Flag" color="blue" shared="false" points-rate="0" owner="blue-team">
             <post return-time="0s" respawn-time="10s">
-                <post name="passage" yaw="90">277.5,40,68.5</post>
-                <post name="boiler house" yaw="90">290.5,37,33.5</post>
-                <post name="forecourt" yaw="90">247.5,40,59.5</post>
+                <post name="passage" yaw="90">277.5,14,68.5</post>
+                <post name="boiler house" yaw="90">290.5,11,33.5</post>
+                <post name="forecourt" yaw="90">247.5,14,59.5</post>
             </post>
         </flag>
         <net id="blue-net" owner="blue-team" flags="red-flag" points="1" region="blue-net-region"/>
@@ -118,15 +118,15 @@
         <limit>3</limit>
     </score>
     <destroyables>
-        <destroyable id="red-monument" name="Red Monument" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-monument-region"/>
-        <destroyable id="blue-monument" name="Blue Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-monument-region"/>
+        <destroyable id="red-monument" name="Red Monument" owner="red-team" materials="end stone" completion="100%" mode-changes="true" region="red-monument-region"/>
+        <destroyable id="blue-monument" name="Blue Monument" owner="blue-team" materials="end stone" completion="100%" mode-changes="true" region="blue-monument-region"/>
     </destroyables>
     <spawners>
         <spawner spawn-region="golden-apple" player-region="golden-apple-near" delay="45s" max-entities="1">
             <item material="golden apple"/>
         </spawner>
     </spawners>
-    <maxbuildheight>78</maxbuildheight>
+    <maxbuildheight>52</maxbuildheight>
     <time>20m</time>
     <block-drops>
         <rule>
@@ -152,7 +152,7 @@
         <item>leather chestplate</item>
         <item>chainmail leggings</item>
         <item>iron boots</item>
-        <item>obsidian</item>
+        <item>end stone</item>
         <item>banner</item>
         <item>sapling</item>
         <item>apple</item>

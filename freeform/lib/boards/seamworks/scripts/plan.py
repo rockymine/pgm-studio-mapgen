@@ -15,8 +15,8 @@ from pgmvox.geom.noise import fbm  # noqa: E402
 from pgmvox.plan.raster import Symmetry  # noqa: E402
 
 W, H = 300, 140
-YS = 48                                  # the surface's walking level; its top block is YS - 1
-SEAM_Y = YS - 20                         # the seam's lava, under every plated strip
+YS = 22                                  # the surface's walking level; its top block is YS - 1
+SEAM_Y = YS - 20                         # the seam's lava, two deep on the bedrock under every plated strip
 LIP = 2                                  # how far a panel's top stands over the ground behind it
 CRUST_RISE = (-2, 5)                     # the crust's height about YS, low and high, in whole blocks
 SYM = Symmetry("half", axis=(149.5, 69.5))

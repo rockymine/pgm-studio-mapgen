@@ -300,7 +300,7 @@ class Look:
 LOOK = Look(panels="layered with green wool", crust="badlands and soot")
 
 
-BAND_EVERY = 8                            # blocks from one dark bed to the next through the stone
+BAND_EVERY = 10                           # blocks from one dark bed to the next through the stone
 BAND_WOBBLE = _field(14, 71)
 BAND_GAPS = _field(6, 72)
 
@@ -323,15 +323,22 @@ def paint_rock(w, look=LOOK):
         andesite = stone & ~cob & (a0 + grain < 0.42)
         w.ids[:, y, :][cob] = B.COBBLE
         w.dat[:, y, :][andesite] = 5
-        # thin beds through the stone, leaning a little with the crust and broken where the noise is low: a dark bed
-        # of cyan clay and, between those, a pale bed of clay
+        # beds through the stone, leaning a little with the crust and broken where the noise is low: a dark bed of
+        # cyan clay two thick, and between two of them a pale bed of clay two thick; each bed's edge courses are
+        # dithered into the stone, the pale one's through light grey clay, so a bed fades rather than stops
         level = y - lean + BAND_WOBBLE[XI, ZI] * 2.2
-        whole = BAND_GAPS[(XI + y * 5) % W, ZI] > 0.3
+        whole = BAND_GAPS[(XI + y * 5) % W, ZI] > 0.25
         if y + 1 < w.sy:
             whole &= w.ids[:, y + 1, :] != B.AIR             # a bed shows in a face, never on a rock's top
-        dark = stone & whole & (np.mod(level, BAND_EVERY) < 1)
-        pale = stone & whole & (np.abs(np.mod(level, BAND_EVERY) - BAND_EVERY / 2) < 0.5)
+        d = np.mod(level, BAND_EVERY)
+        speck = ((XI * 73856093) ^ (y * 19349663) ^ (ZI * 83492791)) % 100 < 45
+        dark = stone & whole & ((d < 2) | (((d < 3) | (d >= BAND_EVERY - 1)) & speck))
+        mid = BAND_EVERY / 2 + 1
+        pale = stone & whole & ~dark & (np.abs(d - mid) < 1)
+        fade = stone & whole & ~dark & ~pale & (np.abs(d - mid) < 2) & speck
         w.ids[:, y, :][dark] = B.STAINED_CLAY
         w.dat[:, y, :][dark] = 9
         w.ids[:, y, :][pale] = B.CLAY
         w.dat[:, y, :][pale] = 0
+        w.ids[:, y, :][fade] = B.STAINED_CLAY
+        w.dat[:, y, :][fade] = 8
