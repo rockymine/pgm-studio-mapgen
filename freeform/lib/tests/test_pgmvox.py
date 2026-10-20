@@ -1095,6 +1095,139 @@ class LayerDocument(unittest.TestCase):
             self.assertEqual(int(np.nonzero(w.ids[i, :, k])[0].max()), int(lvl[i, k]) // 2 + int(lvl[i, k]) % 2)
 
 
+class LayerLevels(unittest.TestCase):
+    """Levels, surfaces and carves: a board on more than one floor, each floor laid, painted and dressed apart."""
+
+    @staticmethod
+    def doc(ground=(), **parts):
+        out = {"board": {"x": [-24, 23], "z": [-24, 23], "floor": 40, "height": 96, "seed": 1},
+               "ground": [{"id": "all", "op": "outline", "box": [-24, -24, 23, 23]},
+                          {"id": "flat", "op": "base", "height": 40}] + list(ground)}
+        out.update(parts)
+        return out
+
+    @staticmethod
+    def level(at=(0, 0), r=10, floor=60, **extra):
+        return dict({"id": "top", "floor": floor,
+                     "ground": [{"id": "rim", "op": "outline", "area": {"circle": {"at": list(at), "r": r}}},
+                                {"id": "deck", "op": "base", "height": floor}],
+                     "underside": {"taper": [3, 0.2], "clear": 4}}, **extra)
+
+    @staticmethod
+    def build(doc):
+        from pgmvox.document import layers as document
+        return document.build(doc)
+
+    def test_a_base_without_terms_builds(self):
+        b = self.build(self.doc())
+        self.assertEqual(b.H.shape, (48, 48))
+        self.assertTrue((b.H == 40).all())
+
+    def test_a_level_keeps_the_ground_under_it(self):
+        b = self.build(self.doc(levels=[self.level()]))
+        w, ground, top = b.world, b.surface("ground"), b.surface("top")
+        self.assertEqual(int((top.top >= 0).sum()), int((np.hypot(b.X, b.Z) < 10).sum()))
+        for x, z in ((0, 0), (5, -3), (-7, 4)):
+            self.assertEqual(w.id(x, 40, z), B.GRASS)                         # the ground under it stands
+            self.assertEqual(w.id(x, 60, z), B.GRASS)                         # and the level over it
+            self.assertEqual(w.id(x, 45, z), B.AIR)                           # with air between
+            ceiling = int(ground.ceiling[x + 24, z + 24])
+            self.assertTrue(45 < ceiling <= 57)
+            self.assertNotEqual(w.id(x, ceiling, z), B.AIR)
+            self.assertEqual(w.id(x, ceiling - 1, z), B.AIR)
+
+    def test_a_level_rests_where_the_ground_reaches_it(self):
+        hill = {"id": "hill", "op": "mound", "mode": "lift", "rise": 18, "power": 3,
+                "areas": [{"circle": {"at": [8, 0], "r": 9}}]}
+        b = self.build(self.doc([hill], levels=[self.level()]))
+        ground, top = b.surface("ground"), b.surface("top")
+        rests = (top.top >= 0) & (ground.top < 0)
+        self.assertGreater(int(rests.sum()), 20)
+        hangs = (top.top >= 0) & ~rests
+        self.assertGreaterEqual(int((ground.ceiling - ground.top - 1)[hangs].min()), 4)   # headroom where it hangs
+        i, k = np.argwhere(rests)[0]
+        self.assertTrue((b.world.ids[i, 1:61, k] != 0).all())               # solid from the ground to the level
+        step = next(s for s in b.steps if s.stage == "levels")
+        self.assertEqual(step.level, "top")
+        self.assertIn(f"rests on {int(rests.sum())} columns", step.note)
+
+    def test_a_level_is_painted_by_its_own_layers(self):
+        b = self.build(self.doc(paint=[{"block": "SAND"}], levels=[self.level(paint=[{"block": "GRAVEL"}])]))
+        self.assertEqual(b.world.id(0, 40, 0), B.SAND)
+        self.assertEqual(b.world.id(0, 60, 0), B.GRAVEL)
+        self.assertEqual(b.world.id(20, 40, 20), B.SAND)
+
+    def test_an_arch_publishes_its_deck_and_trees_keep_off_it(self):
+        ridges = {"id": "ridges", "op": "mound", "mode": "lift", "rise": 14, "power": 2,
+                  "areas": [{"circle": {"at": [-14, 0], "r": 9}}, {"circle": {"at": [14, 0], "r": 9}}]}
+        arch = {"id": "arch", "op": "arch", "line": {"pts": [[-14, 0], [14, 0]], "spline": False}, "width": 5,
+                "deck": [54, 53, 2], "thick": [3, 8, 1.5]}
+        trees = {"id": "wood", "op": "trees", "area": {"board": {}}, "kinds": {"oak": 1}, "tries": 400, "seed": 2,
+                 "clear": 0}
+        b = self.build(self.doc([ridges], volume=[arch], dress=[trees]))
+        deck = b.surface("arch")
+        self.assertEqual(deck.kind, "deck")
+        self.assertEqual(int(deck.top[24, 24]), 54)                          # the crown
+        self.assertEqual(b.world.id(0, 54, 0), B.GRASS)
+        self.assertTrue(all(b.world.id(0, y, 0) == B.AIR for y in range(41, 51)))   # air under it
+        self.assertLess(int(b.surface("ground").ceiling[24, 24]), 54)
+        for i, k in np.argwhere(deck.top >= 0):
+            self.assertNotIn(b.world.ids[i, deck.top[i, k] + 1, k], (B.LOG, B.LOG2))
+
+    def test_a_tunnel_opens_at_its_mouth_and_is_roofed_inside(self):
+        hill = {"id": "hill", "op": "mound", "mode": "lift", "rise": 20, "power": 3,
+                "areas": [{"circle": {"at": [0, 0], "r": 16}}]}
+        face = {"id": "face", "op": "level", "mode": "cut", "top": 40, "inner": 1.0, "outer": 1.04,
+                "areas": [{"rect": [6, -24, 23, 23]}]}
+        cave = {"id": "cave", "op": "tunnel", "mouths": [0], "pts": [[8, 41, 0, 2.6], [0, 36, 0, 3.0]]}
+        b = self.build(self.doc([hill, face], carve=[cave]))
+        w = b.world
+        self.assertTrue(all(w.id(9, y, 0) == B.AIR for y in range(41, 60)))    # open to the sky outside
+        self.assertEqual(w.id(5, 41, 0), B.AIR)                                # into the face
+        self.assertTrue(any(w.id(5, y, 0) != B.AIR for y in range(42, 60)))    # under a roof
+        self.assertEqual(w.id(0, 36, 0), B.AIR)                                # down to its last floor
+        self.assertNotEqual(w.id(0, 35, 0), B.AIR)
+        self.assertEqual(int(b.surface("cave").top[24, 24]), 35)
+
+    def rooms(self, **extra):
+        return dict({"id": "hold", "op": "rooms",
+                     "rooms": [{"id": "a", "rect": [-16, -3, -10, 3], "floor": 20, "h": 5},
+                               {"id": "b", "rect": [8, -3, 14, 3], "floor": 24, "h": 5}],
+                     "halls": [{"from": "a", "to": "b", "via": "x", "width": 3, "h": 4}]}, **extra)
+
+    def test_rooms_hold_their_floors_and_halls_climb_by_stairs(self):
+        b = self.build(self.doc(carve=[self.rooms()]))
+        w, floor = b.world, b.surface("hold").top
+        self.assertTrue((floor[-16 + 24:-10 + 25, -3 + 24:3 + 25] == 19).all())
+        self.assertTrue((floor[8 + 24:14 + 25, -3 + 24:3 + 25] == 23).all())
+        on = floor >= 0
+        pair = on[1:, :] & on[:-1, :]
+        self.assertLessEqual(int(np.abs(np.diff(floor, axis=0))[pair].max()), 1)
+        self.assertEqual(int((w.ids == B.STONEBRICK_STAIRS).sum()), 4 * 3)  # a rise of four, three wide
+        self.assertEqual(w.id(-13, 22, -4), B.STONEBRICK)                     # a lined wall
+        self.assertEqual(w.id(-13, 19, 0), B.STONEBRICK)                      # a lined floor
+        with self.assertRaises(ValueError):
+            short = self.rooms()
+            short["rooms"][1].update(rect=[-6, -3, 0, 3], floor=30)
+            self.build(self.doc(carve=[short]))
+
+    def test_dressing_a_cave_never_touches_a_room(self):
+        hall = {"id": "hall", "op": "chamber", "at": [-13, 20, 10], "rx": 6, "h": 6, "dress": {"seed": 3}}
+        b = self.build(self.doc(carve=[self.rooms(), hall]))
+        lining = b.world.ids[-16 + 24:-10 + 25, 19, -3 + 24:3 + 25]
+        self.assertTrue((lining == B.STONEBRICK).all())
+        self.assertGreater(int((b.world.ids == B.GRAVEL).sum()), 0)           # the cave beside it was dressed
+
+    def test_symmetry_turns_the_surfaces(self):
+        half = {"id": "half", "op": "half", "keep": {"lt": ["x", 0]}}
+        b = self.build(self.doc(levels=[self.level(at=(-12, 0), r=6)], symmetry=[half]))
+        top = b.surface("top").top
+        self.assertEqual(int(top[-12 + 24, 0 + 24]), 60)
+        self.assertEqual(int(top[11 + 24, -1 + 24]), 60)                      # (-12, 0) under the half turn
+        self.assertEqual(b.world.id(11, 60, -1), B.GRASS)
+        self.assertEqual(int((top >= 0).sum()), 2 * int((np.hypot(b.X + 12, b.Z) < 6).sum()))
+
+
 class Routes(unittest.TestCase):
 
     def test_half_steps_never_rise_more_than_half_a_block_and_hold_their_ends(self):
