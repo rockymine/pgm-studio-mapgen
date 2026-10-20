@@ -1,8 +1,8 @@
 # Seamworks — plan
 
-**Seamworks is a dig under poisoned air.** Trenches eight to thirteen blocks deep are held back by rusting steel
+**Seamworks is a dig under poisoned air.** Trenches eight to thirteen blocks deep are held back by dark steel
 panels leaned against the cut, rock that would not cut is left standing, and a hot seam runs under plated floors.
-The town lives in the cuts: works of banded concrete stand in them, a market keeps each forecourt, and the ash
+The town lives in the cuts: brick works stand in them, a market keeps each forecourt, and the ash
 lies on everything above.
 
 **`scripts/plan.py` is the board.** Every cut, depth, wall, building, seam, spoil heap, ladder, tunnel, stall, lamp
@@ -62,8 +62,8 @@ and up to two blocks over the surface. The quad is sampled every fifth of a bloc
 through its thickness, and the wedge between the wall line and its face is cleared.
 
 **A wall is cut into panels ten to seventeen long, half a block apart.** Each wall's lean is drawn once and each
-panel varies it by a degree and a half at either end, so a run reads as one wall with uneven tops. Alternate
-panels lean toward different shades of rust so the runs can be counted.
+panel varies it by a degree and a half at either end, so a run reads as one wall with uneven tops. A panel
+stands a rib every third block and a cap along its top, so the runs can be counted.
 
 **Where two panels reach the same block, it belongs to the one whose foot is nearer.** Two walls meeting at a corner
 lean into the same wedge of earth, and the rule gives them a mitre along the corner's bisector instead of two
@@ -95,20 +95,27 @@ each spawn with the other team's spawn closed, as PGM closes it.
 
 ## The look
 
-**Three families and an accent.** The ground is grey: the rock of the cuts is stone and andesite with cobblestone
-under a third, and the ash of the crust is cyan clay, the one neutral grey the clays have, with patches of black
-and of grey clay. What was built is white clay concrete. The steel is rust, brown and hardened clay with streaks
-of orange. The accent is the hazard stripe in yellow and black round every door, with the seam's lava in its
-netherrack.
+**Every asset is built by one function and judged on a sheet before the map gets it.** `scripts/assets.py` builds each
+form (a works building, a panel wall, a plated seam, spoil, a fallen panel, a timbered drift, a ladder bay, a flight,
+a worn floor) and asks a look what each block is by the role it plays: a panel's plate, rib, cap or edge, a
+building's wall, corner, band, sill, cornice or parapet. `scripts/sheet.py` lines the assets up on a flat crust,
+panel palettes and building palettes side by side, and draws them in the game's textures into `renders/sheet/`.
 
-**A works building is banded by its storeys.** Light grey clay marks each storey's slab on the outside, stands at
-every corner and rings the roof as a parapet. Windows are iron bars, two high, every fourth block where the wall
-faces air. The hall's roof carries skylights, the boiler house a brick chimney over its furnaces and coal, and the
-pump house a small stack.
+**The sheet settled three choices.** The panels are dark steel: dark prismarine plates between polished andesite
+ribs under a smooth stone cap, the one palette of six that stood apart from both the grey rock and the red brick.
+The works are brick, with nether brick at the corners and the base and smooth stone at each storey's band, the
+sills and the cornice. The crust is gravel ash, gravel and andesite with soot patches of black clay; flat clay read
+as dead ground.
+
+**The rest of the ground is grey and was not varied.** The rock of the cuts is stone and andesite with cobblestone
+under a third, a cut floor is stone, andesite and gravel a third each, its lumps cobblestone, a flight stone brick.
+Spoil is dirt and coarse dirt, the seam's rock netherrack. Nothing that falls stands over air.
 
 **The town's dressing is placed, not scattered.** Three stalls stand against the forecourt's rock, out of the flag's
 way, and lamps on nether-brick posts stand against the walls of the routes. The drift tunnels are timbered every
-six blocks with spruce posts and a beam. The board's rim is bedrock to the surface and barrier above it.
+six blocks with spruce posts and a beam. The boiler house holds furnaces and coal under a brick chimney.
+
+**The board ends at its edge.** There is no rim: the crust runs to the board's last column and the world stops there.
 
 ## Open
 

@@ -27,3 +27,12 @@ render.cutaway(w, os.path.join(out, "10-cutaway-a.png"), [(142, 0), (142, 114)],
                title="A-A' down the slot, x 142")
 render.cutaway(w, os.path.join(out, "11-cutaway-b.png"), [(0, 56), (174, 56)], P.YS - 24, P.YS + 6, 6,
                title="B-B' across green's side, z 56")
+
+# with the 1.8.9 client jar in MINECRAFT_JAR, the same places in the game's own textures
+if os.environ.get("MINECRAFT_JAR"):
+    shots = [("40-green-back-corner.png", (0, P.YS - 12, 10, 64, P.YS + 22, 128), 225, 30),
+             ("41-green-crust-and-quarry.png", (52, P.YS - 12, 22, 132, P.YS + 6, 100), 200, 34),
+             ("42-the-middle-and-slots.png", (118, P.YS - 15, 24, 182, P.YS + 20, 116), 215, 36),
+             ("43-twin-cut-and-spoil-heap.png", (100, P.YS - 12, 0, 212, P.YS + 18, 34), 160, 32)]
+    print(render.textured(build, [dict(out=os.path.join(out, n), box=b, yaw=yaw, pitch=pitch, fov=55, w=1200, h=800)
+                                  for n, b, yaw, pitch in shots]))
