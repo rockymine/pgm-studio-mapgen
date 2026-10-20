@@ -22,7 +22,7 @@ YS = P.YS
 LOOK = L.LOOK
 DIRS = A.DIRS
 
-w = World(0, 0, P.W, P.H, sy=YS + 40)
+w = World(-P.MARGIN, -P.MARGIN, P.W + 2 * P.MARGIN, P.H + 2 * P.MARGIN, sy=YS + 40)
 X, Z = w.grid()
 CX, CZ = X + 0.5, Z + 0.5
 
@@ -75,7 +75,7 @@ for z_ in P.ZONES:
     (lp, ld), (hp, hd) = z_[1], z_[2]
     vx, vz = hp[0] - lp[0], hp[1] - lp[1]
     run = math.hypot(vx, vz)
-    t = ((CX - lp[0]) * vx + (CZ - lp[1]) * vz) / (run * run) + L.STEP * 1.4 / run
+    t = ((CX - lp[0]) * vx + (CZ - lp[1]) * vz) / (run * run) + L.STEP[np.clip(X, 0, P.W - 1), np.clip(Z, 0, P.H - 1)] * 1.4 / run
     depth[m] = (ld + (hd - ld) * np.clip(t, 0, 1))[m]
     ramp[m] = True
     uphill[m] = (vx, vz)
@@ -83,6 +83,21 @@ for rock in P.ROCKS:
     depth[mask(rock)] = np.nan
 D = np.where(np.isnan(depth), 0, np.floor(depth + 0.5)).astype(int)
 floor = ~np.isnan(depth)
+
+# ---- the outline: the land pushed out past the rectangle and pulled in from it, kept clear of what was dug and built ---
+from scipy.ndimage import binary_dilation  # noqa: E402
+from pgmvox.geom.noise import fbm  # noqa: E402
+
+edge = np.minimum.reduce([CX, P.W - CX, CZ, P.H - CZ])
+wobble = fbm(X.shape, 26, 3, seed=81)
+wobble = (wobble + wobble[::-1, ::-1]) / 2
+wobble = (wobble - wobble.min()) / (wobble.max() - wobble.min()) * 2 - 1
+built = floor.copy()
+for _, poly, _, _ in P.BUILDINGS:
+    built |= mask(poly)
+land = (edge + wobble * P.OUTLINE > 0) | binary_dilation(built, iterations=P.OUTLINE_KEEP)
+w.ids.transpose(0, 2, 1)[~land] = B.AIR
+w.dat.transpose(0, 2, 1)[~land] = 0
 
 
 def is_floor(x, z):
@@ -222,6 +237,24 @@ floor_y = {c: feet(*c) for c in cells(floor)}
 floor_y.update(hollowed)
 rimmed = A.rim(w, floor_y, lambda x, z: 0 if x < P.W / 2 else 1, LOOK, skip=plated)
 
+# ---- huts, the spawner's dais, and the chevrons -------------------------------------------------------------------------
+hut_cells = set()
+for (length, depth_, facing, (hx, hz)), team in P.HUTS:
+    hut_cells |= A.hut(w, hx, hz, length, depth_, facing, feet(hx, hz), LOOK)
+dx, dz, size = P.DAIS
+A.dais(w, dx, dz, size, feet(dx + size // 2, dz + size // 2), LOOK)
+dais_cells = {(x, z) for x in range(dx, dx + size) for z in range(dz, dz + size)}
+ramps = set(cells(ramp))
+
+
+def takes_chevron(x, z):
+    return ((x, z) not in plated and (x, z) not in ramps and (x, z) not in hut_cells and (x, z) not in dais_cells
+            and (x, z) not in building_cells and w.id(x, floor_y[(x, z)], z) == B.AIR)
+
+
+chevroned = sum(A.chevrons(w, tip, way, floor_y, takes_chevron, LOOK, team, count=2, size=3, gap=4)
+                for tip, way, team in P.CHEVRONS)
+
 # ---- the market and the lamps ----------------------------------------------------------------------------------------
 AWNINGS = [12, 8, 7]                       # brown, light grey and grey wool, white stripes
 for k, ((x, z), facing) in enumerate(P.STALLS):
@@ -245,7 +278,7 @@ for team, (x, z), d in ((0, P.FLAG_POSTS[0][1], P.FLAG_POSTS[0][2]),
 
 w.save(sys.argv[1], "Seamworks", (P.SPAWN_AT[0], YS - 8, P.SPAWN_AT[1]))
 print("generated", int(floor.sum()), "floor columns,", len(claims), "panel blocks,", worn, "worn,", len(jutted),
-      "jutting over the floor,", len(hollowed), "hollowed at a face's foot,", rimmed, "rim blocks")
+      "jutting over the floor,", len(hollowed), "hollowed at a face's foot,", rimmed, "rim blocks,", chevroned, "chevron blocks,", int(land.sum()), "columns of land")
 print("panels left out where two walls met, by the middle of their foot:")
 for i in dropped:
     a, b = quads[i][0], quads[i][1]

@@ -20,6 +20,22 @@ into the middle at -13. The twin cut runs along the team's own long edge, two ch
 the enemy's drift tunnel. The drift tunnel runs from the forecourt into the enemy's twin cut, with an unfinished
 branch that ends in a ladder up to the surface beside the side cut's ladder.
 
+**The land's edge is not the rectangle.** A smooth noise pushes the edge up to eleven blocks out past the 300 by 140
+rectangle and pulls it up to eleven in, the same on both halves, and never comes within six blocks of anything dug or
+built. Past the edge is void, and the cliff there shows the orange beds over the stone.
+
+**The middle holds the golden apple.** A dais eight across stands square on the board's centre at the middle's floor:
+a step of stairs all round, a plinth, four nether-brick posts and a slab canopy lit underneath. A golden apple appears
+on the plinth every forty-five seconds while a player stands within four blocks, one at a time.
+
+**Each side has three huts, placed against a wall with open floor in front.** One is eight by five at the gap in the
+twin cut's rib, one six by four against the forecourt's north rock, and one eight by five at the far end of the
+team's tunnel exit. A hut is dark oak posts and spruce plank walls three high under a gable roof of dark oak stairs,
+with a window in each gable end and a table and a chest inside.
+
+**Chevrons in the team's colour point the way toward the other side.** Seven pairs on each half, set into the floor of
+the lanes: two in the forecourt and quarry, one in the middle, one south of the mesa, and three along the twin cut.
+
 ## What is played for
 
 **Destroy the monument and capture the flag.** The monument is two by two by two, floating three over the crust at
@@ -144,15 +160,15 @@ tried on the sheet first.
 
 **The floor players walk on is stone, not the crust's ground.** A cut floor is a noise mix of stone and andesite with polished
 andesite and cobblestone in patches, so it is told apart from the crust over it. Its lumps are cobblestone and a
-flight is stone brick. Spoil is the overburden broken, red sand, red sandstone and coarse dirt, and the
-seam's rock is netherrack. Nothing that falls stands over
+flight is stone brick. Spoil is heaped soot, black clay and charred boards in coarse dirt and podzol, dark against the
+orange, and the seam's rock is netherrack. Nothing that falls stands over
 air.
 
 **The town's dressing is placed, not scattered.** Three stalls stand against the forecourt's rock, out of the flag's
 way, and lamps on nether-brick posts stand against the walls of the routes. The drift tunnels are timbered every
 six blocks with spruce posts and a beam. The boiler house holds furnaces and coal under a brick chimney.
 
-**The board ends at its edge.** There is no rim: the crust runs to the board's last column and the world stops there.
+**The board ends at its outline.** There is no rim: past the land's edge is void.
 
 ## Open
 

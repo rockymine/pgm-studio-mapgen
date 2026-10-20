@@ -90,6 +90,8 @@
         <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
         <cuboid min="109,53,38" max="111,55,40" id="red-monument-region"/>
         <cuboid min="189,53,100" max="191,55,102" id="blue-monument-region"/>
+        <cuboid min="149,37,69" max="151,39,71" id="golden-apple"/>
+        <cuboid min="145,37,65" max="154,41,74" id="golden-apple-near"/>
         <cuboid min="283,40,95" max="293,50,119" id="blue-net-region"/>
         <cuboid min="7,40,21" max="17,50,45" id="red-net-region"/>
         <apply block-place="block-place-void-filter" block-break="block-break-void-filter" message="You may not edit the void!"/>
@@ -119,6 +121,11 @@
         <destroyable id="red-monument" name="Red Monument" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-monument-region"/>
         <destroyable id="blue-monument" name="Blue Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-monument-region"/>
     </destroyables>
+    <spawners>
+        <spawner spawn-region="golden-apple" player-region="golden-apple-near" delay="45s" max-entities="1">
+            <item material="golden apple"/>
+        </spawner>
+    </spawners>
     <maxbuildheight>78</maxbuildheight>
     <time>20m</time>
     <block-drops>

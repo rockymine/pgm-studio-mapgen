@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 import plan as P  # noqa: E402
 from pgmvox.play.mapxml import E  # noqa: E402
 from pgmvox.play.objectives import Box, Destroyable, Flag, Objective, Objectives, Observer, Spawn, Teams  # noqa: E402
-from pgmvox.play.rules import Build, Item, Kit, Map, Match, terrain_of  # noqa: E402
+from pgmvox.play.rules import Build, Item, Kit, Map, Match, Spawner, terrain_of  # noqa: E402
 
 YS = P.YS
 
@@ -50,6 +50,11 @@ OBJECTIVES.add(Destroyable("red-monument", "Red Monument", "red-team", Box(mx, P
                name="Blue Monument")
 # a net is the capturing team's own spawn, taking the other team's flag: written for each team by hand, because
 # its flag is the other team's and an image would carry the flag id with the wrong team
+dx, dz, size = P.DAIS
+apple_y = P.YS - 13 + 2                   # the block over the dais' plinth, on the middle's floor at -13
+OBJECTIVES.add(Spawner("golden-apple", (dx + size // 2 - 1, apple_y, dz + size // 2 - 1), [("golden apple", 1)],
+                       delay=P.APPLE_DELAY, box=Box(dx + size // 2 - 1, apple_y, dz + size // 2 - 1, dx + size // 2,
+                                                    apple_y + 1, dz + size // 2)), mirror=False)
 OBJECTIVES.add(Net("blue-net", "blue-team", "red-flag", spawn_box.image(P.SYM)), mirror=False)
 OBJECTIVES.add(Net("red-net", "red-team", "blue-flag", spawn_box), mirror=False)
 

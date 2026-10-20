@@ -40,8 +40,9 @@ CRUST = _crust()
 
 
 def ground(x, z):
-    """The walking level of the crust at a column: YS plus its noise; YS off the board."""
-    return YS + int(CRUST[x, z]) if 0 <= x < W and 0 <= z < H else YS
+    """The walking level of the crust at a column: YS plus its noise, carried on past the board's rectangle from its
+    nearest edge."""
+    return YS + int(CRUST[min(max(x, 0), W - 1), min(max(z, 0), H - 1)])
 
 
 # ---- the cuts: each edge tagged by what holds it. P panels, R raw rock, B a building's face, T a tunnel mouth,
@@ -265,3 +266,32 @@ COAL = _COAL_HALF + [(W - 1 - x, H - 1 - z) for x, z in _COAL_HALF]
 _CHIMNEYS_HALF = [("boiler house", (7, 113, 9, 115), 9), ("pump house", (149, 34, 150, 35), 5)]
 CHIMNEYS = _CHIMNEYS_HALF + [(n, (W - 1 - x1, H - 1 - z1, W - 1 - x0, H - 1 - z0), h)
                              for n, (x0, z0, x1, z1), h in _CHIMNEYS_HALF]
+
+
+# ---- the outline: the land's edge pushed out past the rectangle and pulled in from it by up to OUTLINE blocks, never
+# nearer than KEEP to anything dug or built --------------------------------------------------------------------------
+MARGIN = 14                              # how far past the rectangle the world reaches
+OUTLINE = 11
+OUTLINE_KEEP = 6
+
+# ---- the middle: a dais for the golden apple spawner, square on the board's centre ---------------------------------
+DAIS = (146, 66, 8)                      # its corner and size: 146..153 by 66..73, about the centre 149.5, 69.5
+APPLE_DELAY = "45s"
+
+# ---- huts: (length, depth, the side its door faces, corner) for red, turned for blue ---------------------------------
+_HUTS_HALF = [(8, 5, "n", (104, 22)), (6, 4, "s", (60, 51)), (8, 5, "s", (133, 113))]
+
+
+def _turn_hut(h):
+    length, depth, facing, (x0, z0) = h
+    lx, lz = (length, depth) if facing in ("n", "s") else (depth, length)
+    return (length, depth, turn_dir(facing), (W - x0 - lx, H - z0 - lz))
+
+
+HUTS = [(h, 0) for h in _HUTS_HALF] + [(_turn_hut(h), 1) for h in _HUTS_HALF]
+
+# ---- chevrons on the floor, pointing from a team's spawn toward the other: (tip, the way they point), red's, turned
+_CHEVRONS_HALF = [((46, 66), (1, -0.1)), ((108, 52), (1, 0.15)), ((138, 64), (1, 0.45)), ((110, 93), (1, -0.15)),
+                  ((86, 25), (1, 0)), ((126, 24), (1, 0)), ((124, 10), (1, 0))]
+CHEVRONS = [(tip, way, 0) for tip, way in _CHEVRONS_HALF] + \
+           [((W - tip[0], H - tip[1]), (-way[0], -way[1]), 1) for tip, way in _CHEVRONS_HALF]

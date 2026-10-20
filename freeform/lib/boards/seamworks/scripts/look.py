@@ -9,6 +9,7 @@ import numpy as np
 
 import plan as P
 from pgmvox import B
+from pgmvox.core.orient import stair as stair_data_
 from pgmvox.geom.noise import fbm
 
 W, H = P.W, P.H
@@ -194,8 +195,8 @@ class Look:
         return (B.STONEBRICK_STAIRS, data)
 
     def spoil(self, x, y, z):
-        """What the cuts threw out: the orange ground, broken."""
-        return [(B.SAND, 1), (B.DIRT, 1), (B.RED_SANDSTONE, 0), (B.SAND, 1)][(x * 3 + z * 5 + y * 7) % 4]
+        """What the cuts threw out, heaped: the crust's soot, black clay and charred boards in coarse dirt and podzol."""
+        return pick([((B.STAINED_CLAY, 15), 4), ((B.PLANKS, 5), 2), ((B.DIRT, 1), 2), ((B.DIRT, 2), 2)], x, y, z)
 
     def seam(self, x, y, z):
         return (B.NETHERRACK, 0)
@@ -219,6 +220,18 @@ class Look:
     def timber(self, role):
         return (B.SPRUCE_FENCE, 0) if role == "post" else (B.PLANKS, 1)
 
+    def hut(self, x, y, z, role, up=None):
+        if role == "roof":
+            return (B.DARK_OAK_STAIRS, stair_data_(up))
+        return {"post": (B.LOG2, 1), "wall": (B.PLANKS, 1), "gable": (B.PLANKS, 1), "ridge": (B.WOOD_SLAB, 5),
+                "window": (B.IRON_BARS, 0), "table": (B.CRAFTING, 0)}[role]
+
+    def dais(self, x, y, z, role, up=None):
+        if role == "step":
+            return (B.STONEBRICK_STAIRS, stair_data_(up))
+        return {"deck": (B.STONEBRICK, 0), "plinth": (B.STONE, 6), "post": (B.NETHER_FENCE, 0),
+                "canopy": (B.SLAB, 5 | 8), "light": (B.GLOWSTONE, 0)}[role]
+
     def rim(self, team):
         return (B.STAINED_CLAY, 14) if team == 0 else (B.STAINED_CLAY, 11)
 
@@ -240,7 +253,7 @@ def paint_rock(w, look=LOOK):
     zs = np.arange(w.z0, w.z0 + w.sz) % H
     XI, ZI = np.meshgrid(xs, zs, indexing="ij")
     a0 = ROCK_A[XI, ZI] * 0.7
-    lean = P.CRUST[XI, ZI] * 0.6
+    lean = P.CRUST[np.clip(np.arange(w.x0, w.x0 + w.sx), 0, W - 1)][:, np.clip(np.arange(w.z0, w.z0 + w.sz), 0, H - 1)] * 0.6
     for y in range(1, w.sy):
         layer = w.ids[:, y, :]
         stone = (layer == B.STONE) & (w.dat[:, y, :] == 0)

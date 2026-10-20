@@ -172,6 +172,17 @@ for i, z in enumerate((z0 + 5, z0 + 11)):
 props.lamp(w, x0 + 20, YS - 9, z0 + 4, height=3, post=(B.NETHER_FENCE, 0), cap=(B.SLAB, 3))
 shot("town-drift-stall-lamp.png", (x0 - 1, YS - 9, z0 - 1, x0 + 40, YS + 3, z0 + 27))
 
+# huts in two sizes, and the spawner's dais, on a cut floor
+x0, z0 = 180, 120
+cut([(x0, z0), (x0 + 40, z0), (x0 + 40, z0 + 26), (x0, z0 + 26)], -8, look, "RRRR")
+A.hut(w, x0 + 3, z0 + 3, 6, 4, "s", YS - 8, look)
+A.hut(w, x0 + 12, z0 + 2, 8, 5, "s", YS - 8, look)
+A.dais(w, x0 + 26, z0 + 12, 8, YS - 8, look)
+floor_y = {c: YS - 8 for c in A.poly_cells([(x0, z0), (x0 + 40, z0), (x0 + 40, z0 + 26), (x0, z0 + 26)])}
+A.chevrons(w, (x0 + 12, z0 + 19), (1, 0), floor_y, lambda x, z: True, look, 0)
+A.chevrons(w, (x0 + 14, z0 + 23), (-1, 0.4), floor_y, lambda x, z: True, look, 1)
+shot("huts-dais-chevrons.png", (x0 - 1, YS - 9, z0 - 1, x0 + 41, YS + 3, z0 + 27), yaw=200, pitch=35)
+
 build = sys.argv[1]
 w.save(build, "Seamworks assets", (10, YS, 10))
 out = sys.argv[2] if len(sys.argv) > 2 else None

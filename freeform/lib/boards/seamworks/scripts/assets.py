@@ -473,3 +473,104 @@ def rim(w, floor_y, side_of, look, skip=frozenset()):
                 laid += 1
                 break
     return laid
+
+
+# ---- huts, the spawner's dais, chevrons ---------------------------------------------------------------------------------
+def hut(w, x0, z0, length, depth, facing, base, look):
+    """A hut on a floor at `base`: `length` along its ridge, `depth` across, its door in the middle of the long side
+    that faces `facing` ("n", "s", "e" or "w"). Log posts at the corners, plank walls three high, a gable roof of
+    stairs over an overhang of one along the long sides, a window in each gable end, a table and a chest inside. The
+    look is asked for "post", "wall", "gable", "roof" (a stair), "ridge", "window", "table" and "chest"."""
+    along_x = facing in ("n", "s")
+    lx, lz = (length, depth) if along_x else (depth, length)
+    x1, z1 = x0 + lx - 1, z0 + lz - 1
+    for x in range(x0, x1 + 1):
+        for z in range(z0, z1 + 1):
+            edge = x in (x0, x1) or z in (z0, z1)
+            corner = x in (x0, x1) and z in (z0, z1)
+            for y in range(base, base + 3):
+                if corner:
+                    w.set(x, y, z, *look.hut(x, y, z, "post"))
+                elif edge:
+                    w.set(x, y, z, *look.hut(x, y, z, "wall"))
+                else:
+                    w.set(x, y, z, B.AIR)
+    # the roof across the depth, rising to a ridge along the length; the gable ends filled under it
+    span = (z0 - 1, z1 + 1) if along_x else (x0 - 1, x1 + 1)
+    width = span[1] - span[0] + 1
+    for k in range(width):
+        rise = min(k, width - 1 - k)
+        y = base + 3 + rise
+        up = (0, 1) if k < width / 2 else (0, -1)
+        if not along_x:
+            up = (1, 0) if k < width / 2 else (-1, 0)
+        middle = width % 2 == 1 and k == width // 2
+        for j in range((x0 if along_x else z0), (x1 if along_x else z1) + 1):
+            x, z = (j, span[0] + k) if along_x else (span[0] + k, j)
+            w.set(x, y, z, *(look.hut(x, y, z, "ridge") if middle else look.hut(x, y, z, "roof", up)))
+        for end in ((x0, x1) if along_x else (z0, z1)):
+            x, z = (end, span[0] + k) if along_x else (span[0] + k, end)
+            if (z0 <= z <= z1) if along_x else (x0 <= x <= x1):
+                for yy in range(base + 3, y):
+                    w.set(x, yy, z, *look.hut(x, yy, z, "gable"))
+    # the door and the windows
+    mid = (x0 + x1) // 2 if along_x else (z0 + z1) // 2
+    door = {"n": (mid, z0), "s": (mid, z1), "w": (x0, mid), "e": (x1, mid)}[facing]
+    w.column(door[0], door[1], base, base + 1, B.AIR)
+    for end in ((x0, x1) if along_x else (z0, z1)):
+        wx, wz = (end, (z0 + z1) // 2) if along_x else ((x0 + x1) // 2, end)
+        w.set(wx, base + 1, wz, *look.hut(wx, base + 1, wz, "window"))
+    inside = (x0 + 1, z0 + 1) if facing in ("s", "e") else (x1 - 1, z1 - 1)
+    w.set(inside[0], base, inside[1], *look.hut(inside[0], base, inside[1], "table"))
+    other = (x1 - 1, z0 + 1) if facing in ("s", "w") else (x0 + 1, z1 - 1)
+    w.chest(other[0], base, other[1], [], facing={"n": 2, "s": 3, "w": 4, "e": 5}[facing])
+    return {(x, z) for x in range(x0, x1 + 1) for z in range(z0, z1 + 1)}
+
+
+def dais(w, x0, z0, size, base, look):
+    """A square dais `size` across on a floor at `base`, centred where an item spawns: a step of stairs all round, a
+    raised plinth, four posts at its corners carrying a slab canopy with a light under it. Returns the block the
+    item spawns over (the plinth's middle) as (x0, y, z0, x1, z1) of the four middle cells."""
+    x1, z1 = x0 + size - 1, z0 + size - 1
+    for x in range(x0, x1 + 1):
+        for z in range(z0, z1 + 1):
+            ring = x in (x0, x1) or z in (z0, z1)
+            if ring:
+                face = (0, -1) if z == z0 else (0, 1) if z == z1 else (-1, 0) if x == x0 else (1, 0)
+                w.set(x, base, z, *look.dais(x, base, z, "step", (-face[0], -face[1])))
+            else:
+                w.set(x, base, z, *look.dais(x, base, z, "deck"))
+    px0, pz0, px1, pz1 = x0 + 2, z0 + 2, x1 - 2, z1 - 2
+    for x in range(px0, px1 + 1):
+        for z in range(pz0, pz1 + 1):
+            w.set(x, base + 1, z, *look.dais(x, base + 1, z, "plinth"))
+    for x, z in ((px0, pz0), (px0, pz1), (px1, pz0), (px1, pz1)):
+        for y in range(base + 2, base + 5):
+            w.set(x, y, z, *look.dais(x, y, z, "post"))
+    for x in range(px0 - 1, px1 + 2):
+        for z in range(pz0 - 1, pz1 + 2):
+            w.set(x, base + 5, z, *look.dais(x, base + 5, z, "canopy"))
+    cx, cz = (px0 + px1) // 2, (pz0 + pz1) // 2
+    for x in (cx, cx + 1):
+        for z in (cz, cz + 1):
+            w.set(x, base + 4, z, *look.dais(x, base + 4, z, "light"))
+    return (cx, base + 2, cz, cx + 1, cz + 1)
+
+
+def chevrons(w, at, forward, floor_y, ok, look, team, count=2, size=2, gap=3):
+    """Chevrons set into a floor, `count` of them one behind the other, pointing along `forward`: each a V `size` out
+    each side, its arms a block and a half thick, in the team's colour where `ok(x, z)` lets the floor take it."""
+    fx, fz = forward
+    n = math.hypot(fx, fz)
+    fx, fz = fx / n, fz / n
+    laid = 0
+    for k in range(count):
+        tx, tz = at[0] - fx * k * gap, at[1] - fz * k * gap
+        for x in range(math.floor(tx - size - 3), math.ceil(tx + size + 3) + 1):
+            for z in range(math.floor(tz - size - 3), math.ceil(tz + size + 3) + 1):
+                u = (x + .5 - tx) * fx + (z + .5 - tz) * fz
+                v = -(x + .5 - tx) * fz + (z + .5 - tz) * fx
+                if abs(v) <= size + .5 and -1.6 < u + abs(v) <= 0 and (x, z) in floor_y and ok(x, z):
+                    w.set(x, floor_y[(x, z)] - 1, z, *look.rim(team))
+                    laid += 1
+    return laid

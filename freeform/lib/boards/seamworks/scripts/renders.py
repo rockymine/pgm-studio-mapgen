@@ -34,8 +34,10 @@ if os.environ.get("MINECRAFT_JAR"):
              ("41-red-crust-and-quarry.png", (52, P.YS - 12, 22, 132, P.YS + 6, 100), 200, 34),
              ("42-the-middle-and-slots.png", (118, P.YS - 15, 24, 182, P.YS + 20, 116), 215, 36),
              ("43-twin-cut-and-spoil-heap.png", (100, P.YS - 12, 0, 212, P.YS + 18, 34), 160, 32),
-             ("full-from-south-east.png", (0, P.YS - 24, 0, P.W, P.YS + 40, P.H), 210, 38),
-             ("full-from-north-west.png", (0, P.YS - 24, 0, P.W, P.YS + 40, P.H), 30, 38),
-             ("full-from-above.png", (0, P.YS - 24, 0, P.W, P.YS + 40, P.H), 180, 80)]
+             ("full-from-south-east.png", (-P.MARGIN, 0, -P.MARGIN, P.W + P.MARGIN, P.YS + 40, P.H + P.MARGIN), 210, 38),
+             ("full-from-north-west.png", (-P.MARGIN, 0, -P.MARGIN, P.W + P.MARGIN, P.YS + 40, P.H + P.MARGIN), 30, 38),
+             ("45-the-middle-and-its-dais.png", (122, P.YS - 18, 40, 178, P.YS + 10, 100), 215, 34),
+             ("46-red-forecourt-and-hut.png", (30, P.YS - 12, 40, 90, P.YS + 10, 100), 200, 40),
+             ("full-from-above.png", (-P.MARGIN, 0, -P.MARGIN, P.W + P.MARGIN, P.YS + 40, P.H + P.MARGIN), 180, 80)]
     print(render.textured(build, [dict(out=os.path.join(out, n), box=b, yaw=yaw, pitch=pitch, fov=55, w=1200, h=800)
                                   for n, b, yaw, pitch in shots]))
