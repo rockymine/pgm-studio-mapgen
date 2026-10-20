@@ -153,7 +153,7 @@ BUILDINGS = {
                     "cornice": (B.DSLAB, 0), "parapet": (B.SLAB, 6), "roof": _cells_of(ROOF_BLOCKS, 2),
                     "inset": B.BRICK_STAIRS, "plinth": (B.NETHER_BRICK, 0), "plinth inset": B.NETHER_STAIRS,
                     "skylight": (B.GLASS, 0),
-                    "window": (B.IRON_BARS, 0), "sill": (B.DSLAB, 0), "floor": _BUILT_FLOOR,
+                    "window": (B.IRON_BARS, 0), "sill": (B.DSLAB, 8), "floor": _BUILT_FLOOR,
                     "light": (B.GLOWSTONE, 0), "jamb": (B.NETHER_BRICK, 0), "lintel": (B.DSLAB, 0)},
 }
 CHIMNEY = {"stack": (B.STONEBRICK, 0), "ring": (B.STONE, 6), "crown": (B.COBBLE_WALL, 0),

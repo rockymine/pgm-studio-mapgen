@@ -141,7 +141,9 @@ def building(w, poly, base, sections, look, skylights=False):
         a, b = DIRS[side]
         for y in range(base, base + (n - 1) * STOREY + 1):
             w.set(lx, y, lz, B.LADDER, ladder_data((a, b)))
-        w.column(lx + a, lz + b, base, base + (n - 1) * STOREY + 1, *look.building(lx + a, base, lz + b, "wall"))
+        for y in range(base, base + (n - 1) * STOREY + 2):              # a backing where there is no wall already
+            if w.id(lx + a, y, lz + b) == B.AIR:
+                w.set(lx + a, y, lz + b, *look.building(lx + a, y, lz + b, "wall"))
     return cells
 
 
