@@ -44,7 +44,7 @@ def seg_dist(px, pz, a, b):
 def building(w, poly, base, sections, look, skylights=False):
     """A building on a floor at `base` (the walking level of its lowest storey): `sections` as (cells, storeys,
     (ladder cell, wall side)), each section its own height, a ladder through its slabs. The look is asked for
-    "wall", "window band" (the two courses the windows sit in), "corner", "band" (the outside of each slab), "base"
+    "wall", "window band" (the two courses the windows sit in), "plinth" (the lowest storey's foot), "corner", "band" (the outside of each slab), "base"
     (the course under the lowest storey), "cornice" and
     "parapet" (the roof's edge), "roof", "skylight", "floor", "light", "window" and "sill"."""
     cells = poly_cells(poly)
@@ -77,6 +77,23 @@ def building(w, poly, base, sections, look, skylights=False):
                         if (x + z) % 4 != 0:
                             w.set(x, floor_y, z, *look.inset(x, floor_y, z, inward, False))
                         w.set(x, floor_y + 3, z, *look.inset(x, floor_y + 3, z, inward, True))
+                if level == 0 and not corner:
+                    # the lowest storey: a nether-brick plinth, a half-block groove of nether-brick stairs over it,
+                    # and a band two high with its windows in pairs
+                    faces = [(a, b) for a, b in DIRS.values() if storeys.get((x + a, z + b), 0) <= level]
+                    w.set(x, floor_y, z, *look.building(x, floor_y, z, "plinth"))
+                    for y in (floor_y + 2, floor_y + 3):
+                        w.set(x, y, z, *look.building(x, y, z, "window band"))
+                    if len(faces) == 1:
+                        inward = (-faces[0][0], -faces[0][1])
+                        a, b = faces[0]
+                        pair = (x + z) % 6 in (1, 2) and all(w.id(x + a, y, z + b) == B.AIR
+                                                              for y in (floor_y + 2, floor_y + 3))
+                        if pair:
+                            w.set(x, floor_y + 1, z, *look.building(x, floor_y + 1, z, "sill"))
+                            w.column(x, z, floor_y + 2, floor_y + 3, *look.building(x, floor_y + 2, z, "window"))
+                        else:
+                            w.set(x, floor_y + 1, z, *look.plinth_inset(x, floor_y + 1, z, inward))
                 if not corner and (x + z) % 4 == 0 and level > 0:
                     for a, b in DIRS.values():
                         if storeys.get((x + a, z + b), 0) <= level and w.id(x + a, floor_y + 1, z + b) == B.AIR \

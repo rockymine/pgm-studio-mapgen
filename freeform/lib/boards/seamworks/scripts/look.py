@@ -151,7 +151,8 @@ BUILDINGS = {
                     "corner": _courses((B.NETHER_BRICK, 0), (B.STAINED_CLAY, 15)),
                     "band": _cells_of([(B.DSLAB, 0), (B.DSLAB, 8)], 2), "base": (B.NETHER_BRICK, 0),
                     "cornice": (B.DSLAB, 0), "parapet": (B.SLAB, 6), "roof": _cells_of(ROOF_BLOCKS, 2),
-                    "inset": B.BRICK_STAIRS, "skylight": (B.GLASS, 0),
+                    "inset": B.BRICK_STAIRS, "plinth": (B.NETHER_BRICK, 0), "plinth inset": B.NETHER_STAIRS,
+                    "skylight": (B.GLASS, 0),
                     "window": (B.IRON_BARS, 0), "sill": (B.DSLAB, 0), "floor": _BUILT_FLOOR,
                     "light": (B.GLOWSTONE, 0), "jamb": (B.NETHER_BRICK, 0), "lintel": (B.DSLAB, 0)},
 }
@@ -229,6 +230,10 @@ class Look:
     def building(self, x, y, z, role):
         spec = self.Bd[role]
         return spec(x, y, z) if callable(spec) else pick(spec, x, y, z)
+
+    def plinth_inset(self, x, y, z, inward):
+        """A stair over the plinth, its full half inward, so the lowest storey's wall steps back half a block."""
+        return (self.Bd["plinth inset"], stair_data_(inward, False))
 
     def inset(self, x, y, z, inward, upside_down):
         """A stair set into a wall, its full half inward, so the wall's face steps back half a block."""
