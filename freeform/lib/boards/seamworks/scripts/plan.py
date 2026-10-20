@@ -37,6 +37,37 @@ def _crust():
 
 
 CRUST = _crust()
+APRON = 3                                # how far round a building the crust lies level, at the building's own ground
+
+
+def _apron():
+    """Level the crust round each building: within APRON of its walls, every column takes the most common height
+    the crust has along them. A building and its image share the height, so the apron keeps the symmetry."""
+    from collections import Counter
+    near = np.zeros((W, H), bool)
+    for _, poly, _, _ in _BUILDINGS_HALF + [(n, [R(q) for q in pg], d, s) for n, pg, d, s in _BUILDINGS_HALF]:
+        xs = [q[0] for q in poly]; zs = [q[1] for q in poly]
+        cells = [(x, z) for x in range(max(0, int(min(xs)) - APRON), min(W, int(max(xs)) + APRON + 1))
+                 for z in range(max(0, int(min(zs)) - APRON), min(H, int(max(zs)) + APRON + 1))]
+        inside = {c for c in cells if _pip((c[0] + .5, c[1] + .5), poly)}
+        ring = {c for c in cells if c not in inside and any((c[0] + a, c[1] + b) in inside
+                for a in range(-APRON, APRON + 1) for b in range(-APRON, APRON + 1))}
+        level = Counter(int(CRUST[c]) for c in ring).most_common(1)[0][0]
+        for c in ring:
+            CRUST[c] = level
+            near[c] = True
+    return near
+
+
+def _pip(pt, poly):
+    x, y = pt
+    inside = False
+    for i in range(len(poly)):
+        x1, y1 = poly[i]
+        x2, y2 = poly[(i + 1) % len(poly)]
+        if (y1 > y) != (y2 > y) and x < (x2 - x1) * (y - y1) / (y2 - y1) + x1:
+            inside = not inside
+    return inside
 
 
 def ground(x, z):
@@ -81,7 +112,7 @@ STANDING = ROCKS + [_MASS_HALF, [R(p) for p in _MASS_HALF]]
 # (polygon, (low point, low depth), (high point, high depth)): a ramp or a flight of stairs --------------------------
 CUT_DEPTH = {0: -10, 1: -10, 2: -13, 3: -8, 4: -8}
 _ZONES_HALF = [
-    ([(26, 44), (84, 44), (84, 60), (92, 60), (90, 74), (94, 88), (88, 99), (74, 104), (54, 107), (44, 94), (26, 94)], -8),
+    ([(26, 41), (36, 41), (36, 44), (84, 44), (84, 60), (92, 60), (90, 74), (94, 88), (88, 99), (74, 104), (54, 107), (44, 94), (26, 94)], -8),
     ([(36, 26), (57, 26), (57, 44), (36, 44)], ((48, 26), -10), ((48, 38), -8)),          # the link, a ramp
     ([(83.6, 44), (97, 44), (97, 60), (83.6, 60)], ((97, 52), -10), ((84, 52), -8)),      # north of the mesa, a ramp
     ([(65.6, 2), (104.4, 2), (104.4, 15), (65.6, 16)], -12),                              # the sump's trough
@@ -253,11 +284,9 @@ def panels():
     return out
 
 
-# ---- the dressing: a market against the forecourt's rock, lamps along the walls, the boiler house's furnaces -------
+# ---- the dressing: a market against the forecourt's rock, the boiler house's furnaces ------------------------------
 _STALLS_HALF = [((43, 76), "e"), ((44, 82), "e"), ((45, 88), "e")]
 STALLS = _STALLS_HALF + [((W - 1 - x, H - 1 - z), turn_dir(f)) for (x, z), f in _STALLS_HALF]
-_LAMPS_HALF = [(33, 47), (47, 92), (58, 24), (96, 25), (132, 24), (176, 23), (112, 52), (116, 95), (150, 51)]
-LAMPS = _LAMPS_HALF + [(W - 1 - x, H - 1 - z) for x, z in _LAMPS_HALF]
 _FURNACES_HALF = [(5, z) for z in range(95, 104)]               # along the boiler house's west wall, facing in
 FURNACES = [(c, "e") for c in _FURNACES_HALF] + [((W - 1 - x, H - 1 - z), "w") for x, z in _FURNACES_HALF]
 _COAL_HALF = [(x, z) for x in range(7, 11) for z in range(117, 121)]
@@ -295,3 +324,10 @@ _CHEVRONS_HALF = [((46, 66), (1, -0.1)), ((108, 52), (1, 0.15)), ((138, 64), (1,
                   ((86, 25), (1, 0)), ((126, 24), (1, 0)), ((124, 10), (1, 0))]
 CHEVRONS = [(tip, way, 0) for tip, way in _CHEVRONS_HALF] + \
            [((W - tip[0], H - tip[1]), (-way[0], -way[1]), 1) for tip, way in _CHEVRONS_HALF]
+
+
+APRON_MASK = _apron()
+
+
+def on_apron(x, z):
+    return 0 <= x < W and 0 <= z < H and bool(APRON_MASK[x, z])

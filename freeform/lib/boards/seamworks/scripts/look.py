@@ -97,11 +97,20 @@ def _weathered(block):
     return pattern
 
 
+def _layered(block, every=3):
+    """Prismarine in layers of `block`: upright on one panel, level on the next, never a line of the frame inside."""
+    def pattern(info, x, y, z):
+        on = int(info["along"] - 1) % every == every - 1 if info["shade"] == 0 else int(info["up"] - 1) % every == every - 1
+        return block if on else STEEL
+    return pattern
+
+
 PANELS = {"framed": _plain, "framed courses": _courses, "crossed": _crossed, "crossed and diagonal": _diagonal,
           "broken by green clay": _broken_by((B.STAINED_CLAY, 13)),
           "broken by green wool": _broken_by((B.WOOL, 13)),
           "crossed, weathered by green clay": _weathered((B.STAINED_CLAY, 13)),
-          "crossed, weathered by green wool": _weathered((B.WOOL, 13))}
+          "crossed, weathered by green wool": _weathered((B.WOOL, 13)),
+          "layered with green wool": _layered((B.WOOL, 13))}
 
 # ---- the crust: one ground with patches inset in it, as noise stops [core, rim, ground ...] --------------------------
 # a core is sunk a block; the ground is a fine mix of its own blocks
@@ -154,7 +163,7 @@ BUILDINGS = {
                     "inset": B.BRICK_STAIRS, "plinth": (B.NETHER_BRICK, 0), "plinth inset": B.NETHER_STAIRS,
                     "skylight": (B.GLASS, 0),
                     "window": (B.IRON_BARS, 0), "sill": (B.DSLAB, 8), "floor": _BUILT_FLOOR,
-                    "light": (B.GLOWSTONE, 0), "jamb": (B.NETHER_BRICK, 0), "lintel": (B.DSLAB, 0)},
+                    "light": (B.GLOWSTONE, 0), "jamb": (B.NETHER_BRICK, 0), "lintel": (B.STAINED_CLAY, 15)},
 }
 CHIMNEY = {"stack": (B.STONEBRICK, 0), "ring": (B.STONE, 6), "crown": (B.COBBLE_WALL, 0),
            "smoke": [((B.STAINED_GLASS, 8), 3), ((B.STAINED_GLASS, 7), 2), ((B.GLASS, 0), 1)]}
@@ -187,6 +196,8 @@ class Look:
 
     def sunk(self, x, z):
         """How many blocks lower the crust lies here: two in a soot patch's deep core, one in the rest of its core."""
+        if P.on_apron(x, z):
+            return 0
         v = _at(ASH, x, z)
         return 2 if v < DEEP else 1 if v < SOOT else 0
 
@@ -272,7 +283,7 @@ class Look:
         return (B.GLOWSTONE, 0)
 
 
-LOOK = Look(panels="crossed, weathered by green wool", crust="badlands and soot")
+LOOK = Look(panels="layered with green wool", crust="badlands and soot")
 
 
 BAND_EVERY = 8                            # blocks from one dark bed to the next through the stone

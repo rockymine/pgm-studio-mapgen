@@ -221,7 +221,12 @@ def panels(w, quads, base_of, rise_of, is_floor, keep_out, ground, look):
                     cleared.add((math.floor(bx + n[0] * o), y, math.floor(bz + n[1] * o)))
                 for k in np.arange(0, 2.0, 0.4):
                     c = (math.floor(bx + n[0] * (back + k)), y, math.floor(bz + n[1] * (back + k)))
-                    if c not in solid:
+                    if c in solid:
+                        continue
+                    # the block belongs to the panel only if its centre lies within two of the face, measured
+                    # straight back from the face at its own height, so the panel is two thick at any heading
+                    behind = (c[0] + .5 - bx) * n[0] + (c[2] + .5 - bz) * n[1] - back
+                    if 0 <= behind < 2.0:
                         solid[c] = dict(along=s * length, up=t * rise, length=length, rise=rise, shade=shade, k=k)
         solids.append(solid)
         clears.append(cleared)

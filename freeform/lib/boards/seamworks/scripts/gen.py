@@ -124,6 +124,14 @@ for name, poly, d, sections in P.BUILDINGS:
     secs = [({(x, z) for x in range(x0, x1) for z in range(z0, z1)}, n + below, lad)
             for (x0, z0, x1, z1), n, lad in sections]
     building_cells |= A.building(w, poly, YS + d, secs, LOOK, skylights=name == "hall")
+# a building's base carried down to the floor wherever the floor beside its wall lies lower
+for name, poly, d, sections in P.BUILDINGS:
+    cells_ = A.poly_cells(poly)
+    for x, z in cells_:
+        lows = [feet(x + a, z + b) for a, b in DIRS.values() if (x + a, z + b) not in cells_ and is_floor(x + a, z + b)]
+        if lows and min(lows) < YS + d:
+            for y in range(min(lows) - 1, YS + d - 1):
+                w.set(x, y, z, *LOOK.building(x, y, z, "base"))
 for name, line in P.DOORS:
     d = next(dd for n, pg, dd, _ in P.BUILDINGS if n == name and any(A.pip((c[0] + .5, c[1] + .5), pg) for c in line))
     A.door(w, line, YS + d, LOOK)
@@ -179,7 +187,8 @@ for boxes, turned in P.SUMP:
 heaped = set()
 for sp in P.SPOILS:
     if sp["scar"]:
-        A.crust_hollow(w, [c for c in A.poly_cells(sp["scar"]) if on_board(*c) and not is_floor(*c)], ground, LOOK)
+        A.crust_hollow(w, [c for c in A.poly_cells(sp["scar"]) if on_board(*c) and not is_floor(*c)
+                           and not P.on_apron(*c) and c not in building_cells], ground, LOOK)
     heaped |= A.spoil(w, sp["toe"], sp["crest"], sp["peak"], feet, is_floor, LOOK)
 for a, b, reach, turn, h0, h1, is_turned in P.FALLEN:
     cut = [p for p, _ in (P.CUTS[1] if is_turned else P.CUTS[0])]
@@ -227,7 +236,7 @@ def around(points, r):
 
 flag_cells = {c for _, c, _ in P.FLAG_POSTS} | {(P.W - 1 - x, P.H - 1 - z) for _, (x, z), _ in P.FLAG_POSTS}
 spared = (around({c for c, _ in P.LADDERS} | mouths | flag_cells | {c for c, _ in P.STALLS}, 3)
-          | around(set(P.LAMPS) | building_cells | heaped, 2) | around(plated, 1)
+          | around(building_cells | heaped, 2) | around(plated, 1)
           | around({(x, z) for x, _, z in claims}, 2) | {c for c in cells(ramp)}
           | {c for _, line in P.DOORS for c in around(set(line), 3)})
 jutted, hollowed = A.rock_faces(w, list(cells(floor)), feet, lambda x, z: not on_board(x, z) or (x, z) in spared,
@@ -235,7 +244,7 @@ jutted, hollowed = A.rock_faces(w, list(cells(floor)), feet, lambda x, z: not on
                                 LOOK)
 
 # ---- the floor worn, clear of everything a player has to find or stand at --------------------------------------------------
-near = around({c for c, _ in P.LADDERS} | {c for c, _ in P.STALLS} | set(P.LAMPS) | mouths | plated | building_cells
+near = around({c for c, _ in P.LADDERS} | {c for c, _ in P.STALLS} | mouths | plated | building_cells
               | flag_cells, 2)
 eligible = [(x, z) for x, z in cells(floor & ~ramp) if (x, z) not in near and (x, z) not in heaped
             and all(is_floor(x + a, z + b) and feet(x + a, z + b) == feet(x, z) for a, b in DIRS.values())]
@@ -265,12 +274,10 @@ def takes_chevron(x, z):
 chevroned = sum(A.chevrons(w, tip, way, floor_y, takes_chevron, LOOK, team, count=2, size=3, gap=4)
                 for tip, way, team in P.CHEVRONS)
 
-# ---- the market and the lamps ----------------------------------------------------------------------------------------
+# ---- the market ----------------------------------------------------------------------------------------
 AWNINGS = [12, 8, 7]                       # brown, light grey and grey wool, white stripes
 for k, ((x, z), facing) in enumerate(P.STALLS):
     props.stall(w, x, feet(x, z) - 1, z, facing, awning=AWNINGS[k % 3], stripe=0)
-for x, z in P.LAMPS:
-    props.lamp(w, x, feet(x, z) - 1, z, height=3, post=(B.NETHER_FENCE, 0), cap=(B.SLAB, 3))
 
 # ---- nothing that falls stands over air ----------------------------------------------------------------------------------
 for falls, holds in (((B.GRAVEL, 0), (B.STONE, 5)), ((B.SAND, 1), (B.RED_SANDSTONE, 0))):

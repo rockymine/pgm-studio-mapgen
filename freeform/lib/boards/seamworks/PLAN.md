@@ -5,7 +5,7 @@ panels leaned against the cut, rock that would not cut is left standing, and a h
 The town lives in the cuts: brick works stand in them, a market keeps each forecourt, and soot
 lies in black patches on the orange ground above.
 
-**`scripts/plan.py` is the board.** Every cut, depth, wall, building, seam, spoil heap, ladder, tunnel, stall, lamp
+**`scripts/plan.py` is the board.** Every cut, depth, wall, building, seam, spoil heap, ladder, tunnel, stall
 and objective is stated there for team red, and team blue's half is its half turn about the middle. `look.py`
 says what each part is made of. `gen.py`, `mapxml.py`, `renders.py` and `walk.py` read the two and decide nothing
 they state.
@@ -74,8 +74,9 @@ foot and one at its far end, on the spoil that slumped through the gap.
 
 **A panel is a quad leaning back into the earth, solved from its four corners.** Its base is two points on the
 wall line at the floor, its top the same two points carried back by the lean at each end, ten to fourteen degrees,
-and up to two blocks over the surface. The quad is sampled every fifth of a block across its face and two blocks
-through its thickness, and the wedge between the wall line and its face is cleared.
+and up to two blocks over the surface. The quad is sampled every fifth of a block across its face, a block
+belongs to it when its centre lies within two of the face straight back from it, so a panel is two thick at any
+heading, and the wedge between the wall line and its face is cleared.
 
 **A wall is cut into panels ten to seventeen long, half a block apart.** Each wall's lean is drawn once and each
 panel varies it by a degree and a half at either end, so a run reads as one wall with uneven tops. Each panel is
@@ -91,7 +92,7 @@ past the board's edge.
 
 **A cut floor is worn.** Where a noise field rises it carries lumps of cobblestone half a block or a block high. No lump stands more than half a block
 over a neighbour, so the floor is walked without a jump, and none lies on a flight, a plated strip, or within two of
-a building, a ladder, a stall, a lamp, a tunnel mouth or a flag post.
+a building, a ladder, a stall, a tunnel mouth or a flag post.
 
 **A flight's step edges wander.** The height along a ramp is pushed up or down its slope by a noise of a block and a
 half before it is rounded, so each step's edge bends, and a stair faces whichever neighbour one higher lies most
@@ -119,9 +120,9 @@ its role, its wall, window band, corner, band, sill, cornice or parapet. `script
 panel palettes and building palettes side by side, and draws them in the game's textures into `renders/sheet/`.
 
 **The sheet settled the panels in two rounds.** A panel is framed in polished andesite round its edge, so each plane
-reads on its own, and filled with dark prismarine striped in andesite, upright on one panel and level on the next.
-Patches of green wool weather the infill; green clay was tried beside it and barely showed. A smooth stone cap was
-tried first and dropped.
+reads on its own, and filled with dark prismarine laid in layers of green wool every third block, upright on one
+panel and level on the next. No andesite runs inside the frame. Green clay was tried beside the wool and barely
+showed, and a smooth stone cap and andesite stripes were tried and dropped as noise beside the works.
 
 **The works are brick, with a band of hardened clay through the windows' two courses.** Brick stairs under and over
 the band have their full half inward, so the wall steps back half a block on either side of it and the band stands
@@ -130,6 +131,10 @@ proud.
 **The corners, inside angles as well as outside ones, alternate nether brick and black clay by course.** The base is nether brick
 and the roof's rim a nether-brick slab. Each storey's stripe and the cornice are the two smooth stone double slabs mixed in cells of
 two, every sill under a window the smooth one alone, and the roof is the same with light grey wool among them.
+
+**A building stands on level ground.** The crust within three of its walls lies at one height, the one most common
+along them, and no soot is sunk there. Where a floor beside a wall lies lower than the building's own, its nether-
+brick base is carried down to meet it. A door's head is black clay over nether-brick jambs.
 
 **The lowest storey stands on a plinth.** Its foot is a course of nether brick over the base, and a course of
 nether-brick stairs over that steps the wall back half a block. Above them runs the same hardened clay band as the
@@ -154,7 +159,7 @@ unbroken up to the crust, so it leaves no ledge to stand on. It juts only where 
 it, so no cut is narrowed to a jump.
 
 **At a face's foot the rock is hollowed two or three high in places.** Panelled
-walls, and the rock within reach of a ladder, door, stall, lamp, tunnel mouth, flag post or plated seam, are left
+walls, and the rock within reach of a ladder, door, stall, tunnel mouth, flag post or plated seam, are left
 straight.
 
 **A team's colour runs round the foot of every wall on its half.** Where the floor meets a wall, the floor's edge
@@ -185,7 +190,7 @@ orange, and the seam's rock is netherrack. Nothing that falls stands over
 air.
 
 **The town's dressing is placed, not scattered.** Three stalls stand against the forecourt's rock, out of the flag's
-way, and lamps on nether-brick posts stand against the walls of the routes. The drift tunnels are timbered every
+way. The drift tunnels are timbered every
 six blocks with spruce posts and a beam. The boiler house holds furnaces and coal under a brick chimney.
 
 **The board ends at its outline.** There is no rim: past the land's edge is void.

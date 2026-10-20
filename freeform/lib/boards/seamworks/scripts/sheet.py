@@ -164,14 +164,13 @@ A.spoil(w, [(x0, z0 + 4), (x0 + 12, z0 + 6), (x0 + 14, z0 + 13), (x0 + 11, z0 + 
 A.fallen_panel(w, (x0 + 0.4, z0 + 7), (x0 + 0.4, z0 + 15), (1, 0.15), 11, 3, 1, YS - 10, is_floor, look)
 shot("spoil-and-fallen-panel.png", (x0 - 7, YS - 11, z0 - 1, x0 + 31, YS + 3, z0 + 27))
 
-# a drift into the rock, a stall and a lamp at its mouth
+# a drift into the rock, and two stalls at its mouth
 x0 = 136
 cut([(x0, z0), (x0 + 26, z0), (x0 + 26, z0 + 26), (x0, z0 + 26)], -8, look, "PRPP")
 A.bore(w, [(x0 + 26, z0 + 13), (x0 + 50, z0 + 13)], YS - 8, YS - 8, is_floor, look)
 for i, z in enumerate((z0 + 5, z0 + 11)):
     props.stall(w, x0 + 3, YS - 9, z, "e", awning=[12, 8][i], stripe=0)
-props.lamp(w, x0 + 20, YS - 9, z0 + 4, height=3, post=(B.NETHER_FENCE, 0), cap=(B.SLAB, 3))
-shot("town-drift-stall-lamp.png", (x0 - 1, YS - 9, z0 - 1, x0 + 40, YS + 3, z0 + 27))
+shot("town-drift-and-stalls.png", (x0 - 1, YS - 9, z0 - 1, x0 + 40, YS + 3, z0 + 27))
 
 # huts in two sizes, and the spawner's dais, on a cut floor
 x0, z0 = 180, 120
