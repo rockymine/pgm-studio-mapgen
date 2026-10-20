@@ -62,17 +62,18 @@ and up to two blocks over the surface. The quad is sampled every fifth of a bloc
 through its thickness, and the wedge between the wall line and its face is cleared.
 
 **A wall is cut into panels ten to seventeen long, half a block apart.** Each wall's lean is drawn once and each
-panel varies it by a degree and a half at either end, so a run reads as one wall with uneven tops. A panel
-stands a rib every third block and a cap along its top, so the runs can be counted.
+panel varies it by a degree and a half at either end, so a run reads as one wall with uneven tops. Each panel is
+framed and its neighbour striped the other way, so the runs can be counted.
 
-**Where two panels reach the same block, it belongs to the one whose foot is nearer.** Two walls meeting at a corner
-lean into the same wedge of earth, and the rule gives them a mitre along the corner's bisector instead of two
-panels passing through each other. No panel is laid inside a building or past the board's edge.
+**Where two walls meet at an outside corner, the shorter of the two panels there is left out.** Both lean into the
+same wedge of earth, so one is dropped and the rock shows instead of two panels passing through each other: ten on
+the board, five a side, at the slot's two corners, the crust's west tip, the side cut's mouth and the passage's bend.
+Between neighbours on one wall a shared block goes to the nearer foot, and no panel is laid inside a building or
+past the board's edge.
 
 ## The floors and the flights
 
-**A cut floor is worn.** Its top is gravel, stone and andesite a third each in cells of three, and where a noise
-field rises it carries lumps of cobblestone half a block or a block high. No lump stands more than half a block
+**A cut floor is worn.** Where a noise field rises it carries lumps of cobblestone half a block or a block high. No lump stands more than half a block
 over a neighbour, so the floor is walked without a jump, and none lies on a flight, a plated strip, or within two of
 a building, a ladder, a stall, a lamp, a tunnel mouth or a flag post.
 
@@ -97,19 +98,28 @@ each spawn with the other team's spawn closed, as PGM closes it.
 
 **Every asset is built by one function and judged on a sheet before the map gets it.** `scripts/assets.py` builds each
 form (a works building, a panel wall, a plated seam, spoil, a fallen panel, a timbered drift, a ladder bay, a flight,
-a worn floor) and asks a look what each block is by the role it plays: a panel's plate, rib, cap or edge, a
-building's wall, corner, band, sill, cornice or parapet. `scripts/sheet.py` lines the assets up on a flat crust,
+a worn floor) and asks a look what each block is: a panel block by where it sits on its panel, a building block by
+its role, its wall, window band, corner, band, sill, cornice or parapet. `scripts/sheet.py` lines the assets up on a flat crust,
 panel palettes and building palettes side by side, and draws them in the game's textures into `renders/sheet/`.
 
-**The sheet settled three choices.** The panels are dark steel: dark prismarine plates between polished andesite
-ribs under a smooth stone cap, the one palette of six that stood apart from both the grey rock and the red brick.
-The works are brick, with nether brick at the corners and the base and smooth stone at each storey's band, the
-sills and the cornice. The crust is gravel ash, gravel and andesite with soot patches of black clay; flat clay read
-as dead ground.
+**The sheet settled the panels in two rounds.** A panel is framed in polished andesite round its edge, so each plane
+reads on its own, and filled with dark prismarine striped in andesite, upright on one panel and level on the next.
+Patches of green wool weather the infill; green clay was tried beside it and barely showed. A smooth stone cap was
+tried first and dropped.
 
-**The rest of the ground is grey and was not varied.** The rock of the cuts is stone and andesite with cobblestone
-under a third, a cut floor is stone, andesite and gravel a third each, its lumps cobblestone, a flight stone brick.
-Spoil is dirt and coarse dirt, the seam's rock netherrack. Nothing that falls stands over air.
+**The works are brick, with a band of hardened clay through the windows' two courses.** Nether brick stands at the
+corners and the base, smooth stone at each storey's band, the sills and the cornice. A chimney is stone brick ringed
+in polished andesite every fourth course, crowned in cobblestone wall, with a plume of grey glass drifting downwind,
+one wind for the whole board.
+
+**The crust is gravel ash with soot sunk into it.** Gravel and andesite are the ground. Large patches are cored with
+black clay and dark oak planks a block below the crust, ringed in coarse dirt and podzol. Flat clay and a smaller
+speckle of soot were tried on the sheet and read as dead ground.
+
+**The floor players walk on is stone, not ash.** A cut floor is a noise mix of stone and andesite with polished
+andesite and cobblestone in patches, so it is told apart from the crust over it. Its lumps are cobblestone and a
+flight is stone brick. Spoil is dirt and coarse dirt, the seam's rock netherrack. Nothing that falls stands over
+air.
 
 **The town's dressing is placed, not scattered.** Three stalls stand against the forecourt's rock, out of the flag's
 way, and lamps on nether-brick posts stand against the walls of the routes. The drift tunnels are timbered every

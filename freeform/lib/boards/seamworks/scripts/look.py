@@ -1,11 +1,10 @@
 """Seamworks' looks: what every block of every asset is made of, asked by the asset functions in `assets.py` by
-role. `LOOK` is the board's; `PANELS` and `BUILDINGS` hold the palettes the asset sheet compares side by side.
+role. `LOOK` is the board's; `PANELS`, `CRUSTS` and `BUILDINGS` hold the palettes the asset sheet compares side by
+side.
 
-The rock of the cuts is stone and andesite with cobblestone under a third, and a cut floor is stone, andesite and
-gravel a third each. The board's look, chosen on the sheet: the crust is gravel ash, gravel and andesite with soot
-patches of black clay; the panels are dark steel, dark prismarine plates on polished andesite ribs under a smooth
-stone cap, which stands apart from both the grey rock and the red brick; the works are brick, nether brick at the
-corners and base, smooth stone at each storey's band, the sills and the cornice."""
+The rock of the cuts is stone and andesite with cobblestone under a third, and a cut floor is a noise mix of the
+same stones, so the floor players walk on is told apart from the ash above it. What the board's look is, and why,
+is `PLAN.md`'s."""
 import numpy as np
 
 import plan as P
@@ -26,9 +25,13 @@ def _field(cell, seed, octaves=3):
 
 ROCK_A = _field(5, 11)                    # patches about five across
 ROCK_B = _field(4, 12)
-ASH = _field(5, 21)
+FLOOR_A = _field(5, 13)
+FLOOR_B = _field(4, 14)
+ASH = _field(16, 21, 4)                   # the crust's patches, large and coherent
+ASH_FINE = _field(4, 22)
 WEAR = _field(6, 31)
 STEP = _field(4, 41) * 2 - 1              # the wander of a flight's step edges, -1 to 1
+PATCH = _field(4, 51)
 
 
 def _at(f, x, z):
@@ -51,59 +54,89 @@ def pick(spec, x, y, z):
     return spec[-1][0]
 
 
-# ---- the panels: the steel lining the cuts, by role: plate, rib (every third block), cap (the top course), edge ------
-PANELS = {
-    "iron": {"plate": (B.IRON_BLOCK, 0), "rib": (B.DSLAB, 0), "cap": (B.DSLAB, 0), "edge": (B.DSLAB, 0)},
-    "plate steel": {"plate": (B.STONE, 6), "rib": (B.DSLAB, 0), "cap": (B.IRON_BLOCK, 0), "edge": (B.DSLAB, 0)},
-    "rust": {"plate": [((B.RED_SANDSTONE, 2), 3), ((B.STONE, 2), 1)], "rib": (B.STONE, 1), "cap": (B.DSLAB, 0),
-             "edge": (B.STONE, 1)},
-    "patina": {"plate": (B.PRISMARINE, 2), "rib": (B.PRISMARINE, 1), "cap": (B.DSLAB, 0), "edge": (B.PRISMARINE, 1)},
-    "steel and verdigris": {"plate": (B.STONE, 6), "rib": (B.PRISMARINE, 2), "cap": (B.DSLAB, 0),
-                            "edge": (B.PRISMARINE, 2)},
-    "dark steel": {"plate": (B.PRISMARINE, 2), "rib": (B.STONE, 6), "cap": (B.DSLAB, 0), "edge": (B.STONE, 6)},
-}
+# ---- the panels: a frame round every panel so each plane reads, and an infill whose pattern may change from one
+# panel to the next. A pattern is a function of the block's place on its panel: along, up, its length and rise ------
+STEEL = (B.PRISMARINE, 2)
+FRAME = (B.STONE, 6)
 
-# ---- the crust: the ash on everything above the cuts, as noise stops [patch, ground, ground, patch] ----------------
+
+def _framed(info):
+    return info["along"] < 1 or info["along"] >= info["length"] - 1 or info["up"] < 1 or info["up"] >= info["rise"] - 1
+
+
+def _plain(info, x, y, z):
+    return STEEL
+
+
+def _courses(info, x, y, z):
+    return FRAME if int(info["up"]) % 4 == 0 else STEEL
+
+
+def _crossed(info, x, y, z):
+    on = int(info["along"]) % 3 == 0 if info["shade"] == 0 else int(info["up"]) % 3 == 0
+    return FRAME if on else STEEL
+
+
+def _diagonal(info, x, y, z):
+    on = int(info["along"]) % 3 == 0 if info["shade"] == 0 else (int(info["along"]) + int(info["up"])) % 4 == 0
+    return FRAME if on else STEEL
+
+
+def _broken_by(block):
+    def pattern(info, x, y, z):
+        return block if _at(PATCH, x + int(info["up"]) * 3, z + int(info["along"])) > 0.66 else STEEL
+    return pattern
+
+
+def _weathered(block):
+    def pattern(info, x, y, z):
+        if _at(PATCH, x + int(info["up"]) * 3, z + int(info["along"])) > 0.7:
+            return block
+        return _crossed(info, x, y, z)
+    return pattern
+
+
+PANELS = {"framed": _plain, "framed courses": _courses, "crossed": _crossed, "crossed and diagonal": _diagonal,
+          "broken by green clay": _broken_by((B.STAINED_CLAY, 13)),
+          "broken by green wool": _broken_by((B.WOOL, 13)),
+          "crossed, weathered by green clay": _weathered((B.STAINED_CLAY, 13)),
+          "crossed, weathered by green wool": _weathered((B.WOOL, 13))}
+
+# ---- the crust: one ground with patches inset in it, as noise stops [core, rim, ground ...] --------------------------
+# a core is sunk a block; the ground is a fine mix of its own blocks
 CRUSTS = {
-    "clay ash": [(B.STAINED_CLAY, 7), (B.STAINED_CLAY, 9), (B.STAINED_CLAY, 9), (B.STAINED_CLAY, 15)],
-    "gravel ash": [(B.STAINED_CLAY, 15), (B.GRAVEL, 0), (B.GRAVEL, 0), (B.STONE, 5)],
-    "cinder": [(B.DIRT, 1), (B.GRAVEL, 0), (B.STONE, 5), (B.COBBLE, 0)],
+    "soot and charred boards": {"core": [((B.STAINED_CLAY, 15), 7), ((B.PLANKS, 5), 3)],
+                                "rim": [((B.DIRT, 1), 1), ((B.DIRT, 2), 1)],
+                                "ground": [(B.GRAVEL, 0), (B.STONE, 5), (B.GRAVEL, 0)]},
+    "soot and coal": {"core": [((B.STAINED_CLAY, 15), 6), ((B.COAL_BLOCK, 0), 4)],
+                      "rim": [((B.DIRT, 1), 1), ((B.DIRT, 0), 1)],
+                      "ground": [(B.GRAVEL, 0), (B.STONE, 5), (B.GRAVEL, 0)]},
+    "gravel ash": {"core": (B.STAINED_CLAY, 15), "rim": (B.GRAVEL, 0),
+                   "ground": [(B.GRAVEL, 0), (B.STONE, 5), (B.GRAVEL, 0)]},
 }
+SOOT, RIM = 0.24, 0.32                    # where the core and the rim end on the patch field
 
 # ---- the works, by role ------------------------------------------------------------------------------------------------
 _BUILT_FLOOR = [((B.STONEBRICK, 0), 1), ((B.STONE, 6), 1), ((B.STONE, 5), 1), ((B.STONE, 0), 1)]
 BUILDINGS = {
-    "brick works": {"wall": (B.BRICK, 0), "corner": (B.NETHER_BRICK, 0), "band": (B.DSLAB, 0),
-                    "base": (B.NETHER_BRICK, 0), "cornice": (B.DSLAB, 0), "parapet": (B.NETHER_BRICK, 0),
-                    "roof": (B.DSLAB, 0), "skylight": (B.GLASS, 0), "window": (B.IRON_BARS, 0),
-                    "sill": (B.DSLAB, 0), "floor": _BUILT_FLOOR, "light": (B.GLOWSTONE, 0),
-                    "jamb": (B.NETHER_BRICK, 0), "lintel": (B.DSLAB, 0), "stack": (B.BRICK, 0),
-                    "cap": (B.NETHER_BRICK, 0)},
-    "brick and timber": {"wall": (B.BRICK, 0), "corner": (B.LOG, 1), "band": (B.LOG, 1 | 4), "base": (B.STONEBRICK, 0),
-                         "cornice": (B.PLANKS, 1), "parapet": (B.SPRUCE_FENCE, 0), "roof": (B.PLANKS, 1),
-                         "skylight": (B.GLASS, 0), "window": (B.PANE, 0), "sill": (B.PLANKS, 1),
-                         "floor": _BUILT_FLOOR, "light": (B.GLOWSTONE, 0), "jamb": (B.LOG, 1), "lintel": (B.LOG, 1 | 4),
-                         "stack": (B.BRICK, 0), "cap": (B.STONEBRICK, 0)},
-    "sandstone concrete": {"wall": (B.SANDSTONE, 2), "corner": (B.SANDSTONE, 0), "band": (B.BRICK, 0),
-                           "base": (B.BRICK, 0), "cornice": (B.BRICK, 0), "parapet": (B.SANDSTONE, 2),
-                           "roof": (B.DSLAB, 0), "skylight": (B.GLASS, 0), "window": (B.IRON_BARS, 0),
-                           "sill": (B.DSLAB, 1), "floor": _BUILT_FLOOR, "light": (B.GLOWSTONE, 0),
-                           "jamb": (B.BRICK, 0), "lintel": (B.BRICK, 0), "stack": (B.BRICK, 0),
-                           "cap": (B.SANDSTONE, 2)},
+    "brick works": {"wall": (B.BRICK, 0), "window band": (B.HARDENED_CLAY, 0), "corner": (B.NETHER_BRICK, 0),
+                    "band": (B.DSLAB, 0), "base": (B.NETHER_BRICK, 0), "cornice": (B.DSLAB, 0),
+                    "parapet": (B.NETHER_BRICK, 0), "roof": (B.DSLAB, 0), "skylight": (B.GLASS, 0),
+                    "window": (B.IRON_BARS, 0), "sill": (B.DSLAB, 0), "floor": _BUILT_FLOOR,
+                    "light": (B.GLOWSTONE, 0), "jamb": (B.NETHER_BRICK, 0), "lintel": (B.DSLAB, 0)},
 }
-# the hazard frame stays available as a door's look
-HAZARD = [(B.STAINED_CLAY, 4), (B.STAINED_CLAY, 15)]
+CHIMNEY = {"stack": (B.STONEBRICK, 0), "ring": (B.STONE, 6), "crown": (B.COBBLE_WALL, 0),
+           "smoke": [((B.STAINED_GLASS, 8), 3), ((B.STAINED_GLASS, 7), 2), ((B.GLASS, 0), 1)]}
 
 
 class Look:
-    """Every asset's blocks: the ground as stated above, the panels and works from a palette each."""
+    """Every asset's blocks: the ground as stated above, the panels, crust and works from a palette each."""
 
-    def __init__(self, panels="iron", building="brick works", crust="clay ash", hazard=False):
-        self.panels_name, self.building_name = panels, building
+    def __init__(self, panels="framed", building="brick works", crust="soot and charred boards"):
+        self.panels_name, self.building_name, self.crust_name = panels, building, crust
+        self.pattern = PANELS[panels]
         self.C = CRUSTS[crust]
-        self.P = PANELS[panels]
         self.Bd = BUILDINGS[building]
-        self.hazard = hazard
 
     # the ground
     def rock(self, x, y, z):
@@ -114,15 +147,22 @@ class Look:
 
     def crust(self, x, z):
         v = _at(ASH, x, z)
-        if v < 0.22:
-            return self.C[0]
-        if v > 0.8:
-            return self.C[3]
-        return self.C[1] if _hash(x, 0, z) < 0.5 else self.C[2]
+        if v < SOOT:
+            return pick(self.C["core"], x, 0, z)
+        if v < RIM:
+            return pick(self.C["rim"], x, 0, z)
+        g = self.C["ground"]
+        return g[min(int(_at(ASH_FINE, x, z) * len(g)), len(g) - 1)]
+
+    def sunk(self, x, z):
+        """Whether the crust is a block lower here: the core of a soot patch."""
+        return _at(ASH, x, z) < SOOT
 
     def cut_floor(self, x, z):
-        k = ((x // 3) * 7 + (z // 3) * 13 + (x // 3) * (z // 3)) % 3
-        return [(B.STONE, 5), (B.GRAVEL, 0), (B.STONE, 0)][k]
+        if _at(FLOOR_B, x, z) > 0.8:
+            return (B.COBBLE, 0)
+        v = _at(FLOOR_A, x, z)
+        return (B.STONE, 5) if v < 0.4 else (B.STONE, 0) if v < 0.78 else (B.STONE, 6)
 
     tunnel_floor = cut_floor
 
@@ -139,8 +179,8 @@ class Look:
         return (B.NETHERRACK, 0)
 
     # the made things
-    def panel(self, x, y, z, role, shade):
-        return pick(self.P[role], x, y, z)
+    def panel(self, x, y, z, info):
+        return FRAME if _framed(info) else self.pattern(info, x, y, z)
 
     def plate(self, x, y, z, role):
         return (B.IRON_BLOCK, 0) if role == "plate" else (B.DSLAB, 0)
@@ -149,12 +189,10 @@ class Look:
         return pick(self.Bd[role], x, y, z)
 
     def door(self, x, y, z, role):
-        if self.hazard:
-            return HAZARD[(y + x + z) % 2]
         return pick(self.Bd[role], x, y, z)
 
     def chimney(self, x, y, z, role):
-        return pick(self.Bd[role], x, y, z)
+        return pick(CHIMNEY[role], x, y, z)
 
     def timber(self, role):
         return (B.SPRUCE_FENCE, 0) if role == "post" else (B.PLANKS, 1)
@@ -163,7 +201,7 @@ class Look:
         return (B.GLOWSTONE, 0)
 
 
-LOOK = Look(panels="dark steel", building="brick works", crust="gravel ash")
+LOOK = Look(panels="crossed, weathered by green wool", crust="soot and charred boards")
 
 
 def paint_rock(w, look=LOOK):

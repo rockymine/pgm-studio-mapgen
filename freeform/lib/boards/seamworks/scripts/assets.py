@@ -44,7 +44,8 @@ def seg_dist(px, pz, a, b):
 def building(w, poly, base, sections, look, skylights=False):
     """A building on a floor at `base` (the walking level of its lowest storey): `sections` as (cells, storeys,
     (ladder cell, wall side)), each section its own height, a ladder through its slabs. The look is asked for
-    "wall", "corner", "band" (the outside of each slab), "base" (the course under the lowest storey), "cornice" and
+    "wall", "window band" (the two courses the windows sit in), "corner", "band" (the outside of each slab), "base"
+    (the course under the lowest storey), "cornice" and
     "parapet" (the roof's edge), "roof", "skylight", "floor", "light", "window" and "sill"."""
     cells = poly_cells(poly)
     storeys = {}
@@ -67,6 +68,8 @@ def building(w, poly, base, sections, look, skylights=False):
             if outside:
                 if level > 0 and not corner:
                     w.set(x, floor_y - 1, z, *look.building(x, floor_y - 1, z, "band"))
+                    for y in (floor_y + 1, floor_y + 2):
+                        w.set(x, y, z, *look.building(x, y, z, "window band"))
                 if not corner and (x + z) % 4 == 0 and level > 0:
                     for a, b in DIRS.values():
                         if storeys.get((x + a, z + b), 0) <= level and w.id(x + a, floor_y + 1, z + b) == B.AIR \
@@ -107,54 +110,94 @@ def door(w, line, bottom, look, height=3):
         w.set(x, bottom + height, z, *look.door(x, bottom + height, z, "lintel"))
 
 
-def chimney(w, box, height, look):
+def chimney(w, box, height, look, drift=(1, 0), plume=11):
+    """A chimney over a roof: a stack ringed every fourth course, a crown of wall round its top, and a plume of glass
+    smoke drifting downwind, thinning as it rises. The look is asked for "stack", "ring", "crown" and "smoke"."""
     x0, z0, x1, z1 = box
+    top = max(w.top(x, z) for x in range(x0, x1 + 1) for z in range(z0, z1 + 1))
     for x in range(x0, x1 + 1):
         for z in range(z0, z1 + 1):
-            top = w.top(x, z)
-            for y in range(top + 1, top + height + 1):
-                cap = y == top + height and (x in (x0, x1) or z in (z0, z1))
-                w.set(x, y, z, *look.chimney(x, y, z, "cap" if cap else "stack"))
+            for y in range(w.top(x, z) + 1, top + height + 1):
+                role = "ring" if (y - top) % 4 == 0 else "stack"
+                w.set(x, y, z, *look.chimney(x, y, z, role))
+    for x in range(x0 - 1, x1 + 2):
+        for z in range(z0 - 1, z1 + 2):
+            if x in (x0 - 1, x1 + 1) or z in (z0 - 1, z1 + 1):
+                w.set(x, top + height, z, *look.chimney(x, top + height, z, "crown"))
+    cx, cz = (x0 + x1) / 2 + .5, (z0 + z1) / 2 + .5
+    rim = top + height + 1
+    for h in range(plume):
+        r = 0.9 + h * 0.18
+        px = cx + drift[0] * h * 0.7 + math.sin(h * 1.3) * 0.5
+        pz = cz + drift[1] * h * 0.7 + math.cos(h * 1.1) * 0.5
+        for x in range(math.floor(px - r), math.ceil(px + r) + 1):
+            for z in range(math.floor(pz - r), math.ceil(pz + r) + 1):
+                d = math.hypot(x + .5 - px, z + .5 - pz) / r
+                keep = 0.95 - h / plume * 0.55
+                if d <= 1 and ((x * 31 + z * 17 + h * 7) % 100) / 100 < keep * (1.1 - d * 0.5):
+                    w.set(x, rim + h, z, *look.chimney(x, rim + h, z, "smoke"))
 
 
 # ---- the panels -----------------------------------------------------------------------------------------------------
 def panels(w, quads, base_of, rise_of, is_floor, keep_out, ground, look):
     """Panels as quads standing on a floor and leaning back into the earth: each (a, b, n, (lean at a, lean at b),
     shade). `base_of(a, b, n)` is the floor they stand on and `rise_of(a, b, n, base)` how high they climb. Each is
-    two blocks thick and the wedge between its foot and its face is cleared. A block two panels reach belongs to the
-    one whose foot is nearer, so neighbours meet at a mitre; nothing is laid where `keep_out(x, z)` holds. The look
-    is asked for "plate", "rib" (every third block along a panel, standing proud), "cap" (the top course) and
-    "edge" (a panel's two ends)."""
-    claims, cleared = {}, set()
+    two blocks thick and the wedge between its foot and its face is cleared. Where two panels of different walls
+    reach the same blocks, the shorter is left out, so the rock shows there instead of two panels passing through each
+    other; between neighbours on one wall a shared block goes to the nearer foot. Nothing is laid where
+    `keep_out(x, z)` holds. The look is asked for each block with where it sits on its panel: "along" and "up" in
+    blocks, the panel's "length" and "rise", its "shade" and how deep into it the block is ("k")."""
+    solids, clears = [], []
     for a, b, n, (l0, l1), shade in quads:
         length = math.hypot(b[0] - a[0], b[1] - a[1])
         base = base_of(a, b, n)
         rise = rise_of(a, b, n, base)
+        solid, cleared = {}, set()
         for s in np.arange(0, 1.0001, 0.2 / max(length, 1)):
-            along = s * length
             bx, bz = a[0] + (b[0] - a[0]) * s, a[1] + (b[1] - a[1]) * s
             lean = math.tan(math.radians(l0 + (l1 - l0) * s))
             for t in np.arange(0, 1.0001, 0.2 / rise):
                 y = math.floor(base + t * rise)
                 back = lean * t * rise
-                top = y >= math.floor(base + rise) - 1
-                rib = (along % 3.0) < 1.0 and 1.0 < along < length - 1.0
-                end = along < 0.8 or along > length - 0.8
-                role = "cap" if top else "edge" if end else "rib" if rib else "plate"
                 for o in np.arange(0, back, 0.4):
                     cleared.add((math.floor(bx + n[0] * o), y, math.floor(bz + n[1] * o)))
                 for k in np.arange(0, 2.0, 0.4):
                     c = (math.floor(bx + n[0] * (back + k)), y, math.floor(bz + n[1] * (back + k)))
-                    near = seg_dist(c[0] + .5, c[2] + .5, a, b)
-                    if c not in claims or near < claims[c][0]:
-                        claims[c] = (near, role, shade)
-    for c in cleared - claims.keys():
-        if c[1] < ground(c[0], c[2]) and not is_floor(c[0], c[2]) and not keep_out(c[0], c[2]):
-            w.set(*c, B.AIR)
-    for c, (_, role, shade) in claims.items():
+                    if c not in solid:
+                        solid[c] = dict(along=s * length, up=t * rise, length=length, rise=rise, shade=shade, k=k)
+        solids.append(solid)
+        clears.append(cleared)
+    walls = [(round(q[2][0], 3), round(q[2][1], 3)) for q in quads]
+    reach = {}
+    for i, solid in enumerate(solids):
+        for c in solid:
+            reach.setdefault(c, []).append(i)
+    shared = {}
+    for c, who in reach.items():
+        for i in who:
+            for j in who:
+                if i < j and walls[i] != walls[j]:
+                    shared[(i, j)] = shared.get((i, j), 0) + 1
+    dropped = set()
+    for (i, j), count in sorted(shared.items(), key=lambda kv: -kv[1]):
+        if count >= 3 and i not in dropped and j not in dropped:
+            dropped.add(i if len(solids[i]) < len(solids[j]) else j)
+    kept = [i for i in range(len(quads)) if i not in dropped]
+    owner = {}
+    for i in kept:
+        a, b = quads[i][0], quads[i][1]
+        for c in solids[i]:
+            near = seg_dist(c[0] + .5, c[2] + .5, a, b)
+            if c not in owner or near < owner[c][0]:
+                owner[c] = (near, i)
+    for i in kept:
+        for c in clears[i] - owner.keys():
+            if c[1] < ground(c[0], c[2]) and not is_floor(c[0], c[2]) and not keep_out(c[0], c[2]):
+                w.set(*c, B.AIR)
+    for c, (_, i) in owner.items():
         if not keep_out(c[0], c[2]):
-            w.set(*c, *look.panel(*c, role, shade))
-    return claims
+            w.set(*c, *look.panel(*c, solids[i][c]))
+    return owner, sorted(dropped)
 
 
 def fallen_panel(w, a, b, n, reach, h0, h1, floor_y, is_floor, look):
@@ -170,8 +213,8 @@ def fallen_panel(w, a, b, n, reach, h0, h1, floor_y, is_floor, look):
     length = math.hypot(b[0] - a[0], b[1] - a[1])
     for (x, z), (y, s, t) in laid.items():
         w.column(x, z, y, y + 6, B.AIR)
-        rib = ((s * length) % 3.0) < 1.0
-        w.set(x, y, z, *look.panel(x, y, z, "rib" if rib else "plate", 0))
+        w.set(x, y, z, *look.panel(x, y, z, dict(along=s * length, up=t * reach, length=length, rise=reach, shade=0,
+                                                 k=0)))
 
 
 # ---- the seam -------------------------------------------------------------------------------------------------------
@@ -327,3 +370,12 @@ def crust_hollow(w, cells, ground, look, depth=4):
         top = ground(x, z)
         w.column(x, z, top - depth, top - 1, B.AIR)
         w.set(x, top - depth - 1, z, *look.spoil(x, top - depth - 1, z))
+
+
+def lay_crust(w, x, z, ground, look):
+    """The crust's top at a column: its own block, a block lower where the look sinks it."""
+    top = ground(x, z) - 1
+    if look.sunk(x, z):
+        w.set(x, top, z, B.AIR)
+        top -= 1
+    w.set(x, top, z, *look.crust(x, z))

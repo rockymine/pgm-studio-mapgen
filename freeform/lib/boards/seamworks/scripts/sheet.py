@@ -19,7 +19,7 @@ from pgmvox.built import props
 from pgmvox.read import render
 
 YS = 30
-w = World(-2, -2, 400, 230, sy=YS + 36)
+w = World(-2, -2, 520, 230, sy=YS + 46)
 floors = {}                                   # (x, z) -> walking level of cut floor
 
 
@@ -44,7 +44,7 @@ for x in range(w.x0, w.x0 + w.sx):
     for z in range(w.z0, w.z0 + w.sz):
         w.column(x, z, 0, 0, B.BEDROCK)
         w.column(x, z, 1, YS - 2, B.STONE)
-        w.set(x, YS - 1, z, *L.LOOK.crust(x, z))
+        A.lay_crust(w, x, z, ground, L.LOOK)
 L.paint_rock(w)
 
 
@@ -113,18 +113,20 @@ for k, name in enumerate(L.BUILDINGS):
     A.door(w, [(x, z0 + 27) for x in range(x0 + 14, x0 + 17)], YS - 8, look)
     A.door(w, [(x0 + 37, z) for z in range(z0 + 20, z0 + 23)], YS - 8, look)
     A.chimney(w, (x0 + 8, z0 + 7, x0 + 10, z0 + 9), 9, look)
+    A.chimney(w, (x0 + 33, z0 + 18, x0 + 34, z0 + 19), 5, look, plume=7)
     w.sign(x0 + 46, YS, z0 + 2, ["works", name])
     shot(f"works-{name.replace(' ', '-')}.png", (x0 - 1, YS - 9, z0 - 1, x0 + 45, YS + 22, z0 + 41), yaw=200, pitch=22)
 
 # ---- the crusts, side by side on the flat ----------------------------------------------------------------------------
 for k, name in enumerate(L.CRUSTS):
     look = L.Look(crust=name)
-    x0, z0 = 4 + k * 26, 170
-    for x in range(x0, x0 + 22):
-        for z in range(z0, z0 + 22):
-            w.set(x, YS - 1, z, *look.crust(x, z))
+    x0, z0 = 4 + k * 46, 168
+    for x in range(x0, x0 + 40):
+        for z in range(z0, z0 + 40):
+            w.column(x, z, YS - 2, YS - 1, *look.rock(x, YS - 2, z))
+            A.lay_crust(w, x, z, ground, look)
     w.sign(x0 + 1, YS, z0 - 1, ["crust", name])
-    shot(f"crust-{name.replace(' ', '-')}.png", (x0, YS - 2, z0, x0 + 22, YS + 1, z0 + 22), yaw=200, pitch=50)
+    shot(f"crust-{name.replace(' ', '-')}.png", (x0, YS - 3, z0, x0 + 40, YS + 1, z0 + 40), yaw=200, pitch=50)
 
 # ---- row three: the rest in the board's look -----------------------------------------------------------------------------
 look = L.LOOK

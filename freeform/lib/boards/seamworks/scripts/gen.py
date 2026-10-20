@@ -51,9 +51,8 @@ def on_board(x, z):
 # ---- the ground: bedrock under rock, the ash on top -------------------------------------------------------------------
 w.ids[:, 0, :] = B.BEDROCK
 for x, z in cells(np.ones(X.shape, bool)):
-    top = P.ground(x, z) - 1
-    w.column(x, z, 1, top - 1, B.STONE)
-    w.set(x, top, z, *LOOK.crust(x, z))
+    w.column(x, z, 1, P.ground(x, z) - 2, B.STONE)
+    A.lay_crust(w, x, z, P.ground, LOOK)
 L.paint_rock(w)
 
 # ---- floor depths: each cut's own, then its zones; a flight's step edges wander with the noise ----------------------
@@ -110,7 +109,7 @@ for name, line in P.DOORS:
     d = next(dd for n, pg, dd, _ in P.BUILDINGS if n == name and any(A.pip((c[0] + .5, c[1] + .5), pg) for c in line))
     A.door(w, line, YS + d, LOOK)
 for name, box, h in P.CHIMNEYS:
-    A.chimney(w, box, h, LOOK)
+    A.chimney(w, box, h, LOOK, drift=(1, 0) if box[0] < P.W / 2 else (-1, 0))     # one wind, turned with the board
 for (x, z), facing in P.FURNACES:
     d = next(dd for n, pg, dd, _ in P.BUILDINGS if A.pip((x + .5, z + .5), pg))
     w.set(x, YS + d, z, B.FURNACE, {"e": 5, "w": 4}[facing])
@@ -131,7 +130,8 @@ def rise_of(a, b, n, base):
     return ground(*behind) + P.LIP - base
 
 
-claims = A.panels(w, P.panels(), base_of, rise_of, is_floor,
+quads = P.panels()
+claims, dropped = A.panels(w, quads, base_of, rise_of, is_floor,
                   lambda x, z: not on_board(x, z) or (x, z) in building_cells, ground, LOOK)
 
 # ---- the plated seams and the sump ----------------------------------------------------------------------------------------
@@ -220,3 +220,7 @@ for team, (x, z), d in ((0, P.FLAG_POSTS[0][1], P.FLAG_POSTS[0][2]),
 
 w.save(sys.argv[1], "Seamworks", (P.SPAWN_AT[0], YS - 8, P.SPAWN_AT[1]))
 print("generated", int(floor.sum()), "floor columns,", len(claims), "panel blocks,", worn, "worn")
+print("panels left out where two walls met, by the middle of their foot:")
+for i in dropped:
+    a, b = quads[i][0], quads[i][1]
+    print(f"  ({(a[0] + b[0]) / 2:.0f}, {(a[1] + b[1]) / 2:.0f}), {math.hypot(b[0] - a[0], b[1] - a[1]):.0f} long")
