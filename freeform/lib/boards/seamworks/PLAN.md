@@ -151,7 +151,7 @@ one wind for the whole board.
 to eight blocks of overburden in beds that follow the crust: red sandstone, smooth red sandstone, a thinner bed of
 hardened clay and one of orange clay. Under them is the rock, so a cut wall shows orange over grey and every floor a
 player walks on is stone. The rock nobody could dig, the ribs, the mesa, the pillars and the masses beside the
-middle, is stone to its top.
+middle, is stone to its top, and a one-block step on that top carries a cobblestone slab on its low side.
 
 **A bare rock face overhangs and is undercut, and none can be climbed.** Over the floor beside a face the rock juts
 out one to three blocks, starting at least three over the floor and higher the further out it reaches, and it runs

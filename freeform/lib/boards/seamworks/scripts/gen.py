@@ -296,6 +296,20 @@ for (x, z), t in crust_top.items():
     if any(crust_top.get((x + a, z + b)) == t + 1 and w.get(x + a, t + 1, z + b) in ORANGE for a, b in DIRS.values()):
         w.set(x, t + 1, z, 182, 0)                     # a red sandstone slab halves the step
         slabbed += 1
+# the rock nobody dug: a cobblestone slab on the low side of every one-block step on its top
+STONY = {B.STONE, B.COBBLE}
+stone_top = {}
+for x, z in cells(standing & land & ~floor):
+    t = w.top(x, z)
+    if P.ground(x, z) - 3 <= t < P.ground(x, z) + 1 and w.id(x, t, z) in STONY:
+        stone_top[(x, z)] = t
+cobbled = 0
+for (x, z), t in stone_top.items():
+    if w.id(x, t + 1, z) != B.AIR:
+        continue
+    if any(stone_top.get((x + a, z + b)) == t + 1 and w.id(x + a, t + 1, z + b) in STONY for a, b in DIRS.values()):
+        w.set(x, t + 1, z, B.SLAB, 3)
+        cobbled += 1
 mx, mz = P.MONUMENT
 quiet = around({c for c, _ in P.LADDERS} | {P.SHAFT, (P.W - 1 - P.SHAFT[0], P.H - 1 - P.SHAFT[1])}, 3) | \
     around({(mx, mz), (P.W - 1 - mx, P.H - 1 - mz)}, 6) | around(set(cells(floor)), 2) | around(building_cells, 3)
@@ -347,7 +361,7 @@ for team, (x, z), d in ((0, P.FLAG_POSTS[0][1], P.FLAG_POSTS[0][2]),
 
 w.save(sys.argv[1], "Seamworks", (P.SPAWN_AT[0], YS - 8, P.SPAWN_AT[1]))
 print("generated", int(floor.sum()), "floor columns,", len(claims), "panel blocks,", worn, "worn,", len(jutted),
-      "jutting over the floor,", len(hollowed), "hollowed at a face's foot,", rimmed, "rim blocks,", chevroned, "chevron blocks,", int(land.sum()), "columns of land,", equipment, "pieces on the roofs,", slabbed, "slabs,", leafed, "leaves, olives at", planted)
+      "jutting over the floor,", len(hollowed), "hollowed at a face's foot,", rimmed, "rim blocks,", chevroned, "chevron blocks,", int(land.sum()), "columns of land,", equipment, "pieces on the roofs,", slabbed, "slabs on the orange,", cobbled, "on the stone,", leafed, "leaves, olives at", planted)
 print("panels left out where two walls met, by the middle of their foot:")
 for i in dropped:
     a, b = quads[i][0], quads[i][1]
