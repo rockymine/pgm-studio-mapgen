@@ -1,6 +1,7 @@
 """Write Pithead's map.xml: capture the wool for two teams. Each team spawns in the hall at its back, keeps two wools in
-the works at the ends of its two approaches, each behind a bedrock wall, and places the other team's two on the
-monuments in its own spawn yard. Building over the void is allowed only across the middle.
+the works at the ends of its two approaches, each behind a bedrock wall and up a ledge, and places the other team's
+two on the monuments in its own spawn yard. Building over the void is allowed only across the middle's gaps, and no
+block is placed high enough to climb out of a cut.
 
     python3 mapxml.py > map.xml
 """
@@ -19,21 +20,22 @@ IMAGE = {"red": "blue", "orange": "light_blue"}           # a red room's wool an
 x0, z0, x1, z1 = P.SPAWN_ROOM
 spawn_box = Box(x0, YS + 2, z0, x1, YS + 2 + 3 * 5, z1)
 OBJECTIVES = Objectives(Teams(*[(t, n, c, 7) for t, n, c in P.TEAMS]), P.SYM)
-OBJECTIVES.add(Observer((60, YS + 34, 120), yaw=0, pitch=70), mirror=False)
+OBJECTIVES.add(Observer((74, YS + 34, 120), yaw=0, pitch=70), mirror=False)
 OBJECTIVES.add(Spawn("red-team", (P.SPAWN_AT[0], YS + 2, P.SPAWN_AT[1]), yaw=P.SPAWN_YAW, kit="spawn-kit",
                      area=spawn_box))
 for k, room in enumerate(P.WOOL_ROOMS):
     rx0, rz0, rx1, rz1 = room["room"]
     ax, az = room["at"]
     mx, mz = P.RC(P.MONUMENTS[k])                         # blue places red's wools in blue's own yard
-    floor = YS + P.SURFACE_RISE
+    floor = YS + P.CUTS["red body"][1]
     OBJECTIVES.add(Wool("blue-team", room["color"], slot=(mx, YS + 2, mz), found=(ax, floor, az),
                         room=Box(rx0, floor, rz0, rx1, floor + P.ROOM_HEIGHT - 1, rz1)), color=IMAGE[room["color"]])
 dx, dz, size = P.DAIS
-apple_y = YS - 3 + 2                                      # the block over the dais' plinth, on the middle's floor
-OBJECTIVES.add(Spawner("golden-apple", (dx + size // 2 - 1, apple_y, dz + size // 2 - 1), [("golden apple", 1)],
-                       delay=P.APPLE_DELAY, box=Box(dx + size // 2 - 1, apple_y, dz + size // 2 - 1, dx + size // 2,
-                                                    apple_y + 1, dz + size // 2)), mirror=False)
+apple_y = YS + P.ISLAND[1] + 2                            # the block over the dais' plinth, on the island's floor
+middles = (("red", (dx + size // 2 - 1, dz + size // 2 - 1)), ("blue", P.RC((dx + size // 2, dz + size // 2))))
+for name, (ax, az) in middles:
+    OBJECTIVES.add(Spawner(f"golden-apple-{name}-island", (ax, apple_y, az), [("golden apple", 1)], delay=P.APPLE_DELAY,
+                           box=Box(ax, apple_y, az, ax + 1, apple_y + 1, az + 1)), mirror=False)
 
 M = Map("Pithead", "0.1.0", "Capture the enemy's two wools from the works at the ends of their approaches, and place "
         "them on the monuments in your spawn yard.", "ctw",
@@ -48,7 +50,7 @@ M = Map("Pithead", "0.1.0", "Capture the enemy's two wools from the works at the
                 Item("leather chestplate", unbreakable=True, team_color=True, wear="chestplate"),
                 Item("chainmail leggings", unbreakable=True, wear="leggings"),
                 Item("iron boots", unbreakable=True, wear="boots"), clear=True),
-        build=Build(areas=[P.BUILD], max_height=YS + 26),
+        build=Build(areas=P.BUILD + [(*P.RC(b[2:]), *P.RC(b[:2])) for b in P.BUILD], max_height=P.MAX_BUILD),
         kill=KillHeight(P.KILL_Y),
         match=Match(time="25m"))
 

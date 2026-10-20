@@ -85,45 +85,47 @@
     <spawns>
         <default yaw="0" pitch="70">
             <region>
-                <point>60.5,68,120.5</point>
+                <point>74.5,58,120.5</point>
             </region>
         </default>
         <spawn team="red-team" kit="spawn-kit" yaw="180">
             <region>
-                <point>60.5,36,228.5</point>
+                <point>60.5,26,228.5</point>
             </region>
         </spawn>
         <spawn team="blue-team" kit="spawn-kit" yaw="0">
             <region>
-                <point>59.5,36,11.5</point>
+                <point>87.5,26,11.5</point>
             </region>
         </spawn>
     </spawns>
     <regions>
-        <cuboid min="52,36,224" max="68,52,232" id="red-spawn"/>
+        <cuboid min="52,26,224" max="68,42,232" id="red-spawn"/>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
         <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
-        <cuboid min="52,36,8" max="68,52,16" id="blue-spawn"/>
+        <cuboid min="80,26,8" max="96,42,16" id="blue-spawn"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
         <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
-        <block id="red-blue-monument">64,36,20</block>
-        <cuboid min="16,37,160" max="28,46,168" id="red-room"/>
+        <block id="red-blue-monument">92,26,20</block>
+        <cuboid min="16,29,160" max="28,38,168" id="red-room"/>
         <apply enter="not-red" region="red-room" message="You may not enter your own wool room!"/>
-        <point id="red-wool-spawn">22.5,38,164.5</point>
-        <block id="blue-red-monument">55,36,219</block>
-        <cuboid min="92,37,72" max="104,46,80" id="blue-room"/>
+        <point id="red-wool-spawn">22.5,30,164.5</point>
+        <block id="blue-red-monument">55,26,219</block>
+        <cuboid min="120,29,72" max="132,38,80" id="blue-room"/>
         <apply enter="not-blue" region="blue-room" message="You may not enter your own wool room!"/>
-        <point id="blue-wool-spawn">97.5,38,75.5</point>
-        <block id="orange-blue-monument">55,36,20</block>
-        <cuboid min="100,37,164" max="112,46,172" id="orange-room"/>
+        <point id="blue-wool-spawn">125.5,30,75.5</point>
+        <block id="orange-blue-monument">83,26,20</block>
+        <cuboid min="100,29,164" max="112,38,172" id="orange-room"/>
         <apply enter="not-red" region="orange-room" message="You may not enter your own wool room!"/>
-        <point id="orange-wool-spawn">106.5,38,168.5</point>
-        <block id="light_blue-red-monument">64,36,219</block>
-        <cuboid min="8,37,68" max="20,46,76" id="light_blue-room"/>
+        <point id="orange-wool-spawn">106.5,30,168.5</point>
+        <block id="light_blue-red-monument">64,26,219</block>
+        <cuboid min="36,29,68" max="48,38,76" id="light_blue-room"/>
         <apply enter="not-blue" region="light_blue-room" message="You may not enter your own wool room!"/>
-        <point id="light_blue-wool-spawn">13.5,38,71.5</point>
-        <cuboid min="59,33,119" max="61,35,121" id="golden-apple"/>
-        <cuboid min="55,33,115" max="64,37,124" id="golden-apple-near"/>
+        <point id="light_blue-wool-spawn">41.5,30,71.5</point>
+        <cuboid min="56,23,124" max="58,25,126" id="golden-apple-red-island"/>
+        <cuboid min="52,23,120" max="61,27,129" id="golden-apple-red-island-near"/>
+        <cuboid min="90,23,114" max="92,25,116" id="golden-apple-blue-island"/>
+        <cuboid min="86,23,110" max="95,27,119" id="golden-apple-blue-island-near"/>
         <union id="reds-woolrooms">
             <region id="red-room"/>
             <region id="orange-room"/>
@@ -135,15 +137,20 @@
         </union>
         <apply block="blues-woolrooms-filter" region="blues-woolrooms" message="You may not edit the wool room!"/>
         <negative id="not-build-area">
-            <rectangle min="44,96" max="76,144"/>
+            <union>
+                <rectangle min="42,133" max="78,146"/>
+                <rectangle min="68,114" max="80,126"/>
+                <rectangle min="70,94" max="106,107"/>
+                <rectangle min="68,114" max="80,126"/>
+            </union>
         </negative>
         <apply block-place="block-place-void-filter" block-break="block-break-void-filter" region="not-build-area" message="You may not edit the void!"/>
     </regions>
     <wools craftable="false">
-        <wool team="blue-team" color="red" monument="red-blue-monument" location="22.5,37,164.5"/>
-        <wool team="red-team" color="blue" monument="blue-red-monument" location="97.5,37,75.5"/>
-        <wool team="blue-team" color="orange" monument="orange-blue-monument" location="106.5,37,168.5"/>
-        <wool team="red-team" color="light blue" monument="light_blue-red-monument" location="13.5,37,71.5"/>
+        <wool team="blue-team" color="red" monument="red-blue-monument" location="22.5,29,164.5"/>
+        <wool team="red-team" color="blue" monument="blue-red-monument" location="125.5,29,75.5"/>
+        <wool team="blue-team" color="orange" monument="orange-blue-monument" location="106.5,29,168.5"/>
+        <wool team="red-team" color="light blue" monument="light_blue-red-monument" location="41.5,29,71.5"/>
     </wools>
     <spawners>
         <spawner spawn-region="red-wool-spawn" player-region="red-room" delay="1.5s">
@@ -158,15 +165,18 @@
         <spawner spawn-region="light_blue-wool-spawn" player-region="light_blue-room" delay="1.5s">
             <item material="wool" damage="3"/>
         </spawner>
-        <spawner spawn-region="golden-apple" player-region="golden-apple-near" delay="45s" max-entities="1">
+        <spawner spawn-region="golden-apple-red-island" player-region="golden-apple-red-island-near" delay="45s" max-entities="1">
+            <item material="golden apple"/>
+        </spawner>
+        <spawner spawn-region="golden-apple-blue-island" player-region="golden-apple-blue-island-near" delay="45s" max-entities="1">
             <item material="golden apple"/>
         </spawner>
     </spawners>
-    <maxbuildheight>60</maxbuildheight>
+    <maxbuildheight>32</maxbuildheight>
     <portals>
         <portal y="@-64" sound="false" observers="never">
             <region>
-                <below y="6"/>
+                <below y="16"/>
             </region>
         </portal>
     </portals>

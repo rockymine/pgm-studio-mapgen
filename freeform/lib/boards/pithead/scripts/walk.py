@@ -6,6 +6,8 @@ footing; every objective's own check.
 """
 import sys
 
+import numpy as np
+
 import plan as P
 from mapxml import OBJECTIVES, spawn_box
 from pgmvox import B, World
@@ -43,8 +45,19 @@ for team, start, other_box in (("red", home, spawn_box.image(P.SYM)), ("blue", t
                     print(f"  own monument for {wool.color}: {walk.nearest(d, w.x0, w.z0, *wool.slot, 2)}")
             else:
                 print(f"  {wool.color} wool it keeps, {label}: {walk.nearest(d, w.x0, w.z0, *wool.found, 2)}")
-    front = (50, YS + P.SURFACE_RISE, 145) if team == "red" else turn((50, YS + P.SURFACE_RISE, 145))
+    front = (50, YS - 2, 146) if team == "red" else turn((50, YS - 2, 146))
     print(f"  its frontline's edge over the middle: {walk.nearest(d, w.x0, w.z0, *front, 2)}")
+# the middle crossed by bridging the build zones at the islands' and frontlines' levels
+zone = np.zeros((w.sx, w.sz), bool)
+for x0, z0, x1, z1 in P.BUILD + [(*P.RC(b[2:]), *P.RC(b[:2])) for b in P.BUILD]:
+    zone[x0 - w.x0:x1 - w.x0 + 1, z0 - w.z0:z1 - w.z0 + 1] = True
+d = walk.walk(closed(spawn_box.image(P.SYM)), [home], w.x0, w.z0,
+              walk.MoveRules(build=(zone, (YS - 3, YS - 2)), kill_y=P.KILL_Y))
+island = (57, YS - 3, 125)
+print("red, bridging the middle:")
+print(f"  its own island: {walk.nearest(d, w.x0, w.z0, *island, 2)}")
+print(f"  blue's island: {walk.nearest(d, w.x0, w.z0, *turn(island), 2)}")
+print(f"  blue's frontline: {walk.nearest(d, w.x0, w.z0, *turn((50, YS - 2, 146)), 2)}")
 print("footing problems:", len(audit.footing(w)))
 problems = OBJECTIVES.check(w)
 print("objectives with a problem:", len(problems))
