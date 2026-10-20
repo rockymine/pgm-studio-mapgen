@@ -382,3 +382,75 @@ def lay_crust(w, x, z, ground, look):
         w.set(x, top, z, B.AIR)
         top -= 1
     w.set(x, top, z, *look.crust(x, z))
+
+
+ROCKY = {B.STONE, B.COBBLE, B.STAINED_CLAY, B.CLAY}
+
+
+def rock_faces(w, floor_cells, feet, keep_out, lean, notch, look, reach=3, open_beyond=8):
+    """Bare rock walls made to overhang and be undercut, never climbed. A face is a rock column beside a floor whose
+    block over the floor is rock. Over the floor up to `reach` out from a face the face's own column is carried
+    across, from a height that rises with the distance out to the column's top, so the jutting rock is unbroken up to
+    the crust and starts at least three over the floor, and only where the floor runs on `open_beyond` past it, so no
+    gap across a cut is narrowed to a jump; `lean(face)` (0 to 1) says how far a face juts. At the foot of
+    a face where `notch(face)` is high the rock is hollowed two or three high, one or two deep. Returns the columns
+    jutted over and the columns hollowed."""
+    floor_set = set(floor_cells)
+    faces = {}
+    for x, z in floor_set:
+        if keep_out(x, z):
+            continue
+        for a, b in DIRS.values():
+            c = (x + a, z + b)
+            if c in floor_set or keep_out(*c) or c in faces:
+                continue
+            block = w.get(c[0], feet(x, z) + 1, c[1])
+            if block[0] in ROCKY and not (block[0] == B.STONE and block[1] == 6):
+                faces[c] = (feet(x, z), (-a, -b))
+    # how far out each floor column lies from a face, and which face
+    reached, frontier = {}, []
+    for c, (f, _) in faces.items():
+        for a, b in DIRS.values():
+            n = (c[0] + a, c[1] + b)
+            if n in floor_set and not keep_out(*n) and n not in reached:
+                reached[n] = (1, c)
+                frontier.append(n)
+    for d in range(2, reach + 1):
+        nxt = []
+        for cell in frontier:
+            for a, b in DIRS.values():
+                n = (cell[0] + a, cell[1] + b)
+                if n in floor_set and not keep_out(*n) and n not in reached:
+                    reached[n] = (d, reached[cell][1])
+                    nxt.append(n)
+        frontier = nxt
+    jutted = set()
+    for (x, z), (d, s) in reached.items():
+        r = int(lean(*s) * (reach + 1))
+        if d > r:
+            continue
+        a, b = faces[s][1]
+        if not all((s[0] + a * k, s[1] + b * k) in floor_set for k in range(d, d + open_beyond + 1)):
+            continue                       # a jut over a narrow cut would leave a gap a player could jump
+        f = feet(x, z)
+        top = w.top(*s)
+        h = f + max(3, int((top - f) * 0.55)) + (d - 1) * 2
+        if h >= top:
+            continue
+        for y in range(h, top + 1):
+            w.set(x, y, z, *w.get(s[0], y, s[1]))
+        jutted.add((x, z))
+    hollowed = set()
+    for c, (f, (a, b)) in faces.items():
+        v = notch(*c)
+        if v < 0.62:
+            continue
+        high = 2 if v < 0.82 else 3
+        for k in (0, 1) if v > 0.74 else (0,):
+            x, z = c[0] + a * k, c[1] + b * k
+            if w.top(x, z) < f + high + 3:
+                continue
+            w.column(x, z, f, f + high - 1, B.AIR)
+            w.set(x, f - 1, z, *look.cut_floor(x, z))
+            hollowed.add((x, z))
+    return jutted, hollowed

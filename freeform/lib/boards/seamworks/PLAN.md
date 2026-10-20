@@ -118,6 +118,15 @@ hardened clay and one of orange clay. Under them is the rock, so a cut wall show
 player walks on is stone. The rock nobody could dig, the ribs, the mesa, the pillars and the masses beside the
 middle, is stone to its top.
 
+**A bare rock face overhangs and is undercut, and none can be climbed.** Over the floor beside a face the rock juts
+out one to three blocks, starting at least three over the floor and higher the further out it reaches, and it runs
+unbroken up to the crust, so it leaves no ledge to stand on. It juts only where the floor runs on eight blocks past
+it, so no cut is narrowed to a jump.
+
+**At a face's foot the rock is hollowed two or three high in places.** Panelled
+walls, and the rock within reach of a ladder, door, stall, lamp, tunnel mouth, flag post or plated seam, are left
+straight.
+
 **Thin beds run through the stone.** Every eight blocks a dark bed of cyan clay, and halfway between two of them a
 pale bed of clay, each a block thick, leaning a little with the crust and broken where a noise field is low. They
 show in the faces of the cuts and the standing rock, never on a top a player walks on, and the stone's own mix of

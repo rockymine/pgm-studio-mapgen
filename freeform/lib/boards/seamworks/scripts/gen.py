@@ -192,11 +192,26 @@ for cut in P.CUTS[:2]:
 for (x, z), side in P.LADDERS:
     A.ladder_bay(w, x, z, side, feet(x, z), ground, LOOK)
 
+# ---- the bare rock faces: overhanging, undercut at the foot, nothing to climb --------------------------------------------
+def around(points, r):
+    out = set()
+    for x, z in points:
+        out |= {(x + a, z + b) for a in range(-r, r + 1) for b in range(-r, r + 1)}
+    return out
+
+
+flag_cells = {c for _, c, _ in P.FLAG_POSTS} | {(P.W - 1 - x, P.H - 1 - z) for _, (x, z), _ in P.FLAG_POSTS}
+spared = (around({c for c, _ in P.LADDERS} | mouths | flag_cells | {c for c, _ in P.STALLS}, 3)
+          | around(set(P.LAMPS) | building_cells | heaped, 2) | around(plated, 1)
+          | around({(x, z) for x, _, z in claims}, 2) | {c for c in cells(ramp)}
+          | {c for _, line in P.DOORS for c in around(set(line), 3)})
+jutted, hollowed = A.rock_faces(w, list(cells(floor)), feet, lambda x, z: not on_board(x, z) or (x, z) in spared,
+                                lambda x, z: L._at(L.ROCK_B, x * 2 + 7, z), lambda x, z: L._at(L.WEAR, x + 11, z * 2),
+                                LOOK)
+
 # ---- the floor worn, clear of everything a player has to find or stand at --------------------------------------------------
-near = set()
-for x, z in ({c for c, _ in P.LADDERS} | {c for c, _ in P.STALLS} | set(P.LAMPS) | mouths | plated | building_cells
-             | {c for _, c, _ in P.FLAG_POSTS} | {(P.W - 1 - x, P.H - 1 - z) for _, (x, z), _ in P.FLAG_POSTS}):
-    near |= {(x + a, z + b) for a in range(-2, 3) for b in range(-2, 3)}
+near = around({c for c, _ in P.LADDERS} | {c for c, _ in P.STALLS} | set(P.LAMPS) | mouths | plated | building_cells
+              | flag_cells, 2)
 eligible = [(x, z) for x, z in cells(floor & ~ramp) if (x, z) not in near and (x, z) not in heaped
             and all(is_floor(x + a, z + b) and feet(x + a, z + b) == feet(x, z) for a, b in DIRS.values())]
 worn = A.wear(w, eligible, feet, lambda x, z: 2 if L._at(L.WEAR, x, z) > 0.8 else 1 if L._at(L.WEAR, x, z) > 0.66
@@ -224,7 +239,8 @@ for team, (x, z), d in ((0, P.FLAG_POSTS[0][1], P.FLAG_POSTS[0][2]),
     w.banner(x, YS + d, z, 15 - DYES["green" if team == 0 else "purple"], rot=12 if team == 0 else 4)
 
 w.save(sys.argv[1], "Seamworks", (P.SPAWN_AT[0], YS - 8, P.SPAWN_AT[1]))
-print("generated", int(floor.sum()), "floor columns,", len(claims), "panel blocks,", worn, "worn")
+print("generated", int(floor.sum()), "floor columns,", len(claims), "panel blocks,", worn, "worn,", len(jutted),
+      "jutting over the floor,", len(hollowed), "hollowed at a face's foot")
 print("panels left out where two walls met, by the middle of their foot:")
 for i in dropped:
     a, b = quads[i][0], quads[i][1]
