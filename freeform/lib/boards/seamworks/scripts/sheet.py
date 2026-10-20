@@ -114,6 +114,7 @@ for k, name in enumerate(L.BUILDINGS):
     A.door(w, [(x0 + 37, z) for z in range(z0 + 20, z0 + 23)], YS - 8, look)
     A.chimney(w, (x0 + 8, z0 + 7, x0 + 10, z0 + 9), 9, look)
     A.chimney(w, (x0 + 33, z0 + 18, x0 + 34, z0 + 19), 5, look, plume=7)
+    A.lay_roof_kit(w, A.roof_kit(A.flat_roof(w, A.poly_cells(hall)), around=A.flat_roof(w, A.poly_cells(hall), True)), look)
     w.sign(x0 + 46, YS, z0 + 2, ["works", name])
     shot(f"works-{name.replace(' ', '-')}.png", (x0 - 1, YS - 9, z0 - 1, x0 + 45, YS + 22, z0 + 41), yaw=200, pitch=22)
 

@@ -129,6 +129,16 @@ for name, line in P.DOORS:
     A.door(w, line, YS + d, LOOK)
 for name, box, h in P.CHIMNEYS:
     A.chimney(w, box, h, LOOK, drift=(1, 0) if box[0] < P.W / 2 else (-1, 0))     # one wind, turned with the board
+# what stands on the roofs: placed on red's works and turned onto blue's, so the two halves match
+half = len(P.BUILDINGS) // 2
+equipment = 0
+for name, poly, d, sections in P.BUILDINGS[:half]:
+    roof = A.flat_roof(w, A.poly_cells(poly))
+    lit = A.flat_roof(w, A.poly_cells(poly), skylights=True)
+    for kit in (A.roof_kit(roof, around=lit),
+                A.roof_kit(roof, mirror=lambda c: (P.W - 1 - c[0], P.H - 1 - c[1]), around=lit)):
+        A.lay_roof_kit(w, kit, LOOK)
+        equipment += len(kit)
 for (x, z), facing in P.FURNACES:
     d = next(dd for n, pg, dd, _ in P.BUILDINGS if A.pip((x + .5, z + .5), pg))
     w.set(x, YS + d, z, B.FURNACE, {"e": 5, "w": 4}[facing])
@@ -278,7 +288,7 @@ for team, (x, z), d in ((0, P.FLAG_POSTS[0][1], P.FLAG_POSTS[0][2]),
 
 w.save(sys.argv[1], "Seamworks", (P.SPAWN_AT[0], YS - 8, P.SPAWN_AT[1]))
 print("generated", int(floor.sum()), "floor columns,", len(claims), "panel blocks,", worn, "worn,", len(jutted),
-      "jutting over the floor,", len(hollowed), "hollowed at a face's foot,", rimmed, "rim blocks,", chevroned, "chevron blocks,", int(land.sum()), "columns of land")
+      "jutting over the floor,", len(hollowed), "hollowed at a face's foot,", rimmed, "rim blocks,", chevroned, "chevron blocks,", int(land.sum()), "columns of land,", equipment, "pieces on the roofs")
 print("panels left out where two walls met, by the middle of their foot:")
 for i in dropped:
     a, b = quads[i][0], quads[i][1]

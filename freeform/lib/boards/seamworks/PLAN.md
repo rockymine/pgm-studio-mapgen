@@ -153,6 +153,12 @@ pale bed of clay, each a block thick, leaning a little with the crust and broken
 show in the faces of the cuts and the standing rock, never on a top a player walks on, and the stone's own mix of
 stone, andesite and cobblestone is left as it was.
 
+**The works' roofs carry their plant.** Cooling units, smooth stone boxes three by two with iron-bar grilles down their
+long sides and fans on top, stand in rows two in from the parapet every seven blocks. Vents, a cobblestone-wall pipe
+under a slab, stand in the corners, and each building's highest roof carries an antenna: an iron-bar mast six high
+with two cross-arms and a redstone block at its tip. They keep clear of the chimneys and stand beside the skylights,
+never on them, and blue's are red's turned.
+
 **The crust is badlands with soot sunk into it.** Red sand and red sandstone are the ground, with orange clay in it.
 Large patches, about a third of the crust, are cored with black clay and dark oak planks a block below the crust and
 two in their deepest part, ringed in coarse dirt and podzol. Grey ash, flat clay and a smaller speckle of soot were

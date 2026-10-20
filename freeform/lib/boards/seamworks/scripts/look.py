@@ -232,6 +232,11 @@ class Look:
         return {"deck": (B.STONEBRICK, 0), "plinth": (B.STONE, 6), "post": (B.NETHER_FENCE, 0),
                 "canopy": (B.SLAB, 5 | 8), "light": (B.GLOWSTONE, 0)}[role]
 
+    def roof_kit(self, x, y, z, role):
+        return {"body": (B.DSLAB, 8), "grille": (B.IRON_BARS, 0), "fan": (151, 0), "pipe": (B.COBBLE_WALL, 0),
+                "cap": (B.SLAB, 0), "footing": (B.STONE, 6), "mast": (B.IRON_BARS, 0), "arm": (B.IRON_BARS, 0),
+                "tip": (B.REDSTONE_BLOCK, 0)}[role]
+
     def rim(self, team):
         return (B.STAINED_CLAY, 14) if team == 0 else (B.STAINED_CLAY, 11)
 

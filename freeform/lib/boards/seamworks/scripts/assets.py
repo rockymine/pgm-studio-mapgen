@@ -574,3 +574,104 @@ def chevrons(w, at, forward, floor_y, ok, look, team, count=2, size=2, gap=3):
                     w.set(x, floor_y[(x, z)] - 1, z, *look.rim(team))
                     laid += 1
     return laid
+
+
+# ---- what stands on a works roof --------------------------------------------------------------------------------------
+def cooling_unit(w, box, y, look):
+    """A cooling unit on a roof at `y` (the roof's own course): a box two high over the footprint (x0, z0, x1, z1),
+    grilles down its long sides, fans along its top. The look is asked for "body", "grille" and "fan"."""
+    x0, z0, x1, z1 = box
+    long_x = x1 - x0 >= z1 - z0
+    for x in range(x0, x1 + 1):
+        for z in range(z0, z1 + 1):
+            side = (z in (z0, z1)) if long_x else (x in (x0, x1))
+            end = (x in (x0, x1)) if long_x else (z in (z0, z1))
+            w.set(x, y + 1, z, *look.roof_kit(x, y + 1, z, "body" if end or not side else "grille"))
+            w.set(x, y + 2, z, *look.roof_kit(x, y + 2, z, "fan" if not end else "body"))
+
+
+def vent(w, x, z, y, look):
+    """A vent on a roof at `y`: a pipe two high under a cap."""
+    w.set(x, y + 1, z, *look.roof_kit(x, y + 1, z, "pipe"))
+    w.set(x, y + 2, z, *look.roof_kit(x, y + 2, z, "pipe"))
+    w.set(x, y + 3, z, *look.roof_kit(x, y + 3, z, "cap"))
+
+
+def antenna(w, x, z, y, height, look):
+    """An antenna on a roof at `y`: a footing, a mast `height` high with two cross-arms, a light at its tip."""
+    w.set(x, y + 1, z, *look.roof_kit(x, y + 1, z, "footing"))
+    for k in range(2, height + 2):
+        w.set(x, y + k, z, *look.roof_kit(x, y + k, z, "mast"))
+    for k in (height - 1, height - 3):
+        for a, b in ((1, 0), (-1, 0)) if (x + z) % 2 else ((0, 1), (0, -1)):
+            w.set(x + a, y + k, z + b, *look.roof_kit(x + a, y + k, z + b, "arm"))
+    w.set(x, y + height + 2, z, *look.roof_kit(x, y + height + 2, z, "tip"))
+
+
+def roof_kit(roof_cells, mirror=None, around=None):
+    """Where a works roof's equipment stands, as [(kind, at)] over `roof_cells` {(x, z): roof y}: cooling units of
+    three by two along the roof two in from its edge every seven blocks, vents in its corners, and an antenna on its
+    highest part. `around` is the roof a piece may stand beside, skylights included, and defaults to `roof_cells`.
+    `mirror` maps a cell to its image under the board's symmetry and is applied to every placement."""
+    if not roof_cells:
+        return []
+    around = around or roof_cells
+    free = {c for c in roof_cells if all((c[0] + a, c[1] + b) in around and around[(c[0] + a, c[1] + b)] ==
+                                         roof_cells[c] for a in range(-1, 2) for b in range(-1, 2))}
+    out, taken = [], set()
+
+    def fits(cells):
+        return all(c in free and c not in taken for c in cells)
+    xs = sorted({x for x, _ in free})
+    zs = sorted({z for _, z in free})
+    if not xs:
+        return []
+    long_x = xs[-1] - xs[0] >= zs[-1] - zs[0]
+    rows = [zs[0] + 1, zs[-1] - 2] if long_x else [xs[0] + 1, xs[-1] - 2]
+    for row in rows:
+        lo, hi = (xs[0], xs[-1]) if long_x else (zs[0], zs[-1])
+        for start in range(lo + 1, hi - 2, 7):
+            box = (start, row, start + 2, row + 1) if long_x else (row, start, row + 1, start + 2)
+            cells = {(x, z) for x in range(box[0], box[2] + 1) for z in range(box[1], box[3] + 1)}
+            if fits(cells):
+                taken |= cells | {(x + a, z + b) for x, z in cells for a in (-1, 0, 1) for b in (-1, 0, 1)}
+                out.append(("cooling", box, roof_cells[(box[0], box[1])]))
+    for x, z in ((xs[0], zs[0]), (xs[-1], zs[-1]), (xs[0], zs[-1]), (xs[-1], zs[0])):
+        near = min(free, key=lambda c: abs(c[0] - x) + abs(c[1] - z))
+        if near not in taken:
+            taken |= {(near[0] + a, near[1] + b) for a in (-1, 0, 1) for b in (-1, 0, 1)}
+            out.append(("vent", near, roof_cells[near]))
+    top = max(roof_cells.values())
+    high = [c for c in free if roof_cells[c] == top and c not in taken]
+    if high:
+        c = min(high, key=lambda c: (c[0] + c[1], c[0]))
+        out.append(("antenna", c, top))
+    if mirror:
+        def turn(kind, at, y):
+            if kind == "cooling":
+                (ax, az), (bx, bz) = mirror((at[0], at[1])), mirror((at[2], at[3]))
+                return kind, (min(ax, bx), min(az, bz), max(ax, bx), max(az, bz)), y
+            return kind, mirror(at), y
+        out = [turn(*o) for o in out]
+    return out
+
+
+def lay_roof_kit(w, kit, look):
+    for kind, at, y in kit:
+        if kind == "cooling":
+            cooling_unit(w, at, y, look)
+        elif kind == "vent":
+            vent(w, at[0], at[1], y, look)
+        else:
+            antenna(w, at[0], at[1], y, 6, look)
+
+
+def flat_roof(w, cells, skylights=False):
+    """{(x, z): y} for the cells of a building whose top is plain roof, not a parapet or a chimney; with `skylights`
+    the skylights too."""
+    out = {}
+    for x, z in cells:
+        y = w.top(x, z)
+        if w.get(x, y, z) == (B.DSLAB, 0) or (skylights and w.id(x, y, z) == B.GLASS):
+            out[(x, z)] = y
+    return out
