@@ -331,3 +331,9 @@ APRON_MASK = _apron()
 
 def on_apron(x, z):
     return 0 <= x < W and 0 <= z < H and bool(APRON_MASK[x, z])
+
+
+# ---- dead ground: a few bare olives from the studio's tree library, and the biomes that brown its leaves ------------
+OLIVES = ["olive-6", "olive-7", "olive-8", "olive-9", "olive-10"]
+TREES_PER_SIDE = 5
+BIOME_MESA, BIOME_SWAMP = 37, 6

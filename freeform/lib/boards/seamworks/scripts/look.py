@@ -194,6 +194,20 @@ class Look:
         g = self.C["ground"]
         return g[min(int(_at(ASH_FINE, x, z) * len(g)), len(g) - 1)]
 
+    def patch(self, x, z):
+        """Which part of a soot patch a column is in: "core", "rim", or None on the orange ground."""
+        v = _at(ASH, x, z)
+        return "core" if v < SOOT else "rim" if v < RIM else None
+
+    def soot_depth(self, x, z):
+        """How far a soot patch runs down under the crust's top: four in its core, three in its deep core's middle,
+        two in its rim."""
+        part = self.patch(x, z)
+        return {"core": 4, "rim": 2, None: 0}[part]
+
+    def soot_under(self, x, y, z):
+        return pick(self.C["core" if self.patch(x, z) == "core" else "rim"], x, y, z)
+
     def sunk(self, x, z):
         """How many blocks lower the crust lies here: two in a soot patch's deep core, one in the rest of its core."""
         if P.on_apron(x, z):

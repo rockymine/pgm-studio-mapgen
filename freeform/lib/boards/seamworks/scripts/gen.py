@@ -279,6 +279,58 @@ AWNINGS = [12, 8, 7]                       # brown, light grey and grey wool, wh
 for k, ((x, z), facing) in enumerate(P.STALLS):
     props.stall(w, x, feet(x, z) - 1, z, facing, awning=AWNINGS[k % 3], stripe=0)
 
+# ---- dead ground: slabs on the orange ground's steps, dead leaves, bare olives, mesa and swamp ------------------------
+ORANGE = {(B.SAND, 1), (B.RED_SANDSTONE, 0), (B.STAINED_CLAY, 1)}
+SOOTY = {(B.STAINED_CLAY, 15), (B.PLANKS, 5), (B.DIRT, 1), (B.DIRT, 2)}
+crust_top = {}
+for x, z in cells(land & ~floor):
+    if not on_board(x, z) or (x, z) in building_cells:
+        continue
+    t = w.top(x, z)
+    if P.ground(x, z) - 4 <= t < P.ground(x, z) and w.get(x, t, z) in ORANGE | SOOTY:
+        crust_top[(x, z)] = t
+slabbed = 0
+for (x, z), t in crust_top.items():
+    if w.get(x, t, z) not in ORANGE or w.id(x, t + 1, z) != B.AIR:
+        continue
+    if any(crust_top.get((x + a, z + b)) == t + 1 and w.get(x + a, t + 1, z + b) in ORANGE for a, b in DIRS.values()):
+        w.set(x, t + 1, z, 182, 0)                     # a red sandstone slab halves the step
+        slabbed += 1
+mx, mz = P.MONUMENT
+quiet = around({c for c, _ in P.LADDERS} | {P.SHAFT, (P.W - 1 - P.SHAFT[0], P.H - 1 - P.SHAFT[1])}, 3) | \
+    around({(mx, mz), (P.W - 1 - mx, P.H - 1 - mz)}, 6) | around(set(cells(floor)), 2) | around(building_cells, 3)
+leafed = 0
+LEAF = L._field(5, 91)
+for (x, z), t in crust_top.items():
+    if (x, z) in quiet or w.id(x, t + 1, z) != B.AIR:
+        continue
+    if L._at(LEAF, x, z) > 0.74 and L._hash(x, 7, z) < 0.45:
+        w.set(x, t + 1, z, B.LEAVES, 4)                # oak leaves that never decay, browned by the biome
+        leafed += 1
+from dataclasses import replace as _replace  # noqa: E402
+from pgmvox.scenery import trees as T  # noqa: E402
+
+library = T.library()
+bare = [_replace(library[n], blocks=tuple(b for b in library[n].blocks if b[3] not in T.LEAVES)) for n in P.OLIVES]
+GIVES = T.GIVES_WAY | {B.SAND, B.RED_SANDSTONE, B.STAINED_CLAY, B.DIRT, B.PLANKS, B.LEAVES, 182}
+quiet_far = around(quiet, 2)
+sites = sorted((c for c in crust_top if c[0] < P.W / 2 - 10 and c not in quiet_far
+                and P.on_apron(*c) is False and all((c[0] + a, c[1] + b) in crust_top for a in range(-3, 4)
+                                                   for b in range(-3, 4))),
+               key=lambda c: L._hash(c[0], 3, c[1]))
+planted = []
+for x, z in sites:
+    if len(planted) == P.TREES_PER_SIDE:
+        break
+    if any(abs(x - a) + abs(z - b) < 22 for a, b in planted):
+        continue
+    tree = bare[len(planted) % len(bare)]
+    if T.plant(w, x, z, tree, 0, gives_way=GIVES) and T.plant(w, P.W - 1 - x, P.H - 1 - z, tree, 2, gives_way=GIVES):
+        planted.append((x, z))
+for (x, z), t in crust_top.items():
+    w.biome[x - w.x0, z - w.z0] = P.BIOME_SWAMP if LOOK.patch(x, z) else P.BIOME_MESA
+w.biome[w.biome == 1] = P.BIOME_MESA
+
 # ---- nothing that falls stands over air ----------------------------------------------------------------------------------
 for falls, holds in (((B.GRAVEL, 0), (B.STONE, 5)), ((B.SAND, 1), (B.RED_SANDSTONE, 0))):
     loose = (w.ids[:, 1:, :] == falls[0]) & (w.ids[:, :-1, :] == B.AIR)
@@ -295,7 +347,7 @@ for team, (x, z), d in ((0, P.FLAG_POSTS[0][1], P.FLAG_POSTS[0][2]),
 
 w.save(sys.argv[1], "Seamworks", (P.SPAWN_AT[0], YS - 8, P.SPAWN_AT[1]))
 print("generated", int(floor.sum()), "floor columns,", len(claims), "panel blocks,", worn, "worn,", len(jutted),
-      "jutting over the floor,", len(hollowed), "hollowed at a face's foot,", rimmed, "rim blocks,", chevroned, "chevron blocks,", int(land.sum()), "columns of land,", equipment, "pieces on the roofs")
+      "jutting over the floor,", len(hollowed), "hollowed at a face's foot,", rimmed, "rim blocks,", chevroned, "chevron blocks,", int(land.sum()), "columns of land,", equipment, "pieces on the roofs,", slabbed, "slabs,", leafed, "leaves, olives at", planted)
 print("panels left out where two walls met, by the middle of their foot:")
 for i in dropped:
     a, b = quads[i][0], quads[i][1]

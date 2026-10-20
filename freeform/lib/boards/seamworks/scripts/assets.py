@@ -437,7 +437,7 @@ def crust_hollow(w, cells, ground, look, depth=4):
 
 def lay_crust(w, x, z, ground, look):
     """A column's overburden and the crust on it: the orange beds from the stone up, then the crust's top, as many
-    blocks lower as the look sinks it."""
+    blocks lower as the look sinks it, and under a soot patch its soot running a few blocks down."""
     top = ground(x, z) - 1
     for depth in range(1, look.thickness(x, z) + 1):
         w.set(x, top - depth, z, *look.overburden(x, top - depth, z, depth))
@@ -445,6 +445,8 @@ def lay_crust(w, x, z, ground, look):
         w.set(x, top, z, B.AIR)
         top -= 1
     w.set(x, top, z, *look.crust(x, z))
+    for k in range(1, look.soot_depth(x, z) + 1):
+        w.set(x, top - k, z, *look.soot_under(x, top - k, z))
 
 
 ROCKY = {B.STONE, B.COBBLE, B.STAINED_CLAY, B.CLAY}

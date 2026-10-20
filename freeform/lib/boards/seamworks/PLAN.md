@@ -183,6 +183,15 @@ Large patches, about a third of the crust, are cored with black clay and dark oa
 two in their deepest part, ringed in coarse dirt and podzol. Grey ash, flat clay and a smaller speckle of soot were
 tried on the sheet first.
 
+**The crust is dead ground.** A one-block step on the orange ground carries a red sandstone slab on its low side,
+so the surface climbs in halves. A soot patch runs four blocks down in its core and two in its rim, so a cliff or a
+cut through one shows it. The land is mesa and the soot patches swamp, and both brown the scattered oak leaves that
+lie on the orange and the soot, never within reach of a ladder, a monument, a cut's edge or a building.
+
+**Five bare olives stand on each side's crust.** They are the last five of the studio's library, `olive-6` to
+`olive-10`, planted with their leaves taken off, at least twenty-two blocks apart and clear of the cuts, the
+buildings and the monument; blue's are red's turned.
+
 **The floor players walk on is stone, not the crust's ground.** A cut floor is a noise mix of stone and andesite with polished
 andesite and cobblestone in patches, so it is told apart from the crust over it. Its lumps are cobblestone and a
 flight is stone brick. Spoil is heaped soot, black clay and charred boards in coarse dirt and podzol, dark against the
