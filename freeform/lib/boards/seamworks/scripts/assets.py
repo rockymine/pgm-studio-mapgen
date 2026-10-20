@@ -373,9 +373,12 @@ def crust_hollow(w, cells, ground, look, depth=4):
 
 
 def lay_crust(w, x, z, ground, look):
-    """The crust's top at a column: its own block, a block lower where the look sinks it."""
+    """A column's overburden and the crust on it: the orange beds from the stone up, then the crust's top, as many
+    blocks lower as the look sinks it."""
     top = ground(x, z) - 1
-    if look.sunk(x, z):
+    for depth in range(1, look.thickness(x, z) + 1):
+        w.set(x, top - depth, z, *look.overburden(x, top - depth, z, depth))
+    for _ in range(look.sunk(x, z)):
         w.set(x, top, z, B.AIR)
         top -= 1
     w.set(x, top, z, *look.crust(x, z))

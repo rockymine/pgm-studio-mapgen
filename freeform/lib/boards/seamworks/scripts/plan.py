@@ -72,6 +72,9 @@ MESA = [(92, 60), (110, 58), (112, 72), (108, 74), (110, 86), (94, 88), (90, 74)
 KNUCKLE = [(50, 62), (58, 60), (60, 70), (52, 72)]
 _ROCK_HALF = [RIB1, RIB2, MESA, KNUCKLE]
 ROCKS = _ROCK_HALF + [[R(p) for p in r] for r in _ROCK_HALF]
+# the rock the middle's stepped faces were cut into, left standing between the middle and the quarries
+_MASS_HALF = [(160, 48), (160, 55), (165, 56), (167, 63), (172, 64), (174, 70), (176, 72), (182, 42), (178, 36), (160, 34)]
+STANDING = ROCKS + [_MASS_HALF, [R(p) for p in _MASS_HALF]]
 
 # ---- floor depths: the cut's own depth, then zones laid over it in order. A zone is (polygon, depth) or
 # (polygon, (low point, low depth), (high point, high depth)): a ramp or a flight of stairs --------------------------

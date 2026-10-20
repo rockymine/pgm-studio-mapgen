@@ -48,12 +48,16 @@ def on_board(x, z):
     return 0 <= x < P.W and 0 <= z < P.H
 
 
-# ---- the ground: bedrock under rock, the ash on top -------------------------------------------------------------------
+# ---- the ground: bedrock under stone, the orange overburden and its crust over it, the rock left standing bare -------
 w.ids[:, 0, :] = B.BEDROCK
 for x, z in cells(np.ones(X.shape, bool)):
-    w.column(x, z, 1, P.ground(x, z) - 2, B.STONE)
-    A.lay_crust(w, x, z, P.ground, LOOK)
+    w.column(x, z, 1, P.ground(x, z) - 1, B.STONE)
 L.paint_rock(w)
+standing = np.zeros(X.shape, bool)
+for rock in P.STANDING:
+    standing |= mask(rock)
+for x, z in cells(~standing):
+    A.lay_crust(w, x, z, P.ground, LOOK)
 
 # ---- floor depths: each cut's own, then its zones; a flight's step edges wander with the noise ----------------------
 depth = np.full(X.shape, np.nan)
@@ -206,9 +210,10 @@ for x, z in P.LAMPS:
     props.lamp(w, x, feet(x, z) - 1, z, height=3, post=(B.NETHER_FENCE, 0), cap=(B.SLAB, 3))
 
 # ---- nothing that falls stands over air ----------------------------------------------------------------------------------
-loose = (w.ids[:, 1:, :] == B.GRAVEL) & (w.ids[:, :-1, :] == B.AIR)
-w.ids[:, 1:, :][loose] = B.STONE
-w.dat[:, 1:, :][loose] = 5
+for falls, holds in (((B.GRAVEL, 0), (B.STONE, 5)), ((B.SAND, 1), (B.RED_SANDSTONE, 0))):
+    loose = (w.ids[:, 1:, :] == falls[0]) & (w.ids[:, :-1, :] == B.AIR)
+    w.ids[:, 1:, :][loose] = holds[0]
+    w.dat[:, 1:, :][loose] = holds[1]
 
 # ---- the objectives: the flags' banners at their first posts, the monuments --------------------------------------------
 from mapxml import OBJECTIVES  # noqa: E402

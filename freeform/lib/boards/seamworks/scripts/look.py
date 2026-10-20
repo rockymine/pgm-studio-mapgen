@@ -113,8 +113,19 @@ CRUSTS = {
                       "ground": [(B.GRAVEL, 0), (B.STONE, 5), (B.GRAVEL, 0)]},
     "gravel ash": {"core": (B.STAINED_CLAY, 15), "rim": (B.GRAVEL, 0),
                    "ground": [(B.GRAVEL, 0), (B.STONE, 5), (B.GRAVEL, 0)]},
+    "badlands and soot": {"core": [((B.STAINED_CLAY, 15), 7), ((B.PLANKS, 5), 3)],
+                          "rim": [((B.DIRT, 1), 1), ((B.DIRT, 2), 1)],
+                          "ground": [(B.SAND, 1), (B.RED_SANDSTONE, 0), (B.SAND, 1), (B.RED_SANDSTONE, 0), (B.STAINED_CLAY, 1)]},
 }
-SOOT, RIM = 0.24, 0.32                    # where the core and the rim end on the patch field
+DEEP, SOOT, RIM = 0.24, 0.38, 0.47         # where a patch's deep core, its core and its rim end on the patch field
+
+# ---- the overburden: the orange ground the cuts were dug through, in beds that follow the crust, over the stone the
+# diggers struck and left. Its thickness wanders between five and eight blocks ------------------------------------------
+RED_SANDSTONE_DOUBLE = 181                # the double red sandstone slab; data 8 is smooth on every face
+BEDS = [(B.RED_SANDSTONE, 0), (RED_SANDSTONE_DOUBLE, 8), (B.RED_SANDSTONE, 0), (B.HARDENED_CLAY, 0),
+        (RED_SANDSTONE_DOUBLE, 8), (B.RED_SANDSTONE, 0), (B.STAINED_CLAY, 1)]
+OVER = _field(12, 61)
+BED_WOBBLE = _field(9, 62)
 
 # ---- the works, by role ------------------------------------------------------------------------------------------------
 _BUILT_FLOOR = [((B.STONEBRICK, 0), 1), ((B.STONE, 6), 1), ((B.STONE, 5), 1), ((B.STONE, 0), 1)]
@@ -155,8 +166,18 @@ class Look:
         return g[min(int(_at(ASH_FINE, x, z) * len(g)), len(g) - 1)]
 
     def sunk(self, x, z):
-        """Whether the crust is a block lower here: the core of a soot patch."""
-        return _at(ASH, x, z) < SOOT
+        """How many blocks lower the crust lies here: two in a soot patch's deep core, one in the rest of its core."""
+        v = _at(ASH, x, z)
+        return 2 if v < DEEP else 1 if v < SOOT else 0
+
+    def thickness(self, x, z):
+        """How deep the orange ground runs under the crust before the stone."""
+        return 5 + int(_at(OVER, x, z) * 3.99)
+
+    def overburden(self, x, y, z, depth):
+        """The orange ground `depth` blocks under the crust's top, in beds about two blocks deep."""
+        bed = int((depth + _at(BED_WOBBLE, x, z) * 1.6) / 1.7)
+        return BEDS[bed % len(BEDS)]
 
     def cut_floor(self, x, z):
         if _at(FLOOR_B, x, z) > 0.8:
@@ -173,7 +194,8 @@ class Look:
         return (B.STONEBRICK_STAIRS, data)
 
     def spoil(self, x, y, z):
-        return [(B.DIRT, 1), (B.DIRT, 0)][(x * 3 + z + y) % 2]
+        """What the cuts threw out: the orange ground, broken."""
+        return [(B.SAND, 1), (B.DIRT, 1), (B.RED_SANDSTONE, 0), (B.SAND, 1)][(x * 3 + z * 5 + y * 7) % 4]
 
     def seam(self, x, y, z):
         return (B.NETHERRACK, 0)
@@ -201,7 +223,7 @@ class Look:
         return (B.GLOWSTONE, 0)
 
 
-LOOK = Look(panels="crossed, weathered by green wool", crust="soot and charred boards")
+LOOK = Look(panels="crossed, weathered by green wool", crust="badlands and soot")
 
 
 def paint_rock(w, look=LOOK):

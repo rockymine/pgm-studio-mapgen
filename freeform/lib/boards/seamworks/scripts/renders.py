@@ -33,6 +33,9 @@ if os.environ.get("MINECRAFT_JAR"):
     shots = [("40-green-back-corner.png", (0, P.YS - 12, 10, 64, P.YS + 22, 128), 225, 30),
              ("41-green-crust-and-quarry.png", (52, P.YS - 12, 22, 132, P.YS + 6, 100), 200, 34),
              ("42-the-middle-and-slots.png", (118, P.YS - 15, 24, 182, P.YS + 20, 116), 215, 36),
-             ("43-twin-cut-and-spoil-heap.png", (100, P.YS - 12, 0, 212, P.YS + 18, 34), 160, 32)]
+             ("43-twin-cut-and-spoil-heap.png", (100, P.YS - 12, 0, 212, P.YS + 18, 34), 160, 32),
+             ("full-from-south-east.png", (0, P.YS - 24, 0, P.W, P.YS + 40, P.H), 210, 38),
+             ("full-from-north-west.png", (0, P.YS - 24, 0, P.W, P.YS + 40, P.H), 30, 38),
+             ("full-from-above.png", (0, P.YS - 24, 0, P.W, P.YS + 40, P.H), 180, 80)]
     print(render.textured(build, [dict(out=os.path.join(out, n), box=b, yaw=yaw, pitch=pitch, fov=55, w=1200, h=800)
                                   for n, b, yaw, pitch in shots]))

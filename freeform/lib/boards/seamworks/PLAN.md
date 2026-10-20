@@ -2,8 +2,8 @@
 
 **Seamworks is a dig under poisoned air.** Trenches eight to thirteen blocks deep are held back by dark steel
 panels leaned against the cut, rock that would not cut is left standing, and a hot seam runs under plated floors.
-The town lives in the cuts: brick works stand in them, a market keeps each forecourt, and the ash
-lies on everything above.
+The town lives in the cuts: brick works stand in them, a market keeps each forecourt, and soot
+lies in black patches on the orange ground above.
 
 **`scripts/plan.py` is the board.** Every cut, depth, wall, building, seam, spoil heap, ladder, tunnel, stall, lamp
 and objective is stated there for team green, and team purple's half is its half turn about the middle. `look.py`
@@ -112,13 +112,21 @@ corners and the base, smooth stone at each storey's band, the sills and the corn
 in polished andesite every fourth course, crowned in cobblestone wall, with a plume of grey glass drifting downwind,
 one wind for the whole board.
 
-**The crust is gravel ash with soot sunk into it.** Gravel and andesite are the ground. Large patches are cored with
-black clay and dark oak planks a block below the crust, ringed in coarse dirt and podzol. Flat clay and a smaller
-speckle of soot were tried on the sheet and read as dead ground.
+**The cuts were dug through orange ground down to stone, and the stone is what was left.** Under the crust lie five
+to eight blocks of overburden in beds that follow the crust: red sandstone, smooth red sandstone, a thinner bed of
+hardened clay and one of orange clay. Under them is the rock, so a cut wall shows orange over grey and every floor a
+player walks on is stone. The rock nobody could dig, the ribs, the mesa, the pillars and the masses beside the
+middle, is stone to its top.
 
-**The floor players walk on is stone, not ash.** A cut floor is a noise mix of stone and andesite with polished
+**The crust is badlands with soot sunk into it.** Red sand and red sandstone are the ground, with orange clay in it.
+Large patches, about a third of the crust, are cored with black clay and dark oak planks a block below the crust and
+two in their deepest part, ringed in coarse dirt and podzol. Grey ash, flat clay and a smaller speckle of soot were
+tried on the sheet first.
+
+**The floor players walk on is stone, not the crust's ground.** A cut floor is a noise mix of stone and andesite with polished
 andesite and cobblestone in patches, so it is told apart from the crust over it. Its lumps are cobblestone and a
-flight is stone brick. Spoil is dirt and coarse dirt, the seam's rock netherrack. Nothing that falls stands over
+flight is stone brick. Spoil is the overburden broken, red sand, red sandstone and coarse dirt, and the
+seam's rock is netherrack. Nothing that falls stands over
 air.
 
 **The town's dressing is placed, not scattered.** Three stalls stand against the forecourt's rock, out of the flag's
