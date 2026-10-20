@@ -631,8 +631,8 @@ cuts tunnels, chambers, rooms and shafts out of the laid ground, and an arch lay
 floor is a surface that trees name with `on`, and the symmetry turns them with the world.
 
 **`examples/hold/` is a valley built on three floors.** A Shelf at 68 rests on a hill and hangs over a meadow, its
-stream falling into the river; an arch carries the road over the river; a mouth in the hill's cliff leads down to a
-cavern; and under a ruined keep a well drops into an undercroft, a crypt, cells and a cistern, where a miners'
+stream falling into the river; an arch carries the road over the river to a hamlet of seven houses round a green; a
+mouth in the hill's cliff leads down to a cavern; and under the keep on the green a well drops into an undercroft, a crypt, cells and a cistern, where a miners'
 tunnel from the cavern broke into the crypt. Its read-back gives the air under the Shelf, the arch's clearance, the
 mouth and every room's floor.
 

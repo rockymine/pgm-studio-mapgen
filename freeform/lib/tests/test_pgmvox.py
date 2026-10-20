@@ -1218,6 +1218,19 @@ class LayerLevels(unittest.TestCase):
         self.assertTrue((lining == B.STONEBRICK).all())
         self.assertGreater(int((b.world.ids == B.GRAVEL).sum()), 0)           # the cave beside it was dressed
 
+    def test_a_house_stands_on_the_ground_and_a_wood_keeps_clear_of_it(self):
+        house = {"id": "house", "op": "house", "at": [0, 0], "heading": 0, "L": 9, "W": 6, "storeys": 1}
+        posts = {"id": "posts", "op": "blocks", "boxes": [{"box": [12, 41, 12, 12, 43, 12], "block": "SPRUCE_FENCE"}]}
+        trees = {"id": "wood", "op": "trees", "area": {"board": {}}, "kinds": {"oak": 1}, "tries": 400, "seed": 2,
+                 "clear": 2, "spacing": 1.6}
+        b = self.build(self.doc(build=[house, posts], dress=[trees]))
+        built = next(s for s in b.steps if s.id == "house").changed
+        self.assertGreater(int(built.sum()), 40)
+        self.assertNotEqual(b.world.id(0, 41, -3), B.AIR)                    # a wall on the plate
+        self.assertEqual([b.world.id(12, y, 12) for y in (41, 43, 44)], [B.SPRUCE_FENCE, B.SPRUCE_FENCE, B.AIR])
+        trunks = np.isin(b.world.ids[:, 41, :], (B.LOG, B.LOG2)) & ~built                   # its own posts aside
+        self.assertFalse((trunks & ndimage.binary_dilation(built, iterations=2)).any())
+
     def test_symmetry_turns_the_surfaces(self):
         half = {"id": "half", "op": "half", "keep": {"lt": ["x", 0]}}
         b = self.build(self.doc(levels=[self.level(at=(-12, 0), r=6)], symmetry=[half]))

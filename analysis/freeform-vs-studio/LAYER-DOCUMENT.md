@@ -39,7 +39,7 @@ the layers run as listed.
 | volume | `volume` | bodies set into the ground: a box turned and tilted, sunk, painted in its own frame, hollowed |
 | structures | `structures` | masses with patterned faces, floors laid as fields |
 | build | `build` | what stands on the finished ground: a path's surface and steps, walls, hedges, fences |
-| dress | `dress` | trees and scattered things, kept `clear` blocks (3 unless stated) off everything built |
+| dress | `dress` | trees and scattered things, kept `clear` blocks (3 unless stated) off everything built, their crowns `spacing` crown radii apart (0.85 unless stated) |
 | symmetry | `symmetry` | the drawn part copied onto its image, recoloured for the other team |
 
 ## Areas
@@ -139,6 +139,8 @@ the slope and rock in beds that follow the surface. The water's bed has a stack 
 |---|---|---|
 | `surface` | `near` (a path layer), `blocks`, `weights`, `steps`: none, `stairs` (`stair`) or `half` (`slab`) | `route.pave`, `route.steps`, `route.halfsteps` |
 | `wall` | `line` or `near` + `offset`, `height`, `width`, `crown` (`follow`, `level`, `grade`), `run`, `blocks`, `weights`, `cap`, `crenel`, `gap`, `closed` | `build.line_wall` |
+| `house` | `at`, `heading`, `L`, `W`, `storeys`, `style` (`town`, `plaster`, `brick`, `stone`), `roof`, `door`, `jetty`, `chimney` | `build.house` |
+| `blocks` | `boxes`, each a `box` (x0, y0, z0, x1, y1, z1) and a `block` | the document's own |
 
 **A hedge, a wall and a fence are the same layer with different blocks.** The island's hedge runs four blocks off
 the road with a gap every fourteen, and its curtain wall holds its crown level over runs of five:
@@ -146,6 +148,10 @@ the road with a gap every fourteen, and its curtain wall holds its crown level o
 ```json
 {"id": "hecke", "op": "wall", "near": "strasse", "offset": 4, "height": 1, "blocks": [["LEAVES", 4]], "gap": [14, 2]}
 ```
+
+**A house stands on the highest ground under it, its plate filled down to the rest.** Its footprint counts as
+built, so a wood keeps `clear` of it. A `blocks` layer sets boxes of one block each, for what no other layer
+says: the posts and roof over a well.
 
 **A path is two layers, because it does two things at two times.** The `path` layer grades the ground in the
 ground stage; the `surface` layer lays its blocks and steps once the ground is laid. Half steps are blocks and

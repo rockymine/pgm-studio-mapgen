@@ -51,14 +51,14 @@
                   {"noise": {"field": "big", "rise": 2.0}}],
         "note": "68, a crest in its north-west, rolling"},
        {"id": "shelf-stream", "op": "river", "line": [[30, 62], [46, 58], [62, 52], [80, 50]],
-        "width": 4, "depth": 2, "water": 1, "bank": 2, "note": "a stream east across the Shelf to its lip"}
+        "width": 3, "depth": 1, "water": 1, "bank": 2, "note": "a brook east across the Shelf to its lip"}
      ],
      "paint": [
        {"block": ["DIRT", 2], "slope": [null, 25], "noise": {"field": "patch", "lo": 0.35}},
        {"block": ["STONE", 5], "slope": [35, null]}
      ],
      "underside": {"taper": [3, 0.35], "rough": 3, "seed": 4, "clear": 5},
-     "falls": [{"at": [77, 51], "r": 2.5}],
+     "falls": [{"at": [77, 50], "r": 0.8}],
      "note": "a second ground over the first, resting on the Knuckle, its stream falling into the river"}
   ],
   "carve": [
@@ -110,11 +110,30 @@
      "note": "the stone arch the river has cut under, joining the ridges"}
   ],
   "build": [
-    {"id": "keep", "op": "wall", "line": [[110, 62], [126, 62], [126, 80], [110, 80]], "closed": true, "height": 5,
+    {"id": "keep", "op": "wall", "line": [[110, 62], [126, 62], [126, 80], [110, 80]], "closed": true, "height": 7,
      "crown": "follow", "blocks": [["STONEBRICK", 0], ["STONEBRICK", 1], ["STONEBRICK", 2], ["COBBLE", 0]],
      "weights": [4, 2, 2, 1], "crenel": ["STONEBRICK", 0], "gap": [36, 3], "note": "the ruined keep round the well"},
     {"id": "well-head", "op": "wall", "line": [[115, 67], [121, 67], [121, 73], [115, 73]], "closed": true,
      "height": 1, "crown": "level", "blocks": [["COBBLE", 0]], "note": "the well's kerb"},
+    {"id": "well-roof", "op": "blocks", "boxes": [
+       {"box": [115, 42, 67, 115, 43, 67], "block": "SPRUCE_FENCE"}, {"box": [121, 42, 67, 121, 43, 67], "block": "SPRUCE_FENCE"},
+       {"box": [115, 42, 73, 115, 43, 73], "block": "SPRUCE_FENCE"}, {"box": [121, 42, 73, 121, 43, 73], "block": "SPRUCE_FENCE"},
+       {"box": [115, 44, 67, 121, 44, 73], "block": ["WOOD_SLAB", 1]}],
+     "note": "a roof on posts over the well, so the way down reads from the green"},
+    {"id": "north-houses", "op": "house", "at": [108, 49], "heading": 0, "L": 11, "W": 7, "storeys": 2,
+     "style": "town", "door": 1, "note": "the reeve's house, its door to the keep"},
+    {"id": "north-houses-2", "op": "house", "at": [127, 48], "heading": 0, "L": 9, "W": 6, "storeys": 2,
+     "style": "plaster", "jetty": true, "door": 1},
+    {"id": "east-houses", "op": "house", "at": [143, 64], "heading": 90, "L": 9, "W": 6, "storeys": 1,
+     "style": "town", "door": 1},
+    {"id": "east-houses-2", "op": "house", "at": [143, 79], "heading": 90, "L": 11, "W": 7, "storeys": 2,
+     "style": "stone", "door": 1, "note": "the storehouse"},
+    {"id": "road-house", "op": "house", "at": [104, 92], "heading": 20, "L": 9, "W": 6, "storeys": 2,
+     "style": "plaster", "door": -1, "note": "the inn by the road to the arch"},
+    {"id": "road-house-2", "op": "house", "at": [131, 97], "heading": 0, "L": 9, "W": 6, "storeys": 1,
+     "style": "town", "door": -1},
+    {"id": "miners-shed", "op": "house", "at": [70, 86], "heading": 90, "L": 7, "W": 5, "storeys": 1,
+     "style": "town", "chimney": false, "door": 1, "note": "the miners' shed in the meadow, below the cave mouth"},
     {"id": "gate-road-surface", "op": "surface", "near": "gate-road", "blocks": ["GRAVEL", ["DIRT", 1], "COBBLE"],
      "weights": [6, 3, 1]},
     {"id": "mouth-path-surface", "op": "surface", "near": "mouth-path", "blocks": [["DIRT", 1], "GRAVEL"],
@@ -122,13 +141,15 @@
   ],
   "dress": [
     {"id": "south-wood", "op": "trees", "area": {"ellipse": {"at": [26, 128], "rx": 30, "rz": 30}},
-     "kinds": {"oak": 3, "birch": 1}, "tries": 400, "seed": 4, "note": "oak and birch on the west ridge's far side"},
-    {"id": "east-wood", "op": "trees", "area": {"ellipse": {"at": [146, 128], "rx": 22, "rz": 32}},
-     "kinds": {"oak": 2, "dark-oak": 1}, "tries": 300, "seed": 7, "note": "a wood beyond the east ridge"},
+     "kinds": {"oak": 3, "birch": 2, "large-oak": 1}, "tries": 300, "seed": 4,
+     "spacing": 1.6, "note": "oak and birch on the west ridge's far side"},
+    {"id": "east-wood", "op": "trees", "area": {"ellipse": {"at": [146, 134], "rx": 22, "rz": 24}},
+     "kinds": {"oak": 2, "birch": 1, "dark-oak": 1}, "tries": 240, "seed": 7,
+     "spacing": 1.5, "note": "a wood beyond the east ridge"},
     {"id": "meadow-trees", "op": "trees", "area": {"ellipse": {"at": [68, 52], "rx": 8, "rz": 14}},
      "kinds": {"tiny-oak": 1}, "tries": 30, "seed": 8, "note": "small oaks in the meadow under the Shelf, where they fit"},
-    {"id": "shelf-wood", "op": "trees", "on": "shelf", "area": {"board": {}}, "kinds": {"tall-spruce": 2, "tiny-spruce": 2, "oak": 1},
-     "tries": 220, "seed": 5, "note": "spruce on the Shelf"},
+    {"id": "shelf-wood", "op": "trees", "on": "shelf", "area": {"board": {}}, "kinds": {"tall-spruce": 2, "tiny-spruce": 3},
+     "tries": 200, "seed": 5, "spacing": 1.6, "note": "spruce on the Shelf"},
     {"id": "arch-tree", "op": "trees", "on": "arch", "area": {"board": {}}, "kinds": {"oak": 1}, "tries": 12,
      "seed": 6, "note": "a tree or two on the deck"}
   ]

@@ -738,6 +738,21 @@ def build(doc):
                             keep=~land, rng=rng)
             for x, z, _, _ in got:
                 laid[x - x0, z - z0] = True
+        elif L["op"] == "house":
+            from pgmvox.built import build as BLD
+            hx, hz = L["at"]
+            r = int(max(L.get("L", 9), L.get("W", 6)) / 2) + 1
+            under = Hi[max(hx - r - x0, 0):hx + r - x0 + 1, max(hz - r - z0, 0):hz + r - z0 + 1]
+            h = BLD.House(hx, hz, L.get("heading", 0.0), L=L.get("L", 9), W=L.get("W", 6), floor=int(under.max()),
+                          storeys=L.get("storeys", 2), style=L.get("style", "town"), jetty=L.get("jetty", False),
+                          door=L.get("door", 1), chimney=L.get("chimney", True), roof=L.get("roof", "gable"))
+            got = BLD.house(w, h, ground_at=lambda x, z: int(Hi[x - x0, z - z0]),
+                            rng=np.random.default_rng(L.get("seed", bd.get("seed", 0))))
+            for x, z in got["footprint"]:
+                laid[x - x0, z - z0] = True
+        elif L["op"] == "blocks":
+            for x, _, z in _props(w, L["boxes"]):
+                laid[x - x0, z - z0] = True
         built_on |= laid
         out.steps.append(Step(L["id"], "build", L["op"], laid, Hi.copy(), L.get("note", "")))
     for L in doc.get("dress", []):
@@ -760,7 +775,7 @@ def build(doc):
             weights = {k: v for k, v in L["kinds"].items() if k in kinds}
             planted = []
             TR.scatter(w, zone, kinds, weights, np.random.default_rng(L.get("seed", 0)), tries=L.get("tries", 400),
-                       planted=planted, ok=ok, ground=stand)
+                       planted=planted, ok=ok, ground=stand, spacing=L.get("spacing", 0.85))
             for x, z, _ in planted:
                 laid[x - x0, z - z0] = True
         out.steps.append(Step(L["id"], "dress", L["op"], laid, Hi.copy(), L.get("note", "")))
@@ -795,7 +810,8 @@ def _level(L, doc, w, share, out):
     """A level: its own ground over its own outline, laid into a world of its own and copied in where it holds a
     block, so the ground under it stands. Its underside tapers as an island's does; where that leaves less than
     `clear` blocks over the surface below, the level rests on it instead and buries it, its soil with it. Its water may fall off
-    its edge at each of `falls` down to the surface under the lip."""
+    its edge at each of `falls`: the columns off the level within `r` of `at`, from the nearest water's surface down
+    to the surface under them."""
     X, Z = share.X, share.Z
     bd = doc["board"]
     sub = {"board": bd, "floor": L.get("floor", bd.get("floor", 40)), "ground": L["ground"]}
@@ -828,9 +844,12 @@ def _level(L, doc, w, share, out):
     fell = 0
     for f in L.get("falls", []):
         (fx, fz), r = f["at"], f.get("r", 1.5)
-        near = np.hypot(X - fx, Z - fz) <= r
-        lip = int(water[near & land].max()) if (near & land & (water > 0)).any() else int(H[near & land].max())
-        for i, k in np.argwhere(near & ~land):
+        d = np.hypot(X - fx, Z - fz)
+        wet = land & (water > 0) & (d <= r + 4)
+        if not wet.any():
+            raise ValueError(f"level {L['id']}: no water within {r + 4} blocks of the fall at {f['at']}")
+        lip = int(water[wet].max())
+        for i, k in np.argwhere((d <= r) & ~land):
             for y in range(max(int(lower[i, k]) + 1, 1), lip + 1):
                 if w.ids[i, y, k] == 0:
                     w.ids[i, y, k], w.dat[i, y, k] = B.WATER_FLOW, 8
@@ -1066,15 +1085,22 @@ def _rooms(L, w, ground, cover, made, rng):
                                        ((a0, mz), "w", (a0 - 1, mz)), ((a1, mz), "e", (a1 + 1, mz))):
                 if (x, y, z) in air and (wall[0], y, wall[1]) not in air and w.id(wall[0], y, wall[1]) != B.AIR:
                     w.set(x, y, z, B.TORCH, torch_data(side))
-    for pr in L.get("props", []):
+    made |= _props(w, L.get("props", []))
+    return {(x, z): f for (x, z), f in floors.items() if (x, f, z) in air}
+
+
+def _props(w, props):
+    """Each prop's `box` (x0, y0, z0, x1, y1, z1) filled with its `block`, in order. Returns the blocks set."""
+    laid = set()
+    for pr in props:
         a0, y0, b0, a1, y1, b1 = pr["box"]
         one = block(pr["block"])
         for x in range(min(a0, a1), max(a0, a1) + 1):
             for y in range(min(y0, y1), max(y0, y1) + 1):
                 for z in range(min(b0, b1), max(b0, b1) + 1):
                     w.set(x, y, z, *one)
-                    made.add((x, y, z))
-    return {(x, z): f for (x, z), f in floors.items() if (x, f, z) in air}
+                    laid.add((x, y, z))
+    return laid
 
 
 def _manhattan(a, b):

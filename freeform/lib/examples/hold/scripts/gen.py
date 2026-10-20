@@ -1,11 +1,13 @@
 """Knuckle Hold: a valley board on three floors, built from `hold.layers.json`.
 
-    the valley        a river down the middle, a green with a ruined keep on its east bank, woods beyond
+    the valley        a river down the middle; on its east bank a hamlet of seven houses round a green and a keep,
+                      the inn on the road to the arch; woods beyond the ridges
     the Shelf         a second ground at 68 resting on the Knuckle and hanging out over the meadow, its stream
                       falling into the river
     the arch          a stone deck over the river between two ridges, the road from the keep crossing it
-    the cave          a mouth in the Knuckle's cliff, under the Shelf, down to a cavern under the hill
-    the hold          an undercroft under the keep reached by its well, a crypt, cells and a cistern, a hall to each,
+    the cave          a mouth in the Knuckle's cliff, under the Shelf, down to a cavern under the hill; the miners'
+                      shed in the meadow below it
+    the hold          an undercroft under the keep reached by its roofed well, a crypt, cells and a cistern, a hall to each,
                       and the miners' tunnel from the cavern that broke into the crypt
 
 The generator prints every layer as it ran and what each floor reads back: where the Shelf rests and how much air
