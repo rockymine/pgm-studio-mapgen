@@ -123,8 +123,13 @@ reads on its own, and filled with dark prismarine striped in andesite, upright o
 Patches of green wool weather the infill; green clay was tried beside it and barely showed. A smooth stone cap was
 tried first and dropped.
 
-**The works are brick, with a band of hardened clay through the windows' two courses.** Nether brick stands at the
-corners and the base, smooth stone at each storey's band, the sills and the cornice. A chimney is stone brick ringed
+**The works are brick, with a band of hardened clay through the windows' two courses.** Brick stairs under and over
+the band have their full half inward, so the wall steps back half a block on either side of it and the band stands
+proud. The corners alternate nether brick and black clay by course, the base is nether brick, and the roof's rim is a
+nether-brick slab. Each storey's stripe, the sills and the cornice are the two smooth stone double slabs mixed in
+cells of two, and the roof is the same with light grey wool among them.
+
+A chimney is stone brick ringed
 in polished andesite every fourth course, crowned in cobblestone wall, with a plume of grey glass drifting downwind,
 one wind for the whole board.
 
@@ -156,7 +161,7 @@ stone, andesite and cobblestone is left as it was.
 **The works' roofs carry their plant.** Cooling units, smooth stone boxes three by two with iron-bar grilles down their
 long sides and fans on top, stand in rows two in from the parapet every seven blocks. Vents, a cobblestone-wall pipe
 under a slab, stand in the corners, and each building's highest roof carries an antenna: an iron-bar mast six high
-with two cross-arms and a redstone block at its tip. They keep clear of the chimneys and stand beside the skylights,
+with two cross-arms, a redstone block at its tip and a redstone torch over it. They keep clear of the chimneys and stand beside the skylights,
 never on them, and blue's are red's turned.
 
 **The crust is badlands with soot sunk into it.** Red sand and red sandstone are the ground, with orange clay in it.

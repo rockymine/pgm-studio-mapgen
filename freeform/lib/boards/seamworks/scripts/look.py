@@ -130,10 +130,28 @@ BED_WOBBLE = _field(9, 62)
 
 # ---- the works, by role ------------------------------------------------------------------------------------------------
 _BUILT_FLOOR = [((B.STONEBRICK, 0), 1), ((B.STONE, 6), 1), ((B.STONE, 5), 1), ((B.STONE, 0), 1)]
+
+
+def _cells_of(blocks, size):
+    """A pattern of `blocks` an equal share each, in cells about `size` across."""
+    def pattern(x, y, z):
+        k = (x // size) * 7 + (z // size) * 13 + (y // size) * 5 + (x // size) * (z // size)
+        return blocks[k % len(blocks)]
+    return pattern
+
+
+def _courses(a, b):
+    """Two blocks in alternate courses."""
+    return lambda x, y, z: a if y % 2 else b
+
+
+ROOF_BLOCKS = [(B.DSLAB, 0), (B.DSLAB, 8), (B.WOOL, 8)]
 BUILDINGS = {
-    "brick works": {"wall": (B.BRICK, 0), "window band": (B.HARDENED_CLAY, 0), "corner": (B.NETHER_BRICK, 0),
-                    "band": (B.DSLAB, 0), "base": (B.NETHER_BRICK, 0), "cornice": (B.DSLAB, 0),
-                    "parapet": (B.NETHER_BRICK, 0), "roof": (B.DSLAB, 0), "skylight": (B.GLASS, 0),
+    "brick works": {"wall": (B.BRICK, 0), "window band": (B.HARDENED_CLAY, 0),
+                    "corner": _courses((B.NETHER_BRICK, 0), (B.STAINED_CLAY, 15)),
+                    "band": _cells_of([(B.DSLAB, 0), (B.DSLAB, 8)], 2), "base": (B.NETHER_BRICK, 0),
+                    "cornice": (B.DSLAB, 0), "parapet": (B.SLAB, 6), "roof": _cells_of(ROOF_BLOCKS, 2),
+                    "inset": B.BRICK_STAIRS, "skylight": (B.GLASS, 0),
                     "window": (B.IRON_BARS, 0), "sill": (B.DSLAB, 0), "floor": _BUILT_FLOOR,
                     "light": (B.GLOWSTONE, 0), "jamb": (B.NETHER_BRICK, 0), "lintel": (B.DSLAB, 0)},
 }
@@ -209,7 +227,12 @@ class Look:
         return (B.IRON_BLOCK, 0) if role == "plate" else (B.DSLAB, 0)
 
     def building(self, x, y, z, role):
-        return pick(self.Bd[role], x, y, z)
+        spec = self.Bd[role]
+        return spec(x, y, z) if callable(spec) else pick(spec, x, y, z)
+
+    def inset(self, x, y, z, inward, upside_down):
+        """A stair set into a wall, its full half inward, so the wall's face steps back half a block."""
+        return (self.Bd["inset"], stair_data_(inward, upside_down))
 
     def door(self, x, y, z, role):
         return pick(self.Bd[role], x, y, z)
@@ -235,7 +258,7 @@ class Look:
     def roof_kit(self, x, y, z, role):
         return {"body": (B.DSLAB, 8), "grille": (B.IRON_BARS, 0), "fan": (151, 0), "pipe": (B.COBBLE_WALL, 0),
                 "cap": (B.SLAB, 0), "footing": (B.STONE, 6), "mast": (B.IRON_BARS, 0), "arm": (B.IRON_BARS, 0),
-                "tip": (B.REDSTONE_BLOCK, 0)}[role]
+                "tip": (B.REDSTONE_BLOCK, 0), "lamp": (B.REDSTONE_TORCH, 5)}[role]
 
     def rim(self, team):
         return (B.STAINED_CLAY, 14) if team == 0 else (B.STAINED_CLAY, 11)

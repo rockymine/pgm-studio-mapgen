@@ -70,6 +70,13 @@ def building(w, poly, base, sections, look, skylights=False):
                     w.set(x, floor_y - 1, z, *look.building(x, floor_y - 1, z, "band"))
                     for y in (floor_y + 1, floor_y + 2):
                         w.set(x, y, z, *look.building(x, y, z, "window band"))
+                    # half-block insets framing the band: a stair under it, an upside-down one over it
+                    faces = [(a, b) for a, b in DIRS.values() if storeys.get((x + a, z + b), 0) <= level]
+                    if len(faces) == 1:
+                        inward = (-faces[0][0], -faces[0][1])
+                        if (x + z) % 4 != 0:
+                            w.set(x, floor_y, z, *look.inset(x, floor_y, z, inward, False))
+                        w.set(x, floor_y + 3, z, *look.inset(x, floor_y + 3, z, inward, True))
                 if not corner and (x + z) % 4 == 0 and level > 0:
                     for a, b in DIRS.values():
                         if storeys.get((x + a, z + b), 0) <= level and w.id(x + a, floor_y + 1, z + b) == B.AIR \
@@ -598,7 +605,8 @@ def vent(w, x, z, y, look):
 
 
 def antenna(w, x, z, y, height, look):
-    """An antenna on a roof at `y`: a footing, a mast `height` high with two cross-arms, a light at its tip."""
+    """An antenna on a roof at `y`: a footing, a mast `height` high with two cross-arms, a light at its tip and a
+    torch over it."""
     w.set(x, y + 1, z, *look.roof_kit(x, y + 1, z, "footing"))
     for k in range(2, height + 2):
         w.set(x, y + k, z, *look.roof_kit(x, y + k, z, "mast"))
@@ -606,6 +614,7 @@ def antenna(w, x, z, y, height, look):
         for a, b in ((1, 0), (-1, 0)) if (x + z) % 2 else ((0, 1), (0, -1)):
             w.set(x + a, y + k, z + b, *look.roof_kit(x + a, y + k, z + b, "arm"))
     w.set(x, y + height + 2, z, *look.roof_kit(x, y + height + 2, z, "tip"))
+    w.set(x, y + height + 3, z, *look.roof_kit(x, y + height + 3, z, "lamp"))
 
 
 def roof_kit(roof_cells, mirror=None, around=None):
@@ -642,7 +651,8 @@ def roof_kit(roof_cells, mirror=None, around=None):
             taken |= {(near[0] + a, near[1] + b) for a in (-1, 0, 1) for b in (-1, 0, 1)}
             out.append(("vent", near, roof_cells[near]))
     top = max(roof_cells.values())
-    high = [c for c in free if roof_cells[c] == top and c not in taken]
+    clear = {c for c in free if all((c[0] + a, c[1] + b) in around for a in range(-2, 3) for b in range(-2, 3))}
+    high = [c for c in clear if roof_cells[c] == top and c not in taken]
     if high:
         c = min(high, key=lambda c: (c[0] + c[1], c[0]))
         out.append(("antenna", c, top))
@@ -666,12 +676,15 @@ def lay_roof_kit(w, kit, look):
             antenna(w, at[0], at[1], y, 6, look)
 
 
+ROOF_TOPS = {(B.DSLAB, 0), (B.DSLAB, 8), (B.WOOL, 8)}
+
+
 def flat_roof(w, cells, skylights=False):
     """{(x, z): y} for the cells of a building whose top is plain roof, not a parapet or a chimney; with `skylights`
     the skylights too."""
     out = {}
     for x, z in cells:
         y = w.top(x, z)
-        if w.get(x, y, z) == (B.DSLAB, 0) or (skylights and w.id(x, y, z) == B.GLASS):
+        if w.get(x, y, z) in ROOF_TOPS or (skylights and w.id(x, y, z) == B.GLASS):
             out[(x, z)] = y
     return out
