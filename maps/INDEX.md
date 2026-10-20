@@ -64,6 +64,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `ctw/orchard_holm` | `opus5-orchard-holm` | `specs/opus5-orchard-holm` |
 | `ctw/oxenholme` | `opus5-oxenholme` | `specs/opus5-oxenholme` |
 | `ctw/pattern_test` | `pattern_test` | — |
+| `ctw/pithead` | `freeform/lib/boards/pithead` | `freeform/lib/boards/pithead` |
 | `ctw/portway` | `opus5-portway` | `specs/opus5-portway` |
 | `ctw/quadrangle` | `opus5-quadrangle` | `specs/opus5-quadrangle` |
 | `ctw/quatrefoil` | `opus5-quatrefoil` | `specs/archive/opus5-quatrefoil` |
