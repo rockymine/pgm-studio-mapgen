@@ -52,61 +52,85 @@ def building(w, poly, base, sections, look, skylights=False):
     for sec_cells, n, _ in sections:
         for c in sec_cells & cells:
             storeys[c] = n
+    DIAG = ((1, 1), (1, -1), (-1, 1), (-1, -1))
+
+    def low(x, z, level):
+        return storeys.get((x, z), 0) <= level
+
+    def pillar(x, z, level):
+        """A corner pillar at this storey: the wall turns outward both ways, or sits in an inside angle, open to the
+        outside only across the diagonal."""
+        if storeys.get((x, z), 0) <= level:
+            return False
+        ns = low(x, z - 1, level) or low(x, z + 1, level)
+        ew = low(x - 1, z, level) or low(x + 1, z, level)
+        if ns and ew:
+            return True
+        if not ns and not ew:
+            return any(low(x + a, z + b, level) for a, b in DIAG)
+        return False
+
+    def beside_pillar(x, z, level):
+        return any(pillar(x + a, z + b, level) for a in (-1, 0, 1) for b in (-1, 0, 1) if (a, b) != (0, 0))
+
     for (x, z) in cells:
         n = storeys.get((x, z), 0)
         if not n:
             continue
         roof = base + n * STOREY
         out = [storeys.get((x + a, z + b), 0) for a, b in DIRS.values()]
-        corner = (out[0] < n or out[1] < n) and (out[2] < n or out[3] < n)
         for y in range(base - 1, roof + 1):
-            w.set(x, y, z, *look.building(x, y, z, "corner" if corner else "wall"))
+            w.set(x, y, z, *look.building(x, y, z, "wall"))
         w.set(x, base - 1, z, *look.building(x, base - 1, z, "base" if min(out) < n else "floor"))
         for level in range(n):
             floor_y = base + level * STOREY
-            outside = min(out) == 0 or any(r <= level for r in out)
-            if outside:
-                if level > 0 and not corner:
-                    w.set(x, floor_y - 1, z, *look.building(x, floor_y - 1, z, "band"))
-                    for y in (floor_y + 1, floor_y + 2):
-                        w.set(x, y, z, *look.building(x, y, z, "window band"))
-                    # half-block insets framing the band: a stair under it, an upside-down one over it
-                    faces = [(a, b) for a, b in DIRS.values() if storeys.get((x + a, z + b), 0) <= level]
-                    if len(faces) == 1:
-                        inward = (-faces[0][0], -faces[0][1])
-                        if (x + z) % 4 != 0:
-                            w.set(x, floor_y, z, *look.inset(x, floor_y, z, inward, False))
-                        w.set(x, floor_y + 3, z, *look.inset(x, floor_y + 3, z, inward, True))
-                if level == 0 and not corner:
-                    # the lowest storey: a nether-brick plinth, a half-block groove of nether-brick stairs over it,
-                    # and a band two high with its windows in pairs
-                    faces = [(a, b) for a, b in DIRS.values() if storeys.get((x + a, z + b), 0) <= level]
-                    w.set(x, floor_y, z, *look.building(x, floor_y, z, "plinth"))
-                    for y in (floor_y + 2, floor_y + 3):
-                        w.set(x, y, z, *look.building(x, y, z, "window band"))
-                    if len(faces) == 1:
-                        inward = (-faces[0][0], -faces[0][1])
-                        a, b = faces[0]
-                        pair = (x + z) % 6 in (1, 2) and all(w.id(x + a, y, z + b) == B.AIR
-                                                              for y in (floor_y + 2, floor_y + 3))
-                        if pair:
-                            w.set(x, floor_y + 1, z, *look.building(x, floor_y + 1, z, "sill"))
-                            w.column(x, z, floor_y + 2, floor_y + 3, *look.building(x, floor_y + 2, z, "window"))
-                        else:
-                            w.set(x, floor_y + 1, z, *look.plinth_inset(x, floor_y + 1, z, inward))
-                if not corner and (x + z) % 4 == 0 and level > 0:
-                    for a, b in DIRS.values():
-                        if storeys.get((x + a, z + b), 0) <= level and w.id(x + a, floor_y + 1, z + b) == B.AIR \
-                                and w.id(x + a, floor_y + 2, z + b) == B.AIR:
-                            w.set(x, floor_y, z, *look.building(x, floor_y, z, "sill"))
-                            w.column(x, z, floor_y + 1, floor_y + 2, *look.building(x, floor_y + 1, z, "window"))
+            if pillar(x, z, level):
+                for y in range(max(floor_y - 1, base), floor_y + STOREY):
+                    w.set(x, y, z, *look.building(x, y, z, "corner"))
                 continue
-            w.column(x, z, floor_y, floor_y + STOREY - 2, B.AIR)
+            outside = min(out) == 0 or any(r <= level for r in out)
+            if not outside:
+                w.column(x, z, floor_y, floor_y + STOREY - 2, B.AIR)
+                if level > 0:
+                    w.set(x, floor_y - 1, z, *look.building(x, floor_y - 1, z, "floor"))
+                if (x * 3 + z) % 7 == 0:
+                    w.set(x, floor_y + STOREY - 1, z, *look.building(x, floor_y + STOREY - 1, z, "light"))
+                continue
+            faces = [(a, b) for a, b in DIRS.values() if low(x + a, z + b, level)]
+            single = len(faces) == 1
+            spaced = not beside_pillar(x, z, level)
             if level > 0:
-                w.set(x, floor_y - 1, z, *look.building(x, floor_y - 1, z, "floor"))
-            if (x * 3 + z) % 7 == 0:
-                w.set(x, floor_y + STOREY - 1, z, *look.building(x, floor_y + STOREY - 1, z, "light"))
-        edge = min(out) == 0 or any(r < n for r in out)
+                w.set(x, floor_y - 1, z, *look.building(x, floor_y - 1, z, "band"))
+                for y in (floor_y + 1, floor_y + 2):
+                    w.set(x, y, z, *look.building(x, y, z, "window band"))
+                window = (single and spaced and (x + z) % 4 == 0
+                          and all(w.id(x + faces[0][0], y, z + faces[0][1]) == B.AIR for y in (floor_y + 1, floor_y + 2)))
+                if single:
+                    # half-block insets framing the band: a stair under it, an upside-down one over it
+                    inward = (-faces[0][0], -faces[0][1])
+                    if not window:
+                        w.set(x, floor_y, z, *look.inset(x, floor_y, z, inward, False))
+                    w.set(x, floor_y + 3, z, *look.inset(x, floor_y + 3, z, inward, True))
+                if window:
+                    w.set(x, floor_y, z, *look.building(x, floor_y, z, "sill"))
+                    w.column(x, z, floor_y + 1, floor_y + 2, *look.building(x, floor_y + 1, z, "window"))
+            else:
+                # the lowest storey: a nether-brick plinth, a half-block groove of nether-brick stairs over it,
+                # and a band two high with its windows in pairs
+                w.set(x, floor_y, z, *look.building(x, floor_y, z, "plinth"))
+                for y in (floor_y + 2, floor_y + 3):
+                    w.set(x, y, z, *look.building(x, y, z, "window band"))
+                if single:
+                    inward = (-faces[0][0], -faces[0][1])
+                    a_, b_ = faces[0]
+                    pair = (spaced and (x + z) % 6 in (1, 2)
+                            and all(w.id(x + a_, y, z + b_) == B.AIR for y in (floor_y + 2, floor_y + 3)))
+                    if pair:
+                        w.set(x, floor_y + 1, z, *look.building(x, floor_y + 1, z, "sill"))
+                        w.column(x, z, floor_y + 2, floor_y + 3, *look.building(x, floor_y + 2, z, "window"))
+                    else:
+                        w.set(x, floor_y + 1, z, *look.plinth_inset(x, floor_y + 1, z, inward))
+        edge = any(storeys.get((x + a, z + b), 0) < n for a in (-1, 0, 1) for b in (-1, 0, 1))
         if edge:
             w.set(x, roof, z, *look.building(x, roof, z, "cornice"))
             w.set(x, roof + 1, z, *look.building(x, roof + 1, z, "parapet"))
@@ -132,6 +156,14 @@ def door(w, line, bottom, look, height=3):
             w.set(jx, y, jz, *look.door(jx, y, jz, "jamb"))
     for x, z in line:
         w.set(x, bottom + height, z, *look.door(x, bottom + height, z, "lintel"))
+    # no window right beside a jamb: one there is closed into the band, its sill into the plinth
+    for jx, jz in ((x0 - 2 * dx, z0 - 2 * dz), (x1 + 2 * dx, z1 + 2 * dz)):
+        if any(w.id(jx, y, jz) == B.IRON_BARS for y in range(bottom, bottom + height + 1)):
+            for y in range(bottom, bottom + height + 1):
+                if w.id(jx, y, jz) == B.IRON_BARS:
+                    w.set(jx, y, jz, *look.building(jx, y, jz, "window band"))
+                elif w.get(jx, y, jz) == look.building(jx, y, jz, "sill"):
+                    w.set(jx, y, jz, *look.building(jx, y, jz, "plinth"))
 
 
 def chimney(w, box, height, look, drift=(1, 0), plume=11):

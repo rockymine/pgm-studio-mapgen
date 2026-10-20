@@ -125,13 +125,16 @@ tried first and dropped.
 
 **The works are brick, with a band of hardened clay through the windows' two courses.** Brick stairs under and over
 the band have their full half inward, so the wall steps back half a block on either side of it and the band stands
-proud. The corners alternate nether brick and black clay by course, the base is nether brick, and the roof's rim is a
+proud. The corners, inside angles as well as outside ones, alternate nether brick and black clay by course, the base is nether brick, and the roof's rim is a
 nether-brick slab. Each storey's stripe, the sills and the cornice are the two smooth stone double slabs mixed in
 cells of two, and the roof is the same with light grey wool among them.
 
 **The lowest storey stands on a plinth.** Its foot is a course of nether brick over the base, and a course of
 nether-brick stairs over that steps the wall back half a block. Above them runs the same hardened clay band as the
 floors above, its windows in pairs on smooth stone sills.
+
+**No window touches a pillar or a door's jamb.** A window opens only with a block of wall between it and the nearest
+corner pillar, and one left beside a jamb when a door is cut is closed into the band.
 
 A chimney is stone brick ringed
 in polished andesite every fourth course, crowned in cobblestone wall, with a plume of grey glass drifting downwind,
