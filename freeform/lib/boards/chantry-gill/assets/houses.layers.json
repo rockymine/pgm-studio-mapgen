@@ -1,0 +1,181 @@
+{
+ "document": "layers",
+ "version": "draft-1",
+ "board": {
+  "name": "Chantry Gill houses",
+  "x": [
+   0,
+   99
+  ],
+  "z": [
+   0,
+   39
+  ],
+  "floor": 40,
+  "height": 70,
+  "seed": 3
+ },
+ "styles": {
+  "fell-cottage": {
+   "base": "brick",
+   "plinth": "STONEBRICK",
+   "ground": [
+    "BRICK"
+   ],
+   "upper": [
+    [
+     "PLANKS",
+     2
+    ]
+   ],
+   "post": 1,
+   "gable": [
+    "PLANKS",
+    1
+   ],
+   "floor": [
+    "PLANKS",
+    1
+   ],
+   "roof": [
+    "PLANKS",
+    5
+   ],
+   "stair": "DARK_OAK_STAIRS",
+   "slab": [
+    "WOOD_SLAB",
+    5
+   ],
+   "door": "SPRUCE_DOOR",
+   "window": [
+    "PANE",
+    0
+   ],
+   "sill": "SPRUCE_STAIRS",
+   "beam_ends": true,
+   "stack": {
+    "block": "STONEBRICK",
+    "cap": "COBBLE_WALL",
+    "base": "STONEBRICK_STAIRS"
+   },
+   "windows": [
+    4,
+    [
+     2,
+     3
+    ],
+    [
+     2,
+     3
+    ],
+    1.5
+   ]
+  }
+ },
+ "ground": [
+  {
+   "id": "sheet",
+   "op": "outline",
+   "box": [
+    0,
+    0,
+    99,
+    39
+   ]
+  },
+  {
+   "id": "sheet-floor",
+   "op": "base",
+   "height": 40
+  }
+ ],
+ "build": [
+  {
+   "id": "two-storey",
+   "op": "house",
+   "at": [
+    12,
+    20
+   ],
+   "heading": 0,
+   "L": 9,
+   "W": 6,
+   "storeys": 2,
+   "style": "fell-cottage",
+   "door": 1
+  },
+  {
+   "id": "one-storey",
+   "op": "house",
+   "at": [
+    30,
+    20
+   ],
+   "heading": 0,
+   "L": 7,
+   "W": 5,
+   "storeys": 1,
+   "style": "fell-cottage",
+   "door": 1
+  },
+  {
+   "id": "long-house",
+   "op": "house",
+   "at": [
+    48,
+    20
+   ],
+   "heading": 90,
+   "L": 11,
+   "W": 7,
+   "storeys": 2,
+   "style": "fell-cottage",
+   "door": -1,
+   "jetty": true
+  },
+  {
+   "id": "row-1",
+   "op": "house",
+   "at": [
+    68,
+    20
+   ],
+   "heading": 0,
+   "L": 7,
+   "W": 6,
+   "storeys": 2,
+   "style": "fell-cottage",
+   "door": 1,
+   "chimney": false
+  },
+  {
+   "id": "row-2",
+   "op": "house",
+   "at": [
+    76,
+    20
+   ],
+   "heading": 0,
+   "L": 7,
+   "W": 6,
+   "storeys": 2,
+   "style": "fell-cottage",
+   "door": 1
+  },
+  {
+   "id": "row-3",
+   "op": "house",
+   "at": [
+    84,
+    20
+   ],
+   "heading": 0,
+   "L": 7,
+   "W": 6,
+   "storeys": 1,
+   "style": "fell-cottage",
+   "door": 1,
+   "chimney": false
+  }
+ ]
+}

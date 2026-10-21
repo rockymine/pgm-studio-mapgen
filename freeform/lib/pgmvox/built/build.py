@@ -23,7 +23,7 @@ Block centres: block x spans x .. x+1 and its centre is x + 0.5. A frame centred
 length covers exactly that many blocks; an odd length wants a centre on a half.
 """
 import math
-from dataclasses import dataclass, field as _field
+from dataclasses import dataclass, field as _field, replace
 
 import numpy as np
 
@@ -378,6 +378,9 @@ def house(w, h, ground_at=None, rng=None):
     """Build one house. ground_at(x, z) gives the ground's height, so the plate is filled down to it. Returns
     the door (x, z, the letter it faces), the footprint cells, the eave course and the roof field."""
     st = STYLES[h.style] if isinstance(h.style, str) else h.style
+    if "windows" in st:                                  # a style's own rhythm: (period, ground rows, upper rows, margin)
+        period, ground_rows, upper_rows, margin = st["windows"]
+        h = replace(h, windows=window_rhythm(period, (tuple(ground_rows), tuple(upper_rows)), margin))
     rng = rng or np.random.default_rng(int(abs(h.cx * 31 + h.cz * 17 + h.heading)))
     square = h.heading % 90 == 0
     cx, cz = h.cx, h.cz
@@ -395,7 +398,7 @@ def house(w, h, ground_at=None, rng=None):
     def pick(mats):
         return mats[int(rng.integers(len(mats)))]
 
-    storeys = []
+    storeys, windows, corners = [], [], []
     for Ls, Ws in dims:
         m, X, Z, U, V = fr.mask(Ls, Ws, box)
         storeys.append((m, boundary(m, diagonal=True), Ls, Ws))
@@ -426,6 +429,9 @@ def house(w, h, ground_at=None, rng=None):
             frame_line = long_wall and abs(((run + 1.5) % 4) - 2) < 0.5 and not corner
             post = st["post"] is not None and (corner or (frame_line and s > 0))
             dx, dz = (fr.c, fr.s) if long_wall else (-fr.s, fr.c)
+            out = fr.across(1 if v > 0 else -1) if long_wall else fr.along(1 if u > 0 else -1)
+            if corner:
+                corners.append((x, z, u, v, s))
             for y in range(y0 + 1, y0 + sh + 1):
                 if post:
                     blk = (B.LOG, st["post"])
@@ -433,6 +439,9 @@ def house(w, h, ground_at=None, rng=None):
                     blk = (B.LOG, st["post"] | (4 if abs(dx) >= abs(dz) else 8))
                 elif h.windows(run, span, y - y0, s):
                     blk = st["window"]
+                    windows.append((x, y, z, out))
+                elif "plinth" in st and s == 0 and y == y0 + 1:
+                    blk = st["plinth"]
                 else:
                     blk = pick(mats)
                 w.set(x, y, z, *blk)
@@ -473,13 +482,53 @@ def house(w, h, ground_at=None, rng=None):
         x, z = int(X[i, k]), int(Z[i, k])
         for y in range(eave + 1, field.underside(x, z)):
             w.set(x, y, z, *st["gable"])
-    if h.chimney and h.roof != "flat":
+    _details(w, h, st, fr, windows, corners, field, Lt, ground_at)
+    if h.chimney and h.roof != "flat" and "stack" not in st:
         x, z = fr.cell(Lt / 4, Wt / 4)
         top = field.crown(x, z) + 2
         for y in range(f + 1, top + 1):
             cap = st.get("chimney_cap", st["chimney"] if "chimney" in st else (B.COBBLE_WALL, 0))
             w.set(x, y, z, *(st.get("chimney", (B.COBBLE, 0)) if y < top else cap))
     return dict(door=door_at, footprint=fr.cells(h.L, h.W + (2 if jetty else 0)), eave=eave, roof=field)
+
+
+def _details(w, h, st, fr, windows, corners, field, Lt, ground_at):
+    """What a style may add to a house's faces, each only where it names it: `sill` and `hood`, stairs under and
+    over every window outside the wall (upside down under, rising to the wall over); `beam_ends`, the laid log
+    course run one block out past each corner where two storeys meet; `stack`, a chimney standing outside the
+    gable at the frame's +u end ({"block", "cap", "base"}: three wide up the ground storey, weathered back to
+    one with stairs of `base`'s kind, capped two over the ridge)."""
+    win = tuple(st["window"])
+    for x, y, z, (nx, nz) in windows:
+        if w.get(x, y, z) != win:
+            continue
+        if "sill" in st and w.get(x, y - 1, z) != win and w.id(x + nx, y - 1, z + nz) == B.AIR:
+            w.set(x + nx, y - 1, z + nz, st["sill"], stair_data((-nx, -nz), True))
+        if "hood" in st and w.get(x, y + 1, z) != win and w.id(x + nx, y + 1, z + nz) == B.AIR:
+            w.set(x + nx, y + 1, z + nz, st["hood"], stair_data((-nx, -nz)))
+    if st.get("beam_ends") and st["post"] is not None:
+        for x, z, u, v, s in corners:
+            if s >= h.storeys - 1:
+                continue
+            y = h.floor + (s + 1) * h.storey
+            for (ex, ez) in (fr.along(1 if u > 0 else -1), fr.across(1 if v > 0 else -1)):
+                if w.id(x + ex, y, z + ez) == B.AIR:
+                    w.set(x + ex, y, z + ez, B.LOG, st["post"] | (4 if ex else 8))
+    if "stack" in st and h.chimney and h.roof != "flat":
+        sk = st["stack"]
+        ux = Lt / 2 + 0.5
+        top = field.crown(*fr.cell(Lt / 2 - 0.5, 0)) + 2
+        shoulder = h.floor + h.storey
+        (ox, oz), (ax, az) = fr.along(1), fr.across(1)
+        for dv in (-1, 0, 1):
+            x, z = fr.cell(ux, dv)
+            g = ground_at(x, z) if ground_at else h.floor
+            for y in range(min(g, h.floor) + 1, (top if dv == 0 else shoulder) + 1):
+                w.set(x, y, z, *sk["block"])
+            if dv:
+                w.set(x, shoulder + 1, z, sk.get("base", B.COBBLE_STAIRS), stair_data((-dv * ax, -dv * az)))
+        x, z = fr.cell(ux, 0)
+        w.set(x, top + 1, z, *sk.get("cap", (B.COBBLE_WALL, 0)))
 
 
 # ---- the parts every board repeated ----------------------------------------------------------------------

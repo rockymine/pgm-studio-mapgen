@@ -538,6 +538,32 @@ def _pattern(spec):
     return getattr(FA, name)(**kw)
 
 
+def house_style(spec, doc=None):
+    """A house's style: a name from pgmvox's styles or from the document's own `styles`, or an object naming a
+    `base` style and the keys it changes, its blocks written as anywhere else in the document."""
+    from pgmvox.built import build as BLD
+    if isinstance(spec, str):
+        if doc is not None and spec in doc.get("styles", {}):
+            return house_style(doc["styles"][spec], doc)
+        return spec
+    st = dict(BLD.STYLES[spec.get("base", "town")])
+    for k, v in spec.items():
+        if k == "base":
+            continue
+        if k in ("ground", "upper"):
+            st[k] = [block(b) for b in v]
+        elif k in ("stair", "door", "sill", "hood"):
+            st[k] = getattr(B, v)
+        elif k == "stack":
+            st[k] = {"block": block(v["block"]), "cap": block(v.get("cap", "COBBLE_WALL")),
+                     "base": getattr(B, v.get("base", "COBBLE_STAIRS"))}
+        elif k in ("post", "beam_ends", "windows"):
+            st[k] = v
+        else:
+            st[k] = block(v)
+    return st
+
+
 def _footprint(L, X, Z):
     x0, z0, x1, z1 = L["rect"]
     return [(x, z) for x in range(x0, x1 + 1) for z in range(z0, z1 + 1)]
@@ -744,7 +770,7 @@ def build(doc):
             r = int(max(L.get("L", 9), L.get("W", 6)) / 2) + 1
             under = Hi[max(hx - r - x0, 0):hx + r - x0 + 1, max(hz - r - z0, 0):hz + r - z0 + 1]
             h = BLD.House(hx, hz, L.get("heading", 0.0), L=L.get("L", 9), W=L.get("W", 6), floor=int(under.max()),
-                          storeys=L.get("storeys", 2), style=L.get("style", "town"), jetty=L.get("jetty", False),
+                          storeys=L.get("storeys", 2), style=house_style(L.get("style", "town"), doc), jetty=L.get("jetty", False),
                           door=L.get("door", 1), chimney=L.get("chimney", True), roof=L.get("roof", "gable"))
             got = BLD.house(w, h, ground_at=lambda x, z: int(Hi[x - x0, z - z0]),
                             rng=np.random.default_rng(L.get("seed", bd.get("seed", 0))))
