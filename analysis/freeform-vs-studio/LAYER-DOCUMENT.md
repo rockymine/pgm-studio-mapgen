@@ -149,7 +149,8 @@ the slope and rock in beds that follow the surface. The water's bed has a stack 
 | `paving` | `area`, `blocks` (each taking an equal share), `cell` (the size of a cell one block is laid over), `seed` | the document's own |
 | `hedge` | `line` or `near` + `offset`, `leaves`, `modules`, `drop`, `grass` (in the checker's gaps) | `green.hedge` |
 | `small_trees` | `at` (points), `trunk`, `log`, `leaves`, `bite` | `green.round_oak` |
-| `flowers` | `area`, `flowers`, `along`, `rows` | `green.flower_rows` |
+| `flowers` | `area`, `flowers`, `along`, `rows`, `angle` | `green.flower_rows` |
+| `crops` | `area`, `crops`, `angle`, `rows`, `ditch`, `scarecrows` | `green.crop_rows` |
 
 **A hedge, a wall and a fence are the same layer with different blocks.** The island's hedge runs four blocks off
 the road with a gap every fourteen, and its curtain wall holds its crown level over runs of five:
@@ -164,7 +165,7 @@ block in a frame's bay.
 
 **A style's details are each off until it names them.** `sill_in` makes the wall block under a window a stair of
 the facade's kind; `quoins` and `string` dress a style without posts; `stack` stands a chimney outside the gable
-and `chimney_top` caps either chimney. `joists_along`, `slab_roof`, `ridge_slab` (a ridge one wide laid in slabs) and `verge` with `roof_bands` (the roof's ring
+and `chimney_top` caps either chimney. `joists_along`, `slab_roof`, `ridge_slab` (a ridge one wide laid in slabs, one two wide in stairs rising to each other) and `verge` with `roof_bands` (the roof's ring
 and bands across it in other blocks) follow, and `plain_turned` gives a turned house no windows, one post a corner
 and a door only on a straight run of three.
 

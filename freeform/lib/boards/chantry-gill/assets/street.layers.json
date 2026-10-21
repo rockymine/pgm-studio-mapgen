@@ -5,7 +5,7 @@
   "name": "Chantry Gill street",
   "x": [
    0,
-   129
+   149
   ],
   "z": [
    -4,
@@ -18,7 +18,7 @@
  "styles": {
   "fell-cottage": {
    "base": "brick",
-   "plinth": "STONEBRICK",
+   "plinth": "COBBLE",
    "ground": [
     "BRICK"
    ],
@@ -93,7 +93,7 @@
   },
   "fell-cottage-dark": {
    "base": "brick",
-   "plinth": "STONEBRICK",
+   "plinth": "COBBLE",
    "ground": [
     "BRICK"
    ],
@@ -261,12 +261,12 @@
    ],
    "roof": [
     "PLANKS",
-    1
+    5
    ],
-   "stair": "SPRUCE_STAIRS",
+   "stair": "DARK_OAK_STAIRS",
    "slab": [
     "WOOD_SLAB",
-    1
+    5
    ],
    "door": "SPRUCE_DOOR",
    "window": [
@@ -280,18 +280,6 @@
     1.5,
     2.5
    ],
-   "slab_roof": true,
-   "verge": {
-    "roof": [
-     "PLANKS",
-     5
-    ],
-    "slab": [
-     "WOOD_SLAB",
-     5
-    ]
-   },
-   "roof_bands": 2,
    "ridge_slab": true
   }
  },
@@ -325,7 +313,7 @@
    "box": [
     0,
     -4,
-    129,
+    149,
     89
    ]
   },
@@ -405,6 +393,41 @@
    "note": "the square laid level, eased into the street"
   },
   {
+   "id": "field-level",
+   "op": "level",
+   "mode": "set",
+   "top": "median",
+   "inner": 1.0,
+   "outer": 1.5,
+   "areas": [
+    {
+     "polygon": [
+      [
+       116,
+       12
+      ],
+      [
+       140,
+       18
+      ],
+      [
+       142,
+       40
+      ],
+      [
+       122,
+       46
+      ],
+      [
+       114,
+       30
+      ]
+     ]
+    }
+   ],
+   "note": "the field laid level, so its ditches hold their water"
+  },
+  {
    "id": "main-street",
    "op": "path",
    "line": [
@@ -459,6 +482,14 @@
     [
      98,
      26
+    ],
+    [
+     110,
+     30
+    ],
+    [
+     118,
+     34
     ]
    ],
    "width": 3,
@@ -1326,7 +1357,7 @@
      ],
      "block": [
       "WOOD_SLAB",
-      1
+      5
      ]
     },
     {
@@ -1340,7 +1371,7 @@
      ],
      "block": [
       "WOOD_SLAB",
-      9
+      13
      ]
     },
     {
@@ -1354,7 +1385,7 @@
      ],
      "block": [
       "WOOD_SLAB",
-      1
+      5
      ]
     },
     {
@@ -1368,7 +1399,7 @@
      ],
      "block": [
       "WOOD_SLAB",
-      9
+      13
      ]
     }
    ],
@@ -1793,27 +1824,29 @@
   {
    "id": "flower-field",
    "op": "flowers",
+   "angle": -24,
+   "rows": 2,
    "area": {
     "polygon": [
      [
-      100,
-      52
+      104,
+      74
      ],
      [
-      114,
-      49
-     ],
-     [
-      124,
-      56
-     ],
-     [
-      118,
-      68
-     ],
-     [
-      102,
+      122,
       66
+     ],
+     [
+      136,
+      74
+     ],
+     [
+      130,
+      88
+     ],
+     [
+      110,
+      88
      ]
     ],
     "rough": {
@@ -1844,17 +1877,39 @@
      2
     ]
    ],
-   "rows": 2
+   "note": "a meadow of flowers down the slope south-east of the town, its rows across the fall"
   },
   {
    "id": "byre-field",
-   "op": "field",
-   "rect": [
-    100,
-    30,
-    120,
-    46
-   ],
+   "op": "crops",
+   "angle": 18,
+   "rows": 6,
+   "ditch": 3,
+   "seed": 9,
+   "area": {
+    "polygon": [
+     [
+      116,
+      12
+     ],
+     [
+      140,
+      18
+     ],
+     [
+      142,
+      40
+     ],
+     [
+      122,
+      46
+     ],
+     [
+      114,
+      30
+     ]
+    ]
+   },
    "crops": [
     [
      "WHEAT",
@@ -1869,15 +1924,13 @@
      7
     ]
    ],
-   "rows": 6,
-   "ditch": 3,
-   "fence": "w",
    "scarecrows": [
     [
-     110,
-     30
+     130,
+     20
     ]
-   ]
+   ],
+   "note": "the byre's field out past the east gate, the lane running on to it, its strips turned with the hill"
   },
   {
    "id": "wall-0",

@@ -280,7 +280,7 @@ def lay_roof(w, field, body, stair=None, slab=None, verge=None, ridge_cap=False,
     (id, data) a half course and a one-wide ridge take. verge: the (id, data) of the roof's outer ring and,
     with ridge_cap, its ridge. inside(x, z): the building's own footprint, where nothing is hung under a
     column; by default the field's wall line. lowest: no roof block below this course. ridge_slab: a ridge one
-    block wide is laid in slabs, not in stairs turned along it."""
+    block wide is laid in slabs, and one two wide in stairs rising to each other, never turned along it."""
     verge = verge or body
     inside = inside or field.over_walls
     rim = {c for c in field.cells() if any(not field.covers(c[0] + dx, c[1] + dz)
@@ -320,9 +320,12 @@ def _stair_top(field, stair, slab, x, z, ridge_slab=False):
     partner = field.ridge_partner(x, z)
     if ridge_slab and slab is not None:
         ax, az = vec(field.along_ridge_outward(x, z))
-        if not any(field.covers(x + sx, z + sz) and field.crown(x + sx, z + sz) == field.peak
-                   for sx, sz in ((-az, ax), (az, -ax))):                    # nothing beside it at the peak
+        beside = [(sx, sz) for sx, sz in ((-az, ax), (az, -ax))
+                  if field.covers(x + sx, z + sz) and field.crown(x + sx, z + sz) == field.peak]
+        if not beside:                                                      # one wide: a row of slabs
             return slab[0], slab[1] & 7, False, None
+        up = beside[0]                                                      # two wide: each rises to the other
+        return stair, stair_data(up), False, (stair, stair_data(opposite(up), True))
     if partner is not None:
         return stair, stair_data(partner), False, (stair, stair_data(opposite(partner), True))
     if slab is None:

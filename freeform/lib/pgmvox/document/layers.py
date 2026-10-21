@@ -836,7 +836,7 @@ def build(doc):
                                   else None)
             for x, z in got:
                 laid[x - x0, z - z0] = True
-        elif L["op"] in ("hedge", "small_trees", "flowers"):
+        elif L["op"] in ("hedge", "small_trees", "flowers", "crops"):
             from pgmvox.scenery import green as GR
             g_at = lambda x, z: int(Hi[x - x0, z - z0])                                     # noqa: E731
             rr = np.random.default_rng(L.get("seed", bd.get("seed", 0)))
@@ -855,8 +855,16 @@ def build(doc):
                                         leaves=block(L.get("leaves", ["LEAVES", 4])), bite=L.get("bite", 0.35))
             else:
                 e, _ = area_distance(L["area"], X, Z, fields, lines)
-                got = GR.flower_rows(w, [(int(X[i, k]), int(Z[i, k])) for i, k in np.argwhere((e < 1) & land)], g_at,
-                                     [block(f) for f in L["flowers"]], along=L.get("along", "x"), rows=L.get("rows", 2))
+                where = [(int(X[i, k]), int(Z[i, k])) for i, k in np.argwhere((e < 1) & land & (water == 0))]
+                if L["op"] == "crops":
+                    got = GR.crop_rows(w, where, g_at, [block(c) for c in L["crops"]], rr, angle=L.get("angle", 0.0),
+                                       rows=L.get("rows", 6), ditch=L.get("ditch", 3))
+                    for sx, sz in L.get("scarecrows", []):
+                        from pgmvox.built import props as PR
+                        PR.scarecrow(w, sx, sz, L.get("facing", "n"))
+                else:
+                    got = GR.flower_rows(w, where, g_at, [block(f) for f in L["flowers"]], along=L.get("along", "x"),
+                                         rows=L.get("rows", 2), angle=L.get("angle", 0.0))
             for x, z in got:
                 if 0 <= x - x0 < laid.shape[0] and 0 <= z - z0 < laid.shape[1]:
                     laid[x - x0, z - z0] = True

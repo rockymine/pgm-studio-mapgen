@@ -7,6 +7,8 @@ and a field of flowers in rows.
                                               each side with a corner bitten off now and then, a plus on top
     flower_rows(w, cells, ground, flowers)    rows of flowers across a shape, two rows a kind, every cell filled
 """
+import math
+
 from pgmvox.core.blocks import B
 
 LEAVES = (B.LEAVES, 4)                       # oak leaves that never decay
@@ -73,15 +75,46 @@ def round_oak(w, x, z, ground, rng, trunk=3, log=(B.LOG, 0), leaves=LEAVES, bite
     return sorted(cells)
 
 
-def flower_rows(w, cells, ground, flowers, along="x", rows=2, on=(B.GRASS,)):
+def _row(x, z, along, angle):
+    """Which row a cell is in: rows run along x (or z), turned `angle` degrees."""
+    if angle:
+        t = math.radians(angle)
+        return math.floor(-x * math.sin(t) + z * math.cos(t)) if along == "x" else \
+            math.floor(x * math.cos(t) + z * math.sin(t))
+    return z if along == "x" else x
+
+
+def crop_rows(w, cells, ground, crops, rng, angle=0.0, rows=6, ditch=3, ripe=(0.15, (4, 8))):
+    """A field over any shape: farmland in strips of `rows` rows turned `angle` degrees, each strip one of `crops` in
+    turn, row `ditch` of every strip a water ditch, each cell laid at its own ground. Returns the cells laid."""
+    out = []
+    for x, z in cells:
+        r = _row(x, z, "x", angle)
+        g = ground(x, z)
+        for y in range(g + 1, g + 3):
+            if w.id(x, y, z) in (B.TALLGRASS, B.FLOWER, B.DANDELION):
+                w.set(x, y, z, B.AIR)
+        if ditch is not None and r % rows == ditch:
+            w.set(x, g, z, B.WATER)
+        else:
+            w.set(x, g, z, B.FARMLAND, 7)
+            c = crops[(r // rows) % len(crops)]
+            if c[0] == B.WHEAT and rng.random() < ripe[0]:
+                c = (B.WHEAT, int(rng.integers(*ripe[1])))
+            w.set(x, g + 1, z, *c)
+        out.append((x, z))
+    return out
+
+
+def flower_rows(w, cells, ground, flowers, along="x", rows=2, on=(B.GRASS,), angle=0.0):
     """Every cell of `cells` planted, in rows running `along` the axis, `rows` rows of each of `flowers` in turn, on
-    whatever of `on` the ground is topped with. Returns the cells planted."""
+    whatever of `on` the ground is topped with, the rows turned `angle` degrees. Returns the cells planted."""
     planted = []
     for x, z in cells:
         g = ground(x, z)
         if w.id(x, g, z) not in on or w.id(x, g + 1, z) != B.AIR:
             continue
-        row = z if along == "x" else x
+        row = _row(x, z, along, angle)
         w.set(x, g + 1, z, *flowers[(row // rows) % len(flowers)])
         planted.append((x, z))
     return planted

@@ -2267,7 +2267,12 @@ class HouseDetails(unittest.TestCase):
         w = self.build([self.house(W=7, chimney=False)], style).world             # 9 wide over its overhang: odd
         ridge = [w.get(x, int(np.flatnonzero(w.ids[x - w.x0, :, -w.z0])[-1]), 0) for x in range(-3, 4)]
         self.assertEqual({b for b, _ in ridge}, {B.WOOD_SLAB})
-        w = self.build([self.house(W=6, chimney=False)], style).world             # 8 wide: two rows meet
+        w = self.build([self.house(W=6, chimney=False, heading=90)], style).world  # 8 wide, turned: two rows meet
+        z = 0
+        tops = {x: w.get(x, int(np.flatnonzero(w.ids[x - w.x0, :, z - w.z0])[-1]), z) for x in (-1, 0)}
+        self.assertEqual({b for b, _ in tops.values()}, {B.DARK_OAK_STAIRS})
+        self.assertEqual({d for _, d in tops.values()}, {0, 1})                     # rising east and west, to each other
+        w = self.build([self.house(W=6, chimney=False)], style).world
         x = 0
         tops = {z: w.get(x, int(np.flatnonzero(w.ids[x - w.x0, :, z - w.z0])[-1]), z) for z in (-1, 0)}
         self.assertEqual({b for b, _ in tops.values()}, {B.DARK_OAK_STAIRS})
@@ -2292,6 +2297,15 @@ class HouseDetails(unittest.TestCase):
         path = [w.get(0, 40, z) for z in range(-5, 1)]
         self.assertTrue(all(p[0] in (B.DIRT, B.GRAVEL) and p != (B.GRASS, 0) for p in path))
         self.assertTrue(any(w.id(x, 41, z) == B.LEAVES for x in (-1, 1) for z in range(-3, 1)))
+
+    def test_crops_lie_in_turned_strips_over_a_shape(self):
+        w = self.build([{"id": "c", "op": "crops", "area": {"rect": [-12, -12, 11, 11]}, "angle": 30, "rows": 4,
+                         "ditch": 2, "crops": [["WHEAT", 7], ["CARROTS", 7]], "seed": 1}]).world
+        wet = {(int(i) + w.x0, int(k) + w.z0) for i, k in np.argwhere(w.ids[:, 40, :] == B.WATER)}
+        self.assertGreater(len(wet), 50)
+        self.assertGreater(int((w.ids == B.CARROTS).sum()), 50)
+        rows = {z for x, z in wet if x == 0}, {z for x, z in wet if x == 6}
+        self.assertNotEqual(rows[0], rows[1])                                     # the ditches run turned
 
     def test_a_field_lays_farmland_and_its_fence_gate(self):
         w = self.build([{"id": "f", "op": "field", "rect": [-10, -10, 10, 10], "crops": [["WHEAT", 7]]}]).world

@@ -23,6 +23,10 @@ for k in ("chapel-stone", "byre"):
     styles[k] = town["styles"].get(k, bld["styles"][k])
 for k in ("fell-cottage", "fell-cottage-dark", "chapel-stone", "byre"):
     styles[k]["ridge_slab"] = True
+styles["byre"] = {k: v for k, v in styles["byre"].items() if k not in ("verge", "roof_bands", "slab_roof")}
+styles["byre"].update(roof=["PLANKS", 5], stair="DARK_OAK_STAIRS", slab=["WOOD_SLAB", 5])
+for k in ("fell-cottage", "fell-cottage-dark"):
+    styles[k]["plinth"] = "COBBLE"
 for k in ("fell-cottage", "fell-cottage-dark"):
     styles[k].update(stack={"block": "COBBLE", "base": "COBBLE_STAIRS"}, chimney="COBBLE", joists_along=True,
                      chimney_top=["IRON_BARS", ["SLAB", 0], ["STAINED_GLASS", 7], ["STAINED_GLASS", 8]])
@@ -31,16 +35,19 @@ QUOINS = [["STONE", 5], ["STONE", 6]]
 COURSES = ["COBBLE", ["COBBLE", ["STONE", 5]], ["STONE", 5], [["STONE", 5], ["STONEBRICK", 0]], ["STONEBRICK", 0]]
 
 MAIN = [[50, -2], [49, 14], [51, 26], [52, 38], [51, 52], [53, 64], [54, 86]]
-LANE = [[60, 36], [72, 31], [86, 28], [98, 26]]
+LANE = [[60, 36], [72, 31], [86, 28], [98, 26], [110, 30], [118, 34]]
+FIELD = [[116, 12], [140, 18], [142, 40], [122, 46], [114, 30]]
 SQUARE = [[42, 30], [60, 28], [66, 36], [63, 47], [44, 48], [40, 40]]
 ground = [
-    {"id": "sheet", "op": "outline", "box": [0, -4, 129, 89]},
+    {"id": "sheet", "op": "outline", "box": [0, -4, 149, 89]},
     {"id": "fell", "op": "base", "height": 40,
      "terms": [{"tilt": {"dx": 0.025, "dz": 0.045}}, {"gauss": {"at": [96, 92], "r": 46, "rise": 5}},
                {"noise": {"field": "small", "rise": 0.9}}, {"noise": {"field": "big", "rise": 1.6}}],
      "note": "the ground rising toward the south-east, a swell under its corner, rolling"},
     {"id": "square-level", "op": "level", "mode": "set", "top": "median", "inner": 1.0, "outer": 1.6,
      "areas": [{"polygon": SQUARE}], "note": "the square laid level, eased into the street"},
+    {"id": "field-level", "op": "level", "mode": "set", "top": "median", "inner": 1.0, "outer": 1.5,
+     "areas": [{"polygon": FIELD}], "note": "the field laid level, so its ditches hold their water"},
     {"id": "main-street", "op": "path", "line": MAIN, "width": 4, "max_grade": 0.15},
     {"id": "lane", "op": "path", "line": LANE, "width": 3, "max_grade": 0.2}]
 
@@ -125,11 +132,14 @@ build += [
      "at": [[x, z] for z in (51, 53, 55, 57) for x in (27, 31, 35)][:-1],
      "note": "headstones of polished andesite under a slab, the grave in coarse dirt before each, flowers on some"},
     {"id": "roses", "op": "blocks", "boxes": [F(55, 0, 9, 55, 0, 9, "AIR")]},
-    {"id": "flower-field", "op": "flowers", "area": {"polygon": [[100, 52], [114, 49], [124, 56], [118, 68], [102, 66]],
-     "rough": {"amp": 0.08, "cell": 4, "seed": 3}},
-     "flowers": [["FLOWER", 0], ["DANDELION", 0], ["FLOWER", 3], ["FLOWER", 8], ["FLOWER", 2]], "rows": 2},
-    {"id": "byre-field", "op": "field", "rect": [100, 30, 120, 46], "crops": [["WHEAT", 7], ["CARROTS", 7], ["POTATOES", 7]],
-     "rows": 6, "ditch": 3, "fence": "w", "scarecrows": [[110, 30]]},
+    {"id": "flower-field", "op": "flowers", "angle": -24, "rows": 2,
+     "area": {"polygon": [[104, 74], [122, 66], [136, 74], [130, 88], [110, 88]], "rough": {"amp": 0.08, "cell": 4, "seed": 3}},
+     "flowers": [["FLOWER", 0], ["DANDELION", 0], ["FLOWER", 3], ["FLOWER", 8], ["FLOWER", 2]],
+     "note": "a meadow of flowers down the slope south-east of the town, its rows across the fall"},
+    {"id": "byre-field", "op": "crops", "angle": 18, "rows": 6, "ditch": 3, "seed": 9,
+     "area": {"polygon": FIELD},
+     "crops": [["WHEAT", 7], ["CARROTS", 7], ["POTATOES", 7]], "scarecrows": [[130, 20]],
+     "note": "the byre's field out past the east gate, the lane running on to it, its strips turned with the hill"},
 ]
 # the wall faces the way an enemy comes, north and east, and has fallen down the town's flanks
 WALLS = [([[54, -1], [76, 4], [96, 14], [99, 22]], None, -1.4),
@@ -150,7 +160,7 @@ for n, (at, door, a, b) in enumerate((([96, 14], "s", [76, 4], [99, 22]), ([22, 
                   "door": door, "crenel": ["SLAB", 5], "quoins": QUOINS, "string": ["STONE", 6], "plinth": "COBBLE",
                   "floor": ["PLANKS", 1]})
 doc = {"document": "layers", "version": "draft-1",
-       "board": {"name": "Chantry Gill street", "x": [0, 129], "z": [-4, 89], "floor": 40, "height": 84, "seed": 3},
+       "board": {"name": "Chantry Gill street", "x": [0, 149], "z": [-4, 89], "floor": 40, "height": 84, "seed": 3},
        "styles": styles, "fields": {"pen": {"fbm": {"cell": 3, "octaves": 2, "seed": 5}},
                                     "small": {"fbm": {"cell": 10, "octaves": 3, "seed": 1}},
                                     "big": {"fbm": {"cell": 32, "octaves": 3, "seed": 2}}},
