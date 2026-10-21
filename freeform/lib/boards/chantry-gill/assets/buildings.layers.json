@@ -1,0 +1,1093 @@
+{
+ "document": "layers",
+ "version": "draft-1",
+ "board": {
+  "name": "Chantry Gill buildings",
+  "x": [
+   0,
+   99
+  ],
+  "z": [
+   0,
+   39
+  ],
+  "floor": 40,
+  "height": 80,
+  "seed": 3
+ },
+ "styles": {
+  "fell-cottage": {
+   "base": "brick",
+   "plinth": "STONEBRICK",
+   "ground": [
+    "BRICK"
+   ],
+   "upper": [
+    [
+     "PLANKS",
+     2
+    ]
+   ],
+   "post": 0,
+   "gable": [
+    "PLANKS",
+    1
+   ],
+   "floor": [
+    "PLANKS",
+    1
+   ],
+   "roof": [
+    "PLANKS",
+    5
+   ],
+   "stair": "DARK_OAK_STAIRS",
+   "slab": [
+    "WOOD_SLAB",
+    5
+   ],
+   "door": "SPRUCE_DOOR",
+   "window": [
+    "PANE",
+    0
+   ],
+   "stack": {
+    "block": "STONEBRICK",
+    "cap": "COBBLE_WALL",
+    "base": "STONEBRICK_STAIRS"
+   },
+   "windows": [
+    4,
+    [
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    1.5,
+    2.5
+   ],
+   "sill_in": [
+    "BRICK_STAIRS",
+    "BIRCH_STAIRS"
+   ],
+   "plain_turned": true
+  },
+  "fell-cottage-dark": {
+   "base": "brick",
+   "plinth": "STONEBRICK",
+   "ground": [
+    "BRICK"
+   ],
+   "upper": [
+    [
+     "PLANKS",
+     0
+    ]
+   ],
+   "post": 1,
+   "gable": [
+    "PLANKS",
+    5
+   ],
+   "floor": [
+    "PLANKS",
+    1
+   ],
+   "roof": [
+    "PLANKS",
+    1
+   ],
+   "stair": "SPRUCE_STAIRS",
+   "slab": [
+    "WOOD_SLAB",
+    1
+   ],
+   "door": "SPRUCE_DOOR",
+   "window": [
+    "PANE",
+    0
+   ],
+   "stack": {
+    "block": "STONEBRICK",
+    "cap": "COBBLE_WALL",
+    "base": "STONEBRICK_STAIRS"
+   },
+   "windows": [
+    4,
+    [
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    1.5,
+    2.5
+   ],
+   "sill_in": [
+    "BRICK_STAIRS",
+    "OAK_STAIRS"
+   ],
+   "log": "LOG2",
+   "plain_turned": true
+  },
+  "chapel-stone": {
+   "base": "stone",
+   "plinth": "COBBLE",
+   "ground": [
+    [
+     "STONEBRICK",
+     0
+    ]
+   ],
+   "upper": [
+    [
+     "STONEBRICK",
+     0
+    ]
+   ],
+   "post": null,
+   "gable": [
+    "STONEBRICK",
+    0
+   ],
+   "floor": [
+    "STONE",
+    6
+   ],
+   "roof": [
+    "PLANKS",
+    5
+   ],
+   "stair": "DARK_OAK_STAIRS",
+   "slab": [
+    "WOOD_SLAB",
+    5
+   ],
+   "door": "DARK_OAK_DOOR",
+   "window": [
+    "PANE",
+    0
+   ],
+   "windows": [
+    3,
+    [
+     2,
+     3,
+     4
+    ],
+    [
+     2,
+     3
+    ],
+    1.5,
+    1.5
+   ]
+  },
+  "tower-stone": {
+   "base": "stone",
+   "plinth": "COBBLE",
+   "ground": [
+    [
+     "STONEBRICK",
+     0
+    ]
+   ],
+   "upper": [
+    [
+     "STONEBRICK",
+     0
+    ]
+   ],
+   "post": null,
+   "gable": [
+    "STONEBRICK",
+    0
+   ],
+   "floor": [
+    "STONE",
+    6
+   ],
+   "roof": [
+    "PLANKS",
+    5
+   ],
+   "stair": "DARK_OAK_STAIRS",
+   "slab": [
+    "WOOD_SLAB",
+    5
+   ],
+   "door": "DARK_OAK_DOOR",
+   "window": [
+    "PANE",
+    0
+   ],
+   "windows": [
+    5,
+    [],
+    [
+     3
+    ],
+    1.5,
+    2.5
+   ]
+  },
+  "stable": {
+   "base": "brick",
+   "plinth": "COBBLE",
+   "ground": [
+    [
+     "PLANKS",
+     1
+    ]
+   ],
+   "upper": [
+    [
+     "PLANKS",
+     1
+    ]
+   ],
+   "post": 0,
+   "gable": [
+    "PLANKS",
+    1
+   ],
+   "floor": [
+    "DIRT",
+    1
+   ],
+   "roof": [
+    "PLANKS",
+    1
+   ],
+   "stair": "SPRUCE_STAIRS",
+   "slab": [
+    "WOOD_SLAB",
+    1
+   ],
+   "door": "SPRUCE_DOOR",
+   "window": [
+    "PANE",
+    0
+   ],
+   "windows": [
+    4,
+    [],
+    [],
+    1.5,
+    2.5
+   ]
+  }
+ },
+ "ground": [
+  {
+   "id": "sheet",
+   "op": "outline",
+   "box": [
+    0,
+    0,
+    99,
+    39
+   ]
+  },
+  {
+   "id": "sheet-floor",
+   "op": "base",
+   "height": 40
+  }
+ ],
+ "carve": [
+  {
+   "id": "crypt",
+   "op": "rooms",
+   "seed": 11,
+   "rooms": [
+    {
+     "id": "crypt",
+     "rect": [
+      21,
+      17,
+      31,
+      23
+     ],
+     "floor": 33,
+     "h": 5
+    }
+   ],
+   "lining": {
+    "wall": [
+     [
+      [
+       "STONEBRICK",
+       0
+      ],
+      6
+     ],
+     [
+      [
+       "STONEBRICK",
+       2
+      ],
+      1
+     ]
+    ],
+    "floor": [
+     [
+      [
+       "STONEBRICK",
+       0
+      ],
+      1
+     ],
+     [
+      [
+       "STONE",
+       6
+      ],
+      1
+     ],
+     [
+      [
+       "STONE",
+       5
+      ],
+      1
+     ],
+     [
+      [
+       "STONE",
+       0
+      ],
+      1
+     ]
+    ],
+    "ceiling": "STONEBRICK"
+   },
+   "light": {
+    "y": 2
+   },
+   "props": [
+    {
+     "box": [
+      22,
+      33,
+      18,
+      23,
+      33,
+      19
+     ],
+     "block": [
+      "STONEBRICK",
+      3
+     ]
+    },
+    {
+     "box": [
+      22,
+      34,
+      18,
+      23,
+      34,
+      19
+     ],
+     "block": [
+      "SLAB",
+      5
+     ]
+    },
+    {
+     "box": [
+      22,
+      33,
+      21,
+      23,
+      33,
+      22
+     ],
+     "block": [
+      "STONEBRICK",
+      3
+     ]
+    },
+    {
+     "box": [
+      22,
+      34,
+      21,
+      23,
+      34,
+      22
+     ],
+     "block": [
+      "SLAB",
+      5
+     ]
+    }
+   ],
+   "note": "the chantry's crypt under the nave, two tombs at its west end"
+  },
+  {
+   "id": "crypt-shaft",
+   "op": "shaft",
+   "at": [
+    30,
+    20
+   ],
+   "bottom": 33,
+   "top": "ground",
+   "ladder_on": "s",
+   "wall": [
+    "STONEBRICK",
+    0
+   ],
+   "post": [
+    "STONEBRICK",
+    0
+   ]
+  }
+ ],
+ "build": [
+  {
+   "id": "nave",
+   "op": "house",
+   "at": [
+    26,
+    20
+   ],
+   "heading": 0,
+   "L": 15,
+   "W": 9,
+   "storeys": 1,
+   "storey": 6,
+   "style": "chapel-stone",
+   "door": 1,
+   "chimney": false
+  },
+  {
+   "id": "tower",
+   "op": "house",
+   "at": [
+    16,
+    20
+   ],
+   "heading": 0,
+   "L": 5,
+   "W": 5,
+   "storeys": 3,
+   "storey": 5,
+   "style": "tower-stone",
+   "door": 1,
+   "chimney": false,
+   "roof": "flat",
+   "pitch": 1,
+   "overhang": 0
+  },
+  {
+   "id": "tower-top",
+   "op": "blocks",
+   "boxes": [
+    {
+     "box": [
+      14,
+      56,
+      18,
+      14,
+      57,
+      18
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      14,
+      56,
+      19,
+      14,
+      57,
+      19
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      14,
+      56,
+      20,
+      14,
+      57,
+      20
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      14,
+      56,
+      21,
+      14,
+      57,
+      21
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      14,
+      56,
+      22,
+      14,
+      57,
+      22
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      15,
+      56,
+      18,
+      15,
+      57,
+      18
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      15,
+      56,
+      22,
+      15,
+      57,
+      22
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      16,
+      56,
+      18,
+      16,
+      57,
+      18
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      16,
+      56,
+      22,
+      16,
+      57,
+      22
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      17,
+      56,
+      18,
+      17,
+      57,
+      18
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      17,
+      56,
+      22,
+      17,
+      57,
+      22
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      18,
+      56,
+      18,
+      18,
+      57,
+      18
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      18,
+      56,
+      19,
+      18,
+      57,
+      19
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      18,
+      56,
+      20,
+      18,
+      57,
+      20
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      18,
+      56,
+      21,
+      18,
+      57,
+      21
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      18,
+      56,
+      22,
+      18,
+      57,
+      22
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      14,
+      58,
+      18,
+      14,
+      58,
+      18
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      14,
+      58,
+      20,
+      14,
+      58,
+      20
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      14,
+      58,
+      22,
+      14,
+      58,
+      22
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      16,
+      58,
+      18,
+      16,
+      58,
+      18
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      16,
+      58,
+      22,
+      16,
+      58,
+      22
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      18,
+      58,
+      18,
+      18,
+      58,
+      18
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      18,
+      58,
+      20,
+      18,
+      58,
+      20
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    },
+    {
+     "box": [
+      18,
+      58,
+      22,
+      18,
+      58,
+      22
+     ],
+     "block": [
+      "STONEBRICK",
+      0
+     ]
+    }
+   ],
+   "note": "the tower's parapet and its crenels, over the flat roof"
+  },
+  {
+   "id": "crypt-head",
+   "op": "blocks",
+   "boxes": [
+    {
+     "box": [
+      29,
+      40,
+      19,
+      31,
+      40,
+      21
+     ],
+     "block": "AIR"
+    },
+    {
+     "box": [
+      30,
+      40,
+      21,
+      30,
+      40,
+      21
+     ],
+     "block": [
+      "LADDER",
+      2
+     ]
+    },
+    {
+     "box": [
+      28,
+      41,
+      18,
+      32,
+      41,
+      18
+     ],
+     "block": "FENCE"
+    },
+    {
+     "box": [
+      28,
+      41,
+      18,
+      28,
+      41,
+      22
+     ],
+     "block": "FENCE"
+    },
+    {
+     "box": [
+      32,
+      41,
+      18,
+      32,
+      41,
+      22
+     ],
+     "block": "FENCE"
+    },
+    {
+     "box": [
+      28,
+      41,
+      22,
+      29,
+      41,
+      22
+     ],
+     "block": "FENCE"
+    },
+    {
+     "box": [
+      31,
+      41,
+      22,
+      32,
+      41,
+      22
+     ],
+     "block": "FENCE"
+    }
+   ],
+   "note": "the floor opened over the crypt's ladder, railed but where the ladder comes up"
+  },
+  {
+   "id": "inn",
+   "op": "house",
+   "at": [
+    48,
+    20
+   ],
+   "heading": 0,
+   "L": 13,
+   "W": 7,
+   "storeys": 2,
+   "style": "fell-cottage",
+   "door": 1,
+   "jetty": true
+  },
+  {
+   "id": "stable",
+   "op": "house",
+   "at": [
+    76,
+    22
+   ],
+   "heading": 0,
+   "L": 13,
+   "W": 6,
+   "storeys": 1,
+   "style": "stable",
+   "door": -1,
+   "chimney": false
+  },
+  {
+   "id": "stable-front",
+   "op": "blocks",
+   "boxes": [
+    {
+     "box": [
+      71,
+      41,
+      24,
+      73,
+      42,
+      24
+     ],
+     "block": "AIR"
+    },
+    {
+     "box": [
+      75,
+      41,
+      24,
+      77,
+      42,
+      24
+     ],
+     "block": "AIR"
+    },
+    {
+     "box": [
+      79,
+      41,
+      24,
+      81,
+      42,
+      24
+     ],
+     "block": "AIR"
+    },
+    {
+     "box": [
+      74,
+      41,
+      24,
+      74,
+      43,
+      24
+     ],
+     "block": [
+      "LOG",
+      0
+     ]
+    },
+    {
+     "box": [
+      78,
+      41,
+      24,
+      78,
+      43,
+      24
+     ],
+     "block": [
+      "LOG",
+      0
+     ]
+    },
+    {
+     "box": [
+      74,
+      41,
+      20,
+      74,
+      41,
+      23
+     ],
+     "block": "FENCE"
+    },
+    {
+     "box": [
+      78,
+      41,
+      20,
+      78,
+      41,
+      23
+     ],
+     "block": "FENCE"
+    },
+    {
+     "box": [
+      71,
+      41,
+      20,
+      72,
+      41,
+      20
+     ],
+     "block": "HAY"
+    },
+    {
+     "box": [
+      76,
+      41,
+      20,
+      76,
+      41,
+      20
+     ],
+     "block": "HAY"
+    },
+    {
+     "box": [
+      79,
+      41,
+      20,
+      80,
+      41,
+      20
+     ],
+     "block": "HAY"
+    },
+    {
+     "box": [
+      80,
+      42,
+      20,
+      80,
+      42,
+      20
+     ],
+     "block": "HAY"
+    },
+    {
+     "box": [
+      83,
+      41,
+      25,
+      85,
+      41,
+      25
+     ],
+     "block": "CAULDRON"
+    }
+   ],
+   "note": "the stable's front opened into three stalls between oak posts, fenced apart, hay at the back, a trough"
+  }
+ ]
+}

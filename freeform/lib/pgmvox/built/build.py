@@ -342,12 +342,15 @@ STYLES = {
 }
 
 
-def window_rhythm(period=3, rows=((2,), (2, 3)), margin=1.5):
+def window_rhythm(period=3, rows=((2,), (2, 3)), margin=1.5, phase=None):
     """The window rhythm every board used: one in every `period` blocks along a wall, clear of its ends, on the
-    given courses of the ground storey and of the upper ones. A function (run, span, t, storey) -> bool."""
+    given courses of the ground storey and of the upper ones. With `phase`, one block wide exactly where a run's
+    remainder by the period is the phase, so a window can be centred in a timber frame's bay. A function (run,
+    span, t, storey) -> bool."""
     def f(run, span, t, storey):
         on_row = t in (rows[0] if storey == 0 else rows[-1])
-        return on_row and margin < run < span - margin and abs((run % period) - period / 2) < 0.6
+        at = abs((run % period) - period / 2) < 0.6 if phase is None else abs((run % period) - phase) < 0.4
+        return on_row and margin < run < span - margin and at
     return f
 
 
@@ -378,9 +381,12 @@ def house(w, h, ground_at=None, rng=None):
     """Build one house. ground_at(x, z) gives the ground's height, so the plate is filled down to it. Returns
     the door (x, z, the letter it faces), the footprint cells, the eave course and the roof field."""
     st = STYLES[h.style] if isinstance(h.style, str) else h.style
-    if "windows" in st:                                  # a style's own rhythm: (period, ground rows, upper rows, margin)
-        period, ground_rows, upper_rows, margin = st["windows"]
-        h = replace(h, windows=window_rhythm(period, (tuple(ground_rows), tuple(upper_rows)), margin))
+    plain = st.get("plain_turned") and h.heading % 90 != 0
+    if plain:                                            # turned, a face only holds whole blocks: no windows
+        h = replace(h, windows=lambda run, span, t, storey: False)
+    elif "windows" in st:                # a style's own rhythm: (period, ground rows, upper rows, margin[, phase])
+        period, ground_rows, upper_rows, margin, *phase = st["windows"]
+        h = replace(h, windows=window_rhythm(period, (tuple(ground_rows), tuple(upper_rows)), margin, *phase))
     rng = rng or np.random.default_rng(int(abs(h.cx * 31 + h.cz * 17 + h.heading)))
     square = h.heading % 90 == 0
     cx, cz = h.cx, h.cz
@@ -434,12 +440,12 @@ def house(w, h, ground_at=None, rng=None):
                 corners.append((x, z, u, v, s))
             for y in range(y0 + 1, y0 + sh + 1):
                 if post:
-                    blk = (B.LOG, st["post"])
+                    blk = (st.get("log", B.LOG), st["post"])
                 elif y == y0 + sh and st["post"] is not None:
-                    blk = (B.LOG, st["post"] | (4 if abs(dx) >= abs(dz) else 8))
+                    blk = (st.get("log", B.LOG), st["post"] | (4 if abs(dx) >= abs(dz) else 8))
                 elif h.windows(run, span, y - y0, s):
                     blk = st["window"]
-                    windows.append((x, y, z, out))
+                    windows.append((x, y, z, out, s))
                 elif "plinth" in st and s == 0 and y == y0 + 1:
                     blk = st["plinth"]
                 else:
@@ -447,10 +453,14 @@ def house(w, h, ground_at=None, rng=None):
                 w.set(x, y, z, *blk)
         if jetty and s == 1:                                     # the joists showing under a jettied storey
             for i, k in zip(*np.nonzero(m & ~base)):
-                w.set(int(X[i, k]), y0, int(Z[i, k]), B.LOG, (st["post"] or 0) | (4 if abs(fr.s) >= abs(fr.c) else 8))
+                w.set(int(X[i, k]), y0, int(Z[i, k]), st.get("log", B.LOG), (st["post"] or 0) | (4 if abs(fr.s) >= abs(fr.c) else 8))
     # the door, in the middle of its long wall
     cands = [(abs(U[i, k]), int(X[i, k]), int(Z[i, k])) for i, k in zip(*np.nonzero(base_wall))
              if h.door * V[i, k] > h.W / 2 - 1 and abs(U[i, k]) < h.L / 2 - 1.5]
+    if plain:                                            # turned, a door only in three wall blocks in one line
+        line = {(int(X[i, k]), int(Z[i, k])) for i, k in zip(*np.nonzero(base_wall))}
+        ax, az = fr.along(1)
+        cands = [c for c in cands if (c[1] - ax, c[2] - az) in line and (c[1] + ax, c[2] + az) in line]
     door_at = None
     if cands:
         _, x, z = min(cands)
@@ -482,8 +492,8 @@ def house(w, h, ground_at=None, rng=None):
         x, z = int(X[i, k]), int(Z[i, k])
         for y in range(eave + 1, field.underside(x, z)):
             w.set(x, y, z, *st["gable"])
-    _details(w, h, st, fr, windows, corners, field, Lt, ground_at)
-    if h.chimney and h.roof != "flat" and "stack" not in st:
+    _details(w, h, st, fr, windows, corners, field.crown, Lt, ground_at, square)
+    if h.chimney and h.roof != "flat" and ("stack" not in st or not square):
         x, z = fr.cell(Lt / 4, Wt / 4)
         top = field.crown(x, z) + 2
         for y in range(f + 1, top + 1):
@@ -492,16 +502,24 @@ def house(w, h, ground_at=None, rng=None):
     return dict(door=door_at, footprint=fr.cells(h.L, h.W + (2 if jetty else 0)), eave=eave, roof=field)
 
 
-def _details(w, h, st, fr, windows, corners, field, Lt, ground_at):
-    """What a style may add to a house's faces, each only where it names it: `sill` and `hood`, stairs under and
-    over every window outside the wall (upside down under, rising to the wall over); `beam_ends`, the laid log
+def _details(w, h, st, fr, windows, corners, crown_at, Lt, ground_at, square=True):
+    """What a style may add to a house's faces, each only where it names it: `sill_in`, the wall block under each
+    window made a stair rising into the house (one stair kind for the ground storey, one for the upper), so the
+    window sits in a recess of the facade's own block; `sill` and `hood`, stairs under and over every window
+    outside the wall (upside down under, rising to the wall over); `beam_ends`, the laid log
     course run one block out past each corner where two storeys meet; `stack`, a chimney standing outside the
     gable at the frame's +u end ({"block", "cap", "base"}: three wide up the ground storey, weathered back to
-    one with stairs of `base`'s kind, capped two over the ridge)."""
+    one with stairs of `base`'s kind, capped two over the ridge; a turned house keeps its chimney in the roof).
+    `plain_turned` on the style gives a turned house no windows and its door only where three wall blocks
+    stand in one line."""
     win = tuple(st["window"])
-    for x, y, z, (nx, nz) in windows:
+    for x, y, z, (nx, nz), s in windows:
         if w.get(x, y, z) != win:
             continue
+        sill_in = st.get("sill_in")
+        if sill_in and w.get(x, y - 1, z) != win and w.id(x, y - 1, z) in {b for b, _ in st["ground" if s == 0 else
+                                                                                         "upper"]}:
+            w.set(x, y - 1, z, sill_in[0 if s == 0 else 1], stair_data((-nx, -nz)))
         if "sill" in st and w.get(x, y - 1, z) != win and w.id(x + nx, y - 1, z + nz) == B.AIR:
             w.set(x + nx, y - 1, z + nz, st["sill"], stair_data((-nx, -nz), True))
         if "hood" in st and w.get(x, y + 1, z) != win and w.id(x + nx, y + 1, z + nz) == B.AIR:
@@ -513,11 +531,11 @@ def _details(w, h, st, fr, windows, corners, field, Lt, ground_at):
             y = h.floor + (s + 1) * h.storey
             for (ex, ez) in (fr.along(1 if u > 0 else -1), fr.across(1 if v > 0 else -1)):
                 if w.id(x + ex, y, z + ez) == B.AIR:
-                    w.set(x + ex, y, z + ez, B.LOG, st["post"] | (4 if ex else 8))
-    if "stack" in st and h.chimney and h.roof != "flat":
+                    w.set(x + ex, y, z + ez, st.get("log", B.LOG), st["post"] | (4 if ex else 8))
+    if "stack" in st and h.chimney and h.roof != "flat" and square:
         sk = st["stack"]
         ux = Lt / 2 + 0.5
-        top = field.crown(*fr.cell(Lt / 2 - 0.5, 0)) + 2
+        top = crown_at(*fr.cell(Lt / 2 - 0.5, 0)) + 2
         shoulder = h.floor + h.storey
         (ox, oz), (ax, az) = fr.along(1), fr.across(1)
         for dv in (-1, 0, 1):

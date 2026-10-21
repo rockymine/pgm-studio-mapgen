@@ -554,10 +554,14 @@ def house_style(spec, doc=None):
             st[k] = [block(b) for b in v]
         elif k in ("stair", "door", "sill", "hood"):
             st[k] = getattr(B, v)
+        elif k == "sill_in":
+            st[k] = [getattr(B, n) for n in v]
+        elif k == "log":
+            st[k] = getattr(B, v)
         elif k == "stack":
             st[k] = {"block": block(v["block"]), "cap": block(v.get("cap", "COBBLE_WALL")),
                      "base": getattr(B, v.get("base", "COBBLE_STAIRS"))}
-        elif k in ("post", "beam_ends", "windows"):
+        elif k in ("post", "beam_ends", "windows", "plain_turned"):
             st[k] = v
         else:
             st[k] = block(v)
@@ -771,7 +775,8 @@ def build(doc):
             under = Hi[max(hx - r - x0, 0):hx + r - x0 + 1, max(hz - r - z0, 0):hz + r - z0 + 1]
             h = BLD.House(hx, hz, L.get("heading", 0.0), L=L.get("L", 9), W=L.get("W", 6), floor=int(under.max()),
                           storeys=L.get("storeys", 2), style=house_style(L.get("style", "town"), doc), jetty=L.get("jetty", False),
-                          door=L.get("door", 1), chimney=L.get("chimney", True), roof=L.get("roof", "gable"))
+                          door=L.get("door", 1), chimney=L.get("chimney", True), roof=L.get("roof", "gable"),
+                          **{k: L[k] for k in ("storey", "pitch", "overhang") if k in L})
             got = BLD.house(w, h, ground_at=lambda x, z: int(Hi[x - x0, z - z0]),
                             rng=np.random.default_rng(L.get("seed", bd.get("seed", 0))))
             for x, z in got["footprint"]:
@@ -1002,7 +1007,8 @@ def _carve(layers, w, out, seed):
         elif op == "shaft":
             x, z = L["at"]
             head = ground(x, z) if L.get("top", "ground") == "ground" else int(L["top"])
-            UN.shaft(w, x, z, L["bottom"], head, ladder_on=L.get("ladder_on", "s"))
+            UN.shaft(w, x, z, L["bottom"], head, ladder_on=L.get("ladder_on", "s"),
+                     **{k: block(L[k]) for k in ("wall", "post") if k in L})
             for dx in range(-2, 3):
                 for dz in range(-2, 3):
                     for y in range(L["bottom"] - 1, head + 1):
