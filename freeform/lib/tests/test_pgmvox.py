@@ -1136,6 +1136,11 @@ class LayerLevels(unittest.TestCase):
             self.assertNotEqual(w.id(x, ceiling, z), B.AIR)
             self.assertEqual(w.id(x, ceiling - 1, z), B.AIR)
 
+    def test_a_level_may_state_its_soil(self):
+        b = self.build(self.doc(levels=[self.level(soil=1)]))
+        w = b.world
+        self.assertEqual([w.id(0, y, 0) for y in (58, 59, 60)], [B.STONE, B.DIRT, B.GRASS])
+
     def test_a_level_rests_where_the_ground_reaches_it(self):
         hill = {"id": "hill", "op": "mound", "mode": "lift", "rise": 18, "power": 3,
                 "areas": [{"circle": {"at": [8, 0], "r": 9}}]}

@@ -241,6 +241,8 @@ its panels and lattice, bands by height, and Brittlebush's edge.
 `outline` with an `area` instead of a box. It is laid into a world of its own and copied in where that world holds
 a block, so nothing it lays clears the ground below.
 
+**A level may state its `soil`**, the depth of dirt under its top everywhere, so a lip of rock carried over the ground below shows rock and not a band of dirt.
+
 **Under its edges a level tapers as a floating island does.** `underside` takes `taper` (blocks at the edge,
 blocks per block in), `rough`, `seed` and `clear`. Where the taper leaves fewer than `clear` blocks of air over the
 surface below, the level rests on it instead: it is laid down into that ground, soil and all, and the surface below

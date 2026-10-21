@@ -984,7 +984,8 @@ def _level(L, doc, w, share, out):
     bottom = np.where(rests, lower - 3, bottom)
     tmp = World(w.x0, w.z0, w.sx, w.sz, sy=w.sy)
     paint = [_paint_layer(P, X, Z, c.fields, c.lines, H) for P in L.get("paint", [])]
-    T.lay(tmp, np.where(land, H, -1), land, top=TOP, bands=T.beds(ROCK, H, seed=3), paint=paint, bottom=bottom)
+    T.lay(tmp, np.where(land, H, -1), land, top=TOP, bands=T.beds(ROCK, H, seed=3), paint=paint, bottom=bottom,
+          dirt_depth=L.get("soil"))
     if (water > 0).any():
         bed = [_paint_layer(P, X, Z, c.fields, c.lines, H) for P in L.get("water", {}).get("bed", [])] \
             or (B.GRAVEL, 0)
