@@ -1,0 +1,2046 @@
+{
+ "document": "layers",
+ "version": "draft-1",
+ "board": {
+  "name": "Chantry Gill street",
+  "x": [
+   0,
+   129
+  ],
+  "z": [
+   -4,
+   89
+  ],
+  "floor": 40,
+  "height": 84,
+  "seed": 3
+ },
+ "styles": {
+  "fell-cottage": {
+   "base": "brick",
+   "plinth": "STONEBRICK",
+   "ground": [
+    "BRICK"
+   ],
+   "upper": [
+    [
+     "PLANKS",
+     2
+    ]
+   ],
+   "post": 0,
+   "gable": [
+    "PLANKS",
+    1
+   ],
+   "floor": [
+    "PLANKS",
+    1
+   ],
+   "roof": [
+    "PLANKS",
+    5
+   ],
+   "stair": "DARK_OAK_STAIRS",
+   "slab": [
+    "WOOD_SLAB",
+    5
+   ],
+   "door": "SPRUCE_DOOR",
+   "window": [
+    "PANE",
+    0
+   ],
+   "stack": {
+    "block": "COBBLE",
+    "base": "COBBLE_STAIRS"
+   },
+   "windows": [
+    4,
+    [
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    1.5,
+    2.5
+   ],
+   "sill_in": [
+    "BRICK_STAIRS",
+    "BIRCH_STAIRS"
+   ],
+   "plain_turned": true,
+   "chimney": "COBBLE",
+   "chimney_top": [
+    "IRON_BARS",
+    [
+     "SLAB",
+     0
+    ],
+    [
+     "STAINED_GLASS",
+     7
+    ],
+    [
+     "STAINED_GLASS",
+     8
+    ]
+   ],
+   "joists_along": true
+  },
+  "fell-cottage-dark": {
+   "base": "brick",
+   "plinth": "STONEBRICK",
+   "ground": [
+    "BRICK"
+   ],
+   "upper": [
+    [
+     "PLANKS",
+     0
+    ]
+   ],
+   "post": 1,
+   "gable": [
+    "PLANKS",
+    5
+   ],
+   "floor": [
+    "PLANKS",
+    1
+   ],
+   "roof": [
+    "PLANKS",
+    1
+   ],
+   "stair": "SPRUCE_STAIRS",
+   "slab": [
+    "WOOD_SLAB",
+    1
+   ],
+   "door": "SPRUCE_DOOR",
+   "window": [
+    "PANE",
+    0
+   ],
+   "stack": {
+    "block": "COBBLE",
+    "base": "COBBLE_STAIRS"
+   },
+   "windows": [
+    4,
+    [
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    1.5,
+    2.5
+   ],
+   "sill_in": [
+    "BRICK_STAIRS",
+    "OAK_STAIRS"
+   ],
+   "log": "LOG2",
+   "plain_turned": true,
+   "chimney": "COBBLE",
+   "chimney_top": [
+    "IRON_BARS",
+    [
+     "SLAB",
+     0
+    ],
+    [
+     "STAINED_GLASS",
+     7
+    ],
+    [
+     "STAINED_GLASS",
+     8
+    ]
+   ],
+   "joists_along": true
+  },
+  "chapel-stone": {
+   "base": "stone",
+   "plinth": "COBBLE",
+   "ground": [
+    [
+     "STONEBRICK",
+     0
+    ]
+   ],
+   "upper": [
+    [
+     "STONEBRICK",
+     0
+    ]
+   ],
+   "post": null,
+   "gable": [
+    "STONEBRICK",
+    0
+   ],
+   "floor": [
+    "STONE",
+    6
+   ],
+   "roof": [
+    "PLANKS",
+    5
+   ],
+   "stair": "DARK_OAK_STAIRS",
+   "slab": [
+    "WOOD_SLAB",
+    5
+   ],
+   "door": "DARK_OAK_DOOR",
+   "window": [
+    "PANE",
+    0
+   ],
+   "windows": [
+    3,
+    [
+     2,
+     3,
+     4
+    ],
+    [
+     2,
+     3
+    ],
+    1.5,
+    1.5
+   ],
+   "quoins": [
+    [
+     "STONE",
+     5
+    ],
+    [
+     "STONE",
+     6
+    ]
+   ],
+   "string": [
+    "STONE",
+    6
+   ]
+  },
+  "byre": {
+   "base": "brick",
+   "plinth": "COBBLE",
+   "ground": [
+    [
+     "STONEBRICK",
+     0
+    ]
+   ],
+   "upper": [
+    [
+     "PLANKS",
+     1
+    ]
+   ],
+   "post": 0,
+   "gable": [
+    "PLANKS",
+    1
+   ],
+   "floor": [
+    "PLANKS",
+    1
+   ],
+   "roof": [
+    "PLANKS",
+    1
+   ],
+   "stair": "SPRUCE_STAIRS",
+   "slab": [
+    "WOOD_SLAB",
+    1
+   ],
+   "door": "SPRUCE_DOOR",
+   "window": [
+    "PANE",
+    0
+   ],
+   "windows": [
+    4,
+    [],
+    [],
+    1.5,
+    2.5
+   ],
+   "slab_roof": true,
+   "verge": {
+    "roof": [
+     "PLANKS",
+     5
+    ],
+    "slab": [
+     "WOOD_SLAB",
+     5
+    ]
+   },
+   "roof_bands": 2
+  }
+ },
+ "fields": {
+  "pen": {
+   "fbm": {
+    "cell": 3,
+    "octaves": 2,
+    "seed": 5
+   }
+  }
+ },
+ "ground": [
+  {
+   "id": "sheet",
+   "op": "outline",
+   "box": [
+    0,
+    -4,
+    129,
+    89
+   ]
+  },
+  {
+   "id": "fell",
+   "op": "base",
+   "height": 40,
+   "terms": [
+    {
+     "ramp": {
+      "along": "z",
+      "from": 0,
+      "to": 84,
+      "rise": 5
+     }
+    }
+   ],
+   "note": "the ground rising five blocks from the north gate to the south"
+  },
+  {
+   "id": "square-level",
+   "op": "level",
+   "mode": "set",
+   "top": "median",
+   "inner": 1.0,
+   "outer": 1.6,
+   "areas": [
+    {
+     "polygon": [
+      [
+       42,
+       30
+      ],
+      [
+       60,
+       28
+      ],
+      [
+       66,
+       36
+      ],
+      [
+       63,
+       47
+      ],
+      [
+       44,
+       48
+      ],
+      [
+       40,
+       40
+      ]
+     ]
+    }
+   ],
+   "note": "the square laid level, eased into the street"
+  },
+  {
+   "id": "main-street",
+   "op": "path",
+   "line": [
+    [
+     50,
+     -2
+    ],
+    [
+     49,
+     14
+    ],
+    [
+     51,
+     26
+    ],
+    [
+     52,
+     38
+    ],
+    [
+     51,
+     52
+    ],
+    [
+     53,
+     64
+    ],
+    [
+     54,
+     86
+    ]
+   ],
+   "width": 4,
+   "max_grade": 0.15
+  },
+  {
+   "id": "lane",
+   "op": "path",
+   "line": [
+    [
+     60,
+     36
+    ],
+    [
+     72,
+     31
+    ],
+    [
+     86,
+     28
+    ],
+    [
+     98,
+     26
+    ]
+   ],
+   "width": 3,
+   "max_grade": 0.2
+  }
+ ],
+ "paint": [
+  {
+   "block": [
+    "DIRT",
+    1
+   ],
+   "area": {
+    "rect": [
+     75,
+     50,
+     85,
+     56
+    ]
+   },
+   "noise": {
+    "field": "pen",
+    "lo": 0
+   }
+  },
+  {
+   "block": [
+    "DIRT",
+    0
+   ],
+   "area": {
+    "rect": [
+     75,
+     50,
+     85,
+     56
+    ]
+   }
+  }
+ ],
+ "carve": [
+  {
+   "id": "crypt",
+   "op": "rooms",
+   "seed": 11,
+   "rooms": [
+    {
+     "id": "crypt",
+     "rect": [
+      29,
+      34,
+      35,
+      46
+     ],
+     "floor": 30,
+     "h": 5
+    }
+   ],
+   "lining": {
+    "wall": [
+     [
+      [
+       "STONEBRICK",
+       0
+      ],
+      6
+     ],
+     [
+      [
+       "STONEBRICK",
+       2
+      ],
+      1
+     ]
+    ],
+    "floor": [
+     [
+      [
+       "STONEBRICK",
+       0
+      ],
+      1
+     ],
+     [
+      [
+       "STONE",
+       6
+      ],
+      1
+     ],
+     [
+      [
+       "STONE",
+       5
+      ],
+      1
+     ],
+     [
+      [
+       "STONE",
+       0
+      ],
+      1
+     ]
+    ],
+    "ceiling": "STONEBRICK"
+   },
+   "light": {
+    "y": 2
+   }
+  },
+  {
+   "id": "crypt-shaft",
+   "op": "shaft",
+   "at": [
+    33,
+    44
+   ],
+   "bottom": 30,
+   "top": "ground",
+   "ladder_on": "s",
+   "wall": [
+    "STONEBRICK",
+    0
+   ],
+   "post": [
+    "STONEBRICK",
+    0
+   ]
+  }
+ ],
+ "build": [
+  {
+   "id": "street-pave",
+   "op": "paving",
+   "area": {
+    "line": {
+     "near": "main-street",
+     "width": 4
+    }
+   },
+   "cell": 1,
+   "blocks": [
+    "GRAVEL",
+    [
+     "STONE",
+     5
+    ],
+    "COBBLE"
+   ],
+   "seed": 2,
+   "note": "a third each of gravel, andesite and cobble"
+  },
+  {
+   "id": "lane-pave",
+   "op": "paving",
+   "area": {
+    "line": {
+     "near": "lane",
+     "width": 3
+    }
+   },
+   "cell": 1,
+   "blocks": [
+    "GRAVEL",
+    [
+     "STONE",
+     5
+    ],
+    "COBBLE"
+   ],
+   "seed": 3
+  },
+  {
+   "id": "square-pave",
+   "op": "paving",
+   "area": {
+    "polygon": [
+     [
+      42,
+      30
+     ],
+     [
+      60,
+      28
+     ],
+     [
+      66,
+      36
+     ],
+     [
+      63,
+      47
+     ],
+     [
+      44,
+      48
+     ],
+     [
+      40,
+      40
+     ]
+    ]
+   },
+   "cell": 3,
+   "blocks": [
+    [
+     "STONEBRICK",
+     0
+    ],
+    [
+     "STONE",
+     6
+    ],
+    [
+     "STONE",
+     5
+    ],
+    [
+     "STONE",
+     0
+    ]
+   ],
+   "seed": 4,
+   "note": "a quarter each, in cells of three"
+  },
+  {
+   "id": "nave",
+   "op": "house",
+   "at": [
+    32,
+    40
+   ],
+   "heading": 90,
+   "L": 15,
+   "W": 9,
+   "storeys": 1,
+   "style": "chapel-stone",
+   "door": 0,
+   "storey": 6,
+   "chimney": false
+  },
+  {
+   "id": "chapel-tower",
+   "op": "round_tower",
+   "at": [
+    32,
+    30
+   ],
+   "half": 2,
+   "cut": false,
+   "height": 15,
+   "wall": [
+    "STONEBRICK",
+    0
+   ],
+   "quoins": [
+    [
+     "STONE",
+     5
+    ],
+    [
+     "STONE",
+     6
+    ]
+   ],
+   "string": [
+    "STONE",
+    6
+   ],
+   "plinth": "COBBLE",
+   "crenel": [
+    "SLAB",
+    5
+   ],
+   "door": "e",
+   "floor": [
+    "PLANKS",
+    1
+   ]
+  },
+  {
+   "id": "chapel-door",
+   "op": "blocks",
+   "boxes": [
+    {
+     "box": [
+      32,
+      43,
+      32,
+      32,
+      44,
+      33
+     ],
+     "block": "AIR"
+    }
+   ],
+   "note": "the way from the tower into the nave, two high through both walls"
+  },
+  {
+   "id": "inn",
+   "op": "house",
+   "at": [
+    58,
+    12
+   ],
+   "heading": 90,
+   "L": 13,
+   "W": 7,
+   "storeys": 2,
+   "style": "fell-cottage",
+   "door": 1,
+   "jetty": true,
+   "note": "the inn by the north gate"
+  },
+  {
+   "id": "cooper",
+   "op": "house",
+   "at": [
+    41,
+    13
+   ],
+   "heading": 90,
+   "L": 9,
+   "W": 6,
+   "storeys": 2,
+   "style": "fell-cottage-dark",
+   "door": -1
+  },
+  {
+   "id": "east-row-1",
+   "op": "house",
+   "at": [
+    60,
+    55
+   ],
+   "heading": 90,
+   "L": 9,
+   "W": 6,
+   "storeys": 2,
+   "style": "fell-cottage",
+   "door": 1
+  },
+  {
+   "id": "east-row-2",
+   "op": "house",
+   "at": [
+    62,
+    70
+   ],
+   "heading": 90,
+   "L": 9,
+   "W": 6,
+   "storeys": 1,
+   "style": "fell-cottage-dark",
+   "door": 1
+  },
+  {
+   "id": "west-row-1",
+   "op": "house",
+   "at": [
+    43,
+    57
+   ],
+   "heading": 90,
+   "L": 9,
+   "W": 6,
+   "storeys": 2,
+   "style": "fell-cottage",
+   "door": -1
+  },
+  {
+   "id": "west-row-2",
+   "op": "house",
+   "at": [
+    45,
+    71
+   ],
+   "heading": 90,
+   "L": 11,
+   "W": 7,
+   "storeys": 2,
+   "style": "fell-cottage-dark",
+   "door": -1,
+   "jetty": true
+  },
+  {
+   "id": "lane-1",
+   "op": "house",
+   "at": [
+    72,
+    22
+   ],
+   "heading": -15,
+   "L": 9,
+   "W": 6,
+   "storeys": 2,
+   "style": "fell-cottage",
+   "door": 1
+  },
+  {
+   "id": "lane-2",
+   "op": "house",
+   "at": [
+    86,
+    18
+   ],
+   "heading": 0,
+   "L": 9,
+   "W": 6,
+   "storeys": 1,
+   "style": "fell-cottage-dark",
+   "door": 1
+  },
+  {
+   "id": "byre",
+   "op": "house",
+   "at": [
+    80,
+    40
+   ],
+   "heading": 0,
+   "L": 13,
+   "W": 7,
+   "storeys": 2,
+   "style": "byre",
+   "door": -1,
+   "chimney": false
+  },
+  {
+   "id": "byre-stalls",
+   "op": "blocks",
+   "boxes": [
+    {
+     "box": [
+      75,
+      44,
+      43,
+      77,
+      46,
+      43
+     ],
+     "block": "AIR"
+    },
+    {
+     "box": [
+      79,
+      44,
+      43,
+      81,
+      46,
+      43
+     ],
+     "block": "AIR"
+    },
+    {
+     "box": [
+      83,
+      44,
+      43,
+      85,
+      46,
+      43
+     ],
+     "block": "AIR"
+    },
+    {
+     "box": [
+      78,
+      44,
+      43,
+      78,
+      46,
+      43
+     ],
+     "block": [
+      "LOG",
+      0
+     ]
+    },
+    {
+     "box": [
+      82,
+      44,
+      43,
+      82,
+      46,
+      43
+     ],
+     "block": [
+      "LOG",
+      0
+     ]
+    },
+    {
+     "box": [
+      78,
+      44,
+      38,
+      78,
+      44,
+      42
+     ],
+     "block": "FENCE"
+    },
+    {
+     "box": [
+      82,
+      44,
+      38,
+      82,
+      44,
+      42
+     ],
+     "block": "FENCE"
+    },
+    {
+     "box": [
+      75,
+      44,
+      38,
+      76,
+      44,
+      38
+     ],
+     "block": "HAY"
+    },
+    {
+     "box": [
+      80,
+      44,
+      38,
+      80,
+      44,
+      38
+     ],
+     "block": "HAY"
+    },
+    {
+     "box": [
+      84,
+      44,
+      38,
+      85,
+      44,
+      38
+     ],
+     "block": "HAY"
+    },
+    {
+     "box": [
+      79,
+      49,
+      43,
+      80,
+      50,
+      43
+     ],
+     "block": "AIR"
+    },
+    {
+     "box": [
+      79,
+      48,
+      42,
+      80,
+      48,
+      42
+     ],
+     "block": "HAY"
+    }
+   ]
+  },
+  {
+   "id": "byre-lean-to",
+   "op": "blocks",
+   "boxes": [
+    {
+     "box": [
+      74,
+      44,
+      46,
+      74,
+      46,
+      46
+     ],
+     "block": [
+      "LOG",
+      0
+     ]
+    },
+    {
+     "box": [
+      78,
+      44,
+      46,
+      78,
+      46,
+      46
+     ],
+     "block": [
+      "LOG",
+      0
+     ]
+    },
+    {
+     "box": [
+      82,
+      44,
+      46,
+      82,
+      46,
+      46
+     ],
+     "block": [
+      "LOG",
+      0
+     ]
+    },
+    {
+     "box": [
+      86,
+      44,
+      46,
+      86,
+      46,
+      46
+     ],
+     "block": [
+      "LOG",
+      0
+     ]
+    },
+    {
+     "box": [
+      75,
+      46,
+      46,
+      77,
+      46,
+      46
+     ],
+     "block": [
+      "LOG",
+      4
+     ]
+    },
+    {
+     "box": [
+      79,
+      46,
+      46,
+      81,
+      46,
+      46
+     ],
+     "block": [
+      "LOG",
+      4
+     ]
+    },
+    {
+     "box": [
+      83,
+      46,
+      46,
+      85,
+      46,
+      46
+     ],
+     "block": [
+      "LOG",
+      4
+     ]
+    },
+    {
+     "box": [
+      73,
+      48,
+      44,
+      87,
+      48,
+      44
+     ],
+     "block": [
+      "WOOD_SLAB",
+      1
+     ]
+    },
+    {
+     "box": [
+      73,
+      47,
+      45,
+      87,
+      47,
+      45
+     ],
+     "block": [
+      "WOOD_SLAB",
+      9
+     ]
+    },
+    {
+     "box": [
+      73,
+      47,
+      46,
+      87,
+      47,
+      46
+     ],
+     "block": [
+      "WOOD_SLAB",
+      1
+     ]
+    },
+    {
+     "box": [
+      73,
+      46,
+      47,
+      87,
+      46,
+      47
+     ],
+     "block": [
+      "WOOD_SLAB",
+      9
+     ]
+    }
+   ],
+   "note": "three deep at the main roof's half-block pitch, its eave a row of upper slabs"
+  },
+  {
+   "id": "pen",
+   "op": "wall",
+   "line": [
+    [
+     74,
+     49
+    ],
+    [
+     74,
+     57
+    ],
+    [
+     86,
+     57
+    ],
+    [
+     86,
+     49
+    ]
+   ],
+   "height": 1,
+   "blocks": [
+    "FENCE"
+   ]
+  },
+  {
+   "id": "pen-gate",
+   "op": "blocks",
+   "boxes": [
+    {
+     "box": [
+      80,
+      44,
+      57,
+      80,
+      44,
+      57
+     ],
+     "block": [
+      "FENCE_GATE",
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "id": "stall-a",
+   "op": "stall",
+   "at": [
+    62,
+    32
+   ],
+   "facing": "w",
+   "colours": [
+    14,
+    0
+   ],
+   "post": [
+    "DARK_OAK_FENCE",
+    0
+   ],
+   "foot": [
+    "LOG2",
+    1
+   ],
+   "counter_stair": "SPRUCE_STAIRS",
+   "banners": true,
+   "sides": true
+  },
+  {
+   "id": "stall-b",
+   "op": "stall",
+   "at": [
+    62,
+    40
+   ],
+   "facing": "w",
+   "colours": [
+    11,
+    0
+   ],
+   "post": [
+    "DARK_OAK_FENCE",
+    0
+   ],
+   "foot": [
+    "LOG2",
+    1
+   ],
+   "counter_stair": "SPRUCE_STAIRS",
+   "banners": true,
+   "sides": true
+  },
+  {
+   "id": "stall-c",
+   "op": "stall",
+   "at": [
+    54,
+    46
+   ],
+   "facing": "n",
+   "colours": [
+    4,
+    13
+   ],
+   "post": [
+    "DARK_OAK_FENCE",
+    0
+   ],
+   "foot": [
+    "LOG2",
+    1
+   ],
+   "counter_stair": "SPRUCE_STAIRS",
+   "banners": true,
+   "sides": true,
+   "goods": [
+    [
+     "HAY",
+     0
+    ],
+    [
+     "PUMPKIN",
+     3
+    ],
+    [
+     "HAY",
+     0
+    ]
+   ]
+  },
+  {
+   "id": "monument",
+   "op": "posts",
+   "at": [
+    [
+     45,
+     39
+    ]
+   ],
+   "stack": [
+    "AIR",
+    "AIR",
+    "AIR",
+    "OBSIDIAN",
+    "OBSIDIAN",
+    "OBSIDIAN"
+   ],
+   "note": "the monument, three of obsidian floating three over the square"
+  },
+  {
+   "id": "street-lamps",
+   "op": "posts",
+   "at": [
+    [
+     46,
+     6
+    ],
+    [
+     53,
+     20
+    ],
+    [
+     47,
+     31
+    ],
+    [
+     57,
+     50
+    ],
+    [
+     48,
+     62
+    ],
+    [
+     57,
+     76
+    ]
+   ],
+   "stack": [
+    [
+     "STONE",
+     6
+    ],
+    "COBBLE_WALL",
+    [
+     "TORCH",
+     5
+    ]
+   ]
+  },
+  {
+   "id": "square-lamps",
+   "op": "posts",
+   "at": [
+    [
+     43,
+     33
+    ],
+    [
+     59,
+     44
+    ]
+   ],
+   "stack": [
+    [
+     "STONE",
+     6
+    ],
+    "COBBLE_WALL",
+    "COBBLE_WALL",
+    "REDSTONE_LAMP",
+    [
+     151,
+     0
+    ]
+   ]
+  },
+  {
+   "id": "lane-hedge",
+   "op": "hedge",
+   "line": [
+    [
+     68,
+     34
+    ],
+    [
+     80,
+     32
+    ],
+    [
+     90,
+     31
+    ]
+   ],
+   "offset": 0,
+   "seed": 5,
+   "grass": true,
+   "note": "the hedge along the lane's south side, between it and the byre's yard"
+  },
+  {
+   "id": "gardens",
+   "op": "small_trees",
+   "at": [
+    [
+     33,
+     14
+    ],
+    [
+     35,
+     60
+    ],
+    [
+     69,
+     56
+    ],
+    [
+     71,
+     68
+    ],
+    [
+     38,
+     73
+    ]
+   ],
+   "seed": 6
+  },
+  {
+   "id": "flower-field",
+   "op": "flowers",
+   "area": {
+    "polygon": [
+     [
+      100,
+      52
+     ],
+     [
+      114,
+      49
+     ],
+     [
+      124,
+      56
+     ],
+     [
+      118,
+      68
+     ],
+     [
+      102,
+      66
+     ]
+    ],
+    "rough": {
+     "amp": 0.08,
+     "cell": 4,
+     "seed": 3
+    }
+   },
+   "flowers": [
+    [
+     "FLOWER",
+     0
+    ],
+    [
+     "DANDELION",
+     0
+    ],
+    [
+     "FLOWER",
+     3
+    ],
+    [
+     "FLOWER",
+     8
+    ],
+    [
+     "FLOWER",
+     2
+    ]
+   ],
+   "rows": 2
+  },
+  {
+   "id": "byre-field",
+   "op": "field",
+   "rect": [
+    100,
+    30,
+    120,
+    46
+   ],
+   "crops": [
+    [
+     "WHEAT",
+     7
+    ],
+    [
+     "CARROTS",
+     7
+    ],
+    [
+     "POTATOES",
+     7
+    ]
+   ],
+   "rows": 6,
+   "ditch": 3,
+   "fence": "w",
+   "scarecrows": [
+    [
+     110,
+     30
+    ]
+   ]
+  },
+  {
+   "id": "wall-0",
+   "op": "wall",
+   "line": [
+    [
+     54,
+     -1
+    ],
+    [
+     76,
+     4
+    ],
+    [
+     96,
+     14
+    ],
+    [
+     99,
+     22
+    ]
+   ],
+   "width": 3,
+   "height": 5,
+   "crown": "follow",
+   "courses": [
+    "COBBLE",
+    [
+     "COBBLE",
+     [
+      "STONE",
+      5
+     ]
+    ],
+    [
+     "STONE",
+     5
+    ],
+    [
+     [
+      "STONE",
+      5
+     ],
+     [
+      "STONEBRICK",
+      0
+     ]
+    ],
+    [
+     "STONEBRICK",
+     0
+    ]
+   ],
+   "step_slab": [
+    "SLAB",
+    5
+   ]
+  },
+  {
+   "id": "parapet-0",
+   "op": "wall",
+   "line": [
+    [
+     54,
+     -1
+    ],
+    [
+     76,
+     4
+    ],
+    [
+     96,
+     14
+    ],
+    [
+     99,
+     22
+    ]
+   ],
+   "offset": -1.4,
+   "height": 6,
+   "crown": "follow",
+   "courses": [
+    "COBBLE",
+    [
+     "COBBLE",
+     [
+      "STONE",
+      5
+     ]
+    ],
+    [
+     "STONE",
+     5
+    ],
+    [
+     [
+      "STONE",
+      5
+     ],
+     [
+      "STONEBRICK",
+      0
+     ]
+    ],
+    [
+     "STONEBRICK",
+     0
+    ]
+   ],
+   "crenel": [
+    "SLAB",
+    5
+   ],
+   "step_slab": [
+    "SLAB",
+    5
+   ]
+  },
+  {
+   "id": "wall-1",
+   "op": "wall",
+   "line": [
+    [
+     99,
+     31
+    ],
+    [
+     100,
+     42
+    ],
+    [
+     92,
+     62
+    ],
+    [
+     74,
+     80
+    ],
+    [
+     58,
+     84
+    ]
+   ],
+   "width": 3,
+   "height": 5,
+   "crown": "follow",
+   "courses": [
+    "COBBLE",
+    [
+     "COBBLE",
+     [
+      "STONE",
+      5
+     ]
+    ],
+    [
+     "STONE",
+     5
+    ],
+    [
+     [
+      "STONE",
+      5
+     ],
+     [
+      "STONEBRICK",
+      0
+     ]
+    ],
+    [
+     "STONEBRICK",
+     0
+    ]
+   ],
+   "step_slab": [
+    "SLAB",
+    5
+   ]
+  },
+  {
+   "id": "parapet-1",
+   "op": "wall",
+   "line": [
+    [
+     99,
+     31
+    ],
+    [
+     100,
+     42
+    ],
+    [
+     92,
+     62
+    ],
+    [
+     74,
+     80
+    ],
+    [
+     58,
+     84
+    ]
+   ],
+   "offset": -1.4,
+   "height": 6,
+   "crown": "follow",
+   "courses": [
+    "COBBLE",
+    [
+     "COBBLE",
+     [
+      "STONE",
+      5
+     ]
+    ],
+    [
+     "STONE",
+     5
+    ],
+    [
+     [
+      "STONE",
+      5
+     ],
+     [
+      "STONEBRICK",
+      0
+     ]
+    ],
+    [
+     "STONEBRICK",
+     0
+    ]
+   ],
+   "crenel": [
+    "SLAB",
+    5
+   ],
+   "step_slab": [
+    "SLAB",
+    5
+   ]
+  },
+  {
+   "id": "wall-2",
+   "op": "wall",
+   "line": [
+    [
+     49,
+     84
+    ],
+    [
+     30,
+     78
+    ],
+    [
+     18,
+     58
+    ],
+    [
+     17,
+     32
+    ],
+    [
+     22,
+     10
+    ],
+    [
+     45,
+     -1
+    ]
+   ],
+   "width": 3,
+   "height": 5,
+   "crown": "follow",
+   "courses": [
+    "COBBLE",
+    [
+     "COBBLE",
+     [
+      "STONE",
+      5
+     ]
+    ],
+    [
+     "STONE",
+     5
+    ],
+    [
+     [
+      "STONE",
+      5
+     ],
+     [
+      "STONEBRICK",
+      0
+     ]
+    ],
+    [
+     "STONEBRICK",
+     0
+    ]
+   ],
+   "step_slab": [
+    "SLAB",
+    5
+   ]
+  },
+  {
+   "id": "parapet-2",
+   "op": "wall",
+   "line": [
+    [
+     49,
+     84
+    ],
+    [
+     30,
+     78
+    ],
+    [
+     18,
+     58
+    ],
+    [
+     17,
+     32
+    ],
+    [
+     22,
+     10
+    ],
+    [
+     45,
+     -1
+    ]
+   ],
+   "offset": -1.4,
+   "height": 6,
+   "crown": "follow",
+   "courses": [
+    "COBBLE",
+    [
+     "COBBLE",
+     [
+      "STONE",
+      5
+     ]
+    ],
+    [
+     "STONE",
+     5
+    ],
+    [
+     [
+      "STONE",
+      5
+     ],
+     [
+      "STONEBRICK",
+      0
+     ]
+    ],
+    [
+     "STONEBRICK",
+     0
+    ]
+   ],
+   "crenel": [
+    "SLAB",
+    5
+   ],
+   "step_slab": [
+    "SLAB",
+    5
+   ]
+  },
+  {
+   "id": "tower-0",
+   "op": "round_tower",
+   "at": [
+    96,
+    14
+   ],
+   "half": 4,
+   "height": 13,
+   "wall": [
+    "STONEBRICK",
+    0
+   ],
+   "door": "s",
+   "crenel": [
+    "SLAB",
+    5
+   ],
+   "quoins": [
+    [
+     "STONE",
+     5
+    ],
+    [
+     "STONE",
+     6
+    ]
+   ],
+   "string": [
+    "STONE",
+    6
+   ],
+   "plinth": "COBBLE",
+   "floor": [
+    "PLANKS",
+    1
+   ]
+  },
+  {
+   "id": "tower-1",
+   "op": "round_tower",
+   "at": [
+    92,
+    62
+   ],
+   "half": 4,
+   "height": 13,
+   "wall": [
+    "STONEBRICK",
+    0
+   ],
+   "door": "n",
+   "crenel": [
+    "SLAB",
+    5
+   ],
+   "quoins": [
+    [
+     "STONE",
+     5
+    ],
+    [
+     "STONE",
+     6
+    ]
+   ],
+   "string": [
+    "STONE",
+    6
+   ],
+   "plinth": "COBBLE",
+   "floor": [
+    "PLANKS",
+    1
+   ]
+  },
+  {
+   "id": "tower-2",
+   "op": "round_tower",
+   "at": [
+    18,
+    58
+   ],
+   "half": 4,
+   "height": 13,
+   "wall": [
+    "STONEBRICK",
+    0
+   ],
+   "door": "e",
+   "crenel": [
+    "SLAB",
+    5
+   ],
+   "quoins": [
+    [
+     "STONE",
+     5
+    ],
+    [
+     "STONE",
+     6
+    ]
+   ],
+   "string": [
+    "STONE",
+    6
+   ],
+   "plinth": "COBBLE",
+   "floor": [
+    "PLANKS",
+    1
+   ]
+  },
+  {
+   "id": "tower-3",
+   "op": "round_tower",
+   "at": [
+    22,
+    10
+   ],
+   "half": 4,
+   "height": 13,
+   "wall": [
+    "STONEBRICK",
+    0
+   ],
+   "door": "e",
+   "crenel": [
+    "SLAB",
+    5
+   ],
+   "quoins": [
+    [
+     "STONE",
+     5
+    ],
+    [
+     "STONE",
+     6
+    ]
+   ],
+   "string": [
+    "STONE",
+    6
+   ],
+   "plinth": "COBBLE",
+   "floor": [
+    "PLANKS",
+    1
+   ]
+  }
+ ]
+}

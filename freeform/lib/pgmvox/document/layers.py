@@ -826,7 +826,8 @@ def build(doc):
                                             for a, oy in L.get("openings", [])],
                                   ground_at=lambda x, z: int(Hi[x - x0, z - z0]), slit=block(L.get("slit", "AIR")),
                                   half=L.get("half"), string=block(L["string"]) if "string" in L else None,
-                                  plinth=block(L["plinth"]) if "plinth" in L else None, crenel_stair=getattr(B, L["crenel_stair"]) if "crenel_stair" in L
+                                  plinth=block(L["plinth"]) if "plinth" in L else None, cut=L.get("cut", True),
+                                  crenel_stair=getattr(B, L["crenel_stair"]) if "crenel_stair" in L
                                   else None)
             for x, z in got:
                 laid[x - x0, z - z0] = True
@@ -854,6 +855,18 @@ def build(doc):
             for x, z in got:
                 if 0 <= x - x0 < laid.shape[0] and 0 <= z - z0 < laid.shape[1]:
                     laid[x - x0, z - z0] = True
+        elif L["op"] == "paving":
+            e, _ = area_distance(L["area"], X, Z, fields, lines)
+            cell = L.get("cell", 3)
+            pave = [block(b) for b in L["blocks"]]
+            pick = np.random.default_rng(L.get("seed", bd.get("seed", 0))).integers(
+                len(pave), size=(X.shape[0] // cell + 2, X.shape[1] // cell + 2))
+            for i, k in np.argwhere((e < 1) & land & (water == 0)):
+                y = int(Hi[i, k])
+                w.set(int(X[i, k]), y, int(Z[i, k]), *pave[pick[i // cell, k // cell]])
+                if w.ids[i, y + 1, k] in (B.TALLGRASS, B.FLOWER, B.DANDELION, B.DOUBLE_PLANT):
+                    w.ids[i, y + 1, k] = 0
+                laid[i, k] = True
         elif L["op"] == "field":
             from pgmvox.built import props as PR
             a0, b0, a1, b1 = L["rect"]

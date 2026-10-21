@@ -594,7 +594,7 @@ def _details(w, h, st, fr, windows, corners, crown_at, Lt, ground_at, square=Tru
 
 def round_tower(w, cx, cz, r, y0, height, wall=(B.STONEBRICK, 0), quoins=None, floor=(B.PLANKS, 1),
                 crenel=(B.STONEBRICK, 0), every=5, door_side="s", door=B.SPRUCE_DOOR, openings=(), ground_at=None,
-                slit=(B.AIR, 0), half=None, crenel_stair=None, string=None, plinth=None):
+                slit=(B.AIR, 0), half=None, crenel_stair=None, string=None, plinth=None, cut=True):
     """A round tower on the floor at y0: a ring of walls two thick, r blocks to its outer face, from the ground under
     it to y0 + height; a floor every `every` courses and on its top, a ladder up the inside of the side away from
     its door through a hatch in each, crenels round the top's outer ring; a door at its foot on `door_side`;
@@ -604,17 +604,18 @@ def round_tower(w, cx, cz, r, y0, height, wall=(B.STONEBRICK, 0), quoins=None, f
     thick: straight faces of `2 half - 1` and an open corner between each, which reads round and takes detail.
     `crenel_stair` lays the crenels as stairs rising outward. On a cut square the `quoins` stand at each cut corner
     (its diagonal and the two face ends beside it); `string` rings every floor and the top on the outer face, and
-    `plinth` is its foot course. Returns the cells it stands on."""
+    `plinth` is its foot course. `cut` False keeps the square's corners: a plain square tower, its quoins at the
+    four corners. Returns the cells it stands on."""
     from pgmvox.core.orient import door as door_data, ladder as ladder_data
     cells, ring, outer = [], set(), set()
     R = int(math.ceil(r)) if half is None else half
     for dx in range(-R, R + 1):
         for dz in range(-R, R + 1):
             if half is not None:
-                if abs(dx) == half and abs(dz) == half:
+                if cut and abs(dx) == half and abs(dz) == half:
                     continue
                 cells.append((cx + dx, cz + dz))
-                if abs(dx) == half or abs(dz) == half or (abs(dx) == half - 1 and abs(dz) == half - 1):
+                if abs(dx) == half or abs(dz) == half or (cut and abs(dx) == half - 1 and abs(dz) == half - 1):
                     ring.add((cx + dx, cz + dz))
                     outer.add((cx + dx, cz + dz))
                 continue
@@ -628,11 +629,11 @@ def round_tower(w, cx, cz, r, y0, height, wall=(B.STONEBRICK, 0), quoins=None, f
     top = y0 + height
     for x, z in cells:
         g = ground_at(x, z) if ground_at else y0
-        for y in range(min(g, y0) + 1, top + 1):
+        for y in range(min(g, y0 - 1) + 1, top + 1):
             if (x, z) in ring:
                 ax, az = abs(x - cx), abs(z - cz)
                 if half is not None:
-                    q = quoins and ax >= half - 1 and az >= half - 1
+                    q = quoins and (ax >= half - 1 and az >= half - 1 if cut else ax == half and az == half)
                 else:
                     q = quoins and (ax == 0 or az == 0) and (x, z) in outer
                 if plinth is not None and y <= y0 + 1:

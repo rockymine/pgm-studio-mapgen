@@ -2252,6 +2252,15 @@ class HouseDetails(unittest.TestCase):
             self.assertEqual({(x, z) for x in (0, 1) for z in (0, 1) if w.id(x, y, z) == B.TALLGRASS},
                              {(x, z) for x in (0, 1) for z in (0, 1)} - set(on))
 
+    def test_paving_lays_its_blocks_in_cells_an_equal_share_each(self):
+        w = self.build([{"id": "p", "op": "paving", "area": {"rect": [-15, -15, 14, 14]}, "cell": 3,
+                         "blocks": [["STONEBRICK", 0], ["STONE", 6], ["STONE", 5], ["STONE", 0]], "seed": 1}]).world
+        top = [w.get(x, 40, z) for x in range(-14, 14) for z in range(-14, 14)]
+        counts = {b: top.count(b) for b in set(top)}
+        self.assertEqual(len(counts), 4)
+        self.assertTrue(all(abs(c / len(top) - 0.25) < 0.1 for c in counts.values()))
+        self.assertEqual(w.get(-12, 40, -12), w.get(-11, 40, -11))                   # one cell, one block
+
     def test_a_field_lays_farmland_and_its_fence_gate(self):
         w = self.build([{"id": "f", "op": "field", "rect": [-10, -10, 10, 10], "crops": [["WHEAT", 7]]}]).world
         self.assertGreater(int((w.ids == B.FARMLAND).sum()), 200)
