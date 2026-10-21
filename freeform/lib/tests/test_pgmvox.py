@@ -2261,6 +2261,38 @@ class HouseDetails(unittest.TestCase):
         self.assertTrue(all(abs(c / len(top) - 0.25) < 0.1 for c in counts.values()))
         self.assertEqual(w.get(-12, 40, -12), w.get(-11, 40, -11))                   # one cell, one block
 
+    def test_an_odd_ridge_is_slabs_and_an_even_one_stairs_meeting(self):
+        style = dict(self.STYLE, ridge_slab=True, roof=["PLANKS", 5], stair="DARK_OAK_STAIRS", slab=["WOOD_SLAB", 5])
+        style.pop("stack")
+        w = self.build([self.house(W=7, chimney=False)], style).world             # 9 wide over its overhang: odd
+        ridge = [w.get(x, int(np.flatnonzero(w.ids[x - w.x0, :, -w.z0])[-1]), 0) for x in range(-3, 4)]
+        self.assertEqual({b for b, _ in ridge}, {B.WOOD_SLAB})
+        w = self.build([self.house(W=6, chimney=False)], style).world             # 8 wide: two rows meet
+        x = 0
+        tops = {z: w.get(x, int(np.flatnonzero(w.ids[x - w.x0, :, z - w.z0])[-1]), z) for z in (-1, 0)}
+        self.assertEqual({b for b, _ in tops.values()}, {B.DARK_OAK_STAIRS})
+        self.assertNotEqual(tops[-1][1], tops[0][1])                                # facing each other
+
+    def test_graves_a_ruined_wall_a_door_path_and_heights_over_a_house_floor(self):
+        b = self.build([
+            self.house(at=[0, -8], chimney=False, walk={"to": "street", "leaves": ["LEAVES", 4], "gaps": 0}),
+            {"id": "mark", "op": "blocks", "rel": "h", "boxes": [{"box": [10, 1, 10, 10, 1, 10], "block": "GOLD_BLOCK"}]},
+            {"id": "g", "op": "graves", "at": [[-12, 8]], "facing": "e", "flowered": 1.0},
+            {"id": "w", "op": "wall", "line": [[-14, 12], [14, 12]], "height": 4, "ruin": [10, 28, 1]}],
+            extra={"ground": [{"id": "all", "op": "outline", "box": [-16, -16, 15, 15]},
+                              {"id": "flat", "op": "base", "height": 40},
+                              {"id": "street", "op": "path", "line": [[-15, 2], [15, 2]], "width": 3}]})
+        w = b.world
+        self.assertEqual(w.id(10, 41, 10), B.GOLD_BLOCK)                            # the house's floor is 40
+        self.assertEqual((w.get(-12, 41, 8), w.get(-12, 42, 8)), ((B.STONE, 6), (B.SLAB, 5)))
+        self.assertEqual([w.get(x, 40, 8) for x in (-11, -10)], [(B.DIRT, 1)] * 2)
+        self.assertIn(w.id(-11, 41, 8), (B.FLOWER, B.DANDELION))
+        self.assertEqual(w.id(-14, 44, 12), B.COBBLE)                               # whole at its start
+        self.assertEqual(w.id(13, 44, 12), B.AIR)                                   # broken down at its end
+        path = [w.get(0, 40, z) for z in range(-5, 1)]
+        self.assertTrue(all(p[0] in (B.DIRT, B.GRAVEL) and p != (B.GRASS, 0) for p in path))
+        self.assertTrue(any(w.id(x, 41, z) == B.LEAVES for x in (-1, 1) for z in range(-3, 1)))
+
     def test_a_field_lays_farmland_and_its_fence_gate(self):
         w = self.build([{"id": "f", "op": "field", "rect": [-10, -10, 10, 10], "crops": [["WHEAT", 7]]}]).world
         self.assertGreater(int((w.ids == B.FARMLAND).sum()), 200)

@@ -88,7 +88,8 @@
      8
     ]
    ],
-   "joists_along": true
+   "joists_along": true,
+   "ridge_slab": true
   },
   "fell-cottage-dark": {
    "base": "brick",
@@ -163,7 +164,8 @@
      8
     ]
    ],
-   "joists_along": true
+   "joists_along": true,
+   "ridge_slab": true
   },
   "chapel-stone": {
    "base": "stone",
@@ -230,7 +232,8 @@
    "string": [
     "STONE",
     6
-   ]
+   ],
+   "ridge_slab": true
   },
   "byre": {
    "base": "brick",
@@ -288,7 +291,8 @@
      5
     ]
    },
-   "roof_bands": 2
+   "roof_bands": 2,
+   "ridge_slab": true
   }
  },
  "fields": {
@@ -297,6 +301,20 @@
     "cell": 3,
     "octaves": 2,
     "seed": 5
+   }
+  },
+  "small": {
+   "fbm": {
+    "cell": 10,
+    "octaves": 3,
+    "seed": 1
+   }
+  },
+  "big": {
+   "fbm": {
+    "cell": 32,
+    "octaves": 3,
+    "seed": 2
    }
   }
  },
@@ -317,15 +335,35 @@
    "height": 40,
    "terms": [
     {
-     "ramp": {
-      "along": "z",
-      "from": 0,
-      "to": 84,
+     "tilt": {
+      "dx": 0.025,
+      "dz": 0.045
+     }
+    },
+    {
+     "gauss": {
+      "at": [
+       96,
+       92
+      ],
+      "r": 46,
       "rise": 5
+     }
+    },
+    {
+     "noise": {
+      "field": "small",
+      "rise": 0.9
+     }
+    },
+    {
+     "noise": {
+      "field": "big",
+      "rise": 1.6
      }
     }
    ],
-   "note": "the ground rising five blocks from the north gate to the south"
+   "note": "the ground rising toward the south-east, a swell under its corner, rolling"
   },
   {
    "id": "square-level",
@@ -733,6 +771,26 @@
    "storeys": 2,
    "style": "fell-cottage",
    "door": 1,
+   "walk": {
+    "blocks": [
+     [
+      "DIRT",
+      1
+     ],
+     "GRAVEL",
+     [
+      "DIRT",
+      0
+     ]
+    ],
+    "leaves": [
+     "LEAVES",
+     4
+    ],
+    "side": "left",
+    "gaps": 0.25,
+    "to": "main-street"
+   },
    "jetty": true,
    "note": "the inn by the north gate"
   },
@@ -748,7 +806,27 @@
    "W": 6,
    "storeys": 2,
    "style": "fell-cottage-dark",
-   "door": -1
+   "door": -1,
+   "walk": {
+    "blocks": [
+     [
+      "DIRT",
+      1
+     ],
+     "GRAVEL",
+     [
+      "DIRT",
+      0
+     ]
+    ],
+    "leaves": [
+     "LEAVES",
+     4
+    ],
+    "side": "left",
+    "gaps": 0.25,
+    "to": "main-street"
+   }
   },
   {
    "id": "east-row-1",
@@ -762,7 +840,27 @@
    "W": 6,
    "storeys": 2,
    "style": "fell-cottage",
-   "door": 1
+   "door": 1,
+   "walk": {
+    "blocks": [
+     [
+      "DIRT",
+      1
+     ],
+     "GRAVEL",
+     [
+      "DIRT",
+      0
+     ]
+    ],
+    "leaves": [
+     "LEAVES",
+     4
+    ],
+    "side": "left",
+    "gaps": 0.25,
+    "to": "main-street"
+   }
   },
   {
    "id": "east-row-2",
@@ -776,7 +874,27 @@
    "W": 6,
    "storeys": 1,
    "style": "fell-cottage-dark",
-   "door": 1
+   "door": 1,
+   "walk": {
+    "blocks": [
+     [
+      "DIRT",
+      1
+     ],
+     "GRAVEL",
+     [
+      "DIRT",
+      0
+     ]
+    ],
+    "leaves": [
+     "LEAVES",
+     4
+    ],
+    "side": "left",
+    "gaps": 0.25,
+    "to": "main-street"
+   }
   },
   {
    "id": "west-row-1",
@@ -790,7 +908,27 @@
    "W": 6,
    "storeys": 2,
    "style": "fell-cottage",
-   "door": -1
+   "door": -1,
+   "walk": {
+    "blocks": [
+     [
+      "DIRT",
+      1
+     ],
+     "GRAVEL",
+     [
+      "DIRT",
+      0
+     ]
+    ],
+    "leaves": [
+     "LEAVES",
+     4
+    ],
+    "side": "left",
+    "gaps": 0.25,
+    "to": "main-street"
+   }
   },
   {
    "id": "west-row-2",
@@ -805,6 +943,26 @@
    "storeys": 2,
    "style": "fell-cottage-dark",
    "door": -1,
+   "walk": {
+    "blocks": [
+     [
+      "DIRT",
+      1
+     ],
+     "GRAVEL",
+     [
+      "DIRT",
+      0
+     ]
+    ],
+    "leaves": [
+     "LEAVES",
+     4
+    ],
+    "side": "left",
+    "gaps": 0.25,
+    "to": "main-street"
+   },
    "jetty": true
   },
   {
@@ -819,7 +977,27 @@
    "W": 6,
    "storeys": 2,
    "style": "fell-cottage",
-   "door": 1
+   "door": 1,
+   "walk": {
+    "blocks": [
+     [
+      "DIRT",
+      1
+     ],
+     "GRAVEL",
+     [
+      "DIRT",
+      0
+     ]
+    ],
+    "leaves": [
+     "LEAVES",
+     4
+    ],
+    "side": "left",
+    "gaps": 0.25,
+    "to": "lane"
+   }
   },
   {
    "id": "lane-2",
@@ -833,7 +1011,27 @@
    "W": 6,
    "storeys": 1,
    "style": "fell-cottage-dark",
-   "door": 1
+   "door": 1,
+   "walk": {
+    "blocks": [
+     [
+      "DIRT",
+      1
+     ],
+     "GRAVEL",
+     [
+      "DIRT",
+      0
+     ]
+    ],
+    "leaves": [
+     "LEAVES",
+     4
+    ],
+    "side": "left",
+    "gaps": 0.25,
+    "to": "lane"
+   }
   },
   {
    "id": "byre",
@@ -848,7 +1046,27 @@
    "storeys": 2,
    "style": "byre",
    "door": -1,
-   "chimney": false
+   "chimney": false,
+   "walk": {
+    "blocks": [
+     [
+      "DIRT",
+      1
+     ],
+     "GRAVEL",
+     [
+      "DIRT",
+      0
+     ]
+    ],
+    "leaves": [
+     "LEAVES",
+     4
+    ],
+    "side": "left",
+    "gaps": 0.25,
+    "to": "lane"
+   }
   },
   {
    "id": "byre-stalls",
@@ -857,10 +1075,10 @@
     {
      "box": [
       75,
-      44,
+      1,
       43,
       77,
-      46,
+      3,
       43
      ],
      "block": "AIR"
@@ -868,10 +1086,10 @@
     {
      "box": [
       79,
-      44,
+      1,
       43,
       81,
-      46,
+      3,
       43
      ],
      "block": "AIR"
@@ -879,10 +1097,10 @@
     {
      "box": [
       83,
-      44,
+      1,
       43,
       85,
-      46,
+      3,
       43
      ],
      "block": "AIR"
@@ -890,10 +1108,10 @@
     {
      "box": [
       78,
-      44,
+      1,
       43,
       78,
-      46,
+      3,
       43
      ],
      "block": [
@@ -904,10 +1122,10 @@
     {
      "box": [
       82,
-      44,
+      1,
       43,
       82,
-      46,
+      3,
       43
      ],
      "block": [
@@ -918,10 +1136,10 @@
     {
      "box": [
       78,
-      44,
+      1,
       38,
       78,
-      44,
+      1,
       42
      ],
      "block": "FENCE"
@@ -929,10 +1147,10 @@
     {
      "box": [
       82,
-      44,
+      1,
       38,
       82,
-      44,
+      1,
       42
      ],
      "block": "FENCE"
@@ -940,10 +1158,10 @@
     {
      "box": [
       75,
-      44,
+      1,
       38,
       76,
-      44,
+      1,
       38
      ],
      "block": "HAY"
@@ -951,10 +1169,10 @@
     {
      "box": [
       80,
-      44,
+      1,
       38,
       80,
-      44,
+      1,
       38
      ],
      "block": "HAY"
@@ -962,10 +1180,10 @@
     {
      "box": [
       84,
-      44,
+      1,
       38,
       85,
-      44,
+      1,
       38
      ],
      "block": "HAY"
@@ -973,10 +1191,10 @@
     {
      "box": [
       79,
-      49,
+      6,
       43,
       80,
-      50,
+      7,
       43
      ],
      "block": "AIR"
@@ -984,15 +1202,16 @@
     {
      "box": [
       79,
-      48,
+      5,
       42,
       80,
-      48,
+      5,
       42
      ],
      "block": "HAY"
     }
-   ]
+   ],
+   "rel": "byre"
   },
   {
    "id": "byre-lean-to",
@@ -1001,10 +1220,10 @@
     {
      "box": [
       74,
-      44,
+      1,
       46,
       74,
-      46,
+      3,
       46
      ],
      "block": [
@@ -1015,10 +1234,10 @@
     {
      "box": [
       78,
-      44,
+      1,
       46,
       78,
-      46,
+      3,
       46
      ],
      "block": [
@@ -1029,10 +1248,10 @@
     {
      "box": [
       82,
-      44,
+      1,
       46,
       82,
-      46,
+      3,
       46
      ],
      "block": [
@@ -1043,10 +1262,10 @@
     {
      "box": [
       86,
-      44,
+      1,
       46,
       86,
-      46,
+      3,
       46
      ],
      "block": [
@@ -1057,10 +1276,10 @@
     {
      "box": [
       75,
-      46,
+      3,
       46,
       77,
-      46,
+      3,
       46
      ],
      "block": [
@@ -1071,10 +1290,10 @@
     {
      "box": [
       79,
-      46,
+      3,
       46,
       81,
-      46,
+      3,
       46
      ],
      "block": [
@@ -1085,10 +1304,10 @@
     {
      "box": [
       83,
-      46,
+      3,
       46,
       85,
-      46,
+      3,
       46
      ],
      "block": [
@@ -1099,10 +1318,10 @@
     {
      "box": [
       73,
-      48,
+      5,
       44,
       87,
-      48,
+      5,
       44
      ],
      "block": [
@@ -1113,10 +1332,10 @@
     {
      "box": [
       73,
-      47,
+      4,
       45,
       87,
-      47,
+      4,
       45
      ],
      "block": [
@@ -1127,10 +1346,10 @@
     {
      "box": [
       73,
-      47,
+      4,
       46,
       87,
-      47,
+      4,
       46
      ],
      "block": [
@@ -1141,10 +1360,10 @@
     {
      "box": [
       73,
-      46,
+      3,
       47,
       87,
-      46,
+      3,
       47
      ],
      "block": [
@@ -1153,7 +1372,8 @@
      ]
     }
    ],
-   "note": "three deep at the main roof's half-block pitch, its eave a row of upper slabs"
+   "note": "three deep at the main roof's half-block pitch, its eave a row of upper slabs",
+   "rel": "byre"
   },
   {
    "id": "pen",
@@ -1183,22 +1403,18 @@
   },
   {
    "id": "pen-gate",
-   "op": "blocks",
-   "boxes": [
-    {
-     "box": [
-      80,
-      44,
-      57,
-      80,
-      44,
-      57
-     ],
-     "block": [
-      "FENCE_GATE",
-      0
-     ]
-    }
+   "op": "posts",
+   "at": [
+    [
+     80,
+     57
+    ]
+   ],
+   "stack": [
+    [
+     "FENCE_GATE",
+     0
+    ]
    ]
   },
   {
@@ -1405,10 +1621,6 @@
      14
     ],
     [
-     35,
-     60
-    ],
-    [
      69,
      56
     ],
@@ -1418,10 +1630,165 @@
     ],
     [
      38,
-     73
+     74
     ]
    ],
    "seed": 6
+  },
+  {
+   "id": "orchard",
+   "op": "small_trees",
+   "seed": 7,
+   "note": "the open ground where the wall has fallen, planted",
+   "at": [
+    [
+     12,
+     40
+    ],
+    [
+     8,
+     52
+    ],
+    [
+     14,
+     64
+    ],
+    [
+     22,
+     72
+    ],
+    [
+     10,
+     76
+    ],
+    [
+     28,
+     84
+    ],
+    [
+     64,
+     84
+    ],
+    [
+     76,
+     78
+    ],
+    [
+     86,
+     72
+    ],
+    [
+     96,
+     70
+    ]
+   ]
+  },
+  {
+   "id": "graveyard-wall",
+   "op": "wall",
+   "line": [
+    [
+     39,
+     51
+    ],
+    [
+     39,
+     49
+    ],
+    [
+     25,
+     49
+    ],
+    [
+     25,
+     60
+    ],
+    [
+     39,
+     60
+    ],
+    [
+     39,
+     55
+    ]
+   ],
+   "height": 1,
+   "blocks": [
+    "COBBLE_WALL"
+   ],
+   "note": "a low wall round the churchyard, its gate onto the street"
+  },
+  {
+   "id": "graves",
+   "op": "graves",
+   "facing": "e",
+   "seed": 8,
+   "flowered": 0.45,
+   "flowers": [
+    [
+     "FLOWER",
+     0
+    ],
+    [
+     "FLOWER",
+     3
+    ],
+    [
+     "DANDELION",
+     0
+    ],
+    [
+     "FLOWER",
+     8
+    ]
+   ],
+   "at": [
+    [
+     27,
+     51
+    ],
+    [
+     31,
+     51
+    ],
+    [
+     35,
+     51
+    ],
+    [
+     27,
+     53
+    ],
+    [
+     31,
+     53
+    ],
+    [
+     35,
+     53
+    ],
+    [
+     27,
+     55
+    ],
+    [
+     31,
+     55
+    ],
+    [
+     35,
+     55
+    ],
+    [
+     27,
+     57
+    ],
+    [
+     31,
+     57
+    ]
+   ],
+   "note": "headstones of polished andesite under a slab, the grave in coarse dirt before each, flowers on some"
   },
   {
    "id": "flower-field",
@@ -1647,12 +2014,8 @@
      62
     ],
     [
-     74,
-     80
-    ],
-    [
-     58,
-     84
+     80,
+     74
     ]
    ],
    "width": 3,
@@ -1689,6 +2052,11 @@
    "step_slab": [
     "SLAB",
     5
+   ],
+   "ruin": [
+    22,
+    52,
+    4
    ]
   },
   {
@@ -1708,12 +2076,8 @@
      62
     ],
     [
-     74,
-     80
-    ],
-    [
-     58,
-     84
+     80,
+     74
     ]
    ],
    "offset": -1.4,
@@ -1754,6 +2118,11 @@
    "step_slab": [
     "SLAB",
     5
+   ],
+   "ruin": [
+    22,
+    52,
+    4
    ]
   },
   {
@@ -1761,28 +2130,20 @@
    "op": "wall",
    "line": [
     [
-     49,
-     84
-    ],
-    [
-     30,
-     78
-    ],
-    [
-     18,
-     58
-    ],
-    [
-     17,
-     32
+     45,
+     -1
     ],
     [
      22,
      10
     ],
     [
-     45,
-     -1
+     17,
+     32
+    ],
+    [
+     18,
+     54
     ]
    ],
    "width": 3,
@@ -1819,6 +2180,11 @@
    "step_slab": [
     "SLAB",
     5
+   ],
+   "ruin": [
+    34,
+    66,
+    5
    ]
   },
   {
@@ -1826,31 +2192,23 @@
    "op": "wall",
    "line": [
     [
-     49,
-     84
-    ],
-    [
-     30,
-     78
-    ],
-    [
-     18,
-     58
-    ],
-    [
-     17,
-     32
+     45,
+     -1
     ],
     [
      22,
      10
     ],
     [
-     45,
-     -1
+     17,
+     32
+    ],
+    [
+     18,
+     54
     ]
    ],
-   "offset": -1.4,
+   "offset": 1.4,
    "height": 6,
    "crown": "follow",
    "courses": [
@@ -1888,6 +2246,11 @@
    "step_slab": [
     "SLAB",
     5
+   ],
+   "ruin": [
+    34,
+    66,
+    5
    ]
   },
   {
@@ -1897,12 +2260,23 @@
     96,
     14
    ],
-   "half": 4,
-   "height": 13,
+   "half": 3,
+   "height": 10,
    "wall": [
     "STONEBRICK",
     0
    ],
+   "openings": [
+    [
+     -153.434948822922,
+     5
+    ],
+    [
+     69.44395478041653,
+     5
+    ]
+   ],
+   "openings_from": "floor",
    "door": "s",
    "crenel": [
     "SLAB",
@@ -1932,91 +2306,26 @@
    "id": "tower-1",
    "op": "round_tower",
    "at": [
-    92,
-    62
-   ],
-   "half": 4,
-   "height": 13,
-   "wall": [
-    "STONEBRICK",
-    0
-   ],
-   "door": "n",
-   "crenel": [
-    "SLAB",
-    5
-   ],
-   "quoins": [
-    [
-     "STONE",
-     5
-    ],
-    [
-     "STONE",
-     6
-    ]
-   ],
-   "string": [
-    "STONE",
-    6
-   ],
-   "plinth": "COBBLE",
-   "floor": [
-    "PLANKS",
-    1
-   ]
-  },
-  {
-   "id": "tower-2",
-   "op": "round_tower",
-   "at": [
-    18,
-    58
-   ],
-   "half": 4,
-   "height": 13,
-   "wall": [
-    "STONEBRICK",
-    0
-   ],
-   "door": "e",
-   "crenel": [
-    "SLAB",
-    5
-   ],
-   "quoins": [
-    [
-     "STONE",
-     5
-    ],
-    [
-     "STONE",
-     6
-    ]
-   ],
-   "string": [
-    "STONE",
-    6
-   ],
-   "plinth": "COBBLE",
-   "floor": [
-    "PLANKS",
-    1
-   ]
-  },
-  {
-   "id": "tower-3",
-   "op": "round_tower",
-   "at": [
     22,
     10
    ],
-   "half": 4,
-   "height": 13,
+   "half": 3,
+   "height": 10,
    "wall": [
     "STONEBRICK",
     0
    ],
+   "openings": [
+    [
+     -25.559965171823812,
+     5
+    ],
+    [
+     102.80426606528675,
+     5
+    ]
+   ],
+   "openings_from": "floor",
    "door": "e",
    "crenel": [
     "SLAB",

@@ -103,6 +103,27 @@ def market_stall(w, x, y, z, facing="s", colours=(14, 0), width=5, post=(B.FENCE
     return cells
 
 
+def grave(w, x, z, ground, facing="e", stone=(B.STONE, 6), cap=(B.SLAB, 5), soil=(B.DIRT, 1), flower=None):
+    """A grave on the ground at (x, z): a headstone of `stone` with `cap` on it, and the two blocks in front of it
+    the way it faces laid in `soil`, a flower on the first of them if one is given. Returns its cells."""
+    fx, fz = vec(facing)
+    g = ground(x, z)
+    w.set(x, g + 1, z, *stone)
+    w.set(x, g + 2, z, *cap)
+    cells = [(x, z)]
+    for k in (1, 2):
+        a, b = x + fx * k, z + fz * k
+        h = ground(a, b)
+        w.set(a, h, b, *soil)
+        if w.id(a, h + 1, b) != B.AIR and w.id(a, h + 1, b) in (B.TALLGRASS, B.FLOWER, B.DANDELION):
+            w.set(a, h + 1, b, B.AIR)
+        cells.append((a, b))
+    if flower is not None:
+        a, b = x + fx, z + fz
+        w.set(a, ground(a, b) + 1, b, *flower)
+    return cells
+
+
 def stalls(w, line, y, facing="e", every=5, awnings=AWNINGS, stripe=0):
     """A row of stalls along a line of cells [(x, z), ...] on a floor at y, one every `every` cells, each facing
     the same way, their awnings taking `awnings` in turn. Returns every cell they stand on."""

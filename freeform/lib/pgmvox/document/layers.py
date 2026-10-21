@@ -568,7 +568,7 @@ def house_style(spec, doc=None):
         elif k == "stack":
             st[k] = {"block": block(v["block"]), "cap": block(v.get("cap", "COBBLE_WALL")),
                      "base": getattr(B, v.get("base", "COBBLE_STAIRS"))}
-        elif k in ("post", "beam_ends", "windows", "plain_turned", "joists_along", "slab_roof"):
+        elif k in ("post", "beam_ends", "windows", "plain_turned", "joists_along", "slab_roof", "ridge_slab"):
             st[k] = v
         else:
             st[k] = block(v)
@@ -748,6 +748,7 @@ def build(doc):
             laid[x - x0, z - z0] = True
         built_on |= laid
         out.steps.append(Step(L["id"], "structures", L["op"], laid, Hi.copy(), L.get("note", "")))
+    floors = {}
     for L in doc.get("build", []):
         laid = np.zeros(X.shape, bool)
         if L["op"] == "surface":
@@ -773,6 +774,7 @@ def build(doc):
                                      for c in L["courses"]] if "courses" in L else None,
                             crenel_stair=stair_of("crenel_stair"), step_stair=stair_of("step_stair"),
                             step_slab=block(L["step_slab"]) if "step_slab" in L else None,
+                            ruin=tuple(L["ruin"]) if "ruin" in L else None,
                             crown=L.get("crown", "follow"), run=L.get("run", 6), max_grade=L.get("max_grade", 1.0),
                             blocks=[block(b) for b in L.get("blocks", ["COBBLE"])], weights=L.get("weights"),
                             cap=block(L["cap"]) if "cap" in L else None,
@@ -790,10 +792,13 @@ def build(doc):
                           storeys=L.get("storeys", 2), style=house_style(L.get("style", "town"), doc), jetty=L.get("jetty", False),
                           door=L.get("door", 1), chimney=L.get("chimney", True), roof=L.get("roof", "gable"),
                           **{k: L[k] for k in ("storey", "pitch", "overhang") if k in L})
+            floors[L["id"]] = h.floor
             got = BLD.house(w, h, ground_at=lambda x, z: int(Hi[x - x0, z - z0]),
                             rng=np.random.default_rng(L.get("seed", bd.get("seed", 0))))
             for x, z in got["footprint"]:
                 laid[x - x0, z - z0] = True
+            if "walk" in L and got["door"] is not None:
+                _door_path(w, Hi, got["door"], L["walk"], lines, x0, z0, built_on | laid, rng)
         elif L["op"] == "stall":
             from pgmvox.built import props as PR
             sx, sz = L["at"]
@@ -867,6 +872,16 @@ def build(doc):
                 if w.ids[i, y + 1, k] in (B.TALLGRASS, B.FLOWER, B.DANDELION, B.DOUBLE_PLANT):
                     w.ids[i, y + 1, k] = 0
                 laid[i, k] = True
+        elif L["op"] == "graves":
+            from pgmvox.built import props as PR
+            g_at = lambda x, z: int(Hi[x - x0, z - z0])                                     # noqa: E731
+            rr = np.random.default_rng(L.get("seed", bd.get("seed", 0)))
+            flowers = [block(f) for f in L.get("flowers", [["FLOWER", 0]])]
+            for gx, gz in L["at"]:
+                fl = flowers[int(rr.integers(len(flowers)))] if rr.random() < L.get("flowered", 0.4) else None
+                for x, z in PR.grave(w, gx, gz, g_at, L.get("facing", "e"), block(L.get("stone", ["STONE", 6])),
+                                     block(L.get("cap", ["SLAB", 5])), block(L.get("soil", ["DIRT", 1])), fl):
+                    laid[x - x0, z - z0] = True
         elif L["op"] == "field":
             from pgmvox.built import props as PR
             a0, b0, a1, b1 = L["rect"]
@@ -878,7 +893,12 @@ def build(doc):
                 PR.scarecrow(w, sx, sz, L.get("facing", "n"))
             laid[a0 - x0:a1 - x0 + 1, b0 - z0:b1 - z0 + 1] = True
         elif L["op"] == "blocks":
-            for x, _, z in _props(w, L["boxes"]):
+            boxes = L["boxes"]
+            if "rel" in L:                                       # heights over the floor of the house it names
+                dy = floors[L["rel"]]
+                boxes = [dict(b, box=[b["box"][0], b["box"][1] + dy, b["box"][2], b["box"][3], b["box"][4] + dy,
+                                      b["box"][5]]) for b in boxes]
+            for x, _, z in _props(w, boxes):
                 laid[x - x0, z - z0] = True
         built_on |= laid
         out.steps.append(Step(L["id"], "build", L["op"], laid, Hi.copy(), L.get("note", "")))
@@ -1215,6 +1235,37 @@ def _rooms(L, w, ground, cover, made, rng):
                     w.set(x, y, z, B.TORCH, torch_data(side))
     made |= _props(w, L.get("props", []))
     return {(x, z): f for (x, z), f in floors.items() if (x, f, z) in air}
+
+
+def _door_path(w, Hi, door, spec, lines, x0, z0, built, rng):
+    """A path one block wide from a house's door straight out until it meets the line `spec["to"]` names (within
+    its width), laid in `blocks` a third each at random, with a low hedge of `leaves` beside it on its `side` (left
+    or right of the way out), a gap left in it by chance `gaps`."""
+    from pgmvox.core.orient import vec as vec_
+    from pgmvox.geom.shapes import polyline
+    x, z, facing = door
+    dx, dz = vec_(facing)
+    ln = lines[spec["to"]]
+    pts = ln["pts"]
+    blocks = [block(b) for b in spec.get("blocks", [["DIRT", 1], "GRAVEL", ["DIRT", 0]])]
+    side = {"left": (dz, -dx), "right": (-dz, dx)}.get(spec.get("side", "left"))
+    leaves = block(spec["leaves"]) if "leaves" in spec else None
+    for k in range(1, spec.get("max", 16)):
+        a, b = x + dx * k, z + dz * k
+        if not (0 <= a - x0 < Hi.shape[0] and 0 <= b - z0 < Hi.shape[1]):
+            break
+        d, _ = polyline(np.array([[a + 0.5]]), np.array([[b + 0.5]]), pts)
+        if float(d[0, 0]) < ln["width"] / 2:                      # where the paving of that line begins
+            break
+        y = int(Hi[a - x0, b - z0])
+        w.set(a, y, b, *blocks[int(rng.integers(len(blocks)))])
+        if w.id(a, y + 1, b) in (B.TALLGRASS, B.FLOWER, B.DANDELION):
+            w.set(a, y + 1, b, B.AIR)
+        if leaves is not None and side is not None and k > 1:
+            ha, hb = a + side[0], b + side[1]
+            if 0 <= ha - x0 < Hi.shape[0] and 0 <= hb - z0 < Hi.shape[1] and not built[ha - x0, hb - z0] \
+                    and rng.random() >= spec.get("gaps", 0.2):
+                w.set(ha, int(Hi[ha - x0, hb - z0]) + 1, hb, *leaves)
 
 
 def _props(w, props):

@@ -272,13 +272,15 @@ class RoofField:
         return min(west, east) < 0 if self.across_z else min(north, south) < 0
 
 
-def lay_roof(w, field, body, stair=None, slab=None, verge=None, ridge_cap=False, inside=None, lowest=None):
+def lay_roof(w, field, body, stair=None, slab=None, verge=None, ridge_cap=False, inside=None, lowest=None,
+             ridge_slab=False):
     """Lay a roof field into the world as the studio's stamper does.
 
     body: the roof's (id, data). stair: the stair id its slope steps in, or None for a roof of cubes. slab: the
     (id, data) a half course and a one-wide ridge take. verge: the (id, data) of the roof's outer ring and,
     with ridge_cap, its ridge. inside(x, z): the building's own footprint, where nothing is hung under a
-    column; by default the field's wall line. lowest: no roof block below this course."""
+    column; by default the field's wall line. lowest: no roof block below this course. ridge_slab: a ridge one
+    block wide is laid in slabs, not in stairs turned along it."""
     verge = verge or body
     inside = inside or field.over_walls
     rim = {c for c in field.cells() if any(not field.covers(c[0] + dx, c[1] + dz)
@@ -288,7 +290,7 @@ def lay_roof(w, field, body, stair=None, slab=None, verge=None, ridge_cap=False,
         crown = field.crown(x, z)
         mat = verge if (x, z) in rim or (ridge_cap and field.on_ridge(x, z)) else body
         half = field.half(x, z)
-        top = _stair_top(field, stair, slab, x, z) if stair is not None and not half else None
+        top = _stair_top(field, stair, slab, x, z, ridge_slab) if stair is not None and not half else None
         lo = max(field.underside(x, z), lowest if lowest is not None else -1)
         for y in range(lo, (crown - 1 if half or top else crown) + 1):
             w.set(x, y, z, *mat)
@@ -299,7 +301,7 @@ def lay_roof(w, field, body, stair=None, slab=None, verge=None, ridge_cap=False,
             w.set(x, crown, z, s[0], s[1] & 7)
         if (not inside(x, z) and field.riser(x, z) == 1 and crown - 1 >= lo
                 and w.id(x, crown - 1, z) == B.AIR):
-            if top and (not top[2] or field.steps_down(x, z)):
+            if top and top[3] is not None and (not top[2] or field.steps_down(x, z)):
                 w.set(x, crown - 1, z, *top[3])
             elif half and field.steps_down(x, z):
                 s = slab or mat
@@ -308,7 +310,7 @@ def lay_roof(w, field, body, stair=None, slab=None, verge=None, ridge_cap=False,
     return laid
 
 
-def _stair_top(field, stair, slab, x, z):
+def _stair_top(field, stair, slab, x, z, ridge_slab=False):
     """(id, data, on the slope, (id, data) hung under it), or None for a cube."""
     up = field.upslope(x, z)
     if up is not None:
@@ -316,6 +318,11 @@ def _stair_top(field, stair, slab, x, z):
     if not field.on_ridge(x, z):
         return None
     partner = field.ridge_partner(x, z)
+    if ridge_slab and slab is not None:
+        ax, az = vec(field.along_ridge_outward(x, z))
+        if not any(field.covers(x + sx, z + sz) and field.crown(x + sx, z + sz) == field.peak
+                   for sx, sz in ((-az, ax), (az, -ax))):                    # nothing beside it at the peak
+            return slab[0], slab[1] & 7, False, None
     if partner is not None:
         return stair, stair_data(partner), False, (stair, stair_data(opposite(partner), True))
     if slab is None:
@@ -500,7 +507,7 @@ def house(w, h, ground_at=None, rng=None):
             if (x, z) in top_cells:
                 w.set(x, y, z, B.AIR)
     lay_roof(w, field, st["roof"], st["stair"] if square and not slabs else None, st["slab"],
-             inside=lambda x, z: (x, z) in top_cells)
+             inside=lambda x, z: (x, z) in top_cells, ridge_slab=st.get("ridge_slab", False))
     if "verge" in st:
         _verge(w, st, fr, field, Lt, h.overhang)
     for i, k in zip(*np.nonzero(wt)):                            # gable walls up to the roof's underside
@@ -770,7 +777,7 @@ CROWNS = ("follow", "level", "grade")
 
 def line_wall(w, H, X, Z, pts, height=2, width=1, crown="follow", run=6, max_grade=1.0, blocks=((B.COBBLE, 0),),
               weights=None, cap=None, crenel=None, gap=None, closed=False, sink=0, keep=None, rng=None, courses=None,
-              crenel_stair=None, step_stair=None, step_slab=None):
+              crenel_stair=None, step_stair=None, step_slab=None, ruin=None):
     """A wall, a hedge or a fence along a line over the ground: one generic build, the materials are the board's.
 
     Every cell of the line (four-connected at width 1, the band within width / 2 of it wider) is filled from the
@@ -784,7 +791,9 @@ def line_wall(w, H, X, Z, pts, height=2, width=1, crown="follow", run=6, max_gra
     one entry a course and the last repeated, each a block or a pair laid in a checker, so a wall can run from
     cobble through andesite into brick. `crenel_stair` (a stair id) makes each crenel a stair rising to the line's
     left; `step_stair` sets a stair on a cell whose neighbour along the wall stands one higher, rising to it, so a
-    crown that follows the ground steps up rather than jumps; `step_slab` (a block) a half step there instead. Returns the cells laid, each (x, z, ground, top)."""
+    crown that follows the ground steps up rather than jumps; `step_slab` (a block) a half step there instead.
+    `ruin` (from, to, seed) breaks the wall down between those distances along it: its height falls to nothing
+    toward `to`, notched a block or two at random, and nothing stands on its broken top. Returns the cells laid, each (x, z, ground, top)."""
     from pgmvox.geom.shapes import polyline, walk_cells
     assert crown in CROWNS, crown
     pts = [tuple(p) for p in pts] + ([tuple(pts[0])] if closed else [])
@@ -824,8 +833,17 @@ def line_wall(w, H, X, Z, pts, height=2, width=1, crown="follow", run=6, max_gra
         top = top + height
     p = None if weights is None else np.array(weights, float) / sum(weights)
     laid = []
+    if ruin is not None:
+        r0, r1 = ruin[0], ruin[1]
+        notch = np.random.default_rng(ruin[2] if len(ruin) > 2 else 0)
+        keep_h = np.clip((r1 - s) / max(r1 - r0, 1), 0, 1)
+        broke = (s > r0)
+        cut = np.where(broke, np.round(height * (1 - keep_h)) + notch.integers(0, 3, len(s)), 0)
+        top = np.where(broke, np.minimum(top, np.maximum(ground, top - cut)), top)
     for (x, z), g, t, sv in zip(inside, ground.astype(int), top.astype(int), s):
         if gap is not None and sv > gap[1] and (sv % gap[0]) < gap[1]:
+            continue
+        if ruin is not None and sv > ruin[0] and t <= g:
             continue
         for y in range(g + 1 - sink, t + 1):
             if courses is not None:
@@ -834,7 +852,7 @@ def line_wall(w, H, X, Z, pts, height=2, width=1, crown="follow", run=6, max_gra
             else:
                 b = blocks[0] if p is None or rng is None else blocks[int(rng.choice(len(blocks), p=p))]
             w.set(x, y, z, *(cap if (cap is not None and y == t) else b))
-        if crenel is not None and int(round(sv)) % 2 == 0:
+        if crenel is not None and int(round(sv)) % 2 == 0 and not (ruin is not None and sv > ruin[0]):
             if crenel_stair is not None:
                 tx, tz = _tangent(pts, x + 0.5, z + 0.5)
                 w.set(x, t + 1, z, crenel_stair, stair_data(vec((-tz, tx))))
@@ -842,7 +860,7 @@ def line_wall(w, H, X, Z, pts, height=2, width=1, crown="follow", run=6, max_gra
                 w.set(x, t + 1, z, *crenel)
         laid.append((x, z, int(g), int(t)))
     if step_stair is not None or step_slab is not None:
-        tops = {(x, z): t for x, z, _, t in laid}
+        tops = {(x, z): t for x, z, _, t in laid if not (ruin is not None and s_of[(x, z)] > ruin[0])}
         for (x, z), t in tops.items():
             for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
                 if tops.get((x + dx, z + dz)) == t + 1 and w.id(x, t + 1, z) == B.AIR:

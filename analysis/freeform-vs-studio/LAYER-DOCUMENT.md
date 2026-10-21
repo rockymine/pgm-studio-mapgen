@@ -138,9 +138,10 @@ the slope and rock in beds that follow the surface. The water's bed has a stack 
 | `op` | Numbers | From pgmvox |
 |---|---|---|
 | `surface` | `near` (a path layer), `blocks`, `weights`, `steps`: none, `stairs` (`stair`) or `half` (`slab`) | `route.pave`, `route.steps`, `route.halfsteps` |
-| `wall` | `line` or `near` + `offset`, `height`, `width`, `crown` (`follow`, `level`, `grade`), `run`, `blocks`, `weights`, `courses` (from the foot up, a block or a checker pair each), `cap`, `crenel`, `crenel_stair`, `step_stair` or `step_slab`, `gap`, `closed` | `build.line_wall` |
-| `house` | `at`, `heading`, `L`, `W`, `storeys`, `storey`, `style` (`town`, `plaster`, `brick`, `stone`, a name in `styles`, or an object), `roof`, `pitch`, `overhang`, `door`, `jetty`, `chimney` | `build.house` |
-| `blocks` | `boxes`, each a `box` (x0, y0, z0, x1, y1, z1) and a `block` | the document's own |
+| `wall` | `line` or `near` + `offset`, `height`, `width`, `crown` (`follow`, `level`, `grade`), `run`, `blocks`, `weights`, `courses` (from the foot up, a block or a checker pair each), `cap`, `crenel`, `crenel_stair`, `step_stair` or `step_slab`, `ruin` (from, to, seed: broken down along that stretch), `gap`, `closed` | `build.line_wall` |
+| `house` | `at`, `heading`, `L`, `W`, `storeys`, `storey`, `style` (`town`, `plaster`, `brick`, `stone`, a name in `styles`, or an object), `roof`, `pitch`, `overhang`, `door`, `jetty`, `chimney`, `walk` (a path one wide from its door `to` a line, a low hedge beside it) | `build.house` |
+| `blocks` | `boxes`, each a `box` (x0, y0, z0, x1, y1, z1) and a `block`; `rel` names a house whose floor the heights are counted from | the document's own |
+| `graves` | `at` (points), `facing`, `stone`, `cap`, `soil`, `flowers`, `flowered` (the share with a flower) | `props.grave` |
 | `field` | `rect`, `crops`, `rows`, `ditch`, `fence`, `gate`, `scarecrows`, `y` | `props.crop_field`, `props.scarecrow` |
 | `stall` | `at`, `facing`, `colours` (the roof's stripes), `width`, `post`, `foot` (a full block under each post), `counter_stair`, `goods`, `banners` (front and sides), `sides` (closed, entered from the back) | `props.market_stall` |
 | `posts` | `at` (points), `stack` (blocks from the ground up: a lamp, a bollard) | the document's own |
@@ -163,7 +164,7 @@ block in a frame's bay.
 
 **A style's details are each off until it names them.** `sill_in` makes the wall block under a window a stair of
 the facade's kind; `quoins` and `string` dress a style without posts; `stack` stands a chimney outside the gable
-and `chimney_top` caps either chimney. `joists_along`, `slab_roof` and `verge` with `roof_bands` (the roof's ring
+and `chimney_top` caps either chimney. `joists_along`, `slab_roof`, `ridge_slab` (a ridge one wide laid in slabs) and `verge` with `roof_bands` (the roof's ring
 and bands across it in other blocks) follow, and `plain_turned` gives a turned house no windows, one post a corner
 and a door only on a straight run of three.
 
