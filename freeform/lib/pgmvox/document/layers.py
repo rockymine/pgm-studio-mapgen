@@ -801,7 +801,7 @@ def build(doc):
                                         tuple(L.get("colours", [14, 0])), L.get("width", 5),
                                         counter_stair=getattr(B, L["counter_stair"]) if "counter_stair" in L else None,
                                         post=block(L.get("post", "FENCE")), banners=L.get("banners", False),
-                                        sides=L.get("sides", False),
+                                        sides=L.get("sides", False), foot=block(L["foot"]) if "foot" in L else None,
                                         goods=tuple(block(g) for g in L["goods"]) if "goods" in L else
                                         ((B.PUMPKIN, 3), (B.MELON, 0), (B.HAY, 0))):
                 laid[x - x0, z - z0] = True
@@ -825,7 +825,8 @@ def build(doc):
                                   openings=[(a, oy + (y0 if L.get("openings_from") == "floor" else 0))
                                             for a, oy in L.get("openings", [])],
                                   ground_at=lambda x, z: int(Hi[x - x0, z - z0]), slit=block(L.get("slit", "AIR")),
-                                  half=L.get("half"), crenel_stair=getattr(B, L["crenel_stair"]) if "crenel_stair" in L
+                                  half=L.get("half"), string=block(L["string"]) if "string" in L else None,
+                                  plinth=block(L["plinth"]) if "plinth" in L else None, crenel_stair=getattr(B, L["crenel_stair"]) if "crenel_stair" in L
                                   else None)
             for x, z in got:
                 laid[x - x0, z - z0] = True

@@ -610,7 +610,11 @@
    ],
    "counter_stair": "SPRUCE_STAIRS",
    "post": [
-    "LOG",
+    "DARK_OAK_FENCE",
+    0
+   ],
+   "foot": [
+    "LOG2",
     1
    ],
    "banners": true,
@@ -629,7 +633,11 @@
     0
    ],
    "post": [
-    "LOG",
+    "DARK_OAK_FENCE",
+    0
+   ],
+   "foot": [
+    "LOG2",
     1
    ],
    "banners": true,
@@ -648,7 +656,11 @@
     13
    ],
    "post": [
-    "LOG",
+    "DARK_OAK_FENCE",
+    0
+   ],
+   "foot": [
+    "LOG2",
     1
    ],
    "banners": true,
@@ -1074,6 +1086,21 @@
     "SLAB",
     5
    ],
+   "quoins": [
+    [
+     "STONE",
+     5
+    ],
+    [
+     "STONE",
+     6
+    ]
+   ],
+   "string": [
+    "STONE",
+    6
+   ],
+   "plinth": "COBBLE",
    "openings": [
     [
      165.06858282186246,
@@ -1108,6 +1135,21 @@
     "SLAB",
     5
    ],
+   "quoins": [
+    [
+     "STONE",
+     5
+    ],
+    [
+     "STONE",
+     6
+    ]
+   ],
+   "string": [
+    "STONE",
+    6
+   ],
+   "plinth": "COBBLE",
    "openings": [
     [
      168.6900675259798,

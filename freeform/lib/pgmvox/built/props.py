@@ -52,13 +52,15 @@ def stall(w, x, y, z, facing="e", awning=14, stripe=0, post=(B.FENCE, 0), goods=
 
 
 def market_stall(w, x, y, z, facing="s", colours=(14, 0), width=5, post=(B.FENCE, 0), counter=(B.PLANKS, 1),
-                 counter_stair=None, goods=((B.PUMPKIN, 3), (B.MELON, 0), (B.HAY, 0)), banners=False, sides=False):
+                 counter_stair=None, goods=((B.PUMPKIN, 3), (B.MELON, 0), (B.HAY, 0)), banners=False, sides=False,
+                 foot=None):
     """A market stall `width` across and three deep on the floor at y, its counter on the side it faces: fence posts
     three high at the corners, a flat wool roof on the fourth course striped across in `colours`, a counter of
     `counter` between the front posts (or of `counter_stair` upside down, its lip toward the buyer) with `goods`
     on it in turn and a block of air over them. With `banners`, a banner of each roof block's colour hangs from it
     along the front and both sides, the back left open; with `sides`, the middle of each side is closed by the
-    counter's block, so the stall is walked into only from the back. Returns its cells."""
+    counter's block, so the stall is walked into only from the back; `foot` is a full block under each post. Returns
+    its cells."""
     from pgmvox.core.orient import stair as stair_data
     fx, fz = vec(facing)
     rx, rz = -fz, fx                                           # across the stall
@@ -71,7 +73,7 @@ def market_stall(w, x, y, z, facing="s", colours=(14, 0), width=5, post=(B.FENCE
         for v in (-half, half):
             px, pz = at(u, v)
             for yy in (1, 2, 3):
-                w.set(px, y + yy, pz, *post)
+                w.set(px, y + yy, pz, *(foot if foot is not None and yy == 1 else post))
     for u in range(3):
         for v in range(-half, half + 1):
             px, pz = at(u, v)

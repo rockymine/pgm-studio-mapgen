@@ -34,9 +34,9 @@ build = [
      "note": "three deep at the main roof's half-block pitch, its eave a row of upper slabs"},
     {"id": "pen", "op": "wall", "line": [[14, 29], [14, 37], [26, 37], [26, 29]], "height": 1, "blocks": ["FENCE"]},
     {"id": "pen-gate", "op": "blocks", "boxes": [F(20, 41, 37, 20, 41, 37, ["FENCE_GATE", 0])]},
-    {"id": "stall-a", "op": "stall", "at": [44, 22], "facing": "s", "colours": [14, 0], "counter_stair": "SPRUCE_STAIRS", "post": ["LOG", 1], "banners": True, "sides": True},
-    {"id": "stall-b", "op": "stall", "at": [52, 22], "facing": "s", "colours": [11, 0], "post": ["LOG", 1], "banners": True, "sides": True},
-    {"id": "stall-c", "op": "stall", "at": [60, 22], "facing": "s", "colours": [4, 13], "post": ["LOG", 1], "banners": True, "sides": True,
+    {"id": "stall-a", "op": "stall", "at": [44, 22], "facing": "s", "colours": [14, 0], "counter_stair": "SPRUCE_STAIRS", "post": ["DARK_OAK_FENCE", 0], "foot": ["LOG2", 1], "banners": True, "sides": True},
+    {"id": "stall-b", "op": "stall", "at": [52, 22], "facing": "s", "colours": [11, 0], "post": ["DARK_OAK_FENCE", 0], "foot": ["LOG2", 1], "banners": True, "sides": True},
+    {"id": "stall-c", "op": "stall", "at": [60, 22], "facing": "s", "colours": [4, 13], "post": ["DARK_OAK_FENCE", 0], "foot": ["LOG2", 1], "banners": True, "sides": True,
      "goods": [["HAY", 0], ["PUMPKIN", 3], ["HAY", 0]]},
     {"id": "lamp-torch", "op": "posts", "at": [[70, 18], [70, 26]], "stack": [["STONE", 6], "COBBLE_WALL", ["TORCH", 5]]},
     {"id": "lamp-redstone", "op": "posts", "at": [[76, 18], [76, 26]],
@@ -66,6 +66,7 @@ for (cx, cz), a, b in (((40, 52), wall[0], wall[2]), ((100, 50), wall[2], wall[4
     ang = lambda p: math.degrees(math.atan2(p[1] - cz, p[0] - cx))                       # noqa: E731
     build.append({"id": f"tower-{cx}", "op": "round_tower", "at": [cx, cz], "half": 4, "height": 13, "openings_from": "floor",
                   "wall": ["STONEBRICK", 0], "door": "n", "crenel": ["SLAB", 5],
+                  "quoins": [["STONE", 5], ["STONE", 6]], "string": ["STONE", 6], "plinth": "COBBLE",
                   "openings": [[ang(a), 5], [ang(b), 5]], "floor": ["PLANKS", 1]})
 doc = {"document": "layers", "version": "draft-1",
        "board": {"name": "Chantry Gill town pieces", "x": [0, 139], "z": [0, 69], "floor": 40, "height": 80, "seed": 3},

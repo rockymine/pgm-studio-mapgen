@@ -2228,12 +2228,20 @@ class HouseDetails(unittest.TestCase):
         self.assertEqual(w.id(4, 44, 4), B.AIR)                                      # the corner cut
         self.assertEqual(w.id(3, 44, 3), B.STONEBRICK)                               # the ring closed across it
 
+    def test_a_cut_tower_wears_quoins_at_its_corners_strings_at_its_floors_and_a_plinth(self):
+        w = self.build([{"id": "t", "op": "round_tower", "at": [0, 0], "half": 4, "height": 10, "y": 40,
+                         "quoins": [["STONE", 5], ["STONE", 6]], "string": ["STONE", 6], "plinth": "COBBLE"}]).world
+        self.assertEqual(w.id(0, 41, -4), B.COBBLE)
+        self.assertEqual({w.get(3, 46, 3), w.get(3, 47, 3)}, {(B.STONE, 5), (B.STONE, 6)})
+        self.assertEqual(w.get(0, 45, -4), (B.STONE, 6))                             # the first floor's string
+        self.assertEqual(w.get(0, 44, -4), (B.STONEBRICK, 0))
+
     def test_a_stall_hangs_banners_on_three_sides_and_closes_its_sides(self):
-        w = self.build([{"id": "s", "op": "stall", "at": [0, 0], "facing": "s", "colours": [14, 0], "post": ["LOG", 1],
-                         "banners": True, "sides": True}]).world
+        w = self.build([{"id": "s", "op": "stall", "at": [0, 0], "facing": "s", "colours": [14, 0],
+                         "post": ["DARK_OAK_FENCE", 0], "foot": ["LOG2", 1], "banners": True, "sides": True}]).world
         self.assertEqual(int((w.ids == B.WALL_BANNER).sum()), 5 + 3 + 3)        # front and both sides, none behind
         self.assertEqual([w.id(x, 41, 0) for x in (-2, 2)], [B.PLANKS] * 2)      # each side closed at its middle
-        self.assertEqual(w.id(-2, 43, 1), B.LOG)                                 # a corner is a full block
+        self.assertEqual([w.id(-2, y, 1) for y in (41, 42, 43)], [B.LOG2, B.DARK_OAK_FENCE, B.DARK_OAK_FENCE])
         bases = sorted({t["base"] for t in w.tiles if t["kind"] == "Banner"})
         self.assertEqual(bases, [1, 15])                                         # the roof's red and white
 

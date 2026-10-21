@@ -594,7 +594,7 @@ def _details(w, h, st, fr, windows, corners, crown_at, Lt, ground_at, square=Tru
 
 def round_tower(w, cx, cz, r, y0, height, wall=(B.STONEBRICK, 0), quoins=None, floor=(B.PLANKS, 1),
                 crenel=(B.STONEBRICK, 0), every=5, door_side="s", door=B.SPRUCE_DOOR, openings=(), ground_at=None,
-                slit=(B.AIR, 0), half=None, crenel_stair=None):
+                slit=(B.AIR, 0), half=None, crenel_stair=None, string=None, plinth=None):
     """A round tower on the floor at y0: a ring of walls two thick, r blocks to its outer face, from the ground under
     it to y0 + height; a floor every `every` courses and on its top, a ladder up the inside of the side away from
     its door through a hatch in each, crenels round the top's outer ring; a door at its foot on `door_side`;
@@ -602,7 +602,9 @@ def round_tower(w, cx, cz, r, y0, height, wall=(B.STONEBRICK, 0), quoins=None, f
     meets it; `slit` one block in each quarter of every storey. `quoins`, blocks cycled course by course on the
     ring's four compass cells. With `half` the tower is a square `2 half + 1` across with its corners cut, a ring one
     thick: straight faces of `2 half - 1` and an open corner between each, which reads round and takes detail.
-    `crenel_stair` lays the crenels as stairs rising outward. Returns the cells it stands on."""
+    `crenel_stair` lays the crenels as stairs rising outward. On a cut square the `quoins` stand at each cut corner
+    (its diagonal and the two face ends beside it); `string` rings every floor and the top on the outer face, and
+    `plinth` is its foot course. Returns the cells it stands on."""
     from pgmvox.core.orient import door as door_data, ladder as ladder_data
     cells, ring, outer = [], set(), set()
     R = int(math.ceil(r)) if half is None else half
@@ -628,8 +630,20 @@ def round_tower(w, cx, cz, r, y0, height, wall=(B.STONEBRICK, 0), quoins=None, f
         g = ground_at(x, z) if ground_at else y0
         for y in range(min(g, y0) + 1, top + 1):
             if (x, z) in ring:
-                q = quoins and (x - cx == 0 or z - cz == 0) and (x, z) in outer
-                w.set(x, y, z, *(quoins[(y - y0) % len(quoins)] if q else wall))
+                ax, az = abs(x - cx), abs(z - cz)
+                if half is not None:
+                    q = quoins and ax >= half - 1 and az >= half - 1
+                else:
+                    q = quoins and (ax == 0 or az == 0) and (x, z) in outer
+                if plinth is not None and y <= y0 + 1:
+                    blk = plinth
+                elif q:
+                    blk = quoins[(y - y0) % len(quoins)]
+                elif string is not None and (y == top or (y > y0 and (y - y0) % every == 0)):
+                    blk = string
+                else:
+                    blk = wall
+                w.set(x, y, z, *blk)
             elif y <= y0 or y == top or (y - y0) % every == 0:
                 w.set(x, y, z, *floor)
             else:
