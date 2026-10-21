@@ -501,6 +501,8 @@ def house(w, h, ground_at=None, rng=None):
                 w.set(x, y, z, B.AIR)
     lay_roof(w, field, st["roof"], st["stair"] if square and not slabs else None, st["slab"],
              inside=lambda x, z: (x, z) in top_cells)
+    if "verge" in st:
+        _verge(w, st, fr, field, Lt, h.overhang)
     for i, k in zip(*np.nonzero(wt)):                            # gable walls up to the roof's underside
         x, z = int(X[i, k]), int(Z[i, k])
         for y in range(eave + 1, field.underside(x, z)):
@@ -515,6 +517,29 @@ def house(w, h, ground_at=None, rng=None):
         for j, blk in enumerate(st.get("chimney_top", ())):
             w.set(x, top + 1 + j, z, *blk)
     return dict(door=door_at, footprint=fr.cells(h.L, h.W + (2 if jetty else 0)), eave=eave, roof=field)
+
+
+def _verge(w, st, fr, field, Lt, overhang):
+    """A style's `verge`: the roof's outer ring, and with `roof_bands` that many bands across it from eave to eave,
+    laid in the verge's own blocks ({"roof", "slab", "stair"}), so a long roof reads in sections. A block of the
+    roof's body becomes the verge's, keeping its slab half or its stair's facing."""
+    vg, n = st["verge"], st.get("roof_bands", 0)
+    span = Lt + 2 * overhang
+    bands = {round(-span / 2 + 0.5 + span * k / (n + 1) - 0.5) for k in range(1, n + 1)}
+    cells = set(field.cells())
+    rim = {c for c in cells if any((c[0] + dx, c[1] + dz) not in cells for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)))}
+    for x, z in cells:
+        u, _ = fr.local(x + 0.5, z + 0.5)
+        if (x, z) not in rim and math.floor(u) not in bands:
+            continue
+        for y in range(field.underside(x, z) - 1, field.crown(x, z) + 1):
+            b, d = w.get(x, y, z)
+            if (b, d) == tuple(st["roof"]):
+                w.set(x, y, z, *vg["roof"])
+            elif b == st["slab"][0] and d & 7 == st["slab"][1] & 7:
+                w.set(x, y, z, vg["slab"][0], (vg["slab"][1] & 7) | (d & 8))
+            elif b == st["stair"] and "stair" in vg:
+                w.set(x, y, z, vg["stair"], d)
 
 
 def _details(w, h, st, fr, windows, corners, crown_at, Lt, ground_at, square=True):
@@ -565,6 +590,71 @@ def _details(w, h, st, fr, windows, corners, crown_at, Lt, ground_at, square=Tru
         x, z = fr.cell(ux, 0)
         for j, blk in enumerate(st.get("chimney_top", [sk.get("cap", (B.COBBLE_WALL, 0))])):
             w.set(x, top + 1 + j, z, *blk)
+
+
+def round_tower(w, cx, cz, r, y0, height, wall=(B.STONEBRICK, 0), quoins=None, floor=(B.PLANKS, 1),
+                crenel=(B.STONEBRICK, 0), every=5, door_side="s", door=B.SPRUCE_DOOR, openings=(), ground_at=None,
+                slit=(B.AIR, 0)):
+    """A round tower on the floor at y0: a ring of walls two thick, r blocks to its outer face, from the ground under
+    it to y0 + height; a floor every `every` courses and on its top, a ladder up the inside of the side away from
+    its door through a hatch in each, crenels round the top's outer ring; a door at its foot on `door_side`;
+    `openings` [(angle in degrees from east toward south, y), ...] cut two high through the ring, where a wall-walk
+    meets it; `slit` one block in each quarter of every storey. `quoins`, blocks cycled course by course on the
+    ring's four compass cells. Returns the cells it stands on."""
+    from pgmvox.core.orient import door as door_data, ladder as ladder_data
+    cells, ring, outer = [], set(), set()
+    R = int(math.ceil(r))
+    for dx in range(-R, R + 1):
+        for dz in range(-R, R + 1):
+            d = math.hypot(dx, dz)
+            if d <= r:
+                cells.append((cx + dx, cz + dz))
+                if d > r - 2:
+                    ring.add((cx + dx, cz + dz))
+                if d > r - 1:
+                    outer.add((cx + dx, cz + dz))
+    top = y0 + height
+    for x, z in cells:
+        g = ground_at(x, z) if ground_at else y0
+        for y in range(min(g, y0) + 1, top + 1):
+            if (x, z) in ring:
+                q = quoins and (x - cx == 0 or z - cz == 0) and (x, z) in outer
+                w.set(x, y, z, *(quoins[(y - y0) % len(quoins)] if q else wall))
+            elif y <= y0 or y == top or (y - y0) % every == 0:
+                w.set(x, y, z, *floor)
+            else:
+                w.set(x, y, z, B.AIR)
+    for x, z in outer:
+        if (x + z) % 2 == 0:
+            w.set(x, top + 1, z, *crenel)
+    dxd, dzd = vec(door_side)
+    lx, lz = cx - dxd * (int(r) - 2), cz - dzd * (int(r) - 2)          # the ladder, on the wall away from the door
+    for y in range(y0 + 1, top + 1):
+        w.set(lx, y, lz, B.LADDER, ladder_data((-dxd, -dzd)))
+    for k in range(1, int(r)):
+        x, z = cx + dxd * k, cz + dzd * k
+        if (x, z) in ring:
+            w.set(x, y0 + 1, z, B.AIR)
+            w.set(x, y0 + 2, z, B.AIR)
+    x, z = cx + dxd * (int(r) - 1), cz + dzd * (int(r) - 1)
+    w.set(x, y0 + 1, z, door, door_data((dxd, dzd)))
+    w.set(x, y0 + 2, z, door, door_data((dxd, dzd), upper=True))
+    for a, y in openings:
+        ux, uz = math.cos(math.radians(a)), math.sin(math.radians(a))
+        for k in range(0, R + 1):
+            for side in (-0.5, 0.5):
+                x, z = int(math.floor(cx + 0.5 + ux * k - uz * side)), int(math.floor(cz + 0.5 + uz * k + ux * side))
+                if (x, z) in ring:
+                    w.set(x, y + 1, z, B.AIR)
+                    w.set(x, y + 2, z, B.AIR)
+    if slit != (B.AIR, 0):
+        for sx, sz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            if (sx, sz) == (dxd, dzd):
+                continue
+            k = max(k for k in range(R + 1) if (cx + sx * k, cz + sz * k) in outer)
+            for y in range(y0 + 3, top - 1, every):
+                w.set(cx + sx * k, y, cz + sz * k, *slit)
+    return cells
 
 
 # ---- the parts every board repeated ----------------------------------------------------------------------

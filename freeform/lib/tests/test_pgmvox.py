@@ -2152,6 +2152,30 @@ class HouseDetails(unittest.TestCase):
         solid = lambda a, b: w.ids[a, 41, b] not in (B.AIR, B.OAK_DOOR)       # noqa: E731
         self.assertTrue((solid(i - 1, k) and solid(i + 1, k)) or (solid(i, k - 1) and solid(i, k + 1)))
 
+    def test_a_verge_rings_the_roof_and_bands_cross_it(self):
+        style = dict(self.STYLE, roof=["PLANKS", 1], slab=["WOOD_SLAB", 1], stair="SPRUCE_STAIRS", slab_roof=True,
+                     verge={"roof": ["PLANKS", 5], "slab": ["WOOD_SLAB", 5]}, roof_bands=2)
+        w = self.build([self.house(L=13, W=7, storeys=1, chimney=False)], style).world
+        dark = {(int(i), int(k)) for i, y, k in np.argwhere(((w.ids == B.PLANKS) & (w.dat == 5)) |
+                                                         ((w.ids == B.WOOD_SLAB) & (w.dat & 7 == 5)))}
+        ridge = sorted(i for i, k in dark if k == -w.z0)                         # along the middle row, z 0
+        self.assertEqual(len(ridge), 4)                                          # the two ends and two bands
+        self.assertTrue(((w.ids == B.WOOD_SLAB) & (w.dat & 7 == 1)).any())       # spruce between them
+
+    def test_a_market_stall_lamps_and_a_round_tower_stand_from_the_document(self):
+        b = self.build([{"id": "s", "op": "stall", "at": [0, 0], "facing": "s", "colours": [14, 0]},
+                        {"id": "l", "op": "posts", "at": [[8, 8]], "stack": [["STONE", 6], "COBBLE_WALL", ["TORCH", 5]]},
+                        {"id": "t", "op": "round_tower", "at": [-8, 8], "r": 4.5, "height": 10, "y": 40,
+                         "openings": [[0, 45]]}])
+        w = b.world
+        roof = [w.get(x, 43, 1) for x in range(-2, 3)]
+        self.assertEqual(roof, [(B.WOOL, 14), (B.WOOL, 0), (B.WOOL, 14), (B.WOOL, 0), (B.WOOL, 14)])
+        self.assertEqual([w.get(8, y, 8) for y in (41, 42, 43)], [(B.STONE, 6), (B.COBBLE_WALL, 0), (B.TORCH, 5)])
+        self.assertEqual(w.id(-8, 41, 8), B.AIR)                                 # hollow
+        self.assertEqual(w.id(-8, 45, 8), B.PLANKS)                              # floored every five
+        self.assertEqual((w.id(-4, 46, 8), w.id(-4, 47, 8)), (B.AIR, B.AIR))     # the opening east
+        self.assertTrue((w.ids == B.LADDER).sum() >= 10)
+
     def test_a_field_lays_farmland_and_its_fence_gate(self):
         w = self.build([{"id": "f", "op": "field", "rect": [-10, -10, 10, 10], "crops": [["WHEAT", 7]]}]).world
         self.assertGreater(int((w.ids == B.FARMLAND).sum()), 200)

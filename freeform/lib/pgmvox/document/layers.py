@@ -554,6 +554,11 @@ def house_style(spec, doc=None):
             st[k] = [block(b) for b in v]
         elif k in ("stair", "door", "sill", "hood"):
             st[k] = getattr(B, v)
+        elif k == "verge":
+            st[k] = {"roof": block(v["roof"]), "slab": block(v["slab"]), **({"stair": getattr(B, v["stair"])}
+                                                                           if "stair" in v else {})}
+        elif k == "roof_bands":
+            st[k] = int(v)
         elif k in ("quoins", "chimney_top"):
             st[k] = [block(b) for b in v]
         elif k == "sill_in":
@@ -782,6 +787,34 @@ def build(doc):
             got = BLD.house(w, h, ground_at=lambda x, z: int(Hi[x - x0, z - z0]),
                             rng=np.random.default_rng(L.get("seed", bd.get("seed", 0))))
             for x, z in got["footprint"]:
+                laid[x - x0, z - z0] = True
+        elif L["op"] == "stall":
+            from pgmvox.built import props as PR
+            sx, sz = L["at"]
+            for x, z in PR.market_stall(w, sx, int(Hi[sx - x0, sz - z0]), sz, L.get("facing", "s"),
+                                        tuple(L.get("colours", [14, 0])), L.get("width", 5),
+                                        goods=tuple(block(g) for g in L["goods"]) if "goods" in L else
+                                        ((B.PUMPKIN, 3), (B.MELON, 0), (B.HAY, 0))):
+                laid[x - x0, z - z0] = True
+        elif L["op"] == "posts":
+            for px, pz in L["at"]:
+                g = int(Hi[px - x0, pz - z0])
+                for j, b in enumerate(L["stack"]):
+                    w.set(px, g + 1 + j, pz, *block(b))
+                laid[px - x0, pz - z0] = True
+        elif L["op"] == "round_tower":
+            from pgmvox.built import build as BLD
+            tx, tz = L["at"]
+            r = L.get("r", 3.5)
+            R = int(np.ceil(r))
+            under = Hi[tx - R - x0:tx + R - x0 + 1, tz - R - z0:tz + R - z0 + 1]
+            y0 = L.get("y", int(under.max()))
+            got = BLD.round_tower(w, tx, tz, r, y0, L.get("height", 10), wall=block(L.get("wall", "STONEBRICK")),
+                                  quoins=[block(b) for b in L["quoins"]] if "quoins" in L else None,
+                                  floor=block(L.get("floor", ["PLANKS", 1])), crenel=block(L.get("crenel", "STONEBRICK")),
+                                  door_side=L.get("door", "s"), openings=[tuple(o) for o in L.get("openings", [])],
+                                  ground_at=lambda x, z: int(Hi[x - x0, z - z0]), slit=block(L.get("slit", "AIR")))
+            for x, z in got:
                 laid[x - x0, z - z0] = True
         elif L["op"] == "field":
             from pgmvox.built import props as PR

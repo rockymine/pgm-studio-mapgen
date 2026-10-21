@@ -142,6 +142,9 @@ the slope and rock in beds that follow the surface. The water's bed has a stack 
 | `house` | `at`, `heading`, `L`, `W`, `storeys`, `storey`, `style` (`town`, `plaster`, `brick`, `stone`, a name in `styles`, or an object), `roof`, `pitch`, `overhang`, `door`, `jetty`, `chimney` | `build.house` |
 | `blocks` | `boxes`, each a `box` (x0, y0, z0, x1, y1, z1) and a `block` | the document's own |
 | `field` | `rect`, `crops`, `rows`, `ditch`, `fence`, `gate`, `scarecrows`, `y` | `props.crop_field`, `props.scarecrow` |
+| `stall` | `at`, `facing`, `colours` (the roof's stripes), `width`, `goods` | `props.market_stall` |
+| `posts` | `at` (points), `stack` (blocks from the ground up: a lamp, a bollard) | the document's own |
+| `round_tower` | `at`, `r`, `height`, `y`, `wall`, `floor`, `crenel`, `door`, `openings` ([angle, y]: a wall-walk's way in), `slit` | `build.round_tower` |
 
 **A hedge, a wall and a fence are the same layer with different blocks.** The island's hedge runs four blocks off
 the road with a gap every fourteen, and its curtain wall holds its crown level over runs of five:
@@ -154,7 +157,7 @@ the road with a gap every fourteen, and its curtain wall holds its crown level o
 keys it changes: the wall blocks, `plinth`, the post `log`, `windows` as a rhythm with a phase that centres one
 block in a frame's bay, `sill_in` (the wall block under a window made a stair of the facade's kind), `quoins` and
 `string` for a style without posts, `stack` (a chimney outside the gable) and `chimney_top`, `joists_along`,
-`slab_roof`, and `plain_turned`, which gives a turned house no windows, one post a corner and a door only on a
+`slab_roof`, `verge` with `roof_bands` (the roof's ring and bands across it in other blocks), and `plain_turned`, which gives a turned house no windows, one post a corner and a door only on a
 straight run of three.
 
 **A house stands on the highest ground under it, its plate filled down to the rest.** Its footprint counts as

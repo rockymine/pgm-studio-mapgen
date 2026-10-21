@@ -51,6 +51,36 @@ def stall(w, x, y, z, facing="e", awning=14, stripe=0, post=(B.FENCE, 0), goods=
     return cells
 
 
+def market_stall(w, x, y, z, facing="s", colours=(14, 0), width=5, post=(B.FENCE, 0), counter=(B.WOOD_SLAB, 9),
+                 goods=((B.PUMPKIN, 3), (B.MELON, 0), (B.HAY, 0))):
+    """A market stall `width` across and three deep on the floor at y, its counter on the side it faces: fence posts
+    at the corners, two high at the front and three at the back, a wool roof striped across in `colours` that
+    steps down a block from the back row to the front two, an upper-slab counter between the front posts with
+    `goods` on it in turn. Returns its cells."""
+    fx, fz = vec(facing)
+    rx, rz = -fz, fx                                           # across the stall
+    half = width // 2
+    cells = []
+
+    def at(u, v):                                              # u back to front (0..2), v across
+        return x + fx * (u - 1) + rx * v, z + fz * (u - 1) + rz * v
+    for u, tall in ((0, 3), (2, 2)):
+        for v in (-half, half):
+            px, pz = at(u, v)
+            for yy in range(1, tall + 1):
+                w.set(px, y + yy, pz, *post)
+    for u in range(3):
+        for v in range(-half, half + 1):
+            px, pz = at(u, v)
+            w.set(px, y + (4 if u == 0 else 3), pz, B.WOOL, colours[(v + half) % len(colours)])
+            cells.append((px, pz))
+    for j, v in enumerate(range(-half + 1, half)):
+        px, pz = at(2, v)
+        w.set(px, y + 1, pz, *counter)
+        w.set(px, y + 2, pz, *goods[j % len(goods)])
+    return cells
+
+
 def stalls(w, line, y, facing="e", every=5, awnings=AWNINGS, stripe=0):
     """A row of stalls along a line of cells [(x, z), ...] on a floor at y, one every `every` cells, each facing
     the same way, their awnings taking `awnings` in turn. Returns every cell they stand on."""
