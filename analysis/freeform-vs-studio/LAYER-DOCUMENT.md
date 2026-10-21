@@ -154,11 +154,14 @@ the road with a gap every fourteen, and its curtain wall holds its crown level o
 ```
 
 **A house's style is data, named once under `styles` and used by name.** An object names a `base` style and the
-keys it changes: the wall blocks, `plinth`, the post `log`, `windows` as a rhythm with a phase that centres one
-block in a frame's bay, `sill_in` (the wall block under a window made a stair of the facade's kind), `quoins` and
-`string` for a style without posts, `stack` (a chimney outside the gable) and `chimney_top`, `joists_along`,
-`slab_roof`, `verge` with `roof_bands` (the roof's ring and bands across it in other blocks), and `plain_turned`, which gives a turned house no windows, one post a corner and a door only on a
-straight run of three.
+keys it changes: the wall blocks, `plinth`, the post `log`, and `windows` as a rhythm with a phase that centres one
+block in a frame's bay.
+
+**A style's details are each off until it names them.** `sill_in` makes the wall block under a window a stair of
+the facade's kind; `quoins` and `string` dress a style without posts; `stack` stands a chimney outside the gable
+and `chimney_top` caps either chimney. `joists_along`, `slab_roof` and `verge` with `roof_bands` (the roof's ring
+and bands across it in other blocks) follow, and `plain_turned` gives a turned house no windows, one post a corner
+and a door only on a straight run of three.
 
 **A house stands on the highest ground under it, its plate filled down to the rest.** Its footprint counts as
 built, so a wood keeps `clear` of it. A `blocks` layer sets boxes of one block each, for what no other layer
