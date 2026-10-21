@@ -608,7 +608,13 @@
     14,
     0
    ],
-   "counter_stair": "SPRUCE_STAIRS"
+   "counter_stair": "SPRUCE_STAIRS",
+   "post": [
+    "LOG",
+    1
+   ],
+   "banners": true,
+   "sides": true
   },
   {
    "id": "stall-b",
@@ -621,7 +627,13 @@
    "colours": [
     11,
     0
-   ]
+   ],
+   "post": [
+    "LOG",
+    1
+   ],
+   "banners": true,
+   "sides": true
   },
   {
    "id": "stall-c",
@@ -635,6 +647,12 @@
     4,
     13
    ],
+   "post": [
+    "LOG",
+    1
+   ],
+   "banners": true,
+   "sides": true,
    "goods": [
     [
      "HAY",
@@ -830,7 +848,8 @@
      31
     ]
    ],
-   "seed": 2
+   "seed": 2,
+   "grass": true
   },
   {
    "id": "cottage",
@@ -964,7 +983,10 @@
      0
     ]
    ],
-   "step_stair": "STONEBRICK_STAIRS",
+   "step_slab": [
+    "SLAB",
+    5
+   ],
    "note": "the curtain, cobble at its foot into brick, its walk on top"
   },
   {
@@ -1024,11 +1046,14 @@
     ]
    ],
    "crenel": [
-    "STONEBRICK",
-    0
+    "SLAB",
+    5
    ],
-   "crenel_stair": "STONEBRICK_STAIRS",
-   "note": "a parapet on the outer edge, its crenels stairs"
+   "step_slab": [
+    "SLAB",
+    5
+   ],
+   "note": "a parapet on the outer edge, its crenels slabs"
   },
   {
    "id": "tower-40",
@@ -1045,7 +1070,10 @@
     0
    ],
    "door": "n",
-   "crenel_stair": "STONEBRICK_STAIRS",
+   "crenel": [
+    "SLAB",
+    5
+   ],
    "openings": [
     [
      165.06858282186246,
@@ -1076,7 +1104,10 @@
     0
    ],
    "door": "n",
-   "crenel_stair": "STONEBRICK_STAIRS",
+   "crenel": [
+    "SLAB",
+    5
+   ],
    "openings": [
     [
      168.6900675259798,

@@ -52,11 +52,13 @@ def stall(w, x, y, z, facing="e", awning=14, stripe=0, post=(B.FENCE, 0), goods=
 
 
 def market_stall(w, x, y, z, facing="s", colours=(14, 0), width=5, post=(B.FENCE, 0), counter=(B.PLANKS, 1),
-                 counter_stair=None, goods=((B.PUMPKIN, 3), (B.MELON, 0), (B.HAY, 0))):
+                 counter_stair=None, goods=((B.PUMPKIN, 3), (B.MELON, 0), (B.HAY, 0)), banners=False, sides=False):
     """A market stall `width` across and three deep on the floor at y, its counter on the side it faces: fence posts
     three high at the corners, a flat wool roof on the fourth course striped across in `colours`, a counter of
     `counter` between the front posts (or of `counter_stair` upside down, its lip toward the buyer) with `goods`
-    on it in turn and a block of air over them. Returns its cells."""
+    on it in turn and a block of air over them. With `banners`, a banner of each roof block's colour hangs from it
+    along the front and both sides, the back left open; with `sides`, the middle of each side is closed by the
+    counter's block, so the stall is walked into only from the back. Returns its cells."""
     from pgmvox.core.orient import stair as stair_data
     fx, fz = vec(facing)
     rx, rz = -fz, fx                                           # across the stall
@@ -82,6 +84,20 @@ def market_stall(w, x, y, z, facing="s", colours=(14, 0), width=5, post=(B.FENCE
         else:
             w.set(px, y + 1, pz, *counter)
         w.set(px, y + 2, pz, *goods[j % len(goods)])
+    if sides:
+        for v in (-half, half):
+            px, pz = at(1, v)
+            if counter_stair is not None:
+                w.set(px, y + 1, pz, counter_stair, stair_data((-rx * (v // abs(v)), -rz * (v // abs(v))), True))
+            else:
+                w.set(px, y + 1, pz, *counter)
+    if banners:
+        facing_of = {(0, -1): 2, (0, 1): 3, (-1, 0): 4, (1, 0): 5}
+        hung = [(at(3, v), (fx, fz), v) for v in range(-half, half + 1)]
+        hung += [(at(u, sgn * (half + 1)), (rx * sgn, rz * sgn), sgn * half) for u in range(3) for sgn in (-1, 1)]
+        for (bx, bz), out, v in hung:
+            dye = colours[(v + half) % len(colours)]
+            w.banner(bx, y + 4, bz, 15 - dye, wall_facing=facing_of[out])
     return cells
 
 

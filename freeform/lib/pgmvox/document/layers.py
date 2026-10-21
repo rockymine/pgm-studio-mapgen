@@ -772,6 +772,7 @@ def build(doc):
                                      and not isinstance(c[1], int) else block(c)
                                      for c in L["courses"]] if "courses" in L else None,
                             crenel_stair=stair_of("crenel_stair"), step_stair=stair_of("step_stair"),
+                            step_slab=block(L["step_slab"]) if "step_slab" in L else None,
                             crown=L.get("crown", "follow"), run=L.get("run", 6), max_grade=L.get("max_grade", 1.0),
                             blocks=[block(b) for b in L.get("blocks", ["COBBLE"])], weights=L.get("weights"),
                             cap=block(L["cap"]) if "cap" in L else None,
@@ -799,6 +800,8 @@ def build(doc):
             for x, z in PR.market_stall(w, sx, int(Hi[sx - x0, sz - z0]), sz, L.get("facing", "s"),
                                         tuple(L.get("colours", [14, 0])), L.get("width", 5),
                                         counter_stair=getattr(B, L["counter_stair"]) if "counter_stair" in L else None,
+                                        post=block(L.get("post", "FENCE")), banners=L.get("banners", False),
+                                        sides=L.get("sides", False),
                                         goods=tuple(block(g) for g in L["goods"]) if "goods" in L else
                                         ((B.PUMPKIN, 3), (B.MELON, 0), (B.HAY, 0))):
                 laid[x - x0, z - z0] = True
@@ -837,7 +840,7 @@ def build(doc):
                     pts = _offset(pts, L["offset"])
                 got = GR.hedge(w, walk_cells([(int(round(x)), int(round(z))) for x, z in pts]), g_at, rr,
                                leaves=block(L.get("leaves", ["LEAVES", 4])), modules=L.get("modules", 1),
-                               drop=L.get("drop", 0.15))
+                               drop=L.get("drop", 0.15), grass=L.get("grass", False))
             elif L["op"] == "small_trees":
                 got = []
                 for tx, tz in L["at"]:

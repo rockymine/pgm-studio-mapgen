@@ -34,9 +34,9 @@ build = [
      "note": "three deep at the main roof's half-block pitch, its eave a row of upper slabs"},
     {"id": "pen", "op": "wall", "line": [[14, 29], [14, 37], [26, 37], [26, 29]], "height": 1, "blocks": ["FENCE"]},
     {"id": "pen-gate", "op": "blocks", "boxes": [F(20, 41, 37, 20, 41, 37, ["FENCE_GATE", 0])]},
-    {"id": "stall-a", "op": "stall", "at": [44, 22], "facing": "s", "colours": [14, 0], "counter_stair": "SPRUCE_STAIRS"},
-    {"id": "stall-b", "op": "stall", "at": [52, 22], "facing": "s", "colours": [11, 0]},
-    {"id": "stall-c", "op": "stall", "at": [60, 22], "facing": "s", "colours": [4, 13],
+    {"id": "stall-a", "op": "stall", "at": [44, 22], "facing": "s", "colours": [14, 0], "counter_stair": "SPRUCE_STAIRS", "post": ["LOG", 1], "banners": True, "sides": True},
+    {"id": "stall-b", "op": "stall", "at": [52, 22], "facing": "s", "colours": [11, 0], "post": ["LOG", 1], "banners": True, "sides": True},
+    {"id": "stall-c", "op": "stall", "at": [60, 22], "facing": "s", "colours": [4, 13], "post": ["LOG", 1], "banners": True, "sides": True,
      "goods": [["HAY", 0], ["PUMPKIN", 3], ["HAY", 0]]},
     {"id": "lamp-torch", "op": "posts", "at": [[70, 18], [70, 26]], "stack": [["STONE", 6], "COBBLE_WALL", ["TORCH", 5]]},
     {"id": "lamp-redstone", "op": "posts", "at": [[76, 18], [76, 26]],
@@ -47,7 +47,7 @@ build = [
      "rough": {"amp": 0.08, "cell": 4, "seed": 3}},
      "flowers": [["FLOWER", 0], ["DANDELION", 0], ["FLOWER", 3], ["FLOWER", 8], ["FLOWER", 2]], "along": "x", "rows": 2,
      "note": "a field of flowers in the open, two rows a kind, every cell of it planted"},
-    {"id": "hedge", "op": "hedge", "line": [[60, 32], [70, 30], [80, 34], [90, 31]], "seed": 2},
+    {"id": "hedge", "op": "hedge", "line": [[60, 32], [70, 30], [80, 34], [90, 31]], "seed": 2, "grass": True},
     {"id": "cottage", "op": "house", "at": [116, 20], "heading": 0, "L": 9, "W": 6, "storeys": 2, "style": "fell-cottage",
      "door": 1},
     {"id": "cottage-green", "op": "blocks", "boxes": [
@@ -58,14 +58,14 @@ wall = [[10, 60], [40, 52], [70, 56], [100, 50], [130, 58]]
 COURSES = ["COBBLE", ["COBBLE", ["STONE", 5]], ["STONE", 5], [["STONE", 5], ["STONEBRICK", 0]], ["STONEBRICK", 0]]
 build += [
     {"id": "town-wall", "op": "wall", "line": wall, "width": 3, "height": 5, "crown": "follow",
-     "courses": COURSES, "step_stair": "STONEBRICK_STAIRS", "note": "the curtain, cobble at its foot into brick, its walk on top"},
+     "courses": COURSES, "step_slab": ["SLAB", 5], "note": "the curtain, cobble at its foot into brick, its walk on top"},
     {"id": "parapet", "op": "wall", "line": wall, "offset": 1.4, "height": 6, "crown": "follow",
-     "courses": COURSES, "crenel": ["STONEBRICK", 0], "crenel_stair": "STONEBRICK_STAIRS",
-     "note": "a parapet on the outer edge, its crenels stairs"}]
+     "courses": COURSES, "crenel": ["SLAB", 5], "step_slab": ["SLAB", 5],
+     "note": "a parapet on the outer edge, its crenels slabs"}]
 for (cx, cz), a, b in (((40, 52), wall[0], wall[2]), ((100, 50), wall[2], wall[4])):
     ang = lambda p: math.degrees(math.atan2(p[1] - cz, p[0] - cx))                       # noqa: E731
     build.append({"id": f"tower-{cx}", "op": "round_tower", "at": [cx, cz], "half": 4, "height": 13, "openings_from": "floor",
-                  "wall": ["STONEBRICK", 0], "door": "n", "crenel_stair": "STONEBRICK_STAIRS",
+                  "wall": ["STONEBRICK", 0], "door": "n", "crenel": ["SLAB", 5],
                   "openings": [[ang(a), 5], [ang(b), 5]], "floor": ["PLANKS", 1]})
 doc = {"document": "layers", "version": "draft-1",
        "board": {"name": "Chantry Gill town pieces", "x": [0, 139], "z": [0, 69], "floor": 40, "height": 80, "seed": 3},

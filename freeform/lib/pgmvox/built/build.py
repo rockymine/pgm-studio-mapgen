@@ -755,7 +755,7 @@ CROWNS = ("follow", "level", "grade")
 
 def line_wall(w, H, X, Z, pts, height=2, width=1, crown="follow", run=6, max_grade=1.0, blocks=((B.COBBLE, 0),),
               weights=None, cap=None, crenel=None, gap=None, closed=False, sink=0, keep=None, rng=None, courses=None,
-              crenel_stair=None, step_stair=None):
+              crenel_stair=None, step_stair=None, step_slab=None):
     """A wall, a hedge or a fence along a line over the ground: one generic build, the materials are the board's.
 
     Every cell of the line (four-connected at width 1, the band within width / 2 of it wider) is filled from the
@@ -769,7 +769,7 @@ def line_wall(w, H, X, Z, pts, height=2, width=1, crown="follow", run=6, max_gra
     one entry a course and the last repeated, each a block or a pair laid in a checker, so a wall can run from
     cobble through andesite into brick. `crenel_stair` (a stair id) makes each crenel a stair rising to the line's
     left; `step_stair` sets a stair on a cell whose neighbour along the wall stands one higher, rising to it, so a
-    crown that follows the ground steps up rather than jumps. Returns the cells laid, each (x, z, ground, top)."""
+    crown that follows the ground steps up rather than jumps; `step_slab` (a block) a half step there instead. Returns the cells laid, each (x, z, ground, top)."""
     from pgmvox.geom.shapes import polyline, walk_cells
     assert crown in CROWNS, crown
     pts = [tuple(p) for p in pts] + ([tuple(pts[0])] if closed else [])
@@ -826,12 +826,15 @@ def line_wall(w, H, X, Z, pts, height=2, width=1, crown="follow", run=6, max_gra
             else:
                 w.set(x, t + 1, z, *crenel)
         laid.append((x, z, int(g), int(t)))
-    if step_stair is not None:
+    if step_stair is not None or step_slab is not None:
         tops = {(x, z): t for x, z, _, t in laid}
         for (x, z), t in tops.items():
             for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
                 if tops.get((x + dx, z + dz)) == t + 1 and w.id(x, t + 1, z) == B.AIR:
-                    w.set(x, t + 1, z, step_stair, stair_data((dx, dz)))
+                    if step_slab is not None:
+                        w.set(x, t + 1, z, *step_slab)
+                    else:
+                        w.set(x, t + 1, z, step_stair, stair_data((dx, dz)))
                     break
     return laid
 

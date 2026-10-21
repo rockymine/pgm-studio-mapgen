@@ -12,11 +12,13 @@ from pgmvox.core.blocks import B
 LEAVES = (B.LEAVES, 4)                       # oak leaves that never decay
 
 
-def hedge(w, cells, ground, rng, leaves=LEAVES, modules=1, drop=0.15):
+def hedge(w, cells, ground, rng, leaves=LEAVES, modules=1, drop=0.15, grass=False):
     """A hedge along `cells` (a line's cells, in order): each cell names the 2 by 2 module of the two-block grid
     it falls in, so the modules step diagonally where the line does. A module stands on the lowest ground under it
     and holds a checker of leaves, the lower course on one diagonal and the upper on the other, `modules` high;
-    `drop` of its top leaves are left off so the crown is not ruled. Returns the columns it stands in."""
+    `drop` of its top leaves are left off so the crown is not ruled; with `grass`, tall grass stands in each gap
+    the checker leaves, on the leaf or the ground under it, a cheat that holds while blocks do not update. Returns
+    the columns it stands in."""
     seen, out = set(), []
     for x, z in cells:
         mx, mz = x // 2 * 2, z // 2 * 2
@@ -29,8 +31,10 @@ def hedge(w, cells, ground, rng, leaves=LEAVES, modules=1, drop=0.15):
             for b in (0, 1):
                 for k in range(2 * modules):
                     if (a + b + k) % 2:
+                        if grass and w.id(mx + a, foot + 1 + k, mz + b) == B.AIR:
+                            w.set(mx + a, foot + 1 + k, mz + b, B.TALLGRASS, 1)
                         continue
-                    if k == top - 1 and rng.random() < drop:
+                    if k == top and rng.random() < drop:
                         continue
                     for y in range(ground(mx + a, mz + b) + 1, foot + 1 + k):
                         if w.id(mx + a, y, mz + b) == B.AIR:       # down to the ground on a slope

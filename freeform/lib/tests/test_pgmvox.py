@@ -2228,6 +2228,22 @@ class HouseDetails(unittest.TestCase):
         self.assertEqual(w.id(4, 44, 4), B.AIR)                                      # the corner cut
         self.assertEqual(w.id(3, 44, 3), B.STONEBRICK)                               # the ring closed across it
 
+    def test_a_stall_hangs_banners_on_three_sides_and_closes_its_sides(self):
+        w = self.build([{"id": "s", "op": "stall", "at": [0, 0], "facing": "s", "colours": [14, 0], "post": ["LOG", 1],
+                         "banners": True, "sides": True}]).world
+        self.assertEqual(int((w.ids == B.WALL_BANNER).sum()), 5 + 3 + 3)        # front and both sides, none behind
+        self.assertEqual([w.id(x, 41, 0) for x in (-2, 2)], [B.PLANKS] * 2)      # each side closed at its middle
+        self.assertEqual(w.id(-2, 43, 1), B.LOG)                                 # a corner is a full block
+        bases = sorted({t["base"] for t in w.tiles if t["kind"] == "Banner"})
+        self.assertEqual(bases, [1, 15])                                         # the roof's red and white
+
+    def test_a_hedge_crosses_its_diagonals_course_by_course_and_fills_the_gaps_with_grass(self):
+        w = self.build([{"id": "h", "op": "hedge", "line": [[0, 0], [1, 0]], "drop": 0, "grass": True}]).world
+        for y, on in ((41, ((0, 0), (1, 1))), (42, ((1, 0), (0, 1)))):
+            self.assertEqual({(x, z) for x in (0, 1) for z in (0, 1) if w.id(x, y, z) == B.LEAVES}, set(on))
+            self.assertEqual({(x, z) for x in (0, 1) for z in (0, 1) if w.id(x, y, z) == B.TALLGRASS},
+                             {(x, z) for x in (0, 1) for z in (0, 1)} - set(on))
+
     def test_a_field_lays_farmland_and_its_fence_gate(self):
         w = self.build([{"id": "f", "op": "field", "rect": [-10, -10, 10, 10], "crops": [["WHEAT", 7]]}]).world
         self.assertGreater(int((w.ids == B.FARMLAND).sum()), 200)

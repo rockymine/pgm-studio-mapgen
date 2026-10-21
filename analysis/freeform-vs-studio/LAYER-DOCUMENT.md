@@ -138,14 +138,14 @@ the slope and rock in beds that follow the surface. The water's bed has a stack 
 | `op` | Numbers | From pgmvox |
 |---|---|---|
 | `surface` | `near` (a path layer), `blocks`, `weights`, `steps`: none, `stairs` (`stair`) or `half` (`slab`) | `route.pave`, `route.steps`, `route.halfsteps` |
-| `wall` | `line` or `near` + `offset`, `height`, `width`, `crown` (`follow`, `level`, `grade`), `run`, `blocks`, `weights`, `courses` (from the foot up, a block or a checker pair each), `cap`, `crenel`, `crenel_stair`, `step_stair`, `gap`, `closed` | `build.line_wall` |
+| `wall` | `line` or `near` + `offset`, `height`, `width`, `crown` (`follow`, `level`, `grade`), `run`, `blocks`, `weights`, `courses` (from the foot up, a block or a checker pair each), `cap`, `crenel`, `crenel_stair`, `step_stair` or `step_slab`, `gap`, `closed` | `build.line_wall` |
 | `house` | `at`, `heading`, `L`, `W`, `storeys`, `storey`, `style` (`town`, `plaster`, `brick`, `stone`, a name in `styles`, or an object), `roof`, `pitch`, `overhang`, `door`, `jetty`, `chimney` | `build.house` |
 | `blocks` | `boxes`, each a `box` (x0, y0, z0, x1, y1, z1) and a `block` | the document's own |
 | `field` | `rect`, `crops`, `rows`, `ditch`, `fence`, `gate`, `scarecrows`, `y` | `props.crop_field`, `props.scarecrow` |
-| `stall` | `at`, `facing`, `colours` (the roof's stripes), `width`, `goods` | `props.market_stall` |
+| `stall` | `at`, `facing`, `colours` (the roof's stripes), `width`, `post`, `counter_stair`, `goods`, `banners` (front and sides), `sides` (closed, entered from the back) | `props.market_stall` |
 | `posts` | `at` (points), `stack` (blocks from the ground up: a lamp, a bollard) | the document's own |
 | `round_tower` | `at`, `r` or `half` (a square with its corners cut), `height`, `y`, `wall`, `floor`, `crenel`, `crenel_stair`, `door`, `openings` ([angle, y]: a wall-walk's way in; `openings_from: floor` counts y from its floor), `slit` | `build.round_tower` |
-| `hedge` | `line` or `near` + `offset`, `leaves`, `modules`, `drop` | `green.hedge` |
+| `hedge` | `line` or `near` + `offset`, `leaves`, `modules`, `drop`, `grass` (in the checker's gaps) | `green.hedge` |
 | `small_trees` | `at` (points), `trunk`, `log`, `leaves`, `bite` | `green.round_oak` |
 | `flowers` | `area`, `flowers`, `along`, `rows` | `green.flower_rows` |
 
