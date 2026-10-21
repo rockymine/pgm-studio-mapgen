@@ -52,9 +52,8 @@
     0
    ],
    "stack": {
-    "block": "STONEBRICK",
-    "cap": "COBBLE_WALL",
-    "base": "STONEBRICK_STAIRS"
+    "block": "COBBLE",
+    "base": "COBBLE_STAIRS"
    },
    "windows": [
     4,
@@ -72,7 +71,24 @@
     "BRICK_STAIRS",
     "BIRCH_STAIRS"
    ],
-   "plain_turned": true
+   "plain_turned": true,
+   "chimney": "COBBLE",
+   "chimney_top": [
+    "IRON_BARS",
+    [
+     "SLAB",
+     0
+    ],
+    [
+     "STAINED_GLASS",
+     7
+    ],
+    [
+     "STAINED_GLASS",
+     8
+    ]
+   ],
+   "joists_along": true
   },
   "fell-cottage-dark": {
    "base": "brick",
@@ -110,9 +126,8 @@
     0
    ],
    "stack": {
-    "block": "STONEBRICK",
-    "cap": "COBBLE_WALL",
-    "base": "STONEBRICK_STAIRS"
+    "block": "COBBLE",
+    "base": "COBBLE_STAIRS"
    },
    "windows": [
     4,
@@ -131,7 +146,24 @@
     "OAK_STAIRS"
    ],
    "log": "LOG2",
-   "plain_turned": true
+   "plain_turned": true,
+   "chimney": "COBBLE",
+   "chimney_top": [
+    "IRON_BARS",
+    [
+     "SLAB",
+     0
+    ],
+    [
+     "STAINED_GLASS",
+     7
+    ],
+    [
+     "STAINED_GLASS",
+     8
+    ]
+   ],
+   "joists_along": true
   }
  },
  "ground": [

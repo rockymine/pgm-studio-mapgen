@@ -554,6 +554,8 @@ def house_style(spec, doc=None):
             st[k] = [block(b) for b in v]
         elif k in ("stair", "door", "sill", "hood"):
             st[k] = getattr(B, v)
+        elif k in ("quoins", "chimney_top"):
+            st[k] = [block(b) for b in v]
         elif k == "sill_in":
             st[k] = [getattr(B, n) for n in v]
         elif k == "log":
@@ -561,7 +563,7 @@ def house_style(spec, doc=None):
         elif k == "stack":
             st[k] = {"block": block(v["block"]), "cap": block(v.get("cap", "COBBLE_WALL")),
                      "base": getattr(B, v.get("base", "COBBLE_STAIRS"))}
-        elif k in ("post", "beam_ends", "windows", "plain_turned"):
+        elif k in ("post", "beam_ends", "windows", "plain_turned", "joists_along", "slab_roof"):
             st[k] = v
         else:
             st[k] = block(v)
@@ -781,6 +783,16 @@ def build(doc):
                             rng=np.random.default_rng(L.get("seed", bd.get("seed", 0))))
             for x, z in got["footprint"]:
                 laid[x - x0, z - z0] = True
+        elif L["op"] == "field":
+            from pgmvox.built import props as PR
+            a0, b0, a1, b1 = L["rect"]
+            y = L["y"] if "y" in L else int(np.median(Hi[a0 - x0:a1 - x0 + 1, b0 - z0:b1 - z0 + 1]))
+            PR.crop_field(w, (a0, b0, a1, b1), y, [block(c) for c in L.get("crops", [["WHEAT", 7]])],
+                          np.random.default_rng(L.get("seed", bd.get("seed", 0))), rows=L.get("rows", 9),
+                          ditch=L.get("ditch", 4), fence=L.get("fence", "w"), gate=L.get("gate"))
+            for sx, sz in L.get("scarecrows", []):
+                PR.scarecrow(w, sx, sz, L.get("facing", "n"))
+            laid[a0 - x0:a1 - x0 + 1, b0 - z0:b1 - z0 + 1] = True
         elif L["op"] == "blocks":
             for x, _, z in _props(w, L["boxes"]):
                 laid[x - x0, z - z0] = True

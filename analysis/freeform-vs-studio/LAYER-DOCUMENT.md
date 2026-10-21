@@ -139,8 +139,9 @@ the slope and rock in beds that follow the surface. The water's bed has a stack 
 |---|---|---|
 | `surface` | `near` (a path layer), `blocks`, `weights`, `steps`: none, `stairs` (`stair`) or `half` (`slab`) | `route.pave`, `route.steps`, `route.halfsteps` |
 | `wall` | `line` or `near` + `offset`, `height`, `width`, `crown` (`follow`, `level`, `grade`), `run`, `blocks`, `weights`, `cap`, `crenel`, `gap`, `closed` | `build.line_wall` |
-| `house` | `at`, `heading`, `L`, `W`, `storeys`, `style` (`town`, `plaster`, `brick`, `stone`), `roof`, `door`, `jetty`, `chimney` | `build.house` |
+| `house` | `at`, `heading`, `L`, `W`, `storeys`, `storey`, `style` (`town`, `plaster`, `brick`, `stone`, a name in `styles`, or an object), `roof`, `pitch`, `overhang`, `door`, `jetty`, `chimney` | `build.house` |
 | `blocks` | `boxes`, each a `box` (x0, y0, z0, x1, y1, z1) and a `block` | the document's own |
+| `field` | `rect`, `crops`, `rows`, `ditch`, `fence`, `gate`, `scarecrows`, `y` | `props.crop_field`, `props.scarecrow` |
 
 **A hedge, a wall and a fence are the same layer with different blocks.** The island's hedge runs four blocks off
 the road with a gap every fourteen, and its curtain wall holds its crown level over runs of five:
@@ -148,6 +149,13 @@ the road with a gap every fourteen, and its curtain wall holds its crown level o
 ```json
 {"id": "hecke", "op": "wall", "near": "strasse", "offset": 4, "height": 1, "blocks": [["LEAVES", 4]], "gap": [14, 2]}
 ```
+
+**A house's style is data, named once under `styles` and used by name.** An object names a `base` style and the
+keys it changes: the wall blocks, `plinth`, the post `log`, `windows` as a rhythm with a phase that centres one
+block in a frame's bay, `sill_in` (the wall block under a window made a stair of the facade's kind), `quoins` and
+`string` for a style without posts, `stack` (a chimney outside the gable) and `chimney_top`, `joists_along`,
+`slab_roof`, and `plain_turned`, which gives a turned house no windows, one post a corner and a door only on a
+straight run of three.
 
 **A house stands on the highest ground under it, its plate filled down to the rest.** Its footprint counts as
 built, so a wood keeps `clear` of it. A `blocks` layer sets boxes of one block each, for what no other layer
@@ -247,7 +255,7 @@ cave under a level that hangs is guarded by the meadow, not the level. Every car
 | `tunnel` | `pts` ([x, floor y, z, radius] each), `mouths` (the waypoints open to the air), `lift`, `breach`, `dress` | `under.tunnel`, `under.dress_cave` |
 | `chamber` | `at` [x, floor y, z], `rx`, `rz`, `h`, `dress` | `under.chamber`, `under.dress_cave` |
 | `rooms` | `rooms` (`id`, `rect`, `floor`, `h`), `halls` (`from`, `to`, `via`, `width`, `h`), `lining`, `light`, `props`, `stair` | the document's own |
-| `shaft` | `at` [x, z], `bottom`, `top` (`ground` or a y), `ladder_on` | `under.shaft` |
+| `shaft` | `at` [x, z], `bottom`, `top` (`ground` or a y), `ladder_on`, `wall`, `post` | `under.shaft` |
 
 **A tunnel's mouth is a waypoint whose cover guard is lifted.** Within its radius and a block and a half of it the
 passage opens to whatever is over it, so a mouth set at the foot of a face cuts a portal and one set on a slope cuts

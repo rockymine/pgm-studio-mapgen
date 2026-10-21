@@ -423,6 +423,11 @@ def house(w, h, ground_at=None, rng=None):
     for s, (m, wall, Ls, Ws) in enumerate(storeys):
         y0 = f + s * sh
         mats = st["ground"] if s == 0 else st["upper"]
+        single = None
+        if plain:                                        # turned, each corner one post: the wall cell nearest it
+            cells = [(int(X[i, k]), int(Z[i, k]), U[i, k], V[i, k]) for i, k in zip(*np.nonzero(wall))]
+            single = {min(cells, key=lambda c: math.hypot(c[2] - a * Ls / 2, c[3] - b * Ws / 2))[:2]
+                      for a in (-1, 1) for b in (-1, 1)}
         for i, k in zip(*np.nonzero(m)):
             x, z, u, v = int(X[i, k]), int(Z[i, k]), U[i, k], V[i, k]
             if not wall[i, k]:
@@ -430,10 +435,12 @@ def house(w, h, ground_at=None, rng=None):
                     w.set(x, y0, z, *st["floor"])
                 continue
             corner = abs(u) > Ls / 2 - 1 and abs(v) > Ws / 2 - 1
+            if single is not None:
+                corner = (x, z) in single
             long_wall = abs(v) > Ws / 2 - 1
             run, span = (u + Ls / 2, Ls) if long_wall else (v + Ws / 2, Ws)
             frame_line = long_wall and abs(((run + 1.5) % 4) - 2) < 0.5 and not corner
-            post = st["post"] is not None and (corner or (frame_line and s > 0))
+            post = st["post"] is not None and (corner or (frame_line and s > 0 and not plain))
             dx, dz = (fr.c, fr.s) if long_wall else (-fr.s, fr.c)
             out = fr.across(1 if v > 0 else -1) if long_wall else fr.along(1 if u > 0 else -1)
             if corner:
@@ -441,8 +448,12 @@ def house(w, h, ground_at=None, rng=None):
             for y in range(y0 + 1, y0 + sh + 1):
                 if post:
                     blk = (st.get("log", B.LOG), st["post"])
-                elif y == y0 + sh and st["post"] is not None:
-                    blk = (st.get("log", B.LOG), st["post"] | (4 if abs(dx) >= abs(dz) else 8))
+                elif y == y0 + sh and st["post"] is not None:              # turned and plain, upright: no cut ends
+                    blk = (st.get("log", B.LOG), st["post"] | (0 if plain else 4 if abs(dx) >= abs(dz) else 8))
+                elif corner and "quoins" in st:
+                    blk = st["quoins"][(y - f - 1) % len(st["quoins"])]
+                elif "string" in st and y == y0 + sh and s < n - 1:
+                    blk = st["string"]
                 elif h.windows(run, span, y - y0, s):
                     blk = st["window"]
                     windows.append((x, y, z, out, s))
@@ -453,7 +464,8 @@ def house(w, h, ground_at=None, rng=None):
                 w.set(x, y, z, *blk)
         if jetty and s == 1:                                     # the joists showing under a jettied storey
             for i, k in zip(*np.nonzero(m & ~base)):
-                w.set(int(X[i, k]), y0, int(Z[i, k]), st.get("log", B.LOG), (st["post"] or 0) | (4 if abs(fr.s) >= abs(fr.c) else 8))
+                w.set(int(X[i, k]), y0, int(Z[i, k]), st.get("log", B.LOG), (st["post"] or 0) | ((4 if abs(fr.c) >= abs(fr.s) else 8) if st.get("joists_along")
+                                                    else (4 if abs(fr.s) >= abs(fr.c) else 8)))
     # the door, in the middle of its long wall
     cands = [(abs(U[i, k]), int(X[i, k]), int(Z[i, k])) for i, k in zip(*np.nonzero(base_wall))
              if h.door * V[i, k] > h.W / 2 - 1 and abs(U[i, k]) < h.L / 2 - 1.5]
@@ -480,13 +492,14 @@ def house(w, h, ground_at=None, rng=None):
     top_cells = {(int(X[i, k]), int(Z[i, k])) for i, k in zip(*np.nonzero(mt))}
     # square to the board the roof is the studio's, in stairs; turned, stairs can only face the four ways and
     # the slope reads ragged, so it is laid in cubes and slabs measured to the half block
+    slabs = st.get("slab_roof", False)                   # a low roof in cubes and slabs, half a block a block
     field = RoofField.framed(h.roof, fr, Lt, Wt, h.overhang, eave + 1, h.pitch if square else 2 * h.pitch,
-                             "s" if h.door > 0 else "n", halves=not square)
+                             "s" if h.door > 0 else "n", halves=not square or slabs)
     for x, z in field.cells():                                   # the attic cleared before the roof is laid
         for y in range(eave + 1, field.crown(x, z) + 1):
             if (x, z) in top_cells:
                 w.set(x, y, z, B.AIR)
-    lay_roof(w, field, st["roof"], st["stair"] if square else None, st["slab"],
+    lay_roof(w, field, st["roof"], st["stair"] if square and not slabs else None, st["slab"],
              inside=lambda x, z: (x, z) in top_cells)
     for i, k in zip(*np.nonzero(wt)):                            # gable walls up to the roof's underside
         x, z = int(X[i, k]), int(Z[i, k])
@@ -498,7 +511,9 @@ def house(w, h, ground_at=None, rng=None):
         top = field.crown(x, z) + 2
         for y in range(f + 1, top + 1):
             cap = st.get("chimney_cap", st["chimney"] if "chimney" in st else (B.COBBLE_WALL, 0))
-            w.set(x, y, z, *(st.get("chimney", (B.COBBLE, 0)) if y < top else cap))
+            w.set(x, y, z, *(st.get("chimney", (B.COBBLE, 0)) if y < top or "chimney_top" in st else cap))
+        for j, blk in enumerate(st.get("chimney_top", ())):
+            w.set(x, top + 1 + j, z, *blk)
     return dict(door=door_at, footprint=fr.cells(h.L, h.W + (2 if jetty else 0)), eave=eave, roof=field)
 
 
@@ -510,8 +525,10 @@ def _details(w, h, st, fr, windows, corners, crown_at, Lt, ground_at, square=Tru
     course run one block out past each corner where two storeys meet; `stack`, a chimney standing outside the
     gable at the frame's +u end ({"block", "cap", "base"}: three wide up the ground storey, weathered back to
     one with stairs of `base`'s kind, capped two over the ridge; a turned house keeps its chimney in the roof).
-    `plain_turned` on the style gives a turned house no windows and its door only where three wall blocks
-    stand in one line."""
+    `chimney_top` is the blocks stacked over either chimney, bottom first. `plain_turned` on the style gives a turned house no windows and its door only where three wall blocks
+    stand in one line, posts only at its corners, one each, and its laid course upright. Laid with the walls: `quoins`, the blocks a
+    corner cycles through course by course where a style has no posts; `string`, a course at every storey seam;
+    `joists_along`, a jetty's joists laid along the face, bark out; `slab_roof`, a low roof of cubes and slabs."""
     win = tuple(st["window"])
     for x, y, z, (nx, nz), s in windows:
         if w.get(x, y, z) != win:
@@ -546,7 +563,8 @@ def _details(w, h, st, fr, windows, corners, crown_at, Lt, ground_at, square=Tru
             if dv:
                 w.set(x, shoulder + 1, z, sk.get("base", B.COBBLE_STAIRS), stair_data((-dv * ax, -dv * az)))
         x, z = fr.cell(ux, 0)
-        w.set(x, top + 1, z, *sk.get("cap", (B.COBBLE_WALL, 0)))
+        for j, blk in enumerate(st.get("chimney_top", [sk.get("cap", (B.COBBLE_WALL, 0))])):
+            w.set(x, top + 1 + j, z, *blk)
 
 
 # ---- the parts every board repeated ----------------------------------------------------------------------

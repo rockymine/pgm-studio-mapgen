@@ -5,7 +5,7 @@
   "name": "Chantry Gill buildings",
   "x": [
    0,
-   99
+   119
   ],
   "z": [
    0,
@@ -52,9 +52,8 @@
     0
    ],
    "stack": {
-    "block": "STONEBRICK",
-    "cap": "COBBLE_WALL",
-    "base": "STONEBRICK_STAIRS"
+    "block": "COBBLE",
+    "base": "COBBLE_STAIRS"
    },
    "windows": [
     4,
@@ -72,7 +71,24 @@
     "BRICK_STAIRS",
     "BIRCH_STAIRS"
    ],
-   "plain_turned": true
+   "plain_turned": true,
+   "chimney": "COBBLE",
+   "chimney_top": [
+    "IRON_BARS",
+    [
+     "SLAB",
+     0
+    ],
+    [
+     "STAINED_GLASS",
+     7
+    ],
+    [
+     "STAINED_GLASS",
+     8
+    ]
+   ],
+   "joists_along": true
   },
   "fell-cottage-dark": {
    "base": "brick",
@@ -110,9 +126,8 @@
     0
    ],
    "stack": {
-    "block": "STONEBRICK",
-    "cap": "COBBLE_WALL",
-    "base": "STONEBRICK_STAIRS"
+    "block": "COBBLE",
+    "base": "COBBLE_STAIRS"
    },
    "windows": [
     4,
@@ -131,7 +146,24 @@
     "OAK_STAIRS"
    ],
    "log": "LOG2",
-   "plain_turned": true
+   "plain_turned": true,
+   "chimney": "COBBLE",
+   "chimney_top": [
+    "IRON_BARS",
+    [
+     "SLAB",
+     0
+    ],
+    [
+     "STAINED_GLASS",
+     7
+    ],
+    [
+     "STAINED_GLASS",
+     8
+    ]
+   ],
+   "joists_along": true
   },
   "chapel-stone": {
    "base": "stone",
@@ -184,6 +216,20 @@
     ],
     1.5,
     1.5
+   ],
+   "quoins": [
+    [
+     "STONE",
+     5
+    ],
+    [
+     "STONE",
+     6
+    ]
+   ],
+   "string": [
+    "STONE",
+    6
    ]
   },
   "tower-stone": {
@@ -232,15 +278,29 @@
     ],
     1.5,
     2.5
+   ],
+   "quoins": [
+    [
+     "STONE",
+     5
+    ],
+    [
+     "STONE",
+     6
+    ]
+   ],
+   "string": [
+    "STONE",
+    6
    ]
   },
-  "stable": {
+  "byre": {
    "base": "brick",
    "plinth": "COBBLE",
    "ground": [
     [
-     "PLANKS",
-     1
+     "STONEBRICK",
+     0
     ]
    ],
    "upper": [
@@ -255,7 +315,7 @@
     1
    ],
    "floor": [
-    "DIRT",
+    "PLANKS",
     1
    ],
    "roof": [
@@ -278,7 +338,8 @@
     [],
     1.5,
     2.5
-   ]
+   ],
+   "slab_roof": true
   }
  },
  "ground": [
@@ -288,7 +349,7 @@
    "box": [
     0,
     0,
-    99,
+    119,
     39
    ]
   },
@@ -462,7 +523,7 @@
    "storeys": 1,
    "storey": 6,
    "style": "chapel-stone",
-   "door": 1,
+   "door": 0,
    "chimney": false
   },
   {
@@ -494,18 +555,242 @@
       56,
       18,
       14,
-      57,
+      56,
       18
      ],
      "block": [
-      "STONEBRICK",
-      0
+      "STONE",
+      6
      ]
     },
     {
      "box": [
       14,
       56,
+      19,
+      14,
+      56,
+      19
+     ],
+     "block": [
+      "STONE",
+      6
+     ]
+    },
+    {
+     "box": [
+      14,
+      56,
+      20,
+      14,
+      56,
+      20
+     ],
+     "block": [
+      "STONE",
+      6
+     ]
+    },
+    {
+     "box": [
+      14,
+      56,
+      21,
+      14,
+      56,
+      21
+     ],
+     "block": [
+      "STONE",
+      6
+     ]
+    },
+    {
+     "box": [
+      14,
+      56,
+      22,
+      14,
+      56,
+      22
+     ],
+     "block": [
+      "STONE",
+      6
+     ]
+    },
+    {
+     "box": [
+      15,
+      56,
+      18,
+      15,
+      56,
+      18
+     ],
+     "block": [
+      "STONE",
+      6
+     ]
+    },
+    {
+     "box": [
+      15,
+      56,
+      22,
+      15,
+      56,
+      22
+     ],
+     "block": [
+      "STONE",
+      6
+     ]
+    },
+    {
+     "box": [
+      16,
+      56,
+      18,
+      16,
+      56,
+      18
+     ],
+     "block": [
+      "STONE",
+      6
+     ]
+    },
+    {
+     "box": [
+      16,
+      56,
+      22,
+      16,
+      56,
+      22
+     ],
+     "block": [
+      "STONE",
+      6
+     ]
+    },
+    {
+     "box": [
+      17,
+      56,
+      18,
+      17,
+      56,
+      18
+     ],
+     "block": [
+      "STONE",
+      6
+     ]
+    },
+    {
+     "box": [
+      17,
+      56,
+      22,
+      17,
+      56,
+      22
+     ],
+     "block": [
+      "STONE",
+      6
+     ]
+    },
+    {
+     "box": [
+      18,
+      56,
+      18,
+      18,
+      56,
+      18
+     ],
+     "block": [
+      "STONE",
+      6
+     ]
+    },
+    {
+     "box": [
+      18,
+      56,
+      19,
+      18,
+      56,
+      19
+     ],
+     "block": [
+      "STONE",
+      6
+     ]
+    },
+    {
+     "box": [
+      18,
+      56,
+      20,
+      18,
+      56,
+      20
+     ],
+     "block": [
+      "STONE",
+      6
+     ]
+    },
+    {
+     "box": [
+      18,
+      56,
+      21,
+      18,
+      56,
+      21
+     ],
+     "block": [
+      "STONE",
+      6
+     ]
+    },
+    {
+     "box": [
+      18,
+      56,
+      22,
+      18,
+      56,
+      22
+     ],
+     "block": [
+      "STONE",
+      6
+     ]
+    },
+    {
+     "box": [
+      14,
+      57,
+      18,
+      14,
+      57,
+      18
+     ],
+     "block": [
+      "STONE",
+      5
+     ]
+    },
+    {
+     "box": [
+      14,
+      57,
       19,
       14,
       57,
@@ -519,7 +804,7 @@
     {
      "box": [
       14,
-      56,
+      57,
       20,
       14,
       57,
@@ -533,7 +818,7 @@
     {
      "box": [
       14,
-      56,
+      57,
       21,
       14,
       57,
@@ -547,21 +832,21 @@
     {
      "box": [
       14,
-      56,
+      57,
       22,
       14,
       57,
       22
      ],
      "block": [
-      "STONEBRICK",
-      0
+      "STONE",
+      5
      ]
     },
     {
      "box": [
       15,
-      56,
+      57,
       18,
       15,
       57,
@@ -575,7 +860,7 @@
     {
      "box": [
       15,
-      56,
+      57,
       22,
       15,
       57,
@@ -589,7 +874,7 @@
     {
      "box": [
       16,
-      56,
+      57,
       18,
       16,
       57,
@@ -603,7 +888,7 @@
     {
      "box": [
       16,
-      56,
+      57,
       22,
       16,
       57,
@@ -617,7 +902,7 @@
     {
      "box": [
       17,
-      56,
+      57,
       18,
       17,
       57,
@@ -631,7 +916,7 @@
     {
      "box": [
       17,
-      56,
+      57,
       22,
       17,
       57,
@@ -645,21 +930,21 @@
     {
      "box": [
       18,
-      56,
+      57,
       18,
       18,
       57,
       18
      ],
      "block": [
-      "STONEBRICK",
-      0
+      "STONE",
+      5
      ]
     },
     {
      "box": [
       18,
-      56,
+      57,
       19,
       18,
       57,
@@ -673,7 +958,7 @@
     {
      "box": [
       18,
-      56,
+      57,
       20,
       18,
       57,
@@ -687,7 +972,7 @@
     {
      "box": [
       18,
-      56,
+      57,
       21,
       18,
       57,
@@ -701,15 +986,15 @@
     {
      "box": [
       18,
-      56,
+      57,
       22,
       18,
       57,
       22
      ],
      "block": [
-      "STONEBRICK",
-      0
+      "STONE",
+      5
      ]
     },
     {
@@ -722,8 +1007,8 @@
       18
      ],
      "block": [
-      "STONEBRICK",
-      0
+      "STONE",
+      6
      ]
     },
     {
@@ -750,8 +1035,8 @@
       22
      ],
      "block": [
-      "STONEBRICK",
-      0
+      "STONE",
+      6
      ]
     },
     {
@@ -792,8 +1077,8 @@
       18
      ],
      "block": [
-      "STONEBRICK",
-      0
+      "STONE",
+      6
      ]
     },
     {
@@ -820,12 +1105,12 @@
       22
      ],
      "block": [
-      "STONEBRICK",
-      0
+      "STONE",
+      6
      ]
     }
    ],
-   "note": "the tower's parapet and its crenels, over the flat roof"
+   "note": "a polished andesite course over the top storey, the parapet on it, its corners carrying the quoins up"
   },
   {
    "id": "crypt-head",
@@ -930,32 +1215,33 @@
    "jetty": true
   },
   {
-   "id": "stable",
+   "id": "byre",
    "op": "house",
    "at": [
     76,
-    22
+    20
    ],
    "heading": 0,
    "L": 13,
-   "W": 6,
-   "storeys": 1,
-   "style": "stable",
+   "W": 7,
+   "storeys": 2,
+   "style": "byre",
    "door": -1,
-   "chimney": false
+   "chimney": false,
+   "note": "the byre-house: cattle in the stalls below, hay and stores in the loft"
   },
   {
-   "id": "stable-front",
+   "id": "byre-stalls",
    "op": "blocks",
    "boxes": [
     {
      "box": [
       71,
       41,
-      24,
+      23,
       73,
-      42,
-      24
+      43,
+      23
      ],
      "block": "AIR"
     },
@@ -963,10 +1249,10 @@
      "box": [
       75,
       41,
-      24,
+      23,
       77,
-      42,
-      24
+      43,
+      23
      ],
      "block": "AIR"
     },
@@ -974,10 +1260,10 @@
      "box": [
       79,
       41,
-      24,
+      23,
       81,
-      42,
-      24
+      43,
+      23
      ],
      "block": "AIR"
     },
@@ -985,38 +1271,38 @@
      "box": [
       74,
       41,
-      24,
+      23,
       74,
       43,
-      24
-     ],
-     "block": [
-      "LOG",
-      0
-     ]
-    },
-    {
-     "box": [
-      78,
-      41,
-      24,
-      78,
-      43,
-      24
-     ],
-     "block": [
-      "LOG",
-      0
-     ]
-    },
-    {
-     "box": [
-      74,
-      41,
-      20,
-      74,
-      41,
       23
+     ],
+     "block": [
+      "LOG",
+      0
+     ]
+    },
+    {
+     "box": [
+      78,
+      41,
+      23,
+      78,
+      43,
+      23
+     ],
+     "block": [
+      "LOG",
+      0
+     ]
+    },
+    {
+     "box": [
+      74,
+      41,
+      18,
+      74,
+      41,
+      22
      ],
      "block": "FENCE"
     },
@@ -1024,10 +1310,10 @@
      "box": [
       78,
       41,
-      20,
+      18,
       78,
       41,
-      23
+      22
      ],
      "block": "FENCE"
     },
@@ -1035,10 +1321,10 @@
      "box": [
       71,
       41,
-      20,
+      18,
       72,
       41,
-      20
+      18
      ],
      "block": "HAY"
     },
@@ -1046,48 +1332,279 @@
      "box": [
       76,
       41,
-      20,
+      18,
       76,
       41,
-      20
-     ],
-     "block": "HAY"
-    },
-    {
-     "box": [
-      79,
-      41,
-      20,
-      80,
-      41,
-      20
+      18
      ],
      "block": "HAY"
     },
     {
      "box": [
       80,
-      42,
-      20,
-      80,
-      42,
-      20
+      41,
+      18,
+      81,
+      41,
+      18
      ],
      "block": "HAY"
+    },
+    {
+     "box": [
+      75,
+      46,
+      23,
+      76,
+      47,
+      23
+     ],
+     "block": "AIR"
+    },
+    {
+     "box": [
+      75,
+      45,
+      22,
+      76,
+      45,
+      22
+     ],
+     "block": "HAY"
+    },
+    {
+     "box": [
+      75,
+      46,
+      22,
+      75,
+      46,
+      22
+     ],
+     "block": "HAY"
+    },
+    {
+     "box": [
+      70,
+      41,
+      26,
+      70,
+      43,
+      26
+     ],
+     "block": [
+      "LOG",
+      0
+     ]
+    },
+    {
+     "box": [
+      74,
+      41,
+      26,
+      74,
+      43,
+      26
+     ],
+     "block": [
+      "LOG",
+      0
+     ]
+    },
+    {
+     "box": [
+      78,
+      41,
+      26,
+      78,
+      43,
+      26
+     ],
+     "block": [
+      "LOG",
+      0
+     ]
+    },
+    {
+     "box": [
+      82,
+      41,
+      26,
+      82,
+      43,
+      26
+     ],
+     "block": [
+      "LOG",
+      0
+     ]
+    },
+    {
+     "box": [
+      70,
+      44,
+      26,
+      82,
+      44,
+      26
+     ],
+     "block": [
+      "LOG",
+      4
+     ]
+    },
+    {
+     "box": [
+      70,
+      45,
+      24,
+      82,
+      45,
+      26
+     ],
+     "block": [
+      "WOOD_SLAB",
+      1
+     ]
+    }
+   ],
+   "note": "three stalls open three high between oak posts, under a lean-to three deep roofed in slabs; the loft door over it"
+  },
+  {
+   "id": "pen",
+   "op": "wall",
+   "line": [
+    [
+     70,
+     27
+    ],
+    [
+     70,
+     35
+    ],
+    [
+     82,
+     35
+    ],
+    [
+     82,
+     27
+    ]
+   ],
+   "height": 1,
+   "crown": "follow",
+   "blocks": [
+    "FENCE"
+   ],
+   "note": "the pen the stalls open onto"
+  },
+  {
+   "id": "pen-gate",
+   "op": "blocks",
+   "boxes": [
+    {
+     "box": [
+      76,
+      41,
+      35,
+      76,
+      41,
+      35
+     ],
+     "block": [
+      "FENCE_GATE",
+      0
+     ]
     },
     {
      "box": [
       83,
       41,
-      25,
+      28,
       85,
       41,
-      25
+      28
      ],
      "block": "CAULDRON"
     }
+   ]
+  },
+  {
+   "id": "strip-field",
+   "op": "field",
+   "rect": [
+    88,
+    14,
+    110,
+    32
    ],
-   "note": "the stable's front opened into three stalls between oak posts, fenced apart, hay at the back, a trough"
+   "crops": [
+    [
+     "WHEAT",
+     7
+    ],
+    [
+     "CARROTS",
+     7
+    ],
+    [
+     "POTATOES",
+     7
+    ]
+   ],
+   "rows": 6,
+   "ditch": 3,
+   "fence": "w",
+   "scarecrows": [
+    [
+     100,
+     14
+    ]
+   ],
+   "note": "the byre's field, in strips"
   }
- ]
+ ],
+ "paint": [
+  {
+   "block": [
+    "DIRT",
+    1
+   ],
+   "area": {
+    "rect": [
+     71,
+     24,
+     81,
+     34
+    ]
+   },
+   "noise": {
+    "field": "pen",
+    "lo": 0
+   }
+  },
+  {
+   "block": [
+    "DIRT",
+    0
+   ],
+   "area": {
+    "rect": [
+     71,
+     24,
+     81,
+     34
+    ]
+   }
+  }
+ ],
+ "fields": {
+  "pen": {
+   "fbm": {
+    "cell": 3,
+    "octaves": 2,
+    "seed": 5
+   }
+  }
+ }
 }

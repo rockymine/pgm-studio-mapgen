@@ -2077,6 +2077,94 @@ class WoolChests(unittest.TestCase):
         self.assertEqual(w.id(3, 4, 3), B.BEDROCK)
 
 
+
+class HouseDetails(unittest.TestCase):
+    """What a house style may state as data, each only where it names it: sills in the wall, quoins and string
+    courses, a chimney's top, a slab roof and a plain turned house; and the field and the shaft lining the layer
+    document lays."""
+
+    STYLE = {"base": "brick", "plinth": "STONEBRICK", "ground": ["BRICK"], "upper": [["PLANKS", 2]], "post": 0,
+             "windows": [4, [2], [2, 3], 1.5, 2.5], "sill_in": ["BRICK_STAIRS", "BIRCH_STAIRS"],
+             "stack": {"block": "COBBLE", "base": "COBBLE_STAIRS"},
+             "chimney_top": ["IRON_BARS", ["SLAB", 0], ["STAINED_GLASS", 7]], "plain_turned": True}
+
+    @staticmethod
+    def build(build, style=None, extra=None):
+        from pgmvox.document import layers as document
+        doc = {"board": {"x": [-16, 15], "z": [-16, 15], "floor": 40, "height": 80, "seed": 1},
+               "styles": {"cottage": style or HouseDetails.STYLE},
+               "ground": [{"id": "all", "op": "outline", "box": [-16, -16, 15, 15]},
+                          {"id": "flat", "op": "base", "height": 40}], "build": build}
+        doc.update(extra or {})
+        return document.build(doc)
+
+    def house(self, **kw):
+        return dict({"id": "h", "op": "house", "at": [0, 0], "heading": 0, "L": 9, "W": 6, "storeys": 2,
+                     "style": "cottage", "door": 1}, **kw)
+
+    def test_a_sill_is_a_stair_in_the_wall_under_each_upper_window(self):
+        w = self.build([self.house()]).world
+        panes = np.argwhere(w.ids == B.PANE)
+        upper = [(int(i) + w.x0, int(y), int(k) + w.z0) for i, y, k in panes if y > 44 and w.ids[i, y - 1, k] != B.PANE]
+        self.assertTrue(upper)
+        for x, y, z in upper:
+            self.assertEqual(w.id(x, y - 1, z), B.BIRCH_STAIRS)
+        self.assertFalse((w.ids == B.SPRUCE_STAIRS).any())                       # nothing hung outside the wall
+
+    def test_a_window_is_one_wide_in_the_middle_of_its_bay(self):
+        w = self.build([self.house()]).world
+        cols = {(int(i), int(k)) for i, y, k in np.argwhere(w.ids == B.PANE) if y > 44}
+        for i, k in cols:                                                        # no pane beside a pane
+            self.assertFalse(any((i + a, k + b) in cols for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1))))
+
+    def test_a_chimney_wears_its_top(self):
+        w = self.build([self.house()]).world
+        bars = np.argwhere(w.ids == B.IRON_BARS)
+        self.assertEqual(len(bars), 1)
+        i, y, k = bars[0]
+        self.assertEqual(w.ids[i, y - 1, k], B.COBBLE)
+        self.assertEqual((w.ids[i, y + 1, k], w.dat[i, y + 1, k]), (B.SLAB, 0))
+        self.assertEqual((w.ids[i, y + 2, k], w.dat[i, y + 2, k]), (B.STAINED_GLASS, 7))
+
+    def test_quoins_cycle_up_a_corner_and_a_string_marks_the_storey(self):
+        style = {"base": "stone", "post": None, "ground": [["STONEBRICK", 0]], "upper": [["STONEBRICK", 0]],
+                 "quoins": [["STONE", 5], ["STONE", 6]], "string": ["STONE", 6]}
+        w = self.build([self.house(chimney=False)], style).world
+        corner = [w.get(-4, y, -3) for y in range(41, 49)]
+        self.assertEqual(corner, [(B.STONE, 5), (B.STONE, 6)] * 4)
+        self.assertEqual(w.get(0, 44, -3), (B.STONE, 6))                         # the seam between the storeys
+
+    def test_a_slab_roof_is_laid_without_stairs(self):
+        style = dict(self.STYLE, slab_roof=True, stair="DARK_OAK_STAIRS")
+        w = self.build([self.house(storeys=1, chimney=False)], style).world
+        self.assertFalse((w.ids == B.DARK_OAK_STAIRS).any())
+        self.assertTrue((w.ids == B.WOOD_SLAB).any())
+
+    def test_a_plain_turned_house_has_no_windows_one_post_a_corner_and_a_door_on_a_straight_run(self):
+        w = self.build([self.house(heading=20, storeys=1)]).world
+        self.assertFalse((w.ids == B.PANE).any())
+        self.assertFalse((w.ids == B.IRON_BARS).any() and (w.ids == B.COBBLE_STAIRS).any())   # no outside stack
+        posts = {(int(i), int(k)) for i, k in np.argwhere(w.ids[:, 41, :] == B.LOG)}
+        self.assertEqual(len(posts), 4)
+        doors = {(int(i), int(k)) for i, k in np.argwhere(w.ids[:, 41, :] == B.OAK_DOOR)}
+        self.assertEqual(len(doors), 1)
+        (i, k), = doors
+        solid = lambda a, b: w.ids[a, 41, b] not in (B.AIR, B.OAK_DOOR)       # noqa: E731
+        self.assertTrue((solid(i - 1, k) and solid(i + 1, k)) or (solid(i, k - 1) and solid(i, k + 1)))
+
+    def test_a_field_lays_farmland_and_its_fence_gate(self):
+        w = self.build([{"id": "f", "op": "field", "rect": [-10, -10, 10, 10], "crops": [["WHEAT", 7]]}]).world
+        self.assertGreater(int((w.ids == B.FARMLAND).sum()), 200)
+        self.assertEqual(int((w.ids == B.FENCE_GATE).sum()), 1)
+
+    def test_a_shaft_takes_its_lining_from_the_document(self):
+        b = self.build([], extra={"carve": [{"id": "s", "op": "shaft", "at": [0, 0], "bottom": 20, "top": "ground",
+                                             "wall": ["STONEBRICK", 0], "post": ["STONEBRICK", 0]}]})
+        w = b.world
+        self.assertEqual(w.id(2, 30, 0), B.STONEBRICK)
+        self.assertEqual(w.id(2, 30, 2), B.STONEBRICK)
+        self.assertFalse((w.ids == B.LOG).any())
+
 if __name__ == "__main__":
     unittest.main()
 
