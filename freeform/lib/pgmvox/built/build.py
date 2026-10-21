@@ -594,18 +594,28 @@ def _details(w, h, st, fr, windows, corners, crown_at, Lt, ground_at, square=Tru
 
 def round_tower(w, cx, cz, r, y0, height, wall=(B.STONEBRICK, 0), quoins=None, floor=(B.PLANKS, 1),
                 crenel=(B.STONEBRICK, 0), every=5, door_side="s", door=B.SPRUCE_DOOR, openings=(), ground_at=None,
-                slit=(B.AIR, 0)):
+                slit=(B.AIR, 0), half=None, crenel_stair=None):
     """A round tower on the floor at y0: a ring of walls two thick, r blocks to its outer face, from the ground under
     it to y0 + height; a floor every `every` courses and on its top, a ladder up the inside of the side away from
     its door through a hatch in each, crenels round the top's outer ring; a door at its foot on `door_side`;
     `openings` [(angle in degrees from east toward south, y), ...] cut two high through the ring, where a wall-walk
     meets it; `slit` one block in each quarter of every storey. `quoins`, blocks cycled course by course on the
-    ring's four compass cells. Returns the cells it stands on."""
+    ring's four compass cells. With `half` the tower is a square `2 half + 1` across with its corners cut, a ring one
+    thick: straight faces of `2 half - 1` and an open corner between each, which reads round and takes detail.
+    `crenel_stair` lays the crenels as stairs rising outward. Returns the cells it stands on."""
     from pgmvox.core.orient import door as door_data, ladder as ladder_data
     cells, ring, outer = [], set(), set()
-    R = int(math.ceil(r))
+    R = int(math.ceil(r)) if half is None else half
     for dx in range(-R, R + 1):
         for dz in range(-R, R + 1):
+            if half is not None:
+                if abs(dx) == half and abs(dz) == half:
+                    continue
+                cells.append((cx + dx, cz + dz))
+                if abs(dx) == half or abs(dz) == half or (abs(dx) == half - 1 and abs(dz) == half - 1):
+                    ring.add((cx + dx, cz + dz))
+                    outer.add((cx + dx, cz + dz))
+                continue
             d = math.hypot(dx, dz)
             if d <= r:
                 cells.append((cx + dx, cz + dz))
@@ -626,17 +636,22 @@ def round_tower(w, cx, cz, r, y0, height, wall=(B.STONEBRICK, 0), quoins=None, f
                 w.set(x, y, z, B.AIR)
     for x, z in outer:
         if (x + z) % 2 == 0:
-            w.set(x, top + 1, z, *crenel)
+            if crenel_stair is not None:
+                ox, oz = x - cx, z - cz
+                w.set(x, top + 1, z, crenel_stair, stair_data(vec((ox, oz) if abs(ox) != abs(oz) else (ox, 0))))
+            else:
+                w.set(x, top + 1, z, *crenel)
     dxd, dzd = vec(door_side)
-    lx, lz = cx - dxd * (int(r) - 2), cz - dzd * (int(r) - 2)          # the ladder, on the wall away from the door
+    rr = int(r) if half is None else half + 1
+    lx, lz = cx - dxd * (rr - 2), cz - dzd * (rr - 2)                  # the ladder, on the wall away from the door
     for y in range(y0 + 1, top + 1):
         w.set(lx, y, lz, B.LADDER, ladder_data((-dxd, -dzd)))
-    for k in range(1, int(r)):
+    for k in range(1, rr):
         x, z = cx + dxd * k, cz + dzd * k
         if (x, z) in ring:
             w.set(x, y0 + 1, z, B.AIR)
             w.set(x, y0 + 2, z, B.AIR)
-    x, z = cx + dxd * (int(r) - 1), cz + dzd * (int(r) - 1)
+    x, z = cx + dxd * (rr - 1), cz + dzd * (rr - 1)
     w.set(x, y0 + 1, z, door, door_data((dxd, dzd)))
     w.set(x, y0 + 2, z, door, door_data((dxd, dzd), upper=True))
     for a, y in openings:
@@ -739,7 +754,8 @@ CROWNS = ("follow", "level", "grade")
 
 
 def line_wall(w, H, X, Z, pts, height=2, width=1, crown="follow", run=6, max_grade=1.0, blocks=((B.COBBLE, 0),),
-              weights=None, cap=None, crenel=None, gap=None, closed=False, sink=0, keep=None, rng=None):
+              weights=None, cap=None, crenel=None, gap=None, closed=False, sink=0, keep=None, rng=None, courses=None,
+              crenel_stair=None, step_stair=None):
     """A wall, a hedge or a fence along a line over the ground: one generic build, the materials are the board's.
 
     Every cell of the line (four-connected at width 1, the band within width / 2 of it wider) is filled from the
@@ -749,7 +765,11 @@ def line_wall(w, H, X, Z, pts, height=2, width=1, crown="follow", run=6, max_gra
     over the highest ground of the run, a stepped crown; `grade` holds it `height` over the ground smoothed to
     `max_grade` blocks a block. `cap` is the top course's block, `crenel` one more block on every other cell of
     the crown, and `gap` (every, length) leaves `length` blocks open every `every` blocks along it for a gate or a
-    break in a hedge. Cells in `keep` are left alone. Returns the cells laid, each (x, z, ground, top)."""
+    break in a hedge. Cells in `keep` are left alone. `courses` lays the wall in courses from its foot up instead,
+    one entry a course and the last repeated, each a block or a pair laid in a checker, so a wall can run from
+    cobble through andesite into brick. `crenel_stair` (a stair id) makes each crenel a stair rising to the line's
+    left; `step_stair` sets a stair on a cell whose neighbour along the wall stands one higher, rising to it, so a
+    crown that follows the ground steps up rather than jumps. Returns the cells laid, each (x, z, ground, top)."""
     from pgmvox.geom.shapes import polyline, walk_cells
     assert crown in CROWNS, crown
     pts = [tuple(p) for p in pts] + ([tuple(pts[0])] if closed else [])
@@ -793,9 +813,37 @@ def line_wall(w, H, X, Z, pts, height=2, width=1, crown="follow", run=6, max_gra
         if gap is not None and sv > gap[1] and (sv % gap[0]) < gap[1]:
             continue
         for y in range(g + 1 - sink, t + 1):
-            b = blocks[0] if p is None or rng is None else blocks[int(rng.choice(len(blocks), p=p))]
+            if courses is not None:
+                c = courses[min(max(y - g - 1, 0), len(courses) - 1)]
+                b = c[(x + y + z) % 2] if isinstance(c, list) else c
+            else:
+                b = blocks[0] if p is None or rng is None else blocks[int(rng.choice(len(blocks), p=p))]
             w.set(x, y, z, *(cap if (cap is not None and y == t) else b))
         if crenel is not None and int(round(sv)) % 2 == 0:
-            w.set(x, t + 1, z, *crenel)
+            if crenel_stair is not None:
+                tx, tz = _tangent(pts, x + 0.5, z + 0.5)
+                w.set(x, t + 1, z, crenel_stair, stair_data(vec((-tz, tx))))
+            else:
+                w.set(x, t + 1, z, *crenel)
         laid.append((x, z, int(g), int(t)))
+    if step_stair is not None:
+        tops = {(x, z): t for x, z, _, t in laid}
+        for (x, z), t in tops.items():
+            for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                if tops.get((x + dx, z + dz)) == t + 1 and w.id(x, t + 1, z) == B.AIR:
+                    w.set(x, t + 1, z, step_stair, stair_data((dx, dz)))
+                    break
     return laid
+
+
+def _tangent(pts, x, z):
+    """The unit direction of the segment of a polyline nearest (x, z)."""
+    best = None
+    for (ax, az), (bx, bz) in zip(pts, pts[1:]):
+        vx, vz = bx - ax, bz - az
+        n = vx * vx + vz * vz or 1.0
+        t = min(1.0, max(0.0, ((x - ax) * vx + (z - az) * vz) / n))
+        d = math.hypot(ax + t * vx - x, az + t * vz - z)
+        if best is None or d < best[0]:
+            best = (d, vx / math.sqrt(n), vz / math.sqrt(n))
+    return best[1], best[2]

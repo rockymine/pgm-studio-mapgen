@@ -173,6 +173,26 @@
    "id": "sheet-floor",
    "op": "base",
    "height": 40
+  },
+  {
+   "id": "rise",
+   "op": "mound",
+   "mode": "lift",
+   "rise": 4,
+   "power": 1.5,
+   "areas": [
+    {
+     "ellipse": {
+      "at": [
+       72,
+       58
+      ],
+      "rx": 40,
+      "rz": 14
+     }
+    }
+   ],
+   "note": "a swell the wall climbs over"
   }
  ],
  "paint": [
@@ -587,7 +607,8 @@
    "colours": [
     14,
     0
-   ]
+   ],
+   "counter_stair": "SPRUCE_STAIRS"
   },
   {
    "id": "stall-b",
@@ -682,138 +703,9 @@
    ]
   },
   {
-   "id": "garden-fence",
-   "op": "wall",
-   "line": [
-    [
-     84,
-     14
-    ],
-    [
-     98,
-     14
-    ],
-    [
-     98,
-     26
-    ],
-    [
-     84,
-     26
-    ]
-   ],
-   "closed": true,
-   "height": 1,
-   "blocks": [
-    "FENCE"
-   ],
-   "gap": [
-    40,
-    1
-   ]
-  },
-  {
-   "id": "garden",
+   "id": "garden-bush",
    "op": "blocks",
    "boxes": [
-    {
-     "box": [
-      86,
-      41,
-      16,
-      90,
-      41,
-      16
-     ],
-     "block": [
-      "FLOWER",
-      0
-     ]
-    },
-    {
-     "box": [
-      86,
-      41,
-      18,
-      90,
-      41,
-      18
-     ],
-     "block": [
-      "DANDELION",
-      0
-     ]
-    },
-    {
-     "box": [
-      86,
-      41,
-      20,
-      90,
-      41,
-      20
-     ],
-     "block": [
-      "FLOWER",
-      3
-     ]
-    },
-    {
-     "box": [
-      86,
-      41,
-      22,
-      90,
-      41,
-      22
-     ],
-     "block": [
-      "FLOWER",
-      8
-     ]
-    },
-    {
-     "box": [
-      86,
-      40,
-      17,
-      90,
-      40,
-      17
-     ],
-     "block": [
-      "DIRT",
-      1
-     ]
-    },
-    {
-     "box": [
-      86,
-      40,
-      19,
-      90,
-      40,
-      19
-     ],
-     "block": [
-      "DIRT",
-      1
-     ]
-    },
-    {
-     "box": [
-      86,
-      40,
-      21,
-      90,
-      40,
-      21
-     ],
-     "block": [
-      "DIRT",
-      1
-     ]
-    },
     {
      "box": [
       94,
@@ -841,104 +733,104 @@
       "LEAVES",
       4
      ]
-    },
-    {
-     "box": [
-      91,
-      44,
-      22,
-      93,
-      45,
-      24
-     ],
-     "block": [
-      "LEAVES",
-      4
-     ]
-    },
-    {
-     "box": [
-      90,
-      44,
-      23,
-      94,
-      44,
-      23
-     ],
-     "block": [
-      "LEAVES",
-      4
-     ]
-    },
-    {
-     "box": [
-      92,
-      44,
-      21,
-      92,
-      44,
-      25
-     ],
-     "block": [
-      "LEAVES",
-      4
-     ]
-    },
-    {
-     "box": [
-      92,
-      46,
-      23,
-      92,
-      46,
-      23
-     ],
-     "block": [
-      "LEAVES",
-      4
-     ]
-    },
-    {
-     "box": [
-      92,
-      41,
-      23,
-      92,
-      44,
-      23
-     ],
-     "block": [
-      "LOG",
-      0
-     ]
     }
+   ]
+  },
+  {
+   "id": "orchard",
+   "op": "small_trees",
+   "at": [
+    [
+     90,
+     22
+    ],
+    [
+     100,
+     17
+    ]
    ],
-   "note": "a cottage garden: beds in rows, a bush in the corner, an apple tree of a trunk and a small crown"
+   "seed": 4
+  },
+  {
+   "id": "flower-field",
+   "op": "flowers",
+   "area": {
+    "polygon": [
+     [
+      106,
+      30
+     ],
+     [
+      120,
+      27
+     ],
+     [
+      133,
+      33
+     ],
+     [
+      129,
+      44
+     ],
+     [
+      110,
+      42
+     ]
+    ],
+    "rough": {
+     "amp": 0.08,
+     "cell": 4,
+     "seed": 3
+    }
+   },
+   "flowers": [
+    [
+     "FLOWER",
+     0
+    ],
+    [
+     "DANDELION",
+     0
+    ],
+    [
+     "FLOWER",
+     3
+    ],
+    [
+     "FLOWER",
+     8
+    ],
+    [
+     "FLOWER",
+     2
+    ]
+   ],
+   "along": "x",
+   "rows": 2,
+   "note": "a field of flowers in the open, two rows a kind, every cell of it planted"
   },
   {
    "id": "hedge",
-   "op": "wall",
+   "op": "hedge",
    "line": [
     [
-     84,
+     60,
      32
     ],
     [
-     102,
-     32
-    ]
-   ],
-   "height": 1,
-   "blocks": [
+     70,
+     30
+    ],
     [
-     "LEAVES",
-     4
+     80,
+     34
+    ],
+    [
+     90,
+     31
     ]
    ],
-   "gap": [
-    9,
-    2
-   ]
+   "seed": 2
   },
   {
    "id": "cottage",
@@ -1043,23 +935,37 @@
    ],
    "width": 3,
    "height": 5,
-   "crown": "grade",
-   "max_grade": 0.2,
-   "blocks": [
+   "crown": "follow",
+   "courses": [
+    "COBBLE",
     [
-     "STONEBRICK",
-     0
+     "COBBLE",
+     [
+      "STONE",
+      5
+     ]
+    ],
+    [
+     "STONE",
+     5
+    ],
+    [
+     [
+      "STONE",
+      5
+     ],
+     [
+      "STONEBRICK",
+      0
+     ]
     ],
     [
      "STONEBRICK",
-     2
+     0
     ]
    ],
-   "weights": [
-    7,
-    1
-   ],
-   "note": "the curtain, its walk on top"
+   "step_stair": "STONEBRICK_STAIRS",
+   "note": "the curtain, cobble at its foot into brick, its walk on top"
   },
   {
    "id": "parapet",
@@ -1088,9 +994,30 @@
    ],
    "offset": 1.4,
    "height": 6,
-   "crown": "grade",
-   "max_grade": 0.2,
-   "blocks": [
+   "crown": "follow",
+   "courses": [
+    "COBBLE",
+    [
+     "COBBLE",
+     [
+      "STONE",
+      5
+     ]
+    ],
+    [
+     "STONE",
+     5
+    ],
+    [
+     [
+      "STONE",
+      5
+     ],
+     [
+      "STONEBRICK",
+      0
+     ]
+    ],
     [
      "STONEBRICK",
      0
@@ -1100,7 +1027,8 @@
     "STONEBRICK",
     0
    ],
-   "note": "a parapet on the outer edge"
+   "crenel_stair": "STONEBRICK_STAIRS",
+   "note": "a parapet on the outer edge, its crenels stairs"
   },
   {
    "id": "tower-40",
@@ -1109,22 +1037,23 @@
     40,
     52
    ],
-   "r": 4.5,
-   "height": 12,
-   "y": 40,
+   "half": 4,
+   "height": 13,
+   "openings_from": "floor",
    "wall": [
     "STONEBRICK",
     0
    ],
    "door": "n",
+   "crenel_stair": "STONEBRICK_STAIRS",
    "openings": [
     [
      165.06858282186246,
-     45
+     5
     ],
     [
      7.594643368591445,
-     45
+     5
     ]
    ],
    "floor": [
@@ -1139,22 +1068,23 @@
     100,
     50
    ],
-   "r": 4.5,
-   "height": 12,
-   "y": 40,
+   "half": 4,
+   "height": 13,
+   "openings_from": "floor",
    "wall": [
     "STONEBRICK",
     0
    ],
    "door": "n",
+   "crenel_stair": "STONEBRICK_STAIRS",
    "openings": [
     [
      168.6900675259798,
-     45
+     5
     ],
     [
      14.931417178137554,
-     45
+     5
     ]
    ],
    "floor": [

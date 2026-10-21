@@ -2168,13 +2168,65 @@ class HouseDetails(unittest.TestCase):
                         {"id": "t", "op": "round_tower", "at": [-8, 8], "r": 4.5, "height": 10, "y": 40,
                          "openings": [[0, 45]]}])
         w = b.world
-        roof = [w.get(x, 43, 1) for x in range(-2, 3)]
+        roof = [w.get(x, 44, 1) for x in range(-2, 3)]
         self.assertEqual(roof, [(B.WOOL, 14), (B.WOOL, 0), (B.WOOL, 14), (B.WOOL, 0), (B.WOOL, 14)])
         self.assertEqual([w.get(8, y, 8) for y in (41, 42, 43)], [(B.STONE, 6), (B.COBBLE_WALL, 0), (B.TORCH, 5)])
         self.assertEqual(w.id(-8, 41, 8), B.AIR)                                 # hollow
         self.assertEqual(w.id(-8, 45, 8), B.PLANKS)                              # floored every five
         self.assertEqual((w.id(-4, 46, 8), w.id(-4, 47, 8)), (B.AIR, B.AIR))     # the opening east
         self.assertTrue((w.ids == B.LADDER).sum() >= 10)
+
+    def test_a_hedge_is_offset_leaves_in_modules_that_follow_the_ground(self):
+        b = self.build([{"id": "h", "op": "hedge", "line": [[-10, 0], [0, 4], [10, 0]], "seed": 1, "drop": 0}],
+                       extra={"ground": [{"id": "all", "op": "outline", "box": [-16, -16, 15, 15]},
+                                         {"id": "tilt", "op": "base", "height": 40,
+                                          "terms": [{"ramp": {"along": "x", "from": -16, "to": 15, "rise": 6}}]}]})
+        w = b.world
+        cols = np.argwhere((w.ids == B.LEAVES).any(axis=1))
+        self.assertGreater(len(cols), 20)
+        for i, k in cols:                                                       # never a solid stack of four
+            ys = np.flatnonzero(w.ids[i, :, k] == B.LEAVES)
+            self.assertLessEqual(len(ys), 3)
+        lows = [int(np.flatnonzero(w.ids[i, :, k] == B.LEAVES).min()) for i, k in cols]
+        self.assertGreater(max(lows) - min(lows), 2)                             # it climbs with the ground
+
+    def test_a_round_oak_has_a_core_side_pieces_and_a_plus(self):
+        w = self.build([{"id": "t", "op": "small_trees", "at": [[0, 0]], "seed": 1, "bite": 0}]).world
+        self.assertEqual([w.id(0, y, 0) for y in range(41, 46)], [B.LOG] * 5)
+        self.assertEqual(w.id(0, 46, 0), B.LEAVES)                              # the plus over the trunk
+        self.assertEqual(w.id(2, 44, 1), B.LEAVES)                              # a side piece
+        self.assertEqual(w.id(2, 44, 2), B.AIR)                                 # and the corner left open
+        self.assertEqual(w.id(1, 46, 1), B.AIR)
+
+    def test_a_flower_field_plants_every_cell_two_rows_a_kind(self):
+        w = self.build([{"id": "f", "op": "flowers", "area": {"rect": [-6, -6, 5, 5]},
+                         "flowers": [["FLOWER", 0], ["DANDELION", 0]]}]).world
+        for z in range(-5, 5):
+            want = (B.FLOWER, B.DANDELION)[(z // 2) % 2]
+            self.assertEqual({w.id(x, 41, z) for x in range(-5, 5)}, {want})
+
+    def test_a_wall_in_courses_with_stair_crenels_and_steps(self):
+        b = self.build([{"id": "w", "op": "wall", "line": [[-12, 0], [12, 0]], "height": 4, "crown": "follow",
+                         "courses": ["COBBLE", ["COBBLE", ["STONE", 5]], ["STONEBRICK", 0]],
+                         "crenel": "STONEBRICK", "crenel_stair": "STONEBRICK_STAIRS", "step_stair": "STONEBRICK_STAIRS"}],
+                       extra={"ground": [{"id": "all", "op": "outline", "box": [-16, -16, 15, 15]},
+                                         {"id": "tilt", "op": "base", "height": 40,
+                                          "terms": [{"ramp": {"along": "x", "from": -12, "to": 12, "rise": 4}}]}]})
+        w = b.world
+        x = -12
+        g = int(b.H[x + 16, 16])
+        self.assertEqual(w.id(x, g + 1, 0), B.COBBLE)
+        self.assertEqual({w.get(x, g + 2, 0), w.get(x + 1, int(b.H[x + 17, 16]) + 2, 0)} <= {(B.COBBLE, 0), (B.STONE, 5)},
+                         True)
+        self.assertEqual(w.id(x, g + 4, 0), B.STONEBRICK)
+        self.assertTrue((w.ids == B.STONEBRICK_STAIRS).any())
+        self.assertFalse(((w.ids == B.STONEBRICK) & (np.arange(w.sy)[None, :, None] > b.H.max() + 4)).any())
+
+    def test_a_chamfered_tower_has_straight_faces_and_open_corners(self):
+        w = self.build([{"id": "t", "op": "round_tower", "at": [0, 0], "half": 4, "height": 10, "y": 40}]).world
+        self.assertEqual({w.id(x, 44, -4) for x in range(-3, 4)}, {B.STONEBRICK})   # a face five and two more
+        self.assertEqual(w.id(4, 44, 4), B.AIR)                                      # the corner cut
+        self.assertEqual(w.id(3, 44, 3), B.STONEBRICK)                               # the ring closed across it
 
     def test_a_field_lays_farmland_and_its_fence_gate(self):
         w = self.build([{"id": "f", "op": "field", "rect": [-10, -10, 10, 10], "crops": [["WHEAT", 7]]}]).world

@@ -766,7 +766,12 @@ def build(doc):
             pts = lines[L["near"]]["pts"] if "near" in L else [tuple(p) for p in L["line"]]
             if "offset" in L:
                 pts = _offset(pts, L["offset"])
+            stair_of = lambda k: getattr(B, L[k]) if k in L else None                        # noqa: E731
             got = line_wall(w, Hi, X, Z, pts, height=L.get("height", 2), width=L.get("width", 1),
+                            courses=[[block(c[0]), block(c[1])] if isinstance(c, list) and len(c) == 2
+                                     and not isinstance(c[1], int) else block(c)
+                                     for c in L["courses"]] if "courses" in L else None,
+                            crenel_stair=stair_of("crenel_stair"), step_stair=stair_of("step_stair"),
                             crown=L.get("crown", "follow"), run=L.get("run", 6), max_grade=L.get("max_grade", 1.0),
                             blocks=[block(b) for b in L.get("blocks", ["COBBLE"])], weights=L.get("weights"),
                             cap=block(L["cap"]) if "cap" in L else None,
@@ -793,6 +798,7 @@ def build(doc):
             sx, sz = L["at"]
             for x, z in PR.market_stall(w, sx, int(Hi[sx - x0, sz - z0]), sz, L.get("facing", "s"),
                                         tuple(L.get("colours", [14, 0])), L.get("width", 5),
+                                        counter_stair=getattr(B, L["counter_stair"]) if "counter_stair" in L else None,
                                         goods=tuple(block(g) for g in L["goods"]) if "goods" in L else
                                         ((B.PUMPKIN, 3), (B.MELON, 0), (B.HAY, 0))):
                 laid[x - x0, z - z0] = True
@@ -806,16 +812,44 @@ def build(doc):
             from pgmvox.built import build as BLD
             tx, tz = L["at"]
             r = L.get("r", 3.5)
-            R = int(np.ceil(r))
+            R = L["half"] if "half" in L else int(np.ceil(r))
             under = Hi[tx - R - x0:tx + R - x0 + 1, tz - R - z0:tz + R - z0 + 1]
             y0 = L.get("y", int(under.max()))
             got = BLD.round_tower(w, tx, tz, r, y0, L.get("height", 10), wall=block(L.get("wall", "STONEBRICK")),
                                   quoins=[block(b) for b in L["quoins"]] if "quoins" in L else None,
                                   floor=block(L.get("floor", ["PLANKS", 1])), crenel=block(L.get("crenel", "STONEBRICK")),
-                                  door_side=L.get("door", "s"), openings=[tuple(o) for o in L.get("openings", [])],
-                                  ground_at=lambda x, z: int(Hi[x - x0, z - z0]), slit=block(L.get("slit", "AIR")))
+                                  door_side=L.get("door", "s"),
+                                  openings=[(a, oy + (y0 if L.get("openings_from") == "floor" else 0))
+                                            for a, oy in L.get("openings", [])],
+                                  ground_at=lambda x, z: int(Hi[x - x0, z - z0]), slit=block(L.get("slit", "AIR")),
+                                  half=L.get("half"), crenel_stair=getattr(B, L["crenel_stair"]) if "crenel_stair" in L
+                                  else None)
             for x, z in got:
                 laid[x - x0, z - z0] = True
+        elif L["op"] in ("hedge", "small_trees", "flowers"):
+            from pgmvox.scenery import green as GR
+            g_at = lambda x, z: int(Hi[x - x0, z - z0])                                     # noqa: E731
+            rr = np.random.default_rng(L.get("seed", bd.get("seed", 0)))
+            if L["op"] == "hedge":
+                from pgmvox.geom.shapes import walk_cells
+                pts = lines[L["near"]]["pts"] if "near" in L else [tuple(p) for p in L["line"]]
+                if "offset" in L:
+                    pts = _offset(pts, L["offset"])
+                got = GR.hedge(w, walk_cells([(int(round(x)), int(round(z))) for x, z in pts]), g_at, rr,
+                               leaves=block(L.get("leaves", ["LEAVES", 4])), modules=L.get("modules", 1),
+                               drop=L.get("drop", 0.15))
+            elif L["op"] == "small_trees":
+                got = []
+                for tx, tz in L["at"]:
+                    got += GR.round_oak(w, tx, tz, g_at, rr, trunk=L.get("trunk", 3), log=block(L.get("log", ["LOG", 0])),
+                                        leaves=block(L.get("leaves", ["LEAVES", 4])), bite=L.get("bite", 0.35))
+            else:
+                e, _ = area_distance(L["area"], X, Z, fields, lines)
+                got = GR.flower_rows(w, [(int(X[i, k]), int(Z[i, k])) for i, k in np.argwhere((e < 1) & land)], g_at,
+                                     [block(f) for f in L["flowers"]], along=L.get("along", "x"), rows=L.get("rows", 2))
+            for x, z in got:
+                if 0 <= x - x0 < laid.shape[0] and 0 <= z - z0 < laid.shape[1]:
+                    laid[x - x0, z - z0] = True
         elif L["op"] == "field":
             from pgmvox.built import props as PR
             a0, b0, a1, b1 = L["rect"]

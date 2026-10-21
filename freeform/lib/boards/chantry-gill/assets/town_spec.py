@@ -34,24 +34,20 @@ build = [
      "note": "three deep at the main roof's half-block pitch, its eave a row of upper slabs"},
     {"id": "pen", "op": "wall", "line": [[14, 29], [14, 37], [26, 37], [26, 29]], "height": 1, "blocks": ["FENCE"]},
     {"id": "pen-gate", "op": "blocks", "boxes": [F(20, 41, 37, 20, 41, 37, ["FENCE_GATE", 0])]},
-    {"id": "stall-a", "op": "stall", "at": [44, 22], "facing": "s", "colours": [14, 0]},
+    {"id": "stall-a", "op": "stall", "at": [44, 22], "facing": "s", "colours": [14, 0], "counter_stair": "SPRUCE_STAIRS"},
     {"id": "stall-b", "op": "stall", "at": [52, 22], "facing": "s", "colours": [11, 0]},
     {"id": "stall-c", "op": "stall", "at": [60, 22], "facing": "s", "colours": [4, 13],
      "goods": [["HAY", 0], ["PUMPKIN", 3], ["HAY", 0]]},
     {"id": "lamp-torch", "op": "posts", "at": [[70, 18], [70, 26]], "stack": [["STONE", 6], "COBBLE_WALL", ["TORCH", 5]]},
     {"id": "lamp-redstone", "op": "posts", "at": [[76, 18], [76, 26]],
      "stack": [["STONE", 6], "COBBLE_WALL", "COBBLE_WALL", "REDSTONE_LAMP", [151, 0]]},
-    {"id": "garden-fence", "op": "wall", "line": [[84, 14], [98, 14], [98, 26], [84, 26]], "closed": True, "height": 1,
-     "blocks": ["FENCE"], "gap": [40, 1]},
-    {"id": "garden", "op": "blocks", "boxes": [
-        F(86, 41, 16, 90, 41, 16, ["FLOWER", 0]), F(86, 41, 18, 90, 41, 18, ["DANDELION", 0]),
-        F(86, 41, 20, 90, 41, 20, ["FLOWER", 3]), F(86, 41, 22, 90, 41, 22, ["FLOWER", 8]),
-        F(86, 40, 17, 90, 40, 17, ["DIRT", 1]), F(86, 40, 19, 90, 40, 19, ["DIRT", 1]), F(86, 40, 21, 90, 40, 21, ["DIRT", 1]),
-        F(94, 41, 16, 96, 42, 17, ["LEAVES", 4]), F(95, 43, 16, 95, 43, 16, ["LEAVES", 4]),
-        F(91, 44, 22, 93, 45, 24, ["LEAVES", 4]), F(90, 44, 23, 94, 44, 23, ["LEAVES", 4]), F(92, 44, 21, 92, 44, 25, ["LEAVES", 4]),
-        F(92, 46, 23, 92, 46, 23, ["LEAVES", 4]), F(92, 41, 23, 92, 44, 23, ["LOG", 0])],
-     "note": "a cottage garden: beds in rows, a bush in the corner, an apple tree of a trunk and a small crown"},
-    {"id": "hedge", "op": "wall", "line": [[84, 32], [102, 32]], "height": 1, "blocks": [["LEAVES", 4]], "gap": [9, 2]},
+    {"id": "garden-bush", "op": "blocks", "boxes": [F(94, 41, 16, 96, 42, 17, ["LEAVES", 4]), F(95, 43, 16, 95, 43, 16, ["LEAVES", 4])]},
+    {"id": "orchard", "op": "small_trees", "at": [[90, 22], [100, 17]], "seed": 4},
+    {"id": "flower-field", "op": "flowers", "area": {"polygon": [[106, 30], [120, 27], [133, 33], [129, 44], [110, 42]],
+     "rough": {"amp": 0.08, "cell": 4, "seed": 3}},
+     "flowers": [["FLOWER", 0], ["DANDELION", 0], ["FLOWER", 3], ["FLOWER", 8], ["FLOWER", 2]], "along": "x", "rows": 2,
+     "note": "a field of flowers in the open, two rows a kind, every cell of it planted"},
+    {"id": "hedge", "op": "hedge", "line": [[60, 32], [70, 30], [80, 34], [90, 31]], "seed": 2},
     {"id": "cottage", "op": "house", "at": [116, 20], "heading": 0, "L": 9, "W": 6, "storeys": 2, "style": "fell-cottage",
      "door": 1},
     {"id": "cottage-green", "op": "blocks", "boxes": [
@@ -59,20 +55,24 @@ build = [
         F(119, 41, 24, 120, 41, 24, ["LEAVES", 4]), F(121, 41, 23, 121, 41, 23, ["FLOWER", 1])]},
 ]
 wall = [[10, 60], [40, 52], [70, 56], [100, 50], [130, 58]]
+COURSES = ["COBBLE", ["COBBLE", ["STONE", 5]], ["STONE", 5], [["STONE", 5], ["STONEBRICK", 0]], ["STONEBRICK", 0]]
 build += [
-    {"id": "town-wall", "op": "wall", "line": wall, "width": 3, "height": 5, "crown": "grade", "max_grade": 0.2,
-     "blocks": [["STONEBRICK", 0], ["STONEBRICK", 2]], "weights": [7, 1], "note": "the curtain, its walk on top"},
-    {"id": "parapet", "op": "wall", "line": wall, "offset": 1.4, "height": 6, "crown": "grade", "max_grade": 0.2,
-     "blocks": [["STONEBRICK", 0]], "crenel": ["STONEBRICK", 0], "note": "a parapet on the outer edge"}]
+    {"id": "town-wall", "op": "wall", "line": wall, "width": 3, "height": 5, "crown": "follow",
+     "courses": COURSES, "step_stair": "STONEBRICK_STAIRS", "note": "the curtain, cobble at its foot into brick, its walk on top"},
+    {"id": "parapet", "op": "wall", "line": wall, "offset": 1.4, "height": 6, "crown": "follow",
+     "courses": COURSES, "crenel": ["STONEBRICK", 0], "crenel_stair": "STONEBRICK_STAIRS",
+     "note": "a parapet on the outer edge, its crenels stairs"}]
 for (cx, cz), a, b in (((40, 52), wall[0], wall[2]), ((100, 50), wall[2], wall[4])):
     ang = lambda p: math.degrees(math.atan2(p[1] - cz, p[0] - cx))                       # noqa: E731
-    build.append({"id": f"tower-{cx}", "op": "round_tower", "at": [cx, cz], "r": 4.5, "height": 12, "y": 40,
-                  "wall": ["STONEBRICK", 0], "door": "n",
-                  "openings": [[ang(a), 45], [ang(b), 45]], "floor": ["PLANKS", 1]})
+    build.append({"id": f"tower-{cx}", "op": "round_tower", "at": [cx, cz], "half": 4, "height": 13, "openings_from": "floor",
+                  "wall": ["STONEBRICK", 0], "door": "n", "crenel_stair": "STONEBRICK_STAIRS",
+                  "openings": [[ang(a), 5], [ang(b), 5]], "floor": ["PLANKS", 1]})
 doc = {"document": "layers", "version": "draft-1",
        "board": {"name": "Chantry Gill town pieces", "x": [0, 139], "z": [0, 69], "floor": 40, "height": 80, "seed": 3},
        "styles": styles, "fields": {"pen": {"fbm": {"cell": 3, "octaves": 2, "seed": 5}}},
-       "ground": [{"id": "sheet", "op": "outline", "box": [0, 0, 139, 69]}, {"id": "sheet-floor", "op": "base", "height": 40}],
+       "ground": [{"id": "sheet", "op": "outline", "box": [0, 0, 139, 69]}, {"id": "sheet-floor", "op": "base", "height": 40},
+                  {"id": "rise", "op": "mound", "mode": "lift", "rise": 4, "power": 1.5,
+                   "areas": [{"ellipse": {"at": [72, 58], "rx": 40, "rz": 14}}], "note": "a swell the wall climbs over"}],
        "paint": [{"block": ["DIRT", 1], "area": {"rect": [15, 30, 25, 36]}, "noise": {"field": "pen", "lo": 0}},
                  {"block": ["DIRT", 0], "area": {"rect": [15, 30, 25, 36]}}],
        "build": build,
