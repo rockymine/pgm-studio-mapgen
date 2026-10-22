@@ -13,7 +13,8 @@ import terrain as TR                                                            
 import layout as L                                                                     # noqa: E402
 from pgmvox.document import layers                                                     # noqa: E402
 
-doc, grids = TR.document(), TR.arrays()
+grids = TR.arrays()
+doc = TR.document(grids)
 built = layers.build(doc, arrays=grids)
 w = built.world
 for s in built.steps:

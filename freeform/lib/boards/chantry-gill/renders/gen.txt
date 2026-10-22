@@ -1,9 +1,22 @@
 ground    land        14016 columns  blue's two islands and the gill between them; red's are their half turn
 ground    relief      13532 columns  the fell rising five to the back, the highlands piece by piece, the Scar in three storeys, the gill
-lay       lay         14016 columns  5 paint layers
+ground    tarn          438 columns  the tarn's bowl on the Scar's front
+ground    shore         320 columns  the ground let down to the tarn's north shore, where the beach is
+ground    beck          444 columns  the beck: rising at the gill's head, down its floor, turning east through its mouth into the tarn
+ground    tarn-water    411 columns  
+lay       lay         14016 columns  8 paint layers
+water     water         814 columns  
+ground    brow-outline    138 columns  
+ground    brow-ground    138 columns  
+levels    brow          138 columns  rests on 71 columns, 0 blocks of fall
+carve     shelter        87 columns  the shelter worn into the gill's east wall under the bench
+carve     chimney        25 columns  a chimney from the shelter up onto the bench, a ladder in it
+volume    brig           86 columns  the brig: a stone arch over the gill, x 28 to 41, deck at 41
+build     chimney-foot      1 columns  rock behind the chimney ladder's foot, where the shelter opened the shaft's wall
+build     back-bridge     60 columns  a timber bridge over the gill behind the brow, x 31 to 43, its deck at 43 to 49
 symmetry  red         23400 columns  red's half: blue's turned about the middle
 
-land: 14016 columns a team; heights 34 to 72
+land: 14016 columns a team; heights 30 to 72
   west tor     +16    146 columns, top y 59, scenery
   edge         +24    225 columns, top y 67, scenery
   edge bench   +10    213 columns, top y 53, foothill
@@ -16,6 +29,6 @@ land: 14016 columns a team; heights 34 to 72
   spawn          (4, 94) ground y 45
   town monument  (-14, 58) ground y 42
   scar monument  (54, 82) ground y 50
-  gill floor y 34, rims to y 43, 1526 columns
+  gill floor y 33, rims to y 43, 1526 columns
   scar bench y 50 (median), plateau to y 61
 generated
