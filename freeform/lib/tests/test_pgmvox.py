@@ -1198,6 +1198,14 @@ class LayerLevels(unittest.TestCase):
         self.assertEqual(len(depths(0)), 1)                                       # flat ground: one depth
         self.assertGreaterEqual(len(depths(0.3)), 3)                              # jittered: several
 
+    def test_a_board_reads_grids_it_computed_by_name(self):
+        from pgmvox.document import layers as document
+        grid = np.zeros((48, 48)); grid[10:20, 10:20] = 1
+        doc = self.doc([{"id": "lift", "op": "set", "height": {"add": [40, {"mul": [5, "mine"]}]}}])
+        b = document.build(doc, arrays={"mine": grid})
+        self.assertEqual(int(b.H[15, 15]), 45)
+        self.assertEqual(int(b.H[30, 30]), 40)
+
     def test_the_board_states_its_biome(self):
         b = self.build(dict(self.doc(), board=dict(self.doc()["board"], biome=12)))
         self.assertTrue((b.world.biome == 12).all())

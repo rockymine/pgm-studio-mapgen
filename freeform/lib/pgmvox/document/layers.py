@@ -584,7 +584,7 @@ def _footprint(L, X, Z):
     return [(x, z) for x in range(x0, x1 + 1) for z in range(z0, z1 + 1)]
 
 
-def ground(doc, X=None, Z=None, share=None, level=""):
+def ground(doc, X=None, Z=None, share=None, level="", arrays=None):
     """The fields and ground stages alone: (ctx, steps). The board's grid is its x and z range unless given. With
     `share` (the board's ctx) a level's ground is built on the board's fields and lines, starting at its own
     `floor`, and its steps carry the level's id."""
@@ -599,6 +599,8 @@ def ground(doc, X=None, Z=None, share=None, level=""):
     if share is None and "made" in doc:
         c.cells = made_cells(doc["made"])
         c.fields["made"], c.fields["made_top"] = made_mask(c.cells, X, Z)
+    for k, v in (arrays or {}).items():                  # grids a board computed itself, read by name like a field
+        c.fields[k] = np.asarray(v, float)
     for k, v in ({} if share else doc.get("fields", {})).items():
         c.fields[k] = expr(v, c) if isinstance(v, dict) and next(iter(v)) not in ("fbm", "ridged", "line") \
             or isinstance(v, dict) and v.get("fbm", {}).get("along") else _field(v, X.shape, c.fields)
@@ -654,13 +656,14 @@ def ground(doc, X=None, Z=None, share=None, level=""):
     return c, steps
 
 
-def build(doc):
-    """Build a layer document: every stage in order, every layer recorded as a Step."""
+def build(doc, arrays=None):
+    """Build a layer document: every stage in order, every layer recorded as a Step. `arrays` are world-grid fields
+    the board computed itself (a raster drawn in another tool, a partition no expression states), read by name."""
     bd = doc["board"]
     (x0, x1), (z0, z1) = bd["x"], bd["z"]
     w = World(x0, z0, x1 - x0 + 1, z1 - z0 + 1, sy=bd.get("height", 128))
     X, Z = w.grid()
-    c, steps = ground(doc, X, Z)
+    c, steps = ground(doc, X, Z, arrays=arrays)
     fields, lines, H, water = c.fields, c.lines, c.H, c.water
     made = fields.get("made", np.zeros(X.shape, bool))
     land = c.land & ~made

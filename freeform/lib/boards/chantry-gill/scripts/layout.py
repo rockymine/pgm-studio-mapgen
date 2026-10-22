@@ -77,3 +77,45 @@ def turn(p):
 def length(pts):
     pts = [p for p in pts if not isinstance(p, str)]
     return sum(math.hypot(b[0] - a[0], b[1] - a[1]) for a, b in zip(pts, pts[1:]))
+
+
+def grid(x_range=X_RANGE, z_range=(-130, 129)):
+    import numpy as np
+    xs, zs = np.arange(x_range[0], x_range[1] + 1), np.arange(z_range[0], z_range[1] + 1)
+    return np.meshgrid(xs, zs, indexing="ij")
+
+
+def mask(poly, X, Z):
+    import numpy as np
+    from matplotlib.path import Path
+    return Path(poly).contains_points(np.c_[X.ravel() + 0.5, Z.ravel() + 0.5]).reshape(X.shape)
+
+
+def highlands(X, Z):
+    """The highlands as a partition of the grid: each column's piece, an index into SEEDS, or -1 off the band. The
+    band runs DEPTH in from the main island's coast within HIGH_SECTOR; each column takes the nearest seed by a
+    distance bent with noise, then a majority filter and a merge of strays leave each piece one region."""
+    import numpy as np
+    from scipy import ndimage
+    from pgmvox.geom import noise as N
+    inside = mask(MAIN, X, Z)
+    coast = ndimage.distance_transform_edt(inside)
+    ang = (np.degrees(np.arctan2(Z - HIGH_CENTRE[1], X - HIGH_CENTRE[0])) + 360) % 360
+    a0, a1 = HIGH_SECTOR
+    sector = np.clip(np.minimum(ang - a0, a1 - ang) / 25, 0, 1)
+    depth = (DEPTH[0] + DEPTH[1] * (0.5 + 0.5 * N.fbm(X.shape, 18, 2, seed=41))) * sector
+    band = inside & (coast < depth)
+    wx, wz = 9 * N.fbm(X.shape, 16, 2, seed=42), 9 * N.fbm(X.shape, 16, 2, seed=43)
+    d = np.stack([np.hypot(X + wx - sx, Z + wz - sz) for sx, sz, _, _ in SEEDS])
+    piece = np.where(band, d.argmin(axis=0), -1)
+    for _ in range(3):                                   # a majority filter: no splinters, no enclaves
+        votes = np.stack([ndimage.uniform_filter((piece == k).astype(float), 5) for k in range(len(SEEDS))])
+        piece = np.where(band, votes.argmax(axis=0), -1)
+    for k in range(len(SEEDS)):                          # each piece one region: strays go to their neighbours
+        lab, n = ndimage.label(piece == k)
+        if n > 1:
+            keep = np.argmax(ndimage.sum(np.ones_like(lab), lab, range(1, n + 1))) + 1
+            stray = (lab > 0) & (lab != keep)
+            near = ndimage.grey_dilation(np.where(stray, -1, piece), size=5)
+            piece[stray] = near[stray]
+    return piece

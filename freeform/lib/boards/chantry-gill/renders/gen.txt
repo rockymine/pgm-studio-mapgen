@@ -1,0 +1,21 @@
+ground    land        13653 columns  blue's two islands and the gill between them; red's are their half turn
+ground    relief      12869 columns  the fell rising five to the back, the highlands piece by piece, the Scar's plateau
+ground    gill          867 columns  the gill: a gorge between the islands, its floor at 34
+lay       lay         13653 columns  5 paint layers
+symmetry  red         23400 columns  red's half: blue's turned about the middle
+
+land: 13653 columns a team; heights 34 to 72
+  west tor     +16    146 columns, top y 59, scenery
+  edge         +24    225 columns, top y 67, scenery
+  edge bench   +10    213 columns, top y 53, foothill
+  south pike   +28    476 columns, top y 72, scenery
+  pike knoll   +8     362 columns, top y 51, foothill
+  knott        +20    383 columns, top y 65, scenery
+  knott foot   +6     213 columns, top y 51, foothill
+  high knott   +26    384 columns, top y 68, scenery
+  spawn knoll  +5     167 columns, top y 50, foothill
+  spawn          (4, 94) ground y 45
+  town monument  (-14, 58) ground y 42
+  scar monument  (58, 84) ground y 60
+  gill floor y 34, rims to y 42
+generated

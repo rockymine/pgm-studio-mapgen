@@ -36,32 +36,11 @@ for name, (x, z, _) in L.PLACES.items():
             bbox=dict(boxstyle="round,pad=0.2", fc="#000", alpha=0.35, lw=0))
 # the highlands, raster: the band, its pieces, their rises
 import numpy as np                                                                    # noqa: E402
-from matplotlib.path import Path                                                      # noqa: E402
 sys.path.insert(0, "../../..")
-from pgmvox.geom import noise as N                                                    # noqa: E402
-xs, zs = np.arange(x0, x1 + 1), np.arange(-130, 131)
-X, Z = np.meshgrid(xs, zs, indexing="ij")
-inside = Path(L.MAIN).contains_points(np.c_[X.ravel() + 0.5, Z.ravel() + 0.5]).reshape(X.shape)
 from scipy import ndimage                                                             # noqa: E402
-coast = ndimage.distance_transform_edt(inside)
-ang = (np.degrees(np.arctan2(Z - L.HIGH_CENTRE[1], X - L.HIGH_CENTRE[0])) + 360) % 360
-a0, a1 = L.HIGH_SECTOR
-sector = np.clip(np.minimum(ang - a0, a1 - ang) / 25, 0, 1)
-depth = (L.DEPTH[0] + L.DEPTH[1] * (0.5 + 0.5 * N.fbm(X.shape, 18, 2, seed=41))) * sector
-band = inside & (coast < depth)
-wx, wz = 9 * N.fbm(X.shape, 16, 2, seed=42), 9 * N.fbm(X.shape, 16, 2, seed=43)
-d = np.stack([np.hypot(X + wx - sx, Z + wz - sz) for sx, sz, _, _ in L.SEEDS])
-piece = np.where(band, d.argmin(axis=0), -1)
-for _ in range(3):                                       # a majority filter: no splinters, no enclaves
-    votes = np.stack([ndimage.uniform_filter((piece == k).astype(float), 5) for k in range(len(L.SEEDS))])
-    piece = np.where(band, votes.argmax(axis=0), -1)
-for k in range(len(L.SEEDS)):                            # each piece one region: strays go to their neighbours
-    lab, n = ndimage.label(piece == k)
-    if n > 1:
-        keep = np.argmax(ndimage.sum(np.ones_like(lab), lab, range(1, n + 1))) + 1
-        stray = (lab > 0) & (lab != keep)
-        near = ndimage.grey_dilation(np.where(stray, -1, piece), size=5)
-        piece[stray] = near[stray]
+X, Z = L.grid((x0, x1), (-130, 130))
+piece = L.highlands(X, Z)
+band = piece >= 0
 rise = np.array([r for _, _, r, _ in L.SEEDS])
 img = np.full(X.shape + (4,), 0.0)
 for k, (sx, sz, r, name) in enumerate(L.SEEDS):

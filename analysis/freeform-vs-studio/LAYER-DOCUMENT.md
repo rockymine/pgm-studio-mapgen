@@ -109,6 +109,8 @@ themselves and are evaluated in order. A one-key object is an operation over its
 | sources | `fbm`, `ridged`, `line` (noise; `fbm` with `along` is one-dimensional), `distance`, `blocks`, `line_distance`, `ellipse`, `line_z` (a line's z at each x), `at` (the heights at a point), `terms` |
 | landforms | `profile`, `ridge`, `level`, `blend`, `spire`, `crater`, `mound`, `gullies` (grooves down a form's flanks round `at`): the pgmvox call over `H`, returning heights |
 
+**A board may hand the build grids it computed itself** (`build(doc, arrays=...)`), read by name like any field: a partition no expression states, or a raster drawn in another tool.
+
 **A `set` layer writes an expression into the heights, where a mask holds.** Together with `round` (whole blocks
 from here on), `water` (a water surface where a mask holds), `watercourse` and `grade` (a route held to a grade,
 keeping every route graded before it and leaving water alone), it is how a board's own formulas become data. The
