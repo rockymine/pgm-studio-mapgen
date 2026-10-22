@@ -110,17 +110,25 @@
         </default>
     </spawns>
     <regions>
-        <cuboid min="-105,13,11" max="-96,20,17" id="blue-spawn"/>
+        <union id="blue-spawn">
+            <cuboid min="-105,13,11" max="-97,20,17"/>
+            <cuboid min="-97,13,11" max="-96,20,12"/>
+            <cuboid min="-97,13,13" max="-96,20,17"/>
+        </union>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
         <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
-        <cuboid min="96,13,-17" max="105,20,-11" id="red-spawn"/>
+        <union id="red-spawn">
+            <cuboid min="97,13,-17" max="105,20,-11"/>
+            <cuboid min="96,13,-12" max="97,20,-11"/>
+            <cuboid min="96,13,-17" max="97,20,-13"/>
+        </union>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
         <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
-        <block id="orange-blue-monument">-97,13,11</block>
+        <block id="orange-blue-monument">-97,13,12</block>
         <cuboid min="79,2,8" max="95,15,20" id="orange-room"/>
         <apply enter="not-red" region="orange-room" message="You may not enter your own wool room!"/>
         <point id="orange-wool-spawn">90.5,6,14.5</point>
-        <block id="lime-red-monument">96,13,-12</block>
+        <block id="lime-red-monument">96,13,-13</block>
         <cuboid min="-95,2,-20" max="-79,15,-8" id="lime-room"/>
         <apply enter="not-blue" region="lime-room" message="You may not enter your own wool room!"/>
         <point id="lime-wool-spawn">-90.5,6,-14.5</point>

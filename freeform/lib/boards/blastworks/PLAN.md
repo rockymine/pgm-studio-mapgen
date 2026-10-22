@@ -22,7 +22,7 @@ east to west and 42 north to south, z -21 to 20.
 | Piece | Where (blue) | What it is |
 |---|---|---|
 | **The spawn** | x -110 to -69, z 7 to 20, y 12 | natural ground at the map's end; nothing behind it |
-| **The hall** | x -106 to -96, z 10 to 17 | a piece of the grammar set into the ground, hollow; the spawn and the monument inside |
+| **The hall** | x -106 to -96, z 10 to 17 | a piece of the grammar set into the ground, hollow; the spawn on a 2x2 wool pad and the monument inside |
 | **The stairs** | up x -82 to -77, down x -76 to -69 | from the spawn up to the box's deck at y 18 and down to y 6 |
 | **The box** | x -96 to -77, z -21 to -8 | the concept's: bedrock walls to y 13 with slits, the wool room inside, deck at y 18 |
 | **The bridge** | x -76 to -60, z -21 to -8 | the Steg: a bedrock slab at y 14 and 15 under three courses of deck, void under it |
@@ -38,8 +38,10 @@ Steg, or bridge eight blocks from the arm's end to the box and drop TNT.
 
 ## 3. The wool and its doors
 
-**The wool lies in the box's room, on a floor that falls toward the side door.** The room is seen and shot into
-through the slits at y 5, 8 and 11, but no player walks through them.
+**The wool lies in the box's room, on a pedestal of chiseled quartz, on a floor that falls toward the side door.**
+The room is seen and shot into through the slits at y 5, 8 and 11, but no player walks through them. It is a store:
+a table with two chairs, stacks of crates with chests a block off the walls, and on the lower steps two double
+chests along each wall, all below the slits.
 
 | Door | Where | How it is blown |
 |---|---|---|
@@ -52,7 +54,9 @@ both stand the wool is reached in no phase of a match.
 **Over its own box, inside the bedrock line at x -83, a team may not go.** It defends the roof door from in front of
 it, as the concept's line of bedrock said.
 
-The monument stands in the spawn's hall, in the corner beside its door.
+**The monument stands in the spawn's hall against the quartz post beside its door, open on two sides.** Its column
+is left out of the spawn's protection, which refuses every block, so the wool can be placed. The spawn stands on a
+2x2 pad of the wool it is to fetch: orange in blue's hall, lime in red's.
 
 ## 4. Building
 
@@ -79,12 +83,12 @@ it is placed, and the pedestal at the middle drops two more every 20 seconds.
 
 | Walk | Blocks |
 |---|---|
-| spawn to its own monument, on foot | 4 |
+| spawn to its own monument, on foot | 3 |
 | spawn to its own roof door, on foot | 51 |
 | spawn to the enemy's side door, bridging | 173 |
 | spawn to the enemy's roof door, bridging | 187 |
 | spawn to the middle's TNT, bridging | 110 |
-| a door blown: spawn to the enemy's wool and home | 189 to 196 |
+| a door blown: spawn to the enemy's wool and home | 187 to 196 |
 
 ## Open
 

@@ -49,7 +49,8 @@ HOLLOW = (-105, 11, -97, 16, 13, 19)             # x0, z0, x1, z1, y0, y1: the h
 HALL_DOOR = (13, 14, 15)                         # z0, z1, top: the door in the hall's east wall, toward the stairs
 SPAWN_AT = (-100, 13, 14)                        # in the hall, facing its door
 SPAWN_AREA = (-110, 7, -94, 20)
-SLOT = (-97, 13, 11)                             # the wool's monument, in the hall's corner beside its door
+SLOT = (-97, 13, 12)                             # the wool's monument, against the quartz post by the hall's door
+PAD, PAD_DYE = (-101, 13), 1                     # the 2x2 wool pad under the spawn: orange, the wool blue takes; lime on red's
 
 # ---- where a player may build over the void: blue's, and their images are red's ---------------------------------------
 ZONES = [

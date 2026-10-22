@@ -30,20 +30,24 @@ The corrections were about play, not look.
 **The author chose one grammar out of five and then trimmed it.** It kept diorite and spruce with quartz details.
 Glowstone, iron blocks and a pitched roof were taken out, and gravel is used only on the surface. The pillars' caps
 are four quartz stairs that close into one, and the spawn's house became a piece of the grammar set into the ground,
-hollow, with the spawn and the monument inside.
+hollow, with the spawn on a 2x2 wool pad and the monument against the quartz post by its door.
 
 **The concept's bedrock stands where the concept put it:** the box's walls to y 13, the line across its top, the
 bridge's slab, and the east block's face over the void.
+
+**The author's review caught a monument no one could use.** In the hall's corner it was closed on all four sides,
+and inside the spawn's protection no block may be placed at all. It now stands open against a post, and its column
+is left out of the protection. The wool room was furnished as a store, every piece below the slits.
 
 ## 4. What was measured
 
 | Reading | Value |
 |---|---|
-| spawn to its own monument, on foot | 4 |
+| spawn to its own monument, on foot | 3 |
 | spawn to the enemy's side door, bridging | 173 |
 | spawn to the enemy's roof door, bridging | 187 |
 | spawn to the middle's TNT, bridging | 110 |
-| a door blown: to the enemy's wool and home | 189 to 196 |
+| a door blown: to the enemy's wool and home | 187 to 196 |
 | doors standing: blue to red's wool, in any phase | not reached |
 
 **The studio reads the map.xml as valid:** two teams, two wools, four doors, three spawners. The only footing

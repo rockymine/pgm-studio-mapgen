@@ -29,7 +29,7 @@ eg = P.G.Ground([s for s in P.sections() if s.name == "east-stair"])
 P.G.lay(w, eg, P.S.style(), face_of=P.face_of(eg))
 nature.green(w, L.SPAWN, sp, keep=[L.HALL, (L.HALL[2] + 1, L.HALL_DOOR[0] - 1, L.UP_STAIR[0], L.HALL_DOOR[1] + 1), L.UP_STAIR, L.DOWN_STAIR, L.EXIT[0], L.SPAWN_AREA], seed=11, spruces=3)
 nature.green(w, L.FRONT, fr, keep=[L.DESCENT, L.EAST_STAIR, L.EXIT[1]], seed=12, spruces=2, boulders=3)
-turn_world(w, "half", lambda x, z: x < 0)
+turn_world(w, "half", lambda x, z: x < 0, recolour={(B.WOOL, L.PAD_DYE): (B.WOOL, 5)})
 parts.middle(w)
 zones = L.ZONES + [parts.image(r) for r in L.ZONES]
 cells = {(x, z) for x0, z0, x1, z1 in zones for x in range(x0, x1 + 1) for z in range(z0, z1 + 1)}

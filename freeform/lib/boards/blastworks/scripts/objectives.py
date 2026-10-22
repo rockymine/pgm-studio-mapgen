@@ -39,12 +39,20 @@ def room_box():
     return Box(x0, y0, z0, x1, y1, z1)
 
 
+def hall_but_slot():
+    """The spawn's area: the hall's room, less the monument's column, where the wool must be placed."""
+    x0, z0, x1, z1, y0, y1 = L.HOLLOW
+    sx, _, sz = L.SLOT
+    assert sx == x1
+    return [Box(x0, y0, z0, x1 - 1, y1, z1), Box(x1, y0, z0, x1, y1, sz - 1), Box(x1, y0, sz + 1, x1, y1, z1)]
+
+
 def objectives():
     O = Objectives(TEAMS, L.SYM)
     x0, z0, x1, z1, y0, y1 = L.HOLLOW
     O.add(Spawn("blue-team", L.SPAWN_AT, yaw=-90, kit="spawn-kit",
                 spread=Box(x0 + 1, y0, z0 + 1, x1 - 3, y0, z1 - 1),
-                area=Box(x0, y0, z0, x1, y1, z1)))
+                area=hall_but_slot()))
     O.add(Observer((0.5, 30, 0.5), yaw=90), mirror=False)
     # blue takes orange from red's box; red takes lime from blue's
     O.add(Wool("blue-team", "orange", L.SLOT, image(L.BOX_WOOL), red(room_box())), color="lime")

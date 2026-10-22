@@ -96,6 +96,35 @@ def box(w):
     for x in range(a0, a1 + 1):                          # the roof door lies a block under the deck
         for z in range(b0, b1 + 1):
             w.set(x, c1 + 1, z, B.AIR)
+    furnish(w, floor)
+
+
+def furnish(w, floor):
+    """The wool room's store: the wool on a pedestal of chiseled quartz on the upper floor, a table with two chairs
+    beside it, a stack of crates with a chest at each of its two western corners, a block off the walls, and chests
+    and crates on the lower steps along the walls. Nothing on the upper floor stands against a
+    wall, and nothing on the steps reaches y 5, so every slit still looks in."""
+    x0, z0, x1, z1, _, _ = L.ROOM
+    wx, wy, wz = L.BOX_WOOL
+    w.set(wx, wy - 1, wz, *S.CHISELED)
+    tx, tz = wx + 2, wz + 3                               # the table and its chairs
+    w.set(tx, wy, tz, B.SPRUCE_FENCE)
+    w.set(tx, wy + 1, tz, B.PLATE_WOOD)
+    w.set(tx - 1, wy, tz, B.SPRUCE_STAIRS, stair((-1, 0)))
+    w.set(tx + 1, wy, tz, B.SPRUCE_STAIRS, stair((1, 0)))
+    for z, dz in ((z0 + 1, 1), (z1 - 1, -1)):             # a stack of crates a block off each corner, a chest at it
+        for x, y in ((x0 + 1, 1), (x0 + 2, 1), (x0 + 1, 2)):
+            w.set(x, floor[x] + y, z, *S.SPRUCE_LOG)
+        w.set(x0 + 1, floor[x0 + 1] + 1, z + dz, *S.SPRUCE_LOG)
+        w.chest(x0 + 2, floor[x0 + 2] + 1, z + dz, [], 4)
+    for z, facing in ((z0, 3), (z1, 2)):                  # two double chests a wall, facing into the room
+        for x in (-87, -86, -85, -84):
+            w.chest(x, floor[x] + 1, z, [], facing)
+        for y in (1, 2):                                  # a stack of logs beside the lower pair of chests
+            w.set(-83, floor[-83] + y, z, *S.SPRUCE_LOG)
+        for x in (x1 - 1, x1):
+            w.set(x, floor[x] + 1, z, *S.SPRUCE)
+            w.set(x, floor[x] + 2, z, B.SPRUCE_STAIRS, stair((0, 1) if z == z0 else (0, -1)))
 
 
 def east(w):
@@ -126,8 +155,8 @@ def east(w):
 
 
 def hall(w):
-    """The spawn's hall, hollow: one room on the ground's height with the spawn in it, the wool's monument in the
-    corner beside its door, framed in quartz, and a door east toward the stairs. Its windows' bars open into the room."""
+    """The spawn's hall, hollow: one room on the ground's height with the spawn in it, the wool's monument against
+    the quartz post in the corner beside its door, a pad of wool under the spawn, and a door east toward the stairs. Its windows' bars open into the room."""
     x0, z0, x1, z1, y0, y1 = L.HOLLOW
     for x in range(x0, x1 + 1):
         for z in range(z0, z1 + 1):
@@ -135,17 +164,14 @@ def hall(w):
             for y in range(y0, y1 + 1):
                 w.set(x, y, z, B.AIR)
             w.set(x, y1 + 1, z, *S.SPRUCE)
-    sx, sy, sz = L.SLOT
-    for x in (x0, x1):                                   # quartz posts in the room's corners, but the monument's
+    for x in (x0, x1):                                   # quartz posts in the room's corners
         for z in (z0, z1):
-            if (x, z) != (sx, sz):
-                for y in range(y0, y1 + 1):
-                    w.set(x, y, z, *S.QPILLAR)
-    for fx, fz in ((sx - 1, sz), (sx, sz + 1)):          # the monument's corner, framed
-        for y in range(sy, sy + 3):
-            w.set(fx, y, fz, *S.CHISELED)
-    for y in range(sy + 3, y1 + 1):
-        w.set(sx, y, sz, *S.QPILLAR)
+            for y in range(y0, y1 + 1):
+                w.set(x, y, z, *S.QPILLAR)
+    px, pz = L.PAD                                       # the wool pad under the spawn, the enemy's wool's colour
+    for x in (px, px + 1):
+        for z in (pz, pz + 1):
+            w.set(x, y0 - 1, z, B.WOOL, L.PAD_DYE)
     a, b, top = L.HALL_DOOR
     for z in range(a, b + 1):
         for y in range(y0, top + 1):
