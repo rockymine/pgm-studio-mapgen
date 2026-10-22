@@ -71,31 +71,31 @@
     <spawns>
         <spawn team="blue-team" kit="spawn-kit" yaw="180">
             <region>
-                <point>4.5,46,95.5</point>
+                <point>4.5,24,95.5</point>
             </region>
         </spawn>
         <spawn team="red-team" kit="spawn-kit" yaw="0">
             <region>
-                <point>-4.5,46,-95.5</point>
+                <point>-4.5,24,-95.5</point>
             </region>
         </spawn>
         <default yaw="90">
             <region>
-                <point>1,80,1</point>
+                <point>1,58,1</point>
             </region>
         </default>
     </spawns>
     <regions>
-        <cuboid min="-3,44,90" max="13,61,100" id="blue-spawn"/>
+        <cuboid min="-3,22,90" max="13,39,100" id="blue-spawn"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
         <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
-        <cuboid min="-13,44,-100" max="3,61,-90" id="red-spawn"/>
+        <cuboid min="-13,22,-100" max="3,39,-90" id="red-spawn"/>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
         <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
-        <cuboid min="-14,46,57" max="-13,49,58" id="blue-town-region"/>
-        <cuboid min="13,46,-58" max="14,49,-57" id="red-town-region"/>
-        <cuboid min="54,54,82" max="55,57,83" id="blue-scar-region"/>
-        <cuboid min="-55,54,-83" max="-54,57,-82" id="red-scar-region"/>
+        <cuboid min="-14,24,57" max="-13,27,58" id="blue-town-region"/>
+        <cuboid min="13,24,-58" max="14,27,-57" id="red-town-region"/>
+        <cuboid min="54,32,82" max="55,35,83" id="blue-scar-region"/>
+        <cuboid min="-55,32,-83" max="-54,35,-82" id="red-scar-region"/>
         <negative id="not-build-area">
             <rectangle min="-90,-14" max="90,14"/>
         </negative>
@@ -107,7 +107,7 @@
         <destroyable id="blue-scar" name="Scar Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-scar-region"/>
         <destroyable id="red-scar" name="Scar Monument" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-scar-region"/>
     </destroyables>
-    <maxbuildheight>92</maxbuildheight>
+    <maxbuildheight>70</maxbuildheight>
     <block-drops>
         <rule>
             <filter>
@@ -144,12 +144,16 @@
         <item>gravel</item>
         <item>sapling</item>
         <item>apple</item>
+        <item>seeds</item>
+        <item>long grass</item>
         <item>yellow flower</item>
         <item>red rose</item>
+        <item>brown mushroom</item>
         <item>red mushroom</item>
         <item>pumpkin</item>
         <item>melon</item>
         <item>melon seeds</item>
+        <item>double plant</item>
     </itemremove>
     <toolrepair>
         <tool>iron sword</tool>

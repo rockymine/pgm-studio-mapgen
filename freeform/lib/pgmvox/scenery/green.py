@@ -6,6 +6,7 @@ and a field of flowers in rows.
     round_oak(w, x, z, ground, rng)           a trunk under a three by three core two deep, a 1 by 2 by 3 piece on
                                               each side with a corner bitten off now and then, a plus on top
     flower_rows(w, cells, ground, flowers)    rows of flowers across a shape, two rows a kind, every cell filled
+    ground_cover(w, cells, rng, kinds)        grass, ferns, their tall kinds and low leaf bushes, one pick a cell
 """
 import math
 
@@ -159,3 +160,33 @@ def boulder(w, x, z, ground, r, rng, rz=None, height=None, angle=0.0, sink=0.3, 
         w.set(x + a, y0 + k, z + b, *blk)
         cells.add((x + a, z + b))
     return sorted(cells)
+
+
+COVER = {"grass": ((B.TALLGRASS, 1),), "fern": ((B.TALLGRASS, 2),),
+         "tall_grass": ((B.DOUBLE_PLANT, 2), (B.DOUBLE_PLANT, 8)), "large_fern": ((B.DOUBLE_PLANT, 3), (B.DOUBLE_PLANT, 8)),
+         "bush": (LEAVES,), "tall_bush": (LEAVES, LEAVES)}
+
+
+def ground_cover(w, cells, rng, kinds, low=None):
+    """Ground cover on `cells` [(x, ground_y, z)], each standing on grass under air: one kind a cell, drawn by the
+    weights in `kinds` ({name: weight} over COVER), stacked only where the air above it is free. `low(x, z)` says
+    where nothing over a block may stand (the ground round a monument): there a tall pick becomes plain grass and a
+    bush is skipped. Returns the columns covered, (x, z) each."""
+    names = [k for k in kinds if k in COVER]
+    p = np.array([kinds[k] for k in names], float)
+    p /= p.sum()
+    out = []
+    for x, y, z in cells:
+        if w.id(x, y, z) != B.GRASS or w.id(x, y + 1, z) != B.AIR:
+            continue
+        stack = COVER[names[int(rng.choice(len(names), p=p))]]
+        if low is not None and low(x, z) and len(stack) + (stack[0] == LEAVES) > 1:
+            if stack[0] == LEAVES:
+                continue
+            stack = COVER["grass"]
+        if any(w.id(x, y + 1 + k, z) != B.AIR for k in range(len(stack))):
+            stack = COVER["grass"]
+        for k, b in enumerate(stack):
+            w.set(x, y + 1 + k, z, *b)
+        out.append((x, z))
+    return out

@@ -14,8 +14,8 @@ Scar, across a winding gill.** Blue holds the south and red is its image under t
 lies opposite the other team's town. The floor of every island sits at y 0, and nothing floats.
 
 **Each team defends two obsidian monuments, one on each of its landmasses.** The Chantry Monument floats over the
-market square in the middle of the town. The Scar Monument floats over the Scar's bench at y 50, with the plateau
-rising behind it to y 61.
+market square in the middle of the town. The Scar Monument floats over the Scar's bench at y 28, with the plateau
+rising behind it to y 39.
 
 **The town is a small settlement read street by street.** It has ten houses in two timber-framed styles, a stone
 chapel with a square tower and a churchyard, and a byre with an angled field. Market stalls stand in a paved
@@ -28,9 +28,14 @@ scree under them and grass higher up the walls.
 
 ## 2. How it plays
 
-**Play has five floors, and each has its own way to the next.** The gill floor is at y 34. The adit and the crypt
-are at y 33 under the town's east. The town is at y 42 to 45, with the nave over the crypt. The Scar's bench is at
-y 50, and the plateau is at y 61.
+**Play has five floors, and each has its own way to the next.** The gill floor is at y 12. The adit and the crypt
+are at y 11 under the town's east. The town is at y 20 to 23, with the nave over the crypt. The Scar's bench is at
+y 28, and the plateau is at y 39.
+
+**Three caves run under the floors, worn through the rock and never straight.** The Hollin cave opens in the fell's
+front cliff, reaches a hall under the fields and forks: east into the adit, west up to a swallow hole by the byre.
+The tarn cave opens one block over the tarn at the foot of the plateau's north face and climbs through the Scar
+into the open ground under the brow. The side cave opens in the Scar's east cliff and joins it.
 
 | Monument | Way | What it asks |
 |---|---|---|
@@ -39,6 +44,8 @@ y 50, and the plateau is at y 61.
 | town | the brig | over the stone arch across the gill (76 from the east bank to the square), under the brow's fire |
 | town | below | down into the gill, along the adit under the town (68) into the crypt, up the ladder through the nave's floor (17), coming up nineteen blocks from the monument |
 | Scar | the front | ashore by the tarn and up the Scar's slope onto the bench |
+| Scar | the tarn cave | swim the tarn to the mouth in the plateau's face, climb through the Scar (49) and come out under the brow, thirteen blocks from the monument |
+| town | the Hollin cave | in at the front cliff (33 to the hall), under the town into the adit (79), then the crypt and the ladder |
 | Scar | the chimney | along the gill floor to the shelter in the brow's foot, up the shaft (23) onto the bench nine blocks from the monument |
 
 **The defender's walks are short and the attacker's are long.** The own town monument is 52 blocks from the spawn
@@ -57,7 +64,7 @@ the bench's heights, and the objectives' check (no problem). `renders/walks.txt`
 water against air, and every walk and way above. The studio's `read_mapxml.cs` reads the map.xml as valid, with
 four destroyables, two spawns and two teams.
 
-**`check.py` passes all 224 unit tests, and every existing board and example builds to its recorded hash.** The
+**`check.py` passes all 225 unit tests, and every existing board and example builds to its recorded hash.** The
 volcanoes study is the one exception, and it failed before this work.
 
 The pictures, all under `freeform/lib/boards/chantry-gill/renders/`:
@@ -68,7 +75,9 @@ The pictures, all under `freeform/lib/boards/chantry-gill/renders/`:
 | the shelter, the chimney, the bench | `41-cut-shelter.png` | `54-scar.png` |
 | the adit, the crypt, the ladder into the nave | `42-cut-adit.png` | `52-town.png` |
 | the spawn hall and the timber bridge | `43-cut-bridge.png` | `55-spawn.png` |
-| the tarn, the brow, the bench, the plateau | `44-cut-scar.png` | `51-blue.png` |
+| the tarn, the brow, the bench, the plateau | `44-cut-scar.png` | `51-blue.png`, `57-tarn-wall.png`, `58-scar-tower.png` |
+| the Hollin cave and the swallow hole | `45-cut-hollin.png`, `46-cut-swallow.png` | `56-front-cliff.png` |
+| the tarn cave and the side cave | `47-cut-tarn-cave.png` | `59-side-cliff.png` |
 | the whole board | `30-iso-se.png`, `31-iso-nw.png`, `33-xray-blue.png` | `50-board.png` |
 
 ## 4. Every pgmvox gap
@@ -94,6 +103,7 @@ The pictures, all under `freeform/lib/boards/chantry-gill/renders/`:
 | a board could not state a biome | `board.biome` |
 | a board could not hand the document a grid it computed | `build(doc, arrays=...)`, read by name in any expression |
 | a shaft had no lining | a shaft's `wall` and `post` |
+| no ground cover | the `plants` dress op: grass, ferns, their tall kinds and leaf bushes in patches, kept low round a point |
 | `pgmvox.run` doubled a board's path in `maps/INDEX.md` when run from `freeform/lib` | `register` is handed the absolute board path |
 
 **Five gaps are open.** Each is named here and left for a later run.

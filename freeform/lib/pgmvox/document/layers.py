@@ -964,6 +964,22 @@ def build(doc, arrays=None):
                        planted=planted, ok=ok, ground=stand, spacing=L.get("spacing", 0.85))
             for x, z, _ in planted:
                 laid[x - x0, z - z0] = True
+        elif L["op"] == "plants":
+            from pgmvox.scenery import green as GR
+            e = area_distance(L["area"], X, Z, fields, lines)[0] < 1 if "area" in L else np.ones(X.shape, bool)
+            if "where" in L:
+                e &= np.asarray(expr(L["where"], Ctx(X, Z, Hi.astype(float), fields, lines, land, water)), bool)
+            if "noise" in L:
+                v = _field(L["noise"]["field"], X.shape, fields)
+                e &= (v >= L["noise"].get("lo", -np.inf)) & (v <= L["noise"].get("hi", np.inf))
+            e &= land & (water == 0) & ~ndimage.binary_dilation(built_on, iterations=L.get("clear", 1))
+            rng = np.random.default_rng(L.get("seed", 0))
+            e &= rng.random(X.shape) < L.get("density", 0.3)
+            avoid = [tuple(a) for a in L.get("low", [])]
+            low = (lambda x, z: any(math.hypot(x - ax, z - az) <= ar for ax, az, ar in avoid)) if avoid else None
+            cells = [(int(X[i, k]), int(Hi[i, k]), int(Z[i, k])) for i, k in np.argwhere(e)]
+            for x, z in GR.ground_cover(w, cells, rng, L["kinds"], low=low):
+                laid[x - x0, z - z0] = True
         out.steps.append(Step(L["id"], "dress", L["op"], laid, Hi.copy(), L.get("note", "")))
     for L in doc.get("snow", []):
         e = area_distance(L["area"], X, Z, fields, lines)[0] < 1 if "area" in L else np.ones(X.shape, bool)

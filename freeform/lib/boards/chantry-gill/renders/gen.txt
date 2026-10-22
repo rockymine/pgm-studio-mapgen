@@ -22,9 +22,15 @@ carve     chimney        25 columns  a chimney from the shelter up onto the benc
 carve     crypt         237 columns  the chantry's crypt under the nave, two tombs; a hall east to where the miners broke in
 carve     crypt-ladder     25 columns  the ladder from the crypt up into the nave
 carve     adit          124 columns  the old adit from the shelter under the gill into the crypt's end
-volume    brig           79 columns  the brig: a stone arch over the gill, x 28 to 41, deck at 41
+carve     hollin-front    202 columns  the Hollin cave from its mouth in the fell's front cliff in under the town
+carve     hollin-hall     87 columns  the hall where the Hollin cave forks
+carve     hollin-east    285 columns  east under the square and the brig road into the old adit
+carve     hollin-up     133 columns  up west to a swallow hole on the fell by the byre
+carve     tarn-cave     193 columns  from just over the tarn through the Scar, out under the brow on the bench
+carve     side-cave      95 columns  from the Scar's east cliff into the tarn cave
+volume    brig           79 columns  the brig: a stone arch over the gill, x 28 to 41, deck at 19
 build     chimney-foot      1 columns  rock behind the chimney ladder's foot, where the shelter opened the shaft's wall
-build     back-bridge     60 columns  a timber bridge over the gill behind the brow, x 31 to 43, its deck at 43 to 49
+build     back-bridge     60 columns  a timber bridge over the gill behind the brow, x 31 to 43, its deck at 21 to 27
 build     street-pave    163 columns  
 build     south-pave    129 columns  
 build     lane-pave      75 columns  
@@ -65,28 +71,31 @@ build     gardens       188 columns
 build     scar-fold      20 columns  the fold's drystone wall, cover for whoever holds the monument
 build     scar-fold-in      5 columns  the fold's old inner wall, down to one course
 build     scar-boulders     35 columns  rocks fallen off the plateau onto the bench
+build     scar-tower     45 columns  a watch tower on the plateau in front of its oak, over the tarn and the tarn cave's mouth
 build     erratics      127 columns  erratics on the fell and the Scar, one rock each
+dress     wild-growth   1221 columns  grass, ferns and low bushes in patches over the whole of the land
+dress     rough-growth    610 columns  the highlands and their foothills left rougher
 dress     edge-copse      1 columns  a copse on the edge bench
-dress     scar-trees      2 columns  a few trees on the plateau
+dress     scar-trees      1 columns  a few trees on the plateau
 dress     knott-trees      1 columns  oaks on the knott's foot
 symmetry  red         23400 columns  red's half: blue's turned about the middle
 
-land: 14016 columns a team; heights 30 to 72
-  west tor     +16    146 columns, top y 59, scenery
-  edge         +24    225 columns, top y 67, scenery
-  edge bench   +10    213 columns, top y 53, foothill
-  south pike   +28    476 columns, top y 72, scenery
-  pike knoll   +8     362 columns, top y 51, foothill
-  knott        +20    383 columns, top y 65, scenery
-  knott foot   +6     213 columns, top y 51, foothill
-  high knott   +26    384 columns, top y 68, scenery
-  spawn knoll  +5     167 columns, top y 50, foothill
-  spawn          (4, 94) ground y 45
-  town monument  (-14, 58) ground y 42
-  scar monument  (54, 82) ground y 50
-  gill floor y 33, rims to y 43, 1526 columns
-  scar bench y 50 (median), plateau to y 61
+land: 14016 columns a team; heights 8 to 50
+  west tor     +16    146 columns, top y 37, scenery
+  edge         +24    225 columns, top y 45, scenery
+  edge bench   +10    213 columns, top y 31, foothill
+  south pike   +28    476 columns, top y 50, scenery
+  pike knoll   +8     362 columns, top y 29, foothill
+  knott        +20    383 columns, top y 43, scenery
+  knott foot   +6     213 columns, top y 29, foothill
+  high knott   +26    384 columns, top y 46, scenery
+  spawn knoll  +5     167 columns, top y 28, foothill
+  spawn          (4, 94) ground y 23
+  town monument  (-14, 58) ground y 20
+  scar monument  (54, 82) ground y 28
+  gill floor y 11, rims to y 21, 1526 columns
+  scar bench y 28 (median), plateau to y 39
 
-monuments stamped; ground marked under 28064 columns
+monuments stamped; ground marked under 28034 columns
 objectives with a problem: 0
 generated

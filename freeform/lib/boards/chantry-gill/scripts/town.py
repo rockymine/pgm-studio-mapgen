@@ -10,6 +10,8 @@
 import json
 import os
 
+from layout import FLOOR
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 ASSETS = os.path.join(HERE, "..", "assets")
 F = lambda x0, y0, z0, x1, y1, z1, b: {"box": [x0, y0, z0, x1, y1, z1], "block": b}      # noqa: E731
@@ -57,20 +59,20 @@ def ground():
 def carve():
     return [
         {"id": "crypt", "op": "rooms", "seed": 11,
-         "rooms": [{"id": "crypt", "rect": [-14, 70, -3, 78], "floor": 33, "h": 5},
-                   {"id": "adit-end", "rect": [4, 71, 8, 77], "floor": 33, "h": 4}],
+         "rooms": [{"id": "crypt", "rect": [-14, 70, -3, 78], "floor": FLOOR - 7, "h": 5},
+                   {"id": "adit-end", "rect": [4, 71, 8, 77], "floor": FLOOR - 7, "h": 4}],
          "halls": [{"from": "crypt", "to": "adit-end", "via": "x", "width": 3, "h": 4}],
          "lining": {"wall": [[["STONEBRICK", 0], 6], [["STONEBRICK", 2], 1]],
                     "floor": [[["STONEBRICK", 0], 1], [["STONE", 6], 1], [["STONE", 5], 1], [["STONE", 0], 1]],
                     "ceiling": "STONEBRICK"}, "light": {"y": 2},
-         "props": [F(-13, 33, 71, -12, 33, 72, ["STONEBRICK", 3]), F(-13, 34, 71, -12, 34, 72, ["SLAB", 5]),
-                   F(-13, 33, 76, -12, 33, 77, ["STONEBRICK", 3]), F(-13, 34, 76, -12, 34, 77, ["SLAB", 5])],
+         "props": [F(-13, FLOOR - 7, 71, -12, FLOOR - 7, 72, ["STONEBRICK", 3]), F(-13, FLOOR - 6, 71, -12, FLOOR - 6, 72, ["SLAB", 5]),
+                   F(-13, FLOOR - 7, 76, -12, FLOOR - 7, 77, ["STONEBRICK", 3]), F(-13, FLOOR - 6, 76, -12, FLOOR - 6, 77, ["SLAB", 5])],
          "note": "the chantry's crypt under the nave, two tombs; a hall east to where the miners broke in"},
-        {"id": "crypt-ladder", "op": "shaft", "at": [-5, 74], "bottom": 33, "top": "ground", "ladder_on": "s",
+        {"id": "crypt-ladder", "op": "shaft", "at": [-5, 74], "bottom": FLOOR - 7, "top": "ground", "ladder_on": "s",
          "wall": ["STONEBRICK", 0], "post": ["STONEBRICK", 0], "note": "the ladder from the crypt up into the nave"},
         {"id": "adit", "op": "tunnel", "breach": True, "cover": 3,
-         "pts": [[41, 35, 75, 2.0], [37, 32, 75, 2.0], [33, 27, 76, 2.0], [24, 26, 75, 2.0], [14, 29, 74, 2.0],
-                 [6, 33, 74, 2.0]],
+         "pts": [[41, FLOOR - 5, 75, 2.0], [37, FLOOR - 8, 75, 2.0], [33, FLOOR - 13, 76, 2.0], [24, FLOOR - 14, 75, 2.0],
+                 [14, FLOOR - 11, 74, 2.0], [6, FLOOR - 7, 74, 2.0]],
          "dress": {"seed": 23, "ores": 60, "stalagmites": 40},
          "note": "the old adit from the shelter under the gill into the crypt's end"},
     ]
@@ -163,6 +165,10 @@ def build():
         {"id": "scar-boulders", "op": "boulders", "seed": 29, "sink": 0.3, "rough": 0.5,
          "at": [[46, 84, 2.0], [50, 92, 1.6], [60, 66, 2.2, {"rz": 1.6, "angle": 40}]],
          "note": "rocks fallen off the plateau onto the bench"},
+        {"id": "scar-tower", "op": "round_tower", "at": [74, 48], "half": 3, "height": 11, "wall": ["STONEBRICK", 0],
+         "door": "s", "crenel": ["SLAB", 5], "quoins": QUOINS, "string": ["STONE", 6], "plinth": "COBBLE",
+         "floor": ["PLANKS", 1], "openings": [[20, 5], [200, 5]], "openings_from": "floor",
+         "note": "a watch tower on the plateau in front of its oak, over the tarn and the tarn cave's mouth"},
         {"id": "erratics", "op": "boulders", "seed": 17, "sink": 0.3, "rough": 0.5,
          "at": [[-30, 104, 3.2, {"rz": 2.4, "angle": 20}], [-60, 72, 2.6], [64, 40, 2.4], [70, 70, 3.4, {"rz": 2.6, "angle": -30}],
                 [20, 104, 2.2], [-16, 30, 1.8], [44, 56, 2.0]],
@@ -171,8 +177,18 @@ def build():
     return b
 
 
+LOW = [[TOWN_MONUMENT[0], TOWN_MONUMENT[1], 6], [SCAR_MONUMENT[0], SCAR_MONUMENT[1], 6]]      # the four-block square
+
+
 def dress():
     return [
+        {"id": "wild-growth", "op": "plants", "density": 0.3, "seed": 41, "low": LOW,
+         "noise": {"field": {"fbm": {"cell": 7, "octaves": 2, "seed": 42}}, "lo": -0.15},
+         "kinds": {"grass": 6, "fern": 2, "tall_grass": 2, "large_fern": 0.8, "bush": 0.5, "tall_bush": 0.12},
+         "note": "grass, ferns and low bushes in patches over the whole of the land"},
+        {"id": "rough-growth", "op": "plants", "density": 0.45, "seed": 43, "where": {"gt": ["piece", -0.5]},
+         "kinds": {"grass": 4, "fern": 3, "tall_grass": 2, "large_fern": 1.5, "bush": 0.8, "tall_bush": 0.2},
+         "note": "the highlands and their foothills left rougher"},
         {"id": "edge-copse", "op": "trees", "on": "ground", "area": {"polygon": [[-66, 54], [-52, 52], [-46, 62], [-54, 72], [-66, 68]]},
          "kinds": {"oak": 3, "birch": 1}, "tries": 30, "seed": 4, "spacing": 1.8, "note": "a copse on the edge bench"},
         {"id": "scar-trees", "op": "trees", "on": "ground", "area": {"polygon": [[64, 56], [76, 50], [80, 70], [72, 90], [65, 80]]},

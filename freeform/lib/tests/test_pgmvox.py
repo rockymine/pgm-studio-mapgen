@@ -2191,6 +2191,22 @@ class HouseDetails(unittest.TestCase):
         self.assertEqual(built() - seated, 6)                                  # the rise lifted it onto a plinth
         self.assertEqual(built(floor=43) - seated, 3)                          # a number sets the plate
 
+    def test_plants_cover_the_grass_and_keep_low_round_a_point(self):
+        from pgmvox.document import layers as document
+        doc = {"board": {"x": [-16, 15], "z": [-16, 15], "floor": 40, "height": 80, "seed": 1},
+               "ground": [{"id": "all", "op": "outline", "box": [-16, -16, 15, 15]},
+                          {"id": "flat", "op": "base", "height": 40}],
+               "dress": [{"id": "g", "op": "plants", "density": 1.0, "seed": 2, "low": [[0, 0, 5]],
+                          "kinds": {"tall_grass": 1, "bush": 1}}]}
+        b = document.build(doc)
+        w = b.world
+        over = w.ids[:, 41, :]
+        self.assertGreater(int(np.isin(over, (B.DOUBLE_PLANT, B.LEAVES)).sum()), 300)    # nearly every column
+        self.assertGreater(int(b.steps[-1].changed.sum()), 300)
+        near = np.hypot(b.X, b.Z) <= 5
+        self.assertFalse((w.ids[:, 42, :][near] != B.AIR).any())                 # nothing over a block there
+        self.assertFalse(np.isin(over[near], (B.LEAVES,)).any())
+
     def test_a_sill_is_a_stair_in_the_wall_under_each_upper_window(self):
         w = self.build([self.house()]).world
         panes = np.argwhere(w.ids == B.PANE)

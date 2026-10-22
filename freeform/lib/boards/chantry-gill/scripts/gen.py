@@ -44,5 +44,5 @@ problems = O.check(w)
 print(f"objectives with a problem: {len(problems)}")
 for p in problems:
     print("   ", p)
-w.save(sys.argv[1], "Chantry Gill", (0, 80, 0))
+w.save(sys.argv[1], "Chantry Gill", (0, L.FLOOR + 40, 0))
 print("generated")

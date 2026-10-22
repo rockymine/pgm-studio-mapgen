@@ -39,7 +39,7 @@ the layers run as listed.
 | volume | `volume` | bodies set into the ground: a box turned and tilted, sunk, painted in its own frame, hollowed |
 | structures | `structures` | masses with patterned faces, floors laid as fields |
 | build | `build` | what stands on the finished ground: a path's surface and steps, walls, hedges, fences |
-| dress | `dress` | trees and scattered things, kept `clear` blocks (3 unless stated) off everything built, their crowns `spacing` crown radii apart (0.85 unless stated) |
+| dress | `dress` | trees and scattered things, kept `clear` blocks (3 unless stated) off everything built, their crowns `spacing` crown radii apart (0.85 unless stated); `plants` lays ground cover |
 | snow | `snow` | smooth snow: the surface averaged over `smoothness`, `added` laid on it, filled in eighths where `on` and an `area` or `where` hold |
 | symmetry | `symmetry` | the drawn part copied onto its image, recoloured for the other team |
 
@@ -157,6 +157,12 @@ the slope and rock in beds that follow the surface. The water's bed has a stack 
 | `flowers` | `area`, `flowers`, `along`, `rows`, `angle` | `green.flower_rows` |
 | `boulders` | `at` ([x, z, r, {rz, height, angle, shape}] each), `rock`, `accent`, `accent_share`, `sink`, `rough`, `shape` | `green.boulder` |
 | `crops` | `area`, `crops`, `angle`, `rows`, `ditch`, `scarecrows` | `green.crop_rows` |
+| `plants` (dress) | `kinds` ({`grass`, `fern`, `tall_grass`, `large_fern`, `bush`, `tall_bush`: weight}), `density`, `area`, `where`, `noise` (`field`, `lo`, `hi`), `clear` (1 unless stated), `low` ([x, z, r] each), `seed` | `green.ground_cover` |
+
+**Ground cover is a dress layer of its own, laid on grass under open air and nowhere else.** Each covered column
+takes one kind, drawn by its weight, so a field of it is mixed rather than banded; `noise` gathers it into patches.
+Inside a `low` circle nothing over a block stands, so grass may grow under a monument while the tall plants and
+bushes that hide a player keep the four blocks the gameplay rules ask of cover.
 
 **A hedge, a wall and a fence are the same layer with different blocks.** The island's hedge runs four blocks off
 the road with a gap every fourteen, and its curtain wall holds its crown level over runs of five:

@@ -14,9 +14,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "..", ".."))
 import layout as L                                                                     # noqa: E402
 import town as TW                                                                      # noqa: E402
+import caves as CV                                                                     # noqa: E402
 from pgmvox.geom import noise as N                                                     # noqa: E402
 
-FLOOR = 40                                     # the fell at the front coast
+FLOOR = L.FLOOR
 X_RANGE, Z_RANGE = L.X_RANGE, (-130, 129)
 
 
@@ -78,8 +79,8 @@ def arrays():
     bench_soft = ndimage.gaussian_filter(bench.astype(float), 1.2)
     scar = side * front * np.maximum(L.PLATEAU_RISE * face, L.BENCH_RISE * bench_soft)
     relief = base + high + scar
-    # the gill: its walls from the rims down to a floor at 34 over the inner half of its width
-    floor = 34.0
+    # the gill: its walls from the rims down to a floor six under the coast over the inner half of its width
+    floor = FLOOR - 6.0
     relief = np.where(between, floor + (relief - floor) * smoothstep(0.5, 1.0, gd), relief)
     ptop = base + L.PLATEAU_RISE
     brow_fade = smoothstep(46, 58, Z) * (1 - smoothstep(92, 102, Z))
@@ -102,7 +103,7 @@ def crossing(grids, z, x0, x1):
     """Where the gill is crossed along row z between x0 and x1: (west rim x, east rim x, rim height) - the last
     column at each side before the ground falls under the rims' height by two."""
     hs = [(x, bank(grids, x, z)) for x in range(x0, x1 + 1)]
-    deep = [x for x, h in hs if h < 38]
+    deep = [x for x, h in hs if h < FLOOR - 2]
     w, e = min(deep), max(deep)
     rim = round(max(bank(grids, w - 2, z), bank(grids, e + 2, z)))
     return w - 1, e + 1, rim
@@ -138,19 +139,19 @@ def document(grids=None):
         timber += [{"box": [x, y + 1, 91, x, y + 1, 91], "block": "SPRUCE_FENCE"},
                    {"box": [x, y + 1, 94, x, y + 1, 94], "block": "SPRUCE_FENCE"}]
         if (x - tw) % 4 == 2 and tw < x < te:
-            timber.append({"box": [x, 35, 91, x, y - 1, 91], "block": ["LOG", 1]})
-            timber.append({"box": [x, 35, 94, x, y - 1, 94], "block": ["LOG", 1]})
+            timber.append({"box": [x, FLOOR - 5, 91, x, y - 1, 91], "block": ["LOG", 1]})
+            timber.append({"box": [x, FLOOR - 5, 94, x, y - 1, 94], "block": ["LOG", 1]})
     trim = f"{hw} to {he}"
     doc = _document()
     doc["styles"] = TW.STYLES
     doc["ground"] += TW.ground()
-    doc["carve"] += TW.carve()
+    doc["carve"] += TW.carve() + CV.carve()
     doc["dress"] = TW.dress()
     doc["volume"] = [
         {"id": "brig", "op": "arch", "line": {"pts": [[bw - 1, 38], [be + 1, 38]], "spline": False}, "width": 5,
          "deck": [brim + 1, brim, 2], "camber": 0, "thick": [2, 9, 2.5], "clear": 3, "top": "GRAVEL",
          "under": "STONE", "rock": "STONE", "note": f"the brig: a stone arch over the gill, x {bw} to {be}, deck at {brim}"}]
-    doc["build"] = [{"id": "chimney-foot", "op": "blocks", "boxes": [{"box": [49, 35, 76, 49, 37, 76], "block": "STONE"}],
+    doc["build"] = [{"id": "chimney-foot", "op": "blocks", "boxes": [{"box": [49, FLOOR - 5, 76, 49, FLOOR - 3, 76], "block": "STONE"}],
                      "note": "rock behind the chimney ladder's foot, where the shelter opened the shaft's wall"},
                     {"id": "back-bridge", "op": "blocks", "boxes": timber,
                      "note": f"a timber bridge over the gill behind the brow, x {tw} to {te}, its deck at {trim}"}] + TW.build()
@@ -170,26 +171,26 @@ def _document():
              "note": "blue's two islands and the gill between them; red's are their half turn"},
             {"id": "relief", "op": "set", "height": "relief",
              "note": "the fell rising five to the back, the highlands piece by piece, the Scar in three storeys, the gill"},
-            {"id": "tarn", "op": "crater", "floor": 30, "flat": 3, "slope": 0.5, "melt": 5,
+            {"id": "tarn", "op": "crater", "floor": FLOOR - 10, "flat": 3, "slope": 0.5, "melt": 5,
              "areas": [{"polygon": TARN, "rough": {"amp": 0.12, "cell": 5, "seed": 7}}],
              "note": "the tarn's bowl on the Scar's front"},
-            {"id": "shore", "op": "level", "mode": "cut", "top": 36, "inner": 0.5, "outer": 1.6,
+            {"id": "shore", "op": "level", "mode": "cut", "top": FLOOR - 4, "inner": 0.5, "outer": 1.6,
              "areas": [{"ellipse": {"at": [60, 22], "rx": 16, "rz": 7}, "rough": {"amp": 0.1, "cell": 6, "seed": 14}}],
              "note": "the ground let down to the tarn's north shore, where the beach is"},
             {"id": "beck", "op": "river", "line": BECK, "width": 4, "depth": 1, "water": 1, "bank": 1,
              "note": "the beck: rising at the gill's head, down its floor, turning east through its mouth into the tarn"},
-            {"id": "tarn-water", "op": "water", "level": 34,
-             "where": {"and": [{"lt": ["H", 34]}, {"lt": [{"distance": {"polygon": TARN}}, 1.3]}]}},
+            {"id": "tarn-water", "op": "water", "level": FLOOR - 6,
+             "where": {"and": [{"lt": ["H", FLOOR - 6]}, {"lt": [{"distance": {"polygon": TARN}}, 1.3]}]}},
         ],
-        "paint": [{"block": "SAND", "slope": [None, 30], "height": [None, 35],
+        "paint": [{"block": "SAND", "slope": [None, 30], "height": [None, FLOOR - 5],
                    "area": {"polygon": TARN, "plus": -0.12}, "note": "the beach at the water's edge"},
-                  {"block": "SAND", "slope": [None, 24], "height": [None, 36],
+                  {"block": "SAND", "slope": [None, 24], "height": [None, FLOOR - 4],
                    "area": {"polygon": TARN, "plus": -0.08}, "noise": {"field": "patch", "lo": 0.1}},
                   {"block": "GRAVEL", "slope": [None, 30], "area": {"line": {"near": "beck", "width": 7}},
                    "noise": {"field": "patch", "lo": 0}}] + PAINT,
         "water": {"bed": [{"block": "GRAVEL", "noise": {"field": "patch", "lo": 0.1}}, {"block": "CLAY"}]},
         "levels": [
-            {"id": "brow", "floor": 58,
+            {"id": "brow", "floor": FLOOR + 18,
              "ground": [{"id": "brow-outline", "op": "outline",
                          "where": {"gt": ["brow", 0.5]}},
                         {"id": "brow-ground", "op": "set", "height": "ptop"}],
@@ -200,12 +201,12 @@ def _document():
              "note": "the upper face's brow, leaning out over the bench a block for every two up"}],
         "carve": [
             {"id": "shelter", "op": "tunnel", "mouths": [0], "cover": 2,
-             "pts": [[34, 35, 72, 2.4], [39, 35, 73, 3.0], [43, 35, 74, 4.0], [46, 35, 76, 3.2]],
+             "pts": [[34, FLOOR - 5, 72, 2.4], [39, FLOOR - 5, 73, 3.0], [43, FLOOR - 5, 74, 4.0], [46, FLOOR - 5, 76, 3.2]],
              "dress": {"seed": 12, "stalagmites": 30, "ores": 20},
              "note": "the shelter worn into the gill's east wall under the bench"},
-            {"id": "chimney", "op": "shaft", "at": [47, 76], "bottom": 35, "top": "ground", "ladder_on": "e",
+            {"id": "chimney", "op": "shaft", "at": [47, 76], "bottom": FLOOR - 5, "top": "ground", "ladder_on": "e",
              "wall": "STONE", "post": "STONE", "note": "a chimney from the shelter up onto the bench, a ladder in it"}],
-        "lay": {"soil": [[34, 3], [48, 2], [54, 1]], "ledges": True},
+        "lay": {"soil": [[FLOOR - 6, 3], [FLOOR + 8, 2], [FLOOR + 14, 1]], "ledges": True},
         "symmetry": [{"id": "red", "op": "half", "keep": {"ge": ["z", 0]},
                       "note": "red's half: blue's turned about the middle"}],
     }
