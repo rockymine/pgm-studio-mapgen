@@ -18,8 +18,7 @@ Blue holds the south (z > 0); red is blue's image under the half turn, (x, z) ->
 | Land | What it is |
 |---|---|
 | **Main island**, the fell | about 110 across and 105 deep: the town in its middle, the spawn at its back, fields between the town and the west |
-| **Scenery**, five heights | down the west and across the back: the west tor (+18), the edge (+26, reaching furthest into the fell), the south pike (+30), the knott (+22) and its shoulder (+14), each a hill or plateau of its own with a notch of fell between it and the next, fenced off from play by its faces; the spawn stands under the gap between the knott and its shoulder |
-| **Foothills**, three | stood in front of the heights in a first and second row and played on: the tor knoll (+7) at the west coast, the edge bench (+9) where the edge reaches furthest into the fell, the pike knoll (+6) by the spawn; the cover and the height a flank is fought from |
+| **Highlands** | one band of high ground along the main island's west coast and back, 18 to 44 blocks deep, cut into pieces that fit together like a puzzle: five heights (the west tor +16, the edge +24, the south pike +28, the knott +20, the high knott +26), scenery fenced off by their faces, and four foothills nested into the notches between them and against the fell (the edge bench +10, the pike knoll +8, the knott foot +6, the spawn knoll +5), played on; the spawn stands under the spawn knoll |
 | **Side island**, the Scar | about 45 across and 85 deep, east of the main island: the tarn at its front, the plateau behind its leaning brow |
 | **The Gill** | the gap between the two islands is a gorge, not void: 8 to 12 across, its floor about 9 under the town's rim; the brig crosses it near the front and a timber bridge behind the brow; it opens to the void at both ends |
 | **The void** | between the teams, from z -14 to 13, crossed by a build zone the board's whole width |

@@ -17,20 +17,19 @@ GILL = [MAIN[7], MAIN[8], MAIN[9], MAIN[10], MAIN[11], (36, 98), (44, 98), SIDE[
         SIDE[0], (31, 22)]
 # scenery: the edge down the west and the knott across the back, high ground fenced off from play by its own
 # faces; it frames the board and nobody fights on it
-SCENERY = {                                # each a hill or a plateau of its own, its own height, a notch between
-    "west tor": ([(-82, 58), (-80, 44), (-70, 38), (-64, 46), (-68, 60), (-76, 66)], 18),
-    "edge": ([(-80, 70), (-68, 64), (-56, 70), (-48, 80), (-54, 90), (-68, 96), (-78, 84)], 26),
-    "south pike": ([(-64, 100), (-56, 96), (-44, 98), (-40, 108), (-50, 113), (-60, 108)], 30),
-    "knott": ([(-36, 110), (-30, 100), (-20, 96), (-8, 100), (-4, 114), (-14, 119), (-32, 118)], 22),
-    "knott shoulder": ([(4, 114), (12, 108), (22, 104), (28, 96), (24, 108), (12, 116)], 14),
-}
-# foothills: lower ground stood in front of the heights in a first and second row; played on, and the cover and
-# height a flank is fought from
-FOOTHILLS = {
-    "tor knoll": ([(-62, 40), (-54, 36), (-48, 42), (-52, 50), (-60, 50)], 7),
-    "edge bench": ([(-48, 66), (-40, 64), (-36, 72), (-42, 80), (-48, 76)], 9),
-    "pike knoll": ([(-40, 92), (-32, 88), (-26, 92), (-30, 98), (-38, 100)], 6),
-}
+# the highlands: one band of high ground along the main island's west and back coast, its inner edge wandering
+# (DEPTH, blocks in from the coast, varied by HIGH_NOISE), cut into pieces round seeds the way a puzzle is: each
+# column belongs to the nearest seed, the distances bent by noise so neighbours interlock. A seed is (x, z, rise,
+# name); a rise over 12 is scenery fenced off by its faces, the rest foothills that are played on.
+HIGH_CENTRE = (-14, 66)
+HIGH_SECTOR = (70, 205)                      # degrees, from east toward south, round HIGH_CENTRE
+DEPTH = (18, 26)                             # base and swing of the band's depth from the coast
+SEEDS = [
+    (-80, 46, 16, "west tor"), (-78, 66, 24, "edge"), (-58, 60, 10, "edge bench"),
+    (-66, 86, 28, "south pike"), (-48, 80, 8, "pike knoll"), (-44, 104, 20, "knott"), (-30, 94, 6, "knott foot"),
+    (-14, 112, 26, "high knott"), (-12, 98, 5, "spawn knoll"),
+]
+SCENERY_RISE = 12
 BUILD_Z = (-14, 13)                       # the build zone over the void between the teams, the board's whole width
 X_RANGE = (-90, 89)
 
