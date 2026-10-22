@@ -18,7 +18,15 @@ TOP = 58                                                              # the plat
 GILL = [[139, 40], [112, 36], [88, 41], [62, 37], [40, 34], [22, 30]]
 TARN = [[4, 18], [14, 12], [26, 15], [34, 22], [32, 33], [24, 40], [10, 41], [2, 32]]
 TONGUE = [[22, 12], [26, 13], [24, 24], [20, 26], [19, 18]]
-dist = {"sub": ["z", {"line_z": {"pts": SCAR}}]}                       # blocks south of the scar's foot
+dist = {"sub": ["z", {"line_z": {"pts": SCAR}}]}
+
+
+def foot(d):
+    """How far up its face a wall stands at distance `d` out from its foot line, 0 to 1: a scree slope of its own
+    reach and height in front of it, both wandering along the wall, then the face, ragged."""
+    return {"add": [{"mul": ["talus-share", {"smoothstep": [{"neg": "talus-reach"}, 0.5, d]}]},
+                    {"mul": [{"sub": [1, "talus-share"]}, {"smoothstep": [{"add": [-1, "jag"]}, {"add": [3, "jag"]}, d]}]}]}
+                       # blocks south of the scar's foot
 
 fields = {
     "small": {"fbm": {"cell": 16, "octaves": 2, "seed": 1}},
@@ -26,6 +34,8 @@ fields = {
     "patch": {"fbm": {"cell": 3, "octaves": 2, "seed": 3}},
     "grain": {"fbm": {"cell": 2, "octaves": 1, "seed": 4}},
     "jag": {"mul": [{"fbm": {"cell": 4, "octaves": 2, "seed": 5}}, 2.5]},
+    "talus-reach": {"clip": [{"add": [8, {"mul": [{"fbm": {"cell": 11, "octaves": 2, "seed": 25}}, 9]}]}, 2, 15]},
+    "talus-share": {"clip": [{"add": [0.32, {"mul": [{"fbm": {"cell": 13, "octaves": 2, "seed": 26}}, 0.4]}]}, 0.05, 0.65]},
     "scar-d": dist,
     "knott-d": {"add": [{"sub": ["z", 82]}, {"mul": [{"sub": ["x", 108]}, -0.22]}]},
     "knott-fade": {"mul": [{"smoothstep": [-30, -14, {"sub": ["x", 108]}]}, {"sub": [1, {"smoothstep": [14, 30, {"sub": ["x", 108]}]}]}]},
@@ -48,14 +58,12 @@ ground = [
      "terms": [{"tilt": {"dx": 0.03, "dz": 0.06}}, {"gauss": {"at": [40, 80], "r": 30, "rise": 4, "rz": 22, "angle": 25}},
                {"noise": {"field": "big", "rise": 2.0}}],
      "note": "the fell: rising south and a little east, a swell south-west, rolling in two sizes"},
-    {"id": "scar", "op": "set", "where": {"gt": ["scar-d", -6]},
-     "height": {"profile": {"d": "scar-d", "floor": "H", "mode": "lift",
-                            "steps": [{"start": {"add": [-1, "jag"]}, "end": {"add": [1.5, "jag"]},
-                                       "top": {"add": ["H", {"mul": ["fade", {"max": [0, {"sub": ["plateau", "H"]}]}]}]}}]}},
+    {"id": "scar", "op": "set", "where": {"gt": ["scar-d", -16]},
+     "height": {"add": ["H", {"mul": ["fade", {"max": [0, {"sub": ["plateau", "H"]}]}, foot("scar-d")]}]},
      "note": "the scar: a step of limestone up to the plateau, its edge ragged, dying into the fell at both ends"},
     {"id": "knott", "op": "set", "where": {"gt": ["knott-fade", 0]},
      "height": {"add": ["H", {"mul": ["knott-fade", "knott-crest",
-                                       {"smoothstep": [{"add": [-1, "jag"]}, {"add": [3, "jag"]}, "knott-d"]},
+                                       foot("knott-d"),
                                        {"sub": [1, {"mul": [0.6, {"smoothstep": [5, 26, "knott-d"]}]}]}]}]},
      "note": "the knott: a crag behind the scar, its face to the north over the brow, its back grass"},
     {"id": "knott-gullies", "op": "set", "height": {"gullies": {"at": [108, 130], "count": 70, "depth": 4, "r0": 30,
@@ -64,7 +72,7 @@ ground = [
      "note": "gullies cut into its face"},
     {"id": "edge", "op": "set", "where": {"gt": ["edge-fade", 0]},
      "height": {"add": ["H", {"mul": ["edge-fade", "edge-crest",
-                                       {"smoothstep": [{"add": [-1, "jag"]}, {"add": [3, "jag"]}, "edge-d"]},
+                                       foot("edge-d"),
                                        {"sub": [1, {"mul": [0.7, {"smoothstep": [5, 34, "edge-d"]}]}]}]}]},
      "note": "the edge: a scarp set slantwise west of a col, its face to the north-east, its back falling away"},
     {"id": "edge-gullies", "op": "set", "height": {"gullies": {"at": [62, 126], "count": 60, "depth": 4, "r0": 36,

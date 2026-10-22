@@ -56,6 +56,52 @@
     2.5
    ]
   },
+  "talus-reach": {
+   "clip": [
+    {
+     "add": [
+      8,
+      {
+       "mul": [
+        {
+         "fbm": {
+          "cell": 11,
+          "octaves": 2,
+          "seed": 25
+         }
+        },
+        9
+       ]
+      }
+     ]
+    },
+    2,
+    15
+   ]
+  },
+  "talus-share": {
+   "clip": [
+    {
+     "add": [
+      0.32,
+      {
+       "mul": [
+        {
+         "fbm": {
+          "cell": 13,
+          "octaves": 2,
+          "seed": 26
+         }
+        },
+        0.4
+       ]
+      }
+     ]
+    },
+    0.05,
+    0.65
+   ]
+  },
   "scar-d": {
    "sub": [
     "z",
@@ -420,52 +466,74 @@
    "where": {
     "gt": [
      "scar-d",
-     -6
+     -16
     ]
    },
    "height": {
-    "profile": {
-     "d": "scar-d",
-     "floor": "H",
-     "mode": "lift",
-     "steps": [
-      {
-       "start": {
-        "add": [
-         -1,
-         "jag"
+    "add": [
+     "H",
+     {
+      "mul": [
+       "fade",
+       {
+        "max": [
+         0,
+         {
+          "sub": [
+           "plateau",
+           "H"
+          ]
+         }
         ]
        },
-       "end": {
+       {
         "add": [
-         1.5,
-         "jag"
-        ]
-       },
-       "top": {
-        "add": [
-         "H",
          {
           "mul": [
-           "fade",
+           "talus-share",
            {
-            "max": [
-             0,
+            "smoothstep": [
              {
-              "sub": [
-               "plateau",
-               "H"
+              "neg": "talus-reach"
+             },
+             0.5,
+             "scar-d"
+            ]
+           }
+          ]
+         },
+         {
+          "mul": [
+           {
+            "sub": [
+             1,
+             "talus-share"
+            ]
+           },
+           {
+            "smoothstep": [
+             {
+              "add": [
+               -1,
+               "jag"
               ]
-             }
+             },
+             {
+              "add": [
+               3,
+               "jag"
+              ]
+             },
+             "scar-d"
             ]
            }
           ]
          }
         ]
        }
-      }
-     ]
-    }
+      ]
+     }
+    ]
    },
    "note": "the scar: a step of limestone up to the plateau, its edge ragged, dying into the fell at both ends"
   },
@@ -486,20 +554,48 @@
        "knott-fade",
        "knott-crest",
        {
-        "smoothstep": [
+        "add": [
          {
-          "add": [
-           -1,
-           "jag"
+          "mul": [
+           "talus-share",
+           {
+            "smoothstep": [
+             {
+              "neg": "talus-reach"
+             },
+             0.5,
+             "knott-d"
+            ]
+           }
           ]
          },
          {
-          "add": [
-           3,
-           "jag"
+          "mul": [
+           {
+            "sub": [
+             1,
+             "talus-share"
+            ]
+           },
+           {
+            "smoothstep": [
+             {
+              "add": [
+               -1,
+               "jag"
+              ]
+             },
+             {
+              "add": [
+               3,
+               "jag"
+              ]
+             },
+             "knott-d"
+            ]
+           }
           ]
-         },
-         "knott-d"
+         }
         ]
        },
        {
@@ -584,20 +680,48 @@
        "edge-fade",
        "edge-crest",
        {
-        "smoothstep": [
+        "add": [
          {
-          "add": [
-           -1,
-           "jag"
+          "mul": [
+           "talus-share",
+           {
+            "smoothstep": [
+             {
+              "neg": "talus-reach"
+             },
+             0.5,
+             "edge-d"
+            ]
+           }
           ]
          },
          {
-          "add": [
-           3,
-           "jag"
+          "mul": [
+           {
+            "sub": [
+             1,
+             "talus-share"
+            ]
+           },
+           {
+            "smoothstep": [
+             {
+              "add": [
+               -1,
+               "jag"
+              ]
+             },
+             {
+              "add": [
+               3,
+               "jag"
+              ]
+             },
+             "edge-d"
+            ]
+           }
           ]
-         },
-         "edge-d"
+         }
         ]
        },
        {
@@ -1248,37 +1372,37 @@
    "pts": [
     [
      104,
-     45,
+     48,
      55,
      1.5
     ],
     [
      104,
-     45,
+     48,
      60,
      4.4
     ],
     [
      103,
-     45,
+     48,
      64,
      4.6
     ],
     [
      105,
-     45,
+     48,
      68,
      3.4
     ],
     [
      104,
-     44,
+     47,
      73,
      2.0
     ],
     [
      103,
-     42,
+     45,
      83,
      2.2
     ]
