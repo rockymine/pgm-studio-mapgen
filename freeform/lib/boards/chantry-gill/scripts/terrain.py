@@ -13,6 +13,7 @@ from scipy import ndimage
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "..", ".."))
 import layout as L                                                                     # noqa: E402
+import town as TW                                                                      # noqa: E402
 from pgmvox.geom import noise as N                                                     # noqa: E402
 
 FLOOR = 40                                     # the fell at the front coast
@@ -141,6 +142,10 @@ def document(grids=None):
             timber.append({"box": [x, 35, 94, x, y - 1, 94], "block": ["LOG", 1]})
     trim = f"{hw} to {he}"
     doc = _document()
+    doc["styles"] = TW.STYLES
+    doc["ground"] += TW.ground()
+    doc["carve"] += TW.carve()
+    doc["dress"] = TW.dress()
     doc["volume"] = [
         {"id": "brig", "op": "arch", "line": {"pts": [[bw - 1, 38], [be + 1, 38]], "spline": False}, "width": 5,
          "deck": [brim + 1, brim, 2], "camber": 0, "thick": [2, 9, 2.5], "clear": 3, "top": "GRAVEL",
@@ -148,7 +153,7 @@ def document(grids=None):
     doc["build"] = [{"id": "chimney-foot", "op": "blocks", "boxes": [{"box": [49, 35, 76, 49, 37, 76], "block": "STONE"}],
                      "note": "rock behind the chimney ladder's foot, where the shelter opened the shaft's wall"},
                     {"id": "back-bridge", "op": "blocks", "boxes": timber,
-                     "note": f"a timber bridge over the gill behind the brow, x {tw} to {te}, its deck at {trim}"}]
+                     "note": f"a timber bridge over the gill behind the brow, x {tw} to {te}, its deck at {trim}"}] + TW.build()
     return doc
 
 
@@ -195,7 +200,7 @@ def _document():
              "note": "the upper face's brow, leaning out over the bench a block for every two up"}],
         "carve": [
             {"id": "shelter", "op": "tunnel", "mouths": [0], "cover": 2,
-             "pts": [[39, 35, 73, 3.0], [43, 35, 74, 4.0], [46, 35, 76, 3.2]],
+             "pts": [[34, 35, 72, 2.4], [39, 35, 73, 3.0], [43, 35, 74, 4.0], [46, 35, 76, 3.2]],
              "dress": {"seed": 12, "stalagmites": 30, "ores": 20},
              "note": "the shelter worn into the gill's east wall under the bench"},
             {"id": "chimney", "op": "shaft", "at": [47, 76], "bottom": 35, "top": "ground", "ladder_on": "e",

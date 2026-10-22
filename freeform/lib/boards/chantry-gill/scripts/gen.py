@@ -11,6 +11,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "..", ".."))
 import terrain as TR                                                                   # noqa: E402
 import layout as L                                                                     # noqa: E402
+import objectives as OB                                                                # noqa: E402
+from pgmvox.play.rules import mark_ground                                              # noqa: E402
 from pgmvox.document import layers                                                     # noqa: E402
 
 grids = TR.arrays()
@@ -35,5 +37,12 @@ print(f"  gill floor y {int(H[gill].min())}, rims to y {int(np.percentile(H[gill
       f"{int(gill.sum())} columns")
 bench = L.mask(L.BENCH, built.X, built.Z) & land
 print(f"  scar bench y {int(np.median(H[bench]))} (median), plateau to y {int(H[L.mask(L.SIDE, built.X, built.Z) & land].max())}")
-w.save(sys.argv[1], "chantry-gill", (0.5, 70, 0.5))
+O = OB.objectives()
+O.stamp(w)
+print(f"\nmonuments stamped; ground marked under {mark_ground(w)} columns")
+problems = O.check(w)
+print(f"objectives with a problem: {len(problems)}")
+for p in problems:
+    print("   ", p)
+w.save(sys.argv[1], "chantry-gill", (0.5, 80, 0.5))
 print("generated")
