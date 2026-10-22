@@ -603,8 +603,12 @@ def ground(doc, X=None, Z=None, share=None, level=""):
         before, wet_before = c.H.copy(), c.water.copy()
         op = L["op"]
         if op == "outline":
-            if "area" in L:
-                c.land = area_distance(L["area"], X, Z, c.fields, c.lines, c)[0] < 1
+            if "area" in L or "where" in L:
+                c.land = np.ones(X.shape, bool)
+                if "area" in L:
+                    c.land &= area_distance(L["area"], X, Z, c.fields, c.lines, c)[0] < 1
+                if "where" in L:
+                    c.land &= np.asarray(expr(L["where"], c), bool)
             else:
                 ins = {k: (expr(v, c) if isinstance(v, (dict, str)) else v) for k, v in L.get("insets", {}).items()}
                 c.land = shapes.island(X, Z, tuple(L["box"]), **ins)
@@ -978,8 +982,11 @@ def _level(L, doc, w, share, out):
     H = np.where(water > 0, np.minimum(H, water - 1), H)
     lower = _below(out.surfaces, H)
     u = L.get("underside", {})
-    bottom = T.island_bottom(H, land, np.zeros(X.shape, bool), taper=tuple(u.get("taper", (4, 0.9))),
-                             rough=u.get("rough", 0) * noise.fbm(X.shape, 12, 2, seed=u.get("seed", 0)))
+    if "bottom" in u:                                        # an underside stated as a field: a face that leans
+        bottom = np.round(np.asarray(expr(u["bottom"], c), float) + np.zeros(X.shape)).astype(int)
+    else:
+        bottom = T.island_bottom(H, land, np.zeros(X.shape, bool), taper=tuple(u.get("taper", (4, 0.9))),
+                                 rough=u.get("rough", 0) * noise.fbm(X.shape, 12, 2, seed=u.get("seed", 0)))
     rests = land & (lower >= 0) & (bottom <= lower + u.get("clear", 4))
     bottom = np.where(rests, lower - 3, bottom)
     tmp = World(w.x0, w.z0, w.sx, w.sz, sy=w.sy)

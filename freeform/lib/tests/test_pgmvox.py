@@ -1141,6 +1141,18 @@ class LayerLevels(unittest.TestCase):
         w = b.world
         self.assertEqual([w.id(0, y, 0) for y in (58, 59, 60)], [B.STONE, B.DIRT, B.GRASS])
 
+    def test_a_level_may_lean_out_over_its_foot_by_a_stated_underside(self):
+        lean = {"id": "top", "floor": 52,
+                "ground": [{"id": "rim", "op": "outline", "where": {"and": [{"ge": ["z", 0]}, {"le": ["z", 6]}]}},
+                           {"id": "deck", "op": "base", "height": 52}],
+                "underside": {"bottom": {"add": [40, {"mul": [2, {"sub": [6, "z"]}]}]}, "clear": 1}}
+        b = self.build(self.doc(levels=[lean]))
+        w = b.world
+        under = [min(y for y in range(41, 53) if w.id(0, y, z) != B.AIR) for z in range(2, 7)]
+        self.assertEqual(under, sorted(under, reverse=True))                       # higher the farther out (low z)
+        self.assertGreater(under[0] - under[-1], 4)
+        self.assertEqual(w.id(0, 52, 6), B.GRASS)
+
     def test_a_level_rests_where_the_ground_reaches_it(self):
         hill = {"id": "hill", "op": "mound", "mode": "lift", "rise": 18, "power": 3,
                 "areas": [{"circle": {"at": [8, 0], "r": 9}}]}

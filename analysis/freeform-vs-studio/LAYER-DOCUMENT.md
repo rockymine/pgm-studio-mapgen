@@ -243,6 +243,8 @@ a block, so nothing it lays clears the ground below.
 
 **A level may state its `soil`**, the depth of dirt under its top everywhere, so a lip of rock carried over the ground below shows rock and not a band of dirt.
 
+**A level's outline may be a `where` mask and its underside a `bottom` field.** A bottom that rises the farther the level reaches out from the ground it rests on is a face that leans out over its own foot, steeper than upright.
+
 **Under its edges a level tapers as a floating island does.** `underside` takes `taper` (blocks at the edge,
 blocks per block in), `rough`, `seed` and `clear`. Where the taper leaves fewer than `clear` blocks of air over the
 surface below, the level rests on it instead: it is laid down into that ground, soil and all, and the surface below

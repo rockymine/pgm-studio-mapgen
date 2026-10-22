@@ -18,8 +18,8 @@
  "fields": {
   "small": {
    "fbm": {
-    "cell": 9,
-    "octaves": 3,
+    "cell": 16,
+    "octaves": 2,
     "seed": 1
    }
   },
@@ -96,13 +96,37 @@
     }
    ]
   },
+  "reach": {
+   "line": {
+    "along": "x",
+    "cell": 14,
+    "seed": 13,
+    "amp": 2.2,
+    "base": 4,
+    "clip": [
+     1,
+     6
+    ]
+   }
+  },
   "plateau": {
    "add": [
     58,
     {
      "mul": [
       "small",
-      0.7
+      0.6
+     ]
+    },
+    {
+     "mul": [
+      0.2,
+      {
+       "sub": [
+        "x",
+        100
+       ]
+      }
      ]
     },
     {
@@ -172,14 +196,8 @@
     },
     {
      "noise": {
-      "field": "small",
-      "rise": 1.0
-     }
-    },
-    {
-     "noise": {
       "field": "big",
-      "rise": 2.4
+      "rise": 2.0
      }
     }
    ],
@@ -322,7 +340,7 @@
    "id": "tongue",
    "op": "level",
    "mode": "set",
-   "top": 38,
+   "top": 37,
    "inner": 0.7,
    "outer": 1.2,
    "areas": [
@@ -509,45 +527,7 @@
    "block": "SAND",
    "slope": [
     null,
-    26
-   ],
-   "height": [
-    null,
-    38
-   ],
-   "area": {
-    "polygon": [
-     [
-      0,
-      0
-     ],
-     [
-      40,
-      0
-     ],
-     [
-      40,
-      24
-     ],
-     [
-      0,
-      24
-     ]
-    ]
-   },
-   "noise": {
-    "field": "patch",
-    "lo": -0.35
-   }
-  },
-  {
-   "block": [
-    "SAND",
-    0
-   ],
-   "slope": [
-    null,
-    20
+    30
    ],
    "height": [
     null,
@@ -556,27 +536,94 @@
    "area": {
     "polygon": [
      [
-      22,
+      4,
+      18
+     ],
+     [
+      14,
       12
      ],
      [
       26,
-      13
+      15
+     ],
+     [
+      34,
+      22
+     ],
+     [
+      32,
+      33
      ],
      [
       24,
-      24
+      40
      ],
      [
-      20,
-      26
+      10,
+      41
      ],
      [
-      19,
-      18
+      2,
+      32
      ]
-    ]
-   }
+    ],
+    "plus": -0.25
+   },
+   "note": "the beach: every gentle cell a block over the water"
+  },
+  {
+   "block": "SAND",
+   "slope": [
+    null,
+    24
+   ],
+   "height": [
+    null,
+    38
+   ],
+   "area": {
+    "polygon": [
+     [
+      4,
+      18
+     ],
+     [
+      14,
+      12
+     ],
+     [
+      26,
+      15
+     ],
+     [
+      34,
+      22
+     ],
+     [
+      32,
+      33
+     ],
+     [
+      24,
+      40
+     ],
+     [
+      10,
+      41
+     ],
+     [
+      2,
+      32
+     ]
+    ],
+    "plus": -0.25
+   },
+   "noise": {
+    "field": "patch",
+    "lo": -0.2
+   },
+   "note": "and ragged a block higher, so its edge is not a contour"
   },
   {
    "block": "GRAVEL",
@@ -601,7 +648,7 @@
     5
    ],
    "slope": [
-    44,
+    50,
     null
    ],
    "noise": {
@@ -612,7 +659,7 @@
   {
    "block": "COBBLE",
    "slope": [
-    52,
+    56,
     null
    ],
    "noise": {
@@ -626,7 +673,7 @@
     0
    ],
    "slope": [
-    44,
+    50,
     null
    ]
   },
@@ -636,8 +683,8 @@
     1
    ],
    "slope": [
-    34,
-    44
+    40,
+    50
    ],
    "noise": {
     "field": "patch",
@@ -668,48 +715,45 @@
  },
  "levels": [
   {
-   "id": "lip",
+   "id": "brow",
    "floor": 58,
    "ground": [
     {
-     "id": "lip-outline",
+     "id": "brow-outline",
      "op": "outline",
-     "area": {
-      "polygon": [
-       [
-        84,
-        56
-       ],
-       [
-        96,
-        55
-       ],
-       [
-        110,
-        56
-       ],
-       [
-        118,
-        58
-       ],
-       [
-        118,
-        72
-       ],
-       [
-        84,
-        72
-       ]
-      ],
-      "rough": {
-       "amp": 0.07,
-       "cell": 4,
-       "seed": 10
-      }
+     "where": {
+      "and": [
+       {
+        "gt": [
+         "scar-d",
+         {
+          "neg": "reach"
+         }
+        ]
+       },
+       {
+        "lt": [
+         "scar-d",
+         3
+        ]
+       },
+       {
+        "gt": [
+         "x",
+         76
+        ]
+       },
+       {
+        "lt": [
+         "x",
+         126
+        ]
+       }
+      ]
      }
     },
     {
-     "id": "lip-ground",
+     "id": "brow-ground",
      "op": "set",
      "height": "plateau"
     }
@@ -721,7 +765,7 @@
       5
      ],
      "slope": [
-      44,
+      50,
       null
      ],
      "noise": {
@@ -732,7 +776,7 @@
     {
      "block": "COBBLE",
      "slope": [
-      52,
+      56,
       null
      ],
      "noise": {
@@ -746,7 +790,7 @@
       0
      ],
      "slope": [
-      44,
+      50,
       null
      ]
     },
@@ -756,8 +800,8 @@
       1
      ],
      "slope": [
-      34,
-      44
+      40,
+      50
      ],
      "noise": {
       "field": "patch",
@@ -767,15 +811,30 @@
    ],
    "soil": 1,
    "underside": {
-    "taper": [
-     2,
-     0.25
-    ],
-    "rough": 1,
-    "seed": 11,
-    "clear": 3
+    "bottom": {
+     "sub": [
+      "plateau",
+      {
+       "add": [
+        2,
+        {
+         "mul": [
+          2.0,
+          {
+           "add": [
+            "reach",
+            "scar-d"
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "clear": 2
    },
-   "note": "the scar's lip, the plateau's own ground carried out over its foot"
+   "note": "the scar's brow: its face leaning out over its foot, a block out for every two up"
   }
  ],
  "carve": [
@@ -788,21 +847,27 @@
    "cover": 3,
    "pts": [
     [
-     100,
+     104,
+     48,
+     58,
+     1.9
+    ],
+    [
+     104,
+     48,
+     65,
+     2.0
+    ],
+    [
+     105,
      47,
-     61,
+     73,
      2.0
     ],
     [
-     101,
-     46,
-     68,
-     2.0
-    ],
-    [
-     100,
-     44,
-     78,
+     103,
+     45,
+     83,
      2.2
     ]
    ],
@@ -811,7 +876,7 @@
     "stalagmites": 20,
     "ores": 30
    },
-   "note": "the old adit in the back of the shelter"
+   "note": "the old adit, its mouth in the foot of the leaning face, running south into the fell"
   }
  ],
  "volume": [
@@ -822,19 +887,19 @@
     "pts": [
      [
       62,
-      24
+      30
      ],
      [
       62,
-      50
+      44
      ]
     ],
     "spline": false
    },
    "width": 5,
    "deck": [
-    44,
-    42,
+    47,
+    46,
     2
    ],
    "camber": 0,
@@ -847,7 +912,7 @@
    "top": "GRAVEL",
    "under": "STONE",
    "rock": "STONE",
-   "note": "the brig: a stone arch carrying the road over the gill"
+   "note": "the brig: from bank to bank of the gill, z 31 to 43, its deck at the banks' height"
   }
  ]
 }
