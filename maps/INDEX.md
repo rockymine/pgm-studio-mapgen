@@ -22,6 +22,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `ctw/coinfall` | `opus5-coinfall` | `specs/opus5-coinfall` |
 | `ctw/coldharbour` | `coldharbour` | `specs/archive/coldharbour` |
 | `ctw/coldharbour_v2` | `coldharbour_v2` | `specs/archive/coldharbour_v2` |
+| `ctw/coldstore` | `freeform/lib/boards/coldstore` | `freeform/lib/boards/coldstore` |
 | `ctw/crossdyke` | `opus5-crossdyke` | `specs/opus5-crossdyke` |
 | `ctw/crystalline_quarry` | `hk2_crystalline_quarry` | — |
 | `ctw/delverdale` | `delverdale` | `specs/delverdale` |

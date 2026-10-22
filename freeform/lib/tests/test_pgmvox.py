@@ -2887,3 +2887,21 @@ class Approaches(unittest.TestCase):
         self.assertIn("<disable>crafting table</disable>", xml)
         self.assertIn('avoid-players="3"', xml)
         self.assertLess(xml.index('block-break="break-only"'), xml.index("block-place-void-filter\" block-break"))
+
+    def test_a_seal_and_its_blast(self):
+        from pgmvox.play.logic import Completed, Fill, Trigger
+        from pgmvox.play.objectives import Box, Destroyable, Objectives, Teams
+        from pgmvox.play.rules import Map, Tnt
+        O = Objectives(Teams(("blue-team", "Blue", "blue"), ("red-team", "Red", "red")))
+        O.add(Destroyable("seal", "Seal", "blue-team", Box(0, 1, 0, 2, 3, 2), (B.END_STONE, 0), "end stone", "90%",
+                          required=False))
+        O.add(Destroyable("core", "Core", "blue-team", Box(5, 1, 0, 5, 1, 0)))
+        xml = Map("T", "1.0.0", "x", "ctw", objectives=O,
+                  parts=[Tnt(), Trigger(Completed("seal"), [Fill([Box(0, 4, 0, 1, 7, 0)], "air")])]).xml()
+        self.assertIn('completion="90%"', xml)
+        self.assertEqual(xml.count('required="false"'), 1)            # the seal is not the match's
+        self.assertIn("<instantignite>on</instantignite>", xml)
+        self.assertIn("<blockdamage>on</blockdamage>", xml)
+        self.assertNotIn("<yield>", xml)
+        self.assertIn('<fill region="fill-1" material="air"', xml)
+        self.assertIn("<fuse>3s</fuse>", Map("T", "1.0.0", "x", parts=[Tnt(instant=False, fuse="3s")]).xml())

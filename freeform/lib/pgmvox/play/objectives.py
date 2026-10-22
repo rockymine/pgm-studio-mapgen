@@ -543,6 +543,7 @@ class Destroyable(Objective):
     materials: str = "obsidian"
     completion: str = "100%"
     heart: tuple = None
+    required: bool = True                # False: the match is not won by it, as a seal whose breaking opens a room
 
     def turned(self, sym):
         return replace(self, box=self.box.image(sym))
@@ -561,7 +562,7 @@ class Destroyable(Objective):
         rid = doc.region(f"{self.id}-region", self.box.cuboid())
         doc.child("destroyables").append(E("destroyable", id=self.id, name=self.name, owner=self.team,
                                            materials=self.materials, completion=self.completion, mode_changes=True,
-                                           region=rid))
+                                           required=None if self.required else "false", region=rid))
 
     def check(self, w):
         wrong = [p for p in self.box.blocks() if w.get(*p)[0] != self.material[0]

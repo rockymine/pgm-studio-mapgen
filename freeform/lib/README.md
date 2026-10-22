@@ -534,6 +534,11 @@ out; in each it walls the room's doors and walks again. A door holds where the g
 `analysis/late-game/README.md` is what the phases showed, and the rules that keep a door a door:
 `Build(break_only=...)`, `Crafting(disable=...)` and `Renewables(...)`.
 
+**A goal can be sealed behind something the attacker must blow open.** `Destroyable(..., required=False)` is a
+monument the match is not won by, and `Tnt(...)` states how TNT behaves (`instant`, `damage`, `yield_`, `power`,
+`fuse`); a `logic.Trigger` on the seal's `Completed` then fills the room's door with air. Coldstore's wool rooms are
+built so: a capsule of end stone at 90%, breakable by a blast alone.
+
 ## Trees
 
 **The trees come from the studio's own library.** `trees.library()` reads its copied trees, the ones hand-built
