@@ -1,6 +1,6 @@
-"""Read Blastworks back from the built world: footing and water; each team's walks on foot to its own monuments,
-box and plain room; bridging to the enemy's box (its roof door and its side door) and plain room; with the enemy's
-doors blown, to the wool in the box and home; and the match's phases for the box with its two doors as the door.
+"""Read Blastworks back from the built world: footing and water; each team's walks on foot to its own monument and
+box; bridging to the enemy's box (its roof door and its side door) and to the middle's TNT; with the enemy's doors
+blown, to the wool in the box and home; and the match's phases for the box with its two doors as the door.
 
     python3 walk.py <build-dir>
 """
@@ -8,9 +8,9 @@ import sys
 
 import numpy as np
 
-import build
 import layout as L
 import objectives as P
+import parts
 from pgmvox import B, World
 from pgmvox.play.objectives import Spawn, Wool
 from pgmvox.read import audit, late
@@ -20,7 +20,7 @@ w = World.load(sys.argv[1])
 O = P.objectives()
 print(f"footing problems: {len(audit.footing(w))}; water against air: {len(audit.loose_water(w))}")
 zone = (w.ids[:, 1:, :] != 0).any(axis=1)                  # the void rule: over ground, or in a build zone
-for x0, z0, x1, z1 in build.zones():
+for x0, z0, x1, z1 in L.ZONES + [parts.image(r) for r in L.ZONES]:
     zone[x0 - w.x0:x1 - w.x0 + 1, z0 - w.z0:z1 - w.z0 + 1] = True
 foot = MoveRules(max_drop=3, jumps=False, kill_y=1)
 built = MoveRules(max_drop=3, jumps=False, kill_y=1, build=(zone, (1, L.MAX_BUILD)))
@@ -28,13 +28,11 @@ spawns = {o.team: o.at for o in O.of(Spawn)}
 
 
 def places(team):
-    """The roof door's middle, the side door's face on the void, and the plain room's floor, for a team's own side."""
+    """The roof door's middle and the side door's face on the void, for a team's own side."""
     tx0, tz0, tx1, tz1, _, ty1 = L.ROOF_DOOR
     sx0, sz0, sx1, sz1, sy0, _ = L.SIDE_DOOR
-    px0, pz0, px1, pz1 = L.PLAIN_ROOM
     out = {"roof door": ((tx0 + tx1) // 2, ty1 + 1, (tz0 + tz1) // 2),
-           "side door": (sx1 + 1, sy0 + 1, (sz0 + sz1) // 2),
-           "plain room": ((px0 + px1) // 2, L.SPAWN_H + 1, (pz0 + pz1) // 2)}
+           "side door": (sx1 + 1, sy0 + 1, (sz0 + sz1) // 2)}
     if team == "red-team":
         out = {k: P.image(v) for k, v in out.items()}
     return out
@@ -52,6 +50,7 @@ for team, at in spawns.items():
     enemy = [t for t in spawns if t != team][0]
     for name, p in places(enemy).items():
         print(f"  to the enemy's {name}, bridging: {nearest(d1, w.x0, w.z0, *p, r=2)}")
+    print(f"  to the middle's TNT, bridging: {nearest(d1, w.x0, w.z0, -1, L.MID_H + 1, -1, r=2)}")
 
 open_w = World.load(sys.argv[1])
 doors = []

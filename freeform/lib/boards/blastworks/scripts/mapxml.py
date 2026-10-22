@@ -1,12 +1,12 @@
-"""Write Blastworks' map.xml: teams, spawns, wools and doors from objectives.py; stated here are the kit with its TNT,
-building over the void only in the build zones the redstone rings (build.zones) and up to y 26, the box's top
-closed to its own team, and what may be broken.
+"""Write Blastworks' map.xml: teams, spawns, wools, doors and the middle's TNT from objectives.py; stated here are the
+kit with its TNT, building over the void only in the build zones the redstone rings and up to y 32, the box's top
+inside its bedrock line closed to its own team, and what may be broken.
 
     python3 mapxml.py > map.xml
 """
-import build
 import layout as L
 import objectives as P
+import parts
 from pgmvox.play.mapxml import E
 from pgmvox.play.objectives import Box
 from pgmvox.play.rules import Build, Crafting, Item, Kit, Map, Tnt, terrain_of
@@ -45,6 +45,6 @@ M = Map("Blastworks", "1.0.0", "Blow your way into the enemy's box, take their w
             Item("leather chestplate", unbreakable=True, team_color=True, wear="chestplate"),
             Item("leather leggings", unbreakable=True, team_color=True, wear="leggings"),
             Item("leather boots", unbreakable=True, team_color=True, wear="boots")),
-        build=Build(areas=build.zones(), max_height=L.MAX_BUILD),
+        build=Build(areas=L.ZONES + [parts.image(r) for r in L.ZONES], max_height=L.MAX_BUILD),
         parts=[OnTheBox(), Breaking(), Tnt(), Crafting()])
 print(M.xml())

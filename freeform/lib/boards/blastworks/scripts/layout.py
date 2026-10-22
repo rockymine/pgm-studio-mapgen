@@ -34,6 +34,7 @@ UP_STAIR = (-82, -7, -77, 6)                     # the concept's stair up from t
 DOWN_STAIR = (-76, -1, -69, 6)                   # and its stair down, 12 to 6, toward the void under the bridge
 EXIT = [(-68, 14, -59, 20), (-50, 14, -41, 20)]  # the spawn's second way out, its gap of eight between
 STONE = (-11, -21, 2, -8)                        # the middle's stone, red's its image
+MID_H = 14                                       # the stones' and the pedestal's top, the front's height
 TNT = (-2, -2, 1, 1)                             # the TNT spawner's pedestal at the very middle
 
 # ---- the box, as the concept has it -----------------------------------------------------------------------------------
@@ -48,7 +49,7 @@ HOLLOW = (-105, 11, -97, 16, 13, 19)             # x0, z0, x1, z1, y0, y1: the h
 HALL_DOOR = (13, 14, 15)                         # z0, z1, top: the door in the hall's east wall, toward the stairs
 SPAWN_AT = (-100, 13, 14)                        # in the hall, facing its door
 SPAWN_AREA = (-110, 7, -94, 20)
-SLOT = (-105, 13, 13)                            # the wool's monument, in a niche in the hall's west wall
+SLOT = (-97, 13, 11)                             # the wool's monument, in the hall's corner beside its door
 
 # ---- where a player may build over the void: blue's, and their images are red's ---------------------------------------
 ZONES = [
@@ -63,5 +64,6 @@ MARKER_Y = 1
 # ---- the concept's bedrock ---------------------------------------------------------------------------------------------
 WALL_TOP = 13                                    # the box's walls are bedrock up to here, the slits through them
 EDGE_X = -83                                     # a line of bedrock across the box's top: the defenders stay outside it
+ON_THE_BOX = (-96, -21, -84, -8, 19, 40)         # x0, z0, x1, z1, y0, y1: inside that line, where its team may not go
 SLAB = (14, 15)                                  # the bridge's bedrock slab, under three courses of deck
 EAST_FACE = (-59, 15)                            # the east block's face over the void, bedrock up to y 15

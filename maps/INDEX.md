@@ -13,6 +13,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `arcade/lantern_pass` | `freeform/lib/boards/lanternpass` | `freeform/lib/boards/lanternpass` |
 | `arcade/loomfall` | `freeform/lib/boards/loomfall` | `freeform/lib/boards/loomfall` |
 | `blitz/spark` | `freeform/lib/boards/spark` | `freeform/lib/boards/spark` |
+| `ctw/blastworks` | `freeform/lib/boards/blastworks` | `freeform/lib/boards/blastworks` |
 | `ctw/brassmoor_works` | `freeform/lib/boards/brassmoor-works` | `freeform/lib/boards/brassmoor-works` |
 | `ctw/brittlebush_iii` | `freeform/lib/boards/brittlebush-iii` | `freeform/lib/boards/brittlebush-iii` |
 | `ctw/burrowgate` | `opus5-burrowgate` | `specs/opus5-burrowgate` |

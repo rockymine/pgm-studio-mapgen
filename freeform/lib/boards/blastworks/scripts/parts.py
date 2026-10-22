@@ -126,8 +126,8 @@ def east(w):
 
 
 def hall(w):
-    """The spawn's hall, hollow: one room on the ground's height with the spawn in it, the wool's monument in a niche
-    of quartz in its west wall, and a door east toward the stairs. Its windows' bars open into the room."""
+    """The spawn's hall, hollow: one room on the ground's height with the spawn in it, the wool's monument in the
+    corner beside its door, framed in quartz, and a door east toward the stairs. Its windows' bars open into the room."""
     x0, z0, x1, z1, y0, y1 = L.HOLLOW
     for x in range(x0, x1 + 1):
         for z in range(z0, z1 + 1):
@@ -135,17 +135,42 @@ def hall(w):
             for y in range(y0, y1 + 1):
                 w.set(x, y, z, B.AIR)
             w.set(x, y1 + 1, z, *S.SPRUCE)
-    for x in (x0, x1):                                   # quartz posts in the room's corners
-        for z in (z0, z1):
-            for y in range(y0, y1 + 1):
-                w.set(x, y, z, *S.QPILLAR)
     sx, sy, sz = L.SLOT
-    for z in (sz - 1, sz + 1):                           # the monument's niche, framed
+    for x in (x0, x1):                                   # quartz posts in the room's corners, but the monument's
+        for z in (z0, z1):
+            if (x, z) != (sx, sz):
+                for y in range(y0, y1 + 1):
+                    w.set(x, y, z, *S.QPILLAR)
+    for fx, fz in ((sx - 1, sz), (sx, sz + 1)):          # the monument's corner, framed
         for y in range(sy, sy + 3):
-            w.set(sx, y, z, *S.CHISELED)
-    w.set(sx, sy + 3, sz, *S.QUARTZ)
+            w.set(fx, y, fz, *S.CHISELED)
+    for y in range(sy + 3, y1 + 1):
+        w.set(sx, y, sz, *S.QPILLAR)
     a, b, top = L.HALL_DOOR
     for z in range(a, b + 1):
         for y in range(y0, top + 1):
             w.set(L.HALL[2], y, z, B.AIR)
         w.set(L.HALL[2], top + 1, z, *S.CHISELED)
+
+
+def image(r):
+    """A rect's image under the half turn."""
+    x0, z0, x1, z1 = r
+    return (-1 - x1, -1 - z1, -1 - x0, -1 - z0)
+
+
+def middle(w):
+    """The middle, laid after the half turn since blue's stone reaches over the axis: the two stones, each with a
+    two-by-two pillar at every corner, and the TNT spawner's pedestal on the axis."""
+    secs = [G.Section((L.STONE,), L.MID_H, "stone-blue", "plain"),
+            G.Section((image(L.STONE),), L.MID_H, "stone-red", "plain"),
+            G.Section((L.TNT,), L.MID_H, "pedestal", "plain")]
+    g = G.Ground(secs)
+    G.lay(w, g, S.style(), rng=random.Random(7), face_of=face_of(g))
+    for x0, z0, x1, z1 in (L.STONE, image(L.STONE)):
+        for x, z in ((x0 + 1, z0 + 1), (x1 - 2, z0 + 1), (x0 + 1, z1 - 2), (x1 - 2, z1 - 2)):
+            S.pillar(w, x, z, L.MID_H)
+    x0, z0, x1, z1 = L.TNT
+    for x in range(x0, x1 + 1):
+        for z in range(z0, z1 + 1):
+            w.set(x, L.MID_H, z, *(S.CHISELED if x in (x0, x1) or z in (z0, z1) else S.QUARTZ))
