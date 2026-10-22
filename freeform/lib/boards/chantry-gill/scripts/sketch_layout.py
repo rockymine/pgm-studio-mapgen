@@ -22,9 +22,13 @@ for team, f in (("blue", lambda p: p), ("red", L.turn)):
     pale = team == "red"
     for poly, colour in ((L.MAIN, "#6f9a4a"), (L.SIDE, "#8a8f7a"), (L.GILL, "#4b4f57")):
         ax.add_patch(Polygon([f(p) for p in poly], closed=True, fc=colour, ec="#222", lw=1, alpha=0.55 if pale else 0.95))
-    for poly in (L.EDGE, L.KNOTT):
+    for name, (poly, rise) in L.SCENERY.items():
         ax.add_patch(Polygon([f(p) for p in poly], closed=True, fc="#5a5f55", ec="#ddd", lw=1, hatch="///",
                              alpha=0.5 if pale else 0.9))
+        if not pale:
+            cx = sum(p[0] for p in poly) / len(poly)
+            cz = sum(p[1] for p in poly) / len(poly)
+            ax.text(cx, cz, f"{name}\n+{rise}", color="w", ha="center", va="center", fontsize=7)
     sx, sz = f(L.SPAWN)
     c = "#3d7bff" if team == "blue" else "#ff4d4d"
     ax.plot(sx, sz, "s", ms=12, mfc=c, mec="w")
@@ -40,7 +44,7 @@ for name, (x, z, _) in L.PLACES.items():
 ax.add_patch(plt.Rectangle((L.CRYPT[0], L.CRYPT[1]), L.CRYPT[2] - L.CRYPT[0], L.CRYPT[3] - L.CRYPT[1], fill=False,
                            ec="#e0c060", ls="--", lw=1.2))
 ax.plot([a[0] for a in L.ADIT], [a[1] for a in L.ADIT], ls=":", color="#e0c060", lw=2)
-colours = {"town: through": "#ffd23f", "town: around": "#ff9f1c", "town: from the brow": "#7ae7ff",
+colours = {"town: through": "#ffd23f", "town: around": "#ff9f1c", 
            "town: below": "#e0c060", "town: brig": "#c792ea", "scar: front": "#ff6fb5", "scar: chimney": "#9cff8a"}
 for name, pts in L.ROUTES.items():
     p = [q for q in pts if not isinstance(q, str)]

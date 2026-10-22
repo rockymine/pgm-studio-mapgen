@@ -17,26 +17,28 @@ GILL = [MAIN[7], MAIN[8], MAIN[9], MAIN[10], MAIN[11], (36, 98), (44, 98), SIDE[
         SIDE[0], (31, 22)]
 # scenery: the edge down the west and the knott across the back, high ground fenced off from play by its own
 # faces; it frames the board and nobody fights on it
-EDGE = [(-82, 60), (-76, 80), (-62, 100), (-44, 112), (-56, 96), (-66, 78), (-70, 58), (-68, 38), (-78, 40)]
-KNOTT = [(-44, 112), (-20, 118), (4, 116), (22, 106), (30, 92), (20, 100), (2, 106), (-20, 106), (-40, 104),
-         (-56, 96)]
+SCENERY = {                                # each a hill or a plateau of its own, its own height, a notch between
+    "west tor": ([(-82, 58), (-80, 44), (-70, 38), (-64, 46), (-68, 60), (-76, 66)], 18),
+    "edge": ([(-80, 70), (-70, 64), (-62, 74), (-60, 88), (-68, 96), (-78, 84)], 26),
+    "south pike": ([(-64, 100), (-56, 94), (-44, 98), (-40, 108), (-50, 113), (-60, 108)], 30),
+    "knott": ([(-36, 110), (-26, 104), (-10, 106), (-4, 114), (-14, 119), (-32, 118)], 22),
+    "knott shoulder": ([(2, 112), (10, 106), (22, 104), (28, 96), (24, 108), (10, 116)], 14),
+}
 BUILD_Z = (-14, 13)                       # the build zone over the void between the teams, the board's whole width
 X_RANGE = (-90, 89)
 
 PLACES = {                                 # name: (x, z, what it is)
     "spawn": (4, 94, "the spawn, at the foot of the knott, the hall behind it"),
-    "town monument": (20, 56, "the town monument: three obsidian over the market square, on the town's east rim"),
+    "town monument": (-14, 58, "the town monument: three obsidian over the market square in the middle of the town"),
     "scar monument": (58, 84, "the Scar monument: three obsidian on the plateau behind the brow"),
-    "square": (10, 60, "the market square, stalls along its west edge"),
-    "chapel": (8, 72, "the chapel on the square's south side, the crypt under it, the ladder up into its nave"),
-    "town": (-10, 64, "the town: houses on the main street and a lane, the wall broken on its west"),
+    "square": (-4, 60, "the market square, stalls along its west edge"),
+    "chapel": (-8, 74, "the chapel on the square's south side, the crypt under it, the ladder up into its nave"),
+    "town": (-30, 66, "the town: houses on the main street and a lane, the wall broken on its west"),
     "front gate": (-6, 26, "the north gate, where the street leaves the town for the front"),
-    "knott": (-10, 111, "the knott: a crag across the back, its face to the north over the spawn; scenery"),
-    "edge": (-70, 74, "the edge: a scarp down the west, its face to the fell; scenery"),
     "fields": (-44, 46, "the byre, its field and the flower meadow, between the edge and the town"),
     "brig": (33, 36, "the brig: a stone arch over the gill, from the front of the town to the tarn"),
     "tarn": (60, 30, "the tarn on the Scar's front, its beach to the north, the beck running in from the gill"),
-    "brow": (46, 70, "the Scar's brow: its face leaning out over the gill, 14 over the square and 22 off it"),
+    "brow": (46, 70, "the Scar's brow: its face leaning out over the gill, over the brig and the back bridge"),
     "shelter": (40, 66, "the shelter worn into the brow's foot on the gill floor; the adit runs on from it"),
     "plateau": (68, 66, "the plateau behind the brow, reached up a slope at its north end"),
     "back brig": (34, 91, "a timber bridge over the gill behind the brow: the spawn's way to the Scar"),
@@ -48,19 +50,18 @@ MONUMENT = MONUMENTS[0]
 
 # the ways an attacker landing on this half comes at each monument
 ROUTES = {
-    "town: through": [(-6, 14), (-6, 26), (-4, 44), (6, 52), (20, 56)],
-    "town: around": [(-46, 16), (-50, 34), (-40, 52), (-18, 60), (6, 64), (20, 56)],
-    "town: brig": [(46, 18), (44, 34), (33, 36), (24, 42), (20, 56)],
-    "town: from the brow": [(62, 16), (74, 40), (64, 58), (48, 66), "bridge", (20, 56)],
-    "town: below": [(46, 18), (33, 30), (34, 50), (38, 66), "adit", (12, 70), "ladder", (14, 62), (20, 56)],
+    "town: through": [(-6, 14), (-6, 26), (-10, 44), (-14, 58)],
+    "town: around": [(-46, 16), (-52, 32), (-40, 50), (-14, 58)],
+    "town: brig": [(46, 18), (44, 34), (33, 36), (20, 42), (2, 50), (-14, 58)],
+    "town: below": [(46, 18), (33, 30), (34, 50), (38, 66), "adit", (-4, 72), "ladder", (-6, 70), (-14, 58)],
     "scar: front": [(62, 16), (74, 40), (72, 62), (64, 76), (58, 84)],
     "scar: chimney": [(46, 18), (33, 30), (34, 50), (40, 66), "chimney", (48, 72), (58, 84)],
 }
-DEFENCES = [[(4, 94), (4, 80), (10, 66), (20, 56)],
+DEFENCES = [[(4, 94), (0, 80), (-8, 66), (-14, 58)],
             [(4, 94), (30, 92), (44, 92), (58, 84)]]
 DEFENCE = DEFENCES[0]
-ADIT = [(39, 66, 33), (30, 67, 29), (18, 70, 30), (12, 72, 33)]      # (x, z, floor y): shelter to crypt
-CRYPT = (4, 68, 16, 76)
+ADIT = [(39, 66, 33), (28, 68, 29), (10, 72, 29), (-4, 72, 33)]      # (x, z, floor y): shelter to crypt
+CRYPT = (-14, 68, -2, 78)
 
 
 def turn(p):
