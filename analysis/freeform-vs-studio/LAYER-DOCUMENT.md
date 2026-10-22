@@ -301,7 +301,8 @@ takes an eighth.
 
 **Where it falls is a mask.** `on` names the blocks it lies on, so rock stays bare where it is left out; `area` or
 `where` limit it, `overlay` keeps it to one block, `max_depth` caps a drift and `under` replaces the block it lies
-on. `board.biome` sets the biome every column takes, so grass and leaves under it are tinted cold.
+on. `jitter` adds smooth noise of that many blocks to `added`, in patches `jitter_cell` across, so a flat field's
+eighths do not run in ruled contours. `board.biome` sets the biome every column takes, so grass and leaves under it are tinted cold.
 
 ## Volume, structures and symmetry
 

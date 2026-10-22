@@ -1190,6 +1190,14 @@ class LayerLevels(unittest.TestCase):
         self.assertGreater(soft[2], hard[2])                                      # smoother drifts deeper
         self.assertTrue(all(v >= 0.125 for v in soft))                            # nothing bare
 
+    def test_smooth_snow_jitter_breaks_a_flat_field_into_varied_depths(self):
+        def depths(j):
+            w = self.build(self.doc(snow=[{"id": "s", "smoothness": 4, "added": 0.5, "on": ["GRASS"], "jitter": j,
+                                           "seed": 3}])).world
+            return {int(w.dat[i, 41, k]) for i in range(4, 44) for k in range(4, 44) if w.ids[i, 41, k] == B.SNOW_LAYER}
+        self.assertEqual(len(depths(0)), 1)                                       # flat ground: one depth
+        self.assertGreaterEqual(len(depths(0.3)), 3)                              # jittered: several
+
     def test_the_board_states_its_biome(self):
         b = self.build(dict(self.doc(), board=dict(self.doc()["board"], biome=12)))
         self.assertTrue((b.world.biome == 12).all())

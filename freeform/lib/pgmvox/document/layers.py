@@ -963,7 +963,8 @@ def build(doc):
             e &= np.asarray(expr(L["where"], Ctx(X, Z, Hi.astype(float), fields, lines, land, water)), bool)
         n = T.smooth_snow(w, L.get("smoothness", 6), mask=e, on={block(b)[0] for b in L["on"]} if "on" in L else None,
                           added=L.get("added", 0.4), overlay=L.get("overlay", False), max_depth=L.get("max_depth"),
-                          under=block(L["under"]) if "under" in L else None)
+                          under=block(L["under"]) if "under" in L else None, jitter=L.get("jitter", 0.0),
+                          jitter_cell=L.get("jitter_cell", 5), seed=L.get("seed", bd.get("seed", 0)))
         out.steps.append(Step(L["id"], "snow", "smooth_snow", e.copy(), Hi.copy(), f"{n} columns covered"))
     if "biome" in bd:
         w.biome[:] = int(bd["biome"])

@@ -394,7 +394,7 @@ def cloud_deck(w, y, mask=None, seed=7, cell=14, puff=9, breaks=-0.25, materials
 
 
 def smooth_snow(w, smoothness=6, mask=None, on=None, added=0.4, overlay=False, max_depth=None, layer=(B.SNOW_LAYER, 0),
-                full=(B.SNOW, 0), under=None, keep=()):
+                full=(B.SNOW, 0), under=None, keep=(), jitter=0.0, jitter_cell=5, seed=0):
     """Smooth snow, after Arceon's //smoothsnow: the surface (the top of each column's highest solid block, as a
     height in blocks) averaged over a disc `smoothness` blocks across its radius, `added` blocks laid on it, and
     the difference to the real surface filled with snow in eighths: whole blocks of `full` up to the last whole
@@ -404,7 +404,8 @@ def smooth_snow(w, smoothness=6, mask=None, on=None, added=0.4, overlay=False, m
     `mask` (a boolean world-grid array) and `on` (block ids the column's top must be) say where it falls; nothing
     falls in water, on a block in `keep` or where the top is not solid. A column whose smoothed surface lies under
     its own still takes one eighth, so no masked column is bare. `overlay` lays only the layer, never a whole block;
-    `max_depth` caps the drift in blocks. `under` (id, data) replaces the top block it lies on (a grass under snow
+    `max_depth` caps the drift in blocks. `jitter` adds smooth noise of that many blocks (either way) to `added`,
+    in patches about `jitter_cell` across, so a flat field's eighths do not run in ruled contours. `under` (id, data) replaces the top block it lies on (a grass under snow
     the game draws snowy by itself, so it is rarely needed). Returns the number of columns covered."""
     from scipy import ndimage
     from pgmvox.core.blocks import PASSABLE
@@ -425,6 +426,10 @@ def smooth_snow(w, smoothness=6, mask=None, on=None, added=0.4, overlay=False, m
     else:
         s = h.copy()
     target = s + added
+    if jitter:
+        from pgmvox.geom import noise as N
+        f = N.fbm(h.shape, jitter_cell, 2, seed=seed)
+        target = target + jitter * f / max(np.abs(f).max(), 1e-9)
     covered = 0
     for i, k in np.argwhere(has):
         t = int(top[i, k])
