@@ -34,6 +34,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `ctw/fellgate_moor` | `sonnet-r5-fellgate` | `specs/archive/sonnet-r5-fellgate` |
 | `ctw/flintwick` | `opus5-flintwick` | `specs/opus5-flintwick` |
 | `ctw/four_winds_compound` | `sonnet-compass` | `specs/archive/sonnet-compass` |
+| `ctw/frostvault` | `freeform/lib/boards/frostvault` | `freeform/lib/boards/frostvault` |
 | `ctw/gallowsholt` | `opus5-gallowsholt` | `specs/opus5-gallowsholt` |
 | `ctw/garsdale` | `opus5-garsdale` | `specs/opus5-garsdale` |
 | `ctw/grok_ridge` | `grok-ridge` | `specs/archive/grok-ridge` |

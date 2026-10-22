@@ -1,0 +1,272 @@
+<map proto="1.5.0">
+    <name>Frostvault</name>
+    <version>1.0.0</version>
+    <objective>Blow open the enemy's wool rooms and bring their two wools home.</objective>
+    <gamemode>ctw</gamemode>
+    <include id="gapple-kill-reward"/>
+    <authors>
+        <author>Claude (freeform generator, on pgmvox)</author>
+    </authors>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="stone sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true"/>
+            <item slot="2" material="iron pickaxe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="tnt" amount="16"/>
+            <item slot="6" material="glass" amount="32"/>
+            <item slot="7" material="golden apple"/>
+            <item slot="8" material="wood" amount="64"/>
+            <item slot="28" material="arrow" amount="32"/>
+            <item slot="29" material="iron spade" unbreakable="true"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true"/>
+            <leggings material="leather leggings" unbreakable="true" team-color="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <teams>
+        <team id="blue-team" color="blue" max="24">Blue</team>
+        <team id="red-team" color="red" max="24">Red</team>
+    </teams>
+    <filters>
+        <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
+        <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
+        <any id="woolroom-materials">
+            <material>wood</material>
+            <material>stained clay</material>
+            <material>web</material>
+            <all>
+                <cause>player</cause>
+                <any>
+                    <material>water</material>
+                    <material>stationary water</material>
+                </any>
+            </all>
+        </any>
+        <all id="blues-woolrooms-filter">
+            <filter id="not-blue"/>
+            <filter id="woolroom-materials"/>
+        </all>
+        <all id="reds-woolrooms-filter">
+            <filter id="not-red"/>
+            <filter id="woolroom-materials"/>
+        </all>
+        <any id="may-break">
+            <material>wood</material>
+            <material>tnt</material>
+            <material>glass</material>
+            <material>ladder</material>
+            <material>snow block</material>
+            <material>snow</material>
+            <material>packed ice</material>
+            <material>ice</material>
+            <material>stained glass</material>
+            <all>
+                <material>end stone</material>
+                <cause>explosion</cause>
+            </all>
+        </any>
+    </filters>
+    <spawns>
+        <spawn team="blue-team" kit="spawn-kit" yaw="180">
+            <region>
+                <point>-37.5,18,125.5</point>
+            </region>
+        </spawn>
+        <spawn team="red-team" kit="spawn-kit" yaw="0">
+            <region>
+                <point>-37.5,18,-125.5</point>
+            </region>
+        </spawn>
+        <default yaw="90">
+            <region>
+                <point>1,39,1</point>
+            </region>
+        </default>
+    </spawns>
+    <regions>
+        <cuboid min="-44,18,121" max="-31,24,129" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="-44,18,-129" max="-31,24,-121" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <block id="purple-blue-monument">-42,18,116</block>
+        <cuboid min="-106,28,-56" max="-103,32,-50" id="purple-room"/>
+        <apply enter="not-red" region="purple-room" message="You may not enter your own wool room!"/>
+        <point id="purple-wool-spawn">-104.5,29,-52.5</point>
+        <block id="yellow-blue-monument">-35,18,116</block>
+        <cuboid min="88,28,-101" max="91,32,-95" id="yellow-room"/>
+        <apply enter="not-red" region="yellow-room" message="You may not enter your own wool room!"/>
+        <point id="yellow-wool-spawn">89.5,29,-97.5</point>
+        <block id="orange-red-monument">-42,18,-117</block>
+        <cuboid min="-106,28,49" max="-103,32,55" id="orange-room"/>
+        <apply enter="not-blue" region="orange-room" message="You may not enter your own wool room!"/>
+        <point id="orange-wool-spawn">-104.5,29,52.5</point>
+        <block id="lime-red-monument">-35,18,-117</block>
+        <cuboid min="88,28,94" max="91,32,100" id="lime-room"/>
+        <apply enter="not-blue" region="lime-room" message="You may not enter your own wool room!"/>
+        <point id="lime-wool-spawn">89.5,29,97.5</point>
+        <cuboid min="76,25,94" max="86,36,100" id="blue-lime-seal-region"/>
+        <cuboid min="-101,25,49" max="-91,36,55" id="blue-orange-seal-region"/>
+        <cuboid min="76,25,-101" max="86,36,-95" id="red-yellow-seal-region"/>
+        <cuboid min="-101,25,-56" max="-91,36,-50" id="red-purple-seal-region"/>
+        <union id="blues-woolrooms">
+            <region id="orange-room"/>
+            <region id="lime-room"/>
+        </union>
+        <apply block="blues-woolrooms-filter" region="blues-woolrooms" message="You may not edit the wool room!"/>
+        <union id="reds-woolrooms">
+            <region id="purple-room"/>
+            <region id="yellow-room"/>
+        </union>
+        <apply block="reds-woolrooms-filter" region="reds-woolrooms" message="You may not edit the wool room!"/>
+        <apply block-break="may-break" message="Only what was built, the drifts and the seals break here!"/>
+        <union id="drifts">
+            <cuboid min="-105,18,-90" max="-55,22,-45"/>
+            <cuboid min="-45,18,-120" max="65,22,-65"/>
+            <cuboid min="-105,18,45" max="-55,22,90"/>
+            <cuboid min="-45,18,65" max="65,22,120"/>
+            <cuboid min="-45,18,-65" max="50,22,-40"/>
+            <cuboid min="-10,18,-30" max="25,22,-10"/>
+            <cuboid min="-45,18,40" max="50,22,65"/>
+            <cuboid min="-10,18,10" max="25,22,30"/>
+        </union>
+        <cuboid min="87,28,96" max="88,32,98" id="fill-1"/>
+        <cuboid min="-103,28,51" max="-102,32,53" id="fill-2"/>
+        <cuboid min="87,28,-99" max="88,32,-97" id="fill-3"/>
+        <cuboid min="-103,28,-54" max="-102,32,-52" id="fill-4"/>
+    </regions>
+    <wools craftable="false">
+        <wool team="blue-team" color="purple" monument="purple-blue-monument" location="-104.5,28,-52.5"/>
+        <wool team="blue-team" color="yellow" monument="yellow-blue-monument" location="89.5,28,-97.5"/>
+        <wool team="red-team" color="orange" monument="orange-red-monument" location="-104.5,28,52.5"/>
+        <wool team="red-team" color="lime" monument="lime-red-monument" location="89.5,28,97.5"/>
+    </wools>
+    <spawners>
+        <spawner spawn-region="purple-wool-spawn" player-region="purple-room" delay="1.5s">
+            <item material="wool" damage="10"/>
+        </spawner>
+        <spawner spawn-region="yellow-wool-spawn" player-region="yellow-room" delay="1.5s">
+            <item material="wool" damage="4"/>
+        </spawner>
+        <spawner spawn-region="orange-wool-spawn" player-region="orange-room" delay="1.5s">
+            <item material="wool" damage="1"/>
+        </spawner>
+        <spawner spawn-region="lime-wool-spawn" player-region="lime-room" delay="1.5s">
+            <item material="wool" damage="5"/>
+        </spawner>
+    </spawners>
+    <destroyables>
+        <destroyable id="blue-lime-seal" name="Lime Seal" owner="blue-team" materials="end stone" completion="90%" mode-changes="true" required="false" region="blue-lime-seal-region"/>
+        <destroyable id="blue-orange-seal" name="Orange Seal" owner="blue-team" materials="end stone" completion="90%" mode-changes="true" required="false" region="blue-orange-seal-region"/>
+        <destroyable id="red-yellow-seal" name="Yellow Seal" owner="red-team" materials="end stone" completion="90%" mode-changes="true" required="false" region="red-yellow-seal-region"/>
+        <destroyable id="red-purple-seal" name="Purple Seal" owner="red-team" materials="end stone" completion="90%" mode-changes="true" required="false" region="red-purple-seal-region"/>
+    </destroyables>
+    <tnt>
+        <instantignite>on</instantignite>
+        <blockdamage>on</blockdamage>
+    </tnt>
+    <crafting>
+        <disable>crafting table</disable>
+    </crafting>
+    <renewables>
+        <renewable region="drifts" avoid-players="4" rate="0.5" grow="true"/>
+    </renewables>
+    <actions>
+        <trigger scope="match">
+            <filter>
+                <completed>blue-lime-seal</completed>
+            </filter>
+            <action>
+                <fill region="fill-1" material="air"/>
+            </action>
+        </trigger>
+        <trigger scope="match">
+            <filter>
+                <completed>blue-orange-seal</completed>
+            </filter>
+            <action>
+                <fill region="fill-2" material="air"/>
+            </action>
+        </trigger>
+        <trigger scope="match">
+            <filter>
+                <completed>red-yellow-seal</completed>
+            </filter>
+            <action>
+                <fill region="fill-3" material="air"/>
+            </action>
+        </trigger>
+        <trigger scope="match">
+            <filter>
+                <completed>red-purple-seal</completed>
+            </filter>
+            <action>
+                <fill region="fill-4" material="air"/>
+            </action>
+        </trigger>
+    </actions>
+    <maxbuildheight>42</maxbuildheight>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>tnt</material>
+                    <material>glass</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>stone sword</item>
+        <item>bow</item>
+        <item>iron pickaxe</item>
+        <item>iron axe</item>
+        <item>golden apple</item>
+        <item>iron spade</item>
+        <item>wood</item>
+        <item>tnt</item>
+        <item>glass</item>
+        <item>arrow</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>leather leggings</item>
+        <item>leather boots</item>
+        <item>end stone</item>
+    </itemremove>
+    <toolrepair>
+        <tool>stone sword</tool>
+        <tool>bow</tool>
+        <tool>iron pickaxe</tool>
+        <tool>iron axe</tool>
+        <tool>iron spade</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16"/>
+            <item material="tnt" amount="16"/>
+            <item material="glass" amount="16"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+</map>
+

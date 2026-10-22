@@ -1,0 +1,26 @@
+footing problems: 0; water against air: 0
+blue-team: on foot from its spawn a player reaches 3700 places
+  to its purple monument, on foot: 11
+  to its yellow monument, on foot: 10
+  to its own lime seal, bridging: 136
+  to its own orange seal, bridging: 121
+  to the enemy's yellow seal, bridging: 331
+  to the enemy's purple seal, bridging: 226
+red-team: on foot from its spawn a player reaches 3700 places
+  to its orange monument, on foot: 11
+  to its lime monument, on foot: 10
+  to the enemy's lime seal, bridging: 331
+  to the enemy's orange seal, bridging: 226
+  to its own yellow seal, bridging: 136
+  to its own purple seal, bridging: 121
+blue-team, every seal blown: spawn to the purple wool 244, the wool home to its monument 234
+blue-team, every seal blown: spawn to the yellow wool 349, the wool home to its monument 336
+red-team, every seal blown: spawn to the orange wool 243, the wool home to its monument 234
+red-team, every seal blown: spawn to the lime wool 348, the wool home to its monument 336
+
+the match's phases, blue's spawn to each red wool, the seal and its screen walled as the door:
+                                     ground  bridged      sky      dug   door holds in
+yellow, seal standing                     -        -        -        -   none
+yellow, seal blown                        -      348      348      348   bridged, sky, dug
+purple, seal standing                     -        -        -        -   none
+purple, seal blown                        -      243      243      243   bridged, sky, dug

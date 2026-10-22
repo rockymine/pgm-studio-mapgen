@@ -524,9 +524,9 @@ the form back off the cells alone by the generator's decision tree, and agrees w
 the host drawn across the mouth; `walls` seats a bedrock wall on a seam with void past both its ends, two to four
 cells before the room, and a ring's pair across its two legs (model.md §5.14).
 
-**An approach can be laid on its side.** `built.chambers.lay` turns each part into a chamber, the chain a storey
-lower a part from its host to its room, ramps a block a step with a stair on each; the form's voids are shafts to
-the floor of the world, which no build zone covers, so they are crossed at no height.
+**An approach can be laid on its side, and the author ruled it out.** `built.chambers.lay` turns each part into a
+chamber, the chain a storey lower a part from its host to its room; it is kept for the approach study, and a board
+under a roof is drawn with `plan.bunker` instead.
 
 **A goal is read in the four phases of a long match.** `read.late.phases` walks to it on the ground, with the build
 zone bridged, on the sky over every column with ground under it, and with every block a player may break taken
@@ -538,6 +538,24 @@ out; in each it walls the room's doors and walks again. A door holds where the g
 monument the match is not won by, and `Tnt(...)` states how TNT behaves (`instant`, `damage`, `yield_`, `power`,
 `fuse`); a `logic.Trigger` on the seal's `Completed` then fills the room's door with air. Coldstore's wool rooms are
 built so: a capsule of end stone at 90%, breakable by a blast alone.
+
+## A board under a roof
+
+**A board the studio composed can be read as a bunker.** `pgmvox/data/compose_board.cs` composes one with the
+studio's own generator and writes what its deriver reads off it; `plan.bunker.load` reads that back and
+`plan.bunker.draw` turns it into rock, island, void and pillar. Its land stands in the void as islands, its build
+regions are void, its enclosed voids are pillars from the floor to the roof, and the world outside is rock with a
+moat of void along every shore.
+
+**The generator draws one island a team, so `draw` cuts it.** A box of a kind in `cut` (a wool's approach, the
+frontline) is cut from the rest of its team's land by `gap` cells of void, the generator's own isolation cut. A wool
+room is rock with the land in front of it cut back, and the plan's defence walls are seams of rock.
+
+**`built.bunker.lay` lays the plan, and `dress` finishes it.** Rock is bedrock under one block of skin, an island a
+slab over the void, the roof bedrock over everything; each room is sealed from its face inward by a glass case, a
+capsule of end stone, a gap and a screen. `dress` puts pipes, screens, vents and graffiti in the skin's plane, lamps
+in the roof and snow on the islands. Frostvault is a composed board laid so; Coldstore is the author's concept
+quarter, which taught it.
 
 ## Trees
 
