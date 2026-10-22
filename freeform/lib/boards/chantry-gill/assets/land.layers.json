@@ -96,6 +96,29 @@
     }
    ]
   },
+  "fade": {
+   "mul": [
+    {
+     "smoothstep": [
+      64,
+      88,
+      "x"
+     ]
+    },
+    {
+     "sub": [
+      1,
+      {
+       "smoothstep": [
+        116,
+        139,
+        "x"
+       ]
+      }
+     ]
+    }
+   ]
+  },
   "reach": {
    "line": {
     "along": "x",
@@ -109,6 +132,18 @@
     ]
    }
   },
+  "reach-in": {
+   "mul": [
+    "reach",
+    {
+     "smoothstep": [
+      0.25,
+      0.9,
+      "fade"
+     ]
+    }
+   ]
+  },
   "plateau": {
    "add": [
     58,
@@ -120,7 +155,7 @@
     },
     {
      "mul": [
-      0.2,
+      0.1,
       {
        "sub": [
         "x",
@@ -231,12 +266,32 @@
          "jag"
         ]
        },
-       "top": "plateau"
+       "top": {
+        "add": [
+         "H",
+         {
+          "mul": [
+           "fade",
+           {
+            "max": [
+             0,
+             {
+              "sub": [
+               "plateau",
+               "H"
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
       }
      ]
     }
    },
-   "note": "the scar: a step of limestone up to the plateau, its edge ragged"
+   "note": "the scar: a step of limestone up to the plateau, its edge ragged, dying into the fell at both ends"
   },
   {
    "id": "back-ridge",
@@ -377,6 +432,32 @@
    "note": "a tongue of land running out into the tarn from its north shore"
   },
   {
+   "id": "beach-side",
+   "op": "level",
+   "mode": "cut",
+   "top": 37,
+   "inner": 0.45,
+   "outer": 1.7,
+   "areas": [
+    {
+     "ellipse": {
+      "at": [
+       16,
+       8
+      ],
+      "rx": 22,
+      "rz": 12
+     },
+     "rough": {
+      "amp": 0.1,
+      "cell": 6,
+      "seed": 14
+     }
+    }
+   ],
+   "note": "the fell let down gently to the tarn's north shore, where the beach is"
+  },
+  {
    "id": "gill",
    "op": "level",
    "mode": "cut",
@@ -422,6 +503,28 @@
     }
    ],
    "note": "the gill: a gorge eight to ten deep"
+  },
+  {
+   "id": "bay",
+   "op": "level",
+   "mode": "cut",
+   "top": 37,
+   "inner": 0.3,
+   "outer": 2.0,
+   "areas": [
+    {
+     "ellipse": {
+      "at": [
+       100,
+       47
+      ],
+      "rx": 12,
+      "rz": 8,
+      "angle": -10
+     }
+    }
+   ],
+   "note": "a bay in the gill's south side, where its wall stands back and the ground comes down gently"
   },
   {
    "id": "beck",
@@ -568,7 +671,7 @@
       32
      ]
     ],
-    "plus": -0.25
+    "plus": -0.12
    },
    "note": "the beach: every gentle cell a block over the water"
   },
@@ -617,11 +720,11 @@
       32
      ]
     ],
-    "plus": -0.25
+    "plus": -0.08
    },
    "noise": {
     "field": "patch",
-    "lo": -0.2
+    "lo": 0.1
    },
    "note": "and ragged a block higher, so its edge is not a contour"
   },
@@ -727,7 +830,7 @@
         "gt": [
          "scar-d",
          {
-          "neg": "reach"
+          "neg": "reach-in"
          }
         ]
        },
@@ -739,14 +842,8 @@
        },
        {
         "gt": [
-         "x",
-         76
-        ]
-       },
-       {
-        "lt": [
-         "x",
-         126
+         "fade",
+         0.25
         ]
        }
       ]
@@ -764,52 +861,19 @@
       "STONE",
       5
      ],
-     "slope": [
-      50,
-      null
-     ],
      "noise": {
       "field": "patch",
-      "lo": 0.15
-     }
-    },
-    {
-     "block": "COBBLE",
-     "slope": [
-      56,
-      null
-     ],
-     "noise": {
-      "field": "grain",
-      "lo": 0.55
+      "lo": 0.2
      }
     },
     {
      "block": [
       "STONE",
       0
-     ],
-     "slope": [
-      50,
-      null
      ]
-    },
-    {
-     "block": [
-      "DIRT",
-      1
-     ],
-     "slope": [
-      40,
-      50
-     ],
-     "noise": {
-      "field": "patch",
-      "lo": 0.45
-     }
     }
    ],
-   "soil": 1,
+   "soil": 0,
    "underside": {
     "bottom": {
      "sub": [
@@ -822,7 +886,7 @@
           2.0,
           {
            "add": [
-            "reach",
+            "reach-in",
             "scar-d"
            ]
           }
@@ -848,25 +912,25 @@
    "pts": [
     [
      104,
-     48,
+     45,
      58,
      1.9
     ],
     [
      104,
-     48,
+     45,
      65,
      2.0
     ],
     [
      105,
-     47,
+     44,
      73,
      2.0
     ],
     [
      103,
-     45,
+     42,
      83,
      2.2
     ]
