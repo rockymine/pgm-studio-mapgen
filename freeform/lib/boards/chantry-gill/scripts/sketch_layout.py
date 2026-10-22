@@ -16,7 +16,9 @@ import layout as L                                                              
 fig, ax = plt.subplots(figsize=(11, 14), dpi=110)
 ax.set_facecolor("#1d1f26")
 x0, x1 = L.X_RANGE
-ax.add_patch(plt.Rectangle((x0, L.BUILD_Z[0]), x1 - x0, L.BUILD_Z[1] - L.BUILD_Z[0], color="#3b5a8c", alpha=0.45))
+import zone as ZN                                                                      # noqa: E402
+for zx0, zz0, zx1, zz1 in ZN.rects():
+    ax.add_patch(plt.Rectangle((zx0, zz0), zx1 - zx0 + 1, zz1 - zz0 + 1, color="#3b5a8c", alpha=0.45, lw=0))
 ax.text(x0 + 3, 0, "build zone over the void", color="#cfe0ff", va="center", fontsize=9)
 for team, f in (("blue", lambda p: p), ("red", L.turn)):
     pale = team == "red"

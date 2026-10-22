@@ -1,10 +1,11 @@
 """Write Chantry Gill's map.xml: the teams, spawns, observer and the four monuments come from objectives.py; the kit
-(a diamond pickaxe, which breaks obsidian), building over the void only in the build zone between the teams, and
+(a diamond pickaxe, which breaks obsidian), building over the void only in the build zone between the two coasts (zone.py), and
 the build height are stated here.
 
     python3 mapxml.py > map.xml
 """
 import objectives as P
+import zone as ZN
 from pgmvox.play.rules import Build, Item, Kit, Map, terrain_of
 
 M = Map("Chantry Gill", "1.0.0", "Destroy the enemy's two monuments: the one in the town's square and the one on the Scar.",
@@ -21,5 +22,5 @@ M = Map("Chantry Gill", "1.0.0", "Destroy the enemy's two monuments: the one in 
             Item("leather chestplate", unbreakable=True, team_color=True, wear="chestplate"),
             Item("chainmail leggings", unbreakable=True, wear="leggings"),
             Item("leather boots", unbreakable=True, team_color=True, wear="boots")),
-        build=Build(areas=[(-90, -14, 89, 13)], max_height=P.MAX_BUILD))
+        build=Build(areas=ZN.rects(), max_height=P.MAX_BUILD))
 print(M.xml())

@@ -11,6 +11,7 @@ import numpy as np
 import layout as L
 from layout import FLOOR as F
 import objectives as P
+import zone as ZN
 from pgmvox import World
 from pgmvox.read import audit
 from pgmvox.read.walk import MoveRules, nearest, walk
@@ -23,7 +24,12 @@ spawns = {o.team: o.at for o in O.of(Spawn)}
 mons = O.of(Destroyable)
 X = np.arange(w.x0, w.x0 + w.sx)[:, None] + 0 * np.arange(w.sz)[None, :]
 Z = np.arange(w.z0, w.z0 + w.sz)[None, :] + 0 * np.arange(w.sx)[:, None]
-zone = (Z >= -14) & (Z <= 13)
+zone = ZN.mask(X, Z)
+ground0 = w.ids[:, 0, :] != 0
+coast = [(x, z) for x, z in ZN.edges().items() if z <= ZN.CAP]
+cut_off = [(x, z) for x, z in coast if not zone[x - w.x0, z - 1 - w.z0] or ground0[x - w.x0, z - 1 - w.z0]]
+print(f"build zone: {len(ZN.rects())} rectangles, {int(zone.sum())} columns; front coast columns {len(coast)}, "
+      f"with no zone in front of them {len(cut_off)}")
 foot = MoveRules(max_drop=3, jumps=False)
 built = MoveRules(max_drop=3, jumps=False, build=(zone, (F - 10, F + 20)))
 

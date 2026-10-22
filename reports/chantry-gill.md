@@ -53,6 +53,9 @@ and the own Scar monument 59, the Scar reached over the timber back bridge. The 
 the build zone. Those two are over the band a destroy board is held to. The open point in `PLAN.md` says so, and a
 second version would close the void first.
 
+**The build zone is the whole void between the two front coasts, column by column.** Every one of the front
+coast's 146 columns has the zone directly in front of it; a fixed band had left gaps of up to six blocks.
+
 **Cover keeps its distance from every monument.** No tree, rock or building stands within four blocks of one,
 checked on the built world. The bench carries a broken sheepfold east of its monument as cover for whoever holds
 it.

@@ -21,7 +21,7 @@ Blue holds the south (z > 0); red is blue's image under the half turn, (x, z) ->
 | **Highlands** | one band of high ground along the main island's west coast and back, 18 to 44 blocks deep, cut into pieces that fit together like a puzzle: five heights (the west tor +16, the edge +24, the south pike +28, the knott +20, the high knott +26), scenery fenced off by their faces, and four foothills nested into the notches between them and against the fell (the edge bench +10, the pike knoll +8, the knott foot +6, the spawn knoll +5), played on; the spawn stands under the spawn knoll |
 | **Side island**, the Scar | about 45 across and 85 deep, east of the main island, in three storeys: its rim along the gill at the fell's height, a bench at y 28 stepped back where the gill bends away (the second monument on it), and the plateau behind the upper face to y 39, whose line slants to the gill's so face and gorge never run together; the tarn at its front |
 | **The Gill** | a gorge winding between the islands, 12 to 18 across, its floor at y 12 and its rims 9 to 10 over it; the brig crosses it near the front and a timber bridge at the back; it opens to the void at both ends |
-| **The void** | between the teams, from z -14 to 13, crossed by a build zone the board's whole width |
+| **The void** | between the teams, 22 to 40 blocks across; the build zone is the whole of it from coast to coast, column by column (`scripts/zone.py`), held within 24 of the middle where a coast turns into a flank |
 
 Under the half turn each team's side island lies opposite the other team's main island, so a team landing from the
 build zone comes ashore either on the enemy's fell or on the enemy's Scar.
@@ -104,6 +104,11 @@ over the gill holds the brig and the back bridge under its fire.
 **Every monument floats three blocks over its ground, with no tree, rock or building within four blocks.** Grass
 and flowers grow under it, and the ground cover keeps its tall plants and bushes out of the same four blocks. The bench carries a broken sheepfold east of its monument as the defender's cover, and
 rocks fallen off the plateau to the west.
+
+**The build zone reaches every block of both front coasts.** It is read off the built land, the void from red's
+coast to blue's in each column, so `walks.txt` counts the front coast's 146 columns and finds none without the zone
+in front of it. A fixed band from z -14 to 13 had left up to six blocks of unbuildable void in front of the Scar and
+the gill's mouth.
 
 **Two walks run longer than planned.** The town monument is 52 from the spawn against 41 planned, because the street
 bends round the chapel. The enemy walks of 172 and 243 are long for a destroy board, because the void between the

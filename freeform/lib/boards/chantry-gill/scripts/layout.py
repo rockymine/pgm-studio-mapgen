@@ -35,7 +35,6 @@ SEEDS = [
     (-14, 112, 26, "high knott"), (-12, 98, 5, "spawn knoll"),
 ]
 SCENERY_RISE = 12
-BUILD_Z = (-14, 13)                       # the build zone over the void between the teams, the board's whole width
 X_RANGE = (-90, 89)
 FLOOR = 18                                   # the fell at the front coast: every height counts from it
 
