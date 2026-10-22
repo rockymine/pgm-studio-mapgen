@@ -60,6 +60,19 @@
             <filter id="not-red"/>
             <filter id="woolroom-materials"/>
         </all>
+        <material id="chest-filter">chest</material>
+        <not id="blue-chests-shut">
+            <all>
+                <filter id="only-blue"/>
+                <filter id="chest-filter"/>
+            </all>
+        </not>
+        <not id="red-chests-shut">
+            <all>
+                <filter id="only-red"/>
+                <filter id="chest-filter"/>
+            </all>
+        </not>
         <any id="may-break">
             <material>wood</material>
             <material>tnt</material>
@@ -149,6 +162,8 @@
         <apply enter="not-blue" region="blue-box-top" message="You may not stand on your own wool's box!"/>
         <cuboid min="83,19,7" max="96,41,21" id="red-box-top"/>
         <apply enter="not-red" region="red-box-top" message="You may not stand on your own wool's box!"/>
+        <apply use="blue-chests-shut" region="lime-room" message="These chests are for the enemy!"/>
+        <apply use="red-chests-shut" region="orange-room" message="These chests are for the enemy!"/>
         <apply block-break="may-break" message="Only what was built breaks, and the doors by a blast!"/>
         <negative id="not-build-area">
             <union>

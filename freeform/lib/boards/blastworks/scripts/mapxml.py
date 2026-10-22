@@ -24,6 +24,17 @@ class OnTheBox:
             doc.apply(enter=f"not-{team}", region=rid, message="You may not stand on your own wool's box!")
 
 
+class ChestsShut:
+    """A team's own wool room's chests stay shut to it: the supply is the attackers', as the studio writes it."""
+
+    def write(self, doc):
+        doc.filter("chest-filter", E("material", text="chest"))
+        for team, room in (("blue", "lime-room"), ("red", "orange-room")):
+            doc.filter(f"{team}-chests-shut", E("not", E("all", E("filter", id=f"only-{team}"),
+                                                         E("filter", id="chest-filter"))))
+            doc.apply(use=f"{team}-chests-shut", region=room, message="These chests are for the enemy!")
+
+
 class Breaking:
     """What a player brings breaks, and end stone by a blast alone; the works themselves hold."""
 
@@ -46,5 +57,5 @@ M = Map("Blastworks", "1.0.0", "Blow your way into the enemy's box, take their w
             Item("leather leggings", unbreakable=True, team_color=True, wear="leggings"),
             Item("leather boots", unbreakable=True, team_color=True, wear="boots")),
         build=Build(areas=L.ZONES + [parts.image(r) for r in L.ZONES], max_height=L.MAX_BUILD),
-        parts=[OnTheBox(), Breaking(), Tnt(), Crafting()])
+        parts=[OnTheBox(), ChestsShut(), Breaking(), Tnt(), Crafting()])
 print(M.xml())

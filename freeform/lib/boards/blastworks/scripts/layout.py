@@ -42,6 +42,7 @@ ROOF_DOOR = (-94, -19, -85, -10, 15, 17)         # x0, z0, x1, z1, y0, y1: end s
 SIDE_DOOR = (-79, -19, -77, -10, 2, 11)          # end stone in the east wall, onto the void under the bridge
 ROOM = (-95, -20, -80, -9, 2, 14)
 BOX_WOOL = (-91, 5, -15)
+ROOM_PAD, ROOM_DYE = (-91, -15), 5              # the 2x2 pad the wool lies on: lime in blue's box, orange in red's
 
 # ---- on the spawn -----------------------------------------------------------------------------------------------------
 HALL, HALL_H = (-106, 10, -96, 17), 21           # the grammar's piece where the house stood, set into the ground

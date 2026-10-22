@@ -99,32 +99,35 @@ def box(w):
     furnish(w, floor)
 
 
+SPEED = 8194                                             # a 1.8 potion of swiftness, Speed I for 3:00
+LOWER = [(r * 9 + i, item, n, d) for r, (item, n, d) in enumerate((("minecraft:planks", 16, 0),
+                                                                   ("minecraft:potion", 1, SPEED),
+                                                                   ("minecraft:golden_apple", 16, 0)))
+         for i in range(9)]
+UPPER = [(r * 9 + i, item, n, d) for r, (item, n, d) in enumerate((("minecraft:diamond_leggings", 1, 0),
+                                                                   ("minecraft:bow", 1, 0),
+                                                                   ("minecraft:planks", 16, 0)))
+         for i in range(9)]
+UPPER = [(s, i, n, d, [(48, 1), (51, 1)]) if i == "minecraft:bow" else (s, i, n, d) for s, i, n, d in UPPER]
+
+
 def furnish(w, floor):
-    """The wool room's store: the wool on a pedestal of chiseled quartz on the upper floor, a table with two chairs
-    beside it, a stack of crates with a chest at each of its two western corners, a block off the walls, and chests
-    and crates on the lower steps along the walls. Nothing on the upper floor stands against a
-    wall, and nothing on the steps reaches y 5, so every slit still looks in."""
+    """The wool room as the studio stamps one (WoolChests): two chests stacked in each of its four inner corners,
+    the lower holding planks, Speed I potions and golden apples, the upper diamond leggings, Power I Infinity bows
+    and planks, each opening along the side door's axis. The floor is the hall's checkerboard, and the wool lies
+    on a 2x2 pad of its own colour."""
     x0, z0, x1, z1, _, _ = L.ROOM
-    wx, wy, wz = L.BOX_WOOL
-    w.set(wx, wy - 1, wz, *S.CHISELED)
-    tx, tz = wx + 2, wz + 3                               # the table and its chairs
-    w.set(tx, wy, tz, B.SPRUCE_FENCE)
-    w.set(tx, wy + 1, tz, B.PLATE_WOOD)
-    w.set(tx - 1, wy, tz, B.SPRUCE_STAIRS, stair((-1, 0)))
-    w.set(tx + 1, wy, tz, B.SPRUCE_STAIRS, stair((1, 0)))
-    for z, dz in ((z0 + 1, 1), (z1 - 1, -1)):             # a stack of crates a block off each corner, a chest at it
-        for x, y in ((x0 + 1, 1), (x0 + 2, 1), (x0 + 1, 2)):
-            w.set(x, floor[x] + y, z, *S.SPRUCE_LOG)
-        w.set(x0 + 1, floor[x0 + 1] + 1, z + dz, *S.SPRUCE_LOG)
-        w.chest(x0 + 2, floor[x0 + 2] + 1, z + dz, [], 4)
-    for z, facing in ((z0, 3), (z1, 2)):                  # two double chests a wall, facing into the room
-        for x in (-87, -86, -85, -84):
-            w.chest(x, floor[x] + 1, z, [], facing)
-        for y in (1, 2):                                  # a stack of logs beside the lower pair of chests
-            w.set(-83, floor[-83] + y, z, *S.SPRUCE_LOG)
-        for x in (x1 - 1, x1):
-            w.set(x, floor[x] + 1, z, *S.SPRUCE)
-            w.set(x, floor[x] + 2, z, B.SPRUCE_STAIRS, stair((0, 1) if z == z0 else (0, -1)))
+    for x in range(x0, x1 + 1):
+        for z in range(z0, z1 + 1):
+            w.set(x, floor[x], z, *(S.DIORITE_RAW if (x + z) % 2 else S.DIORITE))
+    px, pz = L.ROOM_PAD
+    for x in (px, px + 1):
+        for z in (pz, pz + 1):
+            w.set(x, floor[x], z, B.WOOL, L.ROOM_DYE)
+    for x, facing in ((x0, 5), (x1, 4)):
+        for z in (z0, z1):
+            w.chest(x, floor[x] + 1, z, LOWER, facing)
+            w.chest(x, floor[x] + 2, z, UPPER, facing)
 
 
 def east(w):
