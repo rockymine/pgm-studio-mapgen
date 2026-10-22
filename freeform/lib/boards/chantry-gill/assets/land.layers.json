@@ -37,6 +37,13 @@
     "seed": 3
    }
   },
+  "scree": {
+   "fbm": {
+    "cell": 6,
+    "octaves": 2,
+    "seed": 27
+   }
+  },
   "grain": {
    "fbm": {
     "cell": 2,
@@ -1201,7 +1208,7 @@
     5
    ],
    "slope": [
-    38,
+    54,
     null
    ],
    "noise": {
@@ -1212,7 +1219,7 @@
   {
    "block": "COBBLE",
    "slope": [
-    46,
+    60,
     null
    ],
    "noise": {
@@ -1221,39 +1228,53 @@
    }
   },
   {
-   "block": "GRAVEL",
-   "slope": [
-    38,
-    48
-   ],
-   "noise": {
-    "field": "patch",
-    "lo": 0.35
-   }
-  },
-  {
    "block": [
     "STONE",
     0
    ],
    "slope": [
-    38,
+    54,
     null
+   ]
+  },
+  {
+   "block": "GRAVEL",
+   "slope": [
+    48,
+    54
+   ],
+   "noise": {
+    "field": "scree",
+    "lo": -0.15
+   }
+  },
+  {
+   "block": [
+    "STONE",
+    5
+   ],
+   "slope": [
+    48,
+    54
    ]
   }
  ],
  "lay": {
   "soil": [
    [
-    30,
+    34,
     3
    ],
    [
-    38,
+    48,
+    2
+   ],
+   [
+    54,
     1
    ]
   ],
-  "ledges": false
+  "ledges": true
  },
  "water": {
   "bed": [
