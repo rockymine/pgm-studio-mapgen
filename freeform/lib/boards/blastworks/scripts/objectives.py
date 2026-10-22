@@ -9,7 +9,7 @@ say how far. The wool's monument stands in the spawn's hall, in the corner besid
 """
 import layout as L
 from pgmvox import B
-from pgmvox.play.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams, Wool
+from pgmvox.play.objectives import DYES, Box, Destroyable, Objectives, Observer, Spawn, Teams, Wool
 from pgmvox.play.rules import Spawner
 
 TEAMS = Teams(("blue-team", "Blue", "blue", 16), ("red-team", "Red", "red", 16))
@@ -24,6 +24,20 @@ class Door(Destroyable):
     def check(self, w):
         n = sum(1 for p in self.box.blocks() if w.id(*p) == B.END_STONE)
         return [] if n == len(self.box.blocks()) else [f"door {self.id}: {n} of its blocks are end stone"]
+
+
+class PadWool(Wool):
+    """A wool no block of which lies in its room: PGM's spawner hands it to an attacker in the room, over the middle
+    of the room's 2x2 pad. Only the monument is stamped."""
+
+    def stamp(self, w):
+        x, y, z = self.slot
+        w.set(x, y - 1, z, B.BEDROCK)
+        w.set(x, y, z, B.AIR)
+        w.set(x, y + 1, z, B.STAINED_GLASS, DYES[self.color])
+
+    def check(self, w):
+        return [p for p in super().check(w) if "no wool at" not in p]
 
 
 def image(p):
@@ -55,7 +69,10 @@ def objectives():
                 area=hall_but_slot()))
     O.add(Observer((0.5, 30, 0.5), yaw=90), mirror=False)
     # blue takes orange from red's box; red takes lime from blue's
-    O.add(Wool("blue-team", "orange", L.SLOT, image(L.BOX_WOOL), red(room_box())), color="lime")
+    px, pz = L.ROOM_PAD                                  # the pad's middle, a corner of four blocks
+    mid = (px + 0.5, L.BOX_WOOL[1], pz + 0.5)
+    O.add(PadWool("blue-team", "orange", L.SLOT, image(L.BOX_WOOL), red(room_box()), spawn_at=image(mid)),
+          color="lime", spawn_at=mid)
     for did, name, (x0, z0, x1, z1, y0, y1) in (("blue-roof-door", "Roof Door", L.ROOF_DOOR),
                                                 ("blue-side-door", "Side Door", L.SIDE_DOOR)):
         O.add(Door(did, name, "blue-team", Box(x0, y0, z0, x1, y1, z1), (B.END_STONE, 0), "end stone", "100%",

@@ -38,8 +38,8 @@ Steg, or bridge eight blocks from the arm's end to the box and drop TNT.
 
 ## 3. The wool and its doors
 
-**The wool lies in the box's room on a 2x2 pad of its own colour, on a checkerboard floor that falls toward the
-side door.** The room is seen and shot into through the slits at y 5, 8 and 11, but no player walks through them.
+**No wool lies in the box's room: PGM's spawner hands it to an attacker standing in the room, every 1.5 seconds, over
+the middle of a 2x2 pad of its colour.** The floor is a checkerboard falling toward the side door. The room is seen and shot into through the slits at y 5, 8 and 11, but no player walks through them.
 Its chests are the studio's: two stacked in each inner corner, the lower with planks, Speed I potions and golden
 apples, the upper with diamond leggings, Power I Infinity bows and planks. The team keeping the room may not open
 them.

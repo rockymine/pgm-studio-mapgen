@@ -37,7 +37,7 @@ bridge's slab, and the east block's face over the void.
 
 **The author's review caught a monument no one could use.** In the hall's corner it was closed on all four sides,
 and inside the spawn's protection no block may be placed at all. It now stands open against a post, and its column
-is left out of the protection. The wool room has the studio's chests, two in each inner corner, the hall's checkerboard floor and a pad of the wool's colour under the wool; a table and stacks of logs were tried there and judged out of place.
+is left out of the protection. The wool room has the studio's chests, two in each inner corner, the hall's checkerboard floor and a pad of the wool's colour where PGM's spawner hands the wool out, with no wool block on it; a table and stacks of logs were tried there and judged out of place.
 
 ## 4. What was measured
 

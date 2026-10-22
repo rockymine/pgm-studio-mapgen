@@ -140,11 +140,11 @@
         <block id="orange-blue-monument">-97,13,12</block>
         <cuboid min="79,2,8" max="95,15,20" id="orange-room"/>
         <apply enter="not-red" region="orange-room" message="You may not enter your own wool room!"/>
-        <point id="orange-wool-spawn">90.5,6,14.5</point>
+        <point id="orange-wool-spawn">90,5,14</point>
         <block id="lime-red-monument">96,13,-13</block>
         <cuboid min="-95,2,-20" max="-79,15,-8" id="lime-room"/>
         <apply enter="not-blue" region="lime-room" message="You may not enter your own wool room!"/>
-        <point id="lime-wool-spawn">-90.5,6,-14.5</point>
+        <point id="lime-wool-spawn">-90,5,-14</point>
         <cuboid min="-94,15,-19" max="-84,18,-9" id="blue-roof-door-region"/>
         <cuboid min="84,15,9" max="94,18,19" id="red-roof-door-region"/>
         <cuboid min="-79,2,-19" max="-76,12,-9" id="blue-side-door-region"/>
