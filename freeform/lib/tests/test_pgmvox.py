@@ -2324,6 +2324,25 @@ class HouseDetails(unittest.TestCase):
         rows = {z for x, z in wet if x == 0}, {z for x, z in wet if x == 6}
         self.assertNotEqual(rows[0], rows[1])                                     # the ditches run turned
 
+    def test_a_boulder_is_one_rock_sunk_into_the_ground(self):
+        w = self.build([{"id": "b", "op": "boulders", "at": [[0, 0, 3.5]], "seed": 1, "accent_share": 0.2}]).world
+        rock = np.isin(w.ids, (B.STONE, B.COBBLE)) & (np.arange(w.sy)[None, :, None] > 40)
+        self.assertGreater(int(rock.sum()), 25)
+        ids = {int(b) for b in w.ids[rock]}
+        self.assertLessEqual(ids, {B.STONE, B.COBBLE})
+        self.assertLess(int((w.ids[rock] == B.COBBLE).sum()), int(rock.sum()) * 0.4)
+        self.assertNotEqual(w.id(0, 40, 0), B.GRASS)                               # sunk: the turf under it is rock
+
+    def test_the_lay_may_state_its_soil_so_steep_ground_is_rock(self):
+        from pgmvox.document import layers as document
+        doc = {"board": {"x": [-16, 15], "z": [-16, 15], "floor": 40, "height": 80, "seed": 1},
+               "ground": [{"id": "all", "op": "outline", "box": [-16, -16, 15, 15]},
+                          {"id": "ramp", "op": "base", "height": 40, "terms": [{"ramp": {"along": "x", "from": -8, "to": 8, "rise": 16}}]}],
+               "lay": {"soil": [[30, 3], [38, 1]], "ledges": False}}
+        w = document.build(doc).world
+        y = w.top(0, 0)
+        self.assertNotIn(w.id(0, y - 1, 0), (B.DIRT,))                             # no dirt under a 45 degree face
+
     def test_a_field_lays_farmland_and_its_fence_gate(self):
         w = self.build([{"id": "f", "op": "field", "rect": [-10, -10, 10, 10], "crops": [["WHEAT", 7]]}]).world
         self.assertGreater(int((w.ids == B.FARMLAND).sum()), 200)

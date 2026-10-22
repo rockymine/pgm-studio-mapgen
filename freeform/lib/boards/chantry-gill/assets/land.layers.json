@@ -37,6 +37,13 @@
     "seed": 3
    }
   },
+  "crag": {
+   "ridged": {
+    "cell": 7,
+    "octaves": 2,
+    "seed": 16
+   }
+  },
   "grain": {
    "fbm": {
     "cell": 2,
@@ -338,6 +345,55 @@
     }
    },
    "note": "the ridge along the back, a spur reaching north-west toward the tarn"
+  },
+  {
+   "id": "crags",
+   "op": "noise",
+   "mode": "lift",
+   "field": "crag",
+   "rise": 4,
+   "areas": [
+    {
+     "polygon": [
+      [
+       0,
+       84
+      ],
+      [
+       139,
+       80
+      ],
+      [
+       139,
+       106
+      ],
+      [
+       0,
+       106
+      ]
+     ]
+    },
+    {
+     "line": {
+      "pts": [
+       [
+        48,
+        96
+       ],
+       [
+        30,
+        70
+       ],
+       [
+        20,
+        54
+       ]
+      ],
+      "width": 10
+     }
+    }
+   ],
+   "note": "rock breaking out of the ridge's flank and the spur in ribs"
   },
   {
    "id": "tarn",
@@ -751,7 +807,7 @@
     5
    ],
    "slope": [
-    50,
+    38,
     null
    ],
    "noise": {
@@ -762,12 +818,23 @@
   {
    "block": "COBBLE",
    "slope": [
-    56,
+    46,
     null
    ],
    "noise": {
     "field": "grain",
-    "lo": 0.55
+    "lo": 0.6
+   }
+  },
+  {
+   "block": "GRAVEL",
+   "slope": [
+    38,
+    48
+   ],
+   "noise": {
+    "field": "patch",
+    "lo": 0.35
    }
   },
   {
@@ -776,25 +843,24 @@
     0
    ],
    "slope": [
-    50,
+    38,
     null
    ]
-  },
-  {
-   "block": [
-    "DIRT",
-    1
-   ],
-   "slope": [
-    40,
-    50
-   ],
-   "noise": {
-    "field": "patch",
-    "lo": 0.45
-   }
   }
  ],
+ "lay": {
+  "soil": [
+   [
+    30,
+    3
+   ],
+   [
+    38,
+    1
+   ]
+  ],
+  "ledges": false
+ },
  "water": {
   "bed": [
    {
@@ -913,17 +979,29 @@
     [
      104,
      45,
-     58,
-     1.9
+     55,
+     1.5
     ],
     [
      104,
      45,
-     65,
-     2.0
+     60,
+     4.4
+    ],
+    [
+     103,
+     45,
+     64,
+     4.6
     ],
     [
      105,
+     45,
+     68,
+     3.4
+    ],
+    [
+     104,
      44,
      73,
      2.0
@@ -937,10 +1015,11 @@
    ],
    "dress": {
     "seed": 12,
-    "stalagmites": 20,
-    "ores": 30
+    "stalagmites": 60,
+    "ores": 40,
+    "stalactites": 0.08
    },
-   "note": "the old adit, its mouth in the foot of the leaning face, running south into the fell"
+   "note": "a shelter worn into the foot of the leaning face, nine wide, the old adit running on from its back"
   }
  ],
  "volume": [
@@ -977,6 +1056,73 @@
    "under": "STONE",
    "rock": "STONE",
    "note": "the brig: from bank to bank of the gill, z 31 to 43, its deck at the banks' height"
+  }
+ ],
+ "build": [
+  {
+   "id": "erratics",
+   "op": "boulders",
+   "seed": 17,
+   "sink": 0.3,
+   "rough": 0.5,
+   "at": [
+    [
+     30,
+     44,
+     3.5,
+     {
+      "rz": 2.6,
+      "angle": 20
+     }
+    ],
+    [
+     52,
+     18,
+     2.5
+    ],
+    [
+     86,
+     24,
+     4,
+     {
+      "rz": 3,
+      "angle": -30,
+      "height": 3.5
+     }
+    ],
+    [
+     120,
+     18,
+     2.2
+    ],
+    [
+     70,
+     74,
+     3,
+     {
+      "angle": 60
+     }
+    ],
+    [
+     36,
+     50,
+     1.8
+    ],
+    [
+     128,
+     70,
+     3.2,
+     {
+      "rz": 2.2
+     }
+    ],
+    [
+     10,
+     88,
+     2.6
+    ]
+   ],
+   "note": "erratics the ice left on the fell, one rock each, a few of them big"
   }
  ]
 }

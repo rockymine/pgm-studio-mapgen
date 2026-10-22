@@ -128,6 +128,8 @@ may name another layer's line, so the river's sandy bank is the river's own line
 {"block": "SAND", "slope": [null, 30], "area": {"line": {"near": "fluss", "width": 12}}}
 ```
 
+**`lay` may state its `soil`** ([[up to degrees, depth], ...]) and turn `ledges` off, so ground steeper than the last band shows rock with no dirt between.
+
 **A column no layer takes is grass, or stone past 55 degrees.** Under the top, `lay` puts soil whose depth follows
 the slope and rock in beds that follow the surface. The water's bed has a stack of its own under `water.bed`.
 
@@ -150,6 +152,7 @@ the slope and rock in beds that follow the surface. The water's bed has a stack 
 | `hedge` | `line` or `near` + `offset`, `leaves`, `modules`, `drop`, `grass` (in the checker's gaps) | `green.hedge` |
 | `small_trees` | `at` (points), `trunk`, `log`, `leaves`, `bite` | `green.round_oak` |
 | `flowers` | `area`, `flowers`, `along`, `rows`, `angle` | `green.flower_rows` |
+| `boulders` | `at` ([x, z, r, {rz, height, angle, shape}] each), `rock`, `accent`, `accent_share`, `sink`, `rough`, `shape` | `green.boulder` |
 | `crops` | `area`, `crops`, `angle`, `rows`, `ditch`, `scarecrows` | `green.crop_rows` |
 
 **A hedge, a wall and a fence are the same layer with different blocks.** The island's hedge runs four blocks off

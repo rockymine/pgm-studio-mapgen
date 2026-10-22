@@ -9,6 +9,8 @@ and a field of flowers in rows.
 """
 import math
 
+import numpy as np
+
 from pgmvox.core.blocks import B
 
 LEAVES = (B.LEAVES, 4)                       # oak leaves that never decay
@@ -118,3 +120,42 @@ def flower_rows(w, cells, ground, flowers, along="x", rows=2, on=(B.GRASS,), ang
         w.set(x, g + 1, z, *flowers[(row // rows) % len(flowers)])
         planted.append((x, z))
     return planted
+
+
+def boulder(w, x, z, ground, r, rng, rz=None, height=None, angle=0.0, sink=0.3, rock=((B.STONE, 0), (B.STONE, 5)),
+            accent=(B.COBBLE, 0), accent_share=0.25, rough=0.35, shape=3.0):
+    """A boulder: an ellipsoid `r` across and `rz` the other way (turned `angle` degrees), `height` high, its surface
+    bitten by noise (`rough` of its radius), sunk `sink` of its height into the ground at its lowest. It is one rock:
+    `rock` in patches of a few blocks, `accent` in no more than `accent_share` of them. `shape` is the exponent of
+    its outline: 2 an ellipsoid, which reads as a stepped heap at this size, 3 a block with its edges worn round.
+    Returns its cells."""
+    rz = r * 0.8 if rz is None else rz
+    height = r * 0.75 if height is None else height
+    R = int(math.ceil(max(r, rz))) + 1
+    t = math.radians(angle)
+    c, s = math.cos(t), math.sin(t)
+    g = min(ground(x + a, z + b) for a in range(-R, R + 1) for b in range(-R, R + 1)
+            if (a * c + b * s) ** 2 / r ** 2 + (-a * s + b * c) ** 2 / rz ** 2 <= 1)
+    y0 = g + 1 - int(round(sink * height))
+    H = int(math.ceil(height)) + 1
+    bump = rng.normal(0, 1, (2 * R + 3, H + 2, 2 * R + 3))
+    from scipy import ndimage
+    bump = ndimage.gaussian_filter(bump, 1.2)
+    bump /= max(bump.std(), 1e-6)
+    patch = ndimage.gaussian_filter(rng.random((2 * R + 3, H + 2, 2 * R + 3)), 1.0)
+    inside = []
+    for a in range(-R, R + 1):
+        for b in range(-R, R + 1):
+            u, v = a * c + b * s, -a * s + b * c
+            for k in range(H + 1):
+                d = abs(u / r) ** shape + abs(v / rz) ** shape + abs((k + 0.5) / height) ** shape
+                if d <= 1 + rough * bump[a + R, k, b + R] * 0.5:
+                    inside.append((a, k, b))
+    lo = np.quantile([patch[a + R, k, b + R] for a, k, b in inside], accent_share) if inside else 0
+    cells = set()
+    for a, k, b in inside:
+        p = patch[a + R, k, b + R]
+        blk = accent if p < lo else rock[int(p * 997) % len(rock)]
+        w.set(x + a, y0 + k, z + b, *blk)
+        cells.add((x + a, z + b))
+    return sorted(cells)

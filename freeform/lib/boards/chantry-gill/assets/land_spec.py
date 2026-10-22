@@ -24,6 +24,7 @@ fields = {
     "small": {"fbm": {"cell": 16, "octaves": 2, "seed": 1}},
     "big": {"fbm": {"cell": 34, "octaves": 3, "seed": 2}},
     "patch": {"fbm": {"cell": 3, "octaves": 2, "seed": 3}},
+    "crag": {"ridged": {"cell": 7, "octaves": 2, "seed": 16}},
     "grain": {"fbm": {"cell": 2, "octaves": 1, "seed": 4}},
     "jag": {"mul": [{"fbm": {"cell": 4, "octaves": 2, "seed": 5}}, 2.5]},
     "ridge-foot": {"line": {"along": "x", "cell": 18, "seed": 6, "amp": 5, "base": 86}},
@@ -51,6 +52,10 @@ ground = [
                           "spurs": [{"d": {"line_distance": {"pts": [[48, 96], [30, 70], [20, 54]]}}, "top": 50,
                                      "reach": [16, 3]}]}},
      "note": "the ridge along the back, a spur reaching north-west toward the tarn"},
+    {"id": "crags", "op": "noise", "mode": "lift", "field": "crag", "rise": 4,
+     "areas": [{"polygon": [[0, 84], [139, 80], [139, 106], [0, 106]]},
+               {"line": {"pts": [[48, 96], [30, 70], [20, 54]], "width": 10}}],
+     "note": "rock breaking out of the ridge's flank and the spur in ribs"},
     {"id": "tarn", "op": "crater", "floor": 33, "flat": 3, "slope": 0.45, "melt": 6,
      "areas": [{"polygon": TARN, "rough": {"amp": 0.12, "cell": 5, "seed": 7}}],
      "note": "the tarn's bowl, shelving gently"},
@@ -78,15 +83,16 @@ paint = [
      "area": {"polygon": TARN, "plus": -0.08}, "noise": {"field": "patch", "lo": 0.1},
      "note": "and ragged a block higher, so its edge is not a contour"},
     {"block": "GRAVEL", "slope": [None, 30], "area": {"line": {"near": "beck", "width": 8}}, "noise": {"field": "patch", "lo": 0}},
-    {"block": ["STONE", 5], "slope": [50, None], "noise": {"field": "patch", "lo": 0.15}},
-    {"block": "COBBLE", "slope": [56, None], "noise": {"field": "grain", "lo": 0.55}},
-    {"block": ["STONE", 0], "slope": [50, None]},
-    {"block": ["DIRT", 1], "slope": [40, 50], "noise": {"field": "patch", "lo": 0.45}},
+    {"block": ["STONE", 5], "slope": [38, None], "noise": {"field": "patch", "lo": 0.15}},
+    {"block": "COBBLE", "slope": [46, None], "noise": {"field": "grain", "lo": 0.6}},
+    {"block": "GRAVEL", "slope": [38, 48], "noise": {"field": "patch", "lo": 0.35}},
+    {"block": ["STONE", 0], "slope": [38, None]},
 ]
 doc = {
     "document": "layers", "version": "draft-1",
     "board": {"name": "Chantry Gill land", "x": [0, 139], "z": [0, 109], "floor": 40, "height": 90, "seed": 3},
     "fields": fields, "ground": ground, "paint": paint,
+    "lay": {"soil": [[30, 3], [38, 1]], "ledges": False},
     "water": {"bed": [{"block": "GRAVEL", "noise": {"field": "patch", "lo": 0.1}}, {"block": "SAND", "noise": {"field": "patch", "lo": -0.3}}, {"block": "CLAY"}]},
     "levels": [
         {"id": "brow", "floor": TOP,
@@ -130,8 +136,14 @@ AX = 104
 foot = round(z0 + (z1 - z0) * (AX - x0) / (x1 - x0))
 mz = foot - 3
 fy = round(at(AX, mz)) + 1
-doc["carve"][0]["pts"] = [[AX, fy, mz, 1.9], [AX, fy, foot + 4, 2.0], [AX + 1, fy - 1, foot + 12, 2.0],
-                          [AX - 1, fy - 3, foot + 22, 2.2]]
-doc["carve"][0]["note"] = "the old adit, its mouth in the foot of the leaning face, running south into the fell"
+doc["carve"][0]["pts"] = [[AX, fy, mz - 3, 1.5], [AX, fy, foot - 1, 4.4], [AX - 1, fy, foot + 3, 4.6], [AX + 1, fy, foot + 7, 3.4],
+                          [AX, fy - 1, foot + 12, 2.0], [AX - 1, fy - 3, foot + 22, 2.2]]
+doc["carve"][0]["dress"] = {"seed": 12, "stalagmites": 60, "ores": 40, "stalactites": 0.08}
+doc["carve"][0]["note"] = "a shelter worn into the foot of the leaning face, nine wide, the old adit running on from its back"
+doc["build"] = [{"id": "erratics", "op": "boulders", "seed": 17, "sink": 0.3, "rough": 0.5,
+                 "at": [[30, 44, 3.5, {"rz": 2.6, "angle": 20}], [52, 18, 2.5], [86, 24, 4, {"rz": 3, "angle": -30, "height": 3.5}],
+                        [120, 18, 2.2], [70, 74, 3, {"angle": 60}], [36, 50, 1.8], [128, 70, 3.2, {"rz": 2.2}],
+                        [10, 88, 2.6]],
+                 "note": "erratics the ice left on the fell, one rock each, a few of them big"}]
 json.dump(doc, open(os.path.join(HERE, "land.layers.json"), "w"), indent=1)
 print(f"brig over z {zn}-{zs}, banks {col[zn]:.0f} and {col[zs]:.0f}; adit mouth at ({AX}, {fy}, {mz})")

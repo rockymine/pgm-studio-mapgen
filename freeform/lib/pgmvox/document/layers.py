@@ -670,7 +670,8 @@ def build(doc):
         u = lay["underside"]
         bottom = T.island_bottom(Hi, land, np.zeros(X.shape, bool), taper=tuple(u.get("taper", (4, 0.9))),
                                  rough=u.get("rough", 0) * noise.fbm(X.shape, 12, 2, seed=u.get("seed", 0)))
-    T.lay(w, np.where(land, Hi, -1), land, top=TOP, bands=T.beds(ROCK, Hi, seed=3), paint=paint, bottom=bottom)
+    T.lay(w, np.where(land, Hi, -1), land, top=TOP, bands=T.beds(ROCK, Hi, seed=3), paint=paint, bottom=bottom,
+          soil=tuple(tuple(v) for v in lay["soil"]) if "soil" in lay else T.SOIL, ledges=lay.get("ledges", True))
     out.steps.append(Step("lay", "lay", "lay", land.copy(), Hi.copy(), f"{len(paint)} paint layers"))
     if (water > 0).any():
         bed = [_paint_layer(P, X, Z, fields, lines, Hi) for P in doc.get("water", {}).get("bed", [])] or (B.GRAVEL, 0)
@@ -840,6 +841,20 @@ def build(doc):
                                   else None)
             for x, z in got:
                 laid[x - x0, z - z0] = True
+        elif L["op"] == "boulders":
+            from pgmvox.scenery import green as GR
+            g_at = lambda x, z: int(Hi[x - x0, z - z0])                                     # noqa: E731
+            rr = np.random.default_rng(L.get("seed", bd.get("seed", 0)))
+            for spec in L["at"]:
+                bx, bz, r = spec[:3]
+                kw = spec[3] if len(spec) > 3 else {}
+                for x, z in GR.boulder(w, bx, bz, g_at, r, rr, rz=kw.get("rz"), height=kw.get("height"),
+                                       angle=kw.get("angle", 0.0), sink=L.get("sink", 0.3),
+                                       rock=tuple(block(b) for b in L.get("rock", ["STONE", ["STONE", 5]])),
+                                       accent=block(L.get("accent", "COBBLE")), accent_share=L.get("accent_share", 0.25),
+                                       rough=L.get("rough", 0.35), shape=kw.get("shape", L.get("shape", 3.0))):
+                    if 0 <= x - x0 < laid.shape[0] and 0 <= z - z0 < laid.shape[1]:
+                        laid[x - x0, z - z0] = True
         elif L["op"] in ("hedge", "small_trees", "flowers", "crops"):
             from pgmvox.scenery import green as GR
             g_at = lambda x, z: int(Hi[x - x0, z - z0])                                     # noqa: E731
