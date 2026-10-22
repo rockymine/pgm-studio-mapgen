@@ -1,8 +1,8 @@
 <map proto="1.5.0">
     <name>Hollowstack</name>
     <version>1.0.0</version>
-    <objective>Capture the enemy's two wools, from the forest in its cavern and the vault in its dungeon, and carry them up to your keep.</objective>
-    <gamemode>ctw</gamemode>
+    <objective>Destroy the enemy's two monuments: the one over the shrine in the forest's cavern and the one in the vault at the back of the dungeon.</objective>
+    <gamemode>dtm</gamemode>
     <include id="gapple-kill-reward"/>
     <authors>
         <author>Claude (freeform generator, on pgmvox)</author>
@@ -13,8 +13,8 @@
             <item slot="1" material="bow" unbreakable="true">
                 <enchantment level="1">infinity</enchantment>
             </item>
-            <item slot="2" material="iron pickaxe" unbreakable="true">
-                <enchantment level="1">efficiency</enchantment>
+            <item slot="2" material="diamond pickaxe" unbreakable="true">
+                <enchantment level="2">efficiency</enchantment>
             </item>
             <item slot="3" material="iron axe" unbreakable="true"/>
             <item slot="4" material="wood" amount="64" damage="1"/>
@@ -44,26 +44,12 @@
         <not id="not-red">
             <team>red-team</team>
         </not>
-        <any id="woolroom-materials">
+        <any id="break-only">
             <material>wood</material>
-            <material>stained clay</material>
-            <material>web</material>
-            <all>
-                <cause>player</cause>
-                <any>
-                    <material>water</material>
-                    <material>stationary water</material>
-                </any>
-            </all>
+            <material>glass</material>
+            <material>ladder</material>
+            <material>obsidian</material>
         </any>
-        <all id="blues-woolrooms-filter">
-            <filter id="not-blue"/>
-            <filter id="woolroom-materials"/>
-        </all>
-        <all id="reds-woolrooms-filter">
-            <filter id="not-red"/>
-            <filter id="woolroom-materials"/>
-        </all>
         <not id="block-place-void-filter">
             <void/>
         </not>
@@ -110,57 +96,25 @@
         <cuboid min="-93,101,-11" max="-81,107,-2" id="red-spawn"/>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
         <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
-        <block id="lime-blue-monument">79,101,-7</block>
-        <cuboid min="-23,58,-6" max="-13,67,5" id="lime-room"/>
-        <apply enter="not-red" region="lime-room" message="You may not enter your own wool room!"/>
-        <point id="lime-wool-spawn">-17.5,60,-0.5</point>
-        <block id="orange-red-monument">-80,101,6</block>
-        <cuboid min="13,58,-5" max="23,67,6" id="orange-room"/>
-        <apply enter="not-blue" region="orange-room" message="You may not enter your own wool room!"/>
-        <point id="orange-wool-spawn">17.5,60,0.5</point>
-        <block id="yellow-blue-monument">79,101,7</block>
-        <cuboid min="-82,35,-19" max="-69,45,-6" id="yellow-room"/>
-        <apply enter="not-red" region="yellow-room" message="You may not enter your own wool room!"/>
-        <point id="yellow-wool-spawn">-80.5,37,-12.5</point>
-        <block id="light_blue-red-monument">-80,101,-8</block>
-        <cuboid min="69,35,6" max="82,45,19" id="light_blue-room"/>
-        <apply enter="not-blue" region="light_blue-room" message="You may not enter your own wool room!"/>
-        <point id="light_blue-wool-spawn">80.5,37,12.5</point>
-        <union id="blues-woolrooms">
-            <region id="orange-room"/>
-            <region id="light_blue-room"/>
-        </union>
-        <apply block="blues-woolrooms-filter" region="blues-woolrooms" message="You may not edit the wool room!"/>
-        <union id="reds-woolrooms">
-            <region id="lime-room"/>
-            <region id="yellow-room"/>
-        </union>
-        <apply block="reds-woolrooms-filter" region="reds-woolrooms" message="You may not edit the wool room!"/>
+        <cuboid min="17,62,0" max="18,65,1" id="blue-shrine-region"/>
+        <cuboid min="-18,62,-1" max="-17,65,0" id="red-shrine-region"/>
+        <cuboid min="80,39,12" max="81,42,13" id="blue-vault-region"/>
+        <cuboid min="-81,39,-13" max="-80,42,-12" id="red-vault-region"/>
+        <apply block-break="break-only" message="You may only break what was built!"/>
         <negative id="not-build-area">
             <rectangle min="-13,-28" max="13,28"/>
         </negative>
         <apply block-place="block-place-void-filter" block-break="block-break-void-filter" region="not-build-area" message="You may not edit the void!"/>
     </regions>
-    <wools craftable="false">
-        <wool team="blue-team" color="lime" monument="lime-blue-monument" location="-17.5,59,-0.5"/>
-        <wool team="red-team" color="orange" monument="orange-red-monument" location="17.5,59,0.5"/>
-        <wool team="blue-team" color="yellow" monument="yellow-blue-monument" location="-80.5,36,-12.5"/>
-        <wool team="red-team" color="light blue" monument="light_blue-red-monument" location="80.5,36,12.5"/>
-    </wools>
-    <spawners>
-        <spawner spawn-region="lime-wool-spawn" player-region="lime-room" delay="1.5s">
-            <item material="wool" damage="5"/>
-        </spawner>
-        <spawner spawn-region="orange-wool-spawn" player-region="orange-room" delay="1.5s">
-            <item material="wool" damage="1"/>
-        </spawner>
-        <spawner spawn-region="yellow-wool-spawn" player-region="yellow-room" delay="1.5s">
-            <item material="wool" damage="4"/>
-        </spawner>
-        <spawner spawn-region="light_blue-wool-spawn" player-region="light_blue-room" delay="1.5s">
-            <item material="wool" damage="3"/>
-        </spawner>
-    </spawners>
+    <destroyables>
+        <destroyable id="blue-shrine" name="Shrine Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-shrine-region"/>
+        <destroyable id="red-shrine" name="Shrine Monument" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-shrine-region"/>
+        <destroyable id="blue-vault" name="Vault Monument" owner="blue-team" materials="obsidian" completion="100%" mode-changes="true" region="blue-vault-region"/>
+        <destroyable id="red-vault" name="Vault Monument" owner="red-team" materials="obsidian" completion="100%" mode-changes="true" region="red-vault-region"/>
+    </destroyables>
+    <crafting>
+        <disable>crafting table</disable>
+    </crafting>
     <maxbuildheight>118</maxbuildheight>
     <block-drops>
         <rule>
@@ -179,7 +133,7 @@
     <itemkeep>
         <item>stone sword</item>
         <item>bow</item>
-        <item>iron pickaxe</item>
+        <item>diamond pickaxe</item>
         <item>iron axe</item>
         <item>golden apple</item>
         <item>water bucket</item>
@@ -194,6 +148,7 @@
         <item>leather chestplate</item>
         <item>leather leggings</item>
         <item>leather boots</item>
+        <item>obsidian</item>
         <item>flint</item>
         <item>gravel</item>
         <item>sapling</item>
@@ -209,7 +164,7 @@
     <toolrepair>
         <tool>stone sword</tool>
         <tool>bow</tool>
-        <tool>iron pickaxe</tool>
+        <tool>diamond pickaxe</tool>
         <tool>iron axe</tool>
         <tool>shears</tool>
     </toolrepair>

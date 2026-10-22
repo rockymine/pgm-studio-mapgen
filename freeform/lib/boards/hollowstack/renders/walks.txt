@@ -1,18 +1,14 @@
 footing problems: 0; water against air: 0
-Undercroft: 969 places a player reaches in its cells; with under three blocks of air over them 0 [], with three 8
+Undercroft: 969 places a player reaches in its cells; with under three blocks of air over them 0 [], with three 9
 Workings: 297 places a player reaches in its cells; with under three blocks of air over them 0 [], with three 0
-blue-team to the lime       wool (taken, bridging the chasm): 158
-blue-team to the orange     wool (kept, on foot): 128
-blue-team to the yellow     wool (taken, bridging the chasm): 231
-blue-team to the light_blue wool (kept, on foot): 127
-red-team  to the lime       wool (kept, on foot): 128
-red-team  to the orange     wool (taken, bridging the chasm): 158
-red-team  to the yellow     wool (kept, on foot): 127
-red-team  to the light_blue wool (taken, bridging the chasm): 231
-the lime       wool carried home to blue-team's monument: 120
-the orange     wool carried home to red-team's monument: 118
-the yellow     wool carried home to blue-team's monument: 210
-the light_blue wool carried home to red-team's monument: 212
+blue-team to blue-shrine (own, on foot): 128
+blue-team to red-shrine  (enemy, bridging the chasm): 117
+blue-team to blue-vault  (own, on foot): 127
+blue-team to red-vault   (enemy, bridging the chasm): 208
+red-team  to blue-shrine (enemy, bridging the chasm): 117
+red-team  to red-shrine  (own, on foot): 128
+red-team  to blue-vault  (enemy, bridging the chasm): 208
+red-team  to red-vault   (own, on foot): 127
 way keep well, the yard down into the Workings: 25
 way keep well, the yard down into the Undercroft: 53
 way descent cave, the Workings down into the Underwood: 88
@@ -21,8 +17,8 @@ way stair, the Undercroft's lower level up to its upper: 13
 way deep well, the Undercroft down into the grotto: 26
 way Underwood mouth to the shrine: 18
 way postern, the keep well into the Underwood's back: 20
-way Undercroft's upper balcony to the vault's wool: 93
-way the gallery on the chasm to the vault's wool: 67
+way Undercroft's upper balcony to the vault's monument: 93
+way the gallery on the chasm to the vault's monument: 67
 way Workings' gallery out to its timber stage: 6
 the Deep's hall out onto the chasm's face: 37
 the Underwood's mouth out onto the chasm's face: 21
@@ -31,7 +27,7 @@ the Workings out onto the chasm's face: 10
 light well: water at the foot of its drop yes, y 53; its top y 96, a fall of 43
 Root Well: water at the foot of its drop yes, y 14; its top y 56, a fall of 42
 plunge: water at the foot of its drop yes, y 55; its top y 99, a fall of 44
-blue-team to the orange     wool it keeps, taking the drops into water: 79
-blue-team to the light_blue wool it keeps, taking the drops into water: 75
-red-team  to the lime       wool it keeps, taking the drops into water: 79
-red-team  to the yellow     wool it keeps, taking the drops into water: 75
+blue-team to blue-shrine (own), taking the drops into water: 79
+blue-team to blue-vault  (own), taking the drops into water: 75
+red-team  to red-shrine  (own), taking the drops into water: 79
+red-team  to red-vault   (own), taking the drops into water: 75

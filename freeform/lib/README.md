@@ -513,6 +513,27 @@ each kit from end to end and measures the air over every place it reaches.
 the nearest it does not reach yet, each step costing a little at random and a turn costing more, so its passages
 run straight and meet. A spanning tree pruned back to the needed cells had left a maze through the whole level.
 
+## Approaches
+
+**A goal's approach is the studio's: a handful of rectangles, each named for what it does, ending in a room.**
+`plan.approach.emit` writes the eight forms of `pgm-studio/docs/generator/model.md` §4.6 (I, L, Z, scythe, clamp, U,
+H, donut) as ordered templates of `entry`, `run`, `bar`, `leg`, `room-run` and the `room`, last. `classify` reads
+the form back off the cells alone by the generator's decision tree, and agrees with the template on every form.
+
+**A way in gets a wall, and two ways in a pair.** `doors` counts the ways in, one plus every void they go round with
+the host drawn across the mouth; `walls` seats a bedrock wall on a seam with void past both its ends, two to four
+cells before the room, and a ring's pair across its two legs (model.md §5.14).
+
+**An approach can be laid on its side.** `built.chambers.lay` turns each part into a chamber, the chain a storey
+lower a part from its host to its room, ramps a block a step with a stair on each; the form's voids are shafts to
+the floor of the world, which no build zone covers, so they are crossed at no height.
+
+**A goal is read in the four phases of a long match.** `read.late.phases` walks to it on the ground, with the build
+zone bridged, on the sky over every column with ground under it, and with every block a player may break taken
+out; in each it walls the room's doors and walks again. A door holds where the goal is then shut off.
+`analysis/late-game/README.md` is what the phases showed, and the rules that keep a door a door:
+`Build(break_only=...)`, `Crafting(disable=...)` and `Renewables(...)`.
+
 ## Trees
 
 **The trees come from the studio's own library.** `trees.library()` reads its copied trees, the ones hand-built

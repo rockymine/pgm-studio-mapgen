@@ -44,7 +44,6 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `ctw/hoarfrost_reach` | `freeform/lib/boards/hoarfrost-reach` | `freeform/lib/boards/hoarfrost-reach` |
 | `ctw/hollowbeck` | `opus5-hollowbeck` | `specs/opus5-hollowbeck` |
 | `ctw/hollowmarch` | `opus5-hollowmarch` | `specs/archive/opus5-hollowmarch` |
-| `ctw/hollowstack` | `freeform/lib/boards/hollowstack` | `freeform/lib/boards/hollowstack` |
 | `ctw/hushwater` | `opus5-hushwater` | `specs/opus5-hushwater` |
 | `ctw/kettleshulme` | `opus5-kettleshulme` | `specs/opus5-kettleshulme` |
 | `ctw/kiln_row` | `opus5-kiln-row` | `specs/archive/opus5-kiln-row` |
@@ -169,6 +168,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `dtcm/hollow_mesa` | `freeform/lib/boards/hollow-mesa` | `freeform/lib/boards/hollow-mesa` |
 | `dtcm/hollowcrown` | `freeform/lib/boards/hollowcrown` | `freeform/lib/boards/hollowcrown` |
 | `dtcm/hollowmere` | `hollowmere` | — |
+| `dtcm/hollowstack` | `freeform/lib/boards/hollowstack` | `freeform/lib/boards/hollowstack` |
 | `dtcm/interchange` | `opus5-interchange` | `specs/archive/opus5-interchange` |
 | `dtcm/ironhold` | `ironhold` | — |
 | `dtcm/karnbeck` | `opus55-karnbeck` | `specs/opus55-karnbeck` |

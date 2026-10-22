@@ -2817,3 +2817,73 @@ class Wander(unittest.TestCase):
         self.assertAlmostEqual(pts[0][3], 4.5)
         self.assertTrue(any(abs(p[2]) > 0.5 for p in pts if p[0] < 29))    # it swings off the straight line
         self.assertTrue(all(2.0 <= p[3] <= 4.5 for p in pts))
+
+
+class Approaches(unittest.TestCase):
+    """The studio's approach forms: each read back as itself, its ways in counted, its walls seated where a way in
+    must cross them; laid underground, a door that holds while the rock cannot be broken and not once it can."""
+
+    def test_every_form_reads_back_as_itself(self):
+        from pgmvox.plan import approach as A
+        for f in A.FORMS:
+            for depth, reach in ((2, 1), (3, 2), (4, 3)):
+                a = A.emit(f, depth, reach)
+                self.assertEqual(A.classify(a.cells(), a.room), f, (f, depth, reach))
+                self.assertEqual(a.parts[-1].name, "room")
+
+    def test_ways_in_and_the_walls_that_close_them(self):
+        from pgmvox.plan import approach as A
+        for f in A.FORMS:
+            a = A.emit(f, 3, 2)
+            n = A.doors(a)
+            self.assertEqual(n, 2 if f in ("clamp", "U", "H", "donut") else 1, f)
+            ws = A.walls(a)
+            self.assertEqual(len(ws), n, f)
+            self.assertFalse(A._reaches(a.cells(), set(ws), a.entry, a.room), f)        # together they close it
+            for e in ws:
+                self.assertFalse(any(c in a.room for c in e))                           # never against the room
+        legs = A.walls(A.emit("donut", 3, 2))
+        a = A.emit("donut", 3, 2)
+        self.assertTrue(all(a.part_of(c) == "leg" for e in legs for c in e))           # a ring held on its legs
+
+    def test_underground_the_door_holds_only_while_the_rock_holds(self):
+        from pgmvox.built import chambers as CH
+        from pgmvox.plan import approach as A
+        from pgmvox.read import late
+        w = World(0, 0, 60, 60, 80)
+        w.ids[:, 1:70, :] = B.STONE
+        w.ids[:, 0, :] = B.BEDROCK
+        a = A.emit("L", 3, 3)
+        got = CH.lay(w, a, (10, 10), 60, 7, 6, np.random.default_rng(0), walls=False)
+        start, goal = CH.centre(got, got["host"][0]), CH.centre(got, sorted(a.room)[0])
+        door = []
+        rx, rz = 10 + sorted(a.room)[0][0] * 7, 10 + sorted(a.room)[0][1] * 7
+        for z in range(rz, rz + 7):
+            for y in range(goal[1], goal[1] + 8):
+                door.append((rx, y, z))
+        zone = np.zeros((w.sx, w.sz), bool)
+        usual = late.phases(w, start, goal, zone, 90, door=door)
+        held = late.phases(w, start, goal, zone, 69, door=door, breakable=set())
+        self.assertIsNotNone(usual["ground"])
+        self.assertTrue(usual["door"]["ground"])
+        self.assertFalse(usual["door"]["dug"])                       # dug round
+        self.assertTrue(held["door"]["dug"])                         # nothing to dig
+
+    def test_building_a_player_may_also_drop(self):
+        from pgmvox.read.walk import MoveRules, walk
+        w = World(0, 0, 12, 3, 20)
+        w.ids[:, 1:5, :] = B.STONE
+        w.ids[6:, 1:5, :] = 0
+        w.ids[6:, 1:3, :] = B.STONE                                   # a step down of two
+        land = np.ones((w.sx, w.sz), bool)
+        d = walk(w.ids, [(1, 5, 1)], 0, 0, MoveRules(max_drop=3, jumps=False, build=(land, (1, 15))))
+        self.assertGreaterEqual(d[9, 3, 1], 0)
+
+    def test_the_late_game_rules_are_written(self):
+        from pgmvox.play.objectives import Box
+        from pgmvox.play.rules import Build, Crafting, Map, Renewables
+        xml = Map("T", "1.0.0", "x", "ctw", build=Build(areas=[(0, 0, 3, 3)], break_only=("wood",)),
+                  parts=[Crafting(), Renewables([Box(0, 0, 0, 9, 9, 9)])]).xml()
+        self.assertIn("<disable>crafting table</disable>", xml)
+        self.assertIn('avoid-players="3"', xml)
+        self.assertLess(xml.index('block-break="break-only"'), xml.index("block-place-void-filter\" block-break"))

@@ -49,7 +49,7 @@ print(f"rock: {int((w.ids != 0).sum())} blocks; Tops y {int(S[S > 0].min())} to 
 m = wood_floor >= 0
 print(f"Underwood: {int(m.sum())} columns, floors y {int(wood_floor[m].min())} to {int(wood_floor[m].max())}, "
       f"roof to y {int(wood_roof[m].max())}")
-print(f"the shrine's wool at {shrine_at}, the vault's at {vault_at}")
+print(f"the shrine's altar at {shrine_at}, the vault's dais at {vault_at}")
 turn_world(w, "half", lambda x, z: x >= 0)
 O = OB.objectives()
 O.stamp(w)

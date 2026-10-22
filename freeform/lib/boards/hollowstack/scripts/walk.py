@@ -1,6 +1,6 @@
 """Read Hollowstack back from the built world: footing and water; every place a player stands in the laid passages
-and the air over it; each team's walk to the wools it keeps and to the wools it takes, bridging the chasm where it
-must; the carry home; and the ways between the storeys the plan names.
+and the air over it; each team's walk to its own monuments and to the enemy's, bridging the chasm where it must;
+and the ways between the storeys the plan names.
 
     python3 walk.py <build-dir>
 """
@@ -15,7 +15,7 @@ import objectives as P
 import passages
 import places
 from pgmvox import B, World
-from pgmvox.play.objectives import Spawn, Wool
+from pgmvox.play.objectives import Destroyable, Spawn
 from pgmvox.read import audit
 from pgmvox.read.walk import MoveRules, nearest, standing, walk
 
@@ -53,22 +53,22 @@ chasm = (X >= -L.FACE) & (X <= L.FACE - 1)
 foot = MoveRules(max_drop=3, jumps=False)
 built = MoveRules(max_drop=3, jumps=False, build=(chasm, (8, 112)))
 spawns = {o.team: o.at for o in O.of(Spawn)}
-wools = O.of(Wool)
+mons = O.of(Destroyable)
+
+
+def under(m):
+    b = m.box
+    return (b.x0, b.y0 - 3, b.z0)                                  # the floor under the floating monument
+
+
 for team, at in spawns.items():
     d0 = walk(w.ids, [at], w.x0, w.z0, foot)
     d1 = walk(w.ids, [at], w.x0, w.z0, built)
-    for o in wools:
-        x, y, z = o.found
-        own = o.keeper_of(O.teams) == team
-        d = nearest(d0 if own else d1, w.x0, w.z0, x, y, z, r=2)
-        print(f"{team:9} to the {o.color:10} wool ({'kept, on foot' if own else 'taken, bridging the chasm'}): "
-              f"{d if d is not None else 'not reached'}")
-for o in wools:
-    x, y, z = o.found
-    d = walk(w.ids, [(x, y, z + 1) if st[x - w.x0, y, z + 1 - w.z0] else (x + 1, y, z)], w.x0, w.z0, built)
-    sx, sy, sz = o.slot
-    n = nearest(d, w.x0, w.z0, sx, sy, sz, r=2)
-    print(f"the {o.color:10} wool carried home to {o.team}'s monument: {n if n is not None else 'not reached'}")
+    for m in mons:
+        own = m.team == team
+        n = nearest(d0 if own else d1, w.x0, w.z0, *under(m), r=2)
+        print(f"{team:9} to {m.id:11} ({'own, on foot' if own else 'enemy, bridging the chasm'}): "
+              f"{n if n is not None else 'not reached'}")
 
 
 def via(points, rules):
@@ -85,7 +85,7 @@ def via(points, rules):
 uc, wk = passages.grid_of(L.UNDERCROFT), passages.grid_of(L.WORKINGS)
 gx, gy, gz = uc.centre(*L.GATEHOUSE, 3)
 F = L.UNDERWOOD_FLOORS
-VAULT_WOOL = next(o.found for o in wools if o.found[0] > 0 and o.found[1] < 50)
+VAULT_WOOL = P.vault_at()
 WAYS = {
     "keep well, the yard down into the Workings": [L.SPAWN, wk.centre(12, L.KEEP_WELL[1], 0)],
     "keep well, the yard down into the Undercroft": [L.SPAWN, uc.centre(12, L.KEEP_WELL[1], 1)],
@@ -95,8 +95,8 @@ WAYS = {
     "deep well, the Undercroft down into the grotto": [uc.centre(13, 6, 0), (76, 22, 9)],
     "Underwood mouth to the shrine": [(30, F["mid"] + 1, 0), places.shrine_room()[:3]],
     "postern, the keep well into the Underwood's back": [uc.centre(12, L.KEEP_WELL[1], L.POSTERN_LEVEL), (58, 60, -3)],
-    "Undercroft's upper balcony to the vault's wool": [uc.centre(0, 0, 1), VAULT_WOOL],
-    "the gallery on the chasm to the vault's wool": [uc.centre(1, 3, 0), VAULT_WOOL],
+    "Undercroft's upper balcony to the vault's monument": [uc.centre(0, 0, 1), VAULT_WOOL],
+    "the gallery on the chasm to the vault's monument": [uc.centre(1, 3, 0), VAULT_WOOL],
     "Workings' gallery out to its timber stage": [wk.centre(0, 1, 0), (L.FACE, L.WORKINGS["y0"] + 1, -13)],
 }
 for name, pts in WAYS.items():
@@ -115,14 +115,13 @@ for name, (x, z, r) in (("light well", L.LIGHT_WELL), ("Root Well", L.ROOT_WELL)
     top = max(y for y in range(L.SY) if rim[y] not in (B.AIR,) and rim[y] not in (B.LEAVES, B.LEAVES2, B.TALLGRASS))
     if name == "Root Well":
         top = F["mouth"]                                           # it opens in the Underwood's floor
-    under = [y for y in range(1, top) if col[y] == B.WATER and col[y + 1] == B.AIR]
-    print(f"{name}: water at the foot of its drop {'yes, y ' + str(max(under)) if under else 'NO'}; "
-          f"its top y {top}, a fall of {top - max(under) if under else '?'}")
+    pool = [y for y in range(1, top) if col[y] == B.WATER and col[y + 1] == B.AIR]
+    print(f"{name}: water at the foot of its drop {"yes, y " + str(max(pool)) if pool else "NO"}; "
+          f"its top y {top}, a fall of {top - max(pool) if pool else "?"}")
 drops = MoveRules(max_drop=None, jumps=False)
 for team, at in spawns.items():
     d = walk(w.ids, [at], w.x0, w.z0, drops)
-    for o in wools:
-        if o.keeper_of(O.teams) == team:
-            x, y, z = o.found
-            n = nearest(d, w.x0, w.z0, x, y, z, r=2)
-            print(f"{team:9} to the {o.color:10} wool it keeps, taking the drops into water: {n}")
+    for m in mons:
+        if m.team == team:
+            n = nearest(d, w.x0, w.z0, *under(m), r=2)
+            print(f"{team:9} to {m.id:11} (own), taking the drops into water: {n}")

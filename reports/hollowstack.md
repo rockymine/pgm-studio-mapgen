@@ -1,9 +1,9 @@
-# Hollowstack: a vertical capture board laid from a segment kit
+# Hollowstack: a vertical destroy board laid from a segment kit
 
-**Hollowstack is a capture-the-wool board for two teams of sixteen, built in Python against pgmvox, read like a
+**Hollowstack is a destroy-the-monument board for two teams of sixteen, built in Python against pgmvox, read like a
 side-scrolling game's cross-section.** Two walls of rock riddled with holes face each other across a void chasm,
 and each wall is a stack of storeys a team lives in. The board is in `freeform/lib/boards/hollowstack`, its world in
-`maps/ctw/hollowstack`. No studio was driven for it, and nothing was written to the deployed studio; the local
+`maps/dtcm/hollowstack`. No studio was driven for it, and nothing was written to the deployed studio; the local
 studio wrote the world, rendered it and read its map.xml back.
 
 ## 1. What the map is
@@ -26,18 +26,21 @@ passage. Looking across from any mouth a player sees the other team's storeys st
 
 ## 2. How it plays
 
-**Each team keeps two wools and carries the enemy's two up to the monuments in its own keep's yard.** The Grove
-Shrine's wool lies on an altar on a spur in the Underwood's mouth, open to the chasm, the front wool fought over
-across it. The Vault's wool lies in the Undercroft's back room by the keep well, the deep wool, reached through the
-enemy's whole dungeon.
+**Each team defends two monuments, and the board was built for wools first.** The author's review turned it: a
+wool must always be defensible, and the Shrine's, on the chasm's very edge, was not. The Shrine monument floats over
+the altar on the spur in the Underwood's mouth, the front one fought over across the chasm; the Vault monument floats
+in the Undercroft's back room by the keep well, reached through the enemy's dungeon.
+
+**Only what a player builds may be broken, with the monuments, and no crafting table can be made.** The rock holds,
+so every route to a monument stays a route through its doors; `analysis/late-game/README.md` measures the difference
+on the Vault.
 
 | Walk | Blocks |
 |---|---|
-| spawn to the Shrine a team keeps, on foot / taking the drops into water | 128 / 79 |
-| spawn to the Vault a team keeps, on foot / taking the drops into water | 127 / 75 |
-| spawn to the enemy's Shrine, bridging the chasm | 158 |
-| spawn to the enemy's Vault, bridging the chasm | 231 |
-| the Shrine's wool carried home / the Vault's | 118 to 120 / 210 to 212 |
+| spawn to a team's own Shrine monument, on foot / taking the drops into water | 128 / 79 |
+| spawn to a team's own Vault monument, on foot / taking the drops into water | 127 / 75 |
+| spawn to the enemy's Shrine monument, bridging the chasm | 158 |
+| spawn to the enemy's Vault monument, bridging the chasm | 231 |
 
 **The ways between storeys are few and named, so the defence knows where to wait.** The keep well is one ladder from
 the yard through the Workings to the Undercroft, with a postern into the Underwood's back. A winding cave runs from
@@ -45,7 +48,7 @@ the Workings down into the Underwood, the gatehouse's ladder from the Underwood 
 third well down into the Deep. The fast ways down are falls into water: the light well from the Tops into the pond,
 the plunge from the keep's hillside into a pool, and the Root Well from the shrine's spur into the Deep.
 
-**The chasm is crossed by building at the height of the wool a team wants.** At the brink the stumps of a broken
+**The chasm is crossed by building at the height of the monument a team wants.** At the brink the stumps of a broken
 bridge reach out from both walls and leave eight blocks between them, the shortest crossing on the board; lower
 down a crossing is longer and under fire from every storey above it.
 
@@ -56,7 +59,7 @@ air, and that each of the 969 places a player reaches in the Undercroft's cells 
 least three blocks of air over it. All but eight have four; those eight stand on the crypt's tombs. Every named way
 between the storeys walks, and each storey reaches the chasm's face.
 
-**The studio reads the map.xml as valid**, with four wools, their four spawners, two spawns and two teams.
+**The studio reads the map.xml as valid**, with four destroyables, two spawns and two teams.
 `check.py` passes all unit tests, and every board and example builds to its recorded hash. The volcanoes study is
 the one exception, and it had no hashes before this work.
 

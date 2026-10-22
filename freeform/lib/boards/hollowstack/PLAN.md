@@ -1,6 +1,6 @@
 # Hollowstack: the plan
 
-Capture the wool, two teams of sixteen, two wools a team. Two walls of rock riddled like cheese face each other
+Destroy the monument, two teams of sixteen, two monuments a team. Two walls of rock riddled like cheese face each other
 across a void chasm, and every storey of each wall opens onto it. `scripts/layout.py` holds every number below as
 data, and `assets/` holds the segment sheet the passages were designed on.
 
@@ -8,7 +8,7 @@ data, and `assets/` holds the segment sheet the passages were designed on.
 
 **Two walls of honeycombed rock face each other across a chasm, each a stack of worlds: a wood on top, a mine
 under it, a forest in a cavern under that, a dungeon under the forest and fire at the bottom; every storey looks
-out over the chasm at its twin, and a wool is kept in the forest and in the dungeon.**
+out over the chasm at its twin, and a monument stands in the forest and in the dungeon.**
 
 The board is read like a side-scrolling game's cross-section. Standing at any mouth, a player sees the other team's
 storeys stacked opposite, lit and open, the way a cut through an ant's nest shows its chambers.
@@ -27,16 +27,20 @@ long, 56 deep and 108 high. Each wall runs from the chasm's face at x 12 to the 
 | **The Deep** | floors at y 13 to 20 | a cavern with a lava lake held in obsidian, a pool under the Root Well and a grotto of huge mushrooms |
 | **The Chasm** | x -12 to 11, all heights | the void between the walls, 24 across, the whole of it the build zone |
 
-## 3. The wools
+## 3. The monuments
 
-Each team keeps two wools on its own side and carries the enemy's two home to its keep.
+**Each team defends two obsidian monuments on its own side.** The board was built for capture the wool and the
+author's review turned it: a wool must always be defensible, and the Shrine's, at the very edge of the chasm, was
+not. A monument is broken where it stands, so the map asks to be held rather than raided.
 
-| Wool kept | Where | Its room |
+| Monument | Where | What holds it |
 |---|---|---|
-| **The Grove Shrine** | a ruined round of pillars on a spur of rock in the Underwood's mouth, y 57 | open to the chasm in front, the Root Well's drop beside it, held from the terraces behind: the front wool, the one fought over across the chasm |
-| **The Vault** | the Undercroft's back room, two storeys high, by the foot of the keep well, y 34 | three cells by three, its doors on the corridors; the deep wool, reached across the chasm and through the enemy's whole dungeon |
+| **The Shrine** | floating over the altar of a ruined round of pillars on a spur in the Underwood's mouth, y 57 | the terraces behind it; the front monument, fought over across the chasm |
+| **The Vault** | floating over the dais at the back of the Undercroft, two storeys high, by the foot of the keep well, y 34 | its doors on the corridors; the deep monument, reached through the enemy's dungeon |
 
-The monuments stand in the keep's yard at y 100, beside the well house, where a carrier comes up the ladder.
+**Only what a player builds may be broken, and the monuments.** The map writes `Build(break_only=("wood", "glass",
+"ladder", "obsidian"))` and disables the crafting table, so the rock holds: no route to a monument goes round its
+doors, and no fence or fence gate is crafted for the late game's sky (`analysis/late-game/README.md`).
 
 ## 4. The ways
 
@@ -53,8 +57,8 @@ Deep's pool.
 the Undercroft by the gallery's two arcades and two balconies, the Deep by a cave mouth. At the brink the stumps of
 a broken bridge reach out from both walls and leave eight blocks between them, the shortest crossing on the board.
 
-**Back up with the wool.** A carrier goes back across the chasm and up their own wall: the segment stairs, the
-ladder wells and the winding caves are the only ways up, so the defence knows where to wait.
+**The ways in are few.** The segment stairs, the ladder wells and the winding caves are the only ways between the
+storeys, and with the rock unbreakable they stay the only ways, so the defence knows where to wait.
 
 ## 5. As built
 
@@ -64,15 +68,16 @@ three blocks of air over it (all but eight, on the crypt's tombs, have four).
 
 | Walk | Blocks |
 |---|---|
-| spawn to the Shrine it keeps, on foot / taking the drops into water | 128 / 79 |
-| spawn to the Vault it keeps, on foot / taking the drops into water | 127 / 75 |
-| spawn to the enemy's Shrine, bridging the chasm | 158 |
-| spawn to the enemy's Vault, bridging the chasm | 231 |
-| the Shrine's wool carried home | 118 to 120 |
-| the Vault's wool carried home | 210 to 212 |
+| spawn to its own Shrine monument, on foot / taking the drops into water | 128 / 79 |
+| spawn to its own Vault monument, on foot / taking the drops into water | 127 / 75 |
+| spawn to the enemy's Shrine monument, bridging the chasm | 158 |
+| spawn to the enemy's Vault monument, bridging the chasm | 231 |
 | the keep well, the yard to the Workings / to the Undercroft | 25 / 53 |
 | the postern, the keep well into the Underwood | 20 |
-| the gallery on the chasm to the Vault's wool | 67 |
+| the gallery on the chasm to the Vault's monument | 67 |
+
+**In a long match's phases the Vault's doors hold.** `scripts/late.py` walks red's spawn to the Vault with its
+doors walled: under the usual rules a route dug round them is 176 blocks; under this board's rules there is none.
 
 **The passages come from pgmvox's segment kit.** `assets/segments_sheet.py` lays every piece in both kits and walks
 them; the Undercroft has 53 passage cells, six rooms, two stairs and three wells, the Workings 31 cells and a room.
@@ -81,6 +86,7 @@ between the corridors stays solid.
 
 ## Open
 
-- The Shrine is close to even: 128 on foot for its keepers against 158 for its takers. It is the front wool by
+- The Shrine is close to even: 128 on foot for its keepers against 158 for its takers. It is the front monument by
   design, but the defence leans on the drops into water to get there first.
-- The Vault's carry home is long, 210; a carrier has the whole enemy wall and the chasm to cross.
+- The board is a fun map, not one to play many times; a board composed from `plan.approach` under one roof is the
+  serious form of it.
