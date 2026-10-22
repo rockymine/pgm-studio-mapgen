@@ -37,7 +37,7 @@ bridge's slab, and the east block's face over the void.
 
 **The author's review caught a monument no one could use.** In the hall's corner it was closed on all four sides,
 and inside the spawn's protection no block may be placed at all. It now stands open against a post, and its column
-is left out of the protection. The wool room was furnished as a store, every piece below the slits.
+is left out of the protection. The wool room was furnished as a store, with nothing standing in front of a slit.
 
 ## 4. What was measured
 
