@@ -1,4 +1,8 @@
-"""A bunker drawn from a board the studio composed: the generator's layout under a roof, its land standing in the
+"""A record of a miss, kept for Frostvault: the author judged the transfer wrong (a hole in the land made a pillar on
+the land, defence walls raised to the roof; reports/frostvault.md §6). A board in the concept is drawn from the void
+outward.
+
+A bunker drawn from a board the studio composed: the generator's layout under a roof, its land standing in the
 void as islands, its holes turned to pillars, the world outside it turned to rock.
 
     c = bunker.load("composed.json")              # pgmvox/data/compose_board.cs wrote it

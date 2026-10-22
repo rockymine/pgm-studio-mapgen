@@ -82,6 +82,11 @@ as well as movement. The world outside is rock, the edge of play, with a moat of
 generator's own isolation cut (model.md §6.2): a wool's approach and the frontline are each cut from the rest of the
 team's land by two cells of void. A wool room is rock with its seal on the void, the land in front of it cut back.
 
+**The author judged Frostvault, the first board drawn so, a miss, and three rules come out of it.** A pillar stands
+alone in the void with a gap all round it, never on land, so a hole in the land is not a pillar. A defence wall is
+not raised to the roof. And a layout for the concept is drawn from the void outward, not taken from the generator's
+land with holes in it (`reports/frostvault.md` §6).
+
 **The roof is the measure that closes the late game, and it closes it by construction.** The sky phase is building
 on every column to the build height, and under a roof that height is 24 blocks over the floors: there is no sky
 route that is not a bridge. The seal is the door, and only a blast breaks it.

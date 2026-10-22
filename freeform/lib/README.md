@@ -557,6 +557,10 @@ capsule of end stone, a gap and a screen. `dress` puts pipes, screens, vents and
 in the roof and snow on the islands. Frostvault is a composed board laid so; Coldstore is the author's concept
 quarter, which taught it.
 
+**The author judged the transfer a miss, so `plan.bunker.draw` is a record, not a recipe.** It turns a hole in the
+land into a pillar on the land and raises defence walls to the roof; in the concept a pillar stands alone in the void
+and no wall is raised. A board in the concept is drawn from the void outward (`reports/frostvault.md` §6).
+
 ## Trees
 
 **The trees come from the studio's own library.** `trees.library()` reads its copied trees, the ones hand-built

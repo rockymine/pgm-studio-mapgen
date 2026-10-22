@@ -1,5 +1,7 @@
 # Frostvault: a composed board read as a bunker
 
+**The author judged the transfer a miss, and the lessons are in §6.** The board stands as the record of the attempt.
+
 **Frostvault is the bunker concept carried onto a layout the studio's generator composed: 24 players a team,
 mirrored, seed 11.** It is the second half of the author's request: learn the concept on the quarter they sent
 (`reports/coldstore.md`), then transfer it to a generator layout. The board is in `freeform/lib/boards/frostvault`,
@@ -56,3 +58,19 @@ out, is kept for the approach study and marked so.
 
 - The board is large, as the generator draws 24 a team. The far wool is 331 blocks of bridging from the enemy.
 - Whether the hub should be cut into islands too is the author's call; the parameter is there.
+
+## 6. The author's verdict, and what it teaches
+
+**A defence wall to the roof is not wanted.** Under a roof a §5.14 wall is raised to the ceiling, and a wall from
+the floor to the roof across an approach is ugly and does nothing the void cannot.
+
+**A pillar never touches an island.** In the concept every pillar stands alone in the void, a gap all round it.
+Turning a hole inside the land into a pillar puts the pillar on the land, which is the opposite of the concept: the
+pillar there replaced a void and took away the gap the board lives from.
+
+**The generator's layout is the wrong ground for the concept.** It is built of land joined into a mass with holes in
+it; the concept is built of void with islands and pillars standing in it. A board in the concept wants a layout of
+its own, drawn from the void outward, and it may be as small as one wool a team.
+
+**A wool room need not be sealed.** The seal is Ender Blast's, one way to do it; a plain wool room at the end of an
+approach, tied to nothing else, is as good. And beside a spawn there is a place its own team may not build in.
