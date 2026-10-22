@@ -1,0 +1,1633 @@
+{
+ "document": "layers",
+ "version": "draft-1",
+ "board": {
+  "name": "Chantry Gill in winter",
+  "x": [
+   0,
+   139
+  ],
+  "z": [
+   0,
+   109
+  ],
+  "floor": 40,
+  "height": 90,
+  "seed": 3,
+  "biome": 12
+ },
+ "fields": {
+  "small": {
+   "fbm": {
+    "cell": 16,
+    "octaves": 2,
+    "seed": 1
+   }
+  },
+  "big": {
+   "fbm": {
+    "cell": 34,
+    "octaves": 3,
+    "seed": 2
+   }
+  },
+  "patch": {
+   "fbm": {
+    "cell": 3,
+    "octaves": 2,
+    "seed": 3
+   }
+  },
+  "scree": {
+   "fbm": {
+    "cell": 6,
+    "octaves": 2,
+    "seed": 27
+   }
+  },
+  "grain": {
+   "fbm": {
+    "cell": 2,
+    "octaves": 1,
+    "seed": 4
+   }
+  },
+  "jag": {
+   "mul": [
+    {
+     "fbm": {
+      "cell": 4,
+      "octaves": 2,
+      "seed": 5
+     }
+    },
+    2.5
+   ]
+  },
+  "talus-reach": {
+   "clip": [
+    {
+     "add": [
+      8,
+      {
+       "mul": [
+        {
+         "fbm": {
+          "cell": 11,
+          "octaves": 2,
+          "seed": 25
+         }
+        },
+        9
+       ]
+      }
+     ]
+    },
+    2,
+    15
+   ]
+  },
+  "talus-share": {
+   "clip": [
+    {
+     "add": [
+      0.32,
+      {
+       "mul": [
+        {
+         "fbm": {
+          "cell": 13,
+          "octaves": 2,
+          "seed": 26
+         }
+        },
+        0.4
+       ]
+      }
+     ]
+    },
+    0.05,
+    0.65
+   ]
+  },
+  "scar-d": {
+   "sub": [
+    "z",
+    {
+     "line_z": {
+      "pts": [
+       [
+        60,
+        70
+       ],
+       [
+        80,
+        63
+       ],
+       [
+        100,
+        60
+       ],
+       [
+        120,
+        63
+       ],
+       [
+        139,
+        58
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  "knott-d": {
+   "add": [
+    {
+     "sub": [
+      "z",
+      82
+     ]
+    },
+    {
+     "mul": [
+      {
+       "sub": [
+        "x",
+        108
+       ]
+      },
+      -0.22
+     ]
+    }
+   ]
+  },
+  "knott-fade": {
+   "mul": [
+    {
+     "smoothstep": [
+      -30,
+      -14,
+      {
+       "sub": [
+        "x",
+        108
+       ]
+      }
+     ]
+    },
+    {
+     "sub": [
+      1,
+      {
+       "smoothstep": [
+        14,
+        30,
+        {
+         "sub": [
+          "x",
+          108
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "knott-crest": {
+   "add": [
+    12,
+    {
+     "mul": [
+      {
+       "fbm": {
+        "cell": 10,
+        "octaves": 2,
+        "seed": 23
+       }
+      },
+      3
+     ]
+    }
+   ]
+  },
+  "edge-d": {
+   "add": [
+    {
+     "mul": [
+      {
+       "sub": [
+        "x",
+        40
+       ]
+      },
+      -0.62
+     ]
+    },
+    {
+     "mul": [
+      {
+       "sub": [
+        "z",
+        84
+       ]
+      },
+      0.78
+     ]
+    }
+   ]
+  },
+  "edge-along": {
+   "add": [
+    {
+     "mul": [
+      {
+       "sub": [
+        "x",
+        40
+       ]
+      },
+      0.78
+     ]
+    },
+    {
+     "mul": [
+      {
+       "sub": [
+        "z",
+        84
+       ]
+      },
+      0.62
+     ]
+    }
+   ]
+  },
+  "edge-fade": {
+   "mul": [
+    {
+     "smoothstep": [
+      -40,
+      -22,
+      "edge-along"
+     ]
+    },
+    {
+     "sub": [
+      1,
+      {
+       "smoothstep": [
+        16,
+        34,
+        "edge-along"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "edge-crest": {
+   "add": [
+    15,
+    {
+     "mul": [
+      {
+       "fbm": {
+        "cell": 12,
+        "octaves": 2,
+        "seed": 22
+       }
+      },
+      3
+     ]
+    },
+    {
+     "mul": [
+      -0.12,
+      "edge-along"
+     ]
+    }
+   ]
+  },
+  "fade": {
+   "mul": [
+    {
+     "smoothstep": [
+      60,
+      90,
+      {
+       "add": [
+        "x",
+        {
+         "mul": [
+          {
+           "fbm": {
+            "cell": 9,
+            "octaves": 2,
+            "seed": 24
+           }
+          },
+          9
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "sub": [
+      1,
+      {
+       "smoothstep": [
+        116,
+        139,
+        "x"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "reach": {
+   "line": {
+    "along": "x",
+    "cell": 14,
+    "seed": 13,
+    "amp": 2.2,
+    "base": 4,
+    "clip": [
+     1,
+     6
+    ]
+   }
+  },
+  "reach-in": {
+   "mul": [
+    "reach",
+    {
+     "smoothstep": [
+      0.25,
+      0.9,
+      "fade"
+     ]
+    }
+   ]
+  },
+  "plateau": {
+   "add": [
+    58,
+    {
+     "mul": [
+      "small",
+      0.6
+     ]
+    },
+    {
+     "mul": [
+      0.1,
+      {
+       "sub": [
+        "x",
+        100
+       ]
+      }
+     ]
+    },
+    {
+     "mul": [
+      -0.22,
+      {
+       "pow": [
+        {
+         "max": [
+          0,
+          {
+           "sub": [
+            {
+             "abs": {
+              "sub": [
+               "x",
+               101
+              ]
+             }
+            },
+            16
+           ]
+          }
+         ]
+        },
+        1.35
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "ground": [
+  {
+   "id": "land",
+   "op": "outline",
+   "box": [
+    0,
+    0,
+    139,
+    109
+   ]
+  },
+  {
+   "id": "fell",
+   "op": "base",
+   "height": 40,
+   "terms": [
+    {
+     "tilt": {
+      "dx": 0.03,
+      "dz": 0.06
+     }
+    },
+    {
+     "gauss": {
+      "at": [
+       40,
+       80
+      ],
+      "r": 30,
+      "rise": 4,
+      "rz": 22,
+      "angle": 25
+     }
+    },
+    {
+     "noise": {
+      "field": "big",
+      "rise": 2.0
+     }
+    }
+   ],
+   "note": "the fell: rising south and a little east, a swell south-west, rolling in two sizes"
+  },
+  {
+   "id": "scar",
+   "op": "set",
+   "where": {
+    "gt": [
+     "scar-d",
+     -16
+    ]
+   },
+   "height": {
+    "add": [
+     "H",
+     {
+      "mul": [
+       "fade",
+       {
+        "max": [
+         0,
+         {
+          "sub": [
+           "plateau",
+           "H"
+          ]
+         }
+        ]
+       },
+       {
+        "add": [
+         {
+          "mul": [
+           "talus-share",
+           {
+            "smoothstep": [
+             {
+              "neg": "talus-reach"
+             },
+             0.5,
+             "scar-d"
+            ]
+           }
+          ]
+         },
+         {
+          "mul": [
+           {
+            "sub": [
+             1,
+             "talus-share"
+            ]
+           },
+           {
+            "smoothstep": [
+             {
+              "add": [
+               -1,
+               "jag"
+              ]
+             },
+             {
+              "add": [
+               3,
+               "jag"
+              ]
+             },
+             "scar-d"
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "note": "the scar: a step of limestone up to the plateau, its edge ragged, dying into the fell at both ends"
+  },
+  {
+   "id": "knott",
+   "op": "set",
+   "where": {
+    "gt": [
+     "knott-fade",
+     0
+    ]
+   },
+   "height": {
+    "add": [
+     "H",
+     {
+      "mul": [
+       "knott-fade",
+       "knott-crest",
+       {
+        "add": [
+         {
+          "mul": [
+           "talus-share",
+           {
+            "smoothstep": [
+             {
+              "neg": "talus-reach"
+             },
+             0.5,
+             "knott-d"
+            ]
+           }
+          ]
+         },
+         {
+          "mul": [
+           {
+            "sub": [
+             1,
+             "talus-share"
+            ]
+           },
+           {
+            "smoothstep": [
+             {
+              "add": [
+               -1,
+               "jag"
+              ]
+             },
+             {
+              "add": [
+               3,
+               "jag"
+              ]
+             },
+             "knott-d"
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "sub": [
+         1,
+         {
+          "mul": [
+           0.6,
+           {
+            "smoothstep": [
+             5,
+             26,
+             "knott-d"
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "note": "the knott: a crag behind the scar, its face to the north over the brow, its back grass"
+  },
+  {
+   "id": "knott-gullies",
+   "op": "set",
+   "height": {
+    "gullies": {
+     "at": [
+      108,
+      130
+     ],
+     "count": 70,
+     "depth": 4,
+     "r0": 30,
+     "r1": 60,
+     "wander": 0.4,
+     "sharpness": 5,
+     "seed": 19
+    }
+   },
+   "where": {
+    "and": [
+     {
+      "gt": [
+       "knott-fade",
+       0.2
+      ]
+     },
+     {
+      "gt": [
+       "knott-d",
+       -3
+      ]
+     },
+     {
+      "lt": [
+       "knott-d",
+       8
+      ]
+     }
+    ]
+   },
+   "note": "gullies cut into its face"
+  },
+  {
+   "id": "edge",
+   "op": "set",
+   "where": {
+    "gt": [
+     "edge-fade",
+     0
+    ]
+   },
+   "height": {
+    "add": [
+     "H",
+     {
+      "mul": [
+       "edge-fade",
+       "edge-crest",
+       {
+        "add": [
+         {
+          "mul": [
+           "talus-share",
+           {
+            "smoothstep": [
+             {
+              "neg": "talus-reach"
+             },
+             0.5,
+             "edge-d"
+            ]
+           }
+          ]
+         },
+         {
+          "mul": [
+           {
+            "sub": [
+             1,
+             "talus-share"
+            ]
+           },
+           {
+            "smoothstep": [
+             {
+              "add": [
+               -1,
+               "jag"
+              ]
+             },
+             {
+              "add": [
+               3,
+               "jag"
+              ]
+             },
+             "edge-d"
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "sub": [
+         1,
+         {
+          "mul": [
+           0.7,
+           {
+            "smoothstep": [
+             5,
+             34,
+             "edge-d"
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "note": "the edge: a scarp set slantwise west of a col, its face to the north-east, its back falling away"
+  },
+  {
+   "id": "edge-gullies",
+   "op": "set",
+   "height": {
+    "gullies": {
+     "at": [
+      62,
+      126
+     ],
+     "count": 60,
+     "depth": 4,
+     "r0": 36,
+     "r1": 70,
+     "wander": 0.4,
+     "sharpness": 5,
+     "seed": 21
+    }
+   },
+   "where": {
+    "and": [
+     {
+      "gt": [
+       "edge-fade",
+       0.2
+      ]
+     },
+     {
+      "gt": [
+       "edge-d",
+       -3
+      ]
+     },
+     {
+      "lt": [
+       "edge-d",
+       8
+      ]
+     }
+    ]
+   },
+   "note": "gullies cut into its face"
+  },
+  {
+   "id": "tarn",
+   "op": "crater",
+   "floor": 33,
+   "flat": 3,
+   "slope": 0.45,
+   "melt": 6,
+   "areas": [
+    {
+     "polygon": [
+      [
+       4,
+       18
+      ],
+      [
+       14,
+       12
+      ],
+      [
+       26,
+       15
+      ],
+      [
+       34,
+       22
+      ],
+      [
+       32,
+       33
+      ],
+      [
+       24,
+       40
+      ],
+      [
+       10,
+       41
+      ],
+      [
+       2,
+       32
+      ]
+     ],
+     "rough": {
+      "amp": 0.12,
+      "cell": 5,
+      "seed": 7
+     }
+    }
+   ],
+   "note": "the tarn's bowl, shelving gently"
+  },
+  {
+   "id": "tongue",
+   "op": "level",
+   "mode": "set",
+   "top": 37,
+   "inner": 0.7,
+   "outer": 1.2,
+   "areas": [
+    {
+     "polygon": [
+      [
+       22,
+       12
+      ],
+      [
+       26,
+       13
+      ],
+      [
+       24,
+       24
+      ],
+      [
+       20,
+       26
+      ],
+      [
+       19,
+       18
+      ]
+     ],
+     "rough": {
+      "amp": 0.1,
+      "cell": 3,
+      "seed": 8
+     }
+    }
+   ],
+   "note": "a tongue of land running out into the tarn from its north shore"
+  },
+  {
+   "id": "beach-side",
+   "op": "level",
+   "mode": "cut",
+   "top": 37,
+   "inner": 0.45,
+   "outer": 1.7,
+   "areas": [
+    {
+     "ellipse": {
+      "at": [
+       16,
+       8
+      ],
+      "rx": 22,
+      "rz": 12
+     },
+     "rough": {
+      "amp": 0.1,
+      "cell": 6,
+      "seed": 14
+     }
+    }
+   ],
+   "note": "the fell let down gently to the tarn's north shore, where the beach is"
+  },
+  {
+   "id": "gill",
+   "op": "level",
+   "mode": "cut",
+   "top": 34,
+   "inner": 0.5,
+   "outer": 1.0,
+   "areas": [
+    {
+     "line": {
+      "pts": [
+       [
+        139,
+        40
+       ],
+       [
+        112,
+        36
+       ],
+       [
+        88,
+        41
+       ],
+       [
+        62,
+        37
+       ],
+       [
+        40,
+        34
+       ],
+       [
+        22,
+        30
+       ]
+      ],
+      "width": 11
+     },
+     "rough": {
+      "amp": 0.15,
+      "cell": 4,
+      "seed": 9
+     }
+    }
+   ],
+   "note": "the gill: a gorge eight to ten deep"
+  },
+  {
+   "id": "bay",
+   "op": "level",
+   "mode": "cut",
+   "top": 37,
+   "inner": 0.3,
+   "outer": 2.0,
+   "areas": [
+    {
+     "ellipse": {
+      "at": [
+       100,
+       47
+      ],
+      "rx": 12,
+      "rz": 8,
+      "angle": -10
+     }
+    }
+   ],
+   "note": "a bay in the gill's south side, where its wall stands back and the ground comes down gently"
+  },
+  {
+   "id": "beck",
+   "op": "river",
+   "line": [
+    [
+     139,
+     40
+    ],
+    [
+     112,
+     36
+    ],
+    [
+     88,
+     41
+    ],
+    [
+     62,
+     37
+    ],
+    [
+     40,
+     34
+    ],
+    [
+     22,
+     30
+    ]
+   ],
+   "width": 4,
+   "depth": 2,
+   "water": 2,
+   "bank": 1,
+   "note": "the beck down the gill into the tarn"
+  },
+  {
+   "id": "tarn-water",
+   "op": "water",
+   "level": 36,
+   "where": {
+    "and": [
+     {
+      "lt": [
+       "H",
+       36
+      ]
+     },
+     {
+      "lt": [
+       {
+        "distance": {
+         "polygon": [
+          [
+           4,
+           18
+          ],
+          [
+           14,
+           12
+          ],
+          [
+           26,
+           15
+          ],
+          [
+           34,
+           22
+          ],
+          [
+           32,
+           33
+          ],
+          [
+           24,
+           40
+          ],
+          [
+           10,
+           41
+          ],
+          [
+           2,
+           32
+          ]
+         ],
+         "rough": {
+          "amp": 0.12,
+          "cell": 5,
+          "seed": 7
+         }
+        }
+       },
+       1.15
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "paint": [
+  {
+   "block": "SAND",
+   "slope": [
+    null,
+    30
+   ],
+   "height": [
+    null,
+    37
+   ],
+   "area": {
+    "polygon": [
+     [
+      4,
+      18
+     ],
+     [
+      14,
+      12
+     ],
+     [
+      26,
+      15
+     ],
+     [
+      34,
+      22
+     ],
+     [
+      32,
+      33
+     ],
+     [
+      24,
+      40
+     ],
+     [
+      10,
+      41
+     ],
+     [
+      2,
+      32
+     ]
+    ],
+    "plus": -0.12
+   },
+   "note": "the beach: every gentle cell a block over the water"
+  },
+  {
+   "block": "SAND",
+   "slope": [
+    null,
+    24
+   ],
+   "height": [
+    null,
+    38
+   ],
+   "area": {
+    "polygon": [
+     [
+      4,
+      18
+     ],
+     [
+      14,
+      12
+     ],
+     [
+      26,
+      15
+     ],
+     [
+      34,
+      22
+     ],
+     [
+      32,
+      33
+     ],
+     [
+      24,
+      40
+     ],
+     [
+      10,
+      41
+     ],
+     [
+      2,
+      32
+     ]
+    ],
+    "plus": -0.08
+   },
+   "noise": {
+    "field": "patch",
+    "lo": 0.1
+   },
+   "note": "and ragged a block higher, so its edge is not a contour"
+  },
+  {
+   "block": "GRAVEL",
+   "slope": [
+    null,
+    30
+   ],
+   "area": {
+    "line": {
+     "near": "beck",
+     "width": 8
+    }
+   },
+   "noise": {
+    "field": "patch",
+    "lo": 0
+   }
+  },
+  {
+   "block": [
+    "STONE",
+    5
+   ],
+   "slope": [
+    54,
+    null
+   ],
+   "noise": {
+    "field": "patch",
+    "lo": 0.15
+   }
+  },
+  {
+   "block": "COBBLE",
+   "slope": [
+    60,
+    null
+   ],
+   "noise": {
+    "field": "grain",
+    "lo": 0.6
+   }
+  },
+  {
+   "block": [
+    "STONE",
+    0
+   ],
+   "slope": [
+    54,
+    null
+   ]
+  },
+  {
+   "block": "GRAVEL",
+   "slope": [
+    48,
+    54
+   ],
+   "noise": {
+    "field": "scree",
+    "lo": -0.15
+   }
+  },
+  {
+   "block": [
+    "STONE",
+    5
+   ],
+   "slope": [
+    48,
+    54
+   ]
+  }
+ ],
+ "lay": {
+  "soil": [
+   [
+    34,
+    3
+   ],
+   [
+    48,
+    2
+   ],
+   [
+    54,
+    1
+   ]
+  ],
+  "ledges": true
+ },
+ "water": {
+  "bed": [
+   {
+    "block": "GRAVEL",
+    "noise": {
+     "field": "patch",
+     "lo": 0.1
+    }
+   },
+   {
+    "block": "SAND",
+    "noise": {
+     "field": "patch",
+     "lo": -0.3
+    }
+   },
+   {
+    "block": "CLAY"
+   }
+  ]
+ },
+ "levels": [
+  {
+   "id": "brow",
+   "floor": 58,
+   "ground": [
+    {
+     "id": "brow-outline",
+     "op": "outline",
+     "where": {
+      "and": [
+       {
+        "gt": [
+         "scar-d",
+         {
+          "neg": "reach-in"
+         }
+        ]
+       },
+       {
+        "lt": [
+         "scar-d",
+         3
+        ]
+       },
+       {
+        "gt": [
+         "fade",
+         0.25
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "id": "brow-ground",
+     "op": "set",
+     "height": "plateau"
+    }
+   ],
+   "paint": [
+    {
+     "block": [
+      "STONE",
+      5
+     ],
+     "noise": {
+      "field": "patch",
+      "lo": 0.2
+     }
+    },
+    {
+     "block": [
+      "STONE",
+      0
+     ]
+    }
+   ],
+   "soil": 0,
+   "underside": {
+    "bottom": {
+     "sub": [
+      "plateau",
+      {
+       "add": [
+        2,
+        {
+         "mul": [
+          2.0,
+          {
+           "add": [
+            "reach-in",
+            "scar-d"
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    "clear": 2
+   },
+   "note": "the scar's brow: its face leaning out over its foot, a block out for every two up"
+  }
+ ],
+ "carve": [
+  {
+   "id": "adit",
+   "op": "tunnel",
+   "mouths": [
+    0
+   ],
+   "cover": 3,
+   "pts": [
+    [
+     104,
+     48,
+     55,
+     1.5
+    ],
+    [
+     104,
+     48,
+     60,
+     4.4
+    ],
+    [
+     103,
+     48,
+     64,
+     4.6
+    ],
+    [
+     105,
+     48,
+     68,
+     3.4
+    ],
+    [
+     104,
+     47,
+     73,
+     2.0
+    ],
+    [
+     103,
+     45,
+     83,
+     2.2
+    ]
+   ],
+   "dress": {
+    "seed": 12,
+    "stalagmites": 60,
+    "ores": 40,
+    "stalactites": 0.08
+   },
+   "note": "a shelter worn into the foot of the leaning face, nine wide, the old adit running on from its back"
+  }
+ ],
+ "volume": [
+  {
+   "id": "brig",
+   "op": "arch",
+   "line": {
+    "pts": [
+     [
+      62,
+      30
+     ],
+     [
+      62,
+      44
+     ]
+    ],
+    "spline": false
+   },
+   "width": 5,
+   "deck": [
+    47,
+    46,
+    2
+   ],
+   "camber": 0,
+   "thick": [
+    2,
+    10,
+    2.5
+   ],
+   "clear": 3,
+   "top": "GRAVEL",
+   "under": "STONE",
+   "rock": "STONE",
+   "note": "the brig: from bank to bank of the gill, z 31 to 43, its deck at the banks' height"
+  }
+ ],
+ "build": [
+  {
+   "id": "erratics",
+   "op": "boulders",
+   "seed": 17,
+   "sink": 0.3,
+   "rough": 0.5,
+   "at": [
+    [
+     30,
+     44,
+     3.5,
+     {
+      "rz": 2.6,
+      "angle": 20
+     }
+    ],
+    [
+     52,
+     18,
+     2.5
+    ],
+    [
+     86,
+     24,
+     4,
+     {
+      "rz": 3,
+      "angle": -30,
+      "height": 3.5
+     }
+    ],
+    [
+     120,
+     18,
+     2.2
+    ],
+    [
+     70,
+     74,
+     3,
+     {
+      "angle": 60
+     }
+    ],
+    [
+     36,
+     50,
+     1.8
+    ],
+    [
+     128,
+     70,
+     3.2,
+     {
+      "rz": 2.2
+     }
+    ],
+    [
+     10,
+     88,
+     2.6
+    ]
+   ],
+   "note": "erratics the ice left on the fell, one rock each, a few of them big"
+  }
+ ],
+ "snow": [
+  {
+   "id": "snow-0",
+   "smoothness": 2,
+   "added": 0.2,
+   "on": [
+    "GRASS",
+    "DIRT",
+    "GRAVEL",
+    "SAND",
+    "LEAVES"
+   ],
+   "max_depth": 4,
+   "where": {
+    "and": [
+     {
+      "ge": [
+       "x",
+       0
+      ]
+     },
+     {
+      "le": [
+       "x",
+       45
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "snow-1",
+   "smoothness": 6,
+   "added": 0.4,
+   "on": [
+    "GRASS",
+    "DIRT",
+    "GRAVEL",
+    "SAND",
+    "LEAVES"
+   ],
+   "max_depth": 4,
+   "where": {
+    "and": [
+     {
+      "ge": [
+       "x",
+       46
+      ]
+     },
+     {
+      "le": [
+       "x",
+       92
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "snow-2",
+   "smoothness": 10,
+   "added": 0.6,
+   "on": [
+    "GRASS",
+    "DIRT",
+    "GRAVEL",
+    "SAND",
+    "LEAVES"
+   ],
+   "max_depth": 4,
+   "where": {
+    "and": [
+     {
+      "ge": [
+       "x",
+       93
+      ]
+     },
+     {
+      "le": [
+       "x",
+       139
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

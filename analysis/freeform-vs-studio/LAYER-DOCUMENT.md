@@ -21,7 +21,7 @@ build.
 
 ## The stages
 
-**A document builds in fifteen stages, always in this order.** A layer belongs to one stage, and within a stage
+**A document builds in sixteen stages, always in this order.** A layer belongs to one stage, and within a stage
 the layers run as listed.
 
 | Stage | Key | What it does |
@@ -40,6 +40,7 @@ the layers run as listed.
 | structures | `structures` | masses with patterned faces, floors laid as fields |
 | build | `build` | what stands on the finished ground: a path's surface and steps, walls, hedges, fences |
 | dress | `dress` | trees and scattered things, kept `clear` blocks (3 unless stated) off everything built, their crowns `spacing` crown radii apart (0.85 unless stated) |
+| snow | `snow` | smooth snow: the surface averaged over `smoothness`, `added` laid on it, filled in eighths where `on` and an `area` or `where` hold |
 | symmetry | `symmetry` | the drawn part copied onto its image, recoloured for the other team |
 
 ## Areas
@@ -289,6 +290,18 @@ opens through it.
 
 **A room is furnished from data.** `light` hangs a torch at the middle of each wall at `y` over the floor, and
 `props` fills a box with a block: tombs, bars, a pool, a pillar.
+
+## Snow
+
+**Smooth snow puts a board into winter without flattening it.** After Arceon's `//smoothsnow`, a `snow` layer takes
+the surface as a height, averages it over a disc `smoothness` blocks in radius, lays `added` blocks on it and fills
+the difference to the real ground in eighths: snow blocks to the last whole one, then a layer one to eight eighths
+high. Snow drifts against the foot of a step and thins over its brow, and a column under its own average still
+takes an eighth.
+
+**Where it falls is a mask.** `on` names the blocks it lies on, so rock stays bare where it is left out; `area` or
+`where` limit it, `overlay` keeps it to one block, `max_depth` caps a drift and `under` replaces the block it lies
+on. `board.biome` sets the biome every column takes, so grass and leaves under it are tinted cold.
 
 ## Volume, structures and symmetry
 

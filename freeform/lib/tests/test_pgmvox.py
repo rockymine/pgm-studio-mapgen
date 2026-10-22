@@ -1167,6 +1167,33 @@ class LayerLevels(unittest.TestCase):
         self.assertGreater(sum(1 for v in ring if v > 0), 10)                      # grooves and
         self.assertGreater(sum(1 for v in ring if v == 0), 10)                     # ground between them
 
+    def test_smooth_snow_drifts_against_a_step_and_thins_over_its_brow(self):
+        step = {"id": "step", "op": "set", "height": {"add": [40, {"mul": [4, {"gt": ["x", 0]}]}]}}
+        def depth(sm):
+            b = self.build(self.doc([step], snow=[{"id": "s", "smoothness": sm, "added": 0.4, "on": ["GRASS"]}]))
+            w = b.world
+            out = []
+            for x in (-12, -2, -1, 1, 12):
+                g = 44 if x > 0 else 40
+                d = 0.0
+                for y in range(g + 1, g + 8):
+                    if w.id(x, y, 0) == B.SNOW:
+                        d += 1
+                    elif w.id(x, y, 0) == B.SNOW_LAYER:
+                        d += (w.dat[x + 24, y, 24] + 1) / 8
+                out.append(d)
+            return out
+        soft, hard = depth(6), depth(1)
+        self.assertAlmostEqual(soft[0], 0.375, delta=0.13)                       # the flat far off: added height
+        self.assertGreater(soft[2], 1.0)                                          # drifted against the step's foot
+        self.assertLessEqual(soft[3], 0.125)                                      # thin over its brow
+        self.assertGreater(soft[2], hard[2])                                      # smoother drifts deeper
+        self.assertTrue(all(v >= 0.125 for v in soft))                            # nothing bare
+
+    def test_the_board_states_its_biome(self):
+        b = self.build(dict(self.doc(), board=dict(self.doc()["board"], biome=12)))
+        self.assertTrue((b.world.biome == 12).all())
+
     def test_a_level_rests_where_the_ground_reaches_it(self):
         hill = {"id": "hill", "op": "mound", "mode": "lift", "rise": 18, "power": 3,
                 "areas": [{"circle": {"at": [8, 0], "r": 9}}]}

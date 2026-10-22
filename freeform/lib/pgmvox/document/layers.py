@@ -957,6 +957,16 @@ def build(doc):
             for x, z, _ in planted:
                 laid[x - x0, z - z0] = True
         out.steps.append(Step(L["id"], "dress", L["op"], laid, Hi.copy(), L.get("note", "")))
+    for L in doc.get("snow", []):
+        e = area_distance(L["area"], X, Z, fields, lines)[0] < 1 if "area" in L else np.ones(X.shape, bool)
+        if "where" in L:
+            e &= np.asarray(expr(L["where"], Ctx(X, Z, Hi.astype(float), fields, lines, land, water)), bool)
+        n = T.smooth_snow(w, L.get("smoothness", 6), mask=e, on={block(b)[0] for b in L["on"]} if "on" in L else None,
+                          added=L.get("added", 0.4), overlay=L.get("overlay", False), max_depth=L.get("max_depth"),
+                          under=block(L["under"]) if "under" in L else None)
+        out.steps.append(Step(L["id"], "snow", "smooth_snow", e.copy(), Hi.copy(), f"{n} columns covered"))
+    if "biome" in bd:
+        w.biome[:] = int(bd["biome"])
     for L in doc.get("symmetry", []):
         from pgmvox.core.orient import turn_world
         cx = Ctx(X, Z, Hi.astype(float), fields, lines, land, water)
