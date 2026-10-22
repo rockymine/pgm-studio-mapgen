@@ -4,42 +4,16 @@
                  swallow hole by the byre and one on to the old adit; the tarn cave from a mouth just over the tarn
                  through the Scar to the bench under the brow; the side cave from the Scar's east cliff into it
 
-A cave is a few stated points [x, floor y, z]; between them it wanders, a slow swing sideways and a width that
-breathes, every three blocks a waypoint, so no passage is a pipe. The floor runs straight between the stated
-points, so a player walks it.
+A cave is a few stated points [x, floor y, z]; between them it wanders (`pgmvox.volume.under.wander`), a slow
+swing sideways and a width that breathes, every three blocks a waypoint, so no passage is a pipe. The floor runs
+straight between the stated points, so a player walks it.
 """
-import math
+import os
+import sys
 
-import numpy as np
-
-from layout import FLOOR
-
-
-def wander(points, r=(2.2, 3.2), swing=2.2, step=3.0, seed=0, mouth=None):
-    """Waypoints [x, floor y, z, radius] along the stated points: the plan swung sideways by two sine waves of
-    random phase, faded to nothing at every stated point so a mouth or a joint stays where it is said to be. A
-    `mouth` radius opens the first point that wide and narrows to the passage over the next three."""
-    rng = np.random.default_rng(seed)
-    ph = rng.uniform(0, 2 * math.pi, 4)
-    out = []
-    for (x0, y0, z0), (x1, y1, z1) in zip(points, points[1:]):
-        d = math.hypot(x1 - x0, z1 - z0)
-        n = max(2, int(round(d / step)))
-        nx, nz = -(z1 - z0) / d, (x1 - x0) / d
-        for j in range(n):
-            t = j / n
-            s = len(out) * step
-            fade = math.sin(math.pi * t)
-            off = swing * fade * (0.65 * math.sin(s / 7.0 + ph[0]) + 0.35 * math.sin(s / 3.1 + ph[1]))
-            rad = r[0] + (r[1] - r[0]) * (0.5 + 0.5 * math.sin(s / 5.3 + ph[2]) * math.cos(s / 8.9 + ph[3]))
-            out.append([round(x0 + (x1 - x0) * t + nx * off, 2), round(y0 + (y1 - y0) * t, 2),
-                        round(z0 + (z1 - z0) * t + nz * off, 2), round(rad, 2)])
-    x, y, z = points[-1]
-    out.append([x, y, z, r[0]])
-    if mouth:
-        for j in range(min(4, len(out))):
-            out[j][3] = round(max(out[j][3], mouth - (mouth - out[j][3]) * j / 3), 2)
-    return out
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
+from layout import FLOOR                                                               # noqa: E402
+from pgmvox.volume.under import wander                                                # noqa: E402
 
 
 F = FLOOR
