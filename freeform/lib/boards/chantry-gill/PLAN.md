@@ -19,8 +19,8 @@ Blue holds the south (z > 0); red is blue's image under the half turn, (x, z) ->
 |---|---|
 | **Main island**, the fell | about 110 across and 105 deep: the town in its middle, the spawn at its back, fields between the town and the west |
 | **Highlands** | one band of high ground along the main island's west coast and back, 18 to 44 blocks deep, cut into pieces that fit together like a puzzle: five heights (the west tor +16, the edge +24, the south pike +28, the knott +20, the high knott +26), scenery fenced off by their faces, and four foothills nested into the notches between them and against the fell (the edge bench +10, the pike knoll +8, the knott foot +6, the spawn knoll +5), played on; the spawn stands under the spawn knoll |
-| **Side island**, the Scar | about 45 across and 85 deep, east of the main island: the tarn at its front, the plateau behind its leaning brow |
-| **The Gill** | the gap between the two islands is a gorge, not void: 8 to 12 across, its floor about 9 under the town's rim; the brig crosses it near the front and a timber bridge behind the brow; it opens to the void at both ends |
+| **Side island**, the Scar | about 45 across and 85 deep, east of the main island, in three storeys: its rim along the gill at the fell's height, a bench at y 50 stepped back where the gill bends away (the second monument on it), and the plateau behind the upper face to y 61, whose line slants to the gill's so face and gorge never run together; the tarn at its front |
+| **The Gill** | a gorge winding between the islands, 12 to 18 across, its floor at y 34 and its rims 9 to 10 over it; the brig crosses it near the front and a timber bridge at the back; it opens to the void at both ends |
 | **The void** | between the teams, from z -14 to 13, crossed by a build zone the board's whole width |
 
 Under the half turn each team's side island lies opposite the other team's main island, so a team landing from the
@@ -29,7 +29,7 @@ build zone comes ashore either on the enemy's fell or on the enemy's Scar.
 ## 3. The monuments and the ways at them
 
 The **town monument** stands over the market square in the middle of the town, the **Scar monument** on the
-plateau behind the brow, 77 blocks apart: a west and an east across the gill, so a defence holds two places and the
+Scar's bench, 77 blocks apart: a west and an east across the gill, so a defence holds two places and the
 gill between them. The spawn reaches the town's in 41 blocks down the street and the Scar's in 56 over the back
 bridge.
 

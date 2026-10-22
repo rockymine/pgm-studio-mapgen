@@ -29,7 +29,10 @@ for k, (_, _, r, name) in enumerate(L.SEEDS):
 x0, z0 = int(built.X[0, 0]), int(built.Z[0, 0])
 for name, (x, z) in (("spawn", L.SPAWN), ("town monument", L.MONUMENTS[0]), ("scar monument", L.MONUMENTS[1])):
     print(f"  {name:14} ({x}, {z}) ground y {int(H[x - x0, z - z0])}")
-gill = L.mask(L.GILL, built.X, built.Z) & land
-print(f"  gill floor y {int(H[gill].min())}, rims to y {int(np.percentile(H[gill], 95))}")
+gill = (grids['gill'] > 0.5) & land
+print(f"  gill floor y {int(H[gill].min())}, rims to y {int(np.percentile(H[gill], 95))}, "
+      f"{int(gill.sum())} columns")
+bench = L.mask(L.BENCH, built.X, built.Z) & land
+print(f"  scar bench y {int(np.median(H[bench]))} (median), plateau to y {int(H[L.mask(L.SIDE, built.X, built.Z) & land].max())}")
 w.save(sys.argv[1], "chantry-gill", (0.5, 70, 0.5))
 print("generated")

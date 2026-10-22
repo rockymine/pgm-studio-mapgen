@@ -20,7 +20,7 @@ ax.add_patch(plt.Rectangle((x0, L.BUILD_Z[0]), x1 - x0, L.BUILD_Z[1] - L.BUILD_Z
 ax.text(x0 + 3, 0, "build zone over the void", color="#cfe0ff", va="center", fontsize=9)
 for team, f in (("blue", lambda p: p), ("red", L.turn)):
     pale = team == "red"
-    for poly, colour in ((L.MAIN, "#6f9a4a"), (L.SIDE, "#8a8f7a"), (L.GILL, "#4b4f57")):
+    for poly, colour in ((L.MAIN, "#6f9a4a"), (L.SIDE, "#8a8f7a"), (L.BENCH, "#a7a993")):
         ax.add_patch(Polygon([f(p) for p in poly], closed=True, fc=colour, ec="#222", lw=1, alpha=0.55 if pale else 0.95))
     sx, sz = f(L.SPAWN)
     c = "#3d7bff" if team == "blue" else "#ff4d4d"
@@ -41,6 +41,16 @@ from scipy import ndimage                                                       
 X, Z = L.grid((x0, x1), (-130, 130))
 piece = L.highlands(X, Z)
 band = piece >= 0
+gd = L.gill_distance(X, Z)
+gimg = np.zeros(X.shape + (4,))
+gimg[(gd < 1) & (Z > 0)] = (0.29, 0.31, 0.34, 1.0)
+gimg[(gd < 1) & (Z > 0) & (gd > 0.8)] = (0.18, 0.18, 0.2, 1.0)
+ax.imshow(np.transpose(gimg, (1, 0, 2)), extent=(x0, x1 + 1, 131, -130), origin="upper", interpolation="nearest",
+          zorder=1.6)
+gt = np.zeros_like(gimg); gt[::-1, ::-1] = gimg; gt[..., 3] *= 0.6
+ax.imshow(np.transpose(gt, (1, 0, 2)), extent=(-1 - x1, -1 - x0 + 1, 130, -131), origin="upper",
+          interpolation="nearest", zorder=1.6)
+ax.plot([p[0] for p in L.UPPER], [p[1] for p in L.UPPER], color="#eee", lw=1.5, ls="-.", zorder=2.5)
 rise = np.array([r for _, _, r, _ in L.SEEDS])
 img = np.full(X.shape + (4,), 0.0)
 for k, (sx, sz, r, name) in enumerate(L.SEEDS):

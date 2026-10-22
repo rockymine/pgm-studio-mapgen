@@ -56,16 +56,32 @@ def highland_lift(X, Z, piece, land):
 
 def arrays():
     X, Z = L.grid(X_RANGE, Z_RANGE)
-    main, side, gill = L.mask(L.MAIN, X, Z), L.mask(L.SIDE, X, Z), L.mask(L.GILL, X, Z)
-    land = (main | side | gill) & (Z >= 0)
+    main, side = L.mask(L.MAIN, X, Z), L.mask(L.SIDE, X, Z)
+    gd = L.gill_distance(X, Z)
+    wob = 4 * N.fbm(X.shape, 9, 2, seed=33)
+    between = (gd < 1) & (Z > 12 + wob) & (Z < 102 + wob) & (X > 18) & (X < 48)
+    land = main | side | between
+    land = ndimage.binary_fill_holes(ndimage.binary_closing(land, np.ones((9, 9))) | land) & (Z >= 0)
+    side = side | (land & ~main & (X > 30))                # what the closing joined east of the gill is the Scar's
     base = FLOOR + 0.05 * np.clip(Z - 14, 0, None) + 1.5 * N.fbm(X.shape, 34, 3, seed=2)
     piece = L.highlands(X, Z)
     high = highland_lift(X, Z, piece, main)
-    # the Scar: from the tarn's shore at the front to its plateau behind the brow, 16 over the fell
-    plateau = 16 * smoothstep(34, 72, Z + 5 * N.fbm(X.shape, 12, 2, seed=29)) * side
-    plateau = ndimage.gaussian_filter(plateau, 1.0) * side
-    relief = base + high + plateau
-    return {"landmask": land.astype(float), "relief": relief, "piece": piece.astype(float)}
+    # the Scar in three storeys: the gill's rim, a bench stepped back where the gill bends away, the plateau
+    # behind the upper face, its line slanting to the gill's; all fading out toward the tarn at the front
+    zu, xu = [p[1] for p in L.UPPER], [p[0] for p in L.UPPER]
+    across = X - np.interp(Z, zu, xu) + 3 * N.fbm(X.shape, 8, 2, seed=30)
+    reach = np.clip(5 + 4 * N.fbm(X.shape, 11, 2, seed=31), 2, 9)
+    face = 0.3 * smoothstep(-reach, 0, across) + 0.7 * smoothstep(0, 3, across)
+    front = smoothstep(24, 46, Z + 4 * N.fbm(X.shape, 12, 2, seed=29))
+    bench = L.mask(L.BENCH, X, Z)
+    bench_soft = ndimage.gaussian_filter(bench.astype(float), 1.2)
+    scar = side * front * np.maximum(L.PLATEAU_RISE * face, L.BENCH_RISE * bench_soft)
+    relief = base + high + scar
+    # the gill: its walls from the rims down to a floor at 34 over the inner half of its width
+    floor = 34.0
+    relief = np.where(between, floor + (relief - floor) * smoothstep(0.5, 1.0, gd), relief)
+    return {"landmask": land.astype(float), "relief": relief, "piece": piece.astype(float),
+            "gill": between.astype(float)}
 
 
 PAINT = [
@@ -89,10 +105,7 @@ def document():
             {"id": "land", "op": "outline", "where": {"gt": ["landmask", 0.5]},
              "note": "blue's two islands and the gill between them; red's are their half turn"},
             {"id": "relief", "op": "set", "height": "relief",
-             "note": "the fell rising five to the back, the highlands piece by piece, the Scar's plateau"},
-            {"id": "gill", "op": "level", "mode": "cut", "top": 34, "inner": 0.45, "outer": 1.0,
-             "areas": [{"polygon": [list(p) for p in L.GILL], "rough": {"amp": 0.1, "cell": 4, "seed": 9}}],
-             "note": "the gill: a gorge between the islands, its floor at 34"},
+             "note": "the fell rising five to the back, the highlands piece by piece, the Scar in three storeys, the gill"},
         ],
         "paint": PAINT,
         "lay": {"soil": [[34, 3], [48, 2], [54, 1]], "ledges": True},
