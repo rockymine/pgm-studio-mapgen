@@ -6,7 +6,8 @@ real ground and their sides cliffs of stone and diorite.
 
 **Ground meets a made piece at the piece's own height.** `joins` are (rect, height): every column within three of
 the rect is pulled to that height, the nearer the harder, so a stair, a lane or the descent steps onto ground that
-lies level with it. `flats` are (rect, height) laid dead level: the house's yard, a monument's slot.
+lies level with it. `flats` are (rect, height) laid dead level: a monument's slot. `skip` are rects the ground
+leaves to a made piece standing in it, which it meets at whatever height it has there.
 """
 import numpy as np
 
@@ -26,10 +27,13 @@ def _dist_to(rect, X, Z):
     return np.maximum(dx, dz)
 
 
-def ground(w, rect, base, joins=(), flats=(), seed=1, relief=1.6):
+def ground(w, rect, base, joins=(), flats=(), seed=1, relief=1.6, skip=()):
     x0, z0, x1, z1 = rect
     X, Z = w.grid()
-    land = (X >= x0) & (X <= x1) & (Z >= z0) & (Z <= z1)
+    whole = (X >= x0) & (X <= x1) & (Z >= z0) & (Z <= z1)
+    land = whole.copy()
+    for r in skip:
+        land &= _dist_to(r, X, Z) > 0
     n = noise.fbm(X.shape, 8, 3, seed=seed)
     H = base + relief * n
     for r, h in joins:
@@ -39,7 +43,7 @@ def ground(w, rect, base, joins=(), flats=(), seed=1, relief=1.6):
     for r, h in flats:
         H = np.where(_dist_to(r, X, Z) == 0, h, H)
     H = np.where(land, np.round(H), 0).astype(int)
-    ed = edge_depth(land)
+    ed = edge_depth(whole)
     rng = np.random.default_rng(seed)
     joined = np.zeros_like(land)
     for r, _ in list(joins) + list(flats):
@@ -54,7 +58,7 @@ def ground(w, rect, base, joins=(), flats=(), seed=1, relief=1.6):
         for y in range(h - soil + 1, h):
             w.ids[i, y, k], w.dat[i, y, k] = B.DIRT, 0
         w.ids[i, h, k], w.dat[i, h, k] = B.GRASS, 0
-        w.ids[i, 0, k], w.dat[i, 0, k] = 36, 0
+        w.ids[i, 0, k], w.dat[i, 0, k] = B.BEDROCK, 0              # the concept's floor
         if ed[i, k] == 0:                                  # the face weathered: notches and moss in the rock
             for y in range(3, h - 2):
                 r = rng.random()

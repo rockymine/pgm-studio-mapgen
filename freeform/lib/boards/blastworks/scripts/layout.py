@@ -38,13 +38,13 @@ TNT = (-2, -2, 1, 1)                             # the TNT spawner's pedestal at
 
 # ---- the box, as the concept has it -----------------------------------------------------------------------------------
 ROOF_DOOR = (-94, -19, -85, -10, 15, 17)         # x0, z0, x1, z1, y0, y1: end stone, three thick
-SIDE_DOOR = (-80, -19, -78, -10, 2, 11)          # end stone in the east wall, onto the void under the bridge
-ROOM = (-95, -20, -81, -9, 2, 14)
+SIDE_DOOR = (-79, -19, -77, -10, 2, 11)          # end stone in the east wall, onto the void under the bridge
+ROOM = (-95, -20, -80, -9, 2, 14)
 BOX_WOOL = (-91, 5, -15)
 
 # ---- on the spawn -----------------------------------------------------------------------------------------------------
-HOUSE = (-106, 10, -96, 17)
-SPAWN_AT = (-101, 13, 18)                        # in front of the house's door
+HALL, HALL_H = (-106, 10, -96, 17), 21           # the grammar's piece where the house stood, set into the ground
+SPAWN_AT = (-101, 13, 18)                        # in front of the hall
 SPAWN_AREA = (-110, 7, -94, 20)
 SLOT = (-87, 13, 12)
 
@@ -57,3 +57,9 @@ ZONES = [
     (-26, -21, 25, 20),                          # the middle, front to front
 ]
 MARKER_Y = 1
+
+# ---- the concept's bedrock ---------------------------------------------------------------------------------------------
+WALL_TOP = 13                                    # the box's walls are bedrock up to here, the slits through them
+EDGE_X = -83                                     # a line of bedrock across the box's top: the defenders stay outside it
+SLAB = (14, 15)                                  # the bridge's bedrock slab, under three courses of deck
+EAST_FACE = (-59, 15)                            # the east block's face over the void, bedrock up to y 15
