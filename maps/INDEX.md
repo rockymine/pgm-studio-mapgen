@@ -132,6 +132,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `dtcm/burgage_terrace` | `opus5-burgage-terrace` | `specs/opus5-burgage-terrace` |
 | `dtcm/cairnmeadow` | `opus5-cairnmeadow` | `specs/archive/opus5-cairnmeadow` |
 | `dtcm/chalkmere` | `opus5b-chalkmere` | `specs/opus5b-chalkmere` |
+| `dtcm/chantry_gill` | `freeform/lib/boards/chantry-gill` | `freeform/lib/boards/chantry-gill` |
 | `dtcm/cinder_reach` | `freeform/lib/boards/cinder-reach` | `freeform/lib/boards/cinder-reach` |
 | `dtcm/cinderfall` | `freeform/lib/boards/cinderfall` | `freeform/lib/boards/cinderfall` |
 | `dtcm/cinderhowe` | `opus55-cinderhowe` | `specs/opus55-cinderhowe` |

@@ -152,7 +152,7 @@ def build():
          "area": {"polygon": [[-36, 70], [-26, 68], [-24, 78], [-30, 86], [-40, 82]], "rough": {"amp": 0.08, "cell": 4, "seed": 3}},
          "flowers": [["FLOWER", 0], ["DANDELION", 0], ["FLOWER", 3], ["FLOWER", 8], ["FLOWER", 2]]},
         {"id": "gardens", "op": "small_trees", "seed": 6,
-         "at": [[14, 30], [-30, 30], [16, 66], [-44, 66], [-30, 92], [20, 84], [-12, 94], [44, 74], [57, 88]]},
+         "at": [[14, 30], [-30, 30], [16, 66], [-44, 66], [-30, 92], [20, 84], [-12, 94], [44, 74], [60, 92]]},
         # the Scar's bench: a broken sheepfold east of the monument, a shepherd's bothy in its corner
         {"id": "scar-fold", "op": "wall", "line": [[58, 70], [63, 74], [64, 84], [61, 92], [55, 95]], "height": 2,
          "blocks": ["COBBLE", "MOSSY"], "weights": [2, 1], "crown": "follow", "ruin": [14, 24, 5],
@@ -175,7 +175,7 @@ def dress():
     return [
         {"id": "edge-copse", "op": "trees", "on": "ground", "area": {"polygon": [[-66, 54], [-52, 52], [-46, 62], [-54, 72], [-66, 68]]},
          "kinds": {"oak": 3, "birch": 1}, "tries": 30, "seed": 4, "spacing": 1.8, "note": "a copse on the edge bench"},
-        {"id": "scar-trees", "op": "trees", "on": "ground", "area": {"polygon": [[60, 56], [76, 50], [80, 70], [70, 90], [62, 80]]},
+        {"id": "scar-trees", "op": "trees", "on": "ground", "area": {"polygon": [[64, 56], [76, 50], [80, 70], [72, 90], [65, 80]]},
          "kinds": {"oak": 2, "birch": 1}, "tries": 16, "seed": 5, "spacing": 2.2, "note": "a few trees on the plateau"},
         {"id": "knott-trees", "op": "trees", "on": "ground", "area": {"polygon": [[-40, 90], [-22, 88], [-14, 98], [-30, 104]]},
          "kinds": {"oak": 1}, "tries": 8, "seed": 6, "spacing": 2.4, "note": "oaks on the knott's foot"},
