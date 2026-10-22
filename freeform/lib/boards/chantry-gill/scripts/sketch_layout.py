@@ -29,6 +29,13 @@ for team, f in (("blue", lambda p: p), ("red", L.turn)):
             cx = sum(p[0] for p in poly) / len(poly)
             cz = sum(p[1] for p in poly) / len(poly)
             ax.text(cx, cz, f"{name}\n+{rise}", color="w", ha="center", va="center", fontsize=7)
+    for name, (poly, rise) in L.FOOTHILLS.items():
+        ax.add_patch(Polygon([f(p) for p in poly], closed=True, fc="#8fb35e", ec="#e8f0c8", lw=1, hatch="..",
+                             alpha=0.5 if pale else 0.95))
+        if not pale:
+            cx = sum(p[0] for p in poly) / len(poly)
+            cz = sum(p[1] for p in poly) / len(poly)
+            ax.text(cx, cz, f"{name}\n+{rise}", color="#111", ha="center", va="center", fontsize=7)
     sx, sz = f(L.SPAWN)
     c = "#3d7bff" if team == "blue" else "#ff4d4d"
     ax.plot(sx, sz, "s", ms=12, mfc=c, mec="w")

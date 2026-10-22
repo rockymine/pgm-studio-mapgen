@@ -19,10 +19,17 @@ GILL = [MAIN[7], MAIN[8], MAIN[9], MAIN[10], MAIN[11], (36, 98), (44, 98), SIDE[
 # faces; it frames the board and nobody fights on it
 SCENERY = {                                # each a hill or a plateau of its own, its own height, a notch between
     "west tor": ([(-82, 58), (-80, 44), (-70, 38), (-64, 46), (-68, 60), (-76, 66)], 18),
-    "edge": ([(-80, 70), (-70, 64), (-62, 74), (-60, 88), (-68, 96), (-78, 84)], 26),
-    "south pike": ([(-64, 100), (-56, 94), (-44, 98), (-40, 108), (-50, 113), (-60, 108)], 30),
-    "knott": ([(-36, 110), (-26, 104), (-10, 106), (-4, 114), (-14, 119), (-32, 118)], 22),
-    "knott shoulder": ([(2, 112), (10, 106), (22, 104), (28, 96), (24, 108), (10, 116)], 14),
+    "edge": ([(-80, 70), (-68, 64), (-56, 70), (-48, 80), (-54, 90), (-68, 96), (-78, 84)], 26),
+    "south pike": ([(-64, 100), (-56, 96), (-44, 98), (-40, 108), (-50, 113), (-60, 108)], 30),
+    "knott": ([(-36, 110), (-30, 100), (-20, 96), (-8, 100), (-4, 114), (-14, 119), (-32, 118)], 22),
+    "knott shoulder": ([(4, 114), (12, 108), (22, 104), (28, 96), (24, 108), (12, 116)], 14),
+}
+# foothills: lower ground stood in front of the heights in a first and second row; played on, and the cover and
+# height a flank is fought from
+FOOTHILLS = {
+    "tor knoll": ([(-62, 40), (-54, 36), (-48, 42), (-52, 50), (-60, 50)], 7),
+    "edge bench": ([(-48, 66), (-40, 64), (-36, 72), (-42, 80), (-48, 76)], 9),
+    "pike knoll": ([(-40, 92), (-32, 88), (-26, 92), (-30, 98), (-38, 100)], 6),
 }
 BUILD_Z = (-14, 13)                       # the build zone over the void between the teams, the board's whole width
 X_RANGE = (-90, 89)
