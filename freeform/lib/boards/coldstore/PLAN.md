@@ -51,6 +51,9 @@ middle, two wide and four tall, with air. The seal is a destroyable that does no
 | Purple, yellow | Blue | red's south and north wool rooms |
 | Orange, lime | Red | blue's south and north wool rooms |
 
+**Each wool block carries the concept's arrow on its face toward the spawn**, pointing at the enemy and showing the
+colour of the enemy's wool on that side: purple and yellow on blue's blocks, orange and lime on red's.
+
 ## 4. What may be broken
 
 **Only what a player brings, the drifts, the cases' glass and, by a blast, the end stone.** The walls are bedrock
@@ -58,6 +61,10 @@ under one block of skin, so nobody hides in a wall or tunnels along it, which th
 The drifts (snow, packed ice) grow back slowly where nobody stands; the glass and the end stone do not.
 
 The kit carries 16 TNT, which lights as it is placed, and the crafting table is disabled.
+
+**Beside each spawn a team builds nothing.** The pocket between the spawn and its wool block (u -90 to -73, v 5 to
+24, in every image) takes no block from the team that spawns there, so it cannot wall its own seal's flank from home.
+The concept marked the place with a line of redstone.
 
 ## 5. As built
 
@@ -80,4 +87,5 @@ all three.
 - The seal's size is the concept's: 588 blocks of end stone. How much TNT 90% of it takes is a number only a
   played match gives.
 - Snow falling from the fans is drawn, not simulated; the drifts are where a fan would put them.
-- The surface over the roof is scenery. No player reaches it.
+- The ice field over the roof and down the bunker's sides is scenery, so no bedrock shows from outside. No player
+  reaches it; a shaft from each fan up through it shows the sky between the fan's blades.

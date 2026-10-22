@@ -36,6 +36,11 @@ there. The spawn is cut into the west wall at the team's middle, beside the two 
 under one block of skin, which answers the wall sign. The drifts are snow and packed ice, the only ground that
 breaks.
 
+**The author's review added four things, and the board has them.** Each wool block's arrow shows the colour of the
+enemy wool it points to. Beside each spawn its own team may not build, which is what the concept's line of redstone
+there meant. The ice field is higher and runs down the bunker's sides to the world's floor, so no bedrock shows from
+outside. And each fan has a shaft through the ice, so between its blades a player looks up at the sky.
+
 ## 3. What was measured
 
 | Reading | Value |

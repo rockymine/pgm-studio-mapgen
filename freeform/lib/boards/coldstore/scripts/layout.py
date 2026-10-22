@@ -14,7 +14,8 @@ from pgmvox.plan.raster import Symmetry                                         
 SYM = Symmetry("mirror_x")                       # between the teams; inside a team the quarter is mirrored in z too
 
 # ---- the box --------------------------------------------------------------------------------------------------------
-X0, Z0, SX, SZ, SY = -106, -58, 212, 116, 76
+X0, Z0, SX, SZ, SY = -128, -80, 256, 160, 100
+MARGIN = 22                                      # the ice field runs this far past the bunker's walls, down its sides
 INNER = (-92, -1, 0, 54)                         # the drawn quarter's inside, u0, u1, v0, v1
 OUTER_U, OUTER_V = -104, 56                      # the bedrock box's outer faces in the quarter: u -104, v 56
 FLOOR = 7                                        # an island's underside; below it, nothing but void to the world's floor
@@ -68,3 +69,6 @@ SLOT = (-87, 18, 2)                              # the monument for the wool tak
 # ---- the roof fans and the vents --------------------------------------------------------------------------------------
 FANS = [(-61, 25, 8)]                            # (u, v, r): a round hole in the roof over the void, a fan in it
 SURFACE = 49                                     # the ice over the roof starts here
+SHAFT = 3.2                                      # a fan's shaft up through the ice to the sky, this radius
+POCKET = (-90, -73, 5, 24)                       # beside the spawn, between it and its wool block: its team builds nothing
+ARROW_SQUARE = (-86, -84, 19, 21)                # the arrow's square of colour, u0, u1, y0, y1, in the face at v 26

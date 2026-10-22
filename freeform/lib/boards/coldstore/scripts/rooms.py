@@ -112,3 +112,19 @@ def spawn(w):
             for y in range(L.TOP + 1, L.TOP + 5):
                 w.set(u, y, v, B.AIR)
             w.set(u, L.TOP, v, B.DSLAB, 8)
+
+
+ARROW_COLOURS = {(False, False): 10, (False, True): 4, (True, False): 1, (True, True): 5}
+
+
+def paint_arrows(w):
+    """After the mirrors: each wool block's arrow square in the colour of the enemy wool it points to, blue's
+    purple (south) and yellow (north), red's orange and lime."""
+    u0, u1, y0, y1 = L.ARROW_SQUARE
+    face = L.WALLS[3][2] + 1
+    for (east, north), dye in ARROW_COLOURS.items():
+        for u in range(u0, u1 + 1):
+            for y in range(y0, y1 + 1):
+                x = -1 - u if east else u
+                z = -1 - face if north else face
+                w.set(x, y, z, B.WOOL, dye)

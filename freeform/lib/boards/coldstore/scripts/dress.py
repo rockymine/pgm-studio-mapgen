@@ -143,7 +143,10 @@ def ceiling(w):
                 if d <= r:
                     for y in range(L.ROOF[0], L.ROOF[1]):
                         w.set(u, y, v, B.AIR)
-                    w.set(u, L.ROOF[1], v, B.COAL_BLOCK)                      # the cap
+                    if d > L.SHAFT:                                           # the funnel up into the shaft
+                        w.set(u, L.ROOF[1] - 1, v, B.IRON_BLOCK)
+                    else:
+                        w.set(u, L.ROOF[1], v, B.AIR)
                     a = math.atan2(v - cv, u - cu)
                     if d < 1.5 or (abs(math.sin(2 * a)) < 0.35 and d < r - 0.5):
                         w.set(u, L.ROOF[1] - 2, v, B.IRON_BLOCK)              # the blades, four of them
@@ -179,39 +182,50 @@ def drifts(w, k, seed=11):
 
 
 def surface(w, seed=21):
-    """The ice field over the roof, the drawn quarter's share of it: a sheet of packed ice and snow rolling three
-    to nine blocks deep, rock showing through, a stack over each fan, the spawn's hatch and a mast."""
-    U0, V0 = S.U0, S.V0
-    nu, nv = -U0, S.V1 + 2
+    """The ice field over the roof and round the bunker, the drawn quarter's share of it: packed ice and snow rolling
+    eight to twenty blocks deep over the roof, rock showing through, and past the walls the field falling away in
+    cliffs of rock and ice to the world's floor, so the bunker's bedrock is nowhere seen; a shaft up from each fan to
+    the sky, the spawn's hatch and a mast."""
+    u0, v1 = L.X0, L.Z0 + L.SZ - 1
+    nu, nv = -u0, v1 + 1
     big = noise.fbm((nu, nv), 30, 3, seed=seed)
     small = noise.fbm((nu, nv), 7, 2, seed=seed + 1)
     rock = noise.fbm((nu, nv), 9, 2, seed=seed + 2)        # rock showing through: knolls, not ridges
+    edge = noise.fbm((nu, nv), 12, 2, seed=seed + 3)
     for i in range(nu):
         for j in range(nv):
-            u, v = U0 + i, V0 + j
-            if u > -1 or v > S.V1 + 1:
-                continue
-            t = L.SURFACE + 3 + int(round(4 * big[i, j] + 1.5 * small[i, j]))
-            for y in range(L.SURFACE, t + 1):
-                w.set(u, y, v, B.PACKED_ICE)
+            u, v = u0 + i, j
+            t = L.SURFACE + 9 + int(round(7 * big[i, j] + 2 * small[i, j]))
+            out = max(L.OUTER_U - u, v - L.OUTER_V, 0)       # how far past the bunker's walls
+            if out:
+                f = min(1.0, (out + 4 * edge[i, j]) / L.MARGIN)
+                t = int(round(t - (t - 3) * f * f * (3 - 2 * f)))
+                base = 0
+            else:
+                base = L.SURFACE
+            for y in range(base, t + 1):
+                w.set(u, y, v, B.STONE if y < t - 3 and out else B.PACKED_ICE)
             if rock[i, j] > 0.55:
-                for y in range(t - 2, t + int((rock[i, j] - 0.55) * 14) + 1):
+                for y in range(max(base, t - 3), t + int((rock[i, j] - 0.55) * 18) + 1):
                     w.set(u, y, v, B.STONE, 5 if (u + v) % 3 else 0)
             elif big[i, j] + 0.6 * small[i, j] > -0.35:
                 w.set(u, t, v, B.SNOW)
                 if small[i, j] > -0.2:
                     w.set(u, t + 1, v, B.SNOW_LAYER, int(np.clip((small[i, j] + 0.2) * 7, 0, 6)))
-    for cu, cv, r in L.FANS:                              # a stack over the fan's cap, its louvres open
-        for u in range(cu - 3, cu + 4):
-            for v in range(cv - 3, cv + 4):
+    for cu, cv, r in L.FANS:                              # the shaft from the fan to the sky, its crown louvred
+        top = L.SURFACE + 26
+        for u in range(cu - 4, cu + 5):
+            for v in range(cv - 4, cv + 5):
                 d = math.hypot(u - cu, v - cv)
-                top = L.SURFACE + 12
-                for y in range(L.SURFACE, top):
-                    if d <= 3.2:
-                        w.set(u, y, v, (B.IRON_BLOCK if d > 2.3 else B.AIR) if y < top - 3 else
-                              (B.IRON_BARS if d > 2.3 else B.COAL_BLOCK))
-                if d <= 3.2:
-                    w.set(u, top, v, B.IRON_BLOCK)
+                for y in range(L.ROOF[1] + 1, top + 1):
+                    if d <= L.SHAFT - 0.9:
+                        w.set(u, y, v, B.AIR)
+                    elif d <= L.SHAFT:
+                        louvre = y > top - 4 and (y + int(math.degrees(math.atan2(v - cv, u - cu)) // 30)) % 2
+                        w.set(u, y, v, B.IRON_BARS if louvre else B.IRON_BLOCK)
+                if d <= L.SHAFT:
+                    for y in range(top + 1, L.SY):
+                        w.set(u, y, v, B.AIR)
     hu, hv = (L.SPAWN_ROOM[0] + L.SPAWN_ROOM[1]) // 2, 0  # the hatch over the spawn: a hut of iron and clay
     for u in range(hu - 3, hu + 4):
         for v in range(0, 4):

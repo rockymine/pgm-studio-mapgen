@@ -132,6 +132,16 @@
             <region id="yellow-room"/>
         </union>
         <apply block="reds-woolrooms-filter" region="reds-woolrooms" message="You may not edit the wool room!"/>
+        <union id="blue-pocket">
+            <cuboid min="-90,18,5" max="-72,42,25"/>
+            <cuboid min="-90,18,-25" max="-72,42,-5"/>
+        </union>
+        <apply block-place="not-blue" region="blue-pocket" message="Your team may not build beside its own spawn!"/>
+        <union id="red-pocket">
+            <cuboid min="72,18,5" max="90,42,25"/>
+            <cuboid min="72,18,-25" max="90,42,-5"/>
+        </union>
+        <apply block-place="not-red" region="red-pocket" message="Your team may not build beside its own spawn!"/>
         <apply block-break="may-break" message="Only what was built, the drifts and the seals break here!"/>
         <union id="drifts">
             <cuboid min="-90,18,0" max="-61,22,5"/>
