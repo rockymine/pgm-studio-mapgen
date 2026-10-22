@@ -800,7 +800,12 @@ def build(doc, arrays=None):
             hx, hz = L["at"]
             r = int(max(L.get("L", 9), L.get("W", 6)) / 2) + 1
             under = Hi[max(hx - r - x0, 0):hx + r - x0 + 1, max(hz - r - z0, 0):hz + r - z0 + 1]
-            h = BLD.House(hx, hz, L.get("heading", 0.0), L=L.get("L", 9), W=L.get("W", 6), floor=int(under.max()),
+            seat = L.get("floor")
+            if seat == "footprint":                     # the highest ground under the walls, not round them
+                seat = max(int(Hi[x - x0, z - z0]) for x, z in
+                           BLD.Frame(hx, hz, L.get("heading", 0.0)).cells(L.get("L", 9) + 1, L.get("W", 6) + 1))
+            h = BLD.House(hx, hz, L.get("heading", 0.0), L=L.get("L", 9), W=L.get("W", 6),
+                          floor=int(under.max()) if seat is None else int(seat),
                           storeys=L.get("storeys", 2), style=house_style(L.get("style", "town"), doc), jetty=L.get("jetty", False),
                           door=L.get("door", 1), chimney=L.get("chimney", True), roof=L.get("roof", "gable"),
                           **{k: L[k] for k in ("storey", "pitch", "overhang") if k in L})

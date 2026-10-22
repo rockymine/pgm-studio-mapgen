@@ -2176,6 +2176,21 @@ class HouseDetails(unittest.TestCase):
         return dict({"id": "h", "op": "house", "at": [0, 0], "heading": 0, "L": 9, "W": 6, "storeys": 2,
                      "style": "cottage", "door": 1}, **kw)
 
+    def test_a_house_seated_on_its_footprint_ignores_a_rise_beside_it(self):
+        from pgmvox.document import layers as document
+        rise = np.zeros((32, 32)); rise[21, 21] = 1                         # (5, 5): in the square, off the walls
+        def built(**kw):
+            doc = {"board": {"x": [-16, 15], "z": [-16, 15], "floor": 40, "height": 80, "seed": 1},
+                   "styles": {"cottage": self.STYLE},
+                   "ground": [{"id": "all", "op": "outline", "box": [-16, -16, 15, 15]},
+                              {"id": "lift", "op": "set", "height": {"add": [40, {"mul": [6, "rise"]}]}}],
+                   "build": [self.house(storeys=1, **kw)]}
+            w = document.build(doc, arrays={"rise": rise}).world
+            return int(np.nonzero((w.ids[10:22, :, 10:22] != B.AIR).any(axis=(0, 2)))[0].max())   # its ridge
+        seated = built(floor="footprint")
+        self.assertEqual(built() - seated, 6)                                  # the rise lifted it onto a plinth
+        self.assertEqual(built(floor=43) - seated, 3)                          # a number sets the plate
+
     def test_a_sill_is_a_stair_in_the_wall_under_each_upper_window(self):
         w = self.build([self.house()]).world
         panes = np.argwhere(w.ids == B.PANE)

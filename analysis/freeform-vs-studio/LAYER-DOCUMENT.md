@@ -144,7 +144,7 @@ the slope and rock in beds that follow the surface. The water's bed has a stack 
 |---|---|---|
 | `surface` | `near` (a path layer), `blocks`, `weights`, `steps`: none, `stairs` (`stair`) or `half` (`slab`) | `route.pave`, `route.steps`, `route.halfsteps` |
 | `wall` | `line` or `near` + `offset`, `height`, `width`, `crown` (`follow`, `level`, `grade`), `run`, `blocks`, `weights`, `courses` (from the foot up, a block or a checker pair each), `cap`, `crenel`, `crenel_stair`, `step_stair` or `step_slab`, `ruin` (from, to, seed: broken down along that stretch), `gap`, `closed` | `build.line_wall` |
-| `house` | `at`, `heading`, `L`, `W`, `storeys`, `storey`, `style` (`town`, `plaster`, `brick`, `stone`, a name in `styles`, or an object), `roof`, `pitch`, `overhang`, `door`, `jetty`, `chimney`, `walk` (a path one wide from its door `to` a line, a low hedge beside it) | `build.house` |
+| `house` | `at`, `heading`, `L`, `W`, `storeys`, `storey`, `style` (`town`, `plaster`, `brick`, `stone`, a name in `styles`, or an object), `roof`, `pitch`, `overhang`, `door`, `jetty`, `chimney`, `floor`, `walk` (a path one wide from its door `to` a line, a low hedge beside it) | `build.house` |
 | `blocks` | `boxes`, each a `box` (x0, y0, z0, x1, y1, z1) and a `block`; `rel` names a house whose floor the heights are counted from | the document's own |
 | `graves` | `at` (points), `facing`, `stone`, `cap`, `soil`, `flowers`, `flowered` (the share with a flower) | `props.grave` |
 | `field` | `rect`, `crops`, `rows`, `ditch`, `fence`, `gate`, `scarecrows`, `y` | `props.crop_field`, `props.scarecrow` |
@@ -178,6 +178,11 @@ and a door only on a straight run of three.
 **A house stands on the highest ground under it, its plate filled down to the rest.** Its footprint counts as
 built, so a wood keeps `clear` of it. A `blocks` layer sets boxes of one block each, for what no other layer
 says: the posts and roof over a well.
+
+**The highest ground is read over a square round the house unless `floor` says otherwise.** The square reaches
+half the long side past every wall, so a house beside a rise is lifted onto a plinth as high as that rise.
+`"floor": "footprint"` reads only the ground under the walls and one block round them, and a number sets the
+plate's height outright.
 
 **A path is two layers, because it does two things at two times.** The `path` layer grades the ground in the
 ground stage; the `surface` layer lays its blocks and steps once the ground is laid. Half steps are blocks and

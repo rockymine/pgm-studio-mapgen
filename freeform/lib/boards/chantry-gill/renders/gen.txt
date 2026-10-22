@@ -4,16 +4,71 @@ ground    tarn          438 columns  the tarn's bowl on the Scar's front
 ground    shore         320 columns  the ground let down to the tarn's north shore, where the beach is
 ground    beck          444 columns  the beck: rising at the gill's head, down its floor, turning east through its mouth into the tarn
 ground    tarn-water    411 columns  
+ground    square-level     63 columns  the market square laid level
+ground    field-level     11 columns  the field laid level for its ditches
+ground    main-street     10 columns  
+ground    south-street     20 columns  
+ground    lane            0 columns  
+ground    brig-road      99 columns  
+ground    far-road      157 columns  from the brig's east end round the tarn and up onto the bench
+ground    back-road      39 columns  from the spawn to the timber bridge
 lay       lay         14016 columns  8 paint layers
 water     water         814 columns  
 ground    brow-outline    138 columns  
 ground    brow-ground    138 columns  
 levels    brow          138 columns  rests on 71 columns, 0 blocks of fall
-carve     shelter        87 columns  the shelter worn into the gill's east wall under the bench
+carve     shelter        86 columns  the shelter worn into the gill's east wall under the bench
 carve     chimney        25 columns  a chimney from the shelter up onto the bench, a ladder in it
-volume    brig           86 columns  the brig: a stone arch over the gill, x 28 to 41, deck at 41
+carve     crypt         237 columns  the chantry's crypt under the nave, two tombs; a hall east to where the miners broke in
+carve     crypt-ladder     25 columns  the ladder from the crypt up into the nave
+carve     adit          124 columns  the old adit from the shelter under the gill into the crypt's end
+volume    brig           79 columns  the brig: a stone arch over the gill, x 28 to 41, deck at 41
 build     chimney-foot      1 columns  rock behind the chimney ladder's foot, where the shelter opened the shaft's wall
 build     back-bridge     60 columns  a timber bridge over the gill behind the brow, x 31 to 43, its deck at 43 to 49
+build     street-pave    163 columns  
+build     south-pave    129 columns  
+build     lane-pave      75 columns  
+build     brig-pave     108 columns  
+build     far-pave      133 columns  
+build     back-pave      83 columns  
+build     square-pave    416 columns  
+build     nave          135 columns  
+build     chapel-tower     25 columns  
+build     chapel-way      2 columns  the way from the tower into the nave
+build     crypt-hatch      8 columns  the ladder carried up through the nave's floor, railed on three sides
+build     graveyard-wall     33 columns  a low wall round the churchyard south of the chapel
+build     graves         27 columns  
+build     inn           117 columns  
+build     cooper         54 columns  
+build     west-1         54 columns  
+build     east-1         54 columns  
+build     square-east     99 columns  
+build     square-west     54 columns  
+build     south-west     54 columns  
+build     south-east     54 columns  
+build     lane-1         56 columns  
+build     hall          117 columns  
+build     byre           91 columns  
+build     stall-a        15 columns  
+build     stall-b        15 columns  
+build     stall-c        15 columns  
+build     street-lamps      8 columns  
+build     square-lamps      2 columns  
+build     front-wall-e     68 columns  
+build     front-parapet-e     28 columns  
+build     front-wall-w     67 columns  
+build     front-parapet-w     22 columns  
+build     gate-tower     45 columns  
+build     byre-field    390 columns  
+build     flower-meadow    177 columns  
+build     gardens       188 columns  
+build     scar-fold      20 columns  the fold's drystone wall, cover for whoever holds the monument
+build     scar-fold-in      5 columns  the fold's old inner wall, down to one course
+build     scar-boulders     35 columns  rocks fallen off the plateau onto the bench
+build     erratics      127 columns  erratics on the fell and the Scar, one rock each
+dress     edge-copse      1 columns  a copse on the edge bench
+dress     scar-trees      2 columns  a few trees on the plateau
+dress     knott-trees      1 columns  oaks on the knott's foot
 symmetry  red         23400 columns  red's half: blue's turned about the middle
 
 land: 14016 columns a team; heights 30 to 72
@@ -31,4 +86,7 @@ land: 14016 columns a team; heights 30 to 72
   scar monument  (54, 82) ground y 50
   gill floor y 33, rims to y 43, 1526 columns
   scar bench y 50 (median), plateau to y 61
+
+monuments stamped; ground marked under 28122 columns
+objectives with a problem: 0
 generated
