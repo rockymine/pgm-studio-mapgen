@@ -37,13 +37,6 @@
     "seed": 3
    }
   },
-  "crag": {
-   "ridged": {
-    "cell": 7,
-    "octaves": 2,
-    "seed": 16
-   }
-  },
   "grain": {
    "fbm": {
     "cell": 2,
@@ -62,15 +55,6 @@
     },
     2.5
    ]
-  },
-  "ridge-foot": {
-   "line": {
-    "along": "x",
-    "cell": 18,
-    "seed": 6,
-    "amp": 5,
-    "base": 86
-   }
   },
   "scar-d": {
    "sub": [
@@ -103,13 +87,198 @@
     }
    ]
   },
+  "knott-d": {
+   "add": [
+    {
+     "sub": [
+      "z",
+      82
+     ]
+    },
+    {
+     "mul": [
+      {
+       "sub": [
+        "x",
+        108
+       ]
+      },
+      -0.22
+     ]
+    }
+   ]
+  },
+  "knott-fade": {
+   "mul": [
+    {
+     "smoothstep": [
+      -30,
+      -14,
+      {
+       "sub": [
+        "x",
+        108
+       ]
+      }
+     ]
+    },
+    {
+     "sub": [
+      1,
+      {
+       "smoothstep": [
+        14,
+        30,
+        {
+         "sub": [
+          "x",
+          108
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "knott-crest": {
+   "add": [
+    12,
+    {
+     "mul": [
+      {
+       "fbm": {
+        "cell": 10,
+        "octaves": 2,
+        "seed": 23
+       }
+      },
+      3
+     ]
+    }
+   ]
+  },
+  "edge-d": {
+   "add": [
+    {
+     "mul": [
+      {
+       "sub": [
+        "x",
+        40
+       ]
+      },
+      -0.62
+     ]
+    },
+    {
+     "mul": [
+      {
+       "sub": [
+        "z",
+        84
+       ]
+      },
+      0.78
+     ]
+    }
+   ]
+  },
+  "edge-along": {
+   "add": [
+    {
+     "mul": [
+      {
+       "sub": [
+        "x",
+        40
+       ]
+      },
+      0.78
+     ]
+    },
+    {
+     "mul": [
+      {
+       "sub": [
+        "z",
+        84
+       ]
+      },
+      0.62
+     ]
+    }
+   ]
+  },
+  "edge-fade": {
+   "mul": [
+    {
+     "smoothstep": [
+      -40,
+      -22,
+      "edge-along"
+     ]
+    },
+    {
+     "sub": [
+      1,
+      {
+       "smoothstep": [
+        16,
+        34,
+        "edge-along"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "edge-crest": {
+   "add": [
+    15,
+    {
+     "mul": [
+      {
+       "fbm": {
+        "cell": 12,
+        "octaves": 2,
+        "seed": 22
+       }
+      },
+      3
+     ]
+    },
+    {
+     "mul": [
+      -0.12,
+      "edge-along"
+     ]
+    }
+   ]
+  },
   "fade": {
    "mul": [
     {
      "smoothstep": [
-      64,
-      88,
-      "x"
+      60,
+      90,
+      {
+       "add": [
+        "x",
+        {
+         "mul": [
+          {
+           "fbm": {
+            "cell": 9,
+            "octaves": 2,
+            "seed": 24
+           }
+          },
+          9
+         ]
+        }
+       ]
+      }
      ]
     },
     {
@@ -301,99 +470,200 @@
    "note": "the scar: a step of limestone up to the plateau, its edge ragged, dying into the fell at both ends"
   },
   {
-   "id": "back-ridge",
+   "id": "knott",
    "op": "set",
-   "height": {
-    "ridge": {
-     "coord": "z",
-     "foot": "ridge-foot",
-     "reach": -22,
-     "crest": 66,
-     "rough": {
-      "mul": [
-       "big",
-       3
-      ]
-     },
-     "spurs": [
-      {
-       "d": {
-        "line_distance": {
-         "pts": [
-          [
-           48,
-           96
-          ],
-          [
-           30,
-           70
-          ],
-          [
-           20,
-           54
-          ]
-         ]
-        }
-       },
-       "top": 50,
-       "reach": [
-        16,
-        3
-       ]
-      }
-     ]
-    }
+   "where": {
+    "gt": [
+     "knott-fade",
+     0
+    ]
    },
-   "note": "the ridge along the back, a spur reaching north-west toward the tarn"
+   "height": {
+    "add": [
+     "H",
+     {
+      "mul": [
+       "knott-fade",
+       "knott-crest",
+       {
+        "smoothstep": [
+         {
+          "add": [
+           -1,
+           "jag"
+          ]
+         },
+         {
+          "add": [
+           3,
+           "jag"
+          ]
+         },
+         "knott-d"
+        ]
+       },
+       {
+        "sub": [
+         1,
+         {
+          "mul": [
+           0.6,
+           {
+            "smoothstep": [
+             5,
+             26,
+             "knott-d"
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "note": "the knott: a crag behind the scar, its face to the north over the brow, its back grass"
   },
   {
-   "id": "crags",
-   "op": "noise",
-   "mode": "lift",
-   "field": "crag",
-   "rise": 4,
-   "areas": [
-    {
-     "polygon": [
-      [
-       0,
-       84
-      ],
-      [
-       139,
-       80
-      ],
-      [
-       139,
-       106
-      ],
-      [
-       0,
-       106
-      ]
-     ]
-    },
-    {
-     "line": {
-      "pts": [
-       [
-        48,
-        96
-       ],
-       [
-        30,
-        70
-       ],
-       [
-        20,
-        54
-       ]
-      ],
-      "width": 10
-     }
+   "id": "knott-gullies",
+   "op": "set",
+   "height": {
+    "gullies": {
+     "at": [
+      108,
+      130
+     ],
+     "count": 70,
+     "depth": 4,
+     "r0": 30,
+     "r1": 60,
+     "wander": 0.4,
+     "sharpness": 5,
+     "seed": 19
     }
-   ],
-   "note": "rock breaking out of the ridge's flank and the spur in ribs"
+   },
+   "where": {
+    "and": [
+     {
+      "gt": [
+       "knott-fade",
+       0.2
+      ]
+     },
+     {
+      "gt": [
+       "knott-d",
+       -3
+      ]
+     },
+     {
+      "lt": [
+       "knott-d",
+       8
+      ]
+     }
+    ]
+   },
+   "note": "gullies cut into its face"
+  },
+  {
+   "id": "edge",
+   "op": "set",
+   "where": {
+    "gt": [
+     "edge-fade",
+     0
+    ]
+   },
+   "height": {
+    "add": [
+     "H",
+     {
+      "mul": [
+       "edge-fade",
+       "edge-crest",
+       {
+        "smoothstep": [
+         {
+          "add": [
+           -1,
+           "jag"
+          ]
+         },
+         {
+          "add": [
+           3,
+           "jag"
+          ]
+         },
+         "edge-d"
+        ]
+       },
+       {
+        "sub": [
+         1,
+         {
+          "mul": [
+           0.7,
+           {
+            "smoothstep": [
+             5,
+             34,
+             "edge-d"
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "note": "the edge: a scarp set slantwise west of a col, its face to the north-east, its back falling away"
+  },
+  {
+   "id": "edge-gullies",
+   "op": "set",
+   "height": {
+    "gullies": {
+     "at": [
+      62,
+      126
+     ],
+     "count": 60,
+     "depth": 4,
+     "r0": 36,
+     "r1": 70,
+     "wander": 0.4,
+     "sharpness": 5,
+     "seed": 21
+    }
+   },
+   "where": {
+    "and": [
+     {
+      "gt": [
+       "edge-fade",
+       0.2
+      ]
+     },
+     {
+      "gt": [
+       "edge-d",
+       -3
+      ]
+     },
+     {
+      "lt": [
+       "edge-d",
+       8
+      ]
+     }
+    ]
+   },
+   "note": "gullies cut into its face"
   },
   {
    "id": "tarn",

@@ -1153,6 +1153,20 @@ class LayerLevels(unittest.TestCase):
         self.assertGreater(under[0] - under[-1], 4)
         self.assertEqual(w.id(0, 52, 6), B.GRASS)
 
+    def test_gullies_cut_grooves_into_a_slope(self):
+        hill = {"id": "hill", "op": "mound", "mode": "lift", "rise": 16, "power": 1.2,
+                "areas": [{"circle": {"at": [0, 0], "r": 20}}]}
+        groove = {"id": "g", "op": "set", "height": {"gullies": {"at": [0, 0], "count": 12, "depth": 4, "r0": 4,
+                                                                "r1": 20, "wander": 0, "sharpness": 4, "seed": 1}}}
+        a, b = self.build(self.doc([hill])), self.build(self.doc([hill, groove]))
+        cut = a.H - b.H
+        self.assertGreaterEqual(int(cut.min()), 0)                                 # only cuts
+        self.assertGreater(int(cut.max()), 1)
+        ring = [int(cut[int(round(12 * np.cos(t))) + 24, int(round(12 * np.sin(t))) + 24])
+                for t in np.linspace(0, 2 * np.pi, 96, endpoint=False)]
+        self.assertGreater(sum(1 for v in ring if v > 0), 10)                      # grooves and
+        self.assertGreater(sum(1 for v in ring if v == 0), 10)                     # ground between them
+
     def test_a_level_rests_where_the_ground_reaches_it(self):
         hill = {"id": "hill", "op": "mound", "mode": "lift", "rise": 18, "power": 3,
                 "areas": [{"circle": {"at": [8, 0], "r": 9}}]}

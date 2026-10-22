@@ -106,7 +106,7 @@ themselves and are evaluated in order. A one-key object is an operation over its
 | shaping | `smoothstep`, `mix`, `where`, `full` |
 | masks | `lt`, `le`, `gt`, `ge`, `and`, `or`, `not`, `inside`, `polygon` |
 | sources | `fbm`, `ridged`, `line` (noise; `fbm` with `along` is one-dimensional), `distance`, `blocks`, `line_distance`, `ellipse`, `line_z` (a line's z at each x), `at` (the heights at a point), `terms` |
-| landforms | `profile`, `ridge`, `level`, `blend`, `spire`, `crater`, `mound`: the pgmvox call over `H`, returning heights |
+| landforms | `profile`, `ridge`, `level`, `blend`, `spire`, `crater`, `mound`, `gullies` (grooves down a form's flanks round `at`): the pgmvox call over `H`, returning heights |
 
 **A `set` layer writes an expression into the heights, where a mask holds.** Together with `round` (whole blocks
 from here on), `water` (a water surface where a mask holds), `watercourse` and `grade` (a route held to a grade,

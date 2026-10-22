@@ -255,6 +255,10 @@ def expr(spec, c):
     if op == "level":
         return LF.level(c.H, E(a["e"]), a.get("top", "median") if a.get("top") == "median" else E(a["top"]),
                         inner=a.get("inner", 1.0), outer=a.get("outer", 1.5), mode=a.get("mode", "set"))
+    if op == "gullies":
+        return LF.gullies(c.H, c.X.astype(float), c.Z.astype(float), tuple(a["at"]), a["count"], E(a["depth"]),
+                          a["r0"], a["r1"], wander=a.get("wander", 0.9), sharpness=a.get("sharpness", 3.0),
+                          seed=a.get("seed", 0))
     if op == "blend":
         return LF.blend(c.H, E(a["to"]), E(a["mask"]), width=a.get("width", 8))
     if op == "spire":
