@@ -1,12 +1,10 @@
 """Blastworks' every number. Blue holds the west and red is its image under the half turn, (x, z) -> (-1 - x, -1 - z).
-Every rectangle is (x0, z0, x1, z1) inclusive, with the height of its top block.
+Every rectangle is (x0, z0, x1, z1) inclusive; a height is the top block's y.
 
-**Blue's base is the author's concept, laid block for block.** `assets/concept.npz` is the concept world's built part
-(without its signs, its redstone and the duck beside it), set down here moved by CONCEPT_AT. It holds the spawn block,
-the stair up to the deck and the stair down from the spawn, the wool box with its two doors of end stone (its roof
-and its east wall), the bridge over the void before the side door, and the east block with its stair down into that
-void. What this board adds is what a generator adds round a spawn and a wool: the spawn's second way out, the hub where a
-team's ways meet, its front and the middle, and the build zones with their redstone.
+The board finishes the author's second concept: a wool sealed in a box whose roof and east wall are doors of end
+stone only TNT breaks, the roof under the deck a team walks on and the wall under the bridge. Its layout is the one
+agreed in the author's review (plan 4 and the raised east block): blue's base runs z -21 to 20, even about the axis,
+so the two sides stand in line.
 """
 import os
 import sys
@@ -15,42 +13,47 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 from pgmvox.plan.raster import Symmetry                                                # noqa: E402
 
 SYM = Symmetry("half")
-X0, Z0, SX, SZ, SY = -128, -64, 256, 128, 40
-CONCEPT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "concept.npz")
-CONCEPT_AT = (-84, 0, 40)                        # the concept's own coordinates plus this are the board's
-SPAWN_H, ISLE_H, DECK_H = 12, 14, 18
-MAX_BUILD = 26
+X0, Z0, SX, SZ, SY = -128, -40, 256, 80, 48
+SPAWN_H, FRONT_H, DECK_H, EAST_TOP = 12, 14, 18, 26
+TUNNEL = (21, 25)                                # the east block's tunnel: its floor's y, its last air's y
+MAX_BUILD = 32
 
-# ---- the concept's parts, in the board's coordinates (measured off the asset) ----------------------------------------
-SPAWN_BLOCK = (-110, -15, -69, -2)
-BOX = (-96, -43, -77, -30)
-ROOF_DOOR = (-94, -41, -85, -32, 15, 17)         # x0, z0, x1, z1, y0, y1: end stone, three thick
-SIDE_DOOR = (-80, -41, -78, -32, 2, 11)          # end stone in the box's east wall, on the void under the bridge
-ROOM = (-95, -42, -81, -31, 2, 14)               # the room inside the box, its floor falling to the side door
-BOX_WOOL = (-91, 5, -37)                         # where the concept's sign said the wool is
-SPAWN = (-102, 13, -8)                           # where the concept's sign said the spawn is
-SPAWN_AREA = (-110, -15, -95, -2)
+# ---- nature: real ground, solid to the bottom ------------------------------------------------------------------------
+SPAWN = (-110, 7, -69, 20)
+FRONT = (-40, -21, -27, 20)
 
-# ---- what this board adds, in the concept's widths (a band fourteen, a lane seven): (name, box, top, fill) -----------
-LAND = [
-    ("spawn-exit", (-68, -9, -34, -3), SPAWN_H, "lanes"),     # the spawn's other way out, where the concept's sign said
-    ("hub", (-40, -43, -27, -16), ISLE_H, "plates"),          # where a team's ways meet: the east block, the exit, the front
-    ("front", (-21, -25, -8, -12), ISLE_H, "plates"),         # the team's front, before the middle
-    ("mid", (-6, -6, 5, 5), ISLE_H, "hazard"),                # the middle, shared
-]
-# flights: (name, box, the top at its low end, at its high end, the side its high end is on)
-FLIGHTS = [
-    ("exit-corner", (-40, -15, -34, -10), SPAWN_H, ISLE_H, "n"),  # the exit turning the corner up into the hub
-    ("hub-stair", (-40, -36, -37, -30), ISLE_H, DECK_H, "w"),     # from the hub up to the east block's deck
-]
-SLOT = (-87, 13, -10)                            # the monument for the wool blue takes, on the spawn block
-ON_THE_BOX = (-96, -43, -84, -30, 15, 26)        # over the box, inside its bedrock edge: closed to the box's own team
+# ---- the grammar's pieces --------------------------------------------------------------------------------------------
+BOX = (-96, -21, -77, -8)                        # the wool's box, its deck at 18
+BRIDGE = (-76, -21, -60, -8)                     # the bridge, its deck at 18 and its underside at 12
+DESCENT = (-59, -21, -41, -15)                   # the descent: 14 at its east end down to 5 at its west
+EAST = (-59, -14, -41, -8)                       # the east block, raised to 26, the tunnel through its length
+ARM = (-68, -14, -60, -8)                        # its arm over the bridge at 26, flush with the void's edge
+TUNNEL_Z = (-12, -10)
+EAST_STAIR = (-40, -12, -34, -10)                # from the front straight up into the tunnel, 14 to 21
+UP_STAIR = (-82, -7, -77, 6)                     # the concept's stair up from the spawn to the deck
+DOWN_STAIR = (-76, -1, -69, 6)                   # and its stair down, 12 to 6, toward the void under the bridge
+EXIT = [(-68, 14, -59, 20), (-50, 14, -41, 20)]  # the spawn's second way out, its gap of eight between
+STONE = (-11, -21, 2, -8)                        # the middle's stone, red's its image
+TNT = (-2, -2, 1, 1)                             # the TNT spawner's pedestal at the very middle
+
+# ---- the box, as the concept has it -----------------------------------------------------------------------------------
+ROOF_DOOR = (-94, -19, -85, -10, 15, 17)         # x0, z0, x1, z1, y0, y1: end stone, three thick
+SIDE_DOOR = (-80, -19, -78, -10, 2, 11)          # end stone in the east wall, onto the void under the bridge
+ROOM = (-95, -20, -81, -9, 2, 14)
+BOX_WOOL = (-91, 5, -15)
+
+# ---- on the spawn -----------------------------------------------------------------------------------------------------
+HOUSE = (-106, 10, -96, 17)
+SPAWN_AT = (-101, 13, 18)                        # in front of the house's door
+SPAWN_AREA = (-110, 7, -94, 20)
+SLOT = (-87, 13, 12)
 
 # ---- where a player may build over the void: blue's, and their images are red's ---------------------------------------
 ZONES = [
-    (-76, -43, -60, -30),                        # the concept's: the void under the bridge, before the side door
-    (-65, -29, -60, -22),                        # and its foot, past the bottom of the stair down from the spawn
-    (-26, -27, -22, -12),                        # from the hub to the front
-    (-12, -11, -1, -7),                          # from the front to the middle
+    (-76, -21, -60, -8),                         # under the bridge, all of it
+    (-76, -7, -69, -2),                          # in line with the stair down, from its foot to the bridge
+    (-68, -1, -41, 13),                          # the hole, from the stair down's edge to the front
+    (-58, 14, -51, 20),                          # the exit's gap
+    (-26, -21, 25, 20),                          # the middle, front to front
 ]
 MARKER_Y = 1
