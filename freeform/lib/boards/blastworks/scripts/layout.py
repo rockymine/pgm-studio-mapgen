@@ -44,9 +44,11 @@ BOX_WOOL = (-91, 5, -15)
 
 # ---- on the spawn -----------------------------------------------------------------------------------------------------
 HALL, HALL_H = (-106, 10, -96, 17), 21           # the grammar's piece where the house stood, set into the ground
-SPAWN_AT = (-101, 13, 18)                        # in front of the hall
+HOLLOW = (-105, 11, -97, 16, 13, 19)             # x0, z0, x1, z1, y0, y1: the hall's room, its floor at the ground's height
+HALL_DOOR = (13, 14, 15)                         # z0, z1, top: the door in the hall's east wall, toward the stairs
+SPAWN_AT = (-100, 13, 14)                        # in the hall, facing its door
 SPAWN_AREA = (-110, 7, -94, 20)
-SLOT = (-87, 13, 12)
+SLOT = (-105, 13, 13)                            # the wool's monument, in a niche in the hall's west wall
 
 # ---- where a player may build over the void: blue's, and their images are red's ---------------------------------------
 ZONES = [

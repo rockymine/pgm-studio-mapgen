@@ -10,7 +10,7 @@ DIORITE, DIORITE_RAW, SBRICK = (B.STONE, 4), (B.STONE, 3), (B.STONEBRICK, 0)
 SPRUCE, SPRUCE_LOG, CYAN = (B.PLANKS, 1), (B.LOG, 1), (B.STAINED_CLAY, 9)
 QUARTZ, CHISELED, QPILLAR = (B.QUARTZ, 0), (B.QUARTZ, 1), (B.QUARTZ, 2)
 SILL = (B.SLAB, 15)                                  # a quartz slab in the upper half
-PANE = (B.PANE, 0)
+BARS = (B.IRON_BARS, 0)
 
 
 def rim(inward):
@@ -22,7 +22,7 @@ def style():
         for y in range(1, h):
             w.set(x, y, z, *(SBRICK if y < 3 else CYAN if (h - y) % 6 == 4 else DIORITE))
         w.set(x, 0, z, B.BEDROCK)                        # the concept's floor
-    pane = G.Course(PANE, back=SPRUCE)
+    pane = G.Course(BARS, back=SPRUCE)
     plain = [rim, SPRUCE, DIORITE, DIORITE, CYAN, DIORITE, DIORITE, DIORITE, DIORITE, DIORITE, CYAN]
     post = [rim, CHISELED] + [SPRUCE_LOG] * 8 + [QUARTZ]
     window = [rim, SPRUCE, QUARTZ, pane, pane, SILL, DIORITE, DIORITE, DIORITE, DIORITE, CYAN]

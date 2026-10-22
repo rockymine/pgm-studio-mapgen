@@ -45,6 +45,7 @@ def lay(w):
     bridge(w)
     box(w)
     east(w)
+    hall(w)
 
 
 def bridge(w):
@@ -122,3 +123,29 @@ def east(w):
             if edge:
                 inward = (0, 1) if z == b0 else (0, -1) if z == b1 else (1, 0)
                 w.set(x, L.EAST_TOP - 1, z, B.SPRUCE_STAIRS, stair(inward, upside_down=True))
+
+
+def hall(w):
+    """The spawn's hall, hollow: one room on the ground's height with the spawn in it, the wool's monument in a niche
+    of quartz in its west wall, and a door east toward the stairs. Its windows' bars open into the room."""
+    x0, z0, x1, z1, y0, y1 = L.HOLLOW
+    for x in range(x0, x1 + 1):
+        for z in range(z0, z1 + 1):
+            w.set(x, y0 - 1, z, *(S.DIORITE_RAW if (x + z) % 2 else S.DIORITE))
+            for y in range(y0, y1 + 1):
+                w.set(x, y, z, B.AIR)
+            w.set(x, y1 + 1, z, *S.SPRUCE)
+    for x in (x0, x1):                                   # quartz posts in the room's corners
+        for z in (z0, z1):
+            for y in range(y0, y1 + 1):
+                w.set(x, y, z, *S.QPILLAR)
+    sx, sy, sz = L.SLOT
+    for z in (sz - 1, sz + 1):                           # the monument's niche, framed
+        for y in range(sy, sy + 3):
+            w.set(sx, y, z, *S.CHISELED)
+    w.set(sx, sy + 3, sz, *S.QUARTZ)
+    a, b, top = L.HALL_DOOR
+    for z in range(a, b + 1):
+        for y in range(y0, top + 1):
+            w.set(L.HALL[2], y, z, B.AIR)
+        w.set(L.HALL[2], top + 1, z, *S.CHISELED)
