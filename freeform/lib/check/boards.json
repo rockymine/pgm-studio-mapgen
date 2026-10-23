@@ -1,4 +1,9 @@
 {
+ "boards/blastworks": {
+  "level.json": "e505c162c014ab93fdcbfefbffc924dfc98da7b8273be1eb32bebf3bb058c088",
+  "tiles.json": "83893c632b4a40434b642ea963a71a05d3e4a6d9f97829df9d7e225b40f202ee",
+  "volume.bin": "4083d8fba485f1337a5a70409600d729a066f73d1c90c562e2c3c6c4af97ee72"
+ },
  "boards/brassmoor-works": {
   "level.json": "6be7b39f8b77bf51500021793cdeae95c55e249d89c236015d8c922413b721c8",
   "tiles.json": "3a7af5ad1488c26d2ddc62de6f28af93bcf21e05b10881187a0a63532e7caaea",
@@ -49,6 +54,11 @@
   "tiles.json": "b2243afdac29bee222a978344a07047d09083cd058db1bc25bb4afbd8ddd35f0",
   "volume.bin": "67812e3684426e1816b7766e57455137a6559650996f5cfb8a95121543da266e"
  },
+ "boards/coldstore": {
+  "level.json": "3375d0707635ac8b059f4791415252619fb50dd1cf903fb352e6ee9efb343bd8",
+  "tiles.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "volume.bin": "afbfc2f22deb4c3b0cbeabadd7eccaa4b9ed9b49e51b3685d0c91894b3225079"
+ },
  "boards/copperline": {
   "level.json": "38ec9e82800d07abe79f486fcc9a6570cd94b4c91a9995529aa96e32e7a81276",
   "tiles.json": "b64996c1215c1bfc8674e6c71bbd0389cc23600914cd0bd3bce0eb90a1c07051",
@@ -73,6 +83,11 @@
   "level.json": "f7172e0e93cb51e1f30340f4b84700ec9dfb7a858318d6697aec0f796e638a02",
   "tiles.json": "3ed4b1605c43e4c2ca0ded3a75730336b67470c2ae9b24d3ddce3225549692a1",
   "volume.bin": "8d1c32a0157cefd472da03f457581b9086ade293dca5d49c616def8edd550209"
+ },
+ "boards/frostvault": {
+  "level.json": "c34222f23ef430ac318fd67fa20a1840dc981687e14b9dfc4c1b721cd9bc5604",
+  "tiles.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "volume.bin": "68dd8e01a8650f5bcd2ae088395985331b135bc0558c18b2aa068066dd02b13c"
  },
  "boards/grammar-showcase": {
   "level.json": "64e312d101279399fdc632c296381ea3d3f364b052df8cfa9b0cefb4e73f6956",

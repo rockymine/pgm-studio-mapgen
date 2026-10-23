@@ -2887,3 +2887,90 @@ class Approaches(unittest.TestCase):
         self.assertIn("<disable>crafting table</disable>", xml)
         self.assertIn('avoid-players="3"', xml)
         self.assertLess(xml.index('block-break="break-only"'), xml.index("block-place-void-filter\" block-break"))
+
+    def test_a_seal_and_its_blast(self):
+        from pgmvox.play.logic import Completed, Fill, Trigger
+        from pgmvox.play.objectives import Box, Destroyable, Objectives, Teams
+        from pgmvox.play.rules import Map, Tnt
+        O = Objectives(Teams(("blue-team", "Blue", "blue"), ("red-team", "Red", "red")))
+        O.add(Destroyable("seal", "Seal", "blue-team", Box(0, 1, 0, 2, 3, 2), (B.END_STONE, 0), "end stone", "90%",
+                          required=False))
+        O.add(Destroyable("core", "Core", "blue-team", Box(5, 1, 0, 5, 1, 0)))
+        xml = Map("T", "1.0.0", "x", "ctw", objectives=O,
+                  parts=[Tnt(), Trigger(Completed("seal"), [Fill([Box(0, 4, 0, 1, 7, 0)], "air")])]).xml()
+        self.assertIn('completion="90%"', xml)
+        self.assertEqual(xml.count('required="false"'), 1)            # the seal is not the match's
+        self.assertIn("<instantignite>on</instantignite>", xml)
+        self.assertIn("<blockdamage>on</blockdamage>", xml)
+        self.assertNotIn("<yield>", xml)
+        self.assertIn('<fill region="fill-1" material="air"', xml)
+        self.assertIn("<fuse>3s</fuse>", Map("T", "1.0.0", "x", parts=[Tnt(instant=False, fuse="3s")]).xml())
+
+
+class Bunker(unittest.TestCase):
+    """A composed board read as a bunker: a team's land in two boxes, a hole in the hub, a wool room and a spawn,
+    and a build region beyond it."""
+
+    def composed(self):
+        from pgmvox.plan.bunker import Composed
+        filled = {}
+        for x in range(0, 12):                                   # the hub, with a hole at x 4..5, z 2..3
+            for z in range(0, 6):
+                if not (4 <= x <= 5 and 2 <= z <= 3):
+                    filled[(x, z)] = ("hub-t1", 0)
+        for x in range(12, 22):                                  # a wool's approach, and its room at the end
+            for z in range(1, 5):
+                filled[(x, z)] = ("wool-a-t1", 0)
+        for x in range(22, 25):
+            for z in range(1, 4):
+                filled[(x, z)] = ("wool-a-room", 0)
+        for x in range(4, 7):                                    # the spawn's room, south of the hub
+            filled[(x, -1)] = ("spawn-room", 0)
+            filled[(x, -2)] = ("spawn-room", 0)
+        build = {(x, z) for x in range(0, 12) for z in range(6, 10)}
+        rooms = [dict(wool=0, k=0, cells={(x, z) for x in range(22, 25) for z in range(1, 4)}, marker=(23, 2))]
+        box_of = {"hub-t1": ("hub", "hub"), "wool-a-t1": ("wool-a", "wool"), "wool-a-room": ("wool-a", "wool"),
+                  "spawn-room": ("spawn", "spawn")}
+        return Composed(5, filled, build, [({(4, 2), (5, 2), (4, 3), (5, 3)}, "encased")], rooms, box_of, [],
+                        {"spawn-room"}, {"wool-a-room"}, "mirror_z")
+
+    def test_the_board_is_read_as_rock_island_void_and_pillar(self):
+        from pgmvox.plan import bunker
+        b = bunker.draw(self.composed(), gap=2, moat=2, least=4)
+        self.assertEqual(b.at((4, 2)), bunker.PILLAR)                    # the hole stops sight and movement
+        self.assertEqual(b.at((5, 8)), bunker.VOID)                      # the build region is bridged
+        self.assertEqual(b.at((2, 2)), bunker.ISLAND)
+        self.assertEqual(b.at((-2, 2)), bunker.VOID)                     # the moat along the shore
+        self.assertEqual(b.at((-9, 2)), bunker.ROCK)                     # the world outside is the bunker's walls
+        self.assertEqual(b.at((23, 2)), bunker.ROCK)                     # the room is rock
+        self.assertEqual(b.at((21, 2)), bunker.VOID)                     # the land in front of its seal is cut back
+        self.assertEqual(b.at((12, 2)), bunker.VOID)                     # the approach is cut from the hub
+        self.assertEqual(b.at((15, 2)), bunker.ISLAND)
+        self.assertEqual(b.rooms[0]["face"], (-1, 0))
+        self.assertEqual(b.spawns[0]["face"], (0, 1))
+        self.assertEqual(len(b.islands), 2)
+
+    def test_a_seal_is_the_one_way_into_its_room(self):
+        from pgmvox.built import bunker as BB
+        from pgmvox.plan import bunker
+        from pgmvox.read.walk import MoveRules, nearest, walk
+        b = bunker.draw(self.composed(), gap=2, moat=2, least=4)
+        blk, x0, z0 = BB.raster(b)
+        w = World(x0, z0, blk.shape[0], blk.shape[1], 60)
+        got = BB.lay(w, b)
+        r = got.rooms[0]
+        self.assertGreater(len(r["seal"]), 200)
+        self.assertTrue(all(w.id(*p) == B.END_STONE for p in r["seal"]))
+        self.assertEqual(len(r["door"]), 8)
+        fx, fz = r["face_at"]
+        hall = np.zeros((w.sx, w.sz), bool)
+        hall[:blk.shape[0], :blk.shape[1]] = blk != bunker.ROCK
+        rules = MoveRules(max_drop=3, jumps=False, build=(hall, (18, 41)))
+        goal = (r["found"][0], r["found"][1] + 1, r["found"][2])
+        d = walk(w.ids, [(fx, 28, fz)], w.x0, w.z0, rules)
+        self.assertIsNone(nearest(d, w.x0, w.z0, *goal, r=1))
+        for p in r["seal"] + r["case"] + r["door"]:
+            w.set(*p, B.AIR)
+        d = walk(w.ids, [(fx, 28, fz)], w.x0, w.z0, rules)
+        self.assertIsNotNone(nearest(d, w.x0, w.z0, *goal, r=1))
+        self.assertEqual(w.id(*got.spawns[0]["at"]), B.AIR)
