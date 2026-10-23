@@ -58,13 +58,17 @@ colour of the enemy's wool on that side: purple and yellow on blue's blocks, ora
 
 **Only what a player brings, the drifts, the cases' glass and, by a blast, the end stone.** The walls are bedrock
 under one block of skin, so nobody hides in a wall or tunnels along it, which the concept's two-block walls allowed.
-The drifts (snow, packed ice) grow back slowly where nobody stands; the glass and the end stone do not.
+Nothing grows back: a drift dug away, a case broken or a seal blown stays so for the match.
 
 The kit carries 16 TNT, which lights as it is placed, and the crafting table is disabled.
 
-**Beside each spawn a team builds nothing.** The pocket between the spawn and its wool block (u -90 to -73, v 5 to
-24, in every image) takes no block from the team that spawns there, so it cannot wall its own seal's flank from home.
-The concept marked the place with a line of redstone.
+**Beside each spawn nobody builds.** The pocket between the spawn and its wool block (u -90 to -73, v 5 to 24, in
+every image) takes no block from either team: the defenders cannot wall their own seal's flank from home, and the
+attackers cannot bridge through it to the seal. The concept marked the place with a line of redstone.
+
+**No face of the bunker has a ledge at its foot.** A plinth a block proud ran round every island, pillar and wall at
+y 10, and a player could walk the whole bunker along it under the islands' edges. Every face now runs flush from the
+islands' underside at y 7 to the cornice under the roof, and the cornice is too close under the roof to stand on.
 
 ## 5. As built
 
@@ -87,5 +91,10 @@ all three.
 - The seal's size is the concept's: 588 blocks of end stone. How much TNT 90% of it takes is a number only a
   played match gives.
 - Snow falling from the fans is drawn, not simulated; the drifts are where a fan would put them.
-- The ice field over the roof and down the bunker's sides is scenery, so no bedrock shows from outside. No player
-  reaches it; a shaft from each fan up through it shows the sky between the fan's blades.
+- The map is one block from outside: a rim of rock six blocks thick round the bunker's walls, its sides beds of stone,
+  andesite, diorite and cobble down to the world's floor. On top lies a snowfield after the winter study: outcrops
+  of tilted rock through flowing snow, drift ridges, and gorges cracked into the ice, some out through the sides. No
+  player reaches it; a shaft from each fan up through it shows the sky between the fan's blades.
+- The roof's underside is coffered: ribs of obsidian every eight blocks, panels of grey wool, a lamp in each, and
+  icicles of packed ice hanging from it, thickest along the walls' cornice. They leave 19 blocks of air over the
+  lowest island at least.

@@ -1,7 +1,7 @@
 """Coldstore's shell: the bunker as rock, island and void, in the drawn quarter.
 
     plan()           every column of the quarter as ROCK (bedrock from the floor to the roof), ISLAND or VOID
-    shell(w)         the box, the roof, the rock with its skin, the islands, the plinths and cornices, the vent tunnels
+    shell(w)         the box, the roof, the rock with its skin, the islands, the cornices, the vent tunnels
 
 **Rock is bedrock and nothing else is under its skin.** A wall, a pillar or the wool block is bedrock from y 7 to the
 roof, and the face a player sees is one block of stone brick laid on it, so there is nothing in a wall to hide in or
@@ -17,7 +17,7 @@ VOID, ISLAND, ROCK = 0, 1, 2
 U0, U1, V0, V1 = L.OUTER_U, -1, 0, L.OUTER_V
 SKIN = (B.STONEBRICK, 0)
 STRIPES = {12: (B.STAINED_CLAY, 9), 13: (B.SANDSTONE, 2), 37: (B.SANDSTONE, 2), 38: (B.STAINED_CLAY, 9)}
-PLINTH, CORNICE = (B.STONE, 0), (B.STONE, 0)
+CORNICE = (B.STONE, 0)
 DECK = (B.DSLAB, 8)                        # an island's top: smooth stone
 TUNNEL_FLOOR = (B.STONE, 6)                      # polished andesite
 
@@ -61,25 +61,23 @@ def shell(w):
             if kind == ROCK:
                 w.column(u, v, L.FLOOR, L.ROOF[1], B.BEDROCK)
                 if faces(k, u, v):
-                    for y in range(L.PLINTH[1] + 1, L.ROOF[0]):
+                    for y in range(L.FLOOR, L.ROOF[0]):
                         w.set(u, y, v, *STRIPES.get(y, SKIN))
             elif kind == ISLAND:
                 w.column(u, v, L.FLOOR, L.FLOOR + 1, B.BEDROCK)
                 w.column(u, v, L.FLOOR + 2, L.TOP - 1, B.STONE)
                 w.set(u, L.TOP, v, *DECK)
                 if any(at(k, u + du, v + dv) == VOID for du, dv in ((1, 0), (-1, 0), (0, 1), (0, -1))):
-                    for y in range(L.PLINTH[1] + 1, L.TOP):
+                    for y in range(L.FLOOR, L.TOP):
                         w.set(u, y, v, *STRIPES.get(y, SKIN))
             w.column(u, v, L.ROOF[0], L.ROOF[1], B.BEDROCK)
-    # the plinth and the cornice: a block proud of every face over the void, at the island's foot and the roof's
+    # the cornice: a block proud of every face of rock under the roof, too close under it to stand on. Nothing is
+    # proud at the foot of a face: a plinth there was a path round the whole bunker under every island's edge
     for u in range(U0, U1 + 1):
         for v in range(V0, V1 + 1):
             if k[u - U0, v - V0] != VOID:
                 continue
             near = [at(k, u + du, v + dv) for du, dv in ((1, 0), (-1, 0), (0, 1), (0, -1))]
-            if any(n != VOID for n in near):
-                w.column(u, v, L.FLOOR, L.FLOOR + 1, B.BEDROCK)
-                w.column(u, v, *L.PLINTH, *PLINTH)
             if any(n == ROCK for n in near):
                 w.column(u, v, L.CEIL - 1, L.CEIL, *CORNICE)
     for p in L.PILLARS:

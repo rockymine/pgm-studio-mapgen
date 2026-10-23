@@ -34,12 +34,18 @@ teams.
 **What the concept left open, the board decides.** The arrow on the wool block points east, so the teams split
 there. The spawn is cut into the west wall at the team's middle, beside the two wool monuments. Every wall is bedrock
 under one block of skin, which answers the wall sign. The drifts are snow and packed ice, the only ground that
-breaks.
+breaks, and it does not grow back.
 
 **The author's review added four things, and the board has them.** Each wool block's arrow shows the colour of the
 enemy wool it points to. Beside each spawn its own team may not build, which is what the concept's line of redstone
 there meant. The ice field is higher and runs down the bunker's sides to the world's floor, so no bedrock shows from
 outside. And each fan has a shaft through the ice, so between its blades a player looks up at the sky.
+
+**The author's second review changed five things.** The drifts no longer grow back, and in the pockets beside the
+spawns neither team may build. The plinth that ran a block proud round the foot of every face is gone, since a
+player could walk the bunker round on it under the islands' edges. The ice field poured over the bunker became one
+block: a rim of rock with beds of stone down its sides and a snowfield on top after the winter study. And the roof's
+underside is coffered in obsidian and grey wool, with icicles of packed ice hanging from it.
 
 ## 3. What was measured
 

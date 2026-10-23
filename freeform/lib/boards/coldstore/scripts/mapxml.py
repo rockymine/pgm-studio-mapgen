@@ -1,6 +1,6 @@
 """Write Coldstore's map.xml: teams, spawns, wools and seals come from objectives.py; stated here are the kit with its
-TNT, building anywhere under the roof but beside a team's own spawn, what may be broken, each seal's trigger opening
-its screen, and the islands' drifts growing back.
+TNT, building anywhere under the roof but beside a spawn, what may be broken, and each seal's trigger opening its
+screen.
 
 **Only what a player brings, the islands' drifts, the seals' glass cases and, by a blast alone, their end stone may
 be broken.** Everything the bunker is made of holds: a wall is a wall for the whole match, and the void stays void
@@ -13,10 +13,10 @@ import objectives as P
 from pgmvox.play.logic import Fill, Trigger, Completed
 from pgmvox.play.mapxml import E
 from pgmvox.play.objectives import Box
-from pgmvox.play.rules import Build, Crafting, Item, Kit, Map, Renewables, Tnt, terrain_of
+from pgmvox.play.rules import Build, Crafting, Item, Kit, Map, Tnt, terrain_of
 
 BRINGS = ("wood", "tnt", "glass", "ladder")                     # what the kit carries
-DRIFTS = ("snow block", "snow", "packed ice", "ice", "gravel")  # what lies on the islands, and grows back
+DRIFTS = ("snow block", "snow", "packed ice", "ice", "gravel")  # what lies on the islands
 CASE = ("stained glass",)
 
 
@@ -30,8 +30,9 @@ class Breaking:
 
 
 class Pockets:
-    """Beside each spawn, between it and its wool block, the team that spawns there builds nothing: it cannot wall
-    its own seal's flank from home. The concept marked the place with a line of redstone."""
+    """Beside each spawn, between it and its wool block, nobody builds: the team that spawns there cannot wall its
+    own seal's flank from home, and the enemy cannot bridge to the seal through it. The concept marked the place with
+    a line of redstone."""
 
     def write(self, doc):
         u0, u1, v0, v1 = L.POCKET
@@ -42,25 +43,13 @@ class Pockets:
                 b0, b1 = (-1 - v1, -1 - v0) if north else (v0, v1)
                 boxes.append(Box(a0, L.TOP + 1, b0, a1, L.CEIL, b1))
             rid = doc.region(f"{team}-pocket", E("union", *[b.cuboid() for b in boxes]))
-            doc.apply(block_place=f"not-{team}", region=rid, message="Your team may not build beside its own spawn!")
+            doc.apply(block_place="never", region=rid, message="Nobody may build beside a spawn!")
 
 
 def span(blocks):
     """The box round a list of blocks."""
     xs, ys, zs = zip(*blocks)
     return Box(min(xs), min(ys), min(zs), max(xs), max(ys), max(zs))
-
-
-def islands():
-    """Every island's drift layer on the whole board: the drawn quarter's and its three images."""
-    out = []
-    for u0, u1, v0, v1 in L.ISLANDS:
-        for fu in (False, True):
-            for fv in (False, True):
-                a0, a1 = (-1 - u1, -1 - u0) if fu else (u0, u1)
-                b0, b1 = (-1 - v1, -1 - v0) if fv else (v0, v1)
-                out.append(Box(a0, L.TOP + 1, b0, a1, L.TOP + 4, b1))
-    return out
 
 
 M = Map("Coldstore", "1.0.0", "Blow open the enemy's wool rooms and bring their two wools home.", "ctw",
@@ -77,7 +66,6 @@ M = Map("Coldstore", "1.0.0", "Blow open the enemy's wool rooms and bring their 
             Item("leather leggings", unbreakable=True, team_color=True, wear="leggings"),
             Item("leather boots", unbreakable=True, team_color=True, wear="boots")),
         build=Build(void=False, max_height=P.MAX_BUILD),
-        parts=[Pockets(), Breaking(), Tnt(), Crafting(),
-               Renewables(islands(), rate=0.5, avoid=4, id="drifts")]
+        parts=[Pockets(), Breaking(), Tnt(), Crafting()]
         + [Trigger(Completed(sid), [Fill([span(door)], "air")]) for sid, door in P.seals()])
 print(M.xml())
