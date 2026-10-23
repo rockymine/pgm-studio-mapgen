@@ -391,3 +391,71 @@ def cloud_deck(w, y, mask=None, seed=7, cell=14, puff=9, breaks=-0.25, materials
             air = col == 0
             col[air] = mat[0]
             w.dat[i, bot:top + 1, k][air] = mat[1]
+
+
+def smooth_snow(w, smoothness=6, mask=None, on=None, added=0.4, overlay=False, max_depth=None, layer=(B.SNOW_LAYER, 0),
+                full=(B.SNOW, 0), under=None, keep=(), jitter=0.0, jitter_cell=5, seed=0):
+    """Smooth snow, after Arceon's //smoothsnow: the surface (the top of each column's highest solid block, as a
+    height in blocks) averaged over a disc `smoothness` blocks across its radius, `added` blocks laid on it, and
+    the difference to the real surface filled with snow in eighths: whole blocks of `full` up to the last whole
+    block, then a `layer` one to eight eighths high. So snow drifts against the foot of a step and thins over its
+    brow, and the slope it lies on is smoother than the ground under it.
+
+    `mask` (a boolean world-grid array) and `on` (block ids the column's top must be) say where it falls; nothing
+    falls in water, on a block in `keep` or where the top is not solid. A column whose smoothed surface lies under
+    its own still takes one eighth, so no masked column is bare. `overlay` lays only the layer, never a whole block;
+    `max_depth` caps the drift in blocks. `jitter` adds smooth noise of that many blocks (either way) to `added`,
+    in patches about `jitter_cell` across, so a flat field's eighths do not run in ruled contours. `under` (id, data) replaces the top block it lies on (a grass under snow
+    the game draws snowy by itself, so it is rarely needed). Returns the number of columns covered."""
+    from scipy import ndimage
+    from pgmvox.core.blocks import PASSABLE
+    PLANTS = {B.SAPLING, B.TALLGRASS, B.DEADBUSH, B.DANDELION, B.FLOWER, B.DOUBLE_PLANT, B.BROWN_MUSHROOM,
+              B.RED_MUSHROOM}
+    ids = w.ids
+    solid = ~np.isin(ids, list(PASSABLE | {B.LAVA, B.LAVA_FLOW}))
+    has = solid.any(axis=1)
+    top = np.where(has, w.sy - 1 - np.argmax(solid[:, ::-1, :], axis=1), -1)
+    h = np.where(has, top + 1, 0).astype(float)
+    r = max(int(round(smoothness)), 0)
+    if r:
+        yy, xx = np.mgrid[-r:r + 1, -r:r + 1]
+        disc = (xx * xx + yy * yy <= r * r + r).astype(float)
+        num = ndimage.convolve(np.where(has, h, 0.0), disc, mode="nearest")
+        den = ndimage.convolve(has.astype(float), disc, mode="nearest")
+        s = np.where(den > 0, num / np.maximum(den, 1e-9), h)
+    else:
+        s = h.copy()
+    target = s + added
+    if jitter:
+        from pgmvox.geom import noise as N
+        f = N.fbm(h.shape, jitter_cell, 2, seed=seed)
+        target = target + jitter * f / max(np.abs(f).max(), 1e-9)
+    covered = 0
+    for i, k in np.argwhere(has):
+        t = int(top[i, k])
+        if mask is not None and not mask[i, k]:
+            continue
+        b = int(ids[i, t, k])
+        if on is not None and b not in on or b in keep:
+            continue
+        if t + 1 >= w.sy or ids[i, t + 1, k] in (B.WATER, B.WATER_FLOW):
+            continue
+        depth = max(target[i, k] - (t + 1), 1 / 8)
+        if overlay:
+            depth = min(depth, 1.0)
+        if max_depth is not None:
+            depth = min(depth, max_depth)
+        eighths = int(round(depth * 8))
+        whole, part = divmod(max(eighths, 1), 8)
+        if under is not None:
+            ids[i, t, k], w.dat[i, t, k] = under
+        y = t + 1
+        for _ in range(whole):
+            if y >= w.sy or (ids[i, y, k] != 0 and ids[i, y, k] not in PLANTS):
+                break
+            ids[i, y, k], w.dat[i, y, k] = full
+            y += 1
+        if part and y < w.sy and (ids[i, y, k] == 0 or ids[i, y, k] in PLANTS):
+            ids[i, y, k], w.dat[i, y, k] = layer[0], part - 1
+        covered += 1
+    return covered

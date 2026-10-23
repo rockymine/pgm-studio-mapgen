@@ -21,7 +21,7 @@ build.
 
 ## The stages
 
-**A document builds in fifteen stages, always in this order.** A layer belongs to one stage, and within a stage
+**A document builds in sixteen stages, always in this order.** A layer belongs to one stage, and within a stage
 the layers run as listed.
 
 | Stage | Key | What it does |
@@ -39,7 +39,8 @@ the layers run as listed.
 | volume | `volume` | bodies set into the ground: a box turned and tilted, sunk, painted in its own frame, hollowed |
 | structures | `structures` | masses with patterned faces, floors laid as fields |
 | build | `build` | what stands on the finished ground: a path's surface and steps, walls, hedges, fences |
-| dress | `dress` | trees and scattered things, kept `clear` blocks (3 unless stated) off everything built, their crowns `spacing` crown radii apart (0.85 unless stated) |
+| dress | `dress` | trees and scattered things, kept `clear` blocks (3 unless stated) off everything built, their crowns `spacing` crown radii apart (0.85 unless stated); `plants` lays ground cover |
+| snow | `snow` | smooth snow: the surface averaged over `smoothness`, `added` laid on it, filled in eighths where `on` and an `area` or `where` hold |
 | symmetry | `symmetry` | the drawn part copied onto its image, recoloured for the other team |
 
 ## Areas
@@ -106,7 +107,9 @@ themselves and are evaluated in order. A one-key object is an operation over its
 | shaping | `smoothstep`, `mix`, `where`, `full` |
 | masks | `lt`, `le`, `gt`, `ge`, `and`, `or`, `not`, `inside`, `polygon` |
 | sources | `fbm`, `ridged`, `line` (noise; `fbm` with `along` is one-dimensional), `distance`, `blocks`, `line_distance`, `ellipse`, `line_z` (a line's z at each x), `at` (the heights at a point), `terms` |
-| landforms | `profile`, `ridge`, `level`, `blend`, `spire`, `crater`, `mound`: the pgmvox call over `H`, returning heights |
+| landforms | `profile`, `ridge`, `level`, `blend`, `spire`, `crater`, `mound`, `gullies` (grooves down a form's flanks round `at`): the pgmvox call over `H`, returning heights |
+
+**A board may hand the build grids it computed itself** (`build(doc, arrays=...)`), read by name like any field: a partition no expression states, or a raster drawn in another tool.
 
 **A `set` layer writes an expression into the heights, where a mask holds.** Together with `round` (whole blocks
 from here on), `water` (a water surface where a mask holds), `watercourse` and `grade` (a route held to a grade,
@@ -128,6 +131,8 @@ may name another layer's line, so the river's sandy bank is the river's own line
 {"block": "SAND", "slope": [null, 30], "area": {"line": {"near": "fluss", "width": 12}}}
 ```
 
+**`lay` may state its `soil`** ([[up to degrees, depth], ...]) and turn `ledges` off, so ground steeper than the last band shows rock with no dirt between.
+
 **A column no layer takes is grass, or stone past 55 degrees.** Under the top, `lay` puts soil whose depth follows
 the slope and rock in beds that follow the surface. The water's bed has a stack of its own under `water.bed`.
 
@@ -138,9 +143,26 @@ the slope and rock in beds that follow the surface. The water's bed has a stack 
 | `op` | Numbers | From pgmvox |
 |---|---|---|
 | `surface` | `near` (a path layer), `blocks`, `weights`, `steps`: none, `stairs` (`stair`) or `half` (`slab`) | `route.pave`, `route.steps`, `route.halfsteps` |
-| `wall` | `line` or `near` + `offset`, `height`, `width`, `crown` (`follow`, `level`, `grade`), `run`, `blocks`, `weights`, `cap`, `crenel`, `gap`, `closed` | `build.line_wall` |
-| `house` | `at`, `heading`, `L`, `W`, `storeys`, `style` (`town`, `plaster`, `brick`, `stone`), `roof`, `door`, `jetty`, `chimney` | `build.house` |
-| `blocks` | `boxes`, each a `box` (x0, y0, z0, x1, y1, z1) and a `block` | the document's own |
+| `wall` | `line` or `near` + `offset`, `height`, `width`, `crown` (`follow`, `level`, `grade`), `run`, `blocks`, `weights`, `courses` (from the foot up, a block or a checker pair each), `cap`, `crenel`, `crenel_stair`, `step_stair` or `step_slab`, `ruin` (from, to, seed: broken down along that stretch), `gap`, `closed` | `build.line_wall` |
+| `house` | `at`, `heading`, `L`, `W`, `storeys`, `storey`, `style` (`town`, `plaster`, `brick`, `stone`, a name in `styles`, or an object), `roof`, `pitch`, `overhang`, `door`, `jetty`, `chimney`, `floor`, `walk` (a path one wide from its door `to` a line, a low hedge beside it) | `build.house` |
+| `blocks` | `boxes`, each a `box` (x0, y0, z0, x1, y1, z1) and a `block`; `rel` names a house whose floor the heights are counted from | the document's own |
+| `graves` | `at` (points), `facing`, `stone`, `cap`, `soil`, `flowers`, `flowered` (the share with a flower) | `props.grave` |
+| `field` | `rect`, `crops`, `rows`, `ditch`, `fence`, `gate`, `scarecrows`, `y` | `props.crop_field`, `props.scarecrow` |
+| `stall` | `at`, `facing`, `colours` (the roof's stripes), `width`, `post`, `foot` (a full block under each post), `counter_stair`, `goods`, `banners` (front and sides), `sides` (closed, entered from the back) | `props.market_stall` |
+| `posts` | `at` (points), `stack` (blocks from the ground up: a lamp, a bollard) | the document's own |
+| `round_tower` | `at`, `r` or `half` (a square with its corners cut; `cut: false` keeps them), `height`, `y`, `wall`, `floor`, `crenel`, `crenel_stair`, `quoins`, `string`, `plinth`, `door`, `openings` ([angle, y]: a wall-walk's way in; `openings_from: floor` counts y from its floor), `slit` | `build.round_tower` |
+| `paving` | `area`, `blocks` (each taking an equal share), `cell` (the size of a cell one block is laid over), `seed` | the document's own |
+| `hedge` | `line` or `near` + `offset`, `leaves`, `modules`, `drop`, `grass` (in the checker's gaps) | `green.hedge` |
+| `small_trees` | `at` (points), `trunk`, `log`, `leaves`, `bite` | `green.round_oak` |
+| `flowers` | `area`, `flowers`, `along`, `rows`, `angle` | `green.flower_rows` |
+| `boulders` | `at` ([x, z, r, {rz, height, angle, shape}] each), `rock`, `accent`, `accent_share`, `sink`, `rough`, `shape` | `green.boulder` |
+| `crops` | `area`, `crops`, `angle`, `rows`, `ditch`, `scarecrows` | `green.crop_rows` |
+| `plants` (dress) | `kinds` ({`grass`, `fern`, `tall_grass`, `large_fern`, `bush`, `tall_bush`: weight}), `density`, `area`, `where`, `noise` (`field`, `lo`, `hi`), `clear` (1 unless stated), `low` ([x, z, r] each), `seed` | `green.ground_cover` |
+
+**Ground cover is a dress layer of its own, laid on grass under open air and nowhere else.** Each covered column
+takes one kind, drawn by its weight, so a field of it is mixed rather than banded; `noise` gathers it into patches.
+Inside a `low` circle nothing over a block stands, so grass may grow under a monument while the tall plants and
+bushes that hide a player keep the four blocks the gameplay rules ask of cover.
 
 **A hedge, a wall and a fence are the same layer with different blocks.** The island's hedge runs four blocks off
 the road with a gap every fourteen, and its curtain wall holds its crown level over runs of five:
@@ -149,9 +171,24 @@ the road with a gap every fourteen, and its curtain wall holds its crown level o
 {"id": "hecke", "op": "wall", "near": "strasse", "offset": 4, "height": 1, "blocks": [["LEAVES", 4]], "gap": [14, 2]}
 ```
 
+**A house's style is data, named once under `styles` and used by name.** An object names a `base` style and the
+keys it changes: the wall blocks, `plinth`, the post `log`, and `windows` as a rhythm with a phase that centres one
+block in a frame's bay.
+
+**A style's details are each off until it names them.** `sill_in` makes the wall block under a window a stair of
+the facade's kind; `quoins` and `string` dress a style without posts; `stack` stands a chimney outside the gable
+and `chimney_top` caps either chimney. `joists_along`, `slab_roof`, `ridge_slab` (a ridge one wide laid in slabs, one two wide in stairs rising to each other) and `verge` with `roof_bands` (the roof's ring
+and bands across it in other blocks) follow, and `plain_turned` gives a turned house no windows, one post a corner
+and a door only on a straight run of three.
+
 **A house stands on the highest ground under it, its plate filled down to the rest.** Its footprint counts as
 built, so a wood keeps `clear` of it. A `blocks` layer sets boxes of one block each, for what no other layer
 says: the posts and roof over a well.
+
+**The highest ground is read over a square round the house unless `floor` says otherwise.** The square reaches
+half the long side past every wall, so a house beside a rise is lifted onto a plinth as high as that rise.
+`"floor": "footprint"` reads only the ground under the walls and one block round them, and a number sets the
+plate's height outright.
 
 **A path is two layers, because it does two things at two times.** The `path` layer grades the ground in the
 ground stage; the `surface` layer lays its blocks and steps once the ground is laid. Half steps are blocks and
@@ -221,6 +258,10 @@ its panels and lattice, bands by height, and Brittlebush's edge.
 `outline` with an `area` instead of a box. It is laid into a world of its own and copied in where that world holds
 a block, so nothing it lays clears the ground below.
 
+**A level may state its `soil`**, the depth of dirt under its top everywhere, so a lip of rock carried over the ground below shows rock and not a band of dirt.
+
+**A level's outline may be a `where` mask and its underside a `bottom` field.** A bottom that rises the farther the level reaches out from the ground it rests on is a face that leans out over its own foot, steeper than upright.
+
 **Under its edges a level tapers as a floating island does.** `underside` takes `taper` (blocks at the edge,
 blocks per block in), `rough`, `seed` and `clear`. Where the taper leaves fewer than `clear` blocks of air over the
 surface below, the level rests on it instead: it is laid down into that ground, soil and all, and the surface below
@@ -247,7 +288,7 @@ cave under a level that hangs is guarded by the meadow, not the level. Every car
 | `tunnel` | `pts` ([x, floor y, z, radius] each), `mouths` (the waypoints open to the air), `lift`, `breach`, `dress` | `under.tunnel`, `under.dress_cave` |
 | `chamber` | `at` [x, floor y, z], `rx`, `rz`, `h`, `dress` | `under.chamber`, `under.dress_cave` |
 | `rooms` | `rooms` (`id`, `rect`, `floor`, `h`), `halls` (`from`, `to`, `via`, `width`, `h`), `lining`, `light`, `props`, `stair` | the document's own |
-| `shaft` | `at` [x, z], `bottom`, `top` (`ground` or a y), `ladder_on` | `under.shaft` |
+| `shaft` | `at` [x, z], `bottom`, `top` (`ground` or a y), `ladder_on`, `wall`, `post` | `under.shaft` |
 
 **A tunnel's mouth is a waypoint whose cover guard is lifted.** Within its radius and a block and a half of it the
 passage opens to whatever is over it, so a mouth set at the foot of a face cuts a portal and one set on a slope cuts
@@ -262,6 +303,19 @@ opens through it.
 
 **A room is furnished from data.** `light` hangs a torch at the middle of each wall at `y` over the floor, and
 `props` fills a box with a block: tombs, bars, a pool, a pillar.
+
+## Snow
+
+**Smooth snow puts a board into winter without flattening it.** After Arceon's `//smoothsnow`, a `snow` layer takes
+the surface as a height, averages it over a disc `smoothness` blocks in radius, lays `added` blocks on it and fills
+the difference to the real ground in eighths: snow blocks to the last whole one, then a layer one to eight eighths
+high. Snow drifts against the foot of a step and thins over its brow, and a column under its own average still
+takes an eighth.
+
+**Where it falls is a mask.** `on` names the blocks it lies on, so rock stays bare where it is left out; `area` or
+`where` limit it, `overlay` keeps it to one block, `max_depth` caps a drift and `under` replaces the block it lies
+on. `jitter` adds smooth noise of that many blocks to `added`, in patches `jitter_cell` across, so a flat field's
+eighths do not run in ruled contours. `board.biome` sets the biome every column takes, so grass and leaves under it are tinted cold.
 
 ## Volume, structures and symmetry
 

@@ -51,6 +51,79 @@ def stall(w, x, y, z, facing="e", awning=14, stripe=0, post=(B.FENCE, 0), goods=
     return cells
 
 
+def market_stall(w, x, y, z, facing="s", colours=(14, 0), width=5, post=(B.FENCE, 0), counter=(B.PLANKS, 1),
+                 counter_stair=None, goods=((B.PUMPKIN, 3), (B.MELON, 0), (B.HAY, 0)), banners=False, sides=False,
+                 foot=None):
+    """A market stall `width` across and three deep on the floor at y, its counter on the side it faces: fence posts
+    three high at the corners, a flat wool roof on the fourth course striped across in `colours`, a counter of
+    `counter` between the front posts (or of `counter_stair` upside down, its lip toward the buyer) with `goods`
+    on it in turn and a block of air over them. With `banners`, a banner of each roof block's colour hangs from it
+    along the front and both sides, the back left open; with `sides`, the middle of each side is closed by the
+    counter's block, so the stall is walked into only from the back; `foot` is a full block under each post. Returns
+    its cells."""
+    from pgmvox.core.orient import stair as stair_data
+    fx, fz = vec(facing)
+    rx, rz = -fz, fx                                           # across the stall
+    half = width // 2
+    cells = []
+
+    def at(u, v):                                              # u back to front (0..2), v across
+        return x + fx * (u - 1) + rx * v, z + fz * (u - 1) + rz * v
+    for u in (0, 2):
+        for v in (-half, half):
+            px, pz = at(u, v)
+            for yy in (1, 2, 3):
+                w.set(px, y + yy, pz, *(foot if foot is not None and yy == 1 else post))
+    for u in range(3):
+        for v in range(-half, half + 1):
+            px, pz = at(u, v)
+            w.set(px, y + 4, pz, B.WOOL, colours[(v + half) % len(colours)])
+            cells.append((px, pz))
+    for j, v in enumerate(range(-half + 1, half)):
+        px, pz = at(2, v)
+        if counter_stair is not None:
+            w.set(px, y + 1, pz, counter_stair, stair_data((-fx, -fz), True))
+        else:
+            w.set(px, y + 1, pz, *counter)
+        w.set(px, y + 2, pz, *goods[j % len(goods)])
+    if sides:
+        for v in (-half, half):
+            px, pz = at(1, v)
+            if counter_stair is not None:
+                w.set(px, y + 1, pz, counter_stair, stair_data((-rx * (v // abs(v)), -rz * (v // abs(v))), True))
+            else:
+                w.set(px, y + 1, pz, *counter)
+    if banners:
+        facing_of = {(0, -1): 2, (0, 1): 3, (-1, 0): 4, (1, 0): 5}
+        hung = [(at(3, v), (fx, fz), v) for v in range(-half, half + 1)]
+        hung += [(at(u, sgn * (half + 1)), (rx * sgn, rz * sgn), sgn * half) for u in range(3) for sgn in (-1, 1)]
+        for (bx, bz), out, v in hung:
+            dye = colours[(v + half) % len(colours)]
+            w.banner(bx, y + 4, bz, 15 - dye, wall_facing=facing_of[out])
+    return cells
+
+
+def grave(w, x, z, ground, facing="e", stone=(B.STONE, 6), cap=(B.SLAB, 5), soil=(B.DIRT, 1), flower=None):
+    """A grave on the ground at (x, z): a headstone of `stone` with `cap` on it, and the two blocks in front of it
+    the way it faces laid in `soil`, a flower on the first of them if one is given. Returns its cells."""
+    fx, fz = vec(facing)
+    g = ground(x, z)
+    w.set(x, g + 1, z, *stone)
+    w.set(x, g + 2, z, *cap)
+    cells = [(x, z)]
+    for k in (1, 2):
+        a, b = x + fx * k, z + fz * k
+        h = ground(a, b)
+        w.set(a, h, b, *soil)
+        if w.id(a, h + 1, b) != B.AIR and w.id(a, h + 1, b) in (B.TALLGRASS, B.FLOWER, B.DANDELION):
+            w.set(a, h + 1, b, B.AIR)
+        cells.append((a, b))
+    if flower is not None:
+        a, b = x + fx, z + fz
+        w.set(a, ground(a, b) + 1, b, *flower)
+    return cells
+
+
 def stalls(w, line, y, facing="e", every=5, awnings=AWNINGS, stripe=0):
     """A row of stalls along a line of cells [(x, z), ...] on a floor at y, one every `every` cells, each facing
     the same way, their awnings taking `awnings` in turn. Returns every cell they stand on."""

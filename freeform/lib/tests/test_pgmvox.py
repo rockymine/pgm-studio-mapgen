@@ -1136,6 +1136,80 @@ class LayerLevels(unittest.TestCase):
             self.assertNotEqual(w.id(x, ceiling, z), B.AIR)
             self.assertEqual(w.id(x, ceiling - 1, z), B.AIR)
 
+    def test_a_level_may_state_its_soil(self):
+        b = self.build(self.doc(levels=[self.level(soil=1)]))
+        w = b.world
+        self.assertEqual([w.id(0, y, 0) for y in (58, 59, 60)], [B.STONE, B.DIRT, B.GRASS])
+
+    def test_a_level_may_lean_out_over_its_foot_by_a_stated_underside(self):
+        lean = {"id": "top", "floor": 52,
+                "ground": [{"id": "rim", "op": "outline", "where": {"and": [{"ge": ["z", 0]}, {"le": ["z", 6]}]}},
+                           {"id": "deck", "op": "base", "height": 52}],
+                "underside": {"bottom": {"add": [40, {"mul": [2, {"sub": [6, "z"]}]}]}, "clear": 1}}
+        b = self.build(self.doc(levels=[lean]))
+        w = b.world
+        under = [min(y for y in range(41, 53) if w.id(0, y, z) != B.AIR) for z in range(2, 7)]
+        self.assertEqual(under, sorted(under, reverse=True))                       # higher the farther out (low z)
+        self.assertGreater(under[0] - under[-1], 4)
+        self.assertEqual(w.id(0, 52, 6), B.GRASS)
+
+    def test_gullies_cut_grooves_into_a_slope(self):
+        hill = {"id": "hill", "op": "mound", "mode": "lift", "rise": 16, "power": 1.2,
+                "areas": [{"circle": {"at": [0, 0], "r": 20}}]}
+        groove = {"id": "g", "op": "set", "height": {"gullies": {"at": [0, 0], "count": 12, "depth": 4, "r0": 4,
+                                                                "r1": 20, "wander": 0, "sharpness": 4, "seed": 1}}}
+        a, b = self.build(self.doc([hill])), self.build(self.doc([hill, groove]))
+        cut = a.H - b.H
+        self.assertGreaterEqual(int(cut.min()), 0)                                 # only cuts
+        self.assertGreater(int(cut.max()), 1)
+        ring = [int(cut[int(round(12 * np.cos(t))) + 24, int(round(12 * np.sin(t))) + 24])
+                for t in np.linspace(0, 2 * np.pi, 96, endpoint=False)]
+        self.assertGreater(sum(1 for v in ring if v > 0), 10)                      # grooves and
+        self.assertGreater(sum(1 for v in ring if v == 0), 10)                     # ground between them
+
+    def test_smooth_snow_drifts_against_a_step_and_thins_over_its_brow(self):
+        step = {"id": "step", "op": "set", "height": {"add": [40, {"mul": [4, {"gt": ["x", 0]}]}]}}
+        def depth(sm):
+            b = self.build(self.doc([step], snow=[{"id": "s", "smoothness": sm, "added": 0.4, "on": ["GRASS"]}]))
+            w = b.world
+            out = []
+            for x in (-12, -2, -1, 1, 12):
+                g = 44 if x > 0 else 40
+                d = 0.0
+                for y in range(g + 1, g + 8):
+                    if w.id(x, y, 0) == B.SNOW:
+                        d += 1
+                    elif w.id(x, y, 0) == B.SNOW_LAYER:
+                        d += (w.dat[x + 24, y, 24] + 1) / 8
+                out.append(d)
+            return out
+        soft, hard = depth(6), depth(1)
+        self.assertAlmostEqual(soft[0], 0.375, delta=0.13)                       # the flat far off: added height
+        self.assertGreater(soft[2], 1.0)                                          # drifted against the step's foot
+        self.assertLessEqual(soft[3], 0.125)                                      # thin over its brow
+        self.assertGreater(soft[2], hard[2])                                      # smoother drifts deeper
+        self.assertTrue(all(v >= 0.125 for v in soft))                            # nothing bare
+
+    def test_smooth_snow_jitter_breaks_a_flat_field_into_varied_depths(self):
+        def depths(j):
+            w = self.build(self.doc(snow=[{"id": "s", "smoothness": 4, "added": 0.5, "on": ["GRASS"], "jitter": j,
+                                           "seed": 3}])).world
+            return {int(w.dat[i, 41, k]) for i in range(4, 44) for k in range(4, 44) if w.ids[i, 41, k] == B.SNOW_LAYER}
+        self.assertEqual(len(depths(0)), 1)                                       # flat ground: one depth
+        self.assertGreaterEqual(len(depths(0.3)), 3)                              # jittered: several
+
+    def test_a_board_reads_grids_it_computed_by_name(self):
+        from pgmvox.document import layers as document
+        grid = np.zeros((48, 48)); grid[10:20, 10:20] = 1
+        doc = self.doc([{"id": "lift", "op": "set", "height": {"add": [40, {"mul": [5, "mine"]}]}}])
+        b = document.build(doc, arrays={"mine": grid})
+        self.assertEqual(int(b.H[15, 15]), 45)
+        self.assertEqual(int(b.H[30, 30]), 40)
+
+    def test_the_board_states_its_biome(self):
+        b = self.build(dict(self.doc(), board=dict(self.doc()["board"], biome=12)))
+        self.assertTrue((b.world.biome == 12).all())
+
     def test_a_level_rests_where_the_ground_reaches_it(self):
         hill = {"id": "hill", "op": "mound", "mode": "lift", "rise": 18, "power": 3,
                 "areas": [{"circle": {"at": [8, 0], "r": 9}}]}
@@ -2076,6 +2150,299 @@ class WoolChests(unittest.TestCase):
         self.assertEqual(w.id(3, 3, 3), B.AIR)
         self.assertEqual(w.id(3, 4, 3), B.BEDROCK)
 
+
+
+class HouseDetails(unittest.TestCase):
+    """What a house style may state as data, each only where it names it: sills in the wall, quoins and string
+    courses, a chimney's top, a slab roof and a plain turned house; and the field and the shaft lining the layer
+    document lays."""
+
+    STYLE = {"base": "brick", "plinth": "STONEBRICK", "ground": ["BRICK"], "upper": [["PLANKS", 2]], "post": 0,
+             "windows": [4, [2], [2, 3], 1.5, 2.5], "sill_in": ["BRICK_STAIRS", "BIRCH_STAIRS"],
+             "stack": {"block": "COBBLE", "base": "COBBLE_STAIRS"},
+             "chimney_top": ["IRON_BARS", ["SLAB", 0], ["STAINED_GLASS", 7]], "plain_turned": True}
+
+    @staticmethod
+    def build(build, style=None, extra=None):
+        from pgmvox.document import layers as document
+        doc = {"board": {"x": [-16, 15], "z": [-16, 15], "floor": 40, "height": 80, "seed": 1},
+               "styles": {"cottage": style or HouseDetails.STYLE},
+               "ground": [{"id": "all", "op": "outline", "box": [-16, -16, 15, 15]},
+                          {"id": "flat", "op": "base", "height": 40}], "build": build}
+        doc.update(extra or {})
+        return document.build(doc)
+
+    def house(self, **kw):
+        return dict({"id": "h", "op": "house", "at": [0, 0], "heading": 0, "L": 9, "W": 6, "storeys": 2,
+                     "style": "cottage", "door": 1}, **kw)
+
+    def test_a_house_seated_on_its_footprint_ignores_a_rise_beside_it(self):
+        from pgmvox.document import layers as document
+        rise = np.zeros((32, 32)); rise[21, 21] = 1                         # (5, 5): in the square, off the walls
+        def built(**kw):
+            doc = {"board": {"x": [-16, 15], "z": [-16, 15], "floor": 40, "height": 80, "seed": 1},
+                   "styles": {"cottage": self.STYLE},
+                   "ground": [{"id": "all", "op": "outline", "box": [-16, -16, 15, 15]},
+                              {"id": "lift", "op": "set", "height": {"add": [40, {"mul": [6, "rise"]}]}}],
+                   "build": [self.house(storeys=1, **kw)]}
+            w = document.build(doc, arrays={"rise": rise}).world
+            return int(np.nonzero((w.ids[10:22, :, 10:22] != B.AIR).any(axis=(0, 2)))[0].max())   # its ridge
+        seated = built(floor="footprint")
+        self.assertEqual(built() - seated, 6)                                  # the rise lifted it onto a plinth
+        self.assertEqual(built(floor=43) - seated, 3)                          # a number sets the plate
+
+    def test_plants_cover_the_grass_and_keep_low_round_a_point(self):
+        from pgmvox.document import layers as document
+        doc = {"board": {"x": [-16, 15], "z": [-16, 15], "floor": 40, "height": 80, "seed": 1},
+               "ground": [{"id": "all", "op": "outline", "box": [-16, -16, 15, 15]},
+                          {"id": "flat", "op": "base", "height": 40}],
+               "dress": [{"id": "g", "op": "plants", "density": 1.0, "seed": 2, "low": [[0, 0, 5]],
+                          "kinds": {"tall_grass": 1, "bush": 1}}]}
+        b = document.build(doc)
+        w = b.world
+        over = w.ids[:, 41, :]
+        self.assertGreater(int(np.isin(over, (B.DOUBLE_PLANT, B.LEAVES)).sum()), 300)    # nearly every column
+        self.assertGreater(int(b.steps[-1].changed.sum()), 300)
+        near = np.hypot(b.X, b.Z) <= 5
+        self.assertFalse((w.ids[:, 42, :][near] != B.AIR).any())                 # nothing over a block there
+        self.assertFalse(np.isin(over[near], (B.LEAVES,)).any())
+
+    def test_a_sill_is_a_stair_in_the_wall_under_each_upper_window(self):
+        w = self.build([self.house()]).world
+        panes = np.argwhere(w.ids == B.PANE)
+        upper = [(int(i) + w.x0, int(y), int(k) + w.z0) for i, y, k in panes if y > 44 and w.ids[i, y - 1, k] != B.PANE]
+        self.assertTrue(upper)
+        for x, y, z in upper:
+            self.assertEqual(w.id(x, y - 1, z), B.BIRCH_STAIRS)
+        self.assertFalse((w.ids == B.SPRUCE_STAIRS).any())                       # nothing hung outside the wall
+
+    def test_a_window_is_one_wide_in_the_middle_of_its_bay(self):
+        w = self.build([self.house()]).world
+        cols = {(int(i), int(k)) for i, y, k in np.argwhere(w.ids == B.PANE) if y > 44}
+        for i, k in cols:                                                        # no pane beside a pane
+            self.assertFalse(any((i + a, k + b) in cols for a, b in ((1, 0), (-1, 0), (0, 1), (0, -1))))
+
+    def test_a_chimney_wears_its_top(self):
+        w = self.build([self.house()]).world
+        bars = np.argwhere(w.ids == B.IRON_BARS)
+        self.assertEqual(len(bars), 1)
+        i, y, k = bars[0]
+        self.assertEqual(w.ids[i, y - 1, k], B.COBBLE)
+        self.assertEqual((w.ids[i, y + 1, k], w.dat[i, y + 1, k]), (B.SLAB, 0))
+        self.assertEqual((w.ids[i, y + 2, k], w.dat[i, y + 2, k]), (B.STAINED_GLASS, 7))
+
+    def test_quoins_cycle_up_a_corner_and_a_string_marks_the_storey(self):
+        style = {"base": "stone", "post": None, "ground": [["STONEBRICK", 0]], "upper": [["STONEBRICK", 0]],
+                 "quoins": [["STONE", 5], ["STONE", 6]], "string": ["STONE", 6]}
+        w = self.build([self.house(chimney=False)], style).world
+        corner = [w.get(-4, y, -3) for y in range(41, 49)]
+        self.assertEqual(corner, [(B.STONE, 5), (B.STONE, 6)] * 4)
+        self.assertEqual(w.get(0, 44, -3), (B.STONE, 6))                         # the seam between the storeys
+
+    def test_a_slab_roof_is_laid_without_stairs(self):
+        style = dict(self.STYLE, slab_roof=True, stair="DARK_OAK_STAIRS")
+        w = self.build([self.house(storeys=1, chimney=False)], style).world
+        self.assertFalse((w.ids == B.DARK_OAK_STAIRS).any())
+        self.assertTrue((w.ids == B.WOOD_SLAB).any())
+
+    def test_a_plain_turned_house_has_no_windows_one_post_a_corner_and_a_door_on_a_straight_run(self):
+        w = self.build([self.house(heading=20, storeys=1)]).world
+        self.assertFalse((w.ids == B.PANE).any())
+        self.assertFalse((w.ids == B.IRON_BARS).any() and (w.ids == B.COBBLE_STAIRS).any())   # no outside stack
+        posts = {(int(i), int(k)) for i, k in np.argwhere(w.ids[:, 41, :] == B.LOG)}
+        self.assertEqual(len(posts), 4)
+        doors = {(int(i), int(k)) for i, k in np.argwhere(w.ids[:, 41, :] == B.OAK_DOOR)}
+        self.assertEqual(len(doors), 1)
+        (i, k), = doors
+        solid = lambda a, b: w.ids[a, 41, b] not in (B.AIR, B.OAK_DOOR)       # noqa: E731
+        self.assertTrue((solid(i - 1, k) and solid(i + 1, k)) or (solid(i, k - 1) and solid(i, k + 1)))
+
+    def test_a_verge_rings_the_roof_and_bands_cross_it(self):
+        style = dict(self.STYLE, roof=["PLANKS", 1], slab=["WOOD_SLAB", 1], stair="SPRUCE_STAIRS", slab_roof=True,
+                     verge={"roof": ["PLANKS", 5], "slab": ["WOOD_SLAB", 5]}, roof_bands=2)
+        w = self.build([self.house(L=13, W=7, storeys=1, chimney=False)], style).world
+        dark = {(int(i), int(k)) for i, y, k in np.argwhere(((w.ids == B.PLANKS) & (w.dat == 5)) |
+                                                         ((w.ids == B.WOOD_SLAB) & (w.dat & 7 == 5)))}
+        ridge = sorted(i for i, k in dark if k == -w.z0)                         # along the middle row, z 0
+        self.assertEqual(len(ridge), 4)                                          # the two ends and two bands
+        self.assertTrue(((w.ids == B.WOOD_SLAB) & (w.dat & 7 == 1)).any())       # spruce between them
+
+    def test_a_market_stall_lamps_and_a_round_tower_stand_from_the_document(self):
+        b = self.build([{"id": "s", "op": "stall", "at": [0, 0], "facing": "s", "colours": [14, 0]},
+                        {"id": "l", "op": "posts", "at": [[8, 8]], "stack": [["STONE", 6], "COBBLE_WALL", ["TORCH", 5]]},
+                        {"id": "t", "op": "round_tower", "at": [-8, 8], "r": 4.5, "height": 10, "y": 40,
+                         "openings": [[0, 45]]}])
+        w = b.world
+        roof = [w.get(x, 44, 1) for x in range(-2, 3)]
+        self.assertEqual(roof, [(B.WOOL, 14), (B.WOOL, 0), (B.WOOL, 14), (B.WOOL, 0), (B.WOOL, 14)])
+        self.assertEqual([w.get(8, y, 8) for y in (41, 42, 43)], [(B.STONE, 6), (B.COBBLE_WALL, 0), (B.TORCH, 5)])
+        self.assertEqual(w.id(-8, 41, 8), B.AIR)                                 # hollow
+        self.assertEqual(w.id(-8, 45, 8), B.PLANKS)                              # floored every five
+        self.assertEqual((w.id(-4, 46, 8), w.id(-4, 47, 8)), (B.AIR, B.AIR))     # the opening east
+        self.assertTrue((w.ids == B.LADDER).sum() >= 10)
+
+    def test_a_hedge_is_offset_leaves_in_modules_that_follow_the_ground(self):
+        b = self.build([{"id": "h", "op": "hedge", "line": [[-10, 0], [0, 4], [10, 0]], "seed": 1, "drop": 0}],
+                       extra={"ground": [{"id": "all", "op": "outline", "box": [-16, -16, 15, 15]},
+                                         {"id": "tilt", "op": "base", "height": 40,
+                                          "terms": [{"ramp": {"along": "x", "from": -16, "to": 15, "rise": 6}}]}]})
+        w = b.world
+        cols = np.argwhere((w.ids == B.LEAVES).any(axis=1))
+        self.assertGreater(len(cols), 20)
+        for i, k in cols:                                                       # never a solid stack of four
+            ys = np.flatnonzero(w.ids[i, :, k] == B.LEAVES)
+            self.assertLessEqual(len(ys), 3)
+        lows = [int(np.flatnonzero(w.ids[i, :, k] == B.LEAVES).min()) for i, k in cols]
+        self.assertGreater(max(lows) - min(lows), 2)                             # it climbs with the ground
+
+    def test_a_round_oak_has_a_core_side_pieces_and_a_plus(self):
+        w = self.build([{"id": "t", "op": "small_trees", "at": [[0, 0]], "seed": 1, "bite": 0}]).world
+        self.assertEqual([w.id(0, y, 0) for y in range(41, 46)], [B.LOG] * 5)
+        self.assertEqual(w.id(0, 46, 0), B.LEAVES)                              # the plus over the trunk
+        self.assertEqual(w.id(2, 44, 1), B.LEAVES)                              # a side piece
+        self.assertEqual(w.id(2, 44, 2), B.AIR)                                 # and the corner left open
+        self.assertEqual(w.id(1, 46, 1), B.AIR)
+
+    def test_a_flower_field_plants_every_cell_two_rows_a_kind(self):
+        w = self.build([{"id": "f", "op": "flowers", "area": {"rect": [-6, -6, 5, 5]},
+                         "flowers": [["FLOWER", 0], ["DANDELION", 0]]}]).world
+        for z in range(-5, 5):
+            want = (B.FLOWER, B.DANDELION)[(z // 2) % 2]
+            self.assertEqual({w.id(x, 41, z) for x in range(-5, 5)}, {want})
+
+    def test_a_wall_in_courses_with_stair_crenels_and_steps(self):
+        b = self.build([{"id": "w", "op": "wall", "line": [[-12, 0], [12, 0]], "height": 4, "crown": "follow",
+                         "courses": ["COBBLE", ["COBBLE", ["STONE", 5]], ["STONEBRICK", 0]],
+                         "crenel": "STONEBRICK", "crenel_stair": "STONEBRICK_STAIRS", "step_stair": "STONEBRICK_STAIRS"}],
+                       extra={"ground": [{"id": "all", "op": "outline", "box": [-16, -16, 15, 15]},
+                                         {"id": "tilt", "op": "base", "height": 40,
+                                          "terms": [{"ramp": {"along": "x", "from": -12, "to": 12, "rise": 4}}]}]})
+        w = b.world
+        x = -12
+        g = int(b.H[x + 16, 16])
+        self.assertEqual(w.id(x, g + 1, 0), B.COBBLE)
+        self.assertEqual({w.get(x, g + 2, 0), w.get(x + 1, int(b.H[x + 17, 16]) + 2, 0)} <= {(B.COBBLE, 0), (B.STONE, 5)},
+                         True)
+        self.assertEqual(w.id(x, g + 4, 0), B.STONEBRICK)
+        self.assertTrue((w.ids == B.STONEBRICK_STAIRS).any())
+        self.assertFalse(((w.ids == B.STONEBRICK) & (np.arange(w.sy)[None, :, None] > b.H.max() + 4)).any())
+
+    def test_a_chamfered_tower_has_straight_faces_and_open_corners(self):
+        w = self.build([{"id": "t", "op": "round_tower", "at": [0, 0], "half": 4, "height": 10, "y": 40}]).world
+        self.assertEqual({w.id(x, 44, -4) for x in range(-3, 4)}, {B.STONEBRICK})   # a face five and two more
+        self.assertEqual(w.id(4, 44, 4), B.AIR)                                      # the corner cut
+        self.assertEqual(w.id(3, 44, 3), B.STONEBRICK)                               # the ring closed across it
+
+    def test_a_cut_tower_wears_quoins_at_its_corners_strings_at_its_floors_and_a_plinth(self):
+        w = self.build([{"id": "t", "op": "round_tower", "at": [0, 0], "half": 4, "height": 10, "y": 40,
+                         "quoins": [["STONE", 5], ["STONE", 6]], "string": ["STONE", 6], "plinth": "COBBLE"}]).world
+        self.assertEqual(w.id(0, 41, -4), B.COBBLE)
+        self.assertEqual({w.get(3, 46, 3), w.get(3, 47, 3)}, {(B.STONE, 5), (B.STONE, 6)})
+        self.assertEqual(w.get(0, 45, -4), (B.STONE, 6))                             # the first floor's string
+        self.assertEqual(w.get(0, 44, -4), (B.STONEBRICK, 0))
+
+    def test_a_stall_hangs_banners_on_three_sides_and_closes_its_sides(self):
+        w = self.build([{"id": "s", "op": "stall", "at": [0, 0], "facing": "s", "colours": [14, 0],
+                         "post": ["DARK_OAK_FENCE", 0], "foot": ["LOG2", 1], "banners": True, "sides": True}]).world
+        self.assertEqual(int((w.ids == B.WALL_BANNER).sum()), 5 + 3 + 3)        # front and both sides, none behind
+        self.assertEqual([w.id(x, 41, 0) for x in (-2, 2)], [B.PLANKS] * 2)      # each side closed at its middle
+        self.assertEqual([w.id(-2, y, 1) for y in (41, 42, 43)], [B.LOG2, B.DARK_OAK_FENCE, B.DARK_OAK_FENCE])
+        bases = sorted({t["base"] for t in w.tiles if t["kind"] == "Banner"})
+        self.assertEqual(bases, [1, 15])                                         # the roof's red and white
+
+    def test_a_hedge_crosses_its_diagonals_course_by_course_and_fills_the_gaps_with_grass(self):
+        w = self.build([{"id": "h", "op": "hedge", "line": [[0, 0], [1, 0]], "drop": 0, "grass": True}]).world
+        for y, on in ((41, ((0, 0), (1, 1))), (42, ((1, 0), (0, 1)))):
+            self.assertEqual({(x, z) for x in (0, 1) for z in (0, 1) if w.id(x, y, z) == B.LEAVES}, set(on))
+            self.assertEqual({(x, z) for x in (0, 1) for z in (0, 1) if w.id(x, y, z) == B.TALLGRASS},
+                             {(x, z) for x in (0, 1) for z in (0, 1)} - set(on))
+
+    def test_paving_lays_its_blocks_in_cells_an_equal_share_each(self):
+        w = self.build([{"id": "p", "op": "paving", "area": {"rect": [-15, -15, 14, 14]}, "cell": 3,
+                         "blocks": [["STONEBRICK", 0], ["STONE", 6], ["STONE", 5], ["STONE", 0]], "seed": 1}]).world
+        top = [w.get(x, 40, z) for x in range(-14, 14) for z in range(-14, 14)]
+        counts = {b: top.count(b) for b in set(top)}
+        self.assertEqual(len(counts), 4)
+        self.assertTrue(all(abs(c / len(top) - 0.25) < 0.1 for c in counts.values()))
+        self.assertEqual(w.get(-12, 40, -12), w.get(-11, 40, -11))                   # one cell, one block
+
+    def test_an_odd_ridge_is_slabs_and_an_even_one_stairs_meeting(self):
+        style = dict(self.STYLE, ridge_slab=True, roof=["PLANKS", 5], stair="DARK_OAK_STAIRS", slab=["WOOD_SLAB", 5])
+        style.pop("stack")
+        w = self.build([self.house(W=7, chimney=False)], style).world             # 9 wide over its overhang: odd
+        ridge = [w.get(x, int(np.flatnonzero(w.ids[x - w.x0, :, -w.z0])[-1]), 0) for x in range(-3, 4)]
+        self.assertEqual({b for b, _ in ridge}, {B.WOOD_SLAB})
+        w = self.build([self.house(W=6, chimney=False, heading=90)], style).world  # 8 wide, turned: two rows meet
+        z = 0
+        tops = {x: w.get(x, int(np.flatnonzero(w.ids[x - w.x0, :, z - w.z0])[-1]), z) for x in (-1, 0)}
+        self.assertEqual({b for b, _ in tops.values()}, {B.DARK_OAK_STAIRS})
+        self.assertEqual({d for _, d in tops.values()}, {0, 1})                     # rising east and west, to each other
+        w = self.build([self.house(W=6, chimney=False)], style).world
+        x = 0
+        tops = {z: w.get(x, int(np.flatnonzero(w.ids[x - w.x0, :, z - w.z0])[-1]), z) for z in (-1, 0)}
+        self.assertEqual({b for b, _ in tops.values()}, {B.DARK_OAK_STAIRS})
+        self.assertNotEqual(tops[-1][1], tops[0][1])                                # facing each other
+
+    def test_graves_a_ruined_wall_a_door_path_and_heights_over_a_house_floor(self):
+        b = self.build([
+            self.house(at=[0, -8], chimney=False, walk={"to": "street", "leaves": ["LEAVES", 4], "gaps": 0}),
+            {"id": "mark", "op": "blocks", "rel": "h", "boxes": [{"box": [10, 1, 10, 10, 1, 10], "block": "GOLD_BLOCK"}]},
+            {"id": "g", "op": "graves", "at": [[-12, 8]], "facing": "e", "flowered": 1.0},
+            {"id": "w", "op": "wall", "line": [[-14, 12], [14, 12]], "height": 4, "ruin": [10, 28, 1]}],
+            extra={"ground": [{"id": "all", "op": "outline", "box": [-16, -16, 15, 15]},
+                              {"id": "flat", "op": "base", "height": 40},
+                              {"id": "street", "op": "path", "line": [[-15, 2], [15, 2]], "width": 3}]})
+        w = b.world
+        self.assertEqual(w.id(10, 41, 10), B.GOLD_BLOCK)                            # the house's floor is 40
+        self.assertEqual((w.get(-12, 41, 8), w.get(-12, 42, 8)), ((B.STONE, 6), (B.SLAB, 5)))
+        self.assertEqual([w.get(x, 40, 8) for x in (-11, -10)], [(B.DIRT, 1)] * 2)
+        self.assertIn(w.id(-11, 41, 8), (B.FLOWER, B.DANDELION))
+        self.assertEqual(w.id(-14, 44, 12), B.COBBLE)                               # whole at its start
+        self.assertEqual(w.id(13, 44, 12), B.AIR)                                   # broken down at its end
+        path = [w.get(0, 40, z) for z in range(-5, 1)]
+        self.assertTrue(all(p[0] in (B.DIRT, B.GRAVEL) and p != (B.GRASS, 0) for p in path))
+        self.assertTrue(any(w.id(x, 41, z) == B.LEAVES for x in (-1, 1) for z in range(-3, 1)))
+
+    def test_crops_lie_in_turned_strips_over_a_shape(self):
+        w = self.build([{"id": "c", "op": "crops", "area": {"rect": [-12, -12, 11, 11]}, "angle": 30, "rows": 4,
+                         "ditch": 2, "crops": [["WHEAT", 7], ["CARROTS", 7]], "seed": 1}]).world
+        wet = {(int(i) + w.x0, int(k) + w.z0) for i, k in np.argwhere(w.ids[:, 40, :] == B.WATER)}
+        self.assertGreater(len(wet), 50)
+        self.assertGreater(int((w.ids == B.CARROTS).sum()), 50)
+        rows = {z for x, z in wet if x == 0}, {z for x, z in wet if x == 6}
+        self.assertNotEqual(rows[0], rows[1])                                     # the ditches run turned
+
+    def test_a_boulder_is_one_rock_sunk_into_the_ground(self):
+        w = self.build([{"id": "b", "op": "boulders", "at": [[0, 0, 3.5]], "seed": 1, "accent_share": 0.2}]).world
+        rock = np.isin(w.ids, (B.STONE, B.COBBLE)) & (np.arange(w.sy)[None, :, None] > 40)
+        self.assertGreater(int(rock.sum()), 25)
+        ids = {int(b) for b in w.ids[rock]}
+        self.assertLessEqual(ids, {B.STONE, B.COBBLE})
+        self.assertLess(int((w.ids[rock] == B.COBBLE).sum()), int(rock.sum()) * 0.4)
+        self.assertNotEqual(w.id(0, 40, 0), B.GRASS)                               # sunk: the turf under it is rock
+
+    def test_the_lay_may_state_its_soil_so_steep_ground_is_rock(self):
+        from pgmvox.document import layers as document
+        doc = {"board": {"x": [-16, 15], "z": [-16, 15], "floor": 40, "height": 80, "seed": 1},
+               "ground": [{"id": "all", "op": "outline", "box": [-16, -16, 15, 15]},
+                          {"id": "ramp", "op": "base", "height": 40, "terms": [{"ramp": {"along": "x", "from": -8, "to": 8, "rise": 16}}]}],
+               "lay": {"soil": [[30, 3], [38, 1]], "ledges": False}}
+        w = document.build(doc).world
+        y = w.top(0, 0)
+        self.assertNotIn(w.id(0, y - 1, 0), (B.DIRT,))                             # no dirt under a 45 degree face
+
+    def test_a_field_lays_farmland_and_its_fence_gate(self):
+        w = self.build([{"id": "f", "op": "field", "rect": [-10, -10, 10, 10], "crops": [["WHEAT", 7]]}]).world
+        self.assertGreater(int((w.ids == B.FARMLAND).sum()), 200)
+        self.assertEqual(int((w.ids == B.FENCE_GATE).sum()), 1)
+
+    def test_a_shaft_takes_its_lining_from_the_document(self):
+        b = self.build([], extra={"carve": [{"id": "s", "op": "shaft", "at": [0, 0], "bottom": 20, "top": "ground",
+                                             "wall": ["STONEBRICK", 0], "post": ["STONEBRICK", 0]}]})
+        w = b.world
+        self.assertEqual(w.id(2, 30, 0), B.STONEBRICK)
+        self.assertEqual(w.id(2, 30, 2), B.STONEBRICK)
+        self.assertFalse((w.ids == B.LOG).any())
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,330 @@
+{
+ "document": "layers",
+ "version": "draft-1",
+ "board": {
+  "name": "Chantry Gill houses",
+  "x": [
+   0,
+   129
+  ],
+  "z": [
+   0,
+   59
+  ],
+  "floor": 40,
+  "height": 70,
+  "seed": 3
+ },
+ "styles": {
+  "fell-cottage": {
+   "base": "brick",
+   "plinth": "STONEBRICK",
+   "ground": [
+    "BRICK"
+   ],
+   "upper": [
+    [
+     "PLANKS",
+     2
+    ]
+   ],
+   "post": 0,
+   "gable": [
+    "PLANKS",
+    1
+   ],
+   "floor": [
+    "PLANKS",
+    1
+   ],
+   "roof": [
+    "PLANKS",
+    5
+   ],
+   "stair": "DARK_OAK_STAIRS",
+   "slab": [
+    "WOOD_SLAB",
+    5
+   ],
+   "door": "SPRUCE_DOOR",
+   "window": [
+    "PANE",
+    0
+   ],
+   "stack": {
+    "block": "COBBLE",
+    "base": "COBBLE_STAIRS"
+   },
+   "windows": [
+    4,
+    [
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    1.5,
+    2.5
+   ],
+   "sill_in": [
+    "BRICK_STAIRS",
+    "BIRCH_STAIRS"
+   ],
+   "plain_turned": true,
+   "chimney": "COBBLE",
+   "chimney_top": [
+    "IRON_BARS",
+    [
+     "SLAB",
+     0
+    ],
+    [
+     "STAINED_GLASS",
+     7
+    ],
+    [
+     "STAINED_GLASS",
+     8
+    ]
+   ],
+   "joists_along": true
+  },
+  "fell-cottage-dark": {
+   "base": "brick",
+   "plinth": "STONEBRICK",
+   "ground": [
+    "BRICK"
+   ],
+   "upper": [
+    [
+     "PLANKS",
+     0
+    ]
+   ],
+   "post": 1,
+   "gable": [
+    "PLANKS",
+    5
+   ],
+   "floor": [
+    "PLANKS",
+    1
+   ],
+   "roof": [
+    "PLANKS",
+    1
+   ],
+   "stair": "SPRUCE_STAIRS",
+   "slab": [
+    "WOOD_SLAB",
+    1
+   ],
+   "door": "SPRUCE_DOOR",
+   "window": [
+    "PANE",
+    0
+   ],
+   "stack": {
+    "block": "COBBLE",
+    "base": "COBBLE_STAIRS"
+   },
+   "windows": [
+    4,
+    [
+     2
+    ],
+    [
+     2,
+     3
+    ],
+    1.5,
+    2.5
+   ],
+   "sill_in": [
+    "BRICK_STAIRS",
+    "OAK_STAIRS"
+   ],
+   "log": "LOG2",
+   "plain_turned": true,
+   "chimney": "COBBLE",
+   "chimney_top": [
+    "IRON_BARS",
+    [
+     "SLAB",
+     0
+    ],
+    [
+     "STAINED_GLASS",
+     7
+    ],
+    [
+     "STAINED_GLASS",
+     8
+    ]
+   ],
+   "joists_along": true
+  }
+ },
+ "ground": [
+  {
+   "id": "sheet",
+   "op": "outline",
+   "box": [
+    0,
+    0,
+    129,
+    59
+   ]
+  },
+  {
+   "id": "sheet-floor",
+   "op": "base",
+   "height": 40
+  }
+ ],
+ "build": [
+  {
+   "id": "two-storey",
+   "op": "house",
+   "at": [
+    12,
+    16
+   ],
+   "heading": 0,
+   "L": 9,
+   "W": 6,
+   "storeys": 2,
+   "style": "fell-cottage",
+   "door": 1
+  },
+  {
+   "id": "one-storey",
+   "op": "house",
+   "at": [
+    30,
+    16
+   ],
+   "heading": 0,
+   "L": 9,
+   "W": 6,
+   "storeys": 1,
+   "style": "fell-cottage",
+   "door": 1
+  },
+  {
+   "id": "long-house",
+   "op": "house",
+   "at": [
+    50,
+    16
+   ],
+   "heading": 90,
+   "L": 11,
+   "W": 7,
+   "storeys": 2,
+   "style": "fell-cottage",
+   "door": 1,
+   "jetty": true
+  },
+  {
+   "id": "dark-two",
+   "op": "house",
+   "at": [
+    72,
+    16
+   ],
+   "heading": 0,
+   "L": 9,
+   "W": 6,
+   "storeys": 2,
+   "style": "fell-cottage-dark",
+   "door": 1
+  },
+  {
+   "id": "dark-one",
+   "op": "house",
+   "at": [
+    90,
+    16
+   ],
+   "heading": 0,
+   "L": 9,
+   "W": 6,
+   "storeys": 1,
+   "style": "fell-cottage-dark",
+   "door": 1
+  },
+  {
+   "id": "dark-long",
+   "op": "house",
+   "at": [
+    110,
+    16
+   ],
+   "heading": 90,
+   "L": 11,
+   "W": 7,
+   "storeys": 2,
+   "style": "fell-cottage-dark",
+   "door": 1,
+   "jetty": true
+  },
+  {
+   "id": "turned-a",
+   "op": "house",
+   "at": [
+    20,
+    44
+   ],
+   "heading": 25,
+   "L": 9,
+   "W": 6,
+   "storeys": 2,
+   "style": "fell-cottage",
+   "door": 1
+  },
+  {
+   "id": "turned-b",
+   "op": "house",
+   "at": [
+    48,
+    44
+   ],
+   "heading": -20,
+   "L": 9,
+   "W": 6,
+   "storeys": 2,
+   "style": "fell-cottage-dark",
+   "door": 1
+  },
+  {
+   "id": "turned-c",
+   "op": "house",
+   "at": [
+    78,
+    44
+   ],
+   "heading": 20,
+   "L": 9,
+   "W": 6,
+   "storeys": 1,
+   "style": "fell-cottage-dark",
+   "door": 1
+  },
+  {
+   "id": "turned-d",
+   "op": "house",
+   "at": [
+    106,
+    44
+   ],
+   "heading": -25,
+   "L": 9,
+   "W": 6,
+   "storeys": 1,
+   "style": "fell-cottage-dark",
+   "door": 1
+  }
+ ]
+}

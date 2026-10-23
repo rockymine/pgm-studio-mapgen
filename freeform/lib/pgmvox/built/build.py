@@ -23,7 +23,7 @@ Block centres: block x spans x .. x+1 and its centre is x + 0.5. A frame centred
 length covers exactly that many blocks; an odd length wants a centre on a half.
 """
 import math
-from dataclasses import dataclass, field as _field
+from dataclasses import dataclass, field as _field, replace
 
 import numpy as np
 
@@ -272,13 +272,15 @@ class RoofField:
         return min(west, east) < 0 if self.across_z else min(north, south) < 0
 
 
-def lay_roof(w, field, body, stair=None, slab=None, verge=None, ridge_cap=False, inside=None, lowest=None):
+def lay_roof(w, field, body, stair=None, slab=None, verge=None, ridge_cap=False, inside=None, lowest=None,
+             ridge_slab=False):
     """Lay a roof field into the world as the studio's stamper does.
 
     body: the roof's (id, data). stair: the stair id its slope steps in, or None for a roof of cubes. slab: the
     (id, data) a half course and a one-wide ridge take. verge: the (id, data) of the roof's outer ring and,
     with ridge_cap, its ridge. inside(x, z): the building's own footprint, where nothing is hung under a
-    column; by default the field's wall line. lowest: no roof block below this course."""
+    column; by default the field's wall line. lowest: no roof block below this course. ridge_slab: a ridge one
+    block wide is laid in slabs, and one two wide in stairs rising to each other, never turned along it."""
     verge = verge or body
     inside = inside or field.over_walls
     rim = {c for c in field.cells() if any(not field.covers(c[0] + dx, c[1] + dz)
@@ -288,7 +290,7 @@ def lay_roof(w, field, body, stair=None, slab=None, verge=None, ridge_cap=False,
         crown = field.crown(x, z)
         mat = verge if (x, z) in rim or (ridge_cap and field.on_ridge(x, z)) else body
         half = field.half(x, z)
-        top = _stair_top(field, stair, slab, x, z) if stair is not None and not half else None
+        top = _stair_top(field, stair, slab, x, z, ridge_slab) if stair is not None and not half else None
         lo = max(field.underside(x, z), lowest if lowest is not None else -1)
         for y in range(lo, (crown - 1 if half or top else crown) + 1):
             w.set(x, y, z, *mat)
@@ -299,7 +301,7 @@ def lay_roof(w, field, body, stair=None, slab=None, verge=None, ridge_cap=False,
             w.set(x, crown, z, s[0], s[1] & 7)
         if (not inside(x, z) and field.riser(x, z) == 1 and crown - 1 >= lo
                 and w.id(x, crown - 1, z) == B.AIR):
-            if top and (not top[2] or field.steps_down(x, z)):
+            if top and top[3] is not None and (not top[2] or field.steps_down(x, z)):
                 w.set(x, crown - 1, z, *top[3])
             elif half and field.steps_down(x, z):
                 s = slab or mat
@@ -308,7 +310,7 @@ def lay_roof(w, field, body, stair=None, slab=None, verge=None, ridge_cap=False,
     return laid
 
 
-def _stair_top(field, stair, slab, x, z):
+def _stair_top(field, stair, slab, x, z, ridge_slab=False):
     """(id, data, on the slope, (id, data) hung under it), or None for a cube."""
     up = field.upslope(x, z)
     if up is not None:
@@ -316,6 +318,14 @@ def _stair_top(field, stair, slab, x, z):
     if not field.on_ridge(x, z):
         return None
     partner = field.ridge_partner(x, z)
+    if ridge_slab and slab is not None:
+        ax, az = vec(field.along_ridge_outward(x, z))
+        beside = [(sx, sz) for sx, sz in ((-az, ax), (az, -ax))
+                  if field.covers(x + sx, z + sz) and field.crown(x + sx, z + sz) == field.peak]
+        if not beside:                                                      # one wide: a row of slabs
+            return slab[0], slab[1] & 7, False, None
+        up = beside[0]                                                      # two wide: each rises to the other
+        return stair, stair_data(up), False, (stair, stair_data(opposite(up), True))
     if partner is not None:
         return stair, stair_data(partner), False, (stair, stair_data(opposite(partner), True))
     if slab is None:
@@ -342,12 +352,15 @@ STYLES = {
 }
 
 
-def window_rhythm(period=3, rows=((2,), (2, 3)), margin=1.5):
+def window_rhythm(period=3, rows=((2,), (2, 3)), margin=1.5, phase=None):
     """The window rhythm every board used: one in every `period` blocks along a wall, clear of its ends, on the
-    given courses of the ground storey and of the upper ones. A function (run, span, t, storey) -> bool."""
+    given courses of the ground storey and of the upper ones. With `phase`, one block wide exactly where a run's
+    remainder by the period is the phase, so a window can be centred in a timber frame's bay. A function (run,
+    span, t, storey) -> bool."""
     def f(run, span, t, storey):
         on_row = t in (rows[0] if storey == 0 else rows[-1])
-        return on_row and margin < run < span - margin and abs((run % period) - period / 2) < 0.6
+        at = abs((run % period) - period / 2) < 0.6 if phase is None else abs((run % period) - phase) < 0.4
+        return on_row and margin < run < span - margin and at
     return f
 
 
@@ -378,6 +391,12 @@ def house(w, h, ground_at=None, rng=None):
     """Build one house. ground_at(x, z) gives the ground's height, so the plate is filled down to it. Returns
     the door (x, z, the letter it faces), the footprint cells, the eave course and the roof field."""
     st = STYLES[h.style] if isinstance(h.style, str) else h.style
+    plain = st.get("plain_turned") and h.heading % 90 != 0
+    if plain:                                            # turned, a face only holds whole blocks: no windows
+        h = replace(h, windows=lambda run, span, t, storey: False)
+    elif "windows" in st:                # a style's own rhythm: (period, ground rows, upper rows, margin[, phase])
+        period, ground_rows, upper_rows, margin, *phase = st["windows"]
+        h = replace(h, windows=window_rhythm(period, (tuple(ground_rows), tuple(upper_rows)), margin, *phase))
     rng = rng or np.random.default_rng(int(abs(h.cx * 31 + h.cz * 17 + h.heading)))
     square = h.heading % 90 == 0
     cx, cz = h.cx, h.cz
@@ -395,7 +414,7 @@ def house(w, h, ground_at=None, rng=None):
     def pick(mats):
         return mats[int(rng.integers(len(mats)))]
 
-    storeys = []
+    storeys, windows, corners = [], [], []
     for Ls, Ws in dims:
         m, X, Z, U, V = fr.mask(Ls, Ws, box)
         storeys.append((m, boundary(m, diagonal=True), Ls, Ws))
@@ -414,6 +433,11 @@ def house(w, h, ground_at=None, rng=None):
     for s, (m, wall, Ls, Ws) in enumerate(storeys):
         y0 = f + s * sh
         mats = st["ground"] if s == 0 else st["upper"]
+        single = None
+        if plain:                                        # turned, each corner one post: the wall cell nearest it
+            cells = [(int(X[i, k]), int(Z[i, k]), U[i, k], V[i, k]) for i, k in zip(*np.nonzero(wall))]
+            single = {min(cells, key=lambda c: math.hypot(c[2] - a * Ls / 2, c[3] - b * Ws / 2))[:2]
+                      for a in (-1, 1) for b in (-1, 1)}
         for i, k in zip(*np.nonzero(m)):
             x, z, u, v = int(X[i, k]), int(Z[i, k]), U[i, k], V[i, k]
             if not wall[i, k]:
@@ -421,27 +445,44 @@ def house(w, h, ground_at=None, rng=None):
                     w.set(x, y0, z, *st["floor"])
                 continue
             corner = abs(u) > Ls / 2 - 1 and abs(v) > Ws / 2 - 1
+            if single is not None:
+                corner = (x, z) in single
             long_wall = abs(v) > Ws / 2 - 1
             run, span = (u + Ls / 2, Ls) if long_wall else (v + Ws / 2, Ws)
             frame_line = long_wall and abs(((run + 1.5) % 4) - 2) < 0.5 and not corner
-            post = st["post"] is not None and (corner or (frame_line and s > 0))
+            post = st["post"] is not None and (corner or (frame_line and s > 0 and not plain))
             dx, dz = (fr.c, fr.s) if long_wall else (-fr.s, fr.c)
+            out = fr.across(1 if v > 0 else -1) if long_wall else fr.along(1 if u > 0 else -1)
+            if corner:
+                corners.append((x, z, u, v, s))
             for y in range(y0 + 1, y0 + sh + 1):
                 if post:
-                    blk = (B.LOG, st["post"])
-                elif y == y0 + sh and st["post"] is not None:
-                    blk = (B.LOG, st["post"] | (4 if abs(dx) >= abs(dz) else 8))
+                    blk = (st.get("log", B.LOG), st["post"])
+                elif y == y0 + sh and st["post"] is not None:              # turned and plain, upright: no cut ends
+                    blk = (st.get("log", B.LOG), st["post"] | (0 if plain else 4 if abs(dx) >= abs(dz) else 8))
+                elif corner and "quoins" in st:
+                    blk = st["quoins"][(y - f - 1) % len(st["quoins"])]
+                elif "string" in st and y == y0 + sh and s < n - 1:
+                    blk = st["string"]
                 elif h.windows(run, span, y - y0, s):
                     blk = st["window"]
+                    windows.append((x, y, z, out, s))
+                elif "plinth" in st and s == 0 and y == y0 + 1:
+                    blk = st["plinth"]
                 else:
                     blk = pick(mats)
                 w.set(x, y, z, *blk)
         if jetty and s == 1:                                     # the joists showing under a jettied storey
             for i, k in zip(*np.nonzero(m & ~base)):
-                w.set(int(X[i, k]), y0, int(Z[i, k]), B.LOG, (st["post"] or 0) | (4 if abs(fr.s) >= abs(fr.c) else 8))
+                w.set(int(X[i, k]), y0, int(Z[i, k]), st.get("log", B.LOG), (st["post"] or 0) | ((4 if abs(fr.c) >= abs(fr.s) else 8) if st.get("joists_along")
+                                                    else (4 if abs(fr.s) >= abs(fr.c) else 8)))
     # the door, in the middle of its long wall
     cands = [(abs(U[i, k]), int(X[i, k]), int(Z[i, k])) for i, k in zip(*np.nonzero(base_wall))
              if h.door * V[i, k] > h.W / 2 - 1 and abs(U[i, k]) < h.L / 2 - 1.5]
+    if plain:                                            # turned, a door only in three wall blocks in one line
+        line = {(int(X[i, k]), int(Z[i, k])) for i, k in zip(*np.nonzero(base_wall))}
+        ax, az = fr.along(1)
+        cands = [c for c in cands if (c[1] - ax, c[2] - az) in line and (c[1] + ax, c[2] + az) in line]
     door_at = None
     if cands:
         _, x, z = min(cands)
@@ -461,25 +502,199 @@ def house(w, h, ground_at=None, rng=None):
     top_cells = {(int(X[i, k]), int(Z[i, k])) for i, k in zip(*np.nonzero(mt))}
     # square to the board the roof is the studio's, in stairs; turned, stairs can only face the four ways and
     # the slope reads ragged, so it is laid in cubes and slabs measured to the half block
+    slabs = st.get("slab_roof", False)                   # a low roof in cubes and slabs, half a block a block
     field = RoofField.framed(h.roof, fr, Lt, Wt, h.overhang, eave + 1, h.pitch if square else 2 * h.pitch,
-                             "s" if h.door > 0 else "n", halves=not square)
+                             "s" if h.door > 0 else "n", halves=not square or slabs)
     for x, z in field.cells():                                   # the attic cleared before the roof is laid
         for y in range(eave + 1, field.crown(x, z) + 1):
             if (x, z) in top_cells:
                 w.set(x, y, z, B.AIR)
-    lay_roof(w, field, st["roof"], st["stair"] if square else None, st["slab"],
-             inside=lambda x, z: (x, z) in top_cells)
+    lay_roof(w, field, st["roof"], st["stair"] if square and not slabs else None, st["slab"],
+             inside=lambda x, z: (x, z) in top_cells, ridge_slab=st.get("ridge_slab", False))
+    if "verge" in st:
+        _verge(w, st, fr, field, Lt, h.overhang)
     for i, k in zip(*np.nonzero(wt)):                            # gable walls up to the roof's underside
         x, z = int(X[i, k]), int(Z[i, k])
         for y in range(eave + 1, field.underside(x, z)):
             w.set(x, y, z, *st["gable"])
-    if h.chimney and h.roof != "flat":
+    _details(w, h, st, fr, windows, corners, field.crown, Lt, ground_at, square)
+    if h.chimney and h.roof != "flat" and ("stack" not in st or not square):
         x, z = fr.cell(Lt / 4, Wt / 4)
         top = field.crown(x, z) + 2
         for y in range(f + 1, top + 1):
             cap = st.get("chimney_cap", st["chimney"] if "chimney" in st else (B.COBBLE_WALL, 0))
-            w.set(x, y, z, *(st.get("chimney", (B.COBBLE, 0)) if y < top else cap))
+            w.set(x, y, z, *(st.get("chimney", (B.COBBLE, 0)) if y < top or "chimney_top" in st else cap))
+        for j, blk in enumerate(st.get("chimney_top", ())):
+            w.set(x, top + 1 + j, z, *blk)
     return dict(door=door_at, footprint=fr.cells(h.L, h.W + (2 if jetty else 0)), eave=eave, roof=field)
+
+
+def _verge(w, st, fr, field, Lt, overhang):
+    """A style's `verge`: the roof's outer ring, and with `roof_bands` that many bands across it from eave to eave,
+    laid in the verge's own blocks ({"roof", "slab", "stair"}), so a long roof reads in sections. A block of the
+    roof's body becomes the verge's, keeping its slab half or its stair's facing."""
+    vg, n = st["verge"], st.get("roof_bands", 0)
+    span = Lt + 2 * overhang
+    bands = {round(-span / 2 + 0.5 + span * k / (n + 1) - 0.5) for k in range(1, n + 1)}
+    cells = set(field.cells())
+    rim = {c for c in cells if any((c[0] + dx, c[1] + dz) not in cells for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)))}
+    for x, z in cells:
+        u, _ = fr.local(x + 0.5, z + 0.5)
+        if (x, z) not in rim and math.floor(u) not in bands:
+            continue
+        for y in range(field.underside(x, z) - 1, field.crown(x, z) + 1):
+            b, d = w.get(x, y, z)
+            if (b, d) == tuple(st["roof"]):
+                w.set(x, y, z, *vg["roof"])
+            elif b == st["slab"][0] and d & 7 == st["slab"][1] & 7:
+                w.set(x, y, z, vg["slab"][0], (vg["slab"][1] & 7) | (d & 8))
+            elif b == st["stair"] and "stair" in vg:
+                w.set(x, y, z, vg["stair"], d)
+
+
+def _details(w, h, st, fr, windows, corners, crown_at, Lt, ground_at, square=True):
+    """What a style may add to a house's faces, each only where it names it: `sill_in`, the wall block under each
+    window made a stair rising into the house (one stair kind for the ground storey, one for the upper), so the
+    window sits in a recess of the facade's own block; `sill` and `hood`, stairs under and over every window
+    outside the wall (upside down under, rising to the wall over); `beam_ends`, the laid log
+    course run one block out past each corner where two storeys meet; `stack`, a chimney standing outside the
+    gable at the frame's +u end ({"block", "cap", "base"}: three wide up the ground storey, weathered back to
+    one with stairs of `base`'s kind, capped two over the ridge; a turned house keeps its chimney in the roof).
+    `chimney_top` is the blocks stacked over either chimney, bottom first. `plain_turned` on the style gives a turned house no windows and its door only where three wall blocks
+    stand in one line, posts only at its corners, one each, and its laid course upright. Laid with the walls: `quoins`, the blocks a
+    corner cycles through course by course where a style has no posts; `string`, a course at every storey seam;
+    `joists_along`, a jetty's joists laid along the face, bark out; `slab_roof`, a low roof of cubes and slabs."""
+    win = tuple(st["window"])
+    for x, y, z, (nx, nz), s in windows:
+        if w.get(x, y, z) != win:
+            continue
+        sill_in = st.get("sill_in")
+        if sill_in and w.get(x, y - 1, z) != win and w.id(x, y - 1, z) in {b for b, _ in st["ground" if s == 0 else
+                                                                                         "upper"]}:
+            w.set(x, y - 1, z, sill_in[0 if s == 0 else 1], stair_data((-nx, -nz)))
+        if "sill" in st and w.get(x, y - 1, z) != win and w.id(x + nx, y - 1, z + nz) == B.AIR:
+            w.set(x + nx, y - 1, z + nz, st["sill"], stair_data((-nx, -nz), True))
+        if "hood" in st and w.get(x, y + 1, z) != win and w.id(x + nx, y + 1, z + nz) == B.AIR:
+            w.set(x + nx, y + 1, z + nz, st["hood"], stair_data((-nx, -nz)))
+    if st.get("beam_ends") and st["post"] is not None:
+        for x, z, u, v, s in corners:
+            if s >= h.storeys - 1:
+                continue
+            y = h.floor + (s + 1) * h.storey
+            for (ex, ez) in (fr.along(1 if u > 0 else -1), fr.across(1 if v > 0 else -1)):
+                if w.id(x + ex, y, z + ez) == B.AIR:
+                    w.set(x + ex, y, z + ez, st.get("log", B.LOG), st["post"] | (4 if ex else 8))
+    if "stack" in st and h.chimney and h.roof != "flat" and square:
+        sk = st["stack"]
+        ux = Lt / 2 + 0.5
+        top = crown_at(*fr.cell(Lt / 2 - 0.5, 0)) + 2
+        shoulder = h.floor + h.storey
+        (ox, oz), (ax, az) = fr.along(1), fr.across(1)
+        for dv in (-1, 0, 1):
+            x, z = fr.cell(ux, dv)
+            g = ground_at(x, z) if ground_at else h.floor
+            for y in range(min(g, h.floor) + 1, (top if dv == 0 else shoulder) + 1):
+                w.set(x, y, z, *sk["block"])
+            if dv:
+                w.set(x, shoulder + 1, z, sk.get("base", B.COBBLE_STAIRS), stair_data((-dv * ax, -dv * az)))
+        x, z = fr.cell(ux, 0)
+        for j, blk in enumerate(st.get("chimney_top", [sk.get("cap", (B.COBBLE_WALL, 0))])):
+            w.set(x, top + 1 + j, z, *blk)
+
+
+def round_tower(w, cx, cz, r, y0, height, wall=(B.STONEBRICK, 0), quoins=None, floor=(B.PLANKS, 1),
+                crenel=(B.STONEBRICK, 0), every=5, door_side="s", door=B.SPRUCE_DOOR, openings=(), ground_at=None,
+                slit=(B.AIR, 0), half=None, crenel_stair=None, string=None, plinth=None, cut=True):
+    """A round tower on the floor at y0: a ring of walls two thick, r blocks to its outer face, from the ground under
+    it to y0 + height; a floor every `every` courses and on its top, a ladder up the inside of the side away from
+    its door through a hatch in each, crenels round the top's outer ring; a door at its foot on `door_side`;
+    `openings` [(angle in degrees from east toward south, y), ...] cut two high through the ring, where a wall-walk
+    meets it; `slit` one block in each quarter of every storey. `quoins`, blocks cycled course by course on the
+    ring's four compass cells. With `half` the tower is a square `2 half + 1` across with its corners cut, a ring one
+    thick: straight faces of `2 half - 1` and an open corner between each, which reads round and takes detail.
+    `crenel_stair` lays the crenels as stairs rising outward. On a cut square the `quoins` stand at each cut corner
+    (its diagonal and the two face ends beside it); `string` rings every floor and the top on the outer face, and
+    `plinth` is its foot course. `cut` False keeps the square's corners: a plain square tower, its quoins at the
+    four corners. Returns the cells it stands on."""
+    from pgmvox.core.orient import door as door_data, ladder as ladder_data
+    cells, ring, outer = [], set(), set()
+    R = int(math.ceil(r)) if half is None else half
+    for dx in range(-R, R + 1):
+        for dz in range(-R, R + 1):
+            if half is not None:
+                if cut and abs(dx) == half and abs(dz) == half:
+                    continue
+                cells.append((cx + dx, cz + dz))
+                if abs(dx) == half or abs(dz) == half or (cut and abs(dx) == half - 1 and abs(dz) == half - 1):
+                    ring.add((cx + dx, cz + dz))
+                    outer.add((cx + dx, cz + dz))
+                continue
+            d = math.hypot(dx, dz)
+            if d <= r:
+                cells.append((cx + dx, cz + dz))
+                if d > r - 2:
+                    ring.add((cx + dx, cz + dz))
+                if d > r - 1:
+                    outer.add((cx + dx, cz + dz))
+    top = y0 + height
+    for x, z in cells:
+        g = ground_at(x, z) if ground_at else y0
+        for y in range(min(g, y0 - 1) + 1, top + 1):
+            if (x, z) in ring:
+                ax, az = abs(x - cx), abs(z - cz)
+                if half is not None:
+                    q = quoins and (ax >= half - 1 and az >= half - 1 if cut else ax == half and az == half)
+                else:
+                    q = quoins and (ax == 0 or az == 0) and (x, z) in outer
+                if plinth is not None and y <= y0 + 1:
+                    blk = plinth
+                elif q:
+                    blk = quoins[(y - y0) % len(quoins)]
+                elif string is not None and (y == top or (y > y0 and (y - y0) % every == 0)):
+                    blk = string
+                else:
+                    blk = wall
+                w.set(x, y, z, *blk)
+            elif y <= y0 or y == top or (y - y0) % every == 0:
+                w.set(x, y, z, *floor)
+            else:
+                w.set(x, y, z, B.AIR)
+    for x, z in outer:
+        if (x + z) % 2 == 0:
+            if crenel_stair is not None:
+                ox, oz = x - cx, z - cz
+                w.set(x, top + 1, z, crenel_stair, stair_data(vec((ox, oz) if abs(ox) != abs(oz) else (ox, 0))))
+            else:
+                w.set(x, top + 1, z, *crenel)
+    dxd, dzd = vec(door_side)
+    rr = int(r) if half is None else half + 1
+    lx, lz = cx - dxd * (rr - 2), cz - dzd * (rr - 2)                  # the ladder, on the wall away from the door
+    for y in range(y0 + 1, top + 1):
+        w.set(lx, y, lz, B.LADDER, ladder_data((-dxd, -dzd)))
+    for k in range(1, rr):
+        x, z = cx + dxd * k, cz + dzd * k
+        if (x, z) in ring:
+            w.set(x, y0 + 1, z, B.AIR)
+            w.set(x, y0 + 2, z, B.AIR)
+    x, z = cx + dxd * (rr - 1), cz + dzd * (rr - 1)
+    w.set(x, y0 + 1, z, door, door_data((dxd, dzd)))
+    w.set(x, y0 + 2, z, door, door_data((dxd, dzd), upper=True))
+    for a, y in openings:
+        ux, uz = math.cos(math.radians(a)), math.sin(math.radians(a))
+        for k in range(0, R + 1):
+            for side in (-0.5, 0.5):
+                x, z = int(math.floor(cx + 0.5 + ux * k - uz * side)), int(math.floor(cz + 0.5 + uz * k + ux * side))
+                if (x, z) in ring:
+                    w.set(x, y + 1, z, B.AIR)
+                    w.set(x, y + 2, z, B.AIR)
+    if slit != (B.AIR, 0):
+        for sx, sz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            if (sx, sz) == (dxd, dzd):
+                continue
+            k = max(k for k in range(R + 1) if (cx + sx * k, cz + sz * k) in outer)
+            for y in range(y0 + 3, top - 1, every):
+                w.set(cx + sx * k, y, cz + sz * k, *slit)
+    return cells
 
 
 # ---- the parts every board repeated ----------------------------------------------------------------------
@@ -564,7 +779,8 @@ CROWNS = ("follow", "level", "grade")
 
 
 def line_wall(w, H, X, Z, pts, height=2, width=1, crown="follow", run=6, max_grade=1.0, blocks=((B.COBBLE, 0),),
-              weights=None, cap=None, crenel=None, gap=None, closed=False, sink=0, keep=None, rng=None):
+              weights=None, cap=None, crenel=None, gap=None, closed=False, sink=0, keep=None, rng=None, courses=None,
+              crenel_stair=None, step_stair=None, step_slab=None, ruin=None):
     """A wall, a hedge or a fence along a line over the ground: one generic build, the materials are the board's.
 
     Every cell of the line (four-connected at width 1, the band within width / 2 of it wider) is filled from the
@@ -574,7 +790,13 @@ def line_wall(w, H, X, Z, pts, height=2, width=1, crown="follow", run=6, max_gra
     over the highest ground of the run, a stepped crown; `grade` holds it `height` over the ground smoothed to
     `max_grade` blocks a block. `cap` is the top course's block, `crenel` one more block on every other cell of
     the crown, and `gap` (every, length) leaves `length` blocks open every `every` blocks along it for a gate or a
-    break in a hedge. Cells in `keep` are left alone. Returns the cells laid, each (x, z, ground, top)."""
+    break in a hedge. Cells in `keep` are left alone. `courses` lays the wall in courses from its foot up instead,
+    one entry a course and the last repeated, each a block or a pair laid in a checker, so a wall can run from
+    cobble through andesite into brick. `crenel_stair` (a stair id) makes each crenel a stair rising to the line's
+    left; `step_stair` sets a stair on a cell whose neighbour along the wall stands one higher, rising to it, so a
+    crown that follows the ground steps up rather than jumps; `step_slab` (a block) a half step there instead.
+    `ruin` (from, to, seed) breaks the wall down between those distances along it: its height falls to nothing
+    toward `to`, notched a block or two at random, and nothing stands on its broken top. Returns the cells laid, each (x, z, ground, top)."""
     from pgmvox.geom.shapes import polyline, walk_cells
     assert crown in CROWNS, crown
     pts = [tuple(p) for p in pts] + ([tuple(pts[0])] if closed else [])
@@ -614,13 +836,53 @@ def line_wall(w, H, X, Z, pts, height=2, width=1, crown="follow", run=6, max_gra
         top = top + height
     p = None if weights is None else np.array(weights, float) / sum(weights)
     laid = []
+    if ruin is not None:
+        r0, r1 = ruin[0], ruin[1]
+        notch = np.random.default_rng(ruin[2] if len(ruin) > 2 else 0)
+        keep_h = np.clip((r1 - s) / max(r1 - r0, 1), 0, 1)
+        broke = (s > r0)
+        cut = np.where(broke, np.round(height * (1 - keep_h)) + notch.integers(0, 3, len(s)), 0)
+        top = np.where(broke, np.minimum(top, np.maximum(ground, top - cut)), top)
     for (x, z), g, t, sv in zip(inside, ground.astype(int), top.astype(int), s):
         if gap is not None and sv > gap[1] and (sv % gap[0]) < gap[1]:
             continue
+        if ruin is not None and sv > ruin[0] and t <= g:
+            continue
         for y in range(g + 1 - sink, t + 1):
-            b = blocks[0] if p is None or rng is None else blocks[int(rng.choice(len(blocks), p=p))]
+            if courses is not None:
+                c = courses[min(max(y - g - 1, 0), len(courses) - 1)]
+                b = c[(x + y + z) % 2] if isinstance(c, list) else c
+            else:
+                b = blocks[0] if p is None or rng is None else blocks[int(rng.choice(len(blocks), p=p))]
             w.set(x, y, z, *(cap if (cap is not None and y == t) else b))
-        if crenel is not None and int(round(sv)) % 2 == 0:
-            w.set(x, t + 1, z, *crenel)
+        if crenel is not None and int(round(sv)) % 2 == 0 and not (ruin is not None and sv > ruin[0]):
+            if crenel_stair is not None:
+                tx, tz = _tangent(pts, x + 0.5, z + 0.5)
+                w.set(x, t + 1, z, crenel_stair, stair_data(vec((-tz, tx))))
+            else:
+                w.set(x, t + 1, z, *crenel)
         laid.append((x, z, int(g), int(t)))
+    if step_stair is not None or step_slab is not None:
+        tops = {(x, z): t for x, z, _, t in laid if not (ruin is not None and s_of[(x, z)] > ruin[0])}
+        for (x, z), t in tops.items():
+            for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                if tops.get((x + dx, z + dz)) == t + 1 and w.id(x, t + 1, z) == B.AIR:
+                    if step_slab is not None:
+                        w.set(x, t + 1, z, *step_slab)
+                    else:
+                        w.set(x, t + 1, z, step_stair, stair_data((dx, dz)))
+                    break
     return laid
+
+
+def _tangent(pts, x, z):
+    """The unit direction of the segment of a polyline nearest (x, z)."""
+    best = None
+    for (ax, az), (bx, bz) in zip(pts, pts[1:]):
+        vx, vz = bx - ax, bz - az
+        n = vx * vx + vz * vz or 1.0
+        t = min(1.0, max(0.0, ((x - ax) * vx + (z - az) * vz) / n))
+        d = math.hypot(ax + t * vx - x, az + t * vz - z)
+        if best is None or d < best[0]:
+            best = (d, vx / math.sqrt(n), vz / math.sqrt(n))
+    return best[1], best[2]

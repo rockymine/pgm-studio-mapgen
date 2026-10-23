@@ -51,7 +51,7 @@ def world_folder(board, map_xml):
     key = os.path.relpath(os.path.abspath(board), worlds.ROOT)
     if any(held == place for held, _, _ in worlds.rows()):
         place += "_pgmvox"
-    worlds.register(place, key, key)
+    worlds.register(place, os.path.abspath(board), key)          # the index makes the board relative itself
     return os.path.join(worlds.WORLDS, place)
 
 STEPS = ["plan_check", "sketch", "gen", "write", "mapxml", "renders", "walk"]

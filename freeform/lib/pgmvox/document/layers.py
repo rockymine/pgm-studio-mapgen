@@ -255,6 +255,10 @@ def expr(spec, c):
     if op == "level":
         return LF.level(c.H, E(a["e"]), a.get("top", "median") if a.get("top") == "median" else E(a["top"]),
                         inner=a.get("inner", 1.0), outer=a.get("outer", 1.5), mode=a.get("mode", "set"))
+    if op == "gullies":
+        return LF.gullies(c.H, c.X.astype(float), c.Z.astype(float), tuple(a["at"]), a["count"], E(a["depth"]),
+                          a["r0"], a["r1"], wander=a.get("wander", 0.9), sharpness=a.get("sharpness", 3.0),
+                          seed=a.get("seed", 0))
     if op == "blend":
         return LF.blend(c.H, E(a["to"]), E(a["mask"]), width=a.get("width", 8))
     if op == "spire":
@@ -538,12 +542,49 @@ def _pattern(spec):
     return getattr(FA, name)(**kw)
 
 
+def house_style(spec, doc=None):
+    """A house's style: a name from pgmvox's styles or from the document's own `styles`, or an object naming a
+    `base` style and the keys it changes, its blocks written as anywhere else in the document."""
+    from pgmvox.built import build as BLD
+    if isinstance(spec, str):
+        if doc is not None and spec in doc.get("styles", {}):
+            return house_style(doc["styles"][spec], doc)
+        return spec
+    st = dict(BLD.STYLES[spec.get("base", "town")])
+    for k, v in spec.items():
+        if k == "base":
+            continue
+        if k in ("ground", "upper"):
+            st[k] = [block(b) for b in v]
+        elif k in ("stair", "door", "sill", "hood"):
+            st[k] = getattr(B, v)
+        elif k == "verge":
+            st[k] = {"roof": block(v["roof"]), "slab": block(v["slab"]), **({"stair": getattr(B, v["stair"])}
+                                                                           if "stair" in v else {})}
+        elif k == "roof_bands":
+            st[k] = int(v)
+        elif k in ("quoins", "chimney_top"):
+            st[k] = [block(b) for b in v]
+        elif k == "sill_in":
+            st[k] = [getattr(B, n) for n in v]
+        elif k == "log":
+            st[k] = getattr(B, v)
+        elif k == "stack":
+            st[k] = {"block": block(v["block"]), "cap": block(v.get("cap", "COBBLE_WALL")),
+                     "base": getattr(B, v.get("base", "COBBLE_STAIRS"))}
+        elif k in ("post", "beam_ends", "windows", "plain_turned", "joists_along", "slab_roof", "ridge_slab"):
+            st[k] = v
+        else:
+            st[k] = block(v)
+    return st
+
+
 def _footprint(L, X, Z):
     x0, z0, x1, z1 = L["rect"]
     return [(x, z) for x in range(x0, x1 + 1) for z in range(z0, z1 + 1)]
 
 
-def ground(doc, X=None, Z=None, share=None, level=""):
+def ground(doc, X=None, Z=None, share=None, level="", arrays=None):
     """The fields and ground stages alone: (ctx, steps). The board's grid is its x and z range unless given. With
     `share` (the board's ctx) a level's ground is built on the board's fields and lines, starting at its own
     `floor`, and its steps carry the level's id."""
@@ -558,6 +599,8 @@ def ground(doc, X=None, Z=None, share=None, level=""):
     if share is None and "made" in doc:
         c.cells = made_cells(doc["made"])
         c.fields["made"], c.fields["made_top"] = made_mask(c.cells, X, Z)
+    for k, v in (arrays or {}).items():                  # grids a board computed itself, read by name like a field
+        c.fields[k] = np.asarray(v, float)
     for k, v in ({} if share else doc.get("fields", {})).items():
         c.fields[k] = expr(v, c) if isinstance(v, dict) and next(iter(v)) not in ("fbm", "ridged", "line") \
             or isinstance(v, dict) and v.get("fbm", {}).get("along") else _field(v, X.shape, c.fields)
@@ -566,8 +609,12 @@ def ground(doc, X=None, Z=None, share=None, level=""):
         before, wet_before = c.H.copy(), c.water.copy()
         op = L["op"]
         if op == "outline":
-            if "area" in L:
-                c.land = area_distance(L["area"], X, Z, c.fields, c.lines, c)[0] < 1
+            if "area" in L or "where" in L:
+                c.land = np.ones(X.shape, bool)
+                if "area" in L:
+                    c.land &= area_distance(L["area"], X, Z, c.fields, c.lines, c)[0] < 1
+                if "where" in L:
+                    c.land &= np.asarray(expr(L["where"], c), bool)
             else:
                 ins = {k: (expr(v, c) if isinstance(v, (dict, str)) else v) for k, v in L.get("insets", {}).items()}
                 c.land = shapes.island(X, Z, tuple(L["box"]), **ins)
@@ -609,13 +656,14 @@ def ground(doc, X=None, Z=None, share=None, level=""):
     return c, steps
 
 
-def build(doc):
-    """Build a layer document: every stage in order, every layer recorded as a Step."""
+def build(doc, arrays=None):
+    """Build a layer document: every stage in order, every layer recorded as a Step. `arrays` are world-grid fields
+    the board computed itself (a raster drawn in another tool, a partition no expression states), read by name."""
     bd = doc["board"]
     (x0, x1), (z0, z1) = bd["x"], bd["z"]
     w = World(x0, z0, x1 - x0 + 1, z1 - z0 + 1, sy=bd.get("height", 128))
     X, Z = w.grid()
-    c, steps = ground(doc, X, Z)
+    c, steps = ground(doc, X, Z, arrays=arrays)
     fields, lines, H, water = c.fields, c.lines, c.H, c.water
     made = fields.get("made", np.zeros(X.shape, bool))
     land = c.land & ~made
@@ -629,7 +677,8 @@ def build(doc):
         u = lay["underside"]
         bottom = T.island_bottom(Hi, land, np.zeros(X.shape, bool), taper=tuple(u.get("taper", (4, 0.9))),
                                  rough=u.get("rough", 0) * noise.fbm(X.shape, 12, 2, seed=u.get("seed", 0)))
-    T.lay(w, np.where(land, Hi, -1), land, top=TOP, bands=T.beds(ROCK, Hi, seed=3), paint=paint, bottom=bottom)
+    T.lay(w, np.where(land, Hi, -1), land, top=TOP, bands=T.beds(ROCK, Hi, seed=3), paint=paint, bottom=bottom,
+          soil=tuple(tuple(v) for v in lay["soil"]) if "soil" in lay else T.SOIL, ledges=lay.get("ledges", True))
     out.steps.append(Step("lay", "lay", "lay", land.copy(), Hi.copy(), f"{len(paint)} paint layers"))
     if (water > 0).any():
         bed = [_paint_layer(P, X, Z, fields, lines, Hi) for P in doc.get("water", {}).get("bed", [])] or (B.GRAVEL, 0)
@@ -711,6 +760,7 @@ def build(doc):
             laid[x - x0, z - z0] = True
         built_on |= laid
         out.steps.append(Step(L["id"], "structures", L["op"], laid, Hi.copy(), L.get("note", "")))
+    floors = {}
     for L in doc.get("build", []):
         laid = np.zeros(X.shape, bool)
         if L["op"] == "surface":
@@ -729,7 +779,14 @@ def build(doc):
             pts = lines[L["near"]]["pts"] if "near" in L else [tuple(p) for p in L["line"]]
             if "offset" in L:
                 pts = _offset(pts, L["offset"])
+            stair_of = lambda k: getattr(B, L[k]) if k in L else None                        # noqa: E731
             got = line_wall(w, Hi, X, Z, pts, height=L.get("height", 2), width=L.get("width", 1),
+                            courses=[[block(c[0]), block(c[1])] if isinstance(c, list) and len(c) == 2
+                                     and not isinstance(c[1], int) else block(c)
+                                     for c in L["courses"]] if "courses" in L else None,
+                            crenel_stair=stair_of("crenel_stair"), step_stair=stair_of("step_stair"),
+                            step_slab=block(L["step_slab"]) if "step_slab" in L else None,
+                            ruin=tuple(L["ruin"]) if "ruin" in L else None,
                             crown=L.get("crown", "follow"), run=L.get("run", 6), max_grade=L.get("max_grade", 1.0),
                             blocks=[block(b) for b in L.get("blocks", ["COBBLE"])], weights=L.get("weights"),
                             cap=block(L["cap"]) if "cap" in L else None,
@@ -743,15 +800,144 @@ def build(doc):
             hx, hz = L["at"]
             r = int(max(L.get("L", 9), L.get("W", 6)) / 2) + 1
             under = Hi[max(hx - r - x0, 0):hx + r - x0 + 1, max(hz - r - z0, 0):hz + r - z0 + 1]
-            h = BLD.House(hx, hz, L.get("heading", 0.0), L=L.get("L", 9), W=L.get("W", 6), floor=int(under.max()),
-                          storeys=L.get("storeys", 2), style=L.get("style", "town"), jetty=L.get("jetty", False),
-                          door=L.get("door", 1), chimney=L.get("chimney", True), roof=L.get("roof", "gable"))
+            seat = L.get("floor")
+            if seat == "footprint":                     # the highest ground under the walls, not round them
+                seat = max(int(Hi[x - x0, z - z0]) for x, z in
+                           BLD.Frame(hx, hz, L.get("heading", 0.0)).cells(L.get("L", 9) + 1, L.get("W", 6) + 1))
+            h = BLD.House(hx, hz, L.get("heading", 0.0), L=L.get("L", 9), W=L.get("W", 6),
+                          floor=int(under.max()) if seat is None else int(seat),
+                          storeys=L.get("storeys", 2), style=house_style(L.get("style", "town"), doc), jetty=L.get("jetty", False),
+                          door=L.get("door", 1), chimney=L.get("chimney", True), roof=L.get("roof", "gable"),
+                          **{k: L[k] for k in ("storey", "pitch", "overhang") if k in L})
+            floors[L["id"]] = h.floor
             got = BLD.house(w, h, ground_at=lambda x, z: int(Hi[x - x0, z - z0]),
                             rng=np.random.default_rng(L.get("seed", bd.get("seed", 0))))
             for x, z in got["footprint"]:
                 laid[x - x0, z - z0] = True
+            if "walk" in L and got["door"] is not None:
+                _door_path(w, Hi, got["door"], L["walk"], lines, x0, z0, built_on | laid, rng)
+        elif L["op"] == "stall":
+            from pgmvox.built import props as PR
+            sx, sz = L["at"]
+            for x, z in PR.market_stall(w, sx, int(Hi[sx - x0, sz - z0]), sz, L.get("facing", "s"),
+                                        tuple(L.get("colours", [14, 0])), L.get("width", 5),
+                                        counter_stair=getattr(B, L["counter_stair"]) if "counter_stair" in L else None,
+                                        post=block(L.get("post", "FENCE")), banners=L.get("banners", False),
+                                        sides=L.get("sides", False), foot=block(L["foot"]) if "foot" in L else None,
+                                        goods=tuple(block(g) for g in L["goods"]) if "goods" in L else
+                                        ((B.PUMPKIN, 3), (B.MELON, 0), (B.HAY, 0))):
+                laid[x - x0, z - z0] = True
+        elif L["op"] == "posts":
+            for px, pz in L["at"]:
+                g = int(Hi[px - x0, pz - z0])
+                for j, b in enumerate(L["stack"]):
+                    w.set(px, g + 1 + j, pz, *block(b))
+                laid[px - x0, pz - z0] = True
+        elif L["op"] == "round_tower":
+            from pgmvox.built import build as BLD
+            tx, tz = L["at"]
+            r = L.get("r", 3.5)
+            R = L["half"] if "half" in L else int(np.ceil(r))
+            under = Hi[tx - R - x0:tx + R - x0 + 1, tz - R - z0:tz + R - z0 + 1]
+            y0 = L.get("y", int(under.max()))
+            got = BLD.round_tower(w, tx, tz, r, y0, L.get("height", 10), wall=block(L.get("wall", "STONEBRICK")),
+                                  quoins=[block(b) for b in L["quoins"]] if "quoins" in L else None,
+                                  floor=block(L.get("floor", ["PLANKS", 1])), crenel=block(L.get("crenel", "STONEBRICK")),
+                                  door_side=L.get("door", "s"),
+                                  openings=[(a, oy + (y0 if L.get("openings_from") == "floor" else 0))
+                                            for a, oy in L.get("openings", [])],
+                                  ground_at=lambda x, z: int(Hi[x - x0, z - z0]), slit=block(L.get("slit", "AIR")),
+                                  half=L.get("half"), string=block(L["string"]) if "string" in L else None,
+                                  plinth=block(L["plinth"]) if "plinth" in L else None, cut=L.get("cut", True),
+                                  crenel_stair=getattr(B, L["crenel_stair"]) if "crenel_stair" in L
+                                  else None)
+            for x, z in got:
+                laid[x - x0, z - z0] = True
+        elif L["op"] == "boulders":
+            from pgmvox.scenery import green as GR
+            g_at = lambda x, z: int(Hi[x - x0, z - z0])                                     # noqa: E731
+            rr = np.random.default_rng(L.get("seed", bd.get("seed", 0)))
+            for spec in L["at"]:
+                bx, bz, r = spec[:3]
+                kw = spec[3] if len(spec) > 3 else {}
+                for x, z in GR.boulder(w, bx, bz, g_at, r, rr, rz=kw.get("rz"), height=kw.get("height"),
+                                       angle=kw.get("angle", 0.0), sink=L.get("sink", 0.3),
+                                       rock=tuple(block(b) for b in L.get("rock", ["STONE", ["STONE", 5]])),
+                                       accent=block(L.get("accent", "COBBLE")), accent_share=L.get("accent_share", 0.25),
+                                       rough=L.get("rough", 0.35), shape=kw.get("shape", L.get("shape", 3.0))):
+                    if 0 <= x - x0 < laid.shape[0] and 0 <= z - z0 < laid.shape[1]:
+                        laid[x - x0, z - z0] = True
+        elif L["op"] in ("hedge", "small_trees", "flowers", "crops"):
+            from pgmvox.scenery import green as GR
+            g_at = lambda x, z: int(Hi[x - x0, z - z0])                                     # noqa: E731
+            rr = np.random.default_rng(L.get("seed", bd.get("seed", 0)))
+            if L["op"] == "hedge":
+                from pgmvox.geom.shapes import walk_cells
+                pts = lines[L["near"]]["pts"] if "near" in L else [tuple(p) for p in L["line"]]
+                if "offset" in L:
+                    pts = _offset(pts, L["offset"])
+                got = GR.hedge(w, walk_cells([(int(round(x)), int(round(z))) for x, z in pts]), g_at, rr,
+                               leaves=block(L.get("leaves", ["LEAVES", 4])), modules=L.get("modules", 1),
+                               drop=L.get("drop", 0.15), grass=L.get("grass", False))
+            elif L["op"] == "small_trees":
+                got = []
+                for tx, tz in L["at"]:
+                    got += GR.round_oak(w, tx, tz, g_at, rr, trunk=L.get("trunk", 3), log=block(L.get("log", ["LOG", 0])),
+                                        leaves=block(L.get("leaves", ["LEAVES", 4])), bite=L.get("bite", 0.35))
+            else:
+                e, _ = area_distance(L["area"], X, Z, fields, lines)
+                where = [(int(X[i, k]), int(Z[i, k])) for i, k in np.argwhere((e < 1) & land & (water == 0))]
+                if L["op"] == "crops":
+                    got = GR.crop_rows(w, where, g_at, [block(c) for c in L["crops"]], rr, angle=L.get("angle", 0.0),
+                                       rows=L.get("rows", 6), ditch=L.get("ditch", 3))
+                    for sx, sz in L.get("scarecrows", []):
+                        from pgmvox.built import props as PR
+                        PR.scarecrow(w, sx, sz, L.get("facing", "n"))
+                else:
+                    got = GR.flower_rows(w, where, g_at, [block(f) for f in L["flowers"]], along=L.get("along", "x"),
+                                         rows=L.get("rows", 2), angle=L.get("angle", 0.0))
+            for x, z in got:
+                if 0 <= x - x0 < laid.shape[0] and 0 <= z - z0 < laid.shape[1]:
+                    laid[x - x0, z - z0] = True
+        elif L["op"] == "paving":
+            e, _ = area_distance(L["area"], X, Z, fields, lines)
+            cell = L.get("cell", 3)
+            pave = [block(b) for b in L["blocks"]]
+            pick = np.random.default_rng(L.get("seed", bd.get("seed", 0))).integers(
+                len(pave), size=(X.shape[0] // cell + 2, X.shape[1] // cell + 2))
+            for i, k in np.argwhere((e < 1) & land & (water == 0)):
+                y = int(Hi[i, k])
+                w.set(int(X[i, k]), y, int(Z[i, k]), *pave[pick[i // cell, k // cell]])
+                if w.ids[i, y + 1, k] in (B.TALLGRASS, B.FLOWER, B.DANDELION, B.DOUBLE_PLANT):
+                    w.ids[i, y + 1, k] = 0
+                laid[i, k] = True
+        elif L["op"] == "graves":
+            from pgmvox.built import props as PR
+            g_at = lambda x, z: int(Hi[x - x0, z - z0])                                     # noqa: E731
+            rr = np.random.default_rng(L.get("seed", bd.get("seed", 0)))
+            flowers = [block(f) for f in L.get("flowers", [["FLOWER", 0]])]
+            for gx, gz in L["at"]:
+                fl = flowers[int(rr.integers(len(flowers)))] if rr.random() < L.get("flowered", 0.4) else None
+                for x, z in PR.grave(w, gx, gz, g_at, L.get("facing", "e"), block(L.get("stone", ["STONE", 6])),
+                                     block(L.get("cap", ["SLAB", 5])), block(L.get("soil", ["DIRT", 1])), fl):
+                    laid[x - x0, z - z0] = True
+        elif L["op"] == "field":
+            from pgmvox.built import props as PR
+            a0, b0, a1, b1 = L["rect"]
+            y = L["y"] if "y" in L else int(np.median(Hi[a0 - x0:a1 - x0 + 1, b0 - z0:b1 - z0 + 1]))
+            PR.crop_field(w, (a0, b0, a1, b1), y, [block(c) for c in L.get("crops", [["WHEAT", 7]])],
+                          np.random.default_rng(L.get("seed", bd.get("seed", 0))), rows=L.get("rows", 9),
+                          ditch=L.get("ditch", 4), fence=L.get("fence", "w"), gate=L.get("gate"))
+            for sx, sz in L.get("scarecrows", []):
+                PR.scarecrow(w, sx, sz, L.get("facing", "n"))
+            laid[a0 - x0:a1 - x0 + 1, b0 - z0:b1 - z0 + 1] = True
         elif L["op"] == "blocks":
-            for x, _, z in _props(w, L["boxes"]):
+            boxes = L["boxes"]
+            if "rel" in L:                                       # heights over the floor of the house it names
+                dy = floors[L["rel"]]
+                boxes = [dict(b, box=[b["box"][0], b["box"][1] + dy, b["box"][2], b["box"][3], b["box"][4] + dy,
+                                      b["box"][5]]) for b in boxes]
+            for x, _, z in _props(w, boxes):
                 laid[x - x0, z - z0] = True
         built_on |= laid
         out.steps.append(Step(L["id"], "build", L["op"], laid, Hi.copy(), L.get("note", "")))
@@ -778,7 +964,34 @@ def build(doc):
                        planted=planted, ok=ok, ground=stand, spacing=L.get("spacing", 0.85))
             for x, z, _ in planted:
                 laid[x - x0, z - z0] = True
+        elif L["op"] == "plants":
+            from pgmvox.scenery import green as GR
+            e = area_distance(L["area"], X, Z, fields, lines)[0] < 1 if "area" in L else np.ones(X.shape, bool)
+            if "where" in L:
+                e &= np.asarray(expr(L["where"], Ctx(X, Z, Hi.astype(float), fields, lines, land, water)), bool)
+            if "noise" in L:
+                v = _field(L["noise"]["field"], X.shape, fields)
+                e &= (v >= L["noise"].get("lo", -np.inf)) & (v <= L["noise"].get("hi", np.inf))
+            e &= land & (water == 0) & ~ndimage.binary_dilation(built_on, iterations=L.get("clear", 1))
+            rng = np.random.default_rng(L.get("seed", 0))
+            e &= rng.random(X.shape) < L.get("density", 0.3)
+            avoid = [tuple(a) for a in L.get("low", [])]
+            low = (lambda x, z: any(math.hypot(x - ax, z - az) <= ar for ax, az, ar in avoid)) if avoid else None
+            cells = [(int(X[i, k]), int(Hi[i, k]), int(Z[i, k])) for i, k in np.argwhere(e)]
+            for x, z in GR.ground_cover(w, cells, rng, L["kinds"], low=low):
+                laid[x - x0, z - z0] = True
         out.steps.append(Step(L["id"], "dress", L["op"], laid, Hi.copy(), L.get("note", "")))
+    for L in doc.get("snow", []):
+        e = area_distance(L["area"], X, Z, fields, lines)[0] < 1 if "area" in L else np.ones(X.shape, bool)
+        if "where" in L:
+            e &= np.asarray(expr(L["where"], Ctx(X, Z, Hi.astype(float), fields, lines, land, water)), bool)
+        n = T.smooth_snow(w, L.get("smoothness", 6), mask=e, on={block(b)[0] for b in L["on"]} if "on" in L else None,
+                          added=L.get("added", 0.4), overlay=L.get("overlay", False), max_depth=L.get("max_depth"),
+                          under=block(L["under"]) if "under" in L else None, jitter=L.get("jitter", 0.0),
+                          jitter_cell=L.get("jitter_cell", 5), seed=L.get("seed", bd.get("seed", 0)))
+        out.steps.append(Step(L["id"], "snow", "smooth_snow", e.copy(), Hi.copy(), f"{n} columns covered"))
+    if "biome" in bd:
+        w.biome[:] = int(bd["biome"])
     for L in doc.get("symmetry", []):
         from pgmvox.core.orient import turn_world
         cx = Ctx(X, Z, Hi.astype(float), fields, lines, land, water)
@@ -823,13 +1036,17 @@ def _level(L, doc, w, share, out):
     H = np.where(water > 0, np.minimum(H, water - 1), H)
     lower = _below(out.surfaces, H)
     u = L.get("underside", {})
-    bottom = T.island_bottom(H, land, np.zeros(X.shape, bool), taper=tuple(u.get("taper", (4, 0.9))),
-                             rough=u.get("rough", 0) * noise.fbm(X.shape, 12, 2, seed=u.get("seed", 0)))
+    if "bottom" in u:                                        # an underside stated as a field: a face that leans
+        bottom = np.round(np.asarray(expr(u["bottom"], c), float) + np.zeros(X.shape)).astype(int)
+    else:
+        bottom = T.island_bottom(H, land, np.zeros(X.shape, bool), taper=tuple(u.get("taper", (4, 0.9))),
+                                 rough=u.get("rough", 0) * noise.fbm(X.shape, 12, 2, seed=u.get("seed", 0)))
     rests = land & (lower >= 0) & (bottom <= lower + u.get("clear", 4))
     bottom = np.where(rests, lower - 3, bottom)
     tmp = World(w.x0, w.z0, w.sx, w.sz, sy=w.sy)
     paint = [_paint_layer(P, X, Z, c.fields, c.lines, H) for P in L.get("paint", [])]
-    T.lay(tmp, np.where(land, H, -1), land, top=TOP, bands=T.beds(ROCK, H, seed=3), paint=paint, bottom=bottom)
+    T.lay(tmp, np.where(land, H, -1), land, top=TOP, bands=T.beds(ROCK, H, seed=3), paint=paint, bottom=bottom,
+          dirt_depth=L.get("soil"))
     if (water > 0).any():
         bed = [_paint_layer(P, X, Z, c.fields, c.lines, H) for P in L.get("water", {}).get("bed", [])] \
             or (B.GRAVEL, 0)
@@ -976,7 +1193,8 @@ def _carve(layers, w, out, seed):
         elif op == "shaft":
             x, z = L["at"]
             head = ground(x, z) if L.get("top", "ground") == "ground" else int(L["top"])
-            UN.shaft(w, x, z, L["bottom"], head, ladder_on=L.get("ladder_on", "s"))
+            UN.shaft(w, x, z, L["bottom"], head, ladder_on=L.get("ladder_on", "s"),
+                     **{k: block(L[k]) for k in ("wall", "post") if k in L})
             for dx in range(-2, 3):
                 for dz in range(-2, 3):
                     for y in range(L["bottom"] - 1, head + 1):
@@ -1087,6 +1305,37 @@ def _rooms(L, w, ground, cover, made, rng):
                     w.set(x, y, z, B.TORCH, torch_data(side))
     made |= _props(w, L.get("props", []))
     return {(x, z): f for (x, z), f in floors.items() if (x, f, z) in air}
+
+
+def _door_path(w, Hi, door, spec, lines, x0, z0, built, rng):
+    """A path one block wide from a house's door straight out until it meets the line `spec["to"]` names (within
+    its width), laid in `blocks` a third each at random, with a low hedge of `leaves` beside it on its `side` (left
+    or right of the way out), a gap left in it by chance `gaps`."""
+    from pgmvox.core.orient import vec as vec_
+    from pgmvox.geom.shapes import polyline
+    x, z, facing = door
+    dx, dz = vec_(facing)
+    ln = lines[spec["to"]]
+    pts = ln["pts"]
+    blocks = [block(b) for b in spec.get("blocks", [["DIRT", 1], "GRAVEL", ["DIRT", 0]])]
+    side = {"left": (dz, -dx), "right": (-dz, dx)}.get(spec.get("side", "left"))
+    leaves = block(spec["leaves"]) if "leaves" in spec else None
+    for k in range(1, spec.get("max", 16)):
+        a, b = x + dx * k, z + dz * k
+        if not (0 <= a - x0 < Hi.shape[0] and 0 <= b - z0 < Hi.shape[1]):
+            break
+        d, _ = polyline(np.array([[a + 0.5]]), np.array([[b + 0.5]]), pts)
+        if float(d[0, 0]) < ln["width"] / 2:                      # where the paving of that line begins
+            break
+        y = int(Hi[a - x0, b - z0])
+        w.set(a, y, b, *blocks[int(rng.integers(len(blocks)))])
+        if w.id(a, y + 1, b) in (B.TALLGRASS, B.FLOWER, B.DANDELION):
+            w.set(a, y + 1, b, B.AIR)
+        if leaves is not None and side is not None and k > 1:
+            ha, hb = a + side[0], b + side[1]
+            if 0 <= ha - x0 < Hi.shape[0] and 0 <= hb - z0 < Hi.shape[1] and not built[ha - x0, hb - z0] \
+                    and rng.random() >= spec.get("gaps", 0.2):
+                w.set(ha, int(Hi[ha - x0, hb - z0]) + 1, hb, *leaves)
 
 
 def _props(w, props):

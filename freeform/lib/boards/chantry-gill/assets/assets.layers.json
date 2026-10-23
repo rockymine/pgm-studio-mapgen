@@ -1,0 +1,1057 @@
+{
+ "document": "layers",
+ "version": "draft-1",
+ "board": {
+  "name": "Chantry Gill assets",
+  "x": [
+   0,
+   199
+  ],
+  "z": [
+   0,
+   129
+  ],
+  "floor": 40,
+  "height": 90,
+  "seed": 3
+ },
+ "fields": {
+  "small": {
+   "fbm": {
+    "cell": 10,
+    "octaves": 3,
+    "seed": 1
+   }
+  },
+  "patch": {
+   "fbm": {
+    "cell": 3,
+    "octaves": 2,
+    "seed": 3
+   }
+  },
+  "grain": {
+   "fbm": {
+    "cell": 2,
+    "octaves": 1,
+    "seed": 4
+   }
+  }
+ },
+ "ground": [
+  {
+   "id": "sheet",
+   "op": "outline",
+   "box": [
+    0,
+    0,
+    199,
+    129
+   ]
+  },
+  {
+   "id": "sheet-floor",
+   "op": "base",
+   "height": 40,
+   "terms": [
+    {
+     "noise": {
+      "field": "small",
+      "rise": 0.6
+     }
+    }
+   ]
+  },
+  {
+   "id": "slope-hill",
+   "op": "mound",
+   "mode": "lift",
+   "rise": 16,
+   "power": 1.3,
+   "areas": [
+    {
+     "ellipse": {
+      "at": [
+       140,
+       25
+      ],
+      "rx": 18,
+      "rz": 14
+     }
+    }
+   ],
+   "note": "a hill of every angle, for the slope bands"
+  },
+  {
+   "id": "crag",
+   "op": "mound",
+   "mode": "lift",
+   "rise": 18,
+   "power": 3.0,
+   "areas": [
+    {
+     "ellipse": {
+      "at": [
+       180,
+       25
+      ],
+      "rx": 13,
+      "rz": 13
+     },
+     "rough": {
+      "amp": 0.08,
+      "cell": 5,
+      "seed": 2
+     }
+    }
+   ],
+   "note": "a crag, steep in its flanks"
+  },
+  {
+   "id": "gill",
+   "op": "level",
+   "mode": "cut",
+   "top": 32,
+   "inner": 0.85,
+   "outer": 1.0,
+   "areas": [
+    {
+     "line": {
+      "pts": [
+       [
+        8,
+        62
+       ],
+       [
+        40,
+        58
+       ],
+       [
+        80,
+        63
+       ],
+       [
+        118,
+        60
+       ]
+      ],
+      "width": 18
+     },
+     "rough": {
+      "amp": 0.06,
+      "cell": 4,
+      "seed": 5
+     }
+    }
+   ],
+   "note": "the gill: a gorge cut eight deep"
+  },
+  {
+   "id": "beck",
+   "op": "river",
+   "line": [
+    [
+     118,
+     60
+    ],
+    [
+     80,
+     63
+    ],
+    [
+     40,
+     58
+    ],
+    [
+     8,
+     62
+    ]
+   ],
+   "width": 5,
+   "depth": 2,
+   "water": 2,
+   "bank": 1
+  },
+  {
+   "id": "tarn",
+   "op": "crater",
+   "floor": 33,
+   "flat": 3,
+   "slope": 0.5,
+   "melt": 5,
+   "areas": [
+    {
+     "circle": {
+      "at": [
+       25,
+       100
+      ],
+      "r": 12
+     }
+    }
+   ]
+  },
+  {
+   "id": "tarn-water",
+   "op": "water",
+   "where": {
+    "and": [
+     {
+      "lt": [
+       "H",
+       37
+      ]
+     },
+     {
+      "lt": [
+       {
+        "distance": {
+         "circle": {
+          "at": [
+           25,
+           100
+          ],
+          "r": 13
+         }
+        }
+       },
+       1
+      ]
+     }
+    ]
+   },
+   "level": 37
+  },
+  {
+   "id": "knowe",
+   "op": "mound",
+   "mode": "lift",
+   "rise": 9,
+   "power": 2.5,
+   "areas": [
+    {
+     "ellipse": {
+      "at": [
+       72,
+       100
+      ],
+      "rx": 11,
+      "rz": 9
+     }
+    }
+   ],
+   "note": "the knoll the adit is driven into"
+  },
+  {
+   "id": "crag-2",
+   "op": "mound",
+   "mode": "lift",
+   "rise": 15,
+   "power": 2.2,
+   "areas": [
+    {
+     "ellipse": {
+      "at": [
+       175,
+       100
+      ],
+      "rx": 12,
+      "rz": 14
+     }
+    }
+   ],
+   "note": "what the Shelf rests on"
+  }
+ ],
+ "paint": [
+  {
+   "block": "SAND",
+   "slope": [
+    null,
+    28
+   ],
+   "height": [
+    null,
+    38
+   ],
+   "area": {
+    "circle": {
+     "at": [
+      25,
+      100
+     ],
+     "r": 17
+    }
+   }
+  },
+  {
+   "block": "GRAVEL",
+   "slope": [
+    null,
+    30
+   ],
+   "area": {
+    "line": {
+     "near": "beck",
+     "width": 9
+    }
+   }
+  },
+  {
+   "block": [
+    "STONE",
+    5
+   ],
+   "slope": [
+    48,
+    null
+   ],
+   "noise": {
+    "field": "patch",
+    "lo": 0.12
+   }
+  },
+  {
+   "block": "COBBLE",
+   "slope": [
+    48,
+    null
+   ],
+   "noise": {
+    "field": "grain",
+    "lo": 0.5
+   }
+  },
+  {
+   "block": [
+    "STONE",
+    0
+   ],
+   "slope": [
+    48,
+    null
+   ]
+  }
+ ],
+ "water": {
+  "bed": [
+   {
+    "block": "GRAVEL",
+    "noise": {
+     "field": "patch",
+     "lo": -0.1
+    }
+   },
+   {
+    "block": "CLAY"
+   }
+  ]
+ },
+ "levels": [
+  {
+   "id": "shelf",
+   "floor": 56,
+   "ground": [
+    {
+     "id": "shelf-outline",
+     "op": "outline",
+     "area": {
+      "polygon": [
+       [
+        140,
+        86
+       ],
+       [
+        168,
+        84
+       ],
+       [
+        186,
+        92
+       ],
+       [
+        186,
+        112
+       ],
+       [
+        166,
+        118
+       ],
+       [
+        142,
+        114
+       ],
+       [
+        136,
+        100
+       ]
+      ],
+      "rough": {
+       "amp": 0.06,
+       "cell": 6,
+       "seed": 6
+      }
+     }
+    },
+    {
+     "id": "shelf-ground",
+     "op": "base",
+     "height": 56,
+     "terms": [
+      {
+       "noise": {
+        "field": "small",
+        "rise": 1.2
+       }
+      }
+     ]
+    },
+    {
+     "id": "shelf-beck",
+     "op": "river",
+     "line": [
+      [
+       176,
+       104
+      ],
+      [
+       160,
+       100
+      ],
+      [
+       138,
+       99
+      ]
+     ],
+     "width": 3,
+     "depth": 1,
+     "water": 1,
+     "bank": 1
+    }
+   ],
+   "paint": [
+    {
+     "block": [
+      "STONE",
+      5
+     ],
+     "slope": [
+      48,
+      null
+     ],
+     "noise": {
+      "field": "patch",
+      "lo": 0.12
+     }
+    },
+    {
+     "block": "COBBLE",
+     "slope": [
+      48,
+      null
+     ],
+     "noise": {
+      "field": "grain",
+      "lo": 0.5
+     }
+    },
+    {
+     "block": [
+      "STONE",
+      0
+     ],
+     "slope": [
+      48,
+      null
+     ]
+    }
+   ],
+   "underside": {
+    "taper": [
+     5,
+     0.5
+    ],
+    "rough": 3,
+    "seed": 4,
+    "clear": 5
+   },
+   "falls": [
+    {
+     "at": [
+      134,
+      99
+     ],
+     "r": 1.2
+    }
+   ]
+  }
+ ],
+ "carve": [
+  {
+   "id": "crypt",
+   "op": "rooms",
+   "seed": 11,
+   "rooms": [
+    {
+     "id": "crypt",
+     "rect": [
+      100,
+      90,
+      112,
+      102
+     ],
+     "floor": 31,
+     "h": 5
+    },
+    {
+     "id": "charnel",
+     "rect": [
+      86,
+      92,
+      94,
+      100
+     ],
+     "floor": 29,
+     "h": 4
+    }
+   ],
+   "halls": [
+    {
+     "from": "crypt",
+     "to": "charnel",
+     "via": "x",
+     "width": 3,
+     "h": 4
+    }
+   ],
+   "lining": {
+    "wall": [
+     [
+      [
+       "STONEBRICK",
+       0
+      ],
+      5
+     ],
+     [
+      [
+       "STONEBRICK",
+       2
+      ],
+      1
+     ]
+    ],
+    "floor": [
+     [
+      [
+       "STONEBRICK",
+       0
+      ],
+      3
+     ],
+     [
+      [
+       "STONE",
+       6
+      ],
+      1
+     ]
+    ],
+    "ceiling": "STONEBRICK"
+   },
+   "light": {
+    "y": 2
+   }
+  },
+  {
+   "id": "chantry-shaft",
+   "op": "shaft",
+   "at": [
+    106,
+    97
+   ],
+   "bottom": 31,
+   "top": "ground",
+   "ladder_on": "s"
+  },
+  {
+   "id": "adit",
+   "op": "tunnel",
+   "mouths": [
+    0
+   ],
+   "pts": [
+    [
+     60,
+     40,
+     100,
+     1.7
+    ],
+    [
+     68,
+     37,
+     100,
+     2.0
+    ],
+    [
+     80,
+     33,
+     98,
+     2.4
+    ],
+    [
+     87,
+     29,
+     96,
+     2.2
+    ]
+   ],
+   "breach": true,
+   "dress": {
+    "seed": 22,
+    "stalagmites": 40,
+    "ores": 40
+   }
+  }
+ ],
+ "volume": [
+  {
+   "id": "brig",
+   "op": "arch",
+   "line": {
+    "pts": [
+     [
+      64,
+      44
+     ],
+     [
+      64,
+      80
+     ]
+    ],
+    "spline": false
+   },
+   "width": 6,
+   "deck": [
+    43,
+    42,
+    2
+   ],
+   "camber": 0,
+   "thick": [
+    2,
+    12,
+    3
+   ],
+   "clear": 3,
+   "top": "GRAVEL",
+   "under": "STONE",
+   "rock": "STONE"
+  }
+ ],
+ "build": [
+  {
+   "id": "h-town",
+   "op": "house",
+   "at": [
+    14,
+    18
+   ],
+   "heading": 0,
+   "L": 9,
+   "W": 6,
+   "storeys": 2,
+   "style": "town",
+   "door": 1
+  },
+  {
+   "id": "h-plaster",
+   "op": "house",
+   "at": [
+    36,
+    18
+   ],
+   "heading": 0,
+   "L": 9,
+   "W": 6,
+   "storeys": 2,
+   "style": "plaster",
+   "door": 1
+  },
+  {
+   "id": "h-brick",
+   "op": "house",
+   "at": [
+    58,
+    18
+   ],
+   "heading": 0,
+   "L": 9,
+   "W": 6,
+   "storeys": 2,
+   "style": "brick",
+   "door": 1
+  },
+  {
+   "id": "h-stone",
+   "op": "house",
+   "at": [
+    80,
+    18
+   ],
+   "heading": 0,
+   "L": 9,
+   "W": 6,
+   "storeys": 2,
+   "style": "stone",
+   "door": 1
+  },
+  {
+   "id": "h-brick-low",
+   "op": "house",
+   "at": [
+    100,
+    18
+   ],
+   "heading": 90,
+   "L": 9,
+   "W": 6,
+   "storeys": 1,
+   "style": "brick",
+   "door": 1
+  },
+  {
+   "id": "chapel-n",
+   "op": "wall",
+   "line": [
+    [
+     100,
+     90
+    ],
+    [
+     112,
+     90
+    ]
+   ],
+   "height": 6,
+   "crown": "level",
+   "blocks": [
+    [
+     "STONEBRICK",
+     0
+    ],
+    [
+     "STONEBRICK",
+     2
+    ]
+   ],
+   "weights": [
+    6,
+    1
+   ]
+  },
+  {
+   "id": "chapel-e",
+   "op": "wall",
+   "line": [
+    [
+     112,
+     90
+    ],
+    [
+     112,
+     104
+    ]
+   ],
+   "height": 4,
+   "crown": "level",
+   "blocks": [
+    [
+     "STONEBRICK",
+     0
+    ],
+    [
+     "STONEBRICK",
+     2
+    ]
+   ],
+   "weights": [
+    6,
+    1
+   ]
+  },
+  {
+   "id": "chapel-s",
+   "op": "wall",
+   "line": [
+    [
+     112,
+     104
+    ],
+    [
+     100,
+     104
+    ]
+   ],
+   "height": 3,
+   "crown": "level",
+   "blocks": [
+    [
+     "STONEBRICK",
+     0
+    ],
+    [
+     "STONEBRICK",
+     2
+    ]
+   ],
+   "weights": [
+    6,
+    1
+   ],
+   "gap": [
+    7,
+    3
+   ]
+  },
+  {
+   "id": "chapel-w",
+   "op": "wall",
+   "line": [
+    [
+     100,
+     104
+    ],
+    [
+     100,
+     90
+    ]
+   ],
+   "height": 5,
+   "crown": "level",
+   "blocks": [
+    [
+     "STONEBRICK",
+     0
+    ],
+    [
+     "STONEBRICK",
+     2
+    ]
+   ],
+   "weights": [
+    6,
+    1
+   ]
+  },
+  {
+   "id": "shaft-roof",
+   "op": "blocks",
+   "boxes": [
+    {
+     "box": [
+      104,
+      41,
+      95,
+      104,
+      43,
+      95
+     ],
+     "block": "SPRUCE_FENCE"
+    },
+    {
+     "box": [
+      108,
+      41,
+      95,
+      108,
+      43,
+      95
+     ],
+     "block": "SPRUCE_FENCE"
+    },
+    {
+     "box": [
+      104,
+      41,
+      99,
+      104,
+      43,
+      99
+     ],
+     "block": "SPRUCE_FENCE"
+    },
+    {
+     "box": [
+      108,
+      41,
+      99,
+      108,
+      43,
+      99
+     ],
+     "block": "SPRUCE_FENCE"
+    },
+    {
+     "box": [
+      104,
+      44,
+      95,
+      108,
+      44,
+      99
+     ],
+     "block": [
+      "WOOD_SLAB",
+      1
+     ]
+    }
+   ]
+  },
+  {
+   "id": "monument",
+   "op": "blocks",
+   "boxes": [
+    {
+     "box": [
+      122,
+      44,
+      97,
+      122,
+      46,
+      97
+     ],
+     "block": "OBSIDIAN"
+    }
+   ]
+  },
+  {
+   "id": "adit-timber",
+   "op": "blocks",
+   "boxes": [
+    {
+     "box": [
+      64,
+      40,
+      98,
+      64,
+      42,
+      98
+     ],
+     "block": [
+      "LOG",
+      1
+     ]
+    },
+    {
+     "box": [
+      64,
+      40,
+      102,
+      64,
+      42,
+      102
+     ],
+     "block": [
+      "LOG",
+      1
+     ]
+    },
+    {
+     "box": [
+      64,
+      43,
+      97,
+      64,
+      43,
+      103
+     ],
+     "block": [
+      "LOG",
+      9
+     ]
+    },
+    {
+     "box": [
+      66,
+      40,
+      98,
+      66,
+      42,
+      98
+     ],
+     "block": [
+      "LOG",
+      1
+     ]
+    },
+    {
+     "box": [
+      66,
+      40,
+      102,
+      66,
+      42,
+      102
+     ],
+     "block": [
+      "LOG",
+      1
+     ]
+    },
+    {
+     "box": [
+      66,
+      43,
+      98,
+      66,
+      43,
+      102
+     ],
+     "block": [
+      "LOG",
+      9
+     ]
+    }
+   ]
+  }
+ ],
+ "dress": [
+  {
+   "id": "copse",
+   "op": "trees",
+   "on": "ground",
+   "area": {
+    "ellipse": {
+     "at": [
+      150,
+      60
+     ],
+     "rx": 22,
+     "rz": 12
+    }
+   },
+   "kinds": {
+    "oak": 3,
+    "birch": 1
+   },
+   "tries": 40,
+   "seed": 4,
+   "spacing": 2.0
+  },
+  {
+   "id": "shelf-trees",
+   "op": "trees",
+   "on": "shelf",
+   "area": {
+    "board": {}
+   },
+   "kinds": {
+    "oak": 1
+   },
+   "tries": 8,
+   "seed": 5,
+   "spacing": 2.2
+  }
+ ]
+}
