@@ -430,6 +430,25 @@ class Renewables:
         doc.add(E("renewables", E("renewable", **attrs)))
 
 
+@dataclass
+class Tnt:
+    """How TNT behaves: `instant` lights it as it is placed, `damage` lets its blast break blocks (each block still
+    passing the map's block-break rules), `yield_` is the share of broken blocks that drop, `power` the blast's
+    size (4 is the game's), `fuse` its time to go off."""
+    instant: bool = True
+    damage: bool = True
+    yield_: float = None
+    power: float = None
+    fuse: str = None
+
+    def write(self, doc):
+        on = {True: "on", False: "off"}
+        kids = [E("instantignite", text=on[self.instant]), E("blockdamage", text=on[self.damage])]
+        kids += [E(tag, text=v) for tag, v in (("yield", self.yield_), ("power", self.power), ("fuse", self.fuse))
+                 if v is not None]
+        doc.add(E("tnt", *kids))
+
+
 # ---- placed things that are not objectives ---------------------------------------------------------------------------
 @dataclass
 class Spawner(Objective):

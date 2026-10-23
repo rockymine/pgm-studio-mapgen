@@ -1,7 +1,7 @@
-# Holding a goal: the studio's approaches, turned on their side, and the late game
+# Holding a goal: the studio's approaches, a board under a roof, and the late game
 
-**This note carries the studio's model of a goal's approach into pgmvox, turns it vertical, and measures what keeps a
-goal's door a door as a match goes on.** It answers the author's review of Hollowstack: a wool must always be
+**This note carries the studio's model of a goal's approach into pgmvox, puts a whole board under a roof, and
+measures what keeps a goal's door a door as a match goes on.** It answers the author's review of Hollowstack: a wool must always be
 defensible, and on that board one was not. It starts from `pgm-studio/docs/generator/model.md` §4–§5 and
 `pgm-studio/docs/gameplay/match-flow.md` §4–§6, and every number in it is read off a built world.
 
@@ -28,7 +28,8 @@ an attacker chooses between them; ground all round a room leaves nothing to hold
 | Module | What it does |
 |---|---|
 | `plan.approach` | the eight forms as part-named templates; `classify` reads a form back from its cells by the generator's own decision tree; `doors` counts the ways in; `walls` seats the defence walls by §5.14's rule |
-| `built.chambers` | lays an approach underground: every part a chamber, the chain stepping down a storey a part from its host to its room, ramps a block a step with a stair on each, the form's voids cut as shafts to the void, its walls in bedrock |
+| `built.chambers` | **the rejected way down**: lays an approach as a chain of chambers stepping down a storey a part; kept for the study in §6, not for boards (§5) |
+| `plan.bunker`, `built.bunker` | a board the studio composed, read as a bunker under a roof and laid: its land islands, its build regions void, its holes pillars, its rooms sealed (§5) |
 | `read.late` | a goal's walk in a long match's four phases (ground, bridged, sky, dug), and in each whether walling the room's doors shuts it off |
 | `play.rules` | `Build(break_only=...)` keeps the void rule and lets a player break only those materials; `Crafting(disable=...)` takes recipes away; `Renewables(...)` makes ground grow back |
 
@@ -65,21 +66,30 @@ so the sky layer is the projection of the land onto the ceiling. And the kit's p
 terrain, every route to a goal is a route the map drew; the walls are fought at as walls; and the sky and dug phases
 are the ground phase with building added, not a second map.
 
-## 5. The same in the vertical
+## 5. Under a roof
 
-**Underground, the measures are the shape of the map rather than rules laid over it.** The roof is the build
-height, the rock is what may not be broken, and the shafts are the void that is no build zone. `built.chambers`
-lays an approach so: its host on top, each part a storey lower, its room at the bottom, its voids open to the
-world's floor.
+**The author ruled out the chain of chambers: a map is not made better by being moved underground.** Narrow
+corridors are shut by the defence with a few blocks, a parapet over a shaft takes away the fall the shaft is there
+for, and a mass of rock round an approach is something to build round unless the rock is the edge of play. What the
+author's concept is instead is an image of a normal map under a roof, the same size as one.
 
-**A whole side is a stack of such chains.** The spawn hall is the top storey; under it a hub cavern, the host every
-approach docks on; the approaches step down from the hub to their rooms; and the front line is a gallery on a
-shaft between the teams, the one place a player builds over void. The match then has the ground game the
-generator was built for, at every hour of it: a funnel, a wall, a door.
+**The concept is four exchanges, and `plan.bunker` makes them on any composed board.** The land is islands standing
+in the void. A build region stays void, crossed by bridging, and a fall is a death. An enclosed void, the hole a
+ring or a donut leaves, is a pillar of bedrock from the floor to the roof: the negative of the hole, stopping sight
+as well as movement. The world outside is rock, the edge of play, with a moat of void along every shore.
 
-**A sealed door is a fight, not a stalemate, as long as the seal is breakable.** Defenders can build a corridor shut
-to its roof; the seal is the kit's wood, which is the one thing an attacker may break. Two-door forms (donut, U, H,
-clamp) and doors two cells wide keep one seal from closing a goal.
+**A generated board has one island a team, and a bunker lives from its gaps, so the board is cut.** The cut is the
+generator's own isolation cut (model.md §6.2): a wool's approach and the frontline are each cut from the rest of the
+team's land by two cells of void. A wool room is rock with its seal on the void, the land in front of it cut back.
+
+**The author judged Frostvault, the first board drawn so, a miss, and three rules come out of it.** A pillar stands
+alone in the void with a gap all round it, never on land, so a hole in the land is not a pillar. A defence wall is
+not raised to the roof. And a layout for the concept is drawn from the void outward, not taken from the generator's
+land with holes in it (`reports/frostvault.md` §6).
+
+**The roof is the measure that closes the late game, and it closes it by construction.** The sky phase is building
+on every column to the build height, and under a roof that height is 24 blocks over the floors: there is no sky
+route that is not a bridge. The seal is the door, and only a blast breaks it.
 
 ## 6. What was measured
 
@@ -87,11 +97,30 @@ clamp) and doors two cells wide keep one seal from closing a goal.
 column that is not void built on to the build height, the sky; and with every block a player may break taken out,
 the dug limit. In each it walls the room's doors and walks again: a door holds where the goal is then shut off.
 
-The approach study (`freeform/lib/studies/approaches/`) lays all eight forms underground in one block of rock, its
-roof at y 72, and walks each from its host's floor to its room under CTW's usual rules (everything breaks, building
-to y 96) and held rules (nothing of the rock breaks, building to the roof):
+The approach study (`freeform/lib/studies/approaches/`) lays all eight forms as the rejected chamber chains in one
+block of rock, its roof at y 72, and walks each from its host's floor to its room under CTW's usual rules
+(everything breaks, building to y 96) and held rules (nothing of the rock breaks, building to the roof):
 
-STUDY
+| Form | ground | bridged | sky | dug, usual | door holds, usual | door holds, held |
+|---|---|---|---|---|---|---|
+| I, L, Z | — | — | 33, 52, 52 | the same | sky | sky, dug |
+| scythe | 74 | 74 | 74 | 24 | ground, bridged, sky | all four |
+| clamp, U, H, donut | 31, 38, 45, 66 | the same | the same | the same | ground, bridged, sky | all four |
+
+**Under the usual rules a scythe's door is dug round in 24 moves against 74 walked; under held rules no door is
+gone round.** The I, L and Z read nothing on the ground because their chains climb out of the host by more than a
+step, which is a fault of the chamber layout and one more reason it was dropped.
+
+The two bunker boards walk a team's spawn to the enemy's wool, the seal and its screen walled as the door:
+
+| Board | Seal standing: ground, bridged, sky, dug | Seal blown: ground, bridged, sky, dug | Door holds |
+|---|---|---|---|
+| Coldstore, the author's quarter finished | not reached in any | —, 209, 209, 209 | bridged, sky, dug |
+| Frostvault, a composed board as a bunker, the nearer wool | not reached in any | —, 243, 243, 243 | bridged, sky, dug |
+| Frostvault, the farther wool | not reached in any | —, 348, 348, 348 | bridged, sky, dug |
+
+**The sky is never shorter than the bridge, and nothing goes round a seal.** That is the roof and the bedrock doing
+what the rules of §4 do on an open board, without a rule to state them.
 
 On Hollowstack, red's walk from its spawn to blue's Vault monument, the Vault's 36 blocks of door walled:
 
@@ -123,6 +152,7 @@ the door question: an open board answers it with its rules, an underground one w
   going round takes; a weighted walk would answer the second.
 - The phases are limits, not a match. Population, the order things are built in and the fight at a seal are not in
   them; the recorded matches are the only measure of those (match-flow §6).
-- A full vertical board composed from the model, a side's stack of approaches under one roof, is the next build.
+- How much TNT a seal takes, and whether ten blocks of void is the right cut, are numbers a played match gives;
+  the author's recorded matches (match-flow §6) are the measure to hold them to.
 - A ceiling per region (building allowed higher over a team's own base than over the middle) is a measure PGM can
   express with `apply block-place` over a region above a height; pgmvox does not write it yet.

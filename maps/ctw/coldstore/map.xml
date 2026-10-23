@@ -1,0 +1,295 @@
+<map proto="1.5.0">
+    <name>Coldstore</name>
+    <version>1.0.0</version>
+    <objective>Blow open the enemy's wool rooms and bring their two wools home.</objective>
+    <gamemode>ctw</gamemode>
+    <include id="gapple-kill-reward"/>
+    <authors>
+        <author>Claude (freeform generator, on pgmvox)</author>
+    </authors>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="stone sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true"/>
+            <item slot="2" material="iron pickaxe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="3" material="iron axe" unbreakable="true"/>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="tnt" amount="16"/>
+            <item slot="6" material="glass" amount="32"/>
+            <item slot="7" material="golden apple"/>
+            <item slot="8" material="wood" amount="64"/>
+            <item slot="28" material="arrow" amount="32"/>
+            <item slot="29" material="iron spade" unbreakable="true"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true"/>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true"/>
+            <leggings material="leather leggings" unbreakable="true" team-color="true"/>
+            <boots material="leather boots" unbreakable="true" team-color="true"/>
+        </kit>
+    </kits>
+    <teams>
+        <team id="blue-team" color="blue" max="16">Blue</team>
+        <team id="red-team" color="red" max="16">Red</team>
+    </teams>
+    <filters>
+        <team id="only-blue">blue-team</team>
+        <not id="not-blue">
+            <team>blue-team</team>
+        </not>
+        <team id="only-red">red-team</team>
+        <not id="not-red">
+            <team>red-team</team>
+        </not>
+        <any id="woolroom-materials">
+            <material>wood</material>
+            <material>stained clay</material>
+            <material>web</material>
+            <all>
+                <cause>player</cause>
+                <any>
+                    <material>water</material>
+                    <material>stationary water</material>
+                </any>
+            </all>
+        </any>
+        <all id="blues-woolrooms-filter">
+            <filter id="not-blue"/>
+            <filter id="woolroom-materials"/>
+        </all>
+        <all id="reds-woolrooms-filter">
+            <filter id="not-red"/>
+            <filter id="woolroom-materials"/>
+        </all>
+        <any id="may-break">
+            <material>wood</material>
+            <material>tnt</material>
+            <material>glass</material>
+            <material>ladder</material>
+            <material>snow block</material>
+            <material>snow</material>
+            <material>packed ice</material>
+            <material>ice</material>
+            <material>gravel</material>
+            <material>stained glass</material>
+            <all>
+                <material>end stone</material>
+                <cause>explosion</cause>
+            </all>
+        </any>
+    </filters>
+    <spawns>
+        <spawn team="blue-team" kit="spawn-kit" yaw="-90">
+            <region>
+                <cuboid min="-100,18,-3" max="-95,19,3"/>
+            </region>
+        </spawn>
+        <spawn team="red-team" kit="spawn-kit" yaw="90">
+            <region>
+                <cuboid min="95,18,-3" max="100,19,3"/>
+            </region>
+        </spawn>
+        <default yaw="90">
+            <region>
+                <point>1,39,1</point>
+            </region>
+        </default>
+    </spawns>
+    <regions>
+        <cuboid min="-101,18,-5" max="-92,24,5" id="blue-spawn"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="blue-spawn" message="You may not build in a spawn!"/>
+        <cuboid min="92,18,-5" max="101,24,5" id="red-spawn"/>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy spawn!"/>
+        <apply block="never" region="red-spawn" message="You may not build in a spawn!"/>
+        <block id="purple-blue-monument">-87,18,2</block>
+        <cuboid min="84,28,27" max="87,32,33" id="purple-room"/>
+        <apply enter="not-red" region="purple-room" message="You may not enter your own wool room!"/>
+        <point id="purple-wool-spawn">85.5,29,30.5</point>
+        <block id="orange-red-monument">86,18,2</block>
+        <cuboid min="-87,28,27" max="-84,32,33" id="orange-room"/>
+        <apply enter="not-blue" region="orange-room" message="You may not enter your own wool room!"/>
+        <point id="orange-wool-spawn">-85.5,29,30.5</point>
+        <block id="yellow-blue-monument">-87,18,-3</block>
+        <cuboid min="84,28,-33" max="87,32,-27" id="yellow-room"/>
+        <apply enter="not-red" region="yellow-room" message="You may not enter your own wool room!"/>
+        <point id="yellow-wool-spawn">85.5,29,-30.5</point>
+        <block id="lime-red-monument">86,18,-3</block>
+        <cuboid min="-87,28,-33" max="-84,32,-27" id="lime-room"/>
+        <apply enter="not-blue" region="lime-room" message="You may not enter your own wool room!"/>
+        <point id="lime-wool-spawn">-85.5,29,-30.5</point>
+        <cuboid min="-82,25,27" max="-72,36,33" id="blue-south-seal-region"/>
+        <cuboid min="72,25,27" max="82,36,33" id="red-south-seal-region"/>
+        <cuboid min="-82,25,-33" max="-72,36,-27" id="blue-north-seal-region"/>
+        <cuboid min="72,25,-33" max="82,36,-27" id="red-north-seal-region"/>
+        <union id="blues-woolrooms">
+            <region id="orange-room"/>
+            <region id="lime-room"/>
+        </union>
+        <apply block="blues-woolrooms-filter" region="blues-woolrooms" message="You may not edit the wool room!"/>
+        <union id="reds-woolrooms">
+            <region id="purple-room"/>
+            <region id="yellow-room"/>
+        </union>
+        <apply block="reds-woolrooms-filter" region="reds-woolrooms" message="You may not edit the wool room!"/>
+        <union id="blue-pocket">
+            <cuboid min="-90,18,5" max="-72,42,25"/>
+            <cuboid min="-90,18,-25" max="-72,42,-5"/>
+        </union>
+        <apply block-place="not-blue" region="blue-pocket" message="Your team may not build beside its own spawn!"/>
+        <union id="red-pocket">
+            <cuboid min="72,18,5" max="90,42,25"/>
+            <cuboid min="72,18,-25" max="90,42,-5"/>
+        </union>
+        <apply block-place="not-red" region="red-pocket" message="Your team may not build beside its own spawn!"/>
+        <apply block-break="may-break" message="Only what was built, the drifts and the seals break here!"/>
+        <union id="drifts">
+            <cuboid min="-90,18,0" max="-61,22,5"/>
+            <cuboid min="-90,18,-5" max="-61,22,0"/>
+            <cuboid min="61,18,0" max="90,22,5"/>
+            <cuboid min="61,18,-5" max="90,22,0"/>
+            <cuboid min="-71,18,0" max="-61,22,15"/>
+            <cuboid min="-71,18,-15" max="-61,22,0"/>
+            <cuboid min="61,18,0" max="71,22,15"/>
+            <cuboid min="61,18,-15" max="71,22,0"/>
+            <cuboid min="-31,18,25" max="-19,22,44"/>
+            <cuboid min="-31,18,-44" max="-19,22,-25"/>
+            <cuboid min="19,18,25" max="31,22,44"/>
+            <cuboid min="19,18,-44" max="31,22,-25"/>
+            <cuboid min="-20,18,34" max="-10,22,44"/>
+            <cuboid min="-20,18,-44" max="-10,22,-34"/>
+            <cuboid min="10,18,34" max="20,22,44"/>
+            <cuboid min="10,18,-44" max="20,22,-34"/>
+            <cuboid min="-24,18,44" max="-16,22,52"/>
+            <cuboid min="-24,18,-52" max="-16,22,-44"/>
+            <cuboid min="16,18,44" max="24,22,52"/>
+            <cuboid min="16,18,-52" max="24,22,-44"/>
+        </union>
+        <cuboid min="-84,28,29" max="-83,32,31" id="fill-1"/>
+        <cuboid min="-84,28,-31" max="-83,32,-29" id="fill-2"/>
+        <cuboid min="83,28,29" max="84,32,31" id="fill-3"/>
+        <cuboid min="83,28,-31" max="84,32,-29" id="fill-4"/>
+    </regions>
+    <wools craftable="false">
+        <wool team="blue-team" color="purple" monument="purple-blue-monument" location="85.5,28,30.5"/>
+        <wool team="red-team" color="orange" monument="orange-red-monument" location="-85.5,28,30.5"/>
+        <wool team="blue-team" color="yellow" monument="yellow-blue-monument" location="85.5,28,-30.5"/>
+        <wool team="red-team" color="lime" monument="lime-red-monument" location="-85.5,28,-30.5"/>
+    </wools>
+    <spawners>
+        <spawner spawn-region="purple-wool-spawn" player-region="purple-room" delay="1.5s">
+            <item material="wool" damage="10"/>
+        </spawner>
+        <spawner spawn-region="orange-wool-spawn" player-region="orange-room" delay="1.5s">
+            <item material="wool" damage="1"/>
+        </spawner>
+        <spawner spawn-region="yellow-wool-spawn" player-region="yellow-room" delay="1.5s">
+            <item material="wool" damage="4"/>
+        </spawner>
+        <spawner spawn-region="lime-wool-spawn" player-region="lime-room" delay="1.5s">
+            <item material="wool" damage="5"/>
+        </spawner>
+    </spawners>
+    <destroyables>
+        <destroyable id="blue-south-seal" name="South Seal" owner="blue-team" materials="end stone" completion="90%" mode-changes="true" required="false" region="blue-south-seal-region"/>
+        <destroyable id="red-south-seal" name="South Seal" owner="red-team" materials="end stone" completion="90%" mode-changes="true" required="false" region="red-south-seal-region"/>
+        <destroyable id="blue-north-seal" name="North Seal" owner="blue-team" materials="end stone" completion="90%" mode-changes="true" required="false" region="blue-north-seal-region"/>
+        <destroyable id="red-north-seal" name="North Seal" owner="red-team" materials="end stone" completion="90%" mode-changes="true" required="false" region="red-north-seal-region"/>
+    </destroyables>
+    <tnt>
+        <instantignite>on</instantignite>
+        <blockdamage>on</blockdamage>
+    </tnt>
+    <crafting>
+        <disable>crafting table</disable>
+    </crafting>
+    <renewables>
+        <renewable region="drifts" avoid-players="4" rate="0.5" grow="true"/>
+    </renewables>
+    <actions>
+        <trigger scope="match">
+            <filter>
+                <completed>blue-south-seal</completed>
+            </filter>
+            <action>
+                <fill region="fill-1" material="air"/>
+            </action>
+        </trigger>
+        <trigger scope="match">
+            <filter>
+                <completed>blue-north-seal</completed>
+            </filter>
+            <action>
+                <fill region="fill-2" material="air"/>
+            </action>
+        </trigger>
+        <trigger scope="match">
+            <filter>
+                <completed>red-south-seal</completed>
+            </filter>
+            <action>
+                <fill region="fill-3" material="air"/>
+            </action>
+        </trigger>
+        <trigger scope="match">
+            <filter>
+                <completed>red-north-seal</completed>
+            </filter>
+            <action>
+                <fill region="fill-4" material="air"/>
+            </action>
+        </trigger>
+    </actions>
+    <maxbuildheight>42</maxbuildheight>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>tnt</material>
+                    <material>glass</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>stone sword</item>
+        <item>bow</item>
+        <item>iron pickaxe</item>
+        <item>iron axe</item>
+        <item>golden apple</item>
+        <item>iron spade</item>
+        <item>wood</item>
+        <item>tnt</item>
+        <item>glass</item>
+        <item>arrow</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>leather leggings</item>
+        <item>leather boots</item>
+        <item>end stone</item>
+    </itemremove>
+    <toolrepair>
+        <tool>stone sword</tool>
+        <tool>bow</tool>
+        <tool>iron pickaxe</tool>
+        <tool>iron axe</tool>
+        <tool>iron spade</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16"/>
+            <item material="tnt" amount="16"/>
+            <item material="glass" amount="16"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+</map>
+
