@@ -1,6 +1,7 @@
 """Under the ground: caves, mines and shafts, carved into a built world.
 
     tunnel(w, [(x, floor_y, z, r), ...], ground=H)      # a cave passage with a level floor, under the surface
+    wander([(x, floor_y, z), ...], r=(2.2, 3.2))         # its waypoints, swung sideways and breathing in width
     chamber(w, cx, floor_y, cz, rx, h, ground=H)         # a hall in it
     dress_cave(w, box, ground=H, rng=r)                  # gravel and clay floors, stalactites, stalagmites, ore
     line = gallery_line([(x, y, z), ...])                # a mine's cells, its floor changing a block a step at most
@@ -74,6 +75,35 @@ def tunnel(w, pts, ground=None, cover=3, keep=None, lift=0.45):
     def floor(x, z):
         return int(round(np.interp(nearest_on(plan, x, z)[1], arc, [p[1] for p in pts])))
     return carve(w, tube.cells(), floor, ground, cover, keep), floor
+
+
+def wander(points, r=(2.2, 3.2), swing=2.2, step=3.0, seed=0, mouth=None):
+    """Tunnel waypoints [x, floor y, z, radius] along stated points [(x, floor y, z)]: every `step` blocks a
+    waypoint, the plan swung sideways by two sine waves of random phase faded to nothing at each stated point (so
+    a mouth or a joint stays where it is said to be), the radius breathing between r[0] and r[1], and the floor
+    running straight between the stated points. A `mouth` radius opens the first point that wide and narrows to
+    the passage over the next three."""
+    rng = np.random.default_rng(seed)
+    ph = rng.uniform(0, 2 * math.pi, 4)
+    out = []
+    for (x0, y0, z0), (x1, y1, z1) in zip(points, points[1:]):
+        d = math.hypot(x1 - x0, z1 - z0)
+        n = max(2, int(round(d / step)))
+        nx, nz = -(z1 - z0) / d, (x1 - x0) / d
+        for j in range(n):
+            t = j / n
+            s = len(out) * step
+            fade = math.sin(math.pi * t)
+            off = swing * fade * (0.65 * math.sin(s / 7.0 + ph[0]) + 0.35 * math.sin(s / 3.1 + ph[1]))
+            rad = r[0] + (r[1] - r[0]) * (0.5 + 0.5 * math.sin(s / 5.3 + ph[2]) * math.cos(s / 8.9 + ph[3]))
+            out.append([round(x0 + (x1 - x0) * t + nx * off, 2), round(y0 + (y1 - y0) * t, 2),
+                        round(z0 + (z1 - z0) * t + nz * off, 2), round(rad, 2)])
+    x, y, z = points[-1]
+    out.append([x, y, z, r[0]])
+    if mouth:
+        for j in range(min(4, len(out))):
+            out[j][3] = round(max(out[j][3], mouth - (mouth - out[j][3]) * j / 3), 2)
+    return out
 
 
 def chamber(w, cx, floor_y, cz, rx, h, rz=None, ground=None, cover=3, keep=None):

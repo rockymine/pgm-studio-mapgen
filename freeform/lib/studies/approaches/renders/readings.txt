@@ -1,0 +1,28 @@
+form     reads    doors  walls  shafts
+
+I        I            1      1       0
+L        L            1      1       0
+Z        Z            1      1       0
+scythe   scythe       1      1       3
+clamp    clamp        2      2       3
+U        U            2      2       3
+H        H            2      2       3
+donut    donut        2      2       6
+
+                                     ground  bridged      sky      dug   door holds in
+I - usual rules                           -        -       33       33   sky
+I - held rules                            -        -       33       33   sky, dug
+L - usual rules                           -        -       52       52   sky
+L - held rules                            -        -       52       52   sky, dug
+Z - usual rules                           -        -       52       52   sky
+Z - held rules                            -        -       52       52   sky, dug
+scythe - usual rules                     74       74       74       24   ground, bridged, sky
+scythe - held rules                      74       74       74       74   ground, bridged, sky, dug
+clamp - usual rules                      31       31       31       31   ground, bridged, sky
+clamp - held rules                       31       31       31       31   ground, bridged, sky, dug
+U - usual rules                          38       38       38       38   ground, bridged, sky
+U - held rules                           38       38       38       38   ground, bridged, sky, dug
+H - usual rules                          45       45       45       45   ground, bridged, sky
+H - held rules                           45       45       45       45   ground, bridged, sky, dug
+donut - usual rules                      66       66       66       66   ground, bridged, sky
+donut - held rules                       66       66       66       66   ground, bridged, sky, dug

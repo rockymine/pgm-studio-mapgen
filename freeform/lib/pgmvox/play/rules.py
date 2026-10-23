@@ -216,8 +216,9 @@ class Build:
     block 36); `void` False lets a player build anywhere; `never` refuses it everywhere, and `use` False refuses
     using a block too; `only` lets a player place and break those materials and nothing else, and `physics` False
     holds every block as it is; `breakable` lets those materials be broken and nothing be placed; `rule` is a filter
-    every block placed or broken must pass. `max_height` is the build height. The world carries the marks the void
-    rule reads: `mark_ground` lays them."""
+    every block placed or broken must pass. `max_height` is the build height. `break_only` keeps the void rule and
+    lets a player break those materials and nothing else, so the ground the map was built with stays: no pit, no
+    tunnel, no middle dug to bedrock. The world carries the marks the void rule reads: `mark_ground` lays them."""
     areas: list = field(default_factory=list)
     holes: list = field(default_factory=list)
     max_height: int = None
@@ -229,8 +230,12 @@ class Build:
     breakable: tuple = ()
     rule: object = None
     message: str = None
+    break_only: tuple = ()
 
     def write(self, doc):
+        if self.break_only:                              # first, so it decides every break before the void rule
+            doc.filter("break-only", E("any", [E("material", text=m) for m in self.break_only]))
+            doc.apply(block_break="break-only", message="You may only break what was built!")
         if self.never:
             doc.apply(block="never", use=None if self.use else "never", message=self.message)
         elif self.rule is not None:
@@ -390,6 +395,39 @@ class KillHeight:
         else:
             doc.child("portals").append(E("portal", E("region", below_el(self.y)), y=f"@{self.to}", sound=False,
                                           observers="never"))
+
+
+@dataclass
+class Crafting:
+    """Recipes nobody may craft: `disable` names the results. A board that disables the crafting table, and holds
+    none, leaves nothing to make a fence, a fence gate, iron bars or stairs from a kit's planks: the anti-climb
+    staircases and the fence-gate crowns of a late match are not built."""
+    disable: tuple = ("crafting table",)
+
+    def write(self, doc):
+        doc.add(E("crafting", [E("disable", text=m) for m in self.disable]))
+
+
+@dataclass
+class Renewables:
+    """Ground that grows back: each box in `boxes` returns to the world it was built as, `rate` blocks a second
+    over its whole volume, never within `avoid` blocks of a player; `grow` lets it come back only next to what
+    already stands. A pit dug in front of a wall and a middle dug to bedrock fill in again."""
+    boxes: list
+    rate: float = 1.0
+    avoid: int = 3
+    grow: bool = True
+    id: str = "renews"
+
+    def write(self, doc):
+        rid = doc.region(self.id, union(*[b.cuboid() for b in self.boxes]) if len(self.boxes) > 1
+                         else self.boxes[0].cuboid())
+        attrs = {"region": rid, "avoid-players": self.avoid}
+        if self.rate != 1.0:
+            attrs["rate"] = self.rate
+        if self.grow:
+            attrs["grow"] = "true"
+        doc.add(E("renewables", E("renewable", **attrs)))
 
 
 # ---- placed things that are not objectives ---------------------------------------------------------------------------

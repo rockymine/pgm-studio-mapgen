@@ -2727,3 +2727,163 @@ class Grammar(unittest.TestCase):
         self.assertEqual(w.get(3, 18, 2), (B.STONE, 0))                       # a tread at its own top
         self.assertEqual(w.get(3, 19, 2), (B.QUARTZ_STAIRS, stair("n")))     # its nosing, rising to the next
         self.assertEqual((w.get(1, 19, 2), w.get(5, 19, 2)), ((B.QUARTZ, 1), (B.QUARTZ, 1)))   # the cheeks
+
+
+class Segments(unittest.TestCase):
+    """The segment kit: a plan of corridors, a stair, a ladder shaft and rooms laid in rock, walked end to end with
+    room over every head, and the network search reaching what it is asked to."""
+
+    @staticmethod
+    def plan():
+        from pgmvox.built import segments as S
+        p = S.Plan()
+        for a, b in (((0, 1), (1, 1)), ((1, 1), (2, 1)), ((1, 1), (1, 0)), ((2, 1), (3, 1))):
+            p.link((*a, 0), (*b, 0))
+        p.stair((3, 1, 0), "e")                                    # into (4, 1, 1)
+        p.link((4, 1, 1), (5, 1, 1))
+        p.room("hall", 6, 0, 7, 1, 1)
+        p.link((5, 1, 1), (6, 1, 1))
+        p.shaft(0, 2, 0, 1, "w")
+        p.link((0, 1, 0), (0, 2, 0))
+        p.link((0, 2, 1), (1, 2, 1))
+        return p
+
+    def lay(self, kit):
+        from pgmvox.built import segments as S
+        w = World(-2, -2, 50, 20, 48)
+        w.ids[:, 1:40, :] = B.STONE
+        g = S.Grid(0, 10, 0)
+        p = self.plan()
+        S.lay(w, g, p, kit, np.random.default_rng(1))
+        return w, g, p
+
+    def test_every_piece_is_walked_and_keeps_air_over_every_head(self):
+        from pgmvox.built import segments as S
+        from pgmvox.read.walk import MoveRules, nearest, standing, walk
+        for kit in (S.DUNGEON, S.MINE):
+            w, g, p = self.lay(kit)
+            d = walk(w.ids, [g.centre(0, 1, 0)], w.x0, w.z0, MoveRules(max_drop=3, jumps=False))
+            for c in ((7, 1, 1), (1, 2, 1), (1, 0, 0)):                 # up the stair, up the shaft, a dead end
+                self.assertIsNotNone(nearest(d, w.x0, w.z0, *g.centre(*c), r=1), (kit["name"], c))
+            st, _ = standing(w.ids)
+            for c in p.taken():
+                x0, y0, z0 = g.corner(*c)
+                for x in range(x0 + 1, x0 + 4):
+                    for z in range(z0 + 1, z0 + 4):
+                        for y in range(y0 + 1, y0 + 6):
+                            i, k = x - w.x0, z - w.z0
+                            if st[i, y, k] and d[i, y, k] >= 0:
+                                clear = 0
+                                while w.ids[i, y + clear, k] in (B.AIR, B.TORCH, B.RAIL, B.LADDER, B.COBWEB):
+                                    clear += 1
+                                self.assertGreaterEqual(clear, 4, (kit["name"], x, y, z))
+
+    def test_a_stair_rises_a_storey_a_block_a_step(self):
+        from pgmvox.built import segments as S
+        w, g, p = self.lay(S.DUNGEON)
+        x, y, z = g.corner(3, 1, 0)
+        tops = [max(yy for yy in range(y, y + 7) if w.id(x + q, yy, z + 2) != B.AIR) for q in range(1, 9)]
+        self.assertEqual(tops, [y, y + 1, y + 2, y + 3, y + 4, y + 5, y + 6, y + 6])
+        self.assertEqual(w.id(x + 3, y + 2, z + 2), B.STONEBRICK_STAIRS)
+
+    def test_the_network_joins_every_needed_cell_and_runs_straight(self):
+        from pgmvox.built import segments as S
+        free = {(i, j, 0) for i in range(12) for j in range(8)} - {(5, j, 0) for j in range(1, 8)}
+        need = {(0, 0, 0), (11, 7, 0), (0, 7, 0), (11, 0, 0)}
+        links = S.network(free, need, np.random.default_rng(3))
+        cells = {c for e in links for c in e}
+        self.assertTrue(need <= cells)
+        self.assertTrue(cells <= free)
+        seen, todo = {(0, 0, 0)}, [(0, 0, 0)]                       # one piece, not four
+        while todo:
+            c = todo.pop()
+            for e in links:
+                if c in e:
+                    n = next(iter(e - {c}))
+                    if n not in seen:
+                        seen.add(n)
+                        todo.append(n)
+        self.assertEqual(seen, cells)
+        self.assertLess(len(cells), 40)                              # shortest ways, not a maze through all 89
+
+
+class Wander(unittest.TestCase):
+
+    def test_a_wandering_tunnel_keeps_its_stated_points_and_breathes(self):
+        from pgmvox.volume import under as U
+        pts = U.wander([(0, 10, 0), (30, 14, 0), (30, 14, 30)], (2.0, 3.0), seed=2, mouth=4.5)
+        self.assertEqual(pts[-1][:3], [30, 14, 30])
+        self.assertEqual(pts[0][:3], [0, 10, 0])
+        self.assertAlmostEqual(pts[0][3], 4.5)
+        self.assertTrue(any(abs(p[2]) > 0.5 for p in pts if p[0] < 29))    # it swings off the straight line
+        self.assertTrue(all(2.0 <= p[3] <= 4.5 for p in pts))
+
+
+class Approaches(unittest.TestCase):
+    """The studio's approach forms: each read back as itself, its ways in counted, its walls seated where a way in
+    must cross them; laid underground, a door that holds while the rock cannot be broken and not once it can."""
+
+    def test_every_form_reads_back_as_itself(self):
+        from pgmvox.plan import approach as A
+        for f in A.FORMS:
+            for depth, reach in ((2, 1), (3, 2), (4, 3)):
+                a = A.emit(f, depth, reach)
+                self.assertEqual(A.classify(a.cells(), a.room), f, (f, depth, reach))
+                self.assertEqual(a.parts[-1].name, "room")
+
+    def test_ways_in_and_the_walls_that_close_them(self):
+        from pgmvox.plan import approach as A
+        for f in A.FORMS:
+            a = A.emit(f, 3, 2)
+            n = A.doors(a)
+            self.assertEqual(n, 2 if f in ("clamp", "U", "H", "donut") else 1, f)
+            ws = A.walls(a)
+            self.assertEqual(len(ws), n, f)
+            self.assertFalse(A._reaches(a.cells(), set(ws), a.entry, a.room), f)        # together they close it
+            for e in ws:
+                self.assertFalse(any(c in a.room for c in e))                           # never against the room
+        legs = A.walls(A.emit("donut", 3, 2))
+        a = A.emit("donut", 3, 2)
+        self.assertTrue(all(a.part_of(c) == "leg" for e in legs for c in e))           # a ring held on its legs
+
+    def test_underground_the_door_holds_only_while_the_rock_holds(self):
+        from pgmvox.built import chambers as CH
+        from pgmvox.plan import approach as A
+        from pgmvox.read import late
+        w = World(0, 0, 60, 60, 80)
+        w.ids[:, 1:70, :] = B.STONE
+        w.ids[:, 0, :] = B.BEDROCK
+        a = A.emit("L", 3, 3)
+        got = CH.lay(w, a, (10, 10), 60, 7, 6, np.random.default_rng(0), walls=False)
+        start, goal = CH.centre(got, got["host"][0]), CH.centre(got, sorted(a.room)[0])
+        door = []
+        rx, rz = 10 + sorted(a.room)[0][0] * 7, 10 + sorted(a.room)[0][1] * 7
+        for z in range(rz, rz + 7):
+            for y in range(goal[1], goal[1] + 8):
+                door.append((rx, y, z))
+        zone = np.zeros((w.sx, w.sz), bool)
+        usual = late.phases(w, start, goal, zone, 90, door=door)
+        held = late.phases(w, start, goal, zone, 69, door=door, breakable=set())
+        self.assertIsNotNone(usual["ground"])
+        self.assertTrue(usual["door"]["ground"])
+        self.assertFalse(usual["door"]["dug"])                       # dug round
+        self.assertTrue(held["door"]["dug"])                         # nothing to dig
+
+    def test_building_a_player_may_also_drop(self):
+        from pgmvox.read.walk import MoveRules, walk
+        w = World(0, 0, 12, 3, 20)
+        w.ids[:, 1:5, :] = B.STONE
+        w.ids[6:, 1:5, :] = 0
+        w.ids[6:, 1:3, :] = B.STONE                                   # a step down of two
+        land = np.ones((w.sx, w.sz), bool)
+        d = walk(w.ids, [(1, 5, 1)], 0, 0, MoveRules(max_drop=3, jumps=False, build=(land, (1, 15))))
+        self.assertGreaterEqual(d[9, 3, 1], 0)
+
+    def test_the_late_game_rules_are_written(self):
+        from pgmvox.play.objectives import Box
+        from pgmvox.play.rules import Build, Crafting, Map, Renewables
+        xml = Map("T", "1.0.0", "x", "ctw", build=Build(areas=[(0, 0, 3, 3)], break_only=("wood",)),
+                  parts=[Crafting(), Renewables([Box(0, 0, 0, 9, 9, 9)])]).xml()
+        self.assertIn("<disable>crafting table</disable>", xml)
+        self.assertIn('avoid-players="3"', xml)
+        self.assertLess(xml.index('block-break="break-only"'), xml.index("block-place-void-filter\" block-break"))

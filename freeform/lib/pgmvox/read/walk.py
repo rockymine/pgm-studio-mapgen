@@ -66,7 +66,8 @@ def _jump_offsets(max_gap):
 def walk(ids, starts, x0, z0, rules=None):
     """Moves to every standing place from the starts (world (x, y, z) of the feet), -1 where unreached.
 
-    rules.build lets a player stand in the air of a build zone, as on the block they placed, and rules.kill_y
+    rules.build lets a player stand in the air of a build zone, as on the block they placed, or leave it unbuilt
+    and drop through it as off an edge, and rules.kill_y
     counts nothing below the kill height as a place. The least number of moves, exactly: a jump costs as many moves as the blocks it crosses, so the search takes
     places in order of their distance (a bucket queue), not in the order they were found. A first-in first-out
     queue settled a far place before a nearer one and gave a mirrored board two different answers."""
@@ -113,8 +114,9 @@ def walk(ids, starts, x0, z0, rules=None):
                 push((nx, y + 1, nz), d)                         # a step up, with headroom to jump it
             if st[nx, y, nz]:
                 push((nx, y, nz), d)
-                continue
-            if not (passable[nx, y, nz] and passable[nx, y + 1, nz]):
+                if rules.build is None or y < 2 or not (passable[nx, y - 1, nz]):
+                    continue                                     # building, a player may also not build, and fall
+            elif not (passable[nx, y, nz] and passable[nx, y + 1, nz]):
                 continue
             for ny in range(y - 1, 0, -1):                       # off the edge: fall to whatever is below
                 if rules.max_drop is not None and y - ny > rules.max_drop:

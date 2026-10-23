@@ -490,8 +490,49 @@ by cell had filled the place each stair stood.
 
 **A timber set stands only on the level.** Over a stair its cap takes the headroom a player needs to climb it.
 
+**A tunnel wanders between the points it is given.** `under.wander` turns a few stated points into a waypoint
+every three blocks, swung sideways by two sine waves of random phase that fade to nothing at each stated point, its
+radius breathing between two bounds and its floor running straight. A mouth radius opens its first point wide.
+
 **A shaft leaves its foot open where a passage reaches it.** Its lining is not laid over cells already open in its
 lowest three courses. A test walk found a shaft built after its gallery had walled the gallery's end shut.
+
+## Segments
+
+**Passages can be laid from a kit of pieces on a grid.** `built.segments` lays a `Plan` on a `Grid` of cells five
+blocks across and six high: corridors, corners, junctions and dead ends by the links each cell has, a stair two
+cells long climbing a storey, a ladder shaft with a hatch at every storey, rooms of several cells and ports that open a
+cell onto whatever is outside. `DUNGEON` and `MINE` are its two kits, stone bricks with vaults and medallions and
+rock with timber sets and rails.
+
+**Every piece keeps four blocks of air over every place a player stands.** A cell's passage is four high and its
+vault and lights sit in the ceiling course, and a stair is a well two cells long and two storeys high. A test walks
+each kit from end to end and measures the air over every place it reaches.
+
+**A network joins the cells a plan needs by the shortest ways.** `segments.network` grows from one needed cell to
+the nearest it does not reach yet, each step costing a little at random and a turn costing more, so its passages
+run straight and meet. A spanning tree pruned back to the needed cells had left a maze through the whole level.
+
+## Approaches
+
+**A goal's approach is the studio's: a handful of rectangles, each named for what it does, ending in a room.**
+`plan.approach.emit` writes the eight forms of `pgm-studio/docs/generator/model.md` §4.6 (I, L, Z, scythe, clamp, U,
+H, donut) as ordered templates of `entry`, `run`, `bar`, `leg`, `room-run` and the `room`, last. `classify` reads
+the form back off the cells alone by the generator's decision tree, and agrees with the template on every form.
+
+**A way in gets a wall, and two ways in a pair.** `doors` counts the ways in, one plus every void they go round with
+the host drawn across the mouth; `walls` seats a bedrock wall on a seam with void past both its ends, two to four
+cells before the room, and a ring's pair across its two legs (model.md §5.14).
+
+**An approach can be laid on its side.** `built.chambers.lay` turns each part into a chamber, the chain a storey
+lower a part from its host to its room, ramps a block a step with a stair on each; the form's voids are shafts to
+the floor of the world, which no build zone covers, so they are crossed at no height.
+
+**A goal is read in the four phases of a long match.** `read.late.phases` walks to it on the ground, with the build
+zone bridged, on the sky over every column with ground under it, and with every block a player may break taken
+out; in each it walls the room's doors and walks again. A door holds where the goal is then shut off.
+`analysis/late-game/README.md` is what the phases showed, and the rules that keep a door a door:
+`Build(break_only=...)`, `Crafting(disable=...)` and `Renewables(...)`.
 
 ## Trees
 

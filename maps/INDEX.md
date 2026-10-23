@@ -168,6 +168,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `dtcm/hollow_mesa` | `freeform/lib/boards/hollow-mesa` | `freeform/lib/boards/hollow-mesa` |
 | `dtcm/hollowcrown` | `freeform/lib/boards/hollowcrown` | `freeform/lib/boards/hollowcrown` |
 | `dtcm/hollowmere` | `hollowmere` | — |
+| `dtcm/hollowstack` | `freeform/lib/boards/hollowstack` | `freeform/lib/boards/hollowstack` |
 | `dtcm/interchange` | `opus5-interchange` | `specs/archive/opus5-interchange` |
 | `dtcm/ironhold` | `ironhold` | — |
 | `dtcm/karnbeck` | `opus55-karnbeck` | `specs/opus55-karnbeck` |
