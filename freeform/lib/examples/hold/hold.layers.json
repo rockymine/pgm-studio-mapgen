@@ -1,0 +1,156 @@
+{
+  "document": "layers",
+  "version": "draft-1",
+  "board": {"name": "Knuckle Hold", "x": [0, 159], "z": [0, 159], "floor": 40, "height": 112, "seed": 9},
+  "fields": {
+    "small": {"fbm": {"cell": 10, "octaves": 3, "seed": 1}},
+    "big": {"fbm": {"cell": 40, "octaves": 3, "seed": 2}},
+    "patch": {"fbm": {"cell": 6, "octaves": 2, "seed": 3}}
+  },
+  "ground": [
+    {"id": "valley", "op": "outline", "box": [0, 0, 159, 159], "note": "the whole board is the valley floor"},
+    {"id": "valley-floor", "op": "base", "height": 40,
+     "terms": [{"noise": {"field": "small", "rise": 1.0}}, {"noise": {"field": "big", "rise": 2.5}}],
+     "note": "40, rolling a block or three"},
+    {"id": "knuckle", "op": "mound", "mode": "lift", "rise": 26, "power": 3.2,
+     "areas": [{"ellipse": {"at": [38, 60], "rx": 27, "rz": 25}, "rough": {"amp": 0.08, "cell": 7, "seed": 5}}],
+     "note": "the hill the Shelf rests on, steep in its flanks"},
+    {"id": "east-face", "op": "level", "mode": "cut", "top": 41, "inner": 1.0, "outer": 1.04,
+     "areas": [{"polygon": [[58, 36], [80, 36], [80, 84], [56, 84], [57, 66]], "rough": {"amp": 0.03, "cell": 4, "seed": 8}}],
+     "note": "the Knuckle's east side cut sheer to the meadow, a cliff under the Shelf"},
+    {"id": "ridges", "op": "mound", "mode": "lift", "rise": 13, "power": 1.6, "soft": 0.2,
+     "areas": [{"ellipse": {"at": [56, 122], "rx": 17, "rz": 9}}, {"ellipse": {"at": [106, 122], "rx": 17, "rz": 9}}],
+     "note": "two ridges either side of the river, the arch's abutments"},
+    {"id": "green", "op": "level", "mode": "set", "top": "median", "inner": 1.0, "outer": 1.6,
+     "areas": [{"ellipse": {"at": [118, 70], "rx": 18, "rz": 16}}],
+     "note": "the village green, level, the keep in its middle"},
+    {"id": "river", "op": "river", "line": [[80, 0], [86, 30], [82, 52], [76, 90], [82, 122], [80, 159]],
+     "width": 7, "depth": 3, "water": 2, "bank": 3,
+     "note": "the river down the valley, under the arch and past the Shelf's fall"},
+    {"id": "gate-road", "op": "path", "line": [[122, 82], [114, 100], [104, 114], [98, 121]], "width": 3,
+     "max_grade": 0.25, "note": "from the keep's gate south onto the east ridge"},
+    {"id": "mouth-path", "op": "path", "line": [[62, 120], [66, 106], [66, 90], [64, 78]], "width": 2, "max_grade": 0.5,
+     "note": "from the arch's west end north toward the cave"}
+  ],
+  "paint": [
+    {"block": "SAND", "slope": [null, 30], "area": {"line": {"near": "river", "width": 14}}},
+    {"block": ["DIRT", 1], "slope": [30, 45], "noise": {"field": "patch", "lo": 0.2}},
+    {"block": ["STONE", 5], "slope": [40, 55], "noise": {"field": "patch", "lo": -0.2, "hi": 0.2}},
+    {"block": "COBBLE", "slope": [55, null], "noise": {"field": "patch", "lo": 0.3}}
+  ],
+  "water": {"bed": [{"block": "GRAVEL", "noise": {"field": "patch", "lo": 0}}, {"block": "SAND"}]},
+  "levels": [
+    {"id": "shelf", "floor": 68,
+     "ground": [
+       {"id": "shelf-outline", "op": "outline",
+        "area": {"polygon": [[18, 38], [44, 28], [66, 30], [76, 46], [76, 56], [64, 76], [44, 80], [24, 70]],
+                 "rough": {"amp": 0.06, "cell": 6, "seed": 6}},
+        "note": "the Shelf: over the Knuckle, out over the meadow to the river's west bank"},
+       {"id": "shelf-ground", "op": "base", "height": 68,
+        "terms": [{"gauss": {"at": [36, 46], "r": 14, "rise": 6}}, {"noise": {"field": "small", "rise": 1.4}},
+                  {"noise": {"field": "big", "rise": 2.0}}],
+        "note": "68, a crest in its north-west, rolling"},
+       {"id": "shelf-stream", "op": "river", "line": [[30, 62], [46, 58], [62, 52], [80, 50]],
+        "width": 3, "depth": 1, "water": 1, "bank": 2, "note": "a brook east across the Shelf to its lip"}
+     ],
+     "paint": [
+       {"block": ["DIRT", 2], "slope": [null, 25], "noise": {"field": "patch", "lo": 0.35}},
+       {"block": ["STONE", 5], "slope": [35, null]}
+     ],
+     "underside": {"taper": [3, 0.35], "rough": 3, "seed": 4, "clear": 5},
+     "falls": [{"at": [77, 50], "r": 0.8}],
+     "note": "a second ground over the first, resting on the Knuckle, its stream falling into the river"}
+  ],
+  "carve": [
+    {"id": "dungeon", "op": "rooms", "seed": 11,
+     "rooms": [
+       {"id": "undercroft", "rect": [112, 64, 124, 76], "floor": 24, "h": 6},
+       {"id": "crypt", "rect": [96, 86, 108, 96], "floor": 20, "h": 5},
+       {"id": "cells", "rect": [128, 84, 138, 94], "floor": 24, "h": 4},
+       {"id": "cistern", "rect": [110, 40, 126, 52], "floor": 22, "h": 6}
+     ],
+     "halls": [
+       {"from": "undercroft", "to": "crypt", "via": "z", "width": 3, "h": 4},
+       {"from": "undercroft", "to": "cells", "via": "x", "width": 3, "h": 4},
+       {"from": "undercroft", "to": "cistern", "via": "z", "width": 3, "h": 4}
+     ],
+     "lining": {"wall": [[["STONEBRICK", 0], 5], [["STONEBRICK", 1], 2], [["STONEBRICK", 2], 2]],
+                "floor": [[["STONEBRICK", 0], 3], ["COBBLE", 1]], "ceiling": "STONEBRICK"},
+     "light": {"y": 2},
+     "props": [
+       {"box": [114, 24, 66, 114, 29, 66], "block": "STONEBRICK"}, {"box": [122, 24, 66, 122, 29, 66], "block": "STONEBRICK"},
+       {"box": [114, 24, 74, 114, 29, 74], "block": "STONEBRICK"}, {"box": [122, 24, 74, 122, 29, 74], "block": "STONEBRICK"},
+       {"box": [98, 20, 88, 99, 20, 90], "block": ["STONEBRICK", 3]}, {"box": [98, 21, 88, 99, 21, 90], "block": ["SLAB", 5]},
+       {"box": [101, 20, 88, 102, 20, 90], "block": ["STONEBRICK", 3]}, {"box": [101, 21, 88, 102, 21, 90], "block": ["SLAB", 5]},
+       {"box": [104, 20, 88, 105, 20, 90], "block": ["STONEBRICK", 3]}, {"box": [104, 21, 88, 105, 21, 90], "block": ["SLAB", 5]},
+       {"box": [98, 20, 93, 99, 20, 95], "block": ["STONEBRICK", 3]}, {"box": [98, 21, 93, 99, 21, 95], "block": ["SLAB", 5]},
+       {"box": [104, 20, 93, 105, 20, 95], "block": ["STONEBRICK", 3]}, {"box": [104, 21, 93, 105, 21, 95], "block": ["SLAB", 5]},
+       {"box": [131, 24, 84, 131, 26, 90], "block": "IRON_BARS"}, {"box": [135, 24, 84, 135, 26, 90], "block": "IRON_BARS"},
+       {"box": [128, 24, 90, 138, 26, 90], "block": "IRON_BARS"},
+       {"box": [113, 20, 43, 123, 21, 49], "block": "WATER"},
+       {"box": [114, 22, 42, 114, 27, 42], "block": "STONEBRICK"}, {"box": [122, 22, 42, 122, 27, 42], "block": "STONEBRICK"},
+       {"box": [114, 22, 50, 114, 27, 50], "block": "STONEBRICK"}, {"box": [122, 22, 50, 122, 27, 50], "block": "STONEBRICK"}
+     ],
+     "note": "the hold under the keep: an undercroft, a crypt, the cells and a cistern, a hall to each"},
+    {"id": "well", "op": "shaft", "at": [118, 70], "bottom": 24, "top": "ground", "ladder_on": "s",
+     "note": "the keep's well, a ladder down into the undercroft"},
+    {"id": "cavern", "op": "chamber", "at": [36, 30, 60], "rx": 13, "rz": 11, "h": 10,
+     "dress": {"seed": 21}, "note": "the cavern under the Knuckle"},
+    {"id": "cave-mouth", "op": "tunnel", "mouths": [0],
+     "pts": [[59, 42, 73, 3.4], [52, 38, 71, 3.0], [46, 34, 67, 3.2], [40, 30, 62, 3.2]],
+     "dress": {"seed": 22}, "note": "the mouth in the Knuckle's east face, under the Shelf, down into the cavern"},
+    {"id": "miners-breach", "op": "tunnel", "breach": true,
+     "pts": [[44, 30, 68, 2.4], [58, 27, 86, 2.4], [78, 23, 94, 2.2], [97, 20, 91, 2.0]],
+     "dress": {"seed": 23, "ores": 200, "stalagmites": 300},
+     "note": "where the miners followed the seam east under the river and broke into the crypt"}
+  ],
+  "volume": [
+    {"id": "arch", "op": "arch", "line": {"pts": [[62, 122], [100, 122]], "spline": false}, "width": 7,
+     "deck": [55, 52, 2], "camber": 1, "thick": [4, 12, 1.6], "clear": 3,
+     "note": "the stone arch the river has cut under, joining the ridges"}
+  ],
+  "build": [
+    {"id": "keep", "op": "wall", "line": [[110, 62], [126, 62], [126, 80], [110, 80]], "closed": true, "height": 7,
+     "crown": "follow", "blocks": [["STONEBRICK", 0], ["STONEBRICK", 1], ["STONEBRICK", 2], ["COBBLE", 0]],
+     "weights": [4, 2, 2, 1], "crenel": ["STONEBRICK", 0], "gap": [36, 3], "note": "the ruined keep round the well"},
+    {"id": "well-head", "op": "wall", "line": [[115, 67], [121, 67], [121, 73], [115, 73]], "closed": true,
+     "height": 1, "crown": "level", "blocks": [["COBBLE", 0]], "note": "the well's kerb"},
+    {"id": "well-roof", "op": "blocks", "boxes": [
+       {"box": [115, 42, 67, 115, 43, 67], "block": "SPRUCE_FENCE"}, {"box": [121, 42, 67, 121, 43, 67], "block": "SPRUCE_FENCE"},
+       {"box": [115, 42, 73, 115, 43, 73], "block": "SPRUCE_FENCE"}, {"box": [121, 42, 73, 121, 43, 73], "block": "SPRUCE_FENCE"},
+       {"box": [115, 44, 67, 121, 44, 73], "block": ["WOOD_SLAB", 1]}],
+     "note": "a roof on posts over the well, so the way down reads from the green"},
+    {"id": "north-houses", "op": "house", "at": [108, 49], "heading": 0, "L": 11, "W": 7, "storeys": 2,
+     "style": "town", "door": 1, "note": "the reeve's house, its door to the keep"},
+    {"id": "north-houses-2", "op": "house", "at": [127, 48], "heading": 0, "L": 9, "W": 6, "storeys": 2,
+     "style": "plaster", "jetty": true, "door": 1},
+    {"id": "east-houses", "op": "house", "at": [143, 64], "heading": 90, "L": 9, "W": 6, "storeys": 1,
+     "style": "town", "door": 1},
+    {"id": "east-houses-2", "op": "house", "at": [143, 79], "heading": 90, "L": 11, "W": 7, "storeys": 2,
+     "style": "stone", "door": 1, "note": "the storehouse"},
+    {"id": "road-house", "op": "house", "at": [104, 92], "heading": 20, "L": 9, "W": 6, "storeys": 2,
+     "style": "plaster", "door": -1, "note": "the inn by the road to the arch"},
+    {"id": "road-house-2", "op": "house", "at": [131, 97], "heading": 0, "L": 9, "W": 6, "storeys": 1,
+     "style": "town", "door": -1},
+    {"id": "miners-shed", "op": "house", "at": [70, 86], "heading": 90, "L": 7, "W": 5, "storeys": 1,
+     "style": "town", "chimney": false, "door": 1, "note": "the miners' shed in the meadow, below the cave mouth"},
+    {"id": "gate-road-surface", "op": "surface", "near": "gate-road", "blocks": ["GRAVEL", ["DIRT", 1], "COBBLE"],
+     "weights": [6, 3, 1]},
+    {"id": "mouth-path-surface", "op": "surface", "near": "mouth-path", "blocks": [["DIRT", 1], "GRAVEL"],
+     "weights": [3, 1]}
+  ],
+  "dress": [
+    {"id": "south-wood", "op": "trees", "area": {"ellipse": {"at": [26, 128], "rx": 30, "rz": 30}},
+     "kinds": {"oak": 3, "birch": 2, "large-oak": 1}, "tries": 300, "seed": 4,
+     "spacing": 1.6, "note": "oak and birch on the west ridge's far side"},
+    {"id": "east-wood", "op": "trees", "area": {"ellipse": {"at": [146, 134], "rx": 22, "rz": 24}},
+     "kinds": {"oak": 2, "birch": 1, "dark-oak": 1}, "tries": 240, "seed": 7,
+     "spacing": 1.5, "note": "a wood beyond the east ridge"},
+    {"id": "meadow-trees", "op": "trees", "area": {"ellipse": {"at": [68, 52], "rx": 8, "rz": 14}},
+     "kinds": {"tiny-oak": 1}, "tries": 30, "seed": 8, "note": "small oaks in the meadow under the Shelf, where they fit"},
+    {"id": "shelf-wood", "op": "trees", "on": "shelf", "area": {"board": {}}, "kinds": {"tall-spruce": 2, "tiny-spruce": 3},
+     "tries": 200, "seed": 5, "spacing": 1.6, "note": "spruce on the Shelf"},
+    {"id": "arch-tree", "op": "trees", "on": "arch", "area": {"board": {}}, "kinds": {"oak": 1}, "tries": 12,
+     "seed": 6, "note": "a tree or two on the deck"}
+  ]
+}

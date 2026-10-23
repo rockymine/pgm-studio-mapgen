@@ -21,7 +21,14 @@ which the change eases to nothing.
 ground), `made` (the grammar), `volume`, `structures`, `build` (paths' surfaces and steps, walls, hedges, fences),
 `dress` (trees, kept `clear` blocks off everything built) and `symmetry`. A layer that names another (`near`) reads
 the area or line that layer was given.
+
+**A board may stand on more than one floor.** `levels` are grounds of their own over an outline, each built from
+its own ground layers and painted, watered and dressed apart from the board's, resting on what is under them or
+hanging over it. `carve` cuts tunnels, chambers, rooms and shafts out of the laid ground, and an `arch` volume is a
+deck over whatever it spans. Each of these publishes a `Surface`, and a trees layer stands on the one it names
+(`on`), the board's own ground where it names none.
 """
+import math
 from dataclasses import dataclass, field as _field
 
 import numpy as np
@@ -37,19 +44,32 @@ from pgmvox.core.blocks import B
 from pgmvox.built.build import line_wall
 from pgmvox.core.world import World
 
-STAGES = ("made blueprint", "fields", "ground", "paint", "lay", "water", "faces", "made", "volume", "structures", "build",
-          "dress", "symmetry")
+STAGES = ("made blueprint", "fields", "ground", "paint", "lay", "water", "levels", "carve", "faces", "made", "volume",
+          "structures", "build", "dress", "symmetry")
 
 
 @dataclass
 class Step:
-    """One layer as it ran: its id, its stage, the heights after it (ground) and the columns it changed."""
+    """One layer as it ran: its id, its stage, the heights after it (ground) and the columns it changed; `level`
+    names the level a layer belongs to, empty for the board's own ground."""
     id: str
     stage: str
     op: str
     changed: np.ndarray
     H: np.ndarray = None
     note: str = ""
+    level: str = ""
+
+
+@dataclass
+class Surface:
+    """A floor a player stands on: `top` is the y of its top block in each column, -1 where it is not. `kind` is
+    ground, level, deck or floor; `water` its water surfaces and `ceiling` the lowest block over it, where known."""
+    id: str
+    kind: str
+    top: np.ndarray
+    water: np.ndarray = None
+    ceiling: np.ndarray = None
 
 
 @dataclass
@@ -62,6 +82,11 @@ class Built:
     Z: np.ndarray
     steps: list = _field(default_factory=list)
     lines: dict = _field(default_factory=dict)
+    surfaces: list = _field(default_factory=list)
+
+    def surface(self, id):
+        """The surface of that id."""
+        return next(s for s in self.surfaces if s.id == id)
 
 
 def block(spec):
@@ -324,7 +349,7 @@ def _ground_layer(L, H, X, Z, fields, lines, land):
                 parts.append(F.Tilt(a["dx"], a["dz"], tuple(a.get("at", (0, 0)))))
             elif kind == "noise":
                 parts.append(F.Noise(_field(a["field"], X.shape, fields), a["rise"]))
-        return F.terms(Xf, Zf, float(L["height"]), *parts), None
+        return np.asarray(F.terms(Xf, Zf, float(L["height"]), *parts), float) + np.zeros(X.shape), None
     if op == "river":
         pts = [tuple(p) for p in noise.spline([tuple(p) for p in L["line"]], 0.5)]
         lines[L["id"]] = dict(pts=pts, width=L.get("width", 6))
@@ -518,19 +543,22 @@ def _footprint(L, X, Z):
     return [(x, z) for x in range(x0, x1 + 1) for z in range(z0, z1 + 1)]
 
 
-def ground(doc, X=None, Z=None):
-    """The fields and ground stages alone: (ctx, steps). The board's grid is its x and z range unless given."""
+def ground(doc, X=None, Z=None, share=None, level=""):
+    """The fields and ground stages alone: (ctx, steps). The board's grid is its x and z range unless given. With
+    `share` (the board's ctx) a level's ground is built on the board's fields and lines, starting at its own
+    `floor`, and its steps carry the level's id."""
     bd = doc["board"]
     if X is None:
         (x0, x1), (z0, z1) = bd["x"], bd["z"]
         X, Z = np.meshgrid(np.arange(x0, x1 + 1), np.arange(z0, z1 + 1), indexing="ij")
-    c = Ctx(X, Z, np.full(X.shape, float(bd.get("floor", 40))), {}, {}, np.ones(X.shape, bool),
-            np.zeros(X.shape, int))
+    floor = float(doc.get("floor", bd.get("floor", 40)))
+    c = Ctx(X, Z, np.full(X.shape, floor), dict(share.fields) if share else {}, share.lines if share else {},
+            np.ones(X.shape, bool), np.zeros(X.shape, int))
     c.laid = np.zeros(X.shape, bool)
-    if "made" in doc:
+    if share is None and "made" in doc:
         c.cells = made_cells(doc["made"])
         c.fields["made"], c.fields["made_top"] = made_mask(c.cells, X, Z)
-    for k, v in doc.get("fields", {}).items():
+    for k, v in ({} if share else doc.get("fields", {})).items():
         c.fields[k] = expr(v, c) if isinstance(v, dict) and next(iter(v)) not in ("fbm", "ridged", "line") \
             or isinstance(v, dict) and v.get("fbm", {}).get("along") else _field(v, X.shape, c.fields)
     steps = []
@@ -538,9 +566,12 @@ def ground(doc, X=None, Z=None):
         before, wet_before = c.H.copy(), c.water.copy()
         op = L["op"]
         if op == "outline":
-            ins = {k: (expr(v, c) if isinstance(v, (dict, str)) else v) for k, v in L.get("insets", {}).items()}
-            c.land = shapes.island(X, Z, tuple(L["box"]), **ins)
-            steps.append(Step(L["id"], "ground", "outline", c.land.copy(), c.H.copy(), L.get("note", "")))
+            if "area" in L:
+                c.land = area_distance(L["area"], X, Z, c.fields, c.lines, c)[0] < 1
+            else:
+                ins = {k: (expr(v, c) if isinstance(v, (dict, str)) else v) for k, v in L.get("insets", {}).items()}
+                c.land = shapes.island(X, Z, tuple(L["box"]), **ins)
+            steps.append(Step(L["id"], "ground", "outline", c.land.copy(), c.H.copy(), L.get("note", ""), level))
             continue
         if op == "set":
             value = expr(L["height"], c)
@@ -572,7 +603,9 @@ def ground(doc, X=None, Z=None):
             if wet is not None:
                 c.water = np.where(wet > 0, wet, c.water)
         changed = ((np.abs(c.H - before) > 0.5) | (c.water != wet_before)) & c.land
-        steps.append(Step(L["id"], "ground", op, changed, c.H.copy(), L.get("note", "")))
+        steps.append(Step(L["id"], "ground", op, changed, c.H.copy(), L.get("note", ""), level))
+    if share is not None:
+        share.fields.update({k: v for k, v in c.fields.items() if k not in share.fields})
     return c, steps
 
 
@@ -596,14 +629,18 @@ def build(doc):
         u = lay["underside"]
         bottom = T.island_bottom(Hi, land, np.zeros(X.shape, bool), taper=tuple(u.get("taper", (4, 0.9))),
                                  rough=u.get("rough", 0) * noise.fbm(X.shape, 12, 2, seed=u.get("seed", 0)))
-    rock = T.Strata([((B.STONE, 0), 3, 6), ((B.STONE, 5), 1.4, 3)], length=60, seed=7, start=-300)
-    T.lay(w, np.where(land, Hi, -1), land, top=T.by_angle([(55, (B.GRASS, 0)), (90, (B.STONE, 0))]),
-          bands=T.beds(rock, Hi, seed=3), paint=paint, bottom=bottom)
+    T.lay(w, np.where(land, Hi, -1), land, top=TOP, bands=T.beds(ROCK, Hi, seed=3), paint=paint, bottom=bottom)
     out.steps.append(Step("lay", "lay", "lay", land.copy(), Hi.copy(), f"{len(paint)} paint layers"))
     if (water > 0).any():
         bed = [_paint_layer(P, X, Z, fields, lines, Hi) for P in doc.get("water", {}).get("bed", [])] or (B.GRAVEL, 0)
         T.fill_water(w, Hi, np.where(land, water, 0), bed=bed, mask=land)
         out.steps.append(Step("water", "water", "fill_water", (water > 0) & land, Hi.copy()))
+    out.surfaces.append(Surface("ground", "ground", np.where(land, Hi, -1), np.where(land, water, 0),
+                                np.full(X.shape, w.sy)))
+    for L in doc.get("levels", []):
+        _level(L, doc, w, c, out)
+    if "carve" in doc:
+        _carve(doc["carve"], w, out, bd.get("seed", 0))
     tops = {(int(X[i, k]), int(Z[i, k])): int(Hi[i, k]) for i, k in np.argwhere(land)}
     for L in doc.get("faces", []):
         from pgmvox.grammar import rules as G
@@ -649,6 +686,8 @@ def build(doc):
                           tilt=L.get("tilt", 0.0), sink=L.get("sink", 0.3), on=L.get("on", "lowest"),
                           paint=_paint_spec(L.get("paint", {})), hole=L.get("hole"))
             laid = (w.ids != before).any(axis=1)
+        elif L["op"] == "arch":
+            laid = _arch(L, w, out)
         built_on |= laid
         out.steps.append(Step(L["id"], "volume", L["op"], laid, Hi.copy(), L.get("note", "")))
     for L in doc.get("structures", []):
@@ -699,6 +738,21 @@ def build(doc):
                             keep=~land, rng=rng)
             for x, z, _, _ in got:
                 laid[x - x0, z - z0] = True
+        elif L["op"] == "house":
+            from pgmvox.built import build as BLD
+            hx, hz = L["at"]
+            r = int(max(L.get("L", 9), L.get("W", 6)) / 2) + 1
+            under = Hi[max(hx - r - x0, 0):hx + r - x0 + 1, max(hz - r - z0, 0):hz + r - z0 + 1]
+            h = BLD.House(hx, hz, L.get("heading", 0.0), L=L.get("L", 9), W=L.get("W", 6), floor=int(under.max()),
+                          storeys=L.get("storeys", 2), style=L.get("style", "town"), jetty=L.get("jetty", False),
+                          door=L.get("door", 1), chimney=L.get("chimney", True), roof=L.get("roof", "gable"))
+            got = BLD.house(w, h, ground_at=lambda x, z: int(Hi[x - x0, z - z0]),
+                            rng=np.random.default_rng(L.get("seed", bd.get("seed", 0))))
+            for x, z in got["footprint"]:
+                laid[x - x0, z - z0] = True
+        elif L["op"] == "blocks":
+            for x, _, z in _props(w, L["boxes"]):
+                laid[x - x0, z - z0] = True
         built_on |= laid
         out.steps.append(Step(L["id"], "build", L["op"], laid, Hi.copy(), L.get("note", "")))
     for L in doc.get("dress", []):
@@ -707,12 +761,21 @@ def build(doc):
             from pgmvox.scenery import trees as TR
             e, _ = area_distance(L["area"], X, Z, fields, lines)
             clear = ndimage.binary_dilation(built_on, iterations=L.get("clear", 3))
-            zone = (e < 1) & land & (water == 0) & ~clear
+            on = L.get("on", "ground" if any(sf.kind in ("level", "deck") for sf in out.surfaces) else None)
+            stand = ok = None
+            if on is None:
+                zone = (e < 1) & land & (water == 0) & ~clear
+            else:
+                sf = out.surface(on)
+                if sf.kind == "deck":
+                    clear = ndimage.binary_dilation(built_on & (sf.top < 0), iterations=L.get("clear", 3))
+                zone = (e < 1) & (sf.top >= 0) & ~clear & (True if sf.water is None else sf.water == 0)
+                stand, ok = _standing(sf, x0, z0)
             kinds = TR.kinds(TR.library())
             weights = {k: v for k, v in L["kinds"].items() if k in kinds}
             planted = []
             TR.scatter(w, zone, kinds, weights, np.random.default_rng(L.get("seed", 0)), tries=L.get("tries", 400),
-                       planted=planted)
+                       planted=planted, ok=ok, ground=stand, spacing=L.get("spacing", 0.85))
             for x, z, _ in planted:
                 laid[x - x0, z - z0] = True
         out.steps.append(Step(L["id"], "dress", L["op"], laid, Hi.copy(), L.get("note", "")))
@@ -722,9 +785,343 @@ def build(doc):
         keep = np.asarray(expr(L["keep"], cx), bool)
         recolour = {block(a): block(b) for a, b in L.get("recolour", [])}
         turn_world(w, L["op"], keep, recolour=recolour or None)
+        for sf in out.surfaces:
+            for name in ("top", "water", "ceiling"):
+                if getattr(sf, name) is not None:
+                    setattr(sf, name, _turned(getattr(sf, name), L["op"], keep, x0, z0))
         out.steps.append(Step(L["id"], "symmetry", L["op"], ~keep, Hi.copy(), L.get("note", "")))
     out.H, out.land, out.water = Hi, land, water
     return out
+
+
+TOP = T.by_angle([(55, (B.GRASS, 0)), (90, (B.STONE, 0))])
+ROCK = T.Strata([((B.STONE, 0), 3, 6), ((B.STONE, 5), 1.4, 3)], length=60, seed=7, start=-300)
+
+
+def _below(surfaces, H):
+    """Under each column, the highest surface whose top lies under H; -1 where none does."""
+    lower = np.full(H.shape, -1)
+    for sf in surfaces:
+        lower = np.maximum(lower, np.where((sf.top >= 0) & (sf.top < H), sf.top, -1))
+    return lower
+
+
+def _level(L, doc, w, share, out):
+    """A level: its own ground over its own outline, laid into a world of its own and copied in where it holds a
+    block, so the ground under it stands. Its underside tapers as an island's does; where that leaves less than
+    `clear` blocks over the surface below, the level rests on it instead and buries it, its soil with it. Its water may fall off
+    its edge at each of `falls`: the columns off the level within `r` of `at`, from the nearest water's surface down
+    to the surface under them."""
+    X, Z = share.X, share.Z
+    bd = doc["board"]
+    sub = {"board": bd, "floor": L.get("floor", bd.get("floor", 40)), "ground": L["ground"]}
+    c, steps = ground(sub, X, Z, share=share, level=L["id"])
+    out.steps.extend(steps)
+    land = c.land
+    water = np.where(land, c.water, 0)
+    H = np.round(c.H).astype(int)
+    H = np.where(water > 0, np.minimum(H, water - 1), H)
+    lower = _below(out.surfaces, H)
+    u = L.get("underside", {})
+    bottom = T.island_bottom(H, land, np.zeros(X.shape, bool), taper=tuple(u.get("taper", (4, 0.9))),
+                             rough=u.get("rough", 0) * noise.fbm(X.shape, 12, 2, seed=u.get("seed", 0)))
+    rests = land & (lower >= 0) & (bottom <= lower + u.get("clear", 4))
+    bottom = np.where(rests, lower - 3, bottom)
+    tmp = World(w.x0, w.z0, w.sx, w.sz, sy=w.sy)
+    paint = [_paint_layer(P, X, Z, c.fields, c.lines, H) for P in L.get("paint", [])]
+    T.lay(tmp, np.where(land, H, -1), land, top=TOP, bands=T.beds(ROCK, H, seed=3), paint=paint, bottom=bottom)
+    if (water > 0).any():
+        bed = [_paint_layer(P, X, Z, c.fields, c.lines, H) for P in L.get("water", {}).get("bed", [])] \
+            or (B.GRAVEL, 0)
+        T.fill_water(tmp, H, water, bed=bed, mask=land)
+    held = tmp.ids != 0
+    w.ids[held], w.dat[held] = tmp.ids[held], tmp.dat[held]
+    for sf in out.surfaces:
+        sf.top = np.where(rests & (sf.top == lower), -1, sf.top)
+        if sf.ceiling is not None:
+            sf.ceiling = np.where(land & ~rests & (sf.top >= 0) & (sf.top < bottom),
+                                  np.minimum(sf.ceiling, bottom), sf.ceiling)
+    fell = 0
+    for f in L.get("falls", []):
+        (fx, fz), r = f["at"], f.get("r", 1.5)
+        d = np.hypot(X - fx, Z - fz)
+        wet = land & (water > 0) & (d <= r + 4)
+        if not wet.any():
+            raise ValueError(f"level {L['id']}: no water within {r + 4} blocks of the fall at {f['at']}")
+        lip = int(water[wet].max())
+        for i, k in np.argwhere((d <= r) & ~land):
+            for y in range(max(int(lower[i, k]) + 1, 1), lip + 1):
+                if w.ids[i, y, k] == 0:
+                    w.ids[i, y, k], w.dat[i, y, k] = B.WATER_FLOW, 8
+                    fell += 1
+    out.surfaces.append(Surface(L["id"], "level", np.where(land, H, -1), water, np.full(X.shape, w.sy)))
+    out.steps.append(Step(L["id"], "levels", "level", land.copy(), H.copy(),
+                          f"rests on {int(rests.sum())} columns, {fell} blocks of fall", L["id"]))
+
+
+def _standing(sf, x0, z0):
+    """(ground, ok) for trees on a surface: they stand on its top, and only where their crown clears its ceiling."""
+    top, ceiling = sf.top, sf.ceiling
+
+    def ground(x, z):
+        i, k = x - x0, z - z0
+        return int(top[i, k]) if 0 <= i < top.shape[0] and 0 <= k < top.shape[1] else -1
+
+    def ok(x, z, tree):
+        if ceiling is None:
+            return True
+        return ground(x, z) + 1 + max(b[1] for b in tree.blocks) < ceiling[x - x0, z - z0]
+    return ground, ok
+
+
+def _turned(a, op, keep, x0, z0):
+    """A per-column array after the symmetry: the kept columns copied onto their images."""
+    from pgmvox.core.orient import turn_xz
+    out = a.copy()
+    si, sk = np.nonzero(keep)
+    for i, k in zip(si, sk):
+        x, z = turn_xz(int(i) + x0, int(k) + z0, op)
+        ii, kk = int(x) - x0, int(z) - z0
+        if 0 <= ii < a.shape[0] and 0 <= kk < a.shape[1]:
+            out[ii, kk] = a[i, k]
+    return out
+
+
+def _arch(L, w, out):
+    """A natural arch along `line`, `width` across: its deck at `deck` (crown, end, power) along the span, falling
+    `camber` blocks to its sides, `thick` blocks of rock under it; laid only where the deck stands over the
+    highest surface (or water) under it. The deck is a surface of its own. Returns the columns it laid."""
+    from pgmvox.scenery import forms as FO
+    X, Z = out.X, out.Z
+    x0, z0 = int(X[0, 0]), int(Z[0, 0])
+    pts = _line_pts(L["line"], Ctx(X, Z, None, {}, out.lines))
+    d, arc = shapes.polyline(X.astype(float), Z.astype(float), pts)
+    total = float(arc.max()) or 1.0
+    half = L.get("width", 7) / 2
+    t = np.abs(2 * arc / total - 1)
+    crown, end, power = L["deck"]
+    deck = np.round(crown + (end - crown) * t ** power - L.get("camber", 0) * (d / half) ** 2).astype(int)
+    tc, te, tp = L.get("thick", [4, 12, 1.5])
+    thick = np.round(tc + (te - tc) * t ** tp).astype(int)
+    lower = np.full(X.shape, -1)
+    for sf in out.surfaces:
+        floor = np.where(sf.top >= 0, np.maximum(sf.top, sf.water if sf.water is not None else -1), -1)
+        lower = np.maximum(lower, np.where(floor < deck, floor, -1))
+    span = (d <= half) & (deck > lower + 1)
+    top_b, under_b, rock_b = block(L.get("top", "GRASS")), block(L.get("under", "DIRT")), block(L.get("rock", "STONE"))
+    rock = lambda x, y, z, k: top_b if k == 0 else under_b if k <= 2 else rock_b          # noqa: E731
+    tops = np.full(X.shape, -1)
+    for i, k in np.argwhere(span):
+        x, z = int(X[i, k]), int(Z[i, k])
+        got = FO.arch(w, [(x, z)], {(x, z): float(t[i, k])}, deck=lambda _, y=int(deck[i, k]): y,
+                      thick=lambda _, n=int(thick[i, k]): n, rock=rock, clear=L.get("clear", 3),
+                      ground=lambda _x, _z, g=int(lower[i, k]): g)
+        tops[i, k] = got[(x, z)]
+    for sf in out.surfaces:
+        if sf.ceiling is not None:
+            sf.ceiling = np.where(span & (sf.top >= 0) & (sf.top < tops), np.minimum(sf.ceiling, tops - thick),
+                                  sf.ceiling)
+    ceiling = np.full(X.shape, w.sy)
+    out.surfaces.append(Surface(L["id"], "deck", tops, None, ceiling))
+    return span
+
+
+def _carve(layers, w, out, seed):
+    """The carve stage: tunnels, chambers, rooms and shafts cut into the laid ground in order. Every carve keeps
+    `cover` blocks under the ground the board stood with before the stage (the top of each column's lowest solid
+    run), so a cave under a level that overhangs is guarded by the ground it is under, not the level. Each publishes
+    its floor as a surface; a tunnel never cuts a room's blocks unless it is a `breach`, and dressing a cave never
+    touches them."""
+    from pgmvox.volume import under as UN
+    X, Z = out.X, out.Z
+    x0, z0 = int(X[0, 0]), int(Z[0, 0])
+    roof = np.argmax(w.ids[:, 1:, :] == 0, axis=1)
+    rng = np.random.default_rng(seed)
+    made = set()
+
+    def ground(x, z):
+        i, k = x - x0, z - z0
+        return int(roof[i, k]) if 0 <= i < roof.shape[0] and 0 <= k < roof.shape[1] else None
+
+    def kept(x, y, z):
+        return (x, y, z) in made
+    for L in layers:
+        before = w.ids.copy()
+        top = np.full(X.shape, -1)
+        op, cover = L["op"], L.get("cover", 3)
+        if op == "tunnel":
+            pts = [tuple(p) for p in L["pts"]]
+            mouths = [pts[i] for i in L.get("mouths", [])]
+
+            def guard(x, z, mouths=mouths):
+                if any(math.hypot(x - mx, z - mz) <= mr + 1.5 for mx, _, mz, mr in mouths):
+                    return None
+                return ground(x, z)
+            _, floor = UN.tunnel(w, pts, ground=guard, cover=cover, keep=None if L.get("breach") else kept,
+                                 lift=L.get("lift", 0.45))
+            r = max(p[3] for p in pts)
+            box = (int(min(p[0] for p in pts) - r - 1), int(max(p[0] for p in pts) + r + 1),
+                   int(min(p[2] for p in pts) - r - 1), int(max(p[2] for p in pts) + r + 1),
+                   int(min(p[1] for p in pts)) - 1, int(max(p[1] for p in pts) + 2 * r + 2))
+        elif op == "chamber":
+            cx, fy, cz = L["at"]
+            UN.chamber(w, cx, fy, cz, L["rx"], L["h"], rz=L.get("rz"), ground=ground, cover=cover, keep=kept)
+            floor = lambda x, z, fy=fy: fy                                                # noqa: E731
+            box = (int(cx - L["rx"] - 1), int(cx + L["rx"] + 1), int(cz - L.get("rz", L["rx"]) - 1),
+                   int(cz + L.get("rz", L["rx"]) + 1), fy - 1, fy + L["h"] + 1)
+        elif op == "rooms":
+            floors = _rooms(L, w, ground, cover, made, np.random.default_rng(L.get("seed", seed)))
+            for (x, z), f in floors.items():
+                top[x - x0, z - z0] = f - 1
+        elif op == "shaft":
+            x, z = L["at"]
+            head = ground(x, z) if L.get("top", "ground") == "ground" else int(L["top"])
+            UN.shaft(w, x, z, L["bottom"], head, ladder_on=L.get("ladder_on", "s"))
+            for dx in range(-2, 3):
+                for dz in range(-2, 3):
+                    for y in range(L["bottom"] - 1, head + 1):
+                        made.add((x + dx, y, z + dz))
+        else:
+            raise ValueError(f"unknown carve op {op}")
+        changed = (w.ids != before).any(axis=1)
+        if op in ("tunnel", "chamber"):
+            for i, k in np.argwhere(changed):
+                f = floor(int(X[i, k]), int(Z[i, k]))
+                if w.ids[i, f, k] == 0:
+                    top[i, k] = f - 1
+            if L.get("dress"):
+                dr = L["dress"]
+                UN.dress_cave(w, box, np.random.default_rng(dr.get("seed", seed)), ground=ground, keep=kept,
+                              ores=dr.get("ores", 300), stalagmites=dr.get("stalagmites", 900),
+                              stalactites=dr.get("stalactites", 0.05), mushrooms=dr.get("mushrooms", 0.015))
+        if op != "shaft":
+            out.surfaces.append(Surface(L["id"], "floor", top, None, None))
+        out.steps.append(Step(L["id"], "carve", op, changed, None, L.get("note", "")))
+
+
+def _rooms(L, w, ground, cover, made, rng):
+    """A dungeon: `rooms` (rect [x0, z0, x1, z1], floor, h) and the `halls` between them (from, to, width, h, via
+    "x" or "z" first), lined with `lining` (wall, floor, ceiling: a block or [[block, weight], ...]) wherever the
+    rock is solid, lit by `light` torches on the room walls and furnished with `props` (a box of a block). A hall
+    leaves each room at its floor and climbs or falls a block a step at most, on a stair, in its middle. Returns
+    the floor of every column carved, {(x, z): y}."""
+    from pgmvox.core.orient import stair as stair_data, torch as torch_data, vec
+    rooms = {r["id"]: r for r in L["rooms"]}
+    floors, high = {}, {}
+    stairs = []
+
+    def in_room(x, z, r):
+        a0, b0, a1, b1 = r["rect"]
+        return a0 <= x <= a1 and b0 <= z <= b1
+    for r in rooms.values():
+        a0, b0, a1, b1 = r["rect"]
+        for x in range(a0, a1 + 1):
+            for z in range(b0, b1 + 1):
+                floors[(x, z)], high[(x, z)] = r["floor"], r.get("h", 5)
+    for hl in L.get("halls", []):
+        a, b = rooms[hl["from"]], rooms[hl["to"]]
+        ca = ((a["rect"][0] + a["rect"][2]) // 2, (a["rect"][1] + a["rect"][3]) // 2)
+        cb = ((b["rect"][0] + b["rect"][2]) // 2, (b["rect"][1] + b["rect"][3]) // 2)
+        corner = (cb[0], ca[1]) if hl.get("via", "x") == "x" else (ca[0], cb[1])
+        path = _manhattan(ca, corner) + _manhattan(corner, cb)[1:]
+        outside = [p for p in path if not in_room(*p, a) and not in_room(*p, b)]
+        rise = b["floor"] - a["floor"]
+        if len(outside) < abs(rise) + 2:
+            raise ValueError(f"hall {hl['from']}-{hl['to']} is {len(outside)} long for a rise of {rise}")
+        s0, sign = (len(outside) - abs(rise)) // 2, int(np.sign(rise))
+        f_at = {p: a["floor"] + sign * int(np.clip(j - s0, 0, abs(rise))) for j, p in enumerate(outside)}
+        width, h = hl.get("width", 3), hl.get("h", 4)
+        for j, p in enumerate(outside):
+            nxt = outside[min(j + 1, len(outside) - 1)]
+            prv = outside[max(j - 1, 0)]
+            dx, dz = vec((nxt[0] - prv[0], nxt[1] - prv[1])) if nxt != prv else (1, 0)
+            across = [(p[0] - dz * o, p[1] + dx * o) for o in range(-(width // 2), width - width // 2)]
+            if p == corner:
+                across = [(p[0] + u, p[1] + v) for u in range(-(width // 2), width - width // 2)
+                          for v in range(-(width // 2), width - width // 2)]
+            for q in across:
+                floors.setdefault(q, f_at[p])
+                high.setdefault(q, h)
+            if j + 1 < len(outside) and f_at[nxt] != f_at[p]:
+                low, up = (p, nxt) if f_at[nxt] > f_at[p] else (nxt, p)
+                nx_, nz_ = vec((up[0] - low[0], up[1] - low[1]))
+                ldx, ldz = vec((nxt[0] - p[0], nxt[1] - p[1]))
+                for o in range(-(width // 2), width - width // 2):
+                    stairs.append((low[0] - ldz * o, f_at[low], low[1] + ldx * o, stair_data((nx_, nz_))))
+    air = set()
+    for (x, z), f in floors.items():
+        g = ground(x, z)
+        for y in range(f, f + high[(x, z)]):
+            if g is not None and y > g - cover:
+                continue
+            if w.inside(x, y, z) and w.id(x, y, z) not in (B.WATER, B.WATER_FLOW):
+                air.add((x, y, z))
+    lining = L.get("lining", {})
+    pick = {part: _mix(lining.get(part, "STONEBRICK"), rng) for part in ("wall", "floor", "ceiling")}
+    for x, y, z in list(air):
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                for dz in (-1, 0, 1):
+                    c = (x + dx, y + dy, z + dz)
+                    if c in air or c in made or not w.inside(*c) or w.id(*c) in (B.AIR, B.WATER, B.WATER_FLOW):
+                        continue
+                    part = "floor" if (c[0], c[1] + 1, c[2]) in air else \
+                        "ceiling" if (c[0], c[1] - 1, c[2]) in air else "wall"
+                    w.set(*c, *pick[part]())
+                    made.add(c)
+    for c in air:
+        w.set(*c, B.AIR)
+        made.add(c)
+    for x, y, z, d in stairs:
+        if (x, y, z) in air:
+            w.set(x, y, z, getattr(B, L.get("stair", "STONEBRICK_STAIRS")), d)
+    light = L.get("light")
+    if light:
+        for r in rooms.values():
+            a0, b0, a1, b1 = r["rect"]
+            y = r["floor"] + light.get("y", 2)
+            mx, mz = (a0 + a1) // 2, (b0 + b1) // 2
+            for (x, z), side, wall in (((mx, b0), "n", (mx, b0 - 1)), ((mx, b1), "s", (mx, b1 + 1)),
+                                       ((a0, mz), "w", (a0 - 1, mz)), ((a1, mz), "e", (a1 + 1, mz))):
+                if (x, y, z) in air and (wall[0], y, wall[1]) not in air and w.id(wall[0], y, wall[1]) != B.AIR:
+                    w.set(x, y, z, B.TORCH, torch_data(side))
+    made |= _props(w, L.get("props", []))
+    return {(x, z): f for (x, z), f in floors.items() if (x, f, z) in air}
+
+
+def _props(w, props):
+    """Each prop's `box` (x0, y0, z0, x1, y1, z1) filled with its `block`, in order. Returns the blocks set."""
+    laid = set()
+    for pr in props:
+        a0, y0, b0, a1, y1, b1 = pr["box"]
+        one = block(pr["block"])
+        for x in range(min(a0, a1), max(a0, a1) + 1):
+            for y in range(min(y0, y1), max(y0, y1) + 1):
+                for z in range(min(b0, b1), max(b0, b1) + 1):
+                    w.set(x, y, z, *one)
+                    laid.add((x, y, z))
+    return laid
+
+
+def _manhattan(a, b):
+    """The cells from a to b along one axis, a and b included."""
+    (ax, az), (bx, bz) = a, b
+    if ax != bx:
+        step = 1 if bx > ax else -1
+        return [(x, az) for x in range(ax, bx + step, step)]
+    step = 1 if bz > az else -1
+    return [(ax, z) for z in range(az, bz + step, step)]
+
+
+def _mix(spec, rng):
+    """A block drawn each call from a block or [[block, weight], ...]."""
+    if isinstance(spec, list) and spec and all(isinstance(e, list) for e in spec):
+        blocks = [block(b) for b, _ in spec]
+        p = np.array([wt for _, wt in spec], float)
+        p /= p.sum()
+        return lambda: blocks[int(rng.choice(len(blocks), p=p))]
+    one = block(spec)
+    return lambda: one
 
 
 def _offset(pts, by):

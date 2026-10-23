@@ -92,14 +92,16 @@ def turned(tree, turn):
     return out
 
 
-def plant(w, x, z, tree, turn=0, allowed=None, through=PLANTS, gives_way=GIVES_WAY):
+def plant(w, x, z, tree, turn=0, allowed=None, through=PLANTS, gives_way=GIVES_WAY, ground=None):
     """Plant `tree` with its foot at (x, z), turned `turn` quarter turns. allowed(x, z) may refuse a column any
-    block of it would stand in. Returns True if it stood, False (and nothing written) if it was refused."""
+    block of it would stand in. `ground(x, z)` is the surface it stands on (the column's top where None), so a
+    tree can stand under an overhang. Returns True if it stood, False (and nothing written) if it was refused."""
     body = turned(tree, turn)
     if not body:
         return False
     rest = min(b[1] for b in body)
-    tops = [w.top(x + dx, z + dz) for dx, dy, dz, _, _ in body if dy == rest]
+    top = ground or w.top
+    tops = [top(x + dx, z + dz) for dx, dy, dz, _, _ in body if dy == rest]
     if min(tops) < 0:
         return False
     base = min(tops) + 1 - rest
@@ -124,11 +126,12 @@ def plant(w, x, z, tree, turn=0, allowed=None, through=PLANTS, gives_way=GIVES_W
     return True
 
 
-def scatter(w, zone, by_kind, weights, rng, spacing=0.85, tries=4000, planted=None, ok=None, allowed=None):
+def scatter(w, zone, by_kind, weights, rng, spacing=0.85, tries=4000, planted=None, ok=None, allowed=None,
+            ground=None):
     """Plant a wood over zone (a mask over the world's columns): up to `tries` shuffled cells, each a tree of a
     kind drawn by `weights` ({kind: share}), a random one of that kind and a random quarter turn, kept only if its
     crown is `spacing` of the crown radii clear of every tree in `planted` [(x, z, radius), ...] (which it adds
-    to) and ok(x, z, tree) allows it. Returns how many stood."""
+    to) and ok(x, z, tree) allows it; `ground` is passed to plant. Returns how many stood."""
     planted = [] if planted is None else planted
     X, Z = w.grid()
     names = list(weights)
@@ -146,7 +149,7 @@ def scatter(w, zone, by_kind, weights, rng, spacing=0.85, tries=4000, planted=No
             continue
         if ok is not None and not ok(x, z, t):
             continue
-        if plant(w, x, z, t, int(rng.integers(4)), allowed):
+        if plant(w, x, z, t, int(rng.integers(4)), allowed, ground=ground):
             planted.append((x, z, c))
             n += 1
     return n

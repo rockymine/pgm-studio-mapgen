@@ -78,7 +78,7 @@ and `seed` come from `pgmvox` itself.
 | `read.sketch` | the annotated sheet: map panels (a plan raster or a built top-down) with heights, places, markers, routes, jumps, zones and callouts; true-scale and unrolled sections; the checker's numbers against their targets |
 | `read.plot` | the bounded canvas a contributor builds a plot into, and `check_alone` with its verdict |
 | **`document`** | The layer document: a board stated as data and built in stages. |
-| `document.layers` | a board stated as a layer document (JSON) and built in stages, every layer kept as a `Step` with the columns it changed: `build`, `ground` (the fields and ground alone), `expr` (any number as a field), `area_distance`; the made stage in the Brittlebush grammar, placed boxes, masses with face patterns, floor fields and the symmetry |
+| `document.layers` | a board stated as a layer document (JSON) and built in stages, every layer kept as a `Step` with the columns it changed: `build`, `ground` (the fields and ground alone), `expr` (any number as a field), `area_distance`; the made stage in the Brittlebush grammar, placed boxes, masses with face patterns, floor fields and the symmetry; levels over the ground, an arch, tunnels, chambers, rooms and shafts, each floor published as a `Surface` |
 | `run` | the build pipeline: `python3 -m pgmvox.run <board-dir>` |
 
 ## The block table comes from the studio
@@ -624,6 +624,17 @@ a hedge and walls. `boards/riftwater-pgmvox/riftwater.ground.layers.json` is the
 equal to `plan.land()` by a test. `examples/layers/saumland.layers.json` puts a yard in Brittlebush's grammar beside
 grown ground held under its rims, with monoliths sunk into the meadow, a fluted tower, a ringed forecourt and the
 half turn. The format is written out in `analysis/freeform-vs-studio/LAYER-DOCUMENT.md`.
+
+**A board may stand on more than one floor.** A level is a ground of its own over an outline, laid apart so the
+ground under it stays, resting on that ground where it reaches it and hanging over it where it does not. A carve
+cuts tunnels, chambers, rooms and shafts out of the laid ground, and an arch lays a deck over what it spans. Each
+floor is a surface that trees name with `on`, and the symmetry turns them with the world.
+
+**`examples/hold/` is a valley built on three floors.** A Shelf at 68 rests on a hill and hangs over a meadow, its
+stream falling into the river; an arch carries the road over the river to a hamlet of seven houses round a green; a
+mouth in the hill's cliff leads down to a cavern; and under the keep on the green a well drops into an undercroft, a crypt, cells and a cistern, where a miners'
+tunnel from the cavern broke into the crypt. Its read-back gives the air under the Shelf, the arch's clearance, the
+mouth and every room's floor.
 
 ## Starting a board
 

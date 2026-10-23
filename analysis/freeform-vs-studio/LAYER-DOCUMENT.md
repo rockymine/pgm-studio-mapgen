@@ -1,11 +1,12 @@
-# The layer document, draft 3
+# The layer document, draft 4
 
 A board stated as data: ordered layers, each one operation over the areas it is drawn in, built in fixed stages
 and kept as it ran. This is the shape the sketch tool's document takes in Studio 2.0. `pgmvox.document.layers` builds
 it, `freeform/lib/examples/layers/island.layers.json` is a whole board written in it, and
 `freeform/lib/boards/riftwater-pgmvox/riftwater.ground.layers.json` is the Riftwater port's ground, 38 layers that build its
-heights and water bit for bit, and `freeform/lib/examples/layers/saumland.layers.json` puts made and grown
-ground on one board.
+heights and water bit for bit, `freeform/lib/examples/layers/saumland.layers.json` puts made and grown
+ground on one board, and `freeform/lib/examples/hold/hold.layers.json` is a board on three floors: a valley, a
+second ground over it, an arch, a cave and a dungeon.
 
 ## What it is for
 
@@ -20,7 +21,7 @@ build.
 
 ## The stages
 
-**A document builds in thirteen stages, always in this order.** A layer belongs to one stage, and within a stage
+**A document builds in fifteen stages, always in this order.** A layer belongs to one stage, and within a stage
 the layers run as listed.
 
 | Stage | Key | What it does |
@@ -31,12 +32,14 @@ the layers run as listed.
 | paint | `paint` | the top block of each grown column: the first paint layer that applies wins |
 | lay | `lay` | grown columns laid to the heights, rock in beds, soil by slope, the paint on top, the underside |
 | water | `water` | the water each river holds, its bed painted by its own stack |
+| levels | `levels` | grounds of their own over an outline, each laid, painted and watered apart, resting or hanging |
+| carve | `carve` | tunnels, chambers, rooms with their halls, and shafts cut out of the laid ground |
 | faces | `faces` | courses on every drop of the grown ground: a grammar's face, what lies under it, its foot |
 | made | `made` | the made cells through the grammar, faces as deep as the drop to the grown beside them; its houses |
 | volume | `volume` | bodies set into the ground: a box turned and tilted, sunk, painted in its own frame, hollowed |
 | structures | `structures` | masses with patterned faces, floors laid as fields |
 | build | `build` | what stands on the finished ground: a path's surface and steps, walls, hedges, fences |
-| dress | `dress` | trees and scattered things, kept `clear` blocks (3 unless stated) off everything built |
+| dress | `dress` | trees and scattered things, kept `clear` blocks (3 unless stated) off everything built, their crowns `spacing` crown radii apart (0.85 unless stated) |
 | symmetry | `symmetry` | the drawn part copied onto its image, recoloured for the other team |
 
 ## Areas
@@ -136,6 +139,8 @@ the slope and rock in beds that follow the surface. The water's bed has a stack 
 |---|---|---|
 | `surface` | `near` (a path layer), `blocks`, `weights`, `steps`: none, `stairs` (`stair`) or `half` (`slab`) | `route.pave`, `route.steps`, `route.halfsteps` |
 | `wall` | `line` or `near` + `offset`, `height`, `width`, `crown` (`follow`, `level`, `grade`), `run`, `blocks`, `weights`, `cap`, `crenel`, `gap`, `closed` | `build.line_wall` |
+| `house` | `at`, `heading`, `L`, `W`, `storeys`, `style` (`town`, `plaster`, `brick`, `stone`), `roof`, `door`, `jetty`, `chimney` | `build.house` |
+| `blocks` | `boxes`, each a `box` (x0, y0, z0, x1, y1, z1) and a `block` | the document's own |
 
 **A hedge, a wall and a fence are the same layer with different blocks.** The island's hedge runs four blocks off
 the road with a gap every fourteen, and its curtain wall holds its crown level over runs of five:
@@ -143,6 +148,10 @@ the road with a gap every fourteen, and its curtain wall holds its crown level o
 ```json
 {"id": "hecke", "op": "wall", "near": "strasse", "offset": 4, "height": 1, "blocks": [["LEAVES", 4]], "gap": [14, 2]}
 ```
+
+**A house stands on the highest ground under it, its plate filled down to the rest.** Its footprint counts as
+built, so a wood keeps `clear` of it. A `blocks` layer sets boxes of one block each, for what no other layer
+says: the posts and roof over a well.
 
 **A path is two layers, because it does two things at two times.** The `path` layer grades the ground in the
 ground stage; the `surface` layer lays its blocks and steps once the ground is laid. Half steps are blocks and
@@ -205,6 +214,55 @@ by height, whatever the rim), each with an `else`; left out, the beds the lay st
 `freeform/lib/examples/layers/wandbild/` is one board in five dressings: none, Outback's panels, Claywork's face with
 its panels and lattice, bands by height, and Brittlebush's edge.
 
+## Levels
+
+**A level is a second ground over the first, and the first stays under it.** It has an `id`, a `floor` and a
+`ground` list of its own, which reads the board's fields and lines and starts at that floor; its first layer is an
+`outline` with an `area` instead of a box. It is laid into a world of its own and copied in where that world holds
+a block, so nothing it lays clears the ground below.
+
+**Under its edges a level tapers as a floating island does.** `underside` takes `taper` (blocks at the edge,
+blocks per block in), `rough`, `seed` and `clear`. Where the taper leaves fewer than `clear` blocks of air over the
+surface below, the level rests on it instead: it is laid down into that ground, soil and all, and the surface below
+ends there.
+
+**A level carries its own paint and water.** `paint` and `water.bed` are stacks like the board's, read with the
+level's slope, so a level's meadow and the valley's are finished apart. `falls` lists places on its rim, each `at`
+and `r`, where its water falls as flowing water to the surface under the lip.
+
+**Every floor a player can stand on is published as a surface.** The board's own ground is `ground`; a level, an
+arch's deck and each carve's floor publish theirs by their ids, each with the y of its top in every column, -1 where
+it is not, and the lowest block over it where that is known. A trees layer stands on the surface it names with `on`,
+and on `ground` where it names none and the board has a level or a deck; a tree whose crown would reach the ceiling
+over it is not planted.
+
+## Carves
+
+**A carve cuts air out of the laid ground and never comes nearer the surface than `cover` blocks.** The surface it
+keeps under is the ground the board stood with before the stage: the top of each column's lowest solid run, so a
+cave under a level that hangs is guarded by the meadow, not the level. Every carve publishes its floor.
+
+| `op` | Numbers | From pgmvox |
+|---|---|---|
+| `tunnel` | `pts` ([x, floor y, z, radius] each), `mouths` (the waypoints open to the air), `lift`, `breach`, `dress` | `under.tunnel`, `under.dress_cave` |
+| `chamber` | `at` [x, floor y, z], `rx`, `rz`, `h`, `dress` | `under.chamber`, `under.dress_cave` |
+| `rooms` | `rooms` (`id`, `rect`, `floor`, `h`), `halls` (`from`, `to`, `via`, `width`, `h`), `lining`, `light`, `props`, `stair` | the document's own |
+| `shaft` | `at` [x, z], `bottom`, `top` (`ground` or a y), `ladder_on` | `under.shaft` |
+
+**A tunnel's mouth is a waypoint whose cover guard is lifted.** Within its radius and a block and a half of it the
+passage opens to whatever is over it, so a mouth set at the foot of a face cuts a portal and one set on a slope cuts
+a trench. `dress` finishes the cave with floors, stalactites, stalagmites and ore, and never touches a block a
+`rooms` or `shaft` layer laid; a tunnel that is a `breach` cuts through them.
+
+**Rooms are rectangles at stated floors, and a hall climbs between them a block a step.** A hall leaves the first
+room's middle along `via`, turns once and enters the second, and its rise is spread over the middle of its length
+on stairs that face the climb; a hall too short for its rise is refused. `lining` gives the `wall`, `floor` and
+`ceiling` blocks, each a block or a weighted mix, laid wherever the rock was solid, so a breach or a second carve
+opens through it.
+
+**A room is furnished from data.** `light` hangs a torch at the middle of each wall at `y` over the floor, and
+`props` fills a box with a block: tombs, bars, a pool, a pillar.
+
 ## Volume, structures and symmetry
 
 **A volume layer sets a body into the ground the way Stratum set its fragments.** `box` takes `at`, `size` (width,
@@ -212,6 +270,11 @@ height, depth), `yaw`, `tilt`, `sink` (the share of its upright height under the
 footprint, `centre` or a y), `hole` (a frame's wall, for a ring or a gate) and `paint`: a `block`, or `bands`
 along one of its own axes, with a `cap`. It writes only over ground, water and plants, so trees and earlier bodies
 stand.
+
+**An `arch` is a deck over whatever it spans.** It takes a `line`, a `width`, `deck` and `thick` as (crown, end,
+power) along the span, a `camber` to its sides, `top`, `under` and `rock` blocks and `clear`. It is laid only where
+the deck stands over the highest surface or water under it, so its ends grow out of the ground they meet, and its
+deck is a surface trees may stand on when a trees layer names it.
 
 **A structure is a mass with patterned faces, or a floor laid as a field.** `mass` pours a footprint from the
 ground to `height` and patterns its faces with pgmvox's face patterns, each stated as `{"flutes": {"period": 3,
@@ -221,9 +284,9 @@ medallion, corners, diamonds, stripes, tiles, cross, star and `rings`, concentri
 
 **Symmetry is the last stage, so every stage before it draws one team's part.** `half`, `mirror_x`, `mirror_z`,
 `cw` or `ccw` copies what `keep` holds onto its image, turning every block's data with it, and `recolour` maps a
-team's blocks to the other's.
+team's blocks to the other's. The surfaces are turned with the world.
 
-## What draft 3 does not hold
+## What draft 4 does not hold
 
 **Riftwater's ground is data; its world is not yet.** The heights and water are the 38 layers named above, held
 equal to `plan.land()` by a test. Its paint, buildings, caves and dressing are still the port's code.
@@ -232,8 +295,12 @@ equal to `plan.land()` by a test. Its paint, buildings, caves and dressing are s
 a document would need a `sections` entry beside `cells` for it, with the clay style. The fills and faces are the
 style's code; a document names them and does not state them.
 
-**Objectives, caves and the map's XML are not layers yet.** Spawns, wools, monuments and hills, the tunnels and
-chambers of `pgmvox.volume.under`, and `map.xml` are calls a board makes after `document.build`.
+**Objectives and the map's XML are not layers yet.** Spawns, wools, monuments and hills, and `map.xml`, are calls a
+board makes after `document.build`.
+
+**Faces, the made stage, structures and build read the board's own ground.** A wall, a path's surface or a face
+course on a level is not stated yet; only paint, water and trees are per surface. A mine gallery
+(`under.gallery`) is not a carve either.
 
 **`melt` works on the crater alone.** A level top or a butte with a surface of its own would melt the same way
 through `smooth_max`, and the operation list grows one row at a time from the shapes pgmvox already carries.
