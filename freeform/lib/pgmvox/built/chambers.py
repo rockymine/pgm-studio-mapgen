@@ -1,4 +1,8 @@
-"""A goal's approach laid underground: each part of an `approach.Approach` a chamber cut into rock, the chain stepping
+"""The rejected way down, kept for the approach study: the author ruled a chain of narrow chambers out (a defence
+shuts a corridor with a few blocks, and a parapet takes away the fall a void is for). A board under a roof is
+`plan.bunker` and `built.bunker`.
+
+A goal's approach laid underground: each part of an `approach.Approach` a chamber cut into rock, the chain stepping
 down from its host to its room, the voids the form leaves cut as shafts to the void, its defence walls in bedrock.
 
     a = approach.emit("donut", depth=3, reach=2)

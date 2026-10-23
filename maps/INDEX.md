@@ -13,6 +13,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `arcade/lantern_pass` | `freeform/lib/boards/lanternpass` | `freeform/lib/boards/lanternpass` |
 | `arcade/loomfall` | `freeform/lib/boards/loomfall` | `freeform/lib/boards/loomfall` |
 | `blitz/spark` | `freeform/lib/boards/spark` | `freeform/lib/boards/spark` |
+| `ctw/blastworks` | `freeform/lib/boards/blastworks` | `freeform/lib/boards/blastworks` |
 | `ctw/brassmoor_works` | `freeform/lib/boards/brassmoor-works` | `freeform/lib/boards/brassmoor-works` |
 | `ctw/brittlebush_iii` | `freeform/lib/boards/brittlebush-iii` | `freeform/lib/boards/brittlebush-iii` |
 | `ctw/burrowgate` | `opus5-burrowgate` | `specs/opus5-burrowgate` |
@@ -22,6 +23,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `ctw/coinfall` | `opus5-coinfall` | `specs/opus5-coinfall` |
 | `ctw/coldharbour` | `coldharbour` | `specs/archive/coldharbour` |
 | `ctw/coldharbour_v2` | `coldharbour_v2` | `specs/archive/coldharbour_v2` |
+| `ctw/coldstore` | `freeform/lib/boards/coldstore` | `freeform/lib/boards/coldstore` |
 | `ctw/crossdyke` | `opus5-crossdyke` | `specs/opus5-crossdyke` |
 | `ctw/crystalline_quarry` | `hk2_crystalline_quarry` | — |
 | `ctw/delverdale` | `delverdale` | `specs/delverdale` |
@@ -33,6 +35,7 @@ its spec or scripts are. `tools/worlds.py` reads and extends this table; `tools/
 | `ctw/fellgate_moor` | `sonnet-r5-fellgate` | `specs/archive/sonnet-r5-fellgate` |
 | `ctw/flintwick` | `opus5-flintwick` | `specs/opus5-flintwick` |
 | `ctw/four_winds_compound` | `sonnet-compass` | `specs/archive/sonnet-compass` |
+| `ctw/frostvault` | `freeform/lib/boards/frostvault` | `freeform/lib/boards/frostvault` |
 | `ctw/gallowsholt` | `opus5-gallowsholt` | `specs/opus5-gallowsholt` |
 | `ctw/garsdale` | `opus5-garsdale` | `specs/opus5-garsdale` |
 | `ctw/grok_ridge` | `grok-ridge` | `specs/archive/grok-ridge` |
