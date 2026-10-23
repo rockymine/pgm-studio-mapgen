@@ -12,12 +12,12 @@ SYM = Symmetry("mirror_x")                       # between the teams; inside a t
 
 # ---- the box --------------------------------------------------------------------------------------------------------
 X0, Z0, SX, SZ, SY = -128, -80, 256, 160, 100
-MARGIN = 22                                      # the ice field runs this far past the bunker's walls, down its sides
+RIM = 6                                          # the rock round the bunker's walls: the map is one block this much wider
+GORGES = 5                                       # gorges cracked into the snowfield, in each quarter
 INNER = (-92, -1, 0, 54)                         # the drawn quarter's inside, u0, u1, v0, v1
 OUTER_U, OUTER_V = -104, 56                      # the bedrock box's outer faces in the quarter: u -104, v 56
 FLOOR = 7                                        # an island's underside; below it, nothing but void to the world's floor
 TOP = 17                                         # an island's top block: players stand at y 18
-PLINTH = (9, 10)                                 # the stone plinth round every island, pillar and wall, a block proud
 CEIL = 41                                        # the last block of air: the roof's bedrock is y 42 to 48
 ROOF = (42, 48)
 TRIM = 36                                        # the ceiling trim on the walls, y 36 to 41
@@ -65,7 +65,7 @@ SLOT = (-87, 18, 2)                              # the monument for the wool tak
 
 # ---- the roof fans and the vents --------------------------------------------------------------------------------------
 FANS = [(-61, 25, 8)]                            # (u, v, r): a round hole in the roof over the void, a fan in it
-SURFACE = 49                                     # the ice over the roof starts here
+SURFACE = 49                                     # the ice over the roof starts here; the snowfield lies about 6 over it
 SHAFT = 3.2                                      # a fan's shaft up through the ice to the sky, this radius
 POCKET = (-90, -73, 5, 24)                       # beside the spawn, between it and its wool block: its team builds nothing
 ARROW_SQUARE = (-86, -84, 19, 21)                # the arrow's square of colour, u0, u1, y0, y1, in the face at v 26

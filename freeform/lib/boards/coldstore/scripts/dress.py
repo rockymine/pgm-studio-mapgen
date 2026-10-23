@@ -3,13 +3,13 @@
     alcoves(w)      the great door's alcove in the south wall at the islands' height, and the balcony at the vents'
     vault_door(w)   a round blast door in the west wall's face, its hinge on the north
     faces(w, k)     on every face of rock: pipes, valves, vent grates, screens, graffiti and fire extinguishers
-    ceiling(w)      lamps in the roof and its fans: a round hole over the void with a blade fan and a cap
-    drifts(w, k)    snow and ice blown in through the fans, lying on the islands; it grows back in a match
-    surface(w)      the ice over the roof, the stacks over the fans, the hatch over the spawn and the mast
+    ceiling(w)      the roof's underside coffered in obsidian and grey wool, lamps, icicles, and its fans
+    drifts(w, k)    snow and ice blown in through the fans, lying on the islands
+    surface(w)      the block's rock rim and the snowfield over the roof, the fans' shafts, the hatch and the mast
 
 **The story is that the cold got in.** The bunker's fans drew the air of the ice field above it, and the snow came
 with it: it lies in drifts on the islands, thickest under the fans, and the islands' drifts are the one ground a
-blast can take away and the match gives back.
+player can dig away.
 """
 import math
 
@@ -130,12 +130,32 @@ def faces(w, k, seed=5):
                             w.set(u - du, y, v - dv, B.COAL_BLOCK)
 
 
-def ceiling(w):
-    """Lamps in the roof's underside every eight blocks, and the fans."""
+def ceiling(w, seed=31):
+    """The roof's underside coffered: ribs of obsidian every eight blocks, panels of grey wool between them with a lamp
+    in each middle; icicles of packed ice hanging from it, thickest along the walls; and the fans. Packed ice, since
+    a broken icicle of ice would leave water running from the roof."""
+    rng = np.random.default_rng(seed)
     for u in range(S.U0, 0):
         for v in range(0, S.V1 + 1):
-            if u % 8 == 4 and v % 8 == 4 and w.id(u, L.CEIL, v) == B.AIR:
+            if w.id(u, L.CEIL, v) != B.AIR:
+                continue
+            if u % 8 == 4 and v % 8 == 4:
                 w.set(u, L.ROOF[0], v, B.SEA_LANTERN)
+            elif u % 8 == 0 or v % 8 == 0 or (u % 8 + v % 8 == 8 and u % 8 in (2, 6)):
+                w.set(u, L.ROOF[0], v, B.OBSIDIAN)       # the ribs, and a short diagonal at each lamp's corners
+            else:
+                w.set(u, L.ROOF[0], v, B.WOOL, 7)
+    for u in range(S.U0, 0):
+        for v in range(0, S.V1 + 1):
+            if w.id(u, L.CEIL, v) != B.AIR or w.id(u, L.ROOF[0], v) == B.SEA_LANTERN:
+                continue
+            wall = any(w.id(u + du, L.CEIL, v + dv) != B.AIR for du, dv in DIRS)      # beside the cornice
+            if rng.random() < (0.10 if wall else 0.025):
+                n = int(rng.choice([1, 2, 2, 3, 3, 4, 5]))
+                for y in range(L.CEIL, L.CEIL - n, -1):
+                    if w.id(u, y, v) != B.AIR:
+                        break
+                    w.set(u, y, v, B.PACKED_ICE)
     for cu, cv, r in L.FANS:
         for u in range(cu - r - 1, cu + r + 2):
             for v in range(cv - r - 1, cv + r + 2):
@@ -181,66 +201,119 @@ def drifts(w, k, seed=11):
                 w.set(u, L.TOP + 1, v, B.SNOW_LAYER, int(rng.integers(0, 2)))
 
 
+def _strata(y, u, v):
+    """The block's sides: beds of stone, andesite, diorite and cobble, gently waved, packed ice in the top beds."""
+    k = (y + int(2.5 * math.sin(u / 9.0) + 2.0 * math.sin(v / 7.0))) % 11
+    if y > L.SURFACE + 1 and k in (3, 4):
+        return (B.PACKED_ICE, 0)
+    return ((B.STONE, 0), (B.STONE, 0), (B.STONE, 5), (B.STONE, 5), (B.STONE, 0), (B.COBBLE, 0),
+            (B.STONE, 0), (B.STONE, 3), (B.STONE, 0), (B.STONE, 5), (B.STONE, 0))[k]
+
+
 def surface(w, seed=21):
-    """The ice field over the roof and round the bunker, the drawn quarter's share of it: packed ice and snow rolling
-    eight to twenty blocks deep over the roof, rock showing through, and past the walls the field falling away in
-    cliffs of rock and ice to the world's floor, so the bunker's bedrock is nowhere seen; a shaft up from each fan to
-    the sky, the spawn's hatch and a mast."""
-    u0, v1 = L.X0, L.Z0 + L.SZ - 1
-    nu, nv = -u0, v1 + 1
-    big = noise.fbm((nu, nv), 30, 3, seed=seed)
-    small = noise.fbm((nu, nv), 7, 2, seed=seed + 1)
-    rock = noise.fbm((nu, nv), 9, 2, seed=seed + 2)        # rock showing through: knolls, not ridges
-    edge = noise.fbm((nu, nv), 12, 2, seed=seed + 3)
-    for i in range(nu):
-        for j in range(nv):
-            u, v = u0 + i, j
-            t = L.SURFACE + 9 + int(round(7 * big[i, j] + 2 * small[i, j]))
-            out = max(L.OUTER_U - u, v - L.OUTER_V, 0)       # how far past the bunker's walls
-            if out:
-                f = min(1.0, (out + 4 * edge[i, j]) / L.MARGIN)
-                t = int(round(t - (t - 3) * f * f * (3 - 2 * f)))
-                base = 0
-            else:
-                base = L.SURFACE
-            for y in range(base, t + 1):
-                w.set(u, y, v, B.STONE if y < t - 3 and out else B.PACKED_ICE)
-            if rock[i, j] > 0.55:
-                for y in range(max(base, t - 3), t + int((rock[i, j] - 0.55) * 18) + 1):
-                    w.set(u, y, v, B.STONE, 5 if (u + v) % 3 else 0)
-            elif big[i, j] + 0.6 * small[i, j] > -0.35:
-                w.set(u, t, v, B.SNOW)
-                if small[i, j] > -0.2:
-                    w.set(u, t + 1, v, B.SNOW_LAYER, int(np.clip((small[i, j] + 0.2) * 7, 0, 6)))
+    """The ice field over the roof, the drawn quarter's share of it. The map stays one block: past the bunker's walls
+    a rim of rock RIM blocks thick stands from the world's floor, its sides beds of stone, and on top lies a snowfield
+    as the winter study drew it: outcrops of tilted rock breaking through snow that flows round them, drift ridges
+    across a wind from the west, and gorges cracked down through the ice, some of them out through the block's sides.
+    A shaft rises from each fan to the sky, and the spawn's hatch and a mast stand on the snow."""
+    from scipy import ndimage
+    from pgmvox.geom.noise import smoothstep
+    from pgmvox.geom.shapes import polyline, shatter
+    ru, rv = L.OUTER_U - L.RIM, L.OUTER_V + L.RIM
+    U, V = np.meshgrid(np.arange(ru, 0), np.arange(0, rv + 1), indexing="ij")
+    U, V = U.astype(float), V.astype(float)
+    base = L.SURFACE + 6 + 2.5 * noise.fbm(U.shape, 40, 3, seed=seed)
+    p = shatter(U, V, 10, seed=seed + 2, warp=(5, 2, 60, 12))
+    rng = np.random.default_rng(seed + 3)
+    n = len(p.centres)
+    plane = rng.uniform(2, 8, n)[p.id] + rng.uniform(-0.5, 0.5, n)[p.id] * (U - p.centres[p.id, 0]) \
+        + rng.uniform(-0.5, 0.5, n)[p.id] * (V - p.centres[p.id, 1])
+    crag = np.clip(noise.fbm(U.shape, 30, 3, seed=seed + 4) + 0.4 * noise.fbm(U.shape, 9, 2, seed=seed + 5) + 0.05,
+                   0, None) / 0.45
+    rock = base - 3 + np.clip(plane * crag, 0, None) - 2 * smoothstep(0.8, 0, p.edge) * crag \
+        + 2 * noise.ridged(U.shape, 14, 3, seed=seed + 6) * crag
+    smooth = ndimage.gaussian_filter(rock, 5)
+    tail = ndimage.gaussian_filter(np.roll(np.clip(rock - smooth, 0, None), 5, axis=0), (8, 2))   # downwind, east
+    Uw, Vw = noise.warp(U, V, seed=seed + 7, big=10, small=2, big_cell=50, small_cell=12)
+    drift = 1.4 * np.sin(Uw / 7 + 0.3 * Vw / 7) + 0.7 * np.abs(np.sin(Uw / 2.6 + Vw / 11))
+    snow = smooth + 2.2 + drift + 1.2 * tail - 0.6 * np.clip(rock - smooth, 0, None)
+    deep = np.zeros(U.shape)
+    for c in range(L.GORGES):                           # zigzag gorges down through the ice, a few bridged by snow
+        x0, z0 = rng.uniform(ru, -10), rng.uniform(5, rv)
+        ang = rng.uniform(0, np.pi)
+        pts = [(x0, z0)]
+        for _ in range(6):
+            ang += rng.uniform(-0.7, 0.7)
+            step = rng.uniform(8, 16)
+            pts.append((pts[-1][0] + step * np.cos(ang), pts[-1][1] + step * np.sin(ang)))
+        dd, al = polyline(U, V, pts)[:2]
+        width = (1.2 + 1.8 * (0.5 + 0.5 * np.sin(al / 7 + c))) * smoothstep(0, 8, al) * smoothstep(al.max(), al.max() - 8, al)
+        bridged = noise.fbm(U.shape, 8, 1, seed=seed + 60 + c) > 0.5
+        depth = 10 + 4 * np.sin(al / 11 + 2 * c)
+        deep = np.where((dd < width) & ~bridged, np.maximum(deep, depth * smoothstep(width, width * 0.3, dd)), deep)
+    exposed = rock >= snow - 0.5
+    top = np.where(exposed, rock, snow) - deep
+    floor = L.SURFACE + 1                                # a gorge stops on the ice over the roof
+    top = np.maximum(top, floor)
+    for i in range(U.shape[0]):
+        for j in range(U.shape[1]):
+            u, v = int(U[i, j]), int(V[i, j])
+            inside = u >= L.OUTER_U and v <= L.OUTER_V
+            lo = L.SURFACE if inside else 0
+            t = int(round(top[i, j]))
+            r = int(round(min(rock[i, j], top[i, j])))
+            side = u == ru or v == rv
+            for y in range(lo, t + 1):
+                if y <= r or (not inside and y < L.SURFACE):
+                    blk = _strata(y, u, v) if side or y < L.SURFACE else \
+                        ((B.STONE, 5) if p.id[i, j] % 3 == 0 else (B.COBBLE, 0) if p.id[i, j] % 7 == 0 else (B.STONE, 0))
+                elif deep[i, j] > 0.5:
+                    blk = (B.ICE, 0) if y == t else (B.PACKED_ICE, 0)
+                else:
+                    blk = (B.SNOW, 0) if y > t - 2 else (B.PACKED_ICE, 0)
+                w.set(u, y, v, *blk)
+            if not exposed[i, j] and deep[i, j] <= 0.5:
+                layer = int(np.clip((snow[i, j] - t + 0.5) * 7, 0, 6))
+                if layer:
+                    w.set(u, t + 1, v, B.SNOW_LAYER, layer - 1)
+
+    def ground(u, v):
+        return int(round(top[u - ru, v]))
     for cu, cv, r in L.FANS:                              # the shaft from the fan to the sky, its crown louvred
-        top = L.SURFACE + 26
+        crown = max(ground(u, v) for u in range(cu - 4, cu + 5) for v in range(cv - 4, cv + 5)) + 5
         for u in range(cu - 4, cu + 5):
             for v in range(cv - 4, cv + 5):
                 d = math.hypot(u - cu, v - cv)
-                for y in range(L.ROOF[1] + 1, top + 1):
+                for y in range(L.ROOF[1] + 1, crown + 1):
                     if d <= L.SHAFT - 0.9:
                         w.set(u, y, v, B.AIR)
                     elif d <= L.SHAFT:
-                        louvre = y > top - 4 and (y + int(math.degrees(math.atan2(v - cv, u - cu)) // 30)) % 2
+                        louvre = y > crown - 4 and (y + int(math.degrees(math.atan2(v - cv, u - cu)) // 30)) % 2
                         w.set(u, y, v, B.IRON_BARS if louvre else B.IRON_BLOCK)
                 if d <= L.SHAFT:
-                    for y in range(top + 1, L.SY):
+                    for y in range(crown + 1, L.SY):
                         w.set(u, y, v, B.AIR)
-    hu, hv = (L.SPAWN_ROOM[0] + L.SPAWN_ROOM[1]) // 2, 0  # the hatch over the spawn: a hut of iron and clay
+    hu = (L.SPAWN_ROOM[0] + L.SPAWN_ROOM[1]) // 2         # the hatch over the spawn: a hut of iron and clay
+    hy = max(ground(u, v) for u in range(hu - 3, hu + 4) for v in range(0, 4))
     for u in range(hu - 3, hu + 4):
         for v in range(0, 4):
-            for y in range(L.SURFACE + 5, L.SURFACE + 11):
+            for y in range(L.SURFACE + 1, hy + 1):
+                w.set(u, y, v, B.PACKED_ICE)
+            for y in range(hy + 1, hy + 7):
                 edge = abs(u - hu) == 3 or v == 3
                 w.set(u, y, v, *((B.STAINED_CLAY, 9) if edge else (B.AIR, 0)))
-            w.set(u, L.SURFACE + 11, v, B.IRON_BLOCK)
-            w.set(u, L.SURFACE + 4, v, B.DSLAB, 8)
-    for y in range(L.SURFACE + 5, L.SURFACE + 9):
+            w.set(u, hy + 7, v, B.IRON_BLOCK)
+            w.set(u, hy, v, B.DSLAB, 8)
+            for y in range(hy + 8, hy + 10):
+                w.set(u, y, v, B.AIR)
+    for y in range(hy + 1, hy + 5):
         w.set(hu, y, 3, B.IRON_BLOCK)                     # its shut door
     mu, mv = -40, 30                                      # the mast, with its stays
-    for y in range(L.SURFACE + 4, L.SURFACE + 26):
+    my = ground(mu, mv)
+    for y in range(my + 1, my + 22):
         w.set(mu, y, mv, B.IRON_BARS)
-    for y in (L.SURFACE + 14, L.SURFACE + 20, L.SURFACE + 25):
+    for y in (my + 10, my + 16, my + 21):
         for d in (-1, 1):
             w.set(mu + d, y, mv, B.IRON_BARS)
             w.set(mu, y, mv + d, B.IRON_BARS)
-    w.set(mu, L.SURFACE + 26, mv, B.REDSTONE_BLOCK)
+    w.set(mu, my + 22, mv, B.REDSTONE_BLOCK)
