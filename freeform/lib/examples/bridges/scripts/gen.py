@@ -11,12 +11,10 @@ was built before sweep, column by column with its edge rows dropped at random, s
 The generator prints every crossing's teeth: per 100 blocks of side edge, the columns whose outermost block sits
 further out, or further in, than both its neighbours'.
 """
-import os
 import sys
 
 import numpy as np
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import B, World  # noqa: E402
 from pgmvox.geom import noise  # noqa: E402
 from pgmvox.ground import landform as LF  # noqa: E402

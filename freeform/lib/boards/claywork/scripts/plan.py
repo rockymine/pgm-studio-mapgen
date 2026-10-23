@@ -19,10 +19,7 @@ The levels step up from the front to the back in broad steps, each one block up 
     plan()          the raster (both halves), every piece a kind
     objectives()    teams, spawns, the four wools
 """
-import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 import numpy as np  # noqa: E402
 
 from pgmvox.play.objectives import Box, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402

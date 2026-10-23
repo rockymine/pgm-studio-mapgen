@@ -5,11 +5,8 @@ round for blue; no building and no using a block.
     python3 mapxml.py > map.xml
 """
 import math
-import os
-import sys
 from dataclasses import replace
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 
 import plan as P  # noqa: E402
 from pgmvox.plan.raster import Symmetry  # noqa: E402

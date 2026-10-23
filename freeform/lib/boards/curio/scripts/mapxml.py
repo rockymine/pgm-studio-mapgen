@@ -4,11 +4,8 @@ of four random orders, the hiders winning if any is alive at seven minutes.
 
     python3 mapxml.py > map.xml
 """
-import os
 import random
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 
 import plan as P  # noqa: E402
 import sketch  # noqa: E402

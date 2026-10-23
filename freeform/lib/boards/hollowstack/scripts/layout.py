@@ -3,10 +3,7 @@
 Every storey is stated here once: the chasm's face, the ground of the Tops, the floors of the Workings, the
 Underwood, the Undercroft and the Deep, the segment grids, the rooms and the wells.
 """
-import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox.plan.raster import Symmetry                                                # noqa: E402
 
 SYM = Symmetry("half")

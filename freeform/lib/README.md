@@ -14,6 +14,22 @@ boards that teach the library. `check.py` builds every folder with a `scripts/ge
 **`studies/` holds sheets of forms, not boards.** Volcanoes, winter ice, water, their combinations and dungeon
 plans, each with the renders the author judged; `studies/README.md` says what each kept.
 
+## Installing it
+
+**pgmvox is a Python package, `freeform/lib/pyproject.toml`, installed once per machine and editable:**
+
+```
+python3 -m pip install -e freeform/lib
+```
+
+**Editable means the checkout is what every script imports,** so a change to the library is live in every board at
+once, and the data files beside the code (`pgmvox/data`) and the repository's `tools/` stay where the library looks
+for them. Its dependencies are numpy, Pillow and scipy. A cloud session installs it as it starts
+(`.claude/settings.json`).
+
+**The package is the line a later move of the library to its own repository would cut along.** Nothing in a board
+reaches into `freeform/lib` by path any more; a board needs only `import pgmvox`.
+
 ## What is in it
 
 **pgmvox is thirteen packages, each one kind of thing.** `core` is what every other stands on, `geom` and `ground`
@@ -730,8 +746,9 @@ world.
 **The read-back earned its place on the example's first build.** It found 1,053 places to stand over the kill
 height: cloud billows rising through it. The deck now sits far below.
 
-**A board's scripts put the library on their path themselves,** as `examples/islets/scripts/plan.py` does, and
-`run` also sets `PYTHONPATH`. Every build writes `renders/build-info.txt` with the library version it used.
+**A board's scripts import the library as an installed package, never by path.** `run` and `check.py` stop at once
+where this Python does not import pgmvox from this checkout, and print the command that fixes it. Every build writes
+`renders/build-info.txt` with the library version it used.
 
 ## Building a board with it
 

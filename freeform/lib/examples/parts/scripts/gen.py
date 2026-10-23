@@ -5,10 +5,8 @@
     row 3   a patterned mass (flutes, a glyph row, a word, courses, a parapet, a coffered underside) and three
             carpets (medallion, runner, star)
 """
-import os
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import B, World  # noqa: E402
 from pgmvox.built import build as BLD  # noqa: E402
 from pgmvox.built import facade as F  # noqa: E402

@@ -3,7 +3,7 @@ import os; D = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(D,
 import sys, os, pickle, json, numpy as np
 from PIL import Image, ImageDraw, ImageFont
 D = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(ROOT, "freeform/lib/boards/riftwater-pgmvox/scripts")); sys.path.insert(0, os.path.join(ROOT, "freeform/lib"))
+sys.path.insert(0, os.path.join(ROOT, "freeform/lib/boards/riftwater-pgmvox/scripts"))
 import plan as P
 from pgmvox.geom import noise
 from pgmvox.geom.noise import spline

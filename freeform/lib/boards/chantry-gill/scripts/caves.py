@@ -8,10 +8,7 @@ A cave is a few stated points [x, floor y, z]; between them it wanders (`pgmvox.
 swing sideways and a width that breathes, every three blocks a waypoint, so no passage is a pipe. The floor runs
 straight between the stated points, so a player walks it.
 """
-import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from layout import FLOOR                                                               # noqa: E402
 from pgmvox.volume.under import wander                                                # noqa: E402
 

@@ -15,11 +15,8 @@ The board is red's half (z < 0) turned a half turn about the middle for blue's (
     objectives()    two teams; each keeps one wool in its house and takes the other's to its monument, and
                     keeps an emerald monument floating over its meadow that the other team destroys
 """
-import os
-import sys
 from dataclasses import replace
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 import numpy as np  # noqa: E402
 
 from pgmvox.grammar import brittle as BR  # noqa: E402

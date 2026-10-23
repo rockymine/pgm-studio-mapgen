@@ -18,7 +18,6 @@ from scipy import ndimage
 
 import dungeons as D
 from dungeons import N, ROCK, ROOM, CORR, DOOR, STAIR, PILLAR, rect, disc, I, K
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import B, World                                                   # noqa: E402
 from pgmvox.built import facade                                               # noqa: E402
 from pgmvox.core.orient import stair                                          # noqa: E402

@@ -16,10 +16,7 @@ all read which piece a column belongs to from the raster itself.
 Joins of two blocks between pieces are drawn as stair flights in the plan (`joins`), so the plan walk climbs
 them and is stopped by the retaining walls beside them, as the built world is.
 """
-import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 import numpy as np  # noqa: E402
 
 from pgmvox.play.objectives import Box, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402

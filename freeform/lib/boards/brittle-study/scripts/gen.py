@@ -9,12 +9,10 @@ originals and see whether the look carries.
     the tower yard  the high platform at 16, up a flight from the terrace: the tiered tower and its heart
     two islets      sand and cacti at 10 and 9, across gaps a player would bridge
 """
-import os
 import sys
 
 import numpy as np
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import B, World, rng  # noqa: E402
 from pgmvox.core.orient import stair  # noqa: E402
 

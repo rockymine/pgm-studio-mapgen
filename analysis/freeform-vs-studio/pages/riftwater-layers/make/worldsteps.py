@@ -2,7 +2,7 @@
 import os; D = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(D, "out"); ROOT = os.path.abspath(os.path.join(D, *[".."] * 5))
 import sys, os, pickle, numpy as np
 B = os.path.join(ROOT, "freeform/lib/boards/riftwater-pgmvox/scripts")
-sys.path.insert(0, B); sys.path.insert(0, os.path.join(ROOT, "freeform/lib"))
+sys.path.insert(0, B)
 os.chdir(B)
 import dress, ground, plan as P, under, works
 from pgmvox import B as BL, World

@@ -20,13 +20,15 @@ to `<dir>/map.xml` and the world to `<dir>/world`. That is how `check.py` rebuil
 
     python3 -m pgmvox.run <board-dir> [--build <build-dir>] [--out <dir>] [--from STEP] [--only STEP] [--skip STEP ...]
 
-Run from freeform/lib (or with it on PYTHONPATH). A board's scripts find the library on their own sys.path.
+pgmvox is an installed package (`pip install -e freeform/lib`, once per machine): a board's scripts import it as one,
+not by path, and `run` stops at once, saying so, where it is not installed or is installed from another checkout.
 """
 import argparse
 import datetime
 import os
 import subprocess
 import sys
+import tempfile
 
 from . import VERSION
 from pgmvox.core.world import studio_root, write
@@ -54,6 +56,19 @@ def world_folder(board, map_xml):
     worlds.register(place, os.path.abspath(board), key)          # the index makes the board relative itself
     return os.path.join(worlds.WORLDS, place)
 
+def require_installed():
+    """Stop with the command that fixes it unless this Python imports pgmvox, from anywhere, as this checkout's
+    copy: a board's scripts run in their own folder and find the library only as an installed package."""
+    here = os.path.dirname(os.path.abspath(__file__))
+    r = subprocess.run([sys.executable, "-c", "import os, pgmvox; print(os.path.dirname(os.path.abspath(pgmvox.__file__)))"],
+                       cwd=tempfile.gettempdir(), capture_output=True, text=True)
+    found = r.stdout.strip() if r.returncode == 0 else None
+    if found != here:
+        lib = os.path.dirname(here)
+        where = "is not installed" if found is None else f"is installed from {found}"
+        sys.exit(f"pgmvox {where} for {sys.executable}: run  {sys.executable} -m pip install -e {lib}")
+
+
 STEPS = ["plan_check", "sketch", "gen", "write", "mapxml", "renders", "walk"]
 
 
@@ -65,8 +80,7 @@ def run(board, build=None, start=None, only=None, skip=(), out=None):
     os.makedirs(renders, exist_ok=True)
     slug = os.path.basename(board.rstrip("/"))
     build = build or f"/tmp/{slug}-build"
-    env = dict(os.environ, PYTHONPATH=os.pathsep.join([os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                                                       os.environ.get("PYTHONPATH", "")]))
+    require_installed()
     steps = STEPS[STEPS.index(start):] if start else STEPS
     if only:
         steps = [only]
@@ -78,7 +92,7 @@ def run(board, build=None, start=None, only=None, skip=(), out=None):
         if not os.path.exists(path):
             log.append(f"{name}: none")
             return None
-        r = subprocess.run([sys.executable, path, *args], cwd=scripts, env=env, capture_output=True, text=True)
+        r = subprocess.run([sys.executable, path, *args], cwd=scripts, capture_output=True, text=True)
         if r.returncode != 0:
             raise RuntimeError(f"{name}.py failed:\n{r.stderr[-3000:]}")
         if out:

@@ -6,10 +6,7 @@ stone only TNT breaks, the roof under the deck a team walks on and the wall unde
 agreed in the author's review (plan 4 and the raised east block): blue's base runs z -21 to 20, even about the axis,
 so the two sides stand in line.
 """
-import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox.plan.raster import Symmetry                                                # noqa: E402
 
 SYM = Symmetry("half")

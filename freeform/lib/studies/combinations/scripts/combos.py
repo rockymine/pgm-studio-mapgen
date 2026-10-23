@@ -15,7 +15,6 @@ import numpy as np
 from PIL import Image, ImageDraw
 from scipy import ndimage
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "volcanoes", "scripts"))
 from pgmvox import B, World                                                   # noqa: E402
 from pgmvox.geom import noise                                                 # noqa: E402

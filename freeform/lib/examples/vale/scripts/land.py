@@ -7,12 +7,9 @@
     a hillside cut into terraces three blocks apart
     a floating island over the west with a fluted, spired underside
 """
-import os
-import sys
 
 import numpy as np
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox.ground import landform as L  # noqa: E402
 from pgmvox.geom import noise
 from pgmvox.routes import route as R

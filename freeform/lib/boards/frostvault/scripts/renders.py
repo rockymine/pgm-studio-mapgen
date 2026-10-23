@@ -8,7 +8,6 @@ import tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-sys.path.insert(0, os.path.join(HERE, "..", "..", ".."))
 import board                                                                           # noqa: E402
 import layout as L                                                                     # noqa: E402
 from pgmvox import World                                                               # noqa: E402

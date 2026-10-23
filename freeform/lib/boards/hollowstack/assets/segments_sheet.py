@@ -5,12 +5,10 @@
 Prints whether the far end of each style is reached on foot, and every place a player stands inside the pieces
 with fewer than three blocks of air over it, or fewer than four (a jump there meets the ceiling).
 """
-import os
 import sys
 
 import numpy as np
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import World, B                                                            # noqa: E402
 from pgmvox.built import segments as S                                                 # noqa: E402
 from pgmvox.read.walk import MoveRules, nearest, standing, walk                         # noqa: E402

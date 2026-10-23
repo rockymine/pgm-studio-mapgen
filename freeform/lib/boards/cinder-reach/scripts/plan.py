@@ -18,7 +18,6 @@ import sys
 from functools import lru_cache
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.normpath(os.path.join(HERE, "..", "..", "..")))   # freeform/lib
 sys.path.insert(0, os.path.normpath(os.path.join(HERE, "..", "..")))               # boards (common)
 
 import numpy as np  # noqa: E402

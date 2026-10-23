@@ -4,10 +4,7 @@ hill, drawn once as a raster with its half turn in the plan, and read by the che
     floors: 30 the islands, 33 the middle hill; the void below, the kill height at 20, cloud far under it
     a house on each island at 20 degrees to the board, its footprint in the plan so the checker walks round it
 """
-import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox.built.build import Frame  # noqa: E402
 from pgmvox.play.objectives import Box, Hill, Objectives, Observer, Spawn, Teams  # noqa: E402
 from pgmvox.plan.raster import Raster, Symmetry  # noqa: E402

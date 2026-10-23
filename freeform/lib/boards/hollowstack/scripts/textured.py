@@ -6,7 +6,6 @@ open along its middle, the Underwood, the Tops and the keep.
 import os
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox.read import render  # noqa: E402
 
 build, out = sys.argv[1], sys.argv[2]

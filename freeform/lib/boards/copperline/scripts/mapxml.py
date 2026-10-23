@@ -7,10 +7,7 @@ up; the defenders win at the clock.
 
 The payload module is an experiment in PGM: a server loads this map only with `experiments.payload: true`.
 """
-import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 
 import plan as P  # noqa: E402
 from pgmvox.play.logic import (After, All, Completed, Fill, MatchStarted, Message, Named, Not, Payload,  # noqa: E402

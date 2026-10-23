@@ -11,7 +11,6 @@ import sys
 
 import numpy as np
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import B, World                                                   # noqa: E402
 from pgmvox.built import chambers as CH                                       # noqa: E402
 from pgmvox.plan import approach as AP                                        # noqa: E402

@@ -18,11 +18,8 @@ Heights: H is the y of the floor block, a player stands at H + 1. The ground is 
     objectives()   teams, spawns, observer, the four monuments (two a team)
     links()        the stairs between the storeys, as plan-walk edges
 """
-import os
-import sys
 from functools import lru_cache
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 import numpy as np  # noqa: E402
 
 import land  # noqa: E402

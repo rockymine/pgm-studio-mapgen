@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -m pip install -q --no-build-isolation --no-deps -e \"$CLAUDE_PROJECT_DIR/freeform/lib\" >/dev/null 2>&1 || echo 'pgmvox could not be installed: run python3 -m pip install -e freeform/lib'"
+          }
+        ]
+      }
+    ]
+  }
+}

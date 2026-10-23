@@ -4,13 +4,10 @@ it onto blue, mark the ground at y 0 for the void rule, and write the volume for
     python3 gen.py <build-dir> [--stage terrain|under|all]
 """
 import argparse
-import os
-import sys
 import time
 
 import numpy as np
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 
 import plan as P  # noqa: E402
 from mc import World, B  # noqa: E402

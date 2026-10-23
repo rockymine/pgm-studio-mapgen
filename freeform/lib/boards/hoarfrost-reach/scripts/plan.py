@@ -11,11 +11,8 @@ Heights follow the library: H is the y of the floor block, a player stands at H 
     build()  the plan Raster (ground storey) with its flights, storey 1 for the two wool rooms' floors
     objectives()   teams, spawns, the four wools with their rooms and monuments, drawn once for red
 """
-import os
-import sys
 from functools import lru_cache
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 import numpy as np  # noqa: E402
 
 from pgmvox.geom import shapes  # noqa: E402

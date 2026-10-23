@@ -5,10 +5,7 @@ and the banner may be broken, and nothing placed but the banner in its slot.
 
     python3 mapxml.py > map.xml
 """
-import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 
 import plan as P  # noqa: E402
 from pgmvox.play.logic import (After, All, Completed, ControlPoint, Fill, MatchStarted, Message, Named,  # noqa: E402

@@ -7,12 +7,10 @@
 
 The generator prints the blocks each kind laid.
 """
-import os
 import sys
 
 import numpy as np
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import B, World  # noqa: E402
 from pgmvox.ground import landform as L  # noqa: E402
 from pgmvox.scenery import forms  # noqa: E402
