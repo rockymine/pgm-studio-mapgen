@@ -13,11 +13,8 @@ All heights follow the library: H is the y of the floor block, a player stands a
     objectives()  teams, spawns and cores, drawn once for red
 """
 import math
-import os
-import sys
 from functools import lru_cache
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 import numpy as np  # noqa: E402
 from scipy import ndimage  # noqa: E402
 

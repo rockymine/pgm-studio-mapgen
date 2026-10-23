@@ -4,14 +4,12 @@ voids a form leaves (cut as shafts when laid underground) and the seams its defe
     python3 plans.py                   # renders/forms.png
 """
 import os
-import sys
 
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt                                               # noqa: E402
 from matplotlib.patches import Rectangle                                      # noqa: E402
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox.built import chambers as CH                                       # noqa: E402
 from pgmvox.plan import approach as AP                                        # noqa: E402
 from approaches import SIZES                                                  # noqa: E402

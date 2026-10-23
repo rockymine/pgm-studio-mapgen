@@ -20,7 +20,6 @@ import numpy as np
 from PIL import Image, ImageDraw
 from scipy import ndimage
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import B, World                                                   # noqa: E402
 from pgmvox.geom import noise                                                 # noqa: E402
 from pgmvox.read import render                                                # noqa: E402

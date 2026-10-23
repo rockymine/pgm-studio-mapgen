@@ -4,10 +4,7 @@ past the board's edge, the clock held.
 
     python3 mapxml.py > map.xml
 """
-import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 
 from pgmvox import B  # noqa: E402
 from pgmvox.play.objectives import Box, Destroyable, Objectives, Observer, Spawn, Teams  # noqa: E402

@@ -4,13 +4,10 @@ here is (x0, y0, z0, x1, y1, z1) with an exclusive max, as a PGM cuboid reads it
 
     python3 mapxml.py > map.xml
 """
-import os
-import sys
 
 import gen as G
 import plan as P
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 
 from pgmvox.play.objectives import Box, Objectives, Observer, Portal, Spawn, TouchPoint  # noqa: E402
 from pgmvox.play.rules import Build, Effect, Item, KillHeight, Kit, Map, Match, Zone, terrain_of  # noqa: E402

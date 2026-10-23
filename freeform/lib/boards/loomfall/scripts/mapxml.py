@@ -3,10 +3,7 @@ under a player's step and falls, and the clearing of falling wool before it land
 
     python3 mapxml.py > map.xml
 """
-import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 
 import plan as P  # noqa: E402
 from pgmvox.play.logic import (All, BlockDrop, Cause, Damage, Entity, Falling, KillEntities, Material,  # noqa: E402

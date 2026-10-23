@@ -21,11 +21,8 @@ the one behind it, and each flight is at most three stair blocks, four blocks of
     PIECES / build()   the plan raster, both halves; ZONES the build zones (void a player may build over)
     objectives()       teams, spawns, observer, the four wools
 """
-import os
-import sys
 from functools import lru_cache
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 import numpy as np  # noqa: E402
 
 from pgmvox.play.objectives import Box, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402

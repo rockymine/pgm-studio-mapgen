@@ -2,10 +2,7 @@
 
     objectives()    pgmvox Objectives: two spawns, the observer, four monuments
 """
-import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from layout import FLOOR                                                              # noqa: E402
 from pgmvox import B                                                                   # noqa: E402
 from pgmvox.plan.raster import Symmetry                                                # noqa: E402

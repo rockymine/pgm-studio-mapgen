@@ -13,11 +13,8 @@ H is the y of the floor block; a player stands at H + 1.
     objectives()  teams, spawns and the monuments, drawn once for red
 """
 import math
-import os
-import sys
 from functools import lru_cache
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 import numpy as np  # noqa: E402
 
 from pgmvox.ground import landform as LF  # noqa: E402

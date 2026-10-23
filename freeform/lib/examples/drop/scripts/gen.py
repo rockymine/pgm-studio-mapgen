@@ -8,10 +8,8 @@ two water pieces as pools a fall lands in.
 
 The generator prints the blocks each piece laid.
 """
-import os
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import B, World  # noqa: E402
 
 from plan import build  # noqa: E402

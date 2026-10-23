@@ -16,11 +16,8 @@ H is the y of the floor block; a player stands at H + 1.
                   and its tunnels, storey 2 the roofs
     objectives()  teams, spawns, the three hills
 """
-import os
-import sys
 from functools import lru_cache
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 import numpy as np  # noqa: E402
 
 from pgmvox.play.objectives import Box, Hill, Objectives, Observer, Spawn, Teams  # noqa: E402

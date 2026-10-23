@@ -4,10 +4,7 @@ three seconds' protection at the start, nothing that hurts but the void, one lif
     python3 mapxml.py > map.xml
 """
 import math
-import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 
 import plan as P  # noqa: E402
 from pgmvox.play.logic import All, Give, Named, Participating, Time  # noqa: E402

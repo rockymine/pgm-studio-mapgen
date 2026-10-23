@@ -12,7 +12,6 @@ import numpy as np
 from PIL import Image, ImageDraw
 from scipy.spatial import cKDTree
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import B, World                                                   # noqa: E402
 from pgmvox.geom import noise                                                 # noqa: E402
 from pgmvox.geom.noise import smoothstep, spline                              # noqa: E402

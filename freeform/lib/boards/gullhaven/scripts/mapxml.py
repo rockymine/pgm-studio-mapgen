@@ -4,10 +4,7 @@ the clock held.
 
     python3 mapxml.py > map.xml
 """
-import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 
 from pgmvox.play.objectives import Box, Objectives, Observer, Spawn  # noqa: E402
 from pgmvox.play.rules import Bounds, Build, Effect, Item, Kit, Map, Match, Respawn, terrain_of  # noqa: E402

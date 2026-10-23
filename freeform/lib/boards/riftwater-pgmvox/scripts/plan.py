@@ -15,13 +15,10 @@ after its plan changed: the knoll at (-22, 74), the gaol on the square's corner,
 Heights follow the library: H is the y of the floor block and a player stands at H + 1.
 """
 import math
-import os
-import sys
 from functools import lru_cache
 
 import numpy as np
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox.ground import landform as LF  # noqa: E402
 from pgmvox.geom import shapes  # noqa: E402
 from pgmvox.volume import under as under_lib  # noqa: E402

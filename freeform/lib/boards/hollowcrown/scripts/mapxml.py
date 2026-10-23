@@ -4,10 +4,7 @@ team's own lifts, building up to y 112. Red's half is stated and blue's turned h
 
     python3 mapxml.py > map.xml
 """
-import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 
 from pgmvox.plan.raster import Symmetry  # noqa: E402
 from pgmvox.play.objectives import Box, Destroyable, Objectives, Observer, Portal, Spawn, Teams  # noqa: E402

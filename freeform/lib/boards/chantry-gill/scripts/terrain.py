@@ -5,13 +5,11 @@ cut between them, the highlands lifted piece by piece, the Scar's plateau. Nothi
 """
 import math
 import os
-import sys
 
 import numpy as np
 from scipy import ndimage
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(HERE, "..", "..", ".."))
 import layout as L                                                                     # noqa: E402
 import town as TW                                                                      # noqa: E402
 import caves as CV                                                                     # noqa: E402

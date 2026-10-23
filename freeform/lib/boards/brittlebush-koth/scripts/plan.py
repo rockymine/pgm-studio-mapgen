@@ -29,10 +29,7 @@ north-west, from the corner (a 0, b 0) to the middle (a 12, b 12): only the cell
     objectives()    the four teams, their spawns and the five hills
     APPLES, ARROWS  where the golden apples and the arrows grow
 """
-import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 import numpy as np  # noqa: E402
 
 from pgmvox.play.objectives import Box, Hill, Objectives, Observer, Spawn, Teams  # noqa: E402

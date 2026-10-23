@@ -5,10 +5,7 @@ v 0 to 54. x is u and z is v; the world's middle is the corner where the four qu
 The quarter is measured off the author's concept world: every rectangle below is one of its pieces, moved into this
 frame (u = x - 42, v = z - 45). Heights are the concept's own.
 """
-import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox.plan.raster import Symmetry                                                # noqa: E402
 
 SYM = Symmetry("mirror_x")                       # between the teams; inside a team the quarter is mirrored in z too

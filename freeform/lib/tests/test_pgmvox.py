@@ -15,7 +15,6 @@ import numpy as np
 from scipy import ndimage
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.dirname(HERE))
 
 from pgmvox import B, World  # noqa: E402
 from pgmvox.read import audit

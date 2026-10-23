@@ -9,7 +9,6 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-sys.path.insert(0, os.path.join(HERE, "..", "..", ".."))
 import layout as L                                                                     # noqa: E402
 import body                                                                            # noqa: E402
 import passages                                                                        # noqa: E402

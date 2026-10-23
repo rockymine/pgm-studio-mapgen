@@ -6,8 +6,6 @@ Pavilions are spruce and dark oak: dark oak log posts, white panels (white stain
 (prismarine), dark oak stair roofs that turn up at the corners. Lanterns are glowstone. Red and blue appear only
 on the teams' banners of wool; no lacquer red.
 """
-import os
-import sys
 
 import numpy as np
 
@@ -16,7 +14,6 @@ import plan as P
 import terrain as T
 from mc import B
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox.built import props  # noqa: E402
 
 DARK_LOG = (B.LOG2, 1)

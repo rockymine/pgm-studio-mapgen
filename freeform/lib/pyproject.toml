@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pgmvox"
+description = "The shared library for freeform PGM boards: blocks, the world, terrain, grammar, play, reads and renders."
+dynamic = ["version"]
+requires-python = ">=3.11"
+dependencies = ["numpy", "pillow", "scipy"]
+
+[tool.setuptools.dynamic]
+version = { attr = "pgmvox.VERSION" }
+
+[tool.setuptools.packages.find]
+include = ["pgmvox*"]
+
+[tool.setuptools.package-data]
+pgmvox = ["data/*.json", "data/*.json.gz", "data/*.cs"]

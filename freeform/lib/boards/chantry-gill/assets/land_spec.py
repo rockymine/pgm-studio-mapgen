@@ -140,8 +140,6 @@ doc = {
 }
 
 # where the ground is, read before the brig and the adit are placed on it
-import sys                                                                         # noqa: E402
-sys.path.insert(0, os.path.join(HERE, "..", "..", ".."))
 from pgmvox.document import layers                                                 # noqa: E402
 c, _ = layers.ground({k: v for k, v in doc.items() if k not in ("levels", "carve", "volume")})
 H = c.H

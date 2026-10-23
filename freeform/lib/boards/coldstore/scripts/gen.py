@@ -12,7 +12,6 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-sys.path.insert(0, os.path.join(HERE, "..", "..", ".."))
 import dress                                                                          # noqa: E402
 import layout as L                                                                     # noqa: E402
 import objectives as OB                                                                # noqa: E402

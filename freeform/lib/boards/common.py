@@ -16,10 +16,8 @@ import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-LIB = os.path.normpath(os.path.join(HERE, "..", ".."))
-for p in (LIB, HERE):
-    if p not in sys.path:
-        sys.path.insert(0, p)
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
 
 import numpy as np  # noqa: E402
 

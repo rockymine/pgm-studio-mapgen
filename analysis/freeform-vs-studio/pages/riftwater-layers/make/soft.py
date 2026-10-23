@@ -3,7 +3,7 @@ weighted down to nothing over the outer share of its area, so its edge meets the
 import os; D = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(D, "out"); ROOT = os.path.abspath(os.path.join(D, *[".."] * 5))
 import sys, json, numpy as np
 from PIL import Image, ImageDraw
-sys.path.insert(0, D); sys.path.insert(0, os.path.join(ROOT, "freeform/lib"))
+sys.path.insert(0, D)
 from pgmvox.ground import landform as LF
 from pgmvox.geom import shapes
 from pgmvox.geom.noise import fbm, smoothstep

@@ -3,12 +3,10 @@
     python3 pgmvox/data/slope_cases.py cases.json
 """
 import json
-import os
 import sys
 
 import numpy as np
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 from pgmvox.geom import noise  # noqa: E402
 
 

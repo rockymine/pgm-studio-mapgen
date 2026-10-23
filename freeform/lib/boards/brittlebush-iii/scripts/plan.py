@@ -11,10 +11,8 @@ stand at 9, and their lower floors run into the floor of the world at 1.
     objectives()    four teams; each keeps one wool in its room and captures the other three
 """
 import os
-import sys
 from dataclasses import replace
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox.grammar import brittle as BR  # noqa: E402
 from pgmvox.grammar import studioplan as SP  # noqa: E402
 from pgmvox.play.objectives import Box, Objectives, Observer, Spawn, Teams, Wool  # noqa: E402

@@ -32,7 +32,6 @@ from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
-sys.path.insert(0, HERE)
 SNAPSHOT = os.path.join(HERE, "check", "snapshot.json")
 HASHES = os.path.join(HERE, "check", "boards.json")
 BUILT = ["volume.bin", "tiles.json", "level.json"]                 # what a board's gen.py saves
@@ -136,8 +135,7 @@ def board_hashes(board, tmp):
     """Build `board` into a scratch folder and hash what its generator saved."""
     build = os.path.join(tmp, "boards", board.replace(os.sep, "--"))
     scripts = os.path.join(HERE, board, "scripts")
-    env = dict(os.environ, PYTHONPATH=os.pathsep.join([HERE, os.environ.get("PYTHONPATH", "")]))
-    r = subprocess.run([sys.executable, os.path.join(scripts, "gen.py"), build], cwd=scripts, env=env,
+    r = subprocess.run([sys.executable, os.path.join(scripts, "gen.py"), build], cwd=scripts,
                        capture_output=True, text=True)
     if r.returncode != 0:
         return None, r.stderr[-2000:]
@@ -226,6 +224,8 @@ def main():
     ap.add_argument("--boards", action="store_true")
     ap.add_argument("example", nargs="*", help="only these examples, or these boards (a path under the library)")
     a = ap.parse_args()
+    from pgmvox.run import require_installed
+    require_installed()
     print("tests")
     tests()
     print("prose")

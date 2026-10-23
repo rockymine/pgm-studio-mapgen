@@ -12,11 +12,9 @@ floor fields every style shares. No objectives and no match: it is a swatch book
     the gallery     south of them, a floor of twenty-four sections, each a floor field or a mark in a frame, before a
                     wall that carries the alphabet, the digits and every glyph
 """
-import os
 import sys
 from dataclasses import replace
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import B, World, rng  # noqa: E402
 from pgmvox.built import facade  # noqa: E402
 from pgmvox.grammar import brittle, clay, drastic, foundry, marble, marks, segment, terra  # noqa: E402

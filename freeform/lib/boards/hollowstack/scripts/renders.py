@@ -6,7 +6,6 @@ the pond, the keep well from the yard to the Undercroft, the Vault and the galle
 import os
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox import World  # noqa: E402
 from pgmvox.read import render  # noqa: E402
 

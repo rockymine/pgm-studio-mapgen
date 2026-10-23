@@ -7,9 +7,7 @@ and `pgmvox.plan.bunker.draw` turns it into rock, island, void and pillar. The t
 south (z > 0), red the north, each the other's mirror.
 """
 import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 from pgmvox.built.bunker import Heights                                                # noqa: E402
 
 COMPOSED = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "composed.json")

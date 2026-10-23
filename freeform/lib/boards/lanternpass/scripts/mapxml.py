@@ -4,10 +4,7 @@ shooters cross between the walkways on the yellow rows and win at the clock.
 
     python3 mapxml.py > map.xml
 """
-import os
-import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".."))
 
 import plan as P  # noqa: E402
 from pgmvox.play.logic import After, ControlPoint, Fill, MatchStarted, Named, Trigger  # noqa: E402
