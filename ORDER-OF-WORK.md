@@ -72,10 +72,10 @@ every landform authored downstream.
 room is seated on, a footprint the symmetry fans. A shape that exists so a theme can be hung on it should have
 been a scope, and a board cut up that way is a board whose look was decided by how it happened to be divided.
 
-**A hole is drawn, never solved.** Shapes ring a gap, or a subtract takes the ground away. No relief mark of
-any kind cuts one, so a board that needs holes draws them here or not at all.
+**A hole is drawn, never solved.** Shapes ring a gap, or a subtract takes the ground away. Terraforming reshapes
+ground that is there, so a board that needs holes draws them here or not at all.
 
-**Plan the places once the land's outline stands, and before the relief.** Draw each place on the outline:
+**Plan the places once the land's outline stands, and before the terraform.** Draw each place on the outline:
 where it is, what it is, why a player goes there or what it frames, and how a player gets there. A place nobody
 reaches wants a path, and a path is itself part of the arrangement. `WHAT-A-BOARD-IS-MADE-OF.md`, *A board is a
 small world*, is what a place is.
@@ -84,30 +84,31 @@ small world*, is what a place is.
 lake, a flat corner nobody enters or a village with no way in shows. Ask of each area what is there and why;
 cut away what has no answer, and move its land toward the front.
 
-**Read the arrangement's findings before the relief goes on.** Most of what goes wrong with an arrangement is a
+**Read the arrangement's findings before the terraform goes on.** Most of what goes wrong with an arrangement is a
 relation between two pieces — a landform wider than the window that reaches it, a wall on the only throat, a
 room whose door opens onto its own apron. `GET /map/{slug}/findings` asks those of the drawn ground on the first
-store, and once the relief and the paint are on, they read as terrain.
+store, and once the modifiers and the paint are on, they read as terrain.
 
 ## 3. The ground
 
-**The relief is decided immediately after the arrangement and cannot be added later.** A board authored flat is a
-board whose variation has to come from shapes for the rest of its life. Budget for the shape of the ground
+**The terraform is decided immediately after the arrangement.** Hills, Hollows, Levels and Roughness are the
+layout's `modifiers[]`, run in list order over the built ground, each inside a mask. A board authored flat is a
+board whose variation has to come from shapes until a stack is written, so budget for the shape of the ground
 here, in the same breath as the arrangement.
 
-**A mark is a constraint and a push is a landform, and the two are not interchangeable.** A mark states that
-the ground *is* this height, honoured exactly with no falloff — so it pins a floor, a shelf, a pan, an apron.
-A push lifts the solved surface inside a drawn ring and is the only thing that builds a hill. Asking one to
-do the other's job is the single most expensive mistake available at this stage.
+**A Level holds a height and a Hill raises, and the two are not interchangeable.** A Level states that the ground
+in its mask *is* this height out to `inner` and eases back to the ground by `outer` — so it makes a floor, a
+shelf, a pan, an apron. A Hill raises its mask by a `rise` and is what builds a hill; asking one to do the
+other's job is the single most expensive mistake available at this stage.
 
-**What is not written is where the design happens.** Pinning every region because it should be about that
-height leaves the solver nothing to solve, and a board with a mark on every region is a table with bumps on
-it however tall the bumps are. Pin the ground a player stands on and leave the flanks alone.
+**What is not written is where the design happens.** Levelling every region because it should be about that
+height leaves nothing for the ground to do, and a board with a Level on every region is a table with bumps on
+it however tall the bumps are. Level the ground a player stands on and leave the flanks to the Hills.
 
-**Sketch the relief more than one way before settling it.** The same arrangement under three or four reliefs, driven
-unpainted and looked at side by side, turns a judgement about ground into a choice between built alternatives,
-and the relief that ships takes what each did well. It is the one decision here that cannot be added later, so
-it is the one worth building more than once.
+**Sketch the terraform more than one way before settling it.** The same arrangement under three or four stacks,
+driven unpainted and looked at side by side, turns a judgement about ground into a choice between built
+alternatives, and the stack that ships takes what each did well. A modifier is an entry in a list and `off: true`
+leaves it out while keeping its numbers, so the alternatives cost little to build.
 
 ## 4. The shapes
 
@@ -118,9 +119,10 @@ transform that drags a ring's other points opens ground between two that were fl
 **Never reach for a second shape to enlarge the first or to eat into it.** That is the move that produces a
 board nobody can read, and every case it is reached for has its own instrument.
 
-**A shape says how its top is decided, or how it takes part in the relief — never both.** The two fields are
-alternatives: one puts the shape *out* of the field, the other says how a shape that is part of the ground
-takes part in the solve. Stating both writes a field that binds and is never consulted.
+**A shape says how its top is decided, or whether the modifiers reshape it — never both.** The two fields are
+alternatives: a `height_mode` stands the shape at its own statement *out* of the modifier stack and needs no
+scope, while `relief_scope: "hold"` keeps a shape that is part of the ground out of it. A shape stating neither
+follows the modifiers.
 
 ## 5. The storeys
 
@@ -141,7 +143,7 @@ wrong here, stop and fix the ground.
 three of them. Giving every shape its own theme is the arrangement leaking into the paint.
 
 **Finish the ground by its angle, not by its height.** A theme hung on shapes or on height bands paints
-a board flat from above however much relief is under it, because nothing in the geometry tells a hillside
+a board flat from above however much slope is under it, because nothing in the geometry tells a hillside
 from a meadow unless the band axis is the slope. Read the board's angles before choosing where the bands cut.
 
 **A ground is a set of one tone, not a block.** Two or three blocks close in colour and different in texture
@@ -185,9 +187,8 @@ compute both before building rather than after.
 
 ## What cannot be taken back
 
-Four decisions are not edits:
+Three decisions are not edits:
 
-- **the relief**, because a flat board cannot be given ground afterwards;
 - **the arrangement's division**, because the paint inherits it;
 - **the biome**, because every tinted block on the board answers to it;
 - **the board's size**, because the goal bands are arithmetic and a board too small cannot satisfy them.
@@ -210,9 +211,9 @@ the surface until it has been searched for by the name it would have, by the sen
 would do, and in the term list.
 
 **`GENERATION-NOTES.md` is what none of them can say** — a fact about how two correct mechanisms interact, a
-number no gate checks, a read-back that misleads. It is thirteen chapters in this same order, so open the one
+number no gate checks, a read-back that misleads. It is twelve chapters in this same order, so open the one
 for the stage being worked on rather than the file: *the board · the plan · a board somebody else arranged ·
-the compile · relief · shapes · layers · painting · buildings · dressing · the export · reading it back ·
+the compile · shapes · layers · painting · buildings · dressing · the export · reading it back ·
 what an answer says*.
 
 **`WHAT-A-BOARD-IS-MADE-OF.md` is the author's ruling on how a board should look**, and it is the one other

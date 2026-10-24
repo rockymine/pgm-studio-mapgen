@@ -104,7 +104,7 @@ PUT   /api/map/{slug}/source             {name, layout, intent, refinement, orig
 GET   /api/map/{slug}/sketch · /intent   the layout and the intent as the studio stored them
 GET   /api/map/{slug}/findings           every rule asked of the drawn ground and the intent's pieces
 GET   /api/map/{slug}/report             the board read back in one request: the three numbers, every reading
-POST  /api/map/{slug}/sketch/relief/read cells, low, high, symmetry error, per group
+POST  /api/map/{slug}/sketch/relief      the contour lines of the built ground, per group
 POST  /api/map/{slug}/sketch/columns     the DR-* declines
 GET   /api/map/{slug}/preflight          the export's own verdict, before the export
 GET   /api/map/{slug}/coverage           where the ground is lived on, not merely reachable
@@ -113,7 +113,7 @@ GET   /api/map/{slug}/export             the world, into a fresh empty directory
 
 **One call stores the map, and the slug is stated rather than minted.** `PUT /map/{slug}/source` applies the
 refinement onto the layout and the intent — the themes, the storeys and shapes, the outlines reshaped and bent,
-the relief, the rooms, the dressing, and the intent's authors and date. It then rasterizes the drawing into
+the modifiers, the rooms, the dressing, and the intent's authors and date. It then rasterizes the drawing into
 geometry, projects the intent into the map document and applies the authors — in that order, which is the
 order that matters: the projection is what would overwrite a name written before it.
 
@@ -140,8 +140,8 @@ with `--after <change>`, or drop them with `--discard <change>` where the author
 Everything read after it is read against the stored map: the findings off the drawn ground, and
 `sketch/columns` where `DR-KEEP` can see the spawn doors' approaches and the goal rings the intent carries.
 
-**Two reads raise no finding at all, which is exactly why they get skipped.** The relief read-back looks at
-the ground before it is built; coverage is the only read that asks whether any journey *goes* somewhere rather
+**Two reads raise no finding at all, which is exactly why they get skipped.** `incline` says how steep the
+built ground is and where a finish should cut; coverage is the only read that asks whether any journey *goes* somewhere rather
 than whether it *can*. Both are worth more than the render you would have looked at instead.
 
 **Look at what you built, through the API.** `GET /api/map/{slug}/render/topdown` and its seven siblings —
@@ -288,7 +288,7 @@ that would have answered faster.
 | What does an objective need around it? | `docs/gameplay/approaches.md` — every claim marked `[author]` and settled, so law rather than advice |
 | How does a match actually flow, and what does a player do with the ground? | `docs/gameplay/match-flow.md` — §4, §6, and §10 for a capture board |
 | What is the box model's vocabulary — a hub, a lane, a frontline, a dock? | `docs/generator/model.md` |
-| What does the export write into a world? | `techniques/`, the card nearest the instrument; `pgm-studio/docs/world-export/relief.md` and `decoration.md` are the deeper reference behind them |
+| What does the export write into a world? | `techniques/`, the card nearest the instrument; `pgm-studio/docs/world-export/decoration.md` is the deeper reference behind them |
 | How is a board driven, and what do its two files carry? | `tools/README.md` |
 | A card says to open a board and the studio answers 404 | `tools/seed-studio.py` — `--check` says what is missing, no argument puts it back |
 

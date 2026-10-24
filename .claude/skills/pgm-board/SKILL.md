@@ -40,8 +40,7 @@ about it."*
 | Where does the ground step, over the whole board? | the report's `slopes` (`slopes?format=text`) — `. walked · : scramble · # barrier`, plus a per-face summary | — |
 | How high is the ground along this line? | `tools/loop.py --profile x=<x>,z=<a>..<b>,step=1` | your own arithmetic over the anchors |
 | How **steep** is the ground, and where? | `GET …/incline?format=text` — the glyph is the tens of degrees, and under the grid, how much ground stands in each ten | the report's `slopes`, which answers a *step* (can it be walked) and not an *angle* (how should it be finished) |
-| Is there anywhere to **stand**? | `POST …/sketch/relief/read` → `level` (share under 10°) and `largestField`; `RL5` fires under 30% | the walk tier, which answers one place and no ledge for a board that is one long ramp |
-| Which two **marks** built that wall? | `POST …/sketch/relief/read` → `seams`, worst first, each naming the pair and the cell; `RL3` fires above a scramble | a face in the report's `slopes` or the relief read, which report the wall as terrain and attribute it to nothing |
+| Is there anywhere to **stand**? | the first ten-degree row of `GET …/incline?format=text` — how much ground stands under ten degrees | the walk tier, which answers one place and no ledge for a board that is one long ramp |
 | What does a column hold, layer by layer? | `tools/loop.py --column x,z` | reading a world file yourself |
 | **Where may a prop stand at all?** | `POST …/sketch/seats?kind=tree\|boulder\|house[&width=&depth=]&format=text` — **the stored layout goes in the body** — a raster marking every cell a footprint's *minimum corner* may sit on, and a `refused` list of rule → cells, largest first | placing one by eye. Three runs declined 5–7 props a pass that way and 0 once every position came off this mask |
 | May *this* prop stand *here*? | the report's `claims` (`POST …/sketch/dressing?format=text`), then `tools/loop.py --candidates <propId> x,z …` | placing it and reading the decline |
@@ -52,7 +51,7 @@ about it."*
 | Is any ground unused — is it ground anybody **goes** to? | `GET …/coverage` (after) — reached / decorated / dead, with the five largest dead patches and their coordinates | nothing — no gate asks this, and `preflight` asks only whether ground can be *reached* |
 | What is the board made of, and what borders what? | the report's `themes` (`themes/census?format=text`) | counting your own theme dict |
 | Does the finish **look** right where a player stands — do two blocks merge into one ground or into static? | `GET …/render/eye?look=x,z` — the board from a player's eye in the game's own block textures, framed on a thing the document places (a spawn, a goal, a boulder, a house); `from=x,z` stands the eye by hand; `?format=text` names the camera and what fills the frame | `render/surface`, a theme preview or the isometric, which all draw a block as one colour — two noisy blocks of one colour are calm grey there and static in the game |
-| Do the pieces stand in the right relation, before the relief? | `GET …/findings` after a first store with no relief — the walks to every wool (`PL9`, `SP1`), the front lines, the strait and the seams, all asked of the drawn ground | a render of a built world |
+| Do the pieces stand in the right relation, before the modifiers? | `GET …/findings` after a first store with no modifiers — the walks to every wool (`PL9`, `SP1`), the front lines, the strait and the seams, all asked of the drawn ground | a render of a built world |
 | Is this section of the world what I think? | `GET …/render/section?axis=&at=&from=&to=&format=text` — **`axis` names the direction the cut runs, so `at` is the other coordinate** | a PNG section, which blends renderer gridlines over it |
 | What fields does this pattern take? | `GET /api/terrain/patterns` — fourteen kinds with exact field names | guessing. One run invented **five field names out of five** |
 | What does this word mean? | `GET /api/glossary?term=<word>` | guessing from the code's name for it |
@@ -60,7 +59,7 @@ about it."*
 | Is there a **number** for this, and what is the band? | `GET /api/rules/terms` — every evaluator term with its rule, its band and where the band came from | reading the rule prose, which states the mechanism and not the envelope |
 | What does the house style build? | `POST /room-styles/preview-snapshot?format=png&view=section` (and `plan`; other views 400) | a top-down — every shipped roof fault was visible in a section and invisible from above |
 | What does a whole multi-wing house build? | `POST /terrain/prop-preview` — the prop plus a theme | `preview-snapshot`, which draws a default box |
-| How do I reshape an outline? | `PATCH …/sketch/shapes/{id}/vertices/{index}` moves **one** point; `POST …/vertices {"after": n}` adds one at that edge's midpoint; `DELETE …/vertices/{index}`. A spec states them as `editShapes`, replayed before any bend, and there they also reach a relief `area` mark's or a push's ring and a stroke's, fluid's or flora's points by the same id | a second shape added on top to enlarge it, a subtract to eat into it, or a bend to move one corner |
+| How do I reshape an outline? | `PATCH …/sketch/shapes/{id}/vertices/{index}` moves **one** point; `POST …/vertices {"after": n}` adds one at that edge's midpoint; `DELETE …/vertices/{index}`. A spec states them as `editShapes`, replayed before any bend, and there they also reach a stroke's, fluid's or flora's points by the same id | a second shape added on top to enlarge it, a subtract to eat into it, or a bend to move one corner |
 | How do I make a whole edge read rougher? | `POST …/sketch/shapes/{id}/bend` with `side: out\|in\|both` (`out` is the default and is the bloat that reads as land) | restating the whole `vertices` array, which is a second copy of the coast |
 | How do I build a facility, a landmark or any made structure that reads as **one thing**? | `techniques/designing-a-structure` — a module, one mass a layer, a façade as a `wallRun` of a `height`-axis stack, a door as a sill plus a lintel on a lintels layer | one shape per window, masses fused on one layer, or an override floored at a door's head — all three store at 200 and are wrong in `column` |
 | How do I get a flowing wall, lane or watercourse? | a `polyline` **shape** — the rasterizer splines its points (centripetal Catmull-Rom, 8 samples a segment) before offsetting the band, so 4 clicked points draw as a curve. `stroke_edge`: `solid` \| `rough` \| `tapered` | a chain of rectangles, or hand-authored `controls` |
@@ -88,8 +87,8 @@ what each did. A hand edit there is the author showing what the board should be,
 refused `409` with the edit written as the refinement would state it (`SR1`). Take it into `build-spec.py` and
 drive with `--after <change>`; drop one with `--discard <change>` only where the author said it goes.
 
-**After the first store, before the relief.** Read `GET …/findings` over the bare arrangement. Most of
-what goes wrong with a board is a *relation between two pieces*, and once the relief and the paint are on,
+**After the first store, before the modifiers.** Read `GET …/findings` over the bare arrangement. Most of
+what goes wrong with a board is a *relation between two pieces*, and once the terraform and the paint are on,
 no render can show it, because by then it is terrain.
 
 **After every drive, before you open a single picture.** The drive prints the three numbers the report opens
@@ -182,8 +181,8 @@ spec.** Read source only where two of those disagree, and then read the narrowes
 
 ### "Missing from the system" is a claim about the surface until you check
 
-`opus5-run2` had to correct two earlier reports: *"per-shape themed materials — missing from the
-system"* — **false**; *"relief marks with area scope — missing"* — **false**. `opus5-run8` shipped a
+`opus5-run2` had to correct an earlier report: *"per-shape themed materials — missing from the
+system"* — **false**. `opus5-run8` shipped a
 wrong explanation of `SK11` and filed a wrong bug against the 3-D preview that the author caught.
 
 Before writing that something is missing, look for it in `GET /api/openapi/v1.json` and say what you
@@ -257,7 +256,7 @@ on it should have been a scope.
 ### The ground was finished by its height instead of its angle
 
 A board painted one material per shape, or one per height band, comes out a flat sheet from above however
-much relief is under it: the quarry, the graded terrace and the cut banks are all in the picture and none of
+much slope is under it: the quarry, the graded terrace and the cut banks are all in the picture and none of
 them is visible. Nothing in the geometry tells a 45° hillside from a meadow — such a surface has no exposed
 riser, so the `wall` bucket never sees it and every other band axis paints the two alike.
 
@@ -287,56 +286,30 @@ which is the only thing that says whether a cut lands where you think it does �
 *spike* in it is a board reporting its own `step` quantum rather than its shape. `opus5-scarp-mask` is the
 worked example: 68% moor, 8% shoulder, 11% rock on ground that was 86% grass and nothing else.
 
-### A tread on every mark builds a board with nowhere to stand
+### The ground above the drawing is the modifier stack
 
-`tread` is the fix for the two faults below, and over-applying it is a fault of its own. A tread grades a
-mark's shoulder into its neighbour, so a board whose every mark carries one is a board of nothing but
-shoulders: no flat to fight on, and no face to decide where anyone goes. It reads as walkable — one connected
-place, no ledge, every step within a jump — which is exactly why nothing else catches it.
+**Terrain over the drawn ground is the layout's top-level `modifiers[]`.** Four operations run — Hill (`mound`),
+Hollow (`crater`), Level (`level`) and Roughness (`noise`) — each inside a mask of ellipses, polygons or the whole
+`board`, in list order over the built ground, so a modifier changes the ground as the ones before it left it.
+A spec states the stack as the refinement's `modifiers`, and `pgm-studio/docs/tools/sketch.md`, *The modifier
+stack*, carries every number an operation takes.
 
-`RL5` does, off `level` in the relief read: the share of an island under ten degrees, with 30% the bar.
+**A shape keeps out of the stack by saying so, and nothing else does.** `relief_scope: "hold"` keeps the
+shape's own column — its floor, its thickness, its per-vertex tilt — while the ground around it is reshaped up to
+its edge, and a shape stating a `height_mode` stands at its own statement the same way. A shape stating neither
+follows the modifiers, and a play room always holds. The words `exclude` and `follow` no longer exist.
 
-**State a tread where two marks would otherwise meet on a wall, and leave it off the ground meant to be flat
-to its edge.**
+**State a Level where the ground must be flat and a Hill where it must rise, and order them by what should
+win.** A Level holds its `top` out to `inner` and eases back to the ground by `outer`; a later modifier works on
+what an earlier one left, so a Roughness listed after a Level roughens the plateau as well. `off: true` leaves a
+modifier out of the build and keeps its numbers, which is how one is tried without being retyped.
 
-*`opus5-thwaite-ghyll`, five marks all carrying a tread: 25.4% level and no face at all. The same marks with
-the treads off: 43.6% and 70 faces. Grain is not the difference — removing that moves it 0.5 points.*
+**The masks are fanned by the map's symmetry unless `mask.mirror` is false.** An off-centre Hill therefore
+stands at its images too, and a mask that is meant for one side only wants the flag off.
 
-### A mark's band ends on a wall, and `tread` is the answer to both ways it happens
-
-**A road drawn as a line walls itself.** A `line` mark pins every cell to whichever pass of the line is
-nearest, so a serpentine, a switchback or a spiral haul road puts the cells either side of the midline between
-two passes a whole winding apart in height.
-
-State a **`tread`** narrower than `r` and the rest of the band lofts — a ramp between the two treads' edges.
-Left alone it spreads over the whole run, `atan(drop / (pitch − 2·tread))`, and for a spiral the pitch is
-`(r0 − r1) / turns`.
-
-**`batter`**, in degrees, makes it steeper and puts a flat bench at the toe, which is what a worked quarry
-looks like.
-
-Work the pitch out before building — under `2·tread` there is no run to grade in, whatever is stated.
-
-**Two different marks whose bands touch do the same thing**, and this one is easy to miss because neither mark
-looks wrong on its own. The later one wins its cells outright and the seam is one cell carrying the whole
-difference.
-
-A `tread` on the later mark grades it: the shoulder states its height softly and blends into
-whatever the earlier mark put there.
-
-The shoulder's **width** sets the grade — 22 blocks over a 4-cell shoulder is 5.5 a cell, over 10 cells it
-is 2 — so a gentler seam means a narrower tread or a longer reach.
-
-**Do not go looking for these in a render.** `POST …/sketch/relief/read` answers `seams` per group — every
-pair of marks whose ground meets on a step of more than a block, worst first, each with the coordinate to
-stand at — and raises `RL3` where one is taller than a scramble. It also answers `silentMarks`, the marks that
-pinned nothing at all because they were placed off their group's ground (`RL4`). A seam that grades reports
-nothing, so the list is the fault and not the arrangement.
-
-*`opus5-scarp-mask` at (14, −78): `crest` (r 18, h 33) and `terrace` (r 13, h 24) overlap, and the transect read
-`33 33 33 DROP −9 24`. The read named it `crest | terrace, step 10 at (7, −80), 43 cells`. With `tread: 7` on
-the terrace the transect reads `33 33 32 31 29 28 26 25 24` and the seam is gone. Board-wide, 1,006 barrier
-cells became 480.*
+**Read the result off the built ground.** `incline`, `slopes`, `transect` and `column` all answer the ground
+with the stack run, and `POST …/sketch/relief?interval=` draws its contours. Finish the result by its angle, as
+the section above says, and not by the modifier that made it.
 
 ### Dressing placed by eye is dressing declined
 

@@ -28,7 +28,7 @@ is stated over and stores the result as one change (`pgm-studio/docs/tools/flow.
 way in*). Nothing here applies a key.
 
 **Every key below is the batched form of one studio route, and the route is what the key means.** The
-studio addresses each part of a stored layout on its own — a layer, a group, a shape, a theme, a relief, a
+studio addresses each part of a stored layout on its own — a layer, a group, a shape, a theme, a
 prop, a room shell, the biome — and a spec-driven build states the whole document in one call instead,
 because the layout is derived from this file on every run and there is nothing incremental to edit. So the
 refinement is a translation, not a second language: where a key and its route disagree about what a word
@@ -44,7 +44,7 @@ means, the route is right and this file is wrong. Each row names its route.
   shapePropsByHeight  the same, by height
   editShapes          PATCH/POST/DELETE /map/{slug}/sketch/shapes/{shapeId}/vertices[/{index}]
   bendShapes          POST   /map/{slug}/sketch/shapes/{shapeId}/bend
-  relief              PUT    /map/{slug}/sketch/relief/{groupId}
+  modifiers           PUT    /map/{slug}/sketch   the layout's top-level modifiers[]
   themes              PUT    /map/{slug}/sketch/themes/{themeId}
   mapTheme            PUT    /map/{slug}/sketch/map-theme
   roomStyles          PUT    /map/{slug}/sketch/room-styles/{part}
@@ -62,11 +62,11 @@ What each key states:
 
   themeByHeight   {"11": "gyp-bench", ...}   theme per compiled shape, by the height it stands at
   themeById       {"s3": "gyp-rake"}          theme per compiled shape id (wins over the height rule)
-  shapePropsByHeight {"11": {"relief_scope": "exclude"}, ...}   fields merged onto a compiled shape
+  shapePropsByHeight {"11": {"relief_scope": "hold"}, ...}   fields merged onto a compiled shape
   shapePropsById  {"s3": {...}}
   editShapes      {"garth-14": [{"after": 1, "x": 92, "z": -70}, {"index": 4, "x": 80, "z": -60},
                   {"remove": 7}, {"pulls": {"0": [[0.5, 2]]}}]}  every outline carrying the id -- a
-                  shape's vertices, an area mark's or push's ring, a stroke's, fluid's or flora's points --
+                  shape's vertices, a stroke's, fluid's or flora's points --
                   reshaped one point at a time, in order, before any bend. `after` inserts a point on that
                   edge (at its midpoint when no x/z is stated), `index` moves the point there, `remove`
                   drops it, `pulls` moves points a fraction along an edge in or out; every other point stays
@@ -86,7 +86,8 @@ What each key states:
                   naming none joins. `kind: "made"` marks a made thing — out of the stacking rules, painted
                   over its own span; `part_of` names the thing a run of layers is sliced from and `seat:
                   "ground"` settles them onto the terrain together
-  relief          {"<groupId>": {...}} or {"*": {...}} applied to every group
+  modifiers       [{id, op: mound|crater|level|noise, mask, ...}, ...]  the terraform stack, run in list order over
+                  the built ground; stated as `docs/tools/sketch.md` § The modifier stack states it
   themes          the theme registry;  mapTheme  the map default (first key unless stated)
   biome           SketchLayout's own biome field: {"kind": "cell"|"noise"|"solid", ...}. The byte each
                   chunk carries, which tints grass, leaves and water. Absent is plains everywhere
@@ -140,7 +141,7 @@ any of those means and how to fix it.
 
 **What was built is read back in one request.** `GET /map/{slug}/report` builds the stored board once and
 answers the three numbers it is wrong or right by, then every reading a run used to ask for one at a time —
-the findings, the relief, the declines, pre-flight, coverage, the heightmap and the
+the findings, the declines, pre-flight, coverage, the heightmap and the
 slopes, a transect each way through every thing on the board and a walk from every spawn to every goal,
 the census, the claims, the seats and the void scan — each beside the route that answers it alone. The run
 prints the numbers and the short readings, and writes the whole report to `out/reports/<slug>.txt`.
