@@ -297,7 +297,8 @@ stack*, carries every number an operation takes.
 **A shape keeps out of the stack by saying so, and nothing else does.** `relief_scope: "hold"` keeps the
 shape's own column — its floor, its thickness, its per-vertex tilt — while the ground around it is reshaped up to
 its edge, and a shape stating a `height_mode` stands at its own statement the same way. A shape stating neither
-follows the modifiers, and a play room always holds. The words `exclude` and `follow` no longer exist.
+follows the modifiers. A play room stating no height rides the stack and stands level on the ground it leaves;
+one stating a height stands at it. The word `exclude` no longer exists.
 
 **State a Level where the ground must be flat and a Hill where it must rise, and order them by what should
 win.** A Level holds its `top` out to `inner` and eases back to the ground by `outer`; a later modifier works on
