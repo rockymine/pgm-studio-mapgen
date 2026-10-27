@@ -51,7 +51,7 @@ def shaded(surface, wall, rim=None, fill=None, rim_edges="boundary"):
     }
 
 
-def layout(layers, themes, map_theme=None, mirror="none", centre=(0, 0), relief=None, dressing=None,
+def layout(layers, themes, map_theme=None, mirror="none", centre=(0, 0), modifiers=None, dressing=None,
            room_styles=True):
     """The sketch document itself. `mirror` of `none` is the right default for a gallery board: a sculpture
     is drawn where it stands, and a fan would put a second one across the axis."""
@@ -82,8 +82,8 @@ def layout(layers, themes, map_theme=None, mirror="none", centre=(0, 0), relief=
     # built-in bedrock shell. A gallery wants the pad.
     if room_styles is None:
         document["roomStyles"] = {"spawn": None}
-    if relief:
-        document["relief"] = relief
+    if modifiers:
+        document["modifiers"] = modifiers
     if dressing:
         document["dressing"] = dressing
     return document

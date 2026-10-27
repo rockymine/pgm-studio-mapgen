@@ -1,5 +1,5 @@
 // Compile a plan, then replace its terrain shapes with authored polygons and attach every finish the
-// plan cannot state — relief, a theme registry, room shells and dressing — before building the world.
+// plan cannot state — modifiers, a theme registry, room shells and dressing — before building the world.
 //   dotnet run tools/world-build.cs -- <plan.json> <world.json> <themes.json> <rooms.json> <dressing.json> <name> <outZip>
 // rooms.json is {"wool": …, "spawn": …}; any of world/themes/rooms/dressing may be the literal "-" to skip.
 using System.Net.Http;
@@ -107,7 +107,7 @@ if (world?["addShapes"] is JsonArray extra)
     Console.WriteLine($"  shapes: {shapes.Count} ({extra.Count} authored on top of the plan's tiers)");
 }
 
-if (world?["relief"] is { } relief) layout["relief"] = relief.DeepClone();
+if (world?["modifiers"] is { } modifiers) layout["modifiers"] = modifiers.DeepClone();
 
 if (themes is JsonObject registry)
 {

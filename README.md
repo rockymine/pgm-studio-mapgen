@@ -93,7 +93,7 @@ forms in `sculpture/forms` are what one early exercise reached for and are not a
 ## Authoring a map here
 
 **[ORDER-OF-WORK.md](ORDER-OF-WORK.md) is the one page that is read before anything is posted** — the nine
-decisions a board is made of, in the order they are made, and the four that cannot be taken back. It explains
+decisions a board is made of, in the order they are made, and the three that cannot be taken back. It explains
 no instrument; it says when each one is reached for and what is unrecoverable if it is reached for late.
 
 **[WHAT-A-BOARD-IS-MADE-OF.md](WHAT-A-BOARD-IS-MADE-OF.md) is the author's ruling on how a board should
@@ -209,7 +209,7 @@ authoring agent reads `AUTHORING-BRIEF.md` and the API.
 **A report separates a claim from a limitation.** An agent's account of what it could not do is evidence about
 the *surface*, not about the system, and the two have diverged badly: a run reported five of six requirements
 as impossible while quoting the documentation that describes two of them, and a later one reported per-shape
-themes and area relief marks as missing when both are shipped and in use on maps here. So every
+themes as missing when they are shipped and in use on maps here. So every
 "could not do" entry carries three parts, and one missing the third is not finished:
 
 | Part | Is |

@@ -7,7 +7,7 @@ asks whether a board looks like anything, which is why it is written down instea
 `ORDER-OF-WORK.md` says when the paint is decided; this says what to decide. Read it once before the first
 theme is written, not while writing one.
 
-**The through-line is simplicity.** A board is authored simple and detailed afterwards — the relief first,
+**The through-line is simplicity.** A board is authored simple and detailed afterwards — the terraform first,
 then one ground, then the few places that are genuinely made of something else. Detail added later is
 *chosen*; detail that comes out of a pattern is a roll of the dice, and a board is not improved by rolling it
 five hundred thousand times.
@@ -110,7 +110,7 @@ came apart. The observations below are measured off shipped boards and are enfor
   **`mirrors=False`**, so it is not doubled onto itself. Nothing refuses either mistake: the store answers
   200, pre-flight opens, and its mirror check reads spawns, wool rooms and build zones rather than made
   geometry. `column` at the image is what sees it, and the image of block `z` is **`−z−1`**.
-- **The rim is off on ground a relief solved.** A rim caps every fall with a band and turns a rolling hill
+- **The rim is off on ground the modifiers shaped.** A rim caps every fall with a band and turns a rolling hill
   into contour lines; it belongs where an edge was *made* — a coast over void, a platform lip, a retaining
   wall's top course.
 - **A landform meets its neighbour along an authored transition**, never a flat pad butted against a hill.
@@ -155,15 +155,15 @@ transects as *worst step 1, 0 barrier, 0 scramble, walked end to end*, and leave
 between its foot and the spawn.
 
 **A hill at the board's edge may keep its height, because only a portion of it stands on the board.** Centre
-its ring over the void outside the coast and the skirt that lands reads as a cliff at the water rather than as
+its mask over the void outside the coast and the skirt that lands reads as a cliff at the water rather than as
 a cone with a path round it — which is the one place on a wool board where steep ground costs nobody a route.
-The ring must still hold some land: a push's falloff is measured across the land, so a ring wholly over the
+The mask must still cover some land: a modifier changes columns, so a mask wholly over the
 void lifts nothing and says nothing.
 
 **The frontline and the ground in front of a bedrock wall are the two places a hill is always wrong.** Both
 are ground a team has to cross under fire, and a landform there decides the fight instead of the players.
 
-**A house is never inside a hill.** The measured case put a push's ring across the back third of a building's
+**A house is never inside a hill.** The measured case put a Hill's mask across the back third of a building's
 footprint, and the ground at its back wall then stood **ten blocks** higher than the ground at its front: one
 wall buried to the eaves and the other on the flat. It reads as a mistake from every angle it can be seen
 from.
@@ -368,8 +368,8 @@ one part of a landscape a person built — so it reads as stone, and it reads as
 up. The grassy shelf at the top and the sandy floor at the bottom may each have their own theme; the stair
 between them having a third is what turns a board into a swatch book.
 
-**A landscape board is one theme, a relief and a handful of patches.** Every destroy board is a landscape
-board. Author a **simple plan with few pieces**, put the shape of the ground into the **relief** rather than
+**A landscape board is one theme, a modifier stack and a handful of patches.** Every destroy board is a landscape
+board. Author a **simple plan with few pieces**, put the shape of the ground into the **modifiers** rather than
 into the piece list, paint the whole thing one ground, and then put the variation in where you *want* it. A
 raised shelf carrying a city may have a theme of its own — but a city is not noise either, so that theme is
 materials laid in courses, not a field sampled over them.
@@ -577,15 +577,15 @@ A terrace over a meadow, a yard over a pasture, a quay over a shore: two grounds
 everything a match is about happening where they meet. It is the most useful thing a plan can state, and it is
 four decisions rather than one.
 
-**The made ground is `exclude`, not `hold`.** `hold` lets the relief bring the lower tier *up* to the shape,
-and then there is no step and no reason for a stair; `exclude` takes the footprint out of the solve and the
-two tiers meet at a face.
+**The made ground is `hold`.** `hold` keeps the shape's own column out of the modifier stack, and the modifiers
+reshape the ground around it up to its edge, so the two tiers meet at a face and there is a step for a stair to
+fill. A shape that says nothing follows the modifiers and has no such edge.
 
 **The boundary is not a straight line.** A retaining wall is straight where it is a wall and interesting where
 it is a gate. Cut re-entrants and salients into the compiled edge one vertex at a time, and size each
 re-entrant to exactly the flight that fills it, so a stair is set *into* the wall rather than leaning on it.
 
-**The height difference is bridged by a stair and not by the relief.** A relief graded across the seam deletes
+**The height difference is bridged by a stair and not by a modifier.** A modifier eased across the seam deletes
 the boundary; a flight states it.
 
 One polygon, two anchors at the foot and two at the head, `height_mode: "level"`, `skirt: 0`,

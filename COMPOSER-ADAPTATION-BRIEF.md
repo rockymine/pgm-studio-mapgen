@@ -99,7 +99,7 @@ Widen an approach, taper a spur, eat a bite out of a hub flank, make one edge re
 is the move that produces a board nobody can read.
 
 **Cut with `subtract`, and cut in the plan with `buffer`.** A `subtract` removes ground entirely and is the
-instrument for a channel or a chasm. No relief mark of any kind cuts a hole. At the plan tier the `buffer`
+instrument for a channel or a chasm. No modifier cuts a hole. At the plan tier the `buffer`
 role declares a void the compiler would have declared anyway, and it is how a hole is made by *arrangement*.
 
 **Add the mid the composer did not.** `zones` takes more than one entry. A centre island is a `piece` seated
@@ -190,49 +190,31 @@ reading the wall as damage.
 is authored on, so terrain widened beyond that interface leaves an open shoulder beside it, and a wall
 players stroll around is only in the defence's way. Reshape the interface with the approach.
 
-## 5. Relief: the instrument, and the danger
+## 5. Terraform: the instrument, and the danger
 
-**Relief is not the board.** The author's words: relief should be used, and *solid structural areas are
+**Terraform is not the board.** The author's words: relief should be used, and *solid structural areas are
 likewise important*; overdoing it is a danger. What that means concretely:
 
-**Pick the areas.** Some areas of the board carry relief that reads as natural terrain: a rise, a bank, a
-dale, a hillside.
+**Pick the areas.** Some areas of the board carry terrain that reads as natural: a rise, a bank, a dale, a
+hillside. Those are the masks of the layout's `modifiers[]` — Hills, Hollows and Roughness — run in list order
+over the built ground.
 
-**Other shapes are explicitly excluded from the relief**, and that exclusion is stated rather than left to
-happen. A shape carrying `relief_scope: "exclude"` is taken out of the solve, so the made ground and the
-grown ground meet at a **face** rather than being graded into each other. That face is the join, and it is
-where a stair, a flight or a wall goes.
-
-**`hold` is the other one and does the opposite.** It lets the relief bring the lower tier *up* to the
-shape, and then there is no step and no reason for a stair.
+**Other shapes are explicitly kept out of the stack**, and that is stated rather than left to happen. A shape
+carrying `relief_scope: "hold"` keeps its own column, and the modifiers reshape the ground around it up to its
+edge, so the made ground and the grown ground meet at a **face** rather than being graded into each other. That
+face is the join, and it is where a stair, a flight or a wall goes. A shape stating a `height_mode` is held
+without a scope, and a shape stating neither follows the modifiers.
 
 A frontline that has to be fought over, a wool room's apron, a causeway, a keep's yard: those are ground
-that should be flat and stated to be flat.
-
-**Do not put a `tread` on every mark.** A tread grades a mark's shoulder into its neighbour, so a board
-whose every mark carries one is a board of nothing but shoulders: no flat to fight on, no face to decide
-where anyone goes.
-
-It reads walkable, which is why nothing else catches it. `RL5` does, off `level` in the relief read, with
-30% the bar.
-
-State a tread **where two marks would otherwise meet on a wall**, and leave it off ground meant to be flat
-to its edge.
-*Measured: five marks all carrying a tread → 25.4% level, no face at all. The same marks with the treads off
-→ 43.6% and 70 faces.*
+that should be flat and stated to be flat, and a Level holds a height out to `inner` and eases back to the
+ground by `outer`.
 
 **Finish the ground by its angle, not by its height.** A theme hung on plan pieces or on height bands paints
-a board flat from above however much relief is under it. Give the ground theme's surface a `layered` material
+a board flat from above however much slope is under it. Give the ground theme's surface a `layered` material
 on the **`slope`** axis — a thickness on that axis is a span of degrees, so one stack finishes the flat, the
 shoulder and the face of the same hill. Read `GET …/incline?format=text` before choosing where the bands
 cut: it answers how much ground stands in each ten degrees, which is the only thing that says whether a cut
 lands where you think it does.
-
-**Read what the marks did to each other.** `POST …/sketch/relief/read` is the only read that answers
-`silentMarks` (marks that landed nowhere), `seams` (the pairs that meet on a step, worst first, each with a
-coordinate), `level` and `largestField`. A seam naming a **shape** rather than a mark is a `relief_scope`
-pinning ground the marks were meant to shape. Over about 0.45 `level` and 0.13 `largestField` the ground is
-a table with edges.
 
 ## 6. What this branch added, and why it is worth using
 

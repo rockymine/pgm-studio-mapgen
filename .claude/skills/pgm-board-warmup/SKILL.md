@@ -5,7 +5,7 @@ grounds are made to meet. Load once, at the start of a run, before pgm-board. --
 # Before the first board
 
 `ORDER-OF-WORK.md` is the page that comes before this one: the nine decisions a board is made of, in
-order, and the four that cannot be taken back. `WHAT-A-BOARD-IS-MADE-OF.md` is the author's ruling on how
+order, and the three that cannot be taken back. `WHAT-A-BOARD-IS-MADE-OF.md` is the author's ruling on how
 a board should look. Read those two, then this skill.
 
 Two things here, in order: what reading costs, and what a board is made of. Together they run about
@@ -85,13 +85,13 @@ A shore board, worked all the way through, as the pattern to copy:
 
 | the ground | stated by | why that instrument |
 |---|---|---|
-| the beach | a relief with flow — marks pinning only the waterline, `grain`, a low `step` | it has to read as deposited, so nothing is pinned that does not have to be |
-| the dunes behind it | **a second relief, on its own layer**, held a little higher | relief solves per layer and `ReliefFields` shifts each into world Y, so two reliefs can meet. One relief across both is one field, and no join at all |
-| the yard the houses stand on | a shape carrying `relief_scope: "exclude"` | `exclude` takes the footprint out of the solve, so the two tiers meet at a **face**. `hold` lets the relief bring the lower tier *up* to the shape, and then there is no step and no reason for a stair |
-| beach → dune | the two reliefs' own meeting, across the layer seam | the join has a shape because two fields made it |
-| dune → yard | an authored flight: `height_mode: "level"`, `anchor_heights`, `skirt: 0`, `keepClear: true`, a **`material`** rather than a theme, run **at least twice the rise** | a relief graded across the seam deletes the boundary; a flight states it |
+| the beach | a Level whose mask runs along the waterline | a Level holds one `top` out to `inner` and eases back to the ground by `outer`, so the strand is flat where it is deposited and nothing else is pinned |
+| the dunes behind it | a Hill with several overlapping areas and a `join` above 0 | the areas sum as a p-norm, so the saddle between two dunes fills into a ridge instead of one dune's change winning |
+| the yard the houses stand on | a shape carrying `relief_scope: "hold"` | `hold` keeps the shape's own column and the modifiers reshape the ground around it up to its edge, so the two tiers meet at a **face** |
+| beach → dune | the stack's order and each mask's `soft` rim | a modifier works on what the ones before it left, and `soft` fades its change in over a share of the mask measured from its rim |
+| dune → yard | an authored flight: `height_mode: "level"`, `anchor_heights`, `skirt: 0`, `keepClear: true`, a **`material`** rather than a theme, run **at least twice the rise** | a modifier eased across the seam deletes the boundary; a flight states it |
 | yard → quay | a ramp of the same kind, or a **polyline** where the join is a wall | |
-| the sand ON the beach, the gravel ON the tide line | an add shape carrying a **`theme`**, `base_height` **equal to the ground it lies on**, and **no `relief_scope` at all** | a shape owns the paint only on a cell it *forms the surface of*: one stated lower runs under the ground, paints nothing, and says so on a 200. And a `relief_scope` is a statement about **height** — `follow` seats the shape on the solved field and then pins its whole ring there **rigid**, which over a terrain patch is a floor: the strand solves level to the block and every mark inside it is overwritten in silence |
+| the sand ON the beach, the gravel ON the tide line | an add shape carrying a **`theme`**, `base_height` **equal to the ground it lies on**, and **no `relief_scope`** | a shape owns the paint only on a cell it *forms the surface of*: one stated lower runs under the ground, paints nothing, and says so on a 200. A shape saying nothing follows the modifiers and is reshaped with the ground around it, so the paint stays on the surface |
 
 **One map needn't be one ground.** Plains everywhere is not simplicity, it is one instrument.
 
@@ -108,7 +108,7 @@ at 6 surface heights, then a theme per height.
 
 ### What makes an area read as what it is
 
-The relief says where the ground goes. These say what the place is, and each one is placed
+The modifier stack says where the ground goes. These say what the place is, and each one is placed
 because there is an answer to *why here*:
 
 - **a landmark sculpted out of layers** — `tools/sculpt/props.py` emits `dome`, `spire`,
@@ -137,9 +137,13 @@ because there is an answer to *why here*:
 ## 3. The ten minutes: read the card nearest the thing being built
 
 `techniques/` is one card per instrument, each holding its variants **side by side** in one world with the
-text reads that prove them. Read the card nearest the thing about to be built — `relief-on-shapes` and
-`hollows` are the two that carry ground, `ramp-and-stair` and `polylines` the two that carry a join — before
+text reads that prove them. Read the card nearest the thing about to be built — `ramp-and-stair` and `polylines` are the two that carry a join — before
 opening anything else. `techniques/README.md` indexes them.
+
+**The cards that teach the old group-keyed relief predate the modifier stack.** Read `relief-on-shapes`,
+`hollows`, `pushes`, `marks-and-pushes`, `marks-and-seams`, `winding-roads`, `made-ground` and `raising-a-lane` for
+what they say about shapes, ramps and made ground, and not for terrain: the `relief` keys in their documents no
+longer exist.
 
 **Every card's world is in the studio, so a card can be opened as well as read.** Each names its slug —
 `technique-<card>` — and `tools/seed-studio.py --check` says whether this database has them.
@@ -150,7 +154,7 @@ the card's committed reads are what settle a number, not a picture of one of the
 
 **Numbers off a finished board are a diagnostic, not a control.** `scramble%`, `barrier%` and
 the face count are read out of a built world, and no authoring decision is made against them:
-a cliff is settled with `face`, a push with the arithmetic `RL6` measures, a flight with a
+a cliff is settled with `face`, a flight with a
 transect. Predicting them calibrates nothing, and a predicted figure written into a report
 becomes the next reader's bias.
 
@@ -174,12 +178,9 @@ layers = d.get("addLayers") or []
 for L in layers:
     shapes += (L.get("shapes") or [])
 hm = [s.get("height_mode") for s in shapes]
-rel = d.get("relief") or {}
-marks = [m for g in rel.values() for m in g.get("marks", [])]
+mods = d.get("modifiers") or []
 styles = (d.get("dressing") or {}).get("styles") or {}
-print("reliefs", len(rel), "— two or more is two grounds meeting")
-print("marks", len(marks), sorted({m["kind"] for m in marks}))
-print("pushes", sum(len(g.get("pushes", [])) for g in rel.values()))
+print("modifiers", len(mods), sorted({m["op"] for m in mods}), "— a Level and a Hill are two grounds meeting")
 print("level", hm.count("level"), "raise", hm.count("raise"), "sink", hm.count("sink"))
 print("made ground", sum(1 for s in shapes if s.get("relief_scope")))
 print("polyline", sum(1 for s in shapes if s.get("type") == "polyline"))
@@ -197,15 +198,8 @@ nothing, and nothing anywhere raises a finding for it. A theme at a fraction of 
 the same fault: the shape is under the ground rather than on it, or another shape of equal
 area is taking the cell.
 
-And `POST /sketch/relief/read` with the stored layout, which is the only read that says what
-the marks did to **each other**: `silentMarks` is every mark that landed nowhere, `seams`
-names the pairs that meet on a step.
-
-And a seam naming a **shape** rather than a mark is a `relief_scope` pinning ground you meant
-the marks to shape.
-
-`level` and `largestField` are the two numbers that say whether the ground has a shape at all;
-over about 0.45 and 0.13 it is a table with edges.
+And `GET …/incline?format=text`, which says how much ground stands in each ten degrees. A board with
+almost nothing in its first row has nowhere to stand, whatever its modifiers were meant to do.
 
 And the notes. **A board is not done while a note on it is open without a reply**: `GET /map/{slug}/notes`
 and count the threads whose `status` is `open` — each is a remark nobody has answered. A note answered,

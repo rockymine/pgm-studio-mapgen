@@ -180,7 +180,7 @@ layer.** `kind: "made"` says a layer is a thing standing on the ground rather th
 "ground"` says where it stands. The measurements below are `techniques/sculpture-with-layers`, which carries
 them as panels.
 
-**A made thing seated on a relief is `seat: "ground"`, and the studio does the reading.** The whole thing is
+**A made thing seated on a grade is `seat: "ground"`, and the studio does the reading.** The whole thing is
 dropped until its lowest floor is one above the lowest ground under its footprint, and the terrain under it
 is cut to that course, so it beds into a grade instead of perching on the uphill end. Layers naming one
 `part_of` are seated together, which is what keeps a model whose runs are split across layers in one piece.

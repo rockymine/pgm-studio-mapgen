@@ -47,11 +47,11 @@ decides which form a spec is, because the refinement's statements append: `addLa
 | Key | Is |
 |---|---|
 | `themeById` · `themeByHeight` | the theme a shape paints with, by its id or by the height it stands at. The id is the reliable one: read the ids off the layout and key on them. Two pieces at one height fuse into one shape and a height key cannot tell them apart. A key naming an id the board does not have is answered `SR2`, with the ids it has |
-| `shapePropsById` · `shapePropsByHeight` | any field merged onto a shape — `relief_scope`, `controls`, `anchor_heights`, `height_mode` |
-| `editShapes` | `{"garth-14": [{"after": 1, "x": 92, "z": -70}, {"index": 4, "x": 80, "z": -60}, {"remove": 7}, {"pulls": {"0": [[0.5, 2]]}}]}` — the outline reshaped one point at a time, in order, before any bend. `after` inserts a point on that edge (at its midpoint where no `x`/`z` is stated), `index` moves that point, `remove` drops it, and `pulls` inserts points along named edges, each at a fraction `t` of its edge and pulled `in` blocks toward the inside, fanned to the edges the symmetry draws again; each op is stated against the ring as the ops before it left it, and `GET …/sketch/shapes/{id}?format=text` names the edges by index. An op stating none or more than one of the four refuses the whole source (`SR4`). The id reaches every outline carrying it, as `outlines` does: a shape's vertices, a relief `area` mark's or a push's ring, a stroke's, a fluid's or a flora's points. A stroke and a fluid channel are lines with two ends: they take `after`, `index` and `remove`, keep two points, and a `pulls` on one is a complaint |
+| `shapePropsById` · `shapePropsByHeight` | any field merged onto a shape — `relief_scope` (`hold`), `controls`, `anchor_heights`, `height_mode` |
+| `editShapes` | `{"garth-14": [{"after": 1, "x": 92, "z": -70}, {"index": 4, "x": 80, "z": -60}, {"remove": 7}, {"pulls": {"0": [[0.5, 2]]}}]}` — the outline reshaped one point at a time, in order, before any bend. `after` inserts a point on that edge (at its midpoint where no `x`/`z` is stated), `index` moves that point, `remove` drops it, and `pulls` inserts points along named edges, each at a fraction `t` of its edge and pulled `in` blocks toward the inside, fanned to the edges the symmetry draws again; each op is stated against the ring as the ops before it left it, and `GET …/sketch/shapes/{id}?format=text` names the edges by index. An op stating none or more than one of the four refuses the whole source (`SR4`). The id reaches every outline carrying it, as `outlines` does: a shape's vertices, a stroke's, a fluid's or a flora's points. A stroke and a fluid channel are lines with two ends: they take `after`, `index` and `remove`, keep two points, and a `pulls` on one is a complaint |
 | `bendShapes` | `{"dale-9": {"tension": 0.22, "wander": 3, "step": 9, "seed": 5, "side": "out"}}` — the outline drawn as a coast, after every point edit. A drawn ring is the board's shape and not its coast; redrawing the ring by hand states the coast twice, free to disagree with the shape. This resamples the ring along its long edges, pulls each **inserted** point off its edge by a deterministic wander and lays Catmull-Rom handles over the result, `tension` long (0.22 where absent). `side` says which way: `out`, the default, is the slight bloat that reads as land; `in` keeps the drawn footprint, which is what a strait a capture board is measured on wants; `both` wanders across the line. The ring's own vertices never move. It reaches every ring carrying the id, and a bend on a stroke or a fluid channel is a complaint, since a line has no inside |
-| `addShapes` | authored `SketchShape`s — the subtracts, the erected shapes, the ramps, the path-shape causeways. Each takes an optional `layer` and `group` naming where it lands, the way `POST …/sketch/layers/{layerId}/shapes?group=` does; one naming neither joins the ground layer's first group. **The group is where a shape's ground is decided** — the symmetry fan and the relief are both read off a group's `shapeIds`, so a shape in the wrong group is built once, where it was drawn, on the wrong terrain |
-| `relief` | `{"<groupId>": {...}}`, or `{"*": {...}}` for every group. A compiled plan's groups are `team` and `neutral` |
+| `addShapes` | authored `SketchShape`s — the subtracts, the erected shapes, the ramps, the path-shape causeways. Each takes an optional `layer` and `group` naming where it lands, the way `POST …/sketch/layers/{layerId}/shapes?group=` does; one naming neither joins the ground layer's first group. **The group is where a shape's ground is decided** — the symmetry fan is read off a group's `shapeIds`, so a shape in the wrong group is built once, where it was drawn, and its images are missing |
+| `modifiers` | the terraform stack, passed onto the layout's top-level `modifiers[]`: `[{"id": "west-hill", "op": "mound", "mask": {"areas": [{"kind": "ellipse", "at": [-40, 8], "rx": 14, "rz": 10}]}, "rise": 9}]`. `op` is `mound` (Hill), `crater` (Hollow), `level` or `noise` (Roughness); the list runs in order over the built ground (`pgm-studio/docs/tools/sketch.md`, *The modifier stack*) |
 | `themes` · `mapTheme` | the theme registry and the map default (the first key unless stated) |
 | `roomStyles` | `{"wool": …, "spawn": …}` — the two members `SketchRoomStyles` carries, each a style or `{"library": "<name>"}`, a row of the studio's room-style library with any changes laid beside the name (`pgm-studio/docs/tools/library.md`). A key neither of those names is answered `RQ3` (`refinement.roomStyles.cage`) and the room stamps the built-in bedrock box. It was `cage` until 2026-09-07, so a spec document older than that states the old word and re-driving it stamps the box |
 | `dressing` | `{"styles": …, "props": [...]}`; a house prop's `style` names a library row the same way, and a house in `styles` names one as `{"library": "<name>", "kind": "house", "shell": {…changes…}}`. A copied tree in `styles` is the recipe the studio's tree library answers for the showcase tree it is (`showcase.py`). A style in `styles` is a `PropStyle` and is discriminated — a tree is `{"kind": "tree", …}`, a **house is `{"kind": "house", "shell": <HouseStyle>}`**. A bare `HouseStyle` here is a 500 rather than a 400, because the parse throws before any gate reads it |
@@ -61,9 +61,9 @@ decides which form a spec is, because the refinement's statements append: `addLa
 | `shops` | a board's menus and the keepers that open them, onto `intent.shops`. A shop is `{id, name?, keeper?: {name?, mob?}, categories: [{id, material, name?, items: [{material, amount?, name?, price?, currency?, teamColor?}]}]}`. **It carries no coordinates at all** — a shop is a catalogue rather than a place, and the studio puts one keeper per shop at every team's spawn, beside the point players arrive on and facing them, held inside the spawn's room. PGM spawns the entity itself from the element, so nothing is stamped and a shop board exports the moment the intent is stored. A shop stating no category is left out rather than written as a menu PGM refuses (`pgm-studio/docs/pgm/shops.md` §9) |
 | `addLayers` | `[{id, name, base_y, shapes, groups, below?}]` — the storeys over or under the drawn ground. `below` inserts one under the ground layer, which is also the layer a shape naming none joins |
 
-### The findings, before the relief
+### The findings, before the terraform
 
-**Store the bare arrangement once and read its findings before any relief or paint goes on.** Most of what goes
+**Store the bare arrangement once and read its findings before any modifier or paint goes on.** Most of what goes
 wrong with an arrangement is a **relation between two pieces**, and `GET /map/{slug}/findings` asks those of the
 drawn ground — the walks to every wool, the front lines, the strait, the seams between the pieces and the
 ground. A rendered world cannot show them, because by then they are terrain.
@@ -92,7 +92,7 @@ The three places a finding appears:
    the board does not have, and its `RQ3` over every document at once, each path named with the member it was
    stated under — `refinement.themeByHeigth`, not `themeByHeigth`;
 
-3. **in the report** — `findings`, `relief` (each group's cells, low, high and symmetry error), `declines` (the
+3. **in the report** — `findings`, `declines` (the
    dressing's `DR-*`, read off the stored intent because `DR-KEEP` needs the spawn doors and the goal rings),
    `preflight` and `coverage`, printed whole after the store.
 
@@ -114,7 +114,7 @@ asks for it alone, off the board as it stands now.
 
 | Reading | Is |
 |---|---|
-| `findings` · `relief` · `declines` · `preflight` | everything wrong with the stored map, the relief per group, what the dressing declined, and the export's own verdict asked before the export — its log ends `export gate OPEN` or `export gate BLOCKED` |
+| `findings` · `declines` · `preflight` | everything wrong with the stored map, what the dressing declined, and the export's own verdict asked before the export — its log ends `export gate OPEN` or `export gate BLOCKED` |
 | `coverage` | the reached, decorated and dead shares and every dead patch with its coordinates — the only read that asks whether any journey **goes** somewhere, where every gate asks whether it can |
 | `heightmap` | the ground's height band above the board's lowest surface, one character per `every` blocks, with the houses, the fluids, the spawn points and the goals overprinted |
 | `slopes` | where the ground steps — `.` walked, `:` a block to scramble, `#` a barrier — and the barrier runs named as faces, largest first. A cliff reads as a line of `#`, a ramp as a band of `.` through it |
@@ -185,21 +185,20 @@ the spec directory's name would give, for a board stored under a name of its own
 ## `loop.py` — the spec through the previews, in seconds
 
 ```bash
-python3 tools/loop.py specs/<slug> [--slug <slug>] [--no-relief] [--no-dressing]
+python3 tools/loop.py specs/<slug> [--slug <slug>] [--no-dressing]
                       [--candidates <propId> x,z [x,z ...]]
                       [--profile x=<x>[,z=<z0>..<z1>[,step=<n>]]] [--profile z=<z>[,x=<x0>..<x1>]]
                       [--column x,z [x,z ...]]
 ```
 
 A drive stores, exports and pictures the board in ten to fifteen seconds, and most of what it decides was
-decided by two previews that take two.
+decided by a preview that takes two.
 This reads the spec exactly as `drive.py` does — the layout, with its refinement applied by the studio in a dry
-run of the source — and posts the result to `sketch/relief/read` and `sketch/dressing`
+run of the source — and posts the result to `sketch/dressing`
 without storing anything.
 
-**What the two answer.** The relief read gives the terrain in numbers — range, walk/scramble/barrier steps,
-crossings in both directions — and the dressing preview gives what every prop did, printing each decline
-with its rule and coordinates.
+**What it answers.** The dressing preview gives what every prop did, printing each decline with its rule and
+coordinates.
 
 **The map has to have been driven once**, because the dressing preview reads the stored intent for the
 spawn doors and the goal rings `DR-KEEP` keeps clear. After that every placement question is a loop pass,

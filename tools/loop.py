@@ -1,15 +1,14 @@
 """The fast loop: a spec through the previews, in seconds, without a drive.
 
-    python3 tools/loop.py specs/<slug> [--slug <slug>] [--no-relief] [--no-dressing]
+    python3 tools/loop.py specs/<slug> [--slug <slug>] [--no-dressing]
                           [--candidates <propId> x,z [x,z ...]]
                           [--profile x=<x>[,z=<z0>..<z1>[,<step>]]] [--profile z=<z>[,x=<x0>..<x1>[,<step>]]]
                           [--column x,z [x,z ...]]
 
-A drive stores, exports and pictures the board; a placement question is answered by two previews that take
-two seconds and store nothing. This reads the spec the way `drive.py` does — a layout and an intent, with the
+A drive stores, exports and pictures the board; a placement question is answered by a preview that takes
+two seconds and stores nothing. This reads the spec the way `drive.py` does — a layout and an intent, with the
 refinement the studio applies in a dry run of `PUT /map/{slug}/source` that stores nothing —
-and posts the result to `sketch/relief/read` (the terrain in numbers: range, steps, barriers, crossings)
-and `sketch/dressing` (what every prop did, and every decline with its rule and coordinates). Nothing is
+and posts the result to `sketch/dressing` (what every prop did, and every decline with its rule and coordinates). Nothing is
 stored. The map has to have been driven once before, because the dressing preview reads the stored intent
 for the spawn doors and the goal rings `DR-KEEP` keeps clear.
 
@@ -101,12 +100,6 @@ def main():
     specdir = sys.argv[1]
     slug = option("--slug", os.path.basename(specdir.rstrip("/")))
     layout = load(specdir, slug)
-
-    if "--no-relief" not in sys.argv:
-        print("== relief")
-        _, read = drive.call("POST", f"/map/{slug}/sketch/relief/read", layout, fatal=False)
-        for group in read.get("groups") or []:
-            print("   " + json.dumps({k: group.get(k) for k in ("group", "cells", "low", "high", "relief", "steps", "cliffs", "acrossX", "acrossZ")}))
 
     candidates = values_after("--candidates")
     if candidates:

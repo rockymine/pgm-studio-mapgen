@@ -4,7 +4,7 @@ Maps authored by driving pgm-studio's HTTP API. `AUTHORING-BRIEF.md` is what a b
 `README.md` is what is here.
 
 **Building a map: read [ORDER-OF-WORK.md](ORDER-OF-WORK.md) first.** One page, the nine decisions a board
-is made of and the order they are made in, with the four that cannot be taken back named at the end.
+is made of and the order they are made in, with the three that cannot be taken back named at the end.
 
 **Then [WHAT-A-BOARD-IS-MADE-OF.md](WHAT-A-BOARD-IS-MADE-OF.md), once, before the first theme is written.**
 The author's ruling on how a board should look — the paint, the buildings, the ground cover, where made
@@ -76,7 +76,7 @@ Four things that are true before the skill loads:
   all with `?format=text`. The one exception is a world that is not a stored map (a community map, a
   hand-finished world) — then `tools/anvil.py` and its four siblings.
 - **Finish the ground by its angle, not by its height.** A theme hung on plan pieces or on height bands
-  paints a board flat from above however much relief is under it. The `slope` band axis is what tells a
+  paints a board flat from above however much slope is under it. The `slope` band axis is what tells a
   45° hillside from a meadow, `GET …/incline?format=text` is what says where the bands should cut, and the
   `pgm-board` skill carries both with a worked stack. A board finished any other way is the look every
   report here has complained about.

@@ -168,7 +168,7 @@ Millrace builds taught, and the list is short enough to check:
 - every prop keeps 21 blocks off a goal (`OB19`) and off a spawn's ground, out of the lane in front of a door,
   clear of a fluid prop's bed, three blocks beyond a road's band, and a block beyond a house's footprint;
 - a house at a bench's edge raises `WX11` for the face its foundation fills; give it a bench of its own with
-  an `area` mark held flat;
+  a Level over its footprint;
 - on half a box the three goal bands cannot all hold at the plan tier (`GENERATION-NOTES.md` has the
   arithmetic); take the ratio and let the built board decide the walk.
 
@@ -184,7 +184,7 @@ python3 tools/trees.py verify maps/<mode>/<new-name>/region
 ```
 
 Drive once so the map exists, then iterate through `loop.py`: it posts the compiled, patched layout to the
-relief read and the dressing preview without storing anything, and `--candidates` answers a placement question
+dressing preview without storing anything, and `--candidates` answers a placement question
 for eight positions in one pass. Drive again when the loop is clean.
 
 Then read the world back: `probe.py` for the body's run lengths (a mean under three blocks is a blob; the
