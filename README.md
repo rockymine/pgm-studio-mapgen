@@ -18,6 +18,7 @@ review/<slug>.md                      the measured record for that map
 reports/<model>-runN.md               one agent run: what it could not say, what it got wrong, what worked
 techniques/<card>/                    one instrument, its variants side by side in one world, with the reads
 corpus/                               hand-built worlds nothing can re-derive — the tree corpus
+sketches/<name>/                      scripts that compose an author's hand-built sketch world into a map, in wool
 sculpture/                            structures built out of the layer system — the two galleries
 tools/                                the driver that posts those documents to the API, the loop beside it, and the world tools
 ```
