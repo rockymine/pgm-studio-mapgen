@@ -29,6 +29,7 @@ HEAD_ROOM = opt("--head-room", 8)  # air above the raised wool-room floor
 COVER_MIN = opt("--cover", 4)    # ground required between the roof's top and the surface above it
 CENTRE = (24, 48)                # the 180-degree turn's pivot: block (24, 48)
 ROTATE = "--no-rotate" not in sys.argv
+XRAY = sys.argv[sys.argv.index("--xray") + 1] if "--xray" in sys.argv else None
 OFFSET = (-35, -61, -43)         # floating copy -> ground, measured off the two cores
 
 W = lambda d: (35, d)
@@ -39,6 +40,7 @@ KEY = {
     "goal_plinth": W(15),
 }
 BEDROCK = (7, 0)
+FILL = (1, 0)          # solid ground under every surface; its texture is not decided
 MARK_SHEET, MARK_CRACK, MARK_TERRAIN = (133, 0), (42, 0), (41, 0)
 
 src = World(SRC)
@@ -46,8 +48,19 @@ orig = {(x, y, z): (i, d) for x, y, z, i, d in src.blocks()}
 out = dict(orig)
 report = []
 
+SPACE = set()          # cells that must stay air: every carved space, so the ground fill leaves them open
+TUNNELS = []           # (route, x, z, roof_y) for every tunnel column, for the below-ground check
+ROUTE = ["-"]          # the route the next tunnel piece belongs to
+SKY_OPEN = set()       # columns meant to stand open to the sky all the way down: the canyon, the cracks, the pit
+
 def put(cell, block):
     out[cell] = block
+
+def space_box(x0, x1, y0, y1, z0, z1):
+    for x in range(x0, x1 + 1):
+        for y in range(y0, y1 + 1):
+            for z in range(z0, z1 + 1):
+                SPACE.add((x, y, z))
 
 def clear(cell):
     out.pop(cell, None)
@@ -78,18 +91,27 @@ for cell, block in list(out.items()):
     if -30 <= x <= 16 and 28 <= y <= 84 and -67 <= z <= 8:
         if block[0] in STRUCTURE or (block[0] == 35 and block[1] in (1, 6, 7, 14, 15)):
             clear(cell)
+BUNKER = set()
 for cell, block in orig.items():
     x, y, z = cell
     if 8 <= x <= 52 and 85 <= y <= 157 and -22 <= z <= 47:
-        put((x + OFFSET[0], y + OFFSET[1], z + OFFSET[2]), block)
+        moved = (x + OFFSET[0], y + OFFSET[1], z + OFFSET[2])
+        put(moved, block); BUNKER.add(moved)
 for cell, block in orig.items():
     if inside(cell, CORE_BOX) or inside(cell, TERRACE):
         put(cell, block)
-pit = {(x, z) for (x, y, z), b in out.items() if b == KEY["void"] and y == 24}
+pit = {(x, z) for (x, y, z), b in out.items() if b == KEY["void"] and y == 24 and z <= -9}
 for (x, z) in pit:                                          # sink the purple pit into the floor
     for y in range(25, 41):
         if (x, y, z) in out and is_terrain(out[(x, y, z)]):
             clear((x, y, z))
+    for y in list(range(0, 24)) + list(range(25, 41)):
+        SPACE.add((x, y, z))
+    SKY_OPEN.add((x, z))
+for (x, y, z), b in list(out.items()):
+    if b == KEY["void"] and y == 24 and z > -9:
+        for yy in range(25, 29):
+            if (x, yy, z) not in out: SPACE.add((x, yy, z))
 report.append(f"bunker: floating copy lowered by {OFFSET}; old core's lava and terrace kept; pit {len(pit)} cells sunk")
 
 # ---------------------------------------------------------------- 3. the wool lane
@@ -148,10 +170,14 @@ for x in range(33, 68):
                 clear((x, y, z))
 for cell, block in lane.items():
     put(cell, block)
+space_box(U_ROOM[0][0], U_ROOM[0][1], 0, R_ROOM - 1, U_ROOM[1][0], U_ROOM[1][1])
+space_box(U_LANE[0][0], U_LANE[0][1], 0, R_LANE - 1, U_LANE[1][0], U_LANE[1][1])
+space_box(CANYON[0][0], CANYON[0][1], 0, 60, CANYON[1][0], CANYON[1][1])
+SKY_OPEN.update((x, z) for x in range(CANYON[0][0], CANYON[0][1] + 1) for z in range(CANYON[1][0], CANYON[1][1] + 1))
 
 # walls, roof and the opening the lane leaves on its east side
 def wall_column(x, z, top):
-    for y in range(L - 6, top):
+    for y in range(0, top):
         if (x, y, z) in out: continue
         put((x, y, z), BEDROCK if y <= L + 3 else KEY["facade"])
 
@@ -201,6 +227,8 @@ for (x, z), y in ramp_top.items():
         if (x, yy, z) in out and is_terrain(out[(x, yy, z)]):
             clear((x, yy, z))
     put((x, y, z), KEY["walk"]); put((x, y - 1, z), KEY["walk"])
+    for yy in range(y + 1, 61):
+        SPACE.add((x, yy, z))
 for row in ramp_rows:
     for p in row: put(tuple(map(math.floor, p)), MARK_SHEET)
 report.append(f"ramp: {len(ramp_top)} columns, from y {L} at z -6 to y 30 at z 38")
@@ -222,24 +250,28 @@ for cell in layers[0]:
 for p in sheet_top + sheet_bottom: put(tuple(map(math.floor, p)), MARK_SHEET)
 
 # ---------------------------------------------------------------- 6. cracks, placed on purpose
-def crack(rings, carve_top_y=None, open_bottom=True, clip=None):
+def crack(rings, carve_top_y=None, open_bottom=True, clip=None, to_void=False):
     """A ravine as rings of points, top to bottom, lofted into a one-block shell; the ground inside the top ring
     is carved and every ring's points are left as iron markers."""
     grid = loft.surface(rings, closed_rows=True, density=0.45)
     shell = loft.voxels(grid, thickness=1, closed_rows=True)[0]
     polys = [(r[0][1], [(p[0], p[2]) for p in loft.curve(r, closed=True)]) for r in rings]
-    y_low = min(r[0][1] for r in rings) - 1; y_high = max(r[0][1] for r in rings) + 8
+    y_low = 0 if to_void else min(r[0][1] for r in rings) - 1; y_high = max(r[0][1] for r in rings) + 30
     for y in range(int(y_low), int(y_high)):
         poly = min(polys, key=lambda pr: abs(pr[0] - y))[1]
         xs = [p[0] for p in poly]; zs = [p[1] for p in poly]
         for x in range(math.floor(min(xs)) - 1, math.ceil(max(xs)) + 2):
             for z in range(math.floor(min(zs)) - 1, math.ceil(max(zs)) + 2):
-                if loft.polygon_contains(poly, x + 0.5, z + 0.5) and (x, y, z) in out and \
+                if not loft.polygon_contains(poly, x + 0.5, z + 0.5): continue
+                SPACE.add((x, y, z))
+                if y == int(max(r[0][1] for r in rings)): SKY_OPEN.add((x, z))
+                if (x, y, z) in out and \
                         (is_terrain(out[(x, y, z)]) or out[(x, y, z)] in (BEDROCK, KEY["roof_top"])):
                     clear((x, y, z))
     for cell in shell:
         if clip and clip(cell): continue
-        if cell not in out or is_terrain(out[cell]): put(cell, KEY["crack"])
+        if cell not in out or is_terrain(out[cell]):
+            put(cell, KEY["crack"]); SPACE.discard(cell)
     for ring in rings:
         for p in ring: put(tuple(map(math.floor, p)), MARK_CRACK)
     return len(shell)
@@ -297,7 +329,7 @@ spur = loft_terrain(spur_rows, KEY["terrain_low"])
 report.append(f"middle: connector {connector} blocks, west spur {spur}")
 # K2: the mid crack, one per half; the turn makes the pair a staggered S across the centre line
 k2 = crack([ring(17, 31, 39, 24, 5, 12, 0.15, 10), ring(18, 24, 39.5, 21, 4, 8, 0.2, 10),
-            ring(19, 14, 40, 17, 3, 15, 0.25, 10), ring(19.5, 4, 40.5, 12, 2, 10, 0.2, 10)])
+            ring(19, 14, 40, 17, 3, 15, 0.25, 10), ring(19.5, 4, 40.5, 12, 2, 10, 0.2, 10)], to_void=True)
 report.append(f"cracks: K2 mid ({k2} shell blocks)")
 
 # ---------------------------------------------------------------- 8. the mountain the bunker is sunk into
@@ -314,7 +346,7 @@ def face_line():
     return rows
 
 face = face_line()
-row0 = [(fx - 1.5, top - 3, z) for fx, top, z in face]
+row0 = [(fx - 0.5, top - 3, z) for fx, top, z in face]     # the mountain meets the facade three under its top
 row1 = [(fx - 9, top + 5, z) for fx, top, z in face]
 row2 = [(-40, top + 11, z) for fx, top, z in face]
 row3 = [(-53, top - 4, z) for fx, top, z in face]
@@ -339,7 +371,9 @@ def corridor(a, b, y):
                     block = KEY["tunnel_floor"] if dy == 0 else KEY["tunnel_roof"] if dy == 4 else KEY["tunnel_wall"]
                     if cell not in out or is_terrain(out[cell]): put(cell, block)
                 else:
+                    SPACE.add(cell)
                     if cell in out and (is_terrain(out[cell]) or out[cell][0] in (35,)): clear(cell)
+            TUNNELS.append((ROUTE[0], px, pz, y + 4))
     return n + 1
 
 def flight(start, direction, y, dy_total):
@@ -356,7 +390,10 @@ def flight(start, direction, y, dy_total):
                 if dy == 0 or dy == 5 or w in (-1, 2):
                     block = KEY["tunnel_floor"] if dy == 0 else KEY["tunnel_roof"] if dy == 5 else KEY["stair_wall"]
                     if cell not in out or is_terrain(out[cell]): put(cell, block)
-                elif cell in out and is_terrain(out[cell]): clear(cell)
+                else:
+                    SPACE.add(cell)
+                    if cell in out and is_terrain(out[cell]): clear(cell)
+            TUNNELS.append((ROUTE[0], px, pz, y + 5))
         if moved == abs(dy_total): break
         x += dx; z += dz; k += 1
         if k % 4 != 0:
@@ -372,34 +409,298 @@ def hall(x0, z0, x1, z1, y, height=6):
                 if dy == 0: put(cell, KEY["tunnel_floor"])
                 elif dy == height + 1: put(cell, KEY["tunnel_roof"])
                 elif edge: put(cell, KEY["hall_wall"])
-                elif cell in out and is_terrain(out[cell]): clear(cell)
+                else:
+                    SPACE.add(cell)
+                    if cell in out and is_terrain(out[cell]): clear(cell)
+            TUNNELS.append((ROUTE[0], x, z, y + height + 1))
 
 def door(x, z, y, axis):
     for w in (-1, 0, 1):
         for dy in (1, 2, 3):
             cell = (x + (w if axis == "z" else 0), y + dy, z + (w if axis == "x" else 0))
-            clear(cell)
+            clear(cell); SPACE.add(cell)
 
 FLOOR_T = L - 1          # the tunnel floor block sits one under the lane's walk surface
 H1 = (10, -46, 21, -30)
+ROUTE[0] = "hall"
 hall(*H1, FLOOR_T, height=6)
 # T3: the hall to the lane's west arm
+ROUTE[0] = "T3 hall to the west arm"
 corridor((22, -37), (35, -37), FLOOR_T); door(21, -37, FLOOR_T, "x")
-# T2: from behind the spawn door, down under the valley floor to the hall
-end, y_end = flight((-26, -42), (1, 0), 31, FLOOR_T - 31)
+# the spawn room, behind the door frame at x -9..-8, z -49..-40, which faces the valley
+SPAWN = (-26, -11, -50, -39, 31)
+ROUTE[0] = "spawn room"
+hall(SPAWN[0], SPAWN[2], SPAWN[1], SPAWN[3], SPAWN[4], height=9)
+for z in range(-48, -40):                              # the room opens into the frame, the frame onto the valley
+    for y in range(32, 45):
+        for x in (-11, -10, -9, -8, -7):
+            if y <= 40 or x >= -9:
+                if x <= -10: clear((x, y, z))
+                SPACE.add((x, y, z))
+    for x in range(-11, -6):                           # the doorway's floor, level with the room's
+        if (x, 31, z) not in out: put((x, 31, z), KEY["walk"])
+# T2: a switchback stairwell from the spawn room's floor: west into the mountain, a landing, then east
+# well under the bunker's foundations and the valley floor to the hall
+ROUTE[0] = "T2 spawn to the hall"
+endA, yA = flight((-13, -47), (-1, 0), 31, -12)
+landing = (endA[0] - 4, endA[0], -48, -39)
+hall(landing[0], landing[2], landing[1], landing[3], yA, height=5)
+for z in range(-47, -39):
+    for y in range(yA + 1, yA + 6):
+        clear((landing[1], y, z)); SPACE.add((landing[1], y, z))
+end, y_end = flight((endA[0] - 1, -42), (1, 0), yA, FLOOR_T - yA)
 corridor((end[0], -41), (9, -41), y_end); door(10, -41, FLOOR_T, "x")
 # T1: the back room behind the purple pit, down and along to the hall's south door
 for y in range(25, 28):
     for z in range(-4, -1):
-        for x in (-9, -8): clear((x, y, z))
+        for x in (-9, -8): clear((x, y, z)); SPACE.add((x, y, z))
+ROUTE[0] = "T1 back room to the hall"
 end1, y1 = flight((-7, -3), (1, 0), 24, FLOOR_T - 24)
 corridor((end1[0], -2), (15, -2), y1); corridor((15, -2), (15, -29), y1); door(15, -30, FLOOR_T, "z")
-# T4: up from the floor south of the house to the core's terrace at y 56
-e4, ye4 = flight((-1, 9), (-1, 0), 30, 18)
-e4b, ye4b = flight(e4, (0, -1), ye4, 56 - ye4)
-corridor((e4b[0] + 1, e4b[1]), (e4b[0] + 1, -15), 56); corridor((e4b[0] + 1, -15), (-21, -15), 56)
+# T4: the core's terrace from the valley floor, entirely inside the south peak and the mountain behind the house.
+# A mouth cut into the peak's foot at x -23, a flight west under the peak, a flight north under the mountain,
+# then a corridor east at the terrace's height to a door in the house's west wall.
+T4_MOUTH = (-24, 6, 31)
+for x in range(-23, -18):                              # an open cut into the peak's foot, level with the floor
+    for z in range(4, 8):
+        if (x, 31, z) not in out or is_terrain(out[(x, 31, z)]): put((x, 31, z), KEY["walk"])
+        for y in range(32, 46):
+            SPACE.add((x, y, z))
+            if (x, y, z) in out and is_terrain(out[(x, y, z)]): clear((x, y, z))
+ROUTE[0] = "T4 valley floor to the core terrace"
+e4, ye4 = flight((-24, 5), (-1, 0), 31, 9)
+e4b, ye4b = flight((e4[0] - 1, e4[1] + 1), (0, -1), ye4, 56 - ye4)
+corridor((e4b[0] + 1, e4b[1]), (e4b[0] + 1, -15), 56)
+corridor((e4b[0] + 1, -15), (-28, -15), 56)
+door(-27, -15, 56, "x")
+for x in range(-27, -21):
+    for z in range(-16, -13):
+        if (x, 56, z) not in out: put((x, 56, z), KEY["tunnel_floor"])
 report.append(f"tunnels: hall at x {H1[0]}..{H1[2]} z {H1[1]}..{H1[3]} floor y {FLOOR_T}; T2 stairs end {end} y {y_end}; "
-              f"T1 stairs end {end1} y {y1}; core climb ends {e4b} y {ye4b} then along y 56 to the terrace")
+              f"T1 stairs end {end1} y {y1}; core stairs: mouth {T4_MOUTH}, flights end {e4} y {ye4} and {e4b} y {ye4b}, "
+              f"then y 56 to a door in the house's west wall at x -27")
+
+# ---------------------------------------------------------------- 10. solid ground
+GROUND = {(35, 8), (35, 4), (35, 3), (35, 5), (35, 13), (41, 0), (57, 0)}   # gold and diamond mark surface points
+HALF = ((-60, 68), (-110, 48))
+
+def columns_of(cells):
+    by = collections.defaultdict(list)
+    for (x, y, z) in cells:
+        by[(x, z)].append(y)
+    return by
+
+ground_tops, structure_floors, space_top = {}, {}, {}
+for (x, y, z), b in out.items():
+    if not (HALF[0][0] <= x <= HALF[0][1] and HALF[1][0] <= z <= HALF[1][1]) or y > 86:
+        continue
+    if b in GROUND and (x, y, z) not in BUNKER:
+        if y > ground_tops.get((x, z), -1): ground_tops[(x, z)] = y
+    elif 20 <= y <= 40 and (x, y, z) not in SPACE:
+        if y < structure_floors.get((x, z), 99): structure_floors[(x, z)] = y
+space_low = {}
+for (x, y, z) in SPACE:
+    if y < space_low.get((x, z), 999): space_low[(x, z)] = y
+
+tops = {}
+for col, y in ground_tops.items(): tops[col] = y
+for col, y in structure_floors.items():
+    if col not in tops: tops[col] = y
+holes = 0
+for _ in range(3):                      # a column with none, ringed by ones with ground, is a hole in a sheet
+    added = {}
+    for x in range(HALF[0][0], HALF[0][1] + 1):
+        for z in range(HALF[1][0], HALF[1][1] + 1):
+            if (x, z) in tops or (x, z) in SKY_OPEN: continue
+            near = [tops[(x + dx, z + dz)] for dx in (-1, 0, 1) for dz in (-1, 0, 1)
+                    if (dx or dz) and (x + dx, z + dz) in tops]
+            if len(near) >= 6:
+                added[(x, z)] = min(near)
+    for (x, z), y in added.items():
+        tops[(x, z)] = y
+        if (x, y, z) not in out: put((x, y, z), KEY["walk"])
+    holes += len(added)
+open_cols = SKY_OPEN
+HOUSE = ((-27, -5), (-22, 5))
+TERRACE_Y = 56
+
+def open_patches():
+    """Columns with no ground under them, grouped: those enclosed by ground, and those that run into an intended
+    opening (the canyon, a crack, the pit). Anything still joined to the half's border is outside the map."""
+    candidates = {(x, z) for x in range(HALF[0][0], HALF[0][1] + 1) for z in range(HALF[1][0], HALF[1][1] + 1)
+                  if (x, z) not in tops and (x, z) not in open_cols}
+    def flood(seeds):
+        got = set(seeds); todo = list(seeds)
+        while todo:
+            x, z = todo.pop()
+            for n in ((x + 1, z), (x - 1, z), (x, z + 1), (x, z - 1)):
+                if n in candidates and n not in got: got.add(n); todo.append(n)
+        return got
+    outside = flood([c for c in candidates if c[0] in HALF[0] or c[1] in HALF[1]])
+    beside = flood([c for c in candidates - outside
+                    if any(n in open_cols for n in ((c[0] + 1, c[1]), (c[0] - 1, c[1]), (c[0], c[1] + 1), (c[0], c[1] - 1)))])
+    def groups(cells):
+        out_groups, left = [], set(cells)
+        while left:
+            seed = left.pop(); comp = [seed]; todo = [seed]
+            while todo:
+                x, z = todo.pop()
+                for n in ((x + 1, z), (x - 1, z), (x, z + 1), (x, z - 1)):
+                    if n in left: left.remove(n); comp.append(n); todo.append(n)
+            out_groups.append(comp)
+        return out_groups
+    return groups(candidates - outside - beside), groups(beside)
+
+enclosed, beside = open_patches()
+closed_patches = []
+for comp in enclosed:
+    cells = set(comp)
+    if any(HOUSE[0][0] <= x <= HOUSE[0][1] and HOUSE[1][0] <= z <= HOUSE[1][1] for x, z in comp):
+        level, why = TERRACE_Y, "the bunker's body, up to the terrace"
+    else:
+        ring = [ground_tops[n] for x, z in comp for n in ((x + 1, z), (x - 1, z), (x, z + 1), (x, z - 1))
+                if n not in cells and n in ground_tops]
+        level, why = (min(ring) if ring else 30), "the lowest ground around it"
+    for (x, z) in comp:
+        tops[(x, z)] = level
+        if (x, level, z) not in out: put((x, level, z), KEY["walk"])
+    xs = [c[0] for c in comp]; zs = [c[1] for c in comp]
+    closed_patches.append(f"    closed {len(comp):4d} columns  x {min(xs)}..{max(xs)}  z {min(zs)}..{max(zs)}  to y {level}, {why}")
+report.append(f"surface: {len(enclosed)} enclosed patches with no ground under them, closed:")
+report.extend(closed_patches)
+for comp in beside:
+    xs = [c[0] for c in comp]; zs = [c[1] for c in comp]
+    report.append(f"    left open {len(comp):4d} columns  x {min(xs)}..{max(xs)}  z {min(zs)}..{max(zs)}  "
+                  f"(runs into the canyon, a crack or the pit)")
+
+FILLED = set()
+for (x, z), top in tops.items():
+    for y in range(0, top):
+        cell = (x, y, z)
+        if cell in out or cell in SPACE: continue
+        out[cell] = FILL; FILLED.add(cell)
+report.append(f"ground: {len(tops)} columns filled solid to y 0, {len(FILLED)} blocks; {holes} holes in sheets closed")
+after_enclosed, _ = open_patches()
+report.append(f"surface after the fill: {len(after_enclosed)} enclosed patches with no ground under them")
+
+# ---------------------------------------------------------------- 11. closure: where the sky reaches underground
+UNDERGROUND = set()
+for name, (x0, x1), (z0, z1), y1 in (("room", U_ROOM[0], U_ROOM[1], R_ROOM - 1), ("lane", U_LANE[0], U_LANE[1], R_LANE - 1)):
+    for x in range(x0, x1 + 1):
+        for z in range(z0, z1 + 1):
+            for y in range(0, y1 + 1):
+                if (x, y, z) not in out: UNDERGROUND.add((x, y, z))
+for name, tx, tz, roof in TUNNELS:
+    for y in range(roof - 6, roof):
+        if (tx, y, tz) in SPACE and (tx, y, tz) not in out: UNDERGROUND.add((tx, y, tz))
+for x in range(SPAWN[0] + 1, SPAWN[1]):
+    for z in range(SPAWN[2] + 1, SPAWN[3]):
+        for y in range(SPAWN[4] + 1, SPAWN[4] + 10): UNDERGROUND.add((x, y, z))
+
+ENTRIES = [
+    ("main entrance: the lane runs out into the canyon and the ramp", (47, 67, 0, 60, -35, -32)),
+    ("the lane's open east side, toward the void", (65, 68, 0, 60, -52, -33)),
+    ("crack K1 into the west arm", (30, 48, 0, 40, -41, -32)),
+    ("the spawn door", (-11, -6, 30, 46, -50, -39)),
+    ("the core stairs' mouth in the south peak's foot", (-25, -18, 30, 46, 3, 9)),
+    ("the core stairs' door onto the terrace", (-29, -20, 55, 61, -18, -12)),
+]
+X0, X1, Y0, Y1, Z0, Z1 = -62, 70, 0, 100, -112, 50
+NX, NY, NZ = X1 - X0 + 1, Y1 - Y0 + 1, Z1 - Z0 + 1
+solid = bytearray(NX * NY * NZ)
+for (x, y, z) in out:
+    if X0 <= x <= X1 and Y0 <= y <= Y1 and Z0 <= z <= Z1:
+        if 8 <= x <= 52 and y >= 85 and -22 <= z <= 47: continue
+        solid[((x - X0) * NY + (y - Y0)) * NZ + (z - Z0)] = 1
+seen = bytearray(NX * NY * NZ)
+stack = []
+for xi in range(NX):
+    for zi in range(NZ):
+        i = (xi * NY + (NY - 1)) * NZ + zi
+        if not solid[i]: seen[i] = 1; stack.append(i)
+for xi in range(NX):
+    for yi in range(NY):
+        for zi in (0, NZ - 1):
+            i = (xi * NY + yi) * NZ + zi
+            if not solid[i] and not seen[i]: seen[i] = 1; stack.append(i)
+for zi in range(NZ):
+    for yi in range(NY):
+        for xi in (0, NX - 1):
+            i = (xi * NY + yi) * NZ + zi
+            if not solid[i] and not seen[i]: seen[i] = 1; stack.append(i)
+SX, SY = NY * NZ, NZ
+while stack:
+    i = stack.pop()
+    xi, rem = divmod(i, SX); yi, zi = divmod(rem, SY)
+    for j, ok in ((i - SX, xi > 0), (i + SX, xi < NX - 1), (i - SY, yi > 0), (i + SY, yi < NY - 1),
+                  (i - 1, zi > 0), (i + 1, zi < NZ - 1)):
+        if ok and not solid[j] and not seen[j]:
+            seen[j] = 1; stack.append(j)
+
+def reached(c):
+    x, y, z = c
+    return X0 <= x <= X1 and Y0 <= y <= Y1 and Z0 <= z <= Z1 and seen[((x - X0) * NY + (y - Y0)) * NZ + (z - Z0)]
+
+openings = set()
+for c in UNDERGROUND:
+    if not reached(c): continue
+    x, y, z = c
+    for n in ((x + 1, y, z), (x - 1, y, z), (x, y + 1, z), (x, y - 1, z), (x, y, z + 1), (x, y, z - 1)):
+        if n not in UNDERGROUND and n not in out and reached(n):
+            openings.add(c); break
+groups, left = [], set(openings)
+while left:
+    seed = left.pop(); comp = [seed]; todo = [seed]
+    while todo:
+        x, y, z = todo.pop()
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                for dz in (-1, 0, 1):
+                    n = (x + dx, y + dy, z + dz)
+                    if n in left: left.remove(n); comp.append(n); todo.append(n)
+    groups.append(comp)
+leaks = 0
+for comp in sorted(groups, key=len, reverse=True):
+    bb = [(min(c[k] for c in comp), max(c[k] for c in comp)) for k in range(3)]
+    named = [n for n, (a0, a1, b0, b1, c0, c1) in ENTRIES
+             if bb[0][0] <= a1 and bb[0][1] >= a0 and bb[1][0] <= b1 and bb[1][1] >= b0 and bb[2][0] <= c1 and bb[2][1] >= c0]
+    if not named: leaks += 1
+    report.append(f"    opening {'ENTRY' if named else 'LEAK '} {len(comp):5d} cells  x {bb[0][0]}..{bb[0][1]}  "
+                  f"y {bb[1][0]}..{bb[1][1]}  z {bb[2][0]}..{bb[2][1]}  {named[0] if named else ''}")
+report.insert(len(report) - len(groups), f"closure: {len(groups)} openings from the sky into the underground, {leaks} not an entry")
+
+# ---------------------------------------------------------------- 12. every tunnel below the ground over it
+above = {}
+for (x, z), top in tops.items(): above[(x, z)] = top
+exposed, raised = [], 0
+for name, x, z, roof in TUNNELS:
+    top = above.get((x, z))
+    near = [above[(x + dx, z + dz)] for dx in (-1, 0, 1) for dz in (-1, 0, 1) if (dx or dz) and (x + dx, z + dz) in above]
+    local = max(near) if near else None
+    if (top is None or top < roof) and local is not None and roof - 1 <= local <= roof + 2:
+        top = roof                                     # the floor beside it is at the roof: the roof replaced the floor
+    if top is not None and roof >= top and roof + 1 - top <= 2:
+        for y in range(top + 1, roof + 2):            # a tunnel grazing the surface: the floor is raised over it
+            if (x, y, z) not in out: put((x, y, z), KEY["walk"])
+        above[(x, z)] = roof + 1; raised += 1
+        continue
+    if top is None or roof >= top:
+        exposed.append((name, x, z, roof, top))
+report.append(f"below ground: {len(TUNNELS)} tunnel columns, {len(exposed)} with a roof at or above the ground over them; "
+              f"{raised} where the floor was raised one or two blocks over a roof")
+least = {}
+for name, x, z, roof in TUNNELS:
+    top = above.get((x, z))
+    if top is None: continue
+    cover = top - roof
+    if name not in least or cover < least[name][0]: least[name] = (cover, x, z, roof, top)
+for name, (cover, x, z, roof, top) in least.items():
+    report.append(f"    {name}: least ground over the roof {cover} at ({x}, {z}), roof y {roof}, surface y {top}")
+for name, x, z, roof, top in exposed[:15]:
+    report.append(f"    exposed {name} at ({x}, {z}): roof y {roof}, ground {top}")
+
+if XRAY:
+    xray = {c: b for c, b in out.items() if c not in FILLED}
 
 # ---------------------------------------------------------------- 10. the turn
 def turned_block(block):
@@ -419,9 +720,13 @@ if ROTATE:
             and not (8 <= c[0] <= 52 and c[1] >= 85 and -22 <= c[2] <= 47)}
     for (x, y, z), b in half.items():
         out[(2 * cx - x, y, 2 * cz - z)] = turned_block(b)
+        if XRAY and (x, y, z) not in FILLED: xray[(2 * cx - x, y, 2 * cz - z)] = turned_block(b)
     report.append(f"turned {len(half)} blocks 180 degrees about block {CENTRE}")
 
 tiles = [{"id": "DLDetector", "x": x, "y": y, "z": z} for (x, y, z), b in out.items() if b[0] in (151, 178)]
 chunks, regions = write_world(out, OUT, tile_entities=tiles)
 report.append(f"wrote {len(out)} blocks in {chunks} chunks, {regions} regions -> {OUT}")
+if XRAY:
+    write_world(xray, XRAY, tile_entities=tiles)
+    report.append(f"x-ray copy without the ground fill -> {XRAY}")
 print("\n".join(report))

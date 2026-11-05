@@ -24,9 +24,11 @@ python3 sketches/fire-and-ice/render.py <out>/region top.png top -60,110,_,99,-1
 python3 sketches/fire-and-ice/render.py <out>/region lane.png iso 28,68,0,60,-72,42 5 1
 ```
 
-**A build takes about a second and prints its own report.** It names the lane's walk height, both roofs, the
-thinnest cover over them with the columns that fall short, and where each tunnel ends. `--no-rotate` builds the
-one half alone. The four region files it writes drop into a copy of the sketch world's `region/` folder.
+**A build takes about five seconds and prints its own report.** It names the lane's walk height, both roofs, the
+thinnest cover over them with the columns that fall short, where each tunnel ends, and the three closure readings
+below. `--no-rotate` builds the one half alone, and `--xray <dir>` writes a second copy without the ground fill,
+which is the one to look at the underground in. The four region files it writes drop into a copy of the sketch
+world's `region/` folder.
 
 ## What it builds
 
@@ -40,13 +42,34 @@ one half alone. The four region files it writes drop into a copy of the sketch w
 | Cracks | K1 from the floor into the west arm; K2 in the middle, whose turned twin makes a staggered pair across the centre line |
 | Middle | floor fitted to the valley floor's measured south edge, out to the centre line at z 48, and a spur off the south peak |
 | Mountain | two lofts sharing one row: low terrain from under the facade top back eight blocks, high terrain over a ridge at x −40 |
-| Tunnels | a hall at x 10–21, z −46…−30; corridors and stair flights to it from the spawn and the pit's back room, on to the west arm, and up to the core terrace at y 56 |
+| Spawn room | x −26…−11, z −50…−39, floor y 31, behind the door frame at x −9…−8 that faces the valley |
+| Tunnels | a hall at x 10–21, z −46…−30, floor y 7; from the spawn room a switchback stairwell, west to a landing at y 19 and back east under the bunker's foundations; from the pit's back room; on to the west arm; and up to the core terrace |
+| Core stairs | a mouth cut into the south peak's foot at x −24, z 5–6; a flight west under the peak, a flight north under the mountain behind the house, and a corridor at y 56 to a door in the house's west wall |
+| Ground | every column of the half filled solid in stone from its surface to y 0, except the spaces the composition carves; the house's body up to the terrace at y 56 |
 | Turn | 180 degrees about block (24, 48) |
 
 **Each surface is a list of rows of points, and two surfaces meet exactly where they share a row.** `loft.py`
 joins a row's points with a centripetal Catmull-Rom spline, which passes through every point and rounds off a
 point that sticks out, then joins the rows with a second spline across them. A crack is rings of points lofted
 top to bottom into a one-block shell, with the ground inside each ring carved.
+
+## What keeps it closed
+
+**Every space the composition carves is registered, and the ground is filled solid around them last.** The
+tunnels, the hall, the spawn room, the lane's cavity, the canyon, the cut over the ramp, the cracks and the void
+under the pit each mark their cells as air. The fill then runs every column from its surface to the bottom of the
+world and skips only those cells, so nothing underground is open unless something carved it open.
+
+**The build reads three things back and prints each one.** A surface reading lists every patch of columns with
+no ground under it and closes the enclosed ones: to the terrace inside the house, otherwise to the lowest terrain
+around the patch. A closure reading floods the sky's air inward and names every place it reaches the underground,
+each matched to an entry or reported as a leak. A depth reading lists every tunnel column whose roof is not below
+the ground over it, and the least cover on each route.
+
+**The entries are the ones the composition means to have, and no others.** The lane runs out into the canyon and the ramp;
+its long side is open to the void on the east; crack K1 drops into the west arm; the spawn door opens onto the
+valley; the core stairs have a mouth in the south peak's foot and a door onto the terrace. A build that finds any
+other opening says `LEAK` beside its coordinates.
 
 ## How deep the lane sits
 
@@ -72,6 +95,7 @@ shelf's rim at y 29. Measured over the 1,011 roofed columns:
 | cyan, brown, blue wool | tunnel walls, floors and roofs; orange for stair flights, magenta for the hall |
 | black wool, red wool | the wool's plinth and the goal block on it |
 | emerald, iron, gold | control points: the sheet and ramp, the crack rings, the terrain rows |
+| stone | the solid ground under every surface; its texture is not decided |
 
 ## Files
 
