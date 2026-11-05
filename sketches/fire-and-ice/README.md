@@ -40,8 +40,8 @@ world's `region/` folder.
 | Drift ramp | from the lane's south end at z −6 up to the floor at z 38, curving west at the top |
 | Retaining sheet | lime face, green back, two thick, along the floor's east edge through the sketch's emerald points, leaning two blocks east as its upper points do |
 | Cracks | K1 from the floor into the west arm; K2 in the middle, whose turned twin makes a staggered pair across the centre line |
-| Middle | floor fitted to the valley floor's measured south edge, out to the centre line at z 48, and a spur off the south peak |
-| Mountain | two lofts sharing one row: low terrain from under the facade top back eight blocks, high terrain over a ridge at x −40 |
+| Middle | floor fitted to the valley floor's measured south edge, out to the centre line at z 48 |
+| Mountain band | one surface round the valley, from the south peak's run down to the centre line, behind the bunker, across the north and over the lane to its open east side; flat where the sketch's mountain was yellow, erratic where it was light blue |
 | Spawn room | x −26…−11, z −50…−39, floor y 31, behind the door frame at x −9…−8 that faces the valley |
 | Tunnels | a hall at x 10–21, z −46…−30, floor y 7; from the spawn room a switchback stairwell, west to a landing at y 19 and back east under the bunker's foundations; from the pit's back room; on to the west arm; and up to the core terrace |
 | Core stairs | a mouth cut into the south peak's foot at x −24, z 5–6; a flight west under the peak, a flight north under the mountain behind the house, and a corridor at y 56 to a door in the house's west wall |
@@ -52,6 +52,33 @@ world's `region/` folder.
 joins a row's points with a centripetal Catmull-Rom spline, which passes through every point and rounds off a
 point that sticks out, then joins the rows with a second spline across them. A crack is rings of points lofted
 top to bottom into a one-block shell, with the ground inside each ring carved.
+
+## The mountain band
+
+**The mountains are one surface, solved as a field over every band column, so no piece can stand as a cliff
+against the next.** The sketch's yellow and light-blue shells give way to it, and so do their loft points; what
+they leave behind is the band's outline, which is their footprint with the ground behind the bunker and the
+south peak's run to the centre line added, and the layout of the two styles. `band.py` holds the solver and the
+styles.
+
+**Three fields are relaxed over the band, each pinned at fixed columns.** The style field is pinned to 1 where the
+sketch was light blue and 0 where it was yellow, and says where the two styles meet. The across field is pinned
+to 0 against the valley and 1 outside the map, and says how far across the band a column is. The base field is
+pinned to the height of what the band meets on its inner side and to an edge height outside it.
+
+**The band meets everything on its inner side at a height that thing sets.** It meets the valley floor and the
+retaining planes at their own tops, the bunker three blocks under its top, the shelf's facade sheets two under
+theirs, and the H dome at its base. A column over something buried is lifted to four blocks above it, and the
+lift spreads to its neighbours at the style's step, so it stands as a slope.
+
+**The two styles differ in profile, detail and how steeply they may climb.** The flat style rises 17 blocks to a
+plateau with a gentle swell and climbs at most 1.5 a column; the erratic style is a ridge 32 blocks high with
+jagged, sharp-crested noise and climbs at most 3. Heights above y 78 are eased toward 90. A last pass caps every
+step at the column's own limit, and the build reports the largest step between neighbouring band columns.
+
+**The ground's underside rises toward the map's edge.** Under each column the fill stops `--taper` blocks higher
+for every column nearer the edge, never above anything it has to hold up, so the map ends in a sloped belly rather
+than a wall down to y 0. `--taper 0` fills every column to the bottom of the world.
 
 ## What keeps it closed
 
@@ -103,5 +130,6 @@ shelf's rim at y 29. Measured over the 1,011 roofed columns:
 |---|---|
 | `compose.py` | the composition, its parameters and every point list |
 | `loft.py` | curves, lofted surfaces and their voxels |
+| `band.py` | the mountain band: the relaxation, the two styles and the step cap |
 | `anvilw.py` | a 1.8 Anvil region writer; lighting is left for the server to compute and the biome is Ice Plains |
 | `render.py` · `colours.py` | top-down and isometric pictures, leaving out the sketch's floating reference pieces |

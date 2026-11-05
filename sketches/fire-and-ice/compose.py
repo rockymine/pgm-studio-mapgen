@@ -18,6 +18,7 @@ sys.path.insert(0, HERE)
 from anvil import World
 from anvilw import write_world
 import loft
+import band as band_field
 
 def opt(flag, default):
     return type(default)(sys.argv[sys.argv.index(flag) + 1]) if flag in sys.argv else default
@@ -27,6 +28,7 @@ PUSH = opt("--push", 6)          # how far the wool lane sits below where its fl
 HEAD = opt("--head", 8)          # air above the lane's walk surface, under the bedrock roof
 HEAD_ROOM = opt("--head-room", 8)  # air above the raised wool-room floor
 COVER_MIN = opt("--cover", 4)    # ground required between the roof's top and the surface above it
+TAPER = opt("--taper", 2.5)      # how fast the ground's underside rises toward the map's edge; 0 fills to y 0
 CENTRE = (24, 48)                # the 180-degree turn's pivot: block (24, 48)
 ROTATE = "--no-rotate" not in sys.argv
 XRAY = sys.argv[sys.argv.index("--xray") + 1] if "--xray" in sys.argv else None
@@ -52,6 +54,11 @@ SPACE = set()          # cells that must stay air: every carved space, so the gr
 TUNNELS = []           # (route, x, z, roof_y) for every tunnel column, for the below-ground check
 ROUTE = ["-"]          # the route the next tunnel piece belongs to
 SKY_OPEN = set()       # columns meant to stand open to the sky all the way down: the canyon, the cracks, the pit
+TUNNEL_BLOCKS = set()  # blocks the tunnels placed, which the band buries rather than meets
+OPEN_SPACE = set()     # carved cells open to the sky by design: cuts, the canyon, cracks, the pit, doorways
+
+def tput(cell, block):
+    put(cell, block); TUNNEL_BLOCKS.add(cell)
 
 def put(cell, block):
     out[cell] = block
@@ -106,7 +113,7 @@ for (x, z) in pit:                                          # sink the purple pi
         if (x, y, z) in out and is_terrain(out[(x, y, z)]):
             clear((x, y, z))
     for y in list(range(0, 24)) + list(range(25, 41)):
-        SPACE.add((x, y, z))
+        SPACE.add((x, y, z)); OPEN_SPACE.add((x, y, z))
     SKY_OPEN.add((x, z))
 for (x, y, z), b in list(out.items()):
     if b == KEY["void"] and y == 24 and z > -9:
@@ -173,6 +180,8 @@ for cell, block in lane.items():
 space_box(U_ROOM[0][0], U_ROOM[0][1], 0, R_ROOM - 1, U_ROOM[1][0], U_ROOM[1][1])
 space_box(U_LANE[0][0], U_LANE[0][1], 0, R_LANE - 1, U_LANE[1][0], U_LANE[1][1])
 space_box(CANYON[0][0], CANYON[0][1], 0, 60, CANYON[1][0], CANYON[1][1])
+OPEN_SPACE.update((x, y, z) for x in range(CANYON[0][0], CANYON[0][1] + 1) for y in range(0, 61)
+                  for z in range(CANYON[1][0], CANYON[1][1] + 1))
 SKY_OPEN.update((x, z) for x in range(CANYON[0][0], CANYON[0][1] + 1) for z in range(CANYON[1][0], CANYON[1][1] + 1))
 
 # walls, roof and the opening the lane leaves on its east side
@@ -193,6 +202,12 @@ for x in range(U_LANE[0][0], U_LANE[0][1] + 1):
         west = x == U_LANE[0][0] and not -39 <= z <= -34          # the west arm stays open to its tunnel
         south = z == U_LANE[1][1] and not 48 <= x <= 66           # the lane runs out south into the canyon
         if west or south: wall_column(x, z, R_LANE)
+for x in range(U_ROOM[0][0], U_ROOM[0][1] + 1):
+    for z in range(U_ROOM[1][0], U_ROOM[1][1] + 1):
+        TUNNELS.append(("the wool area's roof", x, z, R_ROOM + 1))
+for x in range(U_LANE[0][0], U_LANE[0][1] + 1):
+    for z in range(U_LANE[1][0], U_LANE[1][1] + 1):
+        if roof_for(x, z) == R_LANE: TUNNELS.append(("the lane's roof", x, z, R_LANE + 1))
 for x in range(50, 65):                                              # the step between the two roofs
     for y in range(R_LANE + 1, R_ROOM):
         put((x, y, U_ROOM[1][1]), KEY["facade"])
@@ -228,7 +243,7 @@ for (x, z), y in ramp_top.items():
             clear((x, yy, z))
     put((x, y, z), KEY["walk"]); put((x, y - 1, z), KEY["walk"])
     for yy in range(y + 1, 61):
-        SPACE.add((x, yy, z))
+        SPACE.add((x, yy, z)); OPEN_SPACE.add((x, yy, z))
 for row in ramp_rows:
     for p in row: put(tuple(map(math.floor, p)), MARK_SHEET)
 report.append(f"ramp: {len(ramp_top)} columns, from y {L} at z -6 to y 30 at z 38")
@@ -263,7 +278,7 @@ def crack(rings, carve_top_y=None, open_bottom=True, clip=None, to_void=False):
         for x in range(math.floor(min(xs)) - 1, math.ceil(max(xs)) + 2):
             for z in range(math.floor(min(zs)) - 1, math.ceil(max(zs)) + 2):
                 if not loft.polygon_contains(poly, x + 0.5, z + 0.5): continue
-                SPACE.add((x, y, z))
+                SPACE.add((x, y, z)); OPEN_SPACE.add((x, y, z))
                 if y == int(max(r[0][1] for r in rings)): SKY_OPEN.add((x, z))
                 if (x, y, z) in out and \
                         (is_terrain(out[(x, y, z)]) or out[(x, y, z)] in (BEDROCK, KEY["roof_top"])):
@@ -320,39 +335,11 @@ connector = loft_terrain([
     [(x, 30, 38 + (2 if 6 < x < 40 else 0)) for x, _, _ in edge],
     [(x, 30, 48) for x in range(-6, 55, 6)],
 ], KEY["walk"], thickness=2)
-spur_rows = [
-    [(-50, 62, 24), (-36, 58, 26), (-22, 46, 27), (-8, 32, 28)],
-    [(-48, 58, 36), (-32, 53, 37), (-18, 41, 37), (-6, 31, 38)],
-    [(-42, 50, 48), (-26, 45, 48), (-14, 36, 48), (-5, 31, 48)],
-]
-spur = loft_terrain(spur_rows, KEY["terrain_low"])
-report.append(f"middle: connector {connector} blocks, west spur {spur}")
+report.append(f"middle: connector {connector} blocks")
 # K2: the mid crack, one per half; the turn makes the pair a staggered S across the centre line
 k2 = crack([ring(17, 31, 39, 24, 5, 12, 0.15, 10), ring(18, 24, 39.5, 21, 4, 8, 0.2, 10),
             ring(19, 14, 40, 17, 3, 15, 0.25, 10), ring(19.5, 4, 40.5, 12, 2, 10, 0.2, 10)], to_void=True)
 report.append(f"cracks: K2 mid ({k2} shell blocks)")
-
-# ---------------------------------------------------------------- 8. the mountain the bunker is sunk into
-def face_line():
-    rows = []
-    for z in range(-66, 9, 8):
-        xs = [x for (x, y, zz), b in out.items() if zz == z and -32 <= x <= 16 and 30 <= y <= 84
-              and b[0] in STRUCTURE | {49}]
-        if not xs: continue
-        fx = min(xs)
-        ys = [y for (x, y, zz), b in out.items() if zz == z and fx <= x <= fx + 6 and 30 <= y <= 84
-              and b[0] in STRUCTURE]
-        rows.append((fx, max(ys), z))
-    return rows
-
-face = face_line()
-row0 = [(fx - 0.5, top - 3, z) for fx, top, z in face]     # the mountain meets the facade three under its top
-row1 = [(fx - 9, top + 5, z) for fx, top, z in face]
-row2 = [(-40, top + 11, z) for fx, top, z in face]
-row3 = [(-53, top - 4, z) for fx, top, z in face]
-cap_low = loft_terrain([row0, row1], KEY["terrain_low"], thickness=2)
-cap_high = loft_terrain([row1, row2, row3], KEY["terrain_high"], thickness=2)
-report.append(f"bunker mountain: face sampled at {len(face)} stations; {cap_low} + {cap_high} blocks")
 
 # ---------------------------------------------------------------- 9. tunnels
 def corridor(a, b, y):
@@ -369,7 +356,7 @@ def corridor(a, b, y):
                 cell = (px, y + dy, pz)
                 if abs(w) == 2 or dy in (0, 4):
                     block = KEY["tunnel_floor"] if dy == 0 else KEY["tunnel_roof"] if dy == 4 else KEY["tunnel_wall"]
-                    if cell not in out or is_terrain(out[cell]): put(cell, block)
+                    if cell not in out or is_terrain(out[cell]): tput(cell, block)
                 else:
                     SPACE.add(cell)
                     if cell in out and (is_terrain(out[cell]) or out[cell][0] in (35,)): clear(cell)
@@ -389,7 +376,7 @@ def flight(start, direction, y, dy_total):
                 cell = (px, y + dy, pz)
                 if dy == 0 or dy == 5 or w in (-1, 2):
                     block = KEY["tunnel_floor"] if dy == 0 else KEY["tunnel_roof"] if dy == 5 else KEY["stair_wall"]
-                    if cell not in out or is_terrain(out[cell]): put(cell, block)
+                    if cell not in out or is_terrain(out[cell]): tput(cell, block)
                 else:
                     SPACE.add(cell)
                     if cell in out and is_terrain(out[cell]): clear(cell)
@@ -406,9 +393,9 @@ def hall(x0, z0, x1, z1, y, height=6):
             edge = x in (x0, x1) or z in (z0, z1)
             for dy in range(0, height + 2):
                 cell = (x, y + dy, z)
-                if dy == 0: put(cell, KEY["tunnel_floor"])
-                elif dy == height + 1: put(cell, KEY["tunnel_roof"])
-                elif edge: put(cell, KEY["hall_wall"])
+                if dy == 0: tput(cell, KEY["tunnel_floor"])
+                elif dy == height + 1: tput(cell, KEY["tunnel_roof"])
+                elif edge: tput(cell, KEY["hall_wall"])
                 else:
                     SPACE.add(cell)
                     if cell in out and is_terrain(out[cell]): clear(cell)
@@ -437,6 +424,9 @@ for z in range(-48, -40):                              # the room opens into the
             if y <= 40 or x >= -9:
                 if x <= -10: clear((x, y, z))
                 SPACE.add((x, y, z))
+                if x >= -9: OPEN_SPACE.add((x, y, z))
+    for y in range(41, 47):                            # the lintel over the passage between the room and the frame
+        put((-10, y, z), FILL)
     for x in range(-11, -6):                           # the doorway's floor, level with the room's
         if (x, 31, z) not in out: put((x, 31, z), KEY["walk"])
 # T2: a switchback stairwell from the spawn room's floor: west into the mountain, a landing, then east
@@ -465,7 +455,7 @@ for x in range(-23, -18):                              # an open cut into the pe
     for z in range(4, 8):
         if (x, 31, z) not in out or is_terrain(out[(x, 31, z)]): put((x, 31, z), KEY["walk"])
         for y in range(32, 46):
-            SPACE.add((x, y, z))
+            SPACE.add((x, y, z)); OPEN_SPACE.add((x, y, z))
             if (x, y, z) in out and is_terrain(out[(x, y, z)]): clear((x, y, z))
 ROUTE[0] = "T4 valley floor to the core terrace"
 e4, ye4 = flight((-24, 5), (-1, 0), 31, 9)
@@ -480,6 +470,116 @@ report.append(f"tunnels: hall at x {H1[0]}..{H1[2]} z {H1[1]}..{H1[3]} floor y {
               f"T1 stairs end {end1} y {y1}; core stairs: mouth {T4_MOUTH}, flights end {e4} y {ye4} and {e4b} y {ye4b}, "
               f"then y 56 to a door in the house's west wall at x -27")
 
+# ---------------------------------------------------------------- 9b. the mountain band
+HALF = ((-60, 68), (-110, 48))
+def reference(x, y, z):
+    return 8 <= x <= 52 and y >= 85 and -22 <= z <= 47
+
+def in_half(x, z):
+    return HALF[0][0] <= x <= HALF[0][1] and HALF[1][0] <= z <= HALF[1][1]
+
+YELLOW, BLUE = (35, 4), (35, 3)
+style_pins, footprint = {}, set()
+style_top = {}
+for (x, y, z), b in orig.items():
+    if not in_half(x, z) or not 27 <= y <= 86 or reference(x, y, z): continue
+    if b[0] == 35 and b[1] in (0, 3, 4, 5, 8, 13): footprint.add((x, z))
+    if b in (YELLOW, BLUE) and y > style_top.get((x, z), -1):
+        style_top[(x, z)] = y; style_pins[(x, z)] = 1.0 if b == BLUE else 0.0
+for (x, y, z), b in list(out.items()):           # the sketch's mountain shells and their loft points give way
+    if in_half(x, z) and 27 <= y <= 86 and not reference(x, y, z) and (x, y, z) not in BUNKER \
+            and (b in (YELLOW, BLUE) or (b[0] in (41, 57) and orig.get((x, y, z)) == b)):
+        clear((x, y, z))
+
+LOW_GROUND = {(35, 8), (35, 5), (35, 13)}
+ground_top, struct_top, struct_base, under = {}, {}, {}, collections.defaultdict(lambda: -1)
+for (x, y, z), b in out.items():
+    if not in_half(x, z) or y > 86 or reference(x, y, z): continue
+    col = (x, z)
+    if (x, y, z) in TUNNEL_BLOCKS or y < 28:
+        if y > under[col]: under[col] = y
+        continue
+    if b in LOW_GROUND and (x, y, z) not in BUNKER:
+        if y > ground_top.get(col, -1): ground_top[col] = y
+    elif b[0] not in (133, 42):
+        if y > struct_top.get(col, -1): struct_top[col] = y
+        if y < struct_base.get(col, 999): struct_base[col] = y
+for (x, y, z) in SPACE - OPEN_SPACE:
+    if in_half(x, z) and y <= 86 and y > under[(x, z)]: under[(x, z)] = y
+
+def polygon_cells(poly):
+    xs = [p[0] for p in poly]; zs = [p[1] for p in poly]
+    return {(x, z) for x in range(min(xs), max(xs) + 1) for z in range(min(zs), max(zs) + 1)
+            if loft.polygon_contains(poly, x + 0.5, z + 0.5)}
+
+BAND_REACH = [
+    [(-56, -70), (-8, -70), (-8, -23), (-27, -23), (-27, 14), (-56, 14)],  # behind the bunker's face, to the west edge
+    [(33, -69), (67, -69), (67, -33), (33, -33)],                       # over the wool area and the lane's roofed half
+    [(-58, 10), (-8, 18), (-5, 46), (-44, 46)],                         # the south peak's run down to the centre line
+]
+H_BOX = ((12, 30), (-85, -71))
+def in_h(col):
+    return H_BOX[0][0] <= col[0] <= H_BOX[0][1] and H_BOX[1][0] <= col[1] <= H_BOX[1][1]
+standing = {c for c in struct_top if struct_base[c] <= 45 or in_h(c)}   # a structure that reaches the ground
+reach = set()
+for poly in BAND_REACH: reach |= polygon_cells(poly)
+outline = set(footprint) | set(ground_top) | standing | reach
+outline = {c for c in outline if in_half(*c)}
+for _ in range(3):                                                       # close the gaps between the pieces
+    outline |= {(x + dx, z + dz) for (x, z) in outline for dx, dz in band_field.N4 if in_half(x + dx, z + dz)}
+for _ in range(3):
+    outline = {c for c in outline if all((c[0] + dx, c[1] + dz) in outline for dx, dz in band_field.N4)
+               or c in ground_top or c in standing or c in footprint}
+outline |= {c for c in reach if in_half(*c)}
+inner = (set(ground_top) | standing) & outline
+mountain = outline - inner - SKY_OPEN
+MIN_PATCH = 60                     # a scrap of band smaller than this is left to the ground around it, not stood up
+pieces, left = [], set(mountain)
+while left:
+    seed = left.pop(); piece = [seed]; todo = [seed]
+    while todo:
+        x, z = todo.pop()
+        for dx, dz in band_field.N4:
+            n = (x + dx, z + dz)
+            if n in left: left.remove(n); piece.append(n); todo.append(n)
+    pieces.append(piece)
+scraps = [p for p in pieces if len(p) < MIN_PATCH]
+for piece in scraps: mountain -= set(piece)
+
+def meets_at(col):
+    x, z = col
+    if col in standing:
+        if in_h(col): return struct_base[col]
+        bunker = any((x, y, z) in BUNKER for y in range(struct_base[col], struct_top[col] + 1))
+        return struct_top[col] - (3 if bunker else 2)
+    return ground_top[col]
+
+inner_height = {c: meets_at(c) for c in inner
+                if any((c[0] + dx, c[1] + dz) in mountain for dx, dz in band_field.N4)}
+edge = {(x + dx, z + dz) for (x, z) in mountain for dx, dz in band_field.N4
+        if (x + dx, z + dz) not in outline}
+floor_under = {c: under[c] + 1 + COVER_MIN for c in mountain if under[c] >= 0}
+heights, across = band_field.surface(mountain, inner_height, edge, style_pins, floor_under)
+# a facade standing on the ground has ground under it up to its base
+standing_base = {c: struct_base[c] for c in standing
+                 if not in_h(c) and not any((c[0], y, c[1]) in BUNKER for y in range(struct_base[c], struct_top[c] + 1))}
+erratic_cols = 0
+for (x, z), (top, erratic) in heights.items():
+    block = BLUE if erratic else YELLOW
+    erratic_cols += erratic
+    for k in range(5 if erratic else 3):
+        cell = (x, top - k, z)
+        if cell not in SPACE and (cell not in out or is_terrain(out[cell])): put(cell, block)
+steps = collections.Counter()
+for (x, z), (top, _) in heights.items():
+    for n in ((x + 1, z), (x, z + 1)):
+        if n in heights: steps[abs(top - heights[n][0])] += 1
+report.append(f"mountain band: {len(mountain)} columns in one surface, {erratic_cols} in the erratic style and "
+              f"{len(mountain) - erratic_cols} in the flat; it meets {len(inner_height)} columns on its inner side; "
+              f"{len(scraps)} scraps under {MIN_PATCH} columns left to the ground ({sum(map(len, scraps))} columns)")
+report.append(f"    heights y {min(v[0] for v in heights.values())}..{max(v[0] for v in heights.values())}; "
+              f"largest step between neighbouring columns {max(steps)}, {sum(n for k, n in steps.items() if k > 4)} over 4")
+
 # ---------------------------------------------------------------- 10. solid ground
 GROUND = {(35, 8), (35, 4), (35, 3), (35, 5), (35, 13), (41, 0), (57, 0)}   # gold and diamond mark surface points
 HALF = ((-60, 68), (-110, 48))
@@ -492,7 +592,8 @@ def columns_of(cells):
 
 ground_tops, structure_floors, space_top = {}, {}, {}
 for (x, y, z), b in out.items():
-    if not (HALF[0][0] <= x <= HALF[0][1] and HALF[1][0] <= z <= HALF[1][1]) or y > 86:
+    if not (HALF[0][0] <= x <= HALF[0][1] and HALF[1][0] <= z <= HALF[1][1]) or y > 120 \
+            or (8 <= x <= 52 and y >= 85 and -22 <= z <= 47):
         continue
     if b in GROUND and (x, y, z) not in BUNKER:
         if y > ground_tops.get((x, z), -1): ground_tops[(x, z)] = y
@@ -506,6 +607,8 @@ tops = {}
 for col, y in ground_tops.items(): tops[col] = y
 for col, y in structure_floors.items():
     if col not in tops: tops[col] = y
+for col, y in standing_base.items():
+    if y > tops.get(col, -1): tops[col] = y
 holes = 0
 for _ in range(3):                      # a column with none, ringed by ones with ground, is a hole in a sheet
     added = {}
@@ -574,8 +677,27 @@ for comp in beside:
                   f"(runs into the canyon, a crack or the pit)")
 
 FILLED = set()
+edge_dist = {}
+frontier = [c for c in tops if any((c[0] + dx, c[1] + dz) not in tops and (c[0] + dx, c[1] + dz) not in SKY_OPEN
+                                   for dx, dz in band_field.N4)]
+for c in frontier: edge_dist[c] = 1
+while frontier:
+    nxt = []
+    for (x, z) in frontier:
+        for dx, dz in band_field.N4:
+            n = (x + dx, z + dz)
+            if n in tops and n not in edge_dist:
+                edge_dist[n] = edge_dist[(x, z)] + 1; nxt.append(n)
+    frontier = nxt
+lowest = {}
+for (x, y, z) in list(SPACE) + [c for c, b in out.items() if b != FILL]:
+    if in_half(x, z) and y < lowest.get((x, z), 999): lowest[(x, z)] = y
 for (x, z), top in tops.items():
-    for y in range(0, top):
+    bottom = 0
+    if TAPER > 0:
+        bottom = max(0, int(top - 5 - TAPER * edge_dist.get((x, z), 99)))
+        bottom = min(bottom, lowest.get((x, z), 0))
+    for y in range(bottom, top):
         cell = (x, y, z)
         if cell in out or cell in SPACE: continue
         out[cell] = FILL; FILLED.add(cell)
@@ -674,6 +796,7 @@ above = {}
 for (x, z), top in tops.items(): above[(x, z)] = top
 exposed, raised = [], 0
 for name, x, z, roof in TUNNELS:
+    if (x, z) in SKY_OPEN: continue                    # a roof under a crack is the crack's way in
     top = above.get((x, z))
     near = [above[(x + dx, z + dz)] for dx in (-1, 0, 1) for dz in (-1, 0, 1) if (dx or dz) and (x + dx, z + dz) in above]
     local = max(near) if near else None
