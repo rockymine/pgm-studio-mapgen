@@ -1,19 +1,19 @@
 # Fire and ice — the composed sketch
 
 **This folder turns the author's hand-built sketch world into one integrated map, in colour-coded wool.** The
-sketch is a CTW and DTC hybrid for a fire-and-ice contest: a bunker sunk into a mountain with the core in its
-face, an underground wool lane under a shelf of terrain, and glacier cracks in the valley floor. The sketch
-holds each piece in its own place; `compose.py` lowers them into position, adds what joins them and turns the
-half 180 degrees into the whole map.
+sketch is a CTW and DTC hybrid for a fire-and-ice contest: a bunker set into a mountain with the core in its face,
+an underground wool lane under a flat shelf of terrain, and a valley floor between them. `compose.py` keeps only
+the footprints of the sketch's structures, rebuilds the ground around them area by area, and turns the half 180
+degrees into the whole map.
 
 **The source world is not in the repository.** It is the author's, uploaded to a session as its four region
-files, and the script reads it and never writes over it. Everything the script adds is wool, so texturing is
-left open, and every lofted surface keeps its control points as marker blocks the way the sketch does.
+files, and the script reads it and never writes over it. Everything new is wool in a colour of its own and the
+ground under every surface is stone, so texturing is left open.
 
 ## Running it
 
 ```bash
-python3 sketches/fire-and-ice/compose.py <sketch>/region <out>/region --push 6 --head 8 --head-room 8 --cover 4
+python3 sketches/fire-and-ice/compose.py <sketch>/region <out>/region --xray <out>/xray/region
 ```
 
 ```bash
@@ -21,115 +21,94 @@ python3 sketches/fire-and-ice/render.py <out>/region top.png top -60,110,_,99,-1
 ```
 
 ```bash
-python3 sketches/fire-and-ice/render.py <out>/region lane.png iso 28,68,0,60,-72,42 5 1
+python3 sketches/fire-and-ice/render.py <out>/region lane.png iso 26,68,0,60,-72,34 5 1
 ```
 
-**A build takes about five seconds and prints its own report.** It names the lane's walk height, both roofs, the
-thinnest cover over them with the columns that fall short, where each tunnel ends, and the three closure readings
-below. `--no-rotate` builds the one half alone, and `--xray <dir>` writes a second copy without the ground fill,
-which is the one to look at the underground in. The four region files it writes drop into a copy of the sketch
-world's `region/` folder.
+**A build takes about five seconds and prints its own report.** It names every piece's height and extent, the
+mountains' steps between neighbouring columns, and the three closure readings below. `--no-rotate` builds the one
+half alone; `--xray <dir>` writes a second copy without the ground fill, to look at the underground in. The four
+region files drop into a copy of the sketch world's `region/` folder.
 
 ## What it builds
 
 | Piece | Where, in the half's own coordinates |
 |---|---|
-| Bunker | the sketch's floating copy moved by (−35, −61, −43) onto the original, whose core and quartz terrace are kept; the purple pit sunk to y 24 |
-| Wool lane | the floating lane moved by the same offset and `--push` further down: long lane x 50–65, z −51…−4; west arm x 36–65, z −39…−34; wool area x 36–59, z −63…−52 |
-| Roof | bedrock from z −34 north, one layer with grey wool above; walls bedrock to four over the walk and grey wool facade above that; the long lane's east side left open |
-| Drift ramp | from the lane's south end at z −6 up to the floor at z 38, curving west at the top |
-| Retaining sheet | lime face, green back, two thick, along the floor's east edge through the sketch's emerald points, leaning two blocks east as its upper points do |
-| Cracks | K1 from the floor into the west arm; K2 in the middle, whose turned twin makes a staggered pair across the centre line |
-| Middle | floor fitted to the valley floor's measured south edge, out to the centre line at z 48 |
-| Mountain band | one surface round the valley, from the south peak's run down to the centre line, behind the bunker, across the north and over the lane to its open east side; flat where the sketch's mountain was yellow, erratic where it was light blue |
-| Spawn room | x −26…−11, z −50…−39, floor y 31, behind the door frame at x −9…−8 that faces the valley |
-| Tunnels | a hall at x 10–21, z −46…−30, floor y 7; from the spawn room a switchback stairwell, west to a landing at y 19 and back east under the bunker's foundations; from the pit's back room; on to the west arm; and up to the core terrace |
-| Core stairs | a mouth cut into the south peak's foot at x −24, z 5–6; a flight west under the peak, a flight north under the mountain behind the house, and a corridor at y 56 to a door in the house's west wall |
-| Ground | every column of the half filled solid in stone from its surface to y 0, except the spaces the composition carves; the house's body up to the terrace at y 56 |
+| Bunker | the sketch's floating copy moved by (−35, −61, −43) onto the original, as its rough form; the original's lava core kept |
+| Roof plates | the clay and light-grey plates over the spawn wing at y 67, carried back to x −28 in the same six-block checker |
+| H dome and the shelf's walls | each as its rough form, where the sketch has them |
+| Pit under the core | its ramp and back room open from the top, with no floor laid over them |
+| Wool lane | the floating lane brought down unchanged: walk at y 14 on its bedrock, raised to y 20 at its south end where it starts to climb |
+| Flat roof | bedrock at y 29, fifteen over the walk, from the wool area south to z −26; walls bedrock to y 17 and stone above |
+| Entrance | the lane's west wall carried on past the roof: y 25 by the boulder, y 23 by the entrance, then up in steps of three beside the ramp |
+| Retaining strip | lime and green, two thick, holding the floor back over the carried wall; five to seven blocks tall |
+| Ramp | on from the lane's end at y 20 up to the floor at z 19, through irregular rows of points |
+| Shelf | flat at the shelf walls' top, y 50, everywhere inside their angle up to the north peak |
+| Mountains | the sketch's yellow and light-blue areas, drawn as one surface through points off the sketch's own surfaces |
+| Spawn room and tunnels | a room behind the door frame under the plates; tunnels to a hall, on to the lane's west arm, and up to the core's terrace inside the south peak |
+| Middle | floor from the valley floor's south edge to the centre line at z 48 |
 | Turn | 180 degrees about block (24, 48) |
 
-**Each surface is a list of rows of points, and two surfaces meet exactly where they share a row.** `loft.py`
-joins a row's points with a centripetal Catmull-Rom spline, which passes through every point and rounds off a
-point that sticks out, then joins the rows with a second spline across them. A crack is rings of points lofted
-top to bottom into a one-block shell, with the ground inside each ring carved.
+## The structures, as their rough form
 
-## The mountain band
+**A structure is carried as plain stone with its detail taken out.** Every stair, slab, fence, pane, torch, wire
+and button goes; every other building block becomes stone; and every one-block recess in a wall is filled, so
+each face is one plane. Bedrock, obsidian, lava, the clay plates and every wool colour keep their own block, and
+so does the nether-brick fence the antenna is built of, as stone.
 
-**The mountains are one surface, solved as a field over every band column, so no piece can stand as a cliff
-against the next.** The sketch's yellow and light-blue shells give way to it, and so do their loft points; what
-they leave behind is the band's outline, which is their footprint with the ground behind the bunker and the
-south peak's run to the centre line added, and the layout of the two styles. `band.py` holds the solver and the
-styles.
+**The plates roof the spawn wing's body.** Under them the ground is solid down to the bottom of the world, except
+the spawn room and its stairwell, so the facade stands on a body rather than in front of open space. The bunker's
+house is solid up to the core's terrace at y 56.
 
-**Three fields are relaxed over the band, each pinned at fixed columns.** The style field is pinned to 1 where the
-sketch was light blue and 0 where it was yellow, and says where the two styles meet. The across field is pinned
-to 0 against the valley and 1 outside the map, and says how far across the band a column is. The base field is
-pinned to the height of what the band meets on its inner side and to an edge height outside it.
+## The mountains
 
-**The band meets everything on its inner side at a height that thing sets.** It meets the valley floor and the
-retaining planes at their own tops, the bunker three blocks under its top, the shelf's facade sheets two under
-theirs, and the H dome at its base. A column over something buried is lifted to four blocks above it, and the
-lift spreads to its neighbours at the style's step, so it stands as a slope.
+**The mountains are one surface drawn through the sketch's own heights.** About one column in thirty of the
+sketch's yellow and light-blue shells is taken as a control point, at irregular places, and a thin-plate spline
+is laid through them; the sketch's shells themselves give way. `terrain.py` holds the spline.
 
-**The two styles differ in profile, detail and how steeply they may climb.** The flat style rises 17 blocks to a
-plateau with a gentle swell and climbs at most 1.5 a column; the erratic style is a ridge 32 blocks high with
-jagged, sharp-crested noise and climbs at most 3. Heights above y 78 are eased toward 90. A last pass caps every
-step at the column's own limit, and the build reports the largest step between neighbouring band columns.
+**Where a mountain meets something, it meets it at that thing's height.** Points along the shelf walls hold the
+shelf at their top, points along the retaining planes hold the yellow at the planes' top, points round the H
+dome hold the ground at its base, and points along the plates' edge bring the peak north of them down onto them. A
+column over anything buried is raised to five above it.
 
-**The ground's underside rises toward the map's edge.** Under each column the fill stops `--taper` blocks higher
-for every column nearer the edge, never above anything it has to hold up, so the map ends in a sloped belly rather
-than a wall down to y 0. `--taper 0` fills every column to the bottom of the world.
+**Each column keeps the sketch's colour.** Yellow stays yellow and light blue stays light blue; a column the
+sketch left bare takes the colour nearest it, and the shelf is yellow. The build reports how many neighbouring
+columns step by how much.
 
 ## What keeps it closed
 
 **Every space the composition carves is registered, and the ground is filled solid around them last.** The
-tunnels, the hall, the spawn room, the lane's cavity, the canyon, the cut over the ramp, the cracks and the void
-under the pit each mark their cells as air. The fill then runs every column from its surface to the bottom of the
-world and skips only those cells, so nothing underground is open unless something carved it open.
+tunnels, the hall, the spawn room, the lane's cavity, the canyon, the cut over the ramp, the pit and the back room
+each mark their cells as air. The fill then runs every column straight down from its surface to the bottom of the
+world and skips only those cells.
 
 **The build reads three things back and prints each one.** A surface reading lists every patch of columns with
-no ground under it and closes the enclosed ones: to the terrace inside the house, otherwise to the lowest terrain
-around the patch. A closure reading floods the sky's air inward and names every place it reaches the underground,
-each matched to an entry or reported as a leak. A depth reading lists every tunnel column whose roof is not below
-the ground over it, and the least cover on each route.
+no ground under it and closes the enclosed ones. A closure reading floods the sky's air inward and names every
+place it reaches the underground, each matched to an entry or reported as a `LEAK`. A depth reading lists every
+tunnel column whose roof is not below the ground over it, and the least cover on each route.
 
-**The entries are the ones the composition means to have, and no others.** The lane runs out into the canyon and the ramp;
-its long side is open to the void on the east; crack K1 drops into the west arm; the spawn door opens onto the
-valley; the core stairs have a mouth in the south peak's foot and a door onto the terrace. A build that finds any
-other opening says `LEAK` beside its coordinates.
-
-## How deep the lane sits
-
-**The lane has to sit `headroom − 2` blocks below where its floating copy projects for four blocks of ground
-to stay over its roof.** The binding place is the wool area's east wall, x 63–64 and z −65…−50, under the
-shelf's rim at y 29. Measured over the 1,011 roofed columns:
-
-| Headroom | push 4 | push 6 | push 8 |
-|---|---|---|---|
-| 8 | cover 3, 11 short | cover 5, none short | cover 7 |
-| 10 | cover 1, 46 short | cover 3, 11 short | cover 5, none short |
-| 12 | cover 0 | cover 1, 46 short | cover 3, 11 short |
+**The entries are the ones the composition means to have.** The lane runs out into the canyon and the ramp, and
+its long side is open to the void on the east; the spawn door opens onto the valley; the core stairs have a cut in
+the south peak's foot and an opening in the terrace; the back room opens with the pit under the core.
 
 ## Colour key
 
 | Block | Is |
 |---|---|
 | light grey wool | the floor, the ramp and the middle |
-| white wool | the lane's walk surface, and the crack shells |
-| lime / green wool | the retaining sheet's face and back |
-| yellow / light blue wool | low and high terrain |
-| grey wool | the stone-sheet facade over bedrock, and the roof's top layer |
-| cyan, brown, blue wool | tunnel walls, floors and roofs; orange for stair flights, magenta for the hall |
+| white wool | the lane's walk surface |
+| lime / green wool | the retaining planes and strip, face and back |
+| yellow / light blue wool | the flatter and the more mountainous terrain |
+| stone | a structure's rough form, and the solid ground under every surface |
+| clay / light grey wool at y 67 | the roof plates |
+| cyan, brown, blue wool | tunnel walls, floors and roofs; orange for stair flights, magenta for halls |
 | black wool, red wool | the wool's plinth and the goal block on it |
-| emerald, iron, gold | control points: the sheet and ramp, the crack rings, the terrain rows |
-| stone | the solid ground under every surface; its texture is not decided |
 
 ## Files
 
 | File | Is |
 |---|---|
 | `compose.py` | the composition, its parameters and every point list |
-| `loft.py` | curves, lofted surfaces and their voxels |
-| `band.py` | the mountain band: the relaxation, the two styles and the step cap |
+| `terrain.py` | the thin-plate spline the mountains are drawn through |
+| `loft.py` | curves, lofted surfaces and their voxels: the ramp, the retaining strip, the middle |
 | `anvilw.py` | a 1.8 Anvil region writer; lighting is left for the server to compute and the biome is Ice Plains |
 | `render.py` · `colours.py` | top-down and isometric pictures, leaving out the sketch's floating reference pieces |
