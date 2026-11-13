@@ -80,6 +80,11 @@ where it is, what it is, why a player goes there or what it frames, and how a pl
 reaches wants a path, and a path is itself part of the arrangement. `WHAT-A-BOARD-IS-MADE-OF.md`, *A board is a
 small world*, is what a place is.
 
+**Plan each place's look with its position.** A graveyard, a market square or a quarry an agent invents is
+written down with what it is made of — its ground, its props, its buildings and its paint — before anything is
+built. The studio has no step that asks it, so a place decided by its position alone is dressed by whatever the
+pass lays there.
+
 **Read the places from above and revise them before anything is built.** The top-down view is where an empty
 lake, a flat corner nobody enters or a village with no way in shows. Ask of each area what is there and why;
 cut away what has no answer, and move its land toward the front.
