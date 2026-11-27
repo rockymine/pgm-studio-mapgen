@@ -28,3 +28,14 @@ How the first film was made is `film/prompt-a-map/README.md`; plates, voices and
 (paths in the scripts name a scratch directory and must be changed).
 
 The hand-built "fire and ice" experiment is on branch `claude/compassionate-cerf-fg7m17` (find the repository with `git ls-remote`); another agent is still committing its scripts and scratchpad there, so fetch it fresh.
+
+More from the author (2026-11-27):
+- The newest studio branch is `ccr-875c17a4-2yjgux` (partly merged to main): backlog clean-up and UI work, and the
+  verification pipeline is not yet where it should be.
+- The story starts before `pgm-studio`. First, at the start of the year, a repository with CTW in its name (a
+  capture-the-wool layout generator): the realisation, with Claude, that something drawn in the browser could
+  become downloadable blocks. Then a Python project that rendered map XML, not yet generation. Then the move to
+  C#, a language the author can read. Other repositories whose names contain "pgm-studio" exist; find them with
+  `list_repos` and attach them with `add_repo` (this session's scope was only the two).
+- Prepare interview questions for rockymine, Ruediger and Tttie. Answers will come later and refine the film;
+  an interview is also a possible second way to document the year.
