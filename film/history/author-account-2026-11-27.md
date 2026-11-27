@@ -171,3 +171,5 @@ The notes of 9–10 October were not a test on the real server: three of them lo
 - Which map filled the extra match numbers he cannot know, the data being missing.
 - Today (27 November) they are testing some of the arcade maps again. Lantern Pass has just been played: players like it, but it is a little too short, the shooters are too slow, and runners can get stuck in the spawn. Tomorrow they plan to record real gameplay on a few maps, among them some of the newest.
 - The pause: it was simply needed — for a month they had tested the "slop" maps (meant kindly) every weekend, and the tool needed some care again. It is also not interesting forever to let the AI build twenty maps in a night: it works, but one needs inspiration and ideas; prompting empty is possible but was never the aim — it should stay controlled. More maps will be built and tested before long; for now there are still plenty to test.
+
+Added on 27 November: besides Lantern Pass, the arcade boards still to be tested that day are Curio Square, Lantern Drop, Spark and Loomfall.
