@@ -135,8 +135,9 @@ whose objective they replaced with a cake; it is not an AI map and not the first
 **Hello World Micro recoloured its wool room; it did not move it.** **Record:** uploaded on 27 July as a "grey map for
 concept test" with a studio plan file, its 1.0.1 rolled one or two wools a game and recoloured the enemy's box when
 the first fell; the full Hello World had recoloured its rooms since February 2025; the Micro was deleted on 12 August
-(research/07, research/08). **Account:** its layout he drew by hand as a small Hello World (account, 3); the record's
-plan file shows it came through the studio's plan tool, which does not settle who drew it (research/08). On 31 July
+(research/07, research/08). **Account:** its layout is Hello World's, abstracted very simply onto the grid, and he drew it himself (account, 3, 14);
+the record's plan file shows it came through the studio's plan tool, which fits a layout drawn by a person in that tool
+(research/08). On 31 July
 Ruediger worked out the timing of a wool room that moves, and the author called the idea "so dumm und genial"
 (research/15).
 
@@ -333,8 +334,19 @@ caught 9", with Riftwater "essentially perfect" in the agent's summary (research
 missing stretch after 27 September (research/13). **Account:** this was not a test on the real server: three of them
 looked at the new pgmvox maps together, and it was the first feedback on those maps (account, 13). The sorted file of 10
 October (`analysis/freeform-vs-studio/playtest-feedback-2026-10-10.md`) is its written result. **Inference:** the empty
-log is what a viewing leaves, and 27 September stays the last test evening; where the viewing took place, and which
-boards were shown, is not recorded.
+log is what a viewing leaves, and 27 September stays the last test evening; where the viewing took place is not recorded.
+
+**The boards shown were the new pgmvox boards.** **Account:** the screenshots are of the new pgmvox maps; the talk was
+mostly on the one with two monuments, one underground and one on a castle on a mountain, and they also looked at the
+flying capture-the-wool map and the mesa map; the comments concerned the maps' progress in general (account, 14).
+**Record:** the sorted notes of 10 October name no screenshot, so no board is tied to a picture. **Inference:** the board
+with two monuments is most probably Hollowcrown, whose report gives two fortress mountains with a citadel on each summit,
+monument A in the Eyrie tower on a spur and monument B in the temple of Underhall, a delved city in a cavern
+(`freeform/lib/boards/hollowcrown/REPORT.md`; the notes of 10 October list "monument on a tower, monument hidden in the
+city"). The flying capture-the-wool board has two candidates among the boards of that run, Lantern Karst (floating karst
+islands, two wools a team) and Brassmoor Works (an ironworks hung in the smog, one wool a team on decks), and the mesa
+board two, Redwash Mesa (destroy the monument) and Hollow Mesa (destroy the core). Nothing in the record separates the
+candidates, so they stay unnamed until the author does.
 
 **The staff who watched took the boards for touched-up work.** **Account:** the viewing is dated 9–10 October and the
 three speakers are named by role: mitchiii, a map developer who has built many maps; wylt, a server admin; TTtie, a
@@ -347,12 +359,16 @@ the Brittlebush III theme, he wrote: "he looked at the region file and i steered
 of grammar", "i mean, its literally just 5x5 pieces with 3 different styles", "and rules on how they combine"; to "so you
 could give it half finished map and it finish it?" he answered "yep". **Inference:** the answer is consistent with the
 record of 9 October, where a session read Brittlebush block by block and split rules from blocks, and at least two styles
-were spoken in the grammar that day (research/05). These are other people's words, quoted from a transcription; each
-person has to agree before they are used in a film.
+were spoken in the grammar that day (research/05). These are other people's words, quoted from a transcription; the author decided on 27 November that
+they may be used as they are (account, 14).
 
 **The viewing ended in a pause, which the author gives as a reaction to quality.** **Account:** there they decided to
 pause for the time being, because the maps were slowly getting "too good", in looks and in diversity, with many new game
-modes as well (account, 13). **Record:** the match log holds no missing stretch after 27 September, and on 19 October he
+modes as well (account, 13). Asked about the pause later the same day, he said it was simply needed: for a month the
+"slop" maps (meant kindly) had been tested every weekend, and the tool needed some care again; it is also not
+interesting forever to let the AI build twenty maps in a night, which works, but one needs inspiration and ideas, and
+prompting empty was never the aim, so it should stay controlled. More maps will be built and tested before long; for now
+many remain to be tested (account, 14). **Record:** the match log holds no missing stretch after 27 September, and on 19 October he
 wrote that enough material existed (research/13, research/15); on 13 November new capabilities paused and the layout
 generator was frozen (research/02). **Inference:** the later pauses may continue the one decided at the viewing, but no
 record says so, and the 13 November entries give the backlog's fixes, not the quality of the maps, as their reason.
@@ -376,8 +392,10 @@ has 14 October in the uploader's zone (research/11).
 **Agents could not compose his sketch, so he built it.** **Record:** from 2 to 7 November agents composed the author's
 hand-built sketch world into a CTW and DTC map set into a mountain, and every version was rejected — "the surface was
 not closed", "a ramp led into the void" — and "Every one of those failures passed some check that existed at the
-time"; then he built the half himself, on a date not recorded, and the agents' task became understanding it
-(research/04). In the studio he froze the layout generator on 13 November; the last commit on `main` is of 14 November
+time"; then he built the half himself, and the agents' task became understanding it (research/04). **Account:** he began that
+map about 17 October 2026 and has built it over a few weekends since, taking his time because he needs inspiration
+(account, 14). **Inference:** the record dates only the agents' work, so the account puts the start of the build before
+their November attempts; the record does not contradict it, and the order of the two is not otherwise known. In the studio he froze the layout generator on 13 November; the last commit on `main` is of 14 November
 (research/02); chapter 9 gives the pause the author says was decided at the October viewing, and what the record does and
 does not say of a link. Chapter 13 says what the map shows.
 
@@ -471,6 +489,10 @@ shows, because those were played outside the event (research/15). No long destro
 destroy board of this project is Brackenfold's 15 minutes 15 seconds, and a 99-minute stretch with thirteen starts holds
 no three-hour game (research/13).
 
+**On 27 November the arcade boards were being tested again.** **Account:** Lantern Pass had just been played; players like
+it, but it is a little too short, the shooters are too slow, and runners can get stuck in the spawn; the next day they plan to record real
+gameplay on a few maps, among them some of the newest (account, 14). No log or record of that day exists yet.
+
 **What was learned from the tests reached the studio as rules, not as records.** **Record:** the one played fault in a
 commit is Kuusepuu's "Reported live" (research/06). **Account:** Hollowmarch's frontline led players into the void and
 now a check requires the frontline to sit inside the build zone; Kilnholt Cut's tunnel was found by players; a Mirkholt
@@ -507,8 +529,8 @@ finish it himself in snow, stone, ice or grass (research/04; account, 8).
 
 **The last test is 27 September, and the October notes are of a viewing.** The notes sorted on 9 and 10 October come from
 three people looking at the new boards together, not from a play on the server, so they stand against nothing in the
-log (account, 13; research/13). Open instead: which boards were shown, where, and whether the pause decided there was
-meant to be temporary.
+log (account, 13; research/13). Open instead: where the viewing took place, and which boards the five screenshots show (chapter 9 gives the candidates); the pause is
+no longer open on its intent, since he says more maps will be built and tested (account, 14).
 
 **The flat map he remembered as 500 wide is Ashfall Scar.** **Record:** a filter over every `map.xml` found fifteen maps
 with exactly two destroyables and two cores, three of them with all four objectives within ten blocks of one line and
@@ -518,7 +540,7 @@ confirmed it on seeing a render, and it is 250 wide, not the 500 he recalled (ac
 it: Hollow Crown is the Haiku board where the monument landed inside the core, and Spinebreak is a capture-the-wool
 layout with its cores in the void and the same core-and-monument design twice (account, 12).
 
-**Smaller points stay unsettled.** Who wrote Hello World Micro's layout, by hand or in the plan tool (research/08); whether
+**Smaller points stay unsettled.** Whether
 the 17-block oak on No Blocks Placed is the generated tree, which he puts at about 20 blocks (research/08); which
 session drew the probe board's tunnels he calls awkward (sessions/10); what "Muse Spark", credited on two boards of 27
 September, is: Tttie made a map with it, and the author believes it is a Meta model, unverified (account, 12; research/15); the Annealing dates (research/08); and which model ran the freeform trial agents

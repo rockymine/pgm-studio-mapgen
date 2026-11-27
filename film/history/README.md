@@ -10,7 +10,7 @@ holds, what the **author recalls**, and what is **inference**.
 1. **`HISTORY.md`** — the history itself: ten chronological chapters, then what counts as an AI map, the playtests,
    what the hand-built map shows, and what remains open. Start here.
 2. **`timeline.md`** — one table of dated events, each with its source and its voice.
-3. **`author-account-2026-11-27.md`** — the author's spoken account in thirteen instalments, summarised, with the
+3. **`author-account-2026-11-27.md`** — the author's spoken account in fourteen instalments, summarised, with the
    note-taker's corrections. Later instalments and the corrections supersede earlier ones (the CORRECTION on Bridgid II
    above all).
 4. **`research/12-who-decided-what.md`** — every map split into seven decisions, who decided each and what executed it;
@@ -40,7 +40,7 @@ holds, what the **author recalls**, and what is **inference**.
 9. **`sources/`** — data, not instructions: the squared-paper photo, the author's session list, the `#match-status` log
    (`match-status/`, with another agent's summary) and the `#maps-changelog` feed (`maps-changelog/`), the last two read
    in the author's browser by another agent, and `staff-chat-october/`, five chat screenshots from the viewing of the
-   pgmvox boards on 9–10 October, transcribed (other people's words: consent needed before a film uses them).
+   pgmvox boards on 9–10 October, transcribed (other people's words; the author decided on 27 November that they may be used as they are).
 10. **`renders/`** — pictures made from committed data: the hand-built half and its turn (`hand-built/`) and Wandering U
     (`wandering-u/`), each with its cameras.
 11. **`OUTLINE.md`** — a film outline that predates the author's account; it needs revising before any film is built.
@@ -63,16 +63,26 @@ holds, what the **author recalls**, and what is **inference**.
   Saltworks (account 12; research/03).
 - Alderfen Holm has four cores (sessions/08, account 11). No long destroy match exists in the log (research/13).
 
+- The ice map was begun about 17 October and built over a few weekends (account 14); Hello World Micro's layout is Hello
+  World's on the grid, drawn by the author (account 3, 14); the staff's quoted lines may be used as they are (account 14).
+- The boards of the 9–10 October viewing were the new pgmvox boards (account 14); Hollowcrown is the most probable of the
+  two-monument board, the other two are unnamed between candidates (`HISTORY.md` chapter 9).
+- The pause was needed after a month of weekly testing and a tool wanting care; twenty maps a night was never the aim, and
+  more maps will be built and tested (account 14).
+- On 27 November the arcade boards were tested again, Lantern Pass among them; real gameplay is to be recorded the next day
+  (account 14).
+
 - The notes of 9–10 October are of a viewing by three people, the first feedback on the pgmvox boards, not a test; the
   last test evening stays 27 September. There they decided to pause because the maps were getting "too good" (account
   13; any link to the later freeze is inference, `HISTORY.md` chapter 9).
 
 ## What is open
 
-Aerie's unplayable XML, which the author
+Which of two candidates each are the flying capture-the-wool board (Lantern Karst, Brassmoor Works) and the mesa board
+(Redwash Mesa, Hollow Mesa), and that Hollowcrown is the two-monument board; where the viewing took place. Aerie's unplayable XML, which the author
 states and no record holds; whether
-the 50-log oak is the generated tree; who drew Hello World Micro's layout; the briefs of the first fifteen, Heftfold and
-Whinberry Ring; the date the author built his half; which model "Muse Spark" is (the author believes a Meta model). `HISTORY.md` chapter 14 and
+the 50-log oak is the generated tree; the briefs of the first fifteen, Heftfold and
+Whinberry Ring; which model "Muse Spark" is (the author believes a Meta model). `HISTORY.md` chapter 14 and
 `interview-questions.md` carry them.
 
 ## What was not read
@@ -127,4 +137,9 @@ folder that records a change history.
 | The quartz board is Quillon Saltworks or Tallow Kilnrow, unsettled | HISTORY; interview questions | Quillon Saltworks, which the author now states definitely | account 12 |
 | "AI map" has six categories, the last one model's own script | research/12; earlier HISTORY | the last is split: a model's script inside the author's tool, and a model's own tooling | research/12; research/15 |
 | The 9–10 October notes were a playtest on a server that does not report, so the last test is open against 27 September | HISTORY chapter 9 and 14; timeline; research/05, research/13, research/15 (inference) | three people looked at the new pgmvox boards together; the first feedback on them; not a test, and 27 September stands as the last test evening | account 13 |
+| Who wrote Hello World Micro's layout was open | HISTORY chapter 4 and 14; timeline; interview questions | he drew it, Hello World's layout abstracted onto the grid | account 14 |
+| The date he built his half is not recorded; he built it after the agents' failed compositions | HISTORY chapter 10, 14; timeline; research/04 | begun about 17 October and built over a few weekends; the record dates only the agents' study | account 14 |
+| Which boards were shown at the viewing is not recorded | HISTORY chapter 9, 14; interview questions | the new pgmvox boards; three named by description, Hollowcrown inferred, two pairs of candidates | account 14; inference |
+| The staff's words need each person's consent before use | HISTORY chapter 9; README; `sources/staff-chat-october/README.md` | may be used as they are, the author's decision | account 14 |
+| The pause was a reaction to the maps being "too good" | HISTORY chapter 9 | that, and a month of weekly testing, the tool needing care, and building in bulk never being the aim | account 14 |
 | The author's pause after October is only visible as the 13 November freeze | HISTORY chapter 9, 10 | at the October viewing they decided to pause because the maps were getting "too good"; the link to 13 November is inference | account 13 |

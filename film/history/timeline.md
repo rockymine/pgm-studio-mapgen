@@ -47,7 +47,7 @@ and the record differs, both rows are given. Times are UTC unless marked; German
 | 2026-07-21 | "the box pipeline is THE composer" | r/01 | record |
 | 2026-07-27 21:33 | Kuusepuu CTC, "CTC conversion: Claude Opus 5" | r/06, r/11 | record |
 | 2026-07-27 | Kuusepuu is an ordinary destroy map with a cake objective, not an AI map | account 6 | account |
-| 2026-07-27 23:10 | Hello World Micro, "grey map for concept test", studio plan file; recolours its wool room | r/07, r/08 | record |
+| 2026-07-27 23:10 | Hello World Micro, "grey map for concept test", studio plan file; recolours its wool room; layout is Hello World's on the grid, drawn by the author | r/07, r/08; account 3, 14 | record; account |
 | 2026-07-28 00:30 | Base 4-Team played, 28 players, 2m 36s, Green | r/13 | record |
 | 2026-07-31 | Kuusepuu CTC 1.0.3 "Reported live"; first play 21:20, 47 players; moving-room timing by Ruediger | r/06, r/13, r/15 | record |
 | 2026-08-01 | Terrain painting "walls, rims, plateaus"; wall run 16:43; tree prototype page 23:46 | r/05, r/11, r/10 | record |
@@ -115,21 +115,25 @@ and the record differs, both rows are given. Times are UTC unless marked; German
 | 2026-10-09/10 | Notes on the freeform and trial boards sorted: 30 faults, 9 the studio would catch (written result of the viewing) | r/05, r/06 | record |
 | 2026-10-09/10 | Three people look at the new pgmvox boards together, the first feedback on them; not a test on the server | account 13 | account |
 | 2026-10-09/10 | Observer chat: "are all these ones unmodified from generated state?" "yea"; "its over for m*pdevs."; "again, layout is 100% mine"; "30 min to 1h for these complex maps" | sources/staff-chat-october | record (transcribed screenshots; the date is the author's) |
-| 2026-10-09/10 | They decide to pause for the time being, the maps getting "too good" in looks and diversity | account 13 | account |
+| 2026-10-09/10 | The boards viewed are the new pgmvox boards: chiefly one with two monuments (one underground, one on a castle on a mountain), plus the flying capture-the-wool board and the mesa board | account 14 | account (boards unnamed; Hollowcrown most probable for the first, HISTORY chapter 9) |
+| 2026-10-09/10 | They decide to pause for the time being, the maps getting "too good" in looks and diversity; later: a month of weekly testing, the tool needing care, twenty maps a night possible but not the aim, more maps to be built and tested | account 13, 14 | account |
 | 2026-10-10 | Studio against pgmvox, Sonnet 5.5: comparable; Ruediger proposes finishing the three best | r/03, r/15 | record |
 | 2026-10-15 02:13 | Countryside committed by Javggg (14 Oct −0300) | r/11 | record |
 | 2026-10-15 | `docs/pgmvox-port.md`, nine phases | r/02 | record |
 | 2026-10-16 | Six blind AI entries to a Fire and Ice contest, all DTC; Viridian played, the last board of this project in the log | r/04, r/13 | record |
+| 2026-10-17 (about) | He begins the hand-built ice map, built over a few weekends since | account 14 | account |
 | 2026-10-18 | The rectangle plan retires | r/02 | record |
 | 2026-10-19 | 803 2.0.1 with studio-made XML; "nicht so die Motivation … Genug Material haben wir ja." | r/11, r/15 | record |
 | 2026-10-22 | Coldstore, from his concept world: "finished and the map.xml a success" | r/03 | record |
 | 2026-10-24 → 25 | Modifier stack replaces relief; carves | r/02 | record |
 | 2026-11-02 → 07 | Agents compose his sketch world; every version rejected | r/04 | record |
 | 2026-11-04 | Port: every phase shipped or parked; grammar has no shipped line | r/02 | record |
-| 2026-11-07 → 27 | He builds the half himself (date not recorded) | r/04 | record (undated) |
+| 2026-11-07 → 27 | The agents study the half he has built so far (build date not recorded) | r/04 | record (undated) |
 | 2026-11-13 / 14 | Layout generator frozen; last commit on `main`; whether this continues the October pause is not recorded | r/02; account 13 | record; link inference |
 | 2026-11-23 | Branch rulings on doors and schematics | r/02 | record |
 | 2026-11-27 | Study of the hand-built map committed; the author's account; Wandering U zip supplied | r/04, r/10 | record |
+| 2026-11-27 | Arcade boards tested again; Lantern Pass played: liked, a little too short, shooters too slow, runners can stick in the spawn | account 14 | account |
+| 2026-11-28 (planned) | Real gameplay to be recorded on a few maps, some of the newest | account 14 | account (plan) |
 
 ## Counts behind the table
 
