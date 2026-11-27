@@ -2,8 +2,8 @@
 
 Five screenshots the author sent on 27 November 2026 (`chat-1.png` … `chat-5.png`), transcribed below exactly.
 All lines are in observer chat ("(Obs)"). By the author's account: mitchiii is a map developer who has built
-many maps, wylt is one of the server's admins, TTtie is a developer. These are other people's words: clear them
-with each person before quoting them in a film.
+many maps, wylt is one of the server's admins, TTtie is a developer. These are other people's words; on 27 November 2026
+the author said they may be used as they are.
 
 chat-1
 - mitchiii: are all these ones unmodified from generated state?
