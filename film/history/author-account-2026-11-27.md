@@ -97,3 +97,5 @@ Voice-transcribed; map names in quotes are as heard and need checking. All 2026.
 - 13 September, 20 September: maps added (private).
 - 27 and 28 September: Ruediger added maps to PrivateMaps, among them Delverdale and Whitstone; tests presumably took place.
 - 9 October: Alphaboy uploaded Countryside to CommunityMaps — the first map by another person who used the web interface to upload a map and draw its regions (browser-made XML). Later the updated map "803" also had its regions made in the browser. So two maps by others so far.
+
+Typed by the author afterwards: the map added on 14 July was "Bridgid II" (his spelling).
