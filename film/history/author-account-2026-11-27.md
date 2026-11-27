@@ -125,3 +125,7 @@ Framework proposed in reply (to be filled from the record): split each map into 
 - Overwall: no hand finishing.
 - The layout generator: the concept of the algorithm is his, devised to reproduce existing maps as far as possible. What comes out is generic, as limited as it is, but a base to work on — and the agents mostly took the base and did nothing with it, not even adjusting other aspects of the layout.
 - The match-status log, read from Discord by an agent in his browser, is on this branch under `sources/match-status/` (commits `1d4470ea`, `444745e6`). He notes that some maps do not appear in it (the moving-wool-room map is not found), that there is clear evidence of one test session with several maps played in a row on one server, and that there should be more such sessions; he asks for a cross-check.
+
+## Ninth instalment, same day: why match numbers are missing
+
+The author's explanation: the missing matches were the tests. On the server one can start an event with an event rotation — maps are put in and run through — and matches played that way are apparently not tracked: a fault of the plugin the server uses, so nothing is sent to the match-status channel. On 20/21 September the gap ends with Millrace, which they set again afterwards. So the gaps of 8, 11 and 13 fit tests of that many maps, but which maps is not recorded; he could work it out from what he sent Ruediger each time.
