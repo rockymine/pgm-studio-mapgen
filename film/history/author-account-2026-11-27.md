@@ -173,3 +173,9 @@ The notes of 9–10 October were not a test on the real server: three of them lo
 - The pause: it was simply needed — for a month they had tested the "slop" maps (meant kindly) every weekend, and the tool needed some care again. It is also not interesting forever to let the AI build twenty maps in a night: it works, but one needs inspiration and ideas; prompting empty is possible but was never the aim — it should stay controlled. More maps will be built and tested before long; for now there are still plenty to test.
 
 Added on 27 November: besides Lantern Pass, the arcade boards still to be tested that day are Curio Square, Lantern Drop, Spark and Loomfall.
+
+## Fifteenth instalment, same day
+
+- The boards at the 9–10 October viewing, confirmed: Hollowcrown (the two monuments, one underground, one on the castle), Lantern Karst (the flying capture-the-wool board) and Hollow Mesa; the very first freeform board was shown too.
+- Lantern Pass, tested 27 November 2026: match https://oc.tc/matches/112edd. Read from that page the same evening: "Casual Match", Season 41, status "Match over", duration 01:08, score Runners 1 – Shooters 0; top kills 4, top deaths 1, top damage dealt 57.56 hearts, top arrows shot 39; no authors shown on the page, no absolute date, no player count. (The author's notes on it are in the fourteenth instalment: liked, a little too short, shooters too slow, runners can get stuck in spawn.)
+- Match ids on oc.tc are not sequential (e.g. a486f4, aa2409 on one day), so the pages of matches missing from the log cannot be found by counting.
