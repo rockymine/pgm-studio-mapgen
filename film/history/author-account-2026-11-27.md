@@ -129,3 +129,8 @@ Framework proposed in reply (to be filled from the record): split each map into 
 ## Ninth instalment, same day: why match numbers are missing
 
 The author's explanation: the missing matches were the tests. On the server one can start an event with an event rotation — maps are put in and run through — and matches played that way are apparently not tracked: a fault of the plugin the server uses, so nothing is sent to the match-status channel. On 20/21 September the gap ends with Millrace, which they set again afterwards. So the gaps of 8, 11 and 13 fit tests of that many maps, but which maps is not recorded; he could work it out from what he sent Ruediger each time.
+
+## Tenth instalment, same day: on the write-ups of the trial-run session
+
+- The criticism of the map with unplayable XML (Aerie) and the 27-block monuments is in the logs and commits; at some point oversized monuments were prevented. That the labyrinth concept is not verbatim does not matter; it was probably at the unread start.
+- The quartz map is probably Quillon Saltworks, not Kiln Row. Every board built in that session was of poor quality — "everything was the problem": the blocks used; how the houses were built; pitched roofs made of top slabs one can see through; spawn areas and spawn buildings too large; a layout that did not fit, with a huge hole in the middle where nobody can build and every player has to walk round, left or right. "Grundsätzlich einfach schlechte Maps."
