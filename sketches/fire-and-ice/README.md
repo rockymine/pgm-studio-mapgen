@@ -10,6 +10,14 @@ degrees into the whole map.
 files, and the script reads it and never writes over it. Everything new is wool in a colour of its own and the
 ground under every surface is stone, so texturing is left open.
 
+**The composition was superseded once the author built the map themselves.** `study/` holds what followed:
+- the author's terrain reconstructed as loft lines;
+- a 3D viewer of the map's layers;
+- a labelling of the building;
+- agent-built variants for the middle and the cover, under rules a gate enforces.
+
+`study/README.md` describes it, and `study/LESSONS.md` records what went wrong and where the limits were.
+
 ## Running it
 
 ```bash
@@ -112,3 +120,4 @@ the south peak's foot and an opening in the terrace; the back room opens with th
 | `loft.py` | curves, lofted surfaces and their voxels: the ramp, the retaining strip, the middle |
 | `anvilw.py` | a 1.8 Anvil region writer; lighting is left for the server to compute and the biome is Ice Plains |
 | `render.py` · `colours.py` | top-down and isometric pictures, leaving out the sketch's floating reference pieces |
+| `study/` | the reconstruction, the viewer, the labelling and the terrain variants, with their kit and brief |

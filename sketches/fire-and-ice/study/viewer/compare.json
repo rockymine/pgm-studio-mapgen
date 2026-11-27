@@ -1,0 +1,403 @@
+[
+ {
+  "name": "Autor: Gelände",
+  "lofts": 23,
+  "lines": 299,
+  "points": 1578,
+  "area": 13555,
+  "points_per_100": 11.6,
+  "lines_per_100": 2.21,
+  "tilt_median": 36,
+  "over_30": 57,
+  "over_45": 42,
+  "height": [
+   14,
+   79
+  ],
+  "colours": 4,
+  "beyond_building": 89,
+  "id": "author"
+ },
+ {
+  "name": "Autor: Hellblau",
+  "lofts": 4,
+  "lines": 65,
+  "points": 497,
+  "area": 3764,
+  "points_per_100": 13.2,
+  "lines_per_100": 1.73,
+  "tilt_median": 50,
+  "over_30": 74,
+  "over_45": 56,
+  "height": [
+   23,
+   79
+  ],
+  "colours": 1,
+  "beyond_building": 100,
+  "id": "author/wool-3"
+ },
+ {
+  "name": "Autor: Gelb",
+  "lofts": 6,
+  "lines": 84,
+  "points": 411,
+  "area": 3308,
+  "points_per_100": 12.4,
+  "lines_per_100": 2.54,
+  "tilt_median": 39,
+  "over_30": 63,
+  "over_45": 41,
+  "height": [
+   22,
+   62
+  ],
+  "colours": 1,
+  "beyond_building": 95,
+  "id": "author/wool-4"
+ },
+ {
+  "name": "Autor: Hellgrün und Grün",
+  "lofts": 8,
+  "lines": 51,
+  "points": 194,
+  "area": 1724,
+  "points_per_100": 11.3,
+  "lines_per_100": 2.96,
+  "tilt_median": 74,
+  "over_30": 97,
+  "over_45": 93,
+  "height": [
+   15,
+   43
+  ],
+  "colours": 1,
+  "beyond_building": 69,
+  "id": "author/wool-stütz"
+ },
+ {
+  "name": "Autor: Hellgrau",
+  "lofts": 5,
+  "lines": 99,
+  "points": 476,
+  "area": 4759,
+  "points_per_100": 10.0,
+  "lines_per_100": 2.08,
+  "tilt_median": 17,
+  "over_30": 25,
+  "over_45": 14,
+  "height": [
+   14,
+   30
+  ],
+  "colours": 1,
+  "beyond_building": 85,
+  "id": "author/wool-8"
+ },
+ {
+  "name": "cov-1: Der Bunker in der Grube",
+  "lofts": 6,
+  "lines": 21,
+  "points": 97,
+  "area": 2221,
+  "points_per_100": 4.4,
+  "lines_per_100": 0.95,
+  "tilt_median": 61,
+  "over_30": 90,
+  "over_45": 88,
+  "height": [
+   22,
+   72
+  ],
+  "colours": 4,
+  "beyond_building": 25,
+  "slot": "cover",
+  "id": "cov-1",
+  "checker_covered": 0
+ },
+ {
+  "name": "cov-2: Bunker unterm Berg",
+  "lofts": 4,
+  "lines": 32,
+  "points": 127,
+  "area": 2172,
+  "points_per_100": 5.8,
+  "lines_per_100": 1.47,
+  "tilt_median": 25,
+  "over_30": 27,
+  "over_45": 9,
+  "height": [
+   53,
+   78
+  ],
+  "colours": 2,
+  "beyond_building": 52,
+  "slot": "cover",
+  "id": "cov-2",
+  "checker_covered": 0
+ },
+ {
+  "name": "cov-3: Der Bunker im Hang",
+  "lofts": 5,
+  "lines": 28,
+  "points": 121,
+  "area": 3357,
+  "points_per_100": 3.6,
+  "lines_per_100": 0.83,
+  "tilt_median": 46,
+  "over_30": 64,
+  "over_45": 52,
+  "height": [
+   28,
+   78
+  ],
+  "colours": 2,
+  "beyond_building": 40,
+  "slot": "cover",
+  "id": "cov-3",
+  "checker_covered": 42
+ },
+ {
+  "name": "cov-4: Hang unter dem Dach",
+  "lofts": 6,
+  "lines": 25,
+  "points": 135,
+  "area": 2448,
+  "points_per_100": 5.5,
+  "lines_per_100": 1.02,
+  "tilt_median": 59,
+  "over_30": 85,
+  "over_45": 73,
+  "height": [
+   27,
+   78
+  ],
+  "colours": 2,
+  "beyond_building": 31,
+  "slot": "cover",
+  "id": "cov-4",
+  "checker_covered": 0
+ },
+ {
+  "name": "cov-5: Das Kar",
+  "lofts": 6,
+  "lines": 64,
+  "points": 323,
+  "area": 2556,
+  "points_per_100": 12.6,
+  "lines_per_100": 2.5,
+  "tilt_median": 24,
+  "over_30": 37,
+  "over_45": 17,
+  "height": [
+   43,
+   77
+  ],
+  "colours": 2,
+  "beyond_building": 36,
+  "slot": "cover",
+  "id": "cov-5",
+  "checker_covered": 0
+ },
+ {
+  "name": "cov-6: Firnsattel über dem Bunker",
+  "lofts": 8,
+  "lines": 42,
+  "points": 302,
+  "area": 2450,
+  "points_per_100": 12.3,
+  "lines_per_100": 1.71,
+  "tilt_median": 17,
+  "over_30": 18,
+  "over_45": 6,
+  "height": [
+   52,
+   78
+  ],
+  "colours": 3,
+  "beyond_building": 41,
+  "slot": "cover",
+  "id": "cov-6",
+  "checker_covered": 10
+ },
+ {
+  "name": "mid-1: Die Schwelle",
+  "lofts": 12,
+  "lines": 146,
+  "points": 988,
+  "area": 4440,
+  "points_per_100": 22.3,
+  "lines_per_100": 3.29,
+  "tilt_median": 18,
+  "over_30": 29,
+  "over_45": 19,
+  "height": [
+   13,
+   36
+  ],
+  "colours": 4,
+  "beyond_building": 100,
+  "slot": "middle",
+  "id": "mid-1"
+ },
+ {
+  "name": "mid-2: Wo die Gruben sich trafen",
+  "lofts": 8,
+  "lines": 126,
+  "points": 682,
+  "area": 5805,
+  "points_per_100": 11.7,
+  "lines_per_100": 2.17,
+  "tilt_median": 14,
+  "over_30": 24,
+  "over_45": 17,
+  "height": [
+   14,
+   36
+  ],
+  "colours": 3,
+  "beyond_building": 100,
+  "slot": "middle",
+  "id": "mid-2"
+ },
+ {
+  "name": "mid-3: Yin und Yang der Halden",
+  "lofts": 8,
+  "lines": 164,
+  "points": 884,
+  "area": 3752,
+  "points_per_100": 23.6,
+  "lines_per_100": 4.37,
+  "tilt_median": 13,
+  "over_30": 25,
+  "over_45": 14,
+  "height": [
+   14,
+   35
+  ],
+  "colours": 3,
+  "beyond_building": 100,
+  "slot": "middle",
+  "id": "mid-3"
+ },
+ {
+  "name": "mid-4: Pingo in der Talmitte",
+  "lofts": 6,
+  "lines": 20,
+  "points": 200,
+  "area": 5052,
+  "points_per_100": 4.0,
+  "lines_per_100": 0.4,
+  "tilt_median": 7,
+  "over_30": 9,
+  "over_45": 4,
+  "height": [
+   14,
+   23
+  ],
+  "colours": 2,
+  "beyond_building": 100,
+  "slot": "middle",
+  "id": "mid-4"
+ },
+ {
+  "name": "mid-5: Eisrinne und Pingos",
+  "lofts": 6,
+  "lines": 92,
+  "points": 704,
+  "area": 4686,
+  "points_per_100": 15.0,
+  "lines_per_100": 1.96,
+  "tilt_median": 9,
+  "over_30": 15,
+  "over_45": 9,
+  "height": [
+   11,
+   21
+  ],
+  "colours": 3,
+  "beyond_building": 100,
+  "slot": "middle",
+  "id": "mid-5"
+ },
+ {
+  "name": "mid-6: Rundhöcker im Eisbecken",
+  "lofts": 10,
+  "lines": 188,
+  "points": 1558,
+  "area": 5640,
+  "points_per_100": 27.6,
+  "lines_per_100": 3.33,
+  "tilt_median": 13,
+  "over_30": 16,
+  "over_45": 3,
+  "height": [
+   12,
+   36
+  ],
+  "colours": 3,
+  "beyond_building": 100,
+  "slot": "middle",
+  "id": "mid-6"
+ },
+ {
+  "name": "mid-7: Die Eismulde",
+  "lofts": 4,
+  "lines": 98,
+  "points": 350,
+  "area": 3333,
+  "points_per_100": 10.5,
+  "lines_per_100": 2.94,
+  "tilt_median": 16,
+  "over_30": 15,
+  "over_45": 0,
+  "height": [
+   12,
+   20
+  ],
+  "colours": 2,
+  "beyond_building": 100,
+  "slot": "middle",
+  "id": "mid-7"
+ },
+ {
+  "name": "mid-8: Gletscherzungen am Eissee",
+  "lofts": 6,
+  "lines": 54,
+  "points": 306,
+  "area": 3160,
+  "points_per_100": 9.7,
+  "lines_per_100": 1.71,
+  "tilt_median": 11,
+  "over_30": 16,
+  "over_45": 1,
+  "height": [
+   12,
+   20
+  ],
+  "colours": 3,
+  "beyond_building": 100,
+  "slot": "middle",
+  "id": "mid-8"
+ },
+ {
+  "name": "mid-9: Pingo-Furt",
+  "lofts": 4,
+  "lines": 62,
+  "points": 294,
+  "area": 4263,
+  "points_per_100": 6.9,
+  "lines_per_100": 1.45,
+  "tilt_median": 10,
+  "over_30": 28,
+  "over_45": 12,
+  "height": [
+   14,
+   23
+  ],
+  "colours": 2,
+  "beyond_building": 100,
+  "slot": "middle",
+  "id": "mid-9"
+ }
+]

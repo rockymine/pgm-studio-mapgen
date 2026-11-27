@@ -1,0 +1,449 @@
+<title>Feuer und Eis Ebenen</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: an author's model table, shown to other map makers
+   IDEA a terrain model on a workbench: each layer a sheet you lift off or put back
+   PICTURE the map itself in 3D, low-poly lofts or blocks, filling the screen
+   COLOUR ice-blue night ground, ink, ice #7cc8e0 and fire #ff6b2c as the two working colours
+   TYPE Archivo 800 + Inter
+   LAYOUT laptop: viewer fills, layer sheet on the right; phone: title, viewer, controls, layers */
+:root{color-scheme:light dark;--bg:light-dark(#eef3f5,#0c1319);--panel:light-dark(#ffffff,#121b23);--ink:light-dark(#10202b,#e6eef2);--soft:light-dark(#566873,#93a6b1);--rule:light-dark(#d5e0e5,#22313c);--stage:light-dark(#dfe9ee,#0a1015);--ice:light-dark(#1f7fa3,#7cc8e0);--fire:light-dark(#d44a12,#ff6b2c)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif;overflow-x:clip}
+.app{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr)}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;padding-block:14px;padding-left:max(2vw,16px,env(safe-area-inset-left,0px));padding-right:max(2vw,16px,env(safe-area-inset-right,0px));border-bottom:1px solid var(--rule);background:var(--panel)}
+h1{font:800 clamp(24px,2.6vw,32px)/1.05 Archivo,system-ui,sans-serif;letter-spacing:-.02em;margin:0}
+h1 span{color:var(--soft);font-weight:500}
+.figs{display:flex;gap:20px;color:var(--soft);font-size:13px;white-space:nowrap}
+.figs b{display:block;color:var(--ink);font:700 18px/1.1 Archivo,sans-serif;font-variant-numeric:tabular-nums}
+.ctrls{display:flex;flex-wrap:wrap;gap:8px;margin-left:auto}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:9px;overflow:hidden;background:var(--bg)}
+.seg button,.tog{font:600 14px Inter,sans-serif;color:var(--ink);background:transparent;border:0;padding:9px 13px;min-height:40px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--panel)}
+.tog{border:1px solid var(--rule);border-radius:9px;background:var(--bg)}
+.tog[aria-pressed=true]{border-color:var(--ice);box-shadow:inset 0 0 0 1px var(--ice);color:var(--ice)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--fire);outline-offset:2px}
+main{display:grid;grid-template-columns:minmax(0,1fr) 330px;min-height:0}
+.stage{position:relative;background:var(--stage);min-height:0}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.hint{position:absolute;left:14px;bottom:12px;font-size:13px;color:var(--soft);pointer-events:none}
+.pick{position:absolute;left:14px;top:12px;max-width:min(360px,calc(100% - 28px));background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:10px 12px;font-size:14px}
+.pick b{font-family:Archivo,sans-serif}
+.load{position:absolute;inset:0;display:grid;place-items:center;color:var(--soft)}
+aside{border-left:1px solid var(--rule);background:var(--panel);overflow-y:auto;padding:14px 16px 24px}
+.presets{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.presets button{font:500 13px Inter,sans-serif;color:var(--ink);background:var(--bg);border:1px solid var(--rule);border-radius:999px;padding:6px 11px;cursor:pointer}
+.presets button:hover{border-color:var(--soft)}
+h2{font:700 15px/1.2 Archivo,sans-serif;margin:18px 0 6px;display:flex;justify-content:space-between;align-items:baseline}
+h2 small{font:400 13px Inter,sans-serif;color:var(--soft)}
+.layer{display:grid;grid-template-columns:22px 16px minmax(0,1fr) auto;gap:8px;align-items:center;padding:7px 4px;border-radius:8px;cursor:pointer}
+.layer:hover{background:var(--bg)}
+.layer.on-pick{background:color-mix(in srgb,var(--ice) 16%,transparent)}
+.layer input{width:18px;height:18px;margin:0;accent-color:var(--ice)}
+.sw{width:16px;height:16px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+.nm{font-weight:600;font-size:14px;line-height:1.25}
+.nm small{display:block;font-weight:400;color:var(--soft);font-size:13px}
+.ct{font-size:13px;color:var(--soft);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ct em{display:block;font-style:normal;color:var(--ice)}
+.vars{border-bottom:1px solid var(--rule);padding-bottom:12px;margin-bottom:14px}
+.vars h2{margin-top:2px}
+.vrow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}
+.vrow>span{font-weight:600;font-size:14px}
+.vrow .seg button{padding:7px 12px;min-height:36px}
+.vtext{font-size:13px;color:var(--soft);margin:6px 0 0}
+.vtext b{color:var(--ink)}
+.vfig{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5em,1fr));gap:6px 12px;margin-top:8px}
+.vfig>span{font:700 16px/1.15 Archivo,sans-serif;color:var(--ink);font-variant-numeric:tabular-nums}
+.vfig small{display:block;font:400 12.5px/1.3 Inter,sans-serif;color:var(--soft)}
+.note{font-size:13px;color:var(--soft);margin-top:18px;border-top:1px solid var(--rule);padding-top:12px}
+@media(max-width:900px){.app{height:auto;display:block}main{display:block}.stage{height:62svh}aside{border-left:0;border-top:1px solid var(--rule)}.ctrls{margin-left:0}}
+</style>
+
+<div class="app">
+<header>
+  <h1>Feuer und Eis <span>Ebenen</span></h1>
+  <div class="figs"><div><b id="fBlocks">–</b>Blöcke gezeigt</div><div><b id="fTris">–</b>Dreiecke</div><div><b id="fLofts">–</b>Lofts</div></div>
+  <div class="ctrls">
+    <div class="seg" role="group" aria-label="Darstellung"><button id="mMesh" aria-pressed="true">Mesh</button><button id="mBlocks" aria-pressed="false">Blöcke</button></div>
+    <div class="seg" role="group" aria-label="Umfang"><button id="sFull" aria-pressed="true">Ganze Karte</button><button id="sHalf" aria-pressed="false">Hälfte</button></div>
+    <button class="tog" id="tLines" aria-pressed="false">Linien</button>
+    <button class="tog" id="tWire" aria-pressed="false">Netz</button>
+    <button class="tog" id="tNames" aria-pressed="true" hidden>Namen</button>
+  </div>
+</header>
+<main>
+  <div class="stage" id="stage">
+    <div class="load" id="load">Karte wird geladen …</div>
+    <div class="pick" id="pick" hidden></div>
+    <div class="hint">Ziehen dreht · Rechts ziehen verschiebt · Scrollen zoomt · Klick nennt die Ebene</div>
+  </div>
+  <aside>
+    <section class="vars" id="vars" hidden>
+      <h2>Varianten <small>fehlendes Gelände</small></h2>
+      <div class="vrow"><span>Mitte</span><div class="seg" role="group" aria-label="Variante der Mitte" id="vMid"></div></div>
+      <p class="vtext" id="vMidText"></p>
+      <div class="vrow"><span>Gebäude</span><div class="seg" role="group" aria-label="Variante über dem Gebäude" id="vCov"></div></div>
+      <p class="vtext" id="vCovText"></p>
+    </section>
+    <div class="presets"><button data-p="all">Alles</button><button data-p="terrain">Nur Gelände</button><button data-p="sheets">Gelände und Untergrund</button><button data-p="build">Nur Bauwerke</button><button data-p="inside">Räume und Wege</button></div>
+    <div id="list"></div>
+    <p class="note">Im Mesh ist jede Wollfläche, die sich als Folge von Linien beschreiben lässt, ein Loft: Linien quer über die Fläche, zwischen je zwei Linien ein Streifen. Was sich so nicht beschreiben lässt, und alle Bauwerke, ist zu großen Flächen zusammengefasst. Gebaut ist eine Hälfte, die zweite ist sie um 180° um die Mitte gedreht.</p>
+  </aside>
+</main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+{
+const $ = id => document.getElementById(id);
+const state = {mode: 'mesh', full: true, lines: false, wire: false, on: new Set(), mid: null, cov: null, names: true, kinds: null, shift: [0, 0]};
+let D, V = [], LB = [], CMP = [], layers, palette, relBlocks, absBlocks, order, renderer, scene, camera, controls, world;
+const VGROUP = {middle: 'Variante Mitte', cover: 'Variante Gebäude'};
+const SPACES = 'Räume und Wege';
+const KINDS = {room: ['Räume', '#ff8a3d'], tunnel: ['Tunnel', '#2fb8f0'], stair: ['Treppenhäuser', '#f2c230'], facade: ['Fassade', '#ff3d8b'], opening: ['Öffnungen', '#5fd35a']};
+const fmt = n => n.toLocaleString('de-DE');
+const LIGHT = new THREE.Vector3(0.45, 0.8, 0.35).normalize();
+const FACE = [[0.80, 0.70], [1.0, 0.52], [0.88, 0.66]];   // [+axis, -axis] shade for x, y, z faces
+
+function boot(data, variants, labels, compare) {
+  D = data; V = variants; LB = labels; CMP = compare;
+  order = [VGROUP.middle, VGROUP.cover, SPACES].concat(D.order);
+  state.mid = (V.find(v => v.slot === 'middle') || {}).id || null;
+  state.cov = (V.find(v => v.slot === 'cover') || {}).id || null;
+  D.layers.forEach((l, k) => { if (l.key !== 'marks') state.on.add(k); });
+  compose(); varsUI();
+  renderer = new THREE.WebGLRenderer({antialias: true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  $('stage').appendChild(renderer.domElement);
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(40, 1, 1, 2000);
+  controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  let framed = false;
+  const ro = new ResizeObserver(() => { resize(); if (!framed) { framed = true; frame(); } }); ro.observe($('stage'));
+  listUI(); wire(); rebuild(); $('load').hidden = true; loop();
+}
+
+function bounds() {
+  const B = D.blocks, lo = [1e9, 1e9, 1e9], hi = [-1e9, -1e9, -1e9];
+  for (let i = 0; i < B.length; i += 4) for (let a = 0; a < 3; a++) { lo[a] = Math.min(lo[a], B[i + a]); hi[a] = Math.max(hi[a], B[i + a]); }
+  if (state.full) { const px = D.pivot[0] + state.shift[0], pz = D.pivot[1] + state.shift[1], tx = [px - hi[0], px - lo[0]], tz = [pz - hi[2], pz - lo[2]]; lo[0] = Math.min(lo[0], tx[0]); hi[0] = Math.max(hi[0], tx[1]); lo[2] = Math.min(lo[2], tz[0]); hi[2] = Math.max(hi[2], tz[1]); }
+  return [lo, hi];
+}
+
+function frame() {
+  const [lo, hi] = bounds();
+  const t = new THREE.Vector3((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, (lo[2] + hi[2]) / 2);
+  const radius = Math.hypot(hi[0] - lo[0], hi[1] - lo[1], hi[2] - lo[2]) / 2;
+  const v = THREE.MathUtils.degToRad(camera.fov) / 2, h = Math.atan(Math.tan(v) * Math.max(camera.aspect, 0.3));
+  const dist = radius / Math.sin(Math.min(v, h)) * 0.62;
+  controls.target.copy(t);
+  camera.position.copy(t).add(new THREE.Vector3(0.55, 0.62, 0.56).normalize().multiplyScalar(dist));
+  controls.update();
+}
+
+function resize() {
+  const s = $('stage'), W = s.clientWidth, H = s.clientHeight;
+  renderer.setSize(W, H, false); camera.aspect = W / H; camera.updateProjectionMatrix();
+}
+
+function loop() { controls.update(); renderer.render(scene, camera); requestAnimationFrame(loop); }
+
+function themeBg() { return getComputedStyle($('stage')).backgroundColor; }
+
+// ---- the chosen variants joined to the map: their pieces become layers, their blocks join the half or stand alone
+function compose() {
+  const base = D.layers.length;
+  for (const k of [...state.on]) if (k >= base) state.on.delete(k);
+  layers = D.layers.slice(); palette = D.palette.slice();
+  const rel = D.blocks.slice(), abs = [];
+  for (const v of V) {
+    if (v.id !== state.mid && v.id !== state.cov) continue;
+    const first = layers.length, pfirst = palette.length;
+    v.layers.forEach((l, i) => {
+      layers.push(Object.assign({}, l, {key: v.id + '/' + i, group: VGROUP[v.slot], absolute: v.absolute}));
+      palette.push([first + i, l.colour]); state.on.add(first + i);
+    });
+    const into = v.absolute ? abs : rel;
+    for (let i = 0; i < v.blocks.length; i += 4) {
+      const piece = v.blocks[i + 3];
+      into.push(v.blocks[i], v.blocks[i + 1], v.blocks[i + 2], (pfirst + piece) * 2 + (v.layers[piece].meshes.length ? 1 : 0));
+    }
+  }
+  for (const kind of Object.keys(KINDS)) {
+    const mine = LB.filter(l => l.kind === kind);
+    if (!mine.length) continue;
+    const k = layers.length, was = state.kinds ? state.kinds.has(kind) : false;
+    layers.push({key: 'space/' + kind, kind, name: KINDS[kind][0], note: mine.map(l => l.name).slice(0, 4).join(', ') + (mine.length > 4 ? ' …' : ''),
+                 colour: KINDS[kind][1], group: SPACES, blocks: mine.reduce((n, l) => n + l.cells.length / 3, 0), meshes: [], lines: 0, points: 0, spaces: mine.length});
+    if (was) state.on.add(k);
+  }
+  const mid = V.find(v => v.id === state.mid);
+  state.shift = mid && mid.shift ? mid.shift : [0, 0];
+  relBlocks = rel; absBlocks = abs;
+}
+
+// ---- labelled spaces: each a translucent volume with its name over it
+function spaces(g) {
+  const kinds = new Set(layers.map((l, k) => l.kind && state.on.has(k) ? l.kind : null).filter(Boolean));
+  state.kinds = kinds;
+  LB.forEach((lab, i) => {
+    if (!kinds.has(lab.kind)) return;
+    const C = lab.cells, set = new Set();
+    for (let j = 0; j < C.length; j += 3) set.add(C[j] + ',' + C[j + 1] + ',' + C[j + 2]);
+    const pos = [];
+    const DIRS = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]];
+    for (let j = 0; j < C.length; j += 3) {
+      const x = C[j], y = C[j + 1], z = C[j + 2];
+      for (const [dx, dy, dz] of DIRS) {
+        if (set.has((x + dx) + ',' + (y + dy) + ',' + (z + dz))) continue;
+        const ax = dx ? 0 : dy ? 1 : 2, u = (ax + 1) % 3, v = (ax + 2) % 3, c = [x, y, z], sgn = dx + dy + dz;
+        const corner = (a, b) => { const p = c.slice(); p[ax] += sgn * 0.5; p[u] += a - 0.5; p[v] += b - 0.5; return p; };
+        pos.push(...corner(0, 0), ...corner(1, 0), ...corner(1, 1), ...corner(0, 0), ...corner(1, 1), ...corner(0, 1));
+      }
+    }
+    const m = new THREE.Mesh(geo(pos), new THREE.MeshBasicMaterial({color: KINDS[lab.kind][1], transparent: true, opacity: 0.42, depthWrite: false, side: THREE.DoubleSide}));
+    m.userData.label = i; m.renderOrder = 2; g.add(m);
+    if (state.names && (lab.kind !== 'opening' || kinds.size === 1)) g.add(nameSprite(lab.name, lab.centre));
+  });
+}
+
+function nameSprite(text, at) {
+  const cv = document.createElement('canvas'), ctx = cv.getContext('2d'), font = '600 34px Inter, system-ui, sans-serif';
+  ctx.font = font; const w = Math.ceil(ctx.measureText(text).width) + 28; cv.width = w; cv.height = 52;
+  ctx.font = font; ctx.fillStyle = 'rgba(16,32,43,.82)'; ctx.beginPath(); ctx.roundRect ? ctx.roundRect(0, 0, w, 52, 12) : ctx.rect(0, 0, w, 52); ctx.fill();
+  ctx.fillStyle = '#fff'; ctx.textBaseline = 'middle'; ctx.fillText(text, 14, 27);
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({map: new THREE.CanvasTexture(cv), depthTest: false, sizeAttenuation: false}));
+  sp.scale.set(w / 52 * 0.022, 0.022, 1); sp.position.set(at[0], at[1] + 1.5, at[2]); sp.renderOrder = 3;
+  return sp;
+}
+
+function measures(v) {
+  const row = CMP.find(r => r.id === v.id), ref = CMP.find(r => r.id === (v.slot === 'middle' ? 'author/wool-8' : 'author/wool-3'));
+  if (!row || !ref) return '';
+  const what = v.slot === 'middle' ? 'dein Boden' : 'deine Berge';
+  return `<span class="vfig"><span>${fmt(row.points_per_100)} <small>Punkte je 100 Bl.² · ${what} ${fmt(ref.points_per_100)}</small></span>` +
+    `<span>${row.tilt_median}° <small>Neigung Median · ${ref.tilt_median}°</small></span>` +
+    `<span>${row.over_45} % <small>steiler als 45° · ${ref.over_45} %</small></span>` +
+    (row.checker_covered !== undefined ? `<span>${row.checker_covered} % <small>Schachbrett bedeckt</small></span>` : '') + `</span>`;
+}
+
+function varsUI() {
+  if (!V.length) return;
+  $('vars').hidden = false;
+  for (const [slot, seg, text, key] of [['middle', 'vMid', 'vMidText', 'mid'], ['cover', 'vCov', 'vCovText', 'cov']]) {
+    const mine = V.filter(v => v.slot === slot);
+    $(seg).innerHTML = `<button data-v="" aria-pressed="${!state[key]}">Keine</button>` +
+      mine.map((v, i) => `<button data-v="${esc(v.id)}" aria-pressed="${state[key] === v.id}" title="${esc(v.title)}">${i + 1}</button>`).join('');
+    const chosen = mine.find(v => v.id === state[key]);
+    const sh = chosen && chosen.shift && (chosen.shift[0] || chosen.shift[1]) ? ` Die zweite Hälfte ist um ${chosen.shift[0]} in x und ${chosen.shift[1]} in z verschoben, die Mitte etwa ${Math.round(chosen.shift[0] * 0.361 + chosen.shift[1] * 0.933)} Blöcke breiter.` : '';
+    $(text).innerHTML = chosen ? `<b>${esc(chosen.title)}.</b> ${esc(chosen.summary)}${esc(sh)}` + measures(chosen) : 'Die Lücke bleibt offen.';
+    $(seg).querySelectorAll('button').forEach(b => b.onclick = () => { state[key] = b.dataset.v || null; compose(); varsUI(); listUI(); rebuild(); });
+  }
+}
+
+// ---- block faces: one pass per axis, merged into rectangles in mesh mode, one face per block in block mode
+function faces(merge, B) {
+  const pal = palette, out = layers.map(() => ({pos: [], col: []}));
+  if (!B.length) return {out, shown: 0};
+  let lo = [1e9, 1e9, 1e9], hi = [-1e9, -1e9, -1e9];
+  for (let i = 0; i < B.length; i += 4) for (let a = 0; a < 3; a++) { lo[a] = Math.min(lo[a], B[i + a]); hi[a] = Math.max(hi[a], B[i + a]); }
+  const dim = [hi[0] - lo[0] + 1, hi[1] - lo[1] + 1, hi[2] - lo[2] + 1];
+  const grid = new Int16Array(dim[0] * dim[1] * dim[2]);
+  let shown = 0;
+  for (let i = 0; i < B.length; i += 4) {
+    const p = B[i + 3] >> 1, lofted = B[i + 3] & 1;
+    if (!state.on.has(pal[p][0]) || (merge && lofted)) continue;
+    grid[(B[i] - lo[0]) + (B[i + 1] - lo[1]) * dim[0] + (B[i + 2] - lo[2]) * dim[0] * dim[1]] = p + 1; shown++;
+  }
+  const at = (x, y, z) => grid[x + y * dim[0] + z * dim[0] * dim[1]];
+  const cols = pal.map(p => new THREE.Color(p[1]));
+  const x = [0, 0, 0], q = [0, 0, 0];
+  for (let d = 0; d < 3; d++) {
+    const u = (d + 1) % 3, v = (d + 2) % 3, mask = new Int32Array(dim[u] * dim[v]);
+    q[0] = q[1] = q[2] = 0; q[d] = 1;
+    for (x[d] = -1; x[d] < dim[d];) {
+      let n = 0;
+      for (x[v] = 0; x[v] < dim[v]; x[v]++) for (x[u] = 0; x[u] < dim[u]; x[u]++, n++) {
+        const a = x[d] >= 0 ? at(x[0], x[1], x[2]) : 0;
+        const b = x[d] < dim[d] - 1 ? at(x[0] + q[0], x[1] + q[1], x[2] + q[2]) : 0;
+        mask[n] = (!a === !b) ? 0 : a ? a : -b;
+      }
+      x[d]++; n = 0;
+      for (let j = 0; j < dim[v]; j++) for (let i = 0; i < dim[u];) {
+        const c = mask[n];
+        if (!c) { i++; n++; continue; }
+        let w = 1, h = 1;
+        if (merge) {
+          while (i + w < dim[u] && mask[n + w] === c) w++;
+          grow: for (; j + h < dim[v]; h++) for (let k = 0; k < w; k++) if (mask[n + k + h * dim[u]] !== c) break grow;
+        }
+        const base = [0, 0, 0]; base[d] = x[d]; base[u] = i; base[v] = j;
+        const du = [0, 0, 0], dv = [0, 0, 0]; du[u] = w; dv[v] = h;
+        const p = Math.abs(c) - 1, L = out[pal[p][0]];
+        let s = FACE[d][c > 0 ? 0 : 1];
+        if (!merge) { const cell = base.slice(); if (c > 0) cell[d] -= 1; const hsh = ((cell[0] * 73856093) ^ (cell[1] * 19349663) ^ (cell[2] * 83492791)) >>> 0; s *= 0.93 + (hsh % 1000) / 1000 * 0.12; }
+        const col = cols[p], r = col.r * s, g = col.g * s, bl = col.b * s;
+        const corner = (a, b) => [base[0] + du[0] * a + dv[0] * b + lo[0] - 0.5, base[1] + du[1] * a + dv[1] * b + lo[1] - 0.5, base[2] + du[2] * a + dv[2] * b + lo[2] - 0.5];
+        const A = corner(0, 0), Bc = corner(1, 0), C = corner(1, 1), E = corner(0, 1);
+        L.pos.push(...A, ...Bc, ...C, ...A, ...C, ...E);
+        for (let k = 0; k < 6; k++) L.col.push(r, g, bl);
+        for (let l = 0; l < h; l++) for (let k = 0; k < w; k++) mask[n + k + l * dim[u]] = 0;
+        i += w; n += w;
+      }
+    }
+  }
+  return {out, shown};
+}
+
+// ---- lofts: triangles shaded by their tilt to one light
+function lofts(which) {
+  const out = layers.map(() => ({pos: [], col: [], lines: [], points: []}));
+  const a = new THREE.Vector3(), b = new THREE.Vector3(), c = new THREE.Vector3(), n = new THREE.Vector3();
+  layers.forEach((l, k) => {
+    if (!state.on.has(k) || !which(l)) return;
+    const col = new THREE.Color(l.colour), O = out[k];
+    for (const m of l.meshes) {
+      const T = m.tris;
+      for (let i = 0; i < T.length; i += 9) {
+        a.set(T[i], T[i + 1], T[i + 2]).multiplyScalar(0.1); b.set(T[i + 3], T[i + 4], T[i + 5]).multiplyScalar(0.1); c.set(T[i + 6], T[i + 7], T[i + 8]).multiplyScalar(0.1);
+        n.subVectors(b, a).cross(c.clone().sub(a)).normalize();
+        const s = 0.5 + 0.5 * Math.abs(n.dot(LIGHT));
+        O.pos.push(a.x, a.y, a.z, b.x, b.y, b.z, c.x, c.y, c.z);
+        for (let j = 0; j < 3; j++) O.col.push(col.r * s, col.g * s, col.b * s);
+      }
+      for (const line of m.lines) for (let i = 0; i + 5 < line.length; i += 3) O.lines.push(line[i] / 10, line[i + 1] / 10, line[i + 2] / 10, line[i + 3] / 10, line[i + 4] / 10, line[i + 5] / 10);
+      for (let i = 0; i < m.points.length; i++) O.points.push(m.points[i] / 10);
+    }
+  });
+  return out;
+}
+
+function geo(pos, col) {
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  if (col) g.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
+  return g;
+}
+
+const solid = new THREE.MeshBasicMaterial({vertexColors: true, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1});
+function cssColour(name) { const e = document.createElement('i'); e.style.color = `var(${name})`; document.body.appendChild(e); const c = getComputedStyle(e).color; e.remove(); return new THREE.Color(c); }
+const lineMat = () => new THREE.LineBasicMaterial({color: cssColour('--fire')});
+const wireMat = () => new THREE.LineBasicMaterial({color: cssColour('--ink'), transparent: true, opacity: 0.35});
+
+function group(blocks, which) {
+  const g = new THREE.Group();
+  const {out, shown} = faces(state.mode === 'mesh', blocks);
+  let tris = 0, count = 0;
+  out.forEach((L, k) => { if (L.pos.length) { const m = new THREE.Mesh(geo(L.pos, L.col), solid); m.userData.layer = k; g.add(m); tris += L.pos.length / 9; } });
+  if (state.mode === 'mesh') {
+    const lm = lineMat(), wm = wireMat();
+    lofts(which).forEach((L, k) => {
+      if (!L.pos.length) return;
+      const geom = geo(L.pos, L.col), m = new THREE.Mesh(geom, solid); m.userData.layer = k; g.add(m);
+      tris += L.pos.length / 9; count += layers[k].meshes.length;
+      if (state.wire) g.add(new THREE.LineSegments(new THREE.WireframeGeometry(geom), wm));
+      if (state.lines) {
+        g.add(new THREE.LineSegments(geo(L.lines), lm));
+        g.add(new THREE.Points(geo(L.points), new THREE.PointsMaterial({color: lm.color, size: 4, sizeAttenuation: false})));
+      }
+    });
+  }
+  return {g, shown, tris, count};
+}
+
+function rebuild() {
+  if (world) { scene.remove(world); world.traverse(o => o.geometry && o.geometry.dispose()); }
+  scene.background = new THREE.Color(themeBg());
+  const half = group(relBlocks, l => !l.absolute), alone = group(absBlocks, l => !!l.absolute);
+  spaces(half.g);
+  world = new THREE.Group(); world.add(half.g, alone.g);
+  if (state.full) {
+    const turned = half.g.clone(); turned.rotation.y = Math.PI; turned.position.set(D.pivot[0] + state.shift[0], 0, D.pivot[1] + state.shift[1]); world.add(turned);
+  }
+  scene.add(world);
+  const k = state.full ? 2 : 1;
+  $('fBlocks').textContent = fmt(state.mode === 'mesh' ? 0 : half.shown * k + alone.shown);
+  $('fBlocks').parentNode.lastChild.textContent = state.mode === 'mesh' ? 'Blöcke (alles Flächen)' : 'Blöcke gezeigt';
+  $('fTris').textContent = fmt(Math.round(half.tris * k + alone.tris));
+  $('fLofts').textContent = fmt(half.count * k + alone.count);
+}
+
+function listUI() {
+  const groups = order.map(g => [g, layers.map((l, k) => [l, k]).filter(([l]) => l.group === g)]).filter(([, ls]) => ls.length);
+  $('list').innerHTML = groups.map(([g, ls]) => `<h2>${esc(g)} <small>${fmt(ls.reduce((s, [l]) => s + l.blocks, 0))} Blöcke</small></h2>` +
+    ls.map(([l, k]) => `<label class="layer" data-k="${k}"><input type="checkbox" id="lay${k}" ${state.on.has(k) ? 'checked' : ''}><span class="sw" style="background:${esc(l.colour)}"></span>` +
+      `<span class="nm">${esc(l.name)}${l.note ? `<small>${esc(l.note)}</small>` : ''}</span>` +
+      `<span class="ct">${l.spaces ? fmt(l.spaces) + ' · ' : ''}${fmt(l.blocks)}${l.meshes.length ? `<em>${l.meshes.length} ${l.meshes.length === 1 ? 'Loft' : 'Lofts'} · ${fmt(l.lines)} Linien</em>` : ''}</span></label>`).join('')).join('');
+  $('list').querySelectorAll('input').forEach(inp => inp.addEventListener('change', () => {
+    const k = +inp.closest('.layer').dataset.k; inp.checked ? state.on.add(k) : state.on.delete(k); rebuild();
+  }));
+}
+
+function esc(s) { return String(s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c])); }
+
+function setPressed(a, b, first) { $(a).setAttribute('aria-pressed', first); $(b).setAttribute('aria-pressed', !first); }
+
+function wire() {
+  $('mMesh').onclick = () => { state.mode = 'mesh'; setPressed('mMesh', 'mBlocks', true); rebuild(); };
+  $('mBlocks').onclick = () => { state.mode = 'blocks'; setPressed('mMesh', 'mBlocks', false); rebuild(); };
+  $('sFull').onclick = () => { state.full = true; setPressed('sFull', 'sHalf', true); frame(); rebuild(); };
+  $('sHalf').onclick = () => { state.full = false; setPressed('sFull', 'sHalf', false); frame(); rebuild(); };
+  $('tLines').onclick = e => { state.lines = !state.lines; e.currentTarget.setAttribute('aria-pressed', state.lines); rebuild(); };
+  $('tNames').onclick = e => { state.names = !state.names; e.currentTarget.setAttribute('aria-pressed', state.names); rebuild(); };
+  if (LB.length) $('tNames').hidden = false;
+  $('tWire').onclick = e => { state.wire = !state.wire; e.currentTarget.setAttribute('aria-pressed', state.wire); rebuild(); };
+  document.querySelectorAll('.presets button').forEach(b => b.onclick = () => {
+    const [terrain, sheets, build, , helps] = D.order;
+    const want = {all: g => g !== helps, terrain: g => g === terrain, sheets: g => g === terrain || g === sheets, build: g => g === build, inside: g => g === SPACES || g === sheets}[b.dataset.p];
+    state.on = new Set(layers.map((l, k) => [l, k]).filter(([l]) => want(l.group) || (b.dataset.p !== 'inside' && l.group.startsWith('Variante'))).map(([, k]) => k));
+    if (b.dataset.p === 'inside') layers.forEach((l, k) => { if (l.key === 'space/facade' || l.key === 'space/opening') state.on.delete(k); });
+    state.kinds = null;
+    listUI(); rebuild();
+  });
+  const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
+  let down = null;
+  renderer.domElement.addEventListener('pointerdown', e => { down = [e.clientX, e.clientY]; });
+  renderer.domElement.addEventListener('pointerup', e => {
+    if (!down || Math.hypot(e.clientX - down[0], e.clientY - down[1]) > 4) return;
+    const r = renderer.domElement.getBoundingClientRect();
+    ptr.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1);
+    ray.setFromCamera(ptr, camera);
+    const hit = ray.intersectObjects(world.children.flatMap(g => g.children.filter(o => o.isMesh)))[0];
+    if (hit && hit.object.userData.label !== undefined) return showSpace(LB[hit.object.userData.label], hit.point);
+    showPick(hit ? hit.object.userData.layer : -1, hit && hit.point);
+  });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', rebuild);
+  new MutationObserver(rebuild).observe(document.documentElement, {attributes: true, attributeFilter: ['data-theme']});
+}
+
+function showSpace(lab, p) {
+  const box = $('pick'); box.hidden = false;
+  const linked = (lab.links || []).map(id => (LB.find(l => l.id === id) || {name: id}).name);
+  box.innerHTML = `<b>${esc(lab.name)}</b> · ${esc(KINDS[lab.kind][0].replace(/n$|häuser$/, m => m === 'häuser' ? 'haus' : ''))}<br>${esc(lab.note || '')}` +
+    (linked.length ? `<br>verbunden mit ${linked.map(esc).join(', ')}` : '') + `<br><span style="color:var(--soft)">bei x ${Math.round(p.x)}, y ${Math.round(p.y)}, z ${Math.round(p.z)} · ${fmt(lab.cells.length / 3)} Zellen</span>`;
+}
+
+function showPick(k, p) {
+  document.querySelectorAll('.layer.on-pick').forEach(e => e.classList.remove('on-pick'));
+  const box = $('pick');
+  if (k < 0) { box.hidden = true; return; }
+  const l = layers[k];
+  box.hidden = false;
+  box.innerHTML = `<b>${esc(l.name)}</b>${l.note ? ' · ' + esc(l.note) : ''}<br>${fmt(l.blocks)} Blöcke` +
+    (l.meshes.length ? ` · ${l.meshes.length} ${l.meshes.length === 1 ? 'Loft' : 'Lofts'} aus ${fmt(l.lines)} Linien und ${fmt(l.points)} Punkten` : '') +
+    `<br><span style="color:var(--soft)">bei x ${Math.round(p.x)}, y ${Math.round(p.y)}, z ${Math.round(p.z)}</span>`;
+  const row = document.querySelector(`.layer[data-k="${k}"]`);
+  if (row) { row.classList.add('on-pick'); row.scrollIntoView({block: 'nearest'}); }
+}
+
+const optional = (url, empty) => fetch(url).then(r => r.ok ? r.json() : empty).catch(() => empty);
+Promise.all([fetch('map.json').then(r => r.json()), optional('variants.json', {variants: []}), optional('labels.json', {labels: []}), optional('compare.json', [])])
+  .then(([map, vs, lb, cmp]) => boot(map, vs.variants || [], lb.labels || [], cmp || [])).catch(err => { $('load').textContent = 'Die Kartendaten ließen sich nicht laden.'; console.error(err); });
+}
+</script>
