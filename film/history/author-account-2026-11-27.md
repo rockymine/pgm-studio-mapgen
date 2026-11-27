@@ -42,3 +42,5 @@ reflects with Ruediger tonight and will add more. He wants active questions.
 - Maps got prettier at the end through texture rules and telling the model where ground is dead — but "dead" is
   subjective: his own hand-built map has a dead area that makes sense. Its files come later.
 - The server is small, a niche project; the UI is not much used; he finds the level-design question interesting.
+
+- Added later the same day: the last AI map test was, as far as he can see, on 27 September 2026. The tests should show in the commit messages of the CommunityMaps repository, because Ruediger always uploaded the maps.
