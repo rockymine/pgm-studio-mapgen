@@ -116,3 +116,7 @@ I did not see any picture, but these exist on disk:
 3. The 12:08 message pastes another agent's session summary (Weirbank, an Opus 5 run on your own computer). Is that run one of the sessions you want in the history, and is it the "message protocol" you refer to?
 4. Why did you switch this session from Fable 5.1 to Opus 5 between 14:15 and 14:41?
 5. The "ten hours combined" in the brief against the five in the review: five hours with Ruediger_LP plus five of preparation?
+
+## The opening brief (read from the start of the session)
+
+Not reached. Paged backwards with the cheap method (kinds filter on control events, 100 events a page) from the end of the session at 2026-09-02 17:03 UTC to a page at 13:40 UTC (cursor `14edbc55` region); the session was created at 02:08:59 UTC, so about eleven hours of events remain between that page and the first event. The opening prompt and the early corrections are therefore still not read. The existing section 1 of this write-up, which holds the 11 human prompts found through the turn results, stands unchanged.

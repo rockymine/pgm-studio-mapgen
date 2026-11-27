@@ -142,3 +142,7 @@ itself is in the part I did not read.
 2. Which maps had the 27-block obsidian monument, and was it in this session or in an earlier one?
 3. Which Sonnet board was "really interesting": `ashfall-scar` or another?
 4. What was the opening brief for the trial, and who wrote it?
+
+## The opening brief (read from the start of the session)
+
+Not reached. Paged backwards with the cheap method from the end of the session (2026-08-14 11:26 UTC) to a stretch around 06:09 UTC on 14 August (a resume: two initialize events at 06:09:26); the session was created at 2026-08-13 23:15 UTC, so about seven hours of events remain between there and the first event. What he asked of the trial runs and any remark on monument size are therefore still not read from the transcript. (The one thing recovered from this stretch is a model summary of the second run's results at 08:41:51 UTC, an assistant text, not a message by the author, and it is not reproduced here.)

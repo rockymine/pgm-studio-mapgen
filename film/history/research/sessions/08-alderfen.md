@@ -107,3 +107,15 @@ Not found: "looking quite nice", "somewhat balanced" and "the middle island just
 ## What I did not read
 
 I read the opening message, the turn-end summaries (two), the user stream for 23:01 to 23:28, 00:24 to 00:35, 02:24 to 02:53, 03:38 to 03:46 and 04:26 to 04:46, and the committed review and commit message. I did not read the other stretches of the transcript, the assistant's own text, or the run report. A human message in an unread stretch is possible; the turn that began at 02:50:43 had no visible message in the page I read, and I take it to be the restart.
+
+## The opening brief (read from the start of the session)
+
+First event: 2026-09-02 23:00:51 UTC (an initialize and a permission-mode event at 23:00:51 to 23:00:52); the author's message arrives at 23:01:09 from the phone (`android`). Paged back to the very first event and confirmed the opening message is exactly the one quoted in section 2 (it is the first event after the two setup events). No other author message appears in the user streams I read: 23:01 to 00:16, 00:24 to 00:35 and 00:43 to 00:52 UTC (00:16 to 00:24 and 00:35 to 00:43 were not read); between those events the stream holds only the model's tool results and the model viewing its own renders (four image-dimension notes at 23:34 to 23:35).
+
+- 23:01:09 (android): the message quoted in section 2, beginning "here is one prompt for one map:" and ending "build this one yourself. afterwards reflect and make some more. completely different themes. a desert and Mesa map. a Mario inspired map. that's just some ideas. could be a space theme. an abstract theme." Nothing is added to it in the first two hours.
+
+How much he specified: concept (a DTC swamp, one mid island, square-ish, hilly edges) from the player's prompt, and a list of specific looks and block recipes to test (vines on the small oak at different heights, lily pads, Mesa-and-swamp biome field, podzol specks, turbulence-pattern boulders, laid log piles, tiny huts with clay-noise walls and 1x1 windows, cumulus clouds). Layout: only "fairly square" and "one mid island". Objectives: only "dtc".
+
+What he left to the model: the whole layout (two team islands plus the holm, the pinned pads, where the cores go, roads, the hamlet), the terrain heights, the placement and counts of everything, and, in the second half of the message, the choice of what the follow-up themes would be.
+
+Whether it changes the write-up above: no. Section 2 already read this message, and its sentence "The author sent no further message that I could find" holds for the stretches I read of the first two hours. The only addition is that the model's first act is to load the `pgm-board` skill (23:01:13) and to read `README.md` and `AUTHORING-BRIEF.md`, which the write-up already says.

@@ -119,3 +119,7 @@ I viewed `03-material.png` of the archive set: two sand shores with grass-green 
 ## What I did not read
 
 I read every human message from 01:17 to 02:30 UTC and the assistant text in the pages from 01:28 to 02:28:30, the turn-ending summaries of the whole session, nine later author messages by id, and the user stream from 16:33 to 17:13. I did not read: the assistant text from 01:17 to 01:28 and from 02:28:30 to 02:35, any human message between 16:19 and 16:33, and the tool inputs that hold the plan and finish JSON as written (I used the committed spec files instead).
+
+## The opening brief (read from the start of the session)
+
+Not reached. Paged backwards with the cheap method from the end of the session (2026-08-16 17:14 UTC) to a page at 11:01 UTC on 16 August; the session was created at 01:17:25 UTC, so about ten hours of events remain between that page and the first event. The opening brief for Sunspit is therefore still not read from the transcript.

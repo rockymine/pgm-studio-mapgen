@@ -143,3 +143,7 @@ All paths under `/home/user/pgm-studio-mapgen`; I opened none of the images.
 3. The first Slipway (256 x 240, "the props are looking very nice, but the map ... oh my god") was never committed as its own world; is there a render he kept?
 4. Which hand-built balloon did he copy into Millrace: this session's `balloon()` from `tools/sculpt/models.py` as built in `maps/dtcm/slipway`, or from the exported Slipway world on his server? His review says "from Slipway".
 5. The "made layer" system was announced here as "an exploit of the layer system": did the later pgmvox port replace it, and is this the session he would point to for the origin of the made-thing concept?
+
+## The opening brief (read from the start of the session)
+
+Not reached. Paged backwards with the cheap method from the end of the session (2026-08-29 17:08 UTC) to a page at 12:47 UTC on 29 August; the session was created at 2026-08-28 23:07:01 UTC, so about thirteen hours of events remain between that page and the first event. The first turn (23:07 to about 00:15) and its opening prompt are therefore still not read.
