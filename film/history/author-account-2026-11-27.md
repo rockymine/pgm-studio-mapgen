@@ -155,3 +155,5 @@ The author's explanation: the missing matches were the tests. On the server one 
 - The "500" map is neither of the two: it must have spawn, monuments and cores on one line, all cores and monuments within less than 100 blocks, and exactly two monuments and two cores.
 
 Checked the same day against every map.xml under maps/ (objectives resolved through their regions): fifteen maps have exactly two destroyables and two cores; three of them have all four within ten blocks of one line and under 100 blocks apart — Ashfall Scar (Sonnet run 2, 14 August; world 250 x 190; objectives span 70 blocks; both spawns on the same line), Hollow Crown (100 x 120; span 65) and Haiku DTM Tower (90 x 120; span 40). Ashfall Scar is the only wide one: a flat board whose whole game runs down one line through the middle, with wings on both sides. It is 250 wide, not 500. Offered to the author as the candidate; not yet confirmed.
+
+Confirmed by the author on seeing the render: Ashfall Scar is the map he meant ("Das ist sie!"). It is 250 x 190, not 500 wide.
