@@ -10,6 +10,11 @@ search returned nothing.
 |---|---|
 | `match-status-2026-06-01_2026-11-27.csv` | the whole log, one row per ended match |
 | `ai-maps-in-match-status.md` | the 114 matches of model-made maps and maps whose XML was made in the browser, by map and one by one, each linked to its match |
+| `api-matches-not-in-match-status.csv` | the 388 matches on the public servers that the channel never posted, read from the match API on 27 November (research `16` §4) |
+
+**The channel is not the whole record.** The server's match API (`api.oc.tc/api/v2/matches/`) holds every row of
+this log and 388 more on server-1 and server-2: every test evening, which the event rotation kept out of the
+channel, and the other gaps. Read the two files together; research `16` §4 says how they were compared.
 
 **Columns of the CSV.** `posted_utc` (when the bot posted the match message, in UTC; the message is edited when the
 match ends, so this is the match's start, not its end), `match_no` (the server's running number, which resets on a
@@ -52,9 +57,9 @@ day of its 2.0.1; Countryside on 4 November.
 to 20 November; Alligator Charge, Nether Run, Fire on the Mountain, Hot Potato, Xavier's Mansion, Sanctum Veil and
 Blocker follow.
 
-**Never in the channel.** Thornwake, Delverdale, Whitstone Weald, Hello World Micro (or Mini), Wandering U and
-Fireball Jump have no match in this window. If Delverdale and Whitstone Weald were played on 27 September, it was on
-a server that does not report to `#match-status`.
+**Never in the channel, but played.** Thornwake, Delverdale, Whitstone Weald, Hello World Micro (or Mini), Wandering
+U and Fireball Jump have no match in this log. The match API has all of them on the public servers, and the three
+Base maps of 2 July as well (`api-matches-not-in-match-status.csv`, research `16`).
 
 **The "Hello World" of 17 July is not Hello World Micro.** Its winner is Pink, so it had four teams; that is the 2025
 map Hello World.
