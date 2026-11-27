@@ -1,8 +1,8 @@
 # A year of AI-made maps: September 2025 to November 2026
 
 This is the history of how rockymine, with Ruediger_LP and a run of AI models, set out to make PvP maps for PGM
-servers by machine, and of what that tool became. It is written for someone who was not there. It rests on nine
-research files beside it (`research/01` to `research/09`) and on the author's spoken account of 27 November 2026
+servers by machine, and of what that tool became. It is written for someone who was not there. It rests on eleven
+research files beside it (`research/01` to `research/11`) and on the author's spoken account of 27 November 2026
 (`author-account-2026-11-27.md`). Every date, number and quotation below comes from one of those, and each paragraph
 says which kind of source it rests on. **The record** is a commit, a file or a published map. **The author's account**
 is his recollection, given on one evening, and it is marked as such wherever it carries a claim the record does not.
@@ -105,6 +105,27 @@ composed in that order, and "the box pipeline is THE composer". Destroy modes ar
 capture the wool. The model was written down as `docs/generator/model.md`, which on 15 August gained its own
 boundary: organic maps such as the Thunder series cannot be expressed, and "That is a limitation rather than a
 defect, it is the author's stated position, and it stays."
+
+**The first maps on a public server came out of the browser tools in the last week of June, and the record can be
+read for it.** On 24 June at 23:47 Ruediger added three capture the wool maps to CommunityMaps: Vauxite, Drastic
+Change II and one titled Capture the Wool CTW (credited to MishM0sh, with rockymine as contributor). The author's
+account says their XML was made in the browser, the first maps on which he tried it, and that it worked with some
+errors. Nothing in the files says so, but the kit (an arrow in slot 9, 32 clay in slot 10), the build rectangles
+`build-area-1` and `build-hole-1` and the bare team ids `red` and `blue` are what the studio's export wrote that week
+and are found in no other map in either corpus. On 1 July at 22:53 Vauxite 1.0.1 followed (the author said 2 July),
+and its diff is the errors: a spawn yaw given to both teams, each spawn rectangle made a union of two (the feature the
+studio shipped twenty minutes before the first upload), and a build ceiling added. A stray copy of the studio's own
+export, with its XML declaration and its comments on their own lines, sits in that map's `region` folder to this day
+(research `11`).
+
+**Bridgid II, on 14 July, is the map the author dates the wall-run pattern from.** It is not a Brittlebush map. Ruediger
+added it at 02:27 in the night of 13 to 14 July, in five commits that fixed the folder and added the dev phase, with
+rockymine and Ruediger_LP as authors and 12 July as its creation date. The author's account says its layout took
+about a day in the browser, that it was then skinned from stone in one long evening in game, and that the repeating
+colour columns on its sides are where the wall-run idea came from. The studio's wall run first appears on 1 August,
+in a design note at 12:17 UTC and as code (`WallRunMaterial`, stripes that repeat along the void-facing perimeter) at
+16:43 UTC, and no commit or document links it to Bridgid II. The upload's picture does show alternating dark and grey
+bands down the island sides. The origin is the author's account.
 
 ## 4. August 2026: colour, trees, and the first maps on a server
 
@@ -222,7 +243,8 @@ studio first drew a board "from a player's eye" in Minecraft's own block texture
 ## 6. July to September: the tests on the server
 
 **The AI maps reached the server through Ruediger, and the record of it is CommunityMaps.** Research `06` reads that
-repository's whole history. Every AI- or studio-made map it holds was committed by RuedigerLP, in four batches. The
+repository's whole history. Every AI- or studio-made map of this project that it holds was committed by RuedigerLP, in four batches (a separate
+line of Grok-credited maps by arcadeboss starts on 9 August, below). The
 first came on the night of Monday 27 July: Kuusepuu CTC, an existing map of the author's turned into a capture-the-cake
 game and credited "CTC conversion: Claude Opus 5", and an hour later Hello World Micro, a plan from the studio's
 plan editor, which reached the server ten days before No Blocks Placed but credits rockymine alone. Both were
@@ -230,6 +252,14 @@ revised until past two in the morning. Kuusepuu's fix of 31 July is the one comm
 reports play: "Reported live: a carrier died, the cake went home, and he still came back holding a usable cake".
 No Blocks Placed followed on 7 August. On 12 August Hello World Micro was deleted and Thornwake and Viridian added
 five minutes later. Millrace came on 2 September. Six maps in all; five are still there.
+
+**Another author's AI map arrived between the second and third batches.** On 9 August, at 23:00 in the American
+Central summer (04:00 UTC on the 10th, the date the author gives), arcadeboss, who has committed to CommunityMaps since
+May 2023, added Cedar Crossing, a destroy the monument map credited "7,000 word essay" to himself and "SuperGrok" for
+"Map and XML". That credit is the only place the map is called AI-made; the commit messages do not say so. It is not
+the first model-credited map there, as the author's account has it: Kuusepuu CTC is thirteen days earlier. It is the
+first by someone other than Ruediger, and the first crediting Grok. Fire on the Mountain (27 August) and seven later maps
+by the same hand credit "GrokBuild" or "GrokBot".
 
 **After 2 September the tests leave CommunityMaps.** Ruediger commits nothing there until a map of his own in
 mid-October, and no board of this project is uploaded again. The later tests are recorded in this repository. On
@@ -285,6 +315,15 @@ the model had no coordinates. The first run that used the notes is also where hi
 recorded: Opus 5.5's Gypsum Reach and Sootcombe. His remark was given in chat and survives as a paraphrase. "There is
 no dirt or grass for a tree to stand in, two houses stand by a path, the frontlines are bare … Empty is what players
 dislike about maps like these." In his account empty, dreary maps remain a problem.
+
+**The first maps by other people reached the studio in the first week of October.** The author's account has Alphaboy
+upload Countryside on 9 October, the first map by someone else made through the web interface, with the regions drawn in
+the browser, and the updated 803 as the second. The deployed studio lists Countryside five times between 5 and 8
+October, all under Alphaboy98yt, and 803 as a map imported from a download link and last written in a browser on 11
+October. The public repository dates them otherwise: Countryside was loaded on 14 October at 23:13 (UTC-3) by the maintainer Javggg, with limefox3054 credited for remastering its XML, and 803 2.0.1 was committed by
+Ruediger on 19 October with rockymine credited "clicking some buttons (XML)". Its XML still carries the reset kit and
+`not-spawns` region the studio dropped on the evening of 11 October, which puts its export before then and its upload
+eight days after. Import is a link to a world, fetched by the server, not an upload from the browser (research `11`).
 
 Opus 5.5 had written its first studio commit on 22 September, and from October it wrote almost all of them: 414 that
 month against Sonnet 5.5's 32.
@@ -369,6 +408,12 @@ holds in this repository instead, and they are not in PublicMaps. Hello World Mi
 record, not place, and so did the full Hello World's a year and a half earlier; the late map whose room moves, *Wandering U*, is in
 neither public repository, and came from the author's private one. The slime and all-greens maps may be one board, Viridian; the quartz-and-end-stone
 map is not among the fifteen. The annealing maps are dated 2021 to 2023, not 2022. The name "Slop Sundays", the instruction that started the Python rework, the fall from Wandering U's room (its file says a player left inside is left in mid-air, but no test is recorded) and the in-game colouring of Brittlebush III are his account alone.
+
+**Dates that stay his account.** Wandering U on 6 August; maps uploaded on 24, 25 and 31 August and on 13 and 20
+September; and Ruediger's additions to the private repository on 27 and 28 September (the boards he names there, Delverdale
+and Whitstone Weald, are Opus 5.5's, committed in this project on 27 September at 21:55 UTC). No commit by Ruediger to
+either public repository falls between 12 August and 2 September, or between 2 September and 19 October. The
+public record moves two of his dates: 2 July to 1 July, and 9 October to 14 October.
 
 **Several questions the record cannot answer belong to him.** How many blocks were placed by hand on a map named for
 placing none, and whether the 50-log oak at x -27 to -17, z 41 to 52 on No Blocks Placed is the generated tree he

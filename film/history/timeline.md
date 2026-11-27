@@ -2,7 +2,7 @@
 
 The spine of the film, in date order. Every row is taken from one of the four research files under
 `film/history/research/`, named in the last column (`01` origins, `02` studio, `03` maps and models, `04`
-hand-built). Nothing here was measured or dated afresh, and where a research file marks a fact as uncertain the
+hand-built); the table of uploads further down is from `11`. Nothing in the events table was measured or dated afresh, and where a research file marks a fact as uncertain the
 row says so. The chapter column refers to `OUTLINE.md`.
 
 Repositories are abbreviated: **CTW** `rockymine/CTW-Layout-Generator`, **MLE** `rockymine/MinecraftLayoutEditor`,
@@ -67,6 +67,33 @@ Dates are author dates as the research read them.
 Two dates the record does not hold, and the film must not invent: the day the author built the fire-and-ice half
 (somewhere between 2026-11-07 and 2026-11-27, `04` §4) and the day pgmstudio.de first answered publicly (before
 2026-09-28, `02` Beat 7).
+
+## Uploads to the public repositories, June to October (research `11`)
+
+Dates the author read off the private repository and Discord, set against the commits of CommunityMaps and
+PublicMaps. **Public** is a commit; **his account** is a date only he can give; times are as committed, with UTC where
+the day shifts. Every Ruediger commit is `RuedigerLP`, committed through GitHub's web interface.
+
+| Date (2026) | Map and event | Commit | Source | Status |
+|---|---|---|---|---|
+| 24 Jun 23:47 +0200 | Vauxite, Capture the Wool CTW, Drastic Change II added; the kit, `build-hole-1` and the bare team ids match the studio's export of that week | `caadb19f` | public | confirmed |
+| 1 Jul 22:53 +0200 | Vauxite 1.0.1: spawn yaws, two-rectangle spawn unions, a build ceiling; a stray studio-written `region/map.xml` beside it | `7d647015` | public | his "2 July" differs by a day |
+| 14 Jul 02:27 +0200 | Bridgid II (not a Brittlebush map; five commits to 02:42, `<created>` 12 July) | `a842b0bd` | public | confirmed |
+| 14 Jul | Its side columns gave the wall-run pattern | first `wallRun` is `18d2c8ce`, 1 Aug 16:43 UTC | his account | differs: nothing links them |
+| 27 Jul 23:33 +0200 | Kuusepuu CTC, Capture the Cake, credited "Claude Opus 5" | `8df2ca00` | public | confirmed |
+| 28 Jul 01:10 +0200 | Hello World Mini / Micro, with a studio plan file (deleted 01:58); removed 12 Aug | `591d21b1` | public | confirmed |
+| 6 Aug | Wandering U uploaded | none | his account | unverifiable |
+| 7 Aug 20:58 +0200 | No Blocks Placed | `11a15f7d` | public | confirmed |
+| 9 Aug 23:00 -0500 (10 Aug 04:00 UTC) | Cedar Crossing by arcadeboss, credited "SuperGrok" for "Map and XML" | `a3de15d2` | public | confirmed on 10 Aug in UTC; not the first model-credited map (Kuusepuu, 13 days earlier) |
+| 12 Aug 23:20 +0200 | Viridian and Thornwake | `37bdef57` | public | confirmed |
+| 24, 25, 31 Aug | maps uploaded, private | none | his account | unverifiable |
+| 2 Sep 02:18 +0200 | Millrace 2.0.0 | `c86226db` | public | confirmed |
+| 13, 20 Sep | maps added, private | none | his account | unverifiable |
+| 27 Sep 21:55 UTC | Delverdale and Whitstone Weald committed in this project; the PrivateMaps upload is not visible | `d274c0ae` (mapgen) | public / his account | boards confirmed, upload unverifiable |
+| 5-8 Oct | Countryside imported into pgmstudio.de (five rows) | listing of 26 Nov | public | recorded |
+| 9 Oct | Alphaboy uploads Countryside | `06138ebd`, 14 Oct 23:13 -0300 (15 Oct 02:13 UTC), by Javggg | his account / public | differs by five days |
+| 11 Oct | 803 re-made in the browser (`rockymine-5`) | listing of 26 Nov | public | recorded |
+| 19 Oct 22:41 +0200 | 803 2.0.1, carrying the studio's pre-11-October XML | `091b378d` | public | confirmed |
 
 ## Activity — the data for the on-screen curve
 

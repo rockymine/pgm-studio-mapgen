@@ -319,3 +319,24 @@ account on pgmstudio.de (`research/05` §f).
    saw the first Catmull-Rom tree?
 6. **Taking the generator out.** On 10 September the grown tree went "rather than gets a knob". Was there a tree you
    had hoped it would grow, and is the 50-log oak on No Blocks Placed the one you meant, if it is about 20 blocks tall?
+
+
+## Follow-up questions after research 11 (the dated uploads checked)
+
+### rockymine and Ruediger — 5 questions
+
+1. **The first browser-made XML.** Vauxite's kit, `build-hole-1` ids and bare team ids match the studio's export of 24
+   June, and a studio-written `region/map.xml` sits beside the hand-formatted 1.0.1. Was Vauxite the map you tried the
+   export on first, and which of the errors that followed (the spawn yaws, the two-rectangle spawns, the build ceiling
+   of 24) did you meet in game rather than in the browser?
+2. **Capture the Wool CTW.** The map credits MishM0sh as author and rockymine as contributor. Whose map is it, did you
+   run it through the browser too, and why was it never revised after 24 June?
+3. **The wall run.** The studio's first wall run is of 1 August and no commit names Bridgid II. Which evening did you
+   see the repeating colour columns on its sides, did you describe them to a model before 1 August, and was Bridgid II's
+   skinning done by hand in game or with a tool?
+4. **Countryside, 9 October.** The repository has it on 14 October, loaded by Javggg, and the studio holds five rows
+   between 5 and 8 October. Where was the 9 October upload (Discord, a pull request), and did Alphaboy import the world
+   and draw the regions himself, or did you do it with him?
+5. **Cedar Crossing.** Its credits say "SuperGrok" and a 7,000-word essay. Did you hear from arcadeboss how it was made,
+   did the other Grok maps (Fire on the Mountain to Hot Potato) come from the same method, and does the author count
+   Kuusepuu CTC, credited to Claude Opus 5 thirteen days earlier, as an AI map of the same kind?
