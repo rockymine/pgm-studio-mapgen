@@ -134,3 +134,11 @@ The author's explanation: the missing matches were the tests. On the server one 
 
 - The criticism of the map with unplayable XML (Aerie) and the 27-block monuments is in the logs and commits; at some point oversized monuments were prevented. That the labyrinth concept is not verbatim does not matter; it was probably at the unread start.
 - The quartz map is probably Quillon Saltworks, not Kiln Row. Every board built in that session was of poor quality — "everything was the problem": the blocks used; how the houses were built; pitched roofs made of top slabs one can see through; spawn areas and spawn buildings too large; a layout that did not fit, with a huge hole in the middle where nobody can build and every player has to walk round, left or right. "Grundsätzlich einfach schlechte Maps."
+
+## Eleventh instalment, same day
+
+- Sunspit looked quite good from the start; the problems named were fixed in later iteration.
+- Alderfen has four cores, nothing else; the Discord log does not record core leaks, so a "fifth" in the log is not something he can explain (the match page behind the link may tell a different story).
+- Aerie's broken XML: he can only guess — probably because there are no continuous blocks at the bottom, so the filters did not work. Later the studio took buildability ("editable") as a variable and checks concretely whether a core can be broken at all; that is marked in the web interface and told to the agent. Aerie was never converted to the newest format, but in it the map, or its XML, would raise the alarm.
+- The Hollowmarch session: he is fairly sure Hollowmarch was adjusted there too, not only Sunspit. He never said in it that a playtest had taken place — he did not need to. The fact is that the ground, then called "relief", was too high, and that there were the problems at the frontline, for which a check now exists: the frontline must sit entirely inside the build zone.
+- He allows the start of the trial-run session to be read. An agent on his PC has also looked at which maps were sent to Ruediger for the tests; a commit may have arrived.
