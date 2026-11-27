@@ -146,3 +146,53 @@ itself is in the part I did not read.
 ## The opening brief (read from the start of the session)
 
 Not reached. Paged backwards with the cheap method from the end of the session (2026-08-14 11:26 UTC) to a stretch around 06:09 UTC on 14 August (a resume: two initialize events at 06:09:26); the session was created at 2026-08-13 23:15 UTC, so about seven hours of events remain between there and the first event. What he asked of the trial runs and any remark on monument size are therefore still not read from the transcript. (The one thing recovered from this stretch is a model summary of the second run's results at 08:41:51 UTC, an assistant text, not a message by the author, and it is not reproduced here.)
+
+## The opening brief and the first hours (read from the start of the session)
+
+**Status: not reached.** This pass paged the user-kind events backwards from the end of the session (2026-08-14 11:26 UTC)
+to 2026-08-14 08:19 UTC and went no further. Each page of 100 raw events covers two to six minutes in this stretch, because
+sub-agents (labelled "B139 provenance identity", "B120 run2 Sonnet maps", "B120 run2 Opus maps") write their tool results
+into the same transcript. At that rate the remaining 9 hours to the first event at about 2026-08-13 23:15 UTC is well over
+a hundred more pages, and the pass stopped rather than guess. The opening brief, the first run and every message the author
+typed before 08:19 UTC remain unread; nothing about them is claimed here.
+
+**The author's typed messages in 08:19 to 11:26 UTC.** Exactly two, both already quoted in section 1 (11:19:03 "send the top
+down render of the oder maps. you've only showed one sonnet one. that map looks really interesting" and 11:24:18 "haiku
+doesn't even look like it tried. is there even an objective on those boards?"), both sent from the phone (`client_platform`
+android). Between 08:19 and 11:19 the user-kind stream holds no message from him at all, only tool results (many from
+sub-agents) and Stop-hook notices ("There are untracked files in the repository. Please commit and push these changes",
+09:21:45 and 08:49:43), which are the harness, not the author. So the second run (Haiku, Sonnet and Opus boards) was
+built, rendered and committed without a typed instruction in those three hours; whatever steered it was said earlier.
+
+**Monument size: the 27-block obsidian monument is in this stretch, as a model's choice and not as a remark by the author.**
+At 08:54:43 UTC the Sonnet run-2 sub-agent read back the stored intent of its board `corvid-hollow`:
+`"destroyables": [{"owner":"red","name":"Red Monument","style":"cube-3","materials":"obsidian","anchor":{"x":0,"y":9,"z":-30},"float":4,...},
+{"owner":"blue","name":"Blue Monument","style":"cube-3","materials":"obsidian","anchor":{"x":0,"y":9,"z":30},"float":4,...}]`.
+A `cube-3` is a 3 x 3 x 3 cube, so each monument is 27 blocks of obsidian, floating 4 blocks above ground; the same
+intent has `"maxPlayers": 16`, `"maxHeight": 20` and spawns at z -85 and z 85. That is the pattern the author describes
+(material and block count chosen separately, a small solid cube of the hardest block). It is one board's data, so it
+shows the pattern occurring in the second run, not that the author rejected it; no sentence of his about it was found.
+At 08:54 the Opus run-2 sub-agent's compile of `tallow-mirefast` was also refused with 422 ("overlapping pieces 'bank'
+and 'steading' have different surfaces (delta -2)"), which is a check catching a layout fault, not a material fault.
+
+**Quartz, podzol, slab roofs, oversized spawns, the hole in the middle.** Not found as author statements. Podzol appears
+only as terrain data: the `quillon-barrow` structure table read by the B139 sub-agent at 08:33 lists "Grass Block 65%,
+Podzol 34%" for four of the houses' surfaces, and "Spruce Wood Slab 50%" for the two large spawn buildings (361 cells
+each, x -9..9, z 86..104 and mirror), which is the closest thing in this stretch to a slab roof and an oversized spawn;
+it is a model's measurement of an Opus run-1 board, not a remark by the author. Quartz and the middle hole were not met.
+
+**How much he specified, and what he left to the models (from this stretch only).** Nothing specified here: no brief, no
+board count, no model list and no comparison criteria were typed between 08:19 and 11:26. The two messages are both
+reviewer's reactions to pictures, and the comparison (three models, same studio) is already set up when they arrive.
+The whole of "concept, layout, theme, objective placement and monument style" was decided by the models, as section 7
+says; the sub-agent output above is direct evidence for Sonnet's choice (`cube-3`, obsidian, float 4).
+
+**Sentences above this section that this pass corrects or supports.**
+- Section 4, "Monument material not tied to block count. Not found": **corrected in part.** A 27-block obsidian monument
+  exists in the transcript (Sonnet run 2, `corvid-hollow`, 08:54:43 UTC). The sentence "a search of the reports for the
+  figure found nothing" stays true of the reports; the figure is in the intent, as `cube-3` plus obsidian, not as the
+  number 27.
+- Section 1, "Only two messages from him are in the stretch I read": **supported and extended**; none in 08:19 to 11:19 either.
+- Section 3, "I could not confirm in the transcript which one the author means" (quartz): still open.
+- Section 9, question 4 (the opening brief): still open, and it is the one thing a later pass must read from 2026-08-13
+  23:15 UTC forward. (`after_id` needs a real event id, and none of the early ids was known, so a forward read was not possible from here.)
