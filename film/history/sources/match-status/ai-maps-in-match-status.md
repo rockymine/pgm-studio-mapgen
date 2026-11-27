@@ -12,7 +12,7 @@ Das „Hello World“ vom 17.07. (Gewinner Pink, also vier Teams) ist die Map vo
 |---|---|---|---|---|
 | Capture the Wool CTW | von Menschen gebaut, XML im Browser | 6 | 2026-06-28 | 2026-11-03 |
 | Bridgid II | von Menschen gebaut, XML im Browser | 8 | 2026-07-15 | 2026-11-23 |
-| Kuusepuu CTC | Studio im Browser / Opus 5 | 2 | 2026-07-31 | 2026-10-29 |
+| Kuusepuu CTC | Umbau von Kuusepuu (Opus 5 credited, laut Autor keine KI-Map) | 2 | 2026-07-31 | 2026-10-29 |
 | Cedar Crossing | arcadeboss / Grok | 22 | 2026-08-10 | 2026-11-20 |
 | No Blocks Placed | Studio im Browser / Opus 5 | 14 | 2026-08-11 | 2026-11-27 |
 | Fire on the Mountain | arcadeboss / Grok | 5 | 2026-08-30 | 2026-10-26 |
@@ -45,7 +45,7 @@ Das „Hello World“ vom 17.07. (Gewinner Pink, also vier Teams) ist die Map vo
 | 2026-07-15 22:13 | Bridgid II | von Menschen gebaut, XML im Browser | 4m 25s | 19 (3) | Blue | [106afb](https://oc.tc/matches/106afb) |
 | 2026-07-17 19:07 | Bridgid II | von Menschen gebaut, XML im Browser | 4m 41s | 23 (4) | Blue | [a94a7b](https://oc.tc/matches/a94a7b) |
 | 2026-07-27 20:55 | Bridgid II | von Menschen gebaut, XML im Browser | 2m 54s | 31 (6) | Red | [c6bc5a](https://oc.tc/matches/c6bc5a) |
-| 2026-07-31 21:20 | Kuusepuu CTC | Studio im Browser / Opus 5 | 22m 57s | 47 (5) | Red | [aff6f9](https://oc.tc/matches/aff6f9) |
+| 2026-07-31 21:20 | Kuusepuu CTC | Umbau von Kuusepuu (Opus 5 credited, laut Autor keine KI-Map) | 22m 57s | 47 (5) | Red | [aff6f9](https://oc.tc/matches/aff6f9) |
 | 2026-08-07 19:17 | Bridgid II | von Menschen gebaut, XML im Browser | 4m 28s | 40 (6) | Blue | [80482a](https://oc.tc/matches/80482a) |
 | 2026-08-10 23:53 | Cedar Crossing | arcadeboss / Grok | 5m 26s | 22 (6) | Red | [1e43c6](https://oc.tc/matches/1e43c6) |
 | 2026-08-11 21:50 | No Blocks Placed | Studio im Browser / Opus 5 | 3m 46s | 39 (4) | Blue | [33fb90](https://oc.tc/matches/33fb90) |
@@ -122,7 +122,7 @@ Das „Hello World“ vom 17.07. (Gewinner Pink, also vier Teams) ist die Map vo
 | 2026-10-27 00:20 | Cedar Crossing | arcadeboss / Grok | 20m 14s | 33 (0) | Blue | [d4c28c](https://oc.tc/matches/d4c28c) |
 | 2026-10-27 20:00 | 803 | von Menschen gebaut, XML im Browser | 10m 42s | 35 (3) | Red | [9ee425](https://oc.tc/matches/9ee425) |
 | 2026-10-29 01:42 | Nether Run | arcadeboss / Grok | 6m | 21 (2) | danalt | [3a8485](https://oc.tc/matches/3a8485) |
-| 2026-10-29 01:54 | Kuusepuu CTC | Studio im Browser / Opus 5 | 18m 32s | 31 (1) | Red | [3ce8a2](https://oc.tc/matches/3ce8a2) |
+| 2026-10-29 01:54 | Kuusepuu CTC | Umbau von Kuusepuu (Opus 5 credited, laut Autor keine KI-Map) | 18m 32s | 31 (1) | Red | [3ce8a2](https://oc.tc/matches/3ce8a2) |
 | 2026-10-29 02:13 | Capture the Wool CTW | von Menschen gebaut, XML im Browser | 4m 31s | 24 (1) | Blue | [93ec97](https://oc.tc/matches/93ec97) |
 | 2026-10-30 01:03 | Cedar Crossing | arcadeboss / Grok | 16m 39s | 26 (3) | Blue | [7a3d87](https://oc.tc/matches/7a3d87) |
 | 2026-10-30 21:09 | No Blocks Placed | Studio im Browser / Opus 5 | 5m 25s | 40 (1) | Blue | [18caef](https://oc.tc/matches/18caef) |

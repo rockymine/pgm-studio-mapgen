@@ -38,8 +38,11 @@ Hushwater and Hollowmarch on 27 September, 02:54 and 03:04 UTC; Viridian on 16 O
 uploaded to CommunityMaps after 2 September, but its boards were played on the server until 16 October, and the
 studio's and the other model-made maps until 27 November.
 
-**Studio maps.** Kuusepuu CTC was played on 31 July with 47 participants, four days after it was added, and again on
-29 October. No Blocks Placed was played 14 times, from 11 August to 27 November.
+**No Blocks Placed, drawn in the browser studio, was played 14 times**, from 11 August to 27 November.
+
+**Kuusepuu CTC was played on 31 July with 47 participants**, four days after it was added, and again on 29 October.
+Its credits name Claude Opus 5 for the conversion, but the author counts it as an ordinary map whose objective was
+replaced with a cake, not as an AI map (`../../author-account-2026-11-27.md`, sixth instalment).
 
 **Maps whose XML was made in the browser, first played.** Capture the Wool CTW on 28 June; Bridgid II on 15 July;
 Vauxite and Drastic Change II only on 12 October, three and a half months after their upload; 803 on 19 October, the
