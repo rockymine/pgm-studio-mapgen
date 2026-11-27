@@ -80,3 +80,20 @@ Later still: the map whose wool room moves is called "Wandering U" (as heard; sp
 - The map with the wandering wool room ("Wandering U") was tested on 6 August 2026; he supplied it as a zip (kept outside git: it comes from the private maps repository).
 - He checked: the test maps all ended up in PrivateMaps, by decision, because they are experiments and twelve at a time got out of hand; there they are easy to delete. A Discord bot records when maps were uploaded, and a server log records which map was played when; he can look both up by hand, which takes a while.
 - Another artifact, https://claude.ai/artifact/JvGM5hGiW8L3t4Ni8S6Amj, contains the tree generator: by his account the point at which a map's decoration came into being, and what the later decoration is based on.
+
+## Fifth instalment, same day: dates the author read off the private repository and Discord
+
+Voice-transcribed; map names in quotes are as heard and need checking. All 2026.
+- 24 June: Ruediger added "Drastic Change 2", "Walkside"/"Vauxite" (unclear) and a capture-the-wool map; their XML was made in the browser — the first maps on which the author tried that. It worked, with some errors that should show in the commits.
+- 2 July: more maps added by Ruediger (unspecified).
+- 14 July: the Brittlebush map (heard as "Bridget") added; built in practically one day — layouts used to take months of disagreement; in the browser it was quick — then "skinned" from stone in one long evening. Its repeating colour columns on the sides are where the wall-run pattern idea came from, later a studio feature.
+- 27–28 July: the cake map (Capture the Cake) and Hello World Micro (the wool room that changes colour), tested briefly.
+- 6 August: Wandering U uploaded — an outlier, wild concepts they wanted to try.
+- 7 August: No Blocks Placed — the first map made public on which all the decoration was tested.
+- 10 August: Cedar Crossing by Arcade Boss appeared in CommunityMaps — by the author's account the first AI map there, made with Grok (blocks and XML), without a system like the studio, from a long Word document.
+- 12 August: "a lot happened", among it Viridian, which also reached CommunityMaps.
+- 24 August, 25 August, 31 August: maps uploaded (private).
+- 2 September: the reworked Millrace.
+- 13 September, 20 September: maps added (private).
+- 27 and 28 September: Ruediger added maps to PrivateMaps, among them Delverdale and Whitstone; tests presumably took place.
+- 9 October: Alphaboy uploaded Countryside to CommunityMaps — the first map by another person who used the web interface to upload a map and draw its regions (browser-made XML). Later the updated map "803" also had its regions made in the browser. So two maps by others so far.
