@@ -113,3 +113,15 @@ CORRECTION to this file (the note-taker's error, not the author's): "Bridgid II"
 The author's point: it is a spectrum. The squared-paper map was his drawing, written into a map by Claude with the tool of the day; many maps came from the generator, which produces deterministic layouts; others are the model's own imagination, e.g. the first freeform board, to which he contributed nothing — yet all of it is executed deterministically by a tool. Cedar Crossing (Arcade Boss) is different again: made in an ordinary chat, where Grok wrote some script and a zip with map and XML came out, with no tool in between. He asks for a breakdown: where a human is involved, what is tool, what is algorithmic, and what is really AI.
 
 Framework proposed in reply (to be filled from the record): split each map into decisions — concept, layout, terrain shape, colouring, structures and decoration, objectives and XML, finishing — and for each say WHO DECIDED (a person, a model, or an algorithm with a seed) and WHAT EXECUTED it (the studio deterministically, a script the model wrote, or hands in game). The studio always executes; what varies is who decides.
+
+## Eighth instalment, same day: answers to the "unknown" cells, and the match log
+
+- Briefs (first fifteen, Gypsum Reach, Heftfold): he offers to find the sessions if given the dates. Dates from the record: the first fifteen 11–12 August 2026 (pgm-studio `tools/mapgen` begins 12 Aug 20:05 UTC, `5897944a`); Heftfold first committed 12 Sep 06:41 UTC (`fc91b3be`); Gypsum Reach 28 Sep 23:00 UTC (`ae025473`).
+- Wandering U: he described the layout in text; Claude wrote the XML.
+- Vauxite, Drastic Change II, Bridgid II: all concepts, terrain and colours are human. Bridgid II's XML was made by Ruediger, though much of it came with the browser tool, which then (the plan model) placed things automatically; only adjustments such as the water lane were added by hand — he believes the water lane was the only one.
+- Millrace: Ruediger reworked the XML of the published version, as far as he remembers.
+- The ice map: he will build it to the end himself; materials undecided — snow, stone, ice, grass; a cold map.
+- Cedar Crossing: he may be able to answer from his chat history later.
+- Overwall: no hand finishing.
+- The layout generator: the concept of the algorithm is his, devised to reproduce existing maps as far as possible. What comes out is generic, as limited as it is, but a base to work on — and the agents mostly took the base and did nothing with it, not even adjusting other aspects of the layout.
+- The match-status log, read from Discord by an agent in his browser, is on this branch under `sources/match-status/` (commits `1d4470ea`, `444745e6`). He notes that some maps do not appear in it (the moving-wool-room map is not found), that there is clear evidence of one test session with several maps played in a row on one server, and that there should be more such sessions; he asks for a cross-check.
