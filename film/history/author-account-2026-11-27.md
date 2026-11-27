@@ -142,3 +142,16 @@ The author's explanation: the missing matches were the tests. On the server one 
 - Aerie's broken XML: he can only guess — probably because there are no continuous blocks at the bottom, so the filters did not work. Later the studio took buildability ("editable") as a variable and checks concretely whether a core can be broken at all; that is marked in the web interface and told to the agent. Aerie was never converted to the newest format, but in it the map, or its XML, would raise the alarm.
 - The Hollowmarch session: he is fairly sure Hollowmarch was adjusted there too, not only Sunspit. He never said in it that a playtest had taken place — he did not need to. The fact is that the ground, then called "relief", was too high, and that there were the problems at the frontline, for which a check now exists: the frontline must sit entirely inside the build zone.
 - He allows the start of the trial-run session to be read. An agent on his PC has also looked at which maps were sent to Ruediger for the tests; a commit may have arrived.
+
+## Twelfth instalment, same day
+
+- "Muse Spark": Tttie made a map with it; the author believes it is a model from Facebook (Meta). Unverified here.
+- Quillon Saltworks IS the quartz map. Sable Marsh is a terrible map: a very wide spawn, huge wool rooms, no real middle.
+- Aerie: "you can just trust me, the XML was not playable."
+- How maps reached a test: they (often with Tttie, who is interested in the project) looked at every map in the repository on a LOCAL test server, and decided from that whether a map got a test.
+- Riftwater: he did supply the ingredients — a vague description, more a list of thoughts; that the model carried it out so exactly is to its credit.
+- Hollow Crown is the map where the monument landed inside the core — only Haiku managed that. Spinebreak is a different case: cores in the void on a capture-the-wool layout with monuments where the wool was, and for no reason the same core-and-monument design twice.
+- Cairnmeadow is the perfect example of bad build zones: they meet the oval islands very badly. Cinderreach shows the utterly broken trees with no crown.
+- The "500" map is neither of the two: it must have spawn, monuments and cores on one line, all cores and monuments within less than 100 blocks, and exactly two monuments and two cores.
+
+Checked the same day against every map.xml under maps/ (objectives resolved through their regions): fifteen maps have exactly two destroyables and two cores; three of them have all four within ten blocks of one line and under 100 blocks apart — Ashfall Scar (Sonnet run 2, 14 August; world 250 x 190; objectives span 70 blocks; both spawns on the same line), Hollow Crown (100 x 120; span 65) and Haiku DTM Tower (90 x 120; span 40). Ashfall Scar is the only wide one: a flat board whose whole game runs down one line through the middle, with wings on both sides. It is 250 wide, not 500. Offered to the author as the candidate; not yet confirmed.
