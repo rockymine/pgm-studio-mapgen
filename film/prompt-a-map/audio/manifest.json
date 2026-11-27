@@ -1,0 +1,466 @@
+{
+ "sample_rate": 48000,
+ "channels": 2,
+ "bits": 16,
+ "files": [
+  {
+   "file": "music/sad_piano.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 25.455,
+   "peak_dbfs": -4.0,
+   "description": "Slow over-sentimental solo piano in A minor, 66 BPM, 7 bars, ends on a held Am that rings out"
+  },
+  {
+   "file": "music/infomercial.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 63.75,
+   "peak_dbfs": -4.0,
+   "description": "Cheesy shopping-channel jingle bed, D major, 128 BPM, ta-daa then A A B A (8 bars each) + 2-bar ending"
+  },
+  {
+   "file": "music/infomercial_sting.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 3.0,
+   "peak_dbfs": -4.0,
+   "description": "Six-note logo jingle in the infomercial key and lead sound, bright D chord with sparkle"
+  },
+  {
+   "file": "music/machine.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 24.0,
+   "peak_dbfs": -4.0,
+   "description": "Computer-is-thinking bed, 140 BPM, 14 bars: 16th sus-chord arpeggio, bleeps, ticking hat, rising filter, unresolved riser at the end"
+  },
+  {
+   "file": "music/lobby_muzak.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 46.154,
+   "peak_dbfs": -4.0,
+   "description": "Bland bossa-ish lobby muzak, F major, 104 BPM, 20 bars: tremolo electric piano, soft bass, brushes, rim clave"
+  },
+  {
+   "file": "music/hero.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 22.105,
+   "peak_dbfs": -4.0,
+   "description": "Warm sincere resolution in G major, 76 BPM: pad and piano melody build to a held final chord with a long tail"
+  },
+  {
+   "file": "music/awards_bumper.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 6.0,
+   "peak_dbfs": -4.0,
+   "description": "Grand awards-show brass fanfare in Eb major, 120 BPM, 3 bars, timpani, snare roll and crash"
+  },
+  {
+   "file": "sfx/ding.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.9,
+   "peak_dbfs": -3.0,
+   "description": "Chat notification, two bell tones a fourth apart (B5 then E6)"
+  },
+  {
+   "file": "sfx/ding_single.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.8,
+   "peak_dbfs": -3.0,
+   "description": "Single bell ding (E6)"
+  },
+  {
+   "file": "sfx/stamp.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.7,
+   "peak_dbfs": -3.0,
+   "description": "Heavy rubber-stamp thud with a low boom"
+  },
+  {
+   "file": "sfx/whoosh_short.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.35,
+   "peak_dbfs": -3.0,
+   "description": "Short swept-noise whoosh, left to right"
+  },
+  {
+   "file": "sfx/whoosh_long.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 1.2,
+   "peak_dbfs": -3.0,
+   "description": "Long swept-noise whoosh, left to right"
+  },
+  {
+   "file": "sfx/key_1.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.14,
+   "peak_dbfs": -3.0,
+   "description": "Mechanical key click, variant 1"
+  },
+  {
+   "file": "sfx/key_2.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.14,
+   "peak_dbfs": -3.0,
+   "description": "Mechanical key click, variant 2"
+  },
+  {
+   "file": "sfx/key_3.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.14,
+   "peak_dbfs": -3.0,
+   "description": "Mechanical key click, variant 3"
+  },
+  {
+   "file": "sfx/key_4.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.14,
+   "peak_dbfs": -3.0,
+   "description": "Mechanical key click, variant 4"
+  },
+  {
+   "file": "sfx/key_5.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.14,
+   "peak_dbfs": -3.0,
+   "description": "Mechanical key click, variant 5"
+  },
+  {
+   "file": "sfx/typing_run.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 4.0,
+   "peak_dbfs": -3.0,
+   "description": "Irregular typing with pauses and the odd space bar"
+  },
+  {
+   "file": "sfx/enter_key.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.3,
+   "peak_dbfs": -3.0,
+   "description": "Heavier, lower key press with a spring ping and release"
+  },
+  {
+   "file": "sfx/card_thwip.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.25,
+   "peak_dbfs": -3.0,
+   "description": "One card fired out of a dispenser: rising noise sweep and a flick"
+  },
+  {
+   "file": "sfx/card_burst.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 3.0,
+   "peak_dbfs": -3.0,
+   "description": "Accelerating burst of 25 card thwips, rising in pitch"
+  },
+  {
+   "file": "sfx/counter_tick.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.08,
+   "peak_dbfs": -3.0,
+   "description": "Single counter tick"
+  },
+  {
+   "file": "sfx/counter_roll.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 3.0,
+   "peak_dbfs": -3.0,
+   "description": "Accelerating, rising tick roll that ends in a ding"
+  },
+  {
+   "file": "sfx/record_scratch.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.6,
+   "peak_dbfs": -3.0,
+   "description": "Record-scratch stop: forward, back, forward rip"
+  },
+  {
+   "file": "sfx/sad_trombone.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 2.6,
+   "peak_dbfs": -3.0,
+   "description": "Four descending wah notes (F4 D4 B3 G#3), the last one drooping"
+  },
+  {
+   "file": "sfx/fall_whistle.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 2.0,
+   "peak_dbfs": -3.0,
+   "description": "Descending slide whistle with growing vibrato"
+  },
+  {
+   "file": "sfx/thud.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.5,
+   "peak_dbfs": -3.0,
+   "description": "Body hits the ground: low thump and a small bounce"
+  },
+  {
+   "file": "sfx/splat_void.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 1.4,
+   "peak_dbfs": -3.0,
+   "description": "Soft descending bwoop that echoes away into silence"
+  },
+  {
+   "file": "sfx/block_break_1.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.35,
+   "peak_dbfs": -3.0,
+   "description": "Crunchy break, stony"
+  },
+  {
+   "file": "sfx/block_break_2.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.35,
+   "peak_dbfs": -3.0,
+   "description": "Crunchy break, woody"
+  },
+  {
+   "file": "sfx/block_break_3.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.35,
+   "peak_dbfs": -3.0,
+   "description": "Crunchy break, gravelly"
+  },
+  {
+   "file": "sfx/block_place.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.18,
+   "peak_dbfs": -3.0,
+   "description": "Soft placement pop"
+  },
+  {
+   "file": "sfx/explosion_small.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 1.4,
+   "peak_dbfs": -3.0,
+   "description": "Small explosion: boom, closing noise burst, crackle tail"
+  },
+  {
+   "file": "sfx/crowd_cheer.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 3.0,
+   "peak_dbfs": -3.0,
+   "description": "Crowd cheer from formant-filtered voices, noise bed, whistles and claps"
+  },
+  {
+   "file": "sfx/crowd_aww.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 2.0,
+   "peak_dbfs": -3.0,
+   "description": "Disappointed crowd aww, voices sliding down"
+  },
+  {
+   "file": "sfx/applause.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 4.0,
+   "peak_dbfs": -3.0,
+   "description": "Applause that swells and thins out"
+  },
+  {
+   "file": "sfx/crickets.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 4.0,
+   "peak_dbfs": -3.0,
+   "description": "Three chirping crickets over a faint night trill"
+  },
+  {
+   "file": "sfx/buzzer_wrong.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.8,
+   "peak_dbfs": -3.0,
+   "description": "Low wrong-answer buzzer"
+  },
+  {
+   "file": "sfx/tada.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 1.5,
+   "peak_dbfs": -3.0,
+   "description": "Brass ta-daa in D major with timpani and crash"
+  },
+  {
+   "file": "sfx/glitch.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.6,
+   "peak_dbfs": -3.0,
+   "description": "Digital static burst: crushed noise, square blips, stutters"
+  },
+  {
+   "file": "sfx/clock_tick.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 6.0,
+   "peak_dbfs": -3.0,
+   "description": "Tick-tock loop, twelve beats at 120 per minute, loops at 6 s"
+  },
+  {
+   "file": "sfx/clang.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 1.2,
+   "peak_dbfs": -3.0,
+   "description": "Metal clang with inharmonic ringing partials"
+  },
+  {
+   "file": "sfx/pop.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.15,
+   "peak_dbfs": -3.0,
+   "description": "Short rising pop"
+  },
+  {
+   "file": "sfx/sparkle.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 1.2,
+   "peak_dbfs": -3.0,
+   "description": "Rising twinkle of bells in D major pentatonic"
+  },
+  {
+   "file": "sfx/confetti.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 1.5,
+   "peak_dbfs": -3.0,
+   "description": "Party-popper pop followed by fizz and paper flutter"
+  },
+  {
+   "file": "sfx/error_beep.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 0.5,
+   "peak_dbfs": -3.0,
+   "description": "Two-tone descending error beep"
+  },
+  {
+   "file": "sfx/power_down.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 1.5,
+   "peak_dbfs": -3.0,
+   "description": "Machine powering down, pitch dropping to nothing"
+  },
+  {
+   "file": "sfx/tv_static.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 1.0,
+   "peak_dbfs": -3.0,
+   "description": "TV static with a faint mains roll and pops"
+  },
+  {
+   "file": "sfx/fast_forward.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 2.0,
+   "peak_dbfs": -3.0,
+   "description": "Fast-forward tape chirp, accelerating"
+  },
+  {
+   "file": "sfx/heartbeat.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 3.0,
+   "peak_dbfs": -3.0,
+   "description": "Four lub-dub heartbeats at 75 per minute"
+  },
+  {
+   "file": "sfx/robot_hum.wav",
+   "sample_rate": 48000,
+   "channels": 2,
+   "bits": 16,
+   "duration_s": 6.0,
+   "peak_dbfs": -3.0,
+   "description": "Machine-room hum with a slow pulse, exactly periodic over 6 s"
+  }
+ ]
+}

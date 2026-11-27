@@ -1,0 +1,102 @@
+<title>Prompt-a-Map Sketch</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* VOICE occasion: a late-night infomercial parody inside an awards show
+   IDEA an "As seen on TV" product spot, with a TV playing the finished ad
+   PICTURE the rendered film in a TV bezel
+   COLOUR infomercial yellow ground, ink black, red, royal blue; night is a dark studio
+   TYPE Anton display, Courier Prime for the screenplay, Inter for text
+   LAYOUT title band across the top, the TV full width beneath; phone stacks the same order */
+:root{color-scheme:light dark;--bg:light-dark(#ffd21f,#16110b);--ink:light-dark(#151210,#fbf3df);--soft:light-dark(#3b3226,#cfc3a6);--red:light-dark(#d9150b,#ff4a3d);--blue:light-dark(#1a2fa8,#7d93ff);--card:light-dark(#fff8dc,#241c12);--line:light-dark(#151210,#5a4c36);--paper:light-dark(#fffdf6,#1d1710)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;overflow-x:clip;margin:0}
+.band{padding-block:clamp(28px,4vw,56px);padding-left:max(5vw,16px,env(safe-area-inset-left,0px));padding-right:max(5vw,16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1180px;margin:0 auto}
+h1,h2,h3{font-family:Anton,Impact,sans-serif;font-weight:400;line-height:1.05;letter-spacing:-.005em;margin:0}
+h1{font-size:clamp(52px,9vw,104px);color:var(--red)}
+h1 sup{font-size:.35em;color:var(--ink);vertical-align:.9em}
+h2{font-size:clamp(32px,4.4vw,48px);margin-bottom:14px}
+h3{font-size:24px;margin-bottom:6px}
+p{margin:0 0 12px}
+.top{display:grid;gap:18px 40px;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:end;margin-bottom:22px}
+.lede{font-size:18px;max-width:46ch}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.facts span{border:2px solid var(--ink);border-radius:999px;padding:3px 12px;font-weight:600;font-size:14px;white-space:nowrap}
+.tv{background:#2a2622;border-radius:26px;padding:clamp(10px,2vw,22px);box-shadow:0 0 0 4px var(--ink)}
+.tv video,.tv .novid{display:block;width:100%;aspect-ratio:16/9;border-radius:14px;background:#0d0f14}
+.tv .novid{color:#fff;display:flex;align-items:center;justify-content:center;font:400 28px Anton,sans-serif}
+.note{font-size:14px;color:var(--soft);margin-top:10px}
+.alt{background:var(--paper);color:var(--ink)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px 40px}
+.box{border-top:3px solid var(--red);padding-top:10px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th{text-align:left;font:600 13px Inter,sans-serif;color:var(--soft);padding:8px 10px;border-bottom:2px solid var(--ink)}
+td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+td small{color:var(--soft)}
+td i{font-family:"Courier Prime",monospace;font-style:normal}
+code{font-family:"Courier Prime",monospace;font-size:14px;overflow-wrap:anywhere}
+.script{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:40px}
+.page{font:16px/1.5 "Courier Prime",monospace;max-width:68ch}
+.slug{font-weight:700;margin:26px 0 8px;text-transform:uppercase}
+.slug span{color:var(--red);font-weight:400;margin-left:8px}
+.act{margin:0 0 10px}
+.cue{margin:12px 0 0 22%;font-weight:700;text-transform:uppercase}
+.dlg{margin:0 12% 10px 12%}
+.side{position:sticky;top:16px;align-self:start;display:grid;gap:14px}
+.panel{border:2px solid var(--ink);border-radius:12px;padding:16px;background:var(--card)}
+.panel table{font-size:14px}.panel td,.panel th{padding:6px 6px}
+@media(max-width:900px){.top{grid-template-columns:1fr}.script{grid-template-columns:1fr}.side{position:static}}
+@media(max-width:700px){.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{border:0;padding:3px 0}.stack td::before{content:attr(data-l) ": ";font-weight:600;color:var(--soft);font-size:13px}.cue{margin-left:14%}.dlg{margin:0 4% 10px 6%}}
+</style>
+
+<section class="band"><div class="wrap">
+  <div class="top">
+    <div>
+      <h1>Prompt-a-Map<sup>™</sup></h1>
+      <p class="lede">The ad break for the Mappies, as a finished cut. Every map in it is a real AI-made map, and every gag is something one of them actually did.</p>
+    </div>
+    <div>
+      <p>It is a fake late-night infomercial for an AI that builds your maps. It works, technically. The footage is rendered from the real world files with the studio's own in-game renderer; the players are animated on top.</p>
+      <div class="facts"><span>{{RUNTIME}} long</span><span>{{NLINES}} voice lines</span><span>7 real maps filmed</span></div>
+    </div>
+  </div>
+  <div class="tv">{{VIDEO}}</div>
+  <p class="note">This player holds a 720p preview. The 1080p files came with the message: one cut with a synthetic scratch voice track and subtitles, and one clean cut with music and effects only, for your own voices.</p>
+</div></section>
+
+<section class="band alt"><div class="wrap">
+  <h2>Every gag is real</h2>
+  <p style="max-width:72ch;margin-bottom:18px">Each feature in the ad is a documented defect, shot in the world where it happened. The quotes on screen are taken from the reviews, commit messages and documentation that recorded them.</p>
+  <div class="scroll"><table class="stack"><thead><tr><th>Gag</th><th>Map</th><th>What is true</th><th>Source</th></tr></thead><tbody>{{RECEIPTS}}</tbody></table></div>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <h2>What is staged</h2>
+  <div class="cols">
+    <div class="box"><h3>The people</h3><p>Dale, the Pitchman, the players and their names are invented. Their walking, falling, mining and chat messages are animated over the footage. The rejection in the cold open is fiction.</p></div>
+    <div class="box"><h3>Two small edits</h3><p>For the monument gag, one obsidian block is removed in the "mined" frames. The green build zone and the red gap are drawn from the map file's own coordinates.</p></div>
+    <div class="box"><h3>The three-hour match</h3><p>The rebuild loop is documented as possible "for as long as the match ran". No record of an actual three-hour match was found, so the clock is a joke.</p></div>
+    <div class="box"><h3>The sets</h3><p>The studio, the machine room and the awards stage are small block sets built for this film. The voices are synthetic and meant to be replaced.</p></div>
+  </div>
+</div></section>
+
+<section class="band alt"><div class="wrap script">
+  <div class="page"><h2 style="font-family:Anton,sans-serif">The script</h2>{{SCRIPT}}</div>
+  <aside class="side">
+    <div class="panel"><h3>Voices to record</h3><div class="scroll"><table><thead><tr><th>Voice</th><th>Lines</th><th>Sec</th></tr></thead><tbody>{{CAST}}</tbody></table></div>
+      <p class="note">The clean cut already ducks the music where each line falls, so new voices can be laid straight over it using the dub sheet's timecodes.</p></div>
+    <div class="panel"><h3>Tone rules</h3><p style="font-size:15px;margin:0">Every joke lands on the AI, never on a nominee or a player-made map. The Machine stays cheerful and certain. The players play it straight.</p></div>
+  </aside>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <h2>Re-shoot it in game</h2>
+  <p style="max-width:72ch;margin-bottom:18px">To film these with real skins, load the world from the mapgen repository and stand where the camera stood. The teleport puts your eyes on the camera; set the field of view to match.</p>
+  <div class="scroll"><table class="stack"><thead><tr><th>Shot</th><th>World</th><th>Stand here</th><th>FOV</th></tr></thead><tbody>{{SHOTS}}</tbody></table></div>
+</div></section>
+
+

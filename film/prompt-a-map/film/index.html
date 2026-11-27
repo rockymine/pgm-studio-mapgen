@@ -1,0 +1,34 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Prompt-a-Map — film</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="lib/mc.css">
+<link rel="stylesheet" href="lib/film.css">
+<body>
+<div id="stage"></div>
+<script src="lib/mc.js"></script>
+<script src="lib/skins.js"></script>
+<script src="lib/engine.js"></script>
+<script src="timeline.js"></script>
+<script src="cams.js"></script>
+<script>for (const [n, c] of Object.entries(CAMS)) if (c.depth) document.write(`<script src="plates/${n}.depth.js"><\/script>`);</script>
+<script>Film.timeline = window.TIMELINE || null;</script>
+<script src="lib/helpers.js"></script>
+<script src="shots/01_cold.js"></script>
+<script src="shots/02_open.js"></script>
+<script src="shots/10_features.js"></script>
+<script src="shots/12_features_b.js"></script>
+<script src="shots/20_end.js"></script>
+<script src="shots/15_twist.js"></script>
+<script src="shots/30_legal.js"></script>
+<script>
+  initStage(); Film.layout();
+  window.ready = document.fonts.ready.then(() => Promise.all([...document.fonts].map(f => f.load().catch(() => 0)))).then(() => true);
+  window.filmInfo = () => ({ total: Film.total, fps: FPS, shots: Film.shots.map(s => ({ id: s.id, t0: s.t0, dur: s.dur })), cues: Film.cues });
+  // preview: ?t=12.5 draws one time; ?play=1 plays in real time
+  const q = new URLSearchParams(location.search);
+  window.ready.then(async () => {
+    if (q.has('play')) { const t0 = performance.now() - (+q.get('t') || 0) * 1000; const tick = async () => { await seek((performance.now() - t0) / 1000); requestAnimationFrame(tick); }; tick(); }
+    else await seek(+q.get('t') || 0);
+  });
+</script>
