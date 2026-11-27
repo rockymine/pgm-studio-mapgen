@@ -161,3 +161,13 @@ Confirmed by the author on seeing the render: Ashfall Scar is the map he meant (
 ## Thirteenth instalment, same day: the viewing of 9–10 October
 
 The notes of 9–10 October were not a test on the real server: three of them looked at the maps together. It was the first feedback on the new pgmvox maps. There they decided to take a pause for the time being, because the maps were slowly getting "too good" — in looks and in diversity, now that many new game modes exist too. Quotes from the staff team come from that viewing: `sources/staff-chat-october/` (mitchiii, a map developer who has built many maps; wylt, a server admin; TTtie, a developer).
+
+## Fourteenth instalment, same day
+
+- The ice map: begun about 17 October 2026 and built on a few weekends since; he takes his time because he needs inspiration.
+- The maps in the chat screenshots were the new pgmvox maps. The talk was mostly on the map with two monuments, one underground and one on a castle on a mountain; they also looked at the flying capture-the-wool map and the mesa map. The comments were about the maps' progress in general.
+- Hello World Micro's layout is simply Hello World's, abstracted very simply onto the grid; he drew it.
+- The staff quotes may be used as they are.
+- Which map filled the extra match numbers he cannot know, the data being missing.
+- Today (27 November) they are testing some of the arcade maps again. Lantern Pass has just been played: players like it, but it is a little too short, the shooters are too slow, and runners can get stuck in the spawn. Tomorrow they plan to record real gameplay on a few maps, among them some of the newest.
+- The pause: it was simply needed — for a month they had tested the "slop" maps (meant kindly) every weekend, and the tool needed some care again. It is also not interesting forever to let the AI build twenty maps in a night: it works, but one needs inspiration and ideas; prompting empty is possible but was never the aim — it should stay controlled. More maps will be built and tested before long; for now there are still plenty to test.
