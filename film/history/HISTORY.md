@@ -1,8 +1,8 @@
 # A year of AI-made maps: September 2025 to November 2026
 
 This is the history of how rockymine, with Ruediger_LP and a run of AI models, set out to make PvP maps for PGM
-servers by machine, and of what that tool became. It is written for someone who was not there. It rests on five
-research files beside it (`research/01` to `research/05`) and on the author's spoken account of 27 November 2026
+servers by machine, and of what that tool became. It is written for someone who was not there. It rests on six
+research files beside it (`research/01` to `research/06`) and on the author's spoken account of 27 November 2026
 (`author-account-2026-11-27.md`). Every date, number and quotation below comes from one of those, and each paragraph
 says which kind of source it rests on. **The record** is a commit, a file or a published map. **The author's account**
 is his recollection, given on one evening, and it is marked as such wherever it carries a claim the record does not.
@@ -82,7 +82,7 @@ author's account puts it simply: a vanilla-like blob is easy for a model to code
 The vanilla tree is still in the studio. The grown one was deleted on 10 September on his ruling that "the form goes
 rather than gets a knob".
 
-**The first map from the studio reached a public server on 7 August.** It is called *No Blocks Placed*, a capture
+**The first map credited to the studio reached a public server on 7 August.** It is called *No Blocks Placed*, a capture
 the wool map for two teams of 28, committed to CommunityMaps that evening by Ruediger. Its `map.xml` credits
 rockymine for "Drawing pieces, shapes, and markers in the browser.", Ruediger_LP for "Wisdom." and Flamiix for
 "Minimalist." The author recalls Tttie as its third author. The record names Flamiix, and shows TTtie adding the
@@ -148,7 +148,27 @@ board built, and two of Sonnet's four carried more dead ground than the studio's
 studio first drew a board "from a player's eye" in Minecraft's own block textures. The commit says why that mattered:
 "two noisy blocks of one colour are one calm grey in a flat picture and static on the ground".
 
-## 6. Late September: the studio goes public, and the maps are empty
+## 6. July to September: the tests on the server
+
+**The AI maps reached the server through Ruediger, and the record of it is CommunityMaps.** Research `06` reads that
+repository's whole history. Every AI- or studio-made map it holds was committed by RuedigerLP, in four batches. The
+first came on the night of Monday 27 July: Kuusepuu CTC, an existing map of the author's turned into a capture-the-cake
+game and credited "CTC conversion: Claude Opus 5", and an hour later Hello World Micro, a plan from the studio's
+plan editor, which reached the server ten days before No Blocks Placed but credits rockymine alone. Both were
+revised until past two in the morning. Kuusepuu's fix of 31 July is the one commit whose text
+reports play: "Reported live: a carrier died, the cake went home, and he still came back holding a usable cake".
+No Blocks Placed followed on 7 August. On 12 August Hello World Micro was deleted and Thornwake and Viridian added
+five minutes later. Millrace came on 2 September. Six maps in all; five are still there.
+
+**After 2 September the tests leave CommunityMaps.** Ruediger commits nothing there until a map of his own in
+mid-October, and no board of this project is uploaded again. The later tests are recorded in this repository. On
+Sunday 27 September, from 21:55 UTC, Opus 5.5 committed Delverdale and Whitstone Weald as "two large boards for a
+32-a-side play test", beside "the eleven small boards in the same play test". That is the date the author gives for
+the last test, and it is a Sunday. The record shows the boards made ready, and was still changing them after
+midnight; it does not show the session. The October rounds on the freeform boards were committed on a Friday night and
+a Saturday, 9 and 10 October, and none of those boards went to CommunityMaps.
+
+## 7. Late September: the studio goes public, and the maps are empty
 
 **Between 26 and 28 September the studio became a website.** It gained Discord sign-in by invitation, tokens for
 callers without a browser, a build queue, and on 28 September pgmstudio.de deploying itself from a green `main`. An
@@ -166,7 +186,7 @@ dislike about maps like these." In his account empty, dreary maps remain a probl
 Opus 5.5 had written its first studio commit on 22 September, and from October it wrote almost all of them: 414 that
 month against Sonnet 5.5's 32.
 
-## 7. October: freeform, the grammar, and the rethink
+## 8. October: freeform, the grammar, and the rethink
 
 **On the night of 7 October an Opus 5.5 session stopped driving the studio and wrote the voxels itself.** The board was
 Riftwater, "one river valley split down the middle by a bottomless rift", floating from y 27, a market town and a
@@ -192,8 +212,9 @@ tool still could not express it, and that world is not in the record.
 notes were sorted into 30 faults, of which the studio "would have caught 9, partly caught 4, and not caught or could
 not have built 17". Riftwater was "essentially perfect", in the agent's summary of his words. In his account these
 tests were "Slop Sundays", two hours on the server with the mapmaker Tttie, and early maps "looked and played alike".
-The record holds neither the name nor a Sunday. It holds the results, committed late on a Friday and early on a
-Saturday. On 10 October a controlled experiment put Sonnet 5.5 on the same briefs in both tools and found "the two
+The record never uses the name. It does hold a Sunday, the 32-a-side test prepared on 27 September (chapter 6); these
+October results were committed late on a Friday and early on a Saturday. On 10 October a controlled experiment put
+Sonnet 5.5 on the same briefs in both tools and found "the two
 tools made boards of comparable quality". The difference lay in spend: Riftwater took "Opus, hours per board rather
 than minutes, rounds of the author's review, and bespoke code".
 
@@ -208,7 +229,7 @@ The late-October boards were Opus 5.5's on pgmvox, three of them from the author
 bunker under an ice field sent "with signs explaining each piece", the record says: "The author judged the board
 finished and the map.xml a success."
 
-## 8. November: building it by hand, and a freeze
+## 9. November: building it by hand, and a freeze
 
 **The newest work is a map the author built himself.** On a branch of this repository, agents spent 2 to 7 November
 composing the author's hand-built sketch world into a CTW and DTC map set into a mountain, and every version was
@@ -223,7 +244,7 @@ the composer makes". The last commit on `main` is of 14 November. The newest bra
 labelling anything a model builds itself as a schematic, and in his account the verification pipeline is "not yet where
 it should be".
 
-## 9. How the models compare
+## 10. How the models compare
 
 **The author's judgement and the record agree in direction and differ in kind.** In his account Sonnet's maps were "de
 facto worse, whatever the numbers say", and late in the year Opus's were clearly better, through verification steps and
@@ -235,18 +256,19 @@ it does show is where his choices fell: the Millrace he finished, the Riftwater 
 called a success were all Opus boards. After August's first fifteen, no Haiku board in this repository carries a theme or a prop.
 The deployed studio holds two boards by Haiku 5.5 and two by Grok that no report discusses.
 
-## 10. What remains open
+## 11. What remains open
 
 **Several facts the author recalls are not in the record, and one is contradicted by it.** No Blocks Placed credits
 Flamiix, not Tttie. The trees were in the studio before Fable's rebuild, not because of it. The "500-wide" map fits
-Hollow Crown on objectives, flatness and closeness, and Spinebreak on length, and neither is 500 blocks across. Slop
-Sundays, the instruction that started the Python rework, and the in-game colouring of Brittlebush III are his account
-alone.
+Hollow Crown on objectives, flatness and closeness, and Spinebreak on length, and neither is 500 blocks across. The
+tests show in CommunityMaps only from 27 July to 2 September, not to his last test of 27 September, which the record
+holds in this repository instead. The name "Slop Sundays", the instruction that started the Python rework, and the
+in-game colouring of Brittlebush III are his account alone.
 
 **Several questions the record cannot answer belong to him.** Which tree on No Blocks Placed is the generated one, and
 how many blocks were placed by hand on a map named for placing none. Whether "map walls" is the walls-rims-plateaus
 model of 1 August, and whether `themeByHeight` was the per-height prototype he remembers. What Tttie did on the tests,
-and whether the tests had a schedule. Which rule produced which gain. Why the grammar, which carried his own look onto
+who played and for how long, and whether the tests had a schedule. Which rule produced which gain. Why the grammar, which carried his own look onto
 other maps, is the one phase of the port with nothing shipped.
 
 **And the open problem is the one he named first.** Maps that look and feel empty and dreary are still made. The rules
