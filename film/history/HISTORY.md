@@ -122,7 +122,12 @@ account says real transitions between them never worked.
 August it was rebuilt as limbs swept along Catmull-Rom splines, and within the hour it gained the knobs the author
 describes: a number of stems at the base (one, a double, a triple), levels of branching, how far a central leader
 climbs, how much the trunk wanders, a height. It was never an editor for dragging splines, but a generator with a
-preview that showed its spines. On 5 August a separate vanilla tree, a trunk under a canopy of known profile, was
+preview that showed its spines. It began as a page, not as code in the studio: the artifact the author supplied,
+"Map Decoration — prototypes", is the studio's `tools/decorate/prototype.html` as committed on 2 August, with five
+decoration tools (plants, paths, boulders, trees, water) and the fairness check beside the tree. Its trees are a
+recursive skeleton of Catmull-Rom splines with a central leader and one dense leaf disc per branch tip; its sliders
+are height (15 to 44 blocks), stems (1 to 3), leader, trunk flow, branch angle (15 to 48 degrees), levels (2 or 3),
+leaf size and a seed (research `10`). On 4 August the grower was moved into the studio's code. On 5 August a separate vanilla tree, a trunk under a canopy of known profile, was
 split off. On 12 August the grown tree was measured against 75 trees the author had
 built by hand on a showcase world, one tree per platform, and failed: "1516 of 4020 never touch their branch". The
 author's account puts it simply: a vanilla-like blob is easy for a model to code, and a real tree generator failed.
@@ -249,9 +254,14 @@ wool box was recoloured and the server announced "Wool Room Switched". The recol
 full Hello World, credited to rockymine and Ruediger_LP and added to CommunityMaps on 1 February 2025, already changes
 its wool rooms from orange to red and from magenta to purple when a wool is taken. In the author's account the Micro's
 layout was his own, drawn by hand as a small Hello World, and the room that moves, from which players fell out of the
-world in its one test, is a different, late map of his. No such map is in CommunityMaps or PublicMaps: no version of
-any map there moves a room or takes a block from under a player, none of his 2026 maps with a wool objective carries
-the XML for it, and no commit reports the test. It may be in the private maps repository, which cannot be read. The
+world in its one test, is a different, late map of his: *Wandering U*. It is not in CommunityMaps or PublicMaps, and
+the record could not read it until the author supplied the world and its `map.xml` on 27 November from the private
+maps repository; it is the first map in this record that moves a wool room, and he says it was tested on 6 August
+2026. The file names no author and no created date. It is a capture-the-wool map for two teams of 12 on a U of
+floating bedrock pieces over void, and each team's wool sits in a 10 by 10 bedrock island that PGM cuts out of one
+end and pastes at eight stops along a route of three steps out, three across and one in, then back: a clock ticks every
+five seconds after a 15-second warm-up, the room halts for about half a minute at each dock, and whoever is inside
+when it leaves is left in the air over void (research `10`). The
 Micro was deleted on 12 August.
 
 **And on the studio's own boards, the map was made by nobody.** None of the six uploads lacks an author. The boards
@@ -356,9 +366,9 @@ Flamiix, not Tttie. The trees were in the studio before Fable's rebuild, not bec
 Hollow Crown on objectives, flatness and closeness, and Spinebreak on length, and neither is 500 blocks across. The
 tests show in CommunityMaps only from 27 July to 2 September, not to his last test of 27 September, which the record
 holds in this repository instead, and they are not in PublicMaps. Hello World Micro's room changed colour in the
-record, not place, and so did the full Hello World's a year and a half earlier; the late map whose room moves is in
-neither public repository. The slime and all-greens maps may be one board, Viridian; the quartz-and-end-stone
-map is not among the fifteen. The annealing maps are dated 2021 to 2023, not 2022. The name "Slop Sundays", the instruction that started the Python rework, the fall from Hello World Micro and the in-game colouring of Brittlebush III are his account alone.
+record, not place, and so did the full Hello World's a year and a half earlier; the late map whose room moves, *Wandering U*, is in
+neither public repository, and came from the author's private one. The slime and all-greens maps may be one board, Viridian; the quartz-and-end-stone
+map is not among the fifteen. The annealing maps are dated 2021 to 2023, not 2022. The name "Slop Sundays", the instruction that started the Python rework, the fall from Wandering U's room (its file says a player left inside is left in mid-air, but no test is recorded) and the in-game colouring of Brittlebush III are his account alone.
 
 **Several questions the record cannot answer belong to him.** How many blocks were placed by hand on a map named for
 placing none, and whether the 50-log oak at x -27 to -17, z 41 to 52 on No Blocks Placed is the generated tree he

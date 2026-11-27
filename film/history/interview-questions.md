@@ -301,3 +301,21 @@ account on pgmstudio.de (`research/05` §f).
    and pointed the model at `outback_outback_edition` for signs. Was the shell modelled on a room in a corpus map, or
    your own design?
 
+
+## Follow-up questions after research 10 (Wandering U and the tree generator)
+
+### rockymine — 6 questions
+
+1. **Wandering U's authors.** The file names no author and no contributor. Who made it, and is Ruediger or Flamiix in
+   it anywhere? What was it first called, and why a U?
+2. **The lap.** The XML's comment says a lap is 22 ticks (110 s); its formulas give 26 ticks (130 s). Which did you
+   play on 6 August, and what did you change after the test? Is there a later version in the private repository?
+3. **Falling out.** Who fell, from where, and was it the room leaving under them or the open edges? Did the warning
+   ("Get out or ride it into the void") change what players did, and did anyone take a wool?
+4. **Who wrote the XML.** The variables, the eight `<dynamic>` stops and the countdown actions are long. Did you
+   write them, or was the model told to make a wool room walk a lap? How long did it take to get PGM to load it?
+5. **The tree page.** "Map Decoration — prototypes" was published on or about 2 August. Did you ask for the trees
+   page, or did the model propose it, and who named the knobs (stems, leader, trunk flow)? What did you say when you
+   saw the first Catmull-Rom tree?
+6. **Taking the generator out.** On 10 September the grown tree went "rather than gets a knob". Was there a tree you
+   had hoped it would grow, and is the 50-log oak on No Blocks Placed the one you meant, if it is about 20 blocks tall?
