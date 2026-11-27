@@ -347,8 +347,9 @@ middle". At 18:28 it separated the rules from the blocks, `pgmvox.grammar`, "the
 from its blocks". Nineteen minutes later a second style, Claywork, was "spoken in the grammar", and within the hour a
 third board carried the Brittlebush style beside grown ground. This is the transferable look of the author's account,
 defined once and laid on any map, which he says no building plugin offers. The layout of Brittlebush III was his,
-drawn on pgmstudio.de as "Brittebush III". In his account its final colouring was done entirely in game because the
-tool still could not express it, and that world is not in the record.
+drawn on pgmstudio.de as "Brittebush III". In his account the Brittlebush style can be expressed in full by the
+grammar, which was its point, and Brittlebush III has never been tested by players. The map whose colouring was done
+entirely in game, because the tool could not express it, is Bridgid II.
 
 **A playtest and an experiment followed.** By 10 October the author had played the freeform and trial boards, and his
 notes were sorted into 30 faults, of which the studio "would have caught 9, partly caught 4, and not caught or could
