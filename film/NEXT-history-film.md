@@ -39,3 +39,9 @@ More from the author (2026-11-27):
   `list_repos` and attach them with `add_repo` (this session's scope was only the two).
 - Prepare interview questions for rockymine, Ruediger and Tttie. Answers will come later and refine the film;
   an interview is also a possible second way to document the year.
+
+The earlier repositories, all public and readable without attaching (clone with full history, e.g.
+`git clone https://github.com/rockymine/<name>`): `CTW-Layout-Generator` (made with Google's AI Studio, the very
+first layout test), `MinecraftLayoutEditor` (a small self-built project), `pgm-map-studio` (the Python stage).
+The current experiment is illustrated by the artifact https://claude.ai/code/artifact/555b1fbe-f6ae-4b8b-b195-06643ab38297
+(read it with the Artifact tool's `read` action).
