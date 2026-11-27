@@ -65,8 +65,8 @@ holds, what the **author recalls**, and what is **inference**.
 
 - The ice map was begun about 17 October and built over a few weekends (account 14); Hello World Micro's layout is Hello
   World's on the grid, drawn by the author (account 3, 14); the staff's quoted lines may be used as they are (account 14).
-- The boards of the 9–10 October viewing were the new pgmvox boards (account 14); Hollowcrown is the most probable of the
-  two-monument board, the other two are unnamed between candidates (`HISTORY.md` chapter 9).
+- The boards of the 9–10 October viewing were the new pgmvox boards (account 14); Hollowcrown is the most probable two-monument
+  board; the flying and the mesa board are each one of two candidates (`HISTORY.md` chapter 9).
 - The pause was needed after a month of weekly testing and a tool wanting care; twenty maps a night was never the aim, and
   more maps will be built and tested (account 14).
 - On 27 November the arcade boards were tested again, Lantern Pass among them; real gameplay is to be recorded the next day
@@ -78,8 +78,8 @@ holds, what the **author recalls**, and what is **inference**.
 
 ## What is open
 
-Which of two candidates each are the flying capture-the-wool board (Lantern Karst, Brassmoor Works) and the mesa board
-(Redwash Mesa, Hollow Mesa), and that Hollowcrown is the two-monument board; where the viewing took place. Aerie's unplayable XML, which the author
+Which of two candidates each is the flying capture-the-wool board (Lantern Karst, Brassmoor Works) and the mesa board
+(Redwash Mesa, Hollow Mesa), whether Hollowcrown is the two-monument board, and where the viewing took place. Aerie's unplayable XML, which the author
 states and no record holds; whether
 the 50-log oak is the generated tree; the briefs of the first fifteen, Heftfold and
 Whinberry Ring; which model "Muse Spark" is (the author believes a Meta model). `HISTORY.md` chapter 14 and
@@ -140,6 +140,6 @@ folder that records a change history.
 | Who wrote Hello World Micro's layout was open | HISTORY chapter 4 and 14; timeline; interview questions | he drew it, Hello World's layout abstracted onto the grid | account 14 |
 | The date he built his half is not recorded; he built it after the agents' failed compositions | HISTORY chapter 10, 14; timeline; research/04 | begun about 17 October and built over a few weekends; the record dates only the agents' study | account 14 |
 | Which boards were shown at the viewing is not recorded | HISTORY chapter 9, 14; interview questions | the new pgmvox boards; three named by description, Hollowcrown inferred, two pairs of candidates | account 14; inference |
-| The staff's words need each person's consent before use | HISTORY chapter 9; README; `sources/staff-chat-october/README.md` | may be used as they are, the author's decision | account 14 |
+| The staff's words need each person's consent before use | HISTORY chapter 9; README | may be used as they are, the author's decision | account 14 |
 | The pause was a reaction to the maps being "too good" | HISTORY chapter 9 | that, and a month of weekly testing, the tool needing care, and building in bulk never being the aim | account 14 |
 | The author's pause after October is only visible as the 13 November freeze | HISTORY chapter 9, 10 | at the October viewing they decided to pause because the maps were getting "too good"; the link to 13 November is inference | account 13 |
