@@ -231,3 +231,28 @@ account on pgmstudio.de (`research/05` §f).
    CommunityMaps since 2023, what made the AI maps feel the same, and which was the first that felt like its own place?
 4. **Your own sketch.** You have one sketch on pgmstudio.de (`untitled-sketch-7`, last changed 28 October). What did you
    try to make, and where did the tool stop you?
+
+## Follow-up questions after research 07 (PublicMaps, the Base maps, the bedrock box, "made by")
+
+### rockymine and Ruediger — 8 questions
+
+1. **Where the autumn tests were loaded from.** No AI map entered PublicMaps from June to November, and CommunityMaps
+   holds none after 2 September. Were the 27 September boards loaded from the private maps repository, straight from
+   a folder on the server, or from pgmstudio.de's export — and who put them there, if not Ruediger?
+2. **The paper behind the Base maps.** The studio's first three worlds, on 2 July, are Base 2-Island, Base 2-Wool and
+   Base 4-Team, on a five-block cell. Were these the layouts you drew on squared paper, and do you still have the
+   sheets? Is "Base to Rule" Base 2-Wool and "Base for Teams" Base 4-Team?
+3. **Were the Base maps played?** They are in no public repository. Did any of them reach the server, and what did a
+   stone island with a bedrock box teach you that the drawing had not?
+4. **Who chose the bedrock box.** Your task of 30 June asked for "spawn and wool-room cages" and bedrock monument
+   pedestals; the 8×8×8 bedrock shell was specified by Opus 4.8 the next night. Was the shell your design or the
+   model's, and why bedrock?
+5. **"Made by" in the tab list or on the sign.** The record's "made by" over blank lines is the observer platform's
+   sign, which the studio stopped writing on 4 September. Is the joke from the sign, from PGM's tab list, or both —
+   and which maps did players say it about?
+6. **The moving room.** Hello World Micro in CommunityMaps recolours its wool box when the first wool falls; nothing in
+   it moves. Was there a later version in which the room moved, and where is it? Who wrote its XML?
+7. **Capture the Cake.** Kuusepuu CTC took its cake objective from a map called `capture_the_cake_ctw`, which is in no
+   repository here. What was that map, who made it, and was Capture the Cake played beyond Kuusepuu's "Reported live"?
+8. **Fifteen at a time.** The batches near that size are the fifteen boards of 11–12 August and the thirteen of 27
+   September. How many maps did a test session actually load, and how were they chosen?

@@ -26,7 +26,7 @@ through GitHub's web interface (committer `GitHub`), in four batches between 27 
 |---|---|---|---|---|---|---|
 | 2026-07-27 23:33 | Mon | `8df2ca00` | Kuusepuu CTC: added | `arcade/standard/kuusepuu_ctc` | rockymine and DerStiv's `dtcm/kuusepuu`, credited "CTC conversion: Claude Opus 5" | still at head |
 | 2026-07-28 01:09 | Tue | `7fb35f88` | Kuusepuu CTC: 1.0.1 | same | the time limit replaced by the "Cookie Monster" | — |
-| 2026-07-28 01:10 | Tue | `591d21b1` | Hello World Mini: added | `ctw/hello_world_micro` | a studio plan: the folder carried `hello-world-mini.plan.json` with `"plan": 1`, the plan-editor schema of 2 July **(studio `e09959cb`)**; credited to rockymine alone | 2026-08-12 |
+| 2026-07-28 01:10 | Tue | `591d21b1` | Hello World Mini: added | `ctw/hello_world_micro` | a studio plan: the folder carried `hello-world-mini.plan.json` (added in 1.0.1, `04e61f88`; research `07` §5) with `"plan": 1`, the plan-editor schema of 2 July **(studio `e09959cb`)**; credited to rockymine alone | 2026-08-12 |
 | 2026-07-28 01:30 | Tue | `fb0013e1` | Hello World Micro | same | wools moved one block, staggered second wool | — |
 | 2026-07-28 01:48 | Tue | `04e61f88` | Hello World Micro: update 1.0.1 | same | "a per-game roll decides whether you need 1 or 2" | — |
 | 2026-07-28 01:58 | Tue | `b4ef98e9` | Delete ctw/hello_world_micro/hello-world-mini.plan.json | same | the plan file taken out | — |

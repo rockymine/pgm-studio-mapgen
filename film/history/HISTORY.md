@@ -1,8 +1,8 @@
 # A year of AI-made maps: September 2025 to November 2026
 
 This is the history of how rockymine, with Ruediger_LP and a run of AI models, set out to make PvP maps for PGM
-servers by machine, and of what that tool became. It is written for someone who was not there. It rests on six
-research files beside it (`research/01` to `research/06`) and on the author's spoken account of 27 November 2026
+servers by machine, and of what that tool became. It is written for someone who was not there. It rests on seven
+research files beside it (`research/01` to `research/07`) and on the author's spoken account of 27 November 2026
 (`author-account-2026-11-27.md`). Every date, number and quotation below comes from one of those, and each paragraph
 says which kind of source it rests on. **The record** is a commit, a file or a published map. **The author's account**
 is his recollection, given on one evening, and it is marked as such wherever it carries a claim the record does not.
@@ -55,6 +55,17 @@ idea in the record, the map as a graph, was written up as an architecture at 14:
 "a thinned skeleton cannot represent side contact". The same afternoon a strawman of layout rules was offered "for
 correction by id", and the author corrected it. That pattern, a model guessing and the author ruling, is the method
 of the whole year.
+
+**The first worlds the studio built were three grey boards called Base.** On 2 July Opus 4.8 shipped the export
+that writes a world folder, and drove three seeds through it the same morning: Base 2-Island, Base 2-Wool and Base
+4-Team, "The most basic CTW design: two team islands + a contested centre", on a cell of five blocks. Each came out as
+the author remembers: a bedrock floor at y 0, stone to each island's height, and spawn and wool in "a hollow 8×8×8
+bedrock shell". In his account they were his layouts, drawn on squared paper, and he names them "Base to Rule" and
+"Base for Teams"; the record holds the names 2-Wool and 4-Team, which sound much the same, and no drawing. That
+bedrock box became the default room. Rooms could be given a library style from 5 August, but an unbound room still
+stood in the box, and the reviews of at least three later runs say a spawn or wool room was left in it by mistake.
+From 27 September the studio complains of it (rule `WX14`). The seeds also stated `"authors": []`, which is where the
+nameless maps of chapter 6 begin (research `07`).
 
 By 21 July the model had settled into boxes: every board a spawn, a hub, wool approaches, a frontline and a middle,
 composed in that order, and "the box pipeline is THE composer". Destroy modes arrived on 15 July, a month after
@@ -168,6 +179,27 @@ the last test, and it is a Sunday. The record shows the boards made ready, and w
 midnight; it does not show the session. The October rounds on the freeform boards were committed on a Friday night and
 a Saturday, 9 and 10 October, and none of those boards went to CommunityMaps.
 
+**They did not go to PublicMaps either.** The author thought the later tests might be there. Research `07` reads its
+whole history: no AI-made map entered PublicMaps between June and November, Ruediger has not committed there since
+February 2025, and the repository has no commit on 27 September. A private maps repository, which the author also
+names, cannot be read. The batches of about fifteen he recalls are this project's own: fifteen boards on 11 and 12
+August, and thirteen for the test of 27 September.
+
+**Two of the summer uploads were game-mode experiments in XML.** Kuusepuu CTC came with the body "Capture the Cake
+prototype!": the author's destroy map with its monuments removed and a cake to eat, carry home and place. Hello World
+Micro was a "grey map for concept test" from a studio plan, the same stone-and-bedrock kind as the Base seeds. Its
+1.0.1 rolled, per game, whether a team needed one wool or two, and when the first fell the enemy's wool box was
+recoloured and the server announced "Wool Room Switched". In the author's account the room moved, and in its one test
+players fell out of the world as it moved from under them. No version in CommunityMaps moves a room or takes a block
+from under a player, and no commit reports that test. It was deleted on 12 August.
+
+**And on the studio's own boards, the map was made by nobody.** None of the six uploads lacks an author. The boards
+built through the studio did: the observer platform carries a sign that reads "made by" over the authors, and on 4
+September the studio found that "69 of those 74 carried 'made by' over three blank lines, which reads as a map whose
+author is called nothing". From then the sign is left off and the build complains (`EX6`). The author remembers it in
+the tab list, and as the first tell of an AI map. The two large boards of the 27 September test were credited to
+Opus 5.5 after midnight that night, and on 28 September every exported board was credited to the studio.
+
 ## 7. Late September: the studio goes public, and the maps are empty
 
 **Between 26 and 28 September the studio became a website.** It gained Discord sign-in by invitation, tokens for
@@ -262,8 +294,9 @@ The deployed studio holds two boards by Haiku 5.5 and two by Grok that no report
 Flamiix, not Tttie. The trees were in the studio before Fable's rebuild, not because of it. The "500-wide" map fits
 Hollow Crown on objectives, flatness and closeness, and Spinebreak on length, and neither is 500 blocks across. The
 tests show in CommunityMaps only from 27 July to 2 September, not to his last test of 27 September, which the record
-holds in this repository instead. The name "Slop Sundays", the instruction that started the Python rework, and the
-in-game colouring of Brittlebush III are his account alone.
+holds in this repository instead, and they are not in PublicMaps. Hello World Micro's room changed colour in the
+record, not place. The name "Slop Sundays", the instruction that started the Python rework, the squared paper behind
+the Base maps, the fall from Hello World Micro and the in-game colouring of Brittlebush III are his account alone.
 
 **Several questions the record cannot answer belong to him.** Which tree on No Blocks Placed is the generated one, and
 how many blocks were placed by hand on a map named for placing none. Whether "map walls" is the walls-rims-plateaus
