@@ -1,8 +1,8 @@
 # A year of AI-made maps: September 2025 to November 2026
 
 This is the history of how rockymine, with Ruediger_LP and a run of AI models, set out to make PvP maps for PGM
-servers by machine, and of what that tool became. It is written for someone who was not there. It rests on seven
-research files beside it (`research/01` to `research/07`) and on the author's spoken account of 27 November 2026
+servers by machine, and of what that tool became. It is written for someone who was not there. It rests on eight
+research files beside it (`research/01` to `research/08`) and on the author's spoken account of 27 November 2026
 (`author-account-2026-11-27.md`). Every date, number and quotation below comes from one of those, and each paragraph
 says which kind of source it rests on. **The record** is a commit, a file or a published map. **The author's account**
 is his recollection, given on one evening, and it is marked as such wherever it carries a claim the record does not.
@@ -33,6 +33,18 @@ that October, and research `01` notes the discrepancy. On 6 November the editor 
 Two identities commit to these repositories, `michael` and `rockymine`, on the same days. The record does not say
 whether they are one person, and the history does not assume it.
 
+**Before the record, there were maps.** CommunityMaps holds the author's earlier work, and `map.xml` dates it. The
+five Annealing maps run from January 2021 (Annealing, destroy the monument) through Annealing II (January 2022), III
+(July 2022) and IV (January 2023) to Annealing II Short (February 2023), with DerStiv as painter or author on four of
+them. In his account they came from his master's thesis on the travelling salesman problem, whose routes made
+interesting shapes that were filled, cast into maps and traced and decorated by hand, the first algorithmic map
+making; the record carries no word of the thesis, and puts the series across 2021 to 2023 where he says 2022
+(research `08`). He says the idea then slept until the end of 2025. Outback, which he names among the layouts every
+map reduces to a frontline and an H, is his own (PublicMaps, 3.0.11); Race for Victory 2 and Two Tier are other
+people's old maps. As trivia, New Life CTW (created 10 July 2021: four teams, eight wools, "both wools ... under the
+helicopter") and Old Life CTW (8 August 2021: the same ground, 24 wools, "all 6 wools") credit rockymine, Ruediger_LP
+and Just_ as executive producers. The contest and its result, as he tells them, are not in the record.
+
 ## 2. Spring 2026: reading maps before writing them
 
 Five and a half months pass with nothing in the record. On 31 May 2026 a Python project, `pgm-map-studio`, opened
@@ -51,8 +63,14 @@ is the one still running.
 
 The studio's first two months were spent deciding what a map is. On 20 June a corpus analysis of 347 maps found
 that "the generator emits 0 neutral mid pieces but 88% of real maps carry a contested middle". On 2 July the oldest
-idea in the record, the map as a graph, was written up as an architecture at 14:31 and abandoned at 14:54, because
-"a thinned skeleton cannot represent side contact". The same afternoon a strawman of layout rules was offered "for
+idea in the record, the map as a graph, was written up as a design at 14:31 and replaced at 14:54, because "a
+thinned skeleton cannot represent side contact". Both times are exact and both are a document: 184 lines proposing a
+plan graph of typed lane and gap edges, then rewritten in the same file as areal pieces joined by interfaces. No code
+of the graph design was ever committed, and the graph itself did not go: a reachability graph over the pieces,
+`FannedGraph`, was committed that evening and is still in the studio. What did run and then go was the organic
+attempt the author remembers: from 20 June a generator grew lanes from a hub along noise-bent Catmull-Rom splines
+into ribbons, archetypes named H, Pinwheel and Trident beside it, and it was retired on 15 July, 25 days later, "in
+favour of the plan-then-realize direction" (research `08`). The same afternoon a strawman of layout rules was offered "for
 correction by id", and the author corrected it. That pattern, a model guessing and the author ruling, is the method
 of the whole year.
 
@@ -86,26 +104,48 @@ slope. Themes could be scoped to one piece, so one area had one pattern and its 
 account says real transitions between them never worked.
 
 **The first tree was grown and failed.** A recursive brancher on 1 August "read as a fractal, not a tree"; on 2
-August it was rebuilt as limbs swept along Catmull-Rom splines; on 5 August a separate vanilla tree, a trunk under a
-canopy of known profile, was split off. On 12 August the grown tree was measured against 75 trees the author had
+August it was rebuilt as limbs swept along Catmull-Rom splines, and within the hour it gained the knobs the author
+describes: a number of stems at the base (one, a double, a triple), levels of branching, how far a central leader
+climbs, how much the trunk wanders, a height. It was never an editor for dragging splines, but a generator with a
+preview that showed its spines. On 5 August a separate vanilla tree, a trunk under a canopy of known profile, was
+split off. On 12 August the grown tree was measured against 75 trees the author had
 built by hand on a showcase world, one tree per platform, and failed: "1516 of 4020 never touch their branch". The
 author's account puts it simply: a vanilla-like blob is easy for a model to code, and a real tree generator failed.
-The vanilla tree is still in the studio. The grown one was deleted on 10 September on his ruling that "the form goes
-rather than gets a knob".
+He adds that its leaf distribution and central trunk got worse over time, and that Millrace's first trees were meant
+as pines but had leaves only at the sides, like a fir with every tier cut off but the lowest. The record holds the
+pines as a conifer form, rings of branches on a leader, used for Millrace's firs; it also holds a repair the same
+night (stranded leaves 36% to 0%) and, on 13 August, a second fault in which a taller tree was silently dropped. It
+has no commit saying the trunk or leaves got worse. The vanilla tree is still in the studio. The grown one was
+deleted on 10 September on his ruling that "the form goes rather than gets a knob".
 
 **The first map credited to the studio reached a public server on 7 August.** It is called *No Blocks Placed*, a capture
 the wool map for two teams of 28, committed to CommunityMaps that evening by Ruediger. Its `map.xml` credits
 rockymine for "Drawing pieces, shapes, and markers in the browser.", Ruediger_LP for "Wisdom." and Flamiix for
-"Minimalist." The author recalls Tttie as its third author. The record names Flamiix, and shows TTtie adding the
-map's creation date on 15 August. The author's account also says one generated tree still stands on it. Research
-`05` finds trees there in mirrored pairs, the largest a body of 320 blocks with 50 logs, which reads as the grown
-limb tree of that week. Which body he means wants his eye in game. The studio itself kept the map as its own worked
+"Minimalist." The author first recalled Tttie as its third author. The record names Flamiix, and shows TTtie adding the
+map's creation date on 15 August; on the second telling he agrees that Flamiix, who happened to be on the mapmaking
+server, helped with the interior of the wool room and the spawn building, and that Tttie did nothing on it. His
+account also says one generated tree still stands on it, a larger one fairly far forward beside ordinary ones. The
+blocks bear that out. The largest of the mirrored pairs is a body of 320 blocks with 50 logs, oak, standing at x
+-27 to -17, y 14 to 30, z 41 to 52 (its image at x 16 to 26, z -53 to -42), with a two-by-two base and limbs
+spreading from it; the next largest tree has 28 logs and the commonest have 7 to 11. It stands 40 to 50 blocks
+from the middle line toward the blue wool room, which starts at z 65. Its shape is the grown tree of that week's,
+and no other tree on the map is of that size; the author's confirmation in game is still wanted (research `08`). The studio itself kept the map as its own worked
 example for the Configure tool from 13 August.
 
 **On 11 and 12 August the first fifteen AI boards were built,** eleven by Opus 5 and four by Haiku 4.5, each from a
 single JSON spec through a tool inside the studio, `tools/mapgen`. Two of them went to CommunityMaps on 12 August,
 Thornwake and Viridian. The author's first review was written that night, in words: thirteen faults, MG1 to MG13.
 Spinebreak belongs to this batch. It is a ridge 145 blocks wide and 405 long, with eight objectives strung along it.
+
+**The block faults the author remembers can be counted, and one board carries most of them.** He recalls, from the
+first tested maps, a map made mostly of slime blocks, one on which every green landed at once despite a prepared list
+of greens, and quartz with end stone as a strange desert. Counting the blocks of the fifteen (fourteen kept in this repository,
+Thornwake as it stands in CommunityMaps), the slime map is Viridian, built by Haiku 4.5: 13,299 of its 66,071 blocks are slime, a fifth, laid as
+the bright risers along every wall and slope. It also holds seven green-family blocks in quantity (lime and green clay,
+green wool, prismarine, emerald, slime), more than any of the 288 worlds kept here, so it is the all-greens map too.
+Viridian is one of the two that Ruediger committed to CommunityMaps that night, so it is also the one the public
+repository still shows. No board among the fifteen has quartz. Saltmarch has 4,629 end-stone blocks among sandstone and sand, a desert, without
+the quartz. No review or commit message mentions any of the three faults (research `08`).
 
 **On 13 August an agent made a confident, measured and wrong claim,** that every generated destroy map was
 unwinnable because the goals floated above the ground. Floating goals are PGM's design. The claim was withdrawn the
@@ -187,11 +227,17 @@ August, and thirteen for the test of 27 September.
 
 **Two of the summer uploads were game-mode experiments in XML.** Kuusepuu CTC came with the body "Capture the Cake
 prototype!": the author's destroy map with its monuments removed and a cake to eat, carry home and place. Hello World
-Micro was a "grey map for concept test" from a studio plan, the same stone-and-bedrock kind as the Base seeds. Its
-1.0.1 rolled, per game, whether a team needed one wool or two, and when the first fell the enemy's wool box was
-recoloured and the server announced "Wool Room Switched". In the author's account the room moved, and in its one test
-players fell out of the world as it moved from under them. No version in CommunityMaps moves a room or takes a block
-from under a player, and no commit reports that test. It was deleted on 12 August.
+Micro, first committed as "Hello World Mini" at 23:10 on 27 July with the body "grey map for concept test", came from
+a studio plan and is the same stone-and-bedrock kind as the Base seeds; its next commit says "add actual map, still rly
+grey though". Its 1.0.1 rolled, per game, whether a team needed one wool or two, and when the first fell the enemy's
+wool box was recoloured and the server announced "Wool Room Switched". The recolouring is older than the Micro: the
+full Hello World, credited to rockymine and Ruediger_LP and added to CommunityMaps on 1 February 2025, already changes
+its wool rooms from orange to red and from magenta to purple when a wool is taken. In the author's account the Micro's
+layout was his own, drawn by hand as a small Hello World, and the room that moves, from which players fell out of the
+world in its one test, is a different, late map of his. No such map is in CommunityMaps or PublicMaps: no version of
+any map there moves a room or takes a block from under a player, none of his 2026 maps with a wool objective carries
+the XML for it, and no commit reports the test. It may be in the private maps repository, which cannot be read. The
+Micro was deleted on 12 August.
 
 **And on the studio's own boards, the map was made by nobody.** None of the six uploads lacks an author. The boards
 built through the studio did: the observer platform carries a sign that reads "made by" over the authors, and on 4
@@ -295,11 +341,14 @@ Flamiix, not Tttie. The trees were in the studio before Fable's rebuild, not bec
 Hollow Crown on objectives, flatness and closeness, and Spinebreak on length, and neither is 500 blocks across. The
 tests show in CommunityMaps only from 27 July to 2 September, not to his last test of 27 September, which the record
 holds in this repository instead, and they are not in PublicMaps. Hello World Micro's room changed colour in the
-record, not place. The name "Slop Sundays", the instruction that started the Python rework, the squared paper behind
+record, not place, and so did the full Hello World's a year and a half earlier; the late map whose room moves is in
+neither public repository. The slime and all-greens maps may be one board, Viridian; the quartz-and-end-stone
+map is not among the fifteen. The annealing maps are dated 2021 to 2023, not 2022. The name "Slop Sundays", the instruction that started the Python rework, the squared paper behind
 the Base maps, the fall from Hello World Micro and the in-game colouring of Brittlebush III are his account alone.
 
-**Several questions the record cannot answer belong to him.** Which tree on No Blocks Placed is the generated one, and
-how many blocks were placed by hand on a map named for placing none. Whether "map walls" is the walls-rims-plateaus
+**Several questions the record cannot answer belong to him.** How many blocks were placed by hand on a map named for
+placing none, and whether the 50-log oak at x -27 to -17, z 41 to 52 on No Blocks Placed is the generated tree he
+means. Whether "map walls" is the walls-rims-plateaus
 model of 1 August, and whether `themeByHeight` was the per-height prototype he remembers. What Tttie did on the tests,
 who played and for how long, and whether the tests had a schedule. Which rule produced which gain. Why the grammar, which carried his own look onto
 other maps, is the one phase of the port with nothing shipped.

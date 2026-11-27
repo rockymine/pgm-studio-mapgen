@@ -256,3 +256,28 @@ account on pgmstudio.de (`research/05` §f).
    repository here. What was that map, who made it, and was Capture the Cake played beyond Kuusepuu's "Reported live"?
 8. **Fifteen at a time.** The batches near that size are the fifteen boards of 11–12 August and the thirteen of 27
    September. How many maps did a test session actually load, and how were they chosen?
+
+## Follow-up questions after research 08 (the third instalment checked)
+
+### rockymine — 8 questions
+
+1. **The moving wool room.** Neither CommunityMaps nor PublicMaps holds a map of yours whose wool room moves; the
+   only recolouring wool rooms are Hello World (February 2025) and Hello World Micro (July 2026). What is the map
+   called, when was it built, who wrote its XML, and is it in the private maps repository?
+2. **The tree on No Blocks Placed.** The largest tree is a 50-log oak with a two-by-two base at x -23..-22, y 14,
+   z 46..47, leaves up to y 30 (its image at x 19..23, z -48..-44). Standing there in game, is that the one tree the
+   tree generator made, and were any others on the map made by it?
+3. **Millrace's firs.** The first Millrace used grown conifers with branches in rings. What exactly did you see in
+   game, and did you describe it to the model in words or with a marked position?
+4. **When the graph ended.** The graph was a design document for 23 minutes on 2 July, but a reachability graph over
+   the pieces was committed that evening and is still there. What do you count as the end of the graph idea: the
+   document, the organic lane generator retired on 15 July, or something else?
+5. **The organic generator.** From 20 June to 15 July the studio could grow a team's island from a hub along bent
+   splines. Did you play anything it made, and what made it unappealing: the shape, the tool, or the format?
+6. **Viridian.** A fifth of its blocks are slime, as the bright wall faces, and it carries seven kinds of green. Is it
+   the slime map, the all-greens map, or neither, and which was the quartz-and-end-stone map?
+7. **Annealing.** The five maps are dated January 2021 to February 2023 in their XML. Which one was the first made
+   from a travelling-salesman route, and when was the thesis finished?
+8. **New Life and Old Life.** The contest, the year, the school-children winner and the placing are not in the record.
+   Where was it held, what was it called, and is the XML change from New Life to Old Life in a commit message of
+   yours or Ruediger's?
