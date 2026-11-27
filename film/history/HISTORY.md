@@ -327,11 +327,37 @@ spoke a second style in it forty minutes later, and built Brittlebush III from a
 expressed in full by the grammar, which was its point, and Brittlebush III has never been tested by players (account,
 2). The log holds no Brittlebush III (research/13).
 
-**The October playtest sits awkwardly against "the last test was 27 September".** **Record:** on 9 and 10 October the
-author's notes from "playing the freeform and trial boards" were sorted into 30 faults, of which the studio "would have
+**The notes of 9 and 10 October came from a viewing, not from a test.** **Record:** on 9 and 10 October the author's
+notes from "playing the freeform and trial boards" were sorted into 30 faults, of which the studio "would have
 caught 9", with Riftwater "essentially perfect" in the agent's summary (research/05, research/06). The log shows no
-missing stretch after 27 September (research/13). **Inference:** this was played somewhere that does not report, such as
-mapdev (research/15), and not as an event; who played is unrecorded. On 10 October a controlled run with Sonnet 5.5 in
+missing stretch after 27 September (research/13). **Account:** this was not a test on the real server: three of them
+looked at the new pgmvox maps together, and it was the first feedback on those maps (account, 13). The sorted file of 10
+October (`analysis/freeform-vs-studio/playtest-feedback-2026-10-10.md`) is its written result. **Inference:** the empty
+log is what a viewing leaves, and 27 September stays the last test evening; where the viewing took place, and which
+boards were shown, is not recorded.
+
+**The staff who watched took the boards for touched-up work.** **Account:** the viewing is dated 9–10 October and the
+three speakers are named by role: mitchiii, a map developer who has built many maps; wylt, a server admin; TTtie, a
+developer (account, 13). **Record:** five screenshots of the observer chat hold their words (`sources/staff-chat-october/`).
+mitchiii asked "are all these ones unmodified from generated state?"; rockymine answered "yea", and mitchiii wrote "damn",
+"compared to the other ones I saw" and "I would have assumed these were touched up". TTtie wrote "its over for m*pdevs."
+and wylt, later, "maps look a lot more diverse". Asked "how long does each one take? if you made all those in the past day
+or so?", rockymine wrote "30 min to 1h for these complex maps" and "sometimes faster". Asked how the generator understood
+the Brittlebush III theme, he wrote: "he looked at the region file and i steered him", "then he turned it into some form
+of grammar", "i mean, its literally just 5x5 pieces with 3 different styles", "and rules on how they combine"; to "so you
+could give it half finished map and it finish it?" he answered "yep". **Inference:** the answer is consistent with the
+record of 9 October, where a session read Brittlebush block by block and split rules from blocks, and at least two styles
+were spoken in the grammar that day (research/05). These are other people's words, quoted from a transcription; each
+person has to agree before they are used in a film.
+
+**The viewing ended in a pause, which the author gives as a reaction to quality.** **Account:** there they decided to
+pause for the time being, because the maps were slowly getting "too good", in looks and in diversity, with many new game
+modes as well (account, 13). **Record:** the match log holds no missing stretch after 27 September, and on 19 October he
+wrote that enough material existed (research/13, research/15); on 13 November new capabilities paused and the layout
+generator was frozen (research/02). **Inference:** the later pauses may continue the one decided at the viewing, but no
+record says so, and the 13 November entries give the backlog's fixes, not the quality of the maps, as their reason.
+
+On 10 October a controlled run with Sonnet 5.5 in
 both tools found "the two tools made boards of comparable quality", and Ruediger proposed finishing the three best AI
 maps (research/03, research/15). On 19 October the author wrote that there was little motivation left to make or play
 AI maps: "Genug Material haben wir ja." (research/15).
@@ -352,7 +378,8 @@ hand-built sketch world into a CTW and DTC map set into a mountain, and every ve
 not closed", "a ramp led into the void" — and "Every one of those failures passed some check that existed at the
 time"; then he built the half himself, on a date not recorded, and the agents' task became understanding it
 (research/04). In the studio he froze the layout generator on 13 November; the last commit on `main` is of 14 November
-(research/02). Chapter 13 says what the map shows.
+(research/02); chapter 9 gives the pause the author says was decided at the October viewing, and what the record does and
+does not say of a link. Chapter 13 says what the map shows.
 
 ---
 
@@ -383,6 +410,13 @@ destroy maps, Grok wrote a design document whose JSON "intermediate representati
 concept and name came from the AI", and over a hundred zips were loaded and tested; his later maps used GrokBuild, a
 local agent, and GrokBot, bots with their own test server (research/15). **Account:** Cedar Crossing came from an
 ordinary chat where Grok wrote a script, with no tool between (account, 7).
+
+**On the layout he was plain in October.** **Record:** when mitchiii asked whether the viewed boards were touched up,
+rockymine answered that they were not, and added "again, layout is 100% mine"; asked "touched up....?" once more he
+wrote "no" (`sources/staff-chat-october/`, chat-1 and chat-2). **Account:** the staff took the boards for hand-finished
+work (account, 13). **Inference:** the sentence claims the layout as the part a person decided. Which boards it refers to is not stated, and
+for Riftwater the record has the author giving ingredients and a mode, no layout (sessions/00), so it is a claim about the
+boards shown, not about every pgmvox board.
 
 **The human stayed in five places: he drew, briefed, noted, ruled and finished** (research/12). The briefs found since
 show how much he stated. For Riftwater he gave ingredients and a mode, no layout (sessions/00); for Sunspit themes,
@@ -464,13 +498,17 @@ finish it himself in snow, stone, ice or grass (research/04; account, 8).
 
 ## 14. What remains open
 
-**Three disagreements between record and recollection remain, and the record does not overrule them all.**
+**Two disagreements between record and recollection remain, and the record does not overrule them both.**
 
 | Subject | Account | Record | State |
 |---|---|---|---|
-| The last test | 27 September (account, 1) | notes from playing freeform boards on 9–10 October (research/05) | open: a non-event play is likely, unproven |
 | Aerie's unplayable XML | unplayable, stated flatly; nothing editable, odd islands, bad zones (account, 11, 12) | no record; the model reported the gate open with zero declines (sessions/06, research/14) | his account against the record; inference supports his guess |
 | The freeform instruction and Riftwater | "I don't like it, think"; he gave nothing (account, 1, 7) | "what if … his own sort of script"; ingredients and mode were his (sessions/00, 01) | settled in form, his memory compressed |
+
+**The last test is 27 September, and the October notes are of a viewing.** The notes sorted on 9 and 10 October come from
+three people looking at the new boards together, not from a play on the server, so they stand against nothing in the
+log (account, 13; research/13). Open instead: which boards were shown, where, and whether the pause decided there was
+meant to be temporary.
 
 **The flat map he remembered as 500 wide is Ashfall Scar.** **Record:** a filter over every `map.xml` found fifteen maps
 with exactly two destroyables and two cores, three of them with all four objectives within ten blocks of one line and

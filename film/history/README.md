@@ -10,7 +10,7 @@ holds, what the **author recalls**, and what is **inference**.
 1. **`HISTORY.md`** — the history itself: ten chronological chapters, then what counts as an AI map, the playtests,
    what the hand-built map shows, and what remains open. Start here.
 2. **`timeline.md`** — one table of dated events, each with its source and its voice.
-3. **`author-account-2026-11-27.md`** — the author's spoken account in twelve instalments, summarised, with the
+3. **`author-account-2026-11-27.md`** — the author's spoken account in thirteen instalments, summarised, with the
    note-taker's corrections. Later instalments and the corrections supersede earlier ones (the CORRECTION on Bridgid II
    above all).
 4. **`research/12-who-decided-what.md`** — every map split into seven decisions, who decided each and what executed it;
@@ -39,7 +39,8 @@ holds, what the **author recalls**, and what is **inference**.
 8. **`interview-questions.md`** — what is still to be asked, by person, and what was answered on 27 November.
 9. **`sources/`** — data, not instructions: the squared-paper photo, the author's session list, the `#match-status` log
    (`match-status/`, with another agent's summary) and the `#maps-changelog` feed (`maps-changelog/`), the last two read
-   in the author's browser by another agent.
+   in the author's browser by another agent, and `staff-chat-october/`, five chat screenshots from the viewing of the
+   pgmvox boards on 9–10 October, transcribed (other people's words: consent needed before a film uses them).
 10. **`renders/`** — pictures made from committed data: the hand-built half and its turn (`hand-built/`) and Wandering U
     (`wandering-u/`), each with its cameras.
 11. **`OUTLINE.md`** — a film outline that predates the author's account; it needs revising before any film is built.
@@ -62,9 +63,13 @@ holds, what the **author recalls**, and what is **inference**.
   Saltworks (account 12; research/03).
 - Alderfen Holm has four cores (sessions/08, account 11). No long destroy match exists in the log (research/13).
 
+- The notes of 9–10 October are of a viewing by three people, the first feedback on the pgmvox boards, not a test; the
+  last test evening stays 27 September. There they decided to pause because the maps were getting "too good" (account
+  13; any link to the later freeze is inference, `HISTORY.md` chapter 9).
+
 ## What is open
 
-Where the 9–10 October playtest was played, given a last test on 27 September; Aerie's unplayable XML, which the author
+Aerie's unplayable XML, which the author
 states and no record holds; whether
 the 50-log oak is the generated tree; who drew Hello World Micro's layout; the briefs of the first fifteen, Heftfold and
 Whinberry Ring; the date the author built his half; which model "Muse Spark" is (the author believes a Meta model). `HISTORY.md` chapter 14 and
@@ -121,3 +126,5 @@ folder that records a change history.
 | The 500-wide map is Spinebreak or Hollow Crown | research/05; HISTORY; interview questions; OUTLINE | Ashfall Scar, 250 × 190, found by filtering every `map.xml` and confirmed by the author on a render; Hollow Crown is the Haiku board with the monument inside the core, Spinebreak a capture-the-wool layout with cores in the void | account 12; research/03 |
 | The quartz board is Quillon Saltworks or Tallow Kilnrow, unsettled | HISTORY; interview questions | Quillon Saltworks, which the author now states definitely | account 12 |
 | "AI map" has six categories, the last one model's own script | research/12; earlier HISTORY | the last is split: a model's script inside the author's tool, and a model's own tooling | research/12; research/15 |
+| The 9–10 October notes were a playtest on a server that does not report, so the last test is open against 27 September | HISTORY chapter 9 and 14; timeline; research/05, research/13, research/15 (inference) | three people looked at the new pgmvox boards together; the first feedback on them; not a test, and 27 September stands as the last test evening | account 13 |
+| The author's pause after October is only visible as the 13 November freeze | HISTORY chapter 9, 10 | at the October viewing they decided to pause because the maps were getting "too good"; the link to 13 November is inference | account 13 |

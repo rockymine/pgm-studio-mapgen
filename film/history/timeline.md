@@ -100,7 +100,7 @@ and the record differs, both rows are given. Times are UTC unless marked; German
 | 2026-09-26 → 28 | Discord sign-in, tokens, queue, pgmstudio.de self-deploys | r/02 | record |
 | 2026-09-27 | Textures (`render/eye`); nine boards painted; `WX14` on the bedrock box | r/02, r/07 | record |
 | 2026-09-27 20:55–22:37 | 11 `/event add`, Delverdale and Whitstone Weald, 13 missing numbers; "pgmstudio.de ist jetzt meins" | r/15, r/13 | record |
-| 2026-09-27 | The last AI-map test | account 1 | account |
+| 2026-09-27 | The last AI-map test; no later evening in the log | account 1; r/13 | account; record |
 | 2026-09-28 | Map notes pinned to ground; a player from the event reviews the tool | r/05, r/15 | record |
 | 2026-09-29 | Gypsum Reach and Sootcombe worked through notes in five rounds | s/14 | record |
 | 2026-10-05 → 08 | Countryside in the studio, five rows | r/11 | record |
@@ -112,8 +112,10 @@ and the record differs, both rows are given. Times are UTC unless marked; German
 | 2026-10-09 | Alphaboy uploads Countryside | account 5 | account |
 | 2026-10-09 | Brittlebush read; `pgmvox.grammar`; Brittlebush III built from his plan | r/05 | record |
 | 2026-10-09 | Brittlebush look fully expressible; Brittlebush III never player-tested | account 2 | account |
-| 2026-10-09/10 | Notes from playing the freeform and trial boards: 30 faults, 9 the studio would catch | r/05, r/06 | record |
-| 2026-10-09/10 | Played outside an event, on a server that does not report | r/13, r/15 | inference |
+| 2026-10-09/10 | Notes on the freeform and trial boards sorted: 30 faults, 9 the studio would catch (written result of the viewing) | r/05, r/06 | record |
+| 2026-10-09/10 | Three people look at the new pgmvox boards together, the first feedback on them; not a test on the server | account 13 | account |
+| 2026-10-09/10 | Observer chat: "are all these ones unmodified from generated state?" "yea"; "its over for m*pdevs."; "again, layout is 100% mine"; "30 min to 1h for these complex maps" | sources/staff-chat-october | record (transcribed screenshots; the date is the author's) |
+| 2026-10-09/10 | They decide to pause for the time being, the maps getting "too good" in looks and diversity | account 13 | account |
 | 2026-10-10 | Studio against pgmvox, Sonnet 5.5: comparable; Ruediger proposes finishing the three best | r/03, r/15 | record |
 | 2026-10-15 02:13 | Countryside committed by Javggg (14 Oct −0300) | r/11 | record |
 | 2026-10-15 | `docs/pgmvox-port.md`, nine phases | r/02 | record |
@@ -125,7 +127,7 @@ and the record differs, both rows are given. Times are UTC unless marked; German
 | 2026-11-02 → 07 | Agents compose his sketch world; every version rejected | r/04 | record |
 | 2026-11-04 | Port: every phase shipped or parked; grammar has no shipped line | r/02 | record |
 | 2026-11-07 → 27 | He builds the half himself (date not recorded) | r/04 | record (undated) |
-| 2026-11-13 / 14 | Layout generator frozen; last commit on `main` | r/02 | record |
+| 2026-11-13 / 14 | Layout generator frozen; last commit on `main`; whether this continues the October pause is not recorded | r/02; account 13 | record; link inference |
 | 2026-11-23 | Branch rulings on doors and schematics | r/02 | record |
 | 2026-11-27 | Study of the hand-built map committed; the author's account; Wandering U zip supplied | r/04, r/10 | record |
 

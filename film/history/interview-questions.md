@@ -1,6 +1,6 @@
 # Open questions, by person
 
-What is still to be asked, after the author's account of 27 November 2026 (twelve instalments) and the research of
+What is still to be asked, after the author's account of 27 November 2026 (thirteen instalments) and the research of
 the same day. Questions he has answered, or the record has settled since, are listed at the end with the answer and its
 source. Within each person the questions run from most to least important for the history. Each names the record or
 account that prompts it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessions/NN`.
@@ -11,9 +11,8 @@ account that prompts it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessio
    and 31 August, 4, 13, 20 and 27 September), with one more number than maps on 4 and 20 September (r/15, r/13). Do you
    count the August weekday evenings among the "Slop Sundays", and can the server's own log or what you sent Ruediger
    say which maps filled each evening, and in what order?
-2. **The October playtest.** You date the last test to 27 September, yet notes "from playing the freeform and trial
-   boards" were sorted on 9 and 10 October, and the log shows no missing matches then (r/05, r/13). Where and with whom
-   were those boards played?
+2. **The viewing of 9–10 October.** Which boards were shown in each of the five screenshots, and where did the viewing take
+   place (`sources/staff-chat-october/`)?
 3. **The opening briefs not yet read.** The starts of sessions 2, 4, 5, 7, 10 and 12 could not be paged to (s/02, 04,
    05, 07, 10, 12), nor the first phase of session 14. Can you paste your first message of each, and the brief of the
    first fifteen, Heftfold and Whinberry Ring (12 August, 12 September)?
@@ -52,12 +51,18 @@ account that prompts it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessio
     verification steps Opus had late in the year?
 19. **What the rules bought.** No record says which rule produced which gain (r/02). Name one rule you think made the
     biggest difference and one you suspect does harm. What would a verification pipeline "where it should be" check?
-20. **The freeze.** Why freeze the layout generator on 13 November, and is it finished or superseded (r/02)?
+20. **The freeze.** Why freeze the layout generator on 13 November, and is it finished or superseded (r/02)? Was it the
+    pause decided at the October viewing continuing, and was that pause meant to be temporary (account 13)?
 21. **The Annealing maps.** The series runs January 2021 to February 2023 (r/08). Which was the first made from a
     travelling-salesman route, and when was the thesis?
 22. **Countryside on 9 October.** The repository has 14 October (r/11). Where was the upload of the 9th, and did
     Alphaboy draw the regions himself?
 23. **Who is `michael`.** The name commits beside yours from 2025 (r/01). Is it you?
+
+## Staff team (mitchiii, wylt, TTtie)
+
+1. **Quoting.** May the history quote your lines from the observer chat of 9–10 October (`sources/staff-chat-october/`)
+   and name you with the roles the author gives: map developer, server admin, developer?
 
 ## Ruediger (Ruediger_LP)
 
@@ -149,6 +154,8 @@ Answers the author gave in his account, one line each.
 | Which board is the quartz one? | Quillon Saltworks, stated definitely. Sable Marsh: very wide spawn, huge wool rooms, no real middle; Cairnmeadow: build zones that meet its oval islands badly; Cinderreach: trees with no crown | account 12 |
 | How did a map reach a test? | Every map in the repository was looked at on a local test server, often with Tttie, and that decided whether it got a test | account 12 |
 | Did he supply Riftwater's ingredients? | Yes, a vague list of thoughts; the model carried it out exactly | account 12 |
+| What were the notes of 9–10 October, and was the last test 27 September? | A viewing of the new pgmvox boards by three people, the first feedback on them, not a test on the real server; 27 September stands | account 13 |
+| Why did he pause after the viewing? | The maps were slowly getting "too good", in looks and diversity, with many new game modes | account 13 |
 | Who made a map with "Muse Spark"? | Tttie; the author believes it is a Meta model, unverified | account 12 |
 
 ## Settled by the record since the questions were first asked
