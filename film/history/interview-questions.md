@@ -281,3 +281,23 @@ account on pgmstudio.de (`research/05` §f).
 8. **New Life and Old Life.** The contest, the year, the school-children winner and the placing are not in the record.
    Where was it held, what was it called, and is the XML change from New Life to Old Life in a commit message of
    yours or Ruediger's?
+
+## Follow-up questions after research 09 (the Base-map session)
+
+### rockymine — 5 questions
+
+1. **Which way up is the paper.** The photograph is wider than tall and the model first laid the long axis along x;
+   your corner coordinates put it along z. Did you turn the sheet when you typed them, and is the 40 by 140 frame the
+   one you meant?
+2. **The 2-wool seed you did not mean.** At 07:37 on 2 July you wrote "mirror the layout to the right along the spawn
+   axis to have a H with a center spine"; at 11:59 you wrote "it's not a h anymore but still a common layout". What
+   made you change it, and is there a drawing of the version with the bridged L-shaped island?
+3. **The first load.** The commit of 21:21 UTC that evening says exported worlds crashed on load. Which world did you
+   load, on which server, and did any Base map ever get walked on after the fix?
+4. **Tracing before the seeds.** You remember tracing existing maps and storing them as seed files before the Base
+   maps. The record shows a Decompose surface in June and the first traced real map as a seed on 4 July. Which of
+   these do you mean, and what was too varied about the maps you traced?
+5. **Where the shell's layers come from.** You wrote the 8×8×8 shell's layers, doors and chests yourself on 1 July,
+   and pointed the model at `outback_outback_edition` for signs. Was the shell modelled on a room in a corpus map, or
+   your own design?
+

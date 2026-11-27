@@ -1,8 +1,8 @@
 # A year of AI-made maps: September 2025 to November 2026
 
 This is the history of how rockymine, with Ruediger_LP and a run of AI models, set out to make PvP maps for PGM
-servers by machine, and of what that tool became. It is written for someone who was not there. It rests on eight
-research files beside it (`research/01` to `research/08`) and on the author's spoken account of 27 November 2026
+servers by machine, and of what that tool became. It is written for someone who was not there. It rests on nine
+research files beside it (`research/01` to `research/09`) and on the author's spoken account of 27 November 2026
 (`author-account-2026-11-27.md`). Every date, number and quotation below comes from one of those, and each paragraph
 says which kind of source it rests on. **The record** is a commit, a file or a published map. **The author's account**
 is his recollection, given on one evening, and it is marked as such wherever it carries a claim the record does not.
@@ -74,14 +74,29 @@ favour of the plan-then-realize direction" (research `08`). The same afternoon a
 correction by id", and the author corrected it. That pattern, a model guessing and the author ruling, is the method
 of the whole year.
 
-**The first worlds the studio built were three grey boards called Base.** On 2 July Opus 4.8 shipped the export
-that writes a world folder, and drove three seeds through it the same morning: Base 2-Island, Base 2-Wool and Base
-4-Team, "The most basic CTW design: two team islands + a contested centre", on a cell of five blocks. Each came out as
-the author remembers: a bedrock floor at y 0, stone to each island's height, and spawn and wool in "a hollow 8×8×8
-bedrock shell". In his account they were his layouts, drawn on squared paper, and he names them "Base to Rule" and
-"Base for Teams"; the record holds the names 2-Wool and 4-Team, which sound much the same, and no drawing. That
-bedrock box became the default room. Rooms could be given a library style from 5 August, but an unbound room still
-stood in the box, and the reviews of at least three later runs say a spawn or wool room was left in it by mistake.
+**The first worlds the studio built were three grey boards called Base, and they began as test fixtures.** The Claude
+Code session that made them was opened at 22:10 UTC on 1 July with "the task Board is empty. I would like to work on
+p9 from the backlog next", and P9 was the export that writes a sketch as a world folder. The author specified the
+8×8×8 bedrock shell for wool and spawn himself that night (23:21), with its layers, doors and chests; Opus 4.8 wrote
+it down and built it, and the export shipped at 07:07 on 2 July. At 07:37 he sent a photograph of a layout drawn on
+squared paper and asked the model to "make this layout as a general seed for testing", naming the three variants he
+wanted: two teams, four teams by a 90-degree turn, and two wools each (research `09`).
+
+**The model misread the drawing, and the author answered with corner coordinates.** It built a team island whose two
+bars stood on one side of the crossbar, one square in the middle where the sheet has two, and committed it at 07:43
+as "a clean 2-island CTW base". Shown the picture at 08:45, it said so itself: "a staircase/bracket, not a clean
+'H'". At 09:09 the author typed the corners of each shape, scaled by the five-block cell ("1,5 3,5 3,11 1,11 …"),
+and the layout came out right at 09:14. The four-team seed followed at 11:13; the two-wool seed was built at 11:21 as
+an H with a spine, which was not what he meant, and again at 12:04 as the H plus a small bridged island, with the two
+squares restored at 12:08. Each came out as a bedrock floor at y 0, stone to the island's height (9, and 13 for the
+squares), and "a hollow 8×8×8 bedrock shell" for spawn and wool. The name Base is the model's; the author's word
+was "the most basic map design out there". The worlds were not played: the first export crashed the 1.8 loader, and
+the fix is the author's own commit at 21:21 that evening. A "seed" was then a pair of JSON files, a drawn layout and an intent, kept in `tools/seeds/` for a test to run. The
+plan model that re-expressed these three as plan files came at 22:47 UTC the same day, and the first real map
+traced into a seed on 4 July; what traced maps earlier, in June, was a surface called Decompose, struck from the board
+on 2 July. That bedrock box became the default room. Rooms could be
+given a library style from 5 August, but an unbound room still stood in the box, and the reviews of at least three
+later runs say a spawn or wool room was left in it by mistake.
 From 27 September the studio complains of it (rule `WX14`). The seeds also stated `"authors": []`, which is where the
 nameless maps of chapter 6 begin (research `07`).
 
@@ -343,8 +358,7 @@ tests show in CommunityMaps only from 27 July to 2 September, not to his last te
 holds in this repository instead, and they are not in PublicMaps. Hello World Micro's room changed colour in the
 record, not place, and so did the full Hello World's a year and a half earlier; the late map whose room moves is in
 neither public repository. The slime and all-greens maps may be one board, Viridian; the quartz-and-end-stone
-map is not among the fifteen. The annealing maps are dated 2021 to 2023, not 2022. The name "Slop Sundays", the instruction that started the Python rework, the squared paper behind
-the Base maps, the fall from Hello World Micro and the in-game colouring of Brittlebush III are his account alone.
+map is not among the fifteen. The annealing maps are dated 2021 to 2023, not 2022. The name "Slop Sundays", the instruction that started the Python rework, the fall from Hello World Micro and the in-game colouring of Brittlebush III are his account alone.
 
 **Several questions the record cannot answer belong to him.** How many blocks were placed by hand on a map named for
 placing none, and whether the 50-log oak at x -27 to -17, z 41 to 52 on No Blocks Placed is the generated tree he
