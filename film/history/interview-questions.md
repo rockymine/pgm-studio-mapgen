@@ -340,3 +340,22 @@ account on pgmstudio.de (`research/05` §f).
 5. **Cedar Crossing.** Its credits say "SuperGrok" and a 7,000-word essay. Did you hear from arcadeboss how it was made,
    did the other Grok maps (Fire on the Mountain to Hot Potato) come from the same method, and does the author count
    Kuusepuu CTC, credited to Claude Opus 5 thirteen days earlier, as an AI map of the same kind?
+
+
+## Follow-up questions after research 12 (who decided what)
+
+### rockymine — 5 questions
+
+1. **Who sets the brief.** The first fifteen, Gypsum Reach, Heftfold and Whinberry Ring's one-sentence concept each
+   begin with a sentence written in a run. For each of those, did you give the sentence, did you give only a mode and a
+   size, or did the model choose its own concept?
+2. **The finish on Bridgid II and the ice map.** For Bridgid II, who wrote the XML, and was the stone world the
+   studio's export before you skinned it? For the ice map, which materials did you intend for the final world, and who
+   builds the middle that is missing?
+3. **Wandering U's XML.** The variables, eight `<dynamic>` stops and countdown actions: did you write them, or was a
+   model told to make a wool room walk a lap, and which decisions in the file were yours?
+4. **Cedar Crossing's method.** Is "a script Grok wrote and a zip" what arcadeboss told you, or your reading of the
+   result? What did the 7,000-word essay fix, and what did Grok decide?
+5. **Where the line is.** Would you call a map in category 5 (a model decides content through the studio, you rule by
+   notes) an AI map in the same sense as one in category 6 (the model's own script), and where would you move Millrace
+   and Whinberry Ring on the scale?

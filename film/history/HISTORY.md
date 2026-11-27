@@ -1,8 +1,8 @@
 # A year of AI-made maps: September 2025 to November 2026
 
 This is the history of how rockymine, with Ruediger_LP and a run of AI models, set out to make PvP maps for PGM
-servers by machine, and of what that tool became. It is written for someone who was not there. It rests on eleven
-research files beside it (`research/01` to `research/11`) and on the author's spoken account of 27 November 2026
+servers by machine, and of what that tool became. It is written for someone who was not there. It rests on twelve
+research files beside it (`research/01` to `research/12`) and on the author's spoken account of 27 November 2026
 (`author-account-2026-11-27.md`). Every date, number and quotation below comes from one of those, and each paragraph
 says which kind of source it rests on. **The record** is a commit, a file or a published map. **The author's account**
 is his recollection, given on one evening, and it is marked as such wherever it carries a claim the record does not.
@@ -399,7 +399,44 @@ it does show is where his choices fell: the Millrace he finished, the Riftwater 
 called a success were all Opus boards. After August's first fifteen, no Haiku board in this repository carries a theme or a prop.
 The deployed studio holds two boards by Haiku 5.5 and two by Grok that no report discusses.
 
-## 11. What remains open
+## 11. Who decided: a spectrum from hand-made to model-made
+
+**"AI map" is a spectrum, and the useful question is who decided each part.** The studio executes in nine of the
+fourteen maps examined in research `12`, so execution cannot be what separates them. That file splits each map into
+seven decisions (concept, layout, terrain shape, colouring, structures and decoration, objectives and XML, finishing)
+and says for each who decided it and what executed it, a person, a model, or an algorithm with a seed. Where the
+record is silent the cell says "unknown".
+
+**The human stayed in five places.** He drew (squared paper, a basin, the rules of a labyrinth), he briefed (a spoken
+brief, an essay behind Cedar Crossing, a concept world with signs), he left notes (26 on one desert board), he ruled,
+and he finished (Millrace, ten person-hours). **The algorithms are the composer, the relief solver, placement,
+themes and the tree grower**, and each decides only what nobody stated: Goldhollow's seed 41 and Whinberry Ring's
+seed 18 were chosen by someone. **The tool contributes execution and refusal**, and a refusal removes options without
+supplying content. **The model's genuine decisions** are visible where nothing was stated, in Riftwater's valley,
+rift and cave, in Whinberry Ring's three levels, and in the wrong ones, a staircase for an H.
+
+**Determinism of execution does not settle authorship, because authorship lives in the inputs.** The same studio turns
+a person's typed corners and a model's spec into worlds by the same code; a compiler is deterministic and writes no
+program. The author's ice map, which the studio never executed, has one author and nothing deterministic in it.
+
+**Six categories, from hand to model:**
+
+1. **Hand-made.** A person decides and builds all of it; a tool at most writes the XML he drew. The ice map,
+   Vauxite and Drastic Change II, Bridgid II.
+2. **Person's design, algorithm's detail.** The studio solves, paints and grows what he did not state. No Blocks
+   Placed; Wandering U, provisionally, since who wrote its dynamic XML is unknown.
+3. **Person's drawing, model's pen.** A person supplies the drawing, the numbers or the objective, a model writes or
+   builds on it, and a person finishes. Base 2-Island, Capture the Cake, Millrace.
+4. **Algorithm's layout, model's spec.** A model states words and numbers, a seeded composer lays out and fills. The
+   first fifteen boards, such as Goldhollow.
+5. **Model's design inside the studio, person's rulings.** Content from the model through the studio's vocabulary,
+   steered by brief, notes and rulings. Gypsum Reach, Whinberry Ring, Heftfold, Overwall.
+6. **Model's own script.** A model decides and writes the program that writes the world; the person gives a concept, a
+   review or nothing. Riftwater, Coldstore, Cedar Crossing.
+
+The table, with a source for every row, is research `12`.
+
+## 12. What remains open
 
 **Several facts the author recalls are not in the record, and one is contradicted by it.** No Blocks Placed credits
 Flamiix, not Tttie. The trees were in the studio before Fable's rebuild, not because of it. The "500-wide" map fits
