@@ -165,3 +165,69 @@ that anyone close to the project or to PGM mapping might have met.*
 `docs/tools/plan.md` §worked example; pgm-studio-mapgen `CLAUDE.md`, `README.md`, `BOARDS-BUILT.md`, `review/rockymine-ruediger-millrace.md`,
 `review/fable-millrace-revamp.md` opening, `WHAT-A-BOARD-IS-MADE-OF.md` opening; branch
 `claude/compassionate-cerf-fg7m17` at `4486636d` (see `film/history/research/04-hand-built.md`).*
+
+---
+
+## Follow-up questions after the author's account
+
+Prepared on 2026-11-27 from the checks in `research/05-author-account-checked.md`, after rockymine's spoken account
+of the same day. Each question names the gap or the contradiction that prompts it. The section on Tttie replaces the
+earlier assumption that the record holds nothing on them: TTtie is a CommunityMaps committer since 2023 and has an
+account on pgmstudio.de (`research/05` §f).
+
+### rockymine — 16 questions
+
+1. **No Blocks Placed's credits.** The `map.xml` has named rockymine, Ruediger_LP ("Wisdom.") and Flamiix
+   ("Minimalist.") since its first commit on 7 August; TTtie appears only as the committer who added the creation date
+   on 15 August. You remember Tttie as the third author. Who is Flamiix, and what did Tttie do on that map?
+2. **The name.** The map is called No Blocks Placed and you say a few blocks were placed by hand after all. Which blocks,
+   and was the name the goal of the experiment or a joke after it?
+3. **The surviving tree.** The world holds seven mirrored pairs of trees; the largest is an oak body of 320 blocks with
+   50 logs at x −27…−17, z 41…52 and its turn at x 16…26, z −53…−42, which reads like the grown limb tree of that week.
+   Is that the generated one, and why did you keep it when you replaced every grown tree on Millrace?
+4. **The first rule per Y level.** The earliest per-height colouring the record holds is the spec key `themeByHeight`
+   (Ashen Quarry, 14 August), one theme for every tier at one height. Is that the prototype you mean, or was there
+   an earlier one in a world or a script that was never committed?
+5. **"Map walls".** Is the phrase your name for the "walls, rims, plateaus" model of 1 August (rim, wall, interior),
+   or for something broader? When did you first call it that?
+6. **The trees and Fable.** The record has your tree world in the studio from 12 August and committed here at 00:53 UTC
+   on 2 September, before the Millrace revamp and before Fable's rebuild. What did Fable's copying change for you, and
+   was the tidy-up you remember the jungle, willow, baobab and olive rows of 20 September and 1 October?
+7. **Ten person-hours.** Your review says the two of you "spent 5 hours". Was that one sitting? Who did the stone, who the
+   houses, who the trees, and what would you not hand to a model again?
+8. **Three agents on the basin.** You remember Sonnet and Opus; the record has Opus 5's Millrace and two Sonnet 4.5 boards,
+   Cutwater and Fallowmere. Did you look at Fallowmere, and what made you choose Opus's?
+9. **Brittlebush III in game.** The plan you drew on pgmstudio.de as "Brittebush III" is in the studio, and pgmvox built a
+   four-team version of it on 9 October; your own colouring, done entirely in game, is in no repository. Will you share
+   that world, and which things in it could neither the studio nor pgmvox say?
+10. **The grammar that did not ship.** The Brittlebush grammar was the clearest case of a look defined once and laid on
+    other maps (Claywork and Sandreach the same evening), yet it is the one phase of the port with no shipped line. Was
+    it parked on purpose, and what would it take?
+11. **The session that started freeform.** You told a session you did not like the layer model and asked it to think;
+    that instruction is not in any commit or report. Do you still have the chat, and what exactly did you say?
+12. **Riverside or Riftwater.** The first freeform board is Riftwater, a floating river valley with a town and a mining
+    village on each side. Is that the one you remember, and what about it told you this was the way forward?
+13. **Slop Sundays.** The only recorded playtests fall on a Friday night and a Saturday (9–10 October), and the 32-a-side
+    test boards were made on a Sunday (27 September). How many Slop Sundays were there, from when to when, and where are
+    the notes from the ones not written down?
+14. **The moshpit map.** Hollow Crown has one monument and one core a team on flat ground, with each team's core inside
+    the enemy's monument cuboid; Spinebreak is 145 × 405 with four objectives a team and 144 blocks between the nearest
+    enemy ones. Neither is 500 wide. Is your memory one of these, both at once, or a board on pgmstudio.de?
+15. **Dead ground that makes sense.** The dead-ground measure was calibrated against your own reading of Wheal Hazel and
+    then became the rule LN5, "more than 12 percent" refuses. Where is the dead area on your hand-built map, and what
+    makes it right where the rule would call it wrong?
+16. **Sonnet, measured.** On the one controlled day (21 September) two of Sonnet 5's four boards carried 27% and 43% dead
+    ground and Opus 5's at most 9.6%, and your best words for a Sonnet board were for Abbeymoor on pgmvox ("really looks
+    like a place"). What did you see in Sonnet's maps that the numbers did not, and did you ever give Sonnet the same
+    verification steps Opus had late in the year?
+
+### Tttie — 4 questions
+
+1. **No Blocks Placed.** You added its creation date in CommunityMaps on 15 August, but the credits name Flamiix beside
+   rockymine and Ruediger_LP. What was your part in that map, and should the credits say so?
+2. **Slop Sundays.** What happened on one, from start to finish: who came, how many maps, how long, and who wrote down
+   what was wrong? Which fault came up so often that you stopped mentioning it?
+3. **"Early maps looked and played alike."** As someone who has kept Watch Your Head and Notre-Daaaaam of Paris alive in
+   CommunityMaps since 2023, what made the AI maps feel the same, and which was the first that felt like its own place?
+4. **Your own sketch.** You have one sketch on pgmstudio.de (`untitled-sketch-7`, last changed 28 October). What did you
+   try to make, and where did the tool stop you?
