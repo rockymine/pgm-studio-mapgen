@@ -26,3 +26,5 @@ Extra banger for the comedy spot: that 500-wide line-up map.
 
 How the first film was made is `film/prompt-a-map/README.md`; plates, voices and audio are re-rendered from it
 (paths in the scripts name a scratch directory and must be changed).
+
+The hand-built "fire and ice" experiment is on branch `claude/compassionate-cerf-fg7m17` (find the repository with `git ls-remote`); another agent is still committing its scripts and scratchpad there, so fetch it fresh.
