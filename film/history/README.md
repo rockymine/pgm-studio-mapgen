@@ -10,7 +10,7 @@ holds, what the **author recalls**, and what is **inference**.
 1. **`HISTORY.md`** — the history itself: ten chronological chapters, then what counts as an AI map, the playtests,
    what the hand-built map shows, and what remains open. Start here.
 2. **`timeline.md`** — one table of dated events, each with its source and its voice.
-3. **`author-account-2026-11-27.md`** — the author's spoken account in eleven instalments, summarised, with the
+3. **`author-account-2026-11-27.md`** — the author's spoken account in twelve instalments, summarised, with the
    note-taker's corrections. Later instalments and the corrections supersede earlier ones (the CORRECTION on Bridgid II
    above all).
 4. **`research/12-who-decided-what.md`** — every map split into seven decisions, who decided each and what executed it;
@@ -58,14 +58,16 @@ holds, what the **author recalls**, and what is **inference**.
 - The test evenings were event rotations the plugin did not report; six evenings fit, three of them Sundays (research/13,
   research/15, account 9).
 - Monuments: obsidian capped at three blocks from 19 August; 27-block cubes exist in two stored worlds (research/14).
+- The flat line-up map is Ashfall Scar, 250 × 190, confirmed by the author on a render; the quartz board is Quillon
+  Saltworks (account 12; research/03).
 - Alderfen Holm has four cores (sessions/08, account 11). No long destroy match exists in the log (research/13).
 
 ## What is open
 
-The 500-wide map (Hollow Crown or Spinebreak); the quartz board (Quillon Saltworks or Tallow Kilnrow); where the 9–10
-October playtest was played, given a last test on 27 September; Aerie's unplayable XML, which no record holds; whether
+Where the 9–10 October playtest was played, given a last test on 27 September; Aerie's unplayable XML, which the author
+states and no record holds; whether
 the 50-log oak is the generated tree; who drew Hello World Micro's layout; the briefs of the first fifteen, Heftfold and
-Whinberry Ring; the date the author built his half; which model "Muse Spark" is. `HISTORY.md` chapter 14 and
+Whinberry Ring; the date the author built his half; which model "Muse Spark" is (the author believes a Meta model). `HISTORY.md` chapter 14 and
 `interview-questions.md` carry them.
 
 ## What was not read
@@ -116,4 +118,6 @@ folder that records a change history.
 | The Sonnet run's brief was thin on layout and its places unknown | sessions/11 | the brief was read: rules and method, underground passages asked, places the model's | sessions/11 appendix |
 | Thornwake and Viridian may not have reached CommunityMaps | research/03 | both did, on 12 August | research/05 |
 | The 500-wide map is most probably Spinebreak | research/03 | Hollow Crown fits better on all but size; still open | research/05 |
+| The 500-wide map is Spinebreak or Hollow Crown | research/05; HISTORY; interview questions; OUTLINE | Ashfall Scar, 250 × 190, found by filtering every `map.xml` and confirmed by the author on a render; Hollow Crown is the Haiku board with the monument inside the core, Spinebreak a capture-the-wool layout with cores in the void | account 12; research/03 |
+| The quartz board is Quillon Saltworks or Tallow Kilnrow, unsettled | HISTORY; interview questions | Quillon Saltworks, which the author now states definitely | account 12 |
 | "AI map" has six categories, the last one model's own script | research/12; earlier HISTORY | the last is split: a model's script inside the author's tool, and a model's own tooling | research/12; research/15 |

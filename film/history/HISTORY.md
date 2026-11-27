@@ -197,21 +197,27 @@ entries, among them `B162`: "An obsidian destroyable may carry at most three obs
 August as rule `DC3`, which builds an oversized one in end stone (research/14). The same review named see-through slab
 roofs (Tallow Weirgate), a 90-block spawn hall (Sable Marsh) and a hole across Tallow Kilnrow's middle where the join
 belongs (research/14). **Account:** "everything was the problem … grundsätzlich einfach schlechte Maps", and the quartz
-map is probably Quillon Saltworks (account, 10). **Record:** both Saltworks and Kilnrow carry quartz, and the faults he
-lists belong to Kilnrow, Weirgate and Sable Marsh rather than Saltworks (research/14); which he means is unsettled.
+board is Quillon Saltworks, which he now states definitely (account, 10 and 12). Sable Marsh he calls a terrible map: a
+very wide spawn, huge wool rooms and no real middle; Cairnmeadow is his example of build zones that meet its oval
+islands badly; Cinderreach shows trees with no crown (account, 12). **Record:** both Saltworks and Kilnrow carry quartz,
+and the faults the review lists belong to Kilnrow, Weirgate and Sable Marsh rather than Saltworks (research/14); the
+board he names is Saltworks regardless.
 
 **The studio then made itself legible to agents.** **Record:** one finding type and one refusal envelope on 15 August,
 125 rules served by id, a dead-ground measure on 16 August calibrated against his reading of one board, and 131 paths
 described on 19 August (research/02, research/05). On 16 August Fable built Sunspit to a brief naming four themes, two
 references and a colour rule (sessions/05); he recalls it looked good from the start (account, 11). On 22 August Haiku
-built Hollow Crown, 100 by 120, each team's core inside the enemy's monument cuboid (research/05). On 25 August Opus 5
+built Hollow Crown, 100 by 120, each team's core inside the enemy's monument cuboid (research/05); **account:** it is the
+board where the monument landed inside the core, which only Haiku managed (account, 12). On 25 August Opus 5
 built the labyrinth Overwall to his structural brief, and Aerie to a free one (sessions/06). On 28 and 29 August a
 session gave made things their name and built Slipway's ship and balloons (sessions/07).
 
 **Aerie's broken XML is in no record.** **Account:** it was unplayable because nothing was editable, wool rooms stood on
 odd islands and build zones were bad; probably there were no continuous blocks at the bottom, so the filters failed
 (sessions list; account, 10 and 11). **Record:** no commit, review or transcript holds the complaint; the model
-reported the board open with zero declines (sessions/06, research/14). **Inference:** Aerie floats from y 26 and has no
+reported the board open with zero declines (sessions/06, research/14). **Account:** he states flatly that its XML was
+not playable and asks to be trusted on it (account, 12); the record's gate-open report and his statement stand side by
+side. **Inference:** Aerie floats from y 26 and has no
 block at y 0, which under PGM's void filter refuses every column outside its build rectangles — the same mechanism the
 author guesses (research/14).
 
@@ -306,7 +312,8 @@ Riftwater in 33 minutes of commits. At 05:42 the next morning he wrote: "Ok. Thi
 From the images it looks like he cooked real hard." (sessions/01). **Account:** he told a session he did not like the
 layer model and to think, and contributed nothing to the first board, a floating island with two villages
 ("Riverside") (account, 1 and 7). The record differs in form: he asked whether an agent could do without the current
-way, and he supplied the ingredients; the board is Riftwater (sessions/01).
+way, and he supplied the ingredients; the board is Riftwater (sessions/01). **Account:** the ingredients were a vague
+list of thoughts, more than a description, and that the model carried it out so exactly is to its credit (account, 12).
 
 **The pace that followed built a library.** **Record:** 8 October holds 86 commits and some twenty boards across game
 modes; by evening the model found 15,800 lines of copied helpers and started `pgmvox`, which carried tunnels, chambers
@@ -395,6 +402,10 @@ compares Opus 5.5 with Sonnet 5.5 on one brief (research/03).
 
 ## 12. The playtests
 
+**A map got a test after a look on a local server.** **Account:** every map in the repository was looked at on a local
+test server, often with Tttie, who is interested in the project, and that look decided whether a map got a test
+(account, 12).
+
 **The tests were event rotations, and the plugin did not report them.** **Account:** on the server an event runs a
 rotation of maps, and those matches were apparently not sent to the match-status channel; the gaps of 8, 11 and 13
 fit tests of that many maps (account, 9). Research/13 found the gaps from the log alone: the counter runs on through
@@ -453,20 +464,26 @@ finish it himself in snow, stone, ice or grass (research/04; account, 8).
 
 ## 14. What remains open
 
-**Five disagreements between record and recollection remain, and the record does not overrule them all.**
+**Three disagreements between record and recollection remain, and the record does not overrule them all.**
 
 | Subject | Account | Record | State |
 |---|---|---|---|
 | The last test | 27 September (account, 1) | notes from playing freeform boards on 9–10 October (research/05) | open: a non-event play is likely, unproven |
-| The 500-wide moshpit map | one core, one monument a team, flat, enemies 10 apart (account, 1) | Hollow Crown fits on objectives (100 × 120); Spinebreak on length (145 × 405) (research/05) | open: he asked for both rendered |
-| The quartz board | Quillon Saltworks (account, 10) | both Saltworks and Kilnrow carry quartz; the faults he lists are Kilnrow's, Weirgate's and Sable Marsh's (research/14) | open |
-| Aerie's unplayable XML | nothing editable, odd islands, bad zones (account, 11) | no record; the model reported it open (sessions/06, research/14) | inference supports his guess |
+| Aerie's unplayable XML | unplayable, stated flatly; nothing editable, odd islands, bad zones (account, 11, 12) | no record; the model reported the gate open with zero declines (sessions/06, research/14) | his account against the record; inference supports his guess |
 | The freeform instruction and Riftwater | "I don't like it, think"; he gave nothing (account, 1, 7) | "what if … his own sort of script"; ingredients and mode were his (sessions/00, 01) | settled in form, his memory compressed |
+
+**The flat map he remembered as 500 wide is Ashfall Scar.** **Record:** a filter over every `map.xml` found fifteen maps
+with exactly two destroyables and two cores, three of them with all four objectives within ten blocks of one line and
+under 100 blocks apart; Ashfall Scar, Sonnet run 2 of 14 August, is the only wide one: spawn, monument, core, centre,
+core, monument, spawn on one line, objectives spanning 70 blocks, a world of 250 by 190 (research/03). **Account:** he
+confirmed it on seeing a render, and it is 250 wide, not the 500 he recalled (account, 12). Neither earlier candidate is
+it: Hollow Crown is the Haiku board where the monument landed inside the core, and Spinebreak is a capture-the-wool
+layout with its cores in the void and the same core-and-monument design twice (account, 12).
 
 **Smaller points stay unsettled.** Who wrote Hello World Micro's layout, by hand or in the plan tool (research/08); whether
 the 17-block oak on No Blocks Placed is the generated tree, which he puts at about 20 blocks (research/08); which
 session drew the probe board's tunnels he calls awkward (sessions/10); what "Muse Spark", credited on two boards of 27
-September, is (research/15); the Annealing dates (research/08); and which model ran the freeform trial agents
+September, is: Tttie made a map with it, and the author believes it is a Meta model, unverified (account, 12; research/15); the Annealing dates (research/08); and which model ran the freeform trial agents
 (research/03).
 
 **The open problem is the one he named first.** Maps that look and feel empty are still made. The rules can say that

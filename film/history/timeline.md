@@ -65,15 +65,16 @@ and the record differs, both rows are given. Times are UTC unless marked; German
 | 2026-08-13 | Floating-goal claim withdrawn; ask-the-author rule; mapgen repository opens | r/02, r/03 | record |
 | 2026-08-13/14 | Trial runs: Haiku's 245-byte shells; corvid-hollow's 27-block obsidian cube | s/04, r/14 | record |
 | 2026-08-14 16:17 | His review filed as B141–B188, `B162` obsidian at most three | r/14 | record |
-| 2026-08-14 | "Everything was the problem"; the quartz map is probably Quillon Saltworks | account 10 | account (open, r/14) |
+| 2026-08-14 | "Everything was the problem"; the quartz board is Quillon Saltworks (stated definitely); Sable Marsh, Cairnmeadow and Cinderreach named as faulty | account 10, 12 | account (r/14 records both Saltworks and Kilnrow with quartz) |
+| 2026-08-14 | Ashfall Scar (Sonnet run 2): the flat line-up map, 250 × 190, two destroyables and two cores on one line | account 12; r/03 | record; confirmed by the author |
 | 2026-08-15 | One Finding, rules API (125); "Hab jetzt ein repo für die ganzen slop maps" | r/02, r/15 | record |
 | 2026-08-16 | Sunspit and three more by Fable to a specific brief; dead-ground measure | s/05, r/05 | record |
 | 2026-08-19 | `DC3` enforces the obsidian cap; API self-describing (131 paths) | r/14, r/02 | record |
 | 2026-08-20 | `tools/mapgen` deleted | r/03 | record |
-| 2026-08-22 | Hollow Crown (Haiku 4.5), 100 × 120 | r/05 | record |
+| 2026-08-22 | Hollow Crown (Haiku 4.5), 100 × 120; the monument landed inside the core | r/05; account 12 | record; account |
 | 2026-08-24 18:58–19:51 | First evening: 6 maps sent, "Add a few very human maps for testing", 6 missing numbers | r/15, r/13 | record; fit inference |
 | 2026-08-25 | Overwall (labyrinth) and Aerie built; Liminal DTM from a friend's prompt | s/06 | record |
-| 2026-08-25 | Aerie's XML unplayable: nothing editable, bad zones | sessions list; account 11 | account (no record, r/14) |
+| 2026-08-25 | Aerie's XML unplayable: nothing editable, bad zones; stated flatly | sessions list; account 11, 12 | account (no record; the model reported the gate open, r/14) |
 | 2026-08-28/29 | Made things named; Slipway's ship and balloons | s/07 | record |
 | 2026-08-30 | His basin; Millrace (Opus 5), Cutwater and Fallowmere (Sonnet 4.5) | r/03 | record |
 | 2026-08-31 20:42 | 8 maps sent; Hollowmarch first in the log, 21:18 | r/15, r/13 | record |

@@ -1,6 +1,6 @@
 # Open questions, by person
 
-What is still to be asked, after the author's account of 27 November 2026 (eleven instalments) and the research of
+What is still to be asked, after the author's account of 27 November 2026 (twelve instalments) and the research of
 the same day. Questions he has answered, or the record has settled since, are listed at the end with the answer and its
 source. Within each person the questions run from most to least important for the history. Each names the record or
 account that prompts it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessions/NN`.
@@ -14,56 +14,50 @@ account that prompts it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessio
 2. **The October playtest.** You date the last test to 27 September, yet notes "from playing the freeform and trial
    boards" were sorted on 9 and 10 October, and the log shows no missing matches then (r/05, r/13). Where and with whom
    were those boards played?
-3. **The 500-wide moshpit map.** Hollow Crown (100 × 120, each core inside the enemy monument's cuboid, flat) fits on
-   objectives; Spinebreak (145 × 405, four objectives a team) on length (r/05). Once both are rendered, which is it, or
-   is it a board on pgmstudio.de?
-4. **The quartz board and the faults you listed.** Both Quillon Saltworks and Tallow Kilnrow carry quartz; the hole
-   across the middle, the see-through slab roofs and the oversized spawn belong to Kilnrow, Weirgate and Sable Marsh
-   (r/14). Which board is the quartz one, and which did you mean by "kilnrow" in the session list?
-5. **The opening briefs not yet read.** The starts of sessions 2, 4, 5, 7, 10 and 12 could not be paged to (s/02, 04,
+3. **The opening briefs not yet read.** The starts of sessions 2, 4, 5, 7, 10 and 12 could not be paged to (s/02, 04,
    05, 07, 10, 12), nor the first phase of session 14. Can you paste your first message of each, and the brief of the
    first fifteen, Heftfold and Whinberry Ring (12 August, 12 September)?
-6. **The hand-built map.** When did you build the half, with which in-game loft tool, and why not in the studio? Is the
+4. **The hand-built map.** When did you build the half, with which in-game loft tool, and why not in the studio? Is the
    room at y 50 the wool room, and how many wools and cores does each team get (r/04)?
-7. **The moment freeform started.** At 22:21 UTC on 7 October you dictated "what if like an agent didn't need to rely on
+5. **The moment freeform started.** At 22:21 UTC on 7 October you dictated "what if like an agent didn't need to rely on
    the current way we build the houses, the terrain" and at 22:26 gave the ingredients (s/00). Is that the remark you
    remember as "I don't like it, think", or was there an earlier one?
-8. **The grammar that did not ship.** You say the Brittlebush look can be expressed in full by the grammar, yet it is
+6. **The grammar that did not ship.** You say the Brittlebush look can be expressed in full by the grammar, yet it is
    the one phase of the port with no shipped line (r/02, r/05). Was it parked on purpose, and what would it take?
-9. **Aerie.** Your complaint and your guess (no continuous blocks at the bottom, so the filters failed) are in no record;
+7. **Aerie.** You state the XML was not playable (account 12); the complaint and your guess (no continuous blocks at the bottom, so the filters failed) are in no record;
    the board as built has nothing at y 0 (r/14). When did you see it, and was it the 25 August version?
-10. **Wandering U in play.** Its comment gives a 110-second lap, its formulas 130 (r/10). Who fell, from where, and did
+8. **Wandering U in play.** Its comment gives a 110-second lap, its formulas 130 (r/10). Who fell, from where, and did
     anyone take a wool? What changed after 6 August?
-11. **No Blocks Placed's oak.** The 50-log oak at x −27 to −17, z 41 to 52 is about 17 blocks tall (r/08). Standing at it
+9. **No Blocks Placed's oak.** The 50-log oak at x −27 to −17, z 41 to 52 is about 17 blocks tall (r/08). Standing at it
     in game, is it the generated tree, and which blocks were placed by hand?
-12. **Kilnholt Cut's tunnel.** On which evening did players find it, and which picture made the causeway look solid to
+10. **Kilnholt Cut's tunnel.** On which evening did players find it, and which picture made the causeway look solid to
     you (s/11)?
-13. **Hollowmarch and Mirkholt in play.** Who fell into the void at Hollowmarch's frontline, and which Mirkholt wool room
+11. **Hollowmarch and Mirkholt in play.** Who fell into the void at Hollowmarch's frontline, and which Mirkholt wool room
     was burnt with flint and steel, in which version (s/09, s/12)?
-14. **Hello World Micro's layout.** You drew it by hand as a small Hello World; it was uploaded with a studio plan file
+12. **Hello World Micro's layout.** You drew it by hand as a small Hello World; it was uploaded with a studio plan file
     (r/08). Did you draw it in the plan tool?
-15. **"Map walls" and the first rule per height.** Is "map walls" the walls, rims and plateaus model of 1 August, and is
+13. **"Map walls" and the first rule per height.** Is "map walls" the walls, rims and plateaus model of 1 August, and is
     the spec key `themeByHeight` (14 August) the per-height prototype you remember (r/05)?
-16. **The probe board's tunnels.** The session where you painted your own layout holds no remark that tunnels were
+14. **The probe board's tunnels.** The session where you painted your own layout holds no remark that tunnels were
     awkward to draw (s/10). Was that the session that drew the board (`session_015WqJ2bzro3wrfHgobgaJFR`)?
-17. **Muse Spark.** Two boards of 27 September, Copper Wash and Reedmere, credit "Muse Spark" (r/15). Which model is
-    that, and who ran it?
-18. **Tracing before the seeds.** The record has a Decompose surface in June and the first traced seed on 4 July (r/09).
+15. **Muse Spark.** Tttie made a map with it and you believe it is a Meta model (account 12). Is there anything in a
+    map file, a chat or a credit that names the model (r/15)?
+16. **Tracing before the seeds.** The record has a Decompose surface in June and the first traced seed on 4 July (r/09).
     Which tracing do you remember from before the Base maps, and what was too varied?
-19. **Bridgid II's first test and the wall run.** Ruediger asked to test it "again" on 14 July, a day before its first
+17. **Bridgid II's first test and the wall run.** Ruediger asked to test it "again" on 14 July, a day before its first
     logged match (r/15, r/13). When did you first see its side columns as a pattern, and did you describe them to a
     model before 1 August?
-20. **Sonnet against Opus.** On 21 September two of Sonnet 5's four boards carried 27% and 43% dead ground against
+18. **Sonnet against Opus.** On 21 September two of Sonnet 5's four boards carried 27% and 43% dead ground against
     Opus 5's at most 9.6% (r/03). What did you see in Sonnet's maps that numbers do not, and did Sonnet ever get the
     verification steps Opus had late in the year?
-21. **What the rules bought.** No record says which rule produced which gain (r/02). Name one rule you think made the
+19. **What the rules bought.** No record says which rule produced which gain (r/02). Name one rule you think made the
     biggest difference and one you suspect does harm. What would a verification pipeline "where it should be" check?
-22. **The freeze.** Why freeze the layout generator on 13 November, and is it finished or superseded (r/02)?
-23. **The Annealing maps.** The series runs January 2021 to February 2023 (r/08). Which was the first made from a
+20. **The freeze.** Why freeze the layout generator on 13 November, and is it finished or superseded (r/02)?
+21. **The Annealing maps.** The series runs January 2021 to February 2023 (r/08). Which was the first made from a
     travelling-salesman route, and when was the thesis?
-24. **Countryside on 9 October.** The repository has 14 October (r/11). Where was the upload of the 9th, and did
+22. **Countryside on 9 October.** The repository has 14 October (r/11). Where was the upload of the 9th, and did
     Alphaboy draw the regions himself?
-25. **Who is `michael`.** The name commits beside yours from 2025 (r/01). Is it you?
+23. **Who is `michael`.** The name commits beside yours from 2025 (r/01). Is it you?
 
 ## Ruediger (Ruediger_LP)
 
@@ -151,6 +145,11 @@ Answers the author gave in his account, one line each.
 | What are Ruediger's and his roles? | Ruediger is map developer; rockymine is a builder | account 3 |
 | When did pgmstudio.de go online, and who uses it? | About two months ago; hardly anyone | account 3 |
 | Which is the 50-log oak? | The generated tree, if it is about 20 blocks high | account, squared-paper section |
+| Which board is the flat line-up map? | Ashfall Scar (Sonnet run 2, 14 August), 250 × 190, not 500 wide; confirmed on seeing a render. Not Hollow Crown (the monument landed inside the core, Haiku) nor Spinebreak (capture-the-wool layout, cores in the void) | account 12; r/03 |
+| Which board is the quartz one? | Quillon Saltworks, stated definitely. Sable Marsh: very wide spawn, huge wool rooms, no real middle; Cairnmeadow: build zones that meet its oval islands badly; Cinderreach: trees with no crown | account 12 |
+| How did a map reach a test? | Every map in the repository was looked at on a local test server, often with Tttie, and that decided whether it got a test | account 12 |
+| Did he supply Riftwater's ingredients? | Yes, a vague list of thoughts; the model carried it out exactly | account 12 |
+| Who made a map with "Muse Spark"? | Tttie; the author believes it is a Meta model, unverified | account 12 |
 
 ## Settled by the record since the questions were first asked
 

@@ -511,3 +511,23 @@ scanned output folder, or the deployed studio, none of which were read here.
     most to you? The review credits *"better theming and using the custom trees"*.
 13. **Between 24 October and 14 November this repository has almost no commits.** Was that the move to the
     fire-and-ice hand-built experiment, or to the studio branch, or a pause?
+
+---
+
+## The flat line-up map: Ashfall Scar
+
+**The map the author meant is Ashfall Scar, not Spinebreak or Hollow Crown.** He described a flat board with spawn, monument, core and the centre in one line, exactly two monuments and two cores, everything within 100 blocks; a filter over every `map.xml` under `maps/` (objectives resolved through their regions) found fifteen maps with two destroyables and two cores, three of them with all four within ten blocks of one line and under 100 blocks apart, and Ashfall Scar is the only wide one. He confirmed it on seeing a render ("Das ist sie!"). The world is 250 by 190 blocks, not the 500 he remembered (account, twelfth instalment). It is Sonnet run 2's board of 14 August.
+
+**Coordinates, read from `maps/dtcm/ashfall_scar/map.xml` for this section** (gamemodes `dtm` and `dtc`; two teams, red and blue):
+
+| Element | Region | x | y | z |
+|---|---|---|---|---|
+| Red spawn point | `red-spawn-point` | 0 | 12 | −90 |
+| Red core | `red-core-region` (cuboid) | −2 to 3 | 13 to 18 | −37 to −32 |
+| Red monument (obsidian) | `red-monument-region` (cuboid) | 0 to 1 | 15 to 18 | −10 to −9 |
+| Observer spawn (centre) | `observer-spawn` | 0 | 25 | 0 |
+| Blue monument (obsidian) | `blue-monument-region` (cuboid) | 0 to 1 | 15 to 18 | 10 to 11 |
+| Blue core | `blue-core-region` (cuboid) | −2 to 3 | 13 to 18 | 33 to 38 |
+| Blue spawn point | `blue-spawn-point` | 0 | 12 | 90 |
+
+Read down the z axis the order is spawn, core, monument, centre, monument, core, spawn, all within x −2 to 3. The two cores' centres lie 70 blocks apart (z −34.5 and 35.5); the four objectives sit between z −37 and 38. There is one destroyable and one core per team, with core leak distance 9. The spawn rectangles are x −40 to 40 at z −95 to −80 and 80 to 95. The 250 by 190 world size is the author's confirmed figure and was not re-measured here from the region files.
