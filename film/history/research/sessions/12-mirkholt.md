@@ -151,3 +151,7 @@ In `specs/opus5-mirkholt/renders/`: `world-iso.png` (the picture sent to the aut
 ## What I did not read
 
 His opening brief and fault catalogue, and everything before 2026-09-14 09:21 UTC except through the repository and the run report. I read user events (my paging covered 09:21 to 20:10 UTC) and the final assistant turns, not the sub-agents' own prose. `Murkwick` was checked only as a name.
+
+## The opening brief (read from the start of the session)
+
+**Not reached; the session's events were not paged at all.** Its stored facts (from the session record): created 2026-09-13 23:39:42 UTC, last updated 2026-09-14 20:10:03, title "Studio mapgen with Opus agents", model `claude-opus-5` at effort `xhigh`, 1,655,825 output tokens, about 309.67 USD, artifact "Twelve Boards, Three Grounds". With twelve boards authored by parallel agents over about 20 hours, paging to the first events would take a hundred or more pages of dense sub-agent traffic. The opening brief and the fault catalogue remain unread; the existing section 2 ("I did not read his opening brief") stands unchanged.

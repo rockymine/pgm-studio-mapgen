@@ -98,3 +98,25 @@ Terrain first, "solely focus on the terrain": confirmed in his words, "just thei
 ## What I did not read
 
 I read the first message and every later human message by id (five, plus one synthetic notice about the pull request), and the turn-end summary of each turn. I did not read the assistant's running text or any tool output, so the model's reasoning for individual choices is taken from its summaries and commit messages. The result list showed more events before the first turn's result than I paged; I saw no earlier turn.
+
+## The opening brief (read from the start of the session)
+
+Paged back through the user-kind events until the first one. The first event in the session is the author's opening prompt, **2026-09-24 16:10:54 UTC** (`client_platform: android`, dictated); the harness loaded the `pgm-board-warmup` and `pgm-board` skill text at 16:11:22 and 16:11:34, after it. Nothing came before. The prompt, verbatim, is the one already quoted in section 2:
+
+"Before we worked on some composer related changes an agent created five different ctw maps and only did the relief. On ctw maps you can't really go that extreme with the terrain and need to be careful about where you place relief marks. Those maps show it wonderfully. Next I would want you to sort of do the same and conceptualize some dtm maps and just their terrain with no theming. While the Guideline says that those maps are a single lane, they needn't be. They can be more complex organic shapes as well. What simply differentiates them is that they offer more room for terrain, and also larger features. Please make around 4 different landscapes with the relief marks. Just take a simple plan with single height, deform it and then apply different "layers" of relief marks to make distinct landscapes."
+(Gloss: an earlier agent made five CTW maps with relief only; do the same now for destroy-the-monument maps, terrain only, no theming; the "single lane" guideline is not binding; make about four distinct landscapes from a simple one-height plan, deformed, with layered relief marks.)
+
+**The terrain-first instruction is this prompt itself**: "just their terrain with no theming" and "only did the relief". It is not a later correction; it is the whole brief, and it refers back to an earlier five-board relief-only exercise.
+
+His early corrections in the first hours, verbatim and in the order read (all English):
+
+**19:04:22** after the model's first four boards (Kelderfell, Twingill, Scarbutte, Cinderhowe), a long dictated review. Its key claims: "one problematic example I would say is uh, the one um, with the canyon. Because this canyon has just very blank walls"; "the walls of the canyon are completely flat, then the bottom of the canyon is fully flat, and then also the the area where the monument is seated on is also very flat"; the best of the four is the riverbed board ("simply because it has some Uh, very nice sort of hills uh, on the side of the map"), the second best Kelderfell; "How the terrain meets the front line it's again just a very abrupt end um, and it's suddenly all flat uh, which is like a consistent theme throughout all of the maps you've designed"; and he asks for what was learned to be written down ("perhaps you can learn something from it and write it down how you've sort of solved the issues"), and mentions the `batter` setting on the ridge line and the scarp as something to try. The review runs to about 700 words; the full text is in the transcript at that time.
+
+**20:13:19** "Scarbutte looks a lot better, but worse at the same time. the grain you added to the terrain added too much noise."
+
+**21:07:18** "there is still some jitter in the terrain, which value is that coming from?"
+
+**21:10:13** "can you try 0.5 everywhere, i want to see the difference."
+
+How much the author specified: **concept** (destroy maps, a landscape each, no lane required) and **method** (single-height plan, deform it, layered relief marks); **layout** and **look** only as far as "more complex organic shapes" and "no theming". What he left to the model: the number of boards (about four), their names, their landscapes and big features, where the relief marks go.
+Changes the write-up: no. Section 2's quote of the brief and its summary of what he specified are right as written; the 19:04 review is the first correction I could see and matches the write-up's "Second pass" row (`bae69791`, 19:30:37).

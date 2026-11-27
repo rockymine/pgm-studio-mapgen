@@ -134,3 +134,11 @@ Under `specs/archive/sonnet5-kilnholt-cut/renders/`: `world-topdown.png`, `world
 ## What I did not read
 
 The opening message and everything before 2026-09-12 00:11:34 UTC (about 40 of the 60 minutes before the commit), and the sub-agents' individual turns. The transcript was read from the newest end down to 00:11:34 UTC, but of that range I read only the assistant text and the author's messages, not tool results.
+
+## The opening brief (read from the start of the session)
+
+**Not reached.** The session was created at 2026-09-11 23:32:54 UTC. Paging back through the user-kind events from the end, I reached 2026-09-12 00:17 UTC; the five builders' traffic makes one page per one to two minutes, and about 45 minutes of the session (23:32 to 00:17) lay above the point where I stopped, with the opening prompt in it.
+
+What the pages I read add: **between 00:17:06 and the end, the only human-typed message in the session is the closing one at 11:22:04 UTC**, already quoted in section 2 ("Please send the top down and iso renders to me ... a self-reflection on how the additional very long prose comment of myself at the beginning helped or hurt you."). So the author wrote nothing during the five builders' run or in the eleven hours after it until that message, and everything he specified is in the opening prompt, which I did not read. The existing section 2's account of its content comes from the model's own self-reflection at 11:23, as the write-up says.
+
+How much the author specified: not read here (the model's account is rules on materials, paths, houses and ground, little on layout). Changes the write-up: no.
