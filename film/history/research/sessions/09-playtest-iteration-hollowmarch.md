@@ -109,3 +109,18 @@ Not found: any message about players falling into the void. What the transcript 
 ## What I did not read
 
 I read every human message (16, by id) and the turn-end summary of every turn. I did not read the assistant's text between turns or any tool output, so the model's reasoning for individual choices is taken from its summaries and the commit messages. A message sent and then lost to an interrupted turn would not show in the turn-end summaries; I saw no sign of one.
+
+## The opening brief (read from the start of the session)
+
+Paged back through the user-kind events until `has_more` was false. The first event is at **2026-09-05 01:32:32 UTC** (the session row says created 01:30:56). It is the author's opening prompt, followed three seconds later by the `pgm-board` skill text loaded by the harness; the model's first reply came after that. The first two author messages, verbatim:
+
+**01:32:32** "please look into the map Sunspit. I would like you to fix the map and iterate on it. the map is a little aged and comes with some errors you'll hit immediately."
+(Gloss: look at the Sunspit map, fix it and iterate; it is old and has errors you will hit at once.)
+
+**01:42:44** (ten minutes later, after the model had started) "maybe some actual context will help. the build zones in the middle are sort of hard to discover at the moment. cutting out a piece of the lake and making it void so that the zone actually extends a full "leg" would make it read a bit better already. then the defense walls for the one woolroom would obviously need a different placement, for that the woolroom needs to be pushed back a little. then the spawn should be reconstructed a little bit. with the recent changes, given the right size, iron will automatically be seated in the right place. it currently sits left of the spawn, not really visible to the playes. or it might not have iron at all, i dont remember right now. in general the beach area is real nice and could use some proper new boulders that are of a stony pattern and not just sand on sand."
+(Gloss: the mid build zones are hard to find, so cut a piece of the lake to void so a zone reaches a full leg; move the wool room back so its defence walls fit; rebuild the spawn, iron will seat itself when it is the right size; the beach is good but wants real stone boulders.)
+
+The later corrections in section 2 are the same kind: all of them are in English, voice-dictated, and the Hollowmarch request at 11:47 and 12:13 is the only place the author names that map. No message in the first hours, or in the whole session up to the 14:31 context summary, mentions players falling into the void or mountains; the playtest feedback is not in this transcript.
+
+Specified: **layout and look, in part** (the leg shape of the build zones, where the wool room goes, the boulder material), no concept, because the map already existed. Left to the model: how to find and fix the "errors you'll hit immediately", the spawn rebuild, the boulder placement, everything about driving the studio.
+Changes the write-up: no. The write-up's section 2 already opens with this prompt at 01:32:32 and the 01:42:44 correction, so this session was the one that was already read to its start; its statement "Neither the word 'playtest' nor a player report appears in any message" holds on the full paging, and the voids and mountains remain the author's description only.
