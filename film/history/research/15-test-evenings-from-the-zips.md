@@ -128,3 +128,41 @@ showed it the layouts on pgmstudio.de.
 **The author's side of the same conversation.** On 2 September he sent Millrace as "AI to the left, our improved
 version (5 hours effort) to the right". On 16 August he described the rule set ("like 50 different violations") and
 why he adds rules by hand rather than letting a model improve the generator by itself.
+
+## 5. What the conversation with Ruediger adds
+
+**The conversation runs from 2025 to the documentary itself, and it carries the idea, the first XML and the
+evenings.** An agent read all 2,599 messages; ten of its quotes were checked against the export. Quotes keep their
+German. **[R]** is the author, **[RU]** Ruediger. Times UTC.
+
+| Date | What | Evidence |
+|---|---|---|
+| 2025-09-26 | The earliest statement of the AI-map idea is Ruediger's, over a layout tool the author made with Google's AI | [RU] asks when an AI will scan all maps and make its own |
+| 2025-09 to 11 | Layout tools in Google AI Studio and v0: seeds, JSON export, a background image, world import, regions drawn over a map | [R] "vielleicht kommt man damit in richtig ki generierung" (29 Sep 2025) |
+| 2025-12-09 | First mention of Claude: the match-logging plugin whose data later checks layouts | [R] "claude hat gut gearbeitet" |
+| 2026-02 to 03 | 689, then 3,000 logged matches; a per-map configuration of 177 maps "dokumentiert für die ki" | [R], 2 Feb, 8 and 14 Mar |
+| 2026-03-19 | | [R] "ai maps soon tm" |
+| 2026-05-29 | Polygon drawing in the editor is Ruediger's idea | [R] "Dein polygon map zeichnen gedöns wird jetzt implementiert" |
+| 2026-06-13 | The studio's third rewrite, so that it can be hosted | [R] "Haben das Projekt zum dritten Mal neu geschrieben" |
+| 2026-06-17 to 21 | Claude names the author's next map "Cobalt Crossing" and writes its XML; it becomes **Drastic Change II**. Ruediger reviews the XML (kill rewards, includes, block drops) | [R] "ist das jetzt die erste xml jemals die jemand geschrieben hat ohne sie zu schreiben?" |
+| 2026-06-19/20 | Ruediger proposes the method of the later evenings: generate many, test the best ten in one evening, paint them afterwards | [RU] generate maps, take the first 100, test the top 10 |
+| 2026-06-23 | The first generated XML loads | [R] "habe die erste xml geladen und pgm hat sie angenommen" |
+| 2026-07-01/02 | Vauxite sent; then the three base maps, "dumme 'seeded' maps" | [R] "Wir können jetzt maps massenproduzieren lol" |
+| 2026-07-14 | Bridgid II had been tested before; seven a side was too few | [RU] "bridgid 2 nochmal testen?" |
+| 2026-07-17/18 | Capture the Cake designed together and loaded the same night | [R] "komplette a/d xml fertig / ist auf dem server" |
+| 2026-07-27/28 | `hello_world_micro.zip` and the Kuusepuu CTC XML sent | zips in the conversation |
+| 2026-07-31 | The moving wool room: Ruediger's timing (every ~7½ minutes, both sides together); the author's first prompted theme | [R] "so dumm und genial" |
+| 2026-08-06 | `wandering-u.zip` sent; a locale bug made a 255-block tree | the zip, 20:11 |
+| 2026-08-09 | Ruediger on No Blocks Placed: dynamic, "bald im pool" | [RU] |
+| 2026-08-12/13 | Eight agents generate overnight; `thornwake.zip`, `hk1_viridian.zip` sent; no good maps yet | [R] "Die KI generiert jetzt 8 Maps für uns" |
+| 2026-08-15 | This repository opens for the generated maps | [R] "Hab jetzt ein repo für die ganzen slop maps" |
+| 2026-09-02 | The model's own Millrace beside the hand-finished one; the author's WorldEdit commands in the prompt "hat den größten unterschied gemacht" | `review/rockymine-ruediger-millrace.md` |
+| 2026-09-03/04 | Ruediger writes his own prompts (a four-team map, "Quarter Stone") | plan JSON and prompt in the conversation |
+| 2026-09-12 | The name of the evenings is Ruediger's | [RU] "slop sunday" |
+| 2026-09-27 | pgmstudio.de goes public the same day as the last evening | [R] "pgmstudio.de ist jetzt meins" |
+| 2026-09-28 | A player from the event sends a two-page review of the tool | [R] |
+| 2026-10-10 | Ruediger proposes picking the three best AI maps, finishing them and testing | [RU] "die drei besten ki maps auszuwählen ein bisschen nachzubesser" |
+| 2026-10-19 | The evenings stop | [R] "nicht so die Motivation AI Maps zu machen oder zu spielen. Genug Material haben wir ja." |
+
+**The conversation says nothing of the wall run, Countryside or the origin of No Blocks Placed.** Those, and when
+Bridgid II was first tested, were settled elsewhere, probably by voice.
