@@ -1,3 +1,5 @@
+> This outline predates the author's account of 27 November 2026 and needs revising against `HISTORY.md` before any film is built.
+
 # A Rule Is Not a Design — outline for approval
 
 The proposal for the history film, written for the author to approve before anything is built. It follows the

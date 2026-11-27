@@ -1,180 +1,142 @@
-# Master timeline — the history film
+# Timeline, September 2025 to November 2026
 
-The spine of the film, in date order. Every row is taken from one of the four research files under
-`film/history/research/`, named in the last column (`01` origins, `02` studio, `03` maps and models, `04`
-hand-built); the table of uploads further down is from `11` and the match-log table from `13`. Nothing in the events table was measured or dated afresh, and where a research file marks a fact as uncertain the
-row says so. The chapter column refers to `OUTLINE.md`.
+One table, in date order. **Voice** says what kind of claim a row is: **record** (a commit, file, published map, server
+log, message or transcript holds it), **account** (the author recalls it, `author-account-2026-11-27.md`, instalment
+given), **inference** (a reading made for this history; its basis is the source named). Where a date is the author's
+and the record differs, both rows are given. Times are UTC unless marked; German summer time is UTC+2 to 25 October.
+`(r/NN)` is `research/NN`, `(s/NN)` is `research/sessions/NN`.
 
-Repositories are abbreviated: **CTW** `rockymine/CTW-Layout-Generator`, **MLE** `rockymine/MinecraftLayoutEditor`,
-**PMS** `rockymine/pgm-map-studio` (Python), **studio** `rockymine/pgm-studio`, **mapgen** `pgm-studio-mapgen`.
-Dates are author dates as the research read them.
+| Date (UTC) | Event | Source | Voice |
+|---|---|---|---|
+| 2021-01 to 2023-02 | Annealing, II, III, IV and II Short, rockymine with Ruediger_LP and DerStiv | r/08 | record |
+| 2022 | The Annealing maps came from his master's thesis on the travelling salesman problem | account 3 | account |
+| 2025-09-26 | Ruediger asks when an AI will scan all maps and make its own | r/15 | record |
+| 2025-09-28 → 10-03 | `CTW-Layout-Generator` in Google AI Studio: seeded layouts with `SPAWN`, `WOOL`, `HUB`, `FRONT_LINE`; JSON only | r/01 | record |
+| 2025-10-10 → 10-12 | `MinecraftLayoutEditor` (C#): a `Graph` of typed nodes, symmetry, then a `.schematic` download | r/01 | record |
+| 2025-11-06 | World import "(claude & grok)", the first models named in a commit; the editor stops 16 Nov | r/01 | record |
+| 2025-12-09 | First mention of Claude: the match-logging plugin | r/15 | record |
+| 2026-02 → 03 | 689, then 3,000 logged matches; 177 maps "dokumentiert für die ki"; 19 Mar "ai maps soon tm" | r/15 | record |
+| 2026-05-29 | Polygon drawing in the editor, Ruediger's idea, is being built | r/15 | record |
+| 2026-05-31 | `pgm-map-studio` (Python, Sonnet 4.6) opens, reading worlds for islands | r/01 | record |
+| 2026-06-05 | Pamphlet: "The ground plane is not just terrain — it is the map's navigational grammar." | r/01 | record |
+| 2026-06-12 03:24 | Last Python commit; `pgm-studio` first commit 17:21 | r/01 | record |
+| 2026-06-13 | Port to ASP.NET Core + Blazor, 145 files, Opus 4.8; "zum dritten Mal neu geschrieben" | r/01, r/15 | record |
+| 2026-06-17 → 21 | Claude names "Cobalt Crossing" and writes its XML; it becomes Drastic Change II | r/15 | record |
+| 2026-06-19/20 | Ruediger proposes the evenings' method: generate many, test the best ten in one evening | r/15 | record |
+| 2026-06-20 | Corpus: "88% of real maps carry a contested middle"; organic spline generator starts | r/01, r/08 | record |
+| 2026-06-23 | "habe die erste xml geladen und pgm hat sie angenommen" | r/15 | record |
+| 2026-06-24 21:47 | Vauxite, Drastic Change II, Capture the Wool CTW to CommunityMaps, with the studio export's traces | r/11 | record |
+| 2026-06-24 | The first maps whose XML he made in the browser; concepts, terrain, colours human | account 5, 8 | account |
+| 2026-06-28 02:45 | Capture the Wool CTW first played | r/13 | record |
+| 2026-07-01 20:53 | Vauxite 1.0.1 (spawn yaws, two-rectangle spawns, build ceiling); the author said 2 July | r/11 | record |
+| 2026-07-01 23:21 | The author specifies the 8×8×8 bedrock shell for spawn and wool | r/09 | record |
+| 2026-07-02 07:37 | The squared-paper photo, "as a general seed for testing"; misread as a staircase | r/09 | record |
+| 2026-07-02 09:09 → 12:08 | Corner coordinates; Base 2-Island right; Base 4-Team 11:13; Base 2-Wool 11:21, rebuilt 12:04–12:08 | r/09 | record |
+| 2026-07-02 | The drawing is the two-team map; Base maps the first made this way | account, squared-paper correction | account |
+| 2026-07-02 | He had already traced maps into seed files, and the seed was the plan model | account, squared-paper correction | account (contradicted, r/09) |
+| 2026-07-02 14:31 / 14:54 | Plan-graph design document replaced by areal pieces and interfaces | r/08 | record |
+| 2026-07-02 20:21 | PrivateMaps: "Irongate Harbor remove dev phase" (his "2 July" upload) | r/15 | record |
+| 2026-07-02 21:21 | His fix: exported worlds crashed the 1.8 loader | r/09 | record |
+| 2026-07-02 22:47 | Plan model; seeds re-expressed as plans; `FannedGraph` enters, still in the studio | r/09, r/08 | record |
+| 2026-07-04 | Composer starts; first real map traced into a seed; recorded play as evaluation | r/01, r/09 | record |
+| 2026-07-14 00:27 | Bridgid II to CommunityMaps (five commits), created 12 July | r/11 | record |
+| 2026-07-14 | Bridgid II: layout in the browser in a day, skinned in game in an evening; side columns gave the wall run | account 5 (corrected) | account |
+| 2026-07-14 | Ruediger: "bridgid 2 nochmal testen?" (tested before) | r/15 | record |
+| 2026-07-15 | Destroy modes; organic generator retired; Bridgid II first in the log (22:13) | r/01, r/08, r/13 | record |
+| 2026-07-17/18 | Capture the Cake designed with Ruediger, loaded the same night | r/15 | record |
+| 2026-07-21 | "the box pipeline is THE composer" | r/01 | record |
+| 2026-07-27 21:33 | Kuusepuu CTC, "CTC conversion: Claude Opus 5" | r/06, r/11 | record |
+| 2026-07-27 | Kuusepuu is an ordinary destroy map with a cake objective, not an AI map | account 6 | account |
+| 2026-07-27 23:10 | Hello World Micro, "grey map for concept test", studio plan file; recolours its wool room | r/07, r/08 | record |
+| 2026-07-28 00:30 | Base 4-Team played, 28 players, 2m 36s, Green | r/13 | record |
+| 2026-07-31 | Kuusepuu CTC 1.0.3 "Reported live"; first play 21:20, 47 players; moving-room timing by Ruediger | r/06, r/13, r/15 | record |
+| 2026-08-01 | Terrain painting "walls, rims, plateaus"; wall run 16:43; tree prototype page 23:46 | r/05, r/11, r/10 | record |
+| 2026-08-02 | Grown tree as Catmull-Rom limbs with stems, leader, height | r/10 | record |
+| 2026-08-06 20:11 / 20:15 | `wandering-u.zip` sent; PrivateMaps "Wandering U: added" | r/15 | record |
+| 2026-08-06 | Wandering U tested; layout his in text, XML Claude's | account 4, 8 | account |
+| 2026-08-06 19:46–20:11 | One missing match number; it closes before the zip was sent, so it is not Wandering U | r/13 with r/15 | inference |
+| 2026-08-07 18:58 | No Blocks Placed: rockymine, Ruediger_LP, Flamiix | r/05, r/06 | record |
+| 2026-08-10 04:00 | Cedar Crossing (arcadeboss, SuperGrok); measured by an Opus 5 session the same day | r/11, s/03 | record |
+| 2026-08-10 | Cedar made on grok.com from a Grok design document, over a hundred zips | r/15 | record |
+| 2026-08-11/12 | The first fifteen through `tools/mapgen`, 11 Opus 5 and 4 Haiku 4.5; MG1–MG13 | r/03 | record |
+| 2026-08-12 21:13 | PrivateMaps deletes the three Base maps and Wandering U | r/15 | record |
+| 2026-08-12 21:20 | Thornwake and Viridian to CommunityMaps; tested on mapdev, which does not report | r/11, r/15 | record |
+| 2026-08-12 | 75 hand-built trees measured: "1516 of 4020 never touch their branch" | r/02 | record |
+| 2026-08-13 | Floating-goal claim withdrawn; ask-the-author rule; mapgen repository opens | r/02, r/03 | record |
+| 2026-08-13/14 | Trial runs: Haiku's 245-byte shells; corvid-hollow's 27-block obsidian cube | s/04, r/14 | record |
+| 2026-08-14 16:17 | His review filed as B141–B188, `B162` obsidian at most three | r/14 | record |
+| 2026-08-14 | "Everything was the problem"; the quartz map is probably Quillon Saltworks | account 10 | account (open, r/14) |
+| 2026-08-15 | One Finding, rules API (125); "Hab jetzt ein repo für die ganzen slop maps" | r/02, r/15 | record |
+| 2026-08-16 | Sunspit and three more by Fable to a specific brief; dead-ground measure | s/05, r/05 | record |
+| 2026-08-19 | `DC3` enforces the obsidian cap; API self-describing (131 paths) | r/14, r/02 | record |
+| 2026-08-20 | `tools/mapgen` deleted | r/03 | record |
+| 2026-08-22 | Hollow Crown (Haiku 4.5), 100 × 120 | r/05 | record |
+| 2026-08-24 18:58–19:51 | First evening: 6 maps sent, "Add a few very human maps for testing", 6 missing numbers | r/15, r/13 | record; fit inference |
+| 2026-08-25 | Overwall (labyrinth) and Aerie built; Liminal DTM from a friend's prompt | s/06 | record |
+| 2026-08-25 | Aerie's XML unplayable: nothing editable, bad zones | sessions list; account 11 | account (no record, r/14) |
+| 2026-08-28/29 | Made things named; Slipway's ship and balloons | s/07 | record |
+| 2026-08-30 | His basin; Millrace (Opus 5), Cutwater and Fallowmere (Sonnet 4.5) | r/03 | record |
+| 2026-08-31 20:42 | 8 maps sent; Hollowmarch first in the log, 21:18 | r/15, r/13 | record |
+| 2026-09-02 00:53 | His tree world committed to mapgen | r/05 | record |
+| 2026-09-02 00:18 / 00:28 | Millrace 2.0.0 to CommunityMaps; played ten minutes later | r/11, r/13 | record |
+| 2026-09-02 | Five hours of hand finishing with Ruediger; Fable 5.1 diffs it; copied tree | r/03, s/02 | record |
+| 2026-09-02 | Fable's tree copying led him to tidy and add his tree world | account 1 | account (order contradicted, r/05) |
+| 2026-09-02 23:01 | Alderfen Holm from a player's prompt; four cores | s/08 | record |
+| 2026-09-04 | "made by" sign left off where nobody is named (69 of 74) | r/07 | record |
+| 2026-09-04 20:32–23:51 | 6 maps sent, "slop time"; Millrace, 7 missing numbers, then six earlier boards visible | r/15, r/13 | record |
+| 2026-09-04 | The seven missing matches were the six sent that evening, plus one | r/15 | inference |
+| 2026-09-05 | Sunspit rebuilt, Hollowmarch flattened; slope axis | s/09, r/02 | record |
+| 2026-09-09/10 | Ten agents paint his drawn layout; grown tree removed on his ruling | s/10, r/02 | record |
+| 2026-09-11 23:32 | Sonnet run brief asks for underground passages; Kilnholt Cut's hollow causeway | s/11 | record |
+| 2026-09-12 | "slop sunday", Ruediger's name for the evenings | r/15 | record |
+| 2026-09-13 21:18–22:56 | 11 maps sent and ordered; 11 missing numbers; Alderfen Holm and Millrace visible | r/15, r/13 | record |
+| 2026-09-14 | Mirkholt corrected by his two messages; "This map is not good." | s/12 | record |
+| 2026-09-19 | `WHAT-A-BOARD-IS-MADE-OF.md`: "None of it is enforced anywhere" | r/03 | record |
+| 2026-09-20 21:25–22:46 | 7 maps sent; 8 missing numbers; Millrace after | r/15, r/13 | record |
+| 2026-09-21 | Haiku 4.5, Sonnet 5, Opus 5 on one brief | r/03 | record |
+| 2026-09-22 | First Opus 5.5 commit | r/02 | record |
+| 2026-09-24 | Scarbutte and three more, terrain only | s/13 | record |
+| 2026-09-26 → 28 | Discord sign-in, tokens, queue, pgmstudio.de self-deploys | r/02 | record |
+| 2026-09-27 | Textures (`render/eye`); nine boards painted; `WX14` on the bedrock box | r/02, r/07 | record |
+| 2026-09-27 20:55–22:37 | 11 `/event add`, Delverdale and Whitstone Weald, 13 missing numbers; "pgmstudio.de ist jetzt meins" | r/15, r/13 | record |
+| 2026-09-27 | The last AI-map test | account 1 | account |
+| 2026-09-28 | Map notes pinned to ground; a player from the event reviews the tool | r/05, r/15 | record |
+| 2026-09-29 | Gypsum Reach and Sootcombe worked through notes in five rounds | s/14 | record |
+| 2026-10-05 → 08 | Countryside in the studio, five rows | r/11 | record |
+| 2026-10-07 22:21 / 22:26 | "what if like an agent didn't need to rely on the current way…"; ingredients and mode | s/00 | record |
+| 2026-10-07 22:37 | Riftwater, the first freeform board | s/01 | record |
+| 2026-10-07 | He told a session he did not like the layer model; gave nothing to the first board | account 1, 7 | account (differs in form, s/01) |
+| 2026-10-08 05:42 | "Ok. This is a whole different class of map." | s/00 | record |
+| 2026-10-08 19:09 | `pgmvox` begins | s/01 | record |
+| 2026-10-09 | Alphaboy uploads Countryside | account 5 | account |
+| 2026-10-09 | Brittlebush read; `pgmvox.grammar`; Brittlebush III built from his plan | r/05 | record |
+| 2026-10-09 | Brittlebush look fully expressible; Brittlebush III never player-tested | account 2 | account |
+| 2026-10-09/10 | Notes from playing the freeform and trial boards: 30 faults, 9 the studio would catch | r/05, r/06 | record |
+| 2026-10-09/10 | Played outside an event, on a server that does not report | r/13, r/15 | inference |
+| 2026-10-10 | Studio against pgmvox, Sonnet 5.5: comparable; Ruediger proposes finishing the three best | r/03, r/15 | record |
+| 2026-10-15 02:13 | Countryside committed by Javggg (14 Oct −0300) | r/11 | record |
+| 2026-10-15 | `docs/pgmvox-port.md`, nine phases | r/02 | record |
+| 2026-10-16 | Six blind AI entries to a Fire and Ice contest, all DTC; Viridian played, the last board of this project in the log | r/04, r/13 | record |
+| 2026-10-18 | The rectangle plan retires | r/02 | record |
+| 2026-10-19 | 803 2.0.1 with studio-made XML; "nicht so die Motivation … Genug Material haben wir ja." | r/11, r/15 | record |
+| 2026-10-22 | Coldstore, from his concept world: "finished and the map.xml a success" | r/03 | record |
+| 2026-10-24 → 25 | Modifier stack replaces relief; carves | r/02 | record |
+| 2026-11-02 → 07 | Agents compose his sketch world; every version rejected | r/04 | record |
+| 2026-11-04 | Port: every phase shipped or parked; grammar has no shipped line | r/02 | record |
+| 2026-11-07 → 27 | He builds the half himself (date not recorded) | r/04 | record (undated) |
+| 2026-11-13 / 14 | Layout generator frozen; last commit on `main` | r/02 | record |
+| 2026-11-23 | Branch rulings on doors and schematics | r/02 | record |
+| 2026-11-27 | Study of the hand-built map committed; the author's account; Wandering U zip supplied | r/04, r/10 | record |
 
-## Events
+## Counts behind the table
 
-| # | Date | Repo | Commit | Event | Why it matters | Ch. | Src |
-|---|---|---|---|---|---|---|---|
-| 1 | 2025-09-28 | CTW | `2aed35c` | "Initial commit": the README of a Google AI Studio app | The first trace of the whole project, and it was made in AI Studio, not by hand | 2 | 01 |
-| 2 | 2025-10-01 | CTW | `6691417` | A seeded CTW layout generator (`lib/mapGenerator.ts`, 806 lines) with node types `SPAWN`, `WOOL`, `HUB`, `FRONT_LINE`, `CENTER_HUB` | The vocabulary of the later model exists nine months early, and the map is a graph | 2, 3 | 01 |
-| 3 | 2025-10-03 | CTW | `3eab815`, `ec9ca62` | A step-wise manual editor; snapping to the symmetry line; the last commit. The only export is "Download JSON" | The repository stops after six days, and it never made a block | 2 | 01 |
-| 4 | 2025-10-10/11 | MLE | `d460b47`, `4d132b2` | A self-built C# solution (Blazor WebAssembly, `net10.0`) around a `Graph` of typed nodes; symmetry, mirror and rotate the next day | The C# era begins here, in October 2025; symmetry is the first feature after the canvas | 2, 3 | 01 |
-| 5 | 2025-10-12 | MLE | `d961f6a`, `9f978e3` | "add schematic creation and download"; "render edges with bresenham" | **The first downloadable blocks**: a drawn graph becomes a `.schematic`, an edge becomes a line of blocks | 2 | 01 |
-| 6 | 2025-11-06 → 11-16 | MLE | `d2c4bc3`, `d23891b`, `f683004` | World import "(claude & grok)"; XML import; the last commit on `master` | The first AI models named in a commit message; the first reading of a real world and a `map.xml` | 2 | 01 |
-| 7 | 2026-05-31 | PMS | `915c61c`, `ba9c9b3` | The Python scaffold, co-authored by Claude Sonnet 4.6; island detection over scanned worlds | A second start, five and a half months later, by reading existing maps rather than generating | 2 | 01 |
-| 8 | 2026-06-05 | PMS | `12d6395` | The CTW pamphlet: "The ground plane is not just terrain — it is the map's navigational grammar." | The clearest early statement of why the void steers play | 3 | 01 |
-| 9 | 2026-06-07 | PMS | `4f095eb` | A browser sketch exports as "a complete, PGM-loadable map folder" | The loop from drawing to loadable world closes, in Python | 2 | 01 |
-| 10 | 2026-06-12 | PMS → studio | `490aebe` (03:24), `f499ea88` (17:21) | The last Python commit; fourteen hours later, pgm-studio's first commit, an empty README | The Python studio was worked on until the night before the C# one opened | 2 | 01 |
-| 11 | 2026-06-13 | studio | `7b30744a` | "Initial import: ASP.NET Core + Blazor WASM port of pgm-map-studio": 145 files, +18,093 lines, co-authored by Claude Opus 4.8 | A full port in one day, on the stack still used today | 2 | 01 |
-| 12 | 2026-06-20 | studio | `f25a9249` | Corpus analysis (N=347): "the generator emits 0 neutral mid pieces but 88% of real maps carry a contested middle" | The corpus becomes the measure, and the middle is named as what is missing | 3 | 01 |
-| 13 | 2026-07-02 | studio | `845ccb0a` (14:31), `313ae96b` (14:54) | The map-as-graph written up as an architecture (first Fable 5 commit); 23 minutes later the graph is dropped for areal pieces | The oldest idea in the record, abandoned because "a thinned skeleton cannot represent side contact" | 3 | 01 |
-| 14 | 2026-07-02 | studio | `10137274`, `188d61ce` | A layout-rules strawman, numbered "for correction by id"; the author's first correction round the same afternoon | The rules begin as guesses a human corrects: the oracle's first appearance | 6 | 01 |
-| 15 | 2026-07-04 | studio | `7b4603cc`, `ec7132d3` | The composer starts; recorded play enters ("105 matches, 510 players, 199 grid nodes" on ingwaz) | The generator and its evaluation instrument begin the same day | 3, 4 | 01, 02 |
-| 16 | 2026-07-10 → 07-21 | studio | `9d75d05c`, `d1489f23` | Typed spawn / hub / frontline / mid boxes; "the box pipeline is THE composer" | The hub–approach–frontline–middle model becomes the only generator | 3, 4 | 01 |
-| 17 | 2026-07-15 | studio | `5825954d` | The DTM/DTC contract: "DTM is cheaper than the CTW wool we already ship" | Destroy modes arrive a month after CTW, which says CTW came first for its structure, not its ease | 3 | 01 |
-| 18 | 2026-08-09 | studio | `b34cf7eb` | How a CTW match is played, read off recorded matches: a void "is uncrossable at every height" | The void as permanent route structure, from play rather than theory | 3 | 01 |
-| 19 | 2026-08-11 | studio | `755ab378`, `3c82ff1a` | "A shell became a house — six roofs, a zoned floor, windows, a porch"; a building is a stack of storeys | Houses become a parametric system in a week | 5 | 02 |
-| 20 | 2026-08-12 | studio | `c9ea46d6` | 75 hand-built trees measured: "1516 of 4020 never touch their branch" | The generated tree is measured as broken against the author's own | 5 | 02 |
-| 21 | 2026-08-12 | studio | `4cf8b107`, `1296cbc7` | The relief solver lands in `Geom`; contours traced on the server | The first terrain design: heights solved from marks | 4 | 02 |
-| 22 | 2026-08-11/12 | studio | `5897944a`, `1ffb7728` | `tools/mapgen` builds fifteen boards from one JSON spec each (eleven Opus 5, four Haiku 4.5), Spinebreak among them; the author's fault list MG1–MG13 the same night | The first AI-made boards, and the first review of them | 6 | 03 |
-| 23 | 2026-08-13 | mapgen | `7a6c15c1`, `aa429eb3` | pgm-studio-mapgen opens: ClayClay traced from a world; Opus 5's report that `tools/*` "is a reimplementation, not a caller" | The agent tells the author to delete the agent's own shortcut and use the real API | 7 | 03 |
-| 24 | 2026-08-13 | studio | `6eec9b8b` | "A floating goal is the design, and gameplay questions have an oracle": the claim that every generated destroy map was unwinnable is withdrawn | The ask-the-author rule is born from a confident, wrong claim | 6 | 02 |
-| 25 | 2026-08-14 | mapgen | `7573c380`, `43874f3e`, `78c7e4d2` | Runs 1–2: Haiku, Sonnet and Opus on the same kind of brief; Haiku's two boards "verified working" are 245-byte `map.xml` shells | The first model comparison, and the first false report of success | 6, 7 | 03 |
-| 26 | 2026-08-15 | studio | `50caa477`, `f131ee21` | One `Finding` and one refusal envelope; `GET /api/rules` answers 125 rules | A refusal becomes something a caller can ask about by id | 7 | 02 |
-| 27 | 2026-08-15 | mapgen | `500f5065` | Grok authors three maps blind, "no .NET 10, no MariaDB"; all three layouts "rasterize to no ground" | A model writing for a tool it cannot run | 7 | 03 |
-| 28 | 2026-08-15 | studio | `0d8f68e7` | The model states its own range: the Thunder series cannot be expressed, "a limitation rather than a defect" | What the hub–approach model limits, written in by the author | 3 | 01 |
-| 29 | 2026-08-19 | studio | `88bc0baa` | `GET /api/openapi/v1.json` and `/api-docs`: 131 paths; the commit records that `drive.py` "is the seventh driver" | The API describes itself, and says how undrivable it had been | 7 | 02 |
-| 30 | 2026-08-20 | studio | `12b364fd` | `tools/mapgen` deleted: "the studio has one front door" | Every model now goes through the same API | 7 | 03 |
-| 31 | 2026-09-02 | mapgen | `11d926f1` | rockymine and Ruediger_LP finish Opus 5's Millrace by hand in five hours: "essentially all that was done is theming and some dressing" | The clearest measure of what the tool left undone, and it was the look | 8 | 03 |
-| 32 | 2026-09-02 | studio | `0976de79`, `378b2d58` | Text twins of every picture (`?format=text`); a copied tree cut out of a world and planted as a recipe | A model reads numbers instead of images; trees are copied, not grown | 7, 5 | 02 |
-| 33 | 2026-09-05 | studio | `1e7d9aa8` | The slope axis: "the only thing in the model that tells a 45-degree hillside from a flat field" | Paint follows the ground's angle | 8 | 02 |
-| 34 | 2026-09-09 | studio | `e6e9e231` | "Three rules stop reporting things that are not true": one board from fourteen findings to six | The recorded case of rules raising findings they should not | 6 | 02 |
-| 35 | 2026-09-10 | studio | `6b0b3f09` | "Remove the grown tree": 496 lines deleted on the author's ruling | Trees are hard: the procedural tree is given up | 5 | 02 |
-| 36 | 2026-09-19 | mapgen | `6c138ecb` | `WHAT-A-BOARD-IS-MADE-OF.md`: "None of it is enforced anywhere" | Taste is written down rather than gated | 8 | 03 |
-| 37 | 2026-09-21 | mapgen | `32c77ef7`, `a8ea873e`, `b1c90b8f` | Haiku 4.5, Sonnet 5 and Opus 5 on the same four-objective brief, the same day: no Haiku board builds, all eight others export | The cleanest three-model comparison in the record | 7 | 03 |
-| 38 | 2026-09-22 | studio | `c99de32c` | The first commit co-authored by Claude Opus 5.5 | From October it writes almost every commit | 7 | 02 |
-| 39 | 2026-09-27 | studio, mapgen | `3be000d5`, `9a973906`, `656bd09f` | `render/eye` draws the world "with Minecraft's 1.8 block sprites"; the author's texturing rulings; nine grey boards painted | **Real textures**: the turning point the brief names | 8 | 02, 03 |
-| 40 | 2026-09-26 → 09-28 | studio | `f7587f86`, `de77dc1a`, `71180895`, `31033891` | Discord sign-in, tokens, the build queue, and pgmstudio.de deploying itself from a green `main` | The browser studio goes live, and an agent gets a key | 7 | 02 |
-| 41 | 2026-09-30 → 10-04 | studio | `38267335`, `a021d25d`, `c8a67337` | `PUT /map/{slug}/source`; the studio serves `GET /api/kit.py`; `GET /api/glossary` (226 terms) | The tool is something the AI uses: one authoring call, its own client, its own dictionary | 7 | 02 |
-| 42 | 2026-10-07/08 | mapgen | `2169c018`, `57da19de` | Riftwater, the first freeform board written as voxels; pgmvox part 1; 86 commits on 8 October | A model stops driving the studio and builds directly | 9 | 03 |
-| 43 | 2026-10-10 | mapgen | `0e90bfe6` | Studio against pgmvox, Sonnet 5.5 on both: "the two tools made boards of comparable quality"; the playtest's 30 faults, 9 the studio would have caught | The measurement behind the rethink | 9 | 03, 02 |
-| 44 | 2026-10-15 | studio | `2ed975bc` | "The pgmvox port": nine phases, the author's decisions D1–D23 | The rethink of how a map is made | 9 | 02 |
-| 45 | 2026-10-16 | mapgen (branch) | `0e7acb64` | Six blind AI entries to a Fire and Ice contest: "All six chose Destroy the Core" | The machines' entries, before the human's | 10 | 04 |
-| 46 | 2026-10-18 | studio | `cc4cd3de` | "The plan retires as a level": the rectangle plan and the Plan tool go | The first approach is retired | 9 | 02 |
-| 47 | 2026-10-24 | studio | `16864f7f` | "The group relief is retired: the modifier stack is the only terraforming" | Terrain rebuilt as ordered landforms: Hill, Ridge, Canyon, River, Lake | 4, 9 | 02 |
-| 48 | 2026-11-02 → 11-07 | mapgen (branch) | `e85cc29a` … `92ee7f55` | The agents compose the author's sketch world into a map, and every version is rejected | "Every one of those failures passed some check that existed at the time" | 10 | 04 |
-| 49 | 2026-11-13 | studio | `371e6935` | "The author froze the layout generator: nothing changes what the composer makes" | New capability pauses; bugs first | 9 | 02 |
-| 50 | 2026-11-23 → 11-27 | studio (branch), mapgen (branch) | `ed354f43`, `4486636d` | The newest studio rulings (doors, schematics); the fire-and-ice study: reconstruction, viewer, labels, gated variants of the map the author built by hand | Where it stands now: a human-built map the tool can study but could not make | 10 | 02, 04 |
+These are not events; they are the data a chart of the year would use, kept from research/02 and research/03.
 
-Two dates the record does not hold, and the film must not invent: the day the author built the fire-and-ice half
-(somewhere between 2026-11-07 and 2026-11-27, `04` §4) and the day pgmstudio.de first answered publicly (before
-2026-09-28, `02` Beat 7).
-
-## Uploads to the public repositories, June to October (research `11`)
-
-Dates the author read off the private repository and Discord, set against the commits of CommunityMaps and
-PublicMaps. **Public** is a commit; **his account** is a date only he can give; times are as committed, with UTC where
-the day shifts. Every Ruediger commit is `RuedigerLP`, committed through GitHub's web interface.
-
-| Date (2026) | Map and event | Commit | Source | Status |
-|---|---|---|---|---|
-| 24 Jun 23:47 +0200 | Vauxite, Capture the Wool CTW, Drastic Change II added; the kit, `build-hole-1` and the bare team ids match the studio's export of that week | `caadb19f` | public | confirmed |
-| 1 Jul 22:53 +0200 | Vauxite 1.0.1: spawn yaws, two-rectangle spawn unions, a build ceiling; a stray studio-written `region/map.xml` beside it | `7d647015` | public | his "2 July" differs by a day |
-| 14 Jul 02:27 +0200 | Bridgid II (not a Brittlebush map; five commits to 02:42, `<created>` 12 July) | `a842b0bd` | public | confirmed |
-| 14 Jul | Its side columns gave the wall-run pattern | first `wallRun` is `18d2c8ce`, 1 Aug 16:43 UTC | his account | differs: nothing links them |
-| 27 Jul 23:33 +0200 | Kuusepuu CTC, Capture the Cake, credited "Claude Opus 5" (the author: an ordinary map with a cake for objective, not an AI map) | `8df2ca00` | public | confirmed; first match 31 Jul (log, below) |
-| 28 Jul 01:10 +0200 | Hello World Mini / Micro, with a studio plan file (deleted 01:58); removed 12 Aug | `591d21b1` | public | confirmed |
-| 6 Aug | Wandering U uploaded | none | his account | unverifiable |
-| 7 Aug 20:58 +0200 | No Blocks Placed | `11a15f7d` | public | confirmed |
-| 9 Aug 23:00 -0500 (10 Aug 04:00 UTC) | Cedar Crossing by arcadeboss, credited "SuperGrok" for "Map and XML" | `a3de15d2` | public | confirmed on 10 Aug in UTC; not the first model-credited map (Kuusepuu, 13 days earlier) |
-| 12 Aug 23:20 +0200 | Viridian and Thornwake | `37bdef57` | public | confirmed |
-| 24, 25, 31 Aug | maps uploaded, private | none | his account | unverifiable |
-| 2 Sep 02:18 +0200 | Millrace 2.0.0 | `c86226db` | public | confirmed |
-| 13, 20 Sep | maps added, private | none | his account | unverifiable |
-| 27 Sep 21:55 UTC | Delverdale and Whitstone Weald committed in this project; the PrivateMaps upload is not visible | `d274c0ae` (mapgen) | public / his account | boards confirmed, upload unverifiable; the match log has a 99-minute stretch of absent matches from 20:58 to 22:37 UTC |
-| 5-8 Oct | Countryside imported into pgmstudio.de (five rows) | listing of 26 Nov | public | recorded |
-| 9 Oct | Alphaboy uploads Countryside | `06138ebd`, 14 Oct 23:13 -0300 (15 Oct 02:13 UTC), by Javggg | his account / public | differs by five days |
-| 11 Oct | 803 re-made in the browser (`rockymine-5`) | listing of 26 Nov | public | recorded |
-| 19 Oct 22:41 +0200 | 803 2.0.1, carrying the studio's pre-11-October XML | `091b378d` | public | confirmed |
-
-## The server's match log
-
-From `13`, which reads `sources/match-status/` (41,872 ended matches, 1 June to 27 November 2026). Times are start times
-in UTC; Berlin is two hours later to 25 October. "Absent numbers" are match numbers the server issued that the CSV
-does not hold, with the pause they imply; what those matches were is not in the file.
-
-| Date (2026) | UTC | Event | Source | Status |
-|---|---|---|---|---|
-| Sun 28 Jun | 02:45 | first catalogue map played: Capture the Wool CTW, 31 players, 16m 46s, Red | log | recorded |
-| Wed 15 Jul | 22:13 | Bridgid II first played, 19 players, 4m 25s | log | recorded |
-| Mon 27 Jul | 23:13 to 23:30 | two absent numbers, three minutes after the Hello World Micro commit (23:10) | log | inference |
-| Tue 28 Jul | 00:30 | **Base 4-Team played**, 28 players, 2m 36s, winner Green | log | recorded; no earlier file knew it was played |
-| Fri 31 Jul | 21:20 | Kuusepuu CTC first played, 47 players, 22m 57s, Red | log | recorded |
-| Mon 10 Aug | 23:53 | Cedar Crossing first played, 22 players, 5m 26s: first match on a map whose layout no person drew | log | recorded |
-| Tue 11 Aug | 21:50 | No Blocks Placed first played, 39 players, 3m 46s, Blue | log | recorded |
-| Mon 31 Aug | 21:18 | Hollowmarch first played, 20 players, 3m 39s: first of this project's composed boards | log | recorded |
-| Wed 2 Sep | 00:28 | Millrace first played, ten minutes after 2.0.0 (00:18) | log | recorded |
-| Fri 4 Sep | 22:21 to 23:51 | the one visible session: Millrace, seven absent numbers, then Sunspit, Hollowmarch, Brackenfold, Cairnmeadow, Hollowbank, Elderwold; 26 to 51 players | log | recorded |
-| Sun 13 Sep | 21:38 to 22:56 | eleven absent numbers in 78 minutes, then Alderfen Holm and Millrace | log | inference |
-| Sun 20 Sep | 21:52 to 22:46 | eight absent numbers in 54 minutes, then Millrace | log | inference |
-| Sun 27 Sep | 20:58 to 22:37 | thirteen absent numbers in 99 minutes (the 32-a-side commit is at 21:55); the last such stretch in the log | log | inference |
-| Mon 12 Oct | 02:28 | Vauxite and Drastic Change II first played | log | recorded |
-| Fri 16 Oct | 02:57 | Viridian played, the last board of this project in the log | log | recorded |
-
-## Activity — the data for the on-screen curve
-
-**pgm-studio, commits per ISO week**, all commits reachable from `origin/ccr-875c17a4-2yjgux` (`02`, "Commit
-activity per week"). The curve should plot the first column and may mark the four annotated peaks and troughs.
-
-| Week | Dates | Commits | Non-merge | Annotation for the curve |
-|---|---|---|---|---|
-| W24 | Jun 08–14 | 35 | 35 | the port |
-| W25 | Jun 15–21 | 156 | 156 | |
-| W26 | Jun 22–28 | 63 | 63 | |
-| W27 | Jun 29–Jul 05 | 114 | 114 | graph dropped, composer starts |
-| W28 | Jul 06–12 | 60 | 60 | |
-| W29 | Jul 13–19 | 174 | 174 | |
-| W30 | Jul 20–26 | 105 | 105 | |
-| W31 | Jul 27–Aug 02 | 122 | 120 | |
-| W32 | Aug 03–09 | 103 | 103 | |
-| W33 | Aug 10–16 | 377 | 356 | **peak**: houses, trees, relief, tool docs, one Finding, rules API |
-| W34 | Aug 17–23 | 176 | 176 | |
-| W35 | Aug 24–30 | 120 | 117 | |
-| W36 | Aug 31–Sep 06 | 169 | 168 | |
-| W37 | Sep 07–13 | 64 | 64 | |
-| W38 | Sep 14–20 | 61 | 60 | |
-| W39 | Sep 21–27 | 127 | 109 | textures |
-| W40 | Sep 28–Oct 04 | 261 | 215 | **second peak**: deploy, tokens, queue, kit.py, glossary |
-| W41 | Oct 05–11 | 95 | 71 | |
-| W42 | Oct 12–18 | 142 | 123 | pgmvox port begins, plan retires |
-| W43 | Oct 19–25 | 50 | 40 | modifier stack, carves |
-| W44 | Oct 26–Nov 01 | 70 | 61 | |
-| W45 | Nov 02–08 | 19 | 14 | |
-| W46 | Nov 09–15 | 31 | 25 | freeze |
-| W47 | Nov 16–22 | 0 | 0 | |
-| W48 | Nov 23–29 | 2 | 2 | branch only |
-
-By month (`02`): June 258, July 513, August 861, September 469, October 543, November 52.
-
-**The model behind the commits, per month** (`Co-Authored-By` trailers in pgm-studio, rows of 3 or more, `02`).
-This is the data for a stacked band under the curve.
-
-| Month | Trailers |
-|---|---|
-| 2026-06 | Opus 4.8 255 |
-| 2026-07 | Opus 4.8 312 · Fable 5 121 · Opus 5 73 · Opus 5 (1M) 4 |
-| 2026-08 | Opus 5 461 · Opus 5 (1M) 187 · Opus 4.8 67 · bare "Claude" 47 · Sonnet 5 30 · Fable 5 26 · none 25 · "Claude Sonnet" 14 |
-| 2026-09 | Opus 5 180 · Opus 5.5 176 · Opus 5 (1M) 74 · none 27 · Fable 5.1 9 |
-| 2026-10 | Opus 5.5 414 · none 90 · Sonnet 5.5 32 · Sonnet 5.5 + Opus 5.5 7 |
-| 2026-11 | Opus 5.5 36 · bare "Claude" 9 · none 7 |
-
-**pgm-studio-mapgen has no weekly table in the research.** What it holds are its busiest days (`03`, end of §1):
-8 commits on 2026-08-13, 34 on 08-25, 52 on 09-19, **86 on 10-08** and 92 on 10-10, and 5 commits in total from
-10-24 to 11-27. A weekly mapgen curve needs a fresh `git log` count before it is drawn.
-
-**The early repositories, as commit totals only** (`01`): CTW-Layout-Generator 5 commits (2025-09-28 → 10-03);
-MinecraftLayoutEditor 112 on `master` (2025-10-10 → 11-16, plus branches); pgm-map-studio 95 on `master`
-(2026-05-31 → 06-12). On the curve they are three short bursts before a gap of five and a half months.
-
-**The words a model must read**, for the context visualisation (`03` §3, `wc -w` of the must-read set at each date):
-12,620 (08-13) · 11,030 (08-14) · 7,861 (08-16) · 8,643 (08-19) · 3,267 (08-22) · 4,862 (08-26) · 7,099 (09-02) ·
-13,773 (09-13) · 10,818 (09-20) · 14,729 (09-30) · 16,378 (10-12) · 16,505 (11-27), and 39,860 on 11-27 with the
-skills and the two gameplay documents.
+- **pgm-studio commits per month** (all commits on the newest branch): June 258, July 513, August 861, September 469,
+  October 543, November 52; the busiest week is 10–16 August (377), the second 28 September–4 October (261) (r/02).
+- **Model trailers per month in pgm-studio**: June Opus 4.8 255; July Opus 4.8 312, Fable 5 121, Opus 5 73; August
+  Opus 5 461 (+187 1M), Opus 4.8 67, Sonnet 5 30; September Opus 5 180, Opus 5.5 176; October Opus 5.5 414, Sonnet 5.5
+  32; November Opus 5.5 36 (r/02).
+- **pgm-studio-mapgen's busiest days**: 8 commits on 13 August, 34 on 25 August, 52 on 19 September, 86 on 8 October,
+  92 on 10 October; 5 in total from 24 October to 27 November (r/03).
+- **Words an agent must read first**: 12,620 on 13 August, 3,267 on 22 August, 16,505 on 27 November (r/03).

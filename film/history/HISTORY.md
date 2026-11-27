@@ -1,514 +1,475 @@
 # A year of AI-made maps: September 2025 to November 2026
 
 This is the history of how rockymine, with Ruediger_LP and a run of AI models, set out to make PvP maps for PGM
-servers by machine, and of what that tool became. It is written for someone who was not there. It rests on twelve
-research files beside it (`research/01` to `research/12`) and on the author's spoken account of 27 November 2026
-(`author-account-2026-11-27.md`). Every date, number and quotation below comes from one of those, and each paragraph
-says which kind of source it rests on. **The record** is a commit, a file or a published map. **The author's account**
-is his recollection, given on one evening, and it is marked as such wherever it carries a claim the record does not.
+servers by machine, and of what the tool he built for it became. It is written for a reader who was not there. Every
+claim cites the file it rests on: `(research/NN)` is a file under `research/`, `(sessions/NN)` a session write-up under
+`research/sessions/`, and `(account, N)` the N-th instalment of the author's spoken account of 27 November 2026
+(`author-account-2026-11-27.md`), where later instalments and the corrections in it supersede earlier ones;
+`(sessions list)` is his own description of each session in `sources/sessions-named-by-the-author.md`.
 
-A word on the terms. PGM is the plugin that runs competitive Minecraft maps, each described by a `map.xml`.
-Capture the Wool (CTW) is the mode where a team carries the enemy's coloured wool back to its own monument;
-Destroy the Monument (DTM) and Destroy the Core (DTC) set teams to break objectives. Many PGM maps float in the
-void, and players bridge the gaps with blocks. CommunityMaps and PublicMaps are the public repositories of about 350
-such maps, and the studio treats them as its corpus: the measure of what authors actually build.
+**Three voices are kept apart.** **Record** is what a commit, a file, a published map, a server log or a transcript
+holds. **Account** is what the author recalls. **Inference** is a reading made for this history, with its basis named.
+Where record and account disagree, both are given and neither is silently preferred.
+
+A word on the terms. PGM is the plugin that runs competitive Minecraft maps, each described by a `map.xml`. In Capture
+the Wool (CTW) a team carries the enemy's coloured wool to its own monument; in Destroy the Monument (DTM) and Destroy
+the Core (DTC) teams break objectives. Many maps float in the void and players bridge the gaps. CommunityMaps and
+PublicMaps are the public repositories of about 350 such maps; a third, PrivateMaps, is private and was not read.
+"The studio" is `pgm-studio`, the C# tool at the centre of the story; "mapgen" is `pgm-studio-mapgen`, the repository
+where agents built boards with it.
 
 ---
 
-## 1. Autumn 2025: a drawing that became blocks
-
-The record begins on 28 September 2025 with a repository called `CTW-Layout-Generator`, made in Google's AI Studio.
-Within three days it held a seeded generator of capture-the-wool layouts whose node types were `SPAWN`, `WOOL`,
-`HUB`, `FRONT_LINE` and `CENTER_HUB`. That vocabulary would return nine months later as the backbone of the studio.
-The app described itself as making layouts "within a void-based architecture". It drew a graph and exported JSON,
-and it stopped after six days.
-
-The step from drawing to blocks came in a second repository the author built himself, in C#. `MinecraftLayoutEditor`
-opened on 10 October 2025 around a `Graph` of typed nodes, gained symmetry the next day, and on 12 October committed
-"add schematic creation and download": a graph drawn in the browser became a `.schematic` file, each edge rasterised
-as a line of blocks. The author's brief places this realisation "at the start of the year"; the record dates it to
-that October, and research `01` notes the discrepancy. On 6 November the editor learned to import a real world,
-"(claude & grok)", which is the first time an AI model is named in a commit message. It stopped on 16 November.
-
-Two identities commit to these repositories, `michael` and `rockymine`, on the same days. The record does not say
-whether they are one person, and the history does not assume it.
-
-**Before the record, there were maps.** CommunityMaps holds the author's earlier work, and `map.xml` dates it. The
-five Annealing maps run from January 2021 (Annealing, destroy the monument) through Annealing II (January 2022), III
-(July 2022) and IV (January 2023) to Annealing II Short (February 2023), with DerStiv as painter or author on four of
-them. In his account they came from his master's thesis on the travelling salesman problem, whose routes made
-interesting shapes that were filled, cast into maps and traced and decorated by hand, the first algorithmic map
-making; the record carries no word of the thesis, and puts the series across 2021 to 2023 where he says 2022
-(research `08`). He says the idea then slept until the end of 2025. Outback, which he names among the layouts every
-map reduces to a frontline and an H, is his own (PublicMaps, 3.0.11); Race for Victory 2 and Two Tier are other
-people's old maps. As trivia, New Life CTW (created 10 July 2021: four teams, eight wools, "both wools ... under the
-helicopter") and Old Life CTW (8 August 2021: the same ground, 24 wools, "all 6 wools") credit rockymine, Ruediger_LP
-and Just_ as executive producers. The contest and its result, as he tells them, are not in the record.
-
-## 2. Spring 2026: reading maps before writing them
-
-Five and a half months pass with nothing in the record. On 31 May 2026 a Python project, `pgm-map-studio`, opened
-with Claude Sonnet 4.6 as co-author. It began by reading rather than generating: it scanned existing worlds and found
-their islands. On 5 June its pamphlet put the idea that underlies everything after it into one sentence: "The ground
-plane is not just terrain — it is the map's navigational grammar." On 7 June a sketch drawn in its browser editor
-exported as "a complete, PGM-loadable map folder". The last Python commit is at 03:24 on 12 June.
-
-## 3. June and July 2026: the studio, the graph that went, and the boxes
-
-Fourteen hours after that last Python commit, `pgm-studio` was opened, and on 13 June Claude Opus 4.8 ported the
-whole Python studio to ASP.NET Core and Blazor in one commit of 145 files. The brief says the author moved to C#
-because it is a language he can read; the record holds no reason, and research `01` points out that the C# era had
-in fact begun the October before. The stack chosen that day, MariaDB under an HTTP API with a browser client,
-is the one still running.
-
-The studio's first two months were spent deciding what a map is. On 20 June a corpus analysis of 347 maps found
-that "the generator emits 0 neutral mid pieces but 88% of real maps carry a contested middle". On 2 July the oldest
-idea in the record, the map as a graph, was written up as a design at 14:31 and replaced at 14:54, because "a
-thinned skeleton cannot represent side contact". Both times are exact and both are a document: 184 lines proposing a
-plan graph of typed lane and gap edges, then rewritten in the same file as areal pieces joined by interfaces. No code
-of the graph design was ever committed, and the graph itself did not go: a reachability graph over the pieces,
-`FannedGraph`, was committed that evening and is still in the studio. What did run and then go was the organic
-attempt the author remembers: from 20 June a generator grew lanes from a hub along noise-bent Catmull-Rom splines
-into ribbons, archetypes named H, Pinwheel and Trident beside it, and it was retired on 15 July, 25 days later, "in
-favour of the plan-then-realize direction" (research `08`). The same afternoon a strawman of layout rules was offered "for
-correction by id", and the author corrected it. That pattern, a model guessing and the author ruling, is the method
-of the whole year.
-
-**The first worlds the studio built were three grey boards called Base, and they began as test fixtures.** The Claude
-Code session that made them was opened at 22:10 UTC on 1 July with "the task Board is empty. I would like to work on
-p9 from the backlog next", and P9 was the export that writes a sketch as a world folder. The author specified the
-8×8×8 bedrock shell for wool and spawn himself that night (23:21), with its layers, doors and chests; Opus 4.8 wrote
-it down and built it, and the export shipped at 07:07 on 2 July. At 07:37 he sent a photograph of a layout drawn on
-squared paper and asked the model to "make this layout as a general seed for testing", naming the three variants he
-wanted: two teams, four teams by a 90-degree turn, and two wools each (research `09`).
-
-**The model misread the drawing, and the author answered with corner coordinates.** It built a team island whose two
-bars stood on one side of the crossbar, one square in the middle where the sheet has two, and committed it at 07:43
-as "a clean 2-island CTW base". Shown the picture at 08:45, it said so itself: "a staircase/bracket, not a clean
-'H'". At 09:09 the author typed the corners of each shape, scaled by the five-block cell ("1,5 3,5 3,11 1,11 …"),
-and the layout came out right at 09:14. The four-team seed followed at 11:13; the two-wool seed was built at 11:21 as
-an H with a spine, which was not what he meant, and again at 12:04 as the H plus a small bridged island, with the two
-squares restored at 12:08. Each came out as a bedrock floor at y 0, stone to the island's height (9, and 13 for the
-squares), and "a hollow 8×8×8 bedrock shell" for spawn and wool. The name Base is the model's; the author's word
-was "the most basic map design out there". The worlds were not played: the first export crashed the 1.8 loader, and
-the fix is the author's own commit at 21:21 that evening. A "seed" was then a pair of JSON files, a drawn layout and an intent, kept in `tools/seeds/` for a test to run. The
-plan model that re-expressed these three as plan files came at 22:47 UTC the same day, and the first real map
-traced into a seed on 4 July; what traced maps earlier, in June, was a surface called Decompose, struck from the board
-on 2 July. That bedrock box became the default room. Rooms could be
-given a library style from 5 August, but an unbound room still stood in the box, and the reviews of at least three
-later runs say a spawn or wool room was left in it by mistake.
-From 27 September the studio complains of it (rule `WX14`). The seeds also stated `"authors": []`, which is where the
-nameless maps of chapter 6 begin (research `07`).
-
-By 21 July the model had settled into boxes: every board a spawn, a hub, wool approaches, a frontline and a middle,
-composed in that order, and "the box pipeline is THE composer". Destroy modes arrived on 15 July, a month after
-capture the wool. The model was written down as `docs/generator/model.md`, which on 15 August gained its own
-boundary: organic maps such as the Thunder series cannot be expressed, and "That is a limitation rather than a
-defect, it is the author's stated position, and it stays."
-
-**The first maps on a public server came out of the browser tools in the last week of June, and the record can be
-read for it.** On 24 June at 23:47 Ruediger added three capture the wool maps to CommunityMaps: Vauxite, Drastic
-Change II and one titled Capture the Wool CTW (credited to MishM0sh, with rockymine as contributor). The author's
-account says their XML was made in the browser, the first maps on which he tried it, and that it worked with some
-errors. Nothing in the files says so, but the kit (an arrow in slot 9, 32 clay in slot 10), the build rectangles
-`build-area-1` and `build-hole-1` and the bare team ids `red` and `blue` are what the studio's export wrote that week
-and are found in no other map in either corpus. On 1 July at 22:53 Vauxite 1.0.1 followed (the author said 2 July),
-and its diff is the errors: a spawn yaw given to both teams, each spawn rectangle made a union of two (the feature the
-studio shipped twenty minutes before the first upload), and a build ceiling added. A stray copy of the studio's own
-export, with its XML declaration and its comments on their own lines, sits in that map's `region` folder to this day
-(research `11`).
-
-**Bridgid II, on 14 July, is the map the author dates the wall-run pattern from.** It is not a Brittlebush map. Ruediger
-added it at 02:27 in the night of 13 to 14 July, in five commits that fixed the folder and added the dev phase, with
-rockymine and Ruediger_LP as authors and 12 July as its creation date. The author's account says its layout took
-about a day in the browser, that it was then skinned from stone in one long evening in game, and that the repeating
-colour columns on its sides are where the wall-run idea came from. The studio's wall run first appears on 1 August,
-in a design note at 12:17 UTC and as code (`WallRunMaterial`, stripes that repeat along the void-facing perimeter) at
-16:43 UTC, and no commit or document links it to Bridgid II. The upload's picture does show alternating dark and grey
-bands down the island sides. The origin is the author's account.
-
-## 4. August 2026: colour, trees, and the first maps on a server
-
-**The colouring began on 1 August, and it began as walls.** Until then the studio exported "one flat block of stone"
-over bedrock at y 0. On 1 August Opus 4.8 specified terrain painting under the title "walls, rims, plateaus": the rim
-is the top block of an edge column, the wall is "the exposed riser between bedrock and rim", and the interior is the
-grass top. In the author's account, "map walls" is his name for exactly this, how a large shape is coloured, and his
-account of its growth matches the record's order. A rule per height came first: research `05` finds it in the
-authoring specs' `themeByHeight` key, which hands one theme to every tier at one height. Then a shape's top, sides
-and edges (1 August), shading from the outside in (the inward axis, 15 August), stacked patterns, and later the
-slope. Themes could be scoped to one piece, so one area had one pattern and its neighbour another. The author's
-account says real transitions between them never worked.
-
-**The first tree was grown and failed.** A recursive brancher on 1 August "read as a fractal, not a tree"; on 2
-August it was rebuilt as limbs swept along Catmull-Rom splines, and within the hour it gained the knobs the author
-describes: a number of stems at the base (one, a double, a triple), levels of branching, how far a central leader
-climbs, how much the trunk wanders, a height. It was never an editor for dragging splines, but a generator with a
-preview that showed its spines. It began as a page, not as code in the studio: the artifact the author supplied,
-"Map Decoration — prototypes", is the studio's `tools/decorate/prototype.html` as committed on 2 August, with five
-decoration tools (plants, paths, boulders, trees, water) and the fairness check beside the tree. Its trees are a
-recursive skeleton of Catmull-Rom splines with a central leader and one dense leaf disc per branch tip; its sliders
-are height (15 to 44 blocks), stems (1 to 3), leader, trunk flow, branch angle (15 to 48 degrees), levels (2 or 3),
-leaf size and a seed (research `10`). On 4 August the grower was moved into the studio's code. On 5 August a separate vanilla tree, a trunk under a canopy of known profile, was
-split off. On 12 August the grown tree was measured against 75 trees the author had
-built by hand on a showcase world, one tree per platform, and failed: "1516 of 4020 never touch their branch". The
-author's account puts it simply: a vanilla-like blob is easy for a model to code, and a real tree generator failed.
-He adds that its leaf distribution and central trunk got worse over time, and that Millrace's first trees were meant
-as pines but had leaves only at the sides, like a fir with every tier cut off but the lowest. The record holds the
-pines as a conifer form, rings of branches on a leader, used for Millrace's firs; it also holds a repair the same
-night (stranded leaves 36% to 0%) and, on 13 August, a second fault in which a taller tree was silently dropped. It
-has no commit saying the trunk or leaves got worse. The vanilla tree is still in the studio. The grown one was
-deleted on 10 September on his ruling that "the form goes rather than gets a knob".
-
-**The first map credited to the studio reached a public server on 7 August.** It is called *No Blocks Placed*, a capture
-the wool map for two teams of 28, committed to CommunityMaps that evening by Ruediger. Its `map.xml` credits
-rockymine for "Drawing pieces, shapes, and markers in the browser.", Ruediger_LP for "Wisdom." and Flamiix for
-"Minimalist." The author first recalled Tttie as its third author. The record names Flamiix, and shows TTtie adding the
-map's creation date on 15 August; on the second telling he agrees that Flamiix, who happened to be on the mapmaking
-server, helped with the interior of the wool room and the spawn building, and that Tttie did nothing on it. His
-account also says one generated tree still stands on it, a larger one fairly far forward beside ordinary ones. The
-blocks bear that out. The largest of the mirrored pairs is a body of 320 blocks with 50 logs, oak, standing at x
--27 to -17, y 14 to 30, z 41 to 52 (its image at x 16 to 26, z -53 to -42), with a two-by-two base and limbs
-spreading from it; the next largest tree has 28 logs and the commonest have 7 to 11. It stands 40 to 50 blocks
-from the middle line toward the blue wool room, which starts at z 65. Its shape is the grown tree of that week's,
-and no other tree on the map is of that size; the author's confirmation in game is still wanted (research `08`). The studio itself kept the map as its own worked
-example for the Configure tool from 13 August.
-
-**On 11 and 12 August the first fifteen AI boards were built,** eleven by Opus 5 and four by Haiku 4.5, each from a
-single JSON spec through a tool inside the studio, `tools/mapgen`. Two of them went to CommunityMaps on 12 August,
-Thornwake and Viridian. The author's first review was written that night, in words: thirteen faults, MG1 to MG13.
-Spinebreak belongs to this batch. It is a ridge 145 blocks wide and 405 long, with eight objectives strung along it.
-
-**The block faults the author remembers can be counted, and one board carries most of them.** He recalls, from the
-first tested maps, a map made mostly of slime blocks, one on which every green landed at once despite a prepared list
-of greens, and quartz with end stone as a strange desert. Counting the blocks of the fifteen (fourteen kept in this repository,
-Thornwake as it stands in CommunityMaps), the slime map is Viridian, built by Haiku 4.5: 13,299 of its 66,071 blocks are slime, a fifth, laid as
-the bright risers along every wall and slope. It also holds seven green-family blocks in quantity (lime and green clay,
-green wool, prismarine, emerald, slime), more than any of the 288 worlds kept here, so it is the all-greens map too.
-Viridian is one of the two that Ruediger committed to CommunityMaps that night, so it is also the one the public
-repository still shows. No board among the fifteen has quartz. Saltmarch has 4,629 end-stone blocks among sandstone and sand, a desert, without
-the quartz. No review or commit message mentions any of the three faults (research `08`).
-
-**On 13 August an agent made a confident, measured and wrong claim,** that every generated destroy map was
-unwinnable because the goals floated above the ground. Floating goals are PGM's design. The claim was withdrawn the
-same day, and the studio's instructions gained the rule that a question about how a map plays is answered by asking
-the author. The same day `pgm-studio-mapgen`, this repository, opened, and its first report, by Opus 5, told the
-author to delete the agent's own shortcut: `tools/*` "is a reimplementation, not a caller". The tool was deleted on
-20 August, and from then on every model went through the studio's one HTTP front door.
-
-**The second half of August was the model trials.** Haiku, Sonnet, Opus, Fable and Grok were given the same kind of
-brief. Haiku 4.5 reported two boards as "verified working" that were 245-byte `map.xml` shells. Grok wrote three maps
-for a studio it could not run, and all three layouts "rasterize to no ground". On 22 August Haiku 4.5 built Hollow
-Crown, a test board 100 by 120 blocks. It holds one monument and one core a team on flat ground, and each team's core
-shares its cuboid with the enemy's monument. Meanwhile the studio made itself legible to agents. It answered with one
-kind of finding and one refusal envelope, served its 125 rules by id, and on 19 August described its own 131 paths.
-On 16 August it began to measure **dead ground**, the share of a board no route between objectives crosses. The
-measure's tolerance was calibrated against the author's own reading of one board, Wheal Hazel, piece by piece.
-
-## 5. Late August and September: Millrace, by hand
-
-**The year's clearest lesson came from one map.** On 30 August the author drew a basin in the studio's Sketch tool.
-The same day three agents built it out: Opus 5 as `opus5-millrace`, a walled water course with a sluice and a viaduct,
-and Sonnet 4.5 twice, as Cutwater (flooded and bridged) and Fallowmere (left open). The author's account remembers
-Sonnet and Opus being tried and Opus's terrain kept, and the record agrees, with a third board he did not name.
-
-By the early hours of 2 September he and Ruediger_LP had finished Opus's Millrace by hand. Their own review, the only one in the
-repository in the author's voice, says they "spent 5 hours". The author's account gives the same figure as five hours
-side by side, ten person-hours. "The terrain, spawn platform, spawn house, objetives, canal walls, water levels,
-bridges, boulders, and most house placements were kept intact … essentially all that was done is theming and some
-dressing." The houses and their interiors were redesigned, a tug replaced the ship, and the eighteen grown trees were
-replaced by sixteen of the author's showcase trees. Fable 5.1 later measured that 29,954 of the 35,610 columns kept
-their surface height exactly. Ruediger committed it to CommunityMaps the same day as Millrace 2.0.0, credited to
-rockymine for "layout, terrain, block palette, beautification", Ruediger_LP for "interior design, houses,
-beautification" and Opus 5 for "layout composition, initial draft, sculptures, bridges".
-
-**Then Fable was asked to rebuild it.** The author's account says Fable began copying the trees, and that this led him
-to tidy his world of custom trees and add it to the repository. The record keeps a different order. The tree world had
-been in the studio since 12 August. It was committed here at 00:53 UTC on 2 September, before the revamp itself, and
-Fable 5.1's work followed about two hours later. In the studio Fable built a new form, the *copied tree*, "cut out of a world
-and planted as a recipe". In this repository it diffed the two Millraces and restated the revamp as studio documents.
-The world grew afterwards, to 86 trees on 20 September and 95 on 1 October, and it is the tree corpus the studio plants
-from today: 95 author-built trees in 20 bands, under a hundred as he says. In his words tree building is "a
-religion"; a boulder or a house is easier because it is not organic. The houses had in fact become a parametric
-system in one week of August, six roof forms from one formula, and by October the library held 61 styles.
-
-**September turned taste into instructions without turning it into gates.** On 5 September the studio learned to
-paint by slope, "the only thing in the model that tells a 45-degree hillside from a flat field". The author's account
-calls this an important step, because angle tells a story where plain layers do not. On 19 September the author's
-rulings on look were written into `WHAT-A-BOARD-IS-MADE-OF.md`, whose opening admits that "None of it is enforced
-anywhere". On 21 September Haiku 4.5, Sonnet 5 and Opus 5 built the same four-objective brief on the same day. No Haiku
-board built, and two of Sonnet's four carried more dead ground than the studio's band allows. On 27 September the
-studio first drew a board "from a player's eye" in Minecraft's own block textures. The commit says why that mattered:
-"two noisy blocks of one colour are one calm grey in a flat picture and static on the ground".
-
-## 6. July to September: the tests on the server
-
-**The AI maps reached the server through Ruediger, and the record of it is CommunityMaps.** Research `06` reads that
-repository's whole history. Every AI- or studio-made map of this project that it holds was committed by RuedigerLP, in four batches (a separate
-line of Grok-credited maps by arcadeboss starts on 9 August, below). The
-first came on the night of Monday 27 July: Kuusepuu CTC, an existing map of the author's turned into a capture-the-cake
-game and credited "CTC conversion: Claude Opus 5", and an hour later Hello World Micro, a plan from the studio's
-plan editor, which reached the server ten days before No Blocks Placed but credits rockymine alone. Both were
-revised until past two in the morning. Kuusepuu's fix of 31 July is the one commit whose text
-reports play: "Reported live: a carrier died, the cake went home, and he still came back holding a usable cake".
-No Blocks Placed followed on 7 August. On 12 August Hello World Micro was deleted and Thornwake and Viridian added
-five minutes later. Millrace came on 2 September. Six maps in all; five are still there.
-
-**The server's own log, which reaches from 1 June to 27 November, shows what was played and adds a map the uploads
-do not.** It is the Discord `#match-status` channel, 41,872 ended matches, read in the author's browser and checked in
-research `13`. Of the 288 boards in `maps/INDEX.md` ten were played, in 15 matches; the other studio and browser maps
-the history names (Base 4-Team, Bridgid II, Vauxite, Drastic Change II, Kuusepuu CTC, No Blocks Placed, Countryside,
-803) and Cedar Crossing were played in 63. The first play of an uploaded map is Kuusepuu CTC on 31 July, 47 players
-for 22 minutes 57 seconds, four days after it was added. But a studio map was on the server before it: **Base 4-Team,
-one of the three Base maps of 2 July, was played on Tuesday 28 July at 00:30 UTC**, 28 players, 2 minutes 36
-seconds, winner Green, two hours 57 minutes after the Kuusepuu CTC commit and an hour and twenty minutes after
-Hello World Micro's. The log holds no Hello World Micro (the "Hello World" of 17 July is the 2025 map), no Wandering
-U, no Thornwake, Delverdale, Whitstone Weald, Scarrow Delph or Gypsum Reach.
-
-**Another author's AI map arrived between the second and third batches.** On 9 August, at 23:00 in the American
-Central summer (04:00 UTC on the 10th, the date the author gives), arcadeboss, who has committed to CommunityMaps since
-May 2023, added Cedar Crossing, a destroy the monument map credited "7,000 word essay" to himself and "SuperGrok" for
-"Map and XML". That credit is the only place the map is called AI-made; the commit messages do not say so. It is not
-the first model-credited map there, as the author's account has it: Kuusepuu CTC is thirteen days earlier, though the
-author does not count it as an AI map, since its layout is an older map of rockymine and DerStiv and only the
-objective was replaced by a cake. It is the
-first by someone other than Ruediger, and the first crediting Grok. Fire on the Mountain (27 August) and seven later maps
-by the same hand credit "GrokBuild" or "GrokBot".
-
-**After 2 September the tests leave CommunityMaps.** Ruediger commits nothing there until a map of his own in
-mid-October, and no board of this project is uploaded again. The later tests are recorded in this repository. On
-Sunday 27 September, from 21:55 UTC, Opus 5.5 committed Delverdale and Whitstone Weald as "two large boards for a
-32-a-side play test", beside "the eleven small boards in the same play test". That is the date the author gives for
-the last test, and it is a Sunday. The commits show the boards made ready, and were still changing them after
-midnight; the server's log shows more. **The sessions leave a mark in the log's numbering, not in its rows.** On the
-evening of 27 September, from 20:58 to 22:37 UTC (22:58 to 00:37 in Germany, across the 27th and 28th), the server's
-match counter advances by thirteen with no match in the file; the commit of the two large boards falls 57 minutes into
-that stretch. The same happens before the first visible board of the earlier evenings: Sunday 13 September, eleven
-matches in 78 minutes before Alderfen Holm; Sunday 20 September, eight in 54 minutes before Millrace; Friday 4
-September, seven between Millrace and the next six boards. There is one visible session, Friday 4 September from
-22:21 to 23:51 UTC (00:21 to 01:51 on Saturday in Germany): Millrace, then Sunspit, Hollowmarch, Brackenfold,
-Cairnmeadow, Hollowbank and Elderwold one after another, 26 to 51 players each and from 1 minute 8 seconds to 15
-minutes 15 seconds long. No silent stretch of this kind appears after 27 September. Read together, the dates
-agree with the author's recollection of three or four Sundays in one intensive month, the last on 27 September, and
-with five of the six upload dates he gave (24 and 31 August and 13, 20 and 27 September have a stretch on the day; 25
-August has none).
-Whether the missing matches were these maps is not in the file and is the first thing to ask Discord for.
-The October rounds on the freeform boards were committed on a Friday night and
-a Saturday, 9 and 10 October, and none of those boards went to CommunityMaps.
-
-**They did not go to PublicMaps either.** The author thought the later tests might be there. Research `07` reads its
-whole history: no AI-made map entered PublicMaps between June and November, Ruediger has not committed there since
-February 2025, and the repository has no commit on 27 September. A private maps repository, which the author also
-names, cannot be read. The batches of about fifteen he recalls are this project's own: fifteen boards on 11 and 12
-August, and thirteen for the test of 27 September.
-
-**Two of the summer uploads were game-mode experiments in XML.** Kuusepuu CTC came with the body "Capture the Cake
-prototype!": the author's destroy map with its monuments removed and a cake to eat, carry home and place. Hello World
-Micro, first committed as "Hello World Mini" at 23:10 on 27 July with the body "grey map for concept test", came from
-a studio plan and is the same stone-and-bedrock kind as the Base seeds; its next commit says "add actual map, still rly
-grey though". Its 1.0.1 rolled, per game, whether a team needed one wool or two, and when the first fell the enemy's
-wool box was recoloured and the server announced "Wool Room Switched". The recolouring is older than the Micro: the
-full Hello World, credited to rockymine and Ruediger_LP and added to CommunityMaps on 1 February 2025, already changes
-its wool rooms from orange to red and from magenta to purple when a wool is taken. In the author's account the Micro's
-layout was his own, drawn by hand as a small Hello World, and the room that moves, from which players fell out of the
-world in its one test, is a different, late map of his: *Wandering U*. It is not in CommunityMaps or PublicMaps, and
-the record could not read it until the author supplied the world and its `map.xml` on 27 November from the private
-maps repository; it is the first map in this record that moves a wool room, and he says it was tested on 6 August
-2026. The file names no author and no created date. It is a capture-the-wool map for two teams of 12 on a U of
-floating bedrock pieces over void, and each team's wool sits in a 10 by 10 bedrock island that PGM cuts out of one
-end and pastes at eight stops along a route of three steps out, three across and one in, then back: a clock ticks every
-five seconds after a 15-second warm-up, the room halts for about half a minute at each dock, and whoever is inside
-when it leaves is left in the air over void (research `10`). The
-Micro was deleted on 12 August.
-
-**And on the studio's own boards, the map was made by nobody.** None of the six uploads lacks an author. The boards
-built through the studio did: the observer platform carries a sign that reads "made by" over the authors, and on 4
-September the studio found that "69 of those 74 carried 'made by' over three blank lines, which reads as a map whose
-author is called nothing". From then the sign is left off and the build complains (`EX6`). The author remembers it in
-the tab list, and as the first tell of an AI map. The two large boards of the 27 September test were credited to
-Opus 5.5 after midnight that night, and on 28 September every exported board was credited to the studio.
-
-## 7. Late September: the studio goes public, and the maps are empty
-
-**Between 26 and 28 September the studio became a website.** It gained Discord sign-in by invitation, tokens for
-callers without a browser, a build queue, and on 28 September pgmstudio.de deploying itself from a green `main`. An
-agent could now drive the deployed studio with a key it never sees. Today the site lists 72 maps: 31 made by agents,
-the rest by eleven people. One of the eleven is TTtie.
-
-**The review tool arrived the same evening.** Map notes pinned "to the whole map, to the picture in view, or to ground
-on it" landed at 20:30 UTC on 28 September, with a point, box or lasso drawn on a picture and projected onto the ground
-the picture shows. The author's account says this is when feedback improved. Before, he described faults in words and
-the model had no coordinates. The first run that used the notes is also where his "two extremely empty maps" are
-recorded: Opus 5.5's Gypsum Reach and Sootcombe. His remark was given in chat and survives as a paraphrase. "There is
-no dirt or grass for a tree to stand in, two houses stand by a path, the frontlines are bare … Empty is what players
-dislike about maps like these." In his account empty, dreary maps remain a problem.
-
-**The first maps by other people reached the studio in the first week of October.** The author's account has Alphaboy
-upload Countryside on 9 October, the first map by someone else made through the web interface, with the regions drawn in
-the browser, and the updated 803 as the second. The deployed studio lists Countryside five times between 5 and 8
-October, all under Alphaboy98yt, and 803 as a map imported from a download link and last written in a browser on 11
-October. The public repository dates them otherwise: Countryside was loaded on 14 October at 23:13 (UTC-3) by the maintainer Javggg, with limefox3054 credited for remastering its XML, and 803 2.0.1 was committed by
-Ruediger on 19 October with rockymine credited "clicking some buttons (XML)". Its XML still carries the reset kit and
-`not-spawns` region the studio dropped on the evening of 11 October, which puts its export before then and its upload
-eight days after. Import is a link to a world, fetched by the server, not an upload from the browser (research `11`).
-
-Opus 5.5 had written its first studio commit on 22 September, and from October it wrote almost all of them: 414 that
-month against Sonnet 5.5's 32.
-
-## 8. October: freeform, the grammar, and the rethink
-
-**On the night of 7 October an Opus 5.5 session stopped driving the studio and wrote the voxels itself.** The board was
-Riftwater, "one river valley split down the middle by a bottomless rift", floating from y 27, a market town and a
-mining village on each side. In the author's account the first board of the Python rework was "a floating island with
-two villages, 'Riverside' or similar". Riftwater is that board. His account says he had told a session that he did not
-like what the layer model made and asked it to think; that instruction is not in the record. What the record shows is
-the pace that followed. 8 October holds 86 commits: some twenty freeform boards, and the first versions of a shared
-Python library, `pgmvox`, which by the end of the day carried tunnels, chambers, galleries and shafts. This is the
-limit the author names. Under the layer model a cavity was built wall by wall, and the studio's carve "cannot hollow a
-column out from the middle".
-
-**The grammar came on 9 October, and it was his own look.** An Opus 5.5 session read the author's maps Brittlebush
-(2022) and Brittlebush II (2023) block by block and wrote their signature as a style: "a bedrock block under a
-five-course cap (spruce-stair rim, brick, dark-oak slab, dark-oak stair, black clay), one birch panel in each face's
-middle". At 18:28 it separated the rules from the blocks, `pgmvox.grammar`, "the rules of a structural board apart
-from its blocks". Nineteen minutes later a second style, Claywork, was "spoken in the grammar", and within the hour a
-third board carried the Brittlebush style beside grown ground. This is the transferable look of the author's account,
-defined once and laid on any map, which he says no building plugin offers. The layout of Brittlebush III was his,
-drawn on pgmstudio.de as "Brittebush III". In his account the Brittlebush style can be expressed in full by the
-grammar, which was its point, and Brittlebush III has never been tested by players. The map whose colouring was done
-entirely in game, because the tool could not express it, is Bridgid II.
-
-**A playtest and an experiment followed.** By 10 October the author had played the freeform and trial boards, and his
-notes were sorted into 30 faults, of which the studio "would have caught 9, partly caught 4, and not caught or could
-not have built 17". Riftwater was "essentially perfect", in the agent's summary of his words. In his account these
-tests were "Slop Sundays", two hours on the server with the mapmaker Tttie, and early maps "looked and played alike".
-The record never uses the name. It does hold three Sundays, 13, 20 and 27 September (chapter 6), each with a stretch
-of matches the server's log lacks, and the 32-a-side test prepared on 27 September; these October results were
-committed late on a Friday and early on a Saturday. On 10 October a controlled experiment put
-Sonnet 5.5 on the same briefs in both tools and found "the two
-tools made boards of comparable quality". The difference lay in spend: Riftwater took "Opus, hours per board rather
-than minutes, rounds of the author's review, and bespoke code".
-
-**On 15 October the studio began to absorb its laboratory.** `docs/pgmvox-port.md` set the goal of "a board built
-through the deployed studio that the author cannot tell apart, by quality, from one built with pgmvox". Nine phases
-and 23 decisions followed. On 18 October the rectangle plan retired as a level. On 24 October the relief solver of
-August gave way to a modifier stack of landforms, and paint rules and slope-thinned soil arrived the same day. Carves,
-a tunnel, a chamber and a shaft, came on 25 October. By 4 November every phase had shipped or been parked. The grammar
-phase has no shipped line.
-
-The late-October boards were Opus 5.5's on pgmvox, three of them from the author's concept worlds. Of Coldstore, a
-bunker under an ice field sent "with signs explaining each piece", the record says: "The author judged the board
-finished and the map.xml a success."
-
-## 9. November: building it by hand, and a freeze
-
-**The newest work is a map the author built himself.** On a branch of this repository, agents spent 2 to 7 November
-composing the author's hand-built sketch world into a CTW and DTC map set into a mountain, and every version was
-rejected. The reasons ran from "the surface was not closed" to "a ramp led into the void". The branch's lesson is the
-year's in one line: "a geometric rule is not a design. Every one of those failures passed some check that existed at
-the time." He then built the half himself, on a date the record does not hold, and the agents' task became
-understanding it. His account says this map has a dead area that makes sense, which is his reply to the dead-ground
-rule: "dead" is subjective.
-
-In the studio the author paused new capabilities, and on 13 November "froze the layout generator: nothing changes what
-the composer makes". The last commit on `main` is of 14 November. The newest branch carries his rulings on doors and on
-labelling anything a model builds itself as a schematic, and in his account the verification pipeline is "not yet where
-it should be".
-
-## 10. How the models compare
-
-**The author's judgement and the record agree in direction and differ in kind.** In his account Sonnet's maps were "de
-facto worse, whatever the numbers say", and late in the year Opus's were clearly better, through verification steps and
-a model progress that stays a black box. The record has one controlled comparison of the two families. On 21 September
-Opus 5's dead ground was lower on three of four boards and Sonnet 5 left two outside the band. It has one experiment
-that held Sonnet fixed and found the tools level. And it records the author's best words for a Sonnet board, Abbeymoor
-built on pgmvox, which "really looks like a place". It records no controlled run of Opus 5.5 against Sonnet 5.5. What
-it does show is where his choices fell: the Millrace he finished, the Riftwater he called perfect and the Coldstore he
-called a success were all Opus boards. After August's first fifteen, no Haiku board in this repository carries a theme or a prop.
-The deployed studio holds two boards by Haiku 5.5 and two by Grok that no report discusses.
-
-## 11. Who decided: a spectrum from hand-made to model-made
-
-**"AI map" is a spectrum, and the useful question is who decided each part.** The studio executes in nine of the
-fourteen maps examined in research `12`, so execution cannot be what separates them. That file splits each map into
-seven decisions (concept, layout, terrain shape, colouring, structures and decoration, objectives and XML, finishing)
-and says for each who decided it and what executed it, a person, a model, or an algorithm with a seed. Where the
-record is silent the cell says "unknown".
-
-**The human stayed in five places.** He drew (squared paper, a basin, the rules of a labyrinth), he briefed (a spoken
-brief, an essay behind Cedar Crossing, a concept world with signs), he left notes (26 on one desert board), he ruled,
-and he finished (Millrace, ten person-hours). **The algorithms are the composer, the relief solver, placement,
-themes and the tree grower**, and each decides only what nobody stated: Goldhollow's seed 41 and Whinberry Ring's
-seed 18 were chosen by someone. **The tool contributes execution and refusal**, and a refusal removes options without
-supplying content. **The model's genuine decisions** are visible where nothing was stated, in Riftwater's valley,
-rift and cave, in Whinberry Ring's three levels, and in the wrong ones, a staircase for an H.
-
-**The author has answered several of the open cells.** In his account of 27 November, all concepts, terrain and colours
-of Vauxite, Drastic Change II and Bridgid II are human. Bridgid II's XML was made by Ruediger, much of it with the
-browser tool, which placed things automatically from the plan model; only adjustments such as the water lane were
-added by hand, and he believes the water lane was the only one. Wandering U's layout he described in text, and Claude
-wrote its XML. Ruediger reworked the XML of the published Millrace, as far as he remembers. Overwall had no hand
-finishing. The ice map he will build to the end himself, in a material still to be chosen among snow, stone, ice and
-grass. **The layout generator's concept is his**, devised to reproduce existing maps as far as possible: what it emits is
-generic, but a base to work on, and the agents mostly took that base and did nothing with it, not even adjusting other
-aspects of the layout. The record agrees in the first fifteen boards and differs in two (Whinberry Ring's outline was
-reshaped vertex by vertex, Heftfold's skeleton was given a walled island). Still open: who set the briefs of the first
-fifteen, Gypsum Reach, Heftfold and Whinberry Ring (he offers to look the sessions up from their dates), and how Cedar
-Crossing was made.
-
-**Determinism of execution does not settle authorship, because authorship lives in the inputs.** The same studio turns
-a person's typed corners and a model's spec into worlds by the same code; a compiler is deterministic and writes no
-program. The author's ice map, which the studio never executed, has one author and nothing deterministic in it.
-
-**Six categories, from hand to model:**
-
-1. **Hand-made.** A person decides and builds all of it; a tool at most writes the XML he drew. The ice map,
-   Vauxite and Drastic Change II, Bridgid II.
-2. **Person's design, algorithm's detail.** The studio solves, paints and grows what he did not state. No Blocks
-   Placed.
-3. **Person's drawing, model's pen.** A person supplies the drawing, the numbers or the objective, a model writes or
-   builds on it, and a person finishes. Base 2-Island, Capture the Cake, Millrace, and Wandering U, whose layout he
-   described in text and whose XML Claude wrote.
-4. **Algorithm's layout, model's spec.** A model states words and numbers, a seeded composer lays out and fills. The
-   first fifteen boards, such as Goldhollow.
-5. **Model's design inside the studio, person's rulings.** Content from the model through the studio's vocabulary,
-   steered by brief, notes and rulings. Gypsum Reach, Whinberry Ring, Heftfold, Overwall.
-6. **Model's own script.** A model decides and writes the program that writes the world; the person gives a concept, a
-   review or nothing. Riftwater, Coldstore, Cedar Crossing.
-
-The table, with a source for every row, is research `12`.
-
-## 12. What remains open
-
-**Several facts the author recalls are not in the record, and one is contradicted by it.** No Blocks Placed credits
-Flamiix, not Tttie. The trees were in the studio before Fable's rebuild, not because of it. The "500-wide" map fits
-Hollow Crown on objectives, flatness and closeness, and Spinebreak on length, and neither is 500 blocks across. The
-tests show in CommunityMaps only from 27 July to 2 September, not to his last test of 27 September, which the record
-holds in this repository and, as a gap in the match counter, in the server's log; they are not in PublicMaps. Kuusepuu
-CTC, which was taken for the first AI-map test, is an ordinary map of his with a cake for objective in his account, and
-Base 4-Team was on the server three days before its first match. Hello World Micro's room changed colour in the
-record, not place, and so did the full Hello World's a year and a half earlier; the late map whose room moves, *Wandering U*, is in
-neither public repository, and came from the author's private one. The slime and all-greens maps may be one board, Viridian; the quartz-and-end-stone
-map is not among the fifteen. The annealing maps are dated 2021 to 2023, not 2022. The name "Slop Sundays", the instruction that started the Python rework, the fall from Wandering U's room (its file says a player left inside is left in mid-air, but no test is recorded) and the in-game colouring of Brittlebush III are his account alone.
-
-**Dates that stay his account, and what the server's log adds.** Wandering U on 6 August (the log has no such map and
-one missing match that evening, 19:46 to 20:11 UTC, which is a lead and not a find); maps uploaded on 24, 25 and 31
-August and on 13 and 20 September (the log holds a stretch of missing matches on all of these days except 25 August);
-and Ruediger's additions to the private repository on 27 and 28 September, which the log's 99-minute stretch of the
-evening of the 27th, 22:58 to 00:37 in Germany, spans (the boards he names there, Delverdale
-and Whitstone Weald, are Opus 5.5's, committed in this project on 27 September at 21:55 UTC). No commit by Ruediger to
-either public repository falls between 12 August and 2 September, or between 2 September and 19 October. The
-public record moves two of his dates: 2 July to 1 July, and 9 October to 14 October.
-
-**Several questions the record cannot answer belong to him.** How many blocks were placed by hand on a map named for
-placing none, and whether the 50-log oak at x -27 to -17, z 41 to 52 on No Blocks Placed is the generated tree he
-means. Whether "map walls" is the walls-rims-plateaus
-model of 1 August, and whether `themeByHeight` was the per-height prototype he remembers. What Tttie did on the tests,
-who played (the log gives only the number of players, 26 to 51 on 4 September), what the missing matches of the
-Sundays were, and whether the tests had a schedule. Which rule produced which gain. Why the grammar, which carried his own look onto
-other maps, is the one phase of the port with nothing shipped.
-
-**And the open problem is the one he named first.** Maps that look and feel empty and dreary are still made. The rules
-can say that ground is off every route, but, as the sorting of his October notes put it, they "cannot say what
-belongs". The year moved the tool from a graph to a grammar and from words to coordinates. In the author's view, and
-in the branch where he built the map himself, what it has not moved is the judgement of what a place is for, which
-stayed with the person who plays it.
+## 1. Before the record, and autumn 2025: a graph that became blocks
+
+**Algorithmic map making predates the project by four years.** **Record:** five Annealing maps by rockymine, Ruediger_LP
+and DerStiv sit in CommunityMaps, dated January 2021 to February 2023 (research/08). **Account:** they came from his
+master's thesis on the travelling salesman problem, whose routes made shapes that were filled and decorated by hand,
+in 2022, and the idea then slept until late 2025 (account, 3). The record carries no word of the thesis and spreads the
+series over three years.
+
+**The first statement of the idea is Ruediger's.** **Record:** on 26 September 2025, looking at a layout tool the
+author had made with Google's AI, Ruediger asked when an AI would scan all the maps and make its own (research/15).
+Two days later `CTW-Layout-Generator` was opened in Google AI Studio; within three days it held a seeded generator
+whose node types were `SPAWN`, `WOOL`, `HUB`, `FRONT_LINE` and `CENTER_HUB`, and it exported only JSON (research/01).
+
+**The step from drawing to blocks came in a tool he wrote himself.** **Record:** `MinecraftLayoutEditor`, in C#, opened
+on 10 October 2025 around a `Graph` of typed nodes and on 12 October wrote a drawn graph out as a `.schematic`, each
+edge a line of blocks; on 6 November it imported a real world "(claude & grok)", the first models named in a commit
+(research/01). **Account:** his editor drew edges with a width and a height, rotatable, with no rectangle, and he
+sketched maps on paper as nodes and edges because nearly every map reduces to a frontline and an H, as Race for Victory
+2, Two Tier and his own Outback do (account, 3). **Record:** the edge had a map-wide lane width and thickness rather
+than its own (research/08); Outback is his, the other two are older maps by others (research/08). Two committer
+identities, `michael` and `rockymine`, appear on the same days; the record does not say whether they are one person
+(research/01).
+
+## 2. December 2025 to June 2026: logging matches, and a Python studio
+
+**The months the commit history leaves empty were spent on play data.** **Record:** the author's messages to Ruediger
+first mention Claude on 9 December 2025, for a match-logging plugin; by February and March it held 689 and then 3,000
+logged matches and a per-map configuration of 177 maps "dokumentiert für die ki"; on 19 March he wrote "ai maps soon
+tm", and on 29 May that Ruediger's idea of drawing polygons was being built (research/15).
+
+**The second attempt began by reading maps, not making them.** **Record:** `pgm-map-studio`, in Python, opened on 31
+May 2026 with Claude Sonnet 4.6 as co-author and scanned worlds for their islands; its pamphlet of 5 June says "The
+ground plane is not just terrain — it is the map's navigational grammar"; on 7 June a browser sketch exported as a
+loadable map folder; its last commit is 03:24 UTC on 12 June (research/01).
+
+## 3. June 2026: the C# studio and the first XML nobody wrote
+
+**The studio was a port, and its stack has not changed since.** **Record:** fourteen hours after the last Python
+commit `pgm-studio` was opened, and on 13 June Claude Opus 4.8 ported the whole studio to ASP.NET Core and Blazor in
+one commit of 145 files (research/01). The author called it the third rewrite, "so that it can be hosted"
+(research/15). No record gives the reason for C#; the C# era had in fact begun the October before (research/01).
+
+**The first `map.xml` a model wrote went to a real map within ten days.** **Record:** from 17 to 21 June Claude named
+the author's next map "Cobalt Crossing" and wrote its XML, which Ruediger reviewed; it became Drastic Change II. The
+author asked "ist das jetzt die erste xml jemals die jemand geschrieben hat ohne sie zu schreiben?", and on 23 June
+the first generated XML loaded in PGM (research/15). On 19 or 20 June Ruediger proposed the method of the later
+evenings: generate many maps, test the best ten in one evening, paint them afterwards (research/15).
+
+**On 24 June Ruediger uploaded three maps whose XML came out of the browser.** **Record:** Vauxite, Drastic Change II
+and Capture the Wool CTW entered CommunityMaps at 21:47 UTC. Nothing in them says so, but their kit, their
+`build-hole-1` regions and their bare team ids are what the studio's export wrote that week and appear in no other
+corpus map; Vauxite 1.0.1 on 1 July fixed spawn yaws, split spawns into two rectangles and added a build ceiling, and
+a stray studio-written copy of its XML still sits in its `region` folder (research/11). **Account:** these were the
+first maps on which he tried browser-made XML, and there were some errors; their concepts, terrain and colours are all
+human (account, 5 and 8). Capture the Wool CTW was first played on 28 June; Vauxite and Drastic Change II not until 12
+October (research/13).
+
+**The middle was named as the missing part on 20 June.** **Record:** a corpus analysis of 347 maps found that "the
+generator emits 0 neutral mid pieces but 88% of real maps carry a contested middle", and the same day a generator grew
+lanes from a hub along noise-bent Catmull-Rom splines; it lived 25 days and was retired on 15 July "in favour of the
+plan-then-realize direction" (research/01, research/08). **Account:** it was an attempt at organic layouts because
+everything was angular, and it was not fruitful (account, 3).
+
+## 4. July 2026: Base maps, boxes, Bridgid II and the cake
+
+**The first worlds the studio built were test fixtures drawn on squared paper.** **Record:** the Claude Code session of
+1 to 2 July (Opus 4.8) was opened to split P9, the export that writes a sketch as a world. At 23:21 UTC the author
+specified the 8×8×8 bedrock shell for spawn and wool, with its layers, doors and chests; at 07:37 on 2 July he sent
+the photograph now in `sources/` and asked to "make this layout as a general seed for testing", naming the three
+variants he wanted (research/09). The model built a staircase where the sheet has an H and one centre square where it
+has two; it said so itself at 08:45, and at 09:09 he typed the corners in five-block cells, which came out right
+(research/09). **Account:** the drawing is the two-team map, Base 2-Island; the two-wool map had one more island
+pushed onto it (account, correction to the squared-paper section), which the transcript confirms (research/09).
+
+**Seeds began in that session, not before it.** **Account:** he had already traced existing maps into seed files, and
+the seed was the plan model (account, squared-paper section). **Record:** a seed was born that morning as a pair of
+JSON files for a test; the plan model came at 22:47 UTC that evening; the first real map traced into one is of 4 July;
+what traced maps in June was a Decompose surface struck on 2 July (research/09). The name "Base" is the model's
+(research/09). The seeds stated `"authors": []`, and the bedrock box stayed the default room: rooms could take a
+library style from 5 August, but at least three later runs left one in the box by mistake, and the studio complained
+of it only from 27 September (research/07). **Record:** the Base worlds reached PrivateMaps, which deleted them on 12
+August, and Base 4-Team was played on the server at 00:30 UTC on 28 July, 28 players, 2 minutes 36 seconds
+(research/13, research/15).
+
+**The graph was not dropped in 23 minutes; a design document was replaced.** **Record:** at 14:31 UTC on 2 July a 184-line
+design proposed a plan graph of typed lane and gap edges; at 14:54 it was rewritten as areal pieces joined by
+interfaces, because "a thinned skeleton cannot represent side contact". No code of the first design was committed,
+and that evening `FannedGraph`, a reachability graph over the pieces, entered the studio, where it still is
+(research/08). **Account:** 23 minutes sounded too short to him (account, 3), and the record agrees that the idea did not
+end then. The same afternoon a strawman of layout rules was offered "for correction by id" and he corrected it
+(research/01): a model guessing and the author ruling is the method of the whole year.
+
+**By 21 July the layout was boxes.** **Record:** the composer started on 4 July beside a month of recorded play; by 21
+July it composed spawn, hub, wool approaches, frontline and middle, and "the box pipeline is THE composer"; destroy
+modes arrived on 15 July (research/01). **Account:** the generator's concept is his, devised to reproduce existing maps
+as far as possible (account, 8).
+
+**Bridgid II, on 14 July, is its own hand-built map.** **Record:** Ruediger added `ctw/bridgid_ii` in five commits from
+00:27 UTC, credited to rockymine and Ruediger_LP, created 12 July; the studio traced a plan of it that evening; its
+picture shows alternating dark and grey bands down the island sides; the studio's wall run first appears on 1 August,
+and nothing links the two (research/11). **Account:** its layout took about a day in the browser, it was skinned from
+stone in game in one long evening, its repeating side columns gave the wall-run idea, and it is as wild as Hello World;
+Ruediger made its XML, much of it placed by the browser tool, with the water lane added by hand (account, 5 and its
+correction; account, 8). It is not a Brittlebush map (account, correction). **Record:** on 14 July Ruediger asked to
+test it again, so it had been played before; the log's first play is 15 July (research/15, research/13).
+
+**The cake was an ordinary destroy map with a new objective.** **Record:** the author and Ruediger designed Capture the
+Cake on 17 and 18 July and loaded it that night (research/15); Kuusepuu CTC entered CommunityMaps on 27 July credited
+"CTC conversion: Claude Opus 5" and "XML" to Ruediger_LP; its fix of 31 July is the one commit that reports play,
+"Reported live: a carrier died, the cake went home" (research/06, research/11). **Account:** Kuusepuu is a destroy map
+whose objective they replaced with a cake; it is not an AI map and not the first one (account, 6).
+
+**Hello World Micro recoloured its wool room; it did not move it.** **Record:** uploaded on 27 July as a "grey map for
+concept test" with a studio plan file, its 1.0.1 rolled one or two wools a game and recoloured the enemy's box when
+the first fell; the full Hello World had recoloured its rooms since February 2025; the Micro was deleted on 12 August
+(research/07, research/08). **Account:** its layout he drew by hand as a small Hello World (account, 3); the record's
+plan file shows it came through the studio's plan tool, which does not settle who drew it (research/08). On 31 July
+Ruediger worked out the timing of a wool room that moves, and the author called the idea "so dumm und genial"
+(research/15).
+
+## 5. August 2026: colour, trees, the first fifteen and the trials
+
+**"Map walls" are the walls, rims and plateaus of 1 August.** **Account:** colouring began with one rule per height,
+then the top, sides and edges of a shape, then shading from outside in, stacked patterns and slope; under the plan
+model each area had its own pattern and transitions never worked (account, 1). **Record:** the order holds. Until 1
+August the export wrote one flat block of stone; that day Opus 4.8 specified rim, wall and interior; the inward axis
+came on 15 August, the slope axis on 5 September; the nearest thing to a per-height rule is the spec key
+`themeByHeight` of 14 August (research/05, research/02).
+
+**The tree generator was a page of sliders, and it failed against hand-built trees.** **Record:** the artifact the
+author supplied is the studio's `tools/decorate/prototype.html` of 2 August: five decoration tools and a grown tree of
+Catmull-Rom limbs with knobs for stems, leader, trunk flow, branch angle, levels, leaf size and height; it moved into
+the studio on 4 August, a vanilla tree split off on 5 August, and on 12 August, measured against 75 trees he had
+built, "1516 of 4020 never touch their branch"; it was repaired that night and deleted on 10 September on his ruling
+that "the form goes rather than gets a knob" (research/10, research/08, research/02). **Account:** a blob is easy for a
+model, a real tree generator failed, and its leaves and trunk got worse over time (account, 1 and 3); no commit shows a
+decline, only a repair and a second fault (research/08).
+
+**Wandering U was the summer's wild concept.** **Record:** the author sent `wandering-u.zip` to Ruediger at 20:11 UTC
+on 6 August, and PrivateMaps took "Wandering U: added" at 20:15 (research/15). The file is a studio plan at one block a
+cell, extended with variables, eight `<dynamic>` stops and countdowns: each team's wool sits in a 10 by 10 bedrock
+island that walks a lap of the U, and "anyone still inside when the room leaves is left in mid-air over the void"; it
+names no author (research/10). **Account:** he described the layout in text, Claude wrote the XML, and it was tested
+that day (account, 8 and 4). **Inference:** the log's one missing match number that evening, 19:46 to 20:11 UTC,
+closes before the zip was sent, so it is not Wandering U (research/13 against research/15); the test is not in the log.
+
+**No Blocks Placed, on 7 August, is the first public map drawn in the studio.** **Record:** its credits name rockymine
+for "Drawing pieces, shapes, and markers in the browser.", Ruediger_LP for "Wisdom." and Flamiix for "Minimalist.";
+TTtie only added its creation date on 15 August (research/05). Its largest tree is a 50-log oak at x −27 to −17, y 14
+to 30, z 41 to 52, the shape of that week's grower (research/08). **Account:** Flamiix did the wool room and spawn
+interiors, Tttie nothing; the oak is the surviving generated tree "if it is about 20 blocks high", and a few blocks
+were placed by hand (account, 3 and squared-paper section). The oak is about 17 blocks tall (research/08).
+
+**Another author's Grok map arrived on 10 August.** **Record:** arcadeboss uploaded Cedar Crossing at 04:00 UTC,
+credited "7,000 word essay" to himself and "Map and XML" to SuperGrok (research/11). That day an Opus 5 session
+measured it at the author's request; after playing it he wrote "too much tall grass, too many trees, the mineshaft is
+a mess … Grok probably never understood what the map actually looked like" (sessions/03).
+
+**The first fifteen boards were built on 11 and 12 August, eleven by Opus 5 and four by Haiku 4.5.** **Record:** each
+came from one JSON spec through `tools/mapgen` inside the studio; the author's fault list that night, MG1 to MG13, was
+in prose; Thornwake and Viridian went to CommunityMaps on 12 August and were tested that night on mapdev, which does
+not report matches (research/03, research/15). Viridian is the slime map: 13,299 of its 66,071 blocks are slime, and it
+holds seven greens, so it is also the all-greens map (research/08).
+
+**On 13 August an agent made a confident, measured and wrong claim.** **Record:** it said every generated destroy map
+was unwinnable because the goals floated; floating goals are PGM's design, the claim was withdrawn that day, and the
+rule that a gameplay question is answered by asking the author was written (research/02). The mapgen repository opened
+the same day; its first report told the author to delete the agent's own shortcut, and on 20 August `tools/mapgen` was
+deleted (research/03).
+
+**The trial runs of 13 and 14 August were, in his words, simply bad maps.** **Record:** Haiku reported two boards
+"verified working" that were 245-byte shells (sessions/04, research/03). His review of 14 August became 48 backlog
+entries, among them `B162`: "An obsidian destroyable may carry at most three obsidian blocks, and three maps carry 27,
+27 and 15" — Corvid Hollow and Basalt Reach have 3×3×3 cubes of obsidian in their stored worlds — enforced from 19
+August as rule `DC3`, which builds an oversized one in end stone (research/14). The same review named see-through slab
+roofs (Tallow Weirgate), a 90-block spawn hall (Sable Marsh) and a hole across Tallow Kilnrow's middle where the join
+belongs (research/14). **Account:** "everything was the problem … grundsätzlich einfach schlechte Maps", and the quartz
+map is probably Quillon Saltworks (account, 10). **Record:** both Saltworks and Kilnrow carry quartz, and the faults he
+lists belong to Kilnrow, Weirgate and Sable Marsh rather than Saltworks (research/14); which he means is unsettled.
+
+**The studio then made itself legible to agents.** **Record:** one finding type and one refusal envelope on 15 August,
+125 rules served by id, a dead-ground measure on 16 August calibrated against his reading of one board, and 131 paths
+described on 19 August (research/02, research/05). On 16 August Fable built Sunspit to a brief naming four themes, two
+references and a colour rule (sessions/05); he recalls it looked good from the start (account, 11). On 22 August Haiku
+built Hollow Crown, 100 by 120, each team's core inside the enemy's monument cuboid (research/05). On 25 August Opus 5
+built the labyrinth Overwall to his structural brief, and Aerie to a free one (sessions/06). On 28 and 29 August a
+session gave made things their name and built Slipway's ship and balloons (sessions/07).
+
+**Aerie's broken XML is in no record.** **Account:** it was unplayable because nothing was editable, wool rooms stood on
+odd islands and build zones were bad; probably there were no continuous blocks at the bottom, so the filters failed
+(sessions list; account, 10 and 11). **Record:** no commit, review or transcript holds the complaint; the model
+reported the board open with zero declines (sessions/06, research/14). **Inference:** Aerie floats from y 26 and has no
+block at y 0, which under PGM's void filter refuses every column outside its build rectangles — the same mechanism the
+author guesses (research/14).
+
+## 6. Late August to early September: Millrace, and the first test evenings
+
+**The test evenings began on 24 August.** **Record:** at 18:58 UTC the author sent Ruediger a zip of six boards, at 19:05
+PrivateMaps took "Add a few very human maps for testing", and from 19:07 to 19:51 the server's match counter skips six
+numbers the log does not hold (research/15, research/13). On 31 August a zip of eight followed, and Hollowmarch, the
+first of this project's composed boards in the log, was played at 21:18 (research/15, research/13).
+
+**Millrace is the year's clearest lesson.** **Record:** on 30 August the author drew a basin in the Sketch tool; Opus 5
+built it as Millrace and Sonnet 4.5 as Cutwater and Fallowmere (research/03). By the early hours of 2 September he and
+Ruediger had finished Opus's by hand; their review says they "spent 5 hours" and that "essentially all that was done is
+theming and some dressing"; 29,954 of its 35,610 columns kept their height (research/03). It went to CommunityMaps at
+00:18 UTC as Millrace 2.0.0, credited to both of them and to Opus 5, and was played ten minutes later (research/11,
+research/13). **Account:** five hours side by side, ten person-hours; Opus's terrain was kept and the houses redone;
+Ruediger reworked the XML (account, 1, 3 and 8).
+
+**The trees came before Fable's rebuild, not because of it.** **Account:** Fable, asked to rebuild Millrace, began
+copying his trees, which led him to tidy his tree world and add it (account, 1). **Record:** the tree world had been in
+the studio since 12 August and was committed to mapgen at 00:53 UTC on 2 September; Fable 5.1's diff and its copied-tree
+form followed two hours later; the world grew to 86 trees on 20 September and 95 on 1 October (research/05,
+sessions/02). The session that restated the revamp also built Mossgill on the same techniques (sessions/02).
+
+**Alderfen Holm came from a player's prompt.** **Record:** on 2 September the author pasted a swamp DTC prompt and added
+a dozen material tests of his own; Opus 5 built two islands with two cores a team and one mid holm (sessions/08).
+**Account:** it looked quite nice, felt balanced, and has four cores (account, 11). Research/13's table gives it five;
+the world and the author give four (sessions/08).
+
+**The evening of Friday 4 September is the one test session the log shows.** **Record:** the author sent six boards
+(Mossgill, Alderfen Holm, Lodestar Yard, Quiverstone Mesa, Scarrow Delph, Weirbank) at 20:32 UTC with "slop time" at
+21:55; the log shows Millrace at 22:21, seven missing numbers, then Sunspit, Hollowmarch, Brackenfold, Cairnmeadow,
+Hollowbank and Elderwold in a row to 23:51, 26 to 51 players each (research/15, research/13). **Inference:** the six
+visible boards are from the August zips, and the seven missing matches were the six sent that evening plus one
+(research/15). The next morning a session rebuilt Sunspit and flattened Hollowmarch's relief from 15 to 6 blocks of
+range (sessions/09); he says Hollowmarch's frontline put players over void, which the transcript does not hold but a
+measured gap at its legs fits (sessions/09; account, 11).
+
+## 7. September 2026: written taste, and the Sundays
+
+**Taste was written down rather than gated.** **Record:** on 4 September the studio stopped writing the "made by" sign
+over blank lines, after finding 69 of 74 boards named nobody (research/07); on 5 September it painted by slope (research/02);
+on 9 and 10 September ten agents painted a layout the author had drawn himself, and his review became eleven material
+rules (sessions/10); on 19 September `WHAT-A-BOARD-IS-MADE-OF.md` opened with "None of it is enforced anywhere"
+(research/03). **Account:** "Made by" and nothing in the tab list was the running joke, the first AI tell (account, 1);
+the record's version is the sign (research/07).
+
+**The Sonnet run's brief asked for underground passages, and Kilnholt Cut answered with a hollow causeway.** **Record:**
+his dictated brief of 11 September asked for "some sort of attempt at least at a map that incorporates some
+underground passages", planned bottom-up with a stair; Sonnet 5 built Kilnholt Cut, whose gap holds a solid,
+grass-topped diagonal causeway with a corridor through it, a "zero-cost, zero-climb" way across that the model flagged
+as an open question (sessions/11). **Account:** from the screenshots he would not have thought it hollow; it was a route
+round the fight "until players figured out there was a tunnel" (sessions list). **Inference:** Kilnholt Cut heads
+Ruediger's playing order for 13 September, so that is the likely evening (research/15).
+
+**The name "Slop Sunday" is Ruediger's, from 12 September.** **Record:** it appears in his message that day, and the
+evenings of Sunday 13, 20 and 27 September followed: zips of 11, 7 and 11 boards plus two large ones, and in the log
+counter gaps of 11, 8 and 13 match numbers in stretches of 78, 54 and 99 minutes (research/15, research/13). Between
+them came Mirkholt, which he judged "not good" and corrected by two messages (sessions/12), the three-model day of 21
+September, on which two of Sonnet 5's four boards exceeded the dead-ground band and none of Opus 5's did (research/03),
+the first Opus 5.5 commit on 22 September (research/02), and Scarbutte, from a brief that asked for terrain alone
+(sessions/13). On 27 September the studio drew boards in Minecraft's own textures and nine Opus 5.5 boards were
+painted (research/02, research/03).
+
+**The last evening was 27 September.** **Record:** at 20:55 UTC the author sent eleven `/event add` commands, at 21:55
+Opus 5.5 committed Delverdale and Whitstone Weald "for a 32-a-side play test", at 21:57 their zip went with "load maps",
+and PrivateMaps took them at 22:11; the log's counter runs 98 to 112 between 20:57 and 22:37 with nothing between
+(research/15, research/13). **Account:** the last AI-map test was on 27 September (account, 1). The same day he wrote
+"pgmstudio.de ist jetzt meins", and the next a player from the event sent a two-page review of the tool (research/15).
+
+## 8. Late September: the studio goes public, and notes with coordinates
+
+**Between 26 and 28 September the studio became a website.** **Record:** Discord sign-in, tokens, a build queue, and
+self-deployment of pgmstudio.de from a green `main` (research/02). **Account:** it went online about two months ago and
+hardly anyone uses it (account, 3). The site lists 72 maps, 31 by agents (research/05).
+
+**Notes pinned to the ground replaced descriptions in words.** **Record:** on 28 September notes could be pinned by a
+point, box or lasso on a picture, which the studio turns into ground columns (research/05). The first trial, the next
+day, worked Gypsum Reach and Sootcombe through five rounds; the agent read lines such as "add another willow on top of
+the rise" with the box x −21..−13, z 65..81 attached, and answered each with a picture from the same camera
+(sessions/14). His first verdict, given in chat, was that both were empty (sessions/14). **Account:** feedback improved
+when the model got coordinates, and empty, dreary maps remain a problem (account, 1).
+
+## 9. October 2026: freeform, the grammar, and the port
+
+**Freeform began as an overnight experiment.** **Record:** on 7 October, after trial boards he called "a box with a small
+void gap", the author dictated at 22:21 UTC: "what if like an agent didn't need to rely on the current way we build the
+houses, the terrain, etc. And if he could sort of just make his own sort of script or whatever". At 22:26 he gave the
+mode and the ingredients — a destroy map, "forest, plains, town and sort of village meeting with a river and a cave … a
+dungeon … a wheat field. A tractor" — and asked that the scripts be kept (sessions/00). An Opus 5.5 session built
+Riftwater in 33 minutes of commits. At 05:42 the next morning he wrote: "Ok. This is a whole different class of map.
+From the images it looks like he cooked real hard." (sessions/01). **Account:** he told a session he did not like the
+layer model and to think, and contributed nothing to the first board, a floating island with two villages
+("Riverside") (account, 1 and 7). The record differs in form: he asked whether an agent could do without the current
+way, and he supplied the ingredients; the board is Riftwater (sessions/01).
+
+**The pace that followed built a library.** **Record:** 8 October holds 86 commits and some twenty boards across game
+modes; by evening the model found 15,800 lines of copied helpers and started `pgmvox`, which carried tunnels, chambers
+and shafts by the next day (sessions/01). Under the layer model a cavity was a stack of layers and the studio's carve
+"cannot hollow a column out from the middle" (research/05).
+
+**The grammar came on 9 October, from his own Brittlebush.** **Record:** an Opus 5.5 session read Brittlebush (2022) and
+Brittlebush II (2023) block by block, wrote their look as a style, split the rules from the blocks as `pgmvox.grammar`,
+spoke a second style in it forty minutes later, and built Brittlebush III from a plan he had drawn on pgmstudio.de
+(research/05). **Account:** the Brittlebush look — 5×5 fields combined by rules, a simple building style — can be
+expressed in full by the grammar, which was its point, and Brittlebush III has never been tested by players (account,
+2). The log holds no Brittlebush III (research/13).
+
+**The October playtest sits awkwardly against "the last test was 27 September".** **Record:** on 9 and 10 October the
+author's notes from "playing the freeform and trial boards" were sorted into 30 faults, of which the studio "would have
+caught 9", with Riftwater "essentially perfect" in the agent's summary (research/05, research/06). The log shows no
+missing stretch after 27 September (research/13). **Inference:** this was played somewhere that does not report, such as
+mapdev (research/15), and not as an event; who played is unrecorded. On 10 October a controlled run with Sonnet 5.5 in
+both tools found "the two tools made boards of comparable quality", and Ruediger proposed finishing the three best AI
+maps (research/03, research/15). On 19 October the author wrote that there was little motivation left to make or play
+AI maps: "Genug Material haben wir ja." (research/15).
+
+**The studio absorbed its laboratory.** **Record:** on 15 October `docs/pgmvox-port.md` set the goal of a board "the author
+cannot tell apart, by quality, from one built with pgmvox"; the rectangle plan retired on 18 October, a modifier stack
+of landforms replaced the relief solver on 24 October, carves arrived on 25 October, and by 4 November every phase had
+shipped or been parked, except the grammar, which has no shipped line (research/02). Coldstore, built on pgmvox from his
+concept world with signs, was judged "finished and the map.xml a success" (research/03). Meanwhile other people used the
+browser: Countryside's regions were drawn there from 5 October and it reached CommunityMaps on 15 October UTC, and 803's
+studio-made XML went up on 19 October (research/11). **Account:** Countryside on 9 October (account, 5); the repository
+has 14 October in the uploader's zone (research/11).
+
+## 10. November 2026: a map built by hand, and a freeze
+
+**Agents could not compose his sketch, so he built it.** **Record:** from 2 to 7 November agents composed the author's
+hand-built sketch world into a CTW and DTC map set into a mountain, and every version was rejected — "the surface was
+not closed", "a ramp led into the void" — and "Every one of those failures passed some check that existed at the
+time"; then he built the half himself, on a date not recorded, and the agents' task became understanding it
+(research/04). In the studio he froze the layout generator on 13 November; the last commit on `main` is of 14 November
+(research/02). Chapter 13 says what the map shows.
+
+---
+
+## 11. What counts as an AI map
+
+**"AI map" is a spectrum, and the useful question is who decided each part.** **Account:** the squared-paper map was his
+drawing written down by Claude; many maps came from a deterministic generator; others are the model's own imagination,
+yet all are executed deterministically by a tool (account, 7). Research/12 splits a map into seven decisions — concept,
+layout, terrain, colour, structures, objectives and XML, finishing — and names for each who decided and what executed.
+The studio executes in most rows and decides in none; where an algorithm decides, a seed was chosen by someone
+(research/12). Determinism does not settle authorship, because authorship lives in the inputs: a compiler is
+deterministic and writes no program (research/12).
+
+| # | Category | Who decides, what executes | Maps (source) |
+|---|---|---|---|
+| 1 | Hand-made | a person decides and builds; a tool at most writes the XML | the ice map, Vauxite, Drastic Change II, Bridgid II (research/12) |
+| 2 | Person's design, algorithm's detail | he draws; the studio solves, paints and grows the rest | No Blocks Placed (research/12) |
+| 3 | Person's drawing, model's pen | he supplies the drawing, text or objective; a model writes it | Base 2-Island, Kuusepuu CTC, Millrace, Wandering U, Slipway (research/12, sessions/07) |
+| 4 | Algorithm's layout, model's spec | a model states numbers; the seeded composer lays out | the first fifteen; Hollowmarch, Sootcombe (research/12, sessions/09, sessions/14) |
+| 5 | Model's design in the studio, person's rulings | a model decides through the studio's vocabulary; he steers by brief, notes and rulings | Gypsum Reach, Whinberry Ring, Overwall, Sunspit, Alderfen Holm, Kilnholt Cut, Mirkholt, Scarbutte (research/12, sessions/05, 06, 08, 11, 12, 13) |
+| 6a | Model's script inside the author's tool | the model writes the program, in his repository, on his world writer and later his library | Riftwater, the freeform boards, Coldstore (sessions/01, research/12) |
+| 6b | Model's own tooling | the model and its own pipeline make map and XML, with no shared tool | Cedar Crossing and arcadeboss's later Grok maps (research/15, research/12) |
+
+**The split of the last category is supported by how the two were run.** **Record:** Riftwater's scripts live in the
+author's repository and wrote the world through the studio's own C# region writer, from a brief his session wrote
+(sessions/01). Cedar Crossing was made on grok.com: arcadeboss gave it the pgm.dev documentation and an overview of
+destroy maps, Grok wrote a design document whose JSON "intermediate representation" fed both XML and world, "the map
+concept and name came from the AI", and over a hundred zips were loaded and tested; his later maps used GrokBuild, a
+local agent, and GrokBot, bots with their own test server (research/15). **Account:** Cedar Crossing came from an
+ordinary chat where Grok wrote a script, with no tool between (account, 7).
+
+**The human stayed in five places: he drew, briefed, noted, ruled and finished** (research/12). The briefs found since
+show how much he stated. For Riftwater he gave ingredients and a mode, no layout (sessions/00); for Sunspit themes,
+references and a colour rule (sessions/05); for Alderfen a player's prompt plus his material list (sessions/08); for the
+Sonnet run a long list of finishing rules and a request for underground passages, no places (sessions/11); for
+Scarbutte the method alone (sessions/13). **Account:** the agents mostly took the composer's base and did nothing with
+it (account, 8). **Record:** this holds for the first fifteen, Hollowmarch and Sootcombe and fails for Whinberry Ring's
+reshaped outline and Heftfold's walled island (research/12, sessions/09, sessions/14).
+
+**The models differ in the record as he says they do, but less cleanly.** **Account:** Sonnet's maps were worse
+whatever the numbers say; late in the year Opus's were clearly better, through verification steps and model progress
+(account, 1); early and Sonnet maps were flat, too large, with objectives too close (account, 3). **Record:** on the one
+controlled day, 21 September, Opus 5's dead ground was lower on three of four boards; on 10 October, with Sonnet 5.5
+fixed, the tools came out level; his best words for a Sonnet board are for Abbeymoor on pgmvox, "really looks like a
+place"; the boards he finished, called perfect or called a success were Opus boards (research/03, research/05). No run
+compares Opus 5.5 with Sonnet 5.5 on one brief (research/03).
+
+## 12. The playtests
+
+**The tests were event rotations, and the plugin did not report them.** **Account:** on the server an event runs a
+rotation of maps, and those matches were apparently not sent to the match-status channel; the gaps of 8, 11 and 13
+fit tests of that many maps (account, 9). Research/13 found the gaps from the log alone: the counter runs on through
+stretches the CSV lacks, 14 such skips in the whole log, nine of them from 27 July to 27 September and none after, and
+catalogue maps follow them far more often than chance (research/13). It offered three explanations — a reader gap, a
+differently worded message, another server — and left them open. Research/15 found the other half in the author's
+messages: the zips he sent before each evening and the `/event add` commands of 27 September (research/15).
+
+**Reconciled, the two readings agree on six evenings, three of them the Sundays.** The catalogue below sets them side by
+side; the record of each column is cited, and the fit is inference.
+
+| Evening (UTC) | Sent to Ruediger (research/15) | Missing numbers in the log (research/13) | Fit |
+|---|---|---|---|
+| Mon 24 Aug | 6 maps, 18:58 | 6 (52–57), 19:07–19:51 | exact |
+| Tue 25 Aug | 1 map (Tarnfell), 20:22 | none | no event seen |
+| Mon 31 Aug | 8 maps, 20:42 | 2, then Hollowmarch visible | partial |
+| Fri 4 Sep | 6 maps, 20:32 | 7 (180–186), between Millrace and Sunspit | six plus one |
+| Sun 13 Sep | 11 maps; Ruediger's order of eleven | 11 (139–149), 78 min | exact |
+| Sun 20 Sep | 7 maps | 8 (132–139), 54 min | seven plus one |
+| Sun 27 Sep | 11 `/event add` plus 2 large | 13 (99–111), 99 min | exact |
+
+**Read together, his memory is right in shape and short in count.** **Account:** three or four sessions in one intensive
+month, every or every second weekend, sometimes twelve maps in a row, no logs (account, 3). **Inference:** the Sunday
+name fits the last three evenings and arrived just before them (research/15); the weekday evenings of 24 and 31 August
+and 4 September came first; the largest runs were eleven and thirteen. On 13 and 20 September the gap ends at Millrace,
+and on 4 September Millrace is the match just before it; the author says Millrace was set at the end to show players a
+model's map finished by people (research/15; account, 9). The 4 September session is the only one whose boards the log
+shows, because those were played outside the event (research/15). No long destroy match exists: the longest on a
+destroy board of this project is Brackenfold's 15 minutes 15 seconds, and a 99-minute stretch with thirteen starts holds
+no three-hour game (research/13).
+
+**What was learned from the tests reached the studio as rules, not as records.** **Record:** the one played fault in a
+commit is Kuusepuu's "Reported live" (research/06). **Account:** Hollowmarch's frontline led players into the void and
+now a check requires the frontline to sit inside the build zone; Kilnholt Cut's tunnel was found by players; a Mirkholt
+wool room could be burnt out with flint and steel (account, 11; sessions list). None of these plays is recorded
+(sessions/09, 11, 12).
+
+## 13. What the hand-built map shows
+
+**The map he built deliberately breaks the mode's dull shape.** **Account:** it sits in a cauldron of walls and a bunker
+facade; routes are knitted together — tunnels, an underground lane, an overground way to the core, a hole from the big
+floor into the lane, a door high in the facade reached up a hill; the core can be taken from the hollow below or from
+above, the wool by dropping through a hole, along the lane or through the ceiling; it grew around the facade, and
+agents never think about routes before they build (account, 3). **Record:** the half spans x −15 to 104, y 0 to 91, z −56
+to 101; the study names 42 spaces from the wool lane at y 4 to 8 to the attic at y 61 to 67; its terrain is 23 lofts with
+a median tilt of 36 degrees; its retaining walls are 19, 13 and 14 blocks tall; and the colours of its wool carry
+meaning, yellow for connecting ground and light blue for hills (research/04, renders/hand-built).
+
+**It shows what a check cannot.** **Record:** agents treated a hollow map as solid, painted colour as a blanket, and
+relayed passing checks on variants he saw as plainly wrong; "a geometric rule is not a design" (research/04). **Account:**
+it has a dead area that makes sense, likely the back around the wool lookout and hills, so "dead" is subjective
+(account, 1 and 3); the dead-ground rule would refuse it at more than 12 percent (research/05). **Inference:** the year
+went from a graph to a grammar and from words to coordinates, and the newest map returns to the first category, with
+the models put to reading it (research/12). It is now an ice map; the contest it was made for was cancelled, and he will
+finish it himself in snow, stone, ice or grass (research/04; account, 8).
+
+## 14. What remains open
+
+**Five disagreements between record and recollection remain, and the record does not overrule them all.**
+
+| Subject | Account | Record | State |
+|---|---|---|---|
+| The last test | 27 September (account, 1) | notes from playing freeform boards on 9–10 October (research/05) | open: a non-event play is likely, unproven |
+| The 500-wide moshpit map | one core, one monument a team, flat, enemies 10 apart (account, 1) | Hollow Crown fits on objectives (100 × 120); Spinebreak on length (145 × 405) (research/05) | open: he asked for both rendered |
+| The quartz board | Quillon Saltworks (account, 10) | both Saltworks and Kilnrow carry quartz; the faults he lists are Kilnrow's, Weirgate's and Sable Marsh's (research/14) | open |
+| Aerie's unplayable XML | nothing editable, odd islands, bad zones (account, 11) | no record; the model reported it open (sessions/06, research/14) | inference supports his guess |
+| The freeform instruction and Riftwater | "I don't like it, think"; he gave nothing (account, 1, 7) | "what if … his own sort of script"; ingredients and mode were his (sessions/00, 01) | settled in form, his memory compressed |
+
+**Smaller points stay unsettled.** Who wrote Hello World Micro's layout, by hand or in the plan tool (research/08); whether
+the 17-block oak on No Blocks Placed is the generated tree, which he puts at about 20 blocks (research/08); which
+session drew the probe board's tunnels he calls awkward (sessions/10); what "Muse Spark", credited on two boards of 27
+September, is (research/15); the Annealing dates (research/08); and which model ran the freeform trial agents
+(research/03).
+
+**The open problem is the one he named first.** Maps that look and feel empty are still made. The rules can say that
+ground lies off every route, but, as the sorting of his October notes put it, they "cannot say what belongs"
+(research/05). In his own words to Ruediger the material is enough (research/15); what the tool has not taken over is the
+judgement of what a place is for.

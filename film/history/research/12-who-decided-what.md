@@ -5,7 +5,10 @@ Research for the history, written 27 November 2026 to answer the author's sevent
 taken from research `01`–`11`, from the reports and specs in this repository, or, for two cells, from the `pgm-studio`
 history (named where used). **"unknown" means the record is silent; it is not a guess in either direction.** Cells
 the author answered in the eighth instalment (`../author-account-2026-11-27.md`, same day) are marked **(his account)**:
-they are his statement, not something the record shows.
+they are his statement, not something the record shows. **Amended the same evening** with the briefs read from the
+session write-ups (`sessions/00`–`14`), the author's eighth to eleventh instalments, the match log (research `13`) and
+the conversations and private-repository feed of research `15`; the table in §2 now has 24 rows and the last category
+is split in two (§5).
 
 ## 1. How to read it
 
@@ -37,21 +40,32 @@ Each cell is *decider / executor*. P person, M model, A algorithm; st studio, br
 | # | Map (date) | concept | layout | terrain | colour | structures, decoration | objectives, XML | finishing | Category |
 |---|---|---|---|---|---|---|---|---|---|
 | 1 | Author's ice map (Nov) | P / ha | P / ha | P / ha | P / ha (his account: snow, stone, ice or grass, undecided) | P / ha | P / ha, XML none | P / ha (his account: he builds it to the end) | 1 |
-| 2 | Vauxite, Drastic Change II (24 Jun) | P (his account) | ? | P (his account) | P (his account) | ? | P / br then ha | P / ha | 1 |
+| 2 | Vauxite, Drastic Change II (24 Jun) | P (his account) | ? | P (his account) | P (his account) | ? | Drastic Change II: M (Claude wrote it as "Cobalt Crossing", Ruediger reviewed) / st; Vauxite: P / br then ha | P / ha | 1 |
 | 3 | Bridgid II (14 Jul) | P (his account) | P / br | P (his account) | P / ha | ? | P (Ruediger, his account) / br, then ha for the water lane | P / ha | 1 |
-| 4 | No Blocks Placed (7 Aug) | ? | P / br | P / br, st | ? / st | A / st, P / ha | P / br, st | P / ha | 2 |
-| 5 | Wandering U (6 Aug, his account) | P / ? | P (described in text, his account) / ? | A / st | A / st | A / st | M (his account: Claude wrote the XML) / ? | ? | 3 |
+| 4 | No Blocks Placed (7 Aug) | ? | P / br | P / br, st | ? / st | A / st, P (Flamiix) / ha | P / br, st | P / ha | 2 |
+| 5 | Wandering U (6 Aug) | P, with Ruediger's timing (31 Jul) / – | P (described in text, his account) / st plan at cell 1 | A / st | A / st | A / st | M (his account: Claude wrote the XML) / st, then M | ? | 3 |
 | 6 | Base 2-Island (2 Jul) | P / – | P / M-writes, st | P / st | A defaults / st | P / st | P / st, XML ? | none | 3 |
-| 7 | Capture the Cake (27 Jul) | ? | P (old map) | P (old map) | P (old map) | P (old map) | M, P / ? | P / ? | 3 |
-| 8 | Millrace (30 Aug – 2 Sep) | P / br | P / br | M, A / st; P kept | M, A / st then P / ha | M then P / ha | M / st, then P (Ruediger, his account, as far as he remembers) | P / ha | 3 |
-| 9 | Goldhollow (12 Aug) | M, spec | A / st (seed 41) | A / st | M words / st | A / st | A retarget / st | none; review in words | 4 |
-| 10 | Gypsum Reach (28 Sep –) | M / ? | M / st | M / st | M / st, P notes | M / st | M / st | P notes, M / st | 5 |
-| 11 | Whinberry Ring (12 Sep) | ? | A seed 18, M edits / ms, st | M / ms, st | M / ms, st | M / ms, st | A, M / ms, st | P feedback, M / ms, st | 5 |
-| 12 | Overwall (25 Aug) | P (account) | M / ms, st | M / ms, st | M / ms, st | M / ms, st | M / ms, st | none (his account: no hand finishing) | 5 |
-| 13 | Riftwater (7 Oct) | M (account: P nothing) | M / ms | M / ms | M / ms | M / ms | M / ms | P review, M / ms | 6 |
-| 14 | Cedar Crossing (10 Aug) | P essay | M ("Map") / ms | M / ms | M / ms | M / ms | M ("XML") / ms | ? | 6 |
+| 7 | Kuusepuu CTC (27 Jul) | P and Ruediger (designed 17–18 Jul) | P (old map) | P (old map) | P (old map) | P (old map) | M ("CTC conversion"), Ruediger ("XML") / ? | P / ha | 3 |
+| 8 | Millrace (30 Aug – 2 Sep) | P / br | P / br | M, A / st; P kept | M, A / st then P / ha | M then P / ha | M / st, then P (Ruediger, his account) | P / ha | 3 |
+| 9 | Slipway (28–29 Aug) | P (ship and balloon harbour DTM) | P (a phone-drawn plan), after M's first was rejected | M / st | M, P rulings / st | M (made things, scripted) / ms, st | M, P renamed and moved one / st | none | 3 |
+| 10 | Goldhollow (12 Aug) | M, spec | A / st (seed 41) | A / st | M words / st | A / st | A retarget / st | none; review in words | 4 |
+| 11 | Hollowmarch (Aug; revised 5 Sep) | M | A (composer, seed 1233) / st | M, then M to P's rulings / st | M / st | M / st | st | P rulings, M / st | 4 |
+| 12 | Sootcombe (28–29 Sep) | M (within "two unlike boards") | A (composed plan 12, seed 21), then P by notes / st | M, P by notes / st | M, P by notes / st | M, P by notes / st | M / st | P notes, M / st | 4 |
+| 13 | Sunspit (16 Aug; rebuilt 5 Sep) | P theme ("summer and beach"), M shape | M / st | M / st | M under P's colour rule / st | M / st | A from M's placements / st | P review, M / st | 5 |
+| 14 | Overwall (25 Aug) | P (his account; a detailed structural brief) | P (12-wide passages), M (grid) / ms, st | M / ms, st | P ("ordinary stone, few colours"), M / ms, st | M / ms, st | M / ms, st | none (his account) | 5 |
+| 15 | Aerie (25 Aug) | M (free brief: "surprises me") | M / ms, st | M / ms, st | M / ms, st | M / ms, st | M / ms, st (his account: unplayable) | none | 5 |
+| 16 | Alderfen Holm (2 Sep) | a player's prompt, P's material list | M / ms, st | M / ms, st | M to P's list / ms, st | M to P's list / ms, st | M (four cores) / st | M / st | 5 |
+| 17 | Kilnholt Cut (12 Sep) | M (place), P asked for "underground passages" | M / ms, st | M (slope bands per P's rule) / ms, st | M / ms, st | M (the hollow causeway) / ms, st | M / st | st | 5 |
+| 18 | Whinberry Ring (12 Sep) | ? | A seed 18, M edits / ms, st | M / ms, st | M / ms, st | M / ms, st | A, M / ms, st | P feedback, M / ms, st | 5 |
+| 19 | Mirkholt (14 Sep) | M within P's ground family and objective kinds | M, then P (fronts, zone, lane) / ms, st | M / st | M / st | M / st | st | P rulings, M / st | 5 |
+| 20 | Scarbutte (24 Sep) | M within P's "terrain only, destroy, about four" | M from P's method / st | M, P reviews / st | none, later M (27 Sep) / st | none | M / st | none | 5 |
+| 21 | Gypsum Reach (28 Sep –) | M / st | M / st | M / st | M / st, P notes | M / st | M / st | P notes, M / st | 5 |
+| 22 | Riftwater (7 Oct) | P ingredients and mode, M the board (his account: P nothing) | M / ms | M / ms | M / ms | M / ms | M / ms | P review, M / ms | 6a |
+| 23 | Coldstore (22 Oct) | P (concept world with 44 signs) | M / ms (pgmvox) | M / ms | M / ms | M / ms | M / ms | P two reviews, M / ms | 6a |
+| 24 | Cedar Crossing (10 Aug) | Grok ("concept and name came from the AI"), from P's (arcadeboss's) overview | M / Grok's pipeline | M / Grok's | M / Grok's | M / Grok's | M ("XML") / Grok's | P (arcadeboss), over a hundred tested zips | 6b |
 
-The spectrum has six categories (§5). Row 7 is placed provisionally, for the reason in its table.
+The rows of 2026 sessions (9, 11–13, 15–17, 19, 20, 22) come from the write-ups under `sessions/`; Wandering U, Kuusepuu
+and Cedar Crossing are amended from research `15`. Row 7 is placed provisionally, for the reason in its table.
 
 ## 3. The maps, one at a time
 
@@ -79,7 +93,7 @@ Sources: research `04` §§1, 2, 3a, 4; `film/history/research/05` ("his own han
 |---|---|---|
 | Concept, terrain, colour | person **(his account)**: "all concepts, terrain and colours are human" for Vauxite, Drastic Change II and Bridgid II | the record holds nothing on how the blocks were made; the commissioning brief says hands |
 | Layout, structures | unknown from the record; the commissioning brief calls them hand-built and the record credits rockymine as author | the brief says hands; not in the record |
-| Objectives, XML | person drew the regions in the browser (his account: the first maps he tried that on); the kit, `build-hole-1` ids and bare team ids are the studio export of that week | studio export, then hand editing: Vauxite 1.0.1 fixes spawn yaws, two-rectangle spawns and a build ceiling of 24, and the root `map.xml` is a hand-reformatted copy of a stray studio-written one |
+| Objectives, XML | person drew the regions in the browser (his account: the first maps he tried that on); the kit, `build-hole-1` ids and bare team ids are the studio export of that week. For Drastic Change II the conversation with Ruediger adds that Claude named the map "Cobalt Crossing" and wrote its XML between 17 and 21 June, and Ruediger reviewed it (research `15` §5) | studio export, then hand editing: Vauxite 1.0.1 fixes spawn yaws, two-rectangle spawns and a build ceiling of 24, and the root `map.xml` is a hand-reformatted copy of a stray studio-written one |
 | Finishing | person (the 1.0.1 revision is the "some errors" he recalls); who found each error: unknown. Vauxite and Drastic Change II were first played on 12 October, three and a half months after upload (research `13`) | hands on the XML |
 
 Sources: research `11` §1; author's account, fifth instalment.
@@ -116,7 +130,7 @@ Sources: research `05` §b, `08` ("the larger tree"), `11` §3; author's account
 
 | Decision | Who decided | What executed |
 |---|---|---|
-| Concept | person, his account: "wild concepts they wanted to try", a wool room that walks a lap around the U. The file names no author | |
+| Concept | person, his account: "wild concepts they wanted to try", a wool room that walks a lap around the U. The file names no author. The conversation with Ruediger records the moving room's timing as Ruediger's (31 July) and the zip sent at 20:11 UTC on 6 August, with PrivateMaps taking it four minutes later (research `15`) | |
 | Layout | person **(his account)**: he described it in text; the XML's own comment says the plan was "authored at cell=1" in the studio | browser (studio plan), by whom: unknown |
 | Terrain, colour, structures | algorithm: the 10 by 10 chunk of bedrock is "the entire 10x10 chunk pgm-studio stamps for the wool-room role" | studio |
 | Objectives, XML | model **(his account)**: Claude wrote the XML from his text. The base is the studio's export; the variables, eight `<dynamic>` stops and countdown actions are the part the file shows as hand-written or model-written | model |
@@ -142,7 +156,7 @@ Sources: research `09` throughout; `13` §4; `07` §2; `../sources/base-map-squa
 
 | Decision | Who decided | What executed |
 |---|---|---|
-| Concept | unknown. The header says "the DTM map with the destroyables removed and the cake objective of capture_the_cake_ctw dropped in", a map in no repository here; the author calls it a game-mode experiment | |
+| Concept | person: the author and Ruediger designed Capture the Cake on 17 and 18 July and loaded it that night (research `15` §5). The header says "the DTM map with the destroyables removed and the cake objective of capture_the_cake_ctw dropped in"; the author calls it an ordinary destroy map with a cake objective, not an AI map (sixth instalment) | |
 | Layout, terrain, colour, structures | person: an existing map by rockymine and DerStiv, unchanged by this step | the earlier map |
 | Objectives, XML | model: credits "CTC conversion: Claude Opus 5"; Ruediger_LP credited for "XML" | how the conversion was run: unknown |
 | Finishing | person: three revisions on 28 and 31 July; 1.0.3's comment "Reported live: a carrier died, the cake went home" is the one commit that reports play | hands on the XML |
@@ -231,7 +245,7 @@ Sources: `reports/opus5-overwall-run.md`; `reports/coldstore.md`; research `05` 
 
 | Decision | Who decided | What executed |
 |---|---|---|
-| Concept | model; the author (seventh instalment): he contributed nothing. The record is silent on the instruction that started it | |
+| Concept | person and model. The author's dictated messages of 7 October 22:21 and 22:26 UTC set the premise ("what if like an agent didn't need to rely on the current way we build the houses, the terrain"), the mode (destroy the monument or the core) and the ingredients (forest, plains, town and village at a river, a cave, a dungeon, a wheat field, a tractor); the model chose the rift, the two settlements a side and the cave as the centre (`sessions/00`, `sessions/01`). The author (seventh instalment): he contributed nothing | |
 | Layout | model: one valley mirrored across a rift 20 blocks wide, two settlements a side, DTM rather than DTC, because a core's lava would pour into the cave the board is built around | model scripts (`plan.py`, `gen.py`) |
 | Terrain shape | model | model scripts (3,379 lines in all) |
 | Colouring, structures, decoration | model, including a cave system under the valley | model scripts; the studio's region writer only |
@@ -247,20 +261,41 @@ Sources: research `05` §"The rework", `03` §§1, 2; `freeform/lib/boards/riftw
 | Decision | Who decided | What executed |
 |---|---|---|
 | Concept | person: credits "7,000 word essay" to arcadeboss and "Map suggestions" to a second human | |
-| Layout, terrain, colour, structures, objectives | model, by the credit "SuperGrok: Map and XML"; which decisions the essay fixed and which Grok made: unknown | the author's account: a script Grok wrote and a zip; the record holds only the credits, so how it ran is unknown |
-| XML | model, same credit | unknown |
-| Finishing | unknown. "Updates from play testing" on 13 August; who made them: unknown | |
+| Layout, terrain, colour, structures, objectives | model: arcadeboss told the author on 10 August that he gave SuperGrok on grok.com the pgm.dev documentation and a hand-written overview of several destroy maps; Grok wrote a design document (`DTM_Design_Priors_and_IR.docx`: priors from seven seed maps, a JSON intermediate representation as the single source for XML and world, two concepts of which Cedar Crossing is the first), and "the map concept and name came from the AI" (research `15` §4) | Grok's own pipeline: after two or three XML passes, world generation from a stone world with the final terrain and monuments; over a hundred zips loaded and tested |
+| XML | model, same credit | Grok's pipeline |
+| Finishing | person (arcadeboss): the iterations and "Updates from play testing" on 13 August. The essay credit is that work (research `15`) | |
 
-No shared tool is in the record. Sources: research `11` §3, `06`; author's account (fifth and seventh instalments).
+No shared tool is in the record. His later maps used GrokBuild, a local agent (Fire on the Mountain, 27 August), and
+GrokBot, a supervisor directing builder and mapdev bots with their own test server (Sanctum Veil, October). Sources:
+research `11` §3, `06`, `15` §4; author's account (fifth and seventh instalments).
+
+### 3.15 The session boards (August to September)
+
+The session write-ups added eleven rows to §2. Each is summarised here with what the author stated before the agent
+began, which is the part the record did not hold before.
+
+| Map | What the author stated | What the model decided | Source |
+|---|---|---|---|
+| Sunspit (16 Aug) | four themes ("summer and beach" among them), two CTW, two destroy, a colour rule ("don't … add Quartz and dirt in the same place"), two reference layouts, the wool-approach shapes | the sea-split shores, the pier and bluff wools, every height and theme; in his review the stilt houses and theme were "quite nice", the frontline zones and a wall were wrong | `sessions/05` |
+| Overwall (25 Aug) | a labyrinth of pillars, every passage twelve wide, a river, a bridge on a third layer, houses on stilts, ordinary stone with a pattern (the model's restatement; his words unread) | the 22-block grid, the maze, the layers | `sessions/06` |
+| Aerie (25 Aug) | a mixed map, "something you think would be interesting and surprises me"; no water lanes | everything; six crags over void. His complaint of unplayable XML is in no record; his guess (no continuous blocks at the bottom) matches research `14` §1.5 | `sessions/06`, research `14` |
+| Slipway (28–29 Aug) | a harbour DTM with a ship and a hot-air balloon; after the first board ("oh my god"), his own phone-drawn plan and a long brief | the made things, the houses' placement | `sessions/07` |
+| Alderfen Holm (2 Sep) | a player's prompt (DTC, swamp, one mid island, hilly edges) and his own list of a dozen materials and props | two team islands, two cores each (four in all, his eleventh instalment agrees), the mid holm | `sessions/08` |
+| Hollowmarch (5 Sep revision) | "remove all relief"; the frontline "drop down very calming in steps" | the marks that did it; the composer's layout kept | `sessions/09` |
+| The ten probe boards (9–10 Sep) | the whole layout, drawn by him in the browser; only a place name per board | the paint, rooms and dressing | `sessions/10` |
+| Kilnholt Cut (12 Sep) | a long list of finishing rules, the composer as a start, rectangles reshaped in the sketch, and "some sort of attempt at least at a map that incorporates some underground passages" | the place (a quarry), the mode, the diagonal hollow causeway | `sessions/11` |
+| Mirkholt (14 Sep) | a ground family (dark, wet, green) and four objective kinds; then two corrections: fronts parallel, build zone only between them, 25 to 30 wide, a lane rotated | the dark wood, the shifted diagonal | `sessions/12` |
+| Scarbutte (24 Sep) | destroy maps, about four, terrain only, from a single-height plan deformed and layered with relief marks | the four landscapes and their features | `sessions/13` |
+| Gypsum Reach, Sootcombe (28–29 Sep) | the run's brief came from a parent session; then 77 notes over five rounds | the concepts, the first boards ("empty") | `sessions/14` |
 
 ## 4. What the table shows
 
-The studio is an executor in 9 of the 14 rows, and the decider in none: where it decides, the cell reads
+The studio is an executor in 21 of the 24 rows (not the ice map, Kuusepuu's old map, or Cedar Crossing), and the decider in none: where it decides, the cell reads
 "algorithm" and names the seed or default. The column most often "unknown" is concept, and the one most often
 "person" is finishing. The author's own map is the only row in which no model decided anything and the studio
 executed nothing.
 
-## 5. The six categories
+## 5. The categories (six, the last split in two)
 
 | # | Name | What is true of it | Maps |
 |---|---|---|---|
@@ -269,7 +304,13 @@ executed nothing.
 | 3 | **Person's drawing, model's pen** | a person supplies the drawing, the numbers or the object; a model writes it down, or builds on it, and a person finishes | Base 2-Island, Capture the Cake, Millrace, Wandering U (his text, Claude's XML) |
 | 4 | **Algorithm's layout, model's spec** | a model states words and numbers; a seeded algorithm lays out and fills | first fifteen (Goldhollow, Ridgeway) |
 | 5 | **Model's design inside the studio, person's rulings** | a model decides content through the studio's vocabulary; a person steers by brief, notes and rulings | Gypsum Reach, Whinberry Ring, Heftfold, Overwall |
-| 6 | **Model's own script** | a model decides and writes the program that writes the world; the person gives a concept, a review or nothing | Riftwater, Coldstore, Cedar Crossing |
+| 6a | **Model's script inside the author's tool** | a model decides and writes the program that writes the world, in the author's repository, through the studio's own world writer and later the shared library `pgmvox`, from a brief the author's session wrote | Riftwater and the freeform boards, Coldstore |
+| 6b | **Model's own tooling** | a model and a pipeline of its own make the map and the XML; no tool of this project is involved | Cedar Crossing (SuperGrok on grok.com), and arcadeboss's later GrokBuild and GrokBot maps |
+
+The split of category 6 rests on how the two were run (`sessions/01` for Riftwater: the brief handed the model the
+studio's `VoxelWorld`, `AnvilRegionWriter` and `LevelDatWriter`; research `15` §4 for Cedar Crossing). Category 3 now
+also holds Slipway, whose layout is the author's phone drawing; category 4 Hollowmarch and Sootcombe, whose layouts are
+the composer's taken whole; category 5 the session boards of §3.15 other than those.
 
 ## 6. The argument
 
@@ -322,7 +363,12 @@ someone stated before the executor ran, and who that someone was.
 
 ## 7. Open cells
 
-Unknown after this pass: who set the briefs for the first fifteen, Gypsum Reach, Heftfold and Whinberry's sentence
+Answered since the first version of this file: the instruction that started Riftwater and the ingredients in it
+(`sessions/00`); the briefs of Sunspit, Aerie, Slipway, Alderfen Holm, Kilnholt Cut, Mirkholt, Scarbutte and the probe
+boards (§3.15); how Cedar Crossing was made (research `15`); who designed Capture the Cake (research `15`); that
+Gypsum Reach's brief came from a parent session, not from the author (`sessions/14`).
+
+Unknown after this pass: who set the briefs for the first fifteen, Heftfold and Whinberry's sentence
 (he offers to find the sessions from their dates: the first fifteen were built on 11 and 12 August 2026, the first
 commit of `tools/mapgen` is 12 August 20:05 UTC (`5897944a` **(studio)**), Heftfold was first committed on 12
 September at 06:41 UTC (`fc91b3be`) and Gypsum Reach on 28 September at 23:00 UTC (`ae025473`)); the layout and
