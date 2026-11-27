@@ -3,7 +3,9 @@
 Research for the history, written 27 November 2026 to answer the author's seventh instalment
 (`../author-account-2026-11-27.md`, "what makes a map an 'AI map'"). Nothing here was measured afresh. Every cell is
 taken from research `01`–`11`, from the reports and specs in this repository, or, for two cells, from the `pgm-studio`
-history (named where used). **"unknown" means the record is silent; it is not a guess in either direction.**
+history (named where used). **"unknown" means the record is silent; it is not a guess in either direction.** Cells
+the author answered in the eighth instalment (`../author-account-2026-11-27.md`, same day) are marked **(his account)**:
+they are his statement, not something the record shows.
 
 ## 1. How to read it
 
@@ -34,22 +36,22 @@ Each cell is *decider / executor*. P person, M model, A algorithm; st studio, br
 
 | # | Map (date) | concept | layout | terrain | colour | structures, decoration | objectives, XML | finishing | Category |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | Author's ice map (Nov) | P / ha | P / ha | P / ha | ? | P / ha | P / ha, XML none | ? (middle not built) | 1 |
-| 2 | Vauxite, Drastic Change II (24 Jun) | ? | ? | ? | ? | ? | P / br then ha | P / ha | 1 |
-| 3 | Bridgid II (14 Jul) | ? | P / br | ? | P / ha | ? | ? | P / ha | 1 |
+| 1 | Author's ice map (Nov) | P / ha | P / ha | P / ha | P / ha (his account: snow, stone, ice or grass, undecided) | P / ha | P / ha, XML none | P / ha (his account: he builds it to the end) | 1 |
+| 2 | Vauxite, Drastic Change II (24 Jun) | P (his account) | ? | P (his account) | P (his account) | ? | P / br then ha | P / ha | 1 |
+| 3 | Bridgid II (14 Jul) | P (his account) | P / br | P (his account) | P / ha | ? | P (Ruediger, his account) / br, then ha for the water lane | P / ha | 1 |
 | 4 | No Blocks Placed (7 Aug) | ? | P / br | P / br, st | ? / st | A / st, P / ha | P / br, st | P / ha | 2 |
-| 5 | Wandering U (6 Aug, his account) | P / ? | ? / br | A / st | A / st | A / st | ? | ? | 2 |
+| 5 | Wandering U (6 Aug, his account) | P / ? | P (described in text, his account) / ? | A / st | A / st | A / st | M (his account: Claude wrote the XML) / ? | ? | 3 |
 | 6 | Base 2-Island (2 Jul) | P / – | P / M-writes, st | P / st | A defaults / st | P / st | P / st, XML ? | none | 3 |
 | 7 | Capture the Cake (27 Jul) | ? | P (old map) | P (old map) | P (old map) | P (old map) | M, P / ? | P / ? | 3 |
-| 8 | Millrace (30 Aug – 2 Sep) | P / br | P / br | M, A / st; P kept | M, A / st then P / ha | M then P / ha | M / st, then ? | P / ha | 3 |
+| 8 | Millrace (30 Aug – 2 Sep) | P / br | P / br | M, A / st; P kept | M, A / st then P / ha | M then P / ha | M / st, then P (Ruediger, his account, as far as he remembers) | P / ha | 3 |
 | 9 | Goldhollow (12 Aug) | M, spec | A / st (seed 41) | A / st | M words / st | A / st | A retarget / st | none; review in words | 4 |
 | 10 | Gypsum Reach (28 Sep –) | M / ? | M / st | M / st | M / st, P notes | M / st | M / st | P notes, M / st | 5 |
 | 11 | Whinberry Ring (12 Sep) | ? | A seed 18, M edits / ms, st | M / ms, st | M / ms, st | M / ms, st | A, M / ms, st | P feedback, M / ms, st | 5 |
-| 12 | Overwall (25 Aug) | P (account) | M / ms, st | M / ms, st | M / ms, st | M / ms, st | M / ms, st | ? | 5 |
+| 12 | Overwall (25 Aug) | P (account) | M / ms, st | M / ms, st | M / ms, st | M / ms, st | M / ms, st | none (his account: no hand finishing) | 5 |
 | 13 | Riftwater (7 Oct) | M (account: P nothing) | M / ms | M / ms | M / ms | M / ms | M / ms | P review, M / ms | 6 |
 | 14 | Cedar Crossing (10 Aug) | P essay | M ("Map") / ms | M / ms | M / ms | M / ms | M ("XML") / ms | ? | 6 |
 
-The spectrum has six categories (§5). Rows 5 and 7 are placed provisionally, for the reasons in their tables.
+The spectrum has six categories (§5). Row 7 is placed provisionally, for the reason in its table.
 
 ## 3. The maps, one at a time
 
@@ -60,10 +62,10 @@ The spectrum has six categories (§5). Rows 5 and 7 are placed provisionally, fo
 | Concept | person: a CTW and DTC hybrid, a bunker set into a mountain with the core in its face, an underground wool lane, a valley floor between; first made for a contest that was cancelled, so "the map is an ice map" | hands |
 | Layout | person: one half, turned 180 degrees about a pivot. His account: "the map grew around the bunker facade", the lookout and stairwell added as he went | hands, with a loft tool in game that the record does not name |
 | Terrain shape | person: 23 lofts, 299 lines, 1,578 points; ground median tilt 36 degrees | hands (loft tool) |
-| Colouring, materials | unknown. He builds in colour-coded wool whose colours carry meaning (grey flat floor, yellow connecting ground, light blue hills, lime retaining walls); the record holds no decision on final materials beyond "ice map" | hands |
+| Colouring, materials | person **(his account)**: the final material is not yet chosen, between snow, stone, ice and grass; a cold map. He builds in colour-coded wool whose colours carry meaning (grey flat floor, yellow connecting ground, light blue hills, lime retaining walls) | hands |
 | Structures, decoration | person: main building, great hall, spiral stair, three retaining walls of 19, 13 and 14 blocks | hands |
 | Objectives, XML | person: a core in the east facade and a wool room, as built; no `map.xml` for it is in the record | hands; XML none |
-| Finishing | unknown. The middle between the halves is missing in his build; five middle and cover variants were written by agents as scripts and he "judged them" | agent scripts for the variants (not the studio) |
+| Finishing | person **(his account)**: he will build the map to the end himself, middle included. The middle between the halves is missing in his build so far; five middle and cover variants were written by agents as scripts and he "judged them" | hands; agent scripts for the variants (not the studio) |
 
 What the agents did is the contrast: they were asked to compose the map from his sketch world on 2 to 7 November,
 and "every version was rejected". They then rebuilt his terrain as loft lines (3 blocks of 18,801 more than a block
@@ -75,9 +77,10 @@ Sources: research `04` §§1, 2, 3a, 4; `film/history/research/05` ("his own han
 
 | Decision | Who decided | What executed |
 |---|---|---|
-| Concept, layout, terrain, colour, structures | unknown from the record. The commissioning brief for this file calls them hand-built; the record credits rockymine as author of Vauxite and Drastic Change II and holds nothing on how their blocks were made | the brief says hands; not in the record |
+| Concept, terrain, colour | person **(his account)**: "all concepts, terrain and colours are human" for Vauxite, Drastic Change II and Bridgid II | the record holds nothing on how the blocks were made; the commissioning brief says hands |
+| Layout, structures | unknown from the record; the commissioning brief calls them hand-built and the record credits rockymine as author | the brief says hands; not in the record |
 | Objectives, XML | person drew the regions in the browser (his account: the first maps he tried that on); the kit, `build-hole-1` ids and bare team ids are the studio export of that week | studio export, then hand editing: Vauxite 1.0.1 fixes spawn yaws, two-rectangle spawns and a build ceiling of 24, and the root `map.xml` is a hand-reformatted copy of a stray studio-written one |
-| Finishing | person (the 1.0.1 revision is the "some errors" he recalls); who found each error: unknown | hands on the XML |
+| Finishing | person (the 1.0.1 revision is the "some errors" he recalls); who found each error: unknown. Vauxite and Drastic Change II were first played on 12 October, three and a half months after upload (research `13`) | hands on the XML |
 
 Sources: research `11` §1; author's account, fifth instalment.
 
@@ -85,12 +88,12 @@ Sources: research `11` §1; author's account, fifth instalment.
 
 | Decision | Who decided | What executed |
 |---|---|---|
-| Concept | unknown. He calls it "as wild as Hello World"; credited rockymine and Ruediger_LP | |
+| Concept | person **(his account)**; he calls it "as wild as Hello World"; credited rockymine and Ruediger_LP | |
 | Layout | person: "built in practically one day … in the browser it was quick" | browser |
-| Terrain shape | unknown. The studio holds a traced plan of it (16 height tiers) but made after the upload | unknown |
+| Terrain shape | person **(his account)**. The studio holds a traced plan of it (16 height tiers) but made after the upload | unknown |
 | Colouring | person: "skinned" from stone "in one long evening" in game; the repeating colour columns on its sides are where he dates the wall-run idea | hands |
 | Structures, decoration | unknown | |
-| Objectives, XML | unknown. The record finds no browser trace in its XML (research `11` §2), so the XML cell stays open | |
+| Objectives, XML | person **(his account)**: Ruediger made the XML, much of it with the browser tool, which placed things automatically from the plan model; only adjustments such as the water lane were added by hand, and he believes the water lane was the only one. The record finds no browser trace in its XML (research `11` §2) | browser, then hands for the water lane |
 | Finishing | person (the skinning above) | hands |
 
 Sources: author's account, fifth instalment and its correction; research `11` §2.
@@ -114,13 +117,12 @@ Sources: research `05` §b, `08` ("the larger tree"), `11` §3; author's account
 | Decision | Who decided | What executed |
 |---|---|---|
 | Concept | person, his account: "wild concepts they wanted to try", a wool room that walks a lap around the U. The file names no author | |
-| Layout | unknown who drew it; the XML's own comment says the plan was "authored at cell=1" in the studio | browser (studio plan) |
+| Layout | person **(his account)**: he described it in text; the XML's own comment says the plan was "authored at cell=1" in the studio | browser (studio plan), by whom: unknown |
 | Terrain, colour, structures | algorithm: the 10 by 10 chunk of bedrock is "the entire 10x10 chunk pgm-studio stamps for the wool-room role" | studio |
-| Objectives, XML | the base is the studio's export; the variables, eight `<dynamic>` stops and countdown actions were "hand-written (or model-written)". Which: **unknown** | unknown |
+| Objectives, XML | model **(his account)**: Claude wrote the XML from his text. The base is the studio's export; the variables, eight `<dynamic>` stops and countdown actions are the part the file shows as hand-written or model-written | model |
 | Finishing | unknown. His account: players fell out of the world as the room moved | |
 
-Placed provisionally in category 2 because the XML's authorship is open; if a model wrote the dynamic block it moves
-to 3. Sources: research `10` §1; `11` §3.
+Category 3: a person states the content in text and a model writes it down. Sources: research `10` §1; `11` §3.
 
 ### 3.6 Base 2-Island (2 July, session `session_014BYG9EwhkDRUmRP1FYLBk2`)
 
@@ -132,9 +134,9 @@ to 3. Sources: research `10` §1; `11` §3.
 | Colouring | nobody chose: bedrock floor at y 0, stone to height, the export's defaults | studio |
 | Structures | person: the 8 by 8 by 8 bedrock shell for spawn and wool, specified at 23:21 on 1 July | Opus 4.8 wrote it; studio builds it |
 | Objectives, XML | person placed the spawn and wool markers; whether a `map.xml` was part of the export: not recorded in research `09` | studio |
-| Finishing | none: not played, the first export crashed the 1.8 loader and the fix was his own commit | |
+| Finishing | none: the first export crashed the 1.8 loader and the fix was his own commit. Base 4-Team was played on the server on 28 July 2026 at 00:30 UTC (2m 36s, 28 players, winner Green; research `13`); no play of Base 2-Island or Base 2-Wool is in the log | |
 
-Sources: research `09` throughout; `07` §2; `../sources/base-map-squared-paper-drawing.jpg`.
+Sources: research `09` throughout; `13` §4; `07` §2; `../sources/base-map-squared-paper-drawing.jpg`.
 
 ### 3.7 Capture the Cake, Kuusepuu CTC (27 July)
 
@@ -157,7 +159,7 @@ Sources: research `06` §1, `07` §5, `11` §3; author's account (sixth instalme
 | Terrain shape | model: Opus 5's terrain was kept over two Sonnet 4.5 boards of the same basin (the record holds no written judgement of why); person: kept it, 29,954 of 35,610 columns at exactly their height after the hand finish | studio relief solver (Opus's spec) |
 | Colouring | model first (studio themes); person after: "most comes simply down to better theming" | studio, then WorldEdit and Arceon |
 | Structures, decoration | model first: houses, bridges, sculptures, eighteen grown trees; person after: houses and interiors redesigned (Ruediger_LP credited), a tug for the ship, sixteen showcase trees replaced the grown ones | studio, then hands |
-| Objectives, XML | model: objectives kept intact by the hand finish; who wrote the published XML: unknown | studio export; published XML unknown |
+| Objectives, XML | model: objectives kept intact by the hand finish; person **(his account, as far as he remembers)**: Ruediger reworked the XML of the published version | studio export, then hands on the XML |
 | Finishing | person: rockymine and Ruediger_LP, 5 hours side by side, 10 person-hours | hands |
 
 Fable 5.1 then diffed the two worlds and restated the revamp as documents (`specs/fable-millrace-revamp`), which
@@ -218,7 +220,7 @@ Sources: `reports/fable-four-boards-run.md`; `review/opus5-heftfold.md`; `BOARDS
 | Concept | person, his account: "concept maps such as the labyrinth were his ideas, built 1:1 to probe limits". The report says only "a third brief from the same person outside this repository"; it does not name him | |
 | Layout, terrain, colour, structures, objectives | model: pillars on a 22-block grid so every passage is 12 wide, three slabs, a river down the one open corridor, a keystone and a wool room, 32 trees, 14 boulders, four houses on stilts; the brief fixed the 12-wide passages, the river, the third-layer bridge and the houses on the walls | model script (`specs/archive/opus5-overwall`), studio |
 | Objectives, XML | studio export, gate open | studio |
-| Finishing | unknown | |
+| Finishing | none **(his account)**: no hand finishing | |
 
 Coldstore (22 October, pgmvox) is the same kind with a better record: the author sent a concept world of one bunker
 quarter with 44 explanatory signs, and the model built the rest by Python scripts; two author reviews changed four and
@@ -263,8 +265,8 @@ executed nothing.
 | # | Name | What is true of it | Maps |
 |---|---|---|---|
 | 1 | **Hand-made** | a person decides all seven and builds them; a tool at most writes the XML he drew | ice map, Vauxite and Drastic Change II, Bridgid II |
-| 2 | **Person's design, algorithm's detail** | a person draws and states; the studio solves, paints and grows what he did not state | No Blocks Placed; Wandering U (provisional) |
-| 3 | **Person's drawing, model's pen** | a person supplies the drawing, the numbers or the object; a model writes it down, or builds on it, and a person finishes | Base 2-Island, Capture the Cake, Millrace |
+| 2 | **Person's design, algorithm's detail** | a person draws and states; the studio solves, paints and grows what he did not state | No Blocks Placed |
+| 3 | **Person's drawing, model's pen** | a person supplies the drawing, the numbers or the object; a model writes it down, or builds on it, and a person finishes | Base 2-Island, Capture the Cake, Millrace, Wandering U (his text, Claude's XML) |
 | 4 | **Algorithm's layout, model's spec** | a model states words and numbers; a seeded algorithm lays out and fills | first fifteen (Goldhollow, Ridgeway) |
 | 5 | **Model's design inside the studio, person's rulings** | a model decides content through the studio's vocabulary; a person steers by brief, notes and rulings | Gypsum Reach, Whinberry Ring, Heftfold, Overwall |
 | 6 | **Model's own script** | a model decides and writes the program that writes the world; the person gives a concept, a review or nothing | Riftwater, Coldstore, Cedar Crossing |
@@ -290,6 +292,15 @@ pinned from 24 walked by looking at their shape. An algorithm decides what nobod
 limit: his account of the ice map says agents never think about routes beforehand and that the path is only computed
 afterwards, and a layout composer is the same thing done once at the start.
 
+**The composer's concept is the author's, and by his account the agents mostly took its layout unchanged.** He says
+the layout generator's concept is his, devised to reproduce existing maps as far as possible; what it emits is
+generic, as limited as it is, but a base to work on, and the agents mostly took that base and did nothing with it,
+not even adjusting other aspects of the layout **(his account)**. The record agrees for the first fifteen
+(Goldhollow, Ridgeway: the layout cell is the composer's seed) and shows the opposite in two places: Whinberry Ring's outline
+was reshaped vertex by vertex from seed 18, and Heftfold's composed skeleton was given a walled island. So the layout
+cells of categories 4 and 5 read "algorithm" where the board is the composer's output unedited, and "model" only
+where the record names the edit.
+
 **The tool's part is execution and refusal, and neither is authorship.** The studio turned a typed list of corners
 into a world, and it executed a model's `build-spec.py` for Whinberry Ring by the same code; Riftwater's scripts wrote
 theirs through nothing but its region writer. Its gates say no (a dead-ground band, a board with no author) but a
@@ -311,8 +322,13 @@ someone stated before the executor ran, and who that someone was.
 
 ## 7. Open cells
 
-Unknown after this pass: who set the briefs for the first fifteen, Gypsum Reach, Heftfold and Whinberry's sentence;
-who wrote Wandering U's dynamic XML and drew its layout; the concept, terrain and colour of Vauxite, Drastic Change II
-and Bridgid II; the XML of Bridgid II and of the published Millrace; the final materials of the ice map and who
-finishes its middle; how Cedar Crossing was run; Overwall's finishing; whose idea the labyrinth was beyond his account.
+Unknown after this pass: who set the briefs for the first fifteen, Gypsum Reach, Heftfold and Whinberry's sentence
+(he offers to find the sessions from their dates: the first fifteen were built on 11 and 12 August 2026, the first
+commit of `tools/mapgen` is 12 August 20:05 UTC (`5897944a` **(studio)**), Heftfold was first committed on 12
+September at 06:41 UTC (`fc91b3be`) and Gypsum Reach on 28 September at 23:00 UTC (`ae025473`)); the layout and
+structures of Vauxite, Drastic Change II and Bridgid II; who drew Wandering U's layout in the studio, as against
+describing it in text; how Cedar Crossing was run (he may be able to answer from his chat history); whose idea the
+labyrinth was beyond his account. Answered by him on 27 November and folded into the cells above: the concept,
+terrain and colour of Vauxite, Drastic Change II and Bridgid II; Bridgid II's XML; Wandering U's XML; the XML of the
+published Millrace; the ice map's materials and finishing; Overwall's finishing.
 The interview questions after this file ask the five that matter most.

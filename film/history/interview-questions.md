@@ -359,3 +359,26 @@ account on pgmstudio.de (`research/05` §f).
 5. **Where the line is.** Would you call a map in category 5 (a model decides content through the studio, you rule by
    notes) an AI map in the same sense as one in category 6 (the model's own script), and where would you move Millrace
    and Whinberry Ring on the scale?
+
+
+## Follow-up questions after research 13 (the match log checked)
+
+### rockymine and Ruediger — 6 questions
+
+1. **The missing matches.** On the evenings of 4, 13, 20 and 27 September the server's match counter skips seven,
+   eleven, eight and thirteen matches that the log does not hold (22:35 to 23:04, 21:38 to 22:56, 21:52 to 22:46 and
+   20:58 to 22:37 UTC), and the visible AI maps come beside them. Were those the Sundays' maps, and can you read the
+   server's own log for those windows, or the channel itself, and say which maps they were?
+2. **Delverdale and Whitstone Weald.** The 99-minute stretch of 27 September spans the commit of the two large boards
+   (21:55 UTC). Were they played that evening, on which server, with how many players, and how did each match end?
+3. **Hello World Micro and Wandering U.** Neither appears in the log; two match numbers are missing from 23:13 to
+   23:30 UTC on 27 July, three minutes after the Micro's commit, and one from 19:46 to 20:11 UTC on 6 August. Did
+   either map run in those slots, or on a server that does not report to the channel?
+4. **Base 4-Team.** It was played on 28 July at 00:30 UTC, 28 players, winner Green. Whose test was it, did you load it
+   yourself that night, and were Base 2-Island and Base 2-Wool loaded too?
+5. **A long match.** The longest match on any destroy board of this project is Brackenfold's 15 minutes 15 seconds,
+   and Scarrow Delph is not in the log. Where does the three-hour match with the re-placed obsidian come from: a real
+   game on another server, or is it a joke?
+6. **The first plays.** The first visible play of Hollowmarch (31 August) comes directly after a gap of two absent
+   matches, and the first of Viridian is on 16 October though it uploaded on 12 August. Do you remember an earlier
+   play of either, or of Thornwake?

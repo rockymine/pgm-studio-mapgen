@@ -253,11 +253,24 @@ reports play: "Reported live: a carrier died, the cake went home, and he still c
 No Blocks Placed followed on 7 August. On 12 August Hello World Micro was deleted and Thornwake and Viridian added
 five minutes later. Millrace came on 2 September. Six maps in all; five are still there.
 
+**The server's own log, which reaches from 1 June to 27 November, shows what was played and adds a map the uploads
+do not.** It is the Discord `#match-status` channel, 41,872 ended matches, read in the author's browser and checked in
+research `13`. Of the 288 boards in `maps/INDEX.md` ten were played, in 15 matches; the other studio and browser maps
+the history names (Base 4-Team, Bridgid II, Vauxite, Drastic Change II, Kuusepuu CTC, No Blocks Placed, Countryside,
+803) and Cedar Crossing were played in 63. The first play of an uploaded map is Kuusepuu CTC on 31 July, 47 players
+for 22 minutes 57 seconds, four days after it was added. But a studio map was on the server before it: **Base 4-Team,
+one of the three Base maps of 2 July, was played on Tuesday 28 July at 00:30 UTC**, 28 players, 2 minutes 36
+seconds, winner Green, two hours 57 minutes after the Kuusepuu CTC commit and an hour and twenty minutes after
+Hello World Micro's. The log holds no Hello World Micro (the "Hello World" of 17 July is the 2025 map), no Wandering
+U, no Thornwake, Delverdale, Whitstone Weald, Scarrow Delph or Gypsum Reach.
+
 **Another author's AI map arrived between the second and third batches.** On 9 August, at 23:00 in the American
 Central summer (04:00 UTC on the 10th, the date the author gives), arcadeboss, who has committed to CommunityMaps since
 May 2023, added Cedar Crossing, a destroy the monument map credited "7,000 word essay" to himself and "SuperGrok" for
 "Map and XML". That credit is the only place the map is called AI-made; the commit messages do not say so. It is not
-the first model-credited map there, as the author's account has it: Kuusepuu CTC is thirteen days earlier. It is the
+the first model-credited map there, as the author's account has it: Kuusepuu CTC is thirteen days earlier, though the
+author does not count it as an AI map, since its layout is an older map of rockymine and DerStiv and only the
+objective was replaced by a cake. It is the
 first by someone other than Ruediger, and the first crediting Grok. Fire on the Mountain (27 August) and seven later maps
 by the same hand credit "GrokBuild" or "GrokBot".
 
@@ -265,8 +278,21 @@ by the same hand credit "GrokBuild" or "GrokBot".
 mid-October, and no board of this project is uploaded again. The later tests are recorded in this repository. On
 Sunday 27 September, from 21:55 UTC, Opus 5.5 committed Delverdale and Whitstone Weald as "two large boards for a
 32-a-side play test", beside "the eleven small boards in the same play test". That is the date the author gives for
-the last test, and it is a Sunday. The record shows the boards made ready, and was still changing them after
-midnight; it does not show the session. The October rounds on the freeform boards were committed on a Friday night and
+the last test, and it is a Sunday. The commits show the boards made ready, and were still changing them after
+midnight; the server's log shows more. **The sessions leave a mark in the log's numbering, not in its rows.** On the
+evening of 27 September, from 20:58 to 22:37 UTC (22:58 to 00:37 in Germany, across the 27th and 28th), the server's
+match counter advances by thirteen with no match in the file; the commit of the two large boards falls 57 minutes into
+that stretch. The same happens before the first visible board of the earlier evenings: Sunday 13 September, eleven
+matches in 78 minutes before Alderfen Holm; Sunday 20 September, eight in 54 minutes before Millrace; Friday 4
+September, seven between Millrace and the next six boards. There is one visible session, Friday 4 September from
+22:21 to 23:51 UTC (00:21 to 01:51 on Saturday in Germany): Millrace, then Sunspit, Hollowmarch, Brackenfold,
+Cairnmeadow, Hollowbank and Elderwold one after another, 26 to 51 players each and from 1 minute 8 seconds to 15
+minutes 15 seconds long. No silent stretch of this kind appears after 27 September. Read together, the dates
+agree with the author's recollection of three or four Sundays in one intensive month, the last on 27 September, and
+with five of the six upload dates he gave (24 and 31 August and 13, 20 and 27 September have a stretch on the day; 25
+August has none).
+Whether the missing matches were these maps is not in the file and is the first thing to ask Discord for.
+The October rounds on the freeform boards were committed on a Friday night and
 a Saturday, 9 and 10 October, and none of those boards went to CommunityMaps.
 
 **They did not go to PublicMaps either.** The author thought the later tests might be there. Research `07` reads its
@@ -355,8 +381,9 @@ entirely in game, because the tool could not express it, is Bridgid II.
 notes were sorted into 30 faults, of which the studio "would have caught 9, partly caught 4, and not caught or could
 not have built 17". Riftwater was "essentially perfect", in the agent's summary of his words. In his account these
 tests were "Slop Sundays", two hours on the server with the mapmaker Tttie, and early maps "looked and played alike".
-The record never uses the name. It does hold a Sunday, the 32-a-side test prepared on 27 September (chapter 6); these
-October results were committed late on a Friday and early on a Saturday. On 10 October a controlled experiment put
+The record never uses the name. It does hold three Sundays, 13, 20 and 27 September (chapter 6), each with a stretch
+of matches the server's log lacks, and the 32-a-side test prepared on 27 September; these October results were
+committed late on a Friday and early on a Saturday. On 10 October a controlled experiment put
 Sonnet 5.5 on the same briefs in both tools and found "the two
 tools made boards of comparable quality". The difference lay in spend: Riftwater took "Opus, hours per board rather
 than minutes, rounds of the author's review, and bespoke code".
@@ -415,6 +442,19 @@ seed 18 were chosen by someone. **The tool contributes execution and refusal**, 
 supplying content. **The model's genuine decisions** are visible where nothing was stated, in Riftwater's valley,
 rift and cave, in Whinberry Ring's three levels, and in the wrong ones, a staircase for an H.
 
+**The author has answered several of the open cells.** In his account of 27 November, all concepts, terrain and colours
+of Vauxite, Drastic Change II and Bridgid II are human. Bridgid II's XML was made by Ruediger, much of it with the
+browser tool, which placed things automatically from the plan model; only adjustments such as the water lane were
+added by hand, and he believes the water lane was the only one. Wandering U's layout he described in text, and Claude
+wrote its XML. Ruediger reworked the XML of the published Millrace, as far as he remembers. Overwall had no hand
+finishing. The ice map he will build to the end himself, in a material still to be chosen among snow, stone, ice and
+grass. **The layout generator's concept is his**, devised to reproduce existing maps as far as possible: what it emits is
+generic, but a base to work on, and the agents mostly took that base and did nothing with it, not even adjusting other
+aspects of the layout. The record agrees in the first fifteen boards and differs in two (Whinberry Ring's outline was
+reshaped vertex by vertex, Heftfold's skeleton was given a walled island). Still open: who set the briefs of the first
+fifteen, Gypsum Reach, Heftfold and Whinberry Ring (he offers to look the sessions up from their dates), and how Cedar
+Crossing was made.
+
 **Determinism of execution does not settle authorship, because authorship lives in the inputs.** The same studio turns
 a person's typed corners and a model's spec into worlds by the same code; a compiler is deterministic and writes no
 program. The author's ice map, which the studio never executed, has one author and nothing deterministic in it.
@@ -424,9 +464,10 @@ program. The author's ice map, which the studio never executed, has one author a
 1. **Hand-made.** A person decides and builds all of it; a tool at most writes the XML he drew. The ice map,
    Vauxite and Drastic Change II, Bridgid II.
 2. **Person's design, algorithm's detail.** The studio solves, paints and grows what he did not state. No Blocks
-   Placed; Wandering U, provisionally, since who wrote its dynamic XML is unknown.
+   Placed.
 3. **Person's drawing, model's pen.** A person supplies the drawing, the numbers or the objective, a model writes or
-   builds on it, and a person finishes. Base 2-Island, Capture the Cake, Millrace.
+   builds on it, and a person finishes. Base 2-Island, Capture the Cake, Millrace, and Wandering U, whose layout he
+   described in text and whose XML Claude wrote.
 4. **Algorithm's layout, model's spec.** A model states words and numbers, a seeded composer lays out and fills. The
    first fifteen boards, such as Goldhollow.
 5. **Model's design inside the studio, person's rulings.** Content from the model through the studio's vocabulary,
@@ -442,13 +483,18 @@ The table, with a source for every row, is research `12`.
 Flamiix, not Tttie. The trees were in the studio before Fable's rebuild, not because of it. The "500-wide" map fits
 Hollow Crown on objectives, flatness and closeness, and Spinebreak on length, and neither is 500 blocks across. The
 tests show in CommunityMaps only from 27 July to 2 September, not to his last test of 27 September, which the record
-holds in this repository instead, and they are not in PublicMaps. Hello World Micro's room changed colour in the
+holds in this repository and, as a gap in the match counter, in the server's log; they are not in PublicMaps. Kuusepuu
+CTC, which was taken for the first AI-map test, is an ordinary map of his with a cake for objective in his account, and
+Base 4-Team was on the server three days before its first match. Hello World Micro's room changed colour in the
 record, not place, and so did the full Hello World's a year and a half earlier; the late map whose room moves, *Wandering U*, is in
 neither public repository, and came from the author's private one. The slime and all-greens maps may be one board, Viridian; the quartz-and-end-stone
 map is not among the fifteen. The annealing maps are dated 2021 to 2023, not 2022. The name "Slop Sundays", the instruction that started the Python rework, the fall from Wandering U's room (its file says a player left inside is left in mid-air, but no test is recorded) and the in-game colouring of Brittlebush III are his account alone.
 
-**Dates that stay his account.** Wandering U on 6 August; maps uploaded on 24, 25 and 31 August and on 13 and 20
-September; and Ruediger's additions to the private repository on 27 and 28 September (the boards he names there, Delverdale
+**Dates that stay his account, and what the server's log adds.** Wandering U on 6 August (the log has no such map and
+one missing match that evening, 19:46 to 20:11 UTC, which is a lead and not a find); maps uploaded on 24, 25 and 31
+August and on 13 and 20 September (the log holds a stretch of missing matches on all of these days except 25 August);
+and Ruediger's additions to the private repository on 27 and 28 September, which the log's 99-minute stretch of the
+evening of the 27th, 22:58 to 00:37 in Germany, spans (the boards he names there, Delverdale
 and Whitstone Weald, are Opus 5.5's, committed in this project on 27 September at 21:55 UTC). No commit by Ruediger to
 either public repository falls between 12 August and 2 September, or between 2 September and 19 October. The
 public record moves two of his dates: 2 July to 1 July, and 9 October to 14 October.
@@ -457,7 +503,8 @@ public record moves two of his dates: 2 July to 1 July, and 9 October to 14 Octo
 placing none, and whether the 50-log oak at x -27 to -17, z 41 to 52 on No Blocks Placed is the generated tree he
 means. Whether "map walls" is the walls-rims-plateaus
 model of 1 August, and whether `themeByHeight` was the per-height prototype he remembers. What Tttie did on the tests,
-who played and for how long, and whether the tests had a schedule. Which rule produced which gain. Why the grammar, which carried his own look onto
+who played (the log gives only the number of players, 26 to 51 on 4 September), what the missing matches of the
+Sundays were, and whether the tests had a schedule. Which rule produced which gain. Why the grammar, which carried his own look onto
 other maps, is the one phase of the port with nothing shipped.
 
 **And the open problem is the one he named first.** Maps that look and feel empty and dreary are still made. The rules

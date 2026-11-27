@@ -2,7 +2,7 @@
 
 The spine of the film, in date order. Every row is taken from one of the four research files under
 `film/history/research/`, named in the last column (`01` origins, `02` studio, `03` maps and models, `04`
-hand-built); the table of uploads further down is from `11`. Nothing in the events table was measured or dated afresh, and where a research file marks a fact as uncertain the
+hand-built); the table of uploads further down is from `11` and the match-log table from `13`. Nothing in the events table was measured or dated afresh, and where a research file marks a fact as uncertain the
 row says so. The chapter column refers to `OUTLINE.md`.
 
 Repositories are abbreviated: **CTW** `rockymine/CTW-Layout-Generator`, **MLE** `rockymine/MinecraftLayoutEditor`,
@@ -80,7 +80,7 @@ the day shifts. Every Ruediger commit is `RuedigerLP`, committed through GitHub'
 | 1 Jul 22:53 +0200 | Vauxite 1.0.1: spawn yaws, two-rectangle spawn unions, a build ceiling; a stray studio-written `region/map.xml` beside it | `7d647015` | public | his "2 July" differs by a day |
 | 14 Jul 02:27 +0200 | Bridgid II (not a Brittlebush map; five commits to 02:42, `<created>` 12 July) | `a842b0bd` | public | confirmed |
 | 14 Jul | Its side columns gave the wall-run pattern | first `wallRun` is `18d2c8ce`, 1 Aug 16:43 UTC | his account | differs: nothing links them |
-| 27 Jul 23:33 +0200 | Kuusepuu CTC, Capture the Cake, credited "Claude Opus 5" | `8df2ca00` | public | confirmed |
+| 27 Jul 23:33 +0200 | Kuusepuu CTC, Capture the Cake, credited "Claude Opus 5" (the author: an ordinary map with a cake for objective, not an AI map) | `8df2ca00` | public | confirmed; first match 31 Jul (log, below) |
 | 28 Jul 01:10 +0200 | Hello World Mini / Micro, with a studio plan file (deleted 01:58); removed 12 Aug | `591d21b1` | public | confirmed |
 | 6 Aug | Wandering U uploaded | none | his account | unverifiable |
 | 7 Aug 20:58 +0200 | No Blocks Placed | `11a15f7d` | public | confirmed |
@@ -89,11 +89,35 @@ the day shifts. Every Ruediger commit is `RuedigerLP`, committed through GitHub'
 | 24, 25, 31 Aug | maps uploaded, private | none | his account | unverifiable |
 | 2 Sep 02:18 +0200 | Millrace 2.0.0 | `c86226db` | public | confirmed |
 | 13, 20 Sep | maps added, private | none | his account | unverifiable |
-| 27 Sep 21:55 UTC | Delverdale and Whitstone Weald committed in this project; the PrivateMaps upload is not visible | `d274c0ae` (mapgen) | public / his account | boards confirmed, upload unverifiable |
+| 27 Sep 21:55 UTC | Delverdale and Whitstone Weald committed in this project; the PrivateMaps upload is not visible | `d274c0ae` (mapgen) | public / his account | boards confirmed, upload unverifiable; the match log has a 99-minute stretch of absent matches from 20:58 to 22:37 UTC |
 | 5-8 Oct | Countryside imported into pgmstudio.de (five rows) | listing of 26 Nov | public | recorded |
 | 9 Oct | Alphaboy uploads Countryside | `06138ebd`, 14 Oct 23:13 -0300 (15 Oct 02:13 UTC), by Javggg | his account / public | differs by five days |
 | 11 Oct | 803 re-made in the browser (`rockymine-5`) | listing of 26 Nov | public | recorded |
 | 19 Oct 22:41 +0200 | 803 2.0.1, carrying the studio's pre-11-October XML | `091b378d` | public | confirmed |
+
+## The server's match log
+
+From `13`, which reads `sources/match-status/` (41,872 ended matches, 1 June to 27 November 2026). Times are start times
+in UTC; Berlin is two hours later to 25 October. "Absent numbers" are match numbers the server issued that the CSV
+does not hold, with the pause they imply; what those matches were is not in the file.
+
+| Date (2026) | UTC | Event | Source | Status |
+|---|---|---|---|---|
+| Sun 28 Jun | 02:45 | first catalogue map played: Capture the Wool CTW, 31 players, 16m 46s, Red | log | recorded |
+| Wed 15 Jul | 22:13 | Bridgid II first played, 19 players, 4m 25s | log | recorded |
+| Mon 27 Jul | 23:13 to 23:30 | two absent numbers, three minutes after the Hello World Micro commit (23:10) | log | inference |
+| Tue 28 Jul | 00:30 | **Base 4-Team played**, 28 players, 2m 36s, winner Green | log | recorded; no earlier file knew it was played |
+| Fri 31 Jul | 21:20 | Kuusepuu CTC first played, 47 players, 22m 57s, Red | log | recorded |
+| Mon 10 Aug | 23:53 | Cedar Crossing first played, 22 players, 5m 26s: first match on a map whose layout no person drew | log | recorded |
+| Tue 11 Aug | 21:50 | No Blocks Placed first played, 39 players, 3m 46s, Blue | log | recorded |
+| Mon 31 Aug | 21:18 | Hollowmarch first played, 20 players, 3m 39s: first of this project's composed boards | log | recorded |
+| Wed 2 Sep | 00:28 | Millrace first played, ten minutes after 2.0.0 (00:18) | log | recorded |
+| Fri 4 Sep | 22:21 to 23:51 | the one visible session: Millrace, seven absent numbers, then Sunspit, Hollowmarch, Brackenfold, Cairnmeadow, Hollowbank, Elderwold; 26 to 51 players | log | recorded |
+| Sun 13 Sep | 21:38 to 22:56 | eleven absent numbers in 78 minutes, then Alderfen Holm and Millrace | log | inference |
+| Sun 20 Sep | 21:52 to 22:46 | eight absent numbers in 54 minutes, then Millrace | log | inference |
+| Sun 27 Sep | 20:58 to 22:37 | thirteen absent numbers in 99 minutes (the 32-a-side commit is at 21:55); the last such stretch in the log | log | inference |
+| Mon 12 Oct | 02:28 | Vauxite and Drastic Change II first played | log | recorded |
+| Fri 16 Oct | 02:57 | Viridian played, the last board of this project in the log | log | recorded |
 
 ## Activity — the data for the on-screen curve
 
