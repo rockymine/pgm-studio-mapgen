@@ -6,7 +6,7 @@ who were handed the maps received them. It is written for a reader who was not t
 
 **Every claim cites the file it rests on.** `(research/NN)` is a file under `research/`; `(sessions/NN)` a session
 write-up under `research/sessions/`; `(account §N)` the N-th instalment of the author's account of 27 and 28 November
-2026 (`author-account-2026-11-27.md`), where §1 is the opening summary, §2 the additions later the same day, §3 to §20
+2026 (`author-account-2026-11-27.md`), where §1 is the opening summary, §2 the additions later the same day, §3 to §25
 the numbered instalments, and "squared-paper section" the section of that name; later instalments and the corrections
 in the file supersede earlier ones. `(sessions list)` is the author's own description of each session in
 `sources/sessions-named-by-the-author.md`; `(sources/early-experiments/)` the pictures he sent with §18 and §20, his
@@ -186,8 +186,12 @@ imported it on the mapmaker server (account §18). **Record:** the picture shows
 stepped edges facing each other across a gap (`sources/early-experiments/`); no commit names it, and that day's commits
 are a renderer change and a new test layout (research/18 §2).
 
-**On 6 November it read a real world, with two models named.** **Account:** he tested world import on Annealing,
-showing a few XML regions (account §18). **Record:** `d2c4bc3`, 03:20 on 6 November, "working import of .leveldat and
+**On 6 November it read a real world, with two models named.** **Account:** the first map he imported was
+Agrostid, an old map of his, not Annealing as he first said (account §25, correcting §18), showing a few XML regions
+(account §18). **Record:** no commit, file or string of the editor names the world imported; the picture of that day
+holds a width of 184 and a height of 267, which the importer computes from a world's extent. **Inference:** Agrostid's
+`map.xml` reaches 60 blocks from 0,0 on x and 102 on z, which gives 184 by 268, and none of the five Annealing maps
+gives those numbers, so the picture supports the correction without proving it (research/19 §1). **Record:** `d2c4bc3`, 03:20 on 6 November, "working import of .leveldat and
 .mca files (claude & grok)", a world importer of 621 lines, the first models named in any commit (research/01). The
 picture of that day shows the editor's own labels, "Import World (Region Files + level.dat)" with five files chosen,
 and blocks without a region overlay; XML import and region rendering arrive at 00:17 and 00:40 on 10 November
@@ -237,6 +241,23 @@ triangle meshing was removed on 13 February, so the picture "Island Triangulatio
 twelve days, and the title "Simplified Skeleton Detail View" of the second picture is in no commit (research/18;
 `sources/early-experiments/`). Of 773 commits, 592 carry a Claude mark, 443 of them Sonnet 4.6 (research/18).
 
+**Drawing every map turned up islands that had no business there, and Sam called them stowaways.** **Account:**
+around 2016 he built all his worlds inside one single map, so Agrostid did not sit at 0,0; uploading it, he saw the
+upload was rather large, with two islands, one at 0,0 and one at the map's old coordinates. Sam gave these false
+islands a name, "stowaway", and he then found such leftovers on very many maps once he rendered them with the
+visualisation Claude had written. On "Mame, I Shrunk the PvPers", a community map that is not his, practically a
+complete second copy turned up, and Sam wrote to him, for fun: "good opportunity to dev phase that map and forget
+about it". Golden Drought VI, one of the last of a well-known series by Reshif, had one too (account §25). **Record:**
+Agrostid, created in 2015, lived in a single region file at x −1024 to −513 until Ruediger's 2.0.0 edit of 14 October
+2024 moved it to 0,0 and kept the old file. At 04:04 on 14 March 2026 CTWAnalysis began rendering every map's layout
+block by block, and that afternoon Sam committed "Agrostid: remove stowaway" (16:46 +01:00), deleting the old file;
+"MIStP: remove stowaway" followed at 21:17, two region files beyond the map, and on 16 March "Wintertime: 1.0.4" with
+"Remove stowaway" among its changes. These three are every commit in either public repository that uses the word, and
+Golden Drought VI, whose commits of 2023 are Rachel's and whose `map.xml` credits Lich_of_Flowers and Penuuy, has no
+commit in 2026; Sam's joke is in no record (research/19 §1–§2). **Inference:** the leftovers
+surfaced when every map was first drawn block by block; the record joins the two by timing only. Mame is also one of
+the long matches of the logging: 1 h 58 min in the week of 26 January (`sources/early-experiments/2026-ctw-match-activity.md`).
+
 **On 20 March he asked Claude about generating maps, and Ruediger was already asking him.** **Record:** a Claude Code
 screenshot holds his message: "That's great and scary. With this data you might be able to learn and make a map that
 feels just like mine if we simply reverted the pipeline. Artificially constructing new maps would definitely be on the
@@ -244,9 +265,13 @@ far horizon for me. I know Ruediger_LP is already talking to me about it. Whenev
 begs for the first ai generated map." The answer: "Right now the flow is map → features → statistics. Flip it: desired
 statistics → generate features → synthesize map geometry", and it ends "Commit the authors command, then backfill the
 layout/terrain fixes for the 143 contaminated maps?" (`sources/early-experiments/`). The authors command is `6cbc9dd`, at
-00:19 (+01:00) on 20 March, so the exchange belongs to the late evening of 19 March or the first minutes of the 20th;
-"143" and "contaminated" are in no commit or file (research/18). **Account:** he does not know what it refers to; it
-may be the server's tracking logs (account §21). On 19 March he wrote to Ruediger "ai maps soon tm"
+00:19 (+01:00) on 20 March, so the exchange belongs to the late evening of 19 March or the first minutes of the 20th.
+"Contaminated" is in no commit or file (research/18), but the 143 are: at 23:05 that evening `a624eb5` capped the
+terrain scan at the map's build height, because decoration above it, "birds, giant trees, floating wool markers,
+observer islands", was "corrupting the height_above_terrain signal for 143 of 177 maps (81%)" (research/19 §2).
+**Account:** he does not know what it refers to; it may be the server's tracking logs (account §21). **Inference:** the
+143 contaminated maps are the maps whose terrain heights that fix had to recompute; the record does not support reading
+them as the maps with stowaways, of which three commits name three. On 19 March he wrote to Ruediger "ai maps soon tm"
 (research/15). **Account:** "ein relativ großer Wendepunkt, nehme ich mal an", a fairly big turning point, I suppose
 (account §18). **Record:** the first line of layout-drawing code came ten weeks later (research/18).
 
@@ -263,7 +288,15 @@ CTWAnalysis, in his order: a browser map viewer with named XML region overlays o
 May and more region types on 22–24 May, and on 29 May a `/concept` page from a Claude session, to "sketch island shapes
 on a blank canvas … and compute the resulting polygon" (research/18 §1). On 29 May he told Ruediger "Dein polygon map
 zeichnen gedöns wird jetzt implementiert", your polygon-map-drawing business is being built now (research/15). On 31
-May the old commands were removed as "superseded by map viewer" (research/18). **Record against "left in May":** seven
+May the old commands were removed as "superseded by map viewer" (research/18).
+
+**He wanted the XML out of the way.** **Account:** from Ruediger, who wrote many of his XMLs, he has a weakness for
+building maps at 0,0, because Ruediger found the XML easiest to write that way. Writing XML is a hurdle many map makers
+shy away from, and that was a motive for doing it in the browser: only draw regions, answer simple questions such as
+whether one may build here, and have some decisions taken for the person, such as the rules on what may be broken, set
+for the standard case; a plugin in the game would be nicer still. The first XMLs then have fewer errors and are more
+likely to load (account §25). **Record:** Ruediger_LP is credited for Agrostid's XML and on all five Annealing maps, twice for
+the XML (research/08, research/19 §1). **Record against "left in May":** seven
 port documents followed on 3 June, the editor took 19 commits from a Claude session on 30 July, and the analysis three
 on 9–10 August, the match-flow data behind the studio's gameplay documents (research/18).
 
@@ -378,6 +411,61 @@ modes arrived on 15 July (research/01). **Account:** the generator's concept is 
 as far as possible (account §8). On 4 July he wrote to TTtie "We can probably make an MCP server thing. And that's the
 road to ai maps haha"; TTtie: "that… could be actually real" (research/17). On 21 July TTtie was the witness to a layout
 whose spawn sat far from its wool (research/17).
+
+**He taught the model with plans drawn to make one point each.** **Account:** around the beginning of July he began
+keeping teaching files in the repository, using the plan format to explain a concept to Claude, middle zones for
+example; the browser tool let him label the parts of the rectangles with ids and how they connect, so that Claude could
+reason about them and find the general rules: "Sobald das Planformat dann da gewesen ist, hat es einfach sehr
+geholfen", once the plan format was there, it simply helped a lot (account §25). **Record:** three days after the plan
+model, on 5 July, `tools/seeds/teaching/` opened with a build-interface set and a list of plans "that exist **only to
+inform `layout-rules.md`** — do's and don'ts"; that evening frontline and middle examples followed, one of 66 pieces
+with ids such as `frontline-1`, `step-1a` and `hub-5`, and nine rule amendments were written from them (research/19 §4).
+
+**The generator's pieces began as Tetris pieces, and the record has the word first in June.** **Account:** he had long
+thought that maps partly consist of Tetris pieces, and that idea became the basis of the generator (account §25).
+**Record:** on 26 June the sketch tool's shape library planned "**Polyomino primitives** ("tetris +")", among them L, U,
+T, I and a "scythe" (research/19 §5).
+
+**On 8 July he drew wool lanes on his tablet, the day the model learned to name them.** **Record:** that morning a Claude
+session (Opus 4.8) taught the studio's deriver to call a wool lane I, L, Z or complex and set up "hand-labelled"
+examples whose labels the classifier is checked against; at 17:20 UTC five reference lanes followed, "where the id
+carries the intent" (research/19 §4). Two sketches from his tablet are stamped 23:43 that day: seven hatched lanes,
+each ending in a square with a dot and marked with a red zigzag, step or U, and a dozen more outlined in colour, each
+ending in a "W" (`sources/july-2026-shapes/`). **Record:** the composer had been generating boards since 4 July
+(research/19 §5); **Account:** he is not sure a generator existed then (account §25). The next evening Ruediger asked
+"was sehe ich?", what am I looking at, and he answered: "Ich bin am überlegen was für verschiedene shapes von wool lanes
+es gibt um die später im Tool zu labeln und claude zu geben um zu schauen ob man die automatisch labeln kann", I'm
+thinking about what different shapes of wool lanes there are, to label them in the tool later and give them to Claude
+to see whether they can be labelled automatically (`sources/july-2026-shapes/`).
+
+**That night the plan editor went to a phone.** **Record:** at 20:48 UTC on 9 July Claude bundled the plan editor into
+one offline HTML file in the studio, and from 21:31 to 22:45 UTC it built `pgm-studio-mobile`, three commits under
+rockymine's name with Opus 4.8, "A **self-contained, offline** version of the pgm-studio *plan editor*" that only
+imports and exports `.plan.json`, published on GitHub Pages with three example plans (research/19 §3). At 22:28 UTC he
+sent Ruediger the link; Ruediger asked "aber nur das planning tool oder?", but only the planning tool?, and the author
+answered "Ja. Ist Absicht. Das konnte man gut extrahieren und ermöglicht es einfacher schonmal paar Layouts etc
+unterwegs zu malen ohne die ganze App.", yes, on purpose: it could be extracted well and makes it easier to draw a few
+layouts on the go without the whole app (`sources/july-2026-shapes/`). **Account:** he asked for it so that Ruediger
+could draw layouts and they could pass JSON files back and forth, since nothing was published yet; it is still a very
+old state (account §25).
+
+**On 11 July he argued with the model about shapes, and the boxes came out of it.** **Record:** on 10 July the same
+Claude session wrote the box partition, "typed spawn/hub/frontline/mid boxes as bounding envelopes", and a catalogue of
+wool approaches with a donut, a scythe, an H and a plug, and by midnight emitted them as plans (research/01,
+research/19 §5). The next morning the author wrote to Ruediger "Ich verwirre die KI", I'm confusing the AI; Ruediger answered "haha", and he went on: "Versuche
+ihm gerade Formen zu erklären und wie man diese erweitert.. er hat sich ein zu statisches system gebaut", I'm trying to
+explain shapes to it and how to extend them.. it has built itself too static a system; his aim, in the plan editor: "Damit
+wir I, L, h, U, `U, =[]_,` [] ... Förmige wool approaches haben können", so that we can have I-, L-, h-, U-shaped … wool
+approaches (`sources/july-2026-shapes/`). Between those lines the session made the entry width variable and classified
+approaches by their turns whatever their width; at 11:54 UTC it wrote the pieces every approach is made of, entry,
+entry-bar, leg, room-bar, room-run and room (research/19 §5). At 15:27 German time he sent Ruediger three pictures of
+the catalogue, Plug as the "base case", H and Scythe, and the grammar in his own words: "Welcher "Wool approach" gesetzt
+wird hängt am Ende von einer Box-Größe ab", which wool approach is set depends in the end on a box size, and "Im Grund
+ist die Idee eine Box für Frontline, Hub, Spawn und Wool(s) zu platzieren. Sodass die zusammenpassen.", basically the
+idea is to place a box for frontline, hub, spawn and wool(s), so that they fit together. Ruediger: "ja gute idee lass am
+abend reden!", yes good idea, let's talk in the evening (`sources/july-2026-shapes/`). **Inference:** "too static" is
+the morning's complaint the session's commits answer, making widths and docking variable; the boxes were built in code
+from 18 July (research/01).
 
 **Bridgid II, on 14 July, is its own hand-built map, and it was played the hour it arrived.** **Record:** Ruediger added
 `ctw/bridgid_ii` to CommunityMaps in five commits from 00:27 UTC, credited to rockymine and Ruediger_LP; the API holds two
@@ -910,15 +998,21 @@ Just having claude follow along" (research/17).
 | The pause | from December "bis Februar auf jeden Fall" (account §18) | no commit in four repositories 21 December to 30 January; the logging plugin praised on 9 December, match files from 24 January (research/15, research/18); the chart's first match 18 January (account §21) | consistent for the repositories; the logging ran through the pause |
 | The three May steps | the start of PGM Studio (account §18) | in CTWAnalysis's viewer, 14, 15 and 29 May; `pgm-map-studio` opens on 31 May (research/18) | his order right, the repository another |
 | Leaving the editor and the analysis in May | left both in May (account §18) | the editor 19 Claude commits on 30 July, the analysis three on 9–10 August (research/18) | right for daily work, not for every commit |
-| "143 contaminated maps" | the last line of the reply in his screenshot of 20 March; he does not know what it refers to, perhaps the server's tracking logs (account §21) | in no commit or file of CTWAnalysis (research/18) | the picture is the only source |
+| "143 contaminated maps" | the last line of the reply in his screenshot of 20 March; he does not know what it refers to, perhaps the server's tracking logs (account §21) | "contaminated" in no commit; `a624eb5` of 19 March counts "143 of 177 maps" whose terrain heights decoration above the build ceiling corrupted (research/19 §2) | the record answers it, and not as stowaways |
+| The first world imported, 6 November 2025 | Annealing (account §18), corrected to Agrostid (account §25) | no commit names it; the picture's 184 × 267 fits Agrostid's extent and no Annealing map's (research/19 §1) | the correction stands; inference supports it |
+| The stowaways | "very many" maps; Golden Drought VI updated by Sam (account §25) | three commits by Sam of 14–16 March 2026 use the word: Agrostid, Mame, Wintertime; no Golden Drought VI commit in 2026 (research/19 §2) | three in the record; the rest unrecorded |
 | Those present at the viewing | "three" (account §13) | five by his later answer (account §18), and the staff chat holds four names | five stands |
 
 **Facts the sources leave open.**
 
 - **The prehistory:** whether the v0 generator's code reached `CTW-Layout-Generator`; what the April 2025 experiment was
   written with beyond matplotlib (the author: perhaps ChatGPT), and what its node colours meant; what the attachment of
-  the first v0 message was, which the author cannot say and which would need much searching (account §21); what the 143 "contaminated" maps were,
-  which the author does not know (`sources/early-experiments/`; research/18; account §21).
+  the first v0 message was, which the author cannot say and which would need much searching (account §21).
+- **The stowaways:** which other maps had them, whether Sam's update of Golden Drought VI exists (perhaps in
+  PrivateMaps), and whether the map's committer "Rachel" and its credited accounts are the Reshif the author names
+  (research/19 §2).
+- **July:** the zone of the sketches' 23:43 stamp; the page or artifact the catalogue pictures of 11 July were taken
+  from (research/19 §5).
 - **The early repositories:** whether a repository `ctw-layout-editor` exists, which the author thinks differs from
   `MinecraftLayoutEditor` and the record does not show (account §18; research/18); who the friend of 10 October 2025
   was; who `michael` is.

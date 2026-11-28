@@ -12,7 +12,7 @@ holds, what the **author recalls**, and what is **inference**.
    (the first three cover the time before the studio, to June 2026), then what counts as an AI map, the tests match by match, what players and staff said, what the hand-built map shows, and
    what remains open. Start here.
 2. **`timeline.md`** — one table of dated events, each with its source and its kind (record, account, inference).
-3. **`author-account-2026-11-27.md`** — the author's account in twenty instalments of 27 and 28 November, with the
+3. **`author-account-2026-11-27.md`** — the author's account in twenty-five instalments of 27 and 28 November, with the
    note-taker's corrections. Later instalments and the corrections supersede earlier ones.
 4. **`research/16-the-first-test-recording-and-the-match-api.md`** — the recording of 2 July and the server's match API,
    which documents every test evening; with `sources/match-status/api-matches-not-in-match-status.csv`.
@@ -21,10 +21,13 @@ holds, what the **author recalls**, and what is **inference**.
 6. **`research/18-before-the-studio-ctwanalysis-and-the-early-tools.md`** — the git record of CTWAnalysis,
    MinecraftLayoutEditor, CTW-Layout-Generator and pgm-map-studio, checked against the author's eighteenth instalment:
    where his memory of October 2025 to May 2026 holds and where the commits differ.
-7. **`research/12-who-decided-what.md`** — every map split into seven decisions, who decided each and what executed it;
+7. **`research/19-stowaways-and-julys-shapes.md`** — the twenty-fifth instalment checked: Agrostid as the first
+   imported world, Sam's three "remove stowaway" commits, the 143 of `a624eb5`, pgm-studio-mobile, the teaching
+   files, the July shapes and boxes, and the first shops.
+8. **`research/12-who-decided-what.md`** — every map split into seven decisions, who decided each and what executed it;
    the categories of "AI map".
-8. **`research/13`, `15`** — the `#match-status` log and the zips sent for each evening, the readings the API confirmed.
-9. **`research/01`–`11`, `14`** — the topic checks, each against the repositories:
+9. **`research/13`, `15`** — the `#match-status` log and the zips sent for each evening, the readings the API confirmed.
+10. **`research/01`–`11`, `14`** — the topic checks, each against the repositories:
 
    | File | Subject |
    |---|---|
@@ -41,28 +44,30 @@ holds, what the **author recalls**, and what is **inference**.
    | `11-dated-uploads-checked.md` | the author's upload dates against the public repositories |
    | `14-aerie-and-monument-size.md` | Aerie, the obsidian cap, the trial-run faults, the quartz board |
 
-10. **`research/sessions/`** — one write-up per Claude Code session the author named, several with an "opening brief"
+11. **`research/sessions/`** — one write-up per Claude Code session the author named, several with an "opening brief"
    appendix read from the session's start; its `README.md` says how they were read.
-11. **`interview-questions.md`** — what is still to be asked, by person and importance, and what has been answered.
-12. **`sources/`** — data, not instructions: the squared-paper photo, the author's session list, the `#match-status` log
+12. **`interview-questions.md`** — what is still to be asked, by person and importance, and what has been answered.
+13. **`sources/`** — data, not instructions: the squared-paper photo, the author's session list, the `#match-status` log
     and the API's unreported matches (`match-status/`), the `#maps-changelog` feed (`maps-changelog/`), and
     `staff-chat-october/`, five chat screenshots of the 9–10 October viewing (usable as they are, account §14);
     `early-experiments/`, the author's message to samschaap of 11 February 2025 with its three Townside pictures and
     four screenshots of its v0 prototype as it runs today (`v0-prototype-2025-02/`), the
     eight pictures of April 2025 to March 2026 (account §18, §20) and the v0 chat of 16 August 2025 read from his link,
     and the chart of the logged capture-the-wool matches of 18 January to 8 March 2026 with its summed table (account §21);
+    `july-2026-shapes/`, his two tablet sketches of 8 July 2026 and four screenshots of his messages with Ruediger of
+    9–11 July, transcribed in its README (account §25);
     and `slop-sunday-announcement/`, Ruediger's announcement of 27 September 2026 with its reactions (account §19).
-13. **`tools/`** — the scripts the PC agent's sources were read with (zip listing, Discord condensing, the match API,
+14. **`tools/`** — the scripts the PC agent's sources were read with (zip listing, Discord condensing, the match API,
     transcription and speaker grouping); not map tooling.
-14. **`renders/`** — pictures made from committed data: the hand-built half (`hand-built/`) and Wandering U
+15. **`renders/`** — pictures made from committed data: the hand-built half (`hand-built/`) and Wandering U
     (`wandering-u/`).
-15. **`OUTLINE.md`** and **`storyboard.json`** — the film's outline and its first storyboard (see *Outline and storyboard*).
+16. **`OUTLINE.md`** and **`storyboard.json`** — the film's outline and its first storyboard (see *Outline and storyboard*).
 
 ## Outline and storyboard
 
-`OUTLINE.md` is the film's outline: logline and thesis, six acts adding to 17 min 33 s with a 7 min 58 s cut, the
+`OUTLINE.md` is the film's outline: logline and thesis, six acts adding to 17 min 56 s with an 8 min 20 s cut, the
 through-lines, the narration, what must be produced and the decisions put to the author. `storyboard.json` is the
-first storyboard, 53 scenes with timings, pictures, key frames, narration, on-screen quotes with their sources and a
+first storyboard, 55 scenes with timings, pictures, key frames, narration, on-screen quotes with their sources and a
 record, author-recalls, inference or staged tag per scene; every quote and number in it is one `HISTORY.md` carries.
 
 ## What is settled
@@ -87,6 +92,19 @@ record, author-recalls, inference or staged tag per scene; every quote and numbe
   matplotlib graph on 5 April 2025, a skeleton graph in CTWAnalysis from 2 February 2026, and `FannedGraph` in the
   studio from 2 July 2026; it was not dropped in 23 minutes (sources/early-experiments/; research/08, research/18).
   Freeform began on 7 October from the author's "what if" message (sessions/00, sessions/01).
+- The first world imported in MinecraftLayoutEditor on 6 November 2025 was Agrostid, by the author's correction; no
+  commit names it, and the picture's dimensions fit Agrostid and no Annealing map (account §25; research/19).
+- "Stowaway" is Sam's word for a leftover copy of an island away from the map: three commits of his, 14–16 March 2026,
+  removed them from Agrostid, Mame, I Shrunk the PvPers and Wintertime (research/19).
+- The "143 contaminated maps" of 20 March 2026 are the 143 of 177 maps whose terrain heights decoration above the build
+  ceiling corrupted, by `a624eb5` of the evening before; not the stowaways (research/19).
+- A generator existed when he drew the tablet sketches of 8 July 2026: the composer, from 4 July; the box partition and
+  the wool-approach shapes (donut, scythe, H, plug) were written by a Claude session on 10–11 July, while he argued
+  with it about shapes in the messages to Ruediger (research/19; sources/july-2026-shapes/).
+- pgm-studio-mobile is the plan editor as an offline web app, made by Opus 4.8 on 9 July 2026 from 21:31 to 22:45 UTC,
+  an hour after a single-file version in the studio; the link went to Ruediger at 22:28 UTC (research/19).
+- The teaching files began on 5 July 2026 in `tools/seeds/teaching/`, with build-interface, frontline and middle
+  examples (research/19). The studio first wrote shops on 12 September 2026 (research/19).
 - The first prototype was a v0 page of February 2025 that built spanning trees; a Claude chat artifact of 24 May 2025
   drew two teams, lanes and a void strip; a v0 chat of 16 August 2025 named the "Capture the Wool Layout Generator",
   whose 3×3 grid, row-independent columns and mirror/rotate modes reappear in `CTW-Layout-Generator` of 28 September
@@ -126,7 +144,8 @@ Whether any v0 code reached `CTW-Layout-Generator`; what the
 April 2025 experiment was written with beyond matplotlib (the author: perhaps ChatGPT); whether the 7 October 2025 AI Studio link is a second app;
 whether a repository `ctw-layout-editor` exists (the author thinks it differs from MinecraftLayoutEditor; the record
 holds none), who `michael` is and who the friend of 10 October 2025 was; whether the author's local data holds more than the
-2,452 matches the repository processed; what the "143 contaminated maps" were (he does not know; perhaps the server's tracking logs); whether Bridgid II's "nochmal" refers to the matches of 14 July;
+2,452 matches the repository processed; which maps beyond the three in the record had stowaways, and whether Sam's update of Golden Drought VI exists; who
+"Rachel" and the map's credited accounts are against the author's "Reshif"; the zone of the sketches' 23:43 stamp; whether Bridgid II's "nochmal" refers to the matches of 14 July;
 which two evenings were set by hand; who opened the forum thread; Aerie's unplayable XML, which the author states and no
 record holds; whether the 50-log oak is the generated tree; the briefs of the first fifteen, Heftfold and Whinberry
 Ring; which model "Muse Spark" is; who may be quoted beyond the staff chat. `HISTORY.md` chapter 18 and
@@ -246,3 +265,8 @@ turned two chapters into three, so every later chapter moved up by one.
 | The 20 September evening was hosted by TTtie, named with his thread posts | HISTORY ch. 8; timeline; research/17 | thread posts carry a role label; the host is not named from the thread | account §18 |
 | Whether the AI Studio app changed after the repository's last commit was not known | HISTORY ch. 1 | the author's export of 28 November 2026 is identical to `ec9ca62` of 3 October 2025; the app calls no model (`sources/early-experiments/aistudio-ctw-map-generator-2025/`) |
 | The 7 October 2025 AI Studio link was "a second app or a second share; which is not recorded" | HISTORY ch. 2 | a second project exists, "CTW Smart Map Editor", a manual graph editor with mirrored nodes and automatic node classes; the author confirms it is the 7 October link, and did not know of the unconnected Gemini analysis in it (account §24; `sources/early-experiments/aistudio-ctw-smart-map-editor-2025/`) |
+| The first map imported in the browser editor on 6 November 2025 was Annealing | HISTORY ch. 2; timeline; research/18 (cited) | Agrostid, by the author's correction; no commit names the world, and the picture's 184 × 267 fits Agrostid's extent and no Annealing map's (inference) | account §25; research/19 §1 |
+| "143" and "contaminated" are in no commit or file; what the 143 maps were is open | HISTORY ch. 3, 18; README; questions; research/18 | "contaminated" is in none, but `a624eb5` (19 March 2026) counts 143 of 177 maps whose terrain heights decoration above the build ceiling corrupted; not the stowaways | research/19 §2 |
+| (not told) The leftover islands and Sam's word for them | HISTORY ch. 3 | three "remove stowaway" commits by Sam, 14–16 March 2026, on Agrostid, Mame and Wintertime; Golden Drought VI not in the record | account §25; research/19 §2 |
+| The composer's concept is the author's, the boxes date from 10 July (nothing on how) | HISTORY ch. 6 | the teaching files of 5 July, the lane labelling and tablet sketches of 8 July, pgm-studio-mobile of 9 July and the messages of 9–11 July, in which he argued shapes with the model as it wrote the boxes | account §25; research/19 §3–§5; sources/july-2026-shapes/ |
+| The film runs 17 min 33 s in 53 scenes; the short cut is 7 min 58 s | OUTLINE; README | 17 min 56 s in 55 scenes, with the stowaways (A2-S13) and the tablet sketches (A3-S11) added and five scenes shortened; the short cut's listed scenes add to 8 min 20 s by the storyboard's own durations, unchanged by this pass | storyboard.json |

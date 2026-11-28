@@ -1,7 +1,7 @@
 {
   "title": "Made By",
   "logline": "Over twenty-one months a Minecraft map maker teaches machines to help him make PvP maps for his community, from a spanning tree drawn in redstone to boards that staff take for touched-up work, and ends with a map he built by hand that players take for AI.",
-  "runtime_seconds": 1053,
+  "runtime_seconds": 1076,
   "narration": "One narrator: plain, dry, third person, past tense for events and present tense for the recording. Beside it only voices of the record: the 2 July recording where cleared, and rockymine's own written messages read by himself (scratch voice until then). Other people's written words appear on screen as text, never voiced.",
   "acts": [
     {
@@ -127,8 +127,8 @@
       "id": "A2",
       "title": "A spanning tree in redstone",
       "start": 75,
-      "dur": 227,
-      "summary": "February 2025 to May 2026, before the studio: the algorithm written to samschaap, the answer that it would be rules and not training, tools from v0, Claude, Gemini and his own C# editor, a winter of logged matches, and the islands that turned back into a graph.",
+      "dur": 232,
+      "summary": "February 2025 to May 2026, before the studio: the algorithm written to samschaap, the answer that it would be rules and not training, tools from v0, Claude, Gemini and his own C# editor, a winter of logged matches, the islands that turned back into a graph, and the stowaways that drawing every map turned up.",
       "scenes": [
         {
           "id": "A2-S1",
@@ -256,7 +256,7 @@
           "id": "A2-S5",
           "title": "April: matplotlib",
           "start": 150,
-          "dur": 12,
+          "dur": 10,
           "picture": "The matplotlib figure, pan across its four layouts; the green edges highlighted. Tag: author recalls the tool is not known.",
           "frame": {
             "image": "film/history/sources/early-experiments/2025-04-05-graph-layouts-matplotlib.png",
@@ -287,7 +287,7 @@
         {
           "id": "A2-S6",
           "title": "May: a Claude artifact",
-          "start": 162,
+          "start": 160,
           "dur": 15,
           "picture": "The tablet screenshot of the Claude artifact, its status bar time visible, then a zoom to the grey strip marked VOID with dashed red crossings.",
           "frame": {
@@ -313,8 +313,8 @@
         {
           "id": "A2-S7",
           "title": "August: an argument about symmetry",
-          "start": 177,
-          "dur": 22,
+          "start": 175,
+          "dur": 20,
           "picture": "Prompt-a-Map style: animated rockymine at a screen in the studio set; the v0 chat's lines pop up as his messages, the first one stern, the last one relieved.",
           "frame": {
             "image": null,
@@ -350,7 +350,7 @@
         {
           "id": "A2-S8",
           "title": "September: Gemini's app",
-          "start": 199,
+          "start": 195,
           "dur": 15,
           "picture": "Screen pictures of the AI Studio app: Generator tab with nodes, lanes and dashed void crossings for two teams, then four.",
           "frame": {
@@ -377,7 +377,7 @@
         {
           "id": "A2-S9",
           "title": "Ruediger's question",
-          "start": 214,
+          "start": 210,
           "dur": 20,
           "picture": "Animated Ruediger, his real skin, on a bench reading a phone; the German line appears as a chat bubble with an English subtitle.",
           "frame": {
@@ -404,7 +404,7 @@
         {
           "id": "A2-S10",
           "title": "Blocks without hands",
-          "start": 234,
+          "start": 230,
           "dur": 17,
           "picture": "The 4 November picture in game: two grey stone landmasses facing each other across a gap. A slow drift across it, as if flying.",
           "frame": {
@@ -425,8 +425,8 @@
         {
           "id": "A2-S11",
           "title": "A winter of matches",
-          "start": 251,
-          "dur": 18,
+          "start": 247,
+          "dur": 15,
           "picture": "The player-position trace, a blue cloud that is a map, dissolving into the chart of logged matches by day.",
           "frame": {
             "image": "film/history/sources/early-experiments/2026-player-position-trace.png",
@@ -457,8 +457,8 @@
         {
           "id": "A2-S12",
           "title": "Back at the graph",
-          "start": 269,
-          "dur": 15,
+          "start": 262,
+          "dur": 13,
           "picture": "Matched dissolve from \"Island Triangulation Detail View\" to \"Simplified Skeleton Detail View\": nine islands become triangles, then a graph.",
           "frame": {
             "image": "film/history/sources/early-experiments/2026-01-simplified-skeleton-detail.png",
@@ -483,8 +483,41 @@
         },
         {
           "id": "A2-S13",
+          "title": "Stowaways",
+          "start": 275,
+          "dur": 14,
+          "picture": "Prompt-a-Map style: a map at 0,0 seen from above, the camera pulls back and back until a second island appears far to the west, alone in the void; a small label pops up over it, \"stowaway\". Cut to the commit line.",
+          "frame": {
+            "image": null,
+            "sketch": "one map at 0,0 and, far off in the void, a lone island labelled stowaway"
+          },
+          "vo": "NARRATOR: Drawing every map block by block turned up islands with no business there: an old Agrostid far to the west, and, he recalls, practically a second copy of another map. Sam called them stowaways.",
+          "onscreen": [
+            {
+              "text": "Agrostid: remove stowaway",
+              "who": "Sam (samschaap), commit of 14 March 2026",
+              "source": "research/19"
+            },
+            {
+              "text": "good opportunity to dev phase that map and forget about it",
+              "who": "samschaap, to rockymine",
+              "source": "account §25"
+            }
+          ],
+          "sound": "A pop as the label appears.",
+          "kind": "record",
+          "footage": "animate",
+          "todo": "Animate the pull-back; tag the commit RECORD and Sam's line AUTHOR RECALLS (it is in no record). The other map is Mame, I Shrunk the PvPers, a community map not the author's; name it in a caption only.",
+          "sources": [
+            "HISTORY ch. 3",
+            "research/19",
+            "account §25"
+          ]
+        },
+        {
+          "id": "A2-S14",
           "title": "If we simply reverted the pipeline",
-          "start": 284,
+          "start": 289,
           "dur": 18,
           "picture": "The 20 March Claude Code screenshot; the camera finds his message and stops on the last sentence.",
           "frame": {
@@ -517,14 +550,14 @@
     {
       "id": "A3",
       "title": "The grey boxes",
-      "start": 302,
-      "dur": 203,
-      "summary": "June and July 2026: the C# studio, the first map.xml nobody wrote, the squared-paper morning of 2 July and the evening that followed, told from the 59-minute recording.",
+      "start": 307,
+      "dur": 221,
+      "summary": "June and July 2026: the C# studio, the first map.xml nobody wrote, the squared-paper morning of 2 July and the evening that followed, told from the 59-minute recording, and a week later the tablet sketches from which the generator's shapes were named.",
       "scenes": [
         {
           "id": "A3-S1",
           "title": "The third rewrite",
-          "start": 302,
+          "start": 307,
           "dur": 23,
           "picture": "Three windows slide in one after another: the analysis's map viewer, the Python studio, the C# studio in the browser. Model names appear as small logos beside each commit date.",
           "frame": {
@@ -552,8 +585,8 @@
         {
           "id": "A3-S2",
           "title": "The first XML nobody wrote",
-          "start": 325,
-          "dur": 24,
+          "start": 330,
+          "dur": 22,
           "picture": "Animated rockymine and Ruediger at the studio set; a map.xml scrolls on a big screen. Cut to a match-record graphic: three maps uploaded at 21:47, played from 21:51.",
           "frame": {
             "image": null,
@@ -585,7 +618,7 @@
         {
           "id": "A3-S3",
           "title": "The squared-paper morning",
-          "start": 349,
+          "start": 352,
           "dur": 26,
           "picture": "The phone photo of the drawing, then the model's first world beside it with the staircase where the sheet has an H, then the corrected world. Clock captions: 07:37, 08:45, 09:09.",
           "frame": {
@@ -617,7 +650,7 @@
         {
           "id": "A3-S4",
           "title": "Before he looked",
-          "start": 375,
+          "start": 378,
           "dur": 15,
           "picture": "His messages to TTtie as chat bubbles over a still of the three Base zips.",
           "frame": {
@@ -654,7 +687,7 @@
         {
           "id": "A3-S5",
           "title": "Why is that void?",
-          "start": 390,
+          "start": 393,
           "dur": 25,
           "picture": "The recording, minutes 0-14: four players walk the Base maps on the development server. Picture-in-picture caption: mapdev, 19:40 UTC.",
           "frame": {
@@ -681,7 +714,7 @@
         {
           "id": "A3-S6",
           "title": "This moment for myself",
-          "start": 415,
+          "start": 418,
           "dur": 18,
           "picture": "The recording: the author's view standing still on a grey island, looking out over the void.",
           "frame": {
@@ -708,8 +741,8 @@
         {
           "id": "A3-S7",
           "title": "Room for the imagination",
-          "start": 433,
-          "dur": 18,
+          "start": 436,
+          "dur": 14,
           "picture": "The recording around minute 20; inset, a render of Base 2-Wool, nothing but stone.",
           "frame": {
             "image": null,
@@ -735,7 +768,7 @@
         {
           "id": "A3-S8",
           "title": "Hide our crimes",
-          "start": 451,
+          "start": 450,
           "dur": 20,
           "picture": "The recording, minutes 33-40, sped up with a running clock; then the #maps-changelog row of 711e539 slides in.",
           "frame": {
@@ -768,7 +801,7 @@
         {
           "id": "A3-S9",
           "title": "Three out of four",
-          "start": 471,
+          "start": 470,
           "dur": 22,
           "picture": "The three matches on server-2 from the recording, with the match-record numbers captioned; the poll on screen, then the chat line.",
           "frame": {
@@ -805,8 +838,8 @@
         {
           "id": "A3-S10",
           "title": "Back to the normal maps",
-          "start": 493,
-          "dur": 12,
+          "start": 492,
+          "dur": 8,
           "picture": "Base 4-Team's last seconds in the recording, then the next map loading; cut to black.",
           "frame": {
             "image": null,
@@ -827,20 +860,63 @@
           "sources": [
             "research/16"
           ]
+        },
+        {
+          "id": "A3-S11",
+          "title": "Tetris pieces",
+          "start": 500,
+          "dur": 28,
+          "picture": "The tablet sketch of 8 July, hatched wool lanes each ending in a square with a dot, dissolving into the coloured sheet where every lane ends in a W. Then chat bubbles over it, German with English subtitles, and last his box line over the coloured shapes.",
+          "frame": {
+            "image": "film/history/sources/july-2026-shapes/2026-07-08-tablet-sketch-wool-lanes-coloured.jpg",
+            "sketch": "a dozen wool-lane shapes outlined in colour on a tablet, each ending in a W"
+          },
+          "vo": "NARRATOR: Six days later he drew wool lanes on his tablet, the pieces he had long thought maps were made of, like Tetris. A Claude session wrote a catalogue of such shapes: a donut, a scythe, an H, a plug. He found its system too static, and said so to Ruediger.",
+          "onscreen": [
+            {
+              "text": "Ich verwirre die KI",
+              "who": "rockymine, to Ruediger, 11 July",
+              "source": "sources/july-2026-shapes/"
+            },
+            {
+              "text": "haha",
+              "who": "Ruediger",
+              "source": "sources/july-2026-shapes/"
+            },
+            {
+              "text": "er hat sich ein zu statisches system gebaut",
+              "who": "rockymine",
+              "source": "sources/july-2026-shapes/"
+            },
+            {
+              "text": "eine Box für Frontline, Hub, Spawn und Wool(s)",
+              "who": "rockymine",
+              "source": "sources/july-2026-shapes/"
+            }
+          ],
+          "sound": "Pen strokes on glass; message pings.",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "Open on the plain sketch (2026-07-08-tablet-sketch-wool-lane-shapes.jpg), dissolve to the coloured one. Subtitles: \"I'm confusing the AI\" / \"haha\" / \"it has built itself too static a system\" / \"a box for frontline, hub, spawn and wool(s)\". The Tetris idea is his recollection (AUTHOR RECALLS); the catalogue and the messages are RECORD.",
+          "sources": [
+            "HISTORY ch. 6",
+            "research/19",
+            "account §25"
+          ]
         }
       ]
     },
     {
       "id": "A4",
       "title": "Slop Sunday",
-      "start": 505,
+      "start": 528,
       "dur": 211,
       "summary": "August and September 2026: odd experiments, the first boards no person laid out, the agent that was confidently wrong, the line-up map, Millrace left and right, the test evenings Ruediger named, the forum thread against them, and the largest and last evening.",
       "scenes": [
         {
           "id": "A4-S1",
           "title": "The walking room",
-          "start": 505,
+          "start": 528,
           "dur": 20,
           "picture": "Real render of Wandering U from above; an animated wool room slides along the U while a character inside it is left standing on air, then falls.",
           "frame": {
@@ -868,7 +944,7 @@
         {
           "id": "A4-S2",
           "title": "Not the AI map",
-          "start": 525,
+          "start": 548,
           "dur": 17,
           "picture": "No Blocks Placed's credits as an end-roll card, then the administrator's assumption and his answer as chat bubbles.",
           "frame": {
@@ -901,7 +977,7 @@
         {
           "id": "A4-S3",
           "title": "Like fully ai",
-          "start": 542,
+          "start": 565,
           "dur": 18,
           "picture": "Fifteen render thumbnails fan out as cards; two lift out, Thornwake and Viridian, and Viridian fills the frame, green with slime.",
           "frame": {
@@ -934,7 +1010,7 @@
         {
           "id": "A4-S4",
           "title": "Confident, measured and wrong",
-          "start": 560,
+          "start": 583,
           "dur": 18,
           "picture": "Animated: the machine from Prompt-a-Map stamps UNWINNABLE on a floating monument; a second stamp, WITHDRAWN, lands on top. Real render of a destroy objective above the ground behind it.",
           "frame": {
@@ -955,7 +1031,7 @@
         {
           "id": "A4-S5",
           "title": "The line-up",
-          "start": 578,
+          "start": 601,
           "dur": 20,
           "picture": "Ashfall Scar's objective render; a slow pan along the line from spawn to spawn, each objective labelled as the pan passes it.",
           "frame": {
@@ -988,7 +1064,7 @@
         {
           "id": "A4-S6",
           "title": "Millrace, left and right",
-          "start": 598,
+          "start": 621,
           "dur": 25,
           "picture": "Split screen: the model's Millrace and the version the two finished, same camera; a wipe between them.",
           "frame": {
@@ -1020,7 +1096,7 @@
         {
           "id": "A4-S7",
           "title": "Very human maps",
-          "start": 623,
+          "start": 646,
           "dur": 20,
           "picture": "A data graphic built from the match record: each evening a row of map cards in the order played, players per match as bar heights. Commit messages appear as stamps.",
           "frame": {
@@ -1052,7 +1128,7 @@
         {
           "id": "A4-S8",
           "title": "Slop Sunday",
-          "start": 643,
+          "start": 666,
           "dur": 22,
           "picture": "Kilnholt Cut's render; the camera dives into its causeway and through the corridor in it. Caption: 13 September, eleven maps.",
           "frame": {
@@ -1084,7 +1160,7 @@
         {
           "id": "A4-S9",
           "title": "stop AI maps from being played at all",
-          "start": 665,
+          "start": 688,
           "dur": 28,
           "picture": "Text cards only, white on black, each tagged with a role, never a name or an avatar: the title, the opener's question, a staff answer, one player who loved a map, and his answer.",
           "frame": {
@@ -1131,7 +1207,7 @@
         {
           "id": "A4-S10",
           "title": "The last evening",
-          "start": 693,
+          "start": 716,
           "dur": 23,
           "picture": "The announcement screenshot, then the reactions counted up one by one, the skull to thirteen. Cut to two match results: winners Claude, winners Anti-Slop.",
           "frame": {
@@ -1166,14 +1242,14 @@
     {
       "id": "A5",
       "title": "A whole different class of map",
-      "start": 716,
+      "start": 739,
       "dur": 145,
       "summary": "October 2026: the overnight question that started freeform, Riftwater by morning, a library and a grammar in two days, the staff at the viewing who took the boards for touched-up work, and the decision to pause.",
       "scenes": [
         {
           "id": "A5-S1",
           "title": "What if",
-          "start": 716,
+          "start": 739,
           "dur": 25,
           "picture": "Night. Animated rockymine at the screen set, dictating; the words appear as a transcript. A last line adds a tractor, which the set briefly shows.",
           "frame": {
@@ -1205,7 +1281,7 @@
         {
           "id": "A5-S2",
           "title": "By morning",
-          "start": 741,
+          "start": 764,
           "dur": 18,
           "picture": "Riftwater's iso render, a slow crane down onto the town. Caption 05:42.",
           "frame": {
@@ -1232,7 +1308,7 @@
         {
           "id": "A5-S3",
           "title": "Twenty boards in a day",
-          "start": 759,
+          "start": 782,
           "dur": 17,
           "picture": "Quick cuts of freeform renders, one per beat: Lantern Pass, Lantern Drop, Loomfall, Spark, Curio Square.",
           "frame": {
@@ -1253,7 +1329,7 @@
         {
           "id": "A5-S4",
           "title": "A grammar from Brittlebush",
-          "start": 776,
+          "start": 799,
           "dur": 17,
           "picture": "Brittlebush III's render; a grid of 5x5 fields draws itself over it in three colours.",
           "frame": {
@@ -1285,7 +1361,7 @@
         {
           "id": "A5-S5",
           "title": "Touched up",
-          "start": 793,
+          "start": 816,
           "dur": 30,
           "picture": "The observer chat screenshots, line by line, over Hollowcrown's render; each line arrives with a chat sound.",
           "frame": {
@@ -1333,7 +1409,7 @@
         {
           "id": "A5-S6",
           "title": "Thirty minutes to an hour",
-          "start": 823,
+          "start": 846,
           "dur": 18,
           "picture": "chat-4 over the Hollow Mesa render; a clock face spins half a turn, then a whole one.",
           "frame": {
@@ -1370,7 +1446,7 @@
         {
           "id": "A5-S7",
           "title": "Too good",
-          "start": 841,
+          "start": 864,
           "dur": 20,
           "picture": "Animated rockymine and Ruediger on the edge of a freeform board at dusk, sitting; the camera pulls back. Tag: author recalls.",
           "frame": {
@@ -1399,14 +1475,14 @@
     {
       "id": "A6",
       "title": "Just having Claude follow along",
-      "start": 861,
+      "start": 884,
       "dur": 192,
       "summary": "October and November 2026: agents fail to compose his mountain sketch, he builds the map by hand, the agents are put to reading it, players ask whether it is AI, the freeform boards finally reach the public servers, and the studio stands in the browser.",
       "scenes": [
         {
           "id": "A6-S1",
           "title": "Every check passed",
-          "start": 861,
+          "start": 884,
           "dur": 22,
           "picture": "Animated: the Prompt-a-Map machine presents a version of the mountain map on a plinth; a ramp on it runs off into the void and a character walks off it. Stamp: REJECTED, then the next version.",
           "frame": {
@@ -1438,7 +1514,7 @@
         {
           "id": "A6-S2",
           "title": "The map he built",
-          "start": 883,
+          "start": 906,
           "dur": 28,
           "picture": "The hand-built half: whole from above, then a slow descent into the valley and along the routes, one render per route.",
           "frame": {
@@ -1466,7 +1542,7 @@
         {
           "id": "A6-S3",
           "title": "Not a design",
-          "start": 911,
+          "start": 934,
           "dur": 18,
           "picture": "Render of the wool lookout from the valley; the study's labels for spaces appear and fade, too many to read.",
           "frame": {
@@ -1494,7 +1570,7 @@
         {
           "id": "A6-S4",
           "title": "Still not AI",
-          "start": 929,
+          "start": 952,
           "dur": 20,
           "picture": "Render of the facade and core; his message appears in a chat bubble at the bottom of the frame.",
           "frame": {
@@ -1521,7 +1597,7 @@
         {
           "id": "A6-S5",
           "title": "Is it AI?",
-          "start": 949,
+          "start": 972,
           "dur": 22,
           "picture": "The author's own gameplay on the hand-built map, players running the underground lane. Tag: author recalls.",
           "frame": {
@@ -1542,7 +1618,7 @@
         {
           "id": "A6-S6",
           "title": "The arcade evening",
-          "start": 971,
+          "start": 994,
           "dur": 22,
           "picture": "The author's gameplay of Lantern Pass, runners against shooters; match-record caption. Then quick stills of the other four boards.",
           "frame": {
@@ -1569,7 +1645,7 @@
         {
           "id": "A6-S7",
           "title": "pgmstudio.de",
-          "start": 993,
+          "start": 1016,
           "dur": 25,
           "picture": "The author's screen recording of the studio in the browser: a layout drawn from nothing, the world appearing. His animated character sits beside the window.",
           "frame": {
@@ -1596,7 +1672,7 @@
         {
           "id": "A6-S8",
           "title": "What belongs",
-          "start": 1018,
+          "start": 1041,
           "dur": 20,
           "picture": "rockymine and Ruediger, their real skins, stand on the hand-built map's floor; the camera rises over the walls to the whole half.",
           "frame": {
@@ -1623,7 +1699,7 @@
         {
           "id": "A6-S9",
           "title": "made by",
-          "start": 1038,
+          "start": 1061,
           "dur": 15,
           "picture": "The observer sign from the cold open, now filled in: made by rockymine and Ruediger_LP. Then the credits, with the models named among them.",
           "frame": {

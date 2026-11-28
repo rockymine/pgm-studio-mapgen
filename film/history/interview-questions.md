@@ -1,6 +1,6 @@
 # Open questions, by person
 
-What is still to be asked, after the author's account of 27 and 28 November 2026 (twenty instalments), the recording
+What is still to be asked, after the author's account of 27 and 28 November 2026 (twenty-five instalments), the recording
 of 2 July and the match API (research/16), the forum thread and five conversations (research/17), and the early
 repositories (research/18). The thread's posters and four correspondents are named by role, by the author's decision
 of 28 November (README, *Names*). Within each
@@ -23,9 +23,10 @@ it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessions/NN`. Answered ques
 6. **The opening briefs not yet read.** The starts of sessions 2, 4, 5, 7, 10 and 12 could not be paged to, nor the
    briefs of the first fifteen, Heftfold and Whinberry Ring (s/02, 04, 05, 07, 10, 12; r/12). Can you paste your first
    message of each?
-7. **The "143 contaminated maps".** The 20 March screenshot ends on them, and no commit or file names them
-   (research/18). You do not know what they refer to, perhaps the server's tracking logs (account §21); can the logs
-   be looked at?
+7. **The stowaways beyond three.** The record has Sam's word in three commits only, Agrostid, Mame and Wintertime,
+   14–16 March 2026 (r/19). Which other maps did the renders show, and where are their pictures? Did the import of 6
+   November 2025 show Agrostid's second island, or did you leave its old region file out (the picture says five files
+   of six; r/19 §1)?
 8. **When the "CTW Smart Map Editor" was made.** Its export carries no date; it was shared on 7 October 2025, four days
    after the generator's last commit (account §24). Before or after the generator's own manual editor of 3 October?
 9. **The hand-built fire-and-ice map.** With which in-game loft tool, and why not in the studio? Is the room at y 50 the
@@ -73,11 +74,16 @@ it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessions/NN`. Answered ques
 5. **Capture the Cake and the moving room.** Whose idea was each (r/15)?
 6. **Your own prompts.** What came of the four-team "Quarter Stone" of 3 and 4 September (r/15)?
 7. **The three best.** On 10 October you proposed finishing the three best AI maps (r/15). Did it happen?
+8. **The evening of 11 July.** You answered the box idea with "lass am abend reden". What was said that evening, and did
+   you draw layouts in pgm-studio-mobile and send JSON back (r/19; `sources/july-2026-shapes/`)?
 
 ## samschaap
 
 1. **11 February 2025.** What did you make of the spanning-tree message, and did the author send more of the data survey
    later (`sources/early-experiments/2025-02-11-message-to-samschaap.md`)?
+2. **The stowaways.** Your three "remove stowaway" commits are of 14–16 March 2026 (r/19). Did you update Golden Drought
+   VI, perhaps in PrivateMaps, and which other maps did you clean without the word? Is the "dev phase" joke about Mame
+   in a message that can be quoted from its source?
 
 ## TTtie
 
@@ -188,3 +194,6 @@ it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessions/NN`. Answered ques
 | When did the project begin? | 11 February 2025, the spanning-tree message to samschaap and a v0 prototype; a graph in April, a Claude artifact in May, v0 again in August | account §18, §20; sources/early-experiments/ |
 | Was the plan to train a model on maps? | No: in February 2025, "an educated, rule-based approach is more likely for me to achieve than actual training" | sources/early-experiments/ |
 | May the thread and the conversations be named? | No: the thread and four conversations are anonymised | account §18 |
+| What were the "143 contaminated maps"? | The 143 of 177 maps whose terrain heights decoration above the build ceiling corrupted, by CTWAnalysis's `a624eb5` of 19 March 2026; not the stowaways | r/19 §2 |
+| Was the first imported world Annealing? | No, Agrostid, by the author's correction; the picture's dimensions fit it | account §25; r/19 §1 |
+| Did a generator exist when the tablet sketches were drawn (8 July 2026)? | Yes, the composer from 4 July; the boxes and the approach shapes followed on 10–11 July | r/19 §5 |
