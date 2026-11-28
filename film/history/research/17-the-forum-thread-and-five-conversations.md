@@ -102,6 +102,10 @@ contest if it's me vs you and you're the one judging in the end."
 **The fire-and-ice map was shown as not AI.** On 25 November the author sent its layer-by-layer model: "Note that
 it still is not AI. Just having claude follow along."
 
+**It is the map players asked about.** The author confirmed on 28 November that the fire-and-ice map is the one
+with the wool and the core that Minuyo and others first took for a model's work (author account, seventeenth
+instalment).
+
 ## 4. javg: no AI for creative work, and the Mappys
 
 **javg's condition for a joint map was no AI.** On 13 May 2026 the author proposed making a map together; javg:
