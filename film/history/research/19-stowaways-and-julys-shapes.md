@@ -80,12 +80,13 @@ the author's. *Account:* "practically a complete second copy" (account §25). Th
 contents; 208,896 bytes against the kept files' 1.55 MB fits a partial copy at least as well as a complete one.
 
 **Golden Drought VI has no 2026 commit in either public repository.** *Record:* `CommunityMaps/ctw/golden_drought_vi`
-was last changed on 2024-12-27 (proto migration); its commits of October 2023 are by "Rachel", and its `map.xml`
+was last changed on 2024-12-27 (proto migration); its commits of October 2023 are by the person the author calls Reshif (account §27), and its `map.xml`
 credits Lich_of_Flowers and Penuuy, created 2023-10-01. The feed holds no Golden Drought entry in 2026. *Inference:* the
 map still carries `r.0.1.mca` (z 512 to 1023, 20,480 bytes), beyond the furthest coordinate its XML states (|z| = 166),
 which is what an uncleaned stowaway would look like. *Account:* a stowaway was found on it too and Sam updated "these
-maps" piece by piece (account §25). Whether Sam's update of Golden Drought VI exists the record is silent; whether
-Rachel is the Reshif the author names, and whether Reshif is either credited account, it does not say.
+maps" piece by piece (account §25). Whether Sam's update of Golden Drought VI exists the record is silent. The committer is
+Reshif, by the author's word of 28 November (account §27); whether Reshif is either credited account the record does not
+say.
 
 **Sam's joke is not in the record.** *Account:* "good opportunity to dev phase that map and forget about it" (account
 §25), in a message to the author; no commit or feed line carries it.
