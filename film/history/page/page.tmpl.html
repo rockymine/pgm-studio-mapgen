@@ -1,0 +1,216 @@
+<title>Made By Film Dossier</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@87.5..112.5,500..800&family=Caveat:wght@500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* LAYOUT a production binder on squared paper: one sticky tab row, five views; the history reads as a book column
+   beside its chapter list, the storyboard as rows of panels. The three colours are the squared-paper drawing's own
+   key (blue wool, orange spawn, green build region), reused for record / account / inference. */
+:root{
+  --paper:#f3f6fa; --sheet:#ffffff; --ink:#152033; --soft:#56637a; --line:#d3dbe7; --grid:#e2e8f1;
+  --rec:#2a5bcc; --rec-bg:#e4ecfb; --acc:#b85a12; --acc-bg:#fbeadb; --inf:#28774a; --inf-bg:#def2e6; --stg:#7445c0; --stg-bg:#ece4fa;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif; --body:"Source Serif 4",Georgia,"Times New Roman",serif; --hand:"Caveat","Comic Sans MS",cursive;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0e131c; --sheet:#161d2a; --ink:#e7ecf5; --soft:#9aa7bd; --line:#2a3446; --grid:#1b2332;
+  --rec:#86a7ff; --rec-bg:#1b2a4d; --acc:#f2a35f; --acc-bg:#40290f; --inf:#72cf98; --inf-bg:#143523; --stg:#bda1f3; --stg-bg:#2c2147; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0e131c; --sheet:#161d2a; --ink:#e7ecf5; --soft:#9aa7bd; --line:#2a3446; --grid:#1b2332;
+  --rec:#86a7ff; --rec-bg:#1b2a4d; --acc:#f2a35f; --acc-bg:#40290f; --inf:#72cf98; --inf-bg:#143523; --stg:#bda1f3; --stg-bg:#2c2147; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:16px/1.55 var(--display);overflow-x:clip}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--rec)} code{font:0.86em ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere}
+h1,h2,h3,h4{font-family:var(--display);font-stretch:112%;line-height:1.1;margin:0;text-wrap:balance}
+p{margin:0 0 .9em}
+:focus-visible{outline:2px solid var(--rec);outline-offset:2px}
+
+/* masthead on squared paper */
+.top{background:linear-gradient(var(--grid) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/24px 24px,var(--paper);border-bottom:2px solid var(--ink)}
+.top .wrap{padding-block:34px 26px}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-bottom:10px}
+h1{font-size:clamp(34px,6vw,64px);font-weight:800;letter-spacing:-.015em;max-width:18ch}
+.logline{font:400 clamp(17px,2vw,20px)/1.5 var(--body);max-width:62ch;margin:14px 0 0}
+.key{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;font-size:14px;color:var(--soft)}
+
+/* voice tags */
+.v{font:700 11px/1 var(--display);letter-spacing:.07em;text-transform:uppercase;padding:3px 6px 2px;border-radius:3px;white-space:nowrap;vertical-align:.12em}
+.v-rec{background:var(--rec-bg);color:var(--rec)} .v-acc{background:var(--acc-bg);color:var(--acc)} .v-inf{background:var(--inf-bg);color:var(--inf)} .v-stg{background:var(--stg-bg);color:var(--stg)}
+
+/* tabs */
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--paper);border-bottom:1px solid var(--line)}
+.tabs .wrap{display:flex;gap:4px;overflow-x:auto;padding-block:0}
+.tabs a{flex:none;padding:13px 14px 11px;font-weight:700;font-size:15px;color:var(--soft);text-decoration:none;border-bottom:3px solid transparent}
+.tabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--acc)}
+.tabs a small{font-weight:500;color:var(--soft);margin-left:5px}
+
+main .wrap{padding-block:30px 70px}
+.view>h2{font-size:clamp(26px,3.4vw,38px);font-weight:800;margin-bottom:8px}
+.lede2{font:400 17px/1.55 var(--body);color:var(--soft);max-width:70ch}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 22px}
+.facts span{border:1px solid var(--line);background:var(--sheet);border-radius:999px;padding:4px 12px;font-size:14px;color:var(--soft);font-variant-numeric:tabular-nums}
+.facts b{color:var(--ink)}
+
+/* act bar: lengths to scale */
+.actbar{list-style:none;display:flex;gap:3px;padding:0;margin:20px 0 6px}
+.actbar li{flex:1 1 0;min-width:112px}
+.actbar a{display:block;height:100%;background:var(--sheet);border:1px solid var(--line);border-top:4px solid var(--ink);padding:9px 10px;text-decoration:none;color:var(--ink)}
+.actbar a:hover{border-top-color:var(--acc)}
+.actbar b{display:block;font-size:12px;letter-spacing:.07em;color:var(--soft)}
+.actbar .t{display:block;font-weight:700;font-size:13.5px;line-height:1.2}
+.actbar .tc{display:block;font-size:12px;color:var(--soft);font-variant-numeric:tabular-nums;margin-top:4px}
+
+/* prose (outline, questions, history) */
+.prose{font:400 18px/1.68 var(--body);max-width:68ch;min-width:0}
+.prose h2{font-size:25px;font-weight:800;margin:1.9em 0 .55em} .prose h3{font-size:19px;font-weight:700;margin:1.6em 0 .4em}
+.prose strong{font-weight:600} .prose li{margin-bottom:.4em} .prose ul,.prose ol{padding-left:1.3em}
+.prose blockquote{margin:1em 0;padding-left:14px;border-left:3px solid var(--line);color:var(--soft)}
+.scroll{overflow-x:auto;margin:1.1em 0;max-width:100%}
+table{border-collapse:collapse;font:400 14px/1.45 var(--display);width:100%}
+th{text-align:left;font-weight:700;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--soft);border-bottom:2px solid var(--ink);padding:7px 10px 6px 0;vertical-align:bottom}
+td{border-bottom:1px solid var(--line);padding:8px 10px 8px 0;vertical-align:top}
+.wide{max-width:none}
+
+/* history */
+.book{display:grid;grid-template-columns:270px minmax(0,1fr);gap:44px;align-items:start}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 62px);max-height:calc(100vh - 90px);overflow:auto;font-size:14px}
+.toc p{font-weight:700;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--soft);margin-bottom:8px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:1px}
+.toc a{display:grid;grid-template-columns:22px 1fr;gap:6px;padding:6px 8px;color:var(--ink);text-decoration:none;border-left:3px solid transparent;line-height:1.3}
+.toc a b{color:var(--soft);font-variant-numeric:tabular-nums} .toc a:hover{background:var(--sheet)} .toc a.on{border-left-color:var(--acc);background:var(--sheet)}
+.chapter{scroll-margin-top:70px;margin-top:54px;padding-top:26px;border-top:2px solid var(--ink)}
+.chno{font:600 12px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-bottom:8px}
+.chapter>h2{font-size:clamp(24px,3vw,32px);margin:0 0 .7em;font-weight:800}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px;margin:0 0 1.4em}
+figure{margin:0} figure img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;border:1px solid var(--line);background:var(--sheet)}
+figcaption{font:400 13px/1.4 var(--display);color:var(--soft);margin-top:6px}
+
+/* storyboard */
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 4px}
+.filters button{font:600 14px var(--display);border:1px solid var(--line);background:var(--sheet);color:var(--ink);border-radius:999px;padding:6px 13px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.act{margin-top:44px;padding-top:22px;border-top:2px solid var(--ink);scroll-margin-top:70px}
+.act h3{font-size:26px;font-weight:800;margin-bottom:8px}
+.scenes{scroll-margin-top:64px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:26px 22px;margin-top:20px}
+.scene{min-width:0}
+.frame{position:relative;border:2px solid var(--ink);background:var(--sheet);aspect-ratio:16/9;overflow:hidden}
+.frame img{display:block;width:100%;height:100%;object-fit:cover}
+.chip{position:absolute;left:0;bottom:0;background:var(--ink);color:var(--paper);font:700 12px/1 var(--display);padding:5px 8px;font-variant-numeric:tabular-nums}
+.sk{display:block;width:100%;height:100%} .sk .bg{fill:var(--sheet)} .sk .grid line{stroke:var(--grid);stroke-width:1}
+.sk .pic *{fill:none;stroke:var(--soft);stroke-width:2;stroke-linejoin:round} .sk .pic .dot{fill:var(--acc);stroke:none}
+.sk .hand text{font:600 21px var(--hand);fill:var(--ink)}
+.sbody{padding-top:10px}
+.sid{font:700 12px/1 var(--display);letter-spacing:.06em;color:var(--soft);margin-bottom:7px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.foot{font:600 11px/1 var(--display);letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--line);border-radius:3px;padding:3px 6px 2px;color:var(--soft)}
+.foot.f-exists{color:var(--inf);border-color:var(--inf)}
+.scene h4{font-size:18px;font-weight:700;margin-bottom:6px}
+.scene .pic{font-size:14.5px;color:var(--soft);margin-bottom:9px}
+.vo{font:400 16.5px/1.55 var(--body);margin-bottom:9px} .vo.none{color:var(--soft);font-style:italic;font-size:14.5px}
+.scene blockquote{margin:0 0 9px;padding:8px 10px;background:var(--sheet);border-left:3px solid var(--acc)}
+.scene blockquote p{font:400 15px/1.45 var(--body);margin:0 0 3px} .scene cite{font:600 12px var(--display);color:var(--soft);font-style:normal}
+.snd,.todo,.src{font-size:13px;color:var(--soft);margin-bottom:5px} .snd b,.todo b{color:var(--ink);font-weight:700;margin-right:4px}
+.src{overflow-wrap:anywhere}
+
+/* timeline */
+.tl td.d{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600} .tl td.s{color:var(--soft);font-size:13px} .tl td.k{white-space:nowrap}
+.tl tr.yr td{font:800 22px var(--display);font-stretch:112%;border-bottom:2px solid var(--ink);padding-top:26px}
+
+@media(max-width:900px){.book{grid-template-columns:1fr;gap:18px}.toc{position:static;max-height:none}.toc ol{grid-template-columns:1fr 1fr}.actbar{flex-direction:column}.actbar a{border-top-width:1px;border-left:4px solid var(--ink)}}
+@media(max-width:640px){.toc ol{grid-template-columns:1fr}.prose{font-size:17px}
+  .tl thead{display:none}.tl tr{display:block;padding:9px 0;border-bottom:1px solid var(--line)}.tl td{display:block;border:0;padding:2px 0}.tl td.d,.tl td.k{white-space:normal}.tl tr.yr{border-bottom:2px solid var(--ink)}}
+</style>
+
+<header class="top"><div class="wrap">
+  <p class="eyebrow">Film dossier · working copy of 28 November 2026</p>
+  <h1>{{FILM_TITLE}}</h1>
+  <p class="logline">{{LOGLINE}}</p>
+  <p class="key"><span><span class="v v-rec">Record</span> a commit, file, server record, recording or message holds it</span><span><span class="v v-acc">Account</span> the author recalls it</span><span><span class="v v-inf">Inference</span> a reading, with its basis named</span></p>
+</div></header>
+
+<nav class="tabs" aria-label="Sections"><div class="wrap">
+  <a href="#outline" data-view="outline" aria-current="page">Outline</a>
+  <a href="#storyboard" data-view="storyboard">Storyboard</a>
+  <a href="#history" data-view="history">The history<small>{{READMIN}} min</small></a>
+  <a href="#timeline" data-view="timeline">Timeline</a>
+  <a href="#questions" data-view="questions">Open questions</a>
+</div></nav>
+
+<main><div class="wrap">
+
+<section class="view" id="v-outline">
+  <h2>{{OUTLINE_TITLE}}</h2>
+  {{SB_FACTS}}
+  {{ACTBAR}}
+  <p class="lede2" style="margin:14px 0 0">Each block is one act, wider the longer it runs. The blocks open that act in the storyboard.</p>
+  <div class="prose">{{OUTLINE}}</div>
+</section>
+
+<section class="view" id="v-storyboard" hidden>
+  <h2>Storyboard</h2>
+  <p class="lede2">One panel per scene. A panel with a picture uses material that already exists; a drawn panel names what has to be made. The narration under each panel is a draft written to fit the scene's length. {{NARRATION}}</p>
+  {{SB_FACTS}}
+  <div class="filters" role="group" aria-label="Show scenes by footage">
+    <button type="button" id="f-all" data-f="" aria-pressed="true">All scenes</button>
+    <button type="button" id="f-exists" data-f="exists" aria-pressed="false">Exists</button>
+    <button type="button" id="f-render" data-f="render" aria-pressed="false">To render</button>
+    <button type="button" id="f-animate" data-f="animate" aria-pressed="false">To animate</button>
+    <button type="button" id="f-record" data-f="record" aria-pressed="false">To record</button>
+    <button type="button" id="f-pc" data-f="from-pc" aria-pressed="false">From the PC</button>
+  </div>
+  {{STORYBOARD}}
+</section>
+
+<section class="view" id="v-history" hidden>
+  <div class="book">
+    <aside class="toc"><p>{{NCH}} chapters · about {{WORDS}} words</p><ol>{{TOC}}</ol></aside>
+    <article class="prose" id="book">
+      <h2 style="margin-top:0;font-size:clamp(28px,3.6vw,40px)">{{HIST_TITLE}}</h2>
+      {{INTRO}}
+      {{HISTORY}}
+    </article>
+  </div>
+</section>
+
+<section class="view" id="v-timeline" hidden>
+  <h2>Timeline</h2>
+  <div class="prose wide" style="font-size:16px;max-width:80ch">{{TL_INTRO}}</div>
+  <div class="scroll"><table class="tl"><thead><tr><th>Date</th><th>Event</th><th>Source</th><th>Kind</th></tr></thead><tbody>{{TL_ROWS}}</tbody></table></div>
+</section>
+
+<section class="view" id="v-questions" hidden>
+  <h2>Open questions</h2>
+  <div class="prose">{{Q_OPEN}}{{Q_ANS}}</div>
+</section>
+
+</div></main>
+
+<script>
+(function () {
+  var views = ['outline', 'storyboard', 'history', 'timeline', 'questions'];
+  function show() {
+    var h = (location.hash || '#outline').slice(1), ch = null, m = /^history-(\d+)$/.exec(h);
+    if (m) { ch = m[1]; h = 'history'; }
+    if (views.indexOf(h) < 0) h = 'outline';
+    views.forEach(function (v) { document.getElementById('v-' + v).hidden = v !== h; });
+    document.querySelectorAll('.tabs a').forEach(function (a) { if (a.dataset.view === h) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    document.querySelectorAll('.toc a').forEach(function (a) { a.classList.toggle('on', a.dataset.ch === ch); });
+    var target = ch ? document.getElementById('ch-' + ch) : null;
+    if (target) target.scrollIntoView({ block: 'start' }); else if (!pendingAct) window.scrollTo(0, 0);
+    if (pendingAct && h === 'storyboard') { var el = document.getElementById('act-' + pendingAct); pendingAct = null; if (el) el.scrollIntoView({ block: 'start' }); }
+  }
+  var pendingAct = null;
+  document.querySelectorAll('.actbar a').forEach(function (a) { a.addEventListener('click', function () { pendingAct = a.dataset.act; if (location.hash === '#storyboard') show(); }); });
+  document.querySelectorAll('.filters button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.filters button').forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+      var f = b.dataset.f;
+      document.querySelectorAll('.scene').forEach(function (s) { s.hidden = !!f && s.dataset.foot !== f; });
+      document.querySelectorAll('.act').forEach(function (a) { a.hidden = !a.querySelector('.scene:not([hidden])'); });
+    });
+  });
+  window.addEventListener('hashchange', show);
+  if (location.hash) show();
+  window.addEventListener('load', function () { if (/^#history-\d+$/.test(location.hash)) show(); });
+})();
+</script>
