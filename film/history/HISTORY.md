@@ -150,8 +150,14 @@ direction, an AI that learns from every map.
 
 **On 7 October 2025 he moved twice.** **Record:** that day he sent Ruediger a link to an AI Studio app, "nur manueller
 editor. klappt auch ganz gut am telefon", only a manual editor, works quite well on the phone too (account §18). Its
-id differs from the one in `CTW-Layout-Generator`'s README, so it is a second app or a second share; which is not
-recorded (account §18; the clone's `README.md`). The same day he told the contest's map developer that he had moved the
+id differs from the one in `CTW-Layout-Generator`'s README (account §18; the clone's `README.md`). A second AI Studio
+project of his exists, exported by him on 28 November 2026: "CTW Smart Map Editor", a manual editor for a layout as a
+graph. Every node and edge placed is mirrored for the other team; the author places spawns, wool rooms and
+intersections, and "Auto-Classify Nodes" names the rest from the graph, a hub for three or more edges, a frontline for
+exactly one, a scaffold otherwise, an entry beside a wool room or a spawn. A file that would send the layout to
+`gemini-2.5-flash` for a designer's critique is written but connected to nothing
+(`sources/early-experiments/aistudio-ctw-smart-map-editor-2025/`). **Inference:** this is the manual editor of the
+7 October link; the export carries no date, and the ids changed when the apps were migrated (account §22–23). The same day he told the contest's map developer that he had moved the
 tool into his own repository, `ctw-layout-editor`, mostly written with Claude's VS Code extension (research/17).
 **Account:** that repository is probably not MinecraftLayoutEditor, "sicherlich wird das ein anderes sein" (account
 §18). **Record:** no repository and no string of that name is in the record (research/18 §2).

@@ -259,3 +259,7 @@ Answers to the questions of 28 November:
 
 - The AI Studio app's address now: https://aistudio.google.com/apps/646f11e8-105c-43af-96b8-41eb1e89ff92 (it opens only signed in). He sent its download as a zip, "hier solltest du alles haben" (`sources/early-experiments/aistudio-ctw-map-generator-2025/`).
 - He no longer has access to the old chat the app was made in, because he had to migrate the app.
+
+## Twenty-third instalment, 28 November
+
+- "Hier der Export des anderen Projekts auf aistudio": a second zip, the AI Studio project "CTW Smart Map Editor" (`sources/early-experiments/aistudio-ctw-smart-map-editor-2025/`).
