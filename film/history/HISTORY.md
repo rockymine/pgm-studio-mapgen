@@ -1,4 +1,4 @@
-# Twenty-one months of AI-made maps: February 2025 to November 2026
+# Twenty-seven months of AI-made maps: August 2024 to November 2026
 
 This is the history of how rockymine, with Ruediger_LP, a few friends on the Overcast Community server and a run of AI
 models, set out to make PvP maps for PGM by machine, of what the tools he built for it became, and of how the players
@@ -6,11 +6,12 @@ who were handed the maps received them. It is written for a reader who was not t
 
 **Every claim cites the file it rests on.** `(research/NN)` is a file under `research/`; `(sessions/NN)` a session
 write-up under `research/sessions/`; `(account §N)` the N-th instalment of the author's account of 27 and 28 November
-2026 (`author-account-2026-11-27.md`), where §1 is the opening summary, §2 the additions later the same day, §3 to §25
+2026 (`author-account-2026-11-27.md`), where §1 is the opening summary, §2 the additions later the same day, §3 to §26
 the numbered instalments, and "squared-paper section" the section of that name; later instalments and the corrections
 in the file supersede earlier ones. `(sessions list)` is the author's own description of each session in
 `sources/sessions-named-by-the-author.md`; `(sources/early-experiments/)` the pictures he sent with §18 and §20, his
-message of 11 February 2025, and the v0 chat read from his link. Two data sources recur: **the log** is the `#match-status` channel as read
+message of 11 February 2025, the v0 chat read from his link, and the long message of his earliest chats sent with §26
+(`2026-11-28-long-message-earliest-chats.txt`, read in research/20). Two data sources recur: **the log** is the `#match-status` channel as read
 into `sources/match-status/match-status-2026-06-01_2026-11-27.csv` (research/13); **the API** is the server's public
 match record, of which the 388 public-server matches the log never posted are in
 `sources/match-status/api-matches-not-in-match-status.csv` (research/16). Match start times below are the API's
@@ -38,7 +39,7 @@ and `pgm-map-studio` (research/01, research/18).
 
 ---
 
-## 1. February to September 2025: a spanning tree, a graph, chat tools, and a question in German
+## 1. August 2024 to September 2025: a canvas of four tags, a spanning tree, a graph, chat tools, and a question in German
 
 **Algorithmic map making predates the project by four years.** **Record:** five Annealing maps by rockymine,
 Ruediger_LP and DerStiv sit in CommunityMaps, dated January 2021 to February 2023 (research/08). **Account:** they came
@@ -47,9 +48,41 @@ hand, in 2022; the idea then slept until late 2025 (account §3). **Record:** in
 Code session: the outline of Annealing IV's largest island "the result of a random city set and optimal tour solution
 using the annealing algorithm" from the solver visualisations of his thesis (`sources/early-experiments/`, the 20 March
 picture). The record carries no word of the thesis in the maps themselves and spreads the series over three years. It also wakes
-the idea earlier than late 2025: in February of that year.
+the idea earlier than late 2025: in August 2024.
 
-**The idea is first written down on 11 February 2025, as a spanning tree.** **Record:** that day he sent samschaap
+**The history begins on 30 August 2024, with a Claude chat about capture the wool.** **Account:** "30. August 2024. Ja
+echt 2024." He opened the chat with a description of the mode as played on Overcast, beginning "Overcast offers a
+variety of Gamemodes for which Builders like myself create maps." and ending "In general, the layout is symmetric.",
+had Claude generate map concepts, gave it a picture of two maps to describe and then asked for an ASCII
+representation. In the same chat he asked: "Are you able to create me a web program where I can create layouts with?
+The simplest approach would be to create a canvas grid where the user can mark specific areas and assign them with
+different tags that are distinguished by color." The tags were four: Woolroom, Spawn, Buildable Void and Lane. His
+note: "Ein Klickbarer prototyp. Sicher einer der ersten!", a clickable prototype, surely one of the first (account §26;
+research/20 §2). **Record:** the prompts are in his compilation; the chat's three public artifacts are links that could
+not be opened for this history, and no picture of them is in the folder (research/20). **Inference:** the year is his,
+and nothing in the record contradicts it; Claude's chat artifacts existed from June 2024 (general knowledge, not a file
+here). The four tags come back five
+months later, when he told samschaap he had thought of documenting layouts in a spreadsheet "where I put different
+letters for void, lane, wool, and spawn" (`sources/early-experiments/`). The canvas is the first form of the drawing
+tool that MinecraftLayoutEditor, the plan editor and the studio became.
+
+**The first algorithms in code were ChatGPT's, written to his steps.** **Record:** a ChatGPT conversation he pasted
+into a Claude chat of 15 August 2025, "der zeigt das chatgpt die ersten Algorithmen geschrieben hat", which shows
+ChatGPT wrote the first algorithms (account §26), opens: "Help me create an algorithm. The algorithm should be used to
+create a custom layout for a minecraft pvp map with floating cubic islands." On a 15 × 15 grid ChatGPT placed random
+island points, joined them in a minimum spanning tree over Manhattan distances with networkx and drew it in
+matplotlib. Each next step was his: the tree as "one connected island" of narrow lanes, random lines cutting it into
+void gaps, the points renamed "Fix Point" and the edges "Lane", each point labelled with its distance from the tree's
+nearest end, and, when three trees came out as one tree three times, "a new idea": several trees from separate sets of
+points that never intersect, skipping an edge where they would. ChatGPT wrote every line of code, and twice its test
+did less than he asked, a bounding box for a crossing and a shared edge for an intersection. When it praised its
+output he wrote: "Do not judge your own output." and, before it, "I am the one who can judge whether this could serve
+as a good layout." (research/20 §3). **Account:** the algorithmic steps were his and a model wrote them, as he put it
+of the Gemini tool in September 2025: "I kind of came up with some algorithmic steps for creating the layouts and it
+simply made it" (research/17). **Inference:** the conversation carries no date. Its closing idea is what the v0 page
+of 11 February 2025 does, and both call the tree an "RST", so it most probably came before that day (research/20 §3, §7).
+
+**On 11 February 2025 he wrote the steps down as a plan, around a spanning tree.** **Record:** that day he sent samschaap
 "Potential Algorithm steps": generate nodes along a grid; "Create Spanning Tree. Heavily favor straight edges along
 grid cells over diagonal ones (all maps can be reduced to a mini layout that uses only straight edges and only right
 angles)"; add edges "to allow some cycles"; "Disect spanning graph in some places", because many maps have islands "to
@@ -58,7 +91,7 @@ function collapse can work with. Beside it stood a "Data survey": a minimal repr
 my ctw maps (and ruedigers)", with spanning tree, cut-offs and added cycle edges marked on each
 (`sources/early-experiments/2025-02-11-message-to-samschaap.md`; account §20).
 
-**The first prototype was a v0 page that built spanning trees.** **Record:** the same message links
+**The first hosted prototype of the algorithm was a v0 page that built spanning trees.** **Record:** the same message links
 `v0-occ-mapmaking-tools-b63noa.vercel.app`, which, by his description, asks for a grid size and a node count, connects
 the nodes in a minimum spanning tree or several, skips an edge that collides with an earlier graph's, and shades the
 cells "to make it more blocky and resemble an arbitrary occ map layout"; his summary of it on 28 November: "So the
@@ -79,31 +112,64 @@ of redstone torches and dust, "where the green carpet represents an additional e
 April 2025, in the skeleton graph of February 2026 and in the studio's generator (chapters 3, 5); the rule-based line
 stands nineteen months before his forum answer that "No actual map data is being used to train anything" (chapter 16).
 
+**On 17 February a Claude artifact coloured a spanning tree's cells.** **Record:** his prompt: "Please implement a set
+of functions to draw a custom graph in a grid of 10x10 cells." Five random cells in black, a "Manhattan" distance that
+allows "only one 90 degree turn within the path that connects two nodes", a minimum spanning tree of the shortest such
+paths, its cells in blue (account §26; research/20 §4). The artifact is a link that could not be opened. **Inference:**
+the file gives no year. Claude's artifacts did not exist in February 2024 (general knowledge, not a file here), and in February 2026 the work was in CTWAnalysis;
+in 2025 the prompt follows the v0 page by six days, with the page's default 10 × 10 grid, and makes a rule of the
+message's "straight edges along grid cells" (research/20 §4).
+
 **On 5 April 2025 the graph was drawn in matplotlib.** **Record:** a matplotlib figure titled
 "Multiple 1-Team PvP Layouts (Improved Graph Connections)" shows four layouts, each one team's ground: grey nodes in six
 to eight rows and three columns, labelled L, C and R by count, a cyan node on top, two red nodes off the sides, and a
 few edges drawn green (`sources/early-experiments/`). **Account:** "irgendein Experiment mit Graphen", some experiment
 with graphs (account §18); the tool is not known, it may have been ChatGPT, which he still used then, and he tried all the
 models of the time (account §21). **Record:** no commit, file or message of the four early repositories holds it
-(research/18 §4); the green edges recall the cycle edges of February. What the colours meant is not written on the figure. **Inference:** a matplotlib figure was made
-in Python; the rows and three columns of one team's half are the grid the later generators cut.
+(research/18 §4); the green edges recall the cycle edges of February. What the colours meant is not written on the
+figure. No code in his compilation draws it: none of the ten ChatGPT figures and none of the May script's titles
+matches, and every one of them draws axes, a grid and a legend, which this figure has not (research/20 §5).
+**Inference:** a matplotlib figure was made in Python; the rows and three columns of one team's half are the grid the
+later generators cut. ChatGPT had drawn his spanning trees in matplotlib with titles of the same kind ("Minecraft PvP
+Map - Non-Intersecting MSTs"), which makes it the likelier tool; the record does not name one.
 
-**On 24 May 2025 a Claude chat drew two teams and a void between them.** **Record:** a tablet screenshot, its status
+**On 24 May 2025 a Claude chat drew two teams and a void between them.** **Record:** that day he opened one Claude
+chat with eleven numbered requirements for "an application to randomly generate level designs for a game with two
+teams", from "R1 Levels are mirrored along one axis to ensure fairness for teams." to R11, paths that meet rather than
+run in parallel to the axis, and asked Claude to plan before building; in another he asked for "a python script with
+visualization capabilities for level design" that would "generate layouts based on nodes and edges". The script he
+kept (account §26; research/20 §6) places one team's objectives, a spawn between them, lane intersections and two
+void access points, joins them with right-angled lanes, mirrors the half and links the access points across a void
+strip. A tablet screenshot, its status
 bar reading Saturday 24 May, 01:39, shows a Claude artifact, "Interactive Level Design Visualizer", version 6 of 6: a
 "Level Design Generator" with two objectives per team and a "Medium (24x12)" map; Team A and Team B stand either side
 of a grey strip marked VOID; blue lanes run from each spawn through lane intersections to "void access points" at the
-strip's edge, and dashed red "void connections" cross it (`sources/early-experiments/`). **Account:** these were
-experiments with Claude in the chat; "da gab es noch kein Claude Code, soweit ich mich entsinne", there was no Claude
-Code yet as far as he remembers (account §18). **Record:** nothing of it is in a repository (research/18 §4). It is
-the earliest recorded use of Claude in the history, thirteen months before the studio; whether the experiment of 5 April
-was made with Claude is not recorded.
+strip's edge, and dashed red "void connections" cross it (`sources/early-experiments/`). Its six legend entries are
+the script's six node and edge types in the script's colours, and 24 × 12 is the script's default size; the screenshot
+is the artifact as an interactive page, version 6 of the one he calls "das claude artifact was bislang noch keinen link
+hatte", the Claude artifact that had no link until now (account §26; research/20 §6). His compilation gives the
+day without a year; 24 May fell on a Saturday in 2025, not in 2024 or 2026. **Account:** these were experiments with Claude in the chat; "da gab es noch kein Claude Code,
+soweit ich mich entsinne", there was no Claude Code yet as far as he remembers (account §18). **Record:** nothing of it
+is in a repository (research/18 §4). It is the earliest picture of Claude's work in the history, thirteen months
+before the studio, though not the earliest use of Claude, which his compilation dates to August 2024.
+
+**On 29 May 2025 Claude helped with a map's XML, and the map credited it.** **Account:** "Am 29. Mai erstmals probiert
+claude einzusetzen um Beim Schreiben einer xml zu helfen. Das ist ziemlich sicher meine 'Pillars' map.", on 29 May he
+first tried Claude to help write an XML, quite surely for his Pillars map (account §26). **Record:** Pillars is a blitz
+map in CommunityMaps by rockymine, `<created>` 28 May 2025, with Pablete1234 credited for XML; Ruediger committed
+"Pillars 1.0.0" at 21:24 (+02:00) on 29 May 2025, and at 22:48 the third commit of the evening added the contributor
+line "Claude Sonnet 4" with the contribution "intelligence", beside Ruediger_LP's "mental help". The line stayed until
+June 2026 (research/20 §10). **Inference:** his 29 May is 2025, and Pillars is a map that named a model among its
+credits fourteen months before Kuusepuu CTC (chapter 6), on the evening it was first committed.
 
 **On 16 August 2025 he went back to v0, and named the generator.** **Record:** the v0 chat "Layout generation app"
 holds seventeen messages of his from 21:31 to 23:11 UTC, a hundred minutes, to the model `v0-max`. The first carries
 one attachment and asks to "implement this layout generation as a web application with configurable parameters,
 visualization, and export", so the algorithm existed before the chat; what the attachment was is not in the page, and the author cannot say: he
 assumes he had described his idea of the algorithms and asked questions elsewhere first, and finding the prompt would
-take much searching (account §21). At
+take much searching (account §21). **Inference:** the day before, 15 August, he had pasted the old ChatGPT
+conversation into a Claude chat (account §26), which makes that chat a candidate for the "elsewhere"; the conversation
+as pasted cannot be the attachment, since the v0 chat's random 3×3 grid is not in it (research/20 §8). At
 21:54 he renamed the app "Capture the Wool Layout Generator". Most of the rest is a fight over symmetry ("I never asked
 for 'Independent Sides' Mode. This does not even make sense."), until "Great. It finally works." at 22:19; then a
 step-by-step debug display, an "upscaled" display that fills cells instead of drawing points, and a second way of
@@ -143,7 +209,7 @@ with some algorithmic steps for creating the layouts and it simply made it" (res
 Ruediger "vielleicht kommt man damit in richtig ki generierung", maybe this leads into real AI generation (research/15).
 By 1 October the repository held a seeded generator whose node types were `SPAWN`, `WOOL`, `HUB`, `FRONT_LINE` and
 `CENTER_HUB`, exporting only JSON; on 3 October a step-wise manual editor; and nothing after that day (research/01).
-**Inference:** the idea of generating layouts was his from February 2025; what Ruediger first put into words was the later
+**Inference:** the idea of generating layouts was his from August 2024, and the steps from early 2025; what Ruediger first put into words was the later
 direction, an AI that learns from every map.
 
 ## 2. October 2025 to January 2026: an editor of his own, blocks without hands, and a pause
@@ -170,6 +236,20 @@ each edge a line of blocks (research/01, research/18). On 10 October he told the
 on it with a friend and writing `.schematic` files without WorldEdit (research/17). **Account:** he sent Ruediger the
 first screenshots on 11 October, and a day later Ruediger was fascinated to hear that blocks no longer had to be placed
 by hand (account §18). Two committer identities, `michael` and `rockymine`, appear on the same days (research/01).
+
+**The schematic code began with a hex dump read to Claude.** **Account:** a very good friend from school and
+university helped him on MinecraftLayoutEditor, a game developer, "ein ziemliches coding Guru", who had tutored him
+for his master's thesis; he is not named. Together they opened a schematic file in HxD, a hex editor he had not known,
+found the format's public specification, and gave both to Claude: "Can you tell me what this hex file says?" After the
+explanation came "Based on this information can you write me a parser?", answered first in JavaScript and, when they
+asked, in C# (account §26). **Record:** the bytes he kept decode to a compound `Schematic` of width 3, length 3 and
+height 1, `Materials` "Alpha", WorldEdit's origin and offset, `Platform` "bukkit", nine blocks of id 7, bedrock, and
+empty lists of tile entities and entities (research/20 §9). The repository has no schematic reader at any time. What
+it has is the writer of 12 October, `d961f6a`, which writes the same root, the same three sizes, "Alpha" and the same
+two block arrays, with height 1; the first code that reads NBT is the world importer of 6 November, which uses a
+library (research/20 §9). **Inference:** the parser was how they learned the format, and its inverse is what was
+committed, so the chat most probably fell between the solution's opening on 10 October and 00:13 on 12 October; the
+file gives no date, and which commits under `michael` the friend wrote is not recorded.
 
 **The editor reads as his own code, and the record agrees as far as commit text can.** **Account:** "weiterhin der
 größtenteils eigene Code", still mostly his own code (account §18). **Record:** every commit before July 2026 is by a
@@ -253,7 +333,7 @@ Agrostid, created in 2015, lived in a single region file at x −1024 to −513 
 block by block, and that afternoon Sam committed "Agrostid: remove stowaway" (16:46 +01:00), deleting the old file;
 "MIStP: remove stowaway" followed at 21:17, two region files beyond the map, and on 16 March "Wintertime: 1.0.4" with
 "Remove stowaway" among its changes. These three are every commit in either public repository that uses the word, and
-Golden Drought VI, whose commits of 2023 are Rachel's and whose `map.xml` credits Lich_of_Flowers and Penuuy, has no
+Golden Drought VI, whose commits of 2023 are Reshif's under another committer name (one person, by the author on 28 November), and whose `map.xml` credits Lich_of_Flowers and Penuuy, has no
 commit in 2026; Sam's joke is in no record (research/19 §1–§2). **Inference:** the leftovers
 surfaced when every map was first drawn block by block; the record joins the two by timing only. Mame is also one of
 the long matches of the logging: 1 h 58 min in the week of 26 January (`sources/early-experiments/2026-ctw-match-activity.md`).
@@ -355,7 +435,7 @@ JSON files for a test; the plan model came at 22:47 UTC that evening; the first 
 some seeds for the generation of the maps. I drew something on paper." (research/16).
 
 **The graph was not dropped in 23 minutes; a design document was replaced.** It was the graph's fourth arrival: the
-spanning tree of February 2025, the matplotlib layouts of April 2025 and the skeleton graph of February 2026 came
+spanning trees of early 2025 (ChatGPT's, to his prompts, and his own plan of February), the matplotlib layouts of April 2025 and the skeleton graph of February 2026 came
 before it (chapters 1, 3).
 **Record:** at 14:31 UTC a 184-line design
 proposed a plan graph of typed lane and gap edges; at 14:54 it was rewritten as areal pieces joined by interfaces,
@@ -981,7 +1061,7 @@ and 14 blocks tall; the colours of its wool carry meaning, yellow for connecting
 passing checks on variants he saw as plainly wrong; "a geometric rule is not a design" (research/04). **Account:** it has a
 dead area that makes sense, likely the back around the wool lookout and hills, so "dead" is subjective (account §1, §3);
 the dead-ground rule would refuse it at more than 12 percent (research/05). It will be finished by him in snow, stone, ice
-or grass (account §8). **Inference:** the twenty-one months went from a spanning tree to a grammar and from words to coordinates, and the
+or grass (account §8). **Inference:** the twenty-seven months went from a spanning tree to a grammar and from words to coordinates, and the
 newest map returns to the first category, with the models put to reading it (research/12); his own message calls it "not AI.
 Just having claude follow along" (research/17).
 
@@ -1001,21 +1081,26 @@ Just having claude follow along" (research/17).
 | "143 contaminated maps" | the last line of the reply in his screenshot of 20 March; he does not know what it refers to, perhaps the server's tracking logs (account §21) | "contaminated" in no commit; `a624eb5` of 19 March counts "143 of 177 maps" whose terrain heights decoration above the build ceiling corrupted (research/19 §2) | the record answers it, and not as stowaways |
 | The first world imported, 6 November 2025 | Annealing (account §18), corrected to Agrostid (account §25) | no commit names it; the picture's 184 × 267 fits Agrostid's extent and no Annealing map's (research/19 §1) | the correction stands; inference supports it |
 | The stowaways | "very many" maps; Golden Drought VI updated by Sam (account §25) | three commits by Sam of 14–16 March 2026 use the word: Agrostid, Mame, Wintertime; no Golden Drought VI commit in 2026 (research/19 §2) | three in the record; the rest unrecorded |
+| The beginning | 30 August 2024, "Ja echt 2024." (account §26) | no picture, commit or message of 2024 concerns generation; the chat's three artifacts could not be opened (research/20 §11) | his date stands; the record neither confirms nor contradicts it |
 | Those present at the viewing | "three" (account §13) | five by his later answer (account §18), and the staff chat holds four names | five stands |
 
 **Facts the sources leave open.**
 
-- **The prehistory:** whether the v0 generator's code reached `CTW-Layout-Generator`; what the April 2025 experiment was
-  written with beyond matplotlib (the author: perhaps ChatGPT), and what its node colours meant; what the attachment of
-  the first v0 message was, which the author cannot say and which would need much searching (account §21).
-- **The stowaways:** which other maps had them, whether Sam's update of Golden Drought VI exists (perhaps in
-  PrivateMaps), and whether the map's committer "Rachel" and its credited accounts are the Reshif the author names
-  (research/19 §2).
+- **The prehistory:** what the six public artifacts and three shared chats of 2024–2025 showed, which could not be
+  opened from here and have no pictures yet (research/20); the date of the ChatGPT conversation, which the record bounds
+  only by 15 August 2025 and its content places before 11 February 2025 (inference); the years of "17 Februar" and "29.
+  Mai", which are inferred (2025, the second confirmed by Pillars' commits); what he asked Claude on 15 August 2025;
+  whether the v0 generator's code reached `CTW-Layout-Generator`; what the April 2025 experiment was written with
+  beyond matplotlib (no code in the compilation draws it; ChatGPT likelier, not shown), and what its node colours meant;
+  what the attachment of the first v0 message was, which the author cannot say (account §21).
+- **The stowaways:** which other maps had them, and whether Sam's update of Golden Drought VI exists (perhaps in
+  PrivateMaps) (research/19 §2).
 - **July:** the zone of the sketches' 23:43 stamp; the page or artifact the catalogue pictures of 11 July were taken
   from (research/19 §5).
 - **The early repositories:** whether a repository `ctw-layout-editor` exists, which the author thinks differs from
-  `MinecraftLayoutEditor` and the record does not show (account §18; research/18); who the friend of 10 October 2025
-  was; who `michael` is.
+  `MinecraftLayoutEditor` and the record does not show (account §18; research/18); who `michael` is, and which commits
+  the friend of 10 October 2025 wrote, a school and university friend and game developer whom the author describes and
+  does not name (account §26); the date of the parser chat, most probably 10–12 October 2025 (research/20 §9).
 - **The logging:** whether the author's local data holds more than the 2,452 matches the repository processed
   (research/18; account §21); the plugin's repository was not read.
 - **2 July:** the file list of `711e539`, which the author says carried the Base maps (account §18); who said "Better than

@@ -1,6 +1,7 @@
 # Open questions, by person
 
-What is still to be asked, after the author's account of 27 and 28 November 2026 (twenty-five instalments), the recording
+What is still to be asked, after the author's account of 27 and 28 November 2026 (twenty-six instalments, the last his
+long message of the earliest chats, research/20), the recording
 of 2 July and the match API (research/16), the forum thread and five conversations (research/17), and the early
 repositories (research/18). The thread's posters and four correspondents are named by role, by the author's decision
 of 28 November (README, *Names*). Within each
@@ -17,48 +18,62 @@ it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessions/NN`. Answered ques
    planned, and is Townside's grid the only one (`sources/early-experiments/`)? Is it the same survey that became the
    177-map configuration "dokumentiert für die ki" (research/15)?
 4. **The April 2025 graph.** What was the experiment written with (matplotlib, so Python: a script of your own or a
-   chat model's?), and what did the cyan, red and green mean (`sources/early-experiments/`)?
-5. **The 24 May 2025 chat.** What did you ask Claude for, and did anything of the "Level Design Generator" reach the
-   v0 chat or the Gemini tool?
-6. **The opening briefs not yet read.** The starts of sessions 2, 4, 5, 7, 10 and 12 could not be paged to, nor the
-   briefs of the first fifteen, Heftfold and Whinberry Ring (s/02, 04, 05, 07, 10, 12; r/12). Can you paste your first
-   message of each?
-7. **The stowaways beyond three.** The record has Sam's word in three commits only, Agrostid, Mame and Wintertime,
-   14–16 March 2026 (r/19). Which other maps did the renders show, and where are their pictures? Did the import of 6
-   November 2025 show Agrostid's second island, or did you leave its old region file out (the picture says five files
-   of six; r/19 §1)?
-8. **When the "CTW Smart Map Editor" was made.** Its export carries no date; it was shared on 7 October 2025, four days
-   after the generator's last commit (account §24). Before or after the generator's own manual editor of 3 October?
-9. **The hand-built fire-and-ice map.** With which in-game loft tool, and why not in the studio? Is the room at y 50 the
-   wool room, and how many wools and cores does each team get (r/04)?
-10. **The first tools.** Who was the friend you worked with on 10 October 2025, and is `michael` you (r/01, r/17)?
-11. **The two evenings set by hand.** Which two test evenings do you mean (account §18)?
-12. **The moment freeform started.** At 22:21 UTC on 7 October you dictated "what if like an agent didn't need to rely on
+   chat model's?), and what did the cyan, red and green mean (`sources/early-experiments/`)? No code in the long message
+   draws it; was it a later turn of the ChatGPT conversation, or another chat (r/20 §5)?
+5. **The 24 May 2025 chats.** Did anything of the R1–R11 requirements or the "Level Design Generator" reach the v0 chat
+   or the Gemini tool (r/20 §6)?
+6. **The artifacts.** Screenshots or exports of the six public artifacts and the three shared chats in the long message,
+   above all the canvas of 30 August 2024 with Woolroom, Spawn, Buildable Void and Lane; none can be opened from here
+   (r/20 §1).
+7. **The ChatGPT conversation's date.** When was it held? Its content places it before 11 February 2025; can you see
+   its date in ChatGPT, and does the chat history keep the ten figures it drew (r/20 §3)?
+8. **15 August 2025.** What did you ask Claude in the chat where you pasted the ChatGPT conversation, and did it produce
+   the attachment of the v0 chat the next day, with its random 3×3 grid (r/20 §8)?
+9. **The years.** Can you confirm that "17 Februar" is 2025 (r/20 §4), and is there anything of August 2024 to February
+   2025 between the canvas and the ChatGPT conversation?
+10. **Pillars.** What did Claude write in Pillars' XML on 29 May 2025, who added "Claude Sonnet 4" for "intelligence",
+    and why was it removed in 1.2.0 (r/20 §10)?
+11. **The opening briefs not yet read.** The starts of sessions 2, 4, 5, 7, 10 and 12 could not be paged to, nor the
+    briefs of the first fifteen, Heftfold and Whinberry Ring (s/02, 04, 05, 07, 10, 12; r/12). Can you paste your first
+    message of each?
+12. **The stowaways beyond three.** The record has Sam's word in three commits only, Agrostid, Mame and Wintertime,
+    14–16 March 2026 (r/19). Which other maps did the renders show, and where are their pictures? Did the import of 6
+    November 2025 show Agrostid's second island, or did you leave its old region file out (the picture says five files
+    of six; r/19 §1)?
+13. **When the "CTW Smart Map Editor" was made.** Its export carries no date; it was shared on 7 October 2025, four days
+    after the generator's last commit (account §24). Before or after the generator's own manual editor of 3 October?
+14. **The hand-built fire-and-ice map.** With which in-game loft tool, and why not in the studio? Is the room at y 50 the
+    wool room, and how many wools and cores does each team get (r/04)?
+15. **The first tools.** Is `michael` you, and which commits of October 2025, if any, did your friend write (r/01, r/17;
+    account §26)? When was the parser chat, and did its JavaScript or C# parser run anywhere (r/20 §9)?
+16. **The two evenings set by hand.** Which two test evenings do you mean (account §18)?
+17. **The moment freeform started.** At 22:21 UTC on 7 October you dictated "what if like an agent didn't need to rely on
     the current way" (s/00). Is that the remark you remember as "I don't like it, think", or was there an earlier one?
-13. **The grammar that did not ship.** The Brittlebush look can be expressed in full by the grammar, yet it is the one
+18. **The grammar that did not ship.** The Brittlebush look can be expressed in full by the grammar, yet it is the one
     phase of the port with no shipped line (r/02, r/05). Was it parked on purpose?
-14. **Aerie.** When did you see its XML fail, and was it the 25 August version (r/14)? No match of it is in either source.
-15. **Wandering U's one match.** The API has it at 20:17 UTC on 6 August, 36 players, 6 minutes 28 seconds, Blue (r/16).
+19. **Aerie.** When did you see its XML fail, and was it the 25 August version (r/14)? No match of it is in either source.
+20. **Wandering U's one match.** The API has it at 20:17 UTC on 6 August, 36 players, 6 minutes 28 seconds, Blue (r/16).
     Who fell, from where, and did anyone take a wool?
-16. **Kilnholt Cut, Hollowmarch and Mirkholt in play.** Kilnholt Cut has one match, the first of 13 September; Hollowmarch
+21. **Kilnholt Cut, Hollowmarch and Mirkholt in play.** Kilnholt Cut has one match, the first of 13 September; Hollowmarch
     was played on 24 and 31 August and 4 September, before its flattening; Mirkholt once, on 20 September (r/16). Are
     those the plays in which the tunnel was found, the frontline fell into the void, and the wool room was burnt?
-17. **No Blocks Placed's oak.** The 50-log oak at x −27 to −17, z 41 to 52 is about 17 blocks tall (r/08). Is it the
+22. **No Blocks Placed's oak.** The 50-log oak at x −27 to −17, z 41 to 52 is about 17 blocks tall (r/08). Is it the
     generated tree?
-18. **The forum thread.** Do you know who opened it, and what a player's "AI maps being banned" of 11 October referred
+23. **The forum thread.** Do you know who opened it, and what a player's "AI maps being banned" of 11 October referred
     to (r/17)?
-19. **"10 human hours".** In the thread you wrote that "10 human hours" went into the maps (r/17). Was that Millrace's
+24. **"10 human hours".** In the thread you wrote that "10 human hours" went into the maps (r/17). Was that Millrace's
     ten person-hours, or all the evenings' maps?
-20. **"Map walls" and the first rule per height.** Is "map walls" the walls, rims and plateaus model of 1 August, and is
+25. **"Map walls" and the first rule per height.** Is "map walls" the walls, rims and plateaus model of 1 August, and is
     the spec key `themeByHeight` (14 August) the per-height prototype you remember (r/05)?
-21. **Muse Spark.** Is there anything in a map file, a chat or a credit that names the model behind Copper Wash and
+26. **Muse Spark.** Is there anything in a map file, a chat or a credit that names the model behind Copper Wash and
     Reedmere (r/15)?
-22. **Sonnet against Opus.** What did you see in Sonnet's maps that numbers do not, and did Sonnet ever get the
+27. **Sonnet against Opus.** What did you see in Sonnet's maps that numbers do not, and did Sonnet ever get the
     verification steps Opus had late in the year (r/03)?
-23. **The freeze.** Why freeze the layout generator on 13 November, and was it the October pause continuing (r/02)?
-24. **The Annealing maps.** Which was the first made from a travelling-salesman route, and when was the thesis (r/08)?
-25. **Countryside on 9 October.** The repository has 14 October in the uploader's zone (r/11). Where was the upload of
+28. **The freeze.** Why freeze the layout generator on 13 November, and was it the October pause continuing (r/02)?
+29. **The Annealing maps.** Which was the first made from a travelling-salesman route, and when was the thesis (r/08)?
+30. **Countryside on 9 October.** The repository has 14 October in the uploader's zone (r/11). Where was the upload of
     the 9th?
+    
 
 ## Ruediger (Ruediger_LP)
 
@@ -76,6 +91,8 @@ it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessions/NN`. Answered ques
 7. **The three best.** On 10 October you proposed finishing the three best AI maps (r/15). Did it happen?
 8. **The evening of 11 July.** You answered the box idea with "lass am abend reden". What was said that evening, and did
    you draw layouts in pgm-studio-mobile and send JSON back (r/19; `sources/july-2026-shapes/`)?
+9. **Pillars, 29 May 2025.** You committed it with a "Claude Sonnet 4" credit for "intelligence" at 22:48 (r/20 §10).
+   Whose idea was the credit?
 
 ## samschaap
 
@@ -159,7 +176,7 @@ it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessions/NN`. Answered ques
 | What was the 5 April 2025 graph experiment made with? | Not known; possibly ChatGPT, which he still used; he tried all the models of the time | account §21 |
 | How many matches were logged? | The chart's daily table sums to 2,450 (18 January to 8 March 2026), the repository processed 2,452; his memory moved from about 4,000 to "maybe 2700" | account §18, §21; sources/early-experiments/ |
 | Must the branch history be cleaned of names? | No; the present level (the role, or "staff") is enough | account §21 |
-| Was Claude used before December 2025? | Yes: a Claude chat artifact on 24 May 2025; the October 2025 rewrite mostly with Claude's VS Code extension, by his message to the contest's map developer | sources/early-experiments/; r/17 |
+| Was Claude used before December 2025? | Yes: from 30 August 2024 in chat artifacts, on 17 February and 24 May 2025, for Pillars' XML on 29 May 2025 and for the schematic parser in October 2025; the October 2025 rewrite mostly with Claude's VS Code extension, by his message to the contest's map developer | account §26; r/20; sources/early-experiments/; r/17 |
 | Who drew No Blocks Placed? | He and Ruediger, together on Discord, as with Bridgid II's layout | r/17 |
 | What was the brief of Delverdale and Whitstone Weald? | ~32 a team, CTW and DTM, terrain, trees, houses, an underground layer, two end-stone monuments, two wools | r/17 |
 | What was the brief of the 24 August boards? | "Most of them were just 'Build a map' without any prompting whatsoever" | r/17 |
@@ -191,7 +208,12 @@ it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessions/NN`. Answered ques
 | Is the cancelled contest the contest's map developer's? | Yes | account §18 |
 | Did `711e539` carry the Base maps? | Yes; its message is Ruediger's joke: a stalemating map is put into the dev phase so nobody can request it | account §18 |
 | Are `ctw-layout-editor` and MinecraftLayoutEditor one repository? | Probably not, by the author; no repository of that name in the record | account §18; r/18 |
-| When did the project begin? | 11 February 2025, the spanning-tree message to samschaap and a v0 prototype; a graph in April, a Claude artifact in May, v0 again in August | account §18, §20; sources/early-experiments/ |
+| When did the project begin? | 30 August 2024, a Claude chat with a canvas of four tags; then ChatGPT's spanning trees (undated), the message to samschaap and a v0 prototype on 11 February 2025, a graph in April, Claude in May, v0 again in August | account §26; r/20; account §18, §20 |
+| Who wrote the first algorithms? | ChatGPT, to his steps, in a conversation he pasted into Claude on 15 August 2025 | account §26; r/20 §3 |
+| What did you ask Claude on 24 May 2025? | Two chats: requirements R1–R11 for a two-team level generator, and a Python script with visualisation, made into the interactive artifact of the screenshot | account §26; r/20 §6 |
+| Who was the friend of October 2025? | A very good friend from school and university, a game developer who had tutored him for his thesis; not named | account §26 |
+| When was a model first used for a map XML? | 29 May 2025, Claude on Pillars, credited "Claude Sonnet 4" in the map | account §26; r/20 §10 |
+| Are Reshif and the committer name of Golden Drought VI one person? | Yes; only the handle is used | the author, 28 November |
 | Was the plan to train a model on maps? | No: in February 2025, "an educated, rule-based approach is more likely for me to achieve than actual training" | sources/early-experiments/ |
 | May the thread and the conversations be named? | No: the thread and four conversations are anonymised | account §18 |
 | What were the "143 contaminated maps"? | The 143 of 177 maps whose terrain heights decoration above the build ceiling corrupted, by CTWAnalysis's `a624eb5` of 19 March 2026; not the stowaways | r/19 §2 |

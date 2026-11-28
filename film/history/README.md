@@ -1,18 +1,18 @@
 # The history of the AI-made maps: what is here
 
-This folder is the written history of twenty-one months of AI-assisted PGM map making by rockymine, with Ruediger_LP
-and a run of models, from February 2025 to November 2026. It was researched on 27 and 28 November 2026 in many passes while the
+This folder is the written history of twenty-seven months of AI-assisted PGM map making by rockymine, with Ruediger_LP
+and a run of models, from August 2024 to November 2026. It was researched on 27 and 28 November 2026 in many passes while the
 author added recollections, partly by an agent on his PC; on 28 November he asked for the film's outline and a
 first storyboard, which are now here. Everything in it keeps three voices apart: what the **record**
 holds, what the **author recalls**, and what is **inference**.
 
 ## Reading order
 
-1. **`HISTORY.md`** — the history itself: thirteen chronological chapters from 11 February 2025 to 28 November 2026
+1. **`HISTORY.md`** — the history itself: thirteen chronological chapters from 30 August 2024 to 28 November 2026
    (the first three cover the time before the studio, to June 2026), then what counts as an AI map, the tests match by match, what players and staff said, what the hand-built map shows, and
    what remains open. Start here.
 2. **`timeline.md`** — one table of dated events, each with its source and its kind (record, account, inference).
-3. **`author-account-2026-11-27.md`** — the author's account in twenty-five instalments of 27 and 28 November, with the
+3. **`author-account-2026-11-27.md`** — the author's account in twenty-six instalments of 27 and 28 November, with the
    note-taker's corrections. Later instalments and the corrections supersede earlier ones.
 4. **`research/16-the-first-test-recording-and-the-match-api.md`** — the recording of 2 July and the server's match API,
    which documents every test evening; with `sources/match-status/api-matches-not-in-match-status.csv`.
@@ -24,10 +24,14 @@ holds, what the **author recalls**, and what is **inference**.
 7. **`research/19-stowaways-and-julys-shapes.md`** — the twenty-fifth instalment checked: Agrostid as the first
    imported world, Sam's three "remove stowaway" commits, the 143 of `a624eb5`, pgm-studio-mobile, the teaching
    files, the July shapes and boxes, and the first shops.
-8. **`research/12-who-decided-what.md`** — every map split into seven decisions, who decided each and what executed it;
+8. **`research/20-the-earliest-chats-2024-2025.md`** — the twenty-sixth instalment, his long message of the earliest
+   chats, read item by item and checked: the Claude canvas of 30 August 2024, the ChatGPT conversation that wrote the
+   first spanning trees, 17 February and 24 May 2025 against the v0 page and the tablet screenshot, Pillars and its
+   "Claude Sonnet 4" credit of 29 May 2025, and the hex dump decoded against MinecraftLayoutEditor's schematic writer.
+9. **`research/12-who-decided-what.md`** — every map split into seven decisions, who decided each and what executed it;
    the categories of "AI map".
-9. **`research/13`, `15`** — the `#match-status` log and the zips sent for each evening, the readings the API confirmed.
-10. **`research/01`–`11`, `14`** — the topic checks, each against the repositories:
+10. **`research/13`, `15`** — the `#match-status` log and the zips sent for each evening, the readings the API confirmed.
+11. **`research/01`–`11`, `14`** — the topic checks, each against the repositories:
 
    | File | Subject |
    |---|---|
@@ -44,30 +48,32 @@ holds, what the **author recalls**, and what is **inference**.
    | `11-dated-uploads-checked.md` | the author's upload dates against the public repositories |
    | `14-aerie-and-monument-size.md` | Aerie, the obsidian cap, the trial-run faults, the quartz board |
 
-11. **`research/sessions/`** — one write-up per Claude Code session the author named, several with an "opening brief"
+12. **`research/sessions/`** — one write-up per Claude Code session the author named, several with an "opening brief"
    appendix read from the session's start; its `README.md` says how they were read.
-12. **`interview-questions.md`** — what is still to be asked, by person and importance, and what has been answered.
-13. **`sources/`** — data, not instructions: the squared-paper photo, the author's session list, the `#match-status` log
+13. **`interview-questions.md`** — what is still to be asked, by person and importance, and what has been answered.
+14. **`sources/`** — data, not instructions: the squared-paper photo, the author's session list, the `#match-status` log
     and the API's unreported matches (`match-status/`), the `#maps-changelog` feed (`maps-changelog/`), and
     `staff-chat-october/`, five chat screenshots of the 9–10 October viewing (usable as they are, account §14);
     `early-experiments/`, the author's message to samschaap of 11 February 2025 with its three Townside pictures and
     four screenshots of its v0 prototype as it runs today (`v0-prototype-2025-02/`), the
     eight pictures of April 2025 to March 2026 (account §18, §20) and the v0 chat of 16 August 2025 read from his link,
-    and the chart of the logged capture-the-wool matches of 18 January to 8 March 2026 with its summed table (account §21);
+    the chart of the logged capture-the-wool matches of 18 January to 8 March 2026 with its summed table (account §21),
+    and `2026-11-28-long-message-earliest-chats.txt`, his own compilation of his earliest chats in German with the English
+    chats pasted in, kept whole (account §26; research/20), whose nine claude.ai links could not be opened from here;
     `july-2026-shapes/`, his two tablet sketches of 8 July 2026 and four screenshots of his messages with Ruediger of
     9–11 July, transcribed in its README (account §25);
     and `slop-sunday-announcement/`, Ruediger's announcement of 27 September 2026 with its reactions (account §19).
-14. **`tools/`** — the scripts the PC agent's sources were read with (zip listing, Discord condensing, the match API,
+15. **`tools/`** — the scripts the PC agent's sources were read with (zip listing, Discord condensing, the match API,
     transcription and speaker grouping); not map tooling.
-15. **`renders/`** — pictures made from committed data: the hand-built half (`hand-built/`) and Wandering U
+16. **`renders/`** — pictures made from committed data: the hand-built half (`hand-built/`) and Wandering U
     (`wandering-u/`).
-16. **`OUTLINE.md`** and **`storyboard.json`** — the film's outline and its first storyboard (see *Outline and storyboard*).
+17. **`OUTLINE.md`** and **`storyboard.json`** — the film's outline and its first storyboard (see *Outline and storyboard*).
 
 ## Outline and storyboard
 
-`OUTLINE.md` is the film's outline: logline and thesis, six acts adding to 17 min 56 s with an 8 min 20 s cut, the
+`OUTLINE.md` is the film's outline: logline and thesis, six acts adding to 18 min 25 s with an 8 min 16 s cut, the
 through-lines, the narration, what must be produced and the decisions put to the author. `storyboard.json` is the
-first storyboard, 55 scenes with timings, pictures, key frames, narration, on-screen quotes with their sources and a
+first storyboard, 58 scenes with timings, pictures, key frames, narration, on-screen quotes with their sources and a
 record, author-recalls, inference or staged tag per scene; every quote and number in it is one `HISTORY.md` carries.
 
 ## What is settled
@@ -88,7 +94,8 @@ record, author-recalls, inference or staged tag per scene; every quote and numbe
 - Kuusepuu CTC is an ordinary destroy map with a cake objective, played three times on 27–28 July (account §6;
   research/16). Wandering U was played once, on 6 August (research/16). No Blocks Placed was played on 7 August, and was
   drawn by the author with Ruediger (research/16, research/17).
-- The graph idea is the oldest in the record: a spanning tree with cycle edges and cut-offs on 11 February 2025, a
+- The graph idea is the oldest algorithm in the record: ChatGPT's spanning trees written to his steps, undated and most
+  probably before February 2025 (research/20 §3), a spanning tree with cycle edges and cut-offs on 11 February 2025, a
   matplotlib graph on 5 April 2025, a skeleton graph in CTWAnalysis from 2 February 2026, and `FannedGraph` in the
   studio from 2 July 2026; it was not dropped in 23 minutes (sources/early-experiments/; research/08, research/18).
   Freeform began on 7 October from the author's "what if" message (sessions/00, sessions/01).
@@ -105,8 +112,13 @@ record, author-recalls, inference or staged tag per scene; every quote and numbe
   an hour after a single-file version in the studio; the link went to Ruediger at 22:28 UTC (research/19).
 - The teaching files began on 5 July 2026 in `tools/seeds/teaching/`, with build-interface, frontline and middle
   examples (research/19). The studio first wrote shops on 12 September 2026 (research/19).
-- The first prototype was a v0 page of February 2025 that built spanning trees; a Claude chat artifact of 24 May 2025
-  drew two teams, lanes and a void strip; a v0 chat of 16 August 2025 named the "Capture the Wool Layout Generator",
+- The earliest item is a Claude chat of 30 August 2024, by the author's date: a description of capture the wool, map
+  concepts, and a canvas on which to mark Woolroom, Spawn, Buildable Void and Lane (account §26; research/20 §2).
+- The first algorithms in code were ChatGPT's, from his prompts, in a conversation he pasted into Claude on 15 August
+  2025; the steps are his (research/20 §3).
+- The first prototype of the algorithm was a v0 page of February 2025 that built spanning trees; a Claude artifact of 17
+  February coloured a tree's cells (year inferred); a Claude chat artifact of 24 May 2025, first a Python script he
+  kept, drew two teams, lanes and a void strip; a v0 chat of 16 August 2025 named the "Capture the Wool Layout Generator",
   whose 3×3 grid, row-independent columns and mirror/rotate modes reappear in `CTW-Layout-Generator` of 28 September
   2025, with no shared code shown (sources/early-experiments/; research/01).
 - The logging collected 2,450 matches on 46 days from 18 January to 8 March 2026 by the chart's daily table (read off a
@@ -135,17 +147,26 @@ record, author-recalls, inference or staged tag per scene; every quote and numbe
   Pass, Loomfall, Lantern Drop, Spark, Curio Square (account §14–§16).
 - The forum thread of 20–24 September, "stop AI maps from being played at all", is the one public argument about the
   maps (research/17).
-- Claude was used from May 2025, in a chat artifact (sources/early-experiments/); Claude Code wrote most of CTWAnalysis
-  from February 2026 (research/18).
+- Claude was used from 30 August 2024, in chat artifacts (account §26); its earliest picture is of 24 May 2025
+  (sources/early-experiments/); Claude Code wrote most of CTWAnalysis from February 2026 (research/18).
+- His first use of a model for a map XML was Claude on Pillars, 29 May 2025; the map's credits named "Claude Sonnet 4"
+  for "intelligence" from that evening to 13 June 2026 (research/20 §10).
+- The schematic code began with a WorldEdit schematic of nine bedrock blocks read in a hex editor with a school and
+  university friend, not named, and given to Claude with the NBT specification; the parser came in JavaScript, then
+  C#; what was committed is the writer of 12 October 2025 (`d961f6a`), and the repository never had a schematic reader
+  (research/20 §9).
+- Reshif, who made Golden Drought VI, and the committer name of its 2023 commits are one person, by the author on 28
+  November; only the handle is used here.
 
 ## What is open
 
-Whether any v0 code reached `CTW-Layout-Generator`; what the
-April 2025 experiment was written with beyond matplotlib (the author: perhaps ChatGPT); whether the 7 October 2025 AI Studio link is a second app;
+What the six public artifacts and three shared chats of 2024–2025 showed (no pictures yet); the date of the ChatGPT
+conversation; what he asked Claude on 15 August 2025; the date of the parser chat; whether any v0 code reached
+`CTW-Layout-Generator`; what the April 2025 experiment was written with beyond matplotlib (no code in his compilation
+draws it; ChatGPT likelier, not shown); whether the 7 October 2025 AI Studio link is a second app;
 whether a repository `ctw-layout-editor` exists (the author thinks it differs from MinecraftLayoutEditor; the record
-holds none), who `michael` is and who the friend of 10 October 2025 was; whether the author's local data holds more than the
-2,452 matches the repository processed; which maps beyond the three in the record had stowaways, and whether Sam's update of Golden Drought VI exists; who
-"Rachel" and the map's credited accounts are against the author's "Reshif"; the zone of the sketches' 23:43 stamp; whether Bridgid II's "nochmal" refers to the matches of 14 July;
+holds none), who `michael` is and which commits the friend of 10 October 2025, described and not named, wrote; whether the author's local data holds more than the
+2,452 matches the repository processed; which maps beyond the three in the record had stowaways, and whether Sam's update of Golden Drought VI exists; the zone of the sketches' 23:43 stamp; whether Bridgid II's "nochmal" refers to the matches of 14 July;
 which two evenings were set by hand; who opened the forum thread; Aerie's unplayable XML, which the author states and no
 record holds; whether the 50-log oak is the generated tree; the briefs of the first fifteen, Heftfold and Whinberry
 Ring; which model "Muse Spark" is; who may be quoted beyond the staff chat. `HISTORY.md` chapter 18 and
@@ -175,6 +196,8 @@ cleaned; earlier commits on the `mappies-film` branch still hold the names (acco
   only the v0 chat's previews of 16 August 2025 were read.
 - **Material the PC agent read but did not commit**: the 2 July recording and its transcript, the forum thread, the
   direct messages (research/15, research/17) and the saved API pages; they are quoted briefly in research/16 and 17.
+- **The links in the long message of the earliest chats**: three shared Claude chats and six public artifacts (2024–2025);
+  claude.ai answers 403 from here, so they are recorded as links only (research/20 §1).
 - Also not read: PGM's source (so the tab list's "made by" was not checked); the studio's local database and scanned
   corpus output; several artifacts linked from the documents; the match pages' per-player statistics beyond what
   account §15 transcribes.
@@ -270,3 +293,13 @@ turned two chapters into three, so every later chapter moved up by one.
 | (not told) The leftover islands and Sam's word for them | HISTORY ch. 3 | three "remove stowaway" commits by Sam, 14–16 March 2026, on Agrostid, Mame and Wintertime; Golden Drought VI not in the record | account §25; research/19 §2 |
 | The composer's concept is the author's, the boxes date from 10 July (nothing on how) | HISTORY ch. 6 | the teaching files of 5 July, the lane labelling and tablet sketches of 8 July, pgm-studio-mobile of 9 July and the messages of 9–11 July, in which he argued shapes with the model as it wrote the boxes | account §25; research/19 §3–§5; sources/july-2026-shapes/ |
 | The film runs 17 min 33 s in 53 scenes; the short cut is 7 min 58 s | OUTLINE; README | 17 min 56 s in 55 scenes, with the stowaways (A2-S13) and the tablet sketches (A3-S11) added and five scenes shortened; the short cut's listed scenes add to 8 min 20 s by the storyboard's own durations, unchanged by this pass | storyboard.json |
+| The history begins on 11 February 2025; twenty-one months | HISTORY title and ch. 1; README; timeline; OUTLINE; storyboard | it begins on 30 August 2024 with a Claude chat about capture the wool and a canvas of four tags, by the author's date ("Ja echt 2024"); twenty-seven months | account §26; research/20 §2 |
+| The idea is first written down on 11 February 2025, and the graph begins there | HISTORY ch. 1, 5; README; OUTLINE | ChatGPT's spanning trees, written to his steps, came first, undated and most probably before 11 February; the message wrote the steps down as a plan | account §26; research/20 §3, §7 |
+| Claude is first recorded on 24 May 2025 | HISTORY ch. 1; README; questions; storyboard (then A2-S6) | Claude on 30 August 2024 and 17 February 2025 (year inferred) by his compilation; 24 May 2025 is the earliest picture of Claude's work, and its screenshot is the script he kept made interactive | account §26; research/20 §2, §4, §6 |
+| The April 2025 tool is not known, perhaps ChatGPT | HISTORY ch. 1; timeline | still unrecorded; no code in his compilation draws the figure; ChatGPT fits its wording and matplotlib (inference) | research/20 §5 |
+| (not told) Who wrote the first algorithms; "he brought the algorithm and v0, Gemini and Claude wrote the tools" | HISTORY ch. 1; OUTLINE | ChatGPT wrote the first code, from prompts that carry his steps ("Do not judge your own output.") | account §26; research/20 §3 |
+| (not told) The first use of a model for a map XML | HISTORY ch. 1 | Claude on Pillars, 29 May 2025; the map credited "Claude Sonnet 4" for "intelligence" from that evening to 13 June 2026 | account §26; research/20 §10 |
+| The schematic download of 12 October 2025 was made "with a friend" (nothing on how) | HISTORY ch. 2; timeline | a school and university friend, a game developer, not named; a WorldEdit schematic read in HxD and given to Claude with the NBT specification; a parser in JavaScript, then C#; the committed code is the writer `d961f6a`, and no schematic reader was ever committed | account §26; research/20 §9 |
+| Who the friend of 10 October 2025 was is open | HISTORY ch. 18; README; questions | described by the author and not named; which commits he wrote stays open | account §26 |
+| Golden Drought VI's 2023 committer, by name, against the author's "Reshif", open | HISTORY ch. 3, 18; README | one person, by the author on 28 November; only the handle is used | the author, 28 November |
+| The film runs 17 min 56 s in 55 scenes; it begins "in February 2025, with a graph"; the short cut is 8 min 20 s | OUTLINE; README; storyboard | 18 min 25 s in 58 scenes: act A2 opens on the canvas of August 2024 (A2-S1) and ChatGPT's first spanning trees (A2-S2) and gains the hex dump (A2-S12), so A2's old S1–S14 are now S3–S11 and S13–S17; Pillars' credit joins A2-S8; six scenes shortened; the short cut, now A2-S3 and A2-S5, is 8 min 16 s | storyboard.json; research/20 |

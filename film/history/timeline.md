@@ -1,4 +1,4 @@
-# Timeline, February 2025 to November 2026
+# Timeline, August 2024 to November 2026
 
 One table, in date order. **Kind** says what a row is: **record** (a commit, file, published map, server record,
 recording, message or transcript holds it), **account** (the author recalls it, `author-account-2026-11-27.md`,
@@ -15,14 +15,20 @@ people carry role labels instead of names, by the author's decision of 28 Novemb
 | 2021-01 to 2023-02 | Annealing, II, III, IV and II Short, rockymine with Ruediger_LP and DerStiv | r/08 | record |
 | 2022 | The Annealing maps came from his master's thesis on the travelling salesman problem | account §3 | account |
 | 2015-04-26 | Agrostid created (rockymine, Matci0B; XML Ruediger_LP), built away from 0,0 in one region file at x −1024 to −513 | r/19 | record |
+| 2024-08-30 | Claude chat: a description of capture the wool ("Overcast offers a variety of Gamemodes for which Builders like myself create maps."), map concepts, two maps described from a picture and then as ASCII; then "Are you able to create me a web program where I can create layouts with?", a canvas grid with four tags, Woolroom, Spawn, Buildable Void, Lane; "Ein Klickbarer prototyp. Sicher einer der ersten!" | account §26; r/20 §2 | account (his prompts and his date, "Ja echt 2024"; three public artifacts, not opened) |
 | 2024-10-14 19:07 | Agrostid 2.0.0 (RuedigerLP): the map moved to 0,0, the old region file kept, the later "stowaway" | r/19 | record |
+| before 2025-02-11 (undated) | ChatGPT conversation: "Help me create an algorithm…floating cubic islands"; ChatGPT's Python draws random points joined in a minimum spanning tree (networkx, matplotlib); his steps add void lines and gaps, "Fix Point" and "Lane", distances from the tree's ends, and several non-intersecting trees; "Do not judge your own output." | account §26; r/20 §3 | record (the conversation as pasted); the date is inference: its last idea is the v0 page's, and it was pasted on 15 Aug 2025 |
 | 2025-02-11 | To samschaap: "Potential Algorithm steps" (grid nodes, spanning tree favouring straight edges, extra edges for cycles, dissecting for islands, a grid for wave function collapse) and a "Data survey" of his and Ruediger's CTW maps as 1×1 cells | sources/early-experiments/2025-02-11-message-to-samschaap.md; account §20 | record |
 | 2025-02-11 | The first v0 prototype, `v0-occ-mapmaking-tools-b63noa.vercel.app`: grid size and node count, spanning trees, shaded cells; "So the earliest v0 prototype made rsts" | the same; account §20; sources/early-experiments/v0-prototype-2025-02 | record (his description; the page, "Random Spanning Tree Visualization", seen as it runs on 28 Nov 2026) |
 | 2025-02-11 | samschaap: "so it will be 'trained'"; he: "an educated, rule-based approach is more likely for me to achieve than actual training"; Townside as grid and as a torch graph with a green-carpet cycle edge | the same | record |
-| 2025-04-05 | matplotlib figure "Multiple 1-Team PvP Layouts (Improved Graph Connections)": four node-and-edge layouts of one team's half | pictures; account §18 | record (picture); no repository holds it (r/18); the tool is not known, perhaps ChatGPT (account §21) |
+| 2025-02-17 | Claude artifact: a 10×10 grid, five black cells, paths with one 90° turn, a minimum spanning tree with its cells in blue | account §26; r/20 §4 | account (his prompt; artifact not opened); the year is inference |
+| 2025-04-05 | matplotlib figure "Multiple 1-Team PvP Layouts (Improved Graph Connections)": four node-and-edge layouts of one team's half | pictures; account §18 | record (picture); no repository holds it (r/18); the tool is not known, perhaps ChatGPT (account §21); no code in his compilation draws it, ChatGPT fits its wording (r/20 §5, inference) |
+| 2025-05-24 | Two Claude chats: requirements R1–R11 for "an application to randomly generate level designs for a game with two teams"; and "a python script with visualization capabilities for level design", whose code (spawn, objective, intersection and void-access nodes; lanes and void connections; 24×12) he kept, "das claude artifact was bislang noch keinen link hatte" | account §26; r/20 §6 | record (prompts and code); year by the screenshot's weekday |
 | 2025-05-24 01:39 (local) | Claude chat artifact "Interactive Level Design Visualizer", v6 of 6: a "Level Design Generator" with lanes, a void strip, void connections | pictures; account §18 | record (picture) |
 | 2025-05-24 | "da gab es noch kein Claude Code, soweit ich mich entsinne" | account §18 | account |
+| 2025-05-29 21:24–22:51 (+02:00) | Pillars (blitz, rockymine; `<created>` 28 May) committed by Ruediger as 1.0.0 to 1.0.2; from 22:48 its credits name "Claude Sonnet 4" for "intelligence"; his first use of Claude for an XML | r/20 §10; account §26 | record (commits); account (Claude's help) |
 | 2025 | Tools in turn, by the author: ChatGPT and other models in a single chat; v0, the first to make several files and host a prototype; Gemini as an alternative; then Claude, kept | account §21 | account |
+| 2025-08-15 | The ChatGPT conversation pasted into a Claude chat, the day before the v0 chat; perhaps the "elsewhere" of the first v0 attachment | account §26; r/20 §8 | account; the link to v0 is inference |
 | 2025-08-16 21:31–23:11 | v0 chat, 17 messages: "implement this layout generation…" (one attachment); renamed "Capture the Wool Layout Generator" at 21:54; mirror against rotate, random 3×3 grids, row-independent columns | sources/early-experiments/v0-chat-2025-08-16.md | record |
 | 2025-09-24 22:10–22:15 | The v0 chat used again; what was asked is not in the page | sources/early-experiments/v0-chat-2025-08-16.md | record |
 | 2025-09-26 | Ruediger, to a screenshot of the Gemini tool: "ich frag mich ja wann der erste alle maps eincannt und ne ki anhand der daten eine eigene map erstellen lässt" | r/15; account §18 | record |
@@ -33,8 +39,9 @@ people carry role labels instead of names, by the author's decision of 28 Novemb
 | 2025-10-07 | AI Studio link to Ruediger, "nur manueller editor. klappt auch ganz gut am telefon": the second AI Studio project, "CTW Smart Map Editor", a graph editor with mirrored nodes, automatic node classes (hub, frontline, scaffold) and an unconnected Gemini analysis he did not know of | account §18, §24; `sources/early-experiments/aistudio-ctw-smart-map-editor-2025/` | record (message; export); author's account (that it was this link) |
 | 2025-10-07 | To the contest's map developer: tool moved to his own repository `ctw-layout-editor`, mostly written with Claude's VS Code extension | r/17 | record (no such repository found, r/18; the author thinks it differs from the next row, account §18) |
 | 2025-10-10 14:29 (+02:00) | `MinecraftLayoutEditor` (C#): a `Graph` of typed nodes; "with a friend", no WorldEdit (his message) | r/01, r/17 | record |
+| 2025-10-10 → 10-12 | With a school and university friend, a game developer (not named): a WorldEdit schematic read in HxD; "Can you tell me what this hex file says?" with the NBT specification; "Based on this information can you write me a parser?", answered in JavaScript, then C# | account §26; r/20 §9 | account; the dates are inference (the committed code is the writer of 12 Oct) |
 | 2025-10-11 | Symmetry, mirror, rotate (`4d132b2`); first screenshots to Ruediger | r/18; account §18 | record; account |
-| 2025-10-12 | `.schematic` download (00:13), edges as Bresenham lines of blocks (20:05); Ruediger fascinated that blocks need no hands | r/18; account §18 | record; account |
+| 2025-10-12 | `.schematic` download (00:13; `d961f6a`, a writer of the format the hex dump showed: "Schematic", sizes, "Alpha", Blocks and Data), edges as Bresenham lines of blocks (20:05); Ruediger fascinated that blocks need no hands | r/18; account §18 | record; account |
 | 2025-11-04 | First okay layout, drawn in the browser, imported on the mapmaker server | pictures; account §18 | account (no commit names it, r/18) |
 | 2025-11-06 03:20 | World import "(claude & grok)": the first models named in a commit; no file names the world imported | r/01, r/18, r/19 | record |
 | 2025-11-06 | The first world imported was Agrostid, not Annealing | account §25 (corrects §18) | account (the picture's 184 × 267 fits Agrostid's extent, r/19, inference) |
@@ -74,6 +81,7 @@ people carry role labels instead of names, by the author's decision of 28 Novemb
 | 2026-06-10 | To the award show's organiser: "opus is scary good"; the same of Fable 5 | r/17 | record |
 | 2026-06-12 03:24 | Last Python commit; `pgm-studio` first commit 17:21 | r/01 | record |
 | 2026-06-13 | Port to ASP.NET Core + Blazor, 145 files, Opus 4.8; "zum dritten Mal neu geschrieben" | r/01, r/15 | record |
+| 2026-06-13 | Pillars 1.2.0: the "Claude Sonnet 4" credit removed | r/20 §10 | record |
 | 2026-06-17 → 21 | Claude names "Cobalt Crossing" and writes its XML; it becomes Drastic Change II | r/15 | record |
 | 2026-06-19/20 | Ruediger proposes the evenings' method: generate many, test the best ten in one evening | r/15 | record |
 | 2026-06-20 | Corpus: "88% of real maps carry a contested middle"; organic spline generator starts | r/01, r/08 | record |
@@ -212,6 +220,7 @@ people carry role labels instead of names, by the author's decision of 28 Novemb
 | 2026-11-27/28 | Lantern Pass liked but short; Loomfall "a bit bugged"; Lantern Drop "just worked"; Curio Square "okay" | account §14, §16 | account |
 | 2026-11-28 | The five voices of 2 July named; the fire-and-ice map is the one Minuyo took for AI | r/16; account §17 | account |
 | 2026-11-28 | Early pictures, the message of 11 February 2025 and the v0 link; answers on the viewing, the contest, `711e539`; names withdrawn from the thread and four conversations | account §18–§20 | account |
+| 2026-11-28 | The long message of the earliest chats: Claude in August 2024, the ChatGPT conversation, 17 February, 24 and 29 May 2025, the parser chat | account §26; r/20 | account |
 | 2026-11-28 (planned) | Real gameplay to be recorded on a few maps | account §14 | account (plan) |
 
 ## Counts behind the table
