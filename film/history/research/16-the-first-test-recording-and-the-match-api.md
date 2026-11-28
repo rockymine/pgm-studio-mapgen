@@ -14,12 +14,16 @@ moderator on the server, joins at about minute 20:40, also by the author's word.
 Whisper (`large-v3-turbo`, on the CPU) and read against stills taken every 30 and 90 seconds. The transcript is not
 committed, like the direct messages in research `15`; this file quotes it briefly.
 
-**The speakers were told apart by voice and named by what they say.** A speaker model (SpeechBrain ECAPA) grouped
-the spoken passages into five voices. The author is the voice that explains the studio for minutes on end. Ruediger
-answers "Just do it, Rudiger do it", and samschaap answers "Sam, are you loading them?". nuttydragon is the voice
-that is almost silent before minute 20; TTtie is the fifth by elimination.
+**The speakers were told apart by voice and confirmed by the author.** A speaker model (SpeechBrain ECAPA) grouped
+the spoken passages into five voices, and the author listened to samples of each on 28 November and named all five:
+himself, samschaap, nuttydragon, TTtie and Ruediger. The content agrees: Ruediger answers "Just do it, Rudiger do it",
+samschaap answers "Sam, are you loading them?", and nuttydragon is almost silent before minute 20.
 
-**Single lines can be in the wrong group.** A quote is named below only where the voice and the content agree.
+**Single lines can be in the wrong group.** The groups are the model's, line by line; a quote is named below only
+where the voice and the content agree.
+
+**Nothing in the call is meant gravely.** The author, 28 November: it was a really funny evening, and they were
+greatly amused throughout. Read the quotes below as banter about maps built of nothing but stone.
 
 ## 1. The evening, minute by minute
 
@@ -100,9 +104,9 @@ stuff."
 **The players saw grey boxes.** A player in chat as Base 4-Team started: "is tihs jus the greybox?". In the call,
 during Base 2-Island: "We are witnessing history and it's really boring."
 
-**Ruediger praised them with a straight face.** At minute 20: "You know what I think is so beautiful about your new
-maps, Rocky? How they give so much room to the imagination of the player", a canvas where players "build stuff out
-of cobblestone and wood planks".
+**Ruediger praised them as a joke.** At minute 20: "You know what I think is so beautiful about your new maps,
+Rocky? How they give so much room to the imagination of the player", a canvas where players "build stuff out of
+cobblestone and wood planks". The author: it was humour, because the Base maps were built of stone and nothing else.
 
 ## 4. The match API
 
