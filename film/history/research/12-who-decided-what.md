@@ -70,7 +70,7 @@ Each cell is *decider / executor*. P person, M model, A algorithm; st studio, br
 | 24 | Cedar Crossing (10 Aug) | Grok ("concept and name came from the AI"), from P's (arcadeboss's) overview | M / Grok's pipeline | M / Grok's | M / Grok's | M / Grok's | M ("XML") / Grok's | P (arcadeboss), over a hundred tested zips | 6b |
 
 The rows of 2026 sessions (9, 11–13, 15–17, 16a, 19, 20, 22) come from the write-ups under `sessions/`; row 21a from
-the prompt the author sent ryan at 22:36 on 27 September (research `17` §6); Wandering U, Kuusepuu
+the prompt the author sent an administrator at 22:36 on 27 September (research `17` §6); Wandering U, Kuusepuu
 and Cedar Crossing are amended from research `15`. Row 7 is placed provisionally, for the reason in its table.
 
 ## 3. The maps, one at a time
@@ -89,7 +89,7 @@ and Cedar Crossing are amended from research `15`. Row 7 is placed provisionally
 
 What the agents did is the contrast: they were asked to compose the map from his sketch world on 2 to 7 November,
 and "every version was rejected". They then rebuilt his terrain as loft lines (3 blocks of 18,801 more than a block
-off) and drew the variants. The studio was not used at any step. On 25 November he sent Technodono its layer-by-layer model with "Note that it
+off) and drew the variants. The studio was not used at any step. On 25 November he sent the contest's map developer its layer-by-layer model with "Note that it
 still is not AI. Just having claude follow along." (research `17` §3); it is the map with the wool and the core that
 Minuyo and others first took for a model's work (author's account, seventeenth instalment).
 Sources: research `04` §§1, 2, 3a, 4; `film/history/research/05` ("his own hand-built map");
@@ -111,7 +111,7 @@ Sources: research `11` §1; author's account, fifth instalment.
 | Decision | Who decided | What executed |
 |---|---|---|
 | Concept | person **(his account)**; he calls it "as wild as Hello World"; credited rockymine and Ruediger_LP | |
-| Layout | person: "built in practically one day … in the browser it was quick"; to ryan on 17 August he wrote that he and Ruediger "sat together in discord" to make No Blocks Placed, "the same way we made Bridgid II's layout" (research `17` §6) | browser |
+| Layout | person: "built in practically one day … in the browser it was quick"; to an administrator on 17 August he wrote that he and Ruediger "sat together in discord" to make No Blocks Placed, "the same way we made Bridgid II's layout" (research `17` §6) | browser |
 | Terrain shape | person **(his account)**. The studio holds a traced plan of it (16 height tiers) but made after the upload | unknown |
 | Colouring | person: "skinned" from stone "in one long evening" in game; the repeating colour columns on its sides are where he dates the wall-run idea | hands |
 | Structures, decoration | unknown | |
@@ -124,7 +124,7 @@ Sources: author's account, fifth instalment and its correction; research `11` §
 
 | Decision | Who decided | What executed |
 |---|---|---|
-| Concept | person: "myself and Ruediger sat together in discord and made the map" (his message to ryan, 17 August, research `17` §6), answering ryan's "oh i didnt know this was the ai map". Credits: rockymine "Drawing pieces, shapes, and markers in the browser.", Ruediger_LP "Wisdom.", Flamiix "Minimalist." | |
+| Concept | person: "myself and Ruediger sat together in discord and made the map" (his message to an administrator, 17 August, research `17` §6), answering the administrator's "oh i didnt know this was the ai map". Credits: rockymine "Drawing pieces, shapes, and markers in the browser.", Ruediger_LP "Wisdom.", Flamiix "Minimalist." | |
 | Layout | person (rockymine), pieces | browser (Plan tool) |
 | Terrain shape | person, shapes | browser (Sketch tool) |
 | Colouring | unknown who chose the theme; the ground is stained clay at y 13 | studio terrain painting |
@@ -295,7 +295,7 @@ began, which is the part the record did not hold before.
 | Mirkholt (14 Sep) | a ground family (dark, wet, green) and four objective kinds; then two corrections: fronts parallel, build zone only between them, 25 to 30 wide, a lane rotated | the dark wood, the shifted diagonal | `sessions/12` |
 | Scarbutte (24 Sep) | destroy maps, about four, terrain only, from a single-height plan deformed and layered with relief marks | the four landscapes and their features | `sessions/13` |
 | Interchange (24–25 Aug) | a friend's "Liminal DTM" prompt pasted whole (repetition and exploration, familiar-but-uncanny areas, monuments underground and in the sky); his size, about 200 by 400, and "I'd go for 5 per team" | the layout, the storeys, the themes, every block | `sessions/06` appendix |
-| The 24 August boards | by his message to javg that night, "Most of them were just 'Build a map' without any prompting whatsoever" | everything the composer did not | research `17` §4 |
+| The 24 August boards | by his message to the award show's organiser that night, "Most of them were just 'Build a map' without any prompting whatsoever" | everything the composer did not | research `17` §4 |
 | Delverdale, Whitstone Weald (27 Sep) | around 32 a team, a larger CTW and DTM with terrain, more trees, houses and an underground layer, two large end-stone monuments, two wools, no compose plan | the places and the layout | research `17` §6 |
 | Gypsum Reach, Sootcombe (28–29 Sep) | the run's brief came from a parent session; then 77 notes over five rounds | the concepts, the first boards ("empty") | `sessions/14` |
 
@@ -372,9 +372,9 @@ author the program. A map the studio never executed, such as the author's ice ma
 deterministic ran, and it still has one author. What the spectrum measures is how much of each of the seven decisions
 someone stated before the executor ran, and who that someone was.
 
-**The community drew its own line, and it falls between categories 3 and 4.** TTtie wrapped "the pure-AI maps in an
+**The community drew its own line, and it falls between categories 3 and 4.** A staff member in the thread wrapped "the pure-AI maps in an
 event so everyone knows"; the author answered the forum that the XML is generated deterministically and "The ai is
-simply using a web tool that you could use to make maps yourself as well"; Technodono accepted the studio once he saw
+simply using a web tool that you could use to make maps yourself as well"; the contest's map developer accepted the studio once he saw
 it was a tool and would allow it in his contest "As long as they can't use the opus function"; the author hid the
 model-made maps in the studio because "There is no ai active on the page"; and of his own map he wrote "it still is not
 AI. Just having claude follow along" (research `17`). What every party asks is whether a model decided the content,

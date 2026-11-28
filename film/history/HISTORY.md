@@ -1,4 +1,4 @@
-# A year and a half of AI-made maps: April 2025 to November 2026
+# Twenty-one months of AI-made maps: February 2025 to November 2026
 
 This is the history of how rockymine, with Ruediger_LP, a few friends on the Overcast Community server and a run of AI
 models, set out to make PvP maps for PGM by machine, of what the tools he built for it became, and of how the players
@@ -6,11 +6,11 @@ who were handed the maps received them. It is written for a reader who was not t
 
 **Every claim cites the file it rests on.** `(research/NN)` is a file under `research/`; `(sessions/NN)` a session
 write-up under `research/sessions/`; `(account §N)` the N-th instalment of the author's account of 27 and 28 November
-2026 (`author-account-2026-11-27.md`), where §1 is the opening summary, §2 the additions later the same day, §3 to §19
+2026 (`author-account-2026-11-27.md`), where §1 is the opening summary, §2 the additions later the same day, §3 to §20
 the numbered instalments, and "squared-paper section" the section of that name; later instalments and the corrections
 in the file supersede earlier ones. `(sessions list)` is the author's own description of each session in
-`sources/sessions-named-by-the-author.md`; `(sources/early-experiments/)` the eight pictures he sent with §18 and the
-v0 chat read from his link. Two data sources recur: **the log** is the `#match-status` channel as read
+`sources/sessions-named-by-the-author.md`; `(sources/early-experiments/)` the pictures he sent with §18 and §20, his
+message of 11 February 2025, and the v0 chat read from his link. Two data sources recur: **the log** is the `#match-status` channel as read
 into `sources/match-status/match-status-2026-06-01_2026-11-27.csv` (research/13); **the API** is the server's public
 match record, of which the 388 public-server matches the log never posted are in
 `sources/match-status/api-matches-not-in-match-status.csv` (research/16). Match start times below are the API's
@@ -38,7 +38,7 @@ and `pgm-map-studio` (research/01, research/18).
 
 ---
 
-## 1. April to September 2025: a graph, three chat tools, and a question in German
+## 1. February to September 2025: a spanning tree, a graph, chat tools, and a question in German
 
 **Algorithmic map making predates the project by four years.** **Record:** five Annealing maps by rockymine,
 Ruediger_LP and DerStiv sit in CommunityMaps, dated January 2021 to February 2023 (research/08). **Account:** they came
@@ -48,12 +48,38 @@ Code session: the outline of Annealing IV's largest island "the result of a rand
 using the annealing algorithm" from the solver visualisations of his thesis (`sources/early-experiments/`, the 20 March
 picture). The record carries no word of the thesis in the maps themselves and spreads the series over three years.
 
-**The first picture of the project is a graph, drawn on 5 April 2025.** **Record:** a matplotlib figure titled
+**The idea is first written down on 11 February 2025, as a spanning tree.** **Record:** that day he sent samschaap
+"Potential Algorithm steps": generate nodes along a grid; "Create Spanning Tree. Heavily favor straight edges along
+grid cells over diagonal ones (all maps can be reduced to a mini layout that uses only straight edges and only right
+angles)"; add edges "to allow some cycles"; "Disect spanning graph in some places", because many maps have islands "to
+force players to bridge the void and create some additional choke points"; turn the graph into a grid that wave
+function collapse can work with. Beside it stood a "Data survey": a minimal representation, in 1×1 grid cells, "of all
+my ctw maps (and ruedigers)", with spanning tree, cut-offs and added cycle edges marked on each
+(`sources/early-experiments/2025-02-11-message-to-samschaap.md`; account §20).
+
+**The first prototype was a v0 page that built spanning trees.** **Record:** the same message links
+`v0-occ-mapmaking-tools-b63noa.vercel.app`, which, by his description, asks for a grid size and a node count, connects
+the nodes in a minimum spanning tree or several, skips an edge that collides with an earlier graph's, and shades the
+cells "to make it more blocky and resemble an arbitrary occ map layout"; his summary of it on 28 November: "So the
+earliest v0 prototype made rsts" (`sources/early-experiments/`; account §20). The page itself could not be fetched for
+this history.
+
+**Asked whether it would be trained, he said rules.** **Record:** samschaap asked "Nice, so it will be 'trained' with
+existing maps?"; he answered "That's the idea. At the very least I want to document my maps in a simple format to
+figure out better ways to describe rules for spanning tree generation etc. I think an educated, rule-based approach is
+more likely for me to achieve than actual training." He showed Townside three ways: one team's side from above, the same
+side as a grid of blocks, stone for lane and black for void with one red and one white cell, and that grid as a graph
+of redstone torches and dust, "where the green carpet represents an additional edge that would not be present in a RST"
+(`sources/early-experiments/`). **Inference:** the graph with its cut-offs and cycle edges is the shape that returns in
+April 2025, in the skeleton graph of February 2026 and in the studio's generator (chapters 3, 5); the rule-based line
+stands nineteen months before his forum answer that "No actual map data is being used to train anything" (chapter 16).
+
+**On 5 April 2025 the graph was drawn in matplotlib.** **Record:** a matplotlib figure titled
 "Multiple 1-Team PvP Layouts (Improved Graph Connections)" shows four layouts, each one team's ground: grey nodes in six
 to eight rows and three columns, labelled L, C and R by count, a cyan node on top, two red nodes off the sides, and a
 few edges drawn green (`sources/early-experiments/`). **Account:** "irgendein Experiment mit Graphen", some experiment
 with graphs (account §18). **Record:** no commit, file or message of the four early repositories holds it
-(research/18 §4). What the colours meant is not written on the figure. **Inference:** a matplotlib figure was made
+(research/18 §4); the green edges recall the cycle edges of February. What the colours meant is not written on the figure. **Inference:** a matplotlib figure was made
 in Python; the rows and three columns of one team's half are the grid the later generators cut.
 
 **On 24 May 2025 a Claude chat drew two teams and a void between them.** **Record:** a tablet screenshot, its status
@@ -65,7 +91,7 @@ experiments with Claude in the chat; "da gab es noch kein Claude Code, soweit ic
 Code yet as far as he remembers (account §18). **Record:** nothing of it is in a repository (research/18 §4). It is
 the earliest Claude in the history, thirteen months before the studio.
 
-**On 16 August 2025 he had v0 build the generator, and named it.** **Record:** the v0 chat "Layout generation app"
+**On 16 August 2025 he went back to v0, and named the generator.** **Record:** the v0 chat "Layout generation app"
 holds seventeen messages of his from 21:31 to 23:11 UTC, a hundred minutes, to the model `v0-max`. The first carries
 one attachment and asks to "implement this layout generation as a web application with configurable parameters,
 visualization, and export", so the algorithm existed before the chat; what the attachment was is not in the page. At
@@ -96,7 +122,7 @@ with some algorithmic steps for creating the layouts and it simply made it" (res
 Ruediger "vielleicht kommt man damit in richtig ki generierung", maybe this leads into real AI generation (research/15).
 By 1 October the repository held a seeded generator whose node types were `SPAWN`, `WOOL`, `HUB`, `FRONT_LINE` and
 `CENTER_HUB`, exporting only JSON; on 3 October a step-wise manual editor; and nothing after that day (research/01).
-**Inference:** the idea of generating layouts was his from April 2025; what Ruediger first put into words was the later
+**Inference:** the idea of generating layouts was his from February 2025; what Ruediger first put into words was the later
 direction, an AI that learns from every map.
 
 ## 2. October 2025 to January 2026: an editor of his own, blocks without hands, and a pause
@@ -258,8 +284,9 @@ JSON files for a test; the plan model came at 22:47 UTC that evening; the first 
 (research/09). In the call that evening he put it his own way: "Today I was on my phone and I told Claude Code to make
 some seeds for the generation of the maps. I drew something on paper." (research/16).
 
-**The graph was not dropped in 23 minutes; a design document was replaced.** It was the graph's third arrival: the
-matplotlib layouts of April 2025 and the skeleton graph of February 2026 came before it (chapters 1, 3).
+**The graph was not dropped in 23 minutes; a design document was replaced.** It was the graph's fourth arrival: the
+spanning tree of February 2025, the matplotlib layouts of April 2025 and the skeleton graph of February 2026 came
+before it (chapters 1, 3).
 **Record:** at 14:31 UTC a 184-line design
 proposed a plan graph of typed lane and gap edges; at 14:54 it was rewritten as areal pieces joined by interfaces,
 because "a thinned skeleton cannot represent side contact"; that evening `FannedGraph`, a reachability graph over the
@@ -788,7 +815,8 @@ updated OCC AI legislation", was a joke, and by September it was a question.
 Against the opener's "spirit of a map (human creation)", the author wrote "No actual map data is being used to train
 anything. The ai is simply using a web tool that you could use to make maps yourself as well. I'm just trying to make
 mapmaking more accessible", pointed to Millrace as what the evenings were for, said that "10 human hours" went into the
-maps and that the why "is simply curiosity and fun", and named Ruediger and four others as having supported the
+maps and that the why "is simply curiosity and fun" (the line he had drawn to samschaap in February 2025, rules
+rather than training; chapter 1), and named Ruediger and four others as having supported the
 experiments. A staff member answered for the event: "we're of course aware that the generated maps are of no
 artistic value", and "a month or two ago we had just stone pillars and boxes as the output". One player asked for an AI
 disclosure in the XML "in a structured way, not just freeform author field"; a second player: "No genuine feedback came
@@ -826,7 +854,7 @@ and 14 blocks tall; the colours of its wool carry meaning, yellow for connecting
 passing checks on variants he saw as plainly wrong; "a geometric rule is not a design" (research/04). **Account:** it has a
 dead area that makes sense, likely the back around the wool lookout and hills, so "dead" is subjective (account §1, §3);
 the dead-ground rule would refuse it at more than 12 percent (research/05). It will be finished by him in snow, stone, ice
-or grass (account §8). **Inference:** the year and a half went from a graph in matplotlib to a grammar and from words to coordinates, and the
+or grass (account §8). **Inference:** the twenty-one months went from a spanning tree to a grammar and from words to coordinates, and the
 newest map returns to the first category, with the models put to reading it (research/12); his own message calls it "not AI.
 Just having claude follow along" (research/17).
 

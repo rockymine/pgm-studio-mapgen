@@ -1,29 +1,63 @@
-# Timeline, September 2025 to November 2026
+# Timeline, February 2025 to November 2026
 
 One table, in date order. **Kind** says what a row is: **record** (a commit, file, published map, server record,
 recording, message or transcript holds it), **account** (the author recalls it, `author-account-2026-11-27.md`,
 instalment given as §N), **inference** (a reading made for this history; its basis is the source named). Where a date
 is the author's and the record differs, both rows are given. Times are UTC; German summer time is UTC+2 to 25 October.
 `r/NN` is `research/NN`, `s/NN` is `research/sessions/NN`; **API** is
-`sources/match-status/api-matches-not-in-match-status.csv` (read in r/16), **log** the `#match-status` CSV (r/13).
-Match times are starts.
+`sources/match-status/api-matches-not-in-match-status.csv` (read in r/16), **log** the `#match-status` CSV (r/13);
+**pictures** are `sources/early-experiments/`. Match times are starts. Commit times of the early repositories are given
+in the committer's zone where marked (+01:00, +02:00). The thread of 20–24 September and the direct messages with four
+people carry role labels instead of names, by the author's decision of 28 November (README).
 
 | Date (UTC) | Event | Source | Kind |
 |---|---|---|---|
 | 2021-01 to 2023-02 | Annealing, II, III, IV and II Short, rockymine with Ruediger_LP and DerStiv | r/08 | record |
 | 2022 | The Annealing maps came from his master's thesis on the travelling salesman problem | account §3 | account |
-| 2025-09-26 | Ruediger asks when an AI will scan all maps and make its own | r/15 | record |
-| 2025-09-28 | Layout generator shown to Technodono: "it was made using gemini"; `CTW-Layout-Generator` in Google AI Studio, JSON only | r/17, r/01 | record |
-| 2025-10-07 | Tool moved to his own repository `ctw-layout-editor`, mostly written with Claude's VS Code extension (his message) | r/17 | record |
-| 2025-10-10 → 10-12 | `MinecraftLayoutEditor` (C#): a `Graph` of typed nodes, then a `.schematic` download; "with a friend", no WorldEdit | r/01, r/17 | record (whether one repository with the row above: open) |
-| 2025-11-06 | World import "(claude & grok)", the first models named in a commit | r/01 | record |
-| 2025-12-09 | Claude named to Ruediger for the match-logging plugin | r/15 | record |
-| 2026-02 → 03 | 689, then 3,000 logged matches; 177 maps "dokumentiert für die ki"; logging ends in March; 19 Mar "ai maps soon tm" | r/15, r/17 | record |
-| 2026-04-26 | Technodono on another person's AI DTM map: "I don't think any version of that ai map would play well" | r/17 | record |
-| 2026-05-13 | He asks whether AI maps are accepted in a contest; javg: "no AI for creative stuff" | r/17 | record |
-| 2026-05-29 | Polygon drawing, Ruediger's idea, is being built; to ryan: the project is "an offspring from the logging experiment" | r/15, r/17 | record |
-| 2026-05-31 | `pgm-map-studio` (Python, Sonnet 4.6) opens, reading worlds for islands | r/01 | record |
-| 2026-06-10 | To javg: "opus is scary good"; the same of Fable 5 | r/17 | record |
+| 2025-02-11 | To samschaap: "Potential Algorithm steps" (grid nodes, spanning tree favouring straight edges, extra edges for cycles, dissecting for islands, a grid for wave function collapse) and a "Data survey" of his and Ruediger's CTW maps as 1×1 cells | sources/early-experiments/2025-02-11-message-to-samschaap.md; account §20 | record |
+| 2025-02-11 | The first v0 prototype, `v0-occ-mapmaking-tools-b63noa.vercel.app`: grid size and node count, spanning trees, shaded cells; "So the earliest v0 prototype made rsts" | the same; account §20 | record (by his description; the page not fetched) |
+| 2025-02-11 | samschaap: "so it will be 'trained'"; he: "an educated, rule-based approach is more likely for me to achieve than actual training"; Townside as grid and as a torch graph with a green-carpet cycle edge | the same | record |
+| 2025-04-05 | matplotlib figure "Multiple 1-Team PvP Layouts (Improved Graph Connections)": four node-and-edge layouts of one team's half | pictures; account §18 | record (picture); no repository holds it (r/18) |
+| 2025-05-24 01:39 (local) | Claude chat artifact "Interactive Level Design Visualizer", v6 of 6: a "Level Design Generator" with lanes, a void strip, void connections | pictures; account §18 | record (picture) |
+| 2025-05-24 | "da gab es noch kein Claude Code, soweit ich mich entsinne" | account §18 | account |
+| 2025-08-16 21:31–23:11 | v0 chat, 17 messages: "implement this layout generation…" (one attachment); renamed "Capture the Wool Layout Generator" at 21:54; mirror against rotate, random 3×3 grids, row-independent columns | sources/early-experiments/v0-chat-2025-08-16.md | record |
+| 2025-09-24 22:10–22:15 | The v0 chat used again; what was asked is not in the page | sources/early-experiments/v0-chat-2025-08-16.md | record |
+| 2025-09-26 | Ruediger, to a screenshot of the Gemini tool: "ich frag mich ja wann der erste alle maps eincannt und ne ki anhand der daten eine eigene map erstellen lässt" | r/15; account §18 | record |
+| 2025-09-28 00:42 | `CTW-Layout-Generator` opens as an AI Studio app; shown to the contest's map developer: "it was made using gemini" | r/01, r/17, r/18 | record |
+| 2025-09-28 → 10-03 | Its generator: 3×3 grid per team, "Standard"/"Row-Independent", "Mirror"/"Rotation"; JSON export; step-wise manual editor; last commit 3 Oct | r/01; the clone's `Documentation.tsx` | record |
+| 2025-09-28 | It continues the v0 generator in algorithm and name; no shared code shown | HISTORY ch. 1 | inference |
+| 2025-09-29 | To Ruediger: "vielleicht kommt man damit in richtig ki generierung" | r/15 | record |
+| 2025-10-07 | AI Studio link to Ruediger, "nur manueller editor. klappt auch ganz gut am telefon" (id differs from the repository's README) | account §18 | record (message as given) |
+| 2025-10-07 | To the contest's map developer: tool moved to his own repository `ctw-layout-editor`, mostly written with Claude's VS Code extension | r/17 | record (no such repository found, r/18; the author thinks it differs from the next row, account §18) |
+| 2025-10-10 14:29 (+02:00) | `MinecraftLayoutEditor` (C#): a `Graph` of typed nodes; "with a friend", no WorldEdit (his message) | r/01, r/17 | record |
+| 2025-10-11 | Symmetry, mirror, rotate (`4d132b2`); first screenshots to Ruediger | r/18; account §18 | record; account |
+| 2025-10-12 | `.schematic` download (00:13), edges as Bresenham lines of blocks (20:05); Ruediger fascinated that blocks need no hands | r/18; account §18 | record; account |
+| 2025-11-04 | First okay layout, drawn in the browser, imported on the mapmaker server | pictures; account §18 | account (no commit names it, r/18) |
+| 2025-11-06 03:20 | World import "(claude & grok)", tested on Annealing: the first models named in a commit | r/01, r/18; account §18 | record |
+| 2025-11-06 | World import "showing a few XML regions" | account §18 | account (XML regions arrive 10 Nov, r/18) |
+| 2025-11-10 00:17–00:40 | XML import and region rendering in the editor | r/18 | record |
+| 2025-12-09 | Claude named to Ruediger for the match-logging plugin, "claude hat gut gearbeitet" | r/15 | record |
+| 2025-12-20 | Last human commit in `MinecraftLayoutEditor`, "ui improvements (claude)" | r/18 | record |
+| 2025-12 → 2026-02 | A small pause, "bis Februar auf jeden Fall" | account §18 | account (no commit in four repositories 21 Dec – 30 Jan, r/18) |
+| 2026-01-24 | Match logs exist (file names, a Tumbleweed match) | r/18 | record |
+| 2026-01-26 (about) | Islands found and cut into polygons by Claude's scripts | account §18 | account (not shown or contradicted, r/18) |
+| 2026-01-31 23:55 (+01:00) | `CTWAnalysis` opens with 67 files: islands, triangulation, skeleton, XML parser, match analysis, "Built with Claude Code" | r/18 | record |
+| 2026-02-02 | Inter-island connectivity: the graph returns as a skeleton graph | r/18; account §18 | record |
+| 2026-02-02 / 03-08, 03-14 | 689, then 3,000 logged matches; 177 maps "dokumentiert für die ki" | r/15 | record |
+| 2026-02-13 | Triangle meshing removed | r/18 | record |
+| 2026-03-09 | "Total matches processed 2,452", 177 unique maps | r/18 | record (the author: about 4,000, account §18) |
+| 2026-03 | Logging ends | r/17 | record |
+| 2026-03-19 | To Ruediger: "ai maps soon tm" | r/15 | record |
+| 2026-03-19/20 | Claude Code: "if we simply reverted the pipeline"; Ruediger "just begs for the first ai generated map"; Annealing IV's island a TSP tour; "the 143 contaminated maps" | pictures; r/18 | record (dated by `6cbc9dd`, 20 Mar 00:19 +01:00; "143" in no file) |
+| 2026-04-26 | The contest's map developer on another person's AI DTM map: "I don't think any version of that ai map would play well" | r/17 | record |
+| 2026-05-13 | He asks whether AI maps are accepted in a contest; the award show's organiser: "no AI for creative stuff" | r/17 | record |
+| 2026-05-14 → 24 | CTWAnalysis's browser viewer with XML region overlays (14 May), region drawing (15, 22–24 May) | r/18 | record |
+| 2026-05 | PGM Studio began as a view of XML files; regions, then polygons | account §18 | account (the steps are CTWAnalysis's, r/18) |
+| 2026-05-29 | `/concept`: island polygons drawn on a blank canvas; to Ruediger: his polygon drawing is being built; to an administrator: the project is "an offspring from the logging experiment" | r/18, r/15, r/17 | record |
+| 2026-05-31 18:41–20:53 | CTWAnalysis's old commands removed, "superseded by map viewer" | r/18 | record |
+| 2026-05-31 22:01 | `pgm-map-studio` (Python, Sonnet 4.6 and Opus 4.8) opens, reading worlds for islands | r/01, r/18 | record |
+| 2026-06-03 | Seven port documents in CTWAnalysis | r/18 | record |
+| 2026-06-10 | To the award show's organiser: "opus is scary good"; the same of Fable 5 | r/17 | record |
 | 2026-06-12 03:24 | Last Python commit; `pgm-studio` first commit 17:21 | r/01 | record |
 | 2026-06-13 | Port to ASP.NET Core + Blazor, 145 files, Opus 4.8; "zum dritten Mal neu geschrieben" | r/01, r/15 | record |
 | 2026-06-17 → 21 | Claude names "Cobalt Crossing" and writes its XML; it becomes Drastic Change II | r/15 | record |
@@ -43,7 +77,7 @@ Match times are starts.
 | 2026-07-02 17:10 / 19:26 | To TTtie: "We have a system to auto-generate maps now", "i will not look at them before"; three Base zips sent | r/17 | record |
 | 2026-07-02 19:40 | Screen recording begins; the Base maps walked on mapdev by rockymine, Ruediger, TTtie, samschaap | r/16 | record (voices named by the author) |
 | 2026-07-02 20:21 | PrivateMaps `711e539` "Irongate Harbor remove dev phase" | r/15, r/16 | record |
-| 2026-07-02 20:21 | That commit carried the Base folders | r/16 | inference (file list unread) |
+| 2026-07-02 20:21 | That commit carried the Base maps; its message is Ruediger's joke about a stalemating map put into the dev phase | account §18 | account (file list unread) |
 | 2026-07-02 20:23–20:38 | Base 2-Wool (26), Base 2-Island (28), Base 4-Team (33) on server-2; polls 3 of 4 | API, r/16 | record |
 | 2026-07-02 21:21 | Fix `7576a6c4`: exported worlds crashed the 1.8 loader ("Claude had to fix it", in the call) | r/09, r/16 | record |
 | 2026-07-02 22:47 | Plan model; `FannedGraph` enters, still in the studio | r/09, r/08 | record |
@@ -58,11 +92,13 @@ Match times are starts.
 | 2026-07-27 21:42 → 07-28 00:30 | Kuusepuu CTC three times, Hello World Micro twice (API); Base 4-Team 00:30 (log); "we now have AI maps on occ" | API, r/13, r/17 | record |
 | 2026-07-27 | Kuusepuu is not an AI map; Hello World Micro's layout is Hello World's on the grid, drawn by him | account §6, §14 | account |
 | 2026-07-31 | Kuusepuu CTC 1.0.3 "Reported live"; moving-room timing by Ruediger | r/06, r/15 | record |
+| 2026-07-30 | 19 commits by a Claude session on an unmerged `MinecraftLayoutEditor` branch | r/18 | record |
 | 2026-08-01 | Terrain painting "walls, rims, plateaus"; wall run | r/05, r/11 | record |
 | 2026-08-02 | Grown tree as Catmull-Rom limbs | r/10 | record |
 | 2026-08-06 20:11 / 20:15 / 20:17 | `wandering-u.zip` sent; PrivateMaps "Wandering U: added"; played on server-1, 36 players | r/15, API | record |
 | 2026-08-06 | Wandering U: layout his in text, XML Claude's; players fell from the moving room | account §8, §2–§3 | account |
 | 2026-08-07 18:58 / 19:01 | No Blocks Placed to CommunityMaps; played, 46 players, 15 min 35 s | r/05, API | record |
+| 2026-08-09/10 | Three match-flow commits in CTWAnalysis, the data behind the gameplay documents | r/18 | record |
 | 2026-08-10 04:00 / 04:04 | Cedar Crossing (arcadeboss, SuperGrok) uploaded and played: the first match on a map no person laid out | r/11, API | record |
 | 2026-08-11/12 | The first fifteen through `tools/mapgen`, 11 Opus 5 and 4 Haiku 4.5; MG1–MG13 | r/03 | record |
 | 2026-08-12 21:13 | PrivateMaps deletes the three Base maps and Wandering U | r/15 | record |
@@ -78,7 +114,7 @@ Match times are starts.
 | 2026-08-22 | Hollow Crown (Haiku 4.5): the monument inside the core | r/05; account §12 | record; account |
 | 2026-08-24 18:58 / 19:05 | 6 maps sent; PrivateMaps "Add a few very human maps for testing" | r/15 | record |
 | 2026-08-24 19:08–19:50 | First test evening: Hollowbank, Sunspit, Siderite Bowl, Hollowmarch, Cairnmeadow, Elderwold on server-1 | API, r/16 | record |
-| 2026-08-24 | "Most of them were just 'Build a map' without any prompting whatsoever"; javg's PrivateMaps commit "reorganize the slop" | r/17, maps-changelog | record |
+| 2026-08-24 | To the award show's organiser: "Most of them were just 'Build a map' without any prompting whatsoever"; PrivateMaps commit "reorganize the slop" | r/17, maps-changelog | record |
 | 2026-08-24 23:48 | Friend's "Liminal DTM" prompt opens the session of Interchange, Overwall and Aerie | s/06 | record |
 | 2026-08-25 20:37 | Tarnfell played | API | record |
 | 2026-08-25 | Aerie's XML unplayable | sessions list; account §11, §12 | account (no record; the model reported the gate open) |
@@ -100,19 +136,20 @@ Match times are starts.
 | 2026-09-14 | Mirkholt corrected by two messages | s/12 | record |
 | 2026-09-18 | TTtie: "those kinda finally start looking like real maps" | r/17 | record |
 | 2026-09-19 | `WHAT-A-BOARD-IS-MADE-OF.md`: "None of it is enforced anywhere" | r/03 | record |
-| 2026-09-20 21:53–22:45 | Eight matches, Peatgarth twice, hosted by TTtie; Millrace after (log) | API, r/17, r/13 | record |
+| 2026-09-20 21:53–22:45 | Eight matches, Peatgarth twice; Millrace after (log) | API, r/17, r/13 | record |
 | 2026-09-20 23:48 → 09-24 | Forum thread "stop AI maps from being played at all", 247 messages kept | r/17 | record |
 | 2026-09-21 | Haiku 4.5, Sonnet 5, Opus 5 on one brief | r/03 | record |
 | 2026-09-22 | First Opus 5.5 commit | r/02 | record |
 | 2026-09-24 | Scarbutte and three more, terrain only | s/13 | record |
 | 2026-09-26 → 28 | Discord sign-in, tokens, queue, pgmstudio.de self-deploys on a small Hetzner machine | r/02, r/17 | record |
-| 2026-09-27 | "Slop Sunday happening now! testing some ai assisted maps"; Technodono: going public "concerning" | r/17 | record |
+| 2026-09-27 20:58 | Ruediger's announcement in the event channel, "Slop Sunday … happening now! testing some ai assisted maps", a minute before the first match; a skull 13 times among the reactions (28 Nov) | sources/slop-sunday-announcement; account §19 | record |
+| 2026-09-27 | The contest's map developer: going public "concerning" | r/17 | record |
 | 2026-09-27 20:59–22:36 | Thirteen matches: eleven from `/event add`, then Delverdale and Whitstone Weald; teams "Claude" and "Anti-Slop" win two | API, r/15, r/16 | record |
-| 2026-09-27 22:36 | To ryan: "that was the prompt for the last two" | r/17 | record |
+| 2026-09-27 22:36 | To an administrator: "that was the prompt for the last two" | r/17 | record |
 | 2026-09-27 | The last AI-map test | account §2 | account (no later evening in the log or the API to 27 Nov) |
 | 2026-09-28 | Map notes pinned to ground; a player from the event reviews the tool | r/05, r/15 | record |
 | 2026-09-29 | Gypsum Reach and Sootcombe worked through notes in five rounds | s/14 | record |
-| 2026-10-03 | To cs_: "i wanted a layout editor and then claude was just too good at it and Ruediger wanted ai maps" | r/17 | record |
+| 2026-10-03 | To a developer of the website: "i wanted a layout editor and then claude was just too good at it and Ruediger wanted ai maps" | r/17 | record |
 | 2026-10-05 → 08 | Countryside drawn in the studio | r/11 | record |
 | 2026-10-07 22:21 / 22:26 | "what if like an agent didn't need to rely on the current way…"; ingredients and mode | s/00 | record |
 | 2026-10-07 | He told a session he did not like the layer model; gave nothing to the first board | account §1, §7 | account (differs in form, s/01) |
@@ -121,12 +158,12 @@ Match times are starts.
 | 2026-10-09 | Brittlebush read; `pgmvox.grammar`; Brittlebush III built from his plan | r/05 | record |
 | 2026-10-09 | Alphaboy uploads Countryside | account §5 | account (repository: 15 Oct UTC) |
 | 2026-10-09/10 | Notes sorted: 30 faults, 9 the studio would catch | r/05, r/06 | record |
-| 2026-10-09/10 | Viewing of the new pgmvox boards: Hollowcrown, Lantern Karst, Hollow Mesa, Riftwater; not a test | account §13, §15 | account |
+| 2026-10-09/10 | Viewing of the new pgmvox boards on mapdev, five present (the author, Ruediger, TTtie, mitchiii, wylt): Hollowcrown, Lantern Karst, Hollow Mesa, Riftwater; not a test | account §13, §15, §18 | account |
 | 2026-10-09/10 | Observer chat: "are all these ones unmodified from generated state?"; "its over for m*pdevs."; "again, layout is 100% mine" | sources/staff-chat-october | record (the date is the author's) |
 | 2026-10-09/10 | They decide to pause; later: a month of weekly testing, the tool needing care | account §13, §14 | account |
 | 2026-10-10 | Studio against pgmvox, Sonnet 5.5: comparable; Ruediger proposes finishing the three best | r/03, r/15 | record |
 | 2026-10-10/11 | Contest may list the studio "As long as they can't use the opus function" | r/17 | record |
-| 2026-10-11 | javg on studio XML: "it shouldn't be 'advertised'"; model-made maps hidden in the studio; "AI maps being banned" (mamebt) | r/17 | record |
+| 2026-10-11 | The award show's organiser on studio XML: "it shouldn't be 'advertised'"; model-made maps hidden in the studio; "AI maps being banned" (a player) | r/17 | record |
 | 2026-10-15 | `docs/pgmvox-port.md`; fire-and-ice study forms | r/02, r/04 | record |
 | 2026-10-16 | Six blind AI entries to a Fire and Ice contest, all DTC; Viridian in the log | r/04, r/13 | record |
 | 2026-10-17 (about) | He begins the hand-built fire-and-ice map | account §14 | account |
@@ -136,15 +173,16 @@ Match times are starts.
 | 2026-11-02 → 07 | Agents compose his sketch world; every version rejected | r/04 | record |
 | 2026-11-04 | Port: every phase shipped or parked; grammar has no shipped line | r/02 | record |
 | 2026-11-11 | Contest without submissions: "You can't call it a contest if it's me vs you" | r/17 | record |
-| 2026-11-11 | That contest is the cancelled fire-and-ice contest | r/04, r/17 | inference (no source names them as one) |
+| 2026-11-11 | That contest is the cancelled fire-and-ice contest | account §18 | account |
 | 2026-11-13 / 14 | Layout generator frozen; last commit on `main` | r/02 | record |
-| 2026-11-23 / 26 | javg asks him to present "best newcomer" at the Mappys; the "Prompt-a-Map Sketch" sent | r/17 | record |
-| 2026-11-25 | To Technodono, of the fire-and-ice map: "Note that it still is not AI. Just having claude follow along." | r/17 | record |
+| 2026-11-23 / 26 | The award show's organiser asks him to present "best newcomer" at the Mappys; the "Prompt-a-Map Sketch" sent | r/17 | record |
+| 2026-11-25 | To the contest's map developer, of the fire-and-ice map: "Note that it still is not AI. Just having claude follow along." | r/17 | record |
 | 2026-11-27 | Study of the hand-built map committed; the API read; "which important big ai fails did i miss?" | r/04, r/16, r/17 | record |
 | 2026-11-27 21:46 | Lantern Pass played, 49 players, 1 min 8 s | account §15, §16 | record (match page, API) |
 | 2026-11-27 23:53 → 11-28 00:13 | Loomfall, Lantern Drop, Spark, Curio Square: the first freeform boards on the public servers | account §16 | record (API, as given) |
 | 2026-11-27/28 | Lantern Pass liked but short; Loomfall "a bit bugged"; Lantern Drop "just worked"; Curio Square "okay" | account §14, §16 | account |
 | 2026-11-28 | The five voices of 2 July named; the fire-and-ice map is the one Minuyo took for AI | r/16; account §17 | account |
+| 2026-11-28 | Early pictures, the message of 11 February 2025 and the v0 link; answers on the viewing, the contest, `711e539`; names withdrawn from the thread and four conversations | account §18–§20 | account |
 | 2026-11-28 (planned) | Real gameplay to be recorded on a few maps | account §14 | account (plan) |
 
 ## Counts behind the table
