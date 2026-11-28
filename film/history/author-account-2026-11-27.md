@@ -233,3 +233,9 @@ Answers to the questions of 28 November:
 - Whether `ctw-layout-editor` is the same repository as `MinecraftLayoutEditor` he does not know; "sicherlich wird das ein anderes sein."
 - `711e539` was the commit that carried the Base maps. Its message was Ruediger's joke: Irongate Harbor is an older map that tends to stalemate, and a map that runs long is put into the dev phase so players cannot request it.
 - The forum thread should be anonymised. The messages of Technodono, ryan, javg and cs_ he would "vielleicht auch eher anonym behalten".
+
+## Nineteenth instalment, 28 November
+
+- A screenshot of the one announcement in the event channel of the Discord: Ruediger's "Slop Sunday happening now! testing some ai assisted maps" of 27 September 2026 (`sources/slop-sunday-announcement/`).
+- The eight pictures of the eighteenth instalment were sent in the order of the text, so their assignment to the dates holds.
+- On v0 (16 August 2025) he believes he made not only the one prototype but experimented with several things; he wants to look that up again.
