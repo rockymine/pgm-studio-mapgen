@@ -12,6 +12,7 @@ text and assigned by their order in his message, which is an inference for pictu
 | `2025-05-24-claude-chat-level-design-generator.jpg` | Sat 24 May 2025, 01:39 | a Claude chat artifact, "Interactive Level Design Visualizer", version 6 of 6: two teams, a void strip, lanes, void access points |
 | `2025-11-04-first-okay-layout-in-game.png` | 4 November 2025 | in game: two stone landmasses facing each other, drawn in the browser and imported on the mapmaker server |
 | `2025-11-06-layout-editor-world-import.png` | 6 November 2025 | "Minecraft Layout Editor" with "Import World (Region Files + level.dat)", five files chosen |
+| `2026-ctw-match-activity-18jan-08mar.png` with `2026-ctw-match-activity.md` | 18 January to 8 March 2026 | the logged matches by hour and day, and the daily table read out and summed |
 | `2026-player-position-trace.png` | early 2026 | a point cloud of logged player positions in which the map's layout can be read |
 | `2026-01-island-triangulation-detail.png` | from about 26 January 2026 | "Island Triangulation Detail View": nine islands cut into triangles |
 | `2026-01-simplified-skeleton-detail.png` | from about 26 January 2026 | "Simplified Skeleton Detail View (Vector Graph)": the same nine islands as end nodes, junctions and edges |
