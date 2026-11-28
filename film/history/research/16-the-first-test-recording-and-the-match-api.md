@@ -9,10 +9,17 @@ one stereo audio track holding the game and the voice call together. The file na
 21:40:20, so recording minute 0 is 19:40:20 UTC. The clock is checked against the server twice: Pigland ends at
 20:22:46 by the API and the "Cycling to Base 2-Wool in 30 seconds" banner is on screen at minute 42:30.
 
-**In the call** were Ruediger_LP, rockymine (the author), samshaap and TTtie, by the author's word. The audio was
-transcribed with Whisper (`large-v3-turbo`, on the CPU) and read against stills taken every 30 and 90 seconds. The
-transcript has no speaker labels and is not committed, like the direct messages in research `15`; this file quotes
-it briefly. A quote is put in a named mouth only where the speaker says who they are or what they built.
+**In the call** were Ruediger_LP, rockymine (the author), samshaap and TTtie, by the author's word. nuttydragon, a
+moderator on the server, joins at about minute 20:40, also by the author's word. The audio was transcribed with
+Whisper (`large-v3-turbo`, on the CPU) and read against stills taken every 30 and 90 seconds. The transcript is not
+committed, like the direct messages in research `15`; this file quotes it briefly.
+
+**The speakers were told apart by voice and named by what they say.** A speaker model (SpeechBrain ECAPA) grouped
+the spoken passages into five voices. The author is the voice that explains the studio for minutes on end. Ruediger
+answers "Just do it, Rudiger do it", and samschaap answers "Sam, are you loading them?". nuttydragon is the voice
+that is almost silent before minute 20; TTtie is the fifth by elimination.
+
+**Single lines can be in the wrong group.** A quote is named below only where the voice and the content agree.
 
 ## 1. The evening, minute by minute
 
@@ -21,14 +28,14 @@ it briefly. A quote is put in a named mouth only where the speaker says who they
 | 0:00–14:00 | 19:40–19:54 | On `mapdev.oc.tc`, the four of them walk the three Base maps: Base 2-Island (one wool a team), Base 2-Wool (two a team), Base 4-Team ("Base 4-Team by" on the scoreboard, one player a team) |
 | 15:00 | 19:55 | Back on `play.oc.tc`, ordinary rotation (Smoke KotH) |
 | 17:00–20:00 | 19:57–20:00 | The author cannot set a map; "No new maps found"; the maps are only on mapdev; "throw it in private for now" |
-| 20:40–31:10 | 20:01–20:11 | The author explains the studio to a player who joins the call |
+| 20:40–31:10 | 20:01–20:11 | nuttydragon joins the call; the author explains the studio to him |
 | 33:00–40:10 | 20:13–20:20 | The commit message is discussed: "remove Iron Gate", "Development phase" |
 | 40:41 | 20:21:01 | PrivateMaps `711e539` "Irongate Harbor remove dev phase", by RuedigerLP (`#maps-changelog`) |
 | 41:06–42:30 | 20:21–20:23 | "New maps"; Base 2-Wool is set next, without a vote |
 | 43:33–47:19 | 20:23:53–20:27:39 | **Base 2-Wool** on server-2, 26 players, Red wins; server poll "Rate the map we just played": 3, 21 votes |
 | 48:27–53:39 | 20:28:47–20:33:59 | **Base 2-Island**, 28 players, Red wins; the poll is withdrawn |
 | 54:48–58:26 | 20:35:08–20:38:46 | **Base 4-Team**, 33 players, Blue wins; poll 3, 27 votes |
-| 59:18 | 20:39:38 | Recording ends: "now back to the normal boy maps"; Java II starts at 20:39:55 |
+| 59:18 | 20:39:38 | Recording ends on the author's "now back to the normal boring maps"; Java II starts at 20:39:55 |
 
 **The poll scale is one to four.** The screen shows `[1] [2] [3] [4]` under the question and a final result of 3 for
 both polls that ran. Of the Base 2-Island poll the chat says only samschaap's "democracy was not giving good results
@@ -48,21 +55,22 @@ actually crashed the server, because it was in the wrong format, and then Claude
 studio is `7576a6c4`, committed 23:21:34 +0200, 42 minutes after the recording ends. The fixed worlds were therefore
 loaded before the fix was committed; that is an inference from the times, not something said.
 
-**The void in one board was the drawing's, the author said.** On mapdev, about six minutes in, a voice asks why part
-of the map is void; the reply is "It's void because I drew it exactly like that on the piece of paper. So it's my
-fault." The reply goes on that Claude "wanted to make a simple build region". This is the squared-paper drawing
-of research `09`.
+**The void in one board was the drawing's, the author said.** On mapdev, about six minutes in, Ruediger asks "why is
+that void?"; the author answers "It's void because I drew it exactly like that on the piece of paper. So it's my
+fault." He goes on that Claude "wanted to make a simple build region". This is the squared-paper drawing of
+research `09`.
 
 **The build height was the improvement named.** "Better than Vauxite, because Vauxite had no build height in the
-first test." Research `11` dates Vauxite's build ceiling to its 1.0.1 of 1 July.
+first test." The voice model puts this with the author, but it follows "Pretty nice, well done", so who said it is
+left open. Research `11` dates Vauxite's build ceiling to its 1.0.1 of 1 July.
 
-**The maps went in under another map's commit message.** The commit is discussed for seven minutes ("we'll try to
-hide our crimes"), and the only PrivateMaps commit that day is `711e539`, "Irongate Harbor remove dev phase", 40
+**The maps went in under another map's commit message.** The commit is discussed for seven minutes (Ruediger: "we'll
+try to hide our crimes"), and the only PrivateMaps commit that day is `711e539`, "Irongate Harbor remove dev phase", 40
 seconds before "New maps" is said. `#maps-changelog` shows the three Base folders deleted from PrivateMaps on 12 August
 (research `15` §3). That `711e539` is the commit that added them is inferred; its file list was not read.
 
 **The authors' line was empty.** The sign at the observer spawn and the map's credit read only "made by", and the
-call laughs about it: "who claims ownership?", "We need updated OCC AI legislation".
+call laughs about it. nuttydragon: "who claims ownership?" and "we need updated OCC AI legislation".
 
 ## 3. How the author described the studio that evening
 
@@ -85,12 +93,16 @@ controversial a little bit", made with Claude; the movement data it collected le
 **He described the editor as Figma for islands.** Polygon islands at different heights, layers, holes, elevation,
 Bézier splines, rotation modes, cutting islands, aligning on anchor nodes with guidelines; "there's no prompting yet".
 
-**He kept the evening for the grey boxes.** Asked during the mapdev walk to generate "something more interesting
-now", he declined: "Because I want to have this moment for myself and appreciate it, and then we can do better
+**He kept the evening for the grey boxes.** Asked by Ruediger during the mapdev walk to generate "something more
+interesting now", he declined: "Because I want to have this moment for myself and appreciate it, and then we can do better
 stuff."
 
 **The players saw grey boxes.** A player in chat as Base 4-Team started: "is tihs jus the greybox?". In the call,
 during Base 2-Island: "We are witnessing history and it's really boring."
+
+**Ruediger praised them with a straight face.** At minute 20: "You know what I think is so beautiful about your new
+maps, Rocky? How they give so much room to the imagination of the player", a canvas where players "build stuff out
+of cobblestone and wood planks".
 
 ## 4. The match API
 

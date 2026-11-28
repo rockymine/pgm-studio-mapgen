@@ -179,3 +179,15 @@ Added on 27 November: besides Lantern Pass, the arcade boards still to be tested
 - The boards at the 9–10 October viewing, confirmed: Hollowcrown (the two monuments, one underground, one on the castle), Lantern Karst (the flying capture-the-wool board) and Hollow Mesa; the very first freeform board was shown too.
 - Lantern Pass, tested 27 November 2026: match https://oc.tc/matches/112edd. Read from that page the same evening: "Casual Match", Season 41, status "Match over", duration 01:08, score Runners 1 – Shooters 0; top kills 4, top deaths 1, top damage dealt 57.56 hearts, top arrows shot 39; no authors shown on the page, no absolute date, no player count. (The author's notes on it are in the fourteenth instalment: liked, a little too short, shooters too slow, runners can get stuck in spawn.)
 - Match ids on oc.tc are not sequential (e.g. a486f4, aa2409 on one day), so the pages of matches missing from the log cannot be found by counting.
+
+## Sixteenth instalment, night of 27 to 28 November
+
+The author's notes, written in English just after the last arcade boards were played; the matches are from the
+server's match API (research `16` §4), times UTC, players counted as distinct participants.
+
+- Loomfall, https://oc.tc/matches/08d8a6, 23:53:50–23:56:23 on 27 November, server-2, 23 players: a bit bugged; players can just stay on the wool blocks, and if they do not move they do not fall.
+- Lantern Drop, https://oc.tc/matches/bd3b0c, 23:57:11 on 27 November to 00:00:31 on 28 November, 36 players: just worked; no complaints from players.
+- Spark, https://oc.tc/matches/c95b80, 00:01:17–00:05:14, 26 players: no complaints either. The observer spawn is not on the spark, and dying after a fall takes a while where it should be instant. The surrounding panorama might be a bit oversized.
+- Curio Square, https://oc.tc/matches/a94f4f, 00:06:01–00:13:02, 31 players, Seekers against Hiders, Hiders won: okay. In some spots hiders can get stuck and not get back out. One player missed a redstone secret, buttons and doors for hiders to take advantage of. The surroundings are a bit oversized again.
+- Lantern Pass, the board played first that evening (fourteenth and fifteenth instalments), had 49 players by the API, 21:46:51–21:47:59.
+- The guest who joins the call of 2 July at about minute 20 is nuttydragon, a moderator on the server (research `16`).
