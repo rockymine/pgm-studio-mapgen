@@ -191,3 +191,11 @@ server's match API (research `16` §4), times UTC, players counted as distinct p
 - Curio Square, https://oc.tc/matches/a94f4f, 00:06:01–00:13:02, 31 players, Seekers against Hiders, Hiders won: okay. In some spots hiders can get stuck and not get back out. One player missed a redstone secret, buttons and doors for hiders to take advantage of. The surroundings are a bit oversized again.
 - Lantern Pass, the board played first that evening (fourteenth and fifteenth instalments), had 49 players by the API, 21:46:51–21:47:59.
 - The guest who joins the call of 2 July at about minute 20 is nuttydragon, a moderator on the server (research `16`).
+
+## Seventeenth instalment, 28 November
+
+- He is now asked, it feels constantly, whether whatever he builds on the server is AI. Minuyo, for one, asked it first of the very particular map he is building at the moment, the one with the wool and the core; others asked the same. He finds it funny, and has to explain that he can still make something with his own hands.
+- Why they ask, in his words: at the start that map did look a little wild. AI is more structured; what it partly lacks is the creativity for the wild and for experimenting, which he lives out to the full in that map.
+- A forum post on the server's Discord, "stop making AI maps" or the like, drew a whole conversation; he thinks someone made it for fun, and does not know who. The poster has since deleted all of their own messages, but many replies remain in the thread.
+- The Mappys, the community's map awards run by javg, were discussed mostly with javg. AI maps do not count there; but the "Prompt-a-Map Sketch" came out of it, a comic sketch for the show made with all the failures (research `17` §3–§5).
+- The thread itself, the search for "ai maps" and his conversations with TTtie, Technodono, javg, ryan and cs_ are read in research `17`.
