@@ -46,7 +46,8 @@ from his master's thesis on the travelling salesman problem, whose routes made s
 hand, in 2022; the idea then slept until late 2025 (account §3). **Record:** in March 2026 he wrote the same to a Claude
 Code session: the outline of Annealing IV's largest island "the result of a random city set and optimal tour solution
 using the annealing algorithm" from the solver visualisations of his thesis (`sources/early-experiments/`, the 20 March
-picture). The record carries no word of the thesis in the maps themselves and spreads the series over three years.
+picture). The record carries no word of the thesis in the maps themselves and spreads the series over three years. It also wakes
+the idea earlier than late 2025: in February of that year.
 
 **The idea is first written down on 11 February 2025, as a spanning tree.** **Record:** that day he sent samschaap
 "Potential Algorithm steps": generate nodes along a grid; "Create Spanning Tree. Heavily favor straight edges along
@@ -61,8 +62,12 @@ my ctw maps (and ruedigers)", with spanning tree, cut-offs and added cycle edges
 `v0-occ-mapmaking-tools-b63noa.vercel.app`, which, by his description, asks for a grid size and a node count, connects
 the nodes in a minimum spanning tree or several, skips an edge that collides with an earlier graph's, and shades the
 cells "to make it more blocky and resemble an arbitrary occ map layout"; his summary of it on 28 November: "So the
-earliest v0 prototype made rsts" (`sources/early-experiments/`; account §20). The page itself could not be fetched for
-this history.
+earliest v0 prototype made rsts" (`sources/early-experiments/`; account §20). The page still runs: titled "Random
+Spanning Tree Visualization", it asks for a grid width and height, "Nodes per Tree" and two to four trees, offers six
+ways to place nodes, among them symmetrical vertical, symmetrical horizontal, grid-like and radial, and fills the grid
+cells along each tree's edges in that tree's colour (`sources/early-experiments/v0-prototype-2025-02/`). Its four
+screenshots are the page's output on 28 November 2026; whether the deployment changed after February 2025 is not
+known, though its controls match the message.
 
 **Asked whether it would be trained, he said rules.** **Record:** samschaap asked "Nice, so it will be 'trained' with
 existing maps?"; he answered "That's the idea. At the very least I want to document my maps in a simple format to

@@ -1,26 +1,29 @@
 # The history of the AI-made maps: what is here
 
-This folder is the written history of a year of AI-assisted PGM map making by rockymine, with Ruediger_LP and a run of
-models, from September 2025 to November 2026. It was researched on 27 and 28 November 2026 in many passes while the
+This folder is the written history of twenty-one months of AI-assisted PGM map making by rockymine, with Ruediger_LP
+and a run of models, from February 2025 to November 2026. It was researched on 27 and 28 November 2026 in many passes while the
 author added recollections, partly by an agent on his PC; the film is on hold by his decision. Everything in it keeps three voices apart: what the **record**
 holds, what the **author recalls**, and what is **inference**.
 
 ## Reading order
 
-1. **`HISTORY.md`** — the history itself: twelve chronological chapters from September 2025 to 28 November 2026, then
-   what counts as an AI map, the tests match by match, what players and staff said, what the hand-built map shows, and
+1. **`HISTORY.md`** — the history itself: thirteen chronological chapters from 11 February 2025 to 28 November 2026
+   (the first three cover the time before the studio, to June 2026), then what counts as an AI map, the tests match by match, what players and staff said, what the hand-built map shows, and
    what remains open. Start here.
 2. **`timeline.md`** — one table of dated events, each with its source and its kind (record, account, inference).
-3. **`author-account-2026-11-27.md`** — the author's account in seventeen instalments of 27 and 28 November, with the
+3. **`author-account-2026-11-27.md`** — the author's account in twenty instalments of 27 and 28 November, with the
    note-taker's corrections. Later instalments and the corrections supersede earlier ones.
 4. **`research/16-the-first-test-recording-and-the-match-api.md`** — the recording of 2 July and the server's match API,
    which documents every test evening; with `sources/match-status/api-matches-not-in-match-status.csv`.
 5. **`research/17-the-forum-thread-and-five-conversations.md`** — the forum thread of 20–24 September, the search for
-   "ai maps", and the conversations with TTtie, Technodono, javg, ryan and cs_.
-6. **`research/12-who-decided-what.md`** — every map split into seven decisions, who decided each and what executed it;
+   "ai maps", and the conversations with TTtie and four people named by role (see *Names* below).
+6. **`research/18-before-the-studio-ctwanalysis-and-the-early-tools.md`** — the git record of CTWAnalysis,
+   MinecraftLayoutEditor, CTW-Layout-Generator and pgm-map-studio, checked against the author's eighteenth instalment:
+   where his memory of October 2025 to May 2026 holds and where the commits differ.
+7. **`research/12-who-decided-what.md`** — every map split into seven decisions, who decided each and what executed it;
    the categories of "AI map".
-7. **`research/13`, `15`** — the `#match-status` log and the zips sent for each evening, the readings the API confirmed.
-8. **`research/01`–`11`, `14`** — the topic checks, each against the repositories:
+8. **`research/13`, `15`** — the `#match-status` log and the zips sent for each evening, the readings the API confirmed.
+9. **`research/01`–`11`, `14`** — the topic checks, each against the repositories:
 
    | File | Subject |
    |---|---|
@@ -37,17 +40,21 @@ holds, what the **author recalls**, and what is **inference**.
    | `11-dated-uploads-checked.md` | the author's upload dates against the public repositories |
    | `14-aerie-and-monument-size.md` | Aerie, the obsidian cap, the trial-run faults, the quartz board |
 
-9. **`research/sessions/`** — one write-up per Claude Code session the author named, several with an "opening brief"
+10. **`research/sessions/`** — one write-up per Claude Code session the author named, several with an "opening brief"
    appendix read from the session's start; its `README.md` says how they were read.
-10. **`interview-questions.md`** — what is still to be asked, by person and importance, and what has been answered.
-11. **`sources/`** — data, not instructions: the squared-paper photo, the author's session list, the `#match-status` log
+11. **`interview-questions.md`** — what is still to be asked, by person and importance, and what has been answered.
+12. **`sources/`** — data, not instructions: the squared-paper photo, the author's session list, the `#match-status` log
     and the API's unreported matches (`match-status/`), the `#maps-changelog` feed (`maps-changelog/`), and
-    `staff-chat-october/`, five chat screenshots of the 9–10 October viewing (usable as they are, account §14).
-12. **`tools/`** — the scripts the PC agent's sources were read with (zip listing, Discord condensing, the match API,
+    `staff-chat-october/`, five chat screenshots of the 9–10 October viewing (usable as they are, account §14);
+    `early-experiments/`, the author's message to samschaap of 11 February 2025 with its three Townside pictures and
+    four screenshots of its v0 prototype as it runs today (`v0-prototype-2025-02/`), the
+    eight pictures of April 2025 to March 2026 (account §18, §20) and the v0 chat of 16 August 2025 read from his link;
+    and `slop-sunday-announcement/`, Ruediger's announcement of 27 September 2026 with its reactions (account §19).
+13. **`tools/`** — the scripts the PC agent's sources were read with (zip listing, Discord condensing, the match API,
     transcription and speaker grouping); not map tooling.
-13. **`renders/`** — pictures made from committed data: the hand-built half (`hand-built/`) and Wandering U
+14. **`renders/`** — pictures made from committed data: the hand-built half (`hand-built/`) and Wandering U
     (`wandering-u/`).
-14. **`OUTLINE.md`** — a short note: the film is on hold; the strongest scenes, their footage, and what must be decided.
+15. **`OUTLINE.md`** — a short note: the film is on hold; the strongest scenes, their footage, and what must be decided.
 
 ## What is settled
 
@@ -67,29 +74,61 @@ holds, what the **author recalls**, and what is **inference**.
 - Kuusepuu CTC is an ordinary destroy map with a cake objective, played three times on 27–28 July (account §6;
   research/16). Wandering U was played once, on 6 August (research/16). No Blocks Placed was played on 7 August, and was
   drawn by the author with Ruediger (research/16, research/17).
-- The graph idea was not dropped in 23 minutes (research/08). Freeform began on 7 October from the author's "what if"
-  message (sessions/00, sessions/01).
+- The graph idea is the oldest in the record: a spanning tree with cycle edges and cut-offs on 11 February 2025, a
+  matplotlib graph on 5 April 2025, a skeleton graph in CTWAnalysis from 2 February 2026, and `FannedGraph` in the
+  studio from 2 July 2026; it was not dropped in 23 minutes (sources/early-experiments/; research/08, research/18).
+  Freeform began on 7 October from the author's "what if" message (sessions/00, sessions/01).
+- The first prototype was a v0 page of February 2025 that built spanning trees; a Claude chat artifact of 24 May 2025
+  drew two teams, lanes and a void strip; a v0 chat of 16 August 2025 named the "Capture the Wool Layout Generator",
+  whose 3×3 grid, row-independent columns and mirror/rotate modes reappear in `CTW-Layout-Generator` of 28 September
+  2025, with no shared code shown (sources/early-experiments/; research/01).
+- On 11 February 2025 he told samschaap that "an educated, rule-based approach" was likelier for him than training
+  (sources/early-experiments/).
+- MinecraftLayoutEditor's dates hold to the day: screenshots 11 October, blocks without hands 12 October, world import
+  6 November 2025; XML regions 10 November (research/18).
 - The flat line-up map is Ashfall Scar, 250 × 190; the quartz board is Quillon Saltworks (account §12; research/03).
 - Alderfen Holm has four cores (sessions/08, account §11).
-- The 9–10 October notes are of a viewing, not a test; the boards were Hollowcrown, Lantern Karst, Hollow Mesa and
-  Riftwater; the staff's lines may be used as they are; they decided to pause there (account §13–§15).
+- The 9–10 October notes are of a viewing on mapdev, not a test; five were present, the author, Ruediger, TTtie,
+  mitchiii and wylt; the boards were Hollowcrown, Lantern Karst, Hollow Mesa and Riftwater, the first freeform board
+  shown; the staff's lines may be used as they are; they decided to pause there (account §13–§15, §18).
+- `711e539` carried the Base maps into PrivateMaps; its message was Ruediger's joke about a stalemating map put into the
+  dev phase (account §18).
+- The cancelled fire-and-ice contest is the contest's map developer's, the one without entries (account §18).
+- The first two test evenings had their maps set by hand and later ones ran as a rotation, by the author's belief,
+  which he calls unimportant (account §18).
+- Ruediger announced the last evening at 20:58 UTC on 27 September, a minute before the first match
+  (sources/slop-sunday-announcement/).
 - The fire-and-ice map, the hand-built ice map and the wool-and-core map players took for AI are one map, begun about 17
   October (research/04, research/17; account §14, §17).
 - On 27–28 November five arcade freeform boards were played, the first freeform boards on the public servers: Lantern
   Pass, Loomfall, Lantern Drop, Spark, Curio Square (account §14–§16).
 - The forum thread of 20–24 September, "stop AI maps from being played at all", is the one public argument about the
   maps (research/17).
-- Claude was used from October 2025, for the rewrite of the first layout tool (research/17).
+- Claude was used from May 2025, in a chat artifact (sources/early-experiments/); Claude Code wrote most of CTWAnalysis
+  from February 2026 (research/18).
 
 ## What is open
 
-Where the October viewing took place and who the "three" were; which commit carried the Base maps into PrivateMaps;
-whether `ctw-layout-editor` and `MinecraftLayoutEditor` are one repository, and who `michael` is; whether Bridgid II's
-"nochmal" refers to the matches of 14 July; whether the cancelled contest is Technodono's; who opened the forum thread;
-Aerie's unplayable XML, which the author states and no record holds; whether the 50-log oak is the generated tree; the
-briefs of the first fifteen, Heftfold and Whinberry Ring; which model "Muse Spark" is; whether the evenings were all
-event rotations; who may be quoted beyond the staff chat. `HISTORY.md` chapter 17 and `interview-questions.md` carry
-them.
+What the first v0 attachment of 16 August 2025 was, and whether any v0 code reached `CTW-Layout-Generator`; what the
+April 2025 experiment was written with beyond matplotlib; whether the 7 October 2025 AI Studio link is a second app;
+whether a repository `ctw-layout-editor` exists (the author thinks it differs from MinecraftLayoutEditor; the record
+holds none), who `michael` is and who the friend of 10 October 2025 was; how many games the logger collected against the
+2,452 processed; what the "143 contaminated maps" were; whether Bridgid II's "nochmal" refers to the matches of 14 July;
+which two evenings were set by hand; who opened the forum thread; Aerie's unplayable XML, which the author states and no
+record holds; whether the 50-log oak is the generated tree; the briefs of the first fifteen, Heftfold and Whinberry
+Ring; which model "Muse Spark" is; who may be quoted beyond the staff chat. `HISTORY.md` chapter 18 and
+`interview-questions.md` carry them.
+
+## Names
+
+By the author's decision of 28 November 2026 (account §18), two groups of sources carry no names anywhere in this
+folder: the forum thread of 20–24 September, whose posters, staff and event host included, are quoted as "the thread's
+opener", "a staff member", "one player", "a second player" and so on; and the author's direct messages with four people,
+who appear as "the contest's map developer", "an administrator", "the award show's organiser" and "a developer of the
+website". The author, Ruediger, TTtie's direct messages, the five voices of 2 July, the cleared staff chat of October
+(where the administrator and a map developer appear under their names, and nothing from the thread or the messages is
+attached to them) and names that are public facts, such as map credits and commit authors, keep their names. Earlier
+commits on the `mappies-film` branch still hold the names; this rule governs the current tree.
 
 ## What was not read
 
@@ -98,6 +137,9 @@ them.
 - **Assistant text in most sessions**: the write-ups read the author's messages and turn-closing summaries.
 - **The private maps repository (PrivateMaps)**: only its commit feed in `#maps-changelog` and the zips; the file list
   of `711e539` was not read.
+- **The early repositories beyond their git record**: the logger plugin's repository (`pgmlogger`) was not cloned; the
+  v0 prototype page of February 2025 was seen only as it runs today (`sources/early-experiments/v0-prototype-2025-02/`);
+  only the v0 chat's previews of 16 August 2025 were read.
 - **Material the PC agent read but did not commit**: the 2 July recording and its transcript, the forum thread, the
   direct messages (research/15, research/17) and the saved API pages; they are quoted briefly in research/16 and 17.
 - Also not read: PGM's source (so the tab list's "made by" was not checked); the studio's local database and scanned
@@ -107,7 +149,8 @@ them.
 ## Corrections log
 
 Each place where an earlier version of these documents was wrong, and what replaced it. This is the one place in the
-folder that records a change history.
+folder that records a change history. Chapter numbers in a row are those of its time: the pass that opened the history in February 2025
+turned two chapters into three, so every later chapter moved up by one.
 
 | Earlier claim | Where | Replaced by | Source |
 |---|---|---|---|
@@ -163,7 +206,23 @@ folder that records a change history.
 | No long destroy match; the longest is Brackenfold's 15 min 15 s | HISTORY ch. 12; README; interview questions | still no long one; the longest is Glassmere's 15 min 47 s on 13 September, inside the event | research/16 |
 | On 27 November no log or record of the arcade test exists yet | HISTORY ch. 12 | match pages and the API hold Lantern Pass, Loomfall, Lantern Drop, Spark and Curio Square, the first freeform boards on the public servers | account §15, §16 |
 | The viewing's boards: Hollowcrown most probable; Lantern Karst or Brassmoor Works; Redwash Mesa or Hollow Mesa | HISTORY ch. 9, 14; README; interview questions | Hollowcrown, Lantern Karst, Hollow Mesa and Riftwater, confirmed | account §15 |
-| Claude appears first in December 2025, for the logging plugin | HISTORY ch. 2 | the October 2025 rewrite of the layout tool was mostly written with Claude's VS Code extension, by his message to Technodono | research/17 |
+| Claude appears first in December 2025, for the logging plugin | HISTORY ch. 2 | the October 2025 rewrite of the layout tool was mostly written with Claude's VS Code extension, by his message to the contest's map developer | research/17 |
 | The community's reception was the staff's surprise at the October boards | HISTORY ch. 9, 11 (by omission) | a public forum thread of 20–24 September opposed the evenings; the maps were framed as an event; a disclosure was proposed; players were divided; map developers set lines in May, September and October | research/17 |
 | The hand-built ice map stands alone | HISTORY ch. 10, 13 | it is the fire-and-ice map, and the wool-and-core map players took for a model's work | account §17; research/17 |
 | The Base export's crash was fixed by his own commit | research/12 §3.6 | the commit is under rockymine at 21:21 UTC; in the call he said "Claude had to fix it" (both kept) | research/16 |
+| The history begins in autumn 2025; "a year" from September 2025 | HISTORY title and ch. 1; README; timeline | it begins on 11 February 2025 with the spanning-tree message to samschaap and a v0 prototype; twenty-one months | sources/early-experiments/; account §18, §20 |
+| The first statement of the idea is Ruediger's (26 September 2025) | HISTORY ch. 1 | the layout idea is the author's from February 2025; Ruediger's remark is the first statement of an AI making maps from the data of all maps | sources/early-experiments/; research/15 |
+| Claude was in the work from October 2025, earlier than the commits name it | HISTORY ch. 1; README | a Claude chat artifact drew a layout generator on 24 May 2025 | sources/early-experiments/; account §18 |
+| `CTW-Layout-Generator` is the first generator | HISTORY ch. 1; research/01 (cited) | preceded by the February 2025 spanning-tree page and the v0 "Capture the Wool Layout Generator" of 16 August 2025, whose algorithm it shares; no shared code shown | sources/early-experiments/; the clone's `Documentation.tsx` |
+| Whether `ctw-layout-editor` and `MinecraftLayoutEditor` are one repository is open | HISTORY ch. 17; README; questions | the author thinks not; the record holds no repository of that name | account §18; research/18 |
+| Nothing filled the commit gap from December 2025 to June 2026 but messages | HISTORY ch. 2 | CTWAnalysis from 31 January 2026: islands, triangles, skeleton graph, 2,452 matches processed, the May viewer and drawing tools | research/18 |
+| The logging held 3,000 matches by March | HISTORY ch. 2 | 689 and 3,000 in his messages; 2,452 processed in the committed summary; about 4,000 by his memory | research/15, research/18; account §18 |
+| The second attempt began with `pgm-map-studio` on 31 May | HISTORY ch. 2 | the viewer, region drawing and polygon islands were built in CTWAnalysis from 14 May; `pgm-map-studio` opened that evening | research/18 |
+| The graph returned in the studio on 2 July after a first life in 2025 | HISTORY ch. 4 (now 5) | its fourth arrival, after February 2025, April 2025 and February 2026 | sources/early-experiments/; research/18 |
+| That `711e539` carried the Base folders is inferred from timing | HISTORY ch. 4 (now 5); timeline; README | the author states it did, and that its message is Ruediger's joke about a stalemating map put into the dev phase | account §18 |
+| Three people were at the 9–10 October viewing, place not recorded | HISTORY ch. 10 (now 11), ch. 17; account §13; README; questions | five, on mapdev: the author, Ruediger, TTtie, mitchiii and wylt | account §18 |
+| The cancelled contest may be the contest's map developer's (inference) | HISTORY ch. 11 (now 12), 17; timeline | it is, by the author | account §18 |
+| Whether the evenings were all event rotations is open | HISTORY ch. 14 (now 15); README | the first two set by hand and later ones a rotation, by his belief | account §18 |
+| Ruediger's alert of 27 September is a line in the search results | HISTORY ch. 8 (now 9) | the event channel's one announcement, 20:58 UTC, a minute before the first match, with its reactions | sources/slop-sunday-announcement/; account §19 |
+| An inference joining a person of the staff chat to a person of the thread and the messages | HISTORY ch. 10, 15 | removed under the naming rule; nothing from the thread or the messages is attached to a staff-chat name | account §18 |
+| The 20 September evening was hosted by TTtie, named with his thread posts | HISTORY ch. 8; timeline; research/17 | thread posts carry a role label; the host is not named from the thread | account §18 |
