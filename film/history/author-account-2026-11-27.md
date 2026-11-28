@@ -254,3 +254,8 @@ Answers to the questions of 28 November:
 - The logged games: first "ich glaube, insgesamt waren es dann irgendwie 3700 Spiele"; then, sending the overview chart of all matches, "vielleicht sind es doch eher so unter 3000. Vielleicht dann eher 2700 oder sowas." He does not have the exact figure to hand; all the data is on his PC, and the repository may be somewhat out of date. The chart is in `sources/early-experiments/` with its daily table summed.
 - "143 contaminated maps": he does not know what it refers to; possibly the log files of the tracking on the server. (It is the last line of the answer in his own screenshot of 20 March 2026.)
 - The branch history need not be cleaned. The level of anonymisation is enough as it is: name the role, or "staff".
+
+## Twenty-second instalment, 28 November
+
+- The AI Studio app's address now: https://aistudio.google.com/apps/646f11e8-105c-43af-96b8-41eb1e89ff92 (it opens only signed in). He sent its download as a zip, "hier solltest du alles haben" (`sources/early-experiments/aistudio-ctw-map-generator-2025/`).
+- He no longer has access to the old chat the app was made in, because he had to migrate the app.

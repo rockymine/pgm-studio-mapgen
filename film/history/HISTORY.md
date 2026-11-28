@@ -126,6 +126,14 @@ repository is the v0 generator's successor in algorithm and in name, built again
 was his and travelled from tool to tool fits his message of 28 September, below. That any code passed from one to the
 other is not shown.
 
+**The AI Studio app still stands where it stood on 3 October 2025.** **Record:** the author's export of the app of
+28 November 2026 is the repository file for file: every source file is identical to its last commit, `ec9ca62` of
+3 October 2025, and the four files that differ are the README, the metadata and two build files. The app has two tabs,
+a "Generator" that draws nodes, lanes and dashed void crossings for two or four teams from a seed and saves JSON, and a
+"Manual Editor" in three steps with a background image to trace. Its code calls no model: Gemini wrote it, and a seeded
+generator makes the layouts (`sources/early-experiments/aistudio-ctw-map-generator-2025/`). **Account:** he had to
+migrate the app and no longer has the chat it was made in (account §22).
+
 **The first statement of an AI making maps from data is Ruediger's.** **Record:** on 26 September 2025, answering a
 screenshot of the Gemini tool, Ruediger wrote "ich frag mich ja wann der erste alle maps eincannt und ne ki anhand der
 daten eine eigene map erstellen lässt", I do wonder when somebody will scan in all the maps and have an AI make a map of
