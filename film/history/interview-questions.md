@@ -1,175 +1,155 @@
 # Open questions, by person
 
-What is still to be asked, after the author's account of 27 November 2026 (fourteen instalments) and the research of
-the same day. Questions he has answered, or the record has settled since, are listed at the end with the answer and its
-source. Within each person the questions run from most to least important for the history. Each names the record or
-account that prompts it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessions/NN`.
+What is still to be asked, after the author's account of 27 and 28 November 2026 (seventeen instalments), the recording
+of 2 July and the match API (research/16), and the forum thread and five conversations (research/17). Within each
+person the questions run from most to least important for the history. Each names the record or account that prompts
+it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessions/NN`. Answered questions are at the end, one line each.
 
 ## rockymine
 
-1. **The evenings, map by map.** Your zips to Ruediger and the server's missing match numbers fit on six evenings (24
-   and 31 August, 4, 13, 20 and 27 September), with one more number than maps on 4 and 20 September (r/15, r/13). Do you
-   count the August weekday evenings among the "Slop Sundays", and can the server's own log or what you sent Ruediger
-   say which maps filled each evening, and in what order?
-2. **The viewing of 9–10 October.** Which of the candidates are the three boards (Hollowcrown; Lantern Karst or Brassmoor
-   Works; Redwash Mesa or Hollow Mesa), what does each of the five screenshots show, and where did the viewing take place
-   (`sources/staff-chat-october/`)?
-3. **The opening briefs not yet read.** The starts of sessions 2, 4, 5, 7, 10 and 12 could not be paged to (s/02, 04,
-   05, 07, 10, 12), nor the first phase of session 14. Can you paste your first message of each, and the brief of the
-   first fifteen, Heftfold and Whinberry Ring (12 August, 12 September)?
-4. **The hand-built map.** With which in-game loft tool, and why not in the studio? Is the
-   room at y 50 the wool room, and how many wools and cores does each team get (r/04)?
-5. **The moment freeform started.** At 22:21 UTC on 7 October you dictated "what if like an agent didn't need to rely on
-   the current way we build the houses, the terrain" and at 22:26 gave the ingredients (s/00). Is that the remark you
-   remember as "I don't like it, think", or was there an earlier one?
-6. **The grammar that did not ship.** You say the Brittlebush look can be expressed in full by the grammar, yet it is
-   the one phase of the port with no shipped line (r/02, r/05). Was it parked on purpose, and what would it take?
-7. **Aerie.** You state the XML was not playable (account 12); the complaint and your guess (no continuous blocks at the bottom, so the filters failed) are in no record;
-   the board as built has nothing at y 0 (r/14). When did you see it, and was it the 25 August version?
-8. **Wandering U in play.** Its comment gives a 110-second lap, its formulas 130 (r/10). Who fell, from where, and did
-    anyone take a wool? What changed after 6 August?
-9. **No Blocks Placed's oak.** The 50-log oak at x −27 to −17, z 41 to 52 is about 17 blocks tall (r/08). Standing at it
-    in game, is it the generated tree, and which blocks were placed by hand?
-10. **Kilnholt Cut's tunnel.** On which evening did players find it, and which picture made the causeway look solid to
-    you (s/11)?
-11. **Hollowmarch and Mirkholt in play.** Who fell into the void at Hollowmarch's frontline, and which Mirkholt wool room
-    was burnt with flint and steel, in which version (s/09, s/12)?
-12. **Hello World Micro's plan file.** You drew its layout yourself (account 14); it was uploaded with a studio plan file
-    (r/08). Did you draw it in the plan tool?
-13. **"Map walls" and the first rule per height.** Is "map walls" the walls, rims and plateaus model of 1 August, and is
+1. **The viewing of 9–10 October.** Where did it take place (the chat is observer chat), and were the "three" of you
+   the three staff or two of them and you (account §13; `sources/staff-chat-october/`)? Was Brittlebush III shown as
+   well as discussed (chat-5)?
+2. **The opening briefs not yet read.** The starts of sessions 2, 4, 5, 7, 10 and 12 could not be paged to, nor the
+   briefs of the first fifteen, Heftfold and Whinberry Ring (s/02, 04, 05, 07, 10, 12; r/12). Can you paste your first
+   message of each?
+3. **How an evening was run.** The API holds every test match, but not how it was started; on 2 July Base 2-Wool was
+   set next without a vote (r/16). Were all the evenings from 24 August event rotations, and who chose the order on the
+   evenings Ruediger did not?
+4. **The hand-built fire-and-ice map.** With which in-game loft tool, and why not in the studio? Is the room at y 50 the
+   wool room, and how many wools and cores does each team get (r/04)? Is the cancelled contest it was made for
+   Technodono's contest of October and November (r/04, r/17)?
+5. **The first tools.** Are `ctw-layout-editor` (7 October 2025) and `MinecraftLayoutEditor` (10 October) one
+   repository, who was the friend you worked with on 10 October, and is `michael` you (r/01, r/17)?
+6. **The moment freeform started.** At 22:21 UTC on 7 October you dictated "what if like an agent didn't need to rely on
+   the current way" (s/00). Is that the remark you remember as "I don't like it, think", or was there an earlier one?
+7. **The grammar that did not ship.** The Brittlebush look can be expressed in full by the grammar, yet it is the one
+   phase of the port with no shipped line (r/02, r/05). Was it parked on purpose?
+8. **Aerie.** When did you see its XML fail, and was it the 25 August version (r/14)? No match of it is in either source.
+9. **Wandering U's one match.** The API has it at 20:17 UTC on 6 August, 36 players, 6 minutes 28 seconds, Blue (r/16).
+   Who fell, from where, and did anyone take a wool?
+10. **Kilnholt Cut, Hollowmarch and Mirkholt in play.** Kilnholt Cut has one match, the first of 13 September; Hollowmarch
+    was played on 24 and 31 August and 4 September, before its flattening; Mirkholt once, on 20 September (r/16). Are
+    those the plays in which the tunnel was found, the frontline fell into the void, and the wool room was burnt?
+11. **No Blocks Placed's oak.** The 50-log oak at x −27 to −17, z 41 to 52 is about 17 blocks tall (r/08). Is it the
+    generated tree?
+12. **The forum thread.** Do you know who opened it, and what mamebt's "AI maps being banned" of 11 October referred to
+    (r/17)?
+13. **"10 human hours".** In the thread you wrote that "10 human hours" went into the maps (r/17). Was that Millrace's
+    ten person-hours, or all the evenings' maps?
+14. **"Map walls" and the first rule per height.** Is "map walls" the walls, rims and plateaus model of 1 August, and is
     the spec key `themeByHeight` (14 August) the per-height prototype you remember (r/05)?
-14. **The probe board's tunnels.** The session where you painted your own layout holds no remark that tunnels were
-    awkward to draw (s/10). Was that the session that drew the board (`session_015WqJ2bzro3wrfHgobgaJFR`)?
-15. **Muse Spark.** Tttie made a map with it and you believe it is a Meta model (account 12). Is there anything in a
-    map file, a chat or a credit that names the model (r/15)?
-16. **Tracing before the seeds.** The record has a Decompose surface in June and the first traced seed on 4 July (r/09).
-    Which tracing do you remember from before the Base maps, and what was too varied?
-17. **Bridgid II's first test and the wall run.** Ruediger asked to test it "again" on 14 July, a day before its first
-    logged match (r/15, r/13). When did you first see its side columns as a pattern, and did you describe them to a
-    model before 1 August?
-18. **Sonnet against Opus.** On 21 September two of Sonnet 5's four boards carried 27% and 43% dead ground against
-    Opus 5's at most 9.6% (r/03). What did you see in Sonnet's maps that numbers do not, and did Sonnet ever get the
-    verification steps Opus had late in the year?
-19. **What the rules bought.** No record says which rule produced which gain (r/02). Name one rule you think made the
-    biggest difference and one you suspect does harm. What would a verification pipeline "where it should be" check?
-20. **The freeze.** Why freeze the layout generator on 13 November, and is it finished or superseded (r/02)? Was it the
-    pause decided at the October viewing continuing (account 13, 14)?
-21. **The Annealing maps.** The series runs January 2021 to February 2023 (r/08). Which was the first made from a
-    travelling-salesman route, and when was the thesis?
-22. **Countryside on 9 October.** The repository has 14 October (r/11). Where was the upload of the 9th, and did
-    Alphaboy draw the regions himself?
-23. **Who is `michael`.** The name commits beside yours from 2025 (r/01). Is it you?
+15. **Muse Spark.** Is there anything in a map file, a chat or a credit that names the model behind Copper Wash and
+    Reedmere (r/15)?
+16. **Sonnet against Opus.** What did you see in Sonnet's maps that numbers do not, and did Sonnet ever get the
+    verification steps Opus had late in the year (r/03)?
+17. **The freeze.** Why freeze the layout generator on 13 November, and was it the October pause continuing (r/02)?
+18. **The Annealing maps.** Which was the first made from a travelling-salesman route, and when was the thesis (r/08)?
+19. **Countryside on 9 October.** The repository has 14 October in the uploader's zone (r/11). Where was the upload of
+    the 9th?
 
 ## Ruediger (Ruediger_LP)
 
-1. **Running the evenings.** You chose the playing order on 13 September and named the evenings on 12 September
-   (r/15). How was an event rotation set up, who picked which maps went in, and did anyone write down what players
-   said?
-2. **Your five hours on Millrace.** Which parts were yours, and what did you change in its XML for 2.0.0 (r/03; account
-   8)?
-3. **Bridgid II's XML.** The browser placed much of it and the water lane was added by hand (account 8). Was the water
-   lane the only hand edit, and when was it first tested?
-4. **Capture the Cake and the moving room.** You designed the cake with rockymine on 17 and 18 July and worked out the
-   timing of a moving wool room on 31 July (r/15). Whose idea was each, and was the cake played beyond Kuusepuu's
-   "Reported live"?
-5. **The private repository.** On 12 August you deleted the three Base maps and Wandering U from PrivateMaps (r/15).
-   Why those, and were the September test maps deleted later?
-6. **Your own prompts.** On 3 and 4 September you wrote prompts of your own, a four-team "Quarter Stone" (r/15). What
-   came of it?
-7. **The three best.** On 10 October you proposed finishing the three best AI maps and testing them (r/15). Did it
-   happen, and which three?
-8. **Starting from AI ground.** Fable restated your Millrace work as studio documents (s/02). Have you seen it, and
-   would you start a map of your own from a studio board?
+1. **The evenings.** You chose the order on 13 September and named the evenings on 12 September (r/15). Who chose the
+   order on the others, and did anyone write down what players said?
+2. **Bridgid II.** On 14 July you asked "bridgid 2 nochmal testen?"; the API holds two matches that night, at 00:31 and
+   00:53 (r/15, r/16). Was the earlier test those, or before the upload? Was the water lane the only hand edit of its
+   XML?
+3. **2 July.** Did `711e539`, "Irongate Harbor remove dev phase", carry the three Base maps (r/16)?
+4. **Your five hours on Millrace.** Which parts were yours, and what did you change in its XML for 2.0.0 (r/03)?
+5. **Capture the Cake and the moving room.** Whose idea was each (r/15)?
+6. **Your own prompts.** What came of the four-team "Quarter Stone" of 3 and 4 September (r/15)?
+7. **The three best.** On 10 October you proposed finishing the three best AI maps (r/15). Did it happen?
 
-## Tttie
+## TTtie
 
-1. **The tests.** rockymine remembers running the map tests with you (account 1). What did you do at the evenings, and
-   which faults came up so often you stopped mentioning them?
-2. **"Early maps looked and played alike."** As someone who has maintained CommunityMaps since 2023 (r/05), what made
-   them feel the same, and which was the first that felt like its own place?
-3. **Your sketch.** You have one sketch on pgmstudio.de, `untitled-sketch-7`, last changed 28 October (r/05). What did
-   you try to make, and where did the tool stop you?
+1. **The evening of 20 September.** You hosted it and answered the thread for the event (r/17). How did the event
+   framing come about, and why did you call the maps "of no artistic value"?
+2. **"Early maps looked and played alike."** What made them feel the same, and which was the first that felt like its
+   own place (account §1; r/17, 18 September)?
+3. **Muse Spark.** You made a map with it (account §12). Which model is it?
+4. **Your sketch.** What did you try in `untitled-sketch-7` on pgmstudio.de (r/05)?
 
-## Arcade Boss (arcadeboss)
+## Technodono
 
-1. **What the essay fixed and what Grok decided.** You told rockymine that "the map concept and name came from the AI"
-   and that Grok wrote the design document (r/15). Did Grok write a program that generated the world, as rockymine
-   recalls, or did it hand you files to assemble?
-2. **The hundred iterations.** What did a pass look like, and what were you checking when you loaded each zip?
-3. **The studio.** On 13 October GrokBuild drew a CTW map with this project's studio and improved only after you showed
-   it pgmstudio.de's layouts (r/15). What did it get wrong first, and would you use the studio again?
-4. **Quoting.** May the history quote your messages to rockymine of August to October?
+1. **The contest.** Was your contest of October and November the fire-and-ice contest the author's map was made for, and
+   was it cancelled for want of entries (r/17, r/04)?
+2. **Your line.** You were fine with the studio once it was clear it was a tool (r/17). Where would you draw the line
+   today, after the arcade boards?
+
+## javg
+
+1. **The Mappys.** What was the "Prompt-a-Map Sketch", and will it be shown (r/17; account §17)?
+2. **"reorganize the slop".** What did your PrivateMaps commit of 24 August move, and where (`sources/maps-changelog/`)?
+
+## ryan (wylt)
+
+1. **From "never heard of an AI PGM map" to "maps look a lot more diverse".** What changed your view between 20
+   September and the October viewing (r/17; `sources/staff-chat-october/`)?
+
+## arcadeboss
+
+1. **What the essay fixed and what Grok decided.** Did Grok write a program that generated the world, or hand you files
+   to assemble (r/15)?
+2. **The studio.** On 13 October GrokBuild drew a CTW map with this project's studio (r/15). What did it get wrong first?
+3. **Quoting.** May the history quote your messages of August to October?
 
 ## Flamiix
 
-1. **No Blocks Placed.** You are credited "Minimalist." and, by rockymine's account, built the wool room and spawn
-   interiors (account 3). What did you build, and did you use the studio for any of it?
-2. **Since then.** Have you made or played any of the other AI maps?
+1. **No Blocks Placed.** What did you build, and did you use the studio for any of it (account §3)?
+
+## Everyone quoted
+
+1. **Consent.** The author decided that the staff chat may be used as it is (account §14). The voices of 2 July
+   (Ruediger, TTtie, samschaap, nuttydragon), the forum thread and the five conversations are not covered by that
+   decision (r/16, r/17).
 
 ---
 
-## Answered on 27 November
-
-Answers the author gave in his account, one line each.
+## Answered
 
 | Question | Answer | Source |
 |---|---|---|
-| Who is No Blocks Placed's third author? | Flamiix, who did the wool room and spawn interiors; Tttie did nothing on it | account 3 |
-| Which map's wool room moves? | Wandering U, tested 6 August, from the private repository | account 4 |
-| Who wrote Wandering U's layout and XML? | He described the layout in text; Claude wrote the XML | account 8 |
-| Where did the test maps go? | PrivateMaps, by decision, because twelve at a time got out of hand | account 4 |
-| Why are the evenings' matches missing from the log? | Event rotations are not reported by the server's plugin | account 9 |
-| How many evenings, and how? | Three or four in one intensive month, sometimes twelve maps in a row, no logs | account 3 |
-| Is the squared-paper drawing a Base map, and which? | Yes, the two-team map, Base 2-Island; the two-wool map adds an island | account, squared-paper correction |
-| What are the dots on it? | Spawns and wools ("or the other way round"); the transcript says red spawns, blue wools | account; r/09 |
-| Was Hello World Micro the moving room? | No: its room changes colour; its layout he made by hand | account 3 |
-| Is the 14 July map a Brittlebush map? | No: it is Bridgid II, browser layout, skinned in game, the wall-run origin | account 5 and correction |
-| Was Brittlebush III played, and can its look be expressed? | Never tested by players; the Brittlebush look can be expressed in full | account 2 and correction |
-| Who made Bridgid II's XML? | Ruediger, mostly via the browser tool; the water lane by hand | account 8 |
-| Who decided Vauxite, Drastic Change II, Bridgid II? | All concepts, terrain and colours are human | account 8 |
-| Who reworked the published Millrace's XML? | Ruediger, as far as he remembers | account 8 |
-| How long was Millrace's hand finish? | Five hours side by side, ten person-hours | account 3 |
-| Was Overwall finished by hand? | No | account 8 |
-| Whose idea was the labyrinth? | His; concept maps were built 1:1 to probe limits | account 1 |
-| Whose is the layout generator's concept? | His, to reproduce existing maps; agents mostly used its base unchanged | account 8 |
-| What is the ice map's material, and who finishes it? | Undecided among snow, stone, ice, grass; he builds it to the end | account 8 |
-| Where is the hand-built map's dead area? | Probably the back, around the wool room and hills; it makes sense | account 3 |
-| Is Kuusepuu CTC an AI map? | No: an ordinary destroy map with a cake objective, and not the first | account 6 |
-| Who did Countryside's regions? | Drawn in the browser before upload, corrected by him or Claude | account 6 |
-| How many cores has Alderfen Holm? | Four | account 11 |
-| Was Hollowmarch adjusted in session 9, after a playtest? | Yes, Hollowmarch too; the ground was too high and the frontline left gaps | account 11 |
-| Did Sunspit look good at first? | Quite good from the start; faults fixed later | account 11 |
-| Why did Aerie's XML fail? | A guess: no continuous blocks at the bottom, so the filters did not work | account 11 |
-| Why CTW first? | Nearly every map reduces to a frontline and an H, so a graph of meeting places | account 3 |
-| Was the graph dropped in 23 minutes? | That sounds too short; an organic spline attempt came between | account 3 |
-| Where did the Annealing maps come from? | His master's thesis on the travelling salesman problem | account 3 |
-| What are Ruediger's and his roles? | Ruediger is map developer; rockymine is a builder | account 3 |
-| When did pgmstudio.de go online, and who uses it? | About two months ago; hardly anyone | account 3 |
-| Which is the 50-log oak? | The generated tree, if it is about 20 blocks high | account, squared-paper section |
-| Which board is the flat line-up map? | Ashfall Scar (Sonnet run 2, 14 August), 250 × 190, not 500 wide; confirmed on seeing a render. Not Hollow Crown (the monument landed inside the core, Haiku) nor Spinebreak (capture-the-wool layout, cores in the void) | account 12; r/03 |
-| Which board is the quartz one? | Quillon Saltworks, stated definitely. Sable Marsh: very wide spawn, huge wool rooms, no real middle; Cairnmeadow: build zones that meet its oval islands badly; Cinderreach: trees with no crown | account 12 |
-| How did a map reach a test? | Every map in the repository was looked at on a local test server, often with Tttie, and that decided whether it got a test | account 12 |
-| Did he supply Riftwater's ingredients? | Yes, a vague list of thoughts; the model carried it out exactly | account 12 |
-| What were the notes of 9–10 October, and was the last test 27 September? | A viewing of the new pgmvox boards by three people, the first feedback on them, not a test on the real server; 27 September stands | account 13 |
-| Why did he pause after the viewing? | The maps were slowly getting "too good", in looks and diversity, with many new game modes | account 13 |
-| When was the ice map begun? | About 17 October 2026, built over a few weekends since; he takes his time because he needs inspiration | account 14 |
-| Which boards were at the 9–10 October viewing? | The new pgmvox boards: chiefly the one with two monuments (one underground, one on a castle on a mountain), plus the flying capture-the-wool board and the mesa board; Hollowcrown is the most probable first, the other two have two candidates each (open above) | account 14; HISTORY chapter 9 |
-| Who drew Hello World Micro's layout? | He did: Hello World's layout, abstracted very simply onto the grid | account 14 |
-| May the staff's lines be quoted? | Yes, as they are; the author decided on 27 November (the three people were not asked) | account 14 |
-| Why the pause, and was it meant to be temporary? | A month of testing the "slop" maps every weekend, the tool needing care; twenty maps a night works but was never the aim and should stay controlled; more maps will be built and tested before long | account 14 |
-| Which map filled the extra match numbers? | He cannot know; the data is missing | account 14 |
-| Who made a map with "Muse Spark"? | Tttie; the author believes it is a Meta model, unverified | account 12 |
-
-## Settled by the record since the questions were first asked
-
-| Question | Answer | Source |
-|---|---|---|
-| Who designed the 8×8×8 bedrock shell? | The author, at 23:21 UTC on 1 July; the model wrote it down | r/09 |
-| Were the Base maps played? | Base 4-Team, 28 July 00:30 UTC | r/13 |
+| Were the Base maps played, and when first? | Yes: walked on mapdev and played on server-2 on 2 July from 20:23 UTC, all three, 26 to 33 players | r/16 |
+| Who was there on 2 July? | rockymine, Ruediger, TTtie and samschaap; nuttydragon, a moderator, from about minute 20 | r/16; account §16 |
+| When were Vauxite, Drastic Change II and Capture the Wool CTW first played? | 24 June, 21:51 to 22:15 UTC, minutes after the upload | r/16 |
+| When was Bridgid II first played? | 14 July, 00:31 and 00:53 UTC, after the 00:27 upload | r/16 |
+| Which maps filled each evening, and in what order? | The API holds every one, in order, for 24 June to 27 September | r/16 |
+| What filled the extra numbers of 4 and 20 September? | Lodestar Yard and Peatgarth, each played twice | r/16 |
+| Was Wandering U played? | Once, 6 August 20:17 UTC, 36 players | r/16 |
+| When were the first boards of this project played? | Viridian and Thornwake, 12 August 21:43 and 21:54 UTC, on server-1 after mapdev | r/16, r/15 |
+| What is the first match on a map no person laid out? | Cedar Crossing, 10 August 04:04 UTC, four minutes after its upload | r/16 |
+| Was there a long destroy match? | No; the longest on a destroy board of this project is Glassmere's 15 min 47 s (13 September) | r/16 |
+| On which evening was Kilnholt Cut played? | 13 September, the first match of the evening; its only match | r/16 |
+| Which boards were at the 9–10 October viewing? | Hollowcrown, Lantern Karst, Hollow Mesa and Riftwater | account §15 |
+| What were the notes of 9–10 October? | A viewing of the new pgmvox boards, not a test; 27 September stays the last test evening | account §13 |
+| Why the pause? | A month of weekly testing, the tool needing care, the maps getting "too good"; more will be tested | account §13, §14 |
+| Were the arcade boards played, and how? | 27–28 November: Lantern Pass, Loomfall, Lantern Drop, Spark, Curio Square, with notes on each | account §14–§16 |
+| Is the fire-and-ice map the wool-and-core map players asked about? | Yes | account §17; r/17 |
+| When was the ice map begun? | About 17 October, over a few weekends since | account §14 |
+| Was Claude used before December 2025? | Yes: the October 2025 rewrite was mostly written with Claude's VS Code extension, by his message to Technodono | r/17 |
+| Who drew No Blocks Placed? | He and Ruediger, together on Discord, as with Bridgid II's layout | r/17 |
+| What was the brief of Delverdale and Whitstone Weald? | ~32 a team, CTW and DTM, terrain, trees, houses, an underground layer, two end-stone monuments, two wools | r/17 |
+| What was the brief of the 24 August boards? | "Most of them were just 'Build a map' without any prompting whatsoever" | r/17 |
+| How did the community receive the evenings? | A forum thread of 20–24 September against them, an event framing, one disclosure proposal, divided players | r/17 |
+| Which is the flat line-up map? | Ashfall Scar, 250 × 190, confirmed on a render | account §12; r/03 |
+| Which is the quartz board? | Quillon Saltworks | account §12 |
+| Who is No Blocks Placed's third author? | Flamiix (wool room and spawn interiors); Tttie did nothing on it | account §3 |
+| Which map's wool room moves? | Wandering U | account §4 |
+| Who wrote Wandering U's layout and XML? | He described the layout in text; Claude wrote the XML | account §8 |
+| Where did the test maps go? | PrivateMaps, by decision | account §4; r/15 |
+| Is the squared-paper drawing a Base map, and which? | The two-team map, Base 2-Island | account, squared-paper correction |
+| Was Hello World Micro the moving room? | No: its room changes colour; he drew its layout | account §3, §14 |
+| Is the 14 July map a Brittlebush map? | No: Bridgid II | account §5 and correction |
+| Was Brittlebush III played? | Never by players; its look can be expressed in full | account §2 |
+| Who made Bridgid II's XML? | Ruediger, mostly via the browser tool; the water lane by hand | account §8 |
+| How long was Millrace's hand finish? | Five hours side by side, ten person-hours | account §3 |
+| Is Kuusepuu CTC an AI map? | No: an ordinary destroy map with a cake objective | account §6 |
+| How many cores has Alderfen Holm? | Four | account §11 |
+| How did a map reach a test? | A look on a local test server, often with Tttie | account §12 |
+| Did he supply Riftwater's ingredients? | Yes, a vague list of thoughts | account §12 |
+| Who designed the bedrock shell? | The author, 23:21 UTC on 1 July | r/09 |
 | How was Cedar Crossing made? | SuperGrok on grok.com, a Grok design document, over a hundred tested zips | r/15 |
-| Where does the name "Slop Sunday" come from? | Ruediger, 12 September | r/15 |
-| Was there a long destroy match? | No; the longest on a destroy board of this project is 15 minutes 15 seconds | r/13 |
-| Which board did Alderfen's prompt produce, and from whom? | Alderfen Holm, from a pasted player's prompt plus his material list | s/08 |
-| Did the Sonnet run's brief ask for underground passages? | Yes; Kilnholt Cut's hollow causeway answered it | s/11 |
-| What was Ruediger's 2 July upload? | PrivateMaps, "Irongate Harbor remove dev phase" | r/15 |
-| Were the August and September private uploads real? | Yes, each minutes after the zip was sent | r/15 |
+| Where does "Slop Sunday" come from? | Ruediger, 12 September | r/15 |
+| May the staff's lines be quoted? | Yes, as they are | account §14 |
+| Which map filled the extra match numbers (asked of the author)? | He could not know; the API since answered | account §14; r/16 |
