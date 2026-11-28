@@ -26,8 +26,8 @@ it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessions/NN`. Answered ques
 7. **The "143 contaminated maps".** The 20 March screenshot ends on them, and no commit or file names them
    (research/18). You do not know what they refer to, perhaps the server's tracking logs (account §21); can the logs
    be looked at?
-8. **The two AI Studio links.** `CTW-Layout-Generator`'s README links one app; your link of 7 October 2025, "nur
-   manueller editor", is another id (account §18). A second app, or the same re-shared?
+8. **When the "CTW Smart Map Editor" was made.** Its export carries no date; it was shared on 7 October 2025, four days
+   after the generator's last commit (account §24). Before or after the generator's own manual editor of 3 October?
 9. **The hand-built fire-and-ice map.** With which in-game loft tool, and why not in the studio? Is the room at y 50 the
    wool room, and how many wools and cores does each team get (r/04)?
 10. **The first tools.** Who was the friend you worked with on 10 October 2025, and is `michael` you (r/01, r/17)?
@@ -130,6 +130,7 @@ it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessions/NN`. Answered ques
 
 | Question | Answer | Source |
 |---|---|---|
+| Are the two AI Studio links one app or two? | Two: the generator (`CTW-Layout-Generator`) and the "CTW Smart Map Editor", which was the 7 October link; he did not know of the Gemini analysis in it and never ran it | account §22–24; `sources/early-experiments/` |
 | Were the Base maps played, and when first? | Yes: walked on mapdev and played on server-2 on 2 July from 20:23 UTC, all three, 26 to 33 players | r/16 |
 | Who was there on 2 July? | rockymine, Ruediger, TTtie and samschaap; nuttydragon, a moderator, from about minute 20 | r/16; account §16 |
 | When were Vauxite, Drastic Change II and Capture the Wool CTW first played? | 24 June, 21:51 to 22:15 UTC, minutes after the upload | r/16 |

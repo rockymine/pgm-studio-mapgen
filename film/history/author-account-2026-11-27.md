@@ -263,3 +263,9 @@ Answers to the questions of 28 November:
 ## Twenty-third instalment, 28 November
 
 - "Hier der Export des anderen Projekts auf aistudio": a second zip, the AI Studio project "CTW Smart Map Editor" (`sources/early-experiments/aistudio-ctw-smart-map-editor-2025/`).
+
+## Twenty-fourth instalment, 28 November
+
+- The "CTW Smart Map Editor" was the link of 7 October (2025).
+- That a Gemini analysis is contained in it he did not know at all: "Das ist mir jetzt komplett neu tatsächlich." So he will never have tested it, and it would probably not have delivered anything great then; it had no knowledge of the subject, and AI was still in its infancy.
+- He thinks everything is now together. He will surely find something more, but it will not change the main arc of the story much. Bringing in the match analyses and the work of understanding maps' layouts was helpful.

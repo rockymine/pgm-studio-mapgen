@@ -156,8 +156,9 @@ graph. Every node and edge placed is mirrored for the other team; the author pla
 intersections, and "Auto-Classify Nodes" names the rest from the graph, a hub for three or more edges, a frontline for
 exactly one, a scaffold otherwise, an entry beside a wool room or a spawn. A file that would send the layout to
 `gemini-2.5-flash` for a designer's critique is written but connected to nothing
-(`sources/early-experiments/aistudio-ctw-smart-map-editor-2025/`). **Inference:** this is the manual editor of the
-7 October link; the export carries no date, and the ids changed when the apps were migrated (account §22–23). The same day he told the contest's map developer that he had moved the
+(`sources/early-experiments/aistudio-ctw-smart-map-editor-2025/`). **Account:** this is the link of 7 October; that it holds an analysis by Gemini was new to him on 28 November 2026,
+so he never ran it, and he does not think a model of that time, knowing nothing of the game, would have delivered much
+(account §24). The export itself carries no date, and the ids changed when the apps were migrated (account §22–23). The same day he told the contest's map developer that he had moved the
 tool into his own repository, `ctw-layout-editor`, mostly written with Claude's VS Code extension (research/17).
 **Account:** that repository is probably not MinecraftLayoutEditor, "sicherlich wird das ein anderes sein" (account
 §18). **Record:** no repository and no string of that name is in the record (research/18 §2).
@@ -916,7 +917,7 @@ Just having claude follow along" (research/17).
 
 - **The prehistory:** whether the v0 generator's code reached `CTW-Layout-Generator`; what the April 2025 experiment was
   written with beyond matplotlib (the author: perhaps ChatGPT), and what its node colours meant; what the attachment of
-  the first v0 message was, which the author cannot say and which would need much searching (account §21); whether the 7 October 2025 AI Studio link was the "CTW Smart Map Editor", and when that project was made; what the 143 "contaminated" maps were,
+  the first v0 message was, which the author cannot say and which would need much searching (account §21); what the 143 "contaminated" maps were,
   which the author does not know (`sources/early-experiments/`; research/18; account §21).
 - **The early repositories:** whether a repository `ctw-layout-editor` exists, which the author thinks differs from
   `MinecraftLayoutEditor` and the record does not show (account §18; research/18); who the friend of 10 October 2025

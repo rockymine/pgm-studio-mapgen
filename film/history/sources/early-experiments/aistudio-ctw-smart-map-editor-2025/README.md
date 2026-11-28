@@ -27,10 +27,13 @@ nodes are a warning. The report goes to the browser console.
 maps for Minecraft" and asks for an overall impression, strategic strengths, potential weaknesses and actionable
 suggestions. No other file imports or calls it, and the interface has no button for it.
 
-**Whether this is the link of 7 October 2025 is an inference.** That day the author sent Ruediger an AI Studio link
-with "nur manueller editor" (eighteenth instalment). This project is a manual editor and nothing else, and he calls it
-the other AI Studio project; the link's id of then cannot be compared, because the apps were migrated and their ids
+**It is the link of 7 October 2025, by the author's word.** That day he sent Ruediger an AI Studio link with "nur
+manueller editor" (eighteenth instalment); on 28 November 2026 he confirmed that this project was that link
+(twenty-fourth instalment). The link's id of then cannot be compared, because the apps were migrated and their ids
 changed.
+
+**The author did not know the analysis was in it.** Told of `geminiService.ts`, he said it was completely new to him,
+that he will therefore never have tested it, and that it would probably not have delivered anything good then.
 
 ## The pictures
 

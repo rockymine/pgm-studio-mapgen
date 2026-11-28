@@ -11,7 +11,7 @@ text and assigned by their order in his message, which is an inference for pictu
 | `2025-04-05-graph-layouts-matplotlib.png` | 5 April 2025 | matplotlib, "Multiple 1-Team PvP Layouts (Improved Graph Connections)": four node-and-edge layouts, rows 6 to 8, columns L/C/R |
 | `2025-05-24-claude-chat-level-design-generator.jpg` | Sat 24 May 2025, 01:39 | a Claude chat artifact, "Interactive Level Design Visualizer", version 6 of 6: two teams, a void strip, lanes, void access points |
 | `aistudio-ctw-map-generator-2025/` | 28 September to 3 October 2025 | the author's export of his AI Studio app, identical to the repository `CTW-Layout-Generator`, with five pictures of it running |
-| `aistudio-ctw-smart-map-editor-2025/` | undated; by inference the link of 7 October 2025 | the author's export of his second AI Studio project, a manual graph editor with mirrored nodes and automatic node classes, with three pictures |
+| `aistudio-ctw-smart-map-editor-2025/` | the link of 7 October 2025, by the author | the author's export of his second AI Studio project, a manual graph editor with mirrored nodes and automatic node classes, with three pictures |
 | `v0-prototype-2025-02/` | February 2025 | the first v0 prototype's page as it runs today, four pictures |
 | `2025-11-04-first-okay-layout-in-game.png` | 4 November 2025 | in game: two stone landmasses facing each other, drawn in the browser and imported on the mapmaker server |
 | `2025-11-06-layout-editor-world-import.png` | 6 November 2025 | "Minecraft Layout Editor" with "Import World (Region Files + level.dat)", five files chosen |

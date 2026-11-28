@@ -28,7 +28,7 @@ people carry role labels instead of names, by the author's decision of 28 Novemb
 | 2025-09-28 → 10-03 | Its generator: 3×3 grid per team, "Standard"/"Row-Independent", "Mirror"/"Rotation"; JSON export; step-wise manual editor; last commit 3 Oct | r/01; the clone's `Documentation.tsx` | record |
 | 2025-09-28 | It continues the v0 generator in algorithm and name; no shared code shown | HISTORY ch. 1 | inference |
 | 2025-09-29 | To Ruediger: "vielleicht kommt man damit in richtig ki generierung" | r/15 | record |
-| 2025-10-07 | AI Studio link to Ruediger, "nur manueller editor. klappt auch ganz gut am telefon" (id differs from the repository's README) | account §18 | record (message as given) |
+| 2025-10-07 | AI Studio link to Ruediger, "nur manueller editor. klappt auch ganz gut am telefon": the second AI Studio project, "CTW Smart Map Editor", a graph editor with mirrored nodes, automatic node classes (hub, frontline, scaffold) and an unconnected Gemini analysis he did not know of | account §18, §24; `sources/early-experiments/aistudio-ctw-smart-map-editor-2025/` | record (message; export); author's account (that it was this link) |
 | 2025-10-07 | To the contest's map developer: tool moved to his own repository `ctw-layout-editor`, mostly written with Claude's VS Code extension | r/17 | record (no such repository found, r/18; the author thinks it differs from the next row, account §18) |
 | 2025-10-10 14:29 (+02:00) | `MinecraftLayoutEditor` (C#): a `Graph` of typed nodes; "with a friend", no WorldEdit (his message) | r/01, r/17 | record |
 | 2025-10-11 | Symmetry, mirror, rotate (`4d132b2`); first screenshots to Ruediger | r/18; account §18 | record; account |
