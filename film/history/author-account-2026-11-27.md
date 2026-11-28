@@ -239,3 +239,9 @@ Answers to the questions of 28 November:
 - A screenshot of the one announcement in the event channel of the Discord: Ruediger's "Slop Sunday happening now! testing some ai assisted maps" of 27 September 2026 (`sources/slop-sunday-announcement/`).
 - The eight pictures of the eighteenth instalment were sent in the order of the text, so their assignment to the dates holds.
 - On v0 (16 August 2025) he believes he made not only the one prototype but experimented with several things; he wants to look that up again.
+
+## Twentieth instalment, 28 November: the message of 11 February 2025
+
+- More on the v0 experiments: a text he sent to samschaap on 11 February 2025, pasted in full with three pictures (`sources/early-experiments/2025-02-11-message-to-samschaap.md`). It lists "Potential Algorithm steps" (nodes on a grid, a spanning tree favouring straight edges, extra edges for cycles, dissecting the graph for islands, a grid for wave function collapse), a "Data survey" of his and Ruediger's capture-the-wool maps as 1×1 grid cells, and ways to make the uniform layouts unique.
+- The link in it, https://v0-occ-mapmaking-tools-b63noa.vercel.app/, is a v0 prototype that takes a grid size and a node count and builds spanning trees. His summary: "So the earliest v0 prototype made rsts."
+- samschaap asked whether it would be "trained" with existing maps; he answered that a rule-based approach was more likely for him to achieve than actual training, and showed Townside reduced to a grid of blocks and then to a graph of redstone torches and dust.

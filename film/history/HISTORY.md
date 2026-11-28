@@ -1,23 +1,30 @@
-# A year of AI-made maps: September 2025 to November 2026
+# A year and a half of AI-made maps: April 2025 to November 2026
 
 This is the history of how rockymine, with Ruediger_LP, a few friends on the Overcast Community server and a run of AI
-models, set out to make PvP maps for PGM by machine, of what the tool he built for it became, and of how the players
+models, set out to make PvP maps for PGM by machine, of what the tools he built for it became, and of how the players
 who were handed the maps received them. It is written for a reader who was not there.
 
 **Every claim cites the file it rests on.** `(research/NN)` is a file under `research/`; `(sessions/NN)` a session
 write-up under `research/sessions/`; `(account §N)` the N-th instalment of the author's account of 27 and 28 November
-2026 (`author-account-2026-11-27.md`), where §1 is the opening summary, §2 the additions later the same day, §3 to §17
+2026 (`author-account-2026-11-27.md`), where §1 is the opening summary, §2 the additions later the same day, §3 to §19
 the numbered instalments, and "squared-paper section" the section of that name; later instalments and the corrections
 in the file supersede earlier ones. `(sessions list)` is the author's own description of each session in
-`sources/sessions-named-by-the-author.md`. Two data sources recur: **the log** is the `#match-status` channel as read
+`sources/sessions-named-by-the-author.md`; `(sources/early-experiments/)` the eight pictures he sent with §18 and the
+v0 chat read from his link. Two data sources recur: **the log** is the `#match-status` channel as read
 into `sources/match-status/match-status-2026-06-01_2026-11-27.csv` (research/13); **the API** is the server's public
 match record, of which the 388 public-server matches the log never posted are in
 `sources/match-status/api-matches-not-in-match-status.csv` (research/16). Match start times below are the API's
 `started_utc` unless marked; research/16's evening table gives some evenings by the first start and the last end.
 
-**Three voices are kept apart.** **Record** is what a commit, a file, a published map, a server record, a recording or
-a message holds. **Account** is what the author recalls. **Inference** is a reading made for this history, with its
-basis named. Where record and account disagree, both are given and neither is silently preferred.
+**Three voices are kept apart.** **Record** is what a commit, a file, a published map, a server record, a recording,
+a picture or a message holds. **Account** is what the author recalls. **Inference** is a reading made for this
+history, with its basis named. Where record and account disagree, both are given and neither is silently preferred.
+
+**Names follow the author's decision of 28 November.** The forum thread of 20–24 September and the author's direct
+messages with four people are quoted without names: its posters appear as "the thread's opener", "one player", "a
+second player" and so on, and the four as "the contest's map developer", "an administrator", "the award show's
+organiser" and "a developer of the website" (account §18). The author, Ruediger, TTtie's direct messages, the voices
+of 2 July and the cleared staff chat of October keep their names.
 
 **A word on the terms.** PGM is the plugin that runs competitive Minecraft maps, each described by a `map.xml`. In
 Capture the Wool (CTW) a team carries the enemy's coloured wool to its own monument; in Destroy the Monument (DTM) and
@@ -25,63 +32,186 @@ Destroy the Core (DTC) teams break objectives. Many maps float in the void, and 
 CommunityMaps and PublicMaps are the public repositories of about 350 such maps; a third, PrivateMaps, is private and
 was read only through its commit feed. `mapdev` is the server's development server, which reports no matches;
 `server-1` and `server-2` are the public ones. "The studio" is `pgm-studio`, the C# tool at the centre of the story;
-"mapgen" is `pgm-studio-mapgen`, the repository where agents built boards with it.
+"mapgen" is `pgm-studio-mapgen`, the repository where agents built boards with it. Before the studio came four
+repositories of the author's, read for this history: `CTW-Layout-Generator`, `MinecraftLayoutEditor`, `CTWAnalysis`
+and `pgm-map-studio` (research/01, research/18).
 
 ---
 
-## 1. Autumn 2025: a layout tool, a graph, and a line of blocks
+## 1. April to September 2025: a graph, three chat tools, and a question in German
 
 **Algorithmic map making predates the project by four years.** **Record:** five Annealing maps by rockymine,
 Ruediger_LP and DerStiv sit in CommunityMaps, dated January 2021 to February 2023 (research/08). **Account:** they came
 from his master's thesis on the travelling salesman problem, whose routes made shapes that were filled and decorated by
-hand, in 2022; the idea then slept until late 2025 (account §3). The record carries no word of the thesis and spreads
-the series over three years.
+hand, in 2022; the idea then slept until late 2025 (account §3). **Record:** in March 2026 he wrote the same to a Claude
+Code session: the outline of Annealing IV's largest island "the result of a random city set and optimal tour solution
+using the annealing algorithm" from the solver visualisations of his thesis (`sources/early-experiments/`, the 20 March
+picture). The record carries no word of the thesis in the maps themselves and spreads the series over three years.
 
-**The first statement of the idea is Ruediger's.** **Record:** on 26 September 2025, looking at a layout tool the author
-had made with Google's AI, Ruediger asked when an AI would scan all the maps and make its own (research/15). On 28
-September the author showed the tool to Technodono, a map developer: "it was made using gemini. I kind of came up with
-some algorithmic steps for creating the layouts and it simply made it" (research/17). The repository
-`CTW-Layout-Generator`, opened in Google AI Studio that day, held within three days a seeded generator whose node types
-were `SPAWN`, `WOOL`, `HUB`, `FRONT_LINE` and `CENTER_HUB`, and it exported only JSON (research/01).
+**The first picture of the project is a graph, drawn on 5 April 2025.** **Record:** a matplotlib figure titled
+"Multiple 1-Team PvP Layouts (Improved Graph Connections)" shows four layouts, each one team's ground: grey nodes in six
+to eight rows and three columns, labelled L, C and R by count, a cyan node on top, two red nodes off the sides, and a
+few edges drawn green (`sources/early-experiments/`). **Account:** "irgendein Experiment mit Graphen", some experiment
+with graphs (account §18). **Record:** no commit, file or message of the four early repositories holds it
+(research/18 §4). What the colours meant is not written on the figure. **Inference:** a matplotlib figure was made
+in Python; the rows and three columns of one team's half are the grid the later generators cut.
 
-**Claude was in the work from October 2025, earlier than the commits name it.** **Record:** on 7 October 2025 the author
-told Technodono he had moved the tool into his own repository, `ctw-layout-editor`, mostly written with Claude's VS
-Code extension, and on 10 October that he was working on it with a friend and writing `.schematic` files without
-WorldEdit (research/17). The local repository `MinecraftLayoutEditor`, in C#, has its first commit on 10 October around
-a `Graph` of typed nodes, and on 12 October wrote a drawn graph out as a `.schematic`, each edge a line of blocks; on 6
-November it imported a real world "(claude & grok)", the first models named in a commit (research/01). Whether
-`ctw-layout-editor` and `MinecraftLayoutEditor` are one repository under two names, and who the friend was, is not
-recorded. Two committer identities, `michael` and `rockymine`, appear on the same days (research/01).
+**On 24 May 2025 a Claude chat drew two teams and a void between them.** **Record:** a tablet screenshot, its status
+bar reading Saturday 24 May, 01:39, shows a Claude artifact, "Interactive Level Design Visualizer", version 6 of 6: a
+"Level Design Generator" with two objectives per team and a "Medium (24x12)" map; Team A and Team B stand either side
+of a grey strip marked VOID; blue lanes run from each spawn through lane intersections to "void access points" at the
+strip's edge, and dashed red "void connections" cross it (`sources/early-experiments/`). **Account:** these were
+experiments with Claude in the chat; "da gab es noch kein Claude Code, soweit ich mich entsinne", there was no Claude
+Code yet as far as he remembers (account §18). **Record:** nothing of it is in a repository (research/18 §4). It is
+the earliest Claude in the history, thirteen months before the studio.
+
+**On 16 August 2025 he had v0 build the generator, and named it.** **Record:** the v0 chat "Layout generation app"
+holds seventeen messages of his from 21:31 to 23:11 UTC, a hundred minutes, to the model `v0-max`. The first carries
+one attachment and asks to "implement this layout generation as a web application with configurable parameters,
+visualization, and export", so the algorithm existed before the chat; what the attachment was is not in the page. At
+21:54 he renamed the app "Capture the Wool Layout Generator". Most of the rest is a fight over symmetry ("I never asked
+for 'Independent Sides' Mode. This does not even make sense."), until "Great. It finally works." at 22:19; then a
+step-by-step debug display, an "upscaled" display that fills cells instead of drawing points, and a second way of
+cutting the initial random 3×3 grid, "Row-independent Columns". Times on an assistant message show the chat was used
+again on 24 September from 22:10 to 22:15 UTC (`sources/early-experiments/v0-chat-2025-08-16.md`). **Account:** he
+believes he tried several things on v0, not one prototype, and wants to look it up (account §19).
+
+**The v0 generator and `CTW-Layout-Generator` share an algorithm and a name; the record shows no shared code.**
+**Record:** `CTW-Layout-Generator` was opened as a Google AI Studio app at 00:42 UTC on 28 September 2025, four days
+after the v0 chat was last touched; its app is titled "Minecraft CTW Map Generator", and its own documentation says
+that "each team's territory is divided into a 3x3 grid of zones", with a grid mode "Standard" or "Row-Independent" and a
+symmetry mode "Mirror" or "Rotation" (the clone's `metadata.json` and `components/Documentation.tsx`, read for this
+pass; research/01). Those are the v0 chat's random 3×3 grid, its row-independent columns and its two symmetry modes.
+The repository begins with an AI Studio README, not with v0's code, and v0's code is not in the page. **Inference:** the
+repository is the v0 generator's successor in algorithm and in name, built again in another tool; that the algorithm
+was his and travelled from tool to tool fits his message of 28 September, below. That any code passed from one to the
+other is not shown.
+
+**The first statement of an AI making maps from data is Ruediger's.** **Record:** on 26 September 2025, answering a
+screenshot of the Gemini tool, Ruediger wrote "ich frag mich ja wann der erste alle maps eincannt und ne ki anhand der
+daten eine eigene map erstellen lässt", I do wonder when somebody will scan in all the maps and have an AI make a map of
+its own from the data (research/15; account §18). The screenshot predates the repository's first commit by two days. On
+28 September the author showed the tool to the contest's map developer: "it was made using gemini. I kind of came up
+with some algorithmic steps for creating the layouts and it simply made it" (research/17). On 29 September he wrote to
+Ruediger "vielleicht kommt man damit in richtig ki generierung", maybe this leads into real AI generation (research/15).
+By 1 October the repository held a seeded generator whose node types were `SPAWN`, `WOOL`, `HUB`, `FRONT_LINE` and
+`CENTER_HUB`, exporting only JSON; on 3 October a step-wise manual editor; and nothing after that day (research/01).
+**Inference:** the idea of generating layouts was his from April 2025; what Ruediger first put into words was the later
+direction, an AI that learns from every map.
+
+## 2. October 2025 to January 2026: an editor of his own, blocks without hands, and a pause
+
+**On 7 October 2025 he moved twice.** **Record:** that day he sent Ruediger a link to an AI Studio app, "nur manueller
+editor. klappt auch ganz gut am telefon", only a manual editor, works quite well on the phone too (account §18). Its
+id differs from the one in `CTW-Layout-Generator`'s README, so it is a second app or a second share; which is not
+recorded (account §18; the clone's `README.md`). The same day he told the contest's map developer that he had moved the
+tool into his own repository, `ctw-layout-editor`, mostly written with Claude's VS Code extension (research/17).
+**Account:** that repository is probably not MinecraftLayoutEditor, "sicherlich wird das ein anderes sein" (account
+§18). **Record:** no repository and no string of that name is in the record (research/18 §2).
+
+**MinecraftLayoutEditor turned a drawn graph into blocks within two days.** **Record:** the C# solution opens at 14:29
+(+02:00) on 10 October 2025 around a `Graph` of typed nodes; at 01:04 on 11 October it gains "symmetry, mirror, rotate,
+snap to canvas"; at 00:13 on 12 October "schematic creation and download", and at 20:05 "render edges with bresenham",
+each edge a line of blocks (research/01, research/18). On 10 October he told the contest's map developer he was working
+on it with a friend and writing `.schematic` files without WorldEdit (research/17). **Account:** he sent Ruediger the
+first screenshots on 11 October, and a day later Ruediger was fascinated to hear that blocks no longer had to be placed
+by hand (account §18). Two committer identities, `michael` and `rockymine`, appear on the same days (research/01).
+
+**The editor reads as his own code, and the record agrees as far as commit text can.** **Account:** "weiterhin der
+größtenteils eigene Code", still mostly his own code (account §18). **Record:** every commit before July 2026 is by a
+human identity, none carries a `Co-Authored-By` trailer, and the October commits are small steps, "Implement zoom",
+"Implement panning"; the one large block with a named assistant origin is the world importer (research/18 §2).
 
 **The graph came from a joke about sameness.** **Account:** nearly every map reduces to a frontline and an H, as Race for
 Victory 2, Two Tier and his own Outback do; his editor drew edges with a width and a height, rotatable, with no
 rectangle, and he sketched maps on paper as nodes and edges (account §3). **Record:** the edge had a map-wide lane width
 and thickness rather than its own (research/08); Outback is his, the other two are older maps by others (research/08).
 
-## 2. December 2025 to June 2026: a logging plugin, a contest question, and a Python studio
+**On 4 November the first layout he thought okay stood in a world.** **Account:** he drew it himself in the browser and
+imported it on the mapmaker server (account §18). **Record:** the picture shows two grey stone landmasses with arms and
+stepped edges facing each other across a gap (`sources/early-experiments/`); no commit names it, and that day's commits
+are a renderer change and a new test layout (research/18 §2).
 
-**The months the commit history leaves empty were spent on play data.** **Record:** the author's messages to Ruediger
-mention Claude on 9 December 2025 for a match-logging plugin ("claude hat gut gearbeitet"); by February and March it
-held 689 and then 3,000 logged matches and a per-map configuration of 177 maps "dokumentiert für die ki"; on 19 March
-he wrote "ai maps soon tm" (research/15). The logging itself ended in March 2026 (research/17). **Account, as given on
-2 July 2026:** "It all started with this PGM logging plugin that was kind of controversial a little bit"; the movement
-data it collected led to wanting to generate maps (research/16). To the administrator ryan he wrote on 29 May that "the
-whole project is kind of an offspring from the logging experiment" (research/17).
+**On 6 November it read a real world, with two models named.** **Account:** he tested world import on Annealing,
+showing a few XML regions (account §18). **Record:** `d2c4bc3`, 03:20 on 6 November, "working import of .leveldat and
+.mca files (claude & grok)", a world importer of 621 lines, the first models named in any commit (research/01). The
+picture of that day shows the editor's own labels, "Import World (Region Files + level.dat)" with five files chosen,
+and blocks without a region overlay; XML import and region rendering arrive at 00:17 and 00:40 on 10 November
+(research/18 §2). So the XML regions he remembers on the 6th are of the 10th. Region editing followed on 12 and 17–18
+November; the main branch stops on 16 November, and the last human commit is "ui improvements (claude)" on 20 December
+(research/18).
 
-**The community's line on AI was drawn before there was anything to judge.** **Record:** on 26 April Technodono said of
-someone else's "AI Generated DTM map": "I don't think any version of that ai map would play well even with edits"; on 13
-May the author asked whether "ai generated maps" would be accepted in a contest; the same day javg, another map
-developer, agreed to make a map with him on "just one condition. no AI for creative stuff", and the author answered "I
-was joking" (research/17).
+**The pause he remembers is in every repository, but the logging had begun.** **Account:** from December a small pause,
+"bis Februar auf jeden Fall", until February at least (account §18). **Record:** no commit falls between 21 December
+2025 and 30 January 2026 in any of the four repositories (research/18). On 9 December he told Ruediger that Claude had
+written a match-logging plugin well, "claude hat gut gearbeitet" (research/15), and match files dated 24 January 2026
+exist (research/18). The plugin's own repository was not read, so whether it ran through the pause is not recorded.
 
-**The second attempt began by reading maps, not making them.** **Record:** on 29 May the author told Ruediger that
-Ruediger's idea of drawing polygons was being built (research/15). `pgm-map-studio`, in Python, opened on 31 May with
-Claude Sonnet 4.6 as co-author and scanned worlds for their islands; its pamphlet of 5 June says "The ground plane is not
-just terrain — it is the map's navigational grammar"; on 7 June a browser sketch exported as a loadable map folder; its
-last commit is 03:24 UTC on 12 June (research/01). On 10 June he wrote to javg "opus is scary good", "asking me
-questions for an hour already", and an hour later the same of Fable 5 (research/17).
+## 3. January to June 2026: play data, islands, the graph again, and a viewer that became a studio
 
-## 3. June 2026: the C# studio, the first XML nobody wrote, and the first test
+**The months the editor leaves empty were spent on play data.** **Account:** the logger recorded who captured a wool
+when and how players moved, to understand how ordinary maps play and possibly for generation later; about 4,000 games
+were collected, and from the positions alone a map's layout could be read (account §18). **Record:** the picture is a
+cloud of blue points in the shape of a map (`sources/early-experiments/`), the kind of output the `trace` command of 3
+February makes; his "Map Traces" feature, which told void from build region, is named in no commit (research/18). In
+the summer he put it his own way: "It all started with this PGM logging plugin that was kind of controversial a little
+bit" (research/16), and to an administrator on 29 May "the whole project is kind of an offspring from the logging
+experiment" (research/17). The logging itself ended in March 2026 (research/17).
+
+**How many games were logged has three answers.** **Account:** about 4,000 (account §18). **Record:** to Ruediger, 689
+on 2 February and 3,000 in March, with a per-map configuration of 177 maps "dokumentiert für die ki", documented for the
+AI (research/15); in CTWAnalysis a summary of 9 March, "Total matches processed 2,452", on 177 unique maps, with
+9,136,355 position records and 4,440 wool captures, unchanged on the main branch since (research/18). Whether more
+were collected than were processed the repository cannot tell.
+
+**Islands became polygons, triangles and a skeleton, and the graph came back.** **Account:** around 26 January, to
+say on which island a player died, Claude wrote scripts that found the islands in the block data and cut them into
+polygons, "der Basisgrundstein", the foundation stone; from the triangles came the medial graph, "da sind wir dann
+wieder bei der Graph-Idee gewesen", there we were back at the graph idea (account §18). **Record:** CTWAnalysis opens at
+23:55 (+01:00) on 31 January with 67 files and 13,971 lines of Python already written, island detection, triangulation,
+a pixel skeleton, an XML parser and match analysis, and a README saying "Built with Claude Code"; 26 January is neither
+shown nor contradicted (research/18 §1). A graph of islands, skeleton nodes and void links exists from 2 February; the
+triangle meshing was removed on 13 February, so the picture "Island Triangulation Detail View" shows a stage that lived
+twelve days, and the title "Simplified Skeleton Detail View" of the second picture is in no commit (research/18;
+`sources/early-experiments/`). Of 773 commits, 592 carry a Claude mark, 443 of them Sonnet 4.6 (research/18).
+
+**On 20 March he asked Claude about generating maps, and Ruediger was already asking him.** **Record:** a Claude Code
+screenshot holds his message: "That's great and scary. With this data you might be able to learn and make a map that
+feels just like mine if we simply reverted the pipeline. Artificially constructing new maps would definitely be on the
+far horizon for me. I know Ruediger_LP is already talking to me about it. Whenever I mention the project to him he just
+begs for the first ai generated map." The answer: "Right now the flow is map → features → statistics. Flip it: desired
+statistics → generate features → synthesize map geometry", and it ends "Commit the authors command, then backfill the
+layout/terrain fixes for the 143 contaminated maps?" (`sources/early-experiments/`). The authors command is `6cbc9dd`, at
+00:19 (+01:00) on 20 March, so the exchange belongs to the late evening of 19 March or the first minutes of the 20th;
+"143" and "contaminated" are in no commit or file (research/18). On 19 March he wrote to Ruediger "ai maps soon tm"
+(research/15). **Account:** "ein relativ großer Wendepunkt, nehme ich mal an", a fairly big turning point, I suppose
+(account §18). **Record:** the first line of layout-drawing code came ten weeks later (research/18).
+
+**The community's line on AI was drawn before there was anything to judge.** **Record:** on 26 April the contest's map
+developer said of someone else's "AI Generated DTM map": "I don't think any version of that ai map would play well even
+with edits"; on 13 May the author asked whether "ai generated maps" would be accepted in a contest; the same day the
+award show's organiser, also a map developer, agreed to make a map with him on "just one condition. no AI for creative
+stuff", and the author answered "I was joking" (research/17).
+
+**In May a viewer grew drawing tools, and the drawing became islands.** **Account:** in May, roughly, PGM Studio began,
+first as a view of the XML files and maps; then came drawing regions, then drawing polygons, which made islands, and
+then the maps; that is when he left the editor and the match analysis (account §18). **Record:** the three steps are in
+CTWAnalysis, in his order: a browser map viewer with named XML region overlays on 14 May, a rectangle region tool on 15
+May and more region types on 22–24 May, and on 29 May a `/concept` page from a Claude session, to "sketch island shapes
+on a blank canvas … and compute the resulting polygon" (research/18 §1). On 29 May he told Ruediger "Dein polygon map
+zeichnen gedöns wird jetzt implementiert", your polygon-map-drawing business is being built now (research/15). On 31
+May the old commands were removed as "superseded by map viewer" (research/18). **Record against "left in May":** seven
+port documents followed on 3 June, the editor took 19 commits from a Claude session on 30 July, and the analysis three
+on 9–10 August, the match-flow data behind the studio's gameplay documents (research/18).
+
+**At 22:01 the same evening the Python studio began.** **Record:** `pgm-map-studio` opened on 31 May, read worlds for
+their islands and round-tripped `map.xml` by 3 June, with Claude Sonnet 4.6 and Opus 4.8 as co-authors (research/01,
+research/18 §3); its pamphlet of 5 June says "The ground plane is not just terrain — it is the map's navigational
+grammar"; on 7 June a browser sketch exported as a loadable map folder; its last commit is 03:24 UTC on 12 June
+(research/01). On 10 June he wrote to the award show's organiser "opus is scary good", "asking me questions for an
+hour already", and an hour later the same of Fable 5 (research/17).
+
+## 4. June 2026: the C# studio, the first XML nobody wrote, and the first test
 
 **The studio was a port, and its stack has not changed since.** **Record:** fourteen hours after the last Python commit
 `pgm-studio` was opened, and on 13 June Claude Opus 4.8 ported the whole studio to ASP.NET Core and Blazor in one commit
@@ -90,7 +220,7 @@ of 145 files (research/01). The author called it the third rewrite, "so that it 
 **The first `map.xml` a model wrote went to a real map within ten days.** **Record:** from 17 to 21 June Claude named the
 author's next map "Cobalt Crossing" and wrote its XML, which Ruediger reviewed; it became Drastic Change II. The author
 asked "ist das jetzt die erste xml jemals die jemand geschrieben hat ohne sie zu schreiben?" (research/15), and told
-javg on 22 June it was a map "For which I did not write up any coordinates" (research/17). On 23 June the first
+the award show's organiser on 22 June it was a map "For which I did not write up any coordinates" (research/17). On 23 June the first
 generated XML loaded in PGM (research/15). On 19 or 20 June Ruediger proposed the method of the later evenings:
 generate many maps, test the best ten in one evening, paint them afterwards (research/15). The same day a corpus
 analysis of 347 maps found that "the generator emits 0 neutral mid pieces but 88% of real maps carry a contested
@@ -110,7 +240,7 @@ July somebody in the call said Base was "Better than Vauxite, because Vauxite ha
 the summer was on the evening of the upload, which the log had dated to 28 June for Capture the Wool CTW and to 12
 October for the other two.
 
-## 4. 2 July 2026: the Base maps, drawn in the morning and played that night
+## 5. 2 July 2026: the Base maps, drawn in the morning and played that night
 
 **The first worlds the studio built were test fixtures drawn on squared paper.** **Record:** the Claude Code session of
 1 to 2 July (Opus 4.8) was opened to split P9, the export that writes a sketch as a world. At 23:21 UTC on 1 July the
@@ -128,7 +258,9 @@ JSON files for a test; the plan model came at 22:47 UTC that evening; the first 
 (research/09). In the call that evening he put it his own way: "Today I was on my phone and I told Claude Code to make
 some seeds for the generation of the maps. I drew something on paper." (research/16).
 
-**The graph was not dropped in 23 minutes; a design document was replaced.** **Record:** at 14:31 UTC a 184-line design
+**The graph was not dropped in 23 minutes; a design document was replaced.** It was the graph's third arrival: the
+matplotlib layouts of April 2025 and the skeleton graph of February 2026 came before it (chapters 1, 3).
+**Record:** at 14:31 UTC a 184-line design
 proposed a plan graph of typed lane and gap edges; at 14:54 it was rewritten as areal pieces joined by interfaces,
 because "a thinned skeleton cannot represent side contact"; that evening `FannedGraph`, a reachability graph over the
 pieces, entered the studio, where it still is (research/08). The same afternoon a strawman of layout rules was offered
@@ -152,8 +284,9 @@ generate "something more interesting now", he declines: "Because I want to have 
 it, and then we can do better stuff." Back on the public server the maps cannot be set, because they are only on
 mapdev ("throw it in private for now"); the commit message is argued over for seven minutes (Ruediger: "we'll try to
 hide our crimes"), and at 20:21:01 PrivateMaps takes `711e539`, "Irongate Harbor remove dev phase" (research/16).
-**Inference:** that this commit carried the Base folders is inferred from its timing; its file list was not read
-(research/16).
+**Account:** that commit carried the Base maps, and its message was Ruediger's joke: Irongate Harbor is an older map
+that tends to stalemate, and a map that runs long is put into the dev phase so that players cannot request it
+(account §18). Its file list was not read (research/16).
 
 **Three matches followed on server-2.** **Record:** Base 2-Wool at 20:23:53 (26 players, 3 min 46 s, Red), Base
 2-Island at 20:28:47 (28 players, 5 min 12 s, Red) and Base 4-Team at 20:35:08 (33 players, 3 min 38 s, Blue); after the
@@ -173,7 +306,7 @@ first load "actually crashed the server, because it was in the wrong format, and
 the studio, `7576a6c4`, is committed under rockymine at 21:21 UTC, 42 minutes after the recording ends (research/16,
 research/09). **Inference:** the worlds played were fixed before the fix was committed (research/16).
 
-## 5. July 2026: boxes, Bridgid II, the cake and the micro
+## 6. July 2026: boxes, Bridgid II, the cake and the micro
 
 **By 21 July the layout was boxes.** **Record:** the composer started on 4 July beside a month of recorded play; by 21
 July it composed spawn, hub, wool approaches, frontline and middle, and "the box pipeline is THE composer"; destroy
@@ -188,7 +321,7 @@ matches at 00:31 (2 seconds) and 00:53 (39 players, 8 min 25 s), and the log's f
 research/13). Ruediger asked that day to test it again, "bridgid 2 nochmal testen?" (research/15). **Account:** its
 layout took about a day in the browser, it was skinned from stone in game in one long evening, its repeating side
 columns gave the wall-run idea, and it is as wild as Hello World; Ruediger made its XML, much of it placed by the
-browser, with the water lane added by hand (account §5 and its correction, §8). To ryan on 17 August he wrote that
+browser, with the water lane added by hand (account §5 and its correction, §8). To an administrator on 17 August he wrote that
 "myself and Ruediger sat together in discord" to make No Blocks Placed, "the same way we made Bridgid II's layout"
 (research/17). **Record:** the studio's wall run first appears on 1 August, and nothing links the two (research/11).
 
@@ -205,7 +338,7 @@ its layout is Hello World's, abstracted very simply onto the grid, and he drew i
 July Ruediger worked out the timing of a wool room that moves, and the author called it "so dumm und genial"
 (research/15). On 18 July a contributor had asked "why are we using AI to review maps now" (research/17).
 
-## 6. August 2026: colour, trees, a walking room, and the first boards on the server
+## 7. August 2026: colour, trees, a walking room, and the first boards on the server
 
 **"Map walls" are the walls, rims and plateaus of 1 August.** **Account:** colouring began with one rule per height,
 then the top, sides and edges of a shape, then shading from outside in, stacked patterns and slope; under the plan model
@@ -235,7 +368,7 @@ for "Drawing pieces, shapes, and markers in the browser.", Ruediger_LP for "Wisd
 before the log's first (research/16, research/13). TTtie, seeing it on mapdev: "looks like a map", and "it should learn
 to not put flowers on dirt" (research/17). Its largest tree is a 50-log oak about 17 blocks tall (research/08).
 **Account:** Flamiix did the wool room and spawn interiors, Tttie nothing; the oak is the surviving generated tree "if it
-is about 20 blocks high" (account §3, squared-paper section). When ryan took it for "the ai map" on 17 August, the
+is about 20 blocks high" (account §3, squared-paper section). When an administrator took it for "the ai map" on 17 August, the
 author answered: "well it isnt, myself and Ruediger sat together in discord and made the map." (research/17).
 
 **Another author's Grok map arrived on 10 August.** **Record:** arcadeboss uploaded Cedar Crossing at 04:00 UTC,
@@ -295,15 +428,15 @@ research/14). **Inference:** Aerie floats from y 26 and has no block at y 0, whi
 column outside its build rectangles, the mechanism he guesses (research/14). Aerie is not among the matches of either
 source.
 
-## 7. 24 August to 4 September: the first test evenings, and Millrace
+## 8. 24 August to 4 September: the first test evenings, and Millrace
 
 **The test evenings began on Monday 24 August.** **Record:** at 18:58 UTC the author sent Ruediger a zip of six boards; at
 19:05 PrivateMaps took "Add a few very human maps for testing"; from 19:08 to 19:50 the API holds all six on server-1 in
 the order Hollowbank, Sunspit, Siderite Bowl, Hollowmarch, Cairnmeadow, Elderwold, 26 to 33 players each (research/15,
-research/16). That evening Technodono asked about "random json files" in the uploads, which were the plan files
-(research/17), and at 22:50 javg moved the uploaded maps in PrivateMaps under a commit titled "reorganize the slop"
-(`sources/maps-changelog/`). The author told javg "Most of them were just 'Build a map' without any prompting
-whatsoever." (research/17). Tarnfell followed alone on 25 August at 20:37 (research/16).
+research/16). That evening the contest's map developer asked about "random json files" in the uploads, which were the
+plan files (research/17), and at 22:50 a PrivateMaps commit titled "reorganize the slop" moved the uploaded maps
+(`sources/maps-changelog/`). The author told the award show's organiser "Most of them were just 'Build a map' without
+any prompting whatsoever." (research/17). Tarnfell followed alone on 25 August at 20:37 (research/16).
 
 **Millrace is the year's clearest lesson.** **Record:** on 30 August the author drew a basin in the Sketch tool; Opus 5
 built it as Millrace and Sonnet 4.5 as Cutwater and Fallowmere (research/03). The zip of 31 August added Brackenfold and
@@ -337,7 +470,7 @@ blocks of range (sessions/09); he says Hollowmarch's frontline put players over 
 (account §11). **Record:** Hollowmarch had been played on 24 and 31 August and on 4 September, before the flattening
 (research/16, research/13).
 
-## 8. September 2026: written taste, the Sundays, a forum thread, and the last evening
+## 9. September 2026: written taste, the Sundays, a forum thread, and the last evening
 
 **Taste was written down rather than gated.** **Record:** on 4 September the studio stopped writing the "made by" sign over
 blank lines, after finding 69 of 74 boards named nobody (research/07); on 5 September it painted by slope (research/02);
@@ -360,30 +493,33 @@ players, and the log then Alderfen Holm and Millrace (research/15, research/16, 
 Mirkholt, which he judged "not good" and corrected by two messages (sessions/12), and on 18 September TTtie's verdict
 on three agents' twelve boards: "those kinda finally start looking like real maps" (research/17).
 
-**The evening of 20 September was hosted by TTtie, and it started an argument.** **Record:** seven maps were sent at 21:25
+**The evening of 20 September started an argument.** **Record:** seven maps were sent at 21:25
 UTC; the API holds eight matches on server-1 from 21:53 to 22:45, the extra one Peatgarth played twice, and the evening's
 last, Hushwater, ended at 22:45; the log shows Millrace at 22:46 (research/15, research/16, research/13). At 23:48 the
 first kept reply stands in a feedback-forum thread, "stop AI maps from being played at all", which ran to 24
-September (research/17). Its poster, now a "Deleted User", later deleted their messages ("i got told by 10 ppl why i was
-wrong"); the author's quote preserves the question, "Why are we playing something that goes against the very spirit of
-a map (human creation)?" (research/17). Chapter 15 gives the thread; its outline is that the administrator ryan, called
-wylt on the server, had "never heard of an AI PGM map lol", that TTtie answered "we're also wrapping the pure-AI maps in
-an event so everyone knows", and that the author answered on method, time and replacement: "Not trying to replace
-anyone. If anything I am replacing myself. I am just having fun." (research/17). ryan expected no more: "i doubt we are
-ever getting another AI maps event" (research/17).
+September (research/17). The thread's opener, now a "Deleted User", later deleted their messages ("i got told by 10 ppl
+why i was wrong"); the author's quote preserves the question, "Why are we playing something that goes against the very
+spirit of a map (human creation)?" (research/17). Chapter 16 gives the thread; its outline is that an administrator had
+"never heard of an AI PGM map lol", that a staff member answered "we're also wrapping the pure-AI maps in an event so
+everyone knows", and that the author answered on method, time and replacement: "Not trying to replace anyone. If
+anything I am replacing myself. I am just having fun." (research/17). The administrator expected no more: "i doubt we
+are ever getting another AI maps event" (research/17).
 
 **The three-model day and the terrain-only boards came between.** **Record:** on 21 September two of Sonnet 5's four boards
 exceeded the dead-ground band and none of Opus 5's did (research/03); the first Opus 5.5 commit is of 22 September
 (research/02); on 24 September a brief asked for destroy maps' terrain alone, "just their terrain with no theming", and
 produced Scarbutte, Kelderfell, Twingill and Cinderhowe (sessions/13).
 
-**The last evening was 27 September, and it was the largest.** **Record:** that day Ruediger posted "Slop Sunday happening
-now! testing some ai assisted maps" (research/17). At 20:55 UTC the author sent eleven `/event add` commands; at 21:55
-Opus 5.5 committed Delverdale and Whitstone Weald "for a 32-a-side play test", and their zip went at 21:57 with "load
-maps" (research/15). The API holds thirteen matches on server-1 from 20:59 to 22:36, the eleven and then the two large
-boards, 44 to 60 players each (research/16). Copper Wash, one of two maps credited to "Muse Spark", was won by a team
-named "Claude", Delverdale by one named "Anti-Slop" (research/16). At 22:36 the author sent ryan "that was the prompt for
-the last two": around 32 players a team, a larger CTW and DTM with terrain, more trees, houses and an underground layer,
+**The last evening was 27 September, and it was the largest.** **Record:** at 20:55 UTC the author sent eleven `/event
+add` commands (research/15). At 20:58 Ruediger posted the one announcement the event channel of the Discord holds:
+"Slop Sunday", a robot, "happening now!", in italics "testing some ai assisted maps", and "!alert"; a minute later, at
+20:59, the first match, Sedgefall, began (`sources/slop-sunday-announcement/`; account §19; research/16). When the
+author photographed it on 28 November it carried a skull thirteen times, a rocket and an L twice each, and twelve other
+reactions once each, among them a fire, a party face and a wilted rose. At 21:55 Opus 5.5 committed Delverdale and
+Whitstone Weald "for a 32-a-side play test", and their zip went at 21:57 with "load maps" (research/15). The API holds
+thirteen matches on server-1 from 20:59 to 22:36, the eleven and then the two large boards, 44 to 60 players each
+(research/16). Copper Wash, one of two maps credited to "Muse Spark", was won by a team named "Claude", Delverdale by
+one named "Anti-Slop" (research/16). At 22:36 the author sent an administrator "that was the prompt for the last two": around 32 players a team, a larger CTW and DTM with terrain, more trees, houses and an underground layer,
 two large end-stone monuments, two wools, no compose plan (research/17). **Account:** the last AI-map test was on 27
 September (account §2). Neither source holds a board of this project in an evening of its own after it: the log's only
 later play of one is Viridian on 16 October, inside an ordinary rotation (research/13).
@@ -391,11 +527,11 @@ later play of one is Viridian on 16 October, inside an ordinary rotation (resear
 **The studio went public the same day.** **Record:** between 26 and 28 September Discord sign-in, tokens, a build queue
 and self-deployment of pgmstudio.de arrived (research/02); he wrote "pgmstudio.de ist jetzt meins" (research/15) and told
 TTtie "I've bought a domain and a small hetzner vm to run the studio" (research/17). Asked for his real opinion that
-day, Technodono was fine with it "as a small experiment", found going public "concerning", and did not want AI content in
+day, the contest's map developer was fine with it "as a small experiment", found going public "concerning", and did not want AI content in
 community maps or contests (research/17). The next day a player from the event sent a two-page review of the tool
 (research/15). **Account:** it went online about two months ago and hardly anyone uses it (account §3).
 
-## 9. Late September to 9 October: notes with coordinates, freeform, and the grammar
+## 10. Late September to 9 October: notes with coordinates, freeform, and the grammar
 
 **Notes pinned to the ground replaced descriptions in words.** **Record:** on 28 September notes could be pinned by a
 point, box or lasso on a picture; on 29 September Gypsum Reach and Sootcombe were worked through five rounds, the agent
@@ -425,17 +561,19 @@ spoke a second style in it, and built Brittlebush III from a plan he had drawn o
 **Account:** the Brittlebush look, 5×5 fields combined by rules, can be expressed in full by the grammar, and Brittlebush
 III has never been tested by players (account §2). Neither the log nor the API holds it (research/13, research/16).
 
-## 10. 9–10 October: the viewing, and the pause
+## 11. 9–10 October: the viewing, and the pause
 
 **The notes of 9 and 10 October came from a viewing, not from a test.** **Record:** the author's notes from "playing the
 freeform and trial boards" were sorted into 30 faults, of which the studio "would have caught 9", with Riftwater
 "essentially perfect" in the agent's summary (research/05, research/06). Neither source holds a match of a freeform
-board before 27 November (research/13, research/16). **Account:** three of them looked at the new pgmvox maps together,
-and it was the first feedback on those maps (account §13).
+board before 27 November (research/13, research/16). **Account:** they looked at the new pgmvox maps together on the
+mapdev server, and it was the first feedback on those maps (account §13, §18). Five were present: the author, Ruediger,
+TTtie, and two staff members, mitchiii and wylt, whose lines the staff chat holds (account §18). An earlier instalment
+had said "three" (account §13).
 
 **The boards are now named.** **Account:** the boards shown were Hollowcrown, the board with two monuments, one
 underground and one on a castle on a mountain; Lantern Karst, the flying capture-the-wool board; Hollow Mesa; and the
-very first freeform board, Riftwater (account §14, §15). **Record:** Hollowcrown's report gives two fortress mountains,
+very first freeform board, Riftwater, which he has confirmed by name (account §14, §15, §18). **Record:** Hollowcrown's report gives two fortress mountains,
 monument A in a tower on a spur and monument B in the temple of a delved city in a cavern; Lantern Karst is floating
 karst islands with two wools a team; Hollow Mesa is a destroy-the-core board (`freeform/lib/boards/`). Hollowcrown, a
 freeform board of October, is not the Haiku board Hollow Crown of 22 August. The observer chat asks about "the
@@ -450,8 +588,7 @@ Asked "how long does each one take? if you made all those in the past day or so?
 these complex maps" and "sometimes faster". On Brittlebush III: "he looked at the region file and i steered him", "then
 he turned it into some form of grammar", "i mean, its literally just 5x5 pieces with 3 different styles", "and rules on
 how they combine"; to "so you could give it half finished map and it finish it?" he answered "yep". The author decided
-on 27 November that these lines may be used as they are (account §14). **Inference:** wylt is ryan (research/17), who
-three weeks earlier had never heard of an AI PGM map.
+on 27 November that these lines may be used as they are (account §14).
 
 **The viewing ended in a pause.** **Account:** there they decided to pause for the time being, because the maps were
 slowly getting "too good", in looks and in diversity, with many new game modes (account §13). Later he added that the
@@ -462,7 +599,7 @@ made boards of comparable quality", and Ruediger proposed finishing the three be
 19 October the author wrote "nicht so die Motivation AI Maps zu machen oder zu spielen. Genug Material haben wir ja."
 (research/15). **Inference:** the 13 November freeze may continue the October pause; no record says so.
 
-## 11. October and November: the port, the contest, the hand-built map, the freeze
+## 12. October and November: the port, the contest, the hand-built map, the freeze
 
 **The studio absorbed its laboratory.** **Record:** on 15 October `docs/pgmvox-port.md` set the goal of a board "the author
 cannot tell apart, by quality, from one built with pgmvox"; the rectangle plan retired on 18 October, a modifier stack of
@@ -472,12 +609,12 @@ concept world with signs, was judged "finished and the map.xml a success" (resea
 
 **Other people used the browser, and the lines around it hardened.** **Record:** Countryside's regions were drawn in the
 studio from 5 October and it reached CommunityMaps on 15 October UTC; 803's studio-made XML went up on 19 October
-(research/11). On 11 October javg, reviewing the first studio XML by someone else, said a tool that outputs XML should
-output it ready, and while a work in progress "it shouldn't be 'advertised'"; the author answered that he had hidden
-the model-made maps in the studio "because that might give a wrong impression to users. There is no ai active on the
-page." (research/17). The same day mamebt wrote "The confusion is coming from AI maps being banned but pgmstudio being a
-linked tool", and Technodono "PGM studio is not what's making AI maps" (research/17). For his contest Technodono would
-list pgmstudio.de "As long as they can't use the opus function", because "using ai to actually do stuff for you is
+(research/11). On 11 October the award show's organiser, reviewing the first studio XML by someone else, said a tool
+that outputs XML should output it ready, and while a work in progress "it shouldn't be 'advertised'"; the author
+answered that he had hidden the model-made maps in the studio "because that might give a wrong impression to users.
+There is no ai active on the page." (research/17). The same day a player wrote "The confusion is coming from AI maps
+being banned but pgmstudio being a linked tool", and the contest's map developer "PGM studio is not what's making AI
+maps" (research/17). For his contest the contest's map developer would list pgmstudio.de "As long as they can't use the opus function", because "using ai to actually do stuff for you is
 banned"; by 11 November it had no submissions, and the author wrote "You can't call it a contest if it's me vs you and
 you're the one judging in the end." (research/17). **Account:** Countryside on 9 October (account §5); the repository has
 14 October in the uploader's zone (research/11).
@@ -487,10 +624,11 @@ holds study forms and "Six blind entries to a Fire and Ice contest" by three Opu
 of which chose Destroy the Core (research/04). The author's own map is "a CTW and DTC hybrid for a fire-and-ice
 contest": a bunker set into a mountain with the core in its face and an underground wool lane; the contest "had been
 cancelled, and the map is an ice map", and both halves are one design turned 180°, not fire against ice (research/04).
-On 25 November he sent Technodono its layer-by-layer model: "Note that it still is not AI. Just having claude follow
-along." (research/17). **Account:** he began it about 17 October and has built it over a few weekends (account §14); it
-is the map with the wool and the core that Minuyo and others first took for a model's work (account §17).
-**Inference:** the cancelled contest may be Technodono's, which drew no entries; no source names them as one.
+On 25 November he sent the contest's map developer its layer-by-layer model: "Note that it still is not AI. Just
+having claude follow along." (research/17). **Account:** he began it about 17 October and has built it over a few
+weekends (account §14); it is the map with the wool and the core that Minuyo and others first took for a model's work
+(account §17). The cancelled contest is the contest's map developer's, the one that drew no entries (account §18;
+research/17).
 
 **Agents could not compose his sketch, so he built it.** **Record:** from 2 to 7 November agents composed his sketch world
 into a map set into a mountain, and every version was rejected, "the surface was not closed", "a ramp led into the
@@ -498,7 +636,7 @@ void"; "Every one of those failures passed some check that existed at the time";
 understanding the half he built (research/04). In the studio he froze the layout generator on 13 November; the last
 commit on `main` is of 14 November (research/02).
 
-## 12. 27 and 28 November: the arcade evening, and "is it AI?"
+## 13. 27 and 28 November: the arcade evening, and "is it AI?"
 
 **The freeform boards reached the public servers on 27 November.** **Record:** the five arcade boards played that night are
 freeform boards planned and built on 8 October in commits co-authored by Opus 5.5 (`freeform/lib/boards/`; mapgen
@@ -515,14 +653,14 @@ of any freeform board, so this evening is their first on the public servers (res
 **Now the question runs the other way.** **Account:** he is asked, it feels constantly, whether whatever he builds is AI;
 Minuyo asked it first of the fire-and-ice map; he finds it funny, and says it looked a little wild at the start, which a
 model's work is not, since AI is more structured, and what it partly lacks is the creativity for the wild (account §17).
-**Record:** on 27 November he asked TTtie "which important big ai fails did i miss?" (research/17); javg, who runs the
-community's map awards, the Mappys, asked him to present "best newcomer", and on 26 November he sent javg the
+**Record:** on 27 November he asked TTtie "which important big ai fails did i miss?" (research/17); the organiser of the
+community's map awards, the Mappys, asked him to present "best newcomer", and on 26 November he sent the organiser the
 "Prompt-a-Map Sketch", a comic sketch made from the failures (research/17; account §17). AI maps do not count at the
 Mappys (account §17).
 
 ---
 
-## 13. What counts as an AI map
+## 14. What counts as an AI map
 
 **"AI map" is a spectrum, and the useful question is who decided each part.** **Account:** the squared-paper map was his
 drawing written down by Claude; many maps came from a deterministic generator; others are the model's own imagination,
@@ -531,6 +669,13 @@ layout, terrain, colour, structures, objectives and XML, finishing — and names
 The studio executes in most rows and decides in none; where an algorithm decides, a seed was chosen by someone
 (research/12). Determinism does not settle authorship, because authorship lives in the inputs: a compiler is
 deterministic and writes no program (research/12).
+
+**The question was asked of tools before it was asked of maps.** **Record:** the layout generators of 2025 were built by
+chat models from an algorithm he brought: v0 was asked to "implement this layout generation", and of the Gemini tool he
+wrote "I kind of came up with some algorithmic steps for creating the layouts and it simply made it"; the editor that
+followed is by the record mostly hand-written, and the analysis of 2026 mostly Claude-written (chapters 1–3;
+research/17, research/18). **Inference:** the split the table draws for maps, a person deciding and a model executing,
+was already the split of the tools that came before them; no map of those months reached a server.
 
 | # | Category | Who decides, what executes | Maps (source) |
 |---|---|---|---|
@@ -542,11 +687,12 @@ deterministic and writes no program (research/12).
 | 6a | Model's script inside the author's tool | the model writes the program, in his repository, on his world writer and later his library | Riftwater, the freeform and arcade boards, Coldstore (research/12) |
 | 6b | Model's own tooling | the model and its own pipeline make map and XML | Cedar Crossing and arcadeboss's later Grok maps (research/12, research/15) |
 
-**The words the community used drew the line in another place.** **Record:** TTtie spoke of "pure-AI maps" wrapped in an
-event; the author, in the forum, said the XML is not written by the agent but generated deterministically, and "The ai
-is simply using a web tool that you could use to make maps yourself as well"; Technodono accepted the studio "If the
-projects vibecoded" but had first thought "it was an actual AI generating the layouts"; his contest allowed the studio
-but not "the opus function" (research/17). Ruediger's alert of 27 September said "ai assisted maps" (research/17).
+**The words the community used drew the line in another place.** **Record:** a staff member in the thread spoke of
+"pure-AI maps" wrapped in an event; the author, in the forum, said the XML is not written by the agent but generated
+deterministically, and "The ai is simply using a web tool that you could use to make maps yourself as well"; the
+contest's map developer accepted the studio "If the projects vibecoded" but had first thought "it was an actual AI
+generating the layouts"; his contest allowed the studio but not "the opus function" (research/17). Ruediger's alert of
+27 September said "ai assisted maps" (`sources/slop-sunday-announcement/`).
 **Inference:** the community's line runs between a model that decides content and a tool a person drives, which is
 research/12's line between categories 3 and 4.
 
@@ -564,7 +710,7 @@ Sonnet short of it (research/17); on 21 September Opus 5's dead ground was lower
 with Sonnet 5.5 in both tools, the tools came out level; the boards he finished or called a success were Opus boards
 (research/03, research/05). No run compares Opus 5.5 with Sonnet 5.5 on one brief (research/03).
 
-## 14. The tests, match by match
+## 15. The tests, match by match
 
 **A map got a test after a look on a local server.** **Account:** every map in the repository was looked at on a local
 test server, often with Tttie, and that look decided whether a map got a test (account §12). Those looks, and the walks
@@ -606,7 +752,9 @@ absent: Scarrow Delph, Whinberry Ring, Delverdale and Whitstone Weald (research/
 
 **What remains inferred or unrecorded.** That the evenings were run as event rotations is the author's account; the API
 does not say how a match was started, and on 2 July the recording shows Base 2-Wool set next without a vote, while the
-388 include many matches that are not tests at all (research/16; account §9). Which version of a board was played is
+388 include many matches that are not tests at all (research/16; account §9). He has since said that he believes the
+first two test evenings had their maps set by hand and the later ones ran as a rotation, a point he calls "absolut
+unwichtig", entirely unimportant (account §18); which two evenings he means is not stated. Which version of a board was played is
 inferred: Millrace on 31 August was the model's, and Sunspit and Hollowmarch were played before their 5 September
 rebuild. The walks on mapdev (2 July, 12 August) are documented only by the recording and a message; the looks on a local
 server and the viewing of 9–10 October are not documented as matches at all.
@@ -630,41 +778,40 @@ requires the frontline to sit inside the build zone; Kilnholt Cut's tunnel was f
 could be burnt out with flint and steel (account §11; sessions list). None of these plays is described in a record;
 the API now dates the matches in which each could have happened.
 
-## 15. What players and staff said
+## 16. What players and staff said
 
 **The first audience laughed along.** **Record:** on 2 July the voices in the call are amused throughout; the players
 saw "the greybox"; the server poll gave the Base maps 3 of 4 (research/16). Its sharpest line, nuttydragon's "we need
 updated OCC AI legislation", was a joke, and by September it was a question.
 
 **The forum thread of 20 to 24 September is the one public argument.** **Record:** 247 messages kept (research/17).
-Against the poster's "spirit of a map (human creation)", the author wrote "No actual map data is being used to train
+Against the opener's "spirit of a map (human creation)", the author wrote "No actual map data is being used to train
 anything. The ai is simply using a web tool that you could use to make maps yourself as well. I'm just trying to make
 mapmaking more accessible", pointed to Millrace as what the evenings were for, said that "10 human hours" went into the
-maps and that the why "is simply curiosity and fun", and named Ruediger, Tundren, wylt, mewzzy and Technodono as having
-supported the experiments. TTtie answered for the event: "we're of course aware that the generated maps are of no
-artistic value", and "a month or two ago we had just stone pillars and boxes as the output". will asked for an AI
-disclosure in the XML "in a structured way, not just freeform author field"; mamebt: "No genuine feedback came from this
-thread outside of Will's suggestion". The players were divided: draem, "all the maps played today were really bad";
-HiddenAbility, on learning a map was model-made, "bro i loved that map"; ApplePies found everything played alike. draem
-also wrote "this is also at least the 2nd AI map event afaik" (research/17). **Record against it:** by the API, boards of
+maps and that the why "is simply curiosity and fun", and named Ruediger and four others as having supported the
+experiments. A staff member answered for the event: "we're of course aware that the generated maps are of no
+artistic value", and "a month or two ago we had just stone pillars and boxes as the output". One player asked for an AI
+disclosure in the XML "in a structured way, not just freeform author field"; a second player: "No genuine feedback came
+from this thread outside of" that suggestion. The players were divided: a third player, "all the maps played today
+were really bad"; a fourth, on learning a map was model-made, "bro i loved that map"; a fifth found everything played
+alike. The third also wrote "this is also at least the 2nd AI map event afaik" (research/17). **Record against it:** by the API, boards of
 this project had been played on six evenings before 20 September: 12, 24, 25 and 31 August, 4 and 13 September
 (research/16).
 
-**The map developers held a line, and moved it once they saw a tool.** **Record:** Technodono, four days into the thread:
-"just cause I find it interesting doesn't necessarily mean that I'm ok with the idea of it being on the main server";
-javg's condition of May and his October standard for studio XML; Technodono's contest rule (research/17). Chapter 11 gives
-the October lines.
+**The map developers held a line, and moved it once they saw a tool.** **Record:** a map developer, four days into the
+thread: "just cause I find it interesting doesn't necessarily mean that I'm ok with the idea of it being on the main
+server"; the award show's organiser's condition of May and October standard for studio XML; the contest's rule
+(research/17). Chapter 12 gives the October lines.
 
 **The staff who saw the October boards were impressed.** **Record:** "I would have assumed these were touched up", "its
-over for m*pdevs.", "maps look a lot more diverse" (`sources/staff-chat-october/`). **Inference:** between ryan's "never
-heard of an AI PGM map" on 20 September and wylt's "maps look a lot more diverse" in October lie the freeform boards; they
-are the same person (research/17).
+over for m*pdevs.", "maps look a lot more diverse" (`sources/staff-chat-october/`). **Inference:** between the thread's
+"never heard of an AI PGM map" on 20 September and the October viewing lie the freeform boards.
 
-**Maps a person made were taken for a model's from the start.** **Record:** ryan took No Blocks Placed for "the ai map"
-in August (research/17). **Account:** players take the fire-and-ice map for one now (account §17). **Inference:** the
+**Maps a person made were taken for a model's from the start.** **Record:** an administrator took No Blocks Placed for
+"the ai map" in August (research/17). **Account:** players take the fire-and-ice map for one now (account §17). **Inference:** the
 question has outlived the evenings.
 
-## 16. What the hand-built map shows
+## 17. What the hand-built map shows
 
 **The map he built deliberately breaks the mode's dull shape.** **Account:** it sits in a cauldron of walls and a bunker
 facade; routes are knitted together — tunnels, an underground lane, an overground way to the core, a hole from the big
@@ -679,31 +826,43 @@ and 14 blocks tall; the colours of its wool carry meaning, yellow for connecting
 passing checks on variants he saw as plainly wrong; "a geometric rule is not a design" (research/04). **Account:** it has a
 dead area that makes sense, likely the back around the wool lookout and hills, so "dead" is subjective (account §1, §3);
 the dead-ground rule would refuse it at more than 12 percent (research/05). It will be finished by him in snow, stone, ice
-or grass (account §8). **Inference:** the year went from a graph to a grammar and from words to coordinates, and the newest
-map returns to the first category, with the models put to reading it (research/12); his own message calls it "not AI.
+or grass (account §8). **Inference:** the year and a half went from a graph in matplotlib to a grammar and from words to coordinates, and the
+newest map returns to the first category, with the models put to reading it (research/12); his own message calls it "not AI.
 Just having claude follow along" (research/17).
 
-## 17. What remains open
+## 18. What remains open
 
-**Two disagreements between record and recollection remain.**
+**Where record and recollection disagree.**
 
 | Subject | Account | Record | State |
 |---|---|---|---|
 | Aerie's unplayable XML | unplayable, stated flatly (account §11, §12) | no record; the model reported the gate open (sessions/06, research/14) | his account against the record; inference supports his guess |
 | The freeform instruction | "I don't like it, think"; he gave nothing (account §1, §7) | "what if … his own sort of script"; ingredients and mode were his (sessions/00, 01) | settled in form, his memory compressed |
+| Games logged | about 4,000 (account §18) | 689 and 3,000 in his messages (research/15); 2,452 processed in CTWAnalysis's summary of 9 March (research/18) | both given; collected against processed not separable |
+| The XML regions of 6 November 2025 | world import "showing a few XML regions" (account §18) | world import on 6 November; XML import and regions on 10 November (research/18) | his date belongs to the world import |
+| The pause | from December "bis Februar auf jeden Fall" (account §18) | no commit in four repositories 21 December to 30 January; the logging plugin praised on 9 December, match files from 24 January (research/15, research/18) | consistent for the repositories; the plugin's repository unread |
+| The three May steps | the start of PGM Studio (account §18) | in CTWAnalysis's viewer, 14, 15 and 29 May; `pgm-map-studio` opens on 31 May (research/18) | his order right, the repository another |
+| Leaving the editor and the analysis in May | left both in May (account §18) | the editor 19 Claude commits on 30 July, the analysis three on 9–10 August (research/18) | right for daily work, not for every commit |
+| "143 contaminated maps" | in the 20 March screenshot (`sources/early-experiments/`) | in no commit or file of CTWAnalysis (research/18) | the picture is the only source |
+| Those present at the viewing | "three" (account §13) | five by his later answer (account §18), and the staff chat holds four names | five stands |
 
 **Facts the sources leave open.**
 
-- **The viewing of 9–10 October:** where it took place (the chat is observer chat, on a server not named), and whether
-  the "three" of account §13 include the author, since the chat holds his name and three others.
-- **The early repositories:** whether `ctw-layout-editor` (7 October 2025, research/17) and `MinecraftLayoutEditor` (10
-  October, research/01) are one repository; who the friend of 10 October was; who `michael` is.
-- **2 July:** which commit carried the Base folders into PrivateMaps (`711e539` by timing, file list unread); who said
-  "Better than Vauxite" (research/16); the speaker spelled samshaap and samschaap in research/16.
+- **The prehistory:** what the attachment of the first v0 message was, and whether the v0 generator's code reached
+  `CTW-Layout-Generator`; what the April 2025 experiment was written with beyond matplotlib, and what its node colours
+  meant; whether the 7 October 2025 AI Studio link is a second app; what the 143 "contaminated" maps were
+  (`sources/early-experiments/`; research/18).
+- **The early repositories:** whether a repository `ctw-layout-editor` exists, which the author thinks differs from
+  `MinecraftLayoutEditor` and the record does not show (account §18; research/18); who the friend of 10 October 2025
+  was; who `michael` is.
+- **The logging:** how many games the plugin collected, against the 2,452 processed (research/18); its repository was
+  not read.
+- **2 July:** the file list of `711e539`, which the author says carried the Base maps (account §18); who said "Better than
+  Vauxite" (research/16); the speaker spelled samshaap and samschaap in research/16.
 - **Bridgid II's earlier test:** whether Ruediger's "nochmal testen?" of 14 July followed the API's two matches that
   night or refers to an earlier test (research/15, research/16).
-- **The contest:** whether the cancelled fire-and-ice contest is Technodono's contest (research/04, research/17).
-- **The forum:** who opened the thread; what "AI maps being banned" (mamebt, 11 October) referred to (research/17).
+- **The evenings:** which two test evenings the author means as set by hand (account §18).
+- **The forum:** who opened the thread; what "AI maps being banned" (a player, 11 October) referred to (research/17).
 - **Smaller points:** whether the 17-block oak on No Blocks Placed is the generated tree (research/08); which session drew
   the probe board's tunnels (sessions/10); what "Muse Spark" is (the author believes a Meta model; account §12); the
   Annealing dates (research/08); the briefs of the first fifteen, Heftfold and Whinberry Ring; the openings of sessions
