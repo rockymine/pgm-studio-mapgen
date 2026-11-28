@@ -916,7 +916,7 @@ Just having claude follow along" (research/17).
 
 - **The prehistory:** whether the v0 generator's code reached `CTW-Layout-Generator`; what the April 2025 experiment was
   written with beyond matplotlib (the author: perhaps ChatGPT), and what its node colours meant; what the attachment of
-  the first v0 message was, which the author cannot say and which would need much searching (account §21); whether the 7 October 2025 AI Studio link is a second app; what the 143 "contaminated" maps were,
+  the first v0 message was, which the author cannot say and which would need much searching (account §21); whether the 7 October 2025 AI Studio link was the "CTW Smart Map Editor", and when that project was made; what the 143 "contaminated" maps were,
   which the author does not know (`sources/early-experiments/`; research/18; account §21).
 - **The early repositories:** whether a repository `ctw-layout-editor` exists, which the author thinks differs from
   `MinecraftLayoutEditor` and the record does not show (account §18; research/18); who the friend of 10 October 2025
