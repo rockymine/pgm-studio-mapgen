@@ -22,9 +22,9 @@ Sunday 18 January 2026 and the last is Sunday 8 March 2026.
 
 **The days without a figure.** 12 to 17 January, 19, 20 and 23 January and Monday 2 February show a dash.
 
-**The three durations are not labelled.** They read as the longest matches of each week, which is an inference. Four
-of them run past three hours: Shroom Galaxy 3h15m, Outback: Outback 3h32m and Sanctum Wasser 3h41m, with Brittlebush II
-at 2h46m.
+**The three durations are not labelled.** They read as the longest matches of each week, which is an inference. Three
+of them run past three hours: Shroom Galaxy 3h15m, Outback: Outback 3h32m and Sanctum Wasser 3h41m; Brittlebush II
+follows at 2h46m.
 
 **The tiers** in the table are "nano", "centi" and "milli", a size class of the maps played that day; "centi" is the
 most frequent.
