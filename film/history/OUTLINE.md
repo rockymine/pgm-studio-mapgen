@@ -39,7 +39,7 @@ that would have to be made, in game or from a committed world.
    spanning tree in redstone to a grammar, ending at a map built by hand, which the early pictures now open; or the year as a question the community asked — who made this map — and
    still asks of that hand-built map. Choosing one decides which scenes lead.
 4. **Which open facts must be settled first.** Those that a scene would state: what the v0 page looked like in February
-   2025 rather than today, and how many games the logger collected (`HISTORY.md` ch. 18). The Base commit, the
+   2025 rather than today, and whether the author's data holds more than the 2,452 matches processed (`HISTORY.md` ch. 18). The Base commit, the
    viewing and the contest are settled (account §18).
 5. **What gameplay to record, on which versions.** Several boards were played in versions later rebuilt (Sunspit,
    Hollowmarch, the model's Millrace), so a recording shows today's board unless an older world is restored.

@@ -17,9 +17,10 @@ people carry role labels instead of names, by the author's decision of 28 Novemb
 | 2025-02-11 | To samschaap: "Potential Algorithm steps" (grid nodes, spanning tree favouring straight edges, extra edges for cycles, dissecting for islands, a grid for wave function collapse) and a "Data survey" of his and Ruediger's CTW maps as 1×1 cells | sources/early-experiments/2025-02-11-message-to-samschaap.md; account §20 | record |
 | 2025-02-11 | The first v0 prototype, `v0-occ-mapmaking-tools-b63noa.vercel.app`: grid size and node count, spanning trees, shaded cells; "So the earliest v0 prototype made rsts" | the same; account §20; sources/early-experiments/v0-prototype-2025-02 | record (his description; the page, "Random Spanning Tree Visualization", seen as it runs on 28 Nov 2026) |
 | 2025-02-11 | samschaap: "so it will be 'trained'"; he: "an educated, rule-based approach is more likely for me to achieve than actual training"; Townside as grid and as a torch graph with a green-carpet cycle edge | the same | record |
-| 2025-04-05 | matplotlib figure "Multiple 1-Team PvP Layouts (Improved Graph Connections)": four node-and-edge layouts of one team's half | pictures; account §18 | record (picture); no repository holds it (r/18) |
+| 2025-04-05 | matplotlib figure "Multiple 1-Team PvP Layouts (Improved Graph Connections)": four node-and-edge layouts of one team's half | pictures; account §18 | record (picture); no repository holds it (r/18); the tool is not known, perhaps ChatGPT (account §21) |
 | 2025-05-24 01:39 (local) | Claude chat artifact "Interactive Level Design Visualizer", v6 of 6: a "Level Design Generator" with lanes, a void strip, void connections | pictures; account §18 | record (picture) |
 | 2025-05-24 | "da gab es noch kein Claude Code, soweit ich mich entsinne" | account §18 | account |
+| 2025 | Tools in turn, by the author: ChatGPT and other models in a single chat; v0, the first to make several files and host a prototype; Gemini as an alternative; then Claude, kept | account §21 | account |
 | 2025-08-16 21:31–23:11 | v0 chat, 17 messages: "implement this layout generation…" (one attachment); renamed "Capture the Wool Layout Generator" at 21:54; mirror against rotate, random 3×3 grids, row-independent columns | sources/early-experiments/v0-chat-2025-08-16.md | record |
 | 2025-09-24 22:10–22:15 | The v0 chat used again; what was asked is not in the page | sources/early-experiments/v0-chat-2025-08-16.md | record |
 | 2025-09-26 | Ruediger, to a screenshot of the Gemini tool: "ich frag mich ja wann der erste alle maps eincannt und ne ki anhand der daten eine eigene map erstellen lässt" | r/15; account §18 | record |
@@ -39,13 +40,15 @@ people carry role labels instead of names, by the author's decision of 28 Novemb
 | 2025-12-09 | Claude named to Ruediger for the match-logging plugin, "claude hat gut gearbeitet" | r/15 | record |
 | 2025-12-20 | Last human commit in `MinecraftLayoutEditor`, "ui improvements (claude)" | r/18 | record |
 | 2025-12 → 2026-02 | A small pause, "bis Februar auf jeden Fall" | account §18 | account (no commit in four repositories 21 Dec – 30 Jan, r/18) |
+| 2026-01-18 | First day with a logged match in the author's chart (6 matches, a Sunday) | sources/early-experiments/2026-ctw-match-activity.md; account §21 | record (read off a picture) |
 | 2026-01-24 | Match logs exist (file names, a Tumbleweed match) | r/18 | record |
 | 2026-01-26 (about) | Islands found and cut into polygons by Claude's scripts | account §18 | account (not shown or contradicted, r/18) |
 | 2026-01-31 23:55 (+01:00) | `CTWAnalysis` opens with 67 files: islands, triangulation, skeleton, XML parser, match analysis, "Built with Claude Code" | r/18 | record |
 | 2026-02-02 | Inter-island connectivity: the graph returns as a skeleton graph | r/18; account §18 | record |
 | 2026-02-02 / 03-08, 03-14 | 689, then 3,000 logged matches; 177 maps "dokumentiert für die ki" | r/15 | record |
 | 2026-02-13 | Triangle meshing removed | r/18 | record |
-| 2026-03-09 | "Total matches processed 2,452", 177 unique maps | r/18 | record (the author: about 4,000, account §18) |
+| 2026-03-09 | "Total matches processed 2,452", 177 unique maps | r/18 | record (the author: about 4,000, account §18; the chart's table 2,450, account §21) |
+| 2026-03-08 | Last day with a logged match in the chart; the table sums to 2,450 matches on 46 days | sources/early-experiments/2026-ctw-match-activity.md; account §21 | record (read off a picture) |
 | 2026-03 | Logging ends | r/17 | record |
 | 2026-03-19 | To Ruediger: "ai maps soon tm" | r/15 | record |
 | 2026-03-19/20 | Claude Code: "if we simply reverted the pipeline"; Ruediger "just begs for the first ai generated map"; Annealing IV's island a TSP tour; "the 143 contaminated maps" | pictures; r/18 | record (dated by `6cbc9dd`, 20 Mar 00:19 +01:00; "143" in no file) |

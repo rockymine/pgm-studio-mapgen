@@ -48,7 +48,8 @@ holds, what the **author recalls**, and what is **inference**.
     `staff-chat-october/`, five chat screenshots of the 9–10 October viewing (usable as they are, account §14);
     `early-experiments/`, the author's message to samschaap of 11 February 2025 with its three Townside pictures and
     four screenshots of its v0 prototype as it runs today (`v0-prototype-2025-02/`), the
-    eight pictures of April 2025 to March 2026 (account §18, §20) and the v0 chat of 16 August 2025 read from his link;
+    eight pictures of April 2025 to March 2026 (account §18, §20) and the v0 chat of 16 August 2025 read from his link,
+    and the chart of the logged capture-the-wool matches of 18 January to 8 March 2026 with its summed table (account §21);
     and `slop-sunday-announcement/`, Ruediger's announcement of 27 September 2026 with its reactions (account §19).
 13. **`tools/`** — the scripts the PC agent's sources were read with (zip listing, Discord condensing, the match API,
     transcription and speaker grouping); not map tooling.
@@ -82,6 +83,10 @@ holds, what the **author recalls**, and what is **inference**.
   drew two teams, lanes and a void strip; a v0 chat of 16 August 2025 named the "Capture the Wool Layout Generator",
   whose 3×3 grid, row-independent columns and mirror/rotate modes reappear in `CTW-Layout-Generator` of 28 September
   2025, with no shared code shown (sources/early-experiments/; research/01).
+- The logging collected 2,450 matches on 46 days from 18 January to 8 March 2026 by the chart's daily table (read off a
+  picture), against 2,452 processed in CTWAnalysis; the author remembers more (about 4,000, then 3700, then "maybe 2700")
+  and says the repository may be out of date. Three matches on ordinary capture-the-wool maps ran past three hours
+  (sources/early-experiments/2026-ctw-match-activity.md; account §21).
 - On 11 February 2025 he told samschaap that "an educated, rule-based approach" was likelier for him than training
   (sources/early-experiments/).
 - MinecraftLayoutEditor's dates hold to the day: screenshots 11 October, blocks without hands 12 October, world import
@@ -109,11 +114,11 @@ holds, what the **author recalls**, and what is **inference**.
 
 ## What is open
 
-What the first v0 attachment of 16 August 2025 was, and whether any v0 code reached `CTW-Layout-Generator`; what the
-April 2025 experiment was written with beyond matplotlib; whether the 7 October 2025 AI Studio link is a second app;
+Whether any v0 code reached `CTW-Layout-Generator`; what the
+April 2025 experiment was written with beyond matplotlib (the author: perhaps ChatGPT); whether the 7 October 2025 AI Studio link is a second app;
 whether a repository `ctw-layout-editor` exists (the author thinks it differs from MinecraftLayoutEditor; the record
-holds none), who `michael` is and who the friend of 10 October 2025 was; how many games the logger collected against the
-2,452 processed; what the "143 contaminated maps" were; whether Bridgid II's "nochmal" refers to the matches of 14 July;
+holds none), who `michael` is and who the friend of 10 October 2025 was; whether the author's local data holds more than the
+2,452 matches the repository processed; what the "143 contaminated maps" were (he does not know; perhaps the server's tracking logs); whether Bridgid II's "nochmal" refers to the matches of 14 July;
 which two evenings were set by hand; who opened the forum thread; Aerie's unplayable XML, which the author states and no
 record holds; whether the 50-log oak is the generated tree; the briefs of the first fifteen, Heftfold and Whinberry
 Ring; which model "Muse Spark" is; who may be quoted beyond the staff chat. `HISTORY.md` chapter 18 and
@@ -127,8 +132,9 @@ opener", "a staff member", "one player", "a second player" and so on; and the au
 who appear as "the contest's map developer", "an administrator", "the award show's organiser" and "a developer of the
 website". The author, Ruediger, TTtie's direct messages, the five voices of 2 July, the cleared staff chat of October
 (where the administrator and a map developer appear under their names, and nothing from the thread or the messages is
-attached to them) and names that are public facts, such as map credits and commit authors, keep their names. Earlier
-commits on the `mappies-film` branch still hold the names; this rule governs the current tree.
+attached to them) and names that are public facts, such as map credits and commit authors, keep their names. The author
+confirmed on 28 November that this level is enough, naming the role or "staff", and that the branch history need not be
+cleaned; earlier commits on the `mappies-film` branch still hold the names (account §21).
 
 ## What was not read
 
@@ -216,7 +222,11 @@ turned two chapters into three, so every later chapter moved up by one.
 | `CTW-Layout-Generator` is the first generator | HISTORY ch. 1; research/01 (cited) | preceded by the February 2025 spanning-tree page and the v0 "Capture the Wool Layout Generator" of 16 August 2025, whose algorithm it shares; no shared code shown | sources/early-experiments/; the clone's `Documentation.tsx` |
 | Whether `ctw-layout-editor` and `MinecraftLayoutEditor` are one repository is open | HISTORY ch. 17; README; questions | the author thinks not; the record holds no repository of that name | account §18; research/18 |
 | Nothing filled the commit gap from December 2025 to June 2026 but messages | HISTORY ch. 2 | CTWAnalysis from 31 January 2026: islands, triangles, skeleton graph, 2,452 matches processed, the May viewer and drawing tools | research/18 |
-| The logging held 3,000 matches by March | HISTORY ch. 2 | 689 and 3,000 in his messages; 2,452 processed in the committed summary; about 4,000 by his memory | research/15, research/18; account §18 |
+| The logging held 3,000 matches by March | HISTORY ch. 2 | 689 and 3,000 in his messages; 2,452 processed in the committed summary; 2,450 in the chart's daily table; about 4,000 by his memory, later "maybe 2700" | research/15, research/18; account §18, §21 |
+| The match logs begin on 24 January 2026; the plugin's run through the pause is not recorded | HISTORY ch. 2, 3; timeline | the chart's first match is 18 January and its last 8 March, so the logging ran through the pause | account §21; sources/early-experiments/ |
+| The 24 May 2025 chat is the earliest Claude in the history | HISTORY ch. 1 | the earliest recorded use of Claude is 24 May 2025; the 5 April 2025 graph experiment may have been ChatGPT, the tool is not known | account §21 |
+| No long destroy match exists, which could read as no long match at all | HISTORY ch. 12 | still none on a destroy board of the project; ordinary capture-the-wool matches of over three hours are in the logged data of early 2026 | sources/early-experiments/ |
+| The first v0 attachment, the open question | HISTORY ch. 1; questions | not recoverable without much searching; he assumes it was his algorithm idea | account §21 |
 | The second attempt began with `pgm-map-studio` on 31 May | HISTORY ch. 2 | the viewer, region drawing and polygon islands were built in CTWAnalysis from 14 May; `pgm-map-studio` opened that evening | research/18 |
 | The graph returned in the studio on 2 July after a first life in 2025 | HISTORY ch. 4 (now 5) | its fourth arrival, after February 2025, April 2025 and February 2026 | sources/early-experiments/; research/18 |
 | That `711e539` carried the Base folders is inferred from timing | HISTORY ch. 4 (now 5); timeline; README | the author states it did, and that its message is Ruediger's joke about a stalemating map put into the dev phase | account §18 |

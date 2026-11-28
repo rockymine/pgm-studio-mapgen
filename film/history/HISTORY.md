@@ -83,7 +83,8 @@ stands nineteen months before his forum answer that "No actual map data is being
 "Multiple 1-Team PvP Layouts (Improved Graph Connections)" shows four layouts, each one team's ground: grey nodes in six
 to eight rows and three columns, labelled L, C and R by count, a cyan node on top, two red nodes off the sides, and a
 few edges drawn green (`sources/early-experiments/`). **Account:** "irgendein Experiment mit Graphen", some experiment
-with graphs (account §18). **Record:** no commit, file or message of the four early repositories holds it
+with graphs (account §18); the tool is not known, it may have been ChatGPT, which he still used then, and he tried all the
+models of the time (account §21). **Record:** no commit, file or message of the four early repositories holds it
 (research/18 §4); the green edges recall the cycle edges of February. What the colours meant is not written on the figure. **Inference:** a matplotlib figure was made
 in Python; the rows and three columns of one team's half are the grid the later generators cut.
 
@@ -94,18 +95,25 @@ of a grey strip marked VOID; blue lanes run from each spawn through lane interse
 strip's edge, and dashed red "void connections" cross it (`sources/early-experiments/`). **Account:** these were
 experiments with Claude in the chat; "da gab es noch kein Claude Code, soweit ich mich entsinne", there was no Claude
 Code yet as far as he remembers (account §18). **Record:** nothing of it is in a repository (research/18 §4). It is
-the earliest Claude in the history, thirteen months before the studio.
+the earliest recorded use of Claude in the history, thirteen months before the studio; whether the experiment of 5 April
+was made with Claude is not recorded.
 
 **On 16 August 2025 he went back to v0, and named the generator.** **Record:** the v0 chat "Layout generation app"
 holds seventeen messages of his from 21:31 to 23:11 UTC, a hundred minutes, to the model `v0-max`. The first carries
 one attachment and asks to "implement this layout generation as a web application with configurable parameters,
-visualization, and export", so the algorithm existed before the chat; what the attachment was is not in the page. At
+visualization, and export", so the algorithm existed before the chat; what the attachment was is not in the page, and the author cannot say: he
+assumes he had described his idea of the algorithms and asked questions elsewhere first, and finding the prompt would
+take much searching (account §21). At
 21:54 he renamed the app "Capture the Wool Layout Generator". Most of the rest is a fight over symmetry ("I never asked
 for 'Independent Sides' Mode. This does not even make sense."), until "Great. It finally works." at 22:19; then a
 step-by-step debug display, an "upscaled" display that fills cells instead of drawing points, and a second way of
 cutting the initial random 3×3 grid, "Row-independent Columns". Times on an assistant message show the chat was used
 again on 24 September from 22:10 to 22:15 UTC (`sources/early-experiments/v0-chat-2025-08-16.md`). **Account:** he
-believes he tried several things on v0, not one prototype, and wants to look it up (account §19).
+believes he tried several things on v0, not one prototype, and wants to look it up (account §19). **Account:** why v0 and
+then other tools: in 2025 the models were not far enough; in a single chat a model could not always produce whole
+functions or whole connected pieces of code. v0 was the first solution he knew that created several files belonging
+together and hosted the prototype; Gemini offered the same and was an alternative, and later he changed to Claude and
+stayed with it (account §21).
 
 **The v0 generator and `CTW-Layout-Generator` share an algorithm and a name; the record shows no shared code.**
 **Record:** `CTW-Layout-Generator` was opened as a Google AI Studio app at 00:42 UTC on 28 September 2025, four days
@@ -176,7 +184,9 @@ November; the main branch stops on 16 November, and the last human commit is "ui
 "bis Februar auf jeden Fall", until February at least (account §18). **Record:** no commit falls between 21 December
 2025 and 30 January 2026 in any of the four repositories (research/18). On 9 December he told Ruediger that Claude had
 written a match-logging plugin well, "claude hat gut gearbeitet" (research/15), and match files dated 24 January 2026
-exist (research/18). The plugin's own repository was not read, so whether it ran through the pause is not recorded.
+exist (research/18). **Record:** the author's chart of the logged matches has its first match on 18 January 2026 and its
+last on 8 March (`sources/early-experiments/2026-ctw-match-activity.md`; account §21), so the logging ran through the
+weeks without a commit. The plugin's own repository was not read.
 
 ## 3. January to June 2026: play data, islands, the graph again, and a viewer that became a studio
 
@@ -187,13 +197,19 @@ cloud of blue points in the shape of a map (`sources/early-experiments/`), the k
 February makes; his "Map Traces" feature, which told void from build region, is named in no commit (research/18). In
 the summer he put it his own way: "It all started with this PGM logging plugin that was kind of controversial a little
 bit" (research/16), and to an administrator on 29 May "the whole project is kind of an offspring from the logging
-experiment" (research/17). The logging itself ended in March 2026 (research/17).
+experiment" (research/17). The logging itself ended in March 2026 (research/17); the chart's last day is 8 March (account §21).
 
-**How many games were logged has three answers.** **Account:** about 4,000 (account §18). **Record:** to Ruediger, 689
+**How many games were logged has three answers.** **Account:** about 4,000 (account §18); later "3700", and on seeing
+the chart "under 3000, maybe 2700" (account §21). **Record:** to Ruediger, 689
 on 2 February and 3,000 in March, with a per-map configuration of 177 maps "dokumentiert für die ki", documented for the
 AI (research/15); in CTWAnalysis a summary of 9 March, "Total matches processed 2,452", on 177 unique maps, with
 9,136,355 position records and 4,440 wool captures, unchanged on the main branch since (research/18). Whether more
-were collected than were processed the repository cannot tell.
+were collected than were processed the repository cannot tell. **Record:** the daily table of the author's chart adds up to
+2,450 matches on 46 days, 18 January to 8 March 2026, read off a picture, which agrees with the repository's 2,452; the
+memory is higher. He says the full data is on his PC and the repository may be out of date (account §21). Under each
+week the chart lists three durations with map names. **Inference:** they are the week's longest matches, and four of
+them are over two and a half hours on ordinary capture-the-wool maps: Sanctum Wasser 3 h 41 min, Outback: Outback 3 h 32
+min, Shroom Galaxy 3 h 15 min and Brittlebush II 2 h 46 min.
 
 **Islands became polygons, triangles and a skeleton, and the graph came back.** **Account:** around 26 January, to
 say on which island a player died, Claude wrote scripts that found the islands in the block data and cut them into
@@ -214,7 +230,8 @@ begs for the first ai generated map." The answer: "Right now the flow is map →
 statistics → generate features → synthesize map geometry", and it ends "Commit the authors command, then backfill the
 layout/terrain fixes for the 143 contaminated maps?" (`sources/early-experiments/`). The authors command is `6cbc9dd`, at
 00:19 (+01:00) on 20 March, so the exchange belongs to the late evening of 19 March or the first minutes of the 20th;
-"143" and "contaminated" are in no commit or file (research/18). On 19 March he wrote to Ruediger "ai maps soon tm"
+"143" and "contaminated" are in no commit or file (research/18). **Account:** he does not know what it refers to; it
+may be the server's tracking logs (account §21). On 19 March he wrote to Ruediger "ai maps soon tm"
 (research/15). **Account:** "ein relativ großer Wendepunkt, nehme ich mal an", a fairly big turning point, I suppose
 (account §18). **Record:** the first line of layout-drawing code came ten weeks later (research/18).
 
@@ -802,7 +819,9 @@ on 4 September; the author says it was played to show players a model's map fini
 **No long destroy match exists, in either source.** **Record:** the longest match on a destroy board of this project is
 Glassmere's, a DTC board, 15 minutes 47 seconds on 13 September with 59 players; Brackenfold's 15 minutes 15 seconds on 4
 September follows (research/16, research/13). The 388 hold long matches, ClayClay at 1 hour 48 minutes, but none on a
-board of this project (`sources/match-status/api-matches-not-in-match-status.csv`).
+board of this project (`sources/match-status/api-matches-not-in-match-status.csv`). Matches of over three hours on
+ordinary capture-the-wool maps are in the author's own logged data of early 2026 (chapter 3), a different mode and
+different maps from the model-made ones.
 
 **What was learned reached the studio as rules, not as records.** **Record:** the one played fault in a commit is
 Kuusepuu's "Reported live" (research/06). **Account:** Hollowmarch's frontline led players into the void, and a check now
@@ -871,25 +890,25 @@ Just having claude follow along" (research/17).
 |---|---|---|---|
 | Aerie's unplayable XML | unplayable, stated flatly (account §11, §12) | no record; the model reported the gate open (sessions/06, research/14) | his account against the record; inference supports his guess |
 | The freeform instruction | "I don't like it, think"; he gave nothing (account §1, §7) | "what if … his own sort of script"; ingredients and mode were his (sessions/00, 01) | settled in form, his memory compressed |
-| Games logged | about 4,000 (account §18) | 689 and 3,000 in his messages (research/15); 2,452 processed in CTWAnalysis's summary of 9 March (research/18) | both given; collected against processed not separable |
+| Games logged | about 4,000 (account §18); "3700", then "under 3000, maybe 2700" on seeing the chart (account §21) | 689 and 3,000 in his messages (research/15); 2,452 processed in CTWAnalysis's summary of 9 March (research/18); 2,450 in the chart's daily table, 18 January to 8 March (read off a picture) | record and chart agree, the memory is higher; he says the repository may be out of date |
 | The XML regions of 6 November 2025 | world import "showing a few XML regions" (account §18) | world import on 6 November; XML import and regions on 10 November (research/18) | his date belongs to the world import |
-| The pause | from December "bis Februar auf jeden Fall" (account §18) | no commit in four repositories 21 December to 30 January; the logging plugin praised on 9 December, match files from 24 January (research/15, research/18) | consistent for the repositories; the plugin's repository unread |
+| The pause | from December "bis Februar auf jeden Fall" (account §18) | no commit in four repositories 21 December to 30 January; the logging plugin praised on 9 December, match files from 24 January (research/15, research/18); the chart's first match 18 January (account §21) | consistent for the repositories; the logging ran through the pause |
 | The three May steps | the start of PGM Studio (account §18) | in CTWAnalysis's viewer, 14, 15 and 29 May; `pgm-map-studio` opens on 31 May (research/18) | his order right, the repository another |
 | Leaving the editor and the analysis in May | left both in May (account §18) | the editor 19 Claude commits on 30 July, the analysis three on 9–10 August (research/18) | right for daily work, not for every commit |
-| "143 contaminated maps" | in the 20 March screenshot (`sources/early-experiments/`) | in no commit or file of CTWAnalysis (research/18) | the picture is the only source |
+| "143 contaminated maps" | the last line of the reply in his screenshot of 20 March; he does not know what it refers to, perhaps the server's tracking logs (account §21) | in no commit or file of CTWAnalysis (research/18) | the picture is the only source |
 | Those present at the viewing | "three" (account §13) | five by his later answer (account §18), and the staff chat holds four names | five stands |
 
 **Facts the sources leave open.**
 
-- **The prehistory:** what the attachment of the first v0 message was, and whether the v0 generator's code reached
-  `CTW-Layout-Generator`; what the April 2025 experiment was written with beyond matplotlib, and what its node colours
-  meant; whether the 7 October 2025 AI Studio link is a second app; what the 143 "contaminated" maps were
-  (`sources/early-experiments/`; research/18).
+- **The prehistory:** whether the v0 generator's code reached `CTW-Layout-Generator`; what the April 2025 experiment was
+  written with beyond matplotlib (the author: perhaps ChatGPT), and what its node colours meant; what the attachment of
+  the first v0 message was, which the author cannot say and which would need much searching (account §21); whether the 7 October 2025 AI Studio link is a second app; what the 143 "contaminated" maps were,
+  which the author does not know (`sources/early-experiments/`; research/18; account §21).
 - **The early repositories:** whether a repository `ctw-layout-editor` exists, which the author thinks differs from
   `MinecraftLayoutEditor` and the record does not show (account §18; research/18); who the friend of 10 October 2025
   was; who `michael` is.
-- **The logging:** how many games the plugin collected, against the 2,452 processed (research/18); its repository was
-  not read.
+- **The logging:** whether the author's local data holds more than the 2,452 matches the repository processed
+  (research/18; account §21); the plugin's repository was not read.
 - **2 July:** the file list of `711e539`, which the author says carried the Base maps (account §18); who said "Better than
   Vauxite" (research/16); the speaker spelled samshaap and samschaap in research/16.
 - **Bridgid II's earlier test:** whether Ruediger's "nochmal testen?" of 14 July followed the API's two matches that

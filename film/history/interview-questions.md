@@ -9,13 +9,10 @@ it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessions/NN`. Answered ques
 
 ## rockymine
 
-1. **The first v0 attachment.** The v0 chat of 16 August 2025 opens with one attachment and "implement this layout
-   generation" (`sources/early-experiments/v0-chat-2025-08-16.md`). What was attached: a written algorithm, the
-   February message, a picture? And did any of v0's code go into `CTW-Layout-Generator`, whose 3×3 grid and
-   mirror/rotate modes are the same (research/01)?
-2. **The logging plugin's count.** You remember about 4,000 games; your messages say 689 and 3,000, and CTWAnalysis's
-   committed summary 2,452 processed on 177 maps (account §18; research/15, research/18). How many did the plugin
-   collect, and were the rest never ingested? Where is the `pgmlogger` repository?
+1. **v0's code.** Did any of the code of the v0 chat of 16 August 2025 go into `CTW-Layout-Generator`, whose 3×3 grid and
+   mirror/rotate modes are the same (research/01; `sources/early-experiments/v0-chat-2025-08-16.md`)?
+2. **The logging plugin's data.** The chart's table sums to 2,450 matches and the repository processed 2,452 (account §21;
+   research/18). Does the data on your PC hold more than the 2,452? Where is the `pgmlogger` repository?
 3. **The data survey of February 2025.** Did you ever reduce your and Ruediger's maps to 1×1 grid cells as the message
    planned, and is Townside's grid the only one (`sources/early-experiments/`)? Is it the same survey that became the
    177-map configuration "dokumentiert für die ki" (research/15)?
@@ -27,7 +24,8 @@ it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessions/NN`. Answered ques
    briefs of the first fifteen, Heftfold and Whinberry Ring (s/02, 04, 05, 07, 10, 12; r/12). Can you paste your first
    message of each?
 7. **The "143 contaminated maps".** The 20 March screenshot ends on them, and no commit or file names them
-   (research/18). What were they?
+   (research/18). You do not know what they refer to, perhaps the server's tracking logs (account §21); can the logs
+   be looked at?
 8. **The two AI Studio links.** `CTW-Layout-Generator`'s README links one app; your link of 7 October 2025, "nur
    manueller editor", is another id (account §18). A second app, or the same re-shared?
 9. **The hand-built fire-and-ice map.** With which in-game loft tool, and why not in the studio? Is the room at y 50 the
@@ -149,6 +147,11 @@ it; `(r/NN)` is `research/NN`, `(s/NN)` is `research/sessions/NN`. Answered ques
 | Were the arcade boards played, and how? | 27–28 November: Lantern Pass, Loomfall, Lantern Drop, Spark, Curio Square, with notes on each | account §14–§16 |
 | Is the fire-and-ice map the wool-and-core map players asked about? | Yes | account §17; r/17 |
 | When was the ice map begun? | About 17 October, over a few weekends since | account §14 |
+| What was attached to the first v0 message of 16 August 2025? | He cannot say; he assumes he had described his algorithm idea and asked questions elsewhere. Not recoverable without much searching | account §21 |
+| Why did the tools change in 2025? | A model in a single chat could not reliably produce whole connected code; v0 was the first tool he knew that made several files and hosted the prototype, Gemini offered the same, then Claude, which he kept | account §21 |
+| What was the 5 April 2025 graph experiment made with? | Not known; possibly ChatGPT, which he still used; he tried all the models of the time | account §21 |
+| How many matches were logged? | The chart's daily table sums to 2,450 (18 January to 8 March 2026), the repository processed 2,452; his memory moved from about 4,000 to "maybe 2700" | account §18, §21; sources/early-experiments/ |
+| Must the branch history be cleaned of names? | No; the present level (the role, or "staff") is enough | account §21 |
 | Was Claude used before December 2025? | Yes: a Claude chat artifact on 24 May 2025; the October 2025 rewrite mostly with Claude's VS Code extension, by his message to the contest's map developer | sources/early-experiments/; r/17 |
 | Who drew No Blocks Placed? | He and Ruediger, together on Discord, as with Bridgid II's layout | r/17 |
 | What was the brief of Delverdale and Whitstone Weald? | ~32 a team, CTW and DTM, terrain, trees, houses, an underground layer, two end-stone monuments, two wools | r/17 |
