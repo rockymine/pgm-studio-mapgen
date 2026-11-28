@@ -199,3 +199,37 @@ server's match API (research `16` §4), times UTC, players counted as distinct p
 - A forum post on the server's Discord, "stop making AI maps" or the like, drew a whole conversation; he thinks someone made it for fun, and does not know who. The poster has since deleted all of their own messages, but many replies remain in the thread.
 - The Mappys, the community's map awards run by javg, were discussed mostly with javg. AI maps do not count there; but the "Prompt-a-Map Sketch" came out of it, a comic sketch for the show made with all the failures (research `17` §3–§5).
 - The thread itself, the search for "ai maps" and his conversations with TTtie, Technodono, javg, ryan and cs_ are read in research `17`.
+
+## Eighteenth instalment, 28 November: before the record, and answers
+
+Given in German in the chat, with eight pictures. The pictures are in `sources/early-experiments/`; which picture
+belongs to which date is taken from their order in the message, except the first, whose date is on its own status
+bar.
+
+Earlier than anything the history had:
+
+- 5 April (2025): "irgendein Experiment mit Graphen". Picture: a matplotlib figure, "Multiple 1-Team PvP Layouts (Improved Graph Connections)", four layouts of grey nodes in rows with a cyan node on top, red nodes at the sides and some green edges (`2025-04-05-graph-layouts-matplotlib.png`).
+- 24 May (2025): experiments with Claude in the chat; "da gab es noch kein Claude Code, soweit ich mich entsinne". Picture: a tablet screenshot, Sat 24 May 01:39, of a Claude artifact "Interactive Level Design Visualizer", version 6 of 6: a "Level Design Generator" with objectives per team, map size "Medium (24x12)", Team A, a void strip, Team B, spawns, lane intersections, lanes and void connections (`2025-05-24-claude-chat-level-design-generator.jpg`).
+- 16 August 2025: he experimented with v0 too: https://v0.app/chat/layout-generation-app-dM07F8hoPVB
+- 26 September (2025): Ruediger, answering a screenshot of the Gemini tool: "ich frag mich ja wann der erste alle maps eincannt und ne ki anhand der daten eine eigene map erstellen lässt."
+- 7 October (2025): a new link from him to Ruediger, https://ai.studio/apps/drive/1IAQbORQsf8xrAKHi2TIOVSh7uAUAHVxk, with "nur manueller editor. klappt auch ganz gut am telefon".
+- 11 October (2025): first screenshots of his MinecraftLayoutEditor sent to Ruediger; a day later Ruediger was fascinated when told that blocks no longer had to be placed by hand in the tool.
+- 4 November (2025): the first picture of a reasonably okay layout for a map. He drew it himself in the browser and imported it on the mapmaker server. Picture: an in-game view of two grey stone landmasses with arms and stepped edges, facing each other across a gap (`2025-11-04-first-okay-layout-in-game.png`).
+- 6 November (2025): world import tested on Annealing in the tool, showing a few XML regions. "Weiterhin der größtenteils eigene Code." Picture: "Minecraft Layout Editor", width 184, height 267, lane width 12, thickness 10, mirroring, "Generate Schematic", "Import World (Region Files + level.dat)", five files chosen (`2025-11-06-layout-editor-world-import.png`).
+- From December a small pause, "bis Februar auf jeden Fall".
+- The next idea was to track the capture-the-wool maps on the server. A logger plugin was written for it: who captures a wool when, how players move; to understand how the ordinary maps play, and possibly with later generation in mind. About 4,000 games were collected. From the points the layout itself could be recognised (picture: a blue point cloud in the shape of a map, `2026-player-position-trace.png`); telling void and build region from the points was for a while a feature of the tool ("Map Traces oder wie auch immer"), then dropped.
+- Around 26 January (2026) it began: to say on which island a player died, the block data was taken and Claude wrote scripts that find the islands and cut them into polygons. "Das war dann quasi so der Basisgrundstein am Ende." The old Python project held much analysis, and in the end the XML display too, needed to read the logs: where the wool room was, what happened in the match. From the triangles the graphs were derived, the medial graph; "da sind wir dann wieder bei der Graph-Idee gewesen." Pictures: "Island Triangulation Detail View" and "Simplified Skeleton Detail View (Vector Graph)", nine islands each (`2026-01-island-triangulation-detail.png`, `2026-01-simplified-skeleton-detail.png`).
+- The repository of that work: https://github.com/rockymine/CTWAnalysis/tree/claude/add-match-demo-images-E8l3o/docs/demo
+- 20 March (2026), "ein relativ großer Wendepunkt, nehme ich mal an": he asked Claude how things stood with generating maps, and said that Ruediger was interested. Picture: a Claude Code screenshot. His message in it: "That's great and scary. With this data you might be able to learn and make a map that feels just like mine if we simply reverted the pipeline. Artificially constructing new maps would definitely be on the far horizon for me. I know Ruediger_LP is already talking to me about it. Whenever I mention the project to him he just begs for the first ai generated map." He adds that the outline of Annealing IV's largest island is a random city set and its optimal tour from the annealing solver of his master's thesis. The answer speaks of flipping the pipeline, "desired statistics → generate features → synthesize map geometry", and ends on "the 143 contaminated maps" (`2026-03-20-claude-code-on-generating-maps.png`).
+- In May (2026), roughly, PGM Studio began, first only as a view of the XML files and the maps. That is when he left the MinecraftLayoutEditor project and the match-analysis project. After reading XML came drawing regions, then drawing polygons, which is what made islands, and then the maps came out.
+- The chat logs with Ruediger on his PC should hold more of this.
+
+Answers to the questions of 28 November:
+
+- The first freeform board shown at the viewing was Riftwater.
+- The viewing of 9–10 October was on the mapdev server; present were ryan, mitchi, TTtie, Ruediger and himself.
+- The first two test evenings, he believes, had the maps set by hand; at some point they changed to a rotation. "Absolut unwichtig."
+- The cancelled contest is Technodono's.
+- Whether `ctw-layout-editor` is the same repository as `MinecraftLayoutEditor` he does not know; "sicherlich wird das ein anderes sein."
+- `711e539` was the commit that carried the Base maps. Its message was Ruediger's joke: Irongate Harbor is an older map that tends to stalemate, and a map that runs long is put into the dev phase so players cannot request it.
+- The forum thread should be anonymised. The messages of Technodono, ryan, javg and cs_ he would "vielleicht auch eher anonym behalten".
