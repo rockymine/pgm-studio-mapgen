@@ -1,0 +1,1644 @@
+{
+  "title": "Made By",
+  "logline": "Over twenty-one months a Minecraft map maker teaches machines to help him make PvP maps for his community, from a spanning tree drawn in redstone to boards that staff take for touched-up work, and ends with a map he built by hand that players take for AI.",
+  "runtime_seconds": 1053,
+  "narration": "One narrator: plain, dry, third person, past tense for events and present tense for the recording. Beside it only voices of the record: the 2 July recording where cleared, and rockymine's own written messages read by himself (scratch voice until then). Other people's written words appear on screen as text, never voiced.",
+  "acts": [
+    {
+      "id": "A1",
+      "title": "Witnessing history",
+      "start": 0,
+      "dur": 75,
+      "summary": "Cold open on the evening of 2 July 2026: three grey stone maps on a public server, a call that is laughing, and a sign that names nobody. The title comes off that sign.",
+      "scenes": [
+        {
+          "id": "A1-S1",
+          "title": "Grey boxes",
+          "start": 0,
+          "dur": 20,
+          "picture": "The 2 July screen recording, unedited: first-person view across Base 2-Island, plain stone islands over the void, players bridging. No narration, no music; the call is heard under the game.",
+          "frame": {
+            "image": null,
+            "sketch": "first-person view over grey stone islands, players bridging"
+          },
+          "vo": "A VOICE IN THE CALL (recording, 2 July): \"We are witnessing history and it's really boring.\"",
+          "onscreen": [
+            {
+              "text": "We are witnessing history and it's really boring.",
+              "who": "a voice in the call",
+              "source": "research/16"
+            }
+          ],
+          "sound": "Game sound and the voice call from the recording; laughter after the line.",
+          "kind": "record",
+          "footage": "from-pc",
+          "todo": "Cut minutes 48:27-53:39 of the 2 July recording (Base 2-Island); blur player names in chat and tab list.",
+          "sources": [
+            "research/16",
+            "HISTORY ch. 5"
+          ]
+        },
+        {
+          "id": "A1-S2",
+          "title": "made by",
+          "start": 20,
+          "dur": 22,
+          "picture": "Still from the recording: the observer sign at spawn, which reads only \"made by\" and then nothing. Slow push in on the empty line while nuttydragon is heard.",
+          "frame": {
+            "image": null,
+            "sketch": "observer spawn sign reading only 'made by'"
+          },
+          "vo": "NUTTYDRAGON (recording, 2 July): \"who claims ownership?\" ... \"we need updated OCC AI legislation\"",
+          "onscreen": [
+            {
+              "text": "made by",
+              "who": "the observer sign",
+              "source": "research/16"
+            },
+            {
+              "text": "who claims ownership?",
+              "who": "nuttydragon",
+              "source": "research/16"
+            },
+            {
+              "text": "we need updated OCC AI legislation",
+              "who": "nuttydragon",
+              "source": "research/16"
+            }
+          ],
+          "sound": "Call audio; a single soft note on the push-in.",
+          "kind": "record",
+          "footage": "from-pc",
+          "todo": "Find the frame where the sign is legible; the two nuttydragon lines with their timecodes.",
+          "sources": [
+            "research/16",
+            "HISTORY ch. 5, 16"
+          ]
+        },
+        {
+          "id": "A1-S3",
+          "title": "The evening, stated",
+          "start": 42,
+          "dur": 21,
+          "picture": "Real render of Base 2-Island from above, grey stone on void, with the squared-paper photo fading in over it at the same scale. Animated rockymine stands at the edge of an island, looking down.",
+          "frame": {
+            "image": "film/history/sources/base-map-squared-paper-drawing.jpg",
+            "sketch": "squared-paper drawing laid over the grey stone map"
+          },
+          "vo": "NARRATOR: The second of July, 2026. Three maps of plain stone, drawn on squared paper that morning and built by a model, are played on a public server. The call is laughing. It began in February 2025, with a graph.",
+          "onscreen": [
+            {
+              "text": "Base 2-Wool at 20:23:53 (26 players, 3 min 46 s, Red)",
+              "who": "match record",
+              "source": "research/16"
+            }
+          ],
+          "sound": "Room tone; the first bars of the film's theme under the last sentence.",
+          "kind": "record",
+          "footage": "render",
+          "todo": "Render Base 2-Island top-down from the world (studio eye renderer); animate rockymine with his skin.",
+          "sources": [
+            "HISTORY ch. 5",
+            "research/09",
+            "research/16"
+          ]
+        },
+        {
+          "id": "A1-S4",
+          "title": "Title",
+          "start": 63,
+          "dur": 12,
+          "picture": "The empty sign again, as a set: the line after \"made by\" fills in, letter by letter, with the film's title, MADE BY, and stays empty after it.",
+          "frame": {
+            "image": null,
+            "sketch": "title card: a Minecraft sign reading MADE BY"
+          },
+          "vo": "",
+          "onscreen": [],
+          "sound": "Theme, full; a sign-placing sound.",
+          "kind": "staged",
+          "footage": "animate",
+          "todo": "Title animation on a sign set.",
+          "sources": []
+        }
+      ]
+    },
+    {
+      "id": "A2",
+      "title": "A spanning tree in redstone",
+      "start": 75,
+      "dur": 227,
+      "summary": "February 2025 to May 2026, before the studio: the algorithm written to samschaap, the answer that it would be rules and not training, tools from v0, Claude, Gemini and his own C# editor, a winter of logged matches, and the islands that turned back into a graph.",
+      "scenes": [
+        {
+          "id": "A2-S1",
+          "title": "Potential Algorithm steps",
+          "start": 75,
+          "dur": 22,
+          "picture": "The message of 11 February 2025 typed out as a chat on a dark screen, one step at a time, beside the Townside picture.",
+          "frame": {
+            "image": "film/history/sources/early-experiments/2025-02-11-townside-the-map.png",
+            "sketch": "Townside, one team's side seen from above"
+          },
+          "vo": "NARRATOR: On the eleventh of February 2025, rockymine, a map maker on the Overcast Community server, sent a friend a list headed Potential Algorithm steps. Place nodes on a grid. Join them in a spanning tree. Add edges for cycles. Cut it in places, so players have to bridge the void.",
+          "onscreen": [
+            {
+              "text": "Potential Algorithm steps",
+              "who": "rockymine",
+              "source": "sources/early-experiments/2025-02-11-message-to-samschaap.md"
+            },
+            {
+              "text": "to force players to bridge the void and create some additional choke points",
+              "who": "rockymine",
+              "source": "sources/early-experiments/"
+            }
+          ],
+          "sound": "Keyboard taps under the text; quiet theme.",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "Lay out the message as a chat card in the film's style.",
+          "sources": [
+            "HISTORY ch. 1",
+            "sources/early-experiments/2025-02-11-message-to-samschaap.md"
+          ]
+        },
+        {
+          "id": "A2-S2",
+          "title": "Townside three ways",
+          "start": 97,
+          "dur": 20,
+          "picture": "The three Townside pictures in turn, matched cut on the same outline: the map from above, the grid of stone and black cells, the graph of redstone torches and dust. A slow zoom stops on the green carpet.",
+          "frame": {
+            "image": "film/history/sources/early-experiments/2025-02-11-townside-grid-and-graph.png",
+            "sketch": "redstone torch graph with one green carpet edge"
+          },
+          "vo": "NARRATOR: He showed it on Townside, a capture-the-wool map. First from above, then as a grid of stone and void, then as a graph of redstone torches and dust. The green carpet is the edge a spanning tree would not have.",
+          "onscreen": [
+            {
+              "text": "where the green carpet represents an additional edge that would not be present in a RST",
+              "who": "rockymine",
+              "source": "sources/early-experiments/"
+            }
+          ],
+          "sound": "A redstone click on each cut.",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "",
+          "sources": [
+            "HISTORY ch. 1",
+            "sources/early-experiments/"
+          ]
+        },
+        {
+          "id": "A2-S3",
+          "title": "Rules, not training",
+          "start": 117,
+          "dur": 18,
+          "picture": "The question and the answer as two chat bubbles. Animated rockymine reads them at a desk set; behind him the grid picture.",
+          "frame": {
+            "image": "film/history/sources/early-experiments/2025-02-11-townside-simplified-grid.png",
+            "sketch": "Townside as a grid: stone lanes, black void"
+          },
+          "vo": "NARRATOR: samschaap asked whether it would be trained on existing maps. ROCKYMINE (his message, read): I think an educated, rule-based approach is more likely for me to achieve than actual training.",
+          "onscreen": [
+            {
+              "text": "Nice, so it will be 'trained' with existing maps?",
+              "who": "samschaap",
+              "source": "sources/early-experiments/"
+            },
+            {
+              "text": "I think an educated, rule-based approach is more likely for me to achieve than actual training.",
+              "who": "rockymine",
+              "source": "sources/early-experiments/"
+            }
+          ],
+          "sound": "Quiet.",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "Decide who reads rockymine's written lines (decision 3).",
+          "sources": [
+            "HISTORY ch. 1"
+          ]
+        },
+        {
+          "id": "A2-S4",
+          "title": "The first prototype",
+          "start": 135,
+          "dur": 15,
+          "picture": "Screen pictures of the v0 page \"Random Spanning Tree Visualization\": four trees in four colours fill a grid. Source tag: page as it runs on 28 November 2026.",
+          "frame": {
+            "image": "film/history/sources/early-experiments/v0-prototype-2025-02/rst-radial-4.png",
+            "sketch": "four coloured spanning trees shaded on a grid"
+          },
+          "vo": "NARRATOR: The first prototype was a page made with v0 that grew random spanning trees and shaded their cells. It still runs. These pictures were taken in November 2026.",
+          "onscreen": [
+            {
+              "text": "So the earliest v0 prototype made rsts",
+              "who": "rockymine",
+              "source": "account §20"
+            },
+            {
+              "text": "Random Spanning Tree Visualization",
+              "who": "the page's title",
+              "source": "sources/early-experiments/v0-prototype-2025-02/"
+            }
+          ],
+          "sound": "Light synth pulse.",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "Optionally record the live page regenerating trees (screen capture).",
+          "sources": [
+            "HISTORY ch. 1",
+            "sources/early-experiments/v0-prototype-2025-02/"
+          ]
+        },
+        {
+          "id": "A2-S5",
+          "title": "April: matplotlib",
+          "start": 150,
+          "dur": 12,
+          "picture": "The matplotlib figure, pan across its four layouts; the green edges highlighted. Tag: author recalls the tool is not known.",
+          "frame": {
+            "image": "film/history/sources/early-experiments/2025-04-05-graph-layouts-matplotlib.png",
+            "sketch": "four node-and-edge layouts in matplotlib"
+          },
+          "vo": "NARRATOR: In April, the graph again, in matplotlib. Four layouts of one team's ground. He calls it some experiment with graphs.",
+          "onscreen": [
+            {
+              "text": "Multiple 1-Team PvP Layouts (Improved Graph Connections)",
+              "who": "the figure's title",
+              "source": "sources/early-experiments/"
+            },
+            {
+              "text": "irgendein Experiment mit Graphen",
+              "who": "rockymine",
+              "source": "account §18"
+            }
+          ],
+          "sound": "",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "",
+          "sources": [
+            "HISTORY ch. 1",
+            "account §18, §21"
+          ]
+        },
+        {
+          "id": "A2-S6",
+          "title": "May: a Claude artifact",
+          "start": 162,
+          "dur": 15,
+          "picture": "The tablet screenshot of the Claude artifact, its status bar time visible, then a zoom to the grey strip marked VOID with dashed red crossings.",
+          "frame": {
+            "image": "film/history/sources/early-experiments/2025-05-24-claude-chat-level-design-generator.jpg",
+            "sketch": "two teams either side of a grey VOID strip"
+          },
+          "vo": "NARRATOR: In May, at 01:39 on a Saturday, a Claude chat drew two teams with a strip of void between them. Version six of six. It is the earliest use of Claude in the record.",
+          "onscreen": [
+            {
+              "text": "Interactive Level Design Visualizer",
+              "who": "the artifact's title",
+              "source": "sources/early-experiments/"
+            }
+          ],
+          "sound": "Tablet tap.",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "",
+          "sources": [
+            "HISTORY ch. 1"
+          ]
+        },
+        {
+          "id": "A2-S7",
+          "title": "August: an argument about symmetry",
+          "start": 177,
+          "dur": 22,
+          "picture": "Prompt-a-Map style: animated rockymine at a screen in the studio set; the v0 chat's lines pop up as his messages, the first one stern, the last one relieved.",
+          "frame": {
+            "image": null,
+            "sketch": "rockymine character typing at a glowing screen, chat bubbles"
+          },
+          "vo": "NARRATOR: In August he went back to v0 and named it the Capture the Wool Layout Generator. Most of the chat is an argument about symmetry. ROCKYMINE (his message, read): I never asked for 'Independent Sides' Mode. This does not even make sense. NARRATOR: Then: ROCKYMINE (read): Great. It finally works.",
+          "onscreen": [
+            {
+              "text": "Capture the Wool Layout Generator",
+              "who": "the app's name",
+              "source": "sources/early-experiments/v0-chat-2025-08-16.md"
+            },
+            {
+              "text": "I never asked for 'Independent Sides' Mode. This does not even make sense.",
+              "who": "rockymine",
+              "source": "sources/early-experiments/v0-chat-2025-08-16.md"
+            },
+            {
+              "text": "Great. It finally works.",
+              "who": "rockymine",
+              "source": "sources/early-experiments/v0-chat-2025-08-16.md"
+            }
+          ],
+          "sound": "Typing; a small comic sting on the last line.",
+          "kind": "record",
+          "footage": "animate",
+          "todo": "Animate rockymine on the screen set; chat bubbles from the v0 chat text.",
+          "sources": [
+            "HISTORY ch. 1",
+            "sources/early-experiments/v0-chat-2025-08-16.md"
+          ]
+        },
+        {
+          "id": "A2-S8",
+          "title": "September: Gemini's app",
+          "start": 199,
+          "dur": 15,
+          "picture": "Screen pictures of the AI Studio app: Generator tab with nodes, lanes and dashed void crossings for two teams, then four.",
+          "frame": {
+            "image": "film/history/sources/early-experiments/aistudio-ctw-map-generator-2025/01-generator-two-teams.png",
+            "sketch": "AI Studio generator: two teams, nodes, dashed void crossings"
+          },
+          "vo": "NARRATOR: In September the same grid and the same symmetry modes came back, in an app Gemini wrote. The app calls no model. A seeded generator makes the layouts.",
+          "onscreen": [
+            {
+              "text": "it was made using gemini. I kind of came up with some algorithmic steps for creating the layouts and it simply made it",
+              "who": "rockymine, to a map developer",
+              "source": "research/17"
+            }
+          ],
+          "sound": "",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "",
+          "sources": [
+            "HISTORY ch. 1",
+            "sources/early-experiments/aistudio-ctw-map-generator-2025/"
+          ]
+        },
+        {
+          "id": "A2-S9",
+          "title": "Ruediger's question",
+          "start": 214,
+          "dur": 20,
+          "picture": "Animated Ruediger, his real skin, on a bench reading a phone; the German line appears as a chat bubble with an English subtitle.",
+          "frame": {
+            "image": null,
+            "sketch": "Ruediger character on a bench reading his phone"
+          },
+          "vo": "NARRATOR: Ruediger, who made the Annealing maps with him, saw a screenshot and wrote, in German, that he wondered when somebody would scan in all the maps and have an AI make a map of its own from the data.",
+          "onscreen": [
+            {
+              "text": "ich frag mich ja wann der erste alle maps eincannt und ne ki anhand der daten eine eigene map erstellen lässt",
+              "who": "Ruediger",
+              "source": "research/15"
+            }
+          ],
+          "sound": "Phone buzz.",
+          "kind": "record",
+          "footage": "animate",
+          "todo": "Animate Ruediger; German on screen with an English subtitle.",
+          "sources": [
+            "HISTORY ch. 1",
+            "research/15"
+          ]
+        },
+        {
+          "id": "A2-S10",
+          "title": "Blocks without hands",
+          "start": 234,
+          "dur": 17,
+          "picture": "The 4 November picture in game: two grey stone landmasses facing each other across a gap. A slow drift across it, as if flying.",
+          "frame": {
+            "image": "film/history/sources/early-experiments/2025-11-04-first-okay-layout-in-game.png",
+            "sketch": "two grey stone landmasses across a gap, in game"
+          },
+          "vo": "NARRATOR: That autumn he wrote an editor of his own, in C#. Within two days a drawn graph came out as blocks. On the fourth of November the first layout he thought was okay stood in a world.",
+          "onscreen": [],
+          "sound": "Wind over the void.",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "",
+          "sources": [
+            "HISTORY ch. 2",
+            "research/18"
+          ]
+        },
+        {
+          "id": "A2-S11",
+          "title": "A winter of matches",
+          "start": 251,
+          "dur": 18,
+          "picture": "The player-position trace, a blue cloud that is a map, dissolving into the chart of logged matches by day.",
+          "frame": {
+            "image": "film/history/sources/early-experiments/2026-player-position-trace.png",
+            "sketch": "a cloud of blue player positions shaped like a map"
+          },
+          "vo": "NARRATOR: Then he stopped drawing and started measuring. A logging plugin, written by Claude, recorded how real matches move. The chart counts two thousand four hundred and fifty matches on forty-six days.",
+          "onscreen": [
+            {
+              "text": "It all started with this PGM logging plugin that was kind of controversial a little bit",
+              "who": "rockymine",
+              "source": "research/16"
+            },
+            {
+              "text": "2,450 matches on 46 days",
+              "who": "the chart's daily table",
+              "source": "sources/early-experiments/2026-ctw-match-activity.md"
+            }
+          ],
+          "sound": "A soft tick per day as the chart fills.",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "Tag the count: record (chart); the author recalls more.",
+          "sources": [
+            "HISTORY ch. 2, 3",
+            "account §21"
+          ]
+        },
+        {
+          "id": "A2-S12",
+          "title": "Back at the graph",
+          "start": 269,
+          "dur": 15,
+          "picture": "Matched dissolve from \"Island Triangulation Detail View\" to \"Simplified Skeleton Detail View\": nine islands become triangles, then a graph.",
+          "frame": {
+            "image": "film/history/sources/early-experiments/2026-01-simplified-skeleton-detail.png",
+            "sketch": "nine islands reduced to a skeleton graph"
+          },
+          "vo": "NARRATOR: Claude wrote scripts that found the islands, cut them into triangles and thinned them to a skeleton. In his words, there they were, back at the graph idea.",
+          "onscreen": [
+            {
+              "text": "da sind wir dann wieder bei der Graph-Idee gewesen",
+              "who": "rockymine",
+              "source": "account §18"
+            }
+          ],
+          "sound": "",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "",
+          "sources": [
+            "HISTORY ch. 3",
+            "research/18"
+          ]
+        },
+        {
+          "id": "A2-S13",
+          "title": "If we simply reverted the pipeline",
+          "start": 284,
+          "dur": 18,
+          "picture": "The 20 March Claude Code screenshot; the camera finds his message and stops on the last sentence.",
+          "frame": {
+            "image": "film/history/sources/early-experiments/2026-03-20-claude-code-on-generating-maps.png",
+            "sketch": "Claude Code terminal: his message about reverting the pipeline"
+          },
+          "vo": "NARRATOR: In March he told Claude Code that the analysis, turned round, might make maps. And that Ruediger was waiting. ROCKYMINE (his message, read): Whenever I mention the project to him he just begs for the first ai generated map.",
+          "onscreen": [
+            {
+              "text": "Whenever I mention the project to him he just begs for the first ai generated map.",
+              "who": "rockymine",
+              "source": "sources/early-experiments/"
+            },
+            {
+              "text": "Flip it: desired statistics → generate features → synthesize map geometry",
+              "who": "Claude Code",
+              "source": "sources/early-experiments/"
+            }
+          ],
+          "sound": "",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "",
+          "sources": [
+            "HISTORY ch. 3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A3",
+      "title": "The grey boxes",
+      "start": 302,
+      "dur": 203,
+      "summary": "June and July 2026: the C# studio, the first map.xml nobody wrote, the squared-paper morning of 2 July and the evening that followed, told from the 59-minute recording.",
+      "scenes": [
+        {
+          "id": "A3-S1",
+          "title": "The third rewrite",
+          "start": 302,
+          "dur": 23,
+          "picture": "Three windows slide in one after another: the analysis's map viewer, the Python studio, the C# studio in the browser. Model names appear as small logos beside each commit date.",
+          "frame": {
+            "image": null,
+            "sketch": "three browser windows of successive studios, side by side"
+          },
+          "vo": "NARRATOR: In May the analysis grew a map viewer, then drawing tools, then islands drawn as polygons. A Python studio followed. In June Claude Opus 4.8 ported the whole of it to C#, in one commit of a hundred and forty-five files. He called it the third rewrite.",
+          "onscreen": [
+            {
+              "text": "so that it can be hosted",
+              "who": "rockymine",
+              "source": "research/15"
+            }
+          ],
+          "sound": "Window swooshes, kept small.",
+          "kind": "record",
+          "footage": "record",
+          "todo": "Author records the studio in the browser today; for the earlier two, the CTWAnalysis viewer and pgm-map-studio run locally or a stand-in title card.",
+          "sources": [
+            "HISTORY ch. 3, 4",
+            "research/01",
+            "research/18"
+          ]
+        },
+        {
+          "id": "A3-S2",
+          "title": "The first XML nobody wrote",
+          "start": 325,
+          "dur": 24,
+          "picture": "Animated rockymine and Ruediger at the studio set; a map.xml scrolls on a big screen. Cut to a match-record graphic: three maps uploaded at 21:47, played from 21:51.",
+          "frame": {
+            "image": null,
+            "sketch": "map.xml scrolling on a screen, two characters watching"
+          },
+          "vo": "NARRATOR: Claude named his next map Cobalt Crossing and wrote its XML. It became Drastic Change II. He asked Ruediger whether this was the first XML anyone had ever written without writing it. On the twenty-fourth of June, three such maps were uploaded and played within half an hour.",
+          "onscreen": [
+            {
+              "text": "ist das jetzt die erste xml jemals die jemand geschrieben hat ohne sie zu schreiben?",
+              "who": "rockymine",
+              "source": "research/15"
+            },
+            {
+              "text": "For which I did not write up any coordinates",
+              "who": "rockymine, to a map developer",
+              "source": "research/17"
+            }
+          ],
+          "sound": "Server join sound on the cut.",
+          "kind": "record",
+          "footage": "animate",
+          "todo": "Animate the two characters; match graphic from research/16's table.",
+          "sources": [
+            "HISTORY ch. 4",
+            "research/15",
+            "research/16"
+          ]
+        },
+        {
+          "id": "A3-S3",
+          "title": "The squared-paper morning",
+          "start": 349,
+          "dur": 26,
+          "picture": "The phone photo of the drawing, then the model's first world beside it with the staircase where the sheet has an H, then the corrected world. Clock captions: 07:37, 08:45, 09:09.",
+          "frame": {
+            "image": "film/history/sources/base-map-squared-paper-drawing.jpg",
+            "sketch": "a pencil layout on squared paper, photographed on a phone"
+          },
+          "vo": "NARRATOR: On the morning of the second of July he was on his phone. He photographed a drawing on squared paper and asked Claude Code to make this layout as a general seed for testing. The model built a staircase where the sheet has an H. At 09:09 he typed the corners instead, and it came out right.",
+          "onscreen": [
+            {
+              "text": "make this layout as a general seed for testing",
+              "who": "rockymine",
+              "source": "research/09"
+            },
+            {
+              "text": "Today I was on my phone and I told Claude Code to make some seeds for the generation of the maps. I drew something on paper.",
+              "who": "rockymine, in the call",
+              "source": "research/16"
+            }
+          ],
+          "sound": "Pencil on paper; a phone shutter.",
+          "kind": "record",
+          "footage": "render",
+          "todo": "Render the wrong first world (if the session's world survives) and the right Base 2-Island from the same camera.",
+          "sources": [
+            "HISTORY ch. 5",
+            "research/09"
+          ]
+        },
+        {
+          "id": "A3-S4",
+          "title": "Before he looked",
+          "start": 375,
+          "dur": 15,
+          "picture": "His messages to TTtie as chat bubbles over a still of the three Base zips.",
+          "frame": {
+            "image": null,
+            "sketch": "chat bubbles to TTtie over three zip icons"
+          },
+          "vo": "NARRATOR: In the afternoon he wrote to TTtie, a server developer. ROCKYMINE (his message, read): We have a system to auto-generate maps now. Just looks like shit. I will not look at them before.",
+          "onscreen": [
+            {
+              "text": "We have a system to auto-generate maps now",
+              "who": "rockymine, to TTtie",
+              "source": "research/17"
+            },
+            {
+              "text": "just looks like shit",
+              "who": "rockymine, to TTtie",
+              "source": "research/17"
+            },
+            {
+              "text": "ruediger and i will playtest 3 maps later. i will not look at them before",
+              "who": "rockymine, to TTtie",
+              "source": "research/17"
+            }
+          ],
+          "sound": "",
+          "kind": "record",
+          "footage": "animate",
+          "todo": "Chat card; confirm TTtie's consent to his name with the message (decision 2).",
+          "sources": [
+            "HISTORY ch. 5",
+            "research/17"
+          ]
+        },
+        {
+          "id": "A3-S5",
+          "title": "Why is that void?",
+          "start": 390,
+          "dur": 25,
+          "picture": "The recording, minutes 0-14: four players walk the Base maps on the development server. Picture-in-picture caption: mapdev, 19:40 UTC.",
+          "frame": {
+            "image": null,
+            "sketch": "four players on grey stone, one pointing at a gap"
+          },
+          "vo": "NARRATOR: Evening. Four of them walk the three maps on the development server, and the recording runs. RUEDIGER (recording): why is that void? ROCKYMINE (recording): It's void because I drew it exactly like that on the piece of paper. So it's my fault.",
+          "onscreen": [
+            {
+              "text": "It's void because I drew it exactly like that on the piece of paper. So it's my fault.",
+              "who": "rockymine",
+              "source": "research/16"
+            }
+          ],
+          "sound": "Call audio; footsteps on stone.",
+          "kind": "record",
+          "footage": "from-pc",
+          "todo": "Cut about minute 6 of the recording.",
+          "sources": [
+            "HISTORY ch. 5",
+            "research/16"
+          ]
+        },
+        {
+          "id": "A3-S6",
+          "title": "This moment for myself",
+          "start": 415,
+          "dur": 18,
+          "picture": "The recording: the author's view standing still on a grey island, looking out over the void.",
+          "frame": {
+            "image": null,
+            "sketch": "a still first-person view over a grey island and void"
+          },
+          "vo": "NARRATOR: Ruediger asks him to generate something more interesting. ROCKYMINE (recording): Because I want to have this moment for myself and appreciate it, and then we can do better stuff.",
+          "onscreen": [
+            {
+              "text": "Because I want to have this moment for myself and appreciate it, and then we can do better stuff.",
+              "who": "rockymine",
+              "source": "research/16"
+            }
+          ],
+          "sound": "Call audio, then a held quiet.",
+          "kind": "record",
+          "footage": "from-pc",
+          "todo": "Cut from minutes 0-14.",
+          "sources": [
+            "HISTORY ch. 5",
+            "research/16"
+          ]
+        },
+        {
+          "id": "A3-S7",
+          "title": "Room for the imagination",
+          "start": 433,
+          "dur": 18,
+          "picture": "The recording around minute 20; inset, a render of Base 2-Wool, nothing but stone.",
+          "frame": {
+            "image": null,
+            "sketch": "an all-stone map, flat and empty"
+          },
+          "vo": "RUEDIGER (recording): You know what I think is so beautiful about your new maps, Rocky? How they give so much room to the imagination of the player.",
+          "onscreen": [
+            {
+              "text": "give so much room to the imagination of the player",
+              "who": "Ruediger",
+              "source": "research/16"
+            }
+          ],
+          "sound": "Call audio; laughter.",
+          "kind": "record",
+          "footage": "from-pc",
+          "todo": "Cut minute 20; render Base 2-Wool for the inset.",
+          "sources": [
+            "HISTORY ch. 5",
+            "research/16"
+          ]
+        },
+        {
+          "id": "A3-S8",
+          "title": "Hide our crimes",
+          "start": 451,
+          "dur": 20,
+          "picture": "The recording, minutes 33-40, sped up with a running clock; then the #maps-changelog row of 711e539 slides in.",
+          "frame": {
+            "image": null,
+            "sketch": "a commit row: Irongate Harbor remove dev phase"
+          },
+          "vo": "NARRATOR: The maps are only on the development server. To get them onto the public one, the two argue for seven minutes about a commit message. RUEDIGER (recording): we'll try to hide our crimes. NARRATOR: The commit is called Irongate Harbor remove dev phase.",
+          "onscreen": [
+            {
+              "text": "we'll try to hide our crimes",
+              "who": "Ruediger",
+              "source": "research/16"
+            },
+            {
+              "text": "Irongate Harbor remove dev phase",
+              "who": "PrivateMaps 711e539",
+              "source": "research/16"
+            }
+          ],
+          "sound": "Call audio, time-lapsed; a clock tick.",
+          "kind": "record",
+          "footage": "from-pc",
+          "todo": "Screenshot the #maps-changelog row (already read, sources/maps-changelog/).",
+          "sources": [
+            "HISTORY ch. 5",
+            "research/16",
+            "account §18"
+          ]
+        },
+        {
+          "id": "A3-S9",
+          "title": "Three out of four",
+          "start": 471,
+          "dur": 22,
+          "picture": "The three matches on server-2 from the recording, with the match-record numbers captioned; the poll on screen, then the chat line.",
+          "frame": {
+            "image": null,
+            "sketch": "server poll on screen: Rate the map we just played"
+          },
+          "vo": "NARRATOR: Base 2-Wool, twenty-six players, three minutes forty-six. A player in chat asks the obvious. The server's poll gives it three out of four. The second poll is withdrawn.",
+          "onscreen": [
+            {
+              "text": "is tihs jus the greybox?",
+              "who": "a player",
+              "source": "research/16"
+            },
+            {
+              "text": "Rate the map we just played",
+              "who": "the server poll",
+              "source": "research/16"
+            },
+            {
+              "text": "democracy was not giving good results so it is removed",
+              "who": "samschaap",
+              "source": "research/16"
+            }
+          ],
+          "sound": "Match start horn; call laughter.",
+          "kind": "record",
+          "footage": "from-pc",
+          "todo": "Cut minutes 43-58; blur player names except the five voices.",
+          "sources": [
+            "HISTORY ch. 5",
+            "research/16"
+          ]
+        },
+        {
+          "id": "A3-S10",
+          "title": "Back to the normal maps",
+          "start": 493,
+          "dur": 12,
+          "picture": "Base 4-Team's last seconds in the recording, then the next map loading; cut to black.",
+          "frame": {
+            "image": null,
+            "sketch": "the scoreboard as the next map loads"
+          },
+          "vo": "NARRATOR: Base 4-Team, thirty-three players. ROCKYMINE (recording): now back to the normal boring maps",
+          "onscreen": [
+            {
+              "text": "now back to the normal boring maps",
+              "who": "rockymine",
+              "source": "research/16"
+            }
+          ],
+          "sound": "Call audio; cut to silence.",
+          "kind": "record",
+          "footage": "from-pc",
+          "todo": "Cut minute 59:18.",
+          "sources": [
+            "research/16"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A4",
+      "title": "Slop Sunday",
+      "start": 505,
+      "dur": 211,
+      "summary": "August and September 2026: odd experiments, the first boards no person laid out, the agent that was confidently wrong, the line-up map, Millrace left and right, the test evenings Ruediger named, the forum thread against them, and the largest and last evening.",
+      "scenes": [
+        {
+          "id": "A4-S1",
+          "title": "The walking room",
+          "start": 505,
+          "dur": 20,
+          "picture": "Real render of Wandering U from above; an animated wool room slides along the U while a character inside it is left standing on air, then falls.",
+          "frame": {
+            "image": "film/history/renders/wandering-u/03-wool-room-at-rear-dock.jpg",
+            "sketch": "a bedrock wool room docked at the back of the U"
+          },
+          "vo": "NARRATOR: Through the summer the evenings were experiments. Wandering U had wool rooms on bedrock islands that walked a lap of the U. It was played once, two minutes after it arrived.",
+          "onscreen": [
+            {
+              "text": "anyone still inside when the room leaves is left in mid-air over the void",
+              "who": "research/10, describing the map file",
+              "source": "research/10"
+            }
+          ],
+          "sound": "Piston slide; a falling whistle.",
+          "kind": "record",
+          "footage": "animate",
+          "todo": "Animate the room's lap and one character falling (staged, tagged as such).",
+          "sources": [
+            "HISTORY ch. 7",
+            "research/10",
+            "research/16"
+          ]
+        },
+        {
+          "id": "A4-S2",
+          "title": "Not the AI map",
+          "start": 525,
+          "dur": 17,
+          "picture": "No Blocks Placed's credits as an end-roll card, then the administrator's assumption and his answer as chat bubbles.",
+          "frame": {
+            "image": null,
+            "sketch": "map credit card: Drawing pieces, shapes, and markers in the browser."
+          },
+          "vo": "NARRATOR: No Blocks Placed was drawn in the studio, by him and Ruediger together. An administrator took it for the AI map. ROCKYMINE (his message, read): well it isnt, myself and Ruediger sat together in discord and made the map.",
+          "onscreen": [
+            {
+              "text": "Drawing pieces, shapes, and markers in the browser.",
+              "who": "rockymine's map credit",
+              "source": "research/05"
+            },
+            {
+              "text": "well it isnt, myself and Ruediger sat together in discord and made the map.",
+              "who": "rockymine, to an administrator",
+              "source": "research/17"
+            }
+          ],
+          "sound": "",
+          "kind": "record",
+          "footage": "render",
+          "todo": "Render No Blocks Placed from its CommunityMaps world.",
+          "sources": [
+            "HISTORY ch. 7",
+            "research/05",
+            "research/17"
+          ]
+        },
+        {
+          "id": "A4-S3",
+          "title": "Like fully ai",
+          "start": 542,
+          "dur": 18,
+          "picture": "Fifteen render thumbnails fan out as cards; two lift out, Thornwake and Viridian, and Viridian fills the frame, green with slime.",
+          "frame": {
+            "image": null,
+            "sketch": "Viridian from above, much of it green slime"
+          },
+          "vo": "NARRATOR: On the eleventh and twelfth of August fifteen boards were built from one spec each, eleven by Opus 5 and four by Haiku 4.5. Two were played that night. One was Viridian, the slime map.",
+          "onscreen": [
+            {
+              "text": "like fully ai",
+              "who": "rockymine, to another map maker",
+              "source": "research/15"
+            },
+            {
+              "text": "13,299 of its 66,071 blocks are slime",
+              "who": "caption",
+              "source": "research/08"
+            }
+          ],
+          "sound": "Card shuffle; a slime bounce.",
+          "kind": "record",
+          "footage": "render",
+          "todo": "Render Viridian and thumbnails of the first fifteen from their worlds.",
+          "sources": [
+            "HISTORY ch. 7",
+            "research/03",
+            "research/16"
+          ]
+        },
+        {
+          "id": "A4-S4",
+          "title": "Confident, measured and wrong",
+          "start": 560,
+          "dur": 18,
+          "picture": "Animated: the machine from Prompt-a-Map stamps UNWINNABLE on a floating monument; a second stamp, WITHDRAWN, lands on top. Real render of a destroy objective above the ground behind it.",
+          "frame": {
+            "image": null,
+            "sketch": "a monument floating above ground with two stamps on it"
+          },
+          "vo": "NARRATOR: The next day an agent measured that the goals floated above the ground, and declared every generated destroy map unwinnable. Goals float by design. The claim was withdrawn that day, and a rule was written: ask the author.",
+          "onscreen": [],
+          "sound": "Two stamp thuds.",
+          "kind": "staged",
+          "footage": "animate",
+          "todo": "Reuse the Prompt-a-Map machine; tag the scene staged, the claim record.",
+          "sources": [
+            "HISTORY ch. 7",
+            "research/02"
+          ]
+        },
+        {
+          "id": "A4-S5",
+          "title": "The line-up",
+          "start": 578,
+          "dur": 20,
+          "picture": "Ashfall Scar's objective render; a slow pan along the line from spawn to spawn, each objective labelled as the pan passes it.",
+          "frame": {
+            "image": "specs/archive/ashfall-scar/renders/05-objectives.png",
+            "sketch": "objectives in one straight line across a flat map"
+          },
+          "vo": "NARRATOR: Ashfall Scar put spawn, monument, core, centre, core, monument and spawn on one straight line, in a world two hundred and fifty blocks wide. He had remembered it as five hundred. On the render he said: that is her.",
+          "onscreen": [
+            {
+              "text": "Das ist sie!",
+              "who": "rockymine",
+              "source": "account §12"
+            },
+            {
+              "text": "a world of 250 by 190",
+              "who": "caption",
+              "source": "research/03"
+            }
+          ],
+          "sound": "A single tuba note, dry.",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "",
+          "sources": [
+            "HISTORY ch. 7",
+            "research/03",
+            "account §12"
+          ]
+        },
+        {
+          "id": "A4-S6",
+          "title": "Millrace, left and right",
+          "start": 598,
+          "dur": 25,
+          "picture": "Split screen: the model's Millrace and the version the two finished, same camera; a wipe between them.",
+          "frame": {
+            "image": "specs/opus5-millrace/renders/world-iso.png",
+            "sketch": "the model's Millrace basin, iso view"
+          },
+          "vo": "NARRATOR: Millrace was a basin he drew in the sketch tool, and Opus 5 built. He and Ruediger then finished it by hand. Their review says they spent five hours, and that essentially all that was done is theming and some dressing. Most of the ground the model laid stayed where it was.",
+          "onscreen": [
+            {
+              "text": "AI to the left, our improved version (5 hours effort) to the right",
+              "who": "rockymine",
+              "source": "research/15"
+            },
+            {
+              "text": "29,954 of its 35,610 columns kept their height",
+              "who": "caption",
+              "source": "research/03"
+            }
+          ],
+          "sound": "A wipe sound; the theme returns.",
+          "kind": "record",
+          "footage": "render",
+          "todo": "Render the 2.0.0 world from the same camera as the model's (the Prompt-a-Map plates may serve).",
+          "sources": [
+            "HISTORY ch. 8",
+            "research/03"
+          ]
+        },
+        {
+          "id": "A4-S7",
+          "title": "Very human maps",
+          "start": 623,
+          "dur": 20,
+          "picture": "A data graphic built from the match record: each evening a row of map cards in the order played, players per match as bar heights. Commit messages appear as stamps.",
+          "frame": {
+            "image": null,
+            "sketch": "rows of map cards per evening, bars for players"
+          },
+          "vo": "NARRATOR: From the twenty-fourth of August the boards came in batches. The private repository's commit that evening is called Add a few very human maps for testing. Later the same night, another: reorganize the slop.",
+          "onscreen": [
+            {
+              "text": "Add a few very human maps for testing",
+              "who": "PrivateMaps commit",
+              "source": "research/15"
+            },
+            {
+              "text": "reorganize the slop",
+              "who": "PrivateMaps commit",
+              "source": "sources/maps-changelog/"
+            }
+          ],
+          "sound": "Soft ticks per match.",
+          "kind": "record",
+          "footage": "animate",
+          "todo": "Build the graphic from sources/match-status/ and research/16.",
+          "sources": [
+            "HISTORY ch. 8, 15",
+            "research/16"
+          ]
+        },
+        {
+          "id": "A4-S8",
+          "title": "Slop Sunday",
+          "start": 643,
+          "dur": 22,
+          "picture": "Kilnholt Cut's render; the camera dives into its causeway and through the corridor in it. Caption: 13 September, eleven maps.",
+          "frame": {
+            "image": "specs/archive/sonnet5-kilnholt-cut/renders/world-iso.png",
+            "sketch": "Kilnholt Cut: a causeway across the gap between two sides"
+          },
+          "vo": "NARRATOR: Ruediger named the evenings Slop Sunday. On the thirteenth of September eleven maps were played in his order, thirty-seven to fifty-nine players each. The first was Kilnholt Cut, which had a tunnel the players found later.",
+          "onscreen": [
+            {
+              "text": "until players figured out there was a tunnel",
+              "who": "rockymine",
+              "source": "sessions list"
+            },
+            {
+              "text": "slop sunday",
+              "who": "Ruediger",
+              "source": "research/15"
+            }
+          ],
+          "sound": "",
+          "kind": "record",
+          "footage": "render",
+          "todo": "Render a flythrough of Kilnholt Cut's corridor; author's gameplay if recorded.",
+          "sources": [
+            "HISTORY ch. 9",
+            "research/16"
+          ]
+        },
+        {
+          "id": "A4-S9",
+          "title": "stop AI maps from being played at all",
+          "start": 665,
+          "dur": 28,
+          "picture": "Text cards only, white on black, each tagged with a role, never a name or an avatar: the title, the opener's question, a staff answer, one player who loved a map, and his answer.",
+          "frame": {
+            "image": null,
+            "sketch": "white text on black: stop AI maps from being played at all"
+          },
+          "vo": "NARRATOR: After the evening of the twentieth, a thread opened on the forum. Its title was stop AI maps from being played at all. A staff member answered that the maps were wrapped in an event, so everyone knows. Players were divided. rockymine answered: ROCKYMINE (his post, read): Not trying to replace anyone. If anything I am replacing myself. I am just having fun.",
+          "onscreen": [
+            {
+              "text": "stop AI maps from being played at all",
+              "who": "the thread's title",
+              "source": "research/17"
+            },
+            {
+              "text": "Why are we playing something that goes against the very spirit of a map (human creation)?",
+              "who": "a player",
+              "source": "research/17"
+            },
+            {
+              "text": "we're also wrapping the pure-AI maps in an event so everyone knows",
+              "who": "staff",
+              "source": "research/17"
+            },
+            {
+              "text": "bro i loved that map",
+              "who": "a player",
+              "source": "research/17"
+            },
+            {
+              "text": "Not trying to replace anyone. If anything I am replacing myself. I am just having fun.",
+              "who": "rockymine",
+              "source": "research/17"
+            }
+          ],
+          "sound": "No music; a page-turn between cards.",
+          "kind": "record",
+          "footage": "animate",
+          "todo": "Text cards; no screenshots of the thread (decision 4).",
+          "sources": [
+            "HISTORY ch. 9, 16",
+            "research/17"
+          ]
+        },
+        {
+          "id": "A4-S10",
+          "title": "The last evening",
+          "start": 693,
+          "dur": 23,
+          "picture": "The announcement screenshot, then the reactions counted up one by one, the skull to thirteen. Cut to two match results: winners Claude, winners Anti-Slop.",
+          "frame": {
+            "image": "film/history/sources/slop-sunday-announcement/2026-09-27-slop-sunday-announcement.jpg",
+            "sketch": "Discord announcement: Slop Sunday, happening now!"
+          },
+          "vo": "NARRATOR: The last evening was the twenty-seventh of September, and the largest, thirteen matches. Ruediger's announcement went up a minute before the first. One match was won by a team named Claude. Another by a team named Anti-Slop.",
+          "onscreen": [
+            {
+              "text": "testing some ai assisted maps",
+              "who": "Ruediger",
+              "source": "sources/slop-sunday-announcement/"
+            },
+            {
+              "text": "happening now!",
+              "who": "Ruediger",
+              "source": "sources/slop-sunday-announcement/"
+            }
+          ],
+          "sound": "Notification ping; a counter tick per skull.",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "Match result graphic from research/16.",
+          "sources": [
+            "HISTORY ch. 9",
+            "sources/slop-sunday-announcement/",
+            "research/16"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A5",
+      "title": "A whole different class of map",
+      "start": 716,
+      "dur": 145,
+      "summary": "October 2026: the overnight question that started freeform, Riftwater by morning, a library and a grammar in two days, the staff at the viewing who took the boards for touched-up work, and the decision to pause.",
+      "scenes": [
+        {
+          "id": "A5-S1",
+          "title": "What if",
+          "start": 716,
+          "dur": 25,
+          "picture": "Night. Animated rockymine at the screen set, dictating; the words appear as a transcript. A last line adds a tractor, which the set briefly shows.",
+          "frame": {
+            "image": null,
+            "sketch": "rockymine character dictating at night, a toy tractor beside him"
+          },
+          "vo": "NARRATOR: On the seventh of October, late, he dictated a question. ROCKYMINE (his message, read): what if like an agent didn't need to rely on the current way we build the houses, the terrain, etc. And if he could sort of just make his own sort of script or whatever. NARRATOR: Then a list of ingredients, ending in a tractor.",
+          "onscreen": [
+            {
+              "text": "what if like an agent didn't need to rely on the current way we build the houses, the terrain, etc.",
+              "who": "rockymine",
+              "source": "sessions/00"
+            },
+            {
+              "text": "A tractor",
+              "who": "rockymine",
+              "source": "sessions/00"
+            }
+          ],
+          "sound": "Night ambience; a small comic beat on the tractor.",
+          "kind": "record",
+          "footage": "animate",
+          "todo": "",
+          "sources": [
+            "HISTORY ch. 10",
+            "sessions/00"
+          ]
+        },
+        {
+          "id": "A5-S2",
+          "title": "By morning",
+          "start": 741,
+          "dur": 18,
+          "picture": "Riftwater's iso render, a slow crane down onto the town. Caption 05:42.",
+          "frame": {
+            "image": "freeform/lib/boards/riftwater/renders/31-iso-board-nw.png",
+            "sketch": "Riftwater from the north-west, a town by a rift"
+          },
+          "vo": "NARRATOR: At 05:42 the next morning: ROCKYMINE (his message, read): Ok. This is a whole different class of map. From the images it looks like he cooked real hard.",
+          "onscreen": [
+            {
+              "text": "Ok. This is a whole different class of map. From the images it looks like he cooked real hard.",
+              "who": "rockymine",
+              "source": "sessions/01"
+            }
+          ],
+          "sound": "Morning birds; the theme opens out.",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "Optionally a render flythrough of the Riftwater world.",
+          "sources": [
+            "HISTORY ch. 10",
+            "sessions/01"
+          ]
+        },
+        {
+          "id": "A5-S3",
+          "title": "Twenty boards in a day",
+          "start": 759,
+          "dur": 17,
+          "picture": "Quick cuts of freeform renders, one per beat: Lantern Pass, Lantern Drop, Loomfall, Spark, Curio Square.",
+          "frame": {
+            "image": "freeform/lib/boards/lanternpass/renders/38-iso-the-stairs-and-the-temple.png",
+            "sketch": "Lantern Pass: stairs up to a temple"
+          },
+          "vo": "NARRATOR: The eighth of October holds eighty-six commits and some twenty boards. By evening the model had found its own copied helpers and begun a library of them, pgmvox.",
+          "onscreen": [],
+          "sound": "Cuts on the beat.",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "",
+          "sources": [
+            "HISTORY ch. 10",
+            "sessions/01"
+          ]
+        },
+        {
+          "id": "A5-S4",
+          "title": "A grammar from Brittlebush",
+          "start": 776,
+          "dur": 17,
+          "picture": "Brittlebush III's render; a grid of 5x5 fields draws itself over it in three colours.",
+          "frame": {
+            "image": "freeform/lib/boards/brittlebush-iii/renders/31-iso-board-nw.png",
+            "sketch": "Brittlebush III from the north-west"
+          },
+          "vo": "NARRATOR: The next day a session read his Brittlebush maps block by block and wrote their look down as a grammar.",
+          "onscreen": [
+            {
+              "text": "i mean, its literally just 5x5 pieces with 3 different styles",
+              "who": "rockymine",
+              "source": "sources/staff-chat-october/"
+            },
+            {
+              "text": "and rules on how they combine",
+              "who": "rockymine",
+              "source": "sources/staff-chat-october/"
+            }
+          ],
+          "sound": "",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "Overlay of the 5x5 fields (animate).",
+          "sources": [
+            "HISTORY ch. 10",
+            "research/05"
+          ]
+        },
+        {
+          "id": "A5-S5",
+          "title": "Touched up",
+          "start": 793,
+          "dur": 30,
+          "picture": "The observer chat screenshots, line by line, over Hollowcrown's render; each line arrives with a chat sound.",
+          "frame": {
+            "image": "film/history/sources/staff-chat-october/chat-1.png",
+            "sketch": "observer chat: are all these ones unmodified"
+          },
+          "vo": "NARRATOR: That night five of them looked at the new boards on the development server: rockymine, Ruediger, TTtie, and two of the staff, mitchiii and wylt. It was not a test. mitchiii, a map developer, asked one question.",
+          "onscreen": [
+            {
+              "text": "are all these ones unmodified from generated state?",
+              "who": "mitchiii",
+              "source": "sources/staff-chat-october/"
+            },
+            {
+              "text": "yea",
+              "who": "rockymine",
+              "source": "sources/staff-chat-october/"
+            },
+            {
+              "text": "I would have assumed these were touched up",
+              "who": "mitchiii",
+              "source": "sources/staff-chat-october/"
+            },
+            {
+              "text": "its over for m*pdevs.",
+              "who": "TTtie",
+              "source": "sources/staff-chat-october/"
+            },
+            {
+              "text": "again, layout is 100% mine",
+              "who": "rockymine",
+              "source": "sources/staff-chat-october/"
+            }
+          ],
+          "sound": "Chat pings; no music.",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "Composite chat over the Hollowcrown render.",
+          "sources": [
+            "HISTORY ch. 11",
+            "sources/staff-chat-october/",
+            "account §18"
+          ]
+        },
+        {
+          "id": "A5-S6",
+          "title": "Thirty minutes to an hour",
+          "start": 823,
+          "dur": 18,
+          "picture": "chat-4 over the Hollow Mesa render; a clock face spins half a turn, then a whole one.",
+          "frame": {
+            "image": "film/history/sources/staff-chat-october/chat-4.png",
+            "sketch": "observer chat: maps look a lot more diverse"
+          },
+          "vo": "NARRATOR: wylt, an administrator, wrote that the maps look a lot more diverse. Asked how long each one took, rockymine wrote: thirty minutes to an hour for these complex maps. Sometimes faster.",
+          "onscreen": [
+            {
+              "text": "maps look a lot more diverse",
+              "who": "wylt",
+              "source": "sources/staff-chat-october/"
+            },
+            {
+              "text": "30 min to 1h for these complex maps",
+              "who": "rockymine",
+              "source": "sources/staff-chat-october/"
+            },
+            {
+              "text": "sometimes faster",
+              "who": "rockymine",
+              "source": "sources/staff-chat-october/"
+            }
+          ],
+          "sound": "Clock ticking.",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "",
+          "sources": [
+            "HISTORY ch. 11",
+            "sources/staff-chat-october/"
+          ]
+        },
+        {
+          "id": "A5-S7",
+          "title": "Too good",
+          "start": 841,
+          "dur": 20,
+          "picture": "Animated rockymine and Ruediger on the edge of a freeform board at dusk, sitting; the camera pulls back. Tag: author recalls.",
+          "frame": {
+            "image": "freeform/lib/boards/hollowcrown/renders/31-iso-board-nw.png",
+            "sketch": "Hollowcrown's two fortress mountains at dusk"
+          },
+          "vo": "NARRATOR: There they decided to pause. He says the maps were getting too good. He also says a month of weekly testing was enough, the tool needed care, and building twenty maps in a night was never the aim.",
+          "onscreen": [
+            {
+              "text": "Genug Material haben wir ja.",
+              "who": "rockymine",
+              "source": "research/15"
+            }
+          ],
+          "sound": "The theme, slowed.",
+          "kind": "author recalls",
+          "footage": "animate",
+          "todo": "Animate the two skins on the Hollowcrown render; German line with subtitle.",
+          "sources": [
+            "HISTORY ch. 11",
+            "account §13, §14"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A6",
+      "title": "Just having Claude follow along",
+      "start": 861,
+      "dur": 192,
+      "summary": "October and November 2026: agents fail to compose his mountain sketch, he builds the map by hand, the agents are put to reading it, players ask whether it is AI, the freeform boards finally reach the public servers, and the studio stands in the browser.",
+      "scenes": [
+        {
+          "id": "A6-S1",
+          "title": "Every check passed",
+          "start": 861,
+          "dur": 22,
+          "picture": "Animated: the Prompt-a-Map machine presents a version of the mountain map on a plinth; a ramp on it runs off into the void and a character walks off it. Stamp: REJECTED, then the next version.",
+          "frame": {
+            "image": null,
+            "sketch": "a ramp running off into the void, stamped REJECTED"
+          },
+          "vo": "NARRATOR: In November agents were asked to compose a sketch of his, a map set into a mountain. Every version was rejected. The surface was not closed. A ramp led into the void. Every one of those failures passed some check that existed at the time.",
+          "onscreen": [
+            {
+              "text": "Every one of those failures passed some check that existed at the time",
+              "who": "the agents' study",
+              "source": "research/04"
+            },
+            {
+              "text": "a ramp led into the void",
+              "who": "his rejection",
+              "source": "research/04"
+            }
+          ],
+          "sound": "Stamp thuds, a falling whistle.",
+          "kind": "staged",
+          "footage": "animate",
+          "todo": "If the rejected compositions' worlds survive on the fire-and-ice branch, render one instead of staging it.",
+          "sources": [
+            "HISTORY ch. 12",
+            "research/04"
+          ]
+        },
+        {
+          "id": "A6-S2",
+          "title": "The map he built",
+          "start": 883,
+          "dur": 28,
+          "picture": "The hand-built half: whole from above, then a slow descent into the valley and along the routes, one render per route.",
+          "frame": {
+            "image": "film/history/renders/hand-built/04-whole-from-above.jpg",
+            "sketch": "the hand-built half from above: cauldron of walls, bunker facade"
+          },
+          "vo": "NARRATOR: He had begun building it himself in the middle of October, over a few weekends. A bunker set into a mountain, the core in its face, a wool lane underground. Tunnels, a lane, a way over the top, a hole from the floor into the lane, a door high in the facade. The agents' task became reading it.",
+          "onscreen": [
+            {
+              "text": "a CTW and DTC hybrid for a fire-and-ice contest",
+              "who": "research/04",
+              "source": "research/04"
+            }
+          ],
+          "sound": "Wind, then the inside of a tunnel.",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "The fifteen renders exist; a render flythrough along the routes would replace the stills.",
+          "sources": [
+            "HISTORY ch. 12, 17",
+            "research/04",
+            "account §3, §14"
+          ]
+        },
+        {
+          "id": "A6-S3",
+          "title": "Not a design",
+          "start": 911,
+          "dur": 18,
+          "picture": "Render of the wool lookout from the valley; the study's labels for spaces appear and fade, too many to read.",
+          "frame": {
+            "image": "film/history/renders/hand-built/14-wool-lookout-from-the-valley.jpg",
+            "sketch": "the wool lookout seen from the valley floor"
+          },
+          "vo": "NARRATOR: The agents' study names forty-two spaces in it. The studio's own dead-ground rule would refuse it. The study comes to one line.",
+          "onscreen": [
+            {
+              "text": "a geometric rule is not a design",
+              "who": "the agents' study",
+              "source": "research/04"
+            }
+          ],
+          "sound": "",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "",
+          "sources": [
+            "HISTORY ch. 17",
+            "research/04",
+            "research/05"
+          ]
+        },
+        {
+          "id": "A6-S4",
+          "title": "Still not AI",
+          "start": 929,
+          "dur": 20,
+          "picture": "Render of the facade and core; his message appears in a chat bubble at the bottom of the frame.",
+          "frame": {
+            "image": "film/history/renders/hand-built/05-facade-and-core.jpg",
+            "sketch": "the bunker facade with the core set in it"
+          },
+          "vo": "NARRATOR: On the twenty-fifth of November he sent its layers to a map developer, with a note. ROCKYMINE (his message, read): Note that it still is not AI. Just having claude follow along.",
+          "onscreen": [
+            {
+              "text": "Note that it still is not AI. Just having claude follow along.",
+              "who": "rockymine, to a map developer",
+              "source": "research/17"
+            }
+          ],
+          "sound": "",
+          "kind": "record",
+          "footage": "exists",
+          "todo": "",
+          "sources": [
+            "HISTORY ch. 12",
+            "research/17"
+          ]
+        },
+        {
+          "id": "A6-S5",
+          "title": "Is it AI?",
+          "start": 949,
+          "dur": 22,
+          "picture": "The author's own gameplay on the hand-built map, players running the underground lane. Tag: author recalls.",
+          "frame": {
+            "image": "film/history/renders/hand-built/11-inside-the-lane.jpg",
+            "sketch": "inside the underground wool lane"
+          },
+          "vo": "NARRATOR: Players ask him, it feels constantly, whether what he builds is AI. A player asked it first of this map. He finds it funny. He says it looked a little wild at the start, and a model's work is not wild. It is more structured.",
+          "onscreen": [],
+          "sound": "Gameplay sound.",
+          "kind": "author recalls",
+          "footage": "record",
+          "todo": "The author records gameplay on the hand-built map; no player names in frame.",
+          "sources": [
+            "HISTORY ch. 13",
+            "account §17"
+          ]
+        },
+        {
+          "id": "A6-S6",
+          "title": "The arcade evening",
+          "start": 971,
+          "dur": 22,
+          "picture": "The author's gameplay of Lantern Pass, runners against shooters; match-record caption. Then quick stills of the other four boards.",
+          "frame": {
+            "image": "freeform/lib/boards/lanternpass/renders/30-iso-the-pass-from-the-boathouse.png",
+            "sketch": "Lantern Pass seen from the boathouse"
+          },
+          "vo": "NARRATOR: On the twenty-seventh of November five freeform boards from the eighth of October were played on the public servers for the first time. Lantern Pass: forty-nine players, one minute eight seconds. Lantern Drop, he says, just worked.",
+          "onscreen": [
+            {
+              "text": "Lantern Pass at 21:46:51 UTC, 49 players, one minute eight seconds, Runners 1, Shooters 0",
+              "who": "match page",
+              "source": "account §15, §16"
+            }
+          ],
+          "sound": "Gameplay sound; the theme returns.",
+          "kind": "record",
+          "footage": "record",
+          "todo": "Author's gameplay recording of the arcade boards (planned from 28 November).",
+          "sources": [
+            "HISTORY ch. 13",
+            "account §14-§16"
+          ]
+        },
+        {
+          "id": "A6-S7",
+          "title": "pgmstudio.de",
+          "start": 993,
+          "dur": 25,
+          "picture": "The author's screen recording of the studio in the browser: a layout drawn from nothing, the world appearing. His animated character sits beside the window.",
+          "frame": {
+            "image": null,
+            "sketch": "the browser studio with a layout being drawn"
+          },
+          "vo": "NARRATOR: The studio is a website now, pgmstudio.de, on a small machine he rents. Anyone can draw a map in it. He hid the model-made maps there, because they might give a wrong impression. He says hardly anyone uses it.",
+          "onscreen": [
+            {
+              "text": "There is no ai active on the page.",
+              "who": "rockymine",
+              "source": "research/17"
+            }
+          ],
+          "sound": "Mouse clicks; quiet theme.",
+          "kind": "record",
+          "footage": "record",
+          "todo": "Author records a short session in the browser studio.",
+          "sources": [
+            "HISTORY ch. 9, 12",
+            "account §3"
+          ]
+        },
+        {
+          "id": "A6-S8",
+          "title": "What belongs",
+          "start": 1018,
+          "dur": 20,
+          "picture": "rockymine and Ruediger, their real skins, stand on the hand-built map's floor; the camera rises over the walls to the whole half.",
+          "frame": {
+            "image": "film/history/renders/hand-built/01-whole-from-west.jpg",
+            "sketch": "the hand-built half from the west"
+          },
+          "vo": "NARRATOR: What the tools have not taken over is the judgement of what a place is for. The rules can say that ground lies off every route. They cannot say what belongs.",
+          "onscreen": [
+            {
+              "text": "cannot say what belongs",
+              "who": "the sorting of his October notes",
+              "source": "research/05"
+            }
+          ],
+          "sound": "The theme, to its end.",
+          "kind": "inference",
+          "footage": "animate",
+          "todo": "Animate the two skins over the render.",
+          "sources": [
+            "HISTORY ch. 18",
+            "research/05"
+          ]
+        },
+        {
+          "id": "A6-S9",
+          "title": "made by",
+          "start": 1038,
+          "dur": 15,
+          "picture": "The observer sign from the cold open, now filled in: made by rockymine and Ruediger_LP. Then the credits, with the models named among them.",
+          "frame": {
+            "image": null,
+            "sketch": "the sign now reading made by rockymine and Ruediger_LP"
+          },
+          "vo": "",
+          "onscreen": [],
+          "sound": "A sign-placing sound; silence.",
+          "kind": "staged",
+          "footage": "animate",
+          "todo": "Credits: list the models and tools as the record names them.",
+          "sources": []
+        }
+      ]
+    }
+  ]
+}

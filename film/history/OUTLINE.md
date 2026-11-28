@@ -1,46 +1,206 @@
-# The film: on hold
+# Made By: outline
 
-**The film is on hold by the author's decision.** The history comes first (`HISTORY.md`); nothing is to be built until
-he says so (`author-account-2026-11-27.md`, opening status line). This note keeps only what a later decision would
-start from: the scenes the documented history now offers, the footage each has, and the questions that come before an
-outline. It replaces a full outline written before the author's account, which the account and the later research
-overtook.
+The film's outline, written from `HISTORY.md` and its sources. The scene-by-scene storyboard is `storyboard.json`
+beside it; scene ids below (`A3-S5`) are its ids, and every quote, number and date in either file is one `HISTORY.md`
+carries.
 
-## The strongest scenes
+## Logline and thesis
 
-Each scene is listed with its sources in the history and the footage that exists for it. "To record" means footage
-that would have to be made, in game or from a committed world.
+**Logline.** Over twenty-one months a Minecraft map maker teaches machines to help him make PvP maps for his
+community, from a spanning tree drawn in redstone to boards that staff take for touched-up work, and ends with a map
+he built by hand that players take for AI.
 
-| # | Scene | Sources | Footage that exists |
-|---|---|---|---|
-| 0a | **A spanning tree in redstone.** February 2025: the message to samschaap, a page that grows random spanning trees and shades their cells, and Townside reduced to a grid of stone and black and then to torches and dust, a green carpet for the one cycle edge | HISTORY ch. 1; `sources/early-experiments/2025-02-11-message-to-samschaap.md` | the three Townside pictures; four screenshots of the v0 page as it runs today (`v0-prototype-2025-02/`, not February's output); the page itself to record |
-| 0b | **Before the studio, in pictures.** The matplotlib graph of April 2025, the Claude artifact's void strip at 01:39 on a tablet, two grey landmasses in game on 4 November, a point cloud that is a map, nine islands as triangles and skeletons, and the 20 March screen: "he just begs for the first ai generated map" | HISTORY ch. 1–3; research/18 | the eight pictures in `sources/early-experiments/` (the author's; use to be cleared) |
-| 1 | **The squared-paper morning.** A drawing photographed on a phone at 07:37 becomes a staircase, then, typed as corners, the right map | HISTORY ch. 5; research/09 | `sources/base-map-squared-paper-drawing.jpg`; the session transcript (text); the Base worlds to record |
-| 2 | **"I want to have this moment for myself."** The four walk the grey boxes on mapdev; "It's void because I drew it exactly like that on the piece of paper. So it's my fault." | HISTORY ch. 5; research/16 | the author's 59-minute recording of 2 July, game and voice call together (local copy, not committed) |
-| 3 | **"We'll try to hide our crimes."** The commit message argued over, then three grey maps on the public server, a poll of 3 of 4, "We are witnessing history and it's really boring" | HISTORY ch. 5; research/16 | the same recording, minutes 33 to 59; the `#maps-changelog` row of `711e539` |
-| 4 | **Millrace, left and right.** The model's basin against the version two people finished in five hours | HISTORY ch. 8; research/03 | review `rockymine-ruediger-millrace.md` and its pictures; the 2.0.0 world in CommunityMaps; gameplay to record |
-| 5 | **A Sunday on the API.** Eleven maps in Ruediger's order, one after another; "Slop Sunday … happening now!" a minute before the first match of 27 September, a skull thirteen times beneath it; the matches won by teams named "Claude" and "Anti-Slop" | HISTORY ch. 9, 15; research/16 | `sources/slop-sunday-announcement/` (screenshot); `sources/match-status/` (the data for a graphic); the board worlds in `maps/`; gameplay to record |
-| 6 | **"stop AI maps from being played at all."** The thread opened an hour after the 20 September evening, and the answers to it | HISTORY ch. 9, 16; research/17 | none committed: the thread is read, not captured; text only, and its posters unnamed by the author's decision |
-| 7 | **"Ok. This is a whole different class of map."** The overnight freeform run and the morning message | HISTORY ch. 10; sessions/00, 01 | board renders in `freeform/lib/boards/riftwater/renders/`; the world to record |
-| 8 | **"are all these ones unmodified from generated state?"** The staff at the October viewing | HISTORY ch. 11; `sources/staff-chat-october/` | five chat screenshots (use allowed, account §14); renders of Hollowcrown, Lantern Karst, Hollow Mesa and Riftwater in `freeform/lib/boards/` |
-| 9 | **The map that every check passed.** The agents' rejected compositions against the half he built | HISTORY ch. 12, 17; research/04 | `renders/hand-built/` (fifteen cameras); the study viewer on its branch |
-| 10 | **"Note that it still is not AI."** Players asking of the hand-built map whether a model made it | HISTORY ch. 13; account §17; research/17 | the hand-built renders; no footage of the question itself |
-| 11 | **The arcade evening.** Lantern Pass and four more boards, twenty-one months after the first spanning tree, on the public servers for the first time | HISTORY ch. 13; account §14–§16 | match pages; board renders in `freeform/lib/boards/`; real gameplay planned from 28 November (account §14) |
-| 12 | **The walking wool room.** Wandering U's islands leaving players in mid-air over the void | HISTORY ch. 7; research/10, research/16 | `renders/wandering-u/`; the zip world to record in motion |
+**Thesis.** The machines learned to execute almost everything, and what stayed with the people was deciding what a
+place is for, which is also the line the community drew when it asked who made a map.
 
-## What would have to be decided before building
+The title comes from the observer sign of 2 July 2026, which read only "made by" with nothing after it. The film
+opens on that empty line and closes with it filled in.
 
-1. **Whether there is a film at all, and when.** The author's decision; nothing below binds it.
-2. **Whose words may be used.** The staff chat is cleared as it is (account §14); the forum thread and four of the
-   direct messages may be used only without names (account §18; README, *Names*). The voices of the 2 July recording
-   (Ruediger, TTtie, samschaap, nuttydragon), TTtie's messages, the February 2025 message and arcadeboss's messages are
-   not yet cleared (`interview-questions.md`, "Everyone quoted").
-3. **What the film's argument is.** The documented history supports at least two: the twenty-one months as a line from a
-   spanning tree in redstone to a grammar, ending at a map built by hand, which the early pictures now open; or the year as a question the community asked — who made this map — and
-   still asks of that hand-built map. Choosing one decides which scenes lead.
-4. **Which open facts must be settled first.** Those that a scene would state: what the v0 page looked like in February
-   2025 rather than today, and whether the author's data holds more than the 2,452 matches processed (`HISTORY.md` ch. 18). The Base commit, the
-   viewing and the contest are settled (account §18).
-5. **What gameplay to record, on which versions.** Several boards were played in versions later rebuilt (Sunspit,
-   Hollowmarch, the model's Millrace), so a recording shows today's board unless an older world is restored.
-6. **Form.** Whether the 2 July recording is the spine (it is the only footage of a test) or one scene among the rest.
+## Structure
+
+**The recommended length is 17 minutes 33 seconds, in six acts and 53 scenes.** It is chronological after a cold
+open, because the history's strongest effect is cumulative: the same graph comes back four times, and the question
+"who made this" is asked of grey boxes before it is asked of a map that is good. A shorter film can keep that only by
+keeping the ends of each through-line.
+
+| Act | Title | Time | Length | Scenes |
+|---|---|---|---|---|
+| A1 | Witnessing history | 0:00–1:15 | 1:15 | 4 |
+| A2 | A spanning tree in redstone | 1:15–5:02 | 3:47 | 13 |
+| A3 | The grey boxes | 5:02–8:25 | 3:23 | 10 |
+| A4 | Slop Sunday | 8:25–11:56 | 3:31 | 10 |
+| A5 | A whole different class of map | 11:56–14:21 | 2:25 | 7 |
+| A6 | Just having Claude follow along | 14:21–17:33 | 3:12 | 9 |
+
+**A 6–8 minute cut keeps the spine and drops the side streets.** It keeps the cold open and title (A1, all four
+scenes); the algorithm message and the rules-not-training answer (A2-S1, A2-S3); the squared-paper morning, the
+message to TTtie, the void on the drawing, the commit argument and the matches (A3-S3, S5, S6, S8, S9); Millrace left
+and right, the forum thread and the last evening (A4-S6, S9, S10); Riftwater by morning, the staff at the viewing and
+the pause (A5-S2, S5, S7); and from A6 the hand-built map, "still not AI", "is it AI?", the browser studio, the
+closing and the filled-in sign (A6-S2, S4, S5, S7, S8, S9). That is 7 minutes 58 seconds. What it loses is the
+prehistory's tools, the line-up map, the walking room and the summer's odd experiments, which are the funniest
+material; a cut that must be shorter still should lose the forum thread before it loses the 2 July recording.
+
+## The acts
+
+**A1, Witnessing history (1:15), opens on the only footage of a test.** Three maps of grey stone on a public server,
+a voice in the call saying "We are witnessing history and it's really boring.", nuttydragon asking "who claims
+ownership?" under a sign that names nobody. It is there to set the tone before anything is explained: the people at
+the centre of this were laughing, and the film is allowed to laugh with them. The narrator's one paragraph names the
+date and points back to February 2025, and the title comes off the empty sign.
+
+**A2, A spanning tree in redstone (3:47), is the prehistory, and it is almost entirely pictures that exist.** It runs
+from the message to samschaap of 11 February 2025 through Townside as a map, a grid and a torch graph, the answer
+that "an educated, rule-based approach" was likelier than training, the v0 page that grew spanning trees, the
+matplotlib layouts of April, the Claude artifact of May, the v0 argument about symmetry in August, Gemini's app in
+September, Ruediger's German question, his own C# editor turning a graph into blocks, the winter of logged matches,
+the islands thinned back into a graph, and the March screenshot where Ruediger "just begs for the first ai
+generated map". It is there because the history's first correction was that the story begins here and not in the
+summer, and because it shows the author bringing the algorithm and a run of tools writing it, which is the split the
+rest of the film turns on. It is the act most at risk of feeling like a slideshow, so its two animated scenes (the v0
+argument, Ruediger on his phone) carry the humour.
+
+**A3, The grey boxes (3:23), is 2 July, told from the recording.** It covers the studio's ports and the first XML
+nobody wrote, then the squared-paper morning, the message to TTtie that the maps "just looks like shit" and that he
+would not look at them before, and then the evening minute by minute: "why is that void?", "I want to have this
+moment for myself", Ruediger's joke about room for the imagination, seven minutes on a commit message and "we'll try
+to hide our crimes", three matches and a poll of three out of four, "now back to the normal boring maps". It is the
+film's centre because it is the one evening with sound, and because nothing in it is grave.
+
+**A4, Slop Sunday (3:31), is August and September: the experiments and the evenings, and the argument they
+started.** Wandering U's walking wool room, No Blocks Placed taken for "the ai map" though he and Ruediger drew it,
+the first fifteen boards and Viridian's slime, the agent that declared every destroy map unwinnable because goals
+float by design, Ashfall Scar's straight line, Millrace finished by hand in five hours, the private commits "Add a
+few very human maps for testing" and "reorganize the slop", the Sundays Ruediger named, the forum thread "stop AI maps
+from being played at all", and the last and largest evening with a skull thirteen times under the announcement and a
+team named Anti-Slop winning a match. It is there because the community's reception is half the history, and the act
+gives it in its own words without naming anyone from the thread.
+
+**A5, A whole different class of map (2:25), is October: freeform, and the staff who could not tell.** The dictated
+"what if", the list of ingredients ending in a tractor, Riftwater by 05:42, twenty boards and a library in a day, the
+grammar read off Brittlebush, the viewing at which mitchiii asked "are all these ones unmodified from generated
+state?" and TTtie wrote "its over for m*pdevs.", and the decision to pause because the maps were getting "too good".
+It is the turn of the film: the question who made a map stops being a joke about grey boxes.
+
+**A6, Just having Claude follow along (3:12), ends where the history stands.** Agents fail to compose his mountain
+sketch, every failure having "passed some check that existed at the time"; the map he built by hand, its routes
+knitted through a mountain; the study's "a geometric rule is not a design"; his note "Note that it still is not AI.
+Just having claude follow along."; players asking him whether it is AI; the arcade evening on which the freeform
+boards first reached the public servers; the browser studio, where the brief says the film ends up; and the closing
+line, that the rules "cannot say what belongs". The empty sign of the opening is filled in with the two names.
+
+## Through-lines
+
+**The graph comes back.** A spanning tree with cycle edges in February 2025, four node layouts in April 2025, a
+skeleton graph of islands in February 2026 ("da sind wir dann wieder bei der Graph-Idee gewesen"), `FannedGraph` in
+the studio on 2 July 2026, and in the hand-built map a set of routes knitted together. The film shows each return with
+the same visual device, a dissolve from a picture to its nodes and edges, so the audience recognises it without being
+told.
+
+**Rule-based, not trained.** He said it to samschaap in February 2025 and to the forum in September 2026 ("No actual
+map data is being used to train anything"). It recurs as the honest answer to the question the audience will bring,
+and as the reason the agent was told to ask the author when it measured something and concluded something invented.
+
+**Who decided, what executed.** He brought the algorithm and v0, Gemini and Claude wrote the tools; he drew the
+squared paper and a model wrote the world; he gave the layout of the boards shown in October ("again, layout is 100%
+mine") and gave Riftwater only a mode and ingredients. The narration states each split as fact, scene by scene, and
+never sums it up; research/12's categories are the reference and stay off screen.
+
+**Is it AI?** The empty "made by" sign on 2 July, nuttydragon's "who claims ownership?", No Blocks Placed taken for
+"the ai map", the thread's "spirit of a map (human creation)", mitchiii's "I would have assumed these were touched
+up", and players asking it of the map he built by hand. It is the film's frame: it opens on the question and closes on
+the sign answered.
+
+## Narration
+
+**One narrator, plus voices of the record.** The narrator is plain, dry and third person, states mechanism and dates
+as fact, never asks a question and never sums up a feeling; where the material is funny it is left to be funny, by
+stating it flatly (the tractor, the skull counted to thirteen, the poll withdrawn). It speaks about 2.3 words a second
+and leaves room: the storyboard's narration fills less than its scenes allow on purpose.
+
+**rockymine's own lines are his written words, read.** His messages and posts are marked "his message, read" in the
+storyboard. For the scratch track a synthetic voice reads them; the recommendation is that he records them himself,
+since they are his words and the film is his. Other people's written words, Ruediger's and TTtie's messages, the staff
+chat and the thread, are never voiced: they appear on screen as text with a role or name. The 2 July recording is
+heard as it is, if its voices are cleared (decision 2).
+
+**Every quote and fact carries a source tag on screen.** A small corner tag reads RECORD, AUTHOR RECALLS, INFERENCE or
+STAGED, with the source beside it (`research/16`, `account §17`). Animated scenes in the Prompt-a-Map style are tagged
+STAGED even where the words in them are record, so that a character falling from Wandering U's room is never mistaken
+for footage of a player falling.
+
+## What must be produced
+
+**Twenty-one scenes have a picture that already exists, thirty of the 53 have an existing key frame.** The rest need
+one of four kinds of work. The table is the catalogue; the scene ids are the storyboard's.
+
+| Group | What | Scenes |
+|---|---|---|
+| Exists | the Townside pictures, the v0 page screenshots, the matplotlib figure, the Claude artifact screenshot, the AI Studio app screenshots, the 4 November picture, the position trace and match chart, the triangulation and skeleton pictures, the 20 March screenshot | A2-S1–S6, S8, S10–S13 |
+| Exists | the squared-paper photo; the Slop Sunday announcement; the five staff-chat screenshots | A1-S3, A3-S3; A4-S10; A5-S5, S6 |
+| Exists | Ashfall Scar's objective render; the Millrace model render; Kilnholt Cut's render; Riftwater, Lantern Pass, Brittlebush III, Hollowcrown renders; the fifteen hand-built renders; Wandering U's renders | A4-S1, S5, S6, S8; A5-S2–S4, S7; A6-S2–S6, S8 |
+| To render from worlds | Base 2-Island and Base 2-Wool (and the session's wrong first world, if it survives); No Blocks Placed; Viridian and thumbnails of the first fifteen; Millrace 2.0.0 from the model render's camera; a Kilnholt Cut corridor flythrough; optional flythroughs of Riftwater and the hand-built routes | A1-S3, A3-S3, A3-S7; A4-S2, S3, S6, S8; A5-S2; A6-S2 |
+| To animate | rockymine and Ruediger with their skins (desk, bench, dusk, closing); the title and closing signs; the v0 chat; the walking room; the Prompt-a-Map machine for the wrong claim and the rejected compositions; the evenings as a match graphic; the thread's text cards; chat bubbles | A1-S4, A2-S7, S9, A3-S2, S4, A4-S1, S4, S7, S9, A5-S1, S4, S7, A6-S1, S8, S9 |
+| To record by the author | gameplay on the hand-built map and on the arcade boards; a session in the browser studio; the studio's predecessors running, if they still start; his own written lines read aloud | A3-S1, A6-S5–S7; all "his message, read" lines |
+| To get from the author's PC | the 2 July screen recording (59 min, with the call): minutes 0–14, about 20, 33–40, 43–59 | A1-S1, S2, A3-S5–S10 |
+
+## Decisions before production
+
+1. **Length.** Recommended: the 17:33 cut as the film, with the 7:58 cut prepared from the same edit for the Mappys
+   or any showing that needs it. Under twelve minutes the prehistory reduces to a list.
+2. **Whether the 2 July voices are heard or only quoted.** Recommended: heard, because it is the only footage with
+   sound and the humour lives in the delivery, but only after Ruediger, TTtie, samschaap and nuttydragon each agree
+   to their voice being used; `interview-questions.md` still lists them as not cleared. Failing that, the recording
+   runs with the call muted and the lines as subtitles, tagged RECORD.
+3. **Who reads rockymine's written lines.** Recommended: he does. A synthetic voice is fine for the scratch track and
+   should not imitate him.
+4. **Whether the forum thread appears.** Recommended: yes, as one scene of white-on-black text cards with role labels,
+   no screenshots, no avatars and no usernames, and with the author's answer last. Leaving it out would make the
+   history's one public argument invisible; showing screenshots would break the naming rule.
+5. **How the hand-built map is shown.** Recommended: as it stands now, unfinished, through the existing renders and
+   his own gameplay, without pretending a finish (he plans snow, stone, ice or grass). If he finishes it before the
+   cut, a final shot of the finished map can replace A6-S8's render.
+6. **Which other people appear as characters.** Recommended: only rockymine and Ruediger as animated skins, as the
+   brief fixes; TTtie, samschaap, nuttydragon, mitchiii and wylt appear by name in captions and chat, not as
+   characters, unless they ask to.
+7. **Music.** Recommended: one quiet theme in the warm register of a documentary, stated in A1, reduced in A2,
+   opened out on Riftwater (A5-S2) and slowed for the pause (A5-S7); no music under the forum thread or the staff
+   chat. The Prompt-a-Map infomercial cues return only in the two staged machine scenes, as a quotation.
+8. **German lines.** Recommended: kept in German on screen with English subtitles (Ruediger's question, "ist das jetzt
+   die erste xml…", "Das ist sie!", "Genug Material haben wir ja."), since the record is in German and translating
+   them silently would make them the film's words.
+9. **Board versions in gameplay.** Sunspit, Hollowmarch and the model's Millrace were played in versions later
+   rebuilt. Recommended: no gameplay of those three; where a board is shown as played, show the version the record
+   says was played or say on screen that it is today's.
+
+## Risks
+
+**Privacy.** The 2 July recording shows player names in chat, the tab list and the scoreboard; every name outside the
+five voices must be blurred, and the "is tihs jus the greybox?" line shown as "a player". The thread and the four
+direct-message sources stay role-labelled in every frame, subtitle and credit, and no line from them is put beside a
+staff-chat name. A player named in the account as first asking "is it AI?" of the hand-built map appears only as "a
+player".
+
+**Tone.** The material is funny, and the jokes are the participants' own ("hide our crimes", "slop", the poll). The
+risk is the film's jokes landing on someone who is not in on them: the players who disliked the evenings, the
+thread's opener, the map developers who held a line. The rule for the edit is that the film laughs at grey boxes, at
+models and at its own author, and states the critics' words plainly and without a comic cue. "just looks like shit"
+and "oh fuck" are kept because they are the author's own and a staff member's reaction to good work; neither is
+played for shock.
+
+**Length.** Seventeen and a half minutes of mostly stills and chat risks a slideshow in A2 and A4. The answer in the
+storyboard is to animate one scene in every three or four and to keep the stills moving; if a test screening flags
+either act, cut A2-S5, A2-S6 and A4-S7 first.
+
+**Accuracy drift.** Numbers on screen come from `HISTORY.md` only, and some have several answers (the logged matches:
+2,450 by the chart, more by his memory). The storyboard uses the record and tags it; a new figure from the author
+needs a new line in `HISTORY.md` before it can appear.
+
+## What the history is too thin to film
+
+Some beats exist only as a sentence. The April 2025 matplotlib experiment has one picture, no tool and no meaning for
+its colours. Players falling from Wandering U's room are the author's recollection, with no footage; the scene stages
+it and says so. The 9–10 October pause is account alone, and so are "too good" and the decision. Players asking
+whether the hand-built map is AI have no record at all beyond his account. The forum thread was read, not captured,
+and its opener deleted their messages. The v0 page of February 2025 is seen only as it runs today. Nothing records
+the browser studio being used by anyone but him, which is why A6-S7 says so rather than showing users.

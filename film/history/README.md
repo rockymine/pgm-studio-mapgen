@@ -2,7 +2,8 @@
 
 This folder is the written history of twenty-one months of AI-assisted PGM map making by rockymine, with Ruediger_LP
 and a run of models, from February 2025 to November 2026. It was researched on 27 and 28 November 2026 in many passes while the
-author added recollections, partly by an agent on his PC; the film is on hold by his decision. Everything in it keeps three voices apart: what the **record**
+author added recollections, partly by an agent on his PC; on 28 November he asked for the film's outline and a
+first storyboard, which are now here. Everything in it keeps three voices apart: what the **record**
 holds, what the **author recalls**, and what is **inference**.
 
 ## Reading order
@@ -55,7 +56,14 @@ holds, what the **author recalls**, and what is **inference**.
     transcription and speaker grouping); not map tooling.
 14. **`renders/`** — pictures made from committed data: the hand-built half (`hand-built/`) and Wandering U
     (`wandering-u/`).
-15. **`OUTLINE.md`** — a short note: the film is on hold; the strongest scenes, their footage, and what must be decided.
+15. **`OUTLINE.md`** and **`storyboard.json`** — the film's outline and its first storyboard (see *Outline and storyboard*).
+
+## Outline and storyboard
+
+`OUTLINE.md` is the film's outline: logline and thesis, six acts adding to 17 min 33 s with a 7 min 58 s cut, the
+through-lines, the narration, what must be produced and the decisions put to the author. `storyboard.json` is the
+first storyboard, 53 scenes with timings, pictures, key frames, narration, on-screen quotes with their sources and a
+record, author-recalls, inference or staged tag per scene; every quote and number in it is one `HISTORY.md` carries.
 
 ## What is settled
 
